@@ -130,9 +130,13 @@ The five request windows contain 1,875, 1,875, 1,875, 1,875 and 1,323 samples.
 Cleanup dominates throughout; the final window has substantially more mapped
 String reconstruction. These wall intervals are not compiler-stage boundaries.
 The capture demonstrates both active observation and substantial remaining
-ownership/construction work in the actual B2 image. It does **not** isolate why
-B2 benefits less than B1: that causal comparison requires a matched successful
-current B1 profile. No partial or divergent old watchdog profile is used here.
+ownership/construction work in the actual B2 image. The later
+[matched complete B1/B2 comparison](origin-stage-profile-comparison.md) now adds
+the missing current B1 capture and exact upstream/own-backend code mappings.
+It finds similar absolute Boolean-branch cleanup in both images and a much
+larger append-construction bucket in B2, refining the order of stage-gap
+experiments. Neither capture isolates a causal pass-level speedup. No partial
+or divergent old watchdog profile is used here.
 
 The [separate TypeScript context](../../selfhost/build/phase98/origin-ts-self-plan01/report.json)
 puts unsampled B2 request time at 3.122 times the two-run TypeScript median.

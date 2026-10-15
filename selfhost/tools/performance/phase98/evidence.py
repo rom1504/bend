@@ -23,7 +23,7 @@ DEFAULT_ROOTS = [
     'selfhost/proofs/phase98', 'selfhost/tools/laws/phase98',
     'implementation/phase98', 'experiments/phase98',
     'selfhost/tools/native', 'selfhost/native.py', 'selfhost/build/native/requests',
-    'design/phase98', 'research/phase98', 'selfhost/README.md', 'README.md',
+    'design/phase98', 'research/phase98', 'experiments/STEERING.md', 'selfhost/README.md', 'README.md',
     'docs/self_hosted/NATIVE_HOST.md', 'docs/self_hosted/NATIVE_OBSERVERS.md',
     'docs/self_hosted/NATIVE_PHASE98.md', 'docs/self_hosted/COMPILER_LAWS.md',
 ]

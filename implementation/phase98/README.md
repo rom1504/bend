@@ -1,7 +1,7 @@
 # Phase98: laws that support real native compiler optimization
 
-Status: native B1/B2 qualification, public CLI, default selection and actual
-capsule restoration passed. Final profiling and evidence consolidation continue.
+Status: implemented and qualified. Native B1/B2, public CLI, default selection,
+actual capsule restoration and both complete physical profiles passed.
 This campaign began at
 2026-10-15 20:07:27 UTC and follows the [three-hour design](../../design/phase98/laws-and-native-optimization.md).
 
@@ -20,6 +20,11 @@ of a generated user program.
 | B2 complete process, same screen | **0.97834×** | Small-request preparation remains significant. |
 | B1 full self compilation | **0.77379× request**: 135.465 → 104.821 s | One complete run per producer on the exact final source; process 136.173 → 105.531 s. |
 | B2 full self compilation | **0.93697× request**: 150.471 → 140.988 s | Two balanced rounds, four complete requests; median process 151.301 → 141.862 s. |
+
+![Full-source request times with sample counts and clock boundaries](request-times.svg)
+
+The [machine-readable scoreboard](results.json) is derived from the completed
+source-bound receipts by the [data-only exporter](../../selfhost/tools/performance/phase98/scoreboard.py).
 
 The B1 full-input result is about **22.6% less time**, supported by the repeated
 six-source screen. The repeated B2 full-input result is **6.3% less time**. Every
@@ -68,8 +73,9 @@ Shared String equality traverses with `term_peek`; the adapter keeps both roots
 until the observation returns, then releases them normally. The consuming
 fallback is preserved exactly. **The KTerm tag projection itself remains
 consuming in B2.** It benefits indirectly through String comparison, while B1
-gets a better projection lowering. This helps explain why the stage gains differ;
-a full physical B2 profile is being collected to quantify the remaining costs.
+gets a better projection lowering. The completed matched physical profiles
+quantify the remaining ownership/construction work and distinguish physical
+cost from causal attribution.
 See [actual B2 C spans and mappings](own-backend-mechanism.md).
 
 **Correct an exposed termination defect.** Enabling more observer analysis
@@ -107,6 +113,13 @@ ancestry nontermination was found by native execution and profiling: safe value
 equations did not prove native evaluation order or resource behavior. Runtime
 reference counting, observer analysis, unsafe adapters, FFI and the whole
 compiler are not mathematically proved.
+
+Across the wider experiment catalog, Phase98 adds **16 public contracts and 40
+support statements**, including historical and rejected variants. Together with
+the Phase96/97 foundations, the catalog has 51 public and 50 support names.
+Only the 13 statements bound to the exact selected helper closures above are
+reported as final-profile coverage; the ancestry correction itself is covered
+by native controls rather than a termination theorem.
 
 The practical loop is to extract the actual new helper, run its one relevant
 law closure, check complete values and aliases, inspect emitted C, and only then
@@ -183,6 +196,12 @@ It rejects the large neutral rewrite and preserves separate narrow permissions.
 The compact exact forward/inverse source recipe is 14,812 compressed bytes plus
 its manifest. Historical native07 remains available independently.
 
+The public Python entry and launcher total 122 physical lines. Asset packaging
+and source replay add 127 and 99 tooling lines respectively. They authenticate
+and transport the native compiler; none implements a compiler pass. Proof,
+experiment and qualification tooling is tracked separately from compiler source
+and is not hidden in the native +79-line figure.
+
 [Native usage and source replay](../../docs/self_hosted/NATIVE_PHASE98.md) describe
 B1/B2 identities, entry limits and restoration. The existing native07 entry and
 its original release remain available independently.
@@ -218,6 +237,16 @@ speedups. The rejected +525-line dispatch experiment makes it especially
 important to test direct backend lowering rather than assume another source
 rewrite will help.
 
+A subsequent [matched full B1/B2 profile](origin-stage-profile-comparison.md)
+sharpens this ranking. B1 spends an estimated 62.05 seconds in ownership helpers,
+B2 71.41 seconds, even though the percentage falls from 59.21% to 50.58%.
+The explicitly mapped append/reconstruction bucket grows from **4.86 to 13.44
+seconds**; `kc` cleanup stays roughly unchanged. Exact C and assembly show broader
+borrowed projection, raw scalar fields and simpler continuation dispatch in B1.
+Prioritize these concrete stage differences, then investigate branch construction
+as a cost shared by both stages. These are sampled, partly overlapping physical
+buckets, not additive causal speedup forecasts.
+
 The [next-cycle playbook](next-cycle.md) pairs these experiments with useful law
 boundaries: origin progress, operational lazy-branch behavior and retained-root
 adapter ownership. Preserve the fast independently checked value laws and the
@@ -231,8 +260,40 @@ of this campaign.
 - [Observer permission](observer-permission.md), [caller/lifetime review](observer-safety-review.md), and [profile diagnosis](profile-findings.md).
 - [Design](../../design/phase98/laws-and-native-optimization.md), [experiment ledger](../../experiments/phase98/), and [current-source law commands](../../selfhost/proofs/phase98/RUNNING.md).
 
+The native release is published in commit `62d6fed` on `selfhost/bootstrap`.
+The final evidence package is
+[`selfhost/tools/performance/phase98/artifacts/evidence01/`](../../selfhost/tools/performance/phase98/artifacts/evidence01/).
+Its receipt records actual seal/verification success and its manifest preserves
+original file paths, bytes and modes. Identical content is stored once, retaining
+both successful and failed experiments. The two separate request capsules carry
+the installed B1/B2 images and ordinary request assets; large experiment C,
+profiles, proof receipts and historical attempts live in the evidence package.
+Restore requires the recorded checkout root because source identities include
+absolute paths. Earlier-phase toolchains and historical dependencies remain
+separately preserved; this is not a portable arbitrary-root toolchain bundle.
+
 Failures are retained, including both resource stops, the interrupted C build,
 initial harness/preparation mistakes and the exact rejected candidates. A server
 restart interrupted one C build; it is not evidence of a machine-wide OOM.
 Execution accounting distinguishes recorded guard occupancy from elapsed work,
 and does not invent token or quota percentages.
+
+At the final target-accounting checkpoint, 970 completed guard intervals,
+including public native requests, occupy **5,457.26 seconds (90.95 minutes)**.
+The maximum recorded process-tree RSS is **4.007 GiB**. The interrupted build
+has no end record and receives no invented duration. Guards remain serial;
+their tiny recorded boundary overlaps are merged rather than double-counted.
+The rest of the campaign includes source/proof preparation, offline analysis,
+independent review, the server interruption, documentation and packaging, not
+measured target CPU time. All actual compiler/program targets were root-owned;
+delegated lanes prepared and reviewed source/data. The raw accounting method
+and `time-accounting03.json` are retained, with explicit roots and scope.
+
+The expensive checkpoints were deliberate: repeated B2 full-self pairs occupied
+586.33 s; the two final native image builds occupied 451.46 s; four physical
+captures occupied 412.82 s, including the two incomplete diagnostic prefixes.
+The failed first conformance suite cost 300.03 s and led to the faster harness.
+These categories are examples within the guard total, not extra elapsed time.
+The next cycle should retain the seconds-long helper/law checks, the roughly
+163-second two-stage conformance loop, and exact-C reuse of runtime benchmarks;
+reserve full image builds and self profiles for demonstrated mechanisms.

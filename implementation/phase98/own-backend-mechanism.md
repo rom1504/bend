@@ -70,6 +70,14 @@ all be treated as fallback work, and its owned root disposal remains material.
 The profile report ranks the remaining closure cleanup, retained projection,
 String construction and equality boundary opportunities.
 
+The subsequent [matched complete B1/B2 comparison](origin-stage-profile-comparison.md)
+also inspects the upstream-generated C that built B1. Its borrowed spin helpers,
+raw scalar arguments, continuation dispatch and reference-cell load protocol
+differ from B2's own-generated code. The matched captures put the explicit
+append/reconstruction bucket at about 4.86 versus 13.44 CPU seconds, while
+Boolean-branch cleanup remains similar in absolute time. These distinctions
+refine the next experiments without equating differently inlined physical owners.
+
 The mapped route names themselves are not counts of dynamic calls or saved
 allocations, and neither this static audit nor the single full profile implies
 an aggregate RC reduction or a causal B1/B2 speedup. Runtime lifetime safety and

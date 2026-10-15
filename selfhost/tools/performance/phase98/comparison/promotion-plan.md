@@ -145,7 +145,7 @@ python3 -B selfhost/tools/performance/phase98/evidence.py restore selfhost/tools
 Scratch data controls already exercise split ZIPs, deduplication with distinct
 modes, missing-only restoration, changed-byte/mode refusal and corrupt-part
 refusal, including insufficient spool-plus-parts space; see
-`build/phase98/evidence-method-controls03/report.json`. They are
+`build/phase98/evidence-method-controls04/report.json`. They are
 separate from the final campaign seal. The evidence archive records the public
 capsule as an external dependency and excludes archive-output directories and
 Python bytecode. Earlier-phase toolchains/upstream/history remain external;

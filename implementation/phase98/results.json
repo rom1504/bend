@@ -1,0 +1,508 @@
+{
+  "kind": "phase98-results-scoreboard",
+  "complete": true,
+  "dataOnly": true,
+  "targetsLaunched": 0,
+  "source": {
+    "file": "selfhost/build/phase98/origin-guard-source01/compiler.bend",
+    "sha256": "2a72bbdc3d757982d7dd4804d8a1312f9427e3b2822ed9d187424c2d9f4de051",
+    "bytes": 1754096
+  },
+  "baselineSource": {
+    "file": "selfhost/build/phase92/upstream-checked01/compiler.bend",
+    "sha256": "d04ad79cf08c019b509cfbbd4be2b16ae9e4af189767715d12e0645b9eee8097",
+    "bytes": 1759353
+  },
+  "method": {
+    "file": "selfhost/tools/performance/phase98/scoreboard.py",
+    "sha256": "19813037bdb9dd6f7d387824043f14c5cdcdc7b78f49d2bce1c7d491d34326fb",
+    "bytes": 11289
+  },
+  "compilerPerformance": {
+    "b1": {
+      "receipt": "b1Screen",
+      "cases": 6,
+      "pairsPerCase": 4,
+      "candidateOverBaseline": {
+        "requestMs": 0.8106672428890056,
+        "processWallMs": 0.8656411390528745
+      },
+      "aggregation": "Equal-case geometric mean of per-case ratios of medians.",
+      "scope": "Upstream-built native B1 only; identical request assets/cache and Clang O2 flags. Six frozen sources, four balanced rounds and complete checked diagnostics are required. No candidate B2 qualification, Clang rerun, or generated-program runtime measurement. Request excludes preparation; process wall includes startup/preparation/write/teardown."
+    },
+    "b2": {
+      "receipt": "b2Screen",
+      "cases": 6,
+      "pairsPerCase": 4,
+      "candidateOverBaseline": {
+        "requestMs": 0.939236044048661,
+        "processWallMs": 0.9783446802067914
+      },
+      "aggregation": "Equal-case geometric mean of per-case ratios of medians.",
+      "scope": "Actual old/native07 B2 versus new same-source candidate B2. Same prepared Base/runtime/providers/cache, one thread and CPU3. Each role must reproduce its own entire C oracle and the same full diagnostic. New C is supplied by the independently built candidate B1; this is backend consistency, not independent semantic qualification. Request excludes preparation; process wall includes startup/preparation/write/teardown. Generated-program execution and speed gates are separate."
+    },
+    "b1FullSelf": {
+      "baseline": {
+        "requestMs": 135465,
+        "processWallMs": 136172.86931886338
+      },
+      "candidate": {
+        "requestMs": 104821,
+        "processWallMs": 105531.40717791393
+      },
+      "samplesPerCompiler": 1,
+      "candidateOverBaseline": {
+        "requestMs": 0.7737865869412763,
+        "processWallMs": 0.7749811523086939
+      },
+      "inputSource": {
+        "file": "selfhost/build/phase98/origin-guard-source01/compiler.bend",
+        "sha256": "2a72bbdc3d757982d7dd4804d8a1312f9427e3b2822ed9d187424c2d9f4de051",
+        "bytes": 1754096
+      }
+    },
+    "b2FullSelf": {
+      "samplesPerCompiler": 2,
+      "inputSource": {
+        "file": "selfhost/build/phase98/origin-guard-source01/compiler.bend",
+        "sha256": "2a72bbdc3d757982d7dd4804d8a1312f9427e3b2822ed9d187424c2d9f4de051",
+        "bytes": 1754096
+      },
+      "metrics": {
+        "requestMs": {
+          "medians": {
+            "baseline": 150471.0,
+            "candidate": 140987.5
+          },
+          "ranges": {
+            "baseline": [
+              150417,
+              150525
+            ],
+            "candidate": [
+              140867,
+              141108
+            ]
+          },
+          "ratioOfMedians": 0.9369745665277694,
+          "pairedRatios": [
+            0.9374389636273044,
+            0.9365098359892832
+          ],
+          "medianPairedRatio": 0.9369743998082938
+        },
+        "processWallMs": {
+          "medians": {
+            "baseline": 151300.9896769654,
+            "candidate": 141862.35156294424
+          },
+          "ranges": {
+            "baseline": [
+              151248.270023847,
+              151353.7093300838
+            ],
+            "candidate": [
+              141783.69500883855,
+              141941.00811704993
+            ]
+          },
+          "ratioOfMedians": 0.9376168117989638,
+          "pairedRatios": [
+            0.937809907304578,
+            0.9374235816811909
+          ],
+          "medianPairedRatio": 0.9376167444928845
+        }
+      }
+    },
+    "clockScope": "Cached native request excludes preparation; process wall includes startup/preparation/write/teardown. Full-self comparisons compile the same candidate source with the same full diagnostic. B2 pairs check each producer's own full C oracle; B1 n=1 is a single comparison, with candidate C qualified separately."
+  },
+  "typescriptContext": {
+    "freshProcesses": 2,
+    "callsPerProcess": 1,
+    "mediansMs": {
+      "requestMs": 45359.3546165,
+      "importsMs": 24.904080999999998,
+      "processWallMs": 45591.76797559485
+    },
+    "nativeContext": [
+      {
+        "stage": "b1",
+        "receipt": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/origin-b1-self01/report.json",
+          "sha256": "85781c3e063cded51721d3bfbcf7134a6dc658c755741e00c0578da82c373920",
+          "bytes": 149312
+        },
+        "metricsMs": {
+          "requestMs": 104821,
+          "processWallMs": 105531.40717791393
+        },
+        "ratiosNativeOverTs": {
+          "requestMs": 2.31090148628063,
+          "processWallMs": 2.3147031111933325
+        }
+      },
+      {
+        "stage": "b2",
+        "receipt": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/origin-b2-self01/report.json",
+          "sha256": "bf03548e7f0c702f13a9f519c2635219ec654c5dba4ba1ea601dd7d4e7ee65a1",
+          "bytes": 155361
+        },
+        "metricsMs": {
+          "requestMs": 141614,
+          "processWallMs": 142440.21455198526
+        },
+        "ratiosNativeOverTs": {
+          "requestMs": 3.1220461842392755,
+          "processWallMs": 3.1242529271563484
+        }
+      }
+    ],
+    "clockScope": "Two fresh processes, one request each. Unchanged TypeScript reference loads/checks ordinary Base inside requestMs; native cached self-request excludes prepared-Base decoding and runtime preparation. Process wall includes startup, import, preparation, C write and teardown; Python authentication is outside clocks. Contextual ratio only, not a paired statistical speed claim or generated-program benchmark."
+  },
+  "correctness": {
+    "broad45": {
+      "compilations": 90,
+      "crossStageExactC": 45,
+      "historicalCChanged": 0,
+      "rejections": 0,
+      "programs": 45
+    },
+    "native69": {
+      "originalNative100": 100,
+      "eligiblePerRole": 69,
+      "excludedPerRole": 31,
+      "executionObservations": 138,
+      "rejectionObservations": 6
+    },
+    "scope": "Native-host B1/B2 only: original69 golden execution outputs and3rejections each.31 additional-import/provider fixtures remain untested. No full native100/frontend/JS-target or parallel/GPU conformance claim."
+  },
+  "sourceSize": {
+    "canonicalModules": 134,
+    "canonicalPhysicalLines": 34231,
+    "baseline": {
+      "physicalLines": 38711,
+      "bytes": 1759353
+    },
+    "candidate": {
+      "physicalLines": 38790,
+      "bytes": 1754096
+    },
+    "baselineCommit": "47ddee331da772bac36477168fc5db49611d1ede",
+    "canonicalUnchangedFromBaseline": true
+  },
+  "programRuntime": {
+    "artifactContinuity": {
+      "emissions": 45,
+      "exactC": 45,
+      "changedC": 0
+    },
+    "newRuntimeTiming": false,
+    "continuityScope": "Fresh final native B2 emission of all45 original Phase93 batch sources. Exact full C equality permits reuse of the original matched native product evidence; it is not a new timing measurement. Changed C requires fresh candidate build/execution and changed-subset timing before a runtime claim.",
+    "historicalTiming": {
+      "timingPhase": 93,
+      "qualifiedCases": 44,
+      "pairsPerCase": 3,
+      "nativeOverUpstreamCGeometricRatio": 1.1148400554084281,
+      "perCaseNativeOverUpstreamRatio": {
+        "complete-generic-row32": 0.9696969696969695,
+        "coverage-bst-32": 1.092,
+        "coverage-bst-64": 1.0839416058394162,
+        "coverage-closures-256": 0.3002392344497608,
+        "coverage-closures-64": 0.30617283950617286,
+        "coverage-expression-128": 1.614406779661017,
+        "coverage-expression-32": 1.6080402010050252,
+        "coverage-list-pipeline-128": 1.0725806451612903,
+        "coverage-list-pipeline-512": 1.0476190476190474,
+        "coverage-map-churn-128": 0.6356589147286822,
+        "coverage-map-churn-32": 0.6595744680851063,
+        "coverage-numeric-recurrence-1024": 1.004032258064516,
+        "coverage-numeric-recurrence-256": 1.0,
+        "coverage-record-aggregation-256": 0.7746478873239435,
+        "coverage-record-aggregation-64": 0.8044871794871795,
+        "coverage-unicode-text-16": 0.6925064599483204,
+        "coverage-unicode-text-64": 0.6813186813186813,
+        "editdist": 1.0,
+        "lexer": 1.5037313432835822,
+        "local-fold": 0.8333333333333333,
+        "local-pair": 1.0,
+        "mandelbrot": 1.236,
+        "raytrace": 1.5,
+        "scalar-region-8192": 1.036144578313253,
+        "symreg": 1.6812749003984064,
+        "test-evening-program": 1.5766129032258065,
+        "test-map-set-ops": 1.1593625498007967,
+        "test-morning-program": 1.060483870967742,
+        "test-rle-roundtrip": 2.604,
+        "tree-bitonic": 1.3479999999999999,
+        "variation-editdist-0-17": 1.0,
+        "variation-editdist-3-123": 1.004,
+        "variation-lexer-10-123": 1.3533834586466167,
+        "variation-lexer-6-17": 1.4779116465863453,
+        "variation-local-fold-128-0": 0.9800000000000001,
+        "variation-local-fold-8192-123": 0.8372881355932202,
+        "variation-mandelbrot-grid-4-7": 1.1138211382113818,
+        "variation-mandelbrot-grid-5-31": 1.0240963855421688,
+        "variation-ray-active-256-2240": 3.4497991967871484,
+        "variation-ray-active-64-2440": 3.492,
+        "variation-symreg-4-17": 1.6904761904761905,
+        "variation-symreg-7-123": 1.6772908366533863,
+        "variation-tree-bitonic-6-17": 1.3724696356275303,
+        "variation-tree-bitonic-9-123": 1.2926829268292683
+      },
+      "scope": "Historical own-native vs TypeScript-emitted C, normalized elapsed batch ms/repetitions; 44 qualified cases, zero-work control excluded. No Phase98 runtime timing or JS-target retest."
+    }
+  },
+  "receipts": {
+    "admission": {
+      "file": "selfhost/build/phase98/origin-admission01/report.json",
+      "sha256": "e6350b0f69a85ac82a136e97f3e74f390b1993ef51b561006cd104034f0f1657",
+      "bytes": 560600,
+      "compilerSources": [
+        {
+          "file": "selfhost/build/phase98/origin-guard-source01/compiler.bend",
+          "sha256": "2a72bbdc3d757982d7dd4804d8a1312f9427e3b2822ed9d187424c2d9f4de051",
+          "bytes": 1754096
+        }
+      ]
+    },
+    "b1Screen": {
+      "file": "selfhost/build/phase98/origin-b1-screen01/report.json",
+      "sha256": "bf6ff5eb96c11c6406c12b7a9bcfc5c1c3b12b1d307703cd5cfdecc2b66741e8",
+      "bytes": 655497,
+      "compilerSources": [
+        {
+          "file": "selfhost/build/phase98/origin-guard-source01/compiler.bend",
+          "sha256": "2a72bbdc3d757982d7dd4804d8a1312f9427e3b2822ed9d187424c2d9f4de051",
+          "bytes": 1754096
+        },
+        {
+          "file": "selfhost/build/phase92/upstream-checked01/compiler.bend",
+          "sha256": "d04ad79cf08c019b509cfbbd4be2b16ae9e4af189767715d12e0645b9eee8097",
+          "bytes": 1759353
+        }
+      ]
+    },
+    "b2Screen": {
+      "file": "selfhost/build/phase98/origin-b2-screen01/report.json",
+      "sha256": "e1e3cd8d9f1179c05721868a70e13cfea7ca34f45108d7376dadddc3d9717e24",
+      "bytes": 381171,
+      "compilerSources": [
+        {
+          "file": "selfhost/build/phase98/origin-guard-source01/compiler.bend",
+          "sha256": "2a72bbdc3d757982d7dd4804d8a1312f9427e3b2822ed9d187424c2d9f4de051",
+          "bytes": 1754096
+        },
+        {
+          "file": "selfhost/build/phase92/upstream-checked01/compiler.bend",
+          "sha256": "d04ad79cf08c019b509cfbbd4be2b16ae9e4af189767715d12e0645b9eee8097",
+          "bytes": 1759353
+        }
+      ]
+    },
+    "b1SelfBaseline": {
+      "file": "selfhost/build/phase98/origin-baseline-b1-reference01/report.json",
+      "sha256": "b450fe7516454189cfe11b15f56b31611467d2a79e7406d7fb5b5c9fe9215cb4",
+      "bytes": 120120,
+      "compilerSources": [
+        {
+          "file": "selfhost/build/phase92/upstream-checked01/compiler.bend",
+          "sha256": "d04ad79cf08c019b509cfbbd4be2b16ae9e4af189767715d12e0645b9eee8097",
+          "bytes": 1759353
+        }
+      ],
+      "inputSource": {
+        "file": "selfhost/build/phase98/origin-guard-source01/compiler.bend",
+        "sha256": "2a72bbdc3d757982d7dd4804d8a1312f9427e3b2822ed9d187424c2d9f4de051",
+        "bytes": 1754096
+      },
+      "diagnostic": {
+        "file": "selfhost/build/phase98/origin-baseline-b1-reference01/execution/diagnostic.txt",
+        "sha256": "710c919529977c927f2093aa4eb77be72bd980968e95c657dd05629c5dd24446",
+        "bytes": 70388
+      }
+    },
+    "b1SelfCandidate": {
+      "file": "selfhost/build/phase98/origin-b1-self01/report.json",
+      "sha256": "85781c3e063cded51721d3bfbcf7134a6dc658c755741e00c0578da82c373920",
+      "bytes": 149312,
+      "compilerSources": [
+        {
+          "file": "selfhost/build/phase98/origin-guard-source01/compiler.bend",
+          "sha256": "2a72bbdc3d757982d7dd4804d8a1312f9427e3b2822ed9d187424c2d9f4de051",
+          "bytes": 1754096
+        }
+      ],
+      "inputSource": {
+        "file": "selfhost/build/phase98/origin-guard-source01/compiler.bend",
+        "sha256": "2a72bbdc3d757982d7dd4804d8a1312f9427e3b2822ed9d187424c2d9f4de051",
+        "bytes": 1754096
+      },
+      "diagnostic": {
+        "file": "selfhost/build/phase98/origin-b1-self01/execution/diagnostic.txt",
+        "sha256": "710c919529977c927f2093aa4eb77be72bd980968e95c657dd05629c5dd24446",
+        "bytes": 70388
+      }
+    },
+    "b2SelfPairs": {
+      "file": "selfhost/build/phase98/origin-b2-self-pairs01/report.json",
+      "sha256": "ae828f697e9932d8c5fdf3968e72650fa353436e0dc724fbe6b033a04dd906aa",
+      "bytes": 475403,
+      "compilerSources": [
+        {
+          "file": "selfhost/build/phase98/origin-guard-source01/compiler.bend",
+          "sha256": "2a72bbdc3d757982d7dd4804d8a1312f9427e3b2822ed9d187424c2d9f4de051",
+          "bytes": 1754096
+        },
+        {
+          "file": "selfhost/build/phase92/upstream-checked01/compiler.bend",
+          "sha256": "d04ad79cf08c019b509cfbbd4be2b16ae9e4af189767715d12e0645b9eee8097",
+          "bytes": 1759353
+        }
+      ]
+    },
+    "tsContext": {
+      "file": "selfhost/build/phase98/origin-ts-self-plan01/report.json",
+      "sha256": "bcb50591d981e1278ce089bc72f0046409f613cf0f1ec13a1c47c7330df3676e",
+      "bytes": 11328,
+      "compilerSources": [
+        {
+          "file": "selfhost/build/phase98/origin-guard-source01/compiler.bend",
+          "sha256": "2a72bbdc3d757982d7dd4804d8a1312f9427e3b2822ed9d187424c2d9f4de051",
+          "bytes": 1754096
+        }
+      ]
+    },
+    "tsNative-b1": {
+      "file": "selfhost/build/phase98/origin-b1-self01/report.json",
+      "sha256": "85781c3e063cded51721d3bfbcf7134a6dc658c755741e00c0578da82c373920",
+      "bytes": 149312,
+      "compilerSources": [
+        {
+          "file": "selfhost/build/phase98/origin-guard-source01/compiler.bend",
+          "sha256": "2a72bbdc3d757982d7dd4804d8a1312f9427e3b2822ed9d187424c2d9f4de051",
+          "bytes": 1754096
+        }
+      ]
+    },
+    "tsNative-b2": {
+      "file": "selfhost/build/phase98/origin-b2-self01/report.json",
+      "sha256": "bf03548e7f0c702f13a9f519c2635219ec654c5dba4ba1ea601dd7d4e7ee65a1",
+      "bytes": 155361,
+      "compilerSources": [
+        {
+          "file": "selfhost/build/phase98/origin-guard-source01/compiler.bend",
+          "sha256": "2a72bbdc3d757982d7dd4804d8a1312f9427e3b2822ed9d187424c2d9f4de051",
+          "bytes": 1754096
+        }
+      ]
+    },
+    "broad45": {
+      "file": "selfhost/build/phase98/origin-broad45-native01/report.json",
+      "sha256": "9a8f3e885c884bfe9984fb7eecea44f1588dfe71860b01c6855ea552da79b0da",
+      "bytes": 948434,
+      "compilerSources": [
+        {
+          "file": "selfhost/build/phase98/origin-guard-source01/compiler.bend",
+          "sha256": "2a72bbdc3d757982d7dd4804d8a1312f9427e3b2822ed9d187424c2d9f4de051",
+          "bytes": 1754096
+        }
+      ]
+    },
+    "native69": {
+      "file": "selfhost/build/phase98/origin-conformance02/collected.json",
+      "sha256": "f002fc4e810221026d42f83f5e97f2a4e197251d76cd4ab9429c9d27978a9de7",
+      "bytes": 233444,
+      "compilerSources": [
+        {
+          "file": "selfhost/build/phase98/origin-guard-source01/compiler.bend",
+          "sha256": "2a72bbdc3d757982d7dd4804d8a1312f9427e3b2822ed9d187424c2d9f4de051",
+          "bytes": 1754096
+        }
+      ]
+    },
+    "continuity": {
+      "file": "selfhost/build/phase98/origin-batch-continuity01/report.json",
+      "sha256": "4d251161b89084e5b430bcf5fa179cecf9d91deae9bad4e67dff7e8a38f7c267",
+      "bytes": 420176,
+      "compilerSources": [
+        {
+          "file": "selfhost/build/phase98/origin-guard-source01/compiler.bend",
+          "sha256": "2a72bbdc3d757982d7dd4804d8a1312f9427e3b2822ed9d187424c2d9f4de051",
+          "bytes": 1754096
+        }
+      ]
+    },
+    "sourceSize": {
+      "file": "selfhost/build/phase98/source-size01.json",
+      "sha256": "16a0b7f45be63cb8a302f3558affbe4565fdcb3dc47609f38ce0b581162a507e",
+      "bytes": 25934,
+      "compilerSources": [
+        {
+          "file": "selfhost/build/phase98/origin-guard-source01/compiler.bend",
+          "sha256": "2a72bbdc3d757982d7dd4804d8a1312f9427e3b2822ed9d187424c2d9f4de051",
+          "bytes": 1754096
+        },
+        {
+          "file": "selfhost/build/phase92/upstream-checked01/compiler.bend",
+          "sha256": "d04ad79cf08c019b509cfbbd4be2b16ae9e4af189767715d12e0645b9eee8097",
+          "bytes": 1759353
+        }
+      ]
+    },
+    "measure-pilot01": {
+      "file": "selfhost/build/phase93/measure-pilot01/report.json",
+      "sha256": "fea76ad35c714b6bd2e935e965596501033faf1b4925bbde2dea0fe1755663ce",
+      "bytes": 89146,
+      "compilerSources": [
+        {
+          "file": "selfhost/build/phase92/upstream-checked01/compiler.bend",
+          "sha256": "d04ad79cf08c019b509cfbbd4be2b16ae9e4af189767715d12e0645b9eee8097",
+          "bytes": 1759353
+        }
+      ]
+    },
+    "measure-pilot01-acquisition": {
+      "file": "selfhost/build/phase93/pilot02/report.json",
+      "sha256": "2eda9b89c80ddb2600a3bc9215141b4304e22d996d66c5867b91a350caeacc3b",
+      "bytes": 524841,
+      "compilerSources": [
+        {
+          "file": "selfhost/build/phase92/upstream-checked01/compiler.bend",
+          "sha256": "d04ad79cf08c019b509cfbbd4be2b16ae9e4af189767715d12e0645b9eee8097",
+          "bytes": 1759353
+        }
+      ]
+    },
+    "measure-broad01": {
+      "file": "selfhost/build/phase93/measure-broad01/report.json",
+      "sha256": "cf4d00bb61a7b88176763419457481c8153667cae945467bf8774852bd107698",
+      "bytes": 678854,
+      "compilerSources": [
+        {
+          "file": "selfhost/build/phase92/upstream-checked01/compiler.bend",
+          "sha256": "d04ad79cf08c019b509cfbbd4be2b16ae9e4af189767715d12e0645b9eee8097",
+          "bytes": 1759353
+        }
+      ]
+    },
+    "measure-broad01-acquisition": {
+      "file": "selfhost/build/phase93/broad01/report.json",
+      "sha256": "8e24a1539c5723923bbb52e7ffc4a087bbca8a8b4d0d452cd65a5fe8dc0d2277",
+      "bytes": 1191564,
+      "compilerSources": [
+        {
+          "file": "selfhost/build/phase92/upstream-checked01/compiler.bend",
+          "sha256": "d04ad79cf08c019b509cfbbd4be2b16ae9e4af189767715d12e0645b9eee8097",
+          "bytes": 1759353
+        }
+      ]
+    }
+  },
+  "visualization": {
+    "file": "implementation/phase98/request-times.svg",
+    "sha256": "8c8248015f3c36e76b15c95e8466f76af0148ee511e2936edd942174fc56efff",
+    "bytes": 1366
+  }
+}

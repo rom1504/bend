@@ -12,6 +12,7 @@ import time
 def main():
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument('--root', type=Path, default=Path('selfhost/build/phase98'))
+    p.add_argument('--extra-root', type=Path, action='append', default=[])
     p.add_argument('--out', type=Path, required=True)
     a = p.parse_args()
     assert not a.out.exists()
@@ -20,7 +21,9 @@ def main():
     rows, intervals, missing = [], [], []
     groups = defaultdict(lambda: dict(processes=0, recordedSeconds=0, peakRssBytes=0))
     seen = set()
-    for path in sorted(a.root.rglob('process.json')):
+    roots = [a.root, *a.extra_root]
+    paths = {path for root in roots for path in root.rglob('process.json')}
+    for path in sorted(paths):
         data = path.read_bytes()
         r = json.loads(data)
         if r.get('started', 0) < start:
@@ -37,7 +40,11 @@ def main():
             missing.append(str(path))
             continue
         intervals.append((max(start, r['started']), min(now, r['finished'])))
-        group = groups[path.relative_to(a.root).parts[0]]
+        owner = next(root for root in roots if path.is_relative_to(root))
+        label = path.relative_to(owner).parts[0]
+        if owner != a.root:
+            label = str(owner) + '/' + label
+        group = groups[label]
         group['processes'] += 1
         group['recordedSeconds'] += r['wallSeconds']
         group['peakRssBytes'] = max(group['peakRssBytes'], r['peakTreeRssBytes'])
@@ -49,6 +56,8 @@ def main():
             merged.append([begin, end])
     report = dict(kind='phase98-retained-execution-accounting', complete=True,
         generated=now, phaseStart=start, elapsedSeconds=now-start,
+        roots=[str(root) for root in roots],
+        method=dict(file=__file__, sha256=hashlib.sha256(Path(__file__).read_bytes()).hexdigest()),
         endedGuardIntervals=len(intervals), missingEndRecords=missing,
         recordedGuardSeconds=sum(r['wallSeconds'] or 0 for r in rows),
         unionGuardSeconds=sum(end-begin for begin, end in merged),

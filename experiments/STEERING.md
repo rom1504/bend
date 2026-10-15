@@ -1,4 +1,46 @@
-# Active frontier: Phase97 usefulness experiments complete
+# Active frontier: Phase98 native optimization and useful laws
+
+[Report](../implementation/phase98/README.md) ·
+[Machine-readable results](../implementation/phase98/results.json) ·
+[Native usage](../docs/self_hosted/NATIVE_PHASE98.md) ·
+[Next cycle](../implementation/phase98/next-cycle.md).
+
+The selected native profile combines held String equality, fused tag comparisons,
+scoped observer permission and a lazy ancestry refusal that repairs divergence.
+Native B1 full self-compilation falls 135.465→104.821s (one comparison); native B2
+paired medians fall 150.471→140.988s. Four balanced six-source screen rounds give
+request ratios 0.81067 and 0.93924 respectively. The native entry defaults to B2;
+public CLI, complete self-C and actual missing executable restoration pass.
+
+Both stages pass 69 native conformance cases and three exact rejections; 31 native
+exclusions remain. Broad45 behavior passes. All 45 Phase93 runtime-batch C products
+are unchanged, preserving the prior 44 measurable-point 1.115× upstream-C result
+without claiming a new timing campaign. Canonical source and installed JS remain
+unchanged. The selected native profile adds 79 lines; the +525-line neutral dispatch
+rewrite and unmeasured planning-cache/redirect variants are excluded.
+
+Thirteen distinct accepted statements (eight public/five support) connect actual
+selected helpers to frozen contracts. The wider historical Phase98 catalog has
+56 names, not 56 final-image obligations. Independent bad-helper challenges and
+a valid-refactor proof repair demonstrate useful contracts with explicit limits:
+the stronger internal-result law catches a fault outside the public-Bool finite
+suite's scope; this is not evidence of a missed identical public contract. The
+actual eager-recursion failure required native controls and physical profiling.
+
+Fresh complete zero-loss B1/B2 profiles show more absolute ownership work in B2
+despite a lower share. Exact append/reconstruction mapping rises 4.86→13.44 sampled
+CPU seconds; kc cleanup is roughly unchanged. Next tests should recover scalar
+and continuation information, borrowed tag projection and sound equality boundary
+ownership before assuming another broad source rewrite will help. Keep runtime
+atomic-protocol changes separate. Frozen old failures and hypotheses remain.
+
+The complete conformance loop now checks historical provenance per suite and
+actual execution inputs per case: B1 finishes 68.63s and B2 finishes 79.69s, with
+unchanged fixtures, oracles and guards. All compiler/program targets remain
+root-owned, serial and guarded; collaborators prepare/review source and data.
+No PR comment was posted.
+
+# Previous frontier: Phase97 usefulness experiments complete
 
 [Report](../implementation/phase97/README.md) ·
 [Evidence/methods](../selfhost/tools/laws/phase97/README.md) ·

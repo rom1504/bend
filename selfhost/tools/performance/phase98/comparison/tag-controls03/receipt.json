@@ -1,0 +1,54 @@
+{
+  "kind": "phase98-fused-tag-controls-public-held-equality",
+  "complete": true,
+  "targetsRun": false,
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/held-source02/compiler.bend",
+      "bytes": 1759452,
+      "sha256": "5debb63d0c3f2fdd2b096cff9fd30e6770c06438a26216e6daa3af9569b26c46"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/core/term.bend",
+      "bytes": 19671,
+      "sha256": "d75234683496e33fcb59cd3598979245700733236d9326025d298f9c33ef33d3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase98/comparison/tag-helpers03.bend",
+      "bytes": 676,
+      "sha256": "ae1d6d7b02938653b47c842f134a969e4cccedb26c6120f9e365d3714e934099"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase98/comparison/tag-controls.tail.bend",
+      "bytes": 1444,
+      "sha256": "336c2738b976aeea0ee07e0ebb54438a10efbcd2bbf13894130a6d61449bb1ce"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase98/comparison/prepare-tag-controls-v3.py",
+      "bytes": 2540,
+      "sha256": "3ce6dadeceb7582763d3549ed89920ae00c039cd65b3bd218e9ae9c8748b79a3"
+    }
+  ],
+  "outputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase98/comparison/tag-controls03/candidate.bend",
+      "bytes": 3397,
+      "sha256": "ac5f9cdf39d31a7166fe7352afb5e5433c4a95e174261e7b98be25a19b69ec81"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase98/comparison/tag-controls03/baseline.bend",
+      "bytes": 3419,
+      "sha256": "9fdf056f2cd606837230ca1133555584fec08f885c0ca693d78e0d6528c1d028"
+    }
+  ],
+  "cases": 96,
+  "reference": "Exact production tg body renamed; exact D04 safe recursive walker plus proved held-simple wrapper. Native full products include originalterm/key and bothBoolean observations.",
+  "scopes": "All3termconstructors,completechildren/removals/spans/quantityflag/literalpayload,empty/arbitrarytags,Unicode,prefix/longsuffixcases. All branches use the proved public held equality; no numeric literal recognizer or new carrier type. No unbounded proof or native lifetime proof.",
+  "extraction": {
+    "termTypesExact": true,
+    "tagBodyExactExceptName": true,
+    "d04WalkerExact": true,
+    "heldSimpleWrapperExact": true
+  },
+  "oracle": "Baseline emits reference twice; candidate emits reference and newfusedobserver. Require whole stdout equality across actual native baseline/candidate, then inspect all96Boolresults and complete preservedvalues. No target run by preparer."
+}

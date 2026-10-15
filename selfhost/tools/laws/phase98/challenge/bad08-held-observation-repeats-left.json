@@ -1,0 +1,36 @@
+{
+  "id": "bad08-held-observation-repeats-left",
+  "file": "selfhost/tools/performance/phase98/comparison/held-helpers01.bend",
+  "function": "p98_eq_observe",
+  "before": "  P98EqHeld{p98_eq_walk(a, b, True{}), a, b}",
+  "after": "  P98EqHeld{p98_eq_walk(a, b, True{}), a, a}",
+  "expectedBehavior": "The complete observation must return the original left and right values, not two copies of left. This faults the returned-helper-value contract; p98_string_eq may still return the correct Bool, so no whole-compiler semantic regression is claimed.",
+  "witness": {
+    "expression": "p98_eq_observe(\"left\", \"right\")",
+    "returnType": "P98EqHeld",
+    "baselineValueBend": "P98EqHeld{False{}, \"left\", \"right\"}",
+    "challengeValueBend": "P98EqHeld{False{}, \"left\", \"left\"}",
+    "source": {
+      "path": "selfhost/tools/laws/phase98/challenge/bad08-held-observation-repeats-left.witness.bend",
+      "bytes": 360,
+      "sha256": "7a5e715d603cdc36afae173143d8b3b5759087054553dc8f5452b6955c9cf191"
+    }
+  },
+  "schema": "phase98-independent-challenge-v1",
+  "kind": "bad",
+  "source": {
+    "path": "selfhost/tools/performance/phase98/comparison/held-helpers01.bend",
+    "bytes": 965,
+    "sha256": "721309feb98493af253d38364b34053603f556643c34e931fa0be363664616d9"
+  },
+  "expectedOccurrences": 1,
+  "line": 21,
+  "changedSourceBytes": 965,
+  "changedSourceSha256": "c0a718999404bc8fa032387047f08e1c54f0d6729c003084d24cb3e0aef40c8f",
+  "admission": "predicted well-typed; root must check",
+  "targetsRun": false,
+  "provenance": {
+    "classification": "synthetic-semantic-fault",
+    "selection": "Candidate helper source and intended interface only; Phase98 law bodies, finite cases, oracles and results not inspected before freeze."
+  }
+}

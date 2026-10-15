@@ -1,0 +1,98 @@
+# Phase98 production-connected proof work
+
+The accepted comparison proof imports exact safe declarations extracted from the
+actual D04 compiler and the held-root candidate. Its public equality ranges over
+all finite Bend `String` values, including arbitrary character codepoints. It
+does not assume ASCII, normalization, a bounded string length, or an opaque
+comparison callback.
+
+Current accepted evidence is
+[`held-proof-check01/report.json`](../../build/phase98/held-proof-check01/report.json):
+all five theorem bodies passed source checking, safe BendTT emission, and the
+independent pinned BendTT kernel. The inventory contains no opaque definitions.
+The deliberately unequal kernel control was rejected separately.
+
+| Public law | Exact subject |
+| --- | --- |
+| `consuming_equal_specification` | Actual D04 `p88_string_eq` equals recursive structural equality using actual Base `Char.is_eq`. |
+| `held_observation_complete` | Actual candidate `p98_eq_observe` returns the exact comparison result and both complete original strings in order. |
+| `held_comparison_preserves` | Actual candidate public `p88_string_eq` equals the D04 function for every pair of strings. |
+
+`consuming_equal_invariant` and `held_walk_equal` are support lemmas, not two
+additional public contracts. The first includes an arbitrary carried comparison
+flag, so a previous mismatch cannot disappear at simultaneous end of input.
+
+[`comparison/prepare-held-exact.py`](comparison/prepare-held-exact.py) authenticates
+the baseline/candidate source and exact forward replay, then extracts declaration
+bytes without removing `@unsafe` or renaming functions. The only added text is
+`import Base`. The accepted source preparation is
+[`held-proof-source02/manifest.json`](../../build/phase98/held-proof-source02/manifest.json).
+The earlier renamed-walker package is retained but is not this acceptance basis.
+
+Additional accepted packages and the remaining prepared attempt:
+
+- [`dispatch/prepare.py`](dispatch/prepare.py): four full-enum selector laws over
+  arbitrary tags and 33 explicitly counted support lemmas. The straight-line
+  specification uses the original caller's ordered conditions; exact candidate
+  stage bodies are extracted separately. The
+  [offline original-condition audit](dispatch/original-condition-audit.json)
+  verifies all 33 conditions against the actual pre-change D04 declarations.
+  All 37 laws independently passed in
+  [`dispatch-proof-check01`](../../build/phase98/dispatch-proof-check01/report.json),
+  with no opaque definitions.
+- [`comparison/literal.bend`](comparison/literal.bend): initial exact recognizer
+  equivalence attempt for empty, `Var`, and a Unicode literal. The initial proof
+  failed because its catch-all pattern did not normalize the residual suffix;
+  see [`literal-proof-check01`](../../build/phase98/literal-proof-check01/report.json).
+  No universal recognizer acceptance is claimed. The untested
+  `literal-bits.bend` support draft is not in any accepted closure. The current
+  tag candidate avoids numeric patterns, so this work is lower priority.
+- [`comparison/held-simple.bend`](comparison/held-simple.bend): legitimate removal
+  of the intermediate carrier type, keeping the public Bool equality statement
+  byte-identical. The complete-observation helper theorem has no new subject
+  after that helper is removed; its retirement is explicit rather than a weaker
+  replacement contract. All four laws (two public and two support) independently
+  passed in
+  [`held-simple-proof-check01`](../../build/phase98/held-simple-proof-check01/report.json).
+- [`comparison/tag.bend`](comparison/tag.bend): arbitrary-term/key preservation
+  for the exact fused tag helper, composed with the unchanged accepted held
+  comparison proof. The reference uses actual `tg` and the original D04
+  comparator. All six laws (one new public, one new support, four inherited)
+  independently passed in
+  [`tag-proof-check01`](../../build/phase98/tag-proof-check01/report.json).
+  Exact `KTerm` and `tg` are extracted from the actual compiler, with only the
+  leading unsafe annotation removed from the total observer for safe checking.
+- [`prepare-challenges.py`](prepare-challenges.py): candidate-only snapshots of
+  independently selected semantic faults, each with law-free helper admission
+  before unchanged-law rejection. It also records the independently chosen
+  equivalent codepoint refactor and a support-proof maintenance exercise.
+
+Three bad held helpers were admitted independently of laws, then rejected by
+unchanged proofs. The codepoint refactor was admitted but needed one support
+proof repair; its second repair independently passed all original five laws in
+[`held-maintenance-check02`](../../build/phase98/held-maintenance-check02/report.json).
+The first repair's invalid match order is retained. A frozen proof is a
+certificate requiring maintenance, not a classifier that rejects only wrong
+edits. The independent fault witnesses and the repaired valid refactor make that
+distinction observable.
+
+The repeated-left observation fault escaped the old 1,444-pair finite suite, but
+the old suite checks public comparison behavior while this law also constrains
+an internal complete observation. The final Bool can remain correct after the
+extra fields are discarded. This is additional contract coverage, not evidence
+that a public compiler regression escaped the finite suite.
+
+The independent dispatch fault that drops `Efq` was likewise admitted alone and
+rejected by the unchanged selector laws in
+[`dispatch-formal-check01`](../../build/phase98/dispatch-formal-check01/report.json).
+It is reported separately from kernel acceptance of the positive package.
+
+The proof boundary stops at safe Bend value semantics. Generated C, retained
+aliases, RC operations, unsafe caller branches, full compiler termination and
+whole-compiler correctness require other evidence. Exact complete-value controls
+and inspected C are complementary evidence, not consequences of these proofs.
+
+Root runs all targets serially. Preparation scripts only read, authenticate and
+write source/receipt data. Failed preparation methods are preserved separately;
+they are not semantic negative controls. The implementation account is
+[`implementation/phase98/proofs.md`](../../../implementation/phase98/proofs.md).

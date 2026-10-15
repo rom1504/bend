@@ -1,0 +1,40 @@
+{
+  "kind": "phase98-independent-challenge-preparation-failure",
+  "complete": false,
+  "targetsRun": false,
+  "recordedAt": "2026-10-15T20:13:56.824399+00:00",
+  "method": {
+    "path": "selfhost/tools/laws/phase98/challenge/freeze.py",
+    "bytes": 8831,
+    "sha256": "297ad39d3268afce3125725d0d0dd28c325b12d852e6165c170569eba2fc201b"
+  },
+  "error": "AssertionError: good01-reconstruct-literal-exactly; short replacement span occurs in more than one function",
+  "partialRecipeFiles": [
+    {
+      "path": "selfhost/tools/laws/phase98/challenge/bad01-logical-literal-is-constructor.json",
+      "bytes": 1934,
+      "sha256": "36e3d9f2759487d8f26efa5191d17dc9d44bd9267c923866dbad7fe9b5609579"
+    },
+    {
+      "path": "selfhost/tools/laws/phase98/challenge/bad02-lambda-observation-loses-variant.json",
+      "bytes": 2086,
+      "sha256": "5b78ca1575f908aa2962c2d509baec065ecd78368830d9c02b76de4251e8b8c2"
+    },
+    {
+      "path": "selfhost/tools/laws/phase98/challenge/bad03-equality-forgets-last-mismatch.json",
+      "bytes": 1729,
+      "sha256": "b452eb37af4c6ff57379b1e4d9ed9c20744cc0d6ceafb53c9865e34c63dcee8b"
+    },
+    {
+      "path": "selfhost/tools/laws/phase98/challenge/bad04-order-forgets-earlier-mismatch.json",
+      "bytes": 1590,
+      "sha256": "b6b8a4add2ee5917624fa991922d6726f7fc2960afe783919be3da8ac734176a"
+    },
+    {
+      "path": "selfhost/tools/laws/phase98/challenge/bad05-equality-truncates-characters.json",
+      "bytes": 1697,
+      "sha256": "28f28a20b8103ba76a5e37bd585f70d5ef47bca0446800c64ae29b60fdef9a8c"
+    }
+  ],
+  "repair": "Successor scopes only the equivalent literal reconstruction to complete k_with_children body. Existing five bad recipes/witnesses must remain byte-identical; new laws/cases/outcomes remain unread."
+}

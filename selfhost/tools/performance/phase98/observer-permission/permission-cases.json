@@ -1,0 +1,97 @@
+{
+  "kind": "phase98-observer-permission-finite-inputs",
+  "targetsRun": false,
+  "scope": "Exact helper classification on explicit compiler values, not hostile-caller provenance authentication or well-typed whole-program examples.",
+  "cases": [
+    {
+      "id": "trusted-IO-args",
+      "expression": "no_effect_definitions([KDef{\"IO.args\", \"Def\", 0, 0, atom(\"Typ\"), atom(\"Foreign\"), Nil{}, True{}, False{}}], [\"IO.args\"])",
+      "expected": true
+    },
+    {
+      "id": "trusted-IO-print",
+      "expression": "no_effect_definitions([KDef{\"IO.print\", \"Def\", 0, 0, atom(\"Typ\"), atom(\"Foreign\"), Nil{}, True{}, False{}}], [\"IO.print\"])",
+      "expected": true
+    },
+    {
+      "id": "trusted-IO-now",
+      "expression": "no_effect_definitions([KDef{\"IO.now\", \"Def\", 0, 0, atom(\"Typ\"), atom(\"Foreign\"), Nil{}, True{}, False{}}], [\"IO.now\"])",
+      "expected": true
+    },
+    {
+      "id": "trusted-IO-print_err",
+      "expression": "no_effect_definitions([KDef{\"IO.print_err\", \"Def\", 0, 0, atom(\"Typ\"), atom(\"Foreign\"), Nil{}, True{}, False{}}], [\"IO.print_err\"])",
+      "expected": true
+    },
+    {
+      "id": "trusted-File-open",
+      "expression": "no_effect_definitions([KDef{\"File.open\", \"Def\", 0, 0, atom(\"Typ\"), atom(\"Foreign\"), Nil{}, True{}, False{}}], [\"File.open\"])",
+      "expected": true
+    },
+    {
+      "id": "trusted-File-read",
+      "expression": "no_effect_definitions([KDef{\"File.read\", \"Def\", 0, 0, atom(\"Typ\"), atom(\"Foreign\"), Nil{}, True{}, False{}}], [\"File.read\"])",
+      "expected": true
+    },
+    {
+      "id": "trusted-File-size",
+      "expression": "no_effect_definitions([KDef{\"File.size\", \"Def\", 0, 0, atom(\"Typ\"), atom(\"Foreign\"), Nil{}, True{}, False{}}], [\"File.size\"])",
+      "expected": true
+    },
+    {
+      "id": "trusted-File-write",
+      "expression": "no_effect_definitions([KDef{\"File.write\", \"Def\", 0, 0, atom(\"Typ\"), atom(\"Foreign\"), Nil{}, True{}, False{}}], [\"File.write\"])",
+      "expected": true
+    },
+    {
+      "id": "trusted-File-close",
+      "expression": "no_effect_definitions([KDef{\"File.close\", \"Def\", 0, 0, atom(\"Typ\"), atom(\"Foreign\"), Nil{}, True{}, False{}}], [\"File.close\"])",
+      "expected": true
+    },
+    {
+      "id": "untrusted-spelling",
+      "expression": "no_effect_definitions([KDef{\"File.read\", \"Def\", 0, 0, atom(\"Typ\"), atom(\"Foreign\"), Nil{}, False{}, False{}}], [\"File.read\"])",
+      "expected": false
+    },
+    {
+      "id": "unknown-foreign",
+      "expression": "no_effect_definitions([KDef{\"outside.echo\", \"Def\", 0, 0, atom(\"Typ\"), atom(\"Foreign\"), Nil{}, False{}, False{}}], [\"outside.echo\"])",
+      "expected": false
+    },
+    {
+      "id": "trusted-unlisted-api",
+      "expression": "no_effect_definitions([KDef{\"File.read_bytes\", \"Def\", 0, 0, atom(\"Typ\"), atom(\"Foreign\"), Nil{}, True{}, False{}}], [\"File.read_bytes\"])",
+      "expected": false
+    },
+    {
+      "id": "unfilled-known-provider",
+      "expression": "no_effect_definitions([KDef{\"IO.print\", \"Def\", 0, 0, atom(\"Typ\"), atom(\"Absent\"), Nil{}, True{}, False{}}], [\"IO.print\"])",
+      "expected": false
+    },
+    {
+      "id": "unfilled-user",
+      "expression": "no_effect_definitions([KDef{\"missing_user\", \"Def\", 0, 0, atom(\"Typ\"), atom(\"Absent\"), Nil{}, False{}, False{}}], [\"missing_user\"])",
+      "expected": false
+    },
+    {
+      "id": "rewrite-refused",
+      "expression": "no_effect_definitions([KDef{\"user\", \"Def\", 0, 0, atom(\"Typ\"), atom(\"Rwt\"), Nil{}, False{}, False{}}], [\"user\"])",
+      "expected": false
+    },
+    {
+      "id": "generic-array-independent",
+      "expression": "no_effect_definitions([KDef{\"user\", \"Def\", 0, 0, atom(\"Typ\"), kt(\"Ctr\", \"ALeaf\", 0, 0, [atom(\"Lit\")]), Nil{}, False{}, False{}}], [\"user\"])",
+      "expected": true
+    },
+    {
+      "id": "filled-user",
+      "expression": "no_effect_definitions([KDef{\"user\", \"Def\", 0, 0, atom(\"Typ\"), atom(\"Lit\"), Nil{}, False{}, False{}}], [\"user\"])",
+      "expected": true
+    },
+    {
+      "id": "missing-name",
+      "expression": "no_effect_definitions(Nil{}, [\"absent\"])",
+      "expected": false
+    }
+  ]
+}

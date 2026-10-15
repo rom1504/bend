@@ -1,0 +1,6666 @@
+{
+  "kind": "phase98-upstream-generated-dispatch-static-counts",
+  "targetsRun": false,
+  "method": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase98/dispatch/code-shapes.py",
+    "bytes": 2547,
+    "sha256": "8d8677977f44f85c1c10937d4f2a712d59d2527276f4d204a325cbf6d82ebcce"
+  },
+  "baseline": {
+    "c": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/upstream-checked01/compiler.c",
+      "bytes": 17764676,
+      "sha256": "d9c6fe2d0030e648eeeb6ada9c06cd054480eefae6e53e97d54caf866a37365d"
+    },
+    "tagObserver": {
+      "symbol": "spin_1",
+      "line": 14174,
+      "body": "INLINE Term spin_1(Env e, THR Term* o, Term r0) {\n  u32 wpoll = 0;\n  Term _t_0 = r0;\n  WL_SPIN\n    if (term_aux(_t_0) == CID_KTERM) {\n      Term _fb_0[8];\n      u64 _sp_0 = ctr_take(e, _t_0, 8, _fb_0);\n      Term _f_0 = _fb_0[0];\n      Term _f_1 = _fb_0[1];\n      u32 _f_2 = _fb_0[2];\n      u32 _f_3 = _fb_0[3];\n      Term _f_4 = _fb_0[4];\n      Term _f_5 = _fb_0[5];\n      u32 _f_6 = _fb_0[6];\n      u32 _f_7 = _fb_0[7];\n      term_sink(e, _f_1);\n      term_sink(e, _f_4);\n      term_sink(e, _f_5);\n      o[0] = _f_0;\n      spare_free(e, cls_fit(8), _sp_0);\n    } else if (term_aux(_t_0) == CID_KLAMBDA) {\n      Term _fb_1[8];\n      u64 _sp_1 = ctr_take(e, _t_0, 8, _fb_1);\n      Term _f_8 = _fb_1[0];\n      u32 _f_9 = _fb_1[1];\n      u32 _f_10 = _fb_1[2];\n      Term _f_11 = _fb_1[3];\n      Term _f_12 = _fb_1[4];\n      u32 _f_13 = _fb_1[5];\n      u32 _f_14 = _fb_1[6];\n      u32 _f_15 = _fb_1[7];\n      term_sink(e, _f_8);\n      term_sink(e, _f_11);\n      term_sink(e, _f_12);\n      o[0] = term_ctr(CID_SCON, STAT_OFF + 4);\n      spare_free(e, cls_fit(8), _sp_1);\n    } else {\n      Term _fb_2[5];\n      u64 _sp_2 = ctr_take(e, _t_0, 5, _fb_2);\n      Term _f_16 = _fb_2[0];\n      u32 _f_17 = _fb_2[1];\n      Term _f_18 = _fb_2[2];\n      u32 _f_19 = _fb_2[3];\n      u32 _f_20 = _fb_2[4];\n      term_sink(e, _f_16);\n      term_sink(e, _f_18);\n      o[0] = term_ctr(CID_SCON, STAT_OFF + 10);\n      spare_free(e, cls_fit(5), _sp_2);\n    }\n  break;\n  }\n  return 1;\n}\n"
+    },
+    "families": {
+      "infer_node": {
+        "blocks": [
+          {
+            "symbol": "FID_INFER_NODE",
+            "line": 418046,
+            "bytes": 2650,
+            "spin_1": 1,
+            "term_keep": 10,
+            "term_sink": 0,
+            "heap_alloc": 2,
+            "term_clo": 4
+          },
+          {
+            "symbol": "FID_INFER_NODE_C15904",
+            "line": 418141,
+            "bytes": 1782,
+            "spin_1": 0,
+            "term_keep": 1,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_K15905",
+            "line": 418214,
+            "bytes": 2296,
+            "spin_1": 1,
+            "term_keep": 8,
+            "term_sink": 0,
+            "heap_alloc": 2,
+            "term_clo": 4
+          },
+          {
+            "symbol": "FID_INFER_NODE_C15906",
+            "line": 418294,
+            "bytes": 1377,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 1,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_C15907",
+            "line": 418344,
+            "bytes": 1617,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_K15908",
+            "line": 418410,
+            "bytes": 2173,
+            "spin_1": 0,
+            "term_keep": 1,
+            "term_sink": 0,
+            "heap_alloc": 2,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_C15909",
+            "line": 418485,
+            "bytes": 2568,
+            "spin_1": 1,
+            "term_keep": 11,
+            "term_sink": 0,
+            "heap_alloc": 2,
+            "term_clo": 4
+          },
+          {
+            "symbol": "FID_INFER_NODE_C15910",
+            "line": 418574,
+            "bytes": 2386,
+            "spin_1": 0,
+            "term_keep": 8,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_K15911",
+            "line": 418665,
+            "bytes": 2432,
+            "spin_1": 0,
+            "term_keep": 8,
+            "term_sink": 0,
+            "heap_alloc": 2,
+            "term_clo": 4
+          },
+          {
+            "symbol": "FID_INFER_NODE_C15912",
+            "line": 418749,
+            "bytes": 1431,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 1,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_C15913",
+            "line": 418799,
+            "bytes": 2718,
+            "spin_1": 0,
+            "term_keep": 8,
+            "term_sink": 0,
+            "heap_alloc": 2,
+            "term_clo": 4
+          },
+          {
+            "symbol": "FID_INFER_NODE_C15914",
+            "line": 418895,
+            "bytes": 1445,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 1,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_C15915",
+            "line": 418945,
+            "bytes": 2291,
+            "spin_1": 0,
+            "term_keep": 9,
+            "term_sink": 0,
+            "heap_alloc": 2,
+            "term_clo": 4
+          },
+          {
+            "symbol": "FID_INFER_NODE_C15916",
+            "line": 419020,
+            "bytes": 1609,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 1,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_C15917",
+            "line": 419078,
+            "bytes": 2836,
+            "spin_1": 0,
+            "term_keep": 14,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_K15918",
+            "line": 419178,
+            "bytes": 5457,
+            "spin_1": 1,
+            "term_keep": 17,
+            "term_sink": 1,
+            "heap_alloc": 2,
+            "term_clo": 4
+          },
+          {
+            "symbol": "FID_INFER_NODE_C15919",
+            "line": 419381,
+            "bytes": 1446,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 1,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_C15920",
+            "line": 419431,
+            "bytes": 2801,
+            "spin_1": 0,
+            "term_keep": 9,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_K15921",
+            "line": 419536,
+            "bytes": 2975,
+            "spin_1": 0,
+            "term_keep": 16,
+            "term_sink": 1,
+            "heap_alloc": 2,
+            "term_clo": 4
+          },
+          {
+            "symbol": "FID_INFER_NODE_C15922",
+            "line": 419635,
+            "bytes": 2497,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_K15923",
+            "line": 419731,
+            "bytes": 2934,
+            "spin_1": 0,
+            "term_keep": 7,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_K15924",
+            "line": 419836,
+            "bytes": 2950,
+            "spin_1": 0,
+            "term_keep": 7,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_K15925",
+            "line": 419942,
+            "bytes": 4224,
+            "spin_1": 0,
+            "term_keep": 23,
+            "term_sink": 7,
+            "heap_alloc": 2,
+            "term_clo": 4
+          },
+          {
+            "symbol": "FID_INFER_NODE_C15926",
+            "line": 420089,
+            "bytes": 2330,
+            "spin_1": 0,
+            "term_keep": 8,
+            "term_sink": 0,
+            "heap_alloc": 1,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_C15927",
+            "line": 420170,
+            "bytes": 847,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 1,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_C15928",
+            "line": 420201,
+            "bytes": 847,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 1,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_C15929",
+            "line": 420232,
+            "bytes": 2546,
+            "spin_1": 1,
+            "term_keep": 10,
+            "term_sink": 0,
+            "heap_alloc": 2,
+            "term_clo": 4
+          },
+          {
+            "symbol": "FID_INFER_NODE_C15930",
+            "line": 420318,
+            "bytes": 1682,
+            "spin_1": 0,
+            "term_keep": 1,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_K15931",
+            "line": 420384,
+            "bytes": 1760,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_K15932",
+            "line": 420452,
+            "bytes": 2572,
+            "spin_1": 0,
+            "term_keep": 16,
+            "term_sink": 0,
+            "heap_alloc": 2,
+            "term_clo": 4
+          },
+          {
+            "symbol": "FID_INFER_NODE_C15933",
+            "line": 420534,
+            "bytes": 2217,
+            "spin_1": 0,
+            "term_keep": 8,
+            "term_sink": 0,
+            "heap_alloc": 1,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_K15934",
+            "line": 420615,
+            "bytes": 805,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 1,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_C15935",
+            "line": 420645,
+            "bytes": 867,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 1,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_C15936",
+            "line": 420676,
+            "bytes": 2476,
+            "spin_1": 1,
+            "term_keep": 9,
+            "term_sink": 0,
+            "heap_alloc": 2,
+            "term_clo": 4
+          },
+          {
+            "symbol": "FID_INFER_NODE_C15937",
+            "line": 420760,
+            "bytes": 1709,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 1,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_C15938",
+            "line": 420817,
+            "bytes": 2476,
+            "spin_1": 1,
+            "term_keep": 9,
+            "term_sink": 0,
+            "heap_alloc": 2,
+            "term_clo": 4
+          },
+          {
+            "symbol": "FID_INFER_NODE_C15939",
+            "line": 420901,
+            "bytes": 1512,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 1,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_C15940",
+            "line": 420952,
+            "bytes": 2584,
+            "spin_1": 1,
+            "term_keep": 10,
+            "term_sink": 0,
+            "heap_alloc": 2,
+            "term_clo": 4
+          },
+          {
+            "symbol": "FID_INFER_NODE_C15941",
+            "line": 421039,
+            "bytes": 1765,
+            "spin_1": 0,
+            "term_keep": 1,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_K15942",
+            "line": 421108,
+            "bytes": 2846,
+            "spin_1": 0,
+            "term_keep": 8,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_K15943",
+            "line": 421211,
+            "bytes": 3131,
+            "spin_1": 0,
+            "term_keep": 16,
+            "term_sink": 0,
+            "heap_alloc": 2,
+            "term_clo": 4
+          },
+          {
+            "symbol": "FID_INFER_NODE_C15944",
+            "line": 421312,
+            "bytes": 2573,
+            "spin_1": 0,
+            "term_keep": 1,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_K15945",
+            "line": 421411,
+            "bytes": 4020,
+            "spin_1": 0,
+            "term_keep": 8,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_K15946",
+            "line": 421558,
+            "bytes": 2266,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_K15947",
+            "line": 421647,
+            "bytes": 825,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 1,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_C15948",
+            "line": 421677,
+            "bytes": 867,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 1,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_C15949",
+            "line": 421708,
+            "bytes": 2550,
+            "spin_1": 1,
+            "term_keep": 10,
+            "term_sink": 0,
+            "heap_alloc": 2,
+            "term_clo": 4
+          },
+          {
+            "symbol": "FID_INFER_NODE_C15950",
+            "line": 421794,
+            "bytes": 1682,
+            "spin_1": 0,
+            "term_keep": 1,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_K15951",
+            "line": 421860,
+            "bytes": 3055,
+            "spin_1": 0,
+            "term_keep": 10,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_K15952",
+            "line": 421974,
+            "bytes": 3070,
+            "spin_1": 0,
+            "term_keep": 16,
+            "term_sink": 0,
+            "heap_alloc": 2,
+            "term_clo": 4
+          },
+          {
+            "symbol": "FID_INFER_NODE_C15953",
+            "line": 422073,
+            "bytes": 2490,
+            "spin_1": 0,
+            "term_keep": 1,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_K15954",
+            "line": 422169,
+            "bytes": 2657,
+            "spin_1": 0,
+            "term_keep": 1,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_K15955",
+            "line": 422268,
+            "bytes": 4834,
+            "spin_1": 0,
+            "term_keep": 11,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_K15956",
+            "line": 422448,
+            "bytes": 2436,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_K15957",
+            "line": 422543,
+            "bytes": 825,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 1,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_C15958",
+            "line": 422573,
+            "bytes": 867,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 1,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_C15959",
+            "line": 422604,
+            "bytes": 2590,
+            "spin_1": 1,
+            "term_keep": 10,
+            "term_sink": 0,
+            "heap_alloc": 2,
+            "term_clo": 4
+          },
+          {
+            "symbol": "FID_INFER_NODE_C15960",
+            "line": 422691,
+            "bytes": 1846,
+            "spin_1": 0,
+            "term_keep": 1,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_K15961",
+            "line": 422763,
+            "bytes": 1981,
+            "spin_1": 0,
+            "term_keep": 1,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_K15962",
+            "line": 422838,
+            "bytes": 3048,
+            "spin_1": 0,
+            "term_keep": 8,
+            "term_sink": 0,
+            "heap_alloc": 1,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_K15963",
+            "line": 422946,
+            "bytes": 3141,
+            "spin_1": 0,
+            "term_keep": 16,
+            "term_sink": 0,
+            "heap_alloc": 2,
+            "term_clo": 4
+          },
+          {
+            "symbol": "FID_INFER_NODE_C15964",
+            "line": 423047,
+            "bytes": 2832,
+            "spin_1": 0,
+            "term_keep": 8,
+            "term_sink": 0,
+            "heap_alloc": 2,
+            "term_clo": 4
+          },
+          {
+            "symbol": "FID_INFER_NODE_C15965",
+            "line": 423140,
+            "bytes": 3527,
+            "spin_1": 0,
+            "term_keep": 32,
+            "term_sink": 8,
+            "heap_alloc": 1,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_C15966",
+            "line": 423249,
+            "bytes": 3936,
+            "spin_1": 0,
+            "term_keep": 16,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_K15967",
+            "line": 423389,
+            "bytes": 4482,
+            "spin_1": 1,
+            "term_keep": 17,
+            "term_sink": 0,
+            "heap_alloc": 2,
+            "term_clo": 4
+          },
+          {
+            "symbol": "FID_INFER_NODE_C15968",
+            "line": 423539,
+            "bytes": 2692,
+            "spin_1": 0,
+            "term_keep": 1,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_K15969",
+            "line": 423641,
+            "bytes": 2868,
+            "spin_1": 0,
+            "term_keep": 1,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_K15970",
+            "line": 423746,
+            "bytes": 3032,
+            "spin_1": 0,
+            "term_keep": 1,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_K15971",
+            "line": 423858,
+            "bytes": 2868,
+            "spin_1": 0,
+            "term_keep": 1,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_K15972",
+            "line": 423963,
+            "bytes": 3036,
+            "spin_1": 0,
+            "term_keep": 1,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_K15973",
+            "line": 424075,
+            "bytes": 2854,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_K15974",
+            "line": 424180,
+            "bytes": 4123,
+            "spin_1": 0,
+            "term_keep": 8,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_K15975",
+            "line": 424331,
+            "bytes": 2263,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_K15976",
+            "line": 424421,
+            "bytes": 825,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 1,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_C15977",
+            "line": 424451,
+            "bytes": 3006,
+            "spin_1": 0,
+            "term_keep": 16,
+            "term_sink": 0,
+            "heap_alloc": 1,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_C15978",
+            "line": 424546,
+            "bytes": 867,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 1,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_C15979",
+            "line": 424577,
+            "bytes": 2541,
+            "spin_1": 1,
+            "term_keep": 10,
+            "term_sink": 0,
+            "heap_alloc": 2,
+            "term_clo": 4
+          },
+          {
+            "symbol": "FID_INFER_NODE_C15980",
+            "line": 424662,
+            "bytes": 2413,
+            "spin_1": 0,
+            "term_keep": 8,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_K15981",
+            "line": 424750,
+            "bytes": 2031,
+            "spin_1": 0,
+            "term_keep": 1,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_K15982",
+            "line": 424826,
+            "bytes": 2934,
+            "spin_1": 0,
+            "term_keep": 10,
+            "term_sink": 0,
+            "heap_alloc": 2,
+            "term_clo": 4
+          },
+          {
+            "symbol": "FID_INFER_NODE_C15983",
+            "line": 424925,
+            "bytes": 2027,
+            "spin_1": 0,
+            "term_keep": 1,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_K15984",
+            "line": 425007,
+            "bytes": 1910,
+            "spin_1": 0,
+            "term_keep": 8,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_K15985",
+            "line": 425078,
+            "bytes": 825,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 1,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_C15986",
+            "line": 425108,
+            "bytes": 2265,
+            "spin_1": 0,
+            "term_keep": 6,
+            "term_sink": 0,
+            "heap_alloc": 2,
+            "term_clo": 4
+          },
+          {
+            "symbol": "FID_INFER_NODE_C15987",
+            "line": 425187,
+            "bytes": 1322,
+            "spin_1": 0,
+            "term_keep": 1,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_K15988",
+            "line": 425239,
+            "bytes": 1391,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_K15989",
+            "line": 425293,
+            "bytes": 1671,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 1,
+            "heap_alloc": 0,
+            "term_clo": 4
+          },
+          {
+            "symbol": "FID_INFER_NODE_C15990",
+            "line": 425353,
+            "bytes": 158,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_C15991",
+            "line": 425363,
+            "bytes": 158,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_K15992",
+            "line": 425373,
+            "bytes": 1297,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_K15993",
+            "line": 425422,
+            "bytes": 1327,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_K15994",
+            "line": 425470,
+            "bytes": 1214,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_K15995",
+            "line": 425516,
+            "bytes": 1164,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 1,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_C15996",
+            "line": 425554,
+            "bytes": 1148,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_K15997",
+            "line": 425600,
+            "bytes": 1161,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_K15998",
+            "line": 425642,
+            "bytes": 1165,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_K15999",
+            "line": 425684,
+            "bytes": 1130,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 1,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_C16000",
+            "line": 425721,
+            "bytes": 2508,
+            "spin_1": 1,
+            "term_keep": 10,
+            "term_sink": 0,
+            "heap_alloc": 2,
+            "term_clo": 4
+          },
+          {
+            "symbol": "FID_INFER_NODE_C16001",
+            "line": 425805,
+            "bytes": 1708,
+            "spin_1": 0,
+            "term_keep": 1,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_K16002",
+            "line": 425871,
+            "bytes": 2958,
+            "spin_1": 0,
+            "term_keep": 8,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_K16003",
+            "line": 425977,
+            "bytes": 3080,
+            "spin_1": 0,
+            "term_keep": 16,
+            "term_sink": 0,
+            "heap_alloc": 2,
+            "term_clo": 4
+          },
+          {
+            "symbol": "FID_INFER_NODE_C16004",
+            "line": 426076,
+            "bytes": 2526,
+            "spin_1": 0,
+            "term_keep": 1,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_K16005",
+            "line": 426172,
+            "bytes": 2694,
+            "spin_1": 0,
+            "term_keep": 1,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_K16006",
+            "line": 426271,
+            "bytes": 5023,
+            "spin_1": 0,
+            "term_keep": 16,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_K16007",
+            "line": 426450,
+            "bytes": 5088,
+            "spin_1": 0,
+            "term_keep": 24,
+            "term_sink": 0,
+            "heap_alloc": 2,
+            "term_clo": 4
+          },
+          {
+            "symbol": "FID_INFER_NODE_C16008",
+            "line": 426617,
+            "bytes": 3344,
+            "spin_1": 0,
+            "term_keep": 1,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_K16009",
+            "line": 426743,
+            "bytes": 3552,
+            "spin_1": 0,
+            "term_keep": 1,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_K16010",
+            "line": 426872,
+            "bytes": 4865,
+            "spin_1": 0,
+            "term_keep": 8,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_K16011",
+            "line": 427049,
+            "bytes": 5181,
+            "spin_1": 0,
+            "term_keep": 17,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_K16012",
+            "line": 427233,
+            "bytes": 4514,
+            "spin_1": 0,
+            "term_keep": 8,
+            "term_sink": 0,
+            "heap_alloc": 3,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_K16013",
+            "line": 427389,
+            "bytes": 825,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 1,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_C16014",
+            "line": 427419,
+            "bytes": 867,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 1,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_C16015",
+            "line": 427450,
+            "bytes": 867,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 1,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_C16016",
+            "line": 427481,
+            "bytes": 2432,
+            "spin_1": 1,
+            "term_keep": 9,
+            "term_sink": 0,
+            "heap_alloc": 2,
+            "term_clo": 4
+          },
+          {
+            "symbol": "FID_INFER_NODE_C16017",
+            "line": 427563,
+            "bytes": 1792,
+            "spin_1": 0,
+            "term_keep": 1,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_K16018",
+            "line": 427632,
+            "bytes": 3046,
+            "spin_1": 0,
+            "term_keep": 8,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_K16019",
+            "line": 427741,
+            "bytes": 3141,
+            "spin_1": 0,
+            "term_keep": 16,
+            "term_sink": 0,
+            "heap_alloc": 2,
+            "term_clo": 4
+          },
+          {
+            "symbol": "FID_INFER_NODE_C16020",
+            "line": 427842,
+            "bytes": 2610,
+            "spin_1": 0,
+            "term_keep": 1,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_K16021",
+            "line": 427941,
+            "bytes": 2782,
+            "spin_1": 0,
+            "term_keep": 1,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_K16022",
+            "line": 428043,
+            "bytes": 4040,
+            "spin_1": 0,
+            "term_keep": 8,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_K16023",
+            "line": 428191,
+            "bytes": 2390,
+            "spin_1": 0,
+            "term_keep": 1,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_K16024",
+            "line": 428281,
+            "bytes": 2521,
+            "spin_1": 0,
+            "term_keep": 1,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_K16025",
+            "line": 428374,
+            "bytes": 3288,
+            "spin_1": 0,
+            "term_keep": 8,
+            "term_sink": 0,
+            "heap_alloc": 2,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_K16026",
+            "line": 428491,
+            "bytes": 825,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 1,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_C16027",
+            "line": 428521,
+            "bytes": 867,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 1,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_C16028",
+            "line": 428552,
+            "bytes": 2045,
+            "spin_1": 0,
+            "term_keep": 7,
+            "term_sink": 0,
+            "heap_alloc": 2,
+            "term_clo": 4
+          },
+          {
+            "symbol": "FID_INFER_NODE_C16029",
+            "line": 428621,
+            "bytes": 1480,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 1,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_C16030",
+            "line": 428671,
+            "bytes": 1988,
+            "spin_1": 1,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 4
+          },
+          {
+            "symbol": "FID_INFER_NODE_C16031",
+            "line": 428745,
+            "bytes": 158,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_C16032",
+            "line": 428755,
+            "bytes": 158,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_K16033",
+            "line": 428765,
+            "bytes": 1511,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 1,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_K16034",
+            "line": 428816,
+            "bytes": 628,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          }
+        ],
+        "totals": {
+          "bytes": 301255,
+          "spin_1": 15,
+          "term_keep": 668,
+          "term_sink": 18,
+          "heap_alloc": 99,
+          "term_clo": 128
+        }
+      },
+      "check_node": {
+        "blocks": [
+          {
+            "symbol": "FID_CHECK_NODE",
+            "line": 496012,
+            "bytes": 2531,
+            "spin_1": 0,
+            "term_keep": 10,
+            "term_sink": 0,
+            "heap_alloc": 2,
+            "term_clo": 4
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18793",
+            "line": 496102,
+            "bytes": 2220,
+            "spin_1": 0,
+            "term_keep": 8,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18794",
+            "line": 496187,
+            "bytes": 2393,
+            "spin_1": 0,
+            "term_keep": 8,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18795",
+            "line": 496275,
+            "bytes": 2189,
+            "spin_1": 0,
+            "term_keep": 9,
+            "term_sink": 0,
+            "heap_alloc": 2,
+            "term_clo": 4
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18796",
+            "line": 496349,
+            "bytes": 1417,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 1,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18797",
+            "line": 496401,
+            "bytes": 1718,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18798",
+            "line": 496468,
+            "bytes": 1635,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18799",
+            "line": 496535,
+            "bytes": 793,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 1,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18800",
+            "line": 496565,
+            "bytes": 2553,
+            "spin_1": 1,
+            "term_keep": 11,
+            "term_sink": 0,
+            "heap_alloc": 2,
+            "term_clo": 4
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18801",
+            "line": 496654,
+            "bytes": 2156,
+            "spin_1": 0,
+            "term_keep": 7,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18802",
+            "line": 496736,
+            "bytes": 2406,
+            "spin_1": 1,
+            "term_keep": 8,
+            "term_sink": 0,
+            "heap_alloc": 2,
+            "term_clo": 4
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18803",
+            "line": 496818,
+            "bytes": 2869,
+            "spin_1": 0,
+            "term_keep": 4,
+            "term_sink": 0,
+            "heap_alloc": 1,
+            "term_clo": 4
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18804",
+            "line": 496927,
+            "bytes": 125,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18805",
+            "line": 496937,
+            "bytes": 234,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18806",
+            "line": 496952,
+            "bytes": 4592,
+            "spin_1": 0,
+            "term_keep": 22,
+            "term_sink": 0,
+            "heap_alloc": 2,
+            "term_clo": 4
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18807",
+            "line": 497110,
+            "bytes": 1738,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18808",
+            "line": 497179,
+            "bytes": 1826,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18809",
+            "line": 497252,
+            "bytes": 825,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 1,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18810",
+            "line": 497282,
+            "bytes": 1487,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 1,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18811",
+            "line": 497334,
+            "bytes": 3285,
+            "spin_1": 0,
+            "term_keep": 16,
+            "term_sink": 0,
+            "heap_alloc": 2,
+            "term_clo": 4
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18812",
+            "line": 497443,
+            "bytes": 3468,
+            "spin_1": 0,
+            "term_keep": 2,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18813",
+            "line": 497585,
+            "bytes": 1896,
+            "spin_1": 0,
+            "term_keep": 1,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18814",
+            "line": 497660,
+            "bytes": 2023,
+            "spin_1": 0,
+            "term_keep": 1,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18815",
+            "line": 497738,
+            "bytes": 2105,
+            "spin_1": 0,
+            "term_keep": 1,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18816",
+            "line": 497819,
+            "bytes": 2769,
+            "spin_1": 0,
+            "term_keep": 3,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18817",
+            "line": 497929,
+            "bytes": 2382,
+            "spin_1": 0,
+            "term_keep": 2,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18818",
+            "line": 498026,
+            "bytes": 2413,
+            "spin_1": 0,
+            "term_keep": 16,
+            "term_sink": 0,
+            "heap_alloc": 2,
+            "term_clo": 4
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18819",
+            "line": 498105,
+            "bytes": 2331,
+            "spin_1": 0,
+            "term_keep": 9,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18820",
+            "line": 498191,
+            "bytes": 2142,
+            "spin_1": 0,
+            "term_keep": 9,
+            "term_sink": 0,
+            "heap_alloc": 2,
+            "term_clo": 4
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18821",
+            "line": 498259,
+            "bytes": 2250,
+            "spin_1": 0,
+            "term_keep": 9,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18822",
+            "line": 498342,
+            "bytes": 2758,
+            "spin_1": 0,
+            "term_keep": 8,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18823",
+            "line": 498443,
+            "bytes": 1387,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 1,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18824",
+            "line": 498488,
+            "bytes": 2251,
+            "spin_1": 0,
+            "term_keep": 9,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18825",
+            "line": 498571,
+            "bytes": 2869,
+            "spin_1": 0,
+            "term_keep": 16,
+            "term_sink": 8,
+            "heap_alloc": 2,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18826",
+            "line": 498664,
+            "bytes": 867,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 1,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18827",
+            "line": 498695,
+            "bytes": 847,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 1,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18828",
+            "line": 498726,
+            "bytes": 1446,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 1,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18829",
+            "line": 498776,
+            "bytes": 2642,
+            "spin_1": 1,
+            "term_keep": 11,
+            "term_sink": 0,
+            "heap_alloc": 2,
+            "term_clo": 4
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18830",
+            "line": 498865,
+            "bytes": 2227,
+            "spin_1": 0,
+            "term_keep": 7,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18831",
+            "line": 498947,
+            "bytes": 2453,
+            "spin_1": 1,
+            "term_keep": 8,
+            "term_sink": 0,
+            "heap_alloc": 2,
+            "term_clo": 4
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18832",
+            "line": 499029,
+            "bytes": 2457,
+            "spin_1": 0,
+            "term_keep": 8,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18833",
+            "line": 499120,
+            "bytes": 2186,
+            "spin_1": 0,
+            "term_keep": 1,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18834",
+            "line": 499205,
+            "bytes": 2289,
+            "spin_1": 0,
+            "term_keep": 2,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18835",
+            "line": 499293,
+            "bytes": 2167,
+            "spin_1": 0,
+            "term_keep": 1,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18836",
+            "line": 499375,
+            "bytes": 3456,
+            "spin_1": 0,
+            "term_keep": 11,
+            "term_sink": 0,
+            "heap_alloc": 2,
+            "term_clo": 4
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18837",
+            "line": 499497,
+            "bytes": 2678,
+            "spin_1": 0,
+            "term_keep": 8,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18838",
+            "line": 499597,
+            "bytes": 2001,
+            "spin_1": 0,
+            "term_keep": 1,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18839",
+            "line": 499676,
+            "bytes": 1410,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18840",
+            "line": 499734,
+            "bytes": 825,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 1,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18841",
+            "line": 499764,
+            "bytes": 2080,
+            "spin_1": 0,
+            "term_keep": 2,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18842",
+            "line": 499846,
+            "bytes": 2898,
+            "spin_1": 0,
+            "term_keep": 9,
+            "term_sink": 0,
+            "heap_alloc": 2,
+            "term_clo": 4
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18843",
+            "line": 499947,
+            "bytes": 1804,
+            "spin_1": 0,
+            "term_keep": 1,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18844",
+            "line": 500017,
+            "bytes": 1899,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18845",
+            "line": 500089,
+            "bytes": 2180,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 1,
+            "heap_alloc": 0,
+            "term_clo": 4
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18846",
+            "line": 500167,
+            "bytes": 156,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18847",
+            "line": 500177,
+            "bytes": 156,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18848",
+            "line": 500187,
+            "bytes": 1807,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18849",
+            "line": 500254,
+            "bytes": 1836,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18850",
+            "line": 500320,
+            "bytes": 1721,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18851",
+            "line": 500384,
+            "bytes": 1693,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 1,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18852",
+            "line": 500442,
+            "bytes": 2332,
+            "spin_1": 0,
+            "term_keep": 8,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18853",
+            "line": 500527,
+            "bytes": 2331,
+            "spin_1": 0,
+            "term_keep": 9,
+            "term_sink": 0,
+            "heap_alloc": 2,
+            "term_clo": 4
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18854",
+            "line": 500603,
+            "bytes": 1804,
+            "spin_1": 0,
+            "term_keep": 1,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18855",
+            "line": 500673,
+            "bytes": 2351,
+            "spin_1": 0,
+            "term_keep": 7,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18856",
+            "line": 500758,
+            "bytes": 1885,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18857",
+            "line": 500828,
+            "bytes": 1836,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18858",
+            "line": 500894,
+            "bytes": 1840,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18859",
+            "line": 500960,
+            "bytes": 1721,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18860",
+            "line": 501024,
+            "bytes": 1754,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18861",
+            "line": 501087,
+            "bytes": 1693,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 1,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18862",
+            "line": 501145,
+            "bytes": 2238,
+            "spin_1": 0,
+            "term_keep": 7,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18863",
+            "line": 501227,
+            "bytes": 1714,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 1,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18864",
+            "line": 501285,
+            "bytes": 1480,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 1,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18865",
+            "line": 501335,
+            "bytes": 3036,
+            "spin_1": 2,
+            "term_keep": 12,
+            "term_sink": 0,
+            "heap_alloc": 2,
+            "term_clo": 4
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18866",
+            "line": 501437,
+            "bytes": 2257,
+            "spin_1": 0,
+            "term_keep": 7,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18867",
+            "line": 501519,
+            "bytes": 2469,
+            "spin_1": 1,
+            "term_keep": 8,
+            "term_sink": 0,
+            "heap_alloc": 2,
+            "term_clo": 4
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18868",
+            "line": 501601,
+            "bytes": 2568,
+            "spin_1": 0,
+            "term_keep": 8,
+            "term_sink": 0,
+            "heap_alloc": 2,
+            "term_clo": 4
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18869",
+            "line": 501689,
+            "bytes": 1519,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 1,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18870",
+            "line": 501739,
+            "bytes": 1874,
+            "spin_1": 0,
+            "term_keep": 1,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18871",
+            "line": 501811,
+            "bytes": 2393,
+            "spin_1": 0,
+            "term_keep": 7,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18872",
+            "line": 501896,
+            "bytes": 2631,
+            "spin_1": 0,
+            "term_keep": 8,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18873",
+            "line": 501990,
+            "bytes": 3067,
+            "spin_1": 1,
+            "term_keep": 9,
+            "term_sink": 0,
+            "heap_alloc": 2,
+            "term_clo": 4
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18874",
+            "line": 502095,
+            "bytes": 2762,
+            "spin_1": 1,
+            "term_keep": 12,
+            "term_sink": 0,
+            "heap_alloc": 2,
+            "term_clo": 4
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18875",
+            "line": 502187,
+            "bytes": 2376,
+            "spin_1": 0,
+            "term_keep": 8,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18876",
+            "line": 502272,
+            "bytes": 2410,
+            "spin_1": 0,
+            "term_keep": 7,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18877",
+            "line": 502357,
+            "bytes": 2222,
+            "spin_1": 0,
+            "term_keep": 8,
+            "term_sink": 0,
+            "heap_alloc": 2,
+            "term_clo": 4
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18878",
+            "line": 502428,
+            "bytes": 1526,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 1,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18879",
+            "line": 502480,
+            "bytes": 2326,
+            "spin_1": 0,
+            "term_keep": 8,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18880",
+            "line": 502565,
+            "bytes": 1966,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18881",
+            "line": 502641,
+            "bytes": 1671,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18882",
+            "line": 502702,
+            "bytes": 1754,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18883",
+            "line": 502765,
+            "bytes": 1715,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 1,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18884",
+            "line": 502823,
+            "bytes": 2577,
+            "spin_1": 0,
+            "term_keep": 8,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18885",
+            "line": 502917,
+            "bytes": 2326,
+            "spin_1": 0,
+            "term_keep": 1,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18886",
+            "line": 503005,
+            "bytes": 2182,
+            "spin_1": 0,
+            "term_keep": 1,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18887",
+            "line": 503087,
+            "bytes": 2731,
+            "spin_1": 0,
+            "term_keep": 10,
+            "term_sink": 0,
+            "heap_alloc": 2,
+            "term_clo": 4
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18888",
+            "line": 503177,
+            "bytes": 1710,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18889",
+            "line": 503244,
+            "bytes": 1754,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18890",
+            "line": 503307,
+            "bytes": 1754,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18891",
+            "line": 503370,
+            "bytes": 1715,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 1,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18892",
+            "line": 503428,
+            "bytes": 2891,
+            "spin_1": 0,
+            "term_keep": 9,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18893",
+            "line": 503534,
+            "bytes": 3723,
+            "spin_1": 0,
+            "term_keep": 11,
+            "term_sink": 0,
+            "heap_alloc": 1,
+            "term_clo": 4
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18894",
+            "line": 503655,
+            "bytes": 126,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18895",
+            "line": 503665,
+            "bytes": 2455,
+            "spin_1": 0,
+            "term_keep": 7,
+            "term_sink": 0,
+            "heap_alloc": 4,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18896",
+            "line": 503744,
+            "bytes": 3342,
+            "spin_1": 0,
+            "term_keep": 7,
+            "term_sink": 0,
+            "heap_alloc": 2,
+            "term_clo": 4
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18897",
+            "line": 503851,
+            "bytes": 4114,
+            "spin_1": 0,
+            "term_keep": 17,
+            "term_sink": 0,
+            "heap_alloc": 2,
+            "term_clo": 4
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18898",
+            "line": 503985,
+            "bytes": 929,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 1,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18899",
+            "line": 504018,
+            "bytes": 2783,
+            "spin_1": 0,
+            "term_keep": 7,
+            "term_sink": 1,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18900",
+            "line": 504120,
+            "bytes": 3424,
+            "spin_1": 0,
+            "term_keep": 15,
+            "term_sink": 0,
+            "heap_alloc": 2,
+            "term_clo": 4
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18901",
+            "line": 504230,
+            "bytes": 845,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 1,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18902",
+            "line": 504261,
+            "bytes": 1709,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18903",
+            "line": 504325,
+            "bytes": 497,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 1,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18904",
+            "line": 504345,
+            "bytes": 3095,
+            "spin_1": 0,
+            "term_keep": 14,
+            "term_sink": 7,
+            "heap_alloc": 1,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18905",
+            "line": 504440,
+            "bytes": 2268,
+            "spin_1": 0,
+            "term_keep": 1,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18906",
+            "line": 504524,
+            "bytes": 3295,
+            "spin_1": 0,
+            "term_keep": 9,
+            "term_sink": 1,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18907",
+            "line": 504642,
+            "bytes": 3164,
+            "spin_1": 0,
+            "term_keep": 1,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18908",
+            "line": 504760,
+            "bytes": 3283,
+            "spin_1": 0,
+            "term_keep": 16,
+            "term_sink": 0,
+            "heap_alloc": 2,
+            "term_clo": 4
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18909",
+            "line": 504865,
+            "bytes": 3773,
+            "spin_1": 0,
+            "term_keep": 10,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18910",
+            "line": 505001,
+            "bytes": 2987,
+            "spin_1": 0,
+            "term_keep": 1,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18911",
+            "line": 505109,
+            "bytes": 6897,
+            "spin_1": 1,
+            "term_keep": 18,
+            "term_sink": 1,
+            "heap_alloc": 2,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18912",
+            "line": 505362,
+            "bytes": 2263,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18913",
+            "line": 505452,
+            "bytes": 825,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 1,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18914",
+            "line": 505482,
+            "bytes": 867,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 1,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18915",
+            "line": 505513,
+            "bytes": 1501,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 1,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18916",
+            "line": 505563,
+            "bytes": 1559,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18917",
+            "line": 505623,
+            "bytes": 1610,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 1,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18918",
+            "line": 505674,
+            "bytes": 1502,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 1,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18919",
+            "line": 505724,
+            "bytes": 2608,
+            "spin_1": 1,
+            "term_keep": 10,
+            "term_sink": 0,
+            "heap_alloc": 2,
+            "term_clo": 4
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18920",
+            "line": 505810,
+            "bytes": 2146,
+            "spin_1": 0,
+            "term_keep": 7,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18921",
+            "line": 505886,
+            "bytes": 2393,
+            "spin_1": 1,
+            "term_keep": 8,
+            "term_sink": 0,
+            "heap_alloc": 2,
+            "term_clo": 4
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18922",
+            "line": 505964,
+            "bytes": 1738,
+            "spin_1": 0,
+            "term_keep": 1,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18923",
+            "line": 506030,
+            "bytes": 1866,
+            "spin_1": 0,
+            "term_keep": 1,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18924",
+            "line": 506099,
+            "bytes": 2409,
+            "spin_1": 0,
+            "term_keep": 7,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18925",
+            "line": 506183,
+            "bytes": 2153,
+            "spin_1": 0,
+            "term_keep": 8,
+            "term_sink": 0,
+            "heap_alloc": 2,
+            "term_clo": 4
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18926",
+            "line": 506251,
+            "bytes": 1548,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 1,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18927",
+            "line": 506303,
+            "bytes": 1656,
+            "spin_1": 0,
+            "term_keep": 1,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18928",
+            "line": 506366,
+            "bytes": 1683,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18929",
+            "line": 506429,
+            "bytes": 1606,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 1,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18930",
+            "line": 506481,
+            "bytes": 1502,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 1,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18931",
+            "line": 506531,
+            "bytes": 2608,
+            "spin_1": 1,
+            "term_keep": 10,
+            "term_sink": 0,
+            "heap_alloc": 2,
+            "term_clo": 4
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18932",
+            "line": 506617,
+            "bytes": 2352,
+            "spin_1": 0,
+            "term_keep": 8,
+            "term_sink": 0,
+            "heap_alloc": 2,
+            "term_clo": 4
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18933",
+            "line": 506695,
+            "bytes": 1548,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 1,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18934",
+            "line": 506747,
+            "bytes": 1502,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 1,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18935",
+            "line": 506797,
+            "bytes": 2732,
+            "spin_1": 1,
+            "term_keep": 11,
+            "term_sink": 0,
+            "heap_alloc": 2,
+            "term_clo": 4
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18936",
+            "line": 506886,
+            "bytes": 2260,
+            "spin_1": 0,
+            "term_keep": 2,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18937",
+            "line": 506971,
+            "bytes": 837,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 1,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18938",
+            "line": 507001,
+            "bytes": 2752,
+            "spin_1": 1,
+            "term_keep": 11,
+            "term_sink": 0,
+            "heap_alloc": 2,
+            "term_clo": 4
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18939",
+            "line": 507090,
+            "bytes": 1907,
+            "spin_1": 0,
+            "term_keep": 1,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18940",
+            "line": 507162,
+            "bytes": 3005,
+            "spin_1": 0,
+            "term_keep": 8,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18941",
+            "line": 507268,
+            "bytes": 3264,
+            "spin_1": 0,
+            "term_keep": 16,
+            "term_sink": 0,
+            "heap_alloc": 2,
+            "term_clo": 4
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18942",
+            "line": 507371,
+            "bytes": 4051,
+            "spin_1": 0,
+            "term_keep": 16,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18943",
+            "line": 507514,
+            "bytes": 5465,
+            "spin_1": 1,
+            "term_keep": 27,
+            "term_sink": 0,
+            "heap_alloc": 2,
+            "term_clo": 4
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18944",
+            "line": 507690,
+            "bytes": 4703,
+            "spin_1": 0,
+            "term_keep": 16,
+            "term_sink": 0,
+            "heap_alloc": 3,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18945",
+            "line": 507847,
+            "bytes": 2953,
+            "spin_1": 0,
+            "term_keep": 8,
+            "term_sink": 0,
+            "heap_alloc": 2,
+            "term_clo": 4
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18946",
+            "line": 507940,
+            "bytes": 2904,
+            "spin_1": 0,
+            "term_keep": 1,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18947",
+            "line": 508049,
+            "bytes": 3045,
+            "spin_1": 0,
+            "term_keep": 1,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18948",
+            "line": 508160,
+            "bytes": 3131,
+            "spin_1": 0,
+            "term_keep": 1,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18949",
+            "line": 508274,
+            "bytes": 5514,
+            "spin_1": 0,
+            "term_keep": 8,
+            "term_sink": 0,
+            "heap_alloc": 3,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18950",
+            "line": 508455,
+            "bytes": 3787,
+            "spin_1": 0,
+            "term_keep": 1,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18951",
+            "line": 508594,
+            "bytes": 3873,
+            "spin_1": 0,
+            "term_keep": 8,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18952",
+            "line": 508734,
+            "bytes": 3911,
+            "spin_1": 0,
+            "term_keep": 16,
+            "term_sink": 0,
+            "heap_alloc": 2,
+            "term_clo": 4
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18953",
+            "line": 508859,
+            "bytes": 3592,
+            "spin_1": 0,
+            "term_keep": 1,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18954",
+            "line": 508994,
+            "bytes": 3812,
+            "spin_1": 0,
+            "term_keep": 1,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18955",
+            "line": 509132,
+            "bytes": 3758,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18956",
+            "line": 509268,
+            "bytes": 3812,
+            "spin_1": 0,
+            "term_keep": 1,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18957",
+            "line": 509406,
+            "bytes": 3758,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18958",
+            "line": 509542,
+            "bytes": 4718,
+            "spin_1": 0,
+            "term_keep": 9,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18959",
+            "line": 509710,
+            "bytes": 3687,
+            "spin_1": 0,
+            "term_keep": 11,
+            "term_sink": 0,
+            "heap_alloc": 2,
+            "term_clo": 4
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18960",
+            "line": 509828,
+            "bytes": 3592,
+            "spin_1": 0,
+            "term_keep": 1,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18961",
+            "line": 509963,
+            "bytes": 3812,
+            "spin_1": 0,
+            "term_keep": 1,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18962",
+            "line": 510101,
+            "bytes": 3801,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18963",
+            "line": 510239,
+            "bytes": 3758,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18964",
+            "line": 510375,
+            "bytes": 3791,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18965",
+            "line": 510510,
+            "bytes": 4984,
+            "spin_1": 0,
+            "term_keep": 8,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18966",
+            "line": 510691,
+            "bytes": 4359,
+            "spin_1": 0,
+            "term_keep": 16,
+            "term_sink": 0,
+            "heap_alloc": 3,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18967",
+            "line": 510840,
+            "bytes": 837,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 1,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18968",
+            "line": 510870,
+            "bytes": 1707,
+            "spin_1": 0,
+            "term_keep": 1,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18969",
+            "line": 510936,
+            "bytes": 1738,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18970",
+            "line": 511002,
+            "bytes": 1695,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18971",
+            "line": 511066,
+            "bytes": 1652,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18972",
+            "line": 511129,
+            "bytes": 1609,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18973",
+            "line": 511190,
+            "bytes": 2564,
+            "spin_1": 0,
+            "term_keep": 8,
+            "term_sink": 0,
+            "heap_alloc": 1,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18974",
+            "line": 511273,
+            "bytes": 887,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 1,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18975",
+            "line": 511304,
+            "bytes": 2509,
+            "spin_1": 0,
+            "term_keep": 8,
+            "term_sink": 0,
+            "heap_alloc": 1,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18976",
+            "line": 511385,
+            "bytes": 2541,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18977",
+            "line": 511481,
+            "bytes": 5062,
+            "spin_1": 0,
+            "term_keep": 16,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18978",
+            "line": 511659,
+            "bytes": 837,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 1,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18979",
+            "line": 511689,
+            "bytes": 899,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 1,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18980",
+            "line": 511720,
+            "bytes": 2707,
+            "spin_1": 0,
+            "term_keep": 7,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18981",
+            "line": 511818,
+            "bytes": 2954,
+            "spin_1": 0,
+            "term_keep": 16,
+            "term_sink": 7,
+            "heap_alloc": 2,
+            "term_clo": 4
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18982",
+            "line": 511911,
+            "bytes": 3097,
+            "spin_1": 0,
+            "term_keep": 17,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18983",
+            "line": 512017,
+            "bytes": 2070,
+            "spin_1": 0,
+            "term_keep": 9,
+            "term_sink": 0,
+            "heap_alloc": 2,
+            "term_clo": 4
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18984",
+            "line": 512081,
+            "bytes": 1969,
+            "spin_1": 0,
+            "term_keep": 8,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18985",
+            "line": 512152,
+            "bytes": 837,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 1,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18986",
+            "line": 512182,
+            "bytes": 3082,
+            "spin_1": 0,
+            "term_keep": 16,
+            "term_sink": 0,
+            "heap_alloc": 1,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18987",
+            "line": 512278,
+            "bytes": 899,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 1,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18988",
+            "line": 512309,
+            "bytes": 646,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          }
+        ],
+        "totals": {
+          "bytes": 459658,
+          "spin_1": 16,
+          "term_keep": 925,
+          "term_sink": 26,
+          "heap_alloc": 136,
+          "term_clo": 164
+        }
+      }
+    }
+  },
+  "candidate": {
+    "c": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/dispatch-checked01/program.c",
+      "bytes": 17763432,
+      "sha256": "a76913c22ab8f2b68127e89bd26a8956518e0901c005b94a54824a32573ed7cf"
+    },
+    "tagObserver": {
+      "symbol": "spin_1",
+      "line": 14174,
+      "body": "INLINE Term spin_1(Env e, THR Term* o, Term r0) {\n  u32 wpoll = 0;\n  Term _t_0 = r0;\n  WL_SPIN\n    if (term_aux(_t_0) == CID_KTERM) {\n      Term _fb_0[8];\n      u64 _sp_0 = ctr_take(e, _t_0, 8, _fb_0);\n      Term _f_0 = _fb_0[0];\n      Term _f_1 = _fb_0[1];\n      u32 _f_2 = _fb_0[2];\n      u32 _f_3 = _fb_0[3];\n      Term _f_4 = _fb_0[4];\n      Term _f_5 = _fb_0[5];\n      u32 _f_6 = _fb_0[6];\n      u32 _f_7 = _fb_0[7];\n      term_sink(e, _f_1);\n      term_sink(e, _f_4);\n      term_sink(e, _f_5);\n      o[0] = _f_0;\n      spare_free(e, cls_fit(8), _sp_0);\n    } else if (term_aux(_t_0) == CID_KLAMBDA) {\n      Term _fb_1[8];\n      u64 _sp_1 = ctr_take(e, _t_0, 8, _fb_1);\n      Term _f_8 = _fb_1[0];\n      u32 _f_9 = _fb_1[1];\n      u32 _f_10 = _fb_1[2];\n      Term _f_11 = _fb_1[3];\n      Term _f_12 = _fb_1[4];\n      u32 _f_13 = _fb_1[5];\n      u32 _f_14 = _fb_1[6];\n      u32 _f_15 = _fb_1[7];\n      term_sink(e, _f_8);\n      term_sink(e, _f_11);\n      term_sink(e, _f_12);\n      o[0] = term_ctr(CID_SCON, STAT_OFF + 4);\n      spare_free(e, cls_fit(8), _sp_1);\n    } else {\n      Term _fb_2[5];\n      u64 _sp_2 = ctr_take(e, _t_0, 5, _fb_2);\n      Term _f_16 = _fb_2[0];\n      u32 _f_17 = _fb_2[1];\n      Term _f_18 = _fb_2[2];\n      u32 _f_19 = _fb_2[3];\n      u32 _f_20 = _fb_2[4];\n      term_sink(e, _f_16);\n      term_sink(e, _f_18);\n      o[0] = term_ctr(CID_SCON, STAT_OFF + 10);\n      spare_free(e, cls_fit(5), _sp_2);\n    }\n  break;\n  }\n  return 1;\n}\n"
+    },
+    "families": {
+      "infer_node": {
+        "blocks": [
+          {
+            "symbol": "FID_INFER_NODE",
+            "line": 418046,
+            "bytes": 2714,
+            "spin_1": 1,
+            "term_keep": 11,
+            "term_sink": 0,
+            "heap_alloc": 2,
+            "term_clo": 4
+          },
+          {
+            "symbol": "FID_INFER_NODE_C15904",
+            "line": 418143,
+            "bytes": 1782,
+            "spin_1": 0,
+            "term_keep": 1,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_K15905",
+            "line": 418216,
+            "bytes": 2296,
+            "spin_1": 1,
+            "term_keep": 8,
+            "term_sink": 0,
+            "heap_alloc": 2,
+            "term_clo": 4
+          },
+          {
+            "symbol": "FID_INFER_NODE_C15906",
+            "line": 418296,
+            "bytes": 1377,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 1,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_C15907",
+            "line": 418346,
+            "bytes": 1617,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_K15908",
+            "line": 418412,
+            "bytes": 2173,
+            "spin_1": 0,
+            "term_keep": 1,
+            "term_sink": 0,
+            "heap_alloc": 2,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_C15909",
+            "line": 418487,
+            "bytes": 2499,
+            "spin_1": 0,
+            "term_keep": 11,
+            "term_sink": 0,
+            "heap_alloc": 2,
+            "term_clo": 4
+          },
+          {
+            "symbol": "FID_INFER_NODE_C15910",
+            "line": 418572,
+            "bytes": 2386,
+            "spin_1": 0,
+            "term_keep": 8,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_K15911",
+            "line": 418663,
+            "bytes": 2432,
+            "spin_1": 0,
+            "term_keep": 8,
+            "term_sink": 0,
+            "heap_alloc": 2,
+            "term_clo": 4
+          },
+          {
+            "symbol": "FID_INFER_NODE_C15912",
+            "line": 418747,
+            "bytes": 1431,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 1,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_C15913",
+            "line": 418797,
+            "bytes": 2718,
+            "spin_1": 0,
+            "term_keep": 8,
+            "term_sink": 0,
+            "heap_alloc": 2,
+            "term_clo": 4
+          },
+          {
+            "symbol": "FID_INFER_NODE_C15914",
+            "line": 418893,
+            "bytes": 1445,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 1,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_C15915",
+            "line": 418943,
+            "bytes": 2291,
+            "spin_1": 0,
+            "term_keep": 9,
+            "term_sink": 0,
+            "heap_alloc": 2,
+            "term_clo": 4
+          },
+          {
+            "symbol": "FID_INFER_NODE_C15916",
+            "line": 419018,
+            "bytes": 1609,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 1,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_C15917",
+            "line": 419076,
+            "bytes": 2836,
+            "spin_1": 0,
+            "term_keep": 14,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_K15918",
+            "line": 419176,
+            "bytes": 5457,
+            "spin_1": 1,
+            "term_keep": 17,
+            "term_sink": 1,
+            "heap_alloc": 2,
+            "term_clo": 4
+          },
+          {
+            "symbol": "FID_INFER_NODE_C15919",
+            "line": 419379,
+            "bytes": 1446,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 1,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_C15920",
+            "line": 419429,
+            "bytes": 2801,
+            "spin_1": 0,
+            "term_keep": 9,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_K15921",
+            "line": 419534,
+            "bytes": 2975,
+            "spin_1": 0,
+            "term_keep": 16,
+            "term_sink": 1,
+            "heap_alloc": 2,
+            "term_clo": 4
+          },
+          {
+            "symbol": "FID_INFER_NODE_C15922",
+            "line": 419633,
+            "bytes": 2497,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_K15923",
+            "line": 419729,
+            "bytes": 2934,
+            "spin_1": 0,
+            "term_keep": 7,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_K15924",
+            "line": 419834,
+            "bytes": 2950,
+            "spin_1": 0,
+            "term_keep": 7,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_K15925",
+            "line": 419940,
+            "bytes": 4224,
+            "spin_1": 0,
+            "term_keep": 23,
+            "term_sink": 7,
+            "heap_alloc": 2,
+            "term_clo": 4
+          },
+          {
+            "symbol": "FID_INFER_NODE_C15926",
+            "line": 420087,
+            "bytes": 2330,
+            "spin_1": 0,
+            "term_keep": 8,
+            "term_sink": 0,
+            "heap_alloc": 1,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_C15927",
+            "line": 420168,
+            "bytes": 847,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 1,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_C15928",
+            "line": 420199,
+            "bytes": 847,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 1,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_C15929",
+            "line": 420230,
+            "bytes": 2478,
+            "spin_1": 0,
+            "term_keep": 10,
+            "term_sink": 0,
+            "heap_alloc": 2,
+            "term_clo": 4
+          },
+          {
+            "symbol": "FID_INFER_NODE_C15930",
+            "line": 420312,
+            "bytes": 1682,
+            "spin_1": 0,
+            "term_keep": 1,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_K15931",
+            "line": 420378,
+            "bytes": 1760,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_K15932",
+            "line": 420446,
+            "bytes": 2572,
+            "spin_1": 0,
+            "term_keep": 16,
+            "term_sink": 0,
+            "heap_alloc": 2,
+            "term_clo": 4
+          },
+          {
+            "symbol": "FID_INFER_NODE_C15933",
+            "line": 420528,
+            "bytes": 2217,
+            "spin_1": 0,
+            "term_keep": 8,
+            "term_sink": 0,
+            "heap_alloc": 1,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_K15934",
+            "line": 420609,
+            "bytes": 805,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 1,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_C15935",
+            "line": 420639,
+            "bytes": 867,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 1,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_C15936",
+            "line": 420670,
+            "bytes": 2409,
+            "spin_1": 0,
+            "term_keep": 9,
+            "term_sink": 0,
+            "heap_alloc": 2,
+            "term_clo": 4
+          },
+          {
+            "symbol": "FID_INFER_NODE_C15937",
+            "line": 420750,
+            "bytes": 1709,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 1,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_C15938",
+            "line": 420807,
+            "bytes": 2409,
+            "spin_1": 0,
+            "term_keep": 9,
+            "term_sink": 0,
+            "heap_alloc": 2,
+            "term_clo": 4
+          },
+          {
+            "symbol": "FID_INFER_NODE_C15939",
+            "line": 420887,
+            "bytes": 1512,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 1,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_C15940",
+            "line": 420938,
+            "bytes": 2517,
+            "spin_1": 0,
+            "term_keep": 10,
+            "term_sink": 0,
+            "heap_alloc": 2,
+            "term_clo": 4
+          },
+          {
+            "symbol": "FID_INFER_NODE_C15941",
+            "line": 421021,
+            "bytes": 1765,
+            "spin_1": 0,
+            "term_keep": 1,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_K15942",
+            "line": 421090,
+            "bytes": 2846,
+            "spin_1": 0,
+            "term_keep": 8,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_K15943",
+            "line": 421193,
+            "bytes": 3131,
+            "spin_1": 0,
+            "term_keep": 16,
+            "term_sink": 0,
+            "heap_alloc": 2,
+            "term_clo": 4
+          },
+          {
+            "symbol": "FID_INFER_NODE_C15944",
+            "line": 421294,
+            "bytes": 2573,
+            "spin_1": 0,
+            "term_keep": 1,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_K15945",
+            "line": 421393,
+            "bytes": 4020,
+            "spin_1": 0,
+            "term_keep": 8,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_K15946",
+            "line": 421540,
+            "bytes": 2266,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_K15947",
+            "line": 421629,
+            "bytes": 825,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 1,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_C15948",
+            "line": 421659,
+            "bytes": 867,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 1,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_C15949",
+            "line": 421690,
+            "bytes": 2483,
+            "spin_1": 0,
+            "term_keep": 10,
+            "term_sink": 0,
+            "heap_alloc": 2,
+            "term_clo": 4
+          },
+          {
+            "symbol": "FID_INFER_NODE_C15950",
+            "line": 421772,
+            "bytes": 1682,
+            "spin_1": 0,
+            "term_keep": 1,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_K15951",
+            "line": 421838,
+            "bytes": 3055,
+            "spin_1": 0,
+            "term_keep": 10,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_K15952",
+            "line": 421952,
+            "bytes": 3070,
+            "spin_1": 0,
+            "term_keep": 16,
+            "term_sink": 0,
+            "heap_alloc": 2,
+            "term_clo": 4
+          },
+          {
+            "symbol": "FID_INFER_NODE_C15953",
+            "line": 422051,
+            "bytes": 2490,
+            "spin_1": 0,
+            "term_keep": 1,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_K15954",
+            "line": 422147,
+            "bytes": 2657,
+            "spin_1": 0,
+            "term_keep": 1,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_K15955",
+            "line": 422246,
+            "bytes": 4831,
+            "spin_1": 0,
+            "term_keep": 11,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_K15956",
+            "line": 422426,
+            "bytes": 2433,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_K15957",
+            "line": 422521,
+            "bytes": 825,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 1,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_C15958",
+            "line": 422551,
+            "bytes": 867,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 1,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_C15959",
+            "line": 422582,
+            "bytes": 2517,
+            "spin_1": 0,
+            "term_keep": 10,
+            "term_sink": 0,
+            "heap_alloc": 2,
+            "term_clo": 4
+          },
+          {
+            "symbol": "FID_INFER_NODE_C15960",
+            "line": 422665,
+            "bytes": 1846,
+            "spin_1": 0,
+            "term_keep": 1,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_K15961",
+            "line": 422737,
+            "bytes": 1981,
+            "spin_1": 0,
+            "term_keep": 1,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_K15962",
+            "line": 422812,
+            "bytes": 3048,
+            "spin_1": 0,
+            "term_keep": 8,
+            "term_sink": 0,
+            "heap_alloc": 1,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_K15963",
+            "line": 422920,
+            "bytes": 3138,
+            "spin_1": 0,
+            "term_keep": 16,
+            "term_sink": 0,
+            "heap_alloc": 2,
+            "term_clo": 4
+          },
+          {
+            "symbol": "FID_INFER_NODE_C15964",
+            "line": 423021,
+            "bytes": 2829,
+            "spin_1": 0,
+            "term_keep": 8,
+            "term_sink": 0,
+            "heap_alloc": 2,
+            "term_clo": 4
+          },
+          {
+            "symbol": "FID_INFER_NODE_C15965",
+            "line": 423114,
+            "bytes": 3524,
+            "spin_1": 0,
+            "term_keep": 32,
+            "term_sink": 8,
+            "heap_alloc": 1,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_C15966",
+            "line": 423223,
+            "bytes": 3936,
+            "spin_1": 0,
+            "term_keep": 16,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_K15967",
+            "line": 423363,
+            "bytes": 4482,
+            "spin_1": 1,
+            "term_keep": 17,
+            "term_sink": 0,
+            "heap_alloc": 2,
+            "term_clo": 4
+          },
+          {
+            "symbol": "FID_INFER_NODE_C15968",
+            "line": 423513,
+            "bytes": 2692,
+            "spin_1": 0,
+            "term_keep": 1,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_K15969",
+            "line": 423615,
+            "bytes": 2868,
+            "spin_1": 0,
+            "term_keep": 1,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_K15970",
+            "line": 423720,
+            "bytes": 3032,
+            "spin_1": 0,
+            "term_keep": 1,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_K15971",
+            "line": 423832,
+            "bytes": 2868,
+            "spin_1": 0,
+            "term_keep": 1,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_K15972",
+            "line": 423937,
+            "bytes": 3036,
+            "spin_1": 0,
+            "term_keep": 1,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_K15973",
+            "line": 424049,
+            "bytes": 2854,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_K15974",
+            "line": 424154,
+            "bytes": 4123,
+            "spin_1": 0,
+            "term_keep": 8,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_K15975",
+            "line": 424305,
+            "bytes": 2263,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_K15976",
+            "line": 424395,
+            "bytes": 825,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 1,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_C15977",
+            "line": 424425,
+            "bytes": 3006,
+            "spin_1": 0,
+            "term_keep": 16,
+            "term_sink": 0,
+            "heap_alloc": 1,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_C15978",
+            "line": 424520,
+            "bytes": 867,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 1,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_C15979",
+            "line": 424551,
+            "bytes": 2468,
+            "spin_1": 0,
+            "term_keep": 10,
+            "term_sink": 0,
+            "heap_alloc": 2,
+            "term_clo": 4
+          },
+          {
+            "symbol": "FID_INFER_NODE_C15980",
+            "line": 424632,
+            "bytes": 2413,
+            "spin_1": 0,
+            "term_keep": 8,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_K15981",
+            "line": 424720,
+            "bytes": 2031,
+            "spin_1": 0,
+            "term_keep": 1,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_K15982",
+            "line": 424796,
+            "bytes": 2934,
+            "spin_1": 0,
+            "term_keep": 10,
+            "term_sink": 0,
+            "heap_alloc": 2,
+            "term_clo": 4
+          },
+          {
+            "symbol": "FID_INFER_NODE_C15983",
+            "line": 424895,
+            "bytes": 2027,
+            "spin_1": 0,
+            "term_keep": 1,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_K15984",
+            "line": 424977,
+            "bytes": 1910,
+            "spin_1": 0,
+            "term_keep": 8,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_K15985",
+            "line": 425048,
+            "bytes": 825,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 1,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_C15986",
+            "line": 425078,
+            "bytes": 2265,
+            "spin_1": 0,
+            "term_keep": 6,
+            "term_sink": 0,
+            "heap_alloc": 2,
+            "term_clo": 4
+          },
+          {
+            "symbol": "FID_INFER_NODE_C15987",
+            "line": 425157,
+            "bytes": 1322,
+            "spin_1": 0,
+            "term_keep": 1,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_K15988",
+            "line": 425209,
+            "bytes": 1391,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_K15989",
+            "line": 425263,
+            "bytes": 1671,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 1,
+            "heap_alloc": 0,
+            "term_clo": 4
+          },
+          {
+            "symbol": "FID_INFER_NODE_C15990",
+            "line": 425323,
+            "bytes": 158,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_C15991",
+            "line": 425333,
+            "bytes": 158,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_K15992",
+            "line": 425343,
+            "bytes": 1297,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_K15993",
+            "line": 425392,
+            "bytes": 1327,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_K15994",
+            "line": 425440,
+            "bytes": 1214,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_K15995",
+            "line": 425486,
+            "bytes": 1164,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 1,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_C15996",
+            "line": 425524,
+            "bytes": 1148,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_K15997",
+            "line": 425570,
+            "bytes": 1161,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_K15998",
+            "line": 425612,
+            "bytes": 1165,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_K15999",
+            "line": 425654,
+            "bytes": 1130,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 1,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_C16000",
+            "line": 425691,
+            "bytes": 2435,
+            "spin_1": 0,
+            "term_keep": 10,
+            "term_sink": 0,
+            "heap_alloc": 2,
+            "term_clo": 4
+          },
+          {
+            "symbol": "FID_INFER_NODE_C16001",
+            "line": 425771,
+            "bytes": 1708,
+            "spin_1": 0,
+            "term_keep": 1,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_K16002",
+            "line": 425837,
+            "bytes": 2958,
+            "spin_1": 0,
+            "term_keep": 8,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_K16003",
+            "line": 425943,
+            "bytes": 3080,
+            "spin_1": 0,
+            "term_keep": 16,
+            "term_sink": 0,
+            "heap_alloc": 2,
+            "term_clo": 4
+          },
+          {
+            "symbol": "FID_INFER_NODE_C16004",
+            "line": 426042,
+            "bytes": 2526,
+            "spin_1": 0,
+            "term_keep": 1,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_K16005",
+            "line": 426138,
+            "bytes": 2694,
+            "spin_1": 0,
+            "term_keep": 1,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_K16006",
+            "line": 426237,
+            "bytes": 5023,
+            "spin_1": 0,
+            "term_keep": 16,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_K16007",
+            "line": 426416,
+            "bytes": 5088,
+            "spin_1": 0,
+            "term_keep": 24,
+            "term_sink": 0,
+            "heap_alloc": 2,
+            "term_clo": 4
+          },
+          {
+            "symbol": "FID_INFER_NODE_C16008",
+            "line": 426583,
+            "bytes": 3344,
+            "spin_1": 0,
+            "term_keep": 1,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_K16009",
+            "line": 426709,
+            "bytes": 3552,
+            "spin_1": 0,
+            "term_keep": 1,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_K16010",
+            "line": 426838,
+            "bytes": 4865,
+            "spin_1": 0,
+            "term_keep": 8,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_K16011",
+            "line": 427015,
+            "bytes": 5181,
+            "spin_1": 0,
+            "term_keep": 17,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_K16012",
+            "line": 427199,
+            "bytes": 4514,
+            "spin_1": 0,
+            "term_keep": 8,
+            "term_sink": 0,
+            "heap_alloc": 3,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_K16013",
+            "line": 427355,
+            "bytes": 825,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 1,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_C16014",
+            "line": 427385,
+            "bytes": 867,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 1,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_C16015",
+            "line": 427416,
+            "bytes": 867,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 1,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_C16016",
+            "line": 427447,
+            "bytes": 2359,
+            "spin_1": 0,
+            "term_keep": 9,
+            "term_sink": 0,
+            "heap_alloc": 2,
+            "term_clo": 4
+          },
+          {
+            "symbol": "FID_INFER_NODE_C16017",
+            "line": 427525,
+            "bytes": 1792,
+            "spin_1": 0,
+            "term_keep": 1,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_K16018",
+            "line": 427594,
+            "bytes": 3046,
+            "spin_1": 0,
+            "term_keep": 8,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_K16019",
+            "line": 427703,
+            "bytes": 3141,
+            "spin_1": 0,
+            "term_keep": 16,
+            "term_sink": 0,
+            "heap_alloc": 2,
+            "term_clo": 4
+          },
+          {
+            "symbol": "FID_INFER_NODE_C16020",
+            "line": 427804,
+            "bytes": 2610,
+            "spin_1": 0,
+            "term_keep": 1,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_K16021",
+            "line": 427903,
+            "bytes": 2782,
+            "spin_1": 0,
+            "term_keep": 1,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_K16022",
+            "line": 428005,
+            "bytes": 4040,
+            "spin_1": 0,
+            "term_keep": 8,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_K16023",
+            "line": 428153,
+            "bytes": 2390,
+            "spin_1": 0,
+            "term_keep": 1,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_K16024",
+            "line": 428243,
+            "bytes": 2521,
+            "spin_1": 0,
+            "term_keep": 1,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_K16025",
+            "line": 428336,
+            "bytes": 3288,
+            "spin_1": 0,
+            "term_keep": 8,
+            "term_sink": 0,
+            "heap_alloc": 2,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_K16026",
+            "line": 428453,
+            "bytes": 825,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 1,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_C16027",
+            "line": 428483,
+            "bytes": 867,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 1,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_C16028",
+            "line": 428514,
+            "bytes": 2094,
+            "spin_1": 0,
+            "term_keep": 7,
+            "term_sink": 1,
+            "heap_alloc": 2,
+            "term_clo": 4
+          },
+          {
+            "symbol": "FID_INFER_NODE_C16029",
+            "line": 428585,
+            "bytes": 1480,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 1,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_C16030",
+            "line": 428635,
+            "bytes": 1859,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 4
+          },
+          {
+            "symbol": "FID_INFER_NODE_C16031",
+            "line": 428703,
+            "bytes": 158,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_C16032",
+            "line": 428713,
+            "bytes": 158,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_K16033",
+            "line": 428723,
+            "bytes": 1511,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 1,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_INFER_NODE_K16034",
+            "line": 428774,
+            "bytes": 628,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          }
+        ],
+        "totals": {
+          "bytes": 300527,
+          "spin_1": 4,
+          "term_keep": 669,
+          "term_sink": 19,
+          "heap_alloc": 99,
+          "term_clo": 128
+        }
+      },
+      "check_node": {
+        "blocks": [
+          {
+            "symbol": "FID_CHECK_NODE",
+            "line": 495970,
+            "bytes": 2712,
+            "spin_1": 1,
+            "term_keep": 11,
+            "term_sink": 0,
+            "heap_alloc": 2,
+            "term_clo": 4
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18793",
+            "line": 496068,
+            "bytes": 2220,
+            "spin_1": 0,
+            "term_keep": 8,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18794",
+            "line": 496153,
+            "bytes": 2393,
+            "spin_1": 0,
+            "term_keep": 8,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18795",
+            "line": 496241,
+            "bytes": 2189,
+            "spin_1": 0,
+            "term_keep": 9,
+            "term_sink": 0,
+            "heap_alloc": 2,
+            "term_clo": 4
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18796",
+            "line": 496315,
+            "bytes": 1417,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 1,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18797",
+            "line": 496367,
+            "bytes": 1718,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18798",
+            "line": 496434,
+            "bytes": 1635,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18799",
+            "line": 496501,
+            "bytes": 793,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 1,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18800",
+            "line": 496531,
+            "bytes": 2489,
+            "spin_1": 0,
+            "term_keep": 11,
+            "term_sink": 0,
+            "heap_alloc": 2,
+            "term_clo": 4
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18801",
+            "line": 496616,
+            "bytes": 2156,
+            "spin_1": 0,
+            "term_keep": 7,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18802",
+            "line": 496698,
+            "bytes": 2406,
+            "spin_1": 1,
+            "term_keep": 8,
+            "term_sink": 0,
+            "heap_alloc": 2,
+            "term_clo": 4
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18803",
+            "line": 496780,
+            "bytes": 2869,
+            "spin_1": 0,
+            "term_keep": 4,
+            "term_sink": 0,
+            "heap_alloc": 1,
+            "term_clo": 4
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18804",
+            "line": 496889,
+            "bytes": 125,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18805",
+            "line": 496899,
+            "bytes": 234,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18806",
+            "line": 496914,
+            "bytes": 4592,
+            "spin_1": 0,
+            "term_keep": 22,
+            "term_sink": 0,
+            "heap_alloc": 2,
+            "term_clo": 4
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18807",
+            "line": 497072,
+            "bytes": 1738,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18808",
+            "line": 497141,
+            "bytes": 1826,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18809",
+            "line": 497214,
+            "bytes": 825,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 1,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18810",
+            "line": 497244,
+            "bytes": 1487,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 1,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18811",
+            "line": 497296,
+            "bytes": 3285,
+            "spin_1": 0,
+            "term_keep": 16,
+            "term_sink": 0,
+            "heap_alloc": 2,
+            "term_clo": 4
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18812",
+            "line": 497405,
+            "bytes": 3468,
+            "spin_1": 0,
+            "term_keep": 2,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18813",
+            "line": 497547,
+            "bytes": 1896,
+            "spin_1": 0,
+            "term_keep": 1,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18814",
+            "line": 497622,
+            "bytes": 2023,
+            "spin_1": 0,
+            "term_keep": 1,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18815",
+            "line": 497700,
+            "bytes": 2105,
+            "spin_1": 0,
+            "term_keep": 1,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18816",
+            "line": 497781,
+            "bytes": 2769,
+            "spin_1": 0,
+            "term_keep": 3,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18817",
+            "line": 497891,
+            "bytes": 2382,
+            "spin_1": 0,
+            "term_keep": 2,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18818",
+            "line": 497988,
+            "bytes": 2413,
+            "spin_1": 0,
+            "term_keep": 16,
+            "term_sink": 0,
+            "heap_alloc": 2,
+            "term_clo": 4
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18819",
+            "line": 498067,
+            "bytes": 2331,
+            "spin_1": 0,
+            "term_keep": 9,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18820",
+            "line": 498153,
+            "bytes": 2142,
+            "spin_1": 0,
+            "term_keep": 9,
+            "term_sink": 0,
+            "heap_alloc": 2,
+            "term_clo": 4
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18821",
+            "line": 498221,
+            "bytes": 2250,
+            "spin_1": 0,
+            "term_keep": 9,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18822",
+            "line": 498304,
+            "bytes": 2758,
+            "spin_1": 0,
+            "term_keep": 8,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18823",
+            "line": 498405,
+            "bytes": 1387,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 1,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18824",
+            "line": 498450,
+            "bytes": 2251,
+            "spin_1": 0,
+            "term_keep": 9,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18825",
+            "line": 498533,
+            "bytes": 2869,
+            "spin_1": 0,
+            "term_keep": 16,
+            "term_sink": 8,
+            "heap_alloc": 2,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18826",
+            "line": 498626,
+            "bytes": 867,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 1,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18827",
+            "line": 498657,
+            "bytes": 847,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 1,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18828",
+            "line": 498688,
+            "bytes": 1446,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 1,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18829",
+            "line": 498738,
+            "bytes": 2573,
+            "spin_1": 0,
+            "term_keep": 11,
+            "term_sink": 0,
+            "heap_alloc": 2,
+            "term_clo": 4
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18830",
+            "line": 498823,
+            "bytes": 2227,
+            "spin_1": 0,
+            "term_keep": 7,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18831",
+            "line": 498905,
+            "bytes": 2453,
+            "spin_1": 1,
+            "term_keep": 8,
+            "term_sink": 0,
+            "heap_alloc": 2,
+            "term_clo": 4
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18832",
+            "line": 498987,
+            "bytes": 2457,
+            "spin_1": 0,
+            "term_keep": 8,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18833",
+            "line": 499078,
+            "bytes": 2186,
+            "spin_1": 0,
+            "term_keep": 1,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18834",
+            "line": 499163,
+            "bytes": 2289,
+            "spin_1": 0,
+            "term_keep": 2,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18835",
+            "line": 499251,
+            "bytes": 2167,
+            "spin_1": 0,
+            "term_keep": 1,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18836",
+            "line": 499333,
+            "bytes": 3459,
+            "spin_1": 0,
+            "term_keep": 11,
+            "term_sink": 0,
+            "heap_alloc": 2,
+            "term_clo": 4
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18837",
+            "line": 499455,
+            "bytes": 2678,
+            "spin_1": 0,
+            "term_keep": 8,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18838",
+            "line": 499555,
+            "bytes": 2001,
+            "spin_1": 0,
+            "term_keep": 1,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18839",
+            "line": 499634,
+            "bytes": 1410,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18840",
+            "line": 499692,
+            "bytes": 825,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 1,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18841",
+            "line": 499722,
+            "bytes": 2080,
+            "spin_1": 0,
+            "term_keep": 2,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18842",
+            "line": 499804,
+            "bytes": 2898,
+            "spin_1": 0,
+            "term_keep": 9,
+            "term_sink": 0,
+            "heap_alloc": 2,
+            "term_clo": 4
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18843",
+            "line": 499905,
+            "bytes": 1804,
+            "spin_1": 0,
+            "term_keep": 1,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18844",
+            "line": 499975,
+            "bytes": 1899,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18845",
+            "line": 500047,
+            "bytes": 2180,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 1,
+            "heap_alloc": 0,
+            "term_clo": 4
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18846",
+            "line": 500125,
+            "bytes": 156,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18847",
+            "line": 500135,
+            "bytes": 156,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18848",
+            "line": 500145,
+            "bytes": 1807,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18849",
+            "line": 500212,
+            "bytes": 1836,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18850",
+            "line": 500278,
+            "bytes": 1721,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18851",
+            "line": 500342,
+            "bytes": 1693,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 1,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18852",
+            "line": 500400,
+            "bytes": 2332,
+            "spin_1": 0,
+            "term_keep": 8,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18853",
+            "line": 500485,
+            "bytes": 2331,
+            "spin_1": 0,
+            "term_keep": 9,
+            "term_sink": 0,
+            "heap_alloc": 2,
+            "term_clo": 4
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18854",
+            "line": 500561,
+            "bytes": 1804,
+            "spin_1": 0,
+            "term_keep": 1,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18855",
+            "line": 500631,
+            "bytes": 2351,
+            "spin_1": 0,
+            "term_keep": 7,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18856",
+            "line": 500716,
+            "bytes": 1885,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18857",
+            "line": 500786,
+            "bytes": 1836,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18858",
+            "line": 500852,
+            "bytes": 1840,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18859",
+            "line": 500918,
+            "bytes": 1721,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18860",
+            "line": 500982,
+            "bytes": 1754,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18861",
+            "line": 501045,
+            "bytes": 1693,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 1,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18862",
+            "line": 501103,
+            "bytes": 2235,
+            "spin_1": 0,
+            "term_keep": 7,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18863",
+            "line": 501185,
+            "bytes": 1714,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 1,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18864",
+            "line": 501243,
+            "bytes": 1480,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 1,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18865",
+            "line": 501293,
+            "bytes": 2834,
+            "spin_1": 0,
+            "term_keep": 12,
+            "term_sink": 0,
+            "heap_alloc": 2,
+            "term_clo": 4
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18866",
+            "line": 501385,
+            "bytes": 2257,
+            "spin_1": 0,
+            "term_keep": 7,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18867",
+            "line": 501467,
+            "bytes": 2469,
+            "spin_1": 1,
+            "term_keep": 8,
+            "term_sink": 0,
+            "heap_alloc": 2,
+            "term_clo": 4
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18868",
+            "line": 501549,
+            "bytes": 2568,
+            "spin_1": 0,
+            "term_keep": 8,
+            "term_sink": 0,
+            "heap_alloc": 2,
+            "term_clo": 4
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18869",
+            "line": 501637,
+            "bytes": 1519,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 1,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18870",
+            "line": 501687,
+            "bytes": 1874,
+            "spin_1": 0,
+            "term_keep": 1,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18871",
+            "line": 501759,
+            "bytes": 2393,
+            "spin_1": 0,
+            "term_keep": 7,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18872",
+            "line": 501844,
+            "bytes": 2631,
+            "spin_1": 0,
+            "term_keep": 8,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18873",
+            "line": 501938,
+            "bytes": 3067,
+            "spin_1": 1,
+            "term_keep": 9,
+            "term_sink": 0,
+            "heap_alloc": 2,
+            "term_clo": 4
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18874",
+            "line": 502043,
+            "bytes": 2762,
+            "spin_1": 1,
+            "term_keep": 12,
+            "term_sink": 0,
+            "heap_alloc": 2,
+            "term_clo": 4
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18875",
+            "line": 502135,
+            "bytes": 2376,
+            "spin_1": 0,
+            "term_keep": 8,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18876",
+            "line": 502220,
+            "bytes": 2410,
+            "spin_1": 0,
+            "term_keep": 7,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18877",
+            "line": 502305,
+            "bytes": 2222,
+            "spin_1": 0,
+            "term_keep": 8,
+            "term_sink": 0,
+            "heap_alloc": 2,
+            "term_clo": 4
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18878",
+            "line": 502376,
+            "bytes": 1526,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 1,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18879",
+            "line": 502428,
+            "bytes": 2326,
+            "spin_1": 0,
+            "term_keep": 8,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18880",
+            "line": 502513,
+            "bytes": 1966,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18881",
+            "line": 502589,
+            "bytes": 1671,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18882",
+            "line": 502650,
+            "bytes": 1754,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18883",
+            "line": 502713,
+            "bytes": 1715,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 1,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18884",
+            "line": 502771,
+            "bytes": 2577,
+            "spin_1": 0,
+            "term_keep": 8,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18885",
+            "line": 502865,
+            "bytes": 2326,
+            "spin_1": 0,
+            "term_keep": 1,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18886",
+            "line": 502953,
+            "bytes": 2182,
+            "spin_1": 0,
+            "term_keep": 1,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18887",
+            "line": 503035,
+            "bytes": 2731,
+            "spin_1": 0,
+            "term_keep": 10,
+            "term_sink": 0,
+            "heap_alloc": 2,
+            "term_clo": 4
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18888",
+            "line": 503125,
+            "bytes": 1710,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18889",
+            "line": 503192,
+            "bytes": 1754,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18890",
+            "line": 503255,
+            "bytes": 1754,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18891",
+            "line": 503318,
+            "bytes": 1715,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 1,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18892",
+            "line": 503376,
+            "bytes": 2891,
+            "spin_1": 0,
+            "term_keep": 9,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18893",
+            "line": 503482,
+            "bytes": 3723,
+            "spin_1": 0,
+            "term_keep": 11,
+            "term_sink": 0,
+            "heap_alloc": 1,
+            "term_clo": 4
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18894",
+            "line": 503603,
+            "bytes": 126,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18895",
+            "line": 503613,
+            "bytes": 2455,
+            "spin_1": 0,
+            "term_keep": 7,
+            "term_sink": 0,
+            "heap_alloc": 4,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18896",
+            "line": 503692,
+            "bytes": 3342,
+            "spin_1": 0,
+            "term_keep": 7,
+            "term_sink": 0,
+            "heap_alloc": 2,
+            "term_clo": 4
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18897",
+            "line": 503799,
+            "bytes": 4114,
+            "spin_1": 0,
+            "term_keep": 17,
+            "term_sink": 0,
+            "heap_alloc": 2,
+            "term_clo": 4
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18898",
+            "line": 503933,
+            "bytes": 929,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 1,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18899",
+            "line": 503966,
+            "bytes": 2783,
+            "spin_1": 0,
+            "term_keep": 7,
+            "term_sink": 1,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18900",
+            "line": 504068,
+            "bytes": 3424,
+            "spin_1": 0,
+            "term_keep": 15,
+            "term_sink": 0,
+            "heap_alloc": 2,
+            "term_clo": 4
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18901",
+            "line": 504178,
+            "bytes": 845,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 1,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18902",
+            "line": 504209,
+            "bytes": 1709,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18903",
+            "line": 504273,
+            "bytes": 497,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 1,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18904",
+            "line": 504293,
+            "bytes": 3095,
+            "spin_1": 0,
+            "term_keep": 14,
+            "term_sink": 7,
+            "heap_alloc": 1,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18905",
+            "line": 504388,
+            "bytes": 2268,
+            "spin_1": 0,
+            "term_keep": 1,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18906",
+            "line": 504472,
+            "bytes": 3295,
+            "spin_1": 0,
+            "term_keep": 9,
+            "term_sink": 1,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18907",
+            "line": 504590,
+            "bytes": 3164,
+            "spin_1": 0,
+            "term_keep": 1,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18908",
+            "line": 504708,
+            "bytes": 3283,
+            "spin_1": 0,
+            "term_keep": 16,
+            "term_sink": 0,
+            "heap_alloc": 2,
+            "term_clo": 4
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18909",
+            "line": 504813,
+            "bytes": 3773,
+            "spin_1": 0,
+            "term_keep": 10,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18910",
+            "line": 504949,
+            "bytes": 2987,
+            "spin_1": 0,
+            "term_keep": 1,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18911",
+            "line": 505057,
+            "bytes": 6897,
+            "spin_1": 1,
+            "term_keep": 18,
+            "term_sink": 1,
+            "heap_alloc": 2,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18912",
+            "line": 505310,
+            "bytes": 2263,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18913",
+            "line": 505400,
+            "bytes": 825,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 1,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18914",
+            "line": 505430,
+            "bytes": 867,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 1,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18915",
+            "line": 505461,
+            "bytes": 1501,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 1,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18916",
+            "line": 505511,
+            "bytes": 1559,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18917",
+            "line": 505571,
+            "bytes": 1610,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 1,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18918",
+            "line": 505622,
+            "bytes": 1502,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 1,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18919",
+            "line": 505672,
+            "bytes": 2535,
+            "spin_1": 0,
+            "term_keep": 10,
+            "term_sink": 0,
+            "heap_alloc": 2,
+            "term_clo": 4
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18920",
+            "line": 505754,
+            "bytes": 2146,
+            "spin_1": 0,
+            "term_keep": 7,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18921",
+            "line": 505830,
+            "bytes": 2393,
+            "spin_1": 1,
+            "term_keep": 8,
+            "term_sink": 0,
+            "heap_alloc": 2,
+            "term_clo": 4
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18922",
+            "line": 505908,
+            "bytes": 1738,
+            "spin_1": 0,
+            "term_keep": 1,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18923",
+            "line": 505974,
+            "bytes": 1866,
+            "spin_1": 0,
+            "term_keep": 1,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18924",
+            "line": 506043,
+            "bytes": 2409,
+            "spin_1": 0,
+            "term_keep": 7,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18925",
+            "line": 506127,
+            "bytes": 2153,
+            "spin_1": 0,
+            "term_keep": 8,
+            "term_sink": 0,
+            "heap_alloc": 2,
+            "term_clo": 4
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18926",
+            "line": 506195,
+            "bytes": 1548,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 1,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18927",
+            "line": 506247,
+            "bytes": 1656,
+            "spin_1": 0,
+            "term_keep": 1,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18928",
+            "line": 506310,
+            "bytes": 1683,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18929",
+            "line": 506373,
+            "bytes": 1606,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 1,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18930",
+            "line": 506425,
+            "bytes": 1502,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 1,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18931",
+            "line": 506475,
+            "bytes": 2535,
+            "spin_1": 0,
+            "term_keep": 10,
+            "term_sink": 0,
+            "heap_alloc": 2,
+            "term_clo": 4
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18932",
+            "line": 506557,
+            "bytes": 2352,
+            "spin_1": 0,
+            "term_keep": 8,
+            "term_sink": 0,
+            "heap_alloc": 2,
+            "term_clo": 4
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18933",
+            "line": 506635,
+            "bytes": 1548,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 1,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18934",
+            "line": 506687,
+            "bytes": 1502,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 1,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18935",
+            "line": 506737,
+            "bytes": 2660,
+            "spin_1": 0,
+            "term_keep": 11,
+            "term_sink": 0,
+            "heap_alloc": 2,
+            "term_clo": 4
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18936",
+            "line": 506822,
+            "bytes": 2260,
+            "spin_1": 0,
+            "term_keep": 2,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18937",
+            "line": 506907,
+            "bytes": 837,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 1,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18938",
+            "line": 506937,
+            "bytes": 2608,
+            "spin_1": 0,
+            "term_keep": 10,
+            "term_sink": 0,
+            "heap_alloc": 2,
+            "term_clo": 4
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18939",
+            "line": 507020,
+            "bytes": 1907,
+            "spin_1": 0,
+            "term_keep": 1,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18940",
+            "line": 507092,
+            "bytes": 3005,
+            "spin_1": 0,
+            "term_keep": 8,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18941",
+            "line": 507198,
+            "bytes": 3264,
+            "spin_1": 0,
+            "term_keep": 16,
+            "term_sink": 0,
+            "heap_alloc": 2,
+            "term_clo": 4
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18942",
+            "line": 507301,
+            "bytes": 4051,
+            "spin_1": 0,
+            "term_keep": 16,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18943",
+            "line": 507444,
+            "bytes": 5465,
+            "spin_1": 1,
+            "term_keep": 27,
+            "term_sink": 0,
+            "heap_alloc": 2,
+            "term_clo": 4
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18944",
+            "line": 507620,
+            "bytes": 4703,
+            "spin_1": 0,
+            "term_keep": 16,
+            "term_sink": 0,
+            "heap_alloc": 3,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18945",
+            "line": 507777,
+            "bytes": 2953,
+            "spin_1": 0,
+            "term_keep": 8,
+            "term_sink": 0,
+            "heap_alloc": 2,
+            "term_clo": 4
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18946",
+            "line": 507870,
+            "bytes": 2904,
+            "spin_1": 0,
+            "term_keep": 1,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18947",
+            "line": 507979,
+            "bytes": 3045,
+            "spin_1": 0,
+            "term_keep": 1,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18948",
+            "line": 508090,
+            "bytes": 3131,
+            "spin_1": 0,
+            "term_keep": 1,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18949",
+            "line": 508204,
+            "bytes": 5514,
+            "spin_1": 0,
+            "term_keep": 8,
+            "term_sink": 0,
+            "heap_alloc": 3,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18950",
+            "line": 508385,
+            "bytes": 3787,
+            "spin_1": 0,
+            "term_keep": 1,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18951",
+            "line": 508524,
+            "bytes": 3873,
+            "spin_1": 0,
+            "term_keep": 8,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18952",
+            "line": 508664,
+            "bytes": 3911,
+            "spin_1": 0,
+            "term_keep": 16,
+            "term_sink": 0,
+            "heap_alloc": 2,
+            "term_clo": 4
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18953",
+            "line": 508789,
+            "bytes": 3592,
+            "spin_1": 0,
+            "term_keep": 1,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18954",
+            "line": 508924,
+            "bytes": 3812,
+            "spin_1": 0,
+            "term_keep": 1,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18955",
+            "line": 509062,
+            "bytes": 3758,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18956",
+            "line": 509198,
+            "bytes": 3812,
+            "spin_1": 0,
+            "term_keep": 1,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18957",
+            "line": 509336,
+            "bytes": 3758,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18958",
+            "line": 509472,
+            "bytes": 4718,
+            "spin_1": 0,
+            "term_keep": 9,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18959",
+            "line": 509640,
+            "bytes": 3687,
+            "spin_1": 0,
+            "term_keep": 11,
+            "term_sink": 0,
+            "heap_alloc": 2,
+            "term_clo": 4
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18960",
+            "line": 509758,
+            "bytes": 3592,
+            "spin_1": 0,
+            "term_keep": 1,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18961",
+            "line": 509893,
+            "bytes": 3812,
+            "spin_1": 0,
+            "term_keep": 1,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18962",
+            "line": 510031,
+            "bytes": 3801,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18963",
+            "line": 510169,
+            "bytes": 3758,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18964",
+            "line": 510305,
+            "bytes": 3791,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18965",
+            "line": 510440,
+            "bytes": 4984,
+            "spin_1": 0,
+            "term_keep": 8,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18966",
+            "line": 510621,
+            "bytes": 4359,
+            "spin_1": 0,
+            "term_keep": 16,
+            "term_sink": 0,
+            "heap_alloc": 3,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18967",
+            "line": 510770,
+            "bytes": 837,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 1,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18968",
+            "line": 510800,
+            "bytes": 1707,
+            "spin_1": 0,
+            "term_keep": 1,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18969",
+            "line": 510866,
+            "bytes": 1738,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18970",
+            "line": 510932,
+            "bytes": 1695,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18971",
+            "line": 510996,
+            "bytes": 1652,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18972",
+            "line": 511059,
+            "bytes": 1609,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18973",
+            "line": 511120,
+            "bytes": 2564,
+            "spin_1": 0,
+            "term_keep": 8,
+            "term_sink": 0,
+            "heap_alloc": 1,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18974",
+            "line": 511203,
+            "bytes": 887,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 1,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18975",
+            "line": 511234,
+            "bytes": 2509,
+            "spin_1": 0,
+            "term_keep": 8,
+            "term_sink": 0,
+            "heap_alloc": 1,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18976",
+            "line": 511315,
+            "bytes": 2541,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18977",
+            "line": 511411,
+            "bytes": 5062,
+            "spin_1": 0,
+            "term_keep": 16,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18978",
+            "line": 511589,
+            "bytes": 837,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 1,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18979",
+            "line": 511619,
+            "bytes": 899,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 1,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18980",
+            "line": 511650,
+            "bytes": 2707,
+            "spin_1": 0,
+            "term_keep": 7,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18981",
+            "line": 511748,
+            "bytes": 2954,
+            "spin_1": 0,
+            "term_keep": 16,
+            "term_sink": 7,
+            "heap_alloc": 2,
+            "term_clo": 4
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18982",
+            "line": 511841,
+            "bytes": 3097,
+            "spin_1": 0,
+            "term_keep": 17,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18983",
+            "line": 511947,
+            "bytes": 2070,
+            "spin_1": 0,
+            "term_keep": 9,
+            "term_sink": 0,
+            "heap_alloc": 2,
+            "term_clo": 4
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18984",
+            "line": 512011,
+            "bytes": 1969,
+            "spin_1": 0,
+            "term_keep": 8,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18985",
+            "line": 512082,
+            "bytes": 837,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 1,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18986",
+            "line": 512112,
+            "bytes": 3082,
+            "spin_1": 0,
+            "term_keep": 16,
+            "term_sink": 0,
+            "heap_alloc": 1,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_C18987",
+            "line": 512208,
+            "bytes": 899,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 1,
+            "term_clo": 0
+          },
+          {
+            "symbol": "FID_CHECK_NODE_K18988",
+            "line": 512239,
+            "bytes": 646,
+            "spin_1": 0,
+            "term_keep": 0,
+            "term_sink": 0,
+            "heap_alloc": 0,
+            "term_clo": 0
+          }
+        ],
+        "totals": {
+          "bytes": 459142,
+          "spin_1": 9,
+          "term_keep": 925,
+          "term_sink": 26,
+          "heap_alloc": 136,
+          "term_clo": 164
+        }
+      }
+    }
+  },
+  "scope": "Syntactic calls within WL_CASE families, including inlined branch work. Not dynamic counts or timing. spin_1 is authenticated below by its complete generated constructor observer body."
+}

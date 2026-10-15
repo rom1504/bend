@@ -1,0 +1,79 @@
+{
+  "schema": "phase98-independent-challenges-aggregate-v1",
+  "frozenAt": "2026-10-15T20:19:28.072933+00:00",
+  "manifests": [
+    {
+      "path": "selfhost/tools/laws/phase98/challenge/manifest.json",
+      "bytes": 3123,
+      "sha256": "e833a5dacf7ff2f6a1cd0643199b052067f39d5ce81d795308ac487a641c8cef"
+    },
+    {
+      "path": "selfhost/tools/laws/phase98/challenge/literal-manifest01.json",
+      "bytes": 980,
+      "sha256": "72f7929949f241ebce32f9692c80582cce360b1cc4acda68d72d69dd4ff583da"
+    },
+    {
+      "path": "selfhost/tools/laws/phase98/challenge/candidate-manifest02.json",
+      "bytes": 1218,
+      "sha256": "6ffaa9b3d4ed9d3c3717eda2d56cdebaf5b732c9468dfa76655cad41b4a2b8a5"
+    }
+  ],
+  "cases": [
+    {
+      "path": "selfhost/tools/laws/phase98/challenge/bad01-logical-literal-is-constructor.json",
+      "bytes": 1934,
+      "sha256": "36e3d9f2759487d8f26efa5191d17dc9d44bd9267c923866dbad7fe9b5609579"
+    },
+    {
+      "path": "selfhost/tools/laws/phase98/challenge/bad02-lambda-observation-loses-variant.json",
+      "bytes": 2086,
+      "sha256": "5b78ca1575f908aa2962c2d509baec065ecd78368830d9c02b76de4251e8b8c2"
+    },
+    {
+      "path": "selfhost/tools/laws/phase98/challenge/bad03-equality-forgets-last-mismatch.json",
+      "bytes": 1729,
+      "sha256": "b452eb37af4c6ff57379b1e4d9ed9c20744cc0d6ceafb53c9865e34c63dcee8b"
+    },
+    {
+      "path": "selfhost/tools/laws/phase98/challenge/bad04-order-forgets-earlier-mismatch.json",
+      "bytes": 1590,
+      "sha256": "b6b8a4add2ee5917624fa991922d6726f7fc2960afe783919be3da8ac734176a"
+    },
+    {
+      "path": "selfhost/tools/laws/phase98/challenge/bad05-equality-truncates-characters.json",
+      "bytes": 1697,
+      "sha256": "28f28a20b8103ba76a5e37bd585f70d5ef47bca0446800c64ae29b60fdef9a8c"
+    },
+    {
+      "path": "selfhost/tools/laws/phase98/challenge/good01-reconstruct-literal-exactly.json",
+      "bytes": 2740,
+      "sha256": "7c4d9cdb43ebd4f60e0a465d30c92b2e8848d8bd87717ac6911553180ac6f6a1"
+    },
+    {
+      "path": "selfhost/tools/laws/phase98/challenge/good02-character-equality-by-codepoint.json",
+      "bytes": 1751,
+      "sha256": "76ab7a79d1c5a5bd2760cb0ae894d891f532a306d920aa1088443660edaecc19"
+    },
+    {
+      "path": "selfhost/tools/laws/phase98/challenge/bad06-literal-recognizer-accepts-prefix.json",
+      "bytes": 1678,
+      "sha256": "3510df0a1aa96f351b9bf00ab1ee479072043c81c82cea0cfbe716725809a37b"
+    },
+    {
+      "path": "selfhost/tools/laws/phase98/challenge/bad07-dispatch-loses-alternative.json",
+      "bytes": 1681,
+      "sha256": "b4e320a29cacc4d8fc7d646a5d937b92da61fb500f11042cae1d61a6ff1f3fdc"
+    },
+    {
+      "path": "selfhost/tools/laws/phase98/challenge/bad08-held-observation-repeats-left.json",
+      "bytes": 1760,
+      "sha256": "53bf0fb3937c57b9b13a7e68c7fc7d505dc36eebab8293478b263175b0a26350"
+    }
+  ],
+  "counts": {
+    "bad": 8,
+    "good": 2
+  },
+  "targetsRun": false,
+  "boundary": "All ten choices frozen before reading Phase98 law bodies, finite case bodies, oracles or results."
+}

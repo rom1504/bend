@@ -1,0 +1,54 @@
+{
+  "kind": "phase98-fused-tag-controls-held-context",
+  "complete": true,
+  "targetsRun": false,
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/held-source02/compiler.bend",
+      "bytes": 1759452,
+      "sha256": "5debb63d0c3f2fdd2b096cff9fd30e6770c06438a26216e6daa3af9569b26c46"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/core/term.bend",
+      "bytes": 19671,
+      "sha256": "d75234683496e33fcb59cd3598979245700733236d9326025d298f9c33ef33d3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase98/comparison/tag-helpers01.bend",
+      "bytes": 1160,
+      "sha256": "77668984b983c1688ff59e05a8b34bb93a30066fdb5dd1ed36035b11b132eb8e"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase98/comparison/tag-controls.tail.bend",
+      "bytes": 1444,
+      "sha256": "336c2738b976aeea0ee07e0ebb54438a10efbcd2bbf13894130a6d61449bb1ce"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase98/comparison/prepare-tag-controls-v2.py",
+      "bytes": 2430,
+      "sha256": "dc17a1cce56d38a480ee7c889664e2d15cca59d5a01a9e2238f403f7270deaa7"
+    }
+  ],
+  "outputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase98/comparison/tag-controls02/candidate.bend",
+      "bytes": 3881,
+      "sha256": "2ba9ac2083711dd8020e5ba43d9ddd005bef4fa83d85cf67048fc2513009cecd"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase98/comparison/tag-controls02/baseline.bend",
+      "bytes": 3903,
+      "sha256": "4b9eeb8ccbdf69d629fab608f9ad82b3a0862da7492098ed8c9d6282662c2454"
+    }
+  ],
+  "cases": 96,
+  "reference": "Exact production tg body renamed; exact D04 safe recursive walker plus proved held-simple wrapper. Native full products include originalterm/key and bothBoolean observations.",
+  "scopes": "All3termconstructors,completechildren/removals/spans/quantityflag/literalpayload,empty/arbitrarytags,Unicode,prefix/longsuffixcases. No unboundedproof or native lifetime proof.",
+  "extraction": {
+    "termTypesExact": true,
+    "tagBodyExactExceptName": true,
+    "d04WalkerExact": true,
+    "heldSimpleWrapperExact": true
+  },
+  "oracle": "Baseline emits reference twice; candidate emits reference and newfusedobserver. Require whole stdout equality across actual native baseline/candidate, then inspect all96Boolresults and complete preservedvalues. No target run by preparer."
+}

@@ -1,0 +1,111 @@
+{
+  "kind": "phase98-fused-tag-v3-c-mechanism-audit",
+  "complete": true,
+  "targetsRun": false,
+  "c": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/tag-control-checked03/program.c",
+    "sha256": "8c52f1ff31b8a65d3972b12dac05633554df319e9548d97fb81572e852bc1ae3",
+    "bytes": 95496
+  },
+  "checked": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/tag-control-checked03/report.json",
+    "sha256": "a77283f20183835612d4258222636d559d2d3388c4a14a44119d7fef45f60ada",
+    "bytes": 17690
+  },
+  "source": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase98/comparison/tag-controls03/candidate.bend",
+    "sha256": "ac5f9cdf39d31a7166fe7352afb5e5433c4a95e174261e7b98be25a19b69ec81",
+    "bytes": 3397
+  },
+  "functions": {
+    "spin_0": {
+      "startLine": 1283,
+      "counts": {
+        "term_peek": 0,
+        "ctr_take": 0,
+        "term_sink": 0,
+        "term_keep": 0,
+        "spare_free": 0,
+        "heap_alloc": 0
+      },
+      "sha256": "34e5fb70c5b0bfb1cd413360deefc7262e754b4e7221a19f3abd1e8aaecff254",
+      "text": "INLINE Term spin_0(Env e, THR Term* o, Term r0, Term r1) {\n  u32 wpoll = 0;\n  Term _a_0 = r0;\n  Term _b_0 = r1;\n  WL_SPIN\n    u32 _v_0 = 0;\n    Term _o_1[1];\n    if (spin_1(e, _o_1, _a_0, _b_0, 1) == 0) {\n      return 0;\n    }\n    _v_0 = (u32)_o_1[0];\n    Term _o_2[1];\n    if (spin_3(e, _o_2, _v_0, _a_0, _b_0) == 0) {\n      return 0;\n    }\n    o[0] = (u32)_o_2[0];\n  break;\n  }"
+    },
+    "spin_1": {
+      "startLine": 1221,
+      "counts": {
+        "term_peek": 3,
+        "ctr_take": 0,
+        "term_sink": 0,
+        "term_keep": 0,
+        "spare_free": 0,
+        "heap_alloc": 0
+      },
+      "sha256": "7da3cd2a8f48086899801253cca15f7302b532e48556bf0949dec8aadfb555bf",
+      "text": "INLINE Term spin_1(Env e, THR Term* o, Term r0, Term r1, u32 r2) {\n  u32 wpoll = 0;\n  Term _a_1 = r0;\n  Term _b_1 = r1;\n  u32 _same_0 = r2;\n  WL_SPIN\n    if (term_aux(_a_1) == CID_SNIL) {\n      if (term_aux(_b_1) == CID_SNIL) {\n        o[0] = _same_0;\n      } else {\n        u64 _sp_1 = term_peek(e.mem, _b_1);\n        u32 _f_8 = e.mem[_sp_1 + 0];\n        Term _f_9 = e.mem[_sp_1 + 1];\n        o[0] = 0;\n      }\n    } else {\n      u64 _sp_2 = term_peek(e.mem, _a_1);\n      u32 _f_10 = e.mem[_sp_2 + 0];\n      Term _f_11 = e.mem[_sp_2 + 1];\n      if (term_aux(_b_1) == CID_SNIL) {\n        o[0] = 0;\n      } else {\n        u64 _sp_3 = term_peek(e.mem, _b_1);\n        u32 _f_12 = e.mem[_sp_3 + 0];\n        Term _f_13 = e.mem[_sp_3 + 1];\n        if (_same_0 == 0) {\n          o[0] = 0;\n        } else {\n          u32 _v_1 = 0;\n          Term _o_0[1];\n          if (spin_2(e, _o_0, _f_10, _f_12) == 0) {\n            return 0;\n          }\n          _v_1 = (u32)_o_0[0];\n          r0 = _f_11;\n          r1 = _f_13;\n          r2 = _v_1;\n          _a_1 = r0;\n          _b_1 = r1;\n          _same_0 = r2;\n          WL_AGAIN(spin_1);\n        }\n      }\n    }\n  break;\n  }"
+    },
+    "spin_3": {
+      "startLine": 1270,
+      "counts": {
+        "term_peek": 0,
+        "ctr_take": 0,
+        "term_sink": 1,
+        "term_keep": 0,
+        "spare_free": 0,
+        "heap_alloc": 0
+      },
+      "sha256": "8cab49e202132e7a641bd1ebd195edde1e858600494b4fe9f417a7559a7e3cc0",
+      "text": "INLINE Term spin_3(Env e, THR Term* o, u32 r0, Term r1, Term r2) {\n  u32 wpoll = 0;\n  u32 _same_1 = r0;\n  Term _left_0 = r1;\n  Term _right_0 = r2;\n  WL_SPIN\n    term_sink(e, _left_0);\n    o[0] = _same_1;\n  break;\n  }"
+    },
+    "spin_4": {
+      "startLine": 1304,
+      "counts": {
+        "term_peek": 0,
+        "ctr_take": 3,
+        "term_sink": 8,
+        "term_keep": 0,
+        "spare_free": 3,
+        "heap_alloc": 0
+      },
+      "sha256": "61435564272bb6b181235a2477adaf6ac05720b42e7bba250cb93a96d1fa357c",
+      "text": "INLINE Term spin_4(Env e, THR Term* o, Term r0, Term r1) {\n  u32 wpoll = 0;\n  Term _term_1 = r0;\n  Term _key_1 = r1;\n  WL_SPIN\n    if (term_aux(_term_1) == CID_KTERM) {\n      Term _fb_0[8];\n      u64 _sp_0 = ctr_take(e, _term_1, 8, _fb_0);\n      Term _f_0 = _fb_0[0];\n      Term _f_1 = _fb_0[1];\n      u32 _f_2 = _fb_0[2];\n      u32 _f_3 = _fb_0[3];\n      Term _f_4 = _fb_0[4];\n      Term _f_5 = _fb_0[5];\n      u32 _f_6 = _fb_0[6];\n      u32 _f_7 = _fb_0[7];\n      term_sink(e, _f_1);\n      term_sink(e, _f_4);\n      term_sink(e, _f_5);\n      Term _o_0[1];\n      if (spin_0(e, _o_0, _f_0, _key_1) == 0) {\n        return 0;\n      }\n      o[0] = (u32)_o_0[0];\n      spare_free(e, cls_fit(8), _sp_0);\n    } else if (term_aux(_term_1) == CID_KLAMBDA) {\n      Term _fb_1[8];\n      u64 _sp_1 = ctr_take(e, _term_1, 8, _fb_1);\n      Term _f_8 = _fb_1[0];\n      u32 _f_9 = _fb_1[1];\n      u32 _f_10 = _fb_1[2];\n      Term _f_11 = _fb_1[3];\n      Term _f_12 = _fb_1[4];\n      u32 _f_13 = _fb_1[5];\n      u32 _f_14 = _fb_1[6];\n      u32 _f_15 = _fb_1[7];\n      term_sink(e, _f_8);\n      term_sink(e, _f_11);\n      term_sink(e, _f_12);\n      Term _o_1[1];\n      if (spin_0(e, _o_1, term_ctr(CID_SCON, STAT_OFF + 4), _key_1) == 0) {\n        return 0;\n      }\n      o[0] = (u32)_o_1[0];\n      spare_free(e, cls_fit(8), _sp_1);\n    } else {\n      Term _fb_2[5];\n      u64 _sp_2 = ctr_take(e, _term_1, 5, _fb_2);\n      Term _f_16 = _fb_2[0];\n      u32 _f_17 = _fb_2[1];\n      Term _f_18 = _fb_2[2];\n      u32 _f_19 = _fb_2[3];\n      u32 _f_20 = _fb_2[4];\n      term_sink(e, _f_16);\n      term_sink(e, _f_18);\n      Term _o_2[1];\n      if (spin_0(e, _o_2, term_ctr(CID_SCON, STAT_OFF + 10), _key_1) == 0) {\n        return 0;\n      }\n      o[0] = (u32)_o_2[0];\n      spare_free(e, cls_fit(5), _sp_2);\n    }\n  break;\n  }"
+    },
+    "spin_5": {
+      "startLine": 1371,
+      "counts": {
+        "term_peek": 0,
+        "ctr_take": 0,
+        "term_sink": 2,
+        "term_keep": 0,
+        "spare_free": 0,
+        "heap_alloc": 0
+      },
+      "sha256": "b4d10f1d326aa5f8cd7054b063e16fd5a7addc48b5a7a65773ebca8fe4d5515e",
+      "text": "INLINE Term spin_5(Env e, THR Term* o, u32 r0, Term r1, Term r2) {\n  u32 wpoll = 0;\n  u32 _same_0 = r0;\n  Term _term_2 = r1;\n  Term _key_2 = r2;\n  WL_SPIN\n    term_sink(e, _term_2);\n    term_sink(e, _key_2);\n    o[0] = _same_0;\n  break;\n  }"
+    },
+    "spin_6": {
+      "startLine": 1385,
+      "counts": {
+        "term_peek": 0,
+        "ctr_take": 3,
+        "term_sink": 8,
+        "term_keep": 0,
+        "spare_free": 3,
+        "heap_alloc": 0
+      },
+      "sha256": "b99701a332aba134b344f56f8679884d759716c4ce9eab61769c0775535476da",
+      "text": "INLINE Term spin_6(Env e, THR Term* o, Term r0) {\n  u32 wpoll = 0;\n  Term _t_0 = r0;\n  WL_SPIN\n    if (term_aux(_t_0) == CID_KTERM) {\n      Term _fb_0[8];\n      u64 _sp_0 = ctr_take(e, _t_0, 8, _fb_0);\n      Term _f_0 = _fb_0[0];\n      Term _f_1 = _fb_0[1];\n      u32 _f_2 = _fb_0[2];\n      u32 _f_3 = _fb_0[3];\n      Term _f_4 = _fb_0[4];\n      Term _f_5 = _fb_0[5];\n      u32 _f_6 = _fb_0[6];\n      u32 _f_7 = _fb_0[7];\n      term_sink(e, _f_1);\n      term_sink(e, _f_4);\n      term_sink(e, _f_5);\n      o[0] = _f_0;\n      spare_free(e, cls_fit(8), _sp_0);\n    } else if (term_aux(_t_0) == CID_KLAMBDA) {\n      Term _fb_1[8];\n      u64 _sp_1 = ctr_take(e, _t_0, 8, _fb_1);\n      Term _f_8 = _fb_1[0];\n      u32 _f_9 = _fb_1[1];\n      u32 _f_10 = _fb_1[2];\n      Term _f_11 = _fb_1[3];\n      Term _f_12 = _fb_1[4];\n      u32 _f_13 = _fb_1[5];\n      u32 _f_14 = _fb_1[6];\n      u32 _f_15 = _fb_1[7];\n      term_sink(e, _f_8);\n      term_sink(e, _f_11);\n      term_sink(e, _f_12);\n      o[0] = term_ctr(CID_SCON, STAT_OFF + 4);\n      spare_free(e, cls_fit(8), _sp_1);\n    } else {\n      Term _fb_2[5];\n      u64 _sp_2 = ctr_take(e, _t_0, 5, _fb_2);\n      Term _f_16 = _fb_2[0];\n      u32 _f_17 = _fb_2[1];\n      Term _f_18 = _fb_2[2];\n      u32 _f_19 = _fb_2[3];\n      u32 _f_20 = _fb_2[4];\n      term_sink(e, _f_16);\n      term_sink(e, _f_18);\n      o[0] = term_ctr(CID_SCON, STAT_OFF + 10);\n      spare_free(e, cls_fit(5), _sp_2);\n    }\n  break;\n  }"
+    }
+  },
+  "roles": {
+    "spin_0": "held public equality",
+    "spin_1": "private equality walker",
+    "spin_3": "equality finish",
+    "spin_4": "candidate tag read",
+    "spin_5": "tag finish",
+    "spin_6": "original tag projection"
+  },
+  "mechanismPassed": false,
+  "conclusion": "Generic field crosses the owning public equality wrapper; tag read still takes all3 term variants, drops unrelated fields and frees shells. The private equality walker stays borrowed but the intended whole-term borrowed observation was not obtained. Do not launch full v3 compiler build based on this result.",
+  "limits": "Source correctness and failed performance mechanism are separate. Counts are static C sites, not runtime costs."
+}

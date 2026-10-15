@@ -1,0 +1,103 @@
+{
+  "kind": "phase98-held-own-backend-real-io-control-c-audit",
+  "complete": true,
+  "executionPerformed": false,
+  "c": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/held-io-own01.c",
+    "bytes": 183193,
+    "sha256": "b2eecded9d060df59cbfa7d119f0fa4647a54eb47489991702f501dfd51c5caa"
+  },
+  "source": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase98/comparison/held-io-smoke01.bend",
+    "bytes": 1139,
+    "sha256": "446a575b7f4192686fbb24abc939d39eb4df09522dcddbe1c2c2a7a1ced9356f"
+  },
+  "defines": [
+    [
+      "NATIVE_READONLY_OBSERVERS",
+      "0"
+    ],
+    [
+      "NATIVE_PACK_CTORS",
+      "1"
+    ],
+    [
+      "NATIVE_TYPED_SCALARS",
+      "0"
+    ],
+    [
+      "NATIVE_COLD_USER_CTORS",
+      "0"
+    ],
+    [
+      "NATIVE_SCALAR_ARRAYS",
+      "0"
+    ],
+    [
+      "NATIVE_UNSHARED_ARRAYS",
+      "0"
+    ],
+    [
+      "NATIVE_SCALAR_ARRAYS",
+      "0"
+    ],
+    [
+      "NATIVE_UNSHARED_ARRAYS",
+      "0"
+    ]
+  ],
+  "functions": {
+    "p98_eq_walk": {
+      "name": "p98_eq_walk",
+      "startLine": 1661,
+      "bytes": 5072,
+      "sha256": "6c2ca1ef35dec1f2536a37047508381d12560afb5baff6cc092d769192e320b4",
+      "counts": {
+        "term_peek": 0,
+        "ctr_take": 3,
+        "term_sink": 24,
+        "term_keep": 0,
+        "spare_free": 3,
+        "heap_alloc": 0
+      },
+      "text": "INLINE Term NF_FID_112_57_56_95_101_113_95_119_97_108_107_(Env e, bool seq, Term* nf_out, Term v_4294967295, Term v_4294967294, NF_SCALAR v_4294967293) {\nu32 nf_poll = 0;\nnf_again:;\nif (err_spun(e.mem, &nf_poll)) { return 0; }\n{\nTerm v_4294967292;\n{\nv_4294967292 = v_4294967295;\ngoto nf_join_6;\n}\nnf_join_6:;\nif (!seq && err_seen(e.mem)) { return 0; }\nTerm v_4294967291;\n{\nv_4294967291 = v_4294967294;\ngoto nf_join_7;\n}\nnf_join_7:;\nif (!seq && err_seen(e.mem)) { return 0; }\nTerm v_4294967290;\n{\nv_4294967290 = v_4294967293;\ngoto nf_join_8;\n}\nnf_join_8:;\nif (!seq && err_seen(e.mem)) { return 0; }\nif ((term_aux(v_4294967292) == CID_SNIL)) {\nTerm v_4294967286;\n{\nv_4294967286 = v_4294967291;\ngoto nf_join_11;\n}\nnf_join_11:;\nif (!seq && err_seen(e.mem)) { return 0; }\nTerm v_4294967285;\n{\nv_4294967285 = v_4294967290;\ngoto nf_join_12;\n}\nnf_join_12:;\nif (!seq && err_seen(e.mem)) { return 0; }\nif ((term_aux(v_4294967286) == CID_SNIL)) {\nnf_out[0] = v_4294967285;\nreturn 1;\n} else {\nTerm v_4294967282;\n{\nv_4294967282 = v_4294967286;\ngoto nf_join_15;\n}\nnf_join_15:;\nif (!seq && err_seen(e.mem)) { return 0; }\nTerm v_4294967281;\n{\nv_4294967281 = v_4294967285;\ngoto nf_join_16;\n}\nnf_join_16:;\nif (!seq && err_seen(e.mem)) { return 0; }\nif ((term_aux(v_4294967282) == CID_SCON)) {\nTerm fields[2];\nspare_free(e, cls_fit(2), ctr_take(e, v_4294967282, 2, fields));\n#if !DEVICE && NATIVE_FIELD32_CID_SCON_0\nu32\n#else\nTerm\n#endif\nv_4294967278 = fields[0];\n#if !DEVICE && NATIVE_FIELD32_CID_SCON_1\nu32\n#else\nTerm\n#endif\nv_4294967277 = fields[1];\nterm_sink(e, v_4294967281);\nterm_sink(e, v_4294967278);\nterm_sink(e, v_4294967277);\nnf_out[0] = 0ull;\nreturn 1;\n} else {\nterm_sink(e, v_4294967282);\nterm_sink(e, v_4294967281);\nerr_post(e.mem, ERR_FIDS); return 0;\n}\n}\n} else {\nTerm v_4294967276;\n{\nv_4294967276 = v_4294967292;\ngoto nf_join_22;\n}\nnf_join_22:;\nif (!seq && err_seen(e.mem)) { return 0; }\nTerm v_4294967275;\n{\nv_4294967275 = v_4294967291;\ngoto nf_join_23;\n}\nnf_join_23:;\nif (!seq && err_seen(e.mem)) { return 0; }\nTerm v_4294967274;\n{\nv_4294967274 = v_4294967290;\ngoto nf_join_24;\n}\nnf_join_24:;\nif (!seq && err_seen(e.mem)) { return 0; }\nif ((term_aux(v_4294967276) == CID_SCON)) {\nTerm fields[2];\nspare_free(e, cls_fit(2), ctr_take(e, v_4294967276, 2, fields));\n#if !DEVICE && NATIVE_FIELD32_CID_SCON_0\nu32\n#else\nTerm\n#endif\nv_4294967270 = fields[0];\n#if !DEVICE && NATIVE_FIELD32_CID_SCON_1\nu32\n#else\nTerm\n#endif\nv_4294967269 = fields[1];\nTerm v_4294967268;\n{\nv_4294967268 = v_4294967275;\ngoto nf_join_29;\n}\nnf_join_29:;\nif (!seq && err_seen(e.mem)) { return 0; }\nTerm v_4294967267;\n{\nv_4294967267 = v_4294967274;\ngoto nf_join_30;\n}\nnf_join_30:;\nif (!seq && err_seen(e.mem)) { return 0; }\nif ((term_aux(v_4294967268) == CID_SNIL)) {\nterm_sink(e, v_4294967270);\nterm_sink(e, v_4294967269);\nterm_sink(e, v_4294967267);\nnf_out[0] = 0ull;\nreturn 1;\n} else {\nTerm v_4294967264;\n{\nv_4294967264 = v_4294967268;\ngoto nf_join_33;\n}\nnf_join_33:;\nif (!seq && err_seen(e.mem)) { return 0; }\nTerm v_4294967263;\n{\nv_4294967263 = v_4294967267;\ngoto nf_join_34;\n}\nnf_join_34:;\nif (!seq && err_seen(e.mem)) { return 0; }\nif ((term_aux(v_4294967264) == CID_SCON)) {\nTerm fields[2];\nspare_free(e, cls_fit(2), ctr_take(e, v_4294967264, 2, fields));\n#if !DEVICE && NATIVE_FIELD32_CID_SCON_0\nu32\n#else\nTerm\n#endif\nv_4294967260 = fields[0];\n#if !DEVICE && NATIVE_FIELD32_CID_SCON_1\nu32\n#else\nTerm\n#endif\nv_4294967259 = fields[1];\nif ((!native_bool(v_4294967263))) {\nterm_sink(e, v_4294967270);\nterm_sink(e, v_4294967269);\nterm_sink(e, v_4294967260);\nterm_sink(e, v_4294967259);\nnf_out[0] = 0ull;\nreturn 1;\n} else {\nif (native_bool(v_4294967263)) {\nTerm v_4294967258;\n{\nv_4294967258 = v_4294967269;\ngoto nf_join_40;\n}\nnf_join_40:;\nif (!seq && err_seen(e.mem)) { return 0; }\nTerm v_4294967257;\n{\nv_4294967257 = v_4294967259;\ngoto nf_join_41;\n}\nnf_join_41:;\nif (!seq && err_seen(e.mem)) { return 0; }\nTerm v_4294967256;\n{\nTerm v_4294967252;\n{\nv_4294967252 = v_4294967270;\ngoto nf_join_45;\n}\nnf_join_45:;\nif (!seq && err_seen(e.mem)) { return 0; }\nTerm v_4294967251;\n{\nv_4294967251 = v_4294967260;\ngoto nf_join_46;\n}\nnf_join_46:;\nif (!seq && err_seen(e.mem)) { return 0; }\nTerm nq_result_47[1];\nif (!NF_FID_67_104_97_114_46_105_115_95_101_113_(e, seq, nq_result_47, v_4294967252, v_4294967251)) { return 0; }\nv_4294967256 = nq_result_47[0];\ngoto nf_join_42;\n}\nnf_join_42:;\nif (!seq && err_seen(e.mem)) { return 0; }\n{\nTerm nf_arg_0 = v_4294967258;\nTerm nf_arg_1 = v_4294967257;\nTerm nf_arg_2 = v_4294967256;\nv_4294967295 = nf_arg_0;\nv_4294967294 = nf_arg_1;\nv_4294967293 = nf_arg_2;\ngoto nf_again;\n}\n} else {\nterm_sink(e, v_4294967270);\nterm_sink(e, v_4294967269);\nterm_sink(e, v_4294967260);\nterm_sink(e, v_4294967259);\nterm_sink(e, v_4294967263);\nerr_post(e.mem, ERR_FIDS); return 0;\n}\n}\n} else {\nterm_sink(e, v_4294967270);\nterm_sink(e, v_4294967269);\nterm_sink(e, v_4294967264);\nterm_sink(e, v_4294967263);\nerr_post(e.mem, ERR_FIDS); return 0;\n}\n}\n} else {\nterm_sink(e, v_4294967276);\nterm_sink(e, v_4294967275);\nterm_sink(e, v_4294967274);\nerr_post(e.mem, ERR_FIDS); return 0;\n}\n}\n}\nreturn 0;\n}"
+    },
+    "p98_eq_finish": {
+      "name": "p98_eq_finish",
+      "startLine": 1915,
+      "bytes": 346,
+      "sha256": "95e0c0127c6b73c2ca8b540a817f15c0e7528b8c9f394743167986d341c38e27",
+      "counts": {
+        "term_peek": 0,
+        "ctr_take": 0,
+        "term_sink": 2,
+        "term_keep": 0,
+        "spare_free": 0,
+        "heap_alloc": 0
+      },
+      "text": "NF_INLINE Term NF_FID_112_57_56_95_101_113_95_102_105_110_105_115_104_(Env e, bool seq, Term* nf_out, NF_SCALAR v_4294967295, Term v_4294967294, Term v_4294967293) {\nu32 nf_poll = 0;\nnf_again:;\nif (err_spun(e.mem, &nf_poll)) { return 0; }\n{\nterm_sink(e, v_4294967294);\nterm_sink(e, v_4294967293);\nnf_out[0] = v_4294967295;\nreturn 1;\n}\nreturn 0;\n}"
+    },
+    "p98_string_eq": {
+      "name": "p98_string_eq",
+      "startLine": 1927,
+      "bytes": 1406,
+      "sha256": "1335c86eb1dfdd1faefb506e64352a9b8b267978a0474d7e37d1a367bed22f23",
+      "counts": {
+        "term_peek": 0,
+        "ctr_take": 0,
+        "term_sink": 0,
+        "term_keep": 2,
+        "spare_free": 0,
+        "heap_alloc": 0
+      },
+      "text": "NF_INLINE Term NF_FID_112_57_56_95_115_116_114_105_110_103_95_101_113_(Env e, bool seq, Term* nf_out, Term v_4294967295, Term v_4294967294) {\nu32 nf_poll = 0;\nnf_again:;\nif (err_spun(e.mem, &nf_poll)) { return 0; }\n{\nv_4294967295 = term_keep(e, v_4294967295);\nv_4294967294 = term_keep(e, v_4294967294);\nTerm v_4294967293;\n{\nTerm v_4294967286;\n{\nv_4294967286 = v_4294967295;\ngoto nf_join_12;\n}\nnf_join_12:;\nif (!seq && err_seen(e.mem)) { return 0; }\nTerm v_4294967285;\n{\nv_4294967285 = v_4294967294;\ngoto nf_join_13;\n}\nnf_join_13:;\nif (!seq && err_seen(e.mem)) { return 0; }\nTerm v_4294967284;\n{\nv_4294967284 = 1ull;\ngoto nf_join_14;\n}\nnf_join_14:;\nif (!seq && err_seen(e.mem)) { return 0; }\nTerm nq_result_15[1];\nif (!NF_FID_112_57_56_95_101_113_95_119_97_108_107_(e, seq, nq_result_15, v_4294967286, v_4294967285, v_4294967284)) { return 0; }\nv_4294967293 = nq_result_15[0];\ngoto nf_join_5;\n}\nnf_join_5:;\nif (!seq && err_seen(e.mem)) { return 0; }\nTerm v_4294967292;\n{\nv_4294967292 = v_4294967295;\ngoto nf_join_6;\n}\nnf_join_6:;\nif (!seq && err_seen(e.mem)) { return 0; }\nTerm v_4294967291;\n{\nv_4294967291 = v_4294967294;\ngoto nf_join_7;\n}\nnf_join_7:;\nif (!seq && err_seen(e.mem)) { return 0; }\nTerm nq_result_8[1];\nif (!NF_FID_112_57_56_95_101_113_95_102_105_110_105_115_104_(e, seq, nq_result_8, v_4294967293, v_4294967292, v_4294967291)) { return 0; }\nnf_out[0] = nq_result_8[0];\nreturn 1;\n}\nreturn 0;\n}"
+    }
+  },
+  "observerWorkerPresent": false,
+  "conclusion": "Real IO.print_err control disables the existing global observer/scalar certificate. The comparison walker consumes each string cell; the new wrapper adds two keeps then releases roots in finish. Unlike upstream C, the source wrapper alone does not establish borrowed native B2 traversal. No global permission flag was changed.",
+  "limitations": [
+    "Static C operation sites are not dynamic counts or timings.",
+    "This IO control establishes a relevant false-certificate boundary; it does not enumerate every reason the full compiler certificate is false.",
+    "Source proofs do not prove runtime lifetimes."
+  ]
+}

@@ -1,0 +1,83 @@
+{
+  "kind": "phase98-held-full-compiler-c-audit",
+  "complete": true,
+  "executionPerformed": false,
+  "c": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/held-checked01/program.c",
+    "sha256": "108863b04c2f3b84a21ae69293b5c52d3acecc70fe003d97fbab1488a88265a9",
+    "bytes": 17765420
+  },
+  "checked": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/held-checked01/report.json",
+    "sha256": "40df9adc4c93a39f0129a9757039fca3f26508bb448cbb85543143d0d23a4dda",
+    "bytes": 17634
+  },
+  "source": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/held-source01/compiler.bend",
+    "bytes": 1759661,
+    "sha256": "81c017c841fde5491eeac8f260d9194028127d8ddf391baad5decc151960f5fd"
+  },
+  "functions": {
+    "walk": {
+      "name": "spin_4",
+      "startLine": 14240,
+      "bytes": 1161,
+      "sha256": "b7795f454e916c5cb227798d1ecd5aa99e0e376e85a3bdb280029d2cb7011265",
+      "counts": {
+        "term_peek": 3,
+        "ctr_take": 0,
+        "term_sink": 0,
+        "term_keep": 0,
+        "spare_free": 0,
+        "heap_alloc": 0
+      },
+      "text": "INLINE Term spin_4(Env e, THR Term* o, Term r0, Term r1, u32 r2) {\n  u32 wpoll = 0;\n  Term _a_2 = r0;\n  Term _b_2 = r1;\n  u32 _same_0 = r2;\n  WL_SPIN\n    if (term_aux(_a_2) == CID_SNIL) {\n      if (term_aux(_b_2) == CID_SNIL) {\n        o[0] = _same_0;\n      } else {\n        u64 _sp_3 = term_peek(e.mem, _b_2);\n        u32 _f_21 = e.mem[_sp_3 + 0];\n        Term _f_22 = e.mem[_sp_3 + 1];\n        o[0] = 0;\n      }\n    } else {\n      u64 _sp_4 = term_peek(e.mem, _a_2);\n      u32 _f_23 = e.mem[_sp_4 + 0];\n      Term _f_24 = e.mem[_sp_4 + 1];\n      if (term_aux(_b_2) == CID_SNIL) {\n        o[0] = 0;\n      } else {\n        u64 _sp_5 = term_peek(e.mem, _b_2);\n        u32 _f_25 = e.mem[_sp_5 + 0];\n        Term _f_26 = e.mem[_sp_5 + 1];\n        if (_same_0 == 0) {\n          o[0] = 0;\n        } else {\n          u32 _v_6 = 0;\n          Term _o_1[1];\n          if (spin_5(e, _o_1, _f_23, _f_25) == 0) {\n            return 0;\n          }\n          _v_6 = (u32)_o_1[0];\n          r0 = _f_24;\n          r1 = _f_26;\n          r2 = _v_6;\n          _a_2 = r0;\n          _b_2 = r1;\n          _same_0 = r2;\n          WL_AGAIN(spin_4);\n        }\n      }\n    }\n  break;\n  }"
+    },
+    "observe": {
+      "name": "spin_3",
+      "startLine": 14289,
+      "bytes": 315,
+      "sha256": "01c534c3b7460e4e27e2b6a3b86f2bb168dafe0f1fb97f49329788efb3cf9d61",
+      "counts": {
+        "term_peek": 0,
+        "ctr_take": 0,
+        "term_sink": 0,
+        "term_keep": 0,
+        "spare_free": 0,
+        "heap_alloc": 0
+      },
+      "text": "INLINE Term spin_3(Env e, THR Term* o, Term r0, Term r1) {\n  u32 wpoll = 0;\n  Term _a_1 = r0;\n  Term _b_1 = r1;\n  WL_SPIN\n    u32 _v_5 = 0;\n    Term _o_2[1];\n    if (spin_4(e, _o_2, _a_1, _b_1, 1) == 0) {\n      return 0;\n    }\n    _v_5 = (u32)_o_2[0];\n    o[0] = _v_5;\n    o[1] = _a_1;\n    o[2] = _b_1;\n  break;\n  }"
+    },
+    "finish": {
+      "name": "spin_6",
+      "startLine": 14308,
+      "bytes": 284,
+      "sha256": "e1cdf095cff5f60d7260fbcf830f9afacbc4b3dd60dcc6684a74cc907d2555b7",
+      "counts": {
+        "term_peek": 0,
+        "ctr_take": 0,
+        "term_sink": 2,
+        "term_keep": 0,
+        "spare_free": 0,
+        "heap_alloc": 0
+      },
+      "text": "INLINE Term spin_6(Env e, THR Term* o, u32 r0, Term r1, Term r2) {\n  u32 wpoll = 0;\n  u32 _observation_0 = r0;\n  Term _observation_1 = r1;\n  Term _observation_2 = r2;\n  WL_SPIN\n    term_sink(e, _observation_1);\n    term_sink(e, _observation_2);\n    o[0] = _observation_0;\n  break;\n  }"
+    },
+    "wrapper": {
+      "name": "spin_2",
+      "startLine": 14322,
+      "bytes": 454,
+      "sha256": "94508fcdbfdd557fdb07d180b22c65cb702962b1dcfcabdfb7114eb90da8519b",
+      "counts": {
+        "term_peek": 0,
+        "ctr_take": 0,
+        "term_sink": 0,
+        "term_keep": 0,
+        "spare_free": 0,
+        "heap_alloc": 0
+      },
+      "text": "INLINE Term spin_2(Env e, THR Term* o, Term r0, Term r1) {\n  u32 wpoll = 0;\n  Term _a_0 = r0;\n  Term _b_0 = r1;\n  WL_SPIN\n    u32 _v_2 = 0;\n    Term _v_3 = 0;\n    Term _v_4 = 0;\n    Term _o_3[3];\n    if (spin_3(e, _o_3, _a_0, _b_0) == 0) {\n      return 0;\n    }\n    _v_2 = (u32)_o_3[0];\n    _v_3 = _o_3[1];\n    _v_4 = _o_3[2];\n    Term _o_4[1];\n    if (spin_6(e, _o_4, _v_2, _v_3, _v_4) == 0) {\n      return 0;\n    }\n    o[0] = (u32)_o_4[0];\n  break;\n  }"
+    }
+  },
+  "conclusion": "All global fullcompiler callers retain borrowed privatewalker;3peek sites and no percell ownership operations. Flat threeword holder, two originalroot disposals afterread. Request speed evidence separate."
+}

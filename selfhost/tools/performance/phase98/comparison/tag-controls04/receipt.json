@@ -1,0 +1,54 @@
+{
+  "kind": "phase98-fused-tag-controls-borrowed-field-held-literal",
+  "complete": true,
+  "targetsRun": false,
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/held-source02/compiler.bend",
+      "bytes": 1759452,
+      "sha256": "5debb63d0c3f2fdd2b096cff9fd30e6770c06438a26216e6daa3af9569b26c46"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/core/term.bend",
+      "bytes": 19671,
+      "sha256": "d75234683496e33fcb59cd3598979245700733236d9326025d298f9c33ef33d3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase98/comparison/tag-helpers04.bend",
+      "bytes": 760,
+      "sha256": "186894e80cdc9ee435b1c7f9bf0fbdbcc439e81c509ab8b4725a8f2b944a2e64"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase98/comparison/tag-controls.tail.bend",
+      "bytes": 1444,
+      "sha256": "336c2738b976aeea0ee07e0ebb54438a10efbcd2bbf13894130a6d61449bb1ce"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase98/comparison/prepare-tag-controls-v4.py",
+      "bytes": 2579,
+      "sha256": "5d2eeb2ed1b605db58ce9f49e589b07255b6b628b39793c0ce4a652ad47be449"
+    }
+  ],
+  "outputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase98/comparison/tag-controls04/candidate.bend",
+      "bytes": 3481,
+      "sha256": "136e44369e31c2dacca12cab6d46320ea9d319dfa32f8c3ef046b8dc1cd2e084"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase98/comparison/tag-controls04/baseline.bend",
+      "bytes": 3503,
+      "sha256": "acdf109e9d4e623ca9918e7c3e885deb3394ec3a1198551f53eb7fe5d859c2ff"
+    }
+  ],
+  "cases": 96,
+  "reference": "Exact production tg body renamed; exact D04 safe recursive walker plus proved held-simple wrapper. Native full products include originalterm/key and bothBoolean observations.",
+  "scopes": "All3termconstructors,completechildren/removals/spans/quantityflag/literalpayload,empty/arbitrarytags,Unicode,prefix/longsuffixcases. KTerm uses exact borrowed walker; static Lam/Lit use proved public held equality; no numeric literal recognizer or new carrier type. No unbounded proof or native lifetime proof.",
+  "extraction": {
+    "termTypesExact": true,
+    "tagBodyExactExceptName": true,
+    "d04WalkerExact": true,
+    "heldSimpleWrapperExact": true
+  },
+  "oracle": "Baseline emits reference twice; candidate emits reference and newfusedobserver. Require whole stdout equality across actual native baseline/candidate, then inspect all96Boolresults and complete preservedvalues. No target run by preparer."
+}

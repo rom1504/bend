@@ -1,0 +1,68 @@
+{
+  "targetsRun": false,
+  "kind": "phase98-codepoint-maintenance-repair02",
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/held-formal-challenges01/good02-character-equality-by-codepoint/baseline.bend",
+      "bytes": 1295,
+      "sha256": "ef5ec1eda8c2f734f90a18140bb642050ed7655bfc9c294ed68caf81b668e95c"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/held-formal-challenges01/good02-character-equality-by-codepoint/candidate.bend",
+      "bytes": 782,
+      "sha256": "3ac73200186e2ce91b0fa90c83b5d7a9c4d6b832578362863085cb05572e9864"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/held-formal-challenges01/good02-character-equality-by-codepoint/held-exact.bend",
+      "bytes": 1586,
+      "sha256": "9669aa15e32362d106580b3381ed9a78a4b19bc8028869c7a352a399d83fc426"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/held-formal-challenges01/good02-character-equality-by-codepoint/production.bend",
+      "bytes": 449,
+      "sha256": "d1746d3570013f35e8e63b8dda7e94e789f1e602649265c8dbc424adc2d11a4d"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/held-formal-challenges01/good02-character-equality-by-codepoint/reference.bend",
+      "bytes": 520,
+      "sha256": "4eb34715897bd536791467b12222ce77b9d5cdc306032b1845760d6293041f2d"
+    }
+  ],
+  "before": "    case SCon{ah, at} SCon{bh, bt} True{}:\n      held_walk_equal(at, bt, Char.is_eq(ah, bh))",
+  "after": "    case SCon{Chr{av}, at} SCon{Chr{bv}, bt} True{}:\n      held_walk_equal(at, bt, U32.is_eq(av, bv))",
+  "unchangedPublicStatementsAndBodies": true,
+  "unchangedReference": true,
+  "earlierFailedRepair": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/held-formal-check01/good02-character-equality-by-codepoint-maintained.stderr",
+  "outputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/proofs/phase98/comparison/maintenance02/baseline.bend",
+      "bytes": 1295,
+      "sha256": "ef5ec1eda8c2f734f90a18140bb642050ed7655bfc9c294ed68caf81b668e95c"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/proofs/phase98/comparison/maintenance02/candidate.bend",
+      "bytes": 782,
+      "sha256": "3ac73200186e2ce91b0fa90c83b5d7a9c4d6b832578362863085cb05572e9864"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/proofs/phase98/comparison/maintenance02/held-exact.bend",
+      "bytes": 1595,
+      "sha256": "54161810d0047c18989ca563cdfd3c98c0bd343da3bcbf3a9e79cf0887b48bda"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/proofs/phase98/comparison/maintenance02/production.bend",
+      "bytes": 449,
+      "sha256": "d1746d3570013f35e8e63b8dda7e94e789f1e602649265c8dbc424adc2d11a4d"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/proofs/phase98/comparison/maintenance02/reference.bend",
+      "bytes": 520,
+      "sha256": "4eb34715897bd536791467b12222ce77b9d5cdc306032b1845760d6293041f2d"
+    }
+  ],
+  "entry": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/proofs/phase98/comparison/maintenance02/held-exact.bend",
+    "bytes": 1595,
+    "sha256": "54161810d0047c18989ca563cdfd3c98c0bd343da3bcbf3a9e79cf0887b48bda"
+  }
+}

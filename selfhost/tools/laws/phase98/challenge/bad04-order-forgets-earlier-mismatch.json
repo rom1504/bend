@@ -1,0 +1,37 @@
+{
+  "id": "bad04-order-forgets-earlier-mismatch",
+  "kind": "bad",
+  "file": "selfhost/tools/performance/phase88/strings/helpers.bend",
+  "function": "p88_string_order_go",
+  "before": "    case SNil{} SCon{h, t} GT{}: GT{}",
+  "after": "    case SNil{} SCon{h, t} GT{}: LT{}",
+  "expectedBehavior": "A prior greater-than character decides lexicographic order even when that string ends first. Reapplying prefix length order after a mismatch is unsound.",
+  "witness": {
+    "expression": "p88_string_order(\"b\", \"aa\")",
+    "returnType": "Cmp",
+    "baselineValueBend": "GT{}",
+    "challengeValueBend": "LT{}",
+    "source": {
+      "path": "selfhost/tools/laws/phase98/challenge/bad04-order-forgets-earlier-mismatch.witness.bend",
+      "bytes": 352,
+      "sha256": "3a673b66ca306f6381d931c6d8fa5f81cac6bcfddd9fe93f00f4a5e29994504b"
+    }
+  },
+  "provenance": {
+    "classification": "synthetic-semantic-fault",
+    "selection": "Maintained/helper source reasoning before Phase98 law bodies, finite cases, or outcomes."
+  },
+  "schema": "phase98-independent-challenge-v1",
+  "source": {
+    "path": "selfhost/tools/performance/phase88/strings/helpers.bend",
+    "bytes": 1232,
+    "sha256": "a00e6f8d8a593f154cf1fe02981a6929355270a662e94a765c3db02528049e31"
+  },
+  "expectedOccurrences": 1,
+  "line": 20,
+  "changedSourceSha256": "73661f52aab928be6f439730856ce42c125bb0ca9f648d9b59f7abbe4c90ffc6",
+  "changedSourceBytes": 1232,
+  "admission": "predicted well-typed; root must check",
+  "domain": "Finite typed helper values; pure extensional behavior only.",
+  "targetsRun": false
+}

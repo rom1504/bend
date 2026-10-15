@@ -1,0 +1,192 @@
+{
+  "kind": "phase98-held-own-backend-pure-control-c-audit",
+  "complete": true,
+  "executionPerformed": false,
+  "c": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/held-control-own01.c",
+    "sha256": "9501a265d1b2746c935014e40993ebe3011e5baeefd746b38b5cd1adef1f7ad5",
+    "bytes": 355311
+  },
+  "publicRequest": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/native/requests/20261015T202803Z-1kp8v8yx/report.json",
+    "sha256": "3119de5df510153146e2b40ef96fd348c7bb4edd15da2bcd3cb1120c26688721",
+    "bytes": 4582
+  },
+  "defines": [
+    [
+      "NATIVE_READONLY_OBSERVERS",
+      "1"
+    ],
+    [
+      "NATIVE_PACK_CTORS",
+      "1"
+    ],
+    [
+      "NATIVE_COLD_CTORS",
+      "1"
+    ],
+    [
+      "NATIVE_HOT_CID_CON",
+      "1"
+    ],
+    [
+      "NATIVE_HOT_CID_NIL",
+      "1"
+    ],
+    [
+      "NATIVE_HOT_CID_SCON",
+      "1"
+    ],
+    [
+      "NATIVE_HOT_CID_SNIL",
+      "1"
+    ],
+    [
+      "NATIVE_TYPED_SCALARS",
+      "1"
+    ],
+    [
+      "NATIVE_COLD_USER_CTORS",
+      "1"
+    ],
+    [
+      "NATIVE_SCALAR_ARRAYS",
+      "1"
+    ],
+    [
+      "NATIVE_UNSHARED_ARRAYS",
+      "1"
+    ],
+    [
+      "NATIVE_SCALAR_ARRAYS",
+      "0"
+    ],
+    [
+      "NATIVE_UNSHARED_ARRAYS",
+      "0"
+    ]
+  ],
+  "functions": {
+    "p98_eq_walk": {
+      "name": "p98_eq_walk",
+      "startLine": 2860,
+      "bytes": 5428,
+      "sha256": "51e66cedf4c5fd4d30d2f4e1713b25e0c34cb80d0d2f68feccd1bcfbc75a25ef",
+      "counts": {
+        "term_peek": 0,
+        "ctr_take": 3,
+        "term_sink": 24,
+        "term_keep": 0,
+        "spare_free": 3,
+        "heap_alloc": 0
+      },
+      "text": "INLINE Term NF_FID_112_57_56_95_101_113_95_119_97_108_107_(Env e, bool seq, Term* nf_out, Term v_4294967295, Term v_4294967294, NF_SCALAR v_4294967293) {\nu32 nf_poll = 0;\nnf_again:;\nif (err_spun(e.mem, &nf_poll)) { return 0; }\n{\nif ((term_rfc(v_4294967295) && (rfc_view(e, term_loc(v_4294967295)) & RFC_CNT) > 1) || (term_rfc(v_4294967294) && (rfc_view(e, term_loc(v_4294967294)) & RFC_CNT) > 1) || 0) { return NF_FID_36_111_98_115_101_114_118_101_114_46_97_100_97_112_116_101_114_46_112_57_56_95_101_113_95_119_97_108_107_(e, seq, nf_out, v_4294967295, v_4294967294, v_4294967293); }\nTerm v_4294967292;\n{\nv_4294967292 = v_4294967295;\ngoto nf_join_6;\n}\nnf_join_6:;\nif (!seq && err_seen(e.mem)) { return 0; }\nTerm v_4294967291;\n{\nv_4294967291 = v_4294967294;\ngoto nf_join_7;\n}\nnf_join_7:;\nif (!seq && err_seen(e.mem)) { return 0; }\nTerm v_4294967290;\n{\nv_4294967290 = v_4294967293;\ngoto nf_join_8;\n}\nnf_join_8:;\nif (!seq && err_seen(e.mem)) { return 0; }\nif ((term_aux(v_4294967292) == CID_SNIL)) {\nTerm v_4294967286;\n{\nv_4294967286 = v_4294967291;\ngoto nf_join_11;\n}\nnf_join_11:;\nif (!seq && err_seen(e.mem)) { return 0; }\nTerm v_4294967285;\n{\nv_4294967285 = v_4294967290;\ngoto nf_join_12;\n}\nnf_join_12:;\nif (!seq && err_seen(e.mem)) { return 0; }\nif ((term_aux(v_4294967286) == CID_SNIL)) {\nnf_out[0] = v_4294967285;\nreturn 1;\n} else {\nTerm v_4294967282;\n{\nv_4294967282 = v_4294967286;\ngoto nf_join_15;\n}\nnf_join_15:;\nif (!seq && err_seen(e.mem)) { return 0; }\nTerm v_4294967281;\n{\nv_4294967281 = v_4294967285;\ngoto nf_join_16;\n}\nnf_join_16:;\nif (!seq && err_seen(e.mem)) { return 0; }\nif ((term_aux(v_4294967282) == CID_SCON)) {\nTerm fields[2];\nspare_free(e, cls_fit(2), ctr_take(e, v_4294967282, 2, fields));\n#if !DEVICE && NATIVE_FIELD32_CID_SCON_0\nu32\n#else\nTerm\n#endif\nv_4294967278 = fields[0];\n#if !DEVICE && NATIVE_FIELD32_CID_SCON_1\nu32\n#else\nTerm\n#endif\nv_4294967277 = fields[1];\nterm_sink(e, v_4294967281);\nterm_sink(e, v_4294967278);\nterm_sink(e, v_4294967277);\nnf_out[0] = 0ull;\nreturn 1;\n} else {\nterm_sink(e, v_4294967282);\nterm_sink(e, v_4294967281);\nerr_post(e.mem, ERR_FIDS); return 0;\n}\n}\n} else {\nTerm v_4294967276;\n{\nv_4294967276 = v_4294967292;\ngoto nf_join_22;\n}\nnf_join_22:;\nif (!seq && err_seen(e.mem)) { return 0; }\nTerm v_4294967275;\n{\nv_4294967275 = v_4294967291;\ngoto nf_join_23;\n}\nnf_join_23:;\nif (!seq && err_seen(e.mem)) { return 0; }\nTerm v_4294967274;\n{\nv_4294967274 = v_4294967290;\ngoto nf_join_24;\n}\nnf_join_24:;\nif (!seq && err_seen(e.mem)) { return 0; }\nif ((term_aux(v_4294967276) == CID_SCON)) {\nTerm fields[2];\nspare_free(e, cls_fit(2), ctr_take(e, v_4294967276, 2, fields));\n#if !DEVICE && NATIVE_FIELD32_CID_SCON_0\nu32\n#else\nTerm\n#endif\nv_4294967270 = fields[0];\n#if !DEVICE && NATIVE_FIELD32_CID_SCON_1\nu32\n#else\nTerm\n#endif\nv_4294967269 = fields[1];\nTerm v_4294967268;\n{\nv_4294967268 = v_4294967275;\ngoto nf_join_29;\n}\nnf_join_29:;\nif (!seq && err_seen(e.mem)) { return 0; }\nTerm v_4294967267;\n{\nv_4294967267 = v_4294967274;\ngoto nf_join_30;\n}\nnf_join_30:;\nif (!seq && err_seen(e.mem)) { return 0; }\nif ((term_aux(v_4294967268) == CID_SNIL)) {\nterm_sink(e, v_4294967270);\nterm_sink(e, v_4294967269);\nterm_sink(e, v_4294967267);\nnf_out[0] = 0ull;\nreturn 1;\n} else {\nTerm v_4294967264;\n{\nv_4294967264 = v_4294967268;\ngoto nf_join_33;\n}\nnf_join_33:;\nif (!seq && err_seen(e.mem)) { return 0; }\nTerm v_4294967263;\n{\nv_4294967263 = v_4294967267;\ngoto nf_join_34;\n}\nnf_join_34:;\nif (!seq && err_seen(e.mem)) { return 0; }\nif ((term_aux(v_4294967264) == CID_SCON)) {\nTerm fields[2];\nspare_free(e, cls_fit(2), ctr_take(e, v_4294967264, 2, fields));\n#if !DEVICE && NATIVE_FIELD32_CID_SCON_0\nu32\n#else\nTerm\n#endif\nv_4294967260 = fields[0];\n#if !DEVICE && NATIVE_FIELD32_CID_SCON_1\nu32\n#else\nTerm\n#endif\nv_4294967259 = fields[1];\nif ((!native_bool(v_4294967263))) {\nterm_sink(e, v_4294967270);\nterm_sink(e, v_4294967269);\nterm_sink(e, v_4294967260);\nterm_sink(e, v_4294967259);\nnf_out[0] = 0ull;\nreturn 1;\n} else {\nif (native_bool(v_4294967263)) {\nTerm v_4294967258;\n{\nv_4294967258 = v_4294967269;\ngoto nf_join_40;\n}\nnf_join_40:;\nif (!seq && err_seen(e.mem)) { return 0; }\nTerm v_4294967257;\n{\nv_4294967257 = v_4294967259;\ngoto nf_join_41;\n}\nnf_join_41:;\nif (!seq && err_seen(e.mem)) { return 0; }\nTerm v_4294967256;\n{\nTerm v_4294967252;\n{\nv_4294967252 = v_4294967270;\ngoto nf_join_45;\n}\nnf_join_45:;\nif (!seq && err_seen(e.mem)) { return 0; }\nTerm v_4294967251;\n{\nv_4294967251 = v_4294967260;\ngoto nf_join_46;\n}\nnf_join_46:;\nif (!seq && err_seen(e.mem)) { return 0; }\nTerm nq_result_47[1];\nif (!NF_FID_67_104_97_114_46_105_115_95_101_113_(e, seq, nq_result_47, v_4294967252, v_4294967251)) { return 0; }\nv_4294967256 = nq_result_47[0];\ngoto nf_join_42;\n}\nnf_join_42:;\nif (!seq && err_seen(e.mem)) { return 0; }\n{\nTerm nf_arg_0 = v_4294967258;\nTerm nf_arg_1 = v_4294967257;\nTerm nf_arg_2 = v_4294967256;\nv_4294967295 = nf_arg_0;\nv_4294967294 = nf_arg_1;\nv_4294967293 = nf_arg_2;\ngoto nf_again;\n}\n} else {\nterm_sink(e, v_4294967270);\nterm_sink(e, v_4294967269);\nterm_sink(e, v_4294967260);\nterm_sink(e, v_4294967259);\nterm_sink(e, v_4294967263);\nerr_post(e.mem, ERR_FIDS); return 0;\n}\n}\n} else {\nterm_sink(e, v_4294967270);\nterm_sink(e, v_4294967269);\nterm_sink(e, v_4294967264);\nterm_sink(e, v_4294967263);\nerr_post(e.mem, ERR_FIDS); return 0;\n}\n}\n} else {\nterm_sink(e, v_4294967276);\nterm_sink(e, v_4294967275);\nterm_sink(e, v_4294967274);\nerr_post(e.mem, ERR_FIDS); return 0;\n}\n}\n}\nreturn 0;\n}"
+    },
+    "$observer.p98_eq_walk": {
+      "name": "$observer.p98_eq_walk",
+      "startLine": 1850,
+      "bytes": 2027,
+      "sha256": "7b07c9e1b45bfc8fc4938b161ffb29c44734277e49aed00a229cfe2c4ac8a927",
+      "counts": {
+        "term_peek": 3,
+        "ctr_take": 0,
+        "term_sink": 0,
+        "term_keep": 0,
+        "spare_free": 0,
+        "heap_alloc": 0
+      },
+      "text": "NF_INLINE Term NF_FID_36_111_98_115_101_114_118_101_114_46_112_57_56_95_101_113_95_119_97_108_107_(Env e, bool seq, Term* nf_out, Term v_4294967295, Term v_4294967294, Term v_4294967293) {\nu32 nf_poll = 0;\nnf_again:;\nif (err_spun(e.mem, &nf_poll)) { return 0; }\n{\n#if NATIVE_READONLY_OBSERVERS\nif ((term_aux(v_4294967295) == CID_SNIL)) {\nif ((term_aux(v_4294967294) == CID_SNIL)) {\nif (!seq && err_seen(e.mem)) { return 0; }\nnf_out[0] = v_4294967293;\nreturn 1;\n} else {\nif ((term_aux(v_4294967294) == CID_SCON)) {\nLoc no_loc_2 = term_peek(e, v_4294967294);\nTerm v_4294967291 = e.mem[no_loc_2 + 0];\nTerm v_4294967290 = e.mem[no_loc_2 + 1];\nif (!seq && err_seen(e.mem)) { return 0; }\nnf_out[0] = 0;\nreturn 1;\n} else {\nerr_post(e.mem, ERR_FIDS); return 0;\n}\n}\n} else {\nif ((term_aux(v_4294967295) == CID_SCON)) {\nLoc no_loc_3 = term_peek(e, v_4294967295);\nTerm v_4294967289 = e.mem[no_loc_3 + 0];\nTerm v_4294967288 = e.mem[no_loc_3 + 1];\nif ((term_aux(v_4294967294) == CID_SNIL)) {\nif (!seq && err_seen(e.mem)) { return 0; }\nnf_out[0] = 0;\nreturn 1;\n} else {\nif ((term_aux(v_4294967294) == CID_SCON)) {\nLoc no_loc_5 = term_peek(e, v_4294967294);\nTerm v_4294967287 = e.mem[no_loc_5 + 0];\nTerm v_4294967286 = e.mem[no_loc_5 + 1];\nif ((!native_bool(v_4294967293))) {\nif (!seq && err_seen(e.mem)) { return 0; }\nnf_out[0] = 0;\nreturn 1;\n} else {\nif (native_bool(v_4294967293)) {\nif (1) {\nTerm v_4294967285 = v_4294967289;\nif (1) {\nTerm v_4294967284 = v_4294967287;\nTerm v_4294967283 = U32_BIN(v_4294967285, ==, v_4294967284);\nif (!seq && err_seen(e.mem)) { return 0; }\n{\nTerm nf_arg_0 = v_4294967288;\nTerm nf_arg_1 = v_4294967286;\nTerm nf_arg_2 = v_4294967283;\nv_4294967295 = nf_arg_0;\nv_4294967294 = nf_arg_1;\nv_4294967293 = nf_arg_2;\ngoto nf_again;\n}\n} else {\nerr_post(e.mem, ERR_FIDS); return 0;\n}\n} else {\nerr_post(e.mem, ERR_FIDS); return 0;\n}\n} else {\nerr_post(e.mem, ERR_FIDS); return 0;\n}\n}\n} else {\nerr_post(e.mem, ERR_FIDS); return 0;\n}\n}\n} else {\nerr_post(e.mem, ERR_FIDS); return 0;\n}\n}\n#else\nreturn 0;\n#endif\n}\nreturn 0;\n}"
+    },
+    "$observer.adapter.p98_eq_walk": {
+      "name": "$observer.adapter.p98_eq_walk",
+      "startLine": 1932,
+      "bytes": 825,
+      "sha256": "cd1989f38496b45dc79d23ec9f6dc689057fdde4fc922a74c72ab11a4c068d2f",
+      "counts": {
+        "term_peek": 0,
+        "ctr_take": 0,
+        "term_sink": 2,
+        "term_keep": 0,
+        "spare_free": 0,
+        "heap_alloc": 0
+      },
+      "text": "NF_INLINE Term NF_FID_36_111_98_115_101_114_118_101_114_46_97_100_97_112_116_101_114_46_112_57_56_95_101_113_95_119_97_108_107_(Env e, bool seq, Term* nf_out, Term v_4294967295, Term v_4294967294, Term v_4294967293) {\nu32 nf_poll = 0;\nnf_again:;\nif (err_spun(e.mem, &nf_poll)) { return 0; }\n{\n#if NATIVE_READONLY_OBSERVERS\nTerm no_root_0 = v_4294967295;\nTerm no_root_1 = v_4294967294;\nif (!seq && err_seen(e.mem)) { return 0; }\nTerm no_observed[1];\nif (!NF_FID_36_111_98_115_101_114_118_101_114_46_112_57_56_95_101_113_95_119_97_108_107_(e, seq, no_observed, v_4294967295, v_4294967294, v_4294967293)) { return 0; }\nif (!seq && err_seen(e.mem)) { return 0; }\nTerm no_scalar_result = no_observed[0];\nterm_sink(e, no_root_0);\nterm_sink(e, no_root_1);\nnf_out[0] = no_scalar_result;\nreturn 1;\n#else\nreturn 0;\n#endif\n}\nreturn 0;\n}"
+    },
+    "p98_eq_observe": {
+      "name": "p98_eq_observe",
+      "startLine": 3115,
+      "bytes": 1800,
+      "sha256": "23800ebbc3978c8b7d48687f30078f2e66e4c38e881ab9e29e5de6cff981e914",
+      "counts": {
+        "term_peek": 0,
+        "ctr_take": 0,
+        "term_sink": 0,
+        "term_keep": 2,
+        "spare_free": 0,
+        "heap_alloc": 1
+      },
+      "text": "NF_INLINE Term NF_FID_112_57_56_95_101_113_95_111_98_115_101_114_118_101_(Env e, bool seq, Term* nf_out, Term v_4294967295, Term v_4294967294) {\nu32 nf_poll = 0;\nnf_again:;\nif (err_spun(e.mem, &nf_poll)) { return 0; }\n{\nv_4294967295 = term_keep(e, v_4294967295);\nv_4294967294 = term_keep(e, v_4294967294);\nTerm v_4294967293;\n{\nTerm v_4294967286;\n{\nv_4294967286 = v_4294967295;\ngoto nf_join_12;\n}\nnf_join_12:;\nif (!seq && err_seen(e.mem)) { return 0; }\nTerm v_4294967285;\n{\nv_4294967285 = v_4294967294;\ngoto nf_join_13;\n}\nnf_join_13:;\nif (!seq && err_seen(e.mem)) { return 0; }\nTerm v_4294967284;\n{\nv_4294967284 = 1ull;\ngoto nf_join_14;\n}\nnf_join_14:;\nif (!seq && err_seen(e.mem)) { return 0; }\nTerm nq_result_15[1];\nif (!NF_FID_112_57_56_95_101_113_95_119_97_108_107_(e, seq, nq_result_15, v_4294967286, v_4294967285, v_4294967284)) { return 0; }\nv_4294967293 = nq_result_15[0];\ngoto nf_join_5;\n}\nnf_join_5:;\nif (!seq && err_seen(e.mem)) { return 0; }\nTerm v_4294967292;\n{\nv_4294967292 = v_4294967295;\ngoto nf_join_6;\n}\nnf_join_6:;\nif (!seq && err_seen(e.mem)) { return 0; }\nTerm v_4294967291;\n{\nv_4294967291 = v_4294967294;\ngoto nf_join_7;\n}\nnf_join_7:;\nif (!seq && err_seen(e.mem)) { return 0; }\nu64 nd_8 = heap_alloc(e, cls_fit(3));\n#if !DEVICE && NATIVE_COLD_CTORS && !NATIVE_HOT_CID__CTOR_80_57_56_69_113_72_101_108_100_\ne.mem[nd_8 + 0] = v_4294967293;\ne.mem[nd_8 + 1] = v_4294967292;\ne.mem[nd_8 + 2] = v_4294967291;\n#else\n#if NATIVE_COLD_USER_CTORS\ne.mem[nd_8 + 0] = v_4294967293;\ne.mem[nd_8 + 1] = v_4294967292;\ne.mem[nd_8 + 2] = v_4294967291;\n#else\ne.mem[nd_8 + 0] = rfc_seal(e, v_4294967293);\ne.mem[nd_8 + 1] = rfc_seal(e, v_4294967292);\ne.mem[nd_8 + 2] = rfc_seal(e, v_4294967291);\n#endif\n#endif\nnf_out[0] = term_ctr(CID__CTOR_80_57_56_69_113_72_101_108_100_, nd_8);\nreturn 1;\n}\nreturn 0;\n}"
+    },
+    "p98_eq_finish": {
+      "name": "p98_eq_finish",
+      "startLine": 3187,
+      "bytes": 903,
+      "sha256": "9bed1e5cd2c344a2fbc0327b254c3eb8ffebdc80cdbaf4af512de9bc507f21c7",
+      "counts": {
+        "term_peek": 0,
+        "ctr_take": 1,
+        "term_sink": 3,
+        "term_keep": 0,
+        "spare_free": 1,
+        "heap_alloc": 0
+      },
+      "text": "NF_INLINE Term NF_FID_112_57_56_95_101_113_95_102_105_110_105_115_104_(Env e, bool seq, Term* nf_out, Term v_4294967295) {\nu32 nf_poll = 0;\nnf_again:;\nif (err_spun(e.mem, &nf_poll)) { return 0; }\n{\nif ((term_aux(v_4294967295) == CID__CTOR_80_57_56_69_113_72_101_108_100_)) {\nTerm fields[3];\nspare_free(e, cls_fit(3), ctr_take(e, v_4294967295, 3, fields));\n#if !DEVICE && NATIVE_FIELD32_CID__CTOR_80_57_56_69_113_72_101_108_100__0\nu32\n#else\nTerm\n#endif\nv_4294967294 = fields[0];\n#if !DEVICE && NATIVE_FIELD32_CID__CTOR_80_57_56_69_113_72_101_108_100__1\nu32\n#else\nTerm\n#endif\nv_4294967293 = fields[1];\n#if !DEVICE && NATIVE_FIELD32_CID__CTOR_80_57_56_69_113_72_101_108_100__2\nu32\n#else\nTerm\n#endif\nv_4294967292 = fields[2];\nterm_sink(e, v_4294967293);\nterm_sink(e, v_4294967292);\nnf_out[0] = v_4294967294;\nreturn 1;\n} else {\nterm_sink(e, v_4294967295);\nerr_post(e.mem, ERR_FIDS); return 0;\n}\n}\nreturn 0;\n}"
+    },
+    "p98_string_eq": {
+      "name": "p98_string_eq",
+      "startLine": 3224,
+      "bytes": 1484,
+      "sha256": "e84e9e3f7ab4043a676df473984cca810c68930948aa7d3c451b5f97df047eba",
+      "counts": {
+        "term_peek": 0,
+        "ctr_take": 0,
+        "term_sink": 0,
+        "term_keep": 0,
+        "spare_free": 0,
+        "heap_alloc": 0
+      },
+      "text": "NF_INLINE Term NF_FID_112_57_56_95_115_116_114_105_110_103_95_101_113_(Env e, bool seq, Term* nf_out, Term v_4294967295, Term v_4294967294) {\nu32 nf_poll = 0;\nnf_again:;\nif (err_spun(e.mem, &nf_poll)) { return 0; }\n{\nTerm v_4294967292;\nTerm v_4294967291;\nTerm v_4294967290;\n{\nTerm v_4294967288;\n{\nv_4294967288 = v_4294967295;\ngoto nf_join_9;\n}\nnf_join_9:;\nif (!seq && err_seen(e.mem)) { return 0; }\nTerm v_4294967287;\n{\nv_4294967287 = v_4294967294;\ngoto nf_join_10;\n}\nnf_join_10:;\nif (!seq && err_seen(e.mem)) { return 0; }\nTerm nq_result_11[3];\nif (!NF_FID_36_112_114_111_100_117_99_116_46_112_57_56_95_101_113_95_111_98_115_101_114_118_101_(e, seq, nq_result_11, v_4294967288, v_4294967287)) { return 0; }\n#if !DEVICE && NATIVE_FIELD32_CID__CTOR_80_57_56_69_113_72_101_108_100__0\nnq_result_11[0] = (u32)nq_result_11[0];\n#endif\n#if !DEVICE && NATIVE_FIELD32_CID__CTOR_80_57_56_69_113_72_101_108_100__1\nnq_result_11[1] = (u32)nq_result_11[1];\n#endif\n#if !DEVICE && NATIVE_FIELD32_CID__CTOR_80_57_56_69_113_72_101_108_100__2\nnq_result_11[2] = (u32)nq_result_11[2];\n#endif\nv_4294967292 = nq_result_11[0];\nv_4294967291 = nq_result_11[1];\nv_4294967290 = nq_result_11[2];\ngoto nq_join_3;\n}\nnq_join_3:;\nif (!seq && err_seen(e.mem)) { return 0; }\nTerm nq_result_6[1];\nif (!NF_FID_36_112_114_111_100_117_99_116_46_112_57_56_95_101_113_95_102_105_110_105_115_104_(e, seq, nq_result_6, v_4294967292, v_4294967291, v_4294967290)) { return 0; }\nnf_out[0] = nq_result_6[0];\nreturn 1;\n}\nreturn 0;\n}"
+    },
+    "$product.p98_eq_observe": {
+      "name": "$product.p98_eq_observe",
+      "startLine": 3677,
+      "bytes": 1332,
+      "sha256": "b3a8ffd21e84703d75ab8fc30ec8e7fb5a47c587cdd9ff57bb17ec3a5ea7dc9d",
+      "counts": {
+        "term_peek": 0,
+        "ctr_take": 0,
+        "term_sink": 0,
+        "term_keep": 2,
+        "spare_free": 0,
+        "heap_alloc": 0
+      },
+      "text": "NF_INLINE Term NF_FID_36_112_114_111_100_117_99_116_46_112_57_56_95_101_113_95_111_98_115_101_114_118_101_(Env e, bool seq, Term* nf_out, Term v_4294967295, Term v_4294967294) {\nu32 nf_poll = 0;\nnf_again:;\nif (err_spun(e.mem, &nf_poll)) { return 0; }\n{\nv_4294967295 = term_keep(e, v_4294967295);\nv_4294967294 = term_keep(e, v_4294967294);\nTerm v_4294967293;\n{\nTerm v_4294967287;\n{\nv_4294967287 = v_4294967295;\ngoto nf_join_11;\n}\nnf_join_11:;\nif (!seq && err_seen(e.mem)) { return 0; }\nTerm v_4294967286;\n{\nv_4294967286 = v_4294967294;\ngoto nf_join_12;\n}\nnf_join_12:;\nif (!seq && err_seen(e.mem)) { return 0; }\nTerm v_4294967285;\n{\nv_4294967285 = 1ull;\ngoto nf_join_13;\n}\nnf_join_13:;\nif (!seq && err_seen(e.mem)) { return 0; }\nTerm nq_result_14[1];\nif (!NF_FID_112_57_56_95_101_113_95_119_97_108_107_(e, seq, nq_result_14, v_4294967287, v_4294967286, v_4294967285)) { return 0; }\nv_4294967293 = nq_result_14[0];\ngoto nf_join_5;\n}\nnf_join_5:;\nif (!seq && err_seen(e.mem)) { return 0; }\nTerm v_4294967292;\n{\nv_4294967292 = v_4294967295;\ngoto nf_join_6;\n}\nnf_join_6:;\nif (!seq && err_seen(e.mem)) { return 0; }\nTerm v_4294967291;\n{\nv_4294967291 = v_4294967294;\ngoto nf_join_7;\n}\nnf_join_7:;\nif (!seq && err_seen(e.mem)) { return 0; }\nnf_out[0] = v_4294967293;\nnf_out[1] = v_4294967292;\nnf_out[2] = v_4294967291;\nreturn 1;\n}\nreturn 0;\n}"
+    },
+    "$product.p98_eq_finish": {
+      "name": "$product.p98_eq_finish",
+      "startLine": 3735,
+      "bytes": 719,
+      "sha256": "0e69a047e252b1a883ec6021d602eed0e615c59491611a23e4d0716127bb8123",
+      "counts": {
+        "term_peek": 0,
+        "ctr_take": 0,
+        "term_sink": 2,
+        "term_keep": 0,
+        "spare_free": 0,
+        "heap_alloc": 0
+      },
+      "text": "NF_INLINE Term NF_FID_36_112_114_111_100_117_99_116_46_112_57_56_95_101_113_95_102_105_110_105_115_104_(Env e, bool seq, Term* nf_out, Term v_4294967294, Term v_4294967293, Term v_4294967292) {\nu32 nf_poll = 0;\nnf_again:;\nif (err_spun(e.mem, &nf_poll)) { return 0; }\n{\n#if !DEVICE && NATIVE_FIELD32_CID__CTOR_80_57_56_69_113_72_101_108_100__0\nv_4294967294 = (u32)v_4294967294;\n#endif\n#if !DEVICE && NATIVE_FIELD32_CID__CTOR_80_57_56_69_113_72_101_108_100__1\nv_4294967293 = (u32)v_4294967293;\n#endif\n#if !DEVICE && NATIVE_FIELD32_CID__CTOR_80_57_56_69_113_72_101_108_100__2\nv_4294967292 = (u32)v_4294967292;\n#endif\nterm_sink(e, v_4294967293);\nterm_sink(e, v_4294967292);\nnf_out[0] = v_4294967294;\nreturn 1;\n}\nreturn 0;\n}"
+    }
+  },
+  "conclusion": "Purecontrol READONLY1 uses shared-root guarded observer adapter;observe keeps both roots, wrapper uses flattened productworkers. This does not establish fullnativecompilerB2 effect;fullcompilerREADONLY0 andscalarcertificate0 requireseparategate."
+}

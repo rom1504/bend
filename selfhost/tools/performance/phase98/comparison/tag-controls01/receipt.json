@@ -1,0 +1,53 @@
+{
+  "kind": "phase98-fused-tag-controls",
+  "complete": true,
+  "targetsRun": false,
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase90/observation/noindent01/compiler-noindent.bend",
+      "bytes": 1759353,
+      "sha256": "d04ad79cf08c019b509cfbbd4be2b16ae9e4af189767715d12e0645b9eee8097"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/core/term.bend",
+      "bytes": 19671,
+      "sha256": "d75234683496e33fcb59cd3598979245700733236d9326025d298f9c33ef33d3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase98/comparison/tag-helpers01.bend",
+      "bytes": 1160,
+      "sha256": "77668984b983c1688ff59e05a8b34bb93a30066fdb5dd1ed36035b11b132eb8e"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase98/comparison/tag-controls.tail.bend",
+      "bytes": 1444,
+      "sha256": "336c2738b976aeea0ee07e0ebb54438a10efbcd2bbf13894130a6d61449bb1ce"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase98/comparison/prepare-tag-controls.py",
+      "bytes": 2381,
+      "sha256": "3272b89aa8285bfe7d59bd7025c5523a0aaa950b37d859e2ed57acf15e4bc81c"
+    }
+  ],
+  "outputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase98/comparison/tag-controls01/candidate.bend",
+      "bytes": 3782,
+      "sha256": "cb5ef6fb328d9081982aedb30e2e8eb48baafa07f1a7e5e944194364f4a2ae2f"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase98/comparison/tag-controls01/baseline.bend",
+      "bytes": 3804,
+      "sha256": "b05f8d007aea3aaa685a9c95565d7e546bd8adb951a1988000d75fc9e4a50dbb"
+    }
+  ],
+  "cases": 96,
+  "reference": "Exact production tg body renamed; exact D04 safe equality. Native full products include originalterm/key and bothBoolean observations.",
+  "scopes": "All3termconstructors,completechildren/removals/spans/quantityflag/literalpayload,empty/arbitrarytags,Unicode,prefix/longsuffixcases. No unboundedproof or native lifetime proof.",
+  "extraction": {
+    "termTypesExact": true,
+    "tagBodyExactExceptName": true,
+    "d04EqualityExact": true
+  },
+  "oracle": "Baseline emits reference twice; candidate emits reference and newfusedobserver. Require whole stdout equality across actual native baseline/candidate, then inspect all96Boolresults and complete preservedvalues. No target run by preparer."
+}

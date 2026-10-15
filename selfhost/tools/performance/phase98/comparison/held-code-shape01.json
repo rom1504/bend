@@ -1,0 +1,103 @@
+{
+  "kind": "phase98-held-equality-generated-c-audit",
+  "complete": true,
+  "executionPerformed": false,
+  "source": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase98/comparison/held-controls01.bend",
+    "bytes": 6014,
+    "sha256": "ce6c31a56c340f0fa0ab6e75f17541bd209b4e5410a6053ce7a9250f845795fc"
+  },
+  "checked": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/held-control-checked01/report.json",
+    "bytes": 17659,
+    "sha256": "19e9b30eda254959dc5d3133dbd70de6445a782f47fb8d6288ae5862cabb1e97"
+  },
+  "c": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/held-control-checked01/program.c",
+    "bytes": 211179,
+    "sha256": "7cb47f094f8a3bee2ea1c33bf93e69102e72f52df226125ebb48f24286597d3c"
+  },
+  "baselineC": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase92/upstream-checked01/compiler.c",
+    "bytes": 17764676,
+    "sha256": "d9c6fe2d0030e648eeeb6ada9c06cd054480eefae6e53e97d54caf866a37365d"
+  },
+  "baselineWalk": {
+    "name": "spin_3",
+    "startLine": 14239,
+    "endLine": 14299,
+    "sha256": "c8f6a0b56ea8b84dedc8295b25f3eed2380f912ce75fde7bfb4dd87fb40b581a",
+    "bytes": 1590,
+    "counts": {
+      "term_peek": 0,
+      "ctr_take": 3,
+      "term_sink": 4,
+      "term_keep": 0,
+      "spare_free": 6,
+      "heap_alloc": 0,
+      "span_fade": 0
+    },
+    "text": "INLINE Term spin_3(Env e, THR Term* o, Term r0, Term r1, u32 r2) {\n  u32 wpoll = 0;\n  Term _a_1 = r0;\n  Term _b_1 = r1;\n  u32 _same_0 = r2;\n  WL_SPIN\n    if (term_aux(_a_1) == CID_SNIL) {\n      if (term_aux(_b_1) == CID_SNIL) {\n        o[0] = _same_0;\n      } else {\n        Term _fb_3[2];\n        u64 _sp_3 = ctr_take(e, _b_1, 2, _fb_3);\n        u32 _f_21 = _fb_3[0];\n        Term _f_22 = _fb_3[1];\n        term_sink(e, _f_22);\n        o[0] = 0;\n        spare_free(e, cls_fit(2), _sp_3);\n      }\n    } else {\n      Term _fb_4[2];\n      u64 _sp_4 = ctr_take(e, _a_1, 2, _fb_4);\n      u32 _f_23 = _fb_4[0];\n      Term _f_24 = _fb_4[1];\n      if (term_aux(_b_1) == CID_SNIL) {\n        term_sink(e, _f_24);\n        o[0] = 0;\n        spare_free(e, cls_fit(2), _sp_4);\n      } else {\n        Term _fb_5[2];\n        u64 _sp_5 = ctr_take(e, _b_1, 2, _fb_5);\n        u32 _f_25 = _fb_5[0];\n        Term _f_26 = _fb_5[1];\n        if (_same_0 == 0) {\n          term_sink(e, _f_24);\n          term_sink(e, _f_26);\n          o[0] = 0;\n          spare_free(e, cls_fit(2), _sp_5);\n          spare_free(e, cls_fit(2), _sp_4);\n        } else {\n          u32 _v_2 = 0;\n          Term _o_1[1];\n          if (spin_4(e, _o_1, _f_23, _f_25) == 0) {\n            return 0;\n          }\n          _v_2 = (u32)_o_1[0];\n          spare_free(e, cls_fit(2), _sp_5);\n          spare_free(e, cls_fit(2), _sp_4);\n          r0 = _f_24;\n          r1 = _f_26;\n          r2 = _v_2;\n          _a_1 = r0;\n          _b_1 = r1;\n          _same_0 = r2;\n          WL_AGAIN(spin_3);\n        }\n      }\n    }\n  break;\n  }\n  return 1;\n}\n"
+  },
+  "candidateFunctions": {
+    "walk": {
+      "name": "spin_2",
+      "startLine": 1328,
+      "endLine": 1375,
+      "sha256": "b23aa5d2cedbd38143adbd12a6749f6644d449ea46a1406adb87b4e900730288",
+      "bytes": 1166,
+      "counts": {
+        "term_peek": 3,
+        "ctr_take": 0,
+        "term_sink": 0,
+        "term_keep": 0,
+        "spare_free": 0,
+        "heap_alloc": 0,
+        "span_fade": 0
+      },
+      "text": "INLINE Term spin_2(Env e, THR Term* o, Term r0, Term r1, u32 r2) {\n  u32 wpoll = 0;\n  Term _a_1 = r0;\n  Term _b_1 = r1;\n  u32 _same_0 = r2;\n  WL_SPIN\n    if (term_aux(_a_1) == CID_SNIL) {\n      if (term_aux(_b_1) == CID_SNIL) {\n        o[0] = _same_0;\n      } else {\n        u64 _sp_0 = term_peek(e.mem, _b_1);\n        u32 _f_0 = e.mem[_sp_0 + 0];\n        Term _f_1 = e.mem[_sp_0 + 1];\n        o[0] = 0;\n      }\n    } else {\n      u64 _sp_1 = term_peek(e.mem, _a_1);\n      u32 _f_2 = e.mem[_sp_1 + 0];\n      Term _f_3 = e.mem[_sp_1 + 1];\n      if (term_aux(_b_1) == CID_SNIL) {\n        o[0] = 0;\n      } else {\n        u64 _sp_2 = term_peek(e.mem, _b_1);\n        u32 _f_4 = e.mem[_sp_2 + 0];\n        Term _f_5 = e.mem[_sp_2 + 1];\n        if (_same_0 == 0) {\n          o[0] = 0;\n        } else {\n          u32 _v_1 = 0;\n          Term _o_0[1];\n          if (spin_0(e, _o_0, _f_2, _f_4) == 0) {\n            return 0;\n          }\n          _v_1 = (u32)_o_0[0];\n          r0 = _f_3;\n          r1 = _f_5;\n          r2 = _v_1;\n          _a_1 = r0;\n          _b_1 = r1;\n          _same_0 = r2;\n          WL_AGAIN(spin_2);\n        }\n      }\n    }\n  break;\n  }\n  return 1;\n}\n"
+    },
+    "observe": {
+      "name": "spin_5",
+      "startLine": 1400,
+      "endLine": 1417,
+      "sha256": "666c39a538aaa7a94a31d54b1371e81179d35f8300bee10b952df63ef6ea4f89",
+      "bytes": 330,
+      "counts": {
+        "term_peek": 0,
+        "ctr_take": 0,
+        "term_sink": 0,
+        "term_keep": 0,
+        "spare_free": 0,
+        "heap_alloc": 0,
+        "span_fade": 0
+      },
+      "text": "INLINE Term spin_5(Env e, THR Term* o, Term r0, Term r1) {\n  u32 wpoll = 0;\n  Term _a_1 = r0;\n  Term _b_1 = r1;\n  WL_SPIN\n    u32 _v_3 = 0;\n    Term _o_0[1];\n    if (spin_2(e, _o_0, _a_1, _b_1, 1) == 0) {\n      return 0;\n    }\n    _v_3 = (u32)_o_0[0];\n    o[0] = _v_3;\n    o[1] = _a_1;\n    o[2] = _b_1;\n  break;\n  }\n  return 1;\n}\n"
+    },
+    "finish": {
+      "name": "spin_6",
+      "startLine": 1419,
+      "endLine": 1431,
+      "sha256": "aac1da047a21920ec680fc91bb31e2fabcdd01310c4857897f520a871bd05efc",
+      "bytes": 299,
+      "counts": {
+        "term_peek": 0,
+        "ctr_take": 0,
+        "term_sink": 2,
+        "term_keep": 0,
+        "spare_free": 0,
+        "heap_alloc": 0,
+        "span_fade": 0
+      },
+      "text": "INLINE Term spin_6(Env e, THR Term* o, u32 r0, Term r1, Term r2) {\n  u32 wpoll = 0;\n  u32 _observation_0 = r0;\n  Term _observation_1 = r1;\n  Term _observation_2 = r2;\n  WL_SPIN\n    term_sink(e, _observation_1);\n    term_sink(e, _observation_2);\n    o[0] = _observation_0;\n  break;\n  }\n  return 1;\n}\n"
+    }
+  },
+  "criteria": {
+    "workerBorrowedReads": true,
+    "workerNoPerCellOwnership": true,
+    "carrierFlatThreeWords": true,
+    "originalRootsReturned": true,
+    "rootsDisposedOnceAfterRead": true
+  },
+  "limits": "Static actual emitted-C inspection, not a proof of C lifetime safety or timing. Baseline is full D04, candidate is standalone control; confirm same private-walker shape after full candidate acquisition."
+}

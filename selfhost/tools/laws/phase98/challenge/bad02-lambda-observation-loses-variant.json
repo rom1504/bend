@@ -1,0 +1,37 @@
+{
+  "id": "bad02-lambda-observation-loses-variant",
+  "kind": "bad",
+  "file": "selfhost/src/core/term.bend",
+  "function": "k_with_children",
+  "before": "      KLambda{name, id, quant, newKids, removed, begin, end, present}",
+  "after": "      KTerm{\"Lam\", name, id, quant, newKids, removed, begin, end}",
+  "expectedBehavior": "Normalizing a lambda into the generic tag representation preserves tg/nm/ix/qt/ks but loses its constructor and explicit quantity-presence flag. A complete-value obligation must reject it even if an observation-only model accepts it.",
+  "witness": {
+    "expression": "k_with_children(KLambda{\"bound\", 17, 2, [KLiteral{\"U32\", 37, \"retained\", 13, 29}], [\"A\", \"B\"], 11, 53, False{}}, [KTerm{\"Var\", \"x\", 2147483649, 1, Nil{}, [\"hidden\"], 31, 47}])",
+    "returnType": "KTerm",
+    "baselineValueBend": "KLambda{\"bound\", 17, 2, [KTerm{\"Var\", \"x\", 2147483649, 1, Nil{}, [\"hidden\"], 31, 47}], [\"A\", \"B\"], 11, 53, False{}}",
+    "challengeValueBend": "KTerm{\"Lam\", \"bound\", 17, 2, [KTerm{\"Var\", \"x\", 2147483649, 1, Nil{}, [\"hidden\"], 31, 47}], [\"A\", \"B\"], 11, 53}",
+    "source": {
+      "path": "selfhost/tools/laws/phase98/challenge/bad02-lambda-observation-loses-variant.witness.bend",
+      "bytes": 730,
+      "sha256": "6d744124f2d45985caabf89a6870f6bd25d1f221771269bbb26c038a71bbf986"
+    }
+  },
+  "provenance": {
+    "classification": "synthetic-semantic-fault",
+    "selection": "Maintained/helper source reasoning before Phase98 law bodies, finite cases, or outcomes."
+  },
+  "schema": "phase98-independent-challenge-v1",
+  "source": {
+    "path": "selfhost/src/core/term.bend",
+    "bytes": 19671,
+    "sha256": "d75234683496e33fcb59cd3598979245700733236d9326025d298f9c33ef33d3"
+  },
+  "expectedOccurrences": 1,
+  "line": 589,
+  "changedSourceSha256": "6ec67aa3167e6c998241ff31017738cdb0ddc13d7e038dbe751003fac3cd1087",
+  "changedSourceBytes": 19667,
+  "admission": "predicted well-typed; root must check",
+  "domain": "Finite typed helper values; pure extensional behavior only.",
+  "targetsRun": false
+}

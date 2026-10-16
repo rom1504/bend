@@ -1,0 +1,358 @@
+{
+  "complete": true,
+  "targetsRun": false,
+  "source": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase102/projection-cost-source01/compiler.bend",
+    "bytes": 1788947,
+    "sha256": "63ef222c4c6de73bb54c8e51d3b0a0552979b5791ea98e64d1098051a9cda237"
+  },
+  "recipe": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase102/projection-cost-source01/changes.json",
+    "bytes": 53212,
+    "sha256": "e8c95eafdd9493f95dd6f797f14def790abac1e6cf806f0c83962ec2195b3c26"
+  },
+  "offlineSourceAudit": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase102/promotion04/source-audit/report.json",
+    "bytes": 108069,
+    "sha256": "6a4b16c6394db375d52542b55fe69dbf23c06d4b46aa7d83d14571a7edf997e9"
+  },
+  "methods": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase102/promotion/audit-source04.py",
+      "bytes": 7833,
+      "sha256": "b21da3e67c9da8eccf491726e4f8a69f8cddd253a8bc664ff349ee44dfed2bba"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase102/promotion/backend-bridge04.py",
+      "bytes": 22968,
+      "sha256": "ac0486a33bbc9a11b2b5835bb876f0c2b80a746022e0cf88aa45f981cab874d7"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase102/promotion/fresh-mechanisms04.py",
+      "bytes": 10455,
+      "sha256": "4b0f9688daa89fcc91ba1292c71d2124bcd46b34c6721b333710d89c94b961ba"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase102/promotion/qualification-queue04.py",
+      "bytes": 7920,
+      "sha256": "8f70fd5e1275b5b5b2d95b94105009f2b01d7498599dda5d4e46919d82c57a6b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase102/promotion/run-prepared.py",
+      "bytes": 1260,
+      "sha256": "371d3cf692d6fa671ee4a67c4e28d5cbed83d88a595443b57a69b04fb7999b06"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase102/promotion/runtime-reuse04.py",
+      "bytes": 23767,
+      "sha256": "61f8e2881f9455b1a31fb83c10884d5c7333c0de18b27aa436525b523e40c4c4"
+    }
+  ],
+  "phases": [
+    {
+      "id": "qualification",
+      "commands": [
+        [
+          "/usr/bin/python3",
+          "-B",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase102/promotion/qualification-queue04.py",
+          "qualification",
+          "--recipe",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase102/projection-cost-source01/changes.json",
+          "--run-id",
+          "04",
+          "--controls",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase102/final-controls03/report.json",
+          "--apps",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase102/final-broad03/report.json",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase102/final-screen03/report.json"
+        ]
+      ],
+      "requires": "Actual04 chain queue complete. Runs fresh ordinary controls/broad45/conformance and native inheritance of explicitly historical03 API/app outputs; no API03 report relabeling."
+    },
+    {
+      "id": "fresh-authority",
+      "commands": [
+        [
+          "/usr/bin/python3",
+          "-B",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase102/promotion/run-prepared.py",
+          "--prepared",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase102/promotion04/authority/prepared.json",
+          "--guard",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase102/promotion04/authority-guard"
+        ],
+        [
+          "/usr/bin/python3",
+          "-B",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase102/qualification/consume-authority.py",
+          "--prepared",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase102/promotion04/authority/prepared.json",
+          "--job",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase102/promotion04/authority-guard-job.json",
+          "--out",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase102/promotion04/authority-consumed.json"
+        ]
+      ],
+      "requires": "Prepared authority recipe/API04 pins unchanged; root serial target boundary. Both paths of backend bridge require this fresh04 evidence."
+    },
+    {
+      "id": "fresh-mechanisms-if-triggered",
+      "commands": [
+        [
+          "/usr/bin/python3",
+          "-B",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase102/promotion/run-prepared.py",
+          "--prepared",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase102/promotion04/helper-prepared.json",
+          "--guard",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase102/promotion04/helper-guard"
+        ],
+        [
+          "/usr/bin/python3",
+          "-B",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase102/emit.py",
+          "--acquisition",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase102/projection-cost-api01/report.json",
+          "--source",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase102/trmc-cold-controls01/mixed-construction.bend",
+          "--out",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase102/promotion04/mixed-emission"
+        ],
+        [
+          "/usr/bin/python3",
+          "-B",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase102/trmc-cold/controls/prepare-matrix-v1.py",
+          "--controls",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase102/trmc-cold-controls01/manifest.json",
+          "--emission",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase102/promotion04/mixed-emission/mixed-construction/emitted/report.json",
+          "--api-report",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase102/projection-cost-api01/report.json",
+          "--out",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase102/promotion04/matrix-plan"
+        ],
+        [
+          "/usr/bin/python3",
+          "-B",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase102/trmc-cold/controls/run-matrix-v2.py",
+          "--plan",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase102/promotion04/matrix-plan/plan.json",
+          "--out",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase102/promotion04/matrix-run"
+        ]
+      ],
+      "requires": "TRIGGER: compare actual04 native inheritance cold-mixed C to historical matrix-plan originalC by bytes+SHA256. If different, run these four jobs; all5 variants,5 preprocessor checks and15 outputs remain required. If equal, inherited mechanism path needs no fresh helper or matrix targets."
+    },
+    {
+      "id": "backend-inherited-choice",
+      "commands": [
+        [
+          "/usr/bin/python3",
+          "-B",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase102/promotion/backend-bridge04.py",
+          "--source-audit",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase102/promotion04/source-audit/report.json",
+          "--authority",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase102/promotion04/authority-consumed.json",
+          "--backend-policy",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase99/phase102-final-plan04/policy/policy.json",
+          "--controls",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase102/final-controls03/report.json",
+          "--native-inheritance",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase102/native-chain04/inheritance/report.json",
+          "--out",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase102/backend-specific04",
+          "--projection-controls",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase102/final-helper-controls03/report.json",
+          "--cold-matrix",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase102/trmc-cold-matrix-run02/report.json"
+        ]
+      ],
+      "requires": "Choose ONLY if actual04 cold-mixed native C equals the historical matrix base. All70 obligation IDs retained; historical03 helper/matrix source explicitly recorded."
+    },
+    {
+      "id": "backend-fresh-choice",
+      "commands": [
+        [
+          "/usr/bin/python3",
+          "-B",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase102/promotion/backend-bridge04.py",
+          "--source-audit",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase102/promotion04/source-audit/report.json",
+          "--authority",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase102/promotion04/authority-consumed.json",
+          "--backend-policy",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase99/phase102-final-plan04/policy/policy.json",
+          "--controls",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase102/final-controls03/report.json",
+          "--native-inheritance",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase102/native-chain04/inheritance/report.json",
+          "--out",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase102/backend-specific04",
+          "--projection-controls",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase102/promotion04/helper-controls/report.json",
+          "--cold-matrix",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase102/promotion04/matrix-run/report.json",
+          "--fresh-mechanisms",
+          "--projection-job",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase102/promotion04/helper-guard-job.json"
+        ]
+      ],
+      "requires": "Alternative to backend-inherited-choice, never both into the same out. Requires completed fresh mechanism jobs; exact04 native cold-mixed C must equal fresh API04 matrix base."
+    },
+    {
+      "id": "final-five",
+      "commands": [
+        [
+          "/usr/bin/python3",
+          "-B",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase102/qualification-method.py",
+          "final-controls",
+          "--b1-build",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase102/native-b1-04/b1.json",
+          "--b2-build",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase102/native-chain04/b2.json",
+          "--backend-policy",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase99/phase102-final-plan04/policy/policy.json",
+          "--backend-controls",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase102/backend-specific04/report.json",
+          "--out",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase102/native-chain04/final-controls"
+        ]
+      ],
+      "requires": "Backend04 complete; all five original final-image source controls are fresh on actual04 B1/B2."
+    },
+    {
+      "id": "admission",
+      "commands": [
+        [
+          "/usr/bin/python3",
+          "-B",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase102/qualification-method.py",
+          "admit",
+          "--b1-build",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase102/native-b1-04/b1.json",
+          "--b2-build",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase102/native-chain04/b2.json",
+          "--backend-policy",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase99/phase102-final-plan04/policy/policy.json",
+          "--b1-self",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase102/native-chain04/b1-self/report.json",
+          "--b2-self",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase102/native-chain04/b2-self/report.json",
+          "--source-recipe",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase99/phase102-final-plan04/recipe.json",
+          "--controls",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase102/native-chain04/controls/report.json",
+          "--broad45",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase102/native-chain04/broad45/report.json",
+          "--conformance",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase102/native-chain04/conformance/collected.json",
+          "--backend-controls",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase102/backend-specific04/report.json",
+          "--final-controls",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase102/native-chain04/final-controls/report.json",
+          "--out",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase102/native-chain04/admission.json"
+        ]
+      ],
+      "requires": "Every preceding applicable semantic gate complete. Admission does not imply runtime acceptance or installation."
+    },
+    {
+      "id": "runtime-phase98",
+      "commands": [
+        [
+          "/usr/bin/python3",
+          "-B",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase102/promotion/runtime-reuse04.py",
+          "calibrate",
+          "--products",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase99/phase102-runtime-products04/phase98-products.json",
+          "--all",
+          "--out",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase99/phase102-runtime-phase98-calibration04"
+        ],
+        [
+          "/usr/bin/python3",
+          "-B",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase102/promotion/runtime-reuse04.py",
+          "measure",
+          "--products",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase99/phase102-runtime-products04/phase98-products.json",
+          "--all",
+          "--plans",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase99/phase102-runtime-phase98-calibration04/report.json",
+          "--out",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase99/phase102-runtime-vs-phase9804"
+        ]
+      ],
+      "requires": "Completed actual04 runtime products. Fresh04 calibration and three alternating rounds; all44 nonzero points, original>=100ms gate, zero-work ratio undefined. Root may keep this separate from admission; promotion requires accepted current runtime evidence."
+    },
+    {
+      "id": "runtime-upstream",
+      "commands": [
+        [
+          "/usr/bin/python3",
+          "-B",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase102/promotion/runtime-reuse04.py",
+          "calibrate",
+          "--products",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase99/phase102-runtime-products04/upstream-products.json",
+          "--all",
+          "--out",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase99/phase102-runtime-upstream-calibration04"
+        ],
+        [
+          "/usr/bin/python3",
+          "-B",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase102/promotion/runtime-reuse04.py",
+          "measure",
+          "--products",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase99/phase102-runtime-products04/upstream-products.json",
+          "--all",
+          "--plans",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase99/phase102-runtime-upstream-calibration04/report.json",
+          "--out",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase99/phase102-runtime-vs-upstream04"
+        ]
+      ],
+      "requires": "Completed actual04 runtime products. Fresh04 calibration and three alternating rounds; all44 nonzero points, original>=100ms gate, zero-work ratio undefined. Root may keep this separate from admission; promotion requires accepted current runtime evidence."
+    },
+    {
+      "id": "staged-public-cli",
+      "commands": [
+        [
+          "/usr/bin/python3",
+          "-B",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase99/release/prepare.py",
+          "selection",
+          "--admission",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase102/native-chain04/admission.json",
+          "--out",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase99/phase102-release04/selection.json"
+        ],
+        [
+          "/usr/bin/python3",
+          "-B",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase99/release/cli-controls.py",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase99/phase102-release04/selection.json",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase102/native-chain04/controls/report.json",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase99/phase102-release04/public-cli"
+        ]
+      ],
+      "requires": "Qualified04 admission and root performance decision. Default pointer replacement/capsule handling remain root-owned after these nine controls pass."
+    }
+  ],
+  "matrixDecision": {
+    "inheritance": "/home/ai/bend2/build/publish/bend/selfhost/build/phase102/native-chain04/inheritance/report.json",
+    "source": "/home/ai/bend2/build/publish/bend/selfhost/build/phase102/trmc-cold-controls01/mixed-construction.bend",
+    "historicalPlan": "/home/ai/bend2/build/publish/bend/selfhost/build/phase102/trmc-cold-matrix01/plan.json",
+    "expectedHistoricalC": {
+      "bytes": 165130,
+      "sha256": "b497443b8cbe2e56c049aa60a2e4f852d69b1e1a3102a71a3186c3f858ad3d6c"
+    },
+    "comparison": "Find matching native sources row, require B1/B2 exactC; compare full current row.c bytes+sha256 to historicalPlan.originalC. Equal selects backend-inherited-choice; different selects fresh-mechanisms-if-triggered then backend-fresh-choice."
+  },
+  "scope": "Prepared explicit root continuation phases, not an executed queue or promotion receipt. No automatic choice, overwritten receipts or inherited fresh-timing claim."
+}

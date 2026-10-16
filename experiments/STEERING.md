@@ -1,4 +1,28 @@
-# Active frontier: Phase101 ambitious native text prototype
+# Active frontier: Phase102 composable native lowering
+
+[Design](../design/phase102/ambitious-native-campaign.md) ·
+[Report](../implementation/phase102/README.md) ·
+[Compiler guide](../docs/self_hosted/phase102-native-lowering.md).
+
+General constructor loops and scoped direct workers now recover large text wins
+on the existing representation. Owning-observer forwarding and a measured inline
+budget make the large source-index application about twice as fast as installed
+B2 and close to upstream; private unique-cell reuse further improves rendering.
+Three actual Bend-produced apps pass50 inputs/165 executions; focused controls
+pass144 executions. Keep the distinct per-workload ratios and finite scope.
+
+The425-line source-profile candidate is reproducible and its upstream-built
+native B1 has emitted its own C with exact independent diagnostics. Native B2 and
+full image gates are in progress. Do not equate API/application evidence with
+native release admission. Phase98 native and Phase90 JS remain installed.
+
+Continue the serial guarded queue, reuse exact products, and qualify the frozen
+candidate once. Probe remaining observer-result allocation separately. Global
+chunk storage, identifier compression and PCH have not earned integration. Keep
+the failed/inactive variants and avoid repeated self-build timings without a
+decision they would resolve.
+
+# Previous frontier: Phase101 ambitious native text prototype
 
 [Ambitious agenda](../design/phase101/ambitious-native-agenda.md) ·
 [Report](../implementation/phase101/README.md) ·

@@ -180,6 +180,28 @@ same-final-C executions; never infer runtime semantics from C syntax alone.
 The complete old five-source gate still runs: these controls cover different
 ownership boundaries from the new mechanism fixtures.
 
+`native-inherit-v2.py` implements that narrow bridge, with optional app reports
+and multiple complete control reports:
+
+```sh
+python3 -B selfhost/tools/performance/phase102/native-inherit-v2.py \
+  --b1-build "$P102_B1_ROOT/b1.json" --b2-build "$P102_OUT/b2.json" \
+  --backend-policy "$P102_POLICY" --controls FINAL_CHECK_EMITTED_REPORT ADDITIONAL_BRANCH_REPORT \
+  --apps FINAL_APP_REPORT MORE_FINAL_FIXTURES_REPORT \
+  --out "$P102_OUT/inheritance"
+```
+
+It authenticates the original Phase98 diagnostic request's actual command and
+captures, each retained O3 build, and every prior candidate output byte against
+its frozen oracle before running new emissions. Identical native C inherits that
+exact binary and behavior; changed C gets one build and all original executions.
+Inherited timing remains inherited, never labeled a fresh measurement. The
+runner uses the versioned long-argument guard, preserving full runtime argv.
+Its `--check-only` mode executes no targets. The offline evidence preflight on
+`reuse-controls03` checked 11 sources and 48 candidate outputs successfully;
+it used installed-image bindings for method validation and makes no final
+candidate-inheritance claim.
+
 ## Compiled-program speed continuity, separately from broad45
 
 The 45 Phase93 **batched timing sources** differ from the 45 plain broad semantic

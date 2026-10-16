@@ -164,3 +164,38 @@ versions remain recorded. They do not count as passed controls or as compiler
 regressions. The final controls will also exercise retained aliases, arbitrary
 three-field constructors, argument swapping, late failure and unchanged bang
 fallback; the installed release remains unchanged while these gates run.
+
+## Frozen compiler candidate and broad application results
+
+The retained source is `trmc-reuse-source02/compiler.bend`, SHA256
+`8b895aec2dc9eac2eaee0036239367f83b53910c309ba26ebab4c9a47fa5affa`.
+It integrates the mechanisms in Bend and adds425 physical lines to the installed
+standalone source. Its compact, replayable source profile is
+[`phase102-lowering01`](../../selfhost/tools/native/profiles/phase102-lowering01/profile.json);
+the forward replay and inverse recovery both pass. The linked String ABI and
+ordinary scheduler fallback remain in place. See the
+[compiler guide](../../docs/self_hosted/phase102-native-lowering.md).
+
+The actual Bend emitter passes all50 application inputs /165 executions
+(`reuse-bend-broad01`). These include the complete image output, source-index
+records and graph results against the frozen independent oracles. This wider
+one-round run is a semantic check, not the source of precise speed estimates.
+The final helper-gating correction emits all three applications byte-identically
+to those products (`reuse-emission02`). It avoids adding unused TRMC helpers to
+bang fallback programs.
+
+Focused controls pass144 complete-output executions (`reuse-controls03`):
+arbitrary three-field constructors, aliasing, strict argument order, late
+failure, full-U32 characters including NUL/surrogates, shared String tails,
+parallel work, and fallback refusals. A separate frozen Phase99 branch corpus
+is being added to cover the inherited literal-branch specialization explicitly.
+These finite controls establish useful boundaries; they are not a whole-compiler
+correctness proof.
+
+The upstream-built native B1 now exists (`native-b1-01`). Checked C acquisition
+took37.9s; matched O2 native construction took202.8s wall time, including its
+guard and authentication. Its ELF is10,584,704bytes. Fresh raw/provider authority
+checks pass (`authority-controls02`); a native B1→B2 chain and native semantic
+qualification are in progress. Installed Phase98 native and Phase90 JS selections
+remain unchanged. The successful checked API and application runs do not stand
+in for these native image checks.

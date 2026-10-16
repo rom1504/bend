@@ -5,7 +5,18 @@ what should happen next. The compiler remains implemented in Bend; experiments
 must identify changes to compiler source, generated compiler images, host tools
 and emitted user programs separately.
 
-## Active frontier: Phase101 ambitious native text
+## Active frontier: Phase102 composable native lowering
+
+[Design](../design/phase102/ambitious-native-campaign.md) ·
+[Report](../implementation/phase102/README.md) · [Strategy](STEERING.md).
+The compiler written in Bend now has an experimental profile combining general
+constructor loops, scoped direct calls, owning-observer forwarding and bounded
+branch specialization. Text application gains no longer require a global String
+representation change. The full50-input application set and144 focused executions
+pass; the actual native B1/B2 qualification is underway. Installed releases stay
+unchanged until the separate image and runtime gates are satisfied.
+
+## Previous frontier: Phase101 ambitious native text
 
 [Agenda](../design/phase101/ambitious-native-agenda.md) ·
 [Report](../implementation/phase101/README.md) · [Strategy](STEERING.md).

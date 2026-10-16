@@ -1,0 +1,64 @@
+{
+  "complete": true,
+  "targetsRun": false,
+  "records": [
+    {
+      "id": "branch-branches",
+      "source": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase99/branch-closures/fixtures-v2/branches.bend",
+      "stdout": "left/right\nleft\nright\nright/left\nleft\nright\nA\nB\nalpha.beta:tail\nplain\n7\nselected-effect\nother-effect\n",
+      "stderr": "",
+      "returncode": 0,
+      "workers": [
+        1
+      ]
+    },
+    {
+      "id": "branch-nct-cat-control",
+      "source": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase99/branch-closures/fixtures-v2/nct-cat-control.bend",
+      "stdout": "right\nleft\nleftright\n",
+      "stderr": "",
+      "returncode": 0,
+      "workers": [
+        1
+      ]
+    },
+    {
+      "id": "branch-strict-unused",
+      "source": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase99/branch-closures/fixtures-v2/strict-unused.bend",
+      "stdout": "",
+      "stderr": "bend: a Nat past the largest immediate 2^48-1\n",
+      "returncode": 1,
+      "workers": [
+        1
+      ]
+    }
+  ],
+  "pins": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase99/branch-native01/report.json",
+      "bytes": 38933,
+      "sha256": "97556762a7f686de25c03039b0e8b5d8b26b2ae8b9d76ccdcc4baa3cd58ba409"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase99/branch-small03/report.json",
+      "bytes": 11394,
+      "sha256": "a94c836f3a4b7d3b45607de309f7e062c61e55323c0b58e3077ae56b85676af7"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase99/branch-closures/fixtures-v2/branches.bend",
+      "bytes": 1614,
+      "sha256": "a2f703c7ae7f46457c1826439c9e625f3f6b9aa27a6567655dbf81374d7a5bcc"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase99/branch-closures/fixtures-v2/nct-cat-control.bend",
+      "bytes": 1125,
+      "sha256": "f292ad57c959dc020dbe2dbd7ede8fb37b553489e4db419eea6f2c3a5184ae6b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase99/branch-closures/fixtures-v2/strict-unused.bend",
+      "bytes": 578,
+      "sha256": "a53f11e8c1de7792c74f2a81aac762f4e8053aebf469037916de2c328a67dcda"
+    }
+  ],
+  "scope": "Three unchanged Phase99 branch-specialization controls with full observed baseline/candidate native exit/stdout/stderr oracles; new final-source/API and native-stage execution still required. No historical source qualification transferred."
+}

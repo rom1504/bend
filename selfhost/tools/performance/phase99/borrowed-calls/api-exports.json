@@ -1,0 +1,8 @@
+{
+  "candidateCompileApis": ["nc_compile_checked", "nr_compile_prepared", "nr_prepare", "nc_compile", "nc_foreign_paths"],
+  "fixtureSource": "selfhost/tools/performance/phase99/borrowed-calls/fixtures.bend",
+  "fixtureCases": "selfhost/tools/performance/phase99/borrowed-calls/api-cases.json",
+  "fixtureProcedure": "Append fixtureSource to the candidate API source, then append/export a zero-argument Bool wrapper for each expression in fixtureCases. Baseline exports stay unchanged. These are synthetic internal predicate controls, not production certificates.",
+  "optionalInspectionApis": ["no_schema", "no_schema_error", "no_schema_params", "noa_entry_values", "nob_arg_words", "nob_find", "no_route_pending", "no_route_callees", "noa_analyze_calls", "no_plan_schema_calls"],
+  "status": "prepared-not-executed-by-author"
+}

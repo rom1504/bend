@@ -4,8 +4,10 @@ Phase98's own backend borrows the String equality walk but still consumes the
 `KTerm` projection and retains both arguments at the public equality boundary.
 The obstruction is an intentionally restricted observer language, not a missing
 permission bit. A bounded general extension is plausible, but it is not a small
-switch or a safe removal of generated reference operations. This investigation
-stops at source analysis and design; it prepares no compiler candidate.
+switch or a safe removal of generated reference operations. This initial audit
+stopped at source analysis and design. The later [Phase99 report](README.md) records
+a first-stage certified-call prototype and tests; aggregate tag projection remains
+unimplemented. The observations below describe the unchanged Phase98 baseline.
 
 The [source audit](../../selfhost/build/phase99/borrowed-tags-audit01/report.json)
 passes 18 static assertions against complete pinned inputs. Its

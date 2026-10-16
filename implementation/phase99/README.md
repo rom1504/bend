@@ -44,18 +44,40 @@ fail the unchanged laws. The contracts constrain metadata/kind transport and
 opaque fallback, not the validity of runtime kinds, C narrowing or ownership.
 Receipts: `scalar-laws01` and `scalar-law-negatives01`.
 
-## Next mechanism under test
+## Borrowed calls: small controls and measured boundary win
 
 The [borrowed-tag audit](borrowed-tags.md) finds schema and interprocedural-call
 limitations, rather than a permission switch. Current KTerm constructors have
 8/8/5 fields; width is not the problem. The next bounded prototype permits calls
 between already certified scalar observers using the existing String schema.
-It targets the public equality boundary first. General KTerm schema expansion
-and virtual literal specialization remain separate, unimplemented steps.
+It targets the public equality boundary first. Source03 adds 123 physical lines
+and 8,337 bytes. It publishes a callee certificate only after worker and adapter
+admission, checks exact plain types and live caller-root ancestry, and keeps the
+scalar result in a full `Term`. Ordinary owning fallback remains. General KTerm
+schema expansion and virtual literal specialization remain unimplemented.
+
+`borrowed-small04` passes 15 finite internal admission/refusal cases and 11 native
+executions, including aliased roots, Unicode strings, escaping-child refusal and
+the existing origin-swapping regression. Both checked entry points agree; raw,
+false-permission, modified-provider and unknown-provider paths retain their
+restrictions. The public String equality wrapper now has a borrowed worker that
+calls the certified walker directly. These tests are not a native lifetime proof.
+
+The retained-root equality benchmark has four balanced pairs on one CPU and
+checks complete output and both surviving aliases. At 1m calls, the medians are
+0.34811 s baseline and 0.30738 s candidate, but these short processes approach the
+guard's 20ms resolution. The 10m-call confirmation gives **3.27932 s baseline,
+3.05750 s candidate, ratio 0.93236**: about 6.8% less time. All four paired runs
+improve. This warrants a native image screen; it does not establish a compiler
+speedup. Raw receipts: `borrowed-micro01` and `borrowed-micro02`.
+
+Preserved failures: source02's missing affine sharing annotation, then two aliases
+fixture errors (unsupported match expression and missing String annotations).
+Source03 and `aliases-v3.bend` fix those errors; no failed run is counted as a pass.
 
 The [qualification preparation](qualification-plan.md) reuses Phase98 methods
-with the actual current B1/B2 baseline. It has not run a full compiler build or
-release gate. The runtime bytes used by the micro and native chain are identical;
+with the actual current B1/B2 baseline. A checked acquisition for the borrowed candidate is in progress; no full compiler
+qualification or release gate is complete. The runtime bytes used by the micro and native chain are identical;
 the dispatch implementation differs because `FID_ENTER` is 117 in the micro and
 39,147 in the compiler, above the runtime's 4,096-entry threshold. This limits
 transfer of a micro result and is not a runtime-file mismatch.

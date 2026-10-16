@@ -1,6 +1,8 @@
 # P99-002: calls between already certified scalar observers
 
-Status: source audit complete; isolated first-stage prototype in preparation.
+Status: source03 passes finite/native controls; a 10m-call retained-root equality
+benchmark takes 0.93236× baseline time. Native compiler qualification is in progress;
+not promoted. See the [report](../../implementation/phase99/README.md).
 
 The [audit](../../implementation/phase99/borrowed-tags.md) establishes why B2
 cannot borrow the term-tag projection or public equality wrapper. Upstream has

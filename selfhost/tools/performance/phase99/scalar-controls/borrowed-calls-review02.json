@@ -1,0 +1,88 @@
+{
+  "kind": "phase99-independent-borrowed-calls-source03-review",
+  "targetsRun": false,
+  "source": {
+    "file": "selfhost/build/phase99/borrowed-calls-source03/compiler.bend",
+    "sha256": "3a3d9c098fc8d091e0fde08f2b02a54e6fe96e5e0705ca8195144acb4cae5ccb"
+  },
+  "qualification": {
+    "file": "selfhost/build/phase99/borrowed-small04/report.json",
+    "sha256": "f2540e2e1fc429d91d1169ad38eb36f065af391e2737d18a691defac9ddca6b2",
+    "complete": true,
+    "fullPrograms": 11
+  },
+  "emission": {
+    "file": "selfhost/build/phase99/borrowed-small04/emission/report.json",
+    "sha256": "61a592ff549e89018adcf6edd96765a5d987e9ffe4d3c3c9a2e67ece0d989ebc",
+    "finitePredicates": 15
+  },
+  "spans": [
+    {
+      "file": "selfhost/build/phase99/borrowed-small04/emission/real-io-candidate.c",
+      "fileSha256": "43aec6f923fefcff7ce138c57160476ae1a6c969a5c3c646e66fa9a8819a381b",
+      "name": "$observer.p98_string_eq",
+      "symbol": "NF_FID_36_111_98_115_101_114_118_101_114_46_112_57_56_95_115_116_114_105_110_103_95_101_113_",
+      "lineStart": 1607,
+      "lineEnd": 1631,
+      "bytes": 990,
+      "sha256": "b5c399c4242afc9bc23ae36eb7f5d125236b293ffb3d7c7a96ce9a95876222d5",
+      "text": "NF_FID_36_111_98_115_101_114_118_101_114_46_112_57_56_95_115_116_114_105_110_103_95_101_113_(Env e, bool seq, Term* nf_out, Term v_4294967295, Term v_4294967294) {\nu32 nf_poll = 0;\nnf_again:;\nif (err_spun(e.mem, &nf_poll)) { return 0; }\n{\n#if NATIVE_READONLY_OBSERVERS\nif (!seq && err_seen(e.mem)) { return 0; }\nTerm no_call_0[1];\nif (!NF_FID_36_111_98_115_101_114_118_101_114_46_112_57_56_95_101_113_95_119_97_108_107_(e, seq, no_call_0, v_4294967295, v_4294967294, 1)) { return 0; }\nif (!seq && err_seen(e.mem)) { return 0; }\nTerm v_4294967292 = no_call_0[0];\nif (!seq && err_seen(e.mem)) { return 0; }\nTerm no_call_1[1];\nif (!NF_FID_36_111_98_115_101_114_118_101_114_46_112_57_56_95_101_113_95_102_105_110_105_115_104_(e, seq, no_call_1, v_4294967292, v_4294967295, v_4294967294)) { return 0; }\nif (!seq && err_seen(e.mem)) { return 0; }\nTerm v_4294967291 = no_call_1[0];\nif (!seq && err_seen(e.mem)) { return 0; }\nnf_out[0] = v_4294967291;\nreturn 1;\n#else\nreturn 0;\n#endif\n}\nreturn 0;\n}"
+    },
+    {
+      "file": "selfhost/build/phase99/borrowed-small04/emission/real-io-candidate.c",
+      "fileSha256": "43aec6f923fefcff7ce138c57160476ae1a6c969a5c3c646e66fa9a8819a381b",
+      "name": "$observer.adapter.p98_string_eq",
+      "symbol": "NF_FID_36_111_98_115_101_114_118_101_114_46_97_100_97_112_116_101_114_46_112_57_56_95_115_116_114_105_110_103_95_101_113_",
+      "lineStart": 1632,
+      "lineEnd": 1654,
+      "bytes": 795,
+      "sha256": "e3759fc2cefb56e978d7208abee6e6def778f84e4c78293369384b155276bb8a",
+      "text": "NF_FID_36_111_98_115_101_114_118_101_114_46_97_100_97_112_116_101_114_46_112_57_56_95_115_116_114_105_110_103_95_101_113_(Env e, bool seq, Term* nf_out, Term v_4294967295, Term v_4294967294) {\nu32 nf_poll = 0;\nnf_again:;\nif (err_spun(e.mem, &nf_poll)) { return 0; }\n{\n#if NATIVE_READONLY_OBSERVERS\nTerm no_root_0 = v_4294967295;\nTerm no_root_1 = v_4294967294;\nif (!seq && err_seen(e.mem)) { return 0; }\nTerm no_observed[1];\nif (!NF_FID_36_111_98_115_101_114_118_101_114_46_112_57_56_95_115_116_114_105_110_103_95_101_113_(e, seq, no_observed, v_4294967295, v_4294967294)) { return 0; }\nif (!seq && err_seen(e.mem)) { return 0; }\nTerm no_scalar_result = no_observed[0];\nterm_sink(e, no_root_0);\nterm_sink(e, no_root_1);\nnf_out[0] = no_scalar_result;\nreturn 1;\n#else\nreturn 0;\n#endif\n}\nreturn 0;\n}"
+    },
+    {
+      "file": "selfhost/build/phase99/borrowed-small04/emission/real-io-candidate.c",
+      "fileSha256": "43aec6f923fefcff7ce138c57160476ae1a6c969a5c3c646e66fa9a8819a381b",
+      "name": "p98_string_eq",
+      "symbol": "NF_FID_112_57_56_95_115_116_114_105_110_103_95_101_113_",
+      "lineStart": 2128,
+      "lineEnd": 2186,
+      "bytes": 1742,
+      "sha256": "9e5aa49b21aa2398b30a16b9770946eff4289ec8fbc81c2d4f45e906883ffacc",
+      "text": "NF_FID_112_57_56_95_115_116_114_105_110_103_95_101_113_(Env e, bool seq, Term* nf_out, Term v_4294967295, Term v_4294967294) {\nu32 nf_poll = 0;\nnf_again:;\nif (err_spun(e.mem, &nf_poll)) { return 0; }\n{\nif ((term_rfc(v_4294967295) && (rfc_view(e, term_loc(v_4294967295)) & RFC_CNT) > 1) || (term_rfc(v_4294967294) && (rfc_view(e, term_loc(v_4294967294)) & RFC_CNT) > 1) || 0) { return NF_FID_36_111_98_115_101_114_118_101_114_46_97_100_97_112_116_101_114_46_112_57_56_95_115_116_114_105_110_103_95_101_113_(e, seq, nf_out, v_4294967295, v_4294967294); }\nv_4294967295 = term_keep(e, v_4294967295);\nv_4294967294 = term_keep(e, v_4294967294);\nTerm v_4294967293;\n{\nTerm v_4294967286;\n{\nv_4294967286 = v_4294967295;\ngoto nf_join_12;\n}\nnf_join_12:;\nif (!seq && err_seen(e.mem)) { return 0; }\nTerm v_4294967285;\n{\nv_4294967285 = v_4294967294;\ngoto nf_join_13;\n}\nnf_join_13:;\nif (!seq && err_seen(e.mem)) { return 0; }\nTerm v_4294967284;\n{\nv_4294967284 = 1ull;\ngoto nf_join_14;\n}\nnf_join_14:;\nif (!seq && err_seen(e.mem)) { return 0; }\nTerm nq_result_15[1];\nif (!NF_FID_112_57_56_95_101_113_95_119_97_108_107_(e, seq, nq_result_15, v_4294967286, v_4294967285, v_4294967284)) { return 0; }\nv_4294967293 = nq_result_15[0];\ngoto nf_join_5;\n}\nnf_join_5:;\nif (!seq && err_seen(e.mem)) { return 0; }\nTerm v_4294967292;\n{\nv_4294967292 = v_4294967295;\ngoto nf_join_6;\n}\nnf_join_6:;\nif (!seq && err_seen(e.mem)) { return 0; }\nTerm v_4294967291;\n{\nv_4294967291 = v_4294967294;\ngoto nf_join_7;\n}\nnf_join_7:;\nif (!seq && err_seen(e.mem)) { return 0; }\nTerm nq_result_8[1];\nif (!NF_FID_112_57_56_95_101_113_95_102_105_110_105_115_104_(e, seq, nq_result_8, v_4294967293, v_4294967292, v_4294967291)) { return 0; }\nnf_out[0] = nq_result_8[0];\nreturn 1;\n}\nreturn 0;\n}"
+    },
+    {
+      "file": "selfhost/build/phase99/borrowed-small04/emission/aliases-candidate.c",
+      "fileSha256": "ce9772ded47b406f85a651def532df39a0b8064c7e07e48aac38b51fd9456564",
+      "name": "$observer.p99_same_alias",
+      "symbol": "NF_FID_36_111_98_115_101_114_118_101_114_46_112_57_57_95_115_97_109_101_95_97_108_105_97_115_",
+      "lineStart": 1771,
+      "lineEnd": 1795,
+      "bytes": 964,
+      "sha256": "d73a59613f72a8e09d7a5350ede38979ac8ae7afa200248d9e7a6d0fd49e0033",
+      "text": "NF_FID_36_111_98_115_101_114_118_101_114_46_112_57_57_95_115_97_109_101_95_97_108_105_97_115_(Env e, bool seq, Term* nf_out, Term v_4294967295) {\nu32 nf_poll = 0;\nnf_again:;\nif (err_spun(e.mem, &nf_poll)) { return 0; }\n{\n#if NATIVE_READONLY_OBSERVERS\nif (!seq && err_seen(e.mem)) { return 0; }\nTerm no_call_0[1];\nif (!NF_FID_36_111_98_115_101_114_118_101_114_46_112_57_57_95_101_113_117_97_108_95_119_97_108_107_(e, seq, no_call_0, v_4294967295, v_4294967295, 1)) { return 0; }\nif (!seq && err_seen(e.mem)) { return 0; }\nTerm v_4294967293 = no_call_0[0];\nif (!seq && err_seen(e.mem)) { return 0; }\nTerm no_call_1[1];\nif (!NF_FID_36_111_98_115_101_114_118_101_114_46_112_57_57_95_104_111_108_100_(e, seq, no_call_1, v_4294967293, v_4294967295, v_4294967295)) { return 0; }\nif (!seq && err_seen(e.mem)) { return 0; }\nTerm v_4294967292 = no_call_1[0];\nif (!seq && err_seen(e.mem)) { return 0; }\nnf_out[0] = v_4294967292;\nreturn 1;\n#else\nreturn 0;\n#endif\n}\nreturn 0;\n}"
+    },
+    {
+      "file": "selfhost/build/phase99/borrowed-small04/emission/aliases-candidate.c",
+      "fileSha256": "ce9772ded47b406f85a651def532df39a0b8064c7e07e48aac38b51fd9456564",
+      "name": "$observer.p99_carry",
+      "symbol": "NF_FID_36_111_98_115_101_114_118_101_114_46_112_57_57_95_99_97_114_114_121_",
+      "lineStart": 1723,
+      "lineEnd": 1747,
+      "bytes": 995,
+      "sha256": "8a27a97b7fd59b770917987edeb76ece33aa1be1a3459842b1c5a45122de9c02",
+      "text": "NF_FID_36_111_98_115_101_114_118_101_114_46_112_57_57_95_99_97_114_114_121_(Env e, bool seq, Term* nf_out, Term v_4294967295, Term v_4294967294, Term v_4294967293) {\nu32 nf_poll = 0;\nnf_again:;\nif (err_spun(e.mem, &nf_poll)) { return 0; }\n{\n#if NATIVE_READONLY_OBSERVERS\nif (!seq && err_seen(e.mem)) { return 0; }\nTerm no_call_0[1];\nif (!NF_FID_36_111_98_115_101_114_118_101_114_46_112_57_57_95_101_113_117_97_108_95_119_97_108_107_(e, seq, no_call_0, v_4294967295, v_4294967294, v_4294967293)) { return 0; }\nif (!seq && err_seen(e.mem)) { return 0; }\nTerm v_4294967291 = no_call_0[0];\nif (!seq && err_seen(e.mem)) { return 0; }\nTerm no_call_1[1];\nif (!NF_FID_36_111_98_115_101_114_118_101_114_46_112_57_57_95_104_111_108_100_(e, seq, no_call_1, v_4294967291, v_4294967295, v_4294967294)) { return 0; }\nif (!seq && err_seen(e.mem)) { return 0; }\nTerm v_4294967290 = no_call_1[0];\nif (!seq && err_seen(e.mem)) { return 0; }\nnf_out[0] = v_4294967290;\nreturn 1;\n#else\nreturn 0;\n#endif\n}\nreturn 0;\n}"
+    },
+    {
+      "file": "selfhost/build/phase99/borrowed-small04/emission/aliases-candidate.c",
+      "fileSha256": "ce9772ded47b406f85a651def532df39a0b8064c7e07e48aac38b51fd9456564",
+      "name": "$observer.p99_tail_read",
+      "symbol": "NF_FID_36_111_98_115_101_114_118_101_114_46_112_57_57_95_116_97_105_108_95_114_101_97_100_",
+      "lineStart": 1654,
+      "lineEnd": 1699,
+      "bytes": 1366,
+      "sha256": "49e84ab97074f066a15b4c57168952c25b8b27731843e79383f5b3bc0aff87da",
+      "text": "NF_FID_36_111_98_115_101_114_118_101_114_46_112_57_57_95_116_97_105_108_95_114_101_97_100_(Env e, bool seq, Term* nf_out, Term v_4294967295, Term v_4294967294) {\nu32 nf_poll = 0;\nnf_again:;\nif (err_spun(e.mem, &nf_poll)) { return 0; }\n{\n#if NATIVE_READONLY_OBSERVERS\nif ((term_aux(v_4294967295) == CID_SNIL)) {\nif ((term_aux(v_4294967294) == CID_SNIL)) {\nif (!seq && err_seen(e.mem)) { return 0; }\nnf_out[0] = 1;\nreturn 1;\n} else {\nif ((term_aux(v_4294967294) == CID_SCON)) {\nLoc no_loc_2 = term_peek(e, v_4294967294);\nTerm v_4294967292 = e.mem[no_loc_2 + 0];\nTerm v_4294967291 = e.mem[no_loc_2 + 1];\nif (!seq && err_seen(e.mem)) { return 0; }\nnf_out[0] = 0;\nreturn 1;\n} else {\nerr_post(e.mem, ERR_FIDS); return 0;\n}\n}\n} else {\nif ((term_aux(v_4294967295) == CID_SCON)) {\nLoc no_loc_3 = term_peek(e, v_4294967295);\nTerm v_4294967290 = e.mem[no_loc_3 + 0];\nTerm v_4294967289 = e.mem[no_loc_3 + 1];\nif (!seq && err_seen(e.mem)) { return 0; }\nTerm no_call_4[1];\nif (!NF_FID_36_111_98_115_101_114_118_101_114_46_112_57_57_95_101_113_117_97_108_95_119_97_108_107_(e, seq, no_call_4, v_4294967289, v_4294967294, 1)) { return 0; }\nif (!seq && err_seen(e.mem)) { return 0; }\nTerm v_4294967288 = no_call_4[0];\nif (!seq && err_seen(e.mem)) { return 0; }\nnf_out[0] = v_4294967288;\nreturn 1;\n} else {\nerr_post(e.mem, ERR_FIDS); return 0;\n}\n}\n#else\nreturn 0;\n#endif\n}\nreturn 0;\n}"
+    }
+  ],
+  "limits": "Selected exact C bodies and existing complete receipts. No compiler run by reviewer; not full native-lifetime proof, source-order completeness or full compiler qualification."
+}

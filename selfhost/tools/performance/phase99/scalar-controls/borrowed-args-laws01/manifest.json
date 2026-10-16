@@ -1,0 +1,212 @@
+{
+  "kind": "phase99-borrowed-argument-law-preparation",
+  "complete": true,
+  "targetsRun": false,
+  "source": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase99/borrowed-calls-source03/compiler.bend",
+    "bytes": 1762433,
+    "sha256": "3a3d9c098fc8d091e0fde08f2b02a54e6fe96e5e0705ca8195144acb4cae5ccb"
+  },
+  "method": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase99/scalar-controls/prepare-borrowed-args-laws.py",
+    "bytes": 4741,
+    "sha256": "d583dd6d68195c8ef64a98bfd4c85e13b867ecb08c1dea53303b1912e3ac6695"
+  },
+  "extractor": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/proofs/phase98/prepare-current.py",
+    "bytes": 5929,
+    "sha256": "66760eefb521a7a879701a7befbea4ce9afff40fbcb3fc4cc69d9cad14f167f4"
+  },
+  "template": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase99/scalar-controls/borrowed-args-laws.template.bend",
+    "bytes": 987,
+    "sha256": "dba2b133c813590db8158fc089968799b18058871b8d2ee4681df8031177eca0"
+  },
+  "declarations": [
+    {
+      "name": "KTerm",
+      "original": "type KTerm is Data:\n  KTerm{+tag: String, +name: String, +id: U32, +quant: U32, +kids: List<&2, KTerm>, +removed: List<&2, String>, +originBegin: U32, +originEnd: U32}\n  KLambda{+name: String, +id: U32, +quant: U32, +kids: List<&2,KTerm>, +removed: List<&2,String>, +originBegin: U32, +originEnd: U32, +quantityPresent: Bool}\n  KLiteral{+kind: String, +number: U32, +text: String, +originBegin: U32, +originEnd: U32}\n\n# Module: src/core/term.bend:30\n",
+      "extracted": "type KTerm is Data:\n  KTerm{+tag: String, +name: String, +id: U32, +quant: U32, +kids: List<&2, KTerm>, +removed: List<&2, String>, +originBegin: U32, +originEnd: U32}\n  KLambda{+name: String, +id: U32, +quant: U32, +kids: List<&2,KTerm>, +removed: List<&2,String>, +originBegin: U32, +originEnd: U32, +quantityPresent: Bool}\n  KLiteral{+kind: String, +number: U32, +text: String, +originBegin: U32, +originEnd: U32}\n\n# Module: src/core/term.bend:30\n",
+      "removedUnsafe": false,
+      "extractedSha256": "645f2d77c91661ac4082fd95d18c0c320ee150077c82a07b4c5e8b0802795674"
+    },
+    {
+      "name": "kt",
+      "original": "@unsafe\ndef kt(\n  +tag: String,\n  +name: String,\n  +id: U32,\n  +quant: U32,\n  +kids: List<&2, KTerm>,\n) -> KTerm:\n  KTerm{tag, name, id, quant, kids, Nil{}, 0, 0}\n\n# Module: src/core/term.bend:46\n",
+      "extracted": "def kt(\n  +tag: String,\n  +name: String,\n  +id: U32,\n  +quant: U32,\n  +kids: List<&2, KTerm>,\n) -> KTerm:\n  KTerm{tag, name, id, quant, kids, Nil{}, 0, 0}\n\n# Module: src/core/term.bend:46\n",
+      "removedUnsafe": true,
+      "extractedSha256": "a8274f6fd1eeefe219c941daccd7107b990239c6a010ad4c5b7e034e0f85887e"
+    },
+    {
+      "name": "atom",
+      "original": "@unsafe\ndef atom(\n  +tag: String,\n) -> KTerm:\n  kt(tag, \"\", 0, 0, Nil{})\n\n# Module: src/core/term.bend:52\n",
+      "extracted": "def atom(\n  +tag: String,\n) -> KTerm:\n  kt(tag, \"\", 0, 0, Nil{})\n\n# Module: src/core/term.bend:52\n",
+      "removedUnsafe": true,
+      "extractedSha256": "a51c9079f9af36da9d495ba7b0b8dc6afa66fb1dd014686f72e999ad6218efd1"
+    },
+    {
+      "name": "ks",
+      "original": "@unsafe\ndef ks(\n  +t: KTerm,\n) -> List<&2, KTerm>:\n  match t:\n    case KTerm{tag, name, id, quant, kids, removed, originBegin, originEnd}:\n      kids\n    case KLambda{name, id, quant, kids, removed, begin, end, present}:\n      kids\n    case KLiteral{kind, number, text, literalBegin, literalEnd}:\n      Nil{}\n\n# Module: src/core/term.bend:112\n",
+      "extracted": "def ks(\n  +t: KTerm,\n) -> List<&2, KTerm>:\n  match t:\n    case KTerm{tag, name, id, quant, kids, removed, originBegin, originEnd}:\n      kids\n    case KLambda{name, id, quant, kids, removed, begin, end, present}:\n      kids\n    case KLiteral{kind, number, text, literalBegin, literalEnd}:\n      Nil{}\n\n# Module: src/core/term.bend:112\n",
+      "removedUnsafe": true,
+      "extractedSha256": "9aa621582cf8e85859f501a1f798ecfba0322687eea053f6aabb2ee1b747be59"
+    },
+    {
+      "name": "k_with_children",
+      "original": "@unsafe\ndef k_with_children(+t: KTerm, +newKids: List<&2,KTerm>) -> KTerm:\n  match t:\n    case KTerm{tag, name, id, quant, oldKids, removed, originBegin, originEnd}:\n      KTerm{tag, name, id, quant, newKids, removed, originBegin, originEnd}\n\n# Explicit replacement does not guess or inherit an occurrence.\n    case KLambda{name, id, quant, kids, removed, begin, end, present}:\n      KLambda{name, id, quant, newKids, removed, begin, end, present}\n    case KLiteral{kind, number, text, literalBegin, literalEnd}:\n      t\n\n# Module: src/core/term.bend:594\n",
+      "extracted": "def k_with_children(+t: KTerm, +newKids: List<&2,KTerm>) -> KTerm:\n  match t:\n    case KTerm{tag, name, id, quant, oldKids, removed, originBegin, originEnd}:\n      KTerm{tag, name, id, quant, newKids, removed, originBegin, originEnd}\n\n# Explicit replacement does not guess or inherit an occurrence.\n    case KLambda{name, id, quant, kids, removed, begin, end, present}:\n      KLambda{name, id, quant, newKids, removed, begin, end, present}\n    case KLiteral{kind, number, text, literalBegin, literalEnd}:\n      t\n\n# Module: src/core/term.bend:594\n",
+      "removedUnsafe": true,
+      "extractedSha256": "b5efc34af9c1c1f4c428f41ac47b1936877214cf40632447bf90d3ae10f3b23d"
+    },
+    {
+      "name": "nt_choose",
+      "original": "@unsafe\ndef nt_choose(-A: Type, +b: Bool, yes: Unit -> A, no: Unit -> A) -> A:\n  match b:\n    case True{}: yes(Unit{})\n    case False{}: no(Unit{})\n\n# Chunks arrive in reverse output order. Only each new chunk is traversed by\n# append; the growing suffix stays on its right.\n\n# Module: src/back/native/text.bend:10\n",
+      "extracted": "def nt_choose(-A: Type, +b: Bool, yes: Unit -> A, no: Unit -> A) -> A:\n  match b:\n    case True{}: yes(Unit{})\n    case False{}: no(Unit{})\n\n# Chunks arrive in reverse output order. Only each new chunk is traversed by\n# append; the growing suffix stays on its right.\n\n# Module: src/back/native/text.bend:10\n",
+      "removedUnsafe": true,
+      "extractedSha256": "30d845635a3fefb47436732e597e0ba2eac385966afd2a0a4ba82dfdaed3aa9f"
+    },
+    {
+      "name": "p88_string_eq_go",
+      "original": "def p88_string_eq_go(a: String, b: String, same: Bool) -> Bool:\n  match a b same:\n    case SNil{} SNil{} result: result\n    case SNil{} SCon{h, t} result: False{}\n    case SCon{h, t} SNil{} result: False{}\n    case SCon{h1, t1} SCon{h2, t2} False{}: False{}\n    case SCon{h1, t1} SCon{h2, t2} True{}:\n      p88_string_eq_go(t1, t2, Char.is_eq(h1, h2))\n\n",
+      "extracted": "def p88_string_eq_go(a: String, b: String, same: Bool) -> Bool:\n  match a b same:\n    case SNil{} SNil{} result: result\n    case SNil{} SCon{h, t} result: False{}\n    case SCon{h, t} SNil{} result: False{}\n    case SCon{h1, t1} SCon{h2, t2} False{}: False{}\n    case SCon{h1, t1} SCon{h2, t2} True{}:\n      p88_string_eq_go(t1, t2, Char.is_eq(h1, h2))\n\n",
+      "removedUnsafe": false,
+      "extractedSha256": "22044bdebde1293a87da15b837df67df1bd5777fbf57de2fa2736bc9fc1622d5"
+    },
+    {
+      "name": "p98_eq_finish",
+      "original": "def p98_eq_finish(same: Bool, left: String, right: String) -> Bool:\n  same\n\n",
+      "extracted": "def p98_eq_finish(same: Bool, left: String, right: String) -> Bool:\n  same\n\n",
+      "removedUnsafe": false,
+      "extractedSha256": "a690d3a27ca2442c8551dcdfa25af1887e965d16a6371c77063cadae03367c30"
+    },
+    {
+      "name": "p88_string_eq",
+      "original": "def p88_string_eq(+a: String, +b: String) -> Bool:\n  p98_eq_finish(p88_string_eq_go(a, b, True{}), a, b)\n\n",
+      "extracted": "def p88_string_eq(+a: String, +b: String) -> Bool:\n  p98_eq_finish(p88_string_eq_go(a, b, True{}), a, b)\n\n",
+      "removedUnsafe": false,
+      "extractedSha256": "aadea14b206240221b78c941faa4b267f6f4eaa9487b8a2d3ba559cbfe7f0014"
+    },
+    {
+      "name": "p98_tag_eq_read",
+      "original": "def p98_tag_eq_read(term: KTerm, key: String) -> Bool:\n  match term:\n    case KTerm{tag, name, id, quant, kids, removed, begin, end}:\n      p88_string_eq_go(tag, key, True{})\n    case KLambda{name, id, quant, kids, removed, begin, end, present}:\n      p88_string_eq(\"Lam\", key)\n    case KLiteral{kind, number, text, begin, end}:\n      p88_string_eq(\"Lit\", key)\n\n",
+      "extracted": "def p98_tag_eq_read(term: KTerm, key: String) -> Bool:\n  match term:\n    case KTerm{tag, name, id, quant, kids, removed, begin, end}:\n      p88_string_eq_go(tag, key, True{})\n    case KLambda{name, id, quant, kids, removed, begin, end, present}:\n      p88_string_eq(\"Lam\", key)\n    case KLiteral{kind, number, text, begin, end}:\n      p88_string_eq(\"Lit\", key)\n\n",
+      "removedUnsafe": false,
+      "extractedSha256": "55cab338e03ef69ee2ea884f7f14118d6f555a2e5f87d1b9e5b432f06e7e76db"
+    },
+    {
+      "name": "p98_tag_eq_finish",
+      "original": "def p98_tag_eq_finish(same: Bool, term: KTerm, key: String) -> Bool:\n  same\n\n",
+      "extracted": "def p98_tag_eq_finish(same: Bool, term: KTerm, key: String) -> Bool:\n  same\n\n",
+      "removedUnsafe": false,
+      "extractedSha256": "4953d037ae1b35e292d67ecf4f423c4a7fc4a42e56af4c27f61ca3c17197b641"
+    },
+    {
+      "name": "p98_tag_eq",
+      "original": "def p98_tag_eq(+term: KTerm, +key: String) -> Bool:\n  p98_tag_eq_finish(p98_tag_eq_read(term, key), term, key)\n\n\n# Phase99 candidate: certificates are compiler products, never book markers.\n# Current schemas contain only plain, nondependent nominal parameter types.\n",
+      "extracted": "def p98_tag_eq(+term: KTerm, +key: String) -> Bool:\n  p98_tag_eq_finish(p98_tag_eq_read(term, key), term, key)\n\n\n# Phase99 candidate: certificates are compiler products, never book markers.\n# Current schemas contain only plain, nondependent nominal parameter types.\n",
+      "removedUnsafe": false,
+      "extractedSha256": "83ceb031f8018081336db50e9ea715713f58041c51a15db904ac0f0c2971110a"
+    },
+    {
+      "name": "nob_words_cons",
+      "original": "@unsafe\ndef nob_words_cons(+word: KTerm, +rest: KTerm) -> KTerm:\n  nt_choose(KTerm, Bool.not(p98_tag_eq(word, \"Absent\")) && p98_tag_eq(rest, \"NO_Args\"),\n    u => k_with_children(rest, Con{word, ks(rest)}), u => atom(\"Absent\"))\n\n",
+      "extracted": "def nob_words_cons(+word: KTerm, +rest: KTerm) -> KTerm:\n  nt_choose(KTerm, Bool.not(p98_tag_eq(word, \"Absent\")) && p98_tag_eq(rest, \"NO_Args\"),\n    u => k_with_children(rest, Con{word, ks(rest)}), u => atom(\"Absent\"))\n\n",
+      "removedUnsafe": true,
+      "extractedSha256": "96f12121216f70a9b1201effcda75f6f5f271295ff5604fd0169221c625c5fb8"
+    }
+  ],
+  "actualCaller": "@unsafe\ndef nob_arg_words(+ctx: NO_Context, params: List<&2, KTerm>, args: List<&2, KTerm>, +roots: List<&2, U32>, +i: U32) -> KTerm:\n  match params, args:\n    case Nil{}, Nil{}: kt(\"NO_Args\", \"\", 0, 0, Nil{})\n    case Con{p, ps}, Con{a, more}: nob_words_cons(nob_arg_word(ctx, p, a, no_root_index(roots, i)), nob_arg_words(ctx, ps, more, roots, U32.inc(i)))\n    case _, _: atom(\"Absent\")\n\n",
+  "mutations": [
+    {
+      "role": "bad-head",
+      "helper": "nob_words_cons",
+      "old": "Bool.not(p98_tag_eq(word, \"Absent\")) && p98_tag_eq(rest, \"NO_Args\")",
+      "new": "p98_tag_eq(rest, \"NO_Args\")"
+    },
+    {
+      "role": "bad-tail",
+      "helper": "nob_words_cons",
+      "old": "Bool.not(p98_tag_eq(word, \"Absent\")) && p98_tag_eq(rest, \"NO_Args\")",
+      "new": "Bool.not(p98_tag_eq(word, \"Absent\"))"
+    },
+    {
+      "role": "bad-order",
+      "helper": "nob_words_cons",
+      "old": "Con{word, ks(rest)}",
+      "new": "List.append(&2, KTerm, ks(rest), [word])"
+    }
+  ],
+  "rows": [
+    {
+      "role": "positive",
+      "helper": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase99/scalar-controls/borrowed-args-laws01/positive/candidate.bend",
+        "bytes": 3398,
+        "sha256": "aad3cd03344b80604c999f4a7bdd0180455656fd3edca10a68c6752fa1deaf5b"
+      },
+      "laws": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase99/scalar-controls/borrowed-args-laws01/positive/laws.bend",
+        "bytes": 987,
+        "sha256": "dba2b133c813590db8158fc089968799b18058871b8d2ee4681df8031177eca0"
+      },
+      "expectedStandaloneAdmission": "accept",
+      "expectedLawCheck": "accept",
+      "status": "prepared; unexecuted"
+    },
+    {
+      "role": "bad-head",
+      "helper": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase99/scalar-controls/borrowed-args-laws01/bad-head/candidate.bend",
+        "bytes": 3358,
+        "sha256": "14d71ab7c7454a72a9e778d087b63d39c15dd32d8b3f066890debe16efa0c948"
+      },
+      "laws": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase99/scalar-controls/borrowed-args-laws01/bad-head/laws.bend",
+        "bytes": 987,
+        "sha256": "dba2b133c813590db8158fc089968799b18058871b8d2ee4681df8031177eca0"
+      },
+      "expectedStandaloneAdmission": "accept",
+      "expectedLawCheck": "reject",
+      "status": "prepared; unexecuted"
+    },
+    {
+      "role": "bad-tail",
+      "helper": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase99/scalar-controls/borrowed-args-laws01/bad-tail/candidate.bend",
+        "bytes": 3367,
+        "sha256": "44d34e3771e067a2fa6beead14bb6bcb700bcda59fab025e046ff9720e6c1129"
+      },
+      "laws": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase99/scalar-controls/borrowed-args-laws01/bad-tail/laws.bend",
+        "bytes": 987,
+        "sha256": "dba2b133c813590db8158fc089968799b18058871b8d2ee4681df8031177eca0"
+      },
+      "expectedStandaloneAdmission": "accept",
+      "expectedLawCheck": "reject",
+      "status": "prepared; unexecuted"
+    },
+    {
+      "role": "bad-order",
+      "helper": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase99/scalar-controls/borrowed-args-laws01/bad-order/candidate.bend",
+        "bytes": 3419,
+        "sha256": "ce9f47363a3652c2c0f9d7b8ca29d0cac7e07d37f5c1c6da5fd073e5c4f67078"
+      },
+      "laws": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase99/scalar-controls/borrowed-args-laws01/bad-order/laws.bend",
+        "bytes": 987,
+        "sha256": "dba2b133c813590db8158fc089968799b18058871b8d2ee4681df8031177eca0"
+      },
+      "expectedStandaloneAdmission": "accept",
+      "expectedLawCheck": "reject",
+      "status": "prepared; unexecuted"
+    }
+  ],
+  "scope": "Three source value contracts for actual nob_words_cons: prepend order, rejected-head propagation, rejected-tail propagation. No abstract substitute for production helpers.",
+  "limits": [
+    "Only leading unsafe annotations removed; independent safe admission remains required.",
+    "Does not prove that supplied words have valid types/ancestry, full-list arity, registry authenticity, native demand, RC or lifetime safety.",
+    "Positive source checking, safe elaboration and independent kernel acceptance remain separate gates.",
+    "Each mutant must first pass standalone source admission; unchanged laws must then reject."
+  ]
+}

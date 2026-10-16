@@ -1,0 +1,92 @@
+[
+  {
+    "id": "entry-root",
+    "expression": "p99_borrow_entry()",
+    "expected": true
+  },
+  {
+    "id": "reordered-root-slot",
+    "expression": "p99_borrow_reordered()",
+    "expected": true
+  },
+  {
+    "id": "descendant-root",
+    "expression": "p99_borrow_descendant()",
+    "expected": true
+  },
+  {
+    "id": "aliased-root-arguments",
+    "expression": "p99_borrow_alias()",
+    "expected": true
+  },
+  {
+    "id": "wrong-exact-type-refusal",
+    "expression": "p99_borrow_wrong_type()",
+    "expected": true
+  },
+  {
+    "id": "no-entry-ancestry-refusal",
+    "expression": "p99_borrow_unrooted()",
+    "expected": true
+  },
+  {
+    "id": "scalar-slot-is-not-root",
+    "expression": "p99_borrow_scalar_origin()",
+    "expected": true
+  },
+  {
+    "id": "missing-root-slot-refusal",
+    "expression": "p99_borrow_missing_origin()",
+    "expected": true
+  },
+  {
+    "id": "virtual-root-refusal",
+    "expression": "p99_borrow_virtual()",
+    "expected": true
+  },
+  {
+    "id": "nonvariable-root-refusal",
+    "expression": "p99_borrow_nonvar()",
+    "expected": true
+  },
+  {
+    "id": "short-arity-refusal",
+    "expression": "p99_borrow_short_arity()",
+    "expected": true
+  },
+  {
+    "id": "long-arity-refusal",
+    "expression": "p99_borrow_long_arity()",
+    "expected": true
+  },
+  {
+    "id": "missing-certificate-refusal",
+    "expression": "p99_borrow_missing_certificate()",
+    "expected": true
+  },
+  {
+    "id": "legacy-emitter-cannot-call",
+    "expression": "p99_borrow_legacy_emitter()",
+    "expected": true
+  },
+  {
+    "id": "permission-off-refusal",
+    "expression": "p99_borrow_permission_off()",
+    "expected": true
+  },
+  {
+    "id": "scalar-type-mismatch-with-positive-control",
+    "expression": "p99_borrow_scalar_type()",
+    "expected": true
+  },
+  {
+    "id": "nested-unrooted-child-refusal",
+    "expression": "p99_borrow_unrooted_descendant()",
+    "expected": true
+  },
+  {
+    "id": "product-result-refusal-with-positive-control",
+    "expression": "p99_borrow_product_result()",
+    "expected": true
+  }
+]

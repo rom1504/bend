@@ -5,7 +5,17 @@ what should happen next. The compiler remains implemented in Bend; experiments
 must identify changes to compiler source, generated compiler images, host tools
 and emitted user programs separately.
 
-## Active frontier: Phase100 useful native applications
+## Active frontier: Phase101 ambitious native text
+
+[Agenda](../design/phase101/ambitious-native-agenda.md) ·
+[Report](../implementation/phase101/README.md) · [Strategy](STEERING.md).
+A general host-only chunk String/append prototype makes complete rendering
+roughly 1.7× faster with about one-third the memory and beats upstream there.
+Indexing/graph regressions prevent global promotion. The installed compiler stays
+unchanged. Preserve the finite correctness scope and representation/operation
+ablations; next address consumers and typed loop-state costs.
+
+## Previous frontier: Phase100 useful native applications
 
 [Applications](../selfhost/apps/README.md) ·
 [Report](../implementation/phase100/README.md) · [Strategy](STEERING.md).

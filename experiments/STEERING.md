@@ -1,4 +1,35 @@
-# Active frontier: Phase100 useful native applications
+# Active frontier: Phase101 ambitious native text prototype
+
+[Ambitious agenda](../design/phase101/ambitious-native-agenda.md) ·
+[Report](../implementation/phase101/README.md) ·
+[Fast experiment loop](../selfhost/tools/performance/phase101/README.md).
+
+Keep the architectural goal: useful applications faster than upstream and short
+complete development loops. The first CPU-only chunk String/append prototype
+makes full rendering take 0.585×/0.603× baseline time at one/four workers and
+0.763×/0.894× upstream time, with about one-third the memory. These are generated-C
+interventions on saved installed-B2 output, not a new compiler or native chain.
+
+Do not promote globally: indexing is 1–3% slower and graph planning 4–6% slower.
+Storage alone was insufficient; sparse chunks regressed badly; bounded prefix
+packing and removing append continuations produced the gain. Final controls pass
+90 independent String executions, all 50 app inputs in 165 executions, and 108
+repeated-screen executions. Full U32 Char, aliases, arrays, Unicode and parallel
+output are covered finitely, not proved universally. GPU is explicitly excluded.
+
+Accepted unchanged-program profiles identify renderer append/reconstruction and
+indexing's large saved continuations. Next test cached typed cursors/adaptive
+small strings, and ablate iterative append on old storage. Then connect winning
+operations through certified Bend emitter lowering; pursue whole-function typed
+state to address indexing. The two-application speed gate is unmet, so no full
+compiler rebuild or new compiler-latency claim is justified yet. Keep the Phase98
+native and Phase90 JS releases unchanged and preserve Phase99 separately.
+
+Root owns serial guarded targets; offline reviewers prepare/review. Reuse pinned
+fixtures and checked baseline products. All variants, rejected captures and
+failures are in the verified evidence capsule. No PR comment was posted.
+
+# Previous frontier: Phase100 useful native applications
 
 [Applications](../selfhost/apps/README.md) ·
 [Report](../implementation/phase100/README.md) ·

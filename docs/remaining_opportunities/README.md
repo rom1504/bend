@@ -1,5 +1,10 @@
 # Remaining opportunities after the architecture survey
 
+The current ambitious agenda is
+[Phase101: native text, typed lowering, fast builds, fusion and parallel output](../../design/phase101/ambitious-native-agenda.md).
+It follows the complete applications measured in Phase100. Start there for
+current priorities; the architecture-survey recommendations below are historical.
+
 For the current compiler's **compilation speed**, start with the
 [Phase62 measured opportunities](../../implementation/phase62/README.md#research-and-the-next-experiments):
 prepared immutable state, reusable backend analysis/documents, and reduced

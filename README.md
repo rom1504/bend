@@ -20,6 +20,11 @@ Try the [standalone Bend applications](selfhost/apps/README.md): a source index,
 image renderer and dependency planner. Their [application measurement loop](selfhost/tools/performance/phase100/README.md)
 checks complete outputs and records build time, execution, memory and CPU scaling.
 
+Our [ambitious speed agenda](design/phase101/ambitious-native-agenda.md) starts
+with native text representation. Its [first experimental results](implementation/phase101/README.md)
+make complete rendering faster than upstream; other workload regressions still
+prevent global deployment.
+
 **Phase98 provides the current native B1/B2 release.** The smaller retained-root
 comparison and scoped observer changes reduce full self-compilation from
 135.5 to **104.8 seconds for B1**, and from 150.5 to **141.0 seconds for B2**.

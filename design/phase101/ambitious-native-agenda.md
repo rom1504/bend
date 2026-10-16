@@ -49,8 +49,8 @@ Prototype a general representation boundary, not an application-specific fast
 path. Candidate designs include immutable contiguous code-point/UTF-8 storage,
 cheap suffix views, small bounded chunks, and append builders/ropes. Choose after
 checking the current Term ABI and ownership protocol. A packed representation
-must still expose exactly the logical String constructors; Unicode scalar
-semantics, embedded NUL, shared suffixes, retained aliases, equality, ordering,
+must still expose exactly the logical String constructors; complete U32 Char
+payloads (including non-Unicode values), embedded NUL, shared suffixes, retained aliases, equality, ordering,
 destruction and parallel ownership all constrain the choice. Never substitute
 byte indexing for character indexing silently. Keep GPU compatibility explicit;
 a CPU-only exploratory prototype does not qualify a general runtime replacement.

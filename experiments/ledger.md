@@ -4714,3 +4714,23 @@ emitted C makes Clang builds 2–3.5× slower. Prioritize application usability,
 text-heavy code and downstream build cost; use frozen-oracle replay for fast loops.
 349 serial targets occupy 88.4s; no resource stops or compiler-image rebuilds.
 Read the report for scope, ranges, independent oracles and preserved failures.
+
+## Phase101 native text representation — 2026-10-16
+
+[Experiment](phase101/P101-001-native-text.md) · [Report](../implementation/phase101/README.md).
+The ambitious agenda is written and its first general String ABI prototype is
+measured. Final six-round renderer ratios are 0.585×/0.603× baseline and
+0.763×/0.894× upstream at one/four workers, with about one-third the memory.
+Indexing stays 1–3% slower; graph planning regresses 4–6%; no global promotion.
+
+Compact storage alone is insufficient. Naive chunk append raises memory to
+about 506 MiB and regresses; packing short prefixes removes the sparse-chunk
+cost and append continuations. Batched borrowed comparison is an additional
+bounded experiment. 90 independent controls, 165 executions on all 50 app inputs
+and 108 repeated-screen executions pass. Profiles expose different renderer
+text and indexing continuation bottlenecks. All failed captures/adapters remain.
+
+750 serial guarded targets occupy 226.8s; no resource stop, OOM or overlap.
+No compiler source/image/release change, full-self rebuild, new compiler-latency
+claim, whole-language proof or PR comment. Next address compact-text consumers,
+adaptive small strings, iterative append ablation and certified typed lowering.

@@ -43,6 +43,26 @@ explicitly different Base and process-clock boundaries. Do not combine their
 ratios. A full native compiler reproducing its own C is another valuable,
 separately reported scaling test.
 
+## Complete application workflows
+
+The [Phase100 applications](../../selfhost/apps/README.md) add source indexing,
+complete image rendering and dependency planning. Their
+[scoreboard](../../implementation/phase100/README.md) measures full process runtime
+including input/output, compiler request/process time, Clang build time, memory,
+generated-code size and CPU-worker scaling. Runtime compares the same Bend source
+compiled by our native B2 and upstream's C backend. B1/B2 emit identical C.
+
+Keep this separate from Phase93's fixed-input kernel batches and full compiler
+self-emission. Prepared Base is used by our compiler requests; upstream checks
+Base within its request. Clang belongs in the reported end-to-end application
+build cost. Small applications and few samples do not establish universal parity.
+No mean combining these unrelated application ratios is reported.
+
+The [application loop](../../selfhost/tools/performance/phase100/README.md)
+offers cached acquisition and `--fixtures` replay of verified input/output
+contracts. Fresh independent references remain available when deliberately
+changing an application contract. Use this loop before broader integration gates.
+
 ## Fast validation without repeating all timings
 
 For fresh **native generated-program runtime**, use the

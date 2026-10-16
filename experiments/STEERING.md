@@ -1,4 +1,32 @@
-# Active frontier: Phase98 native optimization and useful laws
+# Active frontier: Phase100 useful native applications
+
+[Applications](../selfhost/apps/README.md) ·
+[Report](../implementation/phase100/README.md) ·
+[Fast application loop](../selfhost/tools/performance/phase100/README.md).
+
+Usefulness and complete application workflows now take priority over a bootstrap
+parity score. Three standalone safe Bend apps cover source indexing, complete
+image rendering and dependency planning. Fifty distinct inputs pass 318 executions;
+all three native B1/B2 C pairs agree. On selected inputs, graph planning takes
+0.33–0.36× upstream C time, text indexing about 2.15×, and rendering about 1.35×
+sequentially with about 2× acceleration on four physical cores. These are different
+applications and clocks, not one universal performance ratio.
+
+Clang builds take 2–3.5× upstream time for the larger emitted C. Prioritize native
+application imports/error-status usability, profile text-heavy applications before
+general String/ownership work, and investigate generated-code/build cost. Keep
+the graph win and exact parallel image output as constraints. Indexed graph
+algorithms are a separate app-level opportunity. Frozen-input/oracle replay gives
+a roughly 10-second substantial renderer comparison; avoid repeating Python
+oracle generation or rebuilding a compiler for ordinary iteration.
+
+Phase98 remains the installed native release and Phase90 the separate JS release.
+The Phase99 candidate's 105.2-second self-compilation versus 146.5-second matched
+baseline remains experimental, with broad qualification deferred. Phase100 changes
+no compiler source/image/selection and makes no new whole-language or formal proof
+claim. Read the report for all timings, limits, retained failures and evidence.
+
+# Previous frontier: Phase98 native optimization and useful laws
 
 [Report](../implementation/phase98/README.md) ·
 [Machine-readable results](../implementation/phase98/results.json) ·

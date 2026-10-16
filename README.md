@@ -16,6 +16,10 @@ This fork ships the Bend2 compiler in [`selfhost/`](selfhost/README.md), targeti
 upstream **`0592662` (Bend 2.0.36)**. Ordinary compilation runs Bend algorithms
 without a TypeScript fallback.
 
+Try the [standalone Bend applications](selfhost/apps/README.md): a source index,
+image renderer and dependency planner. Their [application measurement loop](selfhost/tools/performance/phase100/README.md)
+checks complete outputs and records build time, execution, memory and CPU scaling.
+
 **Phase98 provides the current native B1/B2 release.** The smaller retained-root
 comparison and scoped observer changes reduce full self-compilation from
 135.5 to **104.8 seconds for B1**, and from 150.5 to **141.0 seconds for B2**.

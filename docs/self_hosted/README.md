@@ -1,5 +1,11 @@
 # Self-hosted compiler: current architecture and development
 
+The [application milestone](../../selfhost/apps/README.md) adds standalone source
+indexing, image rendering and dependency planning. Its
+[measurement loop](../../selfhost/tools/performance/phase100/README.md) separates
+compiler latency, native build time, full application execution, memory and
+parallel scaling. See the [design](../../design/phase100/useful-applications.md).
+
 The installed release is Phase90 genuine JS-hosted B2 (`284f6e9b…`), with
 qualified native07 available separately. See the [native-chain scoreboard](../../implementation/phase92/README.md),
 [JS-hosted five-metric scoreboard](../../implementation/phase91/README.md),

@@ -4,6 +4,7 @@ import csv
 import hashlib
 import json
 from pathlib import Path
+import statistics
 import sys
 
 ROOT = Path(__file__).resolve().parents[4]
@@ -50,13 +51,25 @@ def main():
             assert pin(app['source']['file']) == app['source']
             apps.append(dict(report=pin(path), **app))
     summaries = [dict(run=path.parent.name, **row) for path, run in measurements for row in run['summary']]
+    renderer = []
+    for workers in (1, 2, 4):
+        roles = {}
+        for role in ('b2', 'upstream'):
+            values = [row['job']['seconds'] for _, run in measurements for row in run['records']
+                      if row['app'] == 'image-render' and row['case'] == 'survey-production'
+                      and row['workers'] == workers and row['role'] == role]
+            roles[role] = dict(samples=len(values), medianSeconds=statistics.median(values),
+                               rangeSeconds=[min(values), max(values)])
+        renderer.append(dict(workers=workers, roles=roles,
+                             ratio=roles['b2']['medianSeconds'] / roles['upstream']['medianSeconds']))
     result = dict(kind='phase100-application-scoreboard', complete=True,
                   method=pin(__file__), apps=apps, measurements=[pin(path) for path, _ in measurements],
                   completeExecutions=executions, distinctInputs=len(cases),
                   casesByApplication={name: sum(app == name for app, _ in cases)
                                       for name in sorted({app for app, _ in cases})},
                   applicationBendLines=sum(len(Path(app['source']['file']).read_text().splitlines()) for app in apps),
-                  compilerChanged=False, summaries=summaries, retainedIncompleteRuns=failures,
+                  compilerChanged=False, summaries=summaries, rendererAllObservations=renderer,
+                  retainedIncompleteRuns=failures,
                   execution=dict(jobs=len(jobs), serial=True,
                                  occupiedSeconds=sum(job['wallSeconds'] for job in jobs),
                                  firstToLastSeconds=jobs[-1]['finished'] - jobs[0]['started'],

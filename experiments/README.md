@@ -5,7 +5,17 @@ what should happen next. The compiler remains implemented in Bend; experiments
 must identify changes to compiler source, generated compiler images, host tools
 and emitted user programs separately.
 
-## Active frontier: Phase97 law usefulness and ownership boundary
+## Active frontier: Phase100 useful native applications
+
+[Applications](../selfhost/apps/README.md) ·
+[Report](../implementation/phase100/README.md) · [Strategy](STEERING.md).
+Three standalone applications and independent full-output references now measure
+complete build/runtime/memory/parallel behavior. The native compiler wins on the
+selected graph workloads but retains text/rendering and Clang build gaps. Use
+frozen fixture replay for short iterations; keep release, proof and performance
+claims separate. Compiler source and installed releases are unchanged.
+
+## Previous frontier: Phase97 law usefulness and ownership boundary
 
 [Report](../implementation/phase97/README.md) ·
 [Methods](../selfhost/tools/laws/phase97/README.md) · [Strategy](STEERING.md).

@@ -1,0 +1,3303 @@
+{
+  "kind": "phase100-application-scoreboard",
+  "complete": true,
+  "method": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase100/collect.py",
+    "bytes": 5073,
+    "sha256": "28873c26ac52724cdab7595e589f9a88cb3f0304c61f27fb7a7be0a01afd6147"
+  },
+  "apps": [
+    {
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase100/dependency-acquire02/report.json",
+        "bytes": 32090,
+        "sha256": "137ee83a3e32bb91219868ff6f589e9205c9a8ebc65d09e70bde82206f7f1450"
+      },
+      "id": "dependency-plan",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/apps/dependency-plan/main.bend",
+        "sha256": "00cf32fb68821775fb69ccc135589c2602ecc6d937b33e8d36b5f7eab6bbc8a1",
+        "bytes": 11607
+      },
+      "oracle": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/apps/dependency-plan/oracle.py",
+        "sha256": "a55e73808b8cb47c94aa865ad777bc55a60d11e50adfb70f9688a0c3923146ce",
+        "bytes": 7847
+      },
+      "emissions": {
+        "upstream": {
+          "c": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase100/dependency-acquire02/dependency-plan/upstream.1.c",
+            "sha256": "c661d7b37f2e1d13d2006d3ebc54a250eb12d87c64cb2736b567f9a2ba79caed",
+            "bytes": 249345
+          },
+          "requestMs": 1918.5133640000001,
+          "job": {
+            "guard": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase100/dependency-acquire02/dependency-plan/upstream-emit/process.json",
+              "sha256": "c93fd73a16e9017cbf72e09fe716f75d0dbc264768b36f3f2d6663d33e8b4223",
+              "bytes": 1058
+            },
+            "guardExit": 0,
+            "process": {
+              "complete": true,
+              "command": [
+                "bash",
+                "-c",
+                "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+                "phase86",
+                "taskset",
+                "-c",
+                "3",
+                "/usr/bin/python3",
+                "-B",
+                "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase46/execute.py",
+                "/home/ai/bend2/build/publish/bend/selfhost/build/phase100/dependency-acquire02/dependency-plan/upstream-emit/child.json",
+                "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/bun-1.4.3/bun",
+                "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase86/reference.mjs",
+                "typescript",
+                "/home/ai/bend2/build/publish/bend/selfhost/apps/dependency-plan/main.bend",
+                "/home/ai/bend2/build/publish/bend/selfhost/build/phase100/dependency-acquire02/dependency-plan/upstream",
+                "1"
+              ],
+              "started": 1792138645.2002249,
+              "rssLimitBytes": 2147483648,
+              "availableFloorBytes": 4294967296,
+              "peakTreeRssBytes": 157937664,
+              "minimumAvailableBytes": 27978031104,
+              "returncode": 0,
+              "wallSeconds": 2.0537925160024315,
+              "finished": 1792138647.2540138
+            },
+            "receipt": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase100/dependency-acquire02/dependency-plan/upstream-emit/child.json",
+              "sha256": "8deadfdb0073051d0c471479425d3cdd6df27c3573463d95cb37953f2fc07cc3",
+              "bytes": 885
+            },
+            "seconds": 1.9894885090179741,
+            "rssKiB": 145444,
+            "userSeconds": 1.9161920000000001,
+            "systemSeconds": 0.072007
+          }
+        },
+        "b1": {
+          "c": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase100/dependency-acquire02/dependency-plan/b1.1.c",
+            "sha256": "282200231763264bbb725b0eaf82d9ea2db4bde25c2a6b14a80fa46f4e6d2d34",
+            "bytes": 748255
+          },
+          "requestMs": 960,
+          "job": {
+            "guard": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase100/dependency-acquire02/dependency-plan/b1-emit/process.json",
+              "sha256": "559dc0ad64208babcf82e3b82bdc552932a68dd3ed6493ae0ec36b82fdc25e75",
+              "bytes": 1503
+            },
+            "guardExit": 0,
+            "process": {
+              "complete": true,
+              "command": [
+                "bash",
+                "-c",
+                "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+                "phase86",
+                "taskset",
+                "-c",
+                "3",
+                "/usr/bin/python3",
+                "-B",
+                "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase46/execute.py",
+                "/home/ai/bend2/build/publish/bend/selfhost/build/phase100/dependency-acquire02/dependency-plan/b1-emit/child.json",
+                "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/origin-checked01/compiler",
+                "--threads",
+                "1",
+                "--gpu",
+                "off",
+                "--",
+                "/home/ai/bend2/build/publish/bend/selfhost/apps/dependency-plan/main.bend",
+                "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/base.bend",
+                "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/runtime-accessor-transport02/runtime.c",
+                "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/runtime-accessor-transport02/effs",
+                "/home/ai/bend2/build/publish/bend/selfhost/build/phase100/dependency-acquire02/dependency-plan/b1",
+                "1",
+                "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase88/base/carrier01/base.p88",
+                "p88-private-base-text-1:8dec5b64d3900d61a208e51d92113194b91364c4f4d35d1903edb481d678ed03"
+              ],
+              "started": 1792138647.3885422,
+              "rssLimitBytes": 2147483648,
+              "availableFloorBytes": 4294967296,
+              "peakTreeRssBytes": 80486400,
+              "minimumAvailableBytes": 28034981888,
+              "returncode": 0,
+              "wallSeconds": 1.1678502140566707,
+              "finished": 1792138648.5563872
+            },
+            "receipt": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase100/dependency-acquire02/dependency-plan/b1-emit/child.json",
+              "sha256": "57f7c690a973530066d200b023dea6c229b5bae4c5f15e28bdc63851a6e958c3",
+              "bytes": 1180
+            },
+            "seconds": 1.0956777262035757,
+            "rssKiB": 67948,
+            "userSeconds": 1.086243,
+            "systemSeconds": 0.008046
+          }
+        },
+        "b2": {
+          "c": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase100/dependency-acquire02/dependency-plan/b2.1.c",
+            "sha256": "282200231763264bbb725b0eaf82d9ea2db4bde25c2a6b14a80fa46f4e6d2d34",
+            "bytes": 748255
+          },
+          "requestMs": 1410,
+          "job": {
+            "guard": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase100/dependency-acquire02/dependency-plan/b2-emit/process.json",
+              "sha256": "b19bea10ac89401142a02b6a2053601cba8f4bf0c5402132dce7db5cdb922984",
+              "bytes": 1516
+            },
+            "guardExit": 0,
+            "process": {
+              "complete": true,
+              "command": [
+                "bash",
+                "-c",
+                "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+                "phase86",
+                "taskset",
+                "-c",
+                "3",
+                "/usr/bin/python3",
+                "-B",
+                "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase46/execute.py",
+                "/home/ai/bend2/build/publish/bend/selfhost/build/phase100/dependency-acquire02/dependency-plan/b2-emit/child.json",
+                "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/origin-b2/compiler",
+                "--threads",
+                "1",
+                "--gpu",
+                "off",
+                "--",
+                "phase90-native",
+                "/home/ai/bend2/build/publish/bend/selfhost/apps/dependency-plan/main.bend",
+                "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/base.bend",
+                "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/runtime-accessor-transport02/runtime.c",
+                "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/runtime-accessor-transport02/effs",
+                "/home/ai/bend2/build/publish/bend/selfhost/build/phase100/dependency-acquire02/dependency-plan/b2",
+                "1",
+                "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase88/base/carrier01/base.p88",
+                "p88-private-base-text-1:8dec5b64d3900d61a208e51d92113194b91364c4f4d35d1903edb481d678ed03"
+              ],
+              "started": 1792138648.700273,
+              "rssLimitBytes": 2147483648,
+              "availableFloorBytes": 4294967296,
+              "peakTreeRssBytes": 74342400,
+              "minimumAvailableBytes": 28041953280,
+              "returncode": 0,
+              "wallSeconds": 1.719090246828273,
+              "finished": 1792138650.4193585
+            },
+            "receipt": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase100/dependency-acquire02/dependency-plan/b2-emit/child.json",
+              "sha256": "c565824dc5ecf415498751d85760db9b6ee4cbf03e1e44be22c2fcc71b576dcb",
+              "bytes": 1193
+            },
+            "seconds": 1.6617114660330117,
+            "rssKiB": 61924,
+            "userSeconds": 1.656331,
+            "systemSeconds": 0.004
+          }
+        }
+      },
+      "products": {
+        "b2": {
+          "binary": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase100/dependency-acquire02/dependency-plan/b2.program",
+            "sha256": "e4f3661b4b2615acb296fbf7f92d491bc98d673ac0f4bfc5abe29deafe7aa95e",
+            "bytes": 279680
+          },
+          "c": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase100/dependency-acquire02/dependency-plan/b2.1.c",
+            "sha256": "282200231763264bbb725b0eaf82d9ea2db4bde25c2a6b14a80fa46f4e6d2d34",
+            "bytes": 748255
+          },
+          "build": {
+            "guard": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase100/dependency-acquire02/dependency-plan/b2-build/process.json",
+              "sha256": "b5f33957ee6e7449a4f88e26e11bfa797c94ef5c29ed387f58861116cf7e8ea3",
+              "bytes": 1117
+            },
+            "guardExit": 0,
+            "process": {
+              "complete": true,
+              "command": [
+                "bash",
+                "-c",
+                "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+                "phase86",
+                "taskset",
+                "-c",
+                "3",
+                "/usr/bin/python3",
+                "-B",
+                "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase46/execute.py",
+                "/home/ai/bend2/build/publish/bend/selfhost/build/phase100/dependency-acquire02/dependency-plan/b2-build/child.json",
+                "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+                "-isystem",
+                "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/include/clang",
+                "-std=c11",
+                "-O3",
+                "/home/ai/bend2/build/publish/bend/selfhost/build/phase100/dependency-acquire02/dependency-plan/b2.1.c",
+                "-o",
+                "/home/ai/bend2/build/publish/bend/selfhost/build/phase100/dependency-acquire02/dependency-plan/b2.program",
+                "-lpthread",
+                "-lm"
+              ],
+              "started": 1792138650.5187457,
+              "rssLimitBytes": 2147483648,
+              "availableFloorBytes": 4294967296,
+              "peakTreeRssBytes": 207187968,
+              "minimumAvailableBytes": 28017606656,
+              "returncode": 0,
+              "wallSeconds": 5.374682092107832,
+              "finished": 1792138655.8934233
+            },
+            "receipt": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase100/dependency-acquire02/dependency-plan/b2-build/child.json",
+              "sha256": "f1dab7e60f37d124999be6edf5f67f6a62e7fbc0b2988290e8e8006963ba6c17",
+              "bytes": 2280
+            },
+            "seconds": 5.3166370580438524,
+            "rssKiB": 144076,
+            "userSeconds": 5.188808,
+            "systemSeconds": 0.073423
+          }
+        },
+        "upstream": {
+          "binary": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase100/dependency-acquire02/dependency-plan/upstream.program",
+            "sha256": "ea71d14a8e9dd0e510f4572b70987ad9c94486e355439f147f66075f572e295d",
+            "bytes": 131712
+          },
+          "c": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase100/dependency-acquire02/dependency-plan/upstream.1.c",
+            "sha256": "c661d7b37f2e1d13d2006d3ebc54a250eb12d87c64cb2736b567f9a2ba79caed",
+            "bytes": 249345
+          },
+          "build": {
+            "guard": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase100/dependency-acquire02/dependency-plan/upstream-build/process.json",
+              "sha256": "69f989580b7440b0a36ce40cf412e84dd95207bb499277a5e0192655a748cedf",
+              "bytes": 1134
+            },
+            "guardExit": 0,
+            "process": {
+              "complete": true,
+              "command": [
+                "bash",
+                "-c",
+                "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+                "phase86",
+                "taskset",
+                "-c",
+                "3",
+                "/usr/bin/python3",
+                "-B",
+                "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase46/execute.py",
+                "/home/ai/bend2/build/publish/bend/selfhost/build/phase100/dependency-acquire02/dependency-plan/upstream-build/child.json",
+                "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+                "-isystem",
+                "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/include/clang",
+                "-std=c11",
+                "-O3",
+                "/home/ai/bend2/build/publish/bend/selfhost/build/phase100/dependency-acquire02/dependency-plan/upstream.1.c",
+                "-o",
+                "/home/ai/bend2/build/publish/bend/selfhost/build/phase100/dependency-acquire02/dependency-plan/upstream.program",
+                "-lpthread",
+                "-lm"
+              ],
+              "started": 1792138655.964516,
+              "rssLimitBytes": 2147483648,
+              "availableFloorBytes": 4294967296,
+              "peakTreeRssBytes": 169254912,
+              "minimumAvailableBytes": 28031950848,
+              "returncode": 0,
+              "wallSeconds": 2.6593412167858332,
+              "finished": 1792138658.623854
+            },
+            "receipt": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase100/dependency-acquire02/dependency-plan/upstream-build/child.json",
+              "sha256": "5539616f3c6af98a9a3ae95cac26bce447c8b6cc597443c9674d823a09cec134",
+              "bytes": 664
+            },
+            "seconds": 2.599151040194556,
+            "rssKiB": 108016,
+            "userSeconds": 2.557841,
+            "systemSeconds": 0.040126999999999996
+          }
+        }
+      },
+      "complete": true,
+      "sameNativeC": true
+    },
+    {
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase100/image-acquire01/report.json",
+        "bytes": 31808,
+        "sha256": "9a5cc0d4acc08f4956a3929ca2821c59b64e6be751a3ed0525bc9a3277cf16ce"
+      },
+      "id": "image-render",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/apps/image-render/main.bend",
+        "sha256": "2d225af0778ffa9b532c146b25f2c5b58da91abe591055250169933709fe94f7",
+        "bytes": 7025
+      },
+      "oracle": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/apps/image-render/oracle.py",
+        "sha256": "11be157cd446792b33123567e13de8962d2c11836ad159f239770e25175b3f9e",
+        "bytes": 7724
+      },
+      "emissions": {
+        "upstream": {
+          "c": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase100/image-acquire01/image-render/upstream.1.c",
+            "sha256": "a7d3afce6c4b8f0e8d635a1370d4d6fd6ccf3413569793b43148c332bdc00891",
+            "bytes": 177590
+          },
+          "requestMs": 1429.415984,
+          "job": {
+            "guard": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase100/image-acquire01/image-render/upstream-emit/process.json",
+              "sha256": "dde5563b8e7a3107a84799986ada453e65dfab52bd381ec08bf6b65431d28527",
+              "bytes": 1038
+            },
+            "guardExit": 0,
+            "process": {
+              "complete": true,
+              "command": [
+                "bash",
+                "-c",
+                "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+                "phase86",
+                "taskset",
+                "-c",
+                "3",
+                "/usr/bin/python3",
+                "-B",
+                "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase46/execute.py",
+                "/home/ai/bend2/build/publish/bend/selfhost/build/phase100/image-acquire01/image-render/upstream-emit/child.json",
+                "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/bun-1.4.3/bun",
+                "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase86/reference.mjs",
+                "typescript",
+                "/home/ai/bend2/build/publish/bend/selfhost/apps/image-render/main.bend",
+                "/home/ai/bend2/build/publish/bend/selfhost/build/phase100/image-acquire01/image-render/upstream",
+                "1"
+              ],
+              "started": 1792138725.228528,
+              "rssLimitBytes": 2147483648,
+              "availableFloorBytes": 4294967296,
+              "peakTreeRssBytes": 152915968,
+              "minimumAvailableBytes": 27974995968,
+              "returncode": 0,
+              "wallSeconds": 1.5843701208941638,
+              "finished": 1792138726.8128939
+            },
+            "receipt": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase100/image-acquire01/image-render/upstream-emit/child.json",
+              "sha256": "3d74f61cd30e4341c051096486b12af60431c36dfcf0e3adb94bf2e97849a539",
+              "bytes": 865
+            },
+            "seconds": 1.525356583064422,
+            "rssKiB": 139436,
+            "userSeconds": 1.457364,
+            "systemSeconds": 0.066796
+          }
+        },
+        "b1": {
+          "c": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase100/image-acquire01/image-render/b1.1.c",
+            "sha256": "8554b9a345109e852d18f9bd568be84a8fc3d88da2a3518e9b5c36c31c13497e",
+            "bytes": 555516
+          },
+          "requestMs": 599,
+          "job": {
+            "guard": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase100/image-acquire01/image-render/b1-emit/process.json",
+              "sha256": "641d75308c2198315d1aac5a61063636ffdd39871b7520b97efe68816443ac6f",
+              "bytes": 1482
+            },
+            "guardExit": 0,
+            "process": {
+              "complete": true,
+              "command": [
+                "bash",
+                "-c",
+                "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+                "phase86",
+                "taskset",
+                "-c",
+                "3",
+                "/usr/bin/python3",
+                "-B",
+                "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase46/execute.py",
+                "/home/ai/bend2/build/publish/bend/selfhost/build/phase100/image-acquire01/image-render/b1-emit/child.json",
+                "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/origin-checked01/compiler",
+                "--threads",
+                "1",
+                "--gpu",
+                "off",
+                "--",
+                "/home/ai/bend2/build/publish/bend/selfhost/apps/image-render/main.bend",
+                "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/base.bend",
+                "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/runtime-accessor-transport02/runtime.c",
+                "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/runtime-accessor-transport02/effs",
+                "/home/ai/bend2/build/publish/bend/selfhost/build/phase100/image-acquire01/image-render/b1",
+                "1",
+                "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase88/base/carrier01/base.p88",
+                "p88-private-base-text-1:8dec5b64d3900d61a208e51d92113194b91364c4f4d35d1903edb481d678ed03"
+              ],
+              "started": 1792138726.917506,
+              "rssLimitBytes": 2147483648,
+              "availableFloorBytes": 4294967296,
+              "peakTreeRssBytes": 76283904,
+              "minimumAvailableBytes": 28031942656,
+              "returncode": 0,
+              "wallSeconds": 0.7396337930113077,
+              "finished": 1792138727.657135
+            },
+            "receipt": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase100/image-acquire01/image-render/b1-emit/child.json",
+              "sha256": "4445e8f18c93d5dca3e74322c479e948fa60be28a4070619b8501db5e76695c6",
+              "bytes": 1167
+            },
+            "seconds": 0.6877842461690307,
+            "rssKiB": 63676,
+            "userSeconds": 0.67843,
+            "systemSeconds": 0.007995
+          }
+        },
+        "b2": {
+          "c": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase100/image-acquire01/image-render/b2.1.c",
+            "sha256": "8554b9a345109e852d18f9bd568be84a8fc3d88da2a3518e9b5c36c31c13497e",
+            "bytes": 555516
+          },
+          "requestMs": 856,
+          "job": {
+            "guard": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase100/image-acquire01/image-render/b2-emit/process.json",
+              "sha256": "4c8ab7259e0969e30810f9e10d90c82d79fb5cc57cbf14c0c9a9d2d67beef7ea",
+              "bytes": 1498
+            },
+            "guardExit": 0,
+            "process": {
+              "complete": true,
+              "command": [
+                "bash",
+                "-c",
+                "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+                "phase86",
+                "taskset",
+                "-c",
+                "3",
+                "/usr/bin/python3",
+                "-B",
+                "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase46/execute.py",
+                "/home/ai/bend2/build/publish/bend/selfhost/build/phase100/image-acquire01/image-render/b2-emit/child.json",
+                "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/origin-b2/compiler",
+                "--threads",
+                "1",
+                "--gpu",
+                "off",
+                "--",
+                "phase90-native",
+                "/home/ai/bend2/build/publish/bend/selfhost/apps/image-render/main.bend",
+                "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/base.bend",
+                "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/runtime-accessor-transport02/runtime.c",
+                "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/runtime-accessor-transport02/effs",
+                "/home/ai/bend2/build/publish/bend/selfhost/build/phase100/image-acquire01/image-render/b2",
+                "1",
+                "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase88/base/carrier01/base.p88",
+                "p88-private-base-text-1:8dec5b64d3900d61a208e51d92113194b91364c4f4d35d1903edb481d678ed03"
+              ],
+              "started": 1792138727.8000507,
+              "rssLimitBytes": 2147483648,
+              "availableFloorBytes": 4294967296,
+              "peakTreeRssBytes": 71397376,
+              "minimumAvailableBytes": 28039892992,
+              "returncode": 0,
+              "wallSeconds": 1.087496911175549,
+              "finished": 1792138728.8875427
+            },
+            "receipt": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase100/image-acquire01/image-render/b2-emit/child.json",
+              "sha256": "1310dc211e127417a3f691360902280e8d7541fbb7d953b17e2ed0bdab125e31",
+              "bytes": 1184
+            },
+            "seconds": 1.0336515218950808,
+            "rssKiB": 59048,
+            "userSeconds": 1.016499,
+            "systemSeconds": 0.016007
+          }
+        }
+      },
+      "products": {
+        "b2": {
+          "binary": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase100/image-acquire01/image-render/b2.program",
+            "sha256": "709370b2e1c4869ab915293d937fc8391720ae8c70671376e5493d67e89e200e",
+            "bytes": 240800
+          },
+          "c": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase100/image-acquire01/image-render/b2.1.c",
+            "sha256": "8554b9a345109e852d18f9bd568be84a8fc3d88da2a3518e9b5c36c31c13497e",
+            "bytes": 555516
+          },
+          "build": {
+            "guard": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase100/image-acquire01/image-render/b2-build/process.json",
+              "sha256": "aa62b564978e486ef7cbeefd4a1135f725fbad87ef664892d75e5b79dc02d2ac",
+              "bytes": 1092
+            },
+            "guardExit": 0,
+            "process": {
+              "complete": true,
+              "command": [
+                "bash",
+                "-c",
+                "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+                "phase86",
+                "taskset",
+                "-c",
+                "3",
+                "/usr/bin/python3",
+                "-B",
+                "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase46/execute.py",
+                "/home/ai/bend2/build/publish/bend/selfhost/build/phase100/image-acquire01/image-render/b2-build/child.json",
+                "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+                "-isystem",
+                "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/include/clang",
+                "-std=c11",
+                "-O3",
+                "/home/ai/bend2/build/publish/bend/selfhost/build/phase100/image-acquire01/image-render/b2.1.c",
+                "-o",
+                "/home/ai/bend2/build/publish/bend/selfhost/build/phase100/image-acquire01/image-render/b2.program",
+                "-lpthread",
+                "-lm"
+              ],
+              "started": 1792138728.961517,
+              "rssLimitBytes": 2147483648,
+              "availableFloorBytes": 4294967296,
+              "peakTreeRssBytes": 190099456,
+              "minimumAvailableBytes": 28028567552,
+              "returncode": 0,
+              "wallSeconds": 4.496276495978236,
+              "finished": 1792138733.4577894
+            },
+            "receipt": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase100/image-acquire01/image-render/b2-build/child.json",
+              "sha256": "8ed2e68306998863cad855bd3d0fd78cb63f12d4b5a55ef5914da4cd45cbd515",
+              "bytes": 4530
+            },
+            "seconds": 4.4447298790328205,
+            "rssKiB": 128192,
+            "userSeconds": 4.331109,
+            "systemSeconds": 0.057999999999999996
+          }
+        },
+        "upstream": {
+          "binary": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase100/image-acquire01/image-render/upstream.program",
+            "sha256": "346bde6da18d8bd3d9180af8b407c4162760bb631bbf6bee0c19a109ec7f8841",
+            "bytes": 77280
+          },
+          "c": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase100/image-acquire01/image-render/upstream.1.c",
+            "sha256": "a7d3afce6c4b8f0e8d635a1370d4d6fd6ccf3413569793b43148c332bdc00891",
+            "bytes": 177590
+          },
+          "build": {
+            "guard": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase100/image-acquire01/image-render/upstream-build/process.json",
+              "sha256": "8b19a5ac42600db37f88a720b8bedc7a7b6f4fd93ae726de4d6d7fcfcf292db7",
+              "bytes": 1112
+            },
+            "guardExit": 0,
+            "process": {
+              "complete": true,
+              "command": [
+                "bash",
+                "-c",
+                "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+                "phase86",
+                "taskset",
+                "-c",
+                "3",
+                "/usr/bin/python3",
+                "-B",
+                "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase46/execute.py",
+                "/home/ai/bend2/build/publish/bend/selfhost/build/phase100/image-acquire01/image-render/upstream-build/child.json",
+                "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+                "-isystem",
+                "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/include/clang",
+                "-std=c11",
+                "-O3",
+                "/home/ai/bend2/build/publish/bend/selfhost/build/phase100/image-acquire01/image-render/upstream.1.c",
+                "-o",
+                "/home/ai/bend2/build/publish/bend/selfhost/build/phase100/image-acquire01/image-render/upstream.program",
+                "-lpthread",
+                "-lm"
+              ],
+              "started": 1792138733.5305147,
+              "rssLimitBytes": 2147483648,
+              "availableFloorBytes": 4294967296,
+              "peakTreeRssBytes": 164052992,
+              "minimumAvailableBytes": 28049084416,
+              "returncode": 0,
+              "wallSeconds": 1.3029465831350535,
+              "finished": 1792138734.8334553
+            },
+            "receipt": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase100/image-acquire01/image-render/upstream-build/child.json",
+              "sha256": "e1715fc2b38a0354e0d45f0d21f33560b8ab4f991b69da56573161989cd02330",
+              "bytes": 637
+            },
+            "seconds": 1.2547005398664623,
+            "rssKiB": 101248,
+            "userSeconds": 1.192089,
+            "systemSeconds": 0.034245
+          }
+        }
+      },
+      "complete": true,
+      "sameNativeC": true
+    },
+    {
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase100/source-acquire01/report.json",
+        "bytes": 31879,
+        "sha256": "e1985bf1a39962cb3d717c412481ff6f64e45fcb70e5934cc81750d007533ef8"
+      },
+      "id": "source-index",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/apps/source-index/main.bend",
+        "sha256": "e79e626972ff9747306d84ba615d3bba279f09be74c40788817d20f85a6a2b44",
+        "bytes": 11662
+      },
+      "oracle": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/apps/source-index/oracle.py",
+        "sha256": "1f8929a49f595078c9a0edc62563b2b36c3de83b9e7eaaa20ffbd6ae205fb902",
+        "bytes": 6456
+      },
+      "emissions": {
+        "upstream": {
+          "c": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase100/source-acquire01/source-index/upstream.1.c",
+            "sha256": "d7c9943bb012d4df20bdb52d2b40e7e452a80d4c53dd3d61fcfabf39b4fe1fe1",
+            "bytes": 207251
+          },
+          "requestMs": 1662.879381,
+          "job": {
+            "guard": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase100/source-acquire01/source-index/upstream-emit/process.json",
+              "sha256": "dcc4c49816b011070f857f629e0caaf16ce20a4ded3211b50f0b9c9038cdd8b4",
+              "bytes": 1041
+            },
+            "guardExit": 0,
+            "process": {
+              "complete": true,
+              "command": [
+                "bash",
+                "-c",
+                "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+                "phase86",
+                "taskset",
+                "-c",
+                "3",
+                "/usr/bin/python3",
+                "-B",
+                "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase46/execute.py",
+                "/home/ai/bend2/build/publish/bend/selfhost/build/phase100/source-acquire01/source-index/upstream-emit/child.json",
+                "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/bun-1.4.3/bun",
+                "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase86/reference.mjs",
+                "typescript",
+                "/home/ai/bend2/build/publish/bend/selfhost/apps/source-index/main.bend",
+                "/home/ai/bend2/build/publish/bend/selfhost/build/phase100/source-acquire01/source-index/upstream",
+                "1"
+              ],
+              "started": 1792139063.2204335,
+              "rssLimitBytes": 2147483648,
+              "availableFloorBytes": 4294967296,
+              "peakTreeRssBytes": 153460736,
+              "minimumAvailableBytes": 27961827328,
+              "returncode": 0,
+              "wallSeconds": 1.7686245450749993,
+              "finished": 1792139064.9890537
+            },
+            "receipt": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase100/source-acquire01/source-index/upstream-emit/child.json",
+              "sha256": "a12da3b17b420f245c2058ce1191c91050c42c1f663088134e5c5240aa6167ee",
+              "bytes": 877
+            },
+            "seconds": 1.7136322068981826,
+            "rssKiB": 138896,
+            "userSeconds": 1.6766809999999999,
+            "systemSeconds": 0.036014
+          }
+        },
+        "b1": {
+          "c": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase100/source-acquire01/source-index/b1.1.c",
+            "sha256": "64d6fcc7aec2f3108fd0a4cb0c0196ccba54a85741e4946e98da2ea0fa6766f0",
+            "bytes": 726938
+          },
+          "requestMs": 713,
+          "job": {
+            "guard": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase100/source-acquire01/source-index/b1-emit/process.json",
+              "sha256": "bee17abaee47477714342cb65632e22e80a1ee1b88aec3670fc9ec81daeb187d",
+              "bytes": 1486
+            },
+            "guardExit": 0,
+            "process": {
+              "complete": true,
+              "command": [
+                "bash",
+                "-c",
+                "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+                "phase86",
+                "taskset",
+                "-c",
+                "3",
+                "/usr/bin/python3",
+                "-B",
+                "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase46/execute.py",
+                "/home/ai/bend2/build/publish/bend/selfhost/build/phase100/source-acquire01/source-index/b1-emit/child.json",
+                "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/origin-checked01/compiler",
+                "--threads",
+                "1",
+                "--gpu",
+                "off",
+                "--",
+                "/home/ai/bend2/build/publish/bend/selfhost/apps/source-index/main.bend",
+                "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/base.bend",
+                "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/runtime-accessor-transport02/runtime.c",
+                "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/runtime-accessor-transport02/effs",
+                "/home/ai/bend2/build/publish/bend/selfhost/build/phase100/source-acquire01/source-index/b1",
+                "1",
+                "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase88/base/carrier01/base.p88",
+                "p88-private-base-text-1:8dec5b64d3900d61a208e51d92113194b91364c4f4d35d1903edb481d678ed03"
+              ],
+              "started": 1792139065.1364167,
+              "rssLimitBytes": 2147483648,
+              "availableFloorBytes": 4294967296,
+              "peakTreeRssBytes": 79192064,
+              "minimumAvailableBytes": 28014645248,
+              "returncode": 0,
+              "wallSeconds": 0.8621886239852756,
+              "finished": 1792139065.9986005
+            },
+            "receipt": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase100/source-acquire01/source-index/b1-emit/child.json",
+              "sha256": "43b356d8eeb49c8e4d2daa1e295445229a5df08bf42380fca06cf7a6d0ec5960",
+              "bytes": 1179
+            },
+            "seconds": 0.8030974860303104,
+            "rssKiB": 67084,
+            "userSeconds": 0.7899299999999999,
+            "systemSeconds": 0.011968
+          }
+        },
+        "b2": {
+          "c": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase100/source-acquire01/source-index/b2.1.c",
+            "sha256": "64d6fcc7aec2f3108fd0a4cb0c0196ccba54a85741e4946e98da2ea0fa6766f0",
+            "bytes": 726938
+          },
+          "requestMs": 991,
+          "job": {
+            "guard": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase100/source-acquire01/source-index/b2-emit/process.json",
+              "sha256": "1000ad8f0da5e7bddd83aefd3829caf5d7f75980d465ec2f8b639fc9314d29c3",
+              "bytes": 1501
+            },
+            "guardExit": 0,
+            "process": {
+              "complete": true,
+              "command": [
+                "bash",
+                "-c",
+                "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+                "phase86",
+                "taskset",
+                "-c",
+                "3",
+                "/usr/bin/python3",
+                "-B",
+                "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase46/execute.py",
+                "/home/ai/bend2/build/publish/bend/selfhost/build/phase100/source-acquire01/source-index/b2-emit/child.json",
+                "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/origin-b2/compiler",
+                "--threads",
+                "1",
+                "--gpu",
+                "off",
+                "--",
+                "phase90-native",
+                "/home/ai/bend2/build/publish/bend/selfhost/apps/source-index/main.bend",
+                "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/base.bend",
+                "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/runtime-accessor-transport02/runtime.c",
+                "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/runtime-accessor-transport02/effs",
+                "/home/ai/bend2/build/publish/bend/selfhost/build/phase100/source-acquire01/source-index/b2",
+                "1",
+                "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase88/base/carrier01/base.p88",
+                "p88-private-base-text-1:8dec5b64d3900d61a208e51d92113194b91364c4f4d35d1903edb481d678ed03"
+              ],
+              "started": 1792139066.1587715,
+              "rssLimitBytes": 2147483648,
+              "availableFloorBytes": 4294967296,
+              "peakTreeRssBytes": 72347648,
+              "minimumAvailableBytes": 28024373248,
+              "returncode": 0,
+              "wallSeconds": 1.2299411101266742,
+              "finished": 1792139067.3887076
+            },
+            "receipt": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase100/source-acquire01/source-index/b2-emit/child.json",
+              "sha256": "be11647cd882079e85146571e4a13035fb4193fa80216db121fb4d5e7523d5f0",
+              "bytes": 1197
+            },
+            "seconds": 1.1688588180113584,
+            "rssKiB": 60252,
+            "userSeconds": 1.155719,
+            "systemSeconds": 0.011996999999999999
+          }
+        }
+      },
+      "products": {
+        "b2": {
+          "binary": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase100/source-acquire01/source-index/b2.program",
+            "sha256": "d6cdf39802dc893f81c7a5be6f65ccebad5496a1e3ae7b7d08484944a6d4c1a5",
+            "bytes": 239384
+          },
+          "c": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase100/source-acquire01/source-index/b2.1.c",
+            "sha256": "64d6fcc7aec2f3108fd0a4cb0c0196ccba54a85741e4946e98da2ea0fa6766f0",
+            "bytes": 726938
+          },
+          "build": {
+            "guard": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase100/source-acquire01/source-index/b2-build/process.json",
+              "sha256": "6506e93811f05dc9ab8a398c2428fedb2f5c4ab487273a4f2e48e7f476566b74",
+              "bytes": 1097
+            },
+            "guardExit": 0,
+            "process": {
+              "complete": true,
+              "command": [
+                "bash",
+                "-c",
+                "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+                "phase86",
+                "taskset",
+                "-c",
+                "3",
+                "/usr/bin/python3",
+                "-B",
+                "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase46/execute.py",
+                "/home/ai/bend2/build/publish/bend/selfhost/build/phase100/source-acquire01/source-index/b2-build/child.json",
+                "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+                "-isystem",
+                "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/include/clang",
+                "-std=c11",
+                "-O3",
+                "/home/ai/bend2/build/publish/bend/selfhost/build/phase100/source-acquire01/source-index/b2.1.c",
+                "-o",
+                "/home/ai/bend2/build/publish/bend/selfhost/build/phase100/source-acquire01/source-index/b2.program",
+                "-lpthread",
+                "-lm"
+              ],
+              "started": 1792139067.5036576,
+              "rssLimitBytes": 2147483648,
+              "availableFloorBytes": 4294967296,
+              "peakTreeRssBytes": 209707008,
+              "minimumAvailableBytes": 27946844160,
+              "returncode": 0,
+              "wallSeconds": 3.6408321810886264,
+              "finished": 1792139071.1444857
+            },
+            "receipt": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase100/source-acquire01/source-index/b2-build/child.json",
+              "sha256": "6aba063b822918f86e7c36b9eb0f8b04b2a0ef813256b2c0562cadf92b7a5577",
+              "bytes": 1438
+            },
+            "seconds": 3.5944320620037615,
+            "rssKiB": 147076,
+            "userSeconds": 3.496223,
+            "systemSeconds": 0.059817999999999996
+          }
+        },
+        "upstream": {
+          "binary": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase100/source-acquire01/source-index/upstream.program",
+            "sha256": "4020bdaf8252465b45f0028d6dd026d4449e7306b06e3303c67a715678a52a21",
+            "bytes": 94376
+          },
+          "c": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase100/source-acquire01/source-index/upstream.1.c",
+            "sha256": "d7c9943bb012d4df20bdb52d2b40e7e452a80d4c53dd3d61fcfabf39b4fe1fe1",
+            "bytes": 207251
+          },
+          "build": {
+            "guard": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase100/source-acquire01/source-index/upstream-build/process.json",
+              "sha256": "c5938ba539a1e48fa50182e58482ec0c15a3e9223f1389851968ebe21afe1e18",
+              "bytes": 1115
+            },
+            "guardExit": 0,
+            "process": {
+              "complete": true,
+              "command": [
+                "bash",
+                "-c",
+                "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+                "phase86",
+                "taskset",
+                "-c",
+                "3",
+                "/usr/bin/python3",
+                "-B",
+                "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase46/execute.py",
+                "/home/ai/bend2/build/publish/bend/selfhost/build/phase100/source-acquire01/source-index/upstream-build/child.json",
+                "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+                "-isystem",
+                "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/include/clang",
+                "-std=c11",
+                "-O3",
+                "/home/ai/bend2/build/publish/bend/selfhost/build/phase100/source-acquire01/source-index/upstream.1.c",
+                "-o",
+                "/home/ai/bend2/build/publish/bend/selfhost/build/phase100/source-acquire01/source-index/upstream.program",
+                "-lpthread",
+                "-lm"
+              ],
+              "started": 1792139071.2150953,
+              "rssLimitBytes": 2147483648,
+              "availableFloorBytes": 4294967296,
+              "peakTreeRssBytes": 166203392,
+              "minimumAvailableBytes": 28043235328,
+              "returncode": 0,
+              "wallSeconds": 1.5227958939503878,
+              "finished": 1792139072.7378871
+            },
+            "receipt": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase100/source-acquire01/source-index/upstream-build/child.json",
+              "sha256": "3e3f01d56a3fe4fc6b27326462ba78b3757ba10692342e273dd5bcddf1e67412",
+              "bytes": 639
+            },
+            "seconds": 1.4760956480167806,
+            "rssKiB": 104536,
+            "userSeconds": 1.425209,
+            "systemSeconds": 0.033858
+          }
+        }
+      },
+      "complete": true,
+      "sameNativeC": true
+    }
+  ],
+  "measurements": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase100/additional-controls01/report.json",
+      "bytes": 93176,
+      "sha256": "1e77f0d0e4e147ce22b04b647fb5c5aa16d90798b557942cc56da3629a24cfd6"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase100/combined-fast01/report.json",
+      "bytes": 30155,
+      "sha256": "f33fa1f9cf6fea415f4c3a81fe2e3c96c4d37cb6aafbe1c9ba4cf86475f67cb6"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase100/dependency-smoke02/report.json",
+      "bytes": 60983,
+      "sha256": "35e738188d00f9de05e5a64bbea0bd5b042218515d9d8263f2fa345a4d010e70"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase100/dependency-survey01/report.json",
+      "bytes": 98426,
+      "sha256": "eefe0a282288f783000359a761b75a097f46e51bd1a57e96b0a6527e37111c12"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase100/filtered-fast01/report.json",
+      "bytes": 26243,
+      "sha256": "eeb85a9d5a9dbde193cdfcc7c4e5e1b8ee240264ea5e4cc165b177ba09635cc9"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase100/fixture-confirm01/report.json",
+      "bytes": 58302,
+      "sha256": "a51e02a4f6f2d723c3ec86428ba2fcec901b1a52daf2c69195475bb5aa883c50"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase100/fixture-replay01/report.json",
+      "bytes": 17971,
+      "sha256": "8758f7f78d7f7843eb14bbcdfa7534bb46f20e0a25d3edcba554b2f4661f3101"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase100/image-production01/report.json",
+      "bytes": 115057,
+      "sha256": "63c441dfed8f2d7370ede252841266a841ab27416a8eadc9ba278fb6325d11b9"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase100/image-smoke01/report.json",
+      "bytes": 41986,
+      "sha256": "543d9803c0853116ffdc9a35ce0ca2277238a7903e9ed411577a841b4d259deb"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase100/image-survey01/report.json",
+      "bytes": 168874,
+      "sha256": "d302544faeb2c37c9730e66dc1d52c987e4a3338fabee8594d4115ef8d952013"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase100/source-smoke01/report.json",
+      "bytes": 23768,
+      "sha256": "4564f1793ffdfce2fd43ac9da325e90475f71c5a99849ca24480ed5c2c654c3f"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase100/source-survey01/report.json",
+      "bytes": 97634,
+      "sha256": "f82ab554a0669f00dab4c022e4b89215c6d9c978779e1f48e9192fbec5784f28"
+    }
+  ],
+  "completeExecutions": 318,
+  "distinctInputs": 50,
+  "casesByApplication": {
+    "dependency-plan": 21,
+    "image-render": 16,
+    "source-index": 13
+  },
+  "applicationBendLines": 779,
+  "compilerChanged": false,
+  "summaries": [
+    {
+      "run": "additional-controls01",
+      "app": "source-index",
+      "case": "multiline-escape",
+      "workers": 1,
+      "roles": {
+        "b2": {
+          "seconds": 0.0025120938662439585,
+          "rangeSeconds": [
+            0.0025120938662439585,
+            0.0025120938662439585
+          ],
+          "rssKiB": 6948,
+          "cpuSeconds": 0.001465
+        },
+        "upstream": {
+          "seconds": 0.002499575028195977,
+          "rangeSeconds": [
+            0.002499575028195977,
+            0.002499575028195977
+          ],
+          "rssKiB": 6840,
+          "cpuSeconds": 0.0014609999999999998
+        }
+      },
+      "ratio": 1.005008386588426,
+      "substantial": false
+    },
+    {
+      "run": "additional-controls01",
+      "app": "source-index",
+      "case": "unterminated",
+      "workers": 1,
+      "roles": {
+        "b2": {
+          "seconds": 0.0024714767932891846,
+          "rangeSeconds": [
+            0.0024714767932891846,
+            0.0024714767932891846
+          ],
+          "rssKiB": 6896,
+          "cpuSeconds": 0.001419
+        },
+        "upstream": {
+          "seconds": 0.0025560969952493906,
+          "rangeSeconds": [
+            0.0025560969952493906,
+            0.0025560969952493906
+          ],
+          "rssKiB": 6876,
+          "cpuSeconds": 0.0014789999999999998
+        }
+      },
+      "ratio": 0.9668947609901049,
+      "substantial": false
+    },
+    {
+      "run": "additional-controls01",
+      "app": "source-index",
+      "case": "real-tool",
+      "workers": 1,
+      "roles": {
+        "b2": {
+          "seconds": 0.004943877924233675,
+          "rangeSeconds": [
+            0.004943877924233675,
+            0.004943877924233675
+          ],
+          "rssKiB": 6928,
+          "cpuSeconds": 0.003862
+        },
+        "upstream": {
+          "seconds": 0.0035827970132231712,
+          "rangeSeconds": [
+            0.0035827970132231712,
+            0.0035827970132231712
+          ],
+          "rssKiB": 6940,
+          "cpuSeconds": 0.002525
+        }
+      },
+      "ratio": 1.3798933922259922,
+      "substantial": false
+    },
+    {
+      "run": "additional-controls01",
+      "app": "source-index",
+      "case": "missing-file",
+      "workers": 1,
+      "roles": {
+        "b2": {
+          "seconds": 0.002496355911716819,
+          "rangeSeconds": [
+            0.002496355911716819,
+            0.002496355911716819
+          ],
+          "rssKiB": 6948,
+          "cpuSeconds": 0.001393
+        },
+        "upstream": {
+          "seconds": 0.00236813398078084,
+          "rangeSeconds": [
+            0.00236813398078084,
+            0.00236813398078084
+          ],
+          "rssKiB": 6952,
+          "cpuSeconds": 0.001339
+        }
+      },
+      "ratio": 1.0541447113958056,
+      "substantial": false
+    },
+    {
+      "run": "additional-controls01",
+      "app": "image-render",
+      "case": "cli-zero-dimension",
+      "workers": 1,
+      "roles": {
+        "b2": {
+          "seconds": 0.002385093830525875,
+          "rangeSeconds": [
+            0.002385093830525875,
+            0.002385093830525875
+          ],
+          "rssKiB": 6936,
+          "cpuSeconds": 0.0013499999999999999
+        },
+        "upstream": {
+          "seconds": 0.002397764939814806,
+          "rangeSeconds": [
+            0.002397764939814806,
+            0.002397764939814806
+          ],
+          "rssKiB": 6860,
+          "cpuSeconds": 0.001331
+        }
+      },
+      "ratio": 0.9947154497596793,
+      "substantial": false
+    },
+    {
+      "run": "additional-controls01",
+      "app": "image-render",
+      "case": "cli-dimension-limit",
+      "workers": 1,
+      "roles": {
+        "b2": {
+          "seconds": 0.002493320032954216,
+          "rangeSeconds": [
+            0.002493320032954216,
+            0.002493320032954216
+          ],
+          "rssKiB": 6908,
+          "cpuSeconds": 0.0013859999999999999
+        },
+        "upstream": {
+          "seconds": 0.002296348102390766,
+          "rangeSeconds": [
+            0.002296348102390766,
+            0.002296348102390766
+          ],
+          "rssKiB": 6948,
+          "cpuSeconds": 0.001271
+        }
+      },
+      "ratio": 1.085776163621874,
+      "substantial": false
+    },
+    {
+      "run": "additional-controls01",
+      "app": "image-render",
+      "case": "cli-missing-iterations",
+      "workers": 1,
+      "roles": {
+        "b2": {
+          "seconds": 0.002353094983845949,
+          "rangeSeconds": [
+            0.002353094983845949,
+            0.002353094983845949
+          ],
+          "rssKiB": 6940,
+          "cpuSeconds": 0.0013139999999999998
+        },
+        "upstream": {
+          "seconds": 0.002371296053752303,
+          "rangeSeconds": [
+            0.002371296053752303,
+            0.002371296053752303
+          ],
+          "rssKiB": 6944,
+          "cpuSeconds": 0.00132
+        }
+      },
+      "ratio": 0.9923244211208664,
+      "substantial": false
+    },
+    {
+      "run": "additional-controls01",
+      "app": "image-render",
+      "case": "cli-help",
+      "workers": 1,
+      "roles": {
+        "b2": {
+          "seconds": 0.0023590729106217623,
+          "rangeSeconds": [
+            0.0023590729106217623,
+            0.0023590729106217623
+          ],
+          "rssKiB": 6924,
+          "cpuSeconds": 0.0013109999999999999
+        },
+        "upstream": {
+          "seconds": 0.002379621146246791,
+          "rangeSeconds": [
+            0.002379621146246791,
+            0.002379621146246791
+          ],
+          "rssKiB": 6948,
+          "cpuSeconds": 0.0013289999999999999
+        }
+      },
+      "ratio": 0.9913649129999379,
+      "substantial": false
+    },
+    {
+      "run": "additional-controls01",
+      "app": "dependency-plan",
+      "case": "missing-root",
+      "workers": 1,
+      "roles": {
+        "b2": {
+          "seconds": 0.0024399468675255775,
+          "rangeSeconds": [
+            0.0024399468675255775,
+            0.0024399468675255775
+          ],
+          "rssKiB": 6944,
+          "cpuSeconds": 0.0013909999999999999
+        },
+        "upstream": {
+          "seconds": 0.0025812548119574785,
+          "rangeSeconds": [
+            0.0025812548119574785,
+            0.0025812548119574785
+          ],
+          "rssKiB": 6944,
+          "cpuSeconds": 0.001501
+        }
+      },
+      "ratio": 0.9452561042105173,
+      "substantial": false
+    },
+    {
+      "run": "additional-controls01",
+      "app": "dependency-plan",
+      "case": "self-cycle",
+      "workers": 1,
+      "roles": {
+        "b2": {
+          "seconds": 0.0024658250622451305,
+          "rangeSeconds": [
+            0.0024658250622451305,
+            0.0024658250622451305
+          ],
+          "rssKiB": 6868,
+          "cpuSeconds": 0.0014269999999999999
+        },
+        "upstream": {
+          "seconds": 0.0025070279370993376,
+          "rangeSeconds": [
+            0.0025070279370993376,
+            0.0025070279370993376
+          ],
+          "rssKiB": 6940,
+          "cpuSeconds": 0.001459
+        }
+      },
+      "ratio": 0.9835650515718308,
+      "substantial": false
+    },
+    {
+      "run": "additional-controls01",
+      "app": "dependency-plan",
+      "case": "empty-graph",
+      "workers": 1,
+      "roles": {
+        "b2": {
+          "seconds": 0.0025229959283024073,
+          "rangeSeconds": [
+            0.0025229959283024073,
+            0.0025229959283024073
+          ],
+          "rssKiB": 6948,
+          "cpuSeconds": 0.001426
+        },
+        "upstream": {
+          "seconds": 0.002485679928213358,
+          "rangeSeconds": [
+            0.002485679928213358,
+            0.002485679928213358
+          ],
+          "rssKiB": 6940,
+          "cpuSeconds": 0.001423
+        }
+      },
+      "ratio": 1.0150123914448916,
+      "substantial": false
+    },
+    {
+      "run": "additional-controls01",
+      "app": "dependency-plan",
+      "case": "name-limit",
+      "workers": 1,
+      "roles": {
+        "b2": {
+          "seconds": 0.002566200913861394,
+          "rangeSeconds": [
+            0.002566200913861394,
+            0.002566200913861394
+          ],
+          "rssKiB": 6956,
+          "cpuSeconds": 0.0014559999999999998
+        },
+        "upstream": {
+          "seconds": 0.0025033310521394014,
+          "rangeSeconds": [
+            0.0025033310521394014,
+            0.0025033310521394014
+          ],
+          "rssKiB": 6936,
+          "cpuSeconds": 0.001457
+        }
+      },
+      "ratio": 1.025114481629692,
+      "substantial": false
+    },
+    {
+      "run": "additional-controls01",
+      "app": "dependency-plan",
+      "case": "root-limit",
+      "workers": 1,
+      "roles": {
+        "b2": {
+          "seconds": 0.0025704919826239347,
+          "rangeSeconds": [
+            0.0025704919826239347,
+            0.0025704919826239347
+          ],
+          "rssKiB": 6908,
+          "cpuSeconds": 0.001503
+        },
+        "upstream": {
+          "seconds": 0.0026236348785459995,
+          "rangeSeconds": [
+            0.0026236348785459995,
+            0.0026236348785459995
+          ],
+          "rssKiB": 6976,
+          "cpuSeconds": 0.001539
+        }
+      },
+      "ratio": 0.9797445534984212,
+      "substantial": false
+    },
+    {
+      "run": "additional-controls01",
+      "app": "dependency-plan",
+      "case": "input-limit",
+      "workers": 1,
+      "roles": {
+        "b2": {
+          "seconds": 0.002482229843735695,
+          "rangeSeconds": [
+            0.002482229843735695,
+            0.002482229843735695
+          ],
+          "rssKiB": 6944,
+          "cpuSeconds": 0.0014299999999999998
+        },
+        "upstream": {
+          "seconds": 0.0025284779258072376,
+          "rangeSeconds": [
+            0.0025284779258072376,
+            0.0025284779258072376
+          ],
+          "rssKiB": 6924,
+          "cpuSeconds": 0.0014349999999999999
+        }
+      },
+      "ratio": 0.9817091216816625,
+      "substantial": false
+    },
+    {
+      "run": "combined-fast01",
+      "app": "source-index",
+      "case": "sample",
+      "workers": 1,
+      "roles": {
+        "b2": {
+          "seconds": 0.0029611941426992416,
+          "rangeSeconds": [
+            0.0029611941426992416,
+            0.0029611941426992416
+          ],
+          "rssKiB": 6948,
+          "cpuSeconds": 0.0017549999999999998
+        },
+        "upstream": {
+          "seconds": 0.0028060730546712875,
+          "rangeSeconds": [
+            0.0028060730546712875,
+            0.0028060730546712875
+          ],
+          "rssKiB": 6940,
+          "cpuSeconds": 0.001627
+        }
+      },
+      "ratio": 1.0552804880720132,
+      "substantial": false
+    },
+    {
+      "run": "combined-fast01",
+      "app": "image-render",
+      "case": "rectangle",
+      "workers": 1,
+      "roles": {
+        "b2": {
+          "seconds": 0.0034498609602451324,
+          "rangeSeconds": [
+            0.0034498609602451324,
+            0.0034498609602451324
+          ],
+          "rssKiB": 8084,
+          "cpuSeconds": 0.002214
+        },
+        "upstream": {
+          "seconds": 0.0031327379401773214,
+          "rangeSeconds": [
+            0.0031327379401773214,
+            0.0031327379401773214
+          ],
+          "rssKiB": 7948,
+          "cpuSeconds": 0.0019199999999999998
+        }
+      },
+      "ratio": 1.101228709877297,
+      "substantial": false
+    },
+    {
+      "run": "combined-fast01",
+      "app": "image-render",
+      "case": "rectangle",
+      "workers": 2,
+      "roles": {
+        "b2": {
+          "seconds": 0.002558075822889805,
+          "rangeSeconds": [
+            0.002558075822889805,
+            0.002558075822889805
+          ],
+          "rssKiB": 8016,
+          "cpuSeconds": 0.002296
+        },
+        "upstream": {
+          "seconds": 0.0023711449466645718,
+          "rangeSeconds": [
+            0.0023711449466645718,
+            0.0023711449466645718
+          ],
+          "rssKiB": 7888,
+          "cpuSeconds": 0.0020469999999999998
+        }
+      },
+      "ratio": 1.0788357019203672,
+      "substantial": false
+    },
+    {
+      "run": "combined-fast01",
+      "app": "image-render",
+      "case": "rectangle",
+      "workers": 4,
+      "roles": {
+        "b2": {
+          "seconds": 0.002606439869850874,
+          "rangeSeconds": [
+            0.002606439869850874,
+            0.002606439869850874
+          ],
+          "rssKiB": 8108,
+          "cpuSeconds": 0.0027649999999999997
+        },
+        "upstream": {
+          "seconds": 0.002966922940686345,
+          "rangeSeconds": [
+            0.002966922940686345,
+            0.002966922940686345
+          ],
+          "rssKiB": 7980,
+          "cpuSeconds": 0.0024779999999999997
+        }
+      },
+      "ratio": 0.8784993483005393,
+      "substantial": false
+    },
+    {
+      "run": "combined-fast01",
+      "app": "dependency-plan",
+      "case": "shared-app",
+      "workers": 1,
+      "roles": {
+        "b2": {
+          "seconds": 0.003037216840311885,
+          "rangeSeconds": [
+            0.003037216840311885,
+            0.003037216840311885
+          ],
+          "rssKiB": 6952,
+          "cpuSeconds": 0.00179
+        },
+        "upstream": {
+          "seconds": 0.0028410230297595263,
+          "rangeSeconds": [
+            0.0028410230297595263,
+            0.0028410230297595263
+          ],
+          "rssKiB": 6952,
+          "cpuSeconds": 0.001658
+        }
+      },
+      "ratio": 1.0690574516634472,
+      "substantial": false
+    },
+    {
+      "run": "dependency-smoke02",
+      "app": "dependency-plan",
+      "case": "shared-app",
+      "workers": 1,
+      "roles": {
+        "b2": {
+          "seconds": 0.0021225130185484886,
+          "rangeSeconds": [
+            0.0021225130185484886,
+            0.0021225130185484886
+          ],
+          "rssKiB": 6948,
+          "cpuSeconds": 0.001251
+        },
+        "upstream": {
+          "seconds": 0.0021290560252964497,
+          "rangeSeconds": [
+            0.0021290560252964497,
+            0.0021290560252964497
+          ],
+          "rssKiB": 6876,
+          "cpuSeconds": 0.001269
+        }
+      },
+      "ratio": 0.9969268038650838,
+      "substantial": false
+    },
+    {
+      "run": "dependency-smoke02",
+      "app": "dependency-plan",
+      "case": "shared-multiple-roots",
+      "workers": 1,
+      "roles": {
+        "b2": {
+          "seconds": 0.0022328600753098726,
+          "rangeSeconds": [
+            0.0022328600753098726,
+            0.0022328600753098726
+          ],
+          "rssKiB": 6872,
+          "cpuSeconds": 0.001317
+        },
+        "upstream": {
+          "seconds": 0.0021111341193318367,
+          "rangeSeconds": [
+            0.0021111341193318367,
+            0.0021111341193318367
+          ],
+          "rssKiB": 6956,
+          "cpuSeconds": 0.001236
+        }
+      },
+      "ratio": 1.0576590349534787,
+      "substantial": false
+    },
+    {
+      "run": "dependency-smoke02",
+      "app": "dependency-plan",
+      "case": "cycle",
+      "workers": 1,
+      "roles": {
+        "b2": {
+          "seconds": 0.0020852459128946066,
+          "rangeSeconds": [
+            0.0020852459128946066,
+            0.0020852459128946066
+          ],
+          "rssKiB": 6944,
+          "cpuSeconds": 0.0012129999999999999
+        },
+        "upstream": {
+          "seconds": 0.0020562380086630583,
+          "rangeSeconds": [
+            0.0020562380086630583,
+            0.0020562380086630583
+          ],
+          "rssKiB": 6928,
+          "cpuSeconds": 0.00121
+        }
+      },
+      "ratio": 1.0141072697369353,
+      "substantial": false
+    },
+    {
+      "run": "dependency-smoke02",
+      "app": "dependency-plan",
+      "case": "missing",
+      "workers": 1,
+      "roles": {
+        "b2": {
+          "seconds": 0.0021785669960081577,
+          "rangeSeconds": [
+            0.0021785669960081577,
+            0.0021785669960081577
+          ],
+          "rssKiB": 6956,
+          "cpuSeconds": 0.001243
+        },
+        "upstream": {
+          "seconds": 0.002011155942454934,
+          "rangeSeconds": [
+            0.002011155942454934,
+            0.002011155942454934
+          ],
+          "rssKiB": 6932,
+          "cpuSeconds": 0.001176
+        }
+      },
+      "ratio": 1.0832412097039437,
+      "substantial": false
+    },
+    {
+      "run": "dependency-smoke02",
+      "app": "dependency-plan",
+      "case": "duplicate",
+      "workers": 1,
+      "roles": {
+        "b2": {
+          "seconds": 0.002062062034383416,
+          "rangeSeconds": [
+            0.002062062034383416,
+            0.002062062034383416
+          ],
+          "rssKiB": 6952,
+          "cpuSeconds": 0.00123
+        },
+        "upstream": {
+          "seconds": 0.002102975035086274,
+          "rangeSeconds": [
+            0.002102975035086274,
+            0.002102975035086274
+          ],
+          "rssKiB": 6944,
+          "cpuSeconds": 0.001205
+        }
+      },
+      "ratio": 0.9805451800329243,
+      "substantial": false
+    },
+    {
+      "run": "dependency-smoke02",
+      "app": "dependency-plan",
+      "case": "invalid-name",
+      "workers": 1,
+      "roles": {
+        "b2": {
+          "seconds": 0.002104399027302861,
+          "rangeSeconds": [
+            0.002104399027302861,
+            0.002104399027302861
+          ],
+          "rssKiB": 6952,
+          "cpuSeconds": 0.0012209999999999999
+        },
+        "upstream": {
+          "seconds": 0.0021114968694746494,
+          "rangeSeconds": [
+            0.0021114968694746494,
+            0.0021114968694746494
+          ],
+          "rssKiB": 6940,
+          "cpuSeconds": 0.001248
+        }
+      },
+      "ratio": 0.9966384784773306,
+      "substantial": false
+    },
+    {
+      "run": "dependency-smoke02",
+      "app": "dependency-plan",
+      "case": "empty-root",
+      "workers": 1,
+      "roles": {
+        "b2": {
+          "seconds": 0.0020173972006887197,
+          "rangeSeconds": [
+            0.0020173972006887197,
+            0.0020173972006887197
+          ],
+          "rssKiB": 6948,
+          "cpuSeconds": 0.001169
+        },
+        "upstream": {
+          "seconds": 0.0022449002135545015,
+          "rangeSeconds": [
+            0.0022449002135545015,
+            0.0022449002135545015
+          ],
+          "rssKiB": 6896,
+          "cpuSeconds": 0.001241
+        }
+      },
+      "ratio": 0.8986578505841197,
+      "substantial": false
+    },
+    {
+      "run": "dependency-smoke02",
+      "app": "dependency-plan",
+      "case": "unreachable-cycle",
+      "workers": 1,
+      "roles": {
+        "b2": {
+          "seconds": 0.0021635370794683695,
+          "rangeSeconds": [
+            0.0021635370794683695,
+            0.0021635370794683695
+          ],
+          "rssKiB": 6912,
+          "cpuSeconds": 0.001242
+        },
+        "upstream": {
+          "seconds": 0.002099060919135809,
+          "rangeSeconds": [
+            0.002099060919135809,
+            0.002099060919135809
+          ],
+          "rssKiB": 6932,
+          "cpuSeconds": 0.0012129999999999999
+        }
+      },
+      "ratio": 1.0307166694138183,
+      "substantial": false
+    },
+    {
+      "run": "dependency-smoke02",
+      "app": "dependency-plan",
+      "case": "crlf-duplicates",
+      "workers": 1,
+      "roles": {
+        "b2": {
+          "seconds": 0.002132787834852934,
+          "rangeSeconds": [
+            0.002132787834852934,
+            0.002132787834852934
+          ],
+          "rssKiB": 6948,
+          "cpuSeconds": 0.0012209999999999999
+        },
+        "upstream": {
+          "seconds": 0.0020860829390585423,
+          "rangeSeconds": [
+            0.0020860829390585423,
+            0.0020860829390585423
+          ],
+          "rssKiB": 6876,
+          "cpuSeconds": 0.001205
+        }
+      },
+      "ratio": 1.0223888010011097,
+      "substantial": false
+    },
+    {
+      "run": "dependency-smoke02",
+      "app": "dependency-plan",
+      "case": "usage",
+      "workers": 1,
+      "roles": {
+        "b2": {
+          "seconds": 0.0019254349172115326,
+          "rangeSeconds": [
+            0.0019254349172115326,
+            0.0019254349172115326
+          ],
+          "rssKiB": 6900,
+          "cpuSeconds": 0.001072
+        },
+        "upstream": {
+          "seconds": 0.0019745950121432543,
+          "rangeSeconds": [
+            0.0019745950121432543,
+            0.0019745950121432543
+          ],
+          "rssKiB": 6864,
+          "cpuSeconds": 0.001093
+        }
+      },
+      "ratio": 0.9751037075302026,
+      "substantial": false
+    },
+    {
+      "run": "dependency-survey01",
+      "app": "dependency-plan",
+      "case": "dag-100",
+      "workers": 1,
+      "roles": {
+        "b2": {
+          "seconds": 0.0062523611122742295,
+          "rangeSeconds": [
+            0.006213159998878837,
+            0.006315324921160936
+          ],
+          "rssKiB": 6948,
+          "cpuSeconds": 0.005372999999999999
+        },
+        "upstream": {
+          "seconds": 0.014730678522028029,
+          "rangeSeconds": [
+            0.014516044175252318,
+            0.015784579794853926
+          ],
+          "rssKiB": 6944,
+          "cpuSeconds": 0.013864499999999998
+        }
+      },
+      "ratio": 0.42444488235382677,
+      "substantial": false
+    },
+    {
+      "run": "dependency-survey01",
+      "app": "dependency-plan",
+      "case": "dag-350",
+      "workers": 1,
+      "roles": {
+        "b2": {
+          "seconds": 0.05211807950399816,
+          "rangeSeconds": [
+            0.05196947208605707,
+            0.05229377211071551
+          ],
+          "rssKiB": 6948,
+          "cpuSeconds": 0.05118299999999999
+        },
+        "upstream": {
+          "seconds": 0.152599926921539,
+          "rangeSeconds": [
+            0.15213860082440078,
+            0.15366055304184556
+          ],
+          "rssKiB": 6944,
+          "cpuSeconds": 0.15166849999999998
+        }
+      },
+      "ratio": 0.3415341052607139,
+      "substantial": false
+    },
+    {
+      "run": "dependency-survey01",
+      "app": "dependency-plan",
+      "case": "dag-800",
+      "workers": 1,
+      "roles": {
+        "b2": {
+          "seconds": 0.23026314738672227,
+          "rangeSeconds": [
+            0.22933194413781166,
+            0.23082850594073534
+          ],
+          "rssKiB": 8840,
+          "cpuSeconds": 0.2293
+        },
+        "upstream": {
+          "seconds": 0.6928714560344815,
+          "rangeSeconds": [
+            0.677749581867829,
+            0.7555494818370789
+          ],
+          "rssKiB": 8696,
+          "cpuSeconds": 0.6919344999999999
+        }
+      },
+      "ratio": 0.3323316978658491,
+      "substantial": true
+    },
+    {
+      "run": "dependency-survey01",
+      "app": "dependency-plan",
+      "case": "tree-511",
+      "workers": 1,
+      "roles": {
+        "b2": {
+          "seconds": 0.06198455987032503,
+          "rangeSeconds": [
+            0.061508144019171596,
+            0.06245012185536325
+          ],
+          "rssKiB": 6876,
+          "cpuSeconds": 0.0610685
+        },
+        "upstream": {
+          "seconds": 0.17061825294513255,
+          "rangeSeconds": [
+            0.17048414796590805,
+            0.1711305060889572
+          ],
+          "rssKiB": 6952,
+          "cpuSeconds": 0.169708
+        }
+      },
+      "ratio": 0.36329383756061573,
+      "substantial": false
+    },
+    {
+      "run": "dependency-survey01",
+      "app": "dependency-plan",
+      "case": "chain-1000",
+      "workers": 1,
+      "roles": {
+        "b2": {
+          "seconds": 0.23001077654771507,
+          "rangeSeconds": [
+            0.2287298240698874,
+            0.23970290389843285
+          ],
+          "rssKiB": 6952,
+          "cpuSeconds": 0.2290685
+        },
+        "upstream": {
+          "seconds": 0.6337248095078394,
+          "rangeSeconds": [
+            0.6332737100310624,
+            0.6338803861290216
+          ],
+          "rssKiB": 6952,
+          "cpuSeconds": 0.6327995
+        }
+      },
+      "ratio": 0.36295056323634395,
+      "substantial": true
+    },
+    {
+      "run": "filtered-fast01",
+      "app": "source-index",
+      "case": "sample",
+      "workers": 1,
+      "roles": {
+        "b2": {
+          "seconds": 0.0022005520295351744,
+          "rangeSeconds": [
+            0.0022005520295351744,
+            0.0022005520295351744
+          ],
+          "rssKiB": 6944,
+          "cpuSeconds": 0.001294
+        },
+        "upstream": {
+          "seconds": 0.002095657866448164,
+          "rangeSeconds": [
+            0.002095657866448164,
+            0.002095657866448164
+          ],
+          "rssKiB": 6868,
+          "cpuSeconds": 0.0012309999999999999
+        }
+      },
+      "ratio": 1.0500530953866007,
+      "substantial": false
+    },
+    {
+      "run": "filtered-fast01",
+      "app": "image-render",
+      "case": "cli-zero-dimension",
+      "workers": 1,
+      "roles": {
+        "b2": {
+          "seconds": 0.0019828418735414743,
+          "rangeSeconds": [
+            0.0019828418735414743,
+            0.0019828418735414743
+          ],
+          "rssKiB": 6860,
+          "cpuSeconds": 0.001138
+        },
+        "upstream": {
+          "seconds": 0.0020087698940187693,
+          "rangeSeconds": [
+            0.0020087698940187693,
+            0.0020087698940187693
+          ],
+          "rssKiB": 6864,
+          "cpuSeconds": 0.0010919999999999999
+        }
+      },
+      "ratio": 0.987092588078656,
+      "substantial": false
+    },
+    {
+      "run": "filtered-fast01",
+      "app": "image-render",
+      "case": "cli-help",
+      "workers": 1,
+      "roles": {
+        "b2": {
+          "seconds": 0.0020345430821180344,
+          "rangeSeconds": [
+            0.0020345430821180344,
+            0.0020345430821180344
+          ],
+          "rssKiB": 6940,
+          "cpuSeconds": 0.0011639999999999999
+        },
+        "upstream": {
+          "seconds": 0.0020039170049130917,
+          "rangeSeconds": [
+            0.0020039170049130917,
+            0.0020039170049130917
+          ],
+          "rssKiB": 6948,
+          "cpuSeconds": 0.001095
+        }
+      },
+      "ratio": 1.0152831066006502,
+      "substantial": false
+    },
+    {
+      "run": "filtered-fast01",
+      "app": "dependency-plan",
+      "case": "shared-app",
+      "workers": 1,
+      "roles": {
+        "b2": {
+          "seconds": 0.0021963920444250107,
+          "rangeSeconds": [
+            0.0021963920444250107,
+            0.0021963920444250107
+          ],
+          "rssKiB": 6956,
+          "cpuSeconds": 0.001291
+        },
+        "upstream": {
+          "seconds": 0.002145563019439578,
+          "rangeSeconds": [
+            0.002145563019439578,
+            0.002145563019439578
+          ],
+          "rssKiB": 6932,
+          "cpuSeconds": 0.001272
+        }
+      },
+      "ratio": 1.0236902969173607,
+      "substantial": false
+    },
+    {
+      "run": "fixture-confirm01",
+      "app": "image-render",
+      "case": "survey-production",
+      "workers": 1,
+      "roles": {
+        "b2": {
+          "seconds": 0.3451157765230164,
+          "rangeSeconds": [
+            0.3438115338794887,
+            0.3461920120753348
+          ],
+          "rssKiB": 81368,
+          "cpuSeconds": 0.342445
+        },
+        "upstream": {
+          "seconds": 0.25624688051175326,
+          "rangeSeconds": [
+            0.2556180830579251,
+            0.2563926719594747
+          ],
+          "rssKiB": 67028,
+          "cpuSeconds": 0.2535445
+        }
+      },
+      "ratio": 1.346809669775422,
+      "substantial": true
+    },
+    {
+      "run": "fixture-confirm01",
+      "app": "image-render",
+      "case": "survey-production",
+      "workers": 2,
+      "roles": {
+        "b2": {
+          "seconds": 0.21352410805411637,
+          "rangeSeconds": [
+            0.21248461492359638,
+            0.22604330512695014
+          ],
+          "rssKiB": 81404,
+          "cpuSeconds": 0.3656775
+        },
+        "upstream": {
+          "seconds": 0.15756958804558963,
+          "rangeSeconds": [
+            0.1550696729682386,
+            0.15803410508669913
+          ],
+          "rssKiB": 75120,
+          "cpuSeconds": 0.27034400000000003
+        }
+      },
+      "ratio": 1.3551098959041348,
+      "substantial": true
+    },
+    {
+      "run": "fixture-confirm01",
+      "app": "image-render",
+      "case": "survey-production",
+      "workers": 4,
+      "roles": {
+        "b2": {
+          "seconds": 0.16108901496045291,
+          "rangeSeconds": [
+            0.15887877298519015,
+            0.16847285209223628
+          ],
+          "rssKiB": 83292,
+          "cpuSeconds": 0.40722649999999994
+        },
+        "upstream": {
+          "seconds": 0.11528458201792091,
+          "rangeSeconds": [
+            0.1056317649781704,
+            0.11868434282951057
+          ],
+          "rssKiB": 82084,
+          "cpuSeconds": 0.316557
+        }
+      },
+      "ratio": 1.3973162077771313,
+      "substantial": true
+    },
+    {
+      "run": "fixture-replay01",
+      "app": "image-render",
+      "case": "survey-production",
+      "workers": 1,
+      "roles": {
+        "b2": {
+          "seconds": 0.47715137200430036,
+          "rangeSeconds": [
+            0.47715137200430036,
+            0.47715137200430036
+          ],
+          "rssKiB": 81276,
+          "cpuSeconds": 0.474225
+        },
+        "upstream": {
+          "seconds": 0.25668933684937656,
+          "rangeSeconds": [
+            0.25668933684937656,
+            0.25668933684937656
+          ],
+          "rssKiB": 65680,
+          "cpuSeconds": 0.254102
+        }
+      },
+      "ratio": 1.8588671343379148,
+      "substantial": true
+    },
+    {
+      "run": "fixture-replay01",
+      "app": "image-render",
+      "case": "survey-production",
+      "workers": 2,
+      "roles": {
+        "b2": {
+          "seconds": 0.27422506897710264,
+          "rangeSeconds": [
+            0.27422506897710264,
+            0.27422506897710264
+          ],
+          "rssKiB": 81224,
+          "cpuSeconds": 0.423838
+        },
+        "upstream": {
+          "seconds": 0.17440600600093603,
+          "rangeSeconds": [
+            0.17440600600093603,
+            0.17440600600093603
+          ],
+          "rssKiB": 75856,
+          "cpuSeconds": 0.304881
+        }
+      },
+      "ratio": 1.5723373022809253,
+      "substantial": true
+    },
+    {
+      "run": "fixture-replay01",
+      "app": "image-render",
+      "case": "survey-production",
+      "workers": 4,
+      "roles": {
+        "b2": {
+          "seconds": 0.1854282678104937,
+          "rangeSeconds": [
+            0.1854282678104937,
+            0.1854282678104937
+          ],
+          "rssKiB": 81340,
+          "cpuSeconds": 0.41927
+        },
+        "upstream": {
+          "seconds": 0.1147129510063678,
+          "rangeSeconds": [
+            0.1147129510063678,
+            0.1147129510063678
+          ],
+          "rssKiB": 79100,
+          "cpuSeconds": 0.321586
+        }
+      },
+      "ratio": 1.6164545169812643,
+      "substantial": true
+    },
+    {
+      "run": "image-production01",
+      "app": "image-render",
+      "case": "survey-production",
+      "workers": 1,
+      "roles": {
+        "b2": {
+          "seconds": 0.3483729144791141,
+          "rangeSeconds": [
+            0.3460684078745544,
+            0.370175511110574
+          ],
+          "rssKiB": 81312,
+          "cpuSeconds": 0.34554949999999995
+        },
+        "upstream": {
+          "seconds": 0.2575735655846074,
+          "rangeSeconds": [
+            0.2566633310634643,
+            0.25851515703834593
+          ],
+          "rssKiB": 67456,
+          "cpuSeconds": 0.2548995
+        }
+      },
+      "ratio": 1.3525181191960518,
+      "substantial": true
+    },
+    {
+      "run": "image-production01",
+      "app": "image-render",
+      "case": "survey-production",
+      "workers": 2,
+      "roles": {
+        "b2": {
+          "seconds": 0.2162984919268638,
+          "rangeSeconds": [
+            0.21326922485604882,
+            0.23020475497469306
+          ],
+          "rssKiB": 81428,
+          "cpuSeconds": 0.355687
+        },
+        "upstream": {
+          "seconds": 0.15277656761463732,
+          "rangeSeconds": [
+            0.1521794619038701,
+            0.15492806094698608
+          ],
+          "rssKiB": 74368,
+          "cpuSeconds": 0.2638075
+        }
+      },
+      "ratio": 1.415783161672108,
+      "substantial": true
+    },
+    {
+      "run": "image-production01",
+      "app": "image-render",
+      "case": "survey-production",
+      "workers": 4,
+      "roles": {
+        "b2": {
+          "seconds": 0.17176280030980706,
+          "rangeSeconds": [
+            0.16295111807994545,
+            0.17494196398183703
+          ],
+          "rssKiB": 81408,
+          "cpuSeconds": 0.400094
+        },
+        "upstream": {
+          "seconds": 0.11560063203796744,
+          "rangeSeconds": [
+            0.11221333593130112,
+            0.11840102192945778
+          ],
+          "rssKiB": 83912,
+          "cpuSeconds": 0.31922949999999994
+        }
+      },
+      "ratio": 1.4858292492154708,
+      "substantial": true
+    },
+    {
+      "run": "image-production01",
+      "app": "image-render",
+      "case": "production-one-tile",
+      "workers": 1,
+      "roles": {
+        "b2": {
+          "seconds": 0.309892326942645,
+          "rangeSeconds": [
+            0.3094351920299232,
+            0.31041231006383896
+          ],
+          "rssKiB": 48540,
+          "cpuSeconds": 0.3072855
+        },
+        "upstream": {
+          "seconds": 0.19397235999349505,
+          "rangeSeconds": [
+            0.19333629007451236,
+            0.19517591292969882
+          ],
+          "rssKiB": 48428,
+          "cpuSeconds": 0.19136149999999996
+        }
+      },
+      "ratio": 1.597610746979814,
+      "substantial": true
+    },
+    {
+      "run": "image-production01",
+      "app": "image-render",
+      "case": "production-one-tile",
+      "workers": 2,
+      "roles": {
+        "b2": {
+          "seconds": 0.31003998301457614,
+          "rangeSeconds": [
+            0.309359909966588,
+            0.31136172194965184
+          ],
+          "rssKiB": 48540,
+          "cpuSeconds": 0.3082275
+        },
+        "upstream": {
+          "seconds": 0.19392085098661482,
+          "rangeSeconds": [
+            0.19342811591923237,
+            0.19412755779922009
+          ],
+          "rssKiB": 50400,
+          "cpuSeconds": 0.19218649999999998
+        }
+      },
+      "ratio": 1.5987965267127273,
+      "substantial": true
+    },
+    {
+      "run": "image-production01",
+      "app": "image-render",
+      "case": "production-one-tile",
+      "workers": 4,
+      "roles": {
+        "b2": {
+          "seconds": 0.3096861479571089,
+          "rangeSeconds": [
+            0.3092158550862223,
+            0.31889795884490013
+          ],
+          "rssKiB": 48588,
+          "cpuSeconds": 0.30805299999999997
+        },
+        "upstream": {
+          "seconds": 0.1984274435089901,
+          "rangeSeconds": [
+            0.19388394197449088,
+            0.20347991702146828
+          ],
+          "rssKiB": 48436,
+          "cpuSeconds": 0.19641749999999997
+        }
+      },
+      "ratio": 1.5607022016744274,
+      "substantial": true
+    },
+    {
+      "run": "image-smoke01",
+      "app": "image-render",
+      "case": "single",
+      "workers": 1,
+      "roles": {
+        "b2": {
+          "seconds": 0.0019945341628044844,
+          "rangeSeconds": [
+            0.0019945341628044844,
+            0.0019945341628044844
+          ],
+          "rssKiB": 6864,
+          "cpuSeconds": 0.00113
+        },
+        "upstream": {
+          "seconds": 0.001975931925699115,
+          "rangeSeconds": [
+            0.001975931925699115,
+            0.001975931925699115
+          ],
+          "rssKiB": 6864,
+          "cpuSeconds": 0.001096
+        }
+      },
+      "ratio": 1.0094144119356683,
+      "substantial": false
+    },
+    {
+      "run": "image-smoke01",
+      "app": "image-render",
+      "case": "corners",
+      "workers": 1,
+      "roles": {
+        "b2": {
+          "seconds": 0.002624829998239875,
+          "rangeSeconds": [
+            0.002624829998239875,
+            0.002624829998239875
+          ],
+          "rssKiB": 8008,
+          "cpuSeconds": 0.001705
+        },
+        "upstream": {
+          "seconds": 0.0023811019491404295,
+          "rangeSeconds": [
+            0.0023811019491404295,
+            0.0023811019491404295
+          ],
+          "rssKiB": 7924,
+          "cpuSeconds": 0.001469
+        }
+      },
+      "ratio": 1.1023593505466789,
+      "substantial": false
+    },
+    {
+      "run": "image-smoke01",
+      "app": "image-render",
+      "case": "rectangle",
+      "workers": 1,
+      "roles": {
+        "b2": {
+          "seconds": 0.002992053981870413,
+          "rangeSeconds": [
+            0.002992053981870413,
+            0.002992053981870413
+          ],
+          "rssKiB": 8124,
+          "cpuSeconds": 0.001798
+        },
+        "upstream": {
+          "seconds": 0.0023715379647910595,
+          "rangeSeconds": [
+            0.0023715379647910595,
+            0.0023715379647910595
+          ],
+          "rssKiB": 7940,
+          "cpuSeconds": 0.001468
+        }
+      },
+      "ratio": 1.261651310791486,
+      "substantial": false
+    },
+    {
+      "run": "image-smoke01",
+      "app": "image-render",
+      "case": "odd-rows",
+      "workers": 1,
+      "roles": {
+        "b2": {
+          "seconds": 0.0028505839873105288,
+          "rangeSeconds": [
+            0.0028505839873105288,
+            0.0028505839873105288
+          ],
+          "rssKiB": 8188,
+          "cpuSeconds": 0.0019199999999999998
+        },
+        "upstream": {
+          "seconds": 0.0024689510464668274,
+          "rangeSeconds": [
+            0.0024689510464668274,
+            0.0024689510464668274
+          ],
+          "rssKiB": 7888,
+          "cpuSeconds": 0.001552
+        }
+      },
+      "ratio": 1.1545729071420165,
+      "substantial": false
+    },
+    {
+      "run": "image-smoke01",
+      "app": "image-render",
+      "case": "fine-tiles",
+      "workers": 1,
+      "roles": {
+        "b2": {
+          "seconds": 0.0033498930279165506,
+          "rangeSeconds": [
+            0.0033498930279165506,
+            0.0033498930279165506
+          ],
+          "rssKiB": 8092,
+          "cpuSeconds": 0.00244
+        },
+        "upstream": {
+          "seconds": 0.0030339621007442474,
+          "rangeSeconds": [
+            0.0030339621007442474,
+            0.0030339621007442474
+          ],
+          "rssKiB": 7920,
+          "cpuSeconds": 0.002044
+        }
+      },
+      "ratio": 1.1041314679226888,
+      "substantial": false
+    },
+    {
+      "run": "image-smoke01",
+      "app": "image-render",
+      "case": "one-tile",
+      "workers": 1,
+      "roles": {
+        "b2": {
+          "seconds": 0.0027241159696131945,
+          "rangeSeconds": [
+            0.0027241159696131945,
+            0.0027241159696131945
+          ],
+          "rssKiB": 6864,
+          "cpuSeconds": 0.001857
+        },
+        "upstream": {
+          "seconds": 0.0023999090772122145,
+          "rangeSeconds": [
+            0.0023999090772122145,
+            0.0023999090772122145
+          ],
+          "rssKiB": 6948,
+          "cpuSeconds": 0.001486
+        }
+      },
+      "ratio": 1.135091323033615,
+      "substantial": false
+    },
+    {
+      "run": "image-smoke01",
+      "app": "image-render",
+      "case": "default-tile",
+      "workers": 1,
+      "roles": {
+        "b2": {
+          "seconds": 0.0027987558860331774,
+          "rangeSeconds": [
+            0.0027987558860331774,
+            0.0027987558860331774
+          ],
+          "rssKiB": 8144,
+          "cpuSeconds": 0.0018479999999999998
+        },
+        "upstream": {
+          "seconds": 0.0024548450019210577,
+          "rangeSeconds": [
+            0.0024548450019210577,
+            0.0024548450019210577
+          ],
+          "rssKiB": 7884,
+          "cpuSeconds": 0.0015379999999999999
+        }
+      },
+      "ratio": 1.1400947448181005,
+      "substantial": false
+    },
+    {
+      "run": "image-survey01",
+      "app": "image-render",
+      "case": "survey-small",
+      "workers": 1,
+      "roles": {
+        "b2": {
+          "seconds": 0.018520747893489897,
+          "rangeSeconds": [
+            0.018398009007796645,
+            0.01871363096870482
+          ],
+          "rssKiB": 18420,
+          "cpuSeconds": 0.0174445
+        },
+        "upstream": {
+          "seconds": 0.013309882953763008,
+          "rangeSeconds": [
+            0.013285964028909802,
+            0.013478267006576061
+          ],
+          "rssKiB": 16876,
+          "cpuSeconds": 0.012263499999999998
+        }
+      },
+      "ratio": 1.3915034382968527,
+      "substantial": false
+    },
+    {
+      "run": "image-survey01",
+      "app": "image-render",
+      "case": "survey-small",
+      "workers": 2,
+      "roles": {
+        "b2": {
+          "seconds": 0.012292143073864281,
+          "rangeSeconds": [
+            0.012018317123875022,
+            0.013846017885953188
+          ],
+          "rssKiB": 20488,
+          "cpuSeconds": 0.0189415
+        },
+        "upstream": {
+          "seconds": 0.009045587037689984,
+          "rangeSeconds": [
+            0.008952507982030511,
+            0.00925450585782528
+          ],
+          "rssKiB": 16988,
+          "cpuSeconds": 0.013193
+        }
+      },
+      "ratio": 1.358910485593358,
+      "substantial": false
+    },
+    {
+      "run": "image-survey01",
+      "app": "image-render",
+      "case": "survey-small",
+      "workers": 4,
+      "roles": {
+        "b2": {
+          "seconds": 0.011957097449339926,
+          "rangeSeconds": [
+            0.011690151179209352,
+            0.012645598966628313
+          ],
+          "rssKiB": 20584,
+          "cpuSeconds": 0.0216405
+        },
+        "upstream": {
+          "seconds": 0.0077674794010818005,
+          "rangeSeconds": [
+            0.007604790152981877,
+            0.008511332096531987
+          ],
+          "rssKiB": 20716,
+          "cpuSeconds": 0.015676
+        }
+      },
+      "ratio": 1.539379357436677,
+      "substantial": false
+    },
+    {
+      "run": "image-survey01",
+      "app": "image-render",
+      "case": "survey-medium",
+      "workers": 1,
+      "roles": {
+        "b2": {
+          "seconds": 0.06850748299621046,
+          "rangeSeconds": [
+            0.06826704996638,
+            0.07517384993843734
+          ],
+          "rssKiB": 30948,
+          "cpuSeconds": 0.06713449999999999
+        },
+        "upstream": {
+          "seconds": 0.04802528698928654,
+          "rangeSeconds": [
+            0.04788849991746247,
+            0.04819223517552018
+          ],
+          "rssKiB": 25692,
+          "cpuSeconds": 0.046611
+        }
+      },
+      "ratio": 1.4264877378347176,
+      "substantial": false
+    },
+    {
+      "run": "image-survey01",
+      "app": "image-render",
+      "case": "survey-medium",
+      "workers": 2,
+      "roles": {
+        "b2": {
+          "seconds": 0.042188995983451605,
+          "rangeSeconds": [
+            0.04115542699582875,
+            0.045225475914776325
+          ],
+          "rssKiB": 36908,
+          "cpuSeconds": 0.0711615
+        },
+        "upstream": {
+          "seconds": 0.030611561029218137,
+          "rangeSeconds": [
+            0.029677161015570164,
+            0.03221955895423889
+          ],
+          "rssKiB": 30000,
+          "cpuSeconds": 0.049963499999999994
+        }
+      },
+      "ratio": 1.3782046574881637,
+      "substantial": false
+    },
+    {
+      "run": "image-survey01",
+      "app": "image-render",
+      "case": "survey-medium",
+      "workers": 4,
+      "roles": {
+        "b2": {
+          "seconds": 0.03842061699833721,
+          "rangeSeconds": [
+            0.037486671935766935,
+            0.04091089288704097
+          ],
+          "rssKiB": 33012,
+          "cpuSeconds": 0.0872095
+        },
+        "upstream": {
+          "seconds": 0.026114269043318927,
+          "rangeSeconds": [
+            0.02414725604467094,
+            0.03106058109551668
+          ],
+          "rssKiB": 32320,
+          "cpuSeconds": 0.0625355
+        }
+      },
+      "ratio": 1.4712499490069677,
+      "substantial": false
+    },
+    {
+      "run": "image-survey01",
+      "app": "image-render",
+      "case": "survey-large",
+      "workers": 1,
+      "roles": {
+        "b2": {
+          "seconds": 0.13992606243118644,
+          "rangeSeconds": [
+            0.13939954503439367,
+            0.14825583901256323
+          ],
+          "rssKiB": 47784,
+          "cpuSeconds": 0.138104
+        },
+        "upstream": {
+          "seconds": 0.10003015759866685,
+          "rangeSeconds": [
+            0.09945271513424814,
+            0.10177604202181101
+          ],
+          "rssKiB": 39388,
+          "cpuSeconds": 0.09821949999999999
+        }
+      },
+      "ratio": 1.3988387681301755,
+      "substantial": true
+    },
+    {
+      "run": "image-survey01",
+      "app": "image-render",
+      "case": "survey-large",
+      "workers": 2,
+      "roles": {
+        "b2": {
+          "seconds": 0.08453992090653628,
+          "rangeSeconds": [
+            0.08331806003116071,
+            0.08922251616604626
+          ],
+          "rssKiB": 47796,
+          "cpuSeconds": 0.1456495
+        },
+        "upstream": {
+          "seconds": 0.06407453247811645,
+          "rangeSeconds": [
+            0.06131597585044801,
+            0.06692856689915061
+          ],
+          "rssKiB": 42724,
+          "cpuSeconds": 0.1070835
+        }
+      },
+      "ratio": 1.3193997308588936,
+      "substantial": false
+    },
+    {
+      "run": "image-survey01",
+      "app": "image-render",
+      "case": "survey-large",
+      "workers": 4,
+      "roles": {
+        "b2": {
+          "seconds": 0.07118028250988573,
+          "rangeSeconds": [
+            0.06825754907913506,
+            0.07332157692871988
+          ],
+          "rssKiB": 51840,
+          "cpuSeconds": 0.175332
+        },
+        "upstream": {
+          "seconds": 0.05045363656245172,
+          "rangeSeconds": [
+            0.04926292202435434,
+            0.054301152005791664
+          ],
+          "rssKiB": 49608,
+          "cpuSeconds": 0.129538
+        }
+      },
+      "ratio": 1.4108057884346648,
+      "substantial": false
+    },
+    {
+      "run": "source-smoke01",
+      "app": "source-index",
+      "case": "sample",
+      "workers": 1,
+      "roles": {
+        "b2": {
+          "seconds": 0.002205166034400463,
+          "rangeSeconds": [
+            0.002205166034400463,
+            0.002205166034400463
+          ],
+          "rssKiB": 6864,
+          "cpuSeconds": 0.001318
+        },
+        "upstream": {
+          "seconds": 0.002088390989229083,
+          "rangeSeconds": [
+            0.002088390989229083,
+            0.002088390989229083
+          ],
+          "rssKiB": 6944,
+          "cpuSeconds": 0.0012259999999999999
+        }
+      },
+      "ratio": 1.0559162751484994,
+      "substantial": false
+    },
+    {
+      "run": "source-smoke01",
+      "app": "source-index",
+      "case": "unicode-crlf",
+      "workers": 1,
+      "roles": {
+        "b2": {
+          "seconds": 0.002163712866604328,
+          "rangeSeconds": [
+            0.002163712866604328,
+            0.002163712866604328
+          ],
+          "rssKiB": 6948,
+          "cpuSeconds": 0.001297
+        },
+        "upstream": {
+          "seconds": 0.002078410005196929,
+          "rangeSeconds": [
+            0.002078410005196929,
+            0.002078410005196929
+          ],
+          "rssKiB": 6952,
+          "cpuSeconds": 0.001204
+        }
+      },
+      "ratio": 1.0410423646894043,
+      "substantial": false
+    },
+    {
+      "run": "source-smoke01",
+      "app": "source-index",
+      "case": "empty",
+      "workers": 1,
+      "roles": {
+        "b2": {
+          "seconds": 0.0021350160241127014,
+          "rangeSeconds": [
+            0.0021350160241127014,
+            0.0021350160241127014
+          ],
+          "rssKiB": 6940,
+          "cpuSeconds": 0.001187
+        },
+        "upstream": {
+          "seconds": 0.0020526149310171604,
+          "rangeSeconds": [
+            0.0020526149310171604,
+            0.0020526149310171604
+          ],
+          "rssKiB": 6932,
+          "cpuSeconds": 0.001189
+        }
+      },
+      "ratio": 1.0401444478700677,
+      "substantial": false
+    },
+    {
+      "run": "source-smoke01",
+      "app": "source-index",
+      "case": "usage",
+      "workers": 1,
+      "roles": {
+        "b2": {
+          "seconds": 0.0019584789406508207,
+          "rangeSeconds": [
+            0.0019584789406508207,
+            0.0019584789406508207
+          ],
+          "rssKiB": 6944,
+          "cpuSeconds": 0.001083
+        },
+        "upstream": {
+          "seconds": 0.0019213249906897545,
+          "rangeSeconds": [
+            0.0019213249906897545,
+            0.0019213249906897545
+          ],
+          "rssKiB": 6868,
+          "cpuSeconds": 0.001075
+        }
+      },
+      "ratio": 1.0193376706913744,
+      "substantial": false
+    },
+    {
+      "run": "source-survey01",
+      "app": "source-index",
+      "case": "generated-512",
+      "workers": 1,
+      "roles": {
+        "b2": {
+          "seconds": 0.007402204442769289,
+          "rangeSeconds": [
+            0.007374006789177656,
+            0.0074941059574484825
+          ],
+          "rssKiB": 6944,
+          "cpuSeconds": 0.0064775
+        },
+        "upstream": {
+          "seconds": 0.005183137953281403,
+          "rangeSeconds": [
+            0.0051321538630872965,
+            0.0053482078947126865
+          ],
+          "rssKiB": 6944,
+          "cpuSeconds": 0.0043
+        }
+      },
+      "ratio": 1.4281318594044006,
+      "substantial": false
+    },
+    {
+      "run": "source-survey01",
+      "app": "source-index",
+      "case": "generated-4096",
+      "workers": 1,
+      "roles": {
+        "b2": {
+          "seconds": 0.04957056057173759,
+          "rangeSeconds": [
+            0.04454311798326671,
+            0.051861366955563426
+          ],
+          "rssKiB": 14344,
+          "cpuSeconds": 0.048504
+        },
+        "upstream": {
+          "seconds": 0.027186701074242592,
+          "rangeSeconds": [
+            0.026224838104099035,
+            0.030515506863594055
+          ],
+          "rssKiB": 14272,
+          "cpuSeconds": 0.026050999999999998
+        }
+      },
+      "ratio": 1.8233385667635145,
+      "substantial": false
+    },
+    {
+      "run": "source-survey01",
+      "app": "source-index",
+      "case": "generated-10000",
+      "workers": 1,
+      "roles": {
+        "b2": {
+          "seconds": 0.11936168384272605,
+          "rangeSeconds": [
+            0.1062799571081996,
+            0.12031113496050239
+          ],
+          "rssKiB": 22660,
+          "cpuSeconds": 0.118007
+        },
+        "upstream": {
+          "seconds": 0.06979921355377883,
+          "rangeSeconds": [
+            0.06748450198210776,
+            0.07066948106512427
+          ],
+          "rssKiB": 22576,
+          "cpuSeconds": 0.0685885
+        }
+      },
+      "ratio": 1.710072044733862,
+      "substantial": false
+    },
+    {
+      "run": "source-survey01",
+      "app": "source-index",
+      "case": "real-base",
+      "workers": 1,
+      "roles": {
+        "b2": {
+          "seconds": 0.012191335088573396,
+          "rangeSeconds": [
+            0.012079837964847684,
+            0.012360577005892992
+          ],
+          "rssKiB": 10224,
+          "cpuSeconds": 0.011273499999999999
+        },
+        "upstream": {
+          "seconds": 0.00821032258681953,
+          "rangeSeconds": [
+            0.0073189991526305676,
+            0.011436398839578032
+          ],
+          "rssKiB": 10144,
+          "cpuSeconds": 0.007180000000000001
+        }
+      },
+      "ratio": 1.484878938635712,
+      "substantial": false
+    },
+    {
+      "run": "source-survey01",
+      "app": "source-index",
+      "case": "real-compiler",
+      "workers": 1,
+      "roles": {
+        "b2": {
+          "seconds": 0.20073740393854678,
+          "rangeSeconds": [
+            0.2002038941718638,
+            0.3674391829408705
+          ],
+          "rssKiB": 49228,
+          "cpuSeconds": 0.19967649999999998
+        },
+        "upstream": {
+          "seconds": 0.09328809299040586,
+          "rangeSeconds": [
+            0.09299673605710268,
+            0.09411266399547458
+          ],
+          "rssKiB": 49036,
+          "cpuSeconds": 0.092234
+        }
+      },
+      "ratio": 2.1518009158917146,
+      "substantial": false
+    }
+  ],
+  "rendererAllObservations": [
+    {
+      "workers": 1,
+      "roles": {
+        "b2": {
+          "samples": 9,
+          "medianSeconds": 0.3461920120753348,
+          "rangeSeconds": [
+            0.3438115338794887,
+            0.47715137200430036
+          ]
+        },
+        "upstream": {
+          "samples": 9,
+          "medianSeconds": 0.2566633310634643,
+          "rangeSeconds": [
+            0.2556180830579251,
+            0.25851515703834593
+          ]
+        }
+      },
+      "ratio": 1.3488175760866012
+    },
+    {
+      "workers": 2,
+      "roles": {
+        "b2": {
+          "samples": 9,
+          "medianSeconds": 0.2159203588962555,
+          "rangeSeconds": [
+            0.21248461492359638,
+            0.27422506897710264
+          ]
+        },
+        "upstream": {
+          "samples": 9,
+          "medianSeconds": 0.1550696729682386,
+          "rangeSeconds": [
+            0.1521794619038701,
+            0.17440600600093603
+          ]
+        }
+      },
+      "ratio": 1.3924086816155237
+    },
+    {
+      "workers": 4,
+      "roles": {
+        "b2": {
+          "samples": 9,
+          "medianSeconds": 0.16847285209223628,
+          "rangeSeconds": [
+            0.15887877298519015,
+            0.1854282678104937
+          ]
+        },
+        "upstream": {
+          "samples": 9,
+          "medianSeconds": 0.11497492319904268,
+          "rangeSeconds": [
+            0.1056317649781704,
+            0.11868434282951057
+          ]
+        }
+      },
+      "ratio": 1.4653008447814213
+    }
+  ],
+  "retainedIncompleteRuns": [
+    {
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase100/dependency-acquire01/report.json",
+        "bytes": 17491,
+        "sha256": "de204d5ed6791c73e4be185bf76ac522c734d37121f98fab52a4dcab66b3fdbc"
+      },
+      "apps": [
+        {
+          "id": "dependency-plan",
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/apps/dependency-plan/main.bend",
+            "sha256": "ae8a2f969bbcbff389c53757bdcbddbf7e57682a7bd38ec2c749e117934e576b",
+            "bytes": 11534
+          },
+          "oracle": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/apps/dependency-plan/oracle.py",
+            "sha256": "5a93afd25270d62c3789249f0796e3a75c550f2a18f99b01502815ac5c11dbb3",
+            "bytes": 7948
+          },
+          "emissions": {},
+          "products": {},
+          "complete": false,
+          "error": "AssertionError(('Target failed; inspect retained logs', '/home/ai/bend2/build/publish/bend/selfhost/build/phase100/dependency-acquire01/dependency-plan/upstream-emit', ''))"
+        }
+      ]
+    },
+    {
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase100/dependency-smoke01/report.json",
+        "bytes": 1222,
+        "sha256": "bfe97b10fa3a8297ce5b2e1c865ede6049a3bee5cfab0b3904bc55d418478aaa"
+      },
+      "error": "TypeError(\"write_text() got an unexpected keyword argument 'newline'\")",
+      "records": 0
+    },
+    {
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase100/source-edges01/report.json",
+        "bytes": 19068,
+        "sha256": "4e932bbdfb62594bc3759f624a0c6dd8abeb87c8f3f30e74cf8a8c3ae2796c3a"
+      },
+      "error": "AssertionError()",
+      "records": 6
+    }
+  ],
+  "execution": {
+    "jobs": 349,
+    "serial": true,
+    "occupiedSeconds": 88.35421392135322,
+    "firstToLastSeconds": 1474.6207284927368,
+    "peakTreeRssBytes": 209707008,
+    "resourceStops": []
+  },
+  "scope": "Complete native applications, same Bend sources, own vs upstream C; no universal aggregate or compiler promotion."
+}

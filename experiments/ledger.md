@@ -4702,3 +4702,15 @@ build costs33.89s acquisition+177.05s Clang. Actual nativeB1 six-source screen:
 Read verified evidence summary for full serial target and archive accounting.
 Preserve malformed source, cap failure and launcher failure; treat frontend
 rejections, model proofs, native faults and timings as distinct evidence.
+
+## Phase100 useful native applications — 2026-10-16
+
+[Experiment](phase100/P100-001-useful-applications.md) · [Report](../implementation/phase100/README.md).
+Three standalone Bend apps, 779 lines, 50 inputs and 318 passing complete-output
+executions. Native B1/B2 C agrees for all three; compiler/images unchanged.
+Graph planning wins about 3×; source indexing takes about 2.15× upstream C time;
+rendering about 1.35× sequentially with about 2× four-core acceleration. Larger
+emitted C makes Clang builds 2–3.5× slower. Prioritize application usability,
+text-heavy code and downstream build cost; use frozen-oracle replay for fast loops.
+349 serial targets occupy 88.4s; no resource stops or compiler-image rebuilds.
+Read the report for scope, ranges, independent oracles and preserved failures.

@@ -549,3 +549,40 @@ independent TRMC lane confirmed that a generic correction must preserve the
 exact original cold/hot constructor rule in private destination state and use
 it at both node and terminal publication. Testing the current node's tag
 would not establish that property for mixed-constructor chains.
+
+
+## Final projection runtime regression diagnosis
+
+The coordinator's final03 runtime screen reported new raytrace (~1.45×) and
+local-fold (~1.19×) regressions relative to Phase98, while candidate02 had been
+near neutral. Offline comparison of the exact02/03 C for raytrace, local-fold
+and both local-fold variations isolates the entire source difference to:
+
+- `String.order` changes from the owning comparison/pair projection to the
+  certified borrowed observer adapter (746 to 592 C body bytes).
+- `String.order` and `String.is_le` change from ordinary `INLINE` to forced
+  `NF_INLINE`, because the projection reduces their dependency depth.
+
+All remaining C bytes are unchanged. No TRMC functions or fifth-slot state
+occur in these changes. The concrete eligibility filter implements the same
+three dependency passes; it does not independently alter these hint sets.
+The first hypothesis of cold-policy text crossing an 8 KiB boundary is therefore
+ruled out for these exact regressions.
+
+The compiled raytrace and local-fold ELF symbol census changes sizes in only
+three String/parser scheduler functions; the former standalone `String.order`
+symbol disappears. Total text grows by 168 bytes in both products. Benchmark
+source parses String arguments before the measured `IO.now` interval; the
+sustained raytrace and array-fold bodies do not call String comparisons. This
+makes direct execution of the replacement observer an implausible explanation
+for the sustained slowdown. Code placement/cache effects or run variation
+remain hypotheses, not established causes. The data are retained in
+`projection-runtime-symbol-audit01.json`.
+
+`typed/restore-prior-hints.py` prepares a generic exact C-only ablation:
+restore prior hints for common named NF workers, preserving every candidate
+function body and every other byte. `restore-hints01` contains all four exact
+programs with four token edits each, source pins and inverse proofs. Root owns
+guarded matched builds, complete-output checks and repeated02/03 comparisons;
+this offline lane executed no benchmark. The ablation separates newly forced
+inlining from the changed observer body without modifying a qualified source.

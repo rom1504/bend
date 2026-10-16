@@ -1,4 +1,4 @@
-# Phase102 experimental native lowering
+# Phase102 native lowering
 
 Phase102 implements composable C-backend mechanisms in the compiler written
 in Bend. Source profiles remain separate from the installed Phase98 native
@@ -48,15 +48,18 @@ adapter, allowing callers to enter the existing ready closure. Missing early
 observer metadata conservatively retains hot ownership handling; it does not
 grant a new cold-constructor certificate.
 
-A separately checked successor composes an owning observer with an immediately
+Candidate03 also composes an owning observer with an immediately
 consuming pure projection. A bounded structural certificate must select the
 observer schema's exact scalar result, preserve strict evaluation, and prevent
 variable capture. It then reuses the existing adapter emitter to compute the
 observation and release owned roots without allocating discarded result shells.
 Unknown or effectful projections keep ordinary lowering. The checked API and
 23 helper controls pass; actual C activation is confirmed in three applications
-and five controls. This remains distinct from the qualified profile and native
-image gates; see the [projection report](../../implementation/phase102/projection-integration.md).
+and five controls. This mechanism is included in qualified native candidate03;
+source/API checks and native image gates provide distinct evidence. The later
+experimental candidate04 preserves original dependency cost for inline hints.
+See the [projection report](../../implementation/phase102/projection-integration.md)
+and [qualified opt-in compiler](NATIVE_PHASE102.md).
 
 Local scheduler calls require checked provider identity and no reachable bangs.
 Such requests cannot offload device work, so the compiler marks their scheduler
@@ -72,7 +75,7 @@ Phase98 profile. Both replay forward and inversion return exact source bytes;
 the original D04 source comes from the already committed baseline capsule.
 No generated 1.7 MB compiler source needs to be added to the repository.
 
-The current source profile is `phase102-lowering03`, including bounded inlining,
+The qualified candidate's source profile is `phase102-lowering03`, including bounded inlining,
 observer projection and destination-correct cold stores. `lowering01` preserves
 the failed first native B2 build; `lowering02` preserves the semantically admitted
 intermediate image with a runtime regression. The command records how profile03 was made;

@@ -28,8 +28,10 @@ prevent global deployment.
 The [Phase102 campaign](implementation/phase102/README.md) instead composes
 direct calls, constructor loops and owning observers on the existing data
 representation. Its [native lowering guide](docs/self_hosted/phase102-native-lowering.md)
-documents the mechanisms, reproducible experimental source and qualification
-boundaries. All50 application inputs pass; native image qualification is underway.
+documents the mechanisms. The [qualified opt-in candidate guide](docs/self_hosted/NATIVE_PHASE102.md)
+provides exact restoration and `--selection` commands. Candidate03 passes its
+native B1/B2 qualification and all 50 application inputs; reproducible local-fold
+runtime regressions keep Phase98 selected by default.
 
 **Phase98 provides the current native B1/B2 release.** The smaller retained-root
 comparison and scoped observer changes reduce full self-compilation from

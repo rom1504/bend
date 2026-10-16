@@ -1,0 +1,431 @@
+{
+  "kind": "phase102-campaign-result-summary",
+  "version": 1,
+  "complete": true,
+  "status": {
+    "qualifiedOptIn": "candidate03",
+    "nativeDefault": "Phase98",
+    "jsDefault": "Phase90",
+    "experimentalSuccessor": "candidate04",
+    "reasonNotDefault": "Candidate03 local-fold regressions of10\u201319%; corrected source04 has no native-chain qualification"
+  },
+  "ratios": "Candidate elapsed time divided by named comparator; lower is better. Application processes, warmed program runtime, compiler requests and compiler-image construction are distinct metrics.",
+  "source": {
+    "path": "selfhost/build/phase102/projection-cold-source01/compiler.bend",
+    "bytes": 1788748,
+    "sha256": "b3927732f2250c19a7a8988dab7cbf30726359c18b5305f73c28cadddb902d1f"
+  },
+  "experimentalSource": {
+    "path": "selfhost/build/phase102/projection-cost-source01/compiler.bend",
+    "bytes": 1788947,
+    "sha256": "63ef222c4c6de73bb54c8e51d3b0a0552979b5791ea98e64d1098051a9cda237"
+  },
+  "upstreamCommit": "059266225b77c8ca256ac6b25ee5c21449bab151",
+  "applications": {
+    "receipt": {
+      "path": "selfhost/build/phase102/final-screen03/report.json",
+      "bytes": 244613,
+      "sha256": "42f68a4db465ad532e19946b799b31173aa9dc0c002bb53d62eead9f7475492b"
+    },
+    "rows": [
+      {
+        "app": "source-index",
+        "case": "generated-10000",
+        "threads": 1,
+        "medians": {
+          "upstream": 0.06263883097562939,
+          "candidate": 0.05730317300185561,
+          "baseline": 0.10786939051467925
+        },
+        "rssKiB": {
+          "upstream": 22486.0,
+          "candidate": 22672.0,
+          "baseline": 22638.0
+        },
+        "candidateOverBaseline": 0.5312273734786477,
+        "candidateOverUpstream": 0.9148186853000226
+      },
+      {
+        "app": "source-index",
+        "case": "real-compiler",
+        "threads": 1,
+        "medians": {
+          "upstream": 0.09291386499535292,
+          "candidate": 0.10239536198787391,
+          "baseline": 0.20075144851580262
+        },
+        "rssKiB": {
+          "upstream": 49032.0,
+          "candidate": 49066.0,
+          "baseline": 49110.0
+        },
+        "candidateOverBaseline": 0.5100603893267232,
+        "candidateOverUpstream": 1.1020460939063852
+      },
+      {
+        "app": "dependency-plan",
+        "case": "dag-800",
+        "threads": 1,
+        "medians": {
+          "upstream": 0.6777871650410816,
+          "candidate": 0.14897166250739247,
+          "baseline": 0.22798615356441587
+        },
+        "rssKiB": {
+          "upstream": 7660.0,
+          "candidate": 7028.0,
+          "baseline": 7566.0
+        },
+        "candidateOverBaseline": 0.6534241671185596,
+        "candidateOverUpstream": 0.21979121203683916
+      },
+      {
+        "app": "dependency-plan",
+        "case": "chain-1000",
+        "threads": 1,
+        "medians": {
+          "upstream": 0.6348525360226631,
+          "candidate": 0.15604355244431645,
+          "baseline": 0.2287417445331812
+        },
+        "rssKiB": {
+          "upstream": 6904.0,
+          "candidate": 6906.0,
+          "baseline": 6920.0
+        },
+        "candidateOverBaseline": 0.6821822259105873,
+        "candidateOverUpstream": 0.24579495802588394
+      },
+      {
+        "app": "image-render",
+        "case": "survey-production",
+        "threads": 1,
+        "medians": {
+          "upstream": 0.25627205602359027,
+          "candidate": 0.25311174243688583,
+          "baseline": 0.34621325600892305
+        },
+        "rssKiB": {
+          "upstream": 66346.0,
+          "candidate": 52700.0,
+          "baseline": 81312.0
+        },
+        "candidateOverBaseline": 0.7310862251628005,
+        "candidateOverUpstream": 0.9876681303621588
+      },
+      {
+        "app": "image-render",
+        "case": "survey-production",
+        "threads": 4,
+        "medians": {
+          "upstream": 0.1127684535458684,
+          "candidate": 0.12731222552247345,
+          "baseline": 0.16083642246667296
+        },
+        "rssKiB": {
+          "upstream": 80418.0,
+          "candidate": 52708.0,
+          "baseline": 81366.0
+        },
+        "candidateOverBaseline": 0.7915634006896287,
+        "candidateOverUpstream": 1.1289702174614764
+      }
+    ]
+  },
+  "runtime": {
+    "phase98": {
+      "receipt": {
+        "path": "selfhost/build/phase99/phase102-runtime-phase98-03/summary.json",
+        "bytes": 29300,
+        "sha256": "a5c85ddd8087b3ee6e77a4d36373d69b3d81d2e16652f793b6c76994f57578be"
+      },
+      "equalPointGeomean": 0.9553225300256506,
+      "equalSourceGeomean": 0.9608241804664757,
+      "positivePoints": 44,
+      "zeroWorkRatio": null
+    },
+    "upstream": {
+      "receipt": {
+        "path": "selfhost/build/phase99/phase102-runtime-upstream-03/summary.json",
+        "bytes": 29358,
+        "sha256": "b7839c3ef1d17968e4c2f2014da6a23fc5ae4de2085f5cd96c9cb0aa95579d49"
+      },
+      "equalPointGeomean": 1.062799058771729,
+      "equalSourceGeomean": 1.0821929279286389,
+      "positivePoints": 44,
+      "zeroWorkRatio": null
+    }
+  },
+  "compiler": {
+    "b1": {
+      "receipt": {
+        "path": "selfhost/build/phase99/phase102-b1-screen03/report.json",
+        "bytes": 421341,
+        "sha256": "5e8407a7b9660c3cedc361ef173308b52b944fe4f5c66c05bbcd19b0a5669c47"
+      },
+      "ratios": {
+        "requestMs": 1.02067222137234,
+        "processWallMs": 1.019880507643253
+      },
+      "comparator": "same-stage Phase98",
+      "cases": 6,
+      "rounds": 4
+    },
+    "b2": {
+      "receipt": {
+        "path": "selfhost/build/phase99/phase102-b2-screen03/report.json",
+        "bytes": 440195,
+        "sha256": "5549a714047e84e2678e496f1c2f097a557acd024e83efa1ada6b77a62b0e983"
+      },
+      "ratios": {
+        "requestMs": 0.7216612065878817,
+        "processWallMs": 0.6869571995890531
+      },
+      "comparator": "same-stage Phase98",
+      "cases": 6,
+      "rounds": 4
+    }
+  },
+  "selfCompilation": {
+    "receipts": [
+      {
+        "path": "selfhost/build/phase102/native-chain03/reference/report.json",
+        "bytes": 165209,
+        "sha256": "dc8a09b3a1ccbf42619c7763d3b39bf07aa4b9b65b0fe8458807ab692d1c6698"
+      },
+      {
+        "path": "selfhost/build/phase102/native-chain03/b1-self/report.json",
+        "bytes": 184735,
+        "sha256": "04aa1600fcd6397fbd35764ac588f450764fa9288963580ee6c8e3b85c936dac"
+      },
+      {
+        "path": "selfhost/build/phase102/native-chain03/b2-self/report.json",
+        "bytes": 193086,
+        "sha256": "50b8985785ae7ec4951cbc4de5f89782be63ce987dac9b008cd126ec62fcf9f5"
+      }
+    ],
+    "requestSeconds": {
+      "phase98B2": 203.635,
+      "candidateB1": 123.969,
+      "candidateB2": 140.614
+    },
+    "repeatedMedians": false
+  },
+  "qualification": {
+    "admission": {
+      "path": "selfhost/build/phase102/native-chain03/admission.json",
+      "bytes": 1275160,
+      "sha256": "585103080cb206fc8a845924147824f18bc1d82cdacabe5b4f9b88f25fab6188"
+    },
+    "publicCli": {
+      "path": "selfhost/build/phase99/phase102-release03/public-cli/report.json",
+      "bytes": 21356,
+      "sha256": "0a23228d951749d3313967e4caf120c4020000c2af594d2ae0e8d3619732a0f5"
+    },
+    "requestCapsule": {
+      "path": "selfhost/tools/native/releases/phase102-staged03/receipt.json",
+      "bytes": 679,
+      "sha256": "0a5280e88ff057eb4d69878f57380761ec925bcdee9bdae88314d83a71d5bc95"
+    }
+  },
+  "complexity": {
+    "candidatePhysicalLines": 39370,
+    "baselinePhysicalLines": 38790,
+    "delta": 580,
+    "canonicalModulesChanged": false,
+    "scope": "Flattened native source; separate experiment tooling is counted in the narrative report"
+  },
+  "experimentalCorrection": {
+    "checkedApi": {
+      "path": "selfhost/build/phase102/projection-cost-api01/report.json",
+      "bytes": 20081,
+      "sha256": "0d5bcb45c28a2bb37f550c0aef14eef10e82f07d60cb0f08283e79f4bc1ee19b"
+    },
+    "actualEmission": {
+      "path": "selfhost/build/phase102/projection-cost-emission01/report.json",
+      "bytes": 22366,
+      "sha256": "18078ea3b69cd50a7daca93d3e79e77aff5b71073db33a2322e0c069a1808306"
+    },
+    "activation": {
+      "path": "selfhost/build/phase102/projection-cost-activation02/report.json",
+      "bytes": 135415,
+      "sha256": "1d97cdcb52bbdae3075e1b0e2714fa4da9567812a4a74a27316e839b6bdabf52"
+    },
+    "freshApplicationScreen": {
+      "path": "selfhost/build/phase102/projection-cost-screen01/report.json",
+      "bytes": 248579,
+      "sha256": "7f72687b58cfe444d3fa54cb2e121a63086402e1b00b0254c3842ef1198d96ee"
+    },
+    "nativeQualified": false
+  },
+  "regressionDiagnosis": {
+    "receipt": {
+      "path": "selfhost/build/phase102/hint-ablation-run01/report.json",
+      "bytes": 476287,
+      "sha256": "c6780a3b0e09ce0fc172414ec49fe0d4bc42e3e7ad15de6fd2f7a609e59f608c"
+    },
+    "rows": [
+      {
+        "id": "raytrace",
+        "mediansMs": {
+          "phase98": 376.5,
+          "candidate02": 371.5,
+          "candidate03": 373.5,
+          "prior-hints": 373.0
+        },
+        "ratiosToPhase98": {
+          "phase98": 1.0,
+          "candidate02": 0.9867197875166003,
+          "candidate03": 0.9920318725099602,
+          "prior-hints": 0.9907038512616202
+        },
+        "rangesMs": {
+          "phase98": [
+            373,
+            379
+          ],
+          "candidate02": [
+            368,
+            376
+          ],
+          "candidate03": [
+            371,
+            378
+          ],
+          "prior-hints": [
+            370,
+            377
+          ]
+        }
+      },
+      {
+        "id": "local-fold",
+        "mediansMs": {
+          "phase98": 253.5,
+          "candidate02": 253.0,
+          "candidate03": 302.0,
+          "prior-hints": 253.0
+        },
+        "ratiosToPhase98": {
+          "phase98": 1.0,
+          "candidate02": 0.9980276134122288,
+          "candidate03": 1.1913214990138068,
+          "prior-hints": 0.9980276134122288
+        },
+        "rangesMs": {
+          "phase98": [
+            251,
+            259
+          ],
+          "candidate02": [
+            252,
+            266
+          ],
+          "candidate03": [
+            301,
+            307
+          ],
+          "prior-hints": [
+            252,
+            257
+          ]
+        }
+      },
+      {
+        "id": "variation-local-fold-128-0",
+        "mediansMs": {
+          "phase98": 248.5,
+          "candidate02": 254.5,
+          "candidate03": 274.5,
+          "prior-hints": 253.0
+        },
+        "ratiosToPhase98": {
+          "phase98": 1.0,
+          "candidate02": 1.0241448692152917,
+          "candidate03": 1.1046277665995976,
+          "prior-hints": 1.0181086519114688
+        },
+        "rangesMs": {
+          "phase98": [
+            246,
+            266
+          ],
+          "candidate02": [
+            253,
+            257
+          ],
+          "candidate03": [
+            272,
+            281
+          ],
+          "prior-hints": [
+            251,
+            265
+          ]
+        }
+      },
+      {
+        "id": "variation-local-fold-8192-123",
+        "mediansMs": {
+          "phase98": 251.0,
+          "candidate02": 249.0,
+          "candidate03": 299.0,
+          "prior-hints": 249.0
+        },
+        "ratiosToPhase98": {
+          "phase98": 1.0,
+          "candidate02": 0.9920318725099602,
+          "candidate03": 1.1912350597609562,
+          "prior-hints": 0.9920318725099602
+        },
+        "rangesMs": {
+          "phase98": [
+            249,
+            254
+          ],
+          "candidate02": [
+            248,
+            253
+          ],
+          "candidate03": [
+            297,
+            306
+          ],
+          "prior-hints": [
+            246,
+            254
+          ]
+        }
+      }
+    ]
+  },
+  "closingProfile": {
+    "receipt": {
+      "path": "selfhost/build/phase102/native-map-profile03/report.json",
+      "bytes": 226691,
+      "sha256": "749062c805d314e442272521572b2063d1a86ecc55f6ead31eb1e568901b6e32"
+    },
+    "pooledSamples": 1041,
+    "scope": "Unchanged B2 ELF, physical leaves on one cached map compiler request; eight repeated requests at two periods"
+  },
+  "time": {
+    "receipt": {
+      "path": "selfhost/build/phase102/time-account-final.json",
+      "bytes": 12462495,
+      "sha256": "032bfa1cb03a322e5aaf094e985096ce9a53cc11f052984a270511047915bd2d"
+    },
+    "start": "2026-10-16T20:09:00Z",
+    "cutoff": "2026-10-16T23:20:45Z",
+    "elapsedWallSeconds": 11505.0,
+    "guardedUnionSeconds": 6097.389803647995,
+    "unclassifiedWallSeconds": 5407.610196352005,
+    "receiptCount": 4919,
+    "nonzeroIncludedCount": 54,
+    "stoppedIncludedCount": 1
+  },
+  "evidence": {
+    "path": "implementation/phase102/evidence/receipt.json",
+    "bytes": 5544,
+    "sha256": "9fc6691c321e296d0f2631d6e78e3dbda2361c9bdc3b2e71695accededb54631"
+  }
+}

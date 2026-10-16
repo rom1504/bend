@@ -79,3 +79,67 @@ does not cover the separately composed `projection-cold-source01` candidate.
 
 See the [method boundary](../../selfhost/tools/performance/phase102/projection-bend/README.md)
 for budgets, capture prevention, unsupported syntax and remaining proof limits.
+
+## Keep allocation elimination separate from forced inlining
+
+The later root-owned native-chain03 qualification exposed a local-fold runtime
+regression. Its saved-C `restore-hints01` ablation changes only four hint tokens,
+restoring the prior `INLINE` declarations/definitions of `String.order` and
+`String.is_le`. The optimized borrowed computation remains. Root's paired probe
+reports that these hint changes restore fold parity, identifying a profitability
+interaction between passes rather than a reason to restore discarded tuples.
+
+The isolated successor `projection-cost-source01` changes one expression in
+`nfp_replaced`: its conservative dependency metadata becomes old dependencies
+followed by new dependencies. Every actual new call stays represented, while
+the old adapter/projector chain remains a lower bound on dependency cost for
+forced inlining. This operates after ordinary admission. The only consumers
+of the dependency field are readiness and inline membership; body emission,
+ownership cleanup, public ABI and the projection certificate are unchanged.
+Each round of the three-pass inline closure can only shrink relative to the
+parent. Clang can still inline ordinary functions using its own cost model.
+
+An offline actual-C graph model predicts restoration of exactly the old hint
+sets on all 62 retained products (45 native runtime products and 17 focused
+products), with no extra or missed demotions. Exact pins and per-product results
+are in `projection-cost-model01/report.json`. Candidate source SHA256 is
+`63ef222c4c6de73bb54c8e51d3b0a0552979b5791ea98e64d1098051a9cda237`;
+its recipe reverses exactly to Phase98. This is experimental candidate04:
+candidate03's native qualification does not transfer to it. The later checked
+`projection-cost-api01` acquisition passes. An offline audit of its three actual
+application emissions (`projection-cost-activation02/report.json`) confirms
+complete C differs from qualified03 only in hint tokens and restores precisely
+the depth02 hint maps. The same closed seven-product audit confirms four runtime
+products exactly equal the prior hint-ablation C. It authenticates their raw
+build/run receipts, binaries and full outputs: 32 matching-product observations
+are inherited, within 128 total observations across four compared roles. None
+are fresh candidate04 executions. The early activation01 snapshot had pinned
+the still-open batch manifest and is preserved with a supersession note. Timing
+and any later native image gates remain separate; candidate04 is experimental.
+See [the small cost policy](../../selfhost/tools/performance/phase102/projection-cost/README.md)
+for the consumer audit, monotonicity argument and byte-budget limitation.
+
+The subsequent `projection-cost-screen01` executes the three actual Bend-produced
+applications in four alternating rounds, checking all 72 complete outputs.
+Candidate04 retains the large gains:
+
+| Point | Candidate04 / Phase98 | Candidate04 / upstream |
+|---|---:|---:|
+| Generated10000 index |0.525|0.912|
+| Compiler-text index |0.510|1.077|
+| DAG800 |0.665|0.224|
+| Chain1000 |0.685|0.246|
+| Renderer, one worker |0.734|0.986|
+| Renderer, four workers |0.788|1.195|
+
+These are fresh application timings, separate from the inherited four runtime
+diagnostics. The renderer's four-worker upstream ratio is worse than the prior
+screen's1.129; its candidate process remains about128ms, while the concurrently
+measured upstream median is107ms. Do not infer a candidate03→04 regression from
+ratios measured in separate screens. A direct comparison is needed for that
+smaller claim. Neither screen constitutes universal performance parity.
+
+The immutable `phase102-lowering04` profile replays source04 with a26,867-byte
+delta and exact inverse to committed D04. Source transport remains explicitly
+experimental. The next release task is this source's own native chain and gates,
+not a further unrelated optimization before qualification.

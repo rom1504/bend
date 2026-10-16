@@ -58,5 +58,8 @@ that the seven local recipe edits reconstruct and invert exactly, the ordinary
 constructor policy is unchanged, and recursive/terminal publication uses the
 previous destination before updating it. Original safe proofs retain their
 original source identities; there is no new universal native ownership proof.
-The final native B1/B2 chain and its complete semantic gates must still succeed
-before selecting this candidate.
+The final native B1/B2 chain, self fixed point and backend evidence bridge
+now pass for this source. The original five final-image controls and admission
+still remain separate, and the broad runtime review identifies point regressions
+that must be considered before default selection. See [qualification](backend-qualification.md)
+and the [runtime review](runtime-regression-review.md).

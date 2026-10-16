@@ -6,15 +6,53 @@ The final candidate is `projection-cold-source01/compiler.bend`, SHA256
 program suite (171 complete observations), 23 projection-helper observations,
 and five constructor-policy variants (15 complete observations) pass. The
 independently reviewed source audit05 also passes, retaining the original
-proof/authority closures. Native chain03 is still being built and qualified;
-no final-image or default-selection claim follows from these earlier gates.
+proof/authority closures. Native chain03 now passes B1/B2 construction and its self fixed point,
+live/cache/refusal controls, the 45-program broad suite, native conformance, and
+38 final-native mechanism emissions. The backend bridge, original five
+final-image controls and admission all pass. Admission03 SHA256 is
+`585103080cb206fc8a845924147824f18bc1d82cdacabe5b4f9b88f25fab6188`.
+Nine public CLI controls pass and the opt-in request capsule verifies. Phase98
+remains the default because fold points regress despite an improved aggregate;
+the hint-only ablation diagnoses the cause in the [runtime review](runtime-regression-review.md).
 
 The new source adds [bounded observer projection](projection-review.md), a
 stable concrete worker filter, and the [TRMC destination-policy correction](trmc-cold.md)
-to the qualified depth candidate below. Final native gates must be rerun against
-this exact source. The successor backend collector retains every original gate
+to the qualified depth candidate below. All native observations below are bound to this exact source. The successor backend collector retains every original gate
 and additionally binds the two new program cases, projection-helper evidence
 and the mixed-constructor policy matrix.
+
+The final-source [bridge successor](../../selfhost/tools/performance/phase102/qualification/backend-bridge-v2.py)
+(SHA256 `6900a7b870f7fd36d038094fdafaf34760288b3583ccee054e89b3d5333cba9e`)
+and its [supplemental consumer](../../selfhost/tools/performance/phase102/qualification/final_mechanism_evidence.py)
+(SHA256 `d8afb6e04d0913c2d4f3bcf2df4f52bca4a5843853d0bce97b3144dddc652fb4`)
+have independent source review. The supplemental data-only preflight verifies
+230 unchanged input identities, including all original API bytes plus exactly
+four appended diagnostic wrappers, the five exact C macro insertions, their
+preprocessing and builds, and all fifteen recorded output observations.
+This preflight executes no compiler or generated program and gives no native
+image credit.
+
+The final-source bridge has now been consumed successfully:
+`selfhost/build/phase102/backend-specific03/report.json`, SHA256
+`fc30e34c76d9d7b0f11f4511a99da4ddad6acfb848fdf402f6f33cc4b7c51230`.
+It verifies 70 obligations and 3,730 input identities. Native correspondence
+covers 19 sources, 38 fresh B1/B2 emissions and 136 complete prior outputs
+reused only after whole-C equality. The bridge retains `imageQualified: false`;
+the original final-image and admission gates separately establish qualification.
+
+The exact completed data-only command was:
+
+```sh
+taskset -c 0 python3 -B selfhost/tools/performance/phase102/qualification/backend-bridge-v2.py \
+  --source-audit selfhost/build/phase102/authority-source-audit05/report.json \
+  --authority selfhost/build/phase102/authority-consumed03.json \
+  --backend-policy selfhost/build/phase99/phase102-final-plan03/policy/policy.json \
+  --projection-controls selfhost/build/phase102/final-helper-controls03/report.json \
+  --cold-matrix selfhost/build/phase102/trmc-cold-matrix-run02/report.json \
+  --controls selfhost/build/phase102/final-controls03/report.json \
+  --native-inheritance selfhost/build/phase102/native-chain03/inheritance/report.json \
+  --out selfhost/build/phase102/backend-specific03
+```
 
 ## Qualified depth candidate retained as a checkpoint
 

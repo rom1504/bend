@@ -4734,3 +4734,29 @@ text and indexing continuation bottlenecks. All failed captures/adapters remain.
 No compiler source/image/release change, full-self rebuild, new compiler-latency
 claim, whole-language proof or PR comment. Next address compact-text consumers,
 adaptive small strings, iterative append ablation and certified typed lowering.
+
+## Phase102 composable native lowering — 2026-10-16
+
+[Design](../design/phase102/ambitious-native-campaign.md) ·
+[Report](../implementation/phase102/README.md) ·
+[Opt-in compiler](../docs/self_hosted/NATIVE_PHASE102.md).
+General direct-worker composition, constructor loops, private-cell reuse and
+observer-result projection improve complete indexing to0.51–0.53× Phase98,
+graph planning to0.65–0.68× and rendering to0.73–0.79×. Linked storage retained;
+renderer RSS falls from79.4MiB to51.5MiB. Final03 source adds580 lines (1.5%).
+
+All50 application inputs,171 focused outputs,23 helper controls, mixed-policy
+matrix15, genuine B1/B2 fixed point, broad45,69 native fixtures per stage,
+backend bridge, final five and nine public CLI controls pass. B2 six-source
+request ratio is0.722× Phase98; B1 is1.021×. Same-source B2 self compilation is
+140.614s versus203.635s, single observations. No new matched upstream compiler
+latency ratio is claimed.
+
+Broad runtime44point GM is0.955× Phase98/1.063× upstream. Fold10–19% regressions
+block default promotion. Eight balanced diagnostic rounds isolate four forced
+inline hints; restoring prior hints removes the regression. Candidate04 keeps
+original dependency cost after projection and passes checked source/emission
+and focused application screens; it has no native-chain qualification yet.
+Candidate03 is packaged as an explicit opt-in compiler; Phase98/Phase90 defaults
+remain unchanged. Full evidence retains the420s build timeout, cold-list
+failure, hint regression and unselected alternatives. No PR comment.

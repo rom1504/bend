@@ -19,8 +19,11 @@ probes. Phase98 remains installed while the combined candidate is measured.
 
 The [Phase102 native lowering guide](../docs/self_hosted/phase102-native-lowering.md)
 explains the new composable direct calls, constructor loops, owning observers
-and compact reproducible source profile. Its [campaign report](../implementation/phase102/README.md)
-separates measured application gains from native compiler qualification.
+and compact reproducible source profile. The [qualified opt-in guide](../docs/self_hosted/NATIVE_PHASE102.md)
+provides candidate03 restoration and explicit `--selection` commands. Its native
+B1/B2 qualification is complete, but local-fold runtime regressions keep Phase98
+as the default. The [campaign report](../implementation/phase102/README.md) records
+the measured gains and remaining regressions.
 
 The [application examples](apps/README.md) provide a source index, image renderer
 and dependency planner with independent output checks. Use their

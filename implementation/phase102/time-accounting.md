@@ -73,7 +73,42 @@ outside the window are listed and excluded; crossing intervals are clipped
 and counted explicitly. Publication exclusion is temporal, not a claim about
 what activity occurred in an uncovered interval. Omitting `--final` produces a
 provisional snapshot with `complete: false` even if all scanned receipts have
-finished. No final totals have been computed yet.
+finished. The completed final totals and exact scope follow.
+
+## Final measured account
+
+Targets closed at **2026-10-16 23:20:45 UTC** after the20:09 minute-precision
+start: **3h11m45s** including the final regression diagnosis. Archival,
+documentation and Git publication follow outside this interval.
+
+`selfhost/build/phase102/time-account-final.json` is complete and stable:
+
+| Measured category | Elapsed time |
+|---|---:|
+| Union of4,919 guarded target intervals |101m37.4s|
+| Of that, native-b1/native-chain directories (all three attempts and their gates) |62m52.4s|
+| Other guarded intervals |38m45.0s|
+| Unclassified wall time outside guarded intervals |90m07.6s|
+
+The unmerged interval sum equals the union: there was no overlap between these
+recorded target jobs. The native-directory subtotal is the interval union of
+receipts whose paths are under `phase102/native-b1-*` or `phase102/native-chain*`;
+it includes image acquisition, construction, self requests and those directories'
+semantic gates. It is not solely Clang time. The other-target row is the exact
+difference from the total union. CPU time, agent token cost and the activity mix
+of the unclassified time are not inferred.
+
+All4,919 receipts intersect the window; none has a missing exit code. There
+are54 nonzero outcomes, including intentional rejection/fault controls and real
+failed attempts, and one guarded stop: the original420s build timeout. No
+memory-limit stop or OOM is recorded. The report has zero accounting issues.
+
+This campaign still spent too much of its target time rebuilding candidates
+before every important runtime sentinel was in the fast screen. The total
+native-chain subtree time makes that cost explicit. The late hint-only diagnosis
+takes53.4s of guarded build/run time; it demonstrates why a short controlled
+ablation is preferable to another immediate full bootstrap. Candidate04 stops
+at checked source, exact emission and the focused application screen here.
 
 ## Improvements to the next campaign
 
@@ -91,10 +126,16 @@ Two expensive lessons are already visible before final accounting closes:
   repair justified another native chain, but it cost another acquisition/build/
   fixed-point cycle. Keep the initial image only when it resolves a decision
   that cheaper source/API/C probes cannot answer.
+- Include the three fold points in that pre-image screen. Preserve dependency
+  cost across allocation elimination so profitability decisions compose.
 - Preserve exact-C product reuse with original build provenance. It avoids
   recompiling unchanged benchmark products while retaining fresh final-source
   emissions and fresh timings. The final acquisition receipt, not an estimate,
   determines how many builds were actually saved.
+
+Actual final03 reuse saves **zero** builds: all45 C products change, and all45
+are built fresh in106.82s. The reuse mechanism is useful infrastructure, but
+this run supplies no measured build-time saving from it.
 
 These are workflow conclusions, not fabricated allocations of uninstrumented
 wall time. The final accounting reports the union of recorded target intervals;

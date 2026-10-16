@@ -12,14 +12,24 @@ for rendering. These are workload-specific complete-process ratios.
 
 All50 inputs/165 outputs,171 focused outputs,23 projection acceptance/refusal
 checks, and15 mixed-policy diagnostic outputs pass. The final profile adds580
-physical lines. Native chain03 is in progress; source replay and API controls
-are separate from a qualified release. Phase98 native and Phase90 JS remain
-installed until the final source earns its own semantic and performance gates.
+physical lines. Native chain03, semantic admission, nine public CLI controls
+and the opt-in request capsule pass. Phase98 native and Phase90 JS remain the
+defaults: a balanced follow-up reproduces fold regressions of10–19%, caused
+by four forced-inline hints. Restoring the prior hints removes those regressions.
+Candidate03 is usable explicitly; see the [opt-in guide](../docs/self_hosted/NATIVE_PHASE102.md).
 
 Retain two instructive failures: unrestricted composed inlining hit420s while
 building B2, and unconditional TRMC sealing regressed cold lists. Bounded
 inlining built candidate02; a fifth private state word now preserves the actual
-pending destination policy. Fresh final runtime measurements must confirm it.
+pending destination policy. Final runtime confirms list-pipeline improvements
+to0.65–0.67× Phase98. All44 timed points aggregate to0.955× Phase98 and1.063×
+upstream; B2 compilation request time is0.722× Phase98, while B1 is1.021×.
+
+Experimental candidate04 (`63ef222c…cda237`) retains the old dependency cost
+after observer projection. Checked actual emission restores the prior hints
+while retaining allocation removal. Its application screen preserves the large
+gains; it still needs its own native chain and release gates. Qualify this small
+successor before starting another unrelated optimization campaign.
 
 Root owns serial guarded targets. Reuse exact C/binaries with provenance;
 measure fresh times. Do not repeat full native acquisition after each small

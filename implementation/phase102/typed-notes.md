@@ -269,3 +269,103 @@ The full source, scanner and rows are recorded in
 moderate expansion on that old compiler image, but they do not bound transitive
 inlining, final Phase102 admission growth, Clang memory or machine-code size.
 The final compiler C and actual guarded Clang build must supply those observations.
+
+## Native compiler image activation
+
+The coordinator's final source `trmc-reuse-source02` is
+`8b895aec2dc9eac2eaee0036239367f83b53910c309ba26ebab4c9a47fa5affa`.
+Its genuine native B1 self-emission passes the complete independent Phase98 B2
+diagnostic comparison. These structural comparisons use the **same final source**
+on both compilers; the installed compiler's own older source is recorded only
+as separate context in `native-compiler-shape01.json`.
+
+| Emitted structure | Phase98 B2 on final source | Final B1 on final source |
+| --- | ---: | ---: |
+| C bytes | 39,356,447 | 30,080,590 |
+| Continuation FIDs | 35,179 | 15,964 |
+| Ordinary/product/observer/TRMC NF definitions | 508 | 943 |
+| Local NF result slots | 0 | 12,123 |
+| Local NF tail jumps | 34 | 216 |
+| Generic TRMC helpers | 0 | 47 |
+
+The 435 additional definitions are 335 ordinary workers, 43 product workers,
+47 TRMC helpers, five borrowed observers and five owning adapters. Ordinary
+`String.cmp` is newly admitted through its existing owning-adapter proof. New
+local frontend loops include `f_number`, `f_numeric_error`, `f_path_scan` and
+`f_source`; the TRMC helpers include String/List operations, parser list builders,
+normalization joins and native argument/schema builders. This is broad compiler
+activation, beyond the three applications used for the initial experiments.
+
+All 508 pre-existing NF function **bodies remain byte-identical**, recorded in
+`native-nf-body-continuity01.json`. Twenty-six existing functions receive the
+larger force-inline hint. Total forced-inline definitions rise from 468 to 883,
+and their combined body bytes from 695,195 to 1,979,376 (2.847 times). Their largest
+complete body rises from 4,164 to 8,253 characters, consistent with the
+8,192-codepoint body budget plus generated prologue/trailer. Ordinary `INLINE`
+workers rise from 40 to 60 and their bodies from 284,501 to 930,112 bytes; the
+180,880-byte `p88_build` worker is not forced-inline. This gives Clang more direct
+and inline optimization work despite the smaller total C, a plausible image-build
+cost tradeoff that must be measured separately. The complete NF body text grows from 979,696
+to 2,909,488 characters, while the remainder of emitted C falls from 38,376,751
+to 27,171,102 bytes. Eliminated scheduler machinery outweighs added direct code.
+
+`activation-v3.py` makes line lookup linear-preparation/logarithmic-query instead
+of rescanning the entire file per function; it audits each full compiler C in
+about two seconds offline. Both graphs have zero missing directly named NF
+definitions and zero recursive components. This still does not prove dynamic
+stack use or whole C correctness. Local-call composition and whole-function
+admission overlap: 12,123 slots and 19,215 fewer continuations are observable
+counts, not independently additive performance contributions. Native B2 build,
+fixed point, conformance and timing remain separate coordinator gates.
+
+## Transitive inline expansion, and a bounded successor
+
+The actual final compiler graph reveals a much larger cost than the earlier
+old-image, own-body estimate. Reproducible offline method `typed/inline-dag.py`
+and result `native-inline-dag02.json` count repeated named NF calls, ignoring
+quoted strings/comments. Expanding only forced-inline callees gives 23.23 MB
+summed across final NF bodies versus 2.35 MB for the same-source Phase98 output.
+At call sites outside the NF definitions, the corresponding repeated expansion
+proxy is **115.12 MB versus 1.38 MB**. These are source-byte proxies, not observed
+LLVM IR, machine code or actual compilation work: C optimization can eliminate
+branches, and ordinary inlining/runtime helpers are not modeled.
+
+The largest outside contributions are `p98_tag_eq` (608 sites × 38,991 expanded
+bytes), `p88_string_eq` (703 × 11,487), `kid` (670 × 10,555) and `f_eq`
+(523 × 12,006). Small forwarding bodies inherit large forced callee chains.
+This explains why a per-function 8 KiB cap does not control compiler build cost
+after broad direct-call admission. It is not evidence that the direct-call
+architecture itself is ineffective.
+
+The unused `leaf-inline-source01` is retained as an exact reversible experiment.
+It forces only dependency-free NC_Code bodies. Inspection then showed that
+`next_mode`, which benefited in the app experiment, calls `plain_mode`, which
+calls `plain_mode_flags`; leaf-only and depth-one policies would remove that
+hint. No application names are used by either proposed policy.
+
+`depth-inline-source01` instead selects bounded leaves and two caller levels
+using exactly three immutable passes over admitted NF_Worker dependency lists.
+This retains the existing 8 KiB own-code test and fails closed for missing
+dependencies. The list is computed once after observer routing and carried
+through prototypes, ordinary bodies, TRMC wrappers and TRMC inner loops; no
+recursive emitter recomputes it. Worker dependency lists include late scalar
+observer redirects that are not present in the inner NC_Code call metadata.
+The source is an exact reversible successor of `trmc-reuse-source02`, adding
+13 physical lines. It changes hints only, not admission, ownership or bodies.
+
+The direct-C depth-two simulation estimates 25.62 MB of outside forced
+expansion and 601 selected definitions, while retaining `next_mode`. The actual
+Bend policy folds a TRMC wrapper and inner loop into one worker, so this C-graph
+simulation is not asserted byte-identical to the compiler implementation.
+Actual checked API emission, app measurements and bounded native image builds
+remain the acceptance tests; generated-C ablations alone do not qualify a
+self-hosted compiler.
+
+The checked depth-policy API subsequently emitted all three apps. Their entire
+C files are byte-identical to the prior candidate after normalizing only the
+leading `NF_INLINE`/`INLINE` tokens on function declarations and definitions.
+Forced definitions become 45 from 61 for source-index, 23 from 27 for
+image-render and 31 from 44 for dependency-plan; `next_mode` remains forced.
+`depth-app-hint-continuity01.json` records these exact output hashes. This
+confirms hint-only app behavior at the source level, before runtime timing and
+native-image construction are considered.

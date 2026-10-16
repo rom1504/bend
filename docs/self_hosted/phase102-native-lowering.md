@@ -25,8 +25,13 @@ cell per private worker, reusing it only for the same allocation class. Static
 cells and shared roots are excluded; unused cells are freed on success or failure.
 Ordinary matching and constructor stores retain their previous behavior. The
 helpers are emitted only when a ready TRMC worker exists. A separate measured
-policy raises the existing forced-inlining source budget from4KiB to8KiB;
-compiler-image build cost is checked separately from program runtime.
+policy raises the existing forced-inlining source budget from4KiB to8KiB.
+The first unrestricted composition hits the420s native image-build limit. The
+successor also limits forced-worker dependency depth: three immutable passes
+select small leaves and two caller levels from the final admitted worker graph.
+It computes that set once, then shares it across declarations and bodies.
+Clang remains free to inline other calls; this is a hint policy, not a bound on
+machine-code size. Compiler-image build cost is checked separately from runtime.
 
 The observer bridge keeps original owned roots alive while a proven observer
 borrows them. Its owning adapter returns the original result contract. For
@@ -50,14 +55,17 @@ Phase98 profile. Both replay forward and inversion return exact source bytes;
 the original D04 source comes from the already committed baseline capsule.
 No generated 1.7 MB compiler source needs to be added to the repository.
 
-Root can package the final selected experimental recipe with fresh paths:
+The current experimental source profile is `phase102-lowering02`, including the
+bounded-depth hint policy. `lowering01` preserves the earlier source and its
+failed native B2 build. The following command records how profile02 was made;
+use fresh profile/verification names when repeating packaging:
 
 ```sh
 python3 -B selfhost/tools/performance/phase102/package-source-profile.py \
-  --recipe selfhost/build/phase102/trmc-reuse-source02/changes.json \
-  --out selfhost/tools/native/profiles/phase102-lowering01 \
-  --verification-out selfhost/build/phase102/profile-replay01 \
-  --name phase102-lowering01
+  --recipe selfhost/build/phase102/depth-inline-source01/changes.json \
+  --out selfhost/tools/native/profiles/phase102-lowering02 \
+  --verification-out selfhost/build/phase102/profile-replay02 \
+  --name phase102-lowering02
 ```
 
 The packager verifies parent/capsule/recipe identities, emits a deterministic
@@ -69,7 +77,7 @@ Once that named profile exists, replay it independently:
 
 ```sh
 python3 -B selfhost/tools/native/profile.py \
-  --profile selfhost/tools/native/profiles/phase102-lowering01/profile.json \
+  --profile selfhost/tools/native/profiles/phase102-lowering02/profile.json \
   --out-source /tmp/compiler-phase102.bend \
   --receipt /tmp/compiler-phase102-replay.json
 ```

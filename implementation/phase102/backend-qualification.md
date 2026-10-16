@@ -14,8 +14,8 @@ image collector makes the later qualification decision.
 
 ## Exact source correspondence
 
-The offline [source audit](../../selfhost/tools/performance/phase102/qualification/audit-source.py)
-compares the pinned installed Phase98 source `2a72bbdc…` with the final candidate
+The initial offline [source audit](../../selfhost/tools/performance/phase102/qualification/audit-source.py)
+compares the pinned installed Phase98 source `2a72bbdc…` with candidate
 `8b895aec…`, replays every recipe edit and reverses them. The completed raw receipt
 is `selfhost/build/phase102/authority-source-audit01/report.json`, SHA
 `c1e7316d4e4434f1af368ce46c6c0b427efc6c3d0763a5f4875d7a0efb607345`.
@@ -41,9 +41,23 @@ law declarations. Changing an audited body, authority route, type or supporting
 dependency requires a fresh audit; the old source hash is never replaced inside
 a historical receipt.
 
+After the first native B2 Clang build timed out, the inline-hint successor
+`535c1f8f…` retained every earlier semantic transformation and bounded forced
+inlining through three immutable dependency passes. The
+[successor audit](../../selfhost/tools/performance/phase102/qualification/audit-source-v2.py)
+closed `authority-source-audit02/report.json`, SHA
+`3bfd44cdda22431b5b8638e9c1f710dec10a8c52852447e47d31d3a48bed2b41`.
+It independently reconstructs the six hint/signature plumbing changes and the
+two added dependency helpers from the prior candidate. The complete source now
+has seventeen changed and sixty-five added functions relative to Phase98;
+all original authority, proof-source and helper-closure requirements remain.
+The 159 type and 658 law declarations remain unchanged. These passes bound the
+forced NF worker dependency depth, not Clang's final inlining or machine-code
+size; build cost and program speed still need measurement.
+
 ## Fresh permission and raw-input checks
 
-`authority-controls02` used the existing final checked API from `reuse-api02`.
+`authority-controls02` used the first candidate's checked API from `reuse-api02`.
 No further compiler API build was needed. Its execution method preserves the
 original Phase98 authority assertions, changing only the permitted output
 directory and explanatory comments. The plan pins both imported API files
@@ -53,7 +67,7 @@ permission experiment API, not the installed native compiler.
 The target completed in 6.639 seconds. The independently reviewed offline
 [consumer](../../selfhost/tools/performance/phase102/qualification/consume-authority.py)
 reread source/API identities, raw commands, outputs and provenance. It closed
-seven cases in `selfhost/build/phase102/authority-consumed01.json`, SHA
+seven cases for source `8b895aec…` in `selfhost/build/phase102/authority-consumed01.json`, SHA
 `5eaf287bc89b68751c9cb8a71517de1902895b137fa2ec977abfaa58930d50a5`:
 
 - The original real-IO, generic-array and schema-refusal cases preserve both
@@ -68,6 +82,14 @@ Only the forged-context C is reused as behavioral evidence: its complete C is
 byte-identical to the original unpatched native product, whose complete `7n`
 stdout and empty stderr were independently reread. The three positive user
 programs still require the separate final native five-source gate.
+
+The new source `535c1f8f…` has a separate fresh authority plan,
+`authority-controls03/plan.json`, bound to `depth-api01`. Its results cannot be
+inherited merely because the source changes affect inline hints.
+That fresh target completed in 6.753 seconds; the unchanged reviewed consumer
+closed all seven cases in `authority-consumed02.json`. Its exact raw C still
+matches the originally executed forged-context product. Both candidate
+identities and their separate results remain retained.
 
 ## New mechanism controls and final native stages
 
@@ -93,7 +115,12 @@ replace live/cache controls, 45 broad semantic programs, 69 native conformance
 fixtures per stage, the independent self-source reference or the B1/B2 fixed
 point.
 
-At this checkpoint, the source correspondence and fresh authority checks are
-closed. Final native mechanism inheritance and the remaining image gates are
-pending. No installed selection change or full compiler qualification is
-claimed by this report.
+The depth candidate also passes all 153 checked-product executions across the
+twenty-seven frozen cases in `depth-controls01/report.json`. This is evidence
+from the checked API products; final native-stage inheritance remains separate.
+
+At this checkpoint, both source correspondence audits and both candidates'
+fresh authority checks are closed. Final native mechanism inheritance and
+remaining image gates are pending.
+No installed selection change or full compiler qualification is claimed by
+this report.

@@ -93,3 +93,27 @@ Maintain one evolving [report](../../implementation/phase102/README.md) and
 separate experiment records. Commit/push the design, meaningful checkpoints and
 final report. User-facing updates explain findings and next decisions. No PR
 comment is authorized by this task. Preserve unrelated working-tree changes.
+
+## Compiler-scale feedback: bound composed inlining
+
+The first integrated candidate passes application/control screens but its native
+B2 Clang build reaches the420s limit. Retain this failure. The direct-worker
+dependency graph explains why a local8KiB size cutoff is insufficient: forced
+inlining can expand through a long chain even when every individual body is
+small. A lexical source-size estimate rises from1.38MB to115.12MB at outer calls;
+this is a diagnostic proxy, not a measurement of LLVM IR.
+
+Test ordinary Clang inlining first as an ablation. Then retain the local8KiB
+limit with three immutable selection passes: eligible leaves, their eligible
+callers, and one more caller level. Use final worker dependency metadata after
+observer routing, not only original code calls. Compute the set once and carry
+it through prototype/body emission. This constrains forced-worker chains; Clang
+can still choose additional inlining. Worker legality and ownership are unchanged.
+
+Require actual Bend-emitted app C to differ only in hints, then repeat complete
+outputs and the six-point application screen. Only a viable successor earns a
+new genuine B1/B2 chain. Prefer this small bounded policy over a new cost-model
+framework during the current window. Keep the old native build failure, hint
+ablations and source recipes. Report any application-runtime cost alongside the
+compiler construction benefit. Further tuple-projection and fault challenges
+remain independent experiments and cannot silently enter the frozen candidate.

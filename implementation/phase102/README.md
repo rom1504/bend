@@ -199,3 +199,36 @@ checks pass (`authority-controls02`); a native B1→B2 chain and native semantic
 qualification are in progress. Installed Phase98 native and Phase90 JS selections
 remain unchanged. The successful checked API and application runs do not stand
 in for these native image checks.
+
+## Compiler-scale inlining failure and revised experiment
+
+The first genuine B1 self emission passes with exact independent diagnostics.
+For that same final source, installed B2 emits39,356,447bytes of C and candidate
+B1 emits30,080,590bytes, a23.6% reduction. Direct NF workers rise508→943;
+continuation FIDs fall35,179→15,964. All508 formerly admitted worker bodies remain
+byte-identical. The gain comes mainly from extending admission and composing
+existing lowering:47 generic TRMC helpers and hundreds of ordinary direct
+workers replace scheduler transport. These are static shape facts, not yet
+measurements of the candidate native B2.
+
+The first matched O2 B2 build **fails its420s deadline** (`native-chain01/b2-build`).
+Peak process-tree RSS is2,577,940,480bytes, below the6GiB bound; this is not an OOM.
+The failed build is retained and no B2 binding or self result is manufactured.
+The historical installed B2 build took260.8s, on its older source; that is context,
+not a fresh matched-build ratio.
+
+The prior per-function8KiB inline hint is insufficient at compiler scale. A
+static NF call-graph expansion audit estimates115.12MB of forced expansion at
+outside call sites versus1.38MB in the independent reference. This is a source
+size proxy, not measured LLVM IR or a causal timing proof. Nonetheless, it
+identifies a concrete composition problem: small forced-inline workers contain
+calls to more forced-inline workers. Removing the force hint globally keeps
+renderer/graph gains but slows the large indexer to1.229× upstream in a four-round
+screen (`auto-inline-screen01`).
+
+The next bounded policy retains the8KiB local limit and permits at most two
+levels of forced NF dependencies. It uses three immutable admission passes,
+then carries the selected names through emission. This targets transitive
+expansion while retaining the measured scanner helper. It changes inline hints,
+not worker legality, ownership or semantics. It is being tested as a new source
+successor; the original candidate and failed build remain immutable.

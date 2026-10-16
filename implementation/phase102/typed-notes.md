@@ -369,3 +369,95 @@ image-render and 31 from 44 for dependency-plan; `next_mode` remains forced.
 `depth-app-hint-continuity01.json` records these exact output hashes. This
 confirms hint-only app behavior at the source level, before runtime timing and
 native-image construction are considered.
+
+## Actual bounded-policy self emission
+
+Native chain02 B1 self-emits source `535c1f8f...` to 30,124,590 bytes of C
+(`30f1fe5b5649a3f586b4616195edd112ae4db75003a2f32b422a4b94d279611a`).
+The actual graph has **610 forced definitions**, exactly the logical generated-C
+prototype's choice for every surviving named worker: zero hint mismatches.
+There are 941 NF definitions, 47 TRMC helpers, 216 local tail jumps and 12,127
+local NF output slots. The old `nf_inline` and its product worker disappear
+because the source implementation changed; no other NF worker disappears.
+
+Of 941 surviving bodies, 895 are byte-identical to the unbounded candidate.
+The other 46 are exactly equal after a bijective renaming of generated
+`v_DIGITS` C identifiers; all strings, comments and other tokens are preserved.
+There are 139 renamed identifiers. This is a lexical structural audit, not a
+replacement for execution checks. `native-depth-body-continuity01.json` records
+the source hashes, body hashes and complete renaming lists.
+
+The reproducible DAG audit in `native-inline-dag03.json` measures 26.556 MB of
+outside forced expansion, close to the logical prototype's 26.550 MB and
+**76.9% below the unbounded image's 115.116 MB**. Summed expanded NF bodies fall
+from 23.231 MB to 7.901 MB. The major previous sources of expansion—tag equality,
+string equality and accessors with deep dependencies—are no longer forced
+through their whole call chains. Ordinary C inlining remains available. Thus
+the generated-C prototype accurately predicted the final Bend policy's hint
+behavior on the real compiler, as well as on the three apps.
+
+The new policy does perform extra compiler work. Three passes each revisit
+candidate workers, check admitted membership and the own-code budget, and test
+dependencies against the previous set. With linear list membership the work
+is proportional to three passes of worker/admission-set and dependency/set
+comparisons; there is no recursive transitive expansion or cost memoization.
+The final set is computed once, never once per recursively emitted function.
+A later measured refinement could precompute size/admission eligibility once
+before the three passes, without changing the selected hints.
+
+Existing telemetry offers mixed, limited evidence about this cost:
+
+| Observation | Unbounded source | Bounded source |
+| --- | ---: | ---: |
+| Native B1 self request | 126.295 s | 127.333 s |
+| API source-index emission | 3.677 s | 3.956 s |
+| API image-render emission | 2.151 s | 2.311 s |
+| API dependency-plan emission | 3.158 s | 3.425 s |
+
+The self request is 0.82% longer; the three API emission phases are about
+7.4–8.4% longer. These are single observations, not interleaved paired runs,
+and self inputs differ by 13 lines/1,022 bytes. Even the unchanged Phase98
+reference compiler varies from 149.036 s to 186.930 s on these nearby source
+versions. Consequently the receipts do not isolate hint-analysis cost or
+justify claiming either zero overhead or a precise regression. They show no
+large whole-request increase for the actual B1, while leaving a plausible
+emitter-local overhead to investigate only if it matters after qualification.
+`native-depth-work-observations01.json` records the original receipt paths.
+The guarded B2 construction and execution remain separate coordinator gates.
+The coordinator subsequently completed B2 construction: the actual Clang guard
+records 377.212 s, successful exit and 2,583,298,048 bytes peak tree RSS
+(about 2.41 GiB). This is distinct from wrapper elapsed time and is not a paired
+speedup against the earlier 420 s timeout or the historical older-source build.
+Construction success alone does not establish B2 fixed point or qualification.
+
+## Residual native profile prepared after qualification
+
+`profile-native.py` reuses the already built generic thread sampler from
+`observer-profile01`. It authenticates the actual final B2 build and the
+completed cached `map_closed` native control. This is the heaviest request in
+the existing six-source short compilation suite (about 1.65 s historically),
+so eight isolated captures should provide useful evidence in roughly 10–20 s
+without a full self-compilation profile. Actual final-image cost may differ.
+
+Run only after the native chain and qualification queue finish:
+
+```sh
+python3 -B selfhost/tools/performance/phase102/profile-native.py --build selfhost/build/phase102/native-chain02/b2.json --request-row selfhost/build/phase102/native-chain02/controls/05-cached-map_closed/b2/report.json --sampler-report selfhost/build/phase102/observer-profile01/report.json --rounds 4 --out selfhost/build/phase102/native-map-profile01
+```
+
+There is one global 60 s target budget, a 2 GiB process-tree RSS limit, 16 GiB
+available-memory floor and 512 MiB initial disk reserve. Each process uses one
+worker on CPU 3, GPU off, and the unchanged qualified request arguments apart
+from a fresh output prefix. The compiler ELF is never rebuilt or instrumented.
+The sampler is loaded at runtime and affects execution cost, so sampled clocks
+are not clean speed measurements.
+
+Every capture requires complete C equality and full clock-stripped diagnostic
+equality with the same-image control, empty stdout, normal successful exit,
+zero sample loss and overruns, intact thread lifecycle, and at least 95% process
+CPU coverage. The pool must contain at least 500 samples. Periods of 8 and
+13 ms reduce dependence on one sampling interval. Missing/incomplete/lossy
+captures stay failed; the tool does not silently rerun them. The result is
+physical leaf attribution across startup, compilation and IO, not phase timing,
+allocation counts or recovered inline caller stacks. This command is prepared,
+not executed by the offline analysis lane.

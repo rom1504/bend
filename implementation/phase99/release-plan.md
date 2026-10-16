@@ -69,8 +69,32 @@ references from `phase98/origin-backend-specific01/report.json`. Candidate
 borrowed-call executions are additional evidence rows; do not change the frozen
 five-case schema or treat copied historical fields as new results.
 
-These backend-specific collector/final borrowed-call execution receipts are a
-remaining dependency; the release preparation does not synthesize them. Frozen
+These backend-specific execution receipts remain a dependency; the release
+preparation does not synthesize them. The parameterized
+`release/borrowed-final.py` runner and data-only `release/borrowed-collect.py`
+collector are now prepared. The source04 commands are in
+`selfhost/build/phase99/static-release-backend-plan02/commands.json` (plan01
+preceded the final method refinements; use plan02). Neither command has run.
+They name the prospective `static-self-c01/report.json`; adjust that explicit
+argument if the same-source inspection is stored at another fresh path.
+
+The runner takes the selected completed small qualification and both completed
+micro receipts. For source04 this gives six program controls plus the static
+and shared dynamic 10-million-iteration workloads: 24 compiler requests,
+8 matched native builds and 8 full-output executions. It authenticates the
+micros' original argv and complete actual stdout/stderr across all eight prior
+samples. Original API C supplies each program's complete active flag header;
+`unique-held` legitimately has cold/static-constructor and unshared-array flags
+enabled in both baseline and candidate. Refusal controls may have no admitted
+observer. Neither condition is treated as a failure or silently generalized to
+other cases.
+
+The collector rechecks raw requests/builds/runs, exact generated observer
+workers and refusals, exact source-bound helper extraction, all six safe laws
+and six admitted bad changes, full self-C source/product binding, and the
+explicit declaration changes against Phase98. Data-only preparation validated
+506 actual source04 evidence pins, both law/mutant bundles and both micro
+oracles; this does not attest the still-unexecuted final-image runner. Frozen
 admission consumes their passed source-bound evidence, all ordinary gates and
 the final five. It independently checks raw commands, guards, diagnostics,
 whole C, executions and conformance provenance. A timing benefit decision stays

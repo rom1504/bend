@@ -129,8 +129,13 @@ mutated helpers admit alone and fail the unchanged laws. None proves runtime RC
 or the full compiler. Receipts: `static-laws01`, `static-law-negatives01`,
 `borrowed-args-laws02`, `borrowed-args-negatives02`.
 
-The combined source04 is now entering native qualification; source03 measurements
-are preserved separately and cannot qualify that successor.
+Source04's checked B1 image and six-source screen pass: 0.99826× request time,
+48 exact timed outputs/diagnostics. Its B1 emits the complete own C in 117.266 s;
+the same-source Phase98 B2 reference takes 145.461 s. This compares different
+stages and is not the candidate B2 speedup. The fresh own-C audit passes all 21
+assertions, including the complete ANY-shared OR ALL-trivial guard, scalar-slot
+exclusion, saved-root cleanup, exact ordinary fallbacks and unchanged runtime.
+Source03 measurements are preserved separately and cannot qualify this successor.
 
 The [qualification preparation](qualification-plan.md) reuses Phase98 methods
 with the actual current B1/B2 baseline. The borrowed candidate has a checked B1 image and passing six-source screen;

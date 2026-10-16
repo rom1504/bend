@@ -1,7 +1,7 @@
 # Phase102: ambitious native campaign
 
 [Design](../../design/phase102/ambitious-native-campaign.md). Execution began
-2026-10-16 at20:09 UTC for a three-hour campaign. The final candidate is now
+2026-10-16 at 20:09 UTC for a three-hour campaign. The final candidate is now
 undergoing native image qualification; installed Phase98 remains selected.
 
 ## Result so far
@@ -12,7 +12,7 @@ SHA256 `b3927732f2250c19a7a8988dab7cbf30726359c18b5305f73c28cadddb902d1f`.
 The immutable [lowering03 source profile](../../selfhost/tools/native/profiles/phase102-lowering03/profile.json)
 replays it exactly; source replay is separate from native qualification.
 
-Four alternating rounds check72 complete outputs. Ratios below are elapsed
+Four alternating rounds check 72 complete outputs. Ratios below are elapsed
 candidate time divided by the named comparator; lower is better.
 
 | Complete application | Candidate / installed Phase98 | Candidate / pinned upstream |
@@ -26,10 +26,10 @@ candidate time divided by the named comparator; lower is better.
 
 These are complete application processes, including startup and IO, from
 `final-screen03`. They are not compiler latency or a universal Bend speed ratio.
-The independent50-input fixture suite passes165 complete output observations
+The independent 50-input fixture suite passes 165 complete output observations
 in `final-broad03`. Its one-round small-input timings are correctness coverage,
-not evidence of small speed differences. Renderer memory falls from about81MB
-to53MB RSS in the production fixture. Upstream remains pinned to
+not evidence of small speed differences. Renderer memory falls from about 81 MB
+to 53 MB RSS in the production fixture. Upstream remains pinned to
 `059266225b77c8ca256ac6b25ee5c21449bab151`.
 
 ## What changed and what we learned
@@ -47,20 +47,20 @@ to53MB RSS in the production fixture. Upstream remains pinned to
    errors, then releases both roots. It changes the intended caller in all
    three apps and five controls; public adapters remain available.
 4. **Bound forced inlining across composition.** The first integrated native
-   image exceeded its420s Clang limit. A local8KiB body cutoff was insufficient
+   image exceeded its 420 s Clang limit. A local 8 KiB body cutoff was insufficient
    because eligible callers compose. Three immutable dependency rounds bound
    the forced chain while leaving ordinary Clang inlining available. The
-   successor built in377.2s, with2.58GB peak process-tree RSS; this is a real
+   successor built in 377.2 s, with 2.58 GB peak process-tree RSS; this is a real
    compiler-image build, not an inferred benefit from a source-size proxy.
 5. **Respect each destination's ownership policy.** The broad runtime screen
    exposed an avoidable reference-count wrapper in newly lowered cold lists.
-   A six-round saved-C ablation changed the two list cases from roughly1.3×
-   installed time to0.65–0.66×. The integrated fix records the previous
+   A six-round saved-C ablation changed the two list cases from roughly 1.3×
+   installed time to 0.65–0.66×. The integrated fix records the previous
    destination constructor's policy, including terminal publication. Five
-   mixed-policy diagnostics pass preprocessor checks and15 full-output runs.
+   mixed-policy diagnostics pass preprocessor checks and 15 full-output runs.
 
-The cold-list512 case initially measured2.54× installed time; the follow-up
-three-way screen reproduced a smaller1.34× median regression, with visibly
+The cold-list512 case initially measured 2.54× installed time; the follow-up
+three-way screen reproduced a smaller 1.34× median regression, with visibly
 bimodal samples. Both datasets are retained. The improvement is clear in the
 matched follow-up; the first regression magnitude should not be generalized.
 
@@ -71,11 +71,29 @@ are not substituted for the actual Bend-generated results above.
 
 ## Correctness, self-hosting and complexity
 
-Final-source preflight passes171 output observations,23 projection acceptance/
+Final-source preflight passes 171 output observations, 23 projection acceptance/
 refusal checks, and the independent mixed-constructor policy diagnostics. The
-source audit retains all159 existing types,658 laws,13 safe statements and
-reviewed authority closures; it records17 changed and83 added declarations.
+source audit retains all 159 existing types, 658 laws, 13 safe statements and
+reviewed authority closures; it records 17 changed and 83 added declarations.
 Finite checks do not establish a whole-compiler or ownership proof.
+
+Final candidate03 completes the genuine native chain. B1 and B2 emit exactly
+**30,372,406 bytes of the same self C**, SHA256
+`b0048997f35830b8a97a4c8b187185108d4673050765b680734009c74427f0c7`,
+with complete diagnostic agreement. The installed baseline emits39,731,345
+bytes on that same source. Final B2 Clang construction takes374.6s and2.60GB
+peak process-tree RSS, inside its unchanged420s/6GiB guard.
+
+| Producer compiling the exact final source | Request seconds |
+|---|---:|
+| Installed Phase98 native B2 |203.635|
+| Final native B1, built by upstream |123.969|
+| Final self-hosted native B2 |140.614|
+
+These are single observations from qualification, not repeated timing medians.
+The same-stage B2 comparison is0.691× installed time; B2/B1 is1.134×. B1 is the
+Bend compiler built by upstream, not the upstream TypeScript compiler itself.
+Matched six-source stage comparisons and final runtime gates are still pending.
 
 Candidate02 completed actual native B1/B2 construction, exact self reproduction,
 69 eligible conformance cases per stage, broad45-program qualification and all
@@ -83,8 +101,8 @@ backend gates. It remains unselected because its list-runtime regression was
 unacceptable. The final candidate03 must repeat its own native qualification;
 no candidate02 image or result is relabeled as candidate03.
 
-The final flattened native source has39,370 physical lines, versus38,790 in
-installed Phase98: **+580 lines, about1.5%**. This phase improves performance;
+The final flattened native source has 39,370 physical lines, versus 38,790 in
+installed Phase98: **+580 lines, about 1.5%**. This phase improves performance;
 it does not claim a line-count reduction. The canonical compiler modules and
 selected JS implementation are unchanged. Experimental runners and immutable
 failed variants are research artifacts, separate from these compiler counts.

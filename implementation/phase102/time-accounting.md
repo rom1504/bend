@@ -74,3 +74,28 @@ and counted explicitly. Publication exclusion is temporal, not a claim about
 what activity occurred in an uncovered interval. Omitting `--final` produces a
 provisional snapshot with `complete: false` even if all scanned receipts have
 finished. No final totals have been computed yet.
+
+## Improvements to the next campaign
+
+Two expensive lessons are already visible before final accounting closes:
+
+- Inspect the compiler-scale forced-inline dependency expansion before the
+  first Clang image build. A local body-size limit did not bound composition;
+  the failed420s build was avoidable with this earlier structural screen.
+- Put a small list-construction runtime sentinel beside the application screen
+  before native qualification. Candidate02 passed all semantic gates but its
+  broad runtime survey found unnecessary cold-link sealing. Checking generated
+  C from the testing API is sufficient for this discovery step; native B1/B2 C
+  identity and release qualification still belong to the final winner.
+- Freeze after these performance screens. The late projection win and cold-link
+  repair justified another native chain, but it cost another acquisition/build/
+  fixed-point cycle. Keep the initial image only when it resolves a decision
+  that cheaper source/API/C probes cannot answer.
+- Preserve exact-C product reuse with original build provenance. It avoids
+  recompiling unchanged benchmark products while retaining fresh final-source
+  emissions and fresh timings. The final acquisition receipt, not an estimate,
+  determines how many builds were actually saved.
+
+These are workflow conclusions, not fabricated allocations of uninstrumented
+wall time. The final accounting reports the union of recorded target intervals;
+its complement is unclassified and must not be labeled all coding or all idle.

@@ -20,7 +20,7 @@ a separate rule.
 ## 2. Remove repeated eligibility scans
 
 `nd_comb_fresh` still repeats a body/actual/environment scan for reserved IDs.
-Phase99 already has a single-interval scan and44 differential cases. This is a
+Phase99 already has a single-interval scan and 44 differential cases. This is a
 small, general compiler-speed experiment: preserve first-binding, malformed
 Var, reversed ID numbering and overflow behavior; require exact emitted C and
 measure a branch-heavy request before rebuilding the compiler. Phase102 already
@@ -29,8 +29,8 @@ These two changes must not be conflated.
 
 ## 3. Close the dynamic-call boundary, then shrink the scheduler
 
-The [scheduler survey](scheduler-pruning-investigation.md) finds11,629 of20,991
-cases without a literal-FID host path in its diagnostic model, about4.16MB of
+The [scheduler survey](scheduler-pruning-investigation.md) finds 11,629 of 20,991
+cases without a literal-FID host path in its diagnostic model, about 4.16 MB of
 text. This is an opportunity estimate, not permission to delete them. Foreign
 and numeric callable IDs, closure/static-data/task producers, stable FID table
 positions and device paths need a complete reachability boundary. Start by
@@ -48,10 +48,10 @@ to one another; it does not establish that every composition is safe to fuse.
 
 ## 5. Explain the remaining parallel renderer gap
 
-The final production renderer screen is0.988× upstream with one worker and
+The final production renderer screen is 0.988× upstream with one worker and
 1.129× with four. It is faster than installed Phase98 at both sizes, and uses
 less memory. Inspect task size, allocation balance and output joins using the
-existing1/2/4-worker fixtures before changing granularity. A one-round broad
+existing 1/2/4-worker fixtures before changing granularity. A one-round broad
 fixture timing is not enough to rank small scheduling changes.
 
 ## Efficient next iteration
@@ -60,7 +60,7 @@ Select one causal question from a current profile. Use the retained source/API
 and exact saved products for a short ablation; preserve complete outputs and
 negative controls. Measure the relevant application plus one regression case,
 then the six large app points. Only a retained source earns native image
-construction and the wider45-program runtime check. Exact C identity permits
+construction and the wider 45-program runtime check. Exact C identity permits
 binary reuse with original build provenance; it never creates fresh timing data.
 
 Keep whole-workflow clocks separate: compiler request time, Clang image build,

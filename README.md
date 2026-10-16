@@ -25,6 +25,12 @@ with native text representation. Its [first experimental results](implementation
 make complete rendering faster than upstream; other workload regressions still
 prevent global deployment.
 
+The [Phase102 campaign](implementation/phase102/README.md) instead composes
+direct calls, constructor loops and owning observers on the existing data
+representation. Its [native lowering guide](docs/self_hosted/phase102-native-lowering.md)
+documents the mechanisms, reproducible experimental source and qualification
+boundaries. All50 application inputs pass; native image qualification is underway.
+
 **Phase98 provides the current native B1/B2 release.** The smaller retained-root
 comparison and scoped observer changes reduce full self-compilation from
 135.5 to **104.8 seconds for B1**, and from 150.5 to **141.0 seconds for B2**.

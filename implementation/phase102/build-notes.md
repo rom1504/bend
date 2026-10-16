@@ -1,7 +1,7 @@
 # Build costs and construction fusion: Phase102
 
 This lane prepares offline experiments. Root alone runs guarded Clang/program
-jobs; no compiler source, installed image or previous raw evidence is changed.
+jobs; no active compiler source, installed image or previous raw evidence is changed.
 The bounded build screen is closed below; generic construction-loop targets remain pending.
 
 ## Generated C is mostly application-specific code
@@ -216,3 +216,10 @@ required`). The original fixture and manifest remain unchanged. Successor
 adds explicit String types to the four construction-fixture locals; all source
 algorithms and expected outputs remain unchanged. The checked compiler source
 and three emitted application products are unaffected.
+
+
+The generic constructor-loop mechanism, first 72-execution application screen,
+remaining focused-law gates and optional unique-cell reuse experiment now have
+a concise companion report: [trmc.md](trmc.md). The screen's composed candidate
+improves all six measured points; those ratios include typed-call composition
+and retained branch specialization, so they are not attributed solely to TRMC.

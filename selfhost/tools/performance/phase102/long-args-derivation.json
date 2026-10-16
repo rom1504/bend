@@ -1,0 +1,37 @@
+{
+  "complete": true,
+  "targetsRun": false,
+  "guardParent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase86/guard.py",
+    "sha256": "dd8f3f8a44c336a15e7dd11a9727b218f13582139e34c0aa08a27f7b0b04b790",
+    "bytes": 1688
+  },
+  "guard": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase102/guard-long-args.py",
+    "sha256": "b0d4f8d886267eaf827c3fa3869c47fd3a8774dda762a5ef3719e908ffe8f4e2",
+    "bytes": 1964
+  },
+  "old": "identities=[S.identity(f) for f in cmd if Path(f).is_file()]",
+  "new": "# Argument text is not necessarily a filesystem path (e.g. long Unicode tests).\ndef is_file_argument(value):\n    try: return Path(value).is_file()\n    except OSError as error:\n        if error.errno == 36: return False  # ENAMETOOLONG: still retain full argv.\n        raise\nidentities=[S.identity(f) for f in cmd if is_file_argument(f)]",
+  "helperParent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase100/run.py",
+    "sha256": "542c33339c1126c7d4bcd46b75610db2a77478a40cf9b3ba6707469c3ed4a78d",
+    "bytes": 14743
+  },
+  "helper": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase102/guarded.py",
+    "sha256": "671a1328865e1240719c2c129d8d8e091deb71d8fe5923fbb9c92e54a9a2c221",
+    "bytes": 1763
+  },
+  "checkerParent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase102/check-emitted.py",
+    "sha256": "d8c75ecddb5972a7e6071afe54dd61fdadc950e2984fd76740a5b0a9197790ec",
+    "bytes": 6442
+  },
+  "checker": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase102/check-emitted-v2.py",
+    "sha256": "5229e9148afb5cb6c60364d8dacdcb1a6db81554e08d33cd9afaa3aab6aee073",
+    "bytes": 7219
+  },
+  "scope": "Guard skips only ENAMETOOLONG during argv file discovery; all argv, limits, raw outputs and expected statuses preserved. Reuse authenticates products, never turns old failures into passes."
+}

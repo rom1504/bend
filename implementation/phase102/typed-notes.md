@@ -199,3 +199,73 @@ empty/equal inputs, a proper prefix, Unicode ordering, long equal strings and
 late mismatch. Each observes scalar equality, both restored roots and comparison,
 held aliases, then the final consumed-root result. These target the owning
 adapter boundary rather than merely checking its emitted C spelling.
+
+## Checked integration and emitted activation
+
+Two early source preparation defects were caught before native execution:
+observer source02 attempted to scrutinize a local `code` binder with `match`,
+which Bend disallows; source03 omitted `+rest` when the list tail was captured
+by both branch closures. Source04 uses a separate formal-parameter matching
+helper and annotates that shared tail. All new affine binders and match sites
+were then audited. The earlier sources and versioned preparation helpers remain
+available as failed experiments, rather than being overwritten.
+
+The coordinator's observer API03 check passes for source04
+(`f683a56fc1e673af0f486d0f6b025d43e4e3fb60a1fbea8d8ac748466bea52ab`),
+which layers the owning-adapter bridge over typed03, bounded branch specialization
+and the generic TRMC candidate. `observer-emission03/source-index/emitted/program.c`
+is 791,051 bytes, SHA256 prefix `73beff74`. Offline inspection confirms:
+
+- Ordinary and product `index_lines` workers now exist. The ordinary body is
+  11,243 bytes and uses a local tail jump, with no direct self call.
+- Ordinary `String.cmp` is a 252-byte forwarding body. Its owning adapter is
+  1,600 bytes and calls the existing 2,181-byte borrowed loop.
+- `String.order` and `String.eq` are ordinary workers; product `read_word`,
+  product `read_quoted` and `skip_space` use local tail loops.
+- The read-only `typed/activation-v2.py` audit records 65 defined NF functions,
+  no missing directly named NF definitions and **no recursive NF call component**.
+  The exact C/method hashes, edges and line mappings are retained in
+  `observer-emission03/source-index/typed-activation-v2.json`. The successor
+  scanner also recognizes the generic `_trmc` helper suffix; the first scanner
+  omitted that one helper, without changing its acyclic-call-graph conclusion.
+
+This is emitted-mechanism evidence. Runtime gain, full outputs, stack behavior
+and native B1/B2 inheritance still require the coordinator's guarded executions.
+The graph audit examines named NF calls and local-loop syntax; it is not a full
+C control-flow or whole-compiler proof.
+
+The coordinator's later cheap all-source upstream preflight found two fixture
+errors before the final native control executions: the constructor local in
+`typed_report` needed an explicit `TypedPair` annotation, and the bang control's
+predecessor was consumed twice without a shared binder. Successor fixtures
+`controls-v2.bend` and `controls-bang-v2.bend` supply `+pair : TypedPair` and
+`Succ{+pred}`. Manifest `typed-controls02/controls.json` retains all five expected
+output byte strings, runtime arguments, worker sets and the bang baseline-C
+identity requirement exactly. The observer fixture passed that full preflight
+unchanged. The failed first fixtures remain available.
+
+## Inline policy and full-image cost check
+
+The coordinator's separate inline source01 changes the existing `nf_inline`
+budget from 4,096 to 8,192 codepoints, adding no source lines or admission rule.
+`nct_within` walks the rope without flattening, accepts an inclusive limit and
+stops once that limit is exceeded. It counts Bend String codepoints, rather than
+bytes, and only the worker's own emitted body, rather than transitive expansion.
+
+The C ablation measures the complete definition body, including the 89-character
+NF prologue/trailer. Offline inspection finds that this slight policy difference
+does not select different workers on the three measured apps. Both policies
+newly force-inline six workers for source-index, one for image-render and four
+for dependency-plan. Source-index's six are `String.cmp.fin`, `is_name`,
+`read_word`, `next_mode`, `count_kind` and the product `read_word` worker. This is
+an audit of the observed experiment, not an application-name selection rule.
+
+An additional offline scan of the installed Phase98 compiler self-C identifies
+24 newly eligible workers out of 38 ordinary `INLINE` NF workers. Their own
+bodies total 120,158 codepoints; a rough one-level syntactic call-site expansion
+is 163,831 codepoints, with at most three directly named call sites per worker.
+The full source, scanner and rows are recorded in
+`inline-source01/installed-inline-budget-audit.json`. These figures suggest
+moderate expansion on that old compiler image, but they do not bound transitive
+inlining, final Phase102 admission growth, Clang memory or machine-code size.
+The final compiler C and actual guarded Clang build must supply those observations.

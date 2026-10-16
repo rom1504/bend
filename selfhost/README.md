@@ -17,6 +17,11 @@ The [Phase99 candidate guide](../docs/self_hosted/NATIVE_PHASE99.md) describes
 the ongoing borrowed-read and branch-closure experiments and their fast native
 probes. Phase98 remains installed while the combined candidate is measured.
 
+The [Phase102 native lowering guide](../docs/self_hosted/phase102-native-lowering.md)
+explains the new composable direct calls, constructor loops, owning observers
+and compact reproducible source profile. Its [campaign report](../implementation/phase102/README.md)
+separates measured application gains from native compiler qualification.
+
 The [application examples](apps/README.md) provide a source index, image renderer
 and dependency planner with independent output checks. Use their
 [measurement loop](tools/performance/phase100/README.md) to assess complete build

@@ -1,0 +1,92 @@
+{
+  "kind": "phase102-structural-trmc-controls",
+  "complete": true,
+  "targetsRun": false,
+  "records": [
+    {
+      "id": "construction",
+      "source": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase102/fusion/fixtures-v3/construction.bend",
+      "argv": [],
+      "workers": [
+        1,
+        4
+      ],
+      "stdout": "abcd\nab\ncd\ncd\nab\n398\n2910199\n2910000\nabcdabcd\nabcd/cd;cd/abcd;abcd/cd;cdabcd\nabcd/abcd;abcd/abcd;abcd\nabcd\ncd\n",
+      "stderr": "",
+      "requireTRMC": [
+        "user_join",
+        "map_codes",
+        "repeat_a",
+        "swap_build",
+        "duplicate_build"
+      ],
+      "scope": "Renamed user String reconstruction, arbitrary user sum constructor, empty/nonempty inputs and retained shared prefix/suffix/long input. Three-field WideStep givesholeoffset2; two prefixstrings reused by swapped recursivearguments; duplicateprefixfields/recursiveargument shareoneobject; retainedaliases readafterward.",
+      "returncode": 0
+    },
+    {
+      "id": "refusals",
+      "source": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase102/fusion/fixtures-v4/refusals.bend",
+      "argv": [],
+      "workers": [
+        1
+      ],
+      "stdout": "13\n256\nababab\n",
+      "stderr": "",
+      "forbidTRMC": [
+        "nonfinal",
+        "branching",
+        "mutual_a",
+        "mutual_b"
+      ],
+      "scope": "Nonfinal recursive constructor field, multiple self occurrences and mutual recursive SCC remain ordinary.",
+      "returncode": 0
+    },
+    {
+      "id": "late-failure",
+      "source": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase102/fusion/fixtures-v3/late-failure.bend",
+      "argv": [],
+      "workers": [
+        1
+      ],
+      "requireTRMC": [
+        "partial_then_fail"
+      ],
+      "requireFailureSubstring": "a Nat past the largest immediate 2^48-1",
+      "requireExactBaselineFailure": true,
+      "scope": "A later recursive iteration fails after building a private prefix. Requires exact baseline exit/stdout/stderr; no leak or peak-memory inference.",
+      "returncode": 1,
+      "stdout": "",
+      "stderr": "bend: a Nat past the largest immediate 2^48-1\n"
+    }
+  ],
+  "pins": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase102/fusion/fixtures-v3/construction.bend",
+      "bytes": 2472,
+      "sha256": "bb5ab6769d91082c22b0981240ac58904b6cc87ad85fe6baaa05309ce8066c02"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase102/fusion/fixtures-v4/refusals.bend",
+      "bytes": 1271,
+      "sha256": "2c7e7f64e7bb129fb8f51ffe7827220f0304aad182aa40166298aea77982a7b5"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase102/fusion/fixtures-v3/late-failure.bend",
+      "bytes": 529,
+      "sha256": "1c7e2b7814b82d658e82778a4a0c99bc8ccf6a841952cdb227dcaf3dfaddae54"
+    }
+  ],
+  "scope": "Independent explicit source oracles and activation/refusal witnesses. Root-owned checked emission/build/execution pending. OOM/effect-order exhaustiveness and device execution are not claimed.",
+  "oracleNotes": {
+    "construction": "ASCII 97+98+99+100 plus four map increments=398; 30,000 copies of97=2,910,000; suffix cd contributes199. Expected strings are literal sequence concatenation.",
+    "refusals": "Twelve Left nodes plusLeaf=13; balancedFork depth8 has256 leaves; alternating mutual depth6 yields ababab.",
+    "late-failure": "The terminal computes1+(2^47+(2^47-1))=2^48, beyond native immediate max2^48-1. Expected empty stdout/exit1 and exact runtime ERR_TEXT plus err_fail prefix, independently confirmed by preserved Phase99 strict-unused baseline failure. This is a native representation-limit control, not upstream-JS language failure.",
+    "wideAliases": "Three swap steps alternate (abcd,cd),(cd,abcd),(abcd,cd), followedby terminalcd+abcd; two duplicate steps renderabcd/abcd twice and terminalabcd. Sameobjectjoin yieldsabcdabcd; originaljoinedandsuffixremainabcd/cd."
+  },
+  "predecessor": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase102/fusion/controls-v3.json",
+    "bytes": 4545,
+    "sha256": "5338d1f876396181d6b281ae89c5edce7174af05775be4f1308d8643f67a7ec5"
+  },
+  "correction": "Only refusals gets an explicit forward law for mutual_b before mutual_a, and its later definition fills that law, matching pinned Base Nat.show.go/fin pattern. No @unsafe; all algorithms/oracles unchanged. Construction/late-failure retain exact v3 paths and bytes."
+}

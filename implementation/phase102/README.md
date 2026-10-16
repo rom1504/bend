@@ -118,3 +118,49 @@ Observer source02 likewise failed checking on a local match and is being fixed
 in a new version. The early canonical append matcher also missed normalized
 application annotations; its correction is retained but generic construction
 is the preferred integration if it passes the broader gates.
+
+## Composition and the next measured bottleneck
+
+Owning-observer forwarding now admits `index_lines`, `String.eq` and
+`String.order` without allowing a recursive C call cycle. The exact emitted
+indexer has64 NF functions, no missing NF targets and no recursive NF SCCs.
+Its loops use local jumps. `observer-screen01` improves compiler-text indexing
+to111.8ms (0.546× installed,1.183× upstream) and generated indexing to63.35ms
+(0.582× installed,1.014× upstream). The corresponding unchanged-ELF profile
+(`observer-profile01`) puts44.7% of candidate leaves in the direct index loop
+and7.8% in `next_mode`.
+
+That helper just misses the existing4KiB forced-inlining cutoff. A global8KiB
+cutoff experiment (`inline-screen01`) reduces compiler-text indexing to101.3ms
+versus203.2ms installed and93.85ms upstream; generated indexing takes59.23ms
+versus62.64ms upstream. The other applications remain broadly neutral relative
+to the previous candidate. The one-line Bend implementation (`inline-source01`)
+emits all three applications **byte-identically** to the generated-C experiment.
+The old compiler self-C audit predicts24 additionally hinted workers; final
+compiler-image build time and transitive growth are still separate gates.
+
+A private one-cell reuse experiment avoids returning a uniquely taken cell to
+the allocation pool only to allocate it again. A direct alternating comparison
+against the same TRMC parent (`reuse-pair01`, six rounds) measures5.6% less
+renderer time at one worker and7.4% at four workers; DAG/chain are neutral.
+The first independent screen had a noisy DAG point, so it is not used to
+attribute the mechanism. Static cells below `HEAP_OFF` are explicitly excluded.
+The Bend integration is in progress; it will retain ordinary allocation for
+unmatched classes and dispose of an unused private cell on return/failure.
+
+## Faster experiment loop
+
+The new batch emitter prepares pinned Base once and retains independent request
+plans, effect checks and complete per-program receipts. Its first three
+applications exactly match separate-process C (`batch-consistency01`). That
+batch takes about21s, compared with about40s for the three independent requests.
+This is a faster test harness, not a claim about cold compiler-request speed.
+The shared preparation is immutable and the batch stops at the first failure.
+
+The first combined control batches exposed witness-source problems before
+execution: an unrestricted recursive argument, explicit String annotations,
+and mutual forward-reference rules. Their failed receipts and all witness
+versions remain recorded. They do not count as passed controls or as compiler
+regressions. The final controls will also exercise retained aliases, arbitrary
+three-field constructors, argument swapping, late failure and unchanged bang
+fallback; the installed release remains unchanged while these gates run.

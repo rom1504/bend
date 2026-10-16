@@ -106,3 +106,18 @@ qualification and packaging; do not classify uninstrumented time as coding or
 invent token/quota consumption. No deliberate waiting to meet a duration.
 Commit the design first, then tested experiments and the final report. Push
 checkpoints to `selfhost/bootstrap` with the user's standing authorization.
+
+## User-directed discovery restart
+
+After source04 passed small controls, both native builds and exact B2 self-C
+reproduction, the user asked to spend more time discovering stronger optimizations
+and less on release verification. Stop the scheduled full-self repetitions and
+defer promotion/conformance/public packaging until a stronger combined finalist.
+Keep all completed evidence and the interrupted run; Phase98 stays installed.
+
+Investigate aggregate borrowing, branch-closure elimination and large-image
+dispatch in separate P99-004/005/006 experiments. Reuse existing inputs and small
+native probes; avoid new qualification frameworks. Collaborators prototype
+independent changes while root owns the target queue. Require useful behavior
+and code-shape checks during exploration, but do the expensive full gate once
+for the selected combination. Estimates remain hypotheses until measured.

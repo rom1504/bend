@@ -69,3 +69,52 @@ reusing the already-tested Phase99 branch specialization.
 All named runs are under `selfhost/build/phase102/`. The final report will bind
 their exact receipts and preserve failed/inactive candidates, source derivatives,
 control boundaries and measured time/resource accounting.
+
+## Actual Bend compiler implementations, first hour
+
+The scoped local-call plan activates in the actual native request path without
+granting the stronger representation/packing permissions. `typed-bend-source02`
+reduces compiler-text indexing to128.9ms versus211.9ms installed and97.2ms
+upstream (`typed-bend-screen02`, four alternating rounds). This is compiler
+logic written in Bend, acquired as a checked JS testing API; it is not yet a
+native B1/B2 image qualification. Source03 also fixes device-source visibility:
+only the already-proved no-bang scope marks these segments host-only.
+
+Unchanged-ELF sampling of source02 (`typed-profile01`,641 candidate and451
+upstream pooled samples, two periods) confirms that the three formerly hot
+continuations disappear. The next bottleneck is the index loop itself (39.6%
+of candidate physical leaves), followed by `term_drop` (19.8%). Admission
+diagnostics show that this loop lowers successfully but cannot be admitted
+because its dependencies include a mutual String-comparison cycle. The next
+experiment reuses an existing proved owning observer adapter to break that
+admission barrier; it does not permit arbitrary recursive C calls.
+
+Generic tail recursion modulo a final constructor field (`trmc-source04`) now
+replaces the special-case append idea with a structural transformation. It
+also activates in graph constructors `dp_push` and `dp_roots`. With scoped
+direct calls and the reused Phase99 branch specialization, its first screen is:
+
+| Complete application | Candidate / installed B2 | Candidate / upstream |
+|---|---:|---:|
+| generated10000 source index |0.613|1.054|
+| compiler-text source index |0.574|1.242|
+| renderer, one worker |0.796|1.066|
+| renderer, four workers |0.727|1.163|
+| DAG800 |0.882|0.297|
+| chain1000 |0.892|0.324|
+
+`trmc-screen01` compares all complete output bytes in four alternating rounds.
+Renderer RSS falls from81MB to53MB. These are promising application results;
+dedicated ownership/refusal/error controls and native image gates are pending.
+The candidate adds338 physical lines over the installed source before observer
+forwarding. No global String representation change is needed.
+
+Failed experiments remain recorded: TRMC source03 initially failed checking
+because two helper matches were nested under local binders; source04 corrects
+the syntax. The first construction witness needed explicit String annotations.
+The three successful application emissions in that otherwise-incomplete run
+are bound by an explicit subset receipt, not by relabeling the parent run.
+Observer source02 likewise failed checking on a local match and is being fixed
+in a new version. The early canonical append matcher also missed normalized
+application annotations; its correction is retained but generic construction
+is the preferred integration if it passes the broader gates.

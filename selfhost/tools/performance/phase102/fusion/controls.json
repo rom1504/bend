@@ -1,0 +1,83 @@
+{
+  "kind": "phase102-structural-trmc-controls",
+  "complete": true,
+  "targetsRun": false,
+  "records": [
+    {
+      "id": "construction",
+      "source": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase102/fusion/fixtures/construction.bend",
+      "argv": [],
+      "workers": [
+        1,
+        4
+      ],
+      "stdout": "abcd\nab\ncd\ncd\nab\n398\n2910199\n2910000\n",
+      "stderr": "",
+      "requireTRMC": [
+        "user_join",
+        "map_codes",
+        "repeat_a"
+      ],
+      "scope": "Renamed user String reconstruction, arbitrary user sum constructor, empty/nonempty inputs and retained shared prefix/suffix/long input.",
+      "returncode": 0
+    },
+    {
+      "id": "refusals",
+      "source": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase102/fusion/fixtures/refusals.bend",
+      "argv": [],
+      "workers": [
+        1
+      ],
+      "stdout": "13\n256\nababab\n",
+      "stderr": "",
+      "forbidTRMC": [
+        "nonfinal",
+        "branching",
+        "mutual_a",
+        "mutual_b"
+      ],
+      "scope": "Nonfinal recursive constructor field, multiple self occurrences and mutual recursive SCC remain ordinary.",
+      "returncode": 0
+    },
+    {
+      "id": "late-failure",
+      "source": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase102/fusion/fixtures/late-failure.bend",
+      "argv": [],
+      "workers": [
+        1
+      ],
+      "requireTRMC": [
+        "partial_then_fail"
+      ],
+      "requireFailureSubstring": "a Nat past the largest immediate 2^48-1",
+      "requireExactBaselineFailure": true,
+      "scope": "A later recursive iteration fails after building a private prefix. Requires exact baseline exit/stdout/stderr; no leak or peak-memory inference.",
+      "returncode": 1,
+      "stdout": "",
+      "stderr": "bend: a Nat past the largest immediate 2^48-1\n"
+    }
+  ],
+  "pins": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase102/fusion/fixtures/construction.bend",
+      "bytes": 1401,
+      "sha256": "510f43ce81673a0f2d087cf11ec1b4d528b9de20a79145b32d733f361ca983bd"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase102/fusion/fixtures/late-failure.bend",
+      "bytes": 519,
+      "sha256": "8c3e78aa578781a00b8a499c7b8da3f24f6bff92222edc16eb5846bda9b868a2"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase102/fusion/fixtures/refusals.bend",
+      "bytes": 1175,
+      "sha256": "c4c92ca1d22899947ca6eff551da12a13a15b355fde73cadec5e1f35f9dc1e3a"
+    }
+  ],
+  "scope": "Independent explicit source oracles and activation/refusal witnesses. Root-owned checked emission/build/execution pending. OOM/effect-order exhaustiveness and device execution are not claimed.",
+  "oracleNotes": {
+    "construction": "ASCII 97+98+99+100 plus four map increments=398; 30,000 copies of97=2,910,000; suffix cd contributes199. Expected strings are literal sequence concatenation.",
+    "refusals": "Twelve Left nodes plusLeaf=13; balancedFork depth8 has256 leaves; alternating mutual depth6 yields ababab.",
+    "late-failure": "The terminal computes1+(2^47+(2^47-1))=2^48, beyond native immediate max2^48-1. Expected empty stdout/exit1 and exact runtime ERR_TEXT plus err_fail prefix, independently confirmed by preserved Phase99 strict-unused baseline failure. This is a native representation-limit control, not upstream-JS language failure."
+  }
+}

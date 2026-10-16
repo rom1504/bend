@@ -1,0 +1,34 @@
+{
+  "kind": "phase99-discovery-restart",
+  "source": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase99/projection-branch-source02/compiler.bend",
+    "bytes": 1772435,
+    "sha256": "274b65b5921d883f0e5c70fa246ffd70c9aedf897c387e35aa23686a28412682"
+  },
+  "comparison": {
+    "baselineRequestMs": 146487,
+    "candidateRequestMs": 105184,
+    "candidateOverBaseline": 0.7180432393318178,
+    "speedup": 1.3926737906905993,
+    "matchedInput": true,
+    "samplesPerRole": 1,
+    "order": [
+      "candidate",
+      "baseline"
+    ],
+    "qualifiedNativeChain": false
+  },
+  "exactSelfC": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase99/combined-native-self01/output.1.c",
+    "bytes": 36906655,
+    "sha256": "82f23e1648cb640ad990cec87f19f68d5e4df85db363f6ff6ce313160f22f176"
+  },
+  "archive": {
+    "path": "implementation/phase99/discovery-evidence/discovery01.tar.xz",
+    "bytes": 7259176,
+    "sha256": "56b492353ecc58dd60a306d0cdb3c104ddbf28338563a7185c45affeee63fbf2"
+  },
+  "archivedFiles": 455,
+  "rawBytes": 70050867,
+  "omissions": "Duplicate native self C and old baseline changed C are omitted; exact oracle C and experimental native executable are included. Raw timings/outputs, source recipes and checked API remain included. Phase98 baseline assets remain in its existing release."
+}

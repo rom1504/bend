@@ -13,6 +13,10 @@ release prerequisites and semantic boundaries. Read the
 [Phase98 report](../implementation/phase98/README.md) for actual admission and
 measurements. The installed JavaScript release remains separate.
 
+The [Phase99 candidate guide](../docs/self_hosted/NATIVE_PHASE99.md) describes
+the ongoing borrowed-read and branch-closure experiments and their fast native
+probes. Phase98 remains installed while the combined candidate is measured.
+
 The historical Phase90 native executable, native07, was built
 from unpatched C emitted by the native Bend compiler, then reproduced that
 complete C exactly in 164.322 seconds. The independent JS B2 emission agrees.

@@ -27,6 +27,10 @@ statements. See the [report](implementation/phase98/README.md) and
 From this repository root, run `python3 -B selfhost/native.py input.bend -o output.c`;
 the default is native B2, with `--stage b1` available.
 
+[Phase99 optimization experiments](implementation/phase99/README.md) extend
+borrowed reads and eliminate branch closures. The [candidate guide](docs/self_hosted/NATIVE_PHASE99.md)
+explains the changes and fast probes; these experiments do not replace the installed release.
+
 **Historical Phase90 established the native chain and current JS-hosted B2.**
 Its native executable reproduces all **38,614,882 bytes of its own C exactly** in
 **164 seconds**; the previous native version timed out after 600 seconds without

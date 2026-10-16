@@ -1,6 +1,6 @@
 # Phase99 native borrowed-call profile
 
-Status: candidate qualification in progress; Phase98 remains the installed default.
+Status: optimization discovery in progress; Phase98 remains the installed default.
 The [report](../../implementation/phase99/README.md) separates completed experiments
 from release qualification. The [Phase98 guide](NATIVE_PHASE98.md) describes the
 unchanged native request interface, supported imports/providers and runtime limits.
@@ -32,7 +32,7 @@ and two unique dynamic inputs keep the owning path. Runtime `term_sink` immediat
 returns for trivial terms; the new alternative adds no cleanup traversal.
 
 Both changes retain the existing schema authority and checked provider boundary.
-They do not add generic KTerm projection, mutable-array borrowing, allocation in
+The source04 checkpoint does not add generic KTerm projection, mutable-array borrowing, allocation in
 borrowed workers, effects during traversal or escaping borrowed children. Scalar
 narrowing, array permissions and runtime atomic protocols are unchanged. The
 separate scalar-width experiments were rejected after their execution timings
@@ -40,10 +40,25 @@ failed to improve.
 
 ## Exact source and evidence
 
-The combined candidate is 1,762,973 bytes and 38,922 physical lines, SHA256
+The source04 checkpoint is 1,762,973 bytes and 38,922 physical lines, SHA256
 `c19e926eb7d8d41309c9ed8aa18960c484f3b17681507b57da5418ccfedd31ec`.
 That is 132 lines and 8,877 bytes above Phase98. The canonical 134 modules and
 installed JavaScript release are separate and unchanged.
+
+The discovery successor `274b65b5…` adds 175 lines and 9,462 bytes to source04.
+It admits bounded plain aggregate schemas, keeps applied fields opaque, and
+allows certified scalar calls on fields below a live parent root. It also
+expands small closed saturated selectors into direct branches when their actual
+arguments include literal lambdas. Nonliteral arguments retain their ordered
+evaluation; unsupported shapes keep ordinary calls. A single interval traversal
+replaces 64 repeated freshness scans. These are general shape/type rules, not
+compiler-helper-name substitutions.
+
+The small native probes demonstrate borrowed tag reads and branch allocation
+removal. Whole-compiler measurements and release qualification remain separate.
+The experimental native image is acquired by executing the checked Bend compiler
+through a JavaScript host to emit C, then building that C with Clang. Its compiler
+requests are native; this acquisition shortcut is not a qualified B1/B2 chain.
 
 Six source-bound laws have independent BendTT/Lean checks: three preserve
 residual argument order/failure information, and three constrain the emitted

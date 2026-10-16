@@ -3,6 +3,12 @@
 Status: in progress. Design committed as `ee7664a`; Phase98 remains selected.
 Compiler and program targets run serially under the existing resource guard.
 
+The [discovery restart](discovery-restart.md) now has a stronger experimental
+native compiler: **146.487→105.184 seconds on identical full compiler input**,
+28.2% less time in one matched comparison. It exactly reproduces its 36.9 MB C
+image. Borrowed aggregate reads and branch-closure elimination are retained;
+broad release qualification remains deferred and Phase98 remains installed.
+
 The user redirected the cycle toward finding larger gains before completing
 release qualification. Source04 is a working checkpoint: B2 exactly reproduces
 all 38,677,627 bytes of B1's self C. One same-source B2 observation is
@@ -46,12 +52,28 @@ shape; source02 includes nullary match spines. The unsupported Nat literal in th
 first fixture was corrected using the existing native overflow construction.
 Raw result: `selfhost/build/phase99/branch-native01/report.json`.
 
-The combined source `782bdbee…` adds 145 lines/7,910 bytes over source04.
+The first combined source `782bdbee…` adds 145 lines/7,910 bytes over source04.
+Its successor `274b65b5…` adds 30 further lines/1,552 bytes to replace 64
+repeated freshness traversals with a single interval scan, preserving the
+old variable-leaf and environment lookup rules. The earlier discovery attempt
+was deliberately interrupted before a native build; it is not a failed
+conformance test or an accepted timing.
 A direct checked-JS-hosted discovery path mirrors the same native prepared
 request, authenticates the existing Base/runtime/effect inputs, and emits C.
 This avoids constructing an upstream-produced native image for every experiment.
 It is an experimental compiler acquisition, not a qualified B1/B2 chain.
 Its purpose is to establish whole-compiler benefit before release work.
+
+The single-pass freshness helper agrees with the actual old predicate on all 44
+finite boundary/alias-environment cases (`interval-cases01.json`). Combined
+source02 completes the checked discovery pipeline in 185.43 s (3.84 s Base,
+79.35 s request preparation, 100.78 s emission). This acquisition cost is not
+native compiler latency. Its 36,906,655-byte C image has 49 observer owners
+versus source04's 11 and 32,831 dispatch segments versus 39,470. These are each
+version's own-source images, not a same-source isolated pass comparison. Static
+allocation text sites fall 11,126→7,492; disposal text sites rise 11,303→24,716
+because branches contain explicit cleanup. Neither count is a runtime operation
+count. The matched native result is recorded in [discovery-restart.md](discovery-restart.md).
 
 ## Scalar experiments: useful code change, no measured speed benefit
 

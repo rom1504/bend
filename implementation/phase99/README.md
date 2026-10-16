@@ -57,8 +57,9 @@ scalar result in a full `Term`. Ordinary owning fallback remains. General KTerm
 schema expansion and virtual literal specialization remain unimplemented.
 
 `borrowed-small04` passes 15 finite internal admission/refusal cases and 11 native
-executions, including aliased roots, Unicode strings, escaping-child refusal and
-the existing origin-swapping regression. Both checked entry points agree; raw,
+executions. Expanded `borrowed-small09` passes 18 finite cases and 13 native
+executions, including aliased roots, Unicode strings, escaping-child refusal,
+newly constructed single-owner inputs and the existing origin-swapping regression. Both checked entry points agree; raw,
 false-permission, modified-provider and unknown-provider paths retain their
 restrictions. The public String equality wrapper now has a borrowed worker that
 calls the certified walker directly. These tests are not a native lifetime proof.
@@ -74,10 +75,67 @@ speedup. Raw receipts: `borrowed-micro01` and `borrowed-micro02`.
 Preserved failures: source02's missing affine sharing annotation, then two aliases
 fixture errors (unsupported match expression and missing String annotations).
 Source03 and `aliases-v3.bend` fix those errors; no failed run is counted as a pass.
+The expanded fixtures also exposed two missing constructor/list annotations and a
+forward reference that upstream rejects as an unfilled definition. The corrected
+`fixtures-v4.bend` and `unique-v2.bend` pass. The unique fixture's expected scalar
+flag was corrected to its actual existing baseline value, 1; candidate and
+baseline flags remain equal. Declaration-order/retry coverage is not claimed.
+
+Three laws extracted from source03 prove residual argument order and complete
+failure-value propagation through `nob_words_cons`. Safe elaboration and the
+independent Lean kernel pass. Three admitted bad helpers fail those unchanged
+laws. The bad-tail mutation corrupts the failure payload, not successful call
+admission; these contracts do not prove lifetime, type authority or the complete
+call analysis. Receipts: `borrowed-args-laws01`, `borrowed-args-negatives01`.
+
+The checked native B1 acquisition took 48.47 s; its Clang build took 187.09 s,
+peaking at 4.03 GiB RSS. The actual B1 six-source screen has 48 timed requests
+plus 12 separate oracle emissions: request-time ratio **1.00131**, process-wall
+ratio 0.97641. Short process-wall quantization precludes a speedup claim. All six
+C products remain byte-identical to Phase98; all timed C/diagnostics match.
+Source03 B2 now reproduces its B1's complete self C. One same-source comparison
+is **142.951 s current Phase98 B2 vs 128.322 s source03 B2** (0.89766×, about
+10.2% shorter); this is preliminary, not a balanced full-self estimate. Its
+four-round six-source screen gives 0.97215× request time and 0.98681× process wall,
+with 48 exact timed outputs/diagnostics. Own-self C gains four observer owners
+(`f_eq`, `f_seed_text_equal`, `kp_eq`, `p88_string_eq`), rising from 7 to 11. All
+original owned fallbacks, global representation flags and cold macros are exact.
+Source-bound baseline identities and raw evidence live under
+`borrowed-qualification-plan01`; inspection is `borrowed-self-c01`.
+
+## Refined static-root route
+
+Inspection identified a missed case: the old guard is ANY shared root, not ALL;
+static literal nodes have no RFC bit and do not activate it. Source04 adds only
+`OR ALL schema roots term_triv`, retaining the shared alternative first. Runtime
+`term_sink` returns immediately for all newly admitted roots, so this case cannot
+add a dynamic cleanup traversal. Mixed static/unique and two-unique dynamic
+inputs retain the owned path. The [design](../../experiments/phase99/P99-003-static-observers.md)
+and [review](borrowed-static-route.md) state the remaining authority/runtime
+assumptions. Source04 adds 132 lines/8,877 bytes to Phase98 in total.
+
+`static-small01` passes 22 finite cases and 13 native executions. Four balanced
+pairs on each generated micro give:
+
+| Workload | Baseline median | Source04 median | Ratio |
+| --- | ---: | ---: | ---: |
+| Static/static equality, 10m calls | 2.08293 s | 1.24146 s | 0.59602 |
+| Shared dynamic equality, 10m calls | 3.25875 s | 2.94456 s | 0.90358 |
+
+Both check complete results and retained inputs. They are synthetic execution
+times, not compilation-speed claims. Six exact-source04 laws pass the independent
+kernel: three residual-argument contracts and three guard-text contracts. Six
+mutated helpers admit alone and fail the unchanged laws. None proves runtime RC
+or the full compiler. Receipts: `static-laws01`, `static-law-negatives01`,
+`borrowed-args-laws02`, `borrowed-args-negatives02`.
+
+The combined source04 is now entering native qualification; source03 measurements
+are preserved separately and cannot qualify that successor.
 
 The [qualification preparation](qualification-plan.md) reuses Phase98 methods
-with the actual current B1/B2 baseline. A checked acquisition for the borrowed candidate is in progress; no full compiler
-qualification or release gate is complete. The runtime bytes used by the micro and native chain are identical;
+with the actual current B1/B2 baseline. The borrowed candidate has a checked B1 image and passing six-source screen;
+source03 has a self-reproducing B2, while source04 and release qualification are
+still in progress. The runtime bytes used by the micro and native chain are identical;
 the dispatch implementation differs because `FID_ENTER` is 117 in the micro and
 39,147 in the compiler, above the runtime's 4,096-entry threshold. This limits
 transfer of a micro result and is not a runtime-file mismatch.

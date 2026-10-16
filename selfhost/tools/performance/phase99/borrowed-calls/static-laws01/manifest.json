@@ -1,0 +1,156 @@
+{
+  "kind": "phase99-all-trivial-guard-law-preparation",
+  "complete": true,
+  "targetsRun": false,
+  "source": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase99/borrowed-calls-source04/compiler.bend",
+    "bytes": 1762973,
+    "sha256": "c19e926eb7d8d41309c9ed8aa18960c484f3b17681507b57da5418ccfedd31ec"
+  },
+  "method": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase99/borrowed-calls/prepare-static-laws.py",
+    "bytes": 4347,
+    "sha256": "a0a07280a85e966edc562644120839c0f640c7c3e81edc08ef08a2fad8771793"
+  },
+  "extractor": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/proofs/phase98/prepare-current.py",
+    "bytes": 5929,
+    "sha256": "66760eefb521a7a879701a7befbea4ce9afff40fbcb3fc4cc69d9cad14f167f4"
+  },
+  "template": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase99/borrowed-calls/static-laws.template.bend",
+    "bytes": 1174,
+    "sha256": "53911680345ce3baf4e4900db73aa5f3c9b6461761a22d635a4e9c841c49ab44"
+  },
+  "declarations": [
+    {
+      "name": "N_WordKind",
+      "original": "type N_WordKind is Data:\n  N_W32{}\n  N_W64{}\n  N_Box{}\n\n# Module: src/back/native/ir.bend:8\n",
+      "extracted": "type N_WordKind is Data:\n  N_W32{}\n  N_W64{}\n  N_Box{}\n\n# Module: src/back/native/ir.bend:8\n",
+      "removedUnsafe": false,
+      "extractedSha256": "c83a7c9bb8dd2005ef3dc24129e8ac4b5c94476eafd62b9829987c2a1133ec8a"
+    },
+    {
+      "name": "N_Param",
+      "original": "type N_Param is Data:\n  N_Param{+name: String, +kind: N_WordKind}\n\n# Module: src/back/native/ir.bend:11\n",
+      "extracted": "type N_Param is Data:\n  N_Param{+name: String, +kind: N_WordKind}\n\n# Module: src/back/native/ir.bend:11\n",
+      "removedUnsafe": false,
+      "extractedSha256": "89688a4edb392e1e3d21e31df6abeffe772e7a2785ac2d7f0c6c2e82b9e0ccb2"
+    },
+    {
+      "name": "nt_choose",
+      "original": "@unsafe\ndef nt_choose(-A: Type, +b: Bool, yes: Unit -> A, no: Unit -> A) -> A:\n  match b:\n    case True{}: yes(Unit{})\n    case False{}: no(Unit{})\n\n# Chunks arrive in reverse output order. Only each new chunk is traversed by\n# append; the growing suffix stays on its right.\n\n# Module: src/back/native/text.bend:10\n",
+      "extracted": "def nt_choose(-A: Type, +b: Bool, yes: Unit -> A, no: Unit -> A) -> A:\n  match b:\n    case True{}: yes(Unit{})\n    case False{}: no(Unit{})\n\n# Chunks arrive in reverse output order. Only each new chunk is traversed by\n# append; the growing suffix stays on its right.\n\n# Module: src/back/native/text.bend:10\n",
+      "removedUnsafe": true,
+      "extractedSha256": "30d845635a3fefb47436732e597e0ba2eac385966afd2a0a4ba82dfdaed3aa9f"
+    },
+    {
+      "name": "no_root_index",
+      "original": "@unsafe\ndef no_root_index(roots: List<&2, U32>, +i: U32) -> Bool:\n  match roots:\n    case Nil{}: False{}\n    case Con{root, rest}: U32.is_eq(root, i) || no_root_index(rest, i)\n\n# Module: src/back/native/observer-adapter.bend:20\n",
+      "extracted": "def no_root_index(roots: List<&2, U32>, +i: U32) -> Bool:\n  match roots:\n    case Nil{}: False{}\n    case Con{root, rest}: U32.is_eq(root, i) || no_root_index(rest, i)\n\n# Module: src/back/native/observer-adapter.bend:20\n",
+      "removedUnsafe": true,
+      "extractedSha256": "a01867731dc6d0005278c516cddad5b990ff1bb1a564af087a2ccb3ed6994bb8"
+    },
+    {
+      "name": "no_all_trivial_roots",
+      "original": "@unsafe\ndef no_all_trivial_roots(params: List<&2, N_Param>, +roots: List<&2, U32>, +i: U32) -> String:\n  match params:\n    case Nil{}: \"1\"\n    case Con{N_Param{+word, kind}, rest}:\n      nt_choose(String, no_root_index(roots, i), u => \"term_triv(\" ++ word ++ \") && \", u => \"\") ++ no_all_trivial_roots(rest, roots, U32.inc(i))\n\n# Module: src/back/native/observer-integration.bend:110\n",
+      "extracted": "def no_all_trivial_roots(params: List<&2, N_Param>, +roots: List<&2, U32>, +i: U32) -> String:\n  match params:\n    case Nil{}: \"1\"\n    case Con{N_Param{+word, kind}, rest}:\n      nt_choose(String, no_root_index(roots, i), u => \"term_triv(\" ++ word ++ \") && \", u => \"\") ++ no_all_trivial_roots(rest, roots, U32.inc(i))\n\n# Module: src/back/native/observer-integration.bend:110\n",
+      "removedUnsafe": true,
+      "extractedSha256": "4f729fc084d309b340b3cef53d5b4906a0b7c702098b91793772f8206abf7a8f"
+    }
+  ],
+  "actualCaller": "@unsafe\ndef no_scalar_redirect(workers: List<&2, NF_Worker>, +owner: String, +roots: List<&2, U32>) -> List<&2, NF_Worker>:\n  match workers:\n    case Nil{}: Nil{}\n    case Con{NF_Worker{+name, +params, +code, +deps, +shape}, rest}:\n      +redirect = \"if ((\" ++ no_shared_roots(params, roots, 0) ++ \") || (\" ++ no_all_trivial_roots(params, roots, 0) ++ \")) { return \" ++ nf_name(no_adapter_name(owner)) ++ \"(e, seq, nf_out\" ++ nf_arg_c(nf_segment_args(params)) ++ \"); }\\n\"\n      Con{NF_Worker{name, params, nt_choose(NC_Code, p88_string_eq(name, owner), u => nc_prepend(redirect, code), u => code), nt_choose(List<&2, String>, p88_string_eq(name, owner), u => Con{no_adapter_name(owner), deps}, u => deps), shape}, no_scalar_redirect(rest, owner, roots)}\n\n# Module: src/back/native/observer-integration.bend:118\n",
+  "mutations": [
+    {
+      "role": "bad-any-trivial",
+      "helper": "no_all_trivial_roots",
+      "old": "\") && \"",
+      "new": "\") || \""
+    },
+    {
+      "role": "bad-tail-false",
+      "helper": "no_all_trivial_roots",
+      "old": "case Nil{}: \"1\"",
+      "new": "case Nil{}: \"0\""
+    },
+    {
+      "role": "bad-scalar-included",
+      "helper": "no_all_trivial_roots",
+      "old": "no_root_index(roots, i)",
+      "new": "True{}"
+    }
+  ],
+  "rows": [
+    {
+      "role": "positive",
+      "helper": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase99/borrowed-calls/static-laws01/positive/candidate.bend",
+        "bytes": 1111,
+        "sha256": "b105d2526cb3d45a3200947c3f9c7d4fd72dc3e7b2a03300bf635e94e0e691e7"
+      },
+      "laws": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase99/borrowed-calls/static-laws01/positive/laws.bend",
+        "bytes": 1174,
+        "sha256": "53911680345ce3baf4e4900db73aa5f3c9b6461761a22d635a4e9c841c49ab44"
+      },
+      "expectedStandaloneAdmission": "accept",
+      "expectedLawCheck": "accept",
+      "status": "prepared; unexecuted"
+    },
+    {
+      "role": "bad-any-trivial",
+      "helper": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase99/borrowed-calls/static-laws01/bad-any-trivial/candidate.bend",
+        "bytes": 1111,
+        "sha256": "e8111c080256ac4252b8385b7e8a382ae7522ae2a9bbba473f32a679de4fd9ad"
+      },
+      "laws": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase99/borrowed-calls/static-laws01/bad-any-trivial/laws.bend",
+        "bytes": 1174,
+        "sha256": "53911680345ce3baf4e4900db73aa5f3c9b6461761a22d635a4e9c841c49ab44"
+      },
+      "expectedStandaloneAdmission": "accept",
+      "expectedLawCheck": "reject",
+      "status": "prepared; unexecuted"
+    },
+    {
+      "role": "bad-tail-false",
+      "helper": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase99/borrowed-calls/static-laws01/bad-tail-false/candidate.bend",
+        "bytes": 1111,
+        "sha256": "43c65aaf4f2f7d39a4c2bd4b749420566195babd1dec002835223b9eebda4577"
+      },
+      "laws": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase99/borrowed-calls/static-laws01/bad-tail-false/laws.bend",
+        "bytes": 1174,
+        "sha256": "53911680345ce3baf4e4900db73aa5f3c9b6461761a22d635a4e9c841c49ab44"
+      },
+      "expectedStandaloneAdmission": "accept",
+      "expectedLawCheck": "reject",
+      "status": "prepared; unexecuted"
+    },
+    {
+      "role": "bad-scalar-included",
+      "helper": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase99/borrowed-calls/static-laws01/bad-scalar-included/candidate.bend",
+        "bytes": 1094,
+        "sha256": "eb5b492f478cdab70785e96740a0b1782c16c108f6148f893f1904ecd1ab14e6"
+      },
+      "laws": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase99/borrowed-calls/static-laws01/bad-scalar-included/laws.bend",
+        "bytes": 1174,
+        "sha256": "53911680345ce3baf4e4900db73aa5f3c9b6461761a22d635a4e9c841c49ab44"
+      },
+      "expectedStandaloneAdmission": "accept",
+      "expectedLawCheck": "reject",
+      "status": "prepared; unexecuted"
+    }
+  ],
+  "scope": "Actual predicate emitter: both roots conjoined, non-root scalar skipped, empty fold tail true. The caller is authenticated separately.",
+  "limits": [
+    "Only leading unsafe annotations removed; standalone safe admission and independent proof checks remain unexecuted.",
+    "Empty-fold identity is internal: admitted production schemas still require one or two roots.",
+    "No proof of C runtime term_triv, native lifetime, source-to-C meaning, authority or performance.",
+    "Mutants must first pass safe helper admission; only then does law rejection count."
+  ]
+}

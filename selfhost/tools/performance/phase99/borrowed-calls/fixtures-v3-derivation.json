@@ -1,0 +1,20 @@
+{
+  "source": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase99/borrowed-calls/fixtures-v2.bend",
+    "bytes": 5228,
+    "sha256": "f5c01abad6ef6147186b9982cc4765bc3caf6179079ae15489c39841afcca94d"
+  },
+  "candidate": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase99/borrowed-calls/fixtures-v3.bend",
+    "bytes": 5246,
+    "sha256": "6b0de8e2c1fed694740746401eaa84feadb85c4c6e199072fc17c81de66bc23a"
+  },
+  "changes": [
+    {
+      "old": "  +args = [p99_borrow_fixture_entry(0),",
+      "new": "  +args : List<&2, KTerm> = [p99_borrow_fixture_entry(0),",
+      "offset": 4676
+    }
+  ],
+  "targetsRun": false
+}

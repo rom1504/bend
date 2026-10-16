@@ -55,3 +55,11 @@ Preserved attempts:
 The [initial audit/design](../../../../../implementation/phase99/borrowed-tags.md)
 remains the record for the wider tag projection work. This candidate implements
 only its certified-call stage, using existing String layouts.
+
+Root follow-up: `borrowed-small09` completes 18 predicate cases and 13 native
+executions using `fixtures-v4.bend`, `api-cases-v2.json` and `unique-v2.bend`.
+The latter preserves filled-definition order; the attempted reversed declaration
+was invalid upstream and is retained as a failed fixture, not a compiler defect
+or retry test. `borrowed-small05..08` retain those fixture annotation/order and
+expected-policy failures. Source03 is unchanged. See the Phase99 report for the
+6.8% micro reduction, neutral B1 screen and subsequent integration decision.

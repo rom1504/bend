@@ -1,0 +1,22 @@
+[
+  {
+    "id": "trivial-two-roots-use-and",
+    "expression": "String.eq(no_all_trivial_roots([N_Param{\"left\", N_Box{}}, N_Param{\"right\", N_Box{}}], [0, 1], 0), \"term_triv(left) && term_triv(right) && 1\")",
+    "expected": true
+  },
+  {
+    "id": "trivial-scalar-slot-excluded",
+    "expression": "String.eq(no_all_trivial_roots([N_Param{\"left\", N_Box{}}, N_Param{\"bits\", N_W64{}}, N_Param{\"right\", N_Box{}}], [0, 2], 0), \"term_triv(left) && term_triv(right) && 1\")",
+    "expected": true
+  },
+  {
+    "id": "trivial-one-root-after-scalar",
+    "expression": "String.eq(no_all_trivial_roots([N_Param{\"bits\", N_W32{}}, N_Param{\"root\", N_Box{}}], [1], 0), \"term_triv(root) && 1\")",
+    "expected": true
+  },
+  {
+    "id": "shared-alternative-retains-or",
+    "expression": "String.eq(no_shared_roots([N_Param{\"left\", N_Box{}}, N_Param{\"right\", N_Box{}}], [0, 1], 0), \"(term_rfc(left) && (rfc_view(e, term_loc(left)) & RFC_CNT) > 1) || (term_rfc(right) && (rfc_view(e, term_loc(right)) & RFC_CNT) > 1) || 0\")",
+    "expected": true
+  }
+]

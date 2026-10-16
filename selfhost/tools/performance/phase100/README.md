@@ -23,6 +23,17 @@ be fresh. Runtime jobs default to a 30-second deadline, configurable with
 `--seconds` up to 120. All targets run serially under the existing shared guard
 with a 2 GiB sampled RSS cap, 4 GiB available-memory floor and 512 MiB disk reserve.
 The cap is a sampled process-tree guard, not a hard kernel memory limit.
+`--acquired` also accepts several disjoint acquisition reports, allowing focused
+app builds to be reused together without recompilation.
+
+For optimization iterations, add `--fixtures PATH/TO/COMPLETED/report.json`.
+This reuses the prior run's hash-verified input files and complete expected
+outputs, without regenerating independent references. This matters for the
+renderer: its Python oracle can take longer than the actual native executions.
+The report names the original fixture run and oracle identities explicitly;
+it does not claim fresh oracle execution. Keep the original run directory, or
+restore it from the evidence archive. New compiler products still require a new
+acquisition. Omit `--fixtures` when deliberately changing the application contract.
 
 Compiler requests use prepared Base for our native stages; upstream checks Base
 within its request. Request time and complete compiler-process time are reported
@@ -49,6 +60,9 @@ Each acquisition binds the installed release, source, runtime/providers, upstrea
 source, toolchain and oracle. Each run retains the runner snapshot, commands,
 stdout/stderr, full expected outputs, clocks and input identities. Failed runs
 remain intact. Fixes get new directories; never patch an old result into passing.
+An oracle-only correction or additional input set does not require rebuilding
+unchanged Bend source: each measurement binds its actual oracle separately, while
+the acquisition preserves the earlier oracle identity.
 
 These application observations extend the [Phase93 kernel suite](../phase93/README.md).
 Their different workloads and clocks must not be merged into its speed ratio.

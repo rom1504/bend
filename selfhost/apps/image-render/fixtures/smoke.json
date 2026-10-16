@@ -1,0 +1,147 @@
+[
+  {
+    "id": "single",
+    "argv": [
+      "--size",
+      "1",
+      "1",
+      "--iterations",
+      "1",
+      "--tile",
+      "1"
+    ],
+    "input_files": [],
+    "parallel": true,
+    "width": 1,
+    "height": 1,
+    "iterations": 1,
+    "tile": 1,
+    "pixelCount": 1,
+    "expected_file": "/home/ai/bend2/build/publish/bend/selfhost/apps/image-render/fixtures/single.expected.ppm",
+    "expected_sha256": "820964bbe5b32fb66cf0fdc120984391892f0bebf1caaa0293bd8f613ae78e3c"
+  },
+  {
+    "id": "corners",
+    "argv": [
+      "--size",
+      "3",
+      "3",
+      "--iterations",
+      "16",
+      "--tile",
+      "1"
+    ],
+    "input_files": [],
+    "parallel": true,
+    "width": 3,
+    "height": 3,
+    "iterations": 16,
+    "tile": 1,
+    "pixelCount": 9,
+    "expected_file": "/home/ai/bend2/build/publish/bend/selfhost/apps/image-render/fixtures/corners.expected.ppm",
+    "expected_sha256": "cfef37a269a9a245ec7674474454e47210f34ec961cfdfa8c95f156eff696837"
+  },
+  {
+    "id": "rectangle",
+    "argv": [
+      "--size",
+      "7",
+      "5",
+      "--iterations",
+      "32",
+      "--tile",
+      "2"
+    ],
+    "input_files": [],
+    "parallel": true,
+    "width": 7,
+    "height": 5,
+    "iterations": 32,
+    "tile": 2,
+    "pixelCount": 35,
+    "expected_file": "/home/ai/bend2/build/publish/bend/selfhost/apps/image-render/fixtures/rectangle.expected.ppm",
+    "expected_sha256": "3ac4c3d163fe64470d5d23c191c0407a96809df87655c743265d04b375a92ff3"
+  },
+  {
+    "id": "odd-rows",
+    "argv": [
+      "--size",
+      "19",
+      "13",
+      "--iterations",
+      "64",
+      "--tile",
+      "3"
+    ],
+    "input_files": [],
+    "parallel": true,
+    "width": 19,
+    "height": 13,
+    "iterations": 64,
+    "tile": 3,
+    "pixelCount": 247,
+    "expected_file": "/home/ai/bend2/build/publish/bend/selfhost/apps/image-render/fixtures/odd-rows.expected.ppm",
+    "expected_sha256": "34d0cc1b3b3ee0965b30b9dad9eac085147925584d600e75b6f6f10bf1a632bf"
+  },
+  {
+    "id": "fine-tiles",
+    "argv": [
+      "--size",
+      "32",
+      "24",
+      "--iterations",
+      "96",
+      "--tile",
+      "1"
+    ],
+    "input_files": [],
+    "parallel": true,
+    "width": 32,
+    "height": 24,
+    "iterations": 96,
+    "tile": 1,
+    "pixelCount": 768,
+    "expected_file": "/home/ai/bend2/build/publish/bend/selfhost/apps/image-render/fixtures/fine-tiles.expected.ppm",
+    "expected_sha256": "df82cc107fec10b4f37f474d19dc6a55a9be26e433b954f43b3a8d5c48aa14a4"
+  },
+  {
+    "id": "one-tile",
+    "argv": [
+      "--size",
+      "32",
+      "24",
+      "--iterations",
+      "96",
+      "--tile",
+      "24"
+    ],
+    "input_files": [],
+    "parallel": true,
+    "width": 32,
+    "height": 24,
+    "iterations": 96,
+    "tile": 24,
+    "pixelCount": 768,
+    "expected_file": "/home/ai/bend2/build/publish/bend/selfhost/apps/image-render/fixtures/one-tile.expected.ppm",
+    "expected_sha256": "df82cc107fec10b4f37f474d19dc6a55a9be26e433b954f43b3a8d5c48aa14a4"
+  },
+  {
+    "id": "default-tile",
+    "argv": [
+      "--size",
+      "17",
+      "9",
+      "--iterations",
+      "32"
+    ],
+    "input_files": [],
+    "parallel": true,
+    "width": 17,
+    "height": 9,
+    "iterations": 32,
+    "tile": 4,
+    "pixelCount": 153,
+    "expected_file": "/home/ai/bend2/build/publish/bend/selfhost/apps/image-render/fixtures/default-tile.expected.ppm",
+    "expected_sha256": "893ca2b5977b1584549b444a610d15b390437bdf86d64294a14d607b4c928d3d"
+  }
+]

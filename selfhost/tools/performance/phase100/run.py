@@ -146,22 +146,50 @@ def acquire(args, out, report):
 
 
 def measure(args, out, report):
-    acquired = read(args.acquired)
-    assert acquired['complete']
-    for item in acquired['context']['inputs']:
-        verify(item)
-    report.update(acquired=pin(args.acquired), cases=[], records=[], summary=[])
-    selected = {row['id']: row for row in acquired['apps'] if row['id'] in args.apps.split(',')}
+    reports = [read(path) for path in args.acquired]
+    selected = {}
+    for acquired in reports:
+        assert acquired['complete']
+        for item in acquired['context']['inputs']:
+            verify(item)
+        for row in acquired['apps']:
+            if row['id'] in args.apps.split(','):
+                assert row['id'] not in selected, 'Duplicate application acquisition'
+                selected[row['id']] = row
+    report.update(acquired=[pin(path) for path in args.acquired], cases=[], records=[], summary=[], oracles=[])
+    fixtures = read(args.fixtures) if args.fixtures else None
+    if fixtures:
+        assert fixtures['complete'] and fixtures['kind'] == 'phase100-applications-measure'
+        assert all(row['passed'] for row in fixtures['records'])
+        report['fixtureSource'] = pin(args.fixtures)
+        report['fixtureOracles'] = fixtures['oracles']
+        for snapshot in fixtures.get('oracleSnapshots', []):
+            verify(snapshot)
     assert set(selected) == set(args.apps.split(','))
     for name, app in selected.items():
         verify(app['source'])
-        verify(app['oracle'])
         for product in app['products'].values():
             verify(product['binary'])
         directory = out / name
         directory.mkdir()
-        oracle = module('oracle_' + name.replace('-', '_'), Path(app['oracle']['file']))
-        generated = oracle.cases(directory, depth=args.depth)
+        if fixtures:
+            generated = []
+            for case in fixtures['cases']:
+                if case['app'] != name:
+                    continue
+                for item in [case['expected'], *case['inputs']]:
+                    verify(item)
+                generated.append(dict(case, expected=Path(case['expected']['file']).read_text(),
+                                      input_files=[item['file'] for item in case['inputs']]))
+        else:
+            # Oracle changes do not require recompiling unchanged Bend source.
+            current_oracle = pin(app['oracle']['file'])
+            report['oracles'].append(current_oracle)
+            shutil.copyfile(current_oracle['file'], directory / 'oracle-snapshot.py')
+            report.setdefault('oracleSnapshots', []).append(pin(directory / 'oracle-snapshot.py'))
+            oracle = module('oracle_' + name.replace('-', '_'), Path(app['oracle']['file']))
+            generated = oracle.cases(directory, depth=args.depth,
+                                     selected=set(args.cases.split(',')) if args.cases else None)
         for case in generated:
             if args.cases and case['id'] not in args.cases.split(','):
                 continue
@@ -211,7 +239,8 @@ def measure(args, out, report):
         assert {c['id'] for c in report['cases']} == set(args.cases.split(','))
     for app in selected.values():
         verify(app['source'])
-        verify(app['oracle'])
+    for oracle_pin in report['oracles']:
+        verify(oracle_pin)
     report['complete'] = True
 
 
@@ -220,7 +249,8 @@ def main():
     parser.add_argument('action', choices=('acquire', 'measure'))
     parser.add_argument('--out', type=Path, required=True)
     parser.add_argument('--apps', default=','.join(APPS))
-    parser.add_argument('--acquired', type=Path)
+    parser.add_argument('--acquired', type=Path, nargs='+')
+    parser.add_argument('--fixtures', type=Path, help='Reuse pinned inputs/oracles from a successful measurement')
     parser.add_argument('--depth', choices=('smoke', 'survey'), default='smoke')
     parser.add_argument('--cases')
     parser.add_argument('--rounds', type=int, default=1)
@@ -240,7 +270,8 @@ def main():
                   configuration=vars(args).copy(), host=dict(machine=os.uname().machine,
                   cpu=next(line.split(':', 1)[1].strip() for line in Path('/proc/cpuinfo').read_text().splitlines()
                            if line.startswith('model name')), affinity=sorted(os.sched_getaffinity(0))))
-    report['configuration'] = {k: str(v) if isinstance(v, Path) else v for k, v in report['configuration'].items()}
+    report['configuration'] = {k: [str(x) for x in v] if isinstance(v, list) else
+                              str(v) if isinstance(v, Path) else v for k, v in report['configuration'].items()}
     save(out / 'report.json', report)
     try:
         (acquire if args.action == 'acquire' else measure)(args, out, report)

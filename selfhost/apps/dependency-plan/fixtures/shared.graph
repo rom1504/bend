@@ -1,0 +1,9 @@
+# A small build graph: prerequisites occur before their consumers in the plan.
+app lib ui
+lib core
+ui core assets
+core
+assets
+tests lib harness
+harness core
+unused not-declared

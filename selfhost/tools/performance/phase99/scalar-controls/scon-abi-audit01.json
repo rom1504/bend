@@ -1,0 +1,262 @@
+{
+  "kind": "phase99-scon-character-abi-static-audit",
+  "complete": true,
+  "targetsRun": false,
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/origin-guard-source01/compiler.bend",
+      "bytes": 1754096,
+      "sha256": "2a72bbdc3d757982d7dd4804d8a1312f9427e3b2822ed9d187424c2d9f4de051"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/runtime-accessor-transport02/runtime.c",
+      "bytes": 83683,
+      "sha256": "9e1c59078878be94052cb4d2d63a713e19e29b41ed3f94b034f2175a50efd0a9"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/base.bend",
+      "bytes": 75064,
+      "sha256": "99ac43f2b2bb3e3f39acdcedcecbbd3cb44749ce13969c827d6973fa66f7facf"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/runtime-accessor-transport02/effs/args.c",
+      "bytes": 351,
+      "sha256": "7209a5fa11396fa8b0667a6738c913c40f554797e442c847a25e13a5f69676e0"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/runtime-accessor-transport02/effs/file_close.c",
+      "bytes": 243,
+      "sha256": "befd465a31b88936d772222d26b1019ea7330e59e6327d8ba90584c85e8b2fb3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/runtime-accessor-transport02/effs/file_open.c",
+      "bytes": 1113,
+      "sha256": "f42a8bcc142b9003c7f6ca99287ca09c14f9efcbe15dea929c90c2fa062746e7"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/runtime-accessor-transport02/effs/file_read.c",
+      "bytes": 2130,
+      "sha256": "6af44266ca83ab55b2dd3bf20c17eea6bfb7a7a678908cfbf3579adef31fb678"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/runtime-accessor-transport02/effs/file_size.c",
+      "bytes": 771,
+      "sha256": "09906f3839f0f0fba1eea944c948e35f8e03627dc2b78e8debb43e0556f5d5d8"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/runtime-accessor-transport02/effs/file_write.c",
+      "bytes": 1423,
+      "sha256": "565dff20204e1e535e188b983cda6d6001d0e5dc37cfdf981960c07a9e154ee2"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/runtime-accessor-transport02/effs/now.c",
+      "bytes": 198,
+      "sha256": "da5fde65701c4fadc7560625c9615b4d60b2eefbd7b6bbe1aedda61887b825b9"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/runtime-accessor-transport02/effs/print.c",
+      "bytes": 397,
+      "sha256": "709500d2ace6e2eaeec0f5f1e4373d4ec5e402b3c1e289bd70dfef7e2a635b26"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/runtime-accessor-transport02/effs/print_err.c",
+      "bytes": 236,
+      "sha256": "72781d2adc88a4791d5530c9deff20824c38d5aa1ba43fb05aaa6a697e19f4b6"
+    }
+  ],
+  "spans": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/origin-guard-source01/compiler.bend",
+      "name": "nc_constructor_value",
+      "lineStart": 32490,
+      "byteStart": 1414106,
+      "byteEnd": 1415138,
+      "bytes": 1032,
+      "sha256": "3d153e859a7cf515df6e66d2d8659336baab48534b084718119152ab6d64237d",
+      "text": "def nc_constructor_value(+name: String, +ws: List<&2, String>, +n: U32) -> N_Emitted:\n  nt_choose(N_Emitted, p88_string_eq(name, \"Zero\") || p88_string_eq(name, \"False\"), u => N_Emitted{\"\", \"0\", n}, u =>\n  nt_choose(N_Emitted, p88_string_eq(name, \"True\"), u => N_Emitted{\"\", \"1\", n}, u =>\n  nt_choose(N_Emitted, p88_string_eq(name, \"Succ\"), u => N_Emitted{\"\", \"nat_chk(e, \" ++ nc_head(ws) ++ \" + 1)\", n}, u =>\n  nt_choose(N_Emitted, p88_string_eq(name, \"U32\") || p88_string_eq(name, \"F32\"), u => N_Emitted{\"\", \"term_word(e, \" ++ nc_head(ws) ++ \")\", n}, u =>\n  nt_choose(N_Emitted, p88_string_eq(name, \"Chr\"), u => N_Emitted{\"\", nc_head(ws), n}, u =>\n  nt_choose(N_Emitted, p88_string_eq(name, \"ALeaf\"), u => N_Emitted{\"Term init[1] = { \" ++ nc_head(ws) ++ \" };\\n\", \"blk_new(e, !NATIVE_SCALAR_ARRAYS, 0, 0, 1, init)\", n}, u =>\n  nt_choose(N_Emitted, p88_string_eq(name, \"ANode\"), u => N_Emitted{\"\", \"blk_node(e, \" ++ nc_head(ws) ++ \", \" ++ nc_head(nc_tail(ws)) ++ \")\", n}, u =>\n    ne_constructor(name, ws, False{}, n, True{}))))))))\n"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/origin-guard-source01/compiler.bend",
+      "name": "nc_field_word",
+      "lineStart": 32582,
+      "byteStart": 1419058,
+      "byteEnd": 1419676,
+      "bytes": 618,
+      "sha256": "7c02940fb089694f7a1003704ff275e4f3316c06b076c6e6e9c914b2fd9229f5",
+      "text": "def nc_field_word(+name: String, +word: String, +i: U32) -> String:\n  nt_choose(String, p88_string_eq(name, \"Succ\"), u => \"(\" ++ word ++ \" - 1)\", u =>\n  nt_choose(String, p88_string_eq(name, \"Chr\"), u => word, u =>\n  nt_choose(String, p88_string_eq(name, \"U32\") || p88_string_eq(name, \"F32\"), u => \"native_word(e, (u32)\" ++ word ++ \")\", u =>\n  nt_choose(String, p88_string_eq(name, \"ALeaf\"), u => \"blk_leaf(e, \" ++ word ++ \")\", u =>\n  nt_choose(String, p88_string_eq(name, \"ANode\"), u => \"blk_half(e, \" ++ word ++ \", \" ++ U32.show(i) ++ \")\", u =>\n    \"e.mem[term_peek(e, \" ++ word ++ \") + \" ++ U32.show(i) ++ \"]\")))))\n"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/origin-guard-source01/compiler.bend",
+      "name": "ns_static_scalar_fields",
+      "lineStart": 36147,
+      "byteStart": 1611651,
+      "byteEnd": 1612092,
+      "bytes": 441,
+      "sha256": "4cffb4ea73b86734b7a18ecfc5c560d4e66c653fabd44a02fe3996b66cd8b474",
+      "text": "def ns_static_scalar_fields(+t: KTerm, fields: List<&2, KTerm>) -> KTerm:\n  match fields:\n    case Nil{}:\n      nt_choose(KTerm, p88_string_eq(nm(t), \"True\") || p88_string_eq(nm(t), \"False\"),\n        u => kt(\"NWord\", nt_choose(String, p88_string_eq(nm(t), \"True\"), v => \"1\", v => \"0\"), 0, 0, Nil{}), u => t)\n    case Con{+h, Nil{}}:\n      nt_choose(KTerm, p88_string_eq(nm(t), \"Chr\") && p98_tag_eq(h, \"NWord\"), u => h, u => t)\n    case _: t\n"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/origin-guard-source01/compiler.bend",
+      "name": "nh_field_test",
+      "lineStart": 35325,
+      "byteStart": 1572628,
+      "byteEnd": 1572750,
+      "bytes": 122,
+      "sha256": "ef7104288d992e82015aad623c0981da6696afca565fb67bbe131db40abdaa84",
+      "text": "def nh_field_test(+ctor: String, +i: U32) -> String:\n  \"!DEVICE && NATIVE_FIELD32_\" ++ nt_cid(ctor) ++ \"_\" ++ U32.show(i)\n"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/origin-guard-source01/compiler.bend",
+      "name": "nh_cast_words",
+      "lineStart": 35335,
+      "byteStart": 1572976,
+      "byteEnd": 1573244,
+      "bytes": 268,
+      "sha256": "992ac23c012f2b2c3509e9d028dccc9b43aaa788472ffa1e958c75aafad184ad",
+      "text": "def nh_cast_words(+ctor: String, words: List<&2, String>, +i: U32) -> String:\n  match words:\n    case Nil{}: \"\"\n    case Con{+word, rest}: \"#if \" ++ nh_field_test(ctor, i) ++ \"\\n\" ++ word ++ \" = (u32)\" ++ word ++ \";\\n#endif\\n\" ++ nh_cast_words(ctor, rest, U32.inc(i))\n"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/origin-guard-source01/compiler.bend",
+      "name": "nh_field_macros",
+      "lineStart": 35355,
+      "byteStart": 1573965,
+      "byteEnd": 1574286,
+      "bytes": 321,
+      "sha256": "c00a86e896ffce1515fbc9825229d51088a56b700401b24ce7b9425a3ac16309",
+      "text": "def nh_field_macros(+book: List<&2, KDef>, ds: List<&2, KDef>) -> String:\n  match ds:\n    case Nil{}: \"\"\n    case Con{+d, rest}:\n      nt_choose(String, p88_string_eq(dk(d), \"ADT\") && Bool.not(db(d)) && U32.is_eq(da(d), 0) && U32.is_eq(dx(d), 0), u => nh_field_ctors(book, dc(d)), u => \"\") ++ nh_field_macros(book, rest)\n"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/origin-guard-source01/compiler.bend",
+      "name": "ne_stores",
+      "lineStart": 31626,
+      "byteStart": 1376899,
+      "byteEnd": 1377205,
+      "bytes": 306,
+      "sha256": "c14bd8bd9f82252a9b406b9a9f679d4ec79f19da03b146027c35afb5184ad284",
+      "text": "def ne_stores(+base: String, +ws: List<&2, String>, +i: U32, +seal: Bool) -> String:\n  match ws:\n    case Nil{}: \"\"\n    case Con{+h, +t}: \"e.mem[\" ++ base ++ \" + \" ++ U32.show(i) ++ \"] = \" ++ nt_choose(String, seal, u => \"rfc_seal(e, \" ++ h ++ \")\", u => h) ++ \";\\n\" ++ ne_stores(base, t, U32.inc(i), seal)\n"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/origin-guard-source01/compiler.bend",
+      "name": "ne_ctor_node",
+      "lineStart": 31643,
+      "byteStart": 1377774,
+      "byteEnd": 1378364,
+      "bytes": 590,
+      "sha256": "d68b153be4f47a058dd843a67e59fcdab848b5400753e23df63f9098872a0e1c",
+      "text": "def ne_ctor_node(+k: String, +alloc: String, +ws: List<&2, String>, +n: U32, +hot: Bool) -> N_Emitted:\n  +name = nt_local(\"nd\", n)\n  +stores = nt_choose(String, hot && String.starts_with(k, \"$ctor.\"),\n    u => \"#if NATIVE_COLD_USER_CTORS\\n\" ++ ne_stores(name, ws, 0, False{}) ++ \"#else\\n\" ++ ne_stores(name, ws, 0, True{}) ++ \"#endif\\n\",\n    u => ne_stores(name, ws, 0, hot))\n  N_Emitted{\"u64 \" ++ name ++ \" = \" ++ alloc ++ \";\\n#if !DEVICE && NATIVE_COLD_CTORS && !NATIVE_HOT_\" ++ nt_cid(k) ++ \"\\n\" ++ ne_stores(name, ws, 0, False{}) ++ \"#else\\n\" ++ stores ++ \"#endif\\n\", name, U32.inc(n)}\n"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/base.bend",
+      "name": "Char.to_u32",
+      "lineStart": 1837,
+      "byteStart": 41542,
+      "byteEnd": 41611,
+      "bytes": 69,
+      "sha256": "790e7c9ca87b249e7e3e28184ff3387d5ffc6caccc58d109fc2bfd3a4e227f68",
+      "text": "def Char.to_u32(c: Char) -> U32:\n  match c:\n    case Chr{x}:\n      x\n"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/base.bend",
+      "name": "Char.from_u32",
+      "lineStart": 1842,
+      "byteStart": 41612,
+      "byteEnd": 41656,
+      "bytes": 44,
+      "sha256": "60a98b0bbbf685296627bfedeeffe3c803a2b56538c4e1b27d7d0f7a38ba5b63",
+      "text": "def Char.from_u32(x: U32) -> Char:\n  Chr{x}\n"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/runtime-accessor-transport02/runtime.c",
+      "name": "io_str",
+      "lineStart": 2438,
+      "byteStart": 63895,
+      "byteEnd": 65005,
+      "bytes": 1110,
+      "sha256": "29a83a26bb0e8f42cf71e4a9ae991c385107121aff3a516e9d86efba023879f1",
+      "text": "static Term io_str(Env e, const char* p, u64 n) {\n  Term s    = term_pak(CID_SNIL, 0);\n  Loc  hole = 0;\n  u64  c = 0, need = 0, lo = 0x80, hi = 0xBF;\n  for (u64 i = 0; i < n || need > 0; i += 1) {\n    u64 b = i < n ? (uint8_t)p[i] : 0x100;\n    if (need > 0 && (b < lo || b > hi)) {\n      need = 0;\n      c    = 0xFFFD;\n      i   -= 1;\n    } else if (need > 0) {\n      lo = 0x80;\n      hi = 0xBF;\n      c  = (c << 6) | (b & 0x3F);\n      if (--need > 0) {\n        continue;\n      }\n    } else if (b < 0x80) {\n      c = b;\n    } else if (b < 0xC2 || b > 0xF4) {\n      c = 0xFFFD;\n    } else {\n      need = b < 0xE0 ? 1 : b < 0xF0 ? 2 : 3;\n      lo   = b == 0xE0 ? 0xA0 : b == 0xF0 ? 0x90 : 0x80;\n      hi   = b == 0xED ? 0x9F : b == 0xF4 ? 0x8F : 0xBF;\n      c    = b & (0x3F >> need);\n      continue;\n    }\n    Loc  l = heap_alloc(e, 1);\n    Term t = term_ctr(CID_SCON, l);\n    e.mem[l] = c;\n    if (hole == 0) {\n      s = t;\n    } else {\n      e.mem[hole] = io_seal(e, t, CID_SCON);\n    }\n    hole = l + 1;\n  }\n  if (hole != 0) {\n    e.mem[hole] = io_seal(e, term_pak(CID_SNIL, 0), CID_SCON);\n  }\n  return s;\n}\n"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/runtime-accessor-transport02/runtime.c",
+      "name": "rfc_seal",
+      "lineStart": 739,
+      "byteStart": 19071,
+      "byteEnd": 19204,
+      "bytes": 133,
+      "sha256": "1a465bdb4f97193b0acf68cb8eb118091f93d3ca4ea97145b4421e8a59f9c43b",
+      "text": "INLINE Term rfc_seal(Env e, Term t) {\n  if (term_tag(t) != TAG_CTR || term_rfc(t)) {\n    return t;\n  }\n  return rfc_wrap(e, t, 1);\n}\n"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/runtime-accessor-transport02/runtime.c",
+      "name": "io_node",
+      "lineStart": 2419,
+      "byteStart": 63243,
+      "byteEnd": 63428,
+      "bytes": 185,
+      "sha256": "6dda03803ba529a058c393f21db1896f60a8995c48b86378fdc3904217d688ac",
+      "text": "static Term io_node(Env e, u64 cid, Term a, Term b) {\n  Loc l = heap_alloc(e, 1);\n  e.mem[l]     = io_seal(e, a, cid);\n  e.mem[l + 1] = io_seal(e, b, cid);\n  return term_ctr(cid, l);\n}\n"
+    }
+  ],
+  "providers": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/runtime-accessor-transport02/effs/args.c",
+      "ioStringLines": [
+        8
+      ],
+      "sconMentions": 0
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/runtime-accessor-transport02/effs/file_close.c",
+      "ioStringLines": [],
+      "sconMentions": 0
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/runtime-accessor-transport02/effs/file_open.c",
+      "ioStringLines": [],
+      "sconMentions": 0
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/runtime-accessor-transport02/effs/file_read.c",
+      "ioStringLines": [
+        23
+      ],
+      "sconMentions": 0
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/runtime-accessor-transport02/effs/file_size.c",
+      "ioStringLines": [],
+      "sconMentions": 0
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/runtime-accessor-transport02/effs/file_write.c",
+      "ioStringLines": [],
+      "sconMentions": 0
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/runtime-accessor-transport02/effs/now.c",
+      "ioStringLines": [],
+      "sconMentions": 0
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/runtime-accessor-transport02/effs/print.c",
+      "ioStringLines": [],
+      "sconMentions": 0
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/runtime-accessor-transport02/effs/print_err.c",
+      "ioStringLines": [],
+      "sconMentions": 0
+    }
+  ],
+  "findings": [
+    "Trusted Base Char is Chr(U32); native constructor and projection are identity on that complete unsigned word.",
+    "Only literal CID_SCON runtime constructor site is io_str; UTF-8 decoder stores the raw codepoint at field0 and seals only the tail.",
+    "Provider files contain no direct CID_SCON construction; args.c and file_read.c call io_str.",
+    "General generated constructors store/seal the existing field word; a valid 32-bit scalar has no constructor/reference tag and rfc_seal returns it unchanged.",
+    "Changing only NATIVE_FIELD32_CID_SCON_0 affects existing !DEVICE declarations/casts; field1 must remain full Term."
+  ],
+  "limitations": [
+    "Static correspondence, not a whole-compiler representation theorem.",
+    "Requires checked trusted Base identity, canonical intrinsic lowering, authenticated runtime/providers and retained raw/device fallback.",
+    "Arbitrary raw KDef books or forged foreign heap cells are outside the admitted contract."
+  ]
+}

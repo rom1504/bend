@@ -1,0 +1,19 @@
+{
+  "kind": "phase99-scon-full-width-control",
+  "complete": true,
+  "targetsRun": false,
+  "source": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase99/scalar-controls/scon-full-width01.bend",
+    "bytes": 745,
+    "sha256": "285917dd429540a59b7dfd32a6e679862bf67b1aee70fd798be9a41070be670c"
+  },
+  "expectedStdout": "4294967295\n2147483648\n4294967295\n2147483648\n",
+  "expectedStderr": "scalar-control\n",
+  "status": "prepared; root must admit and execute",
+  "checks": [
+    "full U32 head width without UTF-8 conversion",
+    "tail remains full pointer/reference",
+    "String.append continuation",
+    "surviving source and result aliases"
+  ]
+}

@@ -1,0 +1,140 @@
+{
+  "kind": "phase99-production-kind-law-preparation",
+  "complete": true,
+  "targetsRun": false,
+  "method": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase99/scalar-controls/prepare-kind-laws.py",
+    "bytes": 4136,
+    "sha256": "6c3cd771fac65fd8b641f29181c21b6246a1c0ecd8ca5333a42cbeef969e734c"
+  },
+  "template": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase99/scalar-controls/kind-laws.template.bend",
+    "bytes": 2396,
+    "sha256": "3779ea6c214fd87c5884a2430771b9e0a2d7864363c40497a7fc8f43f70dec6d"
+  },
+  "source": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase99/scalars-source02/compiler.bend",
+    "bytes": 1754365,
+    "sha256": "7520f6ef07ed3b955bc2d6dea1d6fde5b3fa45fdb18f950b124fd5cb8aac1492"
+  },
+  "baseline": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase98/origin-guard-source01/compiler.bend",
+    "bytes": 1754096,
+    "sha256": "2a72bbdc3d757982d7dd4804d8a1312f9427e3b2822ed9d187424c2d9f4de051"
+  },
+  "declarations": [
+    {
+      "name": "N_WordKind",
+      "kind": "type",
+      "lineStart": 552,
+      "bytes": 55,
+      "sha256": "c4fa10e9c7dcbb5d1ed6a34ca44d11d8412a09509265e847d1742a8dc329ba5a",
+      "text": "type N_WordKind is Data:\n  N_W32{}\n  N_W64{}\n  N_Box{}\n"
+    },
+    {
+      "name": "NC_Binding",
+      "kind": "type",
+      "lineStart": 598,
+      "bytes": 82,
+      "sha256": "e51a5eebe6ef7e7587c818e0f77a51caf2964c5519994c3933d36ff5cfd00595",
+      "text": "type NC_Binding is Data:\n  NC_Binding{+id: U32, +word: String, +kind: N_WordKind}\n"
+    },
+    {
+      "name": "nk_typed_bindings",
+      "kind": "def",
+      "lineStart": 31190,
+      "bytes": 278,
+      "sha256": "40e00a75a0f04ebd541b829e917f8c27201276fec29b9a3dc1f7b365e2f9819b",
+      "text": "def nk_typed_bindings(params: List<&2, NC_Binding>, kinds: List<&2, N_WordKind>) -> List<&2, NC_Binding>:\n  match params, kinds:\n    case Con{NC_Binding{id, word, old}, rest}, Con{kind, more}: Con{NC_Binding{id, word, kind}, nk_typed_bindings(rest, more)}\n    case _, _: params\n"
+    },
+    {
+      "name": "nl_c_type",
+      "kind": "def",
+      "lineStart": 31161,
+      "bytes": 186,
+      "sha256": "af0d588a222d6c4d5b04c21519e2ef633f1e0beab736b8dfa4572da28a6cbb8b",
+      "text": "def nl_c_type(+k: N_WordKind) -> String:\n  match k:\n    case N_W32{}: \"#if !DEVICE && NATIVE_TYPED_SCALARS\\nu32\\n#else\\nTerm\\n#endif\\n\"\n    case N_W64{}: \"Term\"\n    case N_Box{}: \"Term\"\n"
+    },
+    {
+      "name": "nf_param_type",
+      "kind": "def",
+      "lineStart": 33283,
+      "bytes": 110,
+      "sha256": "0f3eddbb5d2d50757b09463be8276329d3f179a6c92d8ff09616b6bdb90b1807",
+      "text": "def nf_param_type(kind: N_WordKind) -> String:\n  match kind:\n    case N_W32{}: \"NF_SCALAR\"\n    case _: \"Term\"\n"
+    }
+  ],
+  "rows": [
+    {
+      "role": "positive",
+      "helper": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase99/scalar-controls/kind-laws02/positive/candidate.bend",
+        "bytes": 728,
+        "sha256": "8d9412b57dd0b5919ddbeb095ac2b0026452f82e33ac0db46a76027c29f5bae1"
+      },
+      "laws": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase99/scalar-controls/kind-laws02/positive/laws.bend",
+        "bytes": 2396,
+        "sha256": "3779ea6c214fd87c5884a2430771b9e0a2d7864363c40497a7fc8f43f70dec6d"
+      },
+      "expectedStandaloneAdmission": "accept",
+      "expectedLawCheck": "accept",
+      "status": "prepared; not checked"
+    },
+    {
+      "role": "bad-slots",
+      "helper": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase99/scalar-controls/kind-laws02/bad-slots/candidate.bend",
+        "bytes": 729,
+        "sha256": "3819bf405d8089e5db6694302ae5ba7e2efd5b6e1df1cb941b6d578720cc50f6"
+      },
+      "laws": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase99/scalar-controls/kind-laws02/bad-slots/laws.bend",
+        "bytes": 2396,
+        "sha256": "3779ea6c214fd87c5884a2430771b9e0a2d7864363c40497a7fc8f43f70dec6d"
+      },
+      "expectedStandaloneAdmission": "accept",
+      "expectedLawCheck": "reject",
+      "status": "prepared; not checked"
+    },
+    {
+      "role": "bad-kind",
+      "helper": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase99/scalar-controls/kind-laws02/bad-kind/candidate.bend",
+        "bytes": 727,
+        "sha256": "c2698f92e3543987ff5eb60e5ca03c9a91f0b4bf3da00def0861b3555527ee02"
+      },
+      "laws": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase99/scalar-controls/kind-laws02/bad-kind/laws.bend",
+        "bytes": 2396,
+        "sha256": "3779ea6c214fd87c5884a2430771b9e0a2d7864363c40497a7fc8f43f70dec6d"
+      },
+      "expectedStandaloneAdmission": "accept",
+      "expectedLawCheck": "reject",
+      "status": "prepared; not checked"
+    },
+    {
+      "role": "bad-opaque",
+      "helper": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase99/scalar-controls/kind-laws02/bad-opaque/candidate.bend",
+        "bytes": 733,
+        "sha256": "cc4fc6a6e7c4dc836bf158af69d12cf280385d253ddad18c7f890f2282bb7421"
+      },
+      "laws": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase99/scalar-controls/kind-laws02/bad-opaque/laws.bend",
+        "bytes": 2396,
+        "sha256": "3779ea6c214fd87c5884a2430771b9e0a2d7864363c40497a7fc8f43f70dec6d"
+      },
+      "expectedStandaloneAdmission": "accept",
+      "expectedLawCheck": "reject",
+      "status": "prepared; not checked"
+    }
+  ],
+  "bridge": "Exact declaration bodies and actual production datatypes. Leading @unsafe annotations are excluded; independent safe admission remains required. No fabricated scalar-kind model replaces the helpers.",
+  "scope": "Binding identifiers/word names survive kind transport; the head receives the supplied kind; opaque private parameters remain Term. These laws do not prove that the supplied kind matches a runtime value, host authentication, C narrowing, evaluation order or reference counting.",
+  "requirements": [
+    "Admit each bad helper without its laws first, then check the unchanged law template.",
+    "Positive checking and safe elaboration/independent kernel acceptance are separate statuses.",
+    "Re-extract against the actual selected candidate before reporting candidate coverage."
+  ]
+}

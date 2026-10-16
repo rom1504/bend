@@ -1,0 +1,27 @@
+{
+  "kind": "phase99-borrowed-tags-control-specification",
+  "status": "design-only-unexecuted",
+  "sourceSha256": "2a72bbdc3d757982d7dd4804d8a1312f9427e3b2822ed9d187424c2d9f4de051",
+  "compilerCandidatePrepared": false,
+  "targetsRun": false,
+  "hypothesis": "A registry of admitted scalar borrowed callees plus opaque checked aggregate roots can borrow a projected String without transferring its parent or child ownership.",
+  "expectedBoundary": "Only observer-plan admission changes; refused plans retain ordinary owning program execution.",
+  "cases": [
+    {"id": "public-equality-shared", "scenario": "Two shared String roots; equal, first-difference and suffix-difference inputs.", "required": "Borrowed wrapper admits; complete Bool and retained strings match; borrowed worker contains no root keep/drop."},
+    {"id": "all-term-variants", "scenario": "KTerm, KLambda and KLiteral, matching and nonmatching keys.", "required": "All routes preserve Bool and retained complete term; widths are 8, 8 and 5."},
+    {"id": "unique-root", "scenario": "A uniquely owned term and key enter the ordinary public entry.", "required": "Existing unique-input fallback remains correct; no claim that shared-root routing optimizes this case."},
+    {"id": "same-argument", "scenario": "Both equality inputs alias the same String root.", "required": "Both owned handles remain correctly accounted for; no retain/delete shortcut based only on pointer equality."},
+    {"id": "independent-child-alias", "scenario": "The tag String is independently retained while its KTerm parent is observed and later released.", "required": "The child alias and the complete parent remain readable for their required lifetimes."},
+    {"id": "escaping-child", "scenario": "An observer-shaped function returns the projected String after consuming its parent.", "required": "Observer plan refuses; owning fallback retains/transfers the escaping child correctly."},
+    {"id": "captured-child", "scenario": "A borrowed child is stored in a returned constructor or closure.", "required": "Scalar borrowed-call lane refuses the escape, including indirect captures."},
+    {"id": "owning-callee", "scenario": "A child is passed to an ordinary consuming helper or to an observer adapter.", "required": "Borrowed plan refuses unless the child receives separately proved ownership; this design supplies no such transfer."},
+    {"id": "foreign-or-bang", "scenario": "A helper can store a child through foreign code, an effect or parallel work.", "required": "Borrowed call is refused and ordinary effect/demand behavior remains intact."},
+    {"id": "opaque-instantiation", "scenario": "A field of List<KTerm> is matched or passed under an erased List<String> identity.", "required": "Opaque applied fields cannot gain capabilities from owner-name equality."},
+    {"id": "forged-registry", "scenario": "A source book defines names resembling private observer workers or marks a raw book as permitted.", "required": "Only successful checked route admission creates a usable certificate; permission-disabled compilation creates none."},
+    {"id": "layout-refusals", "scenario": "Indexed/dependent constructors, native Array layout, unary packed user constructors, or fields wider than the fixed bound.", "required": "Unsupported representations retain explicit refusal; KTerm requires no width-bound change."},
+    {"id": "call-cycle", "scenario": "Two not-yet-admitted helper observers call one another.", "required": "No circular certificate bootstrapping; retries stop within their fixed budget."},
+    {"id": "virtual-literal-unroll", "scenario": "Three-character virtual String versus runtime key, plus longer and non-decreasing helper recursions.", "required": "Short constants may specialize only within existing depth/fuel bounds; all exhausted plans refuse without partial admission."},
+    {"id": "non-tail-result", "scenario": "A recursive cursor call is discarded or followed by scalar work.", "required": "Existing NO_Loop tail-result obligation remains enforced."},
+    {"id": "demanded-error", "scenario": "A discarded argument contains a demanding scalar conversion or failure.", "required": "Borrowed calls preserve strict argument demand and existing error checks; no folding away observable failure."}
+  ]
+}

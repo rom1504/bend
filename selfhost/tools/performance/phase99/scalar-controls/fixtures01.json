@@ -1,0 +1,145 @@
+{
+  "kind": "phase99-scalar-io-controls",
+  "complete": true,
+  "targetsRun": false,
+  "fixtures": [
+    {
+      "name": "io-char-array",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase99/scalar-controls/fixtures01/io-char-array.bend",
+        "bytes": 376,
+        "sha256": "074f201a830eab18d4c548ba4639d6d1f59222f445159a8e721221503503bc45"
+      },
+      "derivedFrom": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase68/scalar-layout/fixtures/char-roundtrip.bend",
+        "bytes": 324,
+        "sha256": "c198673ba9718ab5b7c1dfcc79305d5f7b1db20e6622ced2704e19c51a1af766"
+      },
+      "expectedStdout": "130363\n",
+      "expectedStderr": "scalar-control\n",
+      "status": "prepared; not source-checked or executed",
+      "mechanism": "Same original value computation; authenticated IO.print_err forces the old global packed gate off."
+    },
+    {
+      "name": "io-f32-array",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase99/scalar-controls/fixtures01/io-f32-array.bend",
+        "bytes": 348,
+        "sha256": "c2f71952316f2d1aa63be5a5066eb5079dd701caafad58e18fa157c27aaed9ea"
+      },
+      "derivedFrom": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase68/scalar-layout/fixtures/f32-roundtrip.bend",
+        "bytes": 296,
+        "sha256": "105d79289e9e86529ae5117153ebcb936f550c7065fe0ed2d82c0f9d12f229de"
+      },
+      "expectedStdout": "-0.5\n",
+      "expectedStderr": "scalar-control\n",
+      "status": "prepared; not source-checked or executed",
+      "mechanism": "Same original value computation; authenticated IO.print_err forces the old global packed gate off."
+    },
+    {
+      "name": "io-u32-array",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase99/scalar-controls/fixtures01/io-u32-array.bend",
+        "bytes": 341,
+        "sha256": "7d947f6080af92b877bf6524cd889e749a587bca82d9e41f8c11bcfd81cb1baa"
+      },
+      "derivedFrom": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase68/scalar-layout/fixtures/u32-boundary.bend",
+        "bytes": 289,
+        "sha256": "ed57fe632646b828cc2bace342f8317ef390c3d216c4ef1130d2981a377f2541"
+      },
+      "expectedStdout": "16\n",
+      "expectedStderr": "scalar-control\n",
+      "status": "prepared; not source-checked or executed",
+      "mechanism": "Same original value computation; authenticated IO.print_err forces the old global packed gate off."
+    },
+    {
+      "name": "io-natural-range",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase99/scalar-controls/fixtures01/io-natural-range.bend",
+        "bytes": 312,
+        "sha256": "56791050c64ae38f0867282b8669a9eb76dc59256318d970d9da29e1e768017b"
+      },
+      "derivedFrom": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase73/scalar-controls/natural-range.bend",
+        "bytes": 203,
+        "sha256": "9be9a7f461e43118631f1cd65b24625a620b0fba08aa035b4e847a6174090dc4"
+      },
+      "expectedStdout": "281474976710655\n",
+      "expectedStderr": "scalar-control\n",
+      "status": "prepared; not source-checked or executed",
+      "mechanism": "Same original value computation; authenticated IO.print_err forces the old global packed gate off."
+    },
+    {
+      "name": "io-erased-field",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase99/scalar-controls/fixtures01/io-erased-field.bend",
+        "bytes": 425,
+        "sha256": "5360ee9cca0a7ebdfec26ad7b07278ac97c145c4082142db94fecca9a1b8b06c"
+      },
+      "derivedFrom": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase73/scalar-controls/erased-field.bend",
+        "bytes": 316,
+        "sha256": "e4fe6fb34df79924e5d5c1fa3e0c39c365f404c572e2703a9bf8cca4bad05509"
+      },
+      "expectedStdout": "12884901886\n",
+      "expectedStderr": "scalar-control\n",
+      "status": "prepared; not source-checked or executed",
+      "mechanism": "Same original value computation; authenticated IO.print_err forces the old global packed gate off."
+    },
+    {
+      "name": "io-generic-array-string",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase99/scalar-controls/fixtures01/io-generic-array-string.bend",
+        "bytes": 1089,
+        "sha256": "59334e12ee70b218984eb87584ff50a14e49b604b8f68e0c6bf01652f910dd04"
+      },
+      "derivedFrom": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase98/observer-permission/generic-array-string-v2.bend",
+        "bytes": 1054,
+        "sha256": "12f79064e2a1bc8af241e7e439feb92a18842fe9a496b9b8ab8389062b421cb6"
+      },
+      "expectedStdout": "\u0141x:true\n\u0141x\n\u0141x\n",
+      "expectedStderr": "scalar-control\n",
+      "status": "prepared; not source-checked or executed",
+      "mechanism": "Same original value computation; authenticated IO.print_err forces the old global packed gate off."
+    },
+    {
+      "name": "io-dependent-family",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase99/scalar-controls/fixtures01/io-dependent-family.bend",
+        "bytes": 564,
+        "sha256": "d4d2bfe9cd07a44b2d8d8d2d85ffbc78ea3edd92579f737fc0a902ed6ff4d13b"
+      },
+      "derivedFrom": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase63/backend-context-controls/dependent-family.bend",
+        "bytes": 451,
+        "sha256": "78003fb5b0feef3476033a8b442f67efdfea84a4be6721d2937d7db1e24f8a04"
+      },
+      "expectedStdout": "37\n",
+      "expectedStderr": "scalar-control\n",
+      "status": "prepared; not source-checked or executed",
+      "mechanism": "Same original value computation; authenticated IO.print_err forces the old global packed gate off."
+    }
+  ],
+  "flags": {
+    "candidate": {
+      "NATIVE_TYPED_SCALARS": 1,
+      "NATIVE_SCALAR_ARRAYS": 0,
+      "NATIVE_UNSHARED_ARRAYS": 0,
+      "NATIVE_COLD_USER_CTORS": 0
+    },
+    "baseline": {
+      "NATIVE_TYPED_SCALARS": 0,
+      "NATIVE_SCALAR_ARRAYS": 0,
+      "NATIVE_UNSHARED_ARRAYS": 0,
+      "NATIVE_COLD_USER_CTORS": 0
+    }
+  },
+  "limitations": [
+    "Expected program stdout/stderr, not compiler diagnostic stderr.",
+    "These are prepared source derivatives; preserve failed attempts.",
+    "Scalar arrays stay generic in every IO fixture. Device/raw admission must be checked separately."
+  ]
+}

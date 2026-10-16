@@ -1,0 +1,53 @@
+// Root-only checked-API helper controls. No compiler/program target is run by preparation.
+import fs from 'node:fs';
+import path from 'node:path';
+import crypto from 'node:crypto';
+import assert from 'node:assert/strict';
+import {pathToFileURL} from 'node:url';
+const [apiArg,outArg]=process.argv.slice(2);assert(apiArg&&outArg);
+const out=path.resolve(outArg);fs.mkdirSync(out,{recursive:false});
+const pin=file=>{file=fs.realpathSync(file);const b=fs.readFileSync(file);return{file,bytes:b.length,sha256:crypto.createHash('sha256').update(b).digest('hex')};};
+const report={complete:false,inputs:[apiArg,import.meta.filename,path.join(import.meta.dirname,'helpers.bend')].map(pin),observations:[],scope:'Finite exact-helper controls of projection syntax/arguments; no whole-pass, ownership or native proof.'};
+const save=()=>fs.writeFileSync(path.join(out,'report.json'),JSON.stringify(report,null,2)+'\n');
+const list=xs=>xs.reduceRight((tail,head)=>({$:'Con',head,tail}),{$:'Nil'});
+const term=(tag,name='',id=0,kids=[],quant=0)=>({$:'KTerm',tag,name,id,quant,kids:list(kids),removed:list([]),originBegin:0,originEnd:0});
+const variable=id=>term('Var','',id);
+const lam=(id,body)=>term('Lam','',id,[body],1);
+const app=(f,x)=>term('App','',0,[f,x]);
+const tuple=(a,b,name='Tuple')=>term('Ctr',name,0,[a,b]);
+const mat=(name,body)=>term('Mat',name,3,[body,term('Efq')]);
+const resultId=4294967293,root0=4294967295,root1=4294967294;
+const wrapper=tuple(tuple(variable(root0),variable(root1)),variable(resultId));
+const projection=(a=10,b=11,c=12,name='Tuple')=>lam(a,app(mat(name,lam(b,lam(c,variable(c)))),variable(a)));
+const observe=(name,actual,expected)=>{report.observations.push({name,actual,expected});save();assert.deepEqual(actual,expected,name);};
+save();
+try {
+  const original=fs.readFileSync(apiArg,'utf8');
+  const names=['nfp_reduce','nfp_identity','nfp_params'];
+  for(const name of names)assert.equal(original.split('function $'+name+'$(').length,2,name);
+  const diagnostic=path.join(out,'diagnostic-api.mjs');
+  fs.writeFileSync(diagnostic,original+'\nexport const phase102Projection={'+names.map(n=>n+':(...a)=>run_loop($'+n+'$(...a))').join(',')+'};\n',{flag:'wx'});
+  report.diagnostic={...pin(diagnostic),unchangedPrefixBytes:Buffer.byteLength(original)};
+  const api=(await import(pathToFileURL(diagnostic))).phase102Projection;
+  const reduce=(name,body,input,expected,fuel=32)=>{const value=api.nfp_reduce(body,list([input]),fuel);observe(name,{tag:value.tag,id:value.id},expected);};
+  reduce('known-outer-projection',projection(),wrapper,{tag:'Var',id:resultId});
+  reduce('alpha-renamed',projection(30,31,32),wrapper,{tag:'Var',id:resultId});
+  reduce('arbitrary-constructor',projection(30,31,32,'Renamed'),tuple(wrapper,variable(resultId),'Renamed'),{tag:'Var',id:resultId});
+  reduce('wrong-constructor',projection(),tuple(wrapper,variable(resultId),'Other'),{tag:'Absent',id:0});
+  reduce('unknown-root-match',projection(),variable(root0),{tag:'Absent',id:0});
+  reduce('reference-effect',lam(10,app(term('Ref','effect'),variable(10))),wrapper,{tag:'Absent',id:0});
+  reduce('primitive-consumer',lam(10,term('NOp','u32_add',0,[variable(10),variable(10)])),wrapper,{tag:'Absent',id:0});
+  reduce('no-fuel',projection(),wrapper,{tag:'Absent',id:0},0);
+  reduce('wrong-matcher-width',lam(10,app(term('Mat','Tuple',2,[lam(11,variable(11)),term('Efq')]),variable(10))),wrapper,{tag:'Absent',id:0});
+  observe('identity-arguments',api.nfp_identity(list([variable(root0),variable(root1)]),0),true);
+  observe('permuted-arguments',api.nfp_identity(list([variable(root1),variable(root0)]),0),false);
+  observe('duplicate-arguments',api.nfp_identity(list([variable(root0),variable(root0)]),0),false);
+  observe('computed-argument',api.nfp_identity(list([term('Ctr','Zero')]),0),false);
+  const params=list([{$:'N_Param',name:'v_'+root0,kind:{$:'N_W64'}},{$:'N_Param',name:'v_'+root1,kind:{$:'N_W64'}}]);
+  observe('full-Term-parameters',api.nfp_params(params,0),true);
+  observe('wrong-parameter-kind',api.nfp_params(list([{$:'N_Param',name:'v_'+root0,kind:{$:'N_W32'}}]),0),false);
+  for(const item of report.inputs)assert.deepEqual(pin(item.file),item);
+  report.complete=true;
+} catch(error) {report.error=error.stack??String(error);process.exitCode=1;}
+finally {save();}
+console.log(JSON.stringify({complete:report.complete,observations:report.observations.length,error:report.error}));

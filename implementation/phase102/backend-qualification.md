@@ -1,6 +1,6 @@
 # Phase102 backend qualification
 
-The current candidate is `depth-inline-source01/compiler.bend`, SHA
+The qualified candidate covered here is `depth-inline-source01/compiler.bend`, SHA
 `535c1f8f8d19cdddebeb397e3ef461346488b92feae28fa363a110ff136286d9`.
 Its standalone snapshot has **39,228 physical lines: 438 more than Phase98**.
 It retains scoped local calls, bounded branch specialization, generic TRMC,
@@ -16,16 +16,24 @@ passes now bound forced-inline hints while retaining the 8 KiB local cutoff.
 | Independent reference and genuine B1 self emission | PASS with identical full diagnostics: `native-chain02/reference` and `b1-self` |
 | Genuine native B2 build | PASS: 377.2 s, `native-chain02/b2.json` |
 | B2 self fixed point | PASS: exact C and full diagnostics, `native-chain02/b2-self/report.json` |
-| Native semantic, conformance and speed gates | Pending at this checkpoint |
-| Backend evidence bridge and final image admission | Pending final native evidence |
+| Native live/cache/refusal and broad controls | PASS: 22 requests and all 45 broad programs across both images |
+| Native conformance | PASS: 138 observations, 69 eligible fixtures per image, plus 6 rejection observations |
+| Final native new-mechanism correspondence | PASS: 34 emissions for 17 sources, all exact prior C; 130 complete output observations inherited |
+| Backend evidence bridge | PASS: `backend-specific02/report.json`; does not itself admit an image |
+| Original five final-image controls | PASS: 10 final-image emissions, 5 exact stage pairs and 5 complete native executions |
+| Native image admission | Qualified: `native-chain02/admission.json`; default selection remains false |
 
 All raw paths above are beneath `selfhost/build/phase102/`. The independent
 reference emits 39,409,532 bytes of C for this source; genuine B1 emits
 30,124,590 bytes. These are product sizes, not compiler-speed measurements.
 The B2 Clang build finishes within the unchanged 420 s guard at 2.58 GB peak
 process-tree RSS; its binary is `e5eb6b4e…`. This closes the predecessor's build
-failure. Genuine B2 reproduces B1's complete C and diagnostics; broader semantic
-qualification remains separate.
+failure. Genuine B2 reproduces B1's complete C and diagnostics. Native admission
+is closed with `qualified: true` and `defaultSelection: false` (receipt SHA
+`2451ab2a…a1c391`). Performance comparison and selecting an installed release
+remain separate. The later projection experiment has its own
+[review and rejected attempts](projection-review.md); these qualifications do
+not automatically carry to that changed source.
 The [coordinator plan](native-qualification-plan.md) retains every original
 qualification gate. A successful API screen or B1 self emission does not by
 itself qualify a native compiler release.
@@ -85,7 +93,7 @@ mutation evidence, not a proof of the compiler or an additional positive
 release gate. Original controls, expected bytes and production source remain
 unchanged; the isolated mutated C and raw results are preserved.
 
-## Remaining collection
+## Backend collection and image gates
 
 The frozen [backend consumer](../../selfhost/tools/performance/phase102/qualification/backend-bridge.py)
 requires all 27 control IDs and every specified payload/worker count. It joins
@@ -94,8 +102,8 @@ executions, matching unique outcomes, commands, C identities, exit codes and
 full stdout/stderr against the unchanged oracles. It retains the old collector's
 schema for compatibility; its own result remains `imageQualified: false`.
 
-After `native-chain02/inheritance/report.json` closes successfully, the exact
-**data-only** collection command is:
+The coordinator has completed the following **data-only** collection against
+`native-chain02/inheritance/report.json`; it passes without executing targets:
 
 ```sh
 taskset -c 0 python3 -B selfhost/tools/performance/phase102/qualification/backend-bridge.py \
@@ -107,7 +115,7 @@ taskset -c 0 python3 -B selfhost/tools/performance/phase102/qualification/backen
   --out selfhost/build/phase102/backend-specific02
 ```
 
-The original five native controls remain unchanged: real IO, generic array,
+The original five native controls all pass unchanged: real IO, generic array,
 schema refusals, all 1,444 String pairs with fourteen observations each, and
 origin-swap refusal. They complement the new cases and do not replace live/cache
 checks, 45 broad semantic programs, 69 native fixtures per stage, the independent

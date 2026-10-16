@@ -461,3 +461,91 @@ captures stay failed; the tool does not silently rerun them. The result is
 physical leaf attribution across startup, compilation and IO, not phase timing,
 allocation counts or recovered inline caller stacks. This command is prepared,
 not executed by the offline analysis lane.
+
+## Hoisting invariant inline eligibility
+
+After the coordinator observed measurable compilation overhead in the bounded
+policy, `inline-eligibility-source.py` prepared a six-line refinement. A stable
+`List.filter` computes ready membership and the unchanged 8 KiB own-code test
+once. The three immutable dependency passes then traverse this fixed eligible
+worker list and perform only dependency-membership tests. The filter preserves
+the original worker order; this is not a new cost model or admission rule.
+
+The selection correspondence is direct. Let `E` contain precisely workers in
+`W` satisfying the invariant ready/size predicate. Each old round selects from
+`W` using that predicate and `deps ⊆ previous`; each new round selects from `E`
+using `deps ⊆ previous`. Starting from the same empty previous set, all three
+rounds therefore produce identical ordered name lists. Actual full app C and
+focused-control equality remain the practical acceptance gate.
+
+Two exact reversible experimental outputs preserve the preceding candidates:
+
+- `inline-eligibility-source01`, SHA
+  `4f22f9376fb5eba05200604067b0732e774e3a442019218c51fa551e3074a0d8`,
+  applies only this refinement to `depth-inline-source01`.
+- `projection-eligible-source01`, SHA
+  `02a987a742bfc68f567bfa555fb3d929f69c984a492f863b9fb8a560137d66fa`,
+  composes it onto the separately reviewed frozen projection source03.
+
+Each adds six physical lines and 91 bytes to its immediate parent. Neither
+candidate nor its effect on compilation time was executed by this offline lane.
+
+
+### Template restriction found by the checked API
+
+The coordinator's `projection-api02` rejected the first eligibility hoist:
+`List.filter` is a template function, and its partially applied predicate
+captures the runtime `ready` list. A source-level type/affinity review did not
+catch this compiler restriction. The failed source, method and acquisition
+logs remain retained; they are not admitted evidence.
+
+`inline-eligibility-source-v2.py` replaces the generic template call with a
+concrete `nfi_filter` over `List<&2, NF_Worker>`. It visits workers in the same
+order and uses exactly the previous ready-membership/8 KiB predicate. Shared
+`ready`, `worker` and `rest` binders preserve affine use across the predicate
+and alternative branches. The three immutable dependency rounds and all
+projection code remain unchanged.
+
+The successor composes frozen `projection-bend-source04` directly into
+`projection-eligible-source03`, SHA
+`cf3f31fc1ffc2ce9f9a12be060ec1a1213aaeefbe9f3946e9c3817198b273bb5`
+(1,788,105 bytes). It adds 14 physical lines to that parent. Exact replay and
+inverse to the installed Phase98 source pass. No compiler or native target was
+executed by this offline lane; checked API admission, emitted-C continuity and
+performance remain coordinator gates. The ordered-set correspondence above
+applies unchanged to this concrete filter.
+
+
+## Runtime list regression: cold destination publication
+
+The coordinator's broad runtime screen found list-pipeline regressions of
+1.330× at size 128 and 2.5365× at size 512 against the authenticated Phase98
+products. These are runtime observations from the coordinator, not results
+executed by this offline lane. The exact product pairs are in
+`phase99/phase102-runtime-products02/phase98-products.json`.
+
+Offline C inspection rules out the initial lost-inline-hint hypothesis for
+these programs: every one of the 18 preexisting NF workers remains `NF_INLINE`.
+The candidate adds eight workers, including the new `p37.list` and `dbl` TRMC
+workers. Both construct only `Con`, and this request marks `Con` cold. Their
+ordinary constructor field stores use the cold-store branch, but publication
+into the previous pending tail unconditionally calls `rfc_seal` on each newly
+constructed node. That creates a reference-count wrapper per link where the
+ordinary cold constructor path retains a direct owned pointer. This is a
+specific allocation hypothesis, not yet a measured causal attribution.
+
+`typed/list-cold-link-ablation.py` prepares a small diagnostic C-only ablation
+for both exact catalog sources. `list-cold-link01/report.json` retains original
+product pins and exact inverse edits. The `both` variant removes only these two
+link wrappers; `list` and `dbl` isolate either worker if needed. No ABI,
+control-flow, original NF body, or inline hint is changed. Root owns guarded
+builds and complete-output validation. No ablation target was run here.
+
+This is deliberately a homogeneous-list experiment, not a general compiler
+fix. A general TRMC chain can switch constructors between iterations. The
+sealing rule belongs to the *previous pending destination*, and its policy
+must survive until the next node or terminal result fills that hole. The
+independent TRMC lane confirmed that a generic correction must preserve the
+exact original cold/hot constructor rule in private destination state and use
+it at both node and terminal publication. Testing the current node's tag
+would not establish that property for mixed-constructor chains.

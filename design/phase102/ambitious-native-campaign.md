@@ -117,3 +117,22 @@ framework during the current window. Keep the old native build failure, hint
 ablations and source recipes. Report any application-runtime cost alongside the
 compiler construction benefit. Further tuple-projection and fault challenges
 remain independent experiments and cannot silently enter the frozen candidate.
+
+## Earned follow-up: compose owned observer results
+
+The separate saved-C experiment removes two private Tuple shells between an
+owning observer adapter and its immediate scalar projection. Focused ownership
+controls pass, and a six-round alternating comparison against the bounded
+candidate measures about30% less graph-planning time,4–6% less indexing time,
+and no established one-worker renderer gain. This warrants a bounded source
+integration attempt while the prior candidate finishes qualification.
+
+Prefer the existing observer certificate and owned adapter cleanup. Recognize
+only a bounded, pure source composition whose wrapper reduces to the existing
+scalar-result variable; preserve identity argument flow and ordinary fallback.
+Do not add a generated-C text rewrite to the compiler or a new borrowed caller
+ABI. The source successor must get its own reversible recipe, API/ownership
+controls, actual emitted-C app comparison, authority audit and genuine B1/B2
+chain before it can replace the frozen candidate. If it is not ready within
+the remaining useful window, publish the qualified predecessor and the exact
+experimental successor separately. Never transfer qualification by similarity.

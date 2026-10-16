@@ -57,8 +57,15 @@ or effectful consumers are excluded; the selected scalar has already been
 computed before any input root is disposed. Existing original candidate
 readiness remains valid because replacement dependencies are already admitted.
 
-First acquire the checked API, inspect actual emitted C activation, then use
-the frozen complete projection controls and paired app comparison. Required
+The root-owned `projection-api04` checked acquisition and all 23 exact helper
+controls pass. An offline audit of its 17 emitted programs confirms activation
+in all three applications and five controls, with nine byte-identical products.
+Only the selected caller body and resulting inline hints differ; both owned
+roots are dropped after the borrowed call and its error check. The audit is
+`selfhost/build/phase102/projection-activation01/report.json` and binds the
+composed `projection-eligible-source04`, not a later cold-policy derivative.
+
+Continue with the frozen complete projection controls and paired app comparison. Required
 refusals include added effect/primitive, different root result, permuted or
 duplicated call arguments, unknown-root matching, fresh-ID collision, excess
 projection size/fuel and missing observer authority. Native-chain qualification

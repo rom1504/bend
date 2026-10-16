@@ -27,10 +27,10 @@ boundary, and the unrelated workers remain unchanged.
 The source recipe reverses exactly to Phase98 and changes no installed source
 or image. Candidate SHA256:
 `b73ba46c3751752921e58d4cc75b57f152a8777008fdd82a5782f3eef0ade672`.
-Initial preparation ran no compiler or program. The exact helper controls in
-`projection-bend/check-admission-v5.mjs` are prepared but unexecuted. Root must check
-API admission, actual C activation, full-output/refusal controls and app speed
-before deciding whether another native-chain qualification is worthwhile.
+Initial preparation ran no compiler or program. The later root-owned
+`projection-api04` acquisition passes the checked API, and all 23 exact helper
+controls in `projection-bend/check-admission-v5.mjs` pass. Full-output controls,
+paired application timing and native-chain qualification remain separate gates.
 
 Independent review rejected two earlier offline versions before execution.
 The first allowed beta substitution to discard a projector-created effect or
@@ -55,7 +55,27 @@ ordered inline-eligibility filter after the generic captured-predicate version
 failed checked API admission. Its candidate SHA256 is
 `12581b645a732350380e37b1f826bb191049e7d7b1b802bbaa10073244bb697d`.
 Static review alone did not establish the language's template/capture acceptance;
-the actual checked API remains the admission gate.
+the successful checked API is the admission evidence.
+
+The offline `projection-activation01/report.json` audit compares all 17 actual
+`projection-emission01` products with `depth-emission01`. Eight sources activate
+the rule: all three applications and five control sources. The other nine C
+products are byte-identical. In every activated source the only changed worker
+body is `String.order`: it directly calls the unchanged borrowed comparison,
+checks for error, drops both saved owned roots and returns the observed scalar.
+It bypasses two temporary Tuple allocation sites and the final projection.
+The original observer, owning adapter and projector bodies remain identical.
+The structural selector also identifies these same eight callers in the saved-C
+prototype; no application or String name is part of its admission rule.
+
+The shortened worker enables the existing hint policy to force-inline
+`String.order` and `String.eq`, plus `String.is_le` in the renderer. Replacing only
+the admitted body and normalizing these hint tokens reconstructs every complete
+candidate C product exactly. Actual Bend lowering is smaller than the prototype:
+it reuses the owning adapter emitter with a scalar result rather than introducing
+the prototype's private three-Term product. This establishes activation and code
+shape, not a runtime gain. The audit binds `projection-eligible-source04`; it
+does not cover the separately composed `projection-cold-source01` candidate.
 
 See the [method boundary](../../selfhost/tools/performance/phase102/projection-bend/README.md)
 for budgets, capture prevention, unsupported syntax and remaining proof limits.

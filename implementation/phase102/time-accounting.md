@@ -59,9 +59,12 @@ taskset -c 0 python3 -B selfhost/tools/performance/phase102/qualification/accoun
 ```
 
 Add `--root` for guarded campaign targets written elsewhere. The current
-qualification queue writes three such roots beneath `selfhost/build/phase99/`:
-`phase102-b1-screen02`, `phase102-b2-screen02` and
-`phase102-runtime-products02`; later timing output needs its own root too.
+campaign has additional roots beneath `selfhost/build/phase99/`, including
+`phase102-b1-screen02`, `phase102-b2-screen02`, `phase102-release02`,
+`phase102-runtime-phase98-02` and `phase102-runtime-products02`. The final03
+qualification/timing successors need their own roots when created. Preparatory
+`phase102-final-plan01/02` directories may also be included explicitly; the
+reader counts only actual guarded receipts within them.
 Only pass roots that exist when accounting runs. The explicit root list is the
 measured scope, not a claim to cover every process on the machine. A start
 known only to the minute must be described at that precision;

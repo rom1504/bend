@@ -119,6 +119,7 @@ def main():
         chain_path = out / 'chain-queue.json'
         chain = read(chain_path)
         assert chain['complete'] and chain['recipe'] == recipe_pin and chain['source'] == recipe['candidate']
+        assert chain['method'] == pin(__file__), 'Queue method changed since chain; preserve the frozen method'
         inputs.append(pin(chain_path))
         for path in [*args.controls, *args.apps]:
             value = read(path)

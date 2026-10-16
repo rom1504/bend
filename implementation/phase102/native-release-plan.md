@@ -1,47 +1,90 @@
-# Native release path after qualification
+# Phase102 native release readiness
 
-This is a read-only execution plan, not a release receipt. The final source may
-change while bounded inlining is evaluated. Every command below must bind the
-same eventual source and actual B1/B2 images; no result from the earlier source
-can substitute merely because the change appears small.
+Candidate02, `depth-inline-source01/compiler.bend` (`535c1f8f…6286d9`), is
+**semantically qualified** by `native-chain02/admission.json`. Genuine B1/B2,
+the exact self fixed point, both stages' ordinary controls, broad45, native69,
+the backend bridge and five final-image controls pass. Admission does not select
+the default and does not decide program performance.
 
-The shortest safe path uses the existing source-parameterized Phase99 release
-tools. Their historical names do not select the old Phase92 baseline: the reuse
-wrapper injects the installed Phase98 binding. The `plan` mode assumes a single
-qualification directory layout that the present distributed Phase102 outputs
-do not have. Use the individual collector and selection commands instead of
-copying or rewriting completed build receipts to satisfy that layout.
+Its separate 45-product runtime campaign blocks default selection: the
+`coverage-list-pipeline-128` and `512` point ratios versus Phase98 are 1.330 and
+2.536 in `phase99/phase102-runtime-phase98-02/summary.json`; the larger point has
+substantial sample variation. The aggregate point ratio, 0.989, does not erase
+this regression. The later cold-link ablation diagnoses redundant TRMC reference
+wrappers; its saved-C improvement is not qualification of a Bend-source fix.
 
-Required before selection:
+The frozen successor is `projection-cold-source01/compiler.bend`, SHA256
+`b3927732f2250c19a7a8988dab7cbf30726359c18b5305f73c28cadddb902d1f`.
+It adds projected owning-observer results, hoisted inline eligibility and the
+pending-constructor cold-field policy. Its native qualification is separate and
+pending. Candidate02 receipts cannot be relabelled as successor evidence.
+Installed Phase98 remains selected; its pointer SHA256 is
+`0ec0287c1c5e0b877b16a10e451bce4eb1fffa7b3795fcf634d742ea50772fdf`.
 
-- Actual B1 and B2 bindings, complete native B1/B2 self requests and exact fixed
-  point, all for the final source and unchanged checked runtime inputs.
-- Ordinary native controls, native 69-case conformance, broad 45-program
-  compilation, backend-specific authority/ownership controls, and final five
-  controls, accepted by the existing candidate admission collector.
-- Native inheritance of the final API control outputs, or freshly executed
-  complete runtime obligations wherever emitted C differs. Exact C continuity
-  permits behavior inheritance; it does not create new native timing samples.
-- The separate 45-program runtime-continuity emission and matched measurements
-  for changed C. This gate is not an argument to `admit`; root must enforce the
-  performance decision separately.
-- A reversible **Phase98-to-final-source** recipe or a replay receipt for a
-  profile based on that source. The compact public D04-to-final-source profile
-  is useful source transport but cannot replace this admission input: the
-  collector checks its baseline against the installed Phase98 source.
+## Exact source transport
 
-After those results pass, run `phase99/release/reuse.py admit` with the exact
-paths described in [the qualification plan](native-qualification-plan.md).
-Use a fresh admission output. The existing source-only compact profile can be
-published separately and linked by the final source hash; do not change its
-experimental/qualification claims after it has been pinned. Alternatively,
-create a Phase98-based public profile and replay it before collecting admission.
+The existing immutable `phase102-lowering02/profile.json` replays candidate02;
+`profile-replay02/packaging.json` verifies both forward replay and recovery of
+the committed D04 source. Its `experimental`/`releaseQualified: false` fields
+describe source transport, not the later separate native admission. Preserve it.
+The final source's new `phase102-lowering03` package and exact replay now pass;
+profile SHA256 is `c8310996…fc95d4`, compressed delta is 26,753 bytes, and
+`profile-replay03/packaging.json` records the exact inverse back to D04. The
+following command produced those new immutable paths:
 
-For the following commands, `ADMISSION` and `NATIVE_CONTROLS` denote the completed
-final-source receipts. `STAGED` and `CLI_OUT` must be fresh paths under
-`selfhost/build/phase99` because the reused methods deliberately restrict output
-locations. For example, use a `phase102-release01` directory there. These shell
-variables must be assigned by root to the actual completed receipts.
+```sh
+python3 -B selfhost/tools/performance/phase102/package-source-profile.py \
+  --recipe selfhost/build/phase102/projection-cold-source01/changes.json --name phase102-lowering03 \
+  --out selfhost/tools/native/profiles/phase102-lowering03 \
+  --verification-out selfhost/build/phase102/profile-replay03
+```
+
+This launched no compiler; the output paths now exist and cannot be reused.
+Check the new replay's candidate hash against the
+eventual admission source. Keep `profile.py` unchanged: earlier profiles pin
+that method, and its historical default still names Phase98. New documentation
+must pass `--profile selfhost/tools/native/profiles/phase102-lowering03/profile.json`
+explicitly. The compact D04 profile is source transport; admission still needs
+the exact **Phase98-to-final-source** recipe accepted by its collector.
+
+## Runtime acquisition without redundant builds
+
+The reviewed `runtime-reuse.py` preserves the original timing function. It can
+reuse candidate02 binaries only when fresh final B1 and B2 emit the same complete
+C as those exact historical products. It authenticates every reused ELF, C,
+recorded compiler executable and build argv, retaining their historical paths.
+It makes no hermetic header/library rebuild claim. The authenticated prior
+Clang total, 106.51 seconds, is historical build work that may be avoided; it is
+not a measured current saving or a clean-build speedup.
+
+After final native runtime continuity exists, root can run the following with
+fresh output paths under `selfhost/build/phase99`:
+
+```sh
+python3 -B selfhost/tools/performance/phase102/runtime-reuse.py acquire \
+  --changed-plan "$P102_CHAIN/runtime-continuity/changed-plan.json" \
+  --b1-build "$P102_B1_ROOT/b1.json" --b2-build "$P102_CHAIN/b2.json" \
+  --reuse selfhost/build/phase99/phase102-runtime-products02/report.json \
+  --out "$P102_PRODUCTS"
+python3 -B selfhost/tools/performance/phase102/runtime-reuse.py measure \
+  --products "$P102_PRODUCTS/phase98-products.json" --out "$P102_RUNTIME"
+```
+
+Measurements remain fresh, with the unchanged complete-output checks and three
+balanced rounds. Durations below 100 ms require fresh calibration. An explicit
+`--plans` calibration must bind the new source, product manifest and adapter;
+candidate02 calibration contexts cannot substitute. `--all` measures all 44
+nonzero points when needed; the zero-work ratio remains undefined. Performance
+acceptance is a separate root decision, outside the semantic admission collector.
+
+## Public CLI, selection and capsules
+
+Use the [qualification plan](native-qualification-plan.md) for the complete
+final-source gates and admission. The Phase99 release tools accept the new
+source; their `plan` mode assumes a different directory layout, so use the
+individual commands below. `ADMISSION` and `NATIVE_CONTROLS` must be completed
+final-source receipts. `STAGED` and `CLI_OUT` must be fresh Phase99 build paths.
+Do not reuse the already-created candidate02 `phase102-release02/selection.json`.
 
 ```sh
 python3 -B selfhost/tools/performance/phase99/release/prepare.py selection --admission "$ADMISSION" --out "$STAGED"
@@ -50,35 +93,52 @@ python3 -B selfhost/tools/native/assets.py seal "$STAGED" selfhost/tools/native/
 python3 -B selfhost/tools/native/assets.py restore selfhost/tools/native/releases/phase102-staged01/receipt.json --verify-only
 ```
 
-The nine CLI controls include both stages' cached-small, live-file and repeated
-map5 requests, plus existing-output, changed-manifest and invalid-source
-refusals. The source-generic launcher already accepts a properly qualified new
-admission; no launcher or historical default-profile modification is needed.
+The unchanged nine CLI controls cover both stages' cached-small, live-file and
+repeated-map requests, plus existing-output, changed-manifest and invalid-source
+refusals. Require all nine and zero missing files in capsule verification before
+calling the staged release ready. The public launcher itself needs no source
+specific edit.
 
-Only after the benefit decision, nine controls and capsule verification, replace
-the default selection conditionally. Reuse the atomic replacement procedure in
-[Phase99's release review](../phase99/static-release-readiness.md): verify the
-current pointer hash, preserve its exact bytes in an exclusively created file,
-validate both stages of the new pointer, recheck both pointer inputs, then use
-`os.replace` with preserved permissions. Substitute the actual final source and
-receipt paths; the old Phase99 example's source hash is not applicable.
-
-Then run the actual default small compile, compare its complete C bytes with
-the admitted B2 cached-small control, and seal a **new stable-default capsule**:
+Only after semantic qualification, runtime acceptance, CLI controls and staged
+capsule verification should root apply the conditional atomic replacement in
+[the earlier release review](../phase99/static-release-readiness.md), substituting
+the final source/paths. Recheck the old pointer hash, preserve its exact bytes,
+authenticate both new stages, recheck inputs and preserve permissions. Then run
+the actual default small compile and compare every C byte with the final B2
+cached-small control. Retain that request receipt and seal the stable pointer:
 
 ```sh
 python3 -B selfhost/tools/native/assets.py seal selfhost/tools/native/selection.json selfhost/tools/native/releases/phase102-assets01
 python3 -B selfhost/tools/native/assets.py restore selfhost/tools/native/releases/phase102-assets01/receipt.json --verify-only
 ```
 
-A staged capsule preserves its staged selection path, not the stable default.
-Old capsules remain immutable; restoring an old default over the new selection
-correctly refuses. Capsule sealing/verification runs no compiler targets and
-preserves the minimal request assets, not large qualification C and history.
-Archive raw experiment evidence separately after all writers stop.
+The staged capsule preserves its staged pointer path, not the default path.
+Capsules are same-checkout request assets; they do not include raw qualification
+history. Keep old capsules and audit-pinned original documentation unchanged.
+Describe the new release in a new native guide and current README links, with
+explicit source/profile/stage identities and actual completed measurements.
 
-If final compiler construction, fixed point, semantic gates or runtime checks
-do not finish within the phase budget, retain the installed Phase98 selection.
-Publish the exact reversible source and explicit completed native candidate
-bindings with their actual gate status. A usable private B1 or B2 candidate is
-valuable, but is not a selected, qualified self-hosting release.
+## Freeze and archive
+
+After every target and metadata writer stops, use the fresh `archive-v2.py`.
+It includes only native request directories named by explicit complete CLI
+reports, plus an optional final-default request. It validates those receipt pins
+and recursively preserves their actual raw files at original paths. This closes
+the old archive method's omission of `selfhost/build/native/requests`; it does
+not scan or archive all native history. Every archived file has a hash and mode
+and every tar member is read back. Seven synthetic data-only helper controls pass
+in `archive-v2-method01/report.json`, including missing receipts/captures,
+changed pins, mismatched log paths, symlinks and exclusion of unrelated requests.
+No archive has been created by this review.
+
+```sh
+python3 -B selfhost/tools/performance/phase102/archive-v2.py --frozen \
+  --cli-report "$CLI_OUT/report.json" --request-report "$P102_DEFAULT_REQUEST" \
+  --out implementation/phase102/evidence
+```
+
+Retain prior phase/toolchain capsules as dependencies. Archive verification,
+missing-file restoration, source replay, native qualification and runtime
+acceptance are distinct claims. If the successor does not finish or does not
+earn the benefit decision, keep Phase98 selected and publish the exact completed
+candidate evidence with the remaining limitations.

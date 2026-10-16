@@ -4,23 +4,28 @@
 [Report](../implementation/phase102/README.md) ·
 [Compiler guide](../docs/self_hosted/phase102-native-lowering.md).
 
-General constructor loops and scoped direct workers now recover large text wins
-on the existing representation. Owning-observer forwarding and a measured inline
-budget make the large source-index application about twice as fast as installed
-B2 and close to upstream; private unique-cell reuse further improves rendering.
-Three actual Bend-produced apps pass50 inputs/165 executions; focused controls
-pass144 executions. Keep the distinct per-workload ratios and finite scope.
+Final frozen candidate `b3927732…902d1f` composes direct workers, constructor
+loops, unique-cell reuse, owned observer projection and bounded forced inlining.
+It retains the linked representation. Actual Bend-generated application times
+are0.51–0.53× installed time for indexing,0.65–0.68× for graphs and0.73–0.79×
+for rendering. These are workload-specific complete-process ratios.
 
-The425-line source-profile candidate is reproducible and its upstream-built
-native B1 has emitted its own C with exact independent diagnostics. Native B2 and
-full image gates are in progress. Do not equate API/application evidence with
-native release admission. Phase98 native and Phase90 JS remain installed.
+All50 inputs/165 outputs,171 focused outputs,23 projection acceptance/refusal
+checks, and15 mixed-policy diagnostic outputs pass. The final profile adds580
+physical lines. Native chain03 is in progress; source replay and API controls
+are separate from a qualified release. Phase98 native and Phase90 JS remain
+installed until the final source earns its own semantic and performance gates.
 
-Continue the serial guarded queue, reuse exact products, and qualify the frozen
-candidate once. Probe remaining observer-result allocation separately. Global
-chunk storage, identifier compression and PCH have not earned integration. Keep
-the failed/inactive variants and avoid repeated self-build timings without a
-decision they would resolve.
+Retain two instructive failures: unrestricted composed inlining hit420s while
+building B2, and unconditional TRMC sealing regressed cold lists. Bounded
+inlining built candidate02; a fifth private state word now preserves the actual
+pending destination policy. Fresh final runtime measurements must confirm it.
+
+Root owns serial guarded targets. Reuse exact C/binaries with provenance;
+measure fresh times. Do not repeat full native acquisition after each small
+edit. The [remaining opportunities](../implementation/phase102/next-opportunities.md)
+are current hypotheses; the initial projection and inline-policy ideas are now
+implemented rather than a reason to restart discovery.
 
 # Previous frontier: Phase101 ambitious native text prototype
 

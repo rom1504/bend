@@ -1,13 +1,15 @@
 # Phase102 observer projection review
 
-The current combined source is `projection-eligible-source02/compiler.bend`,
-SHA256 `956a74765594da64ef30ef42ec0ec2b7710ab435fa7ddbd011501acf467048ad`.
-The projection adds 119 physical lines to the bounded-inline candidate and
-stable eligibility filtering adds six, for **563 lines above Phase98**. Static
-review covers this exact composition, but its API acquisition failed because
-the generic Base filter requires a closed predicate. It is not an executable
-qualified candidate. A concrete worker-filter successor is being prepared;
-actual activation, full outputs and native image qualification remain separate.
+The final combined source is `projection-cold-source01/compiler.bend`,
+SHA256 `b3927732f2250c19a7a8988dab7cbf30726359c18b5305f73c28cadddb902d1f`.
+It has **39,370 physical lines, 580 above Phase98**: 438 for the qualified
+bounded-inline parent, 119 for projection, 14 for concrete stable eligibility
+filtering, and nine for the separate TRMC destination-policy correction.
+Its checked API passes, all 23 projection-helper cases pass, and the 29-case
+focused program manifest passes all 171 exact-output executions. The five
+unique-chain constructor-policy variants also pass all 15 executions. Native
+B1/B2 qualification and the broad runtime comparison are still separate gates;
+these focused results do not qualify an image.
 
 The pass replaces an already admitted ordinary worker whose entire body is a
 pure scalar projection of an admitted owning observer. Its one or two inputs
@@ -49,20 +51,26 @@ immutable shell construction and destruction; allocation-failure timing can
 therefore change. This review is a bounded correspondence argument and finite
 control plan, not a new safe-kernel or universal native-lifetime proof.
 
-The first compiler check rejected a computed `match no_adapter(...)` scrutinee.
-Source04 corrects only that grammar: it evaluates the same adapter call and
-passes the result to a named-parameter matcher with identical checks and
-fallback. The failed `projection-api01` acquisition remains preserved. The
-separate six-line eligibility hoist filters by the same pure readiness and
-size predicates once; the pinned Base filter preserves worker order for all
-three immutable dependency rounds. This semantic correspondence did not imply
-the captured predicate was accepted by Bend's template checker; failed
-`projection-api02` is preserved as well.
+Three actual compiler checks caught frontend constraints in the experimental
+composition. `projection-api01` rejected a computed `match no_adapter(...)`
+scrutinee; a named-parameter matcher now receives that same call result.
+`projection-api02` rejected a captured predicate passed to the Base filter;
+a concrete `NF_Worker` filter now preserves the same order and predicates
+without template partial application. `projection-api03` rejected a repeated
+unmarked argument; the single pattern binder is now explicitly shared. Each
+failed acquisition is preserved. These corrections change neither the strict
+projection guard nor its ownership behavior. The final checked acquisition is
+`final-api03`; its source identity is the one above.
 
-The [source-audit successor](../../selfhost/tools/performance/phase102/qualification/audit-source-v5.py)
-binds the exact helper bytes, the single `nfo_finish` hook, the grammar-only
-correction and stable-filter transformation. It retains all previous
-authority declarations, proof/source identities and exact helper closures.
-Fresh API authority controls and complete final-source native outputs remain
-mandatory; a source audit cannot substitute for them. Sources01 and02 remain
-preserved as rejected review lineage.
+The [source-audit successor](../../selfhost/tools/performance/phase102/qualification/audit-source-v7.py)
+binds the exact helper bytes, the single `nfo_finish` hook, grammar/linearity
+corrections, concrete stable filter, and the separately reviewed TRMC cold-field
+policy. The consumed `authority-source-audit05/report.json` is complete/pass
+(SHA256 `5a6adf7a21dabf76c20087d5d4d1c52e698118cc72e20eca07767c483fd73180`).
+It retains the 14 unchanged authority declarations, two explicitly audited route
+changes, 13 original safe-law checks and their source identities, and the exact
+helper closures supporting inherited finite certificates. All 159 type
+constructors remain unchanged. Fresh API authority controls and complete
+final-source native outputs remain mandatory; source correspondence cannot
+substitute for those execution gates. Earlier reviewed and failed sources
+remain distinct historical evidence.

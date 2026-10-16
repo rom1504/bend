@@ -1,6 +1,6 @@
 # Phase102 experimental native lowering
 
-Phase102 explores four composable C-backend mechanisms in the compiler written
+Phase102 implements composable C-backend mechanisms in the compiler written
 in Bend. Source profiles remain separate from the installed Phase98 native
 release and the installed JS release. A checked testing API, an acquired native
 B1 binary, and an admitted B1/B2 release are different qualification levels;
@@ -19,6 +19,13 @@ wrapper returns the same ordinary one-Term result; partial construction never
 escapes and the wrapper releases it on failure. The representation remains the
 existing linked constructors. The String-specific append intrinsic and Phase101
 chunk-storage experiment are separate controls, not prerequisites.
+
+The private state has five words: root, pending slot, reusable cell, its allocation
+class, and the pending destination's sealing policy. The policy belongs to the
+previous parent, not the next child. Both recursive and terminal stores follow
+the same cold/HOT conditional as ordinary constructor emission. Mixed-policy
+diagnostic controls check the generated preprocessor decisions and complete
+outputs; shared roots retain their normal ownership handling.
 
 The selected construction candidate also keeps at most one uniquely taken heap
 cell per private worker, reusing it only for the same allocation class. Static
@@ -41,6 +48,16 @@ adapter, allowing callers to enter the existing ready closure. Missing early
 observer metadata conservatively retains hot ownership handling; it does not
 grant a new cold-constructor certificate.
 
+A separately checked successor composes an owning observer with an immediately
+consuming pure projection. A bounded structural certificate must select the
+observer schema's exact scalar result, preserve strict evaluation, and prevent
+variable capture. It then reuses the existing adapter emitter to compute the
+observation and release owned roots without allocating discarded result shells.
+Unknown or effectful projections keep ordinary lowering. The checked API and
+23 helper controls pass; actual C activation is confirmed in three applications
+and five controls. This remains distinct from the qualified profile and native
+image gates; see the [projection report](../../implementation/phase102/projection-integration.md).
+
 Local scheduler calls require checked provider identity and no reachable bangs.
 Such requests cannot offload device work, so the compiler marks their scheduler
 segments host-only using existing metadata. Raw requests and programs with
@@ -55,17 +72,18 @@ Phase98 profile. Both replay forward and inversion return exact source bytes;
 the original D04 source comes from the already committed baseline capsule.
 No generated 1.7 MB compiler source needs to be added to the repository.
 
-The current experimental source profile is `phase102-lowering02`, including the
-bounded-depth hint policy. `lowering01` preserves the earlier source and its
-failed native B2 build. The following command records how profile02 was made;
+The current source profile is `phase102-lowering03`, including bounded inlining,
+observer projection and destination-correct cold stores. `lowering01` preserves
+the failed first native B2 build; `lowering02` preserves the semantically admitted
+intermediate image with a runtime regression. The command records how profile03 was made;
 use fresh profile/verification names when repeating packaging:
 
 ```sh
 python3 -B selfhost/tools/performance/phase102/package-source-profile.py \
-  --recipe selfhost/build/phase102/depth-inline-source01/changes.json \
-  --out selfhost/tools/native/profiles/phase102-lowering02 \
-  --verification-out selfhost/build/phase102/profile-replay02 \
-  --name phase102-lowering02
+  --recipe selfhost/build/phase102/projection-cold-source01/changes.json \
+  --out selfhost/tools/native/profiles/phase102-lowering03 \
+  --verification-out selfhost/build/phase102/profile-replay03 \
+  --name phase102-lowering03
 ```
 
 The packager verifies parent/capsule/recipe identities, emits a deterministic
@@ -77,7 +95,7 @@ Once that named profile exists, replay it independently:
 
 ```sh
 python3 -B selfhost/tools/native/profile.py \
-  --profile selfhost/tools/native/profiles/phase102-lowering02/profile.json \
+  --profile selfhost/tools/native/profiles/phase102-lowering03/profile.json \
   --out-source /tmp/compiler-phase102.bend \
   --receipt /tmp/compiler-phase102-replay.json
 ```

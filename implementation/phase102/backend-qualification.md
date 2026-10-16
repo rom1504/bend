@@ -1,5 +1,23 @@
 # Phase102 backend qualification
 
+The final candidate is `projection-cold-source01/compiler.bend`, SHA256
+`b3927732f2250c19a7a8988dab7cbf30726359c18b5305f73c28cadddb902d1f`:
+**39,370 physical lines, 580 above Phase98**. Its checked API, 29-case focused
+program suite (171 complete observations), 23 projection-helper observations,
+and five constructor-policy variants (15 complete observations) pass. The
+independently reviewed source audit05 also passes, retaining the original
+proof/authority closures. Native chain03 is still being built and qualified;
+no final-image or default-selection claim follows from these earlier gates.
+
+The new source adds [bounded observer projection](projection-review.md), a
+stable concrete worker filter, and the [TRMC destination-policy correction](trmc-cold.md)
+to the qualified depth candidate below. Final native gates must be rerun against
+this exact source. The successor backend collector retains every original gate
+and additionally binds the two new program cases, projection-helper evidence
+and the mixed-constructor policy matrix.
+
+## Qualified depth candidate retained as a checkpoint
+
 The qualified candidate covered here is `depth-inline-source01/compiler.bend`, SHA
 `535c1f8f8d19cdddebeb397e3ef461346488b92feae28fa363a110ff136286d9`.
 Its standalone snapshot has **39,228 physical lines: 438 more than Phase98**.
@@ -76,7 +94,7 @@ positive-program C receives no historical runtime credit.
 
 ## Do the focused checks catch relevant faults?
 
-Three independent one-operation mutations of the final checked-API C all fail
+Three independent one-operation mutations of the depth candidate’s checked-API C all fail
 the unchanged complete-output oracle (`fault-run01/report.json`, SHA
 `9dff48a1…4a09f8`). All build and finish normally within their guards; none is
 counted through a timeout, signal or build failure. Total run wall time is

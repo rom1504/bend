@@ -1,0 +1,72 @@
+{
+  "kind": "phase99-name-key-exact-scheduler-span",
+  "scope": "Only the $direct.name_key case and its contiguous generated continuations through the next ordinary definition. No global runtime/whole-program attribution.",
+  "roles": {
+    "baseline": {
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase99/branch-small03/name-key-micro-baseline.c",
+        "bytes": 156868,
+        "sha256": "997968a61abf099c638eda953fbcb43c10354082a1826bf2688089d18824ffe6"
+      },
+      "span": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase99/branch-closures/name-key-baseline-span01.c",
+        "bytes": 6430,
+        "sha256": "81186978e42c5562f2dd04278591c993cfdef7f4d3cc57d4dfebdd493052c6b1"
+      },
+      "beginByte": 89467,
+      "endByte": 95897,
+      "firstLine": 3115,
+      "lastLine": 3355,
+      "entrySymbol": "FID_36_100_105_114_101_99_116_46_110_97_109_101_95_107_101_121_",
+      "entryFid": 48,
+      "heapAllocSites": 3,
+      "closureValues": 2,
+      "keepSites": 2,
+      "selectorJumps": 1,
+      "nativeBoolTests": 0,
+      "dynamicApplySites": 1,
+      "continuations": [
+        "FID_36_100_105_114_101_99_116_46_110_97_109_101_95_107_101_121_",
+        "FID_110_97_116_105_118_101_95_107_95_49_51_52_55_55_",
+        "FID_110_97_116_105_118_101_95_107_95_49_51_52_55_56_",
+        "FID_110_97_116_105_118_101_95_107_95_49_51_52_55_57_",
+        "FID_110_97_116_105_118_101_95_107_95_49_51_52_56_48_",
+        "FID_110_97_116_105_118_101_95_107_95_49_51_52_56_51_",
+        "FID_110_97_116_105_118_101_95_107_95_49_51_52_56_55_",
+        "FID_110_97_116_105_118_101_95_107_95_49_51_52_57_53_"
+      ]
+    },
+    "candidate": {
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase99/branch-small03/name-key-micro-candidate.c",
+        "bytes": 155567,
+        "sha256": "01cd7404b5fd16a88a389dd7dff0edfdfebe277b2907b59236dd4d3104ca3424"
+      },
+      "span": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase99/branch-closures/name-key-candidate-span01.c",
+        "bytes": 5525,
+        "sha256": "b5274c3c9e6120b7f6ac2208f26ab5c00114e6b515dacb2155274b17f487d8e4"
+      },
+      "beginByte": 89071,
+      "endByte": 94596,
+      "firstLine": 3112,
+      "lastLine": 3317,
+      "entrySymbol": "FID_36_100_105_114_101_99_116_46_110_97_109_101_95_107_101_121_",
+      "entryFid": 48,
+      "heapAllocSites": 1,
+      "closureValues": 0,
+      "keepSites": 1,
+      "selectorJumps": 0,
+      "nativeBoolTests": 2,
+      "dynamicApplySites": 2,
+      "continuations": [
+        "FID_36_100_105_114_101_99_116_46_110_97_109_101_95_107_101_121_",
+        "FID_110_97_116_105_118_101_95_107_95_49_51_53_51_56_",
+        "FID_110_97_116_105_118_101_95_107_95_49_51_53_52_51_",
+        "FID_110_97_116_105_118_101_95_107_95_49_51_53_52_56_",
+        "FID_110_97_116_105_118_101_95_107_95_49_51_53_53_51_"
+      ]
+    }
+  },
+  "finding": "Both selector closure allocations, their term_clo values, the extra retained String tail, and the direct selector jump disappear. SCON reconstruction remains. Dynamic application in malformed-match error continuations remains, so raw dynamic-apply site totals are not a reachable-path savings count."
+}

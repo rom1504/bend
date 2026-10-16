@@ -3,6 +3,56 @@
 Status: in progress. Design committed as `ee7664a`; Phase98 remains selected.
 Compiler and program targets run serially under the existing resource guard.
 
+The user redirected the cycle toward finding larger gains before completing
+release qualification. Source04 is a working checkpoint: B2 exactly reproduces
+all 38,677,627 bytes of B1's self C. One same-source B2 observation is
+145.461 s Phase98 versus 130.940 s candidate; alternating full-self repetitions
+were deliberately interrupted and are not a completed comparison. The 45 batch
+emissions completed: 43 C products are unchanged and two Map-churn products
+change. No generated-program speed claim or promotion follows for those two yet.
+
+P99-004/005 now prototype aggregate borrowing and branch-closure elimination.
+P99-006 quickly isolated large-image dispatch: 18 balanced synthetic executions
+give medians 2.27576 s direct, 2.39734 s forced accessor, 2.32690 s volatile table
+pointer. The pointer saves only 2.94% against the accessor on that workload;
+no runtime integration or full-image build is warranted. This is patched-C
+diagnostic evidence, not a Bend compiler change. All complete outputs match.
+The separate scalability preparation remains unrun. The interrupted release
+comparison and all earlier results remain preserved.
+
+## Faster discovery loop: aggregate reads and branch closures
+
+The release queue was stopped at the user's request; the next experiments use
+small actual generated native programs before any new compiler-image build.
+The bounded aggregate observer now reads String children of a retained KTerm
+without taking and disposing all its fields. On the three-layout tag workload,
+source04 takes 0.32784 s and the prototype 0.10439 s (four balanced pairs,
+ratio 0.31842). Six complete-output controls preserve all fields, nested aliases,
+Unicode and mismatched/empty tags. This is a short synthetic mechanism result;
+the 20 ms guard resolution limits its precision and it is not a compiler speedup.
+The borrowed worker contains 11 `term_peek` sites and no ownership operations;
+the adapter remains responsible for disposing retained roots. Raw result:
+`selfhost/build/phase99/projection-native01/report.json`.
+
+The general saturated-selector prototype now handles the actual erased matcher
+spine of `kc`/`nt_choose`, not just leading lambdas. Its `name_key` fixture removes
+both branch closure allocations, an extra tail retain and the selector jump,
+while preserving String reconstruction. Four tiny fixture emissions take 4.19 s;
+all eight native behavior controls pass, including identical required overflow and
+selected/unselected effects. Two balanced micro pairs give 0.11421 s baseline
+and 0.06338 s candidate (0.55498×), too short for a precise speed estimate.
+The allocation/call removal and complete outputs warrant a combined experiment. Branch source01 conservatively refused the real
+shape; source02 includes nullary match spines. The unsupported Nat literal in the
+first fixture was corrected using the existing native overflow construction.
+Raw result: `selfhost/build/phase99/branch-native01/report.json`.
+
+The combined source `782bdbee…` adds 145 lines/7,910 bytes over source04.
+A direct checked-JS-hosted discovery path mirrors the same native prepared
+request, authenticates the existing Base/runtime/effect inputs, and emits C.
+This avoids constructing an upstream-produced native image for every experiment.
+It is an experimental compiler acquisition, not a qualified B1/B2 chain.
+Its purpose is to establish whole-compiler benefit before release work.
+
 ## Scalar experiments: useful code change, no measured speed benefit
 
 The first implementation separates typed scalar emission from the packed-array

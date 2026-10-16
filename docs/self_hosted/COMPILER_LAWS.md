@@ -20,6 +20,18 @@ a separate Phase97 extension, not a silent change to Phase96's 226-case count.
 Both equivalent finite controls pass; a literal corruption also fails an unchanged
 formal representation law after standalone helper admission.
 
+The [Phase99 optimization cycle](../../implementation/phase99/law-usefulness.md)
+connects six further contracts to its exact native candidate: residual argument
+ordering and failure preservation, plus construction of the all-trivial-root
+guard. Six admitted helper mutations fail those unchanged contracts. One mutation
+disables the new optimization while preserving ordinary fallback, illustrating
+why useful laws can constrain optimization policy as well as returned values.
+The three argument laws were checked against two successive source identities;
+those repeated checks are not six distinct laws. Separate scalar metadata laws
+belong to a rejected optimization and do not qualify the selected candidate.
+The next useful contract is acceptance-to-live-root-witness correspondence, before
+attempting a proof of concrete child ownership or whole-compiler correctness.
+
 Phase97 additionally contributes four public ownership-model laws and three
 support lemmas, all independently checked. They prove a temporary retain/read/
 release replacement in arbitrary modeled contexts. They do not verify concrete

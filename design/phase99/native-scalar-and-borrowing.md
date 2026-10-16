@@ -121,3 +121,11 @@ native probes; avoid new qualification frameworks. Collaborators prototype
 independent changes while root owns the target queue. Require useful behavior
 and code-shape checks during exploration, but do the expensive full gate once
 for the selected combination. Estimates remain hypotheses until measured.
+
+For this discovery cycle, a checked stage0 JS API may execute the exact native
+prepared request to generate a native pilot image directly. The harness reuses
+the pinned transport's Base/runtime/effects and mirrors its permission and
+handler checks; it does not transform generated C. Label the image experimental,
+not B1 or B2. A useful whole-compiler result then justifies native-chain
+qualification. Keep complete outputs/diagnostics, source identity and memory
+bounds during this shortcut; defer repeated broad validation and promotion.

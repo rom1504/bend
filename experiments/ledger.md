@@ -4,6 +4,19 @@ This ledger records decisions and links evidence; it does not replace the report
 Read [workflow](README.md) and [current strategy](STEERING.md) before a new investigation.
 User objective: make the Bend compiler written in Bend and its validation loop much faster while preserving correctness. Historical authorization windows are recorded below; current release status and priorities are in [STEERING.md](STEERING.md).
 
+## Phase104 recursive-improvement baseline — 2026-10-17
+
+[P104-001](phase104/P104-001-recursive-feedback.md) ·
+[Design](../design/phase104/recursive-improvement.md) ·
+[Report](../implementation/phase104/README.md).
+Historical candidate04 source/build/self-C links authenticate; no new B3–B5
+executables. Sixteen fresh guarded B1/B2 requests reproduce all C/diagnostics.
+Self-image cost model: 151s Bend + 374s Clang bounds compiler-only feedback;
+2× Bend predicts 1.168× cycle speed, excluding agent/tests. Primary-source survey
+and controlled frozen/updating-builder protocol distinguish throughput from
+research yield. No evidence of recursive acceleration yet. Compiler/releases
+unchanged; no PR comment.
+
 ## Phase92 native-chain qualification — 2026-10-15
 
 [P92-001](phase92/P92-001-native-chain.md) · [Report](../implementation/phase92/README.md).

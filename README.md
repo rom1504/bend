@@ -47,6 +47,14 @@ Its [initial baseline](implementation/phase104/README.md) audits bootstrap
 stability and measures both native stages; recursive acceleration remains a
 hypothesis, not an established result.
 
+The [fast native backend proposal](design/phase105/fast-native-backend.md)
+records how a shared native IR, a Cranelift development backend and later
+incremental compilation could shorten that loop while retaining C/Clang for
+optimized releases. The [native B1/B2 versus upstream protocol](docs/self_hosted/NATIVE_COMPILER_COMPARISON.md)
+defines comparable timings, preparation modes and a staged benchmark. These
+are proposed experiments; no backend replacement or fresh upstream timing is
+claimed.
+
 For the underlying candidate04 algorithms, the repeated six-source
 B2 screen uses 27.6% less request time than Phase98; B1 is 2.6% slower. Separately,
 44 generated-program points use 6.3% less runtime than Phase98 and 4.3% more than

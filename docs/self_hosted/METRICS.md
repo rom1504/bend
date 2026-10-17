@@ -1,5 +1,12 @@
 # Compiler metrics and the current scoreboard
 
+For a fresh comparison of current candidate04 native B1/B2 against pinned
+upstream, follow the [native comparison protocol](NATIVE_COMPILER_COMPARISON.md).
+It distinguishes process time, request clocks, prepared/live Base workflows and
+Clang construction. The Phase91/92 figures below describe their historical
+sources and configurations. Phase104's current-stage screen contains no fresh
+upstream ratio.
+
 Read the [Phase91 scoreboard](../../implementation/phase91/README.md) for the
 installed JS-hosted compiler and the [Phase92 native-chain scoreboard](../../implementation/phase92/README.md)
 for native-hosted B1/B2. These are separate host configurations. Its definitions follow the

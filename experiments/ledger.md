@@ -4,6 +4,19 @@ This ledger records decisions and links evidence; it does not replace the report
 Read [workflow](README.md) and [current strategy](STEERING.md) before a new investigation.
 User objective: make the Bend compiler written in Bend and its validation loop much faster while preserving correctness. Historical authorization windows are recorded below; current release status and priorities are in [STEERING.md](STEERING.md).
 
+## Phase105 fast native backend proposal — 2026-10-17
+
+[Design](../design/phase105/fast-native-backend.md) ·
+[Native comparison protocol](../docs/self_hosted/NATIVE_COMPILER_COMPARISON.md).
+Documentation only: proposes a structured native execution IR with C/Clang and
+Cranelift consumers, an explicit runtime/tail ABI and later function caching.
+Records Zig's experience and our earlier build failures; conditional build-cost
+arithmetic is not a measured backend gain. Defines current same-source native
+B1/B2 versus pinned TS/Bun, separate prepared/live Base modes, process clocks,
+six-case then broad/self-source measurements. The old Phase92 runner needs a
+current-stage adapter. No benchmark, compiler change, release promotion or PR
+comment in this entry.
+
 ## Phase104 recursive-improvement baseline — 2026-10-17
 
 [P104-001](phase104/P104-001-recursive-feedback.md) ·

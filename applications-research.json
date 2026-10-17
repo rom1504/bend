@@ -1,0 +1,200 @@
+{
+  "schema_version": 1,
+  "source_commit": "8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71",
+  "title": "Three complete applications. Visible results.",
+  "intro": "Ordinary Bend sources take runtime inputs and produce complete checked outputs. The current native compiler improves every measured application point over Phase 98.",
+  "clock": "Complete generated-application process time, including startup, argument parsing, input, useful work, output capture and shutdown. Compiler requests, Clang builds and oracle generation are excluded.",
+  "baseline": {
+    "current": "Phase 102 candidate04",
+    "previous": "Phase 98 native B2",
+    "reference": "Pinned upstream TypeScript compiler emitting C",
+    "reference_commit": "059266225b77c8ca256ac6b25ee5c21449bab151",
+    "rounds": 4,
+    "output_observations": 72,
+    "lower_is_better": true
+  },
+  "comparison_note": "Both roles compile the same Bend application to C. These are native executable comparisons, not Bend programs versus handwritten TypeScript. Each application keeps its own workload; no cross-application average is reported.",
+  "source_refs": [
+    {
+      "title": "Current candidate04 complete-application results",
+      "url": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase102/default-promotion.md"
+    },
+    {
+      "title": "Applications, output checks and historical build costs",
+      "url": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase100/README.md"
+    },
+    {
+      "title": "Standalone application usage",
+      "url": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/selfhost/apps/README.md"
+    }
+  ],
+  "cards": [
+    {
+      "id": "image-render",
+      "name": "Image renderer",
+      "description": "Render every pixel of a deterministic Mandelbrot image, with explicit row-based parallel work.",
+      "preview": {
+        "type": "image",
+        "src": "assets/application-render.png",
+        "alt": "Complete Mandelbrot image produced by the native Bend application, showing the fractal against its colored escape-time background.",
+        "caption": "Actual Phase 100 application output · lossless PNG of the checked PPM",
+        "width": 512,
+        "height": 384,
+        "provenance_url": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase100/rendered.json",
+        "sha256": "61f12177d33dd826f9873d36e3a49e15981225d49d1301591c8571497dcf0480"
+      },
+      "cases": [
+        {
+          "id": "renderer-1",
+          "label": "512 × 384 · 1,024 iterations · 1 worker",
+          "workers": 1,
+          "ratio_previous": 0.734,
+          "ratio_upstream": 0.986
+        },
+        {
+          "id": "renderer-4",
+          "label": "Same complete image · 4 workers",
+          "workers": 4,
+          "ratio_previous": 0.788,
+          "ratio_upstream": 1.195
+        }
+      ],
+      "headline": "Near upstream speed on one core.",
+      "takeaway": "26.6% less time than Phase 98 on one worker; 21.2% less on four.",
+      "note": "Four-worker execution remains 19.5% slower than upstream. This measures the complete image and its output, not only the numeric kernel.",
+      "sources": [
+        {
+          "title": "Image application and commands",
+          "url": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/selfhost/apps/image-render/README.md"
+        },
+        {
+          "title": "Current application measurements",
+          "url": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase102/default-promotion.md"
+        }
+      ]
+    },
+    {
+      "id": "source-index",
+      "name": "Source index",
+      "description": "Read a source file and list declarations with line numbers, alongside UTF-8 and lexical summaries.",
+      "preview": {
+        "type": "text",
+        "text": "kind\tline\tname\nimport\t2\tBase\ntype\t4\tGreeting\ndef\t7\tGreeting.text\ndef\t11\texample\ndef\t14\tescaped\ndef\t17\tmarker\ndef\t20\tmain",
+        "caption": "Declaration-table excerpt for the checked sample.bend fixture",
+        "source_url": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/selfhost/apps/source-index/fixtures/sample.bend"
+      },
+      "cases": [
+        {
+          "id": "index-generated",
+          "label": "10,000 generated definitions",
+          "workers": 1,
+          "ratio_previous": 0.525,
+          "ratio_upstream": 0.912
+        },
+        {
+          "id": "index-compiler",
+          "label": "1.75 MB compiler source",
+          "workers": 1,
+          "ratio_previous": 0.51,
+          "ratio_upstream": 1.077
+        }
+      ],
+      "headline": "Roughly half the previous execution time.",
+      "takeaway": "47.5–49.0% less time than Phase 98 across the two measured inputs.",
+      "note": "This is lexical indexing, not parsing or compiling the source. Compiler-text indexing remains 7.7% slower than upstream; the generated-definition candidate run is short, about 56 ms.",
+      "sources": [
+        {
+          "title": "Source index behavior and limitations",
+          "url": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/selfhost/apps/source-index/README.md"
+        },
+        {
+          "title": "Current application measurements",
+          "url": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase102/default-promotion.md"
+        }
+      ]
+    },
+    {
+      "id": "dependency-plan",
+      "name": "Dependency planner",
+      "description": "Turn runtime graph inputs into a prerequisite-first plan, including shared dependencies, cycles and missing-node diagnostics.",
+      "preview": {
+        "type": "image",
+        "src": "assets/application-planner.svg",
+        "alt": "The checked sample dependency graph: core and assets feed lib, ui and harness, which feed app and tests. Seven reachable targets share eight edges.",
+        "caption": "Diagram of the checked shared.graph fixture · arrows point to consumers",
+        "width": 640,
+        "height": 420,
+        "source_url": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/selfhost/apps/dependency-plan/fixtures/shared.graph"
+      },
+      "output": "plan-v1\nroots app tests app\norder core lib assets ui app harness tests\nreachable 7\nedges 8\ndeclared 8",
+      "cases": [
+        {
+          "id": "planner-dag",
+          "label": "Shared DAG · 800 nodes",
+          "workers": 1,
+          "ratio_previous": 0.665,
+          "ratio_upstream": 0.224
+        },
+        {
+          "id": "planner-chain",
+          "label": "Dependency chain · 1,000 nodes",
+          "workers": 1,
+          "ratio_previous": 0.685,
+          "ratio_upstream": 0.246
+        }
+      ],
+      "headline": "4.46× upstream speed on the shared graph.",
+      "takeaway": "33.5% less time than Phase 98 on DAG800; 31.5% less on the chain.",
+      "note": "The planner remains serial and uses linear lookup. Its backend win does not remove the algorithm’s worst-case quadratic or O(VE) scaling.",
+      "sources": [
+        {
+          "title": "Dependency planner and exact sample output",
+          "url": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/selfhost/apps/dependency-plan/README.md"
+        },
+        {
+          "title": "Current application measurements",
+          "url": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase102/default-promotion.md"
+        }
+      ]
+    }
+  ],
+  "history": {
+    "phase": 100,
+    "title": "Historical parallel-scaling check",
+    "note": "This older campaign uses Phase 98-generated programs; it is separate from current candidate04’s one/four-worker comparison. Every worker setting produces the identical complete image.",
+    "parallel_scaling": {
+      "workers": [
+        1,
+        2,
+        4
+      ],
+      "native_median_ms": [
+        346,
+        216,
+        168
+      ],
+      "upstream_median_ms": [
+        257,
+        155,
+        115
+      ],
+      "native_speedup_four_workers": 2.05,
+      "upstream_speedup_four_workers": 2.23,
+      "single_tile_native_ms": [
+        310,
+        310,
+        310
+      ],
+      "scope": "Pooled nine observations per role/worker; physical cores; GPU off. Complete process clock. Single-tile control has no row forks."
+    },
+    "source_url": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase100/README.md"
+  },
+  "qualification": {
+    "phase": 100,
+    "application_inputs": 50,
+    "passing_executions": 318,
+    "source_physical_lines": 779,
+    "unsafe_annotations": 0,
+    "note": "Historical application delivery covers 50 independent oracle inputs; current candidate04 timing separately checks 72 complete outputs over six performance points. These counts describe different campaigns and are not added."
+  }
+}

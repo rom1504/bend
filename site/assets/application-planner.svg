@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="420" viewBox="0 0 640 420" role="img" aria-labelledby="title desc">
+<title id="title">A dependency plan with shared prerequisites</title>
+<desc id="desc">The checked shared.graph fixture. Arrows go from prerequisite to consumer. Core serves lib, ui and harness; assets serves ui; lib and ui serve app; lib and harness serve tests. The plan includes every reachable node once.</desc>
+<defs><marker id="arrow" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0 0 7 3.5 0 7" fill="none" stroke="#7e9986" stroke-width="1.2"/></marker></defs>
+<rect width="640" height="420" fill="#edf1e8"/>
+<g fill="#586660" font-family="sans-serif" font-size="13"><text x="30" y="36">PREREQUISITES</text><text x="468" y="36">REQUESTED TARGETS</text></g>
+<g fill="none" stroke="#7e9986" stroke-width="2" marker-end="url(#arrow)">
+<path d="M148 170 C193 170 197 99 246 99"/><path d="M148 170 C192 170 197 220 246 220"/><path d="M148 170 C191 170 200 329 246 329"/><path d="M148 329 L246 329"/>
+<path d="M365 99 C411 99 414 135 465 135"/><path d="M365 99 C416 99 408 270 465 270"/><path d="M365 220 C414 220 415 270 465 270"/><path d="M365 329 C416 329 411 135 465 135"/>
+</g>
+<g font-family="sans-serif" font-size="19" text-anchor="middle" fill="#202d29">
+<rect x="30" y="148" width="118" height="44" rx="8" fill="#fff" stroke="#cbd6c8"/><text x="89" y="177">core</text>
+<rect x="30" y="307" width="118" height="44" rx="8" fill="#fff" stroke="#cbd6c8"/><text x="89" y="336">assets</text>
+<rect x="246" y="77" width="118" height="44" rx="8" fill="#fff" stroke="#cbd6c8"/><text x="305" y="106">lib</text>
+<rect x="246" y="198" width="118" height="44" rx="8" fill="#fff" stroke="#cbd6c8"/><text x="305" y="227">harness</text>
+<rect x="246" y="307" width="118" height="44" rx="8" fill="#fff" stroke="#cbd6c8"/><text x="305" y="336">ui</text>
+<rect x="466" y="113" width="144" height="44" rx="8" fill="#d6ed98" stroke="#90aa66"/><text x="538" y="142">app</text>
+<rect x="466" y="248" width="144" height="44" rx="8" fill="#d6ed98" stroke="#90aa66"/><text x="538" y="277">tests</text>
+</g>
+<text x="30" y="393" font-family="sans-serif" font-size="14" fill="#586660">7 reachable nodes · 8 edges · each prerequisite appears once</text>
+</svg>

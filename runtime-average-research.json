@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "metric": "Compiled program speed",
-  "researchedAt": "2026-10-08",
-  "sourceCommit": "2035010d3d7045bbd0364c141e1da0007476cbc1",
+  "researchedAt": "2026-10-17",
+  "sourceCommit": "8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71",
   "referenceCommit": "059266225b77c8ca256ac6b25ee5c21449bab151",
   "headline": {
     "phase": 66,
@@ -20,11 +20,13 @@
     "sourceUrl": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/implementation/phase66/measurement.md",
     "dataUrl": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/implementation/phase66/evidence/runtime-selected07-full.json",
     "label": "1.049× TypeScript execution time",
-    "explanation": "Geometric mean of 45 warmed execution-time ratios across 23 source files. 1× is parity; lower is better. Selected final07 checked B1 emits the independently executed programs; separately qualified B2 emits identical modules.",
+    "explanation": "Geometric mean of 45 historical warmed execution ratios across23 sources. Current Phase 90 JS B1/B2 applicability is established by 46 complete module comparisons inPhase 91; no new timings.",
     "referenceCommit": "059266225b77c8ca256ac6b25ee5c21449bab151",
     "pairedBaseline": "Phase65 State10 measured afresh in Phase66",
     "candidateChangePercent": 0.037652333554483164,
-    "changeInterpretation": "Essentially unchanged versus the fresh paired Phase65 baseline; the descriptive +0.038% is not an established regression."
+    "changeInterpretation": "Essentially unchanged versus the fresh paired Phase65 baseline; the descriptive +0.038% is not an established regression.",
+    "measurementStatus": "Historical Phase 66 timing; Phase 91 output continuity to current JS B1/B2",
+    "currentCompilerPhase": 90
   },
   "aggregation": {
     "method": "geometric mean",
@@ -7512,10 +7514,27 @@
     "distributionScope": "Every role retains all fresh-round samples, first-call and import times, and half-window drift from the published full summary. Descriptive sample-range comparisons are not confidence intervals or significance tests.",
     "detailsUrl": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/implementation/phase66/evidence/runtime-selected07-details.json",
     "referenceCommit": "059266225b77c8ca256ac6b25ee5c21449bab151",
-    "sourceSha256": "1b29d5c4f0e2a9c90a21699e23c734c02cb66700cf05665b8a5d320a540e8a3e"
+    "sourceSha256": "1b29d5c4f0e2a9c90a21699e23c734c02cb66700cf05665b8a5d320a540e8a3e",
+    "currentApplicability": {
+      "phase": 91,
+      "compilerPhase": 90,
+      "publicationCommit": "aa0a40d475c54b4998723e68fe7c1d29ebab332f",
+      "publicationDate": "2026-10-15T04:22:04Z",
+      "measurementStatus": "carried-forward-by-complete-output-equality",
+      "timingPhase": 66,
+      "freshRuntimeTiming": false,
+      "installedStage": "B2",
+      "b1ApiSha256": "6bf8e0938565fc4a1b2152640ac83e11e0538fe080a1ec6ac8b89ec6c5958379",
+      "b2ApiSha256": "284f6e9b88614c4cbd60812a7641fb03d9b9c49892c9bb0d692b1b2c31b5bd30",
+      "moduleComparisons": 46,
+      "programCount": 23,
+      "pointCount": 45,
+      "sourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase91/continuity.json",
+      "note": "All23 complete JS modules from both current roles equal the historically timed products. Retain Phase66 sample dates and medians; this is not a fresh runtime campaign."
+    }
   },
   "scopeNotes": [
-    "Phase66 final07 is installed as selected checked B1 bb6c6e2a. The separately qualified genuine B2 0067736c emits identical complete modules for all 23 sources and all 45 observer points; the independently executed modules were emitted by B1.",
+    "At the original Phase 66 timing campaign: Phase66 final07 is installed as selected checked B1 bb6c6e2a. The separately qualified genuine B2 0067736c emits identical complete modules for all 23 sources and all 45 observer points; the independently executed modules were emitted by B1.",
     "The latest campaign compares Phase65 State10, final07 and new TypeScript 0592662 in the same run. Old reference 0187512 remains attached to earlier historical observations; ratios across that boundary do not describe an isolated optimization.",
     "All 45 benchmark IDs, source hashes, arguments and expected values remain unchanged. Execution excludes compilation, imports, first call and warmup; fresh compiler latency is a separate metric.",
     "Phases59–65 do not contribute invented generated-program speed points. The Phase65 graph point is its fresh baseline measurement within Phase66, not a runtime campaign performed at Phase65 release.",
@@ -7523,7 +7542,8 @@
     "Nineteen point medians decrease and 26 increase against the paired old Bend output. No point has a disjoint regression sample range; one active-ray point has a disjoint improvement range. Range separation is descriptive, not a significance test.",
     "5 role-point pairs exceed the retained drift/spread threshold. All samples remain included; small workloads can show substantial half-window drift. Flagging is descriptive and does not establish JIT convergence.",
     "Fifteen of 45 points and nine of 23 source aggregates beat TypeScript. Source gaps remain concentrated in Mandelbrot grid (1.619×), historical Mandelbrot (1.522×), historical raytrace (1.503×) and active raytrace (1.337×); every other source is at most 1.090×.",
-    "BST, expression and record aggregation retain their held-out partition labels. The finite maintained benchmark corpus does not predict every Bend program or new upstream feature."
+    "BST, expression and record aggregation retain their held-out partition labels. The finite maintained benchmark corpus does not predict every Bend program or new upstream feature.",
+    "Phase 91 verifies all 23 complete modules for both current JS roles; its identity evidence carries these Phase 66 timings forward without changing their sample dates. Native generated-program runtime is a separate cohort in native-research.json."
   ],
   "evidence": {
     "runtimeSummarySha256": "461be254a846d444cfa1312afc76462a0a48a5331acc5eb20dbdab2f8657fcfc",
@@ -7537,7 +7557,11 @@
     "sourceStatuses": [
       "implementation/phase66/README.md",
       "implementation/phase66/measurement.md"
-    ]
+    ],
+    "phase91Continuity": {
+      "title": "Phase91 exact output continuity",
+      "url": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase91/continuity.json"
+    }
   },
   "historyNotes": [
     "No multiplication of incremental improvements; every value is computed directly against same-run pinned TypeScript.",
@@ -7765,6 +7789,42 @@
       "publicationCommit": "43de26963c7b4a0d5d7e2c040ac71ed9caafeb51",
       "publicationDate": "2026-10-06T07:17:29Z",
       "sourceUrl": "https://github.com/rom1504/bend/blob/6eecaefe3292774de5408994d21e31fc16c08dc5/implementation/phase57/README.md"
+    }
+  ],
+  "currentApplicability": {
+    "phase": 91,
+    "compilerPhase": 90,
+    "publicationCommit": "aa0a40d475c54b4998723e68fe7c1d29ebab332f",
+    "publicationDate": "2026-10-15T04:22:04Z",
+    "measurementStatus": "carried-forward-by-complete-output-equality",
+    "timingPhase": 66,
+    "freshRuntimeTiming": false,
+    "installedStage": "B2",
+    "b1ApiSha256": "6bf8e0938565fc4a1b2152640ac83e11e0538fe080a1ec6ac8b89ec6c5958379",
+    "b2ApiSha256": "284f6e9b88614c4cbd60812a7641fb03d9b9c49892c9bb0d692b1b2c31b5bd30",
+    "moduleComparisons": 46,
+    "programCount": 23,
+    "pointCount": 45,
+    "sourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase91/continuity.json",
+    "note": "All23 complete JS modules from both current roles equal the historically timed products. Retain Phase 66 sample dates and medians; this is not a fresh runtime campaign."
+  },
+  "continuityHistory": [
+    {
+      "phase": 91,
+      "compilerPhase": 90,
+      "publicationCommit": "aa0a40d475c54b4998723e68fe7c1d29ebab332f",
+      "publicationDate": "2026-10-15T04:22:04Z",
+      "measurementStatus": "carried-forward-by-complete-output-equality",
+      "timingPhase": 66,
+      "freshRuntimeTiming": false,
+      "installedStage": "B2",
+      "b1ApiSha256": "6bf8e0938565fc4a1b2152640ac83e11e0538fe080a1ec6ac8b89ec6c5958379",
+      "b2ApiSha256": "284f6e9b88614c4cbd60812a7641fb03d9b9c49892c9bb0d692b1b2c31b5bd30",
+      "moduleComparisons": 46,
+      "programCount": 23,
+      "pointCount": 45,
+      "sourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase91/continuity.json",
+      "note": "All23 complete JS modules from both current roles equal the historically timed products. Retain Phase 66 sample dates and medians; this is not a fresh runtime campaign."
     }
   ]
 }

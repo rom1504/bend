@@ -11,11 +11,12 @@ from statistics import geometric_mean
 from string import Template
 import subprocess
 import sys
+import native_report
 from urllib.parse import urlparse
 
 ROOT = Path(__file__).resolve().parents[1]
 SITE = ROOT / 'site'
-RESEARCH = ('history', 'conformance', 'runtime', 'runtime-average', 'second-stage', 'compilation-average')
+RESEARCH = ('history', 'conformance', 'runtime', 'runtime-average', 'second-stage', 'compilation-average', 'native', 'applications')
 METRICS = {'execution': 'Program speed', 'second-stage': 'Second-stage compilation', 'compilation': 'First-stage compilation', 'conformance': 'Conformance', 'simplicity': 'Simplicity'}
 
 
@@ -114,8 +115,9 @@ def validate(config, research):
         require(all(p['bend_ms'] > 0 and p['typescript_ms'] > 0 for p in including_load), 'Loading-inclusive samples must be positive')
         require(all(math.isclose(p['bend_ms'] / p['typescript_ms'], p['ratio'], rel_tol=1e-9) for p in including_load), 'Loading-inclusive program ratio mismatch')
         require(math.isclose(geometric_mean(p['bend_ms'] / p['typescript_ms'] for p in including_load), compilation['including_imports_average'], rel_tol=1e-9), 'Loading-inclusive average mismatch')
-        paired_change = 100 * (compilation['latest_average'] / compilation['same_run_baseline_average'] - 1)
-        require(math.isclose(paired_change, compilation['same_run_change_percent'], abs_tol=1e-8), 'Compilation paired change mismatch')
+        if compilation.get('same_run_baseline_average') is not None:
+            paired_change = 100 * (compilation['latest_average'] / compilation['same_run_baseline_average'] - 1)
+            require(math.isclose(paired_change, compilation['same_run_change_percent'], abs_tol=1e-8), 'Compilation paired change mismatch')
     emission = research['second-stage']['selfEmissionHistory']
     require(len(emission) == 2 and all(p['complete'] and p['byte_equal'] and p['seconds'] > 0 for p in emission), 'Invalid clean self-emission comparison')
     require(len({p['method'] for p in emission}) == 1, 'Self-emission methods differ')
@@ -139,79 +141,6 @@ def table(headers, rows, caption=None):
     body = ''.join('<tr>' + ''.join(f'<td>{value}</td>' for value in row) + '</tr>' for row in rows)
     caption = f'<caption>{e(caption)}</caption>' if caption else ''
     return f'<div class="table-scroll"><table>{caption}<thead><tr>{head}</tr></thead><tbody>{body}</tbody></table></div>'
-
-
-def tables(research):
-    h, c, r = (research[k] for k in ('history', 'conformance', 'runtime'))
-    result = {}
-    result['simplicity'] = table(['Checkpoint', 'Physical lines', 'Nonblank', 'Code lines', 'Modules', 'Source'], [
-        [e(p['chartLabel']), number(p['physicalLines'], 0), number(p['nonblankLines'], 0), number(p.get('codeLines'), 0), e(p['modules']), link(p['sourceLink'], p['shortCommit'])]
-        for p in h['simplicity']['series']
-    ], 'Canonical Bend modules; equally spaced saved checkpoints, not elapsed time.')
-    result['compilation'] = table(['Phase', 'Before (s)', 'After (s)', 'Less time', 'Source'], [
-        [e(p['label']), number(p['same_window_predecessor_seconds']), number(p['bend_process_seconds']), number(p['process_time_reduction_percent'], 2) + '%', link(p['source_url'], p['commit'][:7])]
-        for p in h['compilerChecking']['selectedPairs']
-    ], 'Each row is an independent paired checking comparison on the same frozen input.')
-    latest = h['latestCompilation']
-    result['compilation'] += '<p>Separate Phase 36 ordinary compilation controls: request medians, three samples per role. Before/after ranges overlap in all four cases. ' + link(latest['sourceURL'], 'Full cost report') + '</p>'
-    result['compilation'] += table(['Program', 'P35 (ms)', 'P36 (ms)', 'Change', 'TypeScript (ms)'], [
-        [e(p['workload']), number(p['baseline_ms']), number(p['candidate_ms']), f'{p["candidate_change_percent"]:+.2f}%', number(p['typescript_ms'])]
-        for p in latest['points']
-    ], 'Checked-library request time. This is different from the historical full-source checking workload above.')
-    census = c['javascriptCensus']
-    result['conformance'] = '<h4>Current JavaScript census · selected B1 · Phase ' + e(census['phase']) + '</h4>' + table(['Outcome', 'Distinct fixtures'], [
-        ['Golden passes · Node plus scoped Bun results', number(census['goldenPasses'], 0)],
-        ['Unprintable-main exemptions', number(census['exempt'], 0)],
-        ['Shared Process.run golden failure', number(census['sharedFailure'], 0)],
-        ['Graphics environment deferral', number(census['deferred'], 0)],
-        ['Total JavaScript-eligible fixtures', number(census['eligibleFixtures'], 0)],
-    ], 'Each fixture is counted once. Exemptions, the shared failure and the deferred graphics case are not passes.')
-    result['conformance'] += table(['Runtime evidence', 'Bend golden passes', 'TypeScript golden passes'], [
-        ['Node alone', number(census['primaryNode']['candidatePass'], 0), number(census['primaryNode']['referencePass'], 0)],
-        ['Additional paired Bun passes', number(census['supplementalBunPasses'], 0), number(census['supplementalBunPasses'], 0)],
-        ['Distinct combined passes', number(census['goldenPasses'], 0), number(census['referenceGoldenPasses'], 0)],
-    ], 'Bun evidence transfers through exact emitted-module and runtime identity; it is not a new final07 execution campaign. Bend passes the retained NaN fixture that TypeScript fails.')
-    result['conformance'] += '<p>Observed TypeScript-pass / Bend-fail cases: <strong>' + number(census['referencePassingCandidateFailures'], 0) + '</strong>. ' + link(census['source'], 'Complete census and platform scope') + '</p>'
-    result['conformance'] += '<h4>Independent semantic observations</h4>' + table(['Phase', 'Source-oracle passes', 'TypeScript passes', 'Source'], [
-        [e(p['label']), f'{p["pass"]} / {p["total"]}', f'{p["referencePass"]} / {p["referenceTotal"]}', link(p['source'], 'Report')]
-        for p in c.get('independentSemanticSeries', [])
-    ], 'The source oracle defines the expected answer. TypeScript retains a known NaN-fixture mismatch; matching that result is not required.')
-    result['conformance'] += '<h4>Historical frontend agreement</h4>' + table(['Phase', 'Target', 'Exact / total', 'Differences', 'Source'], [
-        [e(p['label']), e(p['upstream'][:7]), f'{p["exact"]:,} / {p["total"]:,}', number(p['different'], 0), link(p['source'], p['commit'][:7])]
-        for p in c['mainSeries']
-    ], 'Main exact parse/check comparisons. Target changes introduce a different denominator.')
-    result['conformance'] += table(['Phase', 'Broader exact / total', 'Source'], [
-        [e(p['label']), f'{p["exact"]} / {p["total"]}', link(p['source'], p['commit'][:7])]
-        for p in c['broaderSeries']
-    ], 'Separate broader selection; partly overlaps the main suite.')
-    current = c['current']
-    result['conformance'] += '<p>The latest recorded frontend evidence is Phase ' + e(current.get('frontendLastFreshPhase', current['phase'])) + '. The separate broader selection retains its own last observation at Phase ' + e(c['broaderSeries'][-1]['phase']) + '. Their counts overlap and are not added together.</p>'
-    result['conformance'] += '<h4>Installed B1 controls · Phase ' + e(current['phase']) + '</h4>' + table(['Scope', 'Result'], [
-        ['Independent semantic observations', f'{current.get("semanticPass", 0)} / {current.get("semanticTotal", 0)}'],
-        ['Numeric controls', f'{current.get("numericPass", 0)} / {current.get("numericTotal", 0)}'],
-        ['Composition controls', f'{current.get("compositionPass", 0)} / {current.get("compositionTotal", 0)}'],
-        ['Overapplication controls', f'{current.get("overapplicationPass", 0)} / {current.get("overapplicationTotal", 0)}'],
-        ['Ordinary / relocated interfaces', f'{current["cliPass"]} / {current["cliTotal"]}'],
-        ['Historical direct JavaScript census · P' + str(current.get('directBackendLastFreshPhase', current['phase'])), f'{current["directBackendExact"]} / {current["directBackendTotal"]} outcomes: 18 runtime passes, 4 expected rejections, 4 not applicable'],
-        ['Maintained compatibility suites', e(current['maintainedSuites'])]
-    ], 'Scopes overlap and are not summed into a total pass count.')
-    reproduction = c['selfReproduction']
-    result['conformance'] += '<h4>Separately qualified B2 · not installed</h4>' + table(['Scope', 'Result'], [
-        ['Independent source semantics', f'{reproduction["semanticPass"]} / {reproduction["semanticTotal"]}'],
-        ['Numeric / composition / overapplication', '34 / 34 · 18 / 18 · 2 / 2'],
-        ['Fresh complete-source type check', 'Passed' + (' · ' + number(reproduction['freshCheck']['internalSeconds'], 3) + ' seconds internally' if reproduction['freshCheck'].get('internalSeconds') is not None else ' · no comparable timing published')],
-        ['B2 → B3 reproduction', 'Byte-identical' + (' · ' + number(reproduction['imageBytes'], 0) + ' bytes' if reproduction.get('imageBytes') is not None else '')],
-        ['Generated-program equality with B1', '23 source modules · 45 observed point modules'],
-    ], 'B2 controls are measured separately. B1 interface and census results are not asserted for B2.')
-    result['conformance'] += '<p>' + e(reproduction['freshCheck']['scope']) + ' ' + e(reproduction['proofScope']) + '</p>'
-    backend = c['backendPilot']
-    outcomes = backend['rawOutcomes']
-    result['conformance'] += f'<p>Separate historical backend pilot (Phase {e(backend["phase"])}): {outcomes["pass"]} passes, {outcomes["notApplicable"]} not applicable, {outcomes["sharedFailures"]} shared failures. All {backend["exact"]} outcomes match the reference; they are not all execution passes.</p>'
-    result['runtime'] = table(['Phase / program', 'Before (ms)', 'After (ms)', 'Speedup', 'Source'], [
-        [e({30:'P29 → P30',31:'P30 → P31',32:'P31 → P32',35:'P32 → P35',36:'P35 → P36'}[p['phase']] + ' · ' + p['id']), number(p['beforeMs'], 6), number(p['afterMs'], 6), number(p['speedup'], 2) + '×', link(p['sourceUrl'], 'Report')]
-        for p in r['pairedGains'] if p['phase'] in (30, 31, 32, 35, 36)
-    ], 'Complete exported calls. Each row has its own timing window; compiler execution is excluded.')
-    return result
 
 
 def speed_tables(card, research):
@@ -274,6 +203,12 @@ def speed_tables(card, research):
                 ['P' + str(p['phase']), number(p.get('seconds'), 3) if p['complete'] else 'Stopped at ' + number(p['deadline_seconds'], 0) + ' s', number(p.get('check_seconds'), 3), link(p['source_url'], 'Report'), e(p['note'])]
                 for p in data['qualificationHistory']
             ], 'Qualification and clean performance use different clocks. A timeout does not supply an exact speedup.')
+    if not is_runtime and data.get('c_target'):
+        c_target = data['c_target']
+        html += '<h4>Separate C-output cohort · JavaScript compiler host</h4><p>Three sources, Phase 91. Request average: <strong>' + number(c_target['requestRatio'], 3) + '×</strong>; with imports and API loading: <strong>' + number(c_target['includingImportsRatio'], 3) + '×</strong> upstream time. This is C emission by a JavaScript-hosted compiler; Clang is excluded.</p>'
+        html += table(['Source', 'Bend request (ms)', 'Upstream request (ms)', 'Request ratio', 'With imports ratio', 'Evidence'], [
+            [e(p['name']), number(p['bend_ms'], 3), number(p['typescript_ms'], 3), number(p['ratio'], 3) + '×', number(p['including_imports']['ratio'], 3) + '×', link(p['evidence_url'], 'Report')] for p in c_target['programs']
+        ], 'C3 and JS23 remain separate cohorts; these figures do not describe the native compiler host.')
     return average, html, source
 
 
@@ -307,20 +242,8 @@ def render_speed_card(card, research):
 
 
 def render_cards(config, research):
-    content = []
-    measurements = tables(research)
-    for card in config['cards']:
-        if card.get('average_dataset'):
-            content.append(render_speed_card(card, research))
-            continue
-        chart, metric = e(card['chart']), e(card['id'])
-        content.append(f'''<article class="chart-card" id="{metric}" aria-labelledby="title-{metric}">
-<div class="chart-card-top"><div class="card-category"><h3 id="title-{metric}"><span class="metric-dot {metric}-color"></span>{e(card['number'])} / {e(card['title'])}</h3><span>{e(card['direction'])}</span></div>
-<div class="card-headline"><strong>{e(card['value'])}</strong><span>{e(card['unit'])}</span></div><p class="card-summary">{e(card['summary'])}</p></div>
-<figure style="margin:0"><div class="chart-frame"><img src="./charts/{chart}.svg" alt="{e(card['alt'])}" width="900" height="{int(card.get('chart_height', 560))}" loading="lazy"></div><figcaption class="card-caption">{e(card['caption'])}</figcaption></figure>
-<p class="card-takeaway"><span aria-hidden="true">↳</span><span>{e(card['takeaway'])}</span></p>
-<div class="card-bottom"><a href="#finding-{e(card['finding'])}" data-show-metric="{metric}">Explore the finding ↗</a><span><a href="./charts/{chart}.svg" download>SVG ↓</a> · <a href="./charts/{chart}.png" download>PNG ↓</a></span></div>
-<details class="data-details"><summary>Measurements &amp; sources</summary>{measurements[card['table']]}</details></article>''')
+    content = [native_report.render_speed(card, research, render_speed_card(card, research)) for card in config['cards'][:3]]
+    content += [native_report.render_conformance(research), native_report.render_simplicity(research)]
     return '\n'.join(content)
 
 
@@ -346,7 +269,10 @@ def render(config, research):
     values['collected_iso'] = e(meta['collected_at'])
     values['collected_date'] = date.fromisoformat(meta['collected_at']).strftime('%d %b %Y')
     values['chart_cards'] = render_cards(config, research)
-    values['findings'] = render_findings(config)
+    values['findings'] = render_findings(research['recent-findings'])
+    values['historical_findings'] = render_findings(config)
+    values['applications'] = native_report.render_applications(research['applications'])
+    values['research_outlook'] = native_report.render_outlook(research['recent-findings']['outlook'], research['native']['audit104'])
     values['sources'] = ''.join(link(s['url'], s['title']) for s in config['sources'])
     return Template((ROOT / 'templates/index.html').read_text(encoding='utf-8')).substitute(values)
 
@@ -359,7 +285,9 @@ def main():
         subprocess.run([sys.executable, str(ROOT / 'scripts/charts.py'), '--check'], check=True)
         config = json.loads((ROOT / 'progress.json').read_text(encoding='utf-8'))
         research = {name: json.loads((ROOT / (name + '-research.json')).read_text(encoding='utf-8')) for name in RESEARCH}
+        research['recent-findings'] = json.loads((ROOT / 'recent-findings.json').read_text(encoding='utf-8'))
         validate(config, research)
+        native_report.validate(research)
         outputs = {
             SITE / 'index.html': render(config, research),
             SITE / 'progress.json': json.dumps({'site': config, 'research': research}, ensure_ascii=False, indent=2) + '\n',

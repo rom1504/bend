@@ -1,0 +1,314 @@
+{
+  "schema_version": 1,
+  "source_commit": "8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71",
+  "findings": [
+    {
+      "id": "native-ownership-facts",
+      "phase": "PHASES 67–73",
+      "metrics": [
+        "execution",
+        "simplicity"
+      ],
+      "title": "Make ownership information survive the whole journey.",
+      "paragraphs": [
+        "A value that is already available should not need another continuation, boxed tuple or reference-count wrapper simply to reach its next consumer. The native backend now carries scalar, product and ownership facts through calls, loop backedges and suspension. Borrowed observers traverse shared data while an owning adapter keeps the roots alive; known unshared constructors can transfer their fields directly.",
+        "These connections made generated native code competitive. In Phase 73’s paired twelve-family campaign, average execution time fell from 1.369× to 1.051× upstream C. The list pipeline and BST matched upstream allocation counts, while Tape’s combined borrowing and storage changes reduced execution time from 896.5 to 266.5 ms. Earlier Phase 72 connected existing product transport with just 13 added physical lines."
+      ],
+      "flow": [
+        "Retain checked ownership and shape facts",
+        "Pass fields and borrow roots directly",
+        "Avoid temporary objects and reconstruction"
+      ],
+      "stats": [
+        {
+          "value": "23.3%",
+          "label": "less runtime · Phase 73 twelve-family comparison"
+        },
+        {
+          "value": "5,609 → 3",
+          "label": "list-pipeline reference-count wrappers"
+        },
+        {
+          "value": "+13 lines",
+          "label": "Phase 72 product-transport connection"
+        }
+      ],
+      "note": "The twelve-family diagnostic campaign is separate from the later 45-program catalog. Phase 73 increased B1/B2 compilation time by 7.33%/6.28%; four families still ran 1.37–1.53× slower than upstream. Allocation counters come from separate instrumented runs.",
+      "sources": [
+        {
+          "title": "Ownership facts and paired runtime measurements",
+          "url": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase73/README.md"
+        },
+        {
+          "title": "Small product-transport implementation",
+          "url": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase72/README.md"
+        },
+        {
+          "title": "Early native value-transport gains",
+          "url": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase67/README.md"
+        }
+      ]
+    },
+    {
+      "id": "reuse-checked-facts",
+      "phase": "PHASES 78–82",
+      "metrics": [
+        "second-stage",
+        "compilation",
+        "simplicity"
+      ],
+      "title": "Stop recomputing what the compiler already knows.",
+      "paragraphs": [
+        "Annotation had already computed normalized types and constructor-field quantities. Reusing those facts avoids rebuilding environments and layouts. A whole-program escape index also lets exactly saturated calls skip unneeded curried factories, shrinking the three Phase 78 timing programs’ C by 21–23%. Unsupported calls keep their ordinary path.",
+        "Phase 82 then removed fixed work from every native request. Bend prepares the invariant runtime text once; each request verifies and consumes that artifact. The request also carries its existing source-ID bound into validation, avoiding another walk. The paired campaign used 6.15% less B2 request time, with a larger 20.7% saving on the small held-out program."
+      ],
+      "flow": [
+        "Compute and authenticate facts once",
+        "Carry them with the exact request",
+        "Skip repeated scans and unused entries"
+      ],
+      "stats": [
+        {
+          "value": "6.15%",
+          "label": "less B2 request time · Phase 82 paired campaign"
+        },
+        {
+          "value": "20.7%",
+          "label": "less B2 time · small held-out program"
+        },
+        {
+          "value": "+69 lines",
+          "label": "Phase 82 production source cost"
+        }
+      ],
+      "note": "These are JS-hosted compiler images emitting C. Request clocks exclude imports, explicit prepared Base, Clang and program execution; upstream checks Base inside its request. Artifact verification remains inside the request clock. This work does not establish a universal cold-compilation ratio.",
+      "sources": [
+        {
+          "title": "Retained facts and nonescaping entries",
+          "url": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase78/README.md"
+        },
+        {
+          "title": "Invariant runtime text and source-bound reuse",
+          "url": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase82/README.md"
+        }
+      ]
+    },
+    {
+      "id": "native-self-reproduction",
+      "phase": "PHASES 86–90 · 102",
+      "metrics": [
+        "second-stage",
+        "compilation",
+        "conformance"
+      ],
+      "title": "The Bend compiler can reproduce itself as a native program.",
+      "paragraphs": [
+        "Moving the compiler out of a JavaScript host exposed costs that small programs had hidden: deep recursive traversals, growing-prefix String construction and repeated graph searches. Tail loops, chunk collection and indexed lookup removed those scaling barriers. Phase 90’s native compiler emitted its complete 38.6 MB C image in 164.3 seconds; the preceding version had reached a 600-second timeout without output.",
+        "Building that C exposed a different bottleneck in LLVM’s call graph. A small accessor for large dispatch tables let the optimized build finish with 3.89 GiB peak RSS after an earlier 10 GiB attempt had failed. The current candidate04 chain has a fresh exact emitted-C fixed point: native B1 and B2 reproduce all 30,373,059 bytes, with complete diagnostic agreement."
+      ],
+      "flow": [
+        "Bend compiler emits its complete C",
+        "Clang builds the next native compiler",
+        "That compiler reproduces the same C"
+      ],
+      "stats": [
+        {
+          "value": "164.3 s",
+          "label": "Phase 90 native self-emission · prior run timed out at 600 s"
+        },
+        {
+          "value": "30.37 MB",
+          "label": "current candidate04 exact self C"
+        },
+        {
+          "value": "3.89 GiB",
+          "label": "Phase 90 optimized image build peak RSS"
+        }
+      ],
+      "note": "The historical timing milestones use different source versions and are not a controlled speed curve. Candidate04’s B2 self request is 150.846 s in one qualification observation; no new self-speed gain is claimed. Exact emitted C is not an ELF fixed point, a built B3 executable or a whole-compiler proof.",
+      "sources": [
+        {
+          "title": "Native self-hosting and LLVM scaling fixes",
+          "url": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase90/README.md"
+        },
+        {
+          "title": "Current candidate04 native qualification",
+          "url": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase102/default-promotion.md"
+        },
+        {
+          "title": "Audited stage lineage and clock limits",
+          "url": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase104/README.md"
+        }
+      ]
+    },
+    {
+      "id": "compose-efficient-native-paths",
+      "phase": "PHASE 102 · CANDIDATE04",
+      "metrics": [
+        "execution",
+        "second-stage",
+        "compilation"
+      ],
+      "title": "Let efficient paths compose across ordinary source code.",
+      "paragraphs": [
+        "Direct workers were available, but composing them could recreate continuations and temporary products. The new lowering keeps eligible local calls direct, turns final-field constructor recursion into loops, and recognizes owning observers whose result is immediately projected to a scalar. The resulting worker performs the borrowed computation, checks errors and releases its roots without constructing two temporary tuples.",
+        "The promoted candidate04 retains these gains with a corrected inline-cost policy. Across six source programs, native B2 uses 27.6% less request time than Phase 98. Across all 44 positive-work runtime points, generated programs use 6.3% less time and average 1.043× upstream C. All six complete application measurements improve over Phase 98, including roughly halving source-index execution time."
+      ],
+      "flow": [
+        "Compose direct calls and constructor loops",
+        "Remove immediately projected temporary products",
+        "Keep conservative costs for forced inlining"
+      ],
+      "stats": [
+        {
+          "value": "27.6%",
+          "label": "less B2 request time · six-source paired screen"
+        },
+        {
+          "value": "6.3%",
+          "label": "less program runtime · 44-point paired screen"
+        },
+        {
+          "value": "1.043×",
+          "label": "native runtime / upstream · equal-point mean"
+        }
+      ],
+      "note": "B1 requests are 2.6% slower on the same compiler screen. Equal-source runtime weighting gives 1.065× upstream. Candidate03’s fold regressions led to the corrected candidate04 policy; its historical numbers are not the current release. Complete application clocks and warmed benchmark clocks remain separate.",
+      "sources": [
+        {
+          "title": "Promoted candidate04 measurements and tradeoffs",
+          "url": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase102/default-promotion.md"
+        },
+        {
+          "title": "Structural changes and earlier candidate history",
+          "url": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase102/README.md"
+        },
+        {
+          "title": "Observer projection and corrected inline cost",
+          "url": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase102/projection-integration.md"
+        }
+      ]
+    },
+    {
+      "id": "bend-native-command-line",
+      "phase": "PHASE 103",
+      "metrics": [
+        "simplicity",
+        "second-stage",
+        "conformance"
+      ],
+      "title": "The public command line is written in Bend, too.",
+      "paragraphs": [
+        "Run selfhost/bend input.bend -o output.c to invoke the native compiler directly. A 152-line Bend entry owns arguments, asset identities, cache/live selection, compiler invocation, diagnostics and exit decisions. Ordinary requests need no Python, Node, Bun or TypeScript process. Three narrow C host effects provide authenticated file and byte operations.",
+        "The package locates its assets beside the executable and passes relocation, corrupt-asset refusal and atomic output-publication controls. All 41 final CLI controls pass, and six source pairs produce exactly the same C and compiler verdicts as candidate04. One small three-pair public-interface observation falls from 550 ms with the former Python launcher to 208 ms with the direct executable."
+      ],
+      "flow": [
+        "Bend parses and authenticates the request",
+        "Calls the native compiler in the same process",
+        "Publishes a complete output without replacement"
+      ],
+      "stats": [
+        {
+          "value": "152 lines",
+          "label": "Bend command-line entry"
+        },
+        {
+          "value": "41 / 41",
+          "label": "final public CLI controls pass"
+        },
+        {
+          "value": "550 → 208 ms",
+          "label": "one small source · observed public interfaces"
+        }
+      ],
+      "note": "The small timing compares the actual public interfaces, including their different capture envelopes; it is not a compiler-kernel or upstream speed comparison. Linux x86-64 with /proc is supported. The native one-source/nine-effect boundary remains. The CLI build uses an explicit bridge with a different host entry, so it adds no matched-source fixed-point claim.",
+      "sources": [
+        {
+          "title": "Bend CLI implementation and measured scope",
+          "url": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase103/README.md"
+        },
+        {
+          "title": "Native CLI usage and package restoration",
+          "url": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/docs/self_hosted/NATIVE_CLI.md"
+        }
+      ]
+    },
+    {
+      "id": "laws-constrain-optimization",
+      "phase": "PHASES 94–98",
+      "metrics": [
+        "conformance",
+        "simplicity"
+      ],
+      "title": "Connect laws to the helpers being optimized.",
+      "paragraphs": [
+        "The compiler now has a reusable foundation of 31 public laws independently checked by the unchanged BendTT kernel, plus executable contracts over complete production values. The suite deliberately checks incorrect implementations as well as positive examples. Independent challenges exposed two coverage gaps; the strengthened contracts cover those missing helpers without changing the original expectations.",
+        "Phase 98 connected proofs to the exact retained-string comparison, term-tag and provider-membership helpers selected for the native compiler. Thirteen distinct statements are bound to those final helper closures. A small finishing helper keeps owning Strings alive during comparison so borrowed reads can avoid per-character ownership work; paired B2 full-source requests then fell from 150.5 to 141.0 seconds."
+      ],
+      "flow": [
+        "State a complete helper contract",
+        "Check real proof bodies and deliberate faults",
+        "Measure the qualified native implementation"
+      ],
+      "stats": [
+        {
+          "value": "31 laws",
+          "label": "Phase 96 public foundation · independently checked"
+        },
+        {
+          "value": "13 statements",
+          "label": "bound to selected Phase 98 helper closures"
+        },
+        {
+          "value": "150.5 → 141.0 s",
+          "label": "Phase 98 paired B2 full-source request medians"
+        }
+      ],
+      "note": "The foundation and selected-closure counts describe different scopes and are not additive coverage totals. The proofs do not establish runtime reference counting, native memory safety, foreign effects or whole-compiler correctness. Native profiling found a real termination defect outside those value equations; executable controls remain essential.",
+      "sources": [
+        {
+          "title": "Compiler law foundation and negative controls",
+          "url": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase96/README.md"
+        },
+        {
+          "title": "Independent challenges and coverage repairs",
+          "url": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase97/README.md"
+        },
+        {
+          "title": "Selected helper proofs and native compiler gains",
+          "url": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase98/README.md"
+        }
+      ]
+    }
+  ],
+  "outlook": {
+    "id": "recursive-improvement-baseline",
+    "phase": "PHASE 104 · RESEARCH",
+    "title": "Measure the whole improvement loop next.",
+    "paragraphs": [
+      "The latest research audits the native stage lineage and establishes a small measurement baseline: 16 fresh requests preserve complete C and diagnostics. It does not change the installed compiler or demonstrate accelerating research yield.",
+      "Its next question is practical: does a faster compiler buy more independently validated progress? The proposed experiments compare normal and deliberately delayed compiler service, then frozen and updating builders, while charging build, validation and research costs. Smaller emitted C and cheaper Clang builds may matter as much as faster Bend requests."
+    ],
+    "stats": [
+      {
+        "value": "16 / 16",
+        "label": "fresh request outputs and diagnostics match"
+      },
+      {
+        "value": "150.8 s + 374.0 s",
+        "label": "historical Bend self emission + Clang image build"
+      }
+    ],
+    "note": "These historical build components are not a new end-to-end benchmark. B3’s C input is established, but its executable was not built; no B3–B5 timing or recursive acceleration is claimed. The auditor is development tooling, not an isolated evaluator.",
+    "sources": [
+      {
+        "title": "Recursive-improvement assessment and baseline",
+        "url": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase104/README.md"
+      },
+      {
+        "title": "Causal protocol and roadmap",
+        "url": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/design/phase104/recursive-improvement.md"
+      }
+    ]
+  }
+}

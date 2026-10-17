@@ -1,0 +1,3315 @@
+{
+  "schemaVersion": 1,
+  "researchedAt": "2026-10-17",
+  "sourceCommit": "8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71",
+  "referenceCommit": "059266225b77c8ca256ac6b25ee5c21449bab151",
+  "release": {
+    "corePhase": 102,
+    "coreRelease": "candidate04",
+    "publicCliPhase": 103,
+    "latestResearchPhase": 104,
+    "installedNativeStage": "B2",
+    "sourceSha256": "63ef222c4c6de73bb54c8e51d3b0a0552979b5791ea98e64d1098051a9cda237",
+    "sourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase102/default-promotion.md",
+    "cliSourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase103/README.md",
+    "note": "Phase 104 audits the existing candidate04 chain and adds a small measurement screen. It changes no compiler or installed selection."
+  },
+  "ratioDefinition": "candidate elapsed time / named reference elapsed time; lower is better",
+  "execution": {
+    "latest": {
+      "phase": 102,
+      "release": "candidate04",
+      "commit": "a15ca94f1d198611d6a0eadf848a1be047571fb7",
+      "date": "2026-10-17T00:23:30Z",
+      "averageRatio": 1.0434611698989533,
+      "equalSourceRatio": 1.0652859472449612,
+      "phase98Ratio": 0.9365465962229151,
+      "phase98EqualSourceRatio": 0.9361874079093597,
+      "timeReductionPercent": 6.345340377708486,
+      "pointCount": 44,
+      "sourceCount": 23,
+      "catalogPointCount": 45,
+      "sampleCountPerComparator": 264,
+      "rounds": 3,
+      "excludedPoints": [
+        {
+          "id": "scalar-region-0",
+          "reason": "Both backends optimize away zero-work control; ratio undefined, excluded from aggregates."
+        }
+      ],
+      "points": [
+        {
+          "id": "mandelbrot",
+          "label": "Mandelbrot",
+          "sourceId": "mandelbrot",
+          "ratio": 1.2096774193548387,
+          "ratioToUpstream": 1.2096774193548387,
+          "candidateMedianMs": 0.026680896478121663,
+          "referenceMedianMs": 0.022056207755247245,
+          "candidateRangeMs": [
+            0.026591960156527924,
+            0.0272145144076841
+          ],
+          "referenceRangeMs": [
+            0.022056207755247245,
+            0.022056207755247245
+          ],
+          "phase98Ratio": 0.9806201550387597,
+          "phase98CandidateMedianMs": 0.026952167891765206,
+          "phase98ReferenceMedianMs": 0.027484819431128155,
+          "sourcePath": "selfhost/tools/performance/phase37/fixtures-historical/mandelbrot.bend",
+          "sourceSha256": "cb2b9c30aceeb0f8ed0da1f999658aa8d7fb346851877da6902d1ded4cfc0656",
+          "programSourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/selfhost/tools/performance/phase37/fixtures-historical/mandelbrot.bend",
+          "sourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase102/default-promotion.md",
+          "args": [
+            2,
+            0
+          ]
+        },
+        {
+          "id": "editdist",
+          "label": "Editdist",
+          "sourceId": "editdist",
+          "ratio": 1.0,
+          "ratioToUpstream": 1.0,
+          "candidateMedianMs": 0.8389261744966443,
+          "referenceMedianMs": 0.8389261744966443,
+          "candidateRangeMs": [
+            0.8389261744966443,
+            0.8422818791946308
+          ],
+          "referenceRangeMs": [
+            0.8389261744966443,
+            0.8422818791946308
+          ],
+          "phase98Ratio": 1.0039999999999998,
+          "phase98CandidateMedianMs": 0.8537414965986394,
+          "phase98ReferenceMedianMs": 0.8503401360544218,
+          "sourcePath": "selfhost/tools/performance/phase37/fixtures-historical/editdist.bend",
+          "sourceSha256": "f9cc44d93829d8ea48148c26b8ed7e2c1785611ad0c19a3770f86227a3142e6f",
+          "programSourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/selfhost/tools/performance/phase37/fixtures-historical/editdist.bend",
+          "sourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase102/default-promotion.md",
+          "args": [
+            2,
+            0
+          ]
+        },
+        {
+          "id": "tree-bitonic",
+          "label": "Tree bitonic",
+          "sourceId": "tree-bitonic",
+          "ratio": 1.3414634146341464,
+          "ratioToUpstream": 1.3414634146341464,
+          "candidateMedianMs": 0.165,
+          "referenceMedianMs": 0.123,
+          "candidateRangeMs": [
+            0.1645,
+            0.165
+          ],
+          "referenceRangeMs": [
+            0.1225,
+            0.1235
+          ],
+          "phase98Ratio": 1.004,
+          "phase98CandidateMedianMs": 0.16666666666666666,
+          "phase98ReferenceMedianMs": 0.16600265604249667,
+          "sourcePath": "selfhost/tools/performance/phase37/fixtures-historical/tree-bitonic.bend",
+          "sourceSha256": "ace0242c329b1628cb9d0a0142386380e0ca4e56fa741916974938eb079b2c0d",
+          "programSourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/selfhost/tools/performance/phase37/fixtures-historical/tree-bitonic.bend",
+          "sourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase102/default-promotion.md",
+          "args": [
+            8,
+            0
+          ]
+        },
+        {
+          "id": "lexer",
+          "label": "Lexer",
+          "sourceId": "lexer",
+          "ratio": 1.0772357723577235,
+          "ratioToUpstream": 1.0772357723577235,
+          "candidateMedianMs": 0.3920118343195266,
+          "referenceMedianMs": 0.36390532544378695,
+          "candidateRangeMs": [
+            0.3905325443786982,
+            0.3979289940828402
+          ],
+          "referenceRangeMs": [
+            0.36390532544378695,
+            0.36538461538461536
+          ],
+          "phase98Ratio": 0.7217391304347825,
+          "phase98CandidateMedianMs": 0.3933649289099526,
+          "phase98ReferenceMedianMs": 0.5450236966824644,
+          "sourcePath": "selfhost/tools/performance/phase37/fixtures-historical/lexer.bend",
+          "sourceSha256": "6014af6bf7e97c8feaafa918e79f28a22d2c9c92bea836203fcd89b6d70a4fbb",
+          "programSourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/selfhost/tools/performance/phase37/fixtures-historical/lexer.bend",
+          "sourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase102/default-promotion.md",
+          "args": [
+            8,
+            0
+          ]
+        },
+        {
+          "id": "symreg",
+          "label": "Symreg",
+          "sourceId": "symreg",
+          "ratio": 1.6626984126984128,
+          "ratioToUpstream": 1.6626984126984128,
+          "candidateMedianMs": 2.327777777777778,
+          "referenceMedianMs": 1.4,
+          "candidateRangeMs": [
+            2.327777777777778,
+            2.3444444444444446
+          ],
+          "referenceRangeMs": [
+            1.3944444444444444,
+            1.4
+          ],
+          "phase98Ratio": 0.98046875,
+          "phase98CandidateMedianMs": 2.3457943925233646,
+          "phase98ReferenceMedianMs": 2.392523364485981,
+          "sourcePath": "selfhost/tools/performance/phase37/fixtures-historical/symreg.bend",
+          "sourceSha256": "c25c8fb869eaf5ac90cbf45feb30c0e8169207ed0b74cd655343048fcc82778b",
+          "programSourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/selfhost/tools/performance/phase37/fixtures-historical/symreg.bend",
+          "sourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase102/default-promotion.md",
+          "args": [
+            6,
+            42
+          ]
+        },
+        {
+          "id": "test-morning-program",
+          "label": "Test morning program",
+          "sourceId": "test-morning-program",
+          "ratio": 0.9615384615384616,
+          "ratioToUpstream": 0.9615384615384616,
+          "candidateMedianMs": 0.0034586278931422326,
+          "referenceMedianMs": 0.003596973008867922,
+          "candidateRangeMs": [
+            0.0034447933815696637,
+            0.0035001314278599394
+          ],
+          "referenceRangeMs": [
+            0.003583138497295353,
+            0.0036246420320130597
+          ],
+          "phase98Ratio": 0.9057971014492754,
+          "phase98CandidateMedianMs": 0.0034586278931422326,
+          "phase98ReferenceMedianMs": 0.0038183251940290246,
+          "sourcePath": "selfhost/tools/performance/phase37/fixtures-historical/test-morning-program.bend",
+          "sourceSha256": "9033897714291ea49c25046426457ff2753276466092ba71a4e40c1e2b48a04a",
+          "programSourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/selfhost/tools/performance/phase37/fixtures-historical/test-morning-program.bend",
+          "sourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase102/default-promotion.md",
+          "args": []
+        },
+        {
+          "id": "test-evening-program",
+          "label": "Test evening program",
+          "sourceId": "test-evening-program",
+          "ratio": 1.372,
+          "ratioToUpstream": 1.372,
+          "candidateMedianMs": 0.001069295325028369,
+          "referenceMedianMs": 0.0007793697704288403,
+          "candidateRangeMs": [
+            0.0010474729714563616,
+            0.0010786477622735152
+          ],
+          "referenceRangeMs": [
+            0.0007731348122654097,
+            0.0007824872495105558
+          ],
+          "phase98Ratio": 0.8706293706293707,
+          "phase98CandidateMedianMs": 0.0010699185315045893,
+          "phase98ReferenceMedianMs": 0.0012289024096799697,
+          "sourcePath": "selfhost/tools/performance/phase37/fixtures-historical/test-evening-program.bend",
+          "sourceSha256": "b254a68ad0208b8a5f388d72095633cd8fc119adf40d45f5621e93f37e7b4f71",
+          "programSourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/selfhost/tools/performance/phase37/fixtures-historical/test-evening-program.bend",
+          "sourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase102/default-promotion.md",
+          "args": []
+        },
+        {
+          "id": "test-rle-roundtrip",
+          "label": "Test rle roundtrip",
+          "sourceId": "test-rle-roundtrip",
+          "ratio": 2.0669291338582676,
+          "ratioToUpstream": 2.0669291338582676,
+          "candidateMedianMs": 0.00043258653790694034,
+          "referenceMedianMs": 0.00020928948691116735,
+          "candidateRangeMs": [
+            0.00043258653790694034,
+            0.0004334105122648583
+          ],
+          "referenceRangeMs": [
+            0.00020846551255324935,
+            0.0002109374356270033
+          ],
+          "phase98Ratio": 0.79874213836478,
+          "phase98CandidateMedianMs": 0.00043160137704628335,
+          "phase98ReferenceMedianMs": 0.0005403513303177877,
+          "sourcePath": "selfhost/tools/performance/phase37/fixtures-historical/test-rle-roundtrip.bend",
+          "sourceSha256": "ce4083dab9a8022b2c8867a30802113735917229341cecb8ce18ff9ac2e33989",
+          "programSourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/selfhost/tools/performance/phase37/fixtures-historical/test-rle-roundtrip.bend",
+          "sourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase102/default-promotion.md",
+          "args": []
+        },
+        {
+          "id": "test-map-set-ops",
+          "label": "Test map set ops",
+          "sourceId": "test-map-set-ops",
+          "ratio": 1.1771653543307086,
+          "ratioToUpstream": 1.1771653543307086,
+          "candidateMedianMs": 0.010803584332996097,
+          "referenceMedianMs": 0.009177626824685647,
+          "candidateRangeMs": [
+            0.010767451943922533,
+            0.010839716722069664
+          ],
+          "referenceRangeMs": [
+            0.009141494435612083,
+            0.009213759213759214
+          ],
+          "phase98Ratio": 1.0119999999999998,
+          "phase98CandidateMedianMs": 0.010752231194220144,
+          "phase98ReferenceMedianMs": 0.010624734381640459,
+          "sourcePath": "selfhost/tools/performance/phase37/fixtures-historical/test-map-set-ops.bend",
+          "sourceSha256": "60966d2aa182c2aabf20eb63270f57c7d8c5f2dc56872e7fed54dab34940c8c6",
+          "programSourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/selfhost/tools/performance/phase37/fixtures-historical/test-map-set-ops.bend",
+          "sourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase102/default-promotion.md",
+          "args": []
+        },
+        {
+          "id": "raytrace",
+          "label": "Raytrace",
+          "sourceId": "raytrace",
+          "ratio": 1.4780876494023905,
+          "ratioToUpstream": 1.4780876494023905,
+          "candidateMedianMs": 28.53846153846154,
+          "referenceMedianMs": 19.30769230769231,
+          "candidateRangeMs": [
+            28.53846153846154,
+            28.69230769230769
+          ],
+          "referenceRangeMs": [
+            19.23076923076923,
+            19.384615384615383
+          ],
+          "phase98Ratio": 0.9922480620155039,
+          "phase98CandidateMedianMs": 28.444444444444446,
+          "phase98ReferenceMedianMs": 28.666666666666668,
+          "sourcePath": "selfhost/tools/performance/phase37/fixtures-historical/raytrace.bend",
+          "sourceSha256": "4674b2580aceb5f5fe6771ce16c987b97f791b52a9e1305794c435beeebf5837",
+          "programSourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/selfhost/tools/performance/phase37/fixtures-historical/raytrace.bend",
+          "sourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase102/default-promotion.md",
+          "args": [
+            80,
+            0
+          ]
+        },
+        {
+          "id": "local-pair",
+          "label": "Local pair",
+          "sourceId": "local-row",
+          "ratio": 0.9960317460317459,
+          "ratioToUpstream": 0.9960317460317459,
+          "candidateMedianMs": 0.21163575042158517,
+          "referenceMedianMs": 0.2124789207419899,
+          "candidateRangeMs": [
+            0.21163575042158517,
+            0.2124789207419899
+          ],
+          "referenceRangeMs": [
+            0.21163575042158517,
+            0.2124789207419899
+          ],
+          "phase98Ratio": 1.0,
+          "phase98CandidateMedianMs": 0.21163575042158517,
+          "phase98ReferenceMedianMs": 0.21163575042158517,
+          "sourcePath": "selfhost/tools/performance/phase37/fixtures-historical/local-row.bend",
+          "sourceSha256": "3987479425f7bf0d5c9e7655bb22bae29ed0d44635fdbf50eff2bb3cd869dfb4",
+          "programSourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/selfhost/tools/performance/phase37/fixtures-historical/local-row.bend",
+          "sourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase102/default-promotion.md",
+          "args": [
+            0
+          ]
+        },
+        {
+          "id": "local-fold",
+          "label": "Local fold",
+          "sourceId": "local-fold",
+          "ratio": 0.832764505119454,
+          "ratioToUpstream": 0.832764505119454,
+          "candidateMedianMs": 0.0027699887611111742,
+          "referenceMedianMs": 0.0033262569959244836,
+          "candidateRangeMs": [
+            0.0027699887611111742,
+            0.0027813411740665477
+          ],
+          "referenceRangeMs": [
+            0.00331490458296911,
+            0.0033376094088798576
+          ],
+          "phase98Ratio": 1.0040322580645162,
+          "phase98CandidateMedianMs": 0.002765990535646842,
+          "phase98ReferenceMedianMs": 0.0027548821399213524,
+          "sourcePath": "selfhost/tools/performance/phase37/fixtures-historical/local-fold.bend",
+          "sourceSha256": "d13b49747fbe6308aa35451ca6f1e1059f0a01bac8fce671dc7a195424b5cc3a",
+          "programSourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/selfhost/tools/performance/phase37/fixtures-historical/local-fold.bend",
+          "sourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase102/default-promotion.md",
+          "args": [
+            4096,
+            17
+          ]
+        },
+        {
+          "id": "scalar-region-8192",
+          "label": "Scalar region 8192",
+          "sourceId": "scalar-region",
+          "ratio": 1.04,
+          "ratioToUpstream": 1.04,
+          "candidateMedianMs": 0.037577684636508166,
+          "referenceMedianMs": 0.03613238907356554,
+          "candidateRangeMs": [
+            0.037577684636508166,
+            0.037577684636508166
+          ],
+          "referenceRangeMs": [
+            0.035987859517271285,
+            0.03613238907356554
+          ],
+          "phase98Ratio": 1.0,
+          "phase98CandidateMedianMs": 0.037473872797850104,
+          "phase98ReferenceMedianMs": 0.037473872797850104,
+          "sourcePath": "selfhost/tools/performance/phase37/fixtures-historical/scalar-region.bend",
+          "sourceSha256": "5c1b7031be03394ea7bfc64358b6db167711765e187e32d06f65a9f06bba3c7d",
+          "programSourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/selfhost/tools/performance/phase37/fixtures-historical/scalar-region.bend",
+          "sourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase102/default-promotion.md",
+          "args": [
+            8192,
+            524800
+          ]
+        },
+        {
+          "id": "complete-generic-row32",
+          "label": "Complete generic row32",
+          "sourceId": "local-row",
+          "ratio": 0.7723076923076923,
+          "ratioToUpstream": 0.7723076923076923,
+          "candidateMedianMs": 0.10717335610589239,
+          "referenceMedianMs": 0.13877028181041845,
+          "candidateRangeMs": [
+            0.10589239965841162,
+            0.10717335610589239
+          ],
+          "referenceRangeMs": [
+            0.13834329632792486,
+            0.13962425277540563
+          ],
+          "phase98Ratio": 0.8152866242038217,
+          "phase98CandidateMedianMs": 0.10930828351836037,
+          "phase98ReferenceMedianMs": 0.1340734415029889,
+          "sourcePath": "selfhost/tools/performance/phase37/fixtures-historical/local-row.bend",
+          "sourceSha256": "3987479425f7bf0d5c9e7655bb22bae29ed0d44635fdbf50eff2bb3cd869dfb4",
+          "programSourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/selfhost/tools/performance/phase37/fixtures-historical/local-row.bend",
+          "sourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase102/default-promotion.md",
+          "args": [
+            32,
+            17
+          ]
+        },
+        {
+          "id": "variation-editdist-0-17",
+          "label": "Editdist 0 17",
+          "sourceId": "editdist",
+          "ratio": 1.0,
+          "ratioToUpstream": 1.0,
+          "candidateMedianMs": 0.21163575042158517,
+          "referenceMedianMs": 0.21163575042158517,
+          "candidateRangeMs": [
+            0.21163575042158517,
+            0.2124789207419899
+          ],
+          "referenceRangeMs": [
+            0.2099494097807757,
+            0.2124789207419899
+          ],
+          "phase98Ratio": 1.0,
+          "phase98CandidateMedianMs": 0.21163575042158517,
+          "phase98ReferenceMedianMs": 0.21163575042158517,
+          "sourcePath": "selfhost/tools/performance/phase37/fixtures-historical/editdist.bend",
+          "sourceSha256": "f9cc44d93829d8ea48148c26b8ed7e2c1785611ad0c19a3770f86227a3142e6f",
+          "programSourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/selfhost/tools/performance/phase37/fixtures-historical/editdist.bend",
+          "sourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase102/default-promotion.md",
+          "args": [
+            0,
+            17
+          ]
+        },
+        {
+          "id": "variation-editdist-3-123",
+          "label": "Editdist 3 123",
+          "sourceId": "editdist",
+          "ratio": 1.007936507936508,
+          "ratioToUpstream": 1.007936507936508,
+          "candidateMedianMs": 1.7046979865771812,
+          "referenceMedianMs": 1.691275167785235,
+          "candidateRangeMs": [
+            1.691275167785235,
+            1.7181208053691275
+          ],
+          "referenceRangeMs": [
+            1.6845637583892616,
+            1.6979865771812082
+          ],
+          "phase98Ratio": 1.0040322580645162,
+          "phase98CandidateMedianMs": 1.6938775510204083,
+          "phase98ReferenceMedianMs": 1.6870748299319727,
+          "sourcePath": "selfhost/tools/performance/phase37/fixtures-historical/editdist.bend",
+          "sourceSha256": "f9cc44d93829d8ea48148c26b8ed7e2c1785611ad0c19a3770f86227a3142e6f",
+          "programSourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/selfhost/tools/performance/phase37/fixtures-historical/editdist.bend",
+          "sourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase102/default-promotion.md",
+          "args": [
+            3,
+            123
+          ]
+        },
+        {
+          "id": "variation-lexer-6-17",
+          "label": "Lexer 6 17",
+          "sourceId": "lexer",
+          "ratio": 1.072,
+          "ratioToUpstream": 1.072,
+          "candidateMedianMs": 0.09838472834067548,
+          "referenceMedianMs": 0.09177679882525698,
+          "candidateRangeMs": [
+            0.09838472834067548,
+            0.09875183553597651
+          ],
+          "referenceRangeMs": [
+            0.09177679882525698,
+            0.09214390602055801
+          ],
+          "phase98Ratio": 0.7241379310344828,
+          "phase98CandidateMedianMs": 0.09760956175298804,
+          "phase98ReferenceMedianMs": 0.1347941567065073,
+          "sourcePath": "selfhost/tools/performance/phase37/fixtures-historical/lexer.bend",
+          "sourceSha256": "6014af6bf7e97c8feaafa918e79f28a22d2c9c92bea836203fcd89b6d70a4fbb",
+          "programSourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/selfhost/tools/performance/phase37/fixtures-historical/lexer.bend",
+          "sourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase102/default-promotion.md",
+          "args": [
+            6,
+            17
+          ]
+        },
+        {
+          "id": "variation-lexer-10-123",
+          "label": "Lexer 10 123",
+          "sourceId": "lexer",
+          "ratio": 1.0708661417322836,
+          "ratioToUpstream": 1.0708661417322836,
+          "candidateMedianMs": 1.590643274853801,
+          "referenceMedianMs": 1.4853801169590644,
+          "candidateRangeMs": [
+            1.5614035087719298,
+            1.6783625730994152
+          ],
+          "referenceRangeMs": [
+            1.4678362573099417,
+            1.4853801169590644
+          ],
+          "phase98Ratio": 0.7307692307692308,
+          "phase98CandidateMedianMs": 1.5833333333333333,
+          "phase98ReferenceMedianMs": 2.1666666666666665,
+          "sourcePath": "selfhost/tools/performance/phase37/fixtures-historical/lexer.bend",
+          "sourceSha256": "6014af6bf7e97c8feaafa918e79f28a22d2c9c92bea836203fcd89b6d70a4fbb",
+          "programSourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/selfhost/tools/performance/phase37/fixtures-historical/lexer.bend",
+          "sourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase102/default-promotion.md",
+          "args": [
+            10,
+            123
+          ]
+        },
+        {
+          "id": "variation-tree-bitonic-6-17",
+          "label": "Tree bitonic 6 17",
+          "sourceId": "tree-bitonic",
+          "ratio": 1.368,
+          "ratioToUpstream": 1.368,
+          "candidateMedianMs": 0.024748534626239237,
+          "referenceMedianMs": 0.018091034083508213,
+          "candidateRangeMs": [
+            0.024748534626239237,
+            0.02482089876257327
+          ],
+          "referenceRangeMs": [
+            0.018091034083508213,
+            0.018235762356176282
+          ],
+          "phase98Ratio": 0.9918699186991868,
+          "phase98CandidateMedianMs": 0.024606696248487294,
+          "phase98ReferenceMedianMs": 0.024808390480032274,
+          "sourcePath": "selfhost/tools/performance/phase37/fixtures-historical/tree-bitonic.bend",
+          "sourceSha256": "ace0242c329b1628cb9d0a0142386380e0ca4e56fa741916974938eb079b2c0d",
+          "programSourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/selfhost/tools/performance/phase37/fixtures-historical/tree-bitonic.bend",
+          "sourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase102/default-promotion.md",
+          "args": [
+            6,
+            17
+          ]
+        },
+        {
+          "id": "variation-tree-bitonic-9-123",
+          "label": "Tree bitonic 9 123",
+          "sourceId": "tree-bitonic",
+          "ratio": 1.2983870967741935,
+          "ratioToUpstream": 1.2983870967741935,
+          "candidateMedianMs": 0.4117647058823529,
+          "referenceMedianMs": 0.3171355498721227,
+          "candidateRangeMs": [
+            0.4104859335038363,
+            0.4117647058823529
+          ],
+          "referenceRangeMs": [
+            0.31585677749360613,
+            0.31841432225063937
+          ],
+          "phase98Ratio": 1.00398406374502,
+          "phase98CandidateMedianMs": 0.4110929853181077,
+          "phase98ReferenceMedianMs": 0.4094616639477977,
+          "sourcePath": "selfhost/tools/performance/phase37/fixtures-historical/tree-bitonic.bend",
+          "sourceSha256": "ace0242c329b1628cb9d0a0142386380e0ca4e56fa741916974938eb079b2c0d",
+          "programSourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/selfhost/tools/performance/phase37/fixtures-historical/tree-bitonic.bend",
+          "sourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase102/default-promotion.md",
+          "args": [
+            9,
+            123
+          ]
+        },
+        {
+          "id": "variation-symreg-4-17",
+          "label": "Symreg 4 17",
+          "sourceId": "symreg",
+          "ratio": 1.6680000000000001,
+          "ratioToUpstream": 1.6680000000000001,
+          "candidateMedianMs": 1.1680672268907564,
+          "referenceMedianMs": 0.7002801120448179,
+          "candidateRangeMs": [
+            1.1652661064425769,
+            1.184873949579832
+          ],
+          "referenceRangeMs": [
+            0.7002801120448179,
+            0.7002801120448179
+          ],
+          "phase98Ratio": 0.9803149606299213,
+          "phase98CandidateMedianMs": 1.158139534883721,
+          "phase98ReferenceMedianMs": 1.1813953488372093,
+          "sourcePath": "selfhost/tools/performance/phase37/fixtures-historical/symreg.bend",
+          "sourceSha256": "c25c8fb869eaf5ac90cbf45feb30c0e8169207ed0b74cd655343048fcc82778b",
+          "programSourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/selfhost/tools/performance/phase37/fixtures-historical/symreg.bend",
+          "sourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase102/default-promotion.md",
+          "args": [
+            4,
+            17
+          ]
+        },
+        {
+          "id": "variation-symreg-7-123",
+          "label": "Symreg 7 123",
+          "sourceId": "symreg",
+          "ratio": 1.6560000000000001,
+          "ratioToUpstream": 1.6560000000000001,
+          "candidateMedianMs": 3.905660377358491,
+          "referenceMedianMs": 2.358490566037736,
+          "candidateRangeMs": [
+            3.8962264150943398,
+            3.9245283018867925
+          ],
+          "referenceRangeMs": [
+            2.358490566037736,
+            2.3679245283018866
+          ],
+          "phase98Ratio": 0.9881422924901185,
+          "phase98CandidateMedianMs": 3.90625,
+          "phase98ReferenceMedianMs": 3.953125,
+          "sourcePath": "selfhost/tools/performance/phase37/fixtures-historical/symreg.bend",
+          "sourceSha256": "c25c8fb869eaf5ac90cbf45feb30c0e8169207ed0b74cd655343048fcc82778b",
+          "programSourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/selfhost/tools/performance/phase37/fixtures-historical/symreg.bend",
+          "sourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase102/default-promotion.md",
+          "args": [
+            7,
+            123
+          ]
+        },
+        {
+          "id": "variation-local-fold-128-0",
+          "label": "Local fold 128 0",
+          "sourceId": "local-fold",
+          "ratio": 0.996031746031746,
+          "ratioToUpstream": 0.996031746031746,
+          "candidateMedianMs": 0.00010596207655274548,
+          "referenceMedianMs": 0.0001063842362202863,
+          "candidateRangeMs": [
+            0.00010596207655274548,
+            0.00010680639588782711
+          ],
+          "referenceRangeMs": [
+            0.00010596207655274548,
+            0.0001063842362202863
+          ],
+          "phase98Ratio": 1.015748031496063,
+          "phase98CandidateMedianMs": 0.00010629269217141962,
+          "phase98ReferenceMedianMs": 0.00010464474345558367,
+          "sourcePath": "selfhost/tools/performance/phase37/fixtures-historical/local-fold.bend",
+          "sourceSha256": "d13b49747fbe6308aa35451ca6f1e1059f0a01bac8fce671dc7a195424b5cc3a",
+          "programSourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/selfhost/tools/performance/phase37/fixtures-historical/local-fold.bend",
+          "sourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase102/default-promotion.md",
+          "args": [
+            128,
+            0
+          ]
+        },
+        {
+          "id": "variation-local-fold-8192-123",
+          "label": "Local fold 8192 123",
+          "sourceId": "local-fold",
+          "ratio": 0.8367346938775511,
+          "ratioToUpstream": 0.8367346938775511,
+          "candidateMedianMs": 0.005525358249854005,
+          "referenceMedianMs": 0.006603476932752347,
+          "candidateRangeMs": [
+            0.005502897443960289,
+            0.00554781905574772
+          ],
+          "referenceRangeMs": [
+            0.006581016126858632,
+            0.006625937738646063
+          ],
+          "phase98Ratio": 1.0,
+          "phase98CandidateMedianMs": 0.005509764279842705,
+          "phase98ReferenceMedianMs": 0.005509764279842705,
+          "sourcePath": "selfhost/tools/performance/phase37/fixtures-historical/local-fold.bend",
+          "sourceSha256": "d13b49747fbe6308aa35451ca6f1e1059f0a01bac8fce671dc7a195424b5cc3a",
+          "programSourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/selfhost/tools/performance/phase37/fixtures-historical/local-fold.bend",
+          "sourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase102/default-promotion.md",
+          "args": [
+            8192,
+            123
+          ]
+        },
+        {
+          "id": "variation-mandelbrot-grid-4-7",
+          "label": "Mandelbrot grid 4 7",
+          "sourceId": "mandelbrot-grid",
+          "ratio": 1.1071428571428572,
+          "ratioToUpstream": 1.1071428571428572,
+          "candidateMedianMs": 0.009127191834598272,
+          "referenceMedianMs": 0.0082439152054436,
+          "candidateRangeMs": [
+            0.009127191834598272,
+            0.009159905783826224
+          ],
+          "referenceRangeMs": [
+            0.00821120125621565,
+            0.0082439152054436
+          ],
+          "phase98Ratio": 1.007936507936508,
+          "phase98CandidateMedianMs": 0.009177626824685647,
+          "phase98ReferenceMedianMs": 0.009105362046538517,
+          "sourcePath": "selfhost/tools/performance/phase37/fixtures-variants/mandelbrot-grid.bend",
+          "sourceSha256": "f908b2daf26ab7c61e2876a91a101009b6e80ad61fbd906a34a2eb03deb80377",
+          "programSourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/selfhost/tools/performance/phase37/fixtures-variants/mandelbrot-grid.bend",
+          "sourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase102/default-promotion.md",
+          "args": [
+            4,
+            7
+          ]
+        },
+        {
+          "id": "variation-mandelbrot-grid-5-31",
+          "label": "Mandelbrot grid 5 31",
+          "sourceId": "mandelbrot-grid",
+          "ratio": 1.024,
+          "ratioToUpstream": 1.024,
+          "candidateMedianMs": 0.1452894438138479,
+          "referenceMedianMs": 0.14188422247446084,
+          "candidateRangeMs": [
+            0.1452894438138479,
+            0.1464245175936436
+          ],
+          "referenceRangeMs": [
+            0.14188422247446084,
+            0.14245175936435867
+          ],
+          "phase98Ratio": 1.0039525691699605,
+          "phase98CandidateMedianMs": 0.14682080924855492,
+          "phase98ReferenceMedianMs": 0.146242774566474,
+          "sourcePath": "selfhost/tools/performance/phase37/fixtures-variants/mandelbrot-grid.bend",
+          "sourceSha256": "f908b2daf26ab7c61e2876a91a101009b6e80ad61fbd906a34a2eb03deb80377",
+          "programSourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/selfhost/tools/performance/phase37/fixtures-variants/mandelbrot-grid.bend",
+          "sourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase102/default-promotion.md",
+          "args": [
+            5,
+            31
+          ]
+        },
+        {
+          "id": "variation-ray-active-64-2440",
+          "label": "Ray active 64 2440",
+          "sourceId": "raytrace-active",
+          "ratio": 3.449799196787149,
+          "ratioToUpstream": 3.449799196787149,
+          "candidateMedianMs": 0.11005765534913517,
+          "referenceMedianMs": 0.0319026265214606,
+          "candidateRangeMs": [
+            0.11005765534913517,
+            0.11018577834721333
+          ],
+          "referenceRangeMs": [
+            0.031774503523382444,
+            0.032415118513773225
+          ],
+          "phase98Ratio": 0.996078431372549,
+          "phase98CandidateMedianMs": 0.11111111111111112,
+          "phase98ReferenceMedianMs": 0.1115485564304462,
+          "sourcePath": "selfhost/tools/performance/phase37/fixtures-variants/raytrace-active.bend",
+          "sourceSha256": "5ba03ffff01fc0825ecf7ec0d9fb5f5030fcc07c3d83582ad790394cbcf55955",
+          "programSourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/selfhost/tools/performance/phase37/fixtures-variants/raytrace-active.bend",
+          "sourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase102/default-promotion.md",
+          "args": [
+            64,
+            2440
+          ]
+        },
+        {
+          "id": "variation-ray-active-256-2240",
+          "label": "Ray active 256 2240",
+          "sourceId": "raytrace-active",
+          "ratio": 3.423387096774194,
+          "ratioToUpstream": 3.423387096774194,
+          "candidateMedianMs": 0.4552278820375335,
+          "referenceMedianMs": 0.13297587131367292,
+          "candidateRangeMs": [
+            0.4546916890080429,
+            0.4557640750670241
+          ],
+          "referenceRangeMs": [
+            0.1324396782841823,
+            0.13297587131367292
+          ],
+          "phase98Ratio": 0.992,
+          "phase98CandidateMedianMs": 0.4567219152854512,
+          "phase98ReferenceMedianMs": 0.4604051565377532,
+          "sourcePath": "selfhost/tools/performance/phase37/fixtures-variants/raytrace-active.bend",
+          "sourceSha256": "5ba03ffff01fc0825ecf7ec0d9fb5f5030fcc07c3d83582ad790394cbcf55955",
+          "programSourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/selfhost/tools/performance/phase37/fixtures-variants/raytrace-active.bend",
+          "sourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase102/default-promotion.md",
+          "args": [
+            256,
+            2240
+          ]
+        },
+        {
+          "id": "coverage-closures-64",
+          "label": "Closures 64",
+          "sourceId": "closures",
+          "ratio": 0.2971360381861575,
+          "ratioToUpstream": 0.2971360381861575,
+          "candidateMedianMs": 0.0007737028049057108,
+          "referenceMedianMs": 0.0026038672711284562,
+          "candidateRangeMs": [
+            0.0007674883245450223,
+            0.0007799172852663992
+          ],
+          "referenceRangeMs": [
+            0.002594545550587424,
+            0.002656690354194308
+          ],
+          "phase98Ratio": 0.9622641509433961,
+          "phase98CandidateMedianMs": 0.0007758022708188821,
+          "phase98ReferenceMedianMs": 0.0008062258892823677,
+          "sourcePath": "selfhost/tools/performance/phase37/fixtures-new/closures.bend",
+          "sourceSha256": "bc5fb44cba7971ae593dd642554dc468a9cbc51ce54567467a4d8bf84bb70943",
+          "programSourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/selfhost/tools/performance/phase37/fixtures-new/closures.bend",
+          "sourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase102/default-promotion.md",
+          "args": [
+            64,
+            17
+          ]
+        },
+        {
+          "id": "coverage-closures-256",
+          "label": "Closures 256",
+          "sourceId": "closures",
+          "ratio": 0.28771929824561404,
+          "ratioToUpstream": 0.28771929824561404,
+          "candidateMedianMs": 0.0029628559040323745,
+          "referenceMedianMs": 0.01029773088596618,
+          "candidateRangeMs": [
+            0.002950811774341186,
+            0.002974900033723563
+          ],
+          "referenceRangeMs": [
+            0.010237510237510237,
+            0.010321819145348557
+          ],
+          "phase98Ratio": 0.9607843137254902,
+          "phase98CandidateMedianMs": 0.002930902478706096,
+          "phase98ReferenceMedianMs": 0.003050531151306345,
+          "sourcePath": "selfhost/tools/performance/phase37/fixtures-new/closures.bend",
+          "sourceSha256": "bc5fb44cba7971ae593dd642554dc468a9cbc51ce54567467a4d8bf84bb70943",
+          "programSourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/selfhost/tools/performance/phase37/fixtures-new/closures.bend",
+          "sourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase102/default-promotion.md",
+          "args": [
+            256,
+            123
+          ]
+        },
+        {
+          "id": "coverage-list-pipeline-128",
+          "label": "List pipeline 128",
+          "sourceId": "list-pipeline",
+          "ratio": 0.6875000000000001,
+          "ratioToUpstream": 0.6875000000000001,
+          "candidateMedianMs": 0.0013941775179231715,
+          "referenceMedianMs": 0.002027894571524613,
+          "candidateRangeMs": [
+            0.0013886669348483762,
+            0.0013996881009979668
+          ],
+          "referenceRangeMs": [
+            0.002022383988449818,
+            0.002033405154599408
+          ],
+          "phase98Ratio": 0.6446700507614214,
+          "phase98CandidateMedianMs": 0.0013996881009979668,
+          "phase98ReferenceMedianMs": 0.0021711697314692868,
+          "sourcePath": "selfhost/tools/performance/phase37/fixtures-new/list-pipeline.bend",
+          "sourceSha256": "b4819808f26a6d5fe8ef0295c69b447121320c3e748a7fbc937bf8a88e3d48d0",
+          "programSourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/selfhost/tools/performance/phase37/fixtures-new/list-pipeline.bend",
+          "sourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase102/default-promotion.md",
+          "args": [
+            128,
+            17
+          ]
+        },
+        {
+          "id": "coverage-list-pipeline-512",
+          "label": "List pipeline 512",
+          "sourceId": "list-pipeline",
+          "ratio": 0.7073863636363636,
+          "ratioToUpstream": 0.7073863636363636,
+          "candidateMedianMs": 0.005714285714285714,
+          "referenceMedianMs": 0.008078026391279403,
+          "candidateRangeMs": [
+            0.005714285714285714,
+            0.005737234652897303
+          ],
+          "referenceRangeMs": [
+            0.008078026391279403,
+            0.008123924268502582
+          ],
+          "phase98Ratio": 0.6693121693121693,
+          "phase98CandidateMedianMs": 0.005682583891110013,
+          "phase98ReferenceMedianMs": 0.008490184627824447,
+          "sourcePath": "selfhost/tools/performance/phase37/fixtures-new/list-pipeline.bend",
+          "sourceSha256": "b4819808f26a6d5fe8ef0295c69b447121320c3e748a7fbc937bf8a88e3d48d0",
+          "programSourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/selfhost/tools/performance/phase37/fixtures-new/list-pipeline.bend",
+          "sourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase102/default-promotion.md",
+          "args": [
+            512,
+            123
+          ]
+        },
+        {
+          "id": "coverage-bst-32",
+          "label": "Bst 32",
+          "sourceId": "bst",
+          "ratio": 1.0731707317073171,
+          "ratioToUpstream": 1.0731707317073171,
+          "candidateMedianMs": 0.005994005994005994,
+          "referenceMedianMs": 0.005585323767141949,
+          "candidateRangeMs": [
+            0.005994005994005994,
+            0.006016710562165108
+          ],
+          "referenceRangeMs": [
+            0.005539914630823721,
+            0.005698846607937517
+          ],
+          "phase98Ratio": 0.9840637450199203,
+          "phase98CandidateMedianMs": 0.0060302734375,
+          "phase98ReferenceMedianMs": 0.0061279296875,
+          "sourcePath": "selfhost/tools/performance/phase37/fixtures-new/bst.bend",
+          "sourceSha256": "db75d09ea4ee8cf8e46aad8955c3f8042df221e879657a20f6ab02e8ca8eca3f",
+          "programSourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/selfhost/tools/performance/phase37/fixtures-new/bst.bend",
+          "sourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase102/default-promotion.md",
+          "args": [
+            32,
+            0
+          ]
+        },
+        {
+          "id": "coverage-bst-64",
+          "label": "Bst 64",
+          "sourceId": "bst",
+          "ratio": 1.0576131687242798,
+          "ratioToUpstream": 1.0576131687242798,
+          "candidateMedianMs": 0.0071527971054828835,
+          "referenceMedianMs": 0.006763150570553854,
+          "candidateRangeMs": [
+            0.00712496521013081,
+            0.007180629000834957
+          ],
+          "referenceRangeMs": [
+            0.006735318675201781,
+            0.0067909824659059285
+          ],
+          "phase98Ratio": 1.0040816326530613,
+          "phase98CandidateMedianMs": 0.007206890490420109,
+          "phase98ReferenceMedianMs": 0.007177594187613523,
+          "sourcePath": "selfhost/tools/performance/phase37/fixtures-new/bst.bend",
+          "sourceSha256": "db75d09ea4ee8cf8e46aad8955c3f8042df221e879657a20f6ab02e8ca8eca3f",
+          "programSourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/selfhost/tools/performance/phase37/fixtures-new/bst.bend",
+          "sourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase102/default-promotion.md",
+          "args": [
+            64,
+            17
+          ]
+        },
+        {
+          "id": "coverage-unicode-text-16",
+          "label": "Unicode text 16",
+          "sourceId": "unicode-text",
+          "ratio": 0.5882352941176471,
+          "ratioToUpstream": 0.5882352941176471,
+          "candidateMedianMs": 0.013289036544850499,
+          "referenceMedianMs": 0.022591362126245847,
+          "candidateRangeMs": [
+            0.013205980066445182,
+            0.013289036544850499
+          ],
+          "referenceRangeMs": [
+            0.022508305647840534,
+            0.023006644518272425
+          ],
+          "phase98Ratio": 0.8389261744966443,
+          "phase98CandidateMedianMs": 0.013280917977050574,
+          "phase98ReferenceMedianMs": 0.015830854228644286,
+          "sourcePath": "selfhost/tools/performance/phase37/fixtures-new/unicode-text.bend",
+          "sourceSha256": "e0dd8066deac347ee4d88afa5ef5db0e338c5f09b3e2cc6a7bf5ec553f52d550",
+          "programSourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/selfhost/tools/performance/phase37/fixtures-new/unicode-text.bend",
+          "sourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase102/default-promotion.md",
+          "args": [
+            16,
+            17
+          ]
+        },
+        {
+          "id": "coverage-unicode-text-64",
+          "label": "Unicode text 64",
+          "sourceId": "unicode-text",
+          "ratio": 0.5875912408759124,
+          "ratioToUpstream": 0.5875912408759124,
+          "candidateMedianMs": 0.05848165637486378,
+          "referenceMedianMs": 0.0995277878677806,
+          "candidateRangeMs": [
+            0.05811841627315655,
+            0.05920813657827824
+          ],
+          "referenceRangeMs": [
+            0.09916454776607336,
+            0.10025426807119506
+          ],
+          "phase98Ratio": 0.8595890410958903,
+          "phase98CandidateMedianMs": 0.058823529411764705,
+          "phase98ReferenceMedianMs": 0.06843215373798922,
+          "sourcePath": "selfhost/tools/performance/phase37/fixtures-new/unicode-text.bend",
+          "sourceSha256": "e0dd8066deac347ee4d88afa5ef5db0e338c5f09b3e2cc6a7bf5ec553f52d550",
+          "programSourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/selfhost/tools/performance/phase37/fixtures-new/unicode-text.bend",
+          "sourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase102/default-promotion.md",
+          "args": [
+            64,
+            123
+          ]
+        },
+        {
+          "id": "coverage-expression-32",
+          "label": "Expression 32",
+          "sourceId": "expression",
+          "ratio": 1.6162162162162164,
+          "ratioToUpstream": 1.6162162162162164,
+          "candidateMedianMs": 0.0021899307132289395,
+          "referenceMedianMs": 0.001354973852666735,
+          "candidateRangeMs": [
+            0.002175282347254164,
+            0.0021899307132289395
+          ],
+          "referenceRangeMs": [
+            0.001354973852666735,
+            0.0013696222186415105
+          ],
+          "phase98Ratio": 0.996031746031746,
+          "phase98CandidateMedianMs": 0.0021815274168455632,
+          "phase98ReferenceMedianMs": 0.002190218761135785,
+          "sourcePath": "selfhost/tools/performance/phase37/fixtures-new/expression.bend",
+          "sourceSha256": "62f40333fa5e7dacd2fadbd622d22033a3434de004df93a6870e4cd33df9d4a5",
+          "programSourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/selfhost/tools/performance/phase37/fixtures-new/expression.bend",
+          "sourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase102/default-promotion.md",
+          "args": [
+            32,
+            17
+          ]
+        },
+        {
+          "id": "coverage-expression-128",
+          "label": "Expression 128",
+          "sourceId": "expression",
+          "ratio": 1.6021505376344085,
+          "ratioToUpstream": 1.6021505376344085,
+          "candidateMedianMs": 0.008584927402627333,
+          "referenceMedianMs": 0.005358377506337866,
+          "candidateRangeMs": [
+            0.008556118921410463,
+            0.008613735883844204
+          ],
+          "referenceRangeMs": [
+            0.005329569025120996,
+            0.005358377506337866
+          ],
+          "phase98Ratio": 1.00398406374502,
+          "phase98CandidateMedianMs": 0.008613028915168502,
+          "phase98ReferenceMedianMs": 0.008578850228997197,
+          "sourcePath": "selfhost/tools/performance/phase37/fixtures-new/expression.bend",
+          "sourceSha256": "62f40333fa5e7dacd2fadbd622d22033a3434de004df93a6870e4cd33df9d4a5",
+          "programSourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/selfhost/tools/performance/phase37/fixtures-new/expression.bend",
+          "sourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase102/default-promotion.md",
+          "args": [
+            128,
+            123
+          ]
+        },
+        {
+          "id": "coverage-map-churn-32",
+          "label": "Map churn 32",
+          "sourceId": "map-churn",
+          "ratio": 0.6521739130434782,
+          "ratioToUpstream": 0.6521739130434782,
+          "candidateMedianMs": 0.046282011724776306,
+          "referenceMedianMs": 0.07096575131132367,
+          "candidateRangeMs": [
+            0.046282011724776306,
+            0.047516198704103674
+          ],
+          "referenceRangeMs": [
+            0.07096575131132367,
+            0.0718913915458192
+          ],
+          "phase98Ratio": 0.9808612440191388,
+          "phase98CandidateMedianMs": 0.07686539182602176,
+          "phase98ReferenceMedianMs": 0.07836520434945632,
+          "sourcePath": "selfhost/tools/performance/phase37/fixtures-new/map-churn.bend",
+          "sourceSha256": "180fc1c2c96620613fb44e9f051a208121b65c499349dc08a10de08725c7f30e",
+          "programSourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/selfhost/tools/performance/phase37/fixtures-new/map-churn.bend",
+          "sourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase102/default-promotion.md",
+          "args": [
+            32,
+            17
+          ]
+        },
+        {
+          "id": "coverage-map-churn-128",
+          "label": "Map churn 128",
+          "sourceId": "map-churn",
+          "ratio": 0.6178660049627791,
+          "ratioToUpstream": 0.6178660049627791,
+          "candidateMedianMs": 0.23141263940520446,
+          "referenceMedianMs": 0.3745353159851301,
+          "candidateRangeMs": [
+            0.23048327137546468,
+            0.23141263940520446
+          ],
+          "referenceRangeMs": [
+            0.370817843866171,
+            0.3745353159851301
+          ],
+          "phase98Ratio": 0.9859813084112149,
+          "phase98CandidateMedianMs": 0.3889400921658986,
+          "phase98ReferenceMedianMs": 0.3944700460829493,
+          "sourcePath": "selfhost/tools/performance/phase37/fixtures-new/map-churn.bend",
+          "sourceSha256": "180fc1c2c96620613fb44e9f051a208121b65c499349dc08a10de08725c7f30e",
+          "programSourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/selfhost/tools/performance/phase37/fixtures-new/map-churn.bend",
+          "sourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase102/default-promotion.md",
+          "args": [
+            128,
+            123
+          ]
+        },
+        {
+          "id": "coverage-numeric-recurrence-256",
+          "label": "Numeric recurrence 256",
+          "sourceId": "numeric-recurrence",
+          "ratio": 1.0,
+          "ratioToUpstream": 1.0,
+          "candidateMedianMs": 0.0008138885007684784,
+          "referenceMedianMs": 0.0008138885007684784,
+          "candidateRangeMs": [
+            0.0008138885007684784,
+            0.0008767640072656141
+          ],
+          "referenceRangeMs": [
+            0.000810395417074193,
+            0.0008138885007684784
+          ],
+          "phase98Ratio": 1.0826771653543306,
+          "phase98CandidateMedianMs": 0.0008986252667283177,
+          "phase98ReferenceMedianMs": 0.0008300029736327008,
+          "sourcePath": "selfhost/tools/performance/phase37/fixtures-new/numeric-recurrence.bend",
+          "sourceSha256": "36f803ed8d88bf20c5878092a572d4ae2ef48d71fd6710024f05a57349f4b0f3",
+          "programSourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/selfhost/tools/performance/phase37/fixtures-new/numeric-recurrence.bend",
+          "sourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase102/default-promotion.md",
+          "args": [
+            256,
+            17
+          ]
+        },
+        {
+          "id": "coverage-numeric-recurrence-1024",
+          "label": "Numeric recurrence 1024",
+          "sourceId": "numeric-recurrence",
+          "ratio": 1.0729613733905579,
+          "ratioToUpstream": 1.0729613733905579,
+          "candidateMedianMs": 0.003499342123680748,
+          "referenceMedianMs": 0.0032613868592704575,
+          "candidateRangeMs": [
+            0.0032753842277651805,
+            0.003513339492175471
+          ],
+          "referenceRangeMs": [
+            0.0032613868592704575,
+            0.0032613868592704575
+          ],
+          "phase98Ratio": 1.0,
+          "phase98CandidateMedianMs": 0.0033044887043061216,
+          "phase98ReferenceMedianMs": 0.0033044887043061216,
+          "sourcePath": "selfhost/tools/performance/phase37/fixtures-new/numeric-recurrence.bend",
+          "sourceSha256": "36f803ed8d88bf20c5878092a572d4ae2ef48d71fd6710024f05a57349f4b0f3",
+          "programSourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/selfhost/tools/performance/phase37/fixtures-new/numeric-recurrence.bend",
+          "sourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase102/default-promotion.md",
+          "args": [
+            1024,
+            123
+          ]
+        },
+        {
+          "id": "coverage-record-aggregation-64",
+          "label": "Record aggregation 64",
+          "sourceId": "record-aggregation",
+          "ratio": 0.7875,
+          "ratioToUpstream": 0.7875,
+          "candidateMedianMs": 0.10366104483751543,
+          "referenceMedianMs": 0.1316330728095434,
+          "candidateRangeMs": [
+            0.1032496914849856,
+            0.10407239819004525
+          ],
+          "referenceRangeMs": [
+            0.1299876593994241,
+            0.15919374742904155
+          ],
+          "phase98Ratio": 0.996,
+          "phase98CandidateMedianMs": 0.10375,
+          "phase98ReferenceMedianMs": 0.10416666666666667,
+          "sourcePath": "selfhost/tools/performance/phase37/fixtures-new/record-aggregation.bend",
+          "sourceSha256": "6b31a2cfc58fbb33376fee6bf55d2a6aa05210be40a36342a82da87364080937",
+          "programSourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/selfhost/tools/performance/phase37/fixtures-new/record-aggregation.bend",
+          "sourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase102/default-promotion.md",
+          "args": [
+            64,
+            17
+          ]
+        },
+        {
+          "id": "coverage-record-aggregation-256",
+          "label": "Record aggregation 256",
+          "sourceId": "record-aggregation",
+          "ratio": 0.7767584097859327,
+          "ratioToUpstream": 0.7767584097859327,
+          "candidateMedianMs": 0.40126382306477093,
+          "referenceMedianMs": 0.5165876777251185,
+          "candidateRangeMs": [
+            0.3981042654028436,
+            0.40442338072669826
+          ],
+          "referenceRangeMs": [
+            0.5150078988941548,
+            0.5165876777251185
+          ],
+          "phase98Ratio": 1.0,
+          "phase98CandidateMedianMs": 0.3984,
+          "phase98ReferenceMedianMs": 0.3984,
+          "sourcePath": "selfhost/tools/performance/phase37/fixtures-new/record-aggregation.bend",
+          "sourceSha256": "6b31a2cfc58fbb33376fee6bf55d2a6aa05210be40a36342a82da87364080937",
+          "programSourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/selfhost/tools/performance/phase37/fixtures-new/record-aggregation.bend",
+          "sourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase102/default-promotion.md",
+          "args": [
+            256,
+            123
+          ]
+        }
+      ],
+      "groups": [
+        {
+          "id": "mandelbrot",
+          "label": "Mandelbrot",
+          "ratio": 1.2096774193548387,
+          "pointCount": 1,
+          "pointIds": [
+            "mandelbrot"
+          ],
+          "phase98Ratio": 0.9806201550387597,
+          "sourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/selfhost/tools/performance/phase37/fixtures-historical/mandelbrot.bend"
+        },
+        {
+          "id": "editdist",
+          "label": "Editdist",
+          "ratio": 1.0026385346573239,
+          "pointCount": 3,
+          "pointIds": [
+            "editdist",
+            "variation-editdist-0-17",
+            "variation-editdist-3-123"
+          ],
+          "phase98Ratio": 1.002675630316391,
+          "sourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/selfhost/tools/performance/phase37/fixtures-historical/editdist.bend"
+        },
+        {
+          "id": "tree-bitonic",
+          "label": "Tree bitonic",
+          "ratio": 1.3356408921773641,
+          "pointCount": 3,
+          "pointIds": [
+            "tree-bitonic",
+            "variation-tree-bitonic-6-17",
+            "variation-tree-bitonic-9-123"
+          ],
+          "phase98Ratio": 0.9999349551188486,
+          "sourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/selfhost/tools/performance/phase37/fixtures-historical/tree-bitonic.bend"
+        },
+        {
+          "id": "lexer",
+          "label": "Lexer",
+          "ratio": 1.0733637231630235,
+          "pointCount": 3,
+          "pointIds": [
+            "lexer",
+            "variation-lexer-6-17",
+            "variation-lexer-10-123"
+          ],
+          "phase98Ratio": 0.7255387302282958,
+          "sourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/selfhost/tools/performance/phase37/fixtures-historical/lexer.bend"
+        },
+        {
+          "id": "symreg",
+          "label": "Symreg",
+          "ratio": 1.6622255503712147,
+          "pointCount": 3,
+          "pointIds": [
+            "symreg",
+            "variation-symreg-4-17",
+            "variation-symreg-7-123"
+          ],
+          "phase98Ratio": 0.98296855424714,
+          "sourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/selfhost/tools/performance/phase37/fixtures-historical/symreg.bend"
+        },
+        {
+          "id": "test-morning-program",
+          "label": "Test morning program",
+          "ratio": 0.9615384615384616,
+          "pointCount": 1,
+          "pointIds": [
+            "test-morning-program"
+          ],
+          "phase98Ratio": 0.9057971014492754,
+          "sourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/selfhost/tools/performance/phase37/fixtures-historical/test-morning-program.bend"
+        },
+        {
+          "id": "test-evening-program",
+          "label": "Test evening program",
+          "ratio": 1.372,
+          "pointCount": 1,
+          "pointIds": [
+            "test-evening-program"
+          ],
+          "phase98Ratio": 0.8706293706293707,
+          "sourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/selfhost/tools/performance/phase37/fixtures-historical/test-evening-program.bend"
+        },
+        {
+          "id": "test-rle-roundtrip",
+          "label": "Test rle roundtrip",
+          "ratio": 2.0669291338582676,
+          "pointCount": 1,
+          "pointIds": [
+            "test-rle-roundtrip"
+          ],
+          "phase98Ratio": 0.79874213836478,
+          "sourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/selfhost/tools/performance/phase37/fixtures-historical/test-rle-roundtrip.bend"
+        },
+        {
+          "id": "test-map-set-ops",
+          "label": "Test map set ops",
+          "ratio": 1.1771653543307086,
+          "pointCount": 1,
+          "pointIds": [
+            "test-map-set-ops"
+          ],
+          "phase98Ratio": 1.0119999999999998,
+          "sourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/selfhost/tools/performance/phase37/fixtures-historical/test-map-set-ops.bend"
+        },
+        {
+          "id": "raytrace",
+          "label": "Raytrace",
+          "ratio": 1.4780876494023905,
+          "pointCount": 1,
+          "pointIds": [
+            "raytrace"
+          ],
+          "phase98Ratio": 0.9922480620155039,
+          "sourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/selfhost/tools/performance/phase37/fixtures-historical/raytrace.bend"
+        },
+        {
+          "id": "local-row",
+          "label": "Local row",
+          "ratio": 0.8770649800573382,
+          "pointCount": 2,
+          "pointIds": [
+            "local-pair",
+            "complete-generic-row32"
+          ],
+          "phase98Ratio": 0.9029322367729605,
+          "sourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/selfhost/tools/performance/phase37/fixtures-historical/local-row.bend"
+        },
+        {
+          "id": "local-fold",
+          "label": "Local fold",
+          "ratio": 0.8853759506616544,
+          "pointCount": 3,
+          "pointIds": [
+            "local-fold",
+            "variation-local-fold-128-0",
+            "variation-local-fold-8192-123"
+          ],
+          "phase98Ratio": 1.0065713197314057,
+          "sourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/selfhost/tools/performance/phase37/fixtures-historical/local-fold.bend"
+        },
+        {
+          "id": "scalar-region",
+          "label": "Scalar region",
+          "ratio": 1.04,
+          "pointCount": 1,
+          "pointIds": [
+            "scalar-region-8192"
+          ],
+          "phase98Ratio": 1.0,
+          "sourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/selfhost/tools/performance/phase37/fixtures-historical/scalar-region.bend"
+        },
+        {
+          "id": "mandelbrot-grid",
+          "label": "Mandelbrot grid",
+          "ratio": 1.0647602010379078,
+          "pointCount": 2,
+          "pointIds": [
+            "variation-mandelbrot-grid-4-7",
+            "variation-mandelbrot-grid-5-31"
+          ],
+          "phase98Ratio": 1.0059425663043866,
+          "sourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/selfhost/tools/performance/phase37/fixtures-variants/mandelbrot-grid.bend"
+        },
+        {
+          "id": "raytrace-active",
+          "label": "Raytrace active",
+          "ratio": 3.436567772755704,
+          "pointCount": 2,
+          "pointIds": [
+            "variation-ray-active-64-2440",
+            "variation-ray-active-256-2240"
+          ],
+          "phase98Ratio": 0.9940371240157827,
+          "sourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/selfhost/tools/performance/phase37/fixtures-variants/raytrace-active.bend"
+        },
+        {
+          "id": "closures",
+          "label": "Closures",
+          "ratio": 0.29238976109023246,
+          "pointCount": 2,
+          "pointIds": [
+            "coverage-closures-64",
+            "coverage-closures-256"
+          ],
+          "phase98Ratio": 0.9615239476408232,
+          "sourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/selfhost/tools/performance/phase37/fixtures-new/closures.bend"
+        },
+        {
+          "id": "list-pipeline",
+          "label": "List pipeline",
+          "ratio": 0.6973723001381688,
+          "pointCount": 2,
+          "pointIds": [
+            "coverage-list-pipeline-128",
+            "coverage-list-pipeline-512"
+          ],
+          "phase98Ratio": 0.6568755667291281,
+          "sourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/selfhost/tools/performance/phase37/fixtures-new/list-pipeline.bend"
+        },
+        {
+          "id": "bst",
+          "label": "Bst",
+          "ratio": 1.0653635521,
+          "pointCount": 2,
+          "pointIds": [
+            "coverage-bst-32",
+            "coverage-bst-64"
+          ],
+          "phase98Ratio": 0.9940222994150018,
+          "sourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/selfhost/tools/performance/phase37/fixtures-new/bst.bend"
+        },
+        {
+          "id": "unicode-text",
+          "label": "Unicode text",
+          "ratio": 0.5879131793025187,
+          "pointCount": 2,
+          "pointIds": [
+            "coverage-unicode-text-16",
+            "coverage-unicode-text-64"
+          ],
+          "phase98Ratio": 0.8491947632232631,
+          "sourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/selfhost/tools/performance/phase37/fixtures-new/unicode-text.bend"
+        },
+        {
+          "id": "expression",
+          "label": "Expression",
+          "ratio": 1.6091680085510836,
+          "pointCount": 2,
+          "pointIds": [
+            "coverage-expression-32",
+            "coverage-expression-128"
+          ],
+          "phase98Ratio": 1.0,
+          "sourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/selfhost/tools/performance/phase37/fixtures-new/expression.bend"
+        },
+        {
+          "id": "map-churn",
+          "label": "Map churn",
+          "ratio": 0.6347882246805755,
+          "pointCount": 2,
+          "pointIds": [
+            "coverage-map-churn-32",
+            "coverage-map-churn-128"
+          ],
+          "phase98Ratio": 0.9834179440847327,
+          "sourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/selfhost/tools/performance/phase37/fixtures-new/map-churn.bend"
+        },
+        {
+          "id": "numeric-recurrence",
+          "label": "Numeric recurrence",
+          "ratio": 1.035838488081302,
+          "pointCount": 2,
+          "pointIds": [
+            "coverage-numeric-recurrence-256",
+            "coverage-numeric-recurrence-1024"
+          ],
+          "phase98Ratio": 1.0405177390868119,
+          "sourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/selfhost/tools/performance/phase37/fixtures-new/numeric-recurrence.bend"
+        },
+        {
+          "id": "record-aggregation",
+          "label": "Record aggregation",
+          "ratio": 0.7821107643463437,
+          "pointCount": 2,
+          "pointIds": [
+            "coverage-record-aggregation-64",
+            "coverage-record-aggregation-256"
+          ],
+          "phase98Ratio": 0.997997995989972,
+          "sourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/selfhost/tools/performance/phase37/fixtures-new/record-aggregation.bend"
+        }
+      ],
+      "cohortKey": "native-original45-positive44",
+      "baseline": "Pinned upstream TypeScript compiler C output, built with the same Clang C11/O3 recipe",
+      "host": "native compiler",
+      "target": "native C executable",
+      "measurementStatus": "fresh",
+      "sourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase102/default-promotion.md",
+      "dataArchiveUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase102/evidence04/README.md",
+      "scope": "Warmed generated-program execution, full-result validation and batch loop; excludes compiler, Clang builds, startup and warmup. Three alternating rounds per point and comparator; every complete output passes. Equal-point and equal-source means remain separate. Phase 103 retains core algorithms but broad timing belongs to candidate04."
+    },
+    "history": [
+      {
+        "phase": 73,
+        "compilerPhase": 72,
+        "measurementPhase": 73,
+        "observationId": "p73-c12-baseline72",
+        "label": "P72 baseline · P73 run",
+        "ratio": 1.369025829922239,
+        "averageRatio": 1.369025829922239,
+        "cohortKey": "original-c12",
+        "comparisonKey": "p73-paired-c12",
+        "measurementStatus": "fresh-paired",
+        "baseline": "Pinned upstream C output, same twelve families",
+        "pointCount": 12,
+        "sourceCount": 12,
+        "rounds": 6,
+        "sampleCount": 216,
+        "sourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase73/measurements.json",
+        "commit": "5117151e76765b10d95eb22249a7ae1ee770a3b3",
+        "date": "2026-10-12T09:10:52Z",
+        "dateSemantics": "Publication date; both compiler roles timed together in Phase 73",
+        "connectToPrevious": false,
+        "note": "Same-window Phase 72 and selected Phase 73 compiler14 products, six rotated rounds and 216 correct intervals. JavaScript-hosted B1/B2 emit identical C; this is native program execution, not native compiler hosting. Selected result uses 23.26% less execution time.",
+        "programs": [
+          {
+            "id": "numeric",
+            "label": "Numeric",
+            "candidateMedianMs": 251.0,
+            "referenceMedianMs": 252.0,
+            "ratio": 0.996031746031746,
+            "sourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase73/measurements.json"
+          },
+          {
+            "id": "array",
+            "label": "Array",
+            "candidateMedianMs": 169.0,
+            "referenceMedianMs": 169.0,
+            "ratio": 1.0,
+            "sourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase73/measurements.json"
+          },
+          {
+            "id": "closures",
+            "label": "Closures",
+            "candidateMedianMs": 157.0,
+            "referenceMedianMs": 223.5,
+            "ratio": 0.7024608501118568,
+            "sourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase73/measurements.json"
+          },
+          {
+            "id": "tree",
+            "label": "Tree",
+            "candidateMedianMs": 319.0,
+            "referenceMedianMs": 194.0,
+            "ratio": 1.6443298969072164,
+            "sourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase73/measurements.json"
+          },
+          {
+            "id": "map",
+            "label": "Map",
+            "candidateMedianMs": 353.0,
+            "referenceMedianMs": 395.0,
+            "ratio": 0.8936708860759494,
+            "sourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase73/measurements.json"
+          },
+          {
+            "id": "lexer",
+            "label": "Lexer",
+            "candidateMedianMs": 358.0,
+            "referenceMedianMs": 227.0,
+            "ratio": 1.577092511013216,
+            "sourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase73/measurements.json"
+          },
+          {
+            "id": "list-pipeline",
+            "label": "List pipeline",
+            "candidateMedianMs": 649.0,
+            "referenceMedianMs": 301.0,
+            "ratio": 2.1561461794019934,
+            "sourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase73/measurements.json"
+          },
+          {
+            "id": "bst",
+            "label": "Bst",
+            "candidateMedianMs": 646.0,
+            "referenceMedianMs": 335.0,
+            "ratio": 1.9283582089552238,
+            "sourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase73/measurements.json"
+          },
+          {
+            "id": "expression",
+            "label": "Expression",
+            "candidateMedianMs": 443.0,
+            "referenceMedianMs": 319.0,
+            "ratio": 1.3887147335423198,
+            "sourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase73/measurements.json"
+          },
+          {
+            "id": "array-map",
+            "label": "Array map",
+            "candidateMedianMs": 562.5,
+            "referenceMedianMs": 299.5,
+            "ratio": 1.8781302170283807,
+            "sourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase73/measurements.json"
+          },
+          {
+            "id": "tape-observer",
+            "label": "Tape observer",
+            "candidateMedianMs": 896.5,
+            "referenceMedianMs": 296.5,
+            "ratio": 3.0236087689713322,
+            "sourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase73/measurements.json"
+          },
+          {
+            "id": "string-order",
+            "label": "String order",
+            "candidateMedianMs": 278.0,
+            "referenceMedianMs": 341.0,
+            "ratio": 0.8152492668621701,
+            "sourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase73/measurements.json"
+          }
+        ]
+      },
+      {
+        "phase": 73,
+        "compilerPhase": 73,
+        "measurementPhase": 73,
+        "observationId": "p73-c12-candidate",
+        "label": "P73 ownership",
+        "ratio": 1.0505962162048048,
+        "averageRatio": 1.0505962162048048,
+        "cohortKey": "original-c12",
+        "comparisonKey": "p73-paired-c12",
+        "measurementStatus": "fresh-paired",
+        "baseline": "Pinned upstream C output, same twelve families",
+        "pointCount": 12,
+        "sourceCount": 12,
+        "rounds": 6,
+        "sampleCount": 216,
+        "sourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase73/measurements.json",
+        "commit": "5117151e76765b10d95eb22249a7ae1ee770a3b3",
+        "date": "2026-10-12T09:10:52Z",
+        "dateSemantics": "Publication date; both compiler roles timed together in Phase 73",
+        "connectToPrevious": true,
+        "note": "Same-window Phase 72 and selected Phase 73 compiler14 products, six rotated rounds and 216 correct intervals. JavaScript-hosted B1/B2 emit identical C; this is native program execution, not native compiler hosting. Selected result uses 23.26% less execution time.",
+        "programs": [
+          {
+            "id": "numeric",
+            "label": "Numeric",
+            "candidateMedianMs": 251.0,
+            "referenceMedianMs": 252.0,
+            "ratio": 0.996031746031746,
+            "sourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase73/measurements.json"
+          },
+          {
+            "id": "array",
+            "label": "Array",
+            "candidateMedianMs": 169.0,
+            "referenceMedianMs": 169.0,
+            "ratio": 1.0,
+            "sourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase73/measurements.json"
+          },
+          {
+            "id": "closures",
+            "label": "Closures",
+            "candidateMedianMs": 161.0,
+            "referenceMedianMs": 223.5,
+            "ratio": 0.7203579418344519,
+            "sourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase73/measurements.json"
+          },
+          {
+            "id": "tree",
+            "label": "Tree",
+            "candidateMedianMs": 288.5,
+            "referenceMedianMs": 194.0,
+            "ratio": 1.4871134020618557,
+            "sourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase73/measurements.json"
+          },
+          {
+            "id": "map",
+            "label": "Map",
+            "candidateMedianMs": 269.5,
+            "referenceMedianMs": 395.0,
+            "ratio": 0.6822784810126582,
+            "sourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase73/measurements.json"
+          },
+          {
+            "id": "lexer",
+            "label": "Lexer",
+            "candidateMedianMs": 329.5,
+            "referenceMedianMs": 227.0,
+            "ratio": 1.4515418502202644,
+            "sourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase73/measurements.json"
+          },
+          {
+            "id": "list-pipeline",
+            "label": "List pipeline",
+            "candidateMedianMs": 327.0,
+            "referenceMedianMs": 301.0,
+            "ratio": 1.0863787375415281,
+            "sourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase73/measurements.json"
+          },
+          {
+            "id": "bst",
+            "label": "Bst",
+            "candidateMedianMs": 395.0,
+            "referenceMedianMs": 335.0,
+            "ratio": 1.1791044776119404,
+            "sourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase73/measurements.json"
+          },
+          {
+            "id": "expression",
+            "label": "Expression",
+            "candidateMedianMs": 436.0,
+            "referenceMedianMs": 319.0,
+            "ratio": 1.3667711598746082,
+            "sourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase73/measurements.json"
+          },
+          {
+            "id": "array-map",
+            "label": "Array map",
+            "candidateMedianMs": 457.0,
+            "referenceMedianMs": 299.5,
+            "ratio": 1.5258764607679465,
+            "sourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase73/measurements.json"
+          },
+          {
+            "id": "tape-observer",
+            "label": "Tape observer",
+            "candidateMedianMs": 266.5,
+            "referenceMedianMs": 296.5,
+            "ratio": 0.8988195615514334,
+            "sourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase73/measurements.json"
+          },
+          {
+            "id": "string-order",
+            "label": "String order",
+            "candidateMedianMs": 243.0,
+            "referenceMedianMs": 341.0,
+            "ratio": 0.7126099706744868,
+            "sourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase73/measurements.json"
+          }
+        ]
+      },
+      {
+        "phase": 78,
+        "label": "P78 · original C12",
+        "ratio": 1.0667757342855049,
+        "averageRatio": 1.0667757342855049,
+        "cohortKey": "original-c12",
+        "measurementStatus": "historical",
+        "sourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase78/runtime.json",
+        "note": "Twelve C families and 108 correct intervals; fresh Phase 77 baseline measured alongside. Phase 78 changes are within the short experiment’s precision. JS-hosted compiler emits C; retain a separate series from native 44-point cohort.",
+        "baseline": "upstream C backend / same-target native executables",
+        "connectToPrevious": false,
+        "pointCount": 12,
+        "commit": "8043325607608bfe9a6aac079c7bd2e67ec4c09b",
+        "date": "2026-10-13T05:49:33Z",
+        "observationId": "p78-c12"
+      },
+      {
+        "phase": 93,
+        "label": "P93 · native 44-point cohort",
+        "ratio": 1.1148400554084281,
+        "averageRatio": 1.1148400554084281,
+        "cohortKey": "native-original45-positive44",
+        "measurementStatus": "fresh",
+        "sourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase93/README.md",
+        "note": "Original 45-point catalog, 44 measurable points and 23 sources; one zero-work control excluded.",
+        "baseline": "upstream C backend / same-target native executables",
+        "connectToPrevious": false,
+        "commit": "90f40c4b64a26e98ff7fcc3e4e2facbc9dd079da",
+        "date": "2026-10-15T05:50:56Z",
+        "pointCount": 44
+      },
+      {
+        "phase": 98,
+        "label": "P98 · unchanged outputs",
+        "ratio": 1.1148400554084281,
+        "averageRatio": 1.1148400554084281,
+        "cohortKey": "native-original45-positive44",
+        "measurementStatus": "carried-forward",
+        "sourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase98/results.json",
+        "note": "All 45 C products byte-identical; retained Phase 93 timings, no new runtime campaign.",
+        "baseline": "upstream C backend / same-target native executables",
+        "connectToPrevious": false,
+        "commit": "795ad056f09d0c43627cb70094387b05d3108326",
+        "date": "2026-10-15T23:04:20Z",
+        "pointCount": 44,
+        "timingPhase": 93
+      },
+      {
+        "phase": 102,
+        "label": "P102 · candidate04",
+        "ratio": 1.0434611698989533,
+        "averageRatio": 1.0434611698989533,
+        "cohortKey": "native-original45-positive44",
+        "measurementStatus": "fresh",
+        "sourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase102/default-promotion.md",
+        "note": "All 44 positive-work points freshly measured. Separate paired comparison records 0.936547× Phase 98; do not infer exact gain from unpaired historical endpoints.",
+        "baseline": "upstream C backend / same-target native executables",
+        "connectToPrevious": true,
+        "commit": "a15ca94f1d198611d6a0eadf848a1be047571fb7",
+        "date": "2026-10-17T00:23:30Z",
+        "pointCount": 44
+      }
+    ]
+  },
+  "fullSelfCompilation": [
+    {
+      "phase": 98,
+      "stage": "B1",
+      "requestSeconds": 104.821,
+      "baselineSeconds": 135.465,
+      "comparison": "Same final Phase 98 source, previous versus new same-stage native compiler",
+      "sampleCount": 1,
+      "sourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase98/results.json",
+      "note": "Single matched pair for B1; two balanced rounds for B2. Different source fromPhase 102; do not draw a continuous speed trend."
+    },
+    {
+      "phase": 102,
+      "stage": "B1",
+      "requestSeconds": 126.584,
+      "baselineSeconds": null,
+      "comparison": "Single native qualification self-emission observation; not a repeated predecessor speed comparison",
+      "sampleCount": 1,
+      "sourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase102/default-promotion.md",
+      "note": "Candidate04 B1 and B2 emit the same 30,373,059-byte C. No current self-speed gain claim."
+    },
+    {
+      "phase": 98,
+      "stage": "B2",
+      "requestSeconds": 140.9875,
+      "baselineSeconds": 150.471,
+      "comparison": "Same final Phase 98 source, previous versus new same-stage native compiler",
+      "sampleCount": 2,
+      "sourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase98/results.json",
+      "note": "Single matched pair for B1; two balanced rounds for B2. Different source fromPhase 102; do not draw a continuous speed trend."
+    },
+    {
+      "phase": 102,
+      "stage": "B2",
+      "requestSeconds": 150.846,
+      "baselineSeconds": null,
+      "comparison": "Single native qualification self-emission observation; not a repeated predecessor speed comparison",
+      "sampleCount": 1,
+      "sourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase102/default-promotion.md",
+      "note": "Candidate04 B1 and B2 emit the same 30,373,059-byte C. No current self-speed gain claim."
+    }
+  ],
+  "evidence": [
+    {
+      "path": "selfhost/build/phase99/phase102-runtime-vs-upstream04/summary.json",
+      "sha256": "5941d0a25dc6b68958cd0d6672a1bb27418c68aa16389d4833bc4dd08d2a6799",
+      "bytes": 29347,
+      "authenticatedAgainst": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase102/evidence04/manifest.json",
+      "archiveUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase102/evidence04/README.md"
+    },
+    {
+      "path": "selfhost/build/phase99/phase102-runtime-vs-phase9804/summary.json",
+      "sha256": "fbe3d538694ac3fb7e75ddd94f72db5ddeeec4dc0c3a778d374fbb292cbaccd2",
+      "bytes": 29251,
+      "authenticatedAgainst": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase102/evidence04/manifest.json",
+      "archiveUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase102/evidence04/README.md"
+    },
+    {
+      "path": "selfhost/build/phase98/origin-b1-screen01/report.json",
+      "sha256": "bf6ff5eb96c11c6406c12b7a9bcfc5c1c3b12b1d307703cd5cfdecc2b66741e8",
+      "bytes": 655497,
+      "authenticatedAgainst": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase98/results.json",
+      "archiveUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase98/README.md"
+    },
+    {
+      "path": "selfhost/build/phase99/phase102-b1-screen04/report.json",
+      "sha256": "acdd048f7a76ff0343cc66299c0d7cf00464eaecf50e020d306e5ec27f8508a9",
+      "bytes": 420961,
+      "authenticatedAgainst": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase102/evidence04/manifest.json",
+      "archiveUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase102/evidence04/README.md"
+    },
+    {
+      "path": "selfhost/build/phase98/origin-b2-screen01/report.json",
+      "sha256": "e1e3cd8d9f1179c05721868a70e13cfea7ca34f45108d7376dadddc3d9717e24",
+      "bytes": 381171,
+      "authenticatedAgainst": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase98/results.json",
+      "archiveUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase98/README.md"
+    },
+    {
+      "path": "selfhost/build/phase99/phase102-b2-screen04/report.json",
+      "sha256": "e0fe8a6aa0895d5f3c1f68dfdf7b3c4a51c202afdd067ebc450de906b435a17f",
+      "bytes": 439907,
+      "authenticatedAgainst": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase102/evidence04/manifest.json",
+      "archiveUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase102/evidence04/README.md"
+    }
+  ],
+  "compilation": {
+    "latest": {
+      "phase": 102,
+      "label": "P102 vs P98",
+      "stage": "B1",
+      "requestRatio": 1.0260109412692047,
+      "processRatio": 1.0262686319739538,
+      "requestReductionPercent": -2.601094126920467,
+      "processReductionPercent": -2.6268631973953793,
+      "baseline": "Phase 98 B1",
+      "baselinePhase": 98,
+      "baselineKind": "same-stage-native",
+      "comparisonKey": "p102-b1-paired-six-source",
+      "cohortKey": "native-six-source",
+      "programs": [
+        {
+          "id": "small",
+          "label": "Small",
+          "requestRatio": 1.0,
+          "processRatio": 0.9995234144078827,
+          "candidateRequestMs": 47.0,
+          "baselineRequestMs": 47.0,
+          "candidateProcessMs": 125.33305352553725,
+          "baselineProcessMs": 125.39281393401325,
+          "candidateRequestRangeMs": [
+            46,
+            47
+          ],
+          "baselineRequestRangeMs": [
+            47,
+            47
+          ],
+          "candidateProcessRangeMs": [
+            125.20076520740986,
+            125.59143104590476
+          ],
+          "baselineProcessRangeMs": [
+            125.1883739605546,
+            125.5369889549911
+          ],
+          "sourcePath": "selfhost/tools/performance/phase77/fixtures/small.bend",
+          "sourceSha256": "4ba893a14bc4c71c2f12250e0e3d084c7dce4abe958bf243fdcb45e224751be3",
+          "programSourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/selfhost/tools/performance/phase77/fixtures/small.bend",
+          "sourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase102/default-promotion.md"
+        },
+        {
+          "id": "numeric_closed",
+          "label": "Numeric",
+          "requestRatio": 1.0256410256410255,
+          "processRatio": 1.0013407694802738,
+          "candidateRequestMs": 80.0,
+          "baselineRequestMs": 78.0,
+          "candidateProcessMs": 166.38112906366587,
+          "baselineProcessMs": 166.1583490204066,
+          "candidateRequestRangeMs": [
+            79,
+            123
+          ],
+          "baselineRequestRangeMs": [
+            78,
+            79
+          ],
+          "candidateProcessRangeMs": [
+            165.94383213669062,
+            267.8777161054313
+          ],
+          "baselineProcessRangeMs": [
+            166.004752041772,
+            166.3863048888743
+          ],
+          "sourcePath": "selfhost/build/phase86/fixtures/numeric_closed.bend",
+          "sourceSha256": "112006eb695c65fe6a12713b91572422533fa6dbba2b6e81965ac66d15b46f93",
+          "programSourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/selfhost/build/phase86/fixtures/numeric_closed.bend",
+          "sourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase102/default-promotion.md"
+        },
+        {
+          "id": "lexer_original",
+          "label": "Lexer",
+          "requestRatio": 1.0443349753694582,
+          "processRatio": 1.0508270820008765,
+          "candidateRequestMs": 318.0,
+          "baselineRequestMs": 304.5,
+          "candidateProcessMs": 410.3672771016136,
+          "baselineProcessMs": 390.51836798898876,
+          "candidateRequestRangeMs": [
+            314,
+            491
+          ],
+          "baselineRequestRangeMs": [
+            303,
+            473
+          ],
+          "candidateProcessRangeMs": [
+            409.9721701350063,
+            633.529684972018
+          ],
+          "baselineProcessRangeMs": [
+            389.56644921563566,
+            612.9885551054031
+          ],
+          "sourcePath": "selfhost/tools/performance/phase37/fixtures-historical/lexer.bend",
+          "sourceSha256": "6014af6bf7e97c8feaafa918e79f28a22d2c9c92bea836203fcd89b6d70a4fbb",
+          "programSourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/selfhost/tools/performance/phase37/fixtures-historical/lexer.bend",
+          "sourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase102/default-promotion.md"
+        },
+        {
+          "id": "map_closed",
+          "label": "Map",
+          "requestRatio": 1.0746395250212044,
+          "processRatio": 1.1107178447606187,
+          "candidateRequestMs": 1267.0,
+          "baselineRequestMs": 1179.0,
+          "candidateProcessMs": 1415.7116110436618,
+          "baselineProcessMs": 1274.5915785199031,
+          "candidateRequestRangeMs": [
+            1261,
+            2047
+          ],
+          "baselineRequestRangeMs": [
+            1167,
+            1892
+          ],
+          "candidateProcessRangeMs": [
+            1347.2152228932828,
+            2198.120147921145
+          ],
+          "baselineProcessRangeMs": [
+            1263.4401430841535,
+            2034.5946811139584
+          ],
+          "sourcePath": "selfhost/build/phase86/fixtures/map_closed.bend",
+          "sourceSha256": "339767823a85ecb136ebda347adb9d0d5c350d96066fffbae92daee013954a40",
+          "programSourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/selfhost/build/phase86/fixtures/map_closed.bend",
+          "sourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase102/default-promotion.md"
+        },
+        {
+          "id": "functions65",
+          "label": "Functions65",
+          "requestRatio": 1.013477088948787,
+          "processRatio": 0.9999979452724719,
+          "candidateRequestMs": 188.0,
+          "baselineRequestMs": 185.5,
+          "candidateProcessMs": 267.7052104845643,
+          "baselineProcessMs": 267.70576054695994,
+          "candidateRequestRangeMs": [
+            186,
+            289
+          ],
+          "baselineRequestRangeMs": [
+            184,
+            195
+          ],
+          "candidateProcessRangeMs": [
+            267.3995248042047,
+            430.20374211482704
+          ],
+          "baselineProcessRangeMs": [
+            267.2958748880774,
+            328.8106319960207
+          ],
+          "sourcePath": "selfhost/tools/performance/phase77/fixtures/functions65.bend",
+          "sourceSha256": "301e07212360ee4741b08271cb1eacbb5b92494e0372eae9eb3a6a716888e9db",
+          "programSourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/selfhost/tools/performance/phase77/fixtures/functions65.bend",
+          "sourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase102/default-promotion.md"
+        },
+        {
+          "id": "unicode",
+          "label": "Unicode",
+          "requestRatio": 1.0,
+          "processRatio": 1.0001320487446632,
+          "candidateRequestMs": 46.0,
+          "baselineRequestMs": 46.0,
+          "candidateProcessMs": 125.45537599362433,
+          "baselineProcessMs": 125.4388119559735,
+          "candidateRequestRangeMs": [
+            45,
+            46
+          ],
+          "baselineRequestRangeMs": [
+            45,
+            46
+          ],
+          "candidateProcessRangeMs": [
+            125.30421605333686,
+            145.67094994708896
+          ],
+          "baselineProcessRangeMs": [
+            125.34934701398015,
+            125.56393491104245
+          ],
+          "sourcePath": "selfhost/build/phase86/fixtures/unicode.bend",
+          "sourceSha256": "c714ff5231007a23fa54c9d5b662ee60b84ce099994f3a4002fa5c50ef3d8a06",
+          "programSourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/selfhost/build/phase86/fixtures/unicode.bend",
+          "sourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase102/default-promotion.md"
+        }
+      ],
+      "caseCount": 6,
+      "rounds": 4,
+      "sampleCount": 48,
+      "completeCMatches": 48,
+      "completeDiagnosticMatches": 48,
+      "commit": "a15ca94f1d198611d6a0eadf848a1be047571fb7",
+      "date": "2026-10-17T00:23:30Z",
+      "measuredAt": "2026-10-17T00:00:54.246185Z",
+      "dateSemantics": "date is publication commit; measuredAt is campaign start",
+      "connectToPrevious": false,
+      "measurementStatus": "fresh-paired",
+      "sourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase102/default-promotion.md",
+      "dataArchiveUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase102/evidence04/README.md",
+      "scope": "Equal-case geometric mean of per-case median ratios. Same stage, four balanced rounds, six fixed sources. Request excludes prepared Base decoding. Whole process includes startup, Base preparation, output writing and teardown; both exclude Clang. Different baseline for each campaign; ratios are not a single common-reference time series."
+    },
+    "history": [
+      {
+        "phase": 98,
+        "label": "P98 vs native07",
+        "stage": "B1",
+        "requestRatio": 0.8106672428890056,
+        "processRatio": 0.8656411390528745,
+        "requestReductionPercent": 18.93327571109944,
+        "processReductionPercent": 13.435886094712545,
+        "baseline": "Previous native07-era B1",
+        "baselinePhase": 90,
+        "baselineKind": "same-stage-native",
+        "comparisonKey": "p98-b1-paired-six-source",
+        "cohortKey": "native-six-source",
+        "programs": [
+          {
+            "id": "small",
+            "label": "Small",
+            "requestRatio": 0.7931034482758621,
+            "processRatio": 0.8621338669820444,
+            "candidateRequestMs": 46.0,
+            "baselineRequestMs": 58.0,
+            "candidateProcessMs": 126.27040653023869,
+            "baselineProcessMs": 146.4626450324431,
+            "candidateRequestRangeMs": [
+              46,
+              47
+            ],
+            "baselineRequestRangeMs": [
+              58,
+              58
+            ],
+            "candidateProcessRangeMs": [
+              125.87893311865628,
+              146.4601969346404
+            ],
+            "baselineProcessRangeMs": [
+              146.3273079134524,
+              146.64452895522118
+            ],
+            "sourcePath": "selfhost/tools/performance/phase77/fixtures/small.bend",
+            "sourceSha256": "4ba893a14bc4c71c2f12250e0e3d084c7dce4abe958bf243fdcb45e224751be3",
+            "programSourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/selfhost/tools/performance/phase77/fixtures/small.bend",
+            "sourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase98/README.md"
+          },
+          {
+            "id": "numeric_closed",
+            "label": "Numeric",
+            "requestRatio": 0.7878787878787878,
+            "processRatio": 0.8940038087668217,
+            "candidateRequestMs": 78.0,
+            "baselineRequestMs": 99.0,
+            "candidateProcessMs": 167.20265406183898,
+            "baselineProcessMs": 187.02678044792265,
+            "candidateRequestRangeMs": [
+              77,
+              78
+            ],
+            "baselineRequestRangeMs": [
+              99,
+              99
+            ],
+            "candidateProcessRangeMs": [
+              166.86901892535388,
+              167.2992380335927
+            ],
+            "baselineProcessRangeMs": [
+              186.83072901330888,
+              187.42016004398465
+            ],
+            "sourcePath": "selfhost/build/phase86/fixtures/numeric_closed.bend",
+            "sourceSha256": "112006eb695c65fe6a12713b91572422533fa6dbba2b6e81965ac66d15b46f93",
+            "programSourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/selfhost/build/phase86/fixtures/numeric_closed.bend",
+            "sourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase98/README.md"
+          },
+          {
+            "id": "lexer_original",
+            "label": "Lexer",
+            "requestRatio": 0.849083215796897,
+            "processRatio": 0.8656083303849176,
+            "candidateRequestMs": 301.0,
+            "baselineRequestMs": 354.5,
+            "candidateProcessMs": 390.48108900897205,
+            "baselineProcessMs": 451.1059740325436,
+            "candidateRequestRangeMs": [
+              301,
+              302
+            ],
+            "baselineRequestRangeMs": [
+              354,
+              356
+            ],
+            "candidateProcessRangeMs": [
+              389.7059850860387,
+              391.22186484746635
+            ],
+            "baselineProcessRangeMs": [
+              450.81349392421544,
+              452.0816649310291
+            ],
+            "sourcePath": "selfhost/tools/performance/phase37/fixtures-historical/lexer.bend",
+            "sourceSha256": "6014af6bf7e97c8feaafa918e79f28a22d2c9c92bea836203fcd89b6d70a4fbb",
+            "programSourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/selfhost/tools/performance/phase37/fixtures-historical/lexer.bend",
+            "sourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase98/README.md"
+          },
+          {
+            "id": "map_closed",
+            "label": "Map",
+            "requestRatio": 0.8326806692773229,
+            "processRatio": 0.8436181534610647,
+            "candidateRequestMs": 1169.5,
+            "baselineRequestMs": 1404.5,
+            "candidateProcessMs": 1264.8843745701015,
+            "baselineProcessMs": 1499.3565150070935,
+            "candidateRequestRangeMs": [
+              1165,
+              1180
+            ],
+            "baselineRequestRangeMs": [
+              1391,
+              1417
+            ],
+            "candidateProcessRangeMs": [
+              1264.235710958019,
+              1266.6537738405168
+            ],
+            "baselineProcessRangeMs": [
+              1487.530971178785,
+              1797.458296874538
+            ],
+            "sourcePath": "selfhost/build/phase86/fixtures/map_closed.bend",
+            "sourceSha256": "339767823a85ecb136ebda347adb9d0d5c350d96066fffbae92daee013954a40",
+            "programSourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/selfhost/build/phase86/fixtures/map_closed.bend",
+            "sourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase98/README.md"
+          },
+          {
+            "id": "functions65",
+            "label": "Functions65",
+            "requestRatio": 0.8048245614035088,
+            "processRatio": 0.8690105151139873,
+            "candidateRequestMs": 183.5,
+            "baselineRequestMs": 228.0,
+            "candidateProcessMs": 268.62095308024436,
+            "baselineProcessMs": 309.1112804831937,
+            "candidateRequestRangeMs": [
+              183,
+              184
+            ],
+            "baselineRequestRangeMs": [
+              226,
+              229
+            ],
+            "candidateProcessRangeMs": [
+              268.13409198075533,
+              288.1986869033426
+            ],
+            "baselineProcessRangeMs": [
+              308.7955398950726,
+              329.63587902486324
+            ],
+            "sourcePath": "selfhost/tools/performance/phase77/fixtures/functions65.bend",
+            "sourceSha256": "301e07212360ee4741b08271cb1eacbb5b92494e0372eae9eb3a6a716888e9db",
+            "programSourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/selfhost/tools/performance/phase77/fixtures/functions65.bend",
+            "sourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase98/README.md"
+          },
+          {
+            "id": "unicode",
+            "label": "Unicode",
+            "requestRatio": 0.7982456140350878,
+            "processRatio": 0.8602424641659306,
+            "candidateRequestMs": 45.5,
+            "baselineRequestMs": 57.0,
+            "candidateProcessMs": 126.026971032843,
+            "baselineProcessMs": 146.5016856091097,
+            "candidateRequestRangeMs": [
+              45,
+              46
+            ],
+            "baselineRequestRangeMs": [
+              56,
+              58
+            ],
+            "candidateProcessRangeMs": [
+              125.88448286987841,
+              126.18861813098192
+            ],
+            "baselineProcessRangeMs": [
+              146.32976986467838,
+              146.80149382911623
+            ],
+            "sourcePath": "selfhost/build/phase86/fixtures/unicode.bend",
+            "sourceSha256": "c714ff5231007a23fa54c9d5b662ee60b84ce099994f3a4002fa5c50ef3d8a06",
+            "programSourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/selfhost/build/phase86/fixtures/unicode.bend",
+            "sourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase98/README.md"
+          }
+        ],
+        "caseCount": 6,
+        "rounds": 4,
+        "sampleCount": 48,
+        "completeCMatches": 48,
+        "completeDiagnosticMatches": 48,
+        "commit": "795ad056f09d0c43627cb70094387b05d3108326",
+        "date": "2026-10-15T23:04:20Z",
+        "measuredAt": "2026-10-15T22:13:45.448544Z",
+        "dateSemantics": "date is publication commit; measuredAt is campaign start",
+        "connectToPrevious": false,
+        "measurementStatus": "fresh-paired",
+        "sourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase98/README.md",
+        "dataArchiveUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase98/README.md",
+        "scope": "Equal-case geometric mean of per-case median ratios. Same stage, four balanced rounds, six fixed sources. Request excludes prepared Base decoding. Whole process includes startup, Base preparation, output writing and teardown; both exclude Clang. Different baseline for each campaign; ratios are not a single common-reference time series."
+      },
+      {
+        "phase": 102,
+        "label": "P102 vs P98",
+        "stage": "B1",
+        "requestRatio": 1.0260109412692047,
+        "processRatio": 1.0262686319739538,
+        "requestReductionPercent": -2.601094126920467,
+        "processReductionPercent": -2.6268631973953793,
+        "baseline": "Phase 98 B1",
+        "baselinePhase": 98,
+        "baselineKind": "same-stage-native",
+        "comparisonKey": "p102-b1-paired-six-source",
+        "cohortKey": "native-six-source",
+        "programs": [
+          {
+            "id": "small",
+            "label": "Small",
+            "requestRatio": 1.0,
+            "processRatio": 0.9995234144078827,
+            "candidateRequestMs": 47.0,
+            "baselineRequestMs": 47.0,
+            "candidateProcessMs": 125.33305352553725,
+            "baselineProcessMs": 125.39281393401325,
+            "candidateRequestRangeMs": [
+              46,
+              47
+            ],
+            "baselineRequestRangeMs": [
+              47,
+              47
+            ],
+            "candidateProcessRangeMs": [
+              125.20076520740986,
+              125.59143104590476
+            ],
+            "baselineProcessRangeMs": [
+              125.1883739605546,
+              125.5369889549911
+            ],
+            "sourcePath": "selfhost/tools/performance/phase77/fixtures/small.bend",
+            "sourceSha256": "4ba893a14bc4c71c2f12250e0e3d084c7dce4abe958bf243fdcb45e224751be3",
+            "programSourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/selfhost/tools/performance/phase77/fixtures/small.bend",
+            "sourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase102/default-promotion.md"
+          },
+          {
+            "id": "numeric_closed",
+            "label": "Numeric",
+            "requestRatio": 1.0256410256410255,
+            "processRatio": 1.0013407694802738,
+            "candidateRequestMs": 80.0,
+            "baselineRequestMs": 78.0,
+            "candidateProcessMs": 166.38112906366587,
+            "baselineProcessMs": 166.1583490204066,
+            "candidateRequestRangeMs": [
+              79,
+              123
+            ],
+            "baselineRequestRangeMs": [
+              78,
+              79
+            ],
+            "candidateProcessRangeMs": [
+              165.94383213669062,
+              267.8777161054313
+            ],
+            "baselineProcessRangeMs": [
+              166.004752041772,
+              166.3863048888743
+            ],
+            "sourcePath": "selfhost/build/phase86/fixtures/numeric_closed.bend",
+            "sourceSha256": "112006eb695c65fe6a12713b91572422533fa6dbba2b6e81965ac66d15b46f93",
+            "programSourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/selfhost/build/phase86/fixtures/numeric_closed.bend",
+            "sourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase102/default-promotion.md"
+          },
+          {
+            "id": "lexer_original",
+            "label": "Lexer",
+            "requestRatio": 1.0443349753694582,
+            "processRatio": 1.0508270820008765,
+            "candidateRequestMs": 318.0,
+            "baselineRequestMs": 304.5,
+            "candidateProcessMs": 410.3672771016136,
+            "baselineProcessMs": 390.51836798898876,
+            "candidateRequestRangeMs": [
+              314,
+              491
+            ],
+            "baselineRequestRangeMs": [
+              303,
+              473
+            ],
+            "candidateProcessRangeMs": [
+              409.9721701350063,
+              633.529684972018
+            ],
+            "baselineProcessRangeMs": [
+              389.56644921563566,
+              612.9885551054031
+            ],
+            "sourcePath": "selfhost/tools/performance/phase37/fixtures-historical/lexer.bend",
+            "sourceSha256": "6014af6bf7e97c8feaafa918e79f28a22d2c9c92bea836203fcd89b6d70a4fbb",
+            "programSourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/selfhost/tools/performance/phase37/fixtures-historical/lexer.bend",
+            "sourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase102/default-promotion.md"
+          },
+          {
+            "id": "map_closed",
+            "label": "Map",
+            "requestRatio": 1.0746395250212044,
+            "processRatio": 1.1107178447606187,
+            "candidateRequestMs": 1267.0,
+            "baselineRequestMs": 1179.0,
+            "candidateProcessMs": 1415.7116110436618,
+            "baselineProcessMs": 1274.5915785199031,
+            "candidateRequestRangeMs": [
+              1261,
+              2047
+            ],
+            "baselineRequestRangeMs": [
+              1167,
+              1892
+            ],
+            "candidateProcessRangeMs": [
+              1347.2152228932828,
+              2198.120147921145
+            ],
+            "baselineProcessRangeMs": [
+              1263.4401430841535,
+              2034.5946811139584
+            ],
+            "sourcePath": "selfhost/build/phase86/fixtures/map_closed.bend",
+            "sourceSha256": "339767823a85ecb136ebda347adb9d0d5c350d96066fffbae92daee013954a40",
+            "programSourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/selfhost/build/phase86/fixtures/map_closed.bend",
+            "sourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase102/default-promotion.md"
+          },
+          {
+            "id": "functions65",
+            "label": "Functions65",
+            "requestRatio": 1.013477088948787,
+            "processRatio": 0.9999979452724719,
+            "candidateRequestMs": 188.0,
+            "baselineRequestMs": 185.5,
+            "candidateProcessMs": 267.7052104845643,
+            "baselineProcessMs": 267.70576054695994,
+            "candidateRequestRangeMs": [
+              186,
+              289
+            ],
+            "baselineRequestRangeMs": [
+              184,
+              195
+            ],
+            "candidateProcessRangeMs": [
+              267.3995248042047,
+              430.20374211482704
+            ],
+            "baselineProcessRangeMs": [
+              267.2958748880774,
+              328.8106319960207
+            ],
+            "sourcePath": "selfhost/tools/performance/phase77/fixtures/functions65.bend",
+            "sourceSha256": "301e07212360ee4741b08271cb1eacbb5b92494e0372eae9eb3a6a716888e9db",
+            "programSourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/selfhost/tools/performance/phase77/fixtures/functions65.bend",
+            "sourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase102/default-promotion.md"
+          },
+          {
+            "id": "unicode",
+            "label": "Unicode",
+            "requestRatio": 1.0,
+            "processRatio": 1.0001320487446632,
+            "candidateRequestMs": 46.0,
+            "baselineRequestMs": 46.0,
+            "candidateProcessMs": 125.45537599362433,
+            "baselineProcessMs": 125.4388119559735,
+            "candidateRequestRangeMs": [
+              45,
+              46
+            ],
+            "baselineRequestRangeMs": [
+              45,
+              46
+            ],
+            "candidateProcessRangeMs": [
+              125.30421605333686,
+              145.67094994708896
+            ],
+            "baselineProcessRangeMs": [
+              125.34934701398015,
+              125.56393491104245
+            ],
+            "sourcePath": "selfhost/build/phase86/fixtures/unicode.bend",
+            "sourceSha256": "c714ff5231007a23fa54c9d5b662ee60b84ce099994f3a4002fa5c50ef3d8a06",
+            "programSourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/selfhost/build/phase86/fixtures/unicode.bend",
+            "sourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase102/default-promotion.md"
+          }
+        ],
+        "caseCount": 6,
+        "rounds": 4,
+        "sampleCount": 48,
+        "completeCMatches": 48,
+        "completeDiagnosticMatches": 48,
+        "commit": "a15ca94f1d198611d6a0eadf848a1be047571fb7",
+        "date": "2026-10-17T00:23:30Z",
+        "measuredAt": "2026-10-17T00:00:54.246185Z",
+        "dateSemantics": "date is publication commit; measuredAt is campaign start",
+        "connectToPrevious": false,
+        "measurementStatus": "fresh-paired",
+        "sourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase102/default-promotion.md",
+        "dataArchiveUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase102/evidence04/README.md",
+        "scope": "Equal-case geometric mean of per-case median ratios. Same stage, four balanced rounds, six fixed sources. Request excludes prepared Base decoding. Whole process includes startup, Base preparation, output writing and teardown; both exclude Clang. Different baseline for each campaign; ratios are not a single common-reference time series."
+      }
+    ],
+    "currentUpstreamComparison": {
+      "status": "not_measured",
+      "note": "No matched current candidate04 versus upstream six-source compilation campaign. Do not multiply historical ratios or substitute JS-hosted figures."
+    }
+  },
+  "secondStage": {
+    "latest": {
+      "phase": 102,
+      "label": "P102 vs P98",
+      "stage": "B2",
+      "requestRatio": 0.7245004085744402,
+      "processRatio": 0.6890399610811543,
+      "requestReductionPercent": 27.54995914255598,
+      "processReductionPercent": 31.09600389188457,
+      "baseline": "Phase 98 B2",
+      "baselinePhase": 98,
+      "baselineKind": "same-stage-native",
+      "comparisonKey": "p102-b2-paired-six-source",
+      "cohortKey": "native-six-source",
+      "programs": [
+        {
+          "id": "small",
+          "label": "Small",
+          "requestRatio": 0.734375,
+          "processRatio": 0.6876910769686108,
+          "candidateRequestMs": 47.0,
+          "baselineRequestMs": 64.0,
+          "candidateProcessMs": 155.99665057379752,
+          "baselineProcessMs": 226.84117301832885,
+          "candidateRequestRangeMs": [
+            46,
+            55
+          ],
+          "baselineRequestRangeMs": [
+            64,
+            65
+          ],
+          "candidateProcessRangeMs": [
+            145.66941978409886,
+            166.2048229482025
+          ],
+          "baselineProcessRangeMs": [
+            226.82983498089015,
+            227.02468186616898
+          ],
+          "sourcePath": "selfhost/tools/performance/phase77/fixtures/small.bend",
+          "sourceSha256": "4ba893a14bc4c71c2f12250e0e3d084c7dce4abe958bf243fdcb45e224751be3",
+          "programSourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/selfhost/tools/performance/phase77/fixtures/small.bend",
+          "sourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase102/default-promotion.md"
+        },
+        {
+          "id": "numeric_closed",
+          "label": "Numeric",
+          "requestRatio": 0.7201834862385321,
+          "processRatio": 0.6969347936542458,
+          "candidateRequestMs": 78.5,
+          "baselineRequestMs": 109.0,
+          "candidateProcessMs": 186.44806859083474,
+          "baselineProcessMs": 267.52584357745945,
+          "candidateRequestRangeMs": [
+            78,
+            79
+          ],
+          "baselineRequestRangeMs": [
+            108,
+            109
+          ],
+          "candidateProcessRangeMs": [
+            186.42747891135514,
+            186.47971912287176
+          ],
+          "baselineProcessRangeMs": [
+            267.4488821066916,
+            267.673266120255
+          ],
+          "sourcePath": "selfhost/build/phase86/fixtures/numeric_closed.bend",
+          "sourceSha256": "112006eb695c65fe6a12713b91572422533fa6dbba2b6e81965ac66d15b46f93",
+          "programSourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/selfhost/build/phase86/fixtures/numeric_closed.bend",
+          "sourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase102/default-promotion.md"
+        },
+        {
+          "id": "lexer_original",
+          "label": "Lexer",
+          "requestRatio": 0.7184579439252337,
+          "processRatio": 0.6920354037600821,
+          "candidateRequestMs": 307.5,
+          "baselineRequestMs": 428.0,
+          "candidateProcessMs": 410.28926195576787,
+          "baselineProcessMs": 592.873225454241,
+          "candidateRequestRangeMs": [
+            305,
+            309
+          ],
+          "baselineRequestRangeMs": [
+            427,
+            429
+          ],
+          "candidateProcessRangeMs": [
+            410.1745749358088,
+            430.9891080483794
+          ],
+          "baselineProcessRangeMs": [
+            592.7442179527134,
+            593.1621380150318
+          ],
+          "sourcePath": "selfhost/tools/performance/phase37/fixtures-historical/lexer.bend",
+          "sourceSha256": "6014af6bf7e97c8feaafa918e79f28a22d2c9c92bea836203fcd89b6d70a4fbb",
+          "programSourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/selfhost/tools/performance/phase37/fixtures-historical/lexer.bend",
+          "sourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase102/default-promotion.md"
+        },
+        {
+          "id": "map_closed",
+          "label": "Map",
+          "requestRatio": 0.7087349397590361,
+          "processRatio": 0.7009001840148219,
+          "candidateRequestMs": 1176.5,
+          "baselineRequestMs": 1660.0,
+          "candidateProcessMs": 1284.5100165577605,
+          "baselineProcessMs": 1832.657553604804,
+          "candidateRequestRangeMs": [
+            1171,
+            1178
+          ],
+          "baselineRequestRangeMs": [
+            1651,
+            1675
+          ],
+          "candidateProcessRangeMs": [
+            1284.1791911050677,
+            1304.4724080245942
+          ],
+          "baselineProcessRangeMs": [
+            1832.1026668418199,
+            1855.086512863636
+          ],
+          "sourcePath": "selfhost/build/phase86/fixtures/map_closed.bend",
+          "sourceSha256": "339767823a85ecb136ebda347adb9d0d5c350d96066fffbae92daee013954a40",
+          "programSourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/selfhost/build/phase86/fixtures/map_closed.bend",
+          "sourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase102/default-promotion.md"
+        },
+        {
+          "id": "functions65",
+          "label": "Functions65",
+          "requestRatio": 0.7413127413127413,
+          "processRatio": 0.7169897628627881,
+          "candidateRequestMs": 192.0,
+          "baselineRequestMs": 259.0,
+          "candidateProcessMs": 308.26222302857786,
+          "baselineProcessMs": 429.9395040143281,
+          "candidateRequestRangeMs": [
+            192,
+            193
+          ],
+          "baselineRequestRangeMs": [
+            257,
+            260
+          ],
+          "candidateProcessRangeMs": [
+            308.2174628507346,
+            308.28117206692696
+          ],
+          "baselineProcessRangeMs": [
+            429.8194490838796,
+            430.1166539080441
+          ],
+          "sourcePath": "selfhost/tools/performance/phase77/fixtures/functions65.bend",
+          "sourceSha256": "301e07212360ee4741b08271cb1eacbb5b92494e0372eae9eb3a6a716888e9db",
+          "programSourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/selfhost/tools/performance/phase77/fixtures/functions65.bend",
+          "sourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase102/default-promotion.md"
+        },
+        {
+          "id": "unicode",
+          "label": "Unicode",
+          "requestRatio": 0.7244094488188977,
+          "processRatio": 0.6420716287878442,
+          "candidateRequestMs": 46.0,
+          "baselineRequestMs": 63.5,
+          "candidateProcessMs": 145.7425180124119,
+          "baselineProcessMs": 226.98794258758426,
+          "candidateRequestRangeMs": [
+            46,
+            46
+          ],
+          "baselineRequestRangeMs": [
+            63,
+            64
+          ],
+          "candidateProcessRangeMs": [
+            145.63648798502982,
+            145.83006082102656
+          ],
+          "baselineProcessRangeMs": [
+            226.84972104616463,
+            227.04032086767256
+          ],
+          "sourcePath": "selfhost/build/phase86/fixtures/unicode.bend",
+          "sourceSha256": "c714ff5231007a23fa54c9d5b662ee60b84ce099994f3a4002fa5c50ef3d8a06",
+          "programSourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/selfhost/build/phase86/fixtures/unicode.bend",
+          "sourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase102/default-promotion.md"
+        }
+      ],
+      "caseCount": 6,
+      "rounds": 4,
+      "sampleCount": 48,
+      "completeCMatches": 48,
+      "completeDiagnosticMatches": 48,
+      "commit": "a15ca94f1d198611d6a0eadf848a1be047571fb7",
+      "date": "2026-10-17T00:23:30Z",
+      "measuredAt": "2026-10-17T00:01:36.377661Z",
+      "dateSemantics": "date is publication commit; measuredAt is campaign start",
+      "connectToPrevious": false,
+      "measurementStatus": "fresh-paired",
+      "sourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase102/default-promotion.md",
+      "dataArchiveUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase102/evidence04/README.md",
+      "scope": "Equal-case geometric mean of per-case median ratios. Same stage, four balanced rounds, six fixed sources. Request excludes prepared Base decoding. Whole process includes startup, Base preparation, output writing and teardown; both exclude Clang. Different baseline for each campaign; ratios are not a single common-reference time series."
+    },
+    "history": [
+      {
+        "phase": 98,
+        "label": "P98 vs native07",
+        "stage": "B2",
+        "requestRatio": 0.939236044048661,
+        "processRatio": 0.9783446802067914,
+        "requestReductionPercent": 6.076395595133899,
+        "processReductionPercent": 2.165531979320856,
+        "baseline": "Previous native07-era B2",
+        "baselinePhase": 90,
+        "baselineKind": "same-stage-native",
+        "comparisonKey": "p98-b2-paired-six-source",
+        "cohortKey": "native-six-source",
+        "programs": [
+          {
+            "id": "small",
+            "label": "Small",
+            "requestRatio": 0.9142857142857143,
+            "processRatio": 0.9996561660058236,
+            "candidateRequestMs": 64.0,
+            "baselineRequestMs": 70.0,
+            "candidateProcessMs": 228.6856445716694,
+            "baselineProcessMs": 228.76430151518434,
+            "candidateRequestRangeMs": [
+              64,
+              64
+            ],
+            "baselineRequestRangeMs": [
+              69,
+              70
+            ],
+            "candidateProcessRangeMs": [
+              228.2466348260641,
+              229.38701696693897
+            ],
+            "baselineProcessRangeMs": [
+              227.6342478580773,
+              229.1918359696865
+            ],
+            "sourcePath": "selfhost/tools/performance/phase77/fixtures/small.bend",
+            "sourceSha256": "4ba893a14bc4c71c2f12250e0e3d084c7dce4abe958bf243fdcb45e224751be3",
+            "programSourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/selfhost/tools/performance/phase77/fixtures/small.bend",
+            "sourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase98/README.md"
+          },
+          {
+            "id": "numeric_closed",
+            "label": "Numeric",
+            "requestRatio": 0.9194915254237288,
+            "processRatio": 0.9291565914943204,
+            "candidateRequestMs": 108.5,
+            "baselineRequestMs": 118.0,
+            "candidateProcessMs": 269.3582510109991,
+            "baselineProcessMs": 289.89543148782104,
+            "candidateRequestRangeMs": [
+              107,
+              109
+            ],
+            "baselineRequestRangeMs": [
+              118,
+              119
+            ],
+            "candidateProcessRangeMs": [
+              268.6963090673089,
+              270.243301987648
+            ],
+            "baselineProcessRangeMs": [
+              289.09577103331685,
+              290.2426498476416
+            ],
+            "sourcePath": "selfhost/build/phase86/fixtures/numeric_closed.bend",
+            "sourceSha256": "112006eb695c65fe6a12713b91572422533fa6dbba2b6e81965ac66d15b46f93",
+            "programSourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/selfhost/build/phase86/fixtures/numeric_closed.bend",
+            "sourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase98/README.md"
+          },
+          {
+            "id": "lexer_original",
+            "label": "Lexer",
+            "requestRatio": 0.9647326507394767,
+            "processRatio": 0.9674786438765105,
+            "candidateRequestMs": 424.0,
+            "baselineRequestMs": 439.5,
+            "candidateProcessMs": 595.0099115725607,
+            "baselineProcessMs": 615.0109000736848,
+            "candidateRequestRangeMs": [
+              424,
+              427
+            ],
+            "baselineRequestRangeMs": [
+              438,
+              441
+            ],
+            "candidateProcessRangeMs": [
+              593.9668309874833,
+              615.4091290663928
+            ],
+            "baselineProcessRangeMs": [
+              614.2139229923487,
+              615.9706339240074
+            ],
+            "sourcePath": "selfhost/tools/performance/phase37/fixtures-historical/lexer.bend",
+            "sourceSha256": "6014af6bf7e97c8feaafa918e79f28a22d2c9c92bea836203fcd89b6d70a4fbb",
+            "programSourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/selfhost/tools/performance/phase37/fixtures-historical/lexer.bend",
+            "sourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase98/README.md"
+          },
+          {
+            "id": "map_closed",
+            "label": "Map",
+            "requestRatio": 0.9815146094215862,
+            "processRatio": 0.9769953267979674,
+            "candidateRequestMs": 1646.0,
+            "baselineRequestMs": 1677.0,
+            "candidateProcessMs": 1812.8554889699444,
+            "baselineProcessMs": 1855.5416174931452,
+            "candidateRequestRangeMs": [
+              1640,
+              1654
+            ],
+            "baselineRequestRangeMs": [
+              1670,
+              1678
+            ],
+            "candidateProcessRangeMs": [
+              1812.1643720660359,
+              1837.130710016936
+            ],
+            "baselineProcessRangeMs": [
+              1853.0146169941872,
+              1874.4462218601257
+            ],
+            "sourcePath": "selfhost/build/phase86/fixtures/map_closed.bend",
+            "sourceSha256": "339767823a85ecb136ebda347adb9d0d5c350d96066fffbae92daee013954a40",
+            "programSourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/selfhost/build/phase86/fixtures/map_closed.bend",
+            "sourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase98/README.md"
+          },
+          {
+            "id": "functions65",
+            "label": "Functions65",
+            "requestRatio": 0.944547134935305,
+            "processRatio": 0.9994489028130016,
+            "candidateRequestMs": 255.5,
+            "baselineRequestMs": 270.5,
+            "candidateProcessMs": 431.2163844006136,
+            "baselineProcessMs": 431.45415757317096,
+            "candidateRequestRangeMs": [
+              255,
+              258
+            ],
+            "baselineRequestRangeMs": [
+              269,
+              272
+            ],
+            "candidateProcessRangeMs": [
+              431.00526207126677,
+              431.73104198649526
+            ],
+            "baselineProcessRangeMs": [
+              431.05048104189336,
+              431.7304980941117
+            ],
+            "sourcePath": "selfhost/tools/performance/phase77/fixtures/functions65.bend",
+            "sourceSha256": "301e07212360ee4741b08271cb1eacbb5b92494e0372eae9eb3a6a716888e9db",
+            "programSourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/selfhost/tools/performance/phase77/fixtures/functions65.bend",
+            "sourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase98/README.md"
+          },
+          {
+            "id": "unicode",
+            "label": "Unicode",
+            "requestRatio": 0.9130434782608695,
+            "processRatio": 0.9993492634837707,
+            "candidateRequestMs": 63.0,
+            "baselineRequestMs": 69.0,
+            "candidateProcessMs": 228.22568251285702,
+            "baselineProcessMs": 228.37429400533438,
+            "candidateRequestRangeMs": [
+              63,
+              68
+            ],
+            "baselineRequestRangeMs": [
+              69,
+              70
+            ],
+            "candidateProcessRangeMs": [
+              227.85109700635076,
+              229.04960298910737
+            ],
+            "baselineProcessRangeMs": [
+              227.83143492415547,
+              228.4771529957652
+            ],
+            "sourcePath": "selfhost/build/phase86/fixtures/unicode.bend",
+            "sourceSha256": "c714ff5231007a23fa54c9d5b662ee60b84ce099994f3a4002fa5c50ef3d8a06",
+            "programSourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/selfhost/build/phase86/fixtures/unicode.bend",
+            "sourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase98/README.md"
+          }
+        ],
+        "caseCount": 6,
+        "rounds": 4,
+        "sampleCount": 48,
+        "completeCMatches": 48,
+        "completeDiagnosticMatches": 48,
+        "commit": "795ad056f09d0c43627cb70094387b05d3108326",
+        "date": "2026-10-15T23:04:20Z",
+        "measuredAt": "2026-10-15T22:14:21.762705Z",
+        "dateSemantics": "date is publication commit; measuredAt is campaign start",
+        "connectToPrevious": false,
+        "measurementStatus": "fresh-paired",
+        "sourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase98/README.md",
+        "dataArchiveUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase98/README.md",
+        "scope": "Equal-case geometric mean of per-case median ratios. Same stage, four balanced rounds, six fixed sources. Request excludes prepared Base decoding. Whole process includes startup, Base preparation, output writing and teardown; both exclude Clang. Different baseline for each campaign; ratios are not a single common-reference time series."
+      },
+      {
+        "phase": 102,
+        "label": "P102 vs P98",
+        "stage": "B2",
+        "requestRatio": 0.7245004085744402,
+        "processRatio": 0.6890399610811543,
+        "requestReductionPercent": 27.54995914255598,
+        "processReductionPercent": 31.09600389188457,
+        "baseline": "Phase 98 B2",
+        "baselinePhase": 98,
+        "baselineKind": "same-stage-native",
+        "comparisonKey": "p102-b2-paired-six-source",
+        "cohortKey": "native-six-source",
+        "programs": [
+          {
+            "id": "small",
+            "label": "Small",
+            "requestRatio": 0.734375,
+            "processRatio": 0.6876910769686108,
+            "candidateRequestMs": 47.0,
+            "baselineRequestMs": 64.0,
+            "candidateProcessMs": 155.99665057379752,
+            "baselineProcessMs": 226.84117301832885,
+            "candidateRequestRangeMs": [
+              46,
+              55
+            ],
+            "baselineRequestRangeMs": [
+              64,
+              65
+            ],
+            "candidateProcessRangeMs": [
+              145.66941978409886,
+              166.2048229482025
+            ],
+            "baselineProcessRangeMs": [
+              226.82983498089015,
+              227.02468186616898
+            ],
+            "sourcePath": "selfhost/tools/performance/phase77/fixtures/small.bend",
+            "sourceSha256": "4ba893a14bc4c71c2f12250e0e3d084c7dce4abe958bf243fdcb45e224751be3",
+            "programSourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/selfhost/tools/performance/phase77/fixtures/small.bend",
+            "sourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase102/default-promotion.md"
+          },
+          {
+            "id": "numeric_closed",
+            "label": "Numeric",
+            "requestRatio": 0.7201834862385321,
+            "processRatio": 0.6969347936542458,
+            "candidateRequestMs": 78.5,
+            "baselineRequestMs": 109.0,
+            "candidateProcessMs": 186.44806859083474,
+            "baselineProcessMs": 267.52584357745945,
+            "candidateRequestRangeMs": [
+              78,
+              79
+            ],
+            "baselineRequestRangeMs": [
+              108,
+              109
+            ],
+            "candidateProcessRangeMs": [
+              186.42747891135514,
+              186.47971912287176
+            ],
+            "baselineProcessRangeMs": [
+              267.4488821066916,
+              267.673266120255
+            ],
+            "sourcePath": "selfhost/build/phase86/fixtures/numeric_closed.bend",
+            "sourceSha256": "112006eb695c65fe6a12713b91572422533fa6dbba2b6e81965ac66d15b46f93",
+            "programSourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/selfhost/build/phase86/fixtures/numeric_closed.bend",
+            "sourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase102/default-promotion.md"
+          },
+          {
+            "id": "lexer_original",
+            "label": "Lexer",
+            "requestRatio": 0.7184579439252337,
+            "processRatio": 0.6920354037600821,
+            "candidateRequestMs": 307.5,
+            "baselineRequestMs": 428.0,
+            "candidateProcessMs": 410.28926195576787,
+            "baselineProcessMs": 592.873225454241,
+            "candidateRequestRangeMs": [
+              305,
+              309
+            ],
+            "baselineRequestRangeMs": [
+              427,
+              429
+            ],
+            "candidateProcessRangeMs": [
+              410.1745749358088,
+              430.9891080483794
+            ],
+            "baselineProcessRangeMs": [
+              592.7442179527134,
+              593.1621380150318
+            ],
+            "sourcePath": "selfhost/tools/performance/phase37/fixtures-historical/lexer.bend",
+            "sourceSha256": "6014af6bf7e97c8feaafa918e79f28a22d2c9c92bea836203fcd89b6d70a4fbb",
+            "programSourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/selfhost/tools/performance/phase37/fixtures-historical/lexer.bend",
+            "sourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase102/default-promotion.md"
+          },
+          {
+            "id": "map_closed",
+            "label": "Map",
+            "requestRatio": 0.7087349397590361,
+            "processRatio": 0.7009001840148219,
+            "candidateRequestMs": 1176.5,
+            "baselineRequestMs": 1660.0,
+            "candidateProcessMs": 1284.5100165577605,
+            "baselineProcessMs": 1832.657553604804,
+            "candidateRequestRangeMs": [
+              1171,
+              1178
+            ],
+            "baselineRequestRangeMs": [
+              1651,
+              1675
+            ],
+            "candidateProcessRangeMs": [
+              1284.1791911050677,
+              1304.4724080245942
+            ],
+            "baselineProcessRangeMs": [
+              1832.1026668418199,
+              1855.086512863636
+            ],
+            "sourcePath": "selfhost/build/phase86/fixtures/map_closed.bend",
+            "sourceSha256": "339767823a85ecb136ebda347adb9d0d5c350d96066fffbae92daee013954a40",
+            "programSourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/selfhost/build/phase86/fixtures/map_closed.bend",
+            "sourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase102/default-promotion.md"
+          },
+          {
+            "id": "functions65",
+            "label": "Functions65",
+            "requestRatio": 0.7413127413127413,
+            "processRatio": 0.7169897628627881,
+            "candidateRequestMs": 192.0,
+            "baselineRequestMs": 259.0,
+            "candidateProcessMs": 308.26222302857786,
+            "baselineProcessMs": 429.9395040143281,
+            "candidateRequestRangeMs": [
+              192,
+              193
+            ],
+            "baselineRequestRangeMs": [
+              257,
+              260
+            ],
+            "candidateProcessRangeMs": [
+              308.2174628507346,
+              308.28117206692696
+            ],
+            "baselineProcessRangeMs": [
+              429.8194490838796,
+              430.1166539080441
+            ],
+            "sourcePath": "selfhost/tools/performance/phase77/fixtures/functions65.bend",
+            "sourceSha256": "301e07212360ee4741b08271cb1eacbb5b92494e0372eae9eb3a6a716888e9db",
+            "programSourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/selfhost/tools/performance/phase77/fixtures/functions65.bend",
+            "sourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase102/default-promotion.md"
+          },
+          {
+            "id": "unicode",
+            "label": "Unicode",
+            "requestRatio": 0.7244094488188977,
+            "processRatio": 0.6420716287878442,
+            "candidateRequestMs": 46.0,
+            "baselineRequestMs": 63.5,
+            "candidateProcessMs": 145.7425180124119,
+            "baselineProcessMs": 226.98794258758426,
+            "candidateRequestRangeMs": [
+              46,
+              46
+            ],
+            "baselineRequestRangeMs": [
+              63,
+              64
+            ],
+            "candidateProcessRangeMs": [
+              145.63648798502982,
+              145.83006082102656
+            ],
+            "baselineProcessRangeMs": [
+              226.84972104616463,
+              227.04032086767256
+            ],
+            "sourcePath": "selfhost/build/phase86/fixtures/unicode.bend",
+            "sourceSha256": "c714ff5231007a23fa54c9d5b662ee60b84ce099994f3a4002fa5c50ef3d8a06",
+            "programSourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/selfhost/build/phase86/fixtures/unicode.bend",
+            "sourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase102/default-promotion.md"
+          }
+        ],
+        "caseCount": 6,
+        "rounds": 4,
+        "sampleCount": 48,
+        "completeCMatches": 48,
+        "completeDiagnosticMatches": 48,
+        "commit": "a15ca94f1d198611d6a0eadf848a1be047571fb7",
+        "date": "2026-10-17T00:23:30Z",
+        "measuredAt": "2026-10-17T00:01:36.377661Z",
+        "dateSemantics": "date is publication commit; measuredAt is campaign start",
+        "connectToPrevious": false,
+        "measurementStatus": "fresh-paired",
+        "sourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase102/default-promotion.md",
+        "dataArchiveUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase102/evidence04/README.md",
+        "scope": "Equal-case geometric mean of per-case median ratios. Same stage, four balanced rounds, six fixed sources. Request excludes prepared Base decoding. Whole process includes startup, Base preparation, output writing and teardown; both exclude Clang. Different baseline for each campaign; ratios are not a single common-reference time series."
+      }
+    ],
+    "currentUpstreamComparison": {
+      "status": "not_measured",
+      "note": "No matched current candidate04 versus upstream six-source compilation campaign. Do not multiply historical ratios or substitute JS-hosted figures."
+    }
+  },
+  "audit104": {
+    "phase": 104,
+    "status": "research-only; no compiler change or promotion",
+    "sourceUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase104/README.md",
+    "dataUrl": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase104/baseline.json",
+    "started": "2026-10-17T04:14:44.319Z",
+    "finished": "2026-10-17T04:14:55.913Z",
+    "wallSeconds": 11.594,
+    "generations": [
+      {
+        "generation": 1,
+        "status": "historical-built-and-executed",
+        "binary": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase102/native-b1-04/compiler",
+          "sha256": "b2aec9e660bed602f29d7666ce6d14724d7e78c7582393d53f25d7d69aea7a66",
+          "bytes": 10697168
+        },
+        "selfC": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase102/native-chain04/b1-self/execution/output.1.c",
+          "sha256": "ed60e46ccb281b6aa2a0764bd418f0f01057b060fe7d90ef6160ddf1afe11498",
+          "bytes": 30373059
+        },
+        "requestSeconds": 126.584
+      },
+      {
+        "generation": 2,
+        "status": "historical-built-and-executed",
+        "binary": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase102/native-chain04/b2/compiler",
+          "sha256": "85a70429493fe779a08f983d497ceee10dbe8aaec510d43c6ff220aa19ec60f7",
+          "bytes": 21173344
+        },
+        "selfC": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase102/native-chain04/b2-self/execution/output.1.c",
+          "sha256": "ed60e46ccb281b6aa2a0764bd418f0f01057b060fe7d90ef6160ddf1afe11498",
+          "bytes": 30373059
+        },
+        "requestSeconds": 150.846
+      },
+      {
+        "generation": 3,
+        "status": "C-emitted-historically; executable-not-built",
+        "buildInput": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase102/native-chain04/b2-self/execution/output.1.c",
+          "sha256": "ed60e46ccb281b6aa2a0764bd418f0f01057b060fe7d90ef6160ddf1afe11498",
+          "bytes": 30373059
+        }
+      },
+      {
+        "generation": 4,
+        "status": "not-executed"
+      },
+      {
+        "generation": 5,
+        "status": "not-executed"
+      }
+    ],
+    "emittedCFixedPoint": true,
+    "executableFixedPointMeasured": false,
+    "conditionalCostModel": {
+      "bendSeconds": 150.846,
+      "clangSeconds": 374.03324274905026,
+      "bendFraction": 0.2873918183732042,
+      "compiler2xCycleSpeedup": 1.1678094391095415,
+      "compilerInfiniteCycleSpeedup": 1.4032957041233016,
+      "scope": "Derived from single historical observations, no agent/tests; not an experiment speed measurement."
+    },
+    "twoCaseScreen": [
+      {
+        "case": "small",
+        "stages": {
+          "b1": {
+            "medianRequestMs": 47,
+            "medianProcessMs": 136.19894348084927
+          },
+          "b2": {
+            "medianRequestMs": 46.5,
+            "medianProcessMs": 156.1588910408318
+          }
+        }
+      },
+      {
+        "case": "lexer_original",
+        "stages": {
+          "b1": {
+            "medianRequestMs": 311,
+            "medianProcessMs": 410.1869669975713
+          },
+          "b2": {
+            "medianRequestMs": 303,
+            "medianProcessMs": 410.75816191732883
+          }
+        }
+      }
+    ],
+    "requestCount": 16,
+    "rounds": 4,
+    "scope": "Fresh-process cached-Base requests, two development cases; no rebuild or new correctness qualification.",
+    "note": "Fresh 16 requests / two cases; all C and diagnostics match. Tiny timing differences do not establish generation acceleration. Historical B1/B2 self clocks retained; B3 executable unbuilt, B4/B5 unexecuted. Launcher clock differs from request/process clocks."
+  }
+}

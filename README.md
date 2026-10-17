@@ -1,92 +1,54 @@
 # Bend compiler progress
 
-A visual GitHub Pages report on the self hosted Bend compiler, maintained in an independent website repository. It contains five metric sections in this order: compiled program speed, second stage compiler compilation speed, first stage compiler compilation speed, conformance, and simplicity. Each speed section leads with an average relative to TypeScript, its evolution by dated compiler commit, and a program breakdown. The page also keeps 31 illustrated current and historical findings that readers can filter by metric. Every chart has recorded measurements and source links; SVG and PNG artifacts are available for download.
+A visual GitHub Pages report maintained in an independent website checkout. The five metric sections retain this order: compiled program speed, second stage compiler compilation speed, first stage compiler compilation speed, conformance, simplicity. Native results lead; expandable JavaScript reports preserve the earlier graphs, all measurements and their boundaries. Three application previews and six recent findings explain the practical gains; 31 earlier findings remain in an expandable archive.
 
-The saved measurements reach **installed Phase 66 final07**, compiler commit and immutable report snapshot [`2035010d`](https://github.com/rom1504/bend/commit/2035010d3d7045bbd0364c141e1da0007476cbc1), and include earlier milestones discussed in [PR #1207](https://github.com/bendlang/bend/pull/1207). The current TypeScript reference is [`0592662`](https://github.com/bendlang/bend/commit/059266225b77c8ca256ac6b25ee5c21449bab151); older measurements retain their original pins. This is a recorded snapshot from October 8, 2026, not an automatic view of the active compiler checkout.
+The snapshot reaches **Phase 104**, committed evidence [`8d6f9b4`](https://github.com/rom1504/bend/commit/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71), collected October 17, 2026. The current native core is **Phase 102 candidate04**; Phase 103 adds its public Bend CLI. Phase 104 authenticates the native lineage and adds 16 requests on two development cases, with no compiler promotion or broad performance rerun. The upstream compiler reference remains `059266225b77c8ca256ac6b25ee5c21449bab151`.
 
-The installed compiler is the validated **profile7 derivative of checked B1**. It emits a genuine direct JavaScript compiler, **B2**, which is measured and qualified separately and has not replaced the installed B1 API. B2 freshly checks its own source and emits **B3**, whose bytes exactly match B2. The program-speed metric times independently executed B1-generated benchmark programs; exact B1/B2 byte equality covers all 23 modules and 45 observed points.
+## Current measurement boundaries
 
-The website uses static HTML, CSS and a small script for finding filters. Normal text updates, site builds and validation use only the Python standard library; no packages or API keys are needed. Regenerating chart images separately requires Matplotlib.
+- Native generated-program time: **1.043461× upstream-generated C**, geometric mean across 44 positive-work points. Equal-source weighting gives **1.065286×**. The paired current/Phase98 ratio is **0.936547×**. One zero-work control has no timing ratio.
+- Native B2 compilation: **0.724500× Phase98 request time**; complete-process ratio **0.689040×**. Native B1: **1.026011× request** and **1.026269× process**. Six sources, four balanced rounds. These do not establish a current native-versus-upstream compiler average.
+- JavaScript-hosted Phase91: B2 **1.306596×**, B1 **1.408445×** upstream request time over 23 sources; import/API-inclusive **0.981387× / 0.969726×**. The separate C3 output cohort is still a JavaScript-hosted compiler. JavaScript program runtime **1.049×** retains earlier timing through output-identity evidence.
+- Native conformance: 69 eligible fixtures and 3 expected rejections per stage, 31 exclusions, 45 native semantic catalog points, 70 backend obligations. CLI controls: 41/41 and 6/6 complete C/verdict pairs. JS frontend: 3,173/3,174 exact; an invalid proof is rejected with shortened B2 diagnostics after deep rendering overflows the JS stack. Historical JS execution retains 1,045 passes and its original exemptions/failures/deferral.
+- Canonical source: **34,231 physical lines / 134 modules**. Assembled native core **39,372**, public CLI compiler **39,545**: a separate counting boundary. Public CLI policy is 152 Bend lines; OS provider 246 C lines; startup 19 C lines.
+
+Native B1/B2 emit identical complete self-C. B3 C exists but its executable was not built; there is no B3 timing. Historical C emission and Clang construction remain separate clocks. The public Phase103 bridge and CLI entries differ, so its packaging is not a new matched-source fixed-point claim. Ordinary native requests need no interpreter, while build and development tools retain their dependencies.
 
 ## Update and preview
 
-Run these commands from this website repository:
+Normal builds use the Python standard library. Regenerating charts additionally requires Matplotlib. All builds read saved website data, never the compiler checkout.
 
 ```sh
+python3 scripts/charts.py
 python3 scripts/build.py
 python3 scripts/build.py --check
 python3 -m http.server 8000 --bind 127.0.0.1 --directory site
 ```
 
-Open <http://127.0.0.1:8000>. Stop the preview with Ctrl+C.
+Edit the source data and templates; commit them together with generated HTML, JSON, SVG and PNG files. `scripts/build.py --check` verifies measurement relationships, chart provenance hashes and generated-page freshness without importing Matplotlib. `scripts/charts.py --check` checks chart inputs and artifacts. Source edits to chart data require regeneration, even if only a note changed. Never bypass verification by hand-editing the manifest.
 
-- Edit `progress.json` for editorial content: metadata, metric-card summaries, the 31 findings and their evidence links. Keep claims tied to recorded measurements and retain their scope.
-- Edit `templates/index.html` for page structure and `site/styles.css` for appearance.
-- Run `python3 scripts/build.py` after changes, then commit the source files and generated `site/` files together.
-- Run `python3 scripts/build.py --check` before committing. It validates measurement relationships, checks chart input/output hashes, and fails when generated pages need rebuilding. This check does not import Matplotlib.
+## Source files
 
-`site/index.html` and `site/progress.json` are generated. The latter contains the complete editorial configuration and research dataset. Use source files for edits. Site assets use relative URLs so the website also works at a GitHub Pages repository path.
+- `progress.json`: snapshot metadata, retained JavaScript card descriptions and earlier findings.
+- `recent-findings.json`: six current mechanism/impact stories and the separate Phase104 research outlook.
+- `native-research.json`: native runtime, B1/B2 request/process comparisons, scoped histories, self-emission observations and Phase104 audit/screen.
+- `applications-research.json`: three application cards, six current full-process comparisons, actual preview provenance and historical scaling.
+- `history-research.json`: canonical source-size history, separate assembled profiles and earlier paired compiler-checking results.
+- `conformance-research.json`: frontend history, distinct native/CLI/proof scopes and historical JavaScript census.
+- `runtime-average-research.json`: complete 45-case JavaScript timing history and current evidence-reuse boundary.
+- `compilation-average-research.json` and `second-stage-research.json`: historical and Phase91 JavaScript-hosted compilation campaigns, with cohort, clock and reference boundaries.
+- `runtime-research.json`: earlier paired program-execution improvements.
+- `scripts/build.py` and `scripts/native_report.py`: validation and static report rendering.
+- `scripts/charts.py` and `scripts/native_charts.py`: reproducible scientific plotting and chart hashes.
+- `templates/index.html`, `site/styles.css`, `site/app.js`: presentation and progressive enhancement.
 
-## Update measurements and charts
+`site/index.html` and `site/progress.json` are generated. The latter exports the complete source configuration and research datasets. All relative asset links work beneath the GitHub Pages repository path. The real rendered application PNG is copied from committed compiler evidence; the planner SVG illustrates a checked sample fixture.
 
-The six research files retain graph-ready values, measurement boundaries, commits and source URLs:
+## History rules
 
-- `history-research.json`: source-size history, paired compiler-checking results, separate Phase 36 compilation costs, and earlier findings.
-- `conformance-research.json`: exact frontend comparisons, suite/target changes, and current validation scope.
-- `runtime-research.json`: historical paired execution gains, the Phase 36 comparison, and findings.
-- `runtime-average-research.json`: the fixed 45-case runtime average history through Phase 66, all individual timings, and 23 source-program groups.
-- `compilation-average-research.json`: B1 compilation histories for changing program cohorts, through the current 23-source sample, with separate checking, request-only and import-inclusive clocks.
-- `second-stage-research.json`: B2 compilation history through the current 23-source comparison, separate compilation-only and import-inclusive clocks, historical clean self-emission measurements, qualification gates, and allocation diagnostics.
+Preserve earlier numerical rows and source identities. New native cohorts do not replace JavaScript history. Different sources, clock boundaries, references and target backends require separate graph segments or panels. Independent paired gains are not multiplied into a synthetic current comparison. Missing timings are not zeroes. Retained exact-output evidence is labeled as reuse, not fresh execution.
 
-Update measurements in this order:
-
-1. Find a committed report or existing CI result. Record the exact compiler commit, reference pin, workload, timing boundary, sample count and source URL in the appropriate research file. Keep changed workloads or timing boundaries separate; preserve relevant regressions and limitations.
-2. Update the summaries, findings and checkpoint metadata in `progress.json` to match that evidence. If the graph needs a different layout or series, update `scripts/charts.py`.
-3. Install the plotting dependency and regenerate the SVG/PNG chart pairs:
-
-   ```sh
-   python3 -m pip install -r requirements-charts.txt
-   python3 scripts/charts.py
-   ```
-
-4. Build and validate the website:
-
-   ```sh
-   python3 scripts/build.py
-   python3 scripts/build.py --check
-   ```
-
-5. Preview the results and commit the edited source files, generated charts, `site/charts/manifest.json`, and generated pages together.
-
-The chart manifest records hashes of all six research files, the renderer, the plotting requirements and every SVG/PNG artifact. Changing any of those inputs requires chart regeneration before the site build can pass—even a research-file text edit changes its hash. Do not hand-edit generated chart files or the manifest to bypass verification. Editorial changes confined to `progress.json`, the template or CSS do not require chart regeneration.
-
-For chart verification alone, run `python3 scripts/charts.py --check`; it also uses only the standard library. The committed artifacts let GitHub Actions validate and publish without installing plotting packages.
-
-## Average and history definitions
-
-The headline runtime figure is **1.05× TypeScript execution time** (unrounded: 1.049281626×): the geometric mean of 45 per-case median-time ratios across 23 program source files. Every case has equal weight; equal-source weighting gives 1.046986711×. The full per-case table remains available. Fifteen cases beat TypeScript. The latest campaign passes all 669 samples; the paired P65 → P66 execution change is +0.03765%, effectively flat. Mandelbrot and raytrace retain the largest source-level gaps. Five role/case pairs keep their drift or spread flags in the evidence.
-
-The headline **B2 compilation figure is 1.32× TypeScript time**, and the **B1 figure is 1.40×**. Both now measure **compilation alone**: the first ordinary check plus library-emission request, after imports and API loading. A prominent secondary figure includes imports and API loading: **B2 0.990389×; B1 0.982634×**. Each matrix equally weights 23 sources, using the median of three rotated fresh processes per role and source: 207 exact-output workers. Standard-library caches are prepared first. Process launch, cache preparation, provenance and output validation are outside both clocks. These are fresh-process observations, not end-to-end CLI, cold-filesystem or steady-state measurements.
-
-The latest paired P65 → P66 compilation changes are **B2 −0.230% and B1 +0.530%**, effectively flat. The TypeScript reference changes at P66, so the current values are not directly comparable with the previous reference’s headline. Both the old and new Bend compilers are freshly timed against the new TypeScript reference in the current campaign. The website’s former P58 two-program headline included imports and API loading; current primary headlines also change the clock and expand to 23 programs. Charts visibly separate these boundaries.
-
-The compiler histories now retain the broad P60 survey and the optimization releases at P61, P63, P64 and P65. Their separately controlled B2 compilation reductions are **45.71%, 20.55%, 12.47% and 9.03%**, respectively. These are individual campaign comparisons, not quantities to multiply into a single measured speedup. P59, P60 and P62 are measurement or diagnostic phases; their labels do not invent new compiler releases. Each point retains the measured compiler identity, acquisition phase, cohort, reference and clock.
-
-The historical **P58 clean B2 own-source emission** observations remain **223.475 → 36.058 seconds**, a descriptive **6.20×** speedup. They use each release’s changed source and an earlier retained campaign control under the same method. P66 freshly passes own-source checking and exact B2/B3 reproduction, but no new comparable clean-emission timing is claimed. Historical P58 qualification times of 11.712 seconds for source checking and 39.199 seconds for reproduction remain tied to P58; neither substitutes for its clean emission benchmark. Historical allocation observations retain their sampled cumulative scope, separate from retained memory or peak RSS.
-
-Earlier B1 compilation results keep their original scopes. The P48 legacy-JavaScript sample is 9.86× TypeScript request time, averaging two fixed sources with host import excluded. P42–45 four-program and P47 three-program averages remain visible, disconnected at workload changes. The P56–58 two-program observations include import and API loading. The current broad first-request compilation and import-inclusive figures have separate clocks. Changed workloads and timing boundaries cannot be read as one continuous throughput trend.
-
-The compilation history also preserves all 15 **P8–24 compiler-source checking observations: 205.26s → 11.16s, or 73.20× → 2.99× TypeScript process time**, as unconnected points on a labeled logarithmic scale. Compiler sources evolve across releases, and the reference pin changes at P23. These observations exclude code emission. P9 and P16 callouts retain independently measured same-source reductions of 67.9% and 59.6%, with their original reference pins and paired release comparisons.
-
-The runtime history keeps the same 45 cases, with visible breaks at the P41 timing change, P52 JavaScript interface change and P66 TypeScript reference change. P52 direct JavaScript was opt-in; P53 made it the default. P40 reuses 42 unchanged comparisons plus three fresh cases. P58 freshly measures all 45 cases for both its P56 control and selected release. P59–65 contain no new complete runtime campaign; the latest graph adds a P65 control freshly measured in P66, then selected P66. Compiler dates and acquisition phases remain distinct. Historical campaign values are descriptive; optimization claims use the fresh paired baseline from their report.
-
-The current conformance headline is **1,045 distinct golden passes across 1,170 JavaScript-eligible fixtures**, versus TypeScript’s 1,044. It combines **991 fresh Node passes** with **54 Bun passes** reused only after proving identical emitted modules and runtime. The remaining inventory is **123 unprintable-main exemptions, one shared Process.run failure and one graphics deferral**. Every observed TypeScript-passing fixture passes Bend; these finite results do not mean every fixture, backend or proof obligation is complete.
-
-The updated frontend inventory contains 1,587 fixtures and **3,174 exact parse/check observations**, including negative diagnostics. An executable dependency audit and fresh strict36 validation transfer these observations to final07; they were not all re-executed on that final image. Current B1 and B2 separately pass source96, numeric34, composition18 and overapplication2 controls. These overlapping suites are not summed with the broad census. B2’s source check and byte-identical reproduction are recorded self-hosting gates; its 3,282 unsafe definitions retain their expected proof-trust refusal. Native, GPU and mathematical-proof claims remain separate.
-
-Simplicity history reaches **28,490 physical / 23,353 code Bend lines in 115 modules**. P66 adds 94 physical lines (+0.331%), 69 code lines and 13 definitions over P65. The current census has 3,282 definitions, 642 laws and 119 types. The maintained Bend module boundary excludes host/runtime support, generated artifacts and tests. Code-line counts exclude whole-line comments and blanks and stay separate from earlier nonblank counts. Source growth and additional preparation mechanisms remain visible alongside their measured speed benefits.
-
-Build validation recalculates headline averages, verifies the 45-case runtime partition, checks compilation cohorts and averages, and validates historical checking ratios, paired reductions and conformance denominators. Nine dashboard figures retain earlier milestones and show the current measurements; three older chart pairs remain as historical artifacts, for **12 SVG/PNG pairs** in total.
+The historical compiler-source checking drop (205.26 s to 11.16 s), paired early reductions, Phase58 clean B2 self-emission (223.475 s to 36.058 s), and later broad JavaScript optimization campaigns remain available. Their changing source/cohort boundaries are kept explicit. Native request improvements, full compiler-source emission and C-toolchain construction remain separate workloads. Application process results include startup and IO and are not averaged into the warmed 44-point runtime metric.
 
 ## Publish on GitHub Pages
 

@@ -17,11 +17,13 @@ ROOT = Path(__file__).resolve().parents[1]
 DEST = ROOT / "site" / "charts"
 INPUTS = ("history-research.json", "conformance-research.json", "runtime-research.json",
           "runtime-average-research.json", "compilation-average-research.json",
-          "second-stage-research.json")
+          "second-stage-research.json", "native-research.json")
 NAMES = ("simplicity", "compilation", "conformance", "runtime-gains", "runtime-gaps",
          "runtime-average-history", "runtime-programs", "compilation-average-history",
          "compilation-programs", "second-stage-average-history", "second-stage-programs",
-         "second-stage-self-emission")
+         "second-stage-self-emission", "native-runtime-history", "native-runtime-programs",
+         "native-second-stage-history", "native-second-stage-programs",
+         "native-compilation-history", "native-compilation-programs")
 INK = "#202d29"
 MUTED = "#586660"
 PAPER = "#f6f7f2"
@@ -94,7 +96,7 @@ def save(plt, fig, name: str, description: str):
         "Title": name.replace("-", " ").title(),
         "Description": description,
         "Creator": "Bend Progress chart renderer",
-        "Date": "2026-10-08",
+        "Date": "2026-10-17",
     }
     fig.savefig(DEST / f"{name}.svg", metadata=metadata, transparent=True)
     fig.savefig(DEST / f"{name}.png", dpi=160, transparent=False, facecolor=PAPER,
@@ -787,12 +789,13 @@ def speed_programs(plt, data, kind):
 
 
 def render():
+    import native_charts
     data = {name: json.loads((ROOT / name).read_text()) for name in INPUTS}
     plt = configure()
     DEST.mkdir(parents=True, exist_ok=True)
-    simplicity(plt, data["history-research.json"])
+    native_charts.simplicity(plt, data["history-research.json"], save)
     compilation(plt, data["history-research.json"])
-    conformance(plt, data["conformance-research.json"])
+    native_charts.conformance(plt, data["conformance-research.json"], save)
     runtime_gains(plt, data["runtime-research.json"])
     runtime_gaps(plt, data["runtime-research.json"])
     for kind in ("runtime", "compilation"):
@@ -808,10 +811,11 @@ def render():
     second_stage_history(plt, data["second-stage-research.json"])
     compiler_programs(plt, data["second-stage-research.json"], "B2")
     second_stage_self_emission(plt, data["second-stage-research.json"])
+    native_charts.render(plt, data["native-research.json"], save)
     manifest = {
         "version": 1,
         "inputs": {name: digest(ROOT / name)
-                   for name in (*INPUTS, "scripts/charts.py", "requirements-charts.txt")},
+                   for name in (*INPUTS, "scripts/charts.py", "scripts/native_charts.py", "requirements-charts.txt")},
         "outputs": {f"{name}.{ext}": digest(DEST / f"{name}.{ext}")
                     for name in NAMES for ext in ("svg", "png")},
     }

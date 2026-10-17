@@ -1,16 +1,18 @@
 {
   "schemaVersion": 1,
   "evidenceThrough": {
-    "phase": 66,
-    "commit": "2035010d3d7045bbd0364c141e1da0007476cbc1",
-    "publishedAt": "2026-10-08T08:50:21Z",
-    "source": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/implementation/phase66/evidence/conformance-final07.json",
-    "evidenceCommit": "2035010d3d7045bbd0364c141e1da0007476cbc1",
-    "frontendLastFreshPhase": 66,
+    "phase": 104,
+    "commit": "8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71",
+    "publishedAt": "2026-10-17T04:20:13Z",
+    "source": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase104/README.md",
+    "evidenceCommit": "8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71",
+    "frontendLastFreshPhase": 91,
     "broaderFrontendLastFreshPhase": 45,
-    "note": "P66 renews the full frontend at a new upstream pin via an explicit final07 dependency reuse audit, and runs the full selected B1 primary-JavaScript inventory with scoped exact-module Bun reuse. Fresh B1/B2 independent semantics remain separate."
+    "nativeLastFreshPhase": 102,
+    "nativeCLILastFreshPhase": 103,
+    "note": "P104 audits historical native identities and runs 16 bounded requests; it changes no compiler or release. Broad JS frontend evidence is P91; native B1/B2 qualification is P102 candidate04 and the public native CLI has separate P103 integration evidence."
   },
-  "currentHeadObserved": "2035010d3d7045bbd0364c141e1da0007476cbc1",
+  "currentHeadObserved": "8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71",
   "metric": {
     "title": "Exact frontend agreement",
     "unit": "parse/check observations",
@@ -18,7 +20,7 @@
     "preferredPlot": "Remaining exact differences, with disconnected segments at upstream target changes.",
     "dateMeaning": "Commit publication time, not necessarily the exact test execution time.",
     "phaseSpacing": "Phase labels denote selected recorded milestones; intermediate phases are not interpolated measurements.",
-    "currentScope": "P66 final07 retains 3,174 exact main frontend observations at new upstream 0592662 through explicit dependency reuse plus fresh strict36. Broader196 remains historical P45. Fresh B1/B2 independent source controls and the B1 1,170-fixture JavaScript inventory are separate scopes."
+    "currentScope": "Current installed JS B2 has 3,173/3,174 exact frontend agreements (P91): all reject the invalid proof, but one deep diagnostic falls back after stack exhaustion. P66 JavaScript census remains historical. Native candidate04 and the public Bend CLI have separate finite scopes."
   },
   "segments": [
     {
@@ -317,6 +319,22 @@
             "fail": 4
           },
           "notes": "1,587 fixtures, two observations each. The selected03 full acquisition has 1,082 parse passes, 505 observed negative parses, 1,583 check passes and four shared later-stage failures. Final07 reuses these outcomes through exact frontend dependency closure: all 1,403 functions reachable from 51 conservative roots, all 99 API wrappers and generated runtime unchanged; fresh strict36 also passes. Backend changes are unreachable from this path. This is renewed new-reference qualification, not a second full execution of all rows."
+        },
+        {
+          "phase": 91,
+          "commit": "aa0a40d475c54b4998723e68fe7c1d29ebab332f",
+          "date": "2026-10-15T04:22:04Z",
+          "source": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase91/conformance.md",
+          "label": "P91 · installed JS B2",
+          "commitUrl": "https://github.com/rom1504/bend/commit/aa0a40d475c54b4998723e68fe7c1d29ebab332f",
+          "upstream": "059266225b77c8ca256ac6b25ee5c21449bab151",
+          "total": 3174,
+          "exact": 3173,
+          "different": 1,
+          "exactPercent": 99.96849401386262,
+          "sourcePath": "implementation/phase91/conformance.md",
+          "compilerImage": "installed Phase90 genuine JS B2",
+          "notes": "Fresh candidate execution against verified retained TypeScript observations. page/deep_list_walk.bend is correctly rejected by all roles; B2 exhausts its diagnostic-rendering stack and returns short fallback text. The same issue reproduces in preserved Phase82 B2. This is a diagnostic discrepancy, not false proof acceptance."
         }
       ]
     }
@@ -576,6 +594,22 @@
         "fail": 4
       },
       "notes": "1,587 fixtures, two observations each. The selected03 full acquisition has 1,082 parse passes, 505 observed negative parses, 1,583 check passes and four shared later-stage failures. Final07 reuses these outcomes through exact frontend dependency closure: all 1,403 functions reachable from 51 conservative roots, all 99 API wrappers and generated runtime unchanged; fresh strict36 also passes. Backend changes are unreachable from this path. This is renewed new-reference qualification, not a second full execution of all rows."
+    },
+    {
+      "phase": 91,
+      "commit": "aa0a40d475c54b4998723e68fe7c1d29ebab332f",
+      "date": "2026-10-15T04:22:04Z",
+      "source": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase91/conformance.md",
+      "label": "P91 · installed JS B2",
+      "commitUrl": "https://github.com/rom1504/bend/commit/aa0a40d475c54b4998723e68fe7c1d29ebab332f",
+      "upstream": "059266225b77c8ca256ac6b25ee5c21449bab151",
+      "total": 3174,
+      "exact": 3173,
+      "different": 1,
+      "exactPercent": 99.96849401386262,
+      "sourcePath": "implementation/phase91/conformance.md",
+      "compilerImage": "installed Phase90 genuine JS B2",
+      "notes": "Fresh candidate execution against verified retained TypeScript observations. page/deep_list_walk.bend is correctly rejected by all roles; B2 exhausts its diagnostic-rendering stack and returns short fallback text. The same issue reproduces in preserved Phase82 B2. This is a diagnostic discrepancy, not false proof acceptance."
     }
   ],
   "broaderSeries": [
@@ -724,83 +758,48 @@
     }
   ],
   "current": {
-    "mainExact": 3174,
+    "phase": 91,
+    "commit": "aa0a40d475c54b4998723e68fe7c1d29ebab332f",
+    "date": "2026-10-15T04:22:04Z",
+    "source": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase91/README.md",
+    "candidate": "Installed Phase90 genuine JS B2",
+    "installedPhase": 90,
+    "mainExact": 3173,
     "mainTotal": 3174,
     "broaderExact": 196,
     "broaderTotal": 196,
+    "frontendLastFreshPhase": 91,
+    "frontendFresh": false,
+    "frontendAcquisition": "Fresh P91 installed-B2 execution against verified retained TypeScript reference observations",
+    "frontendSource": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase91/conformance.md",
+    "broaderFrontendLastFreshPhase": 45,
+    "broaderFrontendFresh": false,
+    "installedImage": "genuine self-emitted JS B2",
+    "installedApiSha256": "284f6e9b88614c4cbd60812a7641fb03d9b9c49892c9bb0d692b1b2c31b5bd30",
+    "checkedParentApiSha256": "6bf8e0938565fc4a1b2152640ac83e11e0538fe080a1ec6ac8b89ec6c5958379",
     "cliPass": 66,
     "cliTotal": 66,
-    "installedApiSha256": "bb6c6e2ad6f18bf54d2b5c7e4e7a8d0fe3f0f80658a260ad52256fa4351d81a6",
-    "newFixedPoint": true,
-    "referenceAcquisition": "New TypeScript reference 0592662: complete frontend (3,174 observations) and primary JavaScript (1,170 fixtures). Selected B1 shares 1,118 exact primary JS observations with TypeScript, while independent golden pass counts differ. Scoped Bun evidence raises distinct golden passes to Bend 1,045 / TypeScript 1,044. Independent source and numeric controls retain known TypeScript NaN defects.",
-    "phase": 66,
-    "candidate": "Phase66 final07",
-    "maintainedSuites": 8,
-    "source": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/implementation/phase66/evidence/compiler-qualification07.json",
-    "frontendLastFreshPhase": 66,
-    "frontendFresh": true,
-    "frontendSource": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/implementation/phase66/evidence/conformance-final07.json",
     "cliLegacyPass": 42,
     "cliLegacyTotal": 42,
     "cliDefaultPass": 24,
     "cliDefaultTotal": 24,
-    "installedDirectRuntimeSha256": "7fe4fbb3ddfdd3c7ea9ccd8d71cecb8f3ce51cd678a8fb7d95fd02cc70aba575",
-    "semanticPass": 96,
-    "semanticTotal": 96,
-    "semanticReferencePass": 95,
-    "semanticReferenceTotal": 96,
-    "semanticDifferentialExact": 95,
-    "semanticDifferentialTotal": 96,
-    "semanticFixtures": 29,
-    "numericPass": 34,
-    "numericTotal": 34,
-    "numericReferencePass": 28,
-    "numericReferenceTotal": 34,
-    "compositionPass": 18,
-    "compositionTotal": 18,
-    "overapplicationPass": 2,
-    "overapplicationTotal": 2,
-    "directBackendExact": 26,
-    "directBackendTotal": 26,
-    "directBackendRawOutcomes": {
-      "runtimePass": 18,
-      "expectedRejection": 4,
-      "notApplicable": 4
-    },
-    "scopeNote": "Fresh B1 and B2 each pass 96 source, 34 numeric, 18 composition and two overapplication controls; these overlap and are separate from the selected B1 full JavaScript census. The 3,174 main frontend observations are current through audited selected07 reuse; the broader 196 remain P45. The 26-row direct census is historical P65; its 25 surviving IDs are included in the new 1,170-fixture inventory, while the deleted printer fixture is excluded. No counts are summed into a universal language/native/GPU total.",
-    "semanticQualificationSha256": "7b0f1e7c7b8efeb27b82718bf1834b1551dd79003721f4e87f56784ff599e153",
-    "installedImage": "profile7 equality-derived checked B1",
-    "installedSourceSha256": "1b29d5c4f0e2a9c90a21699e23c734c02cb66700cf05665b8a5d320a540e8a3e",
-    "installedAttemptSha256": "2d7c525444a8ea87c18fd3d321894052639b1683186613831296b912f3d2fbaa",
-    "fixedPointScope": "Separate actual B2\u2192B3 complete byte equality with fresh own-source type acceptance; the installed package remains profile7-derived checked B1. All 3,282 unsafe declarations retain expected proof-trust refusal. Self-reproduction is not a mathematical correctness proof.",
-    "semanticCompilerImages": [
-      "checkedB1",
-      "directB2"
-    ],
-    "directBackendCompilerImage": "checkedB1",
-    "maintainedSuitesCompilerImage": "checkedB1",
-    "cliCompilerImage": "installed checkedB1",
+    "cliLastFreshPhase": 90,
+    "cliCompilerImage": "installed genuine JS B2",
     "focusedFrontendExact": 36,
     "focusedFrontendTotal": 36,
-    "focusedFrontendCompilerImage": "checkedB1",
-    "b1IntegrationJobsPass": 11,
-    "b1IntegrationJobsTotal": 11,
-    "nativeExactSources": 3,
-    "nativeQualificationScope": "Selected07 has fresh native execution on three sources. The 19 source, 16 native and seven mock controls retain attempt05 provenance through audited unchanged closures; 13 native methods remain explicitly unsupported. This is not broad native/GPU conformance.",
-    "frontendAcquisition": "Full selected03 acquisition; selected07 exact dependency reuse and fresh strict36",
-    "broaderFrontendLastFreshPhase": 45,
-    "broaderFrontendFresh": false,
-    "semanticLastFreshPhase": 66,
-    "directBackendLastFreshPhase": 65,
-    "directBackendFresh": false,
-    "directBackendSurvivingFixtures": 25,
-    "directBackendSource": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/implementation/phase65/evidence/state10-qualification.json",
-    "b2IntegrationJobsPass": 8,
-    "b2IntegrationJobsTotal": 8,
-    "helperIntegrityPass": 5,
-    "helperIntegrityTotal": 5,
-    "releaseJobsPass": 5,
-    "releaseJobsTotal": 5
+    "focusedFrontendLastFreshPhase": 90,
+    "focusedFrontendCompilerImage": "checked parent B1",
+    "selectedCExecutionPass": 100,
+    "selectedCExecutionTotal": 100,
+    "selectedCExecutionLastFreshPhase": 91,
+    "selectedCReferencePass": 93,
+    "selectedCReferenceTotal": 100,
+    "selectedCReferenceFresh": false,
+    "remainingNativeUnsupportedAPIs": 13,
+    "newFixedPoint": true,
+    "fixedPointScope": "Installed Phase90 genuine JS B2 has own-source type acceptance and exact B3 reproduction. Independent native candidate04 has an emitted-C fixed point; these are different artifacts. Neither is a mathematical compiler-correctness proof.",
+    "referenceAcquisition": "P91 reuses verified historical TypeScript frontend/C observations; the full P66 JavaScript census was not rerun.",
+    "scopeNote": "P91 full frontend and selected C execution, P90 installed JS interface checks, P102 native qualification and P103 public native CLI controls retain distinct dates and image identities. Counts overlap and are not summed."
   },
   "backendPilot": {
     "phase": 51,
@@ -811,7 +810,7 @@
       "notApplicable": 8,
       "sharedFailures": 4
     },
-    "scope": "Historical mixed-backend pilot last renewed in Phase51: 69 execution passes, eight not-applicable outcomes and four shared failures across 81 outcomes. Current Phase66 primary JavaScript and selected native qualification are separate scopes.",
+    "scope": "Historical mixed-backend pilot last renewed in Phase51: 69 execution passes, eight not-applicable outcomes and four shared failures across 81 outcomes. Historical Phase66 primary JavaScript and selected native qualification are separate scopes.",
     "source": "https://github.com/rom1504/bend/blob/29dbaa41fb7988baae8355b1fba24312976d598d/implementation/phase51/qualification.md",
     "historicalPhase24": {
       "total": 81,
@@ -831,7 +830,7 @@
       "id": "grammar-and-errors",
       "title": "Exact comparisons made progress measurable",
       "phase": 5,
-      "metric": "560 \u2192 444 differences",
+      "metric": "560 → 444 differences",
       "body": "The comparison records the entire parse or check result: whether the program is accepted, where an error occurs, its phase and its diagnostics. Grammar and source-origin repairs closed 116 differences while keeping every previous match and all 919 positive programs. That makes the graph useful for tracking both everyday usability and language behavior.",
       "sources": [
         "https://github.com/rom1504/bend/blob/5350b2fec8f6f8484c7a689e915b359d7ce86847/implementation/phase5/final-conformance.md"
@@ -852,7 +851,7 @@
       "id": "shared-diagnostics",
       "title": "Shared error rendering improved the developer experience",
       "phase": 15,
-      "metric": "603 \u2192 459 differences",
+      "metric": "603 → 459 differences",
       "body": "One diagnostic renderer restored source carets consistently, and missing-import handling retained the right error context. Together with malformed-binder handling, the release added 144 exact matches without losing an earlier match. These improvements make errors easier to locate and keep the Bend compiler familiar to users of the reference implementation.",
       "sources": [
         "https://github.com/rom1504/bend/blob/5350b2fec8f6f8484c7a689e915b359d7ce86847/implementation/phase15/exact-differences.md"
@@ -862,7 +861,7 @@
       "id": "authoritative-origins",
       "title": "Keeping source information early avoided guessing later",
       "phase": 16,
-      "metric": "459 \u2192 2 differences",
+      "metric": "459 → 2 differences",
       "body": "The compiler attached source origins when terms were created and carried them through later transformations. Parser and checker checkpoints also became explicit. This let the compiler select the same error at the same point as the reference, closing 457 differences with no lost matches. Compact literal representation kept this richer information affordable.",
       "sources": [
         "https://github.com/rom1504/bend/blob/5350b2fec8f6f8484c7a689e915b359d7ce86847/implementation/phase16/consolidation.md"
@@ -872,7 +871,7 @@
       "id": "contextual-frontend",
       "title": "One contextual frontend closed the remaining gaps",
       "phase": 22,
-      "metric": "2 \u2192 0 main; 57 \u2192 0 broader differences",
+      "metric": "2 → 0 main; 57 → 0 broader differences",
       "body": "Parsing now carries lexical scope, aliases, namespaces and fresh-name state when they are needed. A shared materializer performs semantic work at the correct early or deferred checkpoint. This replaces reconstruction paths that could choose the wrong error or scope. It closes the final main-suite differences and every remaining difference in the frozen broader selection.",
       "sources": [
         "https://github.com/rom1504/bend/blob/5350b2fec8f6f8484c7a689e915b359d7ce86847/implementation/phase22/contextual-conformance.md",
@@ -883,7 +882,7 @@
       "id": "broader-tests",
       "title": "Nearby examples turned a near-perfect score into stronger evidence",
       "phase": 22,
-      "metric": "128 \u2192 196 exact broader observations",
+      "metric": "128 → 196 exact broader observations",
       "body": "When the main corpus was already 99.93% exact, targeted neighboring examples still exposed scope, grouping and declaration-order gaps. Keeping that 196-observation selection separate made those weaknesses visible. Fixes raised it from 128 to 136, then 139, then 196 exact observations, improving behavior beyond the original headline score.",
       "sources": [
         "https://github.com/rom1504/bend/blob/5350b2fec8f6f8484c7a689e915b359d7ce86847/implementation/phase17/group-boundary.md",
@@ -907,7 +906,7 @@
       "id": "backend-discovery",
       "title": "Execution checks found bugs that frontend checks could not see",
       "phase": 24,
-      "metric": "78 \u2192 81 exact pilot outcomes",
+      "metric": "78 → 81 exact pilot outcomes",
       "body": "A separate execution pilot exposed foreign/constructor name collisions and distinct source names colliding in emitted C. A shared emission check and unambiguous native identifiers repaired those implementation defects. Keeping execution coverage separate let the project improve generated code even after frontend comparisons had reached zero differences.",
       "sources": [
         "https://github.com/rom1504/bend/blob/5350b2fec8f6f8484c7a689e915b359d7ce86847/implementation/phase24/backend-census.md"
@@ -940,7 +939,7 @@
       "id": "direct-independent-semantics",
       "title": "Independent source expectations exposed a bug shared comparisons could miss",
       "phase": 53,
-      "metric": "95 / 96 \u2192 96 / 96 source scenarios",
+      "metric": "95 / 96 → 96 / 96 source scenarios",
       "body": "Direct06 and pinned TypeScript both failed an unchanged signaling-NaN oracle, with different wrong results. Writing directly into fresh typed-array storage preserves the tested payloads on cold calls and raises the candidate to 96 passing source scenarios. The reference remains at 95, so reproducing its erroneous result is not counted as correctness. Separate composition controls retain callback order, demand, captures and genuine overapplication.",
       "sources": [
         "https://github.com/rom1504/bend/blob/29dbaa41fb7988baae8355b1fba24312976d598d/implementation/phase52/conformance.md",
@@ -951,7 +950,7 @@
       "id": "qualified-direct-self-reproduction",
       "title": "The direct compiler now reproduces itself with preserved source checks",
       "phase": 58,
-      "metric": "B2 \u2192 B3 byte equality; 96 / 96 source scenarios on both B1 and B2",
+      "metric": "B2 → B3 byte equality; 96 / 96 source scenarios on both B1 and B2",
       "body": "The separate direct B2 accepts the complete compiler source and emits a byte-identical B3. It independently passes the same source, numeric and callback controls as the installed checked B1, and its 23 raw source modules and 45 observed benchmark outputs match B1 byte for byte. The source still contains 3,055 unsafe declarations, so type acceptance and self-reproduction retain the proof-trust refusal. B2 remains separately qualified while checked B1 is installed.",
       "sources": [
         "https://github.com/rom1504/bend/blob/6eecaefe3292774de5408994d21e31fc16c08dc5/implementation/phase58/validation.md",
@@ -961,24 +960,24 @@
   ],
   "boundaries": [
     {
-      "title": "Current frontend and JavaScript scopes",
-      "description": "P66 has 3,174 exact frontend outcomes at upstream 0592662, retained on final07 through explicit dependency reuse and fresh strict validation. The separate 1,170-fixture JS census gives 1,045 distinct golden passes via Node plus scoped Bun reuse, 123 exemptions, one shared Process.run failure and one graphics deferral. These are finite selected-B1 observations, not universal conformance.",
-      "source": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/implementation/phase66/evidence/conformance-final07.json"
+      "title": "Latest JS frontend versus historical JavaScript execution",
+      "description": "Current installed JS B2 has 3,173/3,174 exact frontend agreements (P91): all reject the invalid proof, but one deep diagnostic falls back after stack exhaustion. P66 JavaScript census remains historical. Native candidate04 and the public Bend CLI have separate finite scopes.",
+      "source": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase91/README.md"
     },
     {
-      "title": "Separate stage qualification",
-      "description": "Separate actual B2\u2192B3 complete byte equality with fresh own-source type acceptance; the installed package remains profile7-derived checked B1. All 3,282 unsafe declarations retain expected proof-trust refusal. Self-reproduction is not a mathematical correctness proof.",
-      "source": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/implementation/phase66/evidence/selfhosting07.json"
+      "title": "Native core qualification",
+      "description": "Each native stage freshly passes 69 eligible execution fixtures and three expected refusals; 31 fixture exclusions remain under the single-source/provider contract. The 45 broad semantic programs, 70 backend obligations and mechanism observations overlap other suites.",
+      "source": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase102/default-promotion.md"
     },
     {
-      "title": "Independent correctness and reference agreement",
-      "description": "Both selected B1 and genuine B2 pass 96 source scenarios while TypeScript passes 95. The original NaN fixture expects 40; TypeScript returns 1. The six numeric reference failures are original/renamed NaN cases, not candidate failures.",
-      "source": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/implementation/phase66/evidence/semantic-qualification07.json"
+      "title": "Public CLI integration",
+      "description": "41 public-interface controls and six complete C/verdict-equivalence source pairs qualify the new Bend CLI integration. Candidate04 algorithms remain unchanged. This does not rerun full-language or 45-program runtime suites. The CLI is built through an explicit native bridge with different host entries, not a new matched-source fixed point.",
+      "source": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase103/README.md"
     },
     {
-      "title": "Preserved historical scopes",
-      "description": "The broader 196 frontend inventory remains P45 and the historical backend inventory of 81 outcomes remains P51. The old direct census of 26 ends at P65; its 25 surviving IDs are included in P66 full JavaScript, and the deleted printer fixture is excluded. Numeric, source, CLI and native scopes overlap and are never summed.",
-      "source": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/implementation/phase66/controls.md"
+      "title": "Proof contracts and finite observations",
+      "description": "Independent helper proofs, finite production contracts, native behavior suites and byte reproduction answer different questions. No summed language-wide score or whole-compiler proof follows.",
+      "source": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/docs/self_hosted/COMPILER_LAWS.md"
     }
   ],
   "sources": {
@@ -989,12 +988,12 @@
       "pr1207-review/chart-data.json"
     ],
     "historicalThrough": "5350b2fec8f6f8484c7a689e915b359d7ce86847",
-    "currentReadme": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/README.md",
-    "currentConformance": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/implementation/phase66/evidence/conformance-final07.json",
-    "currentGates": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/implementation/phase66/evidence/compiler-qualification07.json",
-    "sourceNote": "P66 renews new-reference main frontend and selected B1 full JavaScript qualification, while B1/B2 independent semantics, genuine B2 self-reproduction, native/Base and installed-release controls retain their separate image and execution boundaries.",
-    "currentRelease": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/selfhost/dist/release.json",
-    "currentImageGuide": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/docs/self_hosted/compiler-image-generation.md"
+    "currentReadme": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/README.md",
+    "currentConformance": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase91/README.md",
+    "currentGates": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase102/default-promotion.md",
+    "sourceNote": "Current scopes: Phase90 installed JS B2, Phase91 JS-hosted scoreboard, Phase102 candidate04 native core, Phase103 Bend public CLI, Phase104 read-only lineage audit and bounded request screen.",
+    "currentRelease": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase103/README.md",
+    "currentImageGuide": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/docs/self_hosted/NATIVE_CLI.md"
   },
   "successorIssue": {
     "url": "https://github.com/rom1504/bend/issues/1",
@@ -1002,7 +1001,7 @@
     "createdAt": "2026-10-04T00:29:17Z",
     "commentsAtRead": 0,
     "checkedOn": "2026-10-04",
-    "note": "Issue body links the original PR; current Phase66 values come from pinned repository reports. The issue was not re-read for this data update."
+    "note": "Historical issue metadata was not reread for this update; current results come from pinned repository reports."
   },
   "independentSemanticSeries": [
     {
@@ -1253,7 +1252,7 @@
   "independentSemanticMetric": {
     "title": "Independent direct JavaScript semantics",
     "unit": "source-oracle scenarios",
-    "description": "Same 96 source scenarios from 29 checked fixtures at selected release checkpoints. Candidate passes require independently expected values, errors and events. P66 freshly qualifies both selected checked B1 and genuine B2; TypeScript/differential agreement remains separate. P65 checked results explicitly reuse the byte-identical State09 compiler; the genuine B2 acquisition belongs State10.",
+    "description": "Same 96 source scenarios from 29 checked fixtures at selected release checkpoints. Candidate passes require independently expected values, errors and events. P66 freshly qualifies both selected checked B1 and genuine B2; TypeScript/differential agreement remains separate. P65 checked results explicitly reuse the byte-identical State09 compiler; the genuine B2 acquisition belongs State10. Historical series through P66; do not relabel these rows as fresh Phase91–104 acquisitions.",
     "preferredPlot": "Source-oracle pass count, separate from the historical parse/check agreement graph.",
     "source": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/implementation/phase66/evidence/semantic-qualification07.json"
   },
@@ -1594,49 +1593,45 @@
       "helperIntegrityPass": 5,
       "source": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/implementation/phase66/evidence/installed-release07.json",
       "notes": "42 legacy plus 24 ordinary/default/relocated interface checks. Compiler semantics and installed CLI scopes overlap; no summed unique-test count."
+    },
+    {
+      "phase": 90,
+      "commit": "1806ba4c289cf5cbf282f8f4dd9e8bbd37f17357",
+      "date": "2026-10-15T01:51:59Z",
+      "source": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase90/README.md",
+      "candidate": "compiler07 genuine B2",
+      "compilerImage": "installed genuine JS B2",
+      "cliPass": 66,
+      "cliTotal": 66,
+      "notes": "42 legacy and 24 default installed/relocated controls pass; release integrity verified. Distinct from native CLI controls."
     }
   ],
   "selfReproduction": {
-    "phase": 66,
-    "candidate": "final07 genuine B2",
-    "installed": false,
-    "source": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/implementation/phase66/evidence/selfhosting07.json",
-    "compilerImageSha256": "0067736c1fec634503f659bea4a69ebf730f5aeb98ce9602db08c45d4a95ed7f",
-    "sourceSha256": "1b29d5c4f0e2a9c90a21699e23c734c02cb66700cf05665b8a5d320a540e8a3e",
+    "phase": 90,
+    "commit": "1806ba4c289cf5cbf282f8f4dd9e8bbd37f17357",
+    "date": "2026-10-15T01:51:59Z",
+    "source": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase90/README.md",
+    "candidate": "Phase90 genuine JS B2",
+    "installed": true,
+    "compilerImageSha256": "284f6e9b88614c4cbd60812a7641fb03d9b9c49892c9bb0d692b1b2c31b5bd30",
+    "installedB1ApiSha256": "6bf8e0938565fc4a1b2152640ac83e11e0538fe080a1ec6ac8b89ec6c5958379",
+    "imageBytes": 4745566,
     "freshCheck": {
       "typeAccepted": true,
       "internalSeconds": null,
       "overallSeconds": null,
-      "unsafeDeclarations": 3282,
-      "proofTrust": "failed",
+      "proofTrust": "refused",
       "kernelChecked": false,
-      "receiptSha256": "8e10a8cffcea82f1311767cae05b2d50eea31fe20570542eb1de6d301e7b8ba3",
-      "scope": "Fresh actual B2 complete-source type acceptance with expected unsafe proof-trust refusal. Timings are not present in the published compact audit and are not inherited from older releases."
+      "scope": "Fresh Phase90 complete-source type acceptance is recorded separately from the expected unsafe/foreign proof-trust refusal; no clean comparable timing is introduced here."
     },
     "reproduction": {
       "from": "B2",
       "to": "B3",
       "byteIdentical": true,
       "qualificationSeconds": null,
-      "receiptSha256": "886bc2069948e842c37ac48e7002345d68b377858da05594daec468ba6930869",
-      "timingScope": "Current byte-identical qualification passes. No fresh clean self-emission timing is published in this compact receipt; P58 clean performance and older qualification durations remain separate historical evidence."
+      "timingScope": "Phase90 JS reproduction qualification; native candidate04 self-C and Phase103 bridge-built public CLI have distinct identities."
     },
-    "semanticPass": 96,
-    "semanticTotal": 96,
-    "numericPass": 34,
-    "numericTotal": 34,
-    "compositionPass": 18,
-    "compositionTotal": 18,
-    "overapplicationPass": 2,
-    "overapplicationTotal": 2,
-    "programEmissionEquality": {
-      "rawSourceModules": 23,
-      "observedPoints": 45,
-      "byteIdenticalToCheckedB1": true,
-      "scope": "Actual B2 modules equal selected B1 for all 23 sources / 45 points; this exact-byte mapping transfers separately executed program oracles. Byte equality itself is not an execution-speed sample."
-    },
-    "installedB1ApiSha256": "bb6c6e2ad6f18bf54d2b5c7e4e7a8d0fe3f0f80658a260ad52256fa4351d81a6",
-    "proofScope": "Byte-identical self-reproduction and source type acceptance do not establish compiler correctness or proof validity."
+    "proofScope": "Source type acceptance and exact self-reproduction do not establish universal compiler correctness or independent proof-kernel validity."
   },
   "previousRelease": {
     "mainExact": 3026,
@@ -1689,7 +1684,7 @@
     "installedSourceSha256": "85454aab7a6ef25d1e78970b1c24d68ac2a90a23a4b39b64a30de311c2fc5091",
     "installedAttemptSha256": "e500b277beb16202d1e16aa5f24ebbd6964ca8ba3eaed41e7ff0b988cd266de1",
     "installedAt": "2026-10-06T11:22:58.686Z",
-    "fixedPointScope": "Separate direct B2\u2192B3 complete byte equality; installed compiler remains checked-derived B1. This is self-reproduction, not a mathematical correctness proof.",
+    "fixedPointScope": "Separate direct B2→B3 complete byte equality; installed compiler remains checked-derived B1. This is self-reproduction, not a mathematical correctness proof.",
     "semanticCompilerImages": [
       "checkedB1",
       "directB2"
@@ -1742,7 +1737,10 @@
     "source": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/implementation/phase66/evidence/conformance-final07.json",
     "scope": "Union of Node passes and separately qualified exact-module/runtime Bun outcomes, counted once per fixture ID. The remaining 123 unprintable-main exemptions, one shared Process.run golden failure and one graphics environment deferral are not passes. The full JS census belongs to selected checked B1; B2 has separate independent semantics and byte equality for all 23 modules / 45 observer points.",
     "referenceOnlyFailure": 1,
-    "referenceOnlyFailureFixture": "compile/f32_table_nan_bits.bend"
+    "referenceOnlyFailureFixture": "compile/f32_table_nan_bits.bend",
+    "fresh": false,
+    "lastFreshPhase": 66,
+    "currentScope": "Historical P66 selected-B1 JavaScript census, retained as a distinct scope; not rerun in P91–104. Current installed JS B2 has separately measured frontend/C evidence."
   },
   "javascriptCensusSeries": [
     {
@@ -1828,6 +1826,349 @@
       },
       "installedB1ApiSha256": "641381f638f1f4c1c8b349bef06502b42738c1c7feff0391f2e09b90f4ef282a",
       "proofScope": "Byte-identical self-reproduction and source type acceptance do not establish compiler correctness or proof validity."
+    },
+    {
+      "phase": 66,
+      "candidate": "final07 genuine B2",
+      "installed": false,
+      "source": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/implementation/phase66/evidence/selfhosting07.json",
+      "compilerImageSha256": "0067736c1fec634503f659bea4a69ebf730f5aeb98ce9602db08c45d4a95ed7f",
+      "sourceSha256": "1b29d5c4f0e2a9c90a21699e23c734c02cb66700cf05665b8a5d320a540e8a3e",
+      "freshCheck": {
+        "typeAccepted": true,
+        "internalSeconds": null,
+        "overallSeconds": null,
+        "unsafeDeclarations": 3282,
+        "proofTrust": "failed",
+        "kernelChecked": false,
+        "receiptSha256": "8e10a8cffcea82f1311767cae05b2d50eea31fe20570542eb1de6d301e7b8ba3",
+        "scope": "Fresh actual B2 complete-source type acceptance with expected unsafe proof-trust refusal. Timings are not present in the published compact audit and are not inherited from older releases."
+      },
+      "reproduction": {
+        "from": "B2",
+        "to": "B3",
+        "byteIdentical": true,
+        "qualificationSeconds": null,
+        "receiptSha256": "886bc2069948e842c37ac48e7002345d68b377858da05594daec468ba6930869",
+        "timingScope": "Current byte-identical qualification passes. No fresh clean self-emission timing is published in this compact receipt; P58 clean performance and older qualification durations remain separate historical evidence."
+      },
+      "semanticPass": 96,
+      "semanticTotal": 96,
+      "numericPass": 34,
+      "numericTotal": 34,
+      "compositionPass": 18,
+      "compositionTotal": 18,
+      "overapplicationPass": 2,
+      "overapplicationTotal": 2,
+      "programEmissionEquality": {
+        "rawSourceModules": 23,
+        "observedPoints": 45,
+        "byteIdenticalToCheckedB1": true,
+        "scope": "Actual B2 modules equal selected B1 for all 23 sources / 45 points; this exact-byte mapping transfers separately executed program oracles. Byte equality itself is not an execution-speed sample."
+      },
+      "installedB1ApiSha256": "bb6c6e2ad6f18bf54d2b5c7e4e7a8d0fe3f0f80658a260ad52256fa4351d81a6",
+      "proofScope": "Byte-identical self-reproduction and source type acceptance do not establish compiler correctness or proof validity."
     }
-  ]
+  ],
+  "historicalCurrentSnapshots": [
+    {
+      "mainExact": 3174,
+      "mainTotal": 3174,
+      "broaderExact": 196,
+      "broaderTotal": 196,
+      "cliPass": 66,
+      "cliTotal": 66,
+      "installedApiSha256": "bb6c6e2ad6f18bf54d2b5c7e4e7a8d0fe3f0f80658a260ad52256fa4351d81a6",
+      "newFixedPoint": true,
+      "referenceAcquisition": "New TypeScript reference 0592662: complete frontend (3,174 observations) and primary JavaScript (1,170 fixtures). Selected B1 shares 1,118 exact primary JS observations with TypeScript, while independent golden pass counts differ. Scoped Bun evidence raises distinct golden passes to Bend 1,045 / TypeScript 1,044. Independent source and numeric controls retain known TypeScript NaN defects.",
+      "phase": 66,
+      "candidate": "Phase66 final07",
+      "maintainedSuites": 8,
+      "source": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/implementation/phase66/evidence/compiler-qualification07.json",
+      "frontendLastFreshPhase": 66,
+      "frontendFresh": true,
+      "frontendSource": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/implementation/phase66/evidence/conformance-final07.json",
+      "cliLegacyPass": 42,
+      "cliLegacyTotal": 42,
+      "cliDefaultPass": 24,
+      "cliDefaultTotal": 24,
+      "installedDirectRuntimeSha256": "7fe4fbb3ddfdd3c7ea9ccd8d71cecb8f3ce51cd678a8fb7d95fd02cc70aba575",
+      "semanticPass": 96,
+      "semanticTotal": 96,
+      "semanticReferencePass": 95,
+      "semanticReferenceTotal": 96,
+      "semanticDifferentialExact": 95,
+      "semanticDifferentialTotal": 96,
+      "semanticFixtures": 29,
+      "numericPass": 34,
+      "numericTotal": 34,
+      "numericReferencePass": 28,
+      "numericReferenceTotal": 34,
+      "compositionPass": 18,
+      "compositionTotal": 18,
+      "overapplicationPass": 2,
+      "overapplicationTotal": 2,
+      "directBackendExact": 26,
+      "directBackendTotal": 26,
+      "directBackendRawOutcomes": {
+        "runtimePass": 18,
+        "expectedRejection": 4,
+        "notApplicable": 4
+      },
+      "scopeNote": "Fresh B1 and B2 each pass 96 source, 34 numeric, 18 composition and two overapplication controls; these overlap and are separate from the selected B1 full JavaScript census. The 3,174 main frontend observations are current through audited selected07 reuse; the broader 196 remain P45. The 26-row direct census is historical P65; its 25 surviving IDs are included in the new 1,170-fixture inventory, while the deleted printer fixture is excluded. No counts are summed into a universal language/native/GPU total.",
+      "semanticQualificationSha256": "7b0f1e7c7b8efeb27b82718bf1834b1551dd79003721f4e87f56784ff599e153",
+      "installedImage": "profile7 equality-derived checked B1",
+      "installedSourceSha256": "1b29d5c4f0e2a9c90a21699e23c734c02cb66700cf05665b8a5d320a540e8a3e",
+      "installedAttemptSha256": "2d7c525444a8ea87c18fd3d321894052639b1683186613831296b912f3d2fbaa",
+      "fixedPointScope": "Separate actual B2→B3 complete byte equality with fresh own-source type acceptance; the installed package remains profile7-derived checked B1. All 3,282 unsafe declarations retain expected proof-trust refusal. Self-reproduction is not a mathematical correctness proof.",
+      "semanticCompilerImages": [
+        "checkedB1",
+        "directB2"
+      ],
+      "directBackendCompilerImage": "checkedB1",
+      "maintainedSuitesCompilerImage": "checkedB1",
+      "cliCompilerImage": "installed checkedB1",
+      "focusedFrontendExact": 36,
+      "focusedFrontendTotal": 36,
+      "focusedFrontendCompilerImage": "checkedB1",
+      "b1IntegrationJobsPass": 11,
+      "b1IntegrationJobsTotal": 11,
+      "nativeExactSources": 3,
+      "nativeQualificationScope": "Selected07 has fresh native execution on three sources. The 19 source, 16 native and seven mock controls retain attempt05 provenance through audited unchanged closures; 13 native methods remain explicitly unsupported. This is not broad native/GPU conformance.",
+      "frontendAcquisition": "Full selected03 acquisition; selected07 exact dependency reuse and fresh strict36",
+      "broaderFrontendLastFreshPhase": 45,
+      "broaderFrontendFresh": false,
+      "semanticLastFreshPhase": 66,
+      "directBackendLastFreshPhase": 65,
+      "directBackendFresh": false,
+      "directBackendSurvivingFixtures": 25,
+      "directBackendSource": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/implementation/phase65/evidence/state10-qualification.json",
+      "b2IntegrationJobsPass": 8,
+      "b2IntegrationJobsTotal": 8,
+      "helperIntegrityPass": 5,
+      "helperIntegrityTotal": 5,
+      "releaseJobsPass": 5,
+      "releaseJobsTotal": 5
+    }
+  ],
+  "boundaryHistory": [
+    {
+      "phase": 66,
+      "boundaries": [
+        {
+          "title": "Current frontend and JavaScript scopes",
+          "description": "P66 has 3,174 exact frontend outcomes at upstream 0592662, retained on final07 through explicit dependency reuse and fresh strict validation. The separate 1,170-fixture JS census gives 1,045 distinct golden passes via Node plus scoped Bun reuse, 123 exemptions, one shared Process.run failure and one graphics deferral. These are finite selected-B1 observations, not universal conformance.",
+          "source": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/implementation/phase66/evidence/conformance-final07.json"
+        },
+        {
+          "title": "Separate stage qualification",
+          "description": "Separate actual B2→B3 complete byte equality with fresh own-source type acceptance; the installed package remains profile7-derived checked B1. All 3,282 unsafe declarations retain expected proof-trust refusal. Self-reproduction is not a mathematical correctness proof.",
+          "source": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/implementation/phase66/evidence/selfhosting07.json"
+        },
+        {
+          "title": "Independent correctness and reference agreement",
+          "description": "Both selected B1 and genuine B2 pass 96 source scenarios while TypeScript passes 95. The original NaN fixture expects 40; TypeScript returns 1. The six numeric reference failures are original/renamed NaN cases, not candidate failures.",
+          "source": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/implementation/phase66/evidence/semantic-qualification07.json"
+        },
+        {
+          "title": "Preserved historical scopes",
+          "description": "The broader 196 frontend inventory remains P45 and the historical backend inventory of 81 outcomes remains P51. The old direct census of 26 ends at P65; its 25 surviving IDs are included in P66 full JavaScript, and the deleted printer fixture is excluded. Numeric, source, CLI and native scopes overlap and are never summed.",
+          "source": "https://github.com/rom1504/bend/blob/2035010d3d7045bbd0364c141e1da0007476cbc1/implementation/phase66/controls.md"
+        }
+      ]
+    }
+  ],
+  "diagnosticGap": {
+    "phase": 91,
+    "fixture": "page/deep_list_walk.bend",
+    "expectedCharacters": 12119,
+    "actualCharacters": 57,
+    "invalidProofRejectedByAll": true,
+    "affected": "Current Phase90 B2 and preserved Phase82 B2 under the qualified 4-MiB stack",
+    "unaffected": "Current checked B1 and pinned TypeScript print the full error page",
+    "status": "open",
+    "source": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase91/deep-list-diagnostic.md"
+  },
+  "currentNative": {
+    "phase": 102,
+    "commit": "a15ca94f1d198611d6a0eadf848a1be047571fb7",
+    "date": "2026-10-17T00:23:30Z",
+    "source": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase102/default-promotion.md",
+    "candidate": "candidate04",
+    "profile": "phase102-lowering04",
+    "status": "promoted native core",
+    "stages": [
+      "B1",
+      "B2"
+    ],
+    "fixturesPass": 69,
+    "fixturesTotal": 69,
+    "rejectionPass": 3,
+    "rejectionTotal": 3,
+    "excluded": 31,
+    "broadPrograms": 45,
+    "backendObligations": 70,
+    "mechanismSources": 19,
+    "mechanismEmissions": 38,
+    "mechanismOutputObservations": 136,
+    "mechanismFreshObservations": 115,
+    "mechanismInheritedObservations": 21,
+    "publicCLIControls": 9,
+    "sourceSha256": "63ef222c4c6de73bb54c8e51d3b0a0552979b5791ea98e64d1098051a9cda237",
+    "b1ExecutableSha256": "b2aec9e660bed602f29d7666ce6d14724d7e78c7582393d53f25d7d69aea7a66",
+    "b2ExecutableSha256": "85a70429493fe779a08f983d497ceee10dbe8aaec510d43c6ff220aa19ec60f7",
+    "scope": "Each native stage freshly passes 69 eligible execution fixtures and three expected refusals; 31 fixture exclusions remain under the single-source/provider contract. The 45 broad semantic programs, 70 backend obligations and mechanism observations overlap other suites.",
+    "fixedPoint": {
+      "kind": "emitted-C",
+      "byteIdentical": true,
+      "bytes": 30373059,
+      "sha256": "ed60e46ccb281b6aa2a0764bd418f0f01057b060fe7d90ef6160ddf1afe11498",
+      "diagnosticsEqual": true,
+      "b3ExecutableBuilt": false,
+      "freshAuditPhase": 104,
+      "source": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase104/README.md",
+      "scope": "B2 self-emission equals B2 build-input C with complete clock-stripped diagnostics. P104 reauthenticates the actual files; no B3 executable was built or timed. No ELF fixed point or universal correctness claim."
+    }
+  },
+  "nativeSeries": [
+    {
+      "phase": 98,
+      "commit": "795ad056f09d0c43627cb70094387b05d3108326",
+      "date": "2026-10-15T23:04:20Z",
+      "source": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase98/README.md",
+      "candidate": "Phase98",
+      "stages": [
+        "B1",
+        "B2"
+      ],
+      "fixturesPass": 69,
+      "fixturesTotal": 69,
+      "rejectionPass": 3,
+      "rejectionTotal": 3,
+      "excluded": 31,
+      "broadPrograms": 45,
+      "scope": "Fresh native qualification for each stage; JS release unchanged."
+    },
+    {
+      "phase": 102,
+      "commit": "a15ca94f1d198611d6a0eadf848a1be047571fb7",
+      "date": "2026-10-17T00:23:30Z",
+      "source": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase102/default-promotion.md",
+      "candidate": "candidate04",
+      "profile": "phase102-lowering04",
+      "status": "promoted native core",
+      "stages": [
+        "B1",
+        "B2"
+      ],
+      "fixturesPass": 69,
+      "fixturesTotal": 69,
+      "rejectionPass": 3,
+      "rejectionTotal": 3,
+      "excluded": 31,
+      "broadPrograms": 45,
+      "backendObligations": 70,
+      "mechanismSources": 19,
+      "mechanismEmissions": 38,
+      "mechanismOutputObservations": 136,
+      "mechanismFreshObservations": 115,
+      "mechanismInheritedObservations": 21,
+      "publicCLIControls": 9,
+      "sourceSha256": "63ef222c4c6de73bb54c8e51d3b0a0552979b5791ea98e64d1098051a9cda237",
+      "b1ExecutableSha256": "b2aec9e660bed602f29d7666ce6d14724d7e78c7582393d53f25d7d69aea7a66",
+      "b2ExecutableSha256": "85a70429493fe779a08f983d497ceee10dbe8aaec510d43c6ff220aa19ec60f7",
+      "scope": "Each native stage freshly passes 69 eligible execution fixtures and three expected refusals; 31 fixture exclusions remain under the single-source/provider contract. The 45 broad semantic programs, 70 backend obligations and mechanism observations overlap other suites.",
+      "fixedPoint": {
+        "kind": "emitted-C",
+        "byteIdentical": true,
+        "bytes": 30373059,
+        "sha256": "ed60e46ccb281b6aa2a0764bd418f0f01057b060fe7d90ef6160ddf1afe11498",
+        "diagnosticsEqual": true,
+        "b3ExecutableBuilt": false,
+        "freshAuditPhase": 104,
+        "source": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase104/README.md",
+        "scope": "B2 self-emission equals B2 build-input C with complete clock-stripped diagnostics. P104 reauthenticates the actual files; no B3 executable was built or timed. No ELF fixed point or universal correctness claim."
+      }
+    }
+  ],
+  "nativeCLI": {
+    "phase": 103,
+    "commit": "f0303013067f08ff9b07d452201a5c89bb1db039",
+    "date": "2026-10-17T02:55:33Z",
+    "source": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase103/README.md",
+    "candidate": "phase103-cli01",
+    "status": "installed public native CLI",
+    "controlsPass": 41,
+    "controlsTotal": 41,
+    "equivalencePass": 6,
+    "equivalenceTotal": 6,
+    "sourceSha256": "bb65ec3cc2da290df68d7302661ab1b9a2506e1d1b49a555a4d55c2661c84497",
+    "executableSha256": "55b4def3e01e194299fc8a4c96daf12def4cb4e742975ef4a7d748ba79c09a8e",
+    "compilerCore": "Phase102 candidate04",
+    "ordinaryRequestLanguages": [
+      "Bend",
+      "C"
+    ],
+    "removedInterpreterDependencies": [
+      "Python",
+      "Node",
+      "Bun",
+      "TypeScript"
+    ],
+    "platform": "Linux x86-64 with /proc",
+    "entryScope": "One Base-importing source, nine effects; one compiler CPU worker, GPU disabled",
+    "runtimeRemeasured": false,
+    "selfReproductionClaim": false,
+    "scope": "41 public-interface controls and six complete C/verdict-equivalence source pairs qualify the new Bend CLI integration. Candidate04 algorithms remain unchanged. This does not rerun full-language or 45-program runtime suites. The CLI is built through an explicit native bridge with different host entries, not a new matched-source fixed point."
+  },
+  "proofCoverage": {
+    "source": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/docs/self_hosted/COMPILER_LAWS.md",
+    "foundation": {
+      "phase": 96,
+      "publicLaws": 31,
+      "supportLemmas": 7,
+      "finiteJSCases": 226,
+      "nativeWitnesses": 32,
+      "independentChecker": "unchanged upstream BendTT kernel implemented in Lean",
+      "scope": "Public universal laws and helper proof bodies independently checked; finite production contracts exercise extracted maintained helpers."
+    },
+    "extension": {
+      "phase": 97,
+      "publicLaws": 4,
+      "supportLemmas": 3,
+      "finiteJSCases": 228,
+      "nativeWitnesses": 34,
+      "scope": "Separate strengthened finite suite and ownership model. The four laws prove a retain/read/release replacement in modeled contexts, not concrete native heap ownership."
+    },
+    "catalog": {
+      "throughPhase": 98,
+      "publicLaws": 51,
+      "supportLemmas": 50,
+      "scope": "Deduplicated accepted names across Phase96–98, including historical and unpromoted candidates. Repeated checks do not increase the count."
+    },
+    "productionBound": {
+      "phase": 98,
+      "distinctStatements": 13,
+      "publicLaws": 8,
+      "supportLemmas": 5,
+      "scope": "Accepted actual-source tag/permission/membership closures for promoted Phase98. This is not all 51 catalog laws, nor a fresh proof qualification of Phase102/103."
+    },
+    "limits": [
+      "The compiler, native runtime and scheduler are not universally verified.",
+      "Most production compiler algorithms remain unsafe.",
+      "A controlled missing-retain C mutation escaped the source-proof scope and failed at runtime.",
+      "Law count is not a percentage of compiler correctness coverage."
+    ],
+    "sources": [
+      "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/docs/self_hosted/COMPILER_LAWS.md",
+      "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase97/README.md",
+      "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase98/proofs.md"
+    ],
+    "laterCandidateContracts": {
+      "phase": 99,
+      "contracts": 6,
+      "scope": "Six additional exact-candidate contracts cover residual argument ordering/failure preservation and the all-trivial-root guard; six admitted helper mutants fail. Candidate-specific, not a fresh Phase102/103 proof claim; repeated checks are not extra distinct laws.",
+      "source": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase99/law-usefulness.md"
+    }
+  }
 }

@@ -1,0 +1,1362 @@
+{
+  "kind": "phase105-current-native-upstream-compilation",
+  "complete": true,
+  "source": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase102/projection-cost-source01/compiler.bend",
+    "sha256": "63ef222c4c6de73bb54c8e51d3b0a0552979b5791ea98e64d1098051a9cda237",
+    "bytes": 1788947
+  },
+  "stages": {
+    "b1": {
+      "stage": "b1",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase102/projection-cost-source01/compiler.bend",
+        "sha256": "63ef222c4c6de73bb54c8e51d3b0a0552979b5791ea98e64d1098051a9cda237",
+        "bytes": 1788947
+      },
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase102/native-b1-04/compiler",
+        "sha256": "b2aec9e660bed602f29d7666ce6d14724d7e78c7582393d53f25d7d69aea7a66",
+        "bytes": 10697168
+      },
+      "c": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase102/native-b1-04/checked/program.c",
+        "sha256": "1801f11bfb9a50405815e003c9a498520e5d8bda78680d20afe0ddedefb36902",
+        "bytes": 18452096
+      },
+      "build": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase102/native-b1-04/b1.json",
+        "sha256": "6eb088200d5020bf49e7d47a9fe30beaaf135d4c4886f347ab186b39f9e7d1b3",
+        "bytes": 75388
+      },
+      "argvSentinel": false,
+      "publicAdmission": false,
+      "scope": "Private source-bound build; transport compatibility only. Qualification reports are separate.",
+      "producer": "pinned upstream TypeScript C backend; upstream C runtime"
+    },
+    "b2": {
+      "stage": "b2",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase102/projection-cost-source01/compiler.bend",
+        "sha256": "63ef222c4c6de73bb54c8e51d3b0a0552979b5791ea98e64d1098051a9cda237",
+        "bytes": 1788947
+      },
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase102/native-chain04/b2/compiler",
+        "sha256": "85a70429493fe779a08f983d497ceee10dbe8aaec510d43c6ff220aa19ec60f7",
+        "bytes": 21173344
+      },
+      "c": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase102/native-chain04/b1-self/execution/output.1.c",
+        "sha256": "ed60e46ccb281b6aa2a0764bd418f0f01057b060fe7d90ef6160ddf1afe11498",
+        "bytes": 30373059
+      },
+      "build": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase102/native-chain04/b2.json",
+        "sha256": "7d2beea402e6f398e5d9fdd8efe068ce23c997aebf2b6ded47243576310d31ad",
+        "bytes": 105376
+      },
+      "argvSentinel": true,
+      "publicAdmission": false,
+      "scope": "Private source-bound build; transport compatibility only. Qualification reports are separate.",
+      "producer": "candidate native B1 self-emitted C; own C runtime"
+    }
+  },
+  "upstreamRevision": "059266225b77c8ca256ac6b25ee5c21449bab151",
+  "bun": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/bun-1.4.3/bun",
+    "sha256": "7ce7d6b654eddeec20afddf2396317fba6dc19ab52788a27e894e1806bf8f24b",
+    "bytes": 88979072
+  },
+  "rounds": 4,
+  "modes": [
+    "prepared",
+    "live"
+  ],
+  "seed": 10520261017,
+  "scope": "Fresh compiler child process including startup, preparation, C write and exit. Same high-resolution wrapper for all roles. Guard wall separately retains 20ms polling. No Clang or generated-program runtime in compiler clocks. Native prepared mode reuses Base; upstream always source Base. Live mode includes source Base for all. requestMs clocks have different boundaries and are diagnostic only.",
+  "summary": {
+    "live": {
+      "cases": {
+        "small": {
+          "roles": {
+            "b1": {
+              "processMs": {
+                "median": 1473.4269031323493,
+                "min": 1462.643173057586,
+                "max": 1521.0513290949166,
+                "samples": 4
+              },
+              "requestMs": {
+                "median": 46.0,
+                "min": 46,
+                "max": 46,
+                "samples": 4
+              },
+              "peakRssKiB": {
+                "median": 31604.0,
+                "min": 30060,
+                "max": 32216,
+                "samples": 4
+              },
+              "userSeconds": {
+                "median": 1.4617084999999999,
+                "min": 1.457508,
+                "max": 1.476211,
+                "samples": 4
+              },
+              "systemSeconds": {
+                "median": 0.0039965,
+                "min": 0.0,
+                "max": 0.004007999999999999,
+                "samples": 4
+              }
+            },
+            "b2": {
+              "processMs": {
+                "median": 1389.1132235294208,
+                "min": 1381.6778159234673,
+                "max": 1430.7793299667537,
+                "samples": 4
+              },
+              "requestMs": {
+                "median": 44.0,
+                "min": 44,
+                "max": 44,
+                "samples": 4
+              },
+              "peakRssKiB": {
+                "median": 38198.0,
+                "min": 38000,
+                "max": 38420,
+                "samples": 4
+              },
+              "userSeconds": {
+                "median": 1.3839895,
+                "min": 1.3725019999999999,
+                "max": 1.421618,
+                "samples": 4
+              },
+              "systemSeconds": {
+                "median": 0.006004000000000001,
+                "min": 0.003993,
+                "max": 0.008009,
+                "samples": 4
+              }
+            },
+            "upstream": {
+              "processMs": {
+                "median": 459.3826226191595,
+                "min": 453.2415948342532,
+                "max": 471.8979599419981,
+                "samples": 4
+              },
+              "requestMs": {
+                "median": 418.0014165,
+                "min": 414.671696,
+                "max": 427.605567,
+                "samples": 4
+              },
+              "peakRssKiB": {
+                "median": 70736.0,
+                "min": 69892,
+                "max": 71496,
+                "samples": 4
+              },
+              "userSeconds": {
+                "median": 0.44093099999999996,
+                "min": 0.43327,
+                "max": 0.45613099999999995,
+                "samples": 4
+              },
+              "systemSeconds": {
+                "median": 0.0134465,
+                "min": 0.006768,
+                "max": 0.019035,
+                "samples": 4
+              }
+            }
+          },
+          "processRatios": {
+            "b1/upstream": 3.2074067032219014,
+            "b2/upstream": 3.0238697659250224,
+            "b2/b1": 0.942777154792215
+          }
+        },
+        "numeric_closed": {
+          "roles": {
+            "b1": {
+              "processMs": {
+                "median": 1497.0521504292265,
+                "min": 1496.3446180336177,
+                "max": 1513.8406290207058,
+                "samples": 4
+              },
+              "requestMs": {
+                "median": 78.0,
+                "min": 78,
+                "max": 79,
+                "samples": 4
+              },
+              "peakRssKiB": {
+                "median": 32344.0,
+                "min": 32332,
+                "max": 34088,
+                "samples": 4
+              },
+              "userSeconds": {
+                "median": 1.4933665,
+                "min": 1.4883579999999998,
+                "max": 1.512705,
+                "samples": 4
+              },
+              "systemSeconds": {
+                "median": 0.0019995,
+                "min": 0.0,
+                "max": 0.00798,
+                "samples": 4
+              }
+            },
+            "b2": {
+              "processMs": {
+                "median": 1405.7135049952194,
+                "min": 1403.7549560889602,
+                "max": 1415.3294512070715,
+                "samples": 4
+              },
+              "requestMs": {
+                "median": 75.0,
+                "min": 75,
+                "max": 77,
+                "samples": 4
+              },
+              "peakRssKiB": {
+                "median": 39604.0,
+                "min": 39264,
+                "max": 41096,
+                "samples": 4
+              },
+              "userSeconds": {
+                "median": 1.4025284999999998,
+                "min": 1.398667,
+                "max": 1.406234,
+                "samples": 4
+              },
+              "systemSeconds": {
+                "median": 0.0040005,
+                "min": 0.0,
+                "max": 0.007989,
+                "samples": 4
+              }
+            },
+            "upstream": {
+              "processMs": {
+                "median": 543.2982015190646,
+                "min": 526.2668370269239,
+                "max": 563.0892689805478,
+                "samples": 4
+              },
+              "requestMs": {
+                "median": 507.306733,
+                "min": 489.241853,
+                "max": 526.778555,
+                "samples": 4
+              },
+              "peakRssKiB": {
+                "median": 72566.0,
+                "min": 70976,
+                "max": 76916,
+                "samples": 4
+              },
+              "userSeconds": {
+                "median": 0.532474,
+                "min": 0.507856,
+                "max": 0.544576,
+                "samples": 4
+              },
+              "systemSeconds": {
+                "median": 0.0154995,
+                "min": 0.00344,
+                "max": 0.020153,
+                "samples": 4
+              }
+            }
+          },
+          "processRatios": {
+            "b1/upstream": 2.755488875618327,
+            "b2/upstream": 2.5873700687115053,
+            "b2/b1": 0.9389876662561027
+          }
+        },
+        "lexer_original": {
+          "roles": {
+            "b1": {
+              "processMs": {
+                "median": 1738.3980405284092,
+                "min": 1727.0510010421276,
+                "max": 1748.5099299810827,
+                "samples": 4
+              },
+              "requestMs": {
+                "median": 312.0,
+                "min": 311,
+                "max": 314,
+                "samples": 4
+              },
+              "peakRssKiB": {
+                "median": 41542.0,
+                "min": 41160,
+                "max": 41848,
+                "samples": 4
+              },
+              "userSeconds": {
+                "median": 1.735249,
+                "min": 1.713941,
+                "max": 1.73935,
+                "samples": 4
+              },
+              "systemSeconds": {
+                "median": 0.006000499999999999,
+                "min": 0.0,
+                "max": 0.011984999999999999,
+                "samples": 4
+              }
+            },
+            "b2": {
+              "processMs": {
+                "median": 1633.7356225121766,
+                "min": 1625.7611999753863,
+                "max": 1639.2769489903003,
+                "samples": 4
+              },
+              "requestMs": {
+                "median": 300.0,
+                "min": 298,
+                "max": 300,
+                "samples": 4
+              },
+              "peakRssKiB": {
+                "median": 49504.0,
+                "min": 48436,
+                "max": 50184,
+                "samples": 4
+              },
+              "userSeconds": {
+                "median": 1.6246209999999999,
+                "min": 1.608693,
+                "max": 1.638172,
+                "samples": 4
+              },
+              "systemSeconds": {
+                "median": 0.007993,
+                "min": 0.0,
+                "max": 0.015967,
+                "samples": 4
+              }
+            },
+            "upstream": {
+              "processMs": {
+                "median": 724.0053860004991,
+                "min": 696.5353779960424,
+                "max": 759.4801401719451,
+                "samples": 4
+              },
+              "requestMs": {
+                "median": 687.5041920000001,
+                "min": 659.534266,
+                "max": 723.01827,
+                "samples": 4
+              },
+              "peakRssKiB": {
+                "median": 77892.0,
+                "min": 77300,
+                "max": 82312,
+                "samples": 4
+              },
+              "userSeconds": {
+                "median": 0.687443,
+                "min": 0.6598109999999999,
+                "max": 0.7232529999999999,
+                "samples": 4
+              },
+              "systemSeconds": {
+                "median": 0.035512,
+                "min": 0.03108,
+                "max": 0.040125999999999995,
+                "samples": 4
+              }
+            }
+          },
+          "processRatios": {
+            "b1/upstream": 2.4010844037107906,
+            "b2/upstream": 2.256524128276375,
+            "b2/b1": 0.9397937551836983
+          }
+        },
+        "map_closed": {
+          "roles": {
+            "b1": {
+              "processMs": {
+                "median": 2680.0006254343316,
+                "min": 2670.423694886267,
+                "max": 2692.836699075997,
+                "samples": 4
+              },
+              "requestMs": {
+                "median": 1253.5,
+                "min": 1246,
+                "max": 1257,
+                "samples": 4
+              },
+              "peakRssKiB": {
+                "median": 67138.0,
+                "min": 66592,
+                "max": 67688,
+                "samples": 4
+              },
+              "userSeconds": {
+                "median": 2.672869,
+                "min": 2.66129,
+                "max": 2.687743,
+                "samples": 4
+              },
+              "systemSeconds": {
+                "median": 0.005997000000000001,
+                "min": 0.003998,
+                "max": 0.008003,
+                "samples": 4
+              }
+            },
+            "b2": {
+              "processMs": {
+                "median": 2512.0132815791294,
+                "min": 2498.5495710279793,
+                "max": 2517.2429650556296,
+                "samples": 4
+              },
+              "requestMs": {
+                "median": 1164.5,
+                "min": 1161,
+                "max": 1178,
+                "samples": 4
+              },
+              "peakRssKiB": {
+                "median": 71402.0,
+                "min": 71252,
+                "max": 72212,
+                "samples": 4
+              },
+              "userSeconds": {
+                "median": 2.5027515,
+                "min": 2.485655,
+                "max": 2.512175,
+                "samples": 4
+              },
+              "systemSeconds": {
+                "median": 0.004000999999999999,
+                "min": 0.004,
+                "max": 0.019981,
+                "samples": 4
+              }
+            },
+            "upstream": {
+              "processMs": {
+                "median": 1115.8326364820823,
+                "min": 1066.8118190951645,
+                "max": 1184.1985401697457,
+                "samples": 4
+              },
+              "requestMs": {
+                "median": 1047.03657,
+                "min": 1029.0377709999998,
+                "max": 1120.0048339999998,
+                "samples": 4
+              },
+              "peakRssKiB": {
+                "median": 105996.0,
+                "min": 101980,
+                "max": 109248,
+                "samples": 4
+              },
+              "userSeconds": {
+                "median": 1.0418105,
+                "min": 1.032276,
+                "max": 1.097335,
+                "samples": 4
+              },
+              "systemSeconds": {
+                "median": 0.0487765,
+                "min": 0.031932999999999996,
+                "max": 0.060072999999999994,
+                "samples": 4
+              }
+            }
+          },
+          "processRatios": {
+            "b1/upstream": 2.401794442832974,
+            "b2/upstream": 2.251245571646682,
+            "b2/b1": 0.9373181699060322
+          }
+        },
+        "functions65": {
+          "roles": {
+            "b1": {
+              "processMs": {
+                "median": 1616.3912594784051,
+                "min": 1601.6196019481868,
+                "max": 1633.0721790436655,
+                "samples": 4
+              },
+              "requestMs": {
+                "median": 186.5,
+                "min": 185,
+                "max": 187,
+                "samples": 4
+              },
+              "peakRssKiB": {
+                "median": 34462.0,
+                "min": 34280,
+                "max": 34740,
+                "samples": 4
+              },
+              "userSeconds": {
+                "median": 1.6017265,
+                "min": 1.596546,
+                "max": 1.627953,
+                "samples": 4
+              },
+              "systemSeconds": {
+                "median": 0.0039985,
+                "min": 0.0,
+                "max": 0.004001,
+                "samples": 4
+              }
+            },
+            "b2": {
+              "processMs": {
+                "median": 1528.7340400973335,
+                "min": 1516.8991258833557,
+                "max": 1546.6625990811735,
+                "samples": 4
+              },
+              "requestMs": {
+                "median": 187.5,
+                "min": 187,
+                "max": 189,
+                "samples": 4
+              },
+              "peakRssKiB": {
+                "median": 41002.0,
+                "min": 39476,
+                "max": 41168,
+                "samples": 4
+              },
+              "userSeconds": {
+                "median": 1.5268959999999998,
+                "min": 1.515797,
+                "max": 1.538908,
+                "samples": 4
+              },
+              "systemSeconds": {
+                "median": 0.0,
+                "min": 0.0,
+                "max": 0.007986,
+                "samples": 4
+              }
+            },
+            "upstream": {
+              "processMs": {
+                "median": 620.1403825543821,
+                "min": 580.648239934817,
+                "max": 655.9661168139428,
+                "samples": 4
+              },
+              "requestMs": {
+                "median": 582.7087635,
+                "min": 542.9542720000001,
+                "max": 618.239049,
+                "samples": 4
+              },
+              "peakRssKiB": {
+                "median": 74820.0,
+                "min": 73052,
+                "max": 77628,
+                "samples": 4
+              },
+              "userSeconds": {
+                "median": 0.5892824999999999,
+                "min": 0.556406,
+                "max": 0.630931,
+                "samples": 4
+              },
+              "systemSeconds": {
+                "median": 0.025886,
+                "min": 0.023209999999999998,
+                "max": 0.031881,
+                "samples": 4
+              }
+            }
+          },
+          "processRatios": {
+            "b1/upstream": 2.6064925054879144,
+            "b2/upstream": 2.4651418986785205,
+            "b2/b1": 0.9457698011746501
+          }
+        },
+        "unicode": {
+          "roles": {
+            "b1": {
+              "processMs": {
+                "median": 1479.8732089111581,
+                "min": 1466.4592810440809,
+                "max": 1535.6447130907327,
+                "samples": 4
+              },
+              "requestMs": {
+                "median": 45.0,
+                "min": 45,
+                "max": 45,
+                "samples": 4
+              },
+              "peakRssKiB": {
+                "median": 29972.0,
+                "min": 29884,
+                "max": 30080,
+                "samples": 4
+              },
+              "userSeconds": {
+                "median": 1.4747325,
+                "min": 1.457373,
+                "max": 1.5305529999999998,
+                "samples": 4
+              },
+              "systemSeconds": {
+                "median": 0.005990499999999999,
+                "min": 0.0,
+                "max": 0.00801,
+                "samples": 4
+              }
+            },
+            "b2": {
+              "processMs": {
+                "median": 1400.873899110593,
+                "min": 1372.7471800521016,
+                "max": 1444.7636420372874,
+                "samples": 4
+              },
+              "requestMs": {
+                "median": 43.0,
+                "min": 42,
+                "max": 43,
+                "samples": 4
+              },
+              "peakRssKiB": {
+                "median": 36314.0,
+                "min": 36120,
+                "max": 38208,
+                "samples": 4
+              },
+              "userSeconds": {
+                "median": 1.3838154999999999,
+                "min": 1.36764,
+                "max": 1.435649,
+                "samples": 4
+              },
+              "systemSeconds": {
+                "median": 0.001999,
+                "min": 0.0,
+                "max": 0.007998,
+                "samples": 4
+              }
+            },
+            "upstream": {
+              "processMs": {
+                "median": 461.24123607296497,
+                "min": 446.41371397301555,
+                "max": 497.3654020577669,
+                "samples": 4
+              },
+              "requestMs": {
+                "median": 424.67951300000004,
+                "min": 410.471311,
+                "max": 460.443661,
+                "samples": 4
+              },
+              "peakRssKiB": {
+                "median": 71740.0,
+                "min": 71592,
+                "max": 71760,
+                "samples": 4
+              },
+              "userSeconds": {
+                "median": 0.4449925,
+                "min": 0.4266,
+                "max": 0.46096699999999996,
+                "samples": 4
+              },
+              "systemSeconds": {
+                "median": 0.0172375,
+                "min": 0.014846999999999999,
+                "max": 0.035452,
+                "samples": 4
+              }
+            }
+          },
+          "processRatios": {
+            "b1/upstream": 3.2084581628279505,
+            "b2/upstream": 3.0371826921584804,
+            "b2/b1": 0.9466175147135136
+          }
+        }
+      },
+      "equalPointGeometricRatios": {
+        "b1/upstream": 2.7433094720577684,
+        "b2/upstream": 2.5838435916778284,
+        "b2/b1": 0.9418709839322925
+      }
+    },
+    "prepared": {
+      "cases": {
+        "small": {
+          "roles": {
+            "b1": {
+              "processMs": {
+                "median": 120.04996195901185,
+                "min": 118.83678589947522,
+                "max": 121.70883500948548,
+                "samples": 4
+              },
+              "requestMs": {
+                "median": 47.0,
+                "min": 46,
+                "max": 47,
+                "samples": 4
+              },
+              "peakRssKiB": {
+                "median": 57364.0,
+                "min": 56592,
+                "max": 58260,
+                "samples": 4
+              },
+              "userSeconds": {
+                "median": 0.1169625,
+                "min": 0.113672,
+                "max": 0.120571,
+                "samples": 4
+              },
+              "systemSeconds": {
+                "median": 0.0019835,
+                "min": 0.0,
+                "max": 0.004059,
+                "samples": 4
+              }
+            },
+            "b2": {
+              "processMs": {
+                "median": 141.2418344989419,
+                "min": 140.07558301091194,
+                "max": 142.78170000761747,
+                "samples": 4
+              },
+              "requestMs": {
+                "median": 47.0,
+                "min": 46,
+                "max": 47,
+                "samples": 4
+              },
+              "peakRssKiB": {
+                "median": 52992.0,
+                "min": 52812,
+                "max": 54852,
+                "samples": 4
+              },
+              "userSeconds": {
+                "median": 0.1350495,
+                "min": 0.133299,
+                "max": 0.14091499999999998,
+                "samples": 4
+              },
+              "systemSeconds": {
+                "median": 0.0040314999999999995,
+                "min": 0.0,
+                "max": 0.008331,
+                "samples": 4
+              }
+            },
+            "upstream": {
+              "processMs": {
+                "median": 463.05218304041773,
+                "min": 444.6359609719366,
+                "max": 492.84487403929234,
+                "samples": 4
+              },
+              "requestMs": {
+                "median": 414.648841,
+                "min": 407.49722499999996,
+                "max": 457.079009,
+                "samples": 4
+              },
+              "peakRssKiB": {
+                "median": 71470.0,
+                "min": 69528,
+                "max": 71796,
+                "samples": 4
+              },
+              "userSeconds": {
+                "median": 0.44984599999999997,
+                "min": 0.412359,
+                "max": 0.457036,
+                "samples": 4
+              },
+              "systemSeconds": {
+                "median": 0.021632,
+                "min": 0.008003,
+                "max": 0.034848,
+                "samples": 4
+              }
+            }
+          },
+          "processRatios": {
+            "b1/upstream": 0.25925795483947267,
+            "b2/upstream": 0.3050235797865001,
+            "b2/b1": 1.1765254415254667
+          }
+        },
+        "numeric_closed": {
+          "roles": {
+            "b1": {
+              "processMs": {
+                "median": 152.64602459501475,
+                "min": 151.96964400820434,
+                "max": 153.02140498533845,
+                "samples": 4
+              },
+              "requestMs": {
+                "median": 79.5,
+                "min": 79,
+                "max": 80,
+                "samples": 4
+              },
+              "peakRssKiB": {
+                "median": 58884.0,
+                "min": 58296,
+                "max": 59148,
+                "samples": 4
+              },
+              "userSeconds": {
+                "median": 0.1392445,
+                "min": 0.13177,
+                "max": 0.151298,
+                "samples": 4
+              },
+              "systemSeconds": {
+                "median": 0.012109499999999999,
+                "min": 0.0,
+                "max": 0.019965,
+                "samples": 4
+              }
+            },
+            "b2": {
+              "processMs": {
+                "median": 172.53307800274342,
+                "min": 172.23266698420048,
+                "max": 172.9284138418734,
+                "samples": 4
+              },
+              "requestMs": {
+                "median": 78.0,
+                "min": 78,
+                "max": 78,
+                "samples": 4
+              },
+              "peakRssKiB": {
+                "median": 54996.0,
+                "min": 54492,
+                "max": 56536,
+                "samples": 4
+              },
+              "userSeconds": {
+                "median": 0.167342,
+                "min": 0.163162,
+                "max": 0.167746,
+                "samples": 4
+              },
+              "systemSeconds": {
+                "median": 0.0040335,
+                "min": 0.003991,
+                "max": 0.007958999999999999,
+                "samples": 4
+              }
+            },
+            "upstream": {
+              "processMs": {
+                "median": 549.6817498933524,
+                "min": 529.8011850100011,
+                "max": 553.3228819258511,
+                "samples": 4
+              },
+              "requestMs": {
+                "median": 510.84545449999996,
+                "min": 488.956215,
+                "max": 517.230789,
+                "samples": 4
+              },
+              "peakRssKiB": {
+                "median": 72598.0,
+                "min": 70132,
+                "max": 75048,
+                "samples": 4
+              },
+              "userSeconds": {
+                "median": 0.5138705,
+                "min": 0.5013179999999999,
+                "max": 0.525368,
+                "samples": 4
+              },
+              "systemSeconds": {
+                "median": 0.031072999999999996,
+                "min": 0.026990999999999998,
+                "max": 0.034953,
+                "samples": 4
+              }
+            }
+          },
+          "processRatios": {
+            "b1/upstream": 0.2776989132796035,
+            "b2/upstream": 0.3138781268183231,
+            "b2/b1": 1.1302821574324717
+          }
+        },
+        "lexer_original": {
+          "roles": {
+            "b1": {
+              "processMs": {
+                "median": 387.2301366645843,
+                "min": 385.1503790356219,
+                "max": 391.07242110185325,
+                "samples": 4
+              },
+              "requestMs": {
+                "median": 310.5,
+                "min": 309,
+                "max": 313,
+                "samples": 4
+              },
+              "peakRssKiB": {
+                "median": 59916.0,
+                "min": 59616,
+                "max": 60388,
+                "samples": 4
+              },
+              "userSeconds": {
+                "median": 0.3787075,
+                "min": 0.370868,
+                "max": 0.38595199999999996,
+                "samples": 4
+              },
+              "systemSeconds": {
+                "median": 0.006023,
+                "min": 0.003978,
+                "max": 0.015951,
+                "samples": 4
+              }
+            },
+            "b2": {
+              "processMs": {
+                "median": 402.4181835120544,
+                "min": 401.80062782019377,
+                "max": 412.2342311311513,
+                "samples": 4
+              },
+              "requestMs": {
+                "median": 303.0,
+                "min": 303,
+                "max": 313,
+                "samples": 4
+              },
+              "peakRssKiB": {
+                "median": 61090.0,
+                "min": 60660,
+                "max": 61200,
+                "samples": 4
+              },
+              "userSeconds": {
+                "median": 0.391248,
+                "min": 0.38859499999999997,
+                "max": 0.403143,
+                "samples": 4
+              },
+              "systemSeconds": {
+                "median": 0.009996499999999998,
+                "min": 0.007982999999999999,
+                "max": 0.012018,
+                "samples": 4
+              }
+            },
+            "upstream": {
+              "processMs": {
+                "median": 728.1447305576876,
+                "min": 692.6926120650023,
+                "max": 757.9933910164982,
+                "samples": 4
+              },
+              "requestMs": {
+                "median": 686.368524,
+                "min": 654.1809519999999,
+                "max": 708.266124,
+                "samples": 4
+              },
+              "peakRssKiB": {
+                "median": 78142.0,
+                "min": 77884,
+                "max": 82332,
+                "samples": 4
+              },
+              "userSeconds": {
+                "median": 0.6949475,
+                "min": 0.679163,
+                "max": 0.718542,
+                "samples": 4
+              },
+              "systemSeconds": {
+                "median": 0.023590499999999997,
+                "min": 0.010990999999999999,
+                "max": 0.033831,
+                "samples": 4
+              }
+            }
+          },
+          "processRatios": {
+            "b1/upstream": 0.5318038027522412,
+            "b2/upstream": 0.5526623576659566,
+            "b2/b1": 1.0392222748422753
+          }
+        },
+        "map_closed": {
+          "roles": {
+            "b1": {
+              "processMs": {
+                "median": 1334.6549984999,
+                "min": 1331.006146967411,
+                "max": 1341.4098829962313,
+                "samples": 4
+              },
+              "requestMs": {
+                "median": 1253.0,
+                "min": 1251,
+                "max": 1260,
+                "samples": 4
+              },
+              "peakRssKiB": {
+                "median": 75530.0,
+                "min": 75136,
+                "max": 75956,
+                "samples": 4
+              },
+              "userSeconds": {
+                "median": 1.3270710000000001,
+                "min": 1.311127,
+                "max": 1.331911,
+                "samples": 4
+              },
+              "systemSeconds": {
+                "median": 0.0080035,
+                "min": 0.003999,
+                "max": 0.019986,
+                "samples": 4
+              }
+            },
+            "b2": {
+              "processMs": {
+                "median": 1266.7578104883432,
+                "min": 1263.1706290412694,
+                "max": 1309.1353978961706,
+                "samples": 4
+              },
+              "requestMs": {
+                "median": 1163.5,
+                "min": 1160,
+                "max": 1174,
+                "samples": 4
+              },
+              "peakRssKiB": {
+                "median": 71288.0,
+                "min": 70404,
+                "max": 71588,
+                "samples": 4
+              },
+              "userSeconds": {
+                "median": 1.2556205,
+                "min": 1.24604,
+                "max": 1.277403,
+                "samples": 4
+              },
+              "systemSeconds": {
+                "median": 0.00998,
+                "min": 0.0,
+                "max": 0.015974,
+                "samples": 4
+              }
+            },
+            "upstream": {
+              "processMs": {
+                "median": 1083.5917489603162,
+                "min": 1064.3181931227446,
+                "max": 1128.9662590716034,
+                "samples": 4
+              },
+              "requestMs": {
+                "median": 1045.6490775000002,
+                "min": 1027.0970459999999,
+                "max": 1090.8030979999999,
+                "samples": 4
+              },
+              "peakRssKiB": {
+                "median": 103674.0,
+                "min": 101432,
+                "max": 105796,
+                "samples": 4
+              },
+              "userSeconds": {
+                "median": 1.0422980000000002,
+                "min": 1.022963,
+                "max": 1.076015,
+                "samples": 4
+              },
+              "systemSeconds": {
+                "median": 0.043989,
+                "min": 0.020021999999999998,
+                "max": 0.064981,
+                "samples": 4
+              }
+            }
+          },
+          "processRatios": {
+            "b1/upstream": 1.2316954238351057,
+            "b2/upstream": 1.1690360430519806,
+            "b2/b1": 0.9491275362637756
+          }
+        },
+        "functions65": {
+          "roles": {
+            "b1": {
+              "processMs": {
+                "median": 258.9626774424687,
+                "min": 257.83256790600717,
+                "max": 304.4840940274298,
+                "samples": 4
+              },
+              "requestMs": {
+                "median": 185.0,
+                "min": 184,
+                "max": 194,
+                "samples": 4
+              },
+              "peakRssKiB": {
+                "median": 57174.0,
+                "min": 57084,
+                "max": 58196,
+                "samples": 4
+              },
+              "userSeconds": {
+                "median": 0.251274,
+                "min": 0.24958699999999998,
+                "max": 0.29889699999999997,
+                "samples": 4
+              },
+              "systemSeconds": {
+                "median": 0.006045,
+                "min": 0.004013,
+                "max": 0.008145,
+                "samples": 4
+              }
+            },
+            "b2": {
+              "processMs": {
+                "median": 288.3645039983094,
+                "min": 286.9083499535918,
+                "max": 289.5476308185607,
+                "samples": 4
+              },
+              "requestMs": {
+                "median": 192.5,
+                "min": 191,
+                "max": 194,
+                "samples": 4
+              },
+              "peakRssKiB": {
+                "median": 55174.0,
+                "min": 53652,
+                "max": 55356,
+                "samples": 4
+              },
+              "userSeconds": {
+                "median": 0.2784195,
+                "min": 0.27162,
+                "max": 0.28446099999999996,
+                "samples": 4
+              },
+              "systemSeconds": {
+                "median": 0.0079545,
+                "min": 0.004006,
+                "max": 0.015976999999999998,
+                "samples": 4
+              }
+            },
+            "upstream": {
+              "processMs": {
+                "median": 582.888591568917,
+                "min": 556.7178791388869,
+                "max": 595.4122401308268,
+                "samples": 4
+              },
+              "requestMs": {
+                "median": 544.9336284999999,
+                "min": 520.6021949999999,
+                "max": 559.433979,
+                "samples": 4
+              },
+              "peakRssKiB": {
+                "median": 74470.0,
+                "min": 73380,
+                "max": 76352,
+                "samples": 4
+              },
+              "userSeconds": {
+                "median": 0.54804,
+                "min": 0.532841,
+                "max": 0.575348,
+                "samples": 4
+              },
+              "systemSeconds": {
+                "median": 0.0273645,
+                "min": 0.019053999999999998,
+                "max": 0.035822,
+                "samples": 4
+              }
+            }
+          },
+          "processRatios": {
+            "b1/upstream": 0.44427473995577527,
+            "b2/upstream": 0.49471632859058107,
+            "b2/b1": 1.11353692681206
+          }
+        },
+        "unicode": {
+          "roles": {
+            "b1": {
+              "processMs": {
+                "median": 119.20914438087493,
+                "min": 118.70193597860634,
+                "max": 119.79007115587592,
+                "samples": 4
+              },
+              "requestMs": {
+                "median": 46.0,
+                "min": 46,
+                "max": 47,
+                "samples": 4
+              },
+              "peakRssKiB": {
+                "median": 57760.0,
+                "min": 56600,
+                "max": 58576,
+                "samples": 4
+              },
+              "userSeconds": {
+                "median": 0.10801,
+                "min": 0.105407,
+                "max": 0.110758,
+                "samples": 4
+              },
+              "systemSeconds": {
+                "median": 0.0100365,
+                "min": 0.007862,
+                "max": 0.012223999999999999,
+                "samples": 4
+              }
+            },
+            "b2": {
+              "processMs": {
+                "median": 139.36693454161286,
+                "min": 139.033367857337,
+                "max": 140.80968080088496,
+                "samples": 4
+              },
+              "requestMs": {
+                "median": 45.0,
+                "min": 45,
+                "max": 46,
+                "samples": 4
+              },
+              "peakRssKiB": {
+                "median": 52634.0,
+                "min": 52456,
+                "max": 52684,
+                "samples": 4
+              },
+              "userSeconds": {
+                "median": 0.13084199999999999,
+                "min": 0.12211899999999999,
+                "max": 0.134344,
+                "samples": 4
+              },
+              "systemSeconds": {
+                "median": 0.0080525,
+                "min": 0.003951,
+                "max": 0.015757,
+                "samples": 4
+              }
+            },
+            "upstream": {
+              "processMs": {
+                "median": 463.23325054254383,
+                "min": 423.7834131345153,
+                "max": 533.785433974117,
+                "samples": 4
+              },
+              "requestMs": {
+                "median": 425.513324,
+                "min": 387.817676,
+                "max": 477.51972800000004,
+                "samples": 4
+              },
+              "peakRssKiB": {
+                "median": 71568.0,
+                "min": 68176,
+                "max": 72060,
+                "samples": 4
+              },
+              "userSeconds": {
+                "median": 0.44083249999999996,
+                "min": 0.396045,
+                "max": 0.509317,
+                "samples": 4
+              },
+              "systemSeconds": {
+                "median": 0.024938,
+                "min": 0.015757999999999998,
+                "max": 0.026983999999999998,
+                "samples": 4
+              }
+            }
+          },
+          "processRatios": {
+            "b1/upstream": 0.25734151044048736,
+            "b2/upstream": 0.30085693196329233,
+            "b2/b1": 1.1690960057253117
+          }
+        }
+      },
+      "equalPointGeometricRatios": {
+        "b1/upstream": 0.41874896896265135,
+        "b2/upstream": 0.4578076933732875,
+        "b2/b1": 1.0932747954159618
+      }
+    }
+  },
+  "started": 1792213154.6394234,
+  "finished": 1792213335.0963922,
+  "rawReport": "selfhost/build/phase105/screen01/report.json",
+  "targetJobs": 144
+}

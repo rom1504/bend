@@ -28,3 +28,16 @@ aggregates. Compiler source, native selection and runtime are unchanged.
 Reports authenticate current candidate04 selection rather than old Phase92
 images. This does not benchmark the distinct Phase103 public CLI. A later
 selection requires deliberately updating the source/oracle bindings.
+
+After the broad campaign, validate six diverse emitted products with matched
+Clang O2 builds and complete-output checks:
+
+```sh
+python3 -B selfhost/tools/performance/phase105/products.py --comparison selfhost/build/phase105/broad01/report.json --out selfhost/build/phase105/products01
+```
+
+Identical native B1/B2 C needs only one build per case. Upstream gets its own
+build. These single executions check correctness; their times are not a fresh
+generated-program performance benchmark. Clang durations are separate, single
+build observations. `seal.py` preserves completed runs, including full output
+bytes, in a verified content-addressed archive without duplicating identical C.

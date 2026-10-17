@@ -25,24 +25,29 @@ with native text representation. Its [first experimental results](implementation
 make complete rendering faster than upstream; other workload regressions still
 prevent global deployment.
 
-The [Phase102 campaign](implementation/phase102/README.md) instead composes
+**Corrected Phase102 candidate04 is the default native compiler.** It composes
 direct calls, constructor loops and owning observers on the existing data
-representation. Its [native lowering guide](docs/self_hosted/phase102-native-lowering.md)
-documents the mechanisms. The [qualified opt-in candidate guide](docs/self_hosted/NATIVE_PHASE102.md)
-provides exact restoration and `--selection` commands. Candidate03 passes its
-native B1/B2 qualification and all 50 application inputs; reproducible local-fold
-runtime regressions keep Phase98 selected by default.
+representation, with the corrected forced-inline policy. Both native stages,
+the public CLI and actual default request pass qualification. See the
+[promotion report](implementation/phase102/default-promotion.md) for the measured
+tradeoffs and the [native guide](docs/self_hosted/NATIVE_PHASE102.md) for usage,
+restoration and exact source replay. The [original campaign](implementation/phase102/README.md)
+preserves candidate03 and earlier measurements as history.
 
-**Phase98 provides the current native B1/B2 release.** The smaller retained-root
-comparison and scoped observer changes reduce full self-compilation from
-135.5 to **104.8 seconds for B1**, and from 150.5 to **141.0 seconds for B2**.
-Both stages pass 69 native conformance cases and the 45-program behavior checks;
-all 45 runtime-benchmark C products remain byte-identical. The native profile
-adds 79 lines, and its actual-source law closures have 13 distinct accepted
-statements. See the [report](implementation/phase98/README.md) and
-[native usage, limits and restoration](docs/self_hosted/NATIVE_PHASE98.md).
 From this repository root, run `python3 -B selfhost/native.py input.bend -o output.c`;
-the default is native B2, with `--stage b1` available.
+the default is native B2, with `--stage b1` available. The repeated six-source
+B2 screen uses 27.6% less request time than Phase98; B1 is 2.6% slower. Separately,
+44 generated-program points use 6.3% less runtime than Phase98 and 4.3% more than
+upstream with equal-point weighting. These are finite, distinct measurements.
+
+**Phase98 was the preceding native default.** Its smaller retained-root
+comparison and scoped observer changes reduced full self-compilation from
+135.5 to **104.8 seconds for B1**, and from 150.5 to **141.0 seconds for B2**.
+Both stages passed 69 native conformance cases and the 45-program behavior checks;
+all 45 runtime-benchmark C products remained byte-identical. That native profile
+added 79 lines, and its actual-source law closures had 13 distinct accepted
+statements. See the [report](implementation/phase98/README.md) and
+[historical native guide](docs/self_hosted/NATIVE_PHASE98.md).
 
 [Phase99 optimization experiments](implementation/phase99/README.md) extend
 borrowed reads and eliminate branch closures. The [candidate guide](docs/self_hosted/NATIVE_PHASE99.md)
@@ -66,14 +71,14 @@ is one Base-importing source and nine audited effects. Eight live/cache controls
 two invalid-input refusals, four generated-program executions and six public CLI
 controls pass. All 45 selected C preprocessing comparisons preserve program
 behavior. Full-language, GPU and parallel-native-host qualification remain open.
-The current canonical source inventory is **34,231 physical Bend lines in 134
-modules**, unchanged by Phase98; its separately assembled native profile is
-38,790 lines.
+The current canonical source inventory remains **34,231 physical Bend lines in
+134 modules**. The separately assembled current native profile has **39,372
+physical lines**, 582 above the historical Phase98 profile.
 
 See the [native-chain scoreboard](implementation/phase92/README.md) for the
 same-source native B1/B2 comparison and the [current JS-hosted five-metric scoreboard](implementation/phase91/README.md) and [metric definitions](docs/self_hosted/METRICS.md)
 for the refreshed B1/B2 measurements, program-output continuity and conformance scope.
-Fresh [native generated-program benchmarks](implementation/phase93/README.md)
+Historical [native generated-program benchmarks](implementation/phase93/README.md)
 cover the original 45 points: 44 measurable runtime ratios average **1.115×**
 upstream C with equal-point weighting; both backends optimize away the remaining
 zero-work control. Native B1/B2 emit identical C for all 45 batch programs.

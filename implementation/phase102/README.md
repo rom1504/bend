@@ -1,5 +1,12 @@
 # Phase102: ambitious native campaign
 
+> Current native default: corrected candidate04 (`63ef222c…9cda237`), promoted
+> after its own native qualification, performance acceptance, public CLI and
+> actual default smoke. See the [promotion report](default-promotion.md) and
+> [current native guide](../../docs/self_hosted/NATIVE_PHASE102.md). The campaign
+> below records candidate03 (`b3927732…902d1f`) and earlier experiments. Its
+> measurements and default-status statements describe that historical checkpoint.
+
 [Design](../../design/phase102/ambitious-native-campaign.md). Execution began
 2026-10-16 at 20:09 UTC for a three-hour campaign, followed by final regression
 diagnosis and publication. Candidate03 completes native qualification and is

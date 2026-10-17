@@ -1,10 +1,10 @@
 # Phase102 native lowering
 
 Phase102 implements composable C-backend mechanisms in the compiler written
-in Bend. Source profiles remain separate from the installed Phase98 native
-release and the installed JS release. A checked testing API, an acquired native
+in Bend. Corrected candidate04 is the native default; the installed JS release
+remains separate. A checked testing API, an acquired native
 B1 binary, and an admitted B1/B2 release are different qualification levels;
-consult the [phase report](../../implementation/phase102/README.md) for the
+consult the [promotion report](../../implementation/phase102/default-promotion.md) for the
 actual evidence and selected candidate.
 
 | Mechanism | What it removes | Admission and fallback |
@@ -55,11 +55,12 @@ variable capture. It then reuses the existing adapter emitter to compute the
 observation and release owned roots without allocating discarded result shells.
 Unknown or effectful projections keep ordinary lowering. The checked API and
 23 helper controls pass; actual C activation is confirmed in three applications
-and five controls. This mechanism is included in qualified native candidate03;
-source/API checks and native image gates provide distinct evidence. The later
-experimental candidate04 preserves original dependency cost for inline hints.
+and five controls. Candidate04 retains both original and replacement dependencies
+for inline-cost selection, preventing projection from introducing the forced
+hints that slowed candidate03's folds. Its native images have independently
+completed qualification; source/API checks and native gates remain distinct evidence.
 See the [projection report](../../implementation/phase102/projection-integration.md)
-and [qualified opt-in compiler](NATIVE_PHASE102.md).
+and [default native compiler](NATIVE_PHASE102.md).
 
 Local scheduler calls require checked provider identity and no reachable bangs.
 Such requests cannot offload device work, so the compiler marks their scheduler
@@ -75,18 +76,19 @@ Phase98 profile. Both replay forward and inversion return exact source bytes;
 the original D04 source comes from the already committed baseline capsule.
 No generated 1.7 MB compiler source needs to be added to the repository.
 
-The qualified candidate's source profile is `phase102-lowering03`, including bounded inlining,
+The default compiler's source profile is `phase102-lowering04`, including bounded inlining,
 observer projection and destination-correct cold stores. `lowering01` preserves
 the failed first native B2 build; `lowering02` preserves the semantically admitted
-intermediate image with a runtime regression. The command records how profile03 was made;
+intermediate image with a runtime regression. `lowering03` retains the qualified
+checkpoint with fold regressions. The command records how profile04 was made;
 use fresh profile/verification names when repeating packaging:
 
 ```sh
 python3 -B selfhost/tools/performance/phase102/package-source-profile.py \
-  --recipe selfhost/build/phase102/projection-cold-source01/changes.json \
-  --out selfhost/tools/native/profiles/phase102-lowering03 \
-  --verification-out selfhost/build/phase102/profile-replay03 \
-  --name phase102-lowering03
+  --recipe selfhost/build/phase102/projection-cost-source01/changes.json \
+  --out selfhost/tools/native/profiles/phase102-lowering04 \
+  --verification-out selfhost/build/phase102/profile-replay04 \
+  --name phase102-lowering04
 ```
 
 The packager verifies parent/capsule/recipe identities, emits a deterministic
@@ -98,7 +100,7 @@ Once that named profile exists, replay it independently:
 
 ```sh
 python3 -B selfhost/tools/native/profile.py \
-  --profile selfhost/tools/native/profiles/phase102-lowering03/profile.json \
+  --profile selfhost/tools/native/profiles/phase102-lowering04/profile.json \
   --out-source /tmp/compiler-phase102.bend \
   --receipt /tmp/compiler-phase102-replay.json
 ```

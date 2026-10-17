@@ -1,5 +1,9 @@
 # Promote the corrected native compiler
 
+Completed on 2026-10-17: candidate04 is the native B2 default. The
+[promotion report](../../implementation/phase102/default-promotion.md) records
+the exact qualification, performance decision, public CLI and default smoke.
+
 User authorization on2026-10-16: finish making the corrected compiler the
 default. Starting commit `3f60892`; old native selection SHA256
 `0ec0287c1c5e0b877b16a10e451bce4eb1fffa7b3795fcf634d742ea50772fdf`.

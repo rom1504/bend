@@ -7,23 +7,20 @@ qualification. Release integrity, 42 legacy and 24 default installed/relocated
 checks pass. Ordinary compilation has no TypeScript fallback. Run
 `node cli.mjs FILE --run`; direct JavaScript remains the default output backend.
 
-The [Phase98 native guide](../docs/self_hosted/NATIVE_PHASE98.md) describes the
-current native profile and stable stage-selectable entry, its source replay,
-release prerequisites and semantic boundaries. Read the
-[Phase98 report](../implementation/phase98/README.md) for actual admission and
-measurements. The installed JavaScript release remains separate.
+The [Phase102 native guide](../docs/self_hosted/NATIVE_PHASE102.md) describes the
+corrected candidate04 default, stage selection, restoration and exact source
+replay. From the repository root, use `python3 -B selfhost/native.py input.bend -o output.c`;
+add `--stage b1` to select its qualified parent. The
+[promotion report](../implementation/phase102/default-promotion.md) records its
+native qualification, public CLI/default smoke and measured acceptance. The
+installed JavaScript release remains separate.
 
-The [Phase99 candidate guide](../docs/self_hosted/NATIVE_PHASE99.md) describes
-the ongoing borrowed-read and branch-closure experiments and their fast native
-probes. Phase98 remains installed while the combined candidate is measured.
-
-The [Phase102 native lowering guide](../docs/self_hosted/phase102-native-lowering.md)
-explains the new composable direct calls, constructor loops, owning observers
-and compact reproducible source profile. The [qualified opt-in guide](../docs/self_hosted/NATIVE_PHASE102.md)
-provides candidate03 restoration and explicit `--selection` commands. Its native
-B1/B2 qualification is complete, but local-fold runtime regressions keep Phase98
-as the default. The [campaign report](../implementation/phase102/README.md) records
-the measured gains and remaining regressions.
+The [Phase98 guide](../docs/self_hosted/NATIVE_PHASE98.md),
+[Phase99 experiments](../docs/self_hosted/NATIVE_PHASE99.md) and
+[candidate03 campaign](../implementation/phase102/README.md) retain historical
+sources and measurements. The [native lowering guide](../docs/self_hosted/phase102-native-lowering.md)
+explains the compiler mechanisms; current release identities and commands are
+in the Phase102 native guide.
 
 The [application examples](apps/README.md) provide a source index, image renderer
 and dependency planner with independent output checks. Use their
@@ -47,15 +44,15 @@ preserve generated-program behavior; this is not a new program-speed campaign.
 See the [native-chain scoreboard](../implementation/phase92/README.md) and
 [current JS-hosted five-metric scoreboard](../implementation/phase91/README.md) and [metric definitions](../docs/self_hosted/METRICS.md)
 for the refreshed B1/B2 measurements, program-output continuity and conformance scope.
-The [Phase93 native program benchmark](../implementation/phase93/README.md)
-adds fresh execution timings for the original 45-point catalog. Its 44 measurable
+The historical [Phase93 native program benchmark](../implementation/phase93/README.md)
+records execution timings for the original 45-point catalog. Its 44 measurable
 points take **1.115×** upstream C time (equal-point geometric mean); the zero-work
 control has no defined ratio. Both native stages emit identical C for all points.
 
 Read the [Phase90 report](../implementation/phase90/README.md) for that release's
-timing, lineage and failures. The Phase98 inventory counts 34,231 physical Bend
-lines in 134 canonical modules, unchanged from the start of Phase98. Its separate
-assembled native profile has 38,790 lines, 79 more than D04. The
+timing, lineage and failures. The current canonical inventory remains 34,231
+physical Bend lines in 134 modules. The separate current native profile has
+39,372 physical lines, 582 above Phase98. The
 [compiler guide](../docs/BEND-IN-BEND.md) and
 [native session guide](../docs/self_hosted/NATIVE_COMPILATION.md) distinguish
 native executable requests from repeated C emission by a JS-hosted compiler.

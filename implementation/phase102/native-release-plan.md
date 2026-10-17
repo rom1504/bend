@@ -1,5 +1,11 @@
 # Phase102 native release readiness
 
+> Superseded candidate03 release record. Corrected candidate04 is now the native
+> default; see the [completed promotion report](default-promotion.md) and
+> [current native guide](../../docs/self_hosted/NATIVE_PHASE102.md). The statuses,
+> paths and measurements below preserve the earlier opt-in checkpoint and do
+> not describe the current selection.
+
 **Candidate03 is qualified and available for opt-in use. Phase98 remains the
 default.** The source is `projection-cold-source01/compiler.bend`, SHA256
 `b3927732f2250c19a7a8988dab7cbf30726359c18b5305f73c28cadddb902d1f`.

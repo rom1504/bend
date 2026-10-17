@@ -4760,3 +4760,30 @@ and focused application screens; it has no native-chain qualification yet.
 Candidate03 is packaged as an explicit opt-in compiler; Phase98/Phase90 defaults
 remain unchanged. Full evidence retains the420s build timeout, cold-list
 failure, hint regression and unselected alternatives. No PR comment.
+
+
+## Phase102 corrected default promotion — 2026-10-17
+
+The [promotion report](../implementation/phase102/default-promotion.md) supersedes
+the preceding candidate03/04-incomplete snapshot. Corrected candidate04 passed
+its own native chain, semantic/runtime gates and CLI controls and became the
+supervised native default before Phase103 began.
+
+## Phase103 public native CLI in Bend — 2026-10-17
+
+[Design](../design/phase103/native-bend-cli.md) ·
+[Report](../implementation/phase103/README.md) ·
+[Usage](../docs/self_hosted/NATIVE_CLI.md).
+The public entry calls the candidate04 algorithms directly in native Bend,
+with three C OS effects and no Python/Node/Bun runtime launcher. The executable
+and16 authenticated assets relocate together. A build-only bridge preserves
+observer/packing optimization without widening the shipped foreign policy.
+
+Both small native harnesses pass24 controls; final B2 passes41. Six full C and
+verdict pairs match candidate04, racing publication has exactly one winner,
+interrupted writes publish no partial output, and the installed image's emitted
+program prints42. Source grows173 lines (0.44%); this is dependency removal,
+not repository line-count reduction or a new same-source fixed-point claim.
+Small-source public-interface medians are0.550s old and0.208s new with documented
+capture differences, not a new compiler-kernel or upstream comparison. No
+resource stop or PR comment; old supervised selection and JS release retained.

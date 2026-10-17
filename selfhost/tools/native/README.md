@@ -1,5 +1,11 @@
 # Native compiler host
 
+For ordinary use, run `selfhost/bend INPUT.bend -o OUTPUT.c` from the repository
+root. The [public entry is now Bend](../../../docs/self_hosted/NATIVE_CLI.md),
+with a relocatable native package and no Python runtime launcher. The methods
+below remain the supervised candidate04 benchmark interface; their immutable
+selection/admission is separate from the new public CLI image.
+
 These methods run an explicitly qualified native compiler release. Preparation
 of the host code does not select or qualify an image: `selection.json` must be
 created from an actual completed admission after the separate compiler gates.

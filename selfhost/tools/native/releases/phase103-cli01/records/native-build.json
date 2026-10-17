@@ -1,0 +1,31 @@
+{
+  "complete": true,
+  "command": [
+    "bash",
+    "-c",
+    "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+    "phase86",
+    "taskset",
+    "-c",
+    "2,3",
+    "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+    "-O2",
+    "-isystem",
+    "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/include/clang",
+    "-DBEND_NATIVE_HOST=1",
+    "-DBEND_IMAGE_C=\"/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli06/image.1.c\"",
+    "/home/ai/bend2/build/publish/bend/selfhost/tools/native/cli/start.c",
+    "-lm",
+    "-pthread",
+    "-o",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli06/bend"
+  ],
+  "started": 1792204826.0392609,
+  "rssLimitBytes": 6442450944,
+  "availableFloorBytes": 17179869184,
+  "peakTreeRssBytes": 2602377216,
+  "minimumAvailableBytes": 25402712064,
+  "returncode": 0,
+  "wallSeconds": 369.8755975780077,
+  "finished": 1792205195.9148564
+}

@@ -34,8 +34,14 @@ tradeoffs and the [native guide](docs/self_hosted/NATIVE_PHASE102.md) for usage,
 restoration and exact source replay. The [original campaign](implementation/phase102/README.md)
 preserves candidate03 and earlier measurements as history.
 
-From this repository root, run `python3 -B selfhost/native.py input.bend -o output.c`;
-the default is native B2, with `--stage b1` available. The repeated six-source
+The public native CLI is now [written in Bend](docs/self_hosted/NATIVE_CLI.md).
+From this repository root, run `selfhost/bend input.bend -o output.c` after the
+guide's package extraction step. It calls the compiler directly in the native
+executable; ordinary requests need no Python, Node, Bun or TypeScript host.
+The old `python3 -B selfhost/native.py ...` interface remains for supervised
+benchmarks and explicit candidate04 B1/B2 selection.
+
+For the underlying candidate04 algorithms, the repeated six-source
 B2 screen uses 27.6% less request time than Phase98; B1 is 2.6% slower. Separately,
 44 generated-program points use 6.3% less runtime than Phase98 and 4.3% more than
 upstream with equal-point weighting. These are finite, distinct measurements.

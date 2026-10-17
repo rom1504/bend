@@ -1,5 +1,10 @@
 # Phase102 corrected native default
 
+For ordinary requests, the newer [Bend CLI](NATIVE_CLI.md) runs these compiler
+algorithms directly as `selfhost/bend INPUT.bend -o OUTPUT.c`, without Python.
+This page retains the supervised stage-selection and exact historical admission
+interface used for benchmarking.
+
 Corrected candidate04 is the default native B1/B2 compiler. Its exact source is
 `projection-cost-source01/compiler.bend`, SHA256
 `63ef222c4c6de73bb54c8e51d3b0a0552979b5791ea98e64d1098051a9cda237`:

@@ -1,0 +1,29 @@
+{
+  "complete": true,
+  "command": [
+    "bash",
+    "-c",
+    "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+    "phase86",
+    "taskset",
+    "-c",
+    "2,3",
+    "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+    "-O2",
+    "-isystem",
+    "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/include/clang",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli06/bridge-c/program.c",
+    "-lm",
+    "-pthread",
+    "-o",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli06/bridge"
+  ],
+  "started": 1792204375.3762927,
+  "rssLimitBytes": 6442450944,
+  "availableFloorBytes": 17179869184,
+  "peakTreeRssBytes": 4448215040,
+  "minimumAvailableBytes": 23673143296,
+  "returncode": 0,
+  "wallSeconds": 191.22162248496898,
+  "finished": 1792204566.5979128
+}

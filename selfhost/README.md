@@ -7,10 +7,15 @@ qualification. Release integrity, 42 legacy and 24 default installed/relocated
 checks pass. Ordinary compilation has no TypeScript fallback. Run
 `node cli.mjs FILE --run`; direct JavaScript remains the default output backend.
 
-The [Phase102 native guide](../docs/self_hosted/NATIVE_PHASE102.md) describes the
-corrected candidate04 default, stage selection, restoration and exact source
-replay. From the repository root, use `python3 -B selfhost/native.py input.bend -o output.c`;
-add `--stage b1` to select its qualified parent. The
+The [public native CLI](../docs/self_hosted/NATIVE_CLI.md) is implemented in Bend.
+From the repository root, use `selfhost/bend input.bend -o output.c` after
+extracting the committed package as described in that guide. This directly runs
+the native Bend compiler, with no Python/Node/Bun host in an ordinary request.
+The package is relocatable; its small C support handles OS operations only.
+
+The [Phase102 native guide](../docs/self_hosted/NATIVE_PHASE102.md) retains
+candidate04 stage selection, restoration and exact source replay through the
+supervised `python3 -B selfhost/native.py ...` benchmark interface. The
 [promotion report](../implementation/phase102/default-promotion.md) records its
 native qualification, public CLI/default smoke and measured acceptance. The
 installed JavaScript release remains separate.
@@ -20,7 +25,7 @@ The [Phase98 guide](../docs/self_hosted/NATIVE_PHASE98.md),
 [candidate03 campaign](../implementation/phase102/README.md) retain historical
 sources and measurements. The [native lowering guide](../docs/self_hosted/phase102-native-lowering.md)
 explains the compiler mechanisms; current release identities and commands are
-in the Phase102 native guide.
+in the public CLI and Phase102 native guides, respectively.
 
 The [application examples](apps/README.md) provide a source index, image renderer
 and dependency planner with independent output checks. Use their

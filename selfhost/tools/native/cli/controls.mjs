@@ -113,10 +113,11 @@ try{
     fs.writeFileSync(path.join(work,'parse-error.bend'),'import Base\ndef main(\n');
     fs.writeFileSync(path.join(work,'type-error.bend'),'import Base\ndef main() -> U32:\n  "wrong"\n');
     rejected('parse-rejection','parse-error.bend');rejected('type-rejection','type-error.bend');
-    fs.writeFileSync(path.join(work,'module-import.bend'),'import Base\nimport "./input.bend"\ndef main() -> U32:\n  42\n');
+    fs.writeFileSync(path.join(work,'module-import.bend'),'import Base\nimport ./input.bend as Input\ndef main() -> U32:\n  42\n');
     fs.writeFileSync(path.join(work,'foreign.bend'),'import Base\ndef foreign() -> IO(Unit):\n  import "./foreign.c"\ndef main() -> IO(Unit):\n  foreign()\n');
     fs.writeFileSync(path.join(work,'foreign.c'),'/* must never be admitted */\n');
-    rejected('module-import-refusal','module-import.bend');rejected('foreign-provider-refusal','foreign.bend');
+    assert.match(rejected('module-import-refusal','module-import.bend').stderr.text,/rejects additional import/);
+    assert.match(rejected('foreign-provider-refusal','foreign.bend').stderr.text,/rejects foreign path/);
     compile('effect','io.bend');
     for(const [label,relative] of [['base','base.bend'],['cache','base.p88'],['part','runtime.c.part0'],['effect','effs/print.c']]){
       const file=path.join(assets,relative),backup=file+'.control-backup';fs.renameSync(file,backup);

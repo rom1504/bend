@@ -1,4 +1,22 @@
-# Active frontier: Phase102 composable native lowering
+# Active frontier: Phase103 native CLI in Bend
+
+[Usage](../docs/self_hosted/NATIVE_CLI.md) ·
+[Report](../implementation/phase103/README.md) ·
+[Design](../design/phase103/native-bend-cli.md).
+
+Candidate04 was [promoted](../implementation/phase102/default-promotion.md).
+The new public native command is `selfhost/bend INPUT.bend -o OUTPUT.c`, a direct
+native executable with its CLI in Bend. Forty-one host controls, six complete-C
+and verdict comparisons, atomic publication and installed-program execution
+pass. Ordinary requests need no Python/Node/Bun host. The build-only bridge is
+not a widened public foreign-code permission or a new fixed-point claim.
+
+Keep compiled-program speed, compiler throughput and public startup separate.
+The algorithms/runtime assets are unchanged; the old supervised stage selector
+and JS release remain available. Use the existing fast loops for future
+optimizations; do not rebuild the large compiler image after each CLI test.
+
+# Previous frontier: Phase102 composable native lowering (before promotion)
 
 [Design](../design/phase102/ambitious-native-campaign.md) ·
 [Report](../implementation/phase102/README.md) ·

@@ -1,0 +1,1558 @@
+{
+  "kind": "phase103-native-cli-controls",
+  "version": 1,
+  "complete": true,
+  "passed": true,
+  "mode": "compiler",
+  "method": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/native/cli/controls.mjs",
+    "bytes": 10797,
+    "sha256": "89716374cc7268352d75f2f7576ade2fb78ec5a76234557dcb88ea05ec53b136",
+    "mode": 420
+  },
+  "package": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli06",
+  "rows": [
+    {
+      "id": "no-args",
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/relocated package/bend"
+      ],
+      "cwd": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/caller café",
+      "expectedStatus": 2,
+      "passed": true,
+      "wallSeconds": 0.02902838700000001,
+      "status": 2,
+      "signal": null,
+      "error": null,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/no-args.stdout",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mode": 420,
+        "text": ""
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/no-args.stderr",
+        "bytes": 450,
+        "sha256": "0742032a1be8a71deae5a607208a5da74b7a0923becd07cc1cccaa547f0bd7fb",
+        "mode": 420,
+        "text": "one input and -o OUTPUT.c are required\nUsage: bend INPUT.bend -o OUTPUT.c [--live]\n\nCompile one Base-importing Bend source to C. Existing outputs are refused.\nOptions: -o, --output PATH; --live (prepare Base without its cache);\n         --help; --version; -- (remaining arguments are input paths).\nSupported effects: IO.args/print/print_err/now and File.open/read/size/write/close.\nCompiler execution uses one CPU worker. Build emitted C separately.\n"
+      }
+    },
+    {
+      "id": "unknown-option",
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/relocated package/bend",
+        "--not-a-cli-option"
+      ],
+      "cwd": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/caller café",
+      "expectedStatus": 2,
+      "passed": true,
+      "wallSeconds": 0.027510661,
+      "status": 2,
+      "signal": null,
+      "error": null,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/unknown-option.stdout",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mode": 420,
+        "text": ""
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/unknown-option.stderr",
+        "bytes": 446,
+        "sha256": "aefc4975f6f0273acaa7b3a24c814af372257d5fc97dd564ddd8ce0e4c95bdfc",
+        "mode": 420,
+        "text": "unknown option: --not-a-cli-option\nUsage: bend INPUT.bend -o OUTPUT.c [--live]\n\nCompile one Base-importing Bend source to C. Existing outputs are refused.\nOptions: -o, --output PATH; --live (prepare Base without its cache);\n         --help; --version; -- (remaining arguments are input paths).\nSupported effects: IO.args/print/print_err/now and File.open/read/size/write/close.\nCompiler execution uses one CPU worker. Build emitted C separately.\n"
+      }
+    },
+    {
+      "id": "duplicate-output",
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/relocated package/bend",
+        "input.bend",
+        "-o",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/caller café/unused-a.c",
+        "-o",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/caller café/unused-b.c"
+      ],
+      "cwd": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/caller café",
+      "expectedStatus": 2,
+      "passed": true,
+      "wallSeconds": 0.027535791000000018,
+      "status": 2,
+      "signal": null,
+      "error": null,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/duplicate-output.stdout",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mode": 420,
+        "text": ""
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/duplicate-output.stderr",
+        "bytes": 435,
+        "sha256": "620b22d1cbce4900b413283652b935b47e62a62facc4f8f5b60d0c278d982b92",
+        "mode": 420,
+        "text": "duplicate output option\nUsage: bend INPUT.bend -o OUTPUT.c [--live]\n\nCompile one Base-importing Bend source to C. Existing outputs are refused.\nOptions: -o, --output PATH; --live (prepare Base without its cache);\n         --help; --version; -- (remaining arguments are input paths).\nSupported effects: IO.args/print/print_err/now and File.open/read/size/write/close.\nCompiler execution uses one CPU worker. Build emitted C separately.\n"
+      }
+    },
+    {
+      "id": "missing-output",
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/relocated package/bend",
+        "input.bend"
+      ],
+      "cwd": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/caller café",
+      "expectedStatus": 2,
+      "passed": true,
+      "wallSeconds": 0.027361565999999983,
+      "status": 2,
+      "signal": null,
+      "error": null,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/missing-output.stdout",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mode": 420,
+        "text": ""
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/missing-output.stderr",
+        "bytes": 450,
+        "sha256": "0742032a1be8a71deae5a607208a5da74b7a0923becd07cc1cccaa547f0bd7fb",
+        "mode": 420,
+        "text": "one input and -o OUTPUT.c are required\nUsage: bend INPUT.bend -o OUTPUT.c [--live]\n\nCompile one Base-importing Bend source to C. Existing outputs are refused.\nOptions: -o, --output PATH; --live (prepare Base without its cache);\n         --help; --version; -- (remaining arguments are input paths).\nSupported effects: IO.args/print/print_err/now and File.open/read/size/write/close.\nCompiler execution uses one CPU worker. Build emitted C separately.\n"
+      }
+    },
+    {
+      "id": "missing-output-value",
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/relocated package/bend",
+        "input.bend",
+        "-o"
+      ],
+      "cwd": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/caller café",
+      "expectedStatus": 2,
+      "passed": true,
+      "wallSeconds": 0.02794611900000001,
+      "status": 2,
+      "signal": null,
+      "error": null,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/missing-output-value.stdout",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mode": 420,
+        "text": ""
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/missing-output-value.stderr",
+        "bytes": 431,
+        "sha256": "55aa67db181d55b50fe83e31af175d79cf25dd9a15062c5bf8e6e57b583c2140",
+        "mode": 420,
+        "text": "missing output path\nUsage: bend INPUT.bend -o OUTPUT.c [--live]\n\nCompile one Base-importing Bend source to C. Existing outputs are refused.\nOptions: -o, --output PATH; --live (prepare Base without its cache);\n         --help; --version; -- (remaining arguments are input paths).\nSupported effects: IO.args/print/print_err/now and File.open/read/size/write/close.\nCompiler execution uses one CPU worker. Build emitted C separately.\n"
+      }
+    },
+    {
+      "id": "duplicate-live",
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/relocated package/bend",
+        "input.bend",
+        "-o",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/caller café/unused-c.c",
+        "--live",
+        "--live"
+      ],
+      "cwd": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/caller café",
+      "expectedStatus": 2,
+      "passed": true,
+      "wallSeconds": 0.02740661,
+      "status": 2,
+      "signal": null,
+      "error": null,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/duplicate-live.stdout",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mode": 420,
+        "text": ""
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/duplicate-live.stderr",
+        "bytes": 428,
+        "sha256": "8fb62c62df5bd4da92e034b16f6bc76960ef7b04d63f5338e5ae53ae8b00f78b",
+        "mode": 420,
+        "text": "duplicate --live\nUsage: bend INPUT.bend -o OUTPUT.c [--live]\n\nCompile one Base-importing Bend source to C. Existing outputs are refused.\nOptions: -o, --output PATH; --live (prepare Base without its cache);\n         --help; --version; -- (remaining arguments are input paths).\nSupported effects: IO.args/print/print_err/now and File.open/read/size/write/close.\nCompiler execution uses one CPU worker. Build emitted C separately.\n"
+      }
+    },
+    {
+      "id": "extra-input",
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/relocated package/bend",
+        "input.bend",
+        "input.bend",
+        "-o",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/caller café/unused-a.c"
+      ],
+      "cwd": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/caller café",
+      "expectedStatus": 2,
+      "passed": true,
+      "wallSeconds": 0.027447119999999985,
+      "status": 2,
+      "signal": null,
+      "error": null,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/extra-input.stdout",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mode": 420,
+        "text": ""
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/extra-input.stderr",
+        "bytes": 452,
+        "sha256": "6f83b73040ec5e6763a04cf2c3db6947764c1997adfa2331cfaae4efa06d9309",
+        "mode": 420,
+        "text": "expected exactly one nonempty input path\nUsage: bend INPUT.bend -o OUTPUT.c [--live]\n\nCompile one Base-importing Bend source to C. Existing outputs are refused.\nOptions: -o, --output PATH; --live (prepare Base without its cache);\n         --help; --version; -- (remaining arguments are input paths).\nSupported effects: IO.args/print/print_err/now and File.open/read/size/write/close.\nCompiler execution uses one CPU worker. Build emitted C separately.\n"
+      }
+    },
+    {
+      "id": "empty-output",
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/relocated package/bend",
+        "input.bend",
+        "-o",
+        ""
+      ],
+      "cwd": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/caller café",
+      "expectedStatus": 2,
+      "passed": true,
+      "wallSeconds": 0.027375064000000008,
+      "status": 2,
+      "signal": null,
+      "error": null,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/empty-output.stdout",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mode": 420,
+        "text": ""
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/empty-output.stderr",
+        "bytes": 429,
+        "sha256": "4a8769cfc1b5d3c4b0ba1372d4024f62299df6ec8f1e229e6f4eb9d6841d23b5",
+        "mode": 420,
+        "text": "empty output path\nUsage: bend INPUT.bend -o OUTPUT.c [--live]\n\nCompile one Base-importing Bend source to C. Existing outputs are refused.\nOptions: -o, --output PATH; --live (prepare Base without its cache);\n         --help; --version; -- (remaining arguments are input paths).\nSupported effects: IO.args/print/print_err/now and File.open/read/size/write/close.\nCompiler execution uses one CPU worker. Build emitted C separately.\n"
+      }
+    },
+    {
+      "id": "help",
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/relocated package/bend",
+        "--help"
+      ],
+      "cwd": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/caller café",
+      "expectedStatus": 0,
+      "passed": true,
+      "wallSeconds": 0.027288062999999967,
+      "status": 0,
+      "signal": null,
+      "error": null,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/help.stdout",
+        "bytes": 411,
+        "sha256": "585257e955d8bc035c77f1da6aed12148f2c9fcef3a0389e8635fa244695d876",
+        "mode": 420,
+        "text": "Usage: bend INPUT.bend -o OUTPUT.c [--live]\n\nCompile one Base-importing Bend source to C. Existing outputs are refused.\nOptions: -o, --output PATH; --live (prepare Base without its cache);\n         --help; --version; -- (remaining arguments are input paths).\nSupported effects: IO.args/print/print_err/now and File.open/read/size/write/close.\nCompiler execution uses one CPU worker. Build emitted C separately.\n"
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/help.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mode": 420,
+        "text": ""
+      }
+    },
+    {
+      "id": "version",
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/relocated package/bend",
+        "--version"
+      ],
+      "cwd": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/caller café",
+      "expectedStatus": 0,
+      "passed": true,
+      "wallSeconds": 0.027337105000000007,
+      "status": 0,
+      "signal": null,
+      "error": null,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/version.stdout",
+        "bytes": 55,
+        "sha256": "21e05ee88f3da2a770ef120e43dae6dee0eaa62e31e215a130049d4769486b0b",
+        "mode": 420,
+        "text": "bend-native phase103 / phase102-lowering04 / native B2\n"
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/version.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mode": 420,
+        "text": ""
+      }
+    },
+    {
+      "id": "cached",
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/relocated package/bend",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/caller café/input.bend",
+        "-o",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/caller café/cached.c"
+      ],
+      "cwd": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/caller café",
+      "expectedStatus": 0,
+      "passed": true,
+      "input": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/caller café/input.bend",
+        "bytes": 36,
+        "sha256": "ed3c2abc6d026762312ad60f43a5216a0585c9c51da5fd204ef879c980d41519",
+        "mode": 420
+      },
+      "wallSeconds": 0.23810899799999993,
+      "status": 0,
+      "signal": null,
+      "error": null,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/cached.stdout",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mode": 420,
+        "text": ""
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/cached.stderr",
+        "bytes": 59,
+        "sha256": "63c30c3e900741ec4fc2f83af25f3055fc11f43741c9327d716e924bad937ff5",
+        "mode": 420,
+        "text": "ALL PROOFS CHECK\nUse --verdict for mathematical validity.\n\n"
+      },
+      "output": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/caller café/cached.c",
+        "bytes": 92690,
+        "sha256": "667467365e31ed7df61a55994e2c4f64402ce38602dc9d4efd69c07582d195fc",
+        "mode": 384
+      },
+      "outputRemoved": true
+    },
+    {
+      "id": "live",
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/relocated package/bend",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/caller café/input.bend",
+        "-o",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/caller café/live.c",
+        "--live"
+      ],
+      "cwd": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/caller café",
+      "expectedStatus": 0,
+      "passed": true,
+      "input": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/caller café/input.bend",
+        "bytes": 36,
+        "sha256": "ed3c2abc6d026762312ad60f43a5216a0585c9c51da5fd204ef879c980d41519",
+        "mode": 420
+      },
+      "wallSeconds": 1.4567080209999999,
+      "status": 0,
+      "signal": null,
+      "error": null,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/live.stdout",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mode": 420,
+        "text": ""
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/live.stderr",
+        "bytes": 59,
+        "sha256": "63c30c3e900741ec4fc2f83af25f3055fc11f43741c9327d716e924bad937ff5",
+        "mode": 420,
+        "text": "ALL PROOFS CHECK\nUse --verdict for mathematical validity.\n\n"
+      },
+      "output": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/caller café/live.c",
+        "bytes": 92690,
+        "sha256": "667467365e31ed7df61a55994e2c4f64402ce38602dc9d4efd69c07582d195fc",
+        "mode": 384
+      },
+      "outputRemoved": true
+    },
+    {
+      "id": "option-first",
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/relocated package/bend",
+        "--output",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/caller café/option-first.c",
+        "input.bend"
+      ],
+      "cwd": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/caller café",
+      "expectedStatus": 0,
+      "passed": true,
+      "input": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/caller café/input.bend",
+        "bytes": 36,
+        "sha256": "ed3c2abc6d026762312ad60f43a5216a0585c9c51da5fd204ef879c980d41519",
+        "mode": 420
+      },
+      "wallSeconds": 0.1907737320000001,
+      "status": 0,
+      "signal": null,
+      "error": null,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/option-first.stdout",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mode": 420,
+        "text": ""
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/option-first.stderr",
+        "bytes": 59,
+        "sha256": "63c30c3e900741ec4fc2f83af25f3055fc11f43741c9327d716e924bad937ff5",
+        "mode": 420,
+        "text": "ALL PROOFS CHECK\nUse --verdict for mathematical validity.\n\n"
+      },
+      "output": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/caller café/option-first.c",
+        "bytes": 92690,
+        "sha256": "667467365e31ed7df61a55994e2c4f64402ce38602dc9d4efd69c07582d195fc",
+        "mode": 384
+      },
+      "outputRemoved": true
+    },
+    {
+      "id": "delimiter",
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/relocated package/bend",
+        "-o",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/caller café/delimiter.c",
+        "--",
+        "-leading.bend"
+      ],
+      "cwd": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/caller café",
+      "expectedStatus": 0,
+      "passed": true,
+      "input": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/caller café/-leading.bend",
+        "bytes": 36,
+        "sha256": "ed3c2abc6d026762312ad60f43a5216a0585c9c51da5fd204ef879c980d41519",
+        "mode": 420
+      },
+      "wallSeconds": 0.1910623519999999,
+      "status": 0,
+      "signal": null,
+      "error": null,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/delimiter.stdout",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mode": 420,
+        "text": ""
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/delimiter.stderr",
+        "bytes": 59,
+        "sha256": "63c30c3e900741ec4fc2f83af25f3055fc11f43741c9327d716e924bad937ff5",
+        "mode": 420,
+        "text": "ALL PROOFS CHECK\nUse --verdict for mathematical validity.\n\n"
+      },
+      "output": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/caller café/delimiter.c",
+        "bytes": 92690,
+        "sha256": "667467365e31ed7df61a55994e2c4f64402ce38602dc9d4efd69c07582d195fc",
+        "mode": 384
+      },
+      "outputRemoved": true
+    },
+    {
+      "id": "unicode-space",
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/relocated package/bend",
+        "space λ.bend",
+        "-o",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/caller café/unicode-space.c"
+      ],
+      "cwd": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/caller café",
+      "expectedStatus": 0,
+      "passed": true,
+      "input": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/caller café/space λ.bend",
+        "bytes": 36,
+        "sha256": "ed3c2abc6d026762312ad60f43a5216a0585c9c51da5fd204ef879c980d41519",
+        "mode": 420
+      },
+      "wallSeconds": 0.1992020889999999,
+      "status": 0,
+      "signal": null,
+      "error": null,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/unicode-space.stdout",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mode": 420,
+        "text": ""
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/unicode-space.stderr",
+        "bytes": 59,
+        "sha256": "63c30c3e900741ec4fc2f83af25f3055fc11f43741c9327d716e924bad937ff5",
+        "mode": 420,
+        "text": "ALL PROOFS CHECK\nUse --verdict for mathematical validity.\n\n"
+      },
+      "output": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/caller café/unicode-space.c",
+        "bytes": 92690,
+        "sha256": "667467365e31ed7df61a55994e2c4f64402ce38602dc9d4efd69c07582d195fc",
+        "mode": 384
+      },
+      "outputRemoved": true
+    },
+    {
+      "id": "path-symlink",
+      "command": [
+        "bend-test",
+        "input.bend",
+        "-o",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/caller café/path-symlink.c"
+      ],
+      "cwd": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/caller café",
+      "expectedStatus": 0,
+      "passed": true,
+      "input": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/caller café/input.bend",
+        "bytes": 36,
+        "sha256": "ed3c2abc6d026762312ad60f43a5216a0585c9c51da5fd204ef879c980d41519",
+        "mode": 420
+      },
+      "env": {
+        "PATH": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/bin"
+      },
+      "wallSeconds": 0.19921081300000015,
+      "status": 0,
+      "signal": null,
+      "error": null,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/path-symlink.stdout",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mode": 420,
+        "text": ""
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/path-symlink.stderr",
+        "bytes": 59,
+        "sha256": "63c30c3e900741ec4fc2f83af25f3055fc11f43741c9327d716e924bad937ff5",
+        "mode": 420,
+        "text": "ALL PROOFS CHECK\nUse --verdict for mathematical validity.\n\n"
+      },
+      "output": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/caller café/path-symlink.c",
+        "bytes": 92690,
+        "sha256": "667467365e31ed7df61a55994e2c4f64402ce38602dc9d4efd69c07582d195fc",
+        "mode": 384
+      },
+      "outputRemoved": true
+    },
+    {
+      "id": "absolute-other-cwd",
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/relocated package/bend",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/caller café/input.bend",
+        "-o",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/caller café/absolute-other-cwd.c"
+      ],
+      "cwd": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02",
+      "expectedStatus": 0,
+      "passed": true,
+      "input": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/caller café/input.bend",
+        "bytes": 36,
+        "sha256": "ed3c2abc6d026762312ad60f43a5216a0585c9c51da5fd204ef879c980d41519",
+        "mode": 420
+      },
+      "wallSeconds": 0.19907616599999983,
+      "status": 0,
+      "signal": null,
+      "error": null,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/absolute-other-cwd.stdout",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mode": 420,
+        "text": ""
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/absolute-other-cwd.stderr",
+        "bytes": 59,
+        "sha256": "63c30c3e900741ec4fc2f83af25f3055fc11f43741c9327d716e924bad937ff5",
+        "mode": 420,
+        "text": "ALL PROOFS CHECK\nUse --verdict for mathematical validity.\n\n"
+      },
+      "output": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/caller café/absolute-other-cwd.c",
+        "bytes": 92690,
+        "sha256": "667467365e31ed7df61a55994e2c4f64402ce38602dc9d4efd69c07582d195fc",
+        "mode": 384
+      },
+      "outputRemoved": true
+    },
+    {
+      "id": "existing-file",
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/relocated package/bend",
+        "input.bend",
+        "-o",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/caller café/preserved.c"
+      ],
+      "cwd": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/caller café",
+      "expectedStatus": 1,
+      "passed": true,
+      "wallSeconds": 0.19929021200000033,
+      "status": 1,
+      "signal": null,
+      "error": null,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/existing-file.stdout",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mode": 420,
+        "text": ""
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/existing-file.stderr",
+        "bytes": 12,
+        "sha256": "df9d7cf1b63503700ceec5131c331659aefc5222da71d633d81c56c03eb41712",
+        "mode": 420,
+        "text": "File exists\n"
+      }
+    },
+    {
+      "id": "existing-directory",
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/relocated package/bend",
+        "input.bend",
+        "-o",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/caller café/directory.c"
+      ],
+      "cwd": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/caller café",
+      "expectedStatus": 1,
+      "passed": true,
+      "wallSeconds": 0.19900501900000017,
+      "status": 1,
+      "signal": null,
+      "error": null,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/existing-directory.stdout",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mode": 420,
+        "text": ""
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/existing-directory.stderr",
+        "bytes": 12,
+        "sha256": "df9d7cf1b63503700ceec5131c331659aefc5222da71d633d81c56c03eb41712",
+        "mode": 420,
+        "text": "File exists\n"
+      }
+    },
+    {
+      "id": "dangling-symlink",
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/relocated package/bend",
+        "input.bend",
+        "-o",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/caller café/dangling.c"
+      ],
+      "cwd": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/caller café",
+      "expectedStatus": 1,
+      "passed": true,
+      "wallSeconds": 0.19952513599999974,
+      "status": 1,
+      "signal": null,
+      "error": null,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/dangling-symlink.stdout",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mode": 420,
+        "text": ""
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/dangling-symlink.stderr",
+        "bytes": 12,
+        "sha256": "df9d7cf1b63503700ceec5131c331659aefc5222da71d633d81c56c03eb41712",
+        "mode": 420,
+        "text": "File exists\n"
+      }
+    },
+    {
+      "id": "missing-input",
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/relocated package/bend",
+        "missing.bend",
+        "-o",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/caller café/missing-input.c"
+      ],
+      "cwd": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/caller café",
+      "expectedStatus": 1,
+      "passed": true,
+      "wallSeconds": 0.027499291000000085,
+      "status": 1,
+      "signal": null,
+      "error": null,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/missing-input.stdout",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mode": 420,
+        "text": ""
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/missing-input.stderr",
+        "bytes": 26,
+        "sha256": "7833838098dff21a62433384c486ade9ca1da78ee9f7995fa051640e4a6db5e4",
+        "mode": 420,
+        "text": "No such file or directory\n"
+      }
+    },
+    {
+      "id": "invalid-utf8",
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/relocated package/bend",
+        "invalid-utf8.bend",
+        "-o",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/caller café/invalid-utf8.c"
+      ],
+      "cwd": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/caller café",
+      "expectedStatus": 1,
+      "passed": true,
+      "input": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/caller café/invalid-utf8.bend",
+        "bytes": 2,
+        "sha256": "caf573f0daa6960ecb26f8eddbc4e2059277ad5afc6f72ffd59a0ecead602a22",
+        "mode": 420
+      },
+      "wallSeconds": 0.027636117000000012,
+      "status": 1,
+      "signal": null,
+      "error": null,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/invalid-utf8.stdout",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mode": 420,
+        "text": ""
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/invalid-utf8.stderr",
+        "bytes": 160,
+        "sha256": "510c6133633ed16860c24f509dc01609678dc06a4d54f5989e3fb2b87ca438ee",
+        "mode": 420,
+        "text": "read /home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/caller café/invalid-utf8.bend: Invalid or incomplete multibyte or wide character\n"
+      }
+    },
+    {
+      "id": "source-output-alias",
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/relocated package/bend",
+        "input.bend",
+        "-o",
+        "input.bend"
+      ],
+      "cwd": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/caller café",
+      "expectedStatus": 1,
+      "passed": true,
+      "wallSeconds": 0.20076315900000008,
+      "status": 1,
+      "signal": null,
+      "error": null,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/source-output-alias.stdout",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mode": 420,
+        "text": ""
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/source-output-alias.stderr",
+        "bytes": 12,
+        "sha256": "df9d7cf1b63503700ceec5131c331659aefc5222da71d633d81c56c03eb41712",
+        "mode": 420,
+        "text": "File exists\n"
+      }
+    },
+    {
+      "id": "oversized-input",
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/relocated package/bend",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/caller café/oversized.bend",
+        "-o",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/caller café/oversized-input.c"
+      ],
+      "cwd": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/caller café",
+      "expectedStatus": 1,
+      "passed": true,
+      "input": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/caller café/oversized.bend",
+        "bytes": 16777217,
+        "sha256": "1003b1b5dc078189799a1216ce0f9fbcebb94e8b6b83c58c4b03345f07f94ced",
+        "mode": 420
+      },
+      "wallSeconds": 0.027799479999999675,
+      "status": 1,
+      "signal": null,
+      "error": null,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/oversized-input.stdout",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mode": 420,
+        "text": ""
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/oversized-input.stderr",
+        "bytes": 122,
+        "sha256": "dcf86bfde9afb86fc7f012cc15ede9c7e172648bcea23cd2ffb6091800f38ed4",
+        "mode": 420,
+        "text": "read /home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/caller café/oversized.bend: File too large\n"
+      }
+    },
+    {
+      "id": "missing-parent",
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/relocated package/bend",
+        "input.bend",
+        "-o",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/caller café/absent-parent/output.c"
+      ],
+      "cwd": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/caller café",
+      "expectedStatus": 1,
+      "passed": true,
+      "wallSeconds": 0.16764473799999996,
+      "status": 1,
+      "signal": null,
+      "error": null,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/missing-parent.stdout",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mode": 420,
+        "text": ""
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/missing-parent.stderr",
+        "bytes": 26,
+        "sha256": "7833838098dff21a62433384c486ade9ca1da78ee9f7995fa051640e4a6db5e4",
+        "mode": 420,
+        "text": "No such file or directory\n"
+      }
+    },
+    {
+      "id": "relocated-no-assets",
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/relocated package/bend",
+        "input.bend",
+        "-o",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/caller café/relocated-no-assets.c"
+      ],
+      "cwd": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/caller café",
+      "expectedStatus": 1,
+      "passed": true,
+      "input": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/caller café/input.bend",
+        "bytes": 36,
+        "sha256": "ed3c2abc6d026762312ad60f43a5216a0585c9c51da5fd204ef879c980d41519",
+        "mode": 420
+      },
+      "wallSeconds": 0.027598927999999433,
+      "status": 1,
+      "signal": null,
+      "error": null,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/relocated-no-assets.stdout",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mode": 420,
+        "text": ""
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/relocated-no-assets.stderr",
+        "bytes": 140,
+        "sha256": "808acd95b70a2b98b4287613eceb66f82ac4771af3944c824a7eb883ab8c1636",
+        "mode": 420,
+        "text": "read /home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/relocated package/assets/base.bend: No such file or directory\n"
+      }
+    },
+    {
+      "id": "help-no-assets",
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/relocated package/bend",
+        "--help"
+      ],
+      "cwd": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/caller café",
+      "expectedStatus": 0,
+      "passed": true,
+      "wallSeconds": 0.02736214000000018,
+      "status": 0,
+      "signal": null,
+      "error": null,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/help-no-assets.stdout",
+        "bytes": 411,
+        "sha256": "585257e955d8bc035c77f1da6aed12148f2c9fcef3a0389e8635fa244695d876",
+        "mode": 420,
+        "text": "Usage: bend INPUT.bend -o OUTPUT.c [--live]\n\nCompile one Base-importing Bend source to C. Existing outputs are refused.\nOptions: -o, --output PATH; --live (prepare Base without its cache);\n         --help; --version; -- (remaining arguments are input paths).\nSupported effects: IO.args/print/print_err/now and File.open/read/size/write/close.\nCompiler execution uses one CPU worker. Build emitted C separately.\n"
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/help-no-assets.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mode": 420,
+        "text": ""
+      }
+    },
+    {
+      "id": "version-no-assets",
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/relocated package/bend",
+        "--version"
+      ],
+      "cwd": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/caller café",
+      "expectedStatus": 0,
+      "passed": true,
+      "wallSeconds": 0.02753400899999997,
+      "status": 0,
+      "signal": null,
+      "error": null,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/version-no-assets.stdout",
+        "bytes": 55,
+        "sha256": "21e05ee88f3da2a770ef120e43dae6dee0eaa62e31e215a130049d4769486b0b",
+        "mode": 420,
+        "text": "bend-native phase103 / phase102-lowering04 / native B2\n"
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/version-no-assets.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mode": 420,
+        "text": ""
+      }
+    },
+    {
+      "id": "parse-rejection",
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/relocated package/bend",
+        "parse-error.bend",
+        "-o",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/caller café/parse-rejection.c"
+      ],
+      "cwd": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/caller café",
+      "expectedStatus": 1,
+      "passed": true,
+      "input": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/caller café/parse-error.bend",
+        "bytes": 22,
+        "sha256": "24b526b9c762d929c505c540eaa98e569f4d37be9d9d5dab5b485152aa3fda88",
+        "mode": 420
+      },
+      "wallSeconds": 0.15790939699999945,
+      "status": 1,
+      "signal": null,
+      "error": null,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/parse-rejection.stdout",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mode": 420,
+        "text": ""
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/parse-rejection.stderr",
+        "bytes": 95,
+        "sha256": "2a629ba6d14f25756da61c9585ad8eaff67a67b5e8095a65e8433980d46a5149",
+        "mode": 420,
+        "text": "parse: Error:\n- expected : a name\n- observed : end of input\nLocation:\n2 | def main(\n3>| \n  | ^\n"
+      }
+    },
+    {
+      "id": "type-rejection",
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/relocated package/bend",
+        "type-error.bend",
+        "-o",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/caller café/type-rejection.c"
+      ],
+      "cwd": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/caller café",
+      "expectedStatus": 1,
+      "passed": true,
+      "input": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/caller café/type-error.bend",
+        "bytes": 41,
+        "sha256": "d76c0ead06ace002cd29c79d002424f58bec64d84adaf71858d5a8d905a39d05",
+        "mode": 420
+      },
+      "wallSeconds": 0.1305052569999998,
+      "status": 1,
+      "signal": null,
+      "error": null,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/type-rejection.stdout",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mode": 420,
+        "text": ""
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/type-rejection.stderr",
+        "bytes": 72,
+        "sha256": "13d16a3083695a85d2cd8350a52bf8673a655daef87641eabf0f637785bc6dfd",
+        "mode": 420,
+        "text": "check: main: constructor does not belong to goal or field count differs\n"
+      }
+    },
+    {
+      "id": "module-import-refusal",
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/relocated package/bend",
+        "module-import.bend",
+        "-o",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/caller café/module-import-refusal.c"
+      ],
+      "cwd": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/caller café",
+      "expectedStatus": 1,
+      "passed": true,
+      "input": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/caller café/module-import.bend",
+        "bytes": 65,
+        "sha256": "5871a9202be82ee369b69df74ea40e77a545ce507c04cdbb97dd9594c87f6cde",
+        "mode": 420
+      },
+      "wallSeconds": 0.12698150499999974,
+      "status": 1,
+      "signal": null,
+      "error": null,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/module-import-refusal.stdout",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mode": 420,
+        "text": ""
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/module-import-refusal.stderr",
+        "bytes": 52,
+        "sha256": "7c2615cd290a1d45547ccb4d3a2613c6e64870b19de598ae4679d45413509a65",
+        "mode": 420,
+        "text": "load: pilot rejects additional import: ./input.bend\n"
+      }
+    },
+    {
+      "id": "foreign-provider-refusal",
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/relocated package/bend",
+        "foreign.bend",
+        "-o",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/caller café/foreign-provider-refusal.c"
+      ],
+      "cwd": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/caller café",
+      "expectedStatus": 1,
+      "passed": true,
+      "input": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/caller café/foreign.bend",
+        "bytes": 98,
+        "sha256": "7c61d1adab8411217e375f45063e47b0eb73bbdc3e64b5cc4ed599a9dd2758d2",
+        "mode": 420
+      },
+      "wallSeconds": 0.15160661399999936,
+      "status": 1,
+      "signal": null,
+      "error": null,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/foreign-provider-refusal.stdout",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mode": 420,
+        "text": ""
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/foreign-provider-refusal.stderr",
+        "bytes": 134,
+        "sha256": "4aeb989d134d9e3cdf4d3bc3d21c02118f024dd7e7edc59d26f00b6951b297fe",
+        "mode": 420,
+        "text": "compile: pilot rejects foreign path /home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/caller café/./foreign.c\n"
+      }
+    },
+    {
+      "id": "effect",
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/relocated package/bend",
+        "io.bend",
+        "-o",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/caller café/effect.c"
+      ],
+      "cwd": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/caller café",
+      "expectedStatus": 0,
+      "passed": true,
+      "input": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/caller café/io.bend",
+        "bytes": 62,
+        "sha256": "7b075e71e13b3d25935b20fc7bd507d3dc3dd96b4e344d5dd66414195404d8b0",
+        "mode": 420
+      },
+      "wallSeconds": 0.21999230500000067,
+      "status": 0,
+      "signal": null,
+      "error": null,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/effect.stdout",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mode": 420,
+        "text": ""
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/effect.stderr",
+        "bytes": 59,
+        "sha256": "63c30c3e900741ec4fc2f83af25f3055fc11f43741c9327d716e924bad937ff5",
+        "mode": 420,
+        "text": "ALL PROOFS CHECK\nUse --verdict for mathematical validity.\n\n"
+      },
+      "output": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/caller café/effect.c",
+        "bytes": 94274,
+        "sha256": "25110e3b632e2f1ba3fa6212526bb221d9cc195c91a24174bb3cfd4faa176acf",
+        "mode": 384
+      },
+      "outputRemoved": true
+    },
+    {
+      "id": "missing-base",
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/relocated package/bend",
+        "io.bend",
+        "-o",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/caller café/missing-base.c"
+      ],
+      "cwd": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/caller café",
+      "expectedStatus": 1,
+      "passed": true,
+      "input": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/caller café/io.bend",
+        "bytes": 62,
+        "sha256": "7b075e71e13b3d25935b20fc7bd507d3dc3dd96b4e344d5dd66414195404d8b0",
+        "mode": 420
+      },
+      "wallSeconds": 0.027895336999999926,
+      "status": 1,
+      "signal": null,
+      "error": null,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/missing-base.stdout",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mode": 420,
+        "text": ""
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/missing-base.stderr",
+        "bytes": 140,
+        "sha256": "808acd95b70a2b98b4287613eceb66f82ac4771af3944c824a7eb883ab8c1636",
+        "mode": 420,
+        "text": "read /home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/relocated package/assets/base.bend: No such file or directory\n"
+      }
+    },
+    {
+      "id": "corrupt-base",
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/relocated package/bend",
+        "io.bend",
+        "-o",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/caller café/corrupt-base.c"
+      ],
+      "cwd": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/caller café",
+      "expectedStatus": 1,
+      "passed": true,
+      "input": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/caller café/io.bend",
+        "bytes": 62,
+        "sha256": "7b075e71e13b3d25935b20fc7bd507d3dc3dd96b4e344d5dd66414195404d8b0",
+        "mode": 420
+      },
+      "wallSeconds": 0.028169474999999694,
+      "status": 1,
+      "signal": null,
+      "error": null,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/corrupt-base.stdout",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mode": 420,
+        "text": ""
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/corrupt-base.stderr",
+        "bytes": 131,
+        "sha256": "b8d575d4c0cdf82a8bedaba2ca56201b493cf0065d50dd2cb5d61b696a7e8224",
+        "mode": 420,
+        "text": "read /home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/relocated package/assets/base.bend: SHA-256 mismatch\n"
+      }
+    },
+    {
+      "id": "missing-cache",
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/relocated package/bend",
+        "io.bend",
+        "-o",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/caller café/missing-cache.c"
+      ],
+      "cwd": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/caller café",
+      "expectedStatus": 1,
+      "passed": true,
+      "input": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/caller café/io.bend",
+        "bytes": 62,
+        "sha256": "7b075e71e13b3d25935b20fc7bd507d3dc3dd96b4e344d5dd66414195404d8b0",
+        "mode": 420
+      },
+      "wallSeconds": 0.031130879000000278,
+      "status": 1,
+      "signal": null,
+      "error": null,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/missing-cache.stdout",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mode": 420,
+        "text": ""
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/missing-cache.stderr",
+        "bytes": 139,
+        "sha256": "0bc1666ee0c2828229b55db811609c607be86d1183ecc9cfa69ae4ddf6bb8141",
+        "mode": 420,
+        "text": "read /home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/relocated package/assets/base.p88: No such file or directory\n"
+      }
+    },
+    {
+      "id": "corrupt-cache",
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/relocated package/bend",
+        "io.bend",
+        "-o",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/caller café/corrupt-cache.c"
+      ],
+      "cwd": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/caller café",
+      "expectedStatus": 1,
+      "passed": true,
+      "input": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/caller café/io.bend",
+        "bytes": 62,
+        "sha256": "7b075e71e13b3d25935b20fc7bd507d3dc3dd96b4e344d5dd66414195404d8b0",
+        "mode": 420
+      },
+      "wallSeconds": 0.03756210700000065,
+      "status": 1,
+      "signal": null,
+      "error": null,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/corrupt-cache.stdout",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mode": 420,
+        "text": ""
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/corrupt-cache.stderr",
+        "bytes": 130,
+        "sha256": "4381cee04c26658de75f00b4619746387971611430643640297dce51b38fa6ce",
+        "mode": 420,
+        "text": "read /home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/relocated package/assets/base.p88: SHA-256 mismatch\n"
+      }
+    },
+    {
+      "id": "missing-part",
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/relocated package/bend",
+        "io.bend",
+        "-o",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/caller café/missing-part.c"
+      ],
+      "cwd": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/caller café",
+      "expectedStatus": 1,
+      "passed": true,
+      "input": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/caller café/io.bend",
+        "bytes": 62,
+        "sha256": "7b075e71e13b3d25935b20fc7bd507d3dc3dd96b4e344d5dd66414195404d8b0",
+        "mode": 420
+      },
+      "wallSeconds": 0.1235518119999997,
+      "status": 1,
+      "signal": null,
+      "error": null,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/missing-part.stdout",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mode": 420,
+        "text": ""
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/missing-part.stderr",
+        "bytes": 146,
+        "sha256": "e0b21d624fa64cc9b64a9c525311e767c13e07ef9ef300ffba8af1bda542acbb",
+        "mode": 420,
+        "text": "read /home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/relocated package/assets/runtime.c.part0: No such file or directory\n"
+      }
+    },
+    {
+      "id": "corrupt-part",
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/relocated package/bend",
+        "io.bend",
+        "-o",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/caller café/corrupt-part.c"
+      ],
+      "cwd": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/caller café",
+      "expectedStatus": 1,
+      "passed": true,
+      "input": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/caller café/io.bend",
+        "bytes": 62,
+        "sha256": "7b075e71e13b3d25935b20fc7bd507d3dc3dd96b4e344d5dd66414195404d8b0",
+        "mode": 420
+      },
+      "wallSeconds": 0.12288408299999992,
+      "status": 1,
+      "signal": null,
+      "error": null,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/corrupt-part.stdout",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mode": 420,
+        "text": ""
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/corrupt-part.stderr",
+        "bytes": 137,
+        "sha256": "05d9dd70afb529b4dbb79532d402d760b4cb3ad90c488a5836fd62cbfd58f441",
+        "mode": 420,
+        "text": "read /home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/relocated package/assets/runtime.c.part0: SHA-256 mismatch\n"
+      }
+    },
+    {
+      "id": "missing-effect",
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/relocated package/bend",
+        "io.bend",
+        "-o",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/caller café/missing-effect.c"
+      ],
+      "cwd": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/caller café",
+      "expectedStatus": 1,
+      "passed": true,
+      "input": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/caller café/io.bend",
+        "bytes": 62,
+        "sha256": "7b075e71e13b3d25935b20fc7bd507d3dc3dd96b4e344d5dd66414195404d8b0",
+        "mode": 420
+      },
+      "wallSeconds": 0.15033506000000035,
+      "status": 1,
+      "signal": null,
+      "error": null,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/missing-effect.stdout",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mode": 420,
+        "text": ""
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/missing-effect.stderr",
+        "bytes": 143,
+        "sha256": "58ab627efa0ae7821398a81b0e08f4c7b709898367c9bd38e44caeb3eacbcb89",
+        "mode": 420,
+        "text": "read /home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/relocated package/assets/effs/print.c: No such file or directory\n"
+      }
+    },
+    {
+      "id": "corrupt-effect",
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/relocated package/bend",
+        "io.bend",
+        "-o",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/caller café/corrupt-effect.c"
+      ],
+      "cwd": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/caller café",
+      "expectedStatus": 1,
+      "passed": true,
+      "input": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/caller café/io.bend",
+        "bytes": 62,
+        "sha256": "7b075e71e13b3d25935b20fc7bd507d3dc3dd96b4e344d5dd66414195404d8b0",
+        "mode": 420
+      },
+      "wallSeconds": 0.15089486400000077,
+      "status": 1,
+      "signal": null,
+      "error": null,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/corrupt-effect.stdout",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mode": 420,
+        "text": ""
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/corrupt-effect.stderr",
+        "bytes": 134,
+        "sha256": "03179a84c707d830f8fe3c35a66e135305d95c1d9dd9fad70fb476970be6b6f7",
+        "mode": 420,
+        "text": "read /home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/relocated package/assets/effs/print.c: SHA-256 mismatch\n"
+      }
+    }
+  ],
+  "scope": "Finite serial CLI controls; no admission, fixed-point, compiler-equivalence or performance claim.",
+  "timingScope": "Whole process: runtime startup, asset authentication, Base preparation, compile/copy, and output publication. No kernel-time isolation or balanced performance comparison.",
+  "supervision": "15-second per-process timeout; external caller owns runner RSS/deadline/process-tree supervision.",
+  "skipped": [
+    "concurrent publication: deferred for explicit root review"
+  ],
+  "originalInputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli06/bend",
+      "bytes": 21159504,
+      "sha256": "55b4def3e01e194299fc8a4c96daf12def4cb4e742975ef4a7d748ba79c09a8e",
+      "mode": 493
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli06/assets/base.bend",
+      "bytes": 75064,
+      "sha256": "99ac43f2b2bb3e3f39acdcedcecbbd3cb44749ce13969c827d6973fa66f7facf",
+      "mode": 420
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli06/assets/base.p88",
+      "bytes": 1100924,
+      "sha256": "07af8cddb84820d861fc9f5d9475907754a64a9319de7d597c925149d8b186a7",
+      "mode": 420
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli06/assets/effs/args.c",
+      "bytes": 351,
+      "sha256": "7209a5fa11396fa8b0667a6738c913c40f554797e442c847a25e13a5f69676e0",
+      "mode": 420
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli06/assets/effs/file_close.c",
+      "bytes": 243,
+      "sha256": "befd465a31b88936d772222d26b1019ea7330e59e6327d8ba90584c85e8b2fb3",
+      "mode": 420
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli06/assets/effs/file_open.c",
+      "bytes": 1113,
+      "sha256": "f42a8bcc142b9003c7f6ca99287ca09c14f9efcbe15dea929c90c2fa062746e7",
+      "mode": 420
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli06/assets/effs/file_read.c",
+      "bytes": 2130,
+      "sha256": "6af44266ca83ab55b2dd3bf20c17eea6bfb7a7a678908cfbf3579adef31fb678",
+      "mode": 420
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli06/assets/effs/file_size.c",
+      "bytes": 771,
+      "sha256": "09906f3839f0f0fba1eea944c948e35f8e03627dc2b78e8debb43e0556f5d5d8",
+      "mode": 420
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli06/assets/effs/file_write.c",
+      "bytes": 1423,
+      "sha256": "565dff20204e1e535e188b983cda6d6001d0e5dc37cfdf981960c07a9e154ee2",
+      "mode": 420
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli06/assets/effs/native-os.c",
+      "bytes": 10078,
+      "sha256": "45aabbcc21ddd18d2f77b15d6d53fc06d5cc553f96d6a46398449c025cae3e89",
+      "mode": 420
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli06/assets/effs/now.c",
+      "bytes": 198,
+      "sha256": "da5fde65701c4fadc7560625c9615b4d60b2eefbd7b6bbe1aedda61887b825b9",
+      "mode": 420
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli06/assets/effs/print_err.c",
+      "bytes": 236,
+      "sha256": "72781d2adc88a4791d5530c9deff20824c38d5aa1ba43fb05aaa6a697e19f4b6",
+      "mode": 420
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli06/assets/effs/print.c",
+      "bytes": 397,
+      "sha256": "709500d2ace6e2eaeec0f5f1e4373d4ec5e402b3c1e289bd70dfef7e2a635b26",
+      "mode": 420
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli06/assets/runtime.c.part0",
+      "bytes": 8747,
+      "sha256": "f074b76588d8f740eddb79a95487769cb529db6a675a801f9800bd1de61272c0",
+      "mode": 420
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli06/assets/runtime.c.part1",
+      "bytes": 23532,
+      "sha256": "b5dc815a533624165b326c4d5f0312f7512096b8a59301cbb49f5d853ea19125",
+      "mode": 420
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli06/assets/runtime.c.part2",
+      "bytes": 1093,
+      "sha256": "9808a39ea010404b4213afbd56b17d67e193da9020657d6577606b9a5bf0b41d",
+      "mode": 420
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli06/assets/runtime.c.part3",
+      "bytes": 48363,
+      "sha256": "7f98b5302272f621c60120694f105f8b9319c074b73dbe4e943ef00f679fad09",
+      "mode": 420
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli06/assets/runtime.c.part4",
+      "bytes": 1948,
+      "sha256": "ac72b451e01934663c839f748f295b95db1472b708c05636602c590bb844f9db",
+      "mode": 420
+    }
+  ],
+  "executable": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli-controls02/relocated package/bend",
+    "bytes": 21159504,
+    "sha256": "55b4def3e01e194299fc8a4c96daf12def4cb4e742975ef4a7d748ba79c09a8e",
+    "mode": 493
+  },
+  "originalPackageUnchanged": true,
+  "relocatedAssetsRestored": true
+}

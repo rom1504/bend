@@ -1,0 +1,482 @@
+{
+  "kind": "phase103-native-cli-equivalence",
+  "version": 1,
+  "complete": true,
+  "passed": true,
+  "method": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/native/cli/equivalence.mjs",
+    "bytes": 4035,
+    "sha256": "749cca05a607ef355f8ca6433c4ee54fc3ffc2ad25f0b7be2bfd4a3a37ca1c94"
+  },
+  "candidate": {
+    "binary": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli06/bend",
+      "bytes": 21159504,
+      "sha256": "55b4def3e01e194299fc8a4c96daf12def4cb4e742975ef4a7d748ba79c09a8e"
+    },
+    "source": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli06/compiler.bend",
+      "bytes": 1798399,
+      "sha256": "bb65ec3cc2da290df68d7302661ab1b9a2506e1d1b49a555a4d55c2661c84497"
+    }
+  },
+  "baseline": {
+    "admission": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase102/native-chain04/admission.json",
+      "sha256": "a8a7abd1c985604d7d3e944c558a770c08e3e43d9035dfe54977d122e880c8b0",
+      "bytes": 1809272
+    },
+    "binary": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase102/native-chain04/b2/compiler",
+      "sha256": "85a70429493fe779a08f983d497ceee10dbe8aaec510d43c6ff220aa19ec60f7",
+      "bytes": 21173344
+    }
+  },
+  "rows": [
+    {
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase77/fixtures/small.bend",
+        "bytes": 94,
+        "sha256": "4ba893a14bc4c71c2f12250e0e3d084c7dce4abe958bf243fdcb45e224751be3"
+      },
+      "reference": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/equivalence01/reference-0.1.c",
+        "bytes": 94160,
+        "sha256": "5c47fad44fdb763f29dde21f8a4173b6e28f78621fb4b22027a01cb46202ec4d"
+      },
+      "candidate": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/equivalence01/candidate-0.c",
+        "bytes": 94160,
+        "sha256": "5c47fad44fdb763f29dde21f8a4173b6e28f78621fb4b22027a01cb46202ec4d"
+      },
+      "cEqual": true,
+      "diagnosticsEqual": true,
+      "oldProcess": {
+        "command": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase102/native-chain04/b2/compiler",
+          "--threads",
+          "1",
+          "--gpu",
+          "off",
+          "--",
+          "phase90-native",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase77/fixtures/small.bend",
+          "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/base.bend",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/runtime-accessor-transport02/runtime.c",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/runtime-accessor-transport02/effs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/equivalence01/reference-0",
+          "1",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase88/base/carrier01/base.p88",
+          "p88-private-base-text-1:8dec5b64d3900d61a208e51d92113194b91364c4f4d35d1903edb481d678ed03"
+        ],
+        "status": 0,
+        "signal": null,
+        "error": null,
+        "wallSeconds": 0.17054370400000002,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/equivalence01/reference-0.stdout",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stderr": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/equivalence01/reference-0.stderr",
+          "bytes": 144,
+          "sha256": "b99de8622e643ffd20d318273adda81908f99bc374f3e7e4e9dbbc77de500642"
+        }
+      },
+      "newProcess": {
+        "command": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli06/bend",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase77/fixtures/small.bend",
+          "-o",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/equivalence01/candidate-0.c"
+        ],
+        "status": 0,
+        "signal": null,
+        "error": null,
+        "wallSeconds": 0.26814476000000004,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/equivalence01/candidate-0.stdout",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stderr": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/equivalence01/candidate-0.stderr",
+          "bytes": 59,
+          "sha256": "63c30c3e900741ec4fc2f83af25f3055fc11f43741c9327d716e924bad937ff5"
+        }
+      }
+    },
+    {
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase77/fixtures/functions65.bend",
+        "bytes": 3135,
+        "sha256": "301e07212360ee4741b08271cb1eacbb5b92494e0372eae9eb3a6a716888e9db"
+      },
+      "reference": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/equivalence01/reference-1.1.c",
+        "bytes": 172219,
+        "sha256": "717379c8aafad015d8521705e9e7e0dac0cccd17445a6bccc6c35d505522386d"
+      },
+      "candidate": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/equivalence01/candidate-1.c",
+        "bytes": 172219,
+        "sha256": "717379c8aafad015d8521705e9e7e0dac0cccd17445a6bccc6c35d505522386d"
+      },
+      "cEqual": true,
+      "diagnosticsEqual": true,
+      "oldProcess": {
+        "command": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase102/native-chain04/b2/compiler",
+          "--threads",
+          "1",
+          "--gpu",
+          "off",
+          "--",
+          "phase90-native",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase77/fixtures/functions65.bend",
+          "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/base.bend",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/runtime-accessor-transport02/runtime.c",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/runtime-accessor-transport02/effs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/equivalence01/reference-1",
+          "1",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase88/base/carrier01/base.p88",
+          "p88-private-base-text-1:8dec5b64d3900d61a208e51d92113194b91364c4f4d35d1903edb481d678ed03"
+        ],
+        "status": 0,
+        "signal": null,
+        "error": null,
+        "wallSeconds": 0.31689677099999997,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/equivalence01/reference-1.stdout",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stderr": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/equivalence01/reference-1.stderr",
+          "bytes": 146,
+          "sha256": "646159ade625e8e2fc2a037e9db9aedfbc34f6ca512a37c1c76afecb47f94f89"
+        }
+      },
+      "newProcess": {
+        "command": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli06/bend",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase77/fixtures/functions65.bend",
+          "-o",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/equivalence01/candidate-1.c"
+        ],
+        "status": 0,
+        "signal": null,
+        "error": null,
+        "wallSeconds": 0.38468972999999995,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/equivalence01/candidate-1.stdout",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stderr": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/equivalence01/candidate-1.stderr",
+          "bytes": 59,
+          "sha256": "63c30c3e900741ec4fc2f83af25f3055fc11f43741c9327d716e924bad937ff5"
+        }
+      }
+    },
+    {
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/programs/fixtures/local-fold.bend",
+        "bytes": 768,
+        "sha256": "d13b49747fbe6308aa35451ca6f1e1059f0a01bac8fce671dc7a195424b5cc3a"
+      },
+      "reference": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/equivalence01/reference-2.1.c",
+        "bytes": 128858,
+        "sha256": "85871416eeb2b8bc8523406c2fda78d16ab6d46790b889bd52f600b06a38fb6d"
+      },
+      "candidate": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/equivalence01/candidate-2.c",
+        "bytes": 128858,
+        "sha256": "85871416eeb2b8bc8523406c2fda78d16ab6d46790b889bd52f600b06a38fb6d"
+      },
+      "cEqual": true,
+      "diagnosticsEqual": true,
+      "oldProcess": {
+        "command": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase102/native-chain04/b2/compiler",
+          "--threads",
+          "1",
+          "--gpu",
+          "off",
+          "--",
+          "phase90-native",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/programs/fixtures/local-fold.bend",
+          "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/base.bend",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/runtime-accessor-transport02/runtime.c",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/runtime-accessor-transport02/effs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/equivalence01/reference-2",
+          "1",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase88/base/carrier01/base.p88",
+          "p88-private-base-text-1:8dec5b64d3900d61a208e51d92113194b91364c4f4d35d1903edb481d678ed03"
+        ],
+        "status": 0,
+        "signal": null,
+        "error": null,
+        "wallSeconds": 0.215496357,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/equivalence01/reference-2.stdout",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stderr": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/equivalence01/reference-2.stderr",
+          "bytes": 145,
+          "sha256": "15806b6e8df4f2a31f084833b14819b6e1ce93ffea8ef8efd554ecb6beab0058"
+        }
+      },
+      "newProcess": {
+        "command": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli06/bend",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/programs/fixtures/local-fold.bend",
+          "-o",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/equivalence01/candidate-2.c"
+        ],
+        "status": 0,
+        "signal": null,
+        "error": null,
+        "wallSeconds": 0.27598830399999996,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/equivalence01/candidate-2.stdout",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stderr": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/equivalence01/candidate-2.stderr",
+          "bytes": 59,
+          "sha256": "63c30c3e900741ec4fc2f83af25f3055fc11f43741c9327d716e924bad937ff5"
+        }
+      }
+    },
+    {
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/programs/fixtures/lexer.bend",
+        "bytes": 7134,
+        "sha256": "6014af6bf7e97c8feaafa918e79f28a22d2c9c92bea836203fcd89b6d70a4fbb"
+      },
+      "reference": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/equivalence01/reference-3.1.c",
+        "bytes": 419373,
+        "sha256": "1db8b18621b65667a0c5c8f96ed9586c3a18ebec970dc1c3267331c04b3983cc"
+      },
+      "candidate": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/equivalence01/candidate-3.c",
+        "bytes": 419373,
+        "sha256": "1db8b18621b65667a0c5c8f96ed9586c3a18ebec970dc1c3267331c04b3983cc"
+      },
+      "cEqual": true,
+      "diagnosticsEqual": true,
+      "oldProcess": {
+        "command": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase102/native-chain04/b2/compiler",
+          "--threads",
+          "1",
+          "--gpu",
+          "off",
+          "--",
+          "phase90-native",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/programs/fixtures/lexer.bend",
+          "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/base.bend",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/runtime-accessor-transport02/runtime.c",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/runtime-accessor-transport02/effs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/equivalence01/reference-3",
+          "1",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase88/base/carrier01/base.p88",
+          "p88-private-base-text-1:8dec5b64d3900d61a208e51d92113194b91364c4f4d35d1903edb481d678ed03"
+        ],
+        "status": 0,
+        "signal": null,
+        "error": null,
+        "wallSeconds": 0.43029185699999994,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/equivalence01/reference-3.stdout",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stderr": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/equivalence01/reference-3.stderr",
+          "bytes": 146,
+          "sha256": "840ad91780a111a31f141a059294d944b6cae8cae299c95f5e933c727721255a"
+        }
+      },
+      "newProcess": {
+        "command": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli06/bend",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/programs/fixtures/lexer.bend",
+          "-o",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/equivalence01/candidate-3.c"
+        ],
+        "status": 0,
+        "signal": null,
+        "error": null,
+        "wallSeconds": 0.568743128,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/equivalence01/candidate-3.stdout",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stderr": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/equivalence01/candidate-3.stderr",
+          "bytes": 59,
+          "sha256": "63c30c3e900741ec4fc2f83af25f3055fc11f43741c9327d716e924bad937ff5"
+        }
+      }
+    },
+    {
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase99/scalar-controls/fixtures01/io-char-array.bend",
+        "bytes": 376,
+        "sha256": "074f201a830eab18d4c548ba4639d6d1f59222f445159a8e721221503503bc45"
+      },
+      "reference": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/equivalence01/reference-4.1.c",
+        "bytes": 153686,
+        "sha256": "60789fb69d6e035110e74ff6ac41e7625d32c57fa59bcbe146d3435291b3e427"
+      },
+      "candidate": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/equivalence01/candidate-4.c",
+        "bytes": 153686,
+        "sha256": "60789fb69d6e035110e74ff6ac41e7625d32c57fa59bcbe146d3435291b3e427"
+      },
+      "cEqual": true,
+      "diagnosticsEqual": true,
+      "oldProcess": {
+        "command": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase102/native-chain04/b2/compiler",
+          "--threads",
+          "1",
+          "--gpu",
+          "off",
+          "--",
+          "phase90-native",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase99/scalar-controls/fixtures01/io-char-array.bend",
+          "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/base.bend",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/runtime-accessor-transport02/runtime.c",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/runtime-accessor-transport02/effs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/equivalence01/reference-4",
+          "1",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase88/base/carrier01/base.p88",
+          "p88-private-base-text-1:8dec5b64d3900d61a208e51d92113194b91364c4f4d35d1903edb481d678ed03"
+        ],
+        "status": 0,
+        "signal": null,
+        "error": null,
+        "wallSeconds": 0.21472115399999983,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/equivalence01/reference-4.stdout",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stderr": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/equivalence01/reference-4.stderr",
+          "bytes": 145,
+          "sha256": "072cb654187f2e2b1b99506858b3d23747c67fb3b0c803ffc6d2e0d71d0ce8c9"
+        }
+      },
+      "newProcess": {
+        "command": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli06/bend",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase99/scalar-controls/fixtures01/io-char-array.bend",
+          "-o",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/equivalence01/candidate-4.c"
+        ],
+        "status": 0,
+        "signal": null,
+        "error": null,
+        "wallSeconds": 0.27801560900000005,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/equivalence01/candidate-4.stdout",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stderr": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/equivalence01/candidate-4.stderr",
+          "bytes": 59,
+          "sha256": "63c30c3e900741ec4fc2f83af25f3055fc11f43741c9327d716e924bad937ff5"
+        }
+      }
+    },
+    {
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/io/file_roundtrip.bend",
+        "bytes": 1709,
+        "sha256": "91817af29d872d094e71b00317d9bf909d2cd5cfdfdb8758f6a6d820eb913bf8"
+      },
+      "reference": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/equivalence01/reference-5.1.c",
+        "bytes": 185166,
+        "sha256": "6c1e59236d3a336127f1bb48d20163401e89859604af015b5bd2b946f29e4c93"
+      },
+      "candidate": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/equivalence01/candidate-5.c",
+        "bytes": 185166,
+        "sha256": "6c1e59236d3a336127f1bb48d20163401e89859604af015b5bd2b946f29e4c93"
+      },
+      "cEqual": true,
+      "diagnosticsEqual": true,
+      "oldProcess": {
+        "command": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase102/native-chain04/b2/compiler",
+          "--threads",
+          "1",
+          "--gpu",
+          "off",
+          "--",
+          "phase90-native",
+          "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/io/file_roundtrip.bend",
+          "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/base.bend",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/runtime-accessor-transport02/runtime.c",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/runtime-accessor-transport02/effs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/equivalence01/reference-5",
+          "1",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase88/base/carrier01/base.p88",
+          "p88-private-base-text-1:8dec5b64d3900d61a208e51d92113194b91364c4f4d35d1903edb481d678ed03"
+        ],
+        "status": 0,
+        "signal": null,
+        "error": null,
+        "wallSeconds": 0.23702608000000008,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/equivalence01/reference-5.stdout",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stderr": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/equivalence01/reference-5.stderr",
+          "bytes": 146,
+          "sha256": "fffeabd5c5388627830c23ab4bd776bead8173eadea182b47f92573cb6854e6e"
+        }
+      },
+      "newProcess": {
+        "command": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/cli06/bend",
+          "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/tests/io/file_roundtrip.bend",
+          "-o",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/equivalence01/candidate-5.c"
+        ],
+        "status": 0,
+        "signal": null,
+        "error": null,
+        "wallSeconds": 0.2866974180000002,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/equivalence01/candidate-5.stdout",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stderr": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase103/equivalence01/candidate-5.stderr",
+          "bytes": 59,
+          "sha256": "63c30c3e900741ec4fc2f83af25f3055fc11f43741c9327d716e924bad937ff5"
+        }
+      }
+    }
+  ],
+  "scope": "One matched invocation per source. Complete emitted-C and verdict equality; process times are not a balanced performance benchmark."
+}

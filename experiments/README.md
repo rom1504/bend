@@ -5,7 +5,17 @@ what should happen next. The compiler remains implemented in Bend; experiments
 must identify changes to compiler source, generated compiler images, host tools
 and emitted user programs separately.
 
-## Active frontier: Phase102 composable native lowering
+## Active frontier: Phase103 native CLI in Bend
+
+The [public native CLI](../docs/self_hosted/NATIVE_CLI.md) now runs directly as
+`selfhost/bend INPUT.bend -o OUTPUT.c`, with no Python/Node/Bun host in ordinary
+requests. Its relocatable package retains candidate04 compiler algorithms and
+has41 passing host controls plus six complete-C/verdict equivalence pairs.
+See the [implementation report](../implementation/phase103/README.md).
+Candidate04 was promoted before this work; the older Phase102 snapshot below is
+historical. The supervised benchmark interface and JS release remain separate.
+
+## Previous frontier: Phase102 composable native lowering (before promotion)
 
 [Design](../design/phase102/ambitious-native-campaign.md) ·
 [Report](../implementation/phase102/README.md) · [Strategy](STEERING.md).

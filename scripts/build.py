@@ -212,37 +212,8 @@ def speed_tables(card, research):
     return average, html, source
 
 
-def render_speed_card(card, research):
-    average, measurements, source = speed_tables(card, research)
-    metric, chart, breakdown = e(card['id']), e(card['chart']), e(card['breakdown_chart'])
-    historical_context = ''
-    supplemental = ''
-    secondary = ''
-    data = research[card['average_dataset']]
-    if data.get('including_imports_average') is not None:
-        secondary = f'<p class="secondary-average"><strong>{data["including_imports_average"]:.2f}×</strong><span>TypeScript time with imports and API loading included</span></p>'
-    if card.get('supplemental_chart'):
-        extra = e(card['supplemental_chart'])
-        stats = ''.join(f'<div><strong>{e(s["value"])}</strong><span>{e(s["label"])}</span></div>' for s in card['supplemental_stats'])
-        supplemental = f'''<section class="self-emission" aria-labelledby="self-emission-title"><div class="self-emission-copy"><h4 id="self-emission-title">{e(card['supplemental_title'])}</h4><p>{e(card['supplemental_caption'])}</p><div class="stage-stats">{stats}</div><p class="self-emission-downloads"><a href="./charts/{extra}.svg" download>SVG ↓</a> · <a href="./charts/{extra}.png" download>PNG ↓</a></p></div><figure><div class="chart-frame"><img src="./charts/{extra}.svg" alt="{e(card['supplemental_alt'])}" width="900" height="490" loading="lazy"></div></figure></section>'''
-    if card['id'] == 'compilation':
-        checking = research['history']['compilerChecking']
-        gains = []
-        for phase, title in ((9, 'Reuse the binder bound'), (16, 'Keep literals compact')):
-            point = next(p for p in checking['selectedPairs'] if p['phase'] == phase)
-            gains.append(f'<div class="history-gain"><strong>−{point["process_time_reduction_percent"]:.1f}%</strong><div><b>P{phase} · {e(title)}</b><p>{point["same_window_predecessor_seconds"]:.2f} → {point["bend_process_seconds"]:.2f} seconds</p>{link(point["source_url"], "Paired release measurement")}</div></div>')
-        historical_context = '<aside class="history-findings"><h4>What drove the early reductions</h4><p>Two releases measured large gains on identical before/after inputs.</p>' + ''.join(gains) + '<p>Compiler-source checking process time; no code emission. Each pair uses its own source and timing window.</p></aside>'
-    return f'''<article class="chart-card speed-card" id="{metric}" aria-labelledby="title-{metric}">
-<div class="chart-card-top"><div class="card-category"><h3 id="title-{metric}"><span class="metric-dot {metric}-color"></span>{e(card['number'])} / {e(card['title'])}</h3><span>{e(card['direction'])}</span></div>
-<div class="speed-head"><div><div class="card-headline"><strong>{average:.2f}×</strong><span>{e(card['unit'])}</span></div>{secondary}<p class="speed-cohort">{e(card['cohort'])}</p></div><p class="card-summary">{e(card['summary'])}</p></div></div>
-<div class="speed-charts"><div class="speed-chart"><h4>{e(card['history_label'])}</h4><p>{e(card.get('history_intro', 'TypeScript = 1×. The benchmark set stays fixed.'))}</p><figure><div class="chart-frame"><img src="./charts/{chart}.svg" alt="{e(card['alt'])}" width="900" height="{int(card.get('history_height', 590))}" loading="lazy"></div><figcaption class="card-caption">{e(card['caption'])}</figcaption></figure><div class="average-method"><strong>{e(card.get('method_label', 'How this average is calculated'))}</strong><p>{e(card['method'])}</p></div></div>
-<div class="speed-chart"><h4>{e(card['breakdown_label'])}</h4><p>The same TypeScript baseline, one program at a time.</p><figure><div class="chart-frame"><img src="./charts/{breakdown}.svg" alt="{e(card['breakdown_alt'])}" width="900" height="{int(card.get('breakdown_height', 600))}" loading="lazy"></div><figcaption class="card-caption">{e(card['breakdown_caption'])}</figcaption></figure>{historical_context}</div></div>
-{supplemental}<p class="card-takeaway"><span aria-hidden="true">↳</span><span>{e(card['takeaway'])}</span></p><div class="card-bottom">{link(source, 'Read the measured report')}<div class="speed-downloads"><span>History: <a href="./charts/{chart}.svg" download>SVG ↓</a> · <a href="./charts/{chart}.png" download>PNG ↓</a></span><span>Programs: <a href="./charts/{breakdown}.svg" download>SVG ↓</a> · <a href="./charts/{breakdown}.png" download>PNG ↓</a></span></div></div>
-<details class="data-details"><summary>All measurements, commit dates &amp; sources</summary>{measurements}</details></article>'''
-
-
 def render_cards(config, research):
-    content = [native_report.render_speed(card, research, render_speed_card(card, research)) for card in config['cards'][:3]]
+    content = [native_report.render_speed(card, research, speed_tables(card, research)) for card in config['cards'][:3]]
     content += [native_report.render_conformance(research), native_report.render_simplicity(research)]
     return '\n'.join(content)
 

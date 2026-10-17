@@ -2,7 +2,7 @@
   "schema_version": 1,
   "source_commit": "8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71",
   "title": "Three complete applications. Visible results.",
-  "intro": "Ordinary Bend sources take runtime inputs and produce complete checked outputs. The current native compiler improves every measured application point over Phase 98.",
+  "intro": "Ordinary Bend sources take runtime inputs and produce complete checked outputs. Each application compares its complete process time with upstream-generated C.",
   "clock": "Complete generated-application process time, including startup, argument parsing, input, useful work, output capture and shutdown. Compiler requests, Clang builds and oracle generation are excluded.",
   "baseline": {
     "current": "Phase 102 candidate04",
@@ -59,8 +59,8 @@
           "ratio_upstream": 1.195
         }
       ],
-      "headline": "Near upstream speed on one core.",
-      "takeaway": "26.6% less time than Phase 98 on one worker; 21.2% less on four.",
+      "headline": "Near upstream speed on one worker.",
+      "takeaway": "0.986× upstream time on one worker; 1.195× on four.",
       "note": "Four-worker execution remains 19.5% slower than upstream. This measures the complete image and its output, not only the numeric kernel.",
       "sources": [
         {
@@ -99,8 +99,8 @@
           "ratio_upstream": 1.077
         }
       ],
-      "headline": "Roughly half the previous execution time.",
-      "takeaway": "47.5–49.0% less time than Phase 98 across the two measured inputs.",
+      "headline": "0.912× upstream time on generated source.",
+      "takeaway": "Indexing the full compiler source takes 1.077× upstream time.",
       "note": "This is lexical indexing, not parsing or compiling the source. Compiler-text indexing remains 7.7% slower than upstream; the generated-definition candidate run is short, about 56 ms.",
       "sources": [
         {
@@ -144,7 +144,7 @@
         }
       ],
       "headline": "4.46× upstream speed on the shared graph.",
-      "takeaway": "33.5% less time than Phase 98 on DAG800; 31.5% less on the chain.",
+      "takeaway": "The dependency chain runs 4.07× as fast as upstream-generated C.",
       "note": "The planner remains serial and uses linear lookup. Its backend win does not remove the algorithm’s worst-case quadratic or O(VE) scaling.",
       "sources": [
         {

@@ -64,6 +64,74 @@ def validate(research):
                 ratio=p['candidate'+clock+'Ms']/p['baseline'+clock+'Ms']
                 if not math.isclose(ratio,p[clock.lower()+'Ratio'],rel_tol=1e-9):
                     raise ValueError('Native compiler ratio differs from its paired medians')
+    comparison = native['upstreamCompilation']
+    if comparison['clock']['id'] != 'compiler-child-process-wall' or comparison['headlineWeighting'] != 'equal original source':
+        raise ValueError('Native upstream headlines require process time and equal-original-source weighting')
+    total_requests = 0
+    for campaign_key, expected_points, expected_sources, expected_rounds in (('broad', 45, 23, 2), ('screen', 6, 6, 4)):
+        campaign = comparison[campaign_key]
+        if (campaign['pointCount'], campaign['sourceCount'], campaign['rounds']) != (expected_points, expected_sources, expected_rounds):
+            raise ValueError('Native upstream campaign scope changed')
+        expected_requests = expected_points * expected_rounds * 3 * 2
+        if campaign['timedRequests'] != expected_requests:
+            raise ValueError('Native upstream timed-request count mismatch')
+        total_requests += campaign['timedRequests']
+        cohort = None
+        for mode in ('prepared', 'live'):
+            for stage in ('b1', 'b2'):
+                data = campaign['modes'][mode][stage]
+                point_map = {p['id']: p for p in data['points']}
+                if len(point_map) != len(data['points']) or len(point_map) != expected_points:
+                    raise ValueError('Native upstream input points must be unique and complete')
+                if cohort is not None and set(point_map) != cohort:
+                    raise ValueError('Native upstream modes and stages must use the same input points')
+                cohort = set(point_map)
+                for p in data['points']:
+                    if p['candidateMedianMs'] <= 0 or p['referenceMedianMs'] <= 0:
+                        raise ValueError('Native upstream compiler timings must be positive')
+                    if not math.isclose(p['candidateMedianMs'] / p['referenceMedianMs'], p['ratio'], rel_tol=1e-9):
+                        raise ValueError('Native upstream ratio differs from its paired process medians')
+                    if p['samples'] != expected_rounds or p['referenceSamples'] != expected_rounds:
+                        raise ValueError('Native upstream point sample count mismatch')
+                    for role in ('candidate', 'reference'):
+                        low, high = p[role + 'RangeMs']
+                        if not 0 < low <= p[role + 'MedianMs'] <= high:
+                            raise ValueError('Native upstream median lies outside its observed range')
+                groups = data['groups']
+                if len(groups) != expected_sources or len({g['id'] for g in groups}) != expected_sources:
+                    raise ValueError('Native upstream original-program count mismatch')
+                grouped_ids = []
+                for group in groups:
+                    group_ids = group['pointIds']
+                    grouped_ids.extend(group_ids)
+                    if len(group_ids) != group['pointCount'] or any(point_map[k]['sourceId'] != group['id'] for k in group_ids):
+                        raise ValueError('Native upstream source group contains incorrect inputs')
+                    if not math.isclose(geometric_mean(point_map[k]['ratio'] for k in group_ids), group['ratio'], rel_tol=1e-9):
+                        raise ValueError('Native upstream source-group average mismatch')
+                if len(grouped_ids) != len(set(grouped_ids)) or set(grouped_ids) != cohort:
+                    raise ValueError('Native upstream source groups omit or duplicate inputs')
+                if not math.isclose(geometric_mean(g['ratio'] for g in groups), data['averageRatio'], rel_tol=1e-9):
+                    raise ValueError('Native upstream equal-original-source headline mismatch')
+                if not math.isclose(geometric_mean(p['ratio'] for p in data['points']), data['equalPointRatio'], rel_tol=1e-9):
+                    raise ValueError('Native upstream equal-point average mismatch')
+                if sum(p['ratio'] < 1 for p in data['points']) != data['fasterPointCount'] or sum(p['ratio'] > 1 for p in data['points']) != data['slowerPointCount']:
+                    raise ValueError('Native upstream faster/slower point counts mismatch')
+    for mode, expected_rounds in (('prepared', 2), ('live', 1)):
+        data = comparison['fullSelf'][mode]
+        if data['rounds'] != expected_rounds or data['timedRequests'] != expected_rounds * 3:
+            raise ValueError('Native full-source campaign count mismatch')
+        total_requests += data['timedRequests']
+        reference = data['roles']['upstream']['medianMs']
+        for role in ('b1', 'b2', 'upstream'):
+            p = data['roles'][role]
+            low, high = p['rangeMs']
+            if p['samples'] != expected_rounds or not 0 < low <= p['medianMs'] <= high:
+                raise ValueError('Native full-source observation range or sample count mismatch')
+            if not math.isclose(p['medianMs'] / reference, p['ratio'], rel_tol=1e-9):
+                raise ValueError('Native full-source upstream ratio mismatch')
+    if total_requests != 693 or comparison['broad']['referenceAcquisitions'] != 45:
+        raise ValueError('Native upstream evidence campaign totals mismatch')
+
     findings=research['recent-findings']['findings']
     if len({f['id'] for f in findings}) != len(findings) or any(not f['sources'] for f in findings):
         raise ValueError('Recent findings require unique IDs and evidence links')
@@ -93,53 +161,115 @@ def self_table(native):
     ], 'Full compiler source emission is a separate workload. Qualification observations do not establish a repeated speed trend; Clang construction is excluded.')
 
 
-def render_speed(card, research, legacy):
-    metric=card['id']; native=research['native']; runtime=metric=='execution'
-    title={'execution':'Compiled program speed','second-stage':'Second stage compiler compilation speed','compilation':'First stage compiler compilation speed'}[metric]
-    key={'execution':'execution','second-stage':'secondStage','compilation':'compilation'}[metric]
-    data=native[key]; latest=data['latest']
-    chart={'execution':'native-runtime','second-stage':'native-second-stage','compilation':'native-compilation'}[metric]
-    if runtime:
-        value=f"{latest['averageRatio']:.3f}×"; unit='upstream-generated C execution time'
-        summary=f"Native programs are {100*(latest['averageRatio']-1):.2f}% above upstream on average. The promoted compiler uses {latest['timeReductionPercent']:.2f}% less program runtime than its freshly measured Phase 98 control."
-        badges=['Native C output','44 timed points · 23 sources','Baseline: upstream C','Last broad run: P102 candidate04']
-        secondary=f"{latest['equalSourceRatio']:.3f}× with equal weight per source"
-        history_intro='One cohort per series. Earlier C12 results are kept separate.'
-        history_caption='Historical checkpoints retain their source dates, timing windows and reuse status. The current broad campaign compares paired native executables with the same upstream C target.'
-        breakdown_intro='Each source gets one bar; the headline gives each timed input equal weight.'
-        breakdown_caption='Different inputs of a source are geometrically averaged for its bar. Equal-source weighting gives a slightly different average. The zero-work control has no timing ratio.'
-        method='Divide each native program’s median time by its paired upstream-generated C time, then take the geometric mean of the 44 positive-work points. Three alternating rounds per comparator; 45 catalog points pass semantic controls. Compilation, process startup and warmup are outside this clock.'
-        takeaway='The same Bend programs are compiled by two compilers and run as native C executables. “Upstream” describes the reference compiler; these are not TypeScript programs.'
-        measurements=runtime_table(native)
-        source=source_url(research,'implementation/phase102/default-promotion.md')
-        extra=''
-    else:
-        stage='B2' if metric=='second-stage' else 'B1'
-        ratio=latest['requestRatio']; delta=100*(ratio-1)
-        value=f"{abs(delta):.2f}%";unit=('less' if delta<0 else 'more')+' request time vs Phase 98'
-        summary=('The Bend-built native compiler improves substantially on ordinary compilation. The gain is measured against the previous native release across six sources.' if stage=='B2' else 'The upstream-built native compiler is slightly slower on this six-source campaign. Its earlier Phase 98 improvement remains visible in the history.')
-        badges=['Native '+stage+' host · C output','6 sources · 4 balanced rounds','Baseline: Phase 98','P102 candidate04']
-        secondary=f"{ratio:.3f}× request time · {latest['processRatio']:.3f}× complete process time"
-        history_intro='Each release is compared with its own measured predecessor.'
-        history_caption='These are independent paired campaigns. A lower bar means less time than the stated predecessor; different baselines are not joined or multiplied into an upstream estimate.'
-        breakdown_intro='Current compiler / Phase 98, using identical source inputs.'
-        breakdown_caption='The request clock excludes prepared Base decoding. The process clock includes startup, Base preparation, output writing and teardown. Neither includes a subsequent C toolchain build.'
-        method='The geometric mean weights six source-level ratios equally. Request and process time stay separate. This campaign has no current native-versus-upstream compiler comparison; the earlier JavaScript comparison is available below.'
-        takeaway='Latest broad measurement: Phase 102 candidate04. Phase 103 packages the same compiler core as a public native CLI; Phase 104 adds a two-case timing screen and lineage audit.'
-        measurements=compiler_table(data)
-        source=source_url(research,'implementation/phase102/default-promotion.md')
-        extra=''
-        if stage=='B2':
-            extra='<details class="data-details"><summary>Full compiler source: self-emission and build cost</summary>'+self_table(native)+'<p>Phase 104 rechecks the existing artifacts: B1 and B2 emitted identical 30,373,059-byte C files. B3 C exists; its executable has not been built. The historical B2 C emission took 150.846 s and Clang construction took 374.033 s. These are distinct clocks and single observations.</p>'+link(source_url(research,'implementation/phase104/README.md'),'Audited lineage and cost model')+'</details>'
-    js=legacy.replace('id="'+metric+'"','id="js-'+metric+'"').replace('title-'+metric,'title-js-'+metric)
-    js_summary='JavaScript output · retained average and complete history' if runtime else 'JavaScript-hosted '+('B2' if metric=='second-stage' else 'B1')+' · latest upstream comparison and full history'
-    badges_html=''.join('<span>'+e(b)+'</span>' for b in badges)
-    return f'''<article class="chart-card speed-card native-card" id="{metric}" aria-labelledby="title-{metric}">
-<div class="chart-card-top"><div class="card-category"><h3 id="title-{metric}"><span class="metric-dot {metric}-color"></span>{e(card['number'])} / {title}</h3><span>Lower time is better</span></div><div class="scope-badges">{badges_html}</div><div class="speed-head"><div><div class="card-headline"><strong>{value}</strong><span>{unit}</span></div><p class="native-secondary">{e(secondary)}</p></div><p class="card-summary">{summary}</p></div></div>
-<div class="speed-charts"><div class="speed-chart"><h4>Progress through the releases</h4><p>{history_intro}</p>{figure(chart+'-history', title+' history with separate measurement boundaries',history_caption)}<div class="average-method"><strong>What this measures</strong><p>{method}</p></div></div><div class="speed-chart"><h4>Breakdown by program</h4><p>{breakdown_intro}</p>{figure(chart+'-programs',title+' by program and comparison baseline',breakdown_caption,1100 if runtime else 650)}</div></div>
-<p class="card-takeaway"><span aria-hidden="true">↳</span><span>{takeaway}</span></p><div class="card-bottom">{link(source,'Measured native report')}<span><a href="./charts/{chart}-history.svg" download>History SVG ↓</a> · <a href="./charts/{chart}-programs.png" download>Program chart PNG ↓</a></span></div><details class="data-details"><summary>Native measurements and sources</summary>{measurements}</details>{extra}
-<details class="track-history"><summary>{js_summary}</summary>{js}</details></article>'''
+def upstream_compiler_table(comparison, stage):
+    broad = comparison['broad']
+    content = '<h4>Current upstream comparison · one row per original program</h4>'
+    groups = {mode: {p['id']: p for p in broad['modes'][mode][stage]['groups']} for mode in ('prepared', 'live')}
+    content += table(['Original program', 'Input points', 'Prepared / upstream', 'Live Base / upstream', 'Evidence'], [
+        [e(p['label']), str(p['pointCount']), f"{p['ratio']:.4f}×", f"{groups['live'][p['id']]['ratio']:.4f}×", link(p['sourceUrl'])]
+        for p in broad['modes']['prepared'][stage]['groups']
+    ], 'Geometric average within each original program, then equal weight across 23 original programs for each headline. All 45 input points count for compilation, including the zero-work execution control.')
+    for mode, label in (('prepared', 'Prepared Base'), ('live', 'Live Base')):
+        data = broad['modes'][mode][stage]
+        content += '<h4>' + label + ' · all 45 input points</h4>'
+        content += table(['Input point', 'Native process (ms)', 'Upstream process (ms)', 'Time / upstream', 'Evidence'], [
+            [e(p['label']), f"{p['candidateMedianMs']:.3f}", f"{p['referenceMedianMs']:.3f}", f"{p['ratio']:.4f}×", link(p['sourceUrl'])]
+            for p in data['points']
+        ], f"Two fresh processes per role and point. Equal-point average: {data['equalPointRatio']:.6f}×. This differs from the equal-original-program headline.")
+    content += '<h4>Complete compiler source · separate workload</h4>'
+    rows = []
+    for mode, label in (('prepared', 'Prepared Base'), ('live', 'Live Base')):
+        data = comparison['fullSelf'][mode]
+        for role in ('upstream', stage):
+            p = data['roles'][role]
+            rows.append([label, 'Upstream TS/Bun' if role == 'upstream' else 'Native ' + role.upper(), f"{p['medianMs']/1000:.3f}", f"{p['ratio']:.4f}×", str(data['rounds'])])
+    content += table(['Mode', 'Compiler', 'Process time (s)', 'Time / upstream', 'Observations'], rows,
+        'Every role compiles the same complete 1.79 MB compiler source to C. Prepared medians use two observations; live controls use one. Native stages emit the same 30,373,059-byte C output. Clang construction is excluded.')
+    content += '<h4>Earlier native campaigns · original boundaries preserved</h4>'
+    return content
 
+
+def render_speed(card, research, javascript):
+    metric = card['id']
+    native = research['native']
+    runtime = metric == 'execution'
+    title = {'execution': 'Compiled program speed', 'second-stage': 'Second stage compiler compilation speed', 'compilation': 'First stage compiler compilation speed'}[metric]
+    key = {'execution': 'execution', 'second-stage': 'secondStage', 'compilation': 'compilation'}[metric]
+    chart = {'execution': 'native-runtime', 'second-stage': 'native-second-stage', 'compilation': 'native-compilation'}[metric]
+    data = native[key]
+    latest = data['latest']
+    js_average, js_measurements, js_source = javascript
+    js_data = research[card['average_dataset']]
+    js_chart = card['chart']
+    js_programs = card['breakdown_chart']
+    self_callout = ''
+    native_extra_history = ''
+    js_extra_history = ''
+
+    if runtime:
+        native_ratio = latest['averageRatio']
+        native_score_label = 'upstream C execution time'
+        native_context = f"44 timed inputs · 23 original programs · {100*(native_ratio-1):.1f}% slower than upstream."
+        native_secondary = ''
+        native_clock = 'Warmed native execution; compilation and process startup excluded.'
+        native_note = 'Latest broad timing: Phase 102 candidate04. The current compiler core is unchanged.'
+        js_score_label = 'upstream JavaScript execution time'
+        js_context = '45 timed inputs · 23 original programs · retained timing.'
+        js_secondary = ''
+        js_clock = 'Warmed JavaScript execution; compilation, imports and first call excluded.'
+        js_note = 'Last fresh timing: Phase 66. Phase 91 preserves it through emitted-output identity checks.'
+        native_history_name = chart + '-history'
+        native_history_caption = 'Native C history keeps the earlier C12 cohort separate from the current 44 positive-work inputs. Reused results are labeled; checkpoints are not controlled before/after pairs.'
+        native_breakdown_caption = 'Each bar geometrically averages one program’s timed inputs. The headline gives all 44 timed inputs equal weight; equal-source weighting is 1.065×. The zero-work control has no execution-time ratio.'
+        native_method = 'For each input, divide the median Bend-generated C execution time by the paired upstream-generated C time. Take the geometric mean across 44 positive-work inputs. Three alternating rounds per comparator; all 45 catalog points pass semantic controls.'
+        native_program_height = 1100
+        native_measurements = runtime_table(native)
+        native_source = source_url(research, 'implementation/phase102/default-promotion.md')
+        takeaway = 'Both tracks compare programs compiled from the same Bend source. Native and JavaScript use separate output targets, cohorts and timing protocols; their histories remain separate.'
+    else:
+        stage = 'b2' if metric == 'second-stage' else 'b1'
+        comparison = native['upstreamCompilation']
+        prepared = comparison['broad']['modes']['prepared'][stage]
+        live = comparison['broad']['modes']['live'][stage]
+        native_ratio = prepared['averageRatio']
+        native_score_label = 'upstream time · prepared standard library'
+        native_context = '23 original programs · 45 input points · fresh compiler processes.'
+        native_secondary = f'<div class="summary-secondary"><strong>{live["averageRatio"]:.3f}×</strong><span>upstream time · standard library checked from source</span></div>'
+        native_clock = 'Complete compiler-process time to emit C; includes startup and preparation. Clang excluded.'
+        native_note = 'Prepared standard library (Base): native reuses a checked artifact; upstream checks Base from source. In live mode, both check Base from source. Creating the reusable artifact is an excluded offline setup cost.'
+        js_score_label = 'upstream time · compilation request'
+        js_context = '23 programs · JavaScript host and output · Phase 91.'
+        js_secondary = f'<div class="summary-secondary"><strong>{js_data["including_imports_average"]:.3f}×</strong><span>upstream time · with imports and API loading</span></div>'
+        js_clock = 'First check-and-emit request after loading; process startup and cache preparation excluded.'
+        js_note = 'Both JavaScript compilers use prepared standard-library caches. This request clock differs from the native complete-process clock.'
+        native_history_name = chart + '-upstream'
+        native_history_caption = 'Fresh Phase 105 upstream comparisons: prepared and live Base across 23 original programs, plus the separate complete-compiler workload. All use compiler-process time; these are three scopes, not consecutive releases.'
+        native_extra_history = '<h5>Earlier measured improvements</h5>' + figure(chart + '-history', 'Earlier native compiler improvements within independently paired campaigns', 'Earlier optimization gains remain on the graph, with each campaign’s own baseline and timing boundary. They cannot be multiplied into the current upstream comparison.')
+        native_breakdown_caption = 'Prepared and live Base stay separate for every original program. Each bar averages that program’s input points; every original program has equal headline weight. Below 1× is faster than upstream.'
+        native_method = 'Use the geometric mean of input-level native / upstream process-time ratios within each original program, then the geometric mean across 23 programs. Two fresh observations per role, mode and point. Native and upstream have different internal request clocks, so only the shared child-process clock supplies these ratios.'
+        native_program_height = 1372
+        native_measurements = upstream_compiler_table(comparison, stage) + compiler_table(data) + self_table(native)
+        native_source = comparison['sourceUrl']
+        full = comparison['fullSelf']['prepared']
+        measured = full['roles'][stage]
+        reference = full['roles']['upstream']
+        self_callout = f'''<section class="full-self-callout" aria-labelledby="self-source-{metric}"><div><h4 id="self-source-{metric}">Native {stage.upper()} compiling the complete compiler source</h4><p>The same 1.79 MB Bend source, kept separate from the ordinary-program average.</p></div><div class="full-self-value"><strong>{measured['ratio']:.3f}×</strong><span>upstream time · prepared Base</span></div><p class="full-self-times"><strong>{measured['medianMs']/1000:.3f} s</strong> native · <strong>{reference['medianMs']/1000:.3f} s</strong> upstream</p><p class="visual-note">Two process-time observations per compiler. Emits C; the subsequent Clang build is excluded.</p></section>'''
+        takeaway = 'Prepared Base makes ordinary native compilation faster than upstream on this corpus. Live Base and the complete compiler source remain slower. These are distinct workloads, so there is no single combined speed score.'
+        if card.get('supplemental_chart'):
+            js_extra_history = '<h5>Compiling the compiler itself · historical JavaScript work</h5>' + figure(card['supplemental_chart'], card['supplemental_alt'], card['supplemental_caption'], int(card.get('supplemental_height', 490)))
+
+    native_summary = f'''<section class="track-summary native-summary" aria-labelledby="native-summary-{metric}"><h4 class="track-label" id="native-summary-{metric}">Native{' · ' + stage.upper() if not runtime else ' output'}</h4><div class="summary-score"><strong>{native_ratio:.3f}×</strong><span>{e(native_score_label)}</span></div>{native_secondary}<p class="summary-context">{e(native_context)}</p><p class="summary-clock">{e(native_clock)}</p><p class="visual-note">{e(native_note)}</p></section>'''
+    js_summary = f'''<section class="track-summary javascript-summary" aria-labelledby="js-summary-{metric}"><h4 class="track-label" id="js-summary-{metric}">JavaScript{' · ' + stage.upper() if not runtime else ' output'}</h4><div class="summary-score"><strong>{js_average:.3f}×</strong><span>{e(js_score_label)}</span></div>{js_secondary}<p class="summary-context">{e(js_context)}</p><p class="summary-clock">{e(js_clock)}</p><p class="visual-note">{e(js_note)}</p></section>'''
+    native_history = figure(native_history_name, title + ' native upstream comparisons and history', native_history_caption, 650 if runtime else 640)
+    js_history = figure(js_chart, card['alt'], card['caption'], int(card.get('history_height', 590)))
+    native_breakdown = figure(chart + '-programs', title + ' native program breakdown against upstream', native_breakdown_caption, native_program_height)
+    js_breakdown = figure(js_programs, card['breakdown_alt'], card['breakdown_caption'], int(card.get('breakdown_height', 1100)))
+    return f'''<article class="chart-card speed-card native-card" id="{metric}" aria-labelledby="title-{metric}">
+<div class="chart-card-top"><div class="card-category"><h3 id="title-{metric}"><span class="metric-dot {metric}-color"></span>{e(card['number'])} / {title}</h3><span>Upstream = 1× · Lower time is better</span></div><div class="track-summaries">{native_summary}{js_summary}</div></div>
+{self_callout}
+<div class="speed-charts history-charts"><section class="speed-chart" aria-labelledby="native-history-{metric}"><h4 id="native-history-{metric}">Native · comparison and history</h4><p>Upstream comparisons retain their own workloads and clocks.</p>{native_history}{native_extra_history}</section><section class="speed-chart" aria-labelledby="js-history-{metric}"><h4 id="js-history-{metric}">JavaScript · full history</h4><p>The complete earlier series stays visible, including its largest improvements.</p>{js_history}{js_extra_history}</section></div>
+<div class="speed-charts breakdown-charts"><section class="speed-chart" aria-labelledby="native-programs-{metric}"><h4 id="native-programs-{metric}">Native · breakdown by program</h4><p>Each bar compares with the paired upstream compiler.</p>{native_breakdown}<div class="average-method"><strong>Native measurement</strong><p>{e(native_method)}</p></div></section><section class="speed-chart" aria-labelledby="js-programs-{metric}"><h4 id="js-programs-{metric}">JavaScript · breakdown by program</h4><p>The same upstream baseline, one program at a time.</p>{js_breakdown}<div class="average-method"><strong>JavaScript measurement</strong><p>{e(card['method'])}</p></div></section></div>
+<p class="card-takeaway"><span aria-hidden="true">↳</span><span>{e(takeaway)}</span></p><div class="card-bottom">{link(native_source, 'Native measured report')} · {link(js_source, 'JavaScript measured report')}<span><a href="./charts/{native_history_name}.svg" download>Native graph SVG ↓</a> · <a href="./charts/{js_chart}.svg" download>JavaScript history SVG ↓</a></span></div><details class="data-details"><summary>Native measurements, protocols and sources</summary>{native_measurements}</details><details class="data-details"><summary>JavaScript measurements, commit dates and sources</summary>{js_measurements}</details></article>'''
 
 def render_conformance(research):
     c=research['conformance']; native=c['currentNative']; cli=c['nativeCLI']
@@ -170,7 +300,7 @@ def render_applications(data):
         for case in item['cases']:
             ratio=case['ratio_upstream']
             color='var(--simplicity)' if ratio > 1 else 'var(--green)'
-            bars.append(f'<div class="application-bar"><div><span>{e(case["label"])}</span><strong>{ratio:.3f}×</strong></div><div class="application-bar-track"><span style="width:{min(100,ratio/1.3*100):.3f}%;background:{color}"></span><i style="left:{1/1.3*100:.3f}%" aria-hidden="true"></i></div><small>{100*(1-case["ratio_previous"]):.1f}% less time than Phase 98</small></div>')
+            bars.append(f'<div class="application-bar"><div><span>{e(case["label"])}</span><strong>{ratio:.3f}×</strong></div><div class="application-bar-track"><span style="width:{min(100,ratio/1.3*100):.3f}%;background:{color}"></span><i style="left:{1/1.3*100:.3f}%" aria-hidden="true"></i></div></div>')
         sources=' '.join(link(s['url'],s['title']) for s in item['sources'])
         history=''
         if item['id']=='image-render':

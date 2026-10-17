@@ -196,16 +196,16 @@ def compiler_history(plt, data, stage, save):
     heading(fig, f"Native {stage} compilation · measured change",
             "Independent matched screens · ● compiler request   ◆ complete process")
     footnote(fig, "Each milestone uses its own source and measurement window; gains are not chained.\n"
-             "Lower is better. The latest comparison is against P98, not upstream TypeScript.")
+             "Lower is better. These historical screens compare compiler versions, not upstream.")
     stem = "native-second-stage" if stage == "B2" else "native-compilation"
     save(plt, fig, f"{stem}-history",
          f"Native {stage} compilation history shown as separate matched before-and-after comparisons. "
          "Circles show compiler-request ratios; diamonds show complete-process ratios. Baselines "
          "and cohorts differ between screens, so no trend line joins them and gains are not multiplied. "
-         "Latest baseline is Phase98, not upstream TypeScript. Lower is better; vertical axis starts at 0.5x.")
+         "These historical baselines are compiler versions, not upstream TypeScript. Lower is better; vertical axis starts at 0.5x.")
 
 
-def compiler_programs(plt, data, stage, save):
+def compiler_previous_programs(plt, data, stage, save):
     latest = data["latest"]
     programs = sorted(latest["programs"], key=lambda p: p["requestRatio"])
     height = max(6.5, 2.6 + .58 * len(programs))
@@ -235,12 +235,116 @@ def compiler_programs(plt, data, stage, save):
     footnote(fig, "Request excludes Base decoding. Process includes startup, Base preparation and output IO.\n"
              "Both clocks exclude Clang. Generated program speed is measured separately.")
     stem = "native-second-stage" if stage == "B2" else "native-compilation"
-    save(plt, fig, f"{stem}-programs",
+    save(plt, fig, f"{stem}-previous-programs",
          f"All six Phase102 native {stage} compilation sources compared with the matching Phase98 stage. "
          "Each labelled circle shows compiler-request time ratio, and each blue diamond shows the "
          "complete-process ratio including startup, Base preparation, output writing and teardown. "
          "Both clocks exclude Clang. Four alternating rounds per comparator. "
          "The 1x line means equal time to Phase98. Lower is better.")
+
+
+def compiler_upstream(plt, data, stage, save):
+    """Current upstream comparisons: keep preparation and workload boundaries visible."""
+    role = stage.lower()
+    prepared = data["broad"]["modes"]["prepared"][role]["averageRatio"]
+    live = data["broad"]["modes"]["live"][role]["averageRatio"]
+    full = data["fullSelf"]["prepared"]["roles"][role]["ratio"]
+    fig, ax = plt.subplots(figsize=(9, 6.4))
+    fig.subplots_adjust(left=.34, right=.91, top=.74, bottom=.28)
+    positions, values = [0, 1, 2.7], [prepared, live, full]
+    colors = [GREEN if value <= 1 else ORANGE for value in values]
+    ax.barh(positions, values, height=.48, color=colors)
+    for y, value, color in zip(positions, values, colors):
+        ax.text(value + .075, y, f"{value:.3f}×", fontsize=17, fontweight="bold",
+                color=color, va="center")
+    ax.set_yticks(positions, ["23 programs\nPrepared Base", "23 programs\nLive Base",
+                             "Complete compiler source\nPrepared Base"], fontsize=12)
+    ax.set_ylim(3.35, -.6)
+    ax.set_xlim(0, max(3.5, max(values) + .65))
+    ax.set_xticks([0, 1, 2, 3])
+    ratio_format(ax, "x")
+    ax.grid(axis="x")
+    ax.axvline(1, color=INK, linewidth=1.3)
+    ax.axhline(1.85, color=GRID, linewidth=1)
+    ax.text(1, -.58, "1× = upstream", ha="center", va="bottom", fontsize=10.5,
+            color=INK, bbox={"facecolor": PAPER, "edgecolor": "none", "pad": 3})
+    ax.set_xlabel("Compiler process time ÷ upstream time · lower is better", fontsize=11.5, labelpad=13)
+    heading(fig, f"Native {stage} compilation · compared with upstream",
+            "Same Bend inputs → complete C · startup and preparation included\n"
+            "Clang and public-CLI launch / authentication are excluded")
+    footnote(fig, "Ordinary sources: geometric mean with equal weight per original program; two runs per point.\n"
+             "Prepared native reuses authenticated Base; upstream checks source Base in both modes.\n"
+             "Full compiler source: separate workload, median of two runs; excluded from the averages.", y=.035)
+    stem = "native-second-stage" if stage == "B2" else "native-compilation"
+    save(plt, fig, f"{stem}-upstream",
+         f"Phase{data['phase']} native {stage} compilation compared with pinned upstream TypeScript on Bun. "
+         f"Broad prepared-Base ratio is {prepared:.6f}x and live-Base ratio is {live:.6f}x, "
+         "each a geometric mean giving equal weight to 23 original source programs derived from 45 points, "
+         "with two observations per role and point. Prepared native reuses authenticated Base while "
+         "upstream checks source Base in both modes. "
+         f"Full compiler-source prepared ratio is {full:.6f}x, a separate workload using two observations "
+         "per role, not included in either broad aggregate. All values use complete compiler child-process "
+         "wall time, including startup, preparation, C output and exit; Clang and public CLI launch and "
+         "authentication are excluded. The 1x reference is upstream and lower is better.")
+
+
+def compiler_upstream_programs(plt, data, stage, save):
+    """Pair two preparation modes per original source without mixing their ratios."""
+    from matplotlib.lines import Line2D
+    role = stage.lower()
+    modes = data["broad"]["modes"]
+    prepared_groups = modes["prepared"][role]["groups"]
+    live_groups = {group["id"]: group for group in modes["live"][role]["groups"]}
+    groups = sorted(prepared_groups, key=lambda group: group["ratio"])
+    count = len(groups)
+    height = 3.6 + .44 * count
+    fig, ax = plt.subplots(figsize=(9, height))
+    fig.subplots_adjust(left=.36, right=.90, top=1 - 1.70 / height, bottom=1.75 / height)
+    all_values = []
+    for i, group in enumerate(groups):
+        prepared, live = group["ratio"], live_groups[group["id"]]["ratio"]
+        all_values += [prepared, live]
+        ax.hlines(i, min(prepared, live), max(prepared, live), color=GRID, linewidth=2.2, zorder=2)
+        ax.scatter([prepared], [i], s=57, color=TEAL, marker="o", zorder=4)
+        ax.scatter([live], [i], s=54, color=ORANGE, marker="D", zorder=4)
+        ax.annotate(f"{prepared:.2f}×", (prepared, i), xytext=(8, 0), textcoords="offset points",
+                    ha="left", va="center", fontsize=10.5, color=TEAL, fontweight="bold",
+                    bbox={"facecolor": PAPER, "edgecolor": "none", "pad": 1.5})
+        ax.annotate(f"{live:.2f}×", (live, i), xytext=(8, 0), textcoords="offset points",
+                    ha="left", va="center", fontsize=10.5, color=ORANGE, fontweight="bold")
+    ax.set_yticks(range(count), [clean_program_label(group) for group in groups], fontsize=11)
+    ax.set_ylim(count - .35, -.7)
+    ax.set_xlim(0, max(all_values) + .6)
+    ticks = list(range(0, math.ceil(max(all_values)) + 1))
+    ax.set_xticks(ticks)
+    ratio_format(ax, "x")
+    ax.grid(axis="x")
+    ax.axvline(1, color=INK, linewidth=1.3)
+    ax.set_xlabel("Compiler process time ÷ upstream time · lower is better", fontsize=11.5, labelpad=13)
+    fig.text(.065, 1 - .22 / height, f"Native {stage} compilation · all 23 original programs", fontsize=17,
+             fontweight="bold", va="top")
+    fig.text(.065, 1 - .69 / height, "Same inputs → complete C · 1× = upstream TypeScript on Bun",
+             fontsize=11.5, color=MUTED, va="top")
+    fig.legend(handles=[Line2D([0], [0], color=TEAL, marker="o", markersize=7, linestyle="none",
+                               label="Prepared Base"),
+                        Line2D([0], [0], color=ORANGE, marker="D", markersize=7, linestyle="none",
+                               label="Live Base")],
+               loc="upper left", bbox_to_anchor=(.065, 1 - 1.03 / height), frameon=False, ncol=2,
+               fontsize=11.5, handlelength=1, columnspacing=2.5)
+    footnote(fig, "Each row averages its source’s closed points geometrically; parentheses show point counts.\n"
+             "Two fresh processes per role / point / mode. Includes startup, preparation, output and exit.\n"
+             "Prepared native reuses Base; upstream checks source Base. Clang and public CLI are excluded.",
+             y=.20 / height)
+    stem = "native-second-stage" if stage == "B2" else "native-compilation"
+    save(plt, fig, f"{stem}-programs",
+         f"All {count} original source programs in the Phase{data['phase']} native {stage} compilation "
+         "comparison, sorted by prepared-Base ratio to upstream. Teal circles show prepared-Base "
+         "workflow ratios, amber diamonds show live-Base ratios, each with an independently measured "
+         "upstream control. Source ratios are geometric means of per-point median process-time ratios; "
+         "parentheses show point counts. Every role and point has two fresh-process observations in "
+         "each mode. Prepared native reuses authenticated Base; upstream checks source Base in both "
+         "modes. Complete compiler process time includes startup, preparation, output and exit; "
+         "Clang and public CLI are excluded. The 1x line is upstream parity and lower is better.")
 
 
 def simplicity(plt, data, save):
@@ -379,4 +483,6 @@ def render(plt, data, save):
     execution_programs(plt, data["execution"], save)
     for key, stage in (("secondStage", "B2"), ("compilation", "B1")):
         compiler_history(plt, data[key], stage, save)
-        compiler_programs(plt, data[key], stage, save)
+        compiler_previous_programs(plt, data[key], stage, save)
+        compiler_upstream(plt, data["upstreamCompilation"], stage, save)
+        compiler_upstream_programs(plt, data["upstreamCompilation"], stage, save)

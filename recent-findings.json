@@ -1,7 +1,52 @@
 {
   "schema_version": 1,
-  "source_commit": "8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71",
+  "source_commit": "c2ef383c35847df62d0643e3fdeb2c2899687ca5",
   "findings": [
+    {
+      "id": "prepared-workflows-and-full-source",
+      "phase": "PHASE 105 · COMPARING THE SAME WORK",
+      "metrics": [
+        "second-stage",
+        "compilation",
+        "simplicity"
+      ],
+      "title": "Prepare shared inputs once. Measure the complete job.",
+      "paragraphs": [
+        "A compiler invocation includes more than checking the requested program. It starts a process, loads its implementation, prepares the standard library, emits C and writes the result. The new comparison times this complete child process for all three compilers, using identical input sources and verifying every complete output. Their internal request timers cover different work and are kept out of the headline ratio.",
+        "The native compiler can reuse an authenticated prepared Base carrier, while upstream checks Base from source. With that configured workflow, B2 takes 0.517× upstream time across 23 original programs; asking it to check Base from source raises the ratio to 2.231×. This identifies shared-library preparation as a practical fixed cost, while keeping its one-time preparation cost outside the measurement explicit.",
+        "The full 1.79 MB compiler source exposes a different problem: B2 takes 143.646 seconds against upstream’s 48.442 seconds, or 2.965× the time. B1 also takes 2.602× upstream time, so the gap is already substantial before the compiler builds itself. This large workload remains separate from the small-program average and gives future profiling a concrete target."
+      ],
+      "flow": [
+        "Same inputs and complete C outputs",
+        "Time startup, preparation, compilation and exit",
+        "Separate library preparation from source scaling"
+      ],
+      "stats": [
+        {
+          "value": "0.517×",
+          "label": "B2 / upstream · prepared Base · 23-source mean"
+        },
+        {
+          "value": "2.231×",
+          "label": "B2 / upstream · Base checked from source"
+        },
+        {
+          "value": "2.965×",
+          "label": "B2 / upstream · complete compiler source"
+        }
+      ],
+      "note": "Prepared and live modes have separate upstream controls. Broad results use two samples per point, from 45 points derived from 23 originals; full-source prepared results use two samples. Clang, outer launcher/authentication and offline carrier creation are excluded. This measures the admitted native core, not the public CLI entry.",
+      "sources": [
+        {
+          "title": "Measured compilation results and complete scope",
+          "url": "https://github.com/rom1504/bend/blob/c2ef383c35847df62d0643e3fdeb2c2899687ca5/implementation/phase105/README.md"
+        },
+        {
+          "title": "Shared process clock and preparation modes",
+          "url": "https://github.com/rom1504/bend/blob/c2ef383c35847df62d0643e3fdeb2c2899687ca5/docs/self_hosted/NATIVE_COMPILER_COMPARISON.md"
+        }
+      ]
+    },
     {
       "id": "native-ownership-facts",
       "phase": "PHASES 67–73",
@@ -152,7 +197,7 @@
       "title": "Let efficient paths compose across ordinary source code.",
       "paragraphs": [
         "Direct workers were available, but composing them could recreate continuations and temporary products. The new lowering keeps eligible local calls direct, turns final-field constructor recursion into loops, and recognizes owning observers whose result is immediately projected to a scalar. The resulting worker performs the borrowed computation, checks errors and releases its roots without constructing two temporary tuples.",
-        "The promoted candidate04 retains these gains with a corrected inline-cost policy. Across six source programs, native B2 uses 27.6% less request time than Phase 98. Across all 44 positive-work runtime points, generated programs use 6.3% less time and average 1.043× upstream C. All six complete application measurements improve over Phase 98, including roughly halving source-index execution time."
+        "The promoted candidate04 retains these paths with a corrected inline-cost policy. Across 44 positive-work runtime points, generated programs average 1.043× upstream C time. The generated-source index runs at 0.912× upstream time, and the dependency planner at 0.224× on its shared graph. These complete applications show where the compiler’s choices reach ordinary useful work."
       ],
       "flow": [
         "Compose direct calls and constructor loops",
@@ -161,19 +206,15 @@
       ],
       "stats": [
         {
-          "value": "27.6%",
-          "label": "less B2 request time · six-source paired screen"
-        },
-        {
-          "value": "6.3%",
-          "label": "less program runtime · 44-point paired screen"
-        },
-        {
           "value": "1.043×",
-          "label": "native runtime / upstream · equal-point mean"
+          "label": "native runtime / upstream · 44-point mean"
+        },
+        {
+          "value": "0.224×",
+          "label": "planner process time / upstream · shared graph"
         }
       ],
-      "note": "B1 requests are 2.6% slower on the same compiler screen. Equal-source runtime weighting gives 1.065× upstream. Candidate03’s fold regressions led to the corrected candidate04 policy; its historical numbers are not the current release. Complete application clocks and warmed benchmark clocks remain separate.",
+      "note": "Equal-source runtime weighting gives 1.065× upstream. Candidate03’s fold regressions led to the corrected candidate04 policy. Complete application clocks and warmed benchmark clocks remain separate; historical release changes stay in the graphs.",
       "sources": [
         {
           "title": "Promoted candidate04 measurements and tradeoffs",
@@ -286,7 +327,7 @@
     "phase": "PHASE 104 · RESEARCH",
     "title": "Measure the whole improvement loop next.",
     "paragraphs": [
-      "The latest research audits the native stage lineage and establishes a small measurement baseline: 16 fresh requests preserve complete C and diagnostics. It does not change the installed compiler or demonstrate accelerating research yield.",
+      "Phase 104 audited the native stage lineage and established a small measurement baseline: 16 fresh requests preserved complete C and diagnostics. Phase 105 now supplies broader upstream comparisons, including complete compiler-source compilation. Neither campaign changes the installed compiler or demonstrates accelerating research yield.",
       "Its next question is practical: does a faster compiler buy more independently validated progress? The proposed experiments compare normal and deliberately delayed compiler service, then frozen and updating builders, while charging build, validation and research costs. Smaller emitted C and cheaper Clang builds may matter as much as faster Bend requests."
     ],
     "stats": [

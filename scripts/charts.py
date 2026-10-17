@@ -23,7 +23,9 @@ NAMES = ("simplicity", "compilation", "conformance", "runtime-gains", "runtime-g
          "compilation-programs", "second-stage-average-history", "second-stage-programs",
          "second-stage-self-emission", "native-runtime-history", "native-runtime-programs",
          "native-second-stage-history", "native-second-stage-programs",
-         "native-compilation-history", "native-compilation-programs")
+         "native-compilation-history", "native-compilation-programs",
+         "native-second-stage-upstream", "native-compilation-upstream",
+         "native-second-stage-previous-programs", "native-compilation-previous-programs")
 INK = "#202d29"
 MUTED = "#586660"
 PAPER = "#f6f7f2"
@@ -610,13 +612,16 @@ def compilation_history(plt, current, history):
     for y in (.717, .48, .25):
         fig.add_artist(Line2D([.11, .95], [y, y], transform=fig.transFigure, color=GRID))
     fig.text(.11, .02, 'Latest panel: ● compile only   ◆ dashed = including import + API load\n'
-             'Line breaks mark changed cohorts, clocks or TS pins. Only P66 covers all 23 sources for B1.',
+             'Breaks mark changed cohorts, clocks or TS pins. P66 and P91 cover all 23 sources.\n'
+             'P91 remeasures the current P90 images; no earlier compiler was rerun alongside.',
              fontsize=10.5, color=MUTED, linespacing=1.6)
     save(plt, fig, 'compilation-average-history',
          'Four distinct scopes retain the full history of compiler-source checking, legacy checked requests, '
          'two-program import-inclusive first requests and recent prepared checked compilation. These scopes '
          'are not connected. The latest panel includes four-source and three-source observations separately '
-         'from the latest 23-source P66 baseline and candidate, against the new TypeScript reference. '
+         'from the 23-source P66 baseline and candidate, against the new TypeScript reference. '
+         'The latest P91 refresh measures the P90 checked parent B1 on the same 23-source corpus, '
+         'without rerunning an earlier compiler alongside. The installed JS compiler is genuine P90 B2. '
          'Circles show compile-only ratios; dashed diamonds include import and API loading. '
          f"The latest equal-source compile-only geometric mean is {current['latest_average']:.6f}x TypeScript.")
 
@@ -627,7 +632,7 @@ def second_stage_history(plt, data):
     broad = [p for p in data['history'] if p.get('measurement_boundary_key') == 'prepared-first-request-only']
     fig = plt.figure(figsize=(9, 10.8))
     ax1 = fig.add_axes((.11, .576, .84, .215))
-    ax2 = fig.add_axes((.11, .123, .84, .237))
+    ax2 = fig.add_axes((.11, .145, .84, .215))
     fig.text(.11, .979, 'Second-stage compilation · B2', fontsize=19, fontweight='bold', va='top')
     fig.text(.11, .932, 'Time ÷ TypeScript time · equal-program geometric means · lower is better',
              fontsize=11.5, color=MUTED, va='top')
@@ -640,15 +645,17 @@ def second_stage_history(plt, data):
     fig.text(.11, .425, 'LATEST · Checked compilation across 23 sources', fontsize=14, fontweight='bold', va='top')
     fig.text(.11, .389, '● Compile only   ◆ Dashed = including import + API load', fontsize=11.5, color=MUTED, va='top')
     request_history_axis(ax2, broad, dual=True)
-    fig.text(.11, .028, 'The TypeScript pin changes at P66; its fresh P65 baseline and P66 candidate share that pin.\n'
-             'Prepared sources and primed Base caches; one first request per process. B2 remains uninstalled.',
+    fig.text(.11, .028, 'P66 changes the TS pin; its P65 baseline and P66 candidate share the new pin.\n'
+             'P91 measures installed P90 B2; no previous compiler is rerun alongside.\n'
+             'Prepared inputs / Base caches; one first checked request per fresh process.',
              fontsize=10.5, color=MUTED, linespacing=1.6)
     save(plt, fig, 'second-stage-average-history',
          'The earlier two-source import-inclusive B2 history is preserved separately from the broader '
          '23-source prepared checked compilation series. Compile-only circles and including-import '
          'dashed diamonds show distinct timing boundaries. Changed TypeScript reference commits break '
          'the line. Fresh P65 and P66 measurements use the same new reference. '
-         f"Latest compile-only mean: {data['latest_average']:.6f}x. Qualified B2 is not installed.")
+         'P91 freshly measures the installed genuine P90 B2 image, without a paired predecessor run. '
+         f"Latest compile-only mean: {data['latest_average']:.6f}x.")
 
 
 def compiler_programs(plt, data, stage):
@@ -684,7 +691,7 @@ def compiler_programs(plt, data, stage):
     fig.legend(handles=[Line2D([0], [0], color=ORANGE, linewidth=7, label='Bar + label: compile only'),
                         Line2D([0], [0], color=BLUE, marker='D', linestyle='none', label='Diamond: including import + API load')],
                loc='upper left', bbox_to_anchor=(.045, .894), frameon=False, fontsize=10.5, ncol=1)
-    footer = 'Installed checked B1' if stage == 'B1' else 'Separately qualified B2 · not installed'
+    footer = 'P90 checked parent B1 · separately measured' if stage == 'B1' else 'Installed genuine P90 B2'
     fig.text(.06, .035, f'{footer} · three fresh processes per program and role.\n'
              'Inputs prepared and Base caches primed; process startup excluded.\n'
              'Bars time the first checked-library request after compiler loading.',

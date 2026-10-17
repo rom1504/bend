@@ -1,11 +1,14 @@
 # Compiler metrics and the current scoreboard
 
-For a fresh comparison of current candidate04 native B1/B2 against pinned
-upstream, follow the [native comparison protocol](NATIVE_COMPILER_COMPARISON.md).
-It distinguishes process time, request clocks, prepared/live Base workflows and
-Clang construction. The Phase91/92 figures below describe their historical
-sources and configurations. Phase104's current-stage screen contains no fresh
-upstream ratio.
+The [Phase105 native comparison](../../implementation/phase105/README.md) measures
+current candidate04 native B1/B2 against pinned upstream TS/Bun. Across45points
+with equal weight per23original programs, prepared process ratios are0.499×/0.517×;
+live-Base ratios are2.384×/2.231×. Full compiler-source prepared ratios are
+2.602×/2.965×. These are distinct workloads, not one combined score. Follow the
+[protocol](NATIVE_COMPILER_COMPARISON.md) for clocks, preparation and replay.
+Clang construction and generated-program runtime remain separate. The Phase91/92
+figures below describe their historical sources and configurations; Phase104's
+earlier two-source screen had no fresh upstream ratio.
 
 Read the [Phase91 scoreboard](../../implementation/phase91/README.md) for the
 installed JS-hosted compiler and the [Phase92 native-chain scoreboard](../../implementation/phase92/README.md)

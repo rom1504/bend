@@ -29,6 +29,21 @@ Reports authenticate current candidate04 selection rather than old Phase92
 images. This does not benchmark the distinct Phase103 public CLI. A later
 selection requires deliberately updating the source/oracle bindings.
 
+For fast iterations, choose a fresh output directory and reduce the scope:
+
+| Approximate budget on the measured host | Arguments before `--out` | Meaning |
+|---|---|---|
+|20s|`--corpus screen --rounds 1 --modes prepared`|18 fresh requests; quick prepared workflow screen|
+|60s|`--corpus screen --rounds 1`|36 requests; both Base modes|
+|300s|`--corpus broad45 --rounds 1 --modes prepared`|135 timings plus45 upstream acquisitions; wider source coverage|
+|600s|`--corpus self --rounds 1 --modes prepared`|Three full-source emissions; scaling check|
+
+These are planning budgets derived from Phase105 observations, not hard total
+deadlines or statistical guarantees. Per-process resource deadlines still apply.
+One round is exploratory. The broad runner acquires new upstream references;
+it does not silently reuse previous timing samples. Full self can expose costs
+that the small screen misses. No compiler-image rebuild is necessary.
+
 After the broad campaign, validate six diverse emitted products with matched
 Clang O2 builds and complete-output checks:
 

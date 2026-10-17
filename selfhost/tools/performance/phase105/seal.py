@@ -18,7 +18,12 @@ def main():
     p.add_argument('--run', type=Path, action='append', required=True)
     p.add_argument('--out', type=Path, required=True)
     a = p.parse_args(); out = a.out.resolve(); assert not out.exists()
-    paths = set()
+    paths = {Path(__file__).resolve()}
+    expected = {}
+    def bind(item):
+        file = Path(item['file']).resolve()
+        assert expected.setdefault(file, item) == item
+        paths.add(file)
     for run in a.run:
         run = run.resolve(); assert run.is_relative_to(ROOT/'selfhost/build/phase105')
         report = json.loads((run/'report.json').read_text())
@@ -26,12 +31,18 @@ def main():
         paths.update(f for f in run.rglob('*') if f.is_file())
         for case in report.get('cases',[]):
             for key in ['source','original']:
-                if key in case: paths.add(Path(case[key]['file']))
+                if key in case: bind(case[key])
+        for item in report.get('inputs', []) + report.get('methods', []):
+            file = Path(item['file'])
+            if file.is_relative_to(ROOT) and file.suffix in ('.py','.mjs','.bend'):
+                bind(item)
     out.mkdir(parents=True)
     mapping, objects = [], set()
     with zipfile.ZipFile(out/'raw.zip','x',compression=zipfile.ZIP_DEFLATED,compresslevel=6,allowZip64=True) as archive:
         for file in sorted(paths):
             data = file.read_bytes(); key = digest(data)
+            if file in expected:
+                assert (key,len(data)) == (expected[file]['sha256'],expected[file]['bytes']), ('Input changed',file)
             if key not in objects:
                 archive.writestr('objects/'+key,data);objects.add(key)
             mapping.append(dict(file=str(file.relative_to(ROOT)),sha256=key,bytes=len(data),mode=file.stat().st_mode & 0o777))
@@ -45,8 +56,9 @@ def main():
     receipt = dict(complete=True,verified=True,runDirectories=[str(x.resolve().relative_to(ROOT)) for x in a.run],
         archive=dict(file='raw.zip',bytes=(out/'raw.zip').stat().st_size,sha256=digest((out/'raw.zip').read_bytes())),
         manifest=dict(file='manifest.json',sha256=digest((out/'manifest.json').read_bytes())),
-        fileCount=len(mapping),uniqueObjects=len(objects),
-        scope='Closed run receipts, every sample path, full C/binaries, logs and benchmark sources. '
+        method=dict(file=str(Path(__file__).resolve().relative_to(ROOT)),sha256=digest(Path(__file__).read_bytes())),
+        fileCount=len(mapping),uniqueObjects=len(objects),boundSourceAndMethodFiles=len(expected),
+        scope='Closed run receipts, every sample path, full C/binaries, logs, bound benchmark sources and measurement methods. '
               'Identical bytes stored once. Compiler/toolchain/prior-oracle assets remain separately pinned prerequisites.')
     (out/'receipt.json').write_text(json.dumps(receipt,indent=2)+'\n')
     print(json.dumps(receipt))

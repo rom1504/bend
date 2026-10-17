@@ -1,0 +1,197 @@
+{
+  "kind": "phase105-current-native-upstream-compilation",
+  "complete": true,
+  "source": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase102/projection-cost-source01/compiler.bend",
+    "sha256": "63ef222c4c6de73bb54c8e51d3b0a0552979b5791ea98e64d1098051a9cda237",
+    "bytes": 1788947
+  },
+  "stages": {
+    "b1": {
+      "stage": "b1",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase102/projection-cost-source01/compiler.bend",
+        "sha256": "63ef222c4c6de73bb54c8e51d3b0a0552979b5791ea98e64d1098051a9cda237",
+        "bytes": 1788947
+      },
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase102/native-b1-04/compiler",
+        "sha256": "b2aec9e660bed602f29d7666ce6d14724d7e78c7582393d53f25d7d69aea7a66",
+        "bytes": 10697168
+      },
+      "c": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase102/native-b1-04/checked/program.c",
+        "sha256": "1801f11bfb9a50405815e003c9a498520e5d8bda78680d20afe0ddedefb36902",
+        "bytes": 18452096
+      },
+      "build": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase102/native-b1-04/b1.json",
+        "sha256": "6eb088200d5020bf49e7d47a9fe30beaaf135d4c4886f347ab186b39f9e7d1b3",
+        "bytes": 75388
+      },
+      "argvSentinel": false,
+      "publicAdmission": false,
+      "scope": "Private source-bound build; transport compatibility only. Qualification reports are separate.",
+      "producer": "pinned upstream TypeScript C backend; upstream C runtime"
+    },
+    "b2": {
+      "stage": "b2",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase102/projection-cost-source01/compiler.bend",
+        "sha256": "63ef222c4c6de73bb54c8e51d3b0a0552979b5791ea98e64d1098051a9cda237",
+        "bytes": 1788947
+      },
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase102/native-chain04/b2/compiler",
+        "sha256": "85a70429493fe779a08f983d497ceee10dbe8aaec510d43c6ff220aa19ec60f7",
+        "bytes": 21173344
+      },
+      "c": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase102/native-chain04/b1-self/execution/output.1.c",
+        "sha256": "ed60e46ccb281b6aa2a0764bd418f0f01057b060fe7d90ef6160ddf1afe11498",
+        "bytes": 30373059
+      },
+      "build": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase102/native-chain04/b2.json",
+        "sha256": "7d2beea402e6f398e5d9fdd8efe068ce23c997aebf2b6ded47243576310d31ad",
+        "bytes": 105376
+      },
+      "argvSentinel": true,
+      "publicAdmission": false,
+      "scope": "Private source-bound build; transport compatibility only. Qualification reports are separate.",
+      "producer": "candidate native B1 self-emitted C; own C runtime"
+    }
+  },
+  "upstreamRevision": "059266225b77c8ca256ac6b25ee5c21449bab151",
+  "bun": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/bun-1.4.3/bun",
+    "sha256": "7ce7d6b654eddeec20afddf2396317fba6dc19ab52788a27e894e1806bf8f24b",
+    "bytes": 88979072
+  },
+  "rounds": 2,
+  "modes": [
+    "prepared"
+  ],
+  "seed": 10520261017,
+  "scope": "Fresh compiler child process including startup, preparation, C write and exit. Same high-resolution wrapper for all roles. Guard wall separately retains 20ms polling. No Clang or generated-program runtime in compiler clocks. Native prepared mode reuses Base; upstream always source Base. Live mode includes source Base for all. requestMs clocks have different boundaries and are diagnostic only.",
+  "summary": {
+    "prepared": {
+      "cases": {
+        "compiler": {
+          "roles": {
+            "b1": {
+              "processMs": {
+                "median": 126050.87440647185,
+                "min": 125960.62714094296,
+                "max": 126141.12167200074,
+                "samples": 2
+              },
+              "requestMs": {
+                "median": 125514.5,
+                "min": 125422,
+                "max": 125607,
+                "samples": 2
+              },
+              "peakRssKiB": {
+                "median": 1468030.0,
+                "min": 1468020,
+                "max": 1468040,
+                "samples": 2
+              },
+              "userSeconds": {
+                "median": 125.6091745,
+                "min": 125.515576,
+                "max": 125.702773,
+                "samples": 2
+              },
+              "systemSeconds": {
+                "median": 0.4399965,
+                "min": 0.43599499999999997,
+                "max": 0.443998,
+                "samples": 2
+              }
+            },
+            "b2": {
+              "processMs": {
+                "median": 143645.77799662948,
+                "min": 142667.37499414012,
+                "max": 144624.18099911883,
+                "samples": 2
+              },
+              "requestMs": {
+                "median": 143050.0,
+                "min": 142076,
+                "max": 144024,
+                "samples": 2
+              },
+              "peakRssKiB": {
+                "median": 1345960.0,
+                "min": 1342852,
+                "max": 1349068,
+                "samples": 2
+              },
+              "userSeconds": {
+                "median": 143.28191950000001,
+                "min": 142.312992,
+                "max": 144.250847,
+                "samples": 2
+              },
+              "systemSeconds": {
+                "median": 0.3619945,
+                "min": 0.35199199999999997,
+                "max": 0.37199699999999997,
+                "samples": 2
+              }
+            },
+            "upstream": {
+              "processMs": {
+                "median": 48442.139266524464,
+                "min": 48323.23393691331,
+                "max": 48561.044596135616,
+                "samples": 2
+              },
+              "requestMs": {
+                "median": 48287.519987,
+                "min": 48165.569518,
+                "max": 48409.470456,
+                "samples": 2
+              },
+              "peakRssKiB": {
+                "median": 2621994.0,
+                "min": 2567000,
+                "max": 2676988,
+                "samples": 2
+              },
+              "userSeconds": {
+                "median": 46.9706745,
+                "min": 46.90619,
+                "max": 47.035159,
+                "samples": 2
+              },
+              "systemSeconds": {
+                "median": 1.469573,
+                "min": 1.415174,
+                "max": 1.523972,
+                "samples": 2
+              }
+            }
+          },
+          "processRatios": {
+            "b1/upstream": 2.6020914087412788,
+            "b2/upstream": 2.9653062431100086,
+            "b2/b1": 1.139585732133995
+          }
+        }
+      },
+      "equalPointGeometricRatios": {
+        "b1/upstream": 2.6020914087412788,
+        "b2/upstream": 2.965306243110009,
+        "b2/b1": 1.139585732133995
+      }
+    }
+  },
+  "started": 1792214185.878748,
+  "finished": 1792214825.9179204,
+  "targetJobs": 6,
+  "rawReport": "selfhost/build/phase105/self-prepared01/report.json"
+}

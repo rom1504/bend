@@ -4,6 +4,24 @@ This ledger records decisions and links evidence; it does not replace the report
 Read [workflow](README.md) and [current strategy](STEERING.md) before a new investigation.
 User objective: make the Bend compiler written in Bend and its validation loop much faster while preserving correctness. Historical authorization windows are recorded below; current release status and priorities are in [STEERING.md](STEERING.md).
 
+## Phase105 current native compilation measurements — 2026-10-17
+
+[P105-001](phase105/P105-001-current-compilation.md) ·
+[Report](../implementation/phase105/README.md) ·
+[Replay](../selfhost/tools/performance/phase105/README.md).
+Current same-source candidate04 B1/B2 versus pinned TS/Bun: 693 timed requests,
+45 reference acquisitions and 12 selected product executions pass. Broad45 with
+equal weight per 23 original sources: prepared B1/B2 process ratios 0.499×/0.517×;
+live Base 2.384×/2.231×. Full compiler source, two prepared observations: upstream
+48.442s, B1 126.051s, B2 143.646s (2.602×/2.965×). Live single controls remain
+separate. High-resolution child clock removes the old guard's polling bias;
+request clocks have different boundaries and are diagnostic only. Matched O2
+product builds are separate single observations; no fresh runtime-speed claim.
+762 serial guarded jobs, 32.86min runner/28.00min child time, no OOM/deadline/disk
+failure. Raw evidence and methods sealed in a verified 13.24MB capsule. Compiler,
+runtime and selections unchanged. No PR comment. Next attribution should target
+full-source common costs and live Base; fast-backend design remains unimplemented.
+
 ## Phase105 fast native backend proposal — 2026-10-17
 
 [Design](../design/phase105/fast-native-backend.md) ·

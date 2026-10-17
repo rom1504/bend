@@ -1,7 +1,8 @@
 # Comparing native B1, B2 and upstream compilation speed
 
 Protocol, 2026-10-17. This defines a fresh comparison; writing this document did
-not run it. Read the [metric definitions](METRICS.md), the
+not run it. The subsequent [Phase105 measurements](../../implementation/phase105/README.md)
+execute the protocol on current candidate04. Read the [metric definitions](METRICS.md), the
 [candidate04 qualification](../../implementation/phase102/default-promotion.md)
 and the [fast-backend proposal](../../design/phase105/fast-native-backend.md).
 
@@ -63,12 +64,16 @@ service deserves a separate campaign, including Bun JIT warmup and native setup.
 
 ## Small screen, broader check, then self compilation
 
-First adapt the historical
+Use the [current comparison runner](../../selfhost/tools/performance/phase105/README.md),
+which adapts the historical
 [Phase92 comparison](../../selfhost/tools/performance/phase92/comparison/README.md)
-to the current selection and fresh, role-specific output oracles. Its current
+to current selection and role-specific output oracles. The historical Phase92
 support code hardcodes the old `d04ad79c…` source and old images. **Running that
-script unchanged does not benchmark the current compiler.** Phase104's existing
+old script unchanged does not benchmark the current compiler.** Phase104's existing
 screen authenticates current B1/B2, but includes only Small/Lexer and no upstream.
+Phase105 uses the same high-resolution child timer for every role, preserving
+the coarser resource-guard clock separately rather than including its20ms exit
+polling in the primary latency measurement.
 
 Start with six sources: Small, Numeric, Lexer, Map, Functions65 and Unicode.
 Use balanced role order, randomized with a recorded seed, across fresh-process
@@ -105,9 +110,11 @@ timing. Measure generated-program execution independently under the same input
 and worker configuration. Also report the one-time cost of acquiring B1/B2 and
 prepared assets; that is neither ordinary request latency nor program runtime.
 
-The latest [Phase104 screen](../../implementation/phase104/README.md) records
+The earlier [Phase104 screen](../../implementation/phase104/README.md) records
 47/46.5 ms B1/B2 Small requests and 311/303 ms Lexer requests, with distinct
 process clocks. It contains **no current upstream ratio**. Historical Phase92
-ratios must retain their old source/configuration label. The next actionable
-step is the current-stage six-case, three-role, two-preparation-mode screen;
-no compiler rebuild or backend change is necessary to obtain it.
+ratios must retain their old source/configuration label. The
+[Phase105 report](../../implementation/phase105/README.md) supplies the current
+six-case, broad45 and full-source upstream comparisons, without rebuilding or
+changing the compiler. It keeps generated-product correctness and Clang build
+observations separate from compiler-process latency.

@@ -51,9 +51,12 @@ The [fast native backend proposal](design/phase105/fast-native-backend.md)
 records how a shared native IR, a Cranelift development backend and later
 incremental compilation could shorten that loop while retaining C/Clang for
 optimized releases. The [native B1/B2 versus upstream protocol](docs/self_hosted/NATIVE_COMPILER_COMPARISON.md)
-defines comparable timings, preparation modes and a staged benchmark. These
-are proposed experiments; no backend replacement or fresh upstream timing is
-claimed.
+defines comparable timings, preparation modes and a staged benchmark. The
+[completed native compilation comparison](implementation/phase105/README.md)
+measures current B1/B2 against upstream on six sources,45 closed points and the
+full compiler source. Prepared Base changes the result substantially; the report
+keeps both preparation modes and Clang costs explicit. The backend replacement
+remains a proposal.
 
 For the underlying candidate04 algorithms, the repeated six-source
 B2 screen uses 27.6% less request time than Phase98; B1 is 2.6% slower. Separately,

@@ -1,7 +1,7 @@
 # Phase103: a public CLI implemented in Bend
 
-Draft contract and test plan; no implementation or target execution is claimed
-here. The starting compiler is promoted Phase102 candidate04, source
+Contract and test plan; actual results belong in the implementation report.
+The starting compiler is promoted Phase102 candidate04, source
 `63ef222c4c6de73bb54c8e51d3b0a0552979b5791ea98e64d1098051a9cda237`.
 Its [promotion report](../../implementation/phase102/default-promotion.md)
 supersedes the older candidate03 status still in the experiment frontier.
@@ -127,3 +127,38 @@ interpreters on PATH. Record its source/image/package identities, tested platfor
 asset policy and focused results. Update public usage then; preserve candidate04
 and the Python benchmark tools. This is a usability milestone, not a new compiler
 speed result or a proof of all compiler/runtime behavior.
+
+## Resolved implementation choices
+
+Keep the prepared carrier and its original logical Base identity. Read the exact
+Base, carrier, runtime parts and effect bytes beside the executable; embed their
+digests in generated Bend declarations. This preserves the existing cache and
+effect provenance without checking an old physical checkout at runtime.
+
+Use three OS effects (`NativeHost.read`, `NativeHost.path`,
+`NativeHost.publish`). Read returns the same bytes it hashes; publication holds
+the created inode through atomic no-replace linking. All CLI and compilation
+decisions stay in Bend. A small image-only C startup adapter forwards arguments
+past the generic runtime option parser and selects one CPU worker/GPU off. The
+generated-program runtime and emitted user C are unchanged.
+
+The existing compiler rejects new foreign providers and would disable observers
+and constructor packing for a new host effect. Therefore build a temporary
+bridge, with explicit permissions for only the three checked operations and
+their exact pinned C source. This bridge also needs the constructor-packing
+exception; an observer-only change is insufficient. Its C routines consume
+strings and allocate fresh results, never mutate or expose identity of immutable
+Bend roots. Preserve the final compiler's original backend predicates and
+provider allowlist. Do not install the bridge or expose its wider authority as
+a user option.
+
+Pinned upstream builds this bridge B1, then bridge B1 emits public CLI B2, which
+Clang builds with the startup adapter. This establishes native Bend production,
+not public-CLI self-reproduction: the narrow public provider policy still refuses
+the CLI's own OS source. Rebuilding its host entry deliberately uses the pinned
+bridge. Keep that limitation explicit instead of widening ordinary requests.
+
+Keep SHA-256 and POSIX/Linux byte operations in C, with no OpenSSL dependency.
+Retain Python supervision only for development and independent benchmark jobs.
+The public package requires no host-language interpreter. This phase does not
+port the separate JavaScript driver, build automation or proof tooling.

@@ -1,0 +1,114 @@
+{
+  "kind": "phase110-runtime-ir-audit-recipes",
+  "version": 1,
+  "recipes": [
+    {
+      "name": "remaining-is-other",
+      "split": "training",
+      "result": "ab",
+      "remaining": "b",
+      "aliases": [
+        "b"
+      ],
+      "dropOrders": [
+        "result-first",
+        "remaining-first"
+      ],
+      "recipe": "Keep one dynamic String b into two claims; SCon a consumes one as tail, other argument owns the second. Retain third b alias. Assert physical word equality parent.tail==other."
+    },
+    {
+      "name": "retained-in-other",
+      "split": "heldout",
+      "result": [
+        "b",
+        "b"
+      ],
+      "remaining": [],
+      "aliases": [
+        [
+          "b"
+        ],
+        "b"
+      ],
+      "dropOrders": [
+        "result-first",
+        "remaining-first"
+      ],
+      "recipe": "One String b has parent Con head and other Con head edges plus an external b root. Parent is held shared. Rebuild Con k0; exact result [b,b], parent alias [b]."
+    },
+    {
+      "name": "cross-layout-overlap",
+      "split": "heldout",
+      "result": [
+        "b",
+        "b"
+      ],
+      "remaining": 97,
+      "aliases": [
+        "ab",
+        "b"
+      ],
+      "dropOrders": [
+        "result-first",
+        "remaining-first"
+      ],
+      "recipe": "One String b is parent SCon tail and other Con head plus external b root. Shared parent ab. Rebuild Con k1; result [b,b], remaining Char97; preserves parent alias ab."
+    },
+    {
+      "name": "sealed-static-parent",
+      "split": "training",
+      "result": "az",
+      "remaining": "b",
+      "aliases": [
+        "ab"
+      ],
+      "dropOrders": [
+        "result-first",
+        "remaining-first"
+      ],
+      "recipe": "Construct static ab and retain immortal observation. Put it inside dynamic Con to force rfc_seal(static), then take holder. Parent has heap RFC cell count1 but decoded object location below HEAP_OFF; reconstruction must allocate, preserve static ab."
+    },
+    {
+      "name": "last-owner-redirect",
+      "split": "training",
+      "result": "az",
+      "remaining": "b",
+      "aliases": [
+        "b"
+      ],
+      "dropOrders": [
+        "result-first",
+        "remaining-first"
+      ],
+      "recipe": "Keep dynamic ab root then drop one claim, leaving RFCbit1/count1. Other z stays unsealed. Rebuild can free old wrapper and reuse that class0 cell to seal z; all old child loads must precede free/reuse."
+    },
+    {
+      "name": "allocator-empty",
+      "split": "heldout",
+      "result": "az",
+      "remaining": "b",
+      "aliases": [
+        "b"
+      ],
+      "dropOrders": [
+        "result-first",
+        "remaining-first"
+      ],
+      "recipe": "Raw unique ab parent; other z unsealed. Allocate and retain padded q redirects through public APIs until class0 HOT==0 and LEN==0. Rebuild must refill through actual miss helper; release padding after semantic observations."
+    },
+    {
+      "name": "allocator-handoff",
+      "split": "heldout",
+      "result": "a",
+      "remaining": "b",
+      "aliases": [
+        "b"
+      ],
+      "dropOrders": [
+        "result-first",
+        "remaining-first"
+      ],
+      "recipe": "Last-owner RFC ab parent; other SNil immediate, so reconstruction needs no seal allocation. Prepare32768 public padding roots; release until class0 LEN32767. Parent wrapper free must hand off to COLD and leave HOT0/LEN0. Assert exact state before cleanup; then release surviving padding."
+    }
+  ]
+}

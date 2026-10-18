@@ -1,0 +1,58 @@
+{
+  "kind": "phase110-frozen-physical-graph-audit",
+  "version": 1,
+  "frozenAtUtc": "2026-10-18T19:20:34.504233+00:00",
+  "targetsRunBeforeFreeze": false,
+  "independentOfCandidateOutputs": true,
+  "families": 6,
+  "concreteGraphs": 7,
+  "observations": 14,
+  "trainingObservations": 6,
+  "heldoutObservations": 8,
+  "recipes": {
+    "file": "selfhost/tools/performance/phase110/controls/audit/recipes.json",
+    "bytes": 3482,
+    "sha256": "e00fa66487c47e806fb2e93b3e2821da3ba1fbda476d924578ff2b4f15c2509d"
+  },
+  "expected": {
+    "file": "selfhost/tools/performance/phase110/controls/audit/expected.jsonl",
+    "bytes": 1949,
+    "sha256": "5cc257528701cb2bcb6c7fbfc92745c1150d966d89a7c85f73d8679cd04d4dd4"
+  },
+  "harness": {
+    "file": "selfhost/tools/performance/phase110/controls/audit/operator-controls.c",
+    "bytes": 7832,
+    "sha256": "e08432d31b5f72e79a2c819c3dfe757459e6950179de6ce881239032eecdf750"
+  },
+  "sourceInputs": [
+    {
+      "file": "selfhost/tools/performance/phase110/runtime-ir/lower.bend",
+      "bytes": 7933,
+      "sha256": "2bb23bf10ad222d4ec925fbcdbf77229de18bb1593bcb48118bc567b2c9663d2"
+    },
+    {
+      "file": "selfhost/tools/performance/phase110/runtime-ir/adapter.inc.c",
+      "bytes": 1411,
+      "sha256": "bfe89d3dac8bc4151bd8d9d0758bbbfbe053fce4d83466067f82eee190baee83"
+    },
+    {
+      "file": "selfhost/tools/performance/phase110/laws/model.bend",
+      "bytes": 3449,
+      "sha256": "edbbd75ff49080c4331833f152c7b06bcba85b12e858dd1dab3be04be3546876"
+    },
+    {
+      "file": "selfhost/tools/performance/phase110/laws/reference.bend",
+      "bytes": 1786,
+      "sha256": "bf52830d6ca5e7f548e6601d0647dfb79549d5350251448f239b10e97250fec4"
+    }
+  ],
+  "oracle": "Direct finite graph-value semantics stated before execution. All values are complete short strings/lists/scalars, not digests; both result-drop orders preserve independently owned survivors.",
+  "scope": "Fresh supplemental controls for physical graph/refcount/allocator correspondence. Existing ABI-search heldouts are now reused regressions for new candidates, not fresh holds.",
+  "limits": [
+    "First/second child same physical nontrivial object is not well-typed for fixed List<String>/String catalogue, so no malformed pseudo-counterexample is admitted.",
+    "Legal retained/other and remaining/other overlap is covered through shared graph edges.",
+    "Runtime-IR probe shares classifier/rebuild template with source workers; it is an operator correspondence control, not source-end-to-end proof.",
+    "Allocator cases use read-only private allocator inspection and public production ownership operations for preparation. No heap/free-list fields are fabricated.",
+    "No target compiled or run by coverage agent."
+  ]
+}

@@ -1,0 +1,412 @@
+{
+  "kind": "phase110-frozen-call-graphs",
+  "version": 1,
+  "cases": [
+    {
+      "name": "append-both-empty",
+      "kind": "list",
+      "worker": "nx_list_append",
+      "inputStrings": [],
+      "accStrings": [],
+      "inputPatternRepeats": 1,
+      "accPatternRepeats": 1,
+      "accFromInputTailOffset": null,
+      "staticInput": false,
+      "aliases": [],
+      "split": "training",
+      "timing": false,
+      "dropOrder": [
+        "result",
+        "aliases"
+      ],
+      "requireReleased": true
+    },
+    {
+      "name": "append-empty-left",
+      "kind": "list",
+      "worker": "nx_list_append",
+      "inputStrings": [],
+      "accStrings": [
+        "tail",
+        "🙂"
+      ],
+      "inputPatternRepeats": 1,
+      "accPatternRepeats": 1,
+      "accFromInputTailOffset": null,
+      "staticInput": false,
+      "aliases": [
+        {
+          "label": "held-acc-root-0",
+          "kind": "list",
+          "from": "acc-root",
+          "offset": 0
+        }
+      ],
+      "split": "training",
+      "timing": false,
+      "dropOrder": [
+        "result",
+        "aliases"
+      ],
+      "requireReleased": true
+    },
+    {
+      "name": "append-empty-right",
+      "kind": "list",
+      "worker": "nx_list_append",
+      "inputStrings": [
+        "a",
+        "bc"
+      ],
+      "accStrings": [],
+      "inputPatternRepeats": 1,
+      "accPatternRepeats": 1,
+      "accFromInputTailOffset": null,
+      "staticInput": false,
+      "aliases": [
+        {
+          "label": "held-root-0",
+          "kind": "list",
+          "from": "root",
+          "offset": 0
+        }
+      ],
+      "split": "training",
+      "timing": false,
+      "dropOrder": [
+        "result",
+        "aliases"
+      ],
+      "requireReleased": true
+    },
+    {
+      "name": "append-distinct-shared",
+      "kind": "list",
+      "worker": "nx_list_append",
+      "inputStrings": [
+        "a",
+        "bc"
+      ],
+      "accStrings": [
+        "suffix"
+      ],
+      "inputPatternRepeats": 1,
+      "accPatternRepeats": 1,
+      "accFromInputTailOffset": null,
+      "staticInput": false,
+      "aliases": [
+        {
+          "label": "held-root-0",
+          "kind": "list",
+          "from": "root",
+          "offset": 0
+        },
+        {
+          "label": "held-acc-root-0",
+          "kind": "list",
+          "from": "acc-root",
+          "offset": 0
+        }
+      ],
+      "split": "training",
+      "timing": false,
+      "dropOrder": [
+        "result",
+        "aliases"
+      ],
+      "requireReleased": true
+    },
+    {
+      "name": "append-same-root",
+      "kind": "list",
+      "worker": "nx_list_append",
+      "inputStrings": [
+        "a",
+        "bc",
+        "λ🙂"
+      ],
+      "accStrings": [],
+      "inputPatternRepeats": 1,
+      "accPatternRepeats": 1,
+      "accFromInputTailOffset": 0,
+      "staticInput": false,
+      "aliases": [
+        {
+          "label": "held-root-0",
+          "kind": "list",
+          "from": "root",
+          "offset": 0
+        },
+        {
+          "label": "held-acc-root-0",
+          "kind": "list",
+          "from": "acc-root",
+          "offset": 0
+        }
+      ],
+      "split": "training",
+      "timing": false,
+      "dropOrder": [
+        "result",
+        "aliases"
+      ],
+      "requireReleased": true
+    },
+    {
+      "name": "append-shared-tail",
+      "kind": "list",
+      "worker": "nx_list_append",
+      "inputStrings": [
+        "a",
+        "bc",
+        "λ🙂"
+      ],
+      "accStrings": [],
+      "inputPatternRepeats": 1,
+      "accPatternRepeats": 1,
+      "accFromInputTailOffset": 1,
+      "staticInput": false,
+      "aliases": [
+        {
+          "label": "held-tail-1",
+          "kind": "list",
+          "from": "tail",
+          "offset": 1
+        },
+        {
+          "label": "held-acc-root-0",
+          "kind": "list",
+          "from": "acc-root",
+          "offset": 0
+        }
+      ],
+      "split": "training",
+      "timing": false,
+      "dropOrder": [
+        "result",
+        "aliases"
+      ],
+      "requireReleased": true
+    },
+    {
+      "name": "append-unicode-suffix",
+      "kind": "list",
+      "worker": "nx_list_append",
+      "inputStrings": [
+        "",
+        "\u0000",
+        "é",
+        "􏿿",
+        "🙂"
+      ],
+      "accStrings": [],
+      "inputPatternRepeats": 1,
+      "accPatternRepeats": 1,
+      "accFromInputTailOffset": 2,
+      "staticInput": false,
+      "aliases": [
+        {
+          "label": "held-head-4",
+          "kind": "string",
+          "from": "head",
+          "offset": 4
+        },
+        {
+          "label": "held-acc-head-0",
+          "kind": "string",
+          "from": "acc-head",
+          "offset": 0
+        },
+        {
+          "label": "held-acc-root-0",
+          "kind": "list",
+          "from": "acc-root",
+          "offset": 0
+        }
+      ],
+      "split": "heldout",
+      "timing": false,
+      "dropOrder": [
+        "result",
+        "aliases"
+      ],
+      "requireReleased": true
+    },
+    {
+      "name": "append-static-suffix",
+      "kind": "list",
+      "worker": "nx_list_append",
+      "inputStrings": [
+        "a",
+        "bc",
+        "🙂"
+      ],
+      "accStrings": [],
+      "inputPatternRepeats": 1,
+      "accPatternRepeats": 1,
+      "accFromInputTailOffset": 1,
+      "staticInput": true,
+      "aliases": [
+        {
+          "label": "held-root-0",
+          "kind": "list",
+          "from": "root",
+          "offset": 0
+        },
+        {
+          "label": "held-acc-root-0",
+          "kind": "list",
+          "from": "acc-root",
+          "offset": 0
+        }
+      ],
+      "split": "heldout",
+      "timing": false,
+      "dropOrder": [
+        "result",
+        "aliases"
+      ],
+      "requireReleased": true
+    },
+    {
+      "name": "append-empty-shared-tail",
+      "kind": "list",
+      "worker": "nx_list_append",
+      "inputStrings": [
+        "a",
+        "bc"
+      ],
+      "accStrings": [],
+      "inputPatternRepeats": 1,
+      "accPatternRepeats": 1,
+      "accFromInputTailOffset": 2,
+      "staticInput": false,
+      "aliases": [
+        {
+          "label": "held-acc-root-0",
+          "kind": "list",
+          "from": "acc-root",
+          "offset": 0
+        }
+      ],
+      "split": "heldout",
+      "timing": false,
+      "dropOrder": [
+        "result",
+        "aliases"
+      ],
+      "requireReleased": true
+    },
+    {
+      "name": "append-deep-same-root",
+      "kind": "list",
+      "worker": "nx_list_append",
+      "inputStrings": [
+        "a",
+        "bc",
+        "",
+        "λ🙂"
+      ],
+      "accStrings": [],
+      "inputPatternRepeats": 16384,
+      "accPatternRepeats": 1,
+      "accFromInputTailOffset": 0,
+      "staticInput": false,
+      "aliases": [
+        {
+          "label": "held-root-0",
+          "kind": "list",
+          "from": "root",
+          "offset": 0
+        },
+        {
+          "label": "held-acc-root-0",
+          "kind": "list",
+          "from": "acc-root",
+          "offset": 0
+        }
+      ],
+      "split": "heldout",
+      "timing": true,
+      "dropOrder": [
+        "result",
+        "aliases"
+      ],
+      "requireReleased": true
+    },
+    {
+      "name": "append-odd-shared-tail",
+      "kind": "list",
+      "worker": "nx_list_append",
+      "inputStrings": [
+        "🙂"
+      ],
+      "accStrings": [],
+      "inputPatternRepeats": 65537,
+      "accPatternRepeats": 1,
+      "accFromInputTailOffset": 32769,
+      "staticInput": false,
+      "aliases": [
+        {
+          "label": "held-tail-32769",
+          "kind": "list",
+          "from": "tail",
+          "offset": 32769
+        },
+        {
+          "label": "held-acc-root-0",
+          "kind": "list",
+          "from": "acc-root",
+          "offset": 0
+        }
+      ],
+      "split": "heldout",
+      "timing": true,
+      "dropOrder": [
+        "result",
+        "aliases"
+      ],
+      "requireReleased": true
+    },
+    {
+      "name": "append-deep-distinct",
+      "kind": "list",
+      "worker": "nx_list_append",
+      "inputStrings": [
+        "a",
+        "bc",
+        "",
+        "λ🙂"
+      ],
+      "accStrings": [
+        "suffix",
+        "Ω"
+      ],
+      "inputPatternRepeats": 16384,
+      "accPatternRepeats": 16384,
+      "accFromInputTailOffset": null,
+      "staticInput": false,
+      "aliases": [
+        {
+          "label": "held-acc-root-0",
+          "kind": "list",
+          "from": "acc-root",
+          "offset": 0
+        },
+        {
+          "label": "held-head-0",
+          "kind": "string",
+          "from": "head",
+          "offset": 0
+        }
+      ],
+      "split": "heldout",
+      "timing": true,
+      "dropOrder": [
+        "result",
+        "aliases"
+      ],
+      "requireReleased": true
+    }
+  ]
+}

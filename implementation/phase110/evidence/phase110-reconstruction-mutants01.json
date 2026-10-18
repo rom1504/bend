@@ -1,0 +1,145 @@
+{
+  "schema": "phase110-ownership-law-mutation-check-v1",
+  "complete": true,
+  "method": {
+    "file": "selfhost/tools/performance/phase110/laws/check-mutations.mjs",
+    "bytes": 4455,
+    "sha256": "245d2c6676a5543d98ca0ed0d6a1bdd9ebe585f1aea5a2da416c65bf0a0031d8"
+  },
+  "prepared": {
+    "file": "selfhost/build/phase110/reconstruction-source03/manifest.json",
+    "bytes": 10780,
+    "sha256": "3880845ae1c3287ce980b6e5c6af1e8f7ca4cdb3082b02ef7fdb97f908ec117d"
+  },
+  "positive": {
+    "file": "selfhost/build/phase98/phase110-reconstruction-check02/report.json",
+    "bytes": 15961,
+    "sha256": "6ede320fbc256016eddf8d9bedacac6ada6d89bfbc310d5c7c7c395349b91cf6"
+  },
+  "rows": [
+    {
+      "name": "wrong-kept-field-helper",
+      "expectedExit": 0,
+      "actualExit": 0,
+      "law": null,
+      "report": {
+        "file": "selfhost/build/phase98/phase110-reconstruction-mutants01/wrong-kept-field-helper/report.json",
+        "bytes": 4746,
+        "sha256": "3612a132d31f170f4b3e214acd16125dc9af48a44f59f6cc58a44d05b40abeb6"
+      },
+      "wallSeconds": 0.41149791004136205
+    },
+    {
+      "name": "wrong-kept-field-law",
+      "expectedExit": 1,
+      "actualExit": 1,
+      "law": "select_second_complete",
+      "report": {
+        "file": "selfhost/build/phase98/phase110-reconstruction-mutants01/wrong-kept-field-law/report.json",
+        "bytes": 9298,
+        "sha256": "24b6c3dd4b7cb4d4d852eaad9c75dc68163c9b69477bef0f48baa40eb6728b9b"
+      },
+      "wallSeconds": 0.4725248720496893
+    },
+    {
+      "name": "wrong-kept-index-helper",
+      "expectedExit": 0,
+      "actualExit": 0,
+      "law": null,
+      "report": {
+        "file": "selfhost/build/phase98/phase110-reconstruction-mutants01/wrong-kept-index-helper/report.json",
+        "bytes": 4743,
+        "sha256": "3f50dd98d1011b3509879b28e2124f6a4287a39bcfb65bd34f6c038b0cefd9d9"
+      },
+      "wallSeconds": 0.4525937088765204
+    },
+    {
+      "name": "wrong-kept-index-law",
+      "expectedExit": 1,
+      "actualExit": 1,
+      "law": "select_first_complete",
+      "report": {
+        "file": "selfhost/build/phase98/phase110-reconstruction-mutants01/wrong-kept-index-law/report.json",
+        "bytes": 9290,
+        "sha256": "8a8e48a9ae51b6cd20ff7657aecbacf629a68451bd32dc8b6eb95b7ef528ca10"
+      },
+      "wallSeconds": 0.513305630069226
+    },
+    {
+      "name": "reuse-static-spare-helper",
+      "expectedExit": 0,
+      "actualExit": 0,
+      "law": null,
+      "report": {
+        "file": "selfhost/build/phase98/phase110-reconstruction-mutants01/reuse-static-spare-helper/report.json",
+        "bytes": 4762,
+        "sha256": "b6c5c845fb9c23d4fb326c278282b41891e27b7d362b1c0558e7e1417159c4c2"
+      },
+      "wallSeconds": 0.4933320921845734
+    },
+    {
+      "name": "reuse-static-spare-law",
+      "expectedExit": 1,
+      "actualExit": 1,
+      "law": "allocate_static",
+      "report": {
+        "file": "selfhost/build/phase98/phase110-reconstruction-mutants01/reuse-static-spare-law/report.json",
+        "bytes": 9124,
+        "sha256": "c50b9ad6d95242f3f6a83957050cb358826b932d2ba46b6d9026ef8eb8100ceb"
+      },
+      "wallSeconds": 0.4932442009449005
+    },
+    {
+      "name": "reuse-shared-parent-helper",
+      "expectedExit": 0,
+      "actualExit": 0,
+      "law": null,
+      "report": {
+        "file": "selfhost/build/phase98/phase110-reconstruction-mutants01/reuse-shared-parent-helper/report.json",
+        "bytes": 4773,
+        "sha256": "6c2f2394f2d32811c1283a20440a33a1a0ccbb47d4e6a6cbfda41cef3f45c63f"
+      },
+      "wallSeconds": 0.49364172108471394
+    },
+    {
+      "name": "reuse-shared-parent-law",
+      "expectedExit": 1,
+      "actualExit": 1,
+      "law": "allocate_shared_dynamic",
+      "report": {
+        "file": "selfhost/build/phase98/phase110-reconstruction-mutants01/reuse-shared-parent-law/report.json",
+        "bytes": 9200,
+        "sha256": "f9735f7de0201b860375427b29b6a4902f3b215d501e3cbd4f63b27716aa6c02"
+      },
+      "wallSeconds": 0.5137320549692959
+    },
+    {
+      "name": "missing-shared-claim-helper",
+      "expectedExit": 0,
+      "actualExit": 0,
+      "law": null,
+      "report": {
+        "file": "selfhost/build/phase98/phase110-reconstruction-mutants01/missing-shared-claim-helper/report.json",
+        "bytes": 5761,
+        "sha256": "224b9fd23abf93cb51e71d3e7e27e7d50bda5512af92be6c8469f66284c6f441"
+      },
+      "wallSeconds": 0.49350390187464654
+    },
+    {
+      "name": "missing-shared-claim-law",
+      "expectedExit": 1,
+      "actualExit": 1,
+      "law": "shared_transfer_claims",
+      "report": {
+        "file": "selfhost/build/phase98/phase110-reconstruction-mutants01/missing-shared-claim-law/report.json",
+        "bytes": 9489,
+        "sha256": "629c9521ad4403805133b1b395ea9d3437c03db69a20dd4cdd7352332f6d104d"
+      },
+      "wallSeconds": 0.49299166491255164
+    }
+  ],
+  "guardedSeconds": 4.83036775700748,
+  "independentKernelNegativeChecks": false,
+  "inputsUnchanged": true,
+  "interpretation": "All changed law-free helpers/models safely admitted; unchanged source laws reject their semantic faults. Positive package independently checked separately. These are source-check negative results, not independent-kernel rejection of the mutants."
+}

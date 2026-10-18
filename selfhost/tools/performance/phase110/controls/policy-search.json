@@ -1,0 +1,190 @@
+{
+  "kind": "phase110-frozen-bounded-policy-search",
+  "version": 1,
+  "frozenAtUtc": "2026-10-18T19:08:26.958594+00:00",
+  "candidateTimingsBeforeFreeze": false,
+  "candidateSelectionBeforeFreeze": false,
+  "controlsManifestSha256": "78133f8d2417b047c4d93ec1392dd196c06a1acbf386cf8799f3701087fb939a",
+  "candidateLimit": 12,
+  "candidates": [
+    {
+      "id": "fused-qbe",
+      "policy": "fused",
+      "backend": "qbe",
+      "availability": "proposed; unavailable/refused choices must remain recorded"
+    },
+    {
+      "id": "fused-clang-O2",
+      "policy": "fused",
+      "backend": "clang-O2",
+      "availability": "proposed; unavailable/refused choices must remain recorded"
+    },
+    {
+      "id": "fused-gcc-O2",
+      "policy": "fused",
+      "backend": "gcc-O2",
+      "availability": "proposed; unavailable/refused choices must remain recorded"
+    },
+    {
+      "id": "tagged-qbe",
+      "policy": "tagged",
+      "backend": "qbe",
+      "availability": "proposed; unavailable/refused choices must remain recorded"
+    },
+    {
+      "id": "tagged-clang-O2",
+      "policy": "tagged",
+      "backend": "clang-O2",
+      "availability": "proposed; unavailable/refused choices must remain recorded"
+    },
+    {
+      "id": "tagged-gcc-O2",
+      "policy": "tagged",
+      "backend": "gcc-O2",
+      "availability": "proposed; unavailable/refused choices must remain recorded"
+    },
+    {
+      "id": "specialized-qbe",
+      "policy": "specialized",
+      "backend": "qbe",
+      "availability": "proposed; unavailable/refused choices must remain recorded"
+    },
+    {
+      "id": "specialized-clang-O2",
+      "policy": "specialized",
+      "backend": "clang-O2",
+      "availability": "proposed; unavailable/refused choices must remain recorded"
+    },
+    {
+      "id": "specialized-gcc-O2",
+      "policy": "specialized",
+      "backend": "gcc-O2",
+      "availability": "proposed; unavailable/refused choices must remain recorded"
+    },
+    {
+      "id": "pair-qbe",
+      "policy": "pair",
+      "backend": "qbe",
+      "availability": "proposed; unavailable/refused choices must remain recorded"
+    },
+    {
+      "id": "pair-clang-O2",
+      "policy": "pair",
+      "backend": "clang-O2",
+      "availability": "proposed; unavailable/refused choices must remain recorded"
+    },
+    {
+      "id": "pair-gcc-O2",
+      "policy": "pair",
+      "backend": "gcc-O2",
+      "availability": "proposed; unavailable/refused choices must remain recorded"
+    }
+  ],
+  "baseline": {
+    "policy": "fused",
+    "backend": "qbe",
+    "definition": "Unchanged Phase109 fused checked-source owned graph and ABI; same cached GCC runtime object and exact Phase110 graphs."
+  },
+  "objective": {
+    "primary": "Geometric mean of per-workload median worker-seconds candidate / unchanged fused-QBE baseline. Every candidate uses the SAME baseline denominator.",
+    "secondary": "Select/report best eligible QBE candidate separately as primary no-Clang experiment; report fastest eligible absolute 12-choice candidate separately.",
+    "attribution": "Also report ratios to unchanged fused of the same worker backend; do not use differing denominators to rank backend winners.",
+    "aggregation": "Equal weight per predeclared timed training workload. Median of alternating paired rounds; minimum three rounds, target five.",
+    "tie": "Retain incumbent when improvement <3% or alternating paired results fail to show consistent direction. Use smaller code/build cost only as explanatory tie data, not to overturn uncertainty.",
+    "heldout": "Freeze training winner first; evaluate heldout once, with no policy/code/data adaptation. Retain incumbent if any heldout correctness failure or heldout geometric-mean worker regression >3%; report any individual >10% regression."
+  },
+  "trainingWorkloads": [
+    "list-deep-unique",
+    "list-deep-shared-root",
+    "string-deep-unique",
+    "list-source-lexer-unique",
+    "string-source-lexer-unique",
+    "list-source-lexer-shared",
+    "string-source-lexer-shared"
+  ],
+  "heldoutWorkloads": [
+    "list-deep-shared-tail",
+    "list-odd-depth-65537",
+    "string-deep-shared-root",
+    "string-deep-shared-tail",
+    "string-odd-depth-65537",
+    "list-long-head-shared",
+    "list-source-native-text-unique",
+    "string-source-native-text-unique",
+    "list-source-native-text-shared",
+    "string-source-native-text-shared"
+  ],
+  "semanticTraining": [
+    "list-empty-acc",
+    "list-two-root-aliases",
+    "list-deep-unique",
+    "list-deep-shared-root",
+    "string-empty-acc",
+    "string-two-root-aliases",
+    "string-deep-unique",
+    "list-source-lexer-unique",
+    "string-source-lexer-unique",
+    "list-source-lexer-shared",
+    "string-source-lexer-shared"
+  ],
+  "semanticHeldout": [
+    "list-singleton-unicode",
+    "list-scalar-boundaries",
+    "list-tail-aliases",
+    "list-static-aliases",
+    "list-deep-shared-tail",
+    "list-odd-depth-65537",
+    "string-singleton-unicode",
+    "string-scalar-boundaries",
+    "string-tail-aliases",
+    "string-static-aliases",
+    "string-deep-shared-root",
+    "string-deep-shared-tail",
+    "string-odd-depth-65537",
+    "list-long-head-shared",
+    "list-source-native-text-unique",
+    "string-source-native-text-unique",
+    "list-source-native-text-shared",
+    "string-source-native-text-shared"
+  ],
+  "sourceGeneralization": {
+    "training": [
+      "nt_reverse<List<String>>",
+      "String.reverse.go"
+    ],
+    "heldout": [
+      "List.tail<&2,String>",
+      "List.last.go<&2,String>"
+    ],
+    "pending": [
+      "nt_append<List<String>>",
+      "String.drop"
+    ]
+  },
+  "limits": {
+    "cpu": "3, root exclusively executes targets",
+    "targetConcurrency": 1,
+    "perTargetSeconds": 60,
+    "searchWallSeconds": 900,
+    "maximumRounds": 5,
+    "defaultRepetitions": 10,
+    "searchChoices": 12,
+    "adaptation": "No new candidate or post-hoc dataset weighting inside this search. New ideas require a newly timestamped search with explicit reused-heldout status."
+  },
+  "qualification": [
+    "Authenticate source/runtime/ABI/tool identities.",
+    "Check all frozen training observations and complete ownership release before performance ranking.",
+    "Old Phase109 regressions remain mandatory separate controls.",
+    "Heldout results must never train or repair the already selected candidate; preserve failures.",
+    "Unsupported candidate profiles stay in search record as unavailable, not omitted."
+  ],
+  "costAccounting": [
+    "Source preparation and checked lowering.",
+    "One-time frontend/runtime acquisition, separately from cache hits.",
+    "Worker object build, link, validation, timing and total search wall/CPU.",
+    "Worker-only time excludes graph construction, independent observation and release; report those costs separately when available.",
+    "Break-even repetitions = incremental build/validation/search cost divided by saved worker seconds for explicitly declared workload; undefined when savings <=0.",
+    "Code size and peak bump words; allocator release for every repetition.",
+    "Policy search is not recursive acceleration without a frozen-builder/updating-builder equal-budget comparison."
+  ]
+}

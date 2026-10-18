@@ -1,0 +1,49 @@
+{
+  "kind": "phase110-ordinary-call-extension-controls",
+  "version": 1,
+  "frozenAtUtc": "2026-10-18T19:10:55.482443+00:00",
+  "ordinaryCallCandidatesRunBeforeFreeze": false,
+  "source": {
+    "file": "selfhost/tools/performance/phase110/controls/calls/nt-append.bend",
+    "bytes": 1186,
+    "sha256": "253899d393d8189a409a2cbb0655d7363eef729783cdb45249940f32431db603"
+  },
+  "originalSource": {
+    "file": "selfhost/src/back/native/text.bend",
+    "bytes": 3305,
+    "sha256": "acc430c939a7dd6b404ba7a13f762019b717a62313ae3066234f78bb62df04c0"
+  },
+  "exactDeclarationDigests": {
+    "nt_reverse": "8585a68a0ad68c564e2cd44a426c0da181bd18b2584b5ea209d7598176ced179",
+    "nt_append": "51819a552ef16eaab43d37927e3f38ca45df211388ac9f0c11fa5b177bf1be40"
+  },
+  "sourceExpectedStdout": "\ntail\na|bc\n|\u03bb\ud83d\ude42|\u03a9\na|b|tail/a|b/tail\n",
+  "cases": {
+    "file": "selfhost/tools/performance/phase110/controls/calls/cases.json",
+    "bytes": 8815,
+    "sha256": "6636ef1322f92ad2fcc249590f6878dfa2719be8805f119bd8f44d56d219b21a",
+    "count": 12
+  },
+  "expected": {
+    "file": "selfhost/tools/performance/phase110/controls/calls/expected.jsonl",
+    "bytes": 1942,
+    "sha256": "374a1fa5704d748202f4bb229f873cfc96ab6b2932c6488871eff821ab1555f3"
+  },
+  "reference": {
+    "file": "selfhost/tools/performance/phase110/controls/calls/reference.py",
+    "bytes": 1328,
+    "sha256": "82328f29b86e37610912782242f137bfefee2dff4221d55100f12122ef2ee2ea"
+  },
+  "observationCode": {
+    "file": "selfhost/tools/performance/phase110/controls/reference.py",
+    "bytes": 2607,
+    "sha256": "92215d0970055470da2fd56aaaf8dc865fb75e91bcc55a1cbb811e277b625e3d"
+  },
+  "semantics": "Append xs ++ ys, including graphs in which ys is xs or a suffix of xs with independent ownership claims. Independent aliases remain unchanged after dropping result.",
+  "scope": "Six fresh training and six fresh held-out append-only graphs. Ordinary-call extension only; does not reset heldout status of earlier ABI/policy corpus.",
+  "limits": [
+    "Source entry is prepared, not checked or executed.",
+    "No compiler algorithm appears in graph harness or Python expected outputs.",
+    "Nat, tree descriptors, general lets and dynamic/higher-order calls remain outside this frozen source slice."
+  ]
+}

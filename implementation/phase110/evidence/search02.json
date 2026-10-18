@@ -1,0 +1,4325 @@
+{
+  "kind": "phase110-bounded-worker-policy-search",
+  "complete": true,
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase110/search.py",
+      "sha256": "a24796e7601466538de21f88a3f707f586309228ffa84cb82d2b16105d7bbd5b",
+      "bytes": 5651
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/report.json",
+      "sha256": "91c97b2fa162612117710efd601df5b21e2bda3862ab8e06eab378b2fe46117e",
+      "bytes": 52349
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase110/controls/policy-search.json",
+      "sha256": "8062d698a39283b2b43f73041c1cf215f99c8c33eb077ebc3be0cc86b67067a1",
+      "bytes": 7192
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/train01/expected.jsonl",
+      "sha256": "ae232ca11189b0d6fbb1ab37d32d3b934bcb5c86698a21ae2eb2d46066457352",
+      "bytes": 1380
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/fused-qbe",
+      "sha256": "fd95bb24c321c6d30d64a21400648e87b32b551830640452f43c160c03539242",
+      "bytes": 302168
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/fused-clang",
+      "sha256": "1c751d0f909e3dcf8376c17ab967e87ef2e4576e0bf3d3e9a832128ff8a98fbf",
+      "bytes": 302304
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/specialized-qbe",
+      "sha256": "a6e8ff5e5d88a6174b429b26974a32f4b24c4274f02e4dea0ad55c6e30ed9f3c",
+      "bytes": 302168
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/specialized-clang",
+      "sha256": "d9977ad56f6fecddbceac02a18819826b5e16c8cdd86220dde3136985340eedf",
+      "bytes": 302304
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/pair-qbe",
+      "sha256": "f6ef8c0d2be833869321a00a370ef5e8a17f28bc0006470b5a266f62e8318124",
+      "bytes": 302168
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/pair-clang",
+      "sha256": "c95415f71c347abe06ed96820b58ec2d494a11f875795f4b98bddd73e5024f37",
+      "bytes": 302304
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/runtime-ir-single-qbe",
+      "sha256": "d0af185aab5b3a144a78666a29d696db75eba92585a5bdd44d1328414e42eed8",
+      "bytes": 306264
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/runtime-ir-single-clang",
+      "sha256": "755734e558b1070a99a7067ed87c281454a97ec989e0ce344d983fda37befe04",
+      "bytes": 306400
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/runtime-ir-atomic-qbe",
+      "sha256": "3ff40750125e2e67051a5208c5eee01b725d9572a69adf11bcef3b4d2280a0e9",
+      "bytes": 306264
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/runtime-ir-atomic-clang",
+      "sha256": "1f0c07fc3a83b8532dec03c91bc029cce849ec082836c06cbd5bd223edfd70fb",
+      "bytes": 306400
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase110/controls/audit/fast-loop-v2.json",
+      "sha256": "a96cf01b9313de2fd2504f07a8ffc15cecb6f221ffe88b256b6806c70e154f1b",
+      "bytes": 4921
+    }
+  ],
+  "rounds": 3,
+  "repetitions": 10,
+  "repetitionsPerCase": {
+    "list-deep-unique": 6,
+    "list-deep-shared-root": 3,
+    "string-deep-unique": 6,
+    "list-source-lexer-unique": 1,
+    "string-source-lexer-unique": 7,
+    "list-source-lexer-shared": 1,
+    "string-source-lexer-shared": 3
+  },
+  "cases": [
+    "list-deep-unique",
+    "list-deep-shared-root",
+    "string-deep-unique",
+    "list-source-lexer-unique",
+    "string-source-lexer-unique",
+    "list-source-lexer-shared",
+    "string-source-lexer-shared"
+  ],
+  "reference": "fused-qbe",
+  "training": true,
+  "selectionFrozen": true,
+  "rows": [
+    {
+      "name": "fused-qbe",
+      "case": "list-deep-unique",
+      "round": 0,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/fused-qbe",
+        "list-deep-unique",
+        "6"
+      ],
+      "status": 0,
+      "processSeconds": 0.10498568881303072,
+      "measurement": {
+        "name": "list-deep-unique",
+        "repetitions": 6,
+        "workerSeconds": 0.00588118,
+        "maxBumpWords": 450560
+      },
+      "workerSeconds": 0.00588118
+    },
+    {
+      "name": "fused-clang",
+      "case": "list-deep-unique",
+      "round": 0,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/fused-clang",
+        "list-deep-unique",
+        "6"
+      ],
+      "status": 0,
+      "processSeconds": 0.10366169502958655,
+      "measurement": {
+        "name": "list-deep-unique",
+        "repetitions": 6,
+        "workerSeconds": 0.00548841,
+        "maxBumpWords": 450560
+      },
+      "workerSeconds": 0.00548841
+    },
+    {
+      "name": "specialized-qbe",
+      "case": "list-deep-unique",
+      "round": 0,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/specialized-qbe",
+        "list-deep-unique",
+        "6"
+      ],
+      "status": 0,
+      "processSeconds": 0.10254153609275818,
+      "measurement": {
+        "name": "list-deep-unique",
+        "repetitions": 6,
+        "workerSeconds": 0.005503802,
+        "maxBumpWords": 450560
+      },
+      "workerSeconds": 0.005503802
+    },
+    {
+      "name": "specialized-clang",
+      "case": "list-deep-unique",
+      "round": 0,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/specialized-clang",
+        "list-deep-unique",
+        "6"
+      ],
+      "status": 0,
+      "processSeconds": 0.10118719306774437,
+      "measurement": {
+        "name": "list-deep-unique",
+        "repetitions": 6,
+        "workerSeconds": 0.005364523,
+        "maxBumpWords": 450560
+      },
+      "workerSeconds": 0.005364523
+    },
+    {
+      "name": "pair-qbe",
+      "case": "list-deep-unique",
+      "round": 0,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/pair-qbe",
+        "list-deep-unique",
+        "6"
+      ],
+      "status": 0,
+      "processSeconds": 0.1022235001437366,
+      "measurement": {
+        "name": "list-deep-unique",
+        "repetitions": 6,
+        "workerSeconds": 0.005162673,
+        "maxBumpWords": 450560
+      },
+      "workerSeconds": 0.005162673
+    },
+    {
+      "name": "pair-clang",
+      "case": "list-deep-unique",
+      "round": 0,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/pair-clang",
+        "list-deep-unique",
+        "6"
+      ],
+      "status": 0,
+      "processSeconds": 0.10108108003623784,
+      "measurement": {
+        "name": "list-deep-unique",
+        "repetitions": 6,
+        "workerSeconds": 0.004272843,
+        "maxBumpWords": 450560
+      },
+      "workerSeconds": 0.004272843
+    },
+    {
+      "name": "runtime-ir-single-qbe",
+      "case": "list-deep-unique",
+      "round": 0,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/runtime-ir-single-qbe",
+        "list-deep-unique",
+        "6"
+      ],
+      "status": 0,
+      "processSeconds": 0.100612758891657,
+      "measurement": {
+        "name": "list-deep-unique",
+        "repetitions": 6,
+        "workerSeconds": 0.003522048,
+        "maxBumpWords": 450560
+      },
+      "workerSeconds": 0.003522048
+    },
+    {
+      "name": "runtime-ir-single-clang",
+      "case": "list-deep-unique",
+      "round": 0,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/runtime-ir-single-clang",
+        "list-deep-unique",
+        "6"
+      ],
+      "status": 0,
+      "processSeconds": 0.09926159889437258,
+      "measurement": {
+        "name": "list-deep-unique",
+        "repetitions": 6,
+        "workerSeconds": 0.002641479,
+        "maxBumpWords": 450560
+      },
+      "workerSeconds": 0.002641479
+    },
+    {
+      "name": "runtime-ir-atomic-qbe",
+      "case": "list-deep-unique",
+      "round": 0,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/runtime-ir-atomic-qbe",
+        "list-deep-unique",
+        "6"
+      ],
+      "status": 0,
+      "processSeconds": 0.10147798992693424,
+      "measurement": {
+        "name": "list-deep-unique",
+        "repetitions": 6,
+        "workerSeconds": 0.004255301,
+        "maxBumpWords": 450560
+      },
+      "workerSeconds": 0.004255301
+    },
+    {
+      "name": "runtime-ir-atomic-clang",
+      "case": "list-deep-unique",
+      "round": 0,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/runtime-ir-atomic-clang",
+        "list-deep-unique",
+        "6"
+      ],
+      "status": 0,
+      "processSeconds": 0.1059312941506505,
+      "measurement": {
+        "name": "list-deep-unique",
+        "repetitions": 6,
+        "workerSeconds": 0.003681534,
+        "maxBumpWords": 450560
+      },
+      "workerSeconds": 0.003681534
+    },
+    {
+      "name": "fused-qbe",
+      "case": "list-deep-shared-root",
+      "round": 0,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/fused-qbe",
+        "list-deep-shared-root",
+        "3"
+      ],
+      "status": 0,
+      "processSeconds": 0.08448948012664914,
+      "measurement": {
+        "name": "list-deep-shared-root",
+        "repetitions": 3,
+        "workerSeconds": 0.006749432,
+        "maxBumpWords": 647168
+      },
+      "workerSeconds": 0.006749432
+    },
+    {
+      "name": "fused-clang",
+      "case": "list-deep-shared-root",
+      "round": 0,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/fused-clang",
+        "list-deep-shared-root",
+        "3"
+      ],
+      "status": 0,
+      "processSeconds": 0.08493712707422674,
+      "measurement": {
+        "name": "list-deep-shared-root",
+        "repetitions": 3,
+        "workerSeconds": 0.006748548,
+        "maxBumpWords": 647168
+      },
+      "workerSeconds": 0.006748548
+    },
+    {
+      "name": "specialized-qbe",
+      "case": "list-deep-shared-root",
+      "round": 0,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/specialized-qbe",
+        "list-deep-shared-root",
+        "3"
+      ],
+      "status": 0,
+      "processSeconds": 0.0915342669468373,
+      "measurement": {
+        "name": "list-deep-shared-root",
+        "repetitions": 3,
+        "workerSeconds": 0.007405889,
+        "maxBumpWords": 647168
+      },
+      "workerSeconds": 0.007405889
+    },
+    {
+      "name": "specialized-clang",
+      "case": "list-deep-shared-root",
+      "round": 0,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/specialized-clang",
+        "list-deep-shared-root",
+        "3"
+      ],
+      "status": 0,
+      "processSeconds": 0.08257424202747643,
+      "measurement": {
+        "name": "list-deep-shared-root",
+        "repetitions": 3,
+        "workerSeconds": 0.006474353,
+        "maxBumpWords": 647168
+      },
+      "workerSeconds": 0.006474353
+    },
+    {
+      "name": "pair-qbe",
+      "case": "list-deep-shared-root",
+      "round": 0,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/pair-qbe",
+        "list-deep-shared-root",
+        "3"
+      ],
+      "status": 0,
+      "processSeconds": 0.08384629199281335,
+      "measurement": {
+        "name": "list-deep-shared-root",
+        "repetitions": 3,
+        "workerSeconds": 0.006253466,
+        "maxBumpWords": 647168
+      },
+      "workerSeconds": 0.006253466
+    },
+    {
+      "name": "pair-clang",
+      "case": "list-deep-shared-root",
+      "round": 0,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/pair-clang",
+        "list-deep-shared-root",
+        "3"
+      ],
+      "status": 0,
+      "processSeconds": 0.08401924301870167,
+      "measurement": {
+        "name": "list-deep-shared-root",
+        "repetitions": 3,
+        "workerSeconds": 0.006207612,
+        "maxBumpWords": 647168
+      },
+      "workerSeconds": 0.006207612
+    },
+    {
+      "name": "runtime-ir-single-qbe",
+      "case": "list-deep-shared-root",
+      "round": 0,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/runtime-ir-single-qbe",
+        "list-deep-shared-root",
+        "3"
+      ],
+      "status": 0,
+      "processSeconds": 0.084953045938164,
+      "measurement": {
+        "name": "list-deep-shared-root",
+        "repetitions": 3,
+        "workerSeconds": 0.006825779,
+        "maxBumpWords": 647168
+      },
+      "workerSeconds": 0.006825779
+    },
+    {
+      "name": "runtime-ir-single-clang",
+      "case": "list-deep-shared-root",
+      "round": 0,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/runtime-ir-single-clang",
+        "list-deep-shared-root",
+        "3"
+      ],
+      "status": 0,
+      "processSeconds": 0.08392999996431172,
+      "measurement": {
+        "name": "list-deep-shared-root",
+        "repetitions": 3,
+        "workerSeconds": 0.006576747,
+        "maxBumpWords": 647168
+      },
+      "workerSeconds": 0.006576747
+    },
+    {
+      "name": "runtime-ir-atomic-qbe",
+      "case": "list-deep-shared-root",
+      "round": 0,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/runtime-ir-atomic-qbe",
+        "list-deep-shared-root",
+        "3"
+      ],
+      "status": 0,
+      "processSeconds": 0.08425992680713534,
+      "measurement": {
+        "name": "list-deep-shared-root",
+        "repetitions": 3,
+        "workerSeconds": 0.007040001,
+        "maxBumpWords": 647168
+      },
+      "workerSeconds": 0.007040001
+    },
+    {
+      "name": "runtime-ir-atomic-clang",
+      "case": "list-deep-shared-root",
+      "round": 0,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/runtime-ir-atomic-clang",
+        "list-deep-shared-root",
+        "3"
+      ],
+      "status": 0,
+      "processSeconds": 0.0838745990768075,
+      "measurement": {
+        "name": "list-deep-shared-root",
+        "repetitions": 3,
+        "workerSeconds": 0.00678432,
+        "maxBumpWords": 647168
+      },
+      "workerSeconds": 0.00678432
+    },
+    {
+      "name": "fused-qbe",
+      "case": "string-deep-unique",
+      "round": 0,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/fused-qbe",
+        "string-deep-unique",
+        "6"
+      ],
+      "status": 0,
+      "processSeconds": 0.0466504180803895,
+      "measurement": {
+        "name": "string-deep-unique",
+        "repetitions": 6,
+        "workerSeconds": 0.005315277,
+        "maxBumpWords": 204800
+      },
+      "workerSeconds": 0.005315277
+    },
+    {
+      "name": "fused-clang",
+      "case": "string-deep-unique",
+      "round": 0,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/fused-clang",
+        "string-deep-unique",
+        "6"
+      ],
+      "status": 0,
+      "processSeconds": 0.047809191048145294,
+      "measurement": {
+        "name": "string-deep-unique",
+        "repetitions": 6,
+        "workerSeconds": 0.005550016,
+        "maxBumpWords": 204800
+      },
+      "workerSeconds": 0.005550016
+    },
+    {
+      "name": "specialized-qbe",
+      "case": "string-deep-unique",
+      "round": 0,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/specialized-qbe",
+        "string-deep-unique",
+        "6"
+      ],
+      "status": 0,
+      "processSeconds": 0.04736203909851611,
+      "measurement": {
+        "name": "string-deep-unique",
+        "repetitions": 6,
+        "workerSeconds": 0.005071335,
+        "maxBumpWords": 204800
+      },
+      "workerSeconds": 0.005071335
+    },
+    {
+      "name": "specialized-clang",
+      "case": "string-deep-unique",
+      "round": 0,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/specialized-clang",
+        "string-deep-unique",
+        "6"
+      ],
+      "status": 0,
+      "processSeconds": 0.0467460798099637,
+      "measurement": {
+        "name": "string-deep-unique",
+        "repetitions": 6,
+        "workerSeconds": 0.004989319,
+        "maxBumpWords": 204800
+      },
+      "workerSeconds": 0.004989319
+    },
+    {
+      "name": "pair-qbe",
+      "case": "string-deep-unique",
+      "round": 0,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/pair-qbe",
+        "string-deep-unique",
+        "6"
+      ],
+      "status": 0,
+      "processSeconds": 0.04638846009038389,
+      "measurement": {
+        "name": "string-deep-unique",
+        "repetitions": 6,
+        "workerSeconds": 0.004791959,
+        "maxBumpWords": 204800
+      },
+      "workerSeconds": 0.004791959
+    },
+    {
+      "name": "pair-clang",
+      "case": "string-deep-unique",
+      "round": 0,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/pair-clang",
+        "string-deep-unique",
+        "6"
+      ],
+      "status": 0,
+      "processSeconds": 0.04535169689916074,
+      "measurement": {
+        "name": "string-deep-unique",
+        "repetitions": 6,
+        "workerSeconds": 0.004018609,
+        "maxBumpWords": 204800
+      },
+      "workerSeconds": 0.004018609
+    },
+    {
+      "name": "runtime-ir-single-qbe",
+      "case": "string-deep-unique",
+      "round": 0,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/runtime-ir-single-qbe",
+        "string-deep-unique",
+        "6"
+      ],
+      "status": 0,
+      "processSeconds": 0.04671601997688413,
+      "measurement": {
+        "name": "string-deep-unique",
+        "repetitions": 6,
+        "workerSeconds": 0.003746655,
+        "maxBumpWords": 204800
+      },
+      "workerSeconds": 0.003746655
+    },
+    {
+      "name": "runtime-ir-single-clang",
+      "case": "string-deep-unique",
+      "round": 0,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/runtime-ir-single-clang",
+        "string-deep-unique",
+        "6"
+      ],
+      "status": 0,
+      "processSeconds": 0.04376060585491359,
+      "measurement": {
+        "name": "string-deep-unique",
+        "repetitions": 6,
+        "workerSeconds": 0.002392904,
+        "maxBumpWords": 204800
+      },
+      "workerSeconds": 0.002392904
+    },
+    {
+      "name": "runtime-ir-atomic-qbe",
+      "case": "string-deep-unique",
+      "round": 0,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/runtime-ir-atomic-qbe",
+        "string-deep-unique",
+        "6"
+      ],
+      "status": 0,
+      "processSeconds": 0.04531870409846306,
+      "measurement": {
+        "name": "string-deep-unique",
+        "repetitions": 6,
+        "workerSeconds": 0.003890079,
+        "maxBumpWords": 204800
+      },
+      "workerSeconds": 0.003890079
+    },
+    {
+      "name": "runtime-ir-atomic-clang",
+      "case": "string-deep-unique",
+      "round": 0,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/runtime-ir-atomic-clang",
+        "string-deep-unique",
+        "6"
+      ],
+      "status": 0,
+      "processSeconds": 0.044283001217991114,
+      "measurement": {
+        "name": "string-deep-unique",
+        "repetitions": 6,
+        "workerSeconds": 0.002865121,
+        "maxBumpWords": 204800
+      },
+      "workerSeconds": 0.002865121
+    },
+    {
+      "name": "fused-qbe",
+      "case": "list-source-lexer-unique",
+      "round": 0,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/fused-qbe",
+        "list-source-lexer-unique",
+        "1"
+      ],
+      "status": 0,
+      "processSeconds": 0.233257208019495,
+      "measurement": {
+        "name": "list-source-lexer-unique",
+        "repetitions": 1,
+        "workerSeconds": 0.005522644,
+        "maxBumpWords": 6569984
+      },
+      "workerSeconds": 0.005522644
+    },
+    {
+      "name": "fused-clang",
+      "case": "list-source-lexer-unique",
+      "round": 0,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/fused-clang",
+        "list-source-lexer-unique",
+        "1"
+      ],
+      "status": 0,
+      "processSeconds": 0.24763368698768318,
+      "measurement": {
+        "name": "list-source-lexer-unique",
+        "repetitions": 1,
+        "workerSeconds": 0.00552544,
+        "maxBumpWords": 6569984
+      },
+      "workerSeconds": 0.00552544
+    },
+    {
+      "name": "specialized-qbe",
+      "case": "list-source-lexer-unique",
+      "round": 0,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/specialized-qbe",
+        "list-source-lexer-unique",
+        "1"
+      ],
+      "status": 0,
+      "processSeconds": 0.23731262190267444,
+      "measurement": {
+        "name": "list-source-lexer-unique",
+        "repetitions": 1,
+        "workerSeconds": 0.005806234,
+        "maxBumpWords": 6569984
+      },
+      "workerSeconds": 0.005806234
+    },
+    {
+      "name": "specialized-clang",
+      "case": "list-source-lexer-unique",
+      "round": 0,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/specialized-clang",
+        "list-source-lexer-unique",
+        "1"
+      ],
+      "status": 0,
+      "processSeconds": 0.25053933216258883,
+      "measurement": {
+        "name": "list-source-lexer-unique",
+        "repetitions": 1,
+        "workerSeconds": 0.00618809,
+        "maxBumpWords": 6569984
+      },
+      "workerSeconds": 0.00618809
+    },
+    {
+      "name": "pair-qbe",
+      "case": "list-source-lexer-unique",
+      "round": 0,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/pair-qbe",
+        "list-source-lexer-unique",
+        "1"
+      ],
+      "status": 0,
+      "processSeconds": 0.2488319028634578,
+      "measurement": {
+        "name": "list-source-lexer-unique",
+        "repetitions": 1,
+        "workerSeconds": 0.005960533,
+        "maxBumpWords": 6569984
+      },
+      "workerSeconds": 0.005960533
+    },
+    {
+      "name": "pair-clang",
+      "case": "list-source-lexer-unique",
+      "round": 0,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/pair-clang",
+        "list-source-lexer-unique",
+        "1"
+      ],
+      "status": 0,
+      "processSeconds": 0.24948766897432506,
+      "measurement": {
+        "name": "list-source-lexer-unique",
+        "repetitions": 1,
+        "workerSeconds": 0.005308271,
+        "maxBumpWords": 6569984
+      },
+      "workerSeconds": 0.005308271
+    },
+    {
+      "name": "runtime-ir-single-qbe",
+      "case": "list-source-lexer-unique",
+      "round": 0,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/runtime-ir-single-qbe",
+        "list-source-lexer-unique",
+        "1"
+      ],
+      "status": 0,
+      "processSeconds": 0.24979149689897895,
+      "measurement": {
+        "name": "list-source-lexer-unique",
+        "repetitions": 1,
+        "workerSeconds": 0.006076547,
+        "maxBumpWords": 6569984
+      },
+      "workerSeconds": 0.006076547
+    },
+    {
+      "name": "runtime-ir-single-clang",
+      "case": "list-source-lexer-unique",
+      "round": 0,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/runtime-ir-single-clang",
+        "list-source-lexer-unique",
+        "1"
+      ],
+      "status": 0,
+      "processSeconds": 0.2500638000201434,
+      "measurement": {
+        "name": "list-source-lexer-unique",
+        "repetitions": 1,
+        "workerSeconds": 0.005555744,
+        "maxBumpWords": 6569984
+      },
+      "workerSeconds": 0.005555744
+    },
+    {
+      "name": "runtime-ir-atomic-qbe",
+      "case": "list-source-lexer-unique",
+      "round": 0,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/runtime-ir-atomic-qbe",
+        "list-source-lexer-unique",
+        "1"
+      ],
+      "status": 0,
+      "processSeconds": 0.24905783915892243,
+      "measurement": {
+        "name": "list-source-lexer-unique",
+        "repetitions": 1,
+        "workerSeconds": 0.00543269,
+        "maxBumpWords": 6569984
+      },
+      "workerSeconds": 0.00543269
+    },
+    {
+      "name": "runtime-ir-atomic-clang",
+      "case": "list-source-lexer-unique",
+      "round": 0,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/runtime-ir-atomic-clang",
+        "list-source-lexer-unique",
+        "1"
+      ],
+      "status": 0,
+      "processSeconds": 0.24979120586067438,
+      "measurement": {
+        "name": "list-source-lexer-unique",
+        "repetitions": 1,
+        "workerSeconds": 0.005103608,
+        "maxBumpWords": 6569984
+      },
+      "workerSeconds": 0.005103608
+    },
+    {
+      "name": "fused-qbe",
+      "case": "string-source-lexer-unique",
+      "round": 0,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/fused-qbe",
+        "string-source-lexer-unique",
+        "7"
+      ],
+      "status": 0,
+      "processSeconds": 0.0480164741165936,
+      "measurement": {
+        "name": "string-source-lexer-unique",
+        "repetitions": 7,
+        "workerSeconds": 0.006158988,
+        "maxBumpWords": 159744
+      },
+      "workerSeconds": 0.006158988
+    },
+    {
+      "name": "fused-clang",
+      "case": "string-source-lexer-unique",
+      "round": 0,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/fused-clang",
+        "string-source-lexer-unique",
+        "7"
+      ],
+      "status": 0,
+      "processSeconds": 0.04668929404579103,
+      "measurement": {
+        "name": "string-source-lexer-unique",
+        "repetitions": 7,
+        "workerSeconds": 0.005610534,
+        "maxBumpWords": 159744
+      },
+      "workerSeconds": 0.005610534
+    },
+    {
+      "name": "specialized-qbe",
+      "case": "string-source-lexer-unique",
+      "round": 0,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/specialized-qbe",
+        "string-source-lexer-unique",
+        "7"
+      ],
+      "status": 0,
+      "processSeconds": 0.04605659795925021,
+      "measurement": {
+        "name": "string-source-lexer-unique",
+        "repetitions": 7,
+        "workerSeconds": 0.005160935,
+        "maxBumpWords": 159744
+      },
+      "workerSeconds": 0.005160935
+    },
+    {
+      "name": "specialized-clang",
+      "case": "string-source-lexer-unique",
+      "round": 0,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/specialized-clang",
+        "string-source-lexer-unique",
+        "7"
+      ],
+      "status": 0,
+      "processSeconds": 0.04592739697545767,
+      "measurement": {
+        "name": "string-source-lexer-unique",
+        "repetitions": 7,
+        "workerSeconds": 0.005153015,
+        "maxBumpWords": 159744
+      },
+      "workerSeconds": 0.005153015
+    },
+    {
+      "name": "pair-qbe",
+      "case": "string-source-lexer-unique",
+      "round": 0,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/pair-qbe",
+        "string-source-lexer-unique",
+        "7"
+      ],
+      "status": 0,
+      "processSeconds": 0.04558250401169062,
+      "measurement": {
+        "name": "string-source-lexer-unique",
+        "repetitions": 7,
+        "workerSeconds": 0.00486707,
+        "maxBumpWords": 159744
+      },
+      "workerSeconds": 0.00486707
+    },
+    {
+      "name": "pair-clang",
+      "case": "string-source-lexer-unique",
+      "round": 0,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/pair-clang",
+        "string-source-lexer-unique",
+        "7"
+      ],
+      "status": 0,
+      "processSeconds": 0.04502869304269552,
+      "measurement": {
+        "name": "string-source-lexer-unique",
+        "repetitions": 7,
+        "workerSeconds": 0.004173886,
+        "maxBumpWords": 159744
+      },
+      "workerSeconds": 0.004173886
+    },
+    {
+      "name": "runtime-ir-single-qbe",
+      "case": "string-source-lexer-unique",
+      "round": 0,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/runtime-ir-single-qbe",
+        "string-source-lexer-unique",
+        "7"
+      ],
+      "status": 0,
+      "processSeconds": 0.04456663900054991,
+      "measurement": {
+        "name": "string-source-lexer-unique",
+        "repetitions": 7,
+        "workerSeconds": 0.003474835,
+        "maxBumpWords": 159744
+      },
+      "workerSeconds": 0.003474835
+    },
+    {
+      "name": "runtime-ir-single-clang",
+      "case": "string-source-lexer-unique",
+      "round": 0,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/runtime-ir-single-clang",
+        "string-source-lexer-unique",
+        "7"
+      ],
+      "status": 0,
+      "processSeconds": 0.043752933852374554,
+      "measurement": {
+        "name": "string-source-lexer-unique",
+        "repetitions": 7,
+        "workerSeconds": 0.002524548,
+        "maxBumpWords": 159744
+      },
+      "workerSeconds": 0.002524548
+    },
+    {
+      "name": "runtime-ir-atomic-qbe",
+      "case": "string-source-lexer-unique",
+      "round": 0,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/runtime-ir-atomic-qbe",
+        "string-source-lexer-unique",
+        "7"
+      ],
+      "status": 0,
+      "processSeconds": 0.04482393618673086,
+      "measurement": {
+        "name": "string-source-lexer-unique",
+        "repetitions": 7,
+        "workerSeconds": 0.00438881,
+        "maxBumpWords": 159744
+      },
+      "workerSeconds": 0.00438881
+    },
+    {
+      "name": "runtime-ir-atomic-clang",
+      "case": "string-source-lexer-unique",
+      "round": 0,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/runtime-ir-atomic-clang",
+        "string-source-lexer-unique",
+        "7"
+      ],
+      "status": 0,
+      "processSeconds": 0.04444285901263356,
+      "measurement": {
+        "name": "string-source-lexer-unique",
+        "repetitions": 7,
+        "workerSeconds": 0.003324747,
+        "maxBumpWords": 159744
+      },
+      "workerSeconds": 0.003324747
+    },
+    {
+      "name": "fused-qbe",
+      "case": "list-source-lexer-shared",
+      "round": 0,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/fused-qbe",
+        "list-source-lexer-shared",
+        "1"
+      ],
+      "status": 0,
+      "processSeconds": 0.3689290708862245,
+      "measurement": {
+        "name": "list-source-lexer-shared",
+        "repetitions": 1,
+        "workerSeconds": 0.006522963,
+        "maxBumpWords": 6766592
+      },
+      "workerSeconds": 0.006522963
+    },
+    {
+      "name": "fused-clang",
+      "case": "list-source-lexer-shared",
+      "round": 0,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/fused-clang",
+        "list-source-lexer-shared",
+        "1"
+      ],
+      "status": 0,
+      "processSeconds": 0.36745944106951356,
+      "measurement": {
+        "name": "list-source-lexer-shared",
+        "repetitions": 1,
+        "workerSeconds": 0.006311802,
+        "maxBumpWords": 6766592
+      },
+      "workerSeconds": 0.006311802
+    },
+    {
+      "name": "specialized-qbe",
+      "case": "list-source-lexer-shared",
+      "round": 0,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/specialized-qbe",
+        "list-source-lexer-shared",
+        "1"
+      ],
+      "status": 0,
+      "processSeconds": 0.36719033983536065,
+      "measurement": {
+        "name": "list-source-lexer-shared",
+        "repetitions": 1,
+        "workerSeconds": 0.006368299,
+        "maxBumpWords": 6766592
+      },
+      "workerSeconds": 0.006368299
+    },
+    {
+      "name": "specialized-clang",
+      "case": "list-source-lexer-shared",
+      "round": 0,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/specialized-clang",
+        "list-source-lexer-shared",
+        "1"
+      ],
+      "status": 0,
+      "processSeconds": 0.36688150302506983,
+      "measurement": {
+        "name": "list-source-lexer-shared",
+        "repetitions": 1,
+        "workerSeconds": 0.006444396,
+        "maxBumpWords": 6766592
+      },
+      "workerSeconds": 0.006444396
+    },
+    {
+      "name": "pair-qbe",
+      "case": "list-source-lexer-shared",
+      "round": 0,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/pair-qbe",
+        "list-source-lexer-shared",
+        "1"
+      ],
+      "status": 0,
+      "processSeconds": 0.3671868999954313,
+      "measurement": {
+        "name": "list-source-lexer-shared",
+        "repetitions": 1,
+        "workerSeconds": 0.006119343,
+        "maxBumpWords": 6766592
+      },
+      "workerSeconds": 0.006119343
+    },
+    {
+      "name": "pair-clang",
+      "case": "list-source-lexer-shared",
+      "round": 0,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/pair-clang",
+        "list-source-lexer-shared",
+        "1"
+      ],
+      "status": 0,
+      "processSeconds": 0.3670577108860016,
+      "measurement": {
+        "name": "list-source-lexer-shared",
+        "repetitions": 1,
+        "workerSeconds": 0.006158024,
+        "maxBumpWords": 6766592
+      },
+      "workerSeconds": 0.006158024
+    },
+    {
+      "name": "runtime-ir-single-qbe",
+      "case": "list-source-lexer-shared",
+      "round": 0,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/runtime-ir-single-qbe",
+        "list-source-lexer-shared",
+        "1"
+      ],
+      "status": 0,
+      "processSeconds": 0.37947985902428627,
+      "measurement": {
+        "name": "list-source-lexer-shared",
+        "repetitions": 1,
+        "workerSeconds": 0.006572766,
+        "maxBumpWords": 6766592
+      },
+      "workerSeconds": 0.006572766
+    },
+    {
+      "name": "runtime-ir-single-clang",
+      "case": "list-source-lexer-shared",
+      "round": 0,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/runtime-ir-single-clang",
+        "list-source-lexer-shared",
+        "1"
+      ],
+      "status": 0,
+      "processSeconds": 0.34464949392713606,
+      "measurement": {
+        "name": "list-source-lexer-shared",
+        "repetitions": 1,
+        "workerSeconds": 0.006412126,
+        "maxBumpWords": 6766592
+      },
+      "workerSeconds": 0.006412126
+    },
+    {
+      "name": "runtime-ir-atomic-qbe",
+      "case": "list-source-lexer-shared",
+      "round": 0,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/runtime-ir-atomic-qbe",
+        "list-source-lexer-shared",
+        "1"
+      ],
+      "status": 0,
+      "processSeconds": 0.34749608393758535,
+      "measurement": {
+        "name": "list-source-lexer-shared",
+        "repetitions": 1,
+        "workerSeconds": 0.00665214,
+        "maxBumpWords": 6766592
+      },
+      "workerSeconds": 0.00665214
+    },
+    {
+      "name": "runtime-ir-atomic-clang",
+      "case": "list-source-lexer-shared",
+      "round": 0,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/runtime-ir-atomic-clang",
+        "list-source-lexer-shared",
+        "1"
+      ],
+      "status": 0,
+      "processSeconds": 0.34478828008286655,
+      "measurement": {
+        "name": "list-source-lexer-shared",
+        "repetitions": 1,
+        "workerSeconds": 0.006336698,
+        "maxBumpWords": 6766592
+      },
+      "workerSeconds": 0.006336698
+    },
+    {
+      "name": "fused-qbe",
+      "case": "string-source-lexer-shared",
+      "round": 0,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/fused-qbe",
+        "string-source-lexer-shared",
+        "3"
+      ],
+      "status": 0,
+      "processSeconds": 0.035096499836072326,
+      "measurement": {
+        "name": "string-source-lexer-shared",
+        "repetitions": 3,
+        "workerSeconds": 0.00496732,
+        "maxBumpWords": 319488
+      },
+      "workerSeconds": 0.00496732
+    },
+    {
+      "name": "fused-clang",
+      "case": "string-source-lexer-shared",
+      "round": 0,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/fused-clang",
+        "string-source-lexer-shared",
+        "3"
+      ],
+      "status": 0,
+      "processSeconds": 0.03512084414251149,
+      "measurement": {
+        "name": "string-source-lexer-shared",
+        "repetitions": 3,
+        "workerSeconds": 0.004927589,
+        "maxBumpWords": 319488
+      },
+      "workerSeconds": 0.004927589
+    },
+    {
+      "name": "specialized-qbe",
+      "case": "string-source-lexer-shared",
+      "round": 0,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/specialized-qbe",
+        "string-source-lexer-shared",
+        "3"
+      ],
+      "status": 0,
+      "processSeconds": 0.0350192051846534,
+      "measurement": {
+        "name": "string-source-lexer-shared",
+        "repetitions": 3,
+        "workerSeconds": 0.004744051,
+        "maxBumpWords": 319488
+      },
+      "workerSeconds": 0.004744051
+    },
+    {
+      "name": "specialized-clang",
+      "case": "string-source-lexer-shared",
+      "round": 0,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/specialized-clang",
+        "string-source-lexer-shared",
+        "3"
+      ],
+      "status": 0,
+      "processSeconds": 0.03484855615533888,
+      "measurement": {
+        "name": "string-source-lexer-shared",
+        "repetitions": 3,
+        "workerSeconds": 0.004684949,
+        "maxBumpWords": 319488
+      },
+      "workerSeconds": 0.004684949
+    },
+    {
+      "name": "pair-qbe",
+      "case": "string-source-lexer-shared",
+      "round": 0,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/pair-qbe",
+        "string-source-lexer-shared",
+        "3"
+      ],
+      "status": 0,
+      "processSeconds": 0.034723890013992786,
+      "measurement": {
+        "name": "string-source-lexer-shared",
+        "repetitions": 3,
+        "workerSeconds": 0.004491328,
+        "maxBumpWords": 319488
+      },
+      "workerSeconds": 0.004491328
+    },
+    {
+      "name": "pair-clang",
+      "case": "string-source-lexer-shared",
+      "round": 0,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/pair-clang",
+        "string-source-lexer-shared",
+        "3"
+      ],
+      "status": 0,
+      "processSeconds": 0.03458390012383461,
+      "measurement": {
+        "name": "string-source-lexer-shared",
+        "repetitions": 3,
+        "workerSeconds": 0.004410192,
+        "maxBumpWords": 319488
+      },
+      "workerSeconds": 0.004410192
+    },
+    {
+      "name": "runtime-ir-single-qbe",
+      "case": "string-source-lexer-shared",
+      "round": 0,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/runtime-ir-single-qbe",
+        "string-source-lexer-shared",
+        "3"
+      ],
+      "status": 0,
+      "processSeconds": 0.03539521503262222,
+      "measurement": {
+        "name": "string-source-lexer-shared",
+        "repetitions": 3,
+        "workerSeconds": 0.004990194,
+        "maxBumpWords": 319488
+      },
+      "workerSeconds": 0.004990194
+    },
+    {
+      "name": "runtime-ir-single-clang",
+      "case": "string-source-lexer-shared",
+      "round": 0,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/runtime-ir-single-clang",
+        "string-source-lexer-shared",
+        "3"
+      ],
+      "status": 0,
+      "processSeconds": 0.034928026143461466,
+      "measurement": {
+        "name": "string-source-lexer-shared",
+        "repetitions": 3,
+        "workerSeconds": 0.004753325,
+        "maxBumpWords": 319488
+      },
+      "workerSeconds": 0.004753325
+    },
+    {
+      "name": "runtime-ir-atomic-qbe",
+      "case": "string-source-lexer-shared",
+      "round": 0,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/runtime-ir-atomic-qbe",
+        "string-source-lexer-shared",
+        "3"
+      ],
+      "status": 0,
+      "processSeconds": 0.03555290587246418,
+      "measurement": {
+        "name": "string-source-lexer-shared",
+        "repetitions": 3,
+        "workerSeconds": 0.005342611,
+        "maxBumpWords": 319488
+      },
+      "workerSeconds": 0.005342611
+    },
+    {
+      "name": "runtime-ir-atomic-clang",
+      "case": "string-source-lexer-shared",
+      "round": 0,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/runtime-ir-atomic-clang",
+        "string-source-lexer-shared",
+        "3"
+      ],
+      "status": 0,
+      "processSeconds": 0.03513623890466988,
+      "measurement": {
+        "name": "string-source-lexer-shared",
+        "repetitions": 3,
+        "workerSeconds": 0.004904707,
+        "maxBumpWords": 319488
+      },
+      "workerSeconds": 0.004904707
+    },
+    {
+      "name": "runtime-ir-atomic-clang",
+      "case": "list-deep-unique",
+      "round": 1,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/runtime-ir-atomic-clang",
+        "list-deep-unique",
+        "6"
+      ],
+      "status": 0,
+      "processSeconds": 0.10062190121971071,
+      "measurement": {
+        "name": "list-deep-unique",
+        "repetitions": 6,
+        "workerSeconds": 0.00359102,
+        "maxBumpWords": 450560
+      },
+      "workerSeconds": 0.00359102
+    },
+    {
+      "name": "runtime-ir-atomic-qbe",
+      "case": "list-deep-unique",
+      "round": 1,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/runtime-ir-atomic-qbe",
+        "list-deep-unique",
+        "6"
+      ],
+      "status": 0,
+      "processSeconds": 0.10225811507552862,
+      "measurement": {
+        "name": "list-deep-unique",
+        "repetitions": 6,
+        "workerSeconds": 0.004282162,
+        "maxBumpWords": 450560
+      },
+      "workerSeconds": 0.004282162
+    },
+    {
+      "name": "runtime-ir-single-clang",
+      "case": "list-deep-unique",
+      "round": 1,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/runtime-ir-single-clang",
+        "list-deep-unique",
+        "6"
+      ],
+      "status": 0,
+      "processSeconds": 0.09968390082940459,
+      "measurement": {
+        "name": "list-deep-unique",
+        "repetitions": 6,
+        "workerSeconds": 0.002709061,
+        "maxBumpWords": 450560
+      },
+      "workerSeconds": 0.002709061
+    },
+    {
+      "name": "runtime-ir-single-qbe",
+      "case": "list-deep-unique",
+      "round": 1,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/runtime-ir-single-qbe",
+        "list-deep-unique",
+        "6"
+      ],
+      "status": 0,
+      "processSeconds": 0.10005576000548899,
+      "measurement": {
+        "name": "list-deep-unique",
+        "repetitions": 6,
+        "workerSeconds": 0.003512631,
+        "maxBumpWords": 450560
+      },
+      "workerSeconds": 0.003512631
+    },
+    {
+      "name": "pair-clang",
+      "case": "list-deep-unique",
+      "round": 1,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/pair-clang",
+        "list-deep-unique",
+        "6"
+      ],
+      "status": 0,
+      "processSeconds": 0.10113103105686605,
+      "measurement": {
+        "name": "list-deep-unique",
+        "repetitions": 6,
+        "workerSeconds": 0.00422077,
+        "maxBumpWords": 450560
+      },
+      "workerSeconds": 0.00422077
+    },
+    {
+      "name": "pair-qbe",
+      "case": "list-deep-unique",
+      "round": 1,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/pair-qbe",
+        "list-deep-unique",
+        "6"
+      ],
+      "status": 0,
+      "processSeconds": 0.1021381497848779,
+      "measurement": {
+        "name": "list-deep-unique",
+        "repetitions": 6,
+        "workerSeconds": 0.005199922,
+        "maxBumpWords": 450560
+      },
+      "workerSeconds": 0.005199922
+    },
+    {
+      "name": "specialized-clang",
+      "case": "list-deep-unique",
+      "round": 1,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/specialized-clang",
+        "list-deep-unique",
+        "6"
+      ],
+      "status": 0,
+      "processSeconds": 0.10148514318279922,
+      "measurement": {
+        "name": "list-deep-unique",
+        "repetitions": 6,
+        "workerSeconds": 0.005389836,
+        "maxBumpWords": 450560
+      },
+      "workerSeconds": 0.005389836
+    },
+    {
+      "name": "specialized-qbe",
+      "case": "list-deep-unique",
+      "round": 1,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/specialized-qbe",
+        "list-deep-unique",
+        "6"
+      ],
+      "status": 0,
+      "processSeconds": 0.10230300785042346,
+      "measurement": {
+        "name": "list-deep-unique",
+        "repetitions": 6,
+        "workerSeconds": 0.00548833,
+        "maxBumpWords": 450560
+      },
+      "workerSeconds": 0.00548833
+    },
+    {
+      "name": "fused-clang",
+      "case": "list-deep-unique",
+      "round": 1,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/fused-clang",
+        "list-deep-unique",
+        "6"
+      ],
+      "status": 0,
+      "processSeconds": 0.10258347191847861,
+      "measurement": {
+        "name": "list-deep-unique",
+        "repetitions": 6,
+        "workerSeconds": 0.005479225,
+        "maxBumpWords": 450560
+      },
+      "workerSeconds": 0.005479225
+    },
+    {
+      "name": "fused-qbe",
+      "case": "list-deep-unique",
+      "round": 1,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/fused-qbe",
+        "list-deep-unique",
+        "6"
+      ],
+      "status": 0,
+      "processSeconds": 0.10317586921155453,
+      "measurement": {
+        "name": "list-deep-unique",
+        "repetitions": 6,
+        "workerSeconds": 0.005668694,
+        "maxBumpWords": 450560
+      },
+      "workerSeconds": 0.005668694
+    },
+    {
+      "name": "runtime-ir-atomic-clang",
+      "case": "list-deep-shared-root",
+      "round": 1,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/runtime-ir-atomic-clang",
+        "list-deep-shared-root",
+        "3"
+      ],
+      "status": 0,
+      "processSeconds": 0.08631618600338697,
+      "measurement": {
+        "name": "list-deep-shared-root",
+        "repetitions": 3,
+        "workerSeconds": 0.006950013,
+        "maxBumpWords": 647168
+      },
+      "workerSeconds": 0.006950013
+    },
+    {
+      "name": "runtime-ir-atomic-qbe",
+      "case": "list-deep-shared-root",
+      "round": 1,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/runtime-ir-atomic-qbe",
+        "list-deep-shared-root",
+        "3"
+      ],
+      "status": 0,
+      "processSeconds": 0.08434024802409112,
+      "measurement": {
+        "name": "list-deep-shared-root",
+        "repetitions": 3,
+        "workerSeconds": 0.007028708,
+        "maxBumpWords": 647168
+      },
+      "workerSeconds": 0.007028708
+    },
+    {
+      "name": "runtime-ir-single-clang",
+      "case": "list-deep-shared-root",
+      "round": 1,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/runtime-ir-single-clang",
+        "list-deep-shared-root",
+        "3"
+      ],
+      "status": 0,
+      "processSeconds": 0.08454991597682238,
+      "measurement": {
+        "name": "list-deep-shared-root",
+        "repetitions": 3,
+        "workerSeconds": 0.006541069,
+        "maxBumpWords": 647168
+      },
+      "workerSeconds": 0.006541069
+    },
+    {
+      "name": "runtime-ir-single-qbe",
+      "case": "list-deep-shared-root",
+      "round": 1,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/runtime-ir-single-qbe",
+        "list-deep-shared-root",
+        "3"
+      ],
+      "status": 0,
+      "processSeconds": 0.08429954387247562,
+      "measurement": {
+        "name": "list-deep-shared-root",
+        "repetitions": 3,
+        "workerSeconds": 0.0068913,
+        "maxBumpWords": 647168
+      },
+      "workerSeconds": 0.0068913
+    },
+    {
+      "name": "pair-clang",
+      "case": "list-deep-shared-root",
+      "round": 1,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/pair-clang",
+        "list-deep-shared-root",
+        "3"
+      ],
+      "status": 0,
+      "processSeconds": 0.08368374197743833,
+      "measurement": {
+        "name": "list-deep-shared-root",
+        "repetitions": 3,
+        "workerSeconds": 0.006191652,
+        "maxBumpWords": 647168
+      },
+      "workerSeconds": 0.006191652
+    },
+    {
+      "name": "pair-qbe",
+      "case": "list-deep-shared-root",
+      "round": 1,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/pair-qbe",
+        "list-deep-shared-root",
+        "3"
+      ],
+      "status": 0,
+      "processSeconds": 0.08365815901197493,
+      "measurement": {
+        "name": "list-deep-shared-root",
+        "repetitions": 3,
+        "workerSeconds": 0.006265231,
+        "maxBumpWords": 647168
+      },
+      "workerSeconds": 0.006265231
+    },
+    {
+      "name": "specialized-clang",
+      "case": "list-deep-shared-root",
+      "round": 1,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/specialized-clang",
+        "list-deep-shared-root",
+        "3"
+      ],
+      "status": 0,
+      "processSeconds": 0.08244618005119264,
+      "measurement": {
+        "name": "list-deep-shared-root",
+        "repetitions": 3,
+        "workerSeconds": 0.006500097,
+        "maxBumpWords": 647168
+      },
+      "workerSeconds": 0.006500097
+    },
+    {
+      "name": "specialized-qbe",
+      "case": "list-deep-shared-root",
+      "round": 1,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/specialized-qbe",
+        "list-deep-shared-root",
+        "3"
+      ],
+      "status": 0,
+      "processSeconds": 0.08426656201481819,
+      "measurement": {
+        "name": "list-deep-shared-root",
+        "repetitions": 3,
+        "workerSeconds": 0.006555224,
+        "maxBumpWords": 647168
+      },
+      "workerSeconds": 0.006555224
+    },
+    {
+      "name": "fused-clang",
+      "case": "list-deep-shared-root",
+      "round": 1,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/fused-clang",
+        "list-deep-shared-root",
+        "3"
+      ],
+      "status": 0,
+      "processSeconds": 0.08429193100892007,
+      "measurement": {
+        "name": "list-deep-shared-root",
+        "repetitions": 3,
+        "workerSeconds": 0.006709253,
+        "maxBumpWords": 647168
+      },
+      "workerSeconds": 0.006709253
+    },
+    {
+      "name": "fused-qbe",
+      "case": "list-deep-shared-root",
+      "round": 1,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/fused-qbe",
+        "list-deep-shared-root",
+        "3"
+      ],
+      "status": 0,
+      "processSeconds": 0.08425023593008518,
+      "measurement": {
+        "name": "list-deep-shared-root",
+        "repetitions": 3,
+        "workerSeconds": 0.006839884,
+        "maxBumpWords": 647168
+      },
+      "workerSeconds": 0.006839884
+    },
+    {
+      "name": "runtime-ir-atomic-clang",
+      "case": "string-deep-unique",
+      "round": 1,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/runtime-ir-atomic-clang",
+        "string-deep-unique",
+        "6"
+      ],
+      "status": 0,
+      "processSeconds": 0.044229615945369005,
+      "measurement": {
+        "name": "string-deep-unique",
+        "repetitions": 6,
+        "workerSeconds": 0.002825127,
+        "maxBumpWords": 204800
+      },
+      "workerSeconds": 0.002825127
+    },
+    {
+      "name": "runtime-ir-atomic-qbe",
+      "case": "string-deep-unique",
+      "round": 1,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/runtime-ir-atomic-qbe",
+        "string-deep-unique",
+        "6"
+      ],
+      "status": 0,
+      "processSeconds": 0.04533201502636075,
+      "measurement": {
+        "name": "string-deep-unique",
+        "repetitions": 6,
+        "workerSeconds": 0.003855098,
+        "maxBumpWords": 204800
+      },
+      "workerSeconds": 0.003855098
+    },
+    {
+      "name": "runtime-ir-single-clang",
+      "case": "string-deep-unique",
+      "round": 1,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/runtime-ir-single-clang",
+        "string-deep-unique",
+        "6"
+      ],
+      "status": 0,
+      "processSeconds": 0.044980824925005436,
+      "measurement": {
+        "name": "string-deep-unique",
+        "repetitions": 6,
+        "workerSeconds": 0.002457402,
+        "maxBumpWords": 204800
+      },
+      "workerSeconds": 0.002457402
+    },
+    {
+      "name": "runtime-ir-single-qbe",
+      "case": "string-deep-unique",
+      "round": 1,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/runtime-ir-single-qbe",
+        "string-deep-unique",
+        "6"
+      ],
+      "status": 0,
+      "processSeconds": 0.0447495779953897,
+      "measurement": {
+        "name": "string-deep-unique",
+        "repetitions": 6,
+        "workerSeconds": 0.003245652,
+        "maxBumpWords": 204800
+      },
+      "workerSeconds": 0.003245652
+    },
+    {
+      "name": "pair-clang",
+      "case": "string-deep-unique",
+      "round": 1,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/pair-clang",
+        "string-deep-unique",
+        "6"
+      ],
+      "status": 0,
+      "processSeconds": 0.045351186068728566,
+      "measurement": {
+        "name": "string-deep-unique",
+        "repetitions": 6,
+        "workerSeconds": 0.003966124,
+        "maxBumpWords": 204800
+      },
+      "workerSeconds": 0.003966124
+    },
+    {
+      "name": "pair-qbe",
+      "case": "string-deep-unique",
+      "round": 1,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/pair-qbe",
+        "string-deep-unique",
+        "6"
+      ],
+      "status": 0,
+      "processSeconds": 0.04611904313787818,
+      "measurement": {
+        "name": "string-deep-unique",
+        "repetitions": 6,
+        "workerSeconds": 0.004772471,
+        "maxBumpWords": 204800
+      },
+      "workerSeconds": 0.004772471
+    },
+    {
+      "name": "specialized-clang",
+      "case": "string-deep-unique",
+      "round": 1,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/specialized-clang",
+        "string-deep-unique",
+        "6"
+      ],
+      "status": 0,
+      "processSeconds": 0.04658113606274128,
+      "measurement": {
+        "name": "string-deep-unique",
+        "repetitions": 6,
+        "workerSeconds": 0.004949988,
+        "maxBumpWords": 204800
+      },
+      "workerSeconds": 0.004949988
+    },
+    {
+      "name": "specialized-qbe",
+      "case": "string-deep-unique",
+      "round": 1,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/specialized-qbe",
+        "string-deep-unique",
+        "6"
+      ],
+      "status": 0,
+      "processSeconds": 0.04645457793958485,
+      "measurement": {
+        "name": "string-deep-unique",
+        "repetitions": 6,
+        "workerSeconds": 0.005043277,
+        "maxBumpWords": 204800
+      },
+      "workerSeconds": 0.005043277
+    },
+    {
+      "name": "fused-clang",
+      "case": "string-deep-unique",
+      "round": 1,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/fused-clang",
+        "string-deep-unique",
+        "6"
+      ],
+      "status": 0,
+      "processSeconds": 0.046820604940876365,
+      "measurement": {
+        "name": "string-deep-unique",
+        "repetitions": 6,
+        "workerSeconds": 0.005422398,
+        "maxBumpWords": 204800
+      },
+      "workerSeconds": 0.005422398
+    },
+    {
+      "name": "fused-qbe",
+      "case": "string-deep-unique",
+      "round": 1,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/fused-qbe",
+        "string-deep-unique",
+        "6"
+      ],
+      "status": 0,
+      "processSeconds": 0.04682768392376602,
+      "measurement": {
+        "name": "string-deep-unique",
+        "repetitions": 6,
+        "workerSeconds": 0.005368302,
+        "maxBumpWords": 204800
+      },
+      "workerSeconds": 0.005368302
+    },
+    {
+      "name": "runtime-ir-atomic-clang",
+      "case": "list-source-lexer-unique",
+      "round": 1,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/runtime-ir-atomic-clang",
+        "list-source-lexer-unique",
+        "1"
+      ],
+      "status": 0,
+      "processSeconds": 0.23324367683380842,
+      "measurement": {
+        "name": "list-source-lexer-unique",
+        "repetitions": 1,
+        "workerSeconds": 0.005099921,
+        "maxBumpWords": 6569984
+      },
+      "workerSeconds": 0.005099921
+    },
+    {
+      "name": "runtime-ir-atomic-qbe",
+      "case": "list-source-lexer-unique",
+      "round": 1,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/runtime-ir-atomic-qbe",
+        "list-source-lexer-unique",
+        "1"
+      ],
+      "status": 0,
+      "processSeconds": 0.23375226091593504,
+      "measurement": {
+        "name": "list-source-lexer-unique",
+        "repetitions": 1,
+        "workerSeconds": 0.005266882,
+        "maxBumpWords": 6569984
+      },
+      "workerSeconds": 0.005266882
+    },
+    {
+      "name": "runtime-ir-single-clang",
+      "case": "list-source-lexer-unique",
+      "round": 1,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/runtime-ir-single-clang",
+        "list-source-lexer-unique",
+        "1"
+      ],
+      "status": 0,
+      "processSeconds": 0.23435093299485743,
+      "measurement": {
+        "name": "list-source-lexer-unique",
+        "repetitions": 1,
+        "workerSeconds": 0.005505348,
+        "maxBumpWords": 6569984
+      },
+      "workerSeconds": 0.005505348
+    },
+    {
+      "name": "runtime-ir-single-qbe",
+      "case": "list-source-lexer-unique",
+      "round": 1,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/runtime-ir-single-qbe",
+        "list-source-lexer-unique",
+        "1"
+      ],
+      "status": 0,
+      "processSeconds": 0.23410296882502735,
+      "measurement": {
+        "name": "list-source-lexer-unique",
+        "repetitions": 1,
+        "workerSeconds": 0.005767386,
+        "maxBumpWords": 6569984
+      },
+      "workerSeconds": 0.005767386
+    },
+    {
+      "name": "pair-clang",
+      "case": "list-source-lexer-unique",
+      "round": 1,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/pair-clang",
+        "list-source-lexer-unique",
+        "1"
+      ],
+      "status": 0,
+      "processSeconds": 0.23411260498687625,
+      "measurement": {
+        "name": "list-source-lexer-unique",
+        "repetitions": 1,
+        "workerSeconds": 0.005461524,
+        "maxBumpWords": 6569984
+      },
+      "workerSeconds": 0.005461524
+    },
+    {
+      "name": "pair-qbe",
+      "case": "list-source-lexer-unique",
+      "round": 1,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/pair-qbe",
+        "list-source-lexer-unique",
+        "1"
+      ],
+      "status": 0,
+      "processSeconds": 0.23368073510937393,
+      "measurement": {
+        "name": "list-source-lexer-unique",
+        "repetitions": 1,
+        "workerSeconds": 0.005476914,
+        "maxBumpWords": 6569984
+      },
+      "workerSeconds": 0.005476914
+    },
+    {
+      "name": "specialized-clang",
+      "case": "list-source-lexer-unique",
+      "round": 1,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/specialized-clang",
+        "list-source-lexer-unique",
+        "1"
+      ],
+      "status": 0,
+      "processSeconds": 0.23540664301253855,
+      "measurement": {
+        "name": "list-source-lexer-unique",
+        "repetitions": 1,
+        "workerSeconds": 0.005479642,
+        "maxBumpWords": 6569984
+      },
+      "workerSeconds": 0.005479642
+    },
+    {
+      "name": "specialized-qbe",
+      "case": "list-source-lexer-unique",
+      "round": 1,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/specialized-qbe",
+        "list-source-lexer-unique",
+        "1"
+      ],
+      "status": 0,
+      "processSeconds": 0.23460130696184933,
+      "measurement": {
+        "name": "list-source-lexer-unique",
+        "repetitions": 1,
+        "workerSeconds": 0.005531125,
+        "maxBumpWords": 6569984
+      },
+      "workerSeconds": 0.005531125
+    },
+    {
+      "name": "fused-clang",
+      "case": "list-source-lexer-unique",
+      "round": 1,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/fused-clang",
+        "list-source-lexer-unique",
+        "1"
+      ],
+      "status": 0,
+      "processSeconds": 0.23340910603292286,
+      "measurement": {
+        "name": "list-source-lexer-unique",
+        "repetitions": 1,
+        "workerSeconds": 0.005526018,
+        "maxBumpWords": 6569984
+      },
+      "workerSeconds": 0.005526018
+    },
+    {
+      "name": "fused-qbe",
+      "case": "list-source-lexer-unique",
+      "round": 1,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/fused-qbe",
+        "list-source-lexer-unique",
+        "1"
+      ],
+      "status": 0,
+      "processSeconds": 0.24009042093530297,
+      "measurement": {
+        "name": "list-source-lexer-unique",
+        "repetitions": 1,
+        "workerSeconds": 0.005911943,
+        "maxBumpWords": 6569984
+      },
+      "workerSeconds": 0.005911943
+    },
+    {
+      "name": "runtime-ir-atomic-clang",
+      "case": "string-source-lexer-unique",
+      "round": 1,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/runtime-ir-atomic-clang",
+        "string-source-lexer-unique",
+        "7"
+      ],
+      "status": 0,
+      "processSeconds": 0.041022764053195715,
+      "measurement": {
+        "name": "string-source-lexer-unique",
+        "repetitions": 7,
+        "workerSeconds": 0.002707262,
+        "maxBumpWords": 159744
+      },
+      "workerSeconds": 0.002707262
+    },
+    {
+      "name": "runtime-ir-atomic-qbe",
+      "case": "string-source-lexer-unique",
+      "round": 1,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/runtime-ir-atomic-qbe",
+        "string-source-lexer-unique",
+        "7"
+      ],
+      "status": 0,
+      "processSeconds": 0.0418654209934175,
+      "measurement": {
+        "name": "string-source-lexer-unique",
+        "repetitions": 7,
+        "workerSeconds": 0.003693115,
+        "maxBumpWords": 159744
+      },
+      "workerSeconds": 0.003693115
+    },
+    {
+      "name": "runtime-ir-single-clang",
+      "case": "string-source-lexer-unique",
+      "round": 1,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/runtime-ir-single-clang",
+        "string-source-lexer-unique",
+        "7"
+      ],
+      "status": 0,
+      "processSeconds": 0.04054762911982834,
+      "measurement": {
+        "name": "string-source-lexer-unique",
+        "repetitions": 7,
+        "workerSeconds": 0.002304957,
+        "maxBumpWords": 159744
+      },
+      "workerSeconds": 0.002304957
+    },
+    {
+      "name": "runtime-ir-single-qbe",
+      "case": "string-source-lexer-unique",
+      "round": 1,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/runtime-ir-single-qbe",
+        "string-source-lexer-unique",
+        "7"
+      ],
+      "status": 0,
+      "processSeconds": 0.04123025992885232,
+      "measurement": {
+        "name": "string-source-lexer-unique",
+        "repetitions": 7,
+        "workerSeconds": 0.0030667,
+        "maxBumpWords": 159744
+      },
+      "workerSeconds": 0.0030667
+    },
+    {
+      "name": "pair-clang",
+      "case": "string-source-lexer-unique",
+      "round": 1,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/pair-clang",
+        "string-source-lexer-unique",
+        "7"
+      ],
+      "status": 0,
+      "processSeconds": 0.0419652929995209,
+      "measurement": {
+        "name": "string-source-lexer-unique",
+        "repetitions": 7,
+        "workerSeconds": 0.003765569,
+        "maxBumpWords": 159744
+      },
+      "workerSeconds": 0.003765569
+    },
+    {
+      "name": "pair-qbe",
+      "case": "string-source-lexer-unique",
+      "round": 1,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/pair-qbe",
+        "string-source-lexer-unique",
+        "7"
+      ],
+      "status": 0,
+      "processSeconds": 0.04259976092725992,
+      "measurement": {
+        "name": "string-source-lexer-unique",
+        "repetitions": 7,
+        "workerSeconds": 0.004473601,
+        "maxBumpWords": 159744
+      },
+      "workerSeconds": 0.004473601
+    },
+    {
+      "name": "specialized-clang",
+      "case": "string-source-lexer-unique",
+      "round": 1,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/specialized-clang",
+        "string-source-lexer-unique",
+        "7"
+      ],
+      "status": 0,
+      "processSeconds": 0.04282374703325331,
+      "measurement": {
+        "name": "string-source-lexer-unique",
+        "repetitions": 7,
+        "workerSeconds": 0.004661806,
+        "maxBumpWords": 159744
+      },
+      "workerSeconds": 0.004661806
+    },
+    {
+      "name": "specialized-qbe",
+      "case": "string-source-lexer-unique",
+      "round": 1,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/specialized-qbe",
+        "string-source-lexer-unique",
+        "7"
+      ],
+      "status": 0,
+      "processSeconds": 0.04315478098578751,
+      "measurement": {
+        "name": "string-source-lexer-unique",
+        "repetitions": 7,
+        "workerSeconds": 0.004730378,
+        "maxBumpWords": 159744
+      },
+      "workerSeconds": 0.004730378
+    },
+    {
+      "name": "fused-clang",
+      "case": "string-source-lexer-unique",
+      "round": 1,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/fused-clang",
+        "string-source-lexer-unique",
+        "7"
+      ],
+      "status": 0,
+      "processSeconds": 0.04317591991275549,
+      "measurement": {
+        "name": "string-source-lexer-unique",
+        "repetitions": 7,
+        "workerSeconds": 0.005113811,
+        "maxBumpWords": 159744
+      },
+      "workerSeconds": 0.005113811
+    },
+    {
+      "name": "fused-qbe",
+      "case": "string-source-lexer-unique",
+      "round": 1,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/fused-qbe",
+        "string-source-lexer-unique",
+        "7"
+      ],
+      "status": 0,
+      "processSeconds": 0.04298653989098966,
+      "measurement": {
+        "name": "string-source-lexer-unique",
+        "repetitions": 7,
+        "workerSeconds": 0.004978798,
+        "maxBumpWords": 159744
+      },
+      "workerSeconds": 0.004978798
+    },
+    {
+      "name": "runtime-ir-atomic-clang",
+      "case": "list-source-lexer-shared",
+      "round": 1,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/runtime-ir-atomic-clang",
+        "list-source-lexer-shared",
+        "1"
+      ],
+      "status": 0,
+      "processSeconds": 0.34380765492096543,
+      "measurement": {
+        "name": "list-source-lexer-shared",
+        "repetitions": 1,
+        "workerSeconds": 0.006406991,
+        "maxBumpWords": 6766592
+      },
+      "workerSeconds": 0.006406991
+    },
+    {
+      "name": "runtime-ir-atomic-qbe",
+      "case": "list-source-lexer-shared",
+      "round": 1,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/runtime-ir-atomic-qbe",
+        "list-source-lexer-shared",
+        "1"
+      ],
+      "status": 0,
+      "processSeconds": 0.34340566489845514,
+      "measurement": {
+        "name": "list-source-lexer-shared",
+        "repetitions": 1,
+        "workerSeconds": 0.006679895,
+        "maxBumpWords": 6766592
+      },
+      "workerSeconds": 0.006679895
+    },
+    {
+      "name": "runtime-ir-single-clang",
+      "case": "list-source-lexer-shared",
+      "round": 1,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/runtime-ir-single-clang",
+        "list-source-lexer-shared",
+        "1"
+      ],
+      "status": 0,
+      "processSeconds": 0.34358875011093915,
+      "measurement": {
+        "name": "list-source-lexer-shared",
+        "repetitions": 1,
+        "workerSeconds": 0.006471202,
+        "maxBumpWords": 6766592
+      },
+      "workerSeconds": 0.006471202
+    },
+    {
+      "name": "runtime-ir-single-qbe",
+      "case": "list-source-lexer-shared",
+      "round": 1,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/runtime-ir-single-qbe",
+        "list-source-lexer-shared",
+        "1"
+      ],
+      "status": 0,
+      "processSeconds": 0.3445625479798764,
+      "measurement": {
+        "name": "list-source-lexer-shared",
+        "repetitions": 1,
+        "workerSeconds": 0.006476298,
+        "maxBumpWords": 6766592
+      },
+      "workerSeconds": 0.006476298
+    },
+    {
+      "name": "pair-clang",
+      "case": "list-source-lexer-shared",
+      "round": 1,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/pair-clang",
+        "list-source-lexer-shared",
+        "1"
+      ],
+      "status": 0,
+      "processSeconds": 0.3424113050568849,
+      "measurement": {
+        "name": "list-source-lexer-shared",
+        "repetitions": 1,
+        "workerSeconds": 0.006034766,
+        "maxBumpWords": 6766592
+      },
+      "workerSeconds": 0.006034766
+    },
+    {
+      "name": "pair-qbe",
+      "case": "list-source-lexer-shared",
+      "round": 1,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/pair-qbe",
+        "list-source-lexer-shared",
+        "1"
+      ],
+      "status": 0,
+      "processSeconds": 0.34316534199751914,
+      "measurement": {
+        "name": "list-source-lexer-shared",
+        "repetitions": 1,
+        "workerSeconds": 0.00605211,
+        "maxBumpWords": 6766592
+      },
+      "workerSeconds": 0.00605211
+    },
+    {
+      "name": "specialized-clang",
+      "case": "list-source-lexer-shared",
+      "round": 1,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/specialized-clang",
+        "list-source-lexer-shared",
+        "1"
+      ],
+      "status": 0,
+      "processSeconds": 0.34413753100670874,
+      "measurement": {
+        "name": "list-source-lexer-shared",
+        "repetitions": 1,
+        "workerSeconds": 0.006215779,
+        "maxBumpWords": 6766592
+      },
+      "workerSeconds": 0.006215779
+    },
+    {
+      "name": "specialized-qbe",
+      "case": "list-source-lexer-shared",
+      "round": 1,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/specialized-qbe",
+        "list-source-lexer-shared",
+        "1"
+      ],
+      "status": 0,
+      "processSeconds": 0.34282609610818326,
+      "measurement": {
+        "name": "list-source-lexer-shared",
+        "repetitions": 1,
+        "workerSeconds": 0.006410024,
+        "maxBumpWords": 6766592
+      },
+      "workerSeconds": 0.006410024
+    },
+    {
+      "name": "fused-clang",
+      "case": "list-source-lexer-shared",
+      "round": 1,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/fused-clang",
+        "list-source-lexer-shared",
+        "1"
+      ],
+      "status": 0,
+      "processSeconds": 0.344183555804193,
+      "measurement": {
+        "name": "list-source-lexer-shared",
+        "repetitions": 1,
+        "workerSeconds": 0.006336182,
+        "maxBumpWords": 6766592
+      },
+      "workerSeconds": 0.006336182
+    },
+    {
+      "name": "fused-qbe",
+      "case": "list-source-lexer-shared",
+      "round": 1,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/fused-qbe",
+        "list-source-lexer-shared",
+        "1"
+      ],
+      "status": 0,
+      "processSeconds": 0.34412013506516814,
+      "measurement": {
+        "name": "list-source-lexer-shared",
+        "repetitions": 1,
+        "workerSeconds": 0.006555257,
+        "maxBumpWords": 6766592
+      },
+      "workerSeconds": 0.006555257
+    },
+    {
+      "name": "runtime-ir-atomic-clang",
+      "case": "string-source-lexer-shared",
+      "round": 1,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/runtime-ir-atomic-clang",
+        "string-source-lexer-shared",
+        "3"
+      ],
+      "status": 0,
+      "processSeconds": 0.034870828967541456,
+      "measurement": {
+        "name": "string-source-lexer-shared",
+        "repetitions": 3,
+        "workerSeconds": 0.004922202,
+        "maxBumpWords": 319488
+      },
+      "workerSeconds": 0.004922202
+    },
+    {
+      "name": "runtime-ir-atomic-qbe",
+      "case": "string-source-lexer-shared",
+      "round": 1,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/runtime-ir-atomic-qbe",
+        "string-source-lexer-shared",
+        "3"
+      ],
+      "status": 0,
+      "processSeconds": 0.03541294508613646,
+      "measurement": {
+        "name": "string-source-lexer-shared",
+        "repetitions": 3,
+        "workerSeconds": 0.005359198,
+        "maxBumpWords": 319488
+      },
+      "workerSeconds": 0.005359198
+    },
+    {
+      "name": "runtime-ir-single-clang",
+      "case": "string-source-lexer-shared",
+      "round": 1,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/runtime-ir-single-clang",
+        "string-source-lexer-shared",
+        "3"
+      ],
+      "status": 0,
+      "processSeconds": 0.03497368493117392,
+      "measurement": {
+        "name": "string-source-lexer-shared",
+        "repetitions": 3,
+        "workerSeconds": 0.004744745,
+        "maxBumpWords": 319488
+      },
+      "workerSeconds": 0.004744745
+    },
+    {
+      "name": "runtime-ir-single-qbe",
+      "case": "string-source-lexer-shared",
+      "round": 1,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/runtime-ir-single-qbe",
+        "string-source-lexer-shared",
+        "3"
+      ],
+      "status": 0,
+      "processSeconds": 0.035546711180359125,
+      "measurement": {
+        "name": "string-source-lexer-shared",
+        "repetitions": 3,
+        "workerSeconds": 0.004958175,
+        "maxBumpWords": 319488
+      },
+      "workerSeconds": 0.004958175
+    },
+    {
+      "name": "pair-clang",
+      "case": "string-source-lexer-shared",
+      "round": 1,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/pair-clang",
+        "string-source-lexer-shared",
+        "3"
+      ],
+      "status": 0,
+      "processSeconds": 0.03482900792732835,
+      "measurement": {
+        "name": "string-source-lexer-shared",
+        "repetitions": 3,
+        "workerSeconds": 0.004421839,
+        "maxBumpWords": 319488
+      },
+      "workerSeconds": 0.004421839
+    },
+    {
+      "name": "pair-qbe",
+      "case": "string-source-lexer-shared",
+      "round": 1,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/pair-qbe",
+        "string-source-lexer-shared",
+        "3"
+      ],
+      "status": 0,
+      "processSeconds": 0.03465842898003757,
+      "measurement": {
+        "name": "string-source-lexer-shared",
+        "repetitions": 3,
+        "workerSeconds": 0.004497041,
+        "maxBumpWords": 319488
+      },
+      "workerSeconds": 0.004497041
+    },
+    {
+      "name": "specialized-clang",
+      "case": "string-source-lexer-shared",
+      "round": 1,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/specialized-clang",
+        "string-source-lexer-shared",
+        "3"
+      ],
+      "status": 0,
+      "processSeconds": 0.04052392207086086,
+      "measurement": {
+        "name": "string-source-lexer-shared",
+        "repetitions": 3,
+        "workerSeconds": 0.005532511,
+        "maxBumpWords": 319488
+      },
+      "workerSeconds": 0.005532511
+    },
+    {
+      "name": "specialized-qbe",
+      "case": "string-source-lexer-shared",
+      "round": 1,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/specialized-qbe",
+        "string-source-lexer-shared",
+        "3"
+      ],
+      "status": 0,
+      "processSeconds": 0.038370469119399786,
+      "measurement": {
+        "name": "string-source-lexer-shared",
+        "repetitions": 3,
+        "workerSeconds": 0.005881748,
+        "maxBumpWords": 319488
+      },
+      "workerSeconds": 0.005881748
+    },
+    {
+      "name": "fused-clang",
+      "case": "string-source-lexer-shared",
+      "round": 1,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/fused-clang",
+        "string-source-lexer-shared",
+        "3"
+      ],
+      "status": 0,
+      "processSeconds": 0.038294254103675485,
+      "measurement": {
+        "name": "string-source-lexer-shared",
+        "repetitions": 3,
+        "workerSeconds": 0.00592211,
+        "maxBumpWords": 319488
+      },
+      "workerSeconds": 0.00592211
+    },
+    {
+      "name": "fused-qbe",
+      "case": "string-source-lexer-shared",
+      "round": 1,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/fused-qbe",
+        "string-source-lexer-shared",
+        "3"
+      ],
+      "status": 0,
+      "processSeconds": 0.03791723120957613,
+      "measurement": {
+        "name": "string-source-lexer-shared",
+        "repetitions": 3,
+        "workerSeconds": 0.005023264,
+        "maxBumpWords": 319488
+      },
+      "workerSeconds": 0.005023264
+    },
+    {
+      "name": "fused-qbe",
+      "case": "list-deep-unique",
+      "round": 2,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/fused-qbe",
+        "list-deep-unique",
+        "6"
+      ],
+      "status": 0,
+      "processSeconds": 0.11278842086903751,
+      "measurement": {
+        "name": "list-deep-unique",
+        "repetitions": 6,
+        "workerSeconds": 0.006538319,
+        "maxBumpWords": 450560
+      },
+      "workerSeconds": 0.006538319
+    },
+    {
+      "name": "fused-clang",
+      "case": "list-deep-unique",
+      "round": 2,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/fused-clang",
+        "list-deep-unique",
+        "6"
+      ],
+      "status": 0,
+      "processSeconds": 0.11084357090294361,
+      "measurement": {
+        "name": "list-deep-unique",
+        "repetitions": 6,
+        "workerSeconds": 0.006228341,
+        "maxBumpWords": 450560
+      },
+      "workerSeconds": 0.006228341
+    },
+    {
+      "name": "specialized-qbe",
+      "case": "list-deep-unique",
+      "round": 2,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/specialized-qbe",
+        "list-deep-unique",
+        "6"
+      ],
+      "status": 0,
+      "processSeconds": 0.1088806081097573,
+      "measurement": {
+        "name": "list-deep-unique",
+        "repetitions": 6,
+        "workerSeconds": 0.005643468,
+        "maxBumpWords": 450560
+      },
+      "workerSeconds": 0.005643468
+    },
+    {
+      "name": "specialized-clang",
+      "case": "list-deep-unique",
+      "round": 2,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/specialized-clang",
+        "list-deep-unique",
+        "6"
+      ],
+      "status": 0,
+      "processSeconds": 0.10757447616197169,
+      "measurement": {
+        "name": "list-deep-unique",
+        "repetitions": 6,
+        "workerSeconds": 0.005853516,
+        "maxBumpWords": 450560
+      },
+      "workerSeconds": 0.005853516
+    },
+    {
+      "name": "pair-qbe",
+      "case": "list-deep-unique",
+      "round": 2,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/pair-qbe",
+        "list-deep-unique",
+        "6"
+      ],
+      "status": 0,
+      "processSeconds": 0.11170603684149683,
+      "measurement": {
+        "name": "list-deep-unique",
+        "repetitions": 6,
+        "workerSeconds": 0.006083418,
+        "maxBumpWords": 450560
+      },
+      "workerSeconds": 0.006083418
+    },
+    {
+      "name": "pair-clang",
+      "case": "list-deep-unique",
+      "round": 2,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/pair-clang",
+        "list-deep-unique",
+        "6"
+      ],
+      "status": 0,
+      "processSeconds": 0.11034748796373606,
+      "measurement": {
+        "name": "list-deep-unique",
+        "repetitions": 6,
+        "workerSeconds": 0.004770698,
+        "maxBumpWords": 450560
+      },
+      "workerSeconds": 0.004770698
+    },
+    {
+      "name": "runtime-ir-single-qbe",
+      "case": "list-deep-unique",
+      "round": 2,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/runtime-ir-single-qbe",
+        "list-deep-unique",
+        "6"
+      ],
+      "status": 0,
+      "processSeconds": 0.10832379898056388,
+      "measurement": {
+        "name": "list-deep-unique",
+        "repetitions": 6,
+        "workerSeconds": 0.004033908,
+        "maxBumpWords": 450560
+      },
+      "workerSeconds": 0.004033908
+    },
+    {
+      "name": "runtime-ir-single-clang",
+      "case": "list-deep-unique",
+      "round": 2,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/runtime-ir-single-clang",
+        "list-deep-unique",
+        "6"
+      ],
+      "status": 0,
+      "processSeconds": 0.10692219901829958,
+      "measurement": {
+        "name": "list-deep-unique",
+        "repetitions": 6,
+        "workerSeconds": 0.003041617,
+        "maxBumpWords": 450560
+      },
+      "workerSeconds": 0.003041617
+    },
+    {
+      "name": "runtime-ir-atomic-qbe",
+      "case": "list-deep-unique",
+      "round": 2,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/runtime-ir-atomic-qbe",
+        "list-deep-unique",
+        "6"
+      ],
+      "status": 0,
+      "processSeconds": 0.11074715899303555,
+      "measurement": {
+        "name": "list-deep-unique",
+        "repetitions": 6,
+        "workerSeconds": 0.004827139,
+        "maxBumpWords": 450560
+      },
+      "workerSeconds": 0.004827139
+    },
+    {
+      "name": "runtime-ir-atomic-clang",
+      "case": "list-deep-unique",
+      "round": 2,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/runtime-ir-atomic-clang",
+        "list-deep-unique",
+        "6"
+      ],
+      "status": 0,
+      "processSeconds": 0.1096725461538881,
+      "measurement": {
+        "name": "list-deep-unique",
+        "repetitions": 6,
+        "workerSeconds": 0.004117654,
+        "maxBumpWords": 450560
+      },
+      "workerSeconds": 0.004117654
+    },
+    {
+      "name": "fused-qbe",
+      "case": "list-deep-shared-root",
+      "round": 2,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/fused-qbe",
+        "list-deep-shared-root",
+        "3"
+      ],
+      "status": 0,
+      "processSeconds": 0.09057972300797701,
+      "measurement": {
+        "name": "list-deep-shared-root",
+        "repetitions": 3,
+        "workerSeconds": 0.007716544,
+        "maxBumpWords": 647168
+      },
+      "workerSeconds": 0.007716544
+    },
+    {
+      "name": "fused-clang",
+      "case": "list-deep-shared-root",
+      "round": 2,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/fused-clang",
+        "list-deep-shared-root",
+        "3"
+      ],
+      "status": 0,
+      "processSeconds": 0.09185562492348254,
+      "measurement": {
+        "name": "list-deep-shared-root",
+        "repetitions": 3,
+        "workerSeconds": 0.007943215,
+        "maxBumpWords": 647168
+      },
+      "workerSeconds": 0.007943215
+    },
+    {
+      "name": "specialized-qbe",
+      "case": "list-deep-shared-root",
+      "round": 2,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/specialized-qbe",
+        "list-deep-shared-root",
+        "3"
+      ],
+      "status": 0,
+      "processSeconds": 0.09034789283759892,
+      "measurement": {
+        "name": "list-deep-shared-root",
+        "repetitions": 3,
+        "workerSeconds": 0.007284344,
+        "maxBumpWords": 647168
+      },
+      "workerSeconds": 0.007284344
+    },
+    {
+      "name": "specialized-clang",
+      "case": "list-deep-shared-root",
+      "round": 2,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/specialized-clang",
+        "list-deep-shared-root",
+        "3"
+      ],
+      "status": 0,
+      "processSeconds": 0.08810296398587525,
+      "measurement": {
+        "name": "list-deep-shared-root",
+        "repetitions": 3,
+        "workerSeconds": 0.006451659,
+        "maxBumpWords": 647168
+      },
+      "workerSeconds": 0.006451659
+    },
+    {
+      "name": "pair-qbe",
+      "case": "list-deep-shared-root",
+      "round": 2,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/pair-qbe",
+        "list-deep-shared-root",
+        "3"
+      ],
+      "status": 0,
+      "processSeconds": 0.09111417201347649,
+      "measurement": {
+        "name": "list-deep-shared-root",
+        "repetitions": 3,
+        "workerSeconds": 0.006544662,
+        "maxBumpWords": 647168
+      },
+      "workerSeconds": 0.006544662
+    },
+    {
+      "name": "pair-clang",
+      "case": "list-deep-shared-root",
+      "round": 2,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/pair-clang",
+        "list-deep-shared-root",
+        "3"
+      ],
+      "status": 0,
+      "processSeconds": 0.08941587200388312,
+      "measurement": {
+        "name": "list-deep-shared-root",
+        "repetitions": 3,
+        "workerSeconds": 0.006596103,
+        "maxBumpWords": 647168
+      },
+      "workerSeconds": 0.006596103
+    },
+    {
+      "name": "runtime-ir-single-qbe",
+      "case": "list-deep-shared-root",
+      "round": 2,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/runtime-ir-single-qbe",
+        "list-deep-shared-root",
+        "3"
+      ],
+      "status": 0,
+      "processSeconds": 0.09137041098438203,
+      "measurement": {
+        "name": "list-deep-shared-root",
+        "repetitions": 3,
+        "workerSeconds": 0.007096121,
+        "maxBumpWords": 647168
+      },
+      "workerSeconds": 0.007096121
+    },
+    {
+      "name": "runtime-ir-single-clang",
+      "case": "list-deep-shared-root",
+      "round": 2,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/runtime-ir-single-clang",
+        "list-deep-shared-root",
+        "3"
+      ],
+      "status": 0,
+      "processSeconds": 0.09199331793934107,
+      "measurement": {
+        "name": "list-deep-shared-root",
+        "repetitions": 3,
+        "workerSeconds": 0.006527161,
+        "maxBumpWords": 647168
+      },
+      "workerSeconds": 0.006527161
+    },
+    {
+      "name": "runtime-ir-atomic-qbe",
+      "case": "list-deep-shared-root",
+      "round": 2,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/runtime-ir-atomic-qbe",
+        "list-deep-shared-root",
+        "3"
+      ],
+      "status": 0,
+      "processSeconds": 0.09114564210176468,
+      "measurement": {
+        "name": "list-deep-shared-root",
+        "repetitions": 3,
+        "workerSeconds": 0.007207914,
+        "maxBumpWords": 647168
+      },
+      "workerSeconds": 0.007207914
+    },
+    {
+      "name": "runtime-ir-atomic-clang",
+      "case": "list-deep-shared-root",
+      "round": 2,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/runtime-ir-atomic-clang",
+        "list-deep-shared-root",
+        "3"
+      ],
+      "status": 0,
+      "processSeconds": 0.09056556294672191,
+      "measurement": {
+        "name": "list-deep-shared-root",
+        "repetitions": 3,
+        "workerSeconds": 0.006738215,
+        "maxBumpWords": 647168
+      },
+      "workerSeconds": 0.006738215
+    },
+    {
+      "name": "fused-qbe",
+      "case": "string-deep-unique",
+      "round": 2,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/fused-qbe",
+        "string-deep-unique",
+        "6"
+      ],
+      "status": 0,
+      "processSeconds": 0.05810374999418855,
+      "measurement": {
+        "name": "string-deep-unique",
+        "repetitions": 6,
+        "workerSeconds": 0.00704225,
+        "maxBumpWords": 204800
+      },
+      "workerSeconds": 0.00704225
+    },
+    {
+      "name": "fused-clang",
+      "case": "string-deep-unique",
+      "round": 2,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/fused-clang",
+        "string-deep-unique",
+        "6"
+      ],
+      "status": 0,
+      "processSeconds": 0.04999109008349478,
+      "measurement": {
+        "name": "string-deep-unique",
+        "repetitions": 6,
+        "workerSeconds": 0.005938043,
+        "maxBumpWords": 204800
+      },
+      "workerSeconds": 0.005938043
+    },
+    {
+      "name": "specialized-qbe",
+      "case": "string-deep-unique",
+      "round": 2,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/specialized-qbe",
+        "string-deep-unique",
+        "6"
+      ],
+      "status": 0,
+      "processSeconds": 0.04925065208226442,
+      "measurement": {
+        "name": "string-deep-unique",
+        "repetitions": 6,
+        "workerSeconds": 0.005513152,
+        "maxBumpWords": 204800
+      },
+      "workerSeconds": 0.005513152
+    },
+    {
+      "name": "specialized-clang",
+      "case": "string-deep-unique",
+      "round": 2,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/specialized-clang",
+        "string-deep-unique",
+        "6"
+      ],
+      "status": 0,
+      "processSeconds": 0.04979766299948096,
+      "measurement": {
+        "name": "string-deep-unique",
+        "repetitions": 6,
+        "workerSeconds": 0.005450222,
+        "maxBumpWords": 204800
+      },
+      "workerSeconds": 0.005450222
+    },
+    {
+      "name": "pair-qbe",
+      "case": "string-deep-unique",
+      "round": 2,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/pair-qbe",
+        "string-deep-unique",
+        "6"
+      ],
+      "status": 0,
+      "processSeconds": 0.04916103184223175,
+      "measurement": {
+        "name": "string-deep-unique",
+        "repetitions": 6,
+        "workerSeconds": 0.005181694,
+        "maxBumpWords": 204800
+      },
+      "workerSeconds": 0.005181694
+    },
+    {
+      "name": "pair-clang",
+      "case": "string-deep-unique",
+      "round": 2,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/pair-clang",
+        "string-deep-unique",
+        "6"
+      ],
+      "status": 0,
+      "processSeconds": 0.04971696203574538,
+      "measurement": {
+        "name": "string-deep-unique",
+        "repetitions": 6,
+        "workerSeconds": 0.004465656,
+        "maxBumpWords": 204800
+      },
+      "workerSeconds": 0.004465656
+    },
+    {
+      "name": "runtime-ir-single-qbe",
+      "case": "string-deep-unique",
+      "round": 2,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/runtime-ir-single-qbe",
+        "string-deep-unique",
+        "6"
+      ],
+      "status": 0,
+      "processSeconds": 0.047746208030730486,
+      "measurement": {
+        "name": "string-deep-unique",
+        "repetitions": 6,
+        "workerSeconds": 0.003744746,
+        "maxBumpWords": 204800
+      },
+      "workerSeconds": 0.003744746
+    },
+    {
+      "name": "runtime-ir-single-clang",
+      "case": "string-deep-unique",
+      "round": 2,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/runtime-ir-single-clang",
+        "string-deep-unique",
+        "6"
+      ],
+      "status": 0,
+      "processSeconds": 0.04687400907278061,
+      "measurement": {
+        "name": "string-deep-unique",
+        "repetitions": 6,
+        "workerSeconds": 0.0026992,
+        "maxBumpWords": 204800
+      },
+      "workerSeconds": 0.0026992
+    },
+    {
+      "name": "runtime-ir-atomic-qbe",
+      "case": "string-deep-unique",
+      "round": 2,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/runtime-ir-atomic-qbe",
+        "string-deep-unique",
+        "6"
+      ],
+      "status": 0,
+      "processSeconds": 0.049655278911814094,
+      "measurement": {
+        "name": "string-deep-unique",
+        "repetitions": 6,
+        "workerSeconds": 0.00446998,
+        "maxBumpWords": 204800
+      },
+      "workerSeconds": 0.00446998
+    },
+    {
+      "name": "runtime-ir-atomic-clang",
+      "case": "string-deep-unique",
+      "round": 2,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/runtime-ir-atomic-clang",
+        "string-deep-unique",
+        "6"
+      ],
+      "status": 0,
+      "processSeconds": 0.04728173604235053,
+      "measurement": {
+        "name": "string-deep-unique",
+        "repetitions": 6,
+        "workerSeconds": 0.003237576,
+        "maxBumpWords": 204800
+      },
+      "workerSeconds": 0.003237576
+    },
+    {
+      "name": "fused-qbe",
+      "case": "list-source-lexer-unique",
+      "round": 2,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/fused-qbe",
+        "list-source-lexer-unique",
+        "1"
+      ],
+      "status": 0,
+      "processSeconds": 0.24924599193036556,
+      "measurement": {
+        "name": "list-source-lexer-unique",
+        "repetitions": 1,
+        "workerSeconds": 0.006309344,
+        "maxBumpWords": 6569984
+      },
+      "workerSeconds": 0.006309344
+    },
+    {
+      "name": "fused-clang",
+      "case": "list-source-lexer-unique",
+      "round": 2,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/fused-clang",
+        "list-source-lexer-unique",
+        "1"
+      ],
+      "status": 0,
+      "processSeconds": 0.24874638603068888,
+      "measurement": {
+        "name": "list-source-lexer-unique",
+        "repetitions": 1,
+        "workerSeconds": 0.005731441,
+        "maxBumpWords": 6569984
+      },
+      "workerSeconds": 0.005731441
+    },
+    {
+      "name": "specialized-qbe",
+      "case": "list-source-lexer-unique",
+      "round": 2,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/specialized-qbe",
+        "list-source-lexer-unique",
+        "1"
+      ],
+      "status": 0,
+      "processSeconds": 0.2487816740758717,
+      "measurement": {
+        "name": "list-source-lexer-unique",
+        "repetitions": 1,
+        "workerSeconds": 0.005389618,
+        "maxBumpWords": 6569984
+      },
+      "workerSeconds": 0.005389618
+    },
+    {
+      "name": "specialized-clang",
+      "case": "list-source-lexer-unique",
+      "round": 2,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/specialized-clang",
+        "list-source-lexer-unique",
+        "1"
+      ],
+      "status": 0,
+      "processSeconds": 0.2480910960584879,
+      "measurement": {
+        "name": "list-source-lexer-unique",
+        "repetitions": 1,
+        "workerSeconds": 0.005413482,
+        "maxBumpWords": 6569984
+      },
+      "workerSeconds": 0.005413482
+    },
+    {
+      "name": "pair-qbe",
+      "case": "list-source-lexer-unique",
+      "round": 2,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/pair-qbe",
+        "list-source-lexer-unique",
+        "1"
+      ],
+      "status": 0,
+      "processSeconds": 0.24804563098587096,
+      "measurement": {
+        "name": "list-source-lexer-unique",
+        "repetitions": 1,
+        "workerSeconds": 0.005391428,
+        "maxBumpWords": 6569984
+      },
+      "workerSeconds": 0.005391428
+    },
+    {
+      "name": "pair-clang",
+      "case": "list-source-lexer-unique",
+      "round": 2,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/pair-clang",
+        "list-source-lexer-unique",
+        "1"
+      ],
+      "status": 0,
+      "processSeconds": 0.25018416508100927,
+      "measurement": {
+        "name": "list-source-lexer-unique",
+        "repetitions": 1,
+        "workerSeconds": 0.005763611,
+        "maxBumpWords": 6569984
+      },
+      "workerSeconds": 0.005763611
+    },
+    {
+      "name": "runtime-ir-single-qbe",
+      "case": "list-source-lexer-unique",
+      "round": 2,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/runtime-ir-single-qbe",
+        "list-source-lexer-unique",
+        "1"
+      ],
+      "status": 0,
+      "processSeconds": 0.2571931630373001,
+      "measurement": {
+        "name": "list-source-lexer-unique",
+        "repetitions": 1,
+        "workerSeconds": 0.006480316,
+        "maxBumpWords": 6569984
+      },
+      "workerSeconds": 0.006480316
+    },
+    {
+      "name": "runtime-ir-single-clang",
+      "case": "list-source-lexer-unique",
+      "round": 2,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/runtime-ir-single-clang",
+        "list-source-lexer-unique",
+        "1"
+      ],
+      "status": 0,
+      "processSeconds": 0.23878698982298374,
+      "measurement": {
+        "name": "list-source-lexer-unique",
+        "repetitions": 1,
+        "workerSeconds": 0.005633406,
+        "maxBumpWords": 6569984
+      },
+      "workerSeconds": 0.005633406
+    },
+    {
+      "name": "runtime-ir-atomic-qbe",
+      "case": "list-source-lexer-unique",
+      "round": 2,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/runtime-ir-atomic-qbe",
+        "list-source-lexer-unique",
+        "1"
+      ],
+      "status": 0,
+      "processSeconds": 0.23282668692991138,
+      "measurement": {
+        "name": "list-source-lexer-unique",
+        "repetitions": 1,
+        "workerSeconds": 0.005224797,
+        "maxBumpWords": 6569984
+      },
+      "workerSeconds": 0.005224797
+    },
+    {
+      "name": "runtime-ir-atomic-clang",
+      "case": "list-source-lexer-unique",
+      "round": 2,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/runtime-ir-atomic-clang",
+        "list-source-lexer-unique",
+        "1"
+      ],
+      "status": 0,
+      "processSeconds": 0.23269864916801453,
+      "measurement": {
+        "name": "list-source-lexer-unique",
+        "repetitions": 1,
+        "workerSeconds": 0.005128587,
+        "maxBumpWords": 6569984
+      },
+      "workerSeconds": 0.005128587
+    },
+    {
+      "name": "fused-qbe",
+      "case": "string-source-lexer-unique",
+      "round": 2,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/fused-qbe",
+        "string-source-lexer-unique",
+        "7"
+      ],
+      "status": 0,
+      "processSeconds": 0.04323780909180641,
+      "measurement": {
+        "name": "string-source-lexer-unique",
+        "repetitions": 7,
+        "workerSeconds": 0.005024841,
+        "maxBumpWords": 159744
+      },
+      "workerSeconds": 0.005024841
+    },
+    {
+      "name": "fused-clang",
+      "case": "string-source-lexer-unique",
+      "round": 2,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/fused-clang",
+        "string-source-lexer-unique",
+        "7"
+      ],
+      "status": 0,
+      "processSeconds": 0.0432302700355649,
+      "measurement": {
+        "name": "string-source-lexer-unique",
+        "repetitions": 7,
+        "workerSeconds": 0.005089597,
+        "maxBumpWords": 159744
+      },
+      "workerSeconds": 0.005089597
+    },
+    {
+      "name": "specialized-qbe",
+      "case": "string-source-lexer-unique",
+      "round": 2,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/specialized-qbe",
+        "string-source-lexer-unique",
+        "7"
+      ],
+      "status": 0,
+      "processSeconds": 0.04302474786527455,
+      "measurement": {
+        "name": "string-source-lexer-unique",
+        "repetitions": 7,
+        "workerSeconds": 0.004716358,
+        "maxBumpWords": 159744
+      },
+      "workerSeconds": 0.004716358
+    },
+    {
+      "name": "specialized-clang",
+      "case": "string-source-lexer-unique",
+      "round": 2,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/specialized-clang",
+        "string-source-lexer-unique",
+        "7"
+      ],
+      "status": 0,
+      "processSeconds": 0.04351822892203927,
+      "measurement": {
+        "name": "string-source-lexer-unique",
+        "repetitions": 7,
+        "workerSeconds": 0.004657913,
+        "maxBumpWords": 159744
+      },
+      "workerSeconds": 0.004657913
+    },
+    {
+      "name": "pair-qbe",
+      "case": "string-source-lexer-unique",
+      "round": 2,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/pair-qbe",
+        "string-source-lexer-unique",
+        "7"
+      ],
+      "status": 0,
+      "processSeconds": 0.04447691794484854,
+      "measurement": {
+        "name": "string-source-lexer-unique",
+        "repetitions": 7,
+        "workerSeconds": 0.004789453,
+        "maxBumpWords": 159744
+      },
+      "workerSeconds": 0.004789453
+    },
+    {
+      "name": "pair-clang",
+      "case": "string-source-lexer-unique",
+      "round": 2,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/pair-clang",
+        "string-source-lexer-unique",
+        "7"
+      ],
+      "status": 0,
+      "processSeconds": 0.042280936846509576,
+      "measurement": {
+        "name": "string-source-lexer-unique",
+        "repetitions": 7,
+        "workerSeconds": 0.003841387,
+        "maxBumpWords": 159744
+      },
+      "workerSeconds": 0.003841387
+    },
+    {
+      "name": "runtime-ir-single-qbe",
+      "case": "string-source-lexer-unique",
+      "round": 2,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/runtime-ir-single-qbe",
+        "string-source-lexer-unique",
+        "7"
+      ],
+      "status": 0,
+      "processSeconds": 0.04154798318631947,
+      "measurement": {
+        "name": "string-source-lexer-unique",
+        "repetitions": 7,
+        "workerSeconds": 0.003105256,
+        "maxBumpWords": 159744
+      },
+      "workerSeconds": 0.003105256
+    },
+    {
+      "name": "runtime-ir-single-clang",
+      "case": "string-source-lexer-unique",
+      "round": 2,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/runtime-ir-single-clang",
+        "string-source-lexer-unique",
+        "7"
+      ],
+      "status": 0,
+      "processSeconds": 0.04089615307748318,
+      "measurement": {
+        "name": "string-source-lexer-unique",
+        "repetitions": 7,
+        "workerSeconds": 0.002314974,
+        "maxBumpWords": 159744
+      },
+      "workerSeconds": 0.002314974
+    },
+    {
+      "name": "runtime-ir-atomic-qbe",
+      "case": "string-source-lexer-unique",
+      "round": 2,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/runtime-ir-atomic-qbe",
+        "string-source-lexer-unique",
+        "7"
+      ],
+      "status": 0,
+      "processSeconds": 0.04196292604319751,
+      "measurement": {
+        "name": "string-source-lexer-unique",
+        "repetitions": 7,
+        "workerSeconds": 0.003656229,
+        "maxBumpWords": 159744
+      },
+      "workerSeconds": 0.003656229
+    },
+    {
+      "name": "runtime-ir-atomic-clang",
+      "case": "string-source-lexer-unique",
+      "round": 2,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/runtime-ir-atomic-clang",
+        "string-source-lexer-unique",
+        "7"
+      ],
+      "status": 0,
+      "processSeconds": 0.0428816108033061,
+      "measurement": {
+        "name": "string-source-lexer-unique",
+        "repetitions": 7,
+        "workerSeconds": 0.002873221,
+        "maxBumpWords": 159744
+      },
+      "workerSeconds": 0.002873221
+    },
+    {
+      "name": "fused-qbe",
+      "case": "list-source-lexer-shared",
+      "round": 2,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/fused-qbe",
+        "list-source-lexer-shared",
+        "1"
+      ],
+      "status": 0,
+      "processSeconds": 0.3526312040630728,
+      "measurement": {
+        "name": "list-source-lexer-shared",
+        "repetitions": 1,
+        "workerSeconds": 0.00752674,
+        "maxBumpWords": 6766592
+      },
+      "workerSeconds": 0.00752674
+    },
+    {
+      "name": "fused-clang",
+      "case": "list-source-lexer-shared",
+      "round": 2,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/fused-clang",
+        "list-source-lexer-shared",
+        "1"
+      ],
+      "status": 0,
+      "processSeconds": 0.3437099608127028,
+      "measurement": {
+        "name": "list-source-lexer-shared",
+        "repetitions": 1,
+        "workerSeconds": 0.00637446,
+        "maxBumpWords": 6766592
+      },
+      "workerSeconds": 0.00637446
+    },
+    {
+      "name": "specialized-qbe",
+      "case": "list-source-lexer-shared",
+      "round": 2,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/specialized-qbe",
+        "list-source-lexer-shared",
+        "1"
+      ],
+      "status": 0,
+      "processSeconds": 0.345389598980546,
+      "measurement": {
+        "name": "list-source-lexer-shared",
+        "repetitions": 1,
+        "workerSeconds": 0.006253345,
+        "maxBumpWords": 6766592
+      },
+      "workerSeconds": 0.006253345
+    },
+    {
+      "name": "specialized-clang",
+      "case": "list-source-lexer-shared",
+      "round": 2,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/specialized-clang",
+        "list-source-lexer-shared",
+        "1"
+      ],
+      "status": 0,
+      "processSeconds": 0.3441843190230429,
+      "measurement": {
+        "name": "list-source-lexer-shared",
+        "repetitions": 1,
+        "workerSeconds": 0.006230534,
+        "maxBumpWords": 6766592
+      },
+      "workerSeconds": 0.006230534
+    },
+    {
+      "name": "pair-qbe",
+      "case": "list-source-lexer-shared",
+      "round": 2,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/pair-qbe",
+        "list-source-lexer-shared",
+        "1"
+      ],
+      "status": 0,
+      "processSeconds": 0.3735358689446002,
+      "measurement": {
+        "name": "list-source-lexer-shared",
+        "repetitions": 1,
+        "workerSeconds": 0.006892458,
+        "maxBumpWords": 6766592
+      },
+      "workerSeconds": 0.006892458
+    },
+    {
+      "name": "pair-clang",
+      "case": "list-source-lexer-shared",
+      "round": 2,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/pair-clang",
+        "list-source-lexer-shared",
+        "1"
+      ],
+      "status": 0,
+      "processSeconds": 0.36768900603055954,
+      "measurement": {
+        "name": "list-source-lexer-shared",
+        "repetitions": 1,
+        "workerSeconds": 0.006138612,
+        "maxBumpWords": 6766592
+      },
+      "workerSeconds": 0.006138612
+    },
+    {
+      "name": "runtime-ir-single-qbe",
+      "case": "list-source-lexer-shared",
+      "round": 2,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/runtime-ir-single-qbe",
+        "list-source-lexer-shared",
+        "1"
+      ],
+      "status": 0,
+      "processSeconds": 0.36810063291341066,
+      "measurement": {
+        "name": "list-source-lexer-shared",
+        "repetitions": 1,
+        "workerSeconds": 0.006429006,
+        "maxBumpWords": 6766592
+      },
+      "workerSeconds": 0.006429006
+    },
+    {
+      "name": "runtime-ir-single-clang",
+      "case": "list-source-lexer-shared",
+      "round": 2,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/runtime-ir-single-clang",
+        "list-source-lexer-shared",
+        "1"
+      ],
+      "status": 0,
+      "processSeconds": 0.3745550708845258,
+      "measurement": {
+        "name": "list-source-lexer-shared",
+        "repetitions": 1,
+        "workerSeconds": 0.006666277,
+        "maxBumpWords": 6766592
+      },
+      "workerSeconds": 0.006666277
+    },
+    {
+      "name": "runtime-ir-atomic-qbe",
+      "case": "list-source-lexer-shared",
+      "round": 2,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/runtime-ir-atomic-qbe",
+        "list-source-lexer-shared",
+        "1"
+      ],
+      "status": 0,
+      "processSeconds": 0.36994447582401335,
+      "measurement": {
+        "name": "list-source-lexer-shared",
+        "repetitions": 1,
+        "workerSeconds": 0.006723635,
+        "maxBumpWords": 6766592
+      },
+      "workerSeconds": 0.006723635
+    },
+    {
+      "name": "runtime-ir-atomic-clang",
+      "case": "list-source-lexer-shared",
+      "round": 2,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/runtime-ir-atomic-clang",
+        "list-source-lexer-shared",
+        "1"
+      ],
+      "status": 0,
+      "processSeconds": 0.3685535569675267,
+      "measurement": {
+        "name": "list-source-lexer-shared",
+        "repetitions": 1,
+        "workerSeconds": 0.006438605,
+        "maxBumpWords": 6766592
+      },
+      "workerSeconds": 0.006438605
+    },
+    {
+      "name": "fused-qbe",
+      "case": "string-source-lexer-shared",
+      "round": 2,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/fused-qbe",
+        "string-source-lexer-shared",
+        "3"
+      ],
+      "status": 0,
+      "processSeconds": 0.03918558917939663,
+      "measurement": {
+        "name": "string-source-lexer-shared",
+        "repetitions": 3,
+        "workerSeconds": 0.006039549,
+        "maxBumpWords": 319488
+      },
+      "workerSeconds": 0.006039549
+    },
+    {
+      "name": "fused-clang",
+      "case": "string-source-lexer-shared",
+      "round": 2,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/fused-clang",
+        "string-source-lexer-shared",
+        "3"
+      ],
+      "status": 0,
+      "processSeconds": 0.039601871045306325,
+      "measurement": {
+        "name": "string-source-lexer-shared",
+        "repetitions": 3,
+        "workerSeconds": 0.005034998,
+        "maxBumpWords": 319488
+      },
+      "workerSeconds": 0.005034998
+    },
+    {
+      "name": "specialized-qbe",
+      "case": "string-source-lexer-shared",
+      "round": 2,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/specialized-qbe",
+        "string-source-lexer-shared",
+        "3"
+      ],
+      "status": 0,
+      "processSeconds": 0.04031381104141474,
+      "measurement": {
+        "name": "string-source-lexer-shared",
+        "repetitions": 3,
+        "workerSeconds": 0.005195687,
+        "maxBumpWords": 319488
+      },
+      "workerSeconds": 0.005195687
+    },
+    {
+      "name": "specialized-clang",
+      "case": "string-source-lexer-shared",
+      "round": 2,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/specialized-clang",
+        "string-source-lexer-shared",
+        "3"
+      ],
+      "status": 0,
+      "processSeconds": 0.03737869183532894,
+      "measurement": {
+        "name": "string-source-lexer-shared",
+        "repetitions": 3,
+        "workerSeconds": 0.005107137,
+        "maxBumpWords": 319488
+      },
+      "workerSeconds": 0.005107137
+    },
+    {
+      "name": "pair-qbe",
+      "case": "string-source-lexer-shared",
+      "round": 2,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/pair-qbe",
+        "string-source-lexer-shared",
+        "3"
+      ],
+      "status": 0,
+      "processSeconds": 0.035039212089031935,
+      "measurement": {
+        "name": "string-source-lexer-shared",
+        "repetitions": 3,
+        "workerSeconds": 0.00463804,
+        "maxBumpWords": 319488
+      },
+      "workerSeconds": 0.00463804
+    },
+    {
+      "name": "pair-clang",
+      "case": "string-source-lexer-shared",
+      "round": 2,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/pair-clang",
+        "string-source-lexer-shared",
+        "3"
+      ],
+      "status": 0,
+      "processSeconds": 0.034965342842042446,
+      "measurement": {
+        "name": "string-source-lexer-shared",
+        "repetitions": 3,
+        "workerSeconds": 0.004394361,
+        "maxBumpWords": 319488
+      },
+      "workerSeconds": 0.004394361
+    },
+    {
+      "name": "runtime-ir-single-qbe",
+      "case": "string-source-lexer-shared",
+      "round": 2,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/runtime-ir-single-qbe",
+        "string-source-lexer-shared",
+        "3"
+      ],
+      "status": 0,
+      "processSeconds": 0.03530080406926572,
+      "measurement": {
+        "name": "string-source-lexer-shared",
+        "repetitions": 3,
+        "workerSeconds": 0.005013792,
+        "maxBumpWords": 319488
+      },
+      "workerSeconds": 0.005013792
+    },
+    {
+      "name": "runtime-ir-single-clang",
+      "case": "string-source-lexer-shared",
+      "round": 2,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/runtime-ir-single-clang",
+        "string-source-lexer-shared",
+        "3"
+      ],
+      "status": 0,
+      "processSeconds": 0.035094272112473845,
+      "measurement": {
+        "name": "string-source-lexer-shared",
+        "repetitions": 3,
+        "workerSeconds": 0.004805084,
+        "maxBumpWords": 319488
+      },
+      "workerSeconds": 0.004805084
+    },
+    {
+      "name": "runtime-ir-atomic-qbe",
+      "case": "string-source-lexer-shared",
+      "round": 2,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/runtime-ir-atomic-qbe",
+        "string-source-lexer-shared",
+        "3"
+      ],
+      "status": 0,
+      "processSeconds": 0.03587271808646619,
+      "measurement": {
+        "name": "string-source-lexer-shared",
+        "repetitions": 3,
+        "workerSeconds": 0.005411942,
+        "maxBumpWords": 319488
+      },
+      "workerSeconds": 0.005411942
+    },
+    {
+      "name": "runtime-ir-atomic-clang",
+      "case": "string-source-lexer-shared",
+      "round": 2,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/private-build01/runtime-ir-atomic-clang",
+        "string-source-lexer-shared",
+        "3"
+      ],
+      "status": 0,
+      "processSeconds": 0.035414620069786906,
+      "measurement": {
+        "name": "string-source-lexer-shared",
+        "repetitions": 3,
+        "workerSeconds": 0.005114494,
+        "maxBumpWords": 319488
+      },
+      "workerSeconds": 0.005114494
+    }
+  ],
+  "started": 1792351456.4968371,
+  "scope": "Worker clock excludes graph construction/observation/release. Process and campaign clocks include them. Same immutable source/library/runtime; no agent edits inside this finite evaluation.",
+  "medians": {
+    "fused-qbe": {
+      "list-deep-unique": 0.00588118,
+      "list-deep-shared-root": 0.006839884,
+      "string-deep-unique": 0.005368302,
+      "list-source-lexer-unique": 0.005911943,
+      "string-source-lexer-unique": 0.005024841,
+      "list-source-lexer-shared": 0.006555257,
+      "string-source-lexer-shared": 0.005023264
+    },
+    "fused-clang": {
+      "list-deep-unique": 0.00548841,
+      "list-deep-shared-root": 0.006748548,
+      "string-deep-unique": 0.005550016,
+      "list-source-lexer-unique": 0.005526018,
+      "string-source-lexer-unique": 0.005113811,
+      "list-source-lexer-shared": 0.006336182,
+      "string-source-lexer-shared": 0.005034998
+    },
+    "specialized-qbe": {
+      "list-deep-unique": 0.005503802,
+      "list-deep-shared-root": 0.007284344,
+      "string-deep-unique": 0.005071335,
+      "list-source-lexer-unique": 0.005531125,
+      "string-source-lexer-unique": 0.004730378,
+      "list-source-lexer-shared": 0.006368299,
+      "string-source-lexer-shared": 0.005195687
+    },
+    "specialized-clang": {
+      "list-deep-unique": 0.005389836,
+      "list-deep-shared-root": 0.006474353,
+      "string-deep-unique": 0.004989319,
+      "list-source-lexer-unique": 0.005479642,
+      "string-source-lexer-unique": 0.004661806,
+      "list-source-lexer-shared": 0.006230534,
+      "string-source-lexer-shared": 0.005107137
+    },
+    "pair-qbe": {
+      "list-deep-unique": 0.005199922,
+      "list-deep-shared-root": 0.006265231,
+      "string-deep-unique": 0.004791959,
+      "list-source-lexer-unique": 0.005476914,
+      "string-source-lexer-unique": 0.004789453,
+      "list-source-lexer-shared": 0.006119343,
+      "string-source-lexer-shared": 0.004497041
+    },
+    "pair-clang": {
+      "list-deep-unique": 0.004272843,
+      "list-deep-shared-root": 0.006207612,
+      "string-deep-unique": 0.004018609,
+      "list-source-lexer-unique": 0.005461524,
+      "string-source-lexer-unique": 0.003841387,
+      "list-source-lexer-shared": 0.006138612,
+      "string-source-lexer-shared": 0.004410192
+    },
+    "runtime-ir-single-qbe": {
+      "list-deep-unique": 0.003522048,
+      "list-deep-shared-root": 0.0068913,
+      "string-deep-unique": 0.003744746,
+      "list-source-lexer-unique": 0.006076547,
+      "string-source-lexer-unique": 0.003105256,
+      "list-source-lexer-shared": 0.006476298,
+      "string-source-lexer-shared": 0.004990194
+    },
+    "runtime-ir-single-clang": {
+      "list-deep-unique": 0.002709061,
+      "list-deep-shared-root": 0.006541069,
+      "string-deep-unique": 0.002457402,
+      "list-source-lexer-unique": 0.005555744,
+      "string-source-lexer-unique": 0.002314974,
+      "list-source-lexer-shared": 0.006471202,
+      "string-source-lexer-shared": 0.004753325
+    },
+    "runtime-ir-atomic-qbe": {
+      "list-deep-unique": 0.004282162,
+      "list-deep-shared-root": 0.007040001,
+      "string-deep-unique": 0.003890079,
+      "list-source-lexer-unique": 0.005266882,
+      "string-source-lexer-unique": 0.003693115,
+      "list-source-lexer-shared": 0.006679895,
+      "string-source-lexer-shared": 0.005359198
+    },
+    "runtime-ir-atomic-clang": {
+      "list-deep-unique": 0.003681534,
+      "list-deep-shared-root": 0.00678432,
+      "string-deep-unique": 0.002865121,
+      "list-source-lexer-unique": 0.005103608,
+      "string-source-lexer-unique": 0.002873221,
+      "list-source-lexer-shared": 0.006406991,
+      "string-source-lexer-shared": 0.004922202
+    }
+  },
+  "ranking": [
+    {
+      "name": "runtime-ir-single-clang",
+      "ratio": 0.6990220426179342,
+      "cases": {
+        "list-deep-unique": 0.4606322200646809,
+        "list-deep-shared-root": 0.9563128555981358,
+        "string-deep-unique": 0.4577615044757169,
+        "list-source-lexer-unique": 0.9397492499504815,
+        "string-source-lexer-unique": 0.4607059208440625,
+        "list-source-lexer-shared": 0.9871774668788729,
+        "string-source-lexer-shared": 0.9462622310911789
+      }
+    },
+    {
+      "name": "runtime-ir-atomic-clang",
+      "ratio": 0.7673512816393608,
+      "cases": {
+        "list-deep-unique": 0.6259856015289449,
+        "list-deep-shared-root": 0.9918764704196738,
+        "string-deep-unique": 0.5337108456267922,
+        "list-source-lexer-unique": 0.863270840060535,
+        "string-source-lexer-unique": 0.5718033665144827,
+        "list-source-lexer-shared": 0.9773821224705607,
+        "string-source-lexer-shared": 0.9798812087121042
+      }
+    },
+    {
+      "name": "runtime-ir-single-qbe",
+      "ratio": 0.826021342693991,
+      "cases": {
+        "list-deep-unique": 0.5988675741942944,
+        "list-deep-shared-root": 1.007517086547082,
+        "string-deep-unique": 0.6975661950464039,
+        "list-source-lexer-unique": 1.0278426229752216,
+        "string-source-lexer-unique": 0.6179809470588222,
+        "list-source-lexer-shared": 0.9879548582153225,
+        "string-source-lexer-shared": 0.9934166310988233
+      }
+    },
+    {
+      "name": "pair-clang",
+      "ratio": 0.8365018679906878,
+      "cases": {
+        "list-deep-unique": 0.726528179719036,
+        "list-deep-shared-root": 0.9075610054205598,
+        "string-deep-unique": 0.7485810224536549,
+        "list-source-lexer-unique": 0.9238120191618897,
+        "string-source-lexer-unique": 0.764479313872817,
+        "list-source-lexer-shared": 0.9364410884271966,
+        "string-source-lexer-shared": 0.8779534581499201
+      }
+    },
+    {
+      "name": "runtime-ir-atomic-qbe",
+      "ratio": 0.8730378927299985,
+      "cases": {
+        "list-deep-unique": 0.7281127256775001,
+        "list-deep-shared-root": 1.029257367522607,
+        "string-deep-unique": 0.7246386287507669,
+        "list-source-lexer-unique": 0.8908884946962444,
+        "string-source-lexer-unique": 0.734971514521554,
+        "list-source-lexer-shared": 1.0190134421884602,
+        "string-source-lexer-shared": 1.0668756410174738
+      }
+    },
+    {
+      "name": "pair-qbe",
+      "ratio": 0.9141499431297044,
+      "cases": {
+        "list-deep-unique": 0.8841630421105969,
+        "list-deep-shared-root": 0.9159849786926211,
+        "string-deep-unique": 0.8926396093215322,
+        "list-source-lexer-unique": 0.9264152242333865,
+        "string-source-lexer-unique": 0.9531551346599821,
+        "list-source-lexer-shared": 0.933501615573577,
+        "string-source-lexer-shared": 0.8952428142339324
+      }
+    },
+    {
+      "name": "specialized-clang",
+      "ratio": 0.9443851116056872,
+      "cases": {
+        "list-deep-unique": 0.9164548610993033,
+        "list-deep-shared-root": 0.9465588890103984,
+        "string-deep-unique": 0.9294035618711466,
+        "list-source-lexer-unique": 0.9268766630530774,
+        "string-source-lexer-unique": 0.9277519427977919,
+        "list-source-lexer-shared": 0.9504637270514337,
+        "string-source-lexer-shared": 1.0166969126050314
+      }
+    },
+    {
+      "name": "specialized-qbe",
+      "ratio": 0.9742756241959769,
+      "cases": {
+        "list-deep-unique": 0.9358329450892509,
+        "list-deep-shared-root": 1.0649806341744976,
+        "string-deep-unique": 0.9446813908755505,
+        "list-source-lexer-unique": 0.9355849675817238,
+        "string-source-lexer-unique": 0.9413985437549168,
+        "list-source-lexer-shared": 0.9714796841679891,
+        "string-source-lexer-shared": 1.034324893137211
+      }
+    },
+    {
+      "name": "fused-clang",
+      "ratio": 0.9814756162189447,
+      "cases": {
+        "list-deep-unique": 0.9332157832271756,
+        "list-deep-shared-root": 0.986646557163835,
+        "string-deep-unique": 1.0338494369355524,
+        "list-source-lexer-unique": 0.9347211229878231,
+        "string-source-lexer-unique": 1.0177060328874088,
+        "list-source-lexer-shared": 0.9665802576466491,
+        "string-source-lexer-shared": 1.002335931378482
+      }
+    },
+    {
+      "name": "fused-qbe",
+      "ratio": 1.0,
+      "cases": {
+        "list-deep-unique": 1.0,
+        "list-deep-shared-root": 1.0,
+        "string-deep-unique": 1.0,
+        "list-source-lexer-unique": 1.0,
+        "string-source-lexer-unique": 1.0,
+        "list-source-lexer-shared": 1.0,
+        "string-source-lexer-shared": 1.0
+      }
+    }
+  ],
+  "globalWinner": "runtime-ir-single-clang",
+  "qbeWinner": "runtime-ir-single-qbe",
+  "finished": 1792351487.0123
+}

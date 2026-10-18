@@ -1,0 +1,215 @@
+{
+  "kind": "phase110-independent-expanded-controls",
+  "version": 1,
+  "frozenAtUtc": "2026-10-18T19:05:48.000161+00:00",
+  "baseCommit": "7fc45f3e44498ad6d55cf7fd3784f2bd1035612e",
+  "targetsRunBeforeFreeze": false,
+  "candidateSelectionBeforeFreeze": false,
+  "oracle": "Pure Python sequence semantics, frozen source declarations, and FNV64 count/value observations; never incumbent/candidate outputs.",
+  "ownershipCases": {
+    "file": "selfhost/tools/performance/phase110/controls/cases.json",
+    "sha256": "bf1cda312344e1b7d27588010dd97bd2bb073c4fc0f8892b44894e863dc3eae0",
+    "bytes": 490606,
+    "count": 29
+  },
+  "oracleCode": {
+    "file": "selfhost/tools/performance/phase110/controls/reference.py",
+    "sha256": "92215d0970055470da2fd56aaaf8dc865fb75e91bcc55a1cbb811e277b625e3d",
+    "bytes": 2607
+  },
+  "expected": [
+    {
+      "variant": "reverse",
+      "file": "selfhost/tools/performance/phase110/controls/reverse.expected.jsonl",
+      "sha256": "85c6002702197322cdcb31b4e32da33ad8acdc4ec987bd5d2b8587aa5deddb89",
+      "bytes": 3889,
+      "count": 29
+    },
+    {
+      "variant": "discard",
+      "file": "selfhost/tools/performance/phase110/controls/discard.expected.jsonl",
+      "sha256": "e279e099f6f120c797145333f3a7721411758cc11626fd0364c251c96eb8271e",
+      "bytes": 3821,
+      "count": 29
+    },
+    {
+      "variant": "duplicate",
+      "file": "selfhost/tools/performance/phase110/controls/duplicate.expected.jsonl",
+      "sha256": "cdcdfccde91ab66fcb896a99c60836c97c96a4fa81c8eabf23cb304fbc547ef2",
+      "bytes": 3910,
+      "count": 29
+    },
+    {
+      "variant": "tail",
+      "file": "selfhost/tools/performance/phase110/controls/tail.expected.jsonl",
+      "sha256": "2fd12642c37bad6a5ebbe76386f457963b35fe75340d0c3f644354dae53b2bff",
+      "bytes": 2052,
+      "count": 15
+    },
+    {
+      "variant": "last",
+      "file": "selfhost/tools/performance/phase110/controls/last.expected.jsonl",
+      "sha256": "19778d00cb4f260ed3a1437d3c96948a038e86fdf88294bda3a17793a2627ce6",
+      "bytes": 2024,
+      "count": 15
+    },
+    {
+      "variant": "append",
+      "file": "selfhost/tools/performance/phase110/controls/append.expected.jsonl",
+      "sha256": "c521df27c1e292390a675cd422310913c53b952828014c1084b5be39c71f46c4",
+      "bytes": 2052,
+      "count": 15
+    }
+  ],
+  "sourceControls": [
+    {
+      "name": "List.tail",
+      "source": {
+        "file": "selfhost/.bootstrap/upstream-phase66/bend2/base.bend",
+        "sha256": "99ac43f2b2bb3e3f39acdcedcecbbd3cb44749ce13969c827d6973fa66f7facf",
+        "bytes": 75064
+      },
+      "line": 941,
+      "snapshot": {
+        "file": "selfhost/tools/performance/phase110/controls/sources/List-tail.bend",
+        "sha256": "765427a4a8f8b6468845c79e97ade738488f57baf0b752bd97c9451d0e1b0c59",
+        "bytes": 126
+      },
+      "admissionAtFreeze": "existing owned lowerer shape; new one-argument source entry required",
+      "checked": false,
+      "targetsRun": false
+    },
+    {
+      "name": "List.last.go",
+      "source": {
+        "file": "selfhost/.bootstrap/upstream-phase66/bend2/base.bend",
+        "sha256": "99ac43f2b2bb3e3f39acdcedcecbbd3cb44749ce13969c827d6973fa66f7facf",
+        "bytes": 75064
+      },
+      "line": 948,
+      "snapshot": {
+        "file": "selfhost/tools/performance/phase110/controls/sources/List-last-go.bend",
+        "sha256": "3620456e79ef3ee96d293ff69f86076bcd555758fa0da6cc7c65f7a71e8a324b",
+        "bytes": 151
+      },
+      "admissionAtFreeze": "existing owned lowerer shape; mixed List/String parameter roles and String result entry required",
+      "checked": false,
+      "targetsRun": false
+    },
+    {
+      "name": "nt_append",
+      "source": {
+        "file": "selfhost/src/back/native/text.bend",
+        "sha256": "acc430c939a7dd6b404ba7a13f762019b717a62313ae3066234f78bb62df04c0",
+        "bytes": 3305
+      },
+      "line": 46,
+      "snapshot": {
+        "file": "selfhost/tools/performance/phase110/controls/sources/nt_append.bend",
+        "sha256": "6a5f646e0b86e34e45c599819eca0f8dd19afe317938950865efde74d0011808",
+        "bytes": 120
+      },
+      "admissionAtFreeze": "requires general ordinary/nested call lowering and checked dependency closure",
+      "checked": false,
+      "targetsRun": false
+    },
+    {
+      "name": "String.drop",
+      "source": {
+        "file": "selfhost/.bootstrap/upstream-phase66/bend2/base.bend",
+        "sha256": "99ac43f2b2bb3e3f39acdcedcecbbd3cb44749ce13969c827d6973fa66f7facf",
+        "bytes": 75064
+      },
+      "line": 2021,
+      "snapshot": {
+        "file": "selfhost/tools/performance/phase110/controls/sources/String-drop.bend",
+        "sha256": "2f348dc7b4c81f876157056f274263b01f0b7571ea272bfa1797f92be42c2975",
+        "bytes": 182
+      },
+      "admissionAtFreeze": "deferred: requires Nat representation, unary constructor admission and mixed matches",
+      "checked": false,
+      "targetsRun": false
+    }
+  ],
+  "sourceFixture": {
+    "file": "selfhost/tools/performance/phase110/controls/sources/base-selectors.bend",
+    "sha256": "3f5e60916d2b7bb5899d172a266200343021c340a7fd45368ef80eca3c875b7e",
+    "bytes": 354
+  },
+  "datasets": [
+    {
+      "name": "lexer",
+      "source": {
+        "file": "selfhost/src/front/lexer.bend",
+        "sha256": "aa9d726b6b284deba84dbccc77a01a8143dd89dab70cf487e1ddc8d589380440",
+        "bytes": 13265
+      },
+      "snapshot": {
+        "file": "selfhost/tools/performance/phase110/controls/datasets/lexer.txt",
+        "sha256": "aa9d726b6b284deba84dbccc77a01a8143dd89dab70cf487e1ddc8d589380440",
+        "bytes": 13265
+      },
+      "meaning": "Exact source text/line replay; selected from known compiler lexer/text paths; no measured hotness or frequency weight implied."
+    },
+    {
+      "name": "native-text",
+      "source": {
+        "file": "selfhost/src/back/native/text.bend",
+        "sha256": "acc430c939a7dd6b404ba7a13f762019b717a62313ae3066234f78bb62df04c0",
+        "bytes": 3305
+      },
+      "snapshot": {
+        "file": "selfhost/tools/performance/phase110/controls/datasets/native-text.txt",
+        "sha256": "acc430c939a7dd6b404ba7a13f762019b717a62313ae3066234f78bb62df04c0",
+        "bytes": 3305
+      },
+      "meaning": "Exact source text/line replay; selected from known compiler lexer/text paths; no measured hotness or frequency weight implied."
+    }
+  ],
+  "oldControls": [
+    {
+      "file": "selfhost/tools/performance/phase109/controls/manifest.json",
+      "sha256": "aa40315848518b15eaef27bbc883d859904332af23680a5a9773eae3eccc79a8",
+      "bytes": 6706
+    },
+    {
+      "file": "selfhost/tools/performance/phase109/controls/cases.json",
+      "sha256": "5f38107ff81446fce905bd22af71245460d8d613aebd1527caa18938ec4c5341",
+      "bytes": 5605
+    },
+    {
+      "file": "selfhost/tools/performance/phase109/controls/expected.jsonl",
+      "sha256": "bfc4cc0d61a2612b92f65377aa75e9e5565361f9ce47df7d4212db3a6b6e93db",
+      "bytes": 1330
+    },
+    {
+      "file": "selfhost/tools/performance/phase109/controls/derived/manifest.json",
+      "sha256": "e680ec95b9e2b15ede3b1ae9c1b8475283e7f753b031607e54cd3aa471af2428",
+      "bytes": 1759
+    },
+    {
+      "file": "selfhost/tools/performance/phase109/controls/derived/discard.expected.jsonl",
+      "sha256": "97952314b31a98aeccc75bc2d55a001d6bdbf8a9327fec6cb1a4eeece83b3e8f",
+      "bytes": 1326
+    },
+    {
+      "file": "selfhost/tools/performance/phase109/controls/derived/duplicate.expected.jsonl",
+      "sha256": "80913c659eff5e60677a2dafecb65b658022e92920390bbf2b3f0235f0aab9ac",
+      "bytes": 1331
+    }
+  ],
+  "hashContract": {
+    "name": "FNV-1a-64",
+    "offset": 14695981039346656037,
+    "prime": 1099511628211,
+    "encoding": "u32 little-endian bytes; list emits each String codepoint count then scalars; string emits scalars; independent count"
+  },
+  "limits": [
+    "29 new input graph descriptors are not 29 new algorithms.",
+    "Old Phase109 controls remain independent frozen regression controls, not newly representative workloads.",
+    "Source text/line replay is representative of source contents only; no measured runtime frequency/hotness claim.",
+    "Static graphs fit unchanged 128-word static arena; deep static graphs are outside current runtime descriptor.",
+    "Deep list and string unique/shared paths are timed separately; graph construction, observation and release excluded from worker clock.",
+    "Tail/last source selection not yet checked or machine executed; append and String.drop are explicit extension targets."
+  ]
+}

@@ -1,0 +1,124 @@
+{
+  "kind": "phase110-frozen-general-call-shapes",
+  "version": 1,
+  "frozenAtUtc": "2026-10-18T19:12:44.881538+00:00",
+  "targetsRun": false,
+  "source": {
+    "file": "selfhost/tools/performance/phase110/controls/calls/call-shapes.bend",
+    "bytes": 2013,
+    "sha256": "6c830fb0e9cbf3cdd44d9363dcb99f9ab3ecb8fc5f73d71b0b38aea2c84b374f"
+  },
+  "expectedStdout": "a|b\nh|a|b\na|b|a|b|z\nz\na|b|a|b\n",
+  "positive": [
+    {
+      "name": "p110_call_identity",
+      "liveArity": 1,
+      "meaning": "Owned identity baseline"
+    },
+    {
+      "name": "p110_call_inside_constructor",
+      "liveArity": 2,
+      "meaning": "Ordinary call result nested inside constructor value"
+    },
+    {
+      "name": "p110_call_twice",
+      "liveArity": 2,
+      "meaning": "Two argument calls, retained owner across calls and Keep for repeated argument"
+    },
+    {
+      "name": "p110_call_discard",
+      "liveArity": 2,
+      "meaning": "Sink unused owner before independent call"
+    },
+    {
+      "name": "p110_call_same",
+      "liveArity": 1,
+      "meaning": "One retained value supplies two distinct owned argument credits"
+    }
+  ],
+  "negative": [
+    {
+      "name": "p110_call_dynamic",
+      "reason": "callee is a variable; unsupported indirect call/closure parameter"
+    },
+    {
+      "name": "p110_call_partial",
+      "reason": "insufficient saturation and non-Term function result"
+    }
+  ],
+  "catalogueMutations": [
+    {
+      "name": "missing-callee",
+      "expected": "refuse before emitting executable library"
+    },
+    {
+      "name": "wrong-arity",
+      "expected": "refuse before emitting executable library"
+    },
+    {
+      "name": "duplicate-source-name",
+      "expected": "refuse before emitting executable library"
+    },
+    {
+      "name": "duplicate-machine-symbol",
+      "expected": "refuse before emitting executable library"
+    },
+    {
+      "name": "undeclared-machine-target",
+      "expected": "refuse before emitting executable library"
+    },
+    {
+      "name": "wrong-source-ABI-role",
+      "expected": "refuse before emitting executable library"
+    },
+    {
+      "name": "non-Term-result",
+      "expected": "refuse before emitting executable library"
+    },
+    {
+      "name": "unsupported-import-effects",
+      "expected": "refuse before emitting executable library"
+    }
+  ],
+  "ownershipMutations": [
+    {
+      "name": "call-argument-with-zero-credit",
+      "expected": "refuse before emitting executable library"
+    },
+    {
+      "name": "same-binding-two-arguments-one-credit",
+      "expected": "refuse before emitting executable library"
+    },
+    {
+      "name": "call-result-overwrites-live-owner",
+      "expected": "refuse before emitting executable library"
+    },
+    {
+      "name": "use-old-arg-after-call",
+      "expected": "refuse before emitting executable library"
+    },
+    {
+      "name": "discarded-call-result-still-live",
+      "expected": "refuse before emitting executable library"
+    }
+  ],
+  "semanticMutations": [
+    {
+      "name": "swap-append-arguments",
+      "expected": "independent output or lifetime mismatch"
+    },
+    {
+      "name": "omit-nested-inner-call",
+      "expected": "independent output or lifetime mismatch"
+    },
+    {
+      "name": "evaluate-right-call-twice",
+      "expected": "independent output or lifetime mismatch"
+    },
+    {
+      "name": "drop-held-second-argument-before-inner-call",
+      "expected": "independent output or lifetime mismatch"
+    }
+  ],
+  "scope": "Independent declared expectations, not executed test counts. Arity/catalogue/type mutations apply at the fact/IR interface; invalid source must not be forged as checked input."
+}

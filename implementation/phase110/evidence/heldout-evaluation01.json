@@ -1,0 +1,1878 @@
+{
+  "kind": "phase110-frozen-winner-evaluation",
+  "complete": true,
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase110/search.py",
+      "sha256": "3dce9f4099f467d46f2bd9202e4a918ce34c2f0bc8552ba427ffd231cf7ca56a",
+      "bytes": 5295
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/heldout-build01/report.json",
+      "sha256": "6563e5fb5ab3c71b084793bea4963bf20e8d859a9728ad7bb34191b6318e711e",
+      "bytes": 7609
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase110/controls/policy-search.json",
+      "sha256": "8062d698a39283b2b43f73041c1cf215f99c8c33eb077ebc3be0cc86b67067a1",
+      "bytes": 7192
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/heldout01/expected.jsonl",
+      "sha256": "5edf1d428c4640881cdfb93158d30309f40d97d21afe6d2ccd8320d013e48751",
+      "bytes": 2509
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/heldout-build01/fused-qbe",
+      "sha256": "646042fca0c46dd84961ab29a0e1136039e32907bd87af19ad7770ab1fb2ea99",
+      "bytes": 136376
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/heldout-build01/specialized-qbe",
+      "sha256": "79c8f0c3f4fe627dfac5cf24c56498547590a6bf42a00152c9bad63ca01426f4",
+      "bytes": 136376
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/heldout-build01/pair-clang",
+      "sha256": "d2c80f7231ca8b6c3b3e6872c56055f46eaf142c70768b4461e049d307f8bb14",
+      "bytes": 136512
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/search01/report.json",
+      "sha256": "f22629bb5bd1dddfb0b825c22f46c613bdcbd838942e713b899157ac6e74bf4b",
+      "bytes": 148373
+    }
+  ],
+  "rounds": 3,
+  "repetitions": 3,
+  "cases": [
+    "list-deep-shared-tail",
+    "list-odd-depth-65537",
+    "string-deep-shared-root",
+    "string-deep-shared-tail",
+    "string-odd-depth-65537",
+    "list-long-head-shared",
+    "list-source-native-text-unique",
+    "string-source-native-text-unique",
+    "list-source-native-text-shared",
+    "string-source-native-text-shared"
+  ],
+  "reference": "fused-qbe",
+  "training": false,
+  "selectionFrozen": false,
+  "rows": [
+    {
+      "name": "fused-qbe",
+      "case": "list-deep-shared-tail",
+      "round": 0,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/heldout-build01/fused-qbe",
+        "list-deep-shared-tail",
+        "3"
+      ],
+      "status": 0,
+      "processSeconds": 0.07864265912212431,
+      "measurement": {
+        "name": "list-deep-shared-tail",
+        "repetitions": 3,
+        "workerSeconds": 0.006141833,
+        "maxBumpWords": 598016
+      },
+      "workerSeconds": 0.006141833
+    },
+    {
+      "name": "specialized-qbe",
+      "case": "list-deep-shared-tail",
+      "round": 0,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/heldout-build01/specialized-qbe",
+        "list-deep-shared-tail",
+        "3"
+      ],
+      "status": 0,
+      "processSeconds": 0.07806832203641534,
+      "measurement": {
+        "name": "list-deep-shared-tail",
+        "repetitions": 3,
+        "workerSeconds": 0.005847631,
+        "maxBumpWords": 598016
+      },
+      "workerSeconds": 0.005847631
+    },
+    {
+      "name": "pair-clang",
+      "case": "list-deep-shared-tail",
+      "round": 0,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/heldout-build01/pair-clang",
+        "list-deep-shared-tail",
+        "3"
+      ],
+      "status": 0,
+      "processSeconds": 0.07775791711173952,
+      "measurement": {
+        "name": "list-deep-shared-tail",
+        "repetitions": 3,
+        "workerSeconds": 0.005562683,
+        "maxBumpWords": 598016
+      },
+      "workerSeconds": 0.005562683
+    },
+    {
+      "name": "fused-qbe",
+      "case": "list-odd-depth-65537",
+      "round": 0,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/heldout-build01/fused-qbe",
+        "list-odd-depth-65537",
+        "3"
+      ],
+      "status": 0,
+      "processSeconds": 0.0462561659514904,
+      "measurement": {
+        "name": "list-odd-depth-65537",
+        "repetitions": 3,
+        "workerSeconds": 0.00301231,
+        "maxBumpWords": 401408
+      },
+      "workerSeconds": 0.00301231
+    },
+    {
+      "name": "specialized-qbe",
+      "case": "list-odd-depth-65537",
+      "round": 0,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/heldout-build01/specialized-qbe",
+        "list-odd-depth-65537",
+        "3"
+      ],
+      "status": 0,
+      "processSeconds": 0.046140885911881924,
+      "measurement": {
+        "name": "list-odd-depth-65537",
+        "repetitions": 3,
+        "workerSeconds": 0.002625838,
+        "maxBumpWords": 401408
+      },
+      "workerSeconds": 0.002625838
+    },
+    {
+      "name": "pair-clang",
+      "case": "list-odd-depth-65537",
+      "round": 0,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/heldout-build01/pair-clang",
+        "list-odd-depth-65537",
+        "3"
+      ],
+      "status": 0,
+      "processSeconds": 0.045853821095079184,
+      "measurement": {
+        "name": "list-odd-depth-65537",
+        "repetitions": 3,
+        "workerSeconds": 0.002487539,
+        "maxBumpWords": 401408
+      },
+      "workerSeconds": 0.002487539
+    },
+    {
+      "name": "fused-qbe",
+      "case": "string-deep-shared-root",
+      "round": 0,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/heldout-build01/fused-qbe",
+        "string-deep-shared-root",
+        "3"
+      ],
+      "status": 0,
+      "processSeconds": 0.04422042681835592,
+      "measurement": {
+        "name": "string-deep-shared-root",
+        "repetitions": 3,
+        "workerSeconds": 0.006270612,
+        "maxBumpWords": 401408
+      },
+      "workerSeconds": 0.006270612
+    },
+    {
+      "name": "specialized-qbe",
+      "case": "string-deep-shared-root",
+      "round": 0,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/heldout-build01/specialized-qbe",
+        "string-deep-shared-root",
+        "3"
+      ],
+      "status": 0,
+      "processSeconds": 0.04374996991828084,
+      "measurement": {
+        "name": "string-deep-shared-root",
+        "repetitions": 3,
+        "workerSeconds": 0.006039095,
+        "maxBumpWords": 401408
+      },
+      "workerSeconds": 0.006039095
+    },
+    {
+      "name": "pair-clang",
+      "case": "string-deep-shared-root",
+      "round": 0,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/heldout-build01/pair-clang",
+        "string-deep-shared-root",
+        "3"
+      ],
+      "status": 0,
+      "processSeconds": 0.043396694818511605,
+      "measurement": {
+        "name": "string-deep-shared-root",
+        "repetitions": 3,
+        "workerSeconds": 0.005771849,
+        "maxBumpWords": 401408
+      },
+      "workerSeconds": 0.005771849
+    },
+    {
+      "name": "fused-qbe",
+      "case": "string-deep-shared-tail",
+      "round": 0,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/heldout-build01/fused-qbe",
+        "string-deep-shared-tail",
+        "3"
+      ],
+      "status": 0,
+      "processSeconds": 0.04009407921694219,
+      "measurement": {
+        "name": "string-deep-shared-tail",
+        "repetitions": 3,
+        "workerSeconds": 0.005540347,
+        "maxBumpWords": 352256
+      },
+      "workerSeconds": 0.005540347
+    },
+    {
+      "name": "specialized-qbe",
+      "case": "string-deep-shared-tail",
+      "round": 0,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/heldout-build01/specialized-qbe",
+        "string-deep-shared-tail",
+        "3"
+      ],
+      "status": 0,
+      "processSeconds": 0.03945623501203954,
+      "measurement": {
+        "name": "string-deep-shared-tail",
+        "repetitions": 3,
+        "workerSeconds": 0.005196961,
+        "maxBumpWords": 352256
+      },
+      "workerSeconds": 0.005196961
+    },
+    {
+      "name": "pair-clang",
+      "case": "string-deep-shared-tail",
+      "round": 0,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/heldout-build01/pair-clang",
+        "string-deep-shared-tail",
+        "3"
+      ],
+      "status": 0,
+      "processSeconds": 0.039227492175996304,
+      "measurement": {
+        "name": "string-deep-shared-tail",
+        "repetitions": 3,
+        "workerSeconds": 0.004969369,
+        "maxBumpWords": 352256
+      },
+      "workerSeconds": 0.004969369
+    },
+    {
+      "name": "fused-qbe",
+      "case": "string-odd-depth-65537",
+      "round": 0,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/heldout-build01/fused-qbe",
+        "string-odd-depth-65537",
+        "3"
+      ],
+      "status": 0,
+      "processSeconds": 0.025243587093427777,
+      "measurement": {
+        "name": "string-odd-depth-65537",
+        "repetitions": 3,
+        "workerSeconds": 0.002899353,
+        "maxBumpWords": 204800
+      },
+      "workerSeconds": 0.002899353
+    },
+    {
+      "name": "specialized-qbe",
+      "case": "string-odd-depth-65537",
+      "round": 0,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/heldout-build01/specialized-qbe",
+        "string-odd-depth-65537",
+        "3"
+      ],
+      "status": 0,
+      "processSeconds": 0.025303607108071446,
+      "measurement": {
+        "name": "string-odd-depth-65537",
+        "repetitions": 3,
+        "workerSeconds": 0.002567031,
+        "maxBumpWords": 204800
+      },
+      "workerSeconds": 0.002567031
+    },
+    {
+      "name": "pair-clang",
+      "case": "string-odd-depth-65537",
+      "round": 0,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/heldout-build01/pair-clang",
+        "string-odd-depth-65537",
+        "3"
+      ],
+      "status": 0,
+      "processSeconds": 0.024533517891541123,
+      "measurement": {
+        "name": "string-odd-depth-65537",
+        "repetitions": 3,
+        "workerSeconds": 0.00242078,
+        "maxBumpWords": 204800
+      },
+      "workerSeconds": 0.00242078
+    },
+    {
+      "name": "fused-qbe",
+      "case": "list-long-head-shared",
+      "round": 0,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/heldout-build01/fused-qbe",
+        "list-long-head-shared",
+        "3"
+      ],
+      "status": 0,
+      "processSeconds": 0.004491599975153804,
+      "measurement": {
+        "name": "list-long-head-shared",
+        "repetitions": 3,
+        "workerSeconds": 1.527e-06,
+        "maxBumpWords": 24576
+      },
+      "workerSeconds": 1.527e-06
+    },
+    {
+      "name": "specialized-qbe",
+      "case": "list-long-head-shared",
+      "round": 0,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/heldout-build01/specialized-qbe",
+        "list-long-head-shared",
+        "3"
+      ],
+      "status": 0,
+      "processSeconds": 0.00434792903251946,
+      "measurement": {
+        "name": "list-long-head-shared",
+        "repetitions": 3,
+        "workerSeconds": 1.273e-06,
+        "maxBumpWords": 24576
+      },
+      "workerSeconds": 1.273e-06
+    },
+    {
+      "name": "pair-clang",
+      "case": "list-long-head-shared",
+      "round": 0,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/heldout-build01/pair-clang",
+        "list-long-head-shared",
+        "3"
+      ],
+      "status": 0,
+      "processSeconds": 0.004483332158997655,
+      "measurement": {
+        "name": "list-long-head-shared",
+        "repetitions": 3,
+        "workerSeconds": 1.327e-06,
+        "maxBumpWords": 24576
+      },
+      "workerSeconds": 1.327e-06
+    },
+    {
+      "name": "fused-qbe",
+      "case": "list-source-native-text-unique",
+      "round": 0,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/heldout-build01/fused-qbe",
+        "list-source-native-text-unique",
+        "3"
+      ],
+      "status": 0,
+      "processSeconds": 0.5891639990732074,
+      "measurement": {
+        "name": "list-source-native-text-unique",
+        "repetitions": 3,
+        "workerSeconds": 0.014821613,
+        "maxBumpWords": 5279744
+      },
+      "workerSeconds": 0.014821613
+    },
+    {
+      "name": "specialized-qbe",
+      "case": "list-source-native-text-unique",
+      "round": 0,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/heldout-build01/specialized-qbe",
+        "list-source-native-text-unique",
+        "3"
+      ],
+      "status": 0,
+      "processSeconds": 0.5940445719752461,
+      "measurement": {
+        "name": "list-source-native-text-unique",
+        "repetitions": 3,
+        "workerSeconds": 0.014948226,
+        "maxBumpWords": 5279744
+      },
+      "workerSeconds": 0.014948226
+    },
+    {
+      "name": "pair-clang",
+      "case": "list-source-native-text-unique",
+      "round": 0,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/heldout-build01/pair-clang",
+        "list-source-native-text-unique",
+        "3"
+      ],
+      "status": 0,
+      "processSeconds": 0.583874445874244,
+      "measurement": {
+        "name": "list-source-native-text-unique",
+        "repetitions": 3,
+        "workerSeconds": 0.013629169,
+        "maxBumpWords": 5279744
+      },
+      "workerSeconds": 0.013629169
+    },
+    {
+      "name": "fused-qbe",
+      "case": "string-source-native-text-unique",
+      "round": 0,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/heldout-build01/fused-qbe",
+        "string-source-native-text-unique",
+        "3"
+      ],
+      "status": 0,
+      "processSeconds": 0.02408695500344038,
+      "measurement": {
+        "name": "string-source-native-text-unique",
+        "repetitions": 3,
+        "workerSeconds": 0.002718069,
+        "maxBumpWords": 192512
+      },
+      "workerSeconds": 0.002718069
+    },
+    {
+      "name": "specialized-qbe",
+      "case": "string-source-native-text-unique",
+      "round": 0,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/heldout-build01/specialized-qbe",
+        "string-source-native-text-unique",
+        "3"
+      ],
+      "status": 0,
+      "processSeconds": 0.023691097972914577,
+      "measurement": {
+        "name": "string-source-native-text-unique",
+        "repetitions": 3,
+        "workerSeconds": 0.002686814,
+        "maxBumpWords": 192512
+      },
+      "workerSeconds": 0.002686814
+    },
+    {
+      "name": "pair-clang",
+      "case": "string-source-native-text-unique",
+      "round": 0,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/heldout-build01/pair-clang",
+        "string-source-native-text-unique",
+        "3"
+      ],
+      "status": 0,
+      "processSeconds": 0.02365563716739416,
+      "measurement": {
+        "name": "string-source-native-text-unique",
+        "repetitions": 3,
+        "workerSeconds": 0.002211161,
+        "maxBumpWords": 192512
+      },
+      "workerSeconds": 0.002211161
+    },
+    {
+      "name": "fused-qbe",
+      "case": "list-source-native-text-shared",
+      "round": 0,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/heldout-build01/fused-qbe",
+        "list-source-native-text-shared",
+        "3"
+      ],
+      "status": 0,
+      "processSeconds": 0.8705147998407483,
+      "measurement": {
+        "name": "list-source-native-text-shared",
+        "repetitions": 3,
+        "workerSeconds": 0.018685704,
+        "maxBumpWords": 5476352
+      },
+      "workerSeconds": 0.018685704
+    },
+    {
+      "name": "specialized-qbe",
+      "case": "list-source-native-text-shared",
+      "round": 0,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/heldout-build01/specialized-qbe",
+        "list-source-native-text-shared",
+        "3"
+      ],
+      "status": 0,
+      "processSeconds": 0.8671713420189917,
+      "measurement": {
+        "name": "list-source-native-text-shared",
+        "repetitions": 3,
+        "workerSeconds": 0.018326143,
+        "maxBumpWords": 5476352
+      },
+      "workerSeconds": 0.018326143
+    },
+    {
+      "name": "pair-clang",
+      "case": "list-source-native-text-shared",
+      "round": 0,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/heldout-build01/pair-clang",
+        "list-source-native-text-shared",
+        "3"
+      ],
+      "status": 0,
+      "processSeconds": 0.8727306299842894,
+      "measurement": {
+        "name": "list-source-native-text-shared",
+        "repetitions": 3,
+        "workerSeconds": 0.017956933,
+        "maxBumpWords": 5476352
+      },
+      "workerSeconds": 0.017956933
+    },
+    {
+      "name": "fused-qbe",
+      "case": "string-source-native-text-shared",
+      "round": 0,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/heldout-build01/fused-qbe",
+        "string-source-native-text-shared",
+        "3"
+      ],
+      "status": 0,
+      "processSeconds": 0.04945329111069441,
+      "measurement": {
+        "name": "string-source-native-text-shared",
+        "repetitions": 3,
+        "workerSeconds": 0.007225415,
+        "maxBumpWords": 380928
+      },
+      "workerSeconds": 0.007225415
+    },
+    {
+      "name": "specialized-qbe",
+      "case": "string-source-native-text-shared",
+      "round": 0,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/heldout-build01/specialized-qbe",
+        "string-source-native-text-shared",
+        "3"
+      ],
+      "status": 0,
+      "processSeconds": 0.04168682196177542,
+      "measurement": {
+        "name": "string-source-native-text-shared",
+        "repetitions": 3,
+        "workerSeconds": 0.005760901,
+        "maxBumpWords": 380928
+      },
+      "workerSeconds": 0.005760901
+    },
+    {
+      "name": "pair-clang",
+      "case": "string-source-native-text-shared",
+      "round": 0,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/heldout-build01/pair-clang",
+        "string-source-native-text-shared",
+        "3"
+      ],
+      "status": 0,
+      "processSeconds": 0.04151743999682367,
+      "measurement": {
+        "name": "string-source-native-text-shared",
+        "repetitions": 3,
+        "workerSeconds": 0.005498005,
+        "maxBumpWords": 380928
+      },
+      "workerSeconds": 0.005498005
+    },
+    {
+      "name": "pair-clang",
+      "case": "list-deep-shared-tail",
+      "round": 1,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/heldout-build01/pair-clang",
+        "list-deep-shared-tail",
+        "3"
+      ],
+      "status": 0,
+      "processSeconds": 0.07829164201393723,
+      "measurement": {
+        "name": "list-deep-shared-tail",
+        "repetitions": 3,
+        "workerSeconds": 0.005588944,
+        "maxBumpWords": 598016
+      },
+      "workerSeconds": 0.005588944
+    },
+    {
+      "name": "specialized-qbe",
+      "case": "list-deep-shared-tail",
+      "round": 1,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/heldout-build01/specialized-qbe",
+        "list-deep-shared-tail",
+        "3"
+      ],
+      "status": 0,
+      "processSeconds": 0.07825166499242187,
+      "measurement": {
+        "name": "list-deep-shared-tail",
+        "repetitions": 3,
+        "workerSeconds": 0.00594406,
+        "maxBumpWords": 598016
+      },
+      "workerSeconds": 0.00594406
+    },
+    {
+      "name": "fused-qbe",
+      "case": "list-deep-shared-tail",
+      "round": 1,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/heldout-build01/fused-qbe",
+        "list-deep-shared-tail",
+        "3"
+      ],
+      "status": 0,
+      "processSeconds": 0.07848156685940921,
+      "measurement": {
+        "name": "list-deep-shared-tail",
+        "repetitions": 3,
+        "workerSeconds": 0.006148008,
+        "maxBumpWords": 598016
+      },
+      "workerSeconds": 0.006148008
+    },
+    {
+      "name": "pair-clang",
+      "case": "list-odd-depth-65537",
+      "round": 1,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/heldout-build01/pair-clang",
+        "list-odd-depth-65537",
+        "3"
+      ],
+      "status": 0,
+      "processSeconds": 0.045873996103182435,
+      "measurement": {
+        "name": "list-odd-depth-65537",
+        "repetitions": 3,
+        "workerSeconds": 0.002466544,
+        "maxBumpWords": 401408
+      },
+      "workerSeconds": 0.002466544
+    },
+    {
+      "name": "specialized-qbe",
+      "case": "list-odd-depth-65537",
+      "round": 1,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/heldout-build01/specialized-qbe",
+        "list-odd-depth-65537",
+        "3"
+      ],
+      "status": 0,
+      "processSeconds": 0.045943696051836014,
+      "measurement": {
+        "name": "list-odd-depth-65537",
+        "repetitions": 3,
+        "workerSeconds": 0.002619835,
+        "maxBumpWords": 401408
+      },
+      "workerSeconds": 0.002619835
+    },
+    {
+      "name": "fused-qbe",
+      "case": "list-odd-depth-65537",
+      "round": 1,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/heldout-build01/fused-qbe",
+        "list-odd-depth-65537",
+        "3"
+      ],
+      "status": 0,
+      "processSeconds": 0.04627510206773877,
+      "measurement": {
+        "name": "list-odd-depth-65537",
+        "repetitions": 3,
+        "workerSeconds": 0.003039426,
+        "maxBumpWords": 401408
+      },
+      "workerSeconds": 0.003039426
+    },
+    {
+      "name": "pair-clang",
+      "case": "string-deep-shared-root",
+      "round": 1,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/heldout-build01/pair-clang",
+        "string-deep-shared-root",
+        "3"
+      ],
+      "status": 0,
+      "processSeconds": 0.043478183913975954,
+      "measurement": {
+        "name": "string-deep-shared-root",
+        "repetitions": 3,
+        "workerSeconds": 0.00572447,
+        "maxBumpWords": 401408
+      },
+      "workerSeconds": 0.00572447
+    },
+    {
+      "name": "specialized-qbe",
+      "case": "string-deep-shared-root",
+      "round": 1,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/heldout-build01/specialized-qbe",
+        "string-deep-shared-root",
+        "3"
+      ],
+      "status": 0,
+      "processSeconds": 0.04381194314919412,
+      "measurement": {
+        "name": "string-deep-shared-root",
+        "repetitions": 3,
+        "workerSeconds": 0.005943606,
+        "maxBumpWords": 401408
+      },
+      "workerSeconds": 0.005943606
+    },
+    {
+      "name": "fused-qbe",
+      "case": "string-deep-shared-root",
+      "round": 1,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/heldout-build01/fused-qbe",
+        "string-deep-shared-root",
+        "3"
+      ],
+      "status": 0,
+      "processSeconds": 0.04381222790107131,
+      "measurement": {
+        "name": "string-deep-shared-root",
+        "repetitions": 3,
+        "workerSeconds": 0.006254804,
+        "maxBumpWords": 401408
+      },
+      "workerSeconds": 0.006254804
+    },
+    {
+      "name": "pair-clang",
+      "case": "string-deep-shared-tail",
+      "round": 1,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/heldout-build01/pair-clang",
+        "string-deep-shared-tail",
+        "3"
+      ],
+      "status": 0,
+      "processSeconds": 0.039391836151480675,
+      "measurement": {
+        "name": "string-deep-shared-tail",
+        "repetitions": 3,
+        "workerSeconds": 0.005014576,
+        "maxBumpWords": 352256
+      },
+      "workerSeconds": 0.005014576
+    },
+    {
+      "name": "specialized-qbe",
+      "case": "string-deep-shared-tail",
+      "round": 1,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/heldout-build01/specialized-qbe",
+        "string-deep-shared-tail",
+        "3"
+      ],
+      "status": 0,
+      "processSeconds": 0.039701591012999415,
+      "measurement": {
+        "name": "string-deep-shared-tail",
+        "repetitions": 3,
+        "workerSeconds": 0.005258734,
+        "maxBumpWords": 352256
+      },
+      "workerSeconds": 0.005258734
+    },
+    {
+      "name": "fused-qbe",
+      "case": "string-deep-shared-tail",
+      "round": 1,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/heldout-build01/fused-qbe",
+        "string-deep-shared-tail",
+        "3"
+      ],
+      "status": 0,
+      "processSeconds": 0.039805398089811206,
+      "measurement": {
+        "name": "string-deep-shared-tail",
+        "repetitions": 3,
+        "workerSeconds": 0.005478522,
+        "maxBumpWords": 352256
+      },
+      "workerSeconds": 0.005478522
+    },
+    {
+      "name": "pair-clang",
+      "case": "string-odd-depth-65537",
+      "round": 1,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/heldout-build01/pair-clang",
+        "string-odd-depth-65537",
+        "3"
+      ],
+      "status": 0,
+      "processSeconds": 0.0258263919968158,
+      "measurement": {
+        "name": "string-odd-depth-65537",
+        "repetitions": 3,
+        "workerSeconds": 0.002997258,
+        "maxBumpWords": 204800
+      },
+      "workerSeconds": 0.002997258
+    },
+    {
+      "name": "specialized-qbe",
+      "case": "string-odd-depth-65537",
+      "round": 1,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/heldout-build01/specialized-qbe",
+        "string-odd-depth-65537",
+        "3"
+      ],
+      "status": 0,
+      "processSeconds": 0.02567161782644689,
+      "measurement": {
+        "name": "string-odd-depth-65537",
+        "repetitions": 3,
+        "workerSeconds": 0.002635363,
+        "maxBumpWords": 204800
+      },
+      "workerSeconds": 0.002635363
+    },
+    {
+      "name": "fused-qbe",
+      "case": "string-odd-depth-65537",
+      "round": 1,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/heldout-build01/fused-qbe",
+        "string-odd-depth-65537",
+        "3"
+      ],
+      "status": 0,
+      "processSeconds": 0.024966828990727663,
+      "measurement": {
+        "name": "string-odd-depth-65537",
+        "repetitions": 3,
+        "workerSeconds": 0.002823481,
+        "maxBumpWords": 204800
+      },
+      "workerSeconds": 0.002823481
+    },
+    {
+      "name": "pair-clang",
+      "case": "list-long-head-shared",
+      "round": 1,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/heldout-build01/pair-clang",
+        "list-long-head-shared",
+        "3"
+      ],
+      "status": 0,
+      "processSeconds": 0.004688686924055219,
+      "measurement": {
+        "name": "list-long-head-shared",
+        "repetitions": 3,
+        "workerSeconds": 1.183e-06,
+        "maxBumpWords": 24576
+      },
+      "workerSeconds": 1.183e-06
+    },
+    {
+      "name": "specialized-qbe",
+      "case": "list-long-head-shared",
+      "round": 1,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/heldout-build01/specialized-qbe",
+        "list-long-head-shared",
+        "3"
+      ],
+      "status": 0,
+      "processSeconds": 0.004520141053944826,
+      "measurement": {
+        "name": "list-long-head-shared",
+        "repetitions": 3,
+        "workerSeconds": 1.567e-06,
+        "maxBumpWords": 24576
+      },
+      "workerSeconds": 1.567e-06
+    },
+    {
+      "name": "fused-qbe",
+      "case": "list-long-head-shared",
+      "round": 1,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/heldout-build01/fused-qbe",
+        "list-long-head-shared",
+        "3"
+      ],
+      "status": 0,
+      "processSeconds": 0.004377075005322695,
+      "measurement": {
+        "name": "list-long-head-shared",
+        "repetitions": 3,
+        "workerSeconds": 1.46e-06,
+        "maxBumpWords": 24576
+      },
+      "workerSeconds": 1.46e-06
+    },
+    {
+      "name": "pair-clang",
+      "case": "list-source-native-text-unique",
+      "round": 1,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/heldout-build01/pair-clang",
+        "list-source-native-text-unique",
+        "3"
+      ],
+      "status": 0,
+      "processSeconds": 0.583586388034746,
+      "measurement": {
+        "name": "list-source-native-text-unique",
+        "repetitions": 3,
+        "workerSeconds": 0.014420688,
+        "maxBumpWords": 5279744
+      },
+      "workerSeconds": 0.014420688
+    },
+    {
+      "name": "specialized-qbe",
+      "case": "list-source-native-text-unique",
+      "round": 1,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/heldout-build01/specialized-qbe",
+        "list-source-native-text-unique",
+        "3"
+      ],
+      "status": 0,
+      "processSeconds": 0.5816803600173444,
+      "measurement": {
+        "name": "list-source-native-text-unique",
+        "repetitions": 3,
+        "workerSeconds": 0.013275074,
+        "maxBumpWords": 5279744
+      },
+      "workerSeconds": 0.013275074
+    },
+    {
+      "name": "fused-qbe",
+      "case": "list-source-native-text-unique",
+      "round": 1,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/heldout-build01/fused-qbe",
+        "list-source-native-text-unique",
+        "3"
+      ],
+      "status": 0,
+      "processSeconds": 0.5820321100763977,
+      "measurement": {
+        "name": "list-source-native-text-unique",
+        "repetitions": 3,
+        "workerSeconds": 0.013404331,
+        "maxBumpWords": 5279744
+      },
+      "workerSeconds": 0.013404331
+    },
+    {
+      "name": "pair-clang",
+      "case": "string-source-native-text-unique",
+      "round": 1,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/heldout-build01/pair-clang",
+        "string-source-native-text-unique",
+        "3"
+      ],
+      "status": 0,
+      "processSeconds": 0.023276785854250193,
+      "measurement": {
+        "name": "string-source-native-text-unique",
+        "repetitions": 3,
+        "workerSeconds": 0.002162033,
+        "maxBumpWords": 192512
+      },
+      "workerSeconds": 0.002162033
+    },
+    {
+      "name": "specialized-qbe",
+      "case": "string-source-native-text-unique",
+      "round": 1,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/heldout-build01/specialized-qbe",
+        "string-source-native-text-unique",
+        "3"
+      ],
+      "status": 0,
+      "processSeconds": 0.024088185047730803,
+      "measurement": {
+        "name": "string-source-native-text-unique",
+        "repetitions": 3,
+        "workerSeconds": 0.002510356,
+        "maxBumpWords": 192512
+      },
+      "workerSeconds": 0.002510356
+    },
+    {
+      "name": "fused-qbe",
+      "case": "string-source-native-text-unique",
+      "round": 1,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/heldout-build01/fused-qbe",
+        "string-source-native-text-unique",
+        "3"
+      ],
+      "status": 0,
+      "processSeconds": 0.023668781854212284,
+      "measurement": {
+        "name": "string-source-native-text-unique",
+        "repetitions": 3,
+        "workerSeconds": 0.002688557,
+        "maxBumpWords": 192512
+      },
+      "workerSeconds": 0.002688557
+    },
+    {
+      "name": "pair-clang",
+      "case": "list-source-native-text-shared",
+      "round": 1,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/heldout-build01/pair-clang",
+        "list-source-native-text-shared",
+        "3"
+      ],
+      "status": 0,
+      "processSeconds": 0.8637517238967121,
+      "measurement": {
+        "name": "list-source-native-text-shared",
+        "repetitions": 3,
+        "workerSeconds": 0.017115396,
+        "maxBumpWords": 5476352
+      },
+      "workerSeconds": 0.017115396
+    },
+    {
+      "name": "specialized-qbe",
+      "case": "list-source-native-text-shared",
+      "round": 1,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/heldout-build01/specialized-qbe",
+        "list-source-native-text-shared",
+        "3"
+      ],
+      "status": 0,
+      "processSeconds": 0.8660049359314144,
+      "measurement": {
+        "name": "list-source-native-text-shared",
+        "repetitions": 3,
+        "workerSeconds": 0.01748399,
+        "maxBumpWords": 5476352
+      },
+      "workerSeconds": 0.01748399
+    },
+    {
+      "name": "fused-qbe",
+      "case": "list-source-native-text-shared",
+      "round": 1,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/heldout-build01/fused-qbe",
+        "list-source-native-text-shared",
+        "3"
+      ],
+      "status": 0,
+      "processSeconds": 0.863277894910425,
+      "measurement": {
+        "name": "list-source-native-text-shared",
+        "repetitions": 3,
+        "workerSeconds": 0.018216999,
+        "maxBumpWords": 5476352
+      },
+      "workerSeconds": 0.018216999
+    },
+    {
+      "name": "pair-clang",
+      "case": "string-source-native-text-shared",
+      "round": 1,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/heldout-build01/pair-clang",
+        "string-source-native-text-shared",
+        "3"
+      ],
+      "status": 0,
+      "processSeconds": 0.04147633188404143,
+      "measurement": {
+        "name": "string-source-native-text-shared",
+        "repetitions": 3,
+        "workerSeconds": 0.005428439,
+        "maxBumpWords": 380928
+      },
+      "workerSeconds": 0.005428439
+    },
+    {
+      "name": "specialized-qbe",
+      "case": "string-source-native-text-shared",
+      "round": 1,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/heldout-build01/specialized-qbe",
+        "string-source-native-text-shared",
+        "3"
+      ],
+      "status": 0,
+      "processSeconds": 0.041668731020763516,
+      "measurement": {
+        "name": "string-source-native-text-shared",
+        "repetitions": 3,
+        "workerSeconds": 0.005752102,
+        "maxBumpWords": 380928
+      },
+      "workerSeconds": 0.005752102
+    },
+    {
+      "name": "fused-qbe",
+      "case": "string-source-native-text-shared",
+      "round": 1,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/heldout-build01/fused-qbe",
+        "string-source-native-text-shared",
+        "3"
+      ],
+      "status": 0,
+      "processSeconds": 0.041823628824204206,
+      "measurement": {
+        "name": "string-source-native-text-shared",
+        "repetitions": 3,
+        "workerSeconds": 0.005977637,
+        "maxBumpWords": 380928
+      },
+      "workerSeconds": 0.005977637
+    },
+    {
+      "name": "fused-qbe",
+      "case": "list-deep-shared-tail",
+      "round": 2,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/heldout-build01/fused-qbe",
+        "list-deep-shared-tail",
+        "3"
+      ],
+      "status": 0,
+      "processSeconds": 0.07860608794726431,
+      "measurement": {
+        "name": "list-deep-shared-tail",
+        "repetitions": 3,
+        "workerSeconds": 0.006185394,
+        "maxBumpWords": 598016
+      },
+      "workerSeconds": 0.006185394
+    },
+    {
+      "name": "specialized-qbe",
+      "case": "list-deep-shared-tail",
+      "round": 2,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/heldout-build01/specialized-qbe",
+        "list-deep-shared-tail",
+        "3"
+      ],
+      "status": 0,
+      "processSeconds": 0.07808841089718044,
+      "measurement": {
+        "name": "list-deep-shared-tail",
+        "repetitions": 3,
+        "workerSeconds": 0.005894805,
+        "maxBumpWords": 598016
+      },
+      "workerSeconds": 0.005894805
+    },
+    {
+      "name": "pair-clang",
+      "case": "list-deep-shared-tail",
+      "round": 2,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/heldout-build01/pair-clang",
+        "list-deep-shared-tail",
+        "3"
+      ],
+      "status": 0,
+      "processSeconds": 0.0780552620999515,
+      "measurement": {
+        "name": "list-deep-shared-tail",
+        "repetitions": 3,
+        "workerSeconds": 0.005551722,
+        "maxBumpWords": 598016
+      },
+      "workerSeconds": 0.005551722
+    },
+    {
+      "name": "fused-qbe",
+      "case": "list-odd-depth-65537",
+      "round": 2,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/heldout-build01/fused-qbe",
+        "list-odd-depth-65537",
+        "3"
+      ],
+      "status": 0,
+      "processSeconds": 0.046469255117699504,
+      "measurement": {
+        "name": "list-odd-depth-65537",
+        "repetitions": 3,
+        "workerSeconds": 0.003002886,
+        "maxBumpWords": 401408
+      },
+      "workerSeconds": 0.003002886
+    },
+    {
+      "name": "specialized-qbe",
+      "case": "list-odd-depth-65537",
+      "round": 2,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/heldout-build01/specialized-qbe",
+        "list-odd-depth-65537",
+        "3"
+      ],
+      "status": 0,
+      "processSeconds": 0.04596146219410002,
+      "measurement": {
+        "name": "list-odd-depth-65537",
+        "repetitions": 3,
+        "workerSeconds": 0.002654179,
+        "maxBumpWords": 401408
+      },
+      "workerSeconds": 0.002654179
+    },
+    {
+      "name": "pair-clang",
+      "case": "list-odd-depth-65537",
+      "round": 2,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/heldout-build01/pair-clang",
+        "list-odd-depth-65537",
+        "3"
+      ],
+      "status": 0,
+      "processSeconds": 0.04613926098681986,
+      "measurement": {
+        "name": "list-odd-depth-65537",
+        "repetitions": 3,
+        "workerSeconds": 0.002491819,
+        "maxBumpWords": 401408
+      },
+      "workerSeconds": 0.002491819
+    },
+    {
+      "name": "fused-qbe",
+      "case": "string-deep-shared-root",
+      "round": 2,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/heldout-build01/fused-qbe",
+        "string-deep-shared-root",
+        "3"
+      ],
+      "status": 0,
+      "processSeconds": 0.044036808889359236,
+      "measurement": {
+        "name": "string-deep-shared-root",
+        "repetitions": 3,
+        "workerSeconds": 0.006294022,
+        "maxBumpWords": 401408
+      },
+      "workerSeconds": 0.006294022
+    },
+    {
+      "name": "specialized-qbe",
+      "case": "string-deep-shared-root",
+      "round": 2,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/heldout-build01/specialized-qbe",
+        "string-deep-shared-root",
+        "3"
+      ],
+      "status": 0,
+      "processSeconds": 0.04399232310242951,
+      "measurement": {
+        "name": "string-deep-shared-root",
+        "repetitions": 3,
+        "workerSeconds": 0.005960348,
+        "maxBumpWords": 401408
+      },
+      "workerSeconds": 0.005960348
+    },
+    {
+      "name": "pair-clang",
+      "case": "string-deep-shared-root",
+      "round": 2,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/heldout-build01/pair-clang",
+        "string-deep-shared-root",
+        "3"
+      ],
+      "status": 0,
+      "processSeconds": 0.0434532999061048,
+      "measurement": {
+        "name": "string-deep-shared-root",
+        "repetitions": 3,
+        "workerSeconds": 0.005842602,
+        "maxBumpWords": 401408
+      },
+      "workerSeconds": 0.005842602
+    },
+    {
+      "name": "fused-qbe",
+      "case": "string-deep-shared-tail",
+      "round": 2,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/heldout-build01/fused-qbe",
+        "string-deep-shared-tail",
+        "3"
+      ],
+      "status": 0,
+      "processSeconds": 0.04104396887123585,
+      "measurement": {
+        "name": "string-deep-shared-tail",
+        "repetitions": 3,
+        "workerSeconds": 0.005628635,
+        "maxBumpWords": 352256
+      },
+      "workerSeconds": 0.005628635
+    },
+    {
+      "name": "specialized-qbe",
+      "case": "string-deep-shared-tail",
+      "round": 2,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/heldout-build01/specialized-qbe",
+        "string-deep-shared-tail",
+        "3"
+      ],
+      "status": 0,
+      "processSeconds": 0.039916052017360926,
+      "measurement": {
+        "name": "string-deep-shared-tail",
+        "repetitions": 3,
+        "workerSeconds": 0.005290286,
+        "maxBumpWords": 352256
+      },
+      "workerSeconds": 0.005290286
+    },
+    {
+      "name": "pair-clang",
+      "case": "string-deep-shared-tail",
+      "round": 2,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/heldout-build01/pair-clang",
+        "string-deep-shared-tail",
+        "3"
+      ],
+      "status": 0,
+      "processSeconds": 0.03949017799459398,
+      "measurement": {
+        "name": "string-deep-shared-tail",
+        "repetitions": 3,
+        "workerSeconds": 0.00493301,
+        "maxBumpWords": 352256
+      },
+      "workerSeconds": 0.00493301
+    },
+    {
+      "name": "fused-qbe",
+      "case": "string-odd-depth-65537",
+      "round": 2,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/heldout-build01/fused-qbe",
+        "string-odd-depth-65537",
+        "3"
+      ],
+      "status": 0,
+      "processSeconds": 0.02512927888892591,
+      "measurement": {
+        "name": "string-odd-depth-65537",
+        "repetitions": 3,
+        "workerSeconds": 0.002847366,
+        "maxBumpWords": 204800
+      },
+      "workerSeconds": 0.002847366
+    },
+    {
+      "name": "specialized-qbe",
+      "case": "string-odd-depth-65537",
+      "round": 2,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/heldout-build01/specialized-qbe",
+        "string-odd-depth-65537",
+        "3"
+      ],
+      "status": 0,
+      "processSeconds": 0.0251117458101362,
+      "measurement": {
+        "name": "string-odd-depth-65537",
+        "repetitions": 3,
+        "workerSeconds": 0.002568817,
+        "maxBumpWords": 204800
+      },
+      "workerSeconds": 0.002568817
+    },
+    {
+      "name": "pair-clang",
+      "case": "string-odd-depth-65537",
+      "round": 2,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/heldout-build01/pair-clang",
+        "string-odd-depth-65537",
+        "3"
+      ],
+      "status": 0,
+      "processSeconds": 0.024828450987115502,
+      "measurement": {
+        "name": "string-odd-depth-65537",
+        "repetitions": 3,
+        "workerSeconds": 0.002321525,
+        "maxBumpWords": 204800
+      },
+      "workerSeconds": 0.002321525
+    },
+    {
+      "name": "fused-qbe",
+      "case": "list-long-head-shared",
+      "round": 2,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/heldout-build01/fused-qbe",
+        "list-long-head-shared",
+        "3"
+      ],
+      "status": 0,
+      "processSeconds": 0.00464465213008225,
+      "measurement": {
+        "name": "list-long-head-shared",
+        "repetitions": 3,
+        "workerSeconds": 1.524e-06,
+        "maxBumpWords": 24576
+      },
+      "workerSeconds": 1.524e-06
+    },
+    {
+      "name": "specialized-qbe",
+      "case": "list-long-head-shared",
+      "round": 2,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/heldout-build01/specialized-qbe",
+        "list-long-head-shared",
+        "3"
+      ],
+      "status": 0,
+      "processSeconds": 0.004380242899060249,
+      "measurement": {
+        "name": "list-long-head-shared",
+        "repetitions": 3,
+        "workerSeconds": 1.269e-06,
+        "maxBumpWords": 24576
+      },
+      "workerSeconds": 1.269e-06
+    },
+    {
+      "name": "pair-clang",
+      "case": "list-long-head-shared",
+      "round": 2,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/heldout-build01/pair-clang",
+        "list-long-head-shared",
+        "3"
+      ],
+      "status": 0,
+      "processSeconds": 0.004612554097548127,
+      "measurement": {
+        "name": "list-long-head-shared",
+        "repetitions": 3,
+        "workerSeconds": 1.339e-06,
+        "maxBumpWords": 24576
+      },
+      "workerSeconds": 1.339e-06
+    },
+    {
+      "name": "fused-qbe",
+      "case": "list-source-native-text-unique",
+      "round": 2,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/heldout-build01/fused-qbe",
+        "list-source-native-text-unique",
+        "3"
+      ],
+      "status": 0,
+      "processSeconds": 0.579865989042446,
+      "measurement": {
+        "name": "list-source-native-text-unique",
+        "repetitions": 3,
+        "workerSeconds": 0.013779415,
+        "maxBumpWords": 5279744
+      },
+      "workerSeconds": 0.013779415
+    },
+    {
+      "name": "specialized-qbe",
+      "case": "list-source-native-text-unique",
+      "round": 2,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/heldout-build01/specialized-qbe",
+        "list-source-native-text-unique",
+        "3"
+      ],
+      "status": 0,
+      "processSeconds": 0.5794518738985062,
+      "measurement": {
+        "name": "list-source-native-text-unique",
+        "repetitions": 3,
+        "workerSeconds": 0.013302776,
+        "maxBumpWords": 5279744
+      },
+      "workerSeconds": 0.013302776
+    },
+    {
+      "name": "pair-clang",
+      "case": "list-source-native-text-unique",
+      "round": 2,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/heldout-build01/pair-clang",
+        "list-source-native-text-unique",
+        "3"
+      ],
+      "status": 0,
+      "processSeconds": 0.5866760599892586,
+      "measurement": {
+        "name": "list-source-native-text-unique",
+        "repetitions": 3,
+        "workerSeconds": 0.013197567,
+        "maxBumpWords": 5279744
+      },
+      "workerSeconds": 0.013197567
+    },
+    {
+      "name": "fused-qbe",
+      "case": "string-source-native-text-unique",
+      "round": 2,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/heldout-build01/fused-qbe",
+        "string-source-native-text-unique",
+        "3"
+      ],
+      "status": 0,
+      "processSeconds": 0.02417236613109708,
+      "measurement": {
+        "name": "string-source-native-text-unique",
+        "repetitions": 3,
+        "workerSeconds": 0.002707489,
+        "maxBumpWords": 192512
+      },
+      "workerSeconds": 0.002707489
+    },
+    {
+      "name": "specialized-qbe",
+      "case": "string-source-native-text-unique",
+      "round": 2,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/heldout-build01/specialized-qbe",
+        "string-source-native-text-unique",
+        "3"
+      ],
+      "status": 0,
+      "processSeconds": 0.02385742706246674,
+      "measurement": {
+        "name": "string-source-native-text-unique",
+        "repetitions": 3,
+        "workerSeconds": 0.002503942,
+        "maxBumpWords": 192512
+      },
+      "workerSeconds": 0.002503942
+    },
+    {
+      "name": "pair-clang",
+      "case": "string-source-native-text-unique",
+      "round": 2,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/heldout-build01/pair-clang",
+        "string-source-native-text-unique",
+        "3"
+      ],
+      "status": 0,
+      "processSeconds": 0.02368098101578653,
+      "measurement": {
+        "name": "string-source-native-text-unique",
+        "repetitions": 3,
+        "workerSeconds": 0.002195269,
+        "maxBumpWords": 192512
+      },
+      "workerSeconds": 0.002195269
+    },
+    {
+      "name": "fused-qbe",
+      "case": "list-source-native-text-shared",
+      "round": 2,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/heldout-build01/fused-qbe",
+        "list-source-native-text-shared",
+        "3"
+      ],
+      "status": 0,
+      "processSeconds": 0.8611985540483147,
+      "measurement": {
+        "name": "list-source-native-text-shared",
+        "repetitions": 3,
+        "workerSeconds": 0.018198659,
+        "maxBumpWords": 5476352
+      },
+      "workerSeconds": 0.018198659
+    },
+    {
+      "name": "specialized-qbe",
+      "case": "list-source-native-text-shared",
+      "round": 2,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/heldout-build01/specialized-qbe",
+        "list-source-native-text-shared",
+        "3"
+      ],
+      "status": 0,
+      "processSeconds": 0.8653197260573506,
+      "measurement": {
+        "name": "list-source-native-text-shared",
+        "repetitions": 3,
+        "workerSeconds": 0.017581187,
+        "maxBumpWords": 5476352
+      },
+      "workerSeconds": 0.017581187
+    },
+    {
+      "name": "pair-clang",
+      "case": "list-source-native-text-shared",
+      "round": 2,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/heldout-build01/pair-clang",
+        "list-source-native-text-shared",
+        "3"
+      ],
+      "status": 0,
+      "processSeconds": 0.8612026579212397,
+      "measurement": {
+        "name": "list-source-native-text-shared",
+        "repetitions": 3,
+        "workerSeconds": 0.017050789,
+        "maxBumpWords": 5476352
+      },
+      "workerSeconds": 0.017050789
+    },
+    {
+      "name": "fused-qbe",
+      "case": "string-source-native-text-shared",
+      "round": 2,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/heldout-build01/fused-qbe",
+        "string-source-native-text-shared",
+        "3"
+      ],
+      "status": 0,
+      "processSeconds": 0.0476226219907403,
+      "measurement": {
+        "name": "string-source-native-text-shared",
+        "repetitions": 3,
+        "workerSeconds": 0.006987722,
+        "maxBumpWords": 380928
+      },
+      "workerSeconds": 0.006987722
+    },
+    {
+      "name": "specialized-qbe",
+      "case": "string-source-native-text-shared",
+      "round": 2,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/heldout-build01/specialized-qbe",
+        "string-source-native-text-shared",
+        "3"
+      ],
+      "status": 0,
+      "processSeconds": 0.0418807789683342,
+      "measurement": {
+        "name": "string-source-native-text-shared",
+        "repetitions": 3,
+        "workerSeconds": 0.005776212,
+        "maxBumpWords": 380928
+      },
+      "workerSeconds": 0.005776212
+    },
+    {
+      "name": "pair-clang",
+      "case": "string-source-native-text-shared",
+      "round": 2,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/heldout-build01/pair-clang",
+        "string-source-native-text-shared",
+        "3"
+      ],
+      "status": 0,
+      "processSeconds": 0.04164035897701979,
+      "measurement": {
+        "name": "string-source-native-text-shared",
+        "repetitions": 3,
+        "workerSeconds": 0.005481515,
+        "maxBumpWords": 380928
+      },
+      "workerSeconds": 0.005481515
+    }
+  ],
+  "started": 1792351177.656318,
+  "scope": "Worker clock excludes graph construction/observation/release. Process and campaign clocks include them. Same immutable source/library/runtime; no agent edits inside this finite evaluation.",
+  "selection": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/search01/report.json",
+    "sha256": "f22629bb5bd1dddfb0b825c22f46c613bdcbd838942e713b899157ac6e74bf4b",
+    "bytes": 148373
+  },
+  "medians": {
+    "fused-qbe": {
+      "list-deep-shared-tail": 0.006148008,
+      "list-odd-depth-65537": 0.00301231,
+      "string-deep-shared-root": 0.006270612,
+      "string-deep-shared-tail": 0.005540347,
+      "string-odd-depth-65537": 0.002847366,
+      "list-long-head-shared": 1.524e-06,
+      "list-source-native-text-unique": 0.013779415,
+      "string-source-native-text-unique": 0.002707489,
+      "list-source-native-text-shared": 0.018216999,
+      "string-source-native-text-shared": 0.006987722
+    },
+    "specialized-qbe": {
+      "list-deep-shared-tail": 0.005894805,
+      "list-odd-depth-65537": 0.002625838,
+      "string-deep-shared-root": 0.005960348,
+      "string-deep-shared-tail": 0.005258734,
+      "string-odd-depth-65537": 0.002568817,
+      "list-long-head-shared": 1.273e-06,
+      "list-source-native-text-unique": 0.013302776,
+      "string-source-native-text-unique": 0.002510356,
+      "list-source-native-text-shared": 0.017581187,
+      "string-source-native-text-shared": 0.005760901
+    },
+    "pair-clang": {
+      "list-deep-shared-tail": 0.005562683,
+      "list-odd-depth-65537": 0.002487539,
+      "string-deep-shared-root": 0.005771849,
+      "string-deep-shared-tail": 0.004969369,
+      "string-odd-depth-65537": 0.00242078,
+      "list-long-head-shared": 1.327e-06,
+      "list-source-native-text-unique": 0.013629169,
+      "string-source-native-text-unique": 0.002195269,
+      "list-source-native-text-shared": 0.017115396,
+      "string-source-native-text-shared": 0.005481515
+    }
+  },
+  "ranking": [
+    {
+      "name": "pair-clang",
+      "ratio": 0.8772476558983604,
+      "cases": {
+        "list-deep-shared-tail": 0.9047943659149434,
+        "list-odd-depth-65537": 0.8257911702314835,
+        "string-deep-shared-root": 0.920460235779219,
+        "string-deep-shared-tail": 0.8969418341486554,
+        "string-odd-depth-65537": 0.850182238602273,
+        "list-long-head-shared": 0.8707349081364829,
+        "list-source-native-text-unique": 0.9890963440755649,
+        "string-source-native-text-unique": 0.8108136358079387,
+        "list-source-native-text-shared": 0.9395288433621806,
+        "string-source-native-text-shared": 0.7844494958442824
+      }
+    },
+    {
+      "name": "specialized-qbe",
+      "ratio": 0.91351330740913,
+      "cases": {
+        "list-deep-shared-tail": 0.9588154407086004,
+        "list-odd-depth-65537": 0.8717024476232527,
+        "string-deep-shared-root": 0.9505209379881899,
+        "string-deep-shared-tail": 0.9491705122440887,
+        "string-odd-depth-65537": 0.9021730961176049,
+        "list-long-head-shared": 0.8353018372703412,
+        "list-source-native-text-unique": 0.9654093443009011,
+        "string-source-native-text-unique": 0.9271897318881074,
+        "list-source-native-text-shared": 0.9650978736947837,
+        "string-source-native-text-shared": 0.8244319107142499
+      }
+    },
+    {
+      "name": "fused-qbe",
+      "ratio": 1.0,
+      "cases": {
+        "list-deep-shared-tail": 1.0,
+        "list-odd-depth-65537": 1.0,
+        "string-deep-shared-root": 1.0,
+        "string-deep-shared-tail": 1.0,
+        "string-odd-depth-65537": 1.0,
+        "list-long-head-shared": 1.0,
+        "list-source-native-text-unique": 1.0,
+        "string-source-native-text-unique": 1.0,
+        "list-source-native-text-shared": 1.0,
+        "string-source-native-text-shared": 1.0
+      }
+    }
+  ],
+  "globalWinner": "pair-clang",
+  "qbeWinner": "specialized-qbe",
+  "finished": 1792351194.1979792,
+  "evaluationOnly": true,
+  "accepted": {
+    "pair-clang": true,
+    "specialized-qbe": true
+  }
+}

@@ -1,0 +1,96 @@
+{
+  "kind": "phase110-frozen-fast-followup-calibration",
+  "version": 2,
+  "frozenAtUtc": "2026-10-18T19:20:34.504233+00:00",
+  "baselineEvidence": {
+    "file": "selfhost/build/phase110/search01/report.json",
+    "bytes": 148373,
+    "sha256": "f22629bb5bd1dddfb0b825c22f46c613bdcbd838942e713b899157ac6e74bf4b"
+  },
+  "originalPlan": {
+    "file": "selfhost/tools/performance/phase110/controls/policy-search.json",
+    "bytes": 7192,
+    "sha256": "8062d698a39283b2b43f73041c1cf215f99c8c33eb077ebc3be0cc86b67067a1"
+  },
+  "graphManifest": {
+    "file": "selfhost/tools/performance/phase110/controls/manifest.json",
+    "bytes": 8547,
+    "sha256": "78133f8d2417b047c4d93ec1392dd196c06a1acbf386cf8799f3701087fb939a"
+  },
+  "completedSearchUnchanged": true,
+  "targetBaselineWorkerSeconds": 0.005,
+  "repetitionRule": "clamp(ceil(0.005 / median(search01 fused-qbe workerSeconds/repetitions)),1,100)",
+  "calibration": [
+    {
+      "case": "list-deep-unique",
+      "baselineWorkerSecondsPerRepetition": 0.0009834169,
+      "repetitions": 6,
+      "predictedBaselineWorkerSeconds": 0.005900501400000001
+    },
+    {
+      "case": "list-deep-shared-root",
+      "baselineWorkerSecondsPerRepetition": 0.0023632284,
+      "repetitions": 3,
+      "predictedBaselineWorkerSeconds": 0.007089685199999999
+    },
+    {
+      "case": "string-deep-unique",
+      "baselineWorkerSecondsPerRepetition": 0.0009442875999999999,
+      "repetitions": 6,
+      "predictedBaselineWorkerSeconds": 0.005665725599999999
+    },
+    {
+      "case": "list-source-lexer-unique",
+      "baselineWorkerSecondsPerRepetition": 0.0055905017,
+      "repetitions": 1,
+      "predictedBaselineWorkerSeconds": 0.0055905017
+    },
+    {
+      "case": "string-source-lexer-unique",
+      "baselineWorkerSecondsPerRepetition": 0.0007658866,
+      "repetitions": 7,
+      "predictedBaselineWorkerSeconds": 0.0053612062
+    },
+    {
+      "case": "list-source-lexer-shared",
+      "baselineWorkerSecondsPerRepetition": 0.0068236371,
+      "repetitions": 1,
+      "predictedBaselineWorkerSeconds": 0.0068236371
+    },
+    {
+      "case": "string-source-lexer-shared",
+      "baselineWorkerSecondsPerRepetition": 0.0017006844,
+      "repetitions": 3,
+      "predictedBaselineWorkerSeconds": 0.0051020532
+    }
+  ],
+  "rounds": 3,
+  "weighting": "Same seven training graphs, equal workload geometric mean; each sample compares seconds per repetition because counts differ across cases.",
+  "reference": "Unchanged fused-qbe baseline; same per-case repetition count for every candidate and baseline",
+  "candidateFamilies": [
+    "direct-constructor-runtime: pair worker with explicit rfc_seal+term_ctr helper body; exact tool/runtime pins required",
+    "private-runtime-ir-single: exact inline owned reconstruction, admitted single-thread read64 reference view",
+    "private-runtime-ir-atomic: identical private IR with unchanged rfc_view helper"
+  ],
+  "scope": "New follow-up candidates. This is not a rerun or amendment of original twelve-choice search01 selection.",
+  "measurement": [
+    "Alternate candidate/reference order within each round; keep root CPU3 serialization.",
+    "Record total process wall and worker clock separately; add optional setup/alias/observe/drop/context clocks to NEW harness versions only.",
+    "Calibration is an experiment cost decision, not a performance result; fastest new candidate may need longer confirmation.",
+    "If winner margin<3% or candidate aggregate worker sample<1ms, mark inconclusive and schedule separately frozen longer confirmation instead of retroactively extending selected samples.",
+    "Do not share/cache fixture heads between repetitions: that changes physical graph ownership.",
+    "Retain full source/ABI/oracle gates in fresh qualification, use training-only short loop while editing."
+  ],
+  "validation": {
+    "oldHeldouts": "The original10 timed heldouts are reused regressions for these new candidates. Preserve their frozen equal-weight10-case geometric mean.",
+    "tinyCase": "list-long-head-shared has only4listcells; its worker duration is sub-microsecond/very short and ratio can be noisy. Explicitly flag it, retain it in frozen10-case aggregate, and separately show expanded diagnostics without replacing that denominator.",
+    "freshHoldouts": "controls/audit/manifest.json reserves8fresh observations (4graphs\u00d72droporders) for the new physicalgraph/runtimeIR candidate; do not tune after reading these heldout observations."
+  },
+  "costProjection": {
+    "oldProcessSeconds": 241.37513978756033,
+    "oldWorkerSeconds": 6.733997226000002,
+    "oldWallSeconds": 247.6830198764801,
+    "linearProcessEstimateSeconds": 32.90760713934433,
+    "warning": "Linear projection from existing processes, not measured speedup. It scales fixed startup/observation overhead too and is therefore optimistic; candidate counts/compile cost and wider qualification are separate."
+  }
+}

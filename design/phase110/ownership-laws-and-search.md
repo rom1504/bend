@@ -57,8 +57,10 @@ Freeze independent training and held-out workloads before selection. Evaluate a
 bounded twelve-choice space: fused/tagged/specialized/pair × QBE/Clang-O2/GCC-O2,
 using the same cached GCC runtime. If a proposed candidate cannot be implemented
 or admitted, record it as unavailable rather than silently changing the space.
-Select on training geometric-mean worker-time ratio against the matched fused
-backend. Record build, validation and search cost, code size, allocation/lifetime
+Select on training geometric-mean worker-time ratio against one unchanged
+fused-QBE reference. Report matched-backend ratios for attribution and select
+the QBE policy winner separately from the fastest absolute worker. This objective
+clarification was frozen before any candidate timing. Record build, validation and search cost, code size, allocation/lifetime
 checks and break-even work. Evaluate held-outs once after selection; retain the
 incumbent when results are inconclusive or correctness fails.
 

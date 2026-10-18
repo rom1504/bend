@@ -1,0 +1,23 @@
+{
+  "kind": "phase110-runtime-ir-width-overrides",
+  "version": 1,
+  "targetsRun": false,
+  "replacements": [
+    {
+      "name": "nx_expr_type",
+      "origin": "selfhost/tools/performance/phase106/ir/verify.bend",
+      "oldSha256": "20c0f63160894d1d7fc8f8a5ab2fab389f211c75ce8b611c8b19ebf077824c86",
+      "newSha256": "8e84f012f47dc59137b18894c5b6d88ecfd568735667bbf113c9c3d43fc8dc97",
+      "old": "@unsafe\ndef nx_expr_type(+expr: NxExpr, +env: List<&2, NxParam>, +fs: List<&2, NxFunction>) -> NxType:\n  match expr:\n    case NxConst{typ, value}:\n      nx_choose(NxType, nx_scalar(typ) || (nx_type_equal(typ, NxPtr{}) && U32.is_eq(value, 0)), u => typ, u => NxBad{})\n    case NxVar{name}: nx_lookup(name, env)\n    case NxBin{op, left, right}:\n      nx_choose(NxType, nx_pure(left) && nx_pure(right), u => nx_bin_type(op, nx_expr_type(left, env, fs), nx_expr_type(right, env, fs)), u => NxBad{})\n    case NxCall{name, args}: nx_call_type(name, args, env, fs)\n    case NxAlloc{bytes}:\n      nx_choose(NxType, nx_pure(bytes) && nx_type_equal(nx_expr_type(bytes, env, fs), NxU32{}), u => NxPtr{}, u => NxBad{})\n    case NxLoad{typ, ptr, offset}:\n      nx_choose(NxType, nx_pure(ptr) && nx_type_equal(nx_expr_type(ptr, env, fs), NxPtr{}), u => typ, u => NxBad{})\n    case NxOffset{ptr, bytes}:\n      nx_choose(NxType, nx_pure(ptr) && nx_pure(bytes) && nx_type_equal(nx_expr_type(ptr, env, fs), NxPtr{}) && nx_type_equal(nx_expr_type(bytes, env, fs), NxU32{}), u => NxPtr{}, u => NxBad{})\n    case NxFunc{name}:\n      nx_function_pointer_type(nx_find(name, fs))\n    case NxICall{callee, args, params, result}:\n      nx_choose(NxType, nx_pure(callee) && nx_type_equal(nx_expr_type(callee, env, fs), NxPtr{}) && nx_arg_types(args, params, env, fs), u => result, u => NxBad{})",
+      "new": "@unsafe\ndef nx_expr_type(+expr: NxExpr, +env: List<&2, NxParam>, +fs: List<&2, NxFunction>) -> NxType:\n  match expr:\n    case NxConst{typ, value}:\n      nx_choose(NxType, nx_scalar(typ) || (nx_type_equal(typ, NxPtr{}) && U32.is_eq(value, 0)), u => typ, u => NxBad{})\n    case NxVar{name}: nx_lookup(name, env)\n    case NxBin{op, left, right}:\n      nx_choose(NxType, nx_pure(left) && nx_pure(right), u => nx_bin_type(op, nx_expr_type(left, env, fs), nx_expr_type(right, env, fs)), u => NxBad{})\n    case NxCall{name, args}: nx_call_type(name, args, env, fs)\n    case NxAlloc{bytes}:\n      nx_choose(NxType, nx_pure(bytes) && nx_type_equal(nx_expr_type(bytes, env, fs), NxU32{}), u => NxPtr{}, u => NxBad{})\n    case NxLoad{typ, ptr, offset}:\n      nx_choose(NxType, nx_pure(ptr) && nx_type_equal(nx_expr_type(ptr, env, fs), NxPtr{}), u => typ, u => NxBad{})\n    case NxOffset{ptr, bytes}:\n      nx_choose(NxType, nx_pure(ptr) && nx_pure(bytes) && nx_type_equal(nx_expr_type(ptr, env, fs), NxPtr{}) && (nx_type_equal(nx_expr_type(bytes, env, fs), NxU32{}) || nx_type_equal(nx_expr_type(bytes, env, fs), NxU64{})), u => NxPtr{}, u => NxBad{})\n    case NxFunc{name}:\n      nx_function_pointer_type(nx_find(name, fs))\n    case NxICall{callee, args, params, result}:\n      nx_choose(NxType, nx_pure(callee) && nx_type_equal(nx_expr_type(callee, env, fs), NxPtr{}) && nx_arg_types(args, params, env, fs), u => result, u => NxBad{})"
+    },
+    {
+      "name": "nxq_offset",
+      "origin": "selfhost/tools/performance/phase107/backends/qbe.bend",
+      "oldSha256": "1c825a644d0c91ff4995e99d7cf6c62709329180c24e4546092f6df404ebad43",
+      "newSha256": "ee224486f30b1fcc3645b217360aa7115ec547da37075c9bda6fc4a3a579dedc",
+      "old": "@unsafe\ndef nxq_offset(+prefix: String, +ptr: String, +bytes: NxqValue) -> NxqValue:\n  match bytes:\n    case NxqValue{code, word, typ, n}:\n      +wide = nxq_tmp(n)\n      +out = nxq_tmp(U32.add(n, 1))\n      NxqValue{prefix ++ code ++ wide ++ \" =l extuw \" ++ word ++ \"\\n\" ++ out ++ \" =l add \" ++ ptr ++ \", \" ++ wide ++ \"\\n\", out, NxPtr{}, U32.add(n, 2)}",
+      "new": "@unsafe\ndef nxq_offset(+prefix: String, +ptr: String, +bytes: NxqValue) -> NxqValue:\n  match bytes:\n    case NxqValue{code, word, typ, n}:\n      +wide = nxq_tmp(n)\n      +out = nxq_tmp(U32.add(n, 1))\n      nx_choose(NxqValue,nx_type_equal(typ,NxU64{}),u => NxqValue{prefix ++ code ++ wide ++ \" =l add \" ++ ptr ++ \", \" ++ word ++ \"\\n\",wide,NxPtr{},U32.add(n,1)},u =>\n        NxqValue{prefix ++ code ++ wide ++ \" =l extuw \" ++ word ++ \"\\n\" ++ out ++ \" =l add \" ++ ptr ++ \", \" ++ wide ++ \"\\n\", out, NxPtr{}, U32.add(n, 2)})"
+    }
+  ]
+}

@@ -1,0 +1,158 @@
+{
+  "schema": "phase110-actual-compiled-lowering-mutation-recipe-v1",
+  "targetsRun": false,
+  "scope": "Two deliberately wrong production-candidate consumer mappings, compiled in isolated assembled source copies against unchanged frozen runtime and independent oracle. No repository mutation or new semantic expectations.",
+  "sourcePins": [
+    {
+      "file": "selfhost/tools/performance/phase110/lower/policy.bend",
+      "bytes": 5763,
+      "sha256": "a9552c5b10489d8f0984b2e170055846ddb3133ded9ab04de3ea6d651d793a29"
+    },
+    {
+      "file": "selfhost/tools/performance/phase110/laws/helper.bend",
+      "bytes": 947,
+      "sha256": "935a363f5e6419b801821f1b106d88da882fd02b3fc186fcf46aee4ca8fd5372"
+    },
+    {
+      "file": "selfhost/tools/performance/phase110/emit.mjs",
+      "bytes": 4964,
+      "sha256": "40af88a209d79a22b7e9c0ee4685b6533c41fb7c50a44d883a976f89e07eb15b"
+    },
+    {
+      "file": "selfhost/tools/performance/phase110/run.py",
+      "bytes": 4586,
+      "sha256": "eb35981aec0069c3bb9afcefd4b64b6499cfe04613f0368773e14bd3114ad696"
+    }
+  ],
+  "baselineExample": {
+    "source": {
+      "file": "selfhost/build/phase110/bridge03/source.bend",
+      "bytes": 132629,
+      "sha256": "458f8bb3a8cb7c3269cba6b9afbcb4460d4f3586ba3158bfc02d075e3c14227e"
+    },
+    "sourceManifest": {
+      "file": "selfhost/build/phase110/bridge03/manifest.json",
+      "bytes": 7096,
+      "sha256": "2bf7349f1616c7e125fddfbb882bbc569f3d4c46cfda2a69b9cd268609b96113"
+    },
+    "runtimeManifest": {
+      "file": "selfhost/build/phase110/runtime01/manifest.json",
+      "bytes": 2953,
+      "sha256": "92b550cc6b2bedd0c5759bf2e374d8737aaf2582cae9d254b65ad0d9be37433f"
+    },
+    "runtimeC": {
+      "file": "selfhost/build/phase110/runtime01/runtime.c",
+      "bytes": 34571,
+      "sha256": "018f95baa18c008951c0fdecdfc83752086bffe018f93908ff603974d0cd659d"
+    },
+    "captureManifest": {
+      "file": "selfhost/build/phase109/capture02/report.json",
+      "bytes": 2606,
+      "sha256": "65e673ce0e36b3fd1eb0690f9cba06e4a5cf1cd28a3c706bc971f71c39a420f7"
+    },
+    "harnessManifest": {
+      "file": "selfhost/build/phase110/train01/manifest.json",
+      "bytes": 2400,
+      "sha256": "884494db0a197907f93d9b795be0d83f2d950a7fcf404244085c6f43712c0e35"
+    },
+    "frozenExpected": {
+      "file": "selfhost/build/phase110/train01/expected.jsonl",
+      "bytes": 1380,
+      "sha256": "ae232ca11189b0d6fbb1ab37d32d3b934bcb5c86698a21ae2eb2d46066457352"
+    }
+  },
+  "preconditions": [
+    "Use an accepted unmutated bridge source and baseline tagged worker under the exact same runtime/harness/capture identities.",
+    "Reauthenticate all pins before preparation. Require each before text exactly once in the isolated assembled source.",
+    "Copy the assembled source to a fresh output folder, apply exactly one listed replacement, retain both source hashes and verify inverse replacement exactly reconstructs baseline.",
+    "Do not change helper proofs, source facts, verifier, shape controls, emit transport, runtime, harness or expected output. Do not suppress any control failure."
+  ],
+  "cases": [
+    {
+      "id": "tagged-runtime-index-flip",
+      "file": "selfhost/tools/performance/phase110/lower/policy.bend",
+      "before": "u => NxCall{\"rt_rebuild2\",[NxVar{\"ctx\"},NxVar{parent},NxConst{NxU32{},cid},NxConst{NxU32{},index},NxVar{other}]}",
+      "after": "u => NxCall{\"rt_rebuild2\",[NxVar{\"ctx\"},NxVar{parent},NxConst{NxU32{},cid},NxConst{NxU32{},U32.sub(1,index)},NxVar{other}]}",
+      "profile": "tagged",
+      "expectedActivation": "Owned IR unchanged; tagged runtime call keep_index is flipped from 0 to 1 on the frozen reverse worker. Specialized-name controls retain their original branch.",
+      "requiredNativeRejection": "Successful worker build/link, followed by explicit runtime failure or complete output differing from the frozen oracle. Resource stops do not count.",
+      "lawBoundary": "Actual selector helper remains correct; this deliberately corrupts its consumer after selection. Pure selector laws do not prove this consumer.",
+      "occurrences": 1
+    },
+    {
+      "id": "remaining-transfer-to-retained-local",
+      "file": "selfhost/tools/performance/phase110/lower/policy.bend",
+      "before": "NxSet{remaining,NxCall{\"rt_fast_field\",[NxVar{\"ctx\"},NxConst{NxU32{},0}]}}",
+      "after": "NxSet{retained,NxCall{\"rt_fast_field\",[NxVar{\"ctx\"},NxConst{NxU32{},0}]}}",
+      "profile": "tagged",
+      "expectedActivation": "The unique runtime scratch transfer writes the retained local instead of the remaining local; subsequent tail moves are unchanged.",
+      "requiredNativeRejection": "Successful worker build/link, followed by explicit runtime failure or complete output differing from the frozen oracle. Resource stops do not count.",
+      "lawBoundary": "This corrupts production use of the complete checked selector result; it is separate from the welltyped helper mutants rejected by laws.",
+      "occurrences": 1
+    }
+  ],
+  "commands": {
+    "acquireApi": [
+      "selfhost/.bootstrap/bun-1.4.3/bun",
+      "selfhost/tools/stage0-library.mjs",
+      "<mutant>/source.bend",
+      "<mutant>/api.mjs",
+      "nxo_lower_policy",
+      "nxlib_qbe",
+      "nxlib_c",
+      "nxlib_verify",
+      "nxlib_runtime_imports_policy",
+      "nxlib_control_report",
+      "nx_json_function",
+      "nxo_ownership_report",
+      "nxo_policy_report",
+      "nxo_lower110_policy",
+      "nxlib_runtime110_imports_policy",
+      "nxo110_policy_report",
+      "nx110_pair_library",
+      "nx110_verify",
+      "nx110_qbe",
+      "nx110_c",
+      "nx110_control_report",
+      "nx110_take_pair_library",
+      "nx110_take_control_report"
+    ],
+    "buildAndObserve": [
+      "python3",
+      "-B",
+      "selfhost/tools/performance/phase110/run.py",
+      "--out",
+      "<new-mutant-worker-out>",
+      "--api",
+      "<mutant>/api.mjs",
+      "--capture",
+      "selfhost/build/phase109/capture02",
+      "--runtime",
+      "selfhost/build/phase110/runtime01",
+      "--harness",
+      "selfhost/build/phase110/train01",
+      "--profiles",
+      "tagged",
+      "--backends",
+      "qbe",
+      "--variant",
+      "reverse"
+    ]
+  },
+  "executionPolicy": "The coordinator runs acquisition and run.py under separate CPU3 guards. run.py expects correctness and should return failure on a real native mismatch; inspect its retained jobs and logs rather than accepting a nonzero status generically.",
+  "acceptance": [
+    "API acquisition succeeds and unchanged policy/Nx/ownership controls pass.",
+    "Emission report complete and observed generated IR contains the intended corrupted mapping.",
+    "Runtime, harness, captured checked facts and expected stdout bytes are unchanged from the successful baseline.",
+    "All machine build/link jobs succeed.",
+    "The worker controls job either exits explicitly nonzero without a resource stop, or exits zero with stdout unequal to the full frozen expected bytes. Retain actual stdout/stderr and first mismatching case.",
+    "Compilation, verifier, shape-control and missing-input failures are separate earlier rejections; they do not count as a native semantic falsification."
+  ],
+  "additionalSourceConnectionControl": {
+    "id": "actual-helper-index-flip",
+    "file": "selfhost/tools/performance/phase110/laws/helper.bend",
+    "before": "case True{}: NxoLawSelection{0, a, b}",
+    "after": "case True{}: NxoLawSelection{1, a, b}",
+    "expectedEarlierRejection": "The existing v2_specialized_keeps_first policy shape control should reject this helper mutation during emit.mjs. This is compiled-lowering policy evidence, not a native runtime negative. The safe-law mutation runner independently rejects select_first_complete after standalone helper admission."
+  }
+}

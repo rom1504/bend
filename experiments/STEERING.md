@@ -1,4 +1,66 @@
-# Current frontier: Phase109 direct ownership IR and native selected-library frontend
+# Current frontier: Phase110 structured runtime ownership and canonical calls
+
+[Report](../implementation/phase110/README.md) ·
+[Design](../design/phase110/ownership-laws-and-search.md) ·
+[Frozen experimental selection](../implementation/phase110/selection.json) ·
+[Fast loop](../selfhost/tools/performance/phase110/README.md).
+
+The direct path keeps checked types, closed owning callees and ownership
+operations until Nx lowering. Canonical String/List<String> entry admission,
+ordinary calls, typed transfers and explicit private runtime IR are implemented
+in Bend. Shared/static cases retain production runtime fallback. Native-source05
+passes actual request and worker qualification. Its live general command derives
+the checked request internally; arbitrary caller-supplied seed/certificates are
+not trusted. Generic specialization, arbitrary datatypes, closures, effects,
+scheduling and device execution remain outside this slice.
+
+Frozen selection: simpler compact-general QBE runtime profile. Eleven fresh
+reverse held-outs take0.8051× unchanged fused-QBE worker time; wrapper-spare Clang
+control takes0.6582×. QBE has four small individual regressions, maximum1.0221×.
+A separate five-round matched reverse kernel takes0.8531× preserved production
+Clang time. These are not full-compiler, upstream or broad45 ratios. More complex
+QBE refinements failed the frozen3% incremental-benefit/round rule and remain
+experiments. Fewer instructions did not reliably mean faster code.
+
+The fixed-policy transfer check improves actual compiler nt_append medians, but
+regresses non-tail recursive Base String.append5–16%. The separate
+[P110-002](phase110/P110-002-context-boundary.md) experiment retains public checks
+and removes repeated context getters from private calls. It uses about10–15%
+less QBE worker time on two reused append inputs, with all18 semantic workers
+passing. Threading borrowed pointers and loading them from the context have
+different register costs; neither is universally best. These diagnostic results
+do not retroactively change the frozen image or supply a fresh fused denominator.
+
+Twenty-three independent local laws,14 well-typed model mutants and2 actual
+compiled-consumer mutants provide complementary checks. Physical runtime/layout,
+separation, writer and single-context premises remain explicit. Laws do not prove
+whole-compiler or machine correctness. Typed/call admission and source provenance
+are separate from owning-credit checking.
+
+Full native acquisition initially timed out on the new75KB Base literal.
+Packed exact U32 comparison preserves every codepoint and length while avoiding
+the observed static-image representation cliff. Minimal emission drops from
+>45s to4.825s; complete source05 acquires in148.836+87.720s,3.086GB peak. Ordinary
+direct requests use noJS/Clang/cproc; one-time acquisition still usesC/cproc/QBE.
+The full-language Phase108 path and installed production selection stay intact.
+
+Use the1–2s checked API, focused ownership controls and cached worker binaries
+before full acquisition. Observed worker execution is only~3% of the diagnostic
+evaluation loop; improving it alone cannot materially accelerate that fixed loop.
+Measure the real critical path before claiming recursive self-improvement.
+Build→Take cancellation has no demonstrated retained opportunity in the present
+lowering; preserve/integrate owning-call structure before adding a dead pass.
+Next: qualify context-boundary handling across more real compiler callees, then
+carry ownership operations into scanner/allocation kernels. Do not pay another
+full image acquisition before the smaller transfer gate supports integration.
+
+Root owns serial CPU3 target work; agents prepare and review offline. Preserve
+failed receipts and frozen gates. Full native acquisition needs4GiB tree cap and
+16GiB free-memory floor. Disk cleanup must authenticate archived bytes first.
+Phase105 remains the last broad production B1/B2/upstream measurement. No PR
+comments without explicit user instruction.
+
+# Previous frontier: Phase109 direct ownership IR and native selected-library frontend
 
 [Report](../implementation/phase109/README.md) ·
 [Design](../design/phase109/direct-owned-ir.md) ·

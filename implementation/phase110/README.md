@@ -6,8 +6,8 @@
 [Replay](../../selfhost/tools/performance/phase110/README.md).
 
 Baseline `7fc45f3`, branch `selfhost/bootstrap`. The planned window is
-2026-10-18 18:59:56–21:59:56 UTC. This report is being consolidated; final
-accounting and the evidence manifest are added after the last bounded experiment.
+2026-10-18 18:59:56–21:59:56 UTC. Compiler/runtime changes stopped before21:30;
+the final work consolidates evidence, replay commands and this report.
 
 The direct backend now preserves ownership into structured runtime operations,
 accepts canonical checked entries and closed ordinary calls, and runs through a
@@ -126,6 +126,86 @@ fused control in that screen). Faster reverse does not imply every source
 function becomes faster. See [ABI analysis](abi-audit.md) and the archived
 disassembly/path selections for the exact assumptions and excluded paths.
 
+### Transfer beyond reverse
+
+After freezing the selection, `native-transfer01` compares that fixed QBE policy
+with fused QBE on actual compiler nt_append and actual Base String.append.
+Every product comes from the native image. All original whole-value, alias and
+lifetime checks run before timing and on every timed repetition. Five paired
+rounds use the same cached runtime; this is a transfer diagnosis, not reselection.
+
+| Computation/input | Median selected / fused | Paired range |
+|---|---:|---:|
+| nt_append, same shared root | 0.9215× | 0.846–1.019× |
+| nt_append, shared tail | 0.7180× | 0.681–1.305× |
+| nt_append, distinct deep inputs | 0.6246× | 0.506–0.637× |
+| String.append, shared left of depth512 | **1.1584×** | 1.137–1.280× |
+| String.append, unique left of depth1024 | **1.0519×** | 1.033–1.060× |
+
+The append medians improve, with a noisy round on two shapes. The recursive
+String.append regression is consistent across all rounds. The structured runtime
+template obtains and validates heap/allocator pointers on every worker entry.
+Reverse amortizes those two calls over a loop; non-tail recursion repeats them
+per cell. [P110-002](../../experiments/phase110/P110-002-context-boundary.md)
+tests this mechanism with a separate ABI experiment. Its candidates and reused
+inputs are explicitly separate from the frozen native selection and fresh
+performance held-outs.
+
+### Validate the context once across a closed call chain
+
+The final diagnostic succeeds without changing the selected native image.
+Exported wrappers retain both original validation calls. Private owning workers
+either receive the stable heap/allocator pointers as two borrowed arguments, or
+load them from authenticated context offsets. This depends on one synchronous
+context, stable arena/allocator bases, and empty scratch across calls; it does
+not authorize concurrent or foreign reentry.
+
+`context-machine02` tests the exact same ownership graphs and byte-identical
+runtime object. All 18 workers pass 234 original semantic observations across
+String.append, nt_append and reverse. The emitter passes 31 named Bend controls,
+54 malformed-certificate refusals and exact baseline QBE/C comparisons with the
+qualified native products. Five paired timing rounds give:
+
+| String.append input | Threaded QBE / compact QBE | Context-load QBE / compact QBE | Threaded Clang / compact Clang | Context-load Clang / compact Clang |
+|---|---:|---:|---:|---:|
+| Shared left, depth 512 | 0.9040× | 0.8841× | 0.8821× | 0.9072× |
+| Unique left, depth 1,024 | 0.8501× | 0.8571× | 0.8340× | 0.8426× |
+
+Every paired ratio is below one. One Clang unique-input round is unusually low
+(about 0.61–0.63×), so the medians and ranges remain in the raw report. This
+supports removing repeated validation on this closed recursive path: QBE uses
+about 10–15% less worker time. These are reused diagnostic inputs, not new
+held-outs. There is no fresh fused-QBE denominator in this experiment; multiplying
+the earlier transfer ratios would not establish that its regression is resolved.
+Reverse and list append receive semantic regression coverage here, not new timing
+claims. The complete machine campaign takes 117.926 seconds.
+
+Machine inspection confirms that both private workers remove the two recursive
+getter calls. QBE's baseline body is 548 bytes; threaded pointers grow it to 568,
+while direct context loads reduce it to 522. The threaded form adds a static
+stack-memory site. Context loads preserve the original three-argument recursive
+ABI; pointer threading needs five. Clang's corresponding body sizes are
+409/415/375 bytes. This is a concrete example of a cross-layer choice: both
+representations remove the same checks but have different register costs. Neither
+form wins every input/backend, so no universal policy is selected from two cases.
+
+The experiment also exposed a development-tool limit. Exact regenerated-machine
+comparison through Base String.eq overflowed the hosted stack on the reverse
+certificate. A full-codepoint tail-recursive Bend comparator preserves the exact
+gate and emits a constant-stack loop. Early invalid binder/match forms remain
+failed receipts. The first machine run then lacked Clang's stddef.h; the successful
+runner pins the GCC header and applies identical include flags to all Clang
+variants. No semantic oracle, runtime behavior or selected source was changed to
+make these failures pass. Full details are in the [context correctness review](context-call-correctness.md)
+and [machine audit](evidence/machine08-analysis.md).
+
+A final synthetic eight-owner call witness passes 24 independent observations
+across six builds, including eight physically aliased arguments and both release
+orders. Inspection verifies QBE's eleven private arguments across six registers
+and five stack slots. Clang removes unused private arguments, so its successful
+semantics do not qualify that exact eleven-argument machine ABI. This is a calling
+convention witness, not an expansion of actual-source language coverage.
+
 ## Laws and correctness evidence
 
 Twenty-three distinct local laws were elaborated without opaque definitions and
@@ -240,16 +320,76 @@ remain Phase105: prepared45 B1/B2 0.499×/0.517× upstream time, live Base
 2.384×/2.231×, and prepared full compiler source 2.602×/2.965×. Those clocks and
 denominators must not be replaced by this phase's faster kernel numbers.
 
-The next high-value step is to preserve these ownership operations across more
-real compiler computations, especially calls and allocations, while keeping a
-small unchanged oracle. A separate data-constant representation would avoid the
-literal cliff more generally. Expanding the machine backend or building another
-full image without a smaller supporting experiment is not justified by this
-phase's evidence.
+The next high-value step is to qualify the context-boundary transformation across
+more real compiler callees, with a direct matched fused denominator and unchanged
+oracles, then integrate the supported policy into a native image. Preserve these
+ownership operations through scanner/allocation computations next. The present
+exact certificate gate still serializes machine graphs; its constant-stack
+comparison fixes one limit, not all scaling costs. A separate data-constant
+representation would avoid the literal cliff more generally. Expanding the
+machine backend or building another full image before a smaller transfer gate
+supports it is not justified by this phase's evidence.
+
+An ambitious constructor-elimination proposal was also investigated before
+implementation. There is no local Build→Take rewrite yet, but the inspected
+nineteen distinct saved ownership graphs contain zero immediate opportunities.
+The present lowering does not expose the producer/consumer relationship through
+ordinary calls. Unlike Phase107 scalar promotion, genuine cancellation could
+remove allocation and reference-count work, but it first needs a retained source
+witness and a representation-aware ownership equivalence. The
+[feasibility note](build-take-feasibility.md) records that decision and the
+necessary renaming, raw/RFC-word and alias premises. No dead pass was added.
 
 ## Evidence and accounting
 
-Final source/role counts, elapsed-time accounting and a verified evidence capsule
-are recorded here after consolidation. Failed image builds, rejected policies,
-early unsupported facts and supervision failures remain evidence; they are not
-silently converted into successes. No PR comment was posted.
+The [accounting snapshot](accounting.json), taken after all target work at about
+21:35 UTC, covers 155.1 minutes from the start. The union of 167 recorded guarded
+process intervals is **27.2 minutes**:
+
+| Recorded target work, including failures | Guarded minutes |
+|---|---:|
+| Worker evaluation and transfer campaigns | 11.03 |
+| Full native acquisition | 8.95 |
+| API, admission, semantics and other guarded work | 5.11 |
+| Constant-representation diagnosis | 1.73 |
+| Independent law checking | 0.35 |
+
+The remaining 127.9 minutes include implementation, analysis, agent coordination,
+source preparation and documentation, some overlapping target work. This is not
+an idle-time, CPU-time or billing/quota measurement. Final archival and publishing
+occur after that snapshot. Root owns all target work; agents prepare disjoint
+ABI, IR, controls and law work and inspect saved machine code. The successful
+full-image build's 3.086GB process tree is the largest qualified acquisition here.
+Disk cleanup verifies archived bytes before removing duplicates, or verifies a
+lossless compressed replacement. Resource limits were not relaxed.
+
+Physical source counts in the new experimental tools directory are:
+
+| Role | Files | Lines |
+|---|---:|---:|
+| Bend algorithms and additive variants | 41 | 2,272 |
+| Bend controls and witnesses | 29 | 1,011 |
+| Bend laws and models | 10 | 554 |
+| C ABI adapters and independent runtime harnesses | 23 | 2,068 |
+| Preparation, supervision and analysis | 98 | 6,976 |
+
+These include comments, rejected alternatives and superseded experiment scripts;
+generated fixtures, composed compiler images, receipts and prior phases are
+excluded. They are not the production compiler's line count or active-code delta.
+This phase adds capabilities rather than claiming a line-count reduction. Keeping
+the simpler measured QBE policy avoids importing the rejected refinements into
+the selected path. Compiler algorithms remain Bend; host scripts assemble,
+transport, validate and measure experiments.
+
+The [evidence guide](evidence/README.md) and [manifest](evidence/manifest.json)
+describe the verified capsule, exact image/runtime pins, absolute-path limits,
+external toolchain dependencies and safe restoration. The
+[selection record](selection.json) identifies the usable frozen native version.
+Failed image builds, rejected policies, unsupported facts and supervision failures
+remain evidence; they are not silently converted into successes. No PR comment
+was posted.
+
+Final review rechecks the 13 selection pins, capsule hash and report/guide links.
+Whitespace review has one retained extra EOF blank line in the authenticated
+context verifier snapshot; other staged changes pass that check. Preserving the
+qualified source bytes takes precedence over cosmetic normalization.

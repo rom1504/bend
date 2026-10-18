@@ -4,6 +4,38 @@ This ledger records decisions and links evidence; it does not replace the report
 Read [workflow](README.md) and [current strategy](STEERING.md) before a new investigation.
 User objective: make the Bend compiler written in Bend and its validation loop much faster while preserving correctness. Historical authorization windows are recorded below; current release status and priorities are in [STEERING.md](STEERING.md).
 
+## Phase110 ownership runtime IR, laws and closed calls — 2026-10-18
+
+[Design](../design/phase110/ownership-laws-and-search.md) ·
+[P110-001](phase110/P110-001-owned-interfaces.md) ·
+[P110-002](phase110/P110-002-context-boundary.md) ·
+[Report](../implementation/phase110/README.md).
+
+Structured runtime templates, canonical typed entry/closed-callee admission and
+owning ordinary calls are implemented in Bend. Native-source05 passes 8 exact
+general QBE/C products, 4 refusals, 72 general-worker observations, 40 actual Base
+String.append observations, 8 preserved fixed products and 26 old reverse checks.
+Local evidence includes 23 distinct independently checked laws, 14 model mutants,
+2 actual compiled-consumer mutants and separate physical ownership probes.
+
+Final training selects simpler compact-general QBE under a frozen 3% incremental
+gain/round rule. Fresh 11-case evaluation: 0.8051× fused-QBE worker time, maximum
+individual regression 1.0221×; Clang wrapper-reuse control 0.6582×. Separate current
+reverse comparison: 0.8531× preserved production Clang. No new upstream/B1/B2/full45
+claim. Subsequent fixed-policy transfer improves nt_append but regresses recursive
+String.append 5–16%. The separate context-boundary diagnostic passes 234 semantic
+observations and reduces QBE append time about 10–15% versus compact QBE on two
+reused inputs. A synthetic wide-call gate adds 24 observations and confirms QBE's
+eleven-argument private ABI. These prototypes do not change native selection.
+
+Exact packed Base comparison resolves acquisition's observed literal/static-image
+cliff without weakening source authentication. Complete native acquisition
+148.836+87.720s, 3.086GB peak; ordinary direct requests omit JS/Clang/cproc. Production
+selection and full-language Phase108 remain intact. Worker execution is only ~3%
+of the evaluated research loop; no recursive acceleration is demonstrated.
+Reports preserve failures, provenance limits, source complexity and resource
+accounting. Evidence and final diagnostic status are linked from the report.
+
 ## Phase109 direct ownership IR — 2026-10-18
 
 [P109-001](phase109/P109-001-direct-owned-ir.md) ·

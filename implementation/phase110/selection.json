@@ -1,0 +1,85 @@
+{
+  "kind": "phase110-experimental-selection",
+  "complete": true,
+  "productionSelectionChanged": false,
+  "baselineCommit": "7fc45f3",
+  "checkpointCommit": "07adf6d",
+  "nativeSource": "native-source05",
+  "runtimeProfile": "compact-general",
+  "policy": "runtime-ir-single",
+  "context": "single active CPU context",
+  "inputs": [
+    {
+      "file": "selfhost/build/phase110/native-source05/manifest.json",
+      "bytes": 56756,
+      "sha256": "5a5310d578c50e627cf84efcd9dd1de88e63860722924ca85066e1defd2ada7f"
+    },
+    {
+      "file": "selfhost/build/phase110/native-source05/compiler.bend",
+      "bytes": 2184294,
+      "sha256": "4b129fd71381cae088e0d8d554dfc8c8e1f8d0eadcf8e13036ed66922d56d8c6"
+    },
+    {
+      "file": "selfhost/build/phase108/p110-native-source05/image/report.json",
+      "bytes": 5609,
+      "sha256": "cec374e3dc6fa85ded91f05bb8e5559929af906ffbc2821e3f8b1d4129e00e44"
+    },
+    {
+      "file": "selfhost/build/phase108/p110-native-source05/image/program",
+      "bytes": 12148464,
+      "sha256": "e866d665ea150c211dab949408ce7d7bca1681d397cd476ad4b9fbd949fbac0e"
+    },
+    {
+      "file": "selfhost/build/phase110/native-general-qualify01/report.json",
+      "bytes": 36333,
+      "sha256": "94ddface516050ed213cf2c6f91ab0e29b144d4ff6226c7f32bfb05b07d718b0"
+    },
+    {
+      "file": "selfhost/build/phase110/native-general-semantics02/report.json",
+      "bytes": 73356,
+      "sha256": "032a135ea40e0eb9df0300da7b0dcd3ec217004875c846bb9b0a83b7fc1bc954"
+    },
+    {
+      "file": "selfhost/build/phase110/native-string-append01/report.json",
+      "bytes": 73173,
+      "sha256": "b49cea8ff58c275c9928422f65fdecc51901bd991c7445888f58bd2efa7ccf79"
+    },
+    {
+      "file": "selfhost/build/phase110/native-fixed-qualify01/report.json",
+      "bytes": 75389,
+      "sha256": "8574976b51d57ff04dfb01ebf7bd5aa07d012711dc2a800d48a248ec04c96ddf"
+    },
+    {
+      "file": "selfhost/build/phase110/native-reverse13/report.json",
+      "bytes": 78446,
+      "sha256": "5e477333da8d30f671f68f24e60af93496a6c94411be1b060f68894f4cbcc207"
+    },
+    {
+      "file": "selfhost/build/phase110/final-selection02.json",
+      "bytes": 32234,
+      "sha256": "8ed7d49400a94a2aa94805a0f03f20680b9a0b1bf333ac67f97f067611e82b6c"
+    },
+    {
+      "file": "selfhost/build/phase110/final-heldout01/report.json",
+      "bytes": 214134,
+      "sha256": "39c5c900f9ba3bf8742b17e4d856026665bab8862738412ea98bca174b34d30a"
+    },
+    {
+      "file": "selfhost/build/phase110/production-compare01/report.json",
+      "bytes": 29791,
+      "sha256": "b42040c92f0688106fc2cc40cbccdfd2fa8e1bbe41faee69419967ee51860880"
+    },
+    {
+      "file": "selfhost/build/phase110/native-transfer01/report.json",
+      "bytes": 166935,
+      "sha256": "12c51053fbd2ee17958f40029fbdfcde51c7d8e94be473974839dd8f733972d5"
+    }
+  ],
+  "scope": "Qualified canonical String/List<String> worker libraries and fixed contracts; no full-language/direct-self-hosting claim.",
+  "performance": {
+    "reverseFreshHeldoutOverFusedQbe": 0.8051018898906498,
+    "reverseKernelOverProductionClang": 0.8530907995282636,
+    "transferLimitation": "Non-tail recursive Base String.append regresses approximately5\u201316%; later context-call experiments do not change this frozen selection."
+  },
+  "retainedReference": "Phase108 full-language C/cproc/QBE; installed production selection unchanged."
+}

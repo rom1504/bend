@@ -442,3 +442,51 @@ a direct fresh denominator, not a product of historical ratios. These are
 finite worker-kernel results, not full-compiler speedups. The root's final
 selected general Take/rebuild, wrapper spare, and delayed overlap/rebuild/spare
 probes all passed; this audit adds no target execution.
+
+## Post-selection ordinary-call diagnostic
+
+Actual source transfer exposed a separate cost: every ordinary recursive
+`Base.String.append` invocation calls both checked runtime pointer accessors,
+while reverse amortizes them across its tail loop. The additive
+`context-calls/` facade prepares two private ABIs behind unchanged checked
+public wrappers: forwarding the stable heap/allocator pointers, or loading
+them from authenticated context offsets. The original owning graph and its
+certificate stay intact. Only closed worker calls are renamed; exact full
+machine regeneration covers pointer order, function bodies and exports.
+
+Both forms retain initial context validation. Runtime source review establishes
+stable bases within one synchronous single-thread context and requires scratch
+exhaustion before internal calls. The direct-load form adds assertion-only
+runtime layout checks and uses alias-safe pointer representation reads in its
+C emitter. This is a distinct diagnostic after frozen selection, with no
+heldout-based policy replacement. Final `context-source07` and
+`context-admission07` pass seven exact source/runtime refusals. The root's API07
+and emission04 pass 31 Bend controls, nine exact emissions and 54 malformed
+certificate refusals. Earlier affine-binding, annotation and comparator-match
+failures remain preserved. The exact full-codepoint comparator lowers to a
+host loop with `continue`, avoiding the generic equality's stack overflow on
+large serialized graphs without weakening equality.
+
+[The final context machine audit](evidence/machine08-analysis.md) pins all 18
+successful worker executables. Both variants remove two getter callsites from
+each recursive String.append body while preserving both getters in the public
+wrapper. QBE threaded forwarding grows the private body from 548 to 568 bytes
+and adds a spill site; authenticated context loads shrink it to 522 bytes with
+the original three-argument recursive ABI. Clang shows the same direction for
+code size and stack use. All 234 original semantic observations pass. Across
+five paired rounds, QBE threaded/context medians are 0.904/0.884 on shared512 and
+0.850/0.857 on unique1024, versus the same compact/general baseline. Clang
+medians are 0.882/0.907 and 0.834/0.843. These reused-case diagnostics do not
+change selection or imply direct fused/production comparisons. The first
+Clang header failure is preserved; the successful runner pins the same added
+standard include directory for every Clang mode. Full premises and replay
+instructions are recorded in `context-calls/README.md`.
+
+The separate synthetic wide gate passes all six builds and 24 ownership
+observations. [Its offline audit](evidence/machine09-wide-analysis.md) confirms
+the public nine-argument ABI in both backends and actual eleven-argument
+private forwarding in QBE, including five stack slots. Clang eliminates the
+unused borrowed pointers and hoists the returned final owner, leaving an
+eight-argument private call despite disabled inlining. Its eleven-argument
+machine behavior is therefore not claimed. This ABI witness has no timing
+measurements and does not change the selected native image.

@@ -1,0 +1,3344 @@
+{
+  "kind": "phase110-context-offline-machine",
+  "complete": true,
+  "targetsRun": false,
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase110/context-calls/inspect.py",
+      "bytes": 4527,
+      "sha256": "2b6ae2842ad174fec3d09089a6e374d4208131adbbdea46f472debaa662aa5f4"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/context-wide-machine02/report.json",
+      "bytes": 41387,
+      "sha256": "23921e8f058c5ba6d58a5e930085feed7d01687c1d236969dcb78a782e073d45"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/context-wide-machine02/baseline-qbe",
+      "bytes": 36720,
+      "sha256": "edea823d8d041ee92232e3c5bce14b9f8d1c62d90b1bfba4bc424385023b711b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/context-wide-machine02/baseline-clang",
+      "bytes": 36736,
+      "sha256": "1a0a4397cc1a08cab9ca228a3f351b29726a1150b92e6422b11d6f83cfcbaeca"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/context-wide-machine02/threaded-qbe",
+      "bytes": 36768,
+      "sha256": "9e57565f0cf3883f88978b960779cd237daf5a5ed4ea064edb7a7550dc96fc85"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/context-wide-machine02/threaded-clang",
+      "bytes": 36784,
+      "sha256": "b26bca3e29fa517bb8557ea2307894faf5d440d8aa60d6b5bb012631f3f98b14"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/context-wide-machine02/context-qbe",
+      "bytes": 36768,
+      "sha256": "0e8769637c764fbb9f336acbb4c1401fcdebcb5e3089e81cb7e5809a5797fe12"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/context-wide-machine02/context-clang",
+      "bytes": 36784,
+      "sha256": "3cad914a1cb49b3411c2c95e5abfd0b4f68b2bda6022c96a2358d86eb052993c"
+    }
+  ],
+  "tools": {
+    "nm": {
+      "pin": {
+        "file": "/usr/bin/x86_64-linux-gnu-nm",
+        "bytes": 44872,
+        "sha256": "87b64b1602fce14d565fb381703cdccfeac6c9e2dc262058b639357d86af56e3"
+      },
+      "version": "GNU nm (GNU Binutils for Debian) 2.35.2"
+    },
+    "objdump": {
+      "pin": {
+        "file": "/usr/bin/x86_64-linux-gnu-objdump",
+        "bytes": 464664,
+        "sha256": "0a5231844dd50b01c5161cd8857c61fc6c56704c8553d61a20264e8227561930"
+      },
+      "version": "GNU objdump (GNU Binutils for Debian) 2.35.2"
+    }
+  },
+  "scope": "Static instruction/call/stack-operand sites, not dynamic counts or cycle attribution.",
+  "workers": [
+    {
+      "name": "wide-baseline-qbe",
+      "mode": "baseline",
+      "backend": "qbe",
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/context-wide-machine02/baseline-qbe",
+        "bytes": 36720,
+        "sha256": "edea823d8d041ee92232e3c5bce14b9f8d1c62d90b1bfba4bc424385023b711b"
+      },
+      "symbols": [
+        {
+          "name": "nx_active",
+          "address": 4227328,
+          "bytes": 1,
+          "visibility": "b",
+          "instructionSites": 0,
+          "calls": [],
+          "stackMemorySites": [],
+          "stackAdjustments": [],
+          "mnemonics": {},
+          "assembly": {
+            "file": "/home/ai/bend2/build/publish/bend/implementation/phase110/evidence/machine09-wide/wide-baseline-qbe--nx_active.asm",
+            "bytes": 249,
+            "sha256": "6e27794bfb4daa7c6f9967cf5b9e123cf7fb068e57bff17ed219ff98e3107e36"
+          }
+        },
+        {
+          "name": "nx_context",
+          "address": 4227360,
+          "bytes": 40,
+          "visibility": "b",
+          "instructionSites": 0,
+          "calls": [],
+          "stackMemorySites": [],
+          "stackAdjustments": [],
+          "mnemonics": {},
+          "assembly": {
+            "file": "/home/ai/bend2/build/publish/bend/implementation/phase110/evidence/machine09-wide/wide-baseline-qbe--nx_context.asm",
+            "bytes": 249,
+            "sha256": "6e27794bfb4daa7c6f9967cf5b9e123cf7fb068e57bff17ed219ff98e3107e36"
+          }
+        },
+        {
+          "name": "nx_fields.isra.0",
+          "address": 4202768,
+          "bytes": 151,
+          "visibility": "t",
+          "instructionSites": 44,
+          "calls": [
+            {
+              "address": 4202793,
+              "target": "nx_id.isra.0"
+            },
+            {
+              "address": 4202816,
+              "target": "err_fail"
+            },
+            {
+              "address": 4202870,
+              "target": "nx_id.isra.0"
+            },
+            {
+              "address": 4202890,
+              "target": "err_fail"
+            },
+            {
+              "address": 4202902,
+              "target": "err_fail"
+            },
+            {
+              "address": 4202914,
+              "target": "err_fail"
+            }
+          ],
+          "stackMemorySites": [],
+          "stackAdjustments": [
+            {
+              "address": 4202770,
+              "mnemonic": "push",
+              "operands": "%r12"
+            },
+            {
+              "address": 4202775,
+              "mnemonic": "push",
+              "operands": "%rbp"
+            },
+            {
+              "address": 4202776,
+              "mnemonic": "push",
+              "operands": "%rbx"
+            },
+            {
+              "address": 4202853,
+              "mnemonic": "pop",
+              "operands": "%rbx"
+            },
+            {
+              "address": 4202854,
+              "mnemonic": "pop",
+              "operands": "%rbp"
+            },
+            {
+              "address": 4202855,
+              "mnemonic": "pop",
+              "operands": "%r12"
+            }
+          ],
+          "mnemonics": {
+            "mov": 7,
+            "push": 3,
+            "and": 1,
+            "cmp": 7,
+            "jne": 1,
+            "callq": 6,
+            "je": 3,
+            "add": 1,
+            "lea": 5,
+            "nopl": 1,
+            "jbe": 2,
+            "ja": 1,
+            "pop": 3,
+            "retq": 1,
+            "nopw": 1,
+            "sub": 1
+          },
+          "assembly": {
+            "file": "/home/ai/bend2/build/publish/bend/implementation/phase110/evidence/machine09-wide/wide-baseline-qbe--nx_fields.isra.0.asm",
+            "bytes": 1854,
+            "sha256": "08e8ee1f94e4a5030c93aff88d1edc72149c06bfc341ca55dcfee4b7903aeca9"
+          }
+        },
+        {
+          "name": "nx_id.isra.0",
+          "address": 4202512,
+          "bytes": 242,
+          "visibility": "t",
+          "instructionSites": 62,
+          "calls": [
+            {
+              "address": 4202576,
+              "target": "err_fail"
+            },
+            {
+              "address": 4202628,
+              "target": "err_fail"
+            },
+            {
+              "address": 4202749,
+              "target": "err_fail"
+            }
+          ],
+          "stackMemorySites": [],
+          "stackAdjustments": [
+            {
+              "address": 4202518,
+              "mnemonic": "sub",
+              "operands": "$0x8,%rsp"
+            },
+            {
+              "address": 4202664,
+              "mnemonic": "add",
+              "operands": "$0x8,%rsp"
+            }
+          ],
+          "mnemonics": {
+            "mov": 7,
+            "sub": 1,
+            "shr": 3,
+            "and": 3,
+            "test": 5,
+            "jne": 5,
+            "movzwl": 1,
+            "lea": 5,
+            "movzbl": 1,
+            "cmp": 6,
+            "je": 2,
+            "callq": 3,
+            "nopl": 3,
+            "movabs": 2,
+            "js": 1,
+            "ja": 1,
+            "add": 3,
+            "shl": 2,
+            "jae": 1,
+            "retq": 1,
+            "jns": 1,
+            "jmp": 3,
+            "nopw": 1,
+            "or": 1
+          },
+          "assembly": {
+            "file": "/home/ai/bend2/build/publish/bend/implementation/phase110/evidence/machine09-wide/wide-baseline-qbe--nx_id.isra.0.asm",
+            "bytes": 2462,
+            "sha256": "2eaf7a806586b4f055cd38f9ff52dd28f148243e34c35bdb0b466885d3ea26da"
+          }
+        },
+        {
+          "name": "nx_wide",
+          "address": 4202048,
+          "bytes": 149,
+          "visibility": "T",
+          "instructionSites": 48,
+          "calls": [
+            {
+              "address": 4202112,
+              "target": "nx_rt_ir_heap"
+            },
+            {
+              "address": 4202123,
+              "target": "nx_rt_ir_alc"
+            },
+            {
+              "address": 4202177,
+              "target": "nx_wide_leaf"
+            }
+          ],
+          "stackMemorySites": [
+            {
+              "address": 4202069,
+              "mnemonic": "mov",
+              "operands": "0x20(%rbp),%rbx"
+            },
+            {
+              "address": 4202073,
+              "mnemonic": "mov",
+              "operands": "%rbx,-0x8(%rbp)"
+            },
+            {
+              "address": 4202077,
+              "mnemonic": "mov",
+              "operands": "0x18(%rbp),%r11"
+            },
+            {
+              "address": 4202081,
+              "mnemonic": "mov",
+              "operands": "%r11,-0x10(%rbp)"
+            },
+            {
+              "address": 4202085,
+              "mnemonic": "mov",
+              "operands": "0x10(%rbp),%rax"
+            },
+            {
+              "address": 4202089,
+              "mnemonic": "mov",
+              "operands": "%rax,-0x18(%rbp)"
+            },
+            {
+              "address": 4202093,
+              "mnemonic": "mov",
+              "operands": "%r9,-0x20(%rbp)"
+            },
+            {
+              "address": 4202143,
+              "mnemonic": "mov",
+              "operands": "-0x8(%rbp),%rbx"
+            },
+            {
+              "address": 4202147,
+              "mnemonic": "mov",
+              "operands": "-0x10(%rbp),%r11"
+            },
+            {
+              "address": 4202151,
+              "mnemonic": "mov",
+              "operands": "-0x18(%rbp),%rax"
+            },
+            {
+              "address": 4202155,
+              "mnemonic": "mov",
+              "operands": "-0x20(%rbp),%r9"
+            }
+          ],
+          "stackAdjustments": [
+            {
+              "address": 4202052,
+              "mnemonic": "push",
+              "operands": "%rbp"
+            },
+            {
+              "address": 4202056,
+              "mnemonic": "sub",
+              "operands": "$0x28,%rsp"
+            },
+            {
+              "address": 4202060,
+              "mnemonic": "push",
+              "operands": "%rbx"
+            },
+            {
+              "address": 4202061,
+              "mnemonic": "push",
+              "operands": "%r12"
+            },
+            {
+              "address": 4202063,
+              "mnemonic": "push",
+              "operands": "%r13"
+            },
+            {
+              "address": 4202065,
+              "mnemonic": "push",
+              "operands": "%r14"
+            },
+            {
+              "address": 4202067,
+              "mnemonic": "push",
+              "operands": "%r15"
+            },
+            {
+              "address": 4202159,
+              "mnemonic": "sub",
+              "operands": "$0x20,%rsp"
+            },
+            {
+              "address": 4202182,
+              "mnemonic": "sub",
+              "operands": "$0xffffffffffffffe0,%rsp"
+            },
+            {
+              "address": 4202186,
+              "mnemonic": "pop",
+              "operands": "%r15"
+            },
+            {
+              "address": 4202188,
+              "mnemonic": "pop",
+              "operands": "%r14"
+            },
+            {
+              "address": 4202190,
+              "mnemonic": "pop",
+              "operands": "%r13"
+            },
+            {
+              "address": 4202192,
+              "mnemonic": "pop",
+              "operands": "%r12"
+            },
+            {
+              "address": 4202194,
+              "mnemonic": "pop",
+              "operands": "%rbx"
+            }
+          ],
+          "mnemonics": {
+            "endbr64": 1,
+            "push": 6,
+            "mov": 28,
+            "sub": 3,
+            "callq": 3,
+            "pop": 5,
+            "leaveq": 1,
+            "retq": 1
+          },
+          "assembly": {
+            "file": "/home/ai/bend2/build/publish/bend/implementation/phase110/evidence/machine09-wide/wide-baseline-qbe--nx_wide.asm",
+            "bytes": 1628,
+            "sha256": "a395ca938b1461bc2a606684d515ab83c20b398e495fc4b2ec98ef705d0fb2e2"
+          }
+        },
+        {
+          "name": "nx_wide_leaf",
+          "address": 4201840,
+          "bytes": 205,
+          "visibility": "t",
+          "instructionSites": 64,
+          "calls": [
+            {
+              "address": 4201904,
+              "target": "nx_rt_ir_heap"
+            },
+            {
+              "address": 4201915,
+              "target": "nx_rt_ir_alc"
+            },
+            {
+              "address": 4201933,
+              "target": "nx_rt_fast_sink"
+            },
+            {
+              "address": 4201951,
+              "target": "nx_rt_fast_sink"
+            },
+            {
+              "address": 4201969,
+              "target": "nx_rt_fast_sink"
+            },
+            {
+              "address": 4201987,
+              "target": "nx_rt_fast_sink"
+            },
+            {
+              "address": 4202001,
+              "target": "nx_rt_fast_sink"
+            },
+            {
+              "address": 4202015,
+              "target": "nx_rt_fast_sink"
+            },
+            {
+              "address": 4202026,
+              "target": "nx_rt_fast_sink"
+            }
+          ],
+          "stackMemorySites": [
+            {
+              "address": 4201861,
+              "mnemonic": "mov",
+              "operands": "0x20(%rbp),%rbx"
+            },
+            {
+              "address": 4201865,
+              "mnemonic": "mov",
+              "operands": "%rbx,-0x20(%rbp)"
+            },
+            {
+              "address": 4201869,
+              "mnemonic": "mov",
+              "operands": "0x18(%rbp),%r13"
+            },
+            {
+              "address": 4201873,
+              "mnemonic": "mov",
+              "operands": "%r13,-0x18(%rbp)"
+            },
+            {
+              "address": 4201877,
+              "mnemonic": "mov",
+              "operands": "0x10(%rbp),%r14"
+            },
+            {
+              "address": 4201881,
+              "mnemonic": "mov",
+              "operands": "%r14,-0x10(%rbp)"
+            },
+            {
+              "address": 4201885,
+              "mnemonic": "mov",
+              "operands": "%r9,-0x8(%rbp)"
+            },
+            {
+              "address": 4201926,
+              "mnemonic": "mov",
+              "operands": "-0x8(%rbp),%r15"
+            },
+            {
+              "address": 4201944,
+              "mnemonic": "mov",
+              "operands": "-0x10(%rbp),%r14"
+            },
+            {
+              "address": 4201962,
+              "mnemonic": "mov",
+              "operands": "-0x18(%rbp),%r13"
+            },
+            {
+              "address": 4201980,
+              "mnemonic": "mov",
+              "operands": "-0x20(%rbp),%rbx"
+            }
+          ],
+          "stackAdjustments": [
+            {
+              "address": 4201844,
+              "mnemonic": "push",
+              "operands": "%rbp"
+            },
+            {
+              "address": 4201848,
+              "mnemonic": "sub",
+              "operands": "$0x28,%rsp"
+            },
+            {
+              "address": 4201852,
+              "mnemonic": "push",
+              "operands": "%rbx"
+            },
+            {
+              "address": 4201853,
+              "mnemonic": "push",
+              "operands": "%r12"
+            },
+            {
+              "address": 4201855,
+              "mnemonic": "push",
+              "operands": "%r13"
+            },
+            {
+              "address": 4201857,
+              "mnemonic": "push",
+              "operands": "%r14"
+            },
+            {
+              "address": 4201859,
+              "mnemonic": "push",
+              "operands": "%r15"
+            },
+            {
+              "address": 4202034,
+              "mnemonic": "pop",
+              "operands": "%r15"
+            },
+            {
+              "address": 4202036,
+              "mnemonic": "pop",
+              "operands": "%r14"
+            },
+            {
+              "address": 4202038,
+              "mnemonic": "pop",
+              "operands": "%r13"
+            },
+            {
+              "address": 4202040,
+              "mnemonic": "pop",
+              "operands": "%r12"
+            },
+            {
+              "address": 4202042,
+              "mnemonic": "pop",
+              "operands": "%rbx"
+            }
+          ],
+          "mnemonics": {
+            "endbr64": 1,
+            "push": 6,
+            "mov": 40,
+            "sub": 1,
+            "callq": 9,
+            "pop": 5,
+            "leaveq": 1,
+            "retq": 1
+          },
+          "assembly": {
+            "file": "/home/ai/bend2/build/publish/bend/implementation/phase110/evidence/machine09-wide/wide-baseline-qbe--nx_wide_leaf.asm",
+            "bytes": 2131,
+            "sha256": "f9465706dac621e5317075442e6d5f40431d950a970f77844a8b95d22d400baa"
+          }
+        }
+      ]
+    },
+    {
+      "name": "wide-baseline-clang",
+      "mode": "baseline",
+      "backend": "clang",
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/context-wide-machine02/baseline-clang",
+        "bytes": 36736,
+        "sha256": "1a0a4397cc1a08cab9ca228a3f351b29726a1150b92e6422b11d6f83cfcbaeca"
+      },
+      "symbols": [
+        {
+          "name": "nx_active",
+          "address": 4227328,
+          "bytes": 1,
+          "visibility": "b",
+          "instructionSites": 0,
+          "calls": [],
+          "stackMemorySites": [],
+          "stackAdjustments": [],
+          "mnemonics": {},
+          "assembly": {
+            "file": "/home/ai/bend2/build/publish/bend/implementation/phase110/evidence/machine09-wide/wide-baseline-clang--nx_active.asm",
+            "bytes": 251,
+            "sha256": "6dac0bda325d1f4f5f80b8d105fc33d4d8bc36551f60c166503ecf531fd63404"
+          }
+        },
+        {
+          "name": "nx_context",
+          "address": 4227360,
+          "bytes": 40,
+          "visibility": "b",
+          "instructionSites": 0,
+          "calls": [],
+          "stackMemorySites": [],
+          "stackAdjustments": [],
+          "mnemonics": {},
+          "assembly": {
+            "file": "/home/ai/bend2/build/publish/bend/implementation/phase110/evidence/machine09-wide/wide-baseline-clang--nx_context.asm",
+            "bytes": 251,
+            "sha256": "6dac0bda325d1f4f5f80b8d105fc33d4d8bc36551f60c166503ecf531fd63404"
+          }
+        },
+        {
+          "name": "nx_fields.isra.0",
+          "address": 4202656,
+          "bytes": 151,
+          "visibility": "t",
+          "instructionSites": 44,
+          "calls": [
+            {
+              "address": 4202681,
+              "target": "nx_id.isra.0"
+            },
+            {
+              "address": 4202704,
+              "target": "err_fail"
+            },
+            {
+              "address": 4202758,
+              "target": "nx_id.isra.0"
+            },
+            {
+              "address": 4202778,
+              "target": "err_fail"
+            },
+            {
+              "address": 4202790,
+              "target": "err_fail"
+            },
+            {
+              "address": 4202802,
+              "target": "err_fail"
+            }
+          ],
+          "stackMemorySites": [],
+          "stackAdjustments": [
+            {
+              "address": 4202658,
+              "mnemonic": "push",
+              "operands": "%r12"
+            },
+            {
+              "address": 4202663,
+              "mnemonic": "push",
+              "operands": "%rbp"
+            },
+            {
+              "address": 4202664,
+              "mnemonic": "push",
+              "operands": "%rbx"
+            },
+            {
+              "address": 4202741,
+              "mnemonic": "pop",
+              "operands": "%rbx"
+            },
+            {
+              "address": 4202742,
+              "mnemonic": "pop",
+              "operands": "%rbp"
+            },
+            {
+              "address": 4202743,
+              "mnemonic": "pop",
+              "operands": "%r12"
+            }
+          ],
+          "mnemonics": {
+            "mov": 7,
+            "push": 3,
+            "and": 1,
+            "cmp": 7,
+            "jne": 1,
+            "callq": 6,
+            "je": 3,
+            "add": 1,
+            "lea": 5,
+            "nopl": 1,
+            "jbe": 2,
+            "ja": 1,
+            "pop": 3,
+            "retq": 1,
+            "nopw": 1,
+            "sub": 1
+          },
+          "assembly": {
+            "file": "/home/ai/bend2/build/publish/bend/implementation/phase110/evidence/machine09-wide/wide-baseline-clang--nx_fields.isra.0.asm",
+            "bytes": 1856,
+            "sha256": "05dae8485c485544a8a5c5f79b31dec8b586eab97ab7f63fe80485ae4297fb59"
+          }
+        },
+        {
+          "name": "nx_id.isra.0",
+          "address": 4202400,
+          "bytes": 242,
+          "visibility": "t",
+          "instructionSites": 62,
+          "calls": [
+            {
+              "address": 4202464,
+              "target": "err_fail"
+            },
+            {
+              "address": 4202516,
+              "target": "err_fail"
+            },
+            {
+              "address": 4202637,
+              "target": "err_fail"
+            }
+          ],
+          "stackMemorySites": [],
+          "stackAdjustments": [
+            {
+              "address": 4202406,
+              "mnemonic": "sub",
+              "operands": "$0x8,%rsp"
+            },
+            {
+              "address": 4202552,
+              "mnemonic": "add",
+              "operands": "$0x8,%rsp"
+            }
+          ],
+          "mnemonics": {
+            "mov": 7,
+            "sub": 1,
+            "shr": 3,
+            "and": 3,
+            "test": 5,
+            "jne": 5,
+            "movzwl": 1,
+            "lea": 5,
+            "movzbl": 1,
+            "cmp": 6,
+            "je": 2,
+            "callq": 3,
+            "nopl": 3,
+            "movabs": 2,
+            "js": 1,
+            "ja": 1,
+            "add": 3,
+            "shl": 2,
+            "jae": 1,
+            "retq": 1,
+            "jns": 1,
+            "jmp": 3,
+            "nopw": 1,
+            "or": 1
+          },
+          "assembly": {
+            "file": "/home/ai/bend2/build/publish/bend/implementation/phase110/evidence/machine09-wide/wide-baseline-clang--nx_id.isra.0.asm",
+            "bytes": 2464,
+            "sha256": "278f3cb1ed7f2b15c959efd957408deeedaa93c1388c46590da2109e46a15601"
+          }
+        },
+        {
+          "name": "nx_wide",
+          "address": 4201840,
+          "bytes": 97,
+          "visibility": "T",
+          "instructionSites": 34,
+          "calls": [
+            {
+              "address": 4201872,
+              "target": "nx_rt_ir_heap"
+            },
+            {
+              "address": 4201880,
+              "target": "nx_rt_ir_alc"
+            },
+            {
+              "address": 4201912,
+              "target": "nx_wide_leaf"
+            }
+          ],
+          "stackMemorySites": [
+            {
+              "address": 4201885,
+              "mnemonic": "movaps",
+              "operands": "0x50(%rsp),%xmm0"
+            },
+            {
+              "address": 4201890,
+              "mnemonic": "movups",
+              "operands": "%xmm0,(%rsp)"
+            },
+            {
+              "address": 4201917,
+              "mnemonic": "mov",
+              "operands": "0x60(%rsp),%rax"
+            }
+          ],
+          "stackAdjustments": [
+            {
+              "address": 4201840,
+              "mnemonic": "push",
+              "operands": "%rbp"
+            },
+            {
+              "address": 4201841,
+              "mnemonic": "push",
+              "operands": "%r15"
+            },
+            {
+              "address": 4201843,
+              "mnemonic": "push",
+              "operands": "%r14"
+            },
+            {
+              "address": 4201845,
+              "mnemonic": "push",
+              "operands": "%r13"
+            },
+            {
+              "address": 4201847,
+              "mnemonic": "push",
+              "operands": "%r12"
+            },
+            {
+              "address": 4201849,
+              "mnemonic": "push",
+              "operands": "%rbx"
+            },
+            {
+              "address": 4201850,
+              "mnemonic": "sub",
+              "operands": "$0x18,%rsp"
+            },
+            {
+              "address": 4201922,
+              "mnemonic": "add",
+              "operands": "$0x18,%rsp"
+            },
+            {
+              "address": 4201926,
+              "mnemonic": "pop",
+              "operands": "%rbx"
+            },
+            {
+              "address": 4201927,
+              "mnemonic": "pop",
+              "operands": "%r12"
+            },
+            {
+              "address": 4201929,
+              "mnemonic": "pop",
+              "operands": "%r13"
+            },
+            {
+              "address": 4201931,
+              "mnemonic": "pop",
+              "operands": "%r14"
+            },
+            {
+              "address": 4201933,
+              "mnemonic": "pop",
+              "operands": "%r15"
+            },
+            {
+              "address": 4201935,
+              "mnemonic": "pop",
+              "operands": "%rbp"
+            }
+          ],
+          "mnemonics": {
+            "push": 6,
+            "sub": 1,
+            "mov": 14,
+            "callq": 3,
+            "movaps": 1,
+            "movups": 1,
+            "add": 1,
+            "pop": 6,
+            "retq": 1
+          },
+          "assembly": {
+            "file": "/home/ai/bend2/build/publish/bend/implementation/phase110/evidence/machine09-wide/wide-baseline-clang--nx_wide.asm",
+            "bytes": 1180,
+            "sha256": "1888fce7f076de0606c512a5f0845af6973fa4783476dd9337684bd878b3597a"
+          }
+        },
+        {
+          "name": "nx_wide_leaf",
+          "address": 4201952,
+          "bytes": 138,
+          "visibility": "t",
+          "instructionSites": 45,
+          "calls": [
+            {
+              "address": 4201981,
+              "target": "nx_rt_ir_heap"
+            },
+            {
+              "address": 4201989,
+              "target": "nx_rt_ir_alc"
+            },
+            {
+              "address": 4202000,
+              "target": "nx_rt_fast_sink"
+            },
+            {
+              "address": 4202011,
+              "target": "nx_rt_fast_sink"
+            },
+            {
+              "address": 4202022,
+              "target": "nx_rt_fast_sink"
+            },
+            {
+              "address": 4202033,
+              "target": "nx_rt_fast_sink"
+            },
+            {
+              "address": 4202044,
+              "target": "nx_rt_fast_sink"
+            },
+            {
+              "address": 4202057,
+              "target": "nx_rt_fast_sink"
+            },
+            {
+              "address": 4202070,
+              "target": "nx_rt_fast_sink"
+            }
+          ],
+          "stackMemorySites": [
+            {
+              "address": 4202052,
+              "mnemonic": "mov",
+              "operands": "0x40(%rsp),%rsi"
+            },
+            {
+              "address": 4202065,
+              "mnemonic": "mov",
+              "operands": "0x48(%rsp),%rsi"
+            }
+          ],
+          "stackAdjustments": [
+            {
+              "address": 4201952,
+              "mnemonic": "push",
+              "operands": "%rbp"
+            },
+            {
+              "address": 4201953,
+              "mnemonic": "push",
+              "operands": "%r15"
+            },
+            {
+              "address": 4201955,
+              "mnemonic": "push",
+              "operands": "%r14"
+            },
+            {
+              "address": 4201957,
+              "mnemonic": "push",
+              "operands": "%r13"
+            },
+            {
+              "address": 4201959,
+              "mnemonic": "push",
+              "operands": "%r12"
+            },
+            {
+              "address": 4201961,
+              "mnemonic": "push",
+              "operands": "%rbx"
+            },
+            {
+              "address": 4201962,
+              "mnemonic": "push",
+              "operands": "%rax"
+            },
+            {
+              "address": 4202075,
+              "mnemonic": "add",
+              "operands": "$0x8,%rsp"
+            },
+            {
+              "address": 4202079,
+              "mnemonic": "pop",
+              "operands": "%rbx"
+            },
+            {
+              "address": 4202080,
+              "mnemonic": "pop",
+              "operands": "%r12"
+            },
+            {
+              "address": 4202082,
+              "mnemonic": "pop",
+              "operands": "%r13"
+            },
+            {
+              "address": 4202084,
+              "mnemonic": "pop",
+              "operands": "%r14"
+            },
+            {
+              "address": 4202086,
+              "mnemonic": "pop",
+              "operands": "%r15"
+            },
+            {
+              "address": 4202088,
+              "mnemonic": "pop",
+              "operands": "%rbp"
+            }
+          ],
+          "mnemonics": {
+            "push": 7,
+            "mov": 21,
+            "callq": 9,
+            "add": 1,
+            "pop": 6,
+            "retq": 1
+          },
+          "assembly": {
+            "file": "/home/ai/bend2/build/publish/bend/implementation/phase110/evidence/machine09-wide/wide-baseline-clang--nx_wide_leaf.asm",
+            "bytes": 1566,
+            "sha256": "5ec7259e19ab5243e1cbf9135fe7ae7ab977f89e4666c35aecfe90b68d4e597e"
+          }
+        }
+      ]
+    },
+    {
+      "name": "wide-threaded-qbe",
+      "mode": "threaded",
+      "backend": "qbe",
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/context-wide-machine02/threaded-qbe",
+        "bytes": 36768,
+        "sha256": "9e57565f0cf3883f88978b960779cd237daf5a5ed4ea064edb7a7550dc96fc85"
+      },
+      "symbols": [
+        {
+          "name": "nx_active",
+          "address": 4227328,
+          "bytes": 1,
+          "visibility": "b",
+          "instructionSites": 0,
+          "calls": [],
+          "stackMemorySites": [],
+          "stackAdjustments": [],
+          "mnemonics": {},
+          "assembly": {
+            "file": "/home/ai/bend2/build/publish/bend/implementation/phase110/evidence/machine09-wide/wide-threaded-qbe--nx_active.asm",
+            "bytes": 249,
+            "sha256": "68e95af240dbe792f9473c43af7f9792a4c072b88ae0b4c60e8cff8652a3fef1"
+          }
+        },
+        {
+          "name": "nx_context",
+          "address": 4227360,
+          "bytes": 40,
+          "visibility": "b",
+          "instructionSites": 0,
+          "calls": [],
+          "stackMemorySites": [],
+          "stackAdjustments": [],
+          "mnemonics": {},
+          "assembly": {
+            "file": "/home/ai/bend2/build/publish/bend/implementation/phase110/evidence/machine09-wide/wide-threaded-qbe--nx_context.asm",
+            "bytes": 249,
+            "sha256": "68e95af240dbe792f9473c43af7f9792a4c072b88ae0b4c60e8cff8652a3fef1"
+          }
+        },
+        {
+          "name": "nx_ctx110_wide",
+          "address": 4202032,
+          "bytes": 79,
+          "visibility": "t",
+          "instructionSites": 26,
+          "calls": [
+            {
+              "address": 4202095,
+              "target": "nx_ctx110_wide_leaf"
+            }
+          ],
+          "stackMemorySites": [
+            {
+              "address": 4202049,
+              "mnemonic": "mov",
+              "operands": "0x30(%rbp),%r13"
+            },
+            {
+              "address": 4202053,
+              "mnemonic": "mov",
+              "operands": "0x28(%rbp),%r12"
+            },
+            {
+              "address": 4202057,
+              "mnemonic": "mov",
+              "operands": "0x20(%rbp),%rbx"
+            },
+            {
+              "address": 4202061,
+              "mnemonic": "mov",
+              "operands": "0x18(%rbp),%r11"
+            },
+            {
+              "address": 4202065,
+              "mnemonic": "mov",
+              "operands": "0x10(%rbp),%rax"
+            }
+          ],
+          "stackAdjustments": [
+            {
+              "address": 4202036,
+              "mnemonic": "push",
+              "operands": "%rbp"
+            },
+            {
+              "address": 4202040,
+              "mnemonic": "sub",
+              "operands": "$0x8,%rsp"
+            },
+            {
+              "address": 4202044,
+              "mnemonic": "push",
+              "operands": "%rbx"
+            },
+            {
+              "address": 4202045,
+              "mnemonic": "push",
+              "operands": "%r12"
+            },
+            {
+              "address": 4202047,
+              "mnemonic": "push",
+              "operands": "%r13"
+            },
+            {
+              "address": 4202069,
+              "mnemonic": "sub",
+              "operands": "$0x30,%rsp"
+            },
+            {
+              "address": 4202100,
+              "mnemonic": "sub",
+              "operands": "$0xffffffffffffffd0,%rsp"
+            },
+            {
+              "address": 4202104,
+              "mnemonic": "pop",
+              "operands": "%r13"
+            },
+            {
+              "address": 4202106,
+              "mnemonic": "pop",
+              "operands": "%r12"
+            },
+            {
+              "address": 4202108,
+              "mnemonic": "pop",
+              "operands": "%rbx"
+            }
+          ],
+          "mnemonics": {
+            "endbr64": 1,
+            "push": 4,
+            "mov": 12,
+            "sub": 3,
+            "callq": 1,
+            "pop": 3,
+            "leaveq": 1,
+            "retq": 1
+          },
+          "assembly": {
+            "file": "/home/ai/bend2/build/publish/bend/implementation/phase110/evidence/machine09-wide/wide-threaded-qbe--nx_ctx110_wide.asm",
+            "bytes": 1016,
+            "sha256": "8a6b23a8127a3624b63b0b430754b9d84e46673ac637d093a96bdc9690dd3583"
+          }
+        },
+        {
+          "name": "nx_ctx110_wide_leaf",
+          "address": 4201840,
+          "bytes": 177,
+          "visibility": "t",
+          "instructionSites": 56,
+          "calls": [
+            {
+              "address": 4201905,
+              "target": "nx_rt_fast_sink"
+            },
+            {
+              "address": 4201923,
+              "target": "nx_rt_fast_sink"
+            },
+            {
+              "address": 4201941,
+              "target": "nx_rt_fast_sink"
+            },
+            {
+              "address": 4201959,
+              "target": "nx_rt_fast_sink"
+            },
+            {
+              "address": 4201973,
+              "target": "nx_rt_fast_sink"
+            },
+            {
+              "address": 4201987,
+              "target": "nx_rt_fast_sink"
+            },
+            {
+              "address": 4201998,
+              "target": "nx_rt_fast_sink"
+            }
+          ],
+          "stackMemorySites": [
+            {
+              "address": 4201861,
+              "mnemonic": "mov",
+              "operands": "0x30(%rbp),%rbx"
+            },
+            {
+              "address": 4201865,
+              "mnemonic": "mov",
+              "operands": "%rbx,-0x20(%rbp)"
+            },
+            {
+              "address": 4201869,
+              "mnemonic": "mov",
+              "operands": "0x28(%rbp),%r13"
+            },
+            {
+              "address": 4201873,
+              "mnemonic": "mov",
+              "operands": "%r13,-0x18(%rbp)"
+            },
+            {
+              "address": 4201877,
+              "mnemonic": "mov",
+              "operands": "0x20(%rbp),%r14"
+            },
+            {
+              "address": 4201881,
+              "mnemonic": "mov",
+              "operands": "%r14,-0x10(%rbp)"
+            },
+            {
+              "address": 4201885,
+              "mnemonic": "mov",
+              "operands": "0x18(%rbp),%r15"
+            },
+            {
+              "address": 4201889,
+              "mnemonic": "mov",
+              "operands": "0x10(%rbp),%r12"
+            },
+            {
+              "address": 4201916,
+              "mnemonic": "mov",
+              "operands": "-0x10(%rbp),%r14"
+            },
+            {
+              "address": 4201934,
+              "mnemonic": "mov",
+              "operands": "-0x18(%rbp),%r13"
+            },
+            {
+              "address": 4201952,
+              "mnemonic": "mov",
+              "operands": "-0x20(%rbp),%rbx"
+            }
+          ],
+          "stackAdjustments": [
+            {
+              "address": 4201844,
+              "mnemonic": "push",
+              "operands": "%rbp"
+            },
+            {
+              "address": 4201848,
+              "mnemonic": "sub",
+              "operands": "$0x28,%rsp"
+            },
+            {
+              "address": 4201852,
+              "mnemonic": "push",
+              "operands": "%rbx"
+            },
+            {
+              "address": 4201853,
+              "mnemonic": "push",
+              "operands": "%r12"
+            },
+            {
+              "address": 4201855,
+              "mnemonic": "push",
+              "operands": "%r13"
+            },
+            {
+              "address": 4201857,
+              "mnemonic": "push",
+              "operands": "%r14"
+            },
+            {
+              "address": 4201859,
+              "mnemonic": "push",
+              "operands": "%r15"
+            },
+            {
+              "address": 4202006,
+              "mnemonic": "pop",
+              "operands": "%r15"
+            },
+            {
+              "address": 4202008,
+              "mnemonic": "pop",
+              "operands": "%r14"
+            },
+            {
+              "address": 4202010,
+              "mnemonic": "pop",
+              "operands": "%r13"
+            },
+            {
+              "address": 4202012,
+              "mnemonic": "pop",
+              "operands": "%r12"
+            },
+            {
+              "address": 4202014,
+              "mnemonic": "pop",
+              "operands": "%rbx"
+            }
+          ],
+          "mnemonics": {
+            "endbr64": 1,
+            "push": 6,
+            "mov": 34,
+            "sub": 1,
+            "callq": 7,
+            "pop": 5,
+            "leaveq": 1,
+            "retq": 1
+          },
+          "assembly": {
+            "file": "/home/ai/bend2/build/publish/bend/implementation/phase110/evidence/machine09-wide/wide-threaded-qbe--nx_ctx110_wide_leaf.asm",
+            "bytes": 1897,
+            "sha256": "115418f3d0bedd52bf8bb4c31bca6ff208ffa9e79cbd1bcff83e802eb3ce9fe9"
+          }
+        },
+        {
+          "name": "nx_fields.isra.0",
+          "address": 4202848,
+          "bytes": 151,
+          "visibility": "t",
+          "instructionSites": 44,
+          "calls": [
+            {
+              "address": 4202873,
+              "target": "nx_id.isra.0"
+            },
+            {
+              "address": 4202896,
+              "target": "err_fail"
+            },
+            {
+              "address": 4202950,
+              "target": "nx_id.isra.0"
+            },
+            {
+              "address": 4202970,
+              "target": "err_fail"
+            },
+            {
+              "address": 4202982,
+              "target": "err_fail"
+            },
+            {
+              "address": 4202994,
+              "target": "err_fail"
+            }
+          ],
+          "stackMemorySites": [],
+          "stackAdjustments": [
+            {
+              "address": 4202850,
+              "mnemonic": "push",
+              "operands": "%r12"
+            },
+            {
+              "address": 4202855,
+              "mnemonic": "push",
+              "operands": "%rbp"
+            },
+            {
+              "address": 4202856,
+              "mnemonic": "push",
+              "operands": "%rbx"
+            },
+            {
+              "address": 4202933,
+              "mnemonic": "pop",
+              "operands": "%rbx"
+            },
+            {
+              "address": 4202934,
+              "mnemonic": "pop",
+              "operands": "%rbp"
+            },
+            {
+              "address": 4202935,
+              "mnemonic": "pop",
+              "operands": "%r12"
+            }
+          ],
+          "mnemonics": {
+            "mov": 7,
+            "push": 3,
+            "and": 1,
+            "cmp": 7,
+            "jne": 1,
+            "callq": 6,
+            "je": 3,
+            "add": 1,
+            "lea": 5,
+            "nopl": 1,
+            "jbe": 2,
+            "ja": 1,
+            "pop": 3,
+            "retq": 1,
+            "nopw": 1,
+            "sub": 1
+          },
+          "assembly": {
+            "file": "/home/ai/bend2/build/publish/bend/implementation/phase110/evidence/machine09-wide/wide-threaded-qbe--nx_fields.isra.0.asm",
+            "bytes": 1854,
+            "sha256": "8be25c4a4880d1f74fd0abd0d5ea4e952c0d3da895abd6f97b7f6db81b121d06"
+          }
+        },
+        {
+          "name": "nx_id.isra.0",
+          "address": 4202592,
+          "bytes": 242,
+          "visibility": "t",
+          "instructionSites": 62,
+          "calls": [
+            {
+              "address": 4202656,
+              "target": "err_fail"
+            },
+            {
+              "address": 4202708,
+              "target": "err_fail"
+            },
+            {
+              "address": 4202829,
+              "target": "err_fail"
+            }
+          ],
+          "stackMemorySites": [],
+          "stackAdjustments": [
+            {
+              "address": 4202598,
+              "mnemonic": "sub",
+              "operands": "$0x8,%rsp"
+            },
+            {
+              "address": 4202744,
+              "mnemonic": "add",
+              "operands": "$0x8,%rsp"
+            }
+          ],
+          "mnemonics": {
+            "mov": 7,
+            "sub": 1,
+            "shr": 3,
+            "and": 3,
+            "test": 5,
+            "jne": 5,
+            "movzwl": 1,
+            "lea": 5,
+            "movzbl": 1,
+            "cmp": 6,
+            "je": 2,
+            "callq": 3,
+            "nopl": 3,
+            "movabs": 2,
+            "js": 1,
+            "ja": 1,
+            "add": 3,
+            "shl": 2,
+            "jae": 1,
+            "retq": 1,
+            "jns": 1,
+            "jmp": 3,
+            "nopw": 1,
+            "or": 1
+          },
+          "assembly": {
+            "file": "/home/ai/bend2/build/publish/bend/implementation/phase110/evidence/machine09-wide/wide-threaded-qbe--nx_id.isra.0.asm",
+            "bytes": 2462,
+            "sha256": "21503fd25eba1ba88d3ec777152f5515f6a4cac566b48b8b0a354baa445ba95d"
+          }
+        },
+        {
+          "name": "nx_wide",
+          "address": 4202112,
+          "bytes": 165,
+          "visibility": "T",
+          "instructionSites": 52,
+          "calls": [
+            {
+              "address": 4202176,
+              "target": "nx_rt_ir_heap"
+            },
+            {
+              "address": 4202191,
+              "target": "nx_rt_ir_alc"
+            },
+            {
+              "address": 4202257,
+              "target": "nx_ctx110_wide"
+            }
+          ],
+          "stackMemorySites": [
+            {
+              "address": 4202133,
+              "mnemonic": "mov",
+              "operands": "0x20(%rbp),%r13"
+            },
+            {
+              "address": 4202137,
+              "mnemonic": "mov",
+              "operands": "%r13,-0x18(%rbp)"
+            },
+            {
+              "address": 4202141,
+              "mnemonic": "mov",
+              "operands": "0x18(%rbp),%r12"
+            },
+            {
+              "address": 4202145,
+              "mnemonic": "mov",
+              "operands": "%r12,-0x20(%rbp)"
+            },
+            {
+              "address": 4202149,
+              "mnemonic": "mov",
+              "operands": "0x10(%rbp),%r11"
+            },
+            {
+              "address": 4202153,
+              "mnemonic": "mov",
+              "operands": "%r11,-0x28(%rbp)"
+            },
+            {
+              "address": 4202157,
+              "mnemonic": "mov",
+              "operands": "%r9,-0x30(%rbp)"
+            },
+            {
+              "address": 4202184,
+              "mnemonic": "mov",
+              "operands": "%rax,-0x10(%rbp)"
+            },
+            {
+              "address": 4202211,
+              "mnemonic": "mov",
+              "operands": "-0x10(%rbp),%rsi"
+            },
+            {
+              "address": 4202215,
+              "mnemonic": "mov",
+              "operands": "-0x18(%rbp),%r13"
+            },
+            {
+              "address": 4202219,
+              "mnemonic": "mov",
+              "operands": "-0x20(%rbp),%r12"
+            },
+            {
+              "address": 4202223,
+              "mnemonic": "mov",
+              "operands": "-0x28(%rbp),%r11"
+            },
+            {
+              "address": 4202227,
+              "mnemonic": "mov",
+              "operands": "-0x30(%rbp),%r10"
+            }
+          ],
+          "stackAdjustments": [
+            {
+              "address": 4202116,
+              "mnemonic": "push",
+              "operands": "%rbp"
+            },
+            {
+              "address": 4202120,
+              "mnemonic": "sub",
+              "operands": "$0x38,%rsp"
+            },
+            {
+              "address": 4202124,
+              "mnemonic": "push",
+              "operands": "%rbx"
+            },
+            {
+              "address": 4202125,
+              "mnemonic": "push",
+              "operands": "%r12"
+            },
+            {
+              "address": 4202127,
+              "mnemonic": "push",
+              "operands": "%r13"
+            },
+            {
+              "address": 4202129,
+              "mnemonic": "push",
+              "operands": "%r14"
+            },
+            {
+              "address": 4202131,
+              "mnemonic": "push",
+              "operands": "%r15"
+            },
+            {
+              "address": 4202231,
+              "mnemonic": "sub",
+              "operands": "$0x30,%rsp"
+            },
+            {
+              "address": 4202262,
+              "mnemonic": "sub",
+              "operands": "$0xffffffffffffffd0,%rsp"
+            },
+            {
+              "address": 4202266,
+              "mnemonic": "pop",
+              "operands": "%r15"
+            },
+            {
+              "address": 4202268,
+              "mnemonic": "pop",
+              "operands": "%r14"
+            },
+            {
+              "address": 4202270,
+              "mnemonic": "pop",
+              "operands": "%r13"
+            },
+            {
+              "address": 4202272,
+              "mnemonic": "pop",
+              "operands": "%r12"
+            },
+            {
+              "address": 4202274,
+              "mnemonic": "pop",
+              "operands": "%rbx"
+            }
+          ],
+          "mnemonics": {
+            "endbr64": 1,
+            "push": 6,
+            "mov": 32,
+            "sub": 3,
+            "callq": 3,
+            "pop": 5,
+            "leaveq": 1,
+            "retq": 1
+          },
+          "assembly": {
+            "file": "/home/ai/bend2/build/publish/bend/implementation/phase110/evidence/machine09-wide/wide-threaded-qbe--nx_wide.asm",
+            "bytes": 1766,
+            "sha256": "fe4f1138cf7dabe1bb187aa245efd05f0fdc7ea1452e9c8e5a368a5985933f6d"
+          }
+        }
+      ]
+    },
+    {
+      "name": "wide-threaded-clang",
+      "mode": "threaded",
+      "backend": "clang",
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/context-wide-machine02/threaded-clang",
+        "bytes": 36784,
+        "sha256": "b26bca3e29fa517bb8557ea2307894faf5d440d8aa60d6b5bb012631f3f98b14"
+      },
+      "symbols": [
+        {
+          "name": "nx_active",
+          "address": 4227328,
+          "bytes": 1,
+          "visibility": "b",
+          "instructionSites": 0,
+          "calls": [],
+          "stackMemorySites": [],
+          "stackAdjustments": [],
+          "mnemonics": {},
+          "assembly": {
+            "file": "/home/ai/bend2/build/publish/bend/implementation/phase110/evidence/machine09-wide/wide-threaded-clang--nx_active.asm",
+            "bytes": 251,
+            "sha256": "8e4c6d0abab36523339ea25b43f57461c63079b82fc7cb28ae0ee18ddf0090ab"
+          }
+        },
+        {
+          "name": "nx_context",
+          "address": 4227360,
+          "bytes": 40,
+          "visibility": "b",
+          "instructionSites": 0,
+          "calls": [],
+          "stackMemorySites": [],
+          "stackAdjustments": [],
+          "mnemonics": {},
+          "assembly": {
+            "file": "/home/ai/bend2/build/publish/bend/implementation/phase110/evidence/machine09-wide/wide-threaded-clang--nx_context.asm",
+            "bytes": 251,
+            "sha256": "8e4c6d0abab36523339ea25b43f57461c63079b82fc7cb28ae0ee18ddf0090ab"
+          }
+        },
+        {
+          "name": "nx_ctx110_wide",
+          "address": 4201952,
+          "bytes": 23,
+          "visibility": "t",
+          "instructionSites": 6,
+          "calls": [
+            {
+              "address": 4201965,
+              "target": "nx_ctx110_wide_leaf"
+            }
+          ],
+          "stackMemorySites": [
+            {
+              "address": 4201956,
+              "mnemonic": "movaps",
+              "operands": "0x20(%rsp),%xmm0"
+            },
+            {
+              "address": 4201961,
+              "mnemonic": "movups",
+              "operands": "%xmm0,(%rsp)"
+            }
+          ],
+          "stackAdjustments": [
+            {
+              "address": 4201952,
+              "mnemonic": "sub",
+              "operands": "$0x18,%rsp"
+            },
+            {
+              "address": 4201970,
+              "mnemonic": "add",
+              "operands": "$0x18,%rsp"
+            }
+          ],
+          "mnemonics": {
+            "sub": 1,
+            "movaps": 1,
+            "movups": 1,
+            "callq": 1,
+            "add": 1,
+            "retq": 1
+          },
+          "assembly": {
+            "file": "/home/ai/bend2/build/publish/bend/implementation/phase110/evidence/machine09-wide/wide-threaded-clang--nx_ctx110_wide.asm",
+            "bytes": 471,
+            "sha256": "9d262f8c5e8cbe9b9c91bcd456c233451aa92cfb72435addce50e137cf5559f1"
+          }
+        },
+        {
+          "name": "nx_ctx110_wide_leaf",
+          "address": 4201984,
+          "bytes": 119,
+          "visibility": "t",
+          "instructionSites": 40,
+          "calls": [
+            {
+              "address": 4202015,
+              "target": "nx_rt_fast_sink"
+            },
+            {
+              "address": 4202026,
+              "target": "nx_rt_fast_sink"
+            },
+            {
+              "address": 4202037,
+              "target": "nx_rt_fast_sink"
+            },
+            {
+              "address": 4202048,
+              "target": "nx_rt_fast_sink"
+            },
+            {
+              "address": 4202059,
+              "target": "nx_rt_fast_sink"
+            },
+            {
+              "address": 4202070,
+              "target": "nx_rt_fast_sink"
+            },
+            {
+              "address": 4202083,
+              "target": "nx_rt_fast_sink"
+            }
+          ],
+          "stackMemorySites": [
+            {
+              "address": 4202010,
+              "mnemonic": "mov",
+              "operands": "0x40(%rsp),%r14"
+            },
+            {
+              "address": 4202078,
+              "mnemonic": "mov",
+              "operands": "0x48(%rsp),%rsi"
+            }
+          ],
+          "stackAdjustments": [
+            {
+              "address": 4201984,
+              "mnemonic": "push",
+              "operands": "%rbp"
+            },
+            {
+              "address": 4201985,
+              "mnemonic": "push",
+              "operands": "%r15"
+            },
+            {
+              "address": 4201987,
+              "mnemonic": "push",
+              "operands": "%r14"
+            },
+            {
+              "address": 4201989,
+              "mnemonic": "push",
+              "operands": "%r13"
+            },
+            {
+              "address": 4201991,
+              "mnemonic": "push",
+              "operands": "%r12"
+            },
+            {
+              "address": 4201993,
+              "mnemonic": "push",
+              "operands": "%rbx"
+            },
+            {
+              "address": 4201994,
+              "mnemonic": "push",
+              "operands": "%rax"
+            },
+            {
+              "address": 4202088,
+              "mnemonic": "add",
+              "operands": "$0x8,%rsp"
+            },
+            {
+              "address": 4202092,
+              "mnemonic": "pop",
+              "operands": "%rbx"
+            },
+            {
+              "address": 4202093,
+              "mnemonic": "pop",
+              "operands": "%r12"
+            },
+            {
+              "address": 4202095,
+              "mnemonic": "pop",
+              "operands": "%r13"
+            },
+            {
+              "address": 4202097,
+              "mnemonic": "pop",
+              "operands": "%r14"
+            },
+            {
+              "address": 4202099,
+              "mnemonic": "pop",
+              "operands": "%r15"
+            },
+            {
+              "address": 4202101,
+              "mnemonic": "pop",
+              "operands": "%rbp"
+            }
+          ],
+          "mnemonics": {
+            "push": 7,
+            "mov": 18,
+            "callq": 7,
+            "add": 1,
+            "pop": 6,
+            "retq": 1
+          },
+          "assembly": {
+            "file": "/home/ai/bend2/build/publish/bend/implementation/phase110/evidence/machine09-wide/wide-threaded-clang--nx_ctx110_wide_leaf.asm",
+            "bytes": 1413,
+            "sha256": "178e683506646a4854207af6a7ab59f3ac925b9170c1dbcc4a27d6195df162b9"
+          }
+        },
+        {
+          "name": "nx_fields.isra.0",
+          "address": 4202672,
+          "bytes": 151,
+          "visibility": "t",
+          "instructionSites": 44,
+          "calls": [
+            {
+              "address": 4202697,
+              "target": "nx_id.isra.0"
+            },
+            {
+              "address": 4202720,
+              "target": "err_fail"
+            },
+            {
+              "address": 4202774,
+              "target": "nx_id.isra.0"
+            },
+            {
+              "address": 4202794,
+              "target": "err_fail"
+            },
+            {
+              "address": 4202806,
+              "target": "err_fail"
+            },
+            {
+              "address": 4202818,
+              "target": "err_fail"
+            }
+          ],
+          "stackMemorySites": [],
+          "stackAdjustments": [
+            {
+              "address": 4202674,
+              "mnemonic": "push",
+              "operands": "%r12"
+            },
+            {
+              "address": 4202679,
+              "mnemonic": "push",
+              "operands": "%rbp"
+            },
+            {
+              "address": 4202680,
+              "mnemonic": "push",
+              "operands": "%rbx"
+            },
+            {
+              "address": 4202757,
+              "mnemonic": "pop",
+              "operands": "%rbx"
+            },
+            {
+              "address": 4202758,
+              "mnemonic": "pop",
+              "operands": "%rbp"
+            },
+            {
+              "address": 4202759,
+              "mnemonic": "pop",
+              "operands": "%r12"
+            }
+          ],
+          "mnemonics": {
+            "mov": 7,
+            "push": 3,
+            "and": 1,
+            "cmp": 7,
+            "jne": 1,
+            "callq": 6,
+            "je": 3,
+            "add": 1,
+            "lea": 5,
+            "nopl": 1,
+            "jbe": 2,
+            "ja": 1,
+            "pop": 3,
+            "retq": 1,
+            "nopw": 1,
+            "sub": 1
+          },
+          "assembly": {
+            "file": "/home/ai/bend2/build/publish/bend/implementation/phase110/evidence/machine09-wide/wide-threaded-clang--nx_fields.isra.0.asm",
+            "bytes": 1856,
+            "sha256": "883a9634456f6a2af0c495c332b6d358f12ec033f957a16ca4c9474ffe84ba11"
+          }
+        },
+        {
+          "name": "nx_id.isra.0",
+          "address": 4202416,
+          "bytes": 242,
+          "visibility": "t",
+          "instructionSites": 62,
+          "calls": [
+            {
+              "address": 4202480,
+              "target": "err_fail"
+            },
+            {
+              "address": 4202532,
+              "target": "err_fail"
+            },
+            {
+              "address": 4202653,
+              "target": "err_fail"
+            }
+          ],
+          "stackMemorySites": [],
+          "stackAdjustments": [
+            {
+              "address": 4202422,
+              "mnemonic": "sub",
+              "operands": "$0x8,%rsp"
+            },
+            {
+              "address": 4202568,
+              "mnemonic": "add",
+              "operands": "$0x8,%rsp"
+            }
+          ],
+          "mnemonics": {
+            "mov": 7,
+            "sub": 1,
+            "shr": 3,
+            "and": 3,
+            "test": 5,
+            "jne": 5,
+            "movzwl": 1,
+            "lea": 5,
+            "movzbl": 1,
+            "cmp": 6,
+            "je": 2,
+            "callq": 3,
+            "nopl": 3,
+            "movabs": 2,
+            "js": 1,
+            "ja": 1,
+            "add": 3,
+            "shl": 2,
+            "jae": 1,
+            "retq": 1,
+            "jns": 1,
+            "jmp": 3,
+            "nopw": 1,
+            "or": 1
+          },
+          "assembly": {
+            "file": "/home/ai/bend2/build/publish/bend/implementation/phase110/evidence/machine09-wide/wide-threaded-clang--nx_id.isra.0.asm",
+            "bytes": 2464,
+            "sha256": "727018283dd3e4720f6154a93d277a0ffa8c31d1258962a7092b0078c358e78e"
+          }
+        },
+        {
+          "name": "nx_wide",
+          "address": 4201840,
+          "bytes": 97,
+          "visibility": "T",
+          "instructionSites": 34,
+          "calls": [
+            {
+              "address": 4201872,
+              "target": "nx_rt_ir_heap"
+            },
+            {
+              "address": 4201880,
+              "target": "nx_rt_ir_alc"
+            },
+            {
+              "address": 4201912,
+              "target": "nx_ctx110_wide"
+            }
+          ],
+          "stackMemorySites": [
+            {
+              "address": 4201885,
+              "mnemonic": "movaps",
+              "operands": "0x50(%rsp),%xmm0"
+            },
+            {
+              "address": 4201890,
+              "mnemonic": "movups",
+              "operands": "%xmm0,(%rsp)"
+            },
+            {
+              "address": 4201917,
+              "mnemonic": "mov",
+              "operands": "0x60(%rsp),%rax"
+            }
+          ],
+          "stackAdjustments": [
+            {
+              "address": 4201840,
+              "mnemonic": "push",
+              "operands": "%rbp"
+            },
+            {
+              "address": 4201841,
+              "mnemonic": "push",
+              "operands": "%r15"
+            },
+            {
+              "address": 4201843,
+              "mnemonic": "push",
+              "operands": "%r14"
+            },
+            {
+              "address": 4201845,
+              "mnemonic": "push",
+              "operands": "%r13"
+            },
+            {
+              "address": 4201847,
+              "mnemonic": "push",
+              "operands": "%r12"
+            },
+            {
+              "address": 4201849,
+              "mnemonic": "push",
+              "operands": "%rbx"
+            },
+            {
+              "address": 4201850,
+              "mnemonic": "sub",
+              "operands": "$0x18,%rsp"
+            },
+            {
+              "address": 4201922,
+              "mnemonic": "add",
+              "operands": "$0x18,%rsp"
+            },
+            {
+              "address": 4201926,
+              "mnemonic": "pop",
+              "operands": "%rbx"
+            },
+            {
+              "address": 4201927,
+              "mnemonic": "pop",
+              "operands": "%r12"
+            },
+            {
+              "address": 4201929,
+              "mnemonic": "pop",
+              "operands": "%r13"
+            },
+            {
+              "address": 4201931,
+              "mnemonic": "pop",
+              "operands": "%r14"
+            },
+            {
+              "address": 4201933,
+              "mnemonic": "pop",
+              "operands": "%r15"
+            },
+            {
+              "address": 4201935,
+              "mnemonic": "pop",
+              "operands": "%rbp"
+            }
+          ],
+          "mnemonics": {
+            "push": 6,
+            "sub": 1,
+            "mov": 14,
+            "callq": 3,
+            "movaps": 1,
+            "movups": 1,
+            "add": 1,
+            "pop": 6,
+            "retq": 1
+          },
+          "assembly": {
+            "file": "/home/ai/bend2/build/publish/bend/implementation/phase110/evidence/machine09-wide/wide-threaded-clang--nx_wide.asm",
+            "bytes": 1182,
+            "sha256": "cdcfe6090297a831a14b622e1ea91f3f14c0d6cd28cc0d52fa79693ed4443603"
+          }
+        }
+      ]
+    },
+    {
+      "name": "wide-context-qbe",
+      "mode": "context",
+      "backend": "qbe",
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/context-wide-machine02/context-qbe",
+        "bytes": 36768,
+        "sha256": "0e8769637c764fbb9f336acbb4c1401fcdebcb5e3089e81cb7e5809a5797fe12"
+      },
+      "symbols": [
+        {
+          "name": "nx_active",
+          "address": 4227328,
+          "bytes": 1,
+          "visibility": "b",
+          "instructionSites": 0,
+          "calls": [],
+          "stackMemorySites": [],
+          "stackAdjustments": [],
+          "mnemonics": {},
+          "assembly": {
+            "file": "/home/ai/bend2/build/publish/bend/implementation/phase110/evidence/machine09-wide/wide-context-qbe--nx_active.asm",
+            "bytes": 248,
+            "sha256": "fd966ff342c9701307a65e18d0d55315cbcd39c97b1be56898248434c3eb0109"
+          }
+        },
+        {
+          "name": "nx_context",
+          "address": 4227360,
+          "bytes": 40,
+          "visibility": "b",
+          "instructionSites": 0,
+          "calls": [],
+          "stackMemorySites": [],
+          "stackAdjustments": [],
+          "mnemonics": {},
+          "assembly": {
+            "file": "/home/ai/bend2/build/publish/bend/implementation/phase110/evidence/machine09-wide/wide-context-qbe--nx_context.asm",
+            "bytes": 248,
+            "sha256": "fd966ff342c9701307a65e18d0d55315cbcd39c97b1be56898248434c3eb0109"
+          }
+        },
+        {
+          "name": "nx_ctx110_wide",
+          "address": 4202016,
+          "bytes": 55,
+          "visibility": "t",
+          "instructionSites": 18,
+          "calls": [
+            {
+              "address": 4202059,
+              "target": "nx_ctx110_wide_leaf"
+            }
+          ],
+          "stackMemorySites": [
+            {
+              "address": 4202029,
+              "mnemonic": "mov",
+              "operands": "0x20(%rbp),%rbx"
+            },
+            {
+              "address": 4202033,
+              "mnemonic": "mov",
+              "operands": "0x18(%rbp),%r11"
+            },
+            {
+              "address": 4202037,
+              "mnemonic": "mov",
+              "operands": "0x10(%rbp),%rax"
+            }
+          ],
+          "stackAdjustments": [
+            {
+              "address": 4202020,
+              "mnemonic": "push",
+              "operands": "%rbp"
+            },
+            {
+              "address": 4202024,
+              "mnemonic": "sub",
+              "operands": "$0x8,%rsp"
+            },
+            {
+              "address": 4202028,
+              "mnemonic": "push",
+              "operands": "%rbx"
+            },
+            {
+              "address": 4202041,
+              "mnemonic": "sub",
+              "operands": "$0x20,%rsp"
+            },
+            {
+              "address": 4202064,
+              "mnemonic": "sub",
+              "operands": "$0xffffffffffffffe0,%rsp"
+            },
+            {
+              "address": 4202068,
+              "mnemonic": "pop",
+              "operands": "%rbx"
+            }
+          ],
+          "mnemonics": {
+            "endbr64": 1,
+            "push": 2,
+            "mov": 8,
+            "sub": 3,
+            "callq": 1,
+            "pop": 1,
+            "leaveq": 1,
+            "retq": 1
+          },
+          "assembly": {
+            "file": "/home/ai/bend2/build/publish/bend/implementation/phase110/evidence/machine09-wide/wide-context-qbe--nx_ctx110_wide.asm",
+            "bytes": 795,
+            "sha256": "f0495707a61ddbb09b0f2a0b17fbc9e5360581ef4917d919b1daa2e3de375525"
+          }
+        },
+        {
+          "name": "nx_ctx110_wide_leaf",
+          "address": 4201840,
+          "bytes": 172,
+          "visibility": "t",
+          "instructionSites": 55,
+          "calls": [
+            {
+              "address": 4201900,
+              "target": "nx_rt_fast_sink"
+            },
+            {
+              "address": 4201918,
+              "target": "nx_rt_fast_sink"
+            },
+            {
+              "address": 4201936,
+              "target": "nx_rt_fast_sink"
+            },
+            {
+              "address": 4201954,
+              "target": "nx_rt_fast_sink"
+            },
+            {
+              "address": 4201968,
+              "target": "nx_rt_fast_sink"
+            },
+            {
+              "address": 4201982,
+              "target": "nx_rt_fast_sink"
+            },
+            {
+              "address": 4201993,
+              "target": "nx_rt_fast_sink"
+            }
+          ],
+          "stackMemorySites": [
+            {
+              "address": 4201861,
+              "mnemonic": "mov",
+              "operands": "0x20(%rbp),%rbx"
+            },
+            {
+              "address": 4201865,
+              "mnemonic": "mov",
+              "operands": "%rbx,-0x20(%rbp)"
+            },
+            {
+              "address": 4201869,
+              "mnemonic": "mov",
+              "operands": "0x18(%rbp),%r13"
+            },
+            {
+              "address": 4201873,
+              "mnemonic": "mov",
+              "operands": "%r13,-0x18(%rbp)"
+            },
+            {
+              "address": 4201877,
+              "mnemonic": "mov",
+              "operands": "0x10(%rbp),%r14"
+            },
+            {
+              "address": 4201881,
+              "mnemonic": "mov",
+              "operands": "%r14,-0x10(%rbp)"
+            },
+            {
+              "address": 4201911,
+              "mnemonic": "mov",
+              "operands": "-0x10(%rbp),%r14"
+            },
+            {
+              "address": 4201929,
+              "mnemonic": "mov",
+              "operands": "-0x18(%rbp),%r13"
+            },
+            {
+              "address": 4201947,
+              "mnemonic": "mov",
+              "operands": "-0x20(%rbp),%rbx"
+            }
+          ],
+          "stackAdjustments": [
+            {
+              "address": 4201844,
+              "mnemonic": "push",
+              "operands": "%rbp"
+            },
+            {
+              "address": 4201848,
+              "mnemonic": "sub",
+              "operands": "$0x28,%rsp"
+            },
+            {
+              "address": 4201852,
+              "mnemonic": "push",
+              "operands": "%rbx"
+            },
+            {
+              "address": 4201853,
+              "mnemonic": "push",
+              "operands": "%r12"
+            },
+            {
+              "address": 4201855,
+              "mnemonic": "push",
+              "operands": "%r13"
+            },
+            {
+              "address": 4201857,
+              "mnemonic": "push",
+              "operands": "%r14"
+            },
+            {
+              "address": 4201859,
+              "mnemonic": "push",
+              "operands": "%r15"
+            },
+            {
+              "address": 4202001,
+              "mnemonic": "pop",
+              "operands": "%r15"
+            },
+            {
+              "address": 4202003,
+              "mnemonic": "pop",
+              "operands": "%r14"
+            },
+            {
+              "address": 4202005,
+              "mnemonic": "pop",
+              "operands": "%r13"
+            },
+            {
+              "address": 4202007,
+              "mnemonic": "pop",
+              "operands": "%r12"
+            },
+            {
+              "address": 4202009,
+              "mnemonic": "pop",
+              "operands": "%rbx"
+            }
+          ],
+          "mnemonics": {
+            "endbr64": 1,
+            "push": 6,
+            "mov": 33,
+            "sub": 1,
+            "callq": 7,
+            "pop": 5,
+            "leaveq": 1,
+            "retq": 1
+          },
+          "assembly": {
+            "file": "/home/ai/bend2/build/publish/bend/implementation/phase110/evidence/machine09-wide/wide-context-qbe--nx_ctx110_wide_leaf.asm",
+            "bytes": 1857,
+            "sha256": "f58cb7bbbeec709a70bb5c5baf2c8285144a92f3aefac7b5501ff4550bc07f1d"
+          }
+        },
+        {
+          "name": "nx_fields.isra.0",
+          "address": 4202800,
+          "bytes": 151,
+          "visibility": "t",
+          "instructionSites": 44,
+          "calls": [
+            {
+              "address": 4202825,
+              "target": "nx_id.isra.0"
+            },
+            {
+              "address": 4202848,
+              "target": "err_fail"
+            },
+            {
+              "address": 4202902,
+              "target": "nx_id.isra.0"
+            },
+            {
+              "address": 4202922,
+              "target": "err_fail"
+            },
+            {
+              "address": 4202934,
+              "target": "err_fail"
+            },
+            {
+              "address": 4202946,
+              "target": "err_fail"
+            }
+          ],
+          "stackMemorySites": [],
+          "stackAdjustments": [
+            {
+              "address": 4202802,
+              "mnemonic": "push",
+              "operands": "%r12"
+            },
+            {
+              "address": 4202807,
+              "mnemonic": "push",
+              "operands": "%rbp"
+            },
+            {
+              "address": 4202808,
+              "mnemonic": "push",
+              "operands": "%rbx"
+            },
+            {
+              "address": 4202885,
+              "mnemonic": "pop",
+              "operands": "%rbx"
+            },
+            {
+              "address": 4202886,
+              "mnemonic": "pop",
+              "operands": "%rbp"
+            },
+            {
+              "address": 4202887,
+              "mnemonic": "pop",
+              "operands": "%r12"
+            }
+          ],
+          "mnemonics": {
+            "mov": 7,
+            "push": 3,
+            "and": 1,
+            "cmp": 7,
+            "jne": 1,
+            "callq": 6,
+            "je": 3,
+            "add": 1,
+            "lea": 5,
+            "nopl": 1,
+            "jbe": 2,
+            "ja": 1,
+            "pop": 3,
+            "retq": 1,
+            "nopw": 1,
+            "sub": 1
+          },
+          "assembly": {
+            "file": "/home/ai/bend2/build/publish/bend/implementation/phase110/evidence/machine09-wide/wide-context-qbe--nx_fields.isra.0.asm",
+            "bytes": 1853,
+            "sha256": "042e5f49a7609f6eabc3732a1fbc2028c09c3204374f861dc71091108978cd9c"
+          }
+        },
+        {
+          "name": "nx_id.isra.0",
+          "address": 4202544,
+          "bytes": 242,
+          "visibility": "t",
+          "instructionSites": 62,
+          "calls": [
+            {
+              "address": 4202608,
+              "target": "err_fail"
+            },
+            {
+              "address": 4202660,
+              "target": "err_fail"
+            },
+            {
+              "address": 4202781,
+              "target": "err_fail"
+            }
+          ],
+          "stackMemorySites": [],
+          "stackAdjustments": [
+            {
+              "address": 4202550,
+              "mnemonic": "sub",
+              "operands": "$0x8,%rsp"
+            },
+            {
+              "address": 4202696,
+              "mnemonic": "add",
+              "operands": "$0x8,%rsp"
+            }
+          ],
+          "mnemonics": {
+            "mov": 7,
+            "sub": 1,
+            "shr": 3,
+            "and": 3,
+            "test": 5,
+            "jne": 5,
+            "movzwl": 1,
+            "lea": 5,
+            "movzbl": 1,
+            "cmp": 6,
+            "je": 2,
+            "callq": 3,
+            "nopl": 3,
+            "movabs": 2,
+            "js": 1,
+            "ja": 1,
+            "add": 3,
+            "shl": 2,
+            "jae": 1,
+            "retq": 1,
+            "jns": 1,
+            "jmp": 3,
+            "nopw": 1,
+            "or": 1
+          },
+          "assembly": {
+            "file": "/home/ai/bend2/build/publish/bend/implementation/phase110/evidence/machine09-wide/wide-context-qbe--nx_id.isra.0.asm",
+            "bytes": 2461,
+            "sha256": "6131115fd7c2776698eb12ee9472e68932f858e8f4a3a02efa47533566d75eb0"
+          }
+        },
+        {
+          "name": "nx_wide",
+          "address": 4202080,
+          "bytes": 149,
+          "visibility": "T",
+          "instructionSites": 48,
+          "calls": [
+            {
+              "address": 4202144,
+              "target": "nx_rt_ir_heap"
+            },
+            {
+              "address": 4202155,
+              "target": "nx_rt_ir_alc"
+            },
+            {
+              "address": 4202209,
+              "target": "nx_ctx110_wide"
+            }
+          ],
+          "stackMemorySites": [
+            {
+              "address": 4202101,
+              "mnemonic": "mov",
+              "operands": "0x20(%rbp),%rbx"
+            },
+            {
+              "address": 4202105,
+              "mnemonic": "mov",
+              "operands": "%rbx,-0x8(%rbp)"
+            },
+            {
+              "address": 4202109,
+              "mnemonic": "mov",
+              "operands": "0x18(%rbp),%r11"
+            },
+            {
+              "address": 4202113,
+              "mnemonic": "mov",
+              "operands": "%r11,-0x10(%rbp)"
+            },
+            {
+              "address": 4202117,
+              "mnemonic": "mov",
+              "operands": "0x10(%rbp),%rax"
+            },
+            {
+              "address": 4202121,
+              "mnemonic": "mov",
+              "operands": "%rax,-0x18(%rbp)"
+            },
+            {
+              "address": 4202125,
+              "mnemonic": "mov",
+              "operands": "%r9,-0x20(%rbp)"
+            },
+            {
+              "address": 4202175,
+              "mnemonic": "mov",
+              "operands": "-0x8(%rbp),%rbx"
+            },
+            {
+              "address": 4202179,
+              "mnemonic": "mov",
+              "operands": "-0x10(%rbp),%r11"
+            },
+            {
+              "address": 4202183,
+              "mnemonic": "mov",
+              "operands": "-0x18(%rbp),%rax"
+            },
+            {
+              "address": 4202187,
+              "mnemonic": "mov",
+              "operands": "-0x20(%rbp),%r9"
+            }
+          ],
+          "stackAdjustments": [
+            {
+              "address": 4202084,
+              "mnemonic": "push",
+              "operands": "%rbp"
+            },
+            {
+              "address": 4202088,
+              "mnemonic": "sub",
+              "operands": "$0x28,%rsp"
+            },
+            {
+              "address": 4202092,
+              "mnemonic": "push",
+              "operands": "%rbx"
+            },
+            {
+              "address": 4202093,
+              "mnemonic": "push",
+              "operands": "%r12"
+            },
+            {
+              "address": 4202095,
+              "mnemonic": "push",
+              "operands": "%r13"
+            },
+            {
+              "address": 4202097,
+              "mnemonic": "push",
+              "operands": "%r14"
+            },
+            {
+              "address": 4202099,
+              "mnemonic": "push",
+              "operands": "%r15"
+            },
+            {
+              "address": 4202191,
+              "mnemonic": "sub",
+              "operands": "$0x20,%rsp"
+            },
+            {
+              "address": 4202214,
+              "mnemonic": "sub",
+              "operands": "$0xffffffffffffffe0,%rsp"
+            },
+            {
+              "address": 4202218,
+              "mnemonic": "pop",
+              "operands": "%r15"
+            },
+            {
+              "address": 4202220,
+              "mnemonic": "pop",
+              "operands": "%r14"
+            },
+            {
+              "address": 4202222,
+              "mnemonic": "pop",
+              "operands": "%r13"
+            },
+            {
+              "address": 4202224,
+              "mnemonic": "pop",
+              "operands": "%r12"
+            },
+            {
+              "address": 4202226,
+              "mnemonic": "pop",
+              "operands": "%rbx"
+            }
+          ],
+          "mnemonics": {
+            "endbr64": 1,
+            "push": 6,
+            "mov": 28,
+            "sub": 3,
+            "callq": 3,
+            "pop": 5,
+            "leaveq": 1,
+            "retq": 1
+          },
+          "assembly": {
+            "file": "/home/ai/bend2/build/publish/bend/implementation/phase110/evidence/machine09-wide/wide-context-qbe--nx_wide.asm",
+            "bytes": 1629,
+            "sha256": "a26005fcae6fef61b06345a9b986270dfddd3e9e045f6add8648f5d26d1eec55"
+          }
+        }
+      ]
+    },
+    {
+      "name": "wide-context-clang",
+      "mode": "context",
+      "backend": "clang",
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/context-wide-machine02/context-clang",
+        "bytes": 36784,
+        "sha256": "3cad914a1cb49b3411c2c95e5abfd0b4f68b2bda6022c96a2358d86eb052993c"
+      },
+      "symbols": [
+        {
+          "name": "nx_active",
+          "address": 4227328,
+          "bytes": 1,
+          "visibility": "b",
+          "instructionSites": 0,
+          "calls": [],
+          "stackMemorySites": [],
+          "stackAdjustments": [],
+          "mnemonics": {},
+          "assembly": {
+            "file": "/home/ai/bend2/build/publish/bend/implementation/phase110/evidence/machine09-wide/wide-context-clang--nx_active.asm",
+            "bytes": 250,
+            "sha256": "76a5667228d376927d98cfe3e7e22ebc147d40e33a0c8a65951dd7dfb055ac2f"
+          }
+        },
+        {
+          "name": "nx_context",
+          "address": 4227360,
+          "bytes": 40,
+          "visibility": "b",
+          "instructionSites": 0,
+          "calls": [],
+          "stackMemorySites": [],
+          "stackAdjustments": [],
+          "mnemonics": {},
+          "assembly": {
+            "file": "/home/ai/bend2/build/publish/bend/implementation/phase110/evidence/machine09-wide/wide-context-clang--nx_context.asm",
+            "bytes": 250,
+            "sha256": "76a5667228d376927d98cfe3e7e22ebc147d40e33a0c8a65951dd7dfb055ac2f"
+          }
+        },
+        {
+          "name": "nx_ctx110_wide",
+          "address": 4201952,
+          "bytes": 23,
+          "visibility": "t",
+          "instructionSites": 6,
+          "calls": [
+            {
+              "address": 4201965,
+              "target": "nx_ctx110_wide_leaf"
+            }
+          ],
+          "stackMemorySites": [
+            {
+              "address": 4201956,
+              "mnemonic": "movaps",
+              "operands": "0x20(%rsp),%xmm0"
+            },
+            {
+              "address": 4201961,
+              "mnemonic": "movups",
+              "operands": "%xmm0,(%rsp)"
+            }
+          ],
+          "stackAdjustments": [
+            {
+              "address": 4201952,
+              "mnemonic": "sub",
+              "operands": "$0x18,%rsp"
+            },
+            {
+              "address": 4201970,
+              "mnemonic": "add",
+              "operands": "$0x18,%rsp"
+            }
+          ],
+          "mnemonics": {
+            "sub": 1,
+            "movaps": 1,
+            "movups": 1,
+            "callq": 1,
+            "add": 1,
+            "retq": 1
+          },
+          "assembly": {
+            "file": "/home/ai/bend2/build/publish/bend/implementation/phase110/evidence/machine09-wide/wide-context-clang--nx_ctx110_wide.asm",
+            "bytes": 470,
+            "sha256": "c6ae2e32ee3bdcc8a9aeae59e5b5dd940aff72922f3de5688339d4fa745a51f7"
+          }
+        },
+        {
+          "name": "nx_ctx110_wide_leaf",
+          "address": 4201984,
+          "bytes": 119,
+          "visibility": "t",
+          "instructionSites": 40,
+          "calls": [
+            {
+              "address": 4202015,
+              "target": "nx_rt_fast_sink"
+            },
+            {
+              "address": 4202026,
+              "target": "nx_rt_fast_sink"
+            },
+            {
+              "address": 4202037,
+              "target": "nx_rt_fast_sink"
+            },
+            {
+              "address": 4202048,
+              "target": "nx_rt_fast_sink"
+            },
+            {
+              "address": 4202059,
+              "target": "nx_rt_fast_sink"
+            },
+            {
+              "address": 4202070,
+              "target": "nx_rt_fast_sink"
+            },
+            {
+              "address": 4202083,
+              "target": "nx_rt_fast_sink"
+            }
+          ],
+          "stackMemorySites": [
+            {
+              "address": 4202010,
+              "mnemonic": "mov",
+              "operands": "0x40(%rsp),%r14"
+            },
+            {
+              "address": 4202078,
+              "mnemonic": "mov",
+              "operands": "0x48(%rsp),%rsi"
+            }
+          ],
+          "stackAdjustments": [
+            {
+              "address": 4201984,
+              "mnemonic": "push",
+              "operands": "%rbp"
+            },
+            {
+              "address": 4201985,
+              "mnemonic": "push",
+              "operands": "%r15"
+            },
+            {
+              "address": 4201987,
+              "mnemonic": "push",
+              "operands": "%r14"
+            },
+            {
+              "address": 4201989,
+              "mnemonic": "push",
+              "operands": "%r13"
+            },
+            {
+              "address": 4201991,
+              "mnemonic": "push",
+              "operands": "%r12"
+            },
+            {
+              "address": 4201993,
+              "mnemonic": "push",
+              "operands": "%rbx"
+            },
+            {
+              "address": 4201994,
+              "mnemonic": "push",
+              "operands": "%rax"
+            },
+            {
+              "address": 4202088,
+              "mnemonic": "add",
+              "operands": "$0x8,%rsp"
+            },
+            {
+              "address": 4202092,
+              "mnemonic": "pop",
+              "operands": "%rbx"
+            },
+            {
+              "address": 4202093,
+              "mnemonic": "pop",
+              "operands": "%r12"
+            },
+            {
+              "address": 4202095,
+              "mnemonic": "pop",
+              "operands": "%r13"
+            },
+            {
+              "address": 4202097,
+              "mnemonic": "pop",
+              "operands": "%r14"
+            },
+            {
+              "address": 4202099,
+              "mnemonic": "pop",
+              "operands": "%r15"
+            },
+            {
+              "address": 4202101,
+              "mnemonic": "pop",
+              "operands": "%rbp"
+            }
+          ],
+          "mnemonics": {
+            "push": 7,
+            "mov": 18,
+            "callq": 7,
+            "add": 1,
+            "pop": 6,
+            "retq": 1
+          },
+          "assembly": {
+            "file": "/home/ai/bend2/build/publish/bend/implementation/phase110/evidence/machine09-wide/wide-context-clang--nx_ctx110_wide_leaf.asm",
+            "bytes": 1412,
+            "sha256": "d43727d6329faac61f0ce5b1f65391721d4c82f3486a04802040f715c9397281"
+          }
+        },
+        {
+          "name": "nx_fields.isra.0",
+          "address": 4202672,
+          "bytes": 151,
+          "visibility": "t",
+          "instructionSites": 44,
+          "calls": [
+            {
+              "address": 4202697,
+              "target": "nx_id.isra.0"
+            },
+            {
+              "address": 4202720,
+              "target": "err_fail"
+            },
+            {
+              "address": 4202774,
+              "target": "nx_id.isra.0"
+            },
+            {
+              "address": 4202794,
+              "target": "err_fail"
+            },
+            {
+              "address": 4202806,
+              "target": "err_fail"
+            },
+            {
+              "address": 4202818,
+              "target": "err_fail"
+            }
+          ],
+          "stackMemorySites": [],
+          "stackAdjustments": [
+            {
+              "address": 4202674,
+              "mnemonic": "push",
+              "operands": "%r12"
+            },
+            {
+              "address": 4202679,
+              "mnemonic": "push",
+              "operands": "%rbp"
+            },
+            {
+              "address": 4202680,
+              "mnemonic": "push",
+              "operands": "%rbx"
+            },
+            {
+              "address": 4202757,
+              "mnemonic": "pop",
+              "operands": "%rbx"
+            },
+            {
+              "address": 4202758,
+              "mnemonic": "pop",
+              "operands": "%rbp"
+            },
+            {
+              "address": 4202759,
+              "mnemonic": "pop",
+              "operands": "%r12"
+            }
+          ],
+          "mnemonics": {
+            "mov": 7,
+            "push": 3,
+            "and": 1,
+            "cmp": 7,
+            "jne": 1,
+            "callq": 6,
+            "je": 3,
+            "add": 1,
+            "lea": 5,
+            "nopl": 1,
+            "jbe": 2,
+            "ja": 1,
+            "pop": 3,
+            "retq": 1,
+            "nopw": 1,
+            "sub": 1
+          },
+          "assembly": {
+            "file": "/home/ai/bend2/build/publish/bend/implementation/phase110/evidence/machine09-wide/wide-context-clang--nx_fields.isra.0.asm",
+            "bytes": 1855,
+            "sha256": "6b58c5b41a3fe9af7de3b9b85f3f8e7fffc142b6e7bb47e905ec8050f0ef4922"
+          }
+        },
+        {
+          "name": "nx_id.isra.0",
+          "address": 4202416,
+          "bytes": 242,
+          "visibility": "t",
+          "instructionSites": 62,
+          "calls": [
+            {
+              "address": 4202480,
+              "target": "err_fail"
+            },
+            {
+              "address": 4202532,
+              "target": "err_fail"
+            },
+            {
+              "address": 4202653,
+              "target": "err_fail"
+            }
+          ],
+          "stackMemorySites": [],
+          "stackAdjustments": [
+            {
+              "address": 4202422,
+              "mnemonic": "sub",
+              "operands": "$0x8,%rsp"
+            },
+            {
+              "address": 4202568,
+              "mnemonic": "add",
+              "operands": "$0x8,%rsp"
+            }
+          ],
+          "mnemonics": {
+            "mov": 7,
+            "sub": 1,
+            "shr": 3,
+            "and": 3,
+            "test": 5,
+            "jne": 5,
+            "movzwl": 1,
+            "lea": 5,
+            "movzbl": 1,
+            "cmp": 6,
+            "je": 2,
+            "callq": 3,
+            "nopl": 3,
+            "movabs": 2,
+            "js": 1,
+            "ja": 1,
+            "add": 3,
+            "shl": 2,
+            "jae": 1,
+            "retq": 1,
+            "jns": 1,
+            "jmp": 3,
+            "nopw": 1,
+            "or": 1
+          },
+          "assembly": {
+            "file": "/home/ai/bend2/build/publish/bend/implementation/phase110/evidence/machine09-wide/wide-context-clang--nx_id.isra.0.asm",
+            "bytes": 2463,
+            "sha256": "5c765a58fac46e6082c06cd7f831a9026a3f92137c644b3b445d8eaa50bed110"
+          }
+        },
+        {
+          "name": "nx_wide",
+          "address": 4201840,
+          "bytes": 97,
+          "visibility": "T",
+          "instructionSites": 34,
+          "calls": [
+            {
+              "address": 4201872,
+              "target": "nx_rt_ir_heap"
+            },
+            {
+              "address": 4201880,
+              "target": "nx_rt_ir_alc"
+            },
+            {
+              "address": 4201912,
+              "target": "nx_ctx110_wide"
+            }
+          ],
+          "stackMemorySites": [
+            {
+              "address": 4201885,
+              "mnemonic": "movaps",
+              "operands": "0x50(%rsp),%xmm0"
+            },
+            {
+              "address": 4201890,
+              "mnemonic": "movups",
+              "operands": "%xmm0,(%rsp)"
+            },
+            {
+              "address": 4201917,
+              "mnemonic": "mov",
+              "operands": "0x60(%rsp),%rax"
+            }
+          ],
+          "stackAdjustments": [
+            {
+              "address": 4201840,
+              "mnemonic": "push",
+              "operands": "%rbp"
+            },
+            {
+              "address": 4201841,
+              "mnemonic": "push",
+              "operands": "%r15"
+            },
+            {
+              "address": 4201843,
+              "mnemonic": "push",
+              "operands": "%r14"
+            },
+            {
+              "address": 4201845,
+              "mnemonic": "push",
+              "operands": "%r13"
+            },
+            {
+              "address": 4201847,
+              "mnemonic": "push",
+              "operands": "%r12"
+            },
+            {
+              "address": 4201849,
+              "mnemonic": "push",
+              "operands": "%rbx"
+            },
+            {
+              "address": 4201850,
+              "mnemonic": "sub",
+              "operands": "$0x18,%rsp"
+            },
+            {
+              "address": 4201922,
+              "mnemonic": "add",
+              "operands": "$0x18,%rsp"
+            },
+            {
+              "address": 4201926,
+              "mnemonic": "pop",
+              "operands": "%rbx"
+            },
+            {
+              "address": 4201927,
+              "mnemonic": "pop",
+              "operands": "%r12"
+            },
+            {
+              "address": 4201929,
+              "mnemonic": "pop",
+              "operands": "%r13"
+            },
+            {
+              "address": 4201931,
+              "mnemonic": "pop",
+              "operands": "%r14"
+            },
+            {
+              "address": 4201933,
+              "mnemonic": "pop",
+              "operands": "%r15"
+            },
+            {
+              "address": 4201935,
+              "mnemonic": "pop",
+              "operands": "%rbp"
+            }
+          ],
+          "mnemonics": {
+            "push": 6,
+            "sub": 1,
+            "mov": 14,
+            "callq": 3,
+            "movaps": 1,
+            "movups": 1,
+            "add": 1,
+            "pop": 6,
+            "retq": 1
+          },
+          "assembly": {
+            "file": "/home/ai/bend2/build/publish/bend/implementation/phase110/evidence/machine09-wide/wide-context-clang--nx_wide.asm",
+            "bytes": 1181,
+            "sha256": "515a3ee10d5050e0d8e97954783e7ee00baa81229680ed47cafdecad40d07179"
+          }
+        }
+      ]
+    }
+  ]
+}

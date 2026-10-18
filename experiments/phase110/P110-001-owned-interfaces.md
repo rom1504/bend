@@ -160,3 +160,24 @@ The first native worker runner failed before execution because Clang was absent
 from PATH. Its receipt is retained; rerunning with the pinned Lean toolchain
 path completes. No evaluator or semantic expectation was changed. The native
 source and machine image are frozen for this phase's final transfer checks.
+
+## Final transfer and context-boundary diagnostic
+
+The fixed selected policy improves compiler nt_append medians to0.9215,0.7180
+and0.6246 times fused-QBE on its three predeclared shapes, but recursive Base
+String.append regresses consistently to1.1584 and1.0519 times fused-QBE.
+`native-transfer01` preserves both the positive and negative observations.
+
+The separately preregistered [P110-002](P110-002-context-boundary.md) removes
+repeated context getters inside closed owning calls while retaining checked
+public wrappers. All18 workers pass234 original observations, with31 Bend
+controls and54 malformed-certificate refusals. Five paired rounds improve
+String.append QBE worker medians by about10–15% versus the current compact
+baseline. There is no same-campaign fused denominator and no new native-image
+selection. A synthetic eight-owner gate adds24 observations and verifies QBE's
+eleven-private-argument calling convention; Clang optimizes its private ABI.
+
+Compiler/runtime changes stop before21:30. Final work is evidence sealing,
+source/resource accounting and documentation. The phase report retains rejected
+policies, the literal acquisition cliff, development gate failures, exact
+qualification boundaries and unchanged broad production metrics.

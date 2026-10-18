@@ -11,10 +11,10 @@ The route is:
 ```mermaid
 flowchart LR
   A[Checked Bend source] --> B[Existing native erasure]
-  B --> C[NativeErasedBody]
-  C --> D[Owned operations: keep, sink, take, build, branch, tail]
+  B --> C[Checked types plus NativeErasedBody]
+  C --> D[Owned operations: keep, sink, take, build, branch, tail, call]
   D --> E[Ownership and shape admission]
-  E --> F[Nx library with explicit runtime imports]
+  E --> F[Nx runtime operations and conservative imports]
   F --> G[QBE text]
   G --> H[QBE and assembler]
   H --> I[Native object plus cached production runtime]
@@ -65,16 +65,18 @@ checked and acquired using the pinned upstream compiler in roughly 1.4 seconds
 on the recorded machine. This development acquisition is not a new self-hosting
 claim.
 
-The [native selected-library entry](../../selfhost/tools/performance/phase109/native/README.md)
-reuses the mature Bend frontend and `NR_Request` directly. It accepts only the
-frozen reverse/discard/duplicate source contracts and emits a library for the
-runtime harness. Its one-time image acquisition uses the existing native seed
-and C/cproc/QBE; its ordinary requests emit structured IR directly. Consult the
-[report](../../implementation/phase109/README.md) for actual qualification status.
+The [current native selected-library entry](../../selfhost/tools/performance/phase110/native/README.md)
+reuses the mature Bend frontend and `NR_Request` directly. In addition to the
+historical fixed source contracts, it admits canonical typed entries and their
+closed owning callees. The qualified image is Phase110 native-source05. Its
+one-time acquisition uses the existing native seed and C/cproc/QBE; ordinary
+requests emit structured IR directly. It produces libraries for a runtime caller,
+not standalone full-language programs. Consult the
+[report](../../implementation/phase110/README.md) for exact native qualification.
 
 ## Run and interpret experiments
 
-Use the [fast-loop instructions](../../selfhost/tools/performance/phase109/README.md).
+Use the [fast-loop instructions](../../selfhost/tools/performance/phase110/README.md).
 The frozen observations include empty, singleton, deep, Unicode, shared-root,
 shared-tail and static inputs, retained aliases after releasing the result, and
 zero live allocation/scratch checks. Separate mutations test the admission,
@@ -101,6 +103,16 @@ and wrapper-spare variants remain explicit experiments: their legality premises
 and machine costs differ, and fewer allocations did not consistently mean faster
 QBE code. The Clang control benefits from wrapper reuse. This does not select
 Clang as the future native backend.
+
+Its reverse gains do not guarantee gains on every computation: the final fixed
+transfer check improves compiler nt_append but regresses non-tail recursive Base
+String.append. Policy choice, workload and the exact timing boundary remain
+explicit. A separate context-boundary prototype retains checked public wrappers
+and removes repeated private getter calls. It passes the original semantic
+oracles and reduces QBE String.append time about 10–15% versus compact QBE on two
+diagnostic inputs. Pointer threading and direct context loads have different
+register costs. This prototype remains separate from the frozen native image;
+see [P110-002](../../experiments/phase110/P110-002-context-boundary.md) before use.
 
 Typed admission consumes the original checked `KDef` type together with its
 unchanged erased body. It accepts canonical `String` and `List<&2,String>` roles,

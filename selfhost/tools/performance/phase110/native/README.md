@@ -139,3 +139,14 @@ QUALIFY_DIR/report.json --prepared base-string-append-controls01
 Clang products and checks 20 independently frozen complete-value observations
 per backend. That corpus bounds non-tail recursion to 1,024 first-input cells;
 it makes no claim about arbitrary native stack depth.
+
+`run-transfer.py --plan native-transfer-plan01 --runtime-object RUNTIME.o --out
+FRESH_DIR` runs the frozen QBE transfer comparison after qualification. It
+compares `fused` with the already selected `runtime-ir-single`, reuses actual
+qualified selected products, and requests only the two missing fused products
+from the native image. Five fixed cases receive five alternating paired rounds;
+there is no policy search. Both workers first pass their full original oracle,
+and every timed job must still match its case oracle. String observations run
+on every repetition, with later output sent to `/dev/null`; construction,
+observation and release remain outside the worker timer. Recursion limits and
+graph inputs remain unchanged.

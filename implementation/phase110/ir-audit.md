@@ -461,6 +461,131 @@ object. Clang must be present on PATH for the original semantic runners; the
 old-13 runner also accepts its path explicitly. All target execution remains
 serial under the parent's process guard. The isolated packed comparator's
 14 native mismatch cases do not constitute an injected full-image Base mutation.
+The retained `io_str` decoder also matters for the byte claim: it rejects
+overlong UTF-8 and invalid lead/continuation ranges by emitting U+FFFD. Because
+the authenticated expected Base is entirely ASCII, no different valid or
+invalid byte sequence decodes to that same expected sequence. Sized reads plus
+the existing EOF check retain all input, so exact character comparison here
+implies exact Base-byte identity.
+
+### Frozen performance transfer and context-call feasibility
+
+The fixed transfer experiment reused the actual qualified native products and
+compared QBE `fused` against selected `runtime-ir-single`, with no selection
+change. Three predeclared deep `nt_append` graphs had median selected/baseline
+worker-time ratios of approximately 0.921, 0.718 and 0.625. The bounded actual
+Base `String.append` cases instead measured approximately 1.158 (shared left,
+512 cells) and 1.052 (unique left, 1,024 cells), slower in every paired round.
+All original oracles passed, including full String observations on every
+repetition; only the worker call was timed. One list round was noisy, so raw
+paired results remain part of the receipt. These five cases do not establish
+universal transfer or application-level speedups.
+
+Actual selected String.append assembly still calls `nx_rt_ir_heap` and
+`nx_rt_ir_alc` on each non-tail recursive frame. Reverse loops amortize those
+entry calls. That observation motivates a separate bounded context-threading
+ablation, but does not establish the cause of the measured regression. The
+selected native source05 image stays frozen.
+
+The runtime source supports passing the two borrowed base addresses through a
+closed synchronous worker tree: `nx_rt_open` assigns `env={CORPUS,ALC[0]}` once;
+`corpus_grow` accepts only an adjacent extension and never relocates the base;
+the allocator array has static storage; only close unmaps the corpus. Open and
+close are absent from the admitted owning call catalogue. Mutable heap and
+allocator contents must still be loaded normally. The exported wrapper must
+retain the original context/pending-scratch checks, and exact generated lowering
+must materialize all take/rebuild scratch fields before any internal call.
+An additive facade may therefore regenerate private functions with
+`(ctx,heap,alc,owned...)` parameters and original public wrappers, while keeping
+the original ownership/callee verifier and requiring exact full machine graph
+equality plus signature/name checks. Private C pointer parameters need
+`uintptr_t` declarations rather than the public opaque-context parameter rule.
+Machine qualification of this separate prototype is recorded below and remains
+distinct from the frozen native selection.
+
+### Context diagnostic capture boundary
+
+The separate context-call API compiled from `context-source04`. Its first
+String.append transport attempt was correctly refused by canonical layout
+admission: the mature hosted driver captures selected annotated definitions,
+and the String-only wrapper's 14-definition graph omitted unused `List`.
+The native general factory receives the full same-request source book, so the
+previous native qualification did not have this sparse transport limitation.
+
+`context-capture-source01` preserves the original driver and an exact diff.
+Its only semantic transport change is to retain annotation roots `main`,
+`List`, `String`, and `Char`; remaining edits relocate module paths into the
+fresh artifact directory. The actual wrapper source, checked compiler and Base
+bytes remain unchanged and pinned. Mature Bend performs checking, reachability,
+annotation and erasure; no host supplies constructor facts. The fresh capture
+succeeded. An ensuing transport failure was an output-shape assumption: the
+Bend control API returns named PASS lines, not a `{passed,cases}` object.
+The failure receipt retains all 25 passing lines. `emit-v3.mjs` validates their
+exact names and count before proceeding, and still requires original QBE and C
+to equal the qualified native products byte-for-byte.
+
+`emit-v3` then completed all three String.append products and its 18 malformed
+certificate refusals, but the larger reverse facade overflowed the hosted
+stack during exact whole-library String equality. The generated upstream
+`String.cmp` retains non-tail recursion and reconstructs borrowed strings.
+The first comparator source05 was rejected by the checker for matching a local
+Boolean scrutinee; source06 then violated the checker's parameter-match ordering
+rule. Fresh `context-source07` puts that Boolean first in the explicit parameter
+list, consumes both serialization strings, compares full Unicode codepoints and
+recurs directly in tail position. It preserves
+complete graph equality, including length; it does not replace equality with a
+hash. Six focused controls cover empty/equal Unicode, first/last mismatch,
+length and different scalars with identical low bytes. The new `emit-v4`
+expects all 31 named controls. Earlier source, API and transport failures remain
+separate receipts; no selected native source was rebuilt for this diagnostic.
+
+`context-api07` compiled successfully in 2.862 seconds. Its generated
+`nx110ctx_exact_go` is a `for (;;)` loop that updates the Boolean and both tails
+before `continue`; it contains no recursive call. The completed
+`context-emit04` passed all 31 named controls, emitted all nine
+algorithm/mode products, and rejected all 54 malformed certificates. For
+String.append, reverse and nt_append, the baseline QBE and C remained exactly
+equal to the qualified native products. This completes hosted facade
+qualification; actual worker execution and paired timings are a separate gate.
+
+The assertion-only context runtime capsule compiled successfully, and its
+31,456-byte object is byte-identical to the original general runtime object.
+The machine runner requires that source/object/process receipt, matches the
+source to the exact admitted context capsule, and pins the full chain. Thus
+runtime machine-code changes are excluded from this specific ablation.
+
+The first machine runner stopped while compiling threaded C because the pinned
+Lean Clang installation could not find `stddef.h` through `string.h`. Earlier
+QBE/Clang baseline and threaded QBE semantic jobs in that run were preserved;
+the partial run is not a complete machine qualification. `run-v2.py` and the
+wide runner's v2 explicitly pin GCC's `stddef.h` and add the same `-isystem`
+header path to every Clang mode. They leave all emitted programs and admitted
+runtime source unchanged.
+
+The fresh `context-machine02` completed all 18 workers and 234 original
+semantic observations: three modes and two backends across String.append's
+20 observations, nt_append's six graphs and reverse's 13 cases. Its 60 timed
+jobs reuse only the two frozen bounded String.append cases, with five paired
+rounds per backend. Median variant/current-compact-baseline ratios were:
+
+| Backend | Case | Threaded pointers | Direct context loads |
+| --- | --- | ---: | ---: |
+| QBE | Shared left, 512 cells | 0.9040 | 0.8841 |
+| QBE | Unique left, 1,024 cells | 0.8501 | 0.8571 |
+| Clang | Shared left, 512 cells | 0.8821 | 0.9072 |
+| Clang | Unique left, 1,024 cells | 0.8340 | 0.8426 |
+
+Every individual paired ratio was below one. A Clang unique-case round was
+unusually low (about 0.61/0.63), so the raw paired values and ranges remain
+necessary context. The same runtime object and original semantic oracles were
+used throughout. These matched results support per-frame context access and
+call boundaries as a useful optimization target for this recursive
+computation; they do not isolate every consequence of the wrapper/private-call
+change. They are not a fresh comparison with fused, and ratios from separate
+runs should not be multiplied to claim one. The selected native image and
+original heldout choice remain unchanged. The actual-source machine corpus
+here uses one or two owning arguments; wider stack-argument ABI checks are a
+separate data-graph experiment.
 
 ### Additive source size
 

@@ -1,0 +1,61 @@
+{
+  "kind": "phase109-exact-production-worker-extraction",
+  "source": {
+    "file": "selfhost/build/phase108/successor-controls01/nt-reverse-emit/program.1.c",
+    "bytes": 138367,
+    "sha256": "701f9e8d4b46fe1d6d53361352c715f062991c36801ce48e193824a93117155e"
+  },
+  "sourceReceipt": {
+    "file": "selfhost/build/phase108/successor-controls01/nt-reverse-emit/report.json",
+    "bytes": 8688,
+    "sha256": "0701d77d4814e7765ec26d268a03ad4300717ce700fdb2e1f295832c83ba1955"
+  },
+  "workers": [
+    {
+      "symbol": "NF_FID_110_116_95_114_101_118_101_114_115_101_",
+      "sourceLine": 1731,
+      "sha256": "9dbce773302f14d409f6802a049b0e8e34db9058369d73220b76be659f05437d",
+      "bytes": 2115,
+      "err_seen": 8,
+      "err_spun": 1,
+      "ctr_take": 1,
+      "heap_alloc": 1,
+      "rfc_seal": 2,
+      "WL_transitions": 0,
+      "selfTailLoop": true
+    },
+    {
+      "symbol": "NF_FID_83_116_114_105_110_103_46_114_101_118_101_114_115_101_46_103_111_",
+      "sourceLine": 1601,
+      "sha256": "5e285e8080fea8ba0581e16ce512ec34e7593a3a62c5fafbe62b3802b61b78fa",
+      "bytes": 2147,
+      "err_seen": 8,
+      "err_spun": 1,
+      "ctr_take": 1,
+      "heap_alloc": 1,
+      "rfc_seal": 2,
+      "WL_transitions": 0,
+      "selfTailLoop": true
+    }
+  ],
+  "extracted": {
+    "file": "selfhost/tools/performance/phase109/controls/production-workers.c",
+    "bytes": 4263,
+    "sha256": "1e839dbd054f69a16856b5c283021c754fa8166512d6ba66cd1b6ccf229b4fc9"
+  },
+  "sourceCopiedExactly": true,
+  "purpose": "Read-only exact bodies for matched runtime harness; compile with original runtime definitions. Names and bodies unchanged. Constructor IDs are macro symbols, so authenticated adapter catalogue binding must be explicit.",
+  "constructorIdsInOriginalProgram": {
+    "CID_NIL": 17,
+    "CID_CON": 18,
+    "CID_SNIL": 24,
+    "CID_SCON": 25
+  },
+  "runtimePolicies": {
+    "NATIVE_COLD_CTORS": 1,
+    "NATIVE_HOT_CID_CON": 1,
+    "NATIVE_HOT_CID_SCON": 1,
+    "seq": true
+  },
+  "note": "These production workers already use direct ordinary self-tail loops, not per-cell trampoline dispatch. CPU err_seen expands through DEVICE=0 and disappears regardless of seq; QBE retains an unused nf_poll increment."
+}

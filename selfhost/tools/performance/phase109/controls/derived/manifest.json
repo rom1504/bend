@@ -1,0 +1,42 @@
+{
+  "kind": "phase109-derived-ownership-controls",
+  "version": 1,
+  "frozenAtUtc": "2026-10-18T18:22:41.694071+00:00",
+  "targetsRunBeforeFreeze": false,
+  "parentInputs": {
+    "file": "../cases.json",
+    "sha256": "5f38107ff81446fce905bd22af71245460d8d613aebd1527caa18938ec4c5341"
+  },
+  "source": {
+    "file": "ownership.bend",
+    "sha256": "5f5623f04e7da6f07e2e4076980a3ab1a4a81e6e2f5ee8466d46c3117659ee15"
+  },
+  "sourceExpectedStdout": "tail\nbc|bc|a|a|tail\n!\n🙂🙂aa!\n",
+  "variants": [
+    {
+      "name": "discard",
+      "file": "discard.expected.jsonl",
+      "sha256": "97952314b31a98aeccc75bc2d55a001d6bdbf8a9327fec6cb1a4eeece83b3e8f",
+      "cases": 13,
+      "listFunction": "p109_list_discard",
+      "stringFunction": "p109_string_discard"
+    },
+    {
+      "name": "duplicate",
+      "file": "duplicate.expected.jsonl",
+      "sha256": "80913c659eff5e60677a2dafecb65b658022e92920390bbf2b3f0235f0aab9ac",
+      "cases": 13,
+      "listFunction": "p109_list_duplicate",
+      "stringFunction": "p109_string_duplicate"
+    }
+  ],
+  "semanticDefinition": {
+    "discard": "Consume every input node and head, returning accumulator unchanged.",
+    "duplicate": "Reverse input order and emit each head twice, then accumulator. Original held aliases remain unchanged."
+  },
+  "scope": "Four new source shapes using generic constructors/matches/self-tail recurrence. These test inserted Keep and Sink, including immediate Char; no special-name lowering. Same13ownershipinputs, not13newsourcefamilies.",
+  "limits": [
+    "Sources frozen but not yet typechecked/executed. Preserve rejected source if parser/checker correction needed; expected semantics must not change silently.",
+    "Parent reverse fixtures and oracle unchanged."
+  ]
+}

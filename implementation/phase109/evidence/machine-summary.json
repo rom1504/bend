@@ -1,0 +1,298 @@
+{
+  "kind": "phase109-machine-summary",
+  "targetsRun": false,
+  "rawArchive": {
+    "file": "machine01.tar.gz",
+    "bytes": 125997,
+    "sha256": "173ba2dcb70fa7d44d35b89c5109fc29bf600029e2494f8c686b774921115ccc"
+  },
+  "profiles": [
+    {
+      "policy": "raw",
+      "variant": "direct-qbe",
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase109/suite01/raw-reverse-kernel/direct-qbe",
+        "bytes": 34216,
+        "sha256": "273bb5f9c55fa6f2f5e4a50b22d759089a81b3ab742bd1384850573f9820d04b"
+      },
+      "executableText": {
+        "bytes": 10657,
+        "sha256": "146b8983daa2964d25ea5a61fd59b7ebd11f571e111be3cb66a3a6dc508ba197"
+      },
+      "workers": [
+        {
+          "name": "nx_list_reverse",
+          "bytes": 186,
+          "instructionSites": 57,
+          "loop": {
+            "start": "0x401890",
+            "backedge": "0x40190f",
+            "instructionSites": 38,
+            "callSites": [
+              "nx_rt_id",
+              "nx_rt_id",
+              "nx_rt_take2",
+              "nx_rt_field",
+              "nx_rt_field",
+              "nx_rt_build2"
+            ],
+            "note": "Static nonempty loop range; excludes callees and counts branch sites, not dynamic instructions."
+          }
+        }
+      ]
+    },
+    {
+      "policy": "raw",
+      "variant": "direct-clang",
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase109/suite01/raw-reverse-kernel/direct-clang",
+        "bytes": 34352,
+        "sha256": "819916ecede41c5c50b8ecc8ef6106ed9d57487cc2c742c54f3508f7d6c4fc5e"
+      },
+      "executableText": {
+        "bytes": 10625,
+        "sha256": "d03e14beb96192f719e22a259db58a8b3907facea6885b2f78da5ab9287a0cb9"
+      },
+      "workers": [
+        {
+          "name": "nx_list_reverse",
+          "bytes": 166,
+          "instructionSites": 52,
+          "loop": {
+            "start": "0x401890",
+            "backedge": "0x4018ed",
+            "instructionSites": 28,
+            "callSites": [
+              "nx_rt_id",
+              "nx_rt_id",
+              "nx_rt_take2",
+              "nx_rt_field",
+              "nx_rt_field",
+              "nx_rt_build2"
+            ],
+            "note": "Static nonempty loop range; excludes callees and counts branch sites, not dynamic instructions."
+          }
+        }
+      ]
+    },
+    {
+      "policy": "trusted",
+      "variant": "direct-qbe",
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase109/suite01/trusted-reverse-kernel/direct-qbe",
+        "bytes": 34216,
+        "sha256": "278d71131cef89aadec72ebd0e627a3365a16b791276ae69e1b70965654609ec"
+      },
+      "executableText": {
+        "bytes": 10625,
+        "sha256": "5e65beebff48b16411dc042c90e88e5bd768a6fde6ac558360986fd3758073ca"
+      },
+      "workers": [
+        {
+          "name": "nx_list_reverse",
+          "bytes": 166,
+          "instructionSites": 52,
+          "loop": {
+            "start": "0x401890",
+            "backedge": "0x4018fe",
+            "instructionSites": 33,
+            "callSites": [
+              "nx_rt_fast_id",
+              "nx_rt_fast_take2",
+              "nx_rt_fast_field",
+              "nx_rt_fast_field",
+              "nx_rt_fast_build2"
+            ],
+            "note": "Static nonempty loop range; excludes callees and counts branch sites, not dynamic instructions."
+          }
+        }
+      ]
+    },
+    {
+      "policy": "trusted",
+      "variant": "direct-clang",
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase109/suite01/trusted-reverse-kernel/direct-clang",
+        "bytes": 34352,
+        "sha256": "20d52ce43bdd566e954b1edb10aa038c24cb28ed91ece2ca9f93d36bfa1337b7"
+      },
+      "executableText": {
+        "bytes": 10593,
+        "sha256": "26760a126ac70a26b5c360a7972c62ddca53cb0909b206aca4606b1945ded533"
+      },
+      "workers": [
+        {
+          "name": "nx_list_reverse",
+          "bytes": 155,
+          "instructionSites": 49,
+          "loop": {
+            "start": "0x401890",
+            "backedge": "0x4018de",
+            "instructionSites": 23,
+            "callSites": [
+              "nx_rt_fast_id",
+              "nx_rt_fast_take2",
+              "nx_rt_fast_field",
+              "nx_rt_fast_field",
+              "nx_rt_fast_build2"
+            ],
+            "note": "Static nonempty loop range; excludes callees and counts branch sites, not dynamic instructions."
+          }
+        }
+      ]
+    },
+    {
+      "policy": "fused",
+      "variant": "direct-qbe",
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase109/suite01/fused-reverse-kernel/direct-qbe",
+        "bytes": 34216,
+        "sha256": "d6482255a97d6957adb84b360fd586ead8328bc760d6ca79b971d3cb64890cbe"
+      },
+      "executableText": {
+        "bytes": 10561,
+        "sha256": "5ca2fa5862de32121c5e9d357935a88bb5bf2bf1b4625fe8ff1586b15572a4b3"
+      },
+      "workers": [
+        {
+          "name": "nx_list_reverse",
+          "bytes": 138,
+          "instructionSites": 44,
+          "loop": {
+            "start": "0x401890",
+            "backedge": "0x4018e2",
+            "instructionSites": 25,
+            "callSites": [
+              "nx_rt_fast_id",
+              "nx_rt_rebuild2",
+              "nx_rt_fast_field"
+            ],
+            "note": "Static nonempty loop range; excludes callees and counts branch sites, not dynamic instructions."
+          }
+        }
+      ]
+    },
+    {
+      "policy": "fused",
+      "variant": "direct-clang",
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase109/suite01/fused-reverse-kernel/direct-clang",
+        "bytes": 34352,
+        "sha256": "2d44f7810129a269c858710bfe7556c35e19d6d7c36f6923d5d31fb6aef2ef54"
+      },
+      "executableText": {
+        "bytes": 10497,
+        "sha256": "5076beeb897cd4db8d7e515809726fcd9e8274468f91dfe7317999133adef0fd"
+      },
+      "workers": [
+        {
+          "name": "nx_list_reverse",
+          "bytes": 102,
+          "instructionSites": 37,
+          "loop": {
+            "start": "0x401880",
+            "backedge": "0x4018b5",
+            "instructionSites": 17,
+            "callSites": [
+              "nx_rt_fast_id",
+              "nx_rt_rebuild2",
+              "nx_rt_fast_field"
+            ],
+            "note": "Static nonempty loop range; excludes callees and counts branch sites, not dynamic instructions."
+          }
+        }
+      ]
+    },
+    {
+      "policy": "fused",
+      "variant": "production-gcc",
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase109/suite01/fused-reverse-kernel/production-gcc",
+        "bytes": 38400,
+        "sha256": "a37149f48f27ec9dacf4a9aeb9e3e60e01a86a375f31c55c32174580b0e427aa"
+      },
+      "executableText": {
+        "bytes": 12145,
+        "sha256": "9e1d323d847c2f6cbe5c19655dc1e1bc009a16cb7fe9c3fa147639c8066622ab"
+      },
+      "workers": [
+        {
+          "name": "nx_list_reverse",
+          "bytes": 629,
+          "instructionSites": 151,
+          "loop": null
+        },
+        {
+          "name": "nx_list_reverse.cold",
+          "bytes": 272,
+          "instructionSites": 58,
+          "loop": null
+        }
+      ]
+    },
+    {
+      "policy": "fused",
+      "variant": "production-clang",
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase109/suite01/fused-reverse-kernel/production-clang",
+        "bytes": 33832,
+        "sha256": "2df265ca811978c101d1a6cb10e8bf542b87a439f8771d4fb60f3c271d142ee9"
+      },
+      "executableText": {
+        "bytes": 11169,
+        "sha256": "58dda569b353c10483e3c4447975da0bc8614aba1c1f61bd0f5ea3818e547d88"
+      },
+      "workers": [
+        {
+          "name": "nx_list_reverse",
+          "bytes": 775,
+          "instructionSites": 188,
+          "loop": null
+        }
+      ]
+    },
+    {
+      "policy": "fused",
+      "variant": "production-qbe",
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase109/suite01/fused-reverse-kernel/production-qbe",
+        "bytes": 42664,
+        "sha256": "e2878334183c315c49045414950e3dd8387c10fc577d88786775665a6e9b2061"
+      },
+      "executableText": {
+        "bytes": 14017,
+        "sha256": "ba910ba962ca716ad32002478eb18144db4b11236ae5445f622cae50220cd5b1"
+      },
+      "workers": [
+        {
+          "name": "nx_list_reverse",
+          "bytes": 101,
+          "instructionSites": 30,
+          "loop": null
+        },
+        {
+          "name": "NF_FID_110_116_95_114_101_118_101_114_115_101_",
+          "bytes": 361,
+          "instructionSites": 100,
+          "loop": {
+            "start": "0x403960",
+            "backedge": "0x403a4b",
+            "instructionSites": 61,
+            "callSites": [
+              "term_aux",
+              "term_aux",
+              "cls_fit",
+              "ctr_take",
+              "spare_free",
+              "cls_fit",
+              "heap_alloc",
+              "rfc_seal",
+              "rfc_seal"
+            ],
+            "note": "Static nonempty loop range; excludes callees and counts branch sites, not dynamic instructions."
+          }
+        }
+      ]
+    }
+  ]
+}

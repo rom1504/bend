@@ -1,0 +1,620 @@
+{
+  "kind": "phase109-matched-baseline-plan",
+  "version": 1,
+  "preparedOnly": true,
+  "targetsRun": false,
+  "profiles": [
+    {
+      "name": "original-clang",
+      "defines": [
+        "-DWL_PORTABLE=0"
+      ],
+      "atomicABI": "compiler-native",
+      "helperPolicy": "functions",
+      "transport": "preserve_none/musttail"
+    },
+    {
+      "name": "portable-clang",
+      "defines": [
+        "-DWL_PORTABLE=1"
+      ],
+      "atomicABI": "compiler-native",
+      "helperPolicy": "functions",
+      "transport": "WlState-pointer/trampoline"
+    },
+    {
+      "name": "portable-clang-shim",
+      "defines": [
+        "-DWL_PORTABLE=1",
+        "-DBEND_CPROC=1"
+      ],
+      "atomicABI": "pinned-external-GCC-shim",
+      "helperPolicy": "five-exact-accessor-macros",
+      "transport": "WlState-pointer/trampoline"
+    },
+    {
+      "name": "portable-qbe",
+      "defines": [
+        "-DWL_PORTABLE=1",
+        "-DBEND_CPROC=1"
+      ],
+      "atomicABI": "pinned-external-GCC-shim",
+      "helperPolicy": "five-exact-accessor-macros",
+      "transport": "WlState-pointer/trampoline"
+    }
+  ],
+  "comparisons": [
+    {
+      "ratio": "portable-clang/original-clang",
+      "isolates": "continuation transport with same Clang and runtime helper policy"
+    },
+    {
+      "ratio": "portable-clang-shim/portable-clang",
+      "isolates": "five accessor expansions plus external atomics/CLZ adaptation; not backend alone"
+    },
+    {
+      "ratio": "portable-qbe/portable-clang-shim",
+      "isolates": "machine compiler for matched portable source and helper/shim ABI"
+    }
+  ],
+  "inputs": [
+    {
+      "file": "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+      "bytes": 119320,
+      "sha256": "9fcd5fc4baeea9c449bcc9ca4b9db7714465107669498b0056a853f22f5f4def"
+    },
+    {
+      "file": "selfhost/build/phase108/toolchain/cproc-src/cproc",
+      "bytes": 36512,
+      "sha256": "633305fb0ae4d859c6044ead2c6fae841864000876e75a04a00670b3071df0d9"
+    },
+    {
+      "file": "selfhost/build/phase108/toolchain/cproc-src/cproc-qbe",
+      "bytes": 137136,
+      "sha256": "1a75944ba3811399a0ef997237f4699cd003ba4f87367997e071d7556d275f15"
+    },
+    {
+      "file": "selfhost/build/phase108/toolchain/qbe-1.3/qbe",
+      "bytes": 262024,
+      "sha256": "1eca24288f9574ad57032ac88f11c3f74ced605838749226d77a9acd4443e5f4"
+    },
+    {
+      "file": "selfhost/build/phase108/toolchain/atomic-shim.o",
+      "bytes": 2216,
+      "sha256": "1ca68aef0e5eaf4f69c989af550941eb72db8ce3eef77d6c299b16910e38c009"
+    },
+    {
+      "file": "selfhost/tools/performance/phase108/toolchain/include/bend-cproc.h",
+      "bytes": 2114,
+      "sha256": "9bb39140d1ed36b196b02e602bd64ffed05eb24eaded895daab1dfd0d61601eb"
+    },
+    {
+      "file": "selfhost/tools/performance/phase108/toolchain/include/stdatomic.h",
+      "bytes": 1257,
+      "sha256": "3ac362e18c7f0f34a38b67f4bbc4bd753f266940c0746eb116cb78c6ec6508ac"
+    }
+  ],
+  "rows": [
+    {
+      "case": "nt-reverse",
+      "profile": "original-clang",
+      "generatedSource": {
+        "file": "selfhost/build/phase108/successor-controls01/nt-reverse-emit/program.1.c",
+        "bytes": 138367,
+        "sha256": "701f9e8d4b46fe1d6d53361352c715f062991c36801ce48e193824a93117155e"
+      },
+      "emissionReceipt": {
+        "file": "selfhost/build/phase108/successor-controls01/nt-reverse-emit/report.json",
+        "bytes": 8688,
+        "sha256": "0701d77d4814e7765ec26d268a03ad4300717ce700fdb2e1f295832c83ba1955"
+      },
+      "out": "selfhost/build/phase109/matched-baselines01/nt-reverse/original-clang",
+      "commands": [
+        [
+          "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+          "-O2",
+          "-isystem",
+          "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/include/clang",
+          "-DWL_PORTABLE=0",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase108/successor-controls01/nt-reverse-emit/program.1.c",
+          "-pthread",
+          "-lm",
+          "-o",
+          "selfhost/build/phase109/matched-baselines01/nt-reverse/original-clang/program"
+        ]
+      ],
+      "run": [
+        "selfhost/build/phase109/matched-baselines01/nt-reverse/original-clang/program",
+        "--threads",
+        "1",
+        "--gpu",
+        "off",
+        "--"
+      ],
+      "expectedStdout": "z\n|bc|a|tail\nc|b|head/b|c/head\ncd|ab\n",
+      "measure": "machine-build wall, code size, exact semantics; process runtime is startup-dominated and not a speed conclusion"
+    },
+    {
+      "case": "nt-reverse",
+      "profile": "portable-clang",
+      "generatedSource": {
+        "file": "selfhost/build/phase108/successor-controls01/nt-reverse-emit/program.1.c",
+        "bytes": 138367,
+        "sha256": "701f9e8d4b46fe1d6d53361352c715f062991c36801ce48e193824a93117155e"
+      },
+      "emissionReceipt": {
+        "file": "selfhost/build/phase108/successor-controls01/nt-reverse-emit/report.json",
+        "bytes": 8688,
+        "sha256": "0701d77d4814e7765ec26d268a03ad4300717ce700fdb2e1f295832c83ba1955"
+      },
+      "out": "selfhost/build/phase109/matched-baselines01/nt-reverse/portable-clang",
+      "commands": [
+        [
+          "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+          "-O2",
+          "-isystem",
+          "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/include/clang",
+          "-DWL_PORTABLE=1",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase108/successor-controls01/nt-reverse-emit/program.1.c",
+          "-pthread",
+          "-lm",
+          "-o",
+          "selfhost/build/phase109/matched-baselines01/nt-reverse/portable-clang/program"
+        ]
+      ],
+      "run": [
+        "selfhost/build/phase109/matched-baselines01/nt-reverse/portable-clang/program",
+        "--threads",
+        "1",
+        "--gpu",
+        "off",
+        "--"
+      ],
+      "expectedStdout": "z\n|bc|a|tail\nc|b|head/b|c/head\ncd|ab\n",
+      "measure": "machine-build wall, code size, exact semantics; process runtime is startup-dominated and not a speed conclusion"
+    },
+    {
+      "case": "nt-reverse",
+      "profile": "portable-clang-shim",
+      "generatedSource": {
+        "file": "selfhost/build/phase108/successor-controls01/nt-reverse-emit/program.1.c",
+        "bytes": 138367,
+        "sha256": "701f9e8d4b46fe1d6d53361352c715f062991c36801ce48e193824a93117155e"
+      },
+      "emissionReceipt": {
+        "file": "selfhost/build/phase108/successor-controls01/nt-reverse-emit/report.json",
+        "bytes": 8688,
+        "sha256": "0701d77d4814e7765ec26d268a03ad4300717ce700fdb2e1f295832c83ba1955"
+      },
+      "out": "selfhost/build/phase109/matched-baselines01/nt-reverse/portable-clang-shim",
+      "commands": [
+        [
+          "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+          "-O2",
+          "-isystem",
+          "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/include/clang",
+          "-DWL_PORTABLE=1",
+          "-DBEND_CPROC=1",
+          "-I",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase108/toolchain/include",
+          "-include",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase108/toolchain/include/bend-cproc.h",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase108/successor-controls01/nt-reverse-emit/program.1.c",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase108/toolchain/atomic-shim.o",
+          "-pthread",
+          "-lm",
+          "-o",
+          "selfhost/build/phase109/matched-baselines01/nt-reverse/portable-clang-shim/program"
+        ]
+      ],
+      "run": [
+        "selfhost/build/phase109/matched-baselines01/nt-reverse/portable-clang-shim/program",
+        "--threads",
+        "1",
+        "--gpu",
+        "off",
+        "--"
+      ],
+      "expectedStdout": "z\n|bc|a|tail\nc|b|head/b|c/head\ncd|ab\n",
+      "measure": "machine-build wall, code size, exact semantics; process runtime is startup-dominated and not a speed conclusion"
+    },
+    {
+      "case": "nt-reverse",
+      "profile": "portable-qbe",
+      "generatedSource": {
+        "file": "selfhost/build/phase108/successor-controls01/nt-reverse-emit/program.1.c",
+        "bytes": 138367,
+        "sha256": "701f9e8d4b46fe1d6d53361352c715f062991c36801ce48e193824a93117155e"
+      },
+      "emissionReceipt": {
+        "file": "selfhost/build/phase108/successor-controls01/nt-reverse-emit/report.json",
+        "bytes": 8688,
+        "sha256": "0701d77d4814e7765ec26d268a03ad4300717ce700fdb2e1f295832c83ba1955"
+      },
+      "out": "selfhost/build/phase109/matched-baselines01/nt-reverse/portable-qbe",
+      "commands": [
+        [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase108/toolchain/cproc-src/cproc",
+          "-DWL_PORTABLE=1",
+          "-DBEND_CPROC=1",
+          "-I",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase108/toolchain/include",
+          "-include",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase108/toolchain/include/bend-cproc.h",
+          "-c",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase108/successor-controls01/nt-reverse-emit/program.1.c",
+          "-o",
+          "selfhost/build/phase109/matched-baselines01/nt-reverse/portable-qbe/program.o"
+        ],
+        [
+          "gcc",
+          "-no-pie",
+          "selfhost/build/phase109/matched-baselines01/nt-reverse/portable-qbe/program.o",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase108/toolchain/atomic-shim.o",
+          "-pthread",
+          "-lm",
+          "-o",
+          "selfhost/build/phase109/matched-baselines01/nt-reverse/portable-qbe/program"
+        ]
+      ],
+      "run": [
+        "selfhost/build/phase109/matched-baselines01/nt-reverse/portable-qbe/program",
+        "--threads",
+        "1",
+        "--gpu",
+        "off",
+        "--"
+      ],
+      "expectedStdout": "z\n|bc|a|tail\nc|b|head/b|c/head\ncd|ab\n",
+      "measure": "machine-build wall, code size, exact semantics; process runtime is startup-dominated and not a speed conclusion"
+    },
+    {
+      "case": "string-reverse-heldout",
+      "profile": "original-clang",
+      "generatedSource": {
+        "file": "selfhost/build/phase108/successor-controls01/string-reverse-heldout-emit/program.1.c",
+        "bytes": 125080,
+        "sha256": "94b5e80ae529170f9436ca0bc3e1aa526da975f4bf99e30bab6f1465b0325877"
+      },
+      "emissionReceipt": {
+        "file": "selfhost/build/phase108/successor-controls01/string-reverse-heldout-emit/report.json",
+        "bytes": 8782,
+        "sha256": "711057303cd96864c87397ea7a2ef4c641d5e47ca948c6bf299948e95251bb66"
+      },
+      "out": "selfhost/build/phase109/matched-baselines01/string-reverse-heldout/original-clang",
+      "commands": [
+        [
+          "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+          "-O2",
+          "-isystem",
+          "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/include/clang",
+          "-DWL_PORTABLE=0",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase108/successor-controls01/string-reverse-heldout-emit/program.1.c",
+          "-pthread",
+          "-lm",
+          "-o",
+          "selfhost/build/phase109/matched-baselines01/string-reverse-heldout/original-clang/program"
+        ]
+      ],
+      "run": [
+        "selfhost/build/phase109/matched-baselines01/string-reverse-heldout/original-clang/program",
+        "--threads",
+        "1",
+        "--gpu",
+        "off",
+        "--"
+      ],
+      "expectedStdout": "tail\n\u00e9\ud83d\ude42a!\n\u0301e\ncba!/abc\n",
+      "measure": "machine-build wall, code size, exact semantics; process runtime is startup-dominated and not a speed conclusion"
+    },
+    {
+      "case": "string-reverse-heldout",
+      "profile": "portable-clang",
+      "generatedSource": {
+        "file": "selfhost/build/phase108/successor-controls01/string-reverse-heldout-emit/program.1.c",
+        "bytes": 125080,
+        "sha256": "94b5e80ae529170f9436ca0bc3e1aa526da975f4bf99e30bab6f1465b0325877"
+      },
+      "emissionReceipt": {
+        "file": "selfhost/build/phase108/successor-controls01/string-reverse-heldout-emit/report.json",
+        "bytes": 8782,
+        "sha256": "711057303cd96864c87397ea7a2ef4c641d5e47ca948c6bf299948e95251bb66"
+      },
+      "out": "selfhost/build/phase109/matched-baselines01/string-reverse-heldout/portable-clang",
+      "commands": [
+        [
+          "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+          "-O2",
+          "-isystem",
+          "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/include/clang",
+          "-DWL_PORTABLE=1",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase108/successor-controls01/string-reverse-heldout-emit/program.1.c",
+          "-pthread",
+          "-lm",
+          "-o",
+          "selfhost/build/phase109/matched-baselines01/string-reverse-heldout/portable-clang/program"
+        ]
+      ],
+      "run": [
+        "selfhost/build/phase109/matched-baselines01/string-reverse-heldout/portable-clang/program",
+        "--threads",
+        "1",
+        "--gpu",
+        "off",
+        "--"
+      ],
+      "expectedStdout": "tail\n\u00e9\ud83d\ude42a!\n\u0301e\ncba!/abc\n",
+      "measure": "machine-build wall, code size, exact semantics; process runtime is startup-dominated and not a speed conclusion"
+    },
+    {
+      "case": "string-reverse-heldout",
+      "profile": "portable-clang-shim",
+      "generatedSource": {
+        "file": "selfhost/build/phase108/successor-controls01/string-reverse-heldout-emit/program.1.c",
+        "bytes": 125080,
+        "sha256": "94b5e80ae529170f9436ca0bc3e1aa526da975f4bf99e30bab6f1465b0325877"
+      },
+      "emissionReceipt": {
+        "file": "selfhost/build/phase108/successor-controls01/string-reverse-heldout-emit/report.json",
+        "bytes": 8782,
+        "sha256": "711057303cd96864c87397ea7a2ef4c641d5e47ca948c6bf299948e95251bb66"
+      },
+      "out": "selfhost/build/phase109/matched-baselines01/string-reverse-heldout/portable-clang-shim",
+      "commands": [
+        [
+          "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+          "-O2",
+          "-isystem",
+          "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/include/clang",
+          "-DWL_PORTABLE=1",
+          "-DBEND_CPROC=1",
+          "-I",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase108/toolchain/include",
+          "-include",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase108/toolchain/include/bend-cproc.h",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase108/successor-controls01/string-reverse-heldout-emit/program.1.c",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase108/toolchain/atomic-shim.o",
+          "-pthread",
+          "-lm",
+          "-o",
+          "selfhost/build/phase109/matched-baselines01/string-reverse-heldout/portable-clang-shim/program"
+        ]
+      ],
+      "run": [
+        "selfhost/build/phase109/matched-baselines01/string-reverse-heldout/portable-clang-shim/program",
+        "--threads",
+        "1",
+        "--gpu",
+        "off",
+        "--"
+      ],
+      "expectedStdout": "tail\n\u00e9\ud83d\ude42a!\n\u0301e\ncba!/abc\n",
+      "measure": "machine-build wall, code size, exact semantics; process runtime is startup-dominated and not a speed conclusion"
+    },
+    {
+      "case": "string-reverse-heldout",
+      "profile": "portable-qbe",
+      "generatedSource": {
+        "file": "selfhost/build/phase108/successor-controls01/string-reverse-heldout-emit/program.1.c",
+        "bytes": 125080,
+        "sha256": "94b5e80ae529170f9436ca0bc3e1aa526da975f4bf99e30bab6f1465b0325877"
+      },
+      "emissionReceipt": {
+        "file": "selfhost/build/phase108/successor-controls01/string-reverse-heldout-emit/report.json",
+        "bytes": 8782,
+        "sha256": "711057303cd96864c87397ea7a2ef4c641d5e47ca948c6bf299948e95251bb66"
+      },
+      "out": "selfhost/build/phase109/matched-baselines01/string-reverse-heldout/portable-qbe",
+      "commands": [
+        [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase108/toolchain/cproc-src/cproc",
+          "-DWL_PORTABLE=1",
+          "-DBEND_CPROC=1",
+          "-I",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase108/toolchain/include",
+          "-include",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase108/toolchain/include/bend-cproc.h",
+          "-c",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase108/successor-controls01/string-reverse-heldout-emit/program.1.c",
+          "-o",
+          "selfhost/build/phase109/matched-baselines01/string-reverse-heldout/portable-qbe/program.o"
+        ],
+        [
+          "gcc",
+          "-no-pie",
+          "selfhost/build/phase109/matched-baselines01/string-reverse-heldout/portable-qbe/program.o",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase108/toolchain/atomic-shim.o",
+          "-pthread",
+          "-lm",
+          "-o",
+          "selfhost/build/phase109/matched-baselines01/string-reverse-heldout/portable-qbe/program"
+        ]
+      ],
+      "run": [
+        "selfhost/build/phase109/matched-baselines01/string-reverse-heldout/portable-qbe/program",
+        "--threads",
+        "1",
+        "--gpu",
+        "off",
+        "--"
+      ],
+      "expectedStdout": "tail\n\u00e9\ud83d\ude42a!\n\u0301e\ncba!/abc\n",
+      "measure": "machine-build wall, code size, exact semantics; process runtime is startup-dominated and not a speed conclusion"
+    },
+    {
+      "case": "non-tail-list",
+      "profile": "original-clang",
+      "generatedSource": {
+        "file": "selfhost/build/phase108/successor-controls01/non-tail-list-emit/program.1.c",
+        "bytes": 122293,
+        "sha256": "6d40ea744799506376455fa45d3bbbbb9470dd47374c0f4c8df9c350b1998646"
+      },
+      "emissionReceipt": {
+        "file": "selfhost/build/phase108/successor-controls01/non-tail-list-emit/report.json",
+        "bytes": 8710,
+        "sha256": "b4f726868f594d08f14d00a88b4961d9d6ae1911639c4ef338d2de849839907f"
+      },
+      "out": "selfhost/build/phase109/matched-baselines01/non-tail-list/original-clang",
+      "commands": [
+        [
+          "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+          "-O2",
+          "-isystem",
+          "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/include/clang",
+          "-DWL_PORTABLE=0",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase108/successor-controls01/non-tail-list-emit/program.1.c",
+          "-pthread",
+          "-lm",
+          "-o",
+          "selfhost/build/phase109/matched-baselines01/non-tail-list/original-clang/program"
+        ]
+      ],
+      "run": [
+        "selfhost/build/phase109/matched-baselines01/non-tail-list/original-clang/program",
+        "--threads",
+        "1",
+        "--gpu",
+        "off",
+        "--"
+      ],
+      "expectedStdout": "list=14\n",
+      "measure": "machine-build wall, code size, exact semantics; process runtime is startup-dominated and not a speed conclusion"
+    },
+    {
+      "case": "non-tail-list",
+      "profile": "portable-clang",
+      "generatedSource": {
+        "file": "selfhost/build/phase108/successor-controls01/non-tail-list-emit/program.1.c",
+        "bytes": 122293,
+        "sha256": "6d40ea744799506376455fa45d3bbbbb9470dd47374c0f4c8df9c350b1998646"
+      },
+      "emissionReceipt": {
+        "file": "selfhost/build/phase108/successor-controls01/non-tail-list-emit/report.json",
+        "bytes": 8710,
+        "sha256": "b4f726868f594d08f14d00a88b4961d9d6ae1911639c4ef338d2de849839907f"
+      },
+      "out": "selfhost/build/phase109/matched-baselines01/non-tail-list/portable-clang",
+      "commands": [
+        [
+          "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+          "-O2",
+          "-isystem",
+          "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/include/clang",
+          "-DWL_PORTABLE=1",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase108/successor-controls01/non-tail-list-emit/program.1.c",
+          "-pthread",
+          "-lm",
+          "-o",
+          "selfhost/build/phase109/matched-baselines01/non-tail-list/portable-clang/program"
+        ]
+      ],
+      "run": [
+        "selfhost/build/phase109/matched-baselines01/non-tail-list/portable-clang/program",
+        "--threads",
+        "1",
+        "--gpu",
+        "off",
+        "--"
+      ],
+      "expectedStdout": "list=14\n",
+      "measure": "machine-build wall, code size, exact semantics; process runtime is startup-dominated and not a speed conclusion"
+    },
+    {
+      "case": "non-tail-list",
+      "profile": "portable-clang-shim",
+      "generatedSource": {
+        "file": "selfhost/build/phase108/successor-controls01/non-tail-list-emit/program.1.c",
+        "bytes": 122293,
+        "sha256": "6d40ea744799506376455fa45d3bbbbb9470dd47374c0f4c8df9c350b1998646"
+      },
+      "emissionReceipt": {
+        "file": "selfhost/build/phase108/successor-controls01/non-tail-list-emit/report.json",
+        "bytes": 8710,
+        "sha256": "b4f726868f594d08f14d00a88b4961d9d6ae1911639c4ef338d2de849839907f"
+      },
+      "out": "selfhost/build/phase109/matched-baselines01/non-tail-list/portable-clang-shim",
+      "commands": [
+        [
+          "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+          "-O2",
+          "-isystem",
+          "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/include/clang",
+          "-DWL_PORTABLE=1",
+          "-DBEND_CPROC=1",
+          "-I",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase108/toolchain/include",
+          "-include",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase108/toolchain/include/bend-cproc.h",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase108/successor-controls01/non-tail-list-emit/program.1.c",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase108/toolchain/atomic-shim.o",
+          "-pthread",
+          "-lm",
+          "-o",
+          "selfhost/build/phase109/matched-baselines01/non-tail-list/portable-clang-shim/program"
+        ]
+      ],
+      "run": [
+        "selfhost/build/phase109/matched-baselines01/non-tail-list/portable-clang-shim/program",
+        "--threads",
+        "1",
+        "--gpu",
+        "off",
+        "--"
+      ],
+      "expectedStdout": "list=14\n",
+      "measure": "machine-build wall, code size, exact semantics; process runtime is startup-dominated and not a speed conclusion"
+    },
+    {
+      "case": "non-tail-list",
+      "profile": "portable-qbe",
+      "generatedSource": {
+        "file": "selfhost/build/phase108/successor-controls01/non-tail-list-emit/program.1.c",
+        "bytes": 122293,
+        "sha256": "6d40ea744799506376455fa45d3bbbbb9470dd47374c0f4c8df9c350b1998646"
+      },
+      "emissionReceipt": {
+        "file": "selfhost/build/phase108/successor-controls01/non-tail-list-emit/report.json",
+        "bytes": 8710,
+        "sha256": "b4f726868f594d08f14d00a88b4961d9d6ae1911639c4ef338d2de849839907f"
+      },
+      "out": "selfhost/build/phase109/matched-baselines01/non-tail-list/portable-qbe",
+      "commands": [
+        [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase108/toolchain/cproc-src/cproc",
+          "-DWL_PORTABLE=1",
+          "-DBEND_CPROC=1",
+          "-I",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase108/toolchain/include",
+          "-include",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase108/toolchain/include/bend-cproc.h",
+          "-c",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase108/successor-controls01/non-tail-list-emit/program.1.c",
+          "-o",
+          "selfhost/build/phase109/matched-baselines01/non-tail-list/portable-qbe/program.o"
+        ],
+        [
+          "gcc",
+          "-no-pie",
+          "selfhost/build/phase109/matched-baselines01/non-tail-list/portable-qbe/program.o",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase108/toolchain/atomic-shim.o",
+          "-pthread",
+          "-lm",
+          "-o",
+          "selfhost/build/phase109/matched-baselines01/non-tail-list/portable-qbe/program"
+        ]
+      ],
+      "run": [
+        "selfhost/build/phase109/matched-baselines01/non-tail-list/portable-qbe/program",
+        "--threads",
+        "1",
+        "--gpu",
+        "off",
+        "--"
+      ],
+      "expectedStdout": "list=14\n",
+      "measure": "machine-build wall, code size, exact semantics; process runtime is startup-dominated and not a speed conclusion"
+    }
+  ],
+  "guard": "Root executes serially under Phase86 process-tree guard on CPU3. No execution is part of this plan generation.",
+  "runtimeBenchmark": "Use exact extracted reverse bodies with runtime adapter and timing restricted to worker; full small fixtures only establish semantics/transport feasibility. Continuation-heavy non-tail-list is explicitly separate."
+}

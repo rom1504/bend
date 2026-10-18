@@ -1,0 +1,185 @@
+{
+  "kind": "phase109-independent-controls",
+  "version": 1,
+  "frozenAtUtc": "2026-10-18T18:15:07.251879+00:00",
+  "baseCommit": "caee74847c270bc00f3cf0751159d4ec72b1612e",
+  "targetsRunBeforeFreeze": false,
+  "oracle": "Independent sequence reversal in this frozen preparation; list/string contents from declared source semantics, not incumbent/candidate output. Hash only observes values; runtime allocator accounting separately checks release.",
+  "ownershipCases": {
+    "file": "cases.json",
+    "sha256": "5f38107ff81446fce905bd22af71245460d8d613aebd1527caa18938ec4c5341",
+    "count": 13
+  },
+  "expected": {
+    "file": "expected.jsonl",
+    "sha256": "bfc4cc0d61a2612b92f65377aa75e9e5565361f9ce47df7d4212db3a6b6e93db"
+  },
+  "hashContract": {
+    "name": "FNV-1a-64",
+    "offset": 14695981039346656037,
+    "prime": 1099511628211,
+    "encoding": "Each u32 word becomes four bytes little-endian. List: for each string, emit codepoint count then Unicode scalar values. String: emit Unicode scalar values. count is independent list length / string codepoint count.",
+    "warning": "A digest is a finite observation, not a proof. Small controls also preserve literal inputs for inspection."
+  },
+  "sourceControls": [
+    {
+      "name": "nt-reverse",
+      "file": "selfhost/tools/performance/phase108/coverage/fixtures/nt-reverse.bend",
+      "sha256": "dfb8a3f7b5c432a2a4686bb014a0c9cc74d0d56c2c16264a3427026b090169ff",
+      "expected": {
+        "stage": "execute",
+        "exitCode": 0,
+        "stdout": "z\n|bc|a|tail\nc|b|head/b|c/head\ncd|ab\n",
+        "stderr": ""
+      },
+      "directIRAdmission": "admit worker only; IO wrapper remains external"
+    },
+    {
+      "name": "string-reverse-heldout",
+      "file": "selfhost/tools/performance/phase108/coverage/fixtures/string-reverse-heldout.bend",
+      "sha256": "4a2d2e5de64d79f5c51a0e86822f7275a156992e4b653ca9807a6e8ae28f4d45",
+      "expected": {
+        "stage": "execute",
+        "exitCode": 0,
+        "stdout": "tail\né🙂a!\ńe\ncba!/abc\n",
+        "stderr": ""
+      },
+      "directIRAdmission": "admit worker only; IO wrapper remains external"
+    },
+    {
+      "name": "higher-order-capture",
+      "file": "selfhost/tools/performance/phase108/coverage/fixtures/higher-order-capture.bend",
+      "sha256": "18c8832cf958215dab9cbedb66b191e0a31def3911296fc62b99c75a7b0ae715",
+      "expected": {
+        "stage": "execute",
+        "exitCode": 0,
+        "stdout": "captured=42\n",
+        "stderr": ""
+      },
+      "directIRAdmission": "explicit unsupported lowering"
+    },
+    {
+      "name": "non-tail-list",
+      "file": "selfhost/tools/performance/phase108/coverage/fixtures/non-tail-list.bend",
+      "sha256": "b8fb74a95b2c646f0f92545a4acde8e0049c01d99d647459babef56dc3700452",
+      "expected": {
+        "stage": "execute",
+        "exitCode": 0,
+        "stdout": "list=14\n",
+        "stderr": ""
+      },
+      "directIRAdmission": "explicit unsupported lowering"
+    },
+    {
+      "name": "negative-type",
+      "file": "selfhost/tools/performance/phase108/coverage/fixtures/negative-type.bend",
+      "sha256": "13576b71e13d0336b5b6ae1ad913ae8a5f636a6f292b097288c8ae3aa49ff2be",
+      "expected": {
+        "stage": "source-admission",
+        "exitNonzero": true,
+        "outputAbsent": true,
+        "exactDiagnostic": false
+      },
+      "directIRAdmission": "refuse source admission"
+    },
+    {
+      "name": "negative-affine",
+      "file": "selfhost/tools/performance/phase108/coverage/fixtures/negative-affine.bend",
+      "sha256": "2fe0f07f5556ca57e97bfece4afa302524bfa20f2583f3f3a999e466ecd1c0b4",
+      "expected": {
+        "stage": "source-admission",
+        "exitNonzero": true,
+        "outputAbsent": true,
+        "exactDiagnostic": false
+      },
+      "directIRAdmission": "refuse source admission"
+    },
+    {
+      "name": "negative-foreign",
+      "file": "selfhost/tools/performance/phase108/coverage/fixtures/negative-foreign.bend",
+      "sha256": "19a5b3686b07e311f3291e0c26a6308a76d4930f869d7f6a70249c94365ba11c",
+      "expected": {
+        "stage": "source-admission",
+        "exitNonzero": true,
+        "outputAbsent": true,
+        "exactDiagnostic": false
+      },
+      "directIRAdmission": "refuse source admission"
+    }
+  ],
+  "negativeLoweringControls": [
+    {
+      "name": "non-tail-call",
+      "expected": "explicit refusal before machine execution"
+    },
+    {
+      "name": "external-call",
+      "expected": "explicit refusal before machine execution"
+    },
+    {
+      "name": "partial-application",
+      "expected": "explicit refusal before machine execution"
+    },
+    {
+      "name": "closure",
+      "expected": "explicit refusal before machine execution"
+    },
+    {
+      "name": "primitive-not-admitted",
+      "expected": "explicit refusal before machine execution"
+    },
+    {
+      "name": "let-not-admitted",
+      "expected": "explicit refusal before machine execution"
+    },
+    {
+      "name": "unknown-constructor",
+      "expected": "explicit refusal before machine execution"
+    },
+    {
+      "name": "wrong-live-constructor-arity",
+      "expected": "explicit refusal before machine execution"
+    },
+    {
+      "name": "malformed-erased-binders",
+      "expected": "explicit refusal before machine execution"
+    },
+    {
+      "name": "owned-value-used-after-consume",
+      "expected": "explicit refusal before machine execution"
+    },
+    {
+      "name": "owned-branch-result-not-reconciled",
+      "expected": "explicit refusal before machine execution"
+    }
+  ],
+  "abiNegativeControls": [
+    {
+      "name": "ABI-version-mismatch",
+      "expected": "reject before worker entry"
+    },
+    {
+      "name": "constructor-table-mismatch",
+      "expected": "reject before worker entry"
+    },
+    {
+      "name": "runtime-digest-mismatch",
+      "expected": "reject before worker entry"
+    },
+    {
+      "name": "term-role-used-as-pointer",
+      "expected": "reject before worker entry"
+    },
+    {
+      "name": "scratch-token-used-after-release",
+      "expected": "reject before worker entry"
+    }
+  ],
+  "qualificationLimits": [
+    "One CPU thread; no scheduler/fork/IO/closure admission implied.",
+    "Direct IR runs actual compiler nt_reverse and heldout Base String.reverse.go declarations through checked erasure; no name-specialized host algorithm.",
+    "Case descriptors alone do not prove physical sharing/static paths; runtime harness must identify implemented controls and allocator accounting.",
+    "Non-tail-list remains a separate full-route continuation control until direct IR admits it.",
+    "No whole-compiler runtime or upstream speed projection from these kernels."
+  ]
+}

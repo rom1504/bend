@@ -67,6 +67,11 @@ reuses Bend’s mature semantic backend through cproc and a portable native
 trampoline. Its [Phase108 report](implementation/phase108/README.md) records
 full-image, output-equivalence and bootstrap gates separately from performance.
 
+The [direct ownership IR experiment](docs/self_hosted/OWNED_NATIVE_IR.md) now
+lowers real list/string compiler code to QBE while reusing production reference
+counting. Its [Phase109 report](implementation/phase109/README.md) separates
+the qualified slice, interface optimizations and remaining full-language work.
+
 The [native IR research prototype](docs/self_hosted/NATIVE_IR_RESEARCH.md) now
 implements a small Bend IR with C and Cranelift consumers, checked folding laws,
 and a reproducible policy experiment. Its [report and diagrams](implementation/phase106/README.md)

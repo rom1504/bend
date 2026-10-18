@@ -1,0 +1,289 @@
+{
+  "kind": "phase109-frozen-ownership-cases",
+  "version": 1,
+  "cases": [
+    {
+      "name": "list-empty",
+      "worker": "nx_list_reverse",
+      "kind": "list",
+      "inputStrings": [],
+      "accStrings": [
+        "z"
+      ],
+      "staticInput": false,
+      "inputPatternRepeats": 1,
+      "aliases": [],
+      "dropOrder": [
+        "result",
+        "aliases"
+      ],
+      "requireReleased": true
+    },
+    {
+      "name": "list-singleton",
+      "worker": "nx_list_reverse",
+      "kind": "list",
+      "inputStrings": [
+        "a"
+      ],
+      "accStrings": [
+        "tail"
+      ],
+      "staticInput": false,
+      "inputPatternRepeats": 1,
+      "aliases": [],
+      "dropOrder": [
+        "result",
+        "aliases"
+      ],
+      "requireReleased": true
+    },
+    {
+      "name": "list-unique",
+      "worker": "nx_list_reverse",
+      "kind": "list",
+      "inputStrings": [
+        "a",
+        "bc",
+        ""
+      ],
+      "accStrings": [
+        "tail"
+      ],
+      "staticInput": false,
+      "inputPatternRepeats": 1,
+      "aliases": [],
+      "dropOrder": [
+        "result",
+        "aliases"
+      ],
+      "requireReleased": true
+    },
+    {
+      "name": "list-shared-root",
+      "worker": "nx_list_reverse",
+      "kind": "list",
+      "inputStrings": [
+        "head",
+        "b",
+        "c"
+      ],
+      "accStrings": [],
+      "staticInput": false,
+      "inputPatternRepeats": 1,
+      "aliases": [
+        {
+          "label": "original-root",
+          "kind": "list",
+          "from": "root"
+        }
+      ],
+      "dropOrder": [
+        "result",
+        "aliases"
+      ],
+      "requireReleased": true
+    },
+    {
+      "name": "list-shared-tail",
+      "worker": "nx_list_reverse",
+      "kind": "list",
+      "inputStrings": [
+        "head",
+        "b",
+        "c"
+      ],
+      "accStrings": [],
+      "staticInput": false,
+      "inputPatternRepeats": 1,
+      "aliases": [
+        {
+          "label": "original-tail",
+          "kind": "list",
+          "from": "tail",
+          "offset": 1
+        },
+        {
+          "label": "original-head",
+          "kind": "string",
+          "from": "head",
+          "offset": 0
+        }
+      ],
+      "dropOrder": [
+        "result",
+        "aliases"
+      ],
+      "requireReleased": true
+    },
+    {
+      "name": "list-static",
+      "worker": "nx_list_reverse",
+      "kind": "list",
+      "inputStrings": [
+        "a",
+        "bc",
+        ""
+      ],
+      "accStrings": [
+        "tail"
+      ],
+      "staticInput": true,
+      "inputPatternRepeats": 1,
+      "aliases": [],
+      "dropOrder": [
+        "result",
+        "aliases"
+      ],
+      "requireReleased": true
+    },
+    {
+      "name": "list-deep",
+      "worker": "nx_list_reverse",
+      "kind": "list",
+      "inputStrings": [
+        "a",
+        "bc",
+        "",
+        "λ🙂"
+      ],
+      "accStrings": [
+        "tail"
+      ],
+      "staticInput": false,
+      "inputPatternRepeats": 16384,
+      "aliases": [],
+      "dropOrder": [
+        "result",
+        "aliases"
+      ],
+      "requireReleased": true
+    },
+    {
+      "name": "string-empty",
+      "worker": "nx_string_reverse",
+      "kind": "string",
+      "inputCodepoints": [],
+      "accCodepoints": [
+        116,
+        97,
+        105,
+        108
+      ],
+      "staticInput": false,
+      "inputPatternRepeats": 1,
+      "aliases": [],
+      "dropOrder": [
+        "result",
+        "aliases"
+      ],
+      "requireReleased": true
+    },
+    {
+      "name": "string-singleton",
+      "worker": "nx_string_reverse",
+      "kind": "string",
+      "inputCodepoints": [
+        955
+      ],
+      "accCodepoints": [
+        33
+      ],
+      "staticInput": false,
+      "inputPatternRepeats": 1,
+      "aliases": [],
+      "dropOrder": [
+        "result",
+        "aliases"
+      ],
+      "requireReleased": true
+    },
+    {
+      "name": "string-unicode",
+      "worker": "nx_string_reverse",
+      "kind": "string",
+      "inputCodepoints": [
+        97,
+        128578,
+        233
+      ],
+      "accCodepoints": [
+        33
+      ],
+      "staticInput": false,
+      "inputPatternRepeats": 1,
+      "aliases": [],
+      "dropOrder": [
+        "result",
+        "aliases"
+      ],
+      "requireReleased": true
+    },
+    {
+      "name": "string-combining",
+      "worker": "nx_string_reverse",
+      "kind": "string",
+      "inputCodepoints": [
+        101,
+        769
+      ],
+      "accCodepoints": [],
+      "staticInput": false,
+      "inputPatternRepeats": 1,
+      "aliases": [],
+      "dropOrder": [
+        "result",
+        "aliases"
+      ],
+      "requireReleased": true
+    },
+    {
+      "name": "string-shared-root",
+      "worker": "nx_string_reverse",
+      "kind": "string",
+      "inputCodepoints": [
+        97,
+        98,
+        99
+      ],
+      "accCodepoints": [
+        33
+      ],
+      "staticInput": false,
+      "inputPatternRepeats": 1,
+      "aliases": [
+        {
+          "label": "original-root",
+          "kind": "string",
+          "from": "root"
+        }
+      ],
+      "dropOrder": [
+        "result",
+        "aliases"
+      ],
+      "requireReleased": true
+    },
+    {
+      "name": "string-static",
+      "worker": "nx_string_reverse",
+      "kind": "string",
+      "inputCodepoints": [
+        97,
+        128578,
+        233
+      ],
+      "accCodepoints": [
+        33
+      ],
+      "staticInput": true,
+      "inputPatternRepeats": 1,
+      "aliases": [],
+      "dropOrder": [
+        "result",
+        "aliases"
+      ],
+      "requireReleased": true
+    }
+  ]
+}

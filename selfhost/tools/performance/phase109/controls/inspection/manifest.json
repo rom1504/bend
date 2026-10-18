@@ -1,0 +1,156 @@
+{
+  "kind": "phase109-existing-machine-code-inspection",
+  "version": 1,
+  "targetsRun": false,
+  "rows": [
+    {
+      "name": "list-reverse",
+      "source": {
+        "file": "selfhost/build/phase108/successor-controls01/nt-reverse-emit/program.1.c",
+        "bytes": 138367,
+        "sha256": "701f9e8d4b46fe1d6d53361352c715f062991c36801ce48e193824a93117155e"
+      },
+      "binary": {
+        "file": "selfhost/build/phase108/successor-controls01/nt-reverse-build/program",
+        "bytes": 74744,
+        "sha256": "44491f78fe7ae46504137692812a70c51cb2b07eb4b709dd9d6bab5048c8e31a"
+      },
+      "buildReceipt": {
+        "file": "selfhost/build/phase108/successor-controls01/nt-reverse-build/report.json",
+        "bytes": 5730,
+        "sha256": "84aed6574d5735fa322a6ee00899b3af23b268e59e4a097b53c848d442094fe5"
+      },
+      "symbol": "NF_FID_110_116_95_114_101_118_101_114_115_101_",
+      "bytes": 358,
+      "inspection": {
+        "file": "selfhost/tools/performance/phase109/controls/inspection/list-reverse.asm",
+        "bytes": 5593,
+        "sha256": "c90060c2903e8ab3685f3342d7655b63c9d3dbdc9ec79920fc7015ce7ebac4ec"
+      },
+      "commands": [
+        [
+          "objdump",
+          "-d",
+          "--disassemble=NF_FID_110_116_95_114_101_118_101_114_115_101_",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase108/successor-controls01/nt-reverse-build/program"
+        ],
+        [
+          "nm",
+          "-S",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase108/successor-controls01/nt-reverse-build/program"
+        ]
+      ],
+      "allStaticCallSites": [
+        "cls_fit",
+        "ctr_take",
+        "spare_free",
+        "cls_fit",
+        "heap_alloc",
+        "rfc_seal",
+        "rfc_seal",
+        "term_sink",
+        "term_sink",
+        "err_post"
+      ],
+      "note": "Static call sites include cold/error branches; not dynamic invocation counts."
+    },
+    {
+      "name": "string-reverse",
+      "source": {
+        "file": "selfhost/build/phase108/successor-controls01/nt-reverse-emit/program.1.c",
+        "bytes": 138367,
+        "sha256": "701f9e8d4b46fe1d6d53361352c715f062991c36801ce48e193824a93117155e"
+      },
+      "binary": {
+        "file": "selfhost/build/phase108/successor-controls01/nt-reverse-build/program",
+        "bytes": 74744,
+        "sha256": "44491f78fe7ae46504137692812a70c51cb2b07eb4b709dd9d6bab5048c8e31a"
+      },
+      "buildReceipt": {
+        "file": "selfhost/build/phase108/successor-controls01/nt-reverse-build/report.json",
+        "bytes": 5730,
+        "sha256": "84aed6574d5735fa322a6ee00899b3af23b268e59e4a097b53c848d442094fe5"
+      },
+      "symbol": "NF_FID_83_116_114_105_110_103_46_114_101_118_101_114_115_101_46_103_111_",
+      "bytes": 358,
+      "inspection": {
+        "file": "selfhost/tools/performance/phase109/controls/inspection/string-reverse.asm",
+        "bytes": 5723,
+        "sha256": "9aea91e0b3e24c6fe7514b9ff15403915530b3094c1dda4063450f16ab36f2de"
+      },
+      "commands": [
+        [
+          "objdump",
+          "-d",
+          "--disassemble=NF_FID_83_116_114_105_110_103_46_114_101_118_101_114_115_101_46_103_111_",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase108/successor-controls01/nt-reverse-build/program"
+        ],
+        [
+          "nm",
+          "-S",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase108/successor-controls01/nt-reverse-build/program"
+        ]
+      ],
+      "allStaticCallSites": [
+        "cls_fit",
+        "ctr_take",
+        "spare_free",
+        "cls_fit",
+        "heap_alloc",
+        "rfc_seal",
+        "rfc_seal",
+        "term_sink",
+        "term_sink",
+        "err_post"
+      ],
+      "note": "Static call sites include cold/error branches; not dynamic invocation counts."
+    },
+    {
+      "name": "non-tail-bump",
+      "source": {
+        "file": "selfhost/build/phase108/successor-controls01/non-tail-list-emit/program.1.c",
+        "bytes": 122293,
+        "sha256": "6d40ea744799506376455fa45d3bbbbb9470dd47374c0f4c8df9c350b1998646"
+      },
+      "binary": {
+        "file": "selfhost/build/phase108/successor-controls01/non-tail-list-build/program",
+        "bytes": 68536,
+        "sha256": "b39f5c8fe2443c6e48c8ad4d7d5de75a54d15f24f8aead9ec0e34b8078aa33c1"
+      },
+      "buildReceipt": {
+        "file": "selfhost/build/phase108/successor-controls01/non-tail-list-build/report.json",
+        "bytes": 5762,
+        "sha256": "39e8aa8825492dea93f2049bb9ef984e1e3fc75566ef14ef6832838a4dc883ce"
+      },
+      "symbol": "WL_FID_36_100_105_114_101_99_116_46_98_117_109_112_",
+      "bytes": 560,
+      "inspection": {
+        "file": "selfhost/tools/performance/phase109/controls/inspection/non-tail-bump.asm",
+        "bytes": 8134,
+        "sha256": "a137d5d90223cd59493a3deab52c605ca45807beeb84578b81d8002dadfd9fdd"
+      },
+      "commands": [
+        [
+          "objdump",
+          "-d",
+          "--disassemble=WL_FID_36_100_105_114_101_99_116_46_98_117_109_112_",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase108/successor-controls01/non-tail-list-build/program"
+        ],
+        [
+          "nm",
+          "-S",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase108/successor-controls01/non-tail-list-build/program"
+        ]
+      ],
+      "allStaticCallSites": [
+        "task_node",
+        "err_post",
+        "cls_fit",
+        "ctr_take",
+        "spare_free",
+        "task_node"
+      ],
+      "note": "Static call sites include cold/error branches; not dynamic invocation counts."
+    }
+  ]
+}

@@ -114,7 +114,7 @@ export function bootstrap({upstream=process.env.BEND_UPSTREAM||path.resolve(proj
   if(files.includes('src/back/native/book.bend')) {
     exports.push('nc_compile','nc_foreign_paths');
     if(files.includes('src/back/native/scalar-array.bend'))exports.push('nc_compile_checked');
-    if(files.includes('src/back/native/request.bend'))exports.push('nr_prepare','nr_compile','nr_compile_prepared','ne_runtime_prepare','nr_prepare_annotated');
+    if(files.includes('src/back/native/request.bend'))exports.push('nr_prepare','nr_compile','nr_compile_prepared','ne_runtime_prepare','nr_prepare_annotated','ns_body');
     if(fs.readFileSync(path.join(project,'src/back/native/book.bend'),'utf8').includes('nc_annotation_stops('))exports.push('nc_annotation_stops','nc_annotated_context');
   }
   if(files.includes('src/back/native/foreign.bend'))exports.push('nc_foreign_source','nc_foreign_scope');
@@ -788,7 +788,7 @@ export function javascriptBackendForMode(mode='check',backend) {
   return backend??(['compile','library','interpreter'].includes(mode)?'direct':'js');
 }
 
-async function inspectWithMemo(input,{mode='check',backend,api,args=[],timeoutMs=5000,combinedOutput=false,withReport=false,proofOnly=false,captureCheckedGraph=false}={},memo=null) {
+async function inspectWithMemo(input,{mode='check',backend,api,args=[],timeoutMs=5000,combinedOutput=false,withReport=false,proofOnly=false,captureCheckedGraph=false,captureNativeFacts=false}={},memo=null) {
   const ownedApi=api===undefined||memo!==null;
   backend=javascriptBackendForMode(mode,backend);
   api??=await loadApi();
@@ -800,6 +800,8 @@ async function inspectWithMemo(input,{mode='check',backend,api,args=[],timeoutMs
     if(typeof captureCheckedGraph!=='boolean')throw Error('captureCheckedGraph must be boolean');
     if(captureCheckedGraph&&(mode!=='native'||!ownedApi))
       throw Error('captureCheckedGraph requires native mode and the driver-owned compiler API');
+    if(typeof captureNativeFacts!=='boolean'||(captureNativeFacts&&!captureCheckedGraph))
+      throw Error('captureNativeFacts requires captureCheckedGraph');
     if(!['js','direct'].includes(backend))throw Error('Unknown JavaScript backend: '+backend);
     trace('discover '+input);
     requireLoaderApi(api);
@@ -932,7 +934,15 @@ async function inspectWithMemo(input,{mode='check',backend,api,args=[],timeoutMs
       // contain large shared graphs and is intentionally not a transport ABI.
       // Source/layout admission is complete; C foreign-source validation,
       // runtime planning, emission and execution have not been performed.
-      return {status:'ok',phase,checkedGraph:layoutDefs,foreignValidated:false,
+      let nativeFacts;
+      if(captureNativeFacts) {
+        if(typeof api.nr_prepare_annotated!=='function'||typeof api.ns_body!=='function')throw Error('Selected compiler cannot capture native erased facts');
+        const request=api.nr_prepare_annotated(contextBook,layoutDefs);
+        // Transport existing Bend-produced facts only; never export the large
+        // cached context or reconstruct erasure/layout rules in this host.
+        nativeFacts=list(array(request.names).map(name=>api.ns_body(request.book,name)).filter(d=>d?.$==='KDef'&&d.kind==='NativeErasedBody'));
+      }
+      return {status:'ok',phase,checkedGraph:layoutDefs,...(captureNativeFacts?{nativeFacts}:{}),foreignValidated:false,
         verdict,exitCode:0,checked:true,files:graph.files,...trust};
     }
     if(mode==='native') {

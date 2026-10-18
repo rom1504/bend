@@ -38,7 +38,7 @@ def nx_i_cli(args: List<&1, String>) -> IO(U32):
   match args:
     case Con{program, Con{mode, Con{name, Con{budget, Nil{}}}}}:
       nx_i_dispatch(mode, nx_i_fixture(name), U32.read(budget))
-    case _: IO.die(U32, 2, "Usage: inline-producer [deep-]json|c|stats WORKLOAD BUDGET")
+    case _: IO.die(U32, 2, "Usage: inline-producer [deep-|tail-]json|c|stats WORKLOAD BUDGET")
 
 def main() -> IO(U32):
   do IO<U32>:

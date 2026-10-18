@@ -4,7 +4,8 @@ import subprocess,sys,json,time
 ROOT=Path(__file__).resolve().parents[5];HERE=ROOT/'selfhost/tools/performance/phase107'
 out=Path(sys.argv[1]).resolve();out.mkdir(parents=True,exist_ok=False)
 rows=[]
-for source in sorted((HERE/'cases').glob('*.bend')):
+case_dir=Path(sys.argv[2]).resolve() if len(sys.argv)>2 else HERE/'cases'
+for source in sorted(case_dir.glob('*.bend')):
  target=out/source.stem;start=time.monotonic()
  cmd=[ROOT/'selfhost/.bootstrap/bun-1.4.3/bun',HERE/'frontend/capture.mjs',source,target]
  r=subprocess.run(list(map(str,cmd)),cwd=ROOT,capture_output=True,text=True,timeout=30)

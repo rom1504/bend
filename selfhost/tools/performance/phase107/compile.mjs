@@ -5,8 +5,8 @@ import {inspect,apiPath as frontendApi,basePath,driverPath} from '../../typed-dr
 const root=path.resolve(import.meta.dirname,'../../../..');
 const options={backend:'qbe',budget:4096,entry:'main',tail:true,fuse:true,units:true};
 const argv=process.argv.slice(2);let source;
-while(argv.length){const a=argv.shift();if(a==='--no-tail')options.tail=false;else if(a==='--no-fuse')options.fuse=false;else if(a==='--whole-object')options.units=false;else if(a.startsWith('--')){if(!['--api','--out','--entry','--backend','--cache','--budget','--qbe','--abi-salt','--inline'].includes(a))throw Error('Unknown option '+a);if(!argv.length)throw Error('Missing '+a);options[a.slice(2)]=argv.shift();}else if(!source)source=path.resolve(a);else throw Error('Unexpected argument '+a);}
-if(!source||!options.api||!options.out)throw Error('Usage: compile.mjs SOURCE --api API.mjs --out NEW_DIR [--entry main|bench] [--backend qbe|cranelift|clang|gcc] [--cache DIR] [--budget N] [--no-tail] [--no-fuse] [--whole-object]');
+while(argv.length){const a=argv.shift();if(a==='--prune')options.prune=true;else if(a==='--no-tail')options.tail=false;else if(a==='--no-fuse')options.fuse=false;else if(a==='--whole-object')options.units=false;else if(a.startsWith('--')){if(!['--api','--out','--entry','--backend','--cache','--budget','--qbe','--abi-salt','--inline'].includes(a))throw Error('Unknown option '+a);if(!argv.length)throw Error('Missing '+a);options[a.slice(2)]=argv.shift();}else if(!source)source=path.resolve(a);else throw Error('Unexpected argument '+a);}
+if(!source||!options.api||!options.out)throw Error('Usage: compile.mjs SOURCE --api API.mjs --out NEW_DIR [--entry main|bench] [--backend qbe|cranelift|clang|gcc] [--cache DIR] [--budget N] [--no-tail] [--no-fuse] [--whole-object] [--inline deep|entry] [--prune]');
 options.budget=Number(options.budget);if(!Number.isSafeInteger(options.budget)||options.budget<0||options.budget>4096)throw Error('Budget must be 0..4096');
 if(!['qbe','cranelift','clang','gcc'].includes(options.backend))throw Error('Unknown backend');
 const out=path.resolve(options.out);fs.mkdirSync(out,{recursive:false});
@@ -18,7 +18,7 @@ const clang='/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang';
 const runner=path.join(root,'selfhost/tools/performance/phase106/cranelift/runner.c');
 if(pin(basePath).sha256!=='99ac43f2b2bb3e3f39acdcedcecbbd3cb44749ce13969c827d6973fa66f7facf')throw Error('Experimental native primitive ABI requires the admitted Base digest');
 fs.copyFileSync(import.meta.filename,path.join(out,'method.mjs'));
-const report={complete:false,started:new Date().toISOString(),options,source:pin(source),inputs:[pin(import.meta.filename),pin(options.api),pin(frontendApi),pin(basePath),pin(driverPath),pin(runner)],jobs:[],cache:[]};
+const report={complete:false,started:new Date().toISOString(),options,source:pin(source),inputs:[pin(import.meta.filename),pin(options.api),pin(frontendApi),pin(basePath),pin(driverPath),pin(runner),pin('/usr/bin/gcc'),pin('/usr/bin/ld')],jobs:[],cache:[]};
 const save=()=>fs.writeFileSync(path.join(out,'report.json'),JSON.stringify(report,null,2)+'\n');const begin=performance.now();save();
 const run=(label,cmd)=>{const start=performance.now(),r=spawnSync(cmd[0],cmd.slice(1),{encoding:'utf8',timeout:30000,maxBuffer:2**20});report.jobs.push({label,command:cmd,seconds:(performance.now()-start)/1000,status:r.status,signal:r.signal,stdout:r.stdout,stderr:r.stderr});save();if(r.error||r.status!==0)throw Error(label+': '+(r.error?.message||r.stderr));};
 const cache=options.cache?path.resolve(options.cache):null;if(cache)fs.mkdirSync(cache,{recursive:true});
@@ -46,6 +46,7 @@ try{
  if(options.tail){if(!api.nx_tail_optimize)throw Error('API missing nx_tail_optimize');program=api.nx_tail_optimize(program);}
  const inline=options.inline||'deep';if(!['deep','entry'].includes(inline))throw Error('Unknown inline policy');
  program=api.nx_optimize(api[inline==='entry'?'nx_inline_entry':'nx_inline_deep'](program,options.budget));
+ if(options.prune){if(!api.nx_reachable)throw Error('API missing nx_reachable');program=api.nx_reachable(program);}
  if(api.nx_verify(program)!==true)throw Error('IR verifier refused optimized output');report.optimizeSeconds=(performance.now()-opt)/1000;
  const json=api.nx_json_program(program);fs.writeFileSync(path.join(out,'program.json'),json);const parsed=JSON.parse(json);
  const signatures=parsed.functions.map(f=>({name:f.name,params:f.params.map(p=>p.type),result:f.result}));

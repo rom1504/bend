@@ -1,7 +1,8 @@
 // Every transformation and emitter invoked here is implemented in checked Bend.
 import fs from 'node:fs';import path from 'node:path';import {pathToFileURL} from 'node:url';import crypto from 'node:crypto';
 const [apiArg,graphsArg,outArg,method='nx_inline',pipeline='inline']=process.argv.slice(2),out=path.resolve(outArg);
-fs.mkdirSync(out,{recursive:false});
+if(!['inline','tail-fused','leaf-reach','memory-demand'].includes(pipeline))throw Error('Unknown pipeline');
+fs.mkdirSync(out,{recursive:false});fs.copyFileSync(import.meta.filename,path.join(out,'method.mjs'));
 const api=(await import(pathToFileURL(path.resolve(apiArg)))).default;
 const pin=file=>({file:path.resolve(file),sha256:crypto.createHash('sha256').update(fs.readFileSync(file)).digest('hex')});
 const report={complete:false,method,pipeline,api:pin(apiArg),inputs:[pin(import.meta.filename)],rows:[],rejections:[]};
@@ -17,7 +18,8 @@ for(const name of ['text','list','tree','closure','tail','many','shared','shared
 for(const {name,program:raw,lowerSeconds} of selected){
  for(const budget of [0,4096]){
   const start=performance.now();let program=api[method](pipeline!=='inline'&&budget>0?api.nx_tail_optimize(raw):raw,budget);
-  if(pipeline==='leaf-reach'&&budget>0)program=api.nx_reachable(api.nx_inline_leaf(api.nx_reachable(program),budget));
+  if(['leaf-reach','memory-demand'].includes(pipeline)&&budget>0)program=api.nx_reachable(api.nx_inline_leaf(api.nx_reachable(program),budget));
+  if(pipeline==='memory-demand'&&budget>0)program=api.nx_memory_forward(program);
   program=api.nx_optimize(program);
   const optimizeSeconds=(performance.now()-start)/1000;
   if(api.nx_verify(program)!==true)throw Error('verification '+name+'/'+budget);

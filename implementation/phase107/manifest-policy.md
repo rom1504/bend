@@ -3,8 +3,8 @@
 The capsule preserves the experiment record and the source needed to rebuild
 its tools. It is not a hermetic toolchain distribution or a claim that all
 historical prerequisites are present. The archive builder is
-`selfhost/tools/performance/phase107/archive.py`. It has not been run during
-preparation; the coordinator must close writers before running it.
+`selfhost/tools/performance/phase107/archive.py`. The coordinator closes writers
+before creation; actual completion and contents are recorded by `evidence/manifest.json`.
 
 The selected input roots are the complete `selfhost/build/phase107` tree,
 every `selfhost/build/phase98/phase107-*` proof-attempt tree, the Phase106 and

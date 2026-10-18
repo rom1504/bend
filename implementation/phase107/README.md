@@ -314,8 +314,11 @@ historical dependencies. Verify it with the documented archive tool before repla
 Exact compiler/tool/host identities remain prerequisites; this is a Linux x86-64
 research artifact, not a new portable production release.
 
-See [accounting](accounting.md) for guarded-job occupancy, resource peaks and source
-size. Occupancy is not billed quota and uninstrumented wall time is not attributed
+The final [accounting](accounting.md) records33.50 minutes of guarded-job occupancy
+across145.41 minutes of receipt coverage, with no guard overlap,1.63GiB peak RSS
+and no resource stops. New experimental Bend algorithm/entry code totals2,737
+lines across20 files; fixtures, inherited IR/frontend and host methods are counted
+separately. This is added functionality, not a repository line-count reduction. Occupancy is not billed quota and uninstrumented wall time is not attributed
 to invented categories. The main architectural lesson is to keep a shared, checked
 IR, make independent backends cheap to compare, and preserve semantic facts before
 machine code generation. Full production ownership/runtime lowering is the next

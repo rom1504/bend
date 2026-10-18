@@ -1,0 +1,22 @@
+{
+  "baseRuntimeSha256": "d56fe7a06086aa23cd8154698d81df14732bed517adadf9a164e02c4a22dff43",
+  "candidateRuntimeSha256": "17cece2e0cf301472cb7f9b131337ebaa2cb0eb870f67af73566c8cb6c29eec3",
+  "changes": [
+    {
+      "old": "// Segment transitions return to one invocation-local dispatcher. Ordinary\n// segment returns keep their original scheduler Reply meaning.\n#define WL_FN      static __attribute__((noinline)) Reply\n#define WL_CASE(F) WL_FN WL_##F(WL_SIG, WlState* wl)\n#define WL_OPEN    { WL_BANK u32 rn = 0; WL_INIT_BANK\n#define WL_JMP(F)  do { \\\n  wl->e = e; wl->sp = sp; wl->seq = seq; wl->rn = rn; \\\n  WL_WRITE_STATE(wl->regs) \\\n",
+      "new": "// Segment transitions return to one invocation-local dispatcher. Ordinary\n// segment returns keep their original scheduler Reply meaning.\n#define WL_FN      static __attribute__((noinline)) Reply\n// WL_CASE opens the function; the emitted block captures incoming arguments\n// before WL_OPEN resets the same local register bank for outgoing values.\n#define WL_CASE(F) WL_FN WL_##F(WlState* wl) { \\\n  Env e = wl->e; Stk sp = wl->sp; u32 seq = wl->seq; u32 rn = wl->rn; \\\n  WL_BANK WL_READ_STATE(wl->regs)\n#define WL_OPEN    rn = 0; WL_INIT_BANK\n#define WL_JMP(F)  do { \\\n  wl->e = e; wl->sp = sp; wl->seq = seq; wl->rn = rn; \\\n  WL_WRITE_STATE(wl->regs) \\\n"
+    },
+    {
+      "old": "#define WL_SPUN\n#if WL_PORTABLE\n#define WL_AGAIN(F) WL_JMP(F)\ntypedef Reply (*WlFn)(WL_SIG, WlState* wl);\n#define WL_X(F) WL_FN WL_##F(WL_SIG, WlState* wl);\n#else\n#define WL_AGAIN(F) __attribute__((musttail)) return WL_##F(WL_ALL)\n\n",
+      "new": "#define WL_SPUN\n#if WL_PORTABLE\n#define WL_AGAIN(F) WL_JMP(F)\ntypedef Reply (*WlFn)(WlState* wl);\n#define WL_X(F) WL_FN WL_##F(WlState* wl);\n#else\n#define WL_AGAIN(F) __attribute__((musttail)) return WL_##F(WL_ALL)\n\n"
+    },
+    {
+      "old": "#endif\n\nstatic Reply work_loop(Env e, Stk sp, Term t, bool seq) {\n  WL_BANK\n  u32 rn = 0;\n#if WL_PORTABLE && !DEVICE\n  WL_INIT_BANK\n  WlState state = {0};\n  state.e = e;\n  state.sp = sp;\n",
+      "new": "#endif\n\nstatic Reply work_loop(Env e, Stk sp, Term t, bool seq) {\n#if WL_PORTABLE && !DEVICE\n  WlState state = {0};\n  state.e = e;\n  state.sp = sp;\n"
+    },
+    {
+      "old": "  for (;;) {\n    Fid next = state.next;\n    state.next = WL_STOP;\n    e = state.e;\n    sp = state.sp;\n    seq = state.seq;\n    rn = state.rn;\n    WL_READ_STATE(state.regs)\n    // The historical WL_TABLE deliberately excludes FID_ENTER.\n    if (next != FID_ENTER && next >= sizeof(wl_tab) / sizeof(wl_tab[0])) {\n      err_post(e.mem, ERR_FIDS);\n      return 0;\n    }\n    WlFn run = next == FID_ENTER ? WL_FID_ENTER : wl_tab[next];\n    Reply reply = run(WL_ALL, &state);\n    if (state.next == WL_STOP) {\n      return reply;\n    }\n  }\n}\n#else\n  r0 = t;\n#if DEVICE\n  Fid fid   = FID_ENTER;\n",
+      "new": "  for (;;) {\n    Fid next = state.next;\n    state.next = WL_STOP;\n    // The historical WL_TABLE deliberately excludes FID_ENTER.\n    if (next != FID_ENTER && next >= sizeof(wl_tab) / sizeof(wl_tab[0])) {\n      err_post(state.e.mem, ERR_FIDS);\n      return 0;\n    }\n    WlFn run = next == FID_ENTER ? WL_FID_ENTER : wl_tab[next];\n    Reply reply = run(&state);\n    if (state.next == WL_STOP) {\n      return reply;\n    }\n  }\n}\n#else\n  WL_BANK\n  u32 rn = 0;\n  r0 = t;\n#if DEVICE\n  Fid fid   = FID_ENTER;\n"
+    }
+  ]
+}

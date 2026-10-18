@@ -1,0 +1,269 @@
+{
+  "kind": "phase108-frozen-independent-coverage-controls",
+  "version": 1,
+  "preparedOnly": true,
+  "targetsRun": false,
+  "oracle": "Exact expected stdout written by hand from source semantics before candidate execution; not captured from incumbent or candidate output.",
+  "sourceInspectionOnly": true,
+  "fixtures": [
+    {
+      "name": "nt-reverse",
+      "file": "fixtures/nt-reverse.bend",
+      "sha256": "dfb8a3f7b5c432a2a4686bb014a0c9cc74d0d56c2c16264a3427026b090169ff",
+      "expect": {
+        "stage": "execute",
+        "exitCode": 0,
+        "stdout": "z\n|bc|a|tail\nc|b|head/b|c/head\ncd|ab\n",
+        "stderr": ""
+      },
+      "heldout": false
+    },
+    {
+      "name": "string-reverse-heldout",
+      "file": "fixtures/string-reverse-heldout.bend",
+      "sha256": "4a2d2e5de64d79f5c51a0e86822f7275a156992e4b653ca9807a6e8ae28f4d45",
+      "expect": {
+        "stage": "execute",
+        "exitCode": 0,
+        "stdout": "tail\né🙂a!\ńe\ncba!/abc\n",
+        "stderr": ""
+      },
+      "heldout": true
+    },
+    {
+      "name": "higher-order-capture",
+      "file": "fixtures/higher-order-capture.bend",
+      "sha256": "18c8832cf958215dab9cbedb66b191e0a31def3911296fc62b99c75a7b0ae715",
+      "expect": {
+        "stage": "execute",
+        "exitCode": 0,
+        "stdout": "captured=42\n",
+        "stderr": ""
+      },
+      "heldout": false
+    },
+    {
+      "name": "non-tail-list",
+      "file": "fixtures/non-tail-list.bend",
+      "sha256": "b8fb74a95b2c646f0f92545a4acde8e0049c01d99d647459babef56dc3700452",
+      "expect": {
+        "stage": "execute",
+        "exitCode": 0,
+        "stdout": "list=14\n",
+        "stderr": ""
+      },
+      "heldout": false
+    },
+    {
+      "name": "arrays-io",
+      "file": "fixtures/arrays-io.bend",
+      "sha256": "84b331f6a6bda94f115066b830331b87e11df0efdba02e50d6615fc1f61d911a",
+      "expect": {
+        "stage": "execute",
+        "exitCode": 0,
+        "stdout": "arrays=seed/changed/seed\n",
+        "stderr": ""
+      },
+      "heldout": false
+    },
+    {
+      "name": "lexer-scan",
+      "file": "fixtures/lexer-scan.bend",
+      "sha256": "c1ad42a85efe49274d0e0c5f607c6abde3d34de282299f7802eb3987d179d01f",
+      "expect": {
+        "stage": "execute",
+        "exitCode": 0,
+        "stdout": "abc_9.rest/+/10\n1e-3/+/4\n1e/+x/2\nx/-y/1\n/λa/0\nabc/!/3\n//0\n",
+        "stderr": ""
+      },
+      "heldout": false
+    },
+    {
+      "name": "negative-type",
+      "file": "fixtures/negative-type.bend",
+      "sha256": "13576b71e13d0336b5b6ae1ad913ae8a5f636a6f292b097288c8ae3aa49ff2be",
+      "expect": {
+        "stage": "source-admission",
+        "exitNonzero": true,
+        "outputAbsent": true,
+        "exactDiagnostic": false
+      },
+      "reason": "U32 result cannot be a String"
+    },
+    {
+      "name": "negative-affine",
+      "file": "fixtures/negative-affine.bend",
+      "sha256": "2fe0f07f5556ca57e97bfece4afa302524bfa20f2583f3f3a999e466ecd1c0b4",
+      "expect": {
+        "stage": "source-admission",
+        "exitNonzero": true,
+        "outputAbsent": true,
+        "exactDiagnostic": false
+      },
+      "reason": "affine function parameter is used twice"
+    },
+    {
+      "name": "negative-foreign",
+      "file": "fixtures/negative-foreign.bend",
+      "sha256": "19a5b3686b07e311f3291e0c26a6308a76d4930f869d7f6a70249c94365ba11c",
+      "expect": {
+        "stage": "source-admission",
+        "exitNonzero": true,
+        "outputAbsent": true,
+        "exactDiagnostic": false
+      },
+      "reason": "foreign provider path does not exist"
+    }
+  ],
+  "origins": [
+    {
+      "source": "selfhost/src/back/native/text.bend",
+      "sha256": "acc430c939a7dd6b404ba7a13f762019b717a62313ae3066234f78bb62df04c0",
+      "fixture": "nt-reverse",
+      "embedded": true,
+      "declarations": [
+        {
+          "kind": "def",
+          "name": "nt_reverse",
+          "sha256": "8585a68a0ad68c564e2cd44a426c0da181bd18b2584b5ea209d7598176ced179"
+        }
+      ]
+    },
+    {
+      "source": "selfhost/.bootstrap/upstream-phase66/bend2/base.bend",
+      "sha256": "99ac43f2b2bb3e3f39acdcedcecbbd3cb44749ce13969c827d6973fa66f7facf",
+      "fixture": "string-reverse-heldout",
+      "embedded": false,
+      "declarations": [
+        {
+          "kind": "def",
+          "name": "String.reverse.go",
+          "sha256": "2a6fec2b0bc2665a0cebde2533a1abe058aaf2550493e2ae045f92fb9f4559e5"
+        }
+      ]
+    },
+    {
+      "source": "selfhost/src/front/lexer.bend",
+      "sha256": "aa9d726b6b284deba84dbccc77a01a8143dd89dab70cf487e1ddc8d589380440",
+      "fixture": "lexer-scan",
+      "embedded": true,
+      "declarations": [
+        {
+          "kind": "type",
+          "name": "FScanned",
+          "sha256": "9e13f9c3736674528a9253e17b5c6a3212890faa02ed114cecbc0bfa11f5fe7d"
+        },
+        {
+          "kind": "law",
+          "name": "f_ascii_char_eq",
+          "sha256": "d82386eacbd9695a5f48b603f00e5e5f04e29d4761a2581a54e3b2399ab1eeb0"
+        },
+        {
+          "kind": "law",
+          "name": "f_ascii_digit",
+          "sha256": "a0996b6657d81b59a63f476606ff65da73cc354710016fc23301e16fb552062d"
+        },
+        {
+          "kind": "law",
+          "name": "f_ascii_ident_code",
+          "sha256": "26b5bec4e1b06c8126099f87cfc9255fe99a18cc2761e84972189a5cdc96a3c1"
+        },
+        {
+          "kind": "def",
+          "name": "f_choose",
+          "sha256": "387b5b72620c4445e49713242625bac4aa709e60cba6a2e8238c2758647ba690"
+        },
+        {
+          "kind": "def",
+          "name": "f_head",
+          "sha256": "3d206ea8587accbd7b86f00c51b0e06699e3c973eff1dd4b12bb4405a2ec3e01"
+        },
+        {
+          "kind": "def",
+          "name": "f_tail",
+          "sha256": "2f4f4857ae4ea007555619dd49edd84bf858a4b634765e4788311127c5ad7f7a"
+        },
+        {
+          "kind": "def",
+          "name": "f_ident",
+          "sha256": "9a5518a0740a701b3dc3c005b7c7d7b5629dedabe9fc3f7d5b34609c88864a33"
+        },
+        {
+          "kind": "def",
+          "name": "f_scan_word",
+          "sha256": "eb0e8bea1e9e49da2e3cc703b4ea7f937e2c280bf5fce8019ebccafefc4f3400"
+        },
+        {
+          "kind": "def",
+          "name": "f_scan_quote",
+          "sha256": "efcf5978ac91570e6f4cec34905a05d9f0af5858d9dcd442ac4dcfac7682db81"
+        },
+        {
+          "kind": "def",
+          "name": "f_ascii_char_eq",
+          "sha256": "cfd54d3fffae32bbabd3af5ac5f462799d9984a766abe95a459feb0fd5c85638"
+        },
+        {
+          "kind": "def",
+          "name": "f_ascii_digit",
+          "sha256": "2602cb9b8489741df970dfa4cb9378458f553521664dc77dfa128efa8ba6c8ab"
+        },
+        {
+          "kind": "def",
+          "name": "f_ascii_ident_code",
+          "sha256": "4551fb847d369ced3358a4ee4dfcf6b4494161d62cc465bd877c4bb08467a4a1"
+        }
+      ]
+    }
+  ],
+  "runtimeNegativeControls": [
+    {
+      "name": "runtime-template-digest-changed",
+      "expect": "reject before emission or linking",
+      "mutation": "change one byte after manifest freeze"
+    },
+    {
+      "name": "constructor-manifest-mismatch",
+      "expect": "reject before entry",
+      "mutation": "change one constructor ID or live arity while retaining old object"
+    },
+    {
+      "name": "runtime-ABI-version-mismatch",
+      "expect": "reject before linking or entry",
+      "mutation": "request an unsupported ABI version"
+    },
+    {
+      "name": "unsafe-runtime-feature",
+      "expect": "explicit refusal before target execution",
+      "mutation": "request a runtime mode unsupported by the portable adapter"
+    }
+  ],
+  "qualificationLimits": [
+    "Sources have not been checked or executed in this preparation task.",
+    "Source-feature coverage does not prove physical closure/allocation/RC paths survive optimization; inspect emitted representation.",
+    "No arbitrary target-language, multithread, GPU, full-image, fixed-point, or performance claim.",
+    "Array handles use valid clone sharing, not illegal affine duplication."
+  ],
+  "selectedCompilerSource": {
+    "file": "selfhost/build/phase102/projection-cost-source01/compiler.bend",
+    "sha256": "63ef222c4c6de73bb54c8e51d3b0a0552979b5791ea98e64d1098051a9cda237",
+    "bytes": 1788947
+  },
+  "selectedSourceWitnesses": [
+    {
+      "source": "selfhost/src/back/native/text.bend",
+      "kind": "def",
+      "name": "nt_reverse"
+    },
+    {
+      "source": "selfhost/src/front/lexer.bend",
+      "kind": "def",
+      "name": "f_scan_word"
+    },
+    {
+      "source": "selfhost/src/front/lexer.bend",
+      "kind": "def",
+      "name": "f_scan_quote"
+    }
+  ]
+}

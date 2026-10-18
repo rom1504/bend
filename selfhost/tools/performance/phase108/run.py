@@ -15,7 +15,7 @@ def pin(path):return N.pin(path)
 def save(path,value):path.write_text(json.dumps(value,indent=2)+'\n')
 def main():
     p=argparse.ArgumentParser(description=__doc__);sub=p.add_subparsers(dest='op',required=True)
-    emit=sub.add_parser('emit');emit.add_argument('source',type=Path);emit.add_argument('--runtime',type=Path,required=True);emit.add_argument('--compiler',type=Path);emit.add_argument('--live',action='store_true')
+    emit=sub.add_parser('emit');emit.add_argument('source',type=Path);emit.add_argument('--runtime',type=Path,required=True);emit.add_argument('--compiler',type=Path);emit.add_argument('--live',action='store_true');emit.add_argument('--calls',type=int,choices=[1,5],default=1)
     build=sub.add_parser('build');build.add_argument('source',type=Path);build.add_argument('--backend',choices=['qbe','gcc','clang'],default='qbe');build.add_argument('--metadata',type=Path)
     run=sub.add_parser('run');run.add_argument('binary',type=Path);run.add_argument('--threads',type=int,default=1);run.add_argument('--expected',type=Path);run.add_argument('args',nargs='*')
     for s in [emit,build,run]:s.add_argument('--out',type=Path,required=True);s.add_argument('--seconds',type=float,default=300)
@@ -35,7 +35,7 @@ def main():
         if result.returncode:raise RuntimeError(label+' failed: '+str(out/(label+'.stderr')))
     try:
         if a.op=='emit':
-            release,binding=N.load();argv=N.native_args(release,a.source,out/'program',live=a.live)
+            release,binding=N.load();argv=N.native_args(release,a.source,out/'program',live=a.live,calls=a.calls)
             runtime=a.runtime.resolve(strict=True)
             argv[argv.index(release['assets']['runtime']['file'])]=str(runtime)
             if a.compiler:argv[0]=str(a.compiler.resolve(strict=True))
@@ -49,6 +49,8 @@ def main():
                 report['inputs'].append(pin(lineage))
             report.update(selection=binding,live=a.live,source=pin(a.source),runtime=pin(runtime),compiler=pin(argv[0]))
             command('emit',argv);report['generatedC']=pin(out/'program.1.c')
+            report['outputs']=[pin(out/('program.'+str(i)+'.c')) for i in range(1,a.calls+1)]
+            assert all(x['sha256']==report['generatedC']['sha256'] for x in report['outputs']), 'repeated full products differ'
         elif a.op=='build':
             source=a.source.resolve(strict=True);report['inputs']=[pin(source)];obj=out/'program.o';binary=out/'program'
             flags=['-DWL_PORTABLE=1']

@@ -1,0 +1,68 @@
+--- runtime.c
++++ runtime-v2.c
+@@ -122,8 +122,12 @@
+ // Segment transitions return to one invocation-local dispatcher. Ordinary
+ // segment returns keep their original scheduler Reply meaning.
+ #define WL_FN      static __attribute__((noinline)) Reply
+-#define WL_CASE(F) WL_FN WL_##F(WL_SIG, WlState* wl)
+-#define WL_OPEN    { WL_BANK u32 rn = 0; WL_INIT_BANK
++// WL_CASE opens the function; the emitted block captures incoming arguments
++// before WL_OPEN resets the same local register bank for outgoing values.
++#define WL_CASE(F) WL_FN WL_##F(WlState* wl) { \
++  Env e = wl->e; Stk sp = wl->sp; u32 seq = wl->seq; u32 rn = wl->rn; \
++  WL_BANK WL_READ_STATE(wl->regs)
++#define WL_OPEN    rn = 0; WL_INIT_BANK
+ #define WL_JMP(F)  do { \
+   wl->e = e; wl->sp = sp; wl->seq = seq; wl->rn = rn; \
+   WL_WRITE_STATE(wl->regs) \
+@@ -1300,8 +1304,8 @@
+ #define WL_SPUN
+ #if WL_PORTABLE
+ #define WL_AGAIN(F) WL_JMP(F)
+-typedef Reply (*WlFn)(WL_SIG, WlState* wl);
+-#define WL_X(F) WL_FN WL_##F(WL_SIG, WlState* wl);
++typedef Reply (*WlFn)(WlState* wl);
++#define WL_X(F) WL_FN WL_##F(WlState* wl);
+ #else
+ #define WL_AGAIN(F) __attribute__((musttail)) return WL_##F(WL_ALL)
+ 
+@@ -1322,10 +1326,7 @@
+ #endif
+ 
+ static Reply work_loop(Env e, Stk sp, Term t, bool seq) {
+-  WL_BANK
+-  u32 rn = 0;
+ #if WL_PORTABLE && !DEVICE
+-  WL_INIT_BANK
+   WlState state = {0};
+   state.e = e;
+   state.sp = sp;
+@@ -1335,24 +1336,21 @@
+   for (;;) {
+     Fid next = state.next;
+     state.next = WL_STOP;
+-    e = state.e;
+-    sp = state.sp;
+-    seq = state.seq;
+-    rn = state.rn;
+-    WL_READ_STATE(state.regs)
+     // The historical WL_TABLE deliberately excludes FID_ENTER.
+     if (next != FID_ENTER && next >= sizeof(wl_tab) / sizeof(wl_tab[0])) {
+-      err_post(e.mem, ERR_FIDS);
++      err_post(state.e.mem, ERR_FIDS);
+       return 0;
+     }
+     WlFn run = next == FID_ENTER ? WL_FID_ENTER : wl_tab[next];
+-    Reply reply = run(WL_ALL, &state);
++    Reply reply = run(&state);
+     if (state.next == WL_STOP) {
+       return reply;
+     }
+   }
+ }
+ #else
++  WL_BANK
++  u32 rn = 0;
+   r0 = t;
+ #if DEVICE
+   Fid fid   = FID_ENTER;

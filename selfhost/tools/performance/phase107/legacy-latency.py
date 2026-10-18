@@ -17,17 +17,21 @@ def answer(name):
     assert name=='recurrence'
     for x in range(n,0,-1):s=((s*33+x)&MASK)^2654435769
     return s
-def main():
+def main(suite=None):
+    suite=suite or {};cases=list(suite.get('sources',CASES));source_for=lambda name:Path(suite['sources'][name]) if suite else HERE/'cases'/(name+'.bend')
     p=argparse.ArgumentParser(description=__doc__);p.add_argument('--image',type=Path,required=True);p.add_argument('--out',type=Path,required=True)
-    p.add_argument('--case',action='append',choices=CASES);p.add_argument('--rounds',type=int,default=3);p.add_argument('--max-seconds',type=float,default=60)
+    p.add_argument('--case',action='append',choices=cases);p.add_argument('--rounds',type=int,default=3);p.add_argument('--max-seconds',type=float,default=60)
     p.add_argument('--installed',type=Path,default=ROOT/'selfhost/bend');p.add_argument('--package',type=Path,default=ROOT/'selfhost/tools/native/releases/phase103-cli01/receipt.json')
     p.add_argument('--clang',type=Path,default=Path('/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang'));p.add_argument('--qbe',type=Path,default=ROOT/'selfhost/build/phase107/toolchain/qbe-1.3/qbe')
-    a=p.parse_args();assert 1<=a.rounds<=10 and 1<=a.max_seconds<=600;names=list(dict.fromkeys(a.case or CASES));start=time.monotonic();known={}
+    a=p.parse_args();assert 1<=a.rounds<=10 and 1<=a.max_seconds<=600;names=list(dict.fromkeys(a.case or cases));start=time.monotonic();known={}
     out=a.out.resolve();out.mkdir(parents=True,exist_ok=False);a.image=a.image.resolve(strict=True);installed=a.installed.resolve(strict=True);a.clang=a.clang.resolve(strict=True);a.qbe=a.qbe.resolve(strict=True);compiler=HERE/'frontend/native/compile.py'
+    for name,item in suite.get('identity',{}).items():assert pin(getattr(a,name))==item,'suite identity changed: '+name
+    if suite:assert names==cases and a.rounds==3,'frozen suite requires all sources and three rounds'
     def remember(item):
         assert pin(item['file'])==item,item;assert known.setdefault(item['file'],item)==item,'changed input'
-    methods=[Path(__file__),compiler,compiler.with_name('cache.py'),compiler.with_name('run.py'),compiler.with_name('process.py')];snapshots=[]
-    for file in [*methods,a.image,a.package,installed,a.clang,a.qbe,sys.executable,'/usr/bin/as','/usr/bin/gcc','/usr/bin/ld',*[HERE/'cases'/(n+'.bend') for n in names]]:remember(pin(file))
+    methods=[Path(__file__),compiler,compiler.with_name('cache.py'),compiler.with_name('run.py'),compiler.with_name('process.py'),*suite.get('methods',[])];snapshots=[]
+    for file in [*methods,a.image,a.package,installed,a.clang,a.qbe,sys.executable,'/usr/bin/as','/usr/bin/gcc','/usr/bin/ld',*[source_for(n) for n in names]]:remember(pin(file))
+    for item in suite.get('inputs',[]):remember(item)
     package=json.loads(a.package.read_text());assert package['complete'] and package['kind']=='phase103-native-cli-package'
     for item in package['files']:
         file=(installed.parent/item['file']).resolve(strict=True);assert installed.parent in file.parents;actual=pin(file);assert same(actual,item);remember(actual)
@@ -41,11 +45,12 @@ def main():
     for name in ['libLLVM.so.22.1','libclang-cpp.so.22.1']:remember(pin(a.clang.parents[1]/'lib'/name))
     for file in methods:
         dest=out/('method-'+file.name);shutil.copyfile(file,dest);snapshots.append(pin(dest))
-    expected={name:answer(name) for name in names}
+    expected={name:suite['expected'][name] if suite else answer(name) for name in names}
     for name,value in expected.items():(out/(name+'-expected.stdout')).write_bytes((str(value)+'\n').encode())
-    report=dict(kind='phase107-incumbent-native-latency',complete=False,passed=False,started=time.time(),inputs=[],snapshots=snapshots,installed=pin(installed),package=pin(a.package),image=pin(a.image),cases=names,rounds=a.rounds,maxSeconds=a.max_seconds,expectedMain=expected,oracle='Independent masked U32 evaluation of fixture main()=bench(19,23); exact decimal stdout plus LF and empty stderr for both programs.',scope='Installed native Bend CLI to C to Clang-O2 versus experimental native Bend frontend to QBE/binutils, both prepared Base, same zero-argument main. No object caches, every object rebuilt. Finite source-to-executable/result comparison, not compiler-wide qualification or a universal speedup.',clockScope='Primary source-to-executable seconds sum complete compiler subprocess walls; source-to-result adds program process wall. Full supervisor interval also retained. Native driver wall includes Python startup/authentication and cache-capable orchestration with object cache disabled; installed Bend authenticates its assets internally. One-time tool/version/input audit is excluded from paired measurements.',affinity=sorted(os.sched_getaffinity(0)),jobs=[],builds=[],pairs=[])
+    report=dict(kind=suite.get('kind','phase107-incumbent-native-latency'),complete=False,passed=False,started=time.time(),inputs=[],snapshots=snapshots,installed=pin(installed),package=pin(a.package),image=pin(a.image),cases=names,rounds=a.rounds,maxSeconds=a.max_seconds,expectedMain=expected,oracle='Independent masked U32 evaluation of fixture main()=bench(19,23); exact decimal stdout plus LF and empty stderr for both programs.',scope='Installed native Bend CLI to C to Clang-O2 versus experimental native Bend frontend to QBE/binutils, both prepared Base, same zero-argument main. No object caches, every object rebuilt. Finite source-to-executable/result comparison, not compiler-wide qualification or a universal speedup.',clockScope='Primary source-to-executable seconds sum complete compiler subprocess walls; source-to-result adds program process wall. Full supervisor interval also retained. Native driver wall includes Python startup/authentication and cache-capable orchestration with object cache disabled; installed Bend authenticates its assets internally. One-time tool/version/input audit is excluded from paired measurements.',affinity=sorted(os.sched_getaffinity(0)),jobs=[],builds=[],pairs=[])
     def save():
         report['inputs']=list(known.values());(out/'report.json').write_text(json.dumps(report,indent=2)+'\n')
+    if suite:report.update(oracle=suite['oracle'],scope=suite['scope'],freeze=suite['freeze'])
     report['waitPolicy']='Same pidfd outer wait for legacy and native arms; native driver inner waits also use pinned helper; unsupported kernels retain polling fallback.'
     report['setupSeconds']=time.monotonic()-start;deadline=time.monotonic()+a.max_seconds;save()
     def run(label,command,stdout=None):
@@ -64,7 +69,7 @@ def main():
         if stdout is not None:assert so.read_bytes()==stdout and se.read_bytes()==b'',(label,'unexpected literal output',str(so))
         return row
     def build(name,turn,engine):
-        label=name+'-'+str(turn)+'-'+engine;dest=out/label;source=HERE/'cases'/(name+'.bend');begin=time.monotonic();source_pin=pin(source);value=expected[name]
+        label=name+'-'+str(turn)+'-'+engine;dest=out/label;source=source_for(name);begin=time.monotonic();source_pin=pin(source);value=expected[name]
         if engine=='legacy':
             dest.mkdir();generated=dest/'program.c';binary=dest/'program'
             emit=run(label+'-emit',[installed,source,'-o',generated]);remember(pin(generated));assert generated.stat().st_size>0

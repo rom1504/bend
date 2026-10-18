@@ -40,10 +40,11 @@ classification. All four previously failing cases then pass (`repaired01`,
 this covers all 19 focused cases across revisions; it is not a fresh 19-case
 run on the final source.
 
-The installed compiler is unchanged. A directly built complete compiler, native self-compilation, broad coverage,
-speed and default promotion remain
-separate outstanding gates. An executable restricted fixture is not full
-self-hosting.
+The complete native compiler image now builds directly from QBE and emits the
+closure fixture byte-for-byte identically to the checked development API. The
+installed compiler is unchanged. The complete native focused suite now passes:16positive programs and3expected
+refusals in97.10seconds, below91MB observed peak tree RSS. Native self-compilation,
+broad coverage, comparative speed and default promotion remain separate gates.
 
 ## Architecture
 
@@ -129,9 +130,45 @@ compiler diagnostic or successful full image. `full-emission02` retries the exac
 frozen inputs with a 900-second deadline and the unchanged 4GiB memory cap.
 Per-stage records distinguish checking, lowering, verification and QBE emission.
 
+The longer unchanged attempt succeeds in 345.42 seconds, with 3,733,917,696-byte
+peak process-tree RSS. It emits 50,664,292 bytes of QBE (SHA-256
+`143521cc2e747a1af741aa8e62bd16bb476b2221836322ee5bb023e0da4466b2`):
+37,018 segments, maximum arity26, incoming/output width1, 442constructors,
+maximum constructor arity10, six required effects. The 65,532-segment ABI bound
+is respected.
+
+| Checked Bend API stage | Seconds |
+| --- | ---: |
+| Prepared Base | 1.37 |
+| Frontend | 138.78 |
+| Generic lowering | 148.25 |
+| Structural IR verification | 47.99 |
+| QBE emission | 7.26 |
+| File write | 0.73 |
+
+The first QBE build (`full-native01`) reached the historical 64MiB file limit
+while writing assembly metadata, exiting with SIGXFSZ. It is preserved as a
+failed build. The Phase111 guard retains the shared lock, deadline and process
+memory supervisor, adds an explicit bounded file cap, and requires disk space
+for two such files plus160MiB. With a128MiB cap, `full-native02` succeeds:
+QBE7.68s, assembly2.37s, link0.22s, total build10.26s. The complete assembly is
+68,809,177bytes and executable15,731,056bytes. No per-program C/cproc is used.
+
+`native-closure01` then runs that compiler against the unchanged closure source
+in4.78s; its61,184-byte QBE output matches the independently acquired checked
+Bend API exactly, and its executable prints the frozen expected output. This
+establishes a real native source request, not yet native self-reproduction.
+
+The [source dependency slice](source-slice-audit.md) cuts source size65.4% and
+definitions58.0%, preserving declaration bodies. `sliced-api01` successfully
+checks its full entry and acquires12exports in6.59s. Native qualification and
+self-reproduction of this smaller complete compiler remain separate.
+
 ## Next integration
 
-Complete the remaining focused cases, then the broader semantic corpus. The
+N1 is now compiling its exact full source with the same inputs as the checked
+API. The native wrapper compares complete QBE bytes before rebuilding N2 with
+the same runtime. The broader semantic corpus follows this gate. The
 checked Bend API can emit the complete Phase111 source directly to QBE. If that
 works, use the directly built native image to emit its successor; this avoids an
 extra C/cproc image acquisition. Preserve resource limits and diagnose failures

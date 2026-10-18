@@ -9,8 +9,8 @@ TypeScript compiler.
 
 **Status: experimental, not the installed default.** Checked-source execution
 and structural controls have passed finite gates; complete direct native image
-acquisition, native self-compilation, broad conformance and comparative speed
-must be qualified separately. Read the [Phase111 report](../../implementation/phase111/README.md)
+acquisition and a byte-exact native fixture request have succeeded. Native
+self-compilation, broad conformance and comparative speed remain separate gates. Read the [Phase111 report](../../implementation/phase111/README.md)
 for the latest completed gates and failures. The installed
 [`selfhost/bend` CLI](NATIVE_CLI.md), JavaScript release and
 [Phase108 cproc/QBE route](QBE_COMPILER.md) remain available.

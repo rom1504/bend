@@ -140,3 +140,26 @@ selected executables, runtime dependencies and failed receipts. No PR comments.
 See [Phase108 lowering audit](../../implementation/phase108/lowering-audit.md),
 [runtime audit](../../implementation/phase108/runtime-audit.md), and
 [Phase110 report](../../implementation/phase110/README.md).
+
+## Integration amendments recorded during implementation
+
+The checked Bend development API can acquire the complete direct QBE compiler
+without building an intermediate C/cproc image. Call the first resulting native
+image **N1**, and the successor built from N1's output **N2**. These are route-local
+labels; they do not replace the established Phase105 B1/B2 measurements. Require
+N1 to emit the exact full source used for its acquisition, compare its complete
+QBE bytes with the development API product, then build and exercise N2 using the
+same runtime object. If complete native binary bytes also agree, that is stronger
+fixed-point evidence; do not assume this before comparison.
+
+The direct-image assembly slightly exceeds the old64MiB per-file guard limit.
+Phase111's local guard keeps the shared process-tree supervisor and introduces a
+bounded, recorded file cap with a correspondingly larger disk admission floor.
+The original failed build remains evidence; memory limits do not change.
+
+A separate source-only dependency slice removes unreachable legacy backend code:
+650,720bytes versus1,879,953bytes, with unchanged retained declaration bodies and
+all direct-backend modules. Declaration grouping changes source order, so a
+checked API, semantic gates and same-slice native bootstrap are needed before
+promoting this smaller source. Do not mix that experiment into the initial
+same-full-source N1/N2 consistency comparison.

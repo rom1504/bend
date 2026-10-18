@@ -143,3 +143,22 @@ Both use the pinned native acquisition route, after which repeat kernel requests
 reuse the executable. The pass remains optional: this establishes a bounded
 optimization composition with one measured backend win, not universal benefit
 or a production-default decision.
+
+The final [matrix-product closure](../../selfhost/build/phase107/constant-final01/report.json)
+confirms byte identity for another 78 product comparisons: all 26 selected matrix
+graphs in JSON, C and QBE form before versus after the eligibility preflight.
+This is separate from the earlier 78-comparison receipt covering 20 fixture
+triplets and 18 capacity outputs; the counts are not a claim of 156 distinct
+programs. The same final gate runs the previously structural effect-operand
+witness through the independent interpreter with its correct empty argument list.
+Both original and transformed graphs return 9, with one allocation and one free.
+That adds two model observations, not a generated native execution.
+
+An earlier inline host check supplied `[0,0]` to that zero-argument witness and
+failed the argument-count assertion before interpretation. The
+[retained attempt note](../../selfhost/build/phase107/constant-prefilter01/inline-check-attempt.md)
+records the harness mistake; it was not a compiler mismatch and produced no
+successful combined receipt. The standalone corrected final gate passes under
+the [resource guard](../../selfhost/build/phase107/constant-final-guard01/process.json)
+in approximately 0.084s. Writer closure: source and evidence are frozen; this
+report makes no pending implementation or default-promotion claim.

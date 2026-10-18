@@ -37,7 +37,8 @@ backend-only edits.
 The planned [Phase107 three-hour ambition ladder](../design/phase107/native-ir-ambition-ladder.md)
 defines 1× real-source integration, 10× reusable native compilation, and 100×
 incremental self-hosting/research goals. It includes bounded extensions and
-evidence gates; implementation has not started. Ambition labels are not speedups.
+evidence gates; implementation started at 06:37 UTC on 2026-10-18. The user also
+authorized alternatives that remove Clang constraints. Ambition labels are not speedups.
 
 Implement size/depth-bounded inlining of small pure direct helpers in Bend IR,
 with a semantic contract and unrelated held-out helpers. Static inspection finds

@@ -1,10 +1,26 @@
 # Native IR: a three-hour campaign with 1×, 10× and 100× ambitions
 
-2026-10-18. Status: design only; implementation has not started.
+2026-10-18. Status: execution authorized; campaign started at 06:37 UTC.
 The user requested three ambition levels, with larger extensions selected as
 the three-hour campaign progresses. This document defines that selection.
 The labels describe scope and leverage, **not promised speed factors or three
 independent projects to finish in three hours**.
+
+## Execution extension: remove Clang constraints
+
+The user explicitly authorized alternatives beyond C and Cranelift. Evaluate
+QBE 1.3 as a third consumer of the same Bend IR, using its official pinned source,
+GNU assembler and linker. Also link existing Cranelift objects without Clang.
+Compare complete source-to-result cost and generated runtime separately; a fast
+backend does not earn promotion merely by accepting the graph. A small C test
+runner compiled once with GCC is an explicit host dependency, not a Clang
+dependency. Production self-hosting remains a separate gate.
+
+The first integration experiment captures checked and annotated KTerm graphs
+from the existing compiler written in Bend, hosted in JavaScript. Lowering and
+optimization remain Bend functions. Graph replay accelerates backend edits;
+fresh source checking is included in separate complete-loop measurements.
+This bridge is deliberately not described as native frontend integration.
 
 ## The objective
 

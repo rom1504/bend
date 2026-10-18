@@ -59,13 +59,13 @@ def main():
     end = source.index('// Segments\n// ========', start)
     replace('descriptor-dispatch', source[start:end], (HERE / 'dispatch.inc.c').read_text() + '\n\n')
     replace('closure-apply-width-guard', '    Fid f    = (Fid)term_aux(fun);\n    u32 war  = fid_arity(f) - 1;',
-      '    Fid f    = (Fid)term_aux(fun);\n    u32 p111_arity = fid_arity(f);\n    if (term_tag(fun) != TAG_CLO || f > FID_IO_EMIT || p111_arity == 0 || p111_arity > P111_REG_CAP) {\n      err_post(e.mem, ERR_FIDS); return 0;\n    }\n    u32 war = p111_arity - 1;')
+      '    Fid f    = (Fid)term_aux(fun);\n    u32 p111_arity = fid_arity(f);\n    if (term_tag(fun) != TAG_CLO || f > FID_IO_EMIT || p111_arity == 0 || p111_arity > p111_transport_words) {\n      err_post(e.mem, ERR_FIDS); return 0;\n    }\n    u32 war = p111_arity - 1;')
     replace('task-enter-width-guard', '    u32 war = fid_arity(f);\n    WL_FRAME(t)',
-      '    u32 war = fid_arity(f);\n    if (f > BEND_CLO_APPLY || war > P111_REG_CAP || fid_resw(f) > war) {\n      err_post(e.mem, ERR_FIDS); return 0;\n    }\n    WL_FRAME(t)')
+      '    u32 war = fid_arity(f);\n    if (f > BEND_CLO_APPLY || war > p111_transport_words || fid_resw(f) > war) {\n      err_post(e.mem, ERR_FIDS); return 0;\n    }\n    WL_FRAME(t)')
     replace('exit-result-width-guard', '    u32  n = rn;\n    Term rv[WL_RESW];',
-      '    u32  n = rn;\n    if (n > P111_RESULT_CAP) { err_post(e.mem, ERR_FIDS); return 0; }\n    Term rv[WL_RESW];')
+      '    u32  n = rn;\n    if (n > p111_program_active->result_width) { err_post(e.mem, ERR_FIDS); return 0; }\n    Term rv[WL_RESW];')
     replace('continuation-resume-width-guard', '      u32 wn = fid_arity(wf);\n      WL_FRAME(cont)',
-      '      u32 wn = fid_arity(wf);\n      if (wn > P111_REG_CAP || n > wn) { err_post(e.mem, ERR_FIDS); return 0; }\n      WL_FRAME(cont)')
+      '      u32 wn = fid_arity(wf);\n      if (wn > p111_transport_words || n > wn) { err_post(e.mem, ERR_FIDS); return 0; }\n      WL_FRAME(cont)')
     replace('compile-pure-readback', '// Show\n// ====\n\n#if MAIN_PURE\n', '// Show\n// ====\n\n#if 1\n')
     replace('descriptor-main-purity', "#if MAIN_PURE\n  show_val(e, 0, H + H_ROOT_WORD, 0);\n  putchar('\\n');\n  return 0;\n#endif", "if (MAIN_PURE) {\n    show_val(e, 0, H + H_ROOT_WORD, 0);\n    putchar('\\n');\n    return 0;\n  }")
     replace('empty-static-image', '  memcpy(H + STAT_OFF, STAT_IMG, STAT_LEN * sizeof(u64));', '  if (STAT_LEN) memcpy(H + STAT_OFF, STAT_IMG, STAT_LEN * sizeof(u64));')
@@ -87,6 +87,9 @@ def main():
     record = dict(kind='phase111-descriptor-runtime-source', version=1, complete=True, targetsRun=False,
         abiVersion=11101, stateBytes=2088, descriptorBytes=192, registerCapacity=256, resultCapacity=256,
         staticWordOffset=51413504, inputs=inputs, outputs=outputs, edits=edits,
+        bankTransport=dict(physicalWords=256, logicalWords='max(register_width,result_width,2)',
+            operations=['scalar-clear','builtin-init','builtin-read','builtin-write','builtin-save','builtin-take'],
+            fixedStateAndHeapLayout=True),
         genericSegmentABI='uint64_t segment(P111State*)',
         scope='One synchronous CPU program/context; checked sequential lowering. Retained allocator/refcounts/closures/tasks/effects/show, no per-program C translation unit.',
         buildCommand=['gcc','-O2','-std=gnu11','-ffp-contract=off','-c',str(out/'runtime.c'),'-o',str(out/'runtime.o')],

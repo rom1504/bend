@@ -1,5 +1,9 @@
 /* Program-dependent tables move into the authenticated QBE descriptor. */
 static const P111Program *p111_program_active;
+/* Logical transport width only. Physical banks and WL_RESW stay at 256 so the
+ * public state and corpus/static layout remain ABI-identical. Bound once before
+ * any segment runs; stale slots above this width never carry live arguments. */
+static uint32_t p111_transport_words;
 static uint32_t p111_core_cids[18];
 static const char *const p111_core_names[18] = {
   "SNil", "SCon", "WNil", "WCon", "Nil", "Con", "Tuple", "Unit",
@@ -42,18 +46,18 @@ static const char *const p111_core_names[18] = {
 #define WL_BANK Term p111_regs[P111_REG_CAP];
 #define r0 p111_regs[0]
 #define r1 p111_regs[1]
-#define WL_INIT_BANK memset(p111_regs, 0, sizeof p111_regs);
-#define WL_READ_STATE(V) memcpy(p111_regs, (V), sizeof p111_regs);
-#define WL_WRITE_STATE(V) memcpy((V), p111_regs, sizeof p111_regs);
+#define WL_INIT_BANK memset(p111_regs, 0, sizeof(Term) * p111_transport_words);
+#define WL_READ_STATE(V) memcpy(p111_regs, (V), sizeof(Term) * p111_transport_words);
+#define WL_WRITE_STATE(V) memcpy((V), p111_regs, sizeof(Term) * p111_transport_words);
 #define WL_LOAD(A,N) do { u32 p111_n = (N); \
-  if (p111_n > P111_REG_CAP) { err_post(e.mem, ERR_FIDS); return 0; } \
+  if (p111_n > p111_transport_words) { err_post(e.mem, ERR_FIDS); return 0; } \
   for (u32 p111_j = 0; p111_j < p111_n; ++p111_j) \
     p111_regs[p111_j] = e.mem[(A) + p111_j]; } while (0);
 #define WL_LAST(X) do { \
-  if (war >= P111_REG_CAP) { err_post(e.mem, ERR_FIDS); return 0; } \
+  if (war >= p111_transport_words) { err_post(e.mem, ERR_FIDS); return 0; } \
   p111_regs[war] = (X); } while (0);
-#define WL_SAVE(V) memcpy((V), p111_regs, sizeof(Term) * P111_RESULT_CAP);
-#define WL_TAKE(V) memcpy(p111_regs, (V), sizeof(Term) * P111_RESULT_CAP);
+#define WL_SAVE(V) memcpy((V), p111_regs, sizeof(Term) * p111_transport_words);
+#define WL_TAKE(V) memcpy(p111_regs, (V), sizeof(Term) * p111_transport_words);
 
 static inline u32 p111_fid_arity(u32 fid) {
   return fid < FID_IO_EMIT ? p111_program_active->fid_arity[fid]

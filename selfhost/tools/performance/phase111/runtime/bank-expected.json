@@ -1,0 +1,106 @@
+{
+  "kind": "phase111-frozen-bank-boundaries",
+  "version": 1,
+  "frozenAtUtc": "2026-10-18T23:19:50.951710+00:00",
+  "targetsRunBeforeFreeze": false,
+  "source": {
+    "file": "selfhost/tools/performance/phase111/runtime/bank-controls.c",
+    "bytes": 5477,
+    "sha256": "426ec74e30c2eef083baaea871ce6f0714a958886d5e945dac7a2e24e7af087a"
+  },
+  "inputs": [
+    {
+      "file": "selfhost/tools/performance/phase111/runtime/runtime.h",
+      "bytes": 4232,
+      "sha256": "fa91b9a250ce735aaaa59e5515efebd42b9544da825841021887406193c1d5c1"
+    }
+  ],
+  "cases": [
+    {
+      "name": "scalar2",
+      "exitCode": 0,
+      "stdout": "scalar2:ok\n0\n",
+      "stderr": ""
+    },
+    {
+      "name": "io2",
+      "exitCode": 0,
+      "stdout": "io2:ok\n0\n",
+      "stderr": ""
+    },
+    {
+      "name": "direct17",
+      "exitCode": 0,
+      "stdout": "direct17:ok\n0\n",
+      "stderr": ""
+    },
+    {
+      "name": "capture17",
+      "exitCode": 0,
+      "stdout": "capture17:ok\n0\n",
+      "stderr": ""
+    },
+    {
+      "name": "results3",
+      "exitCode": 0,
+      "stdout": "results3:ok\n0\n",
+      "stderr": ""
+    },
+    {
+      "name": "input255",
+      "exitCode": 0,
+      "stdout": "input255:ok\n0\n",
+      "stderr": ""
+    },
+    {
+      "name": "result256",
+      "exitCode": 0,
+      "stdout": "result256:ok\nWords{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171, 172, 173, 174, 175, 176, 177, 178, 179, 180, 181, 182, 183, 184, 185, 186, 187, 188, 189, 190, 191, 192, 193, 194, 195, 196, 197, 198, 199, 200, 201, 202, 203, 204, 205, 206, 207, 208, 209, 210, 211, 212, 213, 214, 215, 216, 217, 218, 219, 220, 221, 222, 223, 224, 225, 226, 227, 228, 229, 230, 231, 232, 233, 234, 235, 236, 237, 238, 239, 240, 241, 242, 243, 244, 245, 246, 247, 248, 249, 250, 251, 252, 253, 254, 255, 256}\n",
+      "stderr": ""
+    },
+    {
+      "name": "descriptor-width257",
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "bend: phase111: program entry or width mismatch\n"
+    },
+    {
+      "name": "descriptor-arity-over-width",
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "bend: phase111: invalid segment metadata\n"
+    },
+    {
+      "name": "getter-at-width",
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "bend: phase111: invalid register index\n"
+    },
+    {
+      "name": "return-over-width",
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "bend: phase111: return width mismatch\n"
+    },
+    {
+      "name": "closure-zero-arity",
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "bend: phase111: invalid sequential closure apply\n"
+    },
+    {
+      "name": "closure-fid-outside",
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "bend: phase111: invalid sequential closure apply\n"
+    }
+  ],
+  "oracle": "Literal input/return words and descriptor/ABI limits independently specified before execution; result256 observes all 256 returned words through ordinary EXIT and root readback.",
+  "limits": [
+    "C ABI fixtures, not source-language lowering coverage.",
+    "io2 exercises real builtin closure application and Emit construction, not a foreign IO effect provider.",
+    "results3 checks ordinary direct continuation results/capture; result256 checks EXIT save/root delivery. Task-backed EXIT continuation WL_TAKE is not covered.",
+    "Stale slots above logicalW are intentionally seeded and checked as a representation diagnostic; production code must not observe them.",
+    "No backend speed or parallel scheduler qualification follows from these controls."
+  ]
+}

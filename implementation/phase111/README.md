@@ -158,19 +158,42 @@ QBE7.68s, assembly2.37s, link0.22s, total build10.26s. The complete assembly is
 in4.78s; its61,184-byte QBE output matches the independently acquired checked
 Bend API exactly, and its executable prints the frozen expected output. This
 establishes a real native source request, not yet native self-reproduction.
+The complete19-case native suite then passes in97.10seconds:16positive
+programs and3expected refusals. It runs the same frozen fixture/output contracts
+as the checked API, and reports crashes/timeouts separately from refusal.
 
 The [source dependency slice](source-slice-audit.md) cuts source size65.4% and
 definitions58.0%, preserving declaration bodies. `sliced-api01` successfully
 checks its full entry and acquires12exports in6.59s. Native qualification and
 self-reproduction of this smaller complete compiler remain separate.
 
-## Next integration
+## Native self-request and bounded register transport
 
-N1 is now compiling its exact full source with the same inputs as the checked
-API. The native wrapper compares complete QBE bytes before rebuilding N2 with
-the same runtime. The broader semantic corpus follows this gate. The
-checked Bend API can emit the complete Phase111 source directly to QBE. If that
-works, use the directly built native image to emit its successor; this avoids an
-extra C/cproc image acquisition. Preserve resource limits and diagnose failures
-on small examples before repeating full builds. No native performance or
-upstream parity claim is established yet.
+`native-self01` reached its1,100-second deadline, with no output or compiler
+diagnostic, and646,033,408bytes peak process-tree RSS. It remains a failed
+self-hosting attempt. The request received a short live sampling intervention,
+so its wall time is not an uninstrumented benchmark. `perf` was unavailable
+(the installed wrapper lacked its matching binary). A read-only ptrace sampler
+found13of24RIP snapshots in `p111_set_regs`,4in closure application and2in
+ownership-use helpers. Fixed sampling is qualitative; heuristic frame-pointer
+walks and out-of-image addresses cannot supply reliable call-stack attribution.
+
+Source audit identified a concrete cost: every segment transition cleared256
+register slots although this complete compiler requires26. Runtime-source04
+keeps physical capacities, state/descriptor sizes and `STAT_OFF` unchanged, but
+clears/copies only `max(register_width,result_width,2)` words. Builtin
+INIT/READ/WRITE/SAVE/TAKE are narrowed coherently, and transfer bounds remain
+checked. See [the bank audit](../../selfhost/tools/performance/phase111/runtime/bank-audit.md).
+
+Runtime04 builds in1.28seconds; the original ten boundary cases pass. Reusing
+the authenticated full QBE object, `full-native03` relinks in0.215seconds.
+`native-fast04` then passes all five cases in20.91seconds, and every complete
+QBE output equals its earlier native-focused01 counterpart. Their individual
+compiler request times are0.821–0.855× the earlier single observations
+(about15–18%less). These are finite, non-alternating observations, not a broad
+or statistically established performance ratio.
+
+`native-self02` is compiling the unchanged full-source05 with runtime04.
+Complete QBE-byte comparison and successor construction remain pending.
+The broader semantic corpus follows this gate. Production defaults remain
+unchanged; no new upstream speed ratio is established.

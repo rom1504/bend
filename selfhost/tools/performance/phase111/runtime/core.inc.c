@@ -43,6 +43,12 @@ static void p111_bind(const P111Program *program) {
       "phase111: invalid constructor metadata");
   }
   p111_program_active = program;
+  /* Binding validated both widths against the fixed capacities above. Include
+   * two runtime apply arguments even for programs whose own arity is smaller.
+   * Incoming continuation widths are bounded by both arity and result_width. */
+  p111_transport_words = (u32)(program->register_width > program->result_width
+    ? program->register_width : program->result_width);
+  if (p111_transport_words < 2) p111_transport_words = 2;
   for (u32 i = 0; i < 18; ++i) {
     p111_core_cids[i] = p111_lookup_cid((void *)program, p111_core_names[i]);
     p111_require(p111_core_cids[i] != UINT32_MAX, "phase111: missing core constructor identity");
@@ -105,9 +111,9 @@ uint64_t p111_rt_frame(P111State *state, uint32_t next_fid, const uint64_t *capt
 }
 
 static void p111_set_regs(P111State *state, const uint64_t *values, uint32_t count) {
-  p111_require(count <= P111_REG_CAP && (!count || values), "phase111: invalid register transfer");
+  p111_require(count <= p111_transport_words && (!count || values), "phase111: invalid register transfer");
   if (count) memmove(state->regs, values, count * sizeof(uint64_t));
-  memset(state->regs + count, 0, (P111_REG_CAP - count) * sizeof(uint64_t));
+  memset(state->regs + count, 0, (p111_transport_words - count) * sizeof(uint64_t));
 }
 
 uint64_t p111_rt_jump(P111State *state, uint32_t fid, const uint64_t *args, uint32_t count) {
@@ -140,7 +146,7 @@ uint64_t p111_rt_apply(P111State *state, uint64_t closure, uint64_t argument) {
 uint64_t p111_rt_stack_pop(P111State *state, uint32_t count) { state->sp -= count; return 0; }
 uint64_t p111_rt_stack_get(P111State *state, uint32_t index) { return state->sp[index]; }
 uint64_t p111_rt_reg_get(P111State *state, uint32_t index) {
-  p111_require(index < P111_REG_CAP, "phase111: invalid register index");
+  p111_require(index < p111_transport_words, "phase111: invalid register index");
   return state->regs[index];
 }
 uint64_t p111_rt_fail(P111State *state, uint32_t code) { err_post(state->e.mem, code); return 0; }

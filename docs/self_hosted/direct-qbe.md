@@ -185,10 +185,12 @@ image provenance and qualification must remain visible in the adjacent report.
 The underlying image argument contract is:
 
 ```text
-IMAGE --threads 1 --gpu off -- ABS_INPUT ABS_BASE cache ABS_CARRIER STAMP
-IMAGE --threads 1 --gpu off -- ABS_INPUT ABS_BASE live UNUSED UNUSED
+IMAGE --threads 1 --gpu off -- phase111 ABS_INPUT ABS_BASE cache ABS_CARRIER STAMP
+IMAGE --threads 1 --gpu off -- phase111 ABS_INPUT ABS_BASE live UNUSED UNUSED
 ```
 
+The explicit `phase111` argument supplies the program-name slot consumed by the
+Bend entry; this runtime does not prepend the executable name to `IO.args`.
 It reads source and trusted assets, runs the checked Bend compiler and prints
 QBE chunks to stdout. It does not launch QBE or a linker itself. Preserve the
 exit status and diagnostics before treating stdout as a valid `.ssa` product.
@@ -213,3 +215,16 @@ finite correctness results do not replace production B1/B2/upstream benchmarks
 or establish a new speed ratio. The [metric definitions](METRICS.md) and
 [Phase111 report](../../implementation/phase111/README.md) identify the evidence
 needed for each claim.
+
+## Full compiler builds and resource limits
+
+The complete source emits about50.7MB QBE and68.8MB assembly. For these builds
+use `selfhost/tools/performance/phase111/guard.py --file-mib 128` in place of
+the historical Phase86 guard; its default memory/deadline supervision is shared,
+and it requires additional disk headroom. The old64MiB cap is sufficient for
+small fixtures but truncates the full assembly. Keep the4GiB/16GiB RSS/available
+memory settings for full acquisition. See the report for exact retained commands.
+
+Route-local labels N1/N2 mean the first direct-native compiler (acquired by the
+checked JavaScript-hosted Bend API) and its native-built successor. They do not
+replace the existing B1/B2 or upstream speed measurements.

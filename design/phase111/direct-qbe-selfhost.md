@@ -163,3 +163,18 @@ all direct-backend modules. Declaration grouping changes source order, so a
 checked API, semantic gates and same-slice native bootstrap are needed before
 promoting this smaller source. Do not mix that experiment into the initial
 same-full-source N1/N2 consistency comparison.
+
+## Runtime-only performance amendment
+
+The first native self-request timed out after1,100seconds, without a diagnostic
+or output. A short, instrumented24-sample RIP observation found13samples in
+register-bank clearing and4in closure application; these are qualitative clues,
+not unbiased CPU shares. Source audit confirms all256slots were cleared/copied
+although the full program advertises only26registers.
+
+Keep the256-word physical layout and static-image offset unchanged. Bind a
+logical transfer width `max(register_width,result_width,2)`, narrow scalar
+clearing and builtin INIT/READ/WRITE/SAVE/TAKE together, and retain bounds checks.
+Unused high slots are never owners or read as arguments. Require boundary and
+small exact-output gates before retrying the full source. Reuse the authenticated
+QBE object and relink the new cached runtime; do not reacquire the compiler.

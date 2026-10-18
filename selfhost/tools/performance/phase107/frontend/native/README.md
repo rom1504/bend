@@ -133,3 +133,29 @@ authenticates every system header or shared library.
 `cache-controls.py --out NEW_DIR` checks cold/hit behavior, tool/ABI/source/text
 invalidation, long filenames and corrupt object/assembly/receipt rebuilding.
 It uses non-executable text objects and runs no compiler or generated target.
+
+## Measured complete-path latency
+
+The source04 image with pidfd supervision passed three paired/reversed rounds on
+the same zero-argument `main()`, prepared Base, fresh objects and exact independent
+program outputs. Source-to-executable medians in seconds are:
+
+| Source | Installed native Bend → C → Clang O2 | Native Bend → QBE | QBE / C |
+| --- | ---: | ---: | ---: |
+| Arithmetic | 0.595 | 0.376 | 0.633 |
+| Recurrence | 0.584 | 0.382 | 0.654 |
+| Compiler classifier | 0.624 | 0.390 | 0.625 |
+
+These three comparisons are 34.6–37.5% shorter. A separate matched native/JS
+batch reports ratios 0.401–0.437 across cold/warm object caches; native prepared
+Base and the JS normal frontend are distinct interface conditions. QBE comparison
+removes all trailing LF bytes and otherwise compares bytes exactly; program stdout
+is exact. The actual cache campaign passes 12 builds/120 outputs, including
+corruption repair. No Bend code or installed selection changed for supervision.
+
+`process.py` uses pidfd readiness with a deadline-preserving polling fallback.
+Native drivers and both comparison arms' outer waits pin/snapshot the helper and
+record the actual wait method. The controlled host probe passed 56 timings and
+13 controls; complete before/after batches are descriptive, not a causal
+isolation of the helper. See the [receipts, clocks and limitations](../../../../../../implementation/phase107/supervision.md)
+before interpreting these finite results as broader compiler performance.

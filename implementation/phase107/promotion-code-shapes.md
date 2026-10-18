@@ -94,7 +94,7 @@ call/argument, allocation, memory and control positions. Original body4096,
 program65536 and function256 bounds limit work; output growth over4096 or failed
 final verification returns the original whole program.
 
-The frozen [controls](../../selfhost/tools/performance/phase107/inline/strength-controls.json)
+The successor [controls](../../selfhost/tools/performance/phase107/inline/strength-controls-v2.json)
 contain70 coefficients, two widths, both coefficient positions and2800 complete
 modular product expectations generated independently with Python integers. U64
 values are decimal strings to avoid JS Number rounding. The U64 fixture's product
@@ -103,7 +103,23 @@ a supplied full64-bit expectation. Repeating with a wrong high-half expectation
 checks that low32-bit agreement cannot mask an error. Extra witnesses cover a
 non-atom refusal, nested eligible arithmetic and invalid widths.
 
-Only source/data checks have run: definition-name uniqueness, source pins, pinned
-Base unary `U32.shr` signature and independent arithmetic expectations. Bend
-checking, complete backend semantics, cap refusals and paired object/runtime
-measurements are pending root-owned targets. No arithmetic-pass speedup claimed.
+Bridge17's first checker attempt failed in the fixture helper: `width` was used
+twice without a borrowing annotation. Its raw diagnostic remains in
+`selfhost/build/phase107/bridge-check17/stderr.log`. Commit `cb1c3c0` adds only the
+fixture's `+width`; the transformation core is unchanged. The original controls
+remain preserved and v2 changes only the fixture identity/version/derivation,
+with all2800 arithmetic expectations unchanged. Root will acquire a fresh image.
+
+The supplemental [control builder](../../selfhost/tools/performance/phase107/strength-extra-controls.mjs)
+constructs11 host-side IR graphs without requiring another Bend-source rebuild.
+Two executable witnesses observe a called function's write and a loaded snapshot
+across a subsequent store; three malformed call/load/allocation operands require
+unchanged-input refusal. Six structural-only cases cover257functions,4096/4097
+original body nodes,4096 accepted versus4098 refused total growth, and65537
+original program nodes. Malformed and capacity graphs must not execute. These
+are prepared controls, not passing target results.
+
+Source/data checks cover definition-name uniqueness, source pins, pinned Base
+unary `U32.shr` signature and independent arithmetic expectations. Successful Bend
+checking, backend semantics, actual cap refusals and paired object/runtime
+measurements remain pending root-owned targets. No arithmetic-pass speedup claimed.

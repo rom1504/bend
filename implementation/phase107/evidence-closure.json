@@ -1,0 +1,62 @@
+{
+  "kind": "phase107-evidence-publication",
+  "complete": true,
+  "recordedAfterVerification": true,
+  "capsule": [
+    {
+      "file": "implementation/phase107/evidence/FILES.sha256",
+      "bytes": 2226975,
+      "sha256": "317edefca83656d2c8c4d0ed9a547ebd680a2792845f94c7f3e631b9389da39c"
+    },
+    {
+      "file": "implementation/phase107/evidence/manifest.json",
+      "bytes": 17230299,
+      "sha256": "700b276e37936c43ad460dd3fa9dab6967b838371d6af1c7b37ca6ce2393a445"
+    },
+    {
+      "file": "implementation/phase107/evidence/observations.tar.gz",
+      "bytes": 22374689,
+      "sha256": "70afb53218a3dd365de741fe6412501f2da2b9d60ffb0334788bbe1a983bc11a"
+    }
+  ],
+  "creationGuard": {
+    "complete": true,
+    "command": [
+      "bash",
+      "-c",
+      "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+      "phase86",
+      "taskset",
+      "-c",
+      "0",
+      "python3",
+      "-B",
+      "selfhost/tools/performance/phase107/archive.py",
+      "--writers-closed",
+      "--out",
+      "implementation/phase107/evidence"
+    ],
+    "started": 1792315016.7276216,
+    "rssLimitBytes": 2147483648,
+    "availableFloorBytes": 4294967296,
+    "peakTreeRssBytes": 155840512,
+    "minimumAvailableBytes": 27468419072,
+    "returncode": 0,
+    "wallSeconds": 36.11809140117839,
+    "finished": 1792315052.845712
+  },
+  "verification": {
+    "command": [
+      "python3",
+      "-B",
+      "selfhost/tools/performance/phase107/archive.py",
+      "--verify-only",
+      "implementation/phase107/evidence"
+    ],
+    "observedExitCode": 0,
+    "complete": true,
+    "verified": true,
+    "members": 16155
+  },
+  "scope": "Publication closure outside the capsule avoids self-referential hashes. Creation and explicit replay verification inspect bytes only; no compiler benchmarks were rerun. Snapshot content is defined by capsule manifest, not later repository files."
+}

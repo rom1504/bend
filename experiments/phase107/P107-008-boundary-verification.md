@@ -1,7 +1,9 @@
 # P107-008: verify a bounded optimization pipeline at its boundaries
 
-Status: prepared, not checked or measured. The optional research pipeline does
-not change a standalone pass, the production compiler, or an installed image.
+Status: checked Bridge15 prototype; the first 69-program exact-product audit and
+paired JS timing campaign pass. The broader planned boundary/fault-injection
+controls remain incomplete. The optional research pipeline does not change a
+standalone pass, the production compiler, or an installed image.
 
 The kernel-measure01 report identifies a much larger JS optimization cost than
 native optimization for `many`. Root's component observation is approximately
@@ -66,3 +68,36 @@ serialization, process startup and object generation. Measure JS and native host
 separately. The first target is reduced compiler/research-loop time with identical
 generated code, not improved generated-program runtime. Keep the fully checked
 composition as the diagnostic baseline even if the fast pipeline is retained.
+
+## First observation: pipeline-audit01
+
+The [audit](../../selfhost/build/phase107/pipeline-audit01/report.json) passes
+69 programs: 61 valid and eight invalid, including eight native-source IR graphs.
+All complete IR/JSON products match; all 61 valid programs also emit identical C
+and fused QBE text. The checked reference's seven stages pass 427 intermediate
+validity checks. Invalid inputs remain exactly unchanged. No generated program
+was executed by this audit.
+
+Three rounds each run checked/fast and fast/checked pairs for four cases, giving
+six samples per policy per case and 48 timed calls. Median checked/fast seconds
+are `many` 8.626527/0.889649, `text` 0.009288/0.001176, `shared`
+0.010457/0.002927 and native-source `branches` 0.006896/0.000887: respectively
+9.70×, 7.90×, 3.57× and 7.78× faster in this experiment.
+
+These are warmed, same-process JS optimization timings in one image after
+qualification, not fresh-process or native timings. The timed reference is the
+complete public composition with its existing pass checks, plus the same outer
+input guard and final verification/fallback as the candidate. Additional
+diagnostic intermediate checks, cloning, serialization and emission are outside
+the timed interval. The earlier kernel-measure01 timings use a different recipe
+and must not be combined into a before/after ratio with these numbers.
+
+The result supports removing repeated validation at explicit trusted boundaries.
+It does not complete the entire control plan: node-cap and memory-body-cap
+boundary matrices, the 255/256-function boundary pair, private-helper pairwise
+comparisons and final-verifier failure injection have not run. The existing
+257-function refusal fixture is included. The pipeline reuses the same source
+limits, but finite products and source inspection are not a validity-preservation
+theorem. Independent runtime oracle replay was not part of this audit; native
+paired optimizer timings also remain pending. Exact evidence identities and
+timing details are in the [implementation report](../../implementation/phase107/boundary-verification.md).

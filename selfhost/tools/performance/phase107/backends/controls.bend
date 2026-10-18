@@ -54,8 +54,27 @@ def nxq_control_flow() -> NxProgram:
     NxReturn{nx_b("add", nx_v("sum"), nx_u(17))}]}]}
 
 @unsafe
+def nxq_control_cap_body(+count: U32) -> List<&2, NxStmt>:
+  nx_choose(List<&2, NxStmt>, U32.is_eq(count, 0),
+    u => [NxReturn{nx_b("add", nx_v("x"), nx_v("seed"))}],
+    u => Con{NxSet{"x", nx_b("add", nx_v("x"), nx_u(1))}, nxq_control_cap_body(U32.sub(count, 1))})
+
+@unsafe
+def nxq_control_cap(+count: U32) -> NxProgram:
+  NxProgram{"main", [NxFunction{"main", [nx_p("n"), nx_p("seed")], NxU32{}, [nx_p("x")], nxq_control_cap_body(count)}]}
+
+def nxq_control_entry_pointer() -> NxProgram:
+  NxProgram{"main", [NxFunction{"main", [nx_p("n"), nx_p("seed")], NxU32{}, [nx_pp("self")], [
+    NxIf{nx_b("eq", nx_v("n"), nx_u(0)), [NxReturn{nx_v("seed")}], []},
+    NxSet{"self", NxFunc{"main"}},
+    NxReturn{NxICall{nx_v("self"), [nx_b("sub", nx_v("n"), nx_u(1)), nx_b("add", nx_v("seed"), nx_u(1))], [NxU32{}, NxU32{}], NxU32{}}}]}]}
+
+@unsafe
 def nxq_control(+name: String) -> Maybe<&2, NxProgram>:
   nx_choose(Maybe<&2, NxProgram>, String.eq(name, "qbe_u64"), u => Some{nxq_control_u64()}, u =>
   nx_choose(Maybe<&2, NxProgram>, String.eq(name, "qbe_ptr_offset"), u => Some{nxq_control_ptr_offset()}, u =>
   nx_choose(Maybe<&2, NxProgram>, String.eq(name, "qbe_zero_alloc"), u => Some{nxq_control_zero_alloc()}, u =>
-  nx_choose(Maybe<&2, NxProgram>, String.eq(name, "qbe_flow"), u => Some{nxq_control_flow()}, u => None{}))))
+  nx_choose(Maybe<&2, NxProgram>, String.eq(name, "qbe_flow"), u => Some{nxq_control_flow()}, u =>
+  nx_choose(Maybe<&2, NxProgram>, String.eq(name, "qbe_cap512"), u => Some{nxq_control_cap(127)}, u =>
+  nx_choose(Maybe<&2, NxProgram>, String.eq(name, "qbe_cap516"), u => Some{nxq_control_cap(128)}, u =>
+  nx_choose(Maybe<&2, NxProgram>, String.eq(name, "qbe_entry_pointer"), u => Some{nxq_control_entry_pointer()}, u => None{})))))))

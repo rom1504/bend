@@ -34,6 +34,9 @@ def oracle(name, n, seed):
         return int(v == 0) + 2*int(v < (1 << 63)) + 4*int(seed >> 32 == MASK) + 8*int((seed+1)&mask == 0)
     if name == 'qbe_ptr_offset': return 1 if n == MASK else 3
     if name == 'qbe_zero_alloc': return 14
+    if name == 'qbe_cap512': return (seed+127)&MASK
+    if name == 'qbe_cap516': return (seed+128)&MASK
+    if name == 'qbe_entry_pointer': return (n+seed)&MASK
     if name == 'qbe_flow':
         if n == 0: return 11 if seed == 0 else 13
         total = 0
@@ -50,6 +53,7 @@ def main():
     p.add_argument('--qbe', type=Path, required=True)
     p.add_argument('--out', type=Path, required=True)
     p.add_argument('--adapter', type=Path)
+    p.add_argument('--fused-entry', action='store_true')
     a = p.parse_args(); out = a.out.resolve()
     assert out.is_relative_to(ROOT/'selfhost/build/phase107') and not out.exists()
     out.mkdir(parents=True)
@@ -61,6 +65,9 @@ def main():
                   scope='Finite controls on prototype IR. No performance or whole-compiler proof.')
     if a.adapter:
         report['adapter'] = pin(a.adapter)
+    report['fusedEntry'] = a.fused_entry
+    if a.fused_entry:
+        report['methods'].append(pin(HERE/'qbe-entry.bend'))
     def checkpoint(): save(out/'report.json', report)
     def run(label, command, code=0, output=None):
         argv = list(map(str, command)); start = time.monotonic()
@@ -85,15 +92,19 @@ def main():
                                for offset in [0,30] for i,row in enumerate(laws)]
         save(out/'cases.json',cases); report['cases']=pin(out/'cases.json')
         source = out/'source.bend'
-        source.write_text(a.source.read_text()+'\n'+(HERE/'controls.bend').read_text())
+        source.write_text(a.source.read_text()+'\n'+
+                          ((HERE/'qbe-entry.bend').read_text()+'\n' if a.fused_entry else '')+
+                          (HERE/'controls.bend').read_text())
         report['combinedSource']=pin(source)
         bun = ROOT/'selfhost/.bootstrap/bun-1.4.3/bun'
         api = out/'api.mjs'
         run('checked-bend-api',[bun,ROOT/'selfhost/tools/stage0-library.mjs',source,api,
                                'nxq_program','nxq_control','nx_workload','nx_optimize','nx_verify',
-                               'nx_json_program','nx_c_program','nx_law_bridge'])
+                               'nx_json_program','nx_c_program','nx_law_bridge',
+                               *(['nxq_program_fused','nxq_body_fuel'] if a.fused_entry else [])])
         report['api']=pin(api)
-        run('bend-emission',[bun,HERE/'emit-controls.mjs',api,out,out/'cases.json'])
+        run('bend-emission',[bun,HERE/'emit-controls.mjs',api,out,out/'cases.json',
+                             'fused' if a.fused_entry else 'baseline'])
         report['emission']=read(out/'emission.json')
         runner=out/'runner.o'
         run('common-runner-gcc',['gcc','-std=c11','-O2','-c',P106/'cranelift/runner.c','-o',runner])

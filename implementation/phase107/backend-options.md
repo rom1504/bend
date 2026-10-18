@@ -167,3 +167,95 @@ relocatable combined object; its description as an incremental link does not
 mean it persistently patches a running executable. A resident runner still
 needs a link/load boundary unless a JIT or custom relocation loader replaces it.
 [GNU linker options](https://sourceware.org/binutils/docs/ld.html).
+
+## ABI entry-wrapper cost
+
+Read-only `objdump -dr` inspection of `measure02/source-{erased,arithmetic}-4096-`
+objects identifies a concrete difference after source-level inlining. Counts
+below include the entry wrapper and its called benchmark body, exclude alignment
+padding, and include QBE's `endbr64` instructions.
+
+| Input | C `-O2` instructions / bytes | QBE instructions / bytes | Cranelift instructions / bytes |
+| --- | ---: | ---: | ---: |
+| `erased` | 4 / 11 | 14 / 37 | 16 / 42 |
+| `arithmetic` | 9 / 33 | 20 / 62 | 21 / 70 |
+
+C folds argument-array loads and benchmark arithmetic into `phase106_entry`.
+QBE and Cranelift retain an additional direct call/return between that wrapper
+and the benchmark. QBE's wrapper creates a frame; Cranelift creates frames in both
+functions. This is static evidence of removable work, not proof that it explains
+the entire runtime ratio. The shared runner overhead remains in every measurement.
+
+A bounded consumer change can emit the same entry `NxFunction` body directly
+under the exported argument-array ABI: load parameters, initialize typed slots,
+then call the existing statement emitter. Keep the original private function for
+recursive calls and address-taking. This applies to every admitted entry body,
+without a benchmark-name check or new source semantics. The established U64,
+control-flow, allocation and indirect-call matrix must still pass before a paired
+runtime comparison can establish a gain. The same construction is possible in
+Cranelift by reusing its function-body lowering instead of generating a call-only
+wrapper.
+
+The optional QBE change is now implemented in additive `qbe-entry.bend`, exported
+as `nxq_program_fused`; baseline `qbe.bend` remains byte-identical. A fuel-bounded
+walk permits at most512 expression/statement nodes before retaining the baseline
+wrapper. No function is deleted or given a different ordinary-call signature.
+
+`qbe-fused-controls01/report.json` and the corresponding guard establish670
+independent model cases and2,010 native results across18 programs, two policies
+and three backends. All108 executables rejected wrong expectations; eight invalid
+graphs were refused. The full batch took12.390seconds with164.9MiB peak RSS.
+Fixtures structurally verify fusion at exactly512 nodes and fallback at516, and
+execute recursion through the entry function's ordinary function pointer. These
+are admission results; root's separately controlled timing determines any gain.
+
+`units.bend` adds a single-verification batch API for separate QBE objects:
+`nxq_units(program,fuse)` returns typed named text units plus an error field.
+Runtime and all function symbols are exported across object boundaries; the
+entry unit contains the argument-array ABI and arity word. This is source-ready
+and passed the integrated `bridge-check08` source/API gate in1.697seconds. Actual
+separate-object link/cache controls are still required.
+No object cache or host-language compiler logic is implemented in this file.
+
+## Native frontend acquisition feasibility
+
+The selected Phase102 source (`projection-cost-source01/compiler.bend`,
+SHA256`63ef222c4c6de73bb54c8e51d3b0a0552979b5791ea98e64d1098051a9cda237`)
+contains the same KTerm/KDef ABI used by the new scalar lowerer and has no existing
+`Nx`/`nx_`/`nxq_`/`nxk_` definitions. Its exact `p86_plan_*` chain starts near
+line38415 and reaches checked annotation near38515. A narrow replacement result
+can return annotated definitions at that point, retaining parsing, prefix checking,
+ownership, entry and layout admission, and omitting `nr_prepare_annotated` and the
+old generated-C backend from the reachable executable.
+
+Use that selected source, replace its `main`, clone the admitted plan chain, and
+append the already checked Nx lowerer/optimizer/QBE modules. Existing
+`p86_read_file`, `p86_write_file` and `p88_cache_prepare` provide Base IO/cache
+decoding. The source remains large, so frontend parsing/checking during acquisition
+will still cost time even if unreachable machine-backend functions disappear from
+generated code. No smaller image or speedup is established before emission.
+
+Phase103's retained receipts provide a useful upper-scale comparison: native
+emission123.035seconds/1.41GiB peak RSS, followed by Clang `-O2` compilation
+369.876seconds/2.42GiB. That full image produced30.40MB C and a21.16MB executable.
+One frontend-oriented acquisition is therefore plausible within roughly5–12min
+plus source preparation/admission, conditional on no unexpected compiler issue.
+Current disk headroom is~1,003MiB; reserve200–400MiB for source, generated C,
+object/executable and tool temporaries, avoid duplicate image trees, and keep the
+existing serial memory guard. This is a feasibility estimate, not a scheduled run.
+
+Do not simply append Phase103's public CLI to the candidate: its three
+`NativeHost.*` foreign methods were admitted by a separate exact-source B1 bridge.
+That authority was deliberately not granted to ordinary installed-compiler input.
+For a bounded native experiment, existing Base File IO avoids that new FFI
+boundary. Authenticate the selected Base/cache bytes in the external research
+harness before launching, or prepare Base live; the embedded p88 stamp and
+structural decoder do not authenticate arbitrary replacement file contents.
+Read the actual selected chain rather than restoring the older Phase88 source.
+
+Successful acquisition would mean ordinary experimental requests execute native
+Bend parsing/checking/lowering and QBE/binutils, with neither Bun nor Clang in
+those requests. One-time acquisition would still use the existing compiler and
+Clang, and the new target would remain the explicitly admitted scalar subset.
+It would not yet mean a QBE-self-hosted compiler, full ownership/GPU integration,
+or a replacement for the installed general compiler.

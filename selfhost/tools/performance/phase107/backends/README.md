@@ -98,3 +98,28 @@ verifier, JSON/C consumers and workload constructors, but not `controls.bend`.
 Use fresh output paths. The resulting report retains commands, expectations,
 checked-source identity, model allocation/reclamation counts, verifier rejections
 and failures. Its diagnostic wall times are not performance results.
+
+## Optional entry fusion and separate objects
+
+Include `qbe-entry.bend` after `qbe.bend` to expose `nxq_program_fused`. It emits
+the entry body's existing instructions directly under the argument-array ABI,
+retaining all private functions for recursion and function-pointer identity.
+Duplication is limited to512 expression/statement nodes; larger entries keep the
+original wrapper. The original `nxq_program` implementation is unchanged.
+`controls.py --fused-entry` selects this additive API and checks the exact512-node
+admission,516-node fallback, and recursive entry through an ordinary function
+pointer alongside the existing controls.
+
+Include `units.bend` after those files to expose `nxq_units(program,fuse)`.
+It validates the entire graph once, then returns
+`NxqUnits{units:List NxqUnit{name,text},error:String}`. Unit names are `runtime`,
+`entry`, and `function_<name>`; generated symbols are exported so independently
+assembled objects can call one another. The entry unit also defines the common
+arity word. Use hashed filenames, since valid source function names can be long.
+
+Object caching belongs outside the Bend emitter. An object identity must include
+its exact post-optimization unit text, relevant function signatures, runtime ABI,
+backend/assembler/target identities and flags. Retain cold/warm costs and reject
+corrupted objects. This is ordinary separate compilation, not persistent executable
+patching, automatic compiler-wide incremental checking, or a completed native
+self-hosting port.

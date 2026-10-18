@@ -1,4 +1,8 @@
-# Demand-aware inlining preparation
+# Demand-aware inlining
+
+Closing status: implemented, qualified on finite controls and retained in the
+experimental pipeline. The [phase report](README.md) supplies current composed
+runtime/optimizer findings; this note preserves the original policy rationale.
 
 The optional 56-line `inline/demand.bend` adds `nx_inline_demand` without editing
 `entry.bend` or any production compiler source. It reuses the existing verifier,
@@ -22,10 +26,19 @@ dead during the remaining pass may still be optimized.
 The hypothesis and admission criteria are in
 [P107-005](../../experiments/phase107/P107-005-demand-inlining.md). The new
 [`demand-controls.json`](../../selfhost/tools/performance/phase107/inline/demand-controls.json)
-pins existing source/control inputs and specifies nine reused fixtures plus
+pins existing source/control inputs and specifies reused fixtures plus
 invalid-input refusal. No fixture oracle was changed. Preparation included only
-source/data inspection; checked acquisition, semantic execution, timing and
-promotion remain the root executor's separate steps. The existing approximately
-473 ms `many` pass cost motivates the experiment, but this candidate has no
-measured gain yet. Global purity-summary scans and verification/pruning work
-remain and must be charged.
+source/data inspection; parent-run
+[demand-audit01](../../selfhost/build/phase107/demand-audit01/report.json) later
+passed 88 transformation pairs, 272 distinct model executions and three detected
+semantic mutants. The initial approximately 473 ms `many` pass cost motivated
+the experiment; it is not a matched denominator for every later composition.
+
+[Artifacts06](../../selfhost/build/phase107/artifacts06/report.json) and
+[measure07](../../selfhost/build/phase107/measure07/report.json) use demand-aware
+composition. They do not isolate a standalone demand-policy speedup. Repeated
+structural verification remained expensive, leading to the
+[boundary-verification experiment](boundary-verification.md), whose exact-product
+and warmed timing evidence has separate scope. Global purity scans, renaming,
+verification/pruning and serialization still cost work. Production defaults are
+unchanged; neither composed finite equality nor local laws prove all rewrites.

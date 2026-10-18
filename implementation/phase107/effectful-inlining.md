@@ -1,5 +1,16 @@
 # Effect-preserving leaf inlining
 
+Closing status: parent-run leaf and memory-forwarding gates passed at their
+declared finite boundaries. [Leaf-audit01](../../selfhost/build/phase107/leaf-audit01/report.json)
+records 48 transformation pairs, 256 finite input pairs, 192 native outputs and
+two detected mutants. [Memory-audit01](../../selfhost/build/phase107/memory-audit01/report.json)
+records 21 families, 300 native outputs, 280 distinct model executions, 576
+interval checks and four mutants. Historical preparation and proposed-next-pass
+sections below explain the sequence. The [phase report](README.md) and
+[scalar-promotion report](promotion.md) distinguish later composed gains from
+leaf inlining or load forwarding alone. No production promotion or whole-memory
+correctness proof is implied.
+
 The optional `nx_inline_leaf(program,budget)` fills a deliberate gap in the first
 scalar inliner: a small pointer-reading/writing helper can be inlined while
 preserving every effect. It does not need to be pure. This is the implementation
@@ -48,7 +59,7 @@ structural verifier and are not proved by this experiment.
 Status at preparation: static checks only. No compiler build, backend run,
 performance result or default change was performed by this implementation agent.
 
-## Remaining alias barrier and the next worthwhile pass
+## Historical alias barrier and the next-pass design
 
 The parent campaign reports a useful borrowed-observer gain after leaf inlining,
 but the owned observer remains about3.3× the raw Clang runtime. Inspection of
@@ -187,7 +198,8 @@ The next fixture revision adds pointer-valued self-assignment, a pointer-field
 write that makes the second probe lose provenance, and an early return/free
 inside the loop:13 families and100 frozen rows total. The second-probe fixture
 must retain its entire original loop body, rather than rely on facts removed
-after the first probe. These extra rows need their own acquisition snapshot.
+after the first probe. These extra rows required their own acquisition snapshot;
+the later memory-audit01 closes the expanded finite gate.
 Independent review also identified an oracle distinction: the overlapping U64/U32
 fixture has explicit byte-memory semantics in the interpreter and native IR, but
 the C emitter uses typed pointer accesses. Its C control therefore requires an

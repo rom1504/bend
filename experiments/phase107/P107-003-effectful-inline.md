@@ -1,6 +1,9 @@
 # P107-003 — preserve effects while removing leaf call boundaries
 
-2026-10-18. Hypothesis, not an established result: the shared/borrowed observer
+2026-10-18. Closing status: implemented and finite controls passed; performance
+benefit is workload-dependent and production defaults are unchanged.
+
+Initial hypothesis, not an established causal attribution: the shared/borrowed observer
 workloads remain slower under lightweight native backends because the current
 scalar-pure inliner excludes every pointer parameter, load and store. The remaining
 paired ratios reported by the root campaign are approximately3.9×/2.58× C; the exact
@@ -38,5 +41,17 @@ runtime checksum. Reject a policy whose runtime gain is erased by iteration cost
 for the intended check horizon. Do not infer full-compiler gains or ownership-law
 coverage from this bounded memory slice. Production defaults remain unchanged.
 
-Status: implementation and controls being prepared; no target execution by this
-agent, no speed result or promotion decision.
+## Closed result
+
+[Leaf audit01](../../selfhost/build/phase107/leaf-audit01/report.json) passes
+48 transformation pairs, 256 finite input pairs and 192 native observations.
+Two well-typed emitted-IR mutants are detected. The independently executed model
+tracks bounds/lifetimes and allocation/free counts; this is not an ownership proof.
+
+The call-boundary change helped the borrowed observer, but the owned observer
+retained an alias barrier. Later memory forwarding and scalar promotion address
+different work; their composed gains cannot be assigned entirely to leaf inlining.
+See the [effectful report](../../implementation/phase107/effectful-inlining.md),
+[code-shape history](../../implementation/phase107/code-shapes.md) and
+[phase report](../../implementation/phase107/README.md). These are bounded IR
+experiments, not source-level ownership admission or production promotion.

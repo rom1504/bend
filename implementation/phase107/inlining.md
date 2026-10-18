@@ -1,5 +1,15 @@
 # Phase107 bounded inlining
 
+Closing status: baseline/deep/entry, tail and reachability experiments below
+have parent-run finite qualification. Historical preparation paragraphs remain
+to explain the sequence. [Audit02](../../selfhost/build/phase107/audit02/report.json)
+passes 108 transformation pairs/696 finite inputs; [reach-audit01](../../selfhost/build/phase107/reach-audit01/report.json)
+passes nine families/72 native outputs with three detected mutants. Later
+[compatibility11](../../selfhost/build/phase107/compatibility11/report.json)
+records 1,968 same-source compiled-API comparisons, not a native fixed point.
+Current runtime and complete-loop findings are in the [phase report](README.md).
+These results do not turn helper laws into a whole-inliner proof.
+
 The new implementation under
 [`inline/`](../../selfhost/tools/performance/phase107/inline/) adds a shared,
 Bend-written optimization over the existing native IR. It does not edit the
@@ -105,9 +115,10 @@ invalid IR. Those seven are not accepted compiler-semantic cases. Current contro
 skip them; native observations only build the three positive fixtures and are
 unaffected. The failed predecessor and original report remain intact.
 
-The entry-first policy is prepared for separate checking/measurement. Continuation
-laws remain separately scheduled. Root owns runtime/build measurements and the
-phase report's final integration conclusion.
+At that checkpoint entry-first policy and continuation laws awaited their separate
+gates. Later audit02, retained local-law kernel checks and the phase report
+provide successor results. Runtime gains belong to recorded composed policies,
+not an inferred single-pass ablation.
 
 The external integer-runner ABI now explicitly refuses a selected entry with a
 live Bool parameter. Internal Bool helpers and erased Bool arguments remain
@@ -126,7 +137,8 @@ shares emission checks. It requires identical public JS Bool/string/U32 and tagg
 record/list boundaries rather than normalizing mismatches away. This checks stage
 equivalence of the experimental API; independent semantic/native oracles remain
 necessary, and it does not demonstrate a native fixed point or recursive speedup.
-Execution is scheduled by the root agent separately from preparation.
+The later compatibility11 report closes this prepared comparison at its finite
+API boundary; native self-hosting remains separate.
 
 The separately composable `nx_reachable` pass is prepared to remove unused
 functions after inlining. It operates on closed programs with one external entry,
@@ -143,5 +155,6 @@ stored and returned function pointers, dead versus reachable cycles, syntactical
 dead branch references and the257-function capacity boundary. Frozen structural
 expectations and wrapping-add results accompany them. The intended independent
 audit checks retained bodies/order, complete reachability, idempotence, unchanged
-refusal and detection of removed-address-target mutations. Acquisition and
-measurements are pending separately; preparation itself supplies no speed claim.
+refusal and detection of removed-address-target mutations. Later reach-audit01
+closes the finite gate. Performance belongs to subsequently recorded combined
+policies; preparation by itself supplied no speed claim.

@@ -1,6 +1,9 @@
 # P107-006 — fresh-allocation load forwarding with validated loop facts
 
-2026-10-18. Hypothesis: after effectful leaf inlining, the owned observer retains
+2026-10-18. Closing status: bounded pass implemented and finite controls passed;
+load removal alone did not deliver the hoped-for material QBE shared-loop gain.
+
+Initial hypothesis: after effectful leaf inlining, the owned observer retains
 an alias barrier between `parent[0]` and `child[0]`. Its preheader actually creates
 two fresh allocations and stores the child pointer in a separate parent field.
 Tracking that provenance can replace stable pointer/payload loads without deleting
@@ -41,3 +44,21 @@ remaining loads, object/build cost, repeated runtime and complete output. A gain
 this bounded IR does not establish whole-compiler speed, complete memory correctness
 or a production policy. Root owns guarded acquisition and execution; this agent
 performs source preparation/review only. All failed runs remain evidence.
+
+## Closed result
+
+[Memory audit01](../../selfhost/build/phase107/memory-audit01/report.json)
+passes 21 families, 300 native outputs, 280 distinct model executions, 576
+independent interval checks and four detected semantic mutants. The overlap
+witness uses `-fno-strict-aliasing` for its typed-C control; ordinary optimized
+typed C is not a valid oracle for that byte-memory case. Local helper laws and
+finite controls do not establish whole-pass memory safety or a production
+ownership contract. Existing source/leaf fixtures are regression/transfer
+controls, not a newly independent discovery holdout.
+
+[Code-shape inspection](../../implementation/phase107/code-shapes.md) showed that
+forwarding invariant loads left the repeated scalar heap updates. The subsequent
+[scalar-promotion experiment](P107-009-scalar-promotion.md) addresses those updates
+and provides the larger composed gain; do not attribute that result to forwarding
+alone. The [phase report](../../implementation/phase107/README.md) separates the
+measurements and preserves the restricted sequential allocation contract.

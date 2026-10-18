@@ -1,7 +1,8 @@
 # P107-005: stop optimizing definitions the entry no longer uses
 
-Status: optional candidate prepared; source checking and measurements pending.
-No target was run while preparing this experiment.
+Status: implemented and finite semantic controls passed; retained in experimental
+compositions. Initial source preparation ran no targets; later parent-run
+evidence is recorded below. No standalone universal pass-speed gain is claimed.
 
 The artifacts02 `many` entry-first pass spent about 473 ms optimizing a program
 whose hot entry ultimately needs none of its 128 original helper definitions.
@@ -51,3 +52,20 @@ old and new policies on the same actual bridge where possible. Retain failures
 and separate compiler time from emitted-code runtime. Accept only if the skipped
 work produces a useful measured reduction without correctness regressions;
 otherwise keep the existing policy. No speed factor or promotion is assumed.
+
+## Closed result and successor
+
+[Demand audit01](../../selfhost/build/phase107/demand-audit01/report.json)
+passes 88 transformation pairs, 272 distinct model executions and three detected
+typed semantic mutants. [Artifacts06](../../selfhost/build/phase107/artifacts06/report.json)
+and [measure07](../../selfhost/build/phase107/measure07/report.json) retain the
+policy in a broader optimization composition. Those results do not isolate its
+incremental runtime or optimizer-cost contribution.
+
+Skipping dead work did not remove the repeated-verification cost of composing
+public passes. The [boundary-pipeline experiment](../../implementation/phase107/boundary-verification.md)
+then obtained exact products on 69 controls with substantially cheaper warmed JS
+optimization; its denominator and remaining proof/control gaps are explicit.
+See [demand-inlining.md](../../implementation/phase107/demand-inlining.md) and the
+[phase report](../../implementation/phase107/README.md). Production defaults did
+not change, and an exact finite comparison does not prove the entire pipeline.

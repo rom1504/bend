@@ -74,7 +74,7 @@ imports are explicitly refused by the selected frontend. Annotation starts from
 `main`, so another requested entry must be reachable from `main`.
 
 `raw` preserves lowered Nx IR. `fast` applies explicit self-tail conversion,
-bounded deep inlining with4096 nodes, and folding. QBE entry fusion has its
+bounded entry-first inlining with4096 nodes, and folding. QBE entry fusion has its
 independent512-node cap. `units` returns JSON containing the entire typed program
 and named QBE units; `json` returns only the typed program, while `qbe` returns one
 combined IL file. Unsupported language features are refused. All request output
@@ -84,3 +84,35 @@ Reports separate authentication, native-process and complete-launcher clocks.
 Backend assembly/link/runtime measurements belong to the consuming harness. Do
 not compare these clocks to a JS-only inner call while omitting JS startup, or
 include one-time Clang acquisition in only one side of an ordinary-request ratio.
+
+## Complete executable construction
+
+`compile.py` consumes the same image receipt and invokes native Bend directly,
+then QBE, GNU assembler and GCC as linker. GCC compiles the shared C runner once
+per cache identity. The harness does not execute the generated program:
+
+```sh
+python3 selfhost/tools/performance/phase107/frontend/native/compile.py INPUT.bend \
+  --image ACQUISITION_IMAGE_RECEIPT.json --entry bench \
+  --cache selfhost/build/phase107/native-object-cache \
+  --out selfhost/build/phase107/native-executable01
+```
+
+Each fresh result directory retains the graph, unit text, assembly, objects,
+binary and exact commands/tool pins. Unit filenames are hashes, so long valid
+identifiers cannot exceed filesystem filename limits. Cached objects and
+assembly are copied into the fresh request directory only after digest checking;
+malformed or changed cache artifacts trigger rebuilding. Atomic artifact/receipt
+replacement prevents accepting an interrupted cache write as a complete entry.
+
+Keys contain exact post-transformation unit text, all function signatures, entry
+and target ABI, compiler source/image hashes and backend/tool/flag identities.
+Changed inline bodies therefore change caller keys; unaffected units can survive
+source edits. The complete input source remains pinned in each request receipt.
+`--abi-salt` provides an explicit cache invalidation control. This cache assumes
+the same fixed host toolchain environment; it is not a portable build cache that
+authenticates every system header or shared library.
+
+`cache-controls.py --out NEW_DIR` checks cold/hit behavior, tool/ABI/source/text
+invalidation, long filenames and corrupt object/assembly/receipt rebuilding.
+It uses non-executable text objects and runs no compiler or generated target.

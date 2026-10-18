@@ -57,7 +57,7 @@ def main():
     common=PHASE.parent/'phase106'
     modules=[common/'ir'/f'{name}.bend' for name in ['model','optimize','verify','json','c']]
     modules += [PHASE/'frontend/lower.bend']
-    modules += [PHASE/'inline'/f'{name}.bend' for name in ['model','admit','rename','expand','deep','tail']]
+    modules += [PHASE/'inline'/f'{name}.bend' for name in ['model','admit','rename','expand','deep','tail','entry']]
     modules += [PHASE/'backends'/f'{name}.bend' for name in ['qbe','qbe-entry','units']]
     modules += [HERE/'entry.bend']
     config='\n'.join('def '+name+'() -> String:\n  '+json.dumps(value) for name,value in [

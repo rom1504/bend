@@ -286,3 +286,28 @@ or wrong-version envelopes, mismatched source/manifest binding, changed manifest
 image and acquisition hashes, changed cached Base carrier, and changed Base.
 The live mode correctly ignores the carrier. Every image fixture is explicitly
 non-executable text; no native workload ran in these authentication tests.
+
+The installed native compiler successfully emitted source01 to C in
+110.886seconds with772.34MiB peak process-tree RSS
+(`native-emit01-guard/process.json`); that image was not linked. The final bounded
+candidate is source02,1,889,751bytes,
+SHA256`960c447acf6fe12343dbae7cb5148106ff083cd98f3c7a3c8bd4ad56fa86e9f2`.
+It includes the external-Bool-argument refusal and changes the fast policy to
+bounded entry-first inlining. The full assembled source preserves this exact
+implementation even if shared source modules change afterwards.
+
+`frontend/native/compile.py` now provides a complete native-input host shell:
+authenticated native Bend emits the graph and QBE units; QBE/GNU assembler produce
+objects; GCC compiles the shared runner and links the executable. The script does
+not execute that program. Graph JSON, IL, assembly, objects and commands remain in
+fresh request directories. Hashed filenames prevent valid long identifiers from
+exceeding filename limits. Content keys bind post-transformation text, all
+signatures, entry ABI, compiler source/image and backend identities. Runner objects
+are separately cached. Corrupt object, assembly or metadata entries are rebuilt.
+
+Thirteen host-only cache checks passed in `native-cache-controls01/report.json`,
+covering exact hits, source/image/tool/ABI/text invalidation, long names and all
+three corruption cases. Thirteen image-receipt checks passed again in
+`native-host-controls03/report.json`. These use non-executable fixtures. Actual
+native-source02 emission, acquisition, source differential controls and runtime
+measurements remain separate root-owned gates.

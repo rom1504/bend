@@ -46,7 +46,7 @@ def p107_lowered(+format: String, +fast: Bool, result: NxkResult) -> IO(U32):
     case NxkResult{program, +error}:
       nx_choose(IO(U32), String.is_empty(error),
         u => p107_emit(nx_choose(NxProgram, fast,
-          v => nx_optimize(nx_inline_deep(nx_tail_optimize(program), 4096)),
+          v => nx_optimize(nx_inline_entry(nx_tail_optimize(program), 4096)),
           v => program), format, fast),
         u => IO.die(U32, 1, "native subset: " ++ error))
 

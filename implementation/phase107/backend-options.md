@@ -259,3 +259,21 @@ those requests. One-time acquisition would still use the existing compiler and
 Clang, and the new target would remain the explicitly admitted scalar subset.
 It would not yet mean a QBE-self-hosted compiler, full ownership/GPU integration,
 or a replacement for the installed general compiler.
+
+The bounded candidate is now assembled at
+`selfhost/build/phase107/native-source01/compiler.bend` (1,886,779bytes,
+SHA256`1620f50a20776769d5db2e430ad2c694f0d6953ca852188e1765cf67687437fe`).
+Its manifest authenticates the selected source, exact13-function plan clone,
+shared Nx modules and Base/cache inputs. `frontend/native/entry.bend` exposes
+typed JSON, combined QBE or separate QBE-unit output, with explicit raw/fast and
+cached/live-Base choices. The fast policy applies self-tail conversion, bounded
+4096-node deep inlining and folding; fusion retains its independent512-node cap.
+
+`frontend/native/run.py` authenticates the acquired executable digest and pinned
+source/Base/cache, records process and authentication clocks separately, and
+only writes fresh output paths. The digest must come from an independent retained
+acquisition receipt: identity checking alone does not prove source-to-binary
+correspondence. Twelve host-only controls in
+`native-host-controls01/report.json` passed, including changed-hash/length
+refusals and exact plan-clone checks. No native acquisition or execution result
+is implied by those controls; the root campaign owns that separate guarded gate.

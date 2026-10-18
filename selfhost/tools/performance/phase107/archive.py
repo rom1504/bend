@@ -167,11 +167,17 @@ def main():
     files = sorted(entries.values(), key=lambda row: row['file'])
     by_content = {}
     for item in files: by_content.setdefault(item['sha256'], []).append(item)
-    unresolved = 0
+    unresolved = 0; content_index = {}
     for row in reference_rows:
-        declared = row['declared']; matches = [x for x in by_content.get(declared['sha256'], []) if 'bytes' not in declared or declared['bytes'] == x['bytes']]
-        row['capsuleMatches'] = [x['file'] for x in matches]
-        if not matches: unresolved += 1
+        declared = row['declared']
+        # Missing byte length is distinct from every declared JSON value.
+        content_key = declared['sha256'] + '/' + (json.dumps(declared['bytes'], sort_keys=True, separators=(',', ':')) if 'bytes' in declared else '*')
+        if content_key not in content_index:
+            matches = [x['file'] for x in by_content.get(declared['sha256'], []) if 'bytes' not in declared or declared['bytes'] == x['bytes']]
+            content_index[content_key] = dict(sha256=declared['sha256'],
+                **({'bytes': declared['bytes']} if 'bytes' in declared else {}), capsuleMatches=matches)
+        row['contentKey'] = content_key
+        if not content_index[content_key]['capsuleMatches']: unresolved += 1
     acquisition = json.loads((PHASE / 'native-source04/acquisition.json').read_text())
     assert acquisition['complete']
     for key in ['source', 'binary', 'generatedC']:
@@ -182,12 +188,20 @@ def main():
     # Reserve metadata space BEFORE writing. No uncompressed tar/copy tree exists.
     report = dict(kind='phase107-evidence-capsule', complete=False, writersClosed=True, files=files,
         exclusions=sorted(exclusions.values(), key=lambda row: row['file']), receiptReferences=reference_rows,
+        referenceContentIndex=content_index, referenceEncoding='Occurrence contentKey resolves to referenceContentIndex; each original receipt/pointer/declared pin is retained',
         unresolvedReferenceOccurrences=unresolved, malformedJsonPreserved=json_errors,
         roots=[str(p.relative_to(ROOT)) for p in roots], selectedNativeAcquisition=acquisition,
         externalPrerequisiteScope='Declared unmatched references include installed compiler/Phase103 assets, historical Cranelift adapter, QBE, Clang, Bun and Lean toolchains. QBE source tree has a complete local hash inventory but its empty build inputs receipt does not establish a pinned upstream source acquisition. Historical JSON closure is not recursively rearchived.',
         scope='All selected source/receipt/method bytes and failures; exact member verification. Unmatched historical/tool pins remain explicit external prerequisites, not claimed present or rerun. No target execution or compiler qualification.')
-    metadata_reserve = len(json.dumps(report, indent=2).encode()) + sum(len(x['file']) + 68 for x in files) + 65536
-    assert metadata_reserve < LIMIT
+    manifest_bytes = len(json.dumps(report, indent=2).encode())
+    checksum_reserve = sum(len(x['file'].encode()) + 68 for x in files)
+    metadata_reserve = manifest_bytes + checksum_reserve + 65536
+    metadata_sizes = dict(manifestBytes=manifest_bytes, checksumReserveBytes=checksum_reserve,
+        safetyReserveBytes=65536, totalReserveBytes=metadata_reserve, limitBytes=LIMIT,
+        receiptReferences=len(reference_rows), distinctContentKeys=len(content_index),
+        includedFiles=len(files), excludedFiles=len(exclusions))
+    print(json.dumps(dict(stage='metadata-budget', **metadata_sizes)), flush=True)
+    assert metadata_reserve < LIMIT, json.dumps(metadata_sizes, sort_keys=True)
     out.mkdir(parents=True)
     partial = out / 'observations.tar.gz.partial'
     with partial.open('xb') as raw:

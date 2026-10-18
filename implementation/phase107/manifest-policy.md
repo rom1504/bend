@@ -41,11 +41,18 @@ Historical receipts sometimes name an older version at a path whose current
 bytes differ. For example, earlier native host controls pin a 4,714-byte
 `frontend/native/run.py`, while the later method is 5,258 bytes. The builder
 preserves the old declared pin and searches all retained content for an exact
-hash/size match. It records matching capsule paths or an unresolved reference;
-it does not relabel the current method as the older one. These occurrence-level
+hash/size match. Each occurrence retains its receipt, JSON pointer, original declared pin and
+local path. Its `contentKey` resolves through `referenceContentIndex`, keyed by
+SHA256 and declared byte length (or an explicit missing-length marker), to the
+complete list of matching capsule paths. Empty match lists remain unresolved;
+the unresolved count still counts occurrences, not unique content. Match lists
+are stored once, avoiding quadratic repetition for identical or empty files.
+The builder does not relabel the current method as the older one. These occurrence-level
 references include both `file` and `path` pin schemas and retain the source
 receipt and JSON location. An unresolved reference can be an excluded product,
-a system tool, a historical version, or another external prerequisite.
+a system tool, a historical version, another external prerequisite, or a
+deliberately invalid pin from a negative/corruption control. Unmatched
+occurrences are not automatically classified as required missing dependencies.
 
 Installed compiler/Phase103 assets, previous native admissions, the historical
 Cranelift executable, Clang, Bun and Lean 4.34 are external when not copied.
@@ -55,6 +62,13 @@ can be rebuilt with the recorded Rust dependency/toolchain prerequisites.
 QBE's existing build receipt has an empty input list: the local excluded
 source tree receives exact hashes, but this does not establish a verified
 upstream source acquisition. The capsule makes that limitation explicit.
+
+The first creation attempt stopped before producing an archive because repeated
+match lists made the metadata reserve exceed the cap. The original method and
+failed attempt are preserved under `selfhost/build/phase107/archive-attempt01`.
+The indexed successor retains the same information and prints manifest,
+checksum, safety-reserve and occurrence/index counts before compression; a
+metadata-budget refusal includes that diagnostic breakdown.
 
 Creation requires a fresh output directory and `--writers-closed`. It streams
 one gzip tar directly to disk, with no uncompressed tar or copy tree. The total

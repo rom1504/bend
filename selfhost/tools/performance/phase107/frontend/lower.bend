@@ -227,8 +227,16 @@ def nxk_function_done(+d: KDef, +code: NxkCode, +tail: NxkResult) -> NxkResult:
       NxkResult{NxProgram{entry,Con{NxFunction{nxk_name(dn(d)),nxk_params(dt(d),0),NxU32{},locals,nxk_join(NxStmt,body,[NxReturn{value}])},fs}},nx_choose(String,String.eq(error,""),u => te,u => dn(d) ++ ": " ++ error)}
 
 @unsafe
+def nxk_entry_abi(+ty: KTerm) -> Bool:
+  nx_choose(Bool,String.eq(tg(ty),"All"),u =>
+    (U32.is_eq(qt(ty),0) || Bool.not(String.eq(nm(kid(ty,0)),"Bool"))) && nxk_entry_abi(kid(ty,1)),u => True{})
+
+# The external integer runner does not encode a Bool input domain. Internal
+# Boolean arguments remain canonical 0/1; refuse exporting a live Bool input.
+@unsafe
 def nxk_lower(+defs: List<&2,KDef>, +entry: String) -> NxkResult:
-  nxk_finish(nxk_functions(defs,defs,entry))
+  nx_choose(NxkResult,nxk_entry_abi(dt(nxk_find(defs,entry))),u => nxk_finish(nxk_functions(defs,defs,entry)),u =>
+    NxkResult{NxProgram{nxk_name(entry),[]},"external Bool parameter requires an explicit Bool ABI"})
 
 @unsafe
 def nxk_finish(+result: NxkResult) -> NxkResult:

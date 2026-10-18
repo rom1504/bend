@@ -108,3 +108,22 @@ unaffected. The failed predecessor and original report remain intact.
 The entry-first policy is prepared for separate checking/measurement. Continuation
 laws remain separately scheduled. Root owns runtime/build measurements and the
 phase report's final integration conclusion.
+
+The external integer-runner ABI now explicitly refuses a selected entry with a
+live Bool parameter. Internal Bool helpers and erased Bool arguments remain
+eligible. This is a boundary contract: arbitrary integer CLI inputs do not denote
+valid Bend Bool values, whose scalar representation must remain zero or one.
+The `refuse_bool_entry.bend` source probe selects `bench`, while its ordinary Bend
+`main` supplies a well-typed True value. This admission change needs the next
+checked source acquisition; it is not a change to the production compiler.
+
+`bootstrap-compare.mjs` prepares a serial differential comparison between two
+compiled versions of the same frozen Bend bridge. It compares checked-source
+acceptance/refusal and exact IR, fixture construction, bounded optimization,
+verification, JSON/C/QBE and ordered per-function QBE units. Inputs and compiled
+APIs are hashed, failed results are retained, and repeated identical verified IR
+shares emission checks. It requires identical public JS Bool/string/U32 and tagged
+record/list boundaries rather than normalizing mismatches away. This checks stage
+equivalence of the experimental API; independent semantic/native oracles remain
+necessary, and it does not demonstrate a native fixed point or recursive speedup.
+Execution is scheduled by the root agent separately from preparation.

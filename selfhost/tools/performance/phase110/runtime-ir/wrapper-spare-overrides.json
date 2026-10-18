@@ -1,0 +1,26 @@
+{
+  "kind": "phase110-runtime-ir-wrapper-spare-overrides",
+  "version": 1,
+  "targetsRun": false,
+  "requiresModule": "selfhost/tools/performance/phase110/runtime-ir/wrapper-spare.bend",
+  "exclusiveWith": "stored-field-overrides.json",
+  "owningInvariant": "ir_spare=0 or exclusive consumed last-owner class0 wrapper; reserve only for raw external CTR; consume exactly once into its RFC word then clear",
+  "replacements": [
+    {
+      "name": "nx110rt_rebuild_fast",
+      "origin": "selfhost/tools/performance/phase110/runtime-ir/lower.bend",
+      "oldSha256": "a320f5cf61160e6660310ef3580e124b0796d114e886c64500dd1a951a0a7695",
+      "newSha256": "4c390cf95534c033317c16d5f9ab5869e8507ce1bb612730ed5d53d2a6425832",
+      "old": "@unsafe\ndef nx110rt_rebuild_fast(+dest: String, +remaining: String, +cid: U32, +index: U32) -> List<&2,NxStmt>:\n  nxo_join(NxStmt,\n    [NxSet{\"ir_old0\",NxLoad{NxU64{},nx110rt_addr(NxVar{\"ir_src\"}),0}},\n     NxSet{\"ir_old1\",NxLoad{NxU64{},nx110rt_addr(NxVar{\"ir_src\"}),8}},\n     NxIf{NxBin{\"eq\",NxVar{\"ir_rfc\"},nx110rt_u(1)},nx110rt_free_wrapper(),[]},\n     NxSet{\"ir_head\",NxVar{nx_choose(String,U32.is_eq(index,0),u => \"ir_old0\",u => \"ir_old1\")}},\n     NxSet{remaining,NxVar{nx_choose(String,U32.is_eq(index,0),u => \"ir_old1\",u => \"ir_old0\")}}],\n    nxo_join(NxStmt,nx110rt_seal(\"ir_head\"),nxo_join(NxStmt,nx110rt_seal(\"ir_tail\"),\n      [NxStore{NxU64{},nx110rt_addr(NxVar{\"ir_src\"}),0,NxVar{\"ir_head\"}},\n       NxStore{NxU64{},nx110rt_addr(NxVar{\"ir_src\"}),8,NxVar{\"ir_tail\"}},\n       NxSet{dest,NxBin{\"or\",NxBin{\"or\",NxBin{\"shl\",nx110rt_u(2),nx110rt_u(56)},NxBin{\"shl\",nx110rt_u(cid),nx110rt_u(40)}},NxVar{\"ir_src\"}}} ])))",
+      "new": "@unsafe\ndef nx110rt_rebuild_fast(+dest: String, +remaining: String, +cid: U32, +index: U32) -> List<&2,NxStmt>:\n  nx110rtw_rebuild_fast(dest,remaining,cid,index)"
+    },
+    {
+      "name": "nx110rt_locals",
+      "origin": "selfhost/tools/performance/phase110/runtime-ir/lower.bend",
+      "oldSha256": "4185b5728c8285219e798432ef6c43fd96c57321883bdc38e25261e39de034cd",
+      "newSha256": "c0a5548b9d393b74fcd0de845ddb5423811c1d2cf77aa94716f43001507029a0",
+      "old": "def nx110rt_locals() -> List<&2,NxParam>:\n  [NxParam{\"ir_heap\",NxPtr{}},NxParam{\"ir_alc\",NxPtr{}},NxParam{\"ir_status\",NxU32{}},NxParam{\"ir_ok\",NxU32{}},\n   NxParam{\"ir_loc\",NxU64{}},NxParam{\"ir_src\",NxU64{}},NxParam{\"ir_rfc\",NxU64{}},NxParam{\"ir_cell\",NxU64{}},\n   NxParam{\"ir_old0\",NxU64{}},NxParam{\"ir_old1\",NxU64{}},NxParam{\"ir_head\",NxU64{}},NxParam{\"ir_tail\",NxU64{}},\n   NxParam{\"ir_free\",NxU64{}},NxParam{\"ir_len\",NxU64{}},NxParam{\"ir_wrap\",NxU64{}}]",
+      "new": "def nx110rt_locals() -> List<&2,NxParam>:\n  [NxParam{\"ir_spare\",NxU64{}},NxParam{\"ir_heap\",NxPtr{}},NxParam{\"ir_alc\",NxPtr{}},NxParam{\"ir_status\",NxU32{}},NxParam{\"ir_ok\",NxU32{}},\n   NxParam{\"ir_loc\",NxU64{}},NxParam{\"ir_src\",NxU64{}},NxParam{\"ir_rfc\",NxU64{}},NxParam{\"ir_cell\",NxU64{}},\n   NxParam{\"ir_old0\",NxU64{}},NxParam{\"ir_old1\",NxU64{}},NxParam{\"ir_head\",NxU64{}},NxParam{\"ir_tail\",NxU64{}},\n   NxParam{\"ir_free\",NxU64{}},NxParam{\"ir_len\",NxU64{}},NxParam{\"ir_wrap\",NxU64{}}]"
+    }
+  ]
+}

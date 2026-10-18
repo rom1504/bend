@@ -1,0 +1,404 @@
+{
+  "kind": "phase110-call-shape-graphs",
+  "version": 1,
+  "cases": [
+    {
+      "name": "identity-empty",
+      "op": 0,
+      "shape": 0,
+      "split": "training",
+      "inputStrings": [],
+      "secondStrings": null,
+      "headString": null,
+      "physicalCrossArgumentAlias": false
+    },
+    {
+      "name": "identity-unique",
+      "op": 0,
+      "shape": 1,
+      "split": "training",
+      "inputStrings": [
+        "a",
+        "λ🙂",
+        ""
+      ],
+      "secondStrings": null,
+      "headString": null,
+      "physicalCrossArgumentAlias": false
+    },
+    {
+      "name": "identity-shared",
+      "op": 0,
+      "shape": 2,
+      "split": "training",
+      "inputStrings": [
+        "a",
+        "λ🙂",
+        ""
+      ],
+      "secondStrings": null,
+      "headString": null,
+      "physicalCrossArgumentAlias": false
+    },
+    {
+      "name": "identity-static",
+      "op": 0,
+      "shape": 3,
+      "split": "heldout",
+      "inputStrings": [
+        "a",
+        "λ🙂",
+        ""
+      ],
+      "secondStrings": null,
+      "headString": null,
+      "physicalCrossArgumentAlias": false
+    },
+    {
+      "name": "inside-constructor-empty",
+      "op": 1,
+      "shape": 0,
+      "split": "training",
+      "inputStrings": [],
+      "secondStrings": null,
+      "headString": "",
+      "physicalCrossArgumentAlias": false
+    },
+    {
+      "name": "inside-constructor-unique",
+      "op": 1,
+      "shape": 1,
+      "split": "training",
+      "inputStrings": [
+        "a",
+        "λ🙂",
+        ""
+      ],
+      "secondStrings": null,
+      "headString": "h🙂",
+      "physicalCrossArgumentAlias": false
+    },
+    {
+      "name": "inside-constructor-shared",
+      "op": 1,
+      "shape": 2,
+      "split": "training",
+      "inputStrings": [
+        "a",
+        "λ🙂",
+        ""
+      ],
+      "secondStrings": null,
+      "headString": "h🙂",
+      "physicalCrossArgumentAlias": false
+    },
+    {
+      "name": "inside-constructor-static",
+      "op": 1,
+      "shape": 3,
+      "split": "heldout",
+      "inputStrings": [
+        "a",
+        "λ🙂",
+        ""
+      ],
+      "secondStrings": null,
+      "headString": "h🙂",
+      "physicalCrossArgumentAlias": false
+    },
+    {
+      "name": "inside-constructor-cross-argument",
+      "op": 1,
+      "shape": 4,
+      "split": "heldout",
+      "inputStrings": [
+        "a",
+        "λ🙂",
+        ""
+      ],
+      "secondStrings": null,
+      "headString": "a",
+      "physicalCrossArgumentAlias": true
+    },
+    {
+      "name": "twice-empty",
+      "op": 2,
+      "shape": 0,
+      "split": "training",
+      "inputStrings": [],
+      "secondStrings": [],
+      "headString": null,
+      "physicalCrossArgumentAlias": false
+    },
+    {
+      "name": "twice-unique",
+      "op": 2,
+      "shape": 1,
+      "split": "training",
+      "inputStrings": [
+        "a",
+        "λ🙂",
+        ""
+      ],
+      "secondStrings": [
+        "z"
+      ],
+      "headString": null,
+      "physicalCrossArgumentAlias": false
+    },
+    {
+      "name": "twice-shared",
+      "op": 2,
+      "shape": 2,
+      "split": "training",
+      "inputStrings": [
+        "a",
+        "λ🙂",
+        ""
+      ],
+      "secondStrings": [
+        "z"
+      ],
+      "headString": null,
+      "physicalCrossArgumentAlias": false
+    },
+    {
+      "name": "twice-static",
+      "op": 2,
+      "shape": 3,
+      "split": "heldout",
+      "inputStrings": [
+        "a",
+        "λ🙂",
+        ""
+      ],
+      "secondStrings": [
+        "z"
+      ],
+      "headString": null,
+      "physicalCrossArgumentAlias": false
+    },
+    {
+      "name": "twice-cross-argument",
+      "op": 2,
+      "shape": 4,
+      "split": "heldout",
+      "inputStrings": [
+        "a",
+        "λ🙂",
+        ""
+      ],
+      "secondStrings": [
+        "a",
+        "λ🙂",
+        ""
+      ],
+      "headString": null,
+      "physicalCrossArgumentAlias": true
+    },
+    {
+      "name": "discard-empty",
+      "op": 3,
+      "shape": 0,
+      "split": "training",
+      "inputStrings": [],
+      "secondStrings": [],
+      "headString": null,
+      "physicalCrossArgumentAlias": false
+    },
+    {
+      "name": "discard-unique",
+      "op": 3,
+      "shape": 1,
+      "split": "training",
+      "inputStrings": [
+        "a",
+        "λ🙂",
+        ""
+      ],
+      "secondStrings": [
+        "z"
+      ],
+      "headString": null,
+      "physicalCrossArgumentAlias": false
+    },
+    {
+      "name": "discard-shared",
+      "op": 3,
+      "shape": 2,
+      "split": "training",
+      "inputStrings": [
+        "a",
+        "λ🙂",
+        ""
+      ],
+      "secondStrings": [
+        "z"
+      ],
+      "headString": null,
+      "physicalCrossArgumentAlias": false
+    },
+    {
+      "name": "discard-static",
+      "op": 3,
+      "shape": 3,
+      "split": "heldout",
+      "inputStrings": [
+        "a",
+        "λ🙂",
+        ""
+      ],
+      "secondStrings": [
+        "z"
+      ],
+      "headString": null,
+      "physicalCrossArgumentAlias": false
+    },
+    {
+      "name": "discard-cross-argument",
+      "op": 3,
+      "shape": 4,
+      "split": "heldout",
+      "inputStrings": [
+        "a",
+        "λ🙂",
+        ""
+      ],
+      "secondStrings": [
+        "a",
+        "λ🙂",
+        ""
+      ],
+      "headString": null,
+      "physicalCrossArgumentAlias": true
+    },
+    {
+      "name": "same-empty",
+      "op": 4,
+      "shape": 0,
+      "split": "training",
+      "inputStrings": [],
+      "secondStrings": null,
+      "headString": null,
+      "physicalCrossArgumentAlias": false
+    },
+    {
+      "name": "same-unique",
+      "op": 4,
+      "shape": 1,
+      "split": "training",
+      "inputStrings": [
+        "a",
+        "λ🙂",
+        ""
+      ],
+      "secondStrings": null,
+      "headString": null,
+      "physicalCrossArgumentAlias": false
+    },
+    {
+      "name": "same-shared",
+      "op": 4,
+      "shape": 2,
+      "split": "training",
+      "inputStrings": [
+        "a",
+        "λ🙂",
+        ""
+      ],
+      "secondStrings": null,
+      "headString": null,
+      "physicalCrossArgumentAlias": false
+    },
+    {
+      "name": "same-static",
+      "op": 4,
+      "shape": 3,
+      "split": "heldout",
+      "inputStrings": [
+        "a",
+        "λ🙂",
+        ""
+      ],
+      "secondStrings": null,
+      "headString": null,
+      "physicalCrossArgumentAlias": false
+    },
+    {
+      "name": "reverse-via-call-empty",
+      "op": 5,
+      "shape": 0,
+      "split": "training",
+      "inputStrings": [],
+      "secondStrings": [],
+      "headString": null,
+      "physicalCrossArgumentAlias": false
+    },
+    {
+      "name": "reverse-via-call-unique",
+      "op": 5,
+      "shape": 1,
+      "split": "training",
+      "inputStrings": [
+        "a",
+        "λ🙂",
+        ""
+      ],
+      "secondStrings": [
+        "z"
+      ],
+      "headString": null,
+      "physicalCrossArgumentAlias": false
+    },
+    {
+      "name": "reverse-via-call-shared",
+      "op": 5,
+      "shape": 2,
+      "split": "training",
+      "inputStrings": [
+        "a",
+        "λ🙂",
+        ""
+      ],
+      "secondStrings": [
+        "z"
+      ],
+      "headString": null,
+      "physicalCrossArgumentAlias": false
+    },
+    {
+      "name": "reverse-via-call-static",
+      "op": 5,
+      "shape": 3,
+      "split": "heldout",
+      "inputStrings": [
+        "a",
+        "λ🙂",
+        ""
+      ],
+      "secondStrings": [
+        "z"
+      ],
+      "headString": null,
+      "physicalCrossArgumentAlias": false
+    },
+    {
+      "name": "reverse-via-call-cross-argument",
+      "op": 5,
+      "shape": 4,
+      "split": "heldout",
+      "inputStrings": [
+        "a",
+        "λ🙂",
+        ""
+      ],
+      "secondStrings": [
+        "a",
+        "λ🙂",
+        ""
+      ],
+      "headString": null,
+      "physicalCrossArgumentAlias": true
+    }
+  ]
+}

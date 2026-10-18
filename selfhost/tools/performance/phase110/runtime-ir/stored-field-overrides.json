@@ -1,0 +1,17 @@
+{
+  "kind": "phase110-runtime-ir-stored-field-overrides",
+  "version": 1,
+  "targetsRun": false,
+  "admission": "Requires successful stored-field-admit.py receipt binding this exact override to authenticated runtime and closed exact-template source; no per-iteration field inference",
+  "invariant": "Every field stored in an admitted dynamic Con/SCon shell is already fixed by rfc_seal; static shells are excluded by decoded-source eligibility",
+  "replacements": [
+    {
+      "name": "nx110rt_rebuild_fast",
+      "origin": "selfhost/tools/performance/phase110/runtime-ir/lower.bend",
+      "oldSha256": "a320f5cf61160e6660310ef3580e124b0796d114e886c64500dd1a951a0a7695",
+      "newSha256": "c918693c42e905907062bf7c15a45fec6544ffb1ed4c3ebe341b467c5720ee8c",
+      "old": "@unsafe\ndef nx110rt_rebuild_fast(+dest: String, +remaining: String, +cid: U32, +index: U32) -> List<&2,NxStmt>:\n  nxo_join(NxStmt,\n    [NxSet{\"ir_old0\",NxLoad{NxU64{},nx110rt_addr(NxVar{\"ir_src\"}),0}},\n     NxSet{\"ir_old1\",NxLoad{NxU64{},nx110rt_addr(NxVar{\"ir_src\"}),8}},\n     NxIf{NxBin{\"eq\",NxVar{\"ir_rfc\"},nx110rt_u(1)},nx110rt_free_wrapper(),[]},\n     NxSet{\"ir_head\",NxVar{nx_choose(String,U32.is_eq(index,0),u => \"ir_old0\",u => \"ir_old1\")}},\n     NxSet{remaining,NxVar{nx_choose(String,U32.is_eq(index,0),u => \"ir_old1\",u => \"ir_old0\")}}],\n    nxo_join(NxStmt,nx110rt_seal(\"ir_head\"),nxo_join(NxStmt,nx110rt_seal(\"ir_tail\"),\n      [NxStore{NxU64{},nx110rt_addr(NxVar{\"ir_src\"}),0,NxVar{\"ir_head\"}},\n       NxStore{NxU64{},nx110rt_addr(NxVar{\"ir_src\"}),8,NxVar{\"ir_tail\"}},\n       NxSet{dest,NxBin{\"or\",NxBin{\"or\",NxBin{\"shl\",nx110rt_u(2),nx110rt_u(56)},NxBin{\"shl\",nx110rt_u(cid),nx110rt_u(40)}},NxVar{\"ir_src\"}}} ])))",
+      "new": "@unsafe\ndef nx110rt_rebuild_fast(+dest: String, +remaining: String, +cid: U32, +index: U32) -> List<&2,NxStmt>:\n  nxo_join(NxStmt,\n    [NxSet{\"ir_old0\",NxLoad{NxU64{},nx110rt_addr(NxVar{\"ir_src\"}),0}},\n     NxSet{\"ir_old1\",NxLoad{NxU64{},nx110rt_addr(NxVar{\"ir_src\"}),8}},\n     NxIf{NxBin{\"eq\",NxVar{\"ir_rfc\"},nx110rt_u(1)},nx110rt_free_wrapper(),[]},\n     NxSet{\"ir_head\",NxVar{nx_choose(String,U32.is_eq(index,0),u => \"ir_old0\",u => \"ir_old1\")}},\n     NxSet{remaining,NxVar{nx_choose(String,U32.is_eq(index,0),u => \"ir_old1\",u => \"ir_old0\")}}],\n    nxo_join(NxStmt,nx110rt_seal(\"ir_tail\"),\n      [NxStore{NxU64{},nx110rt_addr(NxVar{\"ir_src\"}),0,NxVar{\"ir_head\"}},\n       NxStore{NxU64{},nx110rt_addr(NxVar{\"ir_src\"}),8,NxVar{\"ir_tail\"}},\n       NxSet{dest,NxBin{\"or\",NxBin{\"or\",NxBin{\"shl\",nx110rt_u(2),nx110rt_u(56)},NxBin{\"shl\",nx110rt_u(cid),nx110rt_u(40)}},NxVar{\"ir_src\"}}} ]))"
+    }
+  ]
+}

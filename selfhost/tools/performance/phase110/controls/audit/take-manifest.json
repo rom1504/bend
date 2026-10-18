@@ -1,0 +1,41 @@
+{
+  "kind": "phase110-frozen-inline-take-audit",
+  "version": 1,
+  "frozenAtUtc": "2026-10-18T19:35:14.370529+00:00",
+  "targetsRunByCoverage": false,
+  "cases": 12,
+  "observations": 24,
+  "trainingObservations": 16,
+  "heldoutObservations": 8,
+  "harness": {
+    "file": "selfhost/tools/performance/phase110/controls/audit/take-controls.c",
+    "bytes": 7092,
+    "sha256": "9487330eac5e8db2a1829d45e369d868603ab478c8953e8b5d355c4f12a96b91"
+  },
+  "recipes": {
+    "file": "selfhost/tools/performance/phase110/controls/audit/take-recipes.json",
+    "bytes": 4257,
+    "sha256": "2149b93f5bd508282cead6c04131831d0d0c6cb85bf7c71dc2a4d6721cd5d1d6"
+  },
+  "expected": {
+    "file": "selfhost/tools/performance/phase110/controls/audit/take-expected.jsonl",
+    "bytes": 3069,
+    "sha256": "e79342f0887603d1feb088ff6c8c24b349b13167e38bfb9d71cbf97859faac4c"
+  },
+  "reviewedTemplate": {
+    "file": "selfhost/tools/performance/phase110/runtime-ir/general.bend",
+    "bytes": 4917,
+    "sha256": "e5f769fa6eb5573dbcf6ac5b3ace672044305cc582a9825808bf20df2121f4df"
+  },
+  "oracle": "Exact ordered constructor fields, independent of the generated take template. Each child survives dropping its sibling; all external parent/child aliases remain unchanged; full heap release required.",
+  "preparation": "Only checked public production constructor/keep/sink/take operations prepare graphs and class1 states; private allocator pointer is read-only. At most16384 padding roots for class1 handoff.",
+  "callbacks": {
+    "baseline": "nx_rt_pair_take2",
+    "candidate": "nx_ir_probe_take2; then nx_rt_fast_field(ctx,0)"
+  },
+  "limits": [
+    "Operator probe is generic production-runtime correspondence, separate from source-to-worker evidence.",
+    "ReviewedTemplate is inspection provenance; actual attempts separately bind final candidate source/runtime/binary.",
+    "Zero whole-program runtime, concurrency, arbitrary-ADT or proof claims."
+  ]
+}

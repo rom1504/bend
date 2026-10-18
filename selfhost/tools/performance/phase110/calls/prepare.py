@@ -57,6 +57,24 @@ def prepare(source_path, out):
         source = source.replace(baseline, replacements[name], 1)
         edits.append({'name': name, 'beforeSha256': item['sha256'], 'afterSha256': hashlib.sha256(replacements[name].encode()).hexdigest()})
     modules = [HERE / (name + '.bend') for name in ['model', 'verify', 'lower', 'nx', 'controls']]
+    extra_inputs = []
+    # A source carrying private runtime templates must also carry the closed
+    # worker catalogue. Old frozen source snapshots remain untouched.
+    if 'nx110rt_verify' in old:
+        runtime_manifest = HERE / 'runtime-overrides.json'
+        runtime_file = HERE / 'runtime-overrides.bend'
+        namespace_manifest = HERE.parent / 'runtime-ir/namespace-overrides.json'
+        extra_inputs += [runtime_manifest, runtime_file, namespace_manifest, namespace_manifest.with_suffix('.bend')]
+        for exact_manifest in [runtime_manifest, namespace_manifest]:
+            for row in json.loads(exact_manifest.read_text())['replacements']:
+                if hashlib.sha256(row['old'].encode()).hexdigest() != row['oldSha256'] or hashlib.sha256(row['new'].encode()).hexdigest() != row['newSha256']:
+                    raise ValueError('runtime override hash mismatch ' + row['name'])
+                if (ROOT / row['origin']).read_text().count(row['old']) != 1 or source.count(row['old']) != 1:
+                    raise ValueError('runtime override original mismatch ' + row['name'])
+                source = source.replace(row['old'], row['new'], 1)
+                edits.append({'name': row['name'], 'beforeSha256': row['oldSha256'], 'afterSha256': row['newSha256']})
+        modules += [HERE / 'runtime-library.bend', HERE / 'runtime-controls.bend',
+                    HERE.parent / 'runtime-ir/namespace.bend', HERE.parent / 'runtime-ir/namespace-controls.bend']
     added = '\n\n'.join(path.read_text() for path in modules)
     collision = set(blocks(source)) & set(blocks(added))
     if collision:
@@ -66,7 +84,7 @@ def prepare(source_path, out):
     target = out / 'source.bend'
     target.write_text(source)
     report = {'kind': 'phase110-owned-call-source', 'complete': True, 'targetsRun': False,
-              'inputs': [pin(source_path), pin(manifest_path), pin(replacements_path), pin(Path(__file__)), *map(pin, modules)],
+              'inputs': [pin(source_path), pin(manifest_path), pin(replacements_path), pin(Path(__file__)), *map(pin, modules + extra_inputs)],
               'replacements': edits, 'source': pin(target)}
     (out / 'manifest.json').write_text(json.dumps(report, indent=2) + '\n')
     return target

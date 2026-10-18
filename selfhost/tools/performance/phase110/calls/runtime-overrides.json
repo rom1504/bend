@@ -1,0 +1,15 @@
+{
+  "kind": "phase110-runtime-owned-call-closure-overrides",
+  "version": 1,
+  "targetsRun": false,
+  "replacements": [
+    {
+      "name": "nx110rt_verify",
+      "origin": "selfhost/tools/performance/phase110/runtime-ir/library.bend",
+      "oldSha256": "4dd010a7bec97314d8739694cac1330ad9f261d411887c106110b314b9a77abc",
+      "newSha256": "f213d568d451a926a5e4fde81fcdb8b9181084f09819461d5034f69afb022a7f",
+      "old": "@unsafe\ndef nx110rt_verify(+library: Nx110RtLibrary) -> Bool:\n  match library:\n    case Nx110RtLibrary{workers,exports}: nx110rt_workers_ok(workers) && nx110rt_machine_ok(nx110rt_machine(library))",
+      "new": "@unsafe\ndef nx110rt_verify(+library: Nx110RtLibrary) -> Bool:\n  match library:\n    case Nx110RtLibrary{workers,exports}:\n      nx110rt_workers_ok(workers) && nx110rt_calls_ok(workers,nx110rt_callees(workers)) &&\n      nx110rt_machine_ok(nx110rt_machine(library))"
+    }
+  ]
+}

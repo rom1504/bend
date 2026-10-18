@@ -1,0 +1,28 @@
+{
+  "kind": "phase110-frozen-closed-entry-controls-v1",
+  "frozenAtUtc": "2026-10-18T19:55:50.524427+00:00",
+  "coverageAgentTargetsRun": false,
+  "source": {
+    "file": "selfhost/tools/performance/phase110/controls/admission/closure-source.bend",
+    "bytes": 2334,
+    "sha256": "f838117a3388381c4b18a5f8e7fd8eec095f66c754fa75f404b6259f7b90a7e5"
+  },
+  "oracle": {
+    "file": "selfhost/tools/performance/phase110/controls/admission/closure-oracle.json",
+    "bytes": 5656,
+    "sha256": "f2cc103db43b510b346402332827220fe052847eba3f603518563c4fbe0a31c7"
+  },
+  "baseSource": {
+    "file": "bend2/base.bend",
+    "bytes": 75064,
+    "sha256": "99ac43f2b2bb3e3f39acdcedcecbbd3cb44749ce13969c827d6973fa66f7facf"
+  },
+  "compilerSource": {
+    "file": "selfhost/src/back/native/text.bend",
+    "bytes": 3305,
+    "sha256": "acc430c939a7dd6b404ba7a13f762019b717a62313ae3066234f78bb62df04c0"
+  },
+  "positiveRoots": 4,
+  "negativeRoots": 2,
+  "provenance": "All requested roots and their dependencies are reachable from main for actual checked capture, but closure admission must start only from requested roots."
+}

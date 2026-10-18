@@ -1,0 +1,137 @@
+{
+  "kind": "phase110-source-contract-entry-map",
+  "version": 1,
+  "source": {
+    "file": "selfhost/tools/performance/phase110/controls/call-shapes/source.bend",
+    "bytes": 2362,
+    "sha256": "2d0774249c3292817becf9a04f3c16d03ed37d28244891068eed955db6a407d7"
+  },
+  "entries": [
+    {
+      "name": "nt_reverse",
+      "symbol": "shape_reverse",
+      "liveArity": 2,
+      "parameterRoles": [
+        "List<String>",
+        "List<String>"
+      ],
+      "resultRole": "List<String>",
+      "export": false,
+      "dependencies": []
+    },
+    {
+      "name": "nt_append",
+      "symbol": "shape_append",
+      "liveArity": 2,
+      "parameterRoles": [
+        "List<String>",
+        "List<String>"
+      ],
+      "resultRole": "List<String>",
+      "export": false,
+      "dependencies": [
+        "nt_reverse"
+      ]
+    },
+    {
+      "name": "p110_call_identity",
+      "symbol": "call_identity",
+      "liveArity": 1,
+      "parameterRoles": [
+        "List<String>"
+      ],
+      "resultRole": "List<String>",
+      "export": true,
+      "dependencies": []
+    },
+    {
+      "name": "p110_call_inside_constructor",
+      "symbol": "call_inside_constructor",
+      "liveArity": 2,
+      "parameterRoles": [
+        "String",
+        "List<String>"
+      ],
+      "resultRole": "List<String>",
+      "export": true,
+      "dependencies": [
+        "p110_call_identity"
+      ]
+    },
+    {
+      "name": "p110_call_twice",
+      "symbol": "call_twice",
+      "liveArity": 2,
+      "parameterRoles": [
+        "List<String>",
+        "List<String>"
+      ],
+      "resultRole": "List<String>",
+      "export": true,
+      "dependencies": [
+        "nt_append",
+        "p110_call_identity"
+      ]
+    },
+    {
+      "name": "p110_call_discard",
+      "symbol": "call_discard",
+      "liveArity": 2,
+      "parameterRoles": [
+        "List<String>",
+        "List<String>"
+      ],
+      "resultRole": "List<String>",
+      "export": true,
+      "dependencies": [
+        "p110_call_identity"
+      ]
+    },
+    {
+      "name": "p110_call_same",
+      "symbol": "call_same",
+      "liveArity": 1,
+      "parameterRoles": [
+        "List<String>"
+      ],
+      "resultRole": "List<String>",
+      "export": true,
+      "dependencies": [
+        "nt_append"
+      ]
+    },
+    {
+      "name": "p110_reverse_via_call",
+      "symbol": "reverse_via_call",
+      "liveArity": 2,
+      "parameterRoles": [
+        "List<String>",
+        "List<String>"
+      ],
+      "resultRole": "List<String>",
+      "export": true,
+      "dependencies": [
+        "nt_reverse"
+      ]
+    }
+  ],
+  "exports": [
+    "call_identity",
+    "call_inside_constructor",
+    "call_twice",
+    "call_discard",
+    "call_same",
+    "reverse_via_call"
+  ],
+  "negativeEntries": [
+    {
+      "name": "p110_call_dynamic",
+      "reason": "indirect callee and function-valued parameter are outside owned-Term ABI"
+    },
+    {
+      "name": "p110_call_partial",
+      "reason": "partial application produces unsupported function result"
+    }
+  ],
+  "authority": "Pure declaration/entry mapping only. Host must select exact captured checked facts and pass complete source catalogue to Bend nxc_lower_library; no source lowering or closure inference in host."
+}

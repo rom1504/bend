@@ -11,12 +11,13 @@ def main():
  for name in ['out','api','capture','runtime','harness']:p.add_argument('--'+name,type=Path,required=True)
  p.add_argument('--profiles',nargs='+',default=['fused','tagged','specialized','pair'])
  p.add_argument('--backends',nargs='+',default=['qbe','clang','gcc'])
- p.add_argument('--variant',default='reverse',choices=['reverse','discard','duplicate','tail','last','append'])
+ p.add_argument('--variant',default='reverse',choices=['reverse','discard','duplicate','tail','last','append','call-shapes'])
  a=p.parse_args();out=a.out.resolve();assert out.is_relative_to(ROOT/'selfhost/build/phase110') and not out.exists();out.mkdir(parents=True)
- (out/'method.py').write_bytes(Path(__file__).read_bytes());(out/'emit-method.mjs').write_bytes((HERE/'emit.mjs').read_bytes())
+ emitter=HERE/('calls/emit-shapes.mjs' if a.variant=='call-shapes' else 'emit.mjs')
+ (out/'method.py').write_bytes(Path(__file__).read_bytes());(out/'emit-method.mjs').write_bytes(emitter.read_bytes())
  api,capture,runtime,harness=[getattr(a,n).resolve() for n in ['api','capture','runtime','harness']]
  clang=Path('/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang');qbe=ROOT/'selfhost/build/phase108/toolchain/qbe-1.3/qbe';bun=ROOT/'selfhost/.bootstrap/bun-1.4.3/bun'
- paths=[Path(__file__),HERE/'emit.mjs',api,capture/'report.json',capture/'native-facts.json',runtime/'runtime.c',runtime/'abi.h',runtime/'manifest.json',*[harness/n for n in ['harness.c','cases.inc.c','abi.h','expected.jsonl','manifest.json']],clang,qbe,bun,*[Path(shutil.which(t)) for t in ['gcc','as']]]
+ paths=[Path(__file__),emitter,api,capture/'report.json',capture/'native-facts.json',runtime/'runtime.c',runtime/'abi.h',runtime/'manifest.json',*[harness/n for n in ['harness.c','cases.inc.c','abi.h','expected.jsonl','manifest.json']],clang,qbe,bun,*[Path(shutil.which(t)) for t in ['gcc','as']]]
  report=dict(kind='phase110-frozen-worker-build',complete=False,variant=a.variant,inputs=[R.pin(f) for f in paths],jobs=[],workers=[],semantics={},started=time.time(),scope='Candidate compiler algorithms in Bend; JS transport/Python supervision only. One GCC-built runtime object shared by all worker backends. Runtime setup/build, worker acquisition and execution are separate.')
  save=lambda:R.save(out/'report.json',report)
  def cmd(label,argv,seconds=60):
@@ -25,6 +26,13 @@ def main():
   row.update(seconds=time.monotonic()-start,status=c.returncode,stdout=R.pin(out/(label+'.stdout')),stderr=R.pin(out/(label+'.stderr')));save()
   if c.returncode:raise RuntimeError(label+' failed '+str(c.returncode))
   return row
+ api_record=json.loads((api.parent/'report.json').read_text())
+ if api_record.get('admission'):
+  R.N.verify(api_record['admission']);admission=json.loads(Path(api_record['admission']['file']).read_text())
+  assert admission['complete']
+  expected_runtime=next(r for r in admission['inputs'] if r['file'].endswith('/runtime.c'))
+  assert R.pin(runtime/'runtime.c')['sha256']==expected_runtime['sha256'],'stored-field runtime admission differs'
+  report['inputs'] += [api_record['admission']]
  save()
  try:
   for item in report['inputs']:R.N.verify(item)
@@ -34,7 +42,7 @@ def main():
   expected=(harness/'expected.jsonl').read_bytes()
   for profile in a.profiles:
    emission=out/('emit-'+profile)
-   cmd('emit-'+profile,[bun,out/'emit-method.mjs',api,capture,emission,a.variant,profile])
+   cmd('emit-'+profile,[bun,emitter if a.variant=='call-shapes' else out/'emit-method.mjs',api,capture,emission,*([profile] if a.variant=='call-shapes' else [a.variant,profile])])
    for backend in a.backends:
     label=profile+'-'+backend;obj=out/(label+'.o');binary=out/label;start=time.monotonic()
     if backend=='qbe':

@@ -1,0 +1,128 @@
+{
+  "kind": "phase110-admission-trust-review-v1",
+  "preparedAtUtc": "2026-10-18T19:57:11.435856+00:00",
+  "sourceOnly": true,
+  "targetsRun": false,
+  "inputs": [
+    {
+      "file": "selfhost/tools/performance/phase110/admission/model.bend",
+      "bytes": 3209,
+      "sha256": "90a24a18414908704a66e7097b45f5b0f894ed8f97607164117a1c83fba98a09"
+    },
+    {
+      "file": "selfhost/tools/performance/phase110/admission/layout.bend",
+      "bytes": 4548,
+      "sha256": "a9637910ab8645c8bdaf0d08fb7b4c81df70618f6e0190f4ea63dacfcfe6a020"
+    },
+    {
+      "file": "selfhost/tools/performance/phase110/admission/entry.bend",
+      "bytes": 2111,
+      "sha256": "694aa446372a50478849dd8c6228d7038a33240b1615d9b1015c653d76cebcde"
+    },
+    {
+      "file": "selfhost/tools/performance/phase110/admission/request.bend",
+      "bytes": 1056,
+      "sha256": "a2a08c046dda66b0c6a26c8eae69f3f90b96b66e3a22c56305f0aebb0a0f43cb"
+    },
+    {
+      "file": "selfhost/tools/performance/phase110/admission/check.mjs",
+      "bytes": 7715,
+      "sha256": "d5d7a8a8ab23697560cbc267dc9e0fd6aee0b7159c83f01b9b625003116a3c08"
+    },
+    {
+      "file": "selfhost/tools/performance/phase110/native/main.bend",
+      "bytes": 8262,
+      "sha256": "84f746234f30175348a3a561e6a73b038113714db814a92ffb9c130406c6fd19"
+    },
+    {
+      "file": "selfhost/tools/performance/phase110/native/prepare.py",
+      "bytes": 16710,
+      "sha256": "f0e90a8562bdbc255126f81abcbbc4b74730714dbcded30cd1a9bced81971851"
+    },
+    {
+      "file": "selfhost/src/load/seed.bend",
+      "bytes": 5051,
+      "sha256": "43826db4855dc47b098adc7221e4ddf1489801d8e3947d750917b212f12418fe"
+    },
+    {
+      "file": "selfhost/src/back/native/request.bend",
+      "bytes": 3594,
+      "sha256": "348f3e47b5cd907e16e55db59d090804f26120b2b294ce56d94dd5a64ffc314b"
+    },
+    {
+      "file": "selfhost/tools/performance/phase88/base/entry-cache.bend",
+      "bytes": 38417,
+      "sha256": "e4f262e04519cb6ca044e7f7a870b6f9e749c7d70cdd530b96c2412c8d3fc4f6"
+    }
+  ],
+  "coverageAccounting": {
+    "entryExpectationsReadByCheckMjs": 14,
+    "hardCodedDataMutations": 9,
+    "frozenMutationRecipesInOriginalOracle": 12,
+    "closedLibraryAcceptedConsumedByCurrentCheckMjs": false,
+    "wrongResultSourceCheckedByCurrentCheckMjs": false,
+    "interpretation": "Distinct inventories, not 12/12 mutant coverage or closed-library certification."
+  },
+  "controls": [
+    {
+      "name": "same-name-arity-erased-body-substitution",
+      "layer": "structural API versus authenticated request",
+      "recipe": "Keep canonical typed List identity and matching fact name/arity; replace only erased body with another affine supported body.",
+      "structuralEntryExpectation": "May accept: this helper checks role/layout and name/arity, not erasure derivation.",
+      "trustedBoundaryExpectation": "Reject substituted capture hash or obtain fact only through ns_body of internally created checked request.",
+      "status": "source-inspected boundary; no mutation execution"
+    },
+    {
+      "name": "forged-declared-arity-function-result",
+      "layer": "original source metadata provenance",
+      "recipe": "Change source declared arity for p110_cert_function_result from1 to2, and provide matching erased arity2.",
+      "structuralEntryExpectation": "Can reinterpret function-valued result as another canonical parameter; original metadata authenticity is mandatory.",
+      "trustedBoundaryExpectation": "Reject mutation of original checked source product; do not accept host-repaired arity.",
+      "status": "source-inspected boundary; no mutation execution"
+    },
+    {
+      "name": "same-path-Base-byte-change",
+      "layer": "native live asset provenance",
+      "recipe": "Read modified Base bytes at the same configured path, or provide expected text derived from that same untrusted read.",
+      "trustedBoundaryExpectation": "Reject before p86_prepare against independently compiled exact Base text/path.",
+      "status": "new live factory planned by IR agent; current fixed-contract frontend delegates asset authentication to launcher"
+    },
+    {
+      "name": "seed-source-book-world-mismatch",
+      "layer": "prepared seed provenance",
+      "recipe": "Keep P86Seed.source equal to trusted Base FSource while changing book/ready/world.",
+      "structuralEntryExpectation": "f_seed_matches alone inspects source fields only.",
+      "trustedBoundaryExpectation": "Do not expose raw seed ingestion; construct all seed components internally through authenticated p86_prepare or authenticated cache factory.",
+      "status": "new internal live factory planned by IR agent"
+    },
+    {
+      "name": "canonical-root-unsupported-private-callee",
+      "layer": "closed call graph",
+      "recipe": "Use closure-source p110_close_unsupported_callee or p110_close_generic root.",
+      "trustedBoundaryExpectation": "Reject private Char or erased generic dependency even though exported root telescope certifies.",
+      "fixture": "closure-manifest.json",
+      "status": "frozen source-only; entry checker does not currently evaluate closedLibraryAccepted"
+    },
+    {
+      "name": "missing-or-duplicate-private-fact",
+      "layer": "closed call graph",
+      "recipe": "Remove or duplicate p110_close_mid/leaf fact under its original source identity.",
+      "trustedBoundaryExpectation": "Reject complete library; never silently omit/refill dependency from another request.",
+      "fixture": "closure-manifest.json",
+      "status": "frozen data recipe; no execution"
+    },
+    {
+      "name": "capture-status-inconsistency",
+      "layer": "host capture transport",
+      "recipe": "Keep checked=true and exitCode=0 but change capture kind/status/typeAccepted or omit authenticated native-facts/typed products.",
+      "trustedBoundaryExpectation": "Reject inconsistent capture metadata and any unauthenticated product before calling structural APIs.",
+      "status": "current check.mjs checks complete/checked/exitCode/products but not kind/status/typeAccepted explicitly"
+    }
+  ],
+  "boundaryLimits": [
+    "nxe_entry and nxe_planned are raw internal helpers, not standalone provenance authority.",
+    "Exact Base byte binding supplies U32/Word/native scalar representation provenance beyond the three explicitly walked descriptors.",
+    "Current native fixed six-source contracts are separate from unintegrated admission prototype; no claim that generic fixed-contract workers passed canonical nxe gate.",
+    "ABI agent independently owns reserved-local namespace hardening."
+  ]
+}

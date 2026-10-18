@@ -1,0 +1,23 @@
+{
+  "kind": "phase110-runtime-ir-general-overrides",
+  "version": 1,
+  "targetsRun": false,
+  "replacements": [
+    {
+      "name": "nx110rt_ops",
+      "origin": "selfhost/tools/performance/phase110/runtime-ir/lower.bend",
+      "oldSha256": "6c150f6c2bd862b1e95d070f99d47c5e638470cab67c67a16baf4e86792e9641",
+      "newSha256": "f534a1703bbe681c4e67d27441dbdcdff1452c1f3d57dfecda17eaec50034acf",
+      "old": "@unsafe\ndef nx110rt_ops(+ops: List<&2,NxoOp>, +view: String, +tag_word: String) -> List<&2,NxStmt>:\n  nx110rt_select(nx110rt_try_fusion(ops,view),ops,view,tag_word)",
+      "new": "@unsafe\ndef nx110rt_ops(+ops: List<&2,NxoOp>, +view: String, +tag_word: String) -> List<&2,NxStmt>:\n  nx110rtg_ops(ops,view,tag_word)"
+    },
+    {
+      "name": "nx110rt_imports",
+      "origin": "selfhost/tools/performance/phase110/runtime-ir/library.bend",
+      "oldSha256": "0cb22dcd13d019123a8c32c72fb09c0dab09008761f9cd149d0662c0980529e5",
+      "newSha256": "bbb7cb8398e3ff6ffccefde87960e67d08257b83af5af2db35014115e6fac896",
+      "old": "def nx110rt_imports() -> List<&2,NxImport>:\n  nxo_join(NxImport,\n    [NxImport{\"rt_ir_heap\",[NxParam{\"ctx\",NxPtr{}}],NxPtr{}},\n     NxImport{\"rt_ir_alc\",[NxParam{\"ctx\",NxPtr{}}],NxPtr{}},\n     NxImport{\"rt_ir_alloc0\",[NxParam{\"ctx\",NxPtr{}}],NxU64{}},\n     NxImport{\"rt_ir_hand0\",[NxParam{\"ctx\",NxPtr{}}],NxU32{}},\n     NxImport{\"rt_ir_view\",[NxParam{\"ctx\",NxPtr{}},NxParam{\"loc\",NxU64{}}],NxU64{}}],\n    nxlib_runtime110_imports_policy(\"specialized\"))",
+      "new": "def nx110rt_imports() -> List<&2,NxImport>:\n  nx110rtg_imports()"
+    }
+  ]
+}

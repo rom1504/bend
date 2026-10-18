@@ -1,0 +1,20 @@
+--- controls/prepare.py
++++ controls/final-heldout/prepare.py
+@@ -8,7 +8,7 @@
+ from pathlib import Path
+ sys.dont_write_bytecode = True
+ HERE = Path(__file__).resolve().parent
+-ROOT = HERE.parents[4]
++ROOT = HERE.parents[5]
+ SPEC = importlib.util.spec_from_file_location('reference', HERE / 'reference.py')
+ REFERENCE = importlib.util.module_from_spec(SPEC)
+ SPEC.loader.exec_module(REFERENCE)
+@@ -66,7 +66,7 @@
+     (out / 'cases.inc.c').write_text('\n'.join(lines) + '\n')
+     selector = {'tail': 1, 'last': 2, 'append': 3}.get(args.variant, 0)
+     (out / 'harness.c').write_text(f'#define P110_SELECTOR {selector}\n' + (HERE / 'harness.c').read_text())
+-    abi = HERE.parents[1] / 'phase109/runtime/abi.h'
++    abi = ROOT / 'selfhost/tools/performance/phase109/runtime/abi.h'
+     (out / 'abi.h').write_bytes(abi.read_bytes())
+     known = {c['name'] for c in cases}
+     expected = [line for line in (HERE / f'{args.variant}.expected.jsonl').read_text().splitlines() if json.loads(line)['name'] in known]

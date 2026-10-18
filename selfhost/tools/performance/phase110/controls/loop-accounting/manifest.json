@@ -1,0 +1,71 @@
+{
+  "kind": "phase110-frozen-loop-accounting-v1",
+  "version": 1,
+  "preparedUtc": "2026-10-18T19:48:05.897201+00:00",
+  "targetsRun": false,
+  "baselineDirectory": "selfhost/build/phase110/train01",
+  "baselineManifest": {
+    "file": "selfhost/build/phase110/train01/manifest.json",
+    "bytes": 2400,
+    "sha256": "884494db0a197907f93d9b795be0d83f2d950a7fcf404244085c6f43712c0e35"
+  },
+  "baselineFiles": [
+    {
+      "file": "selfhost/build/phase110/train01/harness.c",
+      "bytes": 7564,
+      "sha256": "9c9b99cd5ee04518e1fe92dd9d917531901fc6071e544e11bd7a2fda9a05b4d9"
+    },
+    {
+      "file": "selfhost/build/phase110/train01/abi.h",
+      "bytes": 2183,
+      "sha256": "f32956045b038c337226c2a645b4c6eaa2a363654fcb27dbde7cd2242d681217"
+    },
+    {
+      "file": "selfhost/build/phase110/train01/cases.inc.c",
+      "bytes": 287945,
+      "sha256": "01fb15884c8c5edc9ba181873fbb91ba37add53e0fbae43b2494602f3d190986"
+    },
+    {
+      "file": "selfhost/build/phase110/train01/expected.jsonl",
+      "bytes": 1380,
+      "sha256": "ae232ca11189b0d6fbb1ab37d32d3b934bcb5c86698a21ae2eb2d46066457352"
+    }
+  ],
+  "instrumentedHarness": {
+    "file": "selfhost/tools/performance/phase110/controls/loop-accounting/harness.c",
+    "bytes": 10447,
+    "sha256": "54f533827bea1b40969fbc19901d0ae74c18cbd996dc73ee04a1682e35422b40"
+  },
+  "delta": {
+    "file": "selfhost/tools/performance/phase110/controls/loop-accounting/harness.patch",
+    "bytes": 5213,
+    "sha256": "d54ec2c44d348e0a7f867a652ecd8b567e9ad471ca2f23d048782aa981a4665d"
+  },
+  "policySearch": {
+    "file": "selfhost/tools/performance/phase110/controls/policy-search.json",
+    "bytes": 7192,
+    "sha256": "8062d698a39283b2b43f73041c1cf215f99c8c33eb077ebc3be0cc86b67067a1"
+  },
+  "timingCases": [
+    "list-deep-unique",
+    "list-deep-shared-root",
+    "string-deep-unique",
+    "list-source-lexer-unique",
+    "string-source-lexer-unique",
+    "list-source-lexer-shared",
+    "string-source-lexer-shared"
+  ],
+  "trainingCases": 11,
+  "sourceVerification": {
+    "originalLinesExceptStderrFooterAreOrderedSubsequence": true,
+    "replacedOriginalStatement": "stderr timing format only",
+    "originalWorkerTimingBlockVerbatim": true,
+    "lifetimeChecksPreserved": true
+  },
+  "phaseClock": "CLOCK_MONOTONIC integer nanoseconds",
+  "identities": [
+    "sum(phasesNanoseconds) == partitionNanoseconds == accountedNanoseconds",
+    "accountedNanoseconds + residualNanoseconds == outerNanoseconds"
+  ],
+  "scope": "Timing instrumentation only. Original prepared graphs, oracle and ABI are copied unchanged; root records worker/runtime identities and owns all executions."
+}

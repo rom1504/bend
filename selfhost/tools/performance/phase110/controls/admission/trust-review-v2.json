@@ -1,0 +1,162 @@
+{
+  "kind": "phase110-admission-trust-review-v2",
+  "preparedAtUtc": "2026-10-18T20:09:29.106848+00:00",
+  "sourceOnly": true,
+  "targetsRun": false,
+  "inputs": [
+    {
+      "file": "selfhost/tools/performance/phase110/admission/model.bend",
+      "bytes": 3209,
+      "sha256": "90a24a18414908704a66e7097b45f5b0f894ed8f97607164117a1c83fba98a09"
+    },
+    {
+      "file": "selfhost/tools/performance/phase110/admission/layout.bend",
+      "bytes": 4548,
+      "sha256": "a9637910ab8645c8bdaf0d08fb7b4c81df70618f6e0190f4ea63dacfcfe6a020"
+    },
+    {
+      "file": "selfhost/tools/performance/phase110/admission/entry.bend",
+      "bytes": 2111,
+      "sha256": "694aa446372a50478849dd8c6228d7038a33240b1615d9b1015c653d76cebcde"
+    },
+    {
+      "file": "selfhost/tools/performance/phase110/admission/request.bend",
+      "bytes": 1283,
+      "sha256": "6f04e3bf4265aa21675faea2e4f43ddcc285a4ed2557db01b03f18e5c140faaa"
+    },
+    {
+      "file": "selfhost/tools/performance/phase110/admission/library.bend",
+      "bytes": 6637,
+      "sha256": "0d2904c82a191190c08b60712b17d00cc9e0b4aafdd973658f6b271f4e8d09d2"
+    },
+    {
+      "file": "selfhost/tools/performance/phase110/admission/check.mjs",
+      "bytes": 8169,
+      "sha256": "eea47065d989dcab8b8605c885569ef0f50ebbbdbcac8fc75507caf72738c9ce"
+    },
+    {
+      "file": "selfhost/tools/performance/phase110/admission/check-closure.mjs",
+      "bytes": 10302,
+      "sha256": "863b55f3bd5a0bd2ef0986dbe7a38ebf706f2d3dfdb177244498cf6889ac7ffb"
+    },
+    {
+      "file": "selfhost/tools/performance/phase110/native/main.bend",
+      "bytes": 8262,
+      "sha256": "84f746234f30175348a3a561e6a73b038113714db814a92ffb9c130406c6fd19"
+    },
+    {
+      "file": "selfhost/tools/performance/phase110/native/general.bend",
+      "bytes": 3862,
+      "sha256": "ff8f1817f65f111fd6df2304c3fb22fde722b3abd877b56d562e623ec52226c5"
+    },
+    {
+      "file": "selfhost/tools/performance/phase110/native/prepare.py",
+      "bytes": 16710,
+      "sha256": "f0e90a8562bdbc255126f81abcbbc4b74730714dbcded30cd1a9bced81971851"
+    },
+    {
+      "file": "selfhost/tools/performance/phase110/native/prepare-general.py",
+      "bytes": 6867,
+      "sha256": "029d9454a7515fd2797c6d39bd6d21ffb2d52cacc71b753f77200ed4d5e5654e"
+    },
+    {
+      "file": "selfhost/src/back/native/request.bend",
+      "bytes": 3594,
+      "sha256": "348f3e47b5cd907e16e55db59d090804f26120b2b294ce56d94dd5a64ffc314b"
+    },
+    {
+      "file": "selfhost/src/load/seed.bend",
+      "bytes": 5051,
+      "sha256": "43826db4855dc47b098adc7221e4ddf1489801d8e3947d750917b212f12418fe"
+    },
+    {
+      "file": "selfhost/tools/performance/phase88/base/entry-cache.bend",
+      "bytes": 38417,
+      "sha256": "e4f262e04519cb6ca044e7f7a870b6f9e749c7d70cdd530b96c2412c8d3fc4f6"
+    },
+    {
+      "file": "selfhost/tools/performance/phase110/controls/admission/closure-manifest.json",
+      "bytes": 1114,
+      "sha256": "e4cfd49773708cbfcf9c4e12439786f81d13d2f939625c8e0e526e54037fd30b"
+    },
+    {
+      "file": "selfhost/tools/performance/phase110/controls/admission/native-semantics/manifest.json",
+      "bytes": 5586,
+      "sha256": "5baebc3e19229a30b3f84e7344e8617ae9c4d0e260ec7d34fd343ebac7f7197e"
+    }
+  ],
+  "previous": {
+    "file": "selfhost/tools/performance/phase110/controls/admission/trust-review.json",
+    "bytes": 6577,
+    "sha256": "a29e3e1a17f04c85e22fd934cbc6d07e517a59f78dd73e85a6e3b0f3f126eb32"
+  },
+  "verdict": "New live factory closes the external seed/book/certificate provenance gap by constructing a checked request internally from exact compiled Base bytes; all requested and private callees are structurally recertified. This is source review, with native execution qualification delegated to root.",
+  "boundary": [
+    {
+      "layer": "CLI",
+      "result": "Only source path, source entry name, format/policy/live accepted; no raw typed/erased book, seed, closure, certificate, or native metadata flag."
+    },
+    {
+      "layer": "Base factory",
+      "result": "Read configured Base path internally; full String.eq with compiled literal precedes p86_prepare. Mature preparation creates book/fresh/ready/world internally."
+    },
+    {
+      "layer": "checked request",
+      "result": "p86_plan checks source and ownership, builds annotated native request. General path extracts NativeErasedBody records only via request.names/ns_body from this request."
+    },
+    {
+      "layer": "closure",
+      "result": "nxe_close certifies every reached definition against original request.source and unchanged erased facts; private generic/Char dependencies refuse even with canonical exported root."
+    },
+    {
+      "layer": "machine naming",
+      "result": "Reject duplicate source roots and exported symbols. Reserve nxe_private_ and rt_ prefixes. Private names encode Unicode codepoints injectively with separators."
+    },
+    {
+      "layer": "lowering",
+      "result": "Existing body/callee ownership verifier and Nx/runtime verifier remain after complete closure admission. Raw lower_closed helpers and structural certificates are internal plumbing, not transferable authority."
+    },
+    {
+      "layer": "affine capture review",
+      "result": "Source book/facts enter closure together; repeated strings, books, and exports use explicit sharing annotations; no source-only lifetime error identified. Native typecheck is separate required evidence."
+    }
+  ],
+  "addressedFindings": [
+    {
+      "issue": "Requested export could collide with generated private/runtime namespace",
+      "resolution": "nxe_roots_ok now reserves nxe_private_ and rt_ and rejects duplicate source/symbol roots; captured mutation checks refuse."
+    },
+    {
+      "issue": "prepare-general inherited stored/spare sourceRuntimeAdmission tied to old compiler bytes",
+      "resolution": "Preparation now explicitly refuses any non-null sourceRuntimeAdmission. Only baseline/compact-general profiles are currently composable; selected03 has no receipt."
+    },
+    {
+      "issue": "nxe_plan accepts externally supplied seed whose FSource check cannot authenticate prepared book/world",
+      "resolution": "Marked unintegrated and excluded from composed images. New native/general factory accepts no seed and constructs its own fresh one."
+    }
+  ],
+  "parentProducedReceipt": {
+    "pin": {
+      "file": "selfhost/build/phase110/closure-check03/report.json",
+      "bytes": 13400,
+      "sha256": "5432aabeb9dc3bdd59db036213f348f64fabcc490ef18631168a839b5630d137"
+    },
+    "role": "Read existing root-produced receipt; no execution by review agent",
+    "roots": 6,
+    "positiveClosedRoots": 4,
+    "negativePrivateDependencies": 2,
+    "malformedDataRefusals": 9,
+    "combinedDefinitions": 9,
+    "combinedExports": 4,
+    "semanticWorkersExecutedByThisReceipt": false
+  },
+  "remainingLimits": [
+    "Canonical explicit live String and List<&2,String> parameter/result roles only, source arity 1..8. No generic specialization, aliases, higher-order, dependent or scalar entry roles.",
+    "Requested entries and dependencies must already be reachable from main in the mature request. Frozen unreachable fixture explicitly expects missing erased fact refusal.",
+    "Original check.mjs entry receipt does not consume all twelve original mutation recipes or closedLibraryAccepted; separate closure receipt covers six roots and nine explicit malformed data controls.",
+    "Closure checker tests root and body-node budgets but does not directly exercise the separate 128-definition budget. Budget source is explicit and bounded.",
+    "Transport should explicitly validate capture kind/status as well as existing complete/checked/typeAccepted/exitCode and exact source/product/Base hashes. Raw report authenticity remains trusted workflow, unlike live native factory.",
+    "Four-root complete-value/lifetime harness was frozen separately and remains pending parent native-produced worker execution at review time.",
+    "Exact Base read mismatch, live-only rejection and ill-typed source refusal require parent end-to-end receipt; structural review is not those observations."
+  ]
+}

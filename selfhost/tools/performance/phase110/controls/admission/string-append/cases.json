@@ -1,0 +1,186 @@
+{
+  "kind": "phase110-actual-base-string-append-cases",
+  "cases": [
+    {
+      "name": "base-string-append-both-empty",
+      "left": [],
+      "right": [],
+      "leftRepeats": 1,
+      "rightRepeats": 1,
+      "static": 0,
+      "aliases": 0,
+      "overlap": 0,
+      "suffix": 0
+    },
+    {
+      "name": "base-string-append-left-empty",
+      "left": [],
+      "right": [
+        0,
+        101,
+        769,
+        955,
+        128578,
+        1114111
+      ],
+      "leftRepeats": 1,
+      "rightRepeats": 1,
+      "static": 0,
+      "aliases": 0,
+      "overlap": 0,
+      "suffix": 0
+    },
+    {
+      "name": "base-string-append-right-empty",
+      "left": [
+        0,
+        101,
+        769,
+        955,
+        128578,
+        1114111
+      ],
+      "right": [],
+      "leftRepeats": 1,
+      "rightRepeats": 1,
+      "static": 0,
+      "aliases": 0,
+      "overlap": 0,
+      "suffix": 0
+    },
+    {
+      "name": "base-string-append-unicode-unique",
+      "left": [
+        0,
+        101,
+        769,
+        955,
+        128578,
+        1114111
+      ],
+      "right": [
+        90,
+        65536
+      ],
+      "leftRepeats": 1,
+      "rightRepeats": 1,
+      "static": 0,
+      "aliases": 0,
+      "overlap": 0,
+      "suffix": 0
+    },
+    {
+      "name": "base-string-append-shared-left-512",
+      "left": [
+        0,
+        955,
+        128578,
+        1114111
+      ],
+      "right": [
+        116,
+        97,
+        105,
+        108
+      ],
+      "leftRepeats": 128,
+      "rightRepeats": 1,
+      "static": 0,
+      "aliases": 1,
+      "overlap": 0,
+      "suffix": 0
+    },
+    {
+      "name": "base-string-append-shared-right-513",
+      "left": [
+        97,
+        98
+      ],
+      "right": [
+        101,
+        769,
+        128578
+      ],
+      "leftRepeats": 1,
+      "rightRepeats": 171,
+      "static": 0,
+      "aliases": 2,
+      "overlap": 0,
+      "suffix": 0
+    },
+    {
+      "name": "base-string-append-static",
+      "left": [
+        115,
+        116,
+        97,
+        116,
+        105,
+        99,
+        955
+      ],
+      "right": [
+        128578
+      ],
+      "leftRepeats": 1,
+      "rightRepeats": 1,
+      "static": 1,
+      "aliases": 3,
+      "overlap": 0,
+      "suffix": 0
+    },
+    {
+      "name": "base-string-append-same-root",
+      "left": [
+        955,
+        128578
+      ],
+      "right": [],
+      "leftRepeats": 17,
+      "rightRepeats": 1,
+      "static": 0,
+      "aliases": 3,
+      "overlap": 1,
+      "suffix": 0
+    },
+    {
+      "name": "base-string-append-right-is-left-tail",
+      "left": [
+        97,
+        98,
+        99,
+        100,
+        101,
+        102,
+        955,
+        128578
+      ],
+      "right": [],
+      "leftRepeats": 1,
+      "rightRepeats": 1,
+      "static": 0,
+      "aliases": 3,
+      "overlap": 2,
+      "suffix": 3
+    },
+    {
+      "name": "base-string-append-unique-left-1024",
+      "left": [
+        0,
+        127,
+        128,
+        65536
+      ],
+      "right": [
+        955,
+        128578
+      ],
+      "leftRepeats": 256,
+      "rightRepeats": 1,
+      "static": 0,
+      "aliases": 0,
+      "overlap": 0,
+      "suffix": 0
+    }
+  ]
+}

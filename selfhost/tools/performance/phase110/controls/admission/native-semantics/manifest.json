@@ -1,0 +1,152 @@
+{
+  "kind": "phase110-frozen-native-closure-semantics-v1",
+  "frozenUtc": "2026-10-18T20:07:51.972436+00:00",
+  "frozenBeforeNativeSemanticRuns": true,
+  "source": {
+    "file": "selfhost/tools/performance/phase110/controls/admission/closure-source.bend",
+    "bytes": 2334,
+    "sha256": "f838117a3388381c4b18a5f8e7fd8eec095f66c754fa75f404b6259f7b90a7e5"
+  },
+  "sourceOracle": {
+    "file": "selfhost/tools/performance/phase110/controls/admission/closure-oracle.json",
+    "bytes": 5656,
+    "sha256": "f2cc103db43b510b346402332827220fe052847eba3f603518563c4fbe0a31c7"
+  },
+  "abi": {
+    "file": "selfhost/tools/performance/phase109/runtime/abi.h",
+    "bytes": 2183,
+    "sha256": "f32956045b038c337226c2a645b4c6eaa2a363654fcb27dbde7cd2242d681217"
+  },
+  "roots": [
+    {
+      "index": 0,
+      "name": "p110_close_chain",
+      "symbol": "entry",
+      "machineSymbol": "nx_entry",
+      "parameterRoles": [
+        "List<String>"
+      ],
+      "resultRole": "List<String>"
+    },
+    {
+      "index": 1,
+      "name": "p110_close_string",
+      "symbol": "entry",
+      "machineSymbol": "nx_entry",
+      "parameterRoles": [
+        "String"
+      ],
+      "resultRole": "String"
+    },
+    {
+      "index": 2,
+      "name": "p110_close_mixed",
+      "symbol": "entry",
+      "machineSymbol": "nx_entry",
+      "parameterRoles": [
+        "String",
+        "List<String>"
+      ],
+      "resultRole": "List<String>"
+    },
+    {
+      "index": 3,
+      "name": "p110_close_diamond",
+      "symbol": "entry",
+      "machineSymbol": "nx_entry",
+      "parameterRoles": [
+        "List<String>",
+        "List<String>"
+      ],
+      "resultRole": "List<String>"
+    }
+  ],
+  "cases": 18,
+  "observations": 36,
+  "unreachable": {
+    "source": {
+      "file": "selfhost/tools/performance/phase110/controls/admission/native-semantics/unreachable.bend",
+      "bytes": 233,
+      "sha256": "948d9474373d5290b6fa26633fc16efd03a81040dfceed8fd2fa1517d143ee57"
+    },
+    "requestedEntry": "p110_close_unreachable",
+    "sourceExpectedTypecheck": true,
+    "sourceObservedTypecheck": null,
+    "mainStdout": "unrelated\n",
+    "expectedNativeExitNonzero": true,
+    "expectedClosureAccepted": false,
+    "expectedErrorContains": "missing or mismatched erased fact",
+    "reason": "Mature request keeps only main-reachable erased facts; the requested typed source root alone is insufficient."
+  },
+  "inputs": [
+    {
+      "file": "selfhost/tools/performance/phase110/controls/admission/closure-source.bend",
+      "bytes": 2334,
+      "sha256": "f838117a3388381c4b18a5f8e7fd8eec095f66c754fa75f404b6259f7b90a7e5"
+    },
+    {
+      "file": "selfhost/tools/performance/phase110/controls/admission/closure-oracle.json",
+      "bytes": 5656,
+      "sha256": "f2cc103db43b510b346402332827220fe052847eba3f603518563c4fbe0a31c7"
+    },
+    {
+      "file": "selfhost/tools/performance/phase109/runtime/abi.h",
+      "bytes": 2183,
+      "sha256": "f32956045b038c337226c2a645b4c6eaa2a363654fcb27dbde7cd2242d681217"
+    },
+    {
+      "file": "selfhost/tools/performance/phase110/controls/admission/native-semantics/harness.c",
+      "bytes": 4945,
+      "sha256": "5bc4920c88bb5a0e0eadd0ae3deb66e378020d031c57f015a84a98dfdb1ef4da"
+    },
+    {
+      "file": "selfhost/tools/performance/phase110/controls/admission/native-semantics/cases.json",
+      "bytes": 1721,
+      "sha256": "bc15fb1852ab91b7dd0f81f1c3d3768ae4e47b7ca885297501b01e2daf734324"
+    },
+    {
+      "file": "selfhost/tools/performance/phase110/controls/admission/native-semantics/expected.jsonl",
+      "bytes": 6189,
+      "sha256": "394cbf644bcaea3ca855b0ad67e313a4289a1ba12b0d165c1255d5d7995ecaf9"
+    },
+    {
+      "file": "selfhost/tools/performance/phase110/controls/admission/native-semantics/reference.py",
+      "bytes": 1085,
+      "sha256": "ab9ad837dc23c884014c73a9ad5c14e855a638e797d1a464afda26b0560d4b79"
+    },
+    {
+      "file": "selfhost/tools/performance/phase110/controls/admission/native-semantics/prepare.py",
+      "bytes": 2058,
+      "sha256": "b1f0186be9b1ec28f96a9cad7aa74073fc15236ffe3ae6c912e59344a7119a36"
+    },
+    {
+      "file": "selfhost/tools/performance/phase110/controls/admission/native-semantics/check.py",
+      "bytes": 1348,
+      "sha256": "c8f162e1eb625befaa9e298142b60ee401b18220e8fc1f3db4e4ac5e6aaf9d93"
+    },
+    {
+      "file": "selfhost/tools/performance/phase110/controls/admission/native-semantics/unreachable.bend",
+      "bytes": 233,
+      "sha256": "948d9474373d5290b6fa26633fc16efd03a81040dfceed8fd2fa1517d143ee57"
+    }
+  ],
+  "semantics": {
+    "chain": "Returns xs unchanged through two private callees.",
+    "string": "Returns String unchanged through two private callees.",
+    "mixed": "Prepends h to xs after independent monomorphic private calls.",
+    "diamond": "Returns ys and releases xs after diamond private calls."
+  },
+  "ownershipGates": [
+    "Whole finite scalar/list values; Unicode/NUL/combining/supplementary endpoints.",
+    "Empty, unique, shared root, static, and mixed/diamond physically overlapping inputs.",
+    "Observe result, then aliases after result release; separately release aliases and reobserve result.",
+    "Pending field scratch empty after worker and all drops; zero dynamic live words before close."
+  ],
+  "preparationOnly": true,
+  "targetsRun": false,
+  "limits": [
+    "Synthetic closure witnesses do not establish compiler hotness.",
+    "No implementation of the source algorithms in harness; generic graph construction/observation only.",
+    "No timing claim; parent owns native compiler and worker execution."
+  ]
+}

@@ -1,0 +1,189 @@
+{
+  "kind": "phase110-frozen-inline-take-recipes",
+  "version": 1,
+  "recipes": [
+    {
+      "name": "list-raw",
+      "split": "training",
+      "parentKind": "List<String>",
+      "ownership": "raw dynamic unique",
+      "physicalDAG": false,
+      "allocatorPrecondition": null,
+      "allocatorPostcondition": null,
+      "first": "b",
+      "second": [],
+      "aliases": [
+        "b"
+      ]
+    },
+    {
+      "name": "list-last-owner",
+      "split": "training",
+      "parentKind": "List<String>",
+      "ownership": "last-owner redirect",
+      "physicalDAG": false,
+      "allocatorPrecondition": null,
+      "allocatorPostcondition": null,
+      "first": "b",
+      "second": [],
+      "aliases": [
+        "b"
+      ]
+    },
+    {
+      "name": "list-shared",
+      "split": "training",
+      "parentKind": "List<String>",
+      "ownership": "shared parent",
+      "physicalDAG": false,
+      "allocatorPrecondition": null,
+      "allocatorPostcondition": null,
+      "first": "b",
+      "second": [],
+      "aliases": [
+        [
+          "b"
+        ],
+        "b"
+      ]
+    },
+    {
+      "name": "list-static",
+      "split": "training",
+      "parentKind": "List<String>",
+      "ownership": "static",
+      "physicalDAG": false,
+      "allocatorPrecondition": null,
+      "allocatorPostcondition": null,
+      "first": "b",
+      "second": [],
+      "aliases": [
+        [
+          "b"
+        ],
+        "b"
+      ]
+    },
+    {
+      "name": "string-raw",
+      "split": "training",
+      "parentKind": "String",
+      "ownership": "raw dynamic unique",
+      "physicalDAG": false,
+      "allocatorPrecondition": null,
+      "allocatorPostcondition": null,
+      "first": 97,
+      "second": "b",
+      "aliases": [
+        "b"
+      ]
+    },
+    {
+      "name": "string-last-owner",
+      "split": "training",
+      "parentKind": "String",
+      "ownership": "last-owner redirect",
+      "physicalDAG": false,
+      "allocatorPrecondition": null,
+      "allocatorPostcondition": null,
+      "first": 97,
+      "second": "b",
+      "aliases": [
+        "b"
+      ]
+    },
+    {
+      "name": "string-shared",
+      "split": "training",
+      "parentKind": "String",
+      "ownership": "shared parent",
+      "physicalDAG": false,
+      "allocatorPrecondition": null,
+      "allocatorPostcondition": null,
+      "first": 97,
+      "second": "b",
+      "aliases": [
+        "ab",
+        "b"
+      ]
+    },
+    {
+      "name": "string-static",
+      "split": "training",
+      "parentKind": "String",
+      "ownership": "static",
+      "physicalDAG": false,
+      "allocatorPrecondition": null,
+      "allocatorPostcondition": null,
+      "first": 97,
+      "second": "b",
+      "aliases": [
+        "ab",
+        "b"
+      ]
+    },
+    {
+      "name": "string-sealed-static",
+      "split": "heldout",
+      "parentKind": "String",
+      "ownership": "heap-RFC-wrapped static",
+      "physicalDAG": false,
+      "allocatorPrecondition": null,
+      "allocatorPostcondition": null,
+      "first": 97,
+      "second": "b",
+      "aliases": [
+        "ab",
+        "b"
+      ]
+    },
+    {
+      "name": "list-dag-shared",
+      "split": "heldout",
+      "parentKind": "List<String>",
+      "ownership": "shared parent",
+      "physicalDAG": true,
+      "allocatorPrecondition": null,
+      "allocatorPostcondition": null,
+      "first": "b",
+      "second": [
+        "b"
+      ],
+      "aliases": [
+        [
+          "b",
+          "b"
+        ],
+        "b"
+      ]
+    },
+    {
+      "name": "string-allocator-empty",
+      "split": "heldout",
+      "parentKind": "String",
+      "ownership": "raw dynamic unique",
+      "physicalDAG": false,
+      "allocatorPrecondition": "class1 HOT0/LEN0",
+      "allocatorPostcondition": "class1 HOTnonzero/LEN2",
+      "first": 97,
+      "second": "b",
+      "aliases": [
+        "b"
+      ]
+    },
+    {
+      "name": "string-allocator-handoff",
+      "split": "heldout",
+      "parentKind": "String",
+      "ownership": "last-owner redirect",
+      "physicalDAG": false,
+      "allocatorPrecondition": "class1 HOTnonzero/LEN32766",
+      "allocatorPostcondition": "class1 HOT0/LEN0/COLDnonzero",
+      "first": 97,
+      "second": "b",
+      "aliases": [
+        "b"
+      ]
+    }
+  ]
+}

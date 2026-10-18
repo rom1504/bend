@@ -1,0 +1,35 @@
+{
+  "kind": "phase110-frozen-unique-parent-physical-overlap-controls",
+  "frozenUtc": "2026-10-18T20:14:41.422072+00:00",
+  "targetsRun": false,
+  "recipes": {
+    "file": "selfhost/tools/performance/phase110/controls/audit/unique-overlap-recipes.json",
+    "bytes": 1001,
+    "sha256": "b2b0e34bfe4f9dbcd33c6d4293902a921de290dc2b01485164a01add99075288"
+  },
+  "expected": {
+    "file": "selfhost/tools/performance/phase110/controls/audit/unique-overlap-expected.jsonl",
+    "bytes": 610,
+    "sha256": "ef3216091523036b8bb6046e78238653328b5413f46a3d7baaa832acee359906"
+  },
+  "harness": {
+    "file": "selfhost/tools/performance/phase110/controls/audit/unique-overlap-controls.c",
+    "bytes": 6725,
+    "sha256": "6c078fba64b04daeead7f44e133f94b2cd137d59ad73a5ec45d85ade8e1aa1d9"
+  },
+  "derivedGenericObservers": {
+    "file": "selfhost/tools/performance/phase110/controls/audit/operator-controls.c",
+    "bytes": 7832,
+    "sha256": "e08432d31b5f72e79a2c819c3dfe757459e6950179de6ce881239032eecdf750"
+  },
+  "candidateSource": {
+    "file": "selfhost/tools/performance/phase110/runtime-ir/wrapper-delayed-overrides.bend",
+    "bytes": 1175,
+    "sha256": "1198ae5de0dbcc10bc2739f3a79e85b8e77baac3d14a5322eab179e5cae1b71b"
+  },
+  "graphs": 2,
+  "observations": 4,
+  "callback": "P110_AUDIT_IR nx_ir_probe_c1_k0 + scratch0 remaining, or unchanged nx_rt_pair_rebuild2_c1_k0 helper",
+  "frame": "Unique live parent shell is disjoint from consumed class0 wrapper. The retained child also occurs inside other; external sealing must leave both source-shell field words intact until both loads. Existing retained-in-other corpus retains a parent alias and exercises fallback instead.",
+  "execution": "root owns all compiler/probe execution; compare saved JSON rows with exact expected oracle"
+}

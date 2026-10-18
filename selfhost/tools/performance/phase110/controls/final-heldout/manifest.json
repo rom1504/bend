@@ -1,0 +1,155 @@
+{
+  "kind": "phase110-frozen-fresh-final-heldout",
+  "version": 1,
+  "frozenAtUtc": "2026-10-18T20:02:20.191173+00:00",
+  "candidateOutputsUsed": false,
+  "coverageAgentTargetsRun": false,
+  "freshness": "New eleven graphs, names, source datasets and independently computed expected observations; freeze precedes final seven-choice selection. Original18 heldouts remain separately labeled reused regressions.",
+  "cases": 11,
+  "defaultRepetitions": 2,
+  "perCaseRepetitions": {
+    "final-list-unicode-65545-unique": 2,
+    "final-list-odd-65541-root": 2,
+    "final-list-odd-65535-tail": 2,
+    "final-list-odd-32771-head": 2,
+    "final-string-unicode-65549-unique": 2,
+    "final-string-odd-65545-root": 2,
+    "final-string-odd-65541-tail": 2,
+    "final-list-parser-unique": 2,
+    "final-list-parser-tail": 2,
+    "final-string-checker-kernel-unique": 2,
+    "final-string-checker-kernel-root": 2
+  },
+  "timingWorkloads": [
+    "final-list-unicode-65545-unique",
+    "final-list-odd-65541-root",
+    "final-list-odd-65535-tail",
+    "final-list-odd-32771-head",
+    "final-string-unicode-65549-unique",
+    "final-string-odd-65545-root",
+    "final-string-odd-65541-tail",
+    "final-list-parser-unique",
+    "final-list-parser-tail",
+    "final-string-checker-kernel-unique",
+    "final-string-checker-kernel-root"
+  ],
+  "aggregation": "Equal weight across all eleven frozen workloads; report individual ratios as well as geometric mean. Root freezes selected candidate(s) before any evaluation. No adaptation from these results.",
+  "ownershipCases": {
+    "file": "selfhost/tools/performance/phase110/controls/final-heldout/cases.json",
+    "bytes": 1323393,
+    "sha256": "6d276f451d4125ef5054be9cfb174307aea8f8b3734aeeafb0cd8c0ad01bc19f"
+  },
+  "oracleCode": {
+    "file": "selfhost/tools/performance/phase110/controls/final-heldout/reference.py",
+    "bytes": 2607,
+    "sha256": "92215d0970055470da2fd56aaaf8dc865fb75e91bcc55a1cbb811e277b625e3d"
+  },
+  "sourceFixture": {
+    "file": "selfhost/tools/performance/phase110/controls/sources/base-selectors.bend",
+    "sha256": "3f5e60916d2b7bb5899d172a266200343021c340a7fd45368ef80eca3c875b7e",
+    "bytes": 354
+  },
+  "sourceControls": [],
+  "expected": [
+    {
+      "file": "selfhost/tools/performance/phase110/controls/final-heldout/reverse.expected.jsonl",
+      "bytes": 1519,
+      "sha256": "62f2ebb0c8a5d377f5495478a98631c7726d86caa2516837327b019780e76ddc",
+      "variant": "reverse"
+    }
+  ],
+  "oldControls": [
+    {
+      "file": "selfhost/tools/performance/phase110/controls/manifest.json",
+      "bytes": 8547,
+      "sha256": "78133f8d2417b047c4d93ec1392dd196c06a1acbf386cf8799f3701087fb939a"
+    },
+    {
+      "file": "selfhost/tools/performance/phase110/controls/cases.json",
+      "bytes": 490606,
+      "sha256": "bf1cda312344e1b7d27588010dd97bd2bb073c4fc0f8892b44894e863dc3eae0"
+    },
+    {
+      "file": "selfhost/tools/performance/phase110/controls/reverse.expected.jsonl",
+      "bytes": 3889,
+      "sha256": "85c6002702197322cdcb31b4e32da33ad8acdc4ec987bd5d2b8587aa5deddb89"
+    }
+  ],
+  "datasets": [
+    {
+      "name": "parser",
+      "source": {
+        "file": "selfhost/src/front/parser.bend",
+        "bytes": 34444,
+        "sha256": "89eab388bfd64e4ec9965b1147f5be2a5dc88761b61d13824599e13c46138095"
+      },
+      "snapshot": {
+        "file": "selfhost/tools/performance/phase110/controls/final-heldout/datasets/parser.txt",
+        "bytes": 34444,
+        "sha256": "89eab388bfd64e4ec9965b1147f5be2a5dc88761b61d13824599e13c46138095"
+      },
+      "role": "Actual compiler text as graph payload; no claim of measured hotness/frequency."
+    },
+    {
+      "name": "checker-kernel",
+      "source": {
+        "file": "selfhost/src/check/kernel.bend",
+        "bytes": 49206,
+        "sha256": "bbeebc44d278044349a9cb7a35fe5956251e32098dcb0722d96542dee23148e1"
+      },
+      "snapshot": {
+        "file": "selfhost/tools/performance/phase110/controls/final-heldout/datasets/checker-kernel.txt",
+        "bytes": 49206,
+        "sha256": "bbeebc44d278044349a9cb7a35fe5956251e32098dcb0722d96542dee23148e1"
+      },
+      "role": "Actual compiler text as graph payload; no claim of measured hotness/frequency."
+    }
+  ],
+  "harness": {
+    "file": "selfhost/tools/performance/phase110/controls/final-heldout/harness.c",
+    "bytes": 7540,
+    "sha256": "122695d8bdaed8c5d794c9d89aace61fe6349e10e22513aafedc5d865a240476"
+  },
+  "baselinePreparedHarness": {
+    "file": "selfhost/build/phase110/train01/harness.c",
+    "bytes": 7564,
+    "sha256": "9c9b99cd5ee04518e1fe92dd9d917531901fc6071e544e11bd7a2fda9a05b4d9"
+  },
+  "preparation": {
+    "file": "selfhost/tools/performance/phase110/controls/final-heldout/prepare.py",
+    "bytes": 4841,
+    "sha256": "e5b78fd10b72c60d88fb5d9e967d8ad0c3814ff2654c5c67d60ff5e2d49f2667"
+  },
+  "preparationDelta": {
+    "file": "selfhost/tools/performance/phase110/controls/final-heldout/prepare.patch",
+    "bytes": 1012,
+    "sha256": "8c872c3bfb0e6e96cefca41c9395f5ef840dc89eb64f0012fb5f296190c6307e"
+  },
+  "inheritedPreparation": {
+    "file": "selfhost/tools/performance/phase110/controls/prepare.py",
+    "bytes": 4825,
+    "sha256": "5343be13e67ee18f93af8a3ace5e47990c1c6c119df1acd7cb40c19661a4d3c2"
+  },
+  "inheritedReference": {
+    "file": "selfhost/tools/performance/phase110/controls/reference.py",
+    "bytes": 2607,
+    "sha256": "92215d0970055470da2fd56aaaf8dc865fb75e91bcc55a1cbb811e277b625e3d"
+  },
+  "inheritedHarness": {
+    "file": "selfhost/tools/performance/phase110/controls/harness.c",
+    "bytes": 7540,
+    "sha256": "122695d8bdaed8c5d794c9d89aace61fe6349e10e22513aafedc5d865a240476"
+  },
+  "unchanged": [
+    "Original29 cases and names",
+    "Original independent reference code",
+    "Original harness source and worker-only timing boundaries",
+    "Original runtime ABI and ownership/lifetime gates"
+  ],
+  "limitations": [
+    "This corpus was designed after prior helper/IR measurements; its outputs and new graph timings have never been used for selection.",
+    "Source text is representative input payload, not a profile-frequency/hotness claim.",
+    "Default two repetitions are fixed for all eleven cases; any separate timing confirmation must be labeled and predeclared.",
+    "No static cases here; static and operator bridge controls remain separate correctness regressions."
+  ]
+}

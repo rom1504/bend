@@ -1,0 +1,243 @@
+{
+  "kind": "phase110-independent-entry-certificate-oracle-v1",
+  "sourceExpectedTypecheck": true,
+  "sourceObservedTypecheck": null,
+  "entryCases": [
+    {
+      "name": "p110_cert_string_identity",
+      "parameterRoles": [
+        "String"
+      ],
+      "resultRole": "String",
+      "entryCertificateAccepted": true,
+      "reason": "Canonical concrete owning String identity."
+    },
+    {
+      "name": "p110_cert_list_identity",
+      "parameterRoles": [
+        "List<String>"
+      ],
+      "resultRole": "List<String>",
+      "entryCertificateAccepted": true,
+      "reason": "Canonical concrete owning List<String> identity."
+    },
+    {
+      "name": "p110_cert_mixed_list",
+      "parameterRoles": [
+        "String",
+        "List<String>"
+      ],
+      "resultRole": "List<String>",
+      "entryCertificateAccepted": true,
+      "reason": "Exact order of distinct input roles is recoverable before erasure."
+    },
+    {
+      "name": "p110_cert_mixed_string",
+      "parameterRoles": [
+        "List<String>",
+        "String"
+      ],
+      "resultRole": "String",
+      "entryCertificateAccepted": true,
+      "reason": "Exact result role differs from a list despite identical owning-word ABI."
+    },
+    {
+      "name": "p110_cert_list_u32",
+      "parameterRoles": [
+        "List<U32>"
+      ],
+      "resultRole": "List<U32>",
+      "entryCertificateAccepted": false,
+      "reason": "List element is not canonical String; Con field cannot use the fixed String descriptor."
+    },
+    {
+      "name": "p110_cert_nat",
+      "parameterRoles": [
+        "Nat"
+      ],
+      "resultRole": "Nat",
+      "entryCertificateAccepted": false,
+      "reason": "Natural-number heap representation is outside the four supported constructors."
+    },
+    {
+      "name": "p110_cert_u32",
+      "parameterRoles": [
+        "U32"
+      ],
+      "resultRole": "U32",
+      "entryCertificateAccepted": false,
+      "reason": "Scalar representation must not be inferred as an owning Term from erased arity."
+    },
+    {
+      "name": "p110_cert_lookalike",
+      "parameterRoles": [
+        "P110Lookalike"
+      ],
+      "resultRole": "P110Lookalike",
+      "entryCertificateAccepted": false,
+      "reason": "A same-shape user datatype has different checked constructor provenance."
+    },
+    {
+      "name": "p110_cert_alias",
+      "parameterRoles": [
+        "P110StringAlias()"
+      ],
+      "resultRole": "P110StringAlias()",
+      "entryCertificateAccepted": false,
+      "reason": "Alias normalization is deliberately outside canonical v1 grammar."
+    },
+    {
+      "name": "p110_cert_dependent",
+      "parameterRoles": [
+        "A"
+      ],
+      "resultRole": "A",
+      "entryCertificateAccepted": false,
+      "reason": "Erased type parameter and dependent role are unsupported.",
+      "erasedParameters": [
+        "A: Data"
+      ]
+    },
+    {
+      "name": "p110_cert_higher_order",
+      "parameterRoles": [
+        "String -> String",
+        "String"
+      ],
+      "resultRole": "String",
+      "entryCertificateAccepted": false,
+      "reason": "A closure input cannot be treated as an owning data word."
+    },
+    {
+      "name": "p110_cert_function_result",
+      "parameterRoles": [
+        "List<String>"
+      ],
+      "resultRole": "String -> List<String>",
+      "entryCertificateAccepted": false,
+      "reason": "Declared source arity is one; a function result is not another source parameter."
+    },
+    {
+      "name": "nt_reverse",
+      "parameterRoles": [
+        "List<A>",
+        "List<A>"
+      ],
+      "resultRole": "List<A>",
+      "entryCertificateAccepted": false,
+      "reason": "Exact generic compiler declaration has an erased type parameter; requires checked specialization.",
+      "erasedParameters": [
+        "A: Data"
+      ]
+    },
+    {
+      "name": "p110_cert_closed_reverse",
+      "parameterRoles": [
+        "List<String>",
+        "List<String>"
+      ],
+      "resultRole": "List<String>",
+      "entryCertificateAccepted": true,
+      "reason": "Entry is concrete, but its generic nt_reverse dependency is not certified.",
+      "closedLibraryAccepted": false,
+      "dependencies": [
+        "nt_reverse"
+      ]
+    }
+  ],
+  "mutationRecipes": [
+    {
+      "name": "wrong-result-claim",
+      "entry": "p110_cert_mixed_string",
+      "recipe": "Claim result List<String> for actual String result.",
+      "expectedAccepted": false,
+      "requiresAuthenticatedSourceRevalidation": true
+    },
+    {
+      "name": "wrong-param-order",
+      "entry": "p110_cert_mixed_list",
+      "recipe": "Swap claimed String,List<String> parameter roles.",
+      "expectedAccepted": false,
+      "requiresAuthenticatedSourceRevalidation": true
+    },
+    {
+      "name": "wrong-list-element-claim",
+      "entry": "p110_cert_list_u32",
+      "recipe": "Claim canonical List<String> for List<U32> source.",
+      "expectedAccepted": false,
+      "requiresAuthenticatedSourceRevalidation": true
+    },
+    {
+      "name": "erased-arity-mismatch",
+      "entry": "p110_cert_list_identity",
+      "recipe": "Change NativeErasedBody.arity from 1 to 2 while original source arity is 1.",
+      "expectedAccepted": false,
+      "requiresAuthenticatedSourceRevalidation": true
+    },
+    {
+      "name": "source-arity-result-confusion",
+      "entry": "p110_cert_function_result",
+      "recipe": "Raise declared source arity to 2 without original source authentication.",
+      "expectedAccepted": false,
+      "requiresAuthenticatedSourceRevalidation": true
+    },
+    {
+      "name": "unbound-generic-specialization",
+      "entry": "nt_reverse",
+      "recipe": "Replace dependent type binder with a host String role assertion but no checked specialization.",
+      "expectedAccepted": false,
+      "requiresAuthenticatedSourceRevalidation": true
+    },
+    {
+      "name": "base-constructor-swap",
+      "entry": "p110_cert_list_identity",
+      "recipe": "Swap Nil/Con or SNil/SCon constructor mapping identities.",
+      "expectedAccepted": false,
+      "requiresAuthenticatedSourceRevalidation": true
+    },
+    {
+      "name": "base-constructor-field-role",
+      "entry": "p110_cert_list_identity",
+      "recipe": "Use U32 for checked Con head or Char tail instead of String,List<String>.",
+      "expectedAccepted": false,
+      "requiresAuthenticatedSourceRevalidation": true
+    },
+    {
+      "name": "base-provenance-lookalike",
+      "entry": "p110_cert_lookalike",
+      "recipe": "Give user P110LookNil/P110LookCon the Base numeric IDs and arities.",
+      "expectedAccepted": false,
+      "requiresAuthenticatedSourceRevalidation": true
+    },
+    {
+      "name": "base-adt-arity",
+      "entry": "p110_cert_list_identity",
+      "recipe": "Remove List quantifier or element parameter while retaining its name.",
+      "expectedAccepted": false,
+      "requiresAuthenticatedSourceRevalidation": true
+    },
+    {
+      "name": "base-alpha-binder",
+      "entry": "p110_cert_list_identity",
+      "recipe": "Retarget the recursive Con tail element type to a different binder.",
+      "expectedAccepted": false,
+      "requiresAuthenticatedSourceRevalidation": true
+    },
+    {
+      "name": "source-substitution",
+      "entry": "p110_cert_string_identity",
+      "recipe": "Substitute a different typed source definition while retaining previously issued certificate.",
+      "expectedAccepted": false,
+      "requiresAuthenticatedSourceRevalidation": true
+    }
+  ],
+  "sourceFailures": [
+    {
+      "file": "selfhost/tools/performance/phase110/controls/admission/wrong-result.bend",
+      "expectedTypecheck": false,
+      "reason": "String body returned at declared List<String> type; reachable from main."
+    }
+  ],
+  "mainStdout": "λ🙂\na|b\nm\ns\n1\n3\n4\nxnil\nalias\ngeneric\ncall\npartial\nb|a|z\n",
+  "claims": "Independent mathematical meanings and v1 canonical admission boundaries; no compiler/target execution or diagnostic-string claim."
+}

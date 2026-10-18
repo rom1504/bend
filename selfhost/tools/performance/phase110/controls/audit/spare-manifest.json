@@ -1,0 +1,42 @@
+{
+  "kind": "phase110-frozen-wrapper-spare-audit-v1",
+  "version": 1,
+  "frozenAtUtc": "2026-10-18T19:50:55.455722+00:00",
+  "coverageAgentTargetsRun": false,
+  "independentOfCandidateOutputs": true,
+  "concreteGraphs": 7,
+  "observations": 14,
+  "trainingObservations": 4,
+  "heldoutObservations": 10,
+  "recipes": {
+    "file": "selfhost/tools/performance/phase110/controls/audit/spare-recipes.json",
+    "bytes": 4720,
+    "sha256": "b385a14c293c837a3093c2b0f14cdf89fa1ea4468f262ece0c1860042248d4ee"
+  },
+  "expected": {
+    "file": "selfhost/tools/performance/phase110/controls/audit/spare-expected.jsonl",
+    "bytes": 1938,
+    "sha256": "b975c9d9bfce223a19333d730e14f9390037318a6de903fbef933070fa996ed4"
+  },
+  "harness": {
+    "file": "selfhost/tools/performance/phase110/controls/audit/spare-controls.c",
+    "bytes": 7790,
+    "sha256": "2b54f422d0c55875ad16078324a33288ed79ddfe4fa8a3fc0184b1cea6e0da84"
+  },
+  "candidateSourceAtFreeze": {
+    "file": "selfhost/tools/performance/phase110/runtime-ir/wrapper-spare.bend",
+    "bytes": 2324,
+    "sha256": "ff0d4f1a1f2fe883a98fca88b467cf91898cd9085087a7c4624da40bc753eae1"
+  },
+  "modes": {
+    "P110_AUDIT_IR": "Use exact generated nx_ir_probe_c3_k0 and public scratch result bridge.",
+    "P110_AUDIT_SPARE": "Additionally enforce candidate mechanism invariants. Omit for semantic reference helper runs."
+  },
+  "scope": "Complete short-value/lifetime oracle plus candidate-specific allocator/wrapper identity assertions. Separate from older reused heldout graphs and timing selection. No compiler or target execution during preparation.",
+  "limits": [
+    "String parent retains a scalar head, so head-seal cannot allocate and allocator invariance isolates wrapper spare.",
+    "Raw static other must receive an owning redirect even though its target is immutable.",
+    "All padding and aliases use production APIs. Allocator internals are read only.",
+    "Probe must be emitted with wrapper-spare override; incumbent semantic worker may legitimately fail candidate-only handoff invariance."
+  ]
+}

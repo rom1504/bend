@@ -1,0 +1,179 @@
+{
+  "kind": "phase110-independent-closed-entry-oracle-v1",
+  "sourceExpectedTypecheck": true,
+  "sourceObservedTypecheck": null,
+  "roots": [
+    {
+      "name": "p110_close_chain",
+      "symbol": "close_chain",
+      "parameterRoles": [
+        "List<String>"
+      ],
+      "resultRole": "List<String>",
+      "entryCertificateAccepted": true,
+      "closedLibraryAccepted": true,
+      "requiredClosureNames": [
+        "p110_close_chain",
+        "p110_close_mid",
+        "p110_close_leaf"
+      ],
+      "refusedDependency": null
+    },
+    {
+      "name": "p110_close_string",
+      "symbol": "close_string",
+      "parameterRoles": [
+        "String"
+      ],
+      "resultRole": "String",
+      "entryCertificateAccepted": true,
+      "closedLibraryAccepted": true,
+      "requiredClosureNames": [
+        "p110_close_string",
+        "p110_close_string_mid",
+        "p110_close_string_leaf"
+      ],
+      "refusedDependency": null
+    },
+    {
+      "name": "p110_close_mixed",
+      "symbol": "close_mixed",
+      "parameterRoles": [
+        "String",
+        "List<String>"
+      ],
+      "resultRole": "List<String>",
+      "entryCertificateAccepted": true,
+      "closedLibraryAccepted": true,
+      "requiredClosureNames": [
+        "p110_close_mixed",
+        "p110_close_string_leaf",
+        "p110_close_mid",
+        "p110_close_leaf"
+      ],
+      "refusedDependency": null
+    },
+    {
+      "name": "p110_close_diamond",
+      "symbol": "close_diamond",
+      "parameterRoles": [
+        "List<String>",
+        "List<String>"
+      ],
+      "resultRole": "List<String>",
+      "entryCertificateAccepted": true,
+      "closedLibraryAccepted": true,
+      "requiredClosureNames": [
+        "p110_close_diamond",
+        "p110_close_choose",
+        "p110_close_mid",
+        "p110_close_leaf"
+      ],
+      "refusedDependency": null
+    },
+    {
+      "name": "p110_close_generic",
+      "symbol": "close_generic",
+      "parameterRoles": [
+        "List<String>",
+        "List<String>"
+      ],
+      "resultRole": "List<String>",
+      "entryCertificateAccepted": true,
+      "closedLibraryAccepted": false,
+      "requiredClosureNames": [
+        "p110_close_generic",
+        "nt_reverse"
+      ],
+      "refusedDependency": "nt_reverse"
+    },
+    {
+      "name": "p110_close_unsupported_callee",
+      "symbol": "close_unsupported_callee",
+      "parameterRoles": [
+        "String"
+      ],
+      "resultRole": "String",
+      "entryCertificateAccepted": true,
+      "closedLibraryAccepted": false,
+      "requiredClosureNames": [
+        "p110_close_unsupported_callee",
+        "p110_close_char_identity"
+      ],
+      "refusedDependency": "p110_close_char_identity"
+    }
+  ],
+  "closureOrder": "Compare sets; deterministic machine naming must not alter source identities. No traversal-order requirement.",
+  "positiveCombinedExports": [
+    "close_chain",
+    "close_string",
+    "close_mixed",
+    "close_diamond"
+  ],
+  "positiveCombinedClosureNames": [
+    "p110_close_chain",
+    "p110_close_choose",
+    "p110_close_diamond",
+    "p110_close_leaf",
+    "p110_close_mid",
+    "p110_close_mixed",
+    "p110_close_string",
+    "p110_close_string_leaf",
+    "p110_close_string_mid"
+  ],
+  "negativeClosureReason": {
+    "nt_reverse": "Erased generic type parameter requires checked specialization.",
+    "p110_close_char_identity": "Private Char parameter/result is outside canonical String/List<String> roles."
+  },
+  "outsideRequestedClosure": [
+    "main",
+    "p110_close_join",
+    "IO.print",
+    "String.append"
+  ],
+  "mainStdout": "a|b\nλ🙂\nh|a|b\nz\nb|a|z\naz\n",
+  "mutations": [
+    {
+      "name": "nonexported-unsupported-callee",
+      "expectedClosedAccepted": false,
+      "recipe": "Use p110_close_unsupported_callee alone as exported root; its private Char identity must still be certified and refused."
+    },
+    {
+      "name": "nonexported-generic-callee",
+      "expectedClosedAccepted": false,
+      "recipe": "Use p110_close_generic alone; its private erased-generic dependency must refuse."
+    },
+    {
+      "name": "missing-private-fact",
+      "expectedClosedAccepted": false,
+      "recipe": "Remove p110_close_mid erased fact while preserving the exported chain root and typed source."
+    },
+    {
+      "name": "duplicate-private-fact",
+      "expectedClosedAccepted": false,
+      "recipe": "Duplicate p110_close_leaf erased fact under the same name."
+    },
+    {
+      "name": "duplicate-export-symbol",
+      "expectedClosedAccepted": false,
+      "recipe": "Give distinct chain and string roots the same requested exported machine symbol."
+    },
+    {
+      "name": "duplicate-root-identity",
+      "expectedClosedAccepted": false,
+      "recipe": "Request the same source root twice with distinct symbols; require explicit refusal rather than ambiguous rebinding."
+    },
+    {
+      "name": "generated-private-symbol-collision",
+      "expectedClosedAccepted": false,
+      "recipe": "Choose an exported symbol equal to a generated private callee name; detect collision or generate a fresh disjoint private symbol (successful hygienic renaming is also acceptable).",
+      "acceptableAlternative": "Accept only after deterministic collision-free renaming with full function/export/call identity consistency."
+    },
+    {
+      "name": "traversal-bound",
+      "expectedClosedAccepted": false,
+      "recipe": "Exceed explicit node/dependency budget; record bounded refusal without partial library success."
+    }
+  ],
+  "scope": "Source-only synthetic closure witnesses, independent semantics and requested trust-boundary verdicts. No compiler or target execution."
+}

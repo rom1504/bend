@@ -1,0 +1,92 @@
+{
+  "kind": "phase110-frozen-actual-base-string-append-v1",
+  "frozenUtc": "2026-10-18T20:16:21.157484+00:00",
+  "targetsRun": false,
+  "source": {
+    "file": "selfhost/tools/performance/phase110/controls/admission/string-append/source.bend",
+    "bytes": 166,
+    "sha256": "1168635ff3b07fee120ff986ff83c94262c422e763d64f1f2c43be3b4061eb00"
+  },
+  "baseSource": {
+    "file": "bend2/base.bend",
+    "bytes": 75064,
+    "sha256": "99ac43f2b2bb3e3f39acdcedcecbbd3cb44749ce13969c827d6973fa66f7facf"
+  },
+  "abi": {
+    "file": "selfhost/tools/performance/phase109/runtime/abi.h",
+    "bytes": 2183,
+    "sha256": "f32956045b038c337226c2a645b4c6eaa2a363654fcb27dbde7cd2242d681217"
+  },
+  "entry": "String.append",
+  "symbol": "entry",
+  "machineSymbol": "nx_entry",
+  "parameterRoles": [
+    "String",
+    "String"
+  ],
+  "resultRole": "String",
+  "requiredClosureNames": [
+    "String.append"
+  ],
+  "sourceExpectedTypecheck": true,
+  "sourceObservedTypecheck": null,
+  "mainStdout": "a\u03bb\ud83d\ude42z\n",
+  "actualDeclaration": "def String.append(a: String, b: String) -> String:\n  match a:\n    case SNil{}:\n      b\n    case SCon{h, t}:\n      SCon{h, String.append(t, b)}",
+  "actualDeclarationSha256": "997947223289205b264f5d4ecad529a3bc93f03e4b9d3b655172507cedb5db56",
+  "cases": 10,
+  "observations": 20,
+  "maxFirstInputDepth": 1024,
+  "oracle": "Independent finite scalar-array concatenation. Native source algorithm is present only in actual Base; harness has construction/observation and no concatenation.",
+  "inputs": [
+    {
+      "file": "bend2/base.bend",
+      "bytes": 75064,
+      "sha256": "99ac43f2b2bb3e3f39acdcedcecbbd3cb44749ce13969c827d6973fa66f7facf"
+    },
+    {
+      "file": "selfhost/tools/performance/phase109/runtime/abi.h",
+      "bytes": 2183,
+      "sha256": "f32956045b038c337226c2a645b4c6eaa2a363654fcb27dbde7cd2242d681217"
+    },
+    {
+      "file": "selfhost/tools/performance/phase110/controls/admission/string-append/source.bend",
+      "bytes": 166,
+      "sha256": "1168635ff3b07fee120ff986ff83c94262c422e763d64f1f2c43be3b4061eb00"
+    },
+    {
+      "file": "selfhost/tools/performance/phase110/controls/admission/string-append/harness.c",
+      "bytes": 3062,
+      "sha256": "059ea01d4eb6fadb9c8bd1a9fbcf07507c4aa572dda04c91a8571dbc7603d8cd"
+    },
+    {
+      "file": "selfhost/tools/performance/phase110/controls/admission/string-append/cases.json",
+      "bytes": 3189,
+      "sha256": "46d071751f8e2d2a9d789c012cf307ad59f64d09470ec0a8a3fc0f8cdb39ef5c"
+    },
+    {
+      "file": "selfhost/tools/performance/phase110/controls/admission/string-append/expected.jsonl",
+      "bytes": 44082,
+      "sha256": "d185003892f28e46eff01635d94e8b113776b572706db522bdec4017b55a7c41"
+    },
+    {
+      "file": "selfhost/tools/performance/phase110/controls/admission/string-append/reference.py",
+      "bytes": 879,
+      "sha256": "f7a2796a0d2f8980d608f697744ba49ded5936544d106125f4f3cad83f748ef1"
+    },
+    {
+      "file": "selfhost/tools/performance/phase110/controls/admission/string-append/prepare.py",
+      "bytes": 2234,
+      "sha256": "8e2c1677cf9ee8b2fa371ee29f486f168040bc63efd099cb6b76922c7f43153d"
+    },
+    {
+      "file": "selfhost/tools/performance/phase110/controls/admission/string-append/check.py",
+      "bytes": 1033,
+      "sha256": "b9406b318686d2111c0ea85ee9075d987176f9091766453cad512f321bc09d77"
+    }
+  ],
+  "limits": [
+    "Non-tail recursion bounded here to1024 first-input cells; arbitrary depth/native stack behavior unqualified.",
+    "Synthetic graph inputs exercise actual Base implementation; no compiler hotness claim.",
+    "Root owns actual checked capture/native emission/build/run; this manifest asserts intended source-only expectations."
+  ]
+}

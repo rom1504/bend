@@ -1,0 +1,38 @@
+{
+  "kind": "phase110-final-followup-selection-protocol",
+  "frozenUtc": "2026-10-18T20:04:30.391250+00:00",
+  "rounds": 5,
+  "reference": "fused-qbe",
+  "threshold": 0.97,
+  "qbeIncumbent": "compact-general-qbe",
+  "qbeChallengers": [
+    "stored-field-qbe",
+    "wrapper-spare-qbe"
+  ],
+  "clangIncumbent": "stored-field-clang",
+  "clangChallengers": [
+    "compact-general-clang",
+    "wrapper-spare-clang"
+  ],
+  "objective": "Equal seven-case geometric mean of median worker time. Retain incumbent unless challenger is >=3% faster in aggregate and improves geometric mean in every round against that incumbent. After per-backend selection, choose global winner under same3%+round consistency rule, retaining QBE on inconclusive cross-backend result.",
+  "heldoutRepetitions": 2,
+  "heldoutRounds": 3,
+  "heldoutPolicy": "Freeze winners first; evaluate final eleven new heldouts once, accept only semantic success and <=1.03 aggregate reference ratio. Report individual regressions. No reranking on heldout.",
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/final-training-build01/report.json",
+      "bytes": 12014,
+      "sha256": "a1013fe7b00c08df1d51f145210c5470326c274bb7ad8cec3e1afdb9d89657e6"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase110/controls/audit/fast-loop-v2.json",
+      "bytes": 4921,
+      "sha256": "a96cf01b9313de2fd2504f07a8ffc15cecb6f221ffe88b256b6806c70e154f1b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase110/controls/final-heldout/manifest.json",
+      "bytes": 6360,
+      "sha256": "f36951c72945b4e260f25c91492e0f720276238ffe3ce2ad43483e297dbfcde4"
+    }
+  ]
+}

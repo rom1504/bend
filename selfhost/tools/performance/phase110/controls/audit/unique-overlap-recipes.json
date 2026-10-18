@@ -1,0 +1,37 @@
+{
+  "kind": "phase110-unique-parent-physical-overlap-recipes",
+  "recipes": [
+    {
+      "name": "unique-retained-in-other-raw",
+      "parent": "unique dynamic Con{b,Nil}",
+      "parentRepresentation": "raw CTR",
+      "other": "raw dynamic Con{same b,Nil}",
+      "aliases": [
+        "b only; no parent alias"
+      ],
+      "retained": 0,
+      "result": [
+        "b",
+        "b"
+      ],
+      "remaining": [],
+      "scope": "fresh supplemental fast-path physical-overlap witness; no timing or heldout-selection role"
+    },
+    {
+      "name": "unique-retained-in-other-rfc1",
+      "parent": "unique dynamic Con{b,Nil}",
+      "parentRepresentation": "RFC count1",
+      "other": "raw dynamic Con{same b,Nil}",
+      "aliases": [
+        "b only; no parent alias"
+      ],
+      "retained": 0,
+      "result": [
+        "b",
+        "b"
+      ],
+      "remaining": [],
+      "scope": "fresh supplemental fast-path physical-overlap witness; no timing or heldout-selection role"
+    }
+  ]
+}

@@ -1,0 +1,136 @@
+{
+  "kind": "phase110-wrapper-spare-graph-recipes-v1",
+  "recipes": [
+    {
+      "name": "raw-dynamic-other",
+      "split": "training",
+      "parent": "dynamic String ab with RFC count 1",
+      "other": "String z as raw dynamic CTR",
+      "remainingAlias": "independently retained String b child",
+      "allocatorPreparation": "ordinary allocator state",
+      "spareEligible": true,
+      "candidateAssertions": [
+        "result tail is RFC at consumed parent wrapper",
+        "wrapper count exactly1 and decoded target equals original other location",
+        "class0 HOT, LEN and COLD unchanged"
+      ],
+      "expectedResult": "az",
+      "expectedRemaining": "b",
+      "expectedAliases": [
+        "b"
+      ]
+    },
+    {
+      "name": "raw-static-other",
+      "split": "heldout",
+      "parent": "dynamic String ab with RFC count 1",
+      "other": "String z as raw static CTR",
+      "remainingAlias": "independently retained String b child",
+      "allocatorPreparation": "ordinary allocator state",
+      "spareEligible": true,
+      "candidateAssertions": [
+        "result tail is RFC at consumed parent wrapper",
+        "wrapper count exactly1 and decoded target equals original other location",
+        "class0 HOT, LEN and COLD unchanged"
+      ],
+      "expectedResult": "az",
+      "expectedRemaining": "b",
+      "expectedAliases": [
+        "b"
+      ]
+    },
+    {
+      "name": "handoff-raw-dynamic-other",
+      "split": "heldout",
+      "parent": "dynamic String ab with RFC count 1",
+      "other": "String z as raw dynamic CTR",
+      "remainingAlias": "independently retained String b child",
+      "allocatorPreparation": "Construct and retain ordinary padding roots, then release until class0 LEN32767; no metadata writes.",
+      "spareEligible": true,
+      "candidateAssertions": [
+        "result tail is RFC at consumed parent wrapper",
+        "wrapper count exactly1 and decoded target equals original other location",
+        "class0 HOT, LEN and COLD unchanged"
+      ],
+      "expectedResult": "az",
+      "expectedRemaining": "b",
+      "expectedAliases": [
+        "b"
+      ]
+    },
+    {
+      "name": "handoff-raw-static-other",
+      "split": "heldout",
+      "parent": "dynamic String ab with RFC count 1",
+      "other": "String z as raw static CTR",
+      "remainingAlias": "independently retained String b child",
+      "allocatorPreparation": "Construct and retain ordinary padding roots, then release until class0 LEN32767; no metadata writes.",
+      "spareEligible": true,
+      "candidateAssertions": [
+        "result tail is RFC at consumed parent wrapper",
+        "wrapper count exactly1 and decoded target equals original other location",
+        "class0 HOT, LEN and COLD unchanged"
+      ],
+      "expectedResult": "az",
+      "expectedRemaining": "b",
+      "expectedAliases": [
+        "b"
+      ]
+    },
+    {
+      "name": "rfc-other-one",
+      "split": "training",
+      "parent": "dynamic String ab with RFC count 1",
+      "other": "String z as RFC count1",
+      "remainingAlias": "independently retained String b child",
+      "allocatorPreparation": "ordinary allocator state",
+      "spareEligible": false,
+      "candidateAssertions": [
+        "stored other term unchanged",
+        "parent wrapper freed with ordinary class0 transition"
+      ],
+      "expectedResult": "az",
+      "expectedRemaining": "b",
+      "expectedAliases": [
+        "b"
+      ]
+    },
+    {
+      "name": "rfc-other-shared",
+      "split": "heldout",
+      "parent": "dynamic String ab with RFC count 1",
+      "other": "String z as RFC count2 with independent external alias",
+      "remainingAlias": "independently retained String b child",
+      "allocatorPreparation": "ordinary allocator state",
+      "spareEligible": false,
+      "candidateAssertions": [
+        "stored other term unchanged",
+        "parent wrapper freed with ordinary class0 transition"
+      ],
+      "expectedResult": "az",
+      "expectedRemaining": "b",
+      "expectedAliases": [
+        "b",
+        "z"
+      ]
+    },
+    {
+      "name": "shared-parent-raw-other",
+      "split": "heldout",
+      "parent": "dynamic String ab with RFC count 2 and an independently retained parent alias",
+      "other": "String z as raw dynamic CTR",
+      "remainingAlias": "independently retained String b child",
+      "allocatorPreparation": "ordinary allocator state",
+      "spareEligible": false,
+      "candidateAssertions": [
+        "shared parent redirect still points to original ab at count1; output other uses a different wrapper"
+      ],
+      "expectedResult": "az",
+      "expectedRemaining": "b",
+      "expectedAliases": [
+        "ab",
+        "b"
+      ]
+    }
+  ]
+}

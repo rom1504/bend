@@ -1,0 +1,26 @@
+{
+  "kind": "phase110-runtime-ir-wrapper-delayed-overrides",
+  "version": 1,
+  "targetsRun": false,
+  "requires": [
+    "wrapper-spare.bend",
+    "wrapper-spare-overrides.json",
+    "namespace.bend",
+    "namespace-overrides.json",
+    "wrapper-combined-admit.py"
+  ],
+  "exclusiveWith": "wrapper-combined-overrides.json",
+  "storedFieldInvariant": "Every stored field of admitted dynamic binary constructors is fixed by rfc_seal; source closure and decoded-source dynamic admission required",
+  "owningSpareInvariant": "The existing last-owner dynamic-parent class0 wrapper may be consumed once for raw external CTR; source shell remains live until both fields are transferred and rewritten",
+  "payloadReads": "after external seal, before either source-shell write",
+  "replacements": [
+    {
+      "name": "nx110rtw_rebuild_fast",
+      "origin": "selfhost/tools/performance/phase110/runtime-ir/wrapper-spare.bend",
+      "oldSha256": "e6606ed4e0dedf44194afddc5065f2d0ab663e711306cf176be4764beac2c2e9",
+      "newSha256": "57fe0da0579cbaa27b85035f301c4461444e86d000b0c753ba0f3309144b7cdb",
+      "old": "@unsafe\ndef nx110rtw_rebuild_fast(+dest: String, +remaining: String, +cid: U32, +index: U32) -> List<&2,NxStmt>:\n  nxo_join(NxStmt,\n    [NxSet{\"ir_old0\",NxLoad{NxU64{},nx110rt_addr(NxVar{\"ir_src\"}),0}},\n     NxSet{\"ir_old1\",NxLoad{NxU64{},nx110rt_addr(NxVar{\"ir_src\"}),8}},\n     NxSet{\"ir_head\",NxVar{nx_choose(String,U32.is_eq(index,0),u => \"ir_old0\",u => \"ir_old1\")}},\n     NxSet{remaining,NxVar{nx_choose(String,U32.is_eq(index,0),u => \"ir_old1\",u => \"ir_old0\")}}],\n    nxo_join(NxStmt,nx110rtw_reserve(),\n      nxo_join(NxStmt,nx110rt_seal(\"ir_head\"),\n        [NxIf{NxBin{\"eq\",NxVar{\"ir_spare\"},nx110rt_u(0)},\n           nx110rt_seal(\"ir_tail\"),nx110rtw_seal_spare(\"ir_tail\")},\n         NxStore{NxU64{},nx110rt_addr(NxVar{\"ir_src\"}),0,NxVar{\"ir_head\"}},\n         NxStore{NxU64{},nx110rt_addr(NxVar{\"ir_src\"}),8,NxVar{\"ir_tail\"}},\n         NxSet{dest,NxBin{\"or\",NxBin{\"or\",NxBin{\"shl\",nx110rt_u(2),nx110rt_u(56)},NxBin{\"shl\",nx110rt_u(cid),nx110rt_u(40)}},NxVar{\"ir_src\"}}} ])))",
+      "new": "@unsafe\ndef nx110rtw_rebuild_fast(+dest: String, +remaining: String, +cid: U32, +index: U32) -> List<&2,NxStmt>:\n  nxo_join(NxStmt,nx110rtw_reserve(),\n    [NxIf{NxBin{\"eq\",NxVar{\"ir_spare\"},nx110rt_u(0)},\n       nx110rt_seal(\"ir_tail\"),nx110rtw_seal_spare(\"ir_tail\")},\n     NxSet{\"ir_old0\",NxLoad{NxU64{},nx110rt_addr(NxVar{\"ir_src\"}),0}},\n     NxSet{\"ir_old1\",NxLoad{NxU64{},nx110rt_addr(NxVar{\"ir_src\"}),8}},\n     NxSet{\"ir_head\",NxVar{nx_choose(String,U32.is_eq(index,0),u => \"ir_old0\",u => \"ir_old1\")}},\n     NxSet{remaining,NxVar{nx_choose(String,U32.is_eq(index,0),u => \"ir_old1\",u => \"ir_old0\")}},\n     NxStore{NxU64{},nx110rt_addr(NxVar{\"ir_src\"}),0,NxVar{\"ir_head\"}},\n     NxStore{NxU64{},nx110rt_addr(NxVar{\"ir_src\"}),8,NxVar{\"ir_tail\"}},\n     NxSet{dest,NxBin{\"or\",NxBin{\"or\",NxBin{\"shl\",nx110rt_u(2),nx110rt_u(56)},NxBin{\"shl\",nx110rt_u(cid),nx110rt_u(40)}},NxVar{\"ir_src\"}}} ])"
+    }
+  ]
+}

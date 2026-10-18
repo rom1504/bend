@@ -18,7 +18,7 @@ const api=(await import(pathToFileURL(apiFile))).default;
 const report={kind:'phase110-owned-library-emission',complete:false,variant,policy,inputs:[pin(apiFile),pin(import.meta.filename),pin(path.join(capture,'report.json')),...record.products],controls:{},rows:[]};
 const save=()=>fs.writeFileSync(path.join(out,'report.json'),JSON.stringify(report,null,2)+'\n');save();
 try{
- for(const [name,fn] of [['nx','nxlib_control_report'],['ownership','nxo_ownership_report'],['policy','nxo_policy_report'],['policy110','nxo110_policy_report'],['pair','nx110_control_report'],['take','nx110_take_control_report'],['alias','nx110_alias_control_report'],['calls','nxc_control_report'],['runtime-ir','nx110rt_control_report'],['runtime-width','nx110rt_width_report']]){
+ for(const [name,fn] of [['nx','nxlib_control_report'],['ownership','nxo_ownership_report'],['policy','nxo_policy_report'],['policy110','nxo110_policy_report'],['pair','nx110_control_report'],['take','nx110_take_control_report'],['alias','nx110_alias_control_report'],['calls','nxc_control_report'],['runtime-ir','nx110rt_control_report'],['runtime-width','nx110rt_width_report'],['runtime-calls','nx110rt_call_control_report'],['runtime-predicates','nx110rt_predicate_report'],['runtime-general','nx110rtg_control_report'],['runtime-stored','nx110rts_control_report'],['runtime-namespace','nx110rtn_control_report'],['runtime-spare','nx110rtw_control_report'],['runtime-combined','nx110rtc_control_report']]){
   if(!api[fn])continue;
   const text=api[fn]();fs.writeFileSync(path.join(out,name+'-controls.txt'),text);
   if(text.includes('FAIL'))throw Error(name+' controls failed');
@@ -35,7 +35,15 @@ try{
  const selected=entries.map(([name,symbol])=>{const fact=facts.find(d=>d.name===name);if(!fact)throw Error('missing checked source '+name);return {name,symbol,fact};});
  const start=performance.now(),privateIR=policy.startsWith('runtime-ir-'),pair=['pair','pair-take'].includes(policy),basePolicy=pair?'specialized':policy;
  let library,functions=[],workers=[];
- if(variant==='append'){
+ if(privateIR&&api.nx110rt_lower_library){
+  const result=api.nx110rt_lower_library(list(selected.map(({fact,symbol})=>({$:'NxcSource',fact,symbol}))),ctors,exports,policy.slice('runtime-ir-'.length));
+  if(result.error)throw Error(result.error);library=result.library;
+  for(const worker of array(library.workers)){
+   fs.writeFileSync(path.join(out,worker.function.name+'.owned.json'),JSON.stringify(worker.ownership,null,2)+'\n');
+   fs.writeFileSync(path.join(out,worker.function.name+'.nx.json'),api.nx_json_function(worker.function)+'\n');
+  }
+  report.rows=selected.map(({name,symbol})=>({name,symbol}));
+ }else if(variant==='append'){
   if(privateIR)throw Error('ordinary-call runtime-IR closure not admitted');
   const result=api.nxc_lower_library(list(selected.map(({fact,symbol})=>({$:'NxcSource',fact,symbol}))),ctors,exports,basePolicy);
   if(result.error)throw Error(result.error);library=result.library;

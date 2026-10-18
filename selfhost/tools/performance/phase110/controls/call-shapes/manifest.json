@@ -1,0 +1,52 @@
+{
+  "kind": "phase110-frozen-call-shape-execution",
+  "version": 1,
+  "frozenAtUtc": "2026-10-18T19:32:02.769472+00:00",
+  "targetsRunBeforeFreeze": false,
+  "source": {
+    "file": "selfhost/tools/performance/phase110/controls/call-shapes/source.bend",
+    "bytes": 2362,
+    "sha256": "2d0774249c3292817becf9a04f3c16d03ed37d28244891068eed955db6a407d7"
+  },
+  "parentFrozenSource": {
+    "file": "selfhost/tools/performance/phase110/controls/calls/call-shapes.bend",
+    "bytes": 2013,
+    "sha256": "6c830fb0e9cbf3cdd44d9363dcb99f9ab3ecb8fc5f73d71b0b38aea2c84b374f"
+  },
+  "catalogue": {
+    "file": "selfhost/tools/performance/phase110/controls/call-shapes/catalogue.json",
+    "bytes": 3244,
+    "sha256": "203921c45d671e96fef596ac8a6701d92d39ec0f371c81409cb8cf0433e13240"
+  },
+  "cases": {
+    "file": "selfhost/tools/performance/phase110/controls/call-shapes/cases.json",
+    "bytes": 7926,
+    "sha256": "5f5751c9f0daa574f9ecfc3a0a2fef94d4423969fbb92bd93c4e2666d4c53bf3",
+    "count": 28
+  },
+  "expected": {
+    "file": "selfhost/tools/performance/phase110/controls/call-shapes/expected.jsonl",
+    "bytes": 3150,
+    "sha256": "5ad947a8fc567220cb8f1035d1b103a7d5ebb06381cb8e970d90d5112eb48f1f"
+  },
+  "harness": {
+    "file": "selfhost/tools/performance/phase110/controls/call-shapes/harness.c",
+    "bytes": 4672,
+    "sha256": "7c5a2057dd8616cf5d24b28a575f60cc939fe231f2e483521f07920328f430e1"
+  },
+  "initializers": {
+    "file": "selfhost/tools/performance/phase110/controls/call-shapes/cases.inc.c",
+    "bytes": 924,
+    "sha256": "e6ff5263a7500dbad1a001da23aef798afda84ec55eb1b2cd2ad8f9aea302ece"
+  },
+  "sourceExpectedStdout": "a|b\nh|a|b\na|b|a|b|z\nz\na|b|a|b\nb|a|z\n",
+  "syntheticWitness": {
+    "name": "p110_reverse_via_call",
+    "declarationSha256": "d5450fb02d25fbfdffd7d1c707a26c57507d91a32c873d60ef5ea4e3c7259ed9",
+    "semantics": "reverse(xs) followed by acc, including empty xs",
+    "purpose": "Take;Build;ordinary Call to actual nt_reverse;Return, rather than self-tail-only fusion",
+    "notClaimed": "Actual compiler algorithm or measured hotspot"
+  },
+  "observation": "Complete lists of complete Unicode scalar sequences; aliases observed after dropping result; zero live heap words required.",
+  "scope": "Five previously frozen ordinary-call shapes plus one new synthetic generic continuation witness; closed source catalogue and six direct generated exports. Host performs graph setup/observation only; all algorithms lower from checked source in Bend."
+}

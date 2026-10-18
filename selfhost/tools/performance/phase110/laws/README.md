@@ -5,6 +5,16 @@ BendTT/Lean checking with 53 nonopaque definitions. Five welltyped helper/model
 mutations were rejected by unchanged laws after separate safe admission. See
 the [accepted audit](../../../../../implementation/phase110/laws-audit.md) for
 source identities, receipts, failed attempts and scope limits.
+The later [stored-field seal model](seal/README.md) adds four independently
+checked laws and three rejected semantic mutants under a separate model-only
+scope; its C writer correspondence remains an explicit obligation.
+The separate [wrapper-spare model](spare/README.md) adds nine independently
+checked laws. It compares complete ownership observations while allowing different
+new wrapper addresses, and keeps the retained-field seal unchanged.
+Across the packages there are **23 distinct independently checked laws** and
+**14 admitted semantic mutants rejected by unchanged source laws** in 28 checks.
+The selector laws imported by reconstruction are counted once. Two compiled
+consumer mutants are separate native-test evidence described below.
 
 The actual candidate lowering in [`../lower/policy.bend`](../lower/policy.bend)
 calls `nxo_law_select(String,String.eq(keep,a),a,b)`. Its complete, safe,
@@ -84,3 +94,34 @@ package's independent kernel acceptance.
 
 Execution results and the precise source/model/C boundary are recorded in
 [`implementation/phase110/laws-audit.md`](../../../../../implementation/phase110/laws-audit.md).
+
+## Actual compiled consumer mutations
+
+[`run-actual-mutations.py`](run-actual-mutations.py) implements the separate
+[candidate recipe](actual-candidate-mutations.json) against the accepted
+`call-source04` / `call-api02` profile. Run it under one coordinator-owned CPU3
+guard; it has subprocess timeouts but does not acquire a nested execution lock:
+
+```sh
+python3 -B selfhost/tools/performance/phase110/laws/run-actual-mutations.py \
+  --out selfhost/build/phase110/actual-consumer-mutants-new
+```
+
+It reuses `private-build01/runtime.o` and `harness.o`, then first requires the
+accepted tagged worker to pass frozen `train01` case `list-two-root-aliases`.
+Each isolated mutant is acquired with `build-api.py --calls --runtime-ir`, keeps
+all ten static control reports and both owned graphs identical, and must differ
+in emitted Nx only at its intended field-index or remaining-local mapping.
+Both build through QBE and link the same cached objects. An explicit ABI or
+harness semantic error, or a complete valid observation differing from the
+frozen oracle, is required; crashes, signals, timeouts and compilation failures
+do not count. Every command, input identity, source inverse replay and output
+is retained. The supervisor extracts historically hashed modules from the
+accepted source, so later live-source development cannot alter its baseline.
+
+The accepted `actual-consumer-mutants01` run passed the exact positive, both
+checked mutant acquisitions and all 191 unchanged static assertions. The index
+fault exited with an impossible-source-branch ABI error; the remaining-local
+fault exited with a leaked-ownership assertion. No crash or resource stop was
+counted as a rejection. These native results are separate from the five
+safe-law mutation checks above.

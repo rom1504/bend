@@ -1,0 +1,23 @@
+{
+  "kind": "phase110-runtime-ir-predicate-overrides",
+  "version": 1,
+  "targetsRun": false,
+  "replacements": [
+    {
+      "name": "nx110rt_dynamic",
+      "origin": "selfhost/tools/performance/phase110/runtime-ir/lower.bend",
+      "oldSha256": "e8c7d34d0896f897c9c8301226c3923ea5fba6f2e2c7545aed5794d7432fbc8a",
+      "newSha256": "3450515facb62594e9fe605be4e6bd2b3e8a99fa09ae837d964de56cc8621b7e",
+      "old": "def nx110rt_dynamic(+loc: NxExpr) -> NxExpr:\n  NxBin{\"eq\",NxBin{\"ult\",loc,nx110rt_u(51413376)},NxConst{NxU32{},0}}",
+      "new": "def nx110rt_dynamic(+loc: NxExpr) -> NxExpr:\n  NxBin{\"ult\",nx110rt_u(51413375),loc}"
+    },
+    {
+      "name": "nx110rt_seal",
+      "origin": "selfhost/tools/performance/phase110/runtime-ir/lower.bend",
+      "oldSha256": "a365fce9c2522b5d934982a20f4955d24e0a6087f8a8721062ac145c89a278b7",
+      "newSha256": "f433d98666e81b6dbbe2552c00f74b1d010e452de4f06808f298f84367bd8cff",
+      "old": "@unsafe\ndef nx110rt_seal(+word: String) -> List<&2,NxStmt>:\n  [NxIf{NxBin{\"and\",\n      NxBin{\"eq\",NxBin{\"and\",NxBin{\"lshr\",NxVar{word},nx110rt_u(56)},nx110rt_u(127)},nx110rt_u(2)},\n      NxBin{\"eq\",NxBin{\"lshr\",NxVar{word},nx110rt_u(63)},nx110rt_u(0)}},\n    nxo_join(NxStmt,nx110rt_alloc_wrapper(),\n      [NxStore{NxU64{},nx110rt_addr(NxVar{\"ir_wrap\"}),0,NxBin{\"or\",NxBin{\"shl\",nx110rt_loc(NxVar{word}),nx110rt_u(24)},nx110rt_u(1)}},\n       NxSet{word,NxBin{\"or\",NxBin{\"or\",NxBin{\"shl\",NxBin{\"lshr\",NxVar{word},nx110rt_u(40)},nx110rt_u(40)},NxBin{\"shl\",nx110rt_u(1),nx110rt_u(63)}},NxVar{\"ir_wrap\"}}}]),[] }]",
+      "new": "@unsafe\ndef nx110rt_seal(+word: String) -> List<&2,NxStmt>:\n  [NxIf{NxBin{\"eq\",NxBin{\"lshr\",NxVar{word},nx110rt_u(56)},nx110rt_u(2)},\n    nxo_join(NxStmt,nx110rt_alloc_wrapper(),\n      [NxStore{NxU64{},nx110rt_addr(NxVar{\"ir_wrap\"}),0,NxBin{\"or\",NxBin{\"shl\",nx110rt_loc(NxVar{word}),nx110rt_u(24)},nx110rt_u(1)}},\n       NxSet{word,NxBin{\"or\",NxBin{\"or\",NxBin{\"shl\",NxBin{\"lshr\",NxVar{word},nx110rt_u(40)},nx110rt_u(40)},NxBin{\"shl\",nx110rt_u(1),nx110rt_u(63)}},NxVar{\"ir_wrap\"}}}]),[] }]"
+    }
+  ]
+}

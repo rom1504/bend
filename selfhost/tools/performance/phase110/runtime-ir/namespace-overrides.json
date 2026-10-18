@@ -1,0 +1,17 @@
+{
+  "kind": "phase110-runtime-ir-private-namespace-overrides",
+  "version": 1,
+  "targetsRun": false,
+  "requiresModule": "selfhost/tools/performance/phase110/runtime-ir/namespace.bend",
+  "requiredForAllPrivateProfiles": true,
+  "replacements": [
+    {
+      "name": "nx110rt_workers_ok",
+      "origin": "selfhost/tools/performance/phase110/runtime-ir/library.bend",
+      "oldSha256": "501729e25a1604b4bf47e9fa0d02b058dde62cd869059b961b2562a363faba2c",
+      "newSha256": "320ef17a290e109a7274eccb38104483558e7eadb92198f95a814ee72ea77889",
+      "old": "@unsafe\ndef nx110rt_workers_ok(+workers: List<&2,Nx110RtWorker>) -> Bool:\n  match workers:\n    case Nil{}: True{}\n    case Con{Nx110RtWorker{name,arity,next,ownership,view,function},rest}:\n      nx110rt_view_valid(view) && U32.is_gt(arity,0) && U32.is_lt(arity,9) &&\n      nxo_verify(ownership,arity) &&\n      String.eq(nx_json_function(function),nx_json_function(nx110rt_function(name,arity,next,ownership,view))) &&\n      nx110rt_workers_ok(rest)",
+      "new": "@unsafe\ndef nx110rt_workers_ok(+workers: List<&2,Nx110RtWorker>) -> Bool:\n  match workers:\n    case Nil{}: True{}\n    case Con{Nx110RtWorker{name,arity,next,ownership,view,function},rest}:\n      nx110rt_view_valid(view) && U32.is_gt(arity,0) && U32.is_lt(arity,9) &&\n      nx110rtn_check(ownership,arity,next) && nxo_verify(ownership,arity) &&\n      String.eq(nx_json_function(function),nx_json_function(nx110rt_function(name,arity,next,ownership,view))) &&\n      nx110rt_workers_ok(rest)"
+    }
+  ]
+}

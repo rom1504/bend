@@ -89,6 +89,22 @@ the new pass is explicitly named `nx_tail_optimize`. A static scan now checks al
 206 assembled Phase106/107 helper definitions for duplicates. No historical
 workload implementation was changed to resolve the collision.
 
-Root owns backend differential execution and timing. The58 frozen fixture rows,
-negative controls and continuation laws are prepared; their execution status is
-recorded separately in Phase107's main report as those receipts arrive.
+The root-run [`audit01`](../../selfhost/build/phase107/audit01/report.json) passes72
+baseline/deep transformation pairs at budgets0,1,32,4096, including464 finite
+before/after input pairs. Three admitted output mutations are detected: omitted
+local reset changes14 to21, swapped argument snapshots change33 to42, and a
+discarded result changes16 to0. These are emitted-IR semantic mutation controls,
+not source mutants or a proof of the optimizer.
+
+[`tail-audit02`](../../selfhost/build/phase107/tail-audit02/report.json) passes eight
+structural comparisons and69 native outputs across GCC, Cranelift and QBE,
+including six million-step observations. Seven structural pairs are valid IR;
+the eighth is the deliberately invalid `tail_dead` input. Its historical report
+contains49 valid finite input pairs and seven extra interpreter observations of
+invalid IR. Those seven are not accepted compiler-semantic cases. Current controls
+skip them; native observations only build the three positive fixtures and are
+unaffected. The failed predecessor and original report remain intact.
+
+The entry-first policy is prepared for separate checking/measurement. Continuation
+laws remain separately scheduled. Root owns runtime/build measurements and the
+phase report's final integration conclusion.

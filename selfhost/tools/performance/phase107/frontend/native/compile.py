@@ -27,6 +27,10 @@ def main():
     p.add_argument('--qbe', type=Path, default=ROOT/'selfhost/build/phase107/toolchain/qbe-1.3/qbe')
     p.add_argument('--timeout', type=float, default=30)
     p.add_argument('--abi-salt', default='')
+    mode=p.add_mutually_exclusive_group()
+    mode.add_argument('--whole-object',dest='units',action='store_false',help='one QBE object (default)')
+    mode.add_argument('--units',dest='units',action='store_true',help='separate objects with full graph transport')
+    p.set_defaults(units=False)
     a = p.parse_args()
     if not a.entry or not 0 < a.timeout <= 600:
         raise ValueError('invalid entry or timeout')
@@ -44,7 +48,8 @@ def main():
     report = dict(kind='phase107-native-qbe-compilation', version=1, complete=False,
                   generatedProgramExecuted=False, identity=identity, source=source,
                   methods=methods, tools=tools, runner=runner, jobs=[], cache=[],
-                  options=dict(entry=a.entry, policy=a.policy, base=a.base, abiSalt=a.abi_salt),
+                  options=dict(entry=a.entry, policy=a.policy, base=a.base, abiSalt=a.abi_salt,
+                               objectMode='units' if a.units else 'whole'),
                   authenticationSeconds=time.monotonic()-begin)
     save = lambda:(out/'report.json').write_text(json.dumps(report, indent=2)+'\n')
     save()
@@ -69,14 +74,23 @@ def main():
         return job['seconds']
 
     try:
-        units_file = out/'units.json'
-        report['frontendSeconds'] = run('native-frontend', [identity['binary']['file'],source['file'],a.entry,'units',a.policy,a.base], units_file)
-        payload = json.loads(units_file.read_text())
-        program, units = payload['program'], payload['units']
-        (out/'program.json').write_text(json.dumps(program, indent=2)+'\n')
-        signatures = [dict(name=f['name'],params=[p['type'] for p in f['params']],result=f['result']) for f in program['functions']]
-        abi = dict(version=1, entry='u32(const u64*)', selectedEntry=program['entry'], signatures=signatures,
-                   target='x86_64-linux-sysv', salt=a.abi_salt)
+        transport = out/('units.json' if a.units else 'program.ssa')
+        report['frontendSeconds'] = run('native-frontend', [identity['binary']['file'],source['file'],a.entry,
+                                       'units' if a.units else 'qbe',a.policy,a.base], transport)
+        report['transport'] = pin(transport)
+        abi = dict(version=1, entry='u32(const u64*)', selectedEntry=a.entry,
+                   target='x86_64-linux-sysv', salt=a.abi_salt, mode='units' if a.units else 'whole')
+        if a.units:
+            payload = json.loads(transport.read_text())
+            program, units = payload['program'], payload['units']
+            (out/'program.json').write_text(json.dumps(program, indent=2)+'\n')
+            abi['signatures'] = [dict(name=f['name'],params=[p['type'] for p in f['params']],result=f['result']) for f in program['functions']]
+            abi['loweredEntry'] = program['entry']
+            report['graph'] = pin(out/'program.json')
+        else:
+            units = [dict(name='program',text=transport.read_text())]
+            report['graph'] = None
+            report['graphOmissionReason'] = 'Whole-object mode transports complete QBE IL; request --units or run.py --format json for the graph.'
         unit_identity = dict(abi=abi, producer=identity['binary']['sha256'], source=identity['compilerSource']['sha256'],
                              qbe=tools['qbe'], assembler=tools['as'], flags=['amd64_sysv'])
         cache = ObjectCache(a.cache, out, report['cache'])
@@ -95,7 +109,7 @@ def main():
                 run(name+'-assemble',[tools['as']['file'],'-o',obj,asm])
 
             objects.append(cache.object(name,text,unit_identity,build,assembly=True))
-        if 'entry' not in names or 'runtime' not in names:
+        if a.units and ('entry' not in names or 'runtime' not in names):
             raise ValueError('missing required transport units')
         runobj = cache.object('common_runner',Path(runner['file']).read_text(),
                               dict(abi=1,gcc=tools['gcc'],assembler=tools['as'],flags=['-O2']),

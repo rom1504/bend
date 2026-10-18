@@ -57,12 +57,14 @@ def main():
     common=PHASE.parent/'phase106'
     modules=[common/'ir'/f'{name}.bend' for name in ['model','optimize','verify','json','c']]
     modules += [PHASE/'frontend/lower.bend']
-    modules += [PHASE/'inline'/f'{name}.bend' for name in ['model','admit','rename','expand','deep','tail','entry']]
+    modules += [PHASE/'inline'/f'{name}.bend' for name in ['model','admit','rename','expand','deep','tail','entry','reachable']]
     modules += [PHASE/'backends'/f'{name}.bend' for name in ['qbe','qbe-entry','units']]
     modules += [HERE/'entry.bend']
     config='\n'.join('def '+name+'() -> String:\n  '+json.dumps(value) for name,value in [
         ('p107_base_path',base['file']),('p107_cache_path',cache['carrier']['file']),
         ('p107_cache_stamp',cache['stamp'])])
+    fast_expression='nx_reachable(nx_optimize(nx_inline_entry(nx_tail_optimize(program), 4096)))'
+    assert fast_expression in (HERE/'entry.bend').read_text()
     final=candidate+'\n\n'+cloned+'\n\n'+'\n\n'.join(f.read_text() for f in modules)+'\n\n'+config+'\n'
     assert len(re.findall(r'^def main\(',final,re.M))==1
     out.mkdir(parents=True)
@@ -74,6 +76,11 @@ def main():
                 selectedSource=admission['source'],modules=[pin(f) for f in modules],
                 source=pin(out/'compiler.bend'),planClone=pin(out/'plan-clone.bend'),config=pin(out/'config.bend'),
                 clonedDefinitions=names,assets=dict(base=base,cache=cache),
+                fastPipeline=dict(expression=fast_expression,passes=[
+                    dict(name='nx_tail_optimize'),dict(name='nx_inline_entry',budget=4096),
+                    dict(name='nx_optimize'),dict(name='nx_reachable')]),
+                qbeEntryFusion=dict(fast=True,raw=False,maxBodyNodes=512),
+                unitsTransport='JSON strings escaped with selected-source sk_quote',
                 sourceEdits=['rename old main, retain selected source otherwise',
                              'clone exact p86_plan chain under p107 names',
                              'return checked annotated definitions before native-C request planning'],

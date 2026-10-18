@@ -8,7 +8,7 @@ type P107Plan is Data:
 @unsafe
 def p107_unit_json(+unit: NxqUnit) -> String:
   match unit:
-    case NxqUnit{name, text}: "{\"name\":" ++ nx_quote(name) ++ ",\"text\":" ++ nx_quote(text) ++ "}"
+    case NxqUnit{name, text}: "{\"name\":" ++ sk_quote(name) ++ ",\"text\":" ++ sk_quote(text) ++ "}"
 
 @unsafe
 def p107_unit_items(+units: List<&2,NxqUnit>) -> String:
@@ -46,7 +46,7 @@ def p107_lowered(+format: String, +fast: Bool, result: NxkResult) -> IO(U32):
     case NxkResult{program, +error}:
       nx_choose(IO(U32), String.is_empty(error),
         u => p107_emit(nx_choose(NxProgram, fast,
-          v => nx_optimize(nx_inline_entry(nx_tail_optimize(program), 4096)),
+          v => nx_reachable(nx_optimize(nx_inline_entry(nx_tail_optimize(program), 4096))),
           v => program), format, fast),
         u => IO.die(U32, 1, "native subset: " ++ error))
 

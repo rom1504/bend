@@ -289,7 +289,7 @@ non-executable text; no native workload ran in these authentication tests.
 
 The installed native compiler successfully emitted source01 to C in
 110.886seconds with772.34MiB peak process-tree RSS
-(`native-emit01-guard/process.json`); that image was not linked. The final bounded
+(`native-emit01-guard/process.json`); that image was not linked. The second bounded
 candidate is source02,1,889,751bytes,
 SHA256`960c447acf6fe12343dbae7cb5148106ff083cd98f3c7a3c8bd4ad56fa86e9f2`.
 It includes the external-Bool-argument refusal and changes the fast policy to
@@ -311,3 +311,40 @@ three corruption cases. Thirteen image-receipt checks passed again in
 `native-host-controls03/report.json`. These use non-executable fixtures. Actual
 native-source02 emission, acquisition, source differential controls and runtime
 measurements remain separate root-owned gates.
+
+Source02 subsequently acquired successfully: native emission111.818seconds,
+followed by Clang260.208seconds/1.63GiB peak RSS
+(`native-emit02-guard`, `native-link02-guard`). Its first units request exposed a
+transport bug: `nx_quote` deliberately accepts only restricted identifiers and
+does not escape QBE's literal newlines. Native processing succeeded in0.123seconds,
+but host JSON parsing correctly refused the malformed output
+(`native-cli01/report.json`). This was a serializer integration error, not evidence
+of incorrect generated code. The failed receipt is retained.
+
+The fix uses the existing selected compiler's `sk_quote`, which escapes arbitrary
+JSON string contents. Before another expensive image acquisition, a tiny checked
+source extracted the exact transport functions and their escaping dependencies.
+The first extraction omitted `kp_digit`'s law-defined signature and was refused;
+the corrected extractor retains matching laws and definitions. The source gate
+then passed in2.085seconds, and43 transport controls passed in0.064seconds
+(`native-transport-check02`, `native-transport-source02/controls.json`). They cover
+every control byte, quotes/backslashes, QBE newlines, Unicode/surrogates and four
+list shapes. This cheap gate is now retained for future transport changes.
+
+`compile.py` now defaults to whole-object mode, also explicit as `--whole-object`;
+`--units` retains the separate-object path. Whole mode requests QBE directly and
+binds complete IL, selected entry/runtime ABI, compiler image/source and tools.
+It omits graph JSON explicitly rather than silently adding another frontend call.
+This works with image02: `native-cli02/report.json` completed in0.490seconds,
+including0.168seconds native frontend, and root's execution returned4268337842
+for arguments19,23. That is one functional smoke result, not a representative
+speed claim. Whole-object caching also avoids per-function process launches on
+cold requests; the relative benefit requires controlled measurement.
+
+Source03 was assembled only after the focused gate. Its source is1,894,829bytes,
+SHA256`01e31ba2abe107f2b24d8366f107ae6d48ef1471e2047ac1b795410cb94cdc14`.
+It includes full JSON escaping and the separately admitted reachability pass after
+tail conversion, entry-first inlining and folding. The manifest explicitly records
+the ordered fast pipeline,4096-node inline budget and512-node fusion cap; host
+harnesses need not infer policy from image generation numbers. Acquisition and
+native differential validation for source03 remain root-owned gates.

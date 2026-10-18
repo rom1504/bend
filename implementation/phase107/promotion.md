@@ -60,7 +60,7 @@ The parent-run qualification in
 [`promotion-audit02`](../../selfhost/build/phase107/promotion-audit02/report.json)
 passes27 families,444 native outputs and326 distinct independent model executions.
 The19 direct-pass control families are supplemented by eight broader IR workloads
-under explicitly recorded preprocessing. Two admitted output mutations fail the
+under explicitly recorded preprocessing. Two scalar-typed output mutations fail the
 unchanged oracle: alias-field corruption changes101 to32969; corruption of a newly
 generated zero-field update changes5 to1002. Audit01 incorrectly selected the
 pre-existing collision-test variable for the second mutation. That report remains

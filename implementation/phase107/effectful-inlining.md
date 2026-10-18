@@ -147,3 +147,56 @@ does not prove pointer provenance, bounds, lifetime or prevent function-pointer
 address manipulation through offsets. Reachability applies to the documented
 closed, well-defined function-address model; this future memory pass must refuse
 inventing allocation facts for those address-derived values.
+
+## Bounded allocation-provenance prototype
+
+After reviewing the above boundary, the parent authorized a narrower25-minute
+prototype, [P107-006](../../experiments/phase107/P107-006-memory-forwarding.md).
+`inline/memory.bend` implements `nx_memory_forward` without modifying the existing
+IR or optimization APIs. Only loads can be replaced, and only by atomic cached
+values, so IR node count cannot increase. Allocation, free, call and store nodes
+remain in their original order and control-flow positions.
+
+Fresh nonzero constant-size allocations produce abstract roots; pointer copies and
+constant offsets retain them only within known bounds. Memory cells require exact
+type/range matches, overlapping stores invalidate facts, and assigning a local
+invalidates any cached value that referred to its previous contents. Pointer-valued
+loads may recover provenance from a valid cached pointer value. Unknown effects
+discard facts rather than guess. The structural verifier gates both input/output.
+
+For each loop, the pass first strips every assigned-local dependency from incoming
+facts. A first straight-line probe supplies candidate write ranges; filtering
+removes overwritten cells. A second probe from the filtered facts must resolve all
+writes and establish that every retained preheader cell remains unchanged. Only
+those initial invariants survive the loop. Branches, nested loops, calls, frees or
+allocations make that loop rewrite refuse. This intentionally excludes many cases
+described in the longer-term design. Bounds are4096 nodes per processed body,
+256 functions and65536 nodes per program; untouched larger bodies remain unchanged.
+
+Ten initial fixture families freeze76 independent full-result cases. The first
+matrix distinguishes distinct/aliased roots and stable/mutated loop payloads, plus
+partial-width overlap, local-value dependency changes, pointer reassignment,
+call/free barriers and a zero-trip loop containing an otherwise invalid null load.
+Only even inputs execute that last witness; no invalid dereference is used as a
+normal result. Four safe-helper contracts cover distinct roots and overlapping or
+adjacent ranges, with explicit limits: these do not prove runtime provenance,
+loop induction or the whole pass. Source acquisition/execution is scheduled by
+the parent, and an independent agent reviews soundness before interpretation.
+
+The next fixture revision adds pointer-valued self-assignment, a pointer-field
+write that makes the second probe lose provenance, and an early return/free
+inside the loop:13 families and100 frozen rows total. The second-probe fixture
+must retain its entire original loop body, rather than rely on facts removed
+after the first probe. These extra rows need their own acquisition snapshot.
+Independent review also identified an oracle distinction: the overlapping U64/U32
+fixture has explicit byte-memory semantics in the interpreter and native IR, but
+the C emitter uses typed pointer accesses. Its C control therefore requires an
+explicit `-fno-strict-aliasing` build (or byte-copy emission); ordinary strict-aliasing
+C O2 is not a sound oracle for that particular witness.
+
+The semantic contract assumes the original program's executed memory accesses
+are well-defined under the current sequential runtime. Successful, live allocations
+are distinct; a free invalidates all facts. No allocation is removed or moved, and
+the pass does not establish new OOM behavior or turn null-pointer arithmetic into
+known allocation provenance. It does not extend the structural verifier into a
+memory-safety proof or rely on undefined native behavior as a successful test.

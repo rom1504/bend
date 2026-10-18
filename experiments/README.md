@@ -1,5 +1,17 @@
 # Compiler experiment workflow
 
+## Current implementation: Phase107 native source and QBE
+
+[Report](../implementation/phase107/README.md) · [Design](../design/phase107/native-ir-ambition-ladder.md) ·
+[Current frontier](STEERING.md) · [Fast loop](../selfhost/tools/performance/phase107/README.md).
+Native Bend source reaches shared IR and QBE without Clang on ordinary supported
+requests. Held-out source compilation is36.4–38.6% shorter than the installed
+C/Clang route. General IR passes recover important code-quality losses, with
+explicit source-subset and runtime/ownership limits. The installed production
+compiler and upstream B1/B2 metrics are unchanged; image acquisition still uses
+Clang, and full QBE self-hosting remains future work.
+
+
 Use this directory to retain what was tried, what the evidence establishes and
 what should happen next. The compiler remains implemented in Bend; experiments
 must identify changes to compiler source, generated compiler images, host tools

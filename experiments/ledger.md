@@ -4854,3 +4854,42 @@ held-out support an explicit short-check mode in this slice. No full compiler
 backend integration, new upstream ratio, recursive acceleration or PR comment.
 Object inspection identifies missing small-function inlining and loop/code-shape
 opportunities. Capsule preserves raw receipts, products and rejected attempts.
+
+
+## Phase107 checked source and independent native backends — 2026-10-18
+
+[Design](../design/phase107/native-ir-ambition-ladder.md) ·
+[Report](../implementation/phase107/README.md) ·
+[Fast loop](../selfhost/tools/performance/phase107/README.md).
+
+Native Bend now lowers a declared first-order source subset through checked KTerm
+to shared Nx IR and QBE, then GNU assembler/linker, without Bun or Clang in ordinary
+requests. Eleven admitted source families and six unsupported families are explicit.
+Acquiring the frontend image still uses C/Clang (375.367s); no QBE self-hosted image
+or production release is claimed. Installed general compiler remains unchanged.
+
+Complete native-QBE source compilation is34.6–37.5% shorter on the initial three
+sources, and36.4–38.6% shorter on separately frozen GCD/triangular/saturating
+held-outs (time geometric mean0.627×). The latter passes nine alternating pairs,
+18 fresh builds and18 exact independent outputs. This is not program runtime or
+a replacement for Phase105 upstream B1/B2 comparisons.
+
+General inlining/tail/reachability recover about5× on the128-helper IR workload.
+Closed-allocation scalar promotion improves QBE shared-object runtime2.65×;
+subsequent scalar constants cut Cranelift's paired runtime30.8% by removing a
+hot-loop spill. Atom-only multiply reduction remains optional because a QBE
+text regression accompanies other gains. Generated machine-code identity and
+paired measurements prevent attributing unrelated batch noise to passes.
+
+Boundary verifier composition makes the identical warmed JS128-helper pipeline
+9.70× cheaper. Native IR kernels isolate optimizer costs without full frontend
+acquisition. Necessary-condition filters remove no-op verification cost with
+exact products, focused predicates, capacity/refusal controls and matched native
+requests. Source laws remain small helper claims; finite checks are not whole-
+pass proofs. Methods, negative results and failed attempts are retained.
+
+Updated frontier: lower real allocation-heavy compiler source using explicit
+production ownership/runtime imports. The1× useful native-backend milestone is
+met;10× seeds are implemented,100× full self-hosting/research recursion is not.
+No recursive acceleration or full-language/native-GPU claim. Read the report's
+source-size/time accounting and bounded evidence manifest before continuing.

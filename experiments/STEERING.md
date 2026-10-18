@@ -1,68 +1,84 @@
-# Current frontier: Phase106 native IR research loop
+# Current frontier: Phase107 native source → IR → QBE
 
-[Report and diagrams](../implementation/phase106/README.md) ·
-[Design](../design/phase106/native-ir-research-loop.md) ·
-[Replay](../selfhost/tools/performance/phase106/README.md) ·
-[Evidence](../implementation/phase106/evidence/README.md).
+[Report and diagrams](../implementation/phase107/README.md) ·
+[Design](../design/phase107/native-ir-ambition-ladder.md) ·
+[Fast loop](../selfhost/tools/performance/phase107/README.md) ·
+[Compiler usage](../docs/self_hosted/NATIVE_IR.md).
 
-All five requested bounded experiments are complete. The installed native compiler
-and candidate04 selection are unchanged. A Bend-written typed IR, verifier, folding
-and C/JSON emitters now drive C and pinned Cranelift AOT consumers. This is directly
-constructed workload IR, including two real lexical algorithms, not full KTerm
-lowering or a new production backend. The public CLI remains native Bend.
+The three-hour campaign started 2026-10-18 at 06:37UTC, with consolidation reserved
+before 09:37UTC. User authorized ambitious alternatives to Clang, commits and pushes;
+no PR comments without explicit instruction. The installed general compiler and
+selected release remain unchanged. The new route is an experimental native compiler
+written in Bend, accepting a stated first-order scalar source subset.
 
-Current full-self sampling:142.160s, exact output. `term_drop`, shared-field
-ownership (`span_fade`) and string equality total72.94% of leaf samples. A separate
-clean current-recipe Clang image build takes375.644s and reproduces selected B2.
-These are single observations, not new repeated compiler-latency ratios.
+Ordinary requests perform native Bend parsing/checking, checked-KTerm lowering,
+shared Nx optimization and QBE emission, then QBE/GNU assembler/GCC-driver linking.
+No Bun or Clang runs on that request path. The frontend image's one-time acquisition
+still uses the existing C backend and Clang (375.367s). Full Bend data/ownership,
+closures/scheduler/device runtime and QBE self-hosting are not implemented.
 
-The8-workload/5-profile/3-round matrix finds10–17× faster Cranelift object generation,
-but runtime ranges from parity to5.6× C O2. Linking narrows the construction gain.
-The training-selected k=1 policy fails to improve repeated-batch cost at new training
-sizes (1.024×), while held-outs improve (0.767×). Fresh one-shot build/check component
-cost estimates are0.476×/0.504× training/held-out; supervision and reusable-tool
-acquisition are separate. Ten/hundred-batch training selects C O2. No general
-policy promotion and no claim of recursive research acceleration.
+## Established results, with separate denominators
 
-Thirteen named laws constrain the actual safe folding helper and pass independent
-checking; four admitted semantic mutants fail unchanged source contracts. Final
-controls include1992 native outputs and996 independent interpreter observations.
-Recursive traversal, memory, emitters, runtime and full compiler correctness remain
-outside the theorem. Source checks are cheap; the accepted independent kernel run
-is41.440s. Authenticate/reuse unchanged proof evidence instead of repeating it for
-backend-only edits.
+- Eleven admitted source families and six declared unsupported families. Frozen
+  held-out GCD, non-tail triangular recursion and saturating arithmetic pass six
+  raw/fast builds and 196 exact independent results without post-freeze adaptation.
+- Complete source-to-executable comparison on three initial sources: native QBE
+  0.376–0.390s versus installed native C/Clang0.584–0.624s, or34.6–37.5% less wall.
+  Three alternating rounds, fresh objects, prepared Base. Excludes tool/image
+  acquisition; not upstream B1/B2 parity or a full-language result. A separately
+  frozen three-source held-out comparison then gives36.4–38.6% shorter compilation
+  (0.627× geometric mean), with 18 fresh builds and exact independent outputs.
+- General tail conversion/inlining/reachability bring the 128-helper IR kernel to
+  about raw-Clang runtime with QBE/Cranelift, roughly5× faster than their raw IR.
+- Memory forwarding alone was insufficient. Closed-allocation scalar promotion
+  gives QBE a2.65× shared-workload speedup, reaching1.26× raw-Clang time. Further
+  scalar constants reduce Cranelift time30.8% versus promotion alone by removing
+  a hot-loop spill. QBE gets no meaningful additional gain. Synthetic memory IR
+  does not prove production reference-count/ownership lowering.
+- Boundary verification removes repeated public-pass checks: identical warmed
+  JS128-helper pipeline0.890s versus 8.627s. Native IR-kernel complete requests
+  are much cheaper than JS hosting; these are different clocks from source builds.
+- Constant multiplication is optional: paired recurrence gains coexist with a
+  QBE text regression. Compare actual executable text and alternating timings;
+  do not credit batch noise on unchanged binaries.
 
-## Best next bounded investigation, when requested
+The fixed native source image04 uses its recorded simpler `fast` policy. Newer
+shared-kernel policies are experiments, not silently installed in that image.
+Source, ABI, model, native, mutation and local-law evidence remain separately
+labelled in the report. The IR verifier is structural/type checking, not an
+ownership or whole-compiler correctness proof. Capacity/refusal boundaries matter.
 
-The planned [Phase107 three-hour ambition ladder](../design/phase107/native-ir-ambition-ladder.md)
-defines 1× real-source integration, 10× reusable native compilation, and 100×
-incremental self-hosting/research goals. It includes bounded extensions and
-evidence gates; implementation started at 06:37 UTC on 2026-10-18. The user also
-authorized alternatives that remove Clang constraints. Ambition labels are not speedups.
+## Best next architectural step
 
-Implement size/depth-bounded inlining of small pure direct helpers in Bend IR,
-with a semantic contract and unrelated held-out helpers. Static inspection finds
-128 retained helper boundaries and two classifier calls per scanned character
-that Clang removes. This is concrete evidence for inexpensive shared optimization;
-it does not justify implementing an entire new machine backend immediately.
+Follow [the source lowering boundary](../implementation/phase107/next-lowering-boundary.md):
+real `nt_reverse<List<String>>`, then unrelated `String.reverse.go`, before the
+allocation-heavy scanner. Reuse checked erasure/layout/call decisions before
+existing C-string formatting. Specify a versioned runtime import/context ABI and
+cached runtime object, including ownership/alias and lifetime behavior.
 
-Separately design borrow summaries for live owners, following the full compiler's
-ownership profile. The synthetic shared/borrowed pair alone cannot justify a
-production ownership transformation. Persistent/batched supervision and eventually
-JIT/link reuse address now-visible fixed experiment costs. Keep defaults and exact
-results until real lowering, ABI, conformance and self-hosting gates are met.
+Do not treat the synthetic calloc/free contract as the production tagged-Term
+heap/scheduler contract. Preserve dynamic/unknown fallback. Closures, higher-order
+calls and general mutual tail calls need their own ABI/admission gates before
+attempting the complete compiler. A direct x86 backend or JIT is not required to
+learn this semantic boundary; QBE and Cranelift already remove Clang from object
+construction in the admitted slice.
 
-Root serializes substantial target work on CPU3 under guards. Offline agents can
-prepare/review disjoint work; avoid parallel large builds, disk exhaustion and
-repeating full-self/broad45 gates for small IR changes. Preserve every failed
-attempt, tool cost, selection input and held-out distinction. No PR comments
-without explicit authorization.
+Measure a real compiler subset before more scalar tuning. Native IR kernels make
+optimizer changes cheap to test. Freeze independent expected outputs, test invalid
+admission/negative controls, inspect generated assembly, then run the broader
+13-program backend screen. Full frontend image acquisition is justified only by
+frontend/runtime integration changes, not every shared-pass edit.
 
-## Established production comparisons remain separate
+## Resource and evidence discipline
 
-[Phase105](../implementation/phase105/README.md) remains the current B1/B2-versus-
-upstream comparison: prepared broad45 ratios0.499×/0.517×, live-Base2.384×/2.231×;
-full-source prepared2.602×/2.965×. Phase106 does not replace those metrics or the
-existing generated-program/conformance qualification. See the
-[preceding steering](https://github.com/rom1504/bend/blob/c2ef383/experiments/STEERING.md)
-for exact historical scope and the [ledger](ledger.md) for earlier phases.
+Root serializes timed/large target work on CPU3 with process-tree guards. Offline
+agents prepare and review disjoint source/docs. Keep failed attempts and source
+snapshots; no broad45 or full-self reruns for additive IR experiments. Disk is
+constrained; evidence capsules are bounded and streamed. Accounting distinguishes
+guarded occupancy from uninstrumented wall time and actual billing/quota data.
+
+[Phase105](../implementation/phase105/README.md) remains authoritative for production
+B1/B2 versus upstream: prepared45-program0.499×/0.517×, live-Base2.384×/2.231×,
+full-source prepared2.602×/2.965×. Phase107 does not update these ratios or selected
+compiled-program/conformance metrics. No recursive research acceleration has been
+established. The 1×/10×/100× design labels scope, never measured speedup factors.

@@ -40,6 +40,17 @@ guarantee. An indirect call supplies its exact parameter/result signature and an
 explicit environment pointer; this demonstrates a closure-shaped path but does
 not implement the installed Bend closure or reference-counting ABI.
 
+Function pointers are opaque identities used for equality and correctly typed
+indirect calls. Their numeric addresses, ordering in a code section, and offsets
+between functions are not portable IR observations. Although the verifier allows
+`ptradd` and pointer equality structurally, it does not prove an offset remains
+within a live data object or is valid for a function pointer. The reference
+interpreter's function-address spacing of 16 is an internal representation, not
+an ABI guarantee. Closed-program reachability preserves explicit function
+references and their identity; it does not preserve byte addresses across code
+layout changes. Likewise, reading pointer representations as scalar bytes is
+backend-dependent and outside cross-backend equivalence claims.
+
 The verifier rejects unknown variables/functions/operators, invalid types,
 duplicate names, malformed identifiers, argument arity/type mismatches, effectful
 nested expressions, missing returns and unreachable statements after a guaranteed

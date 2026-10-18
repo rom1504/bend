@@ -11,14 +11,27 @@ installed native compiler and the same pinned startup as Phase106, with
 `BEND_NATIVE_HOST=1`. The native invocation is:
 
 ```text
-kernel WORKLOAD raw|pure|memory json|qbe
+kernel WORKLOAD raw|pure|memory|checked|fast|promote json|qbe
 ```
 
 The manifest explicitly records all policies. `pure` runs self-tail conversion,
-entry-first inlining with4096-node budget, folding and reachability. `memory` adds
+entry-first inlining with a 4096-node budget, folding and reachability. `memory` adds
 leaf inlining after initial reachability, then folds and removes unreachable
-functions again. Raw performs no transform. QBE entry fusion is enabled only for
-pure/memory; its512-node cap remains unchanged.
+functions again. Raw performs no transform. These three policies are unchanged
+from kernel-source01. New policies are:
+
+- `checked`: public self-tail, demand inlining (4096), reachability, leaf inlining
+  (4096), reachability, memory forwarding, then constant folding.
+- `fast`: `nx_pipeline_fast`, with the same transformation order and bounded
+  internal pass cores; verifies admission and final output rather than repeatedly
+  verifying every public pass boundary.
+- `promote`: `nx_scalar_promote(nx_pipeline_fast(program))`, adding bounded
+  closed-allocation scalar field replacement after the fast pipeline.
+
+QBE entry fusion is enabled for every policy except raw; its 512-node cap remains
+unchanged. Compare exact JSON/IL output for checked and fast before interpreting
+their timing difference as validation overhead. `promote` can change code shape
+and requires independent output equivalence, not byte-for-byte output equality.
 
 For a matching JS run, build a checked API from the same `producer.bend` exporting
 the four names in the manifest, then invoke:

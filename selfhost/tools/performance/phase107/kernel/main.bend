@@ -1,10 +1,22 @@
 # IR-only optimization/emission kernel. It does not parse or check Bend source.
 @unsafe
+def nx_kernel_checked(+program: NxProgram) -> NxProgram:
+  nx_optimize(nx_memory_forward(nx_reachable(nx_inline_leaf(nx_reachable(nx_inline_demand(nx_tail_optimize(program), 4096)), 4096))))
+
+@unsafe
 def nx_kernel_policy(+program: NxProgram, +policy: String) -> NxProgram:
   nx_choose(NxProgram, String.eq(policy, "raw"), u => program,
     u => nx_choose(NxProgram, String.eq(policy, "pure"),
       v => nx_reachable(nx_optimize(nx_inline_entry(nx_tail_optimize(program), 4096))),
-      v => nx_reachable(nx_optimize(nx_inline_leaf(nx_reachable(nx_inline_entry(nx_tail_optimize(program), 4096)), 4096)))))
+      v => nx_choose(NxProgram, String.eq(policy, "memory"),
+        w => nx_reachable(nx_optimize(nx_inline_leaf(nx_reachable(nx_inline_entry(nx_tail_optimize(program), 4096)), 4096))),
+        w => nx_choose(NxProgram, String.eq(policy, "checked"), x => nx_kernel_checked(program),
+          x => nx_choose(NxProgram, String.eq(policy, "fast"), y => nx_pipeline_fast(program),
+            y => nx_scalar_promote(nx_pipeline_fast(program)))))))
+
+def nx_kernel_valid_policy(+policy: String) -> Bool:
+  String.eq(policy, "raw") || String.eq(policy, "pure") || String.eq(policy, "memory") ||
+  String.eq(policy, "checked") || String.eq(policy, "fast") || String.eq(policy, "promote")
 
 @unsafe
 def nx_kernel_text(+program: NxProgram, +format: String, +fused: Bool) -> String:
@@ -29,11 +41,11 @@ def nx_kernel_selected(+selected: Maybe<&2,NxProgram>, +policy: String, +format:
 def nx_kernel_args(args: List<&1,String>) -> IO(U32):
   match args:
     case Con{exe, Con{+name, Con{+policy, Con{+format, Nil{}}}}}:
-      nx_choose(IO(U32), (String.eq(policy, "raw") || String.eq(policy, "pure") || String.eq(policy, "memory")) &&
+      nx_choose(IO(U32), nx_kernel_valid_policy(policy) &&
         (String.eq(format, "json") || String.eq(format, "qbe")),
         u => nx_kernel_selected(nx_workload(name), policy, format),
-        u => IO.die(U32, 2, "Expected raw|pure|memory and json|qbe"))
-    case _: IO.die(U32, 2, "Usage: kernel WORKLOAD raw|pure|memory json|qbe")
+        u => IO.die(U32, 2, "Expected raw|pure|memory|checked|fast|promote and json|qbe"))
+    case _: IO.die(U32, 2, "Usage: kernel WORKLOAD raw|pure|memory|checked|fast|promote json|qbe")
 
 def main() -> IO(U32):
   do IO<U32>:

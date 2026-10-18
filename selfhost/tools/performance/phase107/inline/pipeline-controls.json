@@ -1,0 +1,372 @@
+{
+  "version": 1,
+  "experiment": "P107-008",
+  "status": "prepared-not-executed",
+  "api": "nx_pipeline_fast",
+  "scope": "Optional single-entry closed-program pipeline; no standalone pass or production change.",
+  "checkedReference": {
+    "steps": [
+      "nx_tail_optimize(program)",
+      "nx_inline_demand(previous,4096)",
+      "nx_reachable(previous)",
+      "nx_inline_leaf(previous,4096)",
+      "nx_reachable(previous)",
+      "nx_memory_forward(previous)",
+      "nx_optimize(previous)"
+    ],
+    "inputGuard": "if not nx_verify(input), return exact input before all stages",
+    "outputGuard": "nx_r_finish(checkedComposition,input)",
+    "invalidComparisonCaveat": "The outer guard is required: standalone nx_optimize can fold an invalid input."
+  },
+  "privateStagePairs": [
+    [
+      "nx_t_program",
+      "nx_tail_optimize"
+    ],
+    [
+      "nx_pf_demand",
+      "nx_inline_demand(budget4096)"
+    ],
+    [
+      "nx_pf_reach",
+      "nx_reachable"
+    ],
+    [
+      "nx_pf_leaf",
+      "nx_inline_leaf(budget4096)"
+    ],
+    [
+      "nx_pf_memory",
+      "nx_memory_forward"
+    ],
+    [
+      "nx_optimize",
+      "nx_optimize"
+    ]
+  ],
+  "reuseControls": [
+    {
+      "file": "selfhost/tools/performance/phase107/inline/controls.json",
+      "fixtureNames": [
+        "branch",
+        "collision",
+        "merge",
+        "nested",
+        "reset",
+        "snapshot"
+      ],
+      "caseRows": 58,
+      "expectations": "Reuse the complete existing observations and non-execution/refusal labels unchanged."
+    },
+    {
+      "file": "selfhost/tools/performance/phase107/inline/tail-controls.json",
+      "fixtureNames": [
+        "tail_dead",
+        "tail_existingloop",
+        "tail_mutual",
+        "tail_nontail",
+        "tail_pointer",
+        "tail_reset",
+        "tail_snapshot",
+        "tail_sum"
+      ],
+      "caseRows": 58,
+      "expectations": "Reuse the complete existing observations and non-execution/refusal labels unchanged."
+    },
+    {
+      "file": "selfhost/tools/performance/phase107/inline/reachable-controls.json",
+      "fixtureNames": [
+        "reach_branch",
+        "reach_cap",
+        "reach_cycle",
+        "reach_dead_cycle",
+        "reach_direct",
+        "reach_returned",
+        "reach_stored"
+      ],
+      "caseRows": 7,
+      "expectations": "Reuse the complete existing observations and non-execution/refusal labels unchanged."
+    },
+    {
+      "file": "selfhost/tools/performance/phase107/inline/demand-controls.json",
+      "fixtureNames": [
+        "many",
+        "reach_branch",
+        "reach_cap",
+        "reach_cycle",
+        "reach_dead_cycle",
+        "reach_direct",
+        "reach_returned",
+        "reach_stored",
+        "reset"
+      ],
+      "caseRows": 9,
+      "expectations": "Reuse the complete existing observations and non-execution/refusal labels unchanged."
+    },
+    {
+      "file": "selfhost/tools/performance/phase107/inline/leaf-controls.json",
+      "fixtureNames": [
+        "leaf_alias",
+        "leaf_alloc_free",
+        "leaf_alloc_return",
+        "leaf_branch",
+        "leaf_distinct",
+        "leaf_reset",
+        "leaf_return_pointer",
+        "leaf_store_pointer"
+      ],
+      "caseRows": 64,
+      "expectations": "Reuse the complete existing observations and non-execution/refusal labels unchanged."
+    },
+    {
+      "file": "selfhost/tools/performance/phase107/inline/memory-controls.json",
+      "fixtureNames": [
+        "memory_alias",
+        "memory_alias_payload",
+        "memory_call",
+        "memory_dependency",
+        "memory_distinct",
+        "memory_early_return",
+        "memory_free",
+        "memory_overlap",
+        "memory_payload",
+        "memory_reassign",
+        "memory_second_probe",
+        "memory_selfassign",
+        "memory_zero"
+      ],
+      "caseRows": 100,
+      "expectations": "Reuse the complete existing observations and non-execution/refusal labels unchanged."
+    }
+  ],
+  "additionalWorkloads": {
+    "producer": "nx_workload",
+    "names": [
+      "text",
+      "list",
+      "tree",
+      "closure",
+      "tail",
+      "many",
+      "shared",
+      "shared_borrow",
+      "classify",
+      "shift",
+      "law_bridge"
+    ],
+    "oracle": "Use existing Phase106 independent complete-value oracles; cycles/malformed fixtures are structural only."
+  },
+  "requiredChecks": [
+    "Verify each originally valid program before either route; record each checked stage result and require it valid.",
+    "For every valid intermediate compare its internal helper result with its public checked stage exactly; require validity, no input mutation, same retained function order, and all direct/address references resolved.",
+    "Compare full final NxProgram/JSON and complete emitted C and QBE products, not a tiny hash or runtime checksum alone. Record file hashes as identities after byte equality.",
+    "Reuse all finite independent scalar/tail/leaf/memory complete-output expectations. Honor native-only deep-tail inputs; never execute recursive refusal or malformed input.",
+    "For invalid inputs with a foldable constant expression require exact identity from the boundary-guarded reference and candidate; malformed structure must not enter private transforms.",
+    "Every capacity refusal is stage-local. Compare exact output to the checked composition rather than asserting the whole large program stays unchanged.",
+    "Compare fresh parameter snapshots, local resets, collision avoidance, shared demand fuel, original callee bodies, branch order, aliases, store/free/unknown-call effects, and zero-trip loops through unchanged existing control oracles.",
+    "On an isolated verification-failure injection into the final candidate, nx_r_finish must return exact original; separately reject any intermediate-validity failure instead of treating final validity as a semantic proof."
+  ],
+  "invalidControls": [
+    "tail_dead",
+    "missing entry",
+    "duplicate function name",
+    "unresolved NxCall",
+    "unresolved NxFunc",
+    "undefined local",
+    "mismatched type",
+    "return followed by dead statements"
+  ],
+  "capacityControls": {
+    "functions": [
+      255,
+      256,
+      257
+    ],
+    "programNodes": [
+      65535,
+      65536,
+      65537
+    ],
+    "memoryBodyNodes": [
+      4095,
+      4096,
+      4097
+    ],
+    "method": "Construct valid bounded synthetic padding fixtures with independently counted nodes; compare private/public stage output and final composition; no execution of huge inputs required. Existing reach_cap already covers257functions."
+  },
+  "bounds": {
+    "functions": 256,
+    "demandLeafReachMemoryAdmissionNodes": 65536,
+    "demandGrowth": 4096,
+    "leafGrowth": 4096,
+    "tailGrowth": 4096,
+    "expansionDepth": 128,
+    "reachWorkFuel": 256,
+    "memoryBodyNodes": 4096
+  },
+  "measurement": {
+    "sameImage": true,
+    "order": "alternate checked and fast policy",
+    "separateHosts": [
+      "JS",
+      "native"
+    ],
+    "clocks": [
+      "transform",
+      "external final verify",
+      "serialization",
+      "whole process",
+      "object generation"
+    ],
+    "outputsMustBeExactBeforeTiming": true,
+    "noGeneratedProgramSpeedClaim": true
+  },
+  "inputs": [
+    {
+      "file": "selfhost/tools/performance/phase106/ir/c.bend",
+      "bytes": 6345,
+      "sha256": "0da7e56eb0ff5df9ce710a9bcc27f32ce248491a178f66d22fb3b176fc1bc703"
+    },
+    {
+      "file": "selfhost/tools/performance/phase106/ir/json.bend",
+      "bytes": 4219,
+      "sha256": "564b52e4d88020d9575759bdc1152f260d11c16a60abd416509023df4ac10d42"
+    },
+    {
+      "file": "selfhost/tools/performance/phase106/ir/model.bend",
+      "bytes": 2001,
+      "sha256": "4f38489f3ee5aa9b850fc64046edbf2b524c190b1209beebdb7ac7ded5d86e83"
+    },
+    {
+      "file": "selfhost/tools/performance/phase106/ir/optimize.bend",
+      "bytes": 3030,
+      "sha256": "674d8a58303f41c39630246d8a63fd7f024b0b9aaaa3f5f9c949b882e317f6e7"
+    },
+    {
+      "file": "selfhost/tools/performance/phase106/ir/verify.bend",
+      "bytes": 8200,
+      "sha256": "1e775c94108e866dc158ddb019fd19f4906a1ed678699e9e16efe281de2fc481"
+    },
+    {
+      "file": "selfhost/tools/performance/phase106/ir/workloads.bend",
+      "bytes": 14287,
+      "sha256": "3aeb611273c86c075cf87bd3e735d494d1d6397fbb9764cbcc8ddadd689571ac"
+    },
+    {
+      "file": "selfhost/tools/performance/phase107/inline/admit.bend",
+      "bytes": 4013,
+      "sha256": "2b888e327ad86effa8e0f0671d7474fcfd0344c44e34f1e97db3c3d6fab46b3f"
+    },
+    {
+      "file": "selfhost/tools/performance/phase107/inline/deep.bend",
+      "bytes": 6972,
+      "sha256": "13a5304d6344d4265e31d1d654ba47b1ba7f926ba915991035846a2bcca31aef"
+    },
+    {
+      "file": "selfhost/tools/performance/phase107/inline/demand.bend",
+      "bytes": 2838,
+      "sha256": "39ce83204eb84450a37147244e174a1f3189410c0540bc4ccbaedafb2f8b04b7"
+    },
+    {
+      "file": "selfhost/tools/performance/phase107/inline/entry.bend",
+      "bytes": 2437,
+      "sha256": "6f1eb4f22e0cdbabcfc5ec5df2aea8c5919d756090c05441afae14ab217a347b"
+    },
+    {
+      "file": "selfhost/tools/performance/phase107/inline/expand.bend",
+      "bytes": 7735,
+      "sha256": "5b2190348bce8f8bd4708b7fd32fb3238467658f3923e88881afed344a715e9f"
+    },
+    {
+      "file": "selfhost/tools/performance/phase107/inline/fixtures.bend",
+      "bytes": 9266,
+      "sha256": "88e94f18d2f387dad13549fe104144a599ffb0e4fb2c354baa00abe2d807db98"
+    },
+    {
+      "file": "selfhost/tools/performance/phase107/inline/leaf-fixtures.bend",
+      "bytes": 6465,
+      "sha256": "e721e4666b996c2ce7e7b37c5cbaf941b399196404374d3f8d95533bc8b851af"
+    },
+    {
+      "file": "selfhost/tools/performance/phase107/inline/leaf.bend",
+      "bytes": 3156,
+      "sha256": "83b24d39581639cbce9248c4148f024e744f28c697dc51aae4c4a21434c7a98a"
+    },
+    {
+      "file": "selfhost/tools/performance/phase107/inline/memory-fixtures.bend",
+      "bytes": 8114,
+      "sha256": "4b75995d127aa56eda10a7d0f6a42fe5cd9c5147c4f86289f74c0f0a67c08704"
+    },
+    {
+      "file": "selfhost/tools/performance/phase107/inline/memory.bend",
+      "bytes": 15532,
+      "sha256": "f313276e844cc61a2eced51eead3d540bbe3c96075c15ee66fb31a0525050686"
+    },
+    {
+      "file": "selfhost/tools/performance/phase107/inline/model.bend",
+      "bytes": 3376,
+      "sha256": "79babf22158b729a075de88e5b3d97754203ef74d5a41a661a6ad5befa4fe750"
+    },
+    {
+      "file": "selfhost/tools/performance/phase107/inline/pipeline.bend",
+      "bytes": 3663,
+      "sha256": "bb4adc761d4515ab72b522db5fd0463a577a4034405a6badf4173f322ee5051f"
+    },
+    {
+      "file": "selfhost/tools/performance/phase107/inline/reachable-fixtures.bend",
+      "bytes": 3061,
+      "sha256": "14b82a8f14632ebd10491429b732d42ffed6a1cce989e2ae394dba3cf09e5683"
+    },
+    {
+      "file": "selfhost/tools/performance/phase107/inline/reachable.bend",
+      "bytes": 4371,
+      "sha256": "8e43fedccc3fc4597a8ec2a80a243d07774622f183ac27d67f3b6b78bfbc8966"
+    },
+    {
+      "file": "selfhost/tools/performance/phase107/inline/rename.bend",
+      "bytes": 4026,
+      "sha256": "790709a448b63894b534684f109f4170b39d8f8bcab50923e8ca2a0bc9d9382f"
+    },
+    {
+      "file": "selfhost/tools/performance/phase107/inline/tail.bend",
+      "bytes": 6210,
+      "sha256": "a0496030fa470bc18802256b07698ed344a11cb09da5cf76d40571458904b8ff"
+    },
+    {
+      "file": "selfhost/tools/performance/phase107/inline/controls.json",
+      "bytes": 6614,
+      "sha256": "c6b91864ad8a5634a7a9f15304c0b6f8c768164b9826a7a0bbc0821fa6a0636d"
+    },
+    {
+      "file": "selfhost/tools/performance/phase107/inline/tail-controls.json",
+      "bytes": 7098,
+      "sha256": "97344b519a0a9d1e2c346f492a30612aab0b571c6ecb215c65ac925e9996674d"
+    },
+    {
+      "file": "selfhost/tools/performance/phase107/inline/reachable-controls.json",
+      "bytes": 1712,
+      "sha256": "02d88b2f90330aa907851cd8ed7ebfce3cd125463c06d1c89e7e3694162aee45"
+    },
+    {
+      "file": "selfhost/tools/performance/phase107/inline/demand-controls.json",
+      "bytes": 5730,
+      "sha256": "a6d7458f8d1e5d48afb93c83b21d75cba4c07066493f249cbf8cf31f66c75d9e"
+    },
+    {
+      "file": "selfhost/tools/performance/phase107/inline/leaf-controls.json",
+      "bytes": 8857,
+      "sha256": "26f0f08fb074943403170f38cc57050096d09665d8d3c4b4772a436ed2fbe907"
+    },
+    {
+      "file": "selfhost/tools/performance/phase107/inline/memory-controls.json",
+      "bytes": 13706,
+      "sha256": "3d4c5e684917482e6af1c3161845f3bfb660c2eb14e4d9d4ce9ac39998cbffaf"
+    }
+  ],
+  "motivationReport": {
+    "file": "selfhost/build/phase107/kernel-measure01/report.json",
+    "bytes": 557650,
+    "sha256": "0b815188b6539f65276e4a4f1afd47f4eb1f4e14d57361300c3c859c81cf8576"
+  },
+  "limitations": "No theorem establishes whole-pipeline preservation. Boundary checks preserve invalid-input/final-output refusal but intentionally remove intermediate invalid-output fallbacks; this is admissible only when internal transforms preserve validity on admitted inputs. Counts use bounded U32 prototype contract."
+}

@@ -2,7 +2,7 @@
 import fs from 'node:fs';import path from 'node:path';import{pathToFileURL}from'node:url';import crypto from'node:crypto';
 const[apiFile,out]=process.argv.slice(2),api=(await import(pathToFileURL(path.resolve(apiFile)))).default;
 fs.mkdirSync(out,{recursive:false});const names=['promotion','memory'],controls=names.map(n=>JSON.parse(fs.readFileSync(path.join(import.meta.dirname,'inline',n+'-controls.json'))));
-const rows=[];
+const rows=[];const predicates=[];for(const c of controls[0].allocationPredicateControls||[]){const p=api[c.source](c.name).value;const actual=api.nx_p_has_allocation(p);if(actual!==c.expected)throw Error('allocation predicate '+c.name);predicates.push({...c,actual});}fs.writeFileSync(path.join(out,'predicates.json'),JSON.stringify(predicates,null,2)+'\n');
 for(const name of [...new Set(controls.flatMap(c=>c.cases.map(c=>c.fixture))),...['shared','shared_borrow','text','list','tree','closure','tail','many']]){
  const fixture=name.startsWith('promotion_')?'nx_p_fixture':name.startsWith('memory_')?'nx_m_fixture':'nx_workload';
  let before=api[fixture](name).value;if(!before)throw Error(name);

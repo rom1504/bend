@@ -1,7 +1,7 @@
 // Every transformation and emitter invoked here is implemented in checked Bend.
 import fs from 'node:fs';import path from 'node:path';import {pathToFileURL} from 'node:url';import crypto from 'node:crypto';
 const [apiArg,graphsArg,outArg,method='nx_inline',pipeline='inline']=process.argv.slice(2),out=path.resolve(outArg);
-if(!['inline','tail-fused','leaf-reach','memory-demand','fast','promote'].includes(pipeline))throw Error('Unknown pipeline');
+if(!['inline','tail-fused','leaf-reach','memory-demand','fast','promote','strength','constant'].includes(pipeline))throw Error('Unknown pipeline');
 fs.mkdirSync(out,{recursive:false});fs.copyFileSync(import.meta.filename,path.join(out,'method.mjs'));
 const api=(await import(pathToFileURL(path.resolve(apiArg)))).default;
 const pin=file=>({file:path.resolve(file),sha256:crypto.createHash('sha256').update(fs.readFileSync(file)).digest('hex')});
@@ -18,8 +18,8 @@ for(const name of ['text','list','tree','closure','tail','many','shared','shared
 for(const {name,program:raw,lowerSeconds} of selected){
  for(const budget of [0,4096]){
   const start=performance.now();let program;
-  if(budget>0&&['fast','promote'].includes(pipeline)){
-   program=api.nx_pipeline_fast(raw);if(pipeline==='promote')program=api.nx_scalar_promote(program);
+  if(budget>0&&['fast','promote','strength','constant'].includes(pipeline)){
+   program=api.nx_pipeline_fast(raw);if(['promote','strength','constant'].includes(pipeline))program=api.nx_scalar_promote(program);if(pipeline==='strength')program=api.nx_strength_reduce(program);if(pipeline==='constant')program=api.nx_constant_propagate(program);
   }else{program=api[method](pipeline!=='inline'&&budget>0?api.nx_tail_optimize(raw):raw,budget);
   if(['leaf-reach','memory-demand'].includes(pipeline)&&budget>0)program=api.nx_reachable(api.nx_inline_leaf(api.nx_reachable(program),budget));
   if(pipeline==='memory-demand'&&budget>0)program=api.nx_memory_forward(program);}

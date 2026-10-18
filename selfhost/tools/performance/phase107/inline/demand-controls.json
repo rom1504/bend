@@ -1,0 +1,163 @@
+{
+  "version": 1,
+  "policy": "nx_inline_demand",
+  "status": "prepared-not-executed",
+  "scope": "Closed program with exactly one external entry; original callee bodies and shared capped growth fuel. No independent-library export ABI.",
+  "budgets": [
+    0,
+    1,
+    32,
+    4096
+  ],
+  "cases": [
+    {
+      "fixture": "reach_direct",
+      "producer": "nx_r_fixture",
+      "keepAt4096": [
+        "main"
+      ],
+      "execute": true,
+      "unchanged": false
+    },
+    {
+      "fixture": "reach_stored",
+      "producer": "nx_r_fixture",
+      "keepAt4096": [
+        "target",
+        "main"
+      ],
+      "execute": true,
+      "unchanged": false
+    },
+    {
+      "fixture": "reach_returned",
+      "producer": "nx_r_fixture",
+      "keepAt4096": [
+        "factory",
+        "target",
+        "main"
+      ],
+      "execute": true,
+      "unchanged": false
+    },
+    {
+      "fixture": "reach_dead_cycle",
+      "producer": "nx_r_fixture",
+      "keepAt4096": [
+        "main"
+      ],
+      "execute": true,
+      "unchanged": false
+    },
+    {
+      "fixture": "reach_branch",
+      "producer": "nx_r_fixture",
+      "keepAt4096": [
+        "main"
+      ],
+      "execute": true,
+      "unchanged": false
+    },
+    {
+      "fixture": "reach_cycle",
+      "producer": "nx_r_fixture",
+      "keepAt4096": [
+        "main",
+        "cycle"
+      ],
+      "execute": false,
+      "unchanged": true
+    },
+    {
+      "fixture": "reach_cap",
+      "producer": "nx_r_fixture",
+      "keepAt4096": null,
+      "execute": true,
+      "unchanged": true
+    },
+    {
+      "fixture": "many",
+      "producer": "nx_i_fixture",
+      "keepAt4096": [
+        "main"
+      ],
+      "execute": true,
+      "unchanged": false
+    },
+    {
+      "fixture": "reset",
+      "producer": "nx_i_fixture",
+      "keepAt4096": [
+        "main"
+      ],
+      "execute": true,
+      "unchanged": false
+    }
+  ],
+  "inputs": [
+    {
+      "file": "selfhost/tools/performance/phase107/inline/demand.bend",
+      "sha256": "39ce83204eb84450a37147244e174a1f3189410c0540bc4ccbaedafb2f8b04b7"
+    },
+    {
+      "file": "selfhost/tools/performance/phase107/inline/entry.bend",
+      "sha256": "6f1eb4f22e0cdbabcfc5ec5df2aea8c5919d756090c05441afae14ab217a347b"
+    },
+    {
+      "file": "selfhost/tools/performance/phase107/inline/reachable.bend",
+      "sha256": "8e43fedccc3fc4597a8ec2a80a243d07774622f183ac27d67f3b6b78bfbc8966"
+    },
+    {
+      "file": "selfhost/tools/performance/phase107/inline/expand.bend",
+      "sha256": "5b2190348bce8f8bd4708b7fd32fb3238467658f3923e88881afed344a715e9f"
+    },
+    {
+      "file": "selfhost/tools/performance/phase107/inline/deep.bend",
+      "sha256": "13a5304d6344d4265e31d1d654ba47b1ba7f926ba915991035846a2bcca31aef"
+    },
+    {
+      "file": "selfhost/tools/performance/phase107/inline/model.bend",
+      "sha256": "79babf22158b729a075de88e5b3d97754203ef74d5a41a661a6ad5befa4fe750"
+    },
+    {
+      "file": "selfhost/tools/performance/phase107/inline/fixtures.bend",
+      "sha256": "88e94f18d2f387dad13549fe104144a599ffb0e4fb2c354baa00abe2d807db98"
+    },
+    {
+      "file": "selfhost/tools/performance/phase107/inline/reachable-fixtures.bend",
+      "sha256": "14b82a8f14632ebd10491429b732d42ffed6a1cce989e2ae394dba3cf09e5683"
+    },
+    {
+      "file": "selfhost/tools/performance/phase107/inline/controls.json",
+      "sha256": "c6b91864ad8a5634a7a9f15304c0b6f8c768164b9826a7a0bbc0821fa6a0636d"
+    },
+    {
+      "file": "selfhost/tools/performance/phase107/inline/reachable-controls.json",
+      "sha256": "02d88b2f90330aa907851cd8ed7ebfce3cd125463c06d1c89e7e3694162aee45"
+    }
+  ],
+  "oracles": {
+    "reach": "Reuse reachable-controls.json four wrapping-add input/output pairs; cycle is structural only, cap has257 functions and remains unchanged.",
+    "reset": "Reuse every fixture=reset row in controls.json without changing its expected value.",
+    "many": "Reuse the independent Phase106 campaign.expected many oracle and existing12 n=[0,1,2,9],seed=[0,23,4294967295] finite pairs."
+  },
+  "checks": [
+    "For every fixture budget0 returns deep-identical input, including unused definitions.",
+    "For each valid result require nx_verify and total nodes <= original nodes + min(budget,4096).",
+    "At4096 require exact keepAt4096 names in original order; reach_cap remains257 original definitions.",
+    "Check all direct NxCall and address NxFunc targets remain defined, including stored/returned function pointers.",
+    "Execute only finite fixtures, comparing complete scalar values with independent unchanged oracles and original program.",
+    "Invalid tail_dead remains exactly unchanged and is never executed.",
+    "Deep-compare many4096 against nx_reachable(nx_inline_entry(original,4096)); entry body should be identical.",
+    "For bounded budgets compare semantics, not universal byte equality to oldpolicy: skipping dead definitions changes where remaining fuel is spent.",
+    "Before a performance claim, record optimization/emission/object costs separately; require same retained many entry code and correct outputs.",
+    "Source review must establish every nx_i_function/nx_i_functions receives original_fs, and fuel returned from entry is passed to the remaining stage without reset."
+  ],
+  "bounds": {
+    "maxFunctions": 256,
+    "maxOriginalNodes": 65536,
+    "growthBudget": 4096,
+    "expansionDepth": 128
+  },
+  "limitations": "Purity summaries still scan all original functions. Two pruning phases, not pruning after every helper. A reachable helper made dead during remaining-function optimization can still consume work. nx_reachable capacity refusal can retain extra definitions. No proof, source-check or timing result is asserted."
+}

@@ -1,0 +1,1376 @@
+{
+  "kind": "phase111-effect-provider-catalogue",
+  "complete": true,
+  "targetsRun": false,
+  "profile": "selected-base",
+  "selection": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/native/selection.json",
+    "bytes": 335,
+    "sha256": "abcf83f679c38aacd21dc121dcc479337f9e4bd77001be8dbfa261da6ca20285"
+  },
+  "admission": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase102/native-chain04/admission.json",
+    "bytes": 1809272,
+    "sha256": "a8a7abd1c985604d7d3e944c558a770c08e3e43d9035dfe54977d122e880c8b0"
+  },
+  "selectedRuntime": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/runtime-accessor-transport02/runtime.c",
+    "sha256": "9e1c59078878be94052cb4d2d63a713e19e29b41ed3f94b034f2175a50efd0a9",
+    "bytes": 83683
+  },
+  "selectedBase": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/base.bend",
+    "sha256": "99ac43f2b2bb3e3f39acdcedcecbbd3cb44749ce13969c827d6973fa66f7facf",
+    "bytes": 75064
+  },
+  "selectedProviders": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/runtime-accessor-transport02/effs/args.c",
+      "bytes": 351,
+      "sha256": "7209a5fa11396fa8b0667a6738c913c40f554797e442c847a25e13a5f69676e0",
+      "cidNames": [
+        "Con",
+        "IO.args",
+        "Nil"
+      ],
+      "registrations": [
+        {
+          "name": "IO.args",
+          "run": "io_args_run",
+          "need": "0"
+        }
+      ],
+      "startupFunctions": [
+        "io_args_use"
+      ],
+      "fidNames": []
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/runtime-accessor-transport02/effs/print.c",
+      "bytes": 397,
+      "sha256": "709500d2ace6e2eaeec0f5f1e4373d4ec5e402b3c1e289bd70dfef7e2a635b26",
+      "cidNames": [
+        "IO.print",
+        "Unit"
+      ],
+      "registrations": [
+        {
+          "name": "IO.print",
+          "run": "io_print_run",
+          "need": "0"
+        }
+      ],
+      "startupFunctions": [
+        "io_print_use"
+      ],
+      "fidNames": []
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/runtime-accessor-transport02/effs/now.c",
+      "bytes": 198,
+      "sha256": "da5fde65701c4fadc7560625c9615b4d60b2eefbd7b6bbe1aedda61887b825b9",
+      "cidNames": [
+        "IO.now"
+      ],
+      "registrations": [
+        {
+          "name": "IO.now",
+          "run": "io_now_run",
+          "need": "0"
+        }
+      ],
+      "startupFunctions": [
+        "io_now_use"
+      ],
+      "fidNames": []
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/runtime-accessor-transport02/effs/print_err.c",
+      "bytes": 236,
+      "sha256": "72781d2adc88a4791d5530c9deff20824c38d5aa1ba43fb05aaa6a697e19f4b6",
+      "cidNames": [
+        "IO.print_err",
+        "Unit"
+      ],
+      "registrations": [
+        {
+          "name": "IO.print_err",
+          "run": "io_print_err_run",
+          "need": "0"
+        }
+      ],
+      "startupFunctions": [
+        "io_print_err_use"
+      ],
+      "fidNames": []
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/runtime-accessor-transport02/effs/file_open.c",
+      "bytes": 1113,
+      "sha256": "f42a8bcc142b9003c7f6ca99287ca09c14f9efcbe15dea929c90c2fa062746e7",
+      "cidNames": [
+        "File.open"
+      ],
+      "registrations": [
+        {
+          "name": "File.open",
+          "run": "file_open_run",
+          "need": "0"
+        }
+      ],
+      "startupFunctions": [
+        "file_open_use"
+      ],
+      "fidNames": []
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/runtime-accessor-transport02/effs/file_read.c",
+      "bytes": 2130,
+      "sha256": "6af44266ca83ab55b2dd3bf20c17eea6bfb7a7a678908cfbf3579adef31fb678",
+      "cidNames": [
+        "File.read",
+        "File.read_at",
+        "File.read_bytes"
+      ],
+      "registrations": [
+        {
+          "name": "File.read",
+          "run": "file_read_run",
+          "need": "0"
+        },
+        {
+          "name": "File.read_bytes",
+          "run": "file_read_bytes_run",
+          "need": "0"
+        },
+        {
+          "name": "File.read_at",
+          "run": "file_read_at_run",
+          "need": "0"
+        }
+      ],
+      "startupFunctions": [
+        "file_read_use",
+        "file_read_bytes_use",
+        "file_read_at_use"
+      ],
+      "fidNames": []
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/runtime-accessor-transport02/effs/file_size.c",
+      "bytes": 771,
+      "sha256": "09906f3839f0f0fba1eea944c948e35f8e03627dc2b78e8debb43e0556f5d5d8",
+      "cidNames": [
+        "File.size"
+      ],
+      "registrations": [
+        {
+          "name": "File.size",
+          "run": "file_size_run",
+          "need": "0"
+        }
+      ],
+      "startupFunctions": [
+        "file_size_use"
+      ],
+      "fidNames": []
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/runtime-accessor-transport02/effs/file_write.c",
+      "bytes": 1423,
+      "sha256": "565dff20204e1e535e188b983cda6d6001d0e5dc37cfdf981960c07a9e154ee2",
+      "cidNames": [
+        "Con",
+        "File.write",
+        "File.write_bytes",
+        "Unit"
+      ],
+      "registrations": [
+        {
+          "name": "File.write",
+          "run": "file_write_run",
+          "need": "0"
+        },
+        {
+          "name": "File.write_bytes",
+          "run": "file_write_bytes_run",
+          "need": "0"
+        }
+      ],
+      "startupFunctions": [
+        "file_write_use",
+        "file_write_bytes_use"
+      ],
+      "fidNames": []
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/runtime-accessor-transport02/effs/file_close.c",
+      "bytes": 243,
+      "sha256": "befd465a31b88936d772222d26b1019ea7330e59e6327d8ba90584c85e8b2fb3",
+      "cidNames": [
+        "File.close",
+        "Unit"
+      ],
+      "registrations": [
+        {
+          "name": "File.close",
+          "run": "file_close_run",
+          "need": "0"
+        }
+      ],
+      "startupFunctions": [
+        "file_close_use"
+      ],
+      "fidNames": []
+    }
+  ],
+  "upstreamBaseProviders": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/effs/args.c",
+      "bytes": 351,
+      "sha256": "84e12702f78e7cce5d350a3ccc6cfbda66f812496c39f025afe02bdf090880cf",
+      "cidNames": [
+        "Con",
+        "IO.args",
+        "Nil"
+      ],
+      "registrations": [
+        {
+          "name": "IO.args",
+          "run": "io_args_run",
+          "need": "0"
+        }
+      ],
+      "startupFunctions": [
+        "io_args_use"
+      ],
+      "fidNames": []
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/effs/audio.c",
+      "bytes": 6668,
+      "sha256": "befb8d5514c945a1ea59c164e601b76c082db9f328487658ecfc56a5b943788e",
+      "cidNames": [
+        "Audio.close",
+        "Audio.open",
+        "Audio.write",
+        "Con",
+        "Unit"
+      ],
+      "registrations": [
+        {
+          "name": "Audio.open",
+          "run": "audio_open_run",
+          "need": "0"
+        },
+        {
+          "name": "Audio.write",
+          "run": "audio_write_run",
+          "need": "0"
+        },
+        {
+          "name": "Audio.close",
+          "run": "audio_close_run",
+          "need": "0"
+        }
+      ],
+      "startupFunctions": [
+        "audio_open_use",
+        "audio_write_use",
+        "audio_close_use"
+      ],
+      "fidNames": []
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/effs/chan.c",
+      "bytes": 7198,
+      "sha256": "f20345b3475168e52d431dabc8c8b9347d73b51b5318aae7890b78c94762f4e6",
+      "cidNames": [
+        "Chan.close",
+        "Chan.new",
+        "Chan.recv",
+        "Chan.send",
+        "Chan.try_recv",
+        "Chan.try_send",
+        "Fail",
+        "None",
+        "Ready",
+        "Some",
+        "Unit",
+        "Wait"
+      ],
+      "registrations": [
+        {
+          "name": "Chan.new",
+          "run": "chan_new_run",
+          "need": "0"
+        },
+        {
+          "name": "Chan.send",
+          "run": "chan_send_run",
+          "need": "0"
+        },
+        {
+          "name": "Chan.recv",
+          "run": "chan_recv_run",
+          "need": "0"
+        },
+        {
+          "name": "Chan.try_send",
+          "run": "chan_try_send_run",
+          "need": "0"
+        },
+        {
+          "name": "Chan.try_recv",
+          "run": "chan_try_recv_run",
+          "need": "0"
+        },
+        {
+          "name": "Chan.close",
+          "run": "chan_close_run",
+          "need": "0"
+        }
+      ],
+      "startupFunctions": [
+        "chan_new_use",
+        "chan_send_use",
+        "chan_recv_use",
+        "chan_try_send_use",
+        "chan_try_recv_use",
+        "chan_close_use"
+      ],
+      "fidNames": []
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/effs/file_close.c",
+      "bytes": 242,
+      "sha256": "033da9beb0b484fbc8784044193bf69004f858f6ad86e0c31b4beb89df1349ca",
+      "cidNames": [
+        "File.close",
+        "Unit"
+      ],
+      "registrations": [
+        {
+          "name": "File.close",
+          "run": "file_close_run",
+          "need": "0"
+        }
+      ],
+      "startupFunctions": [
+        "file_close_use"
+      ],
+      "fidNames": []
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/effs/file_open.c",
+      "bytes": 1066,
+      "sha256": "2f5923e325a22eb384edb3fbb023f04ca842d5acd22654983608b575fa7617fa",
+      "cidNames": [
+        "File.open"
+      ],
+      "registrations": [
+        {
+          "name": "File.open",
+          "run": "file_open_run",
+          "need": "0"
+        }
+      ],
+      "startupFunctions": [
+        "file_open_use"
+      ],
+      "fidNames": []
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/effs/file_read.c",
+      "bytes": 1913,
+      "sha256": "ab577225fa98a034c09d7eb6326b74808756dc6203b0e2599a459876382f090d",
+      "cidNames": [
+        "File.read",
+        "File.read_at",
+        "File.read_bytes"
+      ],
+      "registrations": [
+        {
+          "name": "File.read",
+          "run": "file_read_run",
+          "need": "0"
+        },
+        {
+          "name": "File.read_bytes",
+          "run": "file_read_bytes_run",
+          "need": "0"
+        },
+        {
+          "name": "File.read_at",
+          "run": "file_read_at_run",
+          "need": "0"
+        }
+      ],
+      "startupFunctions": [
+        "file_read_use",
+        "file_read_bytes_use",
+        "file_read_at_use"
+      ],
+      "fidNames": []
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/effs/file_size.c",
+      "bytes": 719,
+      "sha256": "ed0d74fd6b9f14ea471bfe5dd80ecbb2c5abb6a8406519fb2c7e1a1acf3dd5af",
+      "cidNames": [
+        "File.size"
+      ],
+      "registrations": [
+        {
+          "name": "File.size",
+          "run": "file_size_run",
+          "need": "0"
+        }
+      ],
+      "startupFunctions": [
+        "file_size_use"
+      ],
+      "fidNames": []
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/effs/file_write.c",
+      "bytes": 1242,
+      "sha256": "9da28a35294cbde6a97729be825a31f9cab0b8c9d421a02a4613e688df451214",
+      "cidNames": [
+        "Con",
+        "File.write",
+        "File.write_bytes",
+        "Unit"
+      ],
+      "registrations": [
+        {
+          "name": "File.write",
+          "run": "file_write_run",
+          "need": "0"
+        },
+        {
+          "name": "File.write_bytes",
+          "run": "file_write_bytes_run",
+          "need": "0"
+        }
+      ],
+      "startupFunctions": [
+        "file_write_use",
+        "file_write_bytes_use"
+      ],
+      "fidNames": []
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/effs/get_env.c",
+      "bytes": 397,
+      "sha256": "508a4aaca91e37b2a0a97770f172100fdbaf4a676aba54623b1cd5d1634805ce",
+      "cidNames": [
+        "IO.get_env"
+      ],
+      "registrations": [
+        {
+          "name": "IO.get_env",
+          "run": "io_get_env_run",
+          "need": "0"
+        }
+      ],
+      "startupFunctions": [
+        "io_get_env_use"
+      ],
+      "fidNames": []
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/effs/listener_close.c",
+      "bytes": 266,
+      "sha256": "11f6bac6342a37e97b9656e96bdca7d052ed0a7a0cab3b05ea87657020cfb7a2",
+      "cidNames": [
+        "Listener.close",
+        "Unit"
+      ],
+      "registrations": [
+        {
+          "name": "Listener.close",
+          "run": "listener_close_run",
+          "need": "0"
+        }
+      ],
+      "startupFunctions": [
+        "listener_close_use"
+      ],
+      "fidNames": []
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/effs/now.c",
+      "bytes": 196,
+      "sha256": "fc4c1d87a4fb2ace7d5b6c57b434cc3d953a15bdf213020912df6c17aa2352d6",
+      "cidNames": [
+        "IO.now"
+      ],
+      "registrations": [
+        {
+          "name": "IO.now",
+          "run": "io_now_run",
+          "need": "0"
+        }
+      ],
+      "startupFunctions": [
+        "io_now_use"
+      ],
+      "fidNames": []
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/effs/print.c",
+      "bytes": 322,
+      "sha256": "2693b48e0ad8bba77c2babb1cfe00b4adfd63e68b0688229d7efd3a261af3c46",
+      "cidNames": [
+        "IO.print",
+        "Unit"
+      ],
+      "registrations": [
+        {
+          "name": "IO.print",
+          "run": "io_print_run",
+          "need": "0"
+        }
+      ],
+      "startupFunctions": [
+        "io_print_use"
+      ],
+      "fidNames": []
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/effs/print_err.c",
+      "bytes": 235,
+      "sha256": "f84aa11c8d0d6af6fa2fee28411f95714d6744ad97156990e43e55c292c9c6fb",
+      "cidNames": [
+        "IO.print_err",
+        "Unit"
+      ],
+      "registrations": [
+        {
+          "name": "IO.print_err",
+          "run": "io_print_err_run",
+          "need": "0"
+        }
+      ],
+      "startupFunctions": [
+        "io_print_err_use"
+      ],
+      "fidNames": []
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/effs/process_run.c",
+      "bytes": 8716,
+      "sha256": "0193d77baa986f01d55c74ae9df8142c1b198528bb2ed8e0a3853f7bbcde8cfe",
+      "cidNames": [
+        "Con",
+        "Process.run"
+      ],
+      "registrations": [
+        {
+          "name": "Process.run",
+          "run": "process_run_run",
+          "need": "0"
+        }
+      ],
+      "startupFunctions": [
+        "process_run_use"
+      ],
+      "fidNames": []
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/effs/random_u32.c",
+      "bytes": 703,
+      "sha256": "75429b2b42e00562177fe33a5e18d2730478847f58c4038b048e78131e1b8c0a",
+      "cidNames": [
+        "IO.random_u32"
+      ],
+      "registrations": [
+        {
+          "name": "IO.random_u32",
+          "run": "io_random_u32_run",
+          "need": "0"
+        }
+      ],
+      "startupFunctions": [
+        "io_random_u32_use"
+      ],
+      "fidNames": []
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/effs/sleep.c",
+      "bytes": 381,
+      "sha256": "1dde3701026517d5272d2ff5344d3a8643bec264dbad9f266fdae1c4aaf7601c",
+      "cidNames": [
+        "IO.sleep",
+        "Unit"
+      ],
+      "registrations": [
+        {
+          "name": "IO.sleep",
+          "run": "io_sleep_run",
+          "need": "0"
+        }
+      ],
+      "startupFunctions": [
+        "io_sleep_use"
+      ],
+      "fidNames": []
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/effs/socket_close.c",
+      "bytes": 254,
+      "sha256": "abea115d2928d4942a9d89898d2022c0f1b19c52db48d0b060c2356d261bfa77",
+      "cidNames": [
+        "Socket.close",
+        "Unit"
+      ],
+      "registrations": [
+        {
+          "name": "Socket.close",
+          "run": "socket_close_run",
+          "need": "0"
+        }
+      ],
+      "startupFunctions": [
+        "socket_close_use"
+      ],
+      "fidNames": []
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/effs/spawn.c",
+      "bytes": 217,
+      "sha256": "05e11ae3f1461d9c72440af3b1786c076b418d2faff45639ac25ba464ee73cd5",
+      "cidNames": [
+        "IO.spawn",
+        "Unit"
+      ],
+      "registrations": [
+        {
+          "name": "IO.spawn",
+          "run": "io_spawn_run",
+          "need": "0"
+        }
+      ],
+      "startupFunctions": [
+        "io_spawn_use"
+      ],
+      "fidNames": []
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/effs/tcp_accept.c",
+      "bytes": 1409,
+      "sha256": "bf7ca1685ed388ce97827ea8379881fbdf5359c7c663ad03eeb8da34bd8584ef",
+      "cidNames": [
+        "TCP.accept",
+        "TCP.try_accept",
+        "Unit"
+      ],
+      "registrations": [
+        {
+          "name": "TCP.accept",
+          "run": "tcp_accept_run",
+          "need": "0"
+        },
+        {
+          "name": "TCP.try_accept",
+          "run": "tcp_try_accept_run",
+          "need": "0"
+        }
+      ],
+      "startupFunctions": [
+        "tcp_accept_use",
+        "tcp_try_accept_use"
+      ],
+      "fidNames": []
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/effs/tcp_connect.c",
+      "bytes": 1292,
+      "sha256": "8d17c097138709d71e9d9e1fbc4255007c5e80c93ee384c4a3510b6ac8d10da3",
+      "cidNames": [
+        "TCP.connect"
+      ],
+      "registrations": [
+        {
+          "name": "TCP.connect",
+          "run": "tcp_connect_run",
+          "need": "0"
+        }
+      ],
+      "startupFunctions": [
+        "tcp_connect_use"
+      ],
+      "fidNames": []
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/effs/tcp_listen.c",
+      "bytes": 875,
+      "sha256": "efc7528de96abd9f62f299833c1ac7b0e86528292c746b114d2684b5bac52899",
+      "cidNames": [
+        "TCP.listen"
+      ],
+      "registrations": [
+        {
+          "name": "TCP.listen",
+          "run": "tcp_listen_run",
+          "need": "0"
+        }
+      ],
+      "startupFunctions": [
+        "tcp_listen_use"
+      ],
+      "fidNames": []
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/effs/tcp_recv.c",
+      "bytes": 2508,
+      "sha256": "249c8789cd2f541ad00068882de16a00870c2f81a8168b0ac7a59db1e3cb0c6f",
+      "cidNames": [
+        "Con",
+        "None",
+        "Some",
+        "TCP.recv",
+        "TCP.recv_bytes",
+        "TCP.try_recv",
+        "TCP.try_recv_bytes",
+        "Unit"
+      ],
+      "registrations": [
+        {
+          "name": "TCP.recv",
+          "run": "tcp_recv_run",
+          "need": "0"
+        },
+        {
+          "name": "TCP.recv_bytes",
+          "run": "tcp_recv_bytes_run",
+          "need": "0"
+        },
+        {
+          "name": "TCP.try_recv",
+          "run": "tcp_try_recv_run",
+          "need": "0"
+        },
+        {
+          "name": "TCP.try_recv_bytes",
+          "run": "tcp_try_recv_bytes_run",
+          "need": "0"
+        }
+      ],
+      "startupFunctions": [
+        "tcp_recv_use",
+        "tcp_recv_bytes_use",
+        "tcp_try_recv_use",
+        "tcp_try_recv_bytes_use"
+      ],
+      "fidNames": []
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/effs/tcp_send.c",
+      "bytes": 3042,
+      "sha256": "ed724ef8ce712b113eaac478164802509b41fac4e92435e3df0837d6a8c75632",
+      "cidNames": [
+        "Con",
+        "Fail",
+        "TCP.send",
+        "TCP.send_bytes",
+        "TCP.try_send",
+        "TCP.try_send_bytes",
+        "Unit"
+      ],
+      "registrations": [
+        {
+          "name": "TCP.send",
+          "run": "tcp_send_run",
+          "need": "0"
+        },
+        {
+          "name": "TCP.send_bytes",
+          "run": "tcp_send_bytes_run",
+          "need": "0"
+        },
+        {
+          "name": "TCP.try_send",
+          "run": "tcp_try_send_run",
+          "need": "0"
+        },
+        {
+          "name": "TCP.try_send_bytes",
+          "run": "tcp_try_send_bytes_run",
+          "need": "0"
+        }
+      ],
+      "startupFunctions": [
+        "tcp_send_use",
+        "tcp_send_bytes_use",
+        "tcp_try_send_use",
+        "tcp_try_send_bytes_use"
+      ],
+      "fidNames": []
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/effs/thread_count.c",
+      "bytes": 343,
+      "sha256": "d4889ed7757dccce03729c9568b88188128f2c1576166a3dc184a8707ed44568",
+      "cidNames": [
+        "IO.thread_count"
+      ],
+      "registrations": [
+        {
+          "name": "IO.thread_count",
+          "run": "io_thread_count_run",
+          "need": "0"
+        }
+      ],
+      "startupFunctions": [
+        "io_thread_count_use"
+      ],
+      "fidNames": []
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/effs/udp_bind.c",
+      "bytes": 744,
+      "sha256": "a1be1bc5c03d430fc6eb43982651073e144872956fadaee98c3700be59352ee3",
+      "cidNames": [
+        "UDP.bind"
+      ],
+      "registrations": [
+        {
+          "name": "UDP.bind",
+          "run": "udp_bind_run",
+          "need": "0"
+        }
+      ],
+      "startupFunctions": [
+        "udp_bind_use"
+      ],
+      "fidNames": []
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/effs/udp_recv_from.c",
+      "bytes": 3005,
+      "sha256": "607085b34605af6c888e1de5c3f5cd8f689f221c71a3ef9e2c50f9ac880b1bae",
+      "cidNames": [
+        "Con",
+        "UDP.recv_bytes_from",
+        "UDP.recv_from",
+        "UDP.try_recv_bytes_from",
+        "UDP.try_recv_from",
+        "Unit"
+      ],
+      "registrations": [
+        {
+          "name": "UDP.recv_from",
+          "run": "udp_recv_from_run",
+          "need": "0"
+        },
+        {
+          "name": "UDP.try_recv_from",
+          "run": "udp_try_recv_from_run",
+          "need": "0"
+        },
+        {
+          "name": "UDP.recv_bytes_from",
+          "run": "udp_recv_bytes_from_run",
+          "need": "0"
+        },
+        {
+          "name": "UDP.try_recv_bytes_from",
+          "run": "udp_try_recv_bytes_from_run",
+          "need": "0"
+        }
+      ],
+      "startupFunctions": [
+        "udp_recv_from_use",
+        "udp_try_recv_from_use",
+        "udp_recv_bytes_from_use",
+        "udp_try_recv_bytes_from_use"
+      ],
+      "fidNames": []
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/effs/udp_send_to.c",
+      "bytes": 3484,
+      "sha256": "b3a87e56958d8071a368da2edb4748e9496b3eed58b93d6cb4f8af398dd1011a",
+      "cidNames": [
+        "Con",
+        "Fail",
+        "UDP.send_bytes_to",
+        "UDP.send_to",
+        "UDP.try_send_bytes_to",
+        "UDP.try_send_to",
+        "Unit"
+      ],
+      "registrations": [
+        {
+          "name": "UDP.send_to",
+          "run": "udp_send_to_run",
+          "need": "0"
+        },
+        {
+          "name": "UDP.try_send_to",
+          "run": "udp_try_send_to_run",
+          "need": "0"
+        },
+        {
+          "name": "UDP.send_bytes_to",
+          "run": "udp_send_bytes_to_run",
+          "need": "0"
+        },
+        {
+          "name": "UDP.try_send_bytes_to",
+          "run": "udp_try_send_bytes_to_run",
+          "need": "0"
+        }
+      ],
+      "startupFunctions": [
+        "udp_send_to_use",
+        "udp_try_send_to_use",
+        "udp_send_bytes_to_use",
+        "udp_try_send_bytes_to_use"
+      ],
+      "fidNames": []
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/effs/window.c",
+      "bytes": 24917,
+      "sha256": "34e917a9f89ab17583dcf1f46de36bd16e99f6149aeee4485e703f6bb8087857",
+      "cidNames": [
+        "Close",
+        "Con",
+        "Key",
+        "Look",
+        "Mouse",
+        "Move",
+        "Nil",
+        "Scroll",
+        "True",
+        "Unit",
+        "Window.close",
+        "Window.frame",
+        "Window.grab",
+        "Window.open",
+        "Window.set_title"
+      ],
+      "registrations": [
+        {
+          "name": "Window.open",
+          "run": "window_open_run",
+          "need": "0"
+        },
+        {
+          "name": "Window.frame",
+          "run": "window_frame_run",
+          "need": "0"
+        },
+        {
+          "name": "Window.set_title",
+          "run": "window_set_title_run",
+          "need": "0"
+        },
+        {
+          "name": "Window.grab",
+          "run": "window_grab_run",
+          "need": "0"
+        },
+        {
+          "name": "Window.close",
+          "run": "window_close_run",
+          "need": "0"
+        }
+      ],
+      "startupFunctions": [
+        "window_open_use",
+        "window_frame_use",
+        "window_set_title_use",
+        "window_grab_use",
+        "window_close_use"
+      ],
+      "fidNames": []
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/effs/write.c",
+      "bytes": 295,
+      "sha256": "8807a5f655db452c1d846354560c26fe1e94289e5dc0be231d0b71ecc876d02f",
+      "cidNames": [
+        "IO.write",
+        "Unit"
+      ],
+      "registrations": [
+        {
+          "name": "IO.write",
+          "run": "io_write_run",
+          "need": "0"
+        }
+      ],
+      "startupFunctions": [
+        "io_write_use"
+      ],
+      "fidNames": []
+    }
+  ],
+  "hostProvider": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/src/host/native-os.c",
+    "bytes": 10078,
+    "sha256": "45aabbcc21ddd18d2f77b15d6d53fc06d5cc553f96d6a46398449c025cae3e89",
+    "cidNames": [
+      "NativeHost.path",
+      "NativeHost.publish",
+      "NativeHost.read",
+      "Unit"
+    ],
+    "registrations": [
+      {
+        "name": "NativeHost.read",
+        "run": "native_host_read_run",
+        "need": "0"
+      },
+      {
+        "name": "NativeHost.path",
+        "run": "native_host_path_run",
+        "need": "0"
+      },
+      {
+        "name": "NativeHost.publish",
+        "run": "native_host_publish_run",
+        "need": "0"
+      }
+    ],
+    "startupFunctions": [
+      "native_host_use"
+    ],
+    "fidNames": []
+  },
+  "includedProviders": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/runtime-accessor-transport02/effs/args.c",
+      "bytes": 351,
+      "sha256": "7209a5fa11396fa8b0667a6738c913c40f554797e442c847a25e13a5f69676e0",
+      "cidNames": [
+        "Con",
+        "IO.args",
+        "Nil"
+      ],
+      "registrations": [
+        {
+          "name": "IO.args",
+          "run": "io_args_run",
+          "need": "0"
+        }
+      ],
+      "startupFunctions": [
+        "io_args_use"
+      ],
+      "fidNames": []
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/runtime-accessor-transport02/effs/print.c",
+      "bytes": 397,
+      "sha256": "709500d2ace6e2eaeec0f5f1e4373d4ec5e402b3c1e289bd70dfef7e2a635b26",
+      "cidNames": [
+        "IO.print",
+        "Unit"
+      ],
+      "registrations": [
+        {
+          "name": "IO.print",
+          "run": "io_print_run",
+          "need": "0"
+        }
+      ],
+      "startupFunctions": [
+        "io_print_use"
+      ],
+      "fidNames": []
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/runtime-accessor-transport02/effs/now.c",
+      "bytes": 198,
+      "sha256": "da5fde65701c4fadc7560625c9615b4d60b2eefbd7b6bbe1aedda61887b825b9",
+      "cidNames": [
+        "IO.now"
+      ],
+      "registrations": [
+        {
+          "name": "IO.now",
+          "run": "io_now_run",
+          "need": "0"
+        }
+      ],
+      "startupFunctions": [
+        "io_now_use"
+      ],
+      "fidNames": []
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/runtime-accessor-transport02/effs/print_err.c",
+      "bytes": 236,
+      "sha256": "72781d2adc88a4791d5530c9deff20824c38d5aa1ba43fb05aaa6a697e19f4b6",
+      "cidNames": [
+        "IO.print_err",
+        "Unit"
+      ],
+      "registrations": [
+        {
+          "name": "IO.print_err",
+          "run": "io_print_err_run",
+          "need": "0"
+        }
+      ],
+      "startupFunctions": [
+        "io_print_err_use"
+      ],
+      "fidNames": []
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/runtime-accessor-transport02/effs/file_open.c",
+      "bytes": 1113,
+      "sha256": "f42a8bcc142b9003c7f6ca99287ca09c14f9efcbe15dea929c90c2fa062746e7",
+      "cidNames": [
+        "File.open"
+      ],
+      "registrations": [
+        {
+          "name": "File.open",
+          "run": "file_open_run",
+          "need": "0"
+        }
+      ],
+      "startupFunctions": [
+        "file_open_use"
+      ],
+      "fidNames": []
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/runtime-accessor-transport02/effs/file_read.c",
+      "bytes": 2130,
+      "sha256": "6af44266ca83ab55b2dd3bf20c17eea6bfb7a7a678908cfbf3579adef31fb678",
+      "cidNames": [
+        "File.read",
+        "File.read_at",
+        "File.read_bytes"
+      ],
+      "registrations": [
+        {
+          "name": "File.read",
+          "run": "file_read_run",
+          "need": "0"
+        },
+        {
+          "name": "File.read_bytes",
+          "run": "file_read_bytes_run",
+          "need": "0"
+        },
+        {
+          "name": "File.read_at",
+          "run": "file_read_at_run",
+          "need": "0"
+        }
+      ],
+      "startupFunctions": [
+        "file_read_use",
+        "file_read_bytes_use",
+        "file_read_at_use"
+      ],
+      "fidNames": []
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/runtime-accessor-transport02/effs/file_size.c",
+      "bytes": 771,
+      "sha256": "09906f3839f0f0fba1eea944c948e35f8e03627dc2b78e8debb43e0556f5d5d8",
+      "cidNames": [
+        "File.size"
+      ],
+      "registrations": [
+        {
+          "name": "File.size",
+          "run": "file_size_run",
+          "need": "0"
+        }
+      ],
+      "startupFunctions": [
+        "file_size_use"
+      ],
+      "fidNames": []
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/runtime-accessor-transport02/effs/file_write.c",
+      "bytes": 1423,
+      "sha256": "565dff20204e1e535e188b983cda6d6001d0e5dc37cfdf981960c07a9e154ee2",
+      "cidNames": [
+        "Con",
+        "File.write",
+        "File.write_bytes",
+        "Unit"
+      ],
+      "registrations": [
+        {
+          "name": "File.write",
+          "run": "file_write_run",
+          "need": "0"
+        },
+        {
+          "name": "File.write_bytes",
+          "run": "file_write_bytes_run",
+          "need": "0"
+        }
+      ],
+      "startupFunctions": [
+        "file_write_use",
+        "file_write_bytes_use"
+      ],
+      "fidNames": []
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase90/runtime-accessor-transport02/effs/file_close.c",
+      "bytes": 243,
+      "sha256": "befd465a31b88936d772222d26b1019ea7330e59e6327d8ba90584c85e8b2fb3",
+      "cidNames": [
+        "File.close",
+        "Unit"
+      ],
+      "registrations": [
+        {
+          "name": "File.close",
+          "run": "file_close_run",
+          "need": "0"
+        }
+      ],
+      "startupFunctions": [
+        "file_close_use"
+      ],
+      "fidNames": []
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/host/native-os.c",
+      "bytes": 10078,
+      "sha256": "45aabbcc21ddd18d2f77b15d6d53fc06d5cc553f96d6a46398449c025cae3e89",
+      "cidNames": [
+        "NativeHost.path",
+        "NativeHost.publish",
+        "NativeHost.read",
+        "Unit"
+      ],
+      "registrations": [
+        {
+          "name": "NativeHost.read",
+          "run": "native_host_read_run",
+          "need": "0"
+        },
+        {
+          "name": "NativeHost.path",
+          "run": "native_host_path_run",
+          "need": "0"
+        },
+        {
+          "name": "NativeHost.publish",
+          "run": "native_host_publish_run",
+          "need": "0"
+        }
+      ],
+      "startupFunctions": [
+        "native_host_use"
+      ],
+      "fidNames": []
+    }
+  ],
+  "semanticCidSlots": {
+    "Con": 0,
+    "File.close": 1,
+    "File.open": 2,
+    "File.read": 3,
+    "File.read_at": 4,
+    "File.read_bytes": 5,
+    "File.size": 6,
+    "File.write": 7,
+    "File.write_bytes": 8,
+    "IO.args": 9,
+    "IO.now": 10,
+    "IO.print": 11,
+    "IO.print_err": 12,
+    "NativeHost.path": 13,
+    "NativeHost.publish": 14,
+    "NativeHost.read": 15,
+    "Nil": 16,
+    "Unit": 17
+  },
+  "registeredEffects": [
+    {
+      "name": "IO.args",
+      "run": "io_args_run",
+      "need": "0"
+    },
+    {
+      "name": "IO.print",
+      "run": "io_print_run",
+      "need": "0"
+    },
+    {
+      "name": "IO.now",
+      "run": "io_now_run",
+      "need": "0"
+    },
+    {
+      "name": "IO.print_err",
+      "run": "io_print_err_run",
+      "need": "0"
+    },
+    {
+      "name": "File.open",
+      "run": "file_open_run",
+      "need": "0"
+    },
+    {
+      "name": "File.read",
+      "run": "file_read_run",
+      "need": "0"
+    },
+    {
+      "name": "File.read_bytes",
+      "run": "file_read_bytes_run",
+      "need": "0"
+    },
+    {
+      "name": "File.read_at",
+      "run": "file_read_at_run",
+      "need": "0"
+    },
+    {
+      "name": "File.size",
+      "run": "file_size_run",
+      "need": "0"
+    },
+    {
+      "name": "File.write",
+      "run": "file_write_run",
+      "need": "0"
+    },
+    {
+      "name": "File.write_bytes",
+      "run": "file_write_bytes_run",
+      "need": "0"
+    },
+    {
+      "name": "File.close",
+      "run": "file_close_run",
+      "need": "0"
+    },
+    {
+      "name": "NativeHost.read",
+      "run": "native_host_read_run",
+      "need": "0"
+    },
+    {
+      "name": "NativeHost.path",
+      "run": "native_host_path_run",
+      "need": "0"
+    },
+    {
+      "name": "NativeHost.publish",
+      "run": "native_host_publish_run",
+      "need": "0"
+    }
+  ],
+  "boundary": "Selected compatible native assets are authoritative; upstream Base catalogue is not substituted. Custom foreign C requires an explicit provider capability. No compiler/native execution by this preparer."
+}

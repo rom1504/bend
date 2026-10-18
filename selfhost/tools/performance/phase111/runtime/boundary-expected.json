@@ -1,0 +1,120 @@
+{
+  "kind": "phase111-independent-runtime-boundaries",
+  "version": 1,
+  "frozenAtUtc": "2026-10-18T22:24:05.650934+00:00",
+  "targetsRunBeforeFreeze": false,
+  "source": {
+    "file": "selfhost/tools/performance/phase111/runtime/boundary-controls.c",
+    "bytes": 12019,
+    "sha256": "deac03bceb85df9a530793d09b4e1865e8a9b24982421bd4943bd72605ae4ff3"
+  },
+  "inputs": [
+    {
+      "file": "selfhost/tools/performance/phase111/runtime/runtime.h",
+      "bytes": 4232,
+      "sha256": "fa91b9a250ce735aaaa59e5515efebd42b9544da825841021887406193c1d5c1"
+    },
+    {
+      "file": "selfhost/tools/performance/phase111/runtime/primitives.h",
+      "bytes": 3067,
+      "sha256": "ecbdfe62b875fc20e5805840b83c3779ed8fb8fb1de83c543ba1ce1217165d20"
+    },
+    {
+      "file": "selfhost/tools/performance/phase111/runtime/primitives.inc.c",
+      "bytes": 14679,
+      "sha256": "a752fcc18362bddf488c712a411db16bdd36b378c1f9b1a862fee55592143242"
+    },
+    {
+      "file": "selfhost/tools/performance/phase111/runtime/catalogue.json",
+      "bytes": 22019,
+      "sha256": "e856271f70c8399f6f52a3af9f517792bf5e579924dc9c9d6628d20119282f98"
+    }
+  ],
+  "cases": [
+    {
+      "name": "scalars",
+      "exitCode": 0,
+      "stdout": "scalars:ok\n0\n",
+      "stderr": ""
+    },
+    {
+      "name": "floats",
+      "exitCode": 0,
+      "stdout": "floats:ok\n0\n",
+      "stderr": ""
+    },
+    {
+      "name": "arrays",
+      "exitCode": 0,
+      "stdout": "arrays:ok\n0\n",
+      "stderr": ""
+    },
+    {
+      "name": "representations",
+      "exitCode": 0,
+      "stdout": "representations:ok\n0\n",
+      "stderr": ""
+    },
+    {
+      "name": "nat-add-overflow",
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "bend: a Nat past the largest immediate 2^48-1\n"
+    },
+    {
+      "name": "nat-mul-overflow",
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "bend: a Nat past the largest immediate 2^48-1\n"
+    },
+    {
+      "name": "nat-double-overflow",
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "bend: a Nat past the largest immediate 2^48-1\n"
+    },
+    {
+      "name": "succ-overflow",
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "bend: a Nat past the largest immediate 2^48-1\n"
+    },
+    {
+      "name": "wrong-primitive-arity",
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "bend: phase111: primitive arity mismatch\n"
+    },
+    {
+      "name": "unknown-primitive",
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "bend: phase111: unknown primitive ID\n"
+    }
+  ],
+  "oracle": "Expected scalar literals, IEEE754 classes/bits and owned strings written before target execution; each passed positive segment returns U32 zero through normal runtime dispatcher/show.",
+  "buildCommand": [
+    "gcc",
+    "-O2",
+    "-std=gnu11",
+    "-Iselfhost/tools/performance/phase111/runtime",
+    "selfhost/tools/performance/phase111/runtime/boundary-controls.c",
+    "CACHED_PHASE111_RUNTIME_OBJECT",
+    "-pthread",
+    "-lm",
+    "-o",
+    "FRESH_BOUNDARY_BINARY"
+  ],
+  "runCommand": [
+    "FRESH_BOUNDARY_BINARY",
+    "CASE"
+  ],
+  "limits": [
+    "Finite direct runtime-wrapper tests, not proof of all85primitives or source lowerer correctness.",
+    "Single CPU; atomics test sequential result/update semantics, not parallel linearizability.",
+    "Alias observations after parent/original release cover selected lifetimes; no fullheapleakcensus is exposed through publicABI.",
+    "Program descriptor coreIDs0..17 are fixed for thisharness and do not assume otherprogramIDs.",
+    "F32NaN creation is checked byclass, not unstable payload; f32_bits separately preserves provided payload.",
+    "Scalararraypolicy mustremainuniformword for ownedStringarraycontrols."
+  ]
+}

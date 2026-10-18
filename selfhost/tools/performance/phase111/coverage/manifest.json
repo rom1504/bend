@@ -1,0 +1,746 @@
+{
+  "kind": "phase111-frozen-semantic-coverage",
+  "version": 1,
+  "preparedUtc": "2026-10-18T22:21:26.073780+00:00",
+  "preparedOnly": true,
+  "targetsRun": false,
+  "scope": "Direct checked-source QBE execution. Reused independent regressions plus two finite pure-result oracles; no compiled passes claimed.",
+  "inputs": [
+    {
+      "file": "selfhost/tools/performance/phase108/coverage/manifest.json",
+      "bytes": 9905,
+      "sha256": "674c1cf91fd99d7ff5010d8f64539c33f98199a1a052ce18afec8ff44b0871dd"
+    },
+    {
+      "file": "selfhost/tools/performance/phase108/coverage/full-compiler-plan.json",
+      "bytes": 26230,
+      "sha256": "45042f8d3e2428ed256fa2fa9cb139d00976cce34570c3b1c41098796e98e1f0"
+    },
+    {
+      "file": "selfhost/build/phase102/projection-cost-source01/compiler.bend",
+      "bytes": 1788947,
+      "sha256": "63ef222c4c6de73bb54c8e51d3b0a0552979b5791ea98e64d1098051a9cda237"
+    },
+    {
+      "file": "selfhost/.bootstrap/upstream-phase66/bend2/base.bend",
+      "bytes": 75064,
+      "sha256": "99ac43f2b2bb3e3f39acdcedcecbbd3cb44749ce13969c827d6973fa66f7facf"
+    }
+  ],
+  "fastOrder": [
+    "higher-order-capture",
+    "non-tail-list",
+    "arrays-io",
+    "pure-u32",
+    "pure-string"
+  ],
+  "fixtures": [
+    {
+      "name": "nt-reverse",
+      "source": {
+        "file": "selfhost/tools/performance/phase111/coverage/fixtures/nt-reverse.bend",
+        "bytes": 1084,
+        "sha256": "dfb8a3f7b5c432a2a4686bb014a0c9cc74d0d56c2c16264a3427026b090169ff"
+      },
+      "origin": {
+        "file": "selfhost/tools/performance/phase108/coverage/fixtures/nt-reverse.bend",
+        "bytes": 1084,
+        "sha256": "dfb8a3f7b5c432a2a4686bb014a0c9cc74d0d56c2c16264a3427026b090169ff"
+      },
+      "expect": {
+        "stage": "execute",
+        "exitCode": 0,
+        "stdout": "z\n|bc|a|tail\nc|b|head/b|c/head\ncd|ab\n",
+        "stderr": ""
+      },
+      "expectationFile": {
+        "file": "selfhost/tools/performance/phase111/coverage/expected/nt-reverse.json",
+        "bytes": 115,
+        "sha256": "baf472e9ec39262ec58943f8a94069173120575259a3976de12e1a071c8618b4"
+      },
+      "group": "phase108-regression",
+      "oracleProvenance": "Unchanged independently handwritten Phase108 expected output; reused regression, not a fresh held-out",
+      "targetsRun": false,
+      "stdoutFile": {
+        "file": "selfhost/tools/performance/phase111/coverage/expected/nt-reverse.stdout",
+        "bytes": 37,
+        "sha256": "b1ee553a36555bd2c18ac95f178607db1be2518c17c87f19cd9750fc9f24dcdf"
+      }
+    },
+    {
+      "name": "string-reverse-heldout",
+      "source": {
+        "file": "selfhost/tools/performance/phase111/coverage/fixtures/string-reverse-heldout.bend",
+        "bytes": 463,
+        "sha256": "4a2d2e5de64d79f5c51a0e86822f7275a156992e4b653ca9807a6e8ae28f4d45"
+      },
+      "origin": {
+        "file": "selfhost/tools/performance/phase108/coverage/fixtures/string-reverse-heldout.bend",
+        "bytes": 463,
+        "sha256": "4a2d2e5de64d79f5c51a0e86822f7275a156992e4b653ca9807a6e8ae28f4d45"
+      },
+      "expect": {
+        "stage": "execute",
+        "exitCode": 0,
+        "stdout": "tail\né🙂a!\ńe\ncba!/abc\n",
+        "stderr": ""
+      },
+      "expectationFile": {
+        "file": "selfhost/tools/performance/phase111/coverage/expected/string-reverse-heldout.json",
+        "bytes": 105,
+        "sha256": "5a03cb3ee6c9523a0d104c8471eb0d1b8b1f9ab8078c5f55485a50a2790ced0c"
+      },
+      "group": "phase108-regression",
+      "oracleProvenance": "Unchanged independently handwritten Phase108 expected output; reused regression, not a fresh held-out",
+      "targetsRun": false,
+      "stdoutFile": {
+        "file": "selfhost/tools/performance/phase111/coverage/expected/string-reverse-heldout.stdout",
+        "bytes": 27,
+        "sha256": "7ea8681162e0dd6de357fe6bd2d3a79f4e23c5c4c7a4fd6c6f962caf242827c4"
+      }
+    },
+    {
+      "name": "higher-order-capture",
+      "source": {
+        "file": "selfhost/tools/performance/phase111/coverage/fixtures/higher-order-capture.bend",
+        "bytes": 229,
+        "sha256": "18c8832cf958215dab9cbedb66b191e0a31def3911296fc62b99c75a7b0ae715"
+      },
+      "origin": {
+        "file": "selfhost/tools/performance/phase108/coverage/fixtures/higher-order-capture.bend",
+        "bytes": 229,
+        "sha256": "18c8832cf958215dab9cbedb66b191e0a31def3911296fc62b99c75a7b0ae715"
+      },
+      "expect": {
+        "stage": "execute",
+        "exitCode": 0,
+        "stdout": "captured=42\n",
+        "stderr": ""
+      },
+      "expectationFile": {
+        "file": "selfhost/tools/performance/phase111/coverage/expected/higher-order-capture.json",
+        "bytes": 87,
+        "sha256": "32195267d7a04b02c62d11e3dd0e7a4e4dfaa6a926c658d951823bfd5c7a87fa"
+      },
+      "group": "fast-io",
+      "oracleProvenance": "Unchanged independently handwritten Phase108 expected output; reused regression, not a fresh held-out",
+      "targetsRun": false,
+      "stdoutFile": {
+        "file": "selfhost/tools/performance/phase111/coverage/expected/higher-order-capture.stdout",
+        "bytes": 12,
+        "sha256": "8ba5dba048674b02237222cf7bdcb72e35450f4afff4bcc194ddbc201b895e05"
+      }
+    },
+    {
+      "name": "non-tail-list",
+      "source": {
+        "file": "selfhost/tools/performance/phase111/coverage/fixtures/non-tail-list.bend",
+        "bytes": 422,
+        "sha256": "b8fb74a95b2c646f0f92545a4acde8e0049c01d99d647459babef56dc3700452"
+      },
+      "origin": {
+        "file": "selfhost/tools/performance/phase108/coverage/fixtures/non-tail-list.bend",
+        "bytes": 422,
+        "sha256": "b8fb74a95b2c646f0f92545a4acde8e0049c01d99d647459babef56dc3700452"
+      },
+      "expect": {
+        "stage": "execute",
+        "exitCode": 0,
+        "stdout": "list=14\n",
+        "stderr": ""
+      },
+      "expectationFile": {
+        "file": "selfhost/tools/performance/phase111/coverage/expected/non-tail-list.json",
+        "bytes": 83,
+        "sha256": "8c3a774eabeeb814345495cd74f3e41bb8edaf4515f1da01ea6e1ef9d6edba81"
+      },
+      "group": "fast-io",
+      "oracleProvenance": "Unchanged independently handwritten Phase108 expected output; reused regression, not a fresh held-out",
+      "targetsRun": false,
+      "stdoutFile": {
+        "file": "selfhost/tools/performance/phase111/coverage/expected/non-tail-list.stdout",
+        "bytes": 8,
+        "sha256": "1fd7509719d8e7fe86eeff362247da6f733d4f112c93b2a00913c14e7b167eb7"
+      }
+    },
+    {
+      "name": "arrays-io",
+      "source": {
+        "file": "selfhost/tools/performance/phase111/coverage/fixtures/arrays-io.bend",
+        "bytes": 878,
+        "sha256": "733e76ff92db5e4eece60e2bd2b047d67218a56a0d2b5fdac7447ef1238d1cc1"
+      },
+      "origin": {
+        "file": "selfhost/tools/performance/phase108/coverage/fixtures/arrays-io.bend",
+        "bytes": 878,
+        "sha256": "733e76ff92db5e4eece60e2bd2b047d67218a56a0d2b5fdac7447ef1238d1cc1"
+      },
+      "expect": {
+        "stage": "execute",
+        "exitCode": 0,
+        "stdout": "arrays=seed/changed/seed\n",
+        "stderr": ""
+      },
+      "expectationFile": {
+        "file": "selfhost/tools/performance/phase111/coverage/expected/arrays-io.json",
+        "bytes": 100,
+        "sha256": "efbb647774ab022571bf7ce71d8450d06b1a6d0ab4e5f50e9ab1370a63c4bbac"
+      },
+      "group": "fast-io",
+      "oracleProvenance": "Unchanged independently handwritten Phase108 expected output; reused regression, not a fresh held-out",
+      "targetsRun": false,
+      "stdoutFile": {
+        "file": "selfhost/tools/performance/phase111/coverage/expected/arrays-io.stdout",
+        "bytes": 25,
+        "sha256": "37ad9e1956e1ce46a45715596e7bea089dd734d9d1183dc42163862f35c64154"
+      }
+    },
+    {
+      "name": "lexer-scan",
+      "source": {
+        "file": "selfhost/tools/performance/phase111/coverage/fixtures/lexer-scan.bend",
+        "bytes": 2851,
+        "sha256": "c1ad42a85efe49274d0e0c5f607c6abde3d34de282299f7802eb3987d179d01f"
+      },
+      "origin": {
+        "file": "selfhost/tools/performance/phase108/coverage/fixtures/lexer-scan.bend",
+        "bytes": 2851,
+        "sha256": "c1ad42a85efe49274d0e0c5f607c6abde3d34de282299f7802eb3987d179d01f"
+      },
+      "expect": {
+        "stage": "execute",
+        "exitCode": 0,
+        "stdout": "abc_9.rest/+/10\n1e-3/+/4\n1e/+x/2\nx/-y/1\n/λa/0\nabc/!/3\n//0\n",
+        "stderr": ""
+      },
+      "expectationFile": {
+        "file": "selfhost/tools/performance/phase111/coverage/expected/lexer-scan.json",
+        "bytes": 140,
+        "sha256": "8cc99f326286191a896966b6160ab6f7b08d53a7da009c26657ee816cff43eaa"
+      },
+      "group": "phase108-regression",
+      "oracleProvenance": "Unchanged independently handwritten Phase108 expected output; reused regression, not a fresh held-out",
+      "targetsRun": false,
+      "stdoutFile": {
+        "file": "selfhost/tools/performance/phase111/coverage/expected/lexer-scan.stdout",
+        "bytes": 59,
+        "sha256": "f745e71b95ba4ffc77e479c92034a2003d06f0639b51e2553eb216881693e245"
+      }
+    },
+    {
+      "name": "negative-type",
+      "source": {
+        "file": "selfhost/tools/performance/phase111/coverage/fixtures/negative-type.bend",
+        "bytes": 54,
+        "sha256": "13576b71e13d0336b5b6ae1ad913ae8a5f636a6f292b097288c8ae3aa49ff2be"
+      },
+      "origin": {
+        "file": "selfhost/tools/performance/phase108/coverage/fixtures/negative-type.bend",
+        "bytes": 54,
+        "sha256": "13576b71e13d0336b5b6ae1ad913ae8a5f636a6f292b097288c8ae3aa49ff2be"
+      },
+      "expect": {
+        "stage": "source-admission",
+        "exitNonzero": true,
+        "outputAbsent": true,
+        "exactDiagnostic": false
+      },
+      "expectationFile": {
+        "file": "selfhost/tools/performance/phase111/coverage/expected/negative-type.json",
+        "bytes": 109,
+        "sha256": "4107fbe894f48fe4eeb045ed0f4e50a8b2468197039d5a28448bb57b97a06c94"
+      },
+      "group": "source-negative",
+      "oracleProvenance": "Unchanged independently handwritten Phase108 expected output; reused regression, not a fresh held-out",
+      "targetsRun": false
+    },
+    {
+      "name": "negative-affine",
+      "source": {
+        "file": "selfhost/tools/performance/phase111/coverage/fixtures/negative-affine.bend",
+        "bytes": 115,
+        "sha256": "2fe0f07f5556ca57e97bfece4afa302524bfa20f2583f3f3a999e466ecd1c0b4"
+      },
+      "origin": {
+        "file": "selfhost/tools/performance/phase108/coverage/fixtures/negative-affine.bend",
+        "bytes": 115,
+        "sha256": "2fe0f07f5556ca57e97bfece4afa302524bfa20f2583f3f3a999e466ecd1c0b4"
+      },
+      "expect": {
+        "stage": "source-admission",
+        "exitNonzero": true,
+        "outputAbsent": true,
+        "exactDiagnostic": false
+      },
+      "expectationFile": {
+        "file": "selfhost/tools/performance/phase111/coverage/expected/negative-affine.json",
+        "bytes": 109,
+        "sha256": "4107fbe894f48fe4eeb045ed0f4e50a8b2468197039d5a28448bb57b97a06c94"
+      },
+      "group": "source-negative",
+      "oracleProvenance": "Unchanged independently handwritten Phase108 expected output; reused regression, not a fresh held-out",
+      "targetsRun": false
+    },
+    {
+      "name": "negative-foreign",
+      "source": {
+        "file": "selfhost/tools/performance/phase111/coverage/fixtures/negative-foreign.bend",
+        "bytes": 260,
+        "sha256": "19a5b3686b07e311f3291e0c26a6308a76d4930f869d7f6a70249c94365ba11c"
+      },
+      "origin": {
+        "file": "selfhost/tools/performance/phase108/coverage/fixtures/negative-foreign.bend",
+        "bytes": 260,
+        "sha256": "19a5b3686b07e311f3291e0c26a6308a76d4930f869d7f6a70249c94365ba11c"
+      },
+      "expect": {
+        "stage": "source-admission",
+        "exitNonzero": true,
+        "outputAbsent": true,
+        "exactDiagnostic": false
+      },
+      "expectationFile": {
+        "file": "selfhost/tools/performance/phase111/coverage/expected/negative-foreign.json",
+        "bytes": 109,
+        "sha256": "4107fbe894f48fe4eeb045ed0f4e50a8b2468197039d5a28448bb57b97a06c94"
+      },
+      "group": "source-negative",
+      "oracleProvenance": "Unchanged independently handwritten Phase108 expected output; reused regression, not a fresh held-out",
+      "targetsRun": false
+    },
+    {
+      "name": "pure-char",
+      "source": {
+        "file": "selfhost/tools/performance/phase111/coverage/fixtures/pure-char.bend",
+        "bytes": 126,
+        "sha256": "9fa073f6ee9a5ce3d39aad32e924f3b1d6542ebf7fc34cab875b22ab37ba1142"
+      },
+      "origin": {
+        "file": "tests/show/char_unicode.bend",
+        "bytes": 126,
+        "sha256": "9fa073f6ee9a5ce3d39aad32e924f3b1d6542ebf7fc34cab875b22ab37ba1142"
+      },
+      "expect": {
+        "stage": "execute",
+        "exitCode": 0,
+        "stdout": "'é'\n",
+        "stderr": ""
+      },
+      "stdoutFile": {
+        "file": "selfhost/tools/performance/phase111/coverage/expected/pure-char.stdout",
+        "bytes": 5,
+        "sha256": "3e13534234d289337a67a0e44265a31f179902062faa91570650da282a32ac70"
+      },
+      "group": "pure-readback",
+      "oracleProvenance": "Existing repository #| contract copied unchanged; not candidate-derived and not newly held-out",
+      "targetsRun": false
+    },
+    {
+      "name": "pure-string",
+      "source": {
+        "file": "selfhost/tools/performance/phase111/coverage/fixtures/pure-string.bend",
+        "bytes": 314,
+        "sha256": "7ff5a2331d30623f4df2a317d793a749b3f88740de88d990170927fd1a0758c7"
+      },
+      "origin": {
+        "file": "tests/show/string_unicode.bend",
+        "bytes": 314,
+        "sha256": "7ff5a2331d30623f4df2a317d793a749b3f88740de88d990170927fd1a0758c7"
+      },
+      "expect": {
+        "stage": "execute",
+        "exitCode": 0,
+        "stdout": "\"Olá 日本 🙂\"\n",
+        "stderr": ""
+      },
+      "stdoutFile": {
+        "file": "selfhost/tools/performance/phase111/coverage/expected/pure-string.stdout",
+        "bytes": 19,
+        "sha256": "9dde57507de7eca9ddb42f3c439da4bf2125c34ca97223d6336ac00a2750d344"
+      },
+      "group": "pure-readback",
+      "oracleProvenance": "Existing repository #| contract copied unchanged; not candidate-derived and not newly held-out",
+      "targetsRun": false
+    },
+    {
+      "name": "pure-aggregate",
+      "source": {
+        "file": "selfhost/tools/performance/phase111/coverage/fixtures/pure-aggregate.bend",
+        "bytes": 440,
+        "sha256": "ffa6a0da942acbde8d606d276de926a4bba37279d19b4178ac6ffea8f1b90ba3"
+      },
+      "origin": {
+        "file": "tests/show/literal_readback.bend",
+        "bytes": 440,
+        "sha256": "ffa6a0da942acbde8d606d276de926a4bba37279d19b4178ac6ffea8f1b90ba3"
+      },
+      "expect": {
+        "stage": "execute",
+        "exitCode": 0,
+        "stdout": "([7, 7, 7], (1, 2n, 'c'), [[True{}], []], [3, 3], [])\n",
+        "stderr": ""
+      },
+      "stdoutFile": {
+        "file": "selfhost/tools/performance/phase111/coverage/expected/pure-aggregate.stdout",
+        "bytes": 54,
+        "sha256": "624521b7b1806e2de2c25bc8ae9b6bef6f37495b8d3c83b36e090fccf7dc7924"
+      },
+      "group": "pure-readback",
+      "oracleProvenance": "Existing repository #| contract copied unchanged; not candidate-derived and not newly held-out",
+      "targetsRun": false
+    },
+    {
+      "name": "u32-wide-wrap",
+      "source": {
+        "file": "selfhost/tools/performance/phase111/coverage/fixtures/u32-wide-wrap.bend",
+        "bytes": 580,
+        "sha256": "437e7ee60da1a86bb62ac4bcec557ac0c3708fd9912fe840731ed33d4dc455f2"
+      },
+      "origin": {
+        "file": "tests/compile/u32_literal_word.bend",
+        "bytes": 580,
+        "sha256": "437e7ee60da1a86bb62ac4bcec557ac0c3708fd9912fe840731ed33d4dc455f2"
+      },
+      "expect": {
+        "stage": "execute",
+        "exitCode": 0,
+        "stdout": "94 q\n",
+        "stderr": ""
+      },
+      "stdoutFile": {
+        "file": "selfhost/tools/performance/phase111/coverage/expected/u32-wide-wrap.stdout",
+        "bytes": 5,
+        "sha256": "26ea373847580972e5a298c73201fe5ad4a32ee3e1c23f4d754f8433900609c3"
+      },
+      "group": "primitive-regression",
+      "oracleProvenance": "Existing repository #| contract copied unchanged; not candidate-derived and not newly held-out",
+      "targetsRun": false
+    },
+    {
+      "name": "u32-divmod",
+      "source": {
+        "file": "selfhost/tools/performance/phase111/coverage/fixtures/u32-divmod.bend",
+        "bytes": 882,
+        "sha256": "a900f26ba8322d2b4c67aa1b2e44087694f44982610f4eef73ce08a62980330a"
+      },
+      "origin": {
+        "file": "tests/run/word_div_mod.bend",
+        "bytes": 882,
+        "sha256": "a900f26ba8322d2b4c67aa1b2e44087694f44982610f4eef73ce08a62980330a"
+      },
+      "expect": {
+        "stage": "execute",
+        "exitCode": 0,
+        "stdout": "9\n",
+        "stderr": ""
+      },
+      "stdoutFile": {
+        "file": "selfhost/tools/performance/phase111/coverage/expected/u32-divmod.stdout",
+        "bytes": 2,
+        "sha256": "2e6d31a5983a91251bfae5aefa1c0a19d8ba3cf601d0e8a706b4cfa9661a6b8a"
+      },
+      "group": "primitive-regression",
+      "oracleProvenance": "Existing repository #| contract copied unchanged; not candidate-derived and not newly held-out",
+      "targetsRun": false
+    },
+    {
+      "name": "nat-native",
+      "source": {
+        "file": "selfhost/tools/performance/phase111/coverage/fixtures/nat-native.bend",
+        "bytes": 1432,
+        "sha256": "aac3f56702e9fbbb7ac9867d30597f98fc989ce8c8dabb229cc49416c2b6890f"
+      },
+      "origin": {
+        "file": "tests/run/nat_native.bend",
+        "bytes": 1432,
+        "sha256": "aac3f56702e9fbbb7ac9867d30597f98fc989ce8c8dabb229cc49416c2b6890f"
+      },
+      "expect": {
+        "stage": "execute",
+        "exitCode": 0,
+        "stdout": "2084116725\n",
+        "stderr": ""
+      },
+      "stdoutFile": {
+        "file": "selfhost/tools/performance/phase111/coverage/expected/nat-native.stdout",
+        "bytes": 11,
+        "sha256": "1618aedff51fc552a93a684de0e5f98a546e978ac8427b544dc927c1e908df0a"
+      },
+      "group": "primitive-regression",
+      "oracleProvenance": "Existing repository #| contract copied unchanged; not candidate-derived and not newly held-out",
+      "targetsRun": false
+    },
+    {
+      "name": "f32-literal",
+      "source": {
+        "file": "selfhost/tools/performance/phase111/coverage/fixtures/f32-literal.bend",
+        "bytes": 413,
+        "sha256": "22b50936b38419fb9bfbfc480a2ac293a82cdf49109f88968b3cb5a22525e115"
+      },
+      "origin": {
+        "file": "tests/compile/f32_literal_word.bend",
+        "bytes": 413,
+        "sha256": "22b50936b38419fb9bfbfc480a2ac293a82cdf49109f88968b3cb5a22525e115"
+      },
+      "expect": {
+        "stage": "execute",
+        "exitCode": 0,
+        "stdout": "4 10\n",
+        "stderr": ""
+      },
+      "stdoutFile": {
+        "file": "selfhost/tools/performance/phase111/coverage/expected/f32-literal.stdout",
+        "bytes": 5,
+        "sha256": "b6daa603a2f9d854c9902d488a848de7099157f30f45ccddec68d70a8869f0d7"
+      },
+      "group": "primitive-regression",
+      "oracleProvenance": "Existing repository #| contract copied unchanged; not candidate-derived and not newly held-out",
+      "targetsRun": false
+    },
+    {
+      "name": "f32-arithmetic",
+      "source": {
+        "file": "selfhost/tools/performance/phase111/coverage/fixtures/f32-arithmetic.bend",
+        "bytes": 1380,
+        "sha256": "7516af85c298776c712a1577a053a96941d623853a47d1356f6282378a46ff57"
+      },
+      "origin": {
+        "file": "tests/run/float_arithmetic.bend",
+        "bytes": 1380,
+        "sha256": "7516af85c298776c712a1577a053a96941d623853a47d1356f6282378a46ff57"
+      },
+      "expect": {
+        "stage": "execute",
+        "exitCode": 0,
+        "stdout": "8\n",
+        "stderr": ""
+      },
+      "stdoutFile": {
+        "file": "selfhost/tools/performance/phase111/coverage/expected/f32-arithmetic.stdout",
+        "bytes": 2,
+        "sha256": "aa67a169b0bba217aa0aa88a65346920c84c42447c36ba5f7ea65f422c1fe5d8"
+      },
+      "group": "primitive-regression",
+      "oracleProvenance": "Existing repository #| contract copied unchanged; not candidate-derived and not newly held-out",
+      "targetsRun": false
+    },
+    {
+      "name": "pure-u32",
+      "source": {
+        "file": "selfhost/tools/performance/phase111/coverage/fixtures/pure-u32.bend",
+        "bytes": 55,
+        "sha256": "adc0caa2c7abc817f445fac6c5a04eb144553d6b7db7b10ee06dc2e689cb57d9"
+      },
+      "expect": {
+        "stage": "execute",
+        "exitCode": 0,
+        "stdout": "42\n",
+        "stderr": ""
+      },
+      "stdoutFile": {
+        "file": "selfhost/tools/performance/phase111/coverage/expected/pure-u32.stdout",
+        "bytes": 3,
+        "sha256": "084c799cd551dd1d8d5c5f9a5d593b2e931f5e36122ee5c793c1d08a19839cc0"
+      },
+      "group": "pure-readback",
+      "oracleProvenance": "Manually derived finite arithmetic and established pure-result formatting before candidate execution",
+      "targetsRun": false
+    },
+    {
+      "name": "pure-f32",
+      "source": {
+        "file": "selfhost/tools/performance/phase111/coverage/fixtures/pure-f32.bend",
+        "bytes": 59,
+        "sha256": "98f704e293612773d2abcae11a9be2ec77e2d7e39e9a0a91cdb406f181dd9422"
+      },
+      "expect": {
+        "stage": "execute",
+        "exitCode": 0,
+        "stdout": "4.0\n",
+        "stderr": ""
+      },
+      "stdoutFile": {
+        "file": "selfhost/tools/performance/phase111/coverage/expected/pure-f32.stdout",
+        "bytes": 4,
+        "sha256": "5ca797740e932dd836206d2b4bea825c83bc47e25e45006d0a2b62fe71be40b6"
+      },
+      "group": "pure-readback",
+      "oracleProvenance": "Manually derived finite arithmetic and established pure-result formatting before candidate execution",
+      "targetsRun": false
+    }
+  ],
+  "representatives": [
+    {
+      "name": "lexer",
+      "source": {
+        "file": "selfhost/build/phase88/broad-fixtures03/lexer.bend",
+        "bytes": 7257,
+        "sha256": "f1d8e7e7e68f5c79053fadc35ba2f6e95f0115a40a5e6ce792e34d9f1faafdae"
+      },
+      "coverage": "real benchmark lexer, strings/tokens/recursive ADTs",
+      "expect": {
+        "stage": "execute",
+        "exitCode": 0,
+        "stdout": "1822208108\n",
+        "stderr": ""
+      },
+      "stdoutFile": {
+        "file": "selfhost/tools/performance/phase111/coverage/expected/broad-lexer.stdout",
+        "bytes": 11,
+        "sha256": "ce7ae380f780c64e26dc0b2fd2f547364c4e837bdecd61714cf04150768acf0a"
+      },
+      "independentPriorEvidence": {
+        "file": "selfhost/build/phase92/broad02/lexer-execute-guard/stdout.log",
+        "sha256": "ce7ae380f780c64e26dc0b2fd2f547364c4e837bdecd61714cf04150768acf0a",
+        "bytes": 11
+      },
+      "oracleProvenance": "Phase108 plan and pre-existing Phase92 complete-output record, unchanged; regression only",
+      "targetsRun": false
+    },
+    {
+      "name": "variation-ray-active-256-2240",
+      "source": {
+        "file": "selfhost/build/phase88/broad-fixtures03/variation-ray-active-256-2240.bend",
+        "bytes": 14818,
+        "sha256": "df3b2a4cd2afd020421f634ebef7f5d80b422b0a2a13c4609f0350a9f94cb440"
+      },
+      "coverage": "floating-point/ray geometry and larger call graph",
+      "expect": {
+        "stage": "execute",
+        "exitCode": 0,
+        "stdout": "2166930202\n",
+        "stderr": ""
+      },
+      "stdoutFile": {
+        "file": "selfhost/tools/performance/phase111/coverage/expected/broad-variation-ray-active-256-2240.stdout",
+        "bytes": 11,
+        "sha256": "15adde12f874e278a5e96d86c4ee20d18706611252e5cfc76a3ba63d29170dcf"
+      },
+      "independentPriorEvidence": {
+        "file": "selfhost/build/phase92/broad02/variation-ray-active-256-2240-execute-guard/stdout.log",
+        "sha256": "15adde12f874e278a5e96d86c4ee20d18706611252e5cfc76a3ba63d29170dcf",
+        "bytes": 11
+      },
+      "oracleProvenance": "Phase108 plan and pre-existing Phase92 complete-output record, unchanged; regression only",
+      "targetsRun": false
+    },
+    {
+      "name": "coverage-closures-256",
+      "source": {
+        "file": "selfhost/build/phase88/broad-fixtures03/coverage-closures-256.bend",
+        "bytes": 1532,
+        "sha256": "08b5d1183fe1d6238fe76c51f24b964ad2171c01073e2353e84b4b1f5870724c"
+      },
+      "coverage": "captured closures and higher-order calls",
+      "expect": {
+        "stage": "execute",
+        "exitCode": 0,
+        "stdout": "33019\n",
+        "stderr": ""
+      },
+      "stdoutFile": {
+        "file": "selfhost/tools/performance/phase111/coverage/expected/broad-coverage-closures-256.stdout",
+        "bytes": 6,
+        "sha256": "8cf0773ed5fb75c07a06d48185cd73ff8f1921c588db76a3df3731a557c40b15"
+      },
+      "independentPriorEvidence": {
+        "file": "selfhost/build/phase92/broad02/coverage-closures-256-execute-guard/stdout.log",
+        "sha256": "8cf0773ed5fb75c07a06d48185cd73ff8f1921c588db76a3df3731a557c40b15",
+        "bytes": 6
+      },
+      "oracleProvenance": "Phase108 plan and pre-existing Phase92 complete-output record, unchanged; regression only",
+      "targetsRun": false
+    },
+    {
+      "name": "coverage-unicode-text-64",
+      "source": {
+        "file": "selfhost/build/phase88/broad-fixtures03/coverage-unicode-text-64.bend",
+        "bytes": 5406,
+        "sha256": "5f667491a5a287234a07586f652af50c3c77317aea2b4ce5ea57c42f0727bf18"
+      },
+      "coverage": "Unicode text, Char/String and allocation",
+      "expect": {
+        "stage": "execute",
+        "exitCode": 0,
+        "stdout": "α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|\n",
+        "stderr": ""
+      },
+      "stdoutFile": {
+        "file": "selfhost/tools/performance/phase111/coverage/expected/broad-coverage-unicode-text-64.stdout",
+        "bytes": 1217,
+        "sha256": "aeda13750dee71bdab8ccf55cde8b155af956f8c029a34c14e0d1c8579b8bb2a"
+      },
+      "independentPriorEvidence": {
+        "file": "selfhost/build/phase92/broad02/coverage-unicode-text-64-execute-guard/stdout.log",
+        "sha256": "aeda13750dee71bdab8ccf55cde8b155af956f8c029a34c14e0d1c8579b8bb2a",
+        "bytes": 1217
+      },
+      "oracleProvenance": "Phase108 plan and pre-existing Phase92 complete-output record, unchanged; regression only",
+      "targetsRun": false
+    },
+    {
+      "name": "coverage-map-churn-128",
+      "source": {
+        "file": "selfhost/build/phase88/broad-fixtures03/coverage-map-churn-128.bend",
+        "bytes": 1817,
+        "sha256": "99892f1c473588fcc814f17594b9d173343ef195bda6378113dbf088bea01120"
+      },
+      "coverage": "persistent Map ADTs, lookup/update/removal",
+      "expect": {
+        "stage": "execute",
+        "exitCode": 0,
+        "stdout": "3714872484\n",
+        "stderr": ""
+      },
+      "stdoutFile": {
+        "file": "selfhost/tools/performance/phase111/coverage/expected/broad-coverage-map-churn-128.stdout",
+        "bytes": 11,
+        "sha256": "f10e5e29d4f448b0f6aeef222b95d6790cf410196cd6d64d27156e08c7ecafb8"
+      },
+      "independentPriorEvidence": {
+        "file": "selfhost/build/phase92/broad02/coverage-map-churn-128-execute-guard/stdout.log",
+        "sha256": "f10e5e29d4f448b0f6aeef222b95d6790cf410196cd6d64d27156e08c7ecafb8",
+        "bytes": 11
+      },
+      "oracleProvenance": "Phase108 plan and pre-existing Phase92 complete-output record, unchanged; regression only",
+      "targetsRun": false
+    },
+    {
+      "name": "coverage-numeric-recurrence-1024",
+      "source": {
+        "file": "selfhost/build/phase88/broad-fixtures03/coverage-numeric-recurrence-1024.bend",
+        "bytes": 671,
+        "sha256": "8ccdf2eb956031ce72ddf2c93d6dfb3c82aa9cc74628028af6942e62edc4a8f7"
+      },
+      "coverage": "small U32 recurrence and primitive arithmetic",
+      "expect": {
+        "stage": "execute",
+        "exitCode": 0,
+        "stdout": "1376326140\n",
+        "stderr": ""
+      },
+      "stdoutFile": {
+        "file": "selfhost/tools/performance/phase111/coverage/expected/broad-coverage-numeric-recurrence-1024.stdout",
+        "bytes": 11,
+        "sha256": "f608ef31e8a3c58b641dd85ce36b9f759bcd685e138466186e32ae709ce1a086"
+      },
+      "independentPriorEvidence": {
+        "file": "selfhost/build/phase92/broad02/coverage-numeric-recurrence-1024-execute-guard/stdout.log",
+        "sha256": "f608ef31e8a3c58b641dd85ce36b9f759bcd685e138466186e32ae709ce1a086",
+        "bytes": 11
+      },
+      "oracleProvenance": "Phase108 plan and pre-existing Phase92 complete-output record, unchanged; regression only",
+      "targetsRun": false
+    }
+  ],
+  "executionContract": {
+    "entry": "IMAGE --threads 1 --gpu off -- phase111 ABS_INPUT cache|live",
+    "entryStatus": "Provisional agreed root contract; root binds actual module-data output and build commands in execution receipt",
+    "cpu": 3,
+    "compilerThreads": 1,
+    "gpu": "off",
+    "ordinaryRequests": "No generated C or cproc; retained runtime/providers may be acquired separately",
+    "comparison": "Complete stdout bytes, exact exit and stderr; stage failures separately reported, no expected-output replacement"
+  },
+  "negativeRule": "Source negatives must fail admission with no QBE/data/object/executable product. Diagnostic wording is not exact-frozen. A valid unsupported case is an explicit backend refusal, not a conformance pass."
+}

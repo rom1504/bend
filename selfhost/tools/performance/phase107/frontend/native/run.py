@@ -21,13 +21,32 @@ def verify(record):
     return actual
 
 
+def authenticate(image_file, base_mode):
+    image_pin = pin(image_file)
+    image = json.loads(Path(image_file).read_text())
+    if (image.get('kind') != 'phase107-native-frontend-image' or
+            image.get('version') != 1 or image.get('complete') is not True):
+        raise ValueError('incomplete or unsupported native image receipt')
+    manifest_pin = verify(image['manifest'])
+    manifest = json.loads(Path(manifest_pin['file']).read_text())
+    if manifest.get('kind') != 'phase107-native-frontend-source' or manifest.get('version') != 1:
+        raise ValueError('unsupported source manifest')
+    if manifest['source'] != image['source']:
+        raise ValueError('image and manifest refer to different compiler sources')
+    source = verify(image['source'])
+    binary = verify(image['binary'])
+    acquisition = verify(image['acquisition']) if image.get('acquisition') else None
+    base = verify(manifest['assets']['base'])
+    cache = verify(manifest['assets']['cache']['carrier']) if base_mode == 'cache' else None
+    return dict(image=image_pin, acquisition=acquisition, manifest=manifest_pin,
+                compilerSource=source, binary=binary, base=base, cache=cache)
+
+
 def main():
     begin = time.monotonic()
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument('input', type=Path)
-    p.add_argument('--manifest', type=Path, required=True)
-    p.add_argument('--binary', type=Path, required=True)
-    p.add_argument('--binary-sha256', required=True)
+    p.add_argument('--image', type=Path, required=True)
     p.add_argument('--out', type=Path, required=True)
     p.add_argument('--entry', default='main')
     p.add_argument('--format', choices=['json', 'qbe', 'units'], default='units')
@@ -38,23 +57,14 @@ def main():
     a = p.parse_args()
     if not a.entry or not 0 < a.timeout <= 600:
         raise ValueError('invalid entry or timeout')
-    manifest_pin = pin(a.manifest)
-    manifest = json.loads(a.manifest.read_text())
-    if manifest.get('kind') != 'phase107-native-frontend-source' or manifest.get('version') != 1:
-        raise ValueError('unsupported source manifest')
-    source = verify(manifest['source'])
-    base = verify(manifest['assets']['base'])
-    cache = verify(manifest['assets']['cache']['carrier']) if a.base == 'cache' else None
-    binary = pin(a.binary)
-    if binary['sha256'] != a.binary_sha256:
-        raise ValueError('native image digest mismatch')
+    identity = authenticate(a.image, a.base)
+    binary, base, cache = (identity[k] for k in ['binary', 'base', 'cache'])
     request = pin(a.input)
     if request['bytes'] > 16777216:
         raise ValueError('input exceeds native reader limit')
     report = dict(kind='phase107-native-frontend-request', version=1,
                   complete=False, executed=False, method=pin(__file__),
-                  manifest=manifest_pin, compilerSource=source, binary=binary,
-                  input=request, base=base, cache=cache,
+                  **identity, input=request,
                   options=dict(entry=a.entry, format=a.format, policy=a.policy, base=a.base),
                   authenticationSeconds=time.monotonic()-begin)
     out = a.out.resolve()

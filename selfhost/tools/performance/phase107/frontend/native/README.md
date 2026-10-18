@@ -47,16 +47,24 @@ Use the authenticated launcher for research requests:
 
 ```sh
 python3 selfhost/tools/performance/phase107/frontend/native/run.py INPUT.bend \
-  --manifest selfhost/build/phase107/native-source01/manifest.json \
-  --binary ACQUIRED_IMAGE --binary-sha256 ACQUISITION_DIGEST \
+  --image ACQUISITION_IMAGE_RECEIPT.json \
   --entry bench --format units --policy fast --base cache \
   --out selfhost/build/phase107/native-request01
 ```
 
-The digest must come from the separately retained image acquisition receipt.
-The launcher checks identity; it does not prove that an arbitrary executable was
-built from the declared source. Run it inside the existing phase86 memory/time
-guard. `--verify-only` checks identities without executing the target.
+The image receipt binds `manifest`, `source` and `binary` pins, each a
+`{file,bytes,sha256}` record. Its envelope is
+`{kind:"phase107-native-frontend-image",version:1,complete:true,...}`; an optional
+`acquisition` pin links the complete guarded build record. Produce it only after
+a successful recorded build. The launcher authenticates every bound file and
+requires the image's source pin to equal the manifest's source pin. Identity
+checks do not prove that an arbitrary executable was built from declared source;
+the retained acquisition evidence supplies that connection. Run inside the
+existing phase86 memory/time guard. `--verify-only` checks identities without
+executing the target.
+
+`controls.py --out NEW_DIR` exercises the receipt checks with non-executable
+text fixtures. It launches no native workload and makes no acquisition claim.
 
 `cache` verifies the exact admitted Base and carrier bytes before invocation;
 the embedded cache stamp alone is not authentication. `live` prepares the pinned

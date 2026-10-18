@@ -269,11 +269,20 @@ typed JSON, combined QBE or separate QBE-unit output, with explicit raw/fast and
 cached/live-Base choices. The fast policy applies self-tail conversion, bounded
 4096-node deep inlining and folding; fusion retains its independent512-node cap.
 
-`frontend/native/run.py` authenticates the acquired executable digest and pinned
-source/Base/cache, records process and authentication clocks separately, and
-only writes fresh output paths. The digest must come from an independent retained
-acquisition receipt: identity checking alone does not prove source-to-binary
-correspondence. Twelve host-only controls in
+`frontend/native/run.py` authenticates a structured image receipt binding the
+executable, prepared manifest and source pins, plus the manifest's Base/cache.
+The image source must equal the source manifest's declared source. It records
+process and authentication clocks separately and only writes fresh output paths.
+The image receipt must come from an independent retained acquisition: identity
+checking alone does not prove source-to-binary correspondence. Twelve initial
+host-only controls in
 `native-host-controls01/report.json` passed, including changed-hash/length
 refusals and exact plan-clone checks. No native acquisition or execution result
 is implied by those controls; the root campaign owns that separate guarded gate.
+
+The structured launcher has13 further host-only controls in
+`native-host-controls02/report.json`: valid cached/live identities, incomplete
+or wrong-version envelopes, mismatched source/manifest binding, changed manifest,
+image and acquisition hashes, changed cached Base carrier, and changed Base.
+The live mode correctly ignores the carrier. Every image fixture is explicitly
+non-executable text; no native workload ran in these authentication tests.

@@ -4,6 +4,8 @@ import argparse, hashlib, json, os, shutil, statistics, subprocess, sys, time
 from pathlib import Path
 sys.dont_write_bytecode=True
 HERE=Path(__file__).resolve().parent;ROOT=HERE.parents[3];MASK=2**32-1
+sys.path.insert(0,str(HERE/'frontend/native'))
+from process import run as run_process
 CASES={'arithmetic':[(0,0),(19,23),(2**31,1),(MASK,MASK)],'recurrence':[(0,MASK),(19,23),(127,MASK)],'compiler_classify':[(65,9),(46,32),(MASK,0),(91,14)]}
 def pin(file):
     file=Path(file).resolve(strict=True);b=file.read_bytes();return dict(file=str(file),bytes=len(b),sha256=hashlib.sha256(b).hexdigest())
@@ -22,7 +24,7 @@ def main():
     out=a.out.resolve();out.mkdir(parents=True,exist_ok=False);native=HERE/'frontend/native/compile.py';js=HERE/'compile.mjs';known={};start=time.monotonic();deadline=start+a.max_seconds
     def remember(item):
         assert pin(item['file'])==item,item;assert known.setdefault(item['file'],item)==item,'changed input'
-    methods=[Path(__file__),native,native.with_name('cache.py'),native.with_name('run.py'),js];snapshots=[]
+    methods=[Path(__file__),native,native.with_name('cache.py'),native.with_name('run.py'),native.with_name('process.py'),js];snapshots=[]
     for file in [*methods,a.image,a.api,a.bun,a.qbe,sys.executable,'/usr/bin/as','/usr/bin/gcc','/usr/bin/ld',*[HERE/'cases'/(n+'.bend') for n in names]]:remember(pin(file))
     for file in methods:
         dest=out/('method-'+file.name);shutil.copyfile(file,dest);snapshots.append(pin(dest))
@@ -32,13 +34,15 @@ def main():
     report=dict(kind='phase107-source-executable-latency',complete=False,passed=False,started=time.time(),image=pin(a.image),api=pin(a.api),cases=names,rounds=a.rounds,maxSeconds=a.max_seconds,inputs=[],snapshots=snapshots,jobs=[],builds=[],comparisons=[],observations=[],affinity=sorted(os.sched_getaffinity(0)),pipeline='tail, entry inline budget4096, fold, reachable, fused QBE, whole object',scope='Matched source and exact emitted QBE ignoring trailing LF; native Base mode '+a.native_base+' versus JS normal frontend. Source-to-executable interface comparison, not host-only or universal speedup.',clockScope='Outer build wall includes process startup, authentication/checking, lowering/emission, object-cache validation and link; generated-program checks are separate. Cold means a fresh object-cache directory, not cold OS pages. Warm repeats frontend work and reuses verified objects; native authentication is reported separately, JS has no corresponding isolated clock.')
     def save():
         report['inputs']=list(known.values());(out/'report.json').write_text(json.dumps(report,indent=2)+'\n')
+    report['waitPolicy']='Same pidfd outer wait for native and JS arms; native driver inner waits also use pinned helper; unsupported kernels retain polling fallback.'
     save()
     def run(label,command,expected=None):
         remaining=deadline-time.monotonic();assert remaining>0,'batch deadline reached';row=dict(label=label,command=list(map(str,command)),started=time.time(),complete=False);report['jobs'].append(row);save();begin=time.monotonic();so,se=out/(label+'.stdout'),out/(label+'.stderr')
         try:
-            with so.open('xb') as x,se.open('xb') as y:r=subprocess.run(row['command'],cwd=ROOT,stdout=x,stderr=y,timeout=min(30,remaining))
-            row.update(status=r.returncode,complete=True)
-        except Exception as error:row['error']=repr(error);raise
+            with so.open('xb') as x,se.open('xb') as y:r=run_process(row['command'],cwd=ROOT,stdout=x,stderr=y,timeout=min(30,remaining))
+            row.update(status=r.returncode,complete=True,pid=r.pid,waitMethod=r.wait_method,waitFallback=r.wait_fallback)
+        except Exception as error:
+            row.update(error=repr(error),pid=getattr(error,'pid',None),waitMethod=getattr(error,'wait_method',None),killedChildReturncode=getattr(error,'returncode',None));raise
         finally:
             row.update(seconds=time.monotonic()-begin,finished=time.time())
             for k,file in [('stdout',so),('stderr',se)]:

@@ -3,9 +3,11 @@
 import argparse
 import hashlib
 import json
+import shutil
 import subprocess
 import time
 from pathlib import Path
+from process import run as run_process
 
 
 def pin(file):
@@ -64,11 +66,15 @@ def main():
         raise ValueError('input exceeds native reader limit')
     report = dict(kind='phase107-native-frontend-request', version=1,
                   complete=False, executed=False, method=pin(__file__),
+                  processMethod=pin(Path(__file__).with_name('process.py')),
+                  waitPolicy='pidfd readiness with deadline-preserving polling fallback',
                   **identity, input=request,
                   options=dict(entry=a.entry, format=a.format, policy=a.policy, base=a.base),
                   authenticationSeconds=time.monotonic()-begin)
     out = a.out.resolve()
     out.mkdir(parents=True, exist_ok=False)
+    shutil.copyfile(report['processMethod']['file'],out/'process.py')
+    report['processSnapshot']=pin(out/'process.py')
     save = lambda: (out/'report.json').write_text(json.dumps(report, indent=2)+'\n')
     save()
     if a.verify_only:
@@ -82,12 +88,11 @@ def main():
     before = time.monotonic()
     with output.open('xb') as stdout, (out/'stderr.txt').open('xb') as stderr:
         try:
-            completed = subprocess.run(command, stdout=stdout, stderr=stderr,
+            completed = run_process(command, stdout=stdout, stderr=stderr,
                                        timeout=a.timeout, check=False)
-            report['status'] = completed.returncode
-        except subprocess.TimeoutExpired:
-            report['failure'] = 'native frontend timeout'
-            report['status'] = None
+            report.update(status=completed.returncode,pid=completed.pid,waitMethod=completed.wait_method,waitFallback=completed.wait_fallback)
+        except subprocess.TimeoutExpired as expired:
+            report.update(failure='native frontend timeout',status=None,pid=expired.pid,waitMethod=expired.wait_method,killedChildReturncode=expired.returncode)
     report['nativeSeconds'] = time.monotonic()-before
     report['executed'] = True
     report['output'] = pin(output)
@@ -96,6 +101,7 @@ def main():
     if report['status'] != 0:
         raise SystemExit('native frontend refused or failed; see ' + str(out/'report.json'))
     verify(request)
+    verify(report['processMethod'])
     verify(base)
     if cache:
         verify(cache)

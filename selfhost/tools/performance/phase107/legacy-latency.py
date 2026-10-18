@@ -4,6 +4,8 @@ import argparse, hashlib, json, math, os, shutil, statistics, subprocess, sys, t
 from pathlib import Path
 sys.dont_write_bytecode=True
 HERE=Path(__file__).resolve().parent;ROOT=HERE.parents[3];MASK=2**32-1;CASES=['arithmetic','recurrence','compiler_classify']
+sys.path.insert(0,str(HERE/'frontend/native'))
+from process import run as run_process
 def pin(file):
     file=Path(file).resolve(strict=True);raw=file.read_bytes();return dict(file=str(file),bytes=len(raw),sha256=hashlib.sha256(raw).hexdigest())
 def same(a,b):return all(a[k]==b[k] for k in ['bytes','sha256'])
@@ -24,7 +26,7 @@ def main():
     out=a.out.resolve();out.mkdir(parents=True,exist_ok=False);a.image=a.image.resolve(strict=True);installed=a.installed.resolve(strict=True);a.clang=a.clang.resolve(strict=True);a.qbe=a.qbe.resolve(strict=True);compiler=HERE/'frontend/native/compile.py'
     def remember(item):
         assert pin(item['file'])==item,item;assert known.setdefault(item['file'],item)==item,'changed input'
-    methods=[Path(__file__),compiler,compiler.with_name('cache.py'),compiler.with_name('run.py')];snapshots=[]
+    methods=[Path(__file__),compiler,compiler.with_name('cache.py'),compiler.with_name('run.py'),compiler.with_name('process.py')];snapshots=[]
     for file in [*methods,a.image,a.package,installed,a.clang,a.qbe,sys.executable,'/usr/bin/as','/usr/bin/gcc','/usr/bin/ld',*[HERE/'cases'/(n+'.bend') for n in names]]:remember(pin(file))
     package=json.loads(a.package.read_text());assert package['complete'] and package['kind']=='phase103-native-cli-package'
     for item in package['files']:
@@ -44,13 +46,15 @@ def main():
     report=dict(kind='phase107-incumbent-native-latency',complete=False,passed=False,started=time.time(),inputs=[],snapshots=snapshots,installed=pin(installed),package=pin(a.package),image=pin(a.image),cases=names,rounds=a.rounds,maxSeconds=a.max_seconds,expectedMain=expected,oracle='Independent masked U32 evaluation of fixture main()=bench(19,23); exact decimal stdout plus LF and empty stderr for both programs.',scope='Installed native Bend CLI to C to Clang-O2 versus experimental native Bend frontend to QBE/binutils, both prepared Base, same zero-argument main. No object caches, every object rebuilt. Finite source-to-executable/result comparison, not compiler-wide qualification or a universal speedup.',clockScope='Primary source-to-executable seconds sum complete compiler subprocess walls; source-to-result adds program process wall. Full supervisor interval also retained. Native driver wall includes Python startup/authentication and cache-capable orchestration with object cache disabled; installed Bend authenticates its assets internally. One-time tool/version/input audit is excluded from paired measurements.',affinity=sorted(os.sched_getaffinity(0)),jobs=[],builds=[],pairs=[])
     def save():
         report['inputs']=list(known.values());(out/'report.json').write_text(json.dumps(report,indent=2)+'\n')
+    report['waitPolicy']='Same pidfd outer wait for legacy and native arms; native driver inner waits also use pinned helper; unsupported kernels retain polling fallback.'
     report['setupSeconds']=time.monotonic()-start;deadline=time.monotonic()+a.max_seconds;save()
     def run(label,command,stdout=None):
         remaining=deadline-time.monotonic();assert remaining>0,'batch deadline reached';row=dict(label=label,command=list(map(str,command)),started=time.time(),complete=False);report['jobs'].append(row);save();before=time.monotonic();so,se=out/(label+'.stdout'),out/(label+'.stderr')
         try:
-            with so.open('xb') as x,se.open('xb') as y:r=subprocess.run(row['command'],cwd=ROOT,stdout=x,stderr=y,timeout=min(30,remaining))
-            row.update(status=r.returncode,complete=True)
-        except Exception as error:row['error']=repr(error);raise
+            with so.open('xb') as x,se.open('xb') as y:r=run_process(row['command'],cwd=ROOT,stdout=x,stderr=y,timeout=min(30,remaining))
+            row.update(status=r.returncode,complete=True,pid=r.pid,waitMethod=r.wait_method,waitFallback=r.wait_fallback)
+        except Exception as error:
+            row.update(error=repr(error),pid=getattr(error,'pid',None),waitMethod=getattr(error,'wait_method',None),killedChildReturncode=getattr(error,'returncode',None));raise
         finally:
             row.update(seconds=time.monotonic()-before,finished=time.time())
             for key,file in [('stdout',so),('stderr',se)]:

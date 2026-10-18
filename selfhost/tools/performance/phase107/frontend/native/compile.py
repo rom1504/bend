@@ -8,6 +8,7 @@ import subprocess
 import time
 from pathlib import Path
 from cache import ObjectCache, digest
+from process import run as run_process
 from run import authenticate, pin, verify
 
 HERE = Path(__file__).resolve().parent
@@ -40,7 +41,7 @@ def main():
         raise ValueError('input exceeds native reader limit')
     out = a.out.resolve()
     out.mkdir(parents=True, exist_ok=False)
-    methods = [pin(HERE/name) for name in ['compile.py', 'cache.py', 'run.py']]
+    methods = [pin(HERE/name) for name in ['compile.py', 'cache.py', 'run.py', 'process.py']]
     for method in methods:
         shutil.copyfile(method['file'], out/Path(method['file']).name)
     tools = {name:pin(file) for name,file in [('qbe',a.qbe),('as','/usr/bin/as'),('gcc','/usr/bin/gcc'),('ld','/usr/bin/ld')]}
@@ -48,6 +49,7 @@ def main():
     report = dict(kind='phase107-native-qbe-compilation', version=1, complete=False,
                   generatedProgramExecuted=False, identity=identity, source=source,
                   methods=methods, tools=tools, runner=runner, jobs=[], cache=[],
+                  waitPolicy='pidfd readiness with deadline-preserving polling fallback',
                   options=dict(entry=a.entry, policy=a.policy, base=a.base, abiSalt=a.abi_salt,
                                objectMode='units' if a.units else 'whole'),
                   authenticationSeconds=time.monotonic()-begin)
@@ -63,10 +65,10 @@ def main():
         report['jobs'].append(job)
         with stdout.open('xb') as output, stderr.open('xb') as error:
             try:
-                result = subprocess.run(job['command'], stdout=output, stderr=error, timeout=a.timeout, check=False)
-                job['status'] = result.returncode
-            except subprocess.TimeoutExpired:
-                job['failure'] = 'timeout'
+                result = run_process(job['command'], stdout=output, stderr=error, timeout=a.timeout, check=False)
+                job.update(status=result.returncode,pid=result.pid,waitMethod=result.wait_method,waitFallback=result.wait_fallback)
+            except subprocess.TimeoutExpired as expired:
+                job.update(failure='timeout',pid=expired.pid,waitMethod=expired.wait_method,killedChildReturncode=expired.returncode)
         job.update(seconds=time.monotonic()-start, stdout=pin(stdout), stderr=pin(stderr))
         save()
         if job['status'] != 0:

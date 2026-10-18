@@ -50,3 +50,20 @@ pipeline recorded in `artifacts06`, not an isolated pass ablation, a whole-compi
 benchmark or upstream compiler parity. The complete composed optimizer costs about
 11.44ms on this graph; its IR shrinks117 to112 counted nodes. This supports further
 study of general scalar replacement and backend code quality, not default promotion.
+
+## No-allocation fast refusal
+
+Kernel02 exposes avoidable qualification cost on the allocation-free helper-chain
+graph: adding promotion returns identical IR but repeats structural verification
+and function analysis. Before changing that evidence, test a necessary-condition
+prefilter: if no function contains `NxSet(_, NxAlloc(_))`, including inside either
+conditional arm or any loop, return the exact input immediately. The existing pass
+can acquire allocation provenance only through that statement form, so it cannot
+promote an allocation-free graph. Returning an invalid allocation-free graph
+unchanged also preserves the previous invalid-input behavior.
+
+Validate the new source against all old promotion JSON and dedicated predicate
+controls for absent, direct, conditional-only and loop-only allocations. Then
+measure matched fast/promote invocations in a new kernel03 receipt. Keep kernel02
+unchanged. This improves optimizer selection overhead, not generated-code speed;
+backend execution need not be repeated when emitted IR is byte-identical.

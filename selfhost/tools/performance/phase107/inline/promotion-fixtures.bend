@@ -58,6 +58,14 @@ def nx_pr_pointer_store_fixture() -> NxProgram:
       NxStore{NxPtr{}, nx_v("box"), 0, nx_v("child")}, NxStore{NxU32{}, nx_v("child"), 0, nx_v("seed")},
       NxSet{"value", NxLoad{NxU32{}, nx_v("child"), 0}}, NxFree{nx_v("box")}, NxFree{nx_v("child")}, NxReturn{nx_v("value")}]}]}
 
+def nx_pr_branch_alloc_fixture() -> NxProgram:
+  NxProgram{"main", [NxFunction{"main", [nx_p("n"), nx_p("seed")], NxU32{}, [nx_pp("p"), nx_p("value")], [
+    NxSet{"value", nx_v("seed")},
+    NxIf{nx_b("and", nx_v("n"), nx_u(1)), [
+      NxSet{"p", NxAlloc{nx_u(4)}}, NxStore{NxU32{}, nx_v("p"), 0, nx_v("n")},
+      NxSet{"value", NxLoad{NxU32{}, nx_v("p"), 0}}, NxFree{nx_v("p")}], []},
+    NxReturn{nx_v("value")}]}]}
+
 @unsafe
 def nx_p_fixture(+name: String) -> Maybe<&2, NxProgram>:
   nx_choose(Maybe<&2, NxProgram>, String.eq(name, "promotion_zero"), u => Some{nx_pr_zero_fixture()}, u =>
@@ -65,4 +73,5 @@ def nx_p_fixture(+name: String) -> Maybe<&2, NxProgram>:
   nx_choose(Maybe<&2, NxProgram>, String.eq(name, "promotion_loop_alloc"), u => Some{nx_pr_loop_alloc_fixture()}, u =>
   nx_choose(Maybe<&2, NxProgram>, String.eq(name, "promotion_dynamic_offset"), u => Some{nx_pr_offset_fixture()}, u =>
   nx_choose(Maybe<&2, NxProgram>, String.eq(name, "promotion_alias"), u => Some{nx_pr_alias_fixture()}, u =>
-  nx_choose(Maybe<&2, NxProgram>, String.eq(name, "promotion_pointer_store"), u => Some{nx_pr_pointer_store_fixture()}, u => nx_m_fixture(name)))))))
+  nx_choose(Maybe<&2, NxProgram>, String.eq(name, "promotion_pointer_store"), u => Some{nx_pr_pointer_store_fixture()}, u =>
+  nx_choose(Maybe<&2, NxProgram>, String.eq(name, "promotion_branch_alloc"), u => Some{nx_pr_branch_alloc_fixture()}, u => nx_m_fixture(name))))))))

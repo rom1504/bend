@@ -83,3 +83,16 @@ The screen supports the general representation change in this bounded memory
 slice. It is not a standalone promotion-pass ablation, production compiler timing,
 upstream Bend comparison, broad source-language memory coverage or a formal proof.
 The installed compiler and backend defaults remain unchanged.
+
+The next source revision adds a necessary-condition scan before structural
+verification: an allocation-free graph returns exactly unchanged. The scan checks
+all function bodies, both conditional arms and loop bodies for a root allocation
+assignment; it does not change the admission or rewriting rules for graphs that
+contain allocations. This follows kernel02's identical-output finding on `many`,
+where invoking an inapplicable promotion pass added measurable optimizer overhead.
+The controls now contain156 cases across20 families, with a conditional-only
+allocation refusal and seven separate allocation-predicate checks covering absent,
+direct and nested allocations, recursion and invalid input. Those additions are
+not included in audit02's historical148-case direct-fixture record. Source checks,
+exact comparison with previous promotion output and matched kernel03 measurements
+are pending parent-run qualification; no speed gain is claimed yet.

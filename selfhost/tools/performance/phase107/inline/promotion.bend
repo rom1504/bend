@@ -254,5 +254,33 @@ def nx_p_program(+program: NxProgram) -> NxProgram:
         u => nx_m_verify(NxProgram{entry, nx_p_functions(functions)}, program), u => program)
 
 @unsafe
+def nx_p_allocation_stmt(+stmt: NxStmt) -> Bool:
+  match stmt:
+    case NxSet{name, NxAlloc{bytes}}: True{}
+    case NxIf{condition, yes, no}: nx_p_allocation_body(yes) || nx_p_allocation_body(no)
+    case NxWhile{condition, body}: nx_p_allocation_body(body)
+    case _: False{}
+
+@unsafe
+def nx_p_allocation_body(+body: List<&2, NxStmt>) -> Bool:
+  match body:
+    case Nil{}: False{}
+    case Con{head, rest}: nx_p_allocation_stmt(head) || nx_p_allocation_body(rest)
+
+@unsafe
+def nx_p_allocation_functions(+functions: List<&2, NxFunction>) -> Bool:
+  match functions:
+    case Nil{}: False{}
+    case Con{NxFunction{name, params, result, locals, body}, rest}: nx_p_allocation_body(body) || nx_p_allocation_functions(rest)
+
+@unsafe
+def nx_p_has_allocation(+program: NxProgram) -> Bool:
+  match program:
+    case NxProgram{entry, functions}: nx_p_allocation_functions(functions)
+
+# Fresh allocations are necessary for this pass. Avoid verification/analysis
+# when promotion is impossible; invalid inputs also remain exactly unchanged.
+@unsafe
 def nx_scalar_promote(+program: NxProgram) -> NxProgram:
-  nx_choose(NxProgram, nx_verify(program), u => nx_p_program(program), u => program)
+  nx_choose(NxProgram, nx_p_has_allocation(program),
+    u => nx_choose(NxProgram, nx_verify(program), v => nx_p_program(program), v => program), u => program)

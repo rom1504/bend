@@ -1185,6 +1185,70 @@
         4294967295
       ],
       "expected": 4294967295
+    },
+    {
+      "fixture": "promotion_branch_alloc",
+      "args": [
+        0,
+        0
+      ],
+      "expected": 0
+    },
+    {
+      "fixture": "promotion_branch_alloc",
+      "args": [
+        0,
+        23
+      ],
+      "expected": 23
+    },
+    {
+      "fixture": "promotion_branch_alloc",
+      "args": [
+        1,
+        7
+      ],
+      "expected": 1
+    },
+    {
+      "fixture": "promotion_branch_alloc",
+      "args": [
+        2,
+        3
+      ],
+      "expected": 3
+    },
+    {
+      "fixture": "promotion_branch_alloc",
+      "args": [
+        4,
+        3
+      ],
+      "expected": 3
+    },
+    {
+      "fixture": "promotion_branch_alloc",
+      "args": [
+        17,
+        23
+      ],
+      "expected": 17
+    },
+    {
+      "fixture": "promotion_branch_alloc",
+      "args": [
+        2147483648,
+        1
+      ],
+      "expected": 1
+    },
+    {
+      "fixture": "promotion_branch_alloc",
+      "args": [
+        4294967295,
+        4294967295
+      ],
+      "expected": 4294967295
     }
   ],
   "rawRefusals": [
@@ -1195,7 +1259,8 @@
     "memory_selfassign",
     "memory_second_probe",
     "promotion_loop_alloc",
-    "promotion_dynamic_offset"
+    "promotion_dynamic_offset",
+    "promotion_branch_alloc"
   ],
   "structural": [
     "Candidate verifies; original parameters/results remain unchanged.",
@@ -1226,7 +1291,8 @@
     "promotion_loop_alloc": false,
     "promotion_pointer_store": true,
     "promotion_u64": true,
-    "promotion_zero": true
+    "promotion_zero": true,
+    "promotion_branch_alloc": false
   },
   "exactRefusal": {
     "memory_alias": true,
@@ -1247,6 +1313,44 @@
     "promotion_loop_alloc": true,
     "promotion_pointer_store": false,
     "promotion_u64": false,
-    "promotion_zero": false
-  }
+    "promotion_zero": false,
+    "promotion_branch_alloc": true
+  },
+  "allocationPredicateControls": [
+    {
+      "source": "nx_p_fixture",
+      "name": "memory_zero",
+      "expected": false
+    },
+    {
+      "source": "nx_p_fixture",
+      "name": "promotion_zero",
+      "expected": true
+    },
+    {
+      "source": "nx_p_fixture",
+      "name": "promotion_branch_alloc",
+      "expected": true
+    },
+    {
+      "source": "nx_p_fixture",
+      "name": "promotion_loop_alloc",
+      "expected": true
+    },
+    {
+      "source": "nx_workload",
+      "name": "many",
+      "expected": false
+    },
+    {
+      "source": "nx_i_fixture",
+      "name": "cycle",
+      "expected": false
+    },
+    {
+      "source": "nx_i_fixture",
+      "name": "tail_dead",
+      "expected": false
+    }
+  ]
 }

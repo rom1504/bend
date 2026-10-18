@@ -30,6 +30,13 @@ chains without expanding them without limit. The original `nx_inline` policy is
 retained as the comparison. The accepted bridge05 source snapshot predates this
 extension, so the extended implementation needs its own checked acquisition.
 
+The next separately named policy, `nx_inline_entry`, spends the same global4096
+growth budget on the entry function first and allows128 expansion levels under
+the existing acyclic certificate. Original function order and all definitions
+are retained. This isolates budget priority and expansion depth from dead-code
+removal or backend changes; baseline/deep API behavior remains depth4. Its target
+is general deep acyclic call graphs, not recognition of benchmark names.
+
 The additional `nx_tail_optimize` pass targets actual lowered scalar recurrence. It folds
 terminal assignment/return aliases and distributes a final return into return-free
 conditional branches, exposing self-tail calls hidden behind merge locals. Every
@@ -46,6 +53,11 @@ loops, pointer frames and mutual-only calls. Million-iteration triangular sums
 have independent expected values and are labeled native-only, avoiding recursive
 Python reference execution at that depth. This pass also requires separate
 checked acquisition and actual constant-stack execution before any speed claim.
+The first tail audit revealed that `tail_dead` is invalid under the existing IR
+verifier. Its unchanged result is an invalid-input refusal control, not a passing
+semantic/native case; its data rows are explicitly marked and excluded from
+interpreter execution. The failed audit is retained rather than silently
+relabeling that run as successful.
 
 Six finite semantic fixtures target argument snapshots, caller-name collisions,
 nested conditional returns, merge-local conditionals, per-iteration local

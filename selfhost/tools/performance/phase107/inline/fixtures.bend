@@ -89,7 +89,8 @@ def nx_t_nontail_fixture() -> NxProgram:
         NxSet{"value", NxCall{"nontail", [nx_b("sub", nx_v("n"), nx_u(1)), nx_v("seed")]}},
         NxReturn{nx_b("add", nx_v("value"), nx_u(1))}]}]}]}
 
-# Deliberately unsupported early-return/dead-tail structure, not a DCE pass.
+# Verifier-invalid early-return/dead-tail input: test exact invalid-input refusal,
+# not accepted native execution and not a dead-code-elimination optimization.
 def nx_t_dead_tail_fixture() -> NxProgram:
   NxProgram{"main", [NxFunction{"main", [nx_p("n"), nx_p("seed")], NxU32{}, [], [
     NxIf{nx_v("n"), [NxReturn{nx_v("n")}], [NxReturn{nx_v("seed")}]},

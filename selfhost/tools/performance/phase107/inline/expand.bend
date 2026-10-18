@@ -100,10 +100,10 @@ def nx_i_continuation(+original: NxStmt, +ret: String) -> NxStmt:
     case _: original
 
 @unsafe
-def nx_i_function(+f: NxFunction, +fs: List<&2, NxFunction>, +fuel: U32, +eligible: Maybe<&2, List<&2, String>>) -> NxIFunction:
+def nx_i_function(+f: NxFunction, +fs: List<&2, NxFunction>, +fuel: U32, +eligible: Maybe<&2, List<&2, String>>, +depth: U32) -> NxIFunction:
   match f:
     case NxFunction{name, params, result, locals, body}:
-      nx_i_function_done(name, params, result, nx_i_body(body, params, fs, NxIState{locals, 0, fuel, eligible}, 4))
+      nx_i_function_done(name, params, result, nx_i_body(body, params, fs, NxIState{locals, 0, fuel, eligible}, depth))
 
 @unsafe
 def nx_i_function_done(+name: String, +params: List<&2, NxParam>, +result: NxType, +block: NxIBlock) -> NxIFunction:
@@ -111,15 +111,15 @@ def nx_i_function_done(+name: String, +params: List<&2, NxParam>, +result: NxTyp
     case NxIBlock{body, NxIState{locals, next, fuel, eligible}}: NxIFunction{NxFunction{name, params, result, locals, body}, fuel}
 
 @unsafe
-def nx_i_functions(+items: List<&2, NxFunction>, +fs: List<&2, NxFunction>, +fuel: U32, +eligible: Maybe<&2, List<&2, String>>) -> NxIFunctions:
+def nx_i_functions(+items: List<&2, NxFunction>, +fs: List<&2, NxFunction>, +fuel: U32, +eligible: Maybe<&2, List<&2, String>>, +depth: U32) -> NxIFunctions:
   match items:
     case Nil{}: NxIFunctions{Nil{}, fuel}
-    case Con{head, rest}: nx_i_functions_head(nx_i_function(head, fs, fuel, eligible), rest, fs, eligible)
+    case Con{head, rest}: nx_i_functions_head(nx_i_function(head, fs, fuel, eligible, depth), rest, fs, eligible, depth)
 
 @unsafe
-def nx_i_functions_head(+head: NxIFunction, +rest: List<&2, NxFunction>, +fs: List<&2, NxFunction>, +eligible: Maybe<&2, List<&2, String>>) -> NxIFunctions:
+def nx_i_functions_head(+head: NxIFunction, +rest: List<&2, NxFunction>, +fs: List<&2, NxFunction>, +eligible: Maybe<&2, List<&2, String>>, +depth: U32) -> NxIFunctions:
   match head:
-    case NxIFunction{function, fuel}: nx_i_functions_tail(function, nx_i_functions(rest, fs, fuel, eligible))
+    case NxIFunction{function, fuel}: nx_i_functions_tail(function, nx_i_functions(rest, fs, fuel, eligible, depth))
 
 @unsafe
 def nx_i_functions_tail(+head: NxFunction, +rest: NxIFunctions) -> NxIFunctions:
@@ -133,7 +133,7 @@ def nx_i_program(+program: NxProgram, +budget: U32) -> NxProgram:
 @unsafe
 def nx_i_program_policy(+program: NxProgram, +budget: U32, +eligible: Maybe<&2, List<&2, String>>) -> NxProgram:
   match program:
-    case NxProgram{entry, fs}: nx_i_program_done(entry, nx_i_functions(fs, fs, budget, eligible))
+    case NxProgram{entry, fs}: nx_i_program_done(entry, nx_i_functions(fs, fs, budget, eligible, 4))
 
 @unsafe
 def nx_i_program_done(+entry: String, +done: NxIFunctions) -> NxProgram:

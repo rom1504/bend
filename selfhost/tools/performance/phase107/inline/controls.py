@@ -147,7 +147,7 @@ def audit_tail(name, before, after):
     data = json.loads((HERE / "tail-controls.json").read_text())
     rows = []
     for row in data["cases"]:
-        if row["fixture"] != name or row.get("nativeOnly"):
+        if row["fixture"] != name or row.get("nativeOnly") or row.get("invalidInput"):
             continue
         values = [reference.Interpreter(p).run(row["args"])["value"] for p in (before, after)]
         assert values == [row["expected"]] * 2, (name, row, values)

@@ -6,7 +6,7 @@ tooling; it is not loaded by emitted programs or the compiler.
 
 Concatenate Phase106 `ir/{model,optimize,verify,json,c,workloads}.bend` and
 `laws/bridge.bend`, then this directory's
-`{model,admit,rename,expand,deep,tail,fixtures,main}.bend`, with one `import Base`.
+`{model,admit,rename,expand,deep,entry,tail,fixtures,main}.bend`, with one `import Base`.
 Do not include Phase106 `main.bend` or this directory's `laws.bend`.
 The optional standalone producer accepts:
 
@@ -52,18 +52,28 @@ bodies, and does not duplicate the transformation engine. The128-function `many`
 chain is a useful distinction between these analysis policies; it is not a promise
 to eliminate all128 call boundaries under the fixed expansion/growth budget.
 
+`nx_inline_entry` uses the same acyclic certificates and4096-node maximum, but
+visits the actual entry first and permits128 expansion levels. It then restores
+the original function order and retains every definition. This tests whether
+entry-focused spending and deeper expansion recover the long-chain opportunity;
+the original baseline/deep APIs still expand at depth4. No function-name patterns
+or workload-specific cases participate in selection, and no dead-function removal
+is combined with this experiment.
+
 `nx_tail_optimize(program)` recognizes self-tail recurrence through terminal assignments
 and merge-local conditionals. It snapshots every new argument, resets original
 locals, updates parameters, and repeats a `while(1)` body. Ordinary returns still
 exit the function; a typed-zero return after the infinite loop satisfies the
 existing structural verifier and is unreachable. Pointer frames, existing loops,
 non-tail self calls, mutual-only recursion and mixed early-return/dead-continuation
-shapes remain unchanged. Bounds are256 functions,512 original body nodes,2048
+shapes remain unchanged. The `tail_dead` fixture is already invalid under the
+existing verifier and checks exact invalid-input refusal; it is never counted as
+accepted native execution. Bounds are256 functions,512 original body nodes,2048
 normalized nodes,4096 rewritten body nodes, and4096 whole-program AST growth.
 `tail-` CLI modes ignore the supplied numeric budget and use these fixed caps.
 
-`tail-controls.json` includes finite differential inputs and separately labeled
-million-iteration native-only checks. Do not run the recursive Python reference
+`tail-controls.json` includes finite differential inputs, separately labeled
+invalid-input refusal rows and million-iteration native-only checks. Do not run the recursive Python reference
 at million depth. `audit_tail` compares small before/after results independently
 and asserts exact refusal or actual self-call removal as applicable.
 

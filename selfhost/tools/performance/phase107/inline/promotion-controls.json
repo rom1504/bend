@@ -1,0 +1,1252 @@
+{
+  "version": 1,
+  "scope": "Each fixture is passed directly to nx_scalar_promote with no implicit preprocessing. Root may separately evaluate explicit memory-forwarding pipelines on broad workloads.",
+  "cases": [
+    {
+      "fixture": "memory_distinct",
+      "args": [
+        0,
+        0
+      ],
+      "expected": 0
+    },
+    {
+      "fixture": "memory_distinct",
+      "args": [
+        0,
+        23
+      ],
+      "expected": 0
+    },
+    {
+      "fixture": "memory_distinct",
+      "args": [
+        1,
+        7
+      ],
+      "expected": 21
+    },
+    {
+      "fixture": "memory_distinct",
+      "args": [
+        2,
+        3
+      ],
+      "expected": 12
+    },
+    {
+      "fixture": "memory_distinct",
+      "args": [
+        4,
+        3
+      ],
+      "expected": 24
+    },
+    {
+      "fixture": "memory_distinct",
+      "args": [
+        17,
+        23
+      ],
+      "expected": 69
+    },
+    {
+      "fixture": "memory_distinct",
+      "args": [
+        2147483648,
+        1
+      ],
+      "expected": 0
+    },
+    {
+      "fixture": "memory_distinct",
+      "args": [
+        4294967295,
+        4294967295
+      ],
+      "expected": 165
+    },
+    {
+      "fixture": "memory_alias",
+      "args": [
+        0,
+        0
+      ],
+      "expected": 0
+    },
+    {
+      "fixture": "memory_alias",
+      "args": [
+        0,
+        23
+      ],
+      "expected": 0
+    },
+    {
+      "fixture": "memory_alias",
+      "args": [
+        1,
+        7
+      ],
+      "expected": 14
+    },
+    {
+      "fixture": "memory_alias",
+      "args": [
+        2,
+        3
+      ],
+      "expected": 10
+    },
+    {
+      "fixture": "memory_alias",
+      "args": [
+        4,
+        3
+      ],
+      "expected": 24
+    },
+    {
+      "fixture": "memory_alias",
+      "args": [
+        17,
+        23
+      ],
+      "expected": 46
+    },
+    {
+      "fixture": "memory_alias",
+      "args": [
+        2147483648,
+        1
+      ],
+      "expected": 0
+    },
+    {
+      "fixture": "memory_alias",
+      "args": [
+        4294967295,
+        4294967295
+      ],
+      "expected": 180
+    },
+    {
+      "fixture": "memory_payload",
+      "args": [
+        0,
+        0
+      ],
+      "expected": 0
+    },
+    {
+      "fixture": "memory_payload",
+      "args": [
+        0,
+        23
+      ],
+      "expected": 0
+    },
+    {
+      "fixture": "memory_payload",
+      "args": [
+        1,
+        7
+      ],
+      "expected": 21
+    },
+    {
+      "fixture": "memory_payload",
+      "args": [
+        2,
+        3
+      ],
+      "expected": 9
+    },
+    {
+      "fixture": "memory_payload",
+      "args": [
+        4,
+        3
+      ],
+      "expected": 18
+    },
+    {
+      "fixture": "memory_payload",
+      "args": [
+        17,
+        23
+      ],
+      "expected": 69
+    },
+    {
+      "fixture": "memory_payload",
+      "args": [
+        2147483648,
+        1
+      ],
+      "expected": 0
+    },
+    {
+      "fixture": "memory_payload",
+      "args": [
+        4294967295,
+        4294967295
+      ],
+      "expected": 270
+    },
+    {
+      "fixture": "memory_alias_payload",
+      "args": [
+        0,
+        0
+      ],
+      "expected": 0
+    },
+    {
+      "fixture": "memory_alias_payload",
+      "args": [
+        0,
+        23
+      ],
+      "expected": 0
+    },
+    {
+      "fixture": "memory_alias_payload",
+      "args": [
+        1,
+        7
+      ],
+      "expected": 14
+    },
+    {
+      "fixture": "memory_alias_payload",
+      "args": [
+        2,
+        3
+      ],
+      "expected": 7
+    },
+    {
+      "fixture": "memory_alias_payload",
+      "args": [
+        4,
+        3
+      ],
+      "expected": 18
+    },
+    {
+      "fixture": "memory_alias_payload",
+      "args": [
+        17,
+        23
+      ],
+      "expected": 46
+    },
+    {
+      "fixture": "memory_alias_payload",
+      "args": [
+        2147483648,
+        1
+      ],
+      "expected": 0
+    },
+    {
+      "fixture": "memory_alias_payload",
+      "args": [
+        4294967295,
+        4294967295
+      ],
+      "expected": 285
+    },
+    {
+      "fixture": "memory_overlap",
+      "args": [
+        0,
+        0
+      ],
+      "expected": 1
+    },
+    {
+      "fixture": "memory_overlap",
+      "args": [
+        0,
+        23
+      ],
+      "expected": 0
+    },
+    {
+      "fixture": "memory_overlap",
+      "args": [
+        1,
+        7
+      ],
+      "expected": 0
+    },
+    {
+      "fixture": "memory_overlap",
+      "args": [
+        2,
+        3
+      ],
+      "expected": 0
+    },
+    {
+      "fixture": "memory_overlap",
+      "args": [
+        4,
+        3
+      ],
+      "expected": 0
+    },
+    {
+      "fixture": "memory_overlap",
+      "args": [
+        17,
+        23
+      ],
+      "expected": 0
+    },
+    {
+      "fixture": "memory_overlap",
+      "args": [
+        2147483648,
+        1
+      ],
+      "expected": 0
+    },
+    {
+      "fixture": "memory_overlap",
+      "args": [
+        4294967295,
+        4294967295
+      ],
+      "expected": 1
+    },
+    {
+      "fixture": "memory_dependency",
+      "args": [
+        0,
+        0
+      ],
+      "expected": 0
+    },
+    {
+      "fixture": "memory_dependency",
+      "args": [
+        0,
+        23
+      ],
+      "expected": 23
+    },
+    {
+      "fixture": "memory_dependency",
+      "args": [
+        1,
+        7
+      ],
+      "expected": 7
+    },
+    {
+      "fixture": "memory_dependency",
+      "args": [
+        2,
+        3
+      ],
+      "expected": 3
+    },
+    {
+      "fixture": "memory_dependency",
+      "args": [
+        4,
+        3
+      ],
+      "expected": 3
+    },
+    {
+      "fixture": "memory_dependency",
+      "args": [
+        17,
+        23
+      ],
+      "expected": 23
+    },
+    {
+      "fixture": "memory_dependency",
+      "args": [
+        2147483648,
+        1
+      ],
+      "expected": 1
+    },
+    {
+      "fixture": "memory_dependency",
+      "args": [
+        4294967295,
+        4294967295
+      ],
+      "expected": 4294967295
+    },
+    {
+      "fixture": "memory_reassign",
+      "args": [
+        0,
+        0
+      ],
+      "expected": 0
+    },
+    {
+      "fixture": "memory_reassign",
+      "args": [
+        0,
+        23
+      ],
+      "expected": 23
+    },
+    {
+      "fixture": "memory_reassign",
+      "args": [
+        1,
+        7
+      ],
+      "expected": 6
+    },
+    {
+      "fixture": "memory_reassign",
+      "args": [
+        2,
+        3
+      ],
+      "expected": 1
+    },
+    {
+      "fixture": "memory_reassign",
+      "args": [
+        4,
+        3
+      ],
+      "expected": 7
+    },
+    {
+      "fixture": "memory_reassign",
+      "args": [
+        17,
+        23
+      ],
+      "expected": 6
+    },
+    {
+      "fixture": "memory_reassign",
+      "args": [
+        2147483648,
+        1
+      ],
+      "expected": 2147483649
+    },
+    {
+      "fixture": "memory_reassign",
+      "args": [
+        4294967295,
+        4294967295
+      ],
+      "expected": 0
+    },
+    {
+      "fixture": "memory_call",
+      "args": [
+        0,
+        0
+      ],
+      "expected": 0
+    },
+    {
+      "fixture": "memory_call",
+      "args": [
+        0,
+        23
+      ],
+      "expected": 0
+    },
+    {
+      "fixture": "memory_call",
+      "args": [
+        1,
+        7
+      ],
+      "expected": 1
+    },
+    {
+      "fixture": "memory_call",
+      "args": [
+        2,
+        3
+      ],
+      "expected": 2
+    },
+    {
+      "fixture": "memory_call",
+      "args": [
+        4,
+        3
+      ],
+      "expected": 4
+    },
+    {
+      "fixture": "memory_call",
+      "args": [
+        17,
+        23
+      ],
+      "expected": 17
+    },
+    {
+      "fixture": "memory_call",
+      "args": [
+        2147483648,
+        1
+      ],
+      "expected": 2147483648
+    },
+    {
+      "fixture": "memory_call",
+      "args": [
+        4294967295,
+        4294967295
+      ],
+      "expected": 4294967295
+    },
+    {
+      "fixture": "memory_free",
+      "args": [
+        0,
+        0
+      ],
+      "expected": 0
+    },
+    {
+      "fixture": "memory_free",
+      "args": [
+        0,
+        23
+      ],
+      "expected": 0
+    },
+    {
+      "fixture": "memory_free",
+      "args": [
+        1,
+        7
+      ],
+      "expected": 1
+    },
+    {
+      "fixture": "memory_free",
+      "args": [
+        2,
+        3
+      ],
+      "expected": 2
+    },
+    {
+      "fixture": "memory_free",
+      "args": [
+        4,
+        3
+      ],
+      "expected": 4
+    },
+    {
+      "fixture": "memory_free",
+      "args": [
+        17,
+        23
+      ],
+      "expected": 17
+    },
+    {
+      "fixture": "memory_free",
+      "args": [
+        2147483648,
+        1
+      ],
+      "expected": 2147483648
+    },
+    {
+      "fixture": "memory_free",
+      "args": [
+        4294967295,
+        4294967295
+      ],
+      "expected": 4294967295
+    },
+    {
+      "fixture": "memory_zero",
+      "args": [
+        0,
+        0
+      ],
+      "expected": 0
+    },
+    {
+      "fixture": "memory_zero",
+      "args": [
+        0,
+        23
+      ],
+      "expected": 23
+    },
+    {
+      "fixture": "memory_zero",
+      "args": [
+        2,
+        7
+      ],
+      "expected": 7
+    },
+    {
+      "fixture": "memory_zero",
+      "args": [
+        2147483648,
+        17
+      ],
+      "expected": 17
+    },
+    {
+      "fixture": "memory_selfassign",
+      "args": [
+        0,
+        0
+      ],
+      "expected": 0
+    },
+    {
+      "fixture": "memory_selfassign",
+      "args": [
+        0,
+        23
+      ],
+      "expected": 23
+    },
+    {
+      "fixture": "memory_selfassign",
+      "args": [
+        1,
+        7
+      ],
+      "expected": 7
+    },
+    {
+      "fixture": "memory_selfassign",
+      "args": [
+        2,
+        3
+      ],
+      "expected": 3
+    },
+    {
+      "fixture": "memory_selfassign",
+      "args": [
+        4,
+        3
+      ],
+      "expected": 3
+    },
+    {
+      "fixture": "memory_selfassign",
+      "args": [
+        17,
+        23
+      ],
+      "expected": 23
+    },
+    {
+      "fixture": "memory_selfassign",
+      "args": [
+        2147483648,
+        1
+      ],
+      "expected": 1
+    },
+    {
+      "fixture": "memory_selfassign",
+      "args": [
+        4294967295,
+        4294967295
+      ],
+      "expected": 4294967295
+    },
+    {
+      "fixture": "memory_second_probe",
+      "args": [
+        0,
+        0
+      ],
+      "expected": 1
+    },
+    {
+      "fixture": "memory_second_probe",
+      "args": [
+        0,
+        23
+      ],
+      "expected": 783
+    },
+    {
+      "fixture": "memory_second_probe",
+      "args": [
+        1,
+        7
+      ],
+      "expected": 8
+    },
+    {
+      "fixture": "memory_second_probe",
+      "args": [
+        2,
+        3
+      ],
+      "expected": 1
+    },
+    {
+      "fixture": "memory_second_probe",
+      "args": [
+        4,
+        3
+      ],
+      "expected": 3
+    },
+    {
+      "fixture": "memory_second_probe",
+      "args": [
+        17,
+        23
+      ],
+      "expected": 24
+    },
+    {
+      "fixture": "memory_second_probe",
+      "args": [
+        2147483648,
+        1
+      ],
+      "expected": 35
+    },
+    {
+      "fixture": "memory_second_probe",
+      "args": [
+        4294967295,
+        4294967295
+      ],
+      "expected": 14
+    },
+    {
+      "fixture": "memory_early_return",
+      "args": [
+        0,
+        0
+      ],
+      "expected": 0
+    },
+    {
+      "fixture": "memory_early_return",
+      "args": [
+        0,
+        23
+      ],
+      "expected": 23
+    },
+    {
+      "fixture": "memory_early_return",
+      "args": [
+        1,
+        7
+      ],
+      "expected": 7
+    },
+    {
+      "fixture": "memory_early_return",
+      "args": [
+        2,
+        3
+      ],
+      "expected": 3
+    },
+    {
+      "fixture": "memory_early_return",
+      "args": [
+        4,
+        3
+      ],
+      "expected": 3
+    },
+    {
+      "fixture": "memory_early_return",
+      "args": [
+        17,
+        23
+      ],
+      "expected": 23
+    },
+    {
+      "fixture": "memory_early_return",
+      "args": [
+        2147483648,
+        1
+      ],
+      "expected": 1
+    },
+    {
+      "fixture": "memory_early_return",
+      "args": [
+        4294967295,
+        4294967295
+      ],
+      "expected": 4294967295
+    },
+    {
+      "fixture": "promotion_zero",
+      "args": [
+        0,
+        0
+      ],
+      "expected": 0
+    },
+    {
+      "fixture": "promotion_zero",
+      "args": [
+        0,
+        23
+      ],
+      "expected": 23
+    },
+    {
+      "fixture": "promotion_zero",
+      "args": [
+        1,
+        7
+      ],
+      "expected": 8
+    },
+    {
+      "fixture": "promotion_zero",
+      "args": [
+        2,
+        3
+      ],
+      "expected": 5
+    },
+    {
+      "fixture": "promotion_zero",
+      "args": [
+        4,
+        3
+      ],
+      "expected": 7
+    },
+    {
+      "fixture": "promotion_zero",
+      "args": [
+        17,
+        23
+      ],
+      "expected": 24
+    },
+    {
+      "fixture": "promotion_zero",
+      "args": [
+        2147483648,
+        1
+      ],
+      "expected": 1
+    },
+    {
+      "fixture": "promotion_zero",
+      "args": [
+        4294967295,
+        4294967295
+      ],
+      "expected": 14
+    },
+    {
+      "fixture": "promotion_u64",
+      "args": [
+        0,
+        0
+      ],
+      "expected": 1
+    },
+    {
+      "fixture": "promotion_u64",
+      "args": [
+        0,
+        23
+      ],
+      "expected": 1
+    },
+    {
+      "fixture": "promotion_u64",
+      "args": [
+        1,
+        7
+      ],
+      "expected": 2
+    },
+    {
+      "fixture": "promotion_u64",
+      "args": [
+        2,
+        3
+      ],
+      "expected": 2
+    },
+    {
+      "fixture": "promotion_u64",
+      "args": [
+        4,
+        3
+      ],
+      "expected": 2
+    },
+    {
+      "fixture": "promotion_u64",
+      "args": [
+        17,
+        23
+      ],
+      "expected": 2
+    },
+    {
+      "fixture": "promotion_u64",
+      "args": [
+        2147483648,
+        1
+      ],
+      "expected": 1
+    },
+    {
+      "fixture": "promotion_u64",
+      "args": [
+        4294967295,
+        4294967295
+      ],
+      "expected": 2
+    },
+    {
+      "fixture": "promotion_loop_alloc",
+      "args": [
+        0,
+        0
+      ],
+      "expected": 0
+    },
+    {
+      "fixture": "promotion_loop_alloc",
+      "args": [
+        0,
+        23
+      ],
+      "expected": 0
+    },
+    {
+      "fixture": "promotion_loop_alloc",
+      "args": [
+        1,
+        7
+      ],
+      "expected": 7
+    },
+    {
+      "fixture": "promotion_loop_alloc",
+      "args": [
+        2,
+        3
+      ],
+      "expected": 6
+    },
+    {
+      "fixture": "promotion_loop_alloc",
+      "args": [
+        4,
+        3
+      ],
+      "expected": 12
+    },
+    {
+      "fixture": "promotion_loop_alloc",
+      "args": [
+        17,
+        23
+      ],
+      "expected": 23
+    },
+    {
+      "fixture": "promotion_loop_alloc",
+      "args": [
+        2147483648,
+        1
+      ],
+      "expected": 0
+    },
+    {
+      "fixture": "promotion_loop_alloc",
+      "args": [
+        4294967295,
+        4294967295
+      ],
+      "expected": 4294967281
+    },
+    {
+      "fixture": "promotion_dynamic_offset",
+      "args": [
+        0,
+        0
+      ],
+      "expected": 0
+    },
+    {
+      "fixture": "promotion_dynamic_offset",
+      "args": [
+        0,
+        23
+      ],
+      "expected": 23
+    },
+    {
+      "fixture": "promotion_dynamic_offset",
+      "args": [
+        1,
+        7
+      ],
+      "expected": 1
+    },
+    {
+      "fixture": "promotion_dynamic_offset",
+      "args": [
+        2,
+        3
+      ],
+      "expected": 3
+    },
+    {
+      "fixture": "promotion_dynamic_offset",
+      "args": [
+        4,
+        3
+      ],
+      "expected": 3
+    },
+    {
+      "fixture": "promotion_dynamic_offset",
+      "args": [
+        17,
+        23
+      ],
+      "expected": 17
+    },
+    {
+      "fixture": "promotion_dynamic_offset",
+      "args": [
+        2147483648,
+        1
+      ],
+      "expected": 1
+    },
+    {
+      "fixture": "promotion_dynamic_offset",
+      "args": [
+        4294967295,
+        4294967295
+      ],
+      "expected": 4294967295
+    },
+    {
+      "fixture": "promotion_alias",
+      "args": [
+        0,
+        0
+      ],
+      "expected": 0
+    },
+    {
+      "fixture": "promotion_alias",
+      "args": [
+        0,
+        23
+      ],
+      "expected": 759
+    },
+    {
+      "fixture": "promotion_alias",
+      "args": [
+        1,
+        7
+      ],
+      "expected": 232
+    },
+    {
+      "fixture": "promotion_alias",
+      "args": [
+        2,
+        3
+      ],
+      "expected": 101
+    },
+    {
+      "fixture": "promotion_alias",
+      "args": [
+        4,
+        3
+      ],
+      "expected": 103
+    },
+    {
+      "fixture": "promotion_alias",
+      "args": [
+        17,
+        23
+      ],
+      "expected": 776
+    },
+    {
+      "fixture": "promotion_alias",
+      "args": [
+        2147483648,
+        1
+      ],
+      "expected": 2147483681
+    },
+    {
+      "fixture": "promotion_alias",
+      "args": [
+        4294967295,
+        4294967295
+      ],
+      "expected": 4294967262
+    },
+    {
+      "fixture": "promotion_pointer_store",
+      "args": [
+        0,
+        0
+      ],
+      "expected": 0
+    },
+    {
+      "fixture": "promotion_pointer_store",
+      "args": [
+        0,
+        23
+      ],
+      "expected": 23
+    },
+    {
+      "fixture": "promotion_pointer_store",
+      "args": [
+        1,
+        7
+      ],
+      "expected": 7
+    },
+    {
+      "fixture": "promotion_pointer_store",
+      "args": [
+        2,
+        3
+      ],
+      "expected": 3
+    },
+    {
+      "fixture": "promotion_pointer_store",
+      "args": [
+        4,
+        3
+      ],
+      "expected": 3
+    },
+    {
+      "fixture": "promotion_pointer_store",
+      "args": [
+        17,
+        23
+      ],
+      "expected": 23
+    },
+    {
+      "fixture": "promotion_pointer_store",
+      "args": [
+        2147483648,
+        1
+      ],
+      "expected": 1
+    },
+    {
+      "fixture": "promotion_pointer_store",
+      "args": [
+        4294967295,
+        4294967295
+      ],
+      "expected": 4294967295
+    }
+  ],
+  "rawRefusals": [
+    "memory_overlap",
+    "memory_call",
+    "memory_zero",
+    "memory_early_return",
+    "memory_selfassign",
+    "memory_second_probe",
+    "promotion_loop_alloc",
+    "promotion_dynamic_offset"
+  ],
+  "structural": [
+    "Candidate verifies; original parameters/results remain unchanged.",
+    "All allocation/free operations and pointer stores remain identical in their original control-flow positions.",
+    "Scalar stores/loads only disappear after whole-function legality succeeds; no partial publication on failure.",
+    "Fresh field locals never collide with p107_p0_f0 in promotion_zero.",
+    "Alias accesses map to the same local; distinct allocations/byte ranges never conflate.",
+    "Partial or mixed-width overlap refuses the complete original function.",
+    "Pointer loads, calls, dynamic offsets, branches/nested loops and allocation/free within loops refuse the function."
+  ],
+  "oracleCaveat": "memory_overlap uses overlapping typed widths: use byte-memory interpreter/QBE/Cranelift, or C with explicit -fno-strict-aliasing. Do not treat strict-aliasing C -O2 as an independent defined oracle for this witness.",
+  "expectedChanged": {
+    "memory_alias": false,
+    "memory_alias_payload": false,
+    "memory_call": false,
+    "memory_dependency": true,
+    "memory_distinct": false,
+    "memory_early_return": false,
+    "memory_free": true,
+    "memory_overlap": false,
+    "memory_payload": false,
+    "memory_reassign": true,
+    "memory_second_probe": false,
+    "memory_selfassign": false,
+    "memory_zero": false,
+    "promotion_alias": true,
+    "promotion_dynamic_offset": false,
+    "promotion_loop_alloc": false,
+    "promotion_pointer_store": true,
+    "promotion_u64": true,
+    "promotion_zero": true
+  },
+  "exactRefusal": {
+    "memory_alias": true,
+    "memory_alias_payload": true,
+    "memory_call": true,
+    "memory_dependency": false,
+    "memory_distinct": true,
+    "memory_early_return": true,
+    "memory_free": false,
+    "memory_overlap": true,
+    "memory_payload": true,
+    "memory_reassign": false,
+    "memory_second_probe": true,
+    "memory_selfassign": true,
+    "memory_zero": true,
+    "promotion_alias": false,
+    "promotion_dynamic_offset": true,
+    "promotion_loop_alloc": true,
+    "promotion_pointer_store": false,
+    "promotion_u64": false,
+    "promotion_zero": false
+  }
+}

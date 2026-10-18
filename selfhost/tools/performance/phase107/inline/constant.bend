@@ -106,7 +106,7 @@ def nx_cp_transfer(+stmt: NxStmt, +facts: List<&2, NxCPFact>) -> List<&2, NxCPFa
 
 # Descending header facts: no fact is introduced or changes its known value.
 @unsafe
-def nx_cp_header(+body: List<&2, NxStmt>, +header: List<&2, NxCPFact>, fuel: U32) -> List<&2, NxCPFact>:
+def nx_cp_header(+body: List<&2, NxStmt>, +header: List<&2, NxCPFact>, +fuel: U32) -> List<&2, NxCPFact>:
   nx_choose(List<&2, NxCPFact>, U32.is_eq(fuel, 0), u => [],
     u => nx_cp_header_next(body, header, nx_cp_meet(header, nx_cp_flow(body, header)), U32.sub(fuel, 1)))
 
@@ -163,13 +163,13 @@ def nx_cp_stmt(+stmt: NxStmt, +facts: List<&2, NxCPFact>) -> NxCPBlock:
     case NxFree{ptr}: NxCPBlock{[NxFree{nx_cp_expr(ptr, facts)}], facts}
 
 @unsafe
-def nx_cp_depth(+body: List<&2, NxStmt>, depth: U32) -> Bool:
+def nx_cp_depth(+body: List<&2, NxStmt>, +depth: U32) -> Bool:
   match body:
     case Nil{}: True{}
     case Con{head, rest}: nx_cp_depth_stmt(head, depth) && nx_cp_depth(rest, depth)
 
 @unsafe
-def nx_cp_depth_stmt(+stmt: NxStmt, depth: U32) -> Bool:
+def nx_cp_depth_stmt(+stmt: NxStmt, +depth: U32) -> Bool:
   match stmt:
     case NxIf{condition, yes, no}: nx_choose(Bool, U32.is_eq(depth, 0), u => False{},
       u => nx_cp_depth(yes, U32.sub(depth, 1)) && nx_cp_depth(no, U32.sub(depth, 1)))

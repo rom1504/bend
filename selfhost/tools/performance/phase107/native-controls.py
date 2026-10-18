@@ -51,7 +51,7 @@ def main():
         assert r.returncode==status,(label,r.returncode,str(se))
         if stdout is not None:assert so.read_bytes()==stdout.encode() and se.read_bytes()==b'',label
         return row
-    def native(name,source,policy,fmt,base='cache',refusal=None):
+    def native(name,source,policy,fmt,base='cache',refusal=None,reference_refusal=None):
         label=name+'-'+policy+'-'+fmt+'-'+base;dest=out/label
         job=run(label,[sys.executable,'-B',launcher,source,'--image',a.image.resolve(),'--entry','bench','--format',fmt,'--policy',policy,'--base',base,'--out',dest],1 if refusal else 0)
         receipt=json.loads((dest/'report.json').read_text());assert receipt['executed'] and receipt['input']==pin(source) and receipt['binary']==image['binary'] and receipt['image']==pin(a.image)
@@ -60,9 +60,10 @@ def main():
         item=dict(name=name,policy=policy,format=fmt,base=base,report=pin(dest/'report.json'),output=receipt['output'],stderr=stderr,wallSeconds=job['seconds'],nativeSeconds=receipt['nativeSeconds'],authenticationSeconds=receipt['authenticationSeconds'])
         if refusal:
             text=Path(stderr['file']).read_text();assert receipt['status']==1 and not receipt['complete'] and receipt['output']['bytes']==0 and text
-            if refusal.startswith('native subset: ') or refusal=='check: ':assert text.startswith(refusal)
+            if refusal=='load: pilot requires import Base\n':assert text==refusal
+            elif refusal.startswith('native subset: ') or refusal=='check: ':assert text.startswith(refusal)
             else:assert text.startswith('compile: ') and refusal[len('frontend: '):].removeprefix('Error: ') in text,text
-            report['refusals'].append(dict(**item,expected=refusal));save()
+            report['refusals'].append(dict(**item,expected=refusal,nativeStage='load' if refusal.startswith('load: ') else 'lowerer' if refusal.startswith('native subset: ') else 'check' if refusal=='check: ' else 'compile',nativeLowererClaim=None if not refusal.startswith('native subset: ') else 'exact reference diagnostic',jsReference=reference_refusal));save()
         else:assert receipt['status']==0 and receipt['complete'] and receipt['output']['bytes']>0 and stderr['bytes']==0
         return item
     def equal(actual,want):
@@ -79,7 +80,8 @@ def main():
             name=row['name'];source=row['source']['file']
             if row.get('refusal'):
                 reason='native subset: '+row['error'] if row['refusal']=='lowerer' else 'frontend: '+row['error']
-                for policy in ['raw','fast']:native(name,source,policy,'json',refusal=reason)
+                if name=='refuse_named_u32':reason='load: pilot requires import Base\n'
+                for policy in ['raw','fast']:native(name,source,policy,'json',refusal=reason,reference_refusal=dict(stage=row['refusal'],diagnostic=row['error']))
                 continue
             for product in row['outputs']:
                 policy=product['policy'];ir=native(name,source,policy,'json');equal(ir,product['json']);cached[name,policy]=ir;report['comparisons'].append(ir)

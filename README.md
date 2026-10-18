@@ -57,6 +57,11 @@ measures current B1/B2 against upstream on six sources,45 closed points and the
 full compiler source. Prepared Base changes the result substantially; the report
 keeps both preparation modes and Clang costs explicit.
 
+The [native Bend → QBE experiment](docs/self_hosted/NATIVE_IR.md) now compiles
+an admitted scalar subset without Bun or Clang on ordinary requests. Its
+[Phase107 report](implementation/phase107/README.md) separates complete compilation
+latency, generated-program speed, object reuse and the remaining self-hosting boundary.
+
 The [native IR research prototype](docs/self_hosted/NATIVE_IR_RESEARCH.md) now
 implements a small Bend IR with C and Cranelift consumers, checked folding laws,
 and a reproducible policy experiment. Its [report and diagrams](implementation/phase106/README.md)

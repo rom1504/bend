@@ -7,8 +7,8 @@ HERE=Path(__file__).resolve().parent; ROOT=HERE.parents[4]
 def pin(file):
  p=Path(file).resolve(strict=True);data=p.read_bytes();return dict(file=str(p),bytes=len(data),sha256=hashlib.sha256(data).hexdigest())
 def main():
- p=argparse.ArgumentParser(description=__doc__);p.add_argument('--source',type=Path,required=True);p.add_argument('--native',type=Path,required=True);p.add_argument('--api',type=Path,required=True);p.add_argument('--out',type=Path,required=True);p.add_argument('--rounds',type=int,default=3);a=p.parse_args()
- assert 1<=a.rounds<=10;out=a.out.resolve();out.mkdir(parents=True,exist_ok=False)
+ p=argparse.ArgumentParser(description=__doc__);p.add_argument('--source',type=Path,required=True);p.add_argument('--native',type=Path,required=True);p.add_argument('--api',type=Path,required=True);p.add_argument('--out',type=Path,required=True);p.add_argument('--rounds',type=int,default=3);p.add_argument('--policies',default='raw,pure,memory');p.add_argument('--workloads',default='many,shared,shared_borrow,text,closure,tree,list,tail');p.add_argument('--formats',default='json,qbe');a=p.parse_args()
+ policies=a.policies.split(',');workloads=a.workloads.split(',');formats=a.formats.split(',');assert set(policies)<=set(['raw','pure','memory','checked','fast','promote']) and set(workloads)<=set(['many','shared','shared_borrow','text','closure','tree','list','tail']) and set(formats)<=set(['json','qbe']);assert 1<=a.rounds<=10;out=a.out.resolve();out.mkdir(parents=True,exist_ok=False)
  bun=ROOT/'selfhost/.bootstrap/bun-1.4.3/bun';adapter=HERE/'kernel.mjs'
  (out/'method.py').write_bytes(Path(__file__).read_bytes())
  (out/'adapter.mjs').write_bytes(adapter.read_bytes())
@@ -26,7 +26,7 @@ def main():
   if host=='js':row['phases']=json.loads(meta.read_text());row['receipt']=pin(meta)
   report['jobs'].append(row);save();return row
  try:
-  pairs=[(name,policy,fmt) for name in ['many','shared','shared_borrow','text','closure','tree','list','tail'] for policy in ['raw','pure','memory'] for fmt in ['json','qbe']]
+  pairs=[(name,policy,fmt) for name in workloads for policy in policies for fmt in formats]
   random.Random(10703).shuffle(pairs)
   for round in range(a.rounds):
    for i,(name,policy,fmt) in enumerate(pairs):

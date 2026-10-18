@@ -104,6 +104,11 @@ ownership obligations and held-out tests independent of the chosen machine tool.
 
 ## Next extension: optimize the complete loop
 
+Historical investigation below predates the native frontend and object-cache implementation.
+Those followups are now qualified in [the campaign report](README.md) and
+[supervision/latency results](supervision.md); retain the original estimates as history.
+
+
 Phase106's measured Cranelift `speed` object generation was2.60–3.22ms for
 seven workloads and13.64ms for `many`; linking was21.14–22.37ms. Phase107's
 `graphs-arithmetic04/report.json` recorded441.36ms inside the capture frontend,

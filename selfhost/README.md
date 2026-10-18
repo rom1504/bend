@@ -1,5 +1,9 @@
 # Bend2 compiler port in Bend2
 
+The [native IR experiment](../docs/self_hosted/NATIVE_IR.md) provides a separate
+Bend → QBE route with no Bun or Clang during ordinary scalar compilation.
+See [Phase107 results and limits](../implementation/phase107/README.md).
+
 The active source targets upstream `059266225b77c8ca256ac6b25ee5c21449bab151`.
 The installed package is **Phase90 genuine JS-hosted B2** (`284f6e9b…`), emitted
 by the Bend compiler, with a checked B1 parent and fresh own-source/fixed-point

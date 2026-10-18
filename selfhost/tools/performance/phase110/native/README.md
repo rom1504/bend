@@ -82,6 +82,14 @@ prepare-general-check.py --source native-source04 --out native-entry-check04
 IMAGE --threads 1 --gpu off -- phase110 ABS_INPUT general SOURCE_ENTRY qbe|c|ir POLICY live
 ```
 
+The initial source04 full Base literal exceeded its acquisition guard. Fresh
+source05 uses `prepare-general-comparison.py` to replace that literal with an
+exact packed U32 comparison. It requires the same authenticated Base, an exact
+packing inverse, 11 hosted controls, 14 native controls, and the completed
+minimal comparator emission. The comparison checks full Unicode codepoints,
+the exact length and the empty suffix. It changes no compiler/static allocation
+cap or runtime, and source04's failed receipt is preserved.
+
 The new command exports `nx_entry`. It reads Base from the compiled path,
 requires exact complete compiled Base bytes, creates the mature checked seed
 internally, and derives every callee from the resulting same-source request.
@@ -93,9 +101,9 @@ bounded canonical admission, not general datatype support.
 
 The root campaign can qualify the exact native production bridge and image:
 
-1. Run `build-bridge-api.py --source native-source04/bridge/source.bend --out API_DIR` under the serial process guard.
-2. Run `emit-general.mjs API_DIR/api.mjs native-source04 closure-check03/report.json EXPECTED_DIR runtime-ir-single`. All dependency discovery and emission remain in Bend.
-3. Run `qualify-general.py --source native-source04 --image IMAGE_DIR --expected EXPECTED_DIR --semantics controls/admission/native-semantics/manifest.json --out QUALIFY_DIR` under the guard. It checks the acquisition chain, eight exact positive QBE/C products and four refusals.
+1. Run `build-bridge-api.py --source native-source05/bridge/source.bend --out API_DIR` under the serial process guard.
+2. Run `emit-general.mjs API_DIR/api.mjs native-source05 closure-check03/report.json EXPECTED_DIR runtime-ir-single`. All dependency discovery and emission remain in Bend.
+3. Run `qualify-general.py --source native-source05 --image IMAGE_DIR --expected EXPECTED_DIR --semantics controls/admission/native-semantics/manifest.json --out QUALIFY_DIR` under the guard. It checks the acquisition chain, eight exact positive QBE/C products and four refusals.
 4. Compile the actual native stdout worker products with the independently frozen `closure-native-semantics01/harness.c`, selecting `-DP110_CLOSURE_ROOT=0..3`. Check their stdout with `controls/admission/native-semantics/check.py --root N --stdout FILE`.
 
 The expected-emission API is bound to the exact production bridge. The native
@@ -112,6 +120,22 @@ workers by default (`--backends qbe` selects one), links the same pinned runtime
 object, and requires all 36 independent observations per backend. All generated
 worker input files are the native qualifier's actual stdout products.
 
-The compiled Base mismatch guard is source-reviewed. No dynamic asset mismatch
-has been injected, and the canonical Base assets are never modified by these
-qualification tools.
+The compiled comparator has 14 dynamic native mismatch controls in its isolated
+probe. No Base mismatch has been injected into the full compiler image, and the
+canonical Base assets are never modified by these qualification tools.
+
+After the general image qualifies, `qualify-fixed.py --source native-source05
+--image IMAGE_DIR --qualification QUALIFY_DIR/report.json --expected
+native-fixed-expected01 --out FRESH_DIR` checks eight actual QBE/C products for
+the existing reverse, tail, last and append contracts against their earlier
+qualified emissions. It uses the existing cached fixed route by default;
+`--mode live` selects its live route. The actual `reverse-qbe.stdout` can be
+compiled with the old ownership harness as a separate preservation check.
+
+`run-string-append.py --source native-source05 --image IMAGE_DIR --qualification
+QUALIFY_DIR/report.json --prepared base-string-append-controls01
+--runtime-object RUNTIME.o --out FRESH_DIR` exercises the actual Base
+`String.append` through general live admission. It emits and compiles QBE and
+Clang products and checks 20 independently frozen complete-value observations
+per backend. That corpus bounds non-tail recursion to 1,024 first-input cells;
+it makes no claim about arbitrary native stack depth.

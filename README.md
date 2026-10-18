@@ -69,7 +69,9 @@ full-image, output-equivalence and bootstrap gates separately from performance.
 
 The [direct ownership IR experiment](docs/self_hosted/OWNED_NATIVE_IR.md) now
 lowers real list/string compiler code to QBE while reusing production reference
-counting. Its [Phase109 report](implementation/phase109/README.md) separates
+counting. Its [Phase110 report](implementation/phase110/README.md) covers ownership-preserving
+runtime IR, typed entry/call admission and law-guided policy experiments; the
+[Phase109 report](implementation/phase109/README.md) separates
 the qualified slice, interface optimizations and remaining full-language work.
 
 The [native IR research prototype](docs/self_hosted/NATIVE_IR_RESEARCH.md) now

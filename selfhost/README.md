@@ -1,5 +1,10 @@
 # Bend2 compiler port in Bend2
 
+The [ownership-preserving native IR guide](../docs/self_hosted/OWNED_NATIVE_IR.md)
+documents Phase110 typed entry/callee admission, structured runtime operations,
+local laws and frozen policy selection. See its [report](../implementation/phase110/README.md)
+for qualified scope and separate kernel/compiler/research-loop measurements.
+
 The [native IR experiment](../docs/self_hosted/NATIVE_IR.md) provides a separate
 Bend → QBE route with no Bun or Clang during ordinary scalar compilation.
 See [Phase107 results and limits](../implementation/phase107/README.md).

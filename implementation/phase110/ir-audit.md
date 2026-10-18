@@ -395,3 +395,95 @@ semantic harness supplies overlapping physical arguments, external aliases,
 static values, both release orders, pending-scratch checks and final heap
 balance; executing those native-produced worker products remains a distinct
 parent-owned gate after this source review.
+
+### Native image acquisition literal-size failure
+
+The first general-live image source04 did not emit within its 300-second guard;
+its receipt records about 600 MB peak RSS and no generated C. Only Base/runtime
+preparation timing markers appeared, so that run alone does not identify a
+specific subsequent compiler stage. The parent then isolated the exact new
+Base literal: a 1,024-character prefix emitted in 0.718 seconds; the full 75,064-character
+literal exceeded 45 seconds in a minimal otherwise equivalent source.
+
+Source inspection supplies a mechanism consistent with that measured cliff.
+`nc_compact_plain` expands String literals into nested SCon syntax, and
+`ns_intern` caps the entire static image at 65,536 words. The 75,064-character Base
+needs 150,128 constructor words, so a substantial part must remain a dynamic
+constructor body even in isolation. Changing the runtime/static cap is outside
+this experiment. A literal cache stamp is also insufficient: the existing
+p88 cache entry explicitly assumes external authentication of the complete
+carrier, producer, Base, path and image.
+
+The `native-base-chunks01` candidate kept exact full-text authentication:
+74 separate helpers each contain at most 1,024 original characters; a streaming
+prefix consumer compares each character and forwards the remainder. A bounded
+length pass requires exactly 75,064 characters, and the final chunk requires an
+empty suffix. Preparation authenticates the Base pin, each chunk and the exact
+concatenation inverse. Eleven Bend API controls passed exact/prefix/truncation/
+suffix/content/chunk-boundary mismatches, but minimal native emission still
+exceeded 45 seconds. Splitting functions alone did not solve the total static
+image pressure; both failed receipts remain intact.
+
+The next candidate, `native-base-packed01`, represents the same 75,064 ASCII
+bytes as 18,766 U32 values, four bytes per value in little-endian order. Its 74
+bounded helpers contain at most 256 values each. Preparation requires the
+inverse byte stream to equal the original authenticated Base exactly. The Bend
+consumer compares each full `Char.to_u32` value with the next expected byte,
+then advances by one character; it does not truncate incoming Unicode values.
+The explicit length pass and final empty-suffix check remain. This is an exact
+representation, without probabilistic hashing or weaker cache authentication.
+
+All 11 hosted controls passed. The minimal native emission completed in about
+4.8 seconds, and its machine image passed 14 native controls, adding Unicode
+characters with identical low eight bits at the first, chunk-boundary and last
+positions. The packed List representation needs 37,532 constructor words,
+below the existing static cap in isolation. No static cap, compiler, runtime,
+or ABI was changed. Fresh `native-source05` replaces only the source04 literal
+and equality call with this qualified comparator, and binds both control
+receipts plus the minimal emission. The full compiler then emitted successfully
+in 148.73 seconds and its QBE image built in 87.64 seconds. The separate
+`native-general-qualify01` gate then passed eight exact QBE/C products and four
+refusals. `native-general-semantics02` passed 36 independent observations per
+backend; the earlier semantics01 failed during Clang tool discovery before
+running a target. `native-string-append01` passed 20 observations per backend
+for actual Base `String.append`, with first-input recursion bounded to 1,024
+cells. `native-fixed-qualify01` preserved eight exact products across reverse,
+tail, last and append. The parent also ran the unchanged old 13-case reverse
+harness successfully against both native-produced backends. These are semantic
+and product-preservation results, not performance measurements.
+
+The final native tooling review found no remaining source/IR trust change. The
+general path constructs its own checked seed from the exact compiled Base; the
+production bridge expected emitter uses actual captured typed/erased facts;
+qualification binds source, emitted C, portable metadata and built image. Worker
+runners consume the actual native stdout files and link one pinned runtime
+object. Clang must be present on PATH for the original semantic runners; the
+old-13 runner also accepts its path explicitly. All target execution remains
+serial under the parent's process guard. The isolated packed comparator's
+14 native mismatch cases do not constitute an injected full-image Base mutation.
+
+### Additive source size
+
+Physical line counts below include blank lines and comments, and count each
+listed source once. Generated assembly snapshots and packed Base data are
+excluded. The mature frontend already existed and is composed unchanged into
+the image; its full source size is not new Phase110 implementation.
+
+| Role | Files | Lines |
+| --- | ---: | ---: |
+| Canonical admission and closure, active Bend | 4 | 325 |
+| Ordinary-call model/verifier/lowering/library, active Bend | 5 | 277 |
+| Exact old declaration replacements for ordinary calls | 2 | 65 |
+| Ordinary-call Bend controls | 2 | 113 |
+| Native entry/factory/comparator handwritten Bend | 4 | 263 |
+| Admission checks and source preparation | 3 | 242 |
+| Ordinary-call orchestration | 4 | 276 |
+| Native source preparation and isolated diagnostic preparations | 10 | 759 |
+| Native qualification and timing transport | 8 | 425 |
+| Native comparator diagnostic controls | 2 | 50 |
+
+The raw-seed admission prototype is a separate 20-line unselected module. The
+native handwritten count includes the superseded chunk prefix helper; only its
+length/dispatch definitions are reused by the packed comparator. The packed
+comparator's generated 219,521-byte module encodes the exact Base constant plus
+bounded helper calls; it does not add a new source language or ownership rule.

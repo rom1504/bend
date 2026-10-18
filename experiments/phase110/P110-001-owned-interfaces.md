@@ -109,3 +109,54 @@ Typed entry/closed-callee admission, namespace controls, ordinary owning calls,
 23 independent local laws and14 model mutants are qualified at their stated
 boundaries. The general live native request and its fresh semantic controls are
 prepared, not yet executed successfully. Production selection stays unchanged.
+
+## Frozen selection and new heldouts (20:29 UTC)
+
+The v2 protocol added exactly combined and delayed-load ablations before any
+fresh performance heldout was executed. Five alternating rounds select the
+simpler compact-general QBE policy:0.79427× fused-QBE on training. Stored-field
+(0.98347× incumbent), combined(0.99708×), delayed(0.98602×) and wrapper
+(1.02693×) do not meet the incremental magnitude/round-consistency rule.
+Wrapper-spare is the Clang winner,0.62114× fused-QBE training time.
+
+The single fresh eleven-case evaluation accepts both frozen winners: QBE
+0.8051019× fused-QBE; Clang0.6581565×. QBE has four small per-case regressions,
+maximum1.022085×. The original production denominator was also measured directly
+in a separate five-round matched13-control comparison: general QBE0.8530908×
+preserved production Clang reverse time (0.0119145s versus0.0139663s). Do not
+multiply historical ratios or interpret these kernels as whole-compiler speed.
+
+Generic Take/rebuild physical probes, wrapper-spare probes and the final delayed
+physical overlap witnesses pass. Fresh six-case append and ten-case ordinary-call
+heldouts also pass their exact independent oracles.
+
+## Native acquisition diagnosis
+
+A1,024-character literal emits in0.718s; the75,064-character literal exceeds45s.
+Splitting into74 String helpers still exceeds45s (730MB peak). Packing the
+identical ASCII bytes into18,766 U32 words in bounded helper bodies emits in
+4.825s (147MB), builds through cproc/QBE in2.492s, and passes11 checked-API plus
+14 actual-native equality controls, including same-low-byte non-ASCII negatives.
+The implementation still compares every original codepoint and rejects extra
+suffixes; no digest or weak cache-stamp trust replaces exact equality.
+
+Source inspection identifies the65,536-word static image limit and literal
+expansion into constructor syntax. The experiments demonstrate a size-sensitive
+representation problem and a useful mitigation; they do not separately attribute
+all time to parsing, checking, interning or dynamic-body lowering. Full general
+image integration remains pending at this checkpoint.
+
+## Native qualification complete (20:41 UTC)
+
+Full source05 emits in148.836s and builds in87.720s guarded wall, with3.086GB
+peak tree RSS. Native general qualification passes eight exact QBE/C products
+and four refusals. Actual emitted closure workers pass36 independent observations
+per backend; actual Base String.append passes20 per backend. The four prior
+fixed contracts preserve all eight QBE/C products, and native reverse passes the
+old13-case harness on both backends. Ordinary source-to-QBE requests use no
+JavaScript, Clang or cproc; one-time acquisition still uses C/cproc/QBE.
+
+The first native worker runner failed before execution because Clang was absent
+from PATH. Its receipt is retained; rerunning with the pinned Lean toolchain
+path completes. No evaluator or semantic expectation was changed. The native
+source and machine image are frozen for this phase's final transfer checks.

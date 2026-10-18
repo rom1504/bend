@@ -1,0 +1,54 @@
+{
+  "kind": "phase110-final-followup-selection-protocol",
+  "frozenUtc": "2026-10-18T20:18:38.574228+00:00",
+  "rounds": 5,
+  "reference": "fused-qbe",
+  "threshold": 0.97,
+  "qbeIncumbent": "compact-general-qbe",
+  "qbeChallengers": [
+    "stored-field-qbe",
+    "wrapper-spare-qbe",
+    "combined-qbe",
+    "delayed-qbe"
+  ],
+  "clangIncumbent": "stored-field-clang",
+  "clangChallengers": [
+    "compact-general-clang",
+    "wrapper-spare-clang",
+    "combined-clang",
+    "delayed-clang"
+  ],
+  "objective": "Equal seven-case geometric mean of median worker time. Retain incumbent unless challenger is >=3% faster in aggregate and improves geometric mean in every round against that incumbent. After per-backend selection, choose global winner under same3%+round consistency rule, retaining QBE on inconclusive cross-backend result.",
+  "heldoutRepetitions": 2,
+  "heldoutRounds": 3,
+  "heldoutPolicy": "Freeze winners first; evaluate final eleven new heldouts once, accept only semantic success and <=1.03 aggregate reference ratio. Report individual regressions. No reranking on heldout.",
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/final-training-build02/report.json",
+      "bytes": 18614,
+      "sha256": "39846e20b4245daccc2a252014baa94a7c1aaa507e7e5ed61024db28d91f88c5"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase110/controls/audit/fast-loop-v2.json",
+      "bytes": 4921,
+      "sha256": "a96cf01b9313de2fd2504f07a8ffc15cecb6f221ffe88b256b6806c70e154f1b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase110/controls/final-heldout/manifest.json",
+      "bytes": 6360,
+      "sha256": "f36951c72945b4e260f25c91492e0f720276238ffe3ce2ad43483e297dbfcde4"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase110/controls/audit/final-selection.json",
+      "bytes": 1739,
+      "sha256": "c121c5aa30f16afe5d70697f43780d03875c9c2b24aaedad61e637ca4496df3d"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase110/final-training01/report.json",
+      "bytes": 145342,
+      "sha256": "f567cf4323eec70bc0e4fb9a43253d9899842837f6d86ee8be98f3e2f67af632"
+    }
+  ],
+  "version": 2,
+  "amendment": "Before any fresh heldout evaluation, add final two mechanism-driven variants: omit invariant retained reseal together with exclusive wrapper reuse, then delay old-child loads until after external seal. Motivated by machine05 spills and v1 training; previous protocol/training preserved. No further adaptive variant addition in this phase."
+}

@@ -383,6 +383,9 @@ not change this argument: sealing changes the wrapper cell, not the aliased
 payload. A raw external alias to the uniquely owned dynamic source itself is
 excluded by the valid acyclic ownership premise. Shared, direct-static and
 count1 RFC-to-static source shells still fall back before private mutation.
+The frozen wrapper module's introductory comment describes its original early
+loads; the selected delayed override and its admission receipt explicitly
+replace that order.
 
 `wrapper-combined-admit.py --variant combined|delayed` requires the conjunction
 of the exact stored-writer closure, exclusive spare template, canonical private
@@ -409,3 +412,33 @@ and physical-probe emission check the combined control report, while probes
 re-authenticate the exact source against their selected runtime, including the
 probe adapter. These integration checks were source/data only; target execution
 remains with the root's serial guard.
+
+## Final machine finding and selection scope
+
+[The final offline audit](evidence/machine06-analysis.md) confirms that delayed
+loads repair the wrapper candidate's QBE spill problem. On the selected count1
+unique-list path, wrapper-only executes 100 instructions and 15 stack accesses;
+combined executes 89 and 13; delayed executes 79 and 2. The delayed worker shrinks
+to 658 bytes, versus 894 for wrapper and 768 for compact/general. Its next-owner
+load moves from 56 instructions before the backedge in compact/general to 6,
+which exposes a possible latency-hiding tradeoff. These are source-selected
+machine paths, not cycle attribution.
+
+The final matched training decision remains authoritative: combined and delayed
+QBE achieve 0.99708 and 0.98602 times the compact/general incumbent, missing the
+predeclared 3% and every-round gates. Delayed's unique-string gains coexist with
+list and shared regressions. Compact/general therefore remains the QBE choice;
+wrapper-only wins the separate Clang choice. A conceptual next investigation
+would keep the next-owner load early inside a self-contained spare branch,
+without carrying those values across a cold allocator path. No additional
+variant was implemented.
+
+After selection, all 11 fresh heldouts pass semantics. Aggregate ratios against
+fused QBE are 0.80510 for compact/general QBE and 0.65816 for wrapper Clang. QBE's
+four individual regressions range from 1.01065 to 1.02208; wrapper Clang has none
+in that set. A separate five-round, matched 20-by-65,536-cell comparison gives
+compact/general QBE 0.85309 times the preserved production-Clang binary. That is
+a direct fresh denominator, not a product of historical ratios. These are
+finite worker-kernel results, not full-compiler speedups. The root's final
+selected general Take/rebuild, wrapper spare, and delayed overlap/rebuild/spare
+probes all passed; this audit adds no target execution.

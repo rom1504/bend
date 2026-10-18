@@ -536,3 +536,44 @@ The initial recursion bound is 1,024 first-input cells, with shared depth
 survivor values, empty pending scratch and zero dynamic words. Native admission,
 emission and execution are parent-owned follow-ups; these prepared controls do
 not establish arbitrary stack depth or compiler hotness.
+
+## Final receipt audit, 20:41 UTC
+
+Read-only verification of [selection02](../../selfhost/build/phase110/final-selection02.json),
+[heldout01](../../selfhost/build/phase110/final-heldout01/report.json),
+[production-compare01](../../selfhost/build/phase110/production-compare01/report.json),
+`native-source05` and its qualifier found no changed or missing input pins.
+Recomputed training medians and eligibility agree with the frozen decisions:
+compact-general QBE remains primary; wrapper-spare Clang wins the separate
+global comparison. Protocol v2 predates training, selection predates the fresh
+heldout campaign, and heldout results did not rerank candidates.
+
+All 99 saved fresh-heldout observations match the independent oracle. The
+eleven-case median-worker geometric-mean ratios are **0.80510 QBE** and
+**0.65816 Clang**, both against **fused QBE**, not production Clang. QBE's four
+individual regressions range from 1.011 to 1.022; Clang has none in this corpus.
+The separate production comparison remeasures the preserved production-Clang
+binary in the same campaign: the selected QBE reverse worker has ratio
+**0.85309** on the single `list-deep` kernel across five rounds. This is neither
+a whole-compiler result nor a production-denominator claim for the eleven-case
+corpus. Its plan accidentally omits an explicit GCC pin because its filename
+filter expects `gcc`; read-only resolution and hashing confirmed the current
+`x86_64-linux-gnu-gcc-10` exactly matches the historical compiler pin. Original
+runtime-object receipts also record paths rather than historical hashes; the
+final selection explicitly records fresh object hashes without inventing older
+evidence.
+
+The [native qualifier](../../selfhost/build/phase110/native-general-qualify01/report.json)
+binds exact composed source → emitted C → metadata-adjusted portable C → native
+image. Its eight actual native-produced QBE/C outputs equal the independently
+transported expected emissions, and four requested refusals succeed. The packed
+Base comparator reconstructs all **75,064** original ASCII bytes exactly and
+compares full character values with bounded exact length; it substitutes no
+hash for equality. The composed comparator bytes and image provenance were
+independently checked. [Semantic qualification02](../../selfhost/build/phase110/native-general-semantics02/report.json)
+now completes all **eight workers / 72 observations**, each checked directly
+against the frozen value/alias/lifetime oracle. The earlier missing-Clang-PATH
+attempt is superseded by this completed receipt, not counted as semantic failure.
+These results qualify the tested canonical String/List<String> closures;
+generic specialization, arbitrary recursion depth and compiler-wide speedup
+remain outside the evidence. This final audit ran no compiler or target.

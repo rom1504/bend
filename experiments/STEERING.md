@@ -1,4 +1,44 @@
-# Current frontier: Phase108 full native compiler through QBE
+# Current frontier: Phase109 direct ownership IR and native selected-library frontend
+
+[Report](../implementation/phase109/README.md) ·
+[Design](../design/phase109/direct-owned-ir.md) ·
+[Usage](../docs/self_hosted/OWNED_NATIVE_IR.md) ·
+[Fast loop](../selfhost/tools/performance/phase109/README.md).
+
+Direct structured IR is the development direction. Keep Phase108 cproc/QBE as
+the working full-language bootstrap/reference; do not delete it or replace the
+selected production compiler before full direct-IR semantic/bootstrap gates.
+
+Actual compiler List<String> reverse, Base String reverse and checked
+discard/duplication bodies lower in Bend from mature NativeErasedBody facts to
+owned operations and an Nx library. Imports use the actual tagged-Term heap and
+reference counts. Ownership verification, exact fixed-descriptor admission and
+generic consume/build/tail fusion are implemented. Shared/static/retained-alias
+and lifetime controls pass; unsupported constructs refuse.
+
+The native selected-library image reuses the full mature checked frontend and
+erasure. Nine source-contract/policy QBE products equal hosted outputs exactly;
+live Base, IR JSON, four refusals and a fresh thirteen-case native worker pass.
+Its one-time C/cproc/QBE acquisition takes about 150 s. Ordinary selected requests
+use native Bend directly, ~0.53s prepared in finite qualification observations.
+It accepts frozen source contracts only: arbitrary typed ABI/layout admission,
+ordinary/non-tail calls, closures, effects, scheduling and GPU remain unimplemented.
+
+Five-round worker screen: raw direct QBE 4.78× production Clang time; trusted 1.68×;
+fused 1.39×. This is one 65,536-cell reverse kernel, not upstream/B1/B2/full-compiler
+speed. Fused is 3.45× faster than the initial direct IR worker. QBE and Clang of
+the same imported-runtime graph are close: preserve constructor constants and
+typed multiple-result ownership transfers before changing machine backends.
+Production reverse already has a direct loop; no trampoline-removal gain here.
+
+Use the 1.4 s checked API, 10 s semantic suite and 19 s paired screen for routine work.
+Next coverage gate: general checked descriptor/entry facts and ordinary calls,
+then scanner and genuine continuation-heavy kernels. Keep runtime acquisition
+separate from cached worker builds. The cproc kernel control lacks Phase108 v3
+accessor expansions; never substitute it for that full compiler denominator.
+No broad45, production B1/B2 metric update, or recursive-acceleration claim.
+
+# Previous frontier: Phase108 full native compiler through QBE
 
 [Report](../implementation/phase108/README.md) · [Design](../design/phase108/full-native-qbe.md) ·
 [Usage](../docs/self_hosted/QBE_COMPILER.md) · [Fast loop](../selfhost/tools/performance/phase108/README.md).

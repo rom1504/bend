@@ -4,6 +4,26 @@ This ledger records decisions and links evidence; it does not replace the report
 Read [workflow](README.md) and [current strategy](STEERING.md) before a new investigation.
 User objective: make the Bend compiler written in Bend and its validation loop much faster while preserving correctness. Historical authorization windows are recorded below; current release status and priorities are in [STEERING.md](STEERING.md).
 
+## Phase109 direct ownership IR — 2026-10-18
+
+[P109-001](phase109/P109-001-direct-owned-ir.md) ·
+[P109-002](phase109/P109-002-runtime-interface.md) ·
+[Report](../implementation/phase109/README.md).
+Real checked compiler/Base bodies lower in Bend to structured ownership and QBE,
+using the production heap/refcount runtime. Raw/trusted/fused policies pass frozen
+graph/alias/lifetime controls; all 38 fact-admission controls pass after preserving
+12 malformed-input counterexamples. Native mature-frontend image produces nine
+exact hosted QBE products, cache/live agreement, four refusals and a fresh native
+worker passing 13 cases. No source-name optimization or arbitrary-source ABI claim.
+Five alternating kernel rounds: raw QBE 4.78×Clang time, trusted 1.68×, fused 1.39×;
+fused 3.45× faster than initial direct IR. Kernel comparison is not full compiler or
+upstream speed; same-graph QBE/Clang similarity identifies the runtime boundary.
+Checked API 1.4 s, semantic loop 10.39 s, paired screen 18.60 s; one-time native image
+acquisition 111.79 s + 38.52 s. Cproc retained as full-language bootstrap/reference;
+production selection and prior five-metric frontier unchanged. Evidence archived,
+failures retained, no PR comment. Next: general typed descriptors/calls and
+multiple-result ownership interfaces before full direct self-hosting.
+
 ## Phase105 current native compilation measurements — 2026-10-17
 
 [P105-001](phase105/P105-001-current-compilation.md) ·

@@ -1,5 +1,9 @@
 # Native frontend integration feasibility
 
+This preparatory audit is retained with its original estimates. The
+[final report](README.md#native-bend-frontend-qualification) records completed
+acquisition (111.79 s emission plus 38.52 s machine build) and native qualification.
+
 Source-only inspection finds a smaller integration than Phase107's scalar route:
 reuse `p86_plan` unchanged, including its final `nr_prepare_annotated`, and select
 `NativeErasedBody` from `NR_Request.book` using `ns_body`. No thirteen-function plan

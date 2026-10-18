@@ -1,5 +1,23 @@
 # Native selected-library entry
 
+`image.json` selects the qualified Phase109 image. After restoring its evidence
+and the existing Base/cache assets at their recorded paths, run:
+
+```sh
+python3 -B selfhost/tools/performance/phase86/guard.py \
+  --out selfhost/build/phase109/my-native-guard --seconds 30 \
+  --rss-mib 1024 --available-mib 4096 --cpu 3 -- \
+  python3 -B selfhost/tools/performance/phase109/native/emit.py \
+  --out selfhost/build/phase109/my-native-output --contract reverse --policy fused
+```
+
+It writes QBE to `program.txt`, authenticates image/source/Base/cache and records
+the command/output. `--format ir` writes JSON; `--live` disables prepared Base.
+Python supervises the native executable; the raw invocation below needs no
+Python. This wrapper compiles the selected library, not a complete executable.
+The frozen image embeds absolute asset paths; rebuild with `prepare.py` when
+moving to a different checkout location.
+
 `prepare.py` assembles a controlled native Bend image source. It reuses the exact
 selected compiler's `p86_plan` and `NR_Request` preparation, including checked
 annotations, native erasure and ownership preprocessing. It appends the same
@@ -47,3 +65,18 @@ The image is not a fully direct-IR self-hosted compiler. Its acquisition still
 uses mature Bend C lowering followed by cproc/QBE. Its admitted ordinary requests
 run parsing, checking, erasure, owned lowering and QBE emission in native Bend,
 without a JS host or a scalar-only substitute frontend.
+
+## Checks before another image acquisition
+
+`prepare-check.py --out FRESH --bridge CHECKED_API_SOURCE_DIR --config SOURCE_DIR/config.bend`
+builds a small entry typecheck fixture using exact interface types/signatures and
+explicit semantic mocks. Under a short guard, run `stage0-library.mjs SOURCE
+OUT_API nxo_lower`. The complete book is checked; export a non-IO helper, not
+`main`. Never execute the mock main or count this as frontend correctness.
+The corrected fixture check took 1.04 s; actual native semantics are independently
+qualified using the complete mature frontend.
+
+`qualify.py --source SOURCE_DIR --image IMAGE_DIR --suite HOSTED_SUITE --out FRESH`
+checks all nine exact source/policy products, live Base, IR JSON, four refusals,
+then builds native-produced QBE and checks thirteen runtime observations. Use a
+120-second/2-GiB guard. Recorded qualification time is 9.73 s.

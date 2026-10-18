@@ -31,8 +31,17 @@ assembler and linker; they do not emit C or invoke cproc.
   Unicode String readback. This includes emission, QBE, assembly, linking and
   exact independent output checks for each case.
 
-The installed compiler is unchanged. Full-language coverage, a directly built
-complete compiler, native self-compilation, speed and default promotion remain
+The remaining focused cases found two integration faults: missing foreign
+providers were admitted until runtime, and native floating-point primitives
+were incorrectly included in the foreign-provider dependency list. Source05
+adds capability admission before lowering and applies the mature primitive-first
+classification. All four previously failing cases then pass (`repaired01`,
+13.12 seconds). Together with `fast01` and the passing cases in `focused01`,
+this covers all 19 focused cases across revisions; it is not a fresh 19-case
+run on the final source.
+
+The installed compiler is unchanged. A directly built complete compiler, native self-compilation, broad coverage,
+speed and default promotion remain
 separate outstanding gates. An executable restricted fixture is not full
 self-hosting.
 
@@ -100,13 +109,25 @@ Frozen inputs and commands are in each report/guard receipt.
 | --- | --- |
 | Exact data and native readback | `selfhost/build/phase111/data-controls01/`, `data-readback01-guard/` |
 | Combined lowerer/emitter checking | `selfhost/build/phase111/backend-api01/` |
-| Complete direct-entry source checking | `selfhost/build/phase111/full-source04/`, `full-api04/` |
+| Complete direct-entry source checking | `selfhost/build/phase111/full-source05/`, `full-api05/` |
 | Cached runtime and guarded revision | `selfhost/build/phase111/runtime-source01/`, `runtime-source03/` |
 | Ten runtime boundaries | `selfhost/build/phase111/runtime-boundaries01/` |
 | 53 structural controls | `selfhost/build/phase111/verify-controls01-guard/` |
 | Checked-source closure and IO | `selfhost/build/phase111/source-closure01/`, `closure-build01/` |
 | Real-runtime pure U32 return | `selfhost/build/phase111/pure42-build01/`, `pure42-execute01-guard/` |
+| Remaining focused cases and repairs | `selfhost/build/phase111/focused01/`, `repaired01/` |
+| Staged orchestration byte agreement | `selfhost/build/phase111/staged-closure01/` |
 | Five-case direct source gate | `selfhost/build/phase111/fast01/`, `fast01-guard/` |
+
+## Full acquisition attempts
+
+`full-emission01` checked the complete source: 4,955 definitions, 1,902 reached
+names. Preparation took 1.40 seconds and the Bend frontend took 142.71 seconds.
+The 300-second guard then stopped the process during generic lowering, at a
+3,526,885,376-byte observed peak tree RSS. This is a deadline failure, not a
+compiler diagnostic or successful full image. `full-emission02` retries the exact
+frozen inputs with a 900-second deadline and the unchanged 4GiB memory cap.
+Per-stage records distinguish checking, lowering, verification and QBE emission.
 
 ## Next integration
 

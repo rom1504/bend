@@ -88,6 +88,37 @@ unsigned underflow in the retained closure-apply `arity - 1` load. Fresh
 `runtime-source03` adds explicit closure tag/FID/nonzero-arity checks and bounds
 on register loads, result copies and continuation subtraction. It preserves the
 legitimate built-in IO_EMIT closure created by the runtime itself. Source02 is
-preserved as an unexecuted intermediate with an overly restrictive IO FID guard;
-source03 is the corrected candidate. Further execution receipts determine its
-qualification; source preparation alone does not establish a passing gate.
+preserved as an unexecuted intermediate with an overly restrictive IO FID guard.
+The coordinator compiled source03 without warnings, then passed the checked
+capturing-closure IO program through direct QBE (`source-closure01`, acquired with
+`full-api02`; machine receipt `closure-build01`, exact output `captured=42\n`).
+This exercises the valid built-in IO closure as well as generated captures. It
+does not by itself qualify full compiler execution.
+
+## Full compiler scale audit
+
+The CPU continuation stack is a separate 2 GiB `MAP_NORESERVE` mapping followed
+by a 16 KiB guard page. The `STAK_LEN=2048` corpus constant describes device lane
+storage, not the CPU continuation limit. Dispatcher transitions return before
+entering the next segment, so Bend recursion does not accumulate C segment frames.
+The initial CPU corpus maps 8 GiB virtually and grows in place; the fixed rings,
+stacks and static prefix do not imply an equivalent eager resident allocation.
+Program dispatch uses one 64-bit function pointer table lookup. Both the segment
+verifier and runtime reserve the four built-in IDs within the 16-bit FID limit.
+No concrete capacity blocker was found in this source audit; newly emitted counts
+and actual memory observations remain required.
+
+A prospective performance ablation can use a transfer width
+`W=max(register_width,result_width,2)` while preserving all fixed array sizes and
+heap offsets. Incoming widths are already bounded by arity and result width at
+binding. Generated entries read their input arity; continuations read their
+incoming result count; built-ins read one task, one IO result or two apply words.
+Only `rn` results are delivered. Other bank slots are copied as transport, never
+scanned as owned roots. Clearing `[count,W)` instead of `[count,256)` therefore
+does not change owner release, provided count is checked against W first.
+
+A larger ablation could narrow local bank initialization and all bank copies to
+W together. Narrowing SAVE without TAKE would copy uninitialized high result
+slots, so those operations must change together or retain explicit initialization.
+`WL_RESW` must remain 256: it determines `H_BANK` and the authenticated static
+base. These are analysis proposals only; runtime-source03 remains unchanged.

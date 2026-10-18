@@ -46,12 +46,17 @@ def p111_compile_defs(+book: List<&2, KDef>, names: List<&2, String>, +bangs: Li
       nt_choose(P111Book, String.eq(dk(d), "Absent"), u => P111Book{Nil{}, n, "native definition not found: " ++ name_key(name)},
         u => p111_compile_step(book, name, rest, bangs, acc, p111_entry(book, nc_compact_definition(book, d, n), name, U32.add(n, 1024), nb_contains(bangs, name))))
 
+# Native primitives win before Foreign/Absent, exactly as nc_definition_plain.
+@unsafe
+def p111_is_foreign(+definition: KDef) -> Bool:
+  nt_choose(Bool, nc_native_def(definition), u => False{}, u => nc_foreign(definition))
+
 @unsafe
 def p111_effects(+source: List<&2, KDef>, names: List<&2, String>) -> List<&2, String>:
   match names:
     case Nil{}: Nil{}
     case Con{+name, +rest}:
-      nt_choose(List<&2, String>, nc_foreign(lookup(source, name)), u => Con{name, p111_effects(source, rest)}, u => p111_effects(source, rest))
+      nt_choose(List<&2, String>, p111_is_foreign(lookup(source, name)), u => Con{name, p111_effects(source, rest)}, u => p111_effects(source, rest))
 
 @unsafe
 def p111_empty() -> P111Program:
@@ -81,3 +86,25 @@ def p111_lower_request(request: NR_Request) -> P111Result:
       nt_choose(P111Result, String.eq(error, ""),
         u => p111_finish(source, names, p111_compile_defs(book, names, nc_bangs_names(book, names), 0, Nil{})),
         u => P111Result{p111_empty(), error})
+
+# Frozen capability set of runtime/effects/prepared01/catalogue.json.
+# Adding a foreign provider requires a new runtime capsule and this admission
+# catalogue together. This is an internal checked-request backend boundary.
+@unsafe
+def p111_runtime_names() -> List<&2, String>:
+  ["IO.args", "IO.print", "IO.now", "IO.print_err", "File.open", "File.read", "File.read_bytes", "File.read_at", "File.size", "File.write", "File.write_bytes", "File.close", "NativeHost.read", "NativeHost.path", "NativeHost.publish"]
+
+@unsafe
+def p111_runtime_effects(effects: List<&2, String>, +available: List<&2, String>) -> String:
+  match effects:
+    case Nil{}: ""
+    case Con{+name, +rest}:
+      nt_choose(String, nb_contains(available, name),
+        u => p111_runtime_effects(rest, available),
+        u => "foreign provider unavailable in fixed runtime: " ++ name)
+
+@unsafe
+def p111_runtime_admission(request: NR_Request) -> String:
+  match request:
+    case NR_Request{source, book, names, paths, scope, bound}:
+      p111_runtime_effects(p111_effects(source, names), p111_runtime_names())

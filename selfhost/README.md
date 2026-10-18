@@ -1,5 +1,11 @@
 # Bend2 compiler port in Bend2
 
+The experimental [direct QBE backend](../docs/self_hosted/direct-qbe.md) lowers
+checked Bend to typed segments and QBE, then links a cached runtime object.
+Ordinary program builds need no generated C or cproc. See the
+[Phase111 report](../implementation/phase111/README.md) for completed gates;
+native self-hosting and promotion remain separate qualification steps.
+
 The [ownership-preserving native IR guide](../docs/self_hosted/OWNED_NATIVE_IR.md)
 documents Phase110 typed entry/callee admission, structured runtime operations,
 local laws and frozen policy selection. See its [report](../implementation/phase110/README.md)

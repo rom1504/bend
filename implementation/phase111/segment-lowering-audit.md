@@ -82,3 +82,27 @@ creating a continuation for every character. The actual lowered metadata must
 pass the runtime capacity gate (at most 65,532 program segments and 255 live
 input/output words) before full QBE acquisition. No speed or capacity conclusion
 is inferred from source size alone.
+
+The root-run `full-api04/report.json` now records successful checking of seven
+API exports from `full-source04` in 7.775 seconds. All six lowerer module hashes
+in that frozen source manifest match the current source, including the matcher
+and bang corrections above. This establishes the composed Bend source gate;
+it does not establish generated-program semantics or self-hosting.
+
+The root-run `focused01` exposed two admission defects after that source gate:
+unknown custom foreign providers reached emission, and F32 native primitives
+whose definitions have an `Absent` body were incorrectly included in the foreign
+effect list. The frozen failure remains intact. The correction in
+`lower-book.bend` gives `nc_native_def` priority before `nc_foreign`, matching
+`nc_definition_plain`, and adds `p111_runtime_admission(request)`. The entry calls
+this backend admission check before lowering/emission. It accepts only the 15
+registered effect names in `runtime/effects/prepared01/catalogue.json` (SHA256
+`2bcb481d3d117a92a48a20bd508cbe78cd39aa81b77a1b835967d9b0065db29f`).
+Unknown custom foreign providers require an explicit runtime capability extension
+and coordinated admission catalogue; they are not emitted speculatively.
+
+This capability-name check is not independent validation of arbitrary user-made
+foreign types. The qualified pipeline pins the actual Base and compiler host
+asset definitions that supply the registered provider signatures. Public compiler
+installation/version binding must preserve that trust boundary; a replacement
+Base path alone cannot establish the builtin representation or provider contract.

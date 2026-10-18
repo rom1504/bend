@@ -17,10 +17,15 @@ def p111_emit_lowered(result: P111Result) -> P111Emission:
         u => P111Emission{[],"native lowering: " ++ error})
 
 @unsafe
+def p111_emit_admitted(+request: NR_Request, +error: String) -> P111Emission:
+  nt_choose(P111Emission,String.is_empty(error),u => p111_emit_lowered(p111_lower_request(request)),
+    u => P111Emission{[],"compile: " ++ error})
+
+@unsafe
 def p111_emit_plan(plan: P86Plan) -> P111Emission:
   match plan:
     case P86PlanError{error}: P111Emission{[],error}
-    case P86PlanReady{request,verdict}: p111_emit_lowered(p111_lower_request(request))
+    case P86PlanReady{+request,verdict}: p111_emit_admitted(request,p111_runtime_admission(request))
 
 @unsafe
 def p111_compile_prepared(+path: String, +source: String, prepared: P86Preparation) -> P111Emission:

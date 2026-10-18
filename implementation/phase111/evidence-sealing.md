@@ -1,8 +1,9 @@
-# Proposed evidence seal
+# Evidence capsule format
 
 [`seal-evidence.py`](../../selfhost/tools/performance/phase111/seal-evidence.py)
-is prepared but has not been executed. No archive has been created by its author.
-The coordinator validates the final inventory after all target runs finish.
+creates [capsule01](evidence/capsule01.tar.xz); its adjacent manifest records
+member verification and exact source identities. The coordinator validates the
+final inventory after all target runs finish.
 This is an internal consistency check, not a separate user approval step. The tool never invokes
 a compiler, target, shell command or network operation, and never deletes source
 or compiled products.

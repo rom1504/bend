@@ -7,13 +7,13 @@ A separately compiled, cached C runtime remains part of the executable.
 
 [Design](../../design/phase111/direct-qbe-selfhost.md) ·
 [Experiment](../../experiments/phase111/P111-001-direct-qbe-selfhost.md) ·
-[Usage](../../docs/self_hosted/direct-qbe.md).
+[Usage](../../docs/self_hosted/direct-qbe.md) ·
+[Qualified experimental selection](selection.json).
 
 **The direct route works, but is not a performance replacement yet.** Native
 self-emission takes **944.82 seconds (15m45s)**; building its QBE output takes
 **10.26 seconds**. The installed compiler, JavaScript release and existing
-C/cproc/QBE route remain unchanged. Successor focused qualification passes;
-the final 45-program corpus gate is running.
+C/cproc/QBE route remain unchanged. The successor passes all 19 focused cases and all 45 corpus programs.
 
 ## What is established
 
@@ -34,8 +34,8 @@ Bend source → existing checked frontend/erasure → structured segments
 N1 emits all **50,664,292 QBE bytes** identically to the development API.
 The generated assembly and complete object file also match exactly. N2 builds
 successfully and passes all 19 focused source cases: 16 positive executions
-and three expected refusals. The first six representative corpus cases pass;
-39 further cases remain in progress.
+and three expected refusals. All 45 frozen corpus programs also pass, in disjoint six-case and 39-case
+partitions using the same successor and runtime.
 
 Raw executable files are **not** byte-identical. GNU ld records the different
 input object path in a local file symbol, changing `.strtab`, `.symtab` and its
@@ -99,7 +99,8 @@ Details: [runtime](runtime-notes.md), [emitter](emitter-notes.md),
 | Cached runtime acquisition | 1.28 s | Separate from ordinary builds |
 | Runtime-only compiler relink | 0.215 s | Reuses the authenticated full QBE object |
 | Successor focused suite | 19/19, 74.68 s | 16 semantic executions, three expected refusals |
-| Successor initial representatives | 6/6, 35.38 s | Frozen prior corpus outputs |
+| Successor corpus | 45/45, 261.45 s total guard wall | Six cases in35.38s plus39cases in226.07s; frozen prior outputs |
+| Successor live-Base closure | Passed,10.37s total guard wall | Checks Base from source, emits/builds/executes with exact expected output |
 | Runtime representation/primitive boundaries | 10/10 | Includes exact outputs and expected fail-stops |
 | Register-bank boundaries | 13/13 | Seven positive, six malformed-input cases |
 | Structural verifier controls | 53/53 | 11 positive, 42 negative; not ownership proofs |
@@ -201,14 +202,15 @@ Build artifacts live under `selfhost/build/phase111/`. Important directories:
 `full-source05`, `full-api05`, `full-emission02`, `runtime-source04`,
 `full-native03`, `native-self02`, `successor-focused01`,
 `successor-representatives01`, `successor-remaining39`, `runtime-boundaries04`
-and `runtime-banks04`. Each receipt pins sources, tools and commands. The native
+`runtime-banks04`, `successor-live01` and `qualification01`. Each receipt pins
+sources, tools and commands. The native
 self request's `image-comparison` directory records literal and loaded-image
 comparisons separately. Its earlier `fixed-point.json` is explicitly the failed
 additional raw-file equality check, not a failed QBE self-reproduction claim.
 
 The [usage guide](../../docs/self_hosted/direct-qbe.md) contains native commands,
 fast/focused/full45 gates, trusted-asset boundaries and full-build resource caps.
-The bounded evidence capsule is sealed after final qualification. It retains
+The [bounded evidence capsule](evidence/capsule01.tar.xz) retains
 source/method snapshots, logs and failures; large machine products stay local
 with hashes. [Evidence format](evidence-sealing.md).
 
@@ -224,3 +226,10 @@ runs. Reusing the full object isolated the runtime change without repeating the
 345-second acquisition. The failed 18-minute native attempt is the main avoidable
 cost: future large runs should expose stage progress or sample early, then use
 small analysis-heavy requests before committing to a long bootstrap.
+
+Recorded target-guard wall time totals3,331.19seconds (55.52minutes), including
+failed attempts; these clocks overlap their nested compilation/test clocks and
+must not be added to them. The phase took about1h35m including source work,
+review and packaging. Most target time was the failed1,100-second request and
+successful956.58-second request. No API billing/quota measurement is inferred
+from wall time or source counts.

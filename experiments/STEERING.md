@@ -6,34 +6,34 @@
 
 The complete compiler written in Bend now emits structured segments and QBE
 without per-program C/cproc. N1's native compilation of its exact full source
-matches all50,664,292QBEbytes of the checked development API, then builds N2.
+matches all 50,664,292 QBE bytes of the checked development API, then builds N2.
 Assembly and object bytes match. Raw executables differ in file-symbol path
-metadata and buildID; loadable images agree except the20-byte buildID descriptor.
-Successor focused19 and six initial corpus representatives pass; the remaining
-39-case gate is in progress. The report records final gate state.
+metadata and build ID; loadable images agree except the 20-byte build ID descriptor.
+All 19 focused successor cases and all 45 corpus programs pass. The disjoint
+six/39 corpus partitions use the same image/runtime and frozen prior outputs.
 
-Native self-emission944.82s plus machine build10.26s is a capability milestone,
-not a compiler-speed win. The request has4.18s of recorded sampling pauses;
-wholeguard956.58s, peak1.999GB. Runtime04's logical register width preserves
-physical256-word layout and cuts five finite same-QBE request observations15–18%.
-Ten original runtime boundaries and13wide/bad-metadata bank controls pass.
-The first1,100s timeout and old64MiB assembly-cap failure remain evidence.
+Native self-emission 944.82s plus machine build 10.26s is a capability milestone,
+not a compiler-speed win. The request has 4.18s of recorded sampling pauses;
+whole guard 956.58s, peak 1.999GB. Runtime04's logical register width preserves
+physical 256-word layout and cuts five finite same-QBE request observations 15–18%.
+Ten original runtime boundaries and 13 wide/bad-metadata bank controls pass.
+The first 1,100s timeout and old 64MiB assembly-cap failure remain evidence.
 
 Use the checked API, five-source native loop and cached runtime/object relink
 before any new full acquisition. Continuation samples place substantial cost
 in lowering then verification. The best small source correction is to reuse
 already computed body use sets in two let helpers and skip analysis for empty
 environments, matching the mature compiler. Measure exact-QBE preservation and
-isolated lowering first. No newmachinebackend is justified by this bottleneck.
+isolated lowering first. No new machine backend is justified by this bottleneck.
 
 Generic lowering bypasses mature optimized workers; Phase110 owning optimizations
-are not all composed here. SequentialLinuxx86-64 and fixedproviders only: no
+are not all composed here. Sequential Linux x86-64 and fixed providers only: no
 parallel/GPU qualification. Structural verification is not an ownership proof.
 The source dependency slice and streaming output consumer are inactive experiments.
 Installed selection and the full Phase108 fallback remain unchanged. Phase105
-still owns productionB1/B2/upstream ratios; no newbroad execution-speed claim.
-Root owns serialCPU3 target work,4GiB/16GiB full-job memorycap/floor,128MiB full
-assemblyfilecap. Preserve failed receipts and exact evidence. No PR comments.
+still owns production B1/B2/upstream ratios; no new broad execution-speed claim.
+Root owns serial CPU3 target work, 4GiB/16GiB full-job memory cap/floor, 128MiB full
+assembly file cap. Preserve failed receipts and exact evidence. No PR comments.
 
 # Previous frontier: Phase110 structured runtime ownership and canonical calls
 

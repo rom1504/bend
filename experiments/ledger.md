@@ -11,17 +11,17 @@ User objective: make the Bend compiler written in Bend and its validation loop m
 [Report](../implementation/phase111/README.md).
 
 Full source now compiles through Bend structured segments directly to QBE.
-Native N1 self-emission reproduces50,664,292QBEbytes, assembly and object exactly
-and builds N2. Executables differ in linker file-symbol path/buildID metadata;
-load images match except the parsed20-byte buildID. Successor19focused cases
-and six initial corpus cases pass; final corpus state is in the report.
+Native N1 self-emission reproduces 50,664,292 QBE bytes, assembly and object exactly
+and builds N2. Executables differ in linker file-symbol path/build ID metadata;
+load images match except the parsed 20-byte build ID. All 19 focused successor cases
+and 45 corpus programs pass, with disjoint six/39 partitions and fixed prior outputs.
 
-Native emission944.82s (instrumented), build10.26s, wholeguard956.58s, peak1.999GB.
-A runtime-only26-word transport width replaces256-word work while preserving
-physicalABI; five same-QBE request observations use15–18%less time. Ten runtime
-and13bank controls pass.53structural verifier controls are not ownership proofs.
-Failed300s acquisition,64MiB assembly limit and1,100s native deadline are retained.
-No production promotion or newupstream/B1/B2/compiled-program ratio. Next: exact
+Native emission 944.82s (instrumented), build 10.26s, whole guard 956.58s, peak 1.999GB.
+A runtime-only 26-word transport width replaces 256-word work while preserving
+physical ABI; five same-QBE request observations use 15–18% less time. Ten runtime
+and 13 bank controls pass. 53 structural verifier controls are not ownership proofs.
+Failed 300s acquisition, 64MiB assembly limit and 1,100s native deadline are retained.
+No production promotion or new upstream/B1/B2/compiled-program ratio. Next: exact
 use-set reuse already present in the mature lowerer, measured before reacquiring
 an image. Full report separates implemented, qualified and inactive work.
 

@@ -1,6 +1,7 @@
 # Phase111: complete direct QBE compilation
 
-Status: implementation authorized on 2026-10-18. Starting commit
+Status: implemented and experimentally qualified on 2026-10-18; see the
+[report](../../implementation/phase111/README.md). Starting commit
 `569914d223731ff1a9dc5e083fb8613d9778cecc`, branch `selfhost/bootstrap`.
 
 ## Objective and boundary

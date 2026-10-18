@@ -1,6 +1,6 @@
 # P111-001: full generic segments directly to QBE
 
-Decision: implemented, full native qualification in progress. Correctness:
+Decision: implemented and qualified for the stated experimental boundary. Correctness:
 19native focused cases pass on runtime03, five byte-identical cases and ten
 runtime boundaries pass on runtime04. Performance: full machine build10.26s;
 small runtime-only screen improves15–18%in single observations. Native
@@ -29,6 +29,5 @@ by deadline. The bounded-register runtime retry preserves identical Bend and
 QBE input and has advanced from lowering to IR verification in separate
 qualitative continuation samples. These pauses make its wall clock instrumented.
 Full output comparison and successor construction succeed in the runtime04
-retry (944.82s native emission;10.26s machine build). Successor corpus
-qualification follows. Raw executables differ in linker metadata; a separate
+retry (944.82s native emission;10.26s machine build). All19focused successor cases and45corpus programs pass. Raw executables differ in linker metadata; a separate
 loaded-image comparison preserves that distinction.

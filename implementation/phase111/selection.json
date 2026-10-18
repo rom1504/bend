@@ -1,0 +1,108 @@
+{
+  "kind": "phase111-qualified-experimental-native-compiler",
+  "complete": true,
+  "qualified": true,
+  "installedDefaultChanged": false,
+  "source": {
+    "file": "selfhost/build/phase111/full-source05/compiler.bend",
+    "bytes": 1879953,
+    "sha256": "825cb03276c30a944ef1b1e8ed0624531253d2f39a502b0fcbfbfea3f3bb3f44"
+  },
+  "parent": {
+    "file": "selfhost/build/phase111/full-native03/program",
+    "bytes": 15731104,
+    "sha256": "284797e08ea6c754e6f0a8508e3f2d3bc18b18722ba27616229fee7403897872"
+  },
+  "successor": {
+    "file": "selfhost/build/phase111/native-self02/build/program",
+    "bytes": 15731104,
+    "sha256": "f040f0be44522581811d6b0ed7a3067143ad733e8d703e584283d55d7896bcf3"
+  },
+  "runtime": {
+    "file": "selfhost/build/phase111/runtime-source04/runtime.o",
+    "bytes": 94392,
+    "sha256": "560bbec83395b6a4b2be247e14b362fc1e803ee0a86c680f3797d895ed67c23e"
+  },
+  "qbe": {
+    "file": "selfhost/build/phase111/native-self02/program.ssa",
+    "bytes": 50664292,
+    "sha256": "143521cc2e747a1af741aa8e62bd16bb476b2221836322ee5bb023e0da4466b2"
+  },
+  "assets": {
+    "file": "selfhost/tools/performance/phase111/native-assets01.json",
+    "bytes": 1931,
+    "sha256": "543e8e255a5d6818e0a32a42f5654d40ae172f836ded33f488c1ae82dca5f7ba"
+  },
+  "evidence": [
+    {
+      "file": "selfhost/build/phase111/native-self02/report.json",
+      "bytes": 8238,
+      "sha256": "f2dfbaea6e6f7683f585ecd9d354d64c08d53006e026a589783acce1e438a0d5"
+    },
+    {
+      "file": "selfhost/build/phase111/native-self02/image-comparison/report.json",
+      "bytes": 46302,
+      "sha256": "10d499407d4cee44be46a76eeec7c7c72ecbf13443d970d846045a2b874825b4"
+    },
+    {
+      "file": "selfhost/build/phase111/successor-focused01/report.json",
+      "bytes": 76602,
+      "sha256": "a558614cd51ccb17831a78029993744e80e398fa70bc28e3a8651999dc94b4d9"
+    },
+    {
+      "file": "selfhost/build/phase111/successor-representatives01/report.json",
+      "bytes": 56446,
+      "sha256": "60f48b9eb1ff3b9160ee7a47904433e016571fbfd55f400969e9c7d165158b2e"
+    },
+    {
+      "file": "selfhost/build/phase111/successor-remaining39/report.json",
+      "bytes": 197336,
+      "sha256": "e5f5db96f68bc980db8550721fd903dafaac2c7f08aa30c4f7f03887fad93f66"
+    },
+    {
+      "file": "selfhost/build/phase111/runtime-boundaries04/report.json",
+      "bytes": 11848,
+      "sha256": "015e76ffb789774f303d575ae06c2c8cd67a42362a6343ec2f8cfb13e286224c"
+    },
+    {
+      "file": "selfhost/build/phase111/runtime-banks04/report.json",
+      "bytes": 15625,
+      "sha256": "cbc4f8a8c5eba93f06f260c2d78be66ec8edead41c5fd3ba345c1d48b0901d7a"
+    },
+    {
+      "file": "selfhost/build/phase111/successor-live01/report.json",
+      "bytes": 7510,
+      "sha256": "b7040f90ca474c1cbef8f2fc228b3ac7f7ce6ec0a51dc55648a5c3e87cfbfa92"
+    }
+  ],
+  "method": {
+    "file": "selfhost/build/phase111/qualification01/method.py",
+    "bytes": 3212,
+    "sha256": "94a3f7781048f31a2beba50d22aa994c4403f71d736e9b079024dfc672fa37f1"
+  },
+  "gates": {
+    "nativeSelfEmissionQbeExact": true,
+    "assemblyAndObjectExact": true,
+    "loadImageEqualExceptBuildId": true,
+    "rawElfExact": false,
+    "focused": 19,
+    "corpus": 45,
+    "runtimeBoundaries": 10,
+    "bankBoundaries": 13,
+    "liveBaseClosure": true
+  },
+  "scope": "Linux x86-64 sequential CPU, fixed runtime providers and authenticated Base/cache. Route-local N1/N2, not production B1/B2. Cached C runtime remains; ordinary requests use no generated C/cproc/Clang. Finite semantic gates are not exhaustive conformance or whole-compiler proof.",
+  "timings": {
+    "nativeSelfEmissionSeconds": 944.818035164848,
+    "instrumented": true,
+    "comparativeExecutionSpeedEstablished": false
+  },
+  "omissions": [
+    "parallel/GPU qualification",
+    "arbitrary foreign providers",
+    "default promotion",
+    "new upstream speed ratios",
+    "inactive dependency slice",
+    "inactive streaming consumer"
+  ]
+}

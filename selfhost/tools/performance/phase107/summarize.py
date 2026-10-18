@@ -151,6 +151,24 @@ def pipeline(path):
                 clockScope=report['clockScope'])
 
 
+def paired_policy(path):
+    report, provenance = receipt(path)
+    table = []
+    for original in report['summary']:
+        measurements = {role: stats([r['seconds'] for r in report['jobs']
+                                     if (r['name'], r['target'], r['role']) ==
+                                     (original['name'], original['target'], role)])
+                        for role in original['samples']}
+        assert all(math.isclose(v['medianSeconds'], original['medians'][role], rel_tol=1e-12)
+                   for role, v in measurements.items())
+        table.append(dict(name=original['name'], target=original['target'],
+                          sameText=original['sameText'], measurements=measurements))
+    return dict(provenance=provenance, rows=table, pairs=report['pairs'],
+        sameTextPairs=sum(r['sameText'] for r in table), changedTextPairs=sum(not r['sameText'] for r in table),
+        scope=report['scope'] + ' Absolute per-case medians are retained; no aggregate gain is inferred. '
+        'Code-identical controls are timing observations, not optimization wins.')
+
+
 def draw(metrics, directory, preview=None):
     os.environ.setdefault('MPLCONFIGDIR', '/tmp/bend-phase107-matplotlib')
     import matplotlib
@@ -219,11 +237,19 @@ def draw(metrics, directory, preview=None):
         ax.legend()
     fig.suptitle('Construction, optimization, verification and emission only; byte-identical output', fontsize=11)
     finish(fig, 'identical-kernel.svg')
-    if metrics.get('nativePipelineRequests'):
-        reports = metrics['nativePipelineRequests']
+    request_groups = [(['kernel-measure02', 'kernel-measure03'], 'native-pipeline-requests.svg'),
+                      (['kernel-measure04', 'kernel-measure05'], 'native-constant-requests.svg')]
+    request_labels = {'kernel-measure02': 'original promotion', 'kernel-measure03': 'promotion prefilter',
+                      'kernel-measure04': 'optional constants', 'kernel-measure05': 'constant prefilter'}
+    for report_names, figure_name in request_groups:
+        reports = {name: metrics.get('nativePipelineRequests', {})[name] for name in report_names
+                   if name in metrics.get('nativePipelineRequests', {})}
+        if not reports:
+            continue
         fig, axes = plt.subplots(2, len(reports), figsize=(11, 7), squeeze=False)
         for column, (name, report) in enumerate(reports.items()):
             chosen = [r for r in report['rows'] if r['name'] == 'many' and r['format'] == 'json']
+            chosen.sort(key=lambda r: ['checked', 'fast', 'promote', 'constant'].index(r['policy']))
             for row_index, host in enumerate(['native', 'js']):
                 ax = axes[row_index][column]
                 values = [r['measurements'][host] for r in chosen]
@@ -232,14 +258,15 @@ def draw(metrics, directory, preview=None):
                           [(r['maxSeconds'] - r['medianSeconds']) * 1000 for r in values]]
                 bars = ax.bar([r['policy'] for r in chosen], medians, yerr=errors, capsize=4,
                               color=['#92999f' if r['policy'] == 'checked' else
-                                     '#167d9a' if r['policy'] == 'fast' else '#b65c22' for r in chosen])
+                                     '#167d9a' if r['policy'] == 'fast' else
+                                     '#7961a4' if r['policy'] == 'constant' else '#b65c22' for r in chosen])
                 ax.bar_label(bars, labels=[f'{m:.2f}' for m in medians], padding=5)
                 ax.set_ylim(0, max(r['maxSeconds'] * 1000 for r in values) * 1.22)
                 ax.set_ylabel(f'{host.upper()} fresh request (ms)')
-                ax.set_title(name + (' / original promotion' if name.endswith('02') else ' / promotion prefilter'))
+                ax.set_title(name + ' / ' + request_labels[name])
         fig.suptitle('128-helper IR → JSON: three fresh processes per policy and host\n'
                      'Same image within each panel; different images between columns. No cross-metric gain multiplication.', fontsize=11)
-        finish(fig, 'native-pipeline-requests.svg')
+        finish(fig, figure_name)
     if metrics.get('pipelineAudit'):
         rows = metrics['pipelineAudit']['rows']
         fig, ax = plt.subplots(figsize=(8, 4.5))
@@ -289,14 +316,14 @@ def main():
     if pipelines:
         result['pipelineAudit'] = pipeline(pipelines[-1])
     result['nativePipelineRequests'] = {}
-    for name in ['kernel-measure02', 'kernel-measure03']:
+    for name in ['kernel-measure02', 'kernel-measure03', 'kernel-measure04', 'kernel-measure05']:
         path = BUILD / name / 'report.json'
         if path.exists() and read(path).get('complete') and read(path).get('passed'):
             section = kernels(path)
             section['withinImageComparisons'] = []
             for workload in sorted({r['name'] for r in section['rows']}):
                 rows = {r['policy']: r for r in section['rows'] if r['name'] == workload and r['format'] == 'json'}
-                for left, right in [('fast', 'checked'), ('promote', 'fast')]:
+                for left, right in [('fast', 'checked'), ('promote', 'fast'), ('constant', 'promote')]:
                     if left in rows and right in rows:
                         section['withinImageComparisons'].append(dict(name=workload, numerator=left, denominator=right,
                             ratios={host: rows[left]['measurements'][host]['medianSeconds'] /
@@ -304,12 +331,35 @@ def main():
             section['scope'] += ' Output equality compares native versus JS for the same policy. '
             section['scope'] += 'Within-image policy ratios are separate from host ratios and from warm optimizer timings; gains are not multiplied.'
             result['nativePipelineRequests'][name] = section
+    heldout = BUILD / 'heldout-latency01/report.json'
+    if heldout.exists() and read(heldout).get('complete'):
+        result['heldoutInstalledVsNativeSource'] = source_latency(heldout, True)
+        result['heldoutInstalledVsNativeSource']['freeze'] = read(heldout)['freeze']
+    result['pairedPolicyScreens'] = {}
+    for name in ['strength-pair01', 'constant-pair01']:
+        path = BUILD / name / 'report.json'
+        if path.exists() and read(path).get('complete'):
+            result['pairedPolicyScreens'][name] = paired_policy(path)
+    result['optionalKernelAcquisitions'] = {}
+    for version in ['04', '05']:
+        path = out / f'kernel{version}-acquisition.json'
+        if path.exists():
+            acquisition = read(path)
+            assert acquisition['complete'] and acquisition['retrospectiveFlag']
+            result['optionalKernelAcquisitions'][version] = dict(receipt=pin(path),
+                artifacts=acquisition['artifacts'], retrospectiveFlag=True,
+                emissionGuardSeconds=acquisition['successfulEmission']['recorded']['wallSeconds'],
+                clangGuardSeconds=acquisition['successfulClangBuild']['recorded']['wallSeconds'],
+                sumGuardSeconds=acquisition['successfulAcquisitionGuardedSeconds'],
+                elapsedEnvelopeSeconds=acquisition['emissionToBuildCompletionEnvelopeSeconds'],
+                scope=acquisition['provenanceBoundary'])
     result['figures'] = draw(result, out / 'figures', preview)
     (out / 'metrics.json').write_text(json.dumps(result, indent=2) + '\n')
     latest = screens[result['latestBackendScreen']]
     lines = ['# Phase107 measured metrics', '', f"Backend screen: **{result['latestBackendScreen']}** "
              f"(`{latest['provenance']['pipeline']}`). Ratios are time ratios; lower is faster.", '',
-             '**Runtime baseline: raw experimental IR → C/Clang O2, not upstream Bend.**', '',
+             '**Runtime baseline: raw experimental IR → C/Clang O2, not upstream Bend.** '
+             'The latest optional policy is a distinct experimental stage, not the installed native frontend policy.', '',
              '| Workload | Optimized C / raw C | Optimized CL / raw C | Optimized QBE / raw C |',
              '| --- | ---: | ---: | ---: |']
     for row in latest['samples']:
@@ -322,6 +372,18 @@ def main():
         if row['metric'] == 'sourceToExecutableSeconds':
             m = row['measurements']
             lines.append(f"| {row['case']} | {m['legacy']['medianSeconds']*1000:.2f} | {m['native']['medianSeconds']*1000:.2f} | {row['nativeRatio']:.3f}× |")
+    if result.get('heldoutInstalledVsNativeSource'):
+        section = result['heldoutInstalledVsNativeSource']
+        lines += ['', '### Separately frozen held-out source timings', '', section['scope'], '',
+                  '| Case | Installed C/Clang, ms | Native QBE, ms | Native / installed |',
+                  '| --- | ---: | ---: | ---: |']
+        for row in section['rows']:
+            if row['metric'] == 'sourceToExecutableSeconds':
+                m = row['measurements']
+                lines.append(f"| {row['case']} | {m['legacy']['medianSeconds']*1000:.2f} | {m['native']['medianSeconds']*1000:.2f} | {row['nativeRatio']:.3f}× |")
+        lines += ['', f"Equal-case geometric mean of these three source-to-executable ratios: "
+                  f"**{section['geometricMeanRatios']['sourceToExecutableSeconds']:.6f}×**. "
+                  'This is not a program-runtime ratio or a new optimization-policy selection.']
     lines += ['', '## Identical 128-helper kernel: fresh requests', '',
         'Same Bend IR construction/optimization/verification/emission; byte-identical output. '
         'Includes process startup. Excludes parsing source, object generation, linking and program runtime.', '',
@@ -340,7 +402,7 @@ def main():
     if result['nativePipelineRequests']:
         lines += ['', '## Fresh native pipeline requests', '',
             'The 128-helper kernel emits JSON. Each row has three fresh processes per host. '
-            'Policies within each report use the same image; the two reports use different images. '
+            'Policies within each report use the same image; separate reports use different images. '
             'Native/JS equality is checked for each same-policy pair. These are complete kernel '
             'requests, not source compilation or generated-program execution, and are not multiplied '
             'with the warm optimizer or hosting gains above.', '',
@@ -352,6 +414,29 @@ def main():
                     m = row['measurements']
                     lines.append(f"| {name} | {row['policy']} | {m['native']['medianSeconds']*1000:.3f} | "
                                  f"{m['js']['medianSeconds']*1000:.3f} | {len(section['outputComparisons'])} |")
+    for name, section in result['pairedPolicyScreens'].items():
+        candidate = 'strength' if name.startswith('strength') else 'constant'
+        lines += ['', f'## Paired optional {candidate} stage', '',
+            f"Five alternating rounds per pair. {section['changedTextPairs']} changed-text pairs and "
+            f"{section['sameTextPairs']} identical-text controls; all samples are retained in JSON. "
+            'Only changed-text absolute medians are listed below. Mixed wins/regressions are not collapsed '
+            'into an aggregate optimization gain. Both comparisons use the promotion stage as baseline.', '',
+            f'| Workload | Backend | Promotion, ms | {candidate.title()}, ms |', '| --- | --- | ---: | ---: |']
+        for row in sorted(section['rows'], key=lambda r: (r['name'], r['target'])):
+            if not row['sameText']:
+                m = row['measurements']
+                lines.append(f"| {row['name']} | {row['target']} | {m['promotion']['medianSeconds']*1000:.3f} | {m[candidate]['medianSeconds']*1000:.3f} |")
+    if result['optionalKernelAcquisitions']:
+        lines += ['', '## Optional kernel image acquisition', '',
+            'Acquisition uses the installed Bend-to-C path and Clang once. These are summed successful '
+            'guard times, separate from request latency; the full receipts retain elapsed envelopes '
+            'and JS API construction separately. Both receipts are explicitly retrospective, including '
+            'the limitation that macro-included C was not independently hashed at Clang launch.', '',
+            '| Image | Bend-to-C, s | Clang, s | Sum, s | Receipt |', '| --- | ---: | ---: | ---: | --- |']
+        for version, acquisition in result['optionalKernelAcquisitions'].items():
+            lines.append(f"| kernel{version} | {acquisition['emissionGuardSeconds']:.3f} | "
+                         f"{acquisition['clangGuardSeconds']:.3f} | {acquisition['sumGuardSeconds']:.3f} | "
+                         f"[Source and tool hashes](kernel{version}-acquisition.json) |")
     lines += ['', 'All samples, ranges, recorded input hashes, report hashes and precise scopes are in '
               '[metrics.json](metrics.json). Figures are standalone SVGs in [figures/](figures/). '
               'Reproduce offline with `python3 -B selfhost/tools/performance/phase107/summarize.py`.', '']

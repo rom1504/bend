@@ -1,12 +1,12 @@
 # Phase107 execution and source accounting
 
-Snapshot: **2026-10-18T08:58:29.504173+00:00**. Targets may continue; this is not a declared final cutoff.
+Final target cutoff: **2026-10-18T09:08:13.961640+00:00** (`constant-final-guard01`), following the coordinator’s closure at **09:08:13 UTC**. Offline consolidation snapshot: **2026-10-18T09:12:14.233259+00:00**.
 
 The inventory includes every closed `process.json` beneath Phase107 and its eight Phase98 source-law guard jobs. It preserves failed attempts and intended negative checks. It does not infer token usage, Codex quota or agent effort from elapsed time.
 
 ## Recorded occupancy
 
-The receipt envelope runs from **2026-10-18T06:42:49.234613+00:00** to **2026-10-18T08:57:09.792557+00:00**: **134.34 minutes**. The **131** guard intervals sum to **1847.329s**; their union is **1847.329s** (**22.92%** of that envelope). Overlap wall time is **0.000000s**, with at most **1** recorded guard job active. The remaining **6213.229s** is outside those receipts, not a measure of wasted time.
+The receipt envelope runs from **2026-10-18T06:42:49.234613+00:00** to **2026-10-18T09:08:13.961640+00:00**: **145.41 minutes**. The **148** guard intervals sum to **2010.129s**; their union is **2010.129s** (**23.04%** of that envelope). Overlap wall time is **0.000000s**, with at most **1** recorded guard job active. The remaining **6714.598s** is outside those receipts, not a measure of wasted time.
 
 Method: use each half-open epoch interval `[started, finished)`, sweep sorted endpoints, remove ending jobs before adding starting jobs, and accumulate union/overlap segments. The JSON retains every interval, command, hash and original monotonic `wallSeconds`. Parent guard time and inner job durations are never added together. These guards cover process trees: a serial guard schedule does not prove that a tool such as `make` used only one internal process.
 
@@ -15,34 +15,34 @@ Method: use each half-open epoch interval `[started, finished)`, sweep sorted en
 | Full native frontend acquisition | 5 | 858.279 | 0 |
 | Independent source-law checks | 8 | 4.473 | 2 |
 | QBE tool construction | 2 | 2.747 | 1 |
-| Runtime and latency campaigns, including their checks | 15 | 370.233 | 2 |
-| Semantic, cache and composition qualification | 27 | 293.516 | 5 |
-| Small IR kernel acquisition | 10 | 127.059 | 1 |
-| Source preparation, admission and emission | 64 | 191.023 | 16 |
+| Runtime and latency campaigns, including their checks | 21 | 466.356 | 2 |
+| Semantic, cache and composition qualification | 28 | 293.601 | 5 |
+| Small IR kernel acquisition | 16 | 224.274 | 1 |
+| Source preparation, admission and emission | 68 | 160.400 | 16 |
 
 These path-based groups partition observations, not compiler execution phases. Build and benchmark batches also contain orchestration, checks, serialization and waiting. Target subprocess clocks remain in their original reports; their scopes differ and are not combined into a fabricated exact target/method split. Offline agent work consisted of source changes/review, receipt analysis and documentation. The interval evidence supports the coordinator’s serial guarded-target schedule; it does not measure all offline activity or internal tool parallelism.
 
 ## Resource envelope and retained failures
 
-Maximum sampled process-tree RSS was **1.630 GiB** (`native-link04-guard`). Minimum reported available memory was **23.119 GiB**. The lowest recorded prelaunch disk space was **713.1 MiB**; this is not continuous disk sampling. There were **0** recorded guard resource stops. No OOM is indicated by these receipts.
+Maximum sampled process-tree RSS was **1.630 GiB** (`native-link04-guard`). Minimum reported available memory was **23.119 GiB**. The lowest recorded prelaunch disk space was **649.6 MiB**; this is not continuous disk sampling. There were **0** recorded guard resource stops. No OOM is indicated by these receipts.
 
-There are **27** nonzero exits, including **2** deliberate false-kernel-proof rejections. The others retain source-admission errors, transport/runtime controls that exposed bugs, stale output/input paths, and failed tool launches. A nonzero harness exit is not automatically a compiler semantic failure. Exact codes and diagnostic excerpts are preserved in `accounting.json`. No failed receipt is omitted from the occupancy total.
+There are **27** nonzero exits, including **2** deliberate false-kernel-proof rejections. The others retain source-admission errors, transport/runtime controls that exposed bugs, stale output/input paths, and failed tool launches. A nonzero harness exit is not automatically a compiler semantic failure. Exact codes and diagnostic excerpts are preserved in `accounting.json`. No failed receipt is omitted from the occupancy total. The separately retained [unguarded inline-check invocation](../../selfhost/build/phase107/constant-prefilter01/inline-check-attempt.md) passed the wrong argument count to a zero-argument effect witness; its unknown duration is excluded from guard counts and timings. The final guarded standalone check passed.
 
 ## Current tracked source size
 
 Current working-tree bytes of git-tracked Phase107 files. Counts include comments/blank lines. Fixtures, laws and experimental control mains are separate; generated images, inherited Phase106 IR, Base and existing compiler frontend are not counted as new Phase107 algorithms.
 
-New Phase107 Bend algorithms/entry integration total **2717 lines**, **20 files**, and **391 named definitions**. A definition count is a mechanical inventory, not a count of distinct concepts or a correctness claim.
+New Phase107 Bend algorithms/entry integration total **2737 lines**, **20 files**, and **394 named definitions**. A definition count is a mechanical inventory, not a count of distinct concepts or a correctness claim.
 
 | Group | Files | Lines including comments/blanks | Nonblank lines |
 | --- | ---: | ---: | ---: |
 | Bend QBE emission and units | 3 | 392 | 329 |
-| Bend experimental control entrypoints | 2 | 99 | 88 |
+| Bend experimental control entrypoints | 2 | 100 | 89 |
 | Bend fixtures and source cases | 25 | 912 | 780 |
 | Bend local laws | 2 | 61 | 47 |
-| Bend optimization algorithms and shared IR helpers | 15 | 1972 | 1693 |
+| Bend optimization algorithms and shared IR helpers | 15 | 1992 | 1710 |
 | Bend source lowering and native entry | 2 | 353 | 303 |
-| Non-Bend methods and support | 61 | 4432 | 4229 |
+| Non-Bend methods and support | 66 | 4769 | 4555 |
 
 These are additions to an experimental subsystem. They do not imply that the installed compiler shrank. The inherited Phase106 model/verifier/consumers, Base and existing frontend are dependencies rather than new Phase107 lines. Per-file hashes and the tracked-file snapshot are retained. Untracked Bend source, if present, is listed separately and excluded.
 

@@ -1,0 +1,427 @@
+{
+  "kind": "phase107-retrospective-kernel-acquisition",
+  "complete": true,
+  "retrospectiveFlag": true,
+  "snapshotUtc": "2026-10-18T09:07:57.411131+00:00",
+  "artifacts": {
+    "source": {
+      "file": "selfhost/build/phase107/kernel-source04/producer.bend",
+      "bytes": 148689,
+      "sha256": "5b50c72228af80fb4695b54a09137d73ea63fa7c2c5cd516323908b8956690af"
+    },
+    "generatedC": {
+      "file": "selfhost/build/phase107/kernel-source04/producer.c",
+      "bytes": 4965488,
+      "sha256": "212f56d8c074c774193342bc70c9840dbad33b0f8034cbae09e1e374515c4312"
+    },
+    "binary": {
+      "file": "selfhost/build/phase107/kernel-source04/producer",
+      "bytes": 2044616,
+      "sha256": "717d1c4048c3e59b2d89510ecda77a959c2db7d1f5ea1cf564159790d8dcbf45"
+    },
+    "api": {
+      "file": "selfhost/build/phase107/kernel-source04/api.mjs",
+      "bytes": 251808,
+      "sha256": "ea0a40997918abe662de62eda58b4399b7c79a4232c3ac6717fe2dc8b7325f66"
+    },
+    "manifest": {
+      "file": "selfhost/build/phase107/kernel-source04/manifest.json",
+      "bytes": 7174,
+      "sha256": "0a62de547571c4cac31190281bb6cc2559b1954c665a66773fdbe50a3cead59c"
+    }
+  },
+  "sourcePreparation": {
+    "kind": "phase107-native-ir-kernel-source",
+    "version": 1,
+    "prepared": true,
+    "targetsExecuted": false,
+    "method": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase107/kernel/prepare.py",
+      "bytes": 2833,
+      "sha256": "9169e45e35b21ef968368a002eaff6786020bb6be9754510bf49dbccc353ea06"
+    },
+    "inputs": [
+      {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase106/ir/model.bend",
+        "bytes": 2001,
+        "sha256": "4f38489f3ee5aa9b850fc64046edbf2b524c190b1209beebdb7ac7ded5d86e83"
+      },
+      {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase106/ir/optimize.bend",
+        "bytes": 3030,
+        "sha256": "674d8a58303f41c39630246d8a63fd7f024b0b9aaaa3f5f9c949b882e317f6e7"
+      },
+      {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase106/ir/verify.bend",
+        "bytes": 8200,
+        "sha256": "1e775c94108e866dc158ddb019fd19f4906a1ed678699e9e16efe281de2fc481"
+      },
+      {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase106/ir/json.bend",
+        "bytes": 4219,
+        "sha256": "564b52e4d88020d9575759bdc1152f260d11c16a60abd416509023df4ac10d42"
+      },
+      {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase106/ir/c.bend",
+        "bytes": 6345,
+        "sha256": "0da7e56eb0ff5df9ce710a9bcc27f32ce248491a178f66d22fb3b176fc1bc703"
+      },
+      {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase106/ir/workloads.bend",
+        "bytes": 14287,
+        "sha256": "3aeb611273c86c075cf87bd3e735d494d1d6397fbb9764cbcc8ddadd689571ac"
+      },
+      {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase106/laws/bridge.bend",
+        "bytes": 2653,
+        "sha256": "4a104ac17b7615524860a3bdb572827832c5fb42967091e31c2cd81ceb760316"
+      },
+      {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase107/backends/qbe.bend",
+        "bytes": 13792,
+        "sha256": "9e302f91ce8f89b069d2e7bf20ffde058eaede9c6b1e499728f431b1e3071848"
+      },
+      {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase107/backends/qbe-entry.bend",
+        "bytes": 3598,
+        "sha256": "16e16e94a0d317f904ea2c70505da408e2b6ca5eededb9246d7d1b52b199554f"
+      },
+      {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase107/inline/model.bend",
+        "bytes": 3376,
+        "sha256": "79babf22158b729a075de88e5b3d97754203ef74d5a41a661a6ad5befa4fe750"
+      },
+      {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase107/inline/admit.bend",
+        "bytes": 4013,
+        "sha256": "2b888e327ad86effa8e0f0671d7474fcfd0344c44e34f1e97db3c3d6fab46b3f"
+      },
+      {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase107/inline/rename.bend",
+        "bytes": 4026,
+        "sha256": "790709a448b63894b534684f109f4170b39d8f8bcab50923e8ca2a0bc9d9382f"
+      },
+      {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase107/inline/expand.bend",
+        "bytes": 7735,
+        "sha256": "5b2190348bce8f8bd4708b7fd32fb3238467658f3923e88881afed344a715e9f"
+      },
+      {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase107/inline/deep.bend",
+        "bytes": 6972,
+        "sha256": "13a5304d6344d4265e31d1d654ba47b1ba7f926ba915991035846a2bcca31aef"
+      },
+      {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase107/inline/tail.bend",
+        "bytes": 6210,
+        "sha256": "a0496030fa470bc18802256b07698ed344a11cb09da5cf76d40571458904b8ff"
+      },
+      {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase107/inline/entry.bend",
+        "bytes": 2437,
+        "sha256": "6f1eb4f22e0cdbabcfc5ec5df2aea8c5919d756090c05441afae14ab217a347b"
+      },
+      {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase107/inline/leaf.bend",
+        "bytes": 3156,
+        "sha256": "83b24d39581639cbce9248c4148f024e744f28c697dc51aae4c4a21434c7a98a"
+      },
+      {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase107/inline/reachable.bend",
+        "bytes": 4371,
+        "sha256": "8e43fedccc3fc4597a8ec2a80a243d07774622f183ac27d67f3b6b78bfbc8966"
+      },
+      {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase107/inline/demand.bend",
+        "bytes": 2838,
+        "sha256": "39ce83204eb84450a37147244e174a1f3189410c0540bc4ccbaedafb2f8b04b7"
+      },
+      {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase107/inline/memory.bend",
+        "bytes": 15532,
+        "sha256": "f313276e844cc61a2eced51eead3d540bbe3c96075c15ee66fb31a0525050686"
+      },
+      {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase107/inline/pipeline.bend",
+        "bytes": 3663,
+        "sha256": "bb4adc761d4515ab72b522db5fd0463a577a4034405a6badf4173f322ee5051f"
+      },
+      {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase107/inline/promotion.bend",
+        "bytes": 14158,
+        "sha256": "45bb80597a614529c0c80f53267ae4569cf6cb76acead1f5b7ef729abef8feb3"
+      },
+      {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase107/inline/constant.bend",
+        "bytes": 9073,
+        "sha256": "e9de89f34a695b82f7f2c3dbec81866968e42efb31c35604069f2203deddda51"
+      },
+      {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase107/kernel/main.bend",
+        "bytes": 2944,
+        "sha256": "ee9b26f809d3b3f08f7a2fe8da8c917b49dd80be71d193f199aa56793f6c1e68"
+      }
+    ],
+    "source": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase107/kernel-source04/producer.bend",
+      "bytes": 148689,
+      "sha256": "5b50c72228af80fb4695b54a09137d73ea63fa7c2c5cd516323908b8956690af"
+    },
+    "pipelines": {
+      "raw": [],
+      "pure": [
+        "nx_tail_optimize",
+        "nx_inline_entry(4096)",
+        "nx_optimize",
+        "nx_reachable"
+      ],
+      "memory": [
+        "nx_tail_optimize",
+        "nx_inline_entry(4096)",
+        "nx_reachable",
+        "nx_inline_leaf(4096)",
+        "nx_optimize",
+        "nx_reachable"
+      ],
+      "checked": [
+        "nx_tail_optimize",
+        "nx_inline_demand(4096)",
+        "nx_reachable",
+        "nx_inline_leaf(4096)",
+        "nx_reachable",
+        "nx_memory_forward",
+        "nx_optimize"
+      ],
+      "fast": [
+        "nx_pipeline_fast"
+      ],
+      "promote": [
+        "nx_pipeline_fast",
+        "nx_scalar_promote"
+      ],
+      "constant": [
+        "nx_pipeline_fast",
+        "nx_scalar_promote",
+        "nx_constant_propagate"
+      ]
+    },
+    "qbeFusion": {
+      "raw": false,
+      "pure": true,
+      "memory": true,
+      "checked": true,
+      "fast": true,
+      "promote": true,
+      "constant": true,
+      "maxBodyNodes": 512
+    },
+    "exports": [
+      "nx_workload",
+      "nx_verify",
+      "nx_kernel_policy",
+      "nx_kernel_text"
+    ],
+    "invocation": [
+      "WORKLOAD",
+      "raw|pure|memory|checked|fast|promote|constant",
+      "json|qbe"
+    ],
+    "scope": "IR constructor/optimizer/emitter only. No Bend source frontend or installed compiler replacement."
+  },
+  "measurement": {
+    "file": "selfhost/build/phase107/kernel-measure04/report.json",
+    "bytes": 71942,
+    "sha256": "0b2f001e9f2713b8f3c89daa035ec1d30bceab2d3f03817de477ace197c61144"
+  },
+  "successfulEmission": {
+    "process": {
+      "file": "selfhost/build/phase107/kernel-emit04-guard/process.json",
+      "bytes": 575,
+      "sha256": "7d304410625fe2020d2e7c09d5a123b8b0d1a6506b30486292483062fcb5afc0"
+    },
+    "recorded": {
+      "complete": true,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase86",
+        "taskset",
+        "-c",
+        "3",
+        "selfhost/bend",
+        "selfhost/build/phase107/kernel-source04/producer.bend",
+        "-o",
+        "selfhost/build/phase107/kernel-source04/producer.c"
+      ],
+      "started": 1792314026.8496995,
+      "rssLimitBytes": 2147483648,
+      "availableFloorBytes": 4294967296,
+      "peakTreeRssBytes": 205512704,
+      "minimumAvailableBytes": 27438755840,
+      "returncode": 0,
+      "wallSeconds": 8.326216563116759,
+      "finished": 1792314035.1759183
+    },
+    "inputs": [
+      {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/dist/native/bend",
+        "sha256": "55b4def3e01e194299fc8a4c96daf12def4cb4e742975ef4a7d748ba79c09a8e",
+        "bytes": 21159504
+      },
+      {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase107/kernel-source04/producer.bend",
+        "sha256": "5b50c72228af80fb4695b54a09137d73ea63fa7c2c5cd516323908b8956690af",
+        "bytes": 148689
+      }
+    ],
+    "method": {
+      "method": {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase86/guard.py",
+        "sha256": "dd8f3f8a44c336a15e7dd11a9727b218f13582139e34c0aa08a27f7b0b04b790",
+        "bytes": 1688
+      },
+      "support": {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/programs/support.py",
+        "sha256": "36e000b43f92809e2de0bcdb462e6e42005fad7341f6ec2122734311073d1cef",
+        "bytes": 6779
+      },
+      "cpu": "3",
+      "diskFreeBytes": 718184448
+    }
+  },
+  "successfulClangBuild": {
+    "process": {
+      "file": "selfhost/build/phase107/kernel-link04-guard/process.json",
+      "bytes": 871,
+      "sha256": "9597ed6ab0462b9e9b13f1abc3ba13b5fb54aaa1179968311e15e7d107b32d7f"
+    },
+    "recorded": {
+      "complete": true,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase86",
+        "taskset",
+        "-c",
+        "3",
+        "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+        "-O2",
+        "-isystem",
+        "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/include/clang",
+        "-DBEND_NATIVE_HOST=1",
+        "-DBEND_IMAGE_C=\"/home/ai/bend2/build/publish/bend/selfhost/build/phase107/kernel-source04/producer.c\"",
+        "selfhost/tools/native/cli/start.c",
+        "-lm",
+        "-pthread",
+        "-o",
+        "selfhost/build/phase107/kernel-source04/producer"
+      ],
+      "started": 1792314035.2483582,
+      "rssLimitBytes": 2147483648,
+      "availableFloorBytes": 4294967296,
+      "peakTreeRssBytes": 467337216,
+      "minimumAvailableBytes": 27226632192,
+      "returncode": 0,
+      "wallSeconds": 38.89721609395929,
+      "finished": 1792314074.1455731
+    },
+    "inputs": [
+      {
+        "path": "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+        "sha256": "9fcd5fc4baeea9c449bcc9ca4b9db7714465107669498b0056a853f22f5f4def",
+        "bytes": 119320
+      },
+      {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/native/cli/start.c",
+        "sha256": "342f1bcae6494fab26961ce7d9dda57c91e4d00a690d86181e1f38fb18d75924",
+        "bytes": 751
+      }
+    ],
+    "method": {
+      "method": {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase86/guard.py",
+        "sha256": "dd8f3f8a44c336a15e7dd11a9727b218f13582139e34c0aa08a27f7b0b04b790",
+        "bytes": 1688
+      },
+      "support": {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/programs/support.py",
+        "sha256": "36e000b43f92809e2de0bcdb462e6e42005fad7341f6ec2122734311073d1cef",
+        "bytes": 6779
+      },
+      "cpu": "3",
+      "diskFreeBytes": 715952128
+    }
+  },
+  "successfulAcquisitionGuardedSeconds": 47.223432657076046,
+  "emissionToBuildCompletionEnvelopeSeconds": 47.29587364196777,
+  "apiAcquisition": {
+    "process": {
+      "file": "selfhost/build/phase107/kernel-api04-guard/process.json",
+      "bytes": 705,
+      "sha256": "cbe92776bf5d219f5e0813537cafe8cb149bda60b7c23c76d2806e52f6a5d841"
+    },
+    "recorded": {
+      "complete": true,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase86",
+        "taskset",
+        "-c",
+        "3",
+        "selfhost/.bootstrap/bun-1.4.3/bun",
+        "selfhost/tools/stage0-library.mjs",
+        "selfhost/build/phase107/kernel-source04/producer.bend",
+        "selfhost/build/phase107/kernel-source04/api.mjs",
+        "nx_workload",
+        "nx_verify",
+        "nx_kernel_policy",
+        "nx_kernel_text"
+      ],
+      "started": 1792314025.143189,
+      "rssLimitBytes": 2147483648,
+      "availableFloorBytes": 4294967296,
+      "peakTreeRssBytes": 156233728,
+      "minimumAvailableBytes": 27515064320,
+      "returncode": 0,
+      "wallSeconds": 1.5542661419603974,
+      "finished": 1792314026.6974535
+    },
+    "inputs": [
+      {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/bun-1.4.3/bun",
+        "sha256": "7ce7d6b654eddeec20afddf2396317fba6dc19ab52788a27e894e1806bf8f24b",
+        "bytes": 88979072
+      },
+      {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/stage0-library.mjs",
+        "sha256": "ec3506de1558fa1e56cef54345053ffaf7bfcc92b8632eaf96e217c15b8a59c1",
+        "bytes": 4172
+      },
+      {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase107/kernel-source04/producer.bend",
+        "sha256": "5b50c72228af80fb4695b54a09137d73ea63fa7c2c5cd516323908b8956690af",
+        "bytes": 148689
+      }
+    ],
+    "method": {
+      "method": {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase86/guard.py",
+        "sha256": "dd8f3f8a44c336a15e7dd11a9727b218f13582139e34c0aa08a27f7b0b04b790",
+        "bytes": 1688
+      },
+      "support": {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/programs/support.py",
+        "sha256": "36e000b43f92809e2de0bcdb462e6e42005fad7341f6ec2122734311073d1cef",
+        "bytes": 6779
+      },
+      "cpu": "3",
+      "diskFreeBytes": 723206144
+    },
+    "includedInNativeAcquisitionSum": false
+  },
+  "provenanceBoundary": "Assembled retrospectively without executing targets. Source hash matches preparation manifest and pre-emission guard input; source/binary/API hashes match the later successful same-kernel measurement inputs. Generated C is hashed now and named by the successful Clang command, but the original guard did not independently pin the macro-included C at launch. This cannot retrospectively supply the missing contemporaneous C hash. Experimental image only; not a selected release or QBE self-hosting chain."
+}

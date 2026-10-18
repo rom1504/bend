@@ -1,23 +1,31 @@
 {
   "kind": "phase107-consolidation-accounting",
-  "snapshotUtc": "2026-10-18T08:58:29.504173+00:00",
-  "finalTargetCutoff": false,
-  "scope": "Closed guard receipts under selfhost/build/phase107 plus phase98/phase107-* proof roots. Snapshot only; later work is excluded. Process-tree wall occupancy is not CPU time, model thinking time, human effort, tokens or quota.",
+  "snapshotUtc": "2026-10-18T09:12:14.233259+00:00",
+  "finalTargetCutoff": true,
+  "coordinatorDeclaredClosedUtc": "2026-10-18T09:08:13+00:00",
+  "finalGuard": {
+    "file": "selfhost/build/phase107/constant-final-guard01/process.json",
+    "bytes": 509,
+    "sha256": "40748efd23a8dfde51e0b63949d013f2256b7ce6e251af762745017b69d0cb59"
+  },
+  "unguardedDiagnostics": [
+    {
+      "receipt": {
+        "file": "selfhost/build/phase107/constant-prefilter01/inline-check-attempt.md",
+        "bytes": 478,
+        "sha256": "1e3000169458d94731ca6fc46b9d1f04f17b41454d80728fb3f68ad165fbbab0"
+      },
+      "explanation": "An initial unguarded inline Python comparison after emission10 established equality\nof all78 matrix products, then supplied [0,0] to the zero-argument effect witness.\nreference.py:176 rejected the argument-count assertion before interpretation.\nNo successful combined report was written. This host-check invocation mistake\nis superseded by constant-final01, whose standalone method uses [] and retains\nits guard and complete product/model report. It is not a compiler mismatch.\n",
+      "scope": "Retained unguarded host diagnostic; no process interval was recorded, so no duration or guard receipt is invented."
+    }
+  ],
+  "scope": "Closed guard receipts under selfhost/build/phase107 plus phase98/phase107-* proof roots. Targets declared closed by the coordinator at 09:08:13 UTC; the final recorded guard ended at 09:08:13.961640 UTC. Offline consolidation after the cutoff is excluded. Process-tree wall occupancy is not CPU time, model thinking time, human effort, tokens or quota.",
   "discovery": {
     "roots": [
       "selfhost/build/phase107/**/process.json",
       "selfhost/build/phase98/phase107-*/**/process.json"
     ],
-    "pending": [
-      {
-        "receipt": {
-          "file": "selfhost/build/phase107/constant-pair-guard01/process.json",
-          "bytes": 413,
-          "sha256": "e8e6374577dc078a827ca96109235d6e48311c0edb902adbbaf453cebc4b8a34"
-        },
-        "reason": "No closed epoch interval"
-      }
-    ]
+    "pending": []
   },
   "method": {
     "interval": "Half-open [started,finished) epoch intervals. Sweep unique endpoints, remove ending jobs before adding starting jobs. Union accumulates intervals with >=1 active receipt; overlap wall uses >=2; excess counts integral(active-1). No child job timing is added to its enclosing guard.",
@@ -26,23 +34,23 @@
     "methodVsTarget": "Guard intervals include supervisors, orchestration, builds/tests, model calculations and waits. Inner target timings have heterogeneous scopes and are NOT summed into a second purported campaign total. Offline edits, source review, plotting, git, acquisition without a guard and inactive gaps are unmeasured.",
     "evidenceProducer": {
       "file": "/tmp/phase107-accounting.py",
-      "bytes": 19128,
-      "sha256": "9f6f35a3c52040fc7e65b3c56c76ec221b7b6c13143fe2d49640adab1fcd8996"
+      "bytes": 20329,
+      "sha256": "b5dbe36910413ff37ac87f7c951514d1ecbcd0e4cd28eedfeeebcdc9919fd909"
     },
-    "evidenceProducerSource": "import collections, datetime, hashlib, json, pathlib, re, subprocess, time\n\nROOT=pathlib.Path('/home/ai/bend2/build/publish/bend')\nP=ROOT/'selfhost/build/phase107'\nOUT=ROOT/'implementation/phase107'\nsnapshot=time.time()\ndef utc(t): return datetime.datetime.fromtimestamp(t,datetime.timezone.utc).isoformat()\ndef pin(p):\n    p=pathlib.Path(p);b=p.read_bytes()\n    return dict(file=str(p.relative_to(ROOT)) if p.is_relative_to(ROOT) else str(p),bytes=len(b),sha256=hashlib.sha256(b).hexdigest())\ndef load(p):return json.loads(pathlib.Path(p).read_text())\ndef write(p,r):p.write_text(json.dumps(r,indent=2)+'\\n')\ndef category(path):\n    name=path.parent.name\n    if 'phase98' in path.parts:return 'Independent source-law checks'\n    if name.startswith(('native-emit','native-link')):return 'Full native frontend acquisition'\n    if name.startswith(('kernel-api','kernel-emit','kernel-link')):return 'Small IR kernel acquisition'\n    if name.startswith(('kernel-measure','native-latency','legacy-latency','measure')):return 'Runtime and latency campaigns, including their checks'\n    if name.startswith('qbe-build'):return 'QBE tool construction'\n    if any(s in name for s in ['audit','controls','compatibility','heldout','bootstrap-compare']):return 'Semantic, cache and composition qualification'\n    return 'Source preparation, admission and emission'\npaths=sorted(P.rglob('process.json'))+sorted((ROOT/'selfhost/build/phase98').glob('phase107-*/**/process.json'))\nrows=[];pending=[]\nfor path in paths:\n    b=path.read_bytes();r=json.loads(b)\n    identity=dict(file=str(path.relative_to(ROOT)),bytes=len(b),sha256=hashlib.sha256(b).hexdigest())\n    if not all(isinstance(r.get(k),(int,float)) for k in ['started','finished']):\n        pending.append(dict(receipt=identity,reason='No closed epoch interval'));continue\n    if r['finished']>snapshot:\n        pending.append(dict(receipt=identity,reason='Finished after snapshot began'));continue\n    duration=r['finished']-r['started'];assert duration>=0\n    method=path.with_name('method.json');inputs=path.with_name('inputs.json')\n    row=dict(receipt=identity,category=category(path),started=r['started'],finished=r['finished'],\n        epochSeconds=duration,reportedWallSeconds=r.get('wallSeconds'),command=r.get('command'),\n        complete=r.get('complete'),returncode=r.get('returncode'),stoppedFor=r.get('stoppedFor'),\n        peakTreeRssBytes=r.get('peakTreeRssBytes'),minimumAvailableBytes=r.get('minimumAvailableBytes'),\n        rssLimitBytes=r.get('rssLimitBytes'),availableFloorBytes=r.get('availableFloorBytes'),\n        expectedNegative=(path.parent.name=='kernel-negative'))\n    if method.exists():row['guardMethod']=dict(receipt=pin(method),recorded=load(method))\n    if inputs.exists():row['guardInputs']=dict(receipt=pin(inputs),recorded=load(inputs))\n    for basename in ['stderr.log','stderr.txt','stderr','stdout.log','stdout.txt']:\n        log=path.with_name(basename)\n        if log.exists() and log.stat().st_size:\n            if r.get('returncode')!=0:\n                row['failureDiagnostic']=dict(receipt=pin(log),excerpt=log.read_text(errors='replace')[:1000])\n            break\n    rows.append(row)\nrows.sort(key=lambda r:(r['started'],r['finished']))\nevents=collections.defaultdict(lambda:dict(begin=[],end=[]))\nfor i,r in enumerate(rows):events[r['started']]['begin'].append(i);events[r['finished']]['end'].append(i)\nactive=set();prior=min(events);occupied=overlap=0.0;max_active=0;overlap_segments=[];union=[]\nfor epoch,event in sorted(events.items()):\n    length=epoch-prior\n    if active:\n        occupied+=length\n        if union and union[-1][1]==prior:union[-1][1]=epoch\n        else:union.append([prior,epoch])\n    if len(active)>1:\n        overlap+=length\n        overlap_segments.append(dict(started=prior,finished=epoch,receipts=[rows[i]['receipt']['file'] for i in sorted(active)]))\n    active.difference_update(event['end']);active.update(event['begin']);max_active=max(max_active,len(active));prior=epoch\nassert not active\nstart=min(r['started'] for r in rows);end=max(r['finished'] for r in rows);envelope=end-start\nsum_seconds=sum(r['epochSeconds'] for r in rows)\ngroups=[]\nfor name in sorted({r['category'] for r in rows}):\n    selected=[r for r in rows if r['category']==name]\n    groups.append(dict(category=name,receipts=len(selected),epochSeconds=sum(r['epochSeconds'] for r in selected),\n        reportedWallSeconds=sum(r['reportedWallSeconds'] or 0 for r in selected),\n        nonzero=sum(r['returncode']!=0 for r in selected)))\npeak=max(rows,key=lambda r:r['peakTreeRssBytes'] or 0)\navailable=[r for r in rows if isinstance(r['minimumAvailableBytes'],int)]\nleast=min(available,key=lambda r:r['minimumAvailableBytes'])\ndisk=[(r['guardMethod']['recorded']['diskFreeBytes'],r['receipt']) for r in rows\n      if isinstance(r.get('guardMethod',{}).get('recorded',{}).get('diskFreeBytes'),int)]\nnonzero=[r for r in rows if r['returncode']!=0]\ntracked=subprocess.check_output(['git','ls-files','selfhost/tools/performance/phase107'],cwd=ROOT,text=True).splitlines()\ndef sourcegroup(file):\n    p=pathlib.Path(file)\n    if p.suffix!='.bend':return 'Non-Bend methods and support' if p.suffix in ['.py','.mjs','.c','.rs','.sh'] else 'Other'\n    if 'cases' in p.parts or 'heldout' in p.parts or 'fixture' in p.name or p.name=='controls.bend':return 'Bend fixtures and source cases'\n    if 'law' in p.name:return 'Bend local laws'\n    if str(p).endswith(('inline/main.bend','kernel/main.bend')):return 'Bend experimental control entrypoints'\n    if '/frontend/' in file:return 'Bend source lowering and native entry'\n    if '/backends/' in file:return 'Bend QBE emission and units'\n    if '/inline/' in file:return 'Bend optimization algorithms and shared IR helpers'\n    raise AssertionError(file)\nsource_rows=[]\nfor file in tracked:\n    p=ROOT/file;group=sourcegroup(file)\n    if group=='Other':continue\n    text=p.read_text();lines=text.splitlines()\n    source_rows.append(dict(**pin(p),group=group,lines=len(lines),nonblankLines=sum(bool(x.strip()) for x in lines),\n                           bendDefinitions=sum(bool(re.match(r'^def\\s',x)) for x in lines) if p.suffix=='.bend' else None))\nsource_groups=[]\nfor name in sorted({r['group'] for r in source_rows}):\n    rr=[r for r in source_rows if r['group']==name]\n    source_groups.append(dict(group=name,files=len(rr),lines=sum(r['lines'] for r in rr),nonblankLines=sum(r['nonblankLines'] for r in rr),bendDefinitions=sum(r['bendDefinitions'] or 0 for r in rr)))\ncore_names={'Bend source lowering and native entry','Bend QBE emission and units','Bend optimization algorithms and shared IR helpers'}\ncore=[r for r in source_rows if r['group'] in core_names]\nsource_count=dict(snapshotUtc=utc(snapshot),gitHead=subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip(),\n    scope='Current working-tree bytes of git-tracked Phase107 files. Counts include comments/blank lines. Fixtures, laws and experimental control mains are separate; generated images, inherited Phase106 IR, Base and existing compiler frontend are not counted as new Phase107 algorithms.',\n    coreBend=dict(files=len(core),lines=sum(r['lines'] for r in core),definitions=sum(r['bendDefinitions'] for r in core)),groups=source_groups,files=source_rows,\n    untrackedPhase107Bend=subprocess.check_output(['git','ls-files','--others','--exclude-standard','selfhost/tools/performance/phase107/**/*.bend'],cwd=ROOT,text=True).splitlines())\nmetrics=OUT/'metrics.json'\nresult=dict(kind='phase107-consolidation-accounting',snapshotUtc=utc(snapshot),finalTargetCutoff=False,\n    scope='Closed guard receipts under selfhost/build/phase107 plus phase98/phase107-* proof roots. Snapshot only; later work is excluded. Process-tree wall occupancy is not CPU time, model thinking time, human effort, tokens or quota.',\n    discovery=dict(roots=['selfhost/build/phase107/**/process.json','selfhost/build/phase98/phase107-*/**/process.json'],pending=pending),\n    method=dict(interval='Half-open [started,finished) epoch intervals. Sweep unique endpoints, remove ending jobs before adding starting jobs. Union accumulates intervals with >=1 active receipt; overlap wall uses >=2; excess counts integral(active-1). No child job timing is added to its enclosing guard.',\n        reportedClock='reportedWallSeconds is retained separately; it may use a monotonic clock and differ slightly from finished-started.',\n        categorization='Path-based groups partition the selected guard receipts; they are not a profile of compiler phases.',\n        methodVsTarget='Guard intervals include supervisors, orchestration, builds/tests, model calculations and waits. Inner target timings have heterogeneous scopes and are NOT summed into a second purported campaign total. Offline edits, source review, plotting, git, acquisition without a guard and inactive gaps are unmeasured.',\n        evidenceProducer=pin('/tmp/phase107-accounting.py'),\n        evidenceProducerSource=pathlib.Path('/tmp/phase107-accounting.py').read_text()),\n    timeline=dict(firstReceiptUtc=utc(start),lastReceiptUtc=utc(end),receiptEnvelopeSeconds=envelope,\n        receiptCount=len(rows),sumEpochSeconds=sum_seconds,unionSeconds=occupied,overlapWallSeconds=overlap,\n        excessOverlapSeconds=sum_seconds-occupied,maxSimultaneousGuardReceipts=max_active,\n        unoccupiedEnvelopeSeconds=envelope-occupied,occupiedFraction=occupied/envelope,\n        unionIntervals=union,overlapSegments=overlap_segments),\n    resources=dict(peakProcessTreeRss=dict(bytes=peak['peakTreeRssBytes'],receipt=peak['receipt']),\n        minimumAvailableMemory=dict(bytes=least['minimumAvailableBytes'],receipt=least['receipt']),\n        minimumRecordedPrelaunchDisk=dict(bytes=min(disk,key=lambda x:x[0])[0],receipt=min(disk,key=lambda x:x[0])[1]),\n        resourceStops=[r['receipt'] for r in rows if r['stoppedFor']]),\n    categories=groups,nonzeroExits=[dict(receipt=r['receipt'],returncode=r['returncode'],expectedNegative=r['expectedNegative'],\n        diagnostic=r.get('failureDiagnostic')) for r in nonzero],sourceCounts=source_count,receipts=rows,\n    summarizedMetrics=pin(metrics) if metrics.exists() else None)\nwrite(OUT/'accounting.json',result)\n# Retrospective binding of the kernel03 artifacts to recorded build/use receipts.\nfolder=P/'kernel-source03';emit=P/'kernel-emit03-guard';link=P/'kernel-link03b-guard';failed=P/'kernel-link03-guard'\ner,lr=load(emit/'process.json'),load(link/'process.json')\nassert er['complete'] and lr['complete'] and er['returncode']==lr['returncode']==0\nmanifest=load(folder/'manifest.json');measurement=load(P/'kernel-measure03/report.json')\nassert measurement['complete'] and measurement['passed']\nartifacts={name:pin(folder/file) for name,file in [('source','producer.bend'),('generatedC','producer.c'),('binary','producer'),('api','api.mjs'),('manifest','manifest.json')]}\nassert manifest['source']['sha256']==artifacts['source']['sha256']\nrecorded={pathlib.Path(p['file']).name:p for p in measurement['inputs']}\nfor key,file in [('source','producer.bend'),('binary','producer'),('api','api.mjs')]:assert recorded[file]['sha256']==artifacts[key]['sha256']\nassert any(p['sha256']==artifacts['source']['sha256'] for p in load(emit/'inputs.json'))\nacquisition=dict(kind='phase107-retrospective-kernel-acquisition',complete=True,retrospectiveFlag=True,snapshotUtc=utc(snapshot),\n    artifacts=artifacts,sourcePreparation=manifest,measurement=pin(P/'kernel-measure03/report.json'),\n    successfulEmission=dict(process=pin(emit/'process.json'),recorded=er,inputs=load(emit/'inputs.json'),method=load(emit/'method.json')),\n    successfulClangBuild=dict(process=pin(link/'process.json'),recorded=lr,inputs=load(link/'inputs.json'),method=load(link/'method.json')),\n    failedLaunch=dict(process=pin(failed/'process.json'),recorded=load(failed/'process.json')),\n    successfulAcquisitionGuardedSeconds=er['wallSeconds']+lr['wallSeconds'],\n    emissionToBuildCompletionEnvelopeSeconds=lr['finished']-er['started'],\n    apiAcquisition=dict(process=pin(P/'kernel-api03-guard/process.json'),recorded=load(P/'kernel-api03-guard/process.json'),includedInNativeAcquisitionSum=False),\n    provenanceBoundary='Assembled retrospectively without executing targets. Source hash matches its preparation manifest and pre-emission guard input; source/binary/API hashes match the later successful kernel-measure03 inputs. Generated C is hashed now and named by the successful compiler command, but the original linker guard did not separately pin its macro-included C at launch. This receipt cannot retroactively supply that missing contemporaneous C hash. It is an experimental image, not a new selected native release or QBE self-hosted chain.')\nwrite(OUT/'kernel03-acquisition.json',acquisition)\nlines=['# Phase107 execution and source accounting','',f\"Snapshot: **{utc(snapshot)}**. Targets may continue; this is not a declared final cutoff.\",'',\n    'The inventory includes every closed `process.json` beneath Phase107 and its eight Phase98 source-law guard jobs. '\n    'It preserves failed attempts and intended negative checks. It does not infer token usage, Codex quota or agent effort from elapsed time.','',\n    '## Recorded occupancy','',\n    f\"The receipt envelope runs from **{utc(start)}** to **{utc(end)}**: **{envelope/60:.2f} minutes**. \"\n    f\"The **{len(rows)}** guard intervals sum to **{sum_seconds:.3f}s**; their union is **{occupied:.3f}s** \"\n    f\"(**{occupied/envelope*100:.2f}%** of that envelope). Overlap wall time is **{overlap:.6f}s**, \"\n    f\"with at most **{max_active}** recorded guard job active. The remaining **{envelope-occupied:.3f}s** is outside those receipts, not a measure of wasted time.\",'',\n    'Method: use each half-open epoch interval `[started, finished)`, sweep sorted endpoints, remove ending jobs before adding starting jobs, and accumulate union/overlap segments. '\n    'The JSON retains every interval, command, hash and original monotonic `wallSeconds`. Parent guard time and inner job durations are never added together. '\n    'These guards cover process trees: a serial guard schedule does not prove that a tool such as `make` used only one internal process.','',\n    '| Activity group | Guard receipts | Sum of guarded epoch intervals, s | Nonzero exits |','| --- | ---: | ---: | ---: |']\nfor g in groups:lines.append(f\"| {g['category']} | {g['receipts']} | {g['epochSeconds']:.3f} | {g['nonzero']} |\")\nlines+=['',\n    'These path-based groups partition observations, not compiler execution phases. Build and benchmark batches also contain orchestration, checks, serialization and waiting. '\n    'Target subprocess clocks remain in their original reports; their scopes differ and are not combined into a fabricated exact target/method split. '\n    'Offline agent work consisted of source changes/review, receipt analysis and documentation. The interval evidence supports the coordinator\u2019s serial guarded-target schedule; it does not measure all offline activity or internal tool parallelism.','',\n    '## Resource envelope and retained failures','',\n    f\"Maximum sampled process-tree RSS was **{peak['peakTreeRssBytes']/1024**3:.3f} GiB** \"\n    f\"(`{pathlib.Path(peak['receipt']['file']).parent.name}`). Minimum reported available memory was **{least['minimumAvailableBytes']/1024**3:.3f} GiB**. \"\n    f\"The lowest recorded prelaunch disk space was **{min(disk,key=lambda x:x[0])[0]/1024**2:.1f} MiB**; this is not continuous disk sampling. \"\n    f\"There were **{len(result['resources']['resourceStops'])}** recorded guard resource stops. No OOM is indicated by these receipts.\",'',\n    f\"There are **{len(nonzero)}** nonzero exits, including **{sum(r['expectedNegative'] for r in nonzero)}** deliberate false-kernel-proof rejections. \"\n    'The others retain source-admission errors, transport/runtime controls that exposed bugs, stale output/input paths, and failed tool launches. '\n    'A nonzero harness exit is not automatically a compiler semantic failure. Exact codes and diagnostic excerpts are preserved in `accounting.json`. '\n    'No failed receipt is omitted from the occupancy total.','',\n    '## Current tracked source size','',source_count['scope'],'',\n    f\"New Phase107 Bend algorithms/entry integration total **{source_count['coreBend']['lines']} lines**, \"\n    f\"**{source_count['coreBend']['files']} files**, and **{source_count['coreBend']['definitions']} named definitions**. \"\n    'A definition count is a mechanical inventory, not a count of distinct concepts or a correctness claim.','',\n    '| Group | Files | Lines including comments/blanks | Nonblank lines |','| --- | ---: | ---: | ---: |']\nfor g in source_groups:lines.append(f\"| {g['group']} | {g['files']} | {g['lines']} | {g['nonblankLines']} |\")\nlines+=['',\n    'These are additions to an experimental subsystem. They do not imply that the installed compiler shrank. '\n    'The inherited Phase106 model/verifier/consumers, Base and existing frontend are dependencies rather than new Phase107 lines. '\n    'Per-file hashes and the tracked-file snapshot are retained. Untracked Bend source, if present, is listed separately and excluded.','',\n    '## Kernel03 acquisition','',\n    f\"The successful native acquisition used **{er['wallSeconds']:.6f}s** for Bend-to-C emission and \"\n    f\"**{lr['wallSeconds']:.6f}s** for Clang: **{acquisition['successfulAcquisitionGuardedSeconds']:.6f}s** summed guard time. \"\n    f\"The elapsed emission-to-build-completion envelope was **{acquisition['emissionToBuildCompletionEnvelopeSeconds']:.6f}s**, including intervening coordination and the failed launch. \"\n    'The separate JS API acquisition is retained but excluded from the native acquisition sum.','',\n    'The first link command referenced a nonexistent Clang path and returned 127; `kernel-link03b` succeeded. '\n    'The [acquisition receipt](kernel03-acquisition.json) explicitly sets `retrospectiveFlag: true`. '\n    'Its source identity matches the manifest and pre-emission input pin; source, native binary and JS API match the subsequent successful same-kernel measurement. '\n    'Generated C is hashed during consolidation: the successful Clang command named it through a macro, but its guard did not separately hash that included C at launch. '\n    'We preserve that provenance limitation instead of claiming a contemporaneous binding that was never recorded.','',\n    f\"- Source SHA256: `{artifacts['source']['sha256']}`\",\n    f\"- Native binary SHA256: `{artifacts['binary']['sha256']}`\",\n    f\"- Generated C SHA256 (retrospective): `{artifacts['generatedC']['sha256']}`\",'',\n    'This image uses the installed native C route for acquisition. It is not an independently qualified selected release or a QBE B1/B2 fixed point.','',\n    '[Machine accounting and interval inventory](accounting.json) \u00b7 [Measured metrics](metrics.md)', '']\n(OUT/'accounting.md').write_text('\\n'.join(lines))\nprint(json.dumps(dict(receipts=len(rows),sum=sum_seconds,union=occupied,envelope=envelope,overlap=overlap,core=source_count['coreBend'],kernelAcquisition=acquisition['successfulAcquisitionGuardedSeconds'])))\n"
+    "evidenceProducerSource": "import collections, datetime, hashlib, json, pathlib, re, subprocess, time\n\nROOT=pathlib.Path('/home/ai/bend2/build/publish/bend')\nP=ROOT/'selfhost/build/phase107'\nOUT=ROOT/'implementation/phase107'\nsnapshot=time.time()\ndef utc(t): return datetime.datetime.fromtimestamp(t,datetime.timezone.utc).isoformat()\ndef pin(p):\n    p=pathlib.Path(p);b=p.read_bytes()\n    return dict(file=str(p.relative_to(ROOT)) if p.is_relative_to(ROOT) else str(p),bytes=len(b),sha256=hashlib.sha256(b).hexdigest())\ndef load(p):return json.loads(pathlib.Path(p).read_text())\ndef write(p,r):p.write_text(json.dumps(r,indent=2)+'\\n')\ndef category(path):\n    name=path.parent.name\n    if 'phase98' in path.parts:return 'Independent source-law checks'\n    if name.startswith(('native-emit','native-link')):return 'Full native frontend acquisition'\n    if name.startswith(('kernel-api','kernel-emit','kernel-link')):return 'Small IR kernel acquisition'\n    if name.startswith(('kernel-measure','native-latency','legacy-latency','heldout-latency','measure','matrix','strength-pair','constant-pair')):return 'Runtime and latency campaigns, including their checks'\n    if name.startswith('qbe-build'):return 'QBE tool construction'\n    if any(s in name for s in ['audit','controls','compatibility','heldout','bootstrap-compare','constant-final']):return 'Semantic, cache and composition qualification'\n    return 'Source preparation, admission and emission'\npaths=sorted(P.rglob('process.json'))+sorted((ROOT/'selfhost/build/phase98').glob('phase107-*/**/process.json'))\nrows=[];pending=[]\nfor path in paths:\n    b=path.read_bytes();r=json.loads(b)\n    identity=dict(file=str(path.relative_to(ROOT)),bytes=len(b),sha256=hashlib.sha256(b).hexdigest())\n    if not all(isinstance(r.get(k),(int,float)) for k in ['started','finished']):\n        pending.append(dict(receipt=identity,reason='No closed epoch interval'));continue\n    if r['finished']>snapshot:\n        pending.append(dict(receipt=identity,reason='Finished after snapshot began'));continue\n    duration=r['finished']-r['started'];assert duration>=0\n    method=path.with_name('method.json');inputs=path.with_name('inputs.json')\n    row=dict(receipt=identity,category=category(path),started=r['started'],finished=r['finished'],\n        epochSeconds=duration,reportedWallSeconds=r.get('wallSeconds'),command=r.get('command'),\n        complete=r.get('complete'),returncode=r.get('returncode'),stoppedFor=r.get('stoppedFor'),\n        peakTreeRssBytes=r.get('peakTreeRssBytes'),minimumAvailableBytes=r.get('minimumAvailableBytes'),\n        rssLimitBytes=r.get('rssLimitBytes'),availableFloorBytes=r.get('availableFloorBytes'),\n        expectedNegative=(path.parent.name=='kernel-negative'))\n    if method.exists():row['guardMethod']=dict(receipt=pin(method),recorded=load(method))\n    if inputs.exists():row['guardInputs']=dict(receipt=pin(inputs),recorded=load(inputs))\n    for basename in ['stderr.log','stderr.txt','stderr','stdout.log','stdout.txt']:\n        log=path.with_name(basename)\n        if log.exists() and log.stat().st_size:\n            if r.get('returncode')!=0:\n                row['failureDiagnostic']=dict(receipt=pin(log),excerpt=log.read_text(errors='replace')[:1000])\n            break\n    rows.append(row)\nrows.sort(key=lambda r:(r['started'],r['finished']))\nevents=collections.defaultdict(lambda:dict(begin=[],end=[]))\nfor i,r in enumerate(rows):events[r['started']]['begin'].append(i);events[r['finished']]['end'].append(i)\nactive=set();prior=min(events);occupied=overlap=0.0;max_active=0;overlap_segments=[];union=[]\nfor epoch,event in sorted(events.items()):\n    length=epoch-prior\n    if active:\n        occupied+=length\n        if union and union[-1][1]==prior:union[-1][1]=epoch\n        else:union.append([prior,epoch])\n    if len(active)>1:\n        overlap+=length\n        overlap_segments.append(dict(started=prior,finished=epoch,receipts=[rows[i]['receipt']['file'] for i in sorted(active)]))\n    active.difference_update(event['end']);active.update(event['begin']);max_active=max(max_active,len(active));prior=epoch\nassert not active\nstart=min(r['started'] for r in rows);end=max(r['finished'] for r in rows);envelope=end-start\nsum_seconds=sum(r['epochSeconds'] for r in rows)\ngroups=[]\nfor name in sorted({r['category'] for r in rows}):\n    selected=[r for r in rows if r['category']==name]\n    groups.append(dict(category=name,receipts=len(selected),epochSeconds=sum(r['epochSeconds'] for r in selected),\n        reportedWallSeconds=sum(r['reportedWallSeconds'] or 0 for r in selected),\n        nonzero=sum(r['returncode']!=0 for r in selected)))\npeak=max(rows,key=lambda r:r['peakTreeRssBytes'] or 0)\navailable=[r for r in rows if isinstance(r['minimumAvailableBytes'],int)]\nleast=min(available,key=lambda r:r['minimumAvailableBytes'])\ndisk=[(r['guardMethod']['recorded']['diskFreeBytes'],r['receipt']) for r in rows\n      if isinstance(r.get('guardMethod',{}).get('recorded',{}).get('diskFreeBytes'),int)]\nnonzero=[r for r in rows if r['returncode']!=0]\ntracked=subprocess.check_output(['git','ls-files','selfhost/tools/performance/phase107'],cwd=ROOT,text=True).splitlines()\ndef sourcegroup(file):\n    p=pathlib.Path(file)\n    if p.suffix!='.bend':return 'Non-Bend methods and support' if p.suffix in ['.py','.mjs','.c','.rs','.sh'] else 'Other'\n    if 'cases' in p.parts or 'heldout' in p.parts or 'fixture' in p.name or p.name=='controls.bend':return 'Bend fixtures and source cases'\n    if 'law' in p.name:return 'Bend local laws'\n    if str(p).endswith(('inline/main.bend','kernel/main.bend')):return 'Bend experimental control entrypoints'\n    if '/frontend/' in file:return 'Bend source lowering and native entry'\n    if '/backends/' in file:return 'Bend QBE emission and units'\n    if '/inline/' in file:return 'Bend optimization algorithms and shared IR helpers'\n    raise AssertionError(file)\nsource_rows=[]\nfor file in tracked:\n    p=ROOT/file;group=sourcegroup(file)\n    if group=='Other':continue\n    text=p.read_text();lines=text.splitlines()\n    source_rows.append(dict(**pin(p),group=group,lines=len(lines),nonblankLines=sum(bool(x.strip()) for x in lines),\n                           bendDefinitions=sum(bool(re.match(r'^def\\s',x)) for x in lines) if p.suffix=='.bend' else None))\nsource_groups=[]\nfor name in sorted({r['group'] for r in source_rows}):\n    rr=[r for r in source_rows if r['group']==name]\n    source_groups.append(dict(group=name,files=len(rr),lines=sum(r['lines'] for r in rr),nonblankLines=sum(r['nonblankLines'] for r in rr),bendDefinitions=sum(r['bendDefinitions'] or 0 for r in rr)))\ncore_names={'Bend source lowering and native entry','Bend QBE emission and units','Bend optimization algorithms and shared IR helpers'}\ncore=[r for r in source_rows if r['group'] in core_names]\nsource_count=dict(snapshotUtc=utc(snapshot),gitHead=subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip(),\n    scope='Current working-tree bytes of git-tracked Phase107 files. Counts include comments/blank lines. Fixtures, laws and experimental control mains are separate; generated images, inherited Phase106 IR, Base and existing compiler frontend are not counted as new Phase107 algorithms.',\n    coreBend=dict(files=len(core),lines=sum(r['lines'] for r in core),definitions=sum(r['bendDefinitions'] for r in core)),groups=source_groups,files=source_rows,\n    untrackedPhase107Bend=subprocess.check_output(['git','ls-files','--others','--exclude-standard','selfhost/tools/performance/phase107/**/*.bend'],cwd=ROOT,text=True).splitlines())\nmetrics=OUT/'metrics.json'\nfinal_guard=P/'constant-final-guard01/process.json'\nfinal_record=load(final_guard)\nassert final_record['complete'] and final_record['returncode']==0\nassert end==final_record['finished'] and not pending\nunguarded_note=P/'constant-prefilter01/inline-check-attempt.md'\nunguarded=dict(receipt=pin(unguarded_note), explanation=unguarded_note.read_text(), scope='Retained unguarded host diagnostic; no process interval was recorded, so no duration or guard receipt is invented.')\nresult=dict(kind='phase107-consolidation-accounting',snapshotUtc=utc(snapshot),finalTargetCutoff=True,\n    coordinatorDeclaredClosedUtc='2026-10-18T09:08:13+00:00',finalGuard=pin(final_guard),\n    unguardedDiagnostics=[unguarded],\n    scope='Closed guard receipts under selfhost/build/phase107 plus phase98/phase107-* proof roots. Targets declared closed by the coordinator at 09:08:13 UTC; the final recorded guard ended at 09:08:13.961640 UTC. Offline consolidation after the cutoff is excluded. Process-tree wall occupancy is not CPU time, model thinking time, human effort, tokens or quota.',\n    discovery=dict(roots=['selfhost/build/phase107/**/process.json','selfhost/build/phase98/phase107-*/**/process.json'],pending=pending),\n    method=dict(interval='Half-open [started,finished) epoch intervals. Sweep unique endpoints, remove ending jobs before adding starting jobs. Union accumulates intervals with >=1 active receipt; overlap wall uses >=2; excess counts integral(active-1). No child job timing is added to its enclosing guard.',\n        reportedClock='reportedWallSeconds is retained separately; it may use a monotonic clock and differ slightly from finished-started.',\n        categorization='Path-based groups partition the selected guard receipts; they are not a profile of compiler phases.',\n        methodVsTarget='Guard intervals include supervisors, orchestration, builds/tests, model calculations and waits. Inner target timings have heterogeneous scopes and are NOT summed into a second purported campaign total. Offline edits, source review, plotting, git, acquisition without a guard and inactive gaps are unmeasured.',\n        evidenceProducer=pin('/tmp/phase107-accounting.py'),\n        evidenceProducerSource=pathlib.Path('/tmp/phase107-accounting.py').read_text()),\n    timeline=dict(firstReceiptUtc=utc(start),lastReceiptUtc=utc(end),receiptEnvelopeSeconds=envelope,\n        receiptCount=len(rows),sumEpochSeconds=sum_seconds,unionSeconds=occupied,overlapWallSeconds=overlap,\n        excessOverlapSeconds=sum_seconds-occupied,maxSimultaneousGuardReceipts=max_active,\n        unoccupiedEnvelopeSeconds=envelope-occupied,occupiedFraction=occupied/envelope,\n        unionIntervals=union,overlapSegments=overlap_segments),\n    resources=dict(peakProcessTreeRss=dict(bytes=peak['peakTreeRssBytes'],receipt=peak['receipt']),\n        minimumAvailableMemory=dict(bytes=least['minimumAvailableBytes'],receipt=least['receipt']),\n        minimumRecordedPrelaunchDisk=dict(bytes=min(disk,key=lambda x:x[0])[0],receipt=min(disk,key=lambda x:x[0])[1]),\n        resourceStops=[r['receipt'] for r in rows if r['stoppedFor']]),\n    categories=groups,nonzeroExits=[dict(receipt=r['receipt'],returncode=r['returncode'],expectedNegative=r['expectedNegative'],\n        diagnostic=r.get('failureDiagnostic')) for r in nonzero],sourceCounts=source_count,receipts=rows,\n    summarizedMetrics=pin(metrics) if metrics.exists() else None)\nwrite(OUT/'accounting.json',result)\n# Retrospective binding of the kernel03 artifacts to recorded build/use receipts.\nfolder=P/'kernel-source03';emit=P/'kernel-emit03-guard';link=P/'kernel-link03b-guard';failed=P/'kernel-link03-guard'\ner,lr=load(emit/'process.json'),load(link/'process.json')\nassert er['complete'] and lr['complete'] and er['returncode']==lr['returncode']==0\nmanifest=load(folder/'manifest.json');measurement=load(P/'kernel-measure03/report.json')\nassert measurement['complete'] and measurement['passed']\nartifacts={name:pin(folder/file) for name,file in [('source','producer.bend'),('generatedC','producer.c'),('binary','producer'),('api','api.mjs'),('manifest','manifest.json')]}\nassert manifest['source']['sha256']==artifacts['source']['sha256']\nrecorded={pathlib.Path(p['file']).name:p for p in measurement['inputs']}\nfor key,file in [('source','producer.bend'),('binary','producer'),('api','api.mjs')]:assert recorded[file]['sha256']==artifacts[key]['sha256']\nassert any(p['sha256']==artifacts['source']['sha256'] for p in load(emit/'inputs.json'))\nacquisition=dict(kind='phase107-retrospective-kernel-acquisition',complete=True,retrospectiveFlag=True,snapshotUtc=utc(snapshot),\n    artifacts=artifacts,sourcePreparation=manifest,measurement=pin(P/'kernel-measure03/report.json'),\n    successfulEmission=dict(process=pin(emit/'process.json'),recorded=er,inputs=load(emit/'inputs.json'),method=load(emit/'method.json')),\n    successfulClangBuild=dict(process=pin(link/'process.json'),recorded=lr,inputs=load(link/'inputs.json'),method=load(link/'method.json')),\n    failedLaunch=dict(process=pin(failed/'process.json'),recorded=load(failed/'process.json')),\n    successfulAcquisitionGuardedSeconds=er['wallSeconds']+lr['wallSeconds'],\n    emissionToBuildCompletionEnvelopeSeconds=lr['finished']-er['started'],\n    apiAcquisition=dict(process=pin(P/'kernel-api03-guard/process.json'),recorded=load(P/'kernel-api03-guard/process.json'),includedInNativeAcquisitionSum=False),\n    provenanceBoundary='Assembled retrospectively without executing targets. Source hash matches its preparation manifest and pre-emission guard input; source/binary/API hashes match the later successful kernel-measure03 inputs. Generated C is hashed now and named by the successful compiler command, but the original linker guard did not separately pin its macro-included C at launch. This receipt cannot retroactively supply that missing contemporaneous C hash. It is an experimental image, not a new selected native release or QBE self-hosted chain.')\nwrite(OUT/'kernel03-acquisition.json',acquisition)\nlines=['# Phase107 execution and source accounting','',f\"Final target cutoff: **{utc(end)}** (`constant-final-guard01`), following the coordinator\u2019s closure at **09:08:13 UTC**. Offline consolidation snapshot: **{utc(snapshot)}**.\",'',\n    'The inventory includes every closed `process.json` beneath Phase107 and its eight Phase98 source-law guard jobs. '\n    'It preserves failed attempts and intended negative checks. It does not infer token usage, Codex quota or agent effort from elapsed time.','',\n    '## Recorded occupancy','',\n    f\"The receipt envelope runs from **{utc(start)}** to **{utc(end)}**: **{envelope/60:.2f} minutes**. \"\n    f\"The **{len(rows)}** guard intervals sum to **{sum_seconds:.3f}s**; their union is **{occupied:.3f}s** \"\n    f\"(**{occupied/envelope*100:.2f}%** of that envelope). Overlap wall time is **{overlap:.6f}s**, \"\n    f\"with at most **{max_active}** recorded guard job active. The remaining **{envelope-occupied:.3f}s** is outside those receipts, not a measure of wasted time.\",'',\n    'Method: use each half-open epoch interval `[started, finished)`, sweep sorted endpoints, remove ending jobs before adding starting jobs, and accumulate union/overlap segments. '\n    'The JSON retains every interval, command, hash and original monotonic `wallSeconds`. Parent guard time and inner job durations are never added together. '\n    'These guards cover process trees: a serial guard schedule does not prove that a tool such as `make` used only one internal process.','',\n    '| Activity group | Guard receipts | Sum of guarded epoch intervals, s | Nonzero exits |','| --- | ---: | ---: | ---: |']\nfor g in groups:lines.append(f\"| {g['category']} | {g['receipts']} | {g['epochSeconds']:.3f} | {g['nonzero']} |\")\nlines+=['',\n    'These path-based groups partition observations, not compiler execution phases. Build and benchmark batches also contain orchestration, checks, serialization and waiting. '\n    'Target subprocess clocks remain in their original reports; their scopes differ and are not combined into a fabricated exact target/method split. '\n    'Offline agent work consisted of source changes/review, receipt analysis and documentation. The interval evidence supports the coordinator\u2019s serial guarded-target schedule; it does not measure all offline activity or internal tool parallelism.','',\n    '## Resource envelope and retained failures','',\n    f\"Maximum sampled process-tree RSS was **{peak['peakTreeRssBytes']/1024**3:.3f} GiB** \"\n    f\"(`{pathlib.Path(peak['receipt']['file']).parent.name}`). Minimum reported available memory was **{least['minimumAvailableBytes']/1024**3:.3f} GiB**. \"\n    f\"The lowest recorded prelaunch disk space was **{min(disk,key=lambda x:x[0])[0]/1024**2:.1f} MiB**; this is not continuous disk sampling. \"\n    f\"There were **{len(result['resources']['resourceStops'])}** recorded guard resource stops. No OOM is indicated by these receipts.\",'',\n    f\"There are **{len(nonzero)}** nonzero exits, including **{sum(r['expectedNegative'] for r in nonzero)}** deliberate false-kernel-proof rejections. \"\n    'The others retain source-admission errors, transport/runtime controls that exposed bugs, stale output/input paths, and failed tool launches. '\n    'A nonzero harness exit is not automatically a compiler semantic failure. Exact codes and diagnostic excerpts are preserved in `accounting.json`. '\n    'No failed receipt is omitted from the occupancy total. The separately retained [unguarded inline-check invocation](../../selfhost/build/phase107/constant-prefilter01/inline-check-attempt.md) passed the wrong argument count to a zero-argument effect witness; its unknown duration is excluded from guard counts and timings. The final guarded standalone check passed.','',\n    '## Current tracked source size','',source_count['scope'],'',\n    f\"New Phase107 Bend algorithms/entry integration total **{source_count['coreBend']['lines']} lines**, \"\n    f\"**{source_count['coreBend']['files']} files**, and **{source_count['coreBend']['definitions']} named definitions**. \"\n    'A definition count is a mechanical inventory, not a count of distinct concepts or a correctness claim.','',\n    '| Group | Files | Lines including comments/blanks | Nonblank lines |','| --- | ---: | ---: | ---: |']\nfor g in source_groups:lines.append(f\"| {g['group']} | {g['files']} | {g['lines']} | {g['nonblankLines']} |\")\nlines+=['',\n    'These are additions to an experimental subsystem. They do not imply that the installed compiler shrank. '\n    'The inherited Phase106 model/verifier/consumers, Base and existing frontend are dependencies rather than new Phase107 lines. '\n    'Per-file hashes and the tracked-file snapshot are retained. Untracked Bend source, if present, is listed separately and excluded.','',\n    '## Kernel03 acquisition','',\n    f\"The successful native acquisition used **{er['wallSeconds']:.6f}s** for Bend-to-C emission and \"\n    f\"**{lr['wallSeconds']:.6f}s** for Clang: **{acquisition['successfulAcquisitionGuardedSeconds']:.6f}s** summed guard time. \"\n    f\"The elapsed emission-to-build-completion envelope was **{acquisition['emissionToBuildCompletionEnvelopeSeconds']:.6f}s**, including intervening coordination and the failed launch. \"\n    'The separate JS API acquisition is retained but excluded from the native acquisition sum.','',\n    'The first link command referenced a nonexistent Clang path and returned 127; `kernel-link03b` succeeded. '\n    'The [acquisition receipt](kernel03-acquisition.json) explicitly sets `retrospectiveFlag: true`. '\n    'Its source identity matches the manifest and pre-emission input pin; source, native binary and JS API match the subsequent successful same-kernel measurement. '\n    'Generated C is hashed during consolidation: the successful Clang command named it through a macro, but its guard did not separately hash that included C at launch. '\n    'We preserve that provenance limitation instead of claiming a contemporaneous binding that was never recorded.','',\n    f\"- Source SHA256: `{artifacts['source']['sha256']}`\",\n    f\"- Native binary SHA256: `{artifacts['binary']['sha256']}`\",\n    f\"- Generated C SHA256 (retrospective): `{artifacts['generatedC']['sha256']}`\",'',\n    'This image uses the installed native C route for acquisition. It is not an independently qualified selected release or a QBE B1/B2 fixed point.','',\n    '[Machine accounting and interval inventory](accounting.json) \u00b7 [Measured metrics](metrics.md)', '']\n(OUT/'accounting.md').write_text('\\n'.join(lines))\nprint(json.dumps(dict(receipts=len(rows),sum=sum_seconds,union=occupied,envelope=envelope,overlap=overlap,core=source_count['coreBend'],kernelAcquisition=acquisition['successfulAcquisitionGuardedSeconds'])))\n"
   },
   "timeline": {
     "firstReceiptUtc": "2026-10-18T06:42:49.234613+00:00",
-    "lastReceiptUtc": "2026-10-18T08:57:09.792557+00:00",
-    "receiptEnvelopeSeconds": 8060.557943820953,
-    "receiptCount": 131,
-    "sumEpochSeconds": 1847.329290151596,
-    "unionSeconds": 1847.329290151596,
+    "lastReceiptUtc": "2026-10-18T09:08:13.961640+00:00",
+    "receiptEnvelopeSeconds": 8724.727026462555,
+    "receiptCount": 148,
+    "sumEpochSeconds": 2010.1292996406555,
+    "unionSeconds": 2010.1292996406555,
     "overlapWallSeconds": 0.0,
     "excessOverlapSeconds": 0.0,
     "maxSimultaneousGuardReceipts": 1,
-    "unoccupiedEnvelopeSeconds": 6213.228653669357,
-    "occupiedFraction": 0.22918131759944957,
+    "unoccupiedEnvelopeSeconds": 6714.597726821899,
+    "occupiedFraction": 0.2303945204868677,
     "unionIntervals": [
       [
         1792305769.2346134,
@@ -567,6 +575,74 @@
       [
         1792313800.5658565,
         1792313829.7925572
+      ],
+      [
+        1792313907.293303,
+        1792313921.4825933
+      ],
+      [
+        1792313993.9712985,
+        1792313996.037229
+      ],
+      [
+        1792314025.143189,
+        1792314026.6974535
+      ],
+      [
+        1792314026.8496995,
+        1792314035.1759183
+      ],
+      [
+        1792314035.2483582,
+        1792314074.1455731
+      ],
+      [
+        1792314074.6422884,
+        1792314087.8408802
+      ],
+      [
+        1792314228.1261823,
+        1792314230.2327785
+      ],
+      [
+        1792314230.5825818,
+        1792314233.4901896
+      ],
+      [
+        1792314233.8579745,
+        1792314235.9279623
+      ],
+      [
+        1792314290.0447094,
+        1792314290.3129823
+      ],
+      [
+        1792314290.4274688,
+        1792314305.885967
+      ],
+      [
+        1792314306.3281875,
+        1792314307.909935
+      ],
+      [
+        1792314308.0394015,
+        1792314316.2781537
+      ],
+      [
+        1792314316.363394,
+        1792314354.9800286
+      ],
+      [
+        1792314355.1037767,
+        1792314365.5350714
+      ],
+      [
+        1792314444.4068272,
+        1792314447.211647
+      ],
+      [
+        1792314493.877353,
+        1792314493.96164
       ]
     ],
     "overlapSegments": []
@@ -589,11 +665,11 @@
       }
     },
     "minimumRecordedPrelaunchDisk": {
-      "bytes": 747757568,
+      "bytes": 681156608,
       "receipt": {
-        "file": "selfhost/build/phase107/matrix09/process.json",
-        "bytes": 654,
-        "sha256": "f35e81d82ec28e4869e0d5705f74621ad0db76dddc634d9f8de050861079996a"
+        "file": "selfhost/build/phase107/constant-final-guard01/process.json",
+        "bytes": 509,
+        "sha256": "40748efd23a8dfde51e0b63949d013f2256b7ce6e251af762745017b69d0cb59"
       }
     },
     "resourceStops": []
@@ -622,30 +698,30 @@
     },
     {
       "category": "Runtime and latency campaigns, including their checks",
-      "receipts": 15,
-      "epochSeconds": 370.23272705078125,
-      "reportedWallSeconds": 370.23276267945766,
+      "receipts": 21,
+      "epochSeconds": 466.3562865257263,
+      "reportedWallSeconds": 466.3563467308413,
       "nonzero": 2
     },
     {
       "category": "Semantic, cache and composition qualification",
-      "receipts": 27,
-      "epochSeconds": 293.5163972377777,
-      "reportedWallSeconds": 293.51644436852075,
+      "receipts": 28,
+      "epochSeconds": 293.6006841659546,
+      "reportedWallSeconds": 293.6007334294263,
       "nonzero": 5
     },
     {
       "category": "Small IR kernel acquisition",
-      "receipts": 10,
-      "epochSeconds": 127.05868887901306,
-      "reportedWallSeconds": 127.05870833923109,
+      "receipts": 16,
+      "epochSeconds": 224.27352142333984,
+      "reportedWallSeconds": 224.27354736439884,
       "nonzero": 1
     },
     {
       "category": "Source preparation, admission and emission",
-      "receipts": 64,
-      "epochSeconds": 191.02270412445068,
-      "reportedWallSeconds": 191.02290538605303,
+      "receipts": 68,
+      "epochSeconds": 160.4000346660614,
+      "reportedWallSeconds": 160.40025051892735,
       "nonzero": 16
     }
   ],
@@ -1111,13 +1187,13 @@
     }
   ],
   "sourceCounts": {
-    "snapshotUtc": "2026-10-18T08:58:29.504173+00:00",
-    "gitHead": "b8eda92ca1040050fa72fab93a3f511d8a03c3cf",
+    "snapshotUtc": "2026-10-18T09:12:14.233259+00:00",
+    "gitHead": "34253fb3e21646ad66b1e36555f49b049da58db2",
     "scope": "Current working-tree bytes of git-tracked Phase107 files. Counts include comments/blank lines. Fixtures, laws and experimental control mains are separate; generated images, inherited Phase106 IR, Base and existing compiler frontend are not counted as new Phase107 algorithms.",
     "coreBend": {
       "files": 20,
-      "lines": 2717,
-      "definitions": 391
+      "lines": 2737,
+      "definitions": 394
     },
     "groups": [
       {
@@ -1130,8 +1206,8 @@
       {
         "group": "Bend experimental control entrypoints",
         "files": 2,
-        "lines": 99,
-        "nonblankLines": 88,
+        "lines": 100,
+        "nonblankLines": 89,
         "bendDefinitions": 13
       },
       {
@@ -1151,9 +1227,9 @@
       {
         "group": "Bend optimization algorithms and shared IR helpers",
         "files": 15,
-        "lines": 1972,
-        "nonblankLines": 1693,
-        "bendDefinitions": 283
+        "lines": 1992,
+        "nonblankLines": 1710,
+        "bendDefinitions": 286
       },
       {
         "group": "Bend source lowering and native entry",
@@ -1164,9 +1240,9 @@
       },
       {
         "group": "Non-Bend methods and support",
-        "files": 61,
-        "lines": 4432,
-        "nonblankLines": 4229,
+        "files": 66,
+        "lines": 4769,
+        "nonblankLines": 4555,
         "bendDefinitions": 0
       }
     ],
@@ -1442,6 +1518,42 @@
         "bendDefinitions": null
       },
       {
+        "file": "selfhost/tools/performance/phase107/constant-capacity.mjs",
+        "bytes": 9411,
+        "sha256": "a641bb0b310b6b069394fc0c2afc7265e2011888c0c4feebbf806371b5aea315",
+        "group": "Non-Bend methods and support",
+        "lines": 118,
+        "nonblankLines": 117,
+        "bendDefinitions": null
+      },
+      {
+        "file": "selfhost/tools/performance/phase107/constant-final.py",
+        "bytes": 1440,
+        "sha256": "877f29beccd6911a860c970e1f0969f24391110395e13e28d60346e32d948bc3",
+        "group": "Non-Bend methods and support",
+        "lines": 21,
+        "nonblankLines": 21,
+        "bendDefinitions": null
+      },
+      {
+        "file": "selfhost/tools/performance/phase107/constant-pair.py",
+        "bytes": 3394,
+        "sha256": "f6c3e7f9f63564184a3d4e71ce6f91273bdcbdb8e43b3da70e5bb204096f33d6",
+        "group": "Non-Bend methods and support",
+        "lines": 43,
+        "nonblankLines": 43,
+        "bendDefinitions": null
+      },
+      {
+        "file": "selfhost/tools/performance/phase107/constant-prefilter.mjs",
+        "bytes": 2134,
+        "sha256": "8bcf41997f2e5dfe75a57264de0509fcae24ae25a2d525900763733e7c44f8ed",
+        "group": "Non-Bend methods and support",
+        "lines": 10,
+        "nonblankLines": 10,
+        "bendDefinitions": null
+      },
+      {
         "file": "selfhost/tools/performance/phase107/demand-audit.mjs",
         "bytes": 1713,
         "sha256": "035654e83e6976238e4c22e1a461746eca60a0dd83403a6aa35f6847bfe1d92b",
@@ -1622,6 +1734,15 @@
         "bendDefinitions": null
       },
       {
+        "file": "selfhost/tools/performance/phase107/heldout-latency.py",
+        "bytes": 2817,
+        "sha256": "cd751e58f8bbc3d1584b0d6c1c5f343809549d8798b217cfe51e4344a57a36ce",
+        "group": "Non-Bend methods and support",
+        "lines": 55,
+        "nonblankLines": 47,
+        "bendDefinitions": null
+      },
+      {
         "file": "selfhost/tools/performance/phase107/heldout/controls.py",
         "bytes": 6731,
         "sha256": "82b649b82533e3cbdca9bf60dc250c64663fc932cd2cbed12465b60d638483e1",
@@ -1686,12 +1807,12 @@
       },
       {
         "file": "selfhost/tools/performance/phase107/inline/constant.bend",
-        "bytes": 9073,
-        "sha256": "e9de89f34a695b82f7f2c3dbec81866968e42efb31c35604069f2203deddda51",
+        "bytes": 9807,
+        "sha256": "b8ddd581983f242d067e6c063d5511e7f25db76bd01285af2d530ade71a29516",
         "group": "Bend optimization algorithms and shared IR helpers",
-        "lines": 213,
-        "nonblankLines": 181,
-        "bendDefinitions": 32
+        "lines": 233,
+        "nonblankLines": 198,
+        "bendDefinitions": 35
       },
       {
         "file": "selfhost/tools/performance/phase107/inline/controls.py",
@@ -1911,8 +2032,8 @@
       },
       {
         "file": "selfhost/tools/performance/phase107/kernel/kernel.mjs",
-        "bytes": 1848,
-        "sha256": "b8cacc97913976d095e9d72fee4c680e785212c70796c1ff555acd53b5c5196d",
+        "bytes": 1868,
+        "sha256": "7ecbfc6201bf3d8bcab58da2e345efe3bd47b3805a3110268d0224fb0f5ddb7e",
         "group": "Non-Bend methods and support",
         "lines": 14,
         "nonblankLines": 14,
@@ -1920,17 +2041,17 @@
       },
       {
         "file": "selfhost/tools/performance/phase107/kernel/main.bend",
-        "bytes": 2748,
-        "sha256": "d73b92829df333f70fceb5126818405f214d5e3cd44969abb0d09d7c87ec9b6d",
+        "bytes": 2944,
+        "sha256": "ee9b26f809d3b3f08f7a2fe8da8c917b49dd80be71d193f199aa56793f6c1e68",
         "group": "Bend experimental control entrypoints",
-        "lines": 53,
-        "nonblankLines": 46,
+        "lines": 54,
+        "nonblankLines": 47,
         "bendDefinitions": 8
       },
       {
         "file": "selfhost/tools/performance/phase107/kernel/measure.py",
-        "bytes": 4312,
-        "sha256": "08d21fdb68a0540c2887b921a2880688464e73ed1cfce770994b4d073632c3bc",
+        "bytes": 4323,
+        "sha256": "1fbaa7e95b22313dc263fb0ff753a7892a42fa0ecdd1d293880f966265231835",
         "group": "Non-Bend methods and support",
         "lines": 45,
         "nonblankLines": 45,
@@ -1938,8 +2059,8 @@
       },
       {
         "file": "selfhost/tools/performance/phase107/kernel/prepare.py",
-        "bytes": 2739,
-        "sha256": "1d586059ac11707d8a002b69f6190ddc9c094b008d70f2e56b857fd95836295c",
+        "bytes": 2833,
+        "sha256": "9169e45e35b21ef968368a002eaff6786020bb6be9754510bf49dbccc353ea06",
         "group": "Non-Bend methods and support",
         "lines": 41,
         "nonblankLines": 38,
@@ -1974,11 +2095,11 @@
       },
       {
         "file": "selfhost/tools/performance/phase107/legacy-latency.py",
-        "bytes": 11888,
-        "sha256": "674f088328c0b49cff37a3f73d892db8d866adba554a923272506f2862f034d5",
+        "bytes": 12483,
+        "sha256": "eb5b4e750e8f56110d72516468ef8dccc9c007195d751e0a8528e813cc640d52",
         "group": "Non-Bend methods and support",
-        "lines": 99,
-        "nonblankLines": 99,
+        "lines": 104,
+        "nonblankLines": 104,
         "bendDefinitions": null
       },
       {
@@ -2136,11 +2257,11 @@
       },
       {
         "file": "selfhost/tools/performance/phase107/summarize.py",
-        "bytes": 22862,
-        "sha256": "d8d4534fee4fd7e2fb4b9f9323ba456c3f3dbc07c405f4cdf1e1a6834a1c78de",
+        "bytes": 29269,
+        "sha256": "e638e832f6e7a264f5791585d006124bdb0790193739b30f1080cda350f7f81d",
         "group": "Non-Bend methods and support",
-        "lines": 363,
-        "nonblankLines": 337,
+        "lines": 448,
+        "nonblankLines": 420,
         "bendDefinitions": null
       },
       {
@@ -12246,7 +12367,7 @@
         "bytes": 509,
         "sha256": "a2d5b50d6b245151ce707ff132ba8a34a2190e6a42534355b77e5a8dfcec5db0"
       },
-      "category": "Source preparation, admission and emission",
+      "category": "Runtime and latency campaigns, including their checks",
       "started": 1792313293.822802,
       "finished": 1792313307.4419858,
       "epochSeconds": 13.619183778762817,
@@ -12917,7 +13038,7 @@
         "bytes": 654,
         "sha256": "f35e81d82ec28e4869e0d5705f74621ad0db76dddc634d9f8de050861079996a"
       },
-      "category": "Source preparation, admission and emission",
+      "category": "Runtime and latency campaigns, including their checks",
       "started": 1792313800.5658565,
       "finished": 1792313829.7925572,
       "epochSeconds": 29.22670078277588,
@@ -12983,11 +13104,1397 @@
           }
         ]
       }
+    },
+    {
+      "receipt": {
+        "file": "selfhost/build/phase107/constant-pair-guard01/process.json",
+        "bytes": 508,
+        "sha256": "cd5071e6a95f82905793ed7122fd45024ed592511c5934523bd74531f3f7fde4"
+      },
+      "category": "Runtime and latency campaigns, including their checks",
+      "started": 1792313907.293303,
+      "finished": 1792313921.4825933,
+      "epochSeconds": 14.189290285110474,
+      "reportedWallSeconds": 14.18929507303983,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase86",
+        "taskset",
+        "-c",
+        "3",
+        "python3",
+        "-B",
+        "selfhost/tools/performance/phase107/constant-pair.py"
+      ],
+      "complete": true,
+      "returncode": 0,
+      "stoppedFor": null,
+      "peakTreeRssBytes": 32063488,
+      "minimumAvailableBytes": 25786830848,
+      "rssLimitBytes": 2147483648,
+      "availableFloorBytes": 4294967296,
+      "expectedNegative": false,
+      "guardMethod": {
+        "receipt": {
+          "file": "selfhost/build/phase107/constant-pair-guard01/method.json",
+          "bytes": 475,
+          "sha256": "3cb9c9912719a91114a2a4f0823963f379c47a8e49078cafd646355408825730"
+        },
+        "recorded": {
+          "method": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase86/guard.py",
+            "sha256": "dd8f3f8a44c336a15e7dd11a9727b218f13582139e34c0aa08a27f7b0b04b790",
+            "bytes": 1688
+          },
+          "support": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/programs/support.py",
+            "sha256": "36e000b43f92809e2de0bcdb462e6e42005fad7341f6ec2122734311073d1cef",
+            "bytes": 6779
+          },
+          "cpu": "3",
+          "diskFreeBytes": 740745216
+        }
+      },
+      "guardInputs": {
+        "receipt": {
+          "file": "selfhost/build/phase107/constant-pair-guard01/inputs.json",
+          "bytes": 214,
+          "sha256": "84f87c0fcd7fd596d75546a1e71c22dd2b463e50dc36d752ce665b59a5655c54"
+        },
+        "recorded": [
+          {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase107/constant-pair.py",
+            "sha256": "f6c3e7f9f63564184a3d4e71ce6f91273bdcbdb8e43b3da70e5bb204096f33d6",
+            "bytes": 3394
+          }
+        ]
+      }
+    },
+    {
+      "receipt": {
+        "file": "selfhost/build/phase107/constant-capacity-guard01/process.json",
+        "bytes": 630,
+        "sha256": "85845baef98eee775e81eb6da822209cfbedce68bbfb79c52afa7bbec1095c7a"
+      },
+      "category": "Source preparation, admission and emission",
+      "started": 1792313993.9712985,
+      "finished": 1792313996.037229,
+      "epochSeconds": 2.0659306049346924,
+      "reportedWallSeconds": 2.0659318240359426,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase86",
+        "taskset",
+        "-c",
+        "3",
+        "selfhost/.bootstrap/bun-1.4.3/bun",
+        "selfhost/tools/performance/phase107/constant-capacity.mjs",
+        "selfhost/build/phase107/bridge21/api.mjs",
+        "selfhost/build/phase107/constant-capacity01"
+      ],
+      "complete": true,
+      "returncode": 0,
+      "stoppedFor": null,
+      "peakTreeRssBytes": 216363008,
+      "minimumAvailableBytes": 27083530240,
+      "rssLimitBytes": 2147483648,
+      "availableFloorBytes": 4294967296,
+      "expectedNegative": false,
+      "guardMethod": {
+        "receipt": {
+          "file": "selfhost/build/phase107/constant-capacity-guard01/method.json",
+          "bytes": 475,
+          "sha256": "a9655e187ad296c4b7f3148d9164dd0fb878e74bb798195a269322b82f49089b"
+        },
+        "recorded": {
+          "method": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase86/guard.py",
+            "sha256": "dd8f3f8a44c336a15e7dd11a9727b218f13582139e34c0aa08a27f7b0b04b790",
+            "bytes": 1688
+          },
+          "support": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/programs/support.py",
+            "sha256": "36e000b43f92809e2de0bcdb462e6e42005fad7341f6ec2122734311073d1cef",
+            "bytes": 6779
+          },
+          "cpu": "3",
+          "diskFreeBytes": 723980288
+        }
+      },
+      "guardInputs": {
+        "receipt": {
+          "file": "selfhost/build/phase107/constant-capacity-guard01/inputs.json",
+          "bytes": 616,
+          "sha256": "0ba3ef4dd3567278e1f9cc127f4d18050dd5ff21337955ea1662de90fb2e0309"
+        },
+        "recorded": [
+          {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/bun-1.4.3/bun",
+            "sha256": "7ce7d6b654eddeec20afddf2396317fba6dc19ab52788a27e894e1806bf8f24b",
+            "bytes": 88979072
+          },
+          {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase107/constant-capacity.mjs",
+            "sha256": "a641bb0b310b6b069394fc0c2afc7265e2011888c0c4feebbf806371b5aea315",
+            "bytes": 9411
+          },
+          {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase107/bridge21/api.mjs",
+            "sha256": "f6107dbaa7978e8ba1aa696e8ab523c7b6866fda73969fe2e64b1c2df20889d6",
+            "bytes": 412876
+          }
+        ]
+      }
+    },
+    {
+      "receipt": {
+        "file": "selfhost/build/phase107/kernel-api04-guard/process.json",
+        "bytes": 705,
+        "sha256": "cbe92776bf5d219f5e0813537cafe8cb149bda60b7c23c76d2806e52f6a5d841"
+      },
+      "category": "Small IR kernel acquisition",
+      "started": 1792314025.143189,
+      "finished": 1792314026.6974535,
+      "epochSeconds": 1.5542645454406738,
+      "reportedWallSeconds": 1.5542661419603974,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase86",
+        "taskset",
+        "-c",
+        "3",
+        "selfhost/.bootstrap/bun-1.4.3/bun",
+        "selfhost/tools/stage0-library.mjs",
+        "selfhost/build/phase107/kernel-source04/producer.bend",
+        "selfhost/build/phase107/kernel-source04/api.mjs",
+        "nx_workload",
+        "nx_verify",
+        "nx_kernel_policy",
+        "nx_kernel_text"
+      ],
+      "complete": true,
+      "returncode": 0,
+      "stoppedFor": null,
+      "peakTreeRssBytes": 156233728,
+      "minimumAvailableBytes": 27515064320,
+      "rssLimitBytes": 2147483648,
+      "availableFloorBytes": 4294967296,
+      "expectedNegative": false,
+      "guardMethod": {
+        "receipt": {
+          "file": "selfhost/build/phase107/kernel-api04-guard/method.json",
+          "bytes": 475,
+          "sha256": "0b1f0efa76e6b481b79613495c77d0e4e3e70c1e0c27881447dbc5cab2e28df0"
+        },
+        "recorded": {
+          "method": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase86/guard.py",
+            "sha256": "dd8f3f8a44c336a15e7dd11a9727b218f13582139e34c0aa08a27f7b0b04b790",
+            "bytes": 1688
+          },
+          "support": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/programs/support.py",
+            "sha256": "36e000b43f92809e2de0bcdb462e6e42005fad7341f6ec2122734311073d1cef",
+            "bytes": 6779
+          },
+          "cpu": "3",
+          "diskFreeBytes": 723206144
+        }
+      },
+      "guardInputs": {
+        "receipt": {
+          "file": "selfhost/build/phase107/kernel-api04-guard/inputs.json",
+          "bytes": 605,
+          "sha256": "0e6e04a2164977d018212af48a1232d22812f30fcd92869a21a678bef56b9d60"
+        },
+        "recorded": [
+          {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/bun-1.4.3/bun",
+            "sha256": "7ce7d6b654eddeec20afddf2396317fba6dc19ab52788a27e894e1806bf8f24b",
+            "bytes": 88979072
+          },
+          {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/stage0-library.mjs",
+            "sha256": "ec3506de1558fa1e56cef54345053ffaf7bfcc92b8632eaf96e217c15b8a59c1",
+            "bytes": 4172
+          },
+          {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase107/kernel-source04/producer.bend",
+            "sha256": "5b50c72228af80fb4695b54a09137d73ea63fa7c2c5cd516323908b8956690af",
+            "bytes": 148689
+          }
+        ]
+      }
+    },
+    {
+      "receipt": {
+        "file": "selfhost/build/phase107/kernel-emit04-guard/process.json",
+        "bytes": 575,
+        "sha256": "7d304410625fe2020d2e7c09d5a123b8b0d1a6506b30486292483062fcb5afc0"
+      },
+      "category": "Small IR kernel acquisition",
+      "started": 1792314026.8496995,
+      "finished": 1792314035.1759183,
+      "epochSeconds": 8.326218843460083,
+      "reportedWallSeconds": 8.326216563116759,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase86",
+        "taskset",
+        "-c",
+        "3",
+        "selfhost/bend",
+        "selfhost/build/phase107/kernel-source04/producer.bend",
+        "-o",
+        "selfhost/build/phase107/kernel-source04/producer.c"
+      ],
+      "complete": true,
+      "returncode": 0,
+      "stoppedFor": null,
+      "peakTreeRssBytes": 205512704,
+      "minimumAvailableBytes": 27438755840,
+      "rssLimitBytes": 2147483648,
+      "availableFloorBytes": 4294967296,
+      "expectedNegative": false,
+      "guardMethod": {
+        "receipt": {
+          "file": "selfhost/build/phase107/kernel-emit04-guard/method.json",
+          "bytes": 475,
+          "sha256": "d35a363da065b580340b7d6e43566780848183d144ae0976ce7d613ee22b9e38"
+        },
+        "recorded": {
+          "method": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase86/guard.py",
+            "sha256": "dd8f3f8a44c336a15e7dd11a9727b218f13582139e34c0aa08a27f7b0b04b790",
+            "bytes": 1688
+          },
+          "support": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/programs/support.py",
+            "sha256": "36e000b43f92809e2de0bcdb462e6e42005fad7341f6ec2122734311073d1cef",
+            "bytes": 6779
+          },
+          "cpu": "3",
+          "diskFreeBytes": 718184448
+        }
+      },
+      "guardInputs": {
+        "receipt": {
+          "file": "selfhost/build/phase107/kernel-emit04-guard/inputs.json",
+          "bytes": 405,
+          "sha256": "3fd926d49f1a9755dc3215f851a8255d8352c2ab1666d5988e4c7f5b1ee6a8c7"
+        },
+        "recorded": [
+          {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/dist/native/bend",
+            "sha256": "55b4def3e01e194299fc8a4c96daf12def4cb4e742975ef4a7d748ba79c09a8e",
+            "bytes": 21159504
+          },
+          {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase107/kernel-source04/producer.bend",
+            "sha256": "5b50c72228af80fb4695b54a09137d73ea63fa7c2c5cd516323908b8956690af",
+            "bytes": 148689
+          }
+        ]
+      }
+    },
+    {
+      "receipt": {
+        "file": "selfhost/build/phase107/kernel-link04-guard/process.json",
+        "bytes": 871,
+        "sha256": "9597ed6ab0462b9e9b13f1abc3ba13b5fb54aaa1179968311e15e7d107b32d7f"
+      },
+      "category": "Small IR kernel acquisition",
+      "started": 1792314035.2483582,
+      "finished": 1792314074.1455731,
+      "epochSeconds": 38.89721488952637,
+      "reportedWallSeconds": 38.89721609395929,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase86",
+        "taskset",
+        "-c",
+        "3",
+        "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+        "-O2",
+        "-isystem",
+        "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/include/clang",
+        "-DBEND_NATIVE_HOST=1",
+        "-DBEND_IMAGE_C=\"/home/ai/bend2/build/publish/bend/selfhost/build/phase107/kernel-source04/producer.c\"",
+        "selfhost/tools/native/cli/start.c",
+        "-lm",
+        "-pthread",
+        "-o",
+        "selfhost/build/phase107/kernel-source04/producer"
+      ],
+      "complete": true,
+      "returncode": 0,
+      "stoppedFor": null,
+      "peakTreeRssBytes": 467337216,
+      "minimumAvailableBytes": 27226632192,
+      "rssLimitBytes": 2147483648,
+      "availableFloorBytes": 4294967296,
+      "expectedNegative": false,
+      "guardMethod": {
+        "receipt": {
+          "file": "selfhost/build/phase107/kernel-link04-guard/method.json",
+          "bytes": 475,
+          "sha256": "f4c77fa841f338212342a7f355a6ef182d95cda4d4c7dfcbea0e445562c4863c"
+        },
+        "recorded": {
+          "method": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase86/guard.py",
+            "sha256": "dd8f3f8a44c336a15e7dd11a9727b218f13582139e34c0aa08a27f7b0b04b790",
+            "bytes": 1688
+          },
+          "support": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/programs/support.py",
+            "sha256": "36e000b43f92809e2de0bcdb462e6e42005fad7341f6ec2122734311073d1cef",
+            "bytes": 6779
+          },
+          "cpu": "3",
+          "diskFreeBytes": 715952128
+        }
+      },
+      "guardInputs": {
+        "receipt": {
+          "file": "selfhost/build/phase107/kernel-link04-guard/inputs.json",
+          "bytes": 384,
+          "sha256": "8fc05838e26967f492e44225b8a13be5deedbaa7b426c5e61a9f312c60fefb35"
+        },
+        "recorded": [
+          {
+            "path": "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+            "sha256": "9fcd5fc4baeea9c449bcc9ca4b9db7714465107669498b0056a853f22f5f4def",
+            "bytes": 119320
+          },
+          {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/native/cli/start.c",
+            "sha256": "342f1bcae6494fab26961ce7d9dda57c91e4d00a690d86181e1f38fb18d75924",
+            "bytes": 751
+          }
+        ]
+      }
+    },
+    {
+      "receipt": {
+        "file": "selfhost/build/phase107/kernel-measure04-guard/process.json",
+        "bytes": 929,
+        "sha256": "50aadd64404f03305a42230380002cc07ec857b61e7161845f4c49f42dc3f36d"
+      },
+      "category": "Runtime and latency campaigns, including their checks",
+      "started": 1792314074.6422884,
+      "finished": 1792314087.8408802,
+      "epochSeconds": 13.198591709136963,
+      "reportedWallSeconds": 13.198602199088782,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase86",
+        "taskset",
+        "-c",
+        "3",
+        "python3",
+        "-B",
+        "selfhost/tools/performance/phase107/kernel/measure.py",
+        "--source",
+        "selfhost/build/phase107/kernel-source04/producer.bend",
+        "--native",
+        "selfhost/build/phase107/kernel-source04/producer",
+        "--api",
+        "selfhost/build/phase107/kernel-source04/api.mjs",
+        "--out",
+        "selfhost/build/phase107/kernel-measure04",
+        "--rounds",
+        "3",
+        "--policies",
+        "promote,constant",
+        "--workloads",
+        "many,shared,text",
+        "--formats",
+        "json"
+      ],
+      "complete": true,
+      "returncode": 0,
+      "stoppedFor": null,
+      "peakTreeRssBytes": 106856448,
+      "minimumAvailableBytes": 27535527936,
+      "rssLimitBytes": 2147483648,
+      "availableFloorBytes": 4294967296,
+      "expectedNegative": false,
+      "guardMethod": {
+        "receipt": {
+          "file": "selfhost/build/phase107/kernel-measure04-guard/method.json",
+          "bytes": 475,
+          "sha256": "35c845c8a30d55ab80cd3678503b438065ffa82681e0ff90b7e7d4c4100a9ee9"
+        },
+        "recorded": {
+          "method": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase86/guard.py",
+            "sha256": "dd8f3f8a44c336a15e7dd11a9727b218f13582139e34c0aa08a27f7b0b04b790",
+            "bytes": 1688
+          },
+          "support": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/programs/support.py",
+            "sha256": "36e000b43f92809e2de0bcdb462e6e42005fad7341f6ec2122734311073d1cef",
+            "bytes": 6779
+          },
+          "cpu": "3",
+          "diskFreeBytes": 714280960
+        }
+      },
+      "guardInputs": {
+        "receipt": {
+          "file": "selfhost/build/phase107/kernel-measure04-guard/inputs.json",
+          "bytes": 847,
+          "sha256": "2348961433b49767ecbe94a2cf8bd6a168b3492f7a3572a65340b84dbb548af4"
+        },
+        "recorded": [
+          {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase107/kernel/measure.py",
+            "sha256": "1fbaa7e95b22313dc263fb0ff753a7892a42fa0ecdd1d293880f966265231835",
+            "bytes": 4323
+          },
+          {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase107/kernel-source04/producer.bend",
+            "sha256": "5b50c72228af80fb4695b54a09137d73ea63fa7c2c5cd516323908b8956690af",
+            "bytes": 148689
+          },
+          {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase107/kernel-source04/producer",
+            "sha256": "717d1c4048c3e59b2d89510ecda77a959c2db7d1f5ea1cf564159790d8dcbf45",
+            "bytes": 2044616
+          },
+          {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase107/kernel-source04/api.mjs",
+            "sha256": "ea0a40997918abe662de62eda58b4399b7c79a4232c3ac6717fe2dc8b7325f66",
+            "bytes": 251808
+          }
+        ]
+      }
+    },
+    {
+      "receipt": {
+        "file": "selfhost/build/phase107/bridge-check22/process.json",
+        "bytes": 1371,
+        "sha256": "08d7e49a98343e89c6152e6d6eed93b5210ff321a75523d1b39be725135adbd9"
+      },
+      "category": "Source preparation, admission and emission",
+      "started": 1792314228.1261823,
+      "finished": 1792314230.2327785,
+      "epochSeconds": 2.1065962314605713,
+      "reportedWallSeconds": 2.1066027658525854,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase86",
+        "taskset",
+        "-c",
+        "3",
+        "selfhost/.bootstrap/bun-1.4.3/bun",
+        "selfhost/tools/stage0-library.mjs",
+        "selfhost/build/phase107/bridge22/source.bend",
+        "selfhost/build/phase107/bridge22/api.mjs",
+        "nxk_lower",
+        "nx_inline",
+        "nx_inline_deep",
+        "nx_inline_entry",
+        "nx_inline_demand",
+        "nx_inline_leaf",
+        "nx_memory_forward",
+        "nx_pipeline_fast",
+        "nx_scalar_promote",
+        "nx_p_has_allocation",
+        "nx_strength_reduce",
+        "nx_sr_fixture",
+        "nx_sr_fixture_extra",
+        "nx_p_fixture",
+        "nx_m_fixture",
+        "nx_m_disjoint",
+        "nx_reachable",
+        "nx_r_fixture",
+        "nx_l_fixture",
+        "nx_tail_optimize",
+        "nx_inline_nodes",
+        "nx_i_fixture",
+        "nx_workload",
+        "nx_optimize",
+        "nx_verify",
+        "nx_json_program",
+        "nx_c_program",
+        "nxq_program",
+        "nxq_program_fused",
+        "nxq_units",
+        "nxq_control",
+        "nx_law_bridge",
+        "nx_constant_propagate",
+        "nx_cp_fixture",
+        "nx_cp_has_eligible"
+      ],
+      "complete": true,
+      "returncode": 0,
+      "stoppedFor": null,
+      "peakTreeRssBytes": 261095424,
+      "minimumAvailableBytes": 27400208384,
+      "rssLimitBytes": 2147483648,
+      "availableFloorBytes": 4294967296,
+      "expectedNegative": false,
+      "guardMethod": {
+        "receipt": {
+          "file": "selfhost/build/phase107/bridge-check22/method.json",
+          "bytes": 475,
+          "sha256": "5b08c8e850adcdea859c89d9f7d78d0fe0cbd7a07db58000f2851d11b19c1f7c"
+        },
+        "recorded": {
+          "method": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase86/guard.py",
+            "sha256": "dd8f3f8a44c336a15e7dd11a9727b218f13582139e34c0aa08a27f7b0b04b790",
+            "bytes": 1688
+          },
+          "support": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/programs/support.py",
+            "sha256": "36e000b43f92809e2de0bcdb462e6e42005fad7341f6ec2122734311073d1cef",
+            "bytes": 6779
+          },
+          "cpu": "3",
+          "diskFreeBytes": 712577024
+        }
+      },
+      "guardInputs": {
+        "receipt": {
+          "file": "selfhost/build/phase107/bridge-check22/inputs.json",
+          "bytes": 596,
+          "sha256": "c376970a71cdf71b5e4072d96e7ef96cebaebf94dfd729d6ae3cb4308f37d534"
+        },
+        "recorded": [
+          {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/bun-1.4.3/bun",
+            "sha256": "7ce7d6b654eddeec20afddf2396317fba6dc19ab52788a27e894e1806bf8f24b",
+            "bytes": 88979072
+          },
+          {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/stage0-library.mjs",
+            "sha256": "ec3506de1558fa1e56cef54345053ffaf7bfcc92b8632eaf96e217c15b8a59c1",
+            "bytes": 4172
+          },
+          {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase107/bridge22/source.bend",
+            "sha256": "553fe73c30080a359dc859e20d7c25b87b78df880a3afea4badd020064b21bcf",
+            "bytes": 217712
+          }
+        ]
+      }
+    },
+    {
+      "receipt": {
+        "file": "selfhost/build/phase107/constant-emit02/process.json",
+        "bytes": 622,
+        "sha256": "72bcd5a024770b501175f4e557cd0706b0f4a4bf863bee4ed404c59db860b356"
+      },
+      "category": "Source preparation, admission and emission",
+      "started": 1792314230.5825818,
+      "finished": 1792314233.4901896,
+      "epochSeconds": 2.9076077938079834,
+      "reportedWallSeconds": 2.90760998101905,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase86",
+        "taskset",
+        "-c",
+        "3",
+        "selfhost/.bootstrap/bun-1.4.3/bun",
+        "selfhost/tools/performance/phase107/constant-audit.mjs",
+        "selfhost/build/phase107/bridge22/api.mjs",
+        "selfhost/build/phase107/constant-audit02"
+      ],
+      "complete": true,
+      "returncode": 0,
+      "stoppedFor": null,
+      "peakTreeRssBytes": 69722112,
+      "minimumAvailableBytes": 27595071488,
+      "rssLimitBytes": 2147483648,
+      "availableFloorBytes": 4294967296,
+      "expectedNegative": false,
+      "guardMethod": {
+        "receipt": {
+          "file": "selfhost/build/phase107/constant-emit02/method.json",
+          "bytes": 475,
+          "sha256": "111f84f6e14e42ded346b86a3dcc4bf9f3637380c2504f1991e7c63ff9a8bed1"
+        },
+        "recorded": {
+          "method": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase86/guard.py",
+            "sha256": "dd8f3f8a44c336a15e7dd11a9727b218f13582139e34c0aa08a27f7b0b04b790",
+            "bytes": 1688
+          },
+          "support": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/programs/support.py",
+            "sha256": "36e000b43f92809e2de0bcdb462e6e42005fad7341f6ec2122734311073d1cef",
+            "bytes": 6779
+          },
+          "cpu": "3",
+          "diskFreeBytes": 711868416
+        }
+      },
+      "guardInputs": {
+        "receipt": {
+          "file": "selfhost/build/phase107/constant-emit02/inputs.json",
+          "bytes": 613,
+          "sha256": "ba802b40f0c2d5e71bc0c6e65eaaddd6f9ac27da799cd27d3c4e8bbfccb7626a"
+        },
+        "recorded": [
+          {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/bun-1.4.3/bun",
+            "sha256": "7ce7d6b654eddeec20afddf2396317fba6dc19ab52788a27e894e1806bf8f24b",
+            "bytes": 88979072
+          },
+          {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase107/constant-audit.mjs",
+            "sha256": "60b613062575778fd4ce8fac22f63a5952cf33e2932497a555d0627dd35f8678",
+            "bytes": 3717
+          },
+          {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase107/bridge22/api.mjs",
+            "sha256": "161a60951aa55c02d657f872915c2d31ecb7394a2e4b6ea46629ade5ae9ea356",
+            "bytes": 414022
+          }
+        ]
+      }
+    },
+    {
+      "receipt": {
+        "file": "selfhost/build/phase107/constant-capacity-guard02/process.json",
+        "bytes": 631,
+        "sha256": "4bf924a68e83c2803a6edc82d27224b98a2d956f7cf2fc83da6871e336b6e583"
+      },
+      "category": "Source preparation, admission and emission",
+      "started": 1792314233.8579745,
+      "finished": 1792314235.9279623,
+      "epochSeconds": 2.0699877738952637,
+      "reportedWallSeconds": 2.0699903019703925,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase86",
+        "taskset",
+        "-c",
+        "3",
+        "selfhost/.bootstrap/bun-1.4.3/bun",
+        "selfhost/tools/performance/phase107/constant-capacity.mjs",
+        "selfhost/build/phase107/bridge22/api.mjs",
+        "selfhost/build/phase107/constant-capacity02"
+      ],
+      "complete": true,
+      "returncode": 0,
+      "stoppedFor": null,
+      "peakTreeRssBytes": 206176256,
+      "minimumAvailableBytes": 27460382720,
+      "rssLimitBytes": 2147483648,
+      "availableFloorBytes": 4294967296,
+      "expectedNegative": false,
+      "guardMethod": {
+        "receipt": {
+          "file": "selfhost/build/phase107/constant-capacity-guard02/method.json",
+          "bytes": 475,
+          "sha256": "c46d04d716550a6917954ae636e866e9d57e3a1eccaef41441e535452ca6b3ef"
+        },
+        "recorded": {
+          "method": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase86/guard.py",
+            "sha256": "dd8f3f8a44c336a15e7dd11a9727b218f13582139e34c0aa08a27f7b0b04b790",
+            "bytes": 1688
+          },
+          "support": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/programs/support.py",
+            "sha256": "36e000b43f92809e2de0bcdb462e6e42005fad7341f6ec2122734311073d1cef",
+            "bytes": 6779
+          },
+          "cpu": "3",
+          "diskFreeBytes": 695865344
+        }
+      },
+      "guardInputs": {
+        "receipt": {
+          "file": "selfhost/build/phase107/constant-capacity-guard02/inputs.json",
+          "bytes": 616,
+          "sha256": "e428e35390a150041846afdc218c740c3851b223485afea99257806c68ba0273"
+        },
+        "recorded": [
+          {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/bun-1.4.3/bun",
+            "sha256": "7ce7d6b654eddeec20afddf2396317fba6dc19ab52788a27e894e1806bf8f24b",
+            "bytes": 88979072
+          },
+          {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase107/constant-capacity.mjs",
+            "sha256": "a641bb0b310b6b069394fc0c2afc7265e2011888c0c4feebbf806371b5aea315",
+            "bytes": 9411
+          },
+          {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase107/bridge22/api.mjs",
+            "sha256": "161a60951aa55c02d657f872915c2d31ecb7394a2e4b6ea46629ade5ae9ea356",
+            "bytes": 414022
+          }
+        ]
+      }
+    },
+    {
+      "receipt": {
+        "file": "selfhost/build/phase107/constant-prefilter-guard01/process.json",
+        "bytes": 631,
+        "sha256": "9a7c6a378ac1abcd2b131ea61fc12be644a79a52606d9a60d03ebf7d3efc57d4"
+      },
+      "category": "Source preparation, admission and emission",
+      "started": 1792314290.0447094,
+      "finished": 1792314290.3129823,
+      "epochSeconds": 0.26827287673950195,
+      "reportedWallSeconds": 0.268276141025126,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase86",
+        "taskset",
+        "-c",
+        "3",
+        "selfhost/.bootstrap/bun-1.4.3/bun",
+        "selfhost/tools/performance/phase107/constant-prefilter.mjs",
+        "selfhost/build/phase107/bridge22/api.mjs",
+        "selfhost/build/phase107/constant-prefilter01"
+      ],
+      "complete": true,
+      "returncode": 0,
+      "stoppedFor": null,
+      "peakTreeRssBytes": 82845696,
+      "minimumAvailableBytes": 27575070720,
+      "rssLimitBytes": 2147483648,
+      "availableFloorBytes": 4294967296,
+      "expectedNegative": false,
+      "guardMethod": {
+        "receipt": {
+          "file": "selfhost/build/phase107/constant-prefilter-guard01/method.json",
+          "bytes": 475,
+          "sha256": "7af8da782b0fceb7ade1be44095df7f59eb8293478928b2bbf8dad1c5567a68f"
+        },
+        "recorded": {
+          "method": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase86/guard.py",
+            "sha256": "dd8f3f8a44c336a15e7dd11a9727b218f13582139e34c0aa08a27f7b0b04b790",
+            "bytes": 1688
+          },
+          "support": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/programs/support.py",
+            "sha256": "36e000b43f92809e2de0bcdb462e6e42005fad7341f6ec2122734311073d1cef",
+            "bytes": 6779
+          },
+          "cpu": "3",
+          "diskFreeBytes": 695578624
+        }
+      },
+      "guardInputs": {
+        "receipt": {
+          "file": "selfhost/build/phase107/constant-prefilter-guard01/inputs.json",
+          "bytes": 617,
+          "sha256": "d9fc527cacb5237d7f6dafca8146e099dec96e5764d41bdd62cfe68e6a175c0d"
+        },
+        "recorded": [
+          {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/bun-1.4.3/bun",
+            "sha256": "7ce7d6b654eddeec20afddf2396317fba6dc19ab52788a27e894e1806bf8f24b",
+            "bytes": 88979072
+          },
+          {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase107/constant-prefilter.mjs",
+            "sha256": "8bcf41997f2e5dfe75a57264de0509fcae24ae25a2d525900763733e7c44f8ed",
+            "bytes": 2134
+          },
+          {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase107/bridge22/api.mjs",
+            "sha256": "161a60951aa55c02d657f872915c2d31ecb7394a2e4b6ea46629ade5ae9ea356",
+            "bytes": 414022
+          }
+        ]
+      }
+    },
+    {
+      "receipt": {
+        "file": "selfhost/build/phase107/heldout-latency-guard01/process.json",
+        "bytes": 703,
+        "sha256": "ac2916f91a8d38fa65c2d94f95deb3040d081f4314d92a31c68b9d193f932399"
+      },
+      "category": "Runtime and latency campaigns, including their checks",
+      "started": 1792314290.4274688,
+      "finished": 1792314305.885967,
+      "epochSeconds": 15.458498239517212,
+      "reportedWallSeconds": 15.458499200176448,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase86",
+        "taskset",
+        "-c",
+        "3",
+        "python3",
+        "-B",
+        "selfhost/tools/performance/phase107/heldout-latency.py",
+        "--image",
+        "selfhost/build/phase107/native-source04/image.json",
+        "--out",
+        "selfhost/build/phase107/heldout-latency01",
+        "--rounds",
+        "3",
+        "--max-seconds",
+        "45"
+      ],
+      "complete": true,
+      "returncode": 0,
+      "stoppedFor": null,
+      "peakTreeRssBytes": 182267904,
+      "minimumAvailableBytes": 27520991232,
+      "rssLimitBytes": 2147483648,
+      "availableFloorBytes": 4294967296,
+      "expectedNegative": false,
+      "guardMethod": {
+        "receipt": {
+          "file": "selfhost/build/phase107/heldout-latency-guard01/method.json",
+          "bytes": 475,
+          "sha256": "ba9372a41dd5aa81f1d41c37d47fe8600c0c743bd6bb9893716746d01496eb4b"
+        },
+        "recorded": {
+          "method": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase86/guard.py",
+            "sha256": "dd8f3f8a44c336a15e7dd11a9727b218f13582139e34c0aa08a27f7b0b04b790",
+            "bytes": 1688
+          },
+          "support": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/programs/support.py",
+            "sha256": "36e000b43f92809e2de0bcdb462e6e42005fad7341f6ec2122734311073d1cef",
+            "bytes": 6779
+          },
+          "cpu": "3",
+          "diskFreeBytes": 693121024
+        }
+      },
+      "guardInputs": {
+        "receipt": {
+          "file": "selfhost/build/phase107/heldout-latency-guard01/inputs.json",
+          "bytes": 424,
+          "sha256": "411c15b27aad395501a0f0e5b4fb363556e9d7a5991436bac83568a2bd3f9180"
+        },
+        "recorded": [
+          {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase107/heldout-latency.py",
+            "sha256": "cd751e58f8bbc3d1584b0d6c1c5f343809549d8798b217cfe51e4344a57a36ce",
+            "bytes": 2817
+          },
+          {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase107/native-source04/image.json",
+            "sha256": "681f4dcdc53bf90cbef4c00915f7fff144d7d553feed6da4483b278d23bebe68",
+            "bytes": 983
+          }
+        ]
+      }
+    },
+    {
+      "receipt": {
+        "file": "selfhost/build/phase107/kernel-api05-guard/process.json",
+        "bytes": 705,
+        "sha256": "4e13ad9acd9bc669ba69dd3abfcfcdf8d10f55f5a5744b4f6fb84f53975973ea"
+      },
+      "category": "Small IR kernel acquisition",
+      "started": 1792314306.3281875,
+      "finished": 1792314307.909935,
+      "epochSeconds": 1.5817475318908691,
+      "reportedWallSeconds": 1.5817503379657865,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase86",
+        "taskset",
+        "-c",
+        "3",
+        "selfhost/.bootstrap/bun-1.4.3/bun",
+        "selfhost/tools/stage0-library.mjs",
+        "selfhost/build/phase107/kernel-source05/producer.bend",
+        "selfhost/build/phase107/kernel-source05/api.mjs",
+        "nx_workload",
+        "nx_verify",
+        "nx_kernel_policy",
+        "nx_kernel_text"
+      ],
+      "complete": true,
+      "returncode": 0,
+      "stoppedFor": null,
+      "peakTreeRssBytes": 157310976,
+      "minimumAvailableBytes": 27505328128,
+      "rssLimitBytes": 2147483648,
+      "availableFloorBytes": 4294967296,
+      "expectedNegative": false,
+      "guardMethod": {
+        "receipt": {
+          "file": "selfhost/build/phase107/kernel-api05-guard/method.json",
+          "bytes": 475,
+          "sha256": "58860d2c516e712378f1f21d0411d2bd45b4f78182ef71c15f91af4a054e0590"
+        },
+        "recorded": {
+          "method": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase86/guard.py",
+            "sha256": "dd8f3f8a44c336a15e7dd11a9727b218f13582139e34c0aa08a27f7b0b04b790",
+            "bytes": 1688
+          },
+          "support": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/programs/support.py",
+            "sha256": "36e000b43f92809e2de0bcdb462e6e42005fad7341f6ec2122734311073d1cef",
+            "bytes": 6779
+          },
+          "cpu": "3",
+          "diskFreeBytes": 692490240
+        }
+      },
+      "guardInputs": {
+        "receipt": {
+          "file": "selfhost/build/phase107/kernel-api05-guard/inputs.json",
+          "bytes": 605,
+          "sha256": "d7821bc05205b9556db0f2c67066c74ae17f91384dccac73c820447dcf35e10c"
+        },
+        "recorded": [
+          {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/bun-1.4.3/bun",
+            "sha256": "7ce7d6b654eddeec20afddf2396317fba6dc19ab52788a27e894e1806bf8f24b",
+            "bytes": 88979072
+          },
+          {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/stage0-library.mjs",
+            "sha256": "ec3506de1558fa1e56cef54345053ffaf7bfcc92b8632eaf96e217c15b8a59c1",
+            "bytes": 4172
+          },
+          {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase107/kernel-source05/producer.bend",
+            "sha256": "049060746796dea279472861fdbf12d07cc40585dc994f6f3899841affe39908",
+            "bytes": 149423
+          }
+        ]
+      }
+    },
+    {
+      "receipt": {
+        "file": "selfhost/build/phase107/kernel-emit05-guard/process.json",
+        "bytes": 575,
+        "sha256": "0b4ab94698db2904d4848dd51160f28917e53d5e801f4bb216d0f2c34aa46781"
+      },
+      "category": "Small IR kernel acquisition",
+      "started": 1792314308.0394015,
+      "finished": 1792314316.2781537,
+      "epochSeconds": 8.238752126693726,
+      "reportedWallSeconds": 8.238754207035527,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase86",
+        "taskset",
+        "-c",
+        "3",
+        "selfhost/bend",
+        "selfhost/build/phase107/kernel-source05/producer.bend",
+        "-o",
+        "selfhost/build/phase107/kernel-source05/producer.c"
+      ],
+      "complete": true,
+      "returncode": 0,
+      "stoppedFor": null,
+      "peakTreeRssBytes": 207622144,
+      "minimumAvailableBytes": 27445383168,
+      "rssLimitBytes": 2147483648,
+      "availableFloorBytes": 4294967296,
+      "expectedNegative": false,
+      "guardMethod": {
+        "receipt": {
+          "file": "selfhost/build/phase107/kernel-emit05-guard/method.json",
+          "bytes": 475,
+          "sha256": "134b48ae77d82e5812f9dde57f43f24199e1c2be556f11b2e9e6f7577557c5b9"
+        },
+        "recorded": {
+          "method": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase86/guard.py",
+            "sha256": "dd8f3f8a44c336a15e7dd11a9727b218f13582139e34c0aa08a27f7b0b04b790",
+            "bytes": 1688
+          },
+          "support": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/programs/support.py",
+            "sha256": "36e000b43f92809e2de0bcdb462e6e42005fad7341f6ec2122734311073d1cef",
+            "bytes": 6779
+          },
+          "cpu": "3",
+          "diskFreeBytes": 687460352
+        }
+      },
+      "guardInputs": {
+        "receipt": {
+          "file": "selfhost/build/phase107/kernel-emit05-guard/inputs.json",
+          "bytes": 405,
+          "sha256": "d1a6b1c2549886e87f83e8a28e807a9ab29ea8e1521ce6854bbca0ef08b368b7"
+        },
+        "recorded": [
+          {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/dist/native/bend",
+            "sha256": "55b4def3e01e194299fc8a4c96daf12def4cb4e742975ef4a7d748ba79c09a8e",
+            "bytes": 21159504
+          },
+          {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase107/kernel-source05/producer.bend",
+            "sha256": "049060746796dea279472861fdbf12d07cc40585dc994f6f3899841affe39908",
+            "bytes": 149423
+          }
+        ]
+      }
+    },
+    {
+      "receipt": {
+        "file": "selfhost/build/phase107/kernel-link05-guard/process.json",
+        "bytes": 870,
+        "sha256": "ee97410e183ccf4b874642054fed1a248a4f1ab92e21535f857cc1b12d202d2f"
+      },
+      "category": "Small IR kernel acquisition",
+      "started": 1792314316.363394,
+      "finished": 1792314354.9800286,
+      "epochSeconds": 38.61663460731506,
+      "reportedWallSeconds": 38.61663568112999,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase86",
+        "taskset",
+        "-c",
+        "3",
+        "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+        "-O2",
+        "-isystem",
+        "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/include/clang",
+        "-DBEND_NATIVE_HOST=1",
+        "-DBEND_IMAGE_C=\"/home/ai/bend2/build/publish/bend/selfhost/build/phase107/kernel-source05/producer.c\"",
+        "selfhost/tools/native/cli/start.c",
+        "-lm",
+        "-pthread",
+        "-o",
+        "selfhost/build/phase107/kernel-source05/producer"
+      ],
+      "complete": true,
+      "returncode": 0,
+      "stoppedFor": null,
+      "peakTreeRssBytes": 463851520,
+      "minimumAvailableBytes": 27069165568,
+      "rssLimitBytes": 2147483648,
+      "availableFloorBytes": 4294967296,
+      "expectedNegative": false,
+      "guardMethod": {
+        "receipt": {
+          "file": "selfhost/build/phase107/kernel-link05-guard/method.json",
+          "bytes": 475,
+          "sha256": "37d86dafed56082f4b7b54a1bdc8613e0d8c7a85b9318209b01a4efdab2ca201"
+        },
+        "recorded": {
+          "method": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase86/guard.py",
+            "sha256": "dd8f3f8a44c336a15e7dd11a9727b218f13582139e34c0aa08a27f7b0b04b790",
+            "bytes": 1688
+          },
+          "support": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/programs/support.py",
+            "sha256": "36e000b43f92809e2de0bcdb462e6e42005fad7341f6ec2122734311073d1cef",
+            "bytes": 6779
+          },
+          "cpu": "3",
+          "diskFreeBytes": 685002752
+        }
+      },
+      "guardInputs": {
+        "receipt": {
+          "file": "selfhost/build/phase107/kernel-link05-guard/inputs.json",
+          "bytes": 384,
+          "sha256": "8fc05838e26967f492e44225b8a13be5deedbaa7b426c5e61a9f312c60fefb35"
+        },
+        "recorded": [
+          {
+            "path": "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+            "sha256": "9fcd5fc4baeea9c449bcc9ca4b9db7714465107669498b0056a853f22f5f4def",
+            "bytes": 119320
+          },
+          {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/native/cli/start.c",
+            "sha256": "342f1bcae6494fab26961ce7d9dda57c91e4d00a690d86181e1f38fb18d75924",
+            "bytes": 751
+          }
+        ]
+      }
+    },
+    {
+      "receipt": {
+        "file": "selfhost/build/phase107/kernel-measure05-guard/process.json",
+        "bytes": 929,
+        "sha256": "410e8e3d7b175b2ddb495d06ae1e1ae4b2f8f4ff9f4a961f45276ac28688d633"
+      },
+      "category": "Runtime and latency campaigns, including their checks",
+      "started": 1792314355.1037767,
+      "finished": 1792314365.5350714,
+      "epochSeconds": 10.431294679641724,
+      "reportedWallSeconds": 10.431299744173884,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase86",
+        "taskset",
+        "-c",
+        "3",
+        "python3",
+        "-B",
+        "selfhost/tools/performance/phase107/kernel/measure.py",
+        "--source",
+        "selfhost/build/phase107/kernel-source05/producer.bend",
+        "--native",
+        "selfhost/build/phase107/kernel-source05/producer",
+        "--api",
+        "selfhost/build/phase107/kernel-source05/api.mjs",
+        "--out",
+        "selfhost/build/phase107/kernel-measure05",
+        "--rounds",
+        "3",
+        "--policies",
+        "promote,constant",
+        "--workloads",
+        "many,shared,text",
+        "--formats",
+        "json"
+      ],
+      "complete": true,
+      "returncode": 0,
+      "stoppedFor": null,
+      "peakTreeRssBytes": 106815488,
+      "minimumAvailableBytes": 27539992576,
+      "rssLimitBytes": 2147483648,
+      "availableFloorBytes": 4294967296,
+      "expectedNegative": false,
+      "guardMethod": {
+        "receipt": {
+          "file": "selfhost/build/phase107/kernel-measure05-guard/method.json",
+          "bytes": 475,
+          "sha256": "9189a0b4d71977ed7e18b4c59fb7c473d445efadd15fc99582e7ae2e73c464cf"
+        },
+        "recorded": {
+          "method": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase86/guard.py",
+            "sha256": "dd8f3f8a44c336a15e7dd11a9727b218f13582139e34c0aa08a27f7b0b04b790",
+            "bytes": 1688
+          },
+          "support": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/programs/support.py",
+            "sha256": "36e000b43f92809e2de0bcdb462e6e42005fad7341f6ec2122734311073d1cef",
+            "bytes": 6779
+          },
+          "cpu": "3",
+          "diskFreeBytes": 683393024
+        }
+      },
+      "guardInputs": {
+        "receipt": {
+          "file": "selfhost/build/phase107/kernel-measure05-guard/inputs.json",
+          "bytes": 847,
+          "sha256": "75d4e95ebeb2877a34cbcc1c1ae3bc7e4416c3f31284397b41077d5ce12aaa3d"
+        },
+        "recorded": [
+          {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase107/kernel/measure.py",
+            "sha256": "1fbaa7e95b22313dc263fb0ff753a7892a42fa0ecdd1d293880f966265231835",
+            "bytes": 4323
+          },
+          {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase107/kernel-source05/producer.bend",
+            "sha256": "049060746796dea279472861fdbf12d07cc40585dc994f6f3899841affe39908",
+            "bytes": 149423
+          },
+          {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase107/kernel-source05/producer",
+            "sha256": "cbe2dddf2f18a9dfe2da0eda0a8c5815c48e1d72bcdaa5f1dd4e94dd5a51d6ea",
+            "bytes": 2053056
+          },
+          {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase107/kernel-source05/api.mjs",
+            "sha256": "ce4f5250319642dfbef77155fe59ccb833d87c3bedab98b05ee5355949a78851",
+            "bytes": 252839
+          }
+        ]
+      }
+    },
+    {
+      "receipt": {
+        "file": "selfhost/build/phase107/emission10/process.json",
+        "bytes": 703,
+        "sha256": "45a5803639ab68ff9d0030cddc4e5a2844c75048b3e42e00ddcb99d7aee41002"
+      },
+      "category": "Source preparation, admission and emission",
+      "started": 1792314444.4068272,
+      "finished": 1792314447.211647,
+      "epochSeconds": 2.8048198223114014,
+      "reportedWallSeconds": 2.804821953875944,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase86",
+        "taskset",
+        "-c",
+        "3",
+        "selfhost/.bootstrap/bun-1.4.3/bun",
+        "selfhost/tools/performance/phase107/emit.mjs",
+        "selfhost/build/phase107/bridge22/api.mjs",
+        "selfhost/build/phase107/source-graphs01",
+        "selfhost/build/phase107/artifacts-constant02",
+        "nx_inline_demand",
+        "constant"
+      ],
+      "complete": true,
+      "returncode": 0,
+      "stoppedFor": null,
+      "peakTreeRssBytes": 90091520,
+      "minimumAvailableBytes": 27569856512,
+      "rssLimitBytes": 2147483648,
+      "availableFloorBytes": 4294967296,
+      "expectedNegative": false,
+      "guardMethod": {
+        "receipt": {
+          "file": "selfhost/build/phase107/emission10/method.json",
+          "bytes": 475,
+          "sha256": "66c8e7885be16f699b85e686c3882ca396b48fc12dbe83d6ed30281b34f12dd6"
+        },
+        "recorded": {
+          "method": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase86/guard.py",
+            "sha256": "dd8f3f8a44c336a15e7dd11a9727b218f13582139e34c0aa08a27f7b0b04b790",
+            "bytes": 1688
+          },
+          "support": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/programs/support.py",
+            "sha256": "36e000b43f92809e2de0bcdb462e6e42005fad7341f6ec2122734311073d1cef",
+            "bytes": 6779
+          },
+          "cpu": "3",
+          "diskFreeBytes": 682262528
+        }
+      },
+      "guardInputs": {
+        "receipt": {
+          "file": "selfhost/build/phase107/emission10/inputs.json",
+          "bytes": 603,
+          "sha256": "54ae8a89ff1dd2b3987fd5cfbacbac075e18b88aab17b1c1be8922956a721e93"
+        },
+        "recorded": [
+          {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/bun-1.4.3/bun",
+            "sha256": "7ce7d6b654eddeec20afddf2396317fba6dc19ab52788a27e894e1806bf8f24b",
+            "bytes": 88979072
+          },
+          {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase107/emit.mjs",
+            "sha256": "42380cdaaa2c1c79be703021521c6b8b9df1cc8bbffe529fc7dcd5b060cbc8d3",
+            "bytes": 3306
+          },
+          {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase107/bridge22/api.mjs",
+            "sha256": "161a60951aa55c02d657f872915c2d31ecb7394a2e4b6ea46629ade5ae9ea356",
+            "bytes": 414022
+          }
+        ]
+      }
+    },
+    {
+      "receipt": {
+        "file": "selfhost/build/phase107/constant-final-guard01/process.json",
+        "bytes": 509,
+        "sha256": "40748efd23a8dfde51e0b63949d013f2256b7ce6e251af762745017b69d0cb59"
+      },
+      "category": "Semantic, cache and composition qualification",
+      "started": 1792314493.877353,
+      "finished": 1792314493.96164,
+      "epochSeconds": 0.08428692817687988,
+      "reportedWallSeconds": 0.08428906090557575,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase86",
+        "taskset",
+        "-c",
+        "3",
+        "python3",
+        "-B",
+        "selfhost/tools/performance/phase107/constant-final.py"
+      ],
+      "complete": true,
+      "returncode": 0,
+      "stoppedFor": null,
+      "peakTreeRssBytes": 12959744,
+      "minimumAvailableBytes": 27626033152,
+      "rssLimitBytes": 2147483648,
+      "availableFloorBytes": 4294967296,
+      "expectedNegative": false,
+      "guardMethod": {
+        "receipt": {
+          "file": "selfhost/build/phase107/constant-final-guard01/method.json",
+          "bytes": 475,
+          "sha256": "93234de73c50c55986b9b81d2421088839af3093faa89d54de321b478f467a96"
+        },
+        "recorded": {
+          "method": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase86/guard.py",
+            "sha256": "dd8f3f8a44c336a15e7dd11a9727b218f13582139e34c0aa08a27f7b0b04b790",
+            "bytes": 1688
+          },
+          "support": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/programs/support.py",
+            "sha256": "36e000b43f92809e2de0bcdb462e6e42005fad7341f6ec2122734311073d1cef",
+            "bytes": 6779
+          },
+          "cpu": "3",
+          "diskFreeBytes": 681156608
+        }
+      },
+      "guardInputs": {
+        "receipt": {
+          "file": "selfhost/build/phase107/constant-final-guard01/inputs.json",
+          "bytes": 215,
+          "sha256": "0deadc3debb3f29c2e2ea58a5fe6e6e6c1ccb2ac2841d5f03b7a79b4f6e5e01c"
+        },
+        "recorded": [
+          {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase107/constant-final.py",
+            "sha256": "877f29beccd6911a860c970e1f0969f24391110395e13e28d60346e32d948bc3",
+            "bytes": 1440
+          }
+        ]
+      }
     }
   ],
   "summarizedMetrics": {
     "file": "implementation/phase107/metrics.json",
-    "bytes": 666329,
-    "sha256": "867ff8592fc8202856898772384605e61f1a7e9bc17e17600af5fc682113e552"
+    "bytes": 978255,
+    "sha256": "b9912242eeab2fa99ba9938ae108283fb978b1e3e94904a3bf7dcc86463040a3"
   }
 }

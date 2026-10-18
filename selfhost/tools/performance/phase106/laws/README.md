@@ -98,17 +98,25 @@ while the dynamic code cannot assume that seed at compilation time. The
 preparer checks the exact ordered Bend/JSON input correspondence and validates
 literal expected results independently with BigInt arithmetic.
 
-Run the `law_bridge` workload with optimization disabled and enabled through
-the C and CLIF paths: four compiled products give 240 complete result checks.
-The literal variant exercises folding; the dynamic variant forces the backend
-to implement the operation. Also check that the literal variant actually
-becomes `NxConst` so a disabled optimization cannot silently pass as an
-optimized execution. Nonzero seeds supply additional differential cases.
+The completed `controls04` run tests raw/folded IR through the actual Bend C
+printer plus Clang and through the CLIF consumer. The four products pass
+**600 exact arithmetic outputs**: thirty literal and thirty dynamic inputs at
+seed zero, plus ninety dynamic inputs using seeds 17, 2147483648 and 4294967295.
+The independent interpreter also passes all 150 inputs on each IR variant,
+giving **300 interpreter observations**. Four wrong expected-output controls
+are rejected, one per native product.
 
-This four-way/two-shape matrix is a differential-test proposal until a runner
-records its outputs. No universal backend theorem follows from thirty cases.
-Do not use the fold evaluator as the sole oracle: a shared wrong arithmetic
-definition could otherwise make both paths agree incorrectly.
+The literal AST checks are explicit: all thirty raw expressions remain binary
+operations with the expected operator, and all thirty folded expressions are
+the exact expected `u32` constant. Thus this gate checks activation as well as
+output equality. The report binds the producer-native02/artifacts02 identities
+and verifies inputs remain unchanged. See the
+[completed results](../../../../../implementation/phase106/laws-notes.md#completed-backend-bridge).
+
+No universal backend theorem follows from this finite matrix. Do not use the
+fold evaluator as the sole oracle: a shared wrong arithmetic definition could
+otherwise make both paths agree incorrectly. The frozen expectations and the
+independent interpreter remain separate from both emitters.
 
 Results, rejected attempts and the exact accepted source identities belong in
 [`implementation/phase106/laws-notes.md`](../../../../../implementation/phase106/laws-notes.md).

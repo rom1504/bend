@@ -99,3 +99,11 @@ These require the authenticated candidate04/Phase105 artifacts in the recorded
 development checkout. The first samples an unchanged native B2 full-source
 request and verifies complete output; the second repeats the selected Clang
 recipe. They preserve the selection and are deliberately absent from the fast loop.
+
+After selection, `confirm.py --analysis ANALYSIS.json --out FRESH_DIR` freezes
+the k=1 winner and compares it with C O2 in three shuffled rounds at two new
+sizes per family. It records both repeated batches and separate one-shot checked
+processes; it never reselects the winner. `plot.py` takes `--analysis`,
+`--confirmation` and `--out` to reproduce the report diagrams. `archive.py`
+freezes local receipts/products/methods into a new `implementation/phase106`
+subdirectory and verifies every compressed file hash.

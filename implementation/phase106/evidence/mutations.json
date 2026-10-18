@@ -1,0 +1,121 @@
+{
+  "schema": "phase106-fold-law-mutation-check-v1",
+  "complete": true,
+  "method": {
+    "file": "selfhost/tools/performance/phase106/laws/check-mutations.mjs",
+    "bytes": 4424,
+    "sha256": "2131c6f1d3f32677811158fe0b3c1eee4e1503bbd50ea1aa1c01b3b1ebb6942a"
+  },
+  "prepared": {
+    "file": "selfhost/build/phase106/law-source02/manifest.json",
+    "bytes": 7155,
+    "sha256": "10fcf70165f74790585ec074a6061f882820703875587635be939f71bfdfcd8e"
+  },
+  "positive": {
+    "file": "selfhost/build/phase98/phase106-law-check02/report.json",
+    "bytes": 14821,
+    "sha256": "5c4844c3eebe8e45226e0607bb495ad46b7f23d9796d0a99c166c0d35a976486"
+  },
+  "rows": [
+    {
+      "name": "add-as-sub-helper",
+      "expectedExit": 0,
+      "actualExit": 0,
+      "law": null,
+      "report": {
+        "file": "selfhost/build/phase98/phase106-law-mutants02/add-as-sub-helper/report.json",
+        "bytes": 4596,
+        "sha256": "5c57096d6e4a0cca2c06e7bcfbcec7190b292bae2a8d38bf07f2ee066abfd432"
+      },
+      "wallSeconds": 0.7199758100323379
+    },
+    {
+      "name": "add-as-sub-law",
+      "expectedExit": 1,
+      "actualExit": 1,
+      "law": "fold_add_exact",
+      "report": {
+        "file": "selfhost/build/phase98/phase106-law-mutants02/add-as-sub-law/report.json",
+        "bytes": 7007,
+        "sha256": "7545d1fe184b295e46e5093b8b012cf43e43c892c8cbb056786e44880ebf04a7"
+      },
+      "wallSeconds": 0.6173921851441264
+    },
+    {
+      "name": "reverse-sub-helper",
+      "expectedExit": 0,
+      "actualExit": 0,
+      "law": null,
+      "report": {
+        "file": "selfhost/build/phase98/phase106-law-mutants02/reverse-sub-helper/report.json",
+        "bytes": 4605,
+        "sha256": "12f4dd095ef2a23e3ba76fe9522dc57cbc2469cf9575dd641d81d4434ef3ec2f"
+      },
+      "wallSeconds": 0.5562624069862068
+    },
+    {
+      "name": "reverse-sub-law",
+      "expectedExit": 1,
+      "actualExit": 1,
+      "law": "fold_sub_exact",
+      "report": {
+        "file": "selfhost/build/phase98/phase106-law-mutants02/reverse-sub-law/report.json",
+        "bytes": 7027,
+        "sha256": "00d038941e64d82fb3063de506b44f0db25db9fbc25c04400f76b05146915f68"
+      },
+      "wallSeconds": 0.5558290700428188
+    },
+    {
+      "name": "less-as-equal-helper",
+      "expectedExit": 0,
+      "actualExit": 0,
+      "law": null,
+      "report": {
+        "file": "selfhost/build/phase98/phase106-law-mutants02/less-as-equal-helper/report.json",
+        "bytes": 4622,
+        "sha256": "e0cdaaa4d46809bbc49fcf5dcfb259080516085f336ccb26af909e5f09e28e9e"
+      },
+      "wallSeconds": 0.6202113309409469
+    },
+    {
+      "name": "less-as-equal-law",
+      "expectedExit": 1,
+      "actualExit": 1,
+      "law": "fold_ult_exact",
+      "report": {
+        "file": "selfhost/build/phase98/phase106-law-mutants02/less-as-equal-law/report.json",
+        "bytes": 7781,
+        "sha256": "fcb7f4a9843f4ce11c761fd63290767a98b65cd5f1791688781b6fe887be1b76"
+      },
+      "wallSeconds": 0.5748642547987401
+    },
+    {
+      "name": "erase-literal-types-helper",
+      "expectedExit": 0,
+      "actualExit": 0,
+      "law": null,
+      "report": {
+        "file": "selfhost/build/phase98/phase106-law-mutants02/erase-literal-types-helper/report.json",
+        "bytes": 4677,
+        "sha256": "9d6da918bef8434137bf1b965556fb79e273a7e88f47b12665980e5ae1ddb0ff"
+      },
+      "wallSeconds": 0.5553532838821411
+    },
+    {
+      "name": "erase-literal-types-law",
+      "expectedExit": 1,
+      "actualExit": 1,
+      "law": "fold_u64_preserves",
+      "report": {
+        "file": "selfhost/build/phase98/phase106-law-mutants02/erase-literal-types-law/report.json",
+        "bytes": 9958,
+        "sha256": "7b667971257b3d1ca206a64921537d82faf70fb232d079d852b262435ef88c38"
+      },
+      "wallSeconds": 0.574769628001377
+    }
+  ],
+  "guardedSeconds": 4.774657969828695,
+  "independentKernelNegativeChecks": false,
+  "inputsUnchanged": true,
+  "interpretation": "All four changed helpers safely admitted; unchanged source laws reject their semantic faults. Positive package independently checked separately. These are source-check negative results, not independent-kernel rejection of the mutants."
+}

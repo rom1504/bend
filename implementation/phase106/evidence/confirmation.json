@@ -1,0 +1,2086 @@
+{
+  "complete": true,
+  "passed": true,
+  "started": 1792303720.5538404,
+  "inputs": {
+    "analysis": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase106/analysis01.json",
+      "bytes": 30446,
+      "sha256": "3ff80b1b5300dec1f00d8a9031460ad003bb1a9b7aecb8c29d4f40f052609b11"
+    },
+    "measurement": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase106/measure01/report.json",
+      "bytes": 116277,
+      "sha256": "63fee286d653bfdabed1bdc52736867f618d2794259d9fa31112d3a55e40291f"
+    },
+    "artifacts": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase106/artifacts02/report.json",
+      "bytes": 17215,
+      "sha256": "12b3d43836278210f235dbfcee763e4ffee5cdb8372b7cdc6c3bcb16d5576c46"
+    },
+    "adapter": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase106/cargo-target/release/bend-native-ir-cranelift",
+      "bytes": 5018232,
+      "sha256": "85a88e05efca16675e576da95de213069d3ca1bcaf64e60430d0634b69698568"
+    },
+    "clang": {
+      "file": "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+      "bytes": 119320,
+      "sha256": "9fcd5fc4baeea9c449bcc9ca4b9db7714465107669498b0056a853f22f5f4def"
+    },
+    "harness": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase106/cranelift/runner.c",
+      "bytes": 2117,
+      "sha256": "383106694cd1b9837dd59f8da9972f76a0f469df688caa42028d87b801a48fe5"
+    },
+    "campaign": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase106/campaign.py",
+      "bytes": 15243,
+      "sha256": "4a392b44af2e45b3b59c0a43811cdf3c69c0f90b80ee09042a9a0dc1de985938"
+    },
+    "method": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase106/confirm.py",
+      "bytes": 11833,
+      "sha256": "9b68f98f6b408c33fdc1cf6248063d50267aaa0070f23d22d65f547dbd91a0b8"
+    }
+  },
+  "selectedPolicy": {
+    "source": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase106/analysis01.json",
+      "bytes": 30446,
+      "sha256": "3ff80b1b5300dec1f00d8a9031460ad003bb1a9b7aecb8c29d4f40f052609b11"
+    },
+    "executionBatchesPerBuild": 1,
+    "selected": "cl-size",
+    "trainingScores": {
+      "c-o0": 0.4208565403241664,
+      "c-o2": 0.20797619805671275,
+      "cl-none": 0.20076235197484493,
+      "cl-speed": 0.2011182091664523,
+      "cl-size": 0.20061413617804646
+    }
+  },
+  "cases": {
+    "text": {
+      "group": "train",
+      "sizes": [
+        100000,
+        400000
+      ],
+      "seed": 7,
+      "repeat": 100
+    },
+    "list": {
+      "group": "train",
+      "sizes": [
+        1024,
+        4096
+      ],
+      "seed": 17,
+      "repeat": 200
+    },
+    "tree": {
+      "group": "heldout",
+      "sizes": [
+        9,
+        12
+      ],
+      "seed": 23,
+      "repeat": 100
+    },
+    "closure": {
+      "group": "heldout",
+      "sizes": [
+        50000,
+        200000
+      ],
+      "seed": 31,
+      "repeat": 100
+    }
+  },
+  "casesFrozen": true,
+  "answers": {
+    "text": {
+      "100000": 747978940,
+      "400000": 3051949026
+    },
+    "list": {
+      "1024": 793706001,
+      "4096": 2442917905
+    },
+    "tree": {
+      "9": 2256423393,
+      "12": 869759041
+    },
+    "closure": {
+      "50000": 3613198464,
+      "200000": 1461881728
+    }
+  },
+  "configs": [
+    [
+      "c-o2",
+      "c",
+      "-O2"
+    ],
+    [
+      "cl-size",
+      "cl",
+      "speed_and_size"
+    ]
+  ],
+  "scenarios": {
+    "repeatedBatch": "Per-case repeat count specified in cases",
+    "oneShot": "Fresh process with --repeat 1 on every same binary/input"
+  },
+  "rounds": 3,
+  "seed": 10620261019,
+  "schedule": [
+    {
+      "round": 0,
+      "workload": "tree",
+      "config": [
+        "cl-size",
+        "cl",
+        "speed_and_size"
+      ],
+      "sizes": [
+        9,
+        12
+      ]
+    },
+    {
+      "round": 0,
+      "workload": "closure",
+      "config": [
+        "cl-size",
+        "cl",
+        "speed_and_size"
+      ],
+      "sizes": [
+        50000,
+        200000
+      ]
+    },
+    {
+      "round": 0,
+      "workload": "tree",
+      "config": [
+        "c-o2",
+        "c",
+        "-O2"
+      ],
+      "sizes": [
+        12,
+        9
+      ]
+    },
+    {
+      "round": 0,
+      "workload": "list",
+      "config": [
+        "cl-size",
+        "cl",
+        "speed_and_size"
+      ],
+      "sizes": [
+        1024,
+        4096
+      ]
+    },
+    {
+      "round": 0,
+      "workload": "text",
+      "config": [
+        "c-o2",
+        "c",
+        "-O2"
+      ],
+      "sizes": [
+        100000,
+        400000
+      ]
+    },
+    {
+      "round": 0,
+      "workload": "closure",
+      "config": [
+        "c-o2",
+        "c",
+        "-O2"
+      ],
+      "sizes": [
+        50000,
+        200000
+      ]
+    },
+    {
+      "round": 0,
+      "workload": "text",
+      "config": [
+        "cl-size",
+        "cl",
+        "speed_and_size"
+      ],
+      "sizes": [
+        400000,
+        100000
+      ]
+    },
+    {
+      "round": 0,
+      "workload": "list",
+      "config": [
+        "c-o2",
+        "c",
+        "-O2"
+      ],
+      "sizes": [
+        4096,
+        1024
+      ]
+    },
+    {
+      "round": 1,
+      "workload": "list",
+      "config": [
+        "c-o2",
+        "c",
+        "-O2"
+      ],
+      "sizes": [
+        4096,
+        1024
+      ]
+    },
+    {
+      "round": 1,
+      "workload": "text",
+      "config": [
+        "cl-size",
+        "cl",
+        "speed_and_size"
+      ],
+      "sizes": [
+        100000,
+        400000
+      ]
+    },
+    {
+      "round": 1,
+      "workload": "closure",
+      "config": [
+        "c-o2",
+        "c",
+        "-O2"
+      ],
+      "sizes": [
+        200000,
+        50000
+      ]
+    },
+    {
+      "round": 1,
+      "workload": "tree",
+      "config": [
+        "c-o2",
+        "c",
+        "-O2"
+      ],
+      "sizes": [
+        9,
+        12
+      ]
+    },
+    {
+      "round": 1,
+      "workload": "tree",
+      "config": [
+        "cl-size",
+        "cl",
+        "speed_and_size"
+      ],
+      "sizes": [
+        9,
+        12
+      ]
+    },
+    {
+      "round": 1,
+      "workload": "text",
+      "config": [
+        "c-o2",
+        "c",
+        "-O2"
+      ],
+      "sizes": [
+        400000,
+        100000
+      ]
+    },
+    {
+      "round": 1,
+      "workload": "closure",
+      "config": [
+        "cl-size",
+        "cl",
+        "speed_and_size"
+      ],
+      "sizes": [
+        50000,
+        200000
+      ]
+    },
+    {
+      "round": 1,
+      "workload": "list",
+      "config": [
+        "cl-size",
+        "cl",
+        "speed_and_size"
+      ],
+      "sizes": [
+        4096,
+        1024
+      ]
+    },
+    {
+      "round": 2,
+      "workload": "closure",
+      "config": [
+        "cl-size",
+        "cl",
+        "speed_and_size"
+      ],
+      "sizes": [
+        50000,
+        200000
+      ]
+    },
+    {
+      "round": 2,
+      "workload": "tree",
+      "config": [
+        "cl-size",
+        "cl",
+        "speed_and_size"
+      ],
+      "sizes": [
+        9,
+        12
+      ]
+    },
+    {
+      "round": 2,
+      "workload": "text",
+      "config": [
+        "cl-size",
+        "cl",
+        "speed_and_size"
+      ],
+      "sizes": [
+        100000,
+        400000
+      ]
+    },
+    {
+      "round": 2,
+      "workload": "tree",
+      "config": [
+        "c-o2",
+        "c",
+        "-O2"
+      ],
+      "sizes": [
+        9,
+        12
+      ]
+    },
+    {
+      "round": 2,
+      "workload": "text",
+      "config": [
+        "c-o2",
+        "c",
+        "-O2"
+      ],
+      "sizes": [
+        400000,
+        100000
+      ]
+    },
+    {
+      "round": 2,
+      "workload": "list",
+      "config": [
+        "cl-size",
+        "cl",
+        "speed_and_size"
+      ],
+      "sizes": [
+        4096,
+        1024
+      ]
+    },
+    {
+      "round": 2,
+      "workload": "closure",
+      "config": [
+        "c-o2",
+        "c",
+        "-O2"
+      ],
+      "sizes": [
+        50000,
+        200000
+      ]
+    },
+    {
+      "round": 2,
+      "workload": "list",
+      "config": [
+        "c-o2",
+        "c",
+        "-O2"
+      ],
+      "sizes": [
+        1024,
+        4096
+      ]
+    }
+  ],
+  "rows": [
+    {
+      "round": 0,
+      "workload": "tree",
+      "config": "cl-size",
+      "emissionSeconds": 0.002650064881891012,
+      "compileSeconds": 0.0030017078388482332,
+      "linkSeconds": 0.02147307386621833,
+      "peakCompileRssKiB": 6876,
+      "object": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase106/confirm01/r0-tree-cl-size.o",
+        "bytes": 1688,
+        "sha256": "415ad004d8abc58a5166c3f774f525b8da421d9bbf7785abd2c5d94e76bbdb7b"
+      },
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase106/confirm01/r0-tree-cl-size",
+        "bytes": 8976,
+        "sha256": "a9d8f9414c1b42793f8532c452cab4c95f599f5cad2e69311e497678cdac5332"
+      },
+      "executions": {
+        "9": {
+          "args": [
+            9,
+            23
+          ],
+          "repeat": 100,
+          "expectedPerInvocation": 2256423393,
+          "checksum": 2304039908,
+          "executeSeconds": 0.00595620390959084,
+          "peakExecuteRssKiB": 6864,
+          "oneShotExecuteSeconds": 0.001585833029821515,
+          "oneShotPeakRssKiB": 6948,
+          "oneShotChecksum": 2256423393
+        },
+        "12": {
+          "args": [
+            12,
+            23
+          ],
+          "repeat": 100,
+          "expectedPerInvocation": 869759041,
+          "checksum": 1076558180,
+          "executeSeconds": 0.035478224977850914,
+          "peakExecuteRssKiB": 6928,
+          "oneShotExecuteSeconds": 0.0020407261326909065,
+          "oneShotPeakRssKiB": 6924,
+          "oneShotChecksum": 869759041
+        }
+      }
+    },
+    {
+      "round": 0,
+      "workload": "closure",
+      "config": "cl-size",
+      "emissionSeconds": 0.002327223075553775,
+      "compileSeconds": 0.003033907152712345,
+      "linkSeconds": 0.021319524152204394,
+      "peakCompileRssKiB": 6936,
+      "object": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase106/confirm01/r0-closure-cl-size.o",
+        "bytes": 1456,
+        "sha256": "12f268f31fae4393bb6ec64f714a13203eccdead7b394ed1c48c8060e0d75a49"
+      },
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase106/confirm01/r0-closure-cl-size",
+        "bytes": 8856,
+        "sha256": "d0a09a58ea32eb66c22f3888afd0b62ada1cddc0f19025dac05edece34c22b07"
+      },
+      "executions": {
+        "50000": {
+          "args": [
+            50000,
+            31
+          ],
+          "repeat": 100,
+          "expectedPerInvocation": 3613198464,
+          "checksum": 542593536,
+          "executeSeconds": 0.01780875795520842,
+          "peakExecuteRssKiB": 6868,
+          "oneShotExecuteSeconds": 0.0017289170064032078,
+          "oneShotPeakRssKiB": 6940,
+          "oneShotChecksum": 3613198464
+        },
+        "200000": {
+          "args": [
+            200000,
+            31
+          ],
+          "repeat": 100,
+          "expectedPerInvocation": 1461881728,
+          "checksum": 159284736,
+          "executeSeconds": 0.06542779691517353,
+          "peakExecuteRssKiB": 6864,
+          "oneShotExecuteSeconds": 0.0021696670446544886,
+          "oneShotPeakRssKiB": 6940,
+          "oneShotChecksum": 1461881728
+        }
+      }
+    },
+    {
+      "round": 0,
+      "workload": "tree",
+      "config": "c-o2",
+      "emissionSeconds": 0.0023229029029607773,
+      "compileSeconds": 0.03074651095084846,
+      "linkSeconds": 0.021033333847299218,
+      "peakCompileRssKiB": 81588,
+      "object": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase106/confirm01/r0-tree-c-o2.o",
+        "bytes": 1848,
+        "sha256": "bc575e641326028a2c0f0dfe0d41ef9f9d7188f73889a39ba0585b224ca84d1c"
+      },
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase106/confirm01/r0-tree-c-o2",
+        "bytes": 8848,
+        "sha256": "95389d08c03df74081d831118d3a974be9a049fe5662743fdae152863659cce0"
+      },
+      "executions": {
+        "12": {
+          "args": [
+            12,
+            23
+          ],
+          "repeat": 100,
+          "expectedPerInvocation": 869759041,
+          "checksum": 1076558180,
+          "executeSeconds": 0.03286376199685037,
+          "peakExecuteRssKiB": 6924,
+          "oneShotExecuteSeconds": 0.0020553111098706722,
+          "oneShotPeakRssKiB": 6860,
+          "oneShotChecksum": 869759041
+        },
+        "9": {
+          "args": [
+            9,
+            23
+          ],
+          "repeat": 100,
+          "expectedPerInvocation": 2256423393,
+          "checksum": 2304039908,
+          "executeSeconds": 0.0054624059703201056,
+          "peakExecuteRssKiB": 6860,
+          "oneShotExecuteSeconds": 0.0015885562170296907,
+          "oneShotPeakRssKiB": 6920,
+          "oneShotChecksum": 2256423393
+        }
+      }
+    },
+    {
+      "round": 0,
+      "workload": "list",
+      "config": "cl-size",
+      "emissionSeconds": 0.0022055821027606726,
+      "compileSeconds": 0.002736777998507023,
+      "linkSeconds": 0.021185460034757853,
+      "peakCompileRssKiB": 6928,
+      "object": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase106/confirm01/r0-list-cl-size.o",
+        "bytes": 1280,
+        "sha256": "10f4d15ee26b60a92423d10d0aebd6369990e654406123291ad9c1541f0071fb"
+      },
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase106/confirm01/r0-list-cl-size",
+        "bytes": 8712,
+        "sha256": "800fe23f6fd42e804d4fe29dd0ae6f4a197e7a7e78c6880836432357a8157f00"
+      },
+      "executions": {
+        "1024": {
+          "args": [
+            1024,
+            17
+          ],
+          "repeat": 200,
+          "expectedPerInvocation": 793706001,
+          "checksum": 4122377544,
+          "executeSeconds": 0.00850899307988584,
+          "peakExecuteRssKiB": 6944,
+          "oneShotExecuteSeconds": 0.0015715810004621744,
+          "oneShotPeakRssKiB": 6868,
+          "oneShotChecksum": 793706001
+        },
+        "4096": {
+          "args": [
+            4096,
+            17
+          ],
+          "repeat": 200,
+          "expectedPerInvocation": 2442917905,
+          "checksum": 3252276552,
+          "executeSeconds": 0.02958458592183888,
+          "peakExecuteRssKiB": 6948,
+          "oneShotExecuteSeconds": 0.0017597449477761984,
+          "oneShotPeakRssKiB": 6868,
+          "oneShotChecksum": 2442917905
+        }
+      }
+    },
+    {
+      "round": 0,
+      "workload": "text",
+      "config": "c-o2",
+      "emissionSeconds": 0.002537864027544856,
+      "compileSeconds": 0.040616368874907494,
+      "linkSeconds": 0.021606668829917908,
+      "peakCompileRssKiB": 84196,
+      "object": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase106/confirm01/r0-text-c-o2.o",
+        "bytes": 1728,
+        "sha256": "c545ffe4e0791ef891bc6bb312a19ea6736b83a3368e713bf9c4a27a7570148d"
+      },
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase106/confirm01/r0-text-c-o2",
+        "bytes": 8752,
+        "sha256": "09df1dfa39ee2f2f22009afdf9a4ce3e0d0ddc211d388f7f40583e6a7972b7f7"
+      },
+      "executions": {
+        "100000": {
+          "args": [
+            100000,
+            7
+          ],
+          "repeat": 100,
+          "expectedPerInvocation": 747978940,
+          "checksum": 1783449968,
+          "executeSeconds": 0.03893752512522042,
+          "peakExecuteRssKiB": 6928,
+          "oneShotExecuteSeconds": 0.001957970205694437,
+          "oneShotPeakRssKiB": 6944,
+          "oneShotChecksum": 747978940
+        },
+        "400000": {
+          "args": [
+            400000,
+            7
+          ],
+          "repeat": 100,
+          "expectedPerInvocation": 3051949026,
+          "checksum": 252224584,
+          "executeSeconds": 0.1462794088292867,
+          "peakExecuteRssKiB": 6936,
+          "oneShotExecuteSeconds": 0.0035852459259331226,
+          "oneShotPeakRssKiB": 6920,
+          "oneShotChecksum": 3051949026
+        }
+      }
+    },
+    {
+      "round": 0,
+      "workload": "closure",
+      "config": "c-o2",
+      "emissionSeconds": 0.0022895210422575474,
+      "compileSeconds": 0.03284713812172413,
+      "linkSeconds": 0.025527870981022716,
+      "peakCompileRssKiB": 82268,
+      "object": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase106/confirm01/r0-closure-c-o2.o",
+        "bytes": 1784,
+        "sha256": "2aa2a277520344ae0f6ab91ca540e40c9f32b424f2de605db896962ea29547bf"
+      },
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase106/confirm01/r0-closure-c-o2",
+        "bytes": 8760,
+        "sha256": "ad9745ae2bf09e1e655d82e41c8e1fe4ebd66944aa3b13315594641049046596"
+      },
+      "executions": {
+        "50000": {
+          "args": [
+            50000,
+            31
+          ],
+          "repeat": 100,
+          "expectedPerInvocation": 3613198464,
+          "checksum": 542593536,
+          "executeSeconds": 0.009479667991399765,
+          "peakExecuteRssKiB": 6932,
+          "oneShotExecuteSeconds": 0.0016324229072779417,
+          "oneShotPeakRssKiB": 6868,
+          "oneShotChecksum": 3613198464
+        },
+        "200000": {
+          "args": [
+            200000,
+            31
+          ],
+          "repeat": 100,
+          "expectedPerInvocation": 1461881728,
+          "checksum": 159284736,
+          "executeSeconds": 0.033583651995286345,
+          "peakExecuteRssKiB": 6928,
+          "oneShotExecuteSeconds": 0.0017895950004458427,
+          "oneShotPeakRssKiB": 6940,
+          "oneShotChecksum": 1461881728
+        }
+      }
+    },
+    {
+      "round": 0,
+      "workload": "text",
+      "config": "cl-size",
+      "emissionSeconds": 0.0026353709399700165,
+      "compileSeconds": 0.0033966531045734882,
+      "linkSeconds": 0.021446757949888706,
+      "peakCompileRssKiB": 6860,
+      "object": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase106/confirm01/r0-text-cl-size.o",
+        "bytes": 1624,
+        "sha256": "5d68eca23c13bc349e3b06a3cc2e15b6b328b5c7b9748510d087540cdacbc98d"
+      },
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase106/confirm01/r0-text-cl-size",
+        "bytes": 9008,
+        "sha256": "5e3903ad44fcc2a9b1121605a6b06a6365624fa6bb5c7adbdb1d36079db8a62d"
+      },
+      "executions": {
+        "400000": {
+          "args": [
+            400000,
+            7
+          ],
+          "repeat": 100,
+          "expectedPerInvocation": 3051949026,
+          "checksum": 252224584,
+          "executeSeconds": 0.2603134389501065,
+          "peakExecuteRssKiB": 6924,
+          "oneShotExecuteSeconds": 0.004450723063200712,
+          "oneShotPeakRssKiB": 6948,
+          "oneShotChecksum": 3051949026
+        },
+        "100000": {
+          "args": [
+            100000,
+            7
+          ],
+          "repeat": 100,
+          "expectedPerInvocation": 747978940,
+          "checksum": 1783449968,
+          "executeSeconds": 0.06587346200831234,
+          "peakExecuteRssKiB": 6892,
+          "oneShotExecuteSeconds": 0.002449234016239643,
+          "oneShotPeakRssKiB": 6892,
+          "oneShotChecksum": 747978940
+        }
+      }
+    },
+    {
+      "round": 0,
+      "workload": "list",
+      "config": "c-o2",
+      "emissionSeconds": 0.0022048649843782187,
+      "compileSeconds": 0.031247645849362016,
+      "linkSeconds": 0.02116623497568071,
+      "peakCompileRssKiB": 82228,
+      "object": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase106/confirm01/r0-list-c-o2.o",
+        "bytes": 1536,
+        "sha256": "1172084ccb78494df630e86a7415c6ab79139e08dc34fc0b9708ff3c8f639091"
+      },
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase106/confirm01/r0-list-c-o2",
+        "bytes": 8576,
+        "sha256": "278f3f806ce565638b4ef38129c84b00df4a93eacbbf737604aa92a8ea772613"
+      },
+      "executions": {
+        "4096": {
+          "args": [
+            4096,
+            17
+          ],
+          "repeat": 200,
+          "expectedPerInvocation": 2442917905,
+          "checksum": 3252276552,
+          "executeSeconds": 0.029275211971253157,
+          "peakExecuteRssKiB": 6944,
+          "oneShotExecuteSeconds": 0.001769085880368948,
+          "oneShotPeakRssKiB": 6936,
+          "oneShotChecksum": 2442917905
+        },
+        "1024": {
+          "args": [
+            1024,
+            17
+          ],
+          "repeat": 200,
+          "expectedPerInvocation": 793706001,
+          "checksum": 4122377544,
+          "executeSeconds": 0.008434626972302794,
+          "peakExecuteRssKiB": 6876,
+          "oneShotExecuteSeconds": 0.001575401984155178,
+          "oneShotPeakRssKiB": 6940,
+          "oneShotChecksum": 793706001
+        }
+      }
+    },
+    {
+      "round": 1,
+      "workload": "list",
+      "config": "c-o2",
+      "emissionSeconds": 0.0022048649843782187,
+      "compileSeconds": 0.03134349314495921,
+      "linkSeconds": 0.02119459304958582,
+      "peakCompileRssKiB": 82220,
+      "object": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase106/confirm01/r1-list-c-o2.o",
+        "bytes": 1536,
+        "sha256": "1172084ccb78494df630e86a7415c6ab79139e08dc34fc0b9708ff3c8f639091"
+      },
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase106/confirm01/r1-list-c-o2",
+        "bytes": 8576,
+        "sha256": "278f3f806ce565638b4ef38129c84b00df4a93eacbbf737604aa92a8ea772613"
+      },
+      "executions": {
+        "4096": {
+          "args": [
+            4096,
+            17
+          ],
+          "repeat": 200,
+          "expectedPerInvocation": 2442917905,
+          "checksum": 3252276552,
+          "executeSeconds": 0.028892785077914596,
+          "peakExecuteRssKiB": 6948,
+          "oneShotExecuteSeconds": 0.0018038121052086353,
+          "oneShotPeakRssKiB": 6944,
+          "oneShotChecksum": 2442917905
+        },
+        "1024": {
+          "args": [
+            1024,
+            17
+          ],
+          "repeat": 200,
+          "expectedPerInvocation": 793706001,
+          "checksum": 4122377544,
+          "executeSeconds": 0.008356228936463594,
+          "peakExecuteRssKiB": 6960,
+          "oneShotExecuteSeconds": 0.0016245078295469284,
+          "oneShotPeakRssKiB": 6868,
+          "oneShotChecksum": 793706001
+        }
+      }
+    },
+    {
+      "round": 1,
+      "workload": "text",
+      "config": "cl-size",
+      "emissionSeconds": 0.0026353709399700165,
+      "compileSeconds": 0.0033444110304117203,
+      "linkSeconds": 0.021251710830256343,
+      "peakCompileRssKiB": 6868,
+      "object": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase106/confirm01/r1-text-cl-size.o",
+        "bytes": 1624,
+        "sha256": "5d68eca23c13bc349e3b06a3cc2e15b6b328b5c7b9748510d087540cdacbc98d"
+      },
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase106/confirm01/r1-text-cl-size",
+        "bytes": 9008,
+        "sha256": "5e3903ad44fcc2a9b1121605a6b06a6365624fa6bb5c7adbdb1d36079db8a62d"
+      },
+      "executions": {
+        "100000": {
+          "args": [
+            100000,
+            7
+          ],
+          "repeat": 100,
+          "expectedPerInvocation": 747978940,
+          "checksum": 1783449968,
+          "executeSeconds": 0.06621763994917274,
+          "peakExecuteRssKiB": 6892,
+          "oneShotExecuteSeconds": 0.0023054429329931736,
+          "oneShotPeakRssKiB": 6940,
+          "oneShotChecksum": 747978940
+        },
+        "400000": {
+          "args": [
+            400000,
+            7
+          ],
+          "repeat": 100,
+          "expectedPerInvocation": 3051949026,
+          "checksum": 252224584,
+          "executeSeconds": 0.2599529358558357,
+          "peakExecuteRssKiB": 6936,
+          "oneShotExecuteSeconds": 0.004502477822825313,
+          "oneShotPeakRssKiB": 6936,
+          "oneShotChecksum": 3051949026
+        }
+      }
+    },
+    {
+      "round": 1,
+      "workload": "closure",
+      "config": "c-o2",
+      "emissionSeconds": 0.0022895210422575474,
+      "compileSeconds": 0.032732382183894515,
+      "linkSeconds": 0.021380010060966015,
+      "peakCompileRssKiB": 82796,
+      "object": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase106/confirm01/r1-closure-c-o2.o",
+        "bytes": 1784,
+        "sha256": "2aa2a277520344ae0f6ab91ca540e40c9f32b424f2de605db896962ea29547bf"
+      },
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase106/confirm01/r1-closure-c-o2",
+        "bytes": 8760,
+        "sha256": "ad9745ae2bf09e1e655d82e41c8e1fe4ebd66944aa3b13315594641049046596"
+      },
+      "executions": {
+        "200000": {
+          "args": [
+            200000,
+            31
+          ],
+          "repeat": 100,
+          "expectedPerInvocation": 1461881728,
+          "checksum": 159284736,
+          "executeSeconds": 0.03382975701242685,
+          "peakExecuteRssKiB": 6948,
+          "oneShotExecuteSeconds": 0.0018423248548060656,
+          "oneShotPeakRssKiB": 6868,
+          "oneShotChecksum": 1461881728
+        },
+        "50000": {
+          "args": [
+            50000,
+            31
+          ],
+          "repeat": 100,
+          "expectedPerInvocation": 3613198464,
+          "checksum": 542593536,
+          "executeSeconds": 0.009720099158585072,
+          "peakExecuteRssKiB": 6944,
+          "oneShotExecuteSeconds": 0.0016195829957723618,
+          "oneShotPeakRssKiB": 6860,
+          "oneShotChecksum": 3613198464
+        }
+      }
+    },
+    {
+      "round": 1,
+      "workload": "tree",
+      "config": "c-o2",
+      "emissionSeconds": 0.0023229029029607773,
+      "compileSeconds": 0.03041306184604764,
+      "linkSeconds": 0.021245357114821672,
+      "peakCompileRssKiB": 82132,
+      "object": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase106/confirm01/r1-tree-c-o2.o",
+        "bytes": 1848,
+        "sha256": "bc575e641326028a2c0f0dfe0d41ef9f9d7188f73889a39ba0585b224ca84d1c"
+      },
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase106/confirm01/r1-tree-c-o2",
+        "bytes": 8848,
+        "sha256": "95389d08c03df74081d831118d3a974be9a049fe5662743fdae152863659cce0"
+      },
+      "executions": {
+        "9": {
+          "args": [
+            9,
+            23
+          ],
+          "repeat": 100,
+          "expectedPerInvocation": 2256423393,
+          "checksum": 2304039908,
+          "executeSeconds": 0.005494448821991682,
+          "peakExecuteRssKiB": 6940,
+          "oneShotExecuteSeconds": 0.0016106220427900553,
+          "oneShotPeakRssKiB": 6928,
+          "oneShotChecksum": 2256423393
+        },
+        "12": {
+          "args": [
+            12,
+            23
+          ],
+          "repeat": 100,
+          "expectedPerInvocation": 869759041,
+          "checksum": 1076558180,
+          "executeSeconds": 0.03308828780427575,
+          "peakExecuteRssKiB": 6936,
+          "oneShotExecuteSeconds": 0.0022168138530105352,
+          "oneShotPeakRssKiB": 6868,
+          "oneShotChecksum": 869759041
+        }
+      }
+    },
+    {
+      "round": 1,
+      "workload": "tree",
+      "config": "cl-size",
+      "emissionSeconds": 0.002650064881891012,
+      "compileSeconds": 0.0030326771084219217,
+      "linkSeconds": 0.02111021289601922,
+      "peakCompileRssKiB": 6900,
+      "object": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase106/confirm01/r1-tree-cl-size.o",
+        "bytes": 1688,
+        "sha256": "415ad004d8abc58a5166c3f774f525b8da421d9bbf7785abd2c5d94e76bbdb7b"
+      },
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase106/confirm01/r1-tree-cl-size",
+        "bytes": 8976,
+        "sha256": "a9d8f9414c1b42793f8532c452cab4c95f599f5cad2e69311e497678cdac5332"
+      },
+      "executions": {
+        "9": {
+          "args": [
+            9,
+            23
+          ],
+          "repeat": 100,
+          "expectedPerInvocation": 2256423393,
+          "checksum": 2304039908,
+          "executeSeconds": 0.005838241893798113,
+          "peakExecuteRssKiB": 6940,
+          "oneShotExecuteSeconds": 0.0017221849411725998,
+          "oneShotPeakRssKiB": 6920,
+          "oneShotChecksum": 2256423393
+        },
+        "12": {
+          "args": [
+            12,
+            23
+          ],
+          "repeat": 100,
+          "expectedPerInvocation": 869759041,
+          "checksum": 1076558180,
+          "executeSeconds": 0.035448509035632014,
+          "peakExecuteRssKiB": 6940,
+          "oneShotExecuteSeconds": 0.0021205018274486065,
+          "oneShotPeakRssKiB": 6920,
+          "oneShotChecksum": 869759041
+        }
+      }
+    },
+    {
+      "round": 1,
+      "workload": "text",
+      "config": "c-o2",
+      "emissionSeconds": 0.002537864027544856,
+      "compileSeconds": 0.04084066883660853,
+      "linkSeconds": 0.021119175013154745,
+      "peakCompileRssKiB": 84168,
+      "object": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase106/confirm01/r1-text-c-o2.o",
+        "bytes": 1728,
+        "sha256": "c545ffe4e0791ef891bc6bb312a19ea6736b83a3368e713bf9c4a27a7570148d"
+      },
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase106/confirm01/r1-text-c-o2",
+        "bytes": 8752,
+        "sha256": "09df1dfa39ee2f2f22009afdf9a4ce3e0d0ddc211d388f7f40583e6a7972b7f7"
+      },
+      "executions": {
+        "400000": {
+          "args": [
+            400000,
+            7
+          ],
+          "repeat": 100,
+          "expectedPerInvocation": 3051949026,
+          "checksum": 252224584,
+          "executeSeconds": 0.14548395900055766,
+          "peakExecuteRssKiB": 6896,
+          "oneShotExecuteSeconds": 0.0034185878466814756,
+          "oneShotPeakRssKiB": 6944,
+          "oneShotChecksum": 3051949026
+        },
+        "100000": {
+          "args": [
+            100000,
+            7
+          ],
+          "repeat": 100,
+          "expectedPerInvocation": 747978940,
+          "checksum": 1783449968,
+          "executeSeconds": 0.03693969710730016,
+          "peakExecuteRssKiB": 6860,
+          "oneShotExecuteSeconds": 0.0020900529343634844,
+          "oneShotPeakRssKiB": 6900,
+          "oneShotChecksum": 747978940
+        }
+      }
+    },
+    {
+      "round": 1,
+      "workload": "closure",
+      "config": "cl-size",
+      "emissionSeconds": 0.002327223075553775,
+      "compileSeconds": 0.0029148270841687918,
+      "linkSeconds": 0.02134454296901822,
+      "peakCompileRssKiB": 6864,
+      "object": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase106/confirm01/r1-closure-cl-size.o",
+        "bytes": 1456,
+        "sha256": "12f268f31fae4393bb6ec64f714a13203eccdead7b394ed1c48c8060e0d75a49"
+      },
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase106/confirm01/r1-closure-cl-size",
+        "bytes": 8856,
+        "sha256": "d0a09a58ea32eb66c22f3888afd0b62ada1cddc0f19025dac05edece34c22b07"
+      },
+      "executions": {
+        "50000": {
+          "args": [
+            50000,
+            31
+          ],
+          "repeat": 100,
+          "expectedPerInvocation": 3613198464,
+          "checksum": 542593536,
+          "executeSeconds": 0.017666897037997842,
+          "peakExecuteRssKiB": 6944,
+          "oneShotExecuteSeconds": 0.0016486130189150572,
+          "oneShotPeakRssKiB": 6940,
+          "oneShotChecksum": 3613198464
+        },
+        "200000": {
+          "args": [
+            200000,
+            31
+          ],
+          "repeat": 100,
+          "expectedPerInvocation": 1461881728,
+          "checksum": 159284736,
+          "executeSeconds": 0.0662653069011867,
+          "peakExecuteRssKiB": 6876,
+          "oneShotExecuteSeconds": 0.002218598034232855,
+          "oneShotPeakRssKiB": 6928,
+          "oneShotChecksum": 1461881728
+        }
+      }
+    },
+    {
+      "round": 1,
+      "workload": "list",
+      "config": "cl-size",
+      "emissionSeconds": 0.0022055821027606726,
+      "compileSeconds": 0.0028232731856405735,
+      "linkSeconds": 0.021296969847753644,
+      "peakCompileRssKiB": 6924,
+      "object": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase106/confirm01/r1-list-cl-size.o",
+        "bytes": 1280,
+        "sha256": "10f4d15ee26b60a92423d10d0aebd6369990e654406123291ad9c1541f0071fb"
+      },
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase106/confirm01/r1-list-cl-size",
+        "bytes": 8712,
+        "sha256": "800fe23f6fd42e804d4fe29dd0ae6f4a197e7a7e78c6880836432357a8157f00"
+      },
+      "executions": {
+        "4096": {
+          "args": [
+            4096,
+            17
+          ],
+          "repeat": 200,
+          "expectedPerInvocation": 2442917905,
+          "checksum": 3252276552,
+          "executeSeconds": 0.029703173087909818,
+          "peakExecuteRssKiB": 6940,
+          "oneShotExecuteSeconds": 0.0018772438634186983,
+          "oneShotPeakRssKiB": 6940,
+          "oneShotChecksum": 2442917905
+        },
+        "1024": {
+          "args": [
+            1024,
+            17
+          ],
+          "repeat": 200,
+          "expectedPerInvocation": 793706001,
+          "checksum": 4122377544,
+          "executeSeconds": 0.008585713105276227,
+          "peakExecuteRssKiB": 6920,
+          "oneShotExecuteSeconds": 0.001603736076503992,
+          "oneShotPeakRssKiB": 6944,
+          "oneShotChecksum": 793706001
+        }
+      }
+    },
+    {
+      "round": 2,
+      "workload": "closure",
+      "config": "cl-size",
+      "emissionSeconds": 0.002327223075553775,
+      "compileSeconds": 0.002904071006923914,
+      "linkSeconds": 0.021419753087684512,
+      "peakCompileRssKiB": 6868,
+      "object": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase106/confirm01/r2-closure-cl-size.o",
+        "bytes": 1456,
+        "sha256": "12f268f31fae4393bb6ec64f714a13203eccdead7b394ed1c48c8060e0d75a49"
+      },
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase106/confirm01/r2-closure-cl-size",
+        "bytes": 8856,
+        "sha256": "d0a09a58ea32eb66c22f3888afd0b62ada1cddc0f19025dac05edece34c22b07"
+      },
+      "executions": {
+        "50000": {
+          "args": [
+            50000,
+            31
+          ],
+          "repeat": 100,
+          "expectedPerInvocation": 3613198464,
+          "checksum": 542593536,
+          "executeSeconds": 0.017768580932170153,
+          "peakExecuteRssKiB": 6948,
+          "oneShotExecuteSeconds": 0.0016859970055520535,
+          "oneShotPeakRssKiB": 6920,
+          "oneShotChecksum": 3613198464
+        },
+        "200000": {
+          "args": [
+            200000,
+            31
+          ],
+          "repeat": 100,
+          "expectedPerInvocation": 1461881728,
+          "checksum": 159284736,
+          "executeSeconds": 0.06549482606351376,
+          "peakExecuteRssKiB": 6928,
+          "oneShotExecuteSeconds": 0.002138718031346798,
+          "oneShotPeakRssKiB": 6940,
+          "oneShotChecksum": 1461881728
+        }
+      }
+    },
+    {
+      "round": 2,
+      "workload": "tree",
+      "config": "cl-size",
+      "emissionSeconds": 0.002650064881891012,
+      "compileSeconds": 0.0029700028244405985,
+      "linkSeconds": 0.02134606405161321,
+      "peakCompileRssKiB": 6896,
+      "object": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase106/confirm01/r2-tree-cl-size.o",
+        "bytes": 1688,
+        "sha256": "415ad004d8abc58a5166c3f774f525b8da421d9bbf7785abd2c5d94e76bbdb7b"
+      },
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase106/confirm01/r2-tree-cl-size",
+        "bytes": 8976,
+        "sha256": "a9d8f9414c1b42793f8532c452cab4c95f599f5cad2e69311e497678cdac5332"
+      },
+      "executions": {
+        "9": {
+          "args": [
+            9,
+            23
+          ],
+          "repeat": 100,
+          "expectedPerInvocation": 2256423393,
+          "checksum": 2304039908,
+          "executeSeconds": 0.005844227969646454,
+          "peakExecuteRssKiB": 6932,
+          "oneShotExecuteSeconds": 0.0015898349229246378,
+          "oneShotPeakRssKiB": 6896,
+          "oneShotChecksum": 2256423393
+        },
+        "12": {
+          "args": [
+            12,
+            23
+          ],
+          "repeat": 100,
+          "expectedPerInvocation": 869759041,
+          "checksum": 1076558180,
+          "executeSeconds": 0.035484730964526534,
+          "peakExecuteRssKiB": 6936,
+          "oneShotExecuteSeconds": 0.0020747019443660975,
+          "oneShotPeakRssKiB": 6928,
+          "oneShotChecksum": 869759041
+        }
+      }
+    },
+    {
+      "round": 2,
+      "workload": "text",
+      "config": "cl-size",
+      "emissionSeconds": 0.0026353709399700165,
+      "compileSeconds": 0.003250625915825367,
+      "linkSeconds": 0.02342669409699738,
+      "peakCompileRssKiB": 6932,
+      "object": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase106/confirm01/r2-text-cl-size.o",
+        "bytes": 1624,
+        "sha256": "5d68eca23c13bc349e3b06a3cc2e15b6b328b5c7b9748510d087540cdacbc98d"
+      },
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase106/confirm01/r2-text-cl-size",
+        "bytes": 9008,
+        "sha256": "5e3903ad44fcc2a9b1121605a6b06a6365624fa6bb5c7adbdb1d36079db8a62d"
+      },
+      "executions": {
+        "100000": {
+          "args": [
+            100000,
+            7
+          ],
+          "repeat": 100,
+          "expectedPerInvocation": 747978940,
+          "checksum": 1783449968,
+          "executeSeconds": 0.06630007806234062,
+          "peakExecuteRssKiB": 6920,
+          "oneShotExecuteSeconds": 0.002272262005135417,
+          "oneShotPeakRssKiB": 6872,
+          "oneShotChecksum": 747978940
+        },
+        "400000": {
+          "args": [
+            400000,
+            7
+          ],
+          "repeat": 100,
+          "expectedPerInvocation": 3051949026,
+          "checksum": 252224584,
+          "executeSeconds": 0.26071108295582235,
+          "peakExecuteRssKiB": 6936,
+          "oneShotExecuteSeconds": 0.004508066922426224,
+          "oneShotPeakRssKiB": 6860,
+          "oneShotChecksum": 3051949026
+        }
+      }
+    },
+    {
+      "round": 2,
+      "workload": "tree",
+      "config": "c-o2",
+      "emissionSeconds": 0.0023229029029607773,
+      "compileSeconds": 0.030359230935573578,
+      "linkSeconds": 0.021016220096498728,
+      "peakCompileRssKiB": 81352,
+      "object": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase106/confirm01/r2-tree-c-o2.o",
+        "bytes": 1848,
+        "sha256": "bc575e641326028a2c0f0dfe0d41ef9f9d7188f73889a39ba0585b224ca84d1c"
+      },
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase106/confirm01/r2-tree-c-o2",
+        "bytes": 8848,
+        "sha256": "95389d08c03df74081d831118d3a974be9a049fe5662743fdae152863659cce0"
+      },
+      "executions": {
+        "9": {
+          "args": [
+            9,
+            23
+          ],
+          "repeat": 100,
+          "expectedPerInvocation": 2256423393,
+          "checksum": 2304039908,
+          "executeSeconds": 0.0053759850561618805,
+          "peakExecuteRssKiB": 6936,
+          "oneShotExecuteSeconds": 0.0015757069922983646,
+          "oneShotPeakRssKiB": 6856,
+          "oneShotChecksum": 2256423393
+        },
+        "12": {
+          "args": [
+            12,
+            23
+          ],
+          "repeat": 100,
+          "expectedPerInvocation": 869759041,
+          "checksum": 1076558180,
+          "executeSeconds": 0.03259460814297199,
+          "peakExecuteRssKiB": 6892,
+          "oneShotExecuteSeconds": 0.0020140360575169325,
+          "oneShotPeakRssKiB": 6948,
+          "oneShotChecksum": 869759041
+        }
+      }
+    },
+    {
+      "round": 2,
+      "workload": "text",
+      "config": "c-o2",
+      "emissionSeconds": 0.002537864027544856,
+      "compileSeconds": 0.041514167096465826,
+      "linkSeconds": 0.0212686019949615,
+      "peakCompileRssKiB": 83500,
+      "object": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase106/confirm01/r2-text-c-o2.o",
+        "bytes": 1728,
+        "sha256": "c545ffe4e0791ef891bc6bb312a19ea6736b83a3368e713bf9c4a27a7570148d"
+      },
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase106/confirm01/r2-text-c-o2",
+        "bytes": 8752,
+        "sha256": "09df1dfa39ee2f2f22009afdf9a4ce3e0d0ddc211d388f7f40583e6a7972b7f7"
+      },
+      "executions": {
+        "400000": {
+          "args": [
+            400000,
+            7
+          ],
+          "repeat": 100,
+          "expectedPerInvocation": 3051949026,
+          "checksum": 252224584,
+          "executeSeconds": 0.15721564297564328,
+          "peakExecuteRssKiB": 6924,
+          "oneShotExecuteSeconds": 0.003832126036286354,
+          "oneShotPeakRssKiB": 6952,
+          "oneShotChecksum": 3051949026
+        },
+        "100000": {
+          "args": [
+            100000,
+            7
+          ],
+          "repeat": 100,
+          "expectedPerInvocation": 747978940,
+          "checksum": 1783449968,
+          "executeSeconds": 0.040672129951417446,
+          "peakExecuteRssKiB": 6896,
+          "oneShotExecuteSeconds": 0.001996289938688278,
+          "oneShotPeakRssKiB": 6872,
+          "oneShotChecksum": 747978940
+        }
+      }
+    },
+    {
+      "round": 2,
+      "workload": "list",
+      "config": "cl-size",
+      "emissionSeconds": 0.0022055821027606726,
+      "compileSeconds": 0.002815888961777091,
+      "linkSeconds": 0.02143613388761878,
+      "peakCompileRssKiB": 6868,
+      "object": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase106/confirm01/r2-list-cl-size.o",
+        "bytes": 1280,
+        "sha256": "10f4d15ee26b60a92423d10d0aebd6369990e654406123291ad9c1541f0071fb"
+      },
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase106/confirm01/r2-list-cl-size",
+        "bytes": 8712,
+        "sha256": "800fe23f6fd42e804d4fe29dd0ae6f4a197e7a7e78c6880836432357a8157f00"
+      },
+      "executions": {
+        "4096": {
+          "args": [
+            4096,
+            17
+          ],
+          "repeat": 200,
+          "expectedPerInvocation": 2442917905,
+          "checksum": 3252276552,
+          "executeSeconds": 0.029891469050198793,
+          "peakExecuteRssKiB": 6892,
+          "oneShotExecuteSeconds": 0.0018760689999908209,
+          "oneShotPeakRssKiB": 6944,
+          "oneShotChecksum": 2442917905
+        },
+        "1024": {
+          "args": [
+            1024,
+            17
+          ],
+          "repeat": 200,
+          "expectedPerInvocation": 793706001,
+          "checksum": 4122377544,
+          "executeSeconds": 0.00871360208839178,
+          "peakExecuteRssKiB": 6944,
+          "oneShotExecuteSeconds": 0.0016382820904254913,
+          "oneShotPeakRssKiB": 6940,
+          "oneShotChecksum": 793706001
+        }
+      }
+    },
+    {
+      "round": 2,
+      "workload": "closure",
+      "config": "c-o2",
+      "emissionSeconds": 0.0022895210422575474,
+      "compileSeconds": 0.0326777168083936,
+      "linkSeconds": 0.021223166026175022,
+      "peakCompileRssKiB": 82472,
+      "object": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase106/confirm01/r2-closure-c-o2.o",
+        "bytes": 1784,
+        "sha256": "2aa2a277520344ae0f6ab91ca540e40c9f32b424f2de605db896962ea29547bf"
+      },
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase106/confirm01/r2-closure-c-o2",
+        "bytes": 8760,
+        "sha256": "ad9745ae2bf09e1e655d82e41c8e1fe4ebd66944aa3b13315594641049046596"
+      },
+      "executions": {
+        "50000": {
+          "args": [
+            50000,
+            31
+          ],
+          "repeat": 100,
+          "expectedPerInvocation": 3613198464,
+          "checksum": 542593536,
+          "executeSeconds": 0.009959331015124917,
+          "peakExecuteRssKiB": 6892,
+          "oneShotExecuteSeconds": 0.0016114891041070223,
+          "oneShotPeakRssKiB": 6828,
+          "oneShotChecksum": 3613198464
+        },
+        "200000": {
+          "args": [
+            200000,
+            31
+          ],
+          "repeat": 100,
+          "expectedPerInvocation": 1461881728,
+          "checksum": 159284736,
+          "executeSeconds": 0.03337733494117856,
+          "peakExecuteRssKiB": 6924,
+          "oneShotExecuteSeconds": 0.0018399909604340792,
+          "oneShotPeakRssKiB": 6948,
+          "oneShotChecksum": 1461881728
+        }
+      }
+    },
+    {
+      "round": 2,
+      "workload": "list",
+      "config": "c-o2",
+      "emissionSeconds": 0.0022048649843782187,
+      "compileSeconds": 0.03104042704217136,
+      "linkSeconds": 0.020926847821101546,
+      "peakCompileRssKiB": 82852,
+      "object": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase106/confirm01/r2-list-c-o2.o",
+        "bytes": 1536,
+        "sha256": "1172084ccb78494df630e86a7415c6ab79139e08dc34fc0b9708ff3c8f639091"
+      },
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase106/confirm01/r2-list-c-o2",
+        "bytes": 8576,
+        "sha256": "278f3f806ce565638b4ef38129c84b00df4a93eacbbf737604aa92a8ea772613"
+      },
+      "executions": {
+        "1024": {
+          "args": [
+            1024,
+            17
+          ],
+          "repeat": 200,
+          "expectedPerInvocation": 793706001,
+          "checksum": 4122377544,
+          "executeSeconds": 0.008665997069329023,
+          "peakExecuteRssKiB": 6932,
+          "oneShotExecuteSeconds": 0.0016039710026234388,
+          "oneShotPeakRssKiB": 6896,
+          "oneShotChecksum": 793706001
+        },
+        "4096": {
+          "args": [
+            4096,
+            17
+          ],
+          "repeat": 200,
+          "expectedPerInvocation": 2442917905,
+          "checksum": 3252276552,
+          "executeSeconds": 0.030839957064017653,
+          "peakExecuteRssKiB": 6832,
+          "oneShotExecuteSeconds": 0.0017813690938055515,
+          "oneShotPeakRssKiB": 6928,
+          "oneShotChecksum": 2442917905
+        }
+      }
+    }
+  ],
+  "scope": "Fresh confirmation on two new sizes per workload, not another selection. The already frozen training k=1 winner is compared only with C-O2. The same Bend-emitted artifacts, adapter, Clang and runner source are authenticated. Each guarded runtime checks every invocation and the complete batch checksum. Held-out observations cannot change the selected policy.",
+  "runnerAcquisitionSeconds": 0.05107965786010027,
+  "runnerObject": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase106/confirm01/runner.o",
+    "bytes": 3184,
+    "sha256": "23e82aa94218e9217c82495b8b9162a01876a4782e1964ad24511dd81239c8f7"
+  },
+  "summary": {
+    "table": {
+      "text": {
+        "c-o2": {
+          "emissionSeconds": {
+            "median": 0.002537864027544856,
+            "min": 0.002537864027544856,
+            "max": 0.002537864027544856
+          },
+          "compileSeconds": {
+            "median": 0.04084066883660853,
+            "min": 0.040616368874907494,
+            "max": 0.041514167096465826
+          },
+          "linkSeconds": {
+            "median": 0.0212686019949615,
+            "min": 0.021119175013154745,
+            "max": 0.021606668829917908
+          },
+          "sizes": {
+            "100000": {
+              "executeSeconds": {
+                "median": 0.03893752512522042,
+                "min": 0.03693969710730016,
+                "max": 0.040672129951417446
+              },
+              "oneShotExecuteSeconds": {
+                "median": 0.001996289938688278,
+                "min": 0.001957970205694437,
+                "max": 0.0020900529343634844
+              },
+              "k1CostSeconds": 0.1035846599843353,
+              "oneShotK1CostSeconds": 0.06664342479780316
+            },
+            "400000": {
+              "executeSeconds": {
+                "median": 0.1462794088292867,
+                "min": 0.14548395900055766,
+                "max": 0.15721564297564328
+              },
+              "oneShotExecuteSeconds": {
+                "median": 0.0035852459259331226,
+                "min": 0.0034185878466814756,
+                "max": 0.003832126036286354
+              },
+              "k1CostSeconds": 0.21092654368840158,
+              "oneShotK1CostSeconds": 0.06823238078504801
+            }
+          },
+          "reusedBuildCostSeconds": 0.249864068813622
+        },
+        "cl-size": {
+          "emissionSeconds": {
+            "median": 0.0026353709399700165,
+            "min": 0.0026353709399700165,
+            "max": 0.0026353709399700165
+          },
+          "compileSeconds": {
+            "median": 0.0033444110304117203,
+            "min": 0.003250625915825367,
+            "max": 0.0033966531045734882
+          },
+          "linkSeconds": {
+            "median": 0.021446757949888706,
+            "min": 0.021251710830256343,
+            "max": 0.02342669409699738
+          },
+          "sizes": {
+            "100000": {
+              "executeSeconds": {
+                "median": 0.06621763994917274,
+                "min": 0.06587346200831234,
+                "max": 0.06630007806234062
+              },
+              "oneShotExecuteSeconds": {
+                "median": 0.0023054429329931736,
+                "min": 0.002272262005135417,
+                "max": 0.002449234016239643
+              },
+              "k1CostSeconds": 0.09364417986944318,
+              "oneShotK1CostSeconds": 0.029731982853263617
+            },
+            "400000": {
+              "executeSeconds": {
+                "median": 0.2603134389501065,
+                "min": 0.2599529358558357,
+                "max": 0.26071108295582235
+              },
+              "oneShotExecuteSeconds": {
+                "median": 0.004502477822825313,
+                "min": 0.004450723063200712,
+                "max": 0.004508066922426224
+              },
+              "k1CostSeconds": 0.28773997887037694,
+              "oneShotK1CostSeconds": 0.031929017743095756
+            }
+          },
+          "reusedBuildCostSeconds": 0.3539576188195497
+        }
+      },
+      "list": {
+        "c-o2": {
+          "emissionSeconds": {
+            "median": 0.0022048649843782187,
+            "min": 0.0022048649843782187,
+            "max": 0.0022048649843782187
+          },
+          "compileSeconds": {
+            "median": 0.031247645849362016,
+            "min": 0.03104042704217136,
+            "max": 0.03134349314495921
+          },
+          "linkSeconds": {
+            "median": 0.02116623497568071,
+            "min": 0.020926847821101546,
+            "max": 0.02119459304958582
+          },
+          "sizes": {
+            "1024": {
+              "executeSeconds": {
+                "median": 0.008434626972302794,
+                "min": 0.008356228936463594,
+                "max": 0.008665997069329023
+              },
+              "oneShotExecuteSeconds": {
+                "median": 0.0016039710026234388,
+                "min": 0.001575401984155178,
+                "max": 0.0016245078295469284
+              },
+              "k1CostSeconds": 0.06305337278172374,
+              "oneShotK1CostSeconds": 0.05622271681204438
+            },
+            "4096": {
+              "executeSeconds": {
+                "median": 0.029275211971253157,
+                "min": 0.028892785077914596,
+                "max": 0.030839957064017653
+              },
+              "oneShotExecuteSeconds": {
+                "median": 0.0017813690938055515,
+                "min": 0.001769085880368948,
+                "max": 0.0018038121052086353
+              },
+              "k1CostSeconds": 0.0838939577806741,
+              "oneShotK1CostSeconds": 0.056400114903226495
+            }
+          },
+          "reusedBuildCostSeconds": 0.0923285847529769
+        },
+        "cl-size": {
+          "emissionSeconds": {
+            "median": 0.0022055821027606726,
+            "min": 0.0022055821027606726,
+            "max": 0.0022055821027606726
+          },
+          "compileSeconds": {
+            "median": 0.002815888961777091,
+            "min": 0.002736777998507023,
+            "max": 0.0028232731856405735
+          },
+          "linkSeconds": {
+            "median": 0.021296969847753644,
+            "min": 0.021185460034757853,
+            "max": 0.02143613388761878
+          },
+          "sizes": {
+            "1024": {
+              "executeSeconds": {
+                "median": 0.008585713105276227,
+                "min": 0.00850899307988584,
+                "max": 0.00871360208839178
+              },
+              "oneShotExecuteSeconds": {
+                "median": 0.001603736076503992,
+                "min": 0.0015715810004621744,
+                "max": 0.0016382820904254913
+              },
+              "k1CostSeconds": 0.034904154017567635,
+              "oneShotK1CostSeconds": 0.0279221769887954
+            },
+            "4096": {
+              "executeSeconds": {
+                "median": 0.029703173087909818,
+                "min": 0.02958458592183888,
+                "max": 0.029891469050198793
+              },
+              "oneShotExecuteSeconds": {
+                "median": 0.0018760689999908209,
+                "min": 0.0017597449477761984,
+                "max": 0.0018772438634186983
+              },
+              "k1CostSeconds": 0.056021614000201225,
+              "oneShotK1CostSeconds": 0.02819450991228223
+            }
+          },
+          "reusedBuildCostSeconds": 0.06460732710547745
+        }
+      },
+      "tree": {
+        "c-o2": {
+          "emissionSeconds": {
+            "median": 0.0023229029029607773,
+            "min": 0.0023229029029607773,
+            "max": 0.0023229029029607773
+          },
+          "compileSeconds": {
+            "median": 0.03041306184604764,
+            "min": 0.030359230935573578,
+            "max": 0.03074651095084846
+          },
+          "linkSeconds": {
+            "median": 0.021033333847299218,
+            "min": 0.021016220096498728,
+            "max": 0.021245357114821672
+          },
+          "sizes": {
+            "9": {
+              "executeSeconds": {
+                "median": 0.0054624059703201056,
+                "min": 0.0053759850561618805,
+                "max": 0.005494448821991682
+              },
+              "oneShotExecuteSeconds": {
+                "median": 0.0015885562170296907,
+                "min": 0.0015757069922983646,
+                "max": 0.0016106220427900553
+              },
+              "k1CostSeconds": 0.05923170456662774,
+              "oneShotK1CostSeconds": 0.055357854813337326
+            },
+            "12": {
+              "executeSeconds": {
+                "median": 0.03286376199685037,
+                "min": 0.03259460814297199,
+                "max": 0.03308828780427575
+              },
+              "oneShotExecuteSeconds": {
+                "median": 0.0020553111098706722,
+                "min": 0.0020140360575169325,
+                "max": 0.0022168138530105352
+              },
+              "k1CostSeconds": 0.086633060593158,
+              "oneShotK1CostSeconds": 0.05582460970617831
+            }
+          },
+          "reusedBuildCostSeconds": 0.09209546656347811
+        },
+        "cl-size": {
+          "emissionSeconds": {
+            "median": 0.002650064881891012,
+            "min": 0.002650064881891012,
+            "max": 0.002650064881891012
+          },
+          "compileSeconds": {
+            "median": 0.0030017078388482332,
+            "min": 0.0029700028244405985,
+            "max": 0.0030326771084219217
+          },
+          "linkSeconds": {
+            "median": 0.02134606405161321,
+            "min": 0.02111021289601922,
+            "max": 0.02147307386621833
+          },
+          "sizes": {
+            "9": {
+              "executeSeconds": {
+                "median": 0.005844227969646454,
+                "min": 0.005838241893798113,
+                "max": 0.00595620390959084
+              },
+              "oneShotExecuteSeconds": {
+                "median": 0.0015898349229246378,
+                "min": 0.001585833029821515,
+                "max": 0.0017221849411725998
+              },
+              "k1CostSeconds": 0.03284206474199891,
+              "oneShotK1CostSeconds": 0.028587671695277095
+            },
+            "12": {
+              "executeSeconds": {
+                "median": 0.035478224977850914,
+                "min": 0.035448509035632014,
+                "max": 0.035484730964526534
+              },
+              "oneShotExecuteSeconds": {
+                "median": 0.0020747019443660975,
+                "min": 0.0020407261326909065,
+                "max": 0.0021205018274486065
+              },
+              "k1CostSeconds": 0.06247606175020337,
+              "oneShotK1CostSeconds": 0.029072538716718554
+            }
+          },
+          "reusedBuildCostSeconds": 0.06832028971984982
+        }
+      },
+      "closure": {
+        "c-o2": {
+          "emissionSeconds": {
+            "median": 0.0022895210422575474,
+            "min": 0.0022895210422575474,
+            "max": 0.0022895210422575474
+          },
+          "compileSeconds": {
+            "median": 0.032732382183894515,
+            "min": 0.0326777168083936,
+            "max": 0.03284713812172413
+          },
+          "linkSeconds": {
+            "median": 0.021380010060966015,
+            "min": 0.021223166026175022,
+            "max": 0.025527870981022716
+          },
+          "sizes": {
+            "50000": {
+              "executeSeconds": {
+                "median": 0.009720099158585072,
+                "min": 0.009479667991399765,
+                "max": 0.009959331015124917
+              },
+              "oneShotExecuteSeconds": {
+                "median": 0.0016195829957723618,
+                "min": 0.0016114891041070223,
+                "max": 0.0016324229072779417
+              },
+              "k1CostSeconds": 0.06612201244570315,
+              "oneShotK1CostSeconds": 0.05802149628289044
+            },
+            "200000": {
+              "executeSeconds": {
+                "median": 0.033583651995286345,
+                "min": 0.03337733494117856,
+                "max": 0.03382975701242685
+              },
+              "oneShotExecuteSeconds": {
+                "median": 0.0018399909604340792,
+                "min": 0.0017895950004458427,
+                "max": 0.0018423248548060656
+              },
+              "k1CostSeconds": 0.08998556528240442,
+              "oneShotK1CostSeconds": 0.058241904247552156
+            }
+          },
+          "reusedBuildCostSeconds": 0.0997056644409895
+        },
+        "cl-size": {
+          "emissionSeconds": {
+            "median": 0.002327223075553775,
+            "min": 0.002327223075553775,
+            "max": 0.002327223075553775
+          },
+          "compileSeconds": {
+            "median": 0.0029148270841687918,
+            "min": 0.002904071006923914,
+            "max": 0.003033907152712345
+          },
+          "linkSeconds": {
+            "median": 0.02134454296901822,
+            "min": 0.021319524152204394,
+            "max": 0.021419753087684512
+          },
+          "sizes": {
+            "50000": {
+              "executeSeconds": {
+                "median": 0.017768580932170153,
+                "min": 0.017666897037997842,
+                "max": 0.01780875795520842
+              },
+              "oneShotExecuteSeconds": {
+                "median": 0.0016859970055520535,
+                "min": 0.0016486130189150572,
+                "max": 0.0017289170064032078
+              },
+              "k1CostSeconds": 0.04435517406091094,
+              "oneShotK1CostSeconds": 0.02827259013429284
+            },
+            "200000": {
+              "executeSeconds": {
+                "median": 0.06549482606351376,
+                "min": 0.06542779691517353,
+                "max": 0.0662653069011867
+              },
+              "oneShotExecuteSeconds": {
+                "median": 0.0021696670446544886,
+                "min": 0.002138718031346798,
+                "max": 0.002218598034232855
+              },
+              "k1CostSeconds": 0.09208141919225454,
+              "oneShotK1CostSeconds": 0.028756260173395276
+            }
+          },
+          "reusedBuildCostSeconds": 0.1098500001244247
+        }
+      }
+    },
+    "groups": {
+      "train": {
+        "baseline": {
+          "k1CostSeconds": 0.4614585342351347,
+          "reusedBuildCostSeconds": 0.3421926535665989,
+          "executionSeconds": 0.22292677289806306,
+          "oneShotK1CostSeconds": 0.24749863729812205,
+          "oneShotExecutionSeconds": 0.008966875961050391
+        },
+        "selected": {
+          "k1CostSeconds": 0.472309926757589,
+          "reusedBuildCostSeconds": 0.41856494592502713,
+          "executionSeconds": 0.3648199650924653,
+          "oneShotK1CostSeconds": 0.117777687497437,
+          "oneShotExecutionSeconds": 0.0102877258323133
+        },
+        "selectedOverBaseline": {
+          "k1CostSeconds": 1.0235154227680292,
+          "reusedBuildCostSeconds": 1.223185072976923,
+          "executionSeconds": 1.6365013513172113,
+          "oneShotK1CostSeconds": 0.4758720645219919,
+          "oneShotExecutionSeconds": 1.147303238831485
+        }
+      },
+      "heldout": {
+        "baseline": {
+          "k1CostSeconds": 0.3019723428878933,
+          "reusedBuildCostSeconds": 0.1918011310044676,
+          "executionSeconds": 0.0816299191210419,
+          "oneShotK1CostSeconds": 0.22744586504995823,
+          "oneShotExecutionSeconds": 0.007103441283106804
+        },
+        "selected": {
+          "k1CostSeconds": 0.23175471974536777,
+          "reusedBuildCostSeconds": 0.17817028984427452,
+          "executionSeconds": 0.12458585994318128,
+          "oneShotK1CostSeconds": 0.11468906071968377,
+          "oneShotExecutionSeconds": 0.007520200917497277
+        },
+        "selectedOverBaseline": {
+          "k1CostSeconds": 0.7674700190388174,
+          "reusedBuildCostSeconds": 0.9289324255346775,
+          "executionSeconds": 1.5262278988472813,
+          "oneShotK1CostSeconds": 0.5042477281110054,
+          "oneShotExecutionSeconds": 1.0586701033739236
+        }
+      }
+    },
+    "executionBatchesPerBuild": 1,
+    "accounting": "k1CostSeconds sums per-size emission+compile+link+one execution batch, matching the original k=1 model. This charges a hypothetical independent build for each size. reusedBuildCostSeconds instead charges one build per workload and executes both repeated batches. oneShotK1CostSeconds uses a separate fresh process with repeat=1 for each size; it is not inferred by dividing batch time. One-shot observations do not select a policy and are not cold filesystem-cache measurements. Emission is the original single observation, not freshly measured. Common runner acquisition is reported separately; it and harness/reference/supervision costs are excluded from both cost models."
+  },
+  "inputsUnchanged": true,
+  "finished": 1792303746.81173,
+  "jobs": 145
+}

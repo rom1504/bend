@@ -42,3 +42,12 @@ program-name slot and runs with one worker/GPU disabled. Both target steps use
 the campaign's serial guard and high-resolution child receipts, with separate
 emission/build clocks and retained failures. Preparing a snapshot runs no targets.
 It does not install or select any new compiler. Root owns scheduled execution.
+
+## Executed result
+
+The final producer-native02 build and44 emitted artifacts completed. Final
+controls04 passes both consumers, raw/fold outputs, memory-model observations
+and malformed-input refusals. The identifier-verifier repair leaves all44
+previous output artifacts byte-identical. See the [completed report](README.md)
+and [evidence capsule](evidence/README.md) for precise clocks, source identities
+and the separate performance/proof boundaries.

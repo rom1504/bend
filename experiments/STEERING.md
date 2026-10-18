@@ -1,64 +1,62 @@
-# Current frontier: Phase105 native compilation measurements
+# Current frontier: Phase106 native IR research loop
 
-[Report](../implementation/phase105/README.md) ·
-[Protocol](../docs/self_hosted/NATIVE_COMPILER_COMPARISON.md) ·
-[Replay](../selfhost/tools/performance/phase105/README.md).
+[Report and diagrams](../implementation/phase106/README.md) ·
+[Design](../design/phase106/native-ir-research-loop.md) ·
+[Replay](../selfhost/tools/performance/phase106/README.md) ·
+[Evidence](../implementation/phase106/evidence/README.md).
 
-The requested measurements are complete. Current candidate04 native B1/B2 and
-pinned upstream TS/Bun compile identical sources to C. Across 45 closed points
-with equal weight per 23 original programs, prepared process ratios are
-0.499×/0.517× upstream; live-Base ratios are 2.384×/2.231×. Keep these distinct.
-For the complete compiler source, repeated prepared times are 126.051s/143.646s
-versus 48.442s upstream: 2.602×/2.965×. Single live controls are separately labelled.
+All five requested bounded experiments are complete. The installed native compiler
+and candidate04 selection are unchanged. A Bend-written typed IR, verifier, folding
+and C/JSON emitters now drive C and pinned Cranelift AOT consumers. This is directly
+constructed workload IR, including two real lexical algorithms, not full KTerm
+lowering or a new production backend. The public CLI remains native Bend.
 
-All 693 timed requests, 45 reference acquisitions and 12 selected product
-executions pass. Native B1/B2 emit identical C. The precise child clock excludes
-supervision startup/polling; internal request clocks have unequal boundaries.
-Selected Clang build observations are separate from compiler latency and are
-not repeated performance estimates. No generated-program speed campaign or
-new full-language qualification was performed. No compiler/release changes.
+Current full-self sampling:142.160s, exact output. `term_drop`, shared-field
+ownership (`span_fade`) and string equality total72.94% of leaf samples. A separate
+clean current-recipe Clang image build takes375.644s and reproduces selected B2.
+These are single observations, not new repeated compiler-latency ratios.
 
-The [evidence capsule](../implementation/phase105/evidence/README.md) preserves
-raw observations, source and method pins, complete C/products and logs. Root ran
-762 serial guarded jobs: 32.86min runner wall, 28.00min child time. No OOM, timeout,
-disk exhaustion or PR comment. These are measurement-run costs, not token usage
-or total conversation wall time.
+The8-workload/5-profile/3-round matrix finds10–17× faster Cranelift object generation,
+but runtime ranges from parity to5.6× C O2. Linking narrows the construction gain.
+The training-selected k=1 policy fails to improve repeated-batch cost at new training
+sizes (1.024×), while held-outs improve (0.767×). Fresh one-shot build/check component
+cost estimates are0.476×/0.504× training/held-out; supervision and reusable-tool
+acquisition are separate. Ten/hundred-batch training selects C O2. No general
+policy promotion and no claim of recursive research acceleration.
 
-## Next work, only when requested
+Thirteen named laws constrain the actual safe folding helper and pass independent
+checking; four admitted semantic mutants fail unchanged source contracts. Final
+controls include1992 native outputs and996 independent interpreter observations.
+Recursive traversal, memory, emitters, runtime and full compiler correctness remain
+outside the theorem. Source checks are cheap; the accepted independent kernel run
+is41.440s. Authenticate/reuse unchanged proof evidence instead of repeating it for
+backend-only edits.
 
-- Attribute full-source costs common to the Bend implementation/representation
-  and costs specific to its own generated executable. B2 is 1.140× B1 there;
-  matching B1 alone would leave the 2.602× upstream gap. Do not infer the cause
-  from timings alone or extrapolate prepared small-program wins to self compilation.
-- Investigate live-Base preparation separately: broad pooled preparation is
-  1405ms/1314ms B1/B2 versus 58ms/78ms using the existing carrier. Upstream has
-  source Base in both measured modes; no equal-prepared upstream API was tested.
-- The [fast native backend proposal](../design/phase105/fast-native-backend.md)
-  remains unimplemented. Its structured native IR/Cranelift/caching roadmap
-  addresses machine-build cost and must measure the resulting compiler's speed.
-- The [recursive research plan](../design/phase104/recursive-improvement.md)
-  remains a hypothesis. A faster compiler or emitted-C fixed point does not
-  establish accelerating discovery of validated improvements.
+## Best next bounded investigation, when requested
 
-Use the one-round prepared six-case screen first, then live mode, broad cases
-and complete source as justified. Preserve exact source/image/assets, failure
-records and output checks. Root alone runs serial guarded CPU3 targets; agents
-may prepare or review offline. Do not rebuild large compiler images after each
-small edit, and do not repeat the entire Phase105 campaign for every candidate.
+Implement size/depth-bounded inlining of small pure direct helpers in Bend IR,
+with a semantic contract and unrelated held-out helpers. Static inspection finds
+128 retained helper boundaries and two classifier calls per scanned character
+that Clang removes. This is concrete evidence for inexpensive shared optimization;
+it does not justify implementing an entire new machine backend immediately.
 
-## Installed implementation and historical context
+Separately design borrow summaries for live owners, following the full compiler's
+ownership profile. The synthetic shared/borrowed pair alone cannot justify a
+production ownership transformation. Persistent/batched supervision and eventually
+JIT/link reuse address now-visible fixed experiment costs. Keep defaults and exact
+results until real lowering, ABI, conformance and self-hosting gates are met.
 
-[Candidate04 promotion](../implementation/phase102/default-promotion.md) remains
-current. The [Phase103 public CLI](../docs/self_hosted/NATIVE_CLI.md) is written
-in Bend and uses no Python/Node/Bun host for ordinary requests. Its entry differs
-from the supervised same-source stage pair measured here. The installed JS
-release and its scope remain separate. Preserve conformance and compiled-program
-speed while optimizing compiler speed; report source/tool complexity separately.
+Root serializes substantial target work on CPU3 under guards. Offline agents can
+prepare/review disjoint work; avoid parallel large builds, disk exhaustion and
+repeating full-self/broad45 gates for small IR changes. Preserve every failed
+attempt, tool cost, selection input and held-out distinction. No PR comments
+without explicit authorization.
 
-The preceding detailed frontiers, including Phase103/102 history and older
-qualification limits, are preserved in the
-[previous committed steering](https://github.com/rom1504/bend/blob/4a8ae61/experiments/STEERING.md).
-See [the ledger](ledger.md) and linked reports for their evidence. Older source
-and guard-clock ratios are not interchangeable with these fresh process clocks.
-No next optimization or backend implementation is automatically started by this
-completed measurement campaign.
+## Established production comparisons remain separate
+
+[Phase105](../implementation/phase105/README.md) remains the current B1/B2-versus-
+upstream comparison: prepared broad45 ratios0.499×/0.517×, live-Base2.384×/2.231×;
+full-source prepared2.602×/2.965×. Phase106 does not replace those metrics or the
+existing generated-program/conformance qualification. See the
+[preceding steering](https://github.com/rom1504/bend/blob/c2ef383/experiments/STEERING.md)
+for exact historical scope and the [ledger](ledger.md) for earlier phases.

@@ -159,3 +159,14 @@ on findings, changed hypotheses and the next discriminating test.
 If a hypothesis fails, complete the experiment and report that result rather than
 expanding architecture until it appears successful. Environmental blockers must
 be demonstrated with bounded attempts and distinguished from negative results.
+
+## Execution record
+
+Completed in the [Phase106 report](../../implementation/phase106/README.md).
+The chosen IR has structured control and mutable typed locals; the Cranelift
+consumer constructs SSA/block parameters. It is directly constructed, with two
+real lexical algorithms reconstructed, not a general checked-term frontend.
+A preregistered backend matrix was followed by a declared fresh-size confirmation
+and one-shot scenario using its frozen winner. Those additional observations
+did not select a new policy. The repeated-batch generalization failure is retained;
+no installed backend or compiler selection changes.

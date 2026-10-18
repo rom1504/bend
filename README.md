@@ -55,8 +55,13 @@ defines comparable timings, preparation modes and a staged benchmark. The
 [completed native compilation comparison](implementation/phase105/README.md)
 measures current B1/B2 against upstream on six sources,45 closed points and the
 full compiler source. Prepared Base changes the result substantially; the report
-keeps both preparation modes and Clang costs explicit. The backend replacement
-remains a proposal.
+keeps both preparation modes and Clang costs explicit.
+
+The [native IR research prototype](docs/self_hosted/NATIVE_IR_RESEARCH.md) now
+implements a small Bend IR with C and Cranelift consumers, checked folding laws,
+and a reproducible policy experiment. Its [report and diagrams](implementation/phase106/README.md)
+show roughly half the target cost for short build/check cycles, with important
+runtime tradeoffs. Full production backend replacement remains future work.
 
 For the underlying candidate04 algorithms, the repeated six-source
 B2 screen uses 27.6% less request time than Phase98; B1 is 2.6% slower. Separately,

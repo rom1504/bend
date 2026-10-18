@@ -1,0 +1,204 @@
+{
+  "schema": "phase106-source-connected-fold-laws-v1",
+  "targetsRun": false,
+  "source": [
+    {
+      "file": "selfhost/tools/performance/phase106/ir/model.bend",
+      "bytes": 2001,
+      "sha256": "4f38489f3ee5aa9b850fc64046edbf2b524c190b1209beebdb7ac7ded5d86e83"
+    },
+    {
+      "file": "selfhost/tools/performance/phase106/ir/optimize.bend",
+      "bytes": 3030,
+      "sha256": "674d8a58303f41c39630246d8a63fd7f024b0b9aaaa3f5f9c949b882e317f6e7"
+    }
+  ],
+  "method": {
+    "file": "selfhost/tools/performance/phase106/laws/prepare.mjs",
+    "bytes": 5776,
+    "sha256": "cf418bdef9949197737ecd6f740713dd71999943b867af6ffe00a1718d7908c1"
+  },
+  "frozenReference": {
+    "file": "selfhost/tools/performance/phase106/laws/reference.bend",
+    "bytes": 845,
+    "sha256": "20026e92f3d766a6b7101d660c115c3246025ace35c78ec86fb8baab7fc38606"
+  },
+  "frozenLaws": {
+    "file": "selfhost/tools/performance/phase106/laws/laws.bend",
+    "bytes": 3893,
+    "sha256": "961f9ec21332e314b27a9664504c4c2aa2269f0dbc6878b254663c65db8d34d4"
+  },
+  "finiteBridge": {
+    "source": {
+      "file": "selfhost/tools/performance/phase106/laws/bridge.bend",
+      "bytes": 2653,
+      "sha256": "4a104ac17b7615524860a3bdb572827832c5fb42967091e31c2cd81ceb760316"
+    },
+    "cases": {
+      "file": "selfhost/tools/performance/phase106/laws/cases.json",
+      "bytes": 2240,
+      "sha256": "ec5565b508076d9fac00806d162ff590ff15efafe3fe877a12f0fe9d56fe8acd"
+    },
+    "caseCount": 30,
+    "orderedInputMatch": true,
+    "independentBigIntExpectationCheck": true,
+    "compilerExecuted": false
+  },
+  "baseline": "selfhost/build/phase106/law-source02/baseline",
+  "cases": [
+    {
+      "id": "add-as-sub",
+      "before": "U32.add(a, b)",
+      "after": "U32.sub(a, b)",
+      "law": "fold_add_exact",
+      "witness": {
+        "op": "add",
+        "a": 1,
+        "b": 2,
+        "expected": 3,
+        "mutant": 4294967295
+      },
+      "folder": "selfhost/build/phase106/law-source02/add-as-sub"
+    },
+    {
+      "id": "reverse-sub",
+      "before": "U32.sub(a, b)",
+      "after": "U32.sub(b, a)",
+      "law": "fold_sub_exact",
+      "witness": {
+        "op": "sub",
+        "a": 0,
+        "b": 1,
+        "expected": 4294967295,
+        "mutant": 1
+      },
+      "folder": "selfhost/build/phase106/law-source02/reverse-sub"
+    },
+    {
+      "id": "less-as-equal",
+      "before": "U32.is_lt(a, b)",
+      "after": "U32.is_eq(a, b)",
+      "law": "fold_ult_exact",
+      "witness": {
+        "op": "ult",
+        "a": 0,
+        "b": 1,
+        "expected": 1,
+        "mutant": 0
+      },
+      "folder": "selfhost/build/phase106/law-source02/less-as-equal"
+    },
+    {
+      "id": "erase-literal-types",
+      "before": "case NxConst{NxU32{}, a} NxConst{NxU32{}, b}:",
+      "after": "case NxConst{left_type, a} NxConst{right_type, b}:",
+      "law": "fold_u64_preserves",
+      "witness": {
+        "op": "add",
+        "types": [
+          "u64",
+          "u64"
+        ],
+        "a": 1,
+        "b": 2,
+        "expected": "unchanged NxBin with U64 operands",
+        "mutant": "NxConst U32 3"
+      },
+      "folder": "selfhost/build/phase106/law-source02/erase-literal-types"
+    }
+  ],
+  "files": [
+    {
+      "file": "selfhost/build/phase106/law-source02/baseline/candidate.bend",
+      "bytes": 3125,
+      "sha256": "eeceed174006d380d9d7e486af2721d5d11a6748df322a53eda8a85267783513"
+    },
+    {
+      "file": "selfhost/build/phase106/law-source02/baseline/reference.bend",
+      "bytes": 845,
+      "sha256": "20026e92f3d766a6b7101d660c115c3246025ace35c78ec86fb8baab7fc38606"
+    },
+    {
+      "file": "selfhost/build/phase106/law-source02/baseline/laws.bend",
+      "bytes": 3893,
+      "sha256": "961f9ec21332e314b27a9664504c4c2aa2269f0dbc6878b254663c65db8d34d4"
+    },
+    {
+      "file": "selfhost/build/phase106/law-source02/add-as-sub/candidate.bend",
+      "bytes": 3125,
+      "sha256": "863e64f4b6fa89a6d279c3421a279440db781afb36054e8d8d284a3746688cad"
+    },
+    {
+      "file": "selfhost/build/phase106/law-source02/add-as-sub/reference.bend",
+      "bytes": 845,
+      "sha256": "20026e92f3d766a6b7101d660c115c3246025ace35c78ec86fb8baab7fc38606"
+    },
+    {
+      "file": "selfhost/build/phase106/law-source02/add-as-sub/laws.bend",
+      "bytes": 3893,
+      "sha256": "961f9ec21332e314b27a9664504c4c2aa2269f0dbc6878b254663c65db8d34d4"
+    },
+    {
+      "file": "selfhost/build/phase106/law-source02/reverse-sub/candidate.bend",
+      "bytes": 3125,
+      "sha256": "acffec8acca5f82f0d54f4c4cd1b5275fc2669e87a4bc7167b231fb6a211dd14"
+    },
+    {
+      "file": "selfhost/build/phase106/law-source02/reverse-sub/reference.bend",
+      "bytes": 845,
+      "sha256": "20026e92f3d766a6b7101d660c115c3246025ace35c78ec86fb8baab7fc38606"
+    },
+    {
+      "file": "selfhost/build/phase106/law-source02/reverse-sub/laws.bend",
+      "bytes": 3893,
+      "sha256": "961f9ec21332e314b27a9664504c4c2aa2269f0dbc6878b254663c65db8d34d4"
+    },
+    {
+      "file": "selfhost/build/phase106/law-source02/less-as-equal/candidate.bend",
+      "bytes": 3125,
+      "sha256": "604a71759b85e8b0838c581dcdbf8fc4cd5e66c39fc52a03145b658ba5de0723"
+    },
+    {
+      "file": "selfhost/build/phase106/law-source02/less-as-equal/reference.bend",
+      "bytes": 845,
+      "sha256": "20026e92f3d766a6b7101d660c115c3246025ace35c78ec86fb8baab7fc38606"
+    },
+    {
+      "file": "selfhost/build/phase106/law-source02/less-as-equal/laws.bend",
+      "bytes": 3893,
+      "sha256": "961f9ec21332e314b27a9664504c4c2aa2269f0dbc6878b254663c65db8d34d4"
+    },
+    {
+      "file": "selfhost/build/phase106/law-source02/erase-literal-types/candidate.bend",
+      "bytes": 3130,
+      "sha256": "39b42f6dadb21ccc07ecd715880c4b263ea619fd2c7ceed7ec8a1ef37b4007cf"
+    },
+    {
+      "file": "selfhost/build/phase106/law-source02/erase-literal-types/reference.bend",
+      "bytes": 845,
+      "sha256": "20026e92f3d766a6b7101d660c115c3246025ace35c78ec86fb8baab7fc38606"
+    },
+    {
+      "file": "selfhost/build/phase106/law-source02/erase-literal-types/laws.bend",
+      "bytes": 3893,
+      "sha256": "961f9ec21332e314b27a9664504c4c2aa2269f0dbc6878b254663c65db8d34d4"
+    }
+  ],
+  "extraction": {
+    "model": "complete verbatim file",
+    "optimizer": "exact prefix before first @unsafe declaration",
+    "prefix": "import Base",
+    "unsafeRemoved": false
+  },
+  "connection": {
+    "text": "case NxBin{op, left, right}: nx_fold_bin(op, nx_simplify(left), nx_simplify(right))",
+    "meaning": "source inspection only; recursive traversal is not proved"
+  },
+  "lawCount": 13,
+  "publicLawCount": 12,
+  "supportLawCount": 1,
+  "scope": "Safe literal-fold helper result; no recursive pass, emitter, ownership, machine-code or whole-compiler proof.",
+  "negativeProtocol": "First admit candidate.bend alone. Only then count unchanged-law expected/observed rejection as a semantic mutation detection. Syntax/resource failures do not count. Negative source-check rejection is not independent kernel rejection.",
+  "checker": "selfhost/tools/laws/phase98/check.py",
+  "outputRestriction": "Existing checker requires fresh output under selfhost/build/phase98/."
+}

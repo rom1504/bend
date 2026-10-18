@@ -1,6 +1,6 @@
 # P106-001: cheaper validated native research iterations
 
-2026-10-18. Status: preregistered; no Phase106 results yet.
+2026-10-18. Status: completed bounded experiment; no production promotion.
 
 [Design](../../design/phase106/native-ir-research-loop.md).
 
@@ -22,3 +22,14 @@ Current candidate04 and upstream pins remain read-only controls.
 Heavy target jobs are serial and resource-guarded; offline agents have disjoint
 implementation paths. The low-disk constraint is part of the recorded experiment.
 Final results and exact replay commands will be linked from the Phase106 report.
+
+## Outcome
+
+All five steps completed; [report](../../implementation/phase106/README.md).
+A native Bend producer drives both consumers, thirteen named laws pass independent
+checking, four admitted semantic mutants fail, and independent backend controls
+pass. Cranelift object generation is10–17× faster, but runtime quality differs.
+Fresh one-shot target-cost estimates are0.476×/0.504× C O2 on training/held-out
+families. Repeated-batch training regresses on new sizes; no universal policy or
+full-compiler backend is promoted. The measured loop exposes inlining and
+supervision costs as the next bounded opportunities.

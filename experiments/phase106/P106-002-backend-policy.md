@@ -40,3 +40,15 @@ reference counts fixed. It can expose avoidable ownership operations under that
 assumption. It is not a generic borrow analysis or a proof about Bend's runtime.
 
 Results will be linked from the [report](../../implementation/phase106/README.md).
+
+## Outcome and follow-up
+
+The frozen three-round matrix completed. At k=1 CL size narrowly wins training
+(0.965× C O2), and held-outs cost0.727×. At k=10/100 C O2 wins. A follow-up was
+declared before running it: freeze that k=1 winner and compare two new sizes per
+family in three shuffled rounds, including separate fresh one-shot processes.
+It confirms short-check savings but falsifies a general repeated-batch policy:
+new training sizes cost1.024× for build plus batch, held-outs0.767×. One-shot
+component-cost estimates are0.476×/0.504×. No held-out results reselect the winner.
+See [report/evidence](../../implementation/phase106/README.md) for all attempts,
+setup costs, conditional payback, interpretation and missing integration work.

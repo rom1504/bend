@@ -4831,3 +4831,26 @@ not repository line-count reduction or a new same-source fixed-point claim.
 Small-source public-interface medians are0.550s old and0.208s new with documented
 capture differences, not a new compiler-kernel or upstream comparison. No
 resource stop or PR comment; old supervised selection and JS release retained.
+
+
+## Phase106 native IR and bounded policy search — 2026-10-18
+
+[Design](../design/phase106/native-ir-research-loop.md) ·
+[Report](../implementation/phase106/README.md) ·
+[Experiment](phase106/P106-002-backend-policy.md).
+
+All five bounded steps complete, production default unchanged. Current native
+full-self profile142.160s, clean Clang self-image build375.644s. Destruction,
+shared-field ownership and string equality account for72.94% of leaf samples.
+Bend-written IR/verifier/folding/C/JSON emitters and a pinned Cranelift consumer
+execute memory/control/closure/loop workloads. Thirteen source-connected laws
+pass independent checking; four admitted semantic mutants fail;1992 native output
+observations and996 independent interpreter cases pass.
+
+Three-round backend search finds10–17× faster object generation but workload-
+dependent runtime regressions. New-size repeated-batch training cost1.024× C O2
+blocks a general policy; one-shot target-cost estimates0.476×/0.504× training/
+held-out support an explicit short-check mode in this slice. No full compiler
+backend integration, new upstream ratio, recursive acceleration or PR comment.
+Object inspection identifies missing small-function inlining and loop/code-shape
+opportunities. Capsule preserves raw receipts, products and rejected attempts.

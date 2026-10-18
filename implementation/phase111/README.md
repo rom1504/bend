@@ -1,199 +1,226 @@
-# Phase111: direct QBE compiler
+# Phase111: full direct QBE self-hosting
 
-Implementation in progress. [Design](../../design/phase111/direct-qbe-selfhost.md)
-and [experiment](../../experiments/phase111/P111-001-direct-qbe-selfhost.md).
+The compiler written in Bend now compiles its complete source directly through
+structured native IR and QBE, and the resulting native executable reproduces
+that compilation. Ordinary requests generate no C and invoke no cproc or Clang.
+A separately compiled, cached C runtime remains part of the executable.
 
-The new generic backend is written in Bend. It retains checked erasure,
-ownership placement, closures and the portable continuation trampoline, and
-emits QBE functions plus program data directly. The cached runtime object is
-built separately from retained runtime C. Ordinary program builds use QBE,
-assembler and linker; they do not emit C or invoke cproc.
+[Design](../../design/phase111/direct-qbe-selfhost.md) ·
+[Experiment](../../experiments/phase111/P111-001-direct-qbe-selfhost.md) ·
+[Usage](../../docs/self_hosted/direct-qbe.md).
 
-## Established so far
+**The direct route works, but is not a performance replacement yet.** Native
+self-emission takes **944.82 seconds (15m45s)**; building its QBE output takes
+**10.26 seconds**. The installed compiler, JavaScript release and existing
+C/cproc/QBE route remain unchanged. Successor focused qualification passes;
+the final 45-program corpus gate is running.
 
-- Exact 64-bit constants: 272 independent decimal cases, two exact textual
-  data checks, and compiled machine readback of words, bytes and relocations.
-- Generic lowerer and QBE emitter check together in about 3.5 seconds. The full
-  assembled compiler plus direct entry checks in about 8.5 seconds, below 1GiB
-  measured process-tree RSS on this machine. These are development API
-  acquisition observations, not native compilation benchmarks.
-- Cached runtime acquisition: about 1.3 seconds with GCC. Ten frozen runtime
-  cases pass, covering scalar/F32/array/representation behavior and expected
-  fail-stops. Sequential atomics are tested, not concurrent linearizability.
-- The structured verifier passes 53 named cases: 11 positive and 42 negative.
-  This checks types, identifiers, import signatures, control flow and bounded
-  accesses; it is not an ownership or whole-compiler proof.
-- Real checked-source closure/IO case emits QBE, links the runtime and prints
-  the exact independent result `captured=42`. A separate small structured
-  program returns and displays U32 `42` through the real runtime.
-- The complete first five-case checked-source gate passes in 16.74 seconds:
-  capturing closures, non-tail recursion, array aliasing/IO, U32 readback and
-  Unicode String readback. This includes emission, QBE, assembly, linking and
-  exact independent output checks for each case.
+## What is established
 
-The remaining focused cases found two integration faults: missing foreign
-providers were admitted until runtime, and native floating-point primitives
-were incorrectly included in the foreign-provider dependency list. Source05
-adds capability admission before lowering and applies the mature primitive-first
-classification. All four previously failing cases then pass (`repaired01`,
-13.12 seconds). Together with `fast01` and the passing cases in `focused01`,
-this covers all 19 focused cases across revisions; it is not a fresh 19-case
-run on the final source.
+The trusted checked development API acquires N1 from full-source05. N1 checks
+and compiles that exact source with the same authenticated Base/cache inputs:
 
-The complete native compiler image now builds directly from QBE and emits the
-closure fixture byte-for-byte identically to the checked development API. The
-installed compiler is unchanged. The complete native focused suite now passes:16positive programs and3expected
-refusals in97.10seconds, below91MB observed peak tree RSS. Native self-compilation,
-broad coverage, comparative speed and default promotion remain separate gates.
+```text
+Bend source → existing checked frontend/erasure → structured segments
+  → structural verifier → QBE/data → QBE → assembler → link cached runtime
+                                                       ↓
+                                                      N1
+                                                       ↓ same source
+                                                identical QBE/object
+                                                       ↓
+                                                      N2
+```
+
+N1 emits all **50,664,292 QBE bytes** identically to the development API.
+The generated assembly and complete object file also match exactly. N2 builds
+successfully and passes all 19 focused source cases: 16 positive executions
+and three expected refusals. The first six representative corpus cases pass;
+39 further cases remain in progress.
+
+Raw executable files are **not** byte-identical. GNU ld records the different
+input object path in a local file symbol, changing `.strtab`, `.symtab` and its
+build ID. The image audit confirms identical ELF/program headers, entry point,
+all four loadable segments and all 25 allocated sections after masking only the
+parsed 20-byte GNU build-ID descriptor. BSS sizes also match. This distinction
+is preserved in the raw-image check and separate
+[image audit](image-comparison.md); no metadata normalization is described as
+literal file equality. N2 self-emission is not redundantly rerun: the actual
+N1 self-emission and independently checked successor loaded-image agreement
+supply the bootstrap evidence, with N2 semantic checks recorded separately.
+
+Route-local **N1/N2** labels do not replace the established production **B1/B2**
+metrics. This is a real complete compiler source, not a scalar kernel, a hidden
+fallback through the old backend, or only hosted emission of a compiler.
 
 ## Architecture
 
-The [module list](../../selfhost/tools/performance/phase111/modules.txt) defines
-the order of the source components. [Source preparation](../../selfhost/tools/performance/phase111/prepare.py)
-authenticates the selected mature compiler and appends exact new modules after
-renaming its old entry. Its small-check mode selects unchanged declarations;
-the actual language checker validates every resulting reference. No host tool
-implements semantic lowering.
+The new compiler code is Bend: model, lowering, verifier, QBE formatter and
+entry total **1,688 lines**. The [module list](../../selfhost/tools/performance/phase111/modules.txt)
+and [lowering audit](segment-lowering-audit.md) identify the components.
+Preparation tools authenticate the selected mature source and compose exact
+modules; host scripts transport inputs, acquire checked APIs, supervise tools
+and preserve evidence. They do not implement semantic lowering.
 
-The structured model distinguishes U32, opaque 64-bit Terms and pointers.
-QBE constructs SSA from mutable temporaries, so a separate SSA builder and
-per-local stack slots are unnecessary. Function and constructor IDs use the
-existing indexed map. Metadata carries exact constants and relocations, with
-separate incoming continuation widths and segment output widths.
+Checked erasure, constructor identities, liveness, closure captures and
+continuation decisions are reused before C expressions are formatted.
+Structured values distinguish U32, opaque 64-bit Terms and pointers. Calls,
+loads, stores, offsets, constants and branches remain structured. QBE builds
+SSA from mutable temporaries, avoiding a separate SSA implementation.
+Function/constructor references use indexed identities rather than repeated
+whole-program linear scans. Data emission preserves exact 64-bit values,
+UTF-8 bytes and relocations.
 
-The runtime has a versioned 192-byte program descriptor, a 2088-byte state and
-fixed 256-word capacities. Actual program widths and metadata are validated.
-Program tables, constructor names, show descriptors and effect requirements
-come from QBE data. Existing allocator/reference-count/closure/array/effect
-semantics remain in the cached runtime. The first route is single-CPU and
-deliberately bypasses optional optimized worker and static-image planning.
+The portable continuation trampoline and reference-counted allocator remain.
+A versioned 192-byte descriptor supplies program tables, effects and readback
+metadata. The state is 2,088 bytes with 256 physical register slots. Runtime
+C/providers are compiled once with GCC and reused as an object; the GCC command
+on ordinary builds is a linker invocation. No per-program C translation unit
+or cproc stage remains in this route.
 
-Details: [lowering audit](segment-lowering-audit.md), [runtime audit](runtime-notes.md),
-[emitter](emitter-notes.md), [show descriptors](show-audit.md),
-[verifier](verify-audit.md), [coverage](coverage-notes.md).
+The admitted configuration is Linux x86-64/System V, **one CPU worker and GPU
+off**, with the fixed authenticated effect-provider catalogue. Parallel scaling,
+CUDA/Metal, arbitrary foreign providers and a general untrusted cache interface
+are outside this qualification. The generic route deliberately bypasses mature
+optimized workers and static-image planning; Phase110 ownership optimizations
+have not all been composed into it.
 
-## Findings and failures retained
+Details: [runtime](runtime-notes.md), [emitter](emitter-notes.md),
+[show descriptors](show-audit.md), [verifier](verify-audit.md),
+[coverage](coverage-notes.md).
 
-The incoming continuation result count cannot be replaced by a segment's
-output width. They coincide in some examples but drive different runtime
-operations; the model now preserves both.
+## Measurements and independent gates
 
-The retained closure dispatcher subtracted one from an unchecked arity. GCC
-warned that malformed metadata could underflow into an oversized register copy.
-Runtime-source03 guards closure FIDs, arities and copy widths while retaining
-the legitimate built-in IO closure. Source01/02 and their status remain frozen.
+| Observation | Result | Scope |
+| --- | ---: | --- |
+| Checked API full-source emission | 345.42 s | Hosted Bend compiler, not upstream compiler timing |
+| Full QBE → assembly → link | 10.26 s | 7.68 s QBE, 2.37 s assembler, 0.22 s linker |
+| Native complete self-emission | 944.82 s | Includes approximately 4.18 s of diagnostic pauses |
+| Native emission plus successor construction | 956.58 s guard wall | 1,999,306,752 bytes peak process-tree RSS |
+| Cached runtime acquisition | 1.28 s | Separate from ordinary builds |
+| Runtime-only compiler relink | 0.215 s | Reuses the authenticated full QBE object |
+| Successor focused suite | 19/19, 74.68 s | 16 semantic executions, three expected refusals |
+| Successor initial representatives | 6/6, 35.38 s | Frozen prior corpus outputs |
+| Runtime representation/primitive boundaries | 10/10 | Includes exact outputs and expected fail-stops |
+| Register-bank boundaries | 13/13 | Seven positive, six malformed-input cases |
+| Structural verifier controls | 53/53 | 11 positive, 42 negative; not ownership proofs |
 
-The small source checks caught an extra delimiter, module ordering and an old
-segment pattern after the model grew. Exact source slicing initially omitted
-law signatures used by inferred definitions; the slicer now keeps those
-unchanged signatures with their bodies. These are failed development checks,
-not successful semantic observations.
+Data-format checks also cover 272 independent U64 decimal cases, two text
+controls and actual native word/byte/relocation readback. Do not add these counts
+together into a claimed number of independent language features.
 
-Source review restored two mature scheduling conditions: bang references do
-not receive the eta-factory shortcut, and matcher application eagerly sequences
-extra arguments only under the original admission rule. General source/runtime
-qualification is still needed beyond these correspondences.
+The hosted full-source stage breakdown is preparation 1.37 s, frontend 138.78 s,
+lowering 148.25 s, verification 47.99 s, QBE emission 7.26 s and writing 0.73 s.
+Its peak process-tree RSS is 3,733,917,696 bytes. These are hosted stage clocks;
+no corresponding native per-stage timing is inferred from samples.
+
+The generated compiler contains 37,018 segments, maximum arity 26,
+incoming/output width one, 442 constructors and six required effects. Its QBE
+is 50,664,292 bytes, assembly 68,809,177 bytes and executable 15,731,104 bytes.
+
+## Findings that changed the implementation
+
+**Actual widths must remain distinct from capacities.** The first runtime
+cleared/copied all 256 register slots on transitions, although this compiler
+needs 26. Runtime04 binds `max(register_width,result_width,2)` and narrows
+scalar clearing and builtin INIT/READ/WRITE/SAVE/TAKE coherently. Physical
+arrays, state layout and heap/static offsets remain unchanged. High slots are
+transport storage, never scanned ownership roots. The
+[bank audit](../../selfhost/tools/performance/phase111/runtime/bank-audit.md)
+records the read paths and initializedness argument.
+
+The five-case runtime-only screen preserves every QBE byte and takes about
+15–18% less compiler-request time than earlier single observations. These are
+non-alternating finite comparisons, not a statistically established broad
+speed ratio. The 13 bank controls cover widths 2, 17, 255 and 256, captures,
+multiple results, unused high slots and malformed widths/closures. EXIT/SAVE
+and root readback are exercised; task-continuation EXIT/TAKE safety is source
+reviewed rather than claimed as executed coverage.
+
+**The native dispatcher hid the active compiler stage.** Ordinary native stack
+samples mostly saw transfer helpers. The image-specific continuation sampler
+recovered Bend frame identities without changing program code or data. Early
+samples show use-set traversal beneath the structured lowerer; later samples
+show IR verification. Pauses and transient frames are explicit, and these are
+qualitative clues, not unbiased CPU percentages. See
+[sampling interpretation](sampling-interpretation.md).
+
+**The new lowerer duplicates analysis that the mature one reuses.**
+`p111_bind_value` and `p111_let_cut` calculate a body use set and then call a
+helper that calculates it again. Empty environments also trigger needless
+analysis. The mature lowerer already supplies the reuse pattern. The
+[remaining-cost audit](remaining-costs.md) gives exact sites, a semantic
+argument and a small byte-equivalence/timing experiment. It remains a proposed
+optimization, not a gain counted in this report. Reuse reduces a coefficient;
+it does not by itself remove nested suffix scans' quadratic worst case.
+
+## Failed attempts and limits retained
+
+- The first full hosted emission hit its 300-second guard during lowering.
+  The same frozen request completed with a 900-second deadline and unchanged
+  4 GiB memory cap. The failed receipt remains.
+- The first full QBE build hit the old 64 MiB per-file limit while writing
+  assembly. The local guard now records a bounded 128 MiB limit and increased
+  disk admission floor; process-tree memory/deadline supervision is unchanged.
+- The first native self-request timed out after 1,100 seconds, with no output
+  or compiler diagnostic and 646,033,408-byte peak tree RSS. Runtime04 then
+  completed the unchanged source. No successful baseline time is invented.
+- Focused development found unavailable foreign providers admitted too late
+  and F32 primitives misclassified as foreign effects. Source05 fixes admission
+  and primitive-first classification; final native focused qualification passes.
+- Closure arity checks prevent underflow before capture copying. Continuation
+  incoming width remains separate from its output width.
+- Early module/slicing checks caught missing signatures, ordering and delimiter
+  faults. Failed checks are preserved separately from semantic observations.
+
+The structural verifier is not a proof of ownership, runtime correctness or
+whole-compiler semantics. Frozen corpus outputs are regression evidence, not
+fresh held-outs or exhaustive conformance. No new upstream compiled-program
+speed ratio or B1/B2 comparison is established, and no default is promoted.
+
+## Simplicity, unused experiments and next step
+
+A dependency slice reduces composed source from 1,879,953 to 650,720 bytes
+(65.4% less), keeping retained declaration bodies. It passes checked API
+acquisition but is not the source of this native bootstrap. Declaration order
+changes, so it needs separate native qualification. See
+[source slicing](source-slice-audit.md).
+
+An inactive 81-line streaming consumer is prepared to avoid retaining all QBE
+strings simultaneously. It is absent from module selection and remains
+unvalidated. Memory did not block the successful bootstrap, so no extra image
+acquisition was spent on that contingency.
+
+The highest-value next experiment is the small use-set reuse correction,
+measured on a captured checked request before another full image. Then integrate
+existing owning operations and specialized workers into this structured route.
+Changing machine backends again is not supported by the observed bottleneck.
+
+## Evidence and reproduction
+
+Build artifacts live under `selfhost/build/phase111/`. Important directories:
+`full-source05`, `full-api05`, `full-emission02`, `runtime-source04`,
+`full-native03`, `native-self02`, `successor-focused01`,
+`successor-representatives01`, `successor-remaining39`, `runtime-boundaries04`
+and `runtime-banks04`. Each receipt pins sources, tools and commands. The native
+self request's `image-comparison` directory records literal and loaded-image
+comparisons separately. Its earlier `fixed-point.json` is explicitly the failed
+additional raw-file equality check, not a failed QBE self-reproduction claim.
+
+The [usage guide](../../docs/self_hosted/direct-qbe.md) contains native commands,
+fast/focused/full45 gates, trusted-asset boundaries and full-build resource caps.
+The bounded evidence capsule is sealed after final qualification. It retains
+source/method snapshots, logs and failures; large machine products stay local
+with hashes. [Evidence format](evidence-sealing.md).
 
 Disk began below the guard floor. [Cleanup01](evidence/cleanup01.json) reclaims
-about 70MiB of independently authenticated archived generated outputs.
-[Cleanup02](evidence/cleanup02.json) losslessly compresses historical diagnostics
-and generated output, verifying every decompressed byte and recording restore
-paths; it reclaimed about 1.09GiB. Source, installed executables and historical
-result statuses are preserved.
+about 70 MiB of authenticated archived generated artifacts.
+[Cleanup02](evidence/cleanup02.json) losslessly compresses historical generated
+outputs and diagnostics, verifies decompressed hashes and records restore paths,
+reclaiming about 1.09 GiB. Sources and selected executables are preserved.
 
-## Current evidence locations
-
-All paths below are repository-relative local artifacts pending final sealing.
-Frozen inputs and commands are in each report/guard receipt.
-
-| Gate | Evidence |
-| --- | --- |
-| Exact data and native readback | `selfhost/build/phase111/data-controls01/`, `data-readback01-guard/` |
-| Combined lowerer/emitter checking | `selfhost/build/phase111/backend-api01/` |
-| Complete direct-entry source checking | `selfhost/build/phase111/full-source05/`, `full-api05/` |
-| Cached runtime and guarded revision | `selfhost/build/phase111/runtime-source01/`, `runtime-source03/` |
-| Ten runtime boundaries | `selfhost/build/phase111/runtime-boundaries01/` |
-| 53 structural controls | `selfhost/build/phase111/verify-controls01-guard/` |
-| Checked-source closure and IO | `selfhost/build/phase111/source-closure01/`, `closure-build01/` |
-| Real-runtime pure U32 return | `selfhost/build/phase111/pure42-build01/`, `pure42-execute01-guard/` |
-| Remaining focused cases and repairs | `selfhost/build/phase111/focused01/`, `repaired01/` |
-| Staged orchestration byte agreement | `selfhost/build/phase111/staged-closure01/` |
-| Five-case direct source gate | `selfhost/build/phase111/fast01/`, `fast01-guard/` |
-
-## Full acquisition attempts
-
-`full-emission01` checked the complete source: 4,955 definitions, 1,902 reached
-names. Preparation took 1.40 seconds and the Bend frontend took 142.71 seconds.
-The 300-second guard then stopped the process during generic lowering, at a
-3,526,885,376-byte observed peak tree RSS. This is a deadline failure, not a
-compiler diagnostic or successful full image. `full-emission02` retries the exact
-frozen inputs with a 900-second deadline and the unchanged 4GiB memory cap.
-Per-stage records distinguish checking, lowering, verification and QBE emission.
-
-The longer unchanged attempt succeeds in 345.42 seconds, with 3,733,917,696-byte
-peak process-tree RSS. It emits 50,664,292 bytes of QBE (SHA-256
-`143521cc2e747a1af741aa8e62bd16bb476b2221836322ee5bb023e0da4466b2`):
-37,018 segments, maximum arity26, incoming/output width1, 442constructors,
-maximum constructor arity10, six required effects. The 65,532-segment ABI bound
-is respected.
-
-| Checked Bend API stage | Seconds |
-| --- | ---: |
-| Prepared Base | 1.37 |
-| Frontend | 138.78 |
-| Generic lowering | 148.25 |
-| Structural IR verification | 47.99 |
-| QBE emission | 7.26 |
-| File write | 0.73 |
-
-The first QBE build (`full-native01`) reached the historical 64MiB file limit
-while writing assembly metadata, exiting with SIGXFSZ. It is preserved as a
-failed build. The Phase111 guard retains the shared lock, deadline and process
-memory supervisor, adds an explicit bounded file cap, and requires disk space
-for two such files plus160MiB. With a128MiB cap, `full-native02` succeeds:
-QBE7.68s, assembly2.37s, link0.22s, total build10.26s. The complete assembly is
-68,809,177bytes and executable15,731,056bytes. No per-program C/cproc is used.
-
-`native-closure01` then runs that compiler against the unchanged closure source
-in4.78s; its61,184-byte QBE output matches the independently acquired checked
-Bend API exactly, and its executable prints the frozen expected output. This
-establishes a real native source request, not yet native self-reproduction.
-The complete19-case native suite then passes in97.10seconds:16positive
-programs and3expected refusals. It runs the same frozen fixture/output contracts
-as the checked API, and reports crashes/timeouts separately from refusal.
-
-The [source dependency slice](source-slice-audit.md) cuts source size65.4% and
-definitions58.0%, preserving declaration bodies. `sliced-api01` successfully
-checks its full entry and acquires12exports in6.59s. Native qualification and
-self-reproduction of this smaller complete compiler remain separate.
-
-## Native self-request and bounded register transport
-
-`native-self01` reached its1,100-second deadline, with no output or compiler
-diagnostic, and646,033,408bytes peak process-tree RSS. It remains a failed
-self-hosting attempt. The request received a short live sampling intervention,
-so its wall time is not an uninstrumented benchmark. `perf` was unavailable
-(the installed wrapper lacked its matching binary). A read-only ptrace sampler
-found13of24RIP snapshots in `p111_set_regs`,4in closure application and2in
-ownership-use helpers. Fixed sampling is qualitative; heuristic frame-pointer
-walks and out-of-image addresses cannot supply reliable call-stack attribution.
-
-Source audit identified a concrete cost: every segment transition cleared256
-register slots although this complete compiler requires26. Runtime-source04
-keeps physical capacities, state/descriptor sizes and `STAT_OFF` unchanged, but
-clears/copies only `max(register_width,result_width,2)` words. Builtin
-INIT/READ/WRITE/SAVE/TAKE are narrowed coherently, and transfer bounds remain
-checked. See [the bank audit](../../selfhost/tools/performance/phase111/runtime/bank-audit.md).
-
-Runtime04 builds in1.28seconds; the original ten boundary cases pass. Reusing
-the authenticated full QBE object, `full-native03` relinks in0.215seconds.
-`native-fast04` then passes all five cases in20.91seconds, and every complete
-QBE output equals its earlier native-focused01 counterpart. Their individual
-compiler request times are0.821–0.855× the earlier single observations
-(about15–18%less). These are finite, non-alternating observations, not a broad
-or statistically established performance ratio.
-
-`native-self02` is compiling the unchanged full-source05 with runtime04.
-Complete QBE-byte comparison and successor construction remain pending.
-The broader semantic corpus follows this gate. Production defaults remain
-unchanged; no new upstream speed ratio is established.
+Root owns the serial CPU3 target lane. Agents prepared/reviewed disjoint source,
+runtime, emitter, verifier, coverage and evidence tools without competing target
+runs. Reusing the full object isolated the runtime change without repeating the
+345-second acquisition. The failed 18-minute native attempt is the main avoidable
+cost: future large runs should expose stage progress or sample early, then use
+small analysis-heavy requests before committing to a long bootstrap.

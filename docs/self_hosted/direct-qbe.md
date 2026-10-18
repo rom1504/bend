@@ -7,12 +7,13 @@ The retained runtime is still written in C and is compiled once per cache
 identity. Initial checked development APIs are acquired with the pinned
 TypeScript compiler.
 
-**Status: experimental, not the installed default.** Checked-source execution
-and structural controls have passed finite gates; complete direct native image
-acquisition and a byte-exact native fixture request have succeeded. Native
-self-compilation, broad conformance and comparative speed remain separate gates. Read the [Phase111 report](../../implementation/phase111/README.md)
-for the latest completed gates and failures. The installed
-[`selfhost/bend` CLI](NATIVE_CLI.md), JavaScript release and
+**Status: direct native self-hosting established; experimental, not the installed
+default.** The native compiler reproduces its complete50.7MBQBE module exactly
+and builds its successor. Code/data identity and focused successor semantics
+pass; see the [Phase111 report](../../implementation/phase111/README.md) for
+completed corpus gates and retained failures. Native self-emission currently
+takes15m45s, so this is a capability milestone, not a compiler-speed win. The
+installed [`selfhost/bend` CLI](NATIVE_CLI.md), JavaScript release and
 [Phase108 cproc/QBE route](QBE_COMPILER.md) remain available.
 
 ## Architecture and language boundaries
@@ -110,7 +111,7 @@ python3 -B selfhost/tools/performance/phase86/guard.py \
 
 `full-api05/api.mjs` is a recorded checked development API, with its source and
 bootstrap hashes in the adjacent `report.json`. The following five-case loop
-uses that API and the separately acquired `runtime-source03/runtime.o`:
+uses that API and the separately acquired `runtime-source04/runtime.o`:
 
 ```sh
 python3 -B selfhost/tools/performance/phase86/guard.py \
@@ -118,7 +119,7 @@ python3 -B selfhost/tools/performance/phase86/guard.py \
   --seconds 120 --rss-mib 2048 --available-mib 4096 --cpu 3 -- \
   python3 -B selfhost/tools/performance/phase111/coverage/run.py \
     --api selfhost/build/phase111/full-api05/api.mjs \
-    --runtime selfhost/build/phase111/runtime-source03/runtime.o \
+    --runtime selfhost/build/phase111/runtime-source04/runtime.o \
     --out selfhost/build/phase111/user-fast01 --mode cache
 ```
 
@@ -159,23 +160,23 @@ headers and a manifest, and records the exact GCC command for acquiring
 Reuse the resulting object only for its matching ABI/provider identity; runtime
 acquisition time is a separate clock from ordinary program construction.
 
-A Phase111 native image, once acquired and qualified, can use the supervised
+The qualified successor image can use the supervised
 [native emission tool](../../selfhost/tools/performance/phase111/native-emit.py).
-For example, substitute the actual acquired image path in this command:
+The following uses the recorded Phase111 successor:
 
 ```sh
 python3 -B selfhost/tools/performance/phase86/guard.py \
   --out selfhost/build/phase111/user-native01-guard \
   --seconds 360 --rss-mib 4096 --available-mib 16384 --cpu 3 -- \
   python3 -B selfhost/tools/performance/phase111/native-emit.py \
-    --image selfhost/build/phase111/ACQUIRED_IMAGE/program \
+    --image selfhost/build/phase111/native-self02/build/program \
     --source selfhost/tools/performance/phase111/coverage/fixtures/higher-order-capture.bend \
     --out selfhost/build/phase111/user-native01 --mode cache \
-    --runtime selfhost/build/phase111/runtime-source03/runtime.o
+    --runtime selfhost/build/phase111/runtime-source04/runtime.o
 ```
 
-`ACQUIRED_IMAGE` is a placeholder, not a claim that a qualified image exists at
-that path. The wrapper authenticates selected Base/cache assets, retains raw
+That path is a local acquisition artifact; restore or reproduce it in a fresh
+checkout. The wrapper authenticates selected Base/cache assets, retains raw
 QBE output and can build it with the supplied cached runtime. Add
 `--reference API_EMIT_DIRECTORY` for exact comparison with a saved hosted
 emission, or `--expected EXPECTED_FILE` to execute the generated program and
@@ -228,3 +229,23 @@ memory settings for full acquisition. See the report for exact retained commands
 Route-local labels N1/N2 mean the first direct-native compiler (acquired by the
 checked JavaScript-hosted Bend API) and its native-built successor. They do not
 replace the existing B1/B2 or upstream speed measurements.
+
+## Qualified native replay
+
+The source is `full-source05/compiler.bend`; N1 is `full-native03/program`
+and N2 is `native-self02/build/program`, under `selfhost/build/phase111/`.
+Both use the cached `runtime-source04/runtime.o`. The report links exact source,
+QBE, assembly, object, runtime and executable identities. Complete QBE/assembly/
+object bytes agree; raw executables differ in linker file-symbol metadata and
+build ID. Their loaded images agree except for the20-byte build-ID descriptor.
+
+A whole compiler build requires Phase111's128MiB file cap. Runtime-only changes
+can reuse an authenticated QBE object with `relink.py --build BUILD_DIRECTORY
+--runtime NEW_RUNTIME_OBJECT --out FRESH_DIRECTORY`, under the usual guard.
+This saves image reacquisition and QBE work; it does not skip semantic gates.
+
+Use `coverage/native-run.py --suite fast` for five focused source cases and
+`--suite focused` for all19. Each accepts `--image`, `--runtime` and a fresh
+`--out`. The [full45 adapter](../../selfhost/tools/performance/phase111/coverage/full45/README.md)
+provides disjoint six-case and39-case corpus partitions. These are correctness
+replays with finite observations, not repeated performance benchmarks.

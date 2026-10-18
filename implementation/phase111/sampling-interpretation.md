@@ -39,3 +39,26 @@ binary, rechecks inputs and records link-only status. This supports a narrow
 runtime experiment without repeating QBE translation. It does not itself prove
 the new runtime ABI or logical behavior equivalent; runtime source review and
 unchanged semantic observations remain separate gates.
+
+The optional [`sample-continuations.py`](../../selfhost/tools/performance/phase111/sample-continuations.py)
+is a separate source-prepared diagnostic for the exact `full-native03/program`
+SHA `284797e08ea6c754e6f0a8508e3f2d3bc18b18722ba27616229fee7403897872`.
+It obtains the indirect dispatcher return address from `objdump` and checks it
+against the reviewed image-specific layout: state starts eight bytes above
+that return slot and occupies 2088 bytes. It scans at most 64 KiB of the mapped
+native stack, requires one state with matching heap/allocator globals and
+valid sequential state/descriptor metadata, then follows at most 64 logical
+frames. Each frame skips one FID word plus `arity - incoming` captured words;
+the captured words are never recorded. Runtime FIDs, invalid frames, unreadable
+memory, pending transitions and ambiguous states stop recovery explicitly.
+
+The raw segment symbol and FID remain available. Generated names have the exact
+`$p111.k.<decimal>` form from `p111_name`; their owner label is inferred from the
+preceding ordinary definition or direct entry in the descriptor's segment
+order, as emitted by `p111_compile_step` and `p111_entry_join`. This is a stage
+label, not proof of a dynamic caller. A stop during frame push/pop or a
+continuation prelude can expose a transient stack even after these checks.
+The tool records maps, method, image/source identities and pause durations;
+it records no terms, captures or raw memory dumps. It uses only ptrace attach,
+GETREGS and detach, with `/proc/PID/mem` opened read-only. Preparation was checked
+with Python AST parsing; no live sampling was executed by this reviewer.

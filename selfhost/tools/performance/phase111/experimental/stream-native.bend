@@ -3,20 +3,23 @@
 @unsafe
 def p111s_print_data(tables: List<&2,P111QData>) -> IO(U32):
   match tables:
-    case Nil{}: do IO<U32>:
-      Unit <- IO.print(p111q_main())
-      IO.pure(U32,0)
-    case Con{head,rest}: do IO<U32>:
-      Unit <- IO.print(p111q_data(head))
-      p111s_print_data(rest)
+    case Nil{}:
+      do IO<U32>:
+        Unit <- IO.print(p111q_main())
+        IO.pure(U32,0)
+    case Con{head,rest}:
+      do IO<U32>:
+        Unit <- IO.print(p111q_data(head))
+        p111s_print_data(rest)
 
 @unsafe
 def p111s_print_segments(segments: List<&2,N111Segment>, +ids: N111Ids, tables: List<&2,P111QData>) -> IO(U32):
   match segments:
     case Nil{}: p111s_print_data(tables)
-    case Con{head,rest}: do IO<U32>:
-      Unit <- IO.print(p111q_segment(head,ids))
-      p111s_print_segments(rest,ids,tables)
+    case Con{head,rest}:
+      do IO<U32>:
+        Unit <- IO.print(p111q_segment(head,ids))
+        p111s_print_segments(rest,ids,tables)
 
 # Affine program ownership matters: the print continuation must not retain the
 # outer program or already emitted bodies. Detached tables contain no bodies.

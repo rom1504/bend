@@ -65,12 +65,27 @@ gcc -O2 -std=gnu11 -ffp-contract=off \
 python3 selfhost/tools/performance/phase111/runtime/check-boundaries.py \
   --runtime selfhost/build/phase111/runtime-source04/runtime.o \
   --out selfhost/build/phase111/runtime-boundaries04
+python3 selfhost/tools/performance/phase111/runtime/check-banks.py \
+  --runtime selfhost/build/phase111/runtime-source04/runtime.o \
+  --out selfhost/build/phase111/runtime-banks04
 ```
 
 Source04 already exists; the materializer refuses an existing destination.
 Reproduction requires another fresh destination. The original ten boundary
 recipes stay frozen. `bank-controls.c`, `bank-expected.json` and `check-banks.py`
-provide the separate focused transport gate when source preparation is complete.
+provide a separate frozen 13-case transport gate. This covers widths 2, 17, 255
+and 256, direct and captured arguments, built-in IO application, multiple incoming
+results, every word of a 256-result root, and six malformed metadata/API cases.
+Unused state slots carry sentinels as an explicit representation diagnostic.
+EXIT/SAVE/root readback is exercised; the retained task-continuation EXIT/TAKE
+path is source-reviewed, not claimed covered by these sequential fixtures.
 Then relink the exact previously qualified QBE object against runtime04 and
 compare its outputs before collecting a matched timing. No Bend module or QBE
 body needs rebuilding to isolate this runtime ablation.
+
+The coordinator's `runtime-boundaries04/report.json` records all ten original
+boundary cases passing. Offline inspection of runtime04.o confirms the old
+constant-256 inline `rep stos` clear became a logical-width check and scaled
+`memset` tail call. The law reviewer independently found no high-slot
+initializedness discrepancy. These observations do not replace the focused gate
+or matched compiler execution.

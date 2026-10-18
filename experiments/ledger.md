@@ -4,6 +4,27 @@ This ledger records decisions and links evidence; it does not replace the report
 Read [workflow](README.md) and [current strategy](STEERING.md) before a new investigation.
 User objective: make the Bend compiler written in Bend and its validation loop much faster while preserving correctness. Historical authorization windows are recorded below; current release status and priorities are in [STEERING.md](STEERING.md).
 
+## Phase111 direct QBE native self-hosting — 2026-10-18
+
+[Design](../design/phase111/direct-qbe-selfhost.md) ·
+[P111-001](phase111/P111-001-direct-qbe-selfhost.md) ·
+[Report](../implementation/phase111/README.md).
+
+Full source now compiles through Bend structured segments directly to QBE.
+Native N1 self-emission reproduces50,664,292QBEbytes, assembly and object exactly
+and builds N2. Executables differ in linker file-symbol path/buildID metadata;
+load images match except the parsed20-byte buildID. Successor19focused cases
+and six initial corpus cases pass; final corpus state is in the report.
+
+Native emission944.82s (instrumented), build10.26s, wholeguard956.58s, peak1.999GB.
+A runtime-only26-word transport width replaces256-word work while preserving
+physicalABI; five same-QBE request observations use15–18%less time. Ten runtime
+and13bank controls pass.53structural verifier controls are not ownership proofs.
+Failed300s acquisition,64MiB assembly limit and1,100s native deadline are retained.
+No production promotion or newupstream/B1/B2/compiled-program ratio. Next: exact
+use-set reuse already present in the mature lowerer, measured before reacquiring
+an image. Full report separates implemented, qualified and inactive work.
+
 ## Phase110 ownership runtime IR, laws and closed calls — 2026-10-18
 
 [Design](../design/phase110/ownership-laws-and-search.md) ·

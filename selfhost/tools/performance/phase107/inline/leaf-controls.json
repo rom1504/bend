@@ -1,0 +1,540 @@
+{
+  "version": 1,
+  "description": "Independent U32 full-result expectations frozen before checking the new leaf API; explicit valid memory lifetimes.",
+  "budgets": [
+    0,
+    1,
+    32,
+    4096
+  ],
+  "cases": [
+    {
+      "fixture": "leaf_alias",
+      "args": [
+        0,
+        0
+      ],
+      "expected": 0
+    },
+    {
+      "fixture": "leaf_alias",
+      "args": [
+        1,
+        7
+      ],
+      "expected": 233
+    },
+    {
+      "fixture": "leaf_alias",
+      "args": [
+        2,
+        3
+      ],
+      "expected": 103
+    },
+    {
+      "fixture": "leaf_alias",
+      "args": [
+        4,
+        3
+      ],
+      "expected": 99
+    },
+    {
+      "fixture": "leaf_alias",
+      "args": [
+        17,
+        23
+      ],
+      "expected": 793
+    },
+    {
+      "fixture": "leaf_alias",
+      "args": [
+        2147483648,
+        1
+      ],
+      "expected": 33
+    },
+    {
+      "fixture": "leaf_alias",
+      "args": [
+        4294967295,
+        4294967295
+      ],
+      "expected": 33
+    },
+    {
+      "fixture": "leaf_alias",
+      "args": [
+        65537,
+        7
+      ],
+      "expected": 233
+    },
+    {
+      "fixture": "leaf_distinct",
+      "args": [
+        0,
+        0
+      ],
+      "expected": 1
+    },
+    {
+      "fixture": "leaf_distinct",
+      "args": [
+        1,
+        7
+      ],
+      "expected": 238
+    },
+    {
+      "fixture": "leaf_distinct",
+      "args": [
+        2,
+        3
+      ],
+      "expected": 101
+    },
+    {
+      "fixture": "leaf_distinct",
+      "args": [
+        4,
+        3
+      ],
+      "expected": 99
+    },
+    {
+      "fixture": "leaf_distinct",
+      "args": [
+        17,
+        23
+      ],
+      "expected": 798
+    },
+    {
+      "fixture": "leaf_distinct",
+      "args": [
+        2147483648,
+        1
+      ],
+      "expected": 2147483683
+    },
+    {
+      "fixture": "leaf_distinct",
+      "args": [
+        4294967295,
+        4294967295
+      ],
+      "expected": 32
+    },
+    {
+      "fixture": "leaf_distinct",
+      "args": [
+        65537,
+        7
+      ],
+      "expected": 65774
+    },
+    {
+      "fixture": "leaf_return_pointer",
+      "args": [
+        0,
+        0
+      ],
+      "expected": 0
+    },
+    {
+      "fixture": "leaf_return_pointer",
+      "args": [
+        1,
+        7
+      ],
+      "expected": 8
+    },
+    {
+      "fixture": "leaf_return_pointer",
+      "args": [
+        2,
+        3
+      ],
+      "expected": 5
+    },
+    {
+      "fixture": "leaf_return_pointer",
+      "args": [
+        4,
+        3
+      ],
+      "expected": 7
+    },
+    {
+      "fixture": "leaf_return_pointer",
+      "args": [
+        17,
+        23
+      ],
+      "expected": 40
+    },
+    {
+      "fixture": "leaf_return_pointer",
+      "args": [
+        2147483648,
+        1
+      ],
+      "expected": 2147483649
+    },
+    {
+      "fixture": "leaf_return_pointer",
+      "args": [
+        4294967295,
+        4294967295
+      ],
+      "expected": 4294967294
+    },
+    {
+      "fixture": "leaf_return_pointer",
+      "args": [
+        65537,
+        7
+      ],
+      "expected": 65544
+    },
+    {
+      "fixture": "leaf_store_pointer",
+      "args": [
+        0,
+        0
+      ],
+      "expected": 0
+    },
+    {
+      "fixture": "leaf_store_pointer",
+      "args": [
+        1,
+        7
+      ],
+      "expected": 6
+    },
+    {
+      "fixture": "leaf_store_pointer",
+      "args": [
+        2,
+        3
+      ],
+      "expected": 1
+    },
+    {
+      "fixture": "leaf_store_pointer",
+      "args": [
+        4,
+        3
+      ],
+      "expected": 7
+    },
+    {
+      "fixture": "leaf_store_pointer",
+      "args": [
+        17,
+        23
+      ],
+      "expected": 6
+    },
+    {
+      "fixture": "leaf_store_pointer",
+      "args": [
+        2147483648,
+        1
+      ],
+      "expected": 2147483649
+    },
+    {
+      "fixture": "leaf_store_pointer",
+      "args": [
+        4294967295,
+        4294967295
+      ],
+      "expected": 0
+    },
+    {
+      "fixture": "leaf_store_pointer",
+      "args": [
+        65537,
+        7
+      ],
+      "expected": 65542
+    },
+    {
+      "fixture": "leaf_alloc_free",
+      "args": [
+        0,
+        0
+      ],
+      "expected": 0
+    },
+    {
+      "fixture": "leaf_alloc_free",
+      "args": [
+        1,
+        7
+      ],
+      "expected": 10
+    },
+    {
+      "fixture": "leaf_alloc_free",
+      "args": [
+        2,
+        3
+      ],
+      "expected": 9
+    },
+    {
+      "fixture": "leaf_alloc_free",
+      "args": [
+        4,
+        3
+      ],
+      "expected": 15
+    },
+    {
+      "fixture": "leaf_alloc_free",
+      "args": [
+        17,
+        23
+      ],
+      "expected": 74
+    },
+    {
+      "fixture": "leaf_alloc_free",
+      "args": [
+        2147483648,
+        1
+      ],
+      "expected": 2147483649
+    },
+    {
+      "fixture": "leaf_alloc_free",
+      "args": [
+        4294967295,
+        4294967295
+      ],
+      "expected": 4294967292
+    },
+    {
+      "fixture": "leaf_alloc_free",
+      "args": [
+        65537,
+        7
+      ],
+      "expected": 196618
+    },
+    {
+      "fixture": "leaf_alloc_return",
+      "args": [
+        0,
+        0
+      ],
+      "expected": 0
+    },
+    {
+      "fixture": "leaf_alloc_return",
+      "args": [
+        1,
+        7
+      ],
+      "expected": 8
+    },
+    {
+      "fixture": "leaf_alloc_return",
+      "args": [
+        2,
+        3
+      ],
+      "expected": 5
+    },
+    {
+      "fixture": "leaf_alloc_return",
+      "args": [
+        4,
+        3
+      ],
+      "expected": 7
+    },
+    {
+      "fixture": "leaf_alloc_return",
+      "args": [
+        17,
+        23
+      ],
+      "expected": 40
+    },
+    {
+      "fixture": "leaf_alloc_return",
+      "args": [
+        2147483648,
+        1
+      ],
+      "expected": 2147483649
+    },
+    {
+      "fixture": "leaf_alloc_return",
+      "args": [
+        4294967295,
+        4294967295
+      ],
+      "expected": 4294967294
+    },
+    {
+      "fixture": "leaf_alloc_return",
+      "args": [
+        65537,
+        7
+      ],
+      "expected": 65544
+    },
+    {
+      "fixture": "leaf_reset",
+      "args": [
+        0,
+        0
+      ],
+      "expected": 0
+    },
+    {
+      "fixture": "leaf_reset",
+      "args": [
+        1,
+        7
+      ],
+      "expected": 7
+    },
+    {
+      "fixture": "leaf_reset",
+      "args": [
+        2,
+        3
+      ],
+      "expected": 10
+    },
+    {
+      "fixture": "leaf_reset",
+      "args": [
+        4,
+        3
+      ],
+      "expected": 20
+    },
+    {
+      "fixture": "leaf_reset",
+      "args": [
+        17,
+        23
+      ],
+      "expected": 263
+    },
+    {
+      "fixture": "leaf_reset",
+      "args": [
+        2147483648,
+        1
+      ],
+      "expected": 0
+    },
+    {
+      "fixture": "leaf_reset",
+      "args": [
+        4294967295,
+        4294967295
+      ],
+      "expected": 196601
+    },
+    {
+      "fixture": "leaf_reset",
+      "args": [
+        65537,
+        7
+      ],
+      "expected": 7
+    },
+    {
+      "fixture": "leaf_branch",
+      "args": [
+        0,
+        0
+      ],
+      "expected": 1
+    },
+    {
+      "fixture": "leaf_branch",
+      "args": [
+        1,
+        7
+      ],
+      "expected": 7
+    },
+    {
+      "fixture": "leaf_branch",
+      "args": [
+        2,
+        3
+      ],
+      "expected": 4
+    },
+    {
+      "fixture": "leaf_branch",
+      "args": [
+        4,
+        3
+      ],
+      "expected": 4
+    },
+    {
+      "fixture": "leaf_branch",
+      "args": [
+        17,
+        23
+      ],
+      "expected": 23
+    },
+    {
+      "fixture": "leaf_branch",
+      "args": [
+        2147483648,
+        1
+      ],
+      "expected": 2
+    },
+    {
+      "fixture": "leaf_branch",
+      "args": [
+        4294967295,
+        4294967295
+      ],
+      "expected": 4294967295
+    },
+    {
+      "fixture": "leaf_branch",
+      "args": [
+        65537,
+        7
+      ],
+      "expected": 7
+    }
+  ],
+  "refusals": [
+    "cycle",
+    "tail_existingloop",
+    "tail_nontail",
+    "tail_dead"
+  ],
+  "controls": [
+    "All original definitions remain byte-identical under the old scalar APIs against the previous frozen producer.",
+    "Zero/insufficient budget and invalid inputs preserve the graph exactly.",
+    "Global counted AST growth is at most clamped budget; result verifies.",
+    "Pure pointer arithmetic arguments are snapshotted before a callee mutates its renamed parameter.",
+    "Retained allocation/free and load/store order is unchanged; no ownership operation is removed.",
+    "For leaf_alias n=7 seed=11, moving the aliased load before the store changes expected373 to369.",
+    "For leaf_reset n=4 seed=3, omitting per-call pointer-local reset changes expected20 to24.",
+    "Native outputs compare complete values; allocation failures and undefined pointer programs are outside the finite witness scope."
+  ]
+}

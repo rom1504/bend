@@ -13,6 +13,10 @@ def nx_i_expr(+expr: NxExpr, +prefix: String) -> NxExpr:
     case NxVar{name}: NxVar{nx_i_name(prefix, name)}
     case NxBin{op, a, b}: NxBin{op, nx_i_expr(a, prefix), nx_i_expr(b, prefix)}
     case NxCall{name, args}: NxCall{name, nx_i_args(args, prefix)}
+    case NxAlloc{bytes}: NxAlloc{nx_i_expr(bytes, prefix)}
+    case NxLoad{typ, ptr, offset}: NxLoad{typ, nx_i_expr(ptr, prefix), offset}
+    case NxOffset{ptr, bytes}: NxOffset{nx_i_expr(ptr, prefix), nx_i_expr(bytes, prefix)}
+    case NxICall{callee, args, params, result}: NxICall{nx_i_expr(callee, prefix), nx_i_args(args, prefix), params, result}
     case _: expr
 
 @unsafe
@@ -30,6 +34,10 @@ def nx_i_rename(+body: List<&2, NxStmt>, +prefix: String, +destination: String) 
     case Con{NxReturn{value}, Nil{}}: [NxSet{destination, nx_i_expr(value, prefix)}]
     case Con{NxIf{condition, yes, no}, rest}:
       Con{NxIf{nx_i_expr(condition, prefix), nx_i_rename(yes, prefix, destination), nx_i_rename(no, prefix, destination)}, nx_i_rename(rest, prefix, destination)}
+    case Con{NxStore{typ, ptr, offset, value}, rest}:
+      Con{NxStore{typ, nx_i_expr(ptr, prefix), offset, nx_i_expr(value, prefix)}, nx_i_rename(rest, prefix, destination)}
+    case Con{NxFree{ptr}, rest}:
+      Con{NxFree{nx_i_expr(ptr, prefix)}, nx_i_rename(rest, prefix, destination)}
     case _: body
 
 # Arguments remain in the caller environment. Bind in source order, once each;

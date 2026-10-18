@@ -113,3 +113,15 @@ recursive cycle must never execute. The unreachable recursive cycle must disappe
 Output bodies, root retention, closure of all call/address references, original
 order and idempotence are independent structural gates; finite native comparisons
 remain necessary. The pass has no formal semantic proof or memory-safety claim.
+
+`leaf.bend` adds the separate `nx_inline_leaf(program,budget)` policy. Append it
+after `entry.bend`; `leaf-fixtures.bend` exposes `nx_l_fixture(name)` and
+`leaf-controls.json` freezes64 full-result inputs. Verified call-free, loop-free
+helpers may use typed pointers, root loads/allocation, stores/free and pointer
+results while retaining the same bounded terminal-control grammar. The shared
+renamer covers these memory forms; the old scalar eligibility rules do not change.
+This is effect-preserving substitution of a function body, not a purity or borrow
+analysis. Every argument is snapshotted and every local reset per call. All memory
+effects remain ordered; the pass does not delete reference-count operations.
+See the separate [implementation note](../../../../../implementation/phase107/effectful-inlining.md)
+and P107-003 for pending admission, compatibility and runtime gates.

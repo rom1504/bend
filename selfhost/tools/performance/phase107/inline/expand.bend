@@ -56,8 +56,9 @@ def nx_i_call(+original: NxStmt, +name: String, +args: List<&2, NxExpr>, +params
           u => nx_i_found(original, nx_find(name, fs), args, params, fs, state, depth),
           u => nx_i_keep(original, state)))
 
-# None preserves the original four-level admission algorithm. Some is a bounded
-# original-program acyclicity certificate, never derived from expanded bodies.
+# None preserves original four-level pure admission. Some is an independently
+# established eligibility set (acyclic pure graph or call-free effectful leaf),
+# never inferred from partially expanded bodies.
 @unsafe
 def nx_i_allowed(+name: String, +fs: List<&2, NxFunction>, +eligible: Maybe<&2, List<&2, String>>) -> Bool:
   match eligible:

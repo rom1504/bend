@@ -52,7 +52,7 @@ bodies, and does not duplicate the transformation engine. The128-function `many`
 chain is a useful distinction between these analysis policies; it is not a promise
 to eliminate all128 call boundaries under the fixed expansion/growth budget.
 
-`nx_tail(program)` recognizes self-tail recurrence through terminal assignments
+`nx_tail_optimize(program)` recognizes self-tail recurrence through terminal assignments
 and merge-local conditionals. It snapshots every new argument, resets original
 locals, updates parameters, and repeats a `while(1)` body. Ordinary returns still
 exit the function; a typed-zero return after the infinite loop satisfies the

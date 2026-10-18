@@ -30,7 +30,7 @@ chains without expanding them without limit. The original `nx_inline` policy is
 retained as the comparison. The accepted bridge05 source snapshot predates this
 extension, so the extended implementation needs its own checked acquisition.
 
-The additional `nx_tail` pass targets actual lowered scalar recurrence. It folds
+The additional `nx_tail_optimize` pass targets actual lowered scalar recurrence. It folds
 terminal assignment/return aliases and distributes a final return into return-free
 conditional branches, exposing self-tail calls hidden behind merge locals. Every
 tail call becomes argument snapshots, original-local resets and simultaneous
@@ -68,6 +68,14 @@ The first integrated checked API acquisition passed in
 151MB peak tree RSS. This is source/API admission, not a whole-pass proof or a
 performance measurement of optimized output. Earlier inference failures are
 retained; explicit types on constructor-valued local bindings fixed them.
+
+The complete baseline/deep/tail API then passed
+[`bridge-check08/process.json`](../../selfhost/build/phase107/bridge-check08/process.json):
+16 checked exports,1.697s guarded wall, approximately167MB tree RSS. The preceding
+bridge07 failure exposed a name collision with Phase106's `nx_tail()` workload;
+the new pass is explicitly named `nx_tail_optimize`. A static scan now checks all
+206 assembled Phase106/107 helper definitions for duplicates. No historical
+workload implementation was changed to resolve the collision.
 
 Root owns backend differential execution and timing. The58 frozen fixture rows,
 negative controls and continuation laws are prepared; their execution status is

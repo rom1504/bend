@@ -121,5 +121,5 @@ def nx_t_program_done(+original: NxProgram, +candidate: NxProgram) -> NxProgram:
   nx_choose(NxProgram, U32.is_le(nx_inline_nodes(candidate), U32.add(nx_inline_nodes(original), 4096)), u => candidate, u => original)
 
 @unsafe
-def nx_tail(+program: NxProgram) -> NxProgram:
+def nx_tail_optimize(+program: NxProgram) -> NxProgram:
   nx_choose(NxProgram, nx_verify(program), u => nx_t_program(program), u => program)

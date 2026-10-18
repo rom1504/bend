@@ -50,6 +50,18 @@ It checks structure and types, not pointer lifetime, allocation bounds,
 alignment, indirect-target signature agreement or ownership. Fixtures establish
 those remaining obligations by construction; arbitrary untrusted IR is unsupported.
 
+The current C emitter uses typed pointer dereferences. Its memory accesses also
+need C effective-type/aliasing rules; arbitrary overlapping U32/U64 accesses are
+not a valid strict-aliasing C oracle for the interpreter's byte-addressed memory.
+Phase107 mixed-width memory controls therefore use explicit
+`-fno-strict-aliasing` for the C consumer and compare independent interpreter,
+QBE and Cranelift results. That flag does not remove alignment obligations or
+make these experiments portable to arbitrary targets. A future C emitter should
+use `memcpy` for byte-memory loads/stores before claiming that broader contract;
+this is a known boundary, not an implemented change. See the official
+[Clang aliasing guidance](https://clang.llvm.org/docs/UsersManual.html#strict-aliasing)
+and the [Phase107 static review](../../../../../implementation/phase107/memory-review.md).
+
 ## Current compiler connection
 
 The text workload contains an exact algorithm slice of

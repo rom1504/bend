@@ -62,6 +62,11 @@ an admitted scalar subset without Bun or Clang on ordinary requests. Its
 [Phase107 report](implementation/phase107/README.md) separates complete compilation
 latency, generated-program speed, object reuse and the remaining self-hosting boundary.
 
+The [full compiler QBE compatibility path](docs/self_hosted/QBE_COMPILER.md)
+reuses Bend’s mature semantic backend through cproc and a portable native
+trampoline. Its [Phase108 report](implementation/phase108/README.md) records
+full-image, output-equivalence and bootstrap gates separately from performance.
+
 The [native IR research prototype](docs/self_hosted/NATIVE_IR_RESEARCH.md) now
 implements a small Bend IR with C and Cranelift consumers, checked folding laws,
 and a reproducible policy experiment. Its [report and diagrams](implementation/phase106/README.md)

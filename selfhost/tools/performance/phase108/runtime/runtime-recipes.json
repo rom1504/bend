@@ -1,0 +1,111 @@
+{
+  "kind": "phase108-portable-runtime-exact-edits",
+  "version": 1,
+  "base": {
+    "bytes": 83683,
+    "sha256": "9e1c59078878be94052cb4d2d63a713e19e29b41ed3f94b034f2175a50efd0a9"
+  },
+  "scope": "Host build-source preparation only. Exact unique blocks; no compiler or generated segment-body algorithm.",
+  "variants": {
+    "v1": {
+      "parent": "base",
+      "output": {
+        "bytes": 85595,
+        "sha256": "d56fe7a06086aa23cd8154698d81df14732bed517adadf9a164e02c4a22dff43"
+      },
+      "description": "Portable scheduler with original scalar register argument ABI plus state pointer; includes BEND_CPROC standard allocator alignment.",
+      "edits": [
+        {
+          "name": "block-1",
+          "old": "#else\n#define DEV\n// only clang 19+ has both, and only it compiles preserve_most soundly\n#if __has_attribute(preserve_none) && __has_attribute(preserve_most) \\\n  && defined(__OPTIMIZE__)\n#define PRESERVE(A) __attribute__((A))\n#else\n",
+          "new": "#else\n#define DEV\n// only clang 19+ has both, and only it compiles preserve_most soundly\n#if !WL_PORTABLE && __has_attribute(preserve_none) && __has_attribute(preserve_most) \\\n  && defined(__OPTIMIZE__)\n#define PRESERVE(A) __attribute__((A))\n#else\n"
+        },
+        {
+          "name": "block-2",
+          "old": "#else\n#define LOCK(l)    while (__atomic_exchange_n(&(l), 1, __ATOMIC_ACQUIRE)) {}\n#define UNLOCK(l)  __atomic_store_n(&(l), 0, __ATOMIC_RELEASE)\n#define WL_FN      static PRESERVE(preserve_none) __attribute__((noinline)) Reply\n#define WL_CASE(F) WL_FN WL_##F(WL_SIG)\n#define WL_OPEN    { WL_BANK u32 rn;\n#define WL_JMP(F)  __attribute__((musttail)) return WL_##F(WL_ALL)\n#define WL_DYN(F)  __attribute__((musttail)) return wl_tab[F](WL_ALL)\n#endif\n#define WL_SPIN     for (;;) { if (err_spun(e.mem, &wpoll)) { return 0; }\n#define WL_SPUN     } break;\n",
+          "new": "#else\n#define LOCK(l)    while (__atomic_exchange_n(&(l), 1, __ATOMIC_ACQUIRE)) {}\n#define UNLOCK(l)  __atomic_store_n(&(l), 0, __ATOMIC_RELEASE)\n#if WL_PORTABLE\n// Segment transitions return to one invocation-local dispatcher. Ordinary\n// segment returns keep their original scheduler Reply meaning.\n#define WL_FN      static __attribute__((noinline)) Reply\n#define WL_CASE(F) WL_FN WL_##F(WL_SIG, WlState* wl)\n#define WL_OPEN    { WL_BANK u32 rn = 0; WL_INIT_BANK\n#define WL_JMP(F)  do { \\\n  wl->e = e; wl->sp = sp; wl->seq = seq; wl->rn = rn; \\\n  WL_WRITE_STATE(wl->regs) \\\n  wl->next = (F); return 0; \\\n} while (0)\n#define WL_DYN(F) WL_JMP(F)\n#else\n#define WL_FN      static PRESERVE(preserve_none) __attribute__((noinline)) Reply\n#define WL_CASE(F) WL_FN WL_##F(WL_SIG)\n#define WL_OPEN    { WL_BANK u32 rn;\n#define WL_JMP(F)  __attribute__((musttail)) return WL_##F(WL_ALL)\n#define WL_DYN(F)  __attribute__((musttail)) return wl_tab[F](WL_ALL)\n#endif\n#endif\n#define WL_SPIN     for (;;) { if (err_spun(e.mem, &wpoll)) { return 0; }\n#define WL_SPUN     } break;\n"
+        },
+        {
+          "name": "block-3",
+          "old": "typedef pthread_mutex_t lock;\n\nstatic Corpus CORPUS;\nstatic u64    ALC[CUBE_T + 1][3 * ALC_WORDS] __attribute__((aligned(128)));\nstatic u32    KEEP_WORDS;\n// the bag: 2^CUBE_LOG groups of CUBE_T lanes (a -D constant on the device)\nstatic u32    CUBE_LOG = 7;\n",
+          "new": "typedef pthread_mutex_t lock;\n\nstatic Corpus CORPUS;\n#if BEND_CPROC\n_Alignas(128) static u64 ALC[CUBE_T + 1][3 * ALC_WORDS];\n#else\nstatic u64    ALC[CUBE_T + 1][3 * ALC_WORDS] __attribute__((aligned(128)));\n#endif\nstatic u32    KEEP_WORDS;\n// the bag: 2^CUBE_LOG groups of CUBE_T lanes (a -D constant on the device)\nstatic u32    CUBE_LOG = 7;\n"
+        },
+        {
+          "name": "block-4",
+          "old": "\n// Tables\n// ======\n\n#define TAB_AT(T, S, I) T[S < I ? S : I]\n\n",
+          "new": "\n// Tables\n// ======\n\n#if WL_PORTABLE && !DEVICE\n#ifndef WL_WIDTH\n#error WL_PORTABLE requires Bend-generated register transport metadata\n#endif\n// No pointers to this frame escape work_loop. Stale register words are copied\n// as transport only; they are not roots and acquire no ownership obligations.\ntypedef struct {\n  Env e;\n  Stk sp;\n  u32 seq;\n  u32 rn;\n  u32 next;\n  Term regs[WL_WIDTH];\n} WlState;\n#define WL_STOP (~(u32)0)\n#endif\n\n#define TAB_AT(T, S, I) T[S < I ? S : I]\n\n"
+        },
+        {
+          "name": "block-5",
+          "old": "#undef  WL_AGAIN\n#define WL_SPIN\n#define WL_SPUN\n#define WL_AGAIN(F) __attribute__((musttail)) return WL_##F(WL_ALL)\n\ntypedef Reply (PRESERVE(preserve_none) *WlFn)(WL_SIG);\n#define WL_X(F) WL_FN WL_##F(WL_SIG);\nWL_TABLE WL_X(FID_ENTER)\n#undef WL_X\n#define WL_X(F) WL_##F,\nstatic const WlFn wl_tab[] = { WL_TABLE };\n#undef WL_X\n#if FID_ENTER >= 4096\n// Keep the shared dispatch table out of each segment's LLVM reference graph.\nFAR PRESERVE(preserve_most) WlFn wl_target(Fid id) { return wl_tab[id]; }\n#undef WL_DYN\n",
+          "new": "#undef  WL_AGAIN\n#define WL_SPIN\n#define WL_SPUN\n#if WL_PORTABLE\n#define WL_AGAIN(F) WL_JMP(F)\ntypedef Reply (*WlFn)(WL_SIG, WlState* wl);\n#define WL_X(F) WL_FN WL_##F(WL_SIG, WlState* wl);\n#else\n#define WL_AGAIN(F) __attribute__((musttail)) return WL_##F(WL_ALL)\n\ntypedef Reply (PRESERVE(preserve_none) *WlFn)(WL_SIG);\n#define WL_X(F) WL_FN WL_##F(WL_SIG);\n#endif\nWL_TABLE WL_X(FID_ENTER)\n#undef WL_X\n#define WL_X(F) WL_##F,\nstatic const WlFn wl_tab[] = { WL_TABLE };\n#undef WL_X\n#if FID_ENTER >= 4096 && !WL_PORTABLE\n// Keep the shared dispatch table out of each segment's LLVM reference graph.\nFAR PRESERVE(preserve_most) WlFn wl_target(Fid id) { return wl_tab[id]; }\n#undef WL_DYN\n"
+        },
+        {
+          "name": "block-6",
+          "old": "static Reply work_loop(Env e, Stk sp, Term t, bool seq) {\n  WL_BANK\n  u32 rn = 0;\n  r0 = t;\n#if DEVICE\n  Fid fid   = FID_ENTER;\n",
+          "new": "static Reply work_loop(Env e, Stk sp, Term t, bool seq) {\n  WL_BANK\n  u32 rn = 0;\n#if WL_PORTABLE && !DEVICE\n  WL_INIT_BANK\n  WlState state = {0};\n  state.e = e;\n  state.sp = sp;\n  state.seq = seq;\n  state.next = FID_ENTER;\n  state.regs[0] = t;\n  for (;;) {\n    Fid next = state.next;\n    state.next = WL_STOP;\n    e = state.e;\n    sp = state.sp;\n    seq = state.seq;\n    rn = state.rn;\n    WL_READ_STATE(state.regs)\n    // The historical WL_TABLE deliberately excludes FID_ENTER.\n    if (next != FID_ENTER && next >= sizeof(wl_tab) / sizeof(wl_tab[0])) {\n      err_post(e.mem, ERR_FIDS);\n      return 0;\n    }\n    WlFn run = next == FID_ENTER ? WL_FID_ENTER : wl_tab[next];\n    Reply reply = run(WL_ALL, &state);\n    if (state.next == WL_STOP) {\n      return reply;\n    }\n  }\n}\n#else\n  r0 = t;\n#if DEVICE\n  Fid fid   = FID_ENTER;\n"
+        },
+        {
+          "name": "block-7",
+          "old": "#else\n  return WL_FID_ENTER(WL_ALL);\n}\n#endif\n\n// Segments\n",
+          "new": "#else\n  return WL_FID_ENTER(WL_ALL);\n}\n#endif\n#endif\n\n// Segments\n"
+        }
+      ]
+    },
+    "v2": {
+      "parent": "v1",
+      "output": {
+        "bytes": 85696,
+        "sha256": "17cece2e0cf301472cb7f9b131337ebaa2cb0eb870f67af73566c8cb6c29eec3"
+      },
+      "description": "Portable scheduler passing only state pointer; preserves incoming captures before resetting outgoing register bank.",
+      "edits": [
+        {
+          "name": "block-1",
+          "old": "// Segment transitions return to one invocation-local dispatcher. Ordinary\n// segment returns keep their original scheduler Reply meaning.\n#define WL_FN      static __attribute__((noinline)) Reply\n#define WL_CASE(F) WL_FN WL_##F(WL_SIG, WlState* wl)\n#define WL_OPEN    { WL_BANK u32 rn = 0; WL_INIT_BANK\n#define WL_JMP(F)  do { \\\n  wl->e = e; wl->sp = sp; wl->seq = seq; wl->rn = rn; \\\n  WL_WRITE_STATE(wl->regs) \\\n",
+          "new": "// Segment transitions return to one invocation-local dispatcher. Ordinary\n// segment returns keep their original scheduler Reply meaning.\n#define WL_FN      static __attribute__((noinline)) Reply\n// WL_CASE opens the function; the emitted block captures incoming arguments\n// before WL_OPEN resets the same local register bank for outgoing values.\n#define WL_CASE(F) WL_FN WL_##F(WlState* wl) { \\\n  Env e = wl->e; Stk sp = wl->sp; u32 seq = wl->seq; u32 rn = wl->rn; \\\n  WL_BANK WL_READ_STATE(wl->regs)\n#define WL_OPEN    rn = 0; WL_INIT_BANK\n#define WL_JMP(F)  do { \\\n  wl->e = e; wl->sp = sp; wl->seq = seq; wl->rn = rn; \\\n  WL_WRITE_STATE(wl->regs) \\\n"
+        },
+        {
+          "name": "block-2",
+          "old": "#define WL_SPUN\n#if WL_PORTABLE\n#define WL_AGAIN(F) WL_JMP(F)\ntypedef Reply (*WlFn)(WL_SIG, WlState* wl);\n#define WL_X(F) WL_FN WL_##F(WL_SIG, WlState* wl);\n#else\n#define WL_AGAIN(F) __attribute__((musttail)) return WL_##F(WL_ALL)\n\n",
+          "new": "#define WL_SPUN\n#if WL_PORTABLE\n#define WL_AGAIN(F) WL_JMP(F)\ntypedef Reply (*WlFn)(WlState* wl);\n#define WL_X(F) WL_FN WL_##F(WlState* wl);\n#else\n#define WL_AGAIN(F) __attribute__((musttail)) return WL_##F(WL_ALL)\n\n"
+        },
+        {
+          "name": "block-3",
+          "old": "#endif\n\nstatic Reply work_loop(Env e, Stk sp, Term t, bool seq) {\n  WL_BANK\n  u32 rn = 0;\n#if WL_PORTABLE && !DEVICE\n  WL_INIT_BANK\n  WlState state = {0};\n  state.e = e;\n  state.sp = sp;\n",
+          "new": "#endif\n\nstatic Reply work_loop(Env e, Stk sp, Term t, bool seq) {\n#if WL_PORTABLE && !DEVICE\n  WlState state = {0};\n  state.e = e;\n  state.sp = sp;\n"
+        },
+        {
+          "name": "block-4",
+          "old": "  for (;;) {\n    Fid next = state.next;\n    state.next = WL_STOP;\n    e = state.e;\n    sp = state.sp;\n    seq = state.seq;\n    rn = state.rn;\n    WL_READ_STATE(state.regs)\n    // The historical WL_TABLE deliberately excludes FID_ENTER.\n    if (next != FID_ENTER && next >= sizeof(wl_tab) / sizeof(wl_tab[0])) {\n      err_post(e.mem, ERR_FIDS);\n      return 0;\n    }\n    WlFn run = next == FID_ENTER ? WL_FID_ENTER : wl_tab[next];\n    Reply reply = run(WL_ALL, &state);\n    if (state.next == WL_STOP) {\n      return reply;\n    }\n  }\n}\n#else\n  r0 = t;\n#if DEVICE\n  Fid fid   = FID_ENTER;\n",
+          "new": "  for (;;) {\n    Fid next = state.next;\n    state.next = WL_STOP;\n    // The historical WL_TABLE deliberately excludes FID_ENTER.\n    if (next != FID_ENTER && next >= sizeof(wl_tab) / sizeof(wl_tab[0])) {\n      err_post(state.e.mem, ERR_FIDS);\n      return 0;\n    }\n    WlFn run = next == FID_ENTER ? WL_FID_ENTER : wl_tab[next];\n    Reply reply = run(&state);\n    if (state.next == WL_STOP) {\n      return reply;\n    }\n  }\n}\n#else\n  WL_BANK\n  u32 rn = 0;\n  r0 = t;\n#if DEVICE\n  Fid fid   = FID_ENTER;\n"
+        }
+      ]
+    },
+    "v3": {
+      "parent": "v2",
+      "output": {
+        "bytes": 86187,
+        "sha256": "bffb4258ac362a338b18bb7a6ece1c816a46e6f3112a3cb594d65ae79cdde0dc"
+      },
+      "description": "Five typed single-evaluation scalar accessor macros for cproc/QBE.",
+      "edits": [
+        {
+          "name": "scalar-block-0",
+          "old": "  return term_buf(cls, loc) | ((u64)arr << 57);\n}\n\nINLINE u64 term_tag(Term t) {\n  return (t >> 56) & 0x7f;\n}\n",
+          "new": "  return term_buf(cls, loc) | ((u64)arr << 57);\n}\n\n#if BEND_CPROC\n// cproc/QBE has no C inliner. These pure extracts evaluate their argument once,\n// including the original parameter conversion, and retain exact result types.\n#define term_tag(t) ((u64)(((Term)(t) >> 56) & 0x7f))\n#define term_rfc(t) ((bool)(((Term)(t) & RFC_BIT) != 0))\n#define term_aux(t) ((u64)(((Term)(t) >> 40) & 0xFFFF))\n#define term_loc(t) ((Loc)((Term)(t) & LOC_MASK))\n#else\nINLINE u64 term_tag(Term t) {\n  return (t >> 56) & 0x7f;\n}\n"
+        },
+        {
+          "name": "scalar-block-1",
+          "old": "INLINE Loc term_loc(Term t) {\n  return t & LOC_MASK;\n}\n\n// A static node (below the heap) is trivial, as is a captureless closure.\nINLINE bool term_triv(Term t) {\n",
+          "new": "INLINE Loc term_loc(Term t) {\n  return t & LOC_MASK;\n}\n#endif\n\n// A static node (below the heap) is trivial, as is a captureless closure.\nINLINE bool term_triv(Term t) {\n"
+        },
+        {
+          "name": "scalar-block-2",
+          "old": "  return term_loc(t);\n}\n\nINLINE Cls blk_cls(Term t) {\n  return (u32)term_aux(t) & 31;\n}\n\n#define buf_wcls(c) ((c) == 0 ? 0 : (c) - 1)\n\n",
+          "new": "  return term_loc(t);\n}\n\n#if BEND_CPROC\n#define blk_cls(t) ((Cls)((u32)term_aux((Term)(t)) & 31))\n#else\nINLINE Cls blk_cls(Term t) {\n  return (u32)term_aux(t) & 31;\n}\n#endif\n\n#define buf_wcls(c) ((c) == 0 ? 0 : (c) - 1)\n\n"
+        }
+      ]
+    }
+  }
+}

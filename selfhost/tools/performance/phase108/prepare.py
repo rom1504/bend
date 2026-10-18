@@ -76,7 +76,8 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--out', type=Path, required=True)
     parser.add_argument('--selection', type=Path, default=N.DEFAULT)
-    parser.add_argument('--runtime', type=Path, default=HERE / 'runtime/runtime.c')
+    parser.add_argument('--runtime', type=Path)
+    parser.add_argument('--variant', choices=['v1','v2','v3'], default='v3')
     args = parser.parse_args()
     out = args.out.resolve()
     require(out.is_relative_to(ROOT / 'selfhost/build/phase108') and not out.exists(),
@@ -87,6 +88,20 @@ def main():
             'selected source changed; review the scoped declaration replacement')
     source_pin = N.verify(release['source'])
     tables_pin = N.pin(ROOT / 'selfhost/src/back/native/tables.bend')
+    runtime_recipe_inputs = []
+    if args.runtime is None:
+        recipe_path = HERE / 'runtime/runtime-recipes.json'
+        mspec = importlib.util.spec_from_file_location('runtime_materialize', HERE / 'runtime/materialize.py')
+        materializer = importlib.util.module_from_spec(mspec); mspec.loader.exec_module(materializer)
+        raw, edits = materializer.apply_variant(Path(release['assets']['runtime']['file']).read_bytes(), args.variant, json.loads(recipe_path.read_text()))
+        cache = ROOT / 'selfhost/build/phase108/runtime-cache' / materializer.OUTPUTS[args.variant]['sha256']
+        cache.mkdir(parents=True, exist_ok=True)
+        path = cache / 'runtime.c'
+        if path.exists(): require(path.read_bytes() == raw, 'changed materialized runtime cache')
+        else:
+            with path.open('xb') as f: f.write(raw)
+        args.runtime = path
+        runtime_recipe_inputs = [N.pin(recipe_path), N.pin(HERE / 'runtime/materialize.py'), release['assets']['runtime']]
     runtime_pin = N.pin(args.runtime)
     source = Path(source_pin['file']).read_text()
     tables = Path(tables_pin['file']).read_text()
@@ -150,7 +165,7 @@ def main():
         portableFixtureEmission=request_args(binary, assets,
             HERE / 'coverage/fixtures/higher-order-capture.bend', out / 'runtime.c', out / 'fixture-portable'))
     inputs = [N.pin(__file__), N.pin(LAUNCH_PATH), binding['selection'], binding['admission'],
-              source_pin, tables_pin, runtime_pin, build_pin, clang, release['stages']['b2']['binary'],
+              source_pin, tables_pin, runtime_pin, *runtime_recipe_inputs, build_pin, clang, release['stages']['b2']['binary'],
               assets['base'], assets['runtime'], assets['template'], *assets['parts'],
               assets['cache']['carrier'], *assets['effects']]
     for record in inputs:

@@ -1,0 +1,32 @@
+{
+  "kind": "phase108-pure-runtime-accessor-macros",
+  "version": 3,
+  "baseRuntimeSha256": "17cece2e0cf301472cb7f9b131337ebaa2cb0eb870f67af73566c8cb6c29eec3",
+  "candidateRuntimeSha256": "bffb4258ac362a338b18bb7a6ece1c816a46e6f3112a3cb594d65ae79cdde0dc",
+  "addedLines": 13,
+  "removedLines": 0,
+  "accessors": [
+    "term_tag",
+    "term_rfc",
+    "term_aux",
+    "term_loc",
+    "blk_cls"
+  ],
+  "changes": [
+    {
+      "old": "  return term_buf(cls, loc) | ((u64)arr << 57);\n}\n\nINLINE u64 term_tag(Term t) {\n  return (t >> 56) & 0x7f;\n}\n",
+      "new": "  return term_buf(cls, loc) | ((u64)arr << 57);\n}\n\n#if BEND_CPROC\n// cproc/QBE has no C inliner. These pure extracts evaluate their argument once,\n// including the original parameter conversion, and retain exact result types.\n#define term_tag(t) ((u64)(((Term)(t) >> 56) & 0x7f))\n#define term_rfc(t) ((bool)(((Term)(t) & RFC_BIT) != 0))\n#define term_aux(t) ((u64)(((Term)(t) >> 40) & 0xFFFF))\n#define term_loc(t) ((Loc)((Term)(t) & LOC_MASK))\n#else\nINLINE u64 term_tag(Term t) {\n  return (t >> 56) & 0x7f;\n}\n"
+    },
+    {
+      "old": "INLINE Loc term_loc(Term t) {\n  return t & LOC_MASK;\n}\n\n// A static node (below the heap) is trivial, as is a captureless closure.\nINLINE bool term_triv(Term t) {\n",
+      "new": "INLINE Loc term_loc(Term t) {\n  return t & LOC_MASK;\n}\n#endif\n\n// A static node (below the heap) is trivial, as is a captureless closure.\nINLINE bool term_triv(Term t) {\n"
+    },
+    {
+      "old": "  return term_loc(t);\n}\n\nINLINE Cls blk_cls(Term t) {\n  return (u32)term_aux(t) & 31;\n}\n\n#define buf_wcls(c) ((c) == 0 ? 0 : (c) - 1)\n\n",
+      "new": "  return term_loc(t);\n}\n\n#if BEND_CPROC\n#define blk_cls(t) ((Cls)((u32)term_aux((Term)(t)) & 31))\n#else\nINLINE Cls blk_cls(Term t) {\n  return (u32)term_aux(t) & 31;\n}\n#endif\n\n#define buf_wcls(c) ((c) == 0 ? 0 : (c) - 1)\n\n"
+    }
+  ],
+  "ownershipChanged": false,
+  "atomicChanged": false,
+  "targetExecution": false
+}

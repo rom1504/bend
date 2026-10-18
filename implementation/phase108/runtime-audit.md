@@ -78,6 +78,61 @@ The runtime template must first have been supplied to Bend emission and portable
 mode must be enabled for the C build. This bridge does not replace the runtime
 inside an already-generated image. No target execution evidence is claimed here.
 
+### Pointer-only segment candidate
+
+`runtime/runtime-v2.c` changes only portable transport: every segment accepts
+one `WlState*`, and the dispatcher calls it directly without first reconstructing
+the old wide C argument list. `WL_CASE` now opens the function and loads the
+incoming register bank. The existing emitted block captures arguments before
+`WL_OPEN` resets the bank, and the existing two closing braces still balance.
+The four builtin segments likewise save their inputs/results before the reset.
+All scheduler returns, next-FID discrimination, ownership operations and explicit
+stack updates retain their v1 behavior. Legacy mode is unchanged.
+
+This removes one layer of lexical nesting around the generated body. A separate
+source audit of the frozen full compiler counted 21,183 segment definitions and
+53,000 captured arguments including conditional scalar declarations, finding no
+captured-name redeclarations anywhere in their bodies or collisions with the
+register/environment names. That establishes
+the required scope condition for this compiler image; it is not a proof for
+arbitrary manually injected segment text.
+
+The candidate changes 12 lines and removes 14 relative to v1, with no Bend
+emitter or generated segment-body changes. Its exact patch and four authenticated
+replacement blocks are `runtime-v1-to-v2.patch` and
+`runtime-v1-to-v2-replacements.json`. Source-only replay against
+`selfhost/build/phase108/full-emit01/portable.c` matches each block once and
+predicts 30,395,885 output bytes, SHA-256
+`a20a95f1a12d7e556b6dfb17ae795318af6250c249c224437c99aec254aef06b`.
+The candidate runtime itself hashes to
+`17cece2e0cf301472cb7f9b131337ebaa2cb0eb870f67af73566c8cb6c29eec3`.
+No target build or execution was performed by this source task for v2.
+
+### Pure accessor candidate
+
+`runtime/runtime-v3.c` starts from v2 and adds 13 conditional lines for
+`term_tag`, `term_rfc`, `term_aux`, `term_loc`, and `blk_cls`. Under `BEND_CPROC`,
+these pure extractions are function-like macros because this toolchain does not
+inline the retained C helper functions. Each macro evaluates its argument once,
+casts it to the original `Term` parameter type, and casts the result to the
+original `u64`, `bool`, `Loc`, or `Cls` return type. The original functions remain
+unchanged in the other branch. Ownership, allocation, reference counts, atomics
+and scheduler transitions are untouched.
+
+No other helper was converted: notably `term_triv`, `blk_span`, and `cls_fit`
+use their parameters more than once or have branching semantics. The frozen
+compiler and its effects use the five selected accessors only in call syntax,
+with no address-taking or other function-value use. Arbitrary external C taking
+their addresses is outside this macro candidate's admission.
+
+The runtime hashes to
+`bffb4258ac362a338b18bb7a6ece1c816a46e6f3112a3cb594d65ae79cdde0dc`.
+`runtime-v2-to-v3.patch` and `runtime-v2-to-v3-replacements.json` retain the exact
+delta. Source-only replay of its three hunks after the v2 delta produces
+30,396,376 bytes, SHA-256
+`24b697abc934fe6c006b7f6e1964cb2bd6249a2eb3b249dac4f30f5a5252fe48`.
+No target build or execution was performed by this source task for v3.
+
 ## Concrete full compiler scope
 
 The retained Phase103 compiler image at

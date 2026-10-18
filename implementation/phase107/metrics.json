@@ -2,10 +2,10 @@
   "schema": "phase107-metrics-v1",
   "method": {
     "file": "selfhost/tools/performance/phase107/summarize.py",
-    "bytes": 18144,
-    "sha256": "d725bad17c71965223876a38714080e80a74b74700e5c17c67f5b62853d7c650"
+    "bytes": 22763,
+    "sha256": "26cd58b017fa3d4e53433fd903dc6217f0361495e0ce93e59a9c87660a6f4394"
   },
-  "latestBackendScreen": "measure07",
+  "latestBackendScreen": "measure08",
   "backendScreens": {
     "measure02": {
       "provenance": {
@@ -11216,6 +11216,2248 @@
         "qbe": 1.1696067117289553
       },
       "scope": "Checked repeated generated-program process runtime; median per case. Baseline is the same workload in raw experimental IR emitted through C/Clang O2, NOT upstream Bend. Budget 4096 denotes this receipt's pipeline, which changes across screens. Build observations are single measurements, separate from the repeated runtime samples. Equal-case geometric mean is descriptive of this fixed small corpus, not representative language-wide parity."
+    },
+    "measure08": {
+      "provenance": {
+        "report": {
+          "file": "selfhost/build/phase107/measure08/report.json",
+          "bytes": 653446,
+          "sha256": "e3766443e875cdf5fcbb4d34b262f436c2cecf10f8f4e9acaaacac667742e2da"
+        },
+        "kind": "phase107-paired-backend-screen",
+        "complete": true,
+        "passed": null,
+        "wallSeconds": 29.766271591186523,
+        "inputPinsAsRecorded": [
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase107/measure.py",
+            "bytes": 5573,
+            "sha256": "7fb398fb140c5ebf614eb1141698e498f384cc9c44577d88a1899ef177f8a86f"
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase107/artifacts-strength01/report.json",
+            "bytes": 13190,
+            "sha256": "b23ffec091dc4778ddf108c02bcf0f4207d28c4fac94654efa99401a55711610"
+          },
+          {
+            "file": "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+            "bytes": 119320,
+            "sha256": "9fcd5fc4baeea9c449bcc9ca4b9db7714465107669498b0056a853f22f5f4def"
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase107/toolchain/qbe-1.3/qbe",
+            "bytes": 666680,
+            "sha256": "7ffc47abad9c0bdd6bcc81427ae666a5fb52e9376070aebe51023e01f2d6ab91"
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase106/cargo-target/release/bend-native-ir-cranelift",
+            "bytes": 5018232,
+            "sha256": "85a88e05efca16675e576da95de213069d3ca1bcaf64e60430d0634b69698568"
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase106/cranelift/runner.c",
+            "bytes": 2117,
+            "sha256": "383106694cd1b9837dd59f8da9972f76a0f469df688caa42028d87b801a48fe5"
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase106/reference.py",
+            "bytes": 8305,
+            "sha256": "870bfa9769e0c32e301fa7340e7c1726de014dabede27c6908c61b848f517f05"
+          }
+        ],
+        "scope": null,
+        "clockScope": null,
+        "artifactReport": {
+          "file": "selfhost/build/phase107/artifacts-strength01/report.json",
+          "bytes": 13190,
+          "sha256": "b23ffec091dc4778ddf108c02bcf0f4207d28c4fac94654efa99401a55711610"
+        },
+        "pipeline": "strength",
+        "optimizer": "nx_inline_demand",
+        "api": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase107/bridge19/api.mjs",
+          "sha256": "10958e538198098ab7fff529ea02b7cccecd5ac07f04069829f86911f7d4b6e4"
+        }
+      },
+      "samples": [
+        {
+          "name": "ir-closure",
+          "variants": {
+            "0-c": {
+              "samplesSeconds": [
+                0.019795933971181512,
+                0.019903881009668112,
+                0.01865813205949962
+              ],
+              "medianSeconds": 0.019795933971181512,
+              "minSeconds": 0.01865813205949962,
+              "maxSeconds": 0.019903881009668112,
+              "count": 3,
+              "args": [
+                100000,
+                31
+              ],
+              "repeat": 100,
+              "expected": 2368128000,
+              "buildObservation": {
+                "name": "ir-closure",
+                "budget": 0,
+                "backend": "c",
+                "objectSeconds": 0.038086337968707085,
+                "linkSeconds": 0.01616229908540845,
+                "objectBytes": 1784,
+                "binaryBytes": 17240
+              },
+              "ratioToRawClang": 1.0
+            },
+            "0-cl": {
+              "samplesSeconds": [
+                0.03379443194717169,
+                0.03379167104139924,
+                0.031792230904102325
+              ],
+              "medianSeconds": 0.03379167104139924,
+              "minSeconds": 0.031792230904102325,
+              "maxSeconds": 0.03379443194717169,
+              "count": 3,
+              "args": [
+                100000,
+                31
+              ],
+              "repeat": 100,
+              "expected": 2368128000,
+              "buildObservation": {
+                "name": "ir-closure",
+                "budget": 0,
+                "backend": "cl",
+                "objectSeconds": 0.0042187420185655355,
+                "linkSeconds": 0.016033153049647808,
+                "objectBytes": 1456,
+                "binaryBytes": 17160
+              },
+              "ratioToRawClang": 1.7070005936871893
+            },
+            "0-qbe": {
+              "samplesSeconds": [
+                0.01845183502882719,
+                0.021778741851449013,
+                0.018811657093465328
+              ],
+              "medianSeconds": 0.018811657093465328,
+              "minSeconds": 0.01845183502882719,
+              "maxSeconds": 0.021778741851449013,
+              "count": 3,
+              "args": [
+                100000,
+                31
+              ],
+              "repeat": 100,
+              "expected": 2368128000,
+              "buildObservation": {
+                "name": "ir-closure",
+                "budget": 0,
+                "backend": "qbe",
+                "objectSeconds": 0.010043481132015586,
+                "linkSeconds": 0.016159198014065623,
+                "objectBytes": 1520,
+                "binaryBytes": 17280
+              },
+              "ratioToRawClang": 0.950278836090832
+            },
+            "4096-c": {
+              "samplesSeconds": [
+                0.020501301158219576,
+                0.018778264056891203,
+                0.018769106827676296
+              ],
+              "medianSeconds": 0.018778264056891203,
+              "minSeconds": 0.018769106827676296,
+              "maxSeconds": 0.020501301158219576,
+              "count": 3,
+              "args": [
+                100000,
+                31
+              ],
+              "repeat": 100,
+              "expected": 2368128000,
+              "buildObservation": {
+                "name": "ir-closure",
+                "budget": 4096,
+                "backend": "c",
+                "objectSeconds": 0.039393459213897586,
+                "linkSeconds": 0.01612275093793869,
+                "objectBytes": 1784,
+                "binaryBytes": 17248
+              },
+              "ratioToRawClang": 0.9485919726863198
+            },
+            "4096-cl": {
+              "samplesSeconds": [
+                0.029520629905164242,
+                0.030062922043725848,
+                0.029255660017952323
+              ],
+              "medianSeconds": 0.029520629905164242,
+              "minSeconds": 0.029255660017952323,
+              "maxSeconds": 0.030062922043725848,
+              "count": 3,
+              "args": [
+                100000,
+                31
+              ],
+              "repeat": 100,
+              "expected": 2368128000,
+              "buildObservation": {
+                "name": "ir-closure",
+                "budget": 4096,
+                "backend": "cl",
+                "objectSeconds": 0.004469785839319229,
+                "linkSeconds": 0.0163132690358907,
+                "objectBytes": 1464,
+                "binaryBytes": 17160
+              },
+              "ratioToRawClang": 1.4912471393438536
+            },
+            "4096-qbe": {
+              "samplesSeconds": [
+                0.023320658830925822,
+                0.02321751182898879,
+                0.019778914051130414
+              ],
+              "medianSeconds": 0.02321751182898879,
+              "minSeconds": 0.019778914051130414,
+              "maxSeconds": 0.023320658830925822,
+              "count": 3,
+              "args": [
+                100000,
+                31
+              ],
+              "repeat": 100,
+              "expected": 2368128000,
+              "buildObservation": {
+                "name": "ir-closure",
+                "budget": 4096,
+                "backend": "qbe",
+                "objectSeconds": 0.010433372110128403,
+                "linkSeconds": 0.016187333036214113,
+                "objectBytes": 1712,
+                "binaryBytes": 17280
+              },
+              "ratioToRawClang": 1.172842456576605
+            }
+          }
+        },
+        {
+          "name": "ir-list",
+          "variants": {
+            "0-c": {
+              "samplesSeconds": [
+                0.020284578204154968,
+                0.020577663090080023,
+                0.01709554996341467
+              ],
+              "medianSeconds": 0.020284578204154968,
+              "minSeconds": 0.01709554996341467,
+              "maxSeconds": 0.020577663090080023,
+              "count": 3,
+              "args": [
+                2048,
+                17
+              ],
+              "repeat": 200,
+              "expected": 2897083409,
+              "buildObservation": {
+                "name": "ir-list",
+                "budget": 0,
+                "backend": "c",
+                "objectSeconds": 0.03611165494658053,
+                "linkSeconds": 0.016155265038833022,
+                "objectBytes": 1536,
+                "binaryBytes": 17168
+              },
+              "ratioToRawClang": 1.0
+            },
+            "0-cl": {
+              "samplesSeconds": [
+                0.016879164846614003,
+                0.016327388118952513,
+                0.016252524917945266
+              ],
+              "medianSeconds": 0.016327388118952513,
+              "minSeconds": 0.016252524917945266,
+              "maxSeconds": 0.016879164846614003,
+              "count": 3,
+              "args": [
+                2048,
+                17
+              ],
+              "repeat": 200,
+              "expected": 2897083409,
+              "buildObservation": {
+                "name": "ir-list",
+                "budget": 0,
+                "backend": "cl",
+                "objectSeconds": 0.003926500910893083,
+                "linkSeconds": 0.016286995029076934,
+                "objectBytes": 1280,
+                "binaryBytes": 17072
+              },
+              "ratioToRawClang": 0.8049163238508016
+            },
+            "0-qbe": {
+              "samplesSeconds": [
+                0.017775603104382753,
+                0.0188811959233135,
+                0.018111502984538674
+              ],
+              "medianSeconds": 0.018111502984538674,
+              "minSeconds": 0.017775603104382753,
+              "maxSeconds": 0.0188811959233135,
+              "count": 3,
+              "args": [
+                2048,
+                17
+              ],
+              "repeat": 200,
+              "expected": 2897083409,
+              "buildObservation": {
+                "name": "ir-list",
+                "budget": 0,
+                "backend": "qbe",
+                "objectSeconds": 0.009662633063271642,
+                "linkSeconds": 0.01612102286890149,
+                "objectBytes": 1400,
+                "binaryBytes": 17208
+              },
+              "ratioToRawClang": 0.892870574002314
+            },
+            "4096-c": {
+              "samplesSeconds": [
+                0.0173760789912194,
+                0.016962897032499313,
+                0.017155502922832966
+              ],
+              "medianSeconds": 0.017155502922832966,
+              "minSeconds": 0.016962897032499313,
+              "maxSeconds": 0.0173760789912194,
+              "count": 3,
+              "args": [
+                2048,
+                17
+              ],
+              "repeat": 200,
+              "expected": 2897083409,
+              "buildObservation": {
+                "name": "ir-list",
+                "budget": 4096,
+                "backend": "c",
+                "objectSeconds": 0.03610388981178403,
+                "linkSeconds": 0.01618385803885758,
+                "objectBytes": 1544,
+                "binaryBytes": 17168
+              },
+              "ratioToRawClang": 0.8457411709610475
+            },
+            "4096-cl": {
+              "samplesSeconds": [
+                0.016375094885006547,
+                0.01796066714450717,
+                0.016492322087287903
+              ],
+              "medianSeconds": 0.016492322087287903,
+              "minSeconds": 0.016375094885006547,
+              "maxSeconds": 0.01796066714450717,
+              "count": 3,
+              "args": [
+                2048,
+                17
+              ],
+              "repeat": 200,
+              "expected": 2897083409,
+              "buildObservation": {
+                "name": "ir-list",
+                "budget": 4096,
+                "backend": "cl",
+                "objectSeconds": 0.0038242749869823456,
+                "linkSeconds": 0.016161257168278098,
+                "objectBytes": 1288,
+                "binaryBytes": 17072
+              },
+              "ratioToRawClang": 0.8130473269545095
+            },
+            "4096-qbe": {
+              "samplesSeconds": [
+                0.01779322884976864,
+                0.018876696936786175,
+                0.017742352094501257
+              ],
+              "medianSeconds": 0.01779322884976864,
+              "minSeconds": 0.017742352094501257,
+              "maxSeconds": 0.018876696936786175,
+              "count": 3,
+              "args": [
+                2048,
+                17
+              ],
+              "repeat": 200,
+              "expected": 2897083409,
+              "buildObservation": {
+                "name": "ir-list",
+                "budget": 4096,
+                "backend": "qbe",
+                "objectSeconds": 0.010187329957261682,
+                "linkSeconds": 0.01606009784154594,
+                "objectBytes": 1560,
+                "binaryBytes": 17208
+              },
+              "ratioToRawClang": 0.8771801252502249
+            }
+          }
+        },
+        {
+          "name": "ir-many",
+          "variants": {
+            "0-c": {
+              "samplesSeconds": [
+                0.01632329006679356,
+                0.01648409408517182,
+                0.016514852875843644
+              ],
+              "medianSeconds": 0.01648409408517182,
+              "minSeconds": 0.01632329006679356,
+              "maxSeconds": 0.016514852875843644,
+              "count": 3,
+              "args": [
+                2000,
+                29
+              ],
+              "repeat": 50,
+              "expected": 2142124765,
+              "buildObservation": {
+                "name": "ir-many",
+                "budget": 0,
+                "backend": "c",
+                "objectSeconds": 0.24639698397368193,
+                "linkSeconds": 0.021407392108812928,
+                "objectBytes": 2568,
+                "binaryBytes": 17120
+              },
+              "ratioToRawClang": 1.0
+            },
+            "0-cl": {
+              "samplesSeconds": [
+                0.0920232031494379,
+                0.09268947597593069,
+                0.08902437589131296
+              ],
+              "medianSeconds": 0.0920232031494379,
+              "minSeconds": 0.08902437589131296,
+              "maxSeconds": 0.09268947597593069,
+              "count": 3,
+              "args": [
+                2000,
+                29
+              ],
+              "repeat": 50,
+              "expected": 2142124765,
+              "buildObservation": {
+                "name": "ir-many",
+                "budget": 0,
+                "backend": "cl",
+                "objectSeconds": 0.015009643044322729,
+                "linkSeconds": 0.015959210926666856,
+                "objectBytes": 13472,
+                "binaryBytes": 26456
+              },
+              "ratioToRawClang": 5.582545372160724
+            },
+            "0-qbe": {
+              "samplesSeconds": [
+                0.08203383791260421,
+                0.08810979290865362,
+                0.09158481797203422
+              ],
+              "medianSeconds": 0.08810979290865362,
+              "minSeconds": 0.08203383791260421,
+              "maxSeconds": 0.09158481797203422,
+              "count": 3,
+              "args": [
+                2000,
+                29
+              ],
+              "repeat": 50,
+              "expected": 2142124765,
+              "buildObservation": {
+                "name": "ir-many",
+                "budget": 0,
+                "backend": "qbe",
+                "objectSeconds": 0.024021092103794217,
+                "linkSeconds": 0.016438631108030677,
+                "objectBytes": 9952,
+                "binaryBytes": 25928
+              },
+              "ratioToRawClang": 5.3451401365096745
+            },
+            "4096-c": {
+              "samplesSeconds": [
+                0.01622898713685572,
+                0.016916830092668533,
+                0.0163629287853837
+              ],
+              "medianSeconds": 0.0163629287853837,
+              "minSeconds": 0.01622898713685572,
+              "maxSeconds": 0.016916830092668533,
+              "count": 3,
+              "args": [
+                2000,
+                29
+              ],
+              "repeat": 50,
+              "expected": 2142124765,
+              "buildObservation": {
+                "name": "ir-many",
+                "budget": 4096,
+                "backend": "c",
+                "objectSeconds": 0.07700285105966032,
+                "linkSeconds": 0.016668759984895587,
+                "objectBytes": 2576,
+                "binaryBytes": 17120
+              },
+              "ratioToRawClang": 0.9926495627140887
+            },
+            "4096-cl": {
+              "samplesSeconds": [
+                0.016316456021741033,
+                0.016174680087715387,
+                0.016306439880281687
+              ],
+              "medianSeconds": 0.016306439880281687,
+              "minSeconds": 0.016174680087715387,
+              "maxSeconds": 0.016316456021741033,
+              "count": 3,
+              "args": [
+                2000,
+                29
+              ],
+              "repeat": 50,
+              "expected": 2142124765,
+              "buildObservation": {
+                "name": "ir-many",
+                "budget": 4096,
+                "backend": "cl",
+                "objectSeconds": 0.00917280395515263,
+                "linkSeconds": 0.016232752008363605,
+                "objectBytes": 2800,
+                "binaryBytes": 17088
+              },
+              "ratioToRawClang": 0.9892226892195465
+            },
+            "4096-qbe": {
+              "samplesSeconds": [
+                0.016519620083272457,
+                0.016067983116954565,
+                0.016157106962054968
+              ],
+              "medianSeconds": 0.016157106962054968,
+              "minSeconds": 0.016067983116954565,
+              "maxSeconds": 0.016519620083272457,
+              "count": 3,
+              "args": [
+                2000,
+                29
+              ],
+              "repeat": 50,
+              "expected": 2142124765,
+              "buildObservation": {
+                "name": "ir-many",
+                "budget": 4096,
+                "backend": "qbe",
+                "objectSeconds": 0.025545703014358878,
+                "linkSeconds": 0.016229697968810797,
+                "objectBytes": 2768,
+                "binaryBytes": 17208
+              },
+              "ratioToRawClang": 0.9801634762925194
+            }
+          }
+        },
+        {
+          "name": "ir-shared",
+          "variants": {
+            "0-c": {
+              "samplesSeconds": [
+                0.011606674175709486,
+                0.01429929700680077,
+                0.010555728105828166
+              ],
+              "medianSeconds": 0.011606674175709486,
+              "minSeconds": 0.010555728105828166,
+              "maxSeconds": 0.01429929700680077,
+              "count": 3,
+              "args": [
+                200000,
+                37
+              ],
+              "repeat": 50,
+              "expected": 4042706272,
+              "buildObservation": {
+                "name": "ir-shared",
+                "budget": 0,
+                "backend": "c",
+                "objectSeconds": 0.040133145870640874,
+                "linkSeconds": 0.016275197034701705,
+                "objectBytes": 1760,
+                "binaryBytes": 17168
+              },
+              "ratioToRawClang": 1.0
+            },
+            "0-cl": {
+              "samplesSeconds": [
+                0.04122553998604417,
+                0.04073831904679537,
+                0.036813797894865274
+              ],
+              "medianSeconds": 0.04073831904679537,
+              "minSeconds": 0.036813797894865274,
+              "maxSeconds": 0.04122553998604417,
+              "count": 3,
+              "args": [
+                200000,
+                37
+              ],
+              "repeat": 50,
+              "expected": 4042706272,
+              "buildObservation": {
+                "name": "ir-shared",
+                "budget": 0,
+                "backend": "cl",
+                "objectSeconds": 0.004246314987540245,
+                "linkSeconds": 0.016462943982332945,
+                "objectBytes": 1528,
+                "binaryBytes": 17112
+              },
+              "ratioToRawClang": 3.509904597137116
+            },
+            "0-qbe": {
+              "samplesSeconds": [
+                0.03530948609113693,
+                0.03718334506265819,
+                0.03740201494656503
+              ],
+              "medianSeconds": 0.03718334506265819,
+              "minSeconds": 0.03530948609113693,
+              "maxSeconds": 0.03740201494656503,
+              "count": 3,
+              "args": [
+                200000,
+                37
+              ],
+              "repeat": 50,
+              "expected": 4042706272,
+              "buildObservation": {
+                "name": "ir-shared",
+                "budget": 0,
+                "backend": "qbe",
+                "objectSeconds": 0.010309880832210183,
+                "linkSeconds": 0.016458987025544047,
+                "objectBytes": 1552,
+                "binaryBytes": 17240
+              },
+              "ratioToRawClang": 3.20361754795148
+            },
+            "4096-c": {
+              "samplesSeconds": [
+                0.009181012865155935,
+                0.00969724403694272,
+                0.009097796864807606
+              ],
+              "medianSeconds": 0.009181012865155935,
+              "minSeconds": 0.009097796864807606,
+              "maxSeconds": 0.00969724403694272,
+              "count": 3,
+              "args": [
+                200000,
+                37
+              ],
+              "repeat": 50,
+              "expected": 4042706272,
+              "buildObservation": {
+                "name": "ir-shared",
+                "budget": 4096,
+                "backend": "c",
+                "objectSeconds": 0.03856940288096666,
+                "linkSeconds": 0.016175419092178345,
+                "objectBytes": 1728,
+                "binaryBytes": 17176
+              },
+              "ratioToRawClang": 0.791011509943995
+            },
+            "4096-cl": {
+              "samplesSeconds": [
+                0.026805773144587874,
+                0.026948419865220785,
+                0.026274472009390593
+              ],
+              "medianSeconds": 0.026805773144587874,
+              "minSeconds": 0.026274472009390593,
+              "maxSeconds": 0.026948419865220785,
+              "count": 3,
+              "args": [
+                200000,
+                37
+              ],
+              "repeat": 50,
+              "expected": 4042706272,
+              "buildObservation": {
+                "name": "ir-shared",
+                "budget": 4096,
+                "backend": "cl",
+                "objectSeconds": 0.004127176012843847,
+                "linkSeconds": 0.01600160007365048,
+                "objectBytes": 1416,
+                "binaryBytes": 17072
+              },
+              "ratioToRawClang": 2.309513710713716
+            },
+            "4096-qbe": {
+              "samplesSeconds": [
+                0.01556732808239758,
+                0.013222611043602228,
+                0.013222930952906609
+              ],
+              "medianSeconds": 0.013222930952906609,
+              "minSeconds": 0.013222611043602228,
+              "maxSeconds": 0.01556732808239758,
+              "count": 3,
+              "args": [
+                200000,
+                37
+              ],
+              "repeat": 50,
+              "expected": 4042706272,
+              "buildObservation": {
+                "name": "ir-shared",
+                "budget": 4096,
+                "backend": "qbe",
+                "objectSeconds": 0.01066735410131514,
+                "linkSeconds": 0.01642755512148142,
+                "objectBytes": 1664,
+                "binaryBytes": 17208
+              },
+              "ratioToRawClang": 1.1392523605581721
+            }
+          }
+        },
+        {
+          "name": "ir-shared_borrow",
+          "variants": {
+            "0-c": {
+              "samplesSeconds": [
+                0.009438906097784638,
+                0.009260802064090967,
+                0.009031961904838681
+              ],
+              "medianSeconds": 0.009260802064090967,
+              "minSeconds": 0.009031961904838681,
+              "maxSeconds": 0.009438906097784638,
+              "count": 3,
+              "args": [
+                200000,
+                37
+              ],
+              "repeat": 50,
+              "expected": 4042706272,
+              "buildObservation": {
+                "name": "ir-shared_borrow",
+                "budget": 0,
+                "backend": "c",
+                "objectSeconds": 0.039228622103109956,
+                "linkSeconds": 0.016260995995253325,
+                "objectBytes": 1768,
+                "binaryBytes": 17176
+              },
+              "ratioToRawClang": 1.0
+            },
+            "0-cl": {
+              "samplesSeconds": [
+                0.032912118127569556,
+                0.03414663905277848,
+                0.0321077408734709
+              ],
+              "medianSeconds": 0.032912118127569556,
+              "minSeconds": 0.0321077408734709,
+              "maxSeconds": 0.03414663905277848,
+              "count": 3,
+              "args": [
+                200000,
+                37
+              ],
+              "repeat": 50,
+              "expected": 4042706272,
+              "buildObservation": {
+                "name": "ir-shared_borrow",
+                "budget": 0,
+                "backend": "cl",
+                "objectSeconds": 0.004184321966022253,
+                "linkSeconds": 0.016166930086910725,
+                "objectBytes": 1512,
+                "binaryBytes": 17112
+              },
+              "ratioToRawClang": 3.553916593810731
+            },
+            "0-qbe": {
+              "samplesSeconds": [
+                0.018544979160651565,
+                0.0188390479888767,
+                0.01872174208983779
+              ],
+              "medianSeconds": 0.01872174208983779,
+              "minSeconds": 0.018544979160651565,
+              "maxSeconds": 0.0188390479888767,
+              "count": 3,
+              "args": [
+                200000,
+                37
+              ],
+              "repeat": 50,
+              "expected": 4042706272,
+              "buildObservation": {
+                "name": "ir-shared_borrow",
+                "budget": 0,
+                "backend": "qbe",
+                "objectSeconds": 0.010302275884896517,
+                "linkSeconds": 0.01615202985703945,
+                "objectBytes": 1520,
+                "binaryBytes": 17248
+              },
+              "ratioToRawClang": 2.0216112989210617
+            },
+            "4096-c": {
+              "samplesSeconds": [
+                0.009123971918597817,
+                0.009200058877468109,
+                0.009086091071367264
+              ],
+              "medianSeconds": 0.009123971918597817,
+              "minSeconds": 0.009086091071367264,
+              "maxSeconds": 0.009200058877468109,
+              "count": 3,
+              "args": [
+                200000,
+                37
+              ],
+              "repeat": 50,
+              "expected": 4042706272,
+              "buildObservation": {
+                "name": "ir-shared_borrow",
+                "budget": 4096,
+                "backend": "c",
+                "objectSeconds": 0.03837723005563021,
+                "linkSeconds": 0.016146203968673944,
+                "objectBytes": 1736,
+                "binaryBytes": 17184
+              },
+              "ratioToRawClang": 0.9852248061727058
+            },
+            "4096-cl": {
+              "samplesSeconds": [
+                0.015855956822633743,
+                0.01599128800444305,
+                0.0160049581900239
+              ],
+              "medianSeconds": 0.01599128800444305,
+              "minSeconds": 0.015855956822633743,
+              "maxSeconds": 0.0160049581900239,
+              "count": 3,
+              "args": [
+                200000,
+                37
+              ],
+              "repeat": 50,
+              "expected": 4042706272,
+              "buildObservation": {
+                "name": "ir-shared_borrow",
+                "budget": 4096,
+                "backend": "cl",
+                "objectSeconds": 0.004272907041013241,
+                "linkSeconds": 0.01612685713917017,
+                "objectBytes": 1376,
+                "binaryBytes": 17072
+              },
+              "ratioToRawClang": 1.7267713847863935
+            },
+            "4096-qbe": {
+              "samplesSeconds": [
+                0.015639635967090726,
+                0.013216271996498108,
+                0.013420325936749578
+              ],
+              "medianSeconds": 0.013420325936749578,
+              "minSeconds": 0.013216271996498108,
+              "maxSeconds": 0.015639635967090726,
+              "count": 3,
+              "args": [
+                200000,
+                37
+              ],
+              "repeat": 50,
+              "expected": 4042706272,
+              "buildObservation": {
+                "name": "ir-shared_borrow",
+                "budget": 4096,
+                "backend": "qbe",
+                "objectSeconds": 0.010620734887197614,
+                "linkSeconds": 0.01625820784829557,
+                "objectBytes": 1600,
+                "binaryBytes": 17216
+              },
+              "ratioToRawClang": 1.4491537389387996
+            }
+          }
+        },
+        {
+          "name": "ir-tail",
+          "variants": {
+            "0-c": {
+              "samplesSeconds": [
+                0.038825521944090724,
+                0.03920650784857571,
+                0.039436169900000095
+              ],
+              "medianSeconds": 0.03920650784857571,
+              "minSeconds": 0.038825521944090724,
+              "maxSeconds": 0.039436169900000095,
+              "count": 3,
+              "args": [
+                1000000,
+                127
+              ],
+              "repeat": 20,
+              "expected": 2662497472,
+              "buildObservation": {
+                "name": "ir-tail",
+                "budget": 0,
+                "backend": "c",
+                "objectSeconds": 0.034533445024862885,
+                "linkSeconds": 0.01628456497564912,
+                "objectBytes": 1240,
+                "binaryBytes": 17120
+              },
+              "ratioToRawClang": 1.0
+            },
+            "0-cl": {
+              "samplesSeconds": [
+                0.047115029068663716,
+                0.04718376602977514,
+                0.046985724940896034
+              ],
+              "medianSeconds": 0.047115029068663716,
+              "minSeconds": 0.046985724940896034,
+              "maxSeconds": 0.04718376602977514,
+              "count": 3,
+              "args": [
+                1000000,
+                127
+              ],
+              "repeat": 20,
+              "expected": 2662497472,
+              "buildObservation": {
+                "name": "ir-tail",
+                "budget": 0,
+                "backend": "cl",
+                "objectSeconds": 0.003798083867877722,
+                "linkSeconds": 0.016182451974600554,
+                "objectBytes": 1040,
+                "binaryBytes": 17088
+              },
+              "ratioToRawClang": 1.2017145023635485
+            },
+            "0-qbe": {
+              "samplesSeconds": [
+                0.037659168941900134,
+                0.03716357005760074,
+                0.03731595491990447
+              ],
+              "medianSeconds": 0.03731595491990447,
+              "minSeconds": 0.03716357005760074,
+              "maxSeconds": 0.037659168941900134,
+              "count": 3,
+              "args": [
+                1000000,
+                127
+              ],
+              "repeat": 20,
+              "expected": 2662497472,
+              "buildObservation": {
+                "name": "ir-tail",
+                "budget": 0,
+                "backend": "qbe",
+                "objectSeconds": 0.00966275087557733,
+                "linkSeconds": 0.01620173011906445,
+                "objectBytes": 1264,
+                "binaryBytes": 17208
+              },
+              "ratioToRawClang": 0.9517796143443079
+            },
+            "4096-c": {
+              "samplesSeconds": [
+                0.039250981993973255,
+                0.03916538297198713,
+                0.03947451896965504
+              ],
+              "medianSeconds": 0.039250981993973255,
+              "minSeconds": 0.03916538297198713,
+              "maxSeconds": 0.03947451896965504,
+              "count": 3,
+              "args": [
+                1000000,
+                127
+              ],
+              "repeat": 20,
+              "expected": 2662497472,
+              "buildObservation": {
+                "name": "ir-tail",
+                "budget": 4096,
+                "backend": "c",
+                "objectSeconds": 0.03455445799045265,
+                "linkSeconds": 0.016219293931499124,
+                "objectBytes": 1248,
+                "binaryBytes": 17120
+              },
+              "ratioToRawClang": 1.0011343562035495
+            },
+            "4096-cl": {
+              "samplesSeconds": [
+                0.04660218418575823,
+                0.0473207279574126,
+                0.04757116502150893
+              ],
+              "medianSeconds": 0.0473207279574126,
+              "minSeconds": 0.04660218418575823,
+              "maxSeconds": 0.04757116502150893,
+              "count": 3,
+              "args": [
+                1000000,
+                127
+              ],
+              "repeat": 20,
+              "expected": 2662497472,
+              "buildObservation": {
+                "name": "ir-tail",
+                "budget": 4096,
+                "backend": "cl",
+                "objectSeconds": 0.003853823058307171,
+                "linkSeconds": 0.015907786088064313,
+                "objectBytes": 1040,
+                "binaryBytes": 17088
+              },
+              "ratioToRawClang": 1.2069610519808553
+            },
+            "4096-qbe": {
+              "samplesSeconds": [
+                0.03744856081902981,
+                0.0371079898905009,
+                0.03679633908905089
+              ],
+              "medianSeconds": 0.0371079898905009,
+              "minSeconds": 0.03679633908905089,
+              "maxSeconds": 0.03744856081902981,
+              "count": 3,
+              "args": [
+                1000000,
+                127
+              ],
+              "repeat": 20,
+              "expected": 2662497472,
+              "buildObservation": {
+                "name": "ir-tail",
+                "budget": 4096,
+                "backend": "qbe",
+                "objectSeconds": 0.00984038203023374,
+                "linkSeconds": 0.016163825057446957,
+                "objectBytes": 1304,
+                "binaryBytes": 17208
+              },
+              "ratioToRawClang": 0.9464752646121978
+            }
+          }
+        },
+        {
+          "name": "ir-text",
+          "variants": {
+            "0-c": {
+              "samplesSeconds": [
+                0.07930142595432699,
+                0.07911332999356091,
+                0.0719818810466677
+              ],
+              "medianSeconds": 0.07911332999356091,
+              "minSeconds": 0.0719818810466677,
+              "maxSeconds": 0.07930142595432699,
+              "count": 3,
+              "args": [
+                200000,
+                7
+              ],
+              "repeat": 100,
+              "expected": 3752000604,
+              "buildObservation": {
+                "name": "ir-text",
+                "budget": 0,
+                "backend": "c",
+                "objectSeconds": 0.04551278194412589,
+                "linkSeconds": 0.01618282194249332,
+                "objectBytes": 1728,
+                "binaryBytes": 17168
+              },
+              "ratioToRawClang": 1.0
+            },
+            "0-cl": {
+              "samplesSeconds": [
+                0.1463024839758873,
+                0.14771822793409228,
+                0.13113748491741717
+              ],
+              "medianSeconds": 0.1463024839758873,
+              "minSeconds": 0.13113748491741717,
+              "maxSeconds": 0.14771822793409228,
+              "count": 3,
+              "args": [
+                200000,
+                7
+              ],
+              "repeat": 100,
+              "expected": 3752000604,
+              "buildObservation": {
+                "name": "ir-text",
+                "budget": 0,
+                "backend": "cl",
+                "objectSeconds": 0.004171865060925484,
+                "linkSeconds": 0.016067046904936433,
+                "objectBytes": 1624,
+                "binaryBytes": 17160
+              },
+              "ratioToRawClang": 1.8492772834589943
+            },
+            "0-qbe": {
+              "samplesSeconds": [
+                0.13188089593313634,
+                0.13191647781059146,
+                0.12035531015135348
+              ],
+              "medianSeconds": 0.13188089593313634,
+              "minSeconds": 0.12035531015135348,
+              "maxSeconds": 0.13191647781059146,
+              "count": 3,
+              "args": [
+                200000,
+                7
+              ],
+              "repeat": 100,
+              "expected": 3752000604,
+              "buildObservation": {
+                "name": "ir-text",
+                "budget": 0,
+                "backend": "qbe",
+                "objectSeconds": 0.01033531897701323,
+                "linkSeconds": 0.016447592992335558,
+                "objectBytes": 1624,
+                "binaryBytes": 17280
+              },
+              "ratioToRawClang": 1.6669870418028192
+            },
+            "4096-c": {
+              "samplesSeconds": [
+                0.07905624504201114,
+                0.07946712011471391,
+                0.07225300115533173
+              ],
+              "medianSeconds": 0.07905624504201114,
+              "minSeconds": 0.07225300115533173,
+              "maxSeconds": 0.07946712011471391,
+              "count": 3,
+              "args": [
+                200000,
+                7
+              ],
+              "repeat": 100,
+              "expected": 3752000604,
+              "buildObservation": {
+                "name": "ir-text",
+                "budget": 4096,
+                "backend": "c",
+                "objectSeconds": 0.045010427944362164,
+                "linkSeconds": 0.016483325976878405,
+                "objectBytes": 1736,
+                "binaryBytes": 17168
+              },
+              "ratioToRawClang": 0.9992784407943084
+            },
+            "4096-cl": {
+              "samplesSeconds": [
+                0.11955767613835633,
+                0.1196849150583148,
+                0.10789916105568409
+              ],
+              "medianSeconds": 0.11955767613835633,
+              "minSeconds": 0.10789916105568409,
+              "maxSeconds": 0.1196849150583148,
+              "count": 3,
+              "args": [
+                200000,
+                7
+              ],
+              "repeat": 100,
+              "expected": 3752000604,
+              "buildObservation": {
+                "name": "ir-text",
+                "budget": 4096,
+                "backend": "cl",
+                "objectSeconds": 0.00415146816521883,
+                "linkSeconds": 0.015962515026330948,
+                "objectBytes": 1432,
+                "binaryBytes": 17072
+              },
+              "ratioToRawClang": 1.5112203739633663
+            },
+            "4096-qbe": {
+              "samplesSeconds": [
+                0.12682513683103025,
+                0.12647472298704088,
+                0.11577351507730782
+              ],
+              "medianSeconds": 0.12647472298704088,
+              "minSeconds": 0.11577351507730782,
+              "maxSeconds": 0.12682513683103025,
+              "count": 3,
+              "args": [
+                200000,
+                7
+              ],
+              "repeat": 100,
+              "expected": 3752000604,
+              "buildObservation": {
+                "name": "ir-text",
+                "budget": 4096,
+                "backend": "qbe",
+                "objectSeconds": 0.01056116190738976,
+                "linkSeconds": 0.016223234124481678,
+                "objectBytes": 1808,
+                "binaryBytes": 17208
+              },
+              "ratioToRawClang": 1.598652502648223
+            }
+          }
+        },
+        {
+          "name": "ir-tree",
+          "variants": {
+            "0-c": {
+              "samplesSeconds": [
+                0.02136826911009848,
+                0.01866589579731226,
+                0.018853172892704606
+              ],
+              "medianSeconds": 0.018853172892704606,
+              "minSeconds": 0.01866589579731226,
+              "maxSeconds": 0.02136826911009848,
+              "count": 3,
+              "args": [
+                11,
+                23
+              ],
+              "repeat": 100,
+              "expected": 3972810337,
+              "buildObservation": {
+                "name": "ir-tree",
+                "budget": 0,
+                "backend": "c",
+                "objectSeconds": 0.03541511995717883,
+                "linkSeconds": 0.016108469106256962,
+                "objectBytes": 1848,
+                "binaryBytes": 17248
+              },
+              "ratioToRawClang": 1.0
+            },
+            "0-cl": {
+              "samplesSeconds": [
+                0.021073844050988555,
+                0.022829195018857718,
+                0.019419647054746747
+              ],
+              "medianSeconds": 0.021073844050988555,
+              "minSeconds": 0.019419647054746747,
+              "maxSeconds": 0.022829195018857718,
+              "count": 3,
+              "args": [
+                11,
+                23
+              ],
+              "repeat": 100,
+              "expected": 3972810337,
+              "buildObservation": {
+                "name": "ir-tree",
+                "budget": 0,
+                "backend": "cl",
+                "objectSeconds": 0.004216925939545035,
+                "linkSeconds": 0.015904798172414303,
+                "objectBytes": 1688,
+                "binaryBytes": 17160
+              },
+              "ratioToRawClang": 1.117787662104518
+            },
+            "0-qbe": {
+              "samplesSeconds": [
+                0.021011237986385822,
+                0.023088580928742886,
+                0.02089475910179317
+              ],
+              "medianSeconds": 0.021011237986385822,
+              "minSeconds": 0.02089475910179317,
+              "maxSeconds": 0.023088580928742886,
+              "count": 3,
+              "args": [
+                11,
+                23
+              ],
+              "repeat": 100,
+              "expected": 3972810337,
+              "buildObservation": {
+                "name": "ir-tree",
+                "budget": 0,
+                "backend": "qbe",
+                "objectSeconds": 0.010082236025482416,
+                "linkSeconds": 0.016261246986687183,
+                "objectBytes": 1584,
+                "binaryBytes": 17280
+              },
+              "ratioToRawClang": 1.1144669444216626
+            },
+            "4096-c": {
+              "samplesSeconds": [
+                0.018667770083993673,
+                0.02221837011165917,
+                0.01897107996046543
+              ],
+              "medianSeconds": 0.01897107996046543,
+              "minSeconds": 0.018667770083993673,
+              "maxSeconds": 0.02221837011165917,
+              "count": 3,
+              "args": [
+                11,
+                23
+              ],
+              "repeat": 100,
+              "expected": 3972810337,
+              "buildObservation": {
+                "name": "ir-tree",
+                "budget": 4096,
+                "backend": "c",
+                "objectSeconds": 0.03519140090793371,
+                "linkSeconds": 0.016481298953294754,
+                "objectBytes": 1848,
+                "binaryBytes": 17248
+              },
+              "ratioToRawClang": 1.0062539641699488
+            },
+            "4096-cl": {
+              "samplesSeconds": [
+                0.020468894159421325,
+                0.019547326024621725,
+                0.019471703097224236
+              ],
+              "medianSeconds": 0.019547326024621725,
+              "minSeconds": 0.019471703097224236,
+              "maxSeconds": 0.020468894159421325,
+              "count": 3,
+              "args": [
+                11,
+                23
+              ],
+              "repeat": 100,
+              "expected": 3972810337,
+              "buildObservation": {
+                "name": "ir-tree",
+                "budget": 4096,
+                "backend": "cl",
+                "objectSeconds": 0.004217375069856644,
+                "linkSeconds": 0.016529107932001352,
+                "objectBytes": 1688,
+                "binaryBytes": 17160
+              },
+              "ratioToRawClang": 1.036818902360235
+            },
+            "4096-qbe": {
+              "samplesSeconds": [
+                0.02094270708039403,
+                0.02284536720253527,
+                0.021119063021615148
+              ],
+              "medianSeconds": 0.021119063021615148,
+              "minSeconds": 0.02094270708039403,
+              "maxSeconds": 0.02284536720253527,
+              "count": 3,
+              "args": [
+                11,
+                23
+              ],
+              "repeat": 100,
+              "expected": 3972810337,
+              "buildObservation": {
+                "name": "ir-tree",
+                "budget": 4096,
+                "backend": "qbe",
+                "objectSeconds": 0.010189937893301249,
+                "linkSeconds": 0.016208847053349018,
+                "objectBytes": 1592,
+                "binaryBytes": 17288
+              },
+              "ratioToRawClang": 1.1201861427679023
+            }
+          }
+        },
+        {
+          "name": "source-arithmetic",
+          "variants": {
+            "0-c": {
+              "samplesSeconds": [
+                0.014444672968238592,
+                0.014728033915162086,
+                0.014699616003781557
+              ],
+              "medianSeconds": 0.014699616003781557,
+              "minSeconds": 0.014444672968238592,
+              "maxSeconds": 0.014728033915162086,
+              "count": 3,
+              "args": [
+                12345,
+                277
+              ],
+              "repeat": 5000000,
+              "expected": 518829920,
+              "buildObservation": {
+                "name": "source-arithmetic",
+                "budget": 0,
+                "backend": "c",
+                "objectSeconds": 0.030858277110382915,
+                "linkSeconds": 0.01662054006010294,
+                "objectBytes": 1184,
+                "binaryBytes": 17128
+              },
+              "ratioToRawClang": 1.0
+            },
+            "0-cl": {
+              "samplesSeconds": [
+                0.03659721091389656,
+                0.03750359290279448,
+                0.03791568800806999
+              ],
+              "medianSeconds": 0.03750359290279448,
+              "minSeconds": 0.03659721091389656,
+              "maxSeconds": 0.03791568800806999,
+              "count": 3,
+              "args": [
+                12345,
+                277
+              ],
+              "repeat": 5000000,
+              "expected": 518829920,
+              "buildObservation": {
+                "name": "source-arithmetic",
+                "budget": 0,
+                "backend": "cl",
+                "objectSeconds": 0.0034567059483379126,
+                "linkSeconds": 0.01610497198998928,
+                "objectBytes": 1248,
+                "binaryBytes": 17208
+              },
+              "ratioToRawClang": 2.5513314696891727
+            },
+            "0-qbe": {
+              "samplesSeconds": [
+                0.03245546482503414,
+                0.03360171499662101,
+                0.03210962703451514
+              ],
+              "medianSeconds": 0.03245546482503414,
+              "minSeconds": 0.03210962703451514,
+              "maxSeconds": 0.03360171499662101,
+              "count": 3,
+              "args": [
+                12345,
+                277
+              ],
+              "repeat": 5000000,
+              "expected": 518829920,
+              "buildObservation": {
+                "name": "source-arithmetic",
+                "budget": 0,
+                "backend": "qbe",
+                "objectSeconds": 0.009638594696298242,
+                "linkSeconds": 0.016137544997036457,
+                "objectBytes": 1400,
+                "binaryBytes": 17320
+              },
+              "ratioToRawClang": 2.2079124255140266
+            },
+            "4096-c": {
+              "samplesSeconds": [
+                0.014663936104625463,
+                0.015635238960385323,
+                0.014767863089218736
+              ],
+              "medianSeconds": 0.014767863089218736,
+              "minSeconds": 0.014663936104625463,
+              "maxSeconds": 0.015635238960385323,
+              "count": 3,
+              "args": [
+                12345,
+                277
+              ],
+              "repeat": 5000000,
+              "expected": 518829920,
+              "buildObservation": {
+                "name": "source-arithmetic",
+                "budget": 4096,
+                "backend": "c",
+                "objectSeconds": 0.030435767024755478,
+                "linkSeconds": 0.01625122781842947,
+                "objectBytes": 1184,
+                "binaryBytes": 17128
+              },
+              "ratioToRawClang": 1.0046427801528708
+            },
+            "4096-cl": {
+              "samplesSeconds": [
+                0.02344135707244277,
+                0.023306621937081218,
+                0.021337180864065886
+              ],
+              "medianSeconds": 0.023306621937081218,
+              "minSeconds": 0.021337180864065886,
+              "maxSeconds": 0.02344135707244277,
+              "count": 3,
+              "args": [
+                12345,
+                277
+              ],
+              "repeat": 5000000,
+              "expected": 518829920,
+              "buildObservation": {
+                "name": "source-arithmetic",
+                "budget": 4096,
+                "backend": "cl",
+                "objectSeconds": 0.0034719861578196287,
+                "linkSeconds": 0.016053925966843963,
+                "objectBytes": 1032,
+                "binaryBytes": 17112
+              },
+              "ratioToRawClang": 1.5855259029273596
+            },
+            "4096-qbe": {
+              "samplesSeconds": [
+                0.0158823118545115,
+                0.016590542858466506,
+                0.015940438024699688
+              ],
+              "medianSeconds": 0.015940438024699688,
+              "minSeconds": 0.0158823118545115,
+              "maxSeconds": 0.016590542858466506,
+              "count": 3,
+              "args": [
+                12345,
+                277
+              ],
+              "repeat": 5000000,
+              "expected": 518829920,
+              "buildObservation": {
+                "name": "source-arithmetic",
+                "budget": 4096,
+                "backend": "qbe",
+                "objectSeconds": 0.009767907904461026,
+                "linkSeconds": 0.016213261988013983,
+                "objectBytes": 1264,
+                "binaryBytes": 17240
+              },
+              "ratioToRawClang": 1.0844118663099038
+            }
+          }
+        },
+        {
+          "name": "source-branches",
+          "variants": {
+            "0-c": {
+              "samplesSeconds": [
+                0.014660777989774942,
+                0.01604161597788334,
+                0.014711654977872968
+              ],
+              "medianSeconds": 0.014711654977872968,
+              "minSeconds": 0.014660777989774942,
+              "maxSeconds": 0.01604161597788334,
+              "count": 3,
+              "args": [
+                12345,
+                277
+              ],
+              "repeat": 5000000,
+              "expected": 2147495993,
+              "buildObservation": {
+                "name": "source-branches",
+                "budget": 0,
+                "backend": "c",
+                "objectSeconds": 0.03058031084947288,
+                "linkSeconds": 0.016064656898379326,
+                "objectBytes": 1160,
+                "binaryBytes": 17128
+              },
+              "ratioToRawClang": 1.0
+            },
+            "0-cl": {
+              "samplesSeconds": [
+                0.03022210905328393,
+                0.03095040493644774,
+                0.029086397029459476
+              ],
+              "medianSeconds": 0.03022210905328393,
+              "minSeconds": 0.029086397029459476,
+              "maxSeconds": 0.03095040493644774,
+              "count": 3,
+              "args": [
+                12345,
+                277
+              ],
+              "repeat": 5000000,
+              "expected": 2147495993,
+              "buildObservation": {
+                "name": "source-branches",
+                "budget": 0,
+                "backend": "cl",
+                "objectSeconds": 0.0035335670690983534,
+                "linkSeconds": 0.016065053176134825,
+                "objectBytes": 1224,
+                "binaryBytes": 17216
+              },
+              "ratioToRawClang": 2.0542970249601034
+            },
+            "0-qbe": {
+              "samplesSeconds": [
+                0.025079334853217006,
+                0.025127421133220196,
+                0.025189786916598678
+              ],
+              "medianSeconds": 0.025127421133220196,
+              "minSeconds": 0.025079334853217006,
+              "maxSeconds": 0.025189786916598678,
+              "count": 3,
+              "args": [
+                12345,
+                277
+              ],
+              "repeat": 5000000,
+              "expected": 2147495993,
+              "buildObservation": {
+                "name": "source-branches",
+                "budget": 0,
+                "backend": "qbe",
+                "objectSeconds": 0.009536430006846786,
+                "linkSeconds": 0.016209394903853536,
+                "objectBytes": 1392,
+                "binaryBytes": 17328
+              },
+              "ratioToRawClang": 1.7079941835920593
+            },
+            "4096-c": {
+              "samplesSeconds": [
+                0.016474687959998846,
+                0.014612969942390919,
+                0.014787073014304042
+              ],
+              "medianSeconds": 0.014787073014304042,
+              "minSeconds": 0.014612969942390919,
+              "maxSeconds": 0.016474687959998846,
+              "count": 3,
+              "args": [
+                12345,
+                277
+              ],
+              "repeat": 5000000,
+              "expected": 2147495993,
+              "buildObservation": {
+                "name": "source-branches",
+                "budget": 4096,
+                "backend": "c",
+                "objectSeconds": 0.030171144986525178,
+                "linkSeconds": 0.016250193119049072,
+                "objectBytes": 1168,
+                "binaryBytes": 17128
+              },
+              "ratioToRawClang": 1.0051264141624112
+            },
+            "4096-cl": {
+              "samplesSeconds": [
+                0.021027594106271863,
+                0.021165961166843772,
+                0.02105912985280156
+              ],
+              "medianSeconds": 0.02105912985280156,
+              "minSeconds": 0.021027594106271863,
+              "maxSeconds": 0.021165961166843772,
+              "count": 3,
+              "args": [
+                12345,
+                277
+              ],
+              "repeat": 5000000,
+              "expected": 2147495993,
+              "buildObservation": {
+                "name": "source-branches",
+                "budget": 4096,
+                "backend": "cl",
+                "objectSeconds": 0.0034460059832781553,
+                "linkSeconds": 0.016266074031591415,
+                "objectBytes": 1016,
+                "binaryBytes": 17112
+              },
+              "ratioToRawClang": 1.4314589272570284
+            },
+            "4096-qbe": {
+              "samplesSeconds": [
+                0.018021058989688754,
+                0.017994731198996305,
+                0.016108687035739422
+              ],
+              "medianSeconds": 0.017994731198996305,
+              "minSeconds": 0.016108687035739422,
+              "maxSeconds": 0.018021058989688754,
+              "count": 3,
+              "args": [
+                12345,
+                277
+              ],
+              "repeat": 5000000,
+              "expected": 2147495993,
+              "buildObservation": {
+                "name": "source-branches",
+                "budget": 4096,
+                "backend": "qbe",
+                "objectSeconds": 0.009576129959896207,
+                "linkSeconds": 0.01668878411874175,
+                "objectBytes": 1240,
+                "binaryBytes": 17240
+              },
+              "ratioToRawClang": 1.2231615835241678
+            }
+          }
+        },
+        {
+          "name": "source-compiler_classify",
+          "variants": {
+            "0-c": {
+              "samplesSeconds": [
+                0.016579594928771257,
+                0.01588929700665176,
+                0.015891186194494367
+              ],
+              "medianSeconds": 0.015891186194494367,
+              "minSeconds": 0.01588929700665176,
+              "maxSeconds": 0.016579594928771257,
+              "count": 3,
+              "args": [
+                12345,
+                277
+              ],
+              "repeat": 5000000,
+              "expected": 0,
+              "buildObservation": {
+                "name": "source-compiler_classify",
+                "budget": 0,
+                "backend": "c",
+                "objectSeconds": 0.03453539893962443,
+                "linkSeconds": 0.016310422914102674,
+                "objectBytes": 1232,
+                "binaryBytes": 17136
+              },
+              "ratioToRawClang": 1.0
+            },
+            "0-cl": {
+              "samplesSeconds": [
+                0.057571854908019304,
+                0.060428904136642814,
+                0.0570862281601876
+              ],
+              "medianSeconds": 0.057571854908019304,
+              "minSeconds": 0.0570862281601876,
+              "maxSeconds": 0.060428904136642814,
+              "count": 3,
+              "args": [
+                12345,
+                277
+              ],
+              "repeat": 5000000,
+              "expected": 0,
+              "buildObservation": {
+                "name": "source-compiler_classify",
+                "budget": 0,
+                "backend": "cl",
+                "objectSeconds": 0.003878416959196329,
+                "linkSeconds": 0.016254035057500005,
+                "objectBytes": 1656,
+                "binaryBytes": 17408
+              },
+              "ratioToRawClang": 3.6228796392786307
+            },
+            "0-qbe": {
+              "samplesSeconds": [
+                0.048642465844750404,
+                0.05310159898363054,
+                0.04911004891619086
+              ],
+              "medianSeconds": 0.04911004891619086,
+              "minSeconds": 0.048642465844750404,
+              "maxSeconds": 0.05310159898363054,
+              "count": 3,
+              "args": [
+                12345,
+                277
+              ],
+              "repeat": 5000000,
+              "expected": 0,
+              "buildObservation": {
+                "name": "source-compiler_classify",
+                "budget": 0,
+                "backend": "qbe",
+                "objectSeconds": 0.010185166960582137,
+                "linkSeconds": 0.016385982977226377,
+                "objectBytes": 1736,
+                "binaryBytes": 17520
+              },
+              "ratioToRawClang": 3.0903954125970436
+            },
+            "4096-c": {
+              "samplesSeconds": [
+                0.017600060906261206,
+                0.017822169931605458,
+                0.01632764795795083
+              ],
+              "medianSeconds": 0.017600060906261206,
+              "minSeconds": 0.01632764795795083,
+              "maxSeconds": 0.017822169931605458,
+              "count": 3,
+              "args": [
+                12345,
+                277
+              ],
+              "repeat": 5000000,
+              "expected": 0,
+              "buildObservation": {
+                "name": "source-compiler_classify",
+                "budget": 4096,
+                "backend": "c",
+                "objectSeconds": 0.033740003826096654,
+                "linkSeconds": 0.016476216027513146,
+                "objectBytes": 1240,
+                "binaryBytes": 17136
+              },
+              "ratioToRawClang": 1.1075360071206575
+            },
+            "4096-cl": {
+              "samplesSeconds": [
+                0.03054135199636221,
+                0.03267143713310361,
+                0.03066545887850225
+              ],
+              "medianSeconds": 0.03066545887850225,
+              "minSeconds": 0.03054135199636221,
+              "maxSeconds": 0.03267143713310361,
+              "count": 3,
+              "args": [
+                12345,
+                277
+              ],
+              "repeat": 5000000,
+              "expected": 0,
+              "buildObservation": {
+                "name": "source-compiler_classify",
+                "budget": 4096,
+                "backend": "cl",
+                "objectSeconds": 0.003815297968685627,
+                "linkSeconds": 0.016007232945412397,
+                "objectBytes": 1152,
+                "binaryBytes": 17112
+              },
+              "ratioToRawClang": 1.9297149063124408
+            },
+            "4096-qbe": {
+              "samplesSeconds": [
+                0.026373946107923985,
+                0.02657563704997301,
+                0.021601848071441054
+              ],
+              "medianSeconds": 0.026373946107923985,
+              "minSeconds": 0.021601848071441054,
+              "maxSeconds": 0.02657563704997301,
+              "count": 3,
+              "args": [
+                12345,
+                277
+              ],
+              "repeat": 5000000,
+              "expected": 0,
+              "buildObservation": {
+                "name": "source-compiler_classify",
+                "budget": 4096,
+                "backend": "qbe",
+                "objectSeconds": 0.010420959908515215,
+                "linkSeconds": 0.016366136958822608,
+                "objectBytes": 1392,
+                "binaryBytes": 17248
+              },
+              "ratioToRawClang": 1.6596587432259435
+            }
+          }
+        },
+        {
+          "name": "source-erased",
+          "variants": {
+            "0-c": {
+              "samplesSeconds": [
+                0.01310338987968862,
+                0.013125075027346611,
+                0.01317820604890585
+              ],
+              "medianSeconds": 0.013125075027346611,
+              "minSeconds": 0.01310338987968862,
+              "maxSeconds": 0.01317820604890585,
+              "count": 3,
+              "args": [
+                12345,
+                277
+              ],
+              "repeat": 5000000,
+              "expected": 2654423287,
+              "buildObservation": {
+                "name": "source-erased",
+                "budget": 0,
+                "backend": "c",
+                "objectSeconds": 0.030177386943250895,
+                "linkSeconds": 0.016605344833806157,
+                "objectBytes": 1152,
+                "binaryBytes": 17128
+              },
+              "ratioToRawClang": 1.0
+            },
+            "0-cl": {
+              "samplesSeconds": [
+                0.027079623891040683,
+                0.026546833105385303,
+                0.02670796005986631
+              ],
+              "medianSeconds": 0.02670796005986631,
+              "minSeconds": 0.026546833105385303,
+              "maxSeconds": 0.027079623891040683,
+              "count": 3,
+              "args": [
+                12345,
+                277
+              ],
+              "repeat": 5000000,
+              "expected": 2654423287,
+              "buildObservation": {
+                "name": "source-erased",
+                "budget": 0,
+                "backend": "cl",
+                "objectSeconds": 0.003640066832304001,
+                "linkSeconds": 0.016084920847788453,
+                "objectBytes": 1192,
+                "binaryBytes": 17216
+              },
+              "ratioToRawClang": 2.034880562908724
+            },
+            "0-qbe": {
+              "samplesSeconds": [
+                0.02798057207837701,
+                0.029180417070165277,
+                0.02778186392970383
+              ],
+              "medianSeconds": 0.02798057207837701,
+              "minSeconds": 0.02778186392970383,
+              "maxSeconds": 0.029180417070165277,
+              "count": 3,
+              "args": [
+                12345,
+                277
+              ],
+              "repeat": 5000000,
+              "expected": 2654423287,
+              "buildObservation": {
+                "name": "source-erased",
+                "budget": 0,
+                "backend": "qbe",
+                "objectSeconds": 0.009635769063606858,
+                "linkSeconds": 0.01600717310793698,
+                "objectBytes": 1376,
+                "binaryBytes": 17328
+              },
+              "ratioToRawClang": 2.1318409243435474
+            },
+            "4096-c": {
+              "samplesSeconds": [
+                0.01339315203949809,
+                0.013248987030237913,
+                0.013228663010522723
+              ],
+              "medianSeconds": 0.013248987030237913,
+              "minSeconds": 0.013228663010522723,
+              "maxSeconds": 0.01339315203949809,
+              "count": 3,
+              "args": [
+                12345,
+                277
+              ],
+              "repeat": 5000000,
+              "expected": 2654423287,
+              "buildObservation": {
+                "name": "source-erased",
+                "budget": 4096,
+                "backend": "c",
+                "objectSeconds": 0.0297529308591038,
+                "linkSeconds": 0.016274032881483436,
+                "objectBytes": 1152,
+                "binaryBytes": 17128
+              },
+              "ratioToRawClang": 1.009440860538559
+            },
+            "4096-cl": {
+              "samplesSeconds": [
+                0.01976609486155212,
+                0.021682426100596786,
+                0.02018952090293169
+              ],
+              "medianSeconds": 0.02018952090293169,
+              "minSeconds": 0.01976609486155212,
+              "maxSeconds": 0.021682426100596786,
+              "count": 3,
+              "args": [
+                12345,
+                277
+              ],
+              "repeat": 5000000,
+              "expected": 2654423287,
+              "buildObservation": {
+                "name": "source-erased",
+                "budget": 4096,
+                "backend": "cl",
+                "objectSeconds": 0.0033709509298205376,
+                "linkSeconds": 0.016014596913009882,
+                "objectBytes": 1000,
+                "binaryBytes": 17112
+              },
+              "ratioToRawClang": 1.538240418501687
+            },
+            "4096-qbe": {
+              "samplesSeconds": [
+                0.01674390584230423,
+                0.016076976899057627,
+                0.01615137606859207
+              ],
+              "medianSeconds": 0.01615137606859207,
+              "minSeconds": 0.016076976899057627,
+              "maxSeconds": 0.01674390584230423,
+              "count": 3,
+              "args": [
+                12345,
+                277
+              ],
+              "repeat": 5000000,
+              "expected": 2654423287,
+              "buildObservation": {
+                "name": "source-erased",
+                "budget": 4096,
+                "backend": "qbe",
+                "objectSeconds": 0.00929954694584012,
+                "linkSeconds": 0.0162690170109272,
+                "objectBytes": 1208,
+                "binaryBytes": 17232
+              },
+              "ratioToRawClang": 1.230573999382102
+            }
+          }
+        },
+        {
+          "name": "source-recurrence",
+          "variants": {
+            "0-c": {
+              "samplesSeconds": [
+                0.015007868176326156,
+                0.014861791860312223,
+                0.015012741088867188
+              ],
+              "medianSeconds": 0.015007868176326156,
+              "minSeconds": 0.014861791860312223,
+              "maxSeconds": 0.015012741088867188,
+              "count": 3,
+              "args": [
+                1000,
+                23
+              ],
+              "repeat": 10000,
+              "expected": 1916827531,
+              "buildObservation": {
+                "name": "source-recurrence",
+                "budget": 0,
+                "backend": "c",
+                "objectSeconds": 0.036253871861845255,
+                "linkSeconds": 0.016364543000236154,
+                "objectBytes": 1296,
+                "binaryBytes": 17128
+              },
+              "ratioToRawClang": 1.0
+            },
+            "0-cl": {
+              "samplesSeconds": [
+                0.029239318799227476,
+                0.029262488009408116,
+                0.02676803502254188
+              ],
+              "medianSeconds": 0.029239318799227476,
+              "minSeconds": 0.02676803502254188,
+              "maxSeconds": 0.029262488009408116,
+              "count": 3,
+              "args": [
+                1000,
+                23
+              ],
+              "repeat": 10000,
+              "expected": 1916827531,
+              "buildObservation": {
+                "name": "source-recurrence",
+                "budget": 0,
+                "backend": "cl",
+                "objectSeconds": 0.003708895994350314,
+                "linkSeconds": 0.016196280950680375,
+                "objectBytes": 1272,
+                "binaryBytes": 17208
+              },
+              "ratioToRawClang": 1.9482659666047988
+            },
+            "0-qbe": {
+              "samplesSeconds": [
+                0.03636228106915951,
+                0.0382444360293448,
+                0.03669012594036758
+              ],
+              "medianSeconds": 0.03669012594036758,
+              "minSeconds": 0.03636228106915951,
+              "maxSeconds": 0.0382444360293448,
+              "count": 3,
+              "args": [
+                1000,
+                23
+              ],
+              "repeat": 10000,
+              "expected": 1916827531,
+              "buildObservation": {
+                "name": "source-recurrence",
+                "budget": 0,
+                "backend": "qbe",
+                "objectSeconds": 0.012752748094499111,
+                "linkSeconds": 0.017030816059559584,
+                "objectBytes": 1416,
+                "binaryBytes": 17320
+              },
+              "ratioToRawClang": 2.444726026994536
+            },
+            "4096-c": {
+              "samplesSeconds": [
+                0.015192589024081826,
+                0.015442553907632828,
+                0.014882270013913512
+              ],
+              "medianSeconds": 0.015192589024081826,
+              "minSeconds": 0.014882270013913512,
+              "maxSeconds": 0.015442553907632828,
+              "count": 3,
+              "args": [
+                1000,
+                23
+              ],
+              "repeat": 10000,
+              "expected": 1916827531,
+              "buildObservation": {
+                "name": "source-recurrence",
+                "budget": 4096,
+                "backend": "c",
+                "objectSeconds": 0.03657845687121153,
+                "linkSeconds": 0.01621659193187952,
+                "objectBytes": 1296,
+                "binaryBytes": 17128
+              },
+              "ratioToRawClang": 1.0123082669427397
+            },
+            "4096-cl": {
+              "samplesSeconds": [
+                0.015678351977840066,
+                0.013600840931758285,
+                0.013684018049389124
+              ],
+              "medianSeconds": 0.013684018049389124,
+              "minSeconds": 0.013600840931758285,
+              "maxSeconds": 0.015678351977840066,
+              "count": 3,
+              "args": [
+                1000,
+                23
+              ],
+              "repeat": 10000,
+              "expected": 1916827531,
+              "buildObservation": {
+                "name": "source-recurrence",
+                "budget": 4096,
+                "backend": "cl",
+                "objectSeconds": 0.003846636973321438,
+                "linkSeconds": 0.016162696992978454,
+                "objectBytes": 1168,
+                "binaryBytes": 17160
+              },
+              "ratioToRawClang": 0.9117895952054462
+            },
+            "4096-qbe": {
+              "samplesSeconds": [
+                0.01586304185912013,
+                0.01708313194103539,
+                0.013402511831372976
+              ],
+              "medianSeconds": 0.01586304185912013,
+              "minSeconds": 0.013402511831372976,
+              "maxSeconds": 0.01708313194103539,
+              "count": 3,
+              "args": [
+                1000,
+                23
+              ],
+              "repeat": 10000,
+              "expected": 1916827531,
+              "buildObservation": {
+                "name": "source-recurrence",
+                "budget": 4096,
+                "backend": "qbe",
+                "objectSeconds": 0.00998698198236525,
+                "linkSeconds": 0.016255396883934736,
+                "objectBytes": 1352,
+                "binaryBytes": 17280
+              },
+              "ratioToRawClang": 1.056981689387634
+            }
+          }
+        }
+      ],
+      "geometricMeanRatioToRawClang": {
+        "c": 0.9744201575989204,
+        "cl": 1.3621207956070436,
+        "qbe": 1.1743539157693599
+      },
+      "scope": "Checked repeated generated-program process runtime; median per case. Baseline is the same workload in raw experimental IR emitted through C/Clang O2, NOT upstream Bend. Budget 4096 denotes this receipt's pipeline, which changes across screens. Build observations are single measurements, separate from the repeated runtime samples. Equal-case geometric mean is descriptive of this fixed small corpus, not representative language-wide parity."
     }
   },
   "excludedScreens": [
@@ -15625,6 +17867,34 @@
       "inputPinsAsRecorded": [],
       "scope": null,
       "clockScope": null
+    },
+    {
+      "report": {
+        "file": "selfhost/build/phase107/promotion-audit02/report.json",
+        "bytes": 400841,
+        "sha256": "c6185ee4dbda7a8e265b1a7c27bf720a072d906374929039ebd116c861ab41d8"
+      },
+      "kind": null,
+      "complete": true,
+      "passed": null,
+      "wallSeconds": null,
+      "inputPinsAsRecorded": [],
+      "scope": null,
+      "clockScope": null
+    },
+    {
+      "report": {
+        "file": "selfhost/build/phase107/promotion-audit03/report.json",
+        "bytes": 420380,
+        "sha256": "05b0e4f2a6042c40af2988d84eda373e0164bebbb06ae439ae5ecbc04c3715f3"
+      },
+      "kind": null,
+      "complete": true,
+      "passed": null,
+      "wallSeconds": null,
+      "inputPinsAsRecorded": [],
+      "scope": null,
+      "clockScope": null
     }
   ],
   "pipelineAudit": {
@@ -15920,11 +18190,967 @@
     "scope": "Exact optimization/IR/emission comparison, not independent generated-program execution or a proof. Fixed4096 budgets. Single-entry closed programs.",
     "clockScope": "Warmed same-process optimization only, after corpus qualification. Input cloning, diagnostic verification, serialization and emission excluded. Both policies include their boundary checks; checked policy also includes standalone pass checks."
   },
+  "nativePipelineRequests": {
+    "kernel-measure02": {
+      "provenance": {
+        "report": {
+          "file": "selfhost/build/phase107/kernel-measure02/report.json",
+          "bytes": 106271,
+          "sha256": "fb5e4250989e23b981cdc1d57f4e05e13bb94ff6d8aa2367252c248a8b4cfa8a"
+        },
+        "kind": "phase107-native-js-ir-kernel",
+        "complete": true,
+        "passed": true,
+        "wallSeconds": 36.33140993118286,
+        "inputPinsAsRecorded": [
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase107/kernel/measure.py",
+            "bytes": 4312,
+            "sha256": "08d21fdb68a0540c2887b921a2880688464e73ed1cfce770994b4d073632c3bc"
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase107/kernel/kernel.mjs",
+            "bytes": 1848,
+            "sha256": "b8cacc97913976d095e9d72fee4c680e785212c70796c1ff555acd53b5c5196d"
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase107/kernel-source02/producer.bend",
+            "bytes": 138301,
+            "sha256": "9ef185816eb7f74466adbf3126363606e35686c6cd4dfe538cefb98112f3e268"
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase107/kernel-source02/producer",
+            "bytes": 1944024,
+            "sha256": "a89b5a37c3d61742d50477c35161ed7e1d0a65864900c07d4fc2a24235fe841e"
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase107/kernel-source02/api.mjs",
+            "bytes": 235075,
+            "sha256": "8772a10da834b592377dd3fccb1ec4a9600907397571a420ea11a96810402e62"
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/bun-1.4.3/bun",
+            "bytes": 88979072,
+            "sha256": "7ce7d6b654eddeec20afddf2396317fba6dc19ab52788a27e894e1806bf8f24b"
+          }
+        ],
+        "scope": "Identical Bend IR construction/optimization/verification/emission; complete process wall time. Not a Bend-source frontend or full compiler benchmark. Native phase times unavailable; JS adapter phase times supplementary.",
+        "clockScope": null
+      },
+      "rows": [
+        {
+          "name": "many",
+          "policy": "checked",
+          "format": "json",
+          "measurements": {
+            "native": {
+              "samplesSeconds": [
+                0.42036809492856264,
+                0.42157182400114834,
+                0.42185282800346613
+              ],
+              "medianSeconds": 0.42157182400114834,
+              "minSeconds": 0.42036809492856264,
+              "maxSeconds": 0.42185282800346613,
+              "count": 3
+            },
+            "js": {
+              "samplesSeconds": [
+                6.831619797972962,
+                6.83270877902396,
+                6.985646239016205
+              ],
+              "medianSeconds": 6.83270877902396,
+              "minSeconds": 6.831619797972962,
+              "maxSeconds": 6.985646239016205,
+              "count": 3
+            }
+          },
+          "nativeRatio": 0.061699076842752415
+        },
+        {
+          "name": "many",
+          "policy": "fast",
+          "format": "json",
+          "measurements": {
+            "native": {
+              "samplesSeconds": [
+                0.0969191670883447,
+                0.09771119710057974,
+                0.08985672006383538
+              ],
+              "medianSeconds": 0.0969191670883447,
+              "minSeconds": 0.08985672006383538,
+              "maxSeconds": 0.09771119710057974,
+              "count": 3
+            },
+            "js": {
+              "samplesSeconds": [
+                1.2647779257968068,
+                1.2543728628661484,
+                1.2592081429902464
+              ],
+              "medianSeconds": 1.2592081429902464,
+              "minSeconds": 1.2543728628661484,
+              "maxSeconds": 1.2647779257968068,
+              "count": 3
+            }
+          },
+          "nativeRatio": 0.07696834524766523
+        },
+        {
+          "name": "many",
+          "policy": "promote",
+          "format": "json",
+          "measurements": {
+            "native": {
+              "samplesSeconds": [
+                0.1537883880082518,
+                0.17065449594520032,
+                0.1538157481700182
+              ],
+              "medianSeconds": 0.1538157481700182,
+              "minSeconds": 0.1537883880082518,
+              "maxSeconds": 0.17065449594520032,
+              "count": 3
+            },
+            "js": {
+              "samplesSeconds": [
+                2.303427840117365,
+                2.3557386440224946,
+                2.3140355399809778
+              ],
+              "medianSeconds": 2.3140355399809778,
+              "minSeconds": 2.303427840117365,
+              "maxSeconds": 2.3557386440224946,
+              "count": 3
+            }
+          },
+          "nativeRatio": 0.06647078038018492
+        },
+        {
+          "name": "shared",
+          "policy": "checked",
+          "format": "json",
+          "measurements": {
+            "native": {
+              "samplesSeconds": [
+                0.004734002985060215,
+                0.004671240923926234,
+                0.0047404279466718435
+              ],
+              "medianSeconds": 0.004734002985060215,
+              "minSeconds": 0.004671240923926234,
+              "maxSeconds": 0.0047404279466718435,
+              "count": 3
+            },
+            "js": {
+              "samplesSeconds": [
+                0.11012025293894112,
+                0.10902852308936417,
+                0.10958010097965598
+              ],
+              "medianSeconds": 0.10958010097965598,
+              "minSeconds": 0.10902852308936417,
+              "maxSeconds": 0.11012025293894112,
+              "count": 3
+            }
+          },
+          "nativeRatio": 0.04320130153867172
+        },
+        {
+          "name": "shared",
+          "policy": "fast",
+          "format": "json",
+          "measurements": {
+            "native": {
+              "samplesSeconds": [
+                0.004053864860907197,
+                0.0038869110867381096,
+                0.004123489139601588
+              ],
+              "medianSeconds": 0.004053864860907197,
+              "minSeconds": 0.0038869110867381096,
+              "maxSeconds": 0.004123489139601588,
+              "count": 3
+            },
+            "js": {
+              "samplesSeconds": [
+                0.07004687911830842,
+                0.06954999803565443,
+                0.07002375996671617
+              ],
+              "medianSeconds": 0.07002375996671617,
+              "minSeconds": 0.06954999803565443,
+              "maxSeconds": 0.07004687911830842,
+              "count": 3
+            }
+          },
+          "nativeRatio": 0.05789270474527629
+        },
+        {
+          "name": "shared",
+          "policy": "promote",
+          "format": "json",
+          "measurements": {
+            "native": {
+              "samplesSeconds": [
+                0.004324978915974498,
+                0.004371871007606387,
+                0.004308340139687061
+              ],
+              "medianSeconds": 0.004324978915974498,
+              "minSeconds": 0.004308340139687061,
+              "maxSeconds": 0.004371871007606387,
+              "count": 3
+            },
+            "js": {
+              "samplesSeconds": [
+                0.09741989709436893,
+                0.09704667120240629,
+                0.0975220431573689
+              ],
+              "medianSeconds": 0.09741989709436893,
+              "minSeconds": 0.09704667120240629,
+              "maxSeconds": 0.0975220431573689,
+              "count": 3
+            }
+          },
+          "nativeRatio": 0.044395231826050555
+        },
+        {
+          "name": "text",
+          "policy": "checked",
+          "format": "json",
+          "measurements": {
+            "native": {
+              "samplesSeconds": [
+                0.004542761016637087,
+                0.0048263350035995245,
+                0.0045408939477056265
+              ],
+              "medianSeconds": 0.004542761016637087,
+              "minSeconds": 0.0045408939477056265,
+              "maxSeconds": 0.0048263350035995245,
+              "count": 3
+            },
+            "js": {
+              "samplesSeconds": [
+                0.10784211591817439,
+                0.1096033041831106,
+                0.10749964998103678
+              ],
+              "medianSeconds": 0.10784211591817439,
+              "minSeconds": 0.10749964998103678,
+              "maxSeconds": 0.1096033041831106,
+              "count": 3
+            }
+          },
+          "nativeRatio": 0.04212418291276781
+        },
+        {
+          "name": "text",
+          "policy": "fast",
+          "format": "json",
+          "measurements": {
+            "native": {
+              "samplesSeconds": [
+                0.004386598011478782,
+                0.004017118830233812,
+                0.004247344098985195
+              ],
+              "medianSeconds": 0.004247344098985195,
+              "minSeconds": 0.004017118830233812,
+              "maxSeconds": 0.004386598011478782,
+              "count": 3
+            },
+            "js": {
+              "samplesSeconds": [
+                0.06539604300633073,
+                0.06499876896850765,
+                0.06582149211317301
+              ],
+              "medianSeconds": 0.06539604300633073,
+              "minSeconds": 0.06499876896850765,
+              "maxSeconds": 0.06582149211317301,
+              "count": 3
+            }
+          },
+          "nativeRatio": 0.0649480290202578
+        },
+        {
+          "name": "text",
+          "policy": "promote",
+          "format": "json",
+          "measurements": {
+            "native": {
+              "samplesSeconds": [
+                0.003967057913541794,
+                0.004292495083063841,
+                0.004171086009591818
+              ],
+              "medianSeconds": 0.004171086009591818,
+              "minSeconds": 0.003967057913541794,
+              "maxSeconds": 0.004292495083063841,
+              "count": 3
+            },
+            "js": {
+              "samplesSeconds": [
+                0.07687840703874826,
+                0.07683228398673236,
+                0.07692395197227597
+              ],
+              "medianSeconds": 0.07687840703874826,
+              "minSeconds": 0.07683228398673236,
+              "maxSeconds": 0.07692395197227597,
+              "count": 3
+            }
+          },
+          "nativeRatio": 0.05425562482700125
+        }
+      ],
+      "outputComparisons": [
+        {
+          "name": "many",
+          "policy": "promote",
+          "format": "json",
+          "round": 0,
+          "sha256": "9205ec584eef519b46fac402e5d37c8fb34de8513a54ad2bc5eeb481cfd47499"
+        },
+        {
+          "name": "shared",
+          "policy": "promote",
+          "format": "json",
+          "round": 0,
+          "sha256": "4c378c376d19a16cebc2c0a79a597a11d7e60d4ecb79a7f817ef208b2e40b813"
+        },
+        {
+          "name": "many",
+          "policy": "fast",
+          "format": "json",
+          "round": 0,
+          "sha256": "9205ec584eef519b46fac402e5d37c8fb34de8513a54ad2bc5eeb481cfd47499"
+        },
+        {
+          "name": "shared",
+          "policy": "checked",
+          "format": "json",
+          "round": 0,
+          "sha256": "5c8588d4869109355b939fcd683da9cc1c2c6695d3ca3e666aa866f19648d8b9"
+        },
+        {
+          "name": "text",
+          "policy": "checked",
+          "format": "json",
+          "round": 0,
+          "sha256": "92e704d8df9742f9468e802c44246f42e9c108a4373b72737effc7144b47e572"
+        },
+        {
+          "name": "shared",
+          "policy": "fast",
+          "format": "json",
+          "round": 0,
+          "sha256": "5c8588d4869109355b939fcd683da9cc1c2c6695d3ca3e666aa866f19648d8b9"
+        },
+        {
+          "name": "text",
+          "policy": "promote",
+          "format": "json",
+          "round": 0,
+          "sha256": "92e704d8df9742f9468e802c44246f42e9c108a4373b72737effc7144b47e572"
+        },
+        {
+          "name": "many",
+          "policy": "checked",
+          "format": "json",
+          "round": 0,
+          "sha256": "9205ec584eef519b46fac402e5d37c8fb34de8513a54ad2bc5eeb481cfd47499"
+        },
+        {
+          "name": "text",
+          "policy": "fast",
+          "format": "json",
+          "round": 0,
+          "sha256": "92e704d8df9742f9468e802c44246f42e9c108a4373b72737effc7144b47e572"
+        },
+        {
+          "name": "text",
+          "policy": "fast",
+          "format": "json",
+          "round": 1,
+          "sha256": "92e704d8df9742f9468e802c44246f42e9c108a4373b72737effc7144b47e572"
+        },
+        {
+          "name": "many",
+          "policy": "checked",
+          "format": "json",
+          "round": 1,
+          "sha256": "9205ec584eef519b46fac402e5d37c8fb34de8513a54ad2bc5eeb481cfd47499"
+        },
+        {
+          "name": "text",
+          "policy": "promote",
+          "format": "json",
+          "round": 1,
+          "sha256": "92e704d8df9742f9468e802c44246f42e9c108a4373b72737effc7144b47e572"
+        },
+        {
+          "name": "shared",
+          "policy": "fast",
+          "format": "json",
+          "round": 1,
+          "sha256": "5c8588d4869109355b939fcd683da9cc1c2c6695d3ca3e666aa866f19648d8b9"
+        },
+        {
+          "name": "text",
+          "policy": "checked",
+          "format": "json",
+          "round": 1,
+          "sha256": "92e704d8df9742f9468e802c44246f42e9c108a4373b72737effc7144b47e572"
+        },
+        {
+          "name": "shared",
+          "policy": "checked",
+          "format": "json",
+          "round": 1,
+          "sha256": "5c8588d4869109355b939fcd683da9cc1c2c6695d3ca3e666aa866f19648d8b9"
+        },
+        {
+          "name": "many",
+          "policy": "fast",
+          "format": "json",
+          "round": 1,
+          "sha256": "9205ec584eef519b46fac402e5d37c8fb34de8513a54ad2bc5eeb481cfd47499"
+        },
+        {
+          "name": "shared",
+          "policy": "promote",
+          "format": "json",
+          "round": 1,
+          "sha256": "4c378c376d19a16cebc2c0a79a597a11d7e60d4ecb79a7f817ef208b2e40b813"
+        },
+        {
+          "name": "many",
+          "policy": "promote",
+          "format": "json",
+          "round": 1,
+          "sha256": "9205ec584eef519b46fac402e5d37c8fb34de8513a54ad2bc5eeb481cfd47499"
+        },
+        {
+          "name": "many",
+          "policy": "promote",
+          "format": "json",
+          "round": 2,
+          "sha256": "9205ec584eef519b46fac402e5d37c8fb34de8513a54ad2bc5eeb481cfd47499"
+        },
+        {
+          "name": "shared",
+          "policy": "promote",
+          "format": "json",
+          "round": 2,
+          "sha256": "4c378c376d19a16cebc2c0a79a597a11d7e60d4ecb79a7f817ef208b2e40b813"
+        },
+        {
+          "name": "many",
+          "policy": "fast",
+          "format": "json",
+          "round": 2,
+          "sha256": "9205ec584eef519b46fac402e5d37c8fb34de8513a54ad2bc5eeb481cfd47499"
+        },
+        {
+          "name": "shared",
+          "policy": "checked",
+          "format": "json",
+          "round": 2,
+          "sha256": "5c8588d4869109355b939fcd683da9cc1c2c6695d3ca3e666aa866f19648d8b9"
+        },
+        {
+          "name": "text",
+          "policy": "checked",
+          "format": "json",
+          "round": 2,
+          "sha256": "92e704d8df9742f9468e802c44246f42e9c108a4373b72737effc7144b47e572"
+        },
+        {
+          "name": "shared",
+          "policy": "fast",
+          "format": "json",
+          "round": 2,
+          "sha256": "5c8588d4869109355b939fcd683da9cc1c2c6695d3ca3e666aa866f19648d8b9"
+        },
+        {
+          "name": "text",
+          "policy": "promote",
+          "format": "json",
+          "round": 2,
+          "sha256": "92e704d8df9742f9468e802c44246f42e9c108a4373b72737effc7144b47e572"
+        },
+        {
+          "name": "many",
+          "policy": "checked",
+          "format": "json",
+          "round": 2,
+          "sha256": "9205ec584eef519b46fac402e5d37c8fb34de8513a54ad2bc5eeb481cfd47499"
+        },
+        {
+          "name": "text",
+          "policy": "fast",
+          "format": "json",
+          "round": 2,
+          "sha256": "92e704d8df9742f9468e802c44246f42e9c108a4373b72737effc7144b47e572"
+        }
+      ],
+      "scope": "Identical Bend IR construction/optimization/verification/emission; complete process wall time. Not a Bend-source frontend or full compiler benchmark. Native phase times unavailable; JS adapter phase times supplementary. Fresh-process request latency, not warmed throughput; no source parsing, object generation, linking or generated-program execution in this metric. Output equality compares native versus JS for the same policy. Within-image policy ratios are separate from host ratios and from warm optimizer timings; gains are not multiplied.",
+      "withinImageComparisons": [
+        {
+          "name": "many",
+          "numerator": "fast",
+          "denominator": "checked",
+          "ratios": {
+            "native": 0.22989953685348927,
+            "js": 0.18429120627180046
+          }
+        },
+        {
+          "name": "many",
+          "numerator": "promote",
+          "denominator": "fast",
+          "ratios": {
+            "native": 1.5870518989273874,
+            "js": 1.8376910543842486
+          }
+        },
+        {
+          "name": "shared",
+          "numerator": "fast",
+          "denominator": "checked",
+          "ratios": {
+            "native": 0.856329172943188,
+            "js": 0.6390189399416266
+          }
+        },
+        {
+          "name": "shared",
+          "numerator": "promote",
+          "denominator": "fast",
+          "ratios": {
+            "native": 1.066877921284882,
+            "js": 1.3912405894895497
+          }
+        },
+        {
+          "name": "text",
+          "numerator": "fast",
+          "denominator": "checked",
+          "ratios": {
+            "native": 0.9349697427247488,
+            "js": 0.6064054145223766
+          }
+        },
+        {
+          "name": "text",
+          "numerator": "promote",
+          "denominator": "fast",
+          "ratios": {
+            "native": 0.9820457001796493,
+            "js": 1.175581938976124
+          }
+        }
+      ]
+    },
+    "kernel-measure03": {
+      "provenance": {
+        "report": {
+          "file": "selfhost/build/phase107/kernel-measure03/report.json",
+          "bytes": 71394,
+          "sha256": "0802c4f2bdda733d02d3b7758c273a85e93e89da1a32a7007fbe039bf1cc9037"
+        },
+        "kind": "phase107-native-js-ir-kernel",
+        "complete": true,
+        "passed": true,
+        "wallSeconds": 10.055867195129395,
+        "inputPinsAsRecorded": [
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase107/kernel/measure.py",
+            "bytes": 4312,
+            "sha256": "08d21fdb68a0540c2887b921a2880688464e73ed1cfce770994b4d073632c3bc"
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase107/kernel/kernel.mjs",
+            "bytes": 1848,
+            "sha256": "b8cacc97913976d095e9d72fee4c680e785212c70796c1ff555acd53b5c5196d"
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase107/kernel-source03/producer.bend",
+            "bytes": 139418,
+            "sha256": "0ebbb384c408f9f49c707f9f86d4f4484897d4691539a25b93702033e38b7d69"
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase107/kernel-source03/producer",
+            "bytes": 1956336,
+            "sha256": "7d3558164527349eafc764a2e306bb04d06cac4a5de377299ef388238910c1d3"
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase107/kernel-source03/api.mjs",
+            "bytes": 236627,
+            "sha256": "3bcd33c2b059705c8d18f64debd58c5684be61b485760e8f57d459ae5987e934"
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/bun-1.4.3/bun",
+            "bytes": 88979072,
+            "sha256": "7ce7d6b654eddeec20afddf2396317fba6dc19ab52788a27e894e1806bf8f24b"
+          }
+        ],
+        "scope": "Identical Bend IR construction/optimization/verification/emission; complete process wall time. Not a Bend-source frontend or full compiler benchmark. Native phase times unavailable; JS adapter phase times supplementary.",
+        "clockScope": null
+      },
+      "rows": [
+        {
+          "name": "many",
+          "policy": "fast",
+          "format": "json",
+          "measurements": {
+            "native": {
+              "samplesSeconds": [
+                0.09171040798537433,
+                0.09035755600780249,
+                0.09133637207560241
+              ],
+              "medianSeconds": 0.09133637207560241,
+              "minSeconds": 0.09035755600780249,
+              "maxSeconds": 0.09171040798537433,
+              "count": 3
+            },
+            "js": {
+              "samplesSeconds": [
+                1.2598574778530747,
+                1.2738539720885456,
+                1.2795200468972325
+              ],
+              "medianSeconds": 1.2738539720885456,
+              "minSeconds": 1.2598574778530747,
+              "maxSeconds": 1.2795200468972325,
+              "count": 3
+            }
+          },
+          "nativeRatio": 0.07170081820748417
+        },
+        {
+          "name": "many",
+          "policy": "promote",
+          "format": "json",
+          "measurements": {
+            "native": {
+              "samplesSeconds": [
+                0.09061680710874498,
+                0.09040175308473408,
+                0.09047901094891131
+              ],
+              "medianSeconds": 0.09047901094891131,
+              "minSeconds": 0.09040175308473408,
+              "maxSeconds": 0.09061680710874498,
+              "count": 3
+            },
+            "js": {
+              "samplesSeconds": [
+                1.278055204078555,
+                1.2651906360406429,
+                1.2684323019348085
+              ],
+              "medianSeconds": 1.2684323019348085,
+              "minSeconds": 1.2651906360406429,
+              "maxSeconds": 1.278055204078555,
+              "count": 3
+            }
+          },
+          "nativeRatio": 0.07133136771343553
+        },
+        {
+          "name": "shared",
+          "policy": "fast",
+          "format": "json",
+          "measurements": {
+            "native": {
+              "samplesSeconds": [
+                0.00410260702483356,
+                0.004029005067422986,
+                0.004339982056990266
+              ],
+              "medianSeconds": 0.00410260702483356,
+              "minSeconds": 0.004029005067422986,
+              "maxSeconds": 0.004339982056990266,
+              "count": 3
+            },
+            "js": {
+              "samplesSeconds": [
+                0.07079052599146962,
+                0.070544159039855,
+                0.07856731791980565
+              ],
+              "medianSeconds": 0.07079052599146962,
+              "minSeconds": 0.070544159039855,
+              "maxSeconds": 0.07856731791980565,
+              "count": 3
+            }
+          },
+          "nativeRatio": 0.057954181966778026
+        },
+        {
+          "name": "shared",
+          "policy": "promote",
+          "format": "json",
+          "measurements": {
+            "native": {
+              "samplesSeconds": [
+                0.004611447919160128,
+                0.004586791852489114,
+                0.00456776306964457
+              ],
+              "medianSeconds": 0.004586791852489114,
+              "minSeconds": 0.00456776306964457,
+              "maxSeconds": 0.004611447919160128,
+              "count": 3
+            },
+            "js": {
+              "samplesSeconds": [
+                0.09763027098961174,
+                0.0978459669277072,
+                0.10403491789475083
+              ],
+              "medianSeconds": 0.0978459669277072,
+              "minSeconds": 0.09763027098961174,
+              "maxSeconds": 0.10403491789475083,
+              "count": 3
+            }
+          },
+          "nativeRatio": 0.046877679239227435
+        },
+        {
+          "name": "text",
+          "policy": "fast",
+          "format": "json",
+          "measurements": {
+            "native": {
+              "samplesSeconds": [
+                0.0039332169108092785,
+                0.004130520159378648,
+                0.004471553023904562
+              ],
+              "medianSeconds": 0.004130520159378648,
+              "minSeconds": 0.0039332169108092785,
+              "maxSeconds": 0.004471553023904562,
+              "count": 3
+            },
+            "js": {
+              "samplesSeconds": [
+                0.06553738610818982,
+                0.0676649990491569,
+                0.0685996669344604
+              ],
+              "medianSeconds": 0.0676649990491569,
+              "minSeconds": 0.06553738610818982,
+              "maxSeconds": 0.0685996669344604,
+              "count": 3
+            }
+          },
+          "nativeRatio": 0.06104367423958625
+        },
+        {
+          "name": "text",
+          "policy": "promote",
+          "format": "json",
+          "measurements": {
+            "native": {
+              "samplesSeconds": [
+                0.004316137870773673,
+                0.0044737260323017836,
+                0.004349344177171588
+              ],
+              "medianSeconds": 0.004349344177171588,
+              "minSeconds": 0.004316137870773673,
+              "maxSeconds": 0.0044737260323017836,
+              "count": 3
+            },
+            "js": {
+              "samplesSeconds": [
+                0.07832854799926281,
+                0.07888523791916668,
+                0.07811861112713814
+              ],
+              "medianSeconds": 0.07832854799926281,
+              "minSeconds": 0.07811861112713814,
+              "maxSeconds": 0.07888523791916668,
+              "count": 3
+            }
+          },
+          "nativeRatio": 0.055526934792823196
+        }
+      ],
+      "outputComparisons": [
+        {
+          "name": "many",
+          "policy": "promote",
+          "format": "json",
+          "round": 0,
+          "sha256": "9205ec584eef519b46fac402e5d37c8fb34de8513a54ad2bc5eeb481cfd47499"
+        },
+        {
+          "name": "many",
+          "policy": "fast",
+          "format": "json",
+          "round": 0,
+          "sha256": "9205ec584eef519b46fac402e5d37c8fb34de8513a54ad2bc5eeb481cfd47499"
+        },
+        {
+          "name": "shared",
+          "policy": "fast",
+          "format": "json",
+          "round": 0,
+          "sha256": "5c8588d4869109355b939fcd683da9cc1c2c6695d3ca3e666aa866f19648d8b9"
+        },
+        {
+          "name": "shared",
+          "policy": "promote",
+          "format": "json",
+          "round": 0,
+          "sha256": "4c378c376d19a16cebc2c0a79a597a11d7e60d4ecb79a7f817ef208b2e40b813"
+        },
+        {
+          "name": "text",
+          "policy": "fast",
+          "format": "json",
+          "round": 0,
+          "sha256": "92e704d8df9742f9468e802c44246f42e9c108a4373b72737effc7144b47e572"
+        },
+        {
+          "name": "text",
+          "policy": "promote",
+          "format": "json",
+          "round": 0,
+          "sha256": "92e704d8df9742f9468e802c44246f42e9c108a4373b72737effc7144b47e572"
+        },
+        {
+          "name": "text",
+          "policy": "promote",
+          "format": "json",
+          "round": 1,
+          "sha256": "92e704d8df9742f9468e802c44246f42e9c108a4373b72737effc7144b47e572"
+        },
+        {
+          "name": "text",
+          "policy": "fast",
+          "format": "json",
+          "round": 1,
+          "sha256": "92e704d8df9742f9468e802c44246f42e9c108a4373b72737effc7144b47e572"
+        },
+        {
+          "name": "shared",
+          "policy": "promote",
+          "format": "json",
+          "round": 1,
+          "sha256": "4c378c376d19a16cebc2c0a79a597a11d7e60d4ecb79a7f817ef208b2e40b813"
+        },
+        {
+          "name": "shared",
+          "policy": "fast",
+          "format": "json",
+          "round": 1,
+          "sha256": "5c8588d4869109355b939fcd683da9cc1c2c6695d3ca3e666aa866f19648d8b9"
+        },
+        {
+          "name": "many",
+          "policy": "fast",
+          "format": "json",
+          "round": 1,
+          "sha256": "9205ec584eef519b46fac402e5d37c8fb34de8513a54ad2bc5eeb481cfd47499"
+        },
+        {
+          "name": "many",
+          "policy": "promote",
+          "format": "json",
+          "round": 1,
+          "sha256": "9205ec584eef519b46fac402e5d37c8fb34de8513a54ad2bc5eeb481cfd47499"
+        },
+        {
+          "name": "many",
+          "policy": "promote",
+          "format": "json",
+          "round": 2,
+          "sha256": "9205ec584eef519b46fac402e5d37c8fb34de8513a54ad2bc5eeb481cfd47499"
+        },
+        {
+          "name": "many",
+          "policy": "fast",
+          "format": "json",
+          "round": 2,
+          "sha256": "9205ec584eef519b46fac402e5d37c8fb34de8513a54ad2bc5eeb481cfd47499"
+        },
+        {
+          "name": "shared",
+          "policy": "fast",
+          "format": "json",
+          "round": 2,
+          "sha256": "5c8588d4869109355b939fcd683da9cc1c2c6695d3ca3e666aa866f19648d8b9"
+        },
+        {
+          "name": "shared",
+          "policy": "promote",
+          "format": "json",
+          "round": 2,
+          "sha256": "4c378c376d19a16cebc2c0a79a597a11d7e60d4ecb79a7f817ef208b2e40b813"
+        },
+        {
+          "name": "text",
+          "policy": "fast",
+          "format": "json",
+          "round": 2,
+          "sha256": "92e704d8df9742f9468e802c44246f42e9c108a4373b72737effc7144b47e572"
+        },
+        {
+          "name": "text",
+          "policy": "promote",
+          "format": "json",
+          "round": 2,
+          "sha256": "92e704d8df9742f9468e802c44246f42e9c108a4373b72737effc7144b47e572"
+        }
+      ],
+      "scope": "Identical Bend IR construction/optimization/verification/emission; complete process wall time. Not a Bend-source frontend or full compiler benchmark. Native phase times unavailable; JS adapter phase times supplementary. Fresh-process request latency, not warmed throughput; no source parsing, object generation, linking or generated-program execution in this metric. Output equality compares native versus JS for the same policy. Within-image policy ratios are separate from host ratios and from warm optimizer timings; gains are not multiplied.",
+      "withinImageComparisons": [
+        {
+          "name": "many",
+          "numerator": "promote",
+          "denominator": "fast",
+          "ratios": {
+            "native": 0.9906131466883594,
+            "js": 0.9957438840930504
+          }
+        },
+        {
+          "name": "shared",
+          "numerator": "promote",
+          "denominator": "fast",
+          "ratios": {
+            "native": 1.1180188169923968,
+            "js": 1.3821901385433666
+          }
+        },
+        {
+          "name": "text",
+          "numerator": "promote",
+          "denominator": "fast",
+          "ratios": {
+            "native": 1.0529773513624148,
+            "js": 1.157593277173611
+          }
+        }
+      ]
+    }
+  },
   "figures": [
     {
       "file": "implementation/phase107/figures/backend-runtime.svg",
-      "bytes": 57466,
-      "sha256": "44d5fedd78fb2fd18b4b58ba894693fb43858d02775387beef25cb9525c0d186"
+      "bytes": 58186,
+      "sha256": "53102926f55b9d673d5bc58a802fde1dc5b29dc51308d12aa2dc5c77caa1922c"
     },
     {
       "file": "implementation/phase107/figures/source-to-executable.svg",
@@ -15935,6 +19161,11 @@
       "file": "implementation/phase107/figures/identical-kernel.svg",
       "bytes": 48277,
       "sha256": "7981a63cf27a5ed337144a98c30c57794fc9933cbc0fe6a9a2bece43a0594c48"
+    },
+    {
+      "file": "implementation/phase107/figures/native-pipeline-requests.svg",
+      "bytes": 77759,
+      "sha256": "6805fc73331a9bd991a656be3707b4c5ef5aa91a9fed4cfb8a54f39c6f0baa90"
     },
     {
       "file": "implementation/phase107/figures/pipeline-cost.svg",

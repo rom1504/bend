@@ -151,7 +151,7 @@ def pipeline(path):
                 clockScope=report['clockScope'])
 
 
-def draw(metrics, directory):
+def draw(metrics, directory, preview=None):
     os.environ.setdefault('MPLCONFIGDIR', '/tmp/bend-phase107-matplotlib')
     import matplotlib
     matplotlib.use('Agg')
@@ -159,11 +159,15 @@ def draw(metrics, directory):
     plt.rcParams.update({'svg.hashsalt': 'phase107-metrics', 'font.size': 10,
                          'axes.spines.top': False, 'axes.spines.right': False})
     directory.mkdir(parents=True, exist_ok=True)
+    if preview is not None:
+        preview.mkdir(parents=True, exist_ok=True)
     paths = []
     def finish(fig, name):
         fig.tight_layout()
         path = directory / name
         fig.savefig(path, format='svg', metadata={'Date': None, 'Creator': 'Phase107 receipt summarizer'})
+        if preview is not None:
+            fig.savefig(preview / Path(name).with_suffix('.png'), dpi=130)
         plt.close(fig)
         paths.append(pin(path))
     latest = metrics['backendScreens'][metrics['latestBackendScreen']]
@@ -214,6 +218,27 @@ def draw(metrics, directory):
         ax.legend()
     fig.suptitle('Construction, optimization, verification and emission only; byte-identical output', fontsize=11)
     finish(fig, 'identical-kernel.svg')
+    if metrics.get('nativePipelineRequests'):
+        reports = metrics['nativePipelineRequests']
+        fig, axes = plt.subplots(2, len(reports), figsize=(11, 7), squeeze=False)
+        for column, (name, report) in enumerate(reports.items()):
+            chosen = [r for r in report['rows'] if r['name'] == 'many' and r['format'] == 'json']
+            for row_index, host in enumerate(['native', 'js']):
+                ax = axes[row_index][column]
+                values = [r['measurements'][host] for r in chosen]
+                medians = [r['medianSeconds'] * 1000 for r in values]
+                errors = [[(r['medianSeconds'] - r['minSeconds']) * 1000 for r in values],
+                          [(r['maxSeconds'] - r['medianSeconds']) * 1000 for r in values]]
+                bars = ax.bar([r['policy'] for r in chosen], medians, yerr=errors, capsize=4,
+                              color=['#92999f' if r['policy'] == 'checked' else
+                                     '#167d9a' if r['policy'] == 'fast' else '#b65c22' for r in chosen])
+                ax.bar_label(bars, labels=[f'{m:.2f}' for m in medians], padding=5)
+                ax.set_ylim(0, max(r['maxSeconds'] * 1000 for r in values) * 1.22)
+                ax.set_ylabel(f'{host.upper()} fresh request (ms)')
+                ax.set_title(name + (' / original promotion' if name.endswith('02') else ' / promotion prefilter'))
+        fig.suptitle('128-helper IR → JSON: three fresh processes per policy and host\n'
+                     'Same image within each panel; different images between columns. No cross-metric gain multiplication.', fontsize=11)
+        finish(fig, 'native-pipeline-requests.svg')
     if metrics.get('pipelineAudit'):
         rows = metrics['pipelineAudit']['rows']
         fig, ax = plt.subplots(figsize=(8, 4.5))
@@ -231,9 +256,12 @@ def draw(metrics, directory):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--out', type=Path, default=ROOT / 'implementation/phase107')
+    parser.add_argument('--preview-dir', type=Path, help='Optional PNG previews outside the repository')
     args = parser.parse_args()
     out = args.out.resolve()
     assert out == ROOT / 'implementation/phase107', 'only the owned report directory may be written'
+    preview = args.preview_dir.resolve() if args.preview_dir else None
+    assert preview is None or not preview.is_relative_to(ROOT), 'PNG previews must stay outside the repository'
     screens, excluded = {}, []
     paths = sorted(BUILD.glob('measure[0-9]*/report.json'),
                    key=lambda p: int(re.fullmatch(r'measure(\d+)', p.parent.name).group(1)))
@@ -259,7 +287,23 @@ def main():
                  if read(p).get('complete') and read(p).get('passed')]
     if pipelines:
         result['pipelineAudit'] = pipeline(pipelines[-1])
-    result['figures'] = draw(result, out / 'figures')
+    result['nativePipelineRequests'] = {}
+    for name in ['kernel-measure02', 'kernel-measure03']:
+        path = BUILD / name / 'report.json'
+        if path.exists() and read(path).get('complete') and read(path).get('passed'):
+            section = kernels(path)
+            section['withinImageComparisons'] = []
+            for workload in sorted({r['name'] for r in section['rows']}):
+                rows = {r['policy']: r for r in section['rows'] if r['name'] == workload and r['format'] == 'json'}
+                for left, right in [('fast', 'checked'), ('promote', 'fast')]:
+                    if left in rows and right in rows:
+                        section['withinImageComparisons'].append(dict(name=workload, numerator=left, denominator=right,
+                            ratios={host: rows[left]['measurements'][host]['medianSeconds'] /
+                                    rows[right]['measurements'][host]['medianSeconds'] for host in ['native', 'js']}))
+            section['scope'] += ' Output equality compares native versus JS for the same policy. '
+            section['scope'] += 'Within-image policy ratios are separate from host ratios and from warm optimizer timings; gains are not multiplied.'
+            result['nativePipelineRequests'][name] = section
+    result['figures'] = draw(result, out / 'figures', preview)
     (out / 'metrics.json').write_text(json.dumps(result, indent=2) + '\n')
     latest = screens[result['latestBackendScreen']]
     lines = ['# Phase107 measured metrics', '', f"Backend screen: **{result['latestBackendScreen']}** "
@@ -292,6 +336,21 @@ def main():
         for row in result['pipelineAudit']['rows']:
             m = row['measurements']
             lines.append(f"| {row['name']} | {m['checked']['medianSeconds']*1000:.3f} | {m['fast']['medianSeconds']*1000:.3f} | {row['fastOverChecked']:.3f}× |")
+    if result['nativePipelineRequests']:
+        lines += ['', '## Fresh native pipeline requests', '',
+            'The 128-helper kernel emits JSON. Each row has three fresh processes per host. '
+            'Policies within each report use the same image; the two reports use different images. '
+            'Native/JS equality is checked for each same-policy pair. These are complete kernel '
+            'requests, not source compilation or generated-program execution, and are not multiplied '
+            'with the warm optimizer or hosting gains above.', '',
+            '| Report | Policy | Native, ms | JS, ms | Same-policy host pairs in report |',
+            '| --- | --- | ---: | ---: | ---: |']
+        for name, section in result['nativePipelineRequests'].items():
+            for row in section['rows']:
+                if row['name'] == 'many' and row['format'] == 'json':
+                    m = row['measurements']
+                    lines.append(f"| {name} | {row['policy']} | {m['native']['medianSeconds']*1000:.3f} | "
+                                 f"{m['js']['medianSeconds']*1000:.3f} | {len(section['outputComparisons'])} |")
     lines += ['', 'All samples, ranges, recorded input hashes, report hashes and precise scopes are in '
               '[metrics.json](metrics.json). Figures are standalone SVGs in [figures/](figures/). '
               'Reproduce offline with `python3 -B selfhost/tools/performance/phase107/summarize.py`.', '']

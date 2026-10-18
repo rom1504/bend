@@ -14,7 +14,7 @@ selected='\n\n'.join(blocks[n] for n in names)
 (out/'core-subset.bend').write_text(selected+'\n')
 files=[ROOT/'selfhost/tools/performance/phase106/ir'/f'{n}.bend' for n in ['model','optimize','verify','json','c','workloads']]
 files += [ROOT/'selfhost/tools/performance/phase106/laws/bridge.bend',HERE/'frontend/lower.bend',HERE/'backends/qbe.bend',HERE/'backends/qbe-entry.bend',HERE/'backends/units.bend',HERE/'backends/controls.bend']
-files += [HERE/'inline'/f'{n}.bend' for n in ['model','admit','rename','expand','deep','entry','tail','reachable','leaf','demand','memory','pipeline','memory-fixtures','fixtures','reachable-fixtures','leaf-fixtures']]
+files += [HERE/'inline'/f'{n}.bend' for n in ['model','admit','rename','expand','deep','entry','tail','reachable','leaf','demand','memory','pipeline','promotion','memory-fixtures','promotion-fixtures','fixtures','reachable-fixtures','leaf-fixtures']]
 source='import Base\n\n'+selected+'\n\n'+'\n\n'.join(f.read_text() for f in files)
 (out/'source.bend').write_text(source)
 pin=lambda f:dict(file=str(f),bytes=f.stat().st_size,sha256=hashlib.sha256(f.read_bytes()).hexdigest())

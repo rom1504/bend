@@ -30,3 +30,26 @@ same independent oracle. Qualify native outputs before interpreting backend gain
 If review/checking cannot finish within this bounded slice, leave the pass prepared
 and unintegrated. Existing pass behavior and installed compiler defaults remain
 unchanged. This is finite validation, not a proof of global compiler correctness.
+
+## Paired executable comparison
+
+After the three-round matrix screen, freeze the existing measure07 (promotion) and
+measure09 (promotion plus scalar constants) binaries. Five alternating rounds of
+all39 backend/workload pairs compare identical args, repeats and full expected
+results. Hash ELF text to distinguish actual machine-code changes from noise;
+unchanged text receives no optimization credit. This is a focused incremental
+comparison, not a new upstream or production-default result. Retain all samples
+in `constant-pair01`. The shared-IR policy remains optional pending outcomes.
+
+## Skip programs with no eligible function
+
+Kernel04 repeats the unnecessary no-op cost on the inlined helper-chain graph,
+whose only function exceeds the existing 128-binding limit. Before another source
+revision, preregister a necessary-condition preflight: if no function satisfies
+the existing binding/body/depth caps, return the exact original program before
+verification. Extract one eligibility helper shared by preflight and per-function
+rewriting so their rules cannot drift. The cheap binding limit is checked first.
+This is identity refusal, including on invalid input, not a validation shortcut.
+Global function-count/program-node gates remain unchanged. Recheck existing cap
+predicates, correctness controls and exact prior outputs before a matched native/JS
+kernel comparison. Preserve kernel04 and all previous evidence.

@@ -29,7 +29,7 @@ verification and a nonincreasing total node count gate publication. Limits are
 The [independent source review](constant-review.md) found no concrete soundness
 bug. Its pin precedes three ownership-annotation fixes: repeated U32 bounds needed
 `+fuel`/`+depth`. The first source attempt, bridge20, failed that checker gate;
-bridge21 passed in 2.310s. The checked core is 213 lines at SHA256
+bridge21 passed in 2.310s. That checked core was 213 lines at SHA256
 `e9de89f34a695b82f7f2c3dbec81866968e42efb31c35604069f2203deddda51`.
 The failed check remains evidence, not a successful qualification.
 
@@ -97,3 +97,14 @@ entry has 385 locals, exceeds the 128-variable cap, and refuses function analysi
 after program verification/counting. This avoidable no-op overhead keeps the pass
 optional. Measure native hosting and cheap applicability checks separately before
 selecting a broader default.
+
+A final source-only revision factors `nx_cp_eligible` out of the existing
+per-function gate and reuses it in an any-eligible-function preflight. If every
+function exceeds a cap, `nx_constant_propagate` returns the exact input before
+verification. This addresses the capped `many` cost without changing any admitted
+function's optimization. Binding count is checked first. The predicate is only a
+necessary condition: true does not assert valid IR or admission by the global
+program caps. Frozen expectations cover all existing capacity fixtures, including
+false for binding/body/depth overflow and true for global-cap-only overflow.
+Qualification and new native/JS timings remain pending for this source revision;
+all results above refer to the retained bridge21/kernel04 evidence.

@@ -178,11 +178,17 @@ def nx_cp_depth_stmt(+stmt: NxStmt, +depth: U32) -> Bool:
     case _: True{}
 
 @unsafe
+def nx_cp_eligible(+function: NxFunction) -> Bool:
+  match function:
+    case NxFunction{name, params, result, locals, body}:
+      nx_choose(Bool, U32.is_le(U32.add(nx_i_param_count(params), nx_i_param_count(locals)), 128),
+        u => U32.is_le(nx_i_body_nodes(body), 4096) && nx_cp_depth(body, 16), u => False{})
+
+@unsafe
 def nx_cp_function(+function: NxFunction) -> NxFunction:
   match function:
     case NxFunction{name, params, result, locals, body}:
-      nx_choose(NxFunction, U32.is_le(nx_i_body_nodes(body), 4096) &&
-        U32.is_le(U32.add(nx_i_param_count(params), nx_i_param_count(locals)), 128) && nx_cp_depth(body, 16),
+      nx_choose(NxFunction, nx_cp_eligible(function),
         u => nx_cp_function_done(function, nx_cp_body(body, nx_cp_initial(locals))), u => function)
 
 def nx_cp_function_done(+function: NxFunction, +done: NxCPBlock) -> NxFunction:
@@ -209,5 +215,19 @@ def nx_cp_program(+program: NxProgram) -> NxProgram:
         u => nx_cp_finish(NxProgram{entry, nx_cp_functions(functions)}, program), u => program)
 
 @unsafe
+def nx_cp_any_eligible(+functions: List<&2, NxFunction>) -> Bool:
+  match functions:
+    case Nil{}: False{}
+    case Con{head, rest}:
+      nx_choose(Bool, nx_cp_eligible(head), u => True{}, u => nx_cp_any_eligible(rest))
+
+@unsafe
+def nx_cp_has_eligible(+program: NxProgram) -> Bool:
+  match program:
+    case NxProgram{entry, functions}: nx_cp_any_eligible(functions)
+
+# This necessary-condition check returns identity; it does not admit invalid IR.
+@unsafe
 def nx_constant_propagate(+program: NxProgram) -> NxProgram:
-  nx_choose(NxProgram, nx_verify(program), u => nx_cp_program(program), u => program)
+  nx_choose(NxProgram, nx_cp_has_eligible(program),
+    u => nx_choose(NxProgram, nx_verify(program), v => nx_cp_program(program), v => program), u => program)

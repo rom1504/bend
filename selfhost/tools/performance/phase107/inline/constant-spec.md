@@ -23,3 +23,10 @@ No control flow or effect statement is deleted. Function caps: 4096 body nodes,
 functions and 65536 nodes. Verify input/output and require nonincreasing node count.
 Unsupported/capped functions and invalid programs remain unchanged. This optional
 pass has no dependency on memory provenance and can run after scalar promotion.
+
+Before verification, `nx_cp_has_eligible` scans for any function satisfying the
+same `nx_cp_eligible` predicate used by the rewriting gate. Binding count is
+checked first, then body size and control depth. If none qualifies, return exact
+identity without claiming validity. Program-level function/node caps remain later
+gates: a true preflight is necessary but not sufficient for transformation. A
+false preflight cannot skip any function that the existing pass could rewrite.

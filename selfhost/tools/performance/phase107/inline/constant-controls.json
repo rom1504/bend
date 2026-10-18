@@ -832,5 +832,107 @@
     "functions": 256,
     "programNodes": 65536,
     "rewriteNodeGrowth": 0
-  }
+  },
+  "eligibilityPredicateControls": [
+    {
+      "source": "capacity",
+      "name": "literal-witness",
+      "expected": true
+    },
+    {
+      "source": "capacity",
+      "name": "functions255",
+      "expected": true
+    },
+    {
+      "source": "capacity",
+      "name": "functions256",
+      "expected": true
+    },
+    {
+      "source": "capacity",
+      "name": "functions257",
+      "expected": true
+    },
+    {
+      "source": "capacity",
+      "name": "bindings127",
+      "expected": true
+    },
+    {
+      "source": "capacity",
+      "name": "bindings128",
+      "expected": true
+    },
+    {
+      "source": "capacity",
+      "name": "bindings129",
+      "expected": false
+    },
+    {
+      "source": "capacity",
+      "name": "body4095",
+      "expected": true
+    },
+    {
+      "source": "capacity",
+      "name": "body4096",
+      "expected": true
+    },
+    {
+      "source": "capacity",
+      "name": "body4097",
+      "expected": false
+    },
+    {
+      "source": "capacity",
+      "name": "depth15",
+      "expected": true
+    },
+    {
+      "source": "capacity",
+      "name": "depth16",
+      "expected": true
+    },
+    {
+      "source": "capacity",
+      "name": "depth17",
+      "expected": false
+    },
+    {
+      "source": "capacity",
+      "name": "nodes65535",
+      "expected": true
+    },
+    {
+      "source": "capacity",
+      "name": "nodes65536",
+      "expected": true
+    },
+    {
+      "source": "capacity",
+      "name": "nodes65537",
+      "expected": true
+    },
+    {
+      "source": "capacity",
+      "name": "invalid-identity",
+      "expected": true
+    },
+    {
+      "source": "capacity",
+      "name": "effect-operands",
+      "expected": true
+    },
+    {
+      "source": "promote_pipeline",
+      "name": "many",
+      "expected": false
+    },
+    {
+      "source": "promote_pipeline",
+      "name": "shared",
+      "expected": true
+    }
+  ]
 }

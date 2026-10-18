@@ -1,0 +1,29 @@
+{
+  "version": 1,
+  "scope": "Closed-program function reachability; exactly one external entry. Expected lists preserve original order.",
+  "cases": [
+    {"fixture": "reach_direct", "keep": ["leaf", "main", "middle"], "execute": true},
+    {"fixture": "reach_stored", "keep": ["target", "main"], "execute": true},
+    {"fixture": "reach_returned", "keep": ["factory", "target", "main"], "execute": true},
+    {"fixture": "reach_dead_cycle", "keep": ["main"], "execute": true},
+    {"fixture": "reach_branch", "keep": ["target", "main"], "execute": true},
+    {"fixture": "reach_cycle", "keep": ["main", "cycle"], "execute": false, "unchanged": true},
+    {"fixture": "reach_cap", "functionCount": 257, "execute": true, "unchanged": true}
+  ],
+  "inputs": [
+    {"args": [0, 0], "expected": 0},
+    {"args": [7, 11], "expected": 18},
+    {"args": [4294967295, 1], "expected": 0},
+    {"args": [2147483648, 2147483648], "expected": 0}
+  ],
+  "additionalControls": [
+    "tail_dead: original verifier-invalid graph must return exactly unchanged",
+    "Every retained function is deeply identical, and original order is preserved",
+    "Entry and every NxCall/NxFunc target in retained bodies remain defined",
+    "Recursive reachability computed independently equals the retained set (except explicit capacity refusal)",
+    "nx_reachable(nx_reachable(p)) deeply equals nx_reachable(p)",
+    "nx_reachable(nx_inline_entry(many,4096)) should retain only main after complete chain expansion; verify from the actual graph",
+    "A mutant deleting target from reach_stored/returned must fail the unchanged structural oracle",
+    "A mutant reversing retained definitions must fail the order-preservation oracle"
+  ]
+}

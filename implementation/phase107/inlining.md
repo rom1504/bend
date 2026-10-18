@@ -127,3 +127,21 @@ record/list boundaries rather than normalizing mismatches away. This checks stag
 equivalence of the experimental API; independent semantic/native oracles remain
 necessary, and it does not demonstrate a native fixed point or recursive speedup.
 Execution is scheduled by the root agent separately from preparation.
+
+The separately composable `nx_reachable` pass is prepared to remove unused
+functions after inlining. It operates on closed programs with one external entry,
+traversing direct calls and all function-address expressions, including stored or
+returned closures and both conditional arms. It preserves original function order
+and the complete bodies of retained functions. Recursive call graphs terminate
+through a visited set; invalid inputs and bounded-capacity failures refuse
+unchanged. Limits are256 functions and65536 counted IR nodes, followed by a verifier
+check on the candidate. This is deliberately independent of purity analysis and
+does not change the meaning or budget of any inliner API.
+
+Seven source-defined graph controls distinguish direct/transitive references,
+stored and returned function pointers, dead versus reachable cycles, syntactically
+dead branch references and the257-function capacity boundary. Frozen structural
+expectations and wrapping-add results accompany them. The intended independent
+audit checks retained bodies/order, complete reachability, idempotence, unchanged
+refusal and detection of removed-address-target mutations. Acquisition and
+measurements are pending separately; preparation itself supplies no speed claim.

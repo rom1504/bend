@@ -94,3 +94,22 @@ The two laws constrain the exact safe continuation helper extracted verbatim fro
 `expand.bend`. They say nothing about whole-pass semantics, renaming, admission,
 memory or backend correctness. Preparation binds the extraction and law bytes;
 checking is a separately scheduled job. See the phase report for actual results.
+
+`reachable.bend` adds `nx_reachable(program)`, a separately composable closed-program
+pass. Append it after the inliner modules; append `reachable-fixtures.bend` after
+`fixtures.bend` to expose `nx_r_fixture(name)`. It starts from the sole public entry,
+retains all direct-call and function-address references transitively, and preserves
+every retained definition exactly in its original order. The traversal includes
+arguments, stores, conditions, both branches and loops; indirect calls do not
+cause address-taken targets to disappear. No branch feasibility, pointer alias or
+ownership inference is attempted. It refuses invalid programs, more than256
+functions or more than65536 counted nodes; incomplete traversal or invalid output
+also returns the original. Apply this only to the closed entry ABI, not a library
+whose other functions are externally callable or reflectively discoverable.
+
+`reachable-controls.json` freezes exact retained names, capacity/recursion refusal,
+stored/returned function pointer witnesses and wrapping-add answers. The reachable
+recursive cycle must never execute. The unreachable recursive cycle must disappear.
+Output bodies, root retention, closure of all call/address references, original
+order and idempotence are independent structural gates; finite native comparisons
+remain necessary. The pass has no formal semantic proof or memory-safety claim.

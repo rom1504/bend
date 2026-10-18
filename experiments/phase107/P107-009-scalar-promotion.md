@@ -67,3 +67,20 @@ controls for absent, direct, conditional-only and loop-only allocations. Then
 measure matched fast/promote invocations in a new kernel03 receipt. Keep kernel02
 unchanged. This improves optimizer selection overhead, not generated-code speed;
 backend execution need not be repeated when emitted IR is byte-identical.
+
+Qualified in bridge19 and
+[`promotion-audit03`](../../selfhost/build/phase107/promotion-audit03/report.json):
+28 families, 468 native outputs, 334 distinct independent model executions, two
+detected output mutations and seven matching allocation predicates. The
+[`equivalence receipt`](../../selfhost/build/phase107/promotion-audit03/prefilter-equivalence.json)
+preserves all 27 prior JSON products exactly. Source checking took 2.09s.
+
+[`kernel-measure03`](../../selfhost/build/phase107/kernel-measure03/report.json)
+passes 18 exact native/JS comparisons over three rounds. For `many`, matched
+`fast`/`promote` complete-process medians are91.336/90.479ms native and
+1273.854/1268.432ms JS: the unnecessary promotion overhead is no longer measurable
+in this screen. Prior kernel02 promotion medians 153.816ms native and 2314.036ms JS
+are a descriptive cross-image comparison, not a controlled isolated speedup ratio.
+Native source03 acquisition cost 45.909s (7.891s C emission plus 38.017s successful
+link03b); the failed link03 path is retained separately. This result concerns
+research-kernel execution cost and leaves emitted programs unchanged.

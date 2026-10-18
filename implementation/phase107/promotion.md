@@ -38,7 +38,7 @@ unexpected field-table growth returns the original function. Pointer and lifetim
 reasoning remains a reviewed finite prototype, not a full formal memory-safety or
 compiler-correctness proof.
 
-`promotion-controls.json` freezes148 full-result cases across19 families. Its
+The initial `promotion-controls.json` froze 148 full-result cases across 19 families. Its
 `expectedChanged` and `exactRefusal` maps refer to direct application to the raw
 fixture, without implicit preprocessing. Seven positive families cover aliases,
 pointer-store preservation, U64 overflow beyond32 bits, zero-initialized fields,
@@ -84,7 +84,7 @@ slice. It is not a standalone promotion-pass ablation, production compiler timin
 upstream Bend comparison, broad source-language memory coverage or a formal proof.
 The installed compiler and backend defaults remain unchanged.
 
-The next source revision adds a necessary-condition scan before structural
+The qualified source revision adds a necessary-condition scan before structural
 verification: an allocation-free graph returns exactly unchanged. The scan checks
 all function bodies, both conditional arms and loop bodies for a root allocation
 assignment; it does not change the admission or rewriting rules for graphs that
@@ -93,6 +93,32 @@ where invoking an inapplicable promotion pass added measurable optimizer overhea
 The controls now contain156 cases across20 families, with a conditional-only
 allocation refusal and seven separate allocation-predicate checks covering absent,
 direct and nested allocations, recursion and invalid input. Those additions are
-not included in audit02's historical148-case direct-fixture record. Source checks,
-exact comparison with previous promotion output and matched kernel03 measurements
-are pending parent-run qualification; no speed gain is claimed yet.
+not included in audit02's historical148-case direct-fixture record.
+
+[`promotion-audit03`](../../selfhost/build/phase107/promotion-audit03/report.json)
+passes 28 families, 468 native outputs, 334 distinct independent model executions
+and both existing output mutations. All seven
+[`allocation predicates`](../../selfhost/build/phase107/promotion-audit03/predicates.json)
+match their frozen expectations. The
+[`prefilter equivalence receipt`](../../selfhost/build/phase107/promotion-audit03/prefilter-equivalence.json)
+records byte-identical JSON for all 27 prior products. Bridge19 source checking took
+2.09s; no backend runtime speed claim depends on this source-only selection change.
+
+The three-round
+[`kernel-measure03`](../../selfhost/build/phase107/kernel-measure03/report.json)
+passes 18 exact native/JS output comparisons. On allocation-free `many`, complete
+native process medians are 91.336ms for `fast` and 90.479ms for `promote`; corresponding
+JS medians are 1273.854ms and 1268.432ms. The matched comparison shows no meaningful
+remaining promotion overhead. Kernel02's promotion medians were 153.816ms native
+and 2314.036ms JS; that cross-image comparison is descriptive, whereas the matched
+source03 fast/promote comparison directly tests no-op overhead. These clocks cover
+IR construction, transforms, verification, emission and process startup, not a
+source-language compilation or execution of a generated benchmark.
+
+The new native kernel cost 45.909s to acquire: 7.891s to emit C and 38.017s for the
+successful pinned Clang link. The mistaken link03 executable path failed before
+compiler execution and remains recorded separately; link03b is the successful
+receipt. See the [kernel README](../../selfhost/tools/performance/phase107/kernel/README.md)
+for policies, fresh-output commands and timing boundaries. Allocation-bearing
+graphs still pay for useful promotion analysis; this change only bypasses a pass
+that cannot apply.

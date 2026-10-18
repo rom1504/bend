@@ -1,0 +1,54 @@
+{
+  "scope": "Input proposal for root's scheduled QBE controls; not executed evidence. Compare independent Phase106 reference plus C/Cranelift, and check every output with the common runner.",
+  "existingWorkloads": {
+    "classify": {
+      "n": [0, 9, 13, 14, 32, 46, 47, 48, 57, 58, 64, 65, 90, 91, 95, 96, 97, 122, 123, 2147483647, 2147483648, 4294967295],
+      "seed": [0, 4294967295],
+      "purpose": "Unsigned comparisons and full-width character classification"
+    },
+    "shift": {
+      "n": [0, 1, 31, 32, 33, 63, 64, 4294967295],
+      "seed": [0, 1, 2147483648, 4294967295],
+      "purpose": "Modulo32 shift counts and logical right shift"
+    },
+    "text": {"n": [0, 1, 2, 17], "seed": [0, 2147483648, 4294967295]},
+    "list": {"n": [0, 1, 2, 17], "seed": [0, 2147483648, 4294967295]},
+    "tree": {"n": [0, 1, 2, 5], "seed": [0, 2147483648, 4294967295]},
+    "closure": {"n": [0, 1, 2, 17], "seed": [0, 1, 2147483648, 4294967295]},
+    "tail": {"n": [0, 1, 2, 17], "seed": [0, 2147483648, 4294967295]},
+    "many": {"n": [0, 1, 2], "seed": [0, 2147483648, 4294967295]},
+    "shared": {"n": [0, 1, 2, 17], "seed": [0, 2147483648, 4294967295]},
+    "shared_borrow": {"n": [0, 1, 2, 17], "seed": [0, 2147483648, 4294967295]}
+  },
+  "additionalFixtureExpectations": {
+    "all": {"nx_verify": true, "lookup": "nxq_control(name) from controls.bend"},
+    "qbe_u64": {
+      "n": [0, 1, 31, 32, 33, 63, 64, 65, 4294967295, 18446744073709551615],
+      "seed": [0, 1, 2147483648, 4294967295, 4294967296, 9223372036854775808, 18446744073709551615],
+      "oracle": "v=((seed << (n&63)) ^ (seed >> (n&63))) mod 2^64; result=(v==0)+2*(v<2^63)+4*((seed>>32)==2^32-1)+8*((seed+1) mod 2^64==0)"
+    },
+    "qbe_ptr_offset": {
+      "n": [0, 1, 1073741824, 2147483647, 2147483648, 4294967294, 4294967295],
+      "seed": [0],
+      "oracle": "1 if n==4294967295 else 3; pointer bits only, no memory dereference"
+    },
+    "qbe_zero_alloc": {"n": [0, 1], "seed": [0, 4294967295], "expected": 14},
+    "qbe_flow": {
+      "args": [[0,0],[0,1],[1,0],[1,1],[2,1],[3,4294967295],[32,0],[33,0],[4294967295,30]],
+      "expected": [11,13,2147483648,17,2147483648,20,17,2147483648,2147484083]
+    }
+  },
+  "extraControlsWorthAdding": [
+    "seven or more arguments crossing the SysV integer-register argument limit",
+    "wrong runner --expect must fail even with two repeated outputs whose checksums collide"
+  ],
+  "rejections": [
+    "unknown variable or duplicate local",
+    "wrong direct argument/result type or arity",
+    "wrong explicit indirect argument type or arity",
+    "effectful nested operand/call argument",
+    "invalid nonzero pointer literal",
+    "statement after unconditional return or function without complete return",
+    "unknown operator/type/function and unsupported source/GPU/parallel constructs"
+  ]
+}

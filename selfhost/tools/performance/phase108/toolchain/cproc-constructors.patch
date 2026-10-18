@@ -1,0 +1,127 @@
+diff --git a/cc.h b/cc.h
+index 1f07245..9282aeb 100644
+--- a/cc.h
++++ b/cc.h
+@@ -472,3 +472,4 @@ void funcinit(struct func *, struct decl *, struct init *, bool);
+ 
+ void emitfunc(struct func *, bool);
+ void emitdata(struct decl *, struct init *);
++void emitconstructor(struct decl *);
+diff --git a/decl.c b/decl.c
+index a727820..8162816 100644
+--- a/decl.c
++++ b/decl.c
+@@ -147,7 +147,7 @@ funcspec(enum funcspec *fs)
+ }
+ 
+ static void structdecl(struct scope *, struct structbuilder *);
+-static struct qualtype declspecs(struct scope *, enum storageclass *, enum funcspec *, int *);
++static struct qualtype declspecs(struct scope *, enum storageclass *, enum funcspec *, int *, struct attr *);
+ 
+ static struct type *
+ tagspec(struct scope *s)
+@@ -188,7 +188,7 @@ tagspec(struct scope *s)
+ 		next();
+ 	}
+ 	if (kind == TYPEENUM && consume(TCOLON)) {
+-		et = declspecs(s, NULL, NULL, NULL).type;
++		et = declspecs(s, NULL, NULL, NULL, NULL).type;
+ 		if (!et)
+ 			error(&tok.loc, "no type in enum type specifier");
+ 	}
+@@ -320,7 +320,7 @@ tagspec(struct scope *s)
+ 
+ /* 6.7 Declarations */
+ static struct qualtype
+-declspecs(struct scope *s, enum storageclass *sc, enum funcspec *fs, int *align)
++declspecs(struct scope *s, enum storageclass *sc, enum funcspec *fs, int *align, struct attr *attrs)
+ {
+ 	struct type *t, *other;
+ 	struct decl *d;
+@@ -456,7 +456,7 @@ declspecs(struct scope *s, enum storageclass *sc, enum funcspec *fs, int *align)
+ 			break;
+ 
+ 		case T__ATTRIBUTE__:
+-			gnuattr(NULL, 0);
++			gnuattr(attrs, attrs ? ATTRCONSTRUCTOR : 0);
+ 			break;
+ 
+ 		default:
+@@ -761,7 +761,7 @@ parameter(struct scope *s)
+ 	enum storageclass sc;
+ 
+ 	attr(NULL, 0);
+-	t = declspecs(s, &sc, NULL, NULL);
++	t = declspecs(s, &sc, NULL, NULL, NULL);
+ 	if (!t.type)
+ 		error(&tok.loc, "no type in parameter declaration");
+ 	if (sc && sc != SCREGISTER)
+@@ -900,7 +900,7 @@ structdecl(struct scope *s, struct structbuilder *b)
+ 	if (staticassert(s))
+ 		return;
+ 	attr(NULL, 0);
+-	base = declspecs(s, NULL, NULL, &align);
++	base = declspecs(s, NULL, NULL, &align, NULL);
+ 	if (!base.type)
+ 		error(&tok.loc, "no type in struct member declaration");
+ 	if (tok.kind == TSEMICOLON) {
+@@ -932,7 +932,7 @@ typename(struct scope *s, enum typequal *tq, struct expr **toeval)
+ {
+ 	struct qualtype t;
+ 
+-	t = declspecs(s, NULL, NULL, NULL);
++	t = declspecs(s, NULL, NULL, NULL, NULL);
+ 	if (t.type) {
+ 		t = declarator(s, t, NULL, NULL, NULL, true);
+ 		if (tq)
+@@ -1037,7 +1037,7 @@ decl(struct scope *s, struct func *f)
+ 	a.kind = 0;
+ 	if (attr(&a, ATTRNORETURN) && consume(TSEMICOLON))
+ 		return true;
+-	base = declspecs(s, &sc, &fs, &align);
++	base = declspecs(s, &sc, &fs, &align, &a);
+ 	if (!base.type)
+ 		return false;
+ 	if (f) {
+@@ -1072,6 +1072,10 @@ decl(struct scope *s, struct func *f)
+ 		}
+ 		gnuattr(&a, 0);  /* appertains to identifier */
+ 		kind = sc & SCTYPEDEF ? DECLTYPE : t->kind == TYPEFUNC ? DECLFUNC : DECLOBJECT;
++		if (a.kind & ATTRCONSTRUCTOR && (kind != DECLFUNC || f ||
++		    tok.kind != TLBRACE || t->base != &typevoid ||
++		    t->u.func.nparam || t->u.func.isvararg || fs & FUNCINLINE))
++			error(&tok.loc, "constructor requires a file-scope non-inline void(void) function definition");
+ 		prior = scopegetdecl(s, name, false);
+ 		if (prior && prior->kind != kind)
+ 			error(&tok.loc, "'%s' redeclared with different kind", name);
+@@ -1148,6 +1152,8 @@ decl(struct scope *s, struct func *f)
+ 				/* XXX: need to keep track of function in case a later declaration specifies extern */
+ 				if (!d->u.func.inlinedefn)
+ 					emitfunc(f, d->linkage == LINKEXTERN);
++				if (a.kind & ATTRCONSTRUCTOR)
++					emitconstructor(d);
+ 				s = delscope(s);
+ 				delfunc(f);
+ 				d->defined = true;
+diff --git a/qbe.c b/qbe.c
+index 9fae0f0..047f3af 100644
+--- a/qbe.c
++++ b/qbe.c
+@@ -1462,6 +1462,17 @@ dataitem(struct expr *expr, unsigned long long size)
+ 	}
+ }
+ 
++/* Phase108: Linux ELF initializer for an admitted void(void) definition. */
++void
++emitconstructor(struct decl *d)
++{
++	static unsigned count;
++
++	printf("section \".init_array\"\ndata $.cproc.init.%u = align 8 { l ", ++count);
++	emitname(d->value);
++	fputs(" }\n", stdout);
++}
++
+ void
+ emitdata(struct decl *d, struct init *init)
+ {

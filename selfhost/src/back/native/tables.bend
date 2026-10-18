@@ -75,6 +75,12 @@ def nb_take(+rs: List<&2, String>, +i: U32) -> String:
     case Con{+h, +t}: h ++ " = (V)[" ++ U32.show(i) ++ "]; " ++ nb_take(t, U32.inc(i))
 
 @unsafe
+def nb_zero(+rs: List<&2, String>) -> String:
+  match rs:
+    case Nil{}: ""
+    case Con{+h, +t}: h ++ " = 0; " ++ nb_zero(t)
+
+@unsafe
 def nb_bank(+ss: List<&2, N_Segment>) -> String:
   +n = nb_width(ss)
   +r = nb_returns(ss)
@@ -85,6 +91,10 @@ def nb_bank(+ss: List<&2, N_Segment>) -> String:
     ++ "#define WL_LAST(X) \\\n  switch (war) { \\\n" ++ nb_last(rs, 0) ++ "  }\n"
     ++ "#define WL_SAVE(V) " ++ nb_save(nb_regs(r, 0), 0) ++ "\n"
     ++ "#define WL_TAKE(V) " ++ nb_take(nb_regs(r, 0), 0) ++ "\n"
+    ++ "#define WL_WIDTH " ++ U32.show(n) ++ "\n"
+    ++ "#define WL_INIT_BANK " ++ nb_zero(ws) ++ "\n"
+    ++ "#define WL_WRITE_STATE(V) " ++ nb_save(rs, 0) ++ "\n"
+    ++ "#define WL_READ_STATE(V) " ++ nb_take(rs, 0) ++ nt_choose(String, U32.is_gt(n, 6), u => "rp = 0; ", u => "") ++ "\n"
     ++ "#define WL_SIG Env e, Stk sp, u32 seq, u32 rn, " ++ nt_join(nb_typed(ws), ", ") ++ "\n"
     ++ "#define WL_ALL e, sp, seq, rn, " ++ nt_join(ws, ", ") ++ "\n"
 

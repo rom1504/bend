@@ -1,0 +1,77 @@
+{
+  "created_utc": "2026-10-18T16:09:39.071821+00:00",
+  "cproc_upstream": "https://git.sr.ht/~mcf/cproc",
+  "cproc_commit": "d1c53ddf56571573a7025324c8dd5c6d547a4d1f",
+  "target": "x86_64-linux-gnu",
+  "cc": "gcc (Debian 10.2.1-6) 10.2.1 20210110",
+  "cproc_flags": "-O2",
+  "qbe_flags": "-O2 -std=c99 -Wall -Wextra -Wpedantic",
+  "shim_flags": "-O2",
+  "link_flags": "-no-pie -pthread -lm",
+  "sha256": {
+    "selfhost/build/phase108/toolchain/cproc-src/cproc": "633305fb0ae4d859c6044ead2c6fae841864000876e75a04a00670b3071df0d9",
+    "selfhost/build/phase108/toolchain/cproc-src/cproc-qbe": "1a75944ba3811399a0ef997237f4699cd003ba4f87367997e071d7556d275f15",
+    "selfhost/build/phase108/toolchain/qbe-1.3/qbe": "1eca24288f9574ad57032ac88f11c3f74ced605838749226d77a9acd4443e5f4",
+    "selfhost/build/phase108/toolchain/atomic-shim.o": "1ca68aef0e5eaf4f69c989af550941eb72db8ce3eef77d6c299b16910e38c009",
+    "selfhost/build/phase108/toolchain/smoke": "5fca23aadfb91c4a706ea1a3d1f9c28d6b095f0db33df8c1c451e622302d2118",
+    "selfhost/build/phase108/toolchain/smoke.o": "30e4e9a332e65dfa06d16731968ff99f528672c837bb8479a3db2997c4ead437",
+    "selfhost/tools/performance/phase108/toolchain/cproc-constructors.patch": "f4de01b3997975bfe4ce5c8181fca2027eecf7bc6754a1c681037d3219c95143",
+    "selfhost/tools/performance/phase108/toolchain/qbe-alignment.patch": "0415219cf50b7b375dc3e1f4f8942227ee03a01d77904197fb21a92f7d3a1a8c",
+    "selfhost/tools/performance/phase108/toolchain/atomic-shim.c": "9179370abfe033a114a9d06e7b4858c234874bff59ffe9cd27c61a77c5448221",
+    "selfhost/tools/performance/phase108/toolchain/include/bend-cproc.h": "9bb39140d1ed36b196b02e602bd64ffed05eb24eaded895daab1dfd0d61601eb",
+    "selfhost/tools/performance/phase108/toolchain/include/stdatomic.h": "3ac362e18c7f0f34a38b67f4bbc4bd753f266940c0746eb116cb78c6ec6508ac",
+    "selfhost/build/phase107/toolchain/qbe-1.3/qbe": "7ffc47abad9c0bdd6bcc81427ae666a5fb52e9376070aebe51023e01f2d6ab91",
+    "selfhost/build/phase108/toolchain/cproc-source.tar.gz": "83cd483387d6bacb0f2d93eab84e972a8f9212e23930f1ed078844fd87aa8a0e",
+    "selfhost/build/phase108/toolchain/cproc-src/cc.h": "ec12beb81a313738cb4a797721458b901a7f5685eb3e9acee130b78242a119dc",
+    "selfhost/build/phase108/toolchain/cproc-src/decl.c": "49130bbc70a1f116f70702256fcefa6cc6943e07eb5ceb5e2097290c6b6427d5",
+    "selfhost/build/phase108/toolchain/cproc-src/qbe.c": "3910fb8500f94f1ec584c91a0c8345a86f96b83abbedb537431d197279d6319e",
+    "selfhost/build/phase108/toolchain/cproc-src/config.h": "a0313e47e9bf61cf78ec50ad809f2eae48fb0a27e2f1504ce6cbdb94ccc79591",
+    "selfhost/build/phase108/toolchain/cproc-src/config.mk": "661512ade5b607cd33aa55e0904f5957e68073959a2523416e16052224b679e7",
+    "selfhost/build/phase108/toolchain/qbe-1.3/all.h": "f7f648619e05ebe61e0d70ff5a560c7affc44ea397d08f4b6c2bfb25ee1d4c26",
+    "selfhost/build/phase108/toolchain/qbe-1.3/parse.c": "f61f83c60ef59255617734908eb7b240fb0e42378c8675041e9dedb5a10bba91",
+    "selfhost/build/phase107/toolchain/qbe-1.3/all.h": "61bc106ffb07e0abe0b418f95ac7e1a9e4c6bcf8c308d8743562299129056519",
+    "selfhost/build/phase107/toolchain/qbe-1.3/parse.c": "e762d78e1890af5c06daa581cfd40b30fcaa840450f32ca9cf2b141740a869da"
+  },
+  "smoke": "PASS: headers, 2-thread 32/64-bit atomics, CAS success/failure, CLZ, .init_array constructor, alignment128, aggregate ABI",
+  "constructor_negative_controls": [
+    {
+      "case": "object",
+      "exit": 1,
+      "diagnostic": "selfhost/build/phase108/toolchain/constructor-reject-object.i:1:44: error: constructor requires a file-scope non-inline void(void) function definition"
+    },
+    {
+      "case": "return_type",
+      "exit": 1,
+      "diagnostic": "selfhost/build/phase108/toolchain/constructor-reject-return_type.i:1:51: error: constructor requires a file-scope non-inline void(void) function definition"
+    },
+    {
+      "case": "arguments",
+      "exit": 1,
+      "diagnostic": "selfhost/build/phase108/toolchain/constructor-reject-arguments.i:1:53: error: constructor requires a file-scope non-inline void(void) function definition"
+    },
+    {
+      "case": "prototype",
+      "exit": 1,
+      "diagnostic": "selfhost/build/phase108/toolchain/constructor-reject-prototype.i:1:51: error: constructor requires a file-scope non-inline void(void) function definition"
+    },
+    {
+      "case": "priority",
+      "exit": 1,
+      "diagnostic": "selfhost/build/phase108/toolchain/constructor-reject-priority.i:1:39: error: expected ')' to end attribute specifier, saw '('"
+    },
+    {
+      "case": "inline",
+      "exit": 1,
+      "diagnostic": "selfhost/build/phase108/toolchain/constructor-reject-inline.i:1:59: error: constructor requires a file-scope non-inline void(void) function definition"
+    }
+  ],
+  "limitations": [
+    "Linux x86-64 host only",
+    "constructor extension requires pre-declarator attribute on a non-inline void(void) definition; rejects priorities and declaration-only attributes",
+    "cproc still lacks volatile and general _Atomic support",
+    "QBE alignment patch changes Lnk.align char to int and validation bound CHAR_MAX to INT_MAX",
+    "GCC builtin shim uses dynamic memory order arguments; generated code may conservatively strengthen ordering",
+    "No full compiler build or frontend correctness claim in this receipt"
+  ],
+  "cproc_tree": "820f526e40c45552cd3c2c15433be07240d1a943"
+}

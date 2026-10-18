@@ -167,3 +167,120 @@ Pinned comparison records (full per-file pins are in the JSON):
 Historical emitter-source hashes are copied from those emission receipts; the
 working emitter has since changed. This audit pins the actual retained C/JSON/SSA
 files and objects rather than pretending the current emitter created old runs.
+
+## Follow-up: measure04 exposes the remaining memory dependency chain
+
+This section separately audits **measure04/artifacts03** (`leaf-reach`, producing
+bridge11 API). The original measure03 conclusions and census above remain intact.
+The unchanged inspection tool produced a second [48-object census](code-shapes04.json)
+for measure03 versus measure04; the interpretation here concerns only the shared
+and borrowed fixtures. No runtime was executed. All six raw shared/borrowed
+objects are byte-identical between the two campaigns, so compare each candidate
+with its own paired raw timings rather than attributing cross-campaign drift to
+the pass.
+
+The measure04 recorded medians are:
+
+| Workload/backend | Raw ms | Candidate ms | Raw / candidate | Candidate / raw Clang |
+| --- | ---: | ---: | ---: | ---: |
+| Shared, Cranelift | 36.720 | 35.021 | 1.049× | 3.298× |
+| Shared, QBE | 35.175 | 35.869 | 0.981× | 3.378× |
+| Borrowed, Cranelift | 31.896 | 16.464 | 1.937× | 1.804× |
+| Borrowed, QBE | 18.674 | 13.338 | 1.400× | 1.461× |
+
+**The observer boundary was removed successfully in both fixtures.** No observer
+symbol remains, and no call remains inside either hot loop. Cranelift's reachable
+function count falls from 3 to 2, and its explicit main stack reservation falls
+from 64 to 48 bytes. Its static stack-memory instructions fall from 14 to 10;
+the per-iteration accumulator spill/reload is gone. QBE goes from three reachable
+functions to two (entry plus allocation helper). It removes the observer call
+and the explicit eight-byte stack reservation, but still saves registers at
+entry. These are code-shape counts, not measurements of peak stack or RSS.
+
+What remains differs substantially:
+
+| Measure04 hot body, matched symbol | Loads and stores retained per scalar iteration |
+| --- | --- |
+| Shared CL `bend_ir_main`, `0x10b`–`0x143` | Four counter read-modify-write instructions, child-pointer load and child-value load |
+| Shared QBE `phase106_entry`, `0x190`–`0x1c7` | Six explicit loads and four stores: parent count, child pointer/count, parent count again, child value/count |
+| Borrowed CL `bend_ir_main`, `0x108`–`0x12b` | Child-pointer load and child-value load; no heap store |
+| Borrowed QBE `phase106_entry`, `0x170`–`0x189` | The same two loads; no heap store |
+
+The shared code still performs this ordered sequence:
+
+```text
+p.count += 1
+c = p.child
+c.count += 1
+p.count -= 1
+value = c.value
+c.count -= 1
+```
+
+Neither backend has reduced that chain after inlining. Cranelift expresses the
+updates compactly as memory arithmetic; QBE expresses them as separate
+load/arithmetic/store instructions. Compact instruction encoding does not remove
+their memory dependencies. In the borrowed loop only the pointer/value loads
+remain, so eliminating the call, frame and register spills removes a larger
+fraction of the work. This is a static explanation consistent with the measured
+difference, not a sampled attribution of cycles or cache misses.
+
+The pointer loaded from `p.child` also obscures its relationship to the earlier
+child allocation. Without a proven location model, a store through that pointer
+may alias a later load through the parent. Blindly cancelling the counter updates
+could change the intermediate value returned by an aliasing observer. Similarly,
+the remaining borrowed loads are invariant in this fixture, but the backends
+still execute them every iteration. QBE already forwards the final borrowed child
+counter to its known value 1; it has not hoisted the loop's two loads. Clang retains
+its earlier two-way shared and four-way borrowed unrolling; the borrowed loop
+uses the seed register directly. All variants still allocate/free both objects.
+
+### Next general-purpose pass: bounded memory-value forwarding
+
+Use facts already explicit in the IR: each successful allocation introduces a
+fresh root; a constant byte offset and access width identify a range within that
+root. Copies preserve pointer provenance, and a pointer value stored in an
+unmodified field can be forwarded when that field is loaded. Distinct live
+allocation roots are disjoint; unknown pointers remain potentially aliasing.
+This is ordinary memory reasoning, not recognition of reference-count names.
+
+1. **Start with straight-line forwarding.** Track known values for exact typed
+   ranges; forward loads after matching stores and invalidate overlapping ranges
+   on writes. Stop or invalidate conservatively at unknown calls, escapes,
+   unknown-address writes, free/reallocation, and unsupported control flow.
+   Preserve evaluated argument/value snapshots and the ordered effects.
+2. **Summarize loop writes conservatively.** A loop may retain preheader values
+   only for ranges that no iteration can overwrite. Here `parent+8` can resolve
+   to the child root, and `child+8` can resolve to the original seed, while the
+   counter writes are separate four-byte ranges. Existing scalar folding plus
+   forwarding can then expose the restored counter values; dead-store cleanup
+   can remove unobserved intermediate stores. Do not replace an entire retain/drop
+   protocol on the basis of net arithmetic alone.
+3. **Take the smaller borrowed-only step if necessary.** A call-free, write-free
+   loop admits invariant-load reasoning once its pointer inputs are invariant.
+   Guard any hoisting so zero iterations do not introduce a potentially trapping
+   load, or forward a value from an already executed initialization instead.
+
+Verify with distinct and aliased roots, overlapping offsets/widths, overwritten
+pointer fields, unknown-call barriers, free/reallocation, both branch arms,
+zero-iteration loops, U32 counter wraparound, and observers that read a counter
+between updates. Include complete returned values and memory observations, plus
+unchanged refusal on unsupported cases. Then require the actual emitted loop to
+lose the intended loads/stores before requesting another runtime screen. A
+successful local pass would still leave allocation/free, arithmetic dependency,
+unrolling and backend register/branch choices as separate costs. No gain estimate
+or production ownership theorem follows from this read-only result.
+
+New pins:
+
+| Record | SHA-256 |
+| --- | --- |
+| measure04/report.json | `31c1b76f3aad21c97e42d2856770414c999e6ce5187323e4924344ee99f35737` |
+| artifacts03/report.json | `882728d08e7d8e65487fcdfd73dbf798fe48151f2e14e638d9d231e4d9eba66d` |
+| artifacts03 producing API | `7e35892941940e47e00d320a73779cd9712332535c14ca51ae8e382d6dcb0286` |
+| code-shapes04.json | `4ef08648513b7290fec90dab4952b8e15956bfeb6141fb1ba954777dcd41e952` |
+
+The replay command is the same as above with current `measure04`/`artifacts03`,
+previous `measure03`/`artifacts02`, and a fresh output path. The census pins all
+matched objects and generated C/JSON/SSA files, including the unchanged four-case
+inspection set. It does not include any later memory-forwarding candidate.

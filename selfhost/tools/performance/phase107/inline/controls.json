@@ -1,0 +1,470 @@
+{
+  "version": 1,
+  "description": "Frozen finite semantic controls, mathematical expected U32 results; not performance inputs.",
+  "cases": [
+    {
+      "fixture": "snapshot",
+      "args": [
+        0,
+        0
+      ],
+      "expected": 10
+    },
+    {
+      "fixture": "snapshot",
+      "args": [
+        1,
+        7
+      ],
+      "expected": 28
+    },
+    {
+      "fixture": "snapshot",
+      "args": [
+        2,
+        3
+      ],
+      "expected": 35
+    },
+    {
+      "fixture": "snapshot",
+      "args": [
+        8,
+        7
+      ],
+      "expected": 105
+    },
+    {
+      "fixture": "snapshot",
+      "args": [
+        9,
+        0
+      ],
+      "expected": 109
+    },
+    {
+      "fixture": "snapshot",
+      "args": [
+        10,
+        2
+      ],
+      "expected": 122
+    },
+    {
+      "fixture": "snapshot",
+      "args": [
+        10,
+        3
+      ],
+      "expected": 123
+    },
+    {
+      "fixture": "snapshot",
+      "args": [
+        17,
+        23
+      ],
+      "expected": 220
+    },
+    {
+      "fixture": "snapshot",
+      "args": [
+        2147483648,
+        1
+      ],
+      "expected": 2147483659
+    },
+    {
+      "fixture": "snapshot",
+      "args": [
+        4294967295,
+        4294967295
+      ],
+      "expected": 4294967294
+    },
+    {
+      "fixture": "collision",
+      "args": [
+        0,
+        0
+      ],
+      "expected": 10
+    },
+    {
+      "fixture": "collision",
+      "args": [
+        1,
+        7
+      ],
+      "expected": 28
+    },
+    {
+      "fixture": "collision",
+      "args": [
+        2,
+        3
+      ],
+      "expected": 35
+    },
+    {
+      "fixture": "collision",
+      "args": [
+        8,
+        7
+      ],
+      "expected": 105
+    },
+    {
+      "fixture": "collision",
+      "args": [
+        9,
+        0
+      ],
+      "expected": 109
+    },
+    {
+      "fixture": "collision",
+      "args": [
+        10,
+        2
+      ],
+      "expected": 122
+    },
+    {
+      "fixture": "collision",
+      "args": [
+        10,
+        3
+      ],
+      "expected": 123
+    },
+    {
+      "fixture": "collision",
+      "args": [
+        17,
+        23
+      ],
+      "expected": 220
+    },
+    {
+      "fixture": "collision",
+      "args": [
+        2147483648,
+        1
+      ],
+      "expected": 2147483659
+    },
+    {
+      "fixture": "collision",
+      "args": [
+        4294967295,
+        4294967295
+      ],
+      "expected": 4294967294
+    },
+    {
+      "fixture": "branch",
+      "args": [
+        0,
+        0
+      ],
+      "expected": 1
+    },
+    {
+      "fixture": "branch",
+      "args": [
+        1,
+        7
+      ],
+      "expected": 7
+    },
+    {
+      "fixture": "branch",
+      "args": [
+        2,
+        3
+      ],
+      "expected": 2
+    },
+    {
+      "fixture": "branch",
+      "args": [
+        8,
+        7
+      ],
+      "expected": 16
+    },
+    {
+      "fixture": "branch",
+      "args": [
+        9,
+        0
+      ],
+      "expected": 10
+    },
+    {
+      "fixture": "branch",
+      "args": [
+        10,
+        2
+      ],
+      "expected": 1
+    },
+    {
+      "fixture": "branch",
+      "args": [
+        10,
+        3
+      ],
+      "expected": 27
+    },
+    {
+      "fixture": "branch",
+      "args": [
+        17,
+        23
+      ],
+      "expected": 18
+    },
+    {
+      "fixture": "branch",
+      "args": [
+        2147483648,
+        1
+      ],
+      "expected": 2147483651
+    },
+    {
+      "fixture": "branch",
+      "args": [
+        4294967295,
+        4294967295
+      ],
+      "expected": 0
+    },
+    {
+      "fixture": "nested",
+      "args": [
+        0,
+        0
+      ],
+      "expected": 10
+    },
+    {
+      "fixture": "nested",
+      "args": [
+        1,
+        7
+      ],
+      "expected": 27
+    },
+    {
+      "fixture": "nested",
+      "args": [
+        2,
+        3
+      ],
+      "expected": 33
+    },
+    {
+      "fixture": "nested",
+      "args": [
+        8,
+        7
+      ],
+      "expected": 97
+    },
+    {
+      "fixture": "nested",
+      "args": [
+        9,
+        0
+      ],
+      "expected": 100
+    },
+    {
+      "fixture": "nested",
+      "args": [
+        10,
+        2
+      ],
+      "expected": 112
+    },
+    {
+      "fixture": "nested",
+      "args": [
+        10,
+        3
+      ],
+      "expected": 113
+    },
+    {
+      "fixture": "nested",
+      "args": [
+        17,
+        23
+      ],
+      "expected": 203
+    },
+    {
+      "fixture": "nested",
+      "args": [
+        2147483648,
+        1
+      ],
+      "expected": 11
+    },
+    {
+      "fixture": "nested",
+      "args": [
+        4294967295,
+        4294967295
+      ],
+      "expected": 4294967295
+    },
+    {
+      "fixture": "reset",
+      "args": [
+        0,
+        0
+      ],
+      "expected": 0
+    },
+    {
+      "fixture": "reset",
+      "args": [
+        1,
+        0
+      ],
+      "expected": 0
+    },
+    {
+      "fixture": "reset",
+      "args": [
+        2,
+        3
+      ],
+      "expected": 10
+    },
+    {
+      "fixture": "reset",
+      "args": [
+        3,
+        0
+      ],
+      "expected": 7
+    },
+    {
+      "fixture": "reset",
+      "args": [
+        4,
+        0
+      ],
+      "expected": 14
+    },
+    {
+      "fixture": "reset",
+      "args": [
+        17,
+        23
+      ],
+      "expected": 79
+    },
+    {
+      "fixture": "reset",
+      "args": [
+        64,
+        4294967295
+      ],
+      "expected": 223
+    },
+    {
+      "fixture": "reset",
+      "args": [
+        65537,
+        7
+      ],
+      "expected": 7
+    },
+    {
+      "fixture": "merge",
+      "args": [
+        0,
+        0
+      ],
+      "expected": 1
+    },
+    {
+      "fixture": "merge",
+      "args": [
+        1,
+        7
+      ],
+      "expected": 7
+    },
+    {
+      "fixture": "merge",
+      "args": [
+        2,
+        3
+      ],
+      "expected": 2
+    },
+    {
+      "fixture": "merge",
+      "args": [
+        8,
+        7
+      ],
+      "expected": 16
+    },
+    {
+      "fixture": "merge",
+      "args": [
+        9,
+        0
+      ],
+      "expected": 10
+    },
+    {
+      "fixture": "merge",
+      "args": [
+        10,
+        2
+      ],
+      "expected": 1
+    },
+    {
+      "fixture": "merge",
+      "args": [
+        10,
+        3
+      ],
+      "expected": 27
+    },
+    {
+      "fixture": "merge",
+      "args": [
+        17,
+        23
+      ],
+      "expected": 18
+    },
+    {
+      "fixture": "merge",
+      "args": [
+        2147483648,
+        1
+      ],
+      "expected": 2147483651
+    },
+    {
+      "fixture": "merge",
+      "args": [
+        4294967295,
+        4294967295
+      ],
+      "expected": 0
+    }
+  ]
+}

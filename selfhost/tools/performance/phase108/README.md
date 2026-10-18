@@ -8,7 +8,7 @@ This route uses existing Bend-owned semantic lowering, cproc's C frontend and
 QBE's machine backend. It is separate from Phase107 direct Nx source admission.
 `compile.py INPUT --out FRESH` is the convenience build interface after image
 qualification. `--seconds 1200` allows an explicitly expensive full-self request;
-ordinary programs use the default300-second ceiling and usually take seconds.
+ordinary programs use the default 300-second ceiling and usually take seconds.
 
 ## Fast loops
 
@@ -26,15 +26,16 @@ ordinary programs use the default300-second ceiling and usually take seconds.
 - `profile.py` reuses the existing main-thread CPU sampler against an unchanged
   executable. Sampling results are diagnostics, separate from clean clocks.
 
-Run target methods under `phase86/guard.py`, serially on CPU3. Keep one process
+Run target methods under `phase86/guard.py`, serially on CPU 3. Keep one process
 thread and GPU off for controlled clocks. The full cproc build requires about
-3.1GiB process-tree memory for the pointer-ABI image; use a4GiB cap with16GiB
-available-memory floor. Initial3GiB guard rejection is retained, not an OOM.
+3.1 GiB process-tree memory for the pointer-ABI image; use a 4 GiB cap with 16 GiB
+available-memory floor. Initial 3 GiB guard rejection is retained, not an OOM.
 
 ## Full image acquisition
 
-`toolchain/setup.sh` acquires pinned cproc and QBE source and applies two recorded
-patches. Setup is an explicit maintainer/network step, never a hidden fallback in
+`toolchain/setup.sh` acquires pinned cproc, copies the previously acquired
+Phase107 QBE source tree, and applies two recorded patches. That Phase107 tree
+must already exist. Setup is an explicit maintainer/network step, never a hidden fallback in
 ordinary requests. See `toolchain/receipt.json` and the toolchain audit for hashes.
 The selected native compiler/assets must already be restored.
 
@@ -43,7 +44,7 @@ The selected native compiler/assets must already be restored.
    --out EMIT_DIR --seconds 240` uses the selected trusted native B2.
 3. `runtime/bridge-metadata.py EMIT_DIR/program.1.c EMIT_DIR/portable.c
    --receipt EMIT_DIR/metadata.json` adds only the absent register metadata.
-4. Under the4GiB guard, `run.py build EMIT_DIR/portable.c --backend qbe
+4. Under the 4 GiB guard, `run.py build EMIT_DIR/portable.c --backend qbe
    --out BUILD_DIR --seconds 280` produces the full Q0 compiler.
 5. Run the frozen controls, whole-product comparison, and full self-emission with
    `run.py emit SOURCE_DIR/compiler.bend --runtime SOURCE_DIR/runtime.c
@@ -66,3 +67,22 @@ and runtime source are authenticated independently of generated binaries. The
 Linux x86-64 constructor extension rejects unsupported forms and priorities.
 No GPU/parallel scaling, all-language correctness proof or upstream speed-parity
 claim follows from these finite gates.
+
+## Qualified snapshot and evidence
+
+`image.json` selects the self-emitted Q1 image and v3 runtime. Its bounded gates
+are in `selfhost/build/phase108/qualification01.json`; the recorded sealing method
+is `selfhost/build/phase108/qualify-snapshot01.py`. Production selection is separate.
+
+`generated-controls.py --comparison COMPARE_DIR --out FRESH` builds and runs the
+six representative C products against previously recorded independent outputs.
+It binds the actual emitted C and historical output receipts. Run under the guard.
+
+The [sealed evidence](../../../../implementation/phase108/evidence/manifest.json)
+contains the generated C, native images, runtime parts and all attempt receipts.
+Restore its archive from repository root only into an absent Phase108 build tree;
+verify the listed SHA-256 files afterward. Selected native assets come from the
+existing release, and cproc/QBE tools/objects are rebuilt by `toolchain/setup.sh`.
+This snapshot records absolute paths and exact host-tool identities: restore at
+the recorded path/tool versions, or reacquire and requalify a new image manifest.
+The archive alone is not a relocatable toolchain or hermetic distribution.

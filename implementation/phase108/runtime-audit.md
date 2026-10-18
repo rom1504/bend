@@ -14,7 +14,7 @@ it is not required to compile this existing full C product through QBE.
 
 ## Implemented transport
 
-`selfhost/tools/performance/phase108/runtime/runtime.c` copies the selected
+`runtime/runtime-recipes.json` materializes v1 from the selected
 runtime from `selfhost/build/phase90/runtime-accessor-transport02/runtime.c`,
 SHA-256 `9e1c59078878be94052cb4d2d63a713e19e29b41ed3f94b034f2175a50efd0a9`.
 This is the active native runtime with its accessor transport adaptations; the
@@ -80,7 +80,7 @@ inside an already-generated image. No target execution evidence is claimed here.
 
 ### Pointer-only segment candidate
 
-`runtime/runtime-v2.c` changes only portable transport: every segment accepts
+The materialized v2 runtime changes only portable transport: every segment accepts
 one `WlState*`, and the dispatcher calls it directly without first reconstructing
 the old wide C argument list. `WL_CASE` now opens the function and loads the
 incoming register bank. The existing emitted block captures arguments before
@@ -110,7 +110,7 @@ No target build or execution was performed by this source task for v2.
 
 ### Pure accessor candidate
 
-`runtime/runtime-v3.c` starts from v2 and adds 13 conditional lines for
+The materialized v3 runtime starts from v2 and adds 13 conditional lines for
 `term_tag`, `term_rfc`, `term_aux`, `term_loc`, and `blk_cls`. Under `BEND_CPROC`,
 these pure extractions are function-like macros because this toolchain does not
 inline the retained C helper functions. Each macro evaluates its argument once,

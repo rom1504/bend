@@ -1,6 +1,10 @@
 # Compiler experiment workflow
 
-## Current implementation: Phase107 native source and QBE
+Current full compiler experiment: [Phase108 QBE](../implementation/phase108/README.md),
+with exact full self-emission and an explicit runtime-performance deficit.
+See [the frontier](STEERING.md) before choosing the next optimization.
+
+## Direct-IR implementation: Phase107 native source and QBE
 
 [Report](../implementation/phase107/README.md) · [Design](../design/phase107/native-ir-ambition-ladder.md) ·
 [Current frontier](STEERING.md) · [Fast loop](../selfhost/tools/performance/phase107/README.md).

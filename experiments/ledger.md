@@ -4893,3 +4893,22 @@ production ownership/runtime imports. The1× useful native-backend milestone is
 met;10× seeds are implemented,100× full self-hosting/research recursion is not.
 No recursive acceleration or full-language/native-GPU claim. Read the report's
 source-size/time accounting and bounded evidence manifest before continuing.
+
+
+## Phase108 — full native compiler through cproc/QBE
+
+[P108-001](phase108/P108-001-full-qbe-compatibility.md) ·
+[Report](../implementation/phase108/README.md) ·
+[Usage](../docs/self_hosted/QBE_COMPILER.md).
+
+Full QBE compiler self-emits exact complete C (30,396,376 bytes, 338.89 s); that
+output builds a runnable successor in 56.08 s. Successor passes nine frozen cases,
+six whole-C/diagnostic pairs, six generated outputs, calls5 and live Base. Current
+acquisition and ordinary requests invoke no Clang/Bun. Initial native seed is
+historical; mature C lowering, GNU tools and small GCC support object remain.
+Direct Nx is still scalar-only. Production selection unchanged.
+
+Native request screens: v1 4.18×, v2 4.02×, v3 3.22× versus selected Clang-built B2;
+successor 3.34× on a separate single round with identical executable text. These
+are not upstream or generated-program speed ratios. General runtime helper inlining
+is the next opportunity; a 3 GiB guard failure and lossy 2 ms profile are retained.

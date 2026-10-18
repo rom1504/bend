@@ -154,18 +154,22 @@ def main():
     prepared_runtime = N.pin(out / 'runtime.c')
     build_pin = N.verify(release['stages']['b2']['build'])
     build = json.loads(Path(build_pin['file']).read_text())
-    clang = N.verify(build['clang'])
+    clang = build['clang']  # Historical acquisition identity, not a current dependency.
     binary = out / 'compiler'
-    baseline_emit = N.native_args(release, candidate_source['file'], out / 'acquire', stage='b2')
+    portable_emit = N.native_args(release, candidate_source['file'], out / 'bootstrap', stage='b2')
+    portable_emit[portable_emit.index(assets['runtime']['file'])] = str(out / 'runtime.c')
     commands = dict(
-        acquireEmission=baseline_emit,
-        acquireLink=[clang['file'], '-isystem', str(Path(clang['file']).parents[1] / 'include/clang'),
-                     '-O2', str(out / 'acquire.1.c'), '-o', str(binary), '-lm', '-pthread'],
-        portableSelfEmission=request_args(binary, assets, candidate_source['file'], out / 'runtime.c', out / 'self-portable'),
-        portableFixtureEmission=request_args(binary, assets,
+        bootstrapEmission=portable_emit,
+        bootstrapMetadata=[sys.executable, '-B', str(HERE / 'runtime/bridge-metadata.py'),
+                           str(out / 'bootstrap.1.c'), str(out / 'bootstrap-portable.c'),
+                           '--receipt', str(out / 'bootstrap-metadata.json')],
+        bootstrapBuild=[sys.executable, '-B', str(HERE / 'run.py'), 'build',
+                        str(out / 'bootstrap-portable.c'), '--backend', 'qbe', '--out', str(out / 'q0')],
+        portableSelfEmission=request_args(out / 'q0/program', assets, candidate_source['file'], out / 'runtime.c', out / 'self-portable'),
+        portableFixtureEmission=request_args(out / 'q0/program', assets,
             HERE / 'coverage/fixtures/higher-order-capture.bend', out / 'runtime.c', out / 'fixture-portable'))
     inputs = [N.pin(__file__), N.pin(LAUNCH_PATH), binding['selection'], binding['admission'],
-              source_pin, tables_pin, runtime_pin, *runtime_recipe_inputs, build_pin, clang, release['stages']['b2']['binary'],
+              source_pin, tables_pin, runtime_pin, *runtime_recipe_inputs, build_pin, release['stages']['b2']['binary'],
               assets['base'], assets['runtime'], assets['template'], *assets['parts'],
               assets['cache']['carrier'], *assets['effects']]
     for record in inputs:
@@ -188,7 +192,7 @@ def main():
                             insertionMatchesSequentialFill=True),
         assets=assets, inputs=inputs, commands=commands,
         commandNotes=['Commands are data only and require the root process-tree/resource guard.',
-                      'Acquisition uses the selected original runtime and Clang; no portable macro bridge is needed.',
+                      'Acquisition uses the selected native B2, portable runtime and QBE; the first image needs the exact metadata bridge.',
                       'The acquired Bend-produced image uses the existing b2 argv sentinel.',
                       'Portable emissions require WL_PORTABLE=1 and the separately qualified cproc atomic/CLZ support at build time.',
                       'QBE/cproc acquisition and execution qualification remain separate root-owned work.'],

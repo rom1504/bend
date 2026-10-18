@@ -1,4 +1,30 @@
-# Current frontier: Phase107 native source → IR → QBE
+# Current frontier: Phase108 full native compiler through QBE
+
+[Report](../implementation/phase108/README.md) · [Design](../design/phase108/full-native-qbe.md) ·
+[Usage](../docs/self_hosted/QBE_COMPILER.md) · [Fast loop](../selfhost/tools/performance/phase108/README.md).
+
+The full compiler now runs through Bend C lowering → cproc → QBE with a portable
+CPU trampoline. A full self-emission matches all 30,396,376 bytes of the trusted
+parent's adapted output; no bridge is required for self-emission. This is distinct
+from the still-scalar direct Nx path below. No Clang/Bun runs on ordinary requests
+or current QBE image acquisition; the initial native seed is historical.
+
+v3 uses a one-pointer segment ABI and five exact scalar accessor expansions.
+Six-source native compiler requests remain 3.22× the selected Clang-built B2;
+full self-emission 338.89s versus the parent's 144.39s (explicit runtime-template
+adaptation). Image machine build 60.42s. These are not upstream TypeScript or
+generated-program runtime ratios. The rebuilt successor passes frozen, real-output,
+calls5 and live-Base gates; its separately screened request ratio is 3.34× with
+identical executable text. Installed production selection stays unchanged.
+
+Next performance opportunity: runtime helper inlining/optimized runtime ABI.
+cproc/QBE does not inline C helpers. Preserve full-output equivalence and ownership
+semantics; use the six-source/frozen controls before another full self-image.
+The first 2 ms sampler lost half its events to timer granularity; do not cite its
+fractions as quantitative evidence. Full builds need 4 GiB process-tree cap with
+16 GiB free-memory floor. Keep timed/large target work serial on CPU3.
+
+# Previous frontier: Phase107 native source → IR → QBE
 
 [Report and diagrams](../implementation/phase107/README.md) ·
 [Design](../design/phase107/native-ir-ambition-ladder.md) ·

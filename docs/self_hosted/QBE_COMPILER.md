@@ -50,6 +50,11 @@ The native compiler executable can also be called directly with the supervisory
 argument contract recorded in its qualification receipts. It is a native process;
 the convenience wrapper is not its execution engine.
 
+Packaging is scoped to the experimental Linux x86-64 compiler and authenticated
+runtime/toolchain assets. GCC preprocessing/linking and system libraries remain
+host dependencies. The package scope does not establish a standalone
+cross-platform release or replace the installed production CLI.
+
 ## Runtime and bootstrap
 
 A portable segment returns to an explicit dispatcher. The dispatcher owns the
@@ -64,9 +69,15 @@ The updated Bend source emits these itself, and self-emitted successors need no
 bridge. Experimental runtime replacements are whole authenticated template parts,
 with inverse checks; program function bodies are not translated or rewritten.
 
+The full QBE compiler emitted its own source in 338.89 s, producing all
+30,396,376 C bytes exactly as the trusted parent under the matched runtime policy.
+That output built a successor compiler through cproc/QBE in 56.08 s. The successor
+passed the nine frozen acceptance/rejection controls in 11.68 s. These are
+completed bootstrap consistency checks with a finite test scope.
+
 Runtime profiles are compact exact-edit recipes against the selected runtime.
 No duplicate full runtime implementation is maintained. Toolchain patches add
-ELF constructor initialization in cproc and128-byte alignment in QBE. These are
+ELF constructor initialization in cproc and 128-byte alignment in QBE. These are
 pinned local extensions, not claims about upstream tool support.
 
 ## Reproduce and inspect

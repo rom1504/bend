@@ -16,12 +16,14 @@ for(const name of fs.readdirSync(graphsArg).filter(n=>!n.endsWith('.json')).sort
 for(const name of ['text','list','tree','closure','tail','many','shared','shared_borrow'])selected.push({name:'ir-'+name,program:api.nx_workload(name).value,lowerSeconds:null});
 for(const {name,program:raw,lowerSeconds} of selected){
  for(const budget of [0,4096]){
-  const start=performance.now(),program=api.nx_optimize(api[method](pipeline==='tail-fused'&&budget>0?api.nx_tail_optimize(raw):raw,budget));
+  const start=performance.now();let program=api[method](pipeline!=='inline'&&budget>0?api.nx_tail_optimize(raw):raw,budget);
+  if(pipeline==='leaf-reach'&&budget>0)program=api.nx_reachable(api.nx_inline_leaf(api.nx_reachable(program),budget));
+  program=api.nx_optimize(program);
   const optimizeSeconds=(performance.now()-start)/1000;
   if(api.nx_verify(program)!==true)throw Error('verification '+name+'/'+budget);
   const stem=path.join(out,name+'-'+budget),times={};
   for(const [ext,fn] of [['json','nx_json_program'],['c','nx_c_program'],['ssa','nxq_program']]){
-   const begin=performance.now();fs.writeFileSync(stem+'.'+ext,api[ext==='ssa'&&pipeline==='tail-fused'&&budget>0?'nxq_program_fused':fn](program));times[ext]=(performance.now()-begin)/1000;
+   const begin=performance.now();fs.writeFileSync(stem+'.'+ext,api[ext==='ssa'&&pipeline!=='inline'&&budget>0?'nxq_program_fused':fn](program));times[ext]=(performance.now()-begin)/1000;
   }
   report.rows.push({name,budget,stem,lowerSeconds,optimizeSeconds,emitSeconds:times,nodes:api.nx_inline_nodes(program)});
  }

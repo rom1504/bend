@@ -32,7 +32,7 @@ def nxk_unann(+t: KTerm) -> KTerm:
 @unsafe
 def nxk_type(+t: KTerm, +book: List<&2,KDef>) -> Bool:
   (String.eq(tg(t),"Ref") || String.eq(tg(t),"ADT")) &&
-    (String.eq(nm(t),"U32") || String.eq(nm(t),"Bool")) && db(nxk_find(book,nm(t)))
+    (String.eq(nm(t),"U32") || String.eq(nm(t),"Bool")) && db(nxk_find(book,nm(t))) && String.eq(dk(nxk_find(book,nm(t))),"ADT") && U32.is_eq(nxk_count(ks(t)),0)
 
 @unsafe
 def nxk_name(+name: String) -> String:
@@ -118,7 +118,7 @@ def nxk_call(+name: String, +args: NxkArgs, +book: List<&2,KDef>) -> NxkCode:
     case NxkArgs{locals,body,values,n,error}:
       nx_choose(NxkCode,String.eq(error,""),u =>
         nxk_then(NxkCode{locals,body,NxConst{NxU32{},0},n,""},
-          nx_choose(NxkCode,db(nxk_find(book,name)),v => nxk_primitive(name,values,n),v =>
+          nx_choose(NxkCode,db(nxk_find(book,name)),v => nx_choose(NxkCode,String.eq(tg(nxk_unann(dv(nxk_find(book,name)))),"Foreign"),w => nxk_fail("foreign intrinsic replacement refused: " ++ name,n),w => nxk_primitive(name,values,n)),v =>
             nx_choose(NxkCode,String.eq(dk(nxk_find(book,name)),"Def"),w => nxk_bind(NxCall{nxk_name(name),values},n),w => nxk_fail("unknown direct function: " ++ name,n)))),u => nxk_fail(error,n))
 
 @unsafe
@@ -187,20 +187,27 @@ def nxk_function_body(+value: KTerm, +ty: KTerm, +i: U32, +env: List<&2,NxkBindi
         nxk_function_body(kid(v,0),kid(ty,1),U32.inc(i),Con{NxkBinding{ix(v),NxVar{"p" ++ U32.show(i)}},env},book,n)),w =>
       nx_choose(NxkCode,String.eq(tg(v),"Mat") && Bool.not(U32.is_eq(qt(ty),0)) && String.eq(nm(kid(ty,0)),"Bool"),z => nxk_match(v,ty,i,env,book,n),z => nxk_fail("unsupported function binder: " ++ tg(v),n))),u => nxk_expr(value,env,book,n))
 
+# A default arm is a lambda that still consumes the matched Bool parameter.
+# Constructor arms have already consumed it and start at the remaining telescope.
 @unsafe
-def nxk_match_arm(+mat: KTerm, +name: String) -> KTerm:
+def nxk_match_code(+mat: KTerm, +name: String, +ty: KTerm, +i: U32, +env: List<&2,NxkBinding>, +book: List<&2,KDef>, +n: U32) -> NxkCode:
   +m = nxk_unann(mat)
-  nx_choose(KTerm,String.eq(tg(m),"Mat"),u => nx_choose(KTerm,String.eq(nm(m),name),v => kid(m,0),v => nxk_match_arm(kid(m,1),name)),u => atom("Absent"))
+  nx_choose(NxkCode,String.eq(tg(m),"Mat"),u =>
+    nx_choose(NxkCode,String.eq(nm(m),name),v =>
+      nxk_function_body(kid(m,0),kid(ty,1),U32.inc(i),env,book,n),v =>
+      nxk_match_code(kid(m,1),name,ty,i,env,book,n)),u =>
+    nx_choose(NxkCode,String.eq(tg(m),"Lam"),v =>
+      nxk_function_body(m,ty,i,env,book,n),v => nxk_fail("missing Bool match arm",n)))
 
 @unsafe
 def nxk_match(+mat: KTerm, +ty: KTerm, +i: U32, +env: List<&2,NxkBinding>, +book: List<&2,KDef>, +n: U32) -> NxkCode:
-  nxk_match_yes(mat,ty,i,env,book,nxk_function_body(nxk_match_arm(mat,"True"),kid(ty,1),U32.inc(i),env,book,n))
+  nxk_match_yes(mat,ty,i,env,book,nxk_match_code(mat,"True",ty,i,env,book,n))
 
 @unsafe
 def nxk_match_yes(+mat: KTerm, +ty: KTerm, +i: U32, +env: List<&2,NxkBinding>, +book: List<&2,KDef>, +yes: NxkCode) -> NxkCode:
   match yes:
     case NxkCode{locals,body,value,n,error}:
-      nxk_branch(NxVar{"p" ++ U32.show(i)},yes,nxk_function_body(nxk_match_arm(mat,"False"),kid(ty,1),U32.inc(i),env,book,n))
+      nxk_branch(NxVar{"p" ++ U32.show(i)},yes,nxk_match_code(mat,"False",ty,i,env,book,n))
 
 @unsafe
 def nxk_branch(+condition: NxExpr, +yes: NxkCode, +no: NxkCode) -> NxkCode:

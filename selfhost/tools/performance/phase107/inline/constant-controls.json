@@ -1,0 +1,836 @@
+{
+  "version": 1,
+  "scope": "Direct nx_constant_propagate only, no implicit other passes. Every row compares complete U32 result before/after on the independent interpreter and qualified native backends.",
+  "cases": [
+    {
+      "fixture": "constant_invariant",
+      "args": [
+        0,
+        0
+      ],
+      "expected": 1
+    },
+    {
+      "fixture": "constant_invariant",
+      "args": [
+        0,
+        23
+      ],
+      "expected": 22
+    },
+    {
+      "fixture": "constant_invariant",
+      "args": [
+        1,
+        7
+      ],
+      "expected": 8
+    },
+    {
+      "fixture": "constant_invariant",
+      "args": [
+        2,
+        3
+      ],
+      "expected": 6
+    },
+    {
+      "fixture": "constant_invariant",
+      "args": [
+        4,
+        3
+      ],
+      "expected": 10
+    },
+    {
+      "fixture": "constant_invariant",
+      "args": [
+        17,
+        23
+      ],
+      "expected": 56
+    },
+    {
+      "fixture": "constant_invariant",
+      "args": [
+        2147483648,
+        1
+      ],
+      "expected": 0
+    },
+    {
+      "fixture": "constant_invariant",
+      "args": [
+        4294967295,
+        4294967295
+      ],
+      "expected": 60
+    },
+    {
+      "fixture": "constant_change",
+      "args": [
+        0,
+        0
+      ],
+      "expected": 0
+    },
+    {
+      "fixture": "constant_change",
+      "args": [
+        0,
+        23
+      ],
+      "expected": 23
+    },
+    {
+      "fixture": "constant_change",
+      "args": [
+        1,
+        7
+      ],
+      "expected": 8
+    },
+    {
+      "fixture": "constant_change",
+      "args": [
+        2,
+        3
+      ],
+      "expected": 5
+    },
+    {
+      "fixture": "constant_change",
+      "args": [
+        4,
+        3
+      ],
+      "expected": 7
+    },
+    {
+      "fixture": "constant_change",
+      "args": [
+        17,
+        23
+      ],
+      "expected": 40
+    },
+    {
+      "fixture": "constant_change",
+      "args": [
+        2147483648,
+        1
+      ],
+      "expected": 1
+    },
+    {
+      "fixture": "constant_change",
+      "args": [
+        4294967295,
+        4294967295
+      ],
+      "expected": 30
+    },
+    {
+      "fixture": "constant_join_equal",
+      "args": [
+        0,
+        0
+      ],
+      "expected": 7
+    },
+    {
+      "fixture": "constant_join_equal",
+      "args": [
+        0,
+        23
+      ],
+      "expected": 30
+    },
+    {
+      "fixture": "constant_join_equal",
+      "args": [
+        1,
+        7
+      ],
+      "expected": 14
+    },
+    {
+      "fixture": "constant_join_equal",
+      "args": [
+        2,
+        3
+      ],
+      "expected": 10
+    },
+    {
+      "fixture": "constant_join_equal",
+      "args": [
+        4,
+        3
+      ],
+      "expected": 10
+    },
+    {
+      "fixture": "constant_join_equal",
+      "args": [
+        17,
+        23
+      ],
+      "expected": 30
+    },
+    {
+      "fixture": "constant_join_equal",
+      "args": [
+        2147483648,
+        1
+      ],
+      "expected": 8
+    },
+    {
+      "fixture": "constant_join_equal",
+      "args": [
+        4294967295,
+        4294967295
+      ],
+      "expected": 6
+    },
+    {
+      "fixture": "constant_join_different",
+      "args": [
+        0,
+        0
+      ],
+      "expected": 9
+    },
+    {
+      "fixture": "constant_join_different",
+      "args": [
+        0,
+        23
+      ],
+      "expected": 32
+    },
+    {
+      "fixture": "constant_join_different",
+      "args": [
+        1,
+        7
+      ],
+      "expected": 14
+    },
+    {
+      "fixture": "constant_join_different",
+      "args": [
+        2,
+        3
+      ],
+      "expected": 12
+    },
+    {
+      "fixture": "constant_join_different",
+      "args": [
+        4,
+        3
+      ],
+      "expected": 12
+    },
+    {
+      "fixture": "constant_join_different",
+      "args": [
+        17,
+        23
+      ],
+      "expected": 30
+    },
+    {
+      "fixture": "constant_join_different",
+      "args": [
+        2147483648,
+        1
+      ],
+      "expected": 10
+    },
+    {
+      "fixture": "constant_join_different",
+      "args": [
+        4294967295,
+        4294967295
+      ],
+      "expected": 6
+    },
+    {
+      "fixture": "constant_snapshot",
+      "args": [
+        0,
+        0
+      ],
+      "expected": 1
+    },
+    {
+      "fixture": "constant_snapshot",
+      "args": [
+        0,
+        23
+      ],
+      "expected": 24
+    },
+    {
+      "fixture": "constant_snapshot",
+      "args": [
+        1,
+        7
+      ],
+      "expected": 8
+    },
+    {
+      "fixture": "constant_snapshot",
+      "args": [
+        2,
+        3
+      ],
+      "expected": 4
+    },
+    {
+      "fixture": "constant_snapshot",
+      "args": [
+        4,
+        3
+      ],
+      "expected": 4
+    },
+    {
+      "fixture": "constant_snapshot",
+      "args": [
+        17,
+        23
+      ],
+      "expected": 24
+    },
+    {
+      "fixture": "constant_snapshot",
+      "args": [
+        2147483648,
+        1
+      ],
+      "expected": 2
+    },
+    {
+      "fixture": "constant_snapshot",
+      "args": [
+        4294967295,
+        4294967295
+      ],
+      "expected": 0
+    },
+    {
+      "fixture": "constant_effect",
+      "args": [
+        0,
+        0
+      ],
+      "expected": 0
+    },
+    {
+      "fixture": "constant_effect",
+      "args": [
+        0,
+        23
+      ],
+      "expected": 46
+    },
+    {
+      "fixture": "constant_effect",
+      "args": [
+        1,
+        7
+      ],
+      "expected": 14
+    },
+    {
+      "fixture": "constant_effect",
+      "args": [
+        2,
+        3
+      ],
+      "expected": 6
+    },
+    {
+      "fixture": "constant_effect",
+      "args": [
+        4,
+        3
+      ],
+      "expected": 6
+    },
+    {
+      "fixture": "constant_effect",
+      "args": [
+        17,
+        23
+      ],
+      "expected": 46
+    },
+    {
+      "fixture": "constant_effect",
+      "args": [
+        2147483648,
+        1
+      ],
+      "expected": 2
+    },
+    {
+      "fixture": "constant_effect",
+      "args": [
+        4294967295,
+        4294967295
+      ],
+      "expected": 4294967294
+    },
+    {
+      "fixture": "constant_overflow",
+      "args": [
+        0,
+        0
+      ],
+      "expected": 0
+    },
+    {
+      "fixture": "constant_overflow",
+      "args": [
+        0,
+        23
+      ],
+      "expected": 23
+    },
+    {
+      "fixture": "constant_overflow",
+      "args": [
+        1,
+        7
+      ],
+      "expected": 7
+    },
+    {
+      "fixture": "constant_overflow",
+      "args": [
+        2,
+        3
+      ],
+      "expected": 3
+    },
+    {
+      "fixture": "constant_overflow",
+      "args": [
+        4,
+        3
+      ],
+      "expected": 3
+    },
+    {
+      "fixture": "constant_overflow",
+      "args": [
+        17,
+        23
+      ],
+      "expected": 23
+    },
+    {
+      "fixture": "constant_overflow",
+      "args": [
+        2147483648,
+        1
+      ],
+      "expected": 1
+    },
+    {
+      "fixture": "constant_overflow",
+      "args": [
+        4294967295,
+        4294967295
+      ],
+      "expected": 4294967295
+    },
+    {
+      "fixture": "constant_u64",
+      "args": [
+        0,
+        0
+      ],
+      "expected": 0
+    },
+    {
+      "fixture": "constant_u64",
+      "args": [
+        0,
+        23
+      ],
+      "expected": 0
+    },
+    {
+      "fixture": "constant_u64",
+      "args": [
+        1,
+        7
+      ],
+      "expected": 0
+    },
+    {
+      "fixture": "constant_u64",
+      "args": [
+        2,
+        3
+      ],
+      "expected": 0
+    },
+    {
+      "fixture": "constant_u64",
+      "args": [
+        4,
+        3
+      ],
+      "expected": 0
+    },
+    {
+      "fixture": "constant_u64",
+      "args": [
+        17,
+        23
+      ],
+      "expected": 0
+    },
+    {
+      "fixture": "constant_u64",
+      "args": [
+        2147483648,
+        1
+      ],
+      "expected": 0
+    },
+    {
+      "fixture": "constant_u64",
+      "args": [
+        4294967295,
+        4294967295
+      ],
+      "expected": 0
+    },
+    {
+      "fixture": "constant_nested",
+      "args": [
+        0,
+        0
+      ],
+      "expected": 0
+    },
+    {
+      "fixture": "constant_nested",
+      "args": [
+        0,
+        23
+      ],
+      "expected": 23
+    },
+    {
+      "fixture": "constant_nested",
+      "args": [
+        1,
+        7
+      ],
+      "expected": 10
+    },
+    {
+      "fixture": "constant_nested",
+      "args": [
+        2,
+        3
+      ],
+      "expected": 9
+    },
+    {
+      "fixture": "constant_nested",
+      "args": [
+        4,
+        3
+      ],
+      "expected": 15
+    },
+    {
+      "fixture": "constant_nested",
+      "args": [
+        17,
+        23
+      ],
+      "expected": 26
+    },
+    {
+      "fixture": "constant_nested",
+      "args": [
+        2147483648,
+        1
+      ],
+      "expected": 1
+    },
+    {
+      "fixture": "constant_nested",
+      "args": [
+        4294967295,
+        4294967295
+      ],
+      "expected": 20
+    },
+    {
+      "fixture": "constant_cascade",
+      "args": [
+        0,
+        0
+      ],
+      "expected": 0
+    },
+    {
+      "fixture": "constant_cascade",
+      "args": [
+        0,
+        23
+      ],
+      "expected": 23
+    },
+    {
+      "fixture": "constant_cascade",
+      "args": [
+        1,
+        7
+      ],
+      "expected": 9
+    },
+    {
+      "fixture": "constant_cascade",
+      "args": [
+        2,
+        3
+      ],
+      "expected": 8
+    },
+    {
+      "fixture": "constant_cascade",
+      "args": [
+        4,
+        3
+      ],
+      "expected": 14
+    },
+    {
+      "fixture": "constant_cascade",
+      "args": [
+        17,
+        23
+      ],
+      "expected": 73
+    },
+    {
+      "fixture": "constant_cascade",
+      "args": [
+        2147483648,
+        1
+      ],
+      "expected": 1
+    },
+    {
+      "fixture": "constant_cascade",
+      "args": [
+        4294967295,
+        4294967295
+      ],
+      "expected": 91
+    },
+    {
+      "fixture": "constant_parameter",
+      "args": [
+        0,
+        0
+      ],
+      "expected": 5
+    },
+    {
+      "fixture": "constant_parameter",
+      "args": [
+        0,
+        23
+      ],
+      "expected": 28
+    },
+    {
+      "fixture": "constant_parameter",
+      "args": [
+        1,
+        7
+      ],
+      "expected": 13
+    },
+    {
+      "fixture": "constant_parameter",
+      "args": [
+        2,
+        3
+      ],
+      "expected": 10
+    },
+    {
+      "fixture": "constant_parameter",
+      "args": [
+        4,
+        3
+      ],
+      "expected": 12
+    },
+    {
+      "fixture": "constant_parameter",
+      "args": [
+        17,
+        23
+      ],
+      "expected": 45
+    },
+    {
+      "fixture": "constant_parameter",
+      "args": [
+        2147483648,
+        1
+      ],
+      "expected": 2147483654
+    },
+    {
+      "fixture": "constant_parameter",
+      "args": [
+        4294967295,
+        4294967295
+      ],
+      "expected": 3
+    },
+    {
+      "fixture": "constant_return_arm",
+      "args": [
+        0,
+        0
+      ],
+      "expected": 9
+    },
+    {
+      "fixture": "constant_return_arm",
+      "args": [
+        0,
+        23
+      ],
+      "expected": 32
+    },
+    {
+      "fixture": "constant_return_arm",
+      "args": [
+        1,
+        7
+      ],
+      "expected": 14
+    },
+    {
+      "fixture": "constant_return_arm",
+      "args": [
+        2,
+        3
+      ],
+      "expected": 12
+    },
+    {
+      "fixture": "constant_return_arm",
+      "args": [
+        4,
+        3
+      ],
+      "expected": 12
+    },
+    {
+      "fixture": "constant_return_arm",
+      "args": [
+        17,
+        23
+      ],
+      "expected": 30
+    },
+    {
+      "fixture": "constant_return_arm",
+      "args": [
+        2147483648,
+        1
+      ],
+      "expected": 10
+    },
+    {
+      "fixture": "constant_return_arm",
+      "args": [
+        4294967295,
+        4294967295
+      ],
+      "expected": 6
+    }
+  ],
+  "expectedChanged": {
+    "constant_invariant": true,
+    "constant_change": false,
+    "constant_join_equal": true,
+    "constant_join_different": false,
+    "constant_snapshot": true,
+    "constant_effect": false,
+    "constant_overflow": true,
+    "constant_u64": false,
+    "constant_nested": false,
+    "constant_cascade": false,
+    "constant_parameter": true,
+    "constant_return_arm": true
+  },
+  "exactUnchanged": [
+    "constant_change",
+    "constant_join_different",
+    "constant_effect",
+    "constant_u64",
+    "constant_nested",
+    "constant_cascade"
+  ],
+  "controls": [
+    "All statement kinds and control shape remain in the same positions.",
+    "Effect roots (calls, loads, allocs, stores, free) remain present and ordered; only pure operands may be substituted.",
+    "The changing-loop and cascade fixtures require losing induction-variable facts before rewriting conditions/body.",
+    "The nested loop cannot publish facts invalidated in any inner iteration.",
+    "Zero trips are exercised in every loop family.",
+    "U64 expression and variable facts remain unpropagated; constant_u64 returns 0 despite U32 overflow of the same bit pattern.",
+    "Parameters begin unknown, while U32 locals begin at specified zero.",
+    "A returning conditional arm participates conservatively in the join; its early return remains in place."
+  ],
+  "mutationSuggestions": [
+    {
+      "fixture": "constant_cascade",
+      "args": [
+        4,
+        3
+      ],
+      "fault": "Replace the final return use of a by zero, as a stale first-header-iteration fact",
+      "expected": 14,
+      "mutantValue": 11
+    },
+    {
+      "fixture": "constant_join_different",
+      "args": [
+        2,
+        3
+      ],
+      "fault": "Replace final use of value by 7 as if unequal branches agreed",
+      "expected": 12,
+      "mutantValue": 10
+    }
+  ],
+  "limits": {
+    "bodyNodes": 4096,
+    "paramsPlusLocals": 128,
+    "controlDepth": 16,
+    "functions": 256,
+    "programNodes": 65536,
+    "rewriteNodeGrowth": 0
+  }
+}

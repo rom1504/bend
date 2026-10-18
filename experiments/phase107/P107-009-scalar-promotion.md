@@ -31,3 +31,22 @@ Measure optimizer time, scalar memory-access reduction, backend object cost and
 runtime on the same frozen memory workloads. The experiment concerns bounded
 sequential well-defined IR, not a proof of the compiler or automatic promotion of
 arbitrary escaping/concurrent allocations. Defaults remain unchanged.
+
+## Bounded result
+
+[`promotion-audit02`](../../selfhost/build/phase107/promotion-audit02/report.json)
+passes27 fixture/workload families,444 native outputs and326 distinct independent
+model executions. Two output mutations are detected. The second audit specifically
+mutates a newly generated field local in the zero-initialization case; the first
+audit accidentally targeted the pre-existing collision-test local. Audit01 is
+retained but is not evidence for that stronger mutation check. GCC controls use
+`-O2 -fno-strict-aliasing` for the explicit mixed-width byte-memory witness.
+
+The three-round [`measure07`](../../selfhost/build/phase107/measure07/report.json)
+screen gives the owned shared workload a2.65× QBE speedup over its unoptimized QBE
+graph; optimized runtime is1.26× raw Clang C O2, versus the preceding approximately
+3.3× barrier. Cranelift remains2.55× raw Clang. These are results for the composed
+pipeline recorded in `artifacts06`, not an isolated pass ablation, a whole-compiler
+benchmark or upstream compiler parity. The complete composed optimizer costs about
+11.44ms on this graph; its IR shrinks117 to112 counted nodes. This supports further
+study of general scalar replacement and backend code quality, not default promotion.

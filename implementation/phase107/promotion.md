@@ -56,6 +56,30 @@ store nodes in their original order and positions, then independent/native oracl
 compare full outputs. Optimizer cost, scalar-access reduction, backend build cost
 and runtime remain separate measurements.
 
-Preparation status: static source checks and frozen controls only. Compiler
-acquisition, independent review and execution are owned by the parent campaign;
-no performance or production-default claim follows from implementation alone.
+The parent-run qualification in
+[`promotion-audit02`](../../selfhost/build/phase107/promotion-audit02/report.json)
+passes27 families,444 native outputs and326 distinct independent model executions.
+The19 direct-pass control families are supplemented by eight broader IR workloads
+under explicitly recorded preprocessing. Two admitted output mutations fail the
+unchanged oracle: alias-field corruption changes101 to32969; corruption of a newly
+generated zero-field update changes5 to1002. Audit01 incorrectly selected the
+pre-existing collision-test variable for the second mutation. That report remains
+historical evidence; audit02 is the qualified field-mutation result. The GCC control
+recipe explicitly includes `-fno-strict-aliasing` for the byte-overlap witness.
+
+The parent-run three-round
+[`measure07`](../../selfhost/build/phase107/measure07/report.json) screen shows the
+owned shared workload at13.336ms for optimized QBE versus35.356ms unoptimized QBE
+and10.586ms raw Clang C O2:2.65× faster than raw QBE and1.26× raw Clang time.
+Cranelift improves to27.025ms but remains2.55× raw Clang. The pipeline uses
+`nx_inline_demand` and the composed `promote` route in
+[`artifacts06`](../../selfhost/build/phase107/artifacts06/report.json), whose recorded
+optimizer time on shared is11.44ms and counted IR size117→112. These timings include
+the benchmark's repeated execution protocol and are not single-call latencies.
+The remaining Cranelift gap shows that exposing scalar structure does not guarantee
+equal machine-code optimization across backends.
+
+The screen supports the general representation change in this bounded memory
+slice. It is not a standalone promotion-pass ablation, production compiler timing,
+upstream Bend comparison, broad source-language memory coverage or a formal proof.
+The installed compiler and backend defaults remain unchanged.

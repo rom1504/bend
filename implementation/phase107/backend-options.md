@@ -101,3 +101,69 @@ consumers and a versioned runtime ABI. Backend choice should minimize
 Replacing Clang with a faster compiler that emits much slower validation programs
 can lose that objective. Keep native source semantics, CPU/GPU boundaries,
 ownership obligations and held-out tests independent of the chosen machine tool.
+
+## Next extension: optimize the complete loop
+
+Phase106's measured Cranelift `speed` object generation was2.60–3.22ms for
+seven workloads and13.64ms for `many`; linking was21.14–22.37ms. Phase107's
+`graphs-arithmetic04/report.json` recorded441.36ms inside the capture frontend,
+with1.003s for the full capture process. These are different experiments, useful
+for bounding priorities, not a combined measured benchmark. Under a hypothetical
+441ms frontend plus3ms object generation plus21ms linking, eliminating linking
+entirely improves throughput by only1.047× before execution costs. With a500ms
+validation program the gain is smaller still.
+
+The441ms also has an important qualification: the original capture wrapper
+injected `api` into `inspect`, setting `ownedApi=false` in `typed-driver.mjs`.
+That intentionally disables trusted prepared-world/native-prefix/layout paths.
+The existing `createPersistentInspector` preserves owned API identity and decoded
+Base state but admits only parse/check. The capture number therefore measures a
+diagnostic fallback, not the selected compiler's fastest available frontend.
+Likewise, the old21.15MB declaration-context output has already been removed from
+the current capture script. Neither cost should be attributed to QBE/Cranelift.
+
+| Next change | Expected benefit, conditional estimate | Cost / main risk |
+| --- | --- | --- |
+| Trusted checked-graph capture, then keep one captured graph in memory across optimization policies | Avoids diagnostic fallback and repeated frontend/JSON costs. Reusing441ms frontend across eight backend candidates saves~386ms per candidate on average; actual benefit must be measured on the owned path | Narrow host integration; preserve source checking, compiler/Base identity and graph lifetime. Best immediate choice |
+| Reuse common runner; batch several policy variants into one linked executable | Runner reuse is already implemented. Amortizing21ms linking across eight variants could save~18ms each, but little if execution dominates | Approximately30–60min prototype. Unique symbols and common dispatcher required; candidates still need isolated executions and independent expected values |
+| Cranelift JIT over the same IR | Removes object file/link step. Roughly3–6× for a prechecked-IR loop with3ms compilation and1–5ms execution; about5% or less for the illustrative441ms-source loop | Approximately1–2h bounded prototype plus dependency acquisition. Preserve identical result checks, code-memory lifetime and failure isolation; no new code-quality benefit |
+| Per-function object cache | At most the eliminated2.6–13.6ms object-generation cost for these existing examples; far more promising only once compiling a much larger graph | Approximately2–4h bounded prototype. Cache post-optimization function IR plus ABI/backend/target/runtime identities; inlining must invalidate changed caller bodies |
+
+These effort/gain ranges are estimates, not measurements. The first extension
+is implemented as `inspect(file,{mode:'native',captureCheckedGraph:true})` in the
+host driver. It preserves the owned API, returns `checkedGraph` plus source files
+after source/ownership/layout admission, and stops before native foreign-source,
+runtime and C processing. `foreignValidated:false` states that boundary. Injected
+APIs, other modes and nonboolean option values refuse. No installed compiler
+image changed, and no JIT dependency/build or object cache has been started.
+
+`capture-controls01/report.json` establishes exact graph equality with the old
+wrapper, the three option-boundary rejections and rejection of ill-typed source.
+The single guard finished in1.024seconds with134.2MiB peak RSS. The owned call ran
+first and took513ms; the wrapper control ran second and took328ms. This ordered
+admission test does **not** demonstrate a frontend speed gain. Import/JIT/cache
+warmup and request ordering require separate controlled measurement. The useful
+change already established is direct access to the trusted annotated graph,
+without disabling the driver's optimization/admission paths or serializing the
+whole context.
+
+The adapter currently hard-codes `ObjectModule` in `Lower`, `signature`, `runtime`
+and `build`. A JIT should generalize lowering over the existing `Module` trait,
+then choose object serialization or `finalize_definitions`/entry-pointer lookup.
+Use a fresh module for each candidate initially; retain runtime symbols and ISA
+configuration, not arbitrary generated heap state. The pinned JIT crate is not
+in our current dependency cache, and current online API documentation does not
+establish exact0.121.2 source compatibility. Current upstream source confirms
+direct callable emission, explicit symbol binding, relocation finalization and
+that freeing module memory invalidates all its function pointers.
+[JIT implementation](https://github.com/bytecodealliance/wasmtime/blob/main/cranelift/jit/src/backend.rs).
+
+QBE1.3's local `main.c` compiles each parsed function independently and frees its
+temporary compiler state afterwards. This naturally permits function-level
+object caching without inventing an SSA cache, but our private `$nx_*` symbols
+must become linkable across object boundaries. Cache complete post-inlining IR,
+so changed inlined bodies change caller identities. GNU `ld -r` produces a
+relocatable combined object; its description as an incremental link does not
+mean it persistently patches a running executable. A resident runner still
+needs a link/load boundary unless a JIT or custom relocation loader replaces it.
+[GNU linker options](https://sourceware.org/binutils/docs/ld.html).

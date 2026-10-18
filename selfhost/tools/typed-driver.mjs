@@ -788,12 +788,18 @@ export function javascriptBackendForMode(mode='check',backend) {
   return backend??(['compile','library','interpreter'].includes(mode)?'direct':'js');
 }
 
-async function inspectWithMemo(input,{mode='check',backend,api,args=[],timeoutMs=5000,combinedOutput=false,withReport=false,proofOnly=false}={},memo=null) {
+async function inspectWithMemo(input,{mode='check',backend,api,args=[],timeoutMs=5000,combinedOutput=false,withReport=false,proofOnly=false,captureCheckedGraph=false}={},memo=null) {
   const ownedApi=api===undefined||memo!==null;
   backend=javascriptBackendForMode(mode,backend);
   api??=await loadApi();
   let phase='load';
   try {
+    // Experimental native backends can consume the owned compiler's checked
+    // annotation directly. An injected API must not inherit trusted prefix or
+    // prepared-world paths merely because its caller requests this capture.
+    if(typeof captureCheckedGraph!=='boolean')throw Error('captureCheckedGraph must be boolean');
+    if(captureCheckedGraph&&(mode!=='native'||!ownedApi))
+      throw Error('captureCheckedGraph requires native mode and the driver-owned compiler API');
     if(!['js','direct'].includes(backend))throw Error('Unknown JavaScript backend: '+backend);
     trace('discover '+input);
     requireLoaderApi(api);
@@ -919,6 +925,15 @@ async function inspectWithMemo(input,{mode='check',backend,api,args=[],timeoutMs
       const layoutCheck=ownedApi&&mode==='native'&&layoutDefs&&typeof api.jl_checked_error==='function'?api.jl_checked_error:api.j_layout_error;
       const error=layoutCheck(contextBook,layoutDefs||book,roots,layoutStops||stops);
       if(error)return {status:'error',phase,diagnostic:'Error: '+error,exitCode:1,checked:true};
+    }
+    if(captureCheckedGraph) {
+      if(!layoutDefs)return {status:'unsupported',phase,reason:'Selected compiler cannot capture native annotated definitions.',checked:true};
+      // Return only selected, checked definitions. The full context book can
+      // contain large shared graphs and is intentionally not a transport ABI.
+      // Source/layout admission is complete; C foreign-source validation,
+      // runtime planning, emission and execution have not been performed.
+      return {status:'ok',phase,checkedGraph:layoutDefs,foreignValidated:false,
+        verdict,exitCode:0,checked:true,files:graph.files,...trust};
     }
     if(mode==='native') {
       if(!api.nc_compile)return {status:'unsupported',phase,reason:'Native emitter was not bootstrapped.',checked:true};

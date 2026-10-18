@@ -2,8 +2,10 @@
 
 No concrete transformation bug was found in `inline/constant.bend`, reviewed
 against `constant-spec.md` and `experiments/phase107/P107-012-scalar-constants.md`.
-The reviewed pass is 9,070 bytes, SHA256
-`7c8a6e4d0de9d111d352cf740db007ef23df676dd11a4bf49c46f7c2f424695f`.
+The final reviewed pass is 9,073 bytes, SHA256
+`e9de89f34a695b82f7f2c3dbec81866968e42efb31c35604069f2203deddda51`.
+Compared with the initial 7c8a6e4d snapshot, only three required `+fuel`/`+depth`
+parameter annotations changed; the transformation logic is identical.
 Paths beginning `inline/` are under `selfhost/tools/performance/phase107/`.
 This is a source audit; no target was built or executed for this review.
 
@@ -51,9 +53,21 @@ memory contents are not inferred by this pass.
 **Coverage and limits.** Inspected fixtures cover invariant and changing loop
 values, equal/differing branch joins, snapshots, effectful results, wrapping U32,
 U64 nonpropagation, nested loops, parameter initialization and cascading loss of
-facts requiring multiple header probes. An additional return-arm join control was
-requested from the implementer. Frozen independent observations and deliberate
+facts requiring multiple header probes. The twelfth fixture now includes a
+returning arm and a continuing sibling, with 96 frozen input/result rows across
+the twelve families. Frozen independent observations and deliberate
 stale-header/branch mutants remain execution gates owned by the root experiment.
 The function/program/depth caps and nonincreasing-node/output-verification checks
 bound publication, but do not prove pass correctness or guarantee low analysis
 cost. Runtime gains and pass cost require separate measurement.
+
+`selfhost/tools/performance/phase107/constant-capacity.mjs` adds 18 source-prepared
+host controls: immediately below/at/above all five caps, invalid exact identity,
+a literal-substitution witness, and exact pure-operand substitutions inside
+ordered allocation/store/call/load/free roots. It independently counts JSON nodes
+and compares the Bend count, checks complete identity on refusals, and retains
+before/after graphs and source pins. Capacity graphs are not emitted or executed
+as generated programs. The effect witness has an independent expected result of
+9, but this host-only harness checks its exact transformed graph, not execution.
+Root must run the harness against the checked API before reporting these controls
+as passed; no run was performed while preparing this review update.

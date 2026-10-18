@@ -5,6 +5,7 @@ from pathlib import Path
 sys.dont_write_bytecode=True
 HERE=Path(__file__).resolve().parent;ROOT=HERE.parents[3];MASK=2**32-1
 POSITIVES={'arithmetic','branches','compiler_classify','erased','recurrence','default_bool_arm','erased_function','erased_local'}
+REFUSALS={'refuse_nat','refuse_shift','refuse_bool_entry','refuse_box','refuse_higher_order','refuse_named_u32'}
 EDGES=[(0,0),(1,7),(7,1),(19,23),(2**31,1),(MASK,MASK),(MASK,0),(0,MASK),(65,9),(123,32)]
 def answer(name,n,s):
     if name=='arithmetic':
@@ -23,7 +24,8 @@ def pin(file):
 def main():
     p=argparse.ArgumentParser(description=__doc__);p.add_argument('--image',type=Path,required=True);p.add_argument('--api',type=Path,required=True);p.add_argument('--out',type=Path,required=True)
     p.add_argument('--graphs',type=Path,default=ROOT/'selfhost/build/phase107/source-graphs01');p.add_argument('--review-graphs',type=Path,default=ROOT/'selfhost/build/phase107/review-graphs01')
-    p.add_argument('--prune',action='store_true');a=p.parse_args();out=a.out.resolve();out.mkdir(parents=True,exist_ok=False)
+    p.add_argument('--prune',action='store_true');p.add_argument('--exclude',action='append',default=[],choices=sorted(POSITIVES|REFUSALS));a=p.parse_args()
+    selection=dict(excluded=sorted(set(a.exclude)),included=sorted((POSITIVES|REFUSALS)-set(a.exclude)));assert POSITIVES-set(a.exclude),'selection needs a positive case';out=a.out.resolve();out.mkdir(parents=True,exist_ok=False)
     bun=ROOT/'selfhost/.bootstrap/bun-1.4.3/bun';qbe=ROOT/'selfhost/build/phase107/toolchain/qbe-1.3/qbe';launcher=HERE/'frontend/native/run.py';runner=HERE.parent/'phase106/cranelift/runner.c';expected=HERE/'native-expected.mjs';known={}
     def remember(item):
         assert pin(item['file'])==item,item;assert known.setdefault(item['file'],item)==item
@@ -32,7 +34,7 @@ def main():
     for key in ['manifest','source','binary','acquisition']:remember(image[key])
     manifest=json.loads(Path(image['manifest']['file']).read_text());assert manifest['source']==image['source']
     remember(manifest['assets']['base']);remember(manifest['assets']['cache']['carrier'])
-    report=dict(kind='phase107-native-controls',complete=False,passed=False,started=time.time(),prune=a.prune,inputs=[],image=pin(a.image),jobs=[],comparisons=[],observations=[],refusals=[],live=[],affinity=sorted(os.sched_getaffinity(0)),scope='Finite native frontend/JSON/QBE controls; no units-format, compiler fixed-point, production admission or universal speedup claim.',clockScope='Outer process wall includes Python authentication/supervision; each native receipt separately retains authentication, native process and total seconds.')
+    report=dict(kind='phase107-native-controls',complete=False,passed=False,started=time.time(),prune=a.prune,selection=selection,inputs=[],image=pin(a.image),jobs=[],comparisons=[],observations=[],refusals=[],live=[],affinity=sorted(os.sched_getaffinity(0)),scope='Finite native frontend/JSON/QBE controls for explicitly included cases; exclusions are not passes. No units-format, compiler fixed-point, production admission or universal speedup claim.',clockScope='Outer process wall includes Python authentication/supervision; each native receipt separately retains authentication, native process and total seconds.')
     def save():
         report['inputs']=list(known.values());(out/'report.json').write_text(json.dumps(report,indent=2)+'\n')
     for src in [Path(__file__),expected]:shutil.copyfile(src,out/src.name)
@@ -66,11 +68,11 @@ def main():
     def equal(actual,want):
         remember(want);assert Path(actual['output']['file']).read_bytes().rstrip(b'\n')==Path(want['file']).read_bytes().rstrip(b'\n'),actual
     try:
-        run('expected',[bun,expected,a.api.resolve(),a.graphs.resolve(),a.review_graphs.resolve(),out/'expected']+(['--prune'] if a.prune else []))
-        want=json.loads((out/'expected/report.json').read_text());assert want['complete'] and want['passed'] and want['prune']==a.prune
+        run('expected',[bun,expected,a.api.resolve(),a.graphs.resolve(),a.review_graphs.resolve(),out/'expected']+(['--prune'] if a.prune else [])+[arg for name in selection['excluded'] for arg in ['--exclude',name]])
+        want=json.loads((out/'expected/report.json').read_text());assert want['complete'] and want['passed'] and want['prune']==a.prune and want['selection']==selection
         remember(pin(out/'expected/report.json'))
         for item in want['inputs']:remember(item)
-        assert {r['name'] for r in want['rows'] if not r.get('refusal')}==POSITIVES
+        assert {r['name'] for r in want['rows'] if not r.get('refusal')}==POSITIVES-set(a.exclude)
         run('runner-build',['/usr/bin/gcc','-O2','-c',runner,'-o',out/'runner.o'])
         cached={}
         for row in want['rows']:
@@ -91,6 +93,7 @@ def main():
                     report['observations'].append(dict(name=name,policy=policy,binary=binary,args=[n,s],expected=value))
                 save()
         for name in ['arithmetic','recurrence','default_bool_arm']:
+            if name in a.exclude:continue
             row=next(r for r in want['rows'] if r['name']==name)
             for policy in ['raw','fast']:
                 actual=native(name,row['source']['file'],policy,'json','live');equal(actual,cached[name,policy]['output']);report['live'].append(actual);save()
@@ -100,5 +103,5 @@ def main():
         report.update(complete=True,passed=True)
     except Exception as e:report['error']=repr(e);raise
     finally:report.update(finished=time.time(),wallSeconds=time.time()-report['started']);save()
-    print(json.dumps(dict(complete=True,passed=True,comparisons=len(report['comparisons']),observations=len(report['observations']),refusals=len(report['refusals']),live=len(report['live']),report=pin(out/'report.json'))))
+    print(json.dumps(dict(complete=True,passed=True,selection=selection,comparisons=len(report['comparisons']),observations=len(report['observations']),refusals=len(report['refusals']),live=len(report['live']),report=pin(out/'report.json'))))
 if __name__=='__main__':main()

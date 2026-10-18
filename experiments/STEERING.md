@@ -34,6 +34,11 @@ backend-only edits.
 
 ## Best next bounded investigation, when requested
 
+The planned [Phase107 three-hour ambition ladder](../design/phase107/native-ir-ambition-ladder.md)
+defines 1× real-source integration, 10× reusable native compilation, and 100×
+incremental self-hosting/research goals. It includes bounded extensions and
+evidence gates; implementation has not started. Ambition labels are not speedups.
+
 Implement size/depth-bounded inlining of small pure direct helpers in Bend IR,
 with a semantic contract and unrelated held-out helpers. Static inspection finds
 128 retained helper boundaries and two classifier calls per scanned character

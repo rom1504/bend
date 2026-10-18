@@ -1,6 +1,6 @@
 # The product helper exposes the full width. U64 main compares its complete
 # result with a supplied expected U64; controls also pass a wrong high-half value.
-def nx_sr_fixture_type(width: U32) -> NxType:
+def nx_sr_fixture_type(+width: U32) -> NxType:
   nx_choose(NxType, U32.is_eq(width, 32), u => NxU32{},
     u => nx_choose(NxType, U32.is_eq(width, 64), u => NxU64{}, u => NxBad{}))
 

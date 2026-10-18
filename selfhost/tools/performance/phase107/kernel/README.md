@@ -11,7 +11,7 @@ installed native compiler and the same pinned startup as Phase106, with
 `BEND_NATIVE_HOST=1`. The native invocation is:
 
 ```text
-kernel WORKLOAD raw|pure|memory|checked|fast|promote json|qbe
+kernel WORKLOAD raw|pure|memory|checked|fast|promote|constant json|qbe
 ```
 
 The manifest explicitly records all policies. `pure` runs self-tail conversion,
@@ -30,6 +30,11 @@ from kernel-source01. New policies are:
   kernel-source03, a necessary-condition scan returns allocation-free IR exactly
   unchanged before promotion's verifier and analysis. It scans every function and
   nested conditional/loop body, so an allocation in a branch is not skipped.
+
+- `constant`: `nx_constant_propagate(nx_scalar_promote(nx_pipeline_fast(program)))`.
+  This optional policy tracks U32 scalar facts across assignments, branch joins and
+  loop fixed points. Kernel-source05 returns identity before full verification
+  when no function meets its caps; the same eligibility predicate gates rewriting.
 
 QBE entry fusion is enabled for every policy except raw; its 512-node cap remains
 unchanged. Compare exact JSON/IL output for checked and fast before interpreting
@@ -63,13 +68,13 @@ directories; change both output names for another run:
 
 ```sh
 python3 selfhost/tools/performance/phase86/guard.py \
-  --out selfhost/build/phase107/kernel-measure04-guard \
+  --out selfhost/build/phase107/kernel-measure-user01-guard \
   --seconds 60 --rss-mib 2048 --available-mib 4096 --cpu 3 -- \
   python3 -B selfhost/tools/performance/phase107/kernel/measure.py \
   --source selfhost/build/phase107/kernel-source03/producer.bend \
   --native selfhost/build/phase107/kernel-source03/producer \
   --api selfhost/build/phase107/kernel-source03/api.mjs \
-  --out selfhost/build/phase107/kernel-measure04 \
+  --out selfhost/build/phase107/kernel-measure-user01 \
   --rounds 3 --policies fast,promote --workloads many,shared,text --formats json
 ```
 
@@ -111,3 +116,19 @@ plus [38.017s successful linking](../../../../build/phase107/kernel-link03b-guar
 The earlier bad executable-path attempt remains in `kernel-link03-guard`; it failed
 before compiler execution and is not the successful-link receipt. Keep acquisition
 cost separate from repeated research requests.
+
+## Optional scalar propagation
+
+Source04 adds the `constant` policy. Source05 adds its necessary-condition
+prefilter. Both native/JS paired checks pass18 exact JSON comparisons over three
+rounds. In source05, complete native `many` requests take90.355ms for `promote`
+and90.161ms for `constant`; corresponding JS requests take1280.781/1272.382ms.
+Those small differences are noise; the result is removal of the old no-op cost.
+The earlier source04 matched request took97.172/147.130ms native.
+
+To measure the current optional policy use source05's producer/API and
+`--policies promote,constant`. Acquisition remains separate: source04 costs47.223s
+and source05 costs46.855s for successful C emission plus Clang linking. Their
+source/API hashes and full measurements are in
+[the constants report](../../../../../implementation/phase107/constants.md).
+The producer does not contain the whole source frontend and is not QBE-self-hosted.

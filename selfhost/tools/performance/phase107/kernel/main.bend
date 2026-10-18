@@ -12,11 +12,12 @@ def nx_kernel_policy(+program: NxProgram, +policy: String) -> NxProgram:
         w => nx_reachable(nx_optimize(nx_inline_leaf(nx_reachable(nx_inline_entry(nx_tail_optimize(program), 4096)), 4096))),
         w => nx_choose(NxProgram, String.eq(policy, "checked"), x => nx_kernel_checked(program),
           x => nx_choose(NxProgram, String.eq(policy, "fast"), y => nx_pipeline_fast(program),
-            y => nx_scalar_promote(nx_pipeline_fast(program)))))))
+            y => nx_choose(NxProgram, String.eq(policy, "promote"), z => nx_scalar_promote(nx_pipeline_fast(program)),
+              z => nx_constant_propagate(nx_scalar_promote(nx_pipeline_fast(program)))))))))
 
 def nx_kernel_valid_policy(+policy: String) -> Bool:
   String.eq(policy, "raw") || String.eq(policy, "pure") || String.eq(policy, "memory") ||
-  String.eq(policy, "checked") || String.eq(policy, "fast") || String.eq(policy, "promote")
+  String.eq(policy, "checked") || String.eq(policy, "fast") || String.eq(policy, "promote") || String.eq(policy, "constant")
 
 @unsafe
 def nx_kernel_text(+program: NxProgram, +format: String, +fused: Bool) -> String:
@@ -44,8 +45,8 @@ def nx_kernel_args(args: List<&1,String>) -> IO(U32):
       nx_choose(IO(U32), nx_kernel_valid_policy(policy) &&
         (String.eq(format, "json") || String.eq(format, "qbe")),
         u => nx_kernel_selected(nx_workload(name), policy, format),
-        u => IO.die(U32, 2, "Expected raw|pure|memory|checked|fast|promote and json|qbe"))
-    case _: IO.die(U32, 2, "Usage: kernel WORKLOAD raw|pure|memory|checked|fast|promote json|qbe")
+        u => IO.die(U32, 2, "Expected raw|pure|memory|checked|fast|promote|constant and json|qbe"))
+    case _: IO.die(U32, 2, "Usage: kernel WORKLOAD raw|pure|memory|checked|fast|promote|constant json|qbe")
 
 def main() -> IO(U32):
   do IO<U32>:

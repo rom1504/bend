@@ -1,0 +1,10 @@
+// Differential admission evidence: exact old/new products, predicate controls.
+import fs from'node:fs';import path from'node:path';import crypto from'node:crypto';import assert from'node:assert/strict';import{pathToFileURL}from'node:url';import{decodeNxProgram}from'./ir-json.mjs';
+const[apiFile,out]=process.argv.slice(2),api=(await import(pathToFileURL(path.resolve(apiFile)))).default,b='selfhost/build/phase107',rows=[],inputs=[];fs.mkdirSync(out,{recursive:false});
+function pin(file){const bytes=fs.readFileSync(file);return{file:path.resolve(file),bytes:bytes.length,sha256:crypto.createHash('sha256').update(bytes).digest('hex')};}
+function same(a,c){inputs.push(pin(a),pin(c));assert(fs.readFileSync(a).equals(fs.readFileSync(c)),a);rows.push({before:a,after:c,sha256:pin(a).sha256});}
+for(const old of JSON.parse(fs.readFileSync(b+'/constant-audit01/rows.json'))){for(const suffix of['.json','.c','.ssa'])same(old.stem+suffix,b+'/constant-audit02/'+old.name+suffix);}
+for(const name of fs.readdirSync(b+'/constant-capacity01').filter(n=>n.endsWith('.after.json')))same(b+'/constant-capacity01/'+name,b+'/constant-capacity02/'+name);
+const ctl=path.join(import.meta.dirname,'inline/constant-controls.json'),predicates=[];
+for(const c of JSON.parse(fs.readFileSync(ctl)).eligibilityPredicateControls){const file=b+(c.source==='capacity'?'/constant-capacity02/':'/constant-audit02/')+c.name+'.before.json';inputs.push(pin(file));const actual=api.nx_cp_has_eligible(decodeNxProgram(JSON.parse(fs.readFileSync(file))));assert.equal(actual,c.expected,c.name);predicates.push({...c,actual});}
+inputs.push(...[apiFile,ctl,import.meta.filename,path.join(import.meta.dirname,'ir-json.mjs')].map(pin));fs.copyFileSync(import.meta.filename,path.join(out,'method.mjs'));fs.writeFileSync(path.join(out,'report.json'),JSON.stringify({complete:true,scope:'Source checked prefilter; exact previous JSON/C/QBE products reuse their finite semantic/native evidence. This gate executes no generated programs.',rows,predicates,inputs},null,2)+'\n');console.log(JSON.stringify({complete:true,products:rows.length,predicates:predicates.length}));

@@ -166,6 +166,7 @@ def draw(metrics, directory, preview=None):
         fig.tight_layout()
         path = directory / name
         fig.savefig(path, format='svg', metadata={'Date': None, 'Creator': 'Phase107 receipt summarizer'})
+        path.write_text('\n'.join(line.rstrip() for line in path.read_text().splitlines()) + '\n')
         if preview is not None:
             fig.savefig(preview / Path(name).with_suffix('.png'), dpi=130)
         plt.close(fig)

@@ -94,9 +94,8 @@ Pass cost is separate from generated-code speed. In audit01's JS-hosted checked
 API, constant propagation takes about 6.37ms on `shared` and 8.84ms on
 `shared_borrow`. It adds 0.932s while returning `many` unchanged: the already-inlined
 entry has 385 locals, exceeds the 128-variable cap, and refuses function analysis
-after program verification/counting. This avoidable no-op overhead keeps the pass
-optional. Measure native hosting and cheap applicability checks separately before
-selecting a broader default.
+after program verification/counting. This avoidable no-op overhead motivated the
+final applicability preflight rather than a change to the optimization itself.
 
 A final source-only revision factors `nx_cp_eligible` out of the existing
 per-function gate and reuses it in an any-eligible-function preflight. If every
@@ -106,5 +105,41 @@ function's optimization. Binding count is checked first. The predicate is only a
 necessary condition: true does not assert valid IR or admission by the global
 program caps. Frozen expectations cover all existing capacity fixtures, including
 false for binding/body/depth overflow and true for global-cap-only overflow.
-Qualification and new native/JS timings remain pending for this source revision;
-all results above refer to the retained bridge21/kernel04 evidence.
+Bridge22 checks the revised source. The
+[new capacity matrix](../../selfhost/build/phase107/constant-capacity02/audit-report.json)
+again passes all 18 controls. The
+[prefilter equivalence receipt](../../selfhost/build/phase107/constant-prefilter01/report.json)
+passes 78 exact comparisons: JSON/C/QBE products for all 20 audit families plus
+18 capacity outputs. All 20 explicit eligibility predicates match expectations.
+This gate reuses the prior native evidence for identical products instead of
+repeating 288 executable observations. It does not claim new native observations
+or prove behavior beyond those products. The final source SHA256 is
+`b8ddd581983f242d067e6c063d5511e7f25db76bd01285af2d530ade71a29516`.
+
+The retained [kernel04](../../selfhost/build/phase107/kernel-measure04/report.json)
+matched screen confirms the old no-op overhead on native as well as JS hosting:
+on `many`, `promote`/`constant` complete-process medians are 97.172/147.130ms native
+and 1270.522/2180.219ms JS. Its 18 native/JS output pairs agree exactly. Final
+kernel05 timings for the preflight revision are recorded separately below.
+
+[`kernel05`](../../selfhost/build/phase107/kernel-measure05/report.json) passes
+18 exact native/JS output pairs over three rounds, completing in 10.36s. On
+allocation-free, over-cap `many`, `promote`/`constant` complete-process medians are
+90.355/90.161ms native and 1280.781/1272.382ms JS. The matched comparison shows no
+meaningful remaining no-op overhead. Kernel04 versus kernel05 is a descriptive
+cross-image comparison; the same-image policy comparison isolates the optional
+pass cost. Useful analysis still costs time: on `shared`, the corresponding
+medians are 4.336/4.575ms native and 98.873/108.317ms JS. On unchanged but eligible
+`text`, they are 4.200/4.472ms native and 78.309/96.131ms JS. These are research
+kernel process timings, not complete source-compiler or generated-program timings.
+
+Native acquisition is separate: kernel04 cost 47.223s
+([8.326s emission](../../selfhost/build/phase107/kernel-emit04-guard/process.json),
+[38.897s linking](../../selfhost/build/phase107/kernel-link04-guard/process.json));
+kernel05 cost 46.855s
+([8.239s emission](../../selfhost/build/phase107/kernel-emit05-guard/process.json),
+[38.617s linking](../../selfhost/build/phase107/kernel-link05-guard/process.json)).
+Both use the pinned native acquisition route, after which repeat kernel requests
+reuse the executable. The pass remains optional: this establishes a bounded
+optimization composition with one measured backend win, not universal benefit
+or a production-default decision.

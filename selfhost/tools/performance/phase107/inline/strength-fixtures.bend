@@ -14,12 +14,12 @@ def nx_sr_fixture_main(+typ: NxType) -> NxFunction:
     u => NxFunction{"main", [NxParam{"x", typ}, NxParam{"expected", typ}], NxU32{}, [NxParam{"actual", typ}],
       [NxSet{"actual", NxCall{"product", [NxVar{"x"}]}}, NxReturn{NxBin{"eq", NxVar{"actual"}, NxVar{"expected"}}}]})
 
-def nx_sr_fixture(width: U32, factor: U32, left: Bool) -> NxProgram:
-  nx_sr_fixture_at(nx_sr_fixture_type(width), factor, left)
-
 def nx_sr_fixture_at(+typ: NxType, +factor: U32, +left: Bool) -> NxProgram:
   NxProgram{"main", [NxFunction{"product", [NxParam{"x", typ}], typ, [],
     [NxReturn{nx_sr_fixture_mul(typ, factor, left, NxVar{"x"})}]}, nx_sr_fixture_main(typ)]}
+
+def nx_sr_fixture(width: U32, factor: U32, left: Bool) -> NxProgram:
+  nx_sr_fixture_at(nx_sr_fixture_type(width), factor, left)
 
 def nx_sr_nonatom() -> NxProgram:
   NxProgram{"main", [NxFunction{"main", [NxParam{"x", NxU32{}}], NxU32{}, [],

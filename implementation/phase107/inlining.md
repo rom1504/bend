@@ -30,6 +30,23 @@ chains without expanding them without limit. The original `nx_inline` policy is
 retained as the comparison. The accepted bridge05 source snapshot predates this
 extension, so the extended implementation needs its own checked acquisition.
 
+The additional `nx_tail` pass targets actual lowered scalar recurrence. It folds
+terminal assignment/return aliases and distributes a final return into return-free
+conditional branches, exposing self-tail calls hidden behind merge locals. Every
+tail call becomes argument snapshots, original-local resets and simultaneous
+parameter updates inside an explicit loop. Other returns exit normally. An
+unreachable typed-zero return accommodates the existing verifier's structural
+termination rule. No generic `continue`, mutual-tail ABI, pointer frame reuse or
+ownership transformation is introduced. Existing loops, non-tail result use and
+mixed early-return/dead-continuation layouts refuse unchanged.
+
+Separate controls exercise merge-local recurrence, simultaneous argument updates,
+per-invocation zero locals, non-tail recursion, dead continuations, pre-existing
+loops, pointer frames and mutual-only calls. Million-iteration triangular sums
+have independent expected values and are labeled native-only, avoiding recursive
+Python reference execution at that depth. This pass also requires separate
+checked acquisition and actual constant-stack execution before any speed claim.
+
 Six finite semantic fixtures target argument snapshots, caller-name collisions,
 nested conditional returns, merge-local conditionals, per-iteration local
 initialization and nested calls. A seventh recursive fixture is compared

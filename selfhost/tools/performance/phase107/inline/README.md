@@ -6,12 +6,12 @@ tooling; it is not loaded by emitted programs or the compiler.
 
 Concatenate Phase106 `ir/{model,optimize,verify,json,c,workloads}.bend` and
 `laws/bridge.bend`, then this directory's
-`{model,admit,rename,expand,deep,fixtures,main}.bend`, with one `import Base`.
+`{model,admit,rename,expand,deep,tail,fixtures,main}.bend`, with one `import Base`.
 Do not include Phase106 `main.bend` or this directory's `laws.bend`.
 The optional standalone producer accepts:
 
 ```
-inline-producer [deep-]json|c|stats WORKLOAD BUDGET
+inline-producer [deep-|tail-]json|c|stats WORKLOAD BUDGET
 ```
 
 Root schedules checked producer acquisition and backend jobs under the common
@@ -51,6 +51,21 @@ four-level recursive admission instead. This does not guess purity from expanded
 bodies, and does not duplicate the transformation engine. The128-function `many`
 chain is a useful distinction between these analysis policies; it is not a promise
 to eliminate all128 call boundaries under the fixed expansion/growth budget.
+
+`nx_tail(program)` recognizes self-tail recurrence through terminal assignments
+and merge-local conditionals. It snapshots every new argument, resets original
+locals, updates parameters, and repeats a `while(1)` body. Ordinary returns still
+exit the function; a typed-zero return after the infinite loop satisfies the
+existing structural verifier and is unreachable. Pointer frames, existing loops,
+non-tail self calls, mutual-only recursion and mixed early-return/dead-continuation
+shapes remain unchanged. Bounds are256 functions,512 original body nodes,2048
+normalized nodes,4096 rewritten body nodes, and4096 whole-program AST growth.
+`tail-` CLI modes ignore the supplied numeric budget and use these fixed caps.
+
+`tail-controls.json` includes finite differential inputs and separately labeled
+million-iteration native-only checks. Do not run the recursive Python reference
+at million depth. `audit_tail` compares small before/after results independently
+and asserts exact refusal or actual self-call removal as applicable.
 
 `controls.json` freezes input/results before execution. `controls.py` imports the
 independent Phase106 interpreter and checks whole-function retention, fresh names,

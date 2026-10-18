@@ -123,6 +123,38 @@ def negative_controls(programs):
     return results
 
 
+def audit_tail(name, before, after):
+    assert nodes(after) <= nodes(before) + 4096
+    assert before["entry"] == after["entry"]
+    assert [f["name"] for f in before["functions"]] == [f["name"] for f in after["functions"]]
+    if name in ("tail_nontail", "tail_dead", "tail_existingloop", "tail_pointer", "tail_mutual", "shared", "shared_borrow"):
+        assert before == after, "unsupported tail shape changed"
+    elif name in ("tail_sum", "tail_snapshot", "tail_reset"):
+        assert before != after, "expected self-tail function unchanged"
+        changed = [(a, b) for a, b in zip(before["functions"], after["functions"]) if a != b]
+        assert len(changed) == 1
+        function = changed[0][1]
+        assert function["body"][0]["kind"] == "while"
+
+        def self_calls(value):
+            if isinstance(value, list):
+                return sum(map(self_calls, value))
+            if not isinstance(value, dict):
+                return 0
+            return int(value.get("kind") == "call" and value.get("name") == function["name"]) + sum(self_calls(v) for v in value.values())
+
+        assert self_calls(function["body"]) == 0
+    data = json.loads((HERE / "tail-controls.json").read_text())
+    rows = []
+    for row in data["cases"]:
+        if row["fixture"] != name or row.get("nativeOnly"):
+            continue
+        values = [reference.Interpreter(p).run(row["args"])["value"] for p in (before, after)]
+        assert values == [row["expected"]] * 2, (name, row, values)
+        rows.append(dict(args=row["args"], expected=row["expected"], values=values))
+    return dict(fixture=name, before=nodes(before), after=nodes(after), observations=rows)
+
+
 def prepare_laws(out):
     out.mkdir(parents=True, exist_ok=False)
     source = (HERE / "expand.bend").read_text()

@@ -1,0 +1,473 @@
+{
+  "version": 1,
+  "cases": [
+    {
+      "fixture": "tail_sum",
+      "args": [
+        0,
+        0
+      ],
+      "expected": 0
+    },
+    {
+      "fixture": "tail_sum",
+      "args": [
+        0,
+        7
+      ],
+      "expected": 7
+    },
+    {
+      "fixture": "tail_sum",
+      "args": [
+        1,
+        7
+      ],
+      "expected": 8
+    },
+    {
+      "fixture": "tail_sum",
+      "args": [
+        2,
+        3
+      ],
+      "expected": 6
+    },
+    {
+      "fixture": "tail_sum",
+      "args": [
+        4,
+        0
+      ],
+      "expected": 10
+    },
+    {
+      "fixture": "tail_sum",
+      "args": [
+        17,
+        23
+      ],
+      "expected": 176
+    },
+    {
+      "fixture": "tail_sum",
+      "args": [
+        31,
+        4294967295
+      ],
+      "expected": 495
+    },
+    {
+      "fixture": "tail_snapshot",
+      "args": [
+        0,
+        0
+      ],
+      "expected": 0
+    },
+    {
+      "fixture": "tail_snapshot",
+      "args": [
+        0,
+        7
+      ],
+      "expected": 7
+    },
+    {
+      "fixture": "tail_snapshot",
+      "args": [
+        1,
+        7
+      ],
+      "expected": 8
+    },
+    {
+      "fixture": "tail_snapshot",
+      "args": [
+        2,
+        3
+      ],
+      "expected": 7
+    },
+    {
+      "fixture": "tail_snapshot",
+      "args": [
+        4,
+        0
+      ],
+      "expected": 3
+    },
+    {
+      "fixture": "tail_snapshot",
+      "args": [
+        17,
+        23
+      ],
+      "expected": 61029
+    },
+    {
+      "fixture": "tail_snapshot",
+      "args": [
+        31,
+        4294967295
+      ],
+      "expected": 4294135256
+    },
+    {
+      "fixture": "tail_reset",
+      "args": [
+        0,
+        0
+      ],
+      "expected": 0
+    },
+    {
+      "fixture": "tail_reset",
+      "args": [
+        0,
+        7
+      ],
+      "expected": 7
+    },
+    {
+      "fixture": "tail_reset",
+      "args": [
+        1,
+        7
+      ],
+      "expected": 7
+    },
+    {
+      "fixture": "tail_reset",
+      "args": [
+        2,
+        3
+      ],
+      "expected": 10
+    },
+    {
+      "fixture": "tail_reset",
+      "args": [
+        4,
+        0
+      ],
+      "expected": 14
+    },
+    {
+      "fixture": "tail_reset",
+      "args": [
+        17,
+        23
+      ],
+      "expected": 79
+    },
+    {
+      "fixture": "tail_reset",
+      "args": [
+        31,
+        4294967295
+      ],
+      "expected": 104
+    },
+    {
+      "fixture": "tail_nontail",
+      "args": [
+        0,
+        0
+      ],
+      "expected": 0
+    },
+    {
+      "fixture": "tail_nontail",
+      "args": [
+        0,
+        7
+      ],
+      "expected": 7
+    },
+    {
+      "fixture": "tail_nontail",
+      "args": [
+        1,
+        7
+      ],
+      "expected": 8
+    },
+    {
+      "fixture": "tail_nontail",
+      "args": [
+        2,
+        3
+      ],
+      "expected": 5
+    },
+    {
+      "fixture": "tail_nontail",
+      "args": [
+        4,
+        0
+      ],
+      "expected": 4
+    },
+    {
+      "fixture": "tail_nontail",
+      "args": [
+        17,
+        23
+      ],
+      "expected": 40
+    },
+    {
+      "fixture": "tail_nontail",
+      "args": [
+        31,
+        4294967295
+      ],
+      "expected": 30
+    },
+    {
+      "fixture": "tail_dead",
+      "args": [
+        0,
+        0
+      ],
+      "expected": 0
+    },
+    {
+      "fixture": "tail_dead",
+      "args": [
+        0,
+        7
+      ],
+      "expected": 7
+    },
+    {
+      "fixture": "tail_dead",
+      "args": [
+        1,
+        7
+      ],
+      "expected": 1
+    },
+    {
+      "fixture": "tail_dead",
+      "args": [
+        2,
+        3
+      ],
+      "expected": 2
+    },
+    {
+      "fixture": "tail_dead",
+      "args": [
+        4,
+        0
+      ],
+      "expected": 4
+    },
+    {
+      "fixture": "tail_dead",
+      "args": [
+        17,
+        23
+      ],
+      "expected": 17
+    },
+    {
+      "fixture": "tail_dead",
+      "args": [
+        31,
+        4294967295
+      ],
+      "expected": 31
+    },
+    {
+      "fixture": "tail_existingloop",
+      "args": [
+        0,
+        0
+      ],
+      "expected": 0
+    },
+    {
+      "fixture": "tail_existingloop",
+      "args": [
+        0,
+        7
+      ],
+      "expected": 7
+    },
+    {
+      "fixture": "tail_existingloop",
+      "args": [
+        1,
+        7
+      ],
+      "expected": 7
+    },
+    {
+      "fixture": "tail_existingloop",
+      "args": [
+        2,
+        3
+      ],
+      "expected": 3
+    },
+    {
+      "fixture": "tail_existingloop",
+      "args": [
+        4,
+        0
+      ],
+      "expected": 0
+    },
+    {
+      "fixture": "tail_existingloop",
+      "args": [
+        17,
+        23
+      ],
+      "expected": 23
+    },
+    {
+      "fixture": "tail_existingloop",
+      "args": [
+        31,
+        4294967295
+      ],
+      "expected": 4294967295
+    },
+    {
+      "fixture": "tail_sum",
+      "args": [
+        1000000,
+        7
+      ],
+      "expected": 1784293671,
+      "nativeOnly": true,
+      "reason": "constant-stack native control; do not execute recursive reference"
+    },
+    {
+      "fixture": "tail_sum",
+      "args": [
+        1000001,
+        4294967295
+      ],
+      "expected": 1785293664,
+      "nativeOnly": true,
+      "reason": "constant-stack native control; do not execute recursive reference"
+    },
+    {
+      "fixture": "tail_pointer",
+      "args": [
+        0,
+        0
+      ],
+      "expected": 0
+    },
+    {
+      "fixture": "tail_pointer",
+      "args": [
+        0,
+        7
+      ],
+      "expected": 7
+    },
+    {
+      "fixture": "tail_pointer",
+      "args": [
+        1,
+        7
+      ],
+      "expected": 7
+    },
+    {
+      "fixture": "tail_pointer",
+      "args": [
+        2,
+        3
+      ],
+      "expected": 3
+    },
+    {
+      "fixture": "tail_pointer",
+      "args": [
+        4,
+        0
+      ],
+      "expected": 0
+    },
+    {
+      "fixture": "tail_pointer",
+      "args": [
+        17,
+        23
+      ],
+      "expected": 23
+    },
+    {
+      "fixture": "tail_pointer",
+      "args": [
+        31,
+        4294967295
+      ],
+      "expected": 4294967295
+    },
+    {
+      "fixture": "tail_mutual",
+      "args": [
+        0,
+        0
+      ],
+      "expected": 0
+    },
+    {
+      "fixture": "tail_mutual",
+      "args": [
+        0,
+        7
+      ],
+      "expected": 7
+    },
+    {
+      "fixture": "tail_mutual",
+      "args": [
+        1,
+        7
+      ],
+      "expected": 8
+    },
+    {
+      "fixture": "tail_mutual",
+      "args": [
+        2,
+        3
+      ],
+      "expected": 5
+    },
+    {
+      "fixture": "tail_mutual",
+      "args": [
+        4,
+        0
+      ],
+      "expected": 4
+    },
+    {
+      "fixture": "tail_mutual",
+      "args": [
+        17,
+        23
+      ],
+      "expected": 40
+    },
+    {
+      "fixture": "tail_mutual",
+      "args": [
+        31,
+        4294967295
+      ],
+      "expected": 30
+    }
+  ]
+}

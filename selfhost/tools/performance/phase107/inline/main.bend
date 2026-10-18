@@ -25,10 +25,13 @@ def nx_i_dispatch(+mode: String, +program: Maybe<&2, NxProgram>, +budget: Maybe<
 
 @unsafe
 def nx_i_request(+mode: String, +p: NxProgram, +fuel: U32) -> IO(U32):
+  nx_choose(IO(U32), String.eq(mode, "tail-json"), u => nx_i_emit("json", p, nx_tail(p), 4096), u =>
+  nx_choose(IO(U32), String.eq(mode, "tail-c"), u => nx_i_emit("c", p, nx_tail(p), 4096), u =>
+  nx_choose(IO(U32), String.eq(mode, "tail-stats"), u => nx_i_emit("stats", p, nx_tail(p), 4096), u =>
   nx_choose(IO(U32), String.eq(mode, "deep-json"), u => nx_i_emit("json", p, nx_inline_deep(p, fuel), fuel), u =>
   nx_choose(IO(U32), String.eq(mode, "deep-c"), u => nx_i_emit("c", p, nx_inline_deep(p, fuel), fuel), u =>
   nx_choose(IO(U32), String.eq(mode, "deep-stats"), u => nx_i_emit("stats", p, nx_inline_deep(p, fuel), fuel), u =>
-    nx_i_emit(mode, p, nx_inline(p, fuel), fuel))))
+    nx_i_emit(mode, p, nx_inline(p, fuel), fuel)))))))
 
 @unsafe
 def nx_i_cli(args: List<&1, String>) -> IO(U32):

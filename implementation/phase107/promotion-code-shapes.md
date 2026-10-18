@@ -1,5 +1,9 @@
 # Promoted shared loops: remaining code shape
 
+P107-010 is closed as an optional arithmetic pass. Its finite correctness controls
+pass; paired runtime effects are mixed, so it is not the default pipeline. The
+original promotion audit below motivated the experiment; final results follow.
+
 Read-only CPU0 source/disassembly audit of artifacts06 and measure07. No compiler,
 program, profile or benchmark ran in this lane. Existing root measurements are
 reported here; causal explanations below are static inferences.
@@ -80,7 +84,7 @@ the executed arithmetic to its producer. No extra object was built.
 - `selfhost/build/phase107/measure07/ir-shared_borrow-4096-qbe.o`: `abab667d963dafdffa59d621501c9b3bf026aa2de1341014449599d6170e3a0d`.
 - `selfhost/build/phase107/measure07/ir-shared_borrow-0-c.o`: `7010c3451378a2f8e9ff47ee1d9c41267ac3894ed72badff2f4ab2769c4b3b7f`.
 
-## Optional P107-010 implementation prepared
+## Optional P107-010 implementation
 
 The [hypothesis](../../experiments/phase107/P107-010-constant-multiply.md) was written
 before the candidate. `inline/strength.bend` adds109 lines with
@@ -94,7 +98,7 @@ call/argument, allocation, memory and control positions. Original body4096,
 program65536 and function256 bounds limit work; output growth over4096 or failed
 final verification returns the original whole program.
 
-The successor [controls](../../selfhost/tools/performance/phase107/inline/strength-controls-v2.json)
+The successor [controls](../../selfhost/tools/performance/phase107/inline/strength-controls-v3.json)
 contain70 coefficients, two widths, both coefficient positions and2800 complete
 modular product expectations generated independently with Python integers. U64
 values are decimal strings to avoid JS Number rounding. The U64 fixture's product
@@ -108,7 +112,10 @@ twice without a borrowing annotation. Its raw diagnostic remains in
 `selfhost/build/phase107/bridge-check17/stderr.log`. Commit `cb1c3c0` adds only the
 fixture's `+width`; the transformation core is unchanged. The original controls
 remain preserved and v2 changes only the fixture identity/version/derivation,
-with all2800 arithmetic expectations unchanged. Root will acquire a fresh image.
+with all2800 arithmetic expectations unchanged. Bridge18 then rejected a plain
+helper declared after its caller; `e69baa4` reorders it without an unsafe bypass.
+The v3 controls preserve the earlier identities. Bridge19 checks successfully;
+the transformation core remains the original109-line implementation.
 
 The supplemental [control builder](../../selfhost/tools/performance/phase107/strength-extra-controls.mjs)
 constructs11 host-side IR graphs without requiring another Bend-source rebuild.
@@ -116,10 +123,86 @@ Two executable witnesses observe a called function's write and a loaded snapshot
 across a subsequent store; three malformed call/load/allocation operands require
 unchanged-input refusal. Six structural-only cases cover257functions,4096/4097
 original body nodes,4096 accepted versus4098 refused total growth, and65537
-original program nodes. Malformed and capacity graphs must not execute. These
-are prepared controls, not passing target results.
+original program nodes. Malformed and capacity graphs were not executed. These
+controls now pass through `strength-extra01`, as detailed below.
 
 Source/data checks cover definition-name uniqueness, source pins, pinned Base
-unary `U32.shr` signature and independent arithmetic expectations. Successful Bend
-checking, backend semantics, actual cap refusals and paired object/runtime
-measurements remain pending root-owned targets. No arithmetic-pass speedup claimed.
+unary `U32.shr` signature and independent arithmetic expectations. Root performed
+the checker, generated-program and runtime targets; this lane performed source,
+disassembly and receipt analysis only.
+
+## P107-010 closed results: optional, not default
+
+[`strength-audit01`](../../selfhost/build/phase107/strength-audit01/report.json)
+passes282 valid graphs:280 width/coefficient/side combinations and two additional
+valid fixtures. The two malformed fixture graphs are refused unchanged. Its8440
+independent-interpreter observations compare original and transformed results,
+including U64 high-half checks;1500 generated native outputs pass across GCC,
+QBE and Cranelift. These native executions cover the selected boundary subset,
+not every possible scalar input.
+
+The [supplemental structural audit](../../selfhost/build/phase107/strength-extra01/audit-report.json)
+passes11 controls: eight valid and three invalid. It checks exact ordered effect
+statements, their complete operands and control-flow positions. The three nested
+call/load/allocation operands are refused unchanged. All six limit controls pass:
+257functions refused,4096-body accepted/4097-body unchanged,4096 whole-program
+growth accepted/4098 growth refused, and65537 original nodes refused. The accepted
+body4096 case grows2046 nodes. The two executable call/load snapshot witnesses add
+[32 model observations and48 native outputs](../../selfhost/build/phase107/strength-extra01/report.json).
+Capacity fixtures remain structural only; none is counted as a semantic execution.
+
+The measure08 screen completed312 model observations,78 builds and234 timed runtime
+records. It is retained as a screen, rather than used to estimate the incremental
+effect from independently run measure07/08 ratios. The predeclared
+[paired comparison](../../selfhost/build/phase107/strength-pair01/report.json)
+then ran all39 existing optimized binary pairs:13 programs × three backends,
+five rounds,390 observations. No binary was rebuilt or policy retuned for it.
+
+Each round alternates promotion/strength order by case and round, reverses case
+order after the round, and uses the same inputs, repetition count and complete
+expected result for both roles. The reported clock is elapsed child-process time,
+including launch and the repeated workload, not optimizer time. Medians use five
+samples per role. Twenty-five pairs have identical ELF `.text`; their observed
+ratios range0.953–1.093 and are not credited as optimization gains. This finite
+campaign provides no confidence interval or general speed guarantee.
+
+All14 changed-text pairs are shown below. Values are strength time divided by
+promotion time; below1 is faster.
+
+| Program | Cranelift | QBE |
+| --- | ---: | ---: |
+| list | 1.052 | 1.003 |
+| source classifier | 0.931 | 0.973 |
+| borrowed | 0.854 | 1.029 |
+| shared | 0.993 | 0.993 |
+| text | 1.047 | 1.100 |
+| source recurrence | 0.827 | 0.802 |
+| closure | 0.873 | 0.920 |
+
+Recurrence improves17.3% CL/19.8% QBE; closure improves12.7%/8.0%, and borrowed CL
+improves14.6%. Text regresses4.7% CL/10.0% QBE, and list CL regresses5.2% in this
+paired estimate. Shared is effectively unchanged. These are generated-program
+results; they say nothing about compiling the full Bend compiler faster.
+
+The initial shared screen illustrates why the paired protocol matters. QBE's
+ratio to raw Clang changed1.260→1.139, appearing roughly10% better. But raw Clang's
+denominator moved10.586→11.607ms, while the optimized QBE measurements were
+13.336→13.223ms. The direct paired strength/promotion result is0.993, not a10%
+incremental gain. Preserve both observations rather than selecting the favorable
+ratio or treating smaller instruction count as proof of faster execution.
+
+Decision: retain the pass as **optional**. The mathematical identity is useful and
+the implementation remains small, but mixed backend results—especially QBE
+text—do not justify applying it globally. No program-specific selector, production
+default or installed compiler changed. Further tuning requires another bounded
+hypothesis and held-out validation; this phase does not add a larger propagation
+or unrolling pass.
+
+Final receipt SHA-256 identities:
+
+- Bridge19 API: `10958e538198098ab7fff529ea02b7cccecd5ac07f04069829f86911f7d4b6e4`.
+- Main qualification: `6008f4889c89979152ff1c23f372d61d2aad0ae3f4b7ab5815c7ced26907f7a8`.
+- Supplemental structural audit: `72d39ddefaddd91dce8b455f48dcf20a82ab93dc3a7ec030dd70f832dad2972c`.
+- Supplemental executions: `261ee74791f65ef2e9322c586beb96c5f7cc87ad51a56c5051908da75d85be41`.
+- Measure08 screen: `e3766443e875cdf5fcbb4d34b262f436c2cecf10f8f4e9acaaacac667742e2da`.
+- Five-round paired campaign: `b11f61d5adf45ed8a0addda73bbd33da507b1840c6bdf63a5ef2c33326128766`.

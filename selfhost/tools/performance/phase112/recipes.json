@@ -121,6 +121,26 @@
       "overrides": [
         "regions/entry.bend"
       ]
+    },
+    "multi": {
+      "extends": "regions",
+      "modules": [
+        "region-multi/model.bend",
+        "region-multi/build.bend",
+        "region-multi/plan.bend",
+        "region-multi/index.bend",
+        "region-multi/emit.bend"
+      ],
+      "overrides": [
+        "region-multi/entry.bend"
+      ]
+    },
+    "multi-wide": {
+      "extends": "multi",
+      "modules": [],
+      "overrides": [
+        "region-multi/wide32-entry.bend"
+      ]
     }
   }
 }

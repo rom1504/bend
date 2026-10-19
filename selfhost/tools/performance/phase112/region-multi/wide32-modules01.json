@@ -1,0 +1,44 @@
+{
+  "kind": "phase112-region-multi-wide32-exact-overlay-profile",
+  "profile": "region-multi03-wide32-fusion",
+  "prepared": true,
+  "checked": false,
+  "targetsRun": false,
+  "baseInventory": {
+    "file": "selfhost/tools/performance/phase112/region-multi/modules02.json",
+    "sha256": "78371a044fe9fd0a94b0d761a921a61fb7c5734e1d11254660702d8741c95e7f"
+  },
+  "override": {
+    "file": "selfhost/tools/performance/phase112/region-multi/wide32-entry.bend",
+    "bytes": 1692,
+    "sha256": "982d11d9ddee0c016dba3dd93923125973182b987aed0da68deec954d32e306c",
+    "declarations": [
+      "p112c_frame",
+      "p112c_target"
+    ]
+  },
+  "changes": [
+    {
+      "declaration": "p112c_frame",
+      "before": "U32.is_lt(index,8)",
+      "after": "U32.is_lt(index,32)"
+    },
+    {
+      "declaration": "p112c_target",
+      "before": "U32.is_le(arity,8)",
+      "after": "U32.is_le(arity,32)"
+    }
+  ],
+  "limits": {
+    "ranks": 6,
+    "workerArity": 32,
+    "fusedCalleeArity": 32,
+    "captures": 32,
+    "continuationPreludeArity": 33,
+    "sitesPerBody": 8,
+    "copiedContinuationStatements": 128,
+    "scratchBytes": 2048,
+    "maxArgumentBufferBytes": 256
+  },
+  "runtimePremise": "Same pinned runtime04 CPU fail-stop premise; separate conjunctive wide-fusion admission required"
+}

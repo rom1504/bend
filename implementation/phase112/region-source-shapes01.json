@@ -1,0 +1,192 @@
+{
+  "kind": "phase112-offline-word-region-shapes",
+  "targetsRun": false,
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase112/word-binding01.json",
+      "bytes": 39682,
+      "sha256": "c9b44fb0ec7555058aa6941863d927942ee03a14ef1097fa9bfacf28c839e3a3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase112/region-binding01.json",
+      "bytes": 39964,
+      "sha256": "f8ea252e9d414d282ea6f90d0044780067588cd18cc521b7cf3c99932684cdf8"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p112-word-batch01-lexer-emit/program.ssa",
+      "bytes": 485244,
+      "sha256": "a21bd5ad3a12c81e09b840b31956adcb8e5d242d2b0670bf6967379957fdc5a2"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p112-region-batch01-lexer-emit/program.ssa",
+      "bytes": 597013,
+      "sha256": "8ef16f7e3bbc5907c3852f7942ed8c0d6d574805d0f35eefeebd59f1a5555598"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p112-word-batch01-variation-ray-active-256-2240-emit/program.ssa",
+      "bytes": 768022,
+      "sha256": "0bff458333006e2146c6dfb9a782aacc0573c89685136967fbd927130999412f"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p112-region-batch01-variation-ray-active-256-2240-emit/program.ssa",
+      "bytes": 902653,
+      "sha256": "c7acb9aa5ac473b151fd34c4409e2c10054778f2545bf16e2715ab0b2a4bfa32"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p112-word-batch01-coverage-closures-256-emit/program.ssa",
+      "bytes": 308594,
+      "sha256": "bbe33038d1731b6f7c6e9227b00ce24ba9c7b646824018ab73c0723d71579740"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p112-region-batch01-coverage-closures-256-emit/program.ssa",
+      "bytes": 383313,
+      "sha256": "5ec958f6405d2854d60cf6161705b459134caba3ce7068b244251660ac31c9fe"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p112-word-batch01-coverage-unicode-text-64-emit/program.ssa",
+      "bytes": 365729,
+      "sha256": "3e84a5c90413270e88bfc796c6c2ca7ec71310ec0e1d74d8f8256f54c0a1f591"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p112-region-batch01-coverage-unicode-text-64-emit/program.ssa",
+      "bytes": 446999,
+      "sha256": "fc915820e54576affd3dd60449ca7796796e3787733abe2a2a83d6af31efcce7"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p112-word-batch01-coverage-map-churn-128-emit/program.ssa",
+      "bytes": 930274,
+      "sha256": "8b30145e74716c1d03b483695e3612962778e4f8ba6fd66a01596d838405286e"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p112-region-batch01-coverage-map-churn-128-emit/program.ssa",
+      "bytes": 1065487,
+      "sha256": "dee326a63dc163034b4b4c823f0c0e0c8a7df1102fa3a7e77567fb9190d9ad2d"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p112-word-batch01-coverage-numeric-recurrence-1024-emit/program.ssa",
+      "bytes": 327782,
+      "sha256": "6c51bb55e1b620aef917eccaab4ed40d3c6306858db4799998f3ae42edb73c1d"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p112-region-batch01-coverage-numeric-recurrence-1024-emit/program.ssa",
+      "bytes": 414502,
+      "sha256": "6ebb8660306b8e160a26b69ae2d9f953ac52b729d409748bb0b885e49bc3b708"
+    }
+  ],
+  "cases": [
+    {
+      "name": "lexer",
+      "qbeBytes": {
+        "word": 485244,
+        "region": 597013
+      },
+      "publicDefinitions": 565,
+      "changedPublic": [],
+      "privateDefinitions": {
+        "word": 27,
+        "region": 282
+      },
+      "sharedPrivate": 27,
+      "changedSharedPrivateText": 27,
+      "changedSharedPrivateHelperHistograms": []
+    },
+    {
+      "name": "variation-ray-active-256-2240",
+      "qbeBytes": {
+        "word": 768022,
+        "region": 902653
+      },
+      "publicDefinitions": 719,
+      "changedPublic": [
+        "$p111.k.83233",
+        "$p111.k.50957"
+      ],
+      "privateDefinitions": {
+        "word": 27,
+        "region": 314
+      },
+      "sharedPrivate": 27,
+      "changedSharedPrivateText": 27,
+      "changedSharedPrivateHelperHistograms": [],
+      "wholeQBERuntimeFrameSites": {
+        "word": 357,
+        "region": 357
+      },
+      "hotPublicUnchanged": [
+        "$direct.sx",
+        "$direct.sy",
+        "$direct.sz",
+        "$direct.sr",
+        "$direct.isect.go2",
+        "$direct.isect.go",
+        "$direct.isect5",
+        "$direct.nearest",
+        "$direct.nearest.t"
+      ]
+    },
+    {
+      "name": "coverage-closures-256",
+      "qbeBytes": {
+        "word": 308594,
+        "region": 383313
+      },
+      "publicDefinitions": 388,
+      "changedPublic": [],
+      "privateDefinitions": {
+        "word": 17,
+        "region": 192
+      },
+      "sharedPrivate": 17,
+      "changedSharedPrivateText": 17,
+      "changedSharedPrivateHelperHistograms": []
+    },
+    {
+      "name": "coverage-unicode-text-64",
+      "qbeBytes": {
+        "word": 365729,
+        "region": 446999
+      },
+      "publicDefinitions": 428,
+      "changedPublic": [],
+      "privateDefinitions": {
+        "word": 18,
+        "region": 208
+      },
+      "sharedPrivate": 18,
+      "changedSharedPrivateText": 18,
+      "changedSharedPrivateHelperHistograms": []
+    },
+    {
+      "name": "coverage-map-churn-128",
+      "qbeBytes": {
+        "word": 930274,
+        "region": 1065487
+      },
+      "publicDefinitions": 922,
+      "changedPublic": [],
+      "privateDefinitions": {
+        "word": 28,
+        "region": 339
+      },
+      "sharedPrivate": 28,
+      "changedSharedPrivateText": 28,
+      "changedSharedPrivateHelperHistograms": []
+    },
+    {
+      "name": "coverage-numeric-recurrence-1024",
+      "qbeBytes": {
+        "word": 327782,
+        "region": 414502
+      },
+      "publicDefinitions": 401,
+      "changedPublic": [],
+      "privateDefinitions": {
+        "word": 19,
+        "region": 217
+      },
+      "sharedPrivate": 19,
+      "changedSharedPrivateText": 19,
+      "changedSharedPrivateHelperHistograms": []
+    }
+  ]
+}

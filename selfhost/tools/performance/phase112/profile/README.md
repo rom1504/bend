@@ -144,3 +144,46 @@ asset, command and output hashes accompany the resulting profile. This gives
 actual compiler workload counts across request IO, frontend, lowering,
 verification, emission and readback, without claiming stage times or profiling
 an entire self-emission.
+
+For a future candidate, keep `compiler-plan01.json` unchanged. First obtain that
+candidate's ordinary full-QBE emission/build receipts and a successful
+**uninstrumented** lexer-scan request. Derive a new plan without executing targets:
+
+```sh
+python3 selfhost/tools/performance/phase112/profile/prepare-compiler-plan.py \
+  --compiler-emission CANDIDATE_FULL_EMIT/report.json \
+  --compiler-build CANDIDATE_FULL_BUILD/report.json \
+  --request-report CANDIDATE_FOCUSED_LEXER/report.json \
+  --out FRESH_COMPILER_PROFILE_PLAN.json
+```
+
+Then pass `--plan FRESH_COMPILER_PROFILE_PLAN.json` to the unchanged
+`compiler-run.py`. The derivation checks the QBE→object→image command chain,
+the checked/native producer receipt, every source/asset/tool hash, and that the
+reference request actually ran that same image. A newly optimized compiler may
+emit different valid SSA; its own previously qualified raw output becomes the
+diagnostic transparency oracle. This must not be mistaken for comparison against
+an independent semantic oracle. The source-only derivation was exercised on the
+original receipts in `profile-plan-derivation-check01.json`; no targets ran.
+
+## Comparing candidate snapshots
+
+`prepare-batch-plan.py --binding BINDING.json --out FRESH_PLAN.json` creates the
+same immutable six-case diagnostic contract for another completed product binding.
+The prepared `batch-word-plan01.json` and `batch-region-plan01.json` bind the
+corresponding existing candidate objects; pass either with `run.py --plan`.
+
+After root runs both, compare their validated reports offline:
+
+```sh
+python3 selfhost/tools/performance/phase112/profile/compare.py \
+  --before selfhost/build/phase112/profile-word01/report.json \
+  --after selfhost/build/phase112/profile-region01/report.json \
+  --out selfhost/build/phase112/profile-word-region-comparison01
+```
+
+This compares counters and stable decoded function/constructor/operation names.
+Anonymous continuation names depend on fresh-variable allocation and are not
+individually matched across snapshots. Whole-program event totals still include
+them. Source composition must be compared separately: static→word contains more
+than the word-pattern change. Counts have no timing aggregate or speedup field.

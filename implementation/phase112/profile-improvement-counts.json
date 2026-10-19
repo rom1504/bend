@@ -1,0 +1,423 @@
+{
+  "kind": "phase112-offline-profile-improvement",
+  "targetsRun": false,
+  "complete": true,
+  "countsAreNotTimings": true,
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase112/profile-compiler01/report.json",
+      "bytes": 74599,
+      "sha256": "9980eba70f19b10a37ca1d6c65567ae67a685d983194e9220abf64c3c12ca0bf"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase112/profile-compiler01/profile/profile.json",
+      "bytes": 9482169,
+      "sha256": "2e65b4498d21f2a561db6dff2913dda1cd635515a00a200cd9b231a45cf48af3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p112-full-emit01/program.ssa",
+      "bytes": 44349671,
+      "sha256": "5b105cfbc2987adf36531abded61c148c219562443c2f09da00021ef5c176ccd"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase112/profile-word-compiler01/report.json",
+      "bytes": 74702,
+      "sha256": "202409c4b7f94f68aa8909aec6824270957584c7b5b9030bf243c7591136d506"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase112/profile-word-compiler01/profile/profile.json",
+      "bytes": 5957198,
+      "sha256": "df395f315a94c94e819f99ac960cc20e4d3d941d8e80dc42b93e83fe53cb33a6"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p112-word-full-emit01/program.ssa",
+      "bytes": 28462589,
+      "sha256": "bdbf31bcea3c1d99599c896ec48e4fb67430e47b34134c5b834fbed146047617"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase112/profile-static-word-comparison01/report.json",
+      "bytes": 232798,
+      "sha256": "e42021d9da2ea08f6d14d329b585549cc7b477ae1b2d1b2b6fdc69d40753246f"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase112/profile-word-region-comparison01/report.json",
+      "bytes": 186703,
+      "sha256": "3f023cec6fe7186b0e0e3b166d8a2e5ab469d326959bd53224ded5c96ec32289"
+    }
+  ],
+  "sameRequestArguments": true,
+  "expectedSSA": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p112-native-focused01/5-native/program.ssa",
+      "bytes": 204540,
+      "sha256": "e5e5f36e5892a5336c53f5abc833d9d3a29c066cc336f04a752a0cbf3a100ae9"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p112-word-native-focused01/5-native/program.ssa",
+      "bytes": 205140,
+      "sha256": "baaed6f2e1436801a9b1821687667baa1173b35c27cd9a3bd9c007e85aa54da8"
+    }
+  ],
+  "compilerQBE": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p112-full-emit01/program.ssa",
+      "bytes": 44349671,
+      "sha256": "5b105cfbc2987adf36531abded61c148c219562443c2f09da00021ef5c176ccd"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p112-word-full-emit01/program.ssa",
+      "bytes": 28462589,
+      "sha256": "bdbf31bcea3c1d99599c896ec48e4fb67430e47b34134c5b834fbed146047617"
+    }
+  ],
+  "counters": {
+    "rt_keep": {
+      "before": 13270294,
+      "after": 10388308,
+      "difference": -2881986,
+      "ratio": 0.7828242539313749
+    },
+    "rt_sink": {
+      "before": 10512452,
+      "after": 11344477,
+      "difference": 832025,
+      "ratio": 1.0791466158418608
+    },
+    "rt_tag": {
+      "before": 0,
+      "after": 0,
+      "difference": 0,
+      "ratio": null
+    },
+    "rt_ctor": {
+      "before": 10491273,
+      "after": 9070644,
+      "difference": -1420629,
+      "ratio": 0.8645894544923195
+    },
+    "rt_take": {
+      "before": 38063865,
+      "after": 13894120,
+      "difference": -24169745,
+      "ratio": 0.3650212609780956
+    },
+    "rt_closure": {
+      "before": 2149393,
+      "after": 3020,
+      "difference": -2146373,
+      "ratio": 0.00140504784374007
+    },
+    "rt_frame": {
+      "before": 13652223,
+      "after": 11437689,
+      "difference": -2214534,
+      "ratio": 0.8377894940626153
+    },
+    "rt_jump": {
+      "before": 12617264,
+      "after": 11349865,
+      "difference": -1267399,
+      "ratio": 0.8995504096609217
+    },
+    "rt_return": {
+      "before": 13652660,
+      "after": 11438111,
+      "difference": -2214549,
+      "ratio": 0.8377935874767262
+    },
+    "rt_apply": {
+      "before": 1075823,
+      "after": 2599,
+      "difference": -1073224,
+      "ratio": 0.0024158249080006656
+    },
+    "rt_stack_pop": {
+      "before": 12603580,
+      "after": 10414525,
+      "difference": -2189055,
+      "ratio": 0.8263148248354832
+    },
+    "rt_stack_get": {
+      "before": 30550376,
+      "after": 23431070,
+      "difference": -7119306,
+      "ratio": 0.7669650285155246
+    },
+    "rt_reg_get": {
+      "before": 0,
+      "after": 0,
+      "difference": 0,
+      "ratio": null
+    },
+    "rt_fail": {
+      "before": 0,
+      "after": 0,
+      "difference": 0,
+      "ratio": null
+    },
+    "rt_op": {
+      "before": 2754250,
+      "after": 2652723,
+      "difference": -101527,
+      "ratio": 0.963138059362803
+    },
+    "rt_special_ctor": {
+      "before": 2476040,
+      "after": 1332165,
+      "difference": -1143875,
+      "ratio": 0.5380224067462561
+    },
+    "rt_special_test": {
+      "before": 0,
+      "after": 0,
+      "difference": 0,
+      "ratio": null
+    },
+    "rt_special_take": {
+      "before": 6364393,
+      "after": 4584376,
+      "difference": -1780017,
+      "ratio": 0.7203162972493999
+    },
+    "set_regs": {
+      "before": 27345747,
+      "after": 22790575,
+      "difference": -4555172,
+      "ratio": 0.8334230182119362
+    },
+    "register_words_copied": {
+      "before": 51406226,
+      "after": 43108332,
+      "difference": -8297894,
+      "ratio": 0.8385819258546621
+    },
+    "register_words_zeroed": {
+      "before": 659583196,
+      "after": 549446618,
+      "difference": -110136578,
+      "ratio": 0.833020946155214
+    },
+    "bank_init_words": {
+      "before": 28005562,
+      "after": 100568,
+      "difference": -27904994,
+      "ratio": 0.0035910009590237827
+    },
+    "bank_read_words": {
+      "before": 28005562,
+      "after": 100568,
+      "difference": -27904994,
+      "ratio": 0.0035910009590237827
+    },
+    "bank_write_words": {
+      "before": 27994174,
+      "after": 89570,
+      "difference": -27904604,
+      "ratio": 0.003199594315588665
+    },
+    "bank_save_words": {
+      "before": 11388,
+      "after": 10998,
+      "difference": -390,
+      "ratio": 0.9657534246575342
+    },
+    "bank_take_words": {
+      "before": 0,
+      "after": 0,
+      "difference": 0,
+      "ratio": null
+    },
+    "heap_alloc": {
+      "before": 124677389,
+      "after": 16515651,
+      "difference": -108161738,
+      "ratio": 0.13246709072484666
+    },
+    "heap_alloc_miss": {
+      "before": 6267,
+      "after": 1430,
+      "difference": -4837,
+      "ratio": 0.22817935216211904
+    },
+    "heap_free": {
+      "before": 124677389,
+      "after": 16515651,
+      "difference": -108161738,
+      "ratio": 0.13246709072484666
+    },
+    "spare_free": {
+      "before": 39340010,
+      "after": 14097626,
+      "difference": -25242384,
+      "ratio": 0.3583533913692447
+    },
+    "rfc_wrap": {
+      "before": 59036946,
+      "after": 7234837,
+      "difference": -51802109,
+      "ratio": 0.1225476161995236
+    },
+    "rfc_seal": {
+      "before": 78100662,
+      "after": 20975677,
+      "difference": -57124985,
+      "ratio": 0.26857233297203037
+    },
+    "rfc_view": {
+      "before": 58495464,
+      "after": 8594326,
+      "difference": -49901138,
+      "ratio": 0.14692294773488762
+    },
+    "rfc_bump": {
+      "before": 7080961,
+      "after": 6070189,
+      "difference": -1010772,
+      "ratio": 0.857254968640556
+    },
+    "term_keep": {
+      "before": 13406542,
+      "after": 10524556,
+      "difference": -2881986,
+      "ratio": 0.7850313675219158
+    },
+    "term_sink": {
+      "before": 11455492,
+      "after": 11393023,
+      "difference": -62469,
+      "ratio": 0.9945468077669646
+    },
+    "term_drop": {
+      "before": 7524317,
+      "after": 6203757,
+      "difference": -1320560,
+      "ratio": 0.8244943693892748
+    },
+    "ctr_take": {
+      "before": 38263750,
+      "after": 14094605,
+      "difference": -24169145,
+      "ratio": 0.3683539903956094
+    }
+  },
+  "totals": {
+    "dispatch_fid": {
+      "before": 28422884,
+      "after": 22794443,
+      "difference": -5628441,
+      "ratio": 0.8019750212540008
+    },
+    "public_calls_fid": {
+      "before": 170233886,
+      "after": 121343692,
+      "difference": -48890194,
+      "ratio": 0.7128057453849111
+    }
+  },
+  "semanticEvents": {
+    "special_take_kind:6": {
+      "before": 1625654,
+      "after": 0,
+      "difference": -1625654,
+      "ratio": 0.0
+    },
+    "ctor_cid:WCon": {
+      "before": 1788514,
+      "after": 0,
+      "difference": -1788514,
+      "ratio": 0.0
+    },
+    "take_cid:WCon": {
+      "before": 23670366,
+      "after": 0,
+      "difference": -23670366,
+      "ratio": 0.0
+    }
+  },
+  "functions": [
+    {
+      "name": "$direct.p88_digits",
+      "dispatch_fid": {
+        "before": 1087899,
+        "after": 1087899,
+        "difference": 0,
+        "ratio": 1.0
+      },
+      "public_calls_fid": {
+        "before": 25988788,
+        "after": 11105052,
+        "difference": -14883736,
+        "ratio": 0.4273016502347089
+      },
+      "qbeBodies": [
+        {
+          "bytes": 257833,
+          "lines": 6931,
+          "sha256": "be62fc276d8ed4b7f9582eabd49dc0b00b365c1823be8195cde2261f1fe0e956"
+        },
+        {
+          "bytes": 90931,
+          "lines": 2554,
+          "sha256": "6c70d055dbda22409a208dd878057da85f44db17c706d06becdbf81acc712825"
+        }
+      ]
+    },
+    {
+      "name": "$direct.p88_field_number",
+      "dispatch_fid": {
+        "before": 228745,
+        "after": 228745,
+        "difference": 0,
+        "ratio": 1.0
+      },
+      "public_calls_fid": {
+        "before": 6622347,
+        "after": 1370957,
+        "difference": -5251390,
+        "ratio": 0.20701980732812703
+      },
+      "qbeBodies": [
+        {
+          "bytes": 668588,
+          "lines": 17878,
+          "sha256": "c71da6a13cd20119b146d6b20343f88fd479f8e71da6e6683cf7b620db0e11c7"
+        },
+        {
+          "bytes": 6886,
+          "lines": 191,
+          "sha256": "47b7ad87d0746abf260cec7d854c9ae86c8f782494ebf8d2f9637adea46626af"
+        }
+      ]
+    },
+    {
+      "name": "$direct.nt_choose",
+      "dispatch_fid": {
+        "before": 252295,
+        "after": 0,
+        "difference": -252295,
+        "ratio": 0.0
+      },
+      "public_calls_fid": {
+        "before": 504590,
+        "after": 0,
+        "difference": -504590,
+        "ratio": 0.0
+      }
+    },
+    {
+      "name": "$direct.kc",
+      "dispatch_fid": {
+        "before": 758368,
+        "after": 0,
+        "difference": -758368,
+        "ratio": 0.0
+      },
+      "public_calls_fid": {
+        "before": 1516736,
+        "after": 0,
+        "difference": -1516736,
+        "ratio": 0.0
+      }
+    }
+  ]
+}

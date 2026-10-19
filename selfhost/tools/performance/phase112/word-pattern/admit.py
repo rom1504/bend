@@ -25,6 +25,7 @@ MODULES = {
 DECL = re.compile(r'^(?:@unsafe\n)?(def|type|law) ([A-Za-z0-9_.]+)\b', re.M)
 PREFIXES = ('p112m_', 'p112b_', 'nw_', 'NW_', 'nd_', 'nbc_')
 HOOKS = ('p111_match_apply', 'p111_ref_app')
+VERIFIER_HOOK = 'p111_verify_program'
 
 
 def digest(raw):
@@ -70,7 +71,8 @@ def expected_source(profile):
     # have their own admission; original structured model/verifier stay pinned.
     expected = {key: value for key, value in baseline.items()
                 if not key[1].startswith(('p111', 'p112', 'P111', 'P112', 'N111'))
-                or key[1].startswith(('p111v_', 'N111', 'P111')) or key[1] in HOOKS}
+                or key[1].startswith(('p111v_', 'N111', 'P111'))
+                or key[1] in (*HOOKS, VERIFIER_HOOK)}
     paths = [BASE]
     selected = ['selector', 'word'] if profile == 'both' else [profile]
     for group in selected:
@@ -126,6 +128,7 @@ def main():
         ('mature-word-depth', 'nw_walk', 'U32.is_eq(depth, 32)', 'U32.is_eq(depth, 31)'),
         ('mature-beta-variable', 'nd_beta', 'p98_tag_eq(arg, "Var")', 'p98_tag_eq(arg, "Lam")'),
         ('mature-selector-sharing', 'nbc_applicable', 'ix(body)), 1)', 'ix(body)), 2)'),
+        ('original-verifier-entry', VERIFIER_HOOK, 'p111v_functions(segments,', 'p111v_functions([],')
     ]
     if args.profile in ('word', 'both'):
         changes += [

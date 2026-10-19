@@ -1,0 +1,147 @@
+{
+  "kind": "phase112-region-multi-exact-module-profile",
+  "profile": "region-multi02-composed-six-rank-wide32-namespace",
+  "prepared": true,
+  "checked": false,
+  "targetsRun": false,
+  "dependencies": [
+    {
+      "file": "selfhost/tools/performance/phase112/fusion/modules03.json",
+      "sha256": "7b7c157bc6b0d0b86b2971cafe4af0c63c1178f4fa4d75ffb82b4d2db95f368d"
+    },
+    {
+      "file": "selfhost/tools/performance/phase112/regions/modules02.json",
+      "sha256": "e913ec8077b6982f4f5b165213c04c0240534740d9ecaa504438c44d7b87b42a"
+    }
+  ],
+  "modules": [
+    {
+      "file": "selfhost/tools/performance/phase112/region-multi/model.bend",
+      "bytes": 154,
+      "sha256": "7bf715de9e9610281ec077b7e9218c839ccf778f56b79f7cc1cb8f3e39717884",
+      "declarations": [
+        "P112MultiCandidate"
+      ]
+    },
+    {
+      "file": "selfhost/tools/performance/phase112/region-multi/build.bend",
+      "bytes": 4561,
+      "sha256": "fa6bea09e33b6f446099c3db70c9afa3ad3f5e729052f8bf595bfd71598089bd",
+      "declarations": [
+        "p112c_frame",
+        "p112c_target",
+        "p112c_try_frame",
+        "p112c_try",
+        "p112c_scan",
+        "p112c_scan_try",
+        "p112c_more",
+        "p112c_scan_next",
+        "p112c_scan_yes",
+        "p112c_scan_no",
+        "p112c_plan_index"
+      ]
+    },
+    {
+      "file": "selfhost/tools/performance/phase112/region-multi/plan.bend",
+      "bytes": 601,
+      "sha256": "000198787e13f48cf5f4a7df775bfe11dcbcac2ff44ccea3a190be6961fba767",
+      "declarations": [
+        "p112c_plan"
+      ]
+    },
+    {
+      "file": "selfhost/tools/performance/phase112/region-multi/index.bend",
+      "bytes": 4386,
+      "sha256": "f58191bfb279585c68a98330b0a78fad8c5852304936d2d35ad8ff1c6237a2d2",
+      "declarations": [
+        "p112c_freeze",
+        "p112c_insert",
+        "p112c_fused",
+        "p112c_add",
+        "p112c_pass",
+        "p112c_passes",
+        "p112c_round",
+        "p112c_continue",
+        "p112c_candidate",
+        "p112c_candidates",
+        "p112c_index_with",
+        "p112c_index"
+      ]
+    },
+    {
+      "file": "selfhost/tools/performance/phase112/region-multi/emit.bend",
+      "bytes": 2362,
+      "sha256": "0b607618174fe077ba3a69068b884fb2f23a12372e26d88aaa1a6d3fa2e49741",
+      "declarations": [
+        "p112c_private_chunks",
+        "p112c_public_chunks",
+        "p112c_attach",
+        "p112c_chunks",
+        "p112c_segment_chunks",
+        "p112c_emit_indexed",
+        "p112c_counts",
+        "p112c_program_counts"
+      ]
+    }
+  ],
+  "finalOverride": {
+    "file": "selfhost/tools/performance/phase112/region-multi/entry.bend",
+    "bytes": 241,
+    "sha256": "895862314cb0aabdb9f4c7160896de9ce52ec12f52c889d310f091138bd530f3",
+    "declarations": [
+      "p111q_segment_chunks"
+    ]
+  },
+  "declarations": [
+    "P112MultiCandidate",
+    "p112c_frame",
+    "p112c_target",
+    "p112c_try_frame",
+    "p112c_try",
+    "p112c_scan",
+    "p112c_scan_try",
+    "p112c_more",
+    "p112c_scan_next",
+    "p112c_scan_yes",
+    "p112c_scan_no",
+    "p112c_plan_index",
+    "p112c_plan",
+    "p112c_freeze",
+    "p112c_insert",
+    "p112c_fused",
+    "p112c_add",
+    "p112c_pass",
+    "p112c_passes",
+    "p112c_round",
+    "p112c_continue",
+    "p112c_candidate",
+    "p112c_candidates",
+    "p112c_index_with",
+    "p112c_index",
+    "p112c_private_chunks",
+    "p112c_public_chunks",
+    "p112c_attach",
+    "p112c_chunks",
+    "p112c_segment_chunks",
+    "p112c_emit_indexed",
+    "p112c_counts",
+    "p112c_program_counts",
+    "p111q_segment_chunks"
+  ],
+  "limits": {
+    "ranks": 6,
+    "workerArity": 32,
+    "fusedCalleeArity": 8,
+    "captures": 8,
+    "sitesPerBody": 8,
+    "copiedContinuationStatements": 128
+  },
+  "runtimePremise": "pinned runtime04 CPU err_post->_exit(1); separate conjunctive admission required",
+  "supersedes": "modules01.json",
+  "reason": "Reserve p112m_ for existing word-pattern modules; rename only new region-multi helpers to disjoint p112c_ namespace.",
+  "changeReceipt": {
+    "beforePrefix": "p112m_",
+    "afterPrefix": "p112c_",
+    "scope": "new region-multi Bend helpers and references only; no interface shape, algorithm or bound changes"
+  }
+}

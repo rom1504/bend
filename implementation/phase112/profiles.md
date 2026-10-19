@@ -1,5 +1,10 @@
 # Phase112: dynamic runtime counts identify missing semantic lowering
 
+This is the initial profile and hypothesis record. The subsequent
+[measured candidate comparison](profile-comparison.md) confirms elimination of
+compiler Word materialization and the ray F32 calls, while showing that bounded
+regions leave almost all measured continuation traffic intact.
+
 The strongest compiler finding is a representation cliff: U32 pattern matching
 materializes a 32-cell Word list even when the source only compares a character
 or numeric literal. On the actual compiler's `lexer-scan` request, that mechanism

@@ -1,0 +1,504 @@
+{
+  "kind": "phase112-frozen-diagnostic-batch",
+  "version": 1,
+  "createdUTC": "2026-10-19T02:05:45.563600+00:00",
+  "targetsRun": false,
+  "role": "word",
+  "binding": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase112/word-binding01.json",
+    "bytes": 39682,
+    "sha256": "c9b44fb0ec7555058aa6941863d927942ee03a14ef1097fa9bfacf28c839e3a3"
+  },
+  "benchmarkManifest": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase112/benchmark/manifest01.json",
+    "bytes": 38348,
+    "sha256": "8303706834d807076532b473718d5c2b9c28fa7be9d584004b3aa5a87d4f9961"
+  },
+  "compiler": {
+    "file": "/usr/bin/x86_64-linux-gnu-gcc-10",
+    "bytes": 817704,
+    "sha256": "693abcb42e67fb871673f258a3644257ca69a209691ec4d8137a42442834bd19"
+  },
+  "cases": [
+    {
+      "name": "lexer",
+      "object": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p112-word-batch01-lexer-build/program.o",
+        "bytes": 200208,
+        "sha256": "9a76e3ea36895bd1220519dd009cb3c8af2817903d448d48a7e2d4004a0abaa5"
+      },
+      "qbe": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p112-word-batch01-lexer-emit/program.ssa",
+        "bytes": 485244,
+        "sha256": "a21bd5ad3a12c81e09b840b31956adcb8e5d242d2b0670bf6967379957fdc5a2"
+      },
+      "build": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p112-word-batch01-lexer-build/report.json",
+        "bytes": 4900,
+        "sha256": "8f81a57b377b21a3f777307124d9635b11cd109f64933134be1dd2b26ee30171"
+      },
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p112-word-batch01-lexer-emit/report.json",
+        "bytes": 2369,
+        "sha256": "6e8ae84de44d444ae425c4ce33c704c9a817a2bbb66fa08779717589d5983ce9"
+      },
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/fixtures01/lexer.bend",
+        "bytes": 9095,
+        "sha256": "bfb62870600b63fd6ec6088471a2d805fabb819a7f2e9d47c9b0ef3c368d169a"
+      },
+      "oracle": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase111/coverage/full45/expected/lexer.stdout",
+        "bytes": 11,
+        "sha256": "ce7ae380f780c64e26dc0b2fd2f547364c4e837bdecd61714cf04150768acf0a"
+      },
+      "runtimeArgs": [
+        8,
+        0
+      ],
+      "repetitions": 1,
+      "warmups": 0,
+      "expected": {
+        "kind": "phase112-diagnostic-batch-output",
+        "status": 0,
+        "stdoutPrefix": "1822208108\n0\n1\n",
+        "stderr": "",
+        "suffixRule": "unsigned-decimal-milliseconds-newline"
+      }
+    },
+    {
+      "name": "variation-ray-active-256-2240",
+      "object": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p112-word-batch01-variation-ray-active-256-2240-build/program.o",
+        "bytes": 292736,
+        "sha256": "ebd3fd1bdf69f9ea4b0b850f19e0718f4a1eba5d0b06f0716ac94494c891cc4b"
+      },
+      "qbe": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p112-word-batch01-variation-ray-active-256-2240-emit/program.ssa",
+        "bytes": 768022,
+        "sha256": "0bff458333006e2146c6dfb9a782aacc0573c89685136967fbd927130999412f"
+      },
+      "build": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p112-word-batch01-variation-ray-active-256-2240-build/report.json",
+        "bytes": 5283,
+        "sha256": "3c8008639d9e555fd332d6b62522db7b23b69b32d9c9c1357ca357621d9a02a0"
+      },
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p112-word-batch01-variation-ray-active-256-2240-emit/report.json",
+        "bytes": 2410,
+        "sha256": "d09f7d5a45e80a182de32f61ba6ff2fd07e8ae688372a47f270963b379047b85"
+      },
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/fixtures01/variation-ray-active-256-2240.bend",
+        "bytes": 16661,
+        "sha256": "7099448e301e2cab7cb5ab47e2a4892dbf44ac246676b4f950282c7a57007669"
+      },
+      "oracle": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase111/coverage/full45/expected/variation-ray-active-256-2240.stdout",
+        "bytes": 11,
+        "sha256": "15adde12f874e278a5e96d86c4ee20d18706611252e5cfc76a3ba63d29170dcf"
+      },
+      "runtimeArgs": [
+        256,
+        2240
+      ],
+      "repetitions": 1,
+      "warmups": 0,
+      "expected": {
+        "kind": "phase112-diagnostic-batch-output",
+        "status": 0,
+        "stdoutPrefix": "2166930202\n0\n1\n",
+        "stderr": "",
+        "suffixRule": "unsigned-decimal-milliseconds-newline"
+      }
+    },
+    {
+      "name": "coverage-closures-256",
+      "object": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p112-word-batch01-coverage-closures-256-build/program.o",
+        "bytes": 138624,
+        "sha256": "273b0b10e1c9395c487e195ed5cecc1d26d6f7e6c6e09463fee7447595d56255"
+      },
+      "qbe": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p112-word-batch01-coverage-closures-256-emit/program.ssa",
+        "bytes": 308594,
+        "sha256": "bbe33038d1731b6f7c6e9227b00ce24ba9c7b646824018ab73c0723d71579740"
+      },
+      "build": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p112-word-batch01-coverage-closures-256-build/report.json",
+        "bytes": 5155,
+        "sha256": "cba020e5cd2e24e6d67076d285fe6f3db8d520bc787a76cff29414f9f81f518f"
+      },
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p112-word-batch01-coverage-closures-256-emit/report.json",
+        "bytes": 2394,
+        "sha256": "15effda6761604f227b7a8773513a502dfad4ff8d72ca119bc24028bcb326fd5"
+      },
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/fixtures01/coverage-closures-256.bend",
+        "bytes": 3369,
+        "sha256": "d0e35c8343fcbe86b45211f7738d293a27a0a5184060e0136b0275fc9556cef4"
+      },
+      "oracle": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase111/coverage/full45/expected/coverage-closures-256.stdout",
+        "bytes": 6,
+        "sha256": "8cf0773ed5fb75c07a06d48185cd73ff8f1921c588db76a3df3731a557c40b15"
+      },
+      "runtimeArgs": [
+        256,
+        123
+      ],
+      "repetitions": 1,
+      "warmups": 0,
+      "expected": {
+        "kind": "phase112-diagnostic-batch-output",
+        "status": 0,
+        "stdoutPrefix": "33019\n0\n1\n",
+        "stderr": "",
+        "suffixRule": "unsigned-decimal-milliseconds-newline"
+      }
+    },
+    {
+      "name": "coverage-unicode-text-64",
+      "object": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p112-word-batch01-coverage-unicode-text-64-build/program.o",
+        "bytes": 165040,
+        "sha256": "3dba31e0935720126a6ff8b0a7b39b864c1e525b8f76ede2c148f43bb3d6be48"
+      },
+      "qbe": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p112-word-batch01-coverage-unicode-text-64-emit/program.ssa",
+        "bytes": 365729,
+        "sha256": "3e84a5c90413270e88bfc796c6c2ca7ec71310ec0e1d74d8f8256f54c0a1f591"
+      },
+      "build": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p112-word-batch01-coverage-unicode-text-64-build/report.json",
+        "bytes": 5205,
+        "sha256": "32c3092ed0c818712e41ca6000398ec9f9be2eeb0eda3c9dec997e6a3756fef9"
+      },
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p112-word-batch01-coverage-unicode-text-64-emit/report.json",
+        "bytes": 2399,
+        "sha256": "3aebea88b2781b691a30b80e7d1a02a8db278c55472ea273d386ec02464cf5ef"
+      },
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/fixtures01/coverage-unicode-text-64.bend",
+        "bytes": 8458,
+        "sha256": "49a53fc745be33a8237b1b48f3175dbba4e20c76549374253520ae39f6b894bf"
+      },
+      "oracle": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase111/coverage/full45/expected/coverage-unicode-text-64.stdout",
+        "bytes": 1217,
+        "sha256": "aeda13750dee71bdab8ccf55cde8b155af956f8c029a34c14e0d1c8579b8bb2a"
+      },
+      "runtimeArgs": [
+        64,
+        123
+      ],
+      "repetitions": 1,
+      "warmups": 0,
+      "expected": {
+        "kind": "phase112-diagnostic-batch-output",
+        "status": 0,
+        "stdoutPrefix": "\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\n0\n1\n",
+        "stderr": "",
+        "suffixRule": "unsigned-decimal-milliseconds-newline"
+      }
+    },
+    {
+      "name": "coverage-map-churn-128",
+      "object": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p112-word-batch01-coverage-map-churn-128-build/program.o",
+        "bytes": 384160,
+        "sha256": "0c88c8af15884d8a46dfcd0f9b0f5f2439904709396024e66c222477698c7262"
+      },
+      "qbe": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p112-word-batch01-coverage-map-churn-128-emit/program.ssa",
+        "bytes": 930274,
+        "sha256": "8b30145e74716c1d03b483695e3612962778e4f8ba6fd66a01596d838405286e"
+      },
+      "build": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p112-word-batch01-coverage-map-churn-128-build/report.json",
+        "bytes": 5172,
+        "sha256": "2666cd9482a69876229b1e8a65be144df7c15f118cb016168e5ed6f2faf0496a"
+      },
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p112-word-batch01-coverage-map-churn-128-emit/report.json",
+        "bytes": 2397,
+        "sha256": "1eb9cbe31180ed7314e36f28cf1a473bd13b37e1833665d21024214091f148c1"
+      },
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/fixtures01/coverage-map-churn-128.bend",
+        "bytes": 3659,
+        "sha256": "cd22c831c180c0de12d84aeb80debf4881d08cbd18fcf8f6d634153fba2feb03"
+      },
+      "oracle": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase111/coverage/full45/expected/coverage-map-churn-128.stdout",
+        "bytes": 11,
+        "sha256": "f10e5e29d4f448b0f6aeef222b95d6790cf410196cd6d64d27156e08c7ecafb8"
+      },
+      "runtimeArgs": [
+        128,
+        123
+      ],
+      "repetitions": 1,
+      "warmups": 0,
+      "expected": {
+        "kind": "phase112-diagnostic-batch-output",
+        "status": 0,
+        "stdoutPrefix": "3714872484\n0\n1\n",
+        "stderr": "",
+        "suffixRule": "unsigned-decimal-milliseconds-newline"
+      }
+    },
+    {
+      "name": "coverage-numeric-recurrence-1024",
+      "object": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p112-word-batch01-coverage-numeric-recurrence-1024-build/program.o",
+        "bytes": 143656,
+        "sha256": "7e53ab2b85b14915270aabd3d3157865ba1e74bbd23c7bdb46ddd3249f14566f"
+      },
+      "qbe": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p112-word-batch01-coverage-numeric-recurrence-1024-emit/program.ssa",
+        "bytes": 327782,
+        "sha256": "6c51bb55e1b620aef917eccaab4ed40d3c6306858db4799998f3ae42edb73c1d"
+      },
+      "build": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p112-word-batch01-coverage-numeric-recurrence-1024-build/report.json",
+        "bytes": 5332,
+        "sha256": "45c8538bf3ca8ce3edb2c75ad2b3423758bc3226a78610128a1c0bf2671951b6"
+      },
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p112-word-batch01-coverage-numeric-recurrence-1024-emit/report.json",
+        "bytes": 2422,
+        "sha256": "6654bdaf971ab69d202ab11d9280491bb0b34830cb9c4509d6435c2f0c1d2b9d"
+      },
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/fixtures01/coverage-numeric-recurrence-1024.bend",
+        "bytes": 2514,
+        "sha256": "39c7c7be54d5a47b6042b0d8f70b124610ea5a2fee28866d85599b7f0f5bbb46"
+      },
+      "oracle": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase111/coverage/full45/expected/coverage-numeric-recurrence-1024.stdout",
+        "bytes": 11,
+        "sha256": "f608ef31e8a3c58b641dd85ce36b9f759bcd685e138466186e32ae709ce1a086"
+      },
+      "runtimeArgs": [
+        1024,
+        123
+      ],
+      "repetitions": 1,
+      "warmups": 0,
+      "expected": {
+        "kind": "phase112-diagnostic-batch-output",
+        "status": 0,
+        "stdoutPrefix": "1376326140\n0\n1\n",
+        "stderr": "",
+        "suffixRule": "unsigned-decimal-milliseconds-newline"
+      }
+    }
+  ],
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase112/profile/prepare-batch-plan.py",
+      "bytes": 3867,
+      "sha256": "92d830ee86e99acf49ac0b92204569984db733a84af1f5a5c15d14bca1f109a6"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase112/word-binding01.json",
+      "bytes": 39682,
+      "sha256": "c9b44fb0ec7555058aa6941863d927942ee03a14ef1097fa9bfacf28c839e3a3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase112/benchmark/manifest01.json",
+      "bytes": 38348,
+      "sha256": "8303706834d807076532b473718d5c2b9c28fa7be9d584004b3aa5a87d4f9961"
+    },
+    {
+      "file": "/usr/bin/x86_64-linux-gnu-gcc-10",
+      "bytes": 817704,
+      "sha256": "693abcb42e67fb871673f258a3644257ca69a209691ec4d8137a42442834bd19"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p112-word-batch01-lexer-build/program.o",
+      "bytes": 200208,
+      "sha256": "9a76e3ea36895bd1220519dd009cb3c8af2817903d448d48a7e2d4004a0abaa5"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p112-word-batch01-lexer-emit/program.ssa",
+      "bytes": 485244,
+      "sha256": "a21bd5ad3a12c81e09b840b31956adcb8e5d242d2b0670bf6967379957fdc5a2"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p112-word-batch01-lexer-build/report.json",
+      "bytes": 4900,
+      "sha256": "8f81a57b377b21a3f777307124d9635b11cd109f64933134be1dd2b26ee30171"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p112-word-batch01-lexer-emit/report.json",
+      "bytes": 2369,
+      "sha256": "6e8ae84de44d444ae425c4ce33c704c9a817a2bbb66fa08779717589d5983ce9"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/fixtures01/lexer.bend",
+      "bytes": 9095,
+      "sha256": "bfb62870600b63fd6ec6088471a2d805fabb819a7f2e9d47c9b0ef3c368d169a"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase111/coverage/full45/expected/lexer.stdout",
+      "bytes": 11,
+      "sha256": "ce7ae380f780c64e26dc0b2fd2f547364c4e837bdecd61714cf04150768acf0a"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p112-word-batch01-variation-ray-active-256-2240-build/program.o",
+      "bytes": 292736,
+      "sha256": "ebd3fd1bdf69f9ea4b0b850f19e0718f4a1eba5d0b06f0716ac94494c891cc4b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p112-word-batch01-variation-ray-active-256-2240-emit/program.ssa",
+      "bytes": 768022,
+      "sha256": "0bff458333006e2146c6dfb9a782aacc0573c89685136967fbd927130999412f"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p112-word-batch01-variation-ray-active-256-2240-build/report.json",
+      "bytes": 5283,
+      "sha256": "3c8008639d9e555fd332d6b62522db7b23b69b32d9c9c1357ca357621d9a02a0"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p112-word-batch01-variation-ray-active-256-2240-emit/report.json",
+      "bytes": 2410,
+      "sha256": "d09f7d5a45e80a182de32f61ba6ff2fd07e8ae688372a47f270963b379047b85"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/fixtures01/variation-ray-active-256-2240.bend",
+      "bytes": 16661,
+      "sha256": "7099448e301e2cab7cb5ab47e2a4892dbf44ac246676b4f950282c7a57007669"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase111/coverage/full45/expected/variation-ray-active-256-2240.stdout",
+      "bytes": 11,
+      "sha256": "15adde12f874e278a5e96d86c4ee20d18706611252e5cfc76a3ba63d29170dcf"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p112-word-batch01-coverage-closures-256-build/program.o",
+      "bytes": 138624,
+      "sha256": "273b0b10e1c9395c487e195ed5cecc1d26d6f7e6c6e09463fee7447595d56255"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p112-word-batch01-coverage-closures-256-emit/program.ssa",
+      "bytes": 308594,
+      "sha256": "bbe33038d1731b6f7c6e9227b00ce24ba9c7b646824018ab73c0723d71579740"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p112-word-batch01-coverage-closures-256-build/report.json",
+      "bytes": 5155,
+      "sha256": "cba020e5cd2e24e6d67076d285fe6f3db8d520bc787a76cff29414f9f81f518f"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p112-word-batch01-coverage-closures-256-emit/report.json",
+      "bytes": 2394,
+      "sha256": "15effda6761604f227b7a8773513a502dfad4ff8d72ca119bc24028bcb326fd5"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/fixtures01/coverage-closures-256.bend",
+      "bytes": 3369,
+      "sha256": "d0e35c8343fcbe86b45211f7738d293a27a0a5184060e0136b0275fc9556cef4"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase111/coverage/full45/expected/coverage-closures-256.stdout",
+      "bytes": 6,
+      "sha256": "8cf0773ed5fb75c07a06d48185cd73ff8f1921c588db76a3df3731a557c40b15"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p112-word-batch01-coverage-unicode-text-64-build/program.o",
+      "bytes": 165040,
+      "sha256": "3dba31e0935720126a6ff8b0a7b39b864c1e525b8f76ede2c148f43bb3d6be48"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p112-word-batch01-coverage-unicode-text-64-emit/program.ssa",
+      "bytes": 365729,
+      "sha256": "3e84a5c90413270e88bfc796c6c2ca7ec71310ec0e1d74d8f8256f54c0a1f591"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p112-word-batch01-coverage-unicode-text-64-build/report.json",
+      "bytes": 5205,
+      "sha256": "32c3092ed0c818712e41ca6000398ec9f9be2eeb0eda3c9dec997e6a3756fef9"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p112-word-batch01-coverage-unicode-text-64-emit/report.json",
+      "bytes": 2399,
+      "sha256": "3aebea88b2781b691a30b80e7d1a02a8db278c55472ea273d386ec02464cf5ef"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/fixtures01/coverage-unicode-text-64.bend",
+      "bytes": 8458,
+      "sha256": "49a53fc745be33a8237b1b48f3175dbba4e20c76549374253520ae39f6b894bf"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase111/coverage/full45/expected/coverage-unicode-text-64.stdout",
+      "bytes": 1217,
+      "sha256": "aeda13750dee71bdab8ccf55cde8b155af956f8c029a34c14e0d1c8579b8bb2a"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p112-word-batch01-coverage-map-churn-128-build/program.o",
+      "bytes": 384160,
+      "sha256": "0c88c8af15884d8a46dfcd0f9b0f5f2439904709396024e66c222477698c7262"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p112-word-batch01-coverage-map-churn-128-emit/program.ssa",
+      "bytes": 930274,
+      "sha256": "8b30145e74716c1d03b483695e3612962778e4f8ba6fd66a01596d838405286e"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p112-word-batch01-coverage-map-churn-128-build/report.json",
+      "bytes": 5172,
+      "sha256": "2666cd9482a69876229b1e8a65be144df7c15f118cb016168e5ed6f2faf0496a"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p112-word-batch01-coverage-map-churn-128-emit/report.json",
+      "bytes": 2397,
+      "sha256": "1eb9cbe31180ed7314e36f28cf1a473bd13b37e1833665d21024214091f148c1"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/fixtures01/coverage-map-churn-128.bend",
+      "bytes": 3659,
+      "sha256": "cd22c831c180c0de12d84aeb80debf4881d08cbd18fcf8f6d634153fba2feb03"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase111/coverage/full45/expected/coverage-map-churn-128.stdout",
+      "bytes": 11,
+      "sha256": "f10e5e29d4f448b0f6aeef222b95d6790cf410196cd6d64d27156e08c7ecafb8"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p112-word-batch01-coverage-numeric-recurrence-1024-build/program.o",
+      "bytes": 143656,
+      "sha256": "7e53ab2b85b14915270aabd3d3157865ba1e74bbd23c7bdb46ddd3249f14566f"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p112-word-batch01-coverage-numeric-recurrence-1024-emit/program.ssa",
+      "bytes": 327782,
+      "sha256": "6c51bb55e1b620aef917eccaab4ed40d3c6306858db4799998f3ae42edb73c1d"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p112-word-batch01-coverage-numeric-recurrence-1024-build/report.json",
+      "bytes": 5332,
+      "sha256": "45c8538bf3ca8ce3edb2c75ad2b3423758bc3226a78610128a1c0bf2671951b6"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p112-word-batch01-coverage-numeric-recurrence-1024-emit/report.json",
+      "bytes": 2422,
+      "sha256": "6654bdaf971ab69d202ab11d9280491bb0b34830cb9c4509d6435c2f0c1d2b9d"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/fixtures01/coverage-numeric-recurrence-1024.bend",
+      "bytes": 2514,
+      "sha256": "39c7c7be54d5a47b6042b0d8f70b124610ea5a2fee28866d85599b7f0f5bbb46"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase111/coverage/full45/expected/coverage-numeric-recurrence-1024.stdout",
+      "bytes": 11,
+      "sha256": "f608ef31e8a3c58b641dd85ce36b9f759bcd685e138466186e32ae709ce1a086"
+    }
+  ],
+  "derivation": "Exact independent benchmark outputs and input arguments; counts chosen1/0 before profiling. Existing object pins come from the completed direct-QBE build receipts.",
+  "scope": "Whole-process diagnostic counts only, including two workload evaluations plus wrapper/setup. This new plan never replaces batch-plan01 or changes timing benchmark definitions."
+}

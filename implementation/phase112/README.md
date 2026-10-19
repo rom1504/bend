@@ -159,3 +159,57 @@ The newer word/selector/fusion profiles are not included in those timings.
 
 A second disjoint authenticated hardlink tier recovered213,897,216 bytes while
 preserving1,027 additional artifact paths and all contents.
+
+## Negative fast-screen result at02:03 UTC
+
+The matched `word-regions-runtime01` campaign completes all three rounds and full
+outputs. Six-case runtime geometric ratios to upstream are fusion14.2237,
+word14.2519 and regions14.2732. Neither new composition demonstrates a material
+program-runtime improvement. The word change reduces lexer's QBE from864,663 to
+485,244 bytes and static take sites from106 to42, but its actual timed workload
+does not establish a speed gain. Regions increases that QBE to597,013 bytes and
+adds more private calls without reducing measured time. It remains experimental.
+
+The word-profile full compiler acquisition is justified separately by the actual
+compiler allocation profile; this is not a claim that all programs share that
+bottleneck. A bounded repeated-fusion extension will test the observed limitation
+that an inlined continuation may still contain another frame/call. It must pass
+independent sequential-call, lifetime, branch-freshness and recursion/budget
+controls before another whole-compiler acquisition is considered.
+
+## Full word-profile compiler and matched comparison at02:12 UTC
+
+`word-source02` checks and acquires N1 successfully. QBE is28,462,589bytes
+(SHA256 `bdbf31bcea3c1d99599c896ec48e4fb67430e47b34134c5b834fbed146047617`),
+and the executable8,082,216bytes (SHA256
+`12caac8e8aecdc873cdd06d6c46f682db88e9e976e5bc2ecd1917544b9020a80`).
+Hosted stages are159.18s frontend,29.61s lowering,23.29s verification and27.60s
+emission; machine construction4.50s. Complete acquisition plus19 focused native
+cases takes272.97s, peak2.762GB under the4GiB cap. All16 positive executions and
+three expected source/backend refusals pass. Final self-hosting/corpus selection
+is still pending at this checkpoint.
+
+The matched `transport02` screen uses the same fixed three inputs and flags as
+transport01, substituting only the qualified word-profile N1. Three rotated rounds
+give request ratios0.34461 versus Phase111 N2 and2.38072 versus upstream, and
+ready-executable ratios0.35341 and1.14736. Per-input request seconds
+(Phase111 / word / upstream): lexer5.334/1.796/0.732; closures3.554/0.976/0.551;
+map7.634/3.377/1.088. Ready-executable seconds: lexer5.398/1.867/1.406;
+closures3.592/1.013/1.088; map7.778/3.519/2.883. Retain the cached-native-runtime
+versus full-upstream-C build-policy difference and distinct QBE/C output formats.
+
+The independent diagnostic [comparison](profile-comparison.md) confirms
+heap-allocation calls124,677,389→16,515,651 (−86.75%), all1,625,654 U32 special-takes
+and23,670,366 WCon takes gone. Selector composition independently collapses
+closure calls2,149,393→3,020 and applies1,075,823→2,599. These composed gains are
+not all attributable to the word pass. Instrumented clocks are not benchmark
+times. Fixed `p88_field_number` entries stay228,745, while its public QBE body
+shrinks668,588→6,886bytes. This removes representation work for unchanged source
+computations.
+
+A repeated-continuation prototype passes the source checker and eight paired
+native fixtures. The first host-control attempt used a nonexistent `.site` field
+instead of `.next`; its failure is retained and a versioned test fixes the field.
+An optional32-argument/32-capture overlay retains eight copied sites,128 statements
+per continuation and six immutable ranks. Its native qualification and matched
+runtime screen are underway; no performance claim or selection yet.

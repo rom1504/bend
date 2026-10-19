@@ -1,0 +1,504 @@
+{
+  "kind": "phase112-frozen-diagnostic-batch",
+  "version": 1,
+  "createdUTC": "2026-10-19T02:05:45.651248+00:00",
+  "targetsRun": false,
+  "role": "region",
+  "binding": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase112/region-binding01.json",
+    "bytes": 39964,
+    "sha256": "f8ea252e9d414d282ea6f90d0044780067588cd18cc521b7cf3c99932684cdf8"
+  },
+  "benchmarkManifest": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase112/benchmark/manifest01.json",
+    "bytes": 38348,
+    "sha256": "8303706834d807076532b473718d5c2b9c28fa7be9d584004b3aa5a87d4f9961"
+  },
+  "compiler": {
+    "file": "/usr/bin/x86_64-linux-gnu-gcc-10",
+    "bytes": 817704,
+    "sha256": "693abcb42e67fb871673f258a3644257ca69a209691ec4d8137a42442834bd19"
+  },
+  "cases": [
+    {
+      "name": "lexer",
+      "object": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p112-region-batch01-lexer-build/program.o",
+        "bytes": 239408,
+        "sha256": "3442dc782dfef7cf0691bad9e07bdba6ab1b2363b4f8f16d70ab50a437cd9f87"
+      },
+      "qbe": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p112-region-batch01-lexer-emit/program.ssa",
+        "bytes": 597013,
+        "sha256": "8ef16f7e3bbc5907c3852f7942ed8c0d6d574805d0f35eefeebd59f1a5555598"
+      },
+      "build": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p112-region-batch01-lexer-build/report.json",
+        "bytes": 4933,
+        "sha256": "e7bc8a6041e8e0ab3e078d4667d462c3dd8cd2d9a80a15f930685843be2ef9ed"
+      },
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p112-region-batch01-lexer-emit/report.json",
+        "bytes": 2370,
+        "sha256": "d7fb133c1af12211d0579428e4488fd4743faa6e136d994460e4fd3e1ff1f903"
+      },
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/fixtures01/lexer.bend",
+        "bytes": 9095,
+        "sha256": "bfb62870600b63fd6ec6088471a2d805fabb819a7f2e9d47c9b0ef3c368d169a"
+      },
+      "oracle": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase111/coverage/full45/expected/lexer.stdout",
+        "bytes": 11,
+        "sha256": "ce7ae380f780c64e26dc0b2fd2f547364c4e837bdecd61714cf04150768acf0a"
+      },
+      "runtimeArgs": [
+        8,
+        0
+      ],
+      "repetitions": 1,
+      "warmups": 0,
+      "expected": {
+        "kind": "phase112-diagnostic-batch-output",
+        "status": 0,
+        "stdoutPrefix": "1822208108\n0\n1\n",
+        "stderr": "",
+        "suffixRule": "unsigned-decimal-milliseconds-newline"
+      }
+    },
+    {
+      "name": "variation-ray-active-256-2240",
+      "object": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p112-region-batch01-variation-ray-active-256-2240-build/program.o",
+        "bytes": 338392,
+        "sha256": "0ee8f8f6b4fd76ed58ba1663b3c770fb3c17f5795aed3d4a7d27fe1b0490f9d2"
+      },
+      "qbe": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p112-region-batch01-variation-ray-active-256-2240-emit/program.ssa",
+        "bytes": 902653,
+        "sha256": "c7acb9aa5ac473b151fd34c4409e2c10054778f2545bf16e2715ab0b2a4bfa32"
+      },
+      "build": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p112-region-batch01-variation-ray-active-256-2240-build/report.json",
+        "bytes": 5316,
+        "sha256": "02cec9e5e2c828dabdb405f5fc536f86f52d04d9829efe15afe48c913540758c"
+      },
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p112-region-batch01-variation-ray-active-256-2240-emit/report.json",
+        "bytes": 2419,
+        "sha256": "d18dff6f8a5b111a71954017eeb8a6c29fce324cc409f28857bf18c201ef54b0"
+      },
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/fixtures01/variation-ray-active-256-2240.bend",
+        "bytes": 16661,
+        "sha256": "7099448e301e2cab7cb5ab47e2a4892dbf44ac246676b4f950282c7a57007669"
+      },
+      "oracle": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase111/coverage/full45/expected/variation-ray-active-256-2240.stdout",
+        "bytes": 11,
+        "sha256": "15adde12f874e278a5e96d86c4ee20d18706611252e5cfc76a3ba63d29170dcf"
+      },
+      "runtimeArgs": [
+        256,
+        2240
+      ],
+      "repetitions": 1,
+      "warmups": 0,
+      "expected": {
+        "kind": "phase112-diagnostic-batch-output",
+        "status": 0,
+        "stdoutPrefix": "2166930202\n0\n1\n",
+        "stderr": "",
+        "suffixRule": "unsigned-decimal-milliseconds-newline"
+      }
+    },
+    {
+      "name": "coverage-closures-256",
+      "object": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p112-region-batch01-coverage-closures-256-build/program.o",
+        "bytes": 166112,
+        "sha256": "ffa4044b77ea9d8a3949a61ce5d4f70f55091e4c0787a3eca601fd7002a76e4b"
+      },
+      "qbe": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p112-region-batch01-coverage-closures-256-emit/program.ssa",
+        "bytes": 383313,
+        "sha256": "5ec958f6405d2854d60cf6161705b459134caba3ce7068b244251660ac31c9fe"
+      },
+      "build": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p112-region-batch01-coverage-closures-256-build/report.json",
+        "bytes": 5189,
+        "sha256": "2b77eb8b650e92c481060c7e50b6e97eaf945ed793c72e263caf1ca18ee3503c"
+      },
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p112-region-batch01-coverage-closures-256-emit/report.json",
+        "bytes": 2402,
+        "sha256": "a3a06ed32a478e551955a61de89574ebdaa1bde521ad1e2bdb4a7ed6392655aa"
+      },
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/fixtures01/coverage-closures-256.bend",
+        "bytes": 3369,
+        "sha256": "d0e35c8343fcbe86b45211f7738d293a27a0a5184060e0136b0275fc9556cef4"
+      },
+      "oracle": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase111/coverage/full45/expected/coverage-closures-256.stdout",
+        "bytes": 6,
+        "sha256": "8cf0773ed5fb75c07a06d48185cd73ff8f1921c588db76a3df3731a557c40b15"
+      },
+      "runtimeArgs": [
+        256,
+        123
+      ],
+      "repetitions": 1,
+      "warmups": 0,
+      "expected": {
+        "kind": "phase112-diagnostic-batch-output",
+        "status": 0,
+        "stdoutPrefix": "33019\n0\n1\n",
+        "stderr": "",
+        "suffixRule": "unsigned-decimal-milliseconds-newline"
+      }
+    },
+    {
+      "name": "coverage-unicode-text-64",
+      "object": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p112-region-batch01-coverage-unicode-text-64-build/program.o",
+        "bytes": 194928,
+        "sha256": "f72179d3ae8513b952071c46bc4a4d89c5837e50d97f63ba2c3452c65b348e41"
+      },
+      "qbe": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p112-region-batch01-coverage-unicode-text-64-emit/program.ssa",
+        "bytes": 446999,
+        "sha256": "fc915820e54576affd3dd60449ca7796796e3787733abe2a2a83d6af31efcce7"
+      },
+      "build": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p112-region-batch01-coverage-unicode-text-64-build/report.json",
+        "bytes": 5237,
+        "sha256": "b9aae2b6b350f3daf162a110f49c90f000e977b77f5374d795c656a9fd683898"
+      },
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p112-region-batch01-coverage-unicode-text-64-emit/report.json",
+        "bytes": 2408,
+        "sha256": "cafb0ca617bc86f966faf418b84844855ea1d0b4f3094ee58f27e6bda08e62aa"
+      },
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/fixtures01/coverage-unicode-text-64.bend",
+        "bytes": 8458,
+        "sha256": "49a53fc745be33a8237b1b48f3175dbba4e20c76549374253520ae39f6b894bf"
+      },
+      "oracle": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase111/coverage/full45/expected/coverage-unicode-text-64.stdout",
+        "bytes": 1217,
+        "sha256": "aeda13750dee71bdab8ccf55cde8b155af956f8c029a34c14e0d1c8579b8bb2a"
+      },
+      "runtimeArgs": [
+        64,
+        123
+      ],
+      "repetitions": 1,
+      "warmups": 0,
+      "expected": {
+        "kind": "phase112-diagnostic-batch-output",
+        "status": 0,
+        "stdoutPrefix": "\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\n0\n1\n",
+        "stderr": "",
+        "suffixRule": "unsigned-decimal-milliseconds-newline"
+      }
+    },
+    {
+      "name": "coverage-map-churn-128",
+      "object": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p112-region-batch01-coverage-map-churn-128-build/program.o",
+        "bytes": 432856,
+        "sha256": "23c6f95a13f71dce3946f3df83fb6ea027230d426c359aa794ea542ace7b7843"
+      },
+      "qbe": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p112-region-batch01-coverage-map-churn-128-emit/program.ssa",
+        "bytes": 1065487,
+        "sha256": "dee326a63dc163034b4b4c823f0c0e0c8a7df1102fa3a7e77567fb9190d9ad2d"
+      },
+      "build": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p112-region-batch01-coverage-map-churn-128-build/report.json",
+        "bytes": 5205,
+        "sha256": "c4239c167cc0b90ba942fff3c1a688a05789e5c78cf981b2676165eeea5cac85"
+      },
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p112-region-batch01-coverage-map-churn-128-emit/report.json",
+        "bytes": 2406,
+        "sha256": "09da2e0f82a3ae5767b4725f685e1158bf057e5411d1bb1f77fafe9c5b7fcf0e"
+      },
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/fixtures01/coverage-map-churn-128.bend",
+        "bytes": 3659,
+        "sha256": "cd22c831c180c0de12d84aeb80debf4881d08cbd18fcf8f6d634153fba2feb03"
+      },
+      "oracle": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase111/coverage/full45/expected/coverage-map-churn-128.stdout",
+        "bytes": 11,
+        "sha256": "f10e5e29d4f448b0f6aeef222b95d6790cf410196cd6d64d27156e08c7ecafb8"
+      },
+      "runtimeArgs": [
+        128,
+        123
+      ],
+      "repetitions": 1,
+      "warmups": 0,
+      "expected": {
+        "kind": "phase112-diagnostic-batch-output",
+        "status": 0,
+        "stdoutPrefix": "3714872484\n0\n1\n",
+        "stderr": "",
+        "suffixRule": "unsigned-decimal-milliseconds-newline"
+      }
+    },
+    {
+      "name": "coverage-numeric-recurrence-1024",
+      "object": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p112-region-batch01-coverage-numeric-recurrence-1024-build/program.o",
+        "bytes": 174832,
+        "sha256": "8ba7dedfd6ab1afeef2439eb4e5a6c725aa23ade848c0c1939b08b0287e711c7"
+      },
+      "qbe": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p112-region-batch01-coverage-numeric-recurrence-1024-emit/program.ssa",
+        "bytes": 414502,
+        "sha256": "6ebb8660306b8e160a26b69ae2d9f953ac52b729d409748bb0b885e49bc3b708"
+      },
+      "build": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p112-region-batch01-coverage-numeric-recurrence-1024-build/report.json",
+        "bytes": 5365,
+        "sha256": "411101b58c58950abbc080564c20fd3f2e148ac282c514aebe6f5166d08ac312"
+      },
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p112-region-batch01-coverage-numeric-recurrence-1024-emit/report.json",
+        "bytes": 2424,
+        "sha256": "7cf718292f662d7db30e6fb271f56fdab909f12e7140e6f917f0a6bcebe54196"
+      },
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/fixtures01/coverage-numeric-recurrence-1024.bend",
+        "bytes": 2514,
+        "sha256": "39c7c7be54d5a47b6042b0d8f70b124610ea5a2fee28866d85599b7f0f5bbb46"
+      },
+      "oracle": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase111/coverage/full45/expected/coverage-numeric-recurrence-1024.stdout",
+        "bytes": 11,
+        "sha256": "f608ef31e8a3c58b641dd85ce36b9f759bcd685e138466186e32ae709ce1a086"
+      },
+      "runtimeArgs": [
+        1024,
+        123
+      ],
+      "repetitions": 1,
+      "warmups": 0,
+      "expected": {
+        "kind": "phase112-diagnostic-batch-output",
+        "status": 0,
+        "stdoutPrefix": "1376326140\n0\n1\n",
+        "stderr": "",
+        "suffixRule": "unsigned-decimal-milliseconds-newline"
+      }
+    }
+  ],
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase112/profile/prepare-batch-plan.py",
+      "bytes": 3867,
+      "sha256": "92d830ee86e99acf49ac0b92204569984db733a84af1f5a5c15d14bca1f109a6"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase112/region-binding01.json",
+      "bytes": 39964,
+      "sha256": "f8ea252e9d414d282ea6f90d0044780067588cd18cc521b7cf3c99932684cdf8"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase112/benchmark/manifest01.json",
+      "bytes": 38348,
+      "sha256": "8303706834d807076532b473718d5c2b9c28fa7be9d584004b3aa5a87d4f9961"
+    },
+    {
+      "file": "/usr/bin/x86_64-linux-gnu-gcc-10",
+      "bytes": 817704,
+      "sha256": "693abcb42e67fb871673f258a3644257ca69a209691ec4d8137a42442834bd19"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p112-region-batch01-lexer-build/program.o",
+      "bytes": 239408,
+      "sha256": "3442dc782dfef7cf0691bad9e07bdba6ab1b2363b4f8f16d70ab50a437cd9f87"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p112-region-batch01-lexer-emit/program.ssa",
+      "bytes": 597013,
+      "sha256": "8ef16f7e3bbc5907c3852f7942ed8c0d6d574805d0f35eefeebd59f1a5555598"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p112-region-batch01-lexer-build/report.json",
+      "bytes": 4933,
+      "sha256": "e7bc8a6041e8e0ab3e078d4667d462c3dd8cd2d9a80a15f930685843be2ef9ed"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p112-region-batch01-lexer-emit/report.json",
+      "bytes": 2370,
+      "sha256": "d7fb133c1af12211d0579428e4488fd4743faa6e136d994460e4fd3e1ff1f903"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/fixtures01/lexer.bend",
+      "bytes": 9095,
+      "sha256": "bfb62870600b63fd6ec6088471a2d805fabb819a7f2e9d47c9b0ef3c368d169a"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase111/coverage/full45/expected/lexer.stdout",
+      "bytes": 11,
+      "sha256": "ce7ae380f780c64e26dc0b2fd2f547364c4e837bdecd61714cf04150768acf0a"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p112-region-batch01-variation-ray-active-256-2240-build/program.o",
+      "bytes": 338392,
+      "sha256": "0ee8f8f6b4fd76ed58ba1663b3c770fb3c17f5795aed3d4a7d27fe1b0490f9d2"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p112-region-batch01-variation-ray-active-256-2240-emit/program.ssa",
+      "bytes": 902653,
+      "sha256": "c7acb9aa5ac473b151fd34c4409e2c10054778f2545bf16e2715ab0b2a4bfa32"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p112-region-batch01-variation-ray-active-256-2240-build/report.json",
+      "bytes": 5316,
+      "sha256": "02cec9e5e2c828dabdb405f5fc536f86f52d04d9829efe15afe48c913540758c"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p112-region-batch01-variation-ray-active-256-2240-emit/report.json",
+      "bytes": 2419,
+      "sha256": "d18dff6f8a5b111a71954017eeb8a6c29fce324cc409f28857bf18c201ef54b0"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/fixtures01/variation-ray-active-256-2240.bend",
+      "bytes": 16661,
+      "sha256": "7099448e301e2cab7cb5ab47e2a4892dbf44ac246676b4f950282c7a57007669"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase111/coverage/full45/expected/variation-ray-active-256-2240.stdout",
+      "bytes": 11,
+      "sha256": "15adde12f874e278a5e96d86c4ee20d18706611252e5cfc76a3ba63d29170dcf"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p112-region-batch01-coverage-closures-256-build/program.o",
+      "bytes": 166112,
+      "sha256": "ffa4044b77ea9d8a3949a61ce5d4f70f55091e4c0787a3eca601fd7002a76e4b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p112-region-batch01-coverage-closures-256-emit/program.ssa",
+      "bytes": 383313,
+      "sha256": "5ec958f6405d2854d60cf6161705b459134caba3ce7068b244251660ac31c9fe"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p112-region-batch01-coverage-closures-256-build/report.json",
+      "bytes": 5189,
+      "sha256": "2b77eb8b650e92c481060c7e50b6e97eaf945ed793c72e263caf1ca18ee3503c"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p112-region-batch01-coverage-closures-256-emit/report.json",
+      "bytes": 2402,
+      "sha256": "a3a06ed32a478e551955a61de89574ebdaa1bde521ad1e2bdb4a7ed6392655aa"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/fixtures01/coverage-closures-256.bend",
+      "bytes": 3369,
+      "sha256": "d0e35c8343fcbe86b45211f7738d293a27a0a5184060e0136b0275fc9556cef4"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase111/coverage/full45/expected/coverage-closures-256.stdout",
+      "bytes": 6,
+      "sha256": "8cf0773ed5fb75c07a06d48185cd73ff8f1921c588db76a3df3731a557c40b15"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p112-region-batch01-coverage-unicode-text-64-build/program.o",
+      "bytes": 194928,
+      "sha256": "f72179d3ae8513b952071c46bc4a4d89c5837e50d97f63ba2c3452c65b348e41"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p112-region-batch01-coverage-unicode-text-64-emit/program.ssa",
+      "bytes": 446999,
+      "sha256": "fc915820e54576affd3dd60449ca7796796e3787733abe2a2a83d6af31efcce7"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p112-region-batch01-coverage-unicode-text-64-build/report.json",
+      "bytes": 5237,
+      "sha256": "b9aae2b6b350f3daf162a110f49c90f000e977b77f5374d795c656a9fd683898"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p112-region-batch01-coverage-unicode-text-64-emit/report.json",
+      "bytes": 2408,
+      "sha256": "cafb0ca617bc86f966faf418b84844855ea1d0b4f3094ee58f27e6bda08e62aa"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/fixtures01/coverage-unicode-text-64.bend",
+      "bytes": 8458,
+      "sha256": "49a53fc745be33a8237b1b48f3175dbba4e20c76549374253520ae39f6b894bf"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase111/coverage/full45/expected/coverage-unicode-text-64.stdout",
+      "bytes": 1217,
+      "sha256": "aeda13750dee71bdab8ccf55cde8b155af956f8c029a34c14e0d1c8579b8bb2a"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p112-region-batch01-coverage-map-churn-128-build/program.o",
+      "bytes": 432856,
+      "sha256": "23c6f95a13f71dce3946f3df83fb6ea027230d426c359aa794ea542ace7b7843"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p112-region-batch01-coverage-map-churn-128-emit/program.ssa",
+      "bytes": 1065487,
+      "sha256": "dee326a63dc163034b4b4c823f0c0e0c8a7df1102fa3a7e77567fb9190d9ad2d"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p112-region-batch01-coverage-map-churn-128-build/report.json",
+      "bytes": 5205,
+      "sha256": "c4239c167cc0b90ba942fff3c1a688a05789e5c78cf981b2676165eeea5cac85"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p112-region-batch01-coverage-map-churn-128-emit/report.json",
+      "bytes": 2406,
+      "sha256": "09da2e0f82a3ae5767b4725f685e1158bf057e5411d1bb1f77fafe9c5b7fcf0e"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/fixtures01/coverage-map-churn-128.bend",
+      "bytes": 3659,
+      "sha256": "cd22c831c180c0de12d84aeb80debf4881d08cbd18fcf8f6d634153fba2feb03"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase111/coverage/full45/expected/coverage-map-churn-128.stdout",
+      "bytes": 11,
+      "sha256": "f10e5e29d4f448b0f6aeef222b95d6790cf410196cd6d64d27156e08c7ecafb8"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p112-region-batch01-coverage-numeric-recurrence-1024-build/program.o",
+      "bytes": 174832,
+      "sha256": "8ba7dedfd6ab1afeef2439eb4e5a6c725aa23ade848c0c1939b08b0287e711c7"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p112-region-batch01-coverage-numeric-recurrence-1024-emit/program.ssa",
+      "bytes": 414502,
+      "sha256": "6ebb8660306b8e160a26b69ae2d9f953ac52b729d409748bb0b885e49bc3b708"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p112-region-batch01-coverage-numeric-recurrence-1024-build/report.json",
+      "bytes": 5365,
+      "sha256": "411101b58c58950abbc080564c20fd3f2e148ac282c514aebe6f5166d08ac312"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p112-region-batch01-coverage-numeric-recurrence-1024-emit/report.json",
+      "bytes": 2424,
+      "sha256": "7cf718292f662d7db30e6fb271f56fdab909f12e7140e6f917f0a6bcebe54196"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/fixtures01/coverage-numeric-recurrence-1024.bend",
+      "bytes": 2514,
+      "sha256": "39c7c7be54d5a47b6042b0d8f70b124610ea5a2fee28866d85599b7f0f5bbb46"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase111/coverage/full45/expected/coverage-numeric-recurrence-1024.stdout",
+      "bytes": 11,
+      "sha256": "f608ef31e8a3c58b641dd85ce36b9f759bcd685e138466186e32ae709ce1a086"
+    }
+  ],
+  "derivation": "Exact independent benchmark outputs and input arguments; counts chosen1/0 before profiling. Existing object pins come from the completed direct-QBE build receipts.",
+  "scope": "Whole-process diagnostic counts only, including two workload evaluations plus wrapper/setup. This new plan never replaces batch-plan01 or changes timing benchmark definitions."
+}

@@ -1,0 +1,1736 @@
+{
+  "kind": "phase112-float-boundaries",
+  "sourceOnly": true,
+  "cases": [
+    {
+      "name": "add",
+      "op": 26,
+      "args": [
+        {
+          "lo": 1065353216,
+          "hi": 0
+        },
+        {
+          "lo": 1056964608,
+          "hi": 0
+        }
+      ],
+      "expected": 1069547520,
+      "comparison": "exact",
+      "expectedHex": "000000003fc00000",
+      "buffer": "buffer"
+    },
+    {
+      "name": "sub-cancel",
+      "op": 27,
+      "args": [
+        {
+          "lo": 1065353216,
+          "hi": 0
+        },
+        {
+          "lo": 1065353216,
+          "hi": 0
+        }
+      ],
+      "expected": 0,
+      "comparison": "exact",
+      "expectedHex": "0000000000000000"
+    },
+    {
+      "name": "sub-negative-zero",
+      "op": 27,
+      "args": [
+        {
+          "lo": 2147483648,
+          "hi": 0
+        },
+        {
+          "lo": 0,
+          "hi": 0
+        }
+      ],
+      "expected": 2147483648,
+      "comparison": "exact",
+      "expectedHex": "0000000080000000"
+    },
+    {
+      "name": "mul",
+      "op": 28,
+      "args": [
+        {
+          "lo": 1073741824,
+          "hi": 0
+        },
+        {
+          "lo": 1056964608,
+          "hi": 0
+        }
+      ],
+      "expected": 1065353216,
+      "comparison": "exact",
+      "expectedHex": "000000003f800000"
+    },
+    {
+      "name": "mul-overflow",
+      "op": 28,
+      "args": [
+        {
+          "lo": 2139095039,
+          "hi": 0
+        },
+        {
+          "lo": 1073741824,
+          "hi": 0
+        }
+      ],
+      "expected": 2139095040,
+      "comparison": "exact",
+      "expectedHex": "000000007f800000"
+    },
+    {
+      "name": "mul-normal-to-subnormal",
+      "op": 28,
+      "args": [
+        {
+          "lo": 8388608,
+          "hi": 0
+        },
+        {
+          "lo": 1056964608,
+          "hi": 0
+        }
+      ],
+      "expected": 4194304,
+      "comparison": "exact",
+      "expectedHex": "0000000000400000"
+    },
+    {
+      "name": "mul-min-subnormal",
+      "op": 28,
+      "args": [
+        {
+          "lo": 1,
+          "hi": 0
+        },
+        {
+          "lo": 1073741824,
+          "hi": 0
+        }
+      ],
+      "expected": 2,
+      "comparison": "exact",
+      "expectedHex": "0000000000000002"
+    },
+    {
+      "name": "div-subnormal-tie-zero",
+      "op": 29,
+      "args": [
+        {
+          "lo": 1,
+          "hi": 0
+        },
+        {
+          "lo": 1073741824,
+          "hi": 0
+        }
+      ],
+      "expected": 0,
+      "comparison": "exact",
+      "expectedHex": "0000000000000000"
+    },
+    {
+      "name": "div-subnormal-tie-even",
+      "op": 29,
+      "args": [
+        {
+          "lo": 3,
+          "hi": 0
+        },
+        {
+          "lo": 1073741824,
+          "hi": 0
+        }
+      ],
+      "expected": 2,
+      "comparison": "exact",
+      "expectedHex": "0000000000000002"
+    },
+    {
+      "name": "div-negative-zero",
+      "op": 29,
+      "args": [
+        {
+          "lo": 2147483648,
+          "hi": 0
+        },
+        {
+          "lo": 1065353216,
+          "hi": 0
+        }
+      ],
+      "expected": 2147483648,
+      "comparison": "exact",
+      "expectedHex": "0000000080000000"
+    },
+    {
+      "name": "div-positive-infinity",
+      "op": 29,
+      "args": [
+        {
+          "lo": 1065353216,
+          "hi": 0
+        },
+        {
+          "lo": 0,
+          "hi": 0
+        }
+      ],
+      "expected": 2139095040,
+      "comparison": "exact",
+      "expectedHex": "000000007f800000"
+    },
+    {
+      "name": "div-negative-infinity",
+      "op": 29,
+      "args": [
+        {
+          "lo": 3212836864,
+          "hi": 0
+        },
+        {
+          "lo": 0,
+          "hi": 0
+        }
+      ],
+      "expected": 4286578688,
+      "comparison": "exact",
+      "expectedHex": "00000000ff800000"
+    },
+    {
+      "name": "div-negative-zero-from-infinity",
+      "op": 29,
+      "args": [
+        {
+          "lo": 1065353216,
+          "hi": 0
+        },
+        {
+          "lo": 4286578688,
+          "hi": 0
+        }
+      ],
+      "expected": 2147483648,
+      "comparison": "exact",
+      "expectedHex": "0000000080000000"
+    },
+    {
+      "name": "add-tie-even-down",
+      "op": 26,
+      "args": [
+        {
+          "lo": 1065353216,
+          "hi": 0
+        },
+        {
+          "lo": 864026624,
+          "hi": 0
+        }
+      ],
+      "expected": 1065353216,
+      "comparison": "exact",
+      "expectedHex": "000000003f800000"
+    },
+    {
+      "name": "add-tie-even-up",
+      "op": 26,
+      "args": [
+        {
+          "lo": 1065353217,
+          "hi": 0
+        },
+        {
+          "lo": 864026624,
+          "hi": 0
+        }
+      ],
+      "expected": 1065353218,
+      "comparison": "exact",
+      "expectedHex": "000000003f800002"
+    },
+    {
+      "name": "upper-words-discarded",
+      "op": 26,
+      "args": [
+        {
+          "lo": 1065353216,
+          "hi": 3735928559
+        },
+        {
+          "lo": 1056964608,
+          "hi": 4294967295
+        }
+      ],
+      "expected": 1069547520,
+      "comparison": "exact",
+      "expectedHex": "000000003fc00000",
+      "buffer": "p112f_site0_scratch"
+    },
+    {
+      "name": "zero-div-zero",
+      "op": 29,
+      "args": [
+        {
+          "lo": 0,
+          "hi": 0
+        },
+        {
+          "lo": 0,
+          "hi": 0
+        }
+      ],
+      "expected": 2143289344,
+      "comparison": "nan-class",
+      "expectedHex": "000000007fc00000"
+    },
+    {
+      "name": "infinity-cancel",
+      "op": 26,
+      "args": [
+        {
+          "lo": 2139095040,
+          "hi": 0
+        },
+        {
+          "lo": 4286578688,
+          "hi": 0
+        }
+      ],
+      "expected": 2143289344,
+      "comparison": "nan-class",
+      "expectedHex": "000000007fc00000"
+    },
+    {
+      "name": "zero-times-infinity",
+      "op": 28,
+      "args": [
+        {
+          "lo": 0,
+          "hi": 0
+        },
+        {
+          "lo": 2139095040,
+          "hi": 0
+        }
+      ],
+      "expected": 2143289344,
+      "comparison": "nan-class",
+      "expectedHex": "000000007fc00000"
+    },
+    {
+      "name": "quiet-nan-add",
+      "op": 26,
+      "args": [
+        {
+          "lo": 2143294004,
+          "hi": 0
+        },
+        {
+          "lo": 1065353216,
+          "hi": 0
+        }
+      ],
+      "expected": 2143289344,
+      "comparison": "nan-class",
+      "expectedHex": "000000007fc00000"
+    },
+    {
+      "name": "signaling-nan-mul",
+      "op": 28,
+      "args": [
+        {
+          "lo": 2139099700,
+          "hi": 0
+        },
+        {
+          "lo": 1073741824,
+          "hi": 0
+        }
+      ],
+      "expected": 2143289344,
+      "comparison": "nan-class",
+      "expectedHex": "000000007fc00000"
+    },
+    {
+      "name": "u32-to-f32-zero",
+      "op": 23,
+      "args": [
+        {
+          "lo": 0,
+          "hi": 0
+        }
+      ],
+      "expected": 0,
+      "comparison": "exact",
+      "expectedHex": "0000000000000000"
+    },
+    {
+      "name": "u32-to-f32-one",
+      "op": 23,
+      "args": [
+        {
+          "lo": 1,
+          "hi": 0
+        }
+      ],
+      "expected": 1065353216,
+      "comparison": "exact",
+      "expectedHex": "000000003f800000"
+    },
+    {
+      "name": "u32-to-f32-tie-even-down",
+      "op": 23,
+      "args": [
+        {
+          "lo": 16777217,
+          "hi": 0
+        }
+      ],
+      "expected": 1266679808,
+      "comparison": "exact",
+      "expectedHex": "000000004b800000"
+    },
+    {
+      "name": "u32-to-f32-tie-even-up",
+      "op": 23,
+      "args": [
+        {
+          "lo": 16777219,
+          "hi": 0
+        }
+      ],
+      "expected": 1266679810,
+      "comparison": "exact",
+      "expectedHex": "000000004b800002"
+    },
+    {
+      "name": "u32-to-f32-maximum",
+      "op": 23,
+      "args": [
+        {
+          "lo": 4294967295,
+          "hi": 0
+        }
+      ],
+      "expected": 1333788672,
+      "comparison": "exact",
+      "expectedHex": "000000004f800000"
+    },
+    {
+      "name": "u32-to-f32-high-bit",
+      "op": 23,
+      "args": [
+        {
+          "lo": 2147483648,
+          "hi": 0
+        }
+      ],
+      "expected": 1325400064,
+      "comparison": "exact",
+      "expectedHex": "000000004f000000"
+    },
+    {
+      "name": "u32-to-f32-upper-word",
+      "op": 23,
+      "args": [
+        {
+          "lo": 1,
+          "hi": 4294967295
+        }
+      ],
+      "expected": 1065353216,
+      "comparison": "exact",
+      "expectedHex": "000000003f800000",
+      "buffer": "p112f_site0_scratch"
+    },
+    {
+      "name": "compare-signed-zeros-30",
+      "op": 30,
+      "args": [
+        {
+          "lo": 0,
+          "hi": 0
+        },
+        {
+          "lo": 2147483648,
+          "hi": 0
+        }
+      ],
+      "expected": 1,
+      "comparison": "exact",
+      "expectedHex": "0000000000000001"
+    },
+    {
+      "name": "compare-signed-zeros-31",
+      "op": 31,
+      "args": [
+        {
+          "lo": 0,
+          "hi": 0
+        },
+        {
+          "lo": 2147483648,
+          "hi": 0
+        }
+      ],
+      "expected": 0,
+      "comparison": "exact",
+      "expectedHex": "0000000000000000"
+    },
+    {
+      "name": "compare-signed-zeros-32",
+      "op": 32,
+      "args": [
+        {
+          "lo": 0,
+          "hi": 0
+        },
+        {
+          "lo": 2147483648,
+          "hi": 0
+        }
+      ],
+      "expected": 0,
+      "comparison": "exact",
+      "expectedHex": "0000000000000000"
+    },
+    {
+      "name": "compare-signed-zeros-33",
+      "op": 33,
+      "args": [
+        {
+          "lo": 0,
+          "hi": 0
+        },
+        {
+          "lo": 2147483648,
+          "hi": 0
+        }
+      ],
+      "expected": 1,
+      "comparison": "exact",
+      "expectedHex": "0000000000000001"
+    },
+    {
+      "name": "compare-signed-zeros-34",
+      "op": 34,
+      "args": [
+        {
+          "lo": 0,
+          "hi": 0
+        },
+        {
+          "lo": 2147483648,
+          "hi": 0
+        }
+      ],
+      "expected": 0,
+      "comparison": "exact",
+      "expectedHex": "0000000000000000"
+    },
+    {
+      "name": "compare-signed-zeros-35",
+      "op": 35,
+      "args": [
+        {
+          "lo": 0,
+          "hi": 0
+        },
+        {
+          "lo": 2147483648,
+          "hi": 0
+        }
+      ],
+      "expected": 1,
+      "comparison": "exact",
+      "expectedHex": "0000000000000001"
+    },
+    {
+      "name": "compare-greater-30",
+      "op": 30,
+      "args": [
+        {
+          "lo": 1065353216,
+          "hi": 0
+        },
+        {
+          "lo": 1056964608,
+          "hi": 0
+        }
+      ],
+      "expected": 0,
+      "comparison": "exact",
+      "expectedHex": "0000000000000000"
+    },
+    {
+      "name": "compare-greater-31",
+      "op": 31,
+      "args": [
+        {
+          "lo": 1065353216,
+          "hi": 0
+        },
+        {
+          "lo": 1056964608,
+          "hi": 0
+        }
+      ],
+      "expected": 1,
+      "comparison": "exact",
+      "expectedHex": "0000000000000001"
+    },
+    {
+      "name": "compare-greater-32",
+      "op": 32,
+      "args": [
+        {
+          "lo": 1065353216,
+          "hi": 0
+        },
+        {
+          "lo": 1056964608,
+          "hi": 0
+        }
+      ],
+      "expected": 0,
+      "comparison": "exact",
+      "expectedHex": "0000000000000000"
+    },
+    {
+      "name": "compare-greater-33",
+      "op": 33,
+      "args": [
+        {
+          "lo": 1065353216,
+          "hi": 0
+        },
+        {
+          "lo": 1056964608,
+          "hi": 0
+        }
+      ],
+      "expected": 0,
+      "comparison": "exact",
+      "expectedHex": "0000000000000000"
+    },
+    {
+      "name": "compare-greater-34",
+      "op": 34,
+      "args": [
+        {
+          "lo": 1065353216,
+          "hi": 0
+        },
+        {
+          "lo": 1056964608,
+          "hi": 0
+        }
+      ],
+      "expected": 1,
+      "comparison": "exact",
+      "expectedHex": "0000000000000001"
+    },
+    {
+      "name": "compare-greater-35",
+      "op": 35,
+      "args": [
+        {
+          "lo": 1065353216,
+          "hi": 0
+        },
+        {
+          "lo": 1056964608,
+          "hi": 0
+        }
+      ],
+      "expected": 1,
+      "comparison": "exact",
+      "expectedHex": "0000000000000001"
+    },
+    {
+      "name": "compare-negative-positive-30",
+      "op": 30,
+      "args": [
+        {
+          "lo": 3212836864,
+          "hi": 0
+        },
+        {
+          "lo": 1065353216,
+          "hi": 0
+        }
+      ],
+      "expected": 0,
+      "comparison": "exact",
+      "expectedHex": "0000000000000000"
+    },
+    {
+      "name": "compare-negative-positive-31",
+      "op": 31,
+      "args": [
+        {
+          "lo": 3212836864,
+          "hi": 0
+        },
+        {
+          "lo": 1065353216,
+          "hi": 0
+        }
+      ],
+      "expected": 1,
+      "comparison": "exact",
+      "expectedHex": "0000000000000001"
+    },
+    {
+      "name": "compare-negative-positive-32",
+      "op": 32,
+      "args": [
+        {
+          "lo": 3212836864,
+          "hi": 0
+        },
+        {
+          "lo": 1065353216,
+          "hi": 0
+        }
+      ],
+      "expected": 1,
+      "comparison": "exact",
+      "expectedHex": "0000000000000001"
+    },
+    {
+      "name": "compare-negative-positive-33",
+      "op": 33,
+      "args": [
+        {
+          "lo": 3212836864,
+          "hi": 0
+        },
+        {
+          "lo": 1065353216,
+          "hi": 0
+        }
+      ],
+      "expected": 1,
+      "comparison": "exact",
+      "expectedHex": "0000000000000001"
+    },
+    {
+      "name": "compare-negative-positive-34",
+      "op": 34,
+      "args": [
+        {
+          "lo": 3212836864,
+          "hi": 0
+        },
+        {
+          "lo": 1065353216,
+          "hi": 0
+        }
+      ],
+      "expected": 0,
+      "comparison": "exact",
+      "expectedHex": "0000000000000000"
+    },
+    {
+      "name": "compare-negative-positive-35",
+      "op": 35,
+      "args": [
+        {
+          "lo": 3212836864,
+          "hi": 0
+        },
+        {
+          "lo": 1065353216,
+          "hi": 0
+        }
+      ],
+      "expected": 0,
+      "comparison": "exact",
+      "expectedHex": "0000000000000000"
+    },
+    {
+      "name": "compare-left-nan-30",
+      "op": 30,
+      "args": [
+        {
+          "lo": 2143294004,
+          "hi": 0
+        },
+        {
+          "lo": 1065353216,
+          "hi": 0
+        }
+      ],
+      "expected": 0,
+      "comparison": "exact",
+      "expectedHex": "0000000000000000"
+    },
+    {
+      "name": "compare-left-nan-31",
+      "op": 31,
+      "args": [
+        {
+          "lo": 2143294004,
+          "hi": 0
+        },
+        {
+          "lo": 1065353216,
+          "hi": 0
+        }
+      ],
+      "expected": 1,
+      "comparison": "exact",
+      "expectedHex": "0000000000000001"
+    },
+    {
+      "name": "compare-left-nan-32",
+      "op": 32,
+      "args": [
+        {
+          "lo": 2143294004,
+          "hi": 0
+        },
+        {
+          "lo": 1065353216,
+          "hi": 0
+        }
+      ],
+      "expected": 0,
+      "comparison": "exact",
+      "expectedHex": "0000000000000000"
+    },
+    {
+      "name": "compare-left-nan-33",
+      "op": 33,
+      "args": [
+        {
+          "lo": 2143294004,
+          "hi": 0
+        },
+        {
+          "lo": 1065353216,
+          "hi": 0
+        }
+      ],
+      "expected": 0,
+      "comparison": "exact",
+      "expectedHex": "0000000000000000"
+    },
+    {
+      "name": "compare-left-nan-34",
+      "op": 34,
+      "args": [
+        {
+          "lo": 2143294004,
+          "hi": 0
+        },
+        {
+          "lo": 1065353216,
+          "hi": 0
+        }
+      ],
+      "expected": 0,
+      "comparison": "exact",
+      "expectedHex": "0000000000000000"
+    },
+    {
+      "name": "compare-left-nan-35",
+      "op": 35,
+      "args": [
+        {
+          "lo": 2143294004,
+          "hi": 0
+        },
+        {
+          "lo": 1065353216,
+          "hi": 0
+        }
+      ],
+      "expected": 0,
+      "comparison": "exact",
+      "expectedHex": "0000000000000000"
+    },
+    {
+      "name": "compare-right-nan-30",
+      "op": 30,
+      "args": [
+        {
+          "lo": 1065353216,
+          "hi": 0
+        },
+        {
+          "lo": 2143294004,
+          "hi": 0
+        }
+      ],
+      "expected": 0,
+      "comparison": "exact",
+      "expectedHex": "0000000000000000"
+    },
+    {
+      "name": "compare-right-nan-31",
+      "op": 31,
+      "args": [
+        {
+          "lo": 1065353216,
+          "hi": 0
+        },
+        {
+          "lo": 2143294004,
+          "hi": 0
+        }
+      ],
+      "expected": 1,
+      "comparison": "exact",
+      "expectedHex": "0000000000000001"
+    },
+    {
+      "name": "compare-right-nan-32",
+      "op": 32,
+      "args": [
+        {
+          "lo": 1065353216,
+          "hi": 0
+        },
+        {
+          "lo": 2143294004,
+          "hi": 0
+        }
+      ],
+      "expected": 0,
+      "comparison": "exact",
+      "expectedHex": "0000000000000000"
+    },
+    {
+      "name": "compare-right-nan-33",
+      "op": 33,
+      "args": [
+        {
+          "lo": 1065353216,
+          "hi": 0
+        },
+        {
+          "lo": 2143294004,
+          "hi": 0
+        }
+      ],
+      "expected": 0,
+      "comparison": "exact",
+      "expectedHex": "0000000000000000"
+    },
+    {
+      "name": "compare-right-nan-34",
+      "op": 34,
+      "args": [
+        {
+          "lo": 1065353216,
+          "hi": 0
+        },
+        {
+          "lo": 2143294004,
+          "hi": 0
+        }
+      ],
+      "expected": 0,
+      "comparison": "exact",
+      "expectedHex": "0000000000000000"
+    },
+    {
+      "name": "compare-right-nan-35",
+      "op": 35,
+      "args": [
+        {
+          "lo": 1065353216,
+          "hi": 0
+        },
+        {
+          "lo": 2143294004,
+          "hi": 0
+        }
+      ],
+      "expected": 0,
+      "comparison": "exact",
+      "expectedHex": "0000000000000000"
+    },
+    {
+      "name": "compare-two-nans-30",
+      "op": 30,
+      "args": [
+        {
+          "lo": 2143294004,
+          "hi": 0
+        },
+        {
+          "lo": 2143294004,
+          "hi": 0
+        }
+      ],
+      "expected": 0,
+      "comparison": "exact",
+      "expectedHex": "0000000000000000"
+    },
+    {
+      "name": "compare-two-nans-31",
+      "op": 31,
+      "args": [
+        {
+          "lo": 2143294004,
+          "hi": 0
+        },
+        {
+          "lo": 2143294004,
+          "hi": 0
+        }
+      ],
+      "expected": 1,
+      "comparison": "exact",
+      "expectedHex": "0000000000000001"
+    },
+    {
+      "name": "compare-two-nans-32",
+      "op": 32,
+      "args": [
+        {
+          "lo": 2143294004,
+          "hi": 0
+        },
+        {
+          "lo": 2143294004,
+          "hi": 0
+        }
+      ],
+      "expected": 0,
+      "comparison": "exact",
+      "expectedHex": "0000000000000000"
+    },
+    {
+      "name": "compare-two-nans-33",
+      "op": 33,
+      "args": [
+        {
+          "lo": 2143294004,
+          "hi": 0
+        },
+        {
+          "lo": 2143294004,
+          "hi": 0
+        }
+      ],
+      "expected": 0,
+      "comparison": "exact",
+      "expectedHex": "0000000000000000"
+    },
+    {
+      "name": "compare-two-nans-34",
+      "op": 34,
+      "args": [
+        {
+          "lo": 2143294004,
+          "hi": 0
+        },
+        {
+          "lo": 2143294004,
+          "hi": 0
+        }
+      ],
+      "expected": 0,
+      "comparison": "exact",
+      "expectedHex": "0000000000000000"
+    },
+    {
+      "name": "compare-two-nans-35",
+      "op": 35,
+      "args": [
+        {
+          "lo": 2143294004,
+          "hi": 0
+        },
+        {
+          "lo": 2143294004,
+          "hi": 0
+        }
+      ],
+      "expected": 0,
+      "comparison": "exact",
+      "expectedHex": "0000000000000000"
+    },
+    {
+      "name": "compare-signed-infinities-30",
+      "op": 30,
+      "args": [
+        {
+          "lo": 4286578688,
+          "hi": 0
+        },
+        {
+          "lo": 2139095040,
+          "hi": 0
+        }
+      ],
+      "expected": 0,
+      "comparison": "exact",
+      "expectedHex": "0000000000000000"
+    },
+    {
+      "name": "compare-signed-infinities-31",
+      "op": 31,
+      "args": [
+        {
+          "lo": 4286578688,
+          "hi": 0
+        },
+        {
+          "lo": 2139095040,
+          "hi": 0
+        }
+      ],
+      "expected": 1,
+      "comparison": "exact",
+      "expectedHex": "0000000000000001"
+    },
+    {
+      "name": "compare-signed-infinities-32",
+      "op": 32,
+      "args": [
+        {
+          "lo": 4286578688,
+          "hi": 0
+        },
+        {
+          "lo": 2139095040,
+          "hi": 0
+        }
+      ],
+      "expected": 1,
+      "comparison": "exact",
+      "expectedHex": "0000000000000001"
+    },
+    {
+      "name": "compare-signed-infinities-33",
+      "op": 33,
+      "args": [
+        {
+          "lo": 4286578688,
+          "hi": 0
+        },
+        {
+          "lo": 2139095040,
+          "hi": 0
+        }
+      ],
+      "expected": 1,
+      "comparison": "exact",
+      "expectedHex": "0000000000000001"
+    },
+    {
+      "name": "compare-signed-infinities-34",
+      "op": 34,
+      "args": [
+        {
+          "lo": 4286578688,
+          "hi": 0
+        },
+        {
+          "lo": 2139095040,
+          "hi": 0
+        }
+      ],
+      "expected": 0,
+      "comparison": "exact",
+      "expectedHex": "0000000000000000"
+    },
+    {
+      "name": "compare-signed-infinities-35",
+      "op": 35,
+      "args": [
+        {
+          "lo": 4286578688,
+          "hi": 0
+        },
+        {
+          "lo": 2139095040,
+          "hi": 0
+        }
+      ],
+      "expected": 0,
+      "comparison": "exact",
+      "expectedHex": "0000000000000000"
+    },
+    {
+      "name": "compare-positive-subnormal-30",
+      "op": 30,
+      "args": [
+        {
+          "lo": 1,
+          "hi": 0
+        },
+        {
+          "lo": 0,
+          "hi": 0
+        }
+      ],
+      "expected": 0,
+      "comparison": "exact",
+      "expectedHex": "0000000000000000"
+    },
+    {
+      "name": "compare-positive-subnormal-31",
+      "op": 31,
+      "args": [
+        {
+          "lo": 1,
+          "hi": 0
+        },
+        {
+          "lo": 0,
+          "hi": 0
+        }
+      ],
+      "expected": 1,
+      "comparison": "exact",
+      "expectedHex": "0000000000000001"
+    },
+    {
+      "name": "compare-positive-subnormal-32",
+      "op": 32,
+      "args": [
+        {
+          "lo": 1,
+          "hi": 0
+        },
+        {
+          "lo": 0,
+          "hi": 0
+        }
+      ],
+      "expected": 0,
+      "comparison": "exact",
+      "expectedHex": "0000000000000000"
+    },
+    {
+      "name": "compare-positive-subnormal-33",
+      "op": 33,
+      "args": [
+        {
+          "lo": 1,
+          "hi": 0
+        },
+        {
+          "lo": 0,
+          "hi": 0
+        }
+      ],
+      "expected": 0,
+      "comparison": "exact",
+      "expectedHex": "0000000000000000"
+    },
+    {
+      "name": "compare-positive-subnormal-34",
+      "op": 34,
+      "args": [
+        {
+          "lo": 1,
+          "hi": 0
+        },
+        {
+          "lo": 0,
+          "hi": 0
+        }
+      ],
+      "expected": 1,
+      "comparison": "exact",
+      "expectedHex": "0000000000000001"
+    },
+    {
+      "name": "compare-positive-subnormal-35",
+      "op": 35,
+      "args": [
+        {
+          "lo": 1,
+          "hi": 0
+        },
+        {
+          "lo": 0,
+          "hi": 0
+        }
+      ],
+      "expected": 1,
+      "comparison": "exact",
+      "expectedHex": "0000000000000001"
+    },
+    {
+      "name": "compare-negative-subnormal-30",
+      "op": 30,
+      "args": [
+        {
+          "lo": 2147483649,
+          "hi": 0
+        },
+        {
+          "lo": 0,
+          "hi": 0
+        }
+      ],
+      "expected": 0,
+      "comparison": "exact",
+      "expectedHex": "0000000000000000"
+    },
+    {
+      "name": "compare-negative-subnormal-31",
+      "op": 31,
+      "args": [
+        {
+          "lo": 2147483649,
+          "hi": 0
+        },
+        {
+          "lo": 0,
+          "hi": 0
+        }
+      ],
+      "expected": 1,
+      "comparison": "exact",
+      "expectedHex": "0000000000000001"
+    },
+    {
+      "name": "compare-negative-subnormal-32",
+      "op": 32,
+      "args": [
+        {
+          "lo": 2147483649,
+          "hi": 0
+        },
+        {
+          "lo": 0,
+          "hi": 0
+        }
+      ],
+      "expected": 1,
+      "comparison": "exact",
+      "expectedHex": "0000000000000001"
+    },
+    {
+      "name": "compare-negative-subnormal-33",
+      "op": 33,
+      "args": [
+        {
+          "lo": 2147483649,
+          "hi": 0
+        },
+        {
+          "lo": 0,
+          "hi": 0
+        }
+      ],
+      "expected": 1,
+      "comparison": "exact",
+      "expectedHex": "0000000000000001"
+    },
+    {
+      "name": "compare-negative-subnormal-34",
+      "op": 34,
+      "args": [
+        {
+          "lo": 2147483649,
+          "hi": 0
+        },
+        {
+          "lo": 0,
+          "hi": 0
+        }
+      ],
+      "expected": 0,
+      "comparison": "exact",
+      "expectedHex": "0000000000000000"
+    },
+    {
+      "name": "compare-negative-subnormal-35",
+      "op": 35,
+      "args": [
+        {
+          "lo": 2147483649,
+          "hi": 0
+        },
+        {
+          "lo": 0,
+          "hi": 0
+        }
+      ],
+      "expected": 0,
+      "comparison": "exact",
+      "expectedHex": "0000000000000000"
+    },
+    {
+      "name": "compare-positive-infinities-30",
+      "op": 30,
+      "args": [
+        {
+          "lo": 2139095040,
+          "hi": 0
+        },
+        {
+          "lo": 2139095040,
+          "hi": 0
+        }
+      ],
+      "expected": 1,
+      "comparison": "exact",
+      "expectedHex": "0000000000000001"
+    },
+    {
+      "name": "compare-positive-infinities-31",
+      "op": 31,
+      "args": [
+        {
+          "lo": 2139095040,
+          "hi": 0
+        },
+        {
+          "lo": 2139095040,
+          "hi": 0
+        }
+      ],
+      "expected": 0,
+      "comparison": "exact",
+      "expectedHex": "0000000000000000"
+    },
+    {
+      "name": "compare-positive-infinities-32",
+      "op": 32,
+      "args": [
+        {
+          "lo": 2139095040,
+          "hi": 0
+        },
+        {
+          "lo": 2139095040,
+          "hi": 0
+        }
+      ],
+      "expected": 0,
+      "comparison": "exact",
+      "expectedHex": "0000000000000000"
+    },
+    {
+      "name": "compare-positive-infinities-33",
+      "op": 33,
+      "args": [
+        {
+          "lo": 2139095040,
+          "hi": 0
+        },
+        {
+          "lo": 2139095040,
+          "hi": 0
+        }
+      ],
+      "expected": 1,
+      "comparison": "exact",
+      "expectedHex": "0000000000000001"
+    },
+    {
+      "name": "compare-positive-infinities-34",
+      "op": 34,
+      "args": [
+        {
+          "lo": 2139095040,
+          "hi": 0
+        },
+        {
+          "lo": 2139095040,
+          "hi": 0
+        }
+      ],
+      "expected": 0,
+      "comparison": "exact",
+      "expectedHex": "0000000000000000"
+    },
+    {
+      "name": "compare-positive-infinities-35",
+      "op": 35,
+      "args": [
+        {
+          "lo": 2139095040,
+          "hi": 0
+        },
+        {
+          "lo": 2139095040,
+          "hi": 0
+        }
+      ],
+      "expected": 1,
+      "comparison": "exact",
+      "expectedHex": "0000000000000001"
+    },
+    {
+      "name": "compare-negative-infinities-30",
+      "op": 30,
+      "args": [
+        {
+          "lo": 4286578688,
+          "hi": 0
+        },
+        {
+          "lo": 4286578688,
+          "hi": 0
+        }
+      ],
+      "expected": 1,
+      "comparison": "exact",
+      "expectedHex": "0000000000000001"
+    },
+    {
+      "name": "compare-negative-infinities-31",
+      "op": 31,
+      "args": [
+        {
+          "lo": 4286578688,
+          "hi": 0
+        },
+        {
+          "lo": 4286578688,
+          "hi": 0
+        }
+      ],
+      "expected": 0,
+      "comparison": "exact",
+      "expectedHex": "0000000000000000"
+    },
+    {
+      "name": "compare-negative-infinities-32",
+      "op": 32,
+      "args": [
+        {
+          "lo": 4286578688,
+          "hi": 0
+        },
+        {
+          "lo": 4286578688,
+          "hi": 0
+        }
+      ],
+      "expected": 0,
+      "comparison": "exact",
+      "expectedHex": "0000000000000000"
+    },
+    {
+      "name": "compare-negative-infinities-33",
+      "op": 33,
+      "args": [
+        {
+          "lo": 4286578688,
+          "hi": 0
+        },
+        {
+          "lo": 4286578688,
+          "hi": 0
+        }
+      ],
+      "expected": 1,
+      "comparison": "exact",
+      "expectedHex": "0000000000000001"
+    },
+    {
+      "name": "compare-negative-infinities-34",
+      "op": 34,
+      "args": [
+        {
+          "lo": 4286578688,
+          "hi": 0
+        },
+        {
+          "lo": 4286578688,
+          "hi": 0
+        }
+      ],
+      "expected": 0,
+      "comparison": "exact",
+      "expectedHex": "0000000000000000"
+    },
+    {
+      "name": "compare-negative-infinities-35",
+      "op": 35,
+      "args": [
+        {
+          "lo": 4286578688,
+          "hi": 0
+        },
+        {
+          "lo": 4286578688,
+          "hi": 0
+        }
+      ],
+      "expected": 1,
+      "comparison": "exact",
+      "expectedHex": "0000000000000001"
+    },
+    {
+      "name": "compare-upper-word-30",
+      "op": 30,
+      "args": [
+        {
+          "lo": 1065353216,
+          "hi": 3735928559
+        },
+        {
+          "lo": 1065353216,
+          "hi": 0
+        }
+      ],
+      "expected": 1,
+      "comparison": "exact",
+      "expectedHex": "0000000000000001"
+    },
+    {
+      "name": "compare-upper-word-31",
+      "op": 31,
+      "args": [
+        {
+          "lo": 1065353216,
+          "hi": 3735928559
+        },
+        {
+          "lo": 1065353216,
+          "hi": 0
+        }
+      ],
+      "expected": 0,
+      "comparison": "exact",
+      "expectedHex": "0000000000000000"
+    },
+    {
+      "name": "compare-upper-word-32",
+      "op": 32,
+      "args": [
+        {
+          "lo": 1065353216,
+          "hi": 3735928559
+        },
+        {
+          "lo": 1065353216,
+          "hi": 0
+        }
+      ],
+      "expected": 0,
+      "comparison": "exact",
+      "expectedHex": "0000000000000000"
+    },
+    {
+      "name": "compare-upper-word-33",
+      "op": 33,
+      "args": [
+        {
+          "lo": 1065353216,
+          "hi": 3735928559
+        },
+        {
+          "lo": 1065353216,
+          "hi": 0
+        }
+      ],
+      "expected": 1,
+      "comparison": "exact",
+      "expectedHex": "0000000000000001"
+    },
+    {
+      "name": "compare-upper-word-34",
+      "op": 34,
+      "args": [
+        {
+          "lo": 1065353216,
+          "hi": 3735928559
+        },
+        {
+          "lo": 1065353216,
+          "hi": 0
+        }
+      ],
+      "expected": 0,
+      "comparison": "exact",
+      "expectedHex": "0000000000000000"
+    },
+    {
+      "name": "compare-upper-word-35",
+      "op": 35,
+      "args": [
+        {
+          "lo": 1065353216,
+          "hi": 3735928559
+        },
+        {
+          "lo": 1065353216,
+          "hi": 0
+        }
+      ],
+      "expected": 1,
+      "comparison": "exact",
+      "expectedHex": "0000000000000001"
+    },
+    {
+      "name": "fallback-bits-payload",
+      "op": 59,
+      "args": [
+        {
+          "lo": 2143294004,
+          "hi": 305419896
+        }
+      ],
+      "expected": "123456787fc01234",
+      "comparison": "exact",
+      "expectedHex": "123456787fc01234"
+    },
+    {
+      "name": "fallback-neg-zero",
+      "op": 57,
+      "args": [
+        {
+          "lo": 0,
+          "hi": 0
+        }
+      ],
+      "expected": 2147483648,
+      "comparison": "exact",
+      "expectedHex": "0000000080000000"
+    },
+    {
+      "name": "fallback-to-u32-nan",
+      "op": 58,
+      "args": [
+        {
+          "lo": 2143294004,
+          "hi": 0
+        }
+      ],
+      "expected": 0,
+      "comparison": "exact",
+      "expectedHex": "0000000000000000"
+    },
+    {
+      "name": "fallback-sqrt-four",
+      "op": 36,
+      "args": [
+        {
+          "lo": 1082130432,
+          "hi": 0
+        }
+      ],
+      "expected": 1073741824,
+      "comparison": "exact",
+      "expectedHex": "0000000040000000"
+    }
+  ],
+  "observationCount": 104,
+  "expandedCount": 100,
+  "nanPolicy": "NaN results from arithmetic are checked by IEEE class with upper word zero; provided bits payload is observed exactly through unsupported runtime identity. No NaN payload stability is invented."
+}

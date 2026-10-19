@@ -161,3 +161,33 @@ fail-stop boundaries. Investigate direct IEEE binary32 intrinsic expansion at
 the backend, where the verified atomic runtime operation already carries its
 semantics; preserve NaNs/rounding/zero and fall back for unqualified conversions.
 Do not infer that simply changing assemblers will close this architectural gap.
+
+## Profile-driven pivot at 01:48 UTC
+
+Authenticated runtime counters explain a much larger compiler opportunity:
+1,625,654 U32 special-takes in the lexer compiler request call `p111_native_word`.
+Each creates32 WCon nodes and31 nontrivial child wrappers, mechanically accounting
+for102,416,202 of124,677,389 heap allocations (82.14%). Counts are not CPU shares.
+The prepared cache's character/newline and numeric-role patterns expand into
+thousands of QBE lines. Reuse the existing general NW_Rows recognizer and emit
+low32 mask/equality branches before materializing Word. Retain ordered rows,
+raw F32 bit semantics, fresh identities and exact generic fallback. Initially
+refuse any row whose Word tail still escapes after the existing reconstruction
+rewrite; do not add an ABI solely for rare residual cases.
+
+The mature selector rewrite can likewise return ordinary KTerm directly to
+P111 lowering. Keep its closed-body, use-count, strict-argument and freshness
+premises. This is a small reuse adapter, not a new name-based optimization.
+
+The first fusion/F32/wide32 screen lowers the six-case upstream gap from21.21x
+to14.69x, but ray remains150.81x. Profiles show334,018 frames and483,445 jumps for
+two ray evaluations; scalar expansion alone cannot remove function boundaries.
+Try a bounded, typed region composition: each immutable rank fuses calls only
+to previously admitted private workers, then admits the resulting whole body.
+Freeze its transformed body/plan on first admission. Never re-plan an admitted
+worker using the final larger index, which could create machine-call cycles.
+Keep self-tail loops local and non-tail/mutual recursion on the generic path.
+Bound ranks/native call depth, code growth and copied continuations. Qualify
+nested calls, captured ownership, pending outer frames and recursive refusals
+before benchmarking. This realizes a slice of the10x ambition by letting two
+existing transformations enable each other.

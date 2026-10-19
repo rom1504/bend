@@ -1,0 +1,13 @@
+{
+  "kind": "phase112-optional-early-refusal-profile",
+  "baseProfiles": ["direct8", "direct8-failstop", "direct32", "direct32-failstop"],
+  "appendModules": ["early-refusal.bend"],
+  "finalOverrides": ["early-refusal-entry.bend"],
+  "changedDeclarations": ["p112t_scan_next", "p112w_scan_next", "p112w_add"],
+  "admissionChange": false,
+  "validPlanChange": false,
+  "invalidPayload": "canonical invalid body",
+  "requiredComparison": "same checked IR, exact admission/valid plans/final emitted program",
+  "controlMethod": "early-refusal-controls.mjs",
+  "sourceOnly": true
+}

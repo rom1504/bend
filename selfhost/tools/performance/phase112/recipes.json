@@ -1,0 +1,92 @@
+{
+  "kind": "phase112-additive-source-recipes",
+  "version": 1,
+  "base": "selfhost/build/phase111/full-source05/compiler.bend",
+  "baseSha256": "825cb03276c30a944ef1b1e8ed0624531253d2f39a502b0fcbfbfea3f3bb3f44",
+  "modules": [
+    "selfhost/tools/performance/phase112/liveness/continuation.bend",
+    "selfhost/tools/performance/phase112/scalars.bend",
+    "selfhost/tools/performance/phase112/scalar-entry.bend",
+    "selfhost/tools/performance/phase112/workers/model.bend",
+    "selfhost/tools/performance/phase112/workers/plan.bend",
+    "selfhost/tools/performance/phase112/workers/emit.bend",
+    "selfhost/tools/performance/phase112/workers/side-exit.bend",
+    "selfhost/tools/performance/phase112/workers/runtime-safe.bend",
+    "selfhost/tools/performance/phase112/accessors/original.bend",
+    "selfhost/tools/performance/phase112/accessors/emit.bend",
+    "selfhost/tools/performance/phase112/accessors/entry-both.bend",
+    "selfhost/tools/performance/phase112/accessors/special-tests.bend",
+    "selfhost/tools/performance/phase112/workers/direct-model.bend",
+    "selfhost/tools/performance/phase112/workers/direct-plan.bend",
+    "selfhost/tools/performance/phase112/workers/direct-emit.bend",
+    "selfhost/tools/performance/phase112/workers/direct-entry.bend",
+    "selfhost/tools/performance/phase112/static/model.bend",
+    "selfhost/tools/performance/phase112/static/plan.bend",
+    "selfhost/tools/performance/phase112/static/verify.bend",
+    "selfhost/tools/performance/phase112/static/original.bend",
+    "selfhost/tools/performance/phase112/static/emit.bend",
+    "selfhost/tools/performance/phase112/static/lower.bend",
+    "selfhost/tools/performance/phase112/static/controls.bend",
+    "selfhost/tools/performance/phase112/workers/direct-failstop.bend"
+  ],
+  "overrides": [
+    "selfhost/tools/performance/phase112/workers/side-exit-entry.bend",
+    "selfhost/tools/performance/phase112/workers/runtime-safe-entry.bend",
+    "selfhost/tools/performance/phase112/static/entry.bend",
+    "selfhost/tools/performance/phase112/static/liveness-entry.bend",
+    "selfhost/tools/performance/phase112/workers/direct-failstop-entry.bend"
+  ],
+  "profiles": {
+    "core": {
+      "modules": [],
+      "overrides": []
+    },
+    "early": {
+      "modules": [
+        "workers/early-refusal.bend"
+      ],
+      "overrides": [
+        "workers/early-refusal-entry.bend"
+      ]
+    },
+    "fusion": {
+      "modules": [
+        "workers/early-refusal.bend",
+        "float/emit.bend",
+        "float/controls.bend",
+        "fusion/model.bend",
+        "fusion/index.bend",
+        "fusion/rename.bend",
+        "fusion/plan.bend",
+        "fusion/build.bend",
+        "fusion/emit.bend"
+      ],
+      "overrides": [
+        "workers/wide32-entry.bend",
+        "workers/early-refusal-entry.bend",
+        "float/entry-accessors.bend",
+        "fusion/entry.bend"
+      ]
+    },
+    "selectors": {
+      "extends": "fusion",
+      "modules": [
+        "selectors/original.bend",
+        "selectors/emit.bend"
+      ],
+      "overrides": [
+        "selectors/entry.bend"
+      ]
+    },
+    "selectors-core": {
+      "extends": "early",
+      "modules": [
+        "selectors/original.bend",
+        "selectors/emit.bend"
+      ],
+      "overrides": [
+        "selectors/entry.bend"
+      ]
+    }
+  }
+}

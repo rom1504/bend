@@ -37,9 +37,12 @@ def main():
     edits = []
     overrides = {f.resolve() for f in args.override}
     modules = [f.resolve() for f in [*args.module,*args.override]]
+    contents = {f: f.read_bytes() for f in modules}
+    module_pins = {f: dict(file=str(f), bytes=len(contents[f]),
+                          sha256=hashlib.sha256(contents[f]).hexdigest()) for f in modules}
     seen = set()
     for module in modules:
-        content = module.read_text()
+        content = contents[module].decode()
         for kind, name, a, b in blocks(content):
             assert (kind, name) not in seen or module in overrides, 'Repeated override needs --override: ' + name
             seen.add((kind, name))
@@ -55,18 +58,20 @@ def main():
                 source += '\n' + body
                 edits.append(dict(kind=kind,name=name,action='append',module=str(module)))
     assert len(re.findall(r'^def main\(', source, re.M)) == 1
+    for module in modules:
+        assert pin(module) == module_pins[module], 'Module changed during composition: ' + str(module)
     out.mkdir(parents=True)
     (out/'modules').mkdir()
     snapshots=[]
     for i,module in enumerate(modules):
         dest=out/'modules'/f'{i:02d}-{module.name}'
-        dest.write_bytes(module.read_bytes())
-        snapshots.append(dict(original=pin(module),snapshot=pin(dest)))
+        dest.write_bytes(contents[module])
+        snapshots.append(dict(original=module_pins[module],snapshot=pin(dest)))
     (out/'compiler.bend').write_text(source)
     (out/'method.py').write_bytes(Path(__file__).read_bytes())
     record=dict(kind='phase112-source-composition',prepared=True,checked=False,targetsRun=False,
                 baseline=pin(BASE),source=pin(out/'compiler.bend'),method=pin(out/'method.py'),
-                modules=[pin(f) for f in modules],moduleSnapshots=snapshots,edits=edits)
+                modules=[module_pins[f] for f in modules],moduleSnapshots=snapshots,edits=edits)
     (out/'manifest.json').write_text(json.dumps(record,indent=2)+'\n')
     print(json.dumps(dict(source=record['source'],edits=len(edits))))
 

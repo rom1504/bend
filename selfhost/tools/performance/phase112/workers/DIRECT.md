@@ -119,3 +119,24 @@ successful branch, and must match independent exit status1, empty stdout and
 exact diagnostics on reachable framed and unframed failure branches. The
 original direct control's failure refusal is intentionally superseded only in
 this separately bound optional profile; all other admission restrictions remain.
+
+## Optional argument bound 32
+
+`wide32-entry.bend` overrides only `p112w_plan`, changing its owned-argument limit
+from 8 to 32. Three immutable admission ranks, exact scalar/result/prelude rules,
+self-loop moves and failure/lifetime boundaries remain unchanged. Continuation
+fusion retains its separate bound 8. The explicit, finite module recipes are in
+`profiles.json`; no arbitrary module additions are admitted by these profiles.
+
+Run `wide32-controls.mjs API FRESH_OUT` for 9, 16, 26 and 32 owned arguments. Each
+fixture performs two independent argument permutations across direct calls and
+returns a boxed product exposing every argument in order. Expected stdout is a
+complete field list, not a checksum. A 33-argument graph remains valid for the
+generic backend and is refused by private-worker admission.
+
+The CPU fail-stop combination uses the separate `admit-wide32.py` with the same
+arguments as the original admission command. The original direct8 admission tool
+is unchanged and cannot admit this changed planner. The new method pins it as a
+fixed helper, then checks the exact wide32 final declaration and rejects any
+continuation-fusion declarations. Count newly admitted actual source workers and
+targets on identical checked IR before full image acquisition.

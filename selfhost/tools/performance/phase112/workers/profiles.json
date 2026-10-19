@@ -1,0 +1,40 @@
+{
+  "kind": "phase112-explicit-worker-module-presets",
+  "pathsRelativeTo": "selfhost/tools/performance/phase112/workers",
+  "compositionRule": "Append the listed modules in order, then apply only the listed explicit overrides. Independent scalar/accessor profiles remain separately selected and pinned.",
+  "profiles": {
+    "loops": {
+      "modules": ["model.bend", "plan.bend", "emit.bend", "side-exit.bend", "runtime-safe.bend"],
+      "overrides": ["entry.bend", "side-exit-entry.bend", "runtime-safe-entry.bend"],
+      "privateArityMax": null
+    },
+    "direct8": {
+      "modules": ["model.bend", "plan.bend", "emit.bend", "side-exit.bend", "runtime-safe.bend", "direct-model.bend", "direct-plan.bend", "direct-emit.bend"],
+      "overrides": ["side-exit-entry.bend", "runtime-safe-entry.bend", "direct-entry.bend"],
+      "privateArityMax": 8,
+      "failureSideExits": false
+    },
+    "direct8-failstop": {
+      "modules": ["model.bend", "plan.bend", "emit.bend", "side-exit.bend", "runtime-safe.bend", "direct-model.bend", "direct-plan.bend", "direct-emit.bend", "direct-failstop.bend"],
+      "overrides": ["side-exit-entry.bend", "runtime-safe-entry.bend", "direct-entry.bend", "direct-failstop-entry.bend"],
+      "privateArityMax": 8,
+      "failureSideExits": "exact CPU runtime04 only",
+      "admissionMethod": "admit-failstop.py"
+    },
+    "direct32": {
+      "modules": ["model.bend", "plan.bend", "emit.bend", "side-exit.bend", "runtime-safe.bend", "direct-model.bend", "direct-plan.bend", "direct-emit.bend"],
+      "overrides": ["side-exit-entry.bend", "runtime-safe-entry.bend", "direct-entry.bend", "wide32-entry.bend"],
+      "privateArityMax": 32,
+      "failureSideExits": false
+    },
+    "direct32-failstop": {
+      "modules": ["model.bend", "plan.bend", "emit.bend", "side-exit.bend", "runtime-safe.bend", "direct-model.bend", "direct-plan.bend", "direct-emit.bend", "direct-failstop.bend"],
+      "overrides": ["side-exit-entry.bend", "runtime-safe-entry.bend", "direct-entry.bend", "direct-failstop-entry.bend", "wide32-entry.bend"],
+      "privateArityMax": 32,
+      "failureSideExits": "exact CPU runtime04 only",
+      "admissionMethod": "admit-wide32.py"
+    }
+  },
+  "unchangedLimits": {"dependencyPasses": 3, "resultWords": 1, "incomingContinuation": false, "flags": 0, "fusionArityMax": 8},
+  "requiredOrder": "Compare exact admission counts on the same checked IR before any full native image acquisition."
+}

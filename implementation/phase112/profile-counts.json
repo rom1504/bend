@@ -1,0 +1,2095 @@
+{
+  "kind": "phase112-offline-count-analysis",
+  "targetsRun": false,
+  "diagnosticNotTiming": true,
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase112/profile-batch01/report.json",
+      "bytes": 236164,
+      "sha256": "db1450d353a30845906bb9f5f36397c69102a63612b76537a6c848fa0f235d13"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase112/profile-compiler01/report.json",
+      "bytes": 74599,
+      "sha256": "9980eba70f19b10a37ca1d6c65567ae67a685d983194e9220abf64c3c12ca0bf"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase112/profile-batch01/lexer-profile/profile.json",
+      "bytes": 119784,
+      "sha256": "01e5ff3cb7c7fd2a797fe97574cb17f8ce44d55500118c0bad5f256e67eafe39"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase112/profile-batch01/variation-ray-active-256-2240-profile/profile.json",
+      "bytes": 160692,
+      "sha256": "cbc26f5ad302f9c0f3e56dd6f7028993de218cbee7d46cfdb38dcf701c0a347f"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase112/profile-batch01/coverage-closures-256-profile/profile.json",
+      "bytes": 102646,
+      "sha256": "4f7f100f98971143e38f19b43e6ac269fbbf4530311ac940cc3c9dea19542d3a"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase112/profile-batch01/coverage-unicode-text-64-profile/profile.json",
+      "bytes": 108002,
+      "sha256": "0a8c857c803cf79ea9d24410a64a9f068408bb12a190f827cefb8b4056d58c7a"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase112/profile-batch01/coverage-map-churn-128-profile/profile.json",
+      "bytes": 178122,
+      "sha256": "8d178651eeb9fd2f7f796818f132c14d4f0da5766457526edff7812e45ef0742"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase112/profile-batch01/coverage-numeric-recurrence-1024-profile/profile.json",
+      "bytes": 93995,
+      "sha256": "30bb428df08fdf13a010553638bddce0ef07e099aa60f6278987bfd82d80d539"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase112/profile-compiler01/profile/profile.json",
+      "bytes": 9482169,
+      "sha256": "2e65b4498d21f2a561db6dff2913dda1cd635515a00a200cd9b231a45cf48af3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p112-full-emit01/program.ssa",
+      "bytes": 44349671,
+      "sha256": "5b105cfbc2987adf36531abded61c148c219562443c2f09da00021ef5c176ccd"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p112-static-batch01-variation-ray-active-256-2240-emit/program.ssa",
+      "bytes": 873934,
+      "sha256": "c7b6567dedfa1b7c8b9b9ce4b1707a7156ba02bab7a4b9c428e117b609d4e361"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/runtime-source04/runtime.c",
+      "bytes": 136808,
+      "sha256": "c0fc18aabb2749cc85b5040c29756d8d73d90b73bb954d10ed1d0d410528aa50"
+    }
+  ],
+  "profiles": [
+    {
+      "name": "lexer",
+      "meta": {
+        "type": "meta",
+        "version": 1,
+        "sourceSha256": "c0fc18aabb2749cc85b5040c29756d8d73d90b73bb954d10ed1d0d410528aa50",
+        "heapRc": true,
+        "abi": 11101,
+        "segments": 633,
+        "constructors": 161,
+        "transportWidth": 5
+      },
+      "counters": {
+        "rt_keep": 380718,
+        "rt_sink": 193367,
+        "rt_tag": 0,
+        "rt_ctor": 76078,
+        "rt_take": 96579,
+        "rt_closure": 41,
+        "rt_frame": 236562,
+        "rt_jump": 271033,
+        "rt_return": 236570,
+        "rt_apply": 34,
+        "rt_stack_pop": 236035,
+        "rt_stack_get": 463226,
+        "rt_reg_get": 0,
+        "rt_fail": 0,
+        "rt_op": 19585,
+        "rt_special_ctor": 28265,
+        "rt_special_test": 0,
+        "rt_special_take": 65730,
+        "set_regs": 507637,
+        "register_words_copied": 938231,
+        "register_words_zeroed": 1599954,
+        "bank_init_words": 305,
+        "bank_read_words": 305,
+        "bank_write_words": 260,
+        "bank_save_words": 45,
+        "bank_take_words": 0,
+        "heap_alloc": 120999,
+        "heap_alloc_miss": 3,
+        "heap_free": 120999,
+        "spare_free": 96642,
+        "rfc_wrap": 44810,
+        "rfc_seal": 137807,
+        "rfc_view": 44805,
+        "rfc_bump": 1,
+        "term_keep": 380718,
+        "term_sink": 193368,
+        "term_drop": 6,
+        "ctr_take": 96600
+      },
+      "dispatches": 507698,
+      "publicCalls": 2303823,
+      "top": {
+        "dispatch_fid": [
+          {
+            "index": 413,
+            "count": 61614,
+            "symbol": "p111_FID_36_100_105_114_101_99_116_46_66_111_111_108_46_97_110_100_",
+            "decoded": "$direct.Bool.and"
+          },
+          {
+            "index": 493,
+            "count": 31318,
+            "symbol": "p111_FID_36_100_105_114_101_99_116_46_108_101_120_",
+            "decoded": "$direct.lex"
+          },
+          {
+            "index": 423,
+            "count": 30806,
+            "symbol": "p111_FID_36_100_105_114_101_99_116_46_99_108_115_",
+            "decoded": "$direct.cls"
+          },
+          {
+            "index": 424,
+            "count": 30806,
+            "symbol": "p111_FID_36_112_49_49_49_46_107_46_54_57_50_55_56_",
+            "decoded": "$p111.k.69278"
+          },
+          {
+            "index": 425,
+            "count": 30806,
+            "symbol": "p111_FID_36_112_49_49_49_46_107_46_54_57_50_55_57_",
+            "decoded": "$p111.k.69279"
+          },
+          {
+            "index": 439,
+            "count": 30806,
+            "symbol": "p111_FID_36_100_105_114_101_99_116_46_115_116_101_112_46_97_116_",
+            "decoded": "$direct.step.at"
+          }
+        ],
+        "public_calls_fid": [
+          {
+            "index": 425,
+            "count": 191492,
+            "symbol": "p111_FID_36_112_49_49_49_46_107_46_54_57_50_55_57_",
+            "decoded": "$p111.k.69279"
+          },
+          {
+            "index": 424,
+            "count": 184836,
+            "symbol": "p111_FID_36_112_49_49_49_46_107_46_54_57_50_55_56_",
+            "decoded": "$p111.k.69278"
+          },
+          {
+            "index": 392,
+            "count": 181248,
+            "symbol": "p111_FID_36_100_105_114_101_99_116_46_103_101_110_",
+            "decoded": "$direct.gen"
+          },
+          {
+            "index": 493,
+            "count": 155054,
+            "symbol": "p111_FID_36_100_105_114_101_99_116_46_108_101_120_",
+            "decoded": "$direct.lex"
+          },
+          {
+            "index": 470,
+            "count": 154030,
+            "symbol": "p111_FID_36_112_49_49_49_46_107_46_55_51_54_48_51_",
+            "decoded": "$p111.k.73603"
+          },
+          {
+            "index": 386,
+            "count": 153600,
+            "symbol": "p111_FID_36_100_105_114_101_99_116_46_103_101_110_46_97_116_",
+            "decoded": "$direct.gen.at"
+          }
+        ],
+        "op": [
+          {
+            "index": 19,
+            "count": 15969,
+            "symbol": "u32_mod"
+          },
+          {
+            "index": 24,
+            "count": 3587,
+            "symbol": "u32_to_nat"
+          },
+          {
+            "index": 18,
+            "count": 13,
+            "symbol": "u32_div"
+          },
+          {
+            "index": 62,
+            "count": 3,
+            "symbol": "nat_add"
+          },
+          {
+            "index": 25,
+            "count": 2,
+            "symbol": "u32_from_nat"
+          },
+          {
+            "index": 66,
+            "count": 2,
+            "symbol": "nat_cmp"
+          }
+        ],
+        "ctor_cid": [
+          {
+            "index": 25,
+            "count": 30827,
+            "symbol": "SCon"
+          },
+          {
+            "index": 8,
+            "count": 30817,
+            "symbol": "Tuple"
+          },
+          {
+            "index": 159,
+            "count": 9156,
+            "symbol": "$ctor.73_110_73_100_"
+          },
+          {
+            "index": 160,
+            "count": 5266,
+            "symbol": "$ctor.73_110_78_109_"
+          },
+          {
+            "index": 12,
+            "count": 4,
+            "symbol": "Some"
+          },
+          {
+            "index": 48,
+            "count": 4,
+            "symbol": "IO.print"
+          }
+        ],
+        "take_cid": [
+          {
+            "index": 25,
+            "count": 50787,
+            "symbol": "SCon"
+          },
+          {
+            "index": 8,
+            "count": 31329,
+            "symbol": "Tuple"
+          },
+          {
+            "index": 159,
+            "count": 9156,
+            "symbol": "$ctor.73_110_73_100_"
+          },
+          {
+            "index": 160,
+            "count": 5266,
+            "symbol": "$ctor.73_110_78_109_"
+          },
+          {
+            "index": 20,
+            "count": 33,
+            "symbol": "WCon"
+          },
+          {
+            "index": 12,
+            "count": 4,
+            "symbol": "Some"
+          }
+        ],
+        "special_take_kind": [
+          {
+            "index": 5,
+            "count": 50781
+          },
+          {
+            "index": 4,
+            "count": 14947
+          },
+          {
+            "index": 6,
+            "count": 2
+          }
+        ]
+      },
+      "fpSupportedCalls": 0,
+      "zeroFraction": 0.6303535794278194
+    },
+    {
+      "name": "variation-ray-active-256-2240",
+      "meta": {
+        "type": "meta",
+        "version": 1,
+        "sourceSha256": "c0fc18aabb2749cc85b5040c29756d8d73d90b73bb954d10ed1d0d410528aa50",
+        "heapRc": true,
+        "abi": 11101,
+        "segments": 787,
+        "constructors": 152,
+        "transportWidth": 19
+      },
+      "counters": {
+        "rt_keep": 1365976,
+        "rt_sink": 272179,
+        "rt_tag": 0,
+        "rt_ctor": 4020,
+        "rt_take": 4046,
+        "rt_closure": 41,
+        "rt_frame": 334018,
+        "rt_jump": 483445,
+        "rt_return": 334026,
+        "rt_apply": 34,
+        "rt_stack_pop": 334003,
+        "rt_stack_get": 2709252,
+        "rt_reg_get": 0,
+        "rt_fail": 0,
+        "rt_op": 1957364,
+        "rt_special_ctor": 19,
+        "rt_special_test": 0,
+        "rt_special_take": 932387,
+        "set_regs": 817505,
+        "register_words_copied": 2134740,
+        "register_words_zeroed": 13397855,
+        "bank_init_words": 1159,
+        "bank_read_words": 1159,
+        "bank_write_words": 988,
+        "bank_save_words": 171,
+        "bank_take_words": 0,
+        "heap_alloc": 4235,
+        "heap_alloc_miss": 3,
+        "heap_free": 4235,
+        "spare_free": 4109,
+        "rfc_wrap": 99,
+        "rfc_seal": 12094,
+        "rfc_view": 94,
+        "rfc_bump": 1,
+        "term_keep": 1365976,
+        "term_sink": 272180,
+        "term_drop": 6,
+        "ctr_take": 4067
+      },
+      "dispatches": 817566,
+      "publicCalls": 8730810,
+      "top": {
+        "dispatch_fid": [
+          {
+            "index": 488,
+            "count": 55464,
+            "symbol": "p111_FID_36_100_105_114_101_99_116_46_115_114_",
+            "decoded": "$direct.sr"
+          },
+          {
+            "index": 499,
+            "count": 55464,
+            "symbol": "p111_FID_36_100_105_114_101_99_116_46_115_122_",
+            "decoded": "$direct.sz"
+          },
+          {
+            "index": 510,
+            "count": 55464,
+            "symbol": "p111_FID_36_100_105_114_101_99_116_46_115_121_",
+            "decoded": "$direct.sy"
+          },
+          {
+            "index": 523,
+            "count": 55464,
+            "symbol": "p111_FID_36_100_105_114_101_99_116_46_115_120_",
+            "decoded": "$direct.sx"
+          },
+          {
+            "index": 554,
+            "count": 53496,
+            "symbol": "p111_FID_36_100_105_114_101_99_116_46_105_115_101_99_116_46_103_111_50_",
+            "decoded": "$direct.isect.go2"
+          },
+          {
+            "index": 559,
+            "count": 53496,
+            "symbol": "p111_FID_36_100_105_114_101_99_116_46_105_115_101_99_116_46_103_111_",
+            "decoded": "$direct.isect.go"
+          }
+        ],
+        "public_calls_fid": [
+          {
+            "index": 575,
+            "count": 1444392,
+            "symbol": "p111_FID_36_100_105_114_101_99_116_46_105_115_101_99_116_53_",
+            "decoded": "$direct.isect5"
+          },
+          {
+            "index": 593,
+            "count": 544712,
+            "symbol": "p111_FID_36_100_105_114_101_99_116_46_110_101_97_114_101_115_116_",
+            "decoded": "$direct.nearest"
+          },
+          {
+            "index": 595,
+            "count": 538944,
+            "symbol": "p111_FID_36_112_49_49_49_46_107_46_55_55_52_54_50_",
+            "decoded": "$p111.k.77462"
+          },
+          {
+            "index": 510,
+            "count": 456404,
+            "symbol": "p111_FID_36_100_105_114_101_99_116_46_115_121_",
+            "decoded": "$direct.sy"
+          },
+          {
+            "index": 597,
+            "count": 404208,
+            "symbol": "p111_FID_36_112_49_49_49_46_107_46_55_55_52_56_57_",
+            "decoded": "$p111.k.77489"
+          },
+          {
+            "index": 598,
+            "count": 404208,
+            "symbol": "p111_FID_36_112_49_49_49_46_107_46_55_55_52_57_48_",
+            "decoded": "$p111.k.77490"
+          }
+        ],
+        "op": [
+          {
+            "index": 23,
+            "count": 563748,
+            "symbol": "u32_to_f32"
+          },
+          {
+            "index": 28,
+            "count": 477992,
+            "symbol": "f32_mul"
+          },
+          {
+            "index": 27,
+            "count": 352336,
+            "symbol": "f32_sub"
+          },
+          {
+            "index": 26,
+            "count": 251184,
+            "symbol": "f32_add"
+          },
+          {
+            "index": 29,
+            "count": 134144,
+            "symbol": "f32_div"
+          },
+          {
+            "index": 32,
+            "count": 123280,
+            "symbol": "f32_is_lt"
+          }
+        ],
+        "ctor_cid": [
+          {
+            "index": 151,
+            "count": 3976,
+            "symbol": "$ctor.72_105_116_"
+          },
+          {
+            "index": 25,
+            "count": 21,
+            "symbol": "SCon"
+          },
+          {
+            "index": 8,
+            "count": 11,
+            "symbol": "Tuple"
+          },
+          {
+            "index": 12,
+            "count": 4,
+            "symbol": "Some"
+          },
+          {
+            "index": 48,
+            "count": 4,
+            "symbol": "IO.print"
+          },
+          {
+            "index": 57,
+            "count": 2,
+            "symbol": "IO.now"
+          }
+        ],
+        "take_cid": [
+          {
+            "index": 151,
+            "count": 3976,
+            "symbol": "$ctor.72_105_116_"
+          },
+          {
+            "index": 20,
+            "count": 33,
+            "symbol": "WCon"
+          },
+          {
+            "index": 25,
+            "count": 18,
+            "symbol": "SCon"
+          },
+          {
+            "index": 8,
+            "count": 11,
+            "symbol": "Tuple"
+          },
+          {
+            "index": 12,
+            "count": 4,
+            "symbol": "Some"
+          },
+          {
+            "index": 18,
+            "count": 4,
+            "symbol": "Con"
+          }
+        ],
+        "special_take_kind": [
+          {
+            "index": 4,
+            "count": 932373
+          },
+          {
+            "index": 5,
+            "count": 12
+          },
+          {
+            "index": 6,
+            "count": 2
+          }
+        ]
+      },
+      "fpSupportedCalls": 1902684,
+      "zeroFraction": 0.8625638536252314
+    },
+    {
+      "name": "coverage-closures-256",
+      "meta": {
+        "type": "meta",
+        "version": 1,
+        "sourceSha256": "c0fc18aabb2749cc85b5040c29756d8d73d90b73bb954d10ed1d0d410528aa50",
+        "heapRc": true,
+        "abi": 11101,
+        "segments": 456,
+        "constructors": 151,
+        "transportWidth": 5
+      },
+      "counters": {
+        "rt_keep": 557,
+        "rt_sink": 26,
+        "rt_tag": 0,
+        "rt_ctor": 37,
+        "rt_take": 67,
+        "rt_closure": 2091,
+        "rt_frame": 2639,
+        "rt_jump": 1119,
+        "rt_return": 2647,
+        "rt_apply": 2084,
+        "rt_stack_pop": 2624,
+        "rt_stack_get": 2656,
+        "rt_reg_get": 0,
+        "rt_fail": 0,
+        "rt_op": 546,
+        "rt_special_ctor": 12,
+        "rt_special_test": 0,
+        "rt_special_take": 534,
+        "set_regs": 5850,
+        "register_words_copied": 9078,
+        "register_words_zeroed": 20172,
+        "bank_init_words": 10555,
+        "bank_read_words": 10555,
+        "bank_write_words": 10510,
+        "bank_save_words": 45,
+        "bank_take_words": 0,
+        "heap_alloc": 1779,
+        "heap_alloc_miss": 3,
+        "heap_free": 1779,
+        "spare_free": 2174,
+        "rfc_wrap": 92,
+        "rfc_seal": 149,
+        "rfc_view": 87,
+        "rfc_bump": 1,
+        "term_keep": 557,
+        "term_sink": 27,
+        "term_drop": 6,
+        "ctr_take": 82
+      },
+      "dispatches": 7961,
+      "publicCalls": 17639,
+      "top": {
+        "dispatch_fid": [
+          {
+            "index": 457,
+            "count": 2092,
+            "symbol": "CLO_APPLY",
+            "decoded": "CLO_APPLY"
+          },
+          {
+            "index": 330,
+            "count": 514,
+            "symbol": "p111_FID_36_100_105_114_101_99_116_46_99_104_97_105_110_",
+            "decoded": "$direct.chain"
+          },
+          {
+            "index": 320,
+            "count": 512,
+            "symbol": "p111_FID_36_112_49_49_49_46_107_46_53_48_52_57_49_",
+            "decoded": "$p111.k.50491"
+          },
+          {
+            "index": 321,
+            "count": 512,
+            "symbol": "p111_FID_36_112_49_49_49_46_107_46_53_48_52_57_50_",
+            "decoded": "$p111.k.50492"
+          },
+          {
+            "index": 322,
+            "count": 512,
+            "symbol": "p111_FID_36_112_49_49_49_46_107_46_53_48_52_57_51_",
+            "decoded": "$p111.k.50493"
+          },
+          {
+            "index": 323,
+            "count": 512,
+            "symbol": "p111_FID_36_100_105_114_101_99_116_46_99_111_109_112_111_115_101_",
+            "decoded": "$direct.compose"
+          }
+        ],
+        "public_calls_fid": [
+          {
+            "index": 330,
+            "count": 3588,
+            "symbol": "p111_FID_36_100_105_114_101_99_116_46_99_104_97_105_110_",
+            "decoded": "$direct.chain"
+          },
+          {
+            "index": 334,
+            "count": 2560,
+            "symbol": "p111_FID_36_112_49_49_49_46_107_46_53_50_53_54_57_",
+            "decoded": "$p111.k.52569"
+          },
+          {
+            "index": 332,
+            "count": 2048,
+            "symbol": "p111_FID_36_112_49_49_49_46_107_46_53_50_53_54_52_",
+            "decoded": "$p111.k.52564"
+          },
+          {
+            "index": 324,
+            "count": 1536,
+            "symbol": "p111_FID_36_112_49_49_49_46_107_46_53_48_52_57_57_",
+            "decoded": "$p111.k.50499"
+          },
+          {
+            "index": 333,
+            "count": 1536,
+            "symbol": "p111_FID_36_112_49_49_49_46_107_46_53_50_53_54_53_",
+            "decoded": "$p111.k.52565"
+          },
+          {
+            "index": 335,
+            "count": 1536,
+            "symbol": "p111_FID_36_112_49_49_49_46_107_46_53_50_53_55_48_",
+            "decoded": "$p111.k.52570"
+          }
+        ],
+        "op": [
+          {
+            "index": 25,
+            "count": 513,
+            "symbol": "u32_from_nat"
+          },
+          {
+            "index": 18,
+            "count": 12,
+            "symbol": "u32_div"
+          },
+          {
+            "index": 19,
+            "count": 6,
+            "symbol": "u32_mod"
+          },
+          {
+            "index": 24,
+            "count": 3,
+            "symbol": "u32_to_nat"
+          },
+          {
+            "index": 62,
+            "count": 2,
+            "symbol": "nat_add"
+          },
+          {
+            "index": 66,
+            "count": 2,
+            "symbol": "nat_cmp"
+          }
+        ],
+        "ctor_cid": [
+          {
+            "index": 25,
+            "count": 15,
+            "symbol": "SCon"
+          },
+          {
+            "index": 8,
+            "count": 10,
+            "symbol": "Tuple"
+          },
+          {
+            "index": 12,
+            "count": 4,
+            "symbol": "Some"
+          },
+          {
+            "index": 48,
+            "count": 4,
+            "symbol": "IO.print"
+          },
+          {
+            "index": 57,
+            "count": 2,
+            "symbol": "IO.now"
+          },
+          {
+            "index": 20,
+            "count": 1,
+            "symbol": "WCon"
+          }
+        ],
+        "take_cid": [
+          {
+            "index": 20,
+            "count": 33,
+            "symbol": "WCon"
+          },
+          {
+            "index": 25,
+            "count": 17,
+            "symbol": "SCon"
+          },
+          {
+            "index": 8,
+            "count": 9,
+            "symbol": "Tuple"
+          },
+          {
+            "index": 12,
+            "count": 4,
+            "symbol": "Some"
+          },
+          {
+            "index": 18,
+            "count": 4,
+            "symbol": "Con"
+          }
+        ],
+        "special_take_kind": [
+          {
+            "index": 4,
+            "count": 521
+          },
+          {
+            "index": 5,
+            "count": 11
+          },
+          {
+            "index": 6,
+            "count": 2
+          }
+        ]
+      },
+      "fpSupportedCalls": 0,
+      "zeroFraction": 0.6896410256410257
+    },
+    {
+      "name": "coverage-unicode-text-64",
+      "meta": {
+        "type": "meta",
+        "version": 1,
+        "sourceSha256": "c0fc18aabb2749cc85b5040c29756d8d73d90b73bb954d10ed1d0d410528aa50",
+        "heapRc": true,
+        "abi": 11101,
+        "segments": 496,
+        "constructors": 150,
+        "transportWidth": 5
+      },
+      "counters": {
+        "rt_keep": 5423,
+        "rt_sink": 675,
+        "rt_tag": 0,
+        "rt_ctor": 10172,
+        "rt_take": 10843,
+        "rt_closure": 41,
+        "rt_frame": 7663,
+        "rt_jump": 12423,
+        "rt_return": 7671,
+        "rt_apply": 34,
+        "rt_stack_pop": 7643,
+        "rt_stack_get": 12286,
+        "rt_reg_get": 0,
+        "rt_fail": 0,
+        "rt_op": 803,
+        "rt_special_ctor": 2445,
+        "rt_special_test": 0,
+        "rt_special_take": 3223,
+        "set_regs": 20128,
+        "register_words_copied": 36329,
+        "register_words_zeroed": 64311,
+        "bank_init_words": 305,
+        "bank_read_words": 305,
+        "bank_write_words": 260,
+        "bank_save_words": 45,
+        "bank_take_words": 0,
+        "heap_alloc": 18076,
+        "heap_alloc_miss": 3,
+        "heap_free": 18076,
+        "spare_free": 11663,
+        "rfc_wrap": 7791,
+        "rfc_seal": 20418,
+        "rfc_view": 7761,
+        "rfc_bump": 1513,
+        "term_keep": 5423,
+        "term_sink": 676,
+        "term_drop": 1521,
+        "ctr_take": 11621
+      },
+      "dispatches": 20189,
+      "publicCalls": 81345,
+      "top": {
+        "dispatch_fid": [
+          {
+            "index": 402,
+            "count": 4506,
+            "symbol": "p111_FID_36_100_105_114_101_99_116_46_83_116_114_105_110_103_46_97_112_112_101_110_100_",
+            "decoded": "$direct.String.append"
+          },
+          {
+            "index": 403,
+            "count": 3094,
+            "symbol": "p111_FID_36_112_49_49_49_46_107_46_54_54_48_56_52_",
+            "decoded": "$p111.k.66084"
+          },
+          {
+            "index": 339,
+            "count": 1538,
+            "symbol": "p111_FID_36_100_105_114_101_99_116_46_115_115_112_108_105_116_",
+            "decoded": "$direct.ssplit"
+          },
+          {
+            "index": 334,
+            "count": 1536,
+            "symbol": "p111_FID_36_100_105_114_101_99_116_46_115_115_112_108_105_116_46_112_105_99_107_",
+            "decoded": "$direct.ssplit.pick"
+          },
+          {
+            "index": 340,
+            "count": 1536,
+            "symbol": "p111_FID_36_112_49_49_49_46_107_46_53_51_54_50_55_",
+            "decoded": "$p111.k.53627"
+          },
+          {
+            "index": 328,
+            "count": 896,
+            "symbol": "p111_FID_36_100_105_114_101_99_116_46_115_115_112_108_105_116_46_112_117_115_104_",
+            "decoded": "$direct.ssplit.push"
+          }
+        ],
+        "public_calls_fid": [
+          {
+            "index": 403,
+            "count": 12376,
+            "symbol": "p111_FID_36_112_49_49_49_46_107_46_54_54_48_56_52_",
+            "decoded": "$p111.k.66084"
+          },
+          {
+            "index": 402,
+            "count": 10694,
+            "symbol": "p111_FID_36_100_105_114_101_99_116_46_83_116_114_105_110_103_46_97_112_112_101_110_100_",
+            "decoded": "$direct.String.append"
+          },
+          {
+            "index": 339,
+            "count": 9220,
+            "symbol": "p111_FID_36_100_105_114_101_99_116_46_115_115_112_108_105_116_",
+            "decoded": "$direct.ssplit"
+          },
+          {
+            "index": 260,
+            "count": 7690,
+            "symbol": "p111_FID_36_100_105_114_101_99_116_46_67_104_97_114_46_99_109_112_",
+            "decoded": "$direct.Char.cmp"
+          },
+          {
+            "index": 340,
+            "count": 7680,
+            "symbol": "p111_FID_36_112_49_49_49_46_107_46_53_51_54_50_55_",
+            "decoded": "$p111.k.53627"
+          },
+          {
+            "index": 268,
+            "count": 5376,
+            "symbol": "p111_FID_36_100_105_114_101_99_116_46_83_116_114_105_110_103_46_99_109_112_46_114_101_99_",
+            "decoded": "$direct.String.cmp.rec"
+          }
+        ],
+        "op": [
+          {
+            "index": 22,
+            "count": 769,
+            "symbol": "u32_cmp"
+          },
+          {
+            "index": 18,
+            "count": 12,
+            "symbol": "u32_div"
+          },
+          {
+            "index": 19,
+            "count": 7,
+            "symbol": "u32_mod"
+          },
+          {
+            "index": 24,
+            "count": 3,
+            "symbol": "u32_to_nat"
+          },
+          {
+            "index": 62,
+            "count": 2,
+            "symbol": "nat_add"
+          },
+          {
+            "index": 66,
+            "count": 2,
+            "symbol": "nat_cmp"
+          }
+        ],
+        "ctor_cid": [
+          {
+            "index": 25,
+            "count": 5542,
+            "symbol": "SCon"
+          },
+          {
+            "index": 8,
+            "count": 3082,
+            "symbol": "Tuple"
+          },
+          {
+            "index": 18,
+            "count": 1536,
+            "symbol": "Con"
+          },
+          {
+            "index": 12,
+            "count": 4,
+            "symbol": "Some"
+          },
+          {
+            "index": 48,
+            "count": 4,
+            "symbol": "IO.print"
+          },
+          {
+            "index": 57,
+            "count": 2,
+            "symbol": "IO.now"
+          }
+        ],
+        "take_cid": [
+          {
+            "index": 25,
+            "count": 6182,
+            "symbol": "SCon"
+          },
+          {
+            "index": 8,
+            "count": 3082,
+            "symbol": "Tuple"
+          },
+          {
+            "index": 18,
+            "count": 1542,
+            "symbol": "Con"
+          },
+          {
+            "index": 20,
+            "count": 33,
+            "symbol": "WCon"
+          },
+          {
+            "index": 12,
+            "count": 4,
+            "symbol": "Some"
+          }
+        ],
+        "special_take_kind": [
+          {
+            "index": 5,
+            "count": 3082
+          },
+          {
+            "index": 4,
+            "count": 139
+          },
+          {
+            "index": 6,
+            "count": 2
+          }
+        ]
+      },
+      "fpSupportedCalls": 0,
+      "zeroFraction": 0.6390202702702703
+    },
+    {
+      "name": "coverage-map-churn-128",
+      "meta": {
+        "type": "meta",
+        "version": 1,
+        "sourceSha256": "c0fc18aabb2749cc85b5040c29756d8d73d90b73bb954d10ed1d0d410528aa50",
+        "heapRc": true,
+        "abi": 11101,
+        "segments": 990,
+        "constructors": 150,
+        "transportWidth": 6
+      },
+      "counters": {
+        "rt_keep": 26360,
+        "rt_sink": 6061,
+        "rt_tag": 0,
+        "rt_ctor": 94764,
+        "rt_take": 103391,
+        "rt_closure": 41,
+        "rt_frame": 54391,
+        "rt_jump": 102992,
+        "rt_return": 54399,
+        "rt_apply": 34,
+        "rt_stack_pop": 54308,
+        "rt_stack_get": 78158,
+        "rt_reg_get": 0,
+        "rt_fail": 0,
+        "rt_op": 18598,
+        "rt_special_ctor": 10583,
+        "rt_special_test": 0,
+        "rt_special_take": 41810,
+        "set_regs": 157425,
+        "register_words_copied": 307619,
+        "register_words_zeroed": 636931,
+        "bank_init_words": 366,
+        "bank_read_words": 366,
+        "bank_write_words": 312,
+        "bank_save_words": 54,
+        "bank_take_words": 0,
+        "heap_alloc": 149163,
+        "heap_alloc_miss": 3,
+        "heap_free": 149163,
+        "spare_free": 103453,
+        "rfc_wrap": 48661,
+        "rfc_seal": 215197,
+        "rfc_view": 50088,
+        "rfc_bump": 3473,
+        "term_keep": 26360,
+        "term_sink": 6062,
+        "term_drop": 3928,
+        "ctr_take": 103411
+      },
+      "dispatches": 157486,
+      "publicCalls": 645890,
+      "top": {
+        "dispatch_fid": [
+          {
+            "index": 751,
+            "count": 25996,
+            "symbol": "p111_FID_36_100_105_114_101_99_116_46_77_97_112_46_98_105_116_46_103_111_",
+            "decoded": "$direct.Map.bit.go"
+          },
+          {
+            "index": 712,
+            "count": 20372,
+            "symbol": "p111_FID_36_100_105_114_101_99_116_46_77_97_112_46_98_105_116_46_103_111_46_114_101_99_",
+            "decoded": "$direct.Map.bit.go.rec"
+          },
+          {
+            "index": 753,
+            "count": 20372,
+            "symbol": "p111_FID_36_112_49_49_49_46_107_46_57_51_56_53_57_",
+            "decoded": "$p111.k.93859"
+          },
+          {
+            "index": 762,
+            "count": 5624,
+            "symbol": "p111_FID_36_100_105_114_101_99_116_46_77_97_112_46_98_105_116_46_97_116_",
+            "decoded": "$direct.Map.bit.at"
+          },
+          {
+            "index": 767,
+            "count": 5624,
+            "symbol": "p111_FID_36_100_105_114_101_99_116_46_77_97_112_46_98_105_116_",
+            "decoded": "$direct.Map.bit"
+          },
+          {
+            "index": 737,
+            "count": 5602,
+            "symbol": "p111_FID_36_100_105_114_101_99_116_46_77_97_112_46_98_105_116_46_99_104_114_",
+            "decoded": "$direct.Map.bit.chr"
+          }
+        ],
+        "public_calls_fid": [
+          {
+            "index": 751,
+            "count": 98360,
+            "symbol": "p111_FID_36_100_105_114_101_99_116_46_77_97_112_46_98_105_116_46_103_111_",
+            "decoded": "$direct.Map.bit.go"
+          },
+          {
+            "index": 712,
+            "count": 81488,
+            "symbol": "p111_FID_36_100_105_114_101_99_116_46_77_97_112_46_98_105_116_46_103_111_46_114_101_99_",
+            "decoded": "$direct.Map.bit.go.rec"
+          },
+          {
+            "index": 753,
+            "count": 61116,
+            "symbol": "p111_FID_36_112_49_49_49_46_107_46_57_51_56_53_57_",
+            "decoded": "$p111.k.93859"
+          },
+          {
+            "index": 737,
+            "count": 36790,
+            "symbol": "p111_FID_36_100_105_114_101_99_116_46_77_97_112_46_98_105_116_46_99_104_114_",
+            "decoded": "$direct.Map.bit.chr"
+          },
+          {
+            "index": 433,
+            "count": 25196,
+            "symbol": "p111_FID_36_100_105_114_101_99_116_46_77_97_112_46_115_101_101_107_46_103_111_",
+            "decoded": "$direct.Map.seek.go"
+          },
+          {
+            "index": 745,
+            "count": 22408,
+            "symbol": "p111_FID_36_100_105_114_101_99_116_46_77_97_112_46_98_105_116_46_103_111_46_99_104_114_",
+            "decoded": "$direct.Map.bit.go.chr"
+          }
+        ],
+        "op": [
+          {
+            "index": 63,
+            "count": 6079,
+            "symbol": "nat_sub"
+          },
+          {
+            "index": 70,
+            "count": 5625,
+            "symbol": "nat_divmod"
+          },
+          {
+            "index": 22,
+            "count": 2053,
+            "symbol": "u32_cmp"
+          },
+          {
+            "index": 67,
+            "count": 1614,
+            "symbol": "nat_is_lt"
+          },
+          {
+            "index": 62,
+            "count": 1462,
+            "symbol": "nat_add"
+          },
+          {
+            "index": 18,
+            "count": 881,
+            "symbol": "u32_div"
+          }
+        ],
+        "ctor_cid": [
+          {
+            "index": 8,
+            "count": 44720,
+            "symbol": "Tuple"
+          },
+          {
+            "index": 25,
+            "count": 32200,
+            "symbol": "SCon"
+          },
+          {
+            "index": 38,
+            "count": 14750,
+            "symbol": "MNode"
+          },
+          {
+            "index": 37,
+            "count": 2486,
+            "symbol": "MLeaf"
+          },
+          {
+            "index": 12,
+            "count": 408,
+            "symbol": "Some"
+          },
+          {
+            "index": 18,
+            "count": 192,
+            "symbol": "Con"
+          }
+        ],
+        "take_cid": [
+          {
+            "index": 8,
+            "count": 50665,
+            "symbol": "Tuple"
+          },
+          {
+            "index": 25,
+            "count": 34917,
+            "symbol": "SCon"
+          },
+          {
+            "index": 38,
+            "count": 14750,
+            "symbol": "MNode"
+          },
+          {
+            "index": 37,
+            "count": 2486,
+            "symbol": "MLeaf"
+          },
+          {
+            "index": 12,
+            "count": 344,
+            "symbol": "Some"
+          },
+          {
+            "index": 18,
+            "count": 196,
+            "symbol": "Con"
+          }
+        ],
+        "special_take_kind": [
+          {
+            "index": 4,
+            "count": 28535
+          },
+          {
+            "index": 5,
+            "count": 13273
+          },
+          {
+            "index": 6,
+            "count": 2
+          }
+        ]
+      },
+      "fpSupportedCalls": 0,
+      "zeroFraction": 0.674322163993436
+    },
+    {
+      "name": "coverage-numeric-recurrence-1024",
+      "meta": {
+        "type": "meta",
+        "version": 1,
+        "sourceSha256": "c0fc18aabb2749cc85b5040c29756d8d73d90b73bb954d10ed1d0d410528aa50",
+        "heapRc": true,
+        "abi": 11101,
+        "segments": 469,
+        "constructors": 150,
+        "transportWidth": 5
+      },
+      "counters": {
+        "rt_keep": 4154,
+        "rt_sink": 27,
+        "rt_tag": 0,
+        "rt_ctor": 42,
+        "rt_take": 68,
+        "rt_closure": 41,
+        "rt_frame": 77,
+        "rt_jump": 106,
+        "rt_return": 85,
+        "rt_apply": 34,
+        "rt_stack_pop": 62,
+        "rt_stack_get": 94,
+        "rt_reg_get": 0,
+        "rt_fail": 0,
+        "rt_op": 10291,
+        "rt_special_ctor": 17,
+        "rt_special_test": 0,
+        "rt_special_take": 2075,
+        "set_regs": 225,
+        "register_words_copied": 408,
+        "register_words_zeroed": 717,
+        "bank_init_words": 305,
+        "bank_read_words": 305,
+        "bank_write_words": 260,
+        "bank_save_words": 45,
+        "bank_take_words": 0,
+        "heap_alloc": 255,
+        "heap_alloc_miss": 3,
+        "heap_free": 255,
+        "spare_free": 130,
+        "rfc_wrap": 98,
+        "rfc_seal": 160,
+        "rfc_view": 93,
+        "rfc_bump": 1,
+        "term_keep": 4154,
+        "term_sink": 28,
+        "term_drop": 6,
+        "ctr_take": 88
+      },
+      "dispatches": 286,
+      "publicCalls": 17173,
+      "top": {
+        "dispatch_fid": [
+          {
+            "index": 470,
+            "count": 42,
+            "symbol": "CLO_APPLY",
+            "decoded": "CLO_APPLY"
+          },
+          {
+            "index": 386,
+            "count": 13,
+            "symbol": "p111_FID_36_100_105_114_101_99_116_46_85_51_50_46_115_104_111_119_46_103_111_",
+            "decoded": "$direct.U32.show.go"
+          },
+          {
+            "index": 380,
+            "count": 12,
+            "symbol": "p111_FID_36_100_105_114_101_99_116_46_85_51_50_46_115_104_111_119_46_102_105_110_",
+            "decoded": "$direct.U32.show.fin"
+          },
+          {
+            "index": 9,
+            "count": 9,
+            "symbol": "p111_FID_36_100_105_114_101_99_116_46_85_51_50_46_114_101_97_100_46_103_111_",
+            "decoded": "$direct.U32.read.go"
+          },
+          {
+            "index": 471,
+            "count": 9,
+            "symbol": "EXIT",
+            "decoded": "EXIT"
+          },
+          {
+            "index": 472,
+            "count": 9,
+            "symbol": "ENTER",
+            "decoded": "ENTER"
+          }
+        ],
+        "public_calls_fid": [
+          {
+            "index": 348,
+            "count": 16388,
+            "symbol": "p111_FID_36_100_105_114_101_99_116_46_112_51_55_46_110_117_109_101_114_105_99_",
+            "decoded": "$direct.p37.numeric"
+          },
+          {
+            "index": 380,
+            "count": 69,
+            "symbol": "p111_FID_36_100_105_114_101_99_116_46_85_51_50_46_115_104_111_119_46_102_105_110_",
+            "decoded": "$direct.U32.show.fin"
+          },
+          {
+            "index": 9,
+            "count": 46,
+            "symbol": "p111_FID_36_100_105_114_101_99_116_46_85_51_50_46_114_101_97_100_46_103_111_",
+            "decoded": "$direct.U32.read.go"
+          },
+          {
+            "index": 157,
+            "count": 45,
+            "symbol": "p111_FID_36_100_105_114_101_99_116_46_78_97_116_46_114_101_97_100_46_116_114_105_109_",
+            "decoded": "$direct.Nat.read.trim"
+          },
+          {
+            "index": 386,
+            "count": 38,
+            "symbol": "p111_FID_36_100_105_114_101_99_116_46_85_51_50_46_115_104_111_119_46_103_111_",
+            "decoded": "$direct.U32.show.go"
+          },
+          {
+            "index": 118,
+            "count": 18,
+            "symbol": "p111_FID_36_112_49_49_49_46_107_46_50_50_56_56_56_",
+            "decoded": "$p111.k.22888"
+          }
+        ],
+        "op": [
+          {
+            "index": 28,
+            "count": 6144,
+            "symbol": "f32_mul"
+          },
+          {
+            "index": 27,
+            "count": 2048,
+            "symbol": "f32_sub"
+          },
+          {
+            "index": 58,
+            "count": 2048,
+            "symbol": "f32_to_u32"
+          },
+          {
+            "index": 18,
+            "count": 18,
+            "symbol": "u32_div"
+          },
+          {
+            "index": 19,
+            "count": 13,
+            "symbol": "u32_mod"
+          },
+          {
+            "index": 24,
+            "count": 3,
+            "symbol": "u32_to_nat"
+          }
+        ],
+        "ctor_cid": [
+          {
+            "index": 25,
+            "count": 20,
+            "symbol": "SCon"
+          },
+          {
+            "index": 8,
+            "count": 10,
+            "symbol": "Tuple"
+          },
+          {
+            "index": 12,
+            "count": 4,
+            "symbol": "Some"
+          },
+          {
+            "index": 48,
+            "count": 4,
+            "symbol": "IO.print"
+          },
+          {
+            "index": 57,
+            "count": 2,
+            "symbol": "IO.now"
+          },
+          {
+            "index": 20,
+            "count": 1,
+            "symbol": "WCon"
+          }
+        ],
+        "take_cid": [
+          {
+            "index": 20,
+            "count": 33,
+            "symbol": "WCon"
+          },
+          {
+            "index": 25,
+            "count": 18,
+            "symbol": "SCon"
+          },
+          {
+            "index": 8,
+            "count": 9,
+            "symbol": "Tuple"
+          },
+          {
+            "index": 12,
+            "count": 4,
+            "symbol": "Some"
+          },
+          {
+            "index": 18,
+            "count": 4,
+            "symbol": "Con"
+          }
+        ],
+        "special_take_kind": [
+          {
+            "index": 4,
+            "count": 2061
+          },
+          {
+            "index": 5,
+            "count": 12
+          },
+          {
+            "index": 6,
+            "count": 2
+          }
+        ]
+      },
+      "fpSupportedCalls": 8196,
+      "zeroFraction": 0.6373333333333333
+    },
+    {
+      "name": "compiler-lexer-scan",
+      "meta": {
+        "type": "meta",
+        "version": 1,
+        "sourceSha256": "c0fc18aabb2749cc85b5040c29756d8d73d90b73bb954d10ed1d0d410528aa50",
+        "heapRc": true,
+        "abi": 11101,
+        "segments": 39957,
+        "constructors": 469,
+        "transportWidth": 26
+      },
+      "counters": {
+        "rt_keep": 13270294,
+        "rt_sink": 10512452,
+        "rt_tag": 0,
+        "rt_ctor": 10491273,
+        "rt_take": 38063865,
+        "rt_closure": 2149393,
+        "rt_frame": 13652223,
+        "rt_jump": 12617264,
+        "rt_return": 13652660,
+        "rt_apply": 1075823,
+        "rt_stack_pop": 12603580,
+        "rt_stack_get": 30550376,
+        "rt_reg_get": 0,
+        "rt_fail": 0,
+        "rt_op": 2754250,
+        "rt_special_ctor": 2476040,
+        "rt_special_test": 0,
+        "rt_special_take": 6364393,
+        "set_regs": 27345747,
+        "register_words_copied": 51406226,
+        "register_words_zeroed": 659583196,
+        "bank_init_words": 28005562,
+        "bank_read_words": 28005562,
+        "bank_write_words": 27994174,
+        "bank_save_words": 11388,
+        "bank_take_words": 0,
+        "heap_alloc": 124677389,
+        "heap_alloc_miss": 6267,
+        "heap_free": 124677389,
+        "spare_free": 39340010,
+        "rfc_wrap": 59036946,
+        "rfc_seal": 78100662,
+        "rfc_view": 58495464,
+        "rfc_bump": 7080961,
+        "term_keep": 13406542,
+        "term_sink": 11455492,
+        "term_drop": 7524317,
+        "ctr_take": 38263750
+      },
+      "dispatches": 28422884,
+      "publicCalls": 170233886,
+      "top": {
+        "dispatch_fid": [
+          {
+            "index": 38823,
+            "count": 1375472,
+            "symbol": "p111_FID_36_100_105_114_101_99_116_46_112_56_56_95_115_116_114_105_110_103_95_101_113_95_103_111_",
+            "decoded": "$direct.p88_string_eq_go"
+          },
+          {
+            "index": 39453,
+            "count": 1294953,
+            "symbol": "p111_FID_36_100_105_114_101_99_116_46_83_116_114_105_110_103_46_97_112_112_101_110_100_",
+            "decoded": "$direct.String.append"
+          },
+          {
+            "index": 39454,
+            "count": 1213329,
+            "symbol": "p111_FID_36_112_49_49_49_46_107_46_50_50_54_52_53_54_53_",
+            "decoded": "$p111.k.2264565"
+          },
+          {
+            "index": 3071,
+            "count": 1087899,
+            "symbol": "p111_FID_36_100_105_114_101_99_116_46_112_56_56_95_100_105_103_105_116_115_",
+            "decoded": "$direct.p88_digits"
+          },
+          {
+            "index": 39958,
+            "count": 1076260,
+            "symbol": "CLO_APPLY",
+            "decoded": "CLO_APPLY"
+          },
+          {
+            "index": 38826,
+            "count": 922257,
+            "symbol": "p111_FID_36_112_49_49_49_46_107_46_50_50_50_49_49_56_55_",
+            "decoded": "$p111.k.2221187"
+          }
+        ],
+        "public_calls_fid": [
+          {
+            "index": 3071,
+            "count": 25988788,
+            "symbol": "p111_FID_36_100_105_114_101_99_116_46_112_56_56_95_100_105_103_105_116_115_",
+            "decoded": "$direct.p88_digits"
+          },
+          {
+            "index": 39841,
+            "count": 8381731,
+            "symbol": "p111_FID_36_100_105_114_101_99_116_46_83_116_114_105_110_103_46_99_109_112_",
+            "decoded": "$direct.String.cmp"
+          },
+          {
+            "index": 38823,
+            "count": 8127347,
+            "symbol": "p111_FID_36_100_105_114_101_99_116_46_112_56_56_95_115_116_114_105_110_103_95_101_113_95_103_111_",
+            "decoded": "$direct.p88_string_eq_go"
+          },
+          {
+            "index": 3777,
+            "count": 6622347,
+            "symbol": "p111_FID_36_100_105_114_101_99_116_46_112_56_56_95_102_105_101_108_100_95_110_117_109_98_101_114_",
+            "decoded": "$direct.p88_field_number"
+          },
+          {
+            "index": 39833,
+            "count": 5543970,
+            "symbol": "p111_FID_36_112_49_49_49_46_107_46_50_51_48_55_53_54_49_",
+            "decoded": "$p111.k.2307561"
+          },
+          {
+            "index": 39454,
+            "count": 4853316,
+            "symbol": "p111_FID_36_112_49_49_49_46_107_46_50_50_54_52_53_54_53_",
+            "decoded": "$p111.k.2264565"
+          }
+        ],
+        "op": [
+          {
+            "index": 68,
+            "count": 1795052,
+            "symbol": "bool_or"
+          },
+          {
+            "index": 22,
+            "count": 639255,
+            "symbol": "u32_cmp"
+          },
+          {
+            "index": 72,
+            "count": 136248,
+            "symbol": "array_get"
+          },
+          {
+            "index": 25,
+            "count": 49147,
+            "symbol": "u32_from_nat"
+          },
+          {
+            "index": 73,
+            "count": 48546,
+            "symbol": "array_set"
+          },
+          {
+            "index": 19,
+            "count": 43164,
+            "symbol": "u32_mod"
+          }
+        ],
+        "ctor_cid": [
+          {
+            "index": 25,
+            "count": 2600820,
+            "symbol": "SCon"
+          },
+          {
+            "index": 8,
+            "count": 2572136,
+            "symbol": "Tuple"
+          },
+          {
+            "index": 20,
+            "count": 1788514,
+            "symbol": "WCon"
+          },
+          {
+            "index": 384,
+            "count": 650797,
+            "symbol": "$ctor.80_56_56_67_117_114_115_111_114_"
+          },
+          {
+            "index": 18,
+            "count": 614299,
+            "symbol": "Con"
+          },
+          {
+            "index": 387,
+            "count": 556527,
+            "symbol": "$ctor.80_56_56_83_116_97_116_101_"
+          }
+        ],
+        "take_cid": [
+          {
+            "index": 20,
+            "count": 23670366,
+            "symbol": "WCon"
+          },
+          {
+            "index": 25,
+            "count": 6621167,
+            "symbol": "SCon"
+          },
+          {
+            "index": 8,
+            "count": 2649603,
+            "symbol": "Tuple"
+          },
+          {
+            "index": 18,
+            "count": 1428447,
+            "symbol": "Con"
+          },
+          {
+            "index": 384,
+            "count": 650797,
+            "symbol": "$ctor.80_56_56_67_117_114_115_111_114_"
+          },
+          {
+            "index": 387,
+            "count": 556527,
+            "symbol": "$ctor.80_56_56_83_116_97_116_101_"
+          }
+        ],
+        "special_take_kind": [
+          {
+            "index": 5,
+            "count": 4686402
+          },
+          {
+            "index": 6,
+            "count": 1625654
+          },
+          {
+            "index": 4,
+            "count": 52337
+          }
+        ]
+      },
+      "fpSupportedCalls": 0,
+      "zeroFraction": 0.9276976219204567
+    }
+  ],
+  "sourceShapes": [
+    {
+      "program": "compiler",
+      "name": "$direct.nt_choose",
+      "fid": 39904,
+      "arity": 3,
+      "flags": 0,
+      "incoming": 0,
+      "dispatches": 252295,
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p112-full-emit01/program.ssa",
+      "line": 1144015,
+      "bytes": 2085,
+      "lines": 53,
+      "sha256": "9831cb0947a889ea3fbe3ca5901eeff7882209f384ed669f4c68875b830843f8",
+      "staticHelperSites": {
+        "frame": 3,
+        "fail": 1,
+        "jump": 0,
+        "return": 0,
+        "op": 0,
+        "keep": 0,
+        "sink": 2,
+        "take": 0,
+        "special_take": 0
+      },
+      "hasPrivateCopy": false
+    },
+    {
+      "program": "compiler",
+      "name": "$direct.p88_digits",
+      "fid": 3071,
+      "arity": 3,
+      "flags": 0,
+      "incoming": 0,
+      "dispatches": 1087899,
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p112-full-emit01/program.ssa",
+      "line": 98390,
+      "bytes": 257833,
+      "lines": 6931,
+      "sha256": "be62fc276d8ed4b7f9582eabd49dc0b00b365c1823be8195cde2261f1fe0e956",
+      "staticHelperSites": {
+        "frame": 236,
+        "fail": 35,
+        "jump": 0,
+        "return": 34,
+        "op": 0,
+        "keep": 192,
+        "sink": 3,
+        "take": 33,
+        "special_take": 2
+      },
+      "hasPrivateCopy": false
+    },
+    {
+      "program": "compiler",
+      "name": "$direct.p88_field_number",
+      "fid": 3777,
+      "arity": 2,
+      "flags": 0,
+      "incoming": 0,
+      "dispatches": 228745,
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p112-full-emit01/program.ssa",
+      "line": 129078,
+      "bytes": 668588,
+      "lines": 17878,
+      "sha256": "c71da6a13cd20119b146d6b20343f88fd479f8e71da6e6683cf7b620db0e11c7",
+      "staticHelperSites": {
+        "frame": 136,
+        "fail": 131,
+        "jump": 122,
+        "return": 2,
+        "op": 0,
+        "keep": 1,
+        "sink": 262,
+        "take": 124,
+        "special_take": 1
+      },
+      "hasPrivateCopy": false
+    },
+    {
+      "program": "ray",
+      "name": "$direct.sr",
+      "fid": 488,
+      "arity": 1,
+      "flags": 0,
+      "incoming": 0,
+      "dispatches": 55464,
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p112-static-batch01-variation-ray-active-256-2240-emit/program.ssa",
+      "line": 15548,
+      "bytes": 7588,
+      "lines": 210,
+      "sha256": "643124844f178cf58469b3f81866801e344dc43d65cdaff1f837cb21580fb483",
+      "staticHelperSites": {
+        "frame": 8,
+        "fail": 8,
+        "jump": 0,
+        "return": 9,
+        "op": 6,
+        "keep": 0,
+        "sink": 1,
+        "take": 0,
+        "special_take": 8
+      },
+      "hasPrivateCopy": false
+    },
+    {
+      "program": "ray",
+      "name": "$direct.sz",
+      "fid": 499,
+      "arity": 1,
+      "flags": 0,
+      "incoming": 0,
+      "dispatches": 55464,
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p112-static-batch01-variation-ray-active-256-2240-emit/program.ssa",
+      "line": 15874,
+      "bytes": 7317,
+      "lines": 203,
+      "sha256": "dfcc71225234d6e01b110ae20fff727439463eefa35fe85105dff1c4a180280e",
+      "staticHelperSites": {
+        "frame": 8,
+        "fail": 8,
+        "jump": 0,
+        "return": 9,
+        "op": 7,
+        "keep": 0,
+        "sink": 1,
+        "take": 0,
+        "special_take": 8
+      },
+      "hasPrivateCopy": false
+    },
+    {
+      "program": "ray",
+      "name": "$direct.sy",
+      "fid": 510,
+      "arity": 1,
+      "flags": 0,
+      "incoming": 0,
+      "dispatches": 55464,
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p112-static-batch01-variation-ray-active-256-2240-emit/program.ssa",
+      "line": 16193,
+      "bytes": 9531,
+      "lines": 259,
+      "sha256": "83c7c23ef5143181524eebf859e7e3e4c509d5cd75a1815e46f9c3c4132022e8",
+      "staticHelperSites": {
+        "frame": 10,
+        "fail": 8,
+        "jump": 0,
+        "return": 9,
+        "op": 6,
+        "keep": 0,
+        "sink": 1,
+        "take": 0,
+        "special_take": 8
+      },
+      "hasPrivateCopy": false
+    },
+    {
+      "program": "ray",
+      "name": "$direct.sx",
+      "fid": 523,
+      "arity": 1,
+      "flags": 0,
+      "incoming": 0,
+      "dispatches": 55464,
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p112-static-batch01-variation-ray-active-256-2240-emit/program.ssa",
+      "line": 16600,
+      "bytes": 8274,
+      "lines": 227,
+      "sha256": "6374d7ba0dd417c5c55db6d21269602b8fe153a7d148667552277866f4746049",
+      "staticHelperSites": {
+        "frame": 9,
+        "fail": 8,
+        "jump": 0,
+        "return": 9,
+        "op": 12,
+        "keep": 0,
+        "sink": 1,
+        "take": 0,
+        "special_take": 8
+      },
+      "hasPrivateCopy": false
+    },
+    {
+      "program": "ray",
+      "name": "$direct.isect.go2",
+      "fid": 554,
+      "arity": 3,
+      "flags": 0,
+      "incoming": 0,
+      "dispatches": 53496,
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p112-static-batch01-variation-ray-active-256-2240-emit/program.ssa",
+      "line": 17292,
+      "bytes": 2580,
+      "lines": 67,
+      "sha256": "fcded084164273aa634518ec803d23b3155fa09100279c6f263e90ece5dc1383",
+      "staticHelperSites": {
+        "frame": 1,
+        "fail": 1,
+        "jump": 1,
+        "return": 1,
+        "op": 5,
+        "keep": 0,
+        "sink": 4,
+        "take": 0,
+        "special_take": 0
+      },
+      "hasPrivateCopy": false
+    },
+    {
+      "program": "ray",
+      "name": "$direct.isect.go",
+      "fid": 559,
+      "arity": 2,
+      "flags": 0,
+      "incoming": 0,
+      "dispatches": 53496,
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p112-static-batch01-variation-ray-active-256-2240-emit/program.ssa",
+      "line": 17407,
+      "bytes": 998,
+      "lines": 28,
+      "sha256": "efc0745471774c8ec6041b7802e0ee46b864d4d0d1f52a55e98242003ba61b95",
+      "staticHelperSites": {
+        "frame": 0,
+        "fail": 0,
+        "jump": 1,
+        "return": 0,
+        "op": 2,
+        "keep": 1,
+        "sink": 0,
+        "take": 0,
+        "special_take": 0
+      },
+      "hasPrivateCopy": false
+    },
+    {
+      "program": "ray",
+      "name": "$direct.isect5",
+      "fid": 575,
+      "arity": 10,
+      "flags": 0,
+      "incoming": 0,
+      "dispatches": 53496,
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p112-static-batch01-variation-ray-active-256-2240-emit/program.ssa",
+      "line": 17796,
+      "bytes": 5374,
+      "lines": 146,
+      "sha256": "4dc6d2053a9b3b50b0c3ba1a6ebba55685862e424616264f246d8e8d335f5a2a",
+      "staticHelperSites": {
+        "frame": 0,
+        "fail": 0,
+        "jump": 1,
+        "return": 0,
+        "op": 17,
+        "keep": 9,
+        "sink": 0,
+        "take": 0,
+        "special_take": 0
+      },
+      "hasPrivateCopy": false
+    },
+    {
+      "program": "ray",
+      "name": "$direct.nearest",
+      "fid": 593,
+      "arity": 12,
+      "flags": 0,
+      "incoming": 0,
+      "dispatches": 39760,
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p112-static-batch01-variation-ray-active-256-2240-emit/program.ssa",
+      "line": 18425,
+      "bytes": 11872,
+      "lines": 303,
+      "sha256": "a07f0b8dbfd2fb81609928f0abedf16177dca905f0465b384d49e069f2a2459b",
+      "staticHelperSites": {
+        "frame": 18,
+        "fail": 3,
+        "jump": 2,
+        "return": 2,
+        "op": 0,
+        "keep": 18,
+        "sink": 25,
+        "take": 0,
+        "special_take": 1
+      },
+      "hasPrivateCopy": false
+    },
+    {
+      "program": "ray",
+      "name": "$direct.nearest.t",
+      "fid": 361,
+      "arity": 10,
+      "flags": 0,
+      "incoming": 0,
+      "dispatches": 19680,
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p112-static-batch01-variation-ray-active-256-2240-emit/program.ssa",
+      "line": 11110,
+      "bytes": 9495,
+      "lines": 235,
+      "sha256": "917bfce067a6b1bee5c2f37fb84939b4a9e97e0520e555be8b5eed02e21171ca",
+      "staticHelperSites": {
+        "frame": 16,
+        "fail": 3,
+        "jump": 2,
+        "return": 2,
+        "op": 0,
+        "keep": 16,
+        "sink": 19,
+        "take": 0,
+        "special_take": 1
+      },
+      "hasPrivateCopy": false
+    }
+  ],
+  "wordMaterialization": {
+    "u32SpecialTakes": 1625654,
+    "heapAllocPerTake": 63,
+    "rfcWrapPerTake": 31,
+    "derivedHeapAllocCalls": 102416202,
+    "totalHeapAllocCalls": 124677389,
+    "heapAllocFraction": 0.8214496856362624,
+    "derivedRfcWrapCalls": 50395274,
+    "totalRfcWrapCalls": 59036946,
+    "rfcWrapFraction": 0.8536226450467136,
+    "derivation": "Exact runtime04 p111_rt_special_take(U32)->p111_native_word:32 heap cells,31 rfc_seal of prior heap WCon =>31 wrapper allocations. This is a source-level event identity, not a CPU-time share; fraction safely avoidable remains unmeasured."
+  }
+}

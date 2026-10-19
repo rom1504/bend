@@ -72,5 +72,60 @@ controls pass19 checks initially,20 after effect-name exclusion, plus8 native
 semantic observations. Images stay capped at65536 words with dynamic fallback.
 The original structural verifier remains mandatory.
 
-The first full candidate image acquisition is running. Production remains
-unchanged; native full-source and corpus gates are still outstanding.
+The first full candidate image built successfully in 289.86 seconds under the
+4 GiB process-tree guard (peak RSS 3.12 GB). Its 19 focused native semantic tests
+pass. It contains 39,957 generic segments plus 241 private workers, and its QBE
+is 44.35 MB. Native self-emission completed in550.531 seconds and reproduced all44,349,671
+QBE bytes exactly; QBE/as/link produced the next generation. Its ELF executable
+code/data sections match the first image; build-id and nonloaded symbol tables
+differ. This is a deterministic bootstrap milestone, not a same-source timing
+comparison with the earlier944.818-second Phase111 result. Broad45 and final
+selection remain outstanding.
+
+The matched baseline/combined/static screen in `runtime-all01/report.json` shows
+a geometric static-candidate/baseline ratio of 0.6633 across the five baseline
+products. Unicode remains explicitly missing from that baseline. The six-case
+static-candidate/upstream ratio is 21.2194: lexer29.87, ray231.81, closures13.60,
+Unicode5.92, map10.72, numeric15.28. All three rounds and exact outputs qualify.
+This new QBE route has substantial missing optimization capabilities; these are
+not measurements of the mature C backend.
+
+Full-source hosted stages are frontend150.25s, lowering28.62s, verification39.07s,
+and emission59.57s. Source differs from Phase111 because new optimizer definitions
+are present, so these are diagnoses rather than matched speedup claims. Worker
+planning introduced a new emission cost. An optional short-circuit planner passes
+18 controls with identical valid plans, indexes and emitted QBE; long rejected
+suffix tests take 0.065–0.373 times the old planner. An integrated remeasurement
+is still required.
+
+Further candidates are being checked: exact scalar F32 operations, up to32
+private owned arguments, bounded continuation fusion, and reuse of mature
+selector specialization. Production remains unchanged.
+
+
+## Qualified composition at01:50 UTC
+
+Fusion03 passes the original source checker, indexed lookup controls, bounded
+fusion/refusal controls, and22 native paired builds covering six continuation
+fixtures, four wide-call permutations, and104 floating-point observations.
+The initial two source-check refusals (pattern ordering, explicit sharing) remain
+in the receipts. All successful floating observations preserve upper-word zero;
+arithmetic NaNs are checked by class, not exact payload identity.
+
+On the same frozen six-program fast profile, fusion/F32/wide32 takes14.6944x
+upstream geometrically, versus21.2071x for static/direct8 in the same campaign.
+Per-program candidate ratios are lexer26.875, ray150.806, closures12.421,
+Unicode5.130, map9.367, numeric4.161. Every measured output passes. These are
+still development-screen results; no upstream-parity claim is justified.
+
+The selector-core adapter passes23 finite admission controls,11 strict/lazy
+semantic differentials and eight native fixture observations, including the
+required Nat overflow failure and captured/returned closures. One initial test
+incorrectly expected admission at the arithmetic limit despite a fresh-ID
+collision; the test now distinguishes the budget gate from full admission.
+
+Runtime diagnostics are independently qualified and explained in
+[profiles.md](profiles.md). They reveal that U32-to-Word pattern materialization
+accounts mechanically for82.14% of the compiler request's heap-allocation calls.
+This motivates the next general scalar-pattern adapter, plus bounded composition
+of fused private workers. Neither is claimed implemented or measured here yet.

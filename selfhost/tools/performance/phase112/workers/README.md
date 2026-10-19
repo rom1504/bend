@@ -1,5 +1,12 @@
 # Structured self-tail workers
 
+The current combined direct-worker profile is documented in [CONJUNCTION.md](CONJUNCTION.md):
+`conjunction-modules03.json` and `admit-conjunction03.py` pin the qualified fusion03
+sources together with wide32, early refusal and the CPU fail-stop runtime.
+Root's `fusion-qualify-jobs03` passed the controls and 22 paired native builds.
+The description below records the original self-tail candidate; later optional
+profiles have separate recipes and retain its checked generic fallback.
+
 This bounded candidate reuses the mature NF self-tail criterion: exact callee
 identity, terminal position, matching arity, and simultaneous argument transfer.
 The precedent is `nf_call_local` plus `nf_self_temps`/`nf_self_moves` in the selected

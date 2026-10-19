@@ -1,0 +1,372 @@
+{
+  "kind": "phase112-worker-conjunction-exact-module-profile",
+  "profile": "fusion8-direct32-failstop-early03",
+  "targetsRun": false,
+  "fusionInventory": {
+    "file": "selfhost/tools/performance/phase112/fusion/modules03.json",
+    "sha256": "7b7c157bc6b0d0b86b2971cafe4af0c63c1178f4fa4d75ffb82b4d2db95f368d"
+  },
+  "modules": [
+    {
+      "file": "selfhost/tools/performance/phase112/workers/model.bend",
+      "bytes": 789,
+      "sha256": "840c02b1adc37de5b3701f1c4d9ab32e50f1befb47fd6188bbe9c2616de5742e",
+      "declarations": [
+        "P112TailStmt",
+        "P112TailPrelude",
+        "P112TailBody",
+        "P112TailPlan"
+      ]
+    },
+    {
+      "file": "selfhost/tools/performance/phase112/workers/plan.bend",
+      "bytes": 8545,
+      "sha256": "1a24ecb287987dcf07cbb9b560b0e8885f6aab02137fec8500a4eb535aa4ed90",
+      "declarations": [
+        "p112t_params",
+        "p112t_param",
+        "p112t_param_stmt",
+        "p112t_prelude",
+        "p112t_jump_args",
+        "p112t_jump",
+        "p112t_tail",
+        "p112t_tail_store",
+        "p112t_tail_nodes",
+        "p112t_runtime_call",
+        "p112t_scalar_safe",
+        "p112t_transition",
+        "p112t_scalars",
+        "p112t_prepend_scalar",
+        "p112t_branch",
+        "p112t_scan",
+        "p112t_scan_next",
+        "p112t_finish",
+        "p112t_admit_prelude",
+        "p112t_plan",
+        "p112t_admitted",
+        "p112t_loop_count",
+        "p112t_count_segments",
+        "p112t_count_loops",
+        "p112t_program_counts"
+      ]
+    },
+    {
+      "file": "selfhost/tools/performance/phase112/workers/emit.bend",
+      "bytes": 4666,
+      "sha256": "2800f2de45ad8a3526a40b633722e2a6610375ba0c359016dad06b91e3f861b8",
+      "declarations": [
+        "p112q_snapshots",
+        "p112q_snapshot",
+        "p112q_moves",
+        "p112q_again",
+        "p112q_stmts",
+        "p112q_stmts_head",
+        "p112q_stmt",
+        "p112q_if",
+        "p112q_if_yes",
+        "p112q_loop_body",
+        "p112q_planned",
+        "p112q_segment",
+        "p112q_segment_chunks"
+      ]
+    },
+    {
+      "file": "selfhost/tools/performance/phase112/workers/side-exit.bend",
+      "bytes": 1835,
+      "sha256": "66e22b6a13d459b2393017ec727a6ebe0c06fd37168708da5dc6c3e689ce4eb0",
+      "declarations": [
+        "p112t_failure_args",
+        "p112t_failure_frame",
+        "p112t_failure",
+        "p112t_scan_normal"
+      ]
+    },
+    {
+      "file": "selfhost/tools/performance/phase112/workers/side-exit-entry.bend",
+      "bytes": 781,
+      "sha256": "0bfc29c3c22135bb4ad2aa2557dbd3df25860ac2d0382c264b6348f3d9e5d5e3",
+      "declarations": [
+        "p112t_scan",
+        "p112t_scan_next"
+      ]
+    },
+    {
+      "file": "selfhost/tools/performance/phase112/workers/runtime-safe.bend",
+      "bytes": 673,
+      "sha256": "17c691b443dd645e87e291034b1dc8a215e9010eee575602968c89e53e5e9548",
+      "declarations": [
+        "p112t_buffer_args",
+        "p112t_runtime_args"
+      ]
+    },
+    {
+      "file": "selfhost/tools/performance/phase112/workers/runtime-safe-entry.bend",
+      "bytes": 707,
+      "sha256": "774a82e92c1abdf0e6270e78c255139adccdcd6be4de64f432f007e0bfac18b1",
+      "declarations": [
+        "p112t_scalar_safe"
+      ]
+    },
+    {
+      "file": "selfhost/tools/performance/phase112/workers/direct-model.bend",
+      "bytes": 644,
+      "sha256": "560a58b4226fe5502b8d0be9b4b695bf1c95dc24b1a67fd00a242054f96df5d0",
+      "declarations": [
+        "P112WorkerStmt",
+        "P112WorkerBody",
+        "P112WorkerPlan"
+      ]
+    },
+    {
+      "file": "selfhost/tools/performance/phase112/workers/direct-plan.bend",
+      "bytes": 8553,
+      "sha256": "9eb207d96652fa2bf30958af8243ad72a2f761576ca0b6ccc0d6cbd05e8f286f",
+      "declarations": [
+        "p112w_ready",
+        "p112w_result_args",
+        "p112w_result",
+        "p112w_target",
+        "p112w_nodes",
+        "p112w_prepend",
+        "p112w_branch",
+        "p112w_scan",
+        "p112w_scan_target",
+        "p112w_scan_next",
+        "p112w_finish",
+        "p112w_prelude",
+        "p112w_plan",
+        "p112w_admitted",
+        "p112w_pass",
+        "p112w_add",
+        "p112w_passes",
+        "p112w_index",
+        "p112w_public",
+        "p112w_public_target",
+        "p112w_public_next",
+        "p112w_targets_body",
+        "p112w_targets",
+        "p112w_targets_segment",
+        "p112w_count",
+        "p112w_counts",
+        "p112w_program_counts"
+      ]
+    },
+    {
+      "file": "selfhost/tools/performance/phase112/workers/direct-emit.bend",
+      "bytes": 5904,
+      "sha256": "5bc7b3e174ace27cd65ff400e51309f9e09bc89fe9ee87e400d4ad7939468ec0",
+      "declarations": [
+        "p112w_symbol",
+        "p112w_formals",
+        "p112w_call_args",
+        "p112w_call",
+        "p112w_call_finish",
+        "p112w_stmts",
+        "p112w_stmts_head",
+        "p112w_stmt",
+        "p112w_if",
+        "p112w_if_yes",
+        "p112w_private",
+        "p112w_public_segment",
+        "p112w_chunk",
+        "p112w_chunks",
+        "p112w_indexed",
+        "p112w_segment_chunks"
+      ]
+    },
+    {
+      "file": "selfhost/tools/performance/phase112/workers/direct-entry.bend",
+      "bytes": 241,
+      "sha256": "bf85280c21639b51b1e4eb86e45ec57098040c7c4732a7c454f226a171ecd2d9",
+      "declarations": [
+        "p111q_segment_chunks"
+      ]
+    },
+    {
+      "file": "selfhost/tools/performance/phase112/workers/direct-failstop.bend",
+      "bytes": 952,
+      "sha256": "1ea701b569e45eb2c767a70de30ab5adab1056be72d818400224a28aae3ea107",
+      "declarations": [
+        "p112w_failure_nodes",
+        "p112w_scan_normal"
+      ]
+    },
+    {
+      "file": "selfhost/tools/performance/phase112/workers/direct-failstop-entry.bend",
+      "bytes": 856,
+      "sha256": "0ac3b9336505b07597db4bfa348819ad1f7e515b5ec7e21cf4620d123f89c6d6",
+      "declarations": [
+        "p112w_scan",
+        "p112w_scan_next"
+      ]
+    },
+    {
+      "file": "selfhost/tools/performance/phase112/workers/wide32-entry.bend",
+      "bytes": 546,
+      "sha256": "3b59171e9a5c829770ce286c7b6156f9a6b913cee14b279d131ea26ebc17a47b",
+      "declarations": [
+        "p112w_plan"
+      ]
+    },
+    {
+      "file": "selfhost/tools/performance/phase112/workers/early-refusal.bend",
+      "bytes": 3487,
+      "sha256": "80678b9e78fc44abf92cf4a6ea0c4903718c340331ed286b0adf9658c5679c72",
+      "declarations": [
+        "p112e_tail_valid",
+        "p112e_worker_valid",
+        "p112e_tail_scalar",
+        "p112e_worker_scalar",
+        "p112e_tail_yes",
+        "p112e_tail_no",
+        "p112e_tail_rest",
+        "p112e_worker_yes",
+        "p112e_worker_no",
+        "p112e_worker_rest",
+        "p112e_worker_normal"
+      ]
+    },
+    {
+      "file": "selfhost/tools/performance/phase112/workers/early-refusal-entry.bend",
+      "bytes": 1647,
+      "sha256": "be3da67b89fedbb2d3de496305ca187912c701787d2c54d0a535045a0c9c1f7a",
+      "declarations": [
+        "p112t_scan_next",
+        "p112w_scan_next",
+        "p112w_add"
+      ]
+    },
+    {
+      "file": "selfhost/tools/performance/phase112/fusion/model.bend",
+      "bytes": 708,
+      "sha256": "9d898bfeac4459eaeef0731b10b8ffddd3500bf9c8f53567d19a0a34ded98478",
+      "declarations": [
+        "P112FusionFrame",
+        "P112FusionCont",
+        "P112FusionBody",
+        "P112FusionIndex"
+      ]
+    },
+    {
+      "file": "selfhost/tools/performance/phase112/fusion/index.bend",
+      "bytes": 4142,
+      "sha256": "62403e2196777a2f432173bf568d69ff60070fe03f5f2269aa5eb07b725f9c72",
+      "declarations": [
+        "p112f_index_bucket",
+        "p112f_index_present",
+        "p112f_index_bucket_add",
+        "p112f_index_find",
+        "p112f_index_get",
+        "p112f_index_tip",
+        "p112f_index_join",
+        "p112f_index_insert",
+        "p112f_index_add",
+        "p112f_index_build",
+        "p112f_index",
+        "p112f_find"
+      ]
+    },
+    {
+      "file": "selfhost/tools/performance/phase112/fusion/rename.bend",
+      "bytes": 3503,
+      "sha256": "50c76f2f0192aae33da2a7d96783c2300a6423079b9cebced547f4b8531607a5",
+      "declarations": [
+        "p112f_name",
+        "p112f_value",
+        "p112f_args",
+        "p112f_rename",
+        "p112f_stmt",
+        "p112f_clean_name",
+        "p112f_clean_value",
+        "p112f_clean_args",
+        "p112f_clean",
+        "p112f_clean_stmt"
+      ]
+    },
+    {
+      "file": "selfhost/tools/performance/phase112/fusion/plan.bend",
+      "bytes": 5077,
+      "sha256": "a1d746c755e0c206126cf5996637734d7109b2d9e0231b4a883e35f9bfe6cf22",
+      "declarations": [
+        "p112f_frame",
+        "p112f_transition",
+        "p112f_safe",
+        "p112f_safe_next",
+        "p112f_size",
+        "p112f_cont_result",
+        "p112f_cont_gets",
+        "p112f_cont_get",
+        "p112f_cont_pop",
+        "p112f_cont_body",
+        "p112f_cont"
+      ]
+    },
+    {
+      "file": "selfhost/tools/performance/phase112/fusion/build.bend",
+      "bytes": 6052,
+      "sha256": "b0100949a2e44f4092f316e0b6ea6adcb18b321422f89dd4d3f9802cd40c556c",
+      "declarations": [
+        "p112f_values",
+        "p112f_snapshots",
+        "p112f_callargs",
+        "p112f_bind_captures",
+        "p112f_inline",
+        "p112f_fused",
+        "p112f_found",
+        "p112f_cont_found",
+        "p112f_target",
+        "p112f_try_frame",
+        "p112f_try",
+        "p112f_scan",
+        "p112f_scan_try",
+        "p112f_prepend",
+        "p112f_scan_next",
+        "p112f_scan_yes",
+        "p112f_scan_no",
+        "p112f_scan_rest"
+      ]
+    },
+    {
+      "file": "selfhost/tools/performance/phase112/fusion/emit.bend",
+      "bytes": 3717,
+      "sha256": "73577afae2ee392ba3ea82335aee5557b485c5036ce321737cb1ad0a71cb8db2",
+      "declarations": [
+        "p112f_plan_index",
+        "p112f_plan",
+        "p112f_public",
+        "p112f_chunk_index",
+        "p112f_chunk",
+        "p112f_chunks_index",
+        "p112f_chunks",
+        "p112f_indexed",
+        "p112f_segment_chunks",
+        "p112f_count",
+        "p112f_counts_index",
+        "p112f_counts",
+        "p112f_program_counts"
+      ]
+    },
+    {
+      "file": "selfhost/tools/performance/phase112/fusion/entry.bend",
+      "bytes": 227,
+      "sha256": "0c0f2f8766f2256437b15569f73b9488c6613aaa03103e8f645738f8bc1bc7b8",
+      "declarations": [
+        "p111q_segment_chunks"
+      ]
+    }
+  ],
+  "limits": {
+    "privateArityMax": 32,
+    "fusionArityMax": 8,
+    "dependencyPasses": 3,
+    "oneResult": true,
+    "cpuThreads": 1,
+    "gpu": "off"
+  },
+  "notes": [
+    "Module order defines exact final declarations; later explicit overrides replace earlier ones.",
+    "Other float/static/liveness profiles require separate receipts bound to the same compiler source."
+  ],
+  "supersedes": "conjunction-modules02.json",
+  "reason": "Pins qualified fusion modules03 with explicit unrestricted pattern fields; worker semantics, interfaces and bounds are unchanged."
+}

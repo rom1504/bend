@@ -8,12 +8,15 @@ identity. Initial checked development APIs are acquired with the pinned
 TypeScript compiler.
 
 **Status: direct native self-hosting established; experimental, not the installed
-default.** Phase112's `word` composition is the strongest fully qualified
-checkpoint documented here. It reproduces its complete 28.46 MB QBE module in
-349.70 seconds, builds its successor, and passes focused successor semantics and
-the original 45-program corpus. Generated-program performance still has large
-gaps; qualification is not a parity claim. Later gap/facts probes are separate
-experiments, not an implicit replacement or final phase selection. See the
+default.** Phase112's `facts` composition is the current qualified integration.
+It reproduces its complete 46.54 MB QBE module in 275.72 seconds, builds its
+successor, and passes focused semantics for both generations and the original
+45-program corpus through N2. Its final N1/N2 compiler-request ratios are2.057×/2.071×upstream, and
+the44-point generated-program ratio is15.943×upstream. Ready-executable stage
+sums are approximately1×in the three-source screen under the documented cached
+runtime policy. The smaller `word` compiler remains a qualified historical checkpoint.
+Qualification is not a parity claim. The immediates experiment is excluded, and
+the production source/runtime selection is unchanged. See the
 [Phase112 report](../../implementation/phase112/README.md) and the earlier
 [Phase111 report](../../implementation/phase111/README.md). The
 installed [`selfhost/bend` CLI](NATIVE_CLI.md), JavaScript release and
@@ -47,7 +50,9 @@ QBE constructs SSA from mutable typed temporaries. Phase111 established this
 generic semantic path without optional optimized C-worker/static-image planning.
 Phase112 adds Bend passes for liveness, scalar/accessor expansion, private
 workers and local loops, static images, bounded continuation fusion, and reuse
-of mature selector/Word-pattern recognition. Unsupported optimization shapes
+of mature selector/Word-pattern recognition. The facts integration also composes
+bounded worker regions, pure-assignment/branch fusion and typed ownership facts.
+Unsupported optimization shapes
 retain the generic segment path; those passes do not introduce per-program C.
 
 This is broader than the earlier scalar Nx prototype and is distinct from the
@@ -89,7 +94,19 @@ remain independent gates.
 
 ## Phase112 qualified checkpoint and reproduction
 
-These clocks measure different things and must remain separate:
+The facts integration is recorded by `phase112/facts-full-jobs01`. Its N1 and
+N2 each pass 16 focused positive executions and three expected refusals. N2
+also passes all 45 positive compile/build/execute cases in
+`phase111/p112-facts-n2-full45-01`. Native self-emission takes 275.721 seconds and
+reproduces all 46,541,018 QBE bytes exactly. Each compiler ELF is 10,022,768 bytes;
+the allocated code/data comparison passes except build ID. These are completed
+correctness/bootstrap observations. Final broad runtime passes270 full outputs
+and counts. The original Phase111 N2 comparison measures3.32×faster requests. Consult the
+[phase report](../../implementation/phase112/README.md) for the final facts broad
+runtime and `transport04` comparison rather than substituting the historical
+word numbers below.
+
+Historical word clocks measure different things and remain a separate baseline:
 
 | Measurement | Qualified word result | Scope |
 |---|---:|---|
@@ -119,16 +136,18 @@ These finite gates establish neither whole-language correctness nor satisfactory
 generated-code speed. See [broad-gap.md](../../implementation/phase112/broad-gap.md)
 for the missing flat-product and complete-loop optimizations.
 
-All paths below are relative to `selfhost/build/`; each product has its own
+### Current facts provenance and recipe
+
+All paths below are relative to `selfhost/build/`; each facts product has its own
 adjacent receipt. Sources/APIs and native generations must not be interchanged:
 
 | Role | Recorded artifact | SHA256 prefix |
 |---|---|---|
-| Checked source | `phase112/word-source02/compiler.bend` | `efac7e31641c32af` |
-| Hosted checked Bend API | `phase111/p112-word-api02/api.mjs` | `52de71923978132ac` |
-| N1, built through that API | `phase111/p112-word-full-native01/program` | `12caac8e8aecdc87` |
-| N1-produced full QBE | `phase111/p112-word-self01/program.ssa` | `bdbf31bcea3c1d99` |
-| N2, built from N1's QBE | `phase111/p112-word-self01/build/program` | `43d29bab03c8910f1` |
+| Checked source | `phase112/facts-source01/compiler.bend` | `1df2df372cb3614f7` |
+| Hosted checked Bend API | `phase111/p112-facts-api02/api.mjs` | `fa5e5cb08194f0ab8` |
+| N1, built through that API | `phase111/p112-facts-full-native01/program` | `7a029fd20c9961a57` |
+| N1-produced full QBE | `phase111/p112-facts-self01/program.ssa` | `15e95d0792ce4eb86` |
+| N2, built from N1's QBE | `phase111/p112-facts-self01/build/program` | `2bde69816ff10f8dc` |
 
 The API is Bend code compiled initially by pinned TypeScript/Bun. N1 and N2 are
 native executables of that same Bend source. The source composition manifest
@@ -143,7 +162,7 @@ Prepare a fresh source composition without executing a compiler:
 
 ```sh
 python3 -B selfhost/tools/performance/phase112/prepare-candidate.py \
-  --profile word --out selfhost/build/phase112/user-word-source01
+  --profile facts --out selfhost/build/phase112/user-facts-source01
 ```
 
 The [recipe](../../selfhost/tools/performance/phase112/recipes.json) and generated
@@ -155,7 +174,7 @@ with this source, a fresh Phase111 output directory, and these exports for stage
 acquisition: `p111_compile_source`, `p88_cache_prepare`, `p86_prepare`, `p86_plan`,
 `p111_runtime_admission`, `p112s_lower_request`, `p112s_verify`, `p112s_chunks`.
 
-The recorded `phase112/word-full-plan01.json` gives the acquisition recipe:
+The recorded `phase112/facts-full-plan01.json` gives the acquisition recipe:
 `phase112/staged-emit.mjs API SOURCE FRESH_EMISSION cache static`, then
 `phase111/build.py --source FRESH_EMISSION/program.ssa --runtime RUNTIME_OBJECT
 --out FRESH_BUILD`, followed by focused native qualification. Run each target
@@ -165,7 +184,11 @@ HOSTED_EMISSION --runtime RUNTIME_OBJECT --out FRESH_SELF_BUILD --seconds 650`.
 The successor is `FRESH_SELF_BUILD/build/program`; qualify it independently.
 Saved plan paths are evidence, not commands safe to rerun into existing outputs.
 
-The checked source is 43,588 lines, 6.05% larger than Phase111's assembled source.
+The facts source is 44,389 lines, 8.00% larger than Phase111's assembled source.
+The historical word source is 43,588 lines (+6.05%); its QBE is 28.46 MB versus
+46.54 MB for facts, and its compiler ELF is 8.08 MB versus 10.02 MB. The newer
+integration therefore trades additional source/generated-code size for its
+optimization capabilities; it is not a size-reduction claim.
 The [complexity inventory](../../implementation/phase112/complexity.md) separates
 retained implementation, embedded controls and unselected experiments. The
 [evidence capsule guide](../../implementation/phase112/evidence/README.md)
@@ -253,14 +276,14 @@ acquisition time is a separate clock from ordinary program construction.
 
 The qualified successor image can use the supervised
 [native emission tool](../../selfhost/tools/performance/phase111/native-emit.py).
-The following uses the recorded Phase112 word successor:
+The following uses the recorded Phase112 facts successor:
 
 ```sh
 python3 -B selfhost/tools/performance/phase86/guard.py \
   --out selfhost/build/phase111/user-native01-guard \
   --seconds 360 --rss-mib 4096 --available-mib 16384 --cpu 3 -- \
   python3 -B selfhost/tools/performance/phase111/native-emit.py \
-    --image selfhost/build/phase111/p112-word-self01/build/program \
+    --image selfhost/build/phase111/p112-facts-self01/build/program \
     --source selfhost/tools/performance/phase111/coverage/fixtures/higher-order-capture.bend \
     --out selfhost/build/phase111/user-native01 --mode cache \
     --runtime selfhost/build/phase111/runtime-source04/runtime.o
@@ -312,7 +335,7 @@ needed for each claim.
 ## Full compiler builds and resource limits
 
 The Phase111 complete source emits about 50.7 MB QBE and 68.8 MB assembly;
-Phase112 word emits 28.46 MB QBE. For full builds
+Phase112 word emits 28.46 MB and facts emits 46.54 MB QBE. For full builds
 use `selfhost/tools/performance/phase111/guard.py --file-mib 128` in place of
 the historical Phase86 guard; its default memory/deadline supervision is shared,
 and it requires additional disk headroom. The old64MiB cap is sufficient for

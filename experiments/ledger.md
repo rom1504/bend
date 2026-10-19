@@ -4,6 +4,36 @@ This ledger records decisions and links evidence; it does not replace the report
 Read [workflow](README.md) and [current strategy](STEERING.md) before a new investigation.
 User objective: make the Bend compiler written in Bend and its validation loop much faster while preserving correctness. Historical authorization windows are recorded below; current release status and priorities are in [STEERING.md](STEERING.md).
 
+## Phase112 direct QBE performance and checked scalar facts — 2026-10-19
+
+[Design](../design/phase112/qbe-parity.md) ·
+[Experiments](phase112/P112-001-qbe-parity.md) ·
+[Report](../implementation/phase112/README.md) ·
+[Measured results](../implementation/phase112/results.json).
+
+Backward liveness, semantic Word/selector recovery, direct workers and checked
+ownership facts produce a qualified full direct-QBE N1/N2 experiment. Native
+self-emission reproduces 46.54MB QBE exactly in275.72s, then builds N2. Both pass19
+focused cases; successor passes45 one-shot cases and270 broad runtime observations.
+Matched compiler requests take0.30153× Phase111 time (3.32× faster), still2.086×
+upstream. Separate generation comparison: N1/N2 requests2.057×/2.071× upstream.
+Ready-executable stage sums approximate1× on three inputs with our cached runtime
+versus upstream whole-C Clang build. Broad44-point program execution improves
+24.868×→15.943× upstream across separate controlled word/facts campaigns.
+Neither broad program parity nor pure compiler-request parity is reached.
+
+Allocation/continuation profiles explain the wins and remaining costs. Scalar
+Word materialization originally accounts for102.4M allocations on the lexer
+compiler request; mature lowering removes that category. Gap fusion reduces ray
+frames80%; checked non-owning facts remove barriers before worker composition.
+Final compiler frames are7.69M versus word11.44M, but allocations rise16.52M→18.98M
+with greater emission work. Unused private definitions account for6.83% of QBE;
+pruning remains unimplemented. Increasing worker limits alone was ineffective.
+A late immediate-helper fast path fails Unicode despite isolated controls and
+is rejected. Keep failures and do not weaken gates. Source grows8.0%; installed
+production selection stays unchanged. Next opportunities and measured time use
+are linked from the report; no recursive research acceleration is established.
+
 ## Phase111 direct QBE native self-hosting — 2026-10-18
 
 [Design](../design/phase111/direct-qbe-selfhost.md) ·

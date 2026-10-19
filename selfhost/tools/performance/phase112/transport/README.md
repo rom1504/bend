@@ -154,6 +154,60 @@ fresh output directory. As before, cache and live workflows remain separately
 identified, and native QBE versus upstream C request ratios compare different
 representation workflows.
 
+## Facts-profile final transport preparation
+
+`prepare-profile-generations.py` reuses the unchanged word preparer's receipt
+and direct-build checks. Its defaults select `facts-source01`, checked API
+`p112-facts-api02`, N1 emission/build `p112-facts-full-emit01` and
+`p112-facts-full-native01`, and N2 self-request `p112-facts-self01`. It creates
+fresh `manifest04.json` only after all actual receipts complete. The selected
+profile command must exclude the `immediates` modules.
+
+```sh
+python3 -B selfhost/tools/performance/phase112/transport/prepare-profile-generations.py
+```
+
+All input paths and the profile label can be supplied explicitly; defaults name
+the final facts candidate. The tool pins the source-composition manifest,
+selected profile command, exact checked API and both generation receipts. The
+word-profile preparer and manifests01–03 remain byte-for-byte unchanged.
+No target runs or waits occur in preparation. While receipts are incomplete,
+manifest04 remains absent rather than claiming an acquired N2 image.
+
+Manifest04 retains legacy `phase111` = facts N1, `phase112` = facts N2 and
+`upstream` = the pinned TypeScript/Bun C workflow. It preserves manifest02's
+three sources, complete expected outputs, clocks, ordering, runtime, assets,
+construction flags and limits. Root passes `--manifest .../manifest04.json` to
+the unchanged transport runner using a fresh output directory.
+
+## Direct original N2 versus facts N2 comparison
+
+`manifest05.json` selects the original qualified Phase111 N2 from manifest02
+and facts N2 from manifest04, alongside the unchanged upstream role. It retains
+the exact three inputs, complete-output checks, clocks, ordering, runtime,
+assets, flags and limits. This permits a direct same-campaign speed ratio;
+ratios from earlier campaigns are not multiplied together.
+
+`prepare-comparison.py` creates this manifest from actual authenticated receipts:
+
+```sh
+python3 -B selfhost/tools/performance/phase112/transport/prepare-comparison.py
+```
+
+It checks the original qualified selection, both native self-request source and
+QBE bindings, complete builds, the historical parent runtime relink, and facts
+N2's completed focused19 and full45 qualification receipts. Those qualification
+receipts are correctness evidence, not new runtime measurements. Original
+preparers, runner and manifests01–04 remain unchanged.
+
+Manifest05's explicit `stageLineage` is also included in `report.lineage`:
+`phase111` means original Phase111 N2; `phase112` means facts N2. These are
+different compiler sources at the same experimental route generation. Thus
+`phase112/phase111` is facts N2 time divided by original Phase111 N2 time; it
+is neither the same-source N1/N2 comparison from manifest04 nor a change to
+production B1/B2 names. Immediates remain excluded. Root uses the existing
+runner with `--manifest .../manifest05.json` and a fresh output directory.
+
 ## Final evidence sealing
 
 After source and reports stop changing, root runs:

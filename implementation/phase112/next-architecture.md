@@ -10,16 +10,15 @@ qualification and timing benefit can each be attributed correctly.
 
 | Measurement | Current observed scope and ratio to upstream |
 |---|---|
-| Generated-program execution | Word N2: **24.86798×** geometric time over 44 measurable points in the original 45-program corpus; 38 points outside this phase's initial six give 26.98361×. The 45 points represent 23 historical families, not 45 independent program families. |
-| Native compiler request | Word N2: **2.44827×** geometric request time over the three fixed lexer/closures/map inputs, prepared Base. This measures the compiler executing to emit QBE, versus upstream TypeScript/Bun emitting C. |
-| Ready executable from source | Word N2: **1.14669×** geometric stage-sum time over those same three inputs, including machine construction. Native reuses its cached runtime object; upstream C/Clang rebuilds its runtime. |
+| Generated-program execution | Facts N2: **15.94324×** geometric time over 44 measurable points in the original 45-program corpus; 38 points outside this phase's initial six give 16.89535×. The 45 points represent 23 historical families, not 45 independent program families. |
+| Native compiler request | Facts N2: **2.07051×** geometric request time over the three fixed lexer/closures/map inputs, prepared Base. This measures the compiler executing to emit QBE, versus upstream TypeScript/Bun emitting C. |
+| Ready executable from source | Facts N2: **1.01356×** geometric stage-sum time over those same three inputs, including machine construction. Native reuses its cached runtime object; upstream C/Clang rebuilds its runtime. |
 
 These observations are recorded in the [phase report](README.md). They are not
 interchangeable. Being close to upstream's ready-executable construction time does
-not establish generated-program speed parity. The newer gap candidate improves
-the initial six-program screen; its result does not replace the word N2 broad
-denominator. Early ownership-facts qualification/measurement is pending at this
-planning checkpoint; no gain is assumed from it.
+not establish generated-program speed parity. The six-program gap/facts experiments have their own matched denominators. The facts profile subsequently passes focused controls, exact self-hosting and
+all45 one-shot outputs. Its matched six-case ratio is0.9068 versus gap-if; broad
+facts timing is reported separately in the final phase report.
 
 ## 1. Reuse checked scalar facts before ownership and continuation lowering
 
@@ -42,13 +41,29 @@ safe argument computation, making the two optimizations complementary. Compiler
 digit parsing has the same kind of known scalar duplication, plus structured
 predicate and nested-frame barriers that remain separate.
 
-**Smallest experiment.** Finish the existing facts candidate and its composed
-pure-If gap qualification first. Observe the exact emitted bodies of one scalar
-loop and one independent typed function with a duplicated scalar and owned String.
-Count remaining ownership calls and returning frames. Do not acquire another full
-compiler merely to find whether these local boundaries were removed. Only after
-this works, extend fact propagation to a finite, checked catalogue of primitive
-results and branch joins; retain conservative fallback everywhere else.
+**Completed starting point.** Facts and composed pure-If gap qualification pass,
+including exact native self-emission and the broad corpus. The checked scalar-loop
+witness removes seven entry ownership calls while its eight pre-planning frames
+remain.
+
+**Smallest next experiment.** Extend fact propagation to a finite, checked
+catalogue of primitive results and branch joins; retain conservative fallback
+everywhere else. Observe one scalar loop and an independent function carrying
+a duplicated scalar plus owned String. Require the predicted ownership/returning
+frame reduction before acquiring another full compiler.
+
+A concrete next information-loss point is `p112_liveness_cut`: continuation
+results still enter through `nc_binding(id)` with no known-result summary. The
+current patch repairs parameters and aliases, not this boundary. Preserve proven
+primitive/known-call results and join those facts conservatively across branches
+before enlarging region bounds. Also separate machine width from ownership:
+runtime04 `Nat` is an immediate48-bit value, yet `N_W64` also represents unknown
+owning Terms. Do not mark a Nat as32-bit to remove ownership work. An explicit
+non-owning64-bit fact could preserve both properties, subject to the exact checked
+builtin identity, runtime bound and wide-value controls. This is unimplemented
+headroom; the `mit` witness already removes all seven ownership calls in its
+entry without changing Nat, so it is not evidence that Nat handling is its
+remaining bottleneck.
 
 **Independent controls.** Reuse the existing alias, shadowing, captured-owner,
 unused-scalar, type-alias and lookalike-type refusals. Include U32 wraparound,
@@ -178,3 +193,14 @@ groups. It follows the evidence and dependency cost: preserve facts first, remov
 whole temporary representations next, and handle recursive control flow under an
 explicit contract. None of these experiments currently establishes a speedup
 bound or a path to parity by itself.
+
+## Smaller compiler-cost opportunity
+
+The final [private-reachability audit](private-reachability.md) finds 6,935 of
+7,332 private workers unreachable from every public function, with no private
+address escape. Their 3,179,317 source bytes are 6.83% of final compiler QBE.
+Emit the closed reachable subset while retaining the complete frozen admission
+registry. This is a smaller experiment than an IR redesign, with potential
+emission/build/code-size benefit; no runtime gain follows from deleting dead
+functions alone. It remains unimplemented and must preserve exact live bodies,
+external symbol contracts and all source/native output gates.

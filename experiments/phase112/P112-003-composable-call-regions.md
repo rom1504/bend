@@ -1,7 +1,7 @@
 # P112-003: compose private calls with continuation fusion
 
 Status: initial ranked, repeated and wide32 variants pass focused controls but
-show no material six-program runtime gain. Pure-assignment gap extension now passes focused/native gates and improves the six-case screen16.7%; broader integration pending.
+show no material six-program runtime gain. Pure-assignment gap extension now passes focused/native gates and improves the six-case screen16.7%; composed facts integration now passes exact self-hosting and all45 one-shot outputs.
 
 Hypothesis: a callee becomes a direct worker after its calls are fused, enabling
 its callers in later immutable ranks. Freeze each first-admitted body and plan;

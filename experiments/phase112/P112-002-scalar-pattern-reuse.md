@@ -1,7 +1,7 @@
 # P112-002: avoid materializing scalar Word patterns
 
 Status: implemented; word-profile N1 passes19 focused native cases and a matched
-three-source compilation screen. Native successor qualification is in progress.
+three-source compilation screen. Native successor and all45 frozen batch-output qualification pass.
 
 Hypothesis: preserve the existing NW_Rows pattern recognizer's low32 mask facts
 before generic Word construction. This should remove representation work for

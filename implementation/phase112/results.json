@@ -1,0 +1,115 @@
+{
+  "kind": "phase112-final-measurement-summary",
+  "complete": true,
+  "ratioDirection": "ours/reference elapsed time; smaller is faster",
+  "compilerGenerations": {
+    "requestSeconds": {
+      "phase112/phase111": 1.006518455452519,
+      "phase112/upstream": 2.070511765090693,
+      "phase111/upstream": 2.0571026332148223
+    },
+    "readyExecutableStageSumSeconds": {
+      "phase112/phase111": 1.0067049590812158,
+      "phase112/upstream": 1.0135639616430427,
+      "phase111/upstream": 1.00681331953315
+    }
+  },
+  "matchedPhase111Comparison": {
+    "requestSeconds": {
+      "phase112/phase111": 0.301532849774915,
+      "phase112/upstream": 2.08585774878672,
+      "phase111/upstream": 6.917514129368487
+    },
+    "readyExecutableStageSumSeconds": {
+      "phase112/phase111": 0.31195577907279065,
+      "phase112/upstream": 0.9844783960960546,
+      "phase111/upstream": 3.155826761799915
+    }
+  },
+  "programRuntime": {
+    "points": 44,
+    "families": 23,
+    "zeroWorkControls": 1,
+    "rounds": 3,
+    "wordUpstream": 24.867979639104163,
+    "factsUpstream": 15.943239497957798,
+    "outsideInitialSixPoints": 38,
+    "outsideInitialSixUpstream": 16.895348778144175,
+    "comparisonScope": "Word/facts broad measurements are separate controlled campaigns. Exact matched incremental effects use the six-case experiments; no inferential confidence interval is claimed."
+  },
+  "selfEmissionSeconds": 275.7210002078209,
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase112/summarize.py",
+      "bytes": 4955,
+      "sha256": "2d6886ed915a14d9dd2174bb3af7a45858f49560b30da6de3edf5c3959b916b4"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase112/facts-full-jobs01/report.json",
+      "bytes": 5618,
+      "sha256": "ee54b83c8fb83396370281e1e50c336901e9b9be547cdc1b52d7593367faf840"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase112/facts-broad-jobs01/report.json",
+      "bytes": 5675,
+      "sha256": "be1c21086612ecbc45604615f860dfa8af4aa5de57de18f58cc4e8696cf30e0d"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase112/facts-admission01/report.json",
+      "bytes": 46275,
+      "sha256": "79d0788a17b30f04760b4ddf0cd6129b324a0751ec38ebde2d56762ddb2964b6"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase112/facts-gap-if-admission01/manifest.json",
+      "bytes": 50573,
+      "sha256": "c5b6632c891f0ccc7412555332e8ac68659bb8b7cbfc06b4d1254ca54f7bb68f"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase112/facts-api-native-products01/report.json",
+      "bytes": 7271,
+      "sha256": "7b3ae770bf270f205f46e898508f4257a6ba8adbca833ca7c92542c5ab4138f8"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase112/facts-self-elf-authenticated01/report.json",
+      "bytes": 26950,
+      "sha256": "b8fb933a3465bb98298cb6280a063461dd12f3eb5c4d63d4f836f23c574a4f38"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase112/transport04/report.json",
+      "bytes": 226182,
+      "sha256": "43ae67aa590477ac763407e7d85001a3a70cf4ada580b80dee5b5e556beb63f2"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase112/transport05/report.json",
+      "bytes": 228159,
+      "sha256": "c4fd4981b7e5a35a3251d784cb5858a287270ba62b3974614e8e799877dc1b9c"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase112/word-broad-runtime01/report.json",
+      "bytes": 577700,
+      "sha256": "3ec2f7ceba882495ad99daff008734970fb49d916068fc314817aec9843e6562"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase112/facts-broad-runtime01/report.json",
+      "bytes": 579286,
+      "sha256": "956b112896b2c6b13e82be35dcee235477c4a5628bf37b0a64a5e7ac5f20764c"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase112/profile-facts-compiler01/report.json",
+      "bytes": 74156,
+      "sha256": "375aaa8938fff25d28720c7a9713923cf9e8a24b016442eae5a1100550410df2"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase112/broad-shapes01/report.json",
+      "bytes": 116661,
+      "sha256": "ad537e8d542a19e5e4f21cd150308c36b98bc3379c7072318034d57e7ed5ea04"
+    }
+  ],
+  "limitations": [
+    "Experimental direct-QBE N1/N2; installed B1/B2 unchanged",
+    "Three compilation inputs, not broad compiler timing",
+    "Native prepared Base/cached runtime versus upstream source Base/full C build",
+    "CPU1/GPUoff; no parallel qualification",
+    "Structural verifier and corpus checks are not whole-compiler correctness proof"
+  ]
+}

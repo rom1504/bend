@@ -1,6 +1,6 @@
 # P112-001: expose scalar operations and eliminate repeated use analysis
 
-Status: implemented and locally qualified; final integration gates in progress.
+Status: implemented and locally qualified; full native integration and successor corpus gates pass.
 
 [Design](../../design/phase112/qbe-parity.md). Baseline `d2b9069`.
 

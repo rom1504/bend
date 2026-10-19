@@ -1,0 +1,47 @@
+{
+  "kind": "phase112-offline-private-reachability",
+  "complete": true,
+  "targetsExecuted": false,
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase112/workers/inspect-private-reachability.py",
+      "bytes": 6178,
+      "sha256": "cc1dfa40b00fb29a17a40ebd256de1fe4affa211837105f3b9973771b5164879"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p112-facts-full-emit01/program.ssa",
+      "bytes": 46541018,
+      "sha256": "15e95d0792ce4eb864cb2e3f6f4f2da36ca4b8f89c336433fb366f97ecd2345f"
+    }
+  ],
+  "roots": "ALL nonprivate functions plus exported private symbols and ALL non-call/non-definition private references",
+  "counts": {
+    "sourceBytes": 46541018,
+    "functions": 35753,
+    "functionBytes": 43786490,
+    "nonprivateFunctions": 28421,
+    "privateFunctions": 7332,
+    "privateBytes": 4178858,
+    "privateSymbolOccurrences": 22669,
+    "privateDefinitionOccurrences": 7332,
+    "directPrivateCallOccurrences": 15337,
+    "uniqueDirectPrivateEdges": 12967,
+    "addressEscapedPrivateFunctions": 0,
+    "addressEscapeOccurrences": 0,
+    "exportedPrivateFunctions": 0,
+    "rootFunctions": 28421,
+    "reachablePrivateFunctions": 397,
+    "unreachablePrivateFunctions": 6935,
+    "unreachablePrivateBytes": 3179317,
+    "unreachableFractionOfPrivateBytes": 0.7608100107732783,
+    "unreachableFractionOfSourceBytes": 0.06831214994051055
+  },
+  "proof": {
+    "allFunctions": "5930e089dcf180cb6927df251ad048adcd3de0d93d2b34e97fe4ba1cb0f3716c",
+    "callGraph": "fd0bb814b0b752841042903d782af12522ff74abab0ea6864bd0480a5e1c4139",
+    "roots": "92fe821db2a482f46a79bd1b6f39ed591e2a2dfe8528ceea5e838280661cf722",
+    "reachablePrivate": "44b6d6585f3f2dedd34523221d98abb80d09a93ff31a2a3f57b1358293e72495",
+    "unreachablePrivateNamesRangesAndBodies": "a3311e5496e6818e579ce213e34cac5a7fe4d350bc7683db5e4eb882389befb0"
+  },
+  "scope": "Conservative whole-file symbol reachability, not dynamic hotness. Unknown private-symbol use roots the target. No public function or metadata is proposed for deletion."
+}

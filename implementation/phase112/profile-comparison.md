@@ -122,3 +122,36 @@ these comparisons reproducible. Instrumentation can perturb execution, so none
 of its elapsed times are used as performance claims. Per-function attribution
 uses the last dispatched segment, not a native call stack; anonymous continuation
 names are not paired across compiler snapshots.
+
+## Final facts compiler: less transport, more emission work
+
+The final diagnostic repeats the same lexer request with runtime04 counters and
+checks its emitted SSA against the uninstrumented facts compiler. It is a composed
+word→facts comparison, including gap fusion and typed ownership, not an isolated
+attribution to either change. These remain event counts, not CPU shares.
+
+| Event | Word checkpoint | Final facts | Change |
+|---|---:|---:|---:|
+| Heap allocation helper | 16,515,651 | 18,976,168 | +14.90% |
+| Public keep | 10,388,308 | 5,878,368 | -43.41% |
+| Public sink | 11,344,477 | 9,638,807 | -15.04% |
+| Continuation frames | 11,437,689 | 7,690,273 | -32.76% |
+| Stack field reads | 23,431,070 | 15,746,798 | -32.80% |
+| Register words copied | 43,108,332 | 35,061,957 | -18.67% |
+| Requested register-word clears | 549,446,618 | 435,465,555 | -20.74% |
+
+Closure creation/application stay at 3,020/2,599, and `p88_digits` still dispatches
+1,087,899 times. The compiler performs the same scanning workload while spending
+less work transporting intermediate control state. Conversely, `String.append`
+dispatches increase from 1,313,535 to 1,833,563 and allocations rise by 14.90%.
+The emitted compiler QBE grows from 28.46 MB to 46.54 MB. Larger direct regions
+therefore have an observable compile-time cost; the final uninstrumented request
+measurements establish the net improvement, not a sum of these counters.
+
+The [unused-private-worker audit](private-reachability.md) identifies 3.18 MB of
+unreachable private definitions, 6.83% of final QBE. It does not explain all code
+growth and has not yet been turned into a measured optimization. Preserve the
+full admission registry while testing whether emission can use only its reachable
+subset. The final receipt is
+`selfhost/build/phase112/profile-facts-compiler01/report.json`; its complete
+counters and attribution are included in the evidence capsule.

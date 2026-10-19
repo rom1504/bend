@@ -1,4 +1,50 @@
-# Current frontier: Phase111 full direct QBE self-hosting
+# Current frontier: Phase112 faster direct QBE compiler and typed ownership
+
+[Report](../implementation/phase112/README.md) ·
+[Design](../design/phase112/qbe-parity.md) ·
+[Selection](../selfhost/tools/performance/phase112/selection.json) ·
+[Usage](../docs/self_hosted/direct-qbe.md).
+
+The selected experimental `facts` route composes backward liveness, mature
+Word/selector recovery, direct scalar workers, safe continuation-gap fusion and
+checked non-owning facts. All compiler transformations remain Bend. Full native
+N1 self-emission reproduces all 46,541,018 QBE bytes and builds N2. Both generations
+pass 19 focused cases; N2 passes all 45 one-shot corpus programs and all 270 broad
+runtime observations. Native self-emission takes 275.72s; sources differ from
+previous phases, so this is not a controlled self-build speed ratio. Loaded ELF
+code/data agree across generations except build ID; raw ELF bytes differ.
+
+Matched three-source compiler requests are 3.32× faster than original Phase111
+N2, still 2.086× pinned TypeScript/Bun upstream. A separate generation comparison
+puts N1/N2 at 2.057×/2.071× upstream, with no meaningful generation difference.
+Ready-executable stage sums are approximately 1× upstream in this small screen:
+QBE/as/link reuses our runtime object whereas upstream compiles whole C with
+Clang. Do not call this pure compiler-request or broad generated-program parity.
+
+Broad generated-program time improves from word's 24.868× to facts' 15.943×
+upstream over 44 timed points (23 historical families, plus one zero-work control).
+These are separate controlled campaigns with identical frozen sources/profile;
+38 timed points outside the six-case development screen give 16.895×. The most
+severe remaining edit-distance/local-pair gaps are 135–145×. Preserve this broad
+denominator; the six-case facts result of 10.923× is not representative of all45.
+
+Next: retain checked primitive/call-result facts across continuation boundaries,
+flatten nonescaping products across calls/array operations, then admit tail SCCs
+as direct loops. Use the small structural/counter gate before a full acquisition.
+The offline unused-private audit finds 3.18MB (6.83%) of emitted QBE unreachable;
+pruning is unimplemented. Extra admission rounds alone were ineffective. The late
+immediate-helper fast path failed Unicode and is rejected; facts excludes it.
+Register-bank zeroing remains until a stronger inactive-word contract is proved.
+
+Installed production B1/B2 selection is unchanged. Final assembled experimental
+source grows 8.00% to44,389 lines; this phase is not a LOC simplification. QBE and
+ELF are smaller than Phase111 but larger than word. Qualification is sequential
+Linux x86-64, fixed providers, no parallel/GPU claim or whole-compiler proof.
+Root retains one serial CPU3 target queue, 4GiB tree cap/16GiB available floor
+for full jobs, 2GiB small jobs, 128MiB file cap. Preserve failed receipts, frozen
+benchmarks and evidence. No PR comments without explicit user instruction.
+
+# Previous frontier: Phase111 full direct QBE self-hosting
 
 [Report](../implementation/phase111/README.md) ·
 [Design](../design/phase111/direct-qbe-selfhost.md) ·

@@ -6,9 +6,13 @@ supervise native tools and measure results. They do not perform compiler lowerin
 See the [design](../../../../design/phase112/qbe-parity.md) and
 [report](../../../../implementation/phase112/README.md) for current qualification.
 
-The `word` profile is the strongest completed compiler candidate at the02:28UTC
-checkpoint. `regions`, `multi`, `multi-wide` and `gap` are explicitly separate
-experiments. Do not infer qualification from a profile being available.
+The `facts` profile is the integrated Phase112 candidate: exact native
+self-reproduction,19 focused cases in N1/N2 and45 successor corpus outputs pass.
+It combines scalar fact reuse with bounded call-region composition. `word` is
+the smaller qualified checkpoint. The separate `fast` immediate-helper profile
+is rejected by a Unicode semantic failure and must not be selected. The final
+report records performance separately from these correctness gates; profile
+availability alone never establishes qualification.
 
 ## Choose the smallest useful loop
 
@@ -35,13 +39,13 @@ must be fresh; use a new suffix on retries and retain failures.
 
 ```sh
 python3 selfhost/tools/performance/phase112/prepare-candidate.py \
-  --profile word --out selfhost/build/phase112/user-word01
+  --profile facts --out selfhost/build/phase112/user-facts01
 
 python3 selfhost/tools/performance/phase111/guard.py \
   --out selfhost/build/phase112/user-api-guard01 \
   --seconds 60 --rss-mib 2048 --available-mib 16384 -- \
   python3 selfhost/tools/performance/phase111/check-api.py \
-  --source selfhost/build/phase112/user-word01/compiler.bend \
+  --source selfhost/build/phase112/user-facts01/compiler.bend \
   --out selfhost/build/phase111/p112-user-api01 p111_compile_source
 ```
 

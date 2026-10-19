@@ -1,5 +1,10 @@
 # Phase112 source size and implementation scope
 
+The current qualified facts integration is **44,389 physical lines**, +8.00%
+relative to Phase111. Its detailed comparison with the smaller historical word
+checkpoint appears below. Both are finite qualified integrations, not a change
+to the installed production default; immediates is excluded from facts.
+
 The fully qualified `word-source02` checkpoint increases the **assembled compiler source
 by 2,485 physical lines (+6.05%) and 110,781 bytes (+5.89%)** relative to Phase111
 `full-source05`. This phase has added optimization capabilities; it has not
@@ -77,15 +82,16 @@ all module snapshots and records every grouped file. It is included by the final
 evidence sealer. The other Phase112 files are an inventory snapshot, so later
 experiments can legitimately change those external-file counts.
 
-## Later facts probe, kept separate from qualification
+## Qualified facts integration and its additional size
 
 Offline recounting in `complexity-word02/report.json` confirms that the qualified
 word source and all its assembled counts above remain unchanged. The later
-`facts-source01` composition has a different source identity and qualification
-status. Its size is measured here without promoting it or borrowing word's
-self-hosting/performance results:
+`facts-source01` composition has independently completed full acquisition,
+byte-exact self-emission, both native generations' focused gates and N2's full
+45-case compile/build/execute gate. This qualification does not borrow word's
+performance results; the final timing comparison is reported separately.
 
-| Assembled source measure | Qualified word | Facts probe | Facts minus word |
+| Assembled source measure | Historical qualified word | Qualified facts | Facts minus word |
 |---|---:|---:|---:|
 | Physical LF lines | 43,588 | 44,389 | +801 |
 | Nonblank lines | 37,240 | 37,812 | +572 |
@@ -101,6 +107,12 @@ Relative to the original Phase111 assembled baseline, this is +8.00% physical
 lines and +7.88% bytes. The manifest composes 70 module snapshots, including
 region/gap composition and typed ownership facts. These are implementation
 dimensions beyond the qualified word profile, not demonstrated simplification.
+The added generated-code footprint is substantial: full QBE grows from
+28,462,589 to 46,541,018 bytes, and each compiler ELF from 8,082,216 to
+10,022,768 bytes. Facts self-emission completes in 275.721 seconds, versus the
+earlier word observation of 349.697 seconds, but these different-source jobs are
+not a controlled same-source compiler-speed experiment. Final throughput and
+generated-program comparisons must use their own matched receipts.
 
 `complexity-facts01/report.json` records the authenticated assembled counts and
 all snapshots. Its automatic module-group labels retain the original word-era
@@ -146,5 +158,10 @@ python3 -B selfhost/tools/performance/phase112/compare-elf.py \
   --out selfhost/build/phase112/word-self-elf-authenticated02/report.json
 ```
 
-The tool refuses unfinished receipts or image-pin mismatches. The later facts
-probe is not covered by either completed comparison.
+The facts pair is independently covered by
+`facts-self-elf-authenticated01/report.json`: checked headers, program headers
+and allocated sections except build ID match; whole binaries differ. Its full
+QBE SHA256 is
+`15e95d0792ce4eb864cb2e3f6f4f2da36ca4b8f89c336433fb366f97ecd2345f`
+for both generations. The tool refuses unfinished receipts or image-pin
+mismatches; none of these finite comparisons proves whole-compiler correctness.

@@ -232,3 +232,32 @@ completed campaign or supply the missing Phase111 Unicode baseline.
 The benchmark runner is now frozen at SHA256
 `b7983f0aae731043c235573b48831efb35e562471f1f83a82cfedeff24280118`;
 earlier helper snapshots remain in `benchmark/method-history/`.
+
+## Original45 runtime follow-up frozen before broad evaluation
+
+The separate [benchmark45 method](../../selfhost/tools/performance/phase112/benchmark45/README.md)
+authenticates all 45 existing Phase93 batch sources, complete-output oracles,
+upstream C and binaries. Its manifest is SHA256
+`80b07bdc76528bf58ae322ffed470eaa8ccdc8fa3d5cea73aa6d652d66cc6adc`.
+The 39 points outside the initial Phase112 screen remain explicitly identified;
+they were already seen by prior projects and conformance gates. The named
+zero-work control receives output checks but no ratio, leaving 44 measurable
+points overall and 38 in that follow-up partition.
+
+The new profile, SHA256
+`d32fa6cae73dee3932ff28a2257e4979c01dbe7612e30ffba9fdd929713b501e`,
+targets 50 milliseconds using only each point's three historical upstream
+samples: `ceil(old repetitions * 50 / median upstream milliseconds)`, at least
+one repetition, with four warmups and a 20-ms qualification floor. Counts are
+identical across roles. This profile stays separate from the original counts
+and the initial six-case profile. The full44 predicted upstream work is 2.21
+seconds per round; broad native acquisition and current product execution need
+separate receipts and budgets. Preparation launched no targets.
+
+The final native image and runtime remain explicit root-selected acquisition
+inputs; `acquire-native.py` calls unchanged Phase111 native emission/build and
+pins a completed producer receipt. Three-round runtime qualification checks
+every complete output and reports both full44 and named held-out38 aggregates.
+No full45 performance or final native qualification is implied by this frozen
+preparation. `benchmark45/freeze01.json` pins the independent methods; the
+active six-case method was not modified.

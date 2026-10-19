@@ -1,0 +1,733 @@
+{
+  "kind": "phase112-frozen-runtime-profile",
+  "version": 1,
+  "name": "upstream-50ms-profile01",
+  "frozenUtc": "2026-10-19T02:18:52.016355+00:00",
+  "targetsRun": false,
+  "manifest": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase112/benchmark45/manifest01.json",
+    "bytes": 229972,
+    "sha256": "80b07bdc76528bf58ae322ffed470eaa8ccdc8fa3d5cea73aa6d652d66cc6adc"
+  },
+  "minimumMs": 20,
+  "roundsMinimum": 3,
+  "cases": {
+    "mandelbrot": {
+      "repetitions": 2259,
+      "warmups": 4
+    },
+    "editdist": {
+      "repetitions": 60,
+      "warmups": 4
+    },
+    "tree-bitonic": {
+      "repetitions": 409,
+      "warmups": 4
+    },
+    "lexer": {
+      "repetitions": 128,
+      "warmups": 4
+    },
+    "symreg": {
+      "repetitions": 36,
+      "warmups": 4
+    },
+    "test-morning-program": {
+      "repetitions": 13919,
+      "warmups": 4
+    },
+    "test-evening-program": {
+      "repetitions": 64885,
+      "warmups": 4
+    },
+    "test-rle-roundtrip": {
+      "repetitions": 242726,
+      "warmups": 4
+    },
+    "test-map-set-ops": {
+      "repetitions": 5514,
+      "warmups": 4
+    },
+    "raytrace": {
+      "repetitions": 3,
+      "warmups": 4
+    },
+    "local-pair": {
+      "repetitions": 239,
+      "warmups": 4
+    },
+    "local-fold": {
+      "repetitions": 15171,
+      "warmups": 4
+    },
+    "scalar-region-0": {
+      "repetitions": 1,
+      "warmups": 4
+    },
+    "scalar-region-8192": {
+      "repetitions": 1394,
+      "warmups": 4
+    },
+    "complete-generic-row32": {
+      "repetitions": 365,
+      "warmups": 4
+    },
+    "variation-editdist-0-17": {
+      "repetitions": 239,
+      "warmups": 4
+    },
+    "variation-editdist-3-123": {
+      "repetitions": 30,
+      "warmups": 4
+    },
+    "variation-lexer-6-17": {
+      "repetitions": 553,
+      "warmups": 4
+    },
+    "variation-lexer-10-123": {
+      "repetitions": 32,
+      "warmups": 4
+    },
+    "variation-tree-bitonic-6-17": {
+      "repetitions": 2777,
+      "warmups": 4
+    },
+    "variation-tree-bitonic-9-123": {
+      "repetitions": 159,
+      "warmups": 4
+    },
+    "variation-symreg-4-17": {
+      "repetitions": 72,
+      "warmups": 4
+    },
+    "variation-symreg-7-123": {
+      "repetitions": 22,
+      "warmups": 4
+    },
+    "variation-local-fold-128-0": {
+      "repetitions": 473755,
+      "warmups": 4
+    },
+    "variation-local-fold-8192-123": {
+      "repetitions": 7629,
+      "warmups": 4
+    },
+    "variation-mandelbrot-grid-4-7": {
+      "repetitions": 6122,
+      "warmups": 4
+    },
+    "variation-mandelbrot-grid-5-31": {
+      "repetitions": 354,
+      "warmups": 4
+    },
+    "variation-ray-active-64-2440": {
+      "repetitions": 1581,
+      "warmups": 4
+    },
+    "variation-ray-active-256-2240": {
+      "repetitions": 379,
+      "warmups": 4
+    },
+    "coverage-closures-64": {
+      "repetitions": 19110,
+      "warmups": 4
+    },
+    "coverage-closures-256": {
+      "repetitions": 4900,
+      "warmups": 4
+    },
+    "coverage-list-pipeline-128": {
+      "repetitions": 24874,
+      "warmups": 4
+    },
+    "coverage-list-pipeline-512": {
+      "repetitions": 6252,
+      "warmups": 4
+    },
+    "coverage-bst-32": {
+      "repetitions": 8905,
+      "warmups": 4
+    },
+    "coverage-bst-64": {
+      "repetitions": 6796,
+      "warmups": 4
+    },
+    "coverage-unicode-text-16": {
+      "repetitions": 2068,
+      "warmups": 4
+    },
+    "coverage-unicode-text-64": {
+      "repetitions": 506,
+      "warmups": 4
+    },
+    "coverage-expression-32": {
+      "repetitions": 37135,
+      "warmups": 4
+    },
+    "coverage-expression-128": {
+      "repetitions": 9433,
+      "warmups": 4
+    },
+    "coverage-map-churn-32": {
+      "repetitions": 705,
+      "warmups": 4
+    },
+    "coverage-map-churn-128": {
+      "repetitions": 136,
+      "warmups": 4
+    },
+    "coverage-numeric-recurrence-256": {
+      "repetitions": 61969,
+      "warmups": 4
+    },
+    "coverage-numeric-recurrence-1024": {
+      "repetitions": 15484,
+      "warmups": 4
+    },
+    "coverage-record-aggregation-64": {
+      "repetitions": 385,
+      "warmups": 4
+    },
+    "coverage-record-aggregation-256": {
+      "repetitions": 98,
+      "warmups": 4
+    }
+  },
+  "derivation": {
+    "mandelbrot": {
+      "ratioEligible": true,
+      "originalRepetitions": 11295,
+      "upstreamSamplesMs": [
+        251,
+        250,
+        249
+      ],
+      "upstreamMedianMs": 250,
+      "targetMs": 50,
+      "estimatedUpstreamMs": 50.0
+    },
+    "editdist": {
+      "ratioEligible": true,
+      "originalRepetitions": 298,
+      "upstreamSamplesMs": [
+        251,
+        251,
+        250
+      ],
+      "upstreamMedianMs": 251,
+      "targetMs": 50,
+      "estimatedUpstreamMs": 50.53691275167785
+    },
+    "tree-bitonic": {
+      "ratioEligible": true,
+      "originalRepetitions": 2043,
+      "upstreamSamplesMs": [
+        250,
+        248,
+        250
+      ],
+      "upstreamMedianMs": 250,
+      "targetMs": 50,
+      "estimatedUpstreamMs": 50.04894762604014
+    },
+    "lexer": {
+      "ratioEligible": true,
+      "originalRepetitions": 685,
+      "upstreamSamplesMs": [
+        264,
+        270,
+        268
+      ],
+      "upstreamMedianMs": 268,
+      "targetMs": 50,
+      "estimatedUpstreamMs": 50.07883211678832
+    },
+    "symreg": {
+      "ratioEligible": true,
+      "originalRepetitions": 180,
+      "upstreamSamplesMs": [
+        250,
+        251,
+        251
+      ],
+      "upstreamMedianMs": 251,
+      "targetMs": 50,
+      "estimatedUpstreamMs": 50.2
+    },
+    "test-morning-program": {
+      "ratioEligible": true,
+      "originalRepetitions": 69034,
+      "upstreamSamplesMs": [
+        248,
+        247,
+        249
+      ],
+      "upstreamMedianMs": 248,
+      "targetMs": 50,
+      "estimatedUpstreamMs": 50.00307095054611
+    },
+    "test-evening-program": {
+      "ratioEligible": true,
+      "originalRepetitions": 321829,
+      "upstreamSamplesMs": [
+        248,
+        248,
+        247
+      ],
+      "upstreamMedianMs": 248,
+      "targetMs": 50,
+      "estimatedUpstreamMs": 50.00009321720541
+    },
+    "test-rle-roundtrip": {
+      "ratioEligible": true,
+      "originalRepetitions": 1213630,
+      "upstreamSamplesMs": [
+        250,
+        251,
+        250
+      ],
+      "upstreamMedianMs": 250,
+      "targetMs": 50,
+      "estimatedUpstreamMs": 50.0
+    },
+    "test-map-set-ops": {
+      "ratioEligible": true,
+      "originalRepetitions": 27676,
+      "upstreamSamplesMs": [
+        251,
+        252,
+        250
+      ],
+      "upstreamMedianMs": 251,
+      "targetMs": 50,
+      "estimatedUpstreamMs": 50.00773233126174
+    },
+    "raytrace": {
+      "ratioEligible": true,
+      "originalRepetitions": 13,
+      "upstreamSamplesMs": [
+        249,
+        247,
+        248
+      ],
+      "upstreamMedianMs": 248,
+      "targetMs": 50,
+      "estimatedUpstreamMs": 57.23076923076923
+    },
+    "local-pair": {
+      "ratioEligible": true,
+      "originalRepetitions": 1186,
+      "upstreamSamplesMs": [
+        249,
+        249,
+        249
+      ],
+      "upstreamMedianMs": 249,
+      "targetMs": 50,
+      "estimatedUpstreamMs": 50.177908937605395
+    },
+    "local-fold": {
+      "ratioEligible": true,
+      "originalRepetitions": 91023,
+      "upstreamSamplesMs": [
+        300,
+        299,
+        328
+      ],
+      "upstreamMedianMs": 300,
+      "targetMs": 50,
+      "estimatedUpstreamMs": 50.00164793513727
+    },
+    "scalar-region-0": {
+      "ratioEligible": false,
+      "reason": "Historical undefined-ratio zero-work control; one measured repetition, four warmups, full output checked each round."
+    },
+    "scalar-region-8192": {
+      "ratioEligible": true,
+      "originalRepetitions": 6940,
+      "upstreamSamplesMs": [
+        248,
+        249,
+        252
+      ],
+      "upstreamMedianMs": 249,
+      "targetMs": 50,
+      "estimatedUpstreamMs": 50.01527377521614
+    },
+    "complete-generic-row32": {
+      "ratioEligible": true,
+      "originalRepetitions": 1685,
+      "upstreamSamplesMs": [
+        231,
+        231,
+        231
+      ],
+      "upstreamMedianMs": 231,
+      "targetMs": 50,
+      "estimatedUpstreamMs": 50.038575667655785
+    },
+    "variation-editdist-0-17": {
+      "ratioEligible": true,
+      "originalRepetitions": 1164,
+      "upstreamSamplesMs": [
+        244,
+        244,
+        248
+      ],
+      "upstreamMedianMs": 244,
+      "targetMs": 50,
+      "estimatedUpstreamMs": 50.09965635738832
+    },
+    "variation-editdist-3-123": {
+      "ratioEligible": true,
+      "originalRepetitions": 149,
+      "upstreamSamplesMs": [
+        250,
+        250,
+        249
+      ],
+      "upstreamMedianMs": 250,
+      "targetMs": 50,
+      "estimatedUpstreamMs": 50.33557046979866
+    },
+    "variation-lexer-6-17": {
+      "ratioEligible": true,
+      "originalRepetitions": 2753,
+      "upstreamSamplesMs": [
+        248,
+        249,
+        249
+      ],
+      "upstreamMedianMs": 249,
+      "targetMs": 50,
+      "estimatedUpstreamMs": 50.01707228478024
+    },
+    "variation-lexer-10-123": {
+      "ratioEligible": true,
+      "originalRepetitions": 167,
+      "upstreamSamplesMs": [
+        266,
+        266,
+        244
+      ],
+      "upstreamMedianMs": 266,
+      "targetMs": 50,
+      "estimatedUpstreamMs": 50.97005988023952
+    },
+    "variation-tree-bitonic-6-17": {
+      "ratioEligible": true,
+      "originalRepetitions": 13715,
+      "upstreamSamplesMs": [
+        246,
+        248,
+        247
+      ],
+      "upstreamMedianMs": 247,
+      "targetMs": 50,
+      "estimatedUpstreamMs": 50.01232227488152
+    },
+    "variation-tree-bitonic-9-123": {
+      "ratioEligible": true,
+      "originalRepetitions": 782,
+      "upstreamSamplesMs": [
+        246,
+        247,
+        246
+      ],
+      "upstreamMedianMs": 246,
+      "targetMs": 50,
+      "estimatedUpstreamMs": 50.01790281329923
+    },
+    "variation-symreg-4-17": {
+      "ratioEligible": true,
+      "originalRepetitions": 362,
+      "upstreamSamplesMs": [
+        253,
+        252,
+        252
+      ],
+      "upstreamMedianMs": 252,
+      "targetMs": 50,
+      "estimatedUpstreamMs": 50.12154696132597
+    },
+    "variation-symreg-7-123": {
+      "ratioEligible": true,
+      "originalRepetitions": 107,
+      "upstreamSamplesMs": [
+        253,
+        250,
+        251
+      ],
+      "upstreamMedianMs": 251,
+      "targetMs": 50,
+      "estimatedUpstreamMs": 51.60747663551402
+    },
+    "variation-local-fold-128-0": {
+      "ratioEligible": true,
+      "originalRepetitions": 2368772,
+      "upstreamSamplesMs": [
+        250,
+        252,
+        250
+      ],
+      "upstreamMedianMs": 250,
+      "targetMs": 50,
+      "estimatedUpstreamMs": 50.00006332395013
+    },
+    "variation-local-fold-8192-123": {
+      "ratioEligible": true,
+      "originalRepetitions": 45011,
+      "upstreamSamplesMs": [
+        296,
+        295,
+        295
+      ],
+      "upstreamMedianMs": 295,
+      "targetMs": 50,
+      "estimatedUpstreamMs": 50.00011108395726
+    },
+    "variation-mandelbrot-grid-4-7": {
+      "ratioEligible": true,
+      "originalRepetitions": 30118,
+      "upstreamSamplesMs": [
+        247,
+        246,
+        246
+      ],
+      "upstreamMedianMs": 246,
+      "targetMs": 50,
+      "estimatedUpstreamMs": 50.00371870642141
+    },
+    "variation-mandelbrot-grid-5-31": {
+      "ratioEligible": true,
+      "originalRepetitions": 1762,
+      "upstreamSamplesMs": [
+        250,
+        249,
+        249
+      ],
+      "upstreamMedianMs": 249,
+      "targetMs": 50,
+      "estimatedUpstreamMs": 50.0261066969353
+    },
+    "variation-ray-active-64-2440": {
+      "ratioEligible": true,
+      "originalRepetitions": 7902,
+      "upstreamSamplesMs": [
+        250,
+        250,
+        249
+      ],
+      "upstreamMedianMs": 250,
+      "targetMs": 50,
+      "estimatedUpstreamMs": 50.018982536066815
+    },
+    "variation-ray-active-256-2240": {
+      "ratioEligible": true,
+      "originalRepetitions": 1883,
+      "upstreamSamplesMs": [
+        249,
+        248,
+        254
+      ],
+      "upstreamMedianMs": 249,
+      "targetMs": 50,
+      "estimatedUpstreamMs": 50.117365905469995
+    },
+    "coverage-closures-64": {
+      "ratioEligible": true,
+      "originalRepetitions": 309582,
+      "upstreamSamplesMs": [
+        814,
+        810,
+        802
+      ],
+      "upstreamMedianMs": 810,
+      "targetMs": 50,
+      "estimatedUpstreamMs": 50.0
+    },
+    "coverage-closures-256": {
+      "ratioEligible": true,
+      "originalRepetitions": 81920,
+      "upstreamSamplesMs": [
+        836,
+        835,
+        839
+      ],
+      "upstreamMedianMs": 836,
+      "targetMs": 50,
+      "estimatedUpstreamMs": 50.0048828125
+    },
+    "coverage-list-pipeline-128": {
+      "ratioEligible": true,
+      "originalRepetitions": 123374,
+      "upstreamSamplesMs": [
+        248,
+        248,
+        243
+      ],
+      "upstreamMedianMs": 248,
+      "targetMs": 50,
+      "estimatedUpstreamMs": 50.00042148264626
+    },
+    "coverage-list-pipeline-512": {
+      "ratioEligible": true,
+      "originalRepetitions": 31508,
+      "upstreamSamplesMs": [
+        252,
+        249,
+        252
+      ],
+      "upstreamMedianMs": 252,
+      "targetMs": 50,
+      "estimatedUpstreamMs": 50.00330074901612
+    },
+    "coverage-bst-32": {
+      "ratioEligible": true,
+      "originalRepetitions": 44522,
+      "upstreamSamplesMs": [
+        250,
+        249,
+        273
+      ],
+      "upstreamMedianMs": 250,
+      "targetMs": 50,
+      "estimatedUpstreamMs": 50.00336912088406
+    },
+    "coverage-bst-64": {
+      "ratioEligible": true,
+      "originalRepetitions": 37237,
+      "upstreamSamplesMs": [
+        275,
+        274,
+        273
+      ],
+      "upstreamMedianMs": 274,
+      "targetMs": 50,
+      "estimatedUpstreamMs": 50.00682117248973
+    },
+    "coverage-unicode-text-16": {
+      "ratioEligible": true,
+      "originalRepetitions": 16000,
+      "upstreamSamplesMs": [
+        387,
+        386,
+        387
+      ],
+      "upstreamMedianMs": 387,
+      "targetMs": 50,
+      "estimatedUpstreamMs": 50.01975
+    },
+    "coverage-unicode-text-64": {
+      "ratioEligible": true,
+      "originalRepetitions": 3679,
+      "upstreamSamplesMs": [
+        364,
+        364,
+        364
+      ],
+      "upstreamMedianMs": 364,
+      "targetMs": 50,
+      "estimatedUpstreamMs": 50.063604240282686
+    },
+    "coverage-expression-32": {
+      "ratioEligible": true,
+      "originalRepetitions": 147794,
+      "upstreamSamplesMs": [
+        199,
+        199,
+        199
+      ],
+      "upstreamMedianMs": 199,
+      "targetMs": 50,
+      "estimatedUpstreamMs": 50.00111641879914
+    },
+    "coverage-expression-128": {
+      "ratioEligible": true,
+      "originalRepetitions": 44522,
+      "upstreamSamplesMs": [
+        236,
+        237,
+        236
+      ],
+      "upstreamMedianMs": 236,
+      "targetMs": 50,
+      "estimatedUpstreamMs": 50.00197655091865
+    },
+    "coverage-map-churn-32": {
+      "ratioEligible": true,
+      "originalRepetitions": 4638,
+      "upstreamSamplesMs": [
+        329,
+        329,
+        329
+      ],
+      "upstreamMedianMs": 329,
+      "targetMs": 50,
+      "estimatedUpstreamMs": 50.00970245795602
+    },
+    "coverage-map-churn-128": {
+      "ratioEligible": true,
+      "originalRepetitions": 1050,
+      "upstreamSamplesMs": [
+        392,
+        387,
+        387
+      ],
+      "upstreamMedianMs": 387,
+      "targetMs": 50,
+      "estimatedUpstreamMs": 50.12571428571429
+    },
+    "coverage-numeric-recurrence-256": {
+      "ratioEligible": true,
+      "originalRepetitions": 308603,
+      "upstreamSamplesMs": [
+        273,
+        249,
+        249
+      ],
+      "upstreamMedianMs": 249,
+      "targetMs": 50,
+      "estimatedUpstreamMs": 50.00042449360505
+    },
+    "coverage-numeric-recurrence-1024": {
+      "ratioEligible": true,
+      "originalRepetitions": 76800,
+      "upstreamSamplesMs": [
+        248,
+        271,
+        248
+      ],
+      "upstreamMedianMs": 248,
+      "targetMs": 50,
+      "estimatedUpstreamMs": 50.000416666666666
+    },
+    "coverage-record-aggregation-64": {
+      "ratioEligible": true,
+      "originalRepetitions": 2400,
+      "upstreamSamplesMs": [
+        313,
+        312,
+        312
+      ],
+      "upstreamMedianMs": 312,
+      "targetMs": 50,
+      "estimatedUpstreamMs": 50.05
+    },
+    "coverage-record-aggregation-256": {
+      "ratioEligible": true,
+      "originalRepetitions": 556,
+      "upstreamSamplesMs": [
+        284,
+        283,
+        284
+      ],
+      "upstreamMedianMs": 284,
+      "targetMs": 50,
+      "estimatedUpstreamMs": 50.05755395683453
+    }
+  },
+  "rule": "For each measurable point, max(1,ceil(original repetitions * 50 / median of three prior Phase93 upstream milliseconds)); four warmups. No Phase112 candidate or baseline timing enters the count choice.",
+  "scope": "New broad short-batch profile, separate from original Phase93 and Phase112 initial six profiles. Exact same source/args/counts across current roles. 1ms resolution limits small percentage claims. Named scalar-region-0 is correctness-only and never contributes a runtime ratio.",
+  "estimatedUpstreamSecondsPerRound": 2.2120367748782455
+}

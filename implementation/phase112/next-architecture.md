@@ -204,3 +204,45 @@ registry. This is a smaller experiment than an IR redesign, with potential
 emission/build/code-size benefit; no runtime gain follows from deleting dead
 functions alone. It remains unimplemented and must preserve exact live bodies,
 external symbol contracts and all source/native output gates.
+
+## Interface to preserve without committing to a new backend
+
+The current source confirms two distinct loss points. `p112_liveness_let` routes
+recognized primitives through `NOp`, but the inherited `nk_value` deliberately
+classifies that result conservatively. Ordinary returning calls enter
+`p112_liveness_cut`, which constructs the result with `nc_binding(id)` regardless
+of the checked callee's result. These are earlier than QBE instruction selection.
+The next experiment can fix one boundary without implementing a new SSA system.
+
+A minimal internal summary should distinguish these properties:
+
+```text
+ValueFact {
+  machine_width: 64-bit Term transport,
+  ownership: known_immediate | requires_existing_ownership,
+  shape: scalar(bits, encoding) | unknown,
+  origin: checked_builtin_or_closed_signature
+}
+```
+
+This is an interface sketch, not a new accepted certificate or implementation.
+Keep the two-state ownership distinction initially; a borrowed-pointer category
+would add lifetime obligations that this experiment does not need. Derive facts
+inside the checked pipeline. A branch join keeps only facts valid in both arms;
+an unknown callee/result uses existing ownership. Canonical Nat can be immediate
+without being a32-bit machine value. Retain physical U64 transport and classify
+representation separately, so arithmetic width never becomes an ownership proof.
+
+Start with exact known primitive results, then closed scalar-returning calls,
+then joins. Qualify each producer independently before composing them. This is
+also a simplification criterion: one summary producer and one conservative join
+should replace duplicated recognizers in ownership insertion and worker admission.
+Do not add several backend-specific tables that can disagree.
+
+The full facts build's QBE/as/link stage is only about6.6s after275.7s native
+emission. Even eliminating that machine stage cannot close the full self-build
+cost. The three-source request ratio still needs roughly half its time removed
+to reach upstream. No6.83% output-size reduction alone establishes that result.
+These observations favor eliminating compiler representation/control work before
+another machine backend or allocator rewrite. They do not license transferring
+hosted frontend timing percentages to native execution.

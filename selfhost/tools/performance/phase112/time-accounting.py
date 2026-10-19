@@ -51,6 +51,24 @@ def seconds(intervals):
 
 
 def category(name, command):
+    # Receipt-reviewed final campaign envelopes; child times are not summed.
+    overrides = {
+        "word-self-guard01": "native self-reproduction",
+        "word-full-guard01": "mixed full-image acquisition, self-reproduction and qualification",
+        "facts-full-guard01": "mixed full-image acquisition, self-reproduction and qualification",
+        "facts-baseline-transport-guard01": "compiler transport and executable-build measurement",
+        "word-regions-measure-guard01": "generated-program runtime measurement",
+        "liveness-unicode-guard01": "representative benchmark acquisition",
+        "lcg-acquire-guard01": "representative benchmark acquisition",
+    }
+    mixed = {"facts-broad-guard01", "facts-screen-guard01", "facts-transport-guard01",
+             "final-probes-runtime-guard01", "gap-api-native-guard01", "gap-broad-guard01",
+             "gap-native-guard01", "multi-native-guard02", "multi-wide-native-guard01",
+             "profile-broad-guard01", "word-diagnostics-guard01"}
+    if name in overrides:
+        return overrides[name]
+    if name in mixed:
+        return "mixed qualification and benchmark batches"
     text = " ".join(command)
     if "native-self" in name:
         return "native self-reproduction"

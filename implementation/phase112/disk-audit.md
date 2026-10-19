@@ -10,14 +10,20 @@ every path and raw byte. This avoids making frozen evidence dependencies absent.
 No deletion, compression, compiler execution or target execution was performed
 by the audit agent. Root owns application and separate execution receipts.
 
-## Ready proposals
+## Applied cleanup and retained proposals
 
 | Proposal | Fully authenticated duplicate paths | Recoverable allocated bytes | Scope |
 | --- | ---: | ---: | --- |
-| `dedup-first-gib.json` |950|1,265,594,368 (1.18GiB)|First complete groups, selected by descending file size. Root began applying this proposal. |
-| `dedup-next.json` |1,027|213,897,216 (204MiB)|Optional remainder, with no path overlap with first-gib. |
+| `dedup-first-gib.json` |950|1,265,594,368 (1.18GiB)|First complete groups, selected by descending file size. Applied and byte-verified in `dedup01/report.json`. |
+| `dedup-next.json` |1,027|213,897,216 (204MiB)|Applied and byte-verified in `dedup02/report.json`; no overlap with first-gib. |
 | `dedup-proposal01.json` |539|337,117,184 (321MiB)|Earlier C/JS/object-only proposal. Overlaps first-gib; **do not apply again**. |
 | `dedup-proposal02.json` |1,977|1,479,491,584 (1.38GiB)|Entire final census. Contains first-gib and next; **do not apply after either tier**. |
+
+Both selected tiers completed. The recorded recovered allocation is
+**1,479,491,584 bytes (1.48GB, or1.38GiB)** across1,977 duplicate paths.
+Their complete application receipts, including original and post-link identities,
+are preserved in the evidence capsule. The two unused overlapping proposals stay
+local; the committed proposals are only the applied nonoverlapping tiers.
 
 All proposal rows record SHA256, byte size, device/inode, mode, link count,
 allocated blocks and mtime. Candidate files are regular generated artifacts of

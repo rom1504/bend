@@ -11,12 +11,12 @@ ROOT = HERE.parents[3]
 
 
 def main():
-    parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--profile', choices=['core', 'early', 'fusion', 'selectors', 'selectors-core', 'word', 'word-core', 'regions', 'multi', 'multi-wide', 'gap'], required=True)
-    parser.add_argument('--out', type=Path, required=True)
-    args = parser.parse_args()
     recipe_path = HERE / 'recipes.json'
     recipe = json.loads(recipe_path.read_text())
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--profile', choices=list(recipe['profiles']), required=True)
+    parser.add_argument('--out', type=Path, required=True)
+    args = parser.parse_args()
     modules = [ROOT / p for p in recipe['modules']]
     overrides = [ROOT / p for p in recipe['overrides']]
 

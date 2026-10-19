@@ -1,0 +1,56 @@
+{
+  "kind": "phase112-region-multi-structured-gap-exact-profile",
+  "profile": "region-multi-gap-if01",
+  "prepared": true,
+  "checked": false,
+  "targetsRun": false,
+  "baseInventory": {
+    "file": "selfhost/tools/performance/phase112/region-multi/gap-modules01.json",
+    "sha256": "948eb4275e7234023e06348ff173196b9781f637a9f39a76ac979c10e919ab5b"
+  },
+  "modules": [
+    {
+      "file": "selfhost/tools/performance/phase112/region-multi/gap-if.bend",
+      "bytes": 2162,
+      "sha256": "c987d766e23f14baf317868130a2b08ddd611990bcc139cc9f8a91c13ec3a868",
+      "declarations": [
+        "p112h_condition",
+        "p112h_candidate",
+        "p112h_stmt",
+        "p112h_stmt_room",
+        "p112h_nodes",
+        "p112h_rest",
+        "p112h_accept",
+        "p112h_split"
+      ]
+    }
+  ],
+  "override": {
+    "file": "selfhost/tools/performance/phase112/region-multi/gap-if-entry.bend",
+    "bytes": 291,
+    "sha256": "fdbd36bcc083117137212a1da772c3b335584252c66adde2294d9673d0a3cbaf",
+    "declarations": [
+      "p112g_split"
+    ]
+  },
+  "declarations": [
+    "p112h_condition",
+    "p112h_candidate",
+    "p112h_stmt",
+    "p112h_stmt_room",
+    "p112h_nodes",
+    "p112h_rest",
+    "p112h_accept",
+    "p112h_split",
+    "p112g_split"
+  ],
+  "limits": {
+    "gapTotalStatementNodes": 32,
+    "bothBranchesCounted": true,
+    "sitesPerBody": 8,
+    "copiedContinuationStatements": 128,
+    "ranks": 6
+  },
+  "conditionPremise": "Mandatory original p111v_stmt verifies definitely assigned U32 condition; new gate additionally requires safe Local or Const with hi=0. Condition and branch structure are unchanged.",
+  "runtimePremise": "Same original whole-program verifier and pinned CPU runtime04 fail-stop premise; separate conjunctive structured-gap receipt required"
+}

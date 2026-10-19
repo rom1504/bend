@@ -151,6 +151,35 @@
       "overrides": [
         "region-multi/gap-entry.bend"
       ]
+    },
+    "gap-if": {
+      "extends": "gap",
+      "modules": [
+        "region-multi/gap-if.bend"
+      ],
+      "overrides": [
+        "region-multi/gap-if-entry.bend"
+      ]
+    },
+    "fast": {
+      "extends": "gap-if",
+      "modules": [
+        "immediates/emit.bend",
+        "immediates/controls.bend"
+      ],
+      "overrides": [
+        "immediates/entry-float.bend"
+      ]
+    },
+    "facts": {
+      "extends": "gap-if",
+      "modules": [
+        "typed-ownership/facts.bend",
+        "typed-ownership/controls.bend"
+      ],
+      "overrides": [
+        "typed-ownership/overrides.bend"
+      ]
     }
   }
 }

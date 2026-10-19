@@ -250,3 +250,47 @@ checked. N2/N1 ratios are0.99686 request and0.99728 ready-executable stage sums.
 N1/N2 request ratios to upstream are2.45599/2.44827; ready-executable ratios
 1.14982/1.14669. Both stages therefore retain the same measured speed within this
 small screen's variation. No production B1/B2 relabeling is implied.
+
+## Completed original45 baseline at02:45 UTC
+
+Word-profile N2 compiles all45 frozen batch sources. The full three-round runtime
+campaign passes270 complete output/count observations across upstream and word
+roles. All44 measurable points qualify; the zero-work scalar control is checked
+but excluded from ratios. Geometric word/upstream time is24.86798 over44 points
+and26.98361 on the38 measurable points outside this phase's six-case screen.
+These are23 historical families with equal-point weighting, not44 independent
+program families. Acquisition and runtime are separate; runtime campaign costs
+444seconds of supervisor wall time.
+
+The broader corpus exposes much larger gaps than the initial six-case screen.
+Local pair/fold, edit distance and scalar-region cases are roughly150–170x slower
+than upstream. [Source/machine comparison](broad-gap.md) identifies missing
+complete scalar loops and cross-call flat product interfaces. In local-pair,
+four Array.get tuple constructions plus one Dp reconstruction per grid cell
+produce327,680 temporary carriers before extra reference-count wrappers;
+upstream keeps four flat handles. This is structural evidence, not a sampled
+time fraction. No general program-runtime parity has been established.
+
+## Checked scalar-fact reuse at02:59 UTC
+
+The `facts` profile reuses the mature checked-source scalar parameter kinds and
+alias propagation before inserting ownership operations. Five small declaration
+overrides preserve known non-owning words through environments; unknown values
+retain the exact generic keep/sink path. Machine argument widths and runtime ABI
+remain unchanged. Twenty-seven helper controls, eleven exact native observations
+in both baseline and candidate, and ten source-mutation refusals pass. Gap-if
+controls add22 structural cases and two native pairs with a shared32-node budget.
+
+Three matched rounds across the six development programs give gap11.9845,
+gap-if12.0455 and facts10.9234 times upstream. Facts uses9.32% less geometric
+runtime than gap-if; lexer median falls from710ms to460ms. All full outputs and
+success counts pass. Source is2,028,063bytes, SHA256
+`1df2df372cb3614f7cb4d70f5d81741112b7b15943a4eba204407ef7c3232c71`.
+A full acquisition and native self-replay are now running; this screen alone is
+not full qualification.
+
+A separate late immediate-helper fast path is rejected: Unicode prints the same
+initial text but fails subsequent equality/count checks. Independent controls
+were insufficient to catch this composition defect. Its107 added conditional
+expansions are isolated from the passing product; no cause is asserted yet.
+See [the preserved rejection](immediate-rejection.md). Facts excludes this path.

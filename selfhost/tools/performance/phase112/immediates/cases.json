@@ -1,0 +1,268 @@
+{
+  "kind": "phase112-immediate-independent-observations",
+  "observationCount": 28,
+  "rawImmediateCount": 24,
+  "heapAndClosureCount": 4,
+  "cases": [
+    {
+      "name": "keep-zero",
+      "kind": "immediate",
+      "operation": "keep",
+      "word": {
+        "lo": 0,
+        "hi": 0
+      },
+      "expectedHex": "0000000000000000"
+    },
+    {
+      "name": "sink-zero",
+      "kind": "immediate",
+      "operation": "sink",
+      "word": {
+        "lo": 0,
+        "hi": 0
+      },
+      "expectedHex": "0000000000000000"
+    },
+    {
+      "name": "keep-one",
+      "kind": "immediate",
+      "operation": "keep",
+      "word": {
+        "lo": 1,
+        "hi": 0
+      },
+      "expectedHex": "0000000000000001"
+    },
+    {
+      "name": "sink-one",
+      "kind": "immediate",
+      "operation": "sink",
+      "word": {
+        "lo": 1,
+        "hi": 0
+      },
+      "expectedHex": "0000000000000000"
+    },
+    {
+      "name": "keep-u32-max",
+      "kind": "immediate",
+      "operation": "keep",
+      "word": {
+        "lo": 4294967295,
+        "hi": 0
+      },
+      "expectedHex": "00000000ffffffff"
+    },
+    {
+      "name": "sink-u32-max",
+      "kind": "immediate",
+      "operation": "sink",
+      "word": {
+        "lo": 4294967295,
+        "hi": 0
+      },
+      "expectedHex": "0000000000000000"
+    },
+    {
+      "name": "keep-negative-zero-f32",
+      "kind": "immediate",
+      "operation": "keep",
+      "word": {
+        "lo": 2147483648,
+        "hi": 0
+      },
+      "expectedHex": "0000000080000000"
+    },
+    {
+      "name": "sink-negative-zero-f32",
+      "kind": "immediate",
+      "operation": "sink",
+      "word": {
+        "lo": 2147483648,
+        "hi": 0
+      },
+      "expectedHex": "0000000000000000"
+    },
+    {
+      "name": "keep-nan-bits",
+      "kind": "immediate",
+      "operation": "keep",
+      "word": {
+        "lo": 2143294004,
+        "hi": 0
+      },
+      "expectedHex": "000000007fc01234"
+    },
+    {
+      "name": "sink-nan-bits",
+      "kind": "immediate",
+      "operation": "sink",
+      "word": {
+        "lo": 2143294004,
+        "hi": 0
+      },
+      "expectedHex": "0000000000000000"
+    },
+    {
+      "name": "keep-raw-loc40-max",
+      "kind": "immediate",
+      "operation": "keep",
+      "word": {
+        "lo": 4294967295,
+        "hi": 255
+      },
+      "expectedHex": "000000ffffffffff"
+    },
+    {
+      "name": "sink-raw-loc40-max",
+      "kind": "immediate",
+      "operation": "sink",
+      "word": {
+        "lo": 4294967295,
+        "hi": 255
+      },
+      "expectedHex": "0000000000000000"
+    },
+    {
+      "name": "keep-tag-zero-max",
+      "kind": "immediate",
+      "operation": "keep",
+      "word": {
+        "lo": 4294967295,
+        "hi": 16777215
+      },
+      "expectedHex": "00ffffffffffffff"
+    },
+    {
+      "name": "sink-tag-zero-max",
+      "kind": "immediate",
+      "operation": "sink",
+      "word": {
+        "lo": 4294967295,
+        "hi": 16777215
+      },
+      "expectedHex": "0000000000000000"
+    },
+    {
+      "name": "keep-packed-min",
+      "kind": "immediate",
+      "operation": "keep",
+      "word": {
+        "lo": 0,
+        "hi": 16777216
+      },
+      "expectedHex": "0100000000000000"
+    },
+    {
+      "name": "sink-packed-min",
+      "kind": "immediate",
+      "operation": "sink",
+      "word": {
+        "lo": 0,
+        "hi": 16777216
+      },
+      "expectedHex": "0000000000000000"
+    },
+    {
+      "name": "keep-packed-with-aux",
+      "kind": "immediate",
+      "operation": "keep",
+      "word": {
+        "lo": 305419896,
+        "hi": 29290240
+      },
+      "expectedHex": "01beef0012345678"
+    },
+    {
+      "name": "sink-packed-with-aux",
+      "kind": "immediate",
+      "operation": "sink",
+      "word": {
+        "lo": 305419896,
+        "hi": 29290240
+      },
+      "expectedHex": "0000000000000000"
+    },
+    {
+      "name": "keep-packed-max",
+      "kind": "immediate",
+      "operation": "keep",
+      "word": {
+        "lo": 4294967295,
+        "hi": 33554431
+      },
+      "expectedHex": "01ffffffffffffff"
+    },
+    {
+      "name": "sink-packed-max",
+      "kind": "immediate",
+      "operation": "sink",
+      "word": {
+        "lo": 4294967295,
+        "hi": 33554431
+      },
+      "expectedHex": "0000000000000000"
+    },
+    {
+      "name": "keep-raw-bit32",
+      "kind": "immediate",
+      "operation": "keep",
+      "word": {
+        "lo": 0,
+        "hi": 1
+      },
+      "expectedHex": "0000000100000000"
+    },
+    {
+      "name": "sink-raw-bit32",
+      "kind": "immediate",
+      "operation": "sink",
+      "word": {
+        "lo": 0,
+        "hi": 1
+      },
+      "expectedHex": "0000000000000000"
+    },
+    {
+      "name": "keep-unicode-max",
+      "kind": "immediate",
+      "operation": "keep",
+      "word": {
+        "lo": 1114111,
+        "hi": 0
+      },
+      "expectedHex": "000000000010ffff"
+    },
+    {
+      "name": "sink-unicode-max",
+      "kind": "immediate",
+      "operation": "sink",
+      "word": {
+        "lo": 1114111,
+        "hi": 0
+      },
+      "expectedHex": "0000000000000000"
+    },
+    {
+      "name": "shared-heap-after-release-and-reallocation",
+      "kind": "shared-heap",
+      "expectedHex": "000000000000007b"
+    },
+    {
+      "name": "unique-heap-release",
+      "kind": "unique-heap",
+      "expectedHex": "0000000000000000"
+    },
+    {
+      "name": "nested-sealed-shared-field",
+      "kind": "nested-heap",
+      "expectedHex": "0000000000000141"
+    },
+    {
+      "name": "captureless-closure-fallback",
+      "kind": "captureless",
+      "expectedHex": "0000000000000001"
+    }
+  ]
+}

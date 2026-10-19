@@ -1,0 +1,46 @@
+{
+  "kind": "phase112-typed-ownership-overrides",
+  "targetsRun": false,
+  "changes": [
+    {
+      "name": "p111_extend",
+      "origin": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase111/segment/lower-book.bend",
+      "oldSha256": "54663c8d279e72e07b4b239aa3d0228893da5426b344d2b3af8c4d3161aeae42",
+      "newSha256": "16d2e43ebf0ad5f14bcbd08e7df84d7b81b308b8f8488c7ea89ca9e0c1dfade4",
+      "before": "+params = nd_entry_params(arity, p111_fresh(base))",
+      "after": "+params = nk_typed_bindings(nd_entry_params(arity, p111_fresh(base)), nf_worker_kinds(book, name, arity))"
+    },
+    {
+      "name": "p111_bind_value",
+      "origin": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase111/segment/lower-control.bend",
+      "oldSha256": "0f44b639641738efb4596015b99bef72b79f5a2c1906e6b2b0fa3c83bfba647c",
+      "newSha256": "e94c301b817d9c6c4163239e93b33bf92efffe36ee4c532cad892e75980d0821",
+      "before": "[nc_binding(id)]",
+      "after": "[nk_binding(id, value, env)]"
+    },
+    {
+      "name": "p112_liveness_value",
+      "origin": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase112/liveness/continuation.bend",
+      "oldSha256": "10e8b99cdb44ca66d69b09a18f35237aad66beda2eac6903a890b38939617e19",
+      "newSha256": "74c4aecc167bc2917f0ac93123087fcd9e414e1b35fd5d2e19633e40a5089e74",
+      "before": "[nc_binding(id)]",
+      "after": "[nk_binding(id, value, env)]"
+    },
+    {
+      "name": "p111_keep",
+      "origin": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase111/segment/lower-helpers.bend",
+      "oldSha256": "b839669b66bf4b2ef4153265fb613626a9896fd58cb94a64162a9906fe3c5ae6",
+      "newSha256": "55f0f95bb479db2f6b1208d923aa4f7317876a097f61a6c76bc96230c7564f94",
+      "before": "nc_uses_has(uses, id),",
+      "after": "nc_uses_has(uses, id) && Bool.not(p112to_nonowning(kind)),"
+    },
+    {
+      "name": "p111_partition_step",
+      "origin": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase111/segment/lower-helpers.bend",
+      "oldSha256": "ab218a462fc828a4fb47e76dc777441a83656c8258b906bad6a9e84d83f33e2f",
+      "newSha256": "5d1eb8d61333760318da60972ec789b63c640340935a5355f32d28525d91a7aa",
+      "before": "u => P111Partition{live, Con{N111Call{\"ignored\", N111U64{}, \"p111_rt_sink\", [p111_state(), p111_word(N111Local{word})]}, drop}})",
+      "after": "u => nt_choose(P111Partition, p112to_nonowning(kind), v => P111Partition{live, drop}, v => P111Partition{live, Con{N111Call{\"ignored\", N111U64{}, \"p111_rt_sink\", [p111_state(), p111_word(N111Local{word})]}, drop}}))"
+    }
+  ]
+}

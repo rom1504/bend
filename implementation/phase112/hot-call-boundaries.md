@@ -165,3 +165,26 @@ profile's output contract and snapshot differences are documented in
 [`profile-comparison.md`](profile-comparison.md). Source-level counters overlap,
 instrumentation perturbs execution, and entry frequency alone cannot establish
 CPU cost or an expected wall-clock speedup.
+
+## Executed gap01 follow-up
+
+The new `profile-gap01` relinks the exact qualified six-program objects with the
+same diagnostic runtime. Every full output passes. It confirms that the runtime
+win accompanies fewer actual frame calls, not just additional emitted workers.
+Instrumented elapsed time is excluded from performance results.
+
+| Fixed case | Word frame calls | Gap frame calls | Reduction |
+|---|---:|---:|---:|
+| lexer | 236,043 | 163,303 | 30.82% |
+| variation-ray-active-256-2240 | 334,011 | 66,509 | 80.09% |
+| coverage-closures-256 | 2,120 | 2,110 | 0.47% |
+| coverage-unicode-text-64 | 7,656 | 6,878 | 10.16% |
+| coverage-map-churn-128 | 54,382 | 52,128 | 4.14% |
+| coverage-numeric-recurrence-1024 | 70 | 56 | 20.00% |
+
+The checked ray admission diagnostic (`p112-gap-diagnosis01/report.json`) finds
+332 workers across frozen ranks1–6. sx/sy and the isect dependency chain now
+admit; generic nested outer frames remain. The six-point matched uninstrumented
+runtime campaign separately measures16.69% less geometric time, including
+ray4713→2075ms. These counts and timings support the specific structural cause;
+they do not establish the same speedup on every program.

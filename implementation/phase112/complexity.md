@@ -1,6 +1,6 @@
 # Phase112 source size and implementation scope
 
-The selected `word-source02` candidate increases the **assembled compiler source
+The fully qualified `word-source02` checkpoint increases the **assembled compiler source
 by 2,485 physical lines (+6.05%) and 110,781 bytes (+5.89%)** relative to Phase111
 `full-source05`. This phase has added optimization capabilities; it has not
 reduced compiler-source complexity. These measurements cover the exact complete
@@ -24,12 +24,12 @@ Both match the immutable composition manifest. Declaration counts recognize
 column-zero `def`, `type` and `law`; they are syntactic, not an estimate of the
 number of independent concepts. Blank/comment lines remain in physical counts.
 
-The candidate composition consumes **48 frozen Bend module snapshots**. Their
+The word composition consumes **48 frozen Bend module snapshots**. Their
 gross totals below are not additive to the assembled delta: composition replaces
 23 declarations and appends 325, successive overrides can replace earlier module
 declarations, and the assembler inserts blank separators.
 
-| Phase112 Bend-source group | Files | Lines | Nonblank | Declarations | Bytes |
+| Phase112 Bend-source group, original `complexity01` snapshot | Files | Lines | Nonblank | Declarations | Bytes |
 |---|---:|---:|---:|---:|---:|
 | Selected implementation snapshots | 46 | 2,274 | 1,981 | 332 | 120,589 |
 | Selected embedded control snapshots | 2 | 115 | 101 | 16 | 8,922 |
@@ -77,6 +77,46 @@ all module snapshots and records every grouped file. It is included by the final
 evidence sealer. The other Phase112 files are an inventory snapshot, so later
 experiments can legitimately change those external-file counts.
 
+## Later facts probe, kept separate from qualification
+
+Offline recounting in `complexity-word02/report.json` confirms that the qualified
+word source and all its assembled counts above remain unchanged. The later
+`facts-source01` composition has a different source identity and qualification
+status. Its size is measured here without promoting it or borrowing word's
+self-hosting/performance results:
+
+| Assembled source measure | Qualified word | Facts probe | Facts minus word |
+|---|---:|---:|---:|
+| Physical LF lines | 43,588 | 44,389 | +801 |
+| Nonblank lines | 37,240 | 37,812 | +572 |
+| UTF-8 bytes | 1,990,734 | 2,028,063 | +37,329 |
+| Top-level declarations | 5,467 | 5,578 | +111 |
+| `def` | 4,596 | 4,703 | +107 |
+| `type` | 205 | 209 | +4 |
+| `law` | 666 | 666 | 0 |
+
+Facts source SHA256:
+`1df2df372cb3614f7cb4d70f5d81741112b7b15943a4eba204407ef7c3232c71`.
+Relative to the original Phase111 assembled baseline, this is +8.00% physical
+lines and +7.88% bytes. The manifest composes 70 module snapshots, including
+region/gap composition and typed ownership facts. These are implementation
+dimensions beyond the qualified word profile, not demonstrated simplification.
+
+`complexity-facts01/report.json` records the authenticated assembled counts and
+all snapshots. Its automatic module-group labels retain the original word-era
+vocabulary: for example `typed-ownership/controls.bend` is not recognized as a
+control module there. **Only the authenticated assembled counts and individual
+file counts are used for this facts comparison.** Do not interpret the old
+automatic grouping as a reviewed facts implementation/test split, or newer
+experimental files as part of the frozen word compiler. No counting-tool change
+or source modification was made to obtain these results.
+
+```sh
+python3 -B selfhost/tools/performance/phase112/source-complexity.py \
+  --manifest selfhost/build/phase112/facts-source01/manifest.json \
+  --out selfhost/build/phase112/complexity-facts02/report.json
+```
+
 ## Authenticated ELF comparison
 
 The older `first-self-elf01.json` identified binaries only by pathname. A new
@@ -93,14 +133,18 @@ sections have 1,148,424 memory bytes; their zero file payload does not imply a
 zero-size memory section. Whole-file equality is false and remains explicitly
 false. This is machine-product evidence, not an independent semantic proof.
 
-Once the word self-build receipt is complete, its separate comparison is:
+The separate completed word comparison also confirms matching checked headers,
+program headers and allocated sections except build-id, while whole-file equality
+remains false. Its authenticated receipt is
+`word-self-elf-authenticated01/report.json`; it does not inherit the core result.
+To repeat that offline comparison, use a fresh output name:
 
 ```sh
 python3 -B selfhost/tools/performance/phase112/compare-elf.py \
   --left-receipt selfhost/build/phase111/p112-word-full-native01/report.json \
   --right-receipt selfhost/build/phase111/p112-word-self01/build/report.json \
-  --out selfhost/build/phase112/word-self-elf-authenticated01/report.json
+  --out selfhost/build/phase112/word-self-elf-authenticated02/report.json
 ```
 
-The tool refuses unfinished receipts or image-pin mismatches. The word result is
-not implied by the completed core comparison; it must be measured separately.
+The tool refuses unfinished receipts or image-pin mismatches. The later facts
+probe is not covered by either completed comparison.

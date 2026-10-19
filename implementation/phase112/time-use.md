@@ -1,81 +1,30 @@
-# Phase112 time use: interim through 02:00 UTC
+# Phase112 three-hour time account
 
-The recorded target work occupied **35m41s of the first 79m (45.2%)**. This is
-the union of guard intervals, including unsuccessful attempts. The remaining
-**43m19s is unclassified wall time**, not evidence of idle time or waiting.
-Source implementation, reviews, experiment preparation, disk recovery,
-coordination and unrecorded host work cannot be separated using these receipts.
-Agents also worked while the serial target queue ran.
+Window: **2026-10-19 00:41–03:41 UTC**. The 72 completed recorded guards occupy **92m25s**, or **51.34%** of the three-hour window. There is no measured overlap between target guards.
 
-Window: **2026-10-19 00:41–02:00 UTC**, within the planned 00:41–03:41 campaign.
-The snapshot was taken at 02:00:55. It contains 45 guards completed by the cutoff
-and one subsequently completed guard crossing it; that last interval contributes
-only its first 123.22s. No recorded guard intervals overlap. These are process-tree
-wall intervals, not CPU seconds, model token expenditure or agent labor hours.
+The remaining **87m35s** is outside recorded target guards. It includes implementation, source review, experiment preparation, disk cleanup, reporting and coordination, but the logs do not separate those activities. It is not a measurement of waiting or idle time. Agent preparation/review can overlap target execution.
 
-| Guard workload | Wall time | Share of elapsed time |
+| Recorded guard category | Wall time | Share of window |
 |---|---:|---:|
-| Full compiler image acquisition | 4m50s | 6.1% |
-| Native self-reproduction | 9m20s | 11.8% |
-| Focused source, IR and semantic loops | 4m19s | 5.5% |
-| Representative benchmark acquisition | 5m28s | 6.9% |
-| Mixed qualification and benchmark batches | 10m31s | 13.3% |
-| Dedicated generated-program timing | 1m02s | 1.3% |
-| Dedicated profiling | 12s | 0.2% |
-| Outside recorded guard intervals | 43m19s | 54.8% |
+| mixed qualification and benchmark batches | 42m11s | 23.43% |
+| native self-reproduction | 15m15s | 8.48% |
+| mixed full-image acquisition, self-reproduction and qualification | 14m51s | 8.25% |
+| representative benchmark acquisition | 5m50s | 3.24% |
+| focused source, IR and semantic loops (provisional default) | 5m24s | 3.00% |
+| full compiler image acquisition | 4m50s | 2.68% |
+| generated-program runtime measurement | 2m22s | 1.31% |
+| compiler transport and executable-build measurement | 1m29s | 0.83% |
+| profiling | 0m12s | 0.11% |
+| Outside recorded guards | 87m35s | 48.66% |
 
-The labels describe whole guard envelopes. A mixed batch is not counted again
-under its constituent tasks. Some focused qualification includes compiler API
-acquisition and generated-code execution. The accounting tool exposes every
-command and marks its default category provisional for review in future runs.
+The 17 nonzero guard outcomes occupy **9m00s**, already included above. These include useful falsification and harness failures; they are not automatically wasted time. The rejected immediate-helper composition is retained alongside successful candidates.
 
-Several nested receipts explain the costs without adding new wall time:
+Mixed envelopes deliberately stay mixed. The facts full guard contains approximately284s hosted emission,7s machine construction,283s self-reproduction/build and44s focused qualification. The facts broad guard includes the IR witness,45 one-shot cases, broad product acquisition and runtime rounds. Adding those child clocks to their enclosing guard would double-count work. The profile/broad guard spends most of its time on runtime measurement, not profiling. Final category overrides were reviewed against these receipts.
 
-- The full acquisition guard's 289.86s contains 280.66s for hosted emission and
-  9.03s for machine-code construction. Inside hosted emission, the checked
-  frontend took 150.25s, lowering 28.62s, IR verification 39.07s and QBE emission
-  59.57s. Repeated full acquisition is therefore expensive even though QBE/as/link
-  is short.
-- The 560.25s native self-reproduction guard contains 550.53s of native emission,
-  with byte-exact agreement and subsequent executable construction. Together,
-  initial acquisition and self-reproduction account for 14m10s, or 39.7% of
-  recorded target occupancy.
-- `first-image-jobs01` contains 61.90s of focused native qualification and 122.56s
-  of representative runtime comparisons. `selector-fixtures-jobs01` contains the
-  complete 113.84s matched compilation transport job. The transport report's own
-  113.32s clock is nested here and is **not another 113 seconds of campaign time**.
-- Twelve guard workflows returned nonzero, consuming 6m38s altogether. This is
-  an outcome cross-cut, already in the table. It includes useful falsification
-  and harness failures; it is not a measurement of wasted work. Three old
-  Unicode acquisition/diagnostic attempts alone occupied 4m37s, making repeated
-  attempts at the same blocked baseline a concrete cost to bound.
+The first implementation image, word checkpoint and final facts integration each received a full acquisition/self-reproduction gate. Development between them used checked APIs, structural/semantic fixtures and small matched screens. Independent source preparation and audits ran in parallel; benchmark targets remained serial on CPU3 to avoid mutual interference.
 
-The evidence supports retaining one serial target queue, short API/IR control
-loops for development, and full image/self-reproduction gates at integration
-boundaries. It does **not** establish that target execution dominated elapsed
-time or that more target CPUs would eliminate the unclassified 43 minutes.
-Future plans should record start/finish events for source-work and review tasks
-if a fuller time budget is required; no retrospective estimates are invented.
+The original plan reserved the final20 minutes for consolidation. Final matched timing/profile work finished within that interval; it was followed by the comprehensive report,45-case plot, method review, source-boundary audit, time accounting and archive preparation. Evidence sealing and the last push occur after the03:41 cutoff and are not misreported as target-optimization time.
 
-The exact snapshot is
-`selfhost/build/phase112/time-accounting-interim01/report.json`. Its method is
-[`time-accounting.py`](../../selfhost/tools/performance/phase112/time-accounting.py),
-SHA256 `0d243935e061d7fa91a26cf8f771dcbe34ef3cb128ea85e290cfb1a4cb65cceb`.
-Input receipt hashes, interval boundaries, direct child-job durations and
-limitations are retained there. The final evidence capsule includes this JSON.
+This account measures neither CPU-seconds nor tokens, quota, agent labor or validated improvements per compute unit. There is no billing telemetry from which to infer those quantities. Future work should record lightweight source-task boundaries if a more detailed implementation/review split is wanted. The data supports batching integration gates and one serial timing lane; it does not show that adding target CPUs would remove the remaining wall time.
 
-For a fresh final snapshot, after the intended target jobs finish:
-
-```sh
-python3 -B selfhost/tools/performance/phase112/time-accounting.py \
-  --start 2026-10-19T00:41:00Z --until now \
-  --out selfhost/build/phase112/time-accounting-final01/report.json
-```
-
-This command performs only bounded receipt analysis. An explicit cutoff such as
-`--until 2026-10-19T03:41:00Z` is accepted once that time has passed. Open guards
-without a recorded finish remain separate rather than being assumed to have run
-continuously. Review newly introduced category labels before final reporting;
-the interval-union total is independent of those labels. Seal evidence after
-this snapshot, following [`evidence/README.md`](evidence/README.md). Its existing
-scope includes both Phase112 receipts and every Phase111 `p112-*` subtree.
+[The interim account](time-use-interim.md) retains the earlier00:41–02:00 snapshot and original method identity. The final receipt is `selfhost/build/phase112/time-accounting-final01/report.json`; its method, source hashes,72 guard intervals, command lines, nested jobs and limitations are captured in the evidence capsule. The current method is [time-accounting.py](../../selfhost/tools/performance/phase112/time-accounting.py).

@@ -1,15 +1,31 @@
 # Phase112 compact evidence capsule
 
-The coordinator should prepare and seal evidence only after the intended
-measurements and reports have stopped changing. No capsule has been produced
-merely by adding this tool or this README.
+The completed [capsule](capsule01.tar.gz) preserves **10,589 receipt/log paths**
+as3,292 unique payloads:50,661,732 raw bytes in a7,185,022-byte archive. Six large
+logs are explicitly marked excerpts; the remaining payload captures are exact.
+The archive was reopened and every member authenticated. The
+[manifest](capsule01.tar.gz.manifest.json) records the pins, limits and successful
+verification; the [summary](capsule01.tar.gz.summary.json) keeps individual outcomes.
+
+Archive SHA256:
+`f81b22601418404d3ce2d6b7bfa99f3bba4a9c637cbc11b392ce445b26ecba1f`.
+The final three-hour time receipt is included, alongside all72 guards:55 exit0,
+16 exit1 and one exit127. These are workflow outcomes, not unique semantic tests.
+
+The full plan is stored inside the archive as `index.json`; its identical local
+`plan01.json` is not committed a second time. To recover it into a fresh staging
+path, extract that one archive member and verify SHA256
+`b0595f845465e16ed221a4ff5b0c6f12ee36577dae1922ab940c1363fb52b6b2`.
+The index records source/API identities and historical/current differences;
+identity-only machine products remain local and cannot be restored from it.
 
 Run the final offline [time accounting](../time-use.md) before planning the
 capsule. Its JSON under `selfhost/build/phase112/` is then captured alongside
 the original guard receipts. Phase111 `p112-*` native emission, build and
 self-reproduction receipts are already in scope; no extra collection is needed.
 
-From the repository root, using fresh names:
+For a later campaign, use fresh names from the repository root (the recorded
+`plan01` and `capsule01` paths below now exist and must not be overwritten):
 
 ```sh
 python3 -B selfhost/tools/performance/phase112/seal-evidence.py plan \

@@ -49,4 +49,5 @@ output = REPORT / 'broad-runtime.svg'
 if output.exists():
     raise FileExistsError('Use a fresh output or explicitly review regeneration: ' + str(output))
 fig.savefig(output, format='svg', metadata={'Date': None, 'Creator': 'Phase112 plot-results.py / Matplotlib'})
+output.write_text("\n".join(line.rstrip() for line in output.read_text().splitlines()) + "\n")
 print(output)

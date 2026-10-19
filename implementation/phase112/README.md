@@ -88,7 +88,7 @@ this campaign does not resolve those small differences statistically. The larges
 remaining ratios are 135–145× in edit-distance/local-pair cases. Overall gains
 therefore coexist with substantial missing backend capabilities.
 
-![All44 timed program ratios; lower is faster](broad-runtime.svg)
+![All 44 timed program ratios; lower is faster](broad-runtime.svg)
 
 The [plotting script](../../selfhost/tools/performance/phase112/plot-results.py)
 reads the committed CSV and runs no target programs.
@@ -103,7 +103,7 @@ reads the committed CSV and runs no target programs.
    Exact U32/F32 lowering, bounded direct workers, fail-stop side exits, accessors
    and bounded immutable static images remove generic work. Independent guards
    retain the generic route for unsupported shapes.
-3. **Reuse mature scalar-pattern and selector machinery.** The old compiler
+3. **Reuse mature scalar-pattern and selector machinery.** The first instrumented compiler
    lexer request constructs 32 Word nodes and 31 wrappers for each scalar conversion.
    Its 1,625,654 such conversions mechanically account for 102,416,202 allocations.
    The composed word/selector candidate reduces allocation calls from 124,677,389
@@ -215,7 +215,8 @@ justified by the observed loss of semantic information.
 
 Root owns one serial CPU 3 target queue; agents prepare code, independent controls
 and source analysis. Full jobs enforce 4GiB process-tree RSS and 16GiB available
-memory; small jobs 2GiB. No parallel/GPU performance claim is made. Authenticated
+memory; small jobs 2GiB. The final full integration peaks at 2.91GB tree RSS
+inside its 618.37s guard. No parallel/GPU performance claim is made. Authenticated
 hardlink deduplication recovered 1.48GB while retaining historical paths/bytes.
 
 The [time account](time-use.md) reports measured guard-interval unions, not token

@@ -1,0 +1,60 @@
+{
+  "kind": "phase112-five-case-baseline-completion-plan",
+  "preparedOnly": true,
+  "targetsRun": false,
+  "preparedUtc": "2026-10-19T01:10:30.743942+00:00",
+  "supersedes": "baseline-completion-plan01.json",
+  "productMapTemplate": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase112/benchmark/phase111-five-template02.json",
+    "bytes": 1043,
+    "sha256": "2056a1510a146c665e9b92ec8b05cb4a52131d61292b409b8acef0bb6c9069ad"
+  },
+  "requestedBaselineNames": [
+    "lexer",
+    "variation-ray-active-256-2240",
+    "coverage-closures-256",
+    "coverage-map-churn-128",
+    "coverage-numeric-recurrence-1024"
+  ],
+  "fullFrozenNames": [
+    "lexer",
+    "variation-ray-active-256-2240",
+    "coverage-closures-256",
+    "coverage-unicode-text-64",
+    "coverage-map-churn-128",
+    "coverage-numeric-recurrence-1024"
+  ],
+  "unavailableBaseline": [
+    {
+      "name": "coverage-unicode-text-64",
+      "failure": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p112-baseline-unicode-staged01/report.json",
+        "bytes": 6954,
+        "sha256": "ec1b4149f563f02d72d03b92cd13e382549ea5e1dcc78e7a9657bf4314c1f2c6"
+      },
+      "failedStage": "lowering",
+      "error": "RangeError: Maximum call stack size exceeded.",
+      "qbeProduced": false,
+      "scope": "No baseline product. Case remains requested/visible for candidate-versus-upstream, excluded only from explicitly named five-case baseline comparisons."
+    }
+  ],
+  "bindCommand": [
+    "python3",
+    "-B",
+    "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase112/benchmark/run.py",
+    "bind",
+    "--label",
+    "phase111",
+    "--reports",
+    "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase112/benchmark/phase111-five-template02.json",
+    "--names",
+    "lexer",
+    "variation-ray-active-256-2240",
+    "coverage-closures-256",
+    "coverage-map-churn-128",
+    "coverage-numeric-recurrence-1024",
+    "--out",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase112/phase111-products-five01.json"
+  ],
+  "scope": "Native3 plus pending API map/numeric only. Completion requires their actual receipts. No further Unicode retry or substituted artifact."
+}

@@ -1,0 +1,61 @@
+{
+  "kind": "phase112-scalar-frozen-controls",
+  "version": 1,
+  "targetsRun": false,
+  "sourceChecked": false,
+  "correctnessPassed": false,
+  "oracle": "Explicit boundary integers; loop expected by independent logarithmic affine composition.",
+  "method": {
+    "file": "selfhost/tools/performance/phase112/scalar/prepare-fixtures.py",
+    "bytes": 6062,
+    "sha256": "cdf69568b5a5bde0ae5efc393f9b3574a65bbeb3330551804b06f3a5ca969d4c"
+  },
+  "cases": {
+    "file": "selfhost/tools/performance/phase112/scalar/boundaries.json",
+    "bytes": 5574,
+    "sha256": "b8ca41491c270a332dd2b431dfc367077adca116266b3c7e499bd79fc5634644"
+  },
+  "source": {
+    "file": "selfhost/tools/performance/phase112/scalar/boundaries.bend",
+    "bytes": 4037,
+    "sha256": "b1bbfe95675766b504967e64e9b79913e3267499cd48a56dbc64509d9f31ada4"
+  },
+  "expectedStdout": {
+    "file": "selfhost/tools/performance/phase112/scalar/boundaries.stdout",
+    "bytes": 284,
+    "sha256": "3dc406496d8708d3ed8abbbfdda385a0da413be62898d313f93fc2845a63fac3"
+  },
+  "observations": 57,
+  "benches": [
+    {
+      "name": "loop-small",
+      "iterations": 65536,
+      "source": {
+        "file": "selfhost/tools/performance/phase112/scalar/loop-small.bend",
+        "bytes": 459,
+        "sha256": "d0b1d32d46f5f72c5638ab4ee7c3a9f35a5ecc1516a5fb3367a0cb9a86817584"
+      },
+      "expectedStdout": {
+        "file": "selfhost/tools/performance/phase112/scalar/loop-small.stdout",
+        "bytes": 10,
+        "sha256": "6b8088785ea44369d272443ea54d0d6bd09a625243924214e3f43e353a446746"
+      },
+      "result": 918115960
+    },
+    {
+      "name": "loop-large",
+      "iterations": 1048576,
+      "source": {
+        "file": "selfhost/tools/performance/phase112/scalar/loop-large.bend",
+        "bytes": 462,
+        "sha256": "f5259c1679d3e92eada798d25cf010d52d7a86cdce25fe7708f5de681fbd94f4"
+      },
+      "expectedStdout": {
+        "file": "selfhost/tools/performance/phase112/scalar/loop-large.stdout",
+        "bytes": 11,
+        "sha256": "b3fc3d2957313421b84a49afa1351eb78373f882ad21cca5036a0930c2e6e247"
+      },
+      "result": 1518622328
+    }
+  ]
+}

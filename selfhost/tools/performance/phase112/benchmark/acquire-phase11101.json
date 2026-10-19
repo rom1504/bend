@@ -1,0 +1,150 @@
+{
+  "preparedOnly": true,
+  "targetsRun": false,
+  "manifest": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase112/benchmark/manifest01.json",
+    "bytes": 38348,
+    "sha256": "8303706834d807076532b473718d5c2b9c28fa7be9d584004b3aa5a87d4f9961"
+  },
+  "guard": "Root serial CPU3 process-tree guard; execute commands in order.",
+  "jobs": [
+    {
+      "name": "lexer",
+      "command": [
+        "python3",
+        "-B",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase111/native-emit.py",
+        "--image",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/native-self02/build/program",
+        "--source",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/fixtures01/lexer.bend",
+        "--out",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p112-baseline01-lexer",
+        "--mode",
+        "cache",
+        "--runtime",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/runtime-source04/runtime.o",
+        "--seconds",
+        "120",
+        "--build-seconds",
+        "30"
+      ],
+      "expected": "Build only here; timed-batch output checked independently by benchmark/run.py."
+    },
+    {
+      "name": "variation-ray-active-256-2240",
+      "command": [
+        "python3",
+        "-B",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase111/native-emit.py",
+        "--image",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/native-self02/build/program",
+        "--source",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/fixtures01/variation-ray-active-256-2240.bend",
+        "--out",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p112-baseline01-variation-ray-active-256-2240",
+        "--mode",
+        "cache",
+        "--runtime",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/runtime-source04/runtime.o",
+        "--seconds",
+        "120",
+        "--build-seconds",
+        "30"
+      ],
+      "expected": "Build only here; timed-batch output checked independently by benchmark/run.py."
+    },
+    {
+      "name": "coverage-closures-256",
+      "command": [
+        "python3",
+        "-B",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase111/native-emit.py",
+        "--image",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/native-self02/build/program",
+        "--source",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/fixtures01/coverage-closures-256.bend",
+        "--out",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p112-baseline01-coverage-closures-256",
+        "--mode",
+        "cache",
+        "--runtime",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/runtime-source04/runtime.o",
+        "--seconds",
+        "120",
+        "--build-seconds",
+        "30"
+      ],
+      "expected": "Build only here; timed-batch output checked independently by benchmark/run.py."
+    },
+    {
+      "name": "coverage-unicode-text-64",
+      "command": [
+        "python3",
+        "-B",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase111/native-emit.py",
+        "--image",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/native-self02/build/program",
+        "--source",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/fixtures01/coverage-unicode-text-64.bend",
+        "--out",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p112-baseline01-coverage-unicode-text-64",
+        "--mode",
+        "cache",
+        "--runtime",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/runtime-source04/runtime.o",
+        "--seconds",
+        "120",
+        "--build-seconds",
+        "30"
+      ],
+      "expected": "Build only here; timed-batch output checked independently by benchmark/run.py."
+    },
+    {
+      "name": "coverage-map-churn-128",
+      "command": [
+        "python3",
+        "-B",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase111/native-emit.py",
+        "--image",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/native-self02/build/program",
+        "--source",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/fixtures01/coverage-map-churn-128.bend",
+        "--out",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p112-baseline01-coverage-map-churn-128",
+        "--mode",
+        "cache",
+        "--runtime",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/runtime-source04/runtime.o",
+        "--seconds",
+        "120",
+        "--build-seconds",
+        "30"
+      ],
+      "expected": "Build only here; timed-batch output checked independently by benchmark/run.py."
+    },
+    {
+      "name": "coverage-numeric-recurrence-1024",
+      "command": [
+        "python3",
+        "-B",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase111/native-emit.py",
+        "--image",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/native-self02/build/program",
+        "--source",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/fixtures01/coverage-numeric-recurrence-1024.bend",
+        "--out",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p112-baseline01-coverage-numeric-recurrence-1024",
+        "--mode",
+        "cache",
+        "--runtime",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/runtime-source04/runtime.o",
+        "--seconds",
+        "120",
+        "--build-seconds",
+        "30"
+      ],
+      "expected": "Build only here; timed-batch output checked independently by benchmark/run.py."
+    }
+  ]
+}

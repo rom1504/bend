@@ -1,0 +1,32 @@
+{
+  "kind": "phase112-accessor-independent-controls",
+  "version": 1,
+  "targetsRun": false,
+  "wordEncoding": "[lo32,hi32]",
+  "tagCases": [
+    {"name":"zero","word":[0,0],"expected":0},
+    {"name":"location-all-bits","word":[4294967295,255],"expected":0},
+    {"name":"aux-first-bit","word":[0,256],"expected":1},
+    {"name":"aux-last-bit","word":[0,8388608],"expected":32768},
+    {"name":"aux-all-bits","word":[0,16776960],"expected":65535},
+    {"name":"tag-only","word":[0,16777216],"expected":0},
+    {"name":"rfc-only","word":[0,2147483648],"expected":0},
+    {"name":"all-bits","word":[4294967295,4294967295],"expected":65535},
+    {"name":"mixed-a5a5","word":[305419896,3970278911],"expected":42405}
+  ],
+  "registerCases": [
+    {"arity":1,"incoming":0,"index":0,"byteOffset":40,"value":[305419896,2596069104]},
+    {"arity":255,"incoming":0,"index":254,"byteOffset":2072,"value":[4294967295,2147483648]},
+    {"arity":255,"incoming":1,"index":0,"byteOffset":40,"value":[42,0]},
+    {"arity":255,"incoming":2,"index":1,"byteOffset":48,"value":[4294967295,4294967295]}
+  ],
+  "invalidPublicCases": [
+    "zero-arity main reads register0",
+    "direct index equals arity",
+    "continuation index equals incoming width despite many captures",
+    "high-half index constant",
+    "dynamic index",
+    "wrong pointer local",
+    "wrong return type"
+  ]
+}

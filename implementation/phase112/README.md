@@ -16,8 +16,9 @@ These are lowering-only observations, not native compiler or upstream ratios.
 The frozen Unicode batch source timed out after 120 seconds under the baseline
 native compiler and 60 seconds under its checked hosted API. The liveness
 candidate completes staged emission in 13.26 seconds (frontend 2.06; lowering
-8.34; verification 1.22). A longer staged baseline is being collected to locate
-the bottleneck and establish identical generated output.
+8.34; verification 1.22). A longer staged baseline failed naturally with a hosted stack overflow after
+56.48 seconds inside lowering (60.39 seconds outer wall); no product equality
+claim is possible for this source. The transformed product passes native execution.
 
 Direct scalar U32 lowering passes 57 source boundary observations. A first
 self-tail-loop planner passes 13 controls but initially admits no loop in the
@@ -46,3 +47,30 @@ checks are retained.
 Disk pressure was reduced by hardlinking 950 authenticated identical generated
 files, recovering 1,265,594,368 bytes while retaining every pathname and byte.
 All subsequent generated products use fresh paths.
+
+## First generated-program screen
+
+The six frozen Phase93 batch sources now have independently authenticated QBE
+products. Three alternating rounds with the separately frozen fast profile yield
+these combined-candidate/upstream runtime ratios: lexer35.53, ray211.81, closures
+13.86, Unicode6.50, map11.08, numeric15.13; geometric mean22.01. This candidate
+has backward liveness, U32 operations, self-tail loops and safe accessors. It
+does not include the later private workers or static data. All measured outputs
+are exact. These six points are a development screen, not the45-program claim.
+
+The scalar recurrence kernel improves from87.86ms baseline to49.40ms with scalar
+operations and5.51ms with the combined loop/accessor changes (0.0627 time ratio).
+The representative results demonstrate why that narrow16x win cannot establish
+whole-language parity. Continuation/call structure and primitive exposure need
+further work.
+
+Private-worker controls now pass native ordered calls, eight-argument transport,
+pending continuations and four unique/shared owning loops. The CPU-only fail-stop
+adapter preserves actual exit status/stdout/stderr for framed and unframed
+failures, bound to exact runtime04 where err_post exits the process. Static-image
+controls pass19 checks initially,20 after effect-name exclusion, plus8 native
+semantic observations. Images stay capped at65536 words with dynamic fallback.
+The original structural verifier remains mandatory.
+
+The first full candidate image acquisition is running. Production remains
+unchanged; native full-source and corpus gates are still outstanding.

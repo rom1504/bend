@@ -149,3 +149,15 @@ evidence, independent controls, honest comparisons with upstream, and
 `implementation/phase112/README.md`. Update the direct-QBE guide and experiment
 frontier with selected versus unqualified capabilities. Record the next cheapest
 experiment when a larger ambition is not completed in this window.
+
+## Evidence-driven extension at01:18 UTC
+
+The first six-program controlled runtime screen is22.01x upstream geometrically,
+with6.5–211.8x per-program ratios despite a16x arithmetic-kernel improvement.
+This is the new direct generic QBE path, not the older mature C backend. Its
+missing optimizer capabilities are now measured. Prioritize typed static images,
+private direct workers and bounded continuation fusion. Keep exact ownership and
+fail-stop boundaries. Investigate direct IEEE binary32 intrinsic expansion at
+the backend, where the verified atomic runtime operation already carries its
+semantics; preserve NaNs/rounding/zero and fall back for unqualified conversions.
+Do not infer that simply changing assemblers will close this architectural gap.

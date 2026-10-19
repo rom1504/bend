@@ -1,0 +1,138 @@
+{
+  "kind": "phase112-baseline-completion-plan",
+  "preparedOnly": true,
+  "targetsRun": false,
+  "preparedUtc": "2026-10-19T01:07:36.933234+00:00",
+  "manifest": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase112/benchmark/manifest01.json",
+    "bytes": 38348,
+    "sha256": "8303706834d807076532b473718d5c2b9c28fa7be9d584004b3aa5a87d4f9961"
+  },
+  "productMapTemplate": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase112/benchmark/phase111-mixed-staged-template01.json",
+    "bytes": 1322,
+    "sha256": "2cf215f1f1623a23bbd30656b8dd2cf680be120a084700596c9d4c136d104284"
+  },
+  "existingNativeProducts": [
+    {
+      "name": "lexer",
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p112-baseline01-lexer/report.json",
+        "bytes": 7335,
+        "sha256": "064b4579454d0ee9326c980a2253f4251b1bbb798884d85fc9e6dcccd9f514ca"
+      },
+      "build": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p112-baseline01-lexer/build/report.json",
+        "bytes": 4857,
+        "sha256": "82f903076bc26186c2c793e29697a2ca71e4be1bbe0cd069afa02297a66fa143"
+      },
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p112-baseline01-lexer/build/program",
+        "bytes": 298496,
+        "sha256": "57d20d55de4894560745a8d88a34e3da90119243c314447e821076fbbc0070ad"
+      },
+      "nativeSeconds": 10.886657590046525,
+      "batchExecutionQualified": false
+    },
+    {
+      "name": "variation-ray-active-256-2240",
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p112-baseline01-variation-ray-active-256-2240/report.json",
+        "bytes": 7599,
+        "sha256": "7790e633b82bd5801afb9c68bc1765c9a8ba68e46f139784c9caef451485f35b"
+      },
+      "build": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p112-baseline01-variation-ray-active-256-2240/build/report.json",
+        "bytes": 5242,
+        "sha256": "9653d24f946a5e61751fb53f63ec6a26feba5a48d43b043df9f95a035c1fd95a"
+      },
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p112-baseline01-variation-ray-active-256-2240/build/program",
+        "bytes": 369072,
+        "sha256": "483026c9ca1cebb10d3707d7a93f7ce917de8a3ab23444d7cb0d791538f2f408"
+      },
+      "nativeSeconds": 13.290142893092707,
+      "batchExecutionQualified": false
+    },
+    {
+      "name": "coverage-closures-256",
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p112-baseline01-coverage-closures-256/report.json",
+        "bytes": 7506,
+        "sha256": "0504c6fa55d811d12790e580f0d0fb5114f703b2795f55c14bb2afbb34c5260f"
+      },
+      "build": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p112-baseline01-coverage-closures-256/build/report.json",
+        "bytes": 5114,
+        "sha256": "229f257de45458372c78de4ae21992dfed7e632922210fbc374982d537696ae2"
+      },
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p112-baseline01-coverage-closures-256/build/program",
+        "bytes": 249864,
+        "sha256": "846f0ad5112ff4c5b9bb023ce19ef8bcd87a08f793ab49f3e5df9e674ad205e4"
+      },
+      "nativeSeconds": 9.53582061897032,
+      "batchExecutionQualified": false
+    }
+  ],
+  "stagedProducerSource": {
+    "api": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/full-api05/api.mjs",
+      "bytes": 1100996,
+      "sha256": "b798cb30138c9c63430d7851c45dac4bb956f6dc462020ec7e41b27a69ea25f9"
+    },
+    "apiReport": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/full-api05/report.json",
+      "bytes": 3425,
+      "sha256": "9ee43a7e8eb72acf272b1e88cea4568d0146a26d407de2ee5e61e22d6a588e2c"
+    },
+    "compilerSource": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/full-source05/compiler.bend",
+      "bytes": 1879953,
+      "sha256": "825cb03276c30a944ef1b1e8ed0624531253d2f39a502b0fcbfbfea3f3bb3f44"
+    }
+  },
+  "pending": [
+    "coverage-unicode-text-64",
+    "coverage-map-churn-128",
+    "coverage-numeric-recurrence-1024"
+  ],
+  "commands": [
+    {
+      "stage": "after-staged-unicode-completes",
+      "command": [
+        "python3",
+        "-B",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase111/build.py",
+        "--source",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p112-baseline-unicode-staged01/program.ssa",
+        "--runtime",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/runtime-source04/runtime.o",
+        "--out",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p112-baseline-unicode-staged01-build",
+        "--seconds",
+        "30"
+      ]
+    },
+    {
+      "stage": "remaining-map-and-numeric",
+      "command": [
+        "python3",
+        "-B",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase112/benchmark/acquire-api.py",
+        "--api",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/full-api05/api.mjs",
+        "--prefix",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p112-baseline-api02",
+        "--out",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase112/baseline-api02",
+        "--names",
+        "coverage-map-churn-128",
+        "coverage-numeric-recurrence-1024",
+        "--merge-reports",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase112/benchmark/phase111-mixed-staged-template01.json"
+      ]
+    }
+  ],
+  "scope": "Template points to actual retained native receipts, current staged request, and explicitly planned future API/build paths. No missing product is fabricated or asserted complete. Runtime output/timing qualification remains separate."
+}

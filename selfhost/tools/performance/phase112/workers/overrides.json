@@ -1,0 +1,10 @@
+{
+  "kind": "phase112-exact-tail-loop-emitter-override",
+  "changes": [
+    {
+      "name": "p111q_segment_chunks",
+      "old": "@unsafe\ndef p111q_segment_chunks(segments: List<&2,N111Segment>, +ids: N111Ids, acc: List<&2,String>) -> List<&2,String>:\n  match segments:\n    case Nil{}: nt_reverse(String,acc,[])\n    case Con{segment,rest}: p111q_segment_chunks(rest,ids,Con{p111q_segment(segment,ids),acc})",
+      "new": "@unsafe\ndef p111q_segment_chunks(segments: List<&2,N111Segment>, +ids: N111Ids, acc: List<&2,String>) -> List<&2,String>:\n  match segments:\n    case Nil{}: nt_reverse(String,acc,[])\n    case Con{segment,rest}: p111q_segment_chunks(rest,ids,Con{p112q_segment(segment,ids),acc})"
+    }
+  ]
+}

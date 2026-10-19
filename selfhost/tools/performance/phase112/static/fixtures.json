@@ -1,0 +1,32 @@
+{
+  "kind": "phase112-static-fixtures",
+  "targetsRun": false,
+  "source": {
+    "file": "selfhost/tools/performance/phase112/static/semantics.bend",
+    "bytes": 1257,
+    "sha256": "a21bfb2fd9da9f7fb0f569c166ded2bea03c2277583875abb8a0b8d01f7479ec"
+  },
+  "expected": {
+    "file": "selfhost/tools/performance/phase112/static/semantics.stdout",
+    "bytes": 52,
+    "sha256": "cce53fe3b0e3f4237d441b473e037efce6db971639c2b9b97dfa113ee6da79d2"
+  },
+  "observationCount": 8,
+  "observations": [
+    "empty-string",
+    "unicode-string",
+    "aliased-static-string",
+    "nullary-user-constructor",
+    "unary-u32-max",
+    "retained-static-tree",
+    "discarded-static-tree",
+    "static-boxed-child-in-dynamic-parent"
+  ],
+  "structuralControls": {
+    "file": "selfhost/tools/performance/phase112/static/controls.bend",
+    "bytes": 4738,
+    "sha256": "f569940a080e88cdab5512c0973e58c2667acb3c896e98935b32fcc6b5f63887"
+  },
+  "structuralControlCount": 20,
+  "controlScope": "Image data and producer internal-counter mutations; independent from source integrity receipts. Budget controls do not execute a full-limit image."
+}

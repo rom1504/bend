@@ -1,0 +1,47 @@
+{
+  "kind": "phase112-frozen-runtime-profile",
+  "version": 1,
+  "name": "fast-profile01",
+  "frozenUtc": "2026-10-19T00:55:04.270733+00:00",
+  "targetsRun": false,
+  "manifest": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase112/benchmark/manifest01.json",
+    "bytes": 38348,
+    "sha256": "8303706834d807076532b473718d5c2b9c28fa7be9d584004b3aa5a87d4f9961"
+  },
+  "minimumMs": 20,
+  "cases": {
+    "lexer": {
+      "repetitions": 86,
+      "warmups": 4
+    },
+    "variation-ray-active-256-2240": {
+      "repetitions": 236,
+      "warmups": 4
+    },
+    "coverage-closures-256": {
+      "repetitions": 10240,
+      "warmups": 4
+    },
+    "coverage-unicode-text-64": {
+      "repetitions": 460,
+      "warmups": 4
+    },
+    "coverage-map-churn-128": {
+      "repetitions": 132,
+      "warmups": 4
+    },
+    "coverage-numeric-recurrence-1024": {
+      "repetitions": 9600,
+      "warmups": 4
+    }
+  },
+  "derivation": "Ceiling of each original frozen repetition count divided by eight; four warmups for every role. Chosen before new program timing; no source or workload-argument change.",
+  "scope": "Separately labeled short-batch screening profile. Same exact wrapper, workload arguments, expected output and selected counts across all compared roles. Counts and 20ms qualification threshold differ from original Phase93 profile; do not merge timing observations or aggregates. One-millisecond clock resolution makes small percentage gains inconclusive.",
+  "budgetsSeconds": [
+    20,
+    60,
+    300
+  ],
+  "roundsMinimum": 3
+}

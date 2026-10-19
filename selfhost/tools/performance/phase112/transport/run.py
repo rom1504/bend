@@ -139,7 +139,7 @@ def main():
                               executionSeconds='Single full-output correctness observation only, not program-speed benchmark.'),
                   modeNotes=dict(cache='Native authenticated prepared Base; upstream loads/checks source Base. Persistent-cache advantage disclosed.',
                                  live='Native and upstream source Base, fresh processes; OS caches are not flushed.'),
-                  lineage='Experimental route N2 baseline versus new route N1 candidate, not a same-source B1/B2 generation comparison.',
+                  lineage=manifest.get('lineage', 'Experimental route N2 baseline versus new route N1 candidate, not a same-source B1/B2 generation comparison.'),
                   checkOnly=args.check_only)
     def save():
         temporary = out / 'report.json.tmp'

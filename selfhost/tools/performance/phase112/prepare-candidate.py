@@ -12,7 +12,7 @@ ROOT = HERE.parents[3]
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--profile', choices=['core', 'early', 'fusion', 'selectors', 'selectors-core', 'word', 'word-core', 'regions', 'multi', 'multi-wide'], required=True)
+    parser.add_argument('--profile', choices=['core', 'early', 'fusion', 'selectors', 'selectors-core', 'word', 'word-core', 'regions', 'multi', 'multi-wide', 'gap'], required=True)
     parser.add_argument('--out', type=Path, required=True)
     args = parser.parse_args()
     recipe_path = HERE / 'recipes.json'

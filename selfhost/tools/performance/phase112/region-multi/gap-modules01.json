@@ -1,0 +1,77 @@
+{
+  "kind": "phase112-region-multi-pure-gap-exact-profile",
+  "profile": "region-multi-gap01",
+  "prepared": true,
+  "checked": false,
+  "targetsRun": false,
+  "dependencies": [
+    {
+      "file": "selfhost/tools/performance/phase112/region-multi/modules02.json",
+      "sha256": "78371a044fe9fd0a94b0d761a921a61fb7c5734e1d11254660702d8741c95e7f"
+    },
+    {
+      "file": "selfhost/tools/performance/phase112/region-multi/wide32-modules01.json",
+      "sha256": "36639759289720d7ff076129c87e50f593a112f7d4f5bf46e403981b013f74cf"
+    }
+  ],
+  "modules": [
+    {
+      "file": "selfhost/tools/performance/phase112/region-multi/gap-model.bend",
+      "bytes": 91,
+      "sha256": "529f064452c72a9368552a904a8a124b7ed074c477ae5d1fae368cedf3d1cf15",
+      "declarations": [
+        "P112PureGap"
+      ]
+    },
+    {
+      "file": "selfhost/tools/performance/phase112/region-multi/gap.bend",
+      "bytes": 3045,
+      "sha256": "ea9b2f758a141bf3f5d28c4ce81a3304a142033120ae8e0aca60b5498eb1a187",
+      "declarations": [
+        "p112g_word_type",
+        "p112g_name",
+        "p112g_value",
+        "p112g_pure",
+        "p112g_split",
+        "p112g_prepend",
+        "p112g_splice",
+        "p112g_splice_next",
+        "p112g_found",
+        "p112g_finish"
+      ]
+    }
+  ],
+  "override": {
+    "file": "selfhost/tools/performance/phase112/region-multi/gap-entry.bend",
+    "bytes": 446,
+    "sha256": "316df03cee97408fcaae151c4567f72899374fbc6d0cf45916769e34a4fd4ecc",
+    "declarations": [
+      "p112c_try_frame"
+    ]
+  },
+  "declarations": [
+    "P112PureGap",
+    "p112g_word_type",
+    "p112g_name",
+    "p112g_value",
+    "p112g_pure",
+    "p112g_split",
+    "p112g_prepend",
+    "p112g_splice",
+    "p112g_splice_next",
+    "p112g_found",
+    "p112g_finish",
+    "p112c_try_frame"
+  ],
+  "limits": {
+    "gapStatements": 32,
+    "sitesPerBody": 8,
+    "copiedContinuationStatements": 128,
+    "ranks": 6,
+    "workerArity": 32,
+    "fusedCalleeArity": 32,
+    "captures": 32
+  },
+  "composition": "Existing wide target admission on stripped exact suffix; insert original pure gap after capture snapshots and frame-zero assignment, before argument snapshots.",
+  "runtimePremise": "Same original whole-program verifier and pinned CPU runtime04 fail-stop premise; separate conjunctive gap receipt required"
+}

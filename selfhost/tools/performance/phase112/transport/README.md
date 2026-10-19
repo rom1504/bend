@@ -110,6 +110,50 @@ mean. Ratios are our/reference time, below1 faster. No aggregate is emitted for
 an incomplete role/case set. Three rounds are a small screen, not confidence
 intervals. Use the separate compiled-program campaign to judge execution speed.
 
+## Same-source word N1/N2 follow-up
+
+`manifest02.json` compares the old Phase111 source/image with word-profile N1.
+The separately created `manifest03.json` instead compares word-profile N1 with
+word-profile N2, produced by N1 compiling the exact same
+`word-source02/compiler.bend`. Upstream, the three source inputs, expected
+outputs, runtime, assets, schedule, clocks, build flags and time limits remain
+those of manifest02.
+
+The runner retains its legacy role keys to preserve the measurement method:
+
+| JSON role key | Manifest03 meaning |
+| --- | --- |
+| `phase111` | Word-profile N1, acquired through the checked hosted Bend API |
+| `phase112` | Word-profile N2, built from N1's native emission of the same compiler source |
+| `upstream` | Unchanged pinned TypeScript/Bun source-to-C workflow |
+
+Thus `phase112/phase111` means word N2 time divided by word N1 time in this
+manifest. It does not compare different Phase111/Phase112 source versions.
+`report.lineage` copies the manifest's explicit mapping; older manifests retain
+the runner's original lineage description. No timing code changed for this
+follow-up. The route N1/N2 labels do not rename production B1/B2.
+
+After `selfhost/build/phase111/p112-word-self01/report.json` completes, create
+the fresh manifest without executing targets:
+
+```sh
+python3 -B selfhost/tools/performance/phase112/transport/prepare-word-generations.py
+```
+
+The preparer refuses an incomplete self-request. It authenticates the actual
+N1 request command and identical compiler source, checked N1 emission receipt,
+exact N1/N2 compiler QBE comparison, both direct build graphs, runtime, tools,
+and image hashes. Manifest03 pins both build receipts and the native self-request
+receipt. A completed self-acquisition establishes that lineage; the subsequent
+three-source screen supplies its own emitted-product correctness checks and
+does not alone establish broad N2 semantic qualification.
+
+Root uses the existing guarded command with
+`--manifest selfhost/tools/performance/phase112/transport/manifest03.json` and a
+fresh output directory. As before, cache and live workflows remain separately
+identified, and native QBE versus upstream C request ratios compare different
+representation workflows.
+
 ## Final evidence sealing
 
 After source and reports stop changing, root runs:

@@ -213,3 +213,40 @@ instead of `.next`; its failure is retained and a versioned test fixes the field
 An optional32-argument/32-capture overlay retains eight copied sites,128 statements
 per continuation and six immutable ranks. Its native qualification and matched
 runtime screen are underway; no performance claim or selection yet.
+
+## Native successor checkpoint at02:28 UTC
+
+The word-profile N1 compiles its exact1,990,734-byte source in349.697seconds,
+reproduces all28,462,589 QBE bytes exactly and builds N2. Complete guarded wall
+is355.248seconds with934,252,544bytes peak RSS. Authenticated ELF comparison
+confirms matching headers, program headers and allocated code/data except the
+build ID; whole binaries differ. These are self-hosting observations, not a
+same-source comparison with earlier Phase111's944.818seconds. N2 focused
+semantics and same-source N1/N2/upstream timings are underway.
+
+The repeated/wide screen finished: word14.6533, multi14.6928 and multi-wide14.6605
+times upstream across the same six points. No material improvement is selected.
+Concrete follow-up inspects post-frame pure assignment gaps; bounds alone did not
+remove hot frames. Runtime zero-tail clearing is retained because the current
+structural verifier does not establish a valid-prefix-only read contract.
+
+## Pure-assignment fusion at02:34 UTC
+
+Five independent native baseline/candidate pairs and22 structural/refusal
+controls pass, including capture redefinitions, frame-result zero, exact32-node
+budget and both shared Unicode ownership release orders. Conjunctive source
+admission binds322 declarations and refuses30 mutations; word/selector and
+scalar/static companions pass separately.
+
+Three matched runtime rounds give word14.8475 versus gap12.3691 times upstream
+geometrically (16.69% less time). Median word→gap milliseconds: lexer843→715,
+ray4713→2075, closures1349→1344, Unicode239→225, map467→456, numeric133→130.
+All complete outputs/counts match. This is the initial six-point screen only.
+Actual typed-IR diagnosis confirms332 frozen workers across six ranks; sx/sy
+and the isect chain now admit. Remaining nested outer frames still block nearest.
+
+The same-source word N1/N2/upstream screen completes with all fresh outputs
+checked. N2/N1 ratios are0.99686 request and0.99728 ready-executable stage sums.
+N1/N2 request ratios to upstream are2.45599/2.44827; ready-executable ratios
+1.14982/1.14669. Both stages therefore retain the same measured speed within this
+small screen's variation. No production B1/B2 relabeling is implied.

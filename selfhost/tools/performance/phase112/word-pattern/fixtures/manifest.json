@@ -1,0 +1,79 @@
+{
+  "kind": "phase112-word-pattern-independent-source-controls",
+  "version": 1,
+  "createdUTC": "2026-10-19T01:57:27.015204+00:00",
+  "targetsRunByAuthor": false,
+  "cases": [
+    {
+      "name": "boundaries",
+      "source": {
+        "file": "selfhost/tools/performance/phase112/word-pattern/fixtures/boundaries.bend",
+        "bytes": 1296,
+        "sha256": "86249289b1b6ebf7ba43ff573874e2c05a084f760769bff3eab7ce5b468aa4ab"
+      },
+      "expected": {
+        "file": "selfhost/tools/performance/phase112/word-pattern/fixtures/boundaries.stdout",
+        "bytes": 45,
+        "sha256": "9b5795df1916cf8e2f0e44d4a1ce80686342f45e58707b4b5896ac701f073592"
+      },
+      "exitCode": 0,
+      "stderr": "",
+      "status": "source-frozen; checker/native qualification pending"
+    },
+    {
+      "name": "owned-branches",
+      "source": {
+        "file": "selfhost/tools/performance/phase112/word-pattern/fixtures/owned-branches.bend",
+        "bytes": 800,
+        "sha256": "c06f737bbee298bfb002fc7f806048b5d9b15a8da5255821b4c3c29bb8e88107"
+      },
+      "expected": {
+        "file": "selfhost/tools/performance/phase112/word-pattern/fixtures/owned-branches.stdout",
+        "bytes": 68,
+        "sha256": "1b4dc334c3282854e66a2d733cb832b45dcf48f43d171447f33d28c8bf421acb"
+      },
+      "exitCode": 0,
+      "stderr": "",
+      "status": "source-frozen; checker/native qualification pending"
+    },
+    {
+      "name": "escaping-tail",
+      "source": {
+        "file": "selfhost/tools/performance/phase112/word-pattern/fixtures/escaping-tail.bend",
+        "bytes": 691,
+        "sha256": "fae04339369f9a4fd52290b36ab09a0380b04080ebbb8d27fb5a62649e54b1ae"
+      },
+      "expected": {
+        "file": "selfhost/tools/performance/phase112/word-pattern/fixtures/escaping-tail.stdout",
+        "bytes": 27,
+        "sha256": "f507b1e7aea0afeac16505c49ac6f8283ca31d394843405a93a25d04494906b8"
+      },
+      "exitCode": 0,
+      "stderr": "",
+      "status": "source-frozen; checker/native qualification pending"
+    },
+    {
+      "name": "float-bits",
+      "source": {
+        "file": "selfhost/tools/performance/phase112/word-pattern/fixtures/float-bits.bend",
+        "bytes": 3806,
+        "sha256": "f36d94f1788fdcb5a630d279e5a7fd315b7f413310613576426a5c539fabfaa1"
+      },
+      "expected": {
+        "file": "selfhost/tools/performance/phase112/word-pattern/fixtures/float-bits.stdout",
+        "bytes": 32,
+        "sha256": "02d55b3a66a6aae75f0b91eadde35c565034f0c79bdf2277a58eeab1d2c481de"
+      },
+      "exitCode": 0,
+      "stderr": "",
+      "status": "source-frozen; checker/native qualification pending"
+    }
+  ],
+  "oracle": "Source-level branch selection, bit representation and ownership observations written independently before candidate execution. F32 raw constructor patterns distinguish signed zero and NaN payloads; no floating equality or formatting oracle.",
+  "coverage": {
+    "boundaries": "U32 low/high/end/default cases and Char/newline matching",
+    "owned-branches": "hit/default consume opposite dynamic String owners; retained aliases and selected result observed after selection",
+    "escaping-tail": "31-bit Word result escapes and is rebuilt with false low bit; whole match must retain generic fallback",
+    "float-bits": "32-bit F32 constructor patterns for signed zeros, signaling/quiet NaN payloads, infinities and default"
+  }
+}

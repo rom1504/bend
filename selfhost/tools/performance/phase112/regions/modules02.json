@@ -1,0 +1,170 @@
+{
+  "kind": "phase112-regions-exact-module-profile",
+  "profile": "regions02-frozen-six-rank-typed-segment",
+  "prepared": true,
+  "checked": false,
+  "targetsRun": false,
+  "fusionInventory": "selfhost/tools/performance/phase112/fusion/modules03.json",
+  "fusionInventorySha256": "7b7c157bc6b0d0b86b2971cafe4af0c63c1178f4fa4d75ffb82b4d2db95f368d",
+  "modules": [
+    {
+      "file": "selfhost/tools/performance/phase112/regions/model.bend",
+      "bytes": 337,
+      "sha256": "d42126ac85e4f11f0af3ef0df7b3cfa8450b7c4b32b8d92bcc60599c45a51846",
+      "declarations": [
+        "P112RegionEntry",
+        "P112RegionRegistry"
+      ]
+    },
+    {
+      "file": "selfhost/tools/performance/phase112/regions/safe.bend",
+      "bytes": 3238,
+      "sha256": "ae24e000061b2237276fe6d0be53278216d6c80efe76ae68038d02a7bf6d0893",
+      "declarations": [
+        "p112r_buffer_sites",
+        "p112r_buffer",
+        "p112r_buffers",
+        "p112r_runtime_args",
+        "p112r_words",
+        "p112r_private_call",
+        "p112r_scalar",
+        "p112r_failure_frame",
+        "p112r_failure"
+      ]
+    },
+    {
+      "file": "selfhost/tools/performance/phase112/regions/terminal.bend",
+      "bytes": 3355,
+      "sha256": "77df1a1345ed859bb8c3e43ec3555a32d1b87f3a8d1ddc4937571a73d533ff50",
+      "declarations": [
+        "p112r_head_buffer",
+        "p112r_jump",
+        "p112r_tail",
+        "p112r_tail_store",
+        "p112r_result",
+        "p112r_target",
+        "p112r_exit_stores",
+        "p112r_exit"
+      ]
+    },
+    {
+      "file": "selfhost/tools/performance/phase112/regions/plan.bend",
+      "bytes": 3960,
+      "sha256": "4f5b693636976eb74fc1c966d39cb4e21ed3be5fabc3cc1fdc474b916510f146",
+      "declarations": [
+        "p112r_scan",
+        "p112r_normal",
+        "p112r_scan_target",
+        "p112r_next",
+        "p112r_yes",
+        "p112r_no",
+        "p112r_rest",
+        "p112r_prelude",
+        "p112r_plan"
+      ]
+    },
+    {
+      "file": "selfhost/tools/performance/phase112/regions/index.bend",
+      "bytes": 3479,
+      "sha256": "9e355f3a044030424fdad0cb836426f3a6ae1ad2ddda824258bc2055a97cc62d",
+      "declarations": [
+        "p112r_freeze",
+        "p112r_insert",
+        "p112r_fused",
+        "p112r_add",
+        "p112r_pass",
+        "p112r_passes",
+        "p112r_round",
+        "p112r_continue",
+        "p112r_index"
+      ]
+    },
+    {
+      "file": "selfhost/tools/performance/phase112/regions/emit.bend",
+      "bytes": 2127,
+      "sha256": "bc334ce1d3138af7a1f59dad0664b50c0c0dc2698ce90be6470962157547a649",
+      "declarations": [
+        "p112r_private_chunks",
+        "p112r_public_chunks",
+        "p112r_attach",
+        "p112r_chunks",
+        "p112r_segment_chunks",
+        "p112r_counts",
+        "p112r_program_counts"
+      ]
+    }
+  ],
+  "finalOverride": {
+    "file": "selfhost/tools/performance/phase112/regions/entry.bend",
+    "bytes": 240,
+    "sha256": "31d2ce562f8884cde71cf59e9aee6e7dba74798c684cb5453af221c4c1c6176f",
+    "declarations": [
+      "p111q_segment_chunks"
+    ]
+  },
+  "declarations": [
+    "P112RegionEntry",
+    "P112RegionRegistry",
+    "p112r_buffer_sites",
+    "p112r_buffer",
+    "p112r_buffers",
+    "p112r_runtime_args",
+    "p112r_words",
+    "p112r_private_call",
+    "p112r_scalar",
+    "p112r_failure_frame",
+    "p112r_failure",
+    "p112r_head_buffer",
+    "p112r_jump",
+    "p112r_tail",
+    "p112r_tail_store",
+    "p112r_result",
+    "p112r_target",
+    "p112r_exit_stores",
+    "p112r_exit",
+    "p112r_scan",
+    "p112r_normal",
+    "p112r_scan_target",
+    "p112r_next",
+    "p112r_yes",
+    "p112r_no",
+    "p112r_rest",
+    "p112r_prelude",
+    "p112r_plan",
+    "p112r_freeze",
+    "p112r_insert",
+    "p112r_fused",
+    "p112r_add",
+    "p112r_pass",
+    "p112r_passes",
+    "p112r_round",
+    "p112r_continue",
+    "p112r_index",
+    "p112r_private_chunks",
+    "p112r_public_chunks",
+    "p112r_attach",
+    "p112r_chunks",
+    "p112r_segment_chunks",
+    "p112r_counts",
+    "p112r_program_counts",
+    "p111q_segment_chunks"
+  ],
+  "limits": {
+    "ranks": 6,
+    "workerArity": 8,
+    "fusedCalleeArity": 8,
+    "captures": 8,
+    "sitesPerPrivateBody": 8,
+    "copiedContinuationStatements": 128
+  },
+  "runtimePremise": "pinned runtime04 CPU err_post->_exit(1); separate conjunctive admission required",
+  "supersedes": "modules01.json",
+  "reason": "Annotate the local transformed segment with N111Segment for actual source checker; no behavior, bounds or interface change.",
+  "changeReceipt": {
+    "file": "index.bend",
+    "function": "p112r_fused",
+    "before": "+transformed = N111Segment{name,arity,result,incoming,flags,body}",
+    "after": "+transformed: N111Segment = N111Segment{name,arity,result,incoming,flags,body}",
+    "checkerFailurePreservedByCoordinator": true
+  }
+}

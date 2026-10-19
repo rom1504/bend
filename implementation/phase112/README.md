@@ -129,3 +129,33 @@ Runtime diagnostics are independently qualified and explained in
 accounts mechanically for82.14% of the compiler request's heap-allocation calls.
 This motivates the next general scalar-pattern adapter, plus bounded composition
 of fused private workers. Neither is claimed implemented or measured here yet.
+
+## Representation and call-composition controls at02:00 UTC
+
+The new `word` profile reuses mature `NW_Rows` recognition and selector
+specialization before generic lowering. It passes independent low32/F32 raw-bit,
+ordered-row, restored-value, fresh-ID and exact-fallback controls. Four checked
+source fixtures each pass baseline/candidate native builds and independent full
+stdout: scalar/character boundaries, dynamically owned Unicode branches, escaping
+31-bit Word tails, and signed-zero/NaN/infinity bit patterns. The first source
+check failed a missing local type annotation; that failure is preserved.
+
+The optional `regions` profile composes continuation fusion with private-worker
+admission through six immutable ranks. It freezes each first-admitted transformed
+body and exact plan; native call dependencies point to earlier ranks. Non-tail
+self/mutual recursion retains generic fallback. Five paired native fixtures pass,
+including a10,001-iteration local tail loop calling a private leaf and both shared
+String release orders. Independent source admission binds278 declarations and
+refuses11 mutations. Arity remains8 in this initial prototype; it is not yet a
+selected replacement for the wider32-argument worker profile.
+
+The three-input normal prepared-Base compilation screen completed three rotated
+rounds for Phase111 N2, first Phase112 N1 and upstream TypeScript/Bun. Request
+geometric ratios are0.8355 versus Phase111 and5.5911 versus upstream; ready-binary
+stage-sum ratios0.8375 and2.6530. Native emits QBE, upstream emits C, and the
+native runtime object is cached while upstream C/Clang recompiles its runtime.
+These are configured workflow comparisons, not same-format frontend throughput.
+The newer word/selector/fusion profiles are not included in those timings.
+
+A second disjoint authenticated hardlink tier recovered213,897,216 bytes while
+preserving1,027 additional artifact paths and all contents.

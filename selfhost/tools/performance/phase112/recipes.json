@@ -87,6 +87,40 @@
       "overrides": [
         "selectors/entry.bend"
       ]
+    },
+    "word": {
+      "extends": "selectors",
+      "modules": [
+        "word-pattern/original.bend",
+        "word-pattern/emit.bend"
+      ],
+      "overrides": [
+        "word-pattern/entry.bend"
+      ]
+    },
+    "word-core": {
+      "extends": "selectors-core",
+      "modules": [
+        "word-pattern/original.bend",
+        "word-pattern/emit.bend"
+      ],
+      "overrides": [
+        "word-pattern/entry.bend"
+      ]
+    },
+    "regions": {
+      "extends": "word",
+      "modules": [
+        "regions/model.bend",
+        "regions/safe.bend",
+        "regions/terminal.bend",
+        "regions/plan.bend",
+        "regions/index.bend",
+        "regions/emit.bend"
+      ],
+      "overrides": [
+        "regions/entry.bend"
+      ]
     }
   }
 }

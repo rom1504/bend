@@ -1,0 +1,179 @@
+{
+  "kind": "phase114-matched-broad-summary",
+  "version": 1,
+  "complete": true,
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase112/p114-final-hosted45-runtime01/report.json",
+      "bytes": 941653,
+      "sha256": "fafd5136a25f3daceb767dcaed23b45a76aaec643079a7bd82b45d61c27c6b87"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase114/plot-results.py",
+      "bytes": 14036,
+      "sha256": "1d11af44617dfcefa86a3adbf9fa2a7031ff333f51d1a96923dd53004b66e355"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase112/benchmark45/manifest01.json",
+      "bytes": 229972,
+      "sha256": "80b07bdc76528bf58ae322ffed470eaa8ccdc8fa3d5cea73aa6d652d66cc6adc"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase112/benchmark45/upstream-50ms-profile01.json",
+      "bytes": 17183,
+      "sha256": "d32fa6cae73dee3932ff28a2257e4979c01dbe7612e30ffba9fdd929713b501e"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase114/bench/manifest01.json",
+      "bytes": 31178,
+      "sha256": "cd8c7fb6a1f3f5579f966a0d0980ae8c3dbe8520403ce453fddd130d0d1ae5d1"
+    }
+  ],
+  "roles": [
+    "upstream",
+    "p113-final31-hosted",
+    "p114-final-hosted45"
+  ],
+  "rounds": 3,
+  "sourcePrograms": 45,
+  "timingPoints": 44,
+  "outputObservations": 405,
+  "allOutputsPassed": true,
+  "broad": {
+    "count": 44,
+    "geomeanRatios": {
+      "phase113OverUpstream": 7.0818290971992575,
+      "phase114OverUpstream": 5.386051781503013,
+      "phase114OverPhase113": 0.7605452924066048
+    },
+    "geomeanSpeedup": 1.3148460847554326,
+    "geomeanTimeReductionPercent": 23.945470759339514,
+    "sameRunElapsedMs": {
+      "upstream": 6665,
+      "p113-final31-hosted": 52186,
+      "p114-final-hosted45": 40896
+    },
+    "summedElapsedPhase114OverPhase113": 0.7836584524585137
+  },
+  "frozenScreen": {
+    "count": 8,
+    "geomeanRatios": {
+      "phase113OverUpstream": 7.834388196506424,
+      "phase114OverUpstream": 5.612089630875699,
+      "phase114OverPhase113": 0.7163405093174079
+    },
+    "geomeanSpeedup": 1.3959841541739526,
+    "geomeanTimeReductionPercent": 28.365949068259212,
+    "sameRunElapsedMs": {
+      "upstream": 1209,
+      "p113-final31-hosted": 10555,
+      "p114-final-hosted45": 7475
+    },
+    "summedElapsedPhase114OverPhase113": 0.7081951681667457,
+    "names": [
+      "scalar-region-8192",
+      "local-pair",
+      "variation-ray-active-256-2240",
+      "lexer",
+      "coverage-list-pipeline-128",
+      "tree-bitonic",
+      "coverage-expression-128",
+      "coverage-map-churn-128"
+    ]
+  },
+  "outsideFrozenScreen": {
+    "count": 36,
+    "geomeanRatios": {
+      "phase113OverUpstream": 6.924666371663076,
+      "phase114OverUpstream": 5.33707065631333,
+      "phase114OverPhase113": 0.7707332555621076
+    },
+    "geomeanSpeedup": 1.2974657480825642,
+    "geomeanTimeReductionPercent": 22.926674443789242,
+    "sameRunElapsedMs": {
+      "upstream": 5456,
+      "p113-final31-hosted": 41631,
+      "p114-final-hosted45": 33421
+    },
+    "summedElapsedPhase114OverPhase113": 0.8027911892580049,
+    "names": [
+      "mandelbrot",
+      "editdist",
+      "symreg",
+      "test-morning-program",
+      "test-evening-program",
+      "test-rle-roundtrip",
+      "test-map-set-ops",
+      "raytrace",
+      "local-fold",
+      "complete-generic-row32",
+      "variation-editdist-0-17",
+      "variation-editdist-3-123",
+      "variation-lexer-6-17",
+      "variation-lexer-10-123",
+      "variation-tree-bitonic-6-17",
+      "variation-tree-bitonic-9-123",
+      "variation-symreg-4-17",
+      "variation-symreg-7-123",
+      "variation-local-fold-128-0",
+      "variation-local-fold-8192-123",
+      "variation-mandelbrot-grid-4-7",
+      "variation-mandelbrot-grid-5-31",
+      "variation-ray-active-64-2440",
+      "coverage-closures-64",
+      "coverage-closures-256",
+      "coverage-list-pipeline-512",
+      "coverage-bst-32",
+      "coverage-bst-64",
+      "coverage-unicode-text-16",
+      "coverage-unicode-text-64",
+      "coverage-expression-32",
+      "coverage-map-churn-32",
+      "coverage-numeric-recurrence-256",
+      "coverage-numeric-recurrence-1024",
+      "coverage-record-aggregation-64",
+      "coverage-record-aggregation-256"
+    ],
+    "scope": "Previously seen historical workload coverage outside the frozen eight-program screen; not a blind holdout."
+  },
+  "zeroWorkControl": {
+    "name": "scalar-region-0",
+    "samplesMs": {
+      "upstream": [
+        0,
+        0,
+        0
+      ],
+      "p113-final31-hosted": [
+        0,
+        0,
+        0
+      ],
+      "p114-final-hosted45": [
+        0,
+        0,
+        0
+      ]
+    },
+    "ratios": null
+  },
+  "medianComparisons": {
+    "faster": 33,
+    "equal": 6,
+    "slower": 5
+  },
+  "comparison": "Three-round medians from one rotated, matched campaign. Ratios below one are faster. Geomeans weight each program equally; summed elapsed ratio weights all measured batch milliseconds.",
+  "scope": "Generated-program runtime and complete-output qualification only; compiler acquisition/builds excluded. No native compiler self-hosting qualification or confidence interval is inferred.",
+  "artifacts": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/implementation/phase114/broad-runtime.csv",
+      "bytes": 5813,
+      "sha256": "15a8e38a1441a77aa5186ffabf33c5e6430494ebcfc2c6ff5ef239a3b02e88a6"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/implementation/phase114/broad-runtime.svg",
+      "bytes": 143148,
+      "sha256": "49ae8874d182963bfa509e06a34ada98addef94140d1d1fa86114d67f25ee011"
+    }
+  ]
+}

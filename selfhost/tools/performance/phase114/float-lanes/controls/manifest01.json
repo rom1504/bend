@@ -1,0 +1,78 @@
+{
+  "kind": "phase114-float-lanes-ordinary-source-controls",
+  "cases": [
+    {
+      "name": "copy-chain",
+      "sourcePin": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase114/float-lanes/controls/fixtures/copy-chain.bend",
+        "bytes": 1118,
+        "sha256": "ba0ee8ad2b938d6f1652ffb2f93858feb167b8958328d39d6ac868617fb0aeaf"
+      },
+      "expected": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase114/float-lanes/controls/expected/copy-chain.json",
+        "bytes": 122,
+        "sha256": "4f893a3d5276ee57729870c1941075c6d71b62bd48374a64ed013c71925ec339"
+      },
+      "workers": [
+        [
+          "copy_chain",
+          "reuse"
+        ],
+        [
+          "convert_chain",
+          "reuse"
+        ],
+        [
+          "mixed",
+          "retain"
+        ]
+      ]
+    },
+    {
+      "name": "ordinary-floats",
+      "sourcePin": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase114/scalar-operands/controls/fixtures/ordinary-floats.bend",
+        "bytes": 1029,
+        "sha256": "71054b47b62c3b671b5d292a1d0b252bd3043f1550f0a20bbcf81ecfd63daba2"
+      },
+      "expected": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase114/scalar-operands/controls/expected/ordinary-floats.json",
+        "bytes": 110,
+        "sha256": "79691d47736785f7f05b9d3acaf744c9a26cf588ee77dd93bf3f46db5b487e6f"
+      },
+      "workers": [
+        [
+          "arithmetic",
+          "reuse"
+        ],
+        [
+          "mixed",
+          "retain"
+        ]
+      ]
+    }
+  ],
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase114/float-lanes/controls/fixtures/copy-chain.bend",
+      "bytes": 1118,
+      "sha256": "ba0ee8ad2b938d6f1652ffb2f93858feb167b8958328d39d6ac868617fb0aeaf"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase114/float-lanes/controls/expected/copy-chain.json",
+      "bytes": 122,
+      "sha256": "4f893a3d5276ee57729870c1941075c6d71b62bd48374a64ed013c71925ec339"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase114/scalar-operands/controls/fixtures/ordinary-floats.bend",
+      "bytes": 1029,
+      "sha256": "71054b47b62c3b671b5d292a1d0b252bd3043f1550f0a20bbcf81ecfd63daba2"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase114/scalar-operands/controls/expected/ordinary-floats.json",
+      "bytes": 110,
+      "sha256": "79691d47736785f7f05b9d3acaf744c9a26cf588ee77dd93bf3f46db5b487e6f"
+    }
+  ],
+  "scope": "Literal independent full-value expectations. Actual copy/rebind/reuse occurrences must be checked after ordinary lowering; source success alone does not prove path coverage."
+}

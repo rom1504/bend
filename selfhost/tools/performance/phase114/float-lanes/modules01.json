@@ -1,0 +1,67 @@
+{
+  "kind": "phase114-local-float-lanes-source-inventory",
+  "version": 1,
+  "base": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase114/scalar-operands-source02/compiler.bend",
+    "bytes": 2321123,
+    "sha256": "322ee7f037b3cea9a0bd2223d985e485eaf81cd0bd4212d38d504a5c4130913e"
+  },
+  "baseAdmission": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase114/scalar-operands-admission01/manifest.json",
+    "bytes": 7223,
+    "sha256": "9f91dab40f3b16b3ad4537cd828f4a3402fd20c571b8492c5d1d23e055567495"
+  },
+  "baseApi": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p114-scalar-operands-api02/report.json",
+    "bytes": 6808,
+    "sha256": "c8a9f1a5b111f92546fffa289e5b9e4d32d521c75cb4805efeb35ba8aed3ae98"
+  },
+  "modules": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase114/float-lanes/facts.bend",
+      "bytes": 2126,
+      "sha256": "cdb98107d34c011d0b509397eb6713de10da073bfcbc2d20ffd9a941d513405b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase114/float-lanes/emit.bend",
+      "bytes": 3924,
+      "sha256": "e766776da26c869223237929fb470e1bda4cb1d86bc10e11a16247b58e1f74fa"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase114/float-lanes/entry.bend",
+      "bytes": 343,
+      "sha256": "29f5518ac9a2ffa9fc3477149d84dffd27064ce8ca695a9a0fdb7ae8ac308864"
+    }
+  ],
+  "overrides": [
+    "p114so_stmts"
+  ],
+  "runtimeSource": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/runtime-products01/runtime.c",
+    "bytes": 138654,
+    "sha256": "ea10b5d993fed79738817ee14cc52270e4faf5474128cf082b083e3c09cf655a"
+  },
+  "runtimeObject": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/runtime-products-build01/runtime.o",
+    "bytes": 96224,
+    "sha256": "c0f6f2ca5b5a58418f326794e97a29cc21a68f32e924ce5974ad4ffccfc9c9f9"
+  },
+  "exports": [
+    "p114fl_find",
+    "p114fl_bind",
+    "p114fl_copy",
+    "p114fl_result",
+    "p114fl_value",
+    "p114fl_text",
+    "p114so_buffers",
+    "p114so_group",
+    "p113e_private",
+    "p111q_ids"
+  ],
+  "hypothesis": {
+    "file": "/home/ai/bend2/build/publish/bend/experiments/phase114/P114-011-local-float-lanes.md",
+    "bytes": 2749,
+    "sha256": "fa29b108bee7d4674dff5f552802f0323d0019536c3d8c41ee7d66e0dca00a8d"
+  },
+  "scope": "Exact scalar-operands02 parent plus bounded local F32-result lane reuse through recognized pure groups and exact unchanged U64 local copies. All other statements reset. No ABI, word results, arithmetic ordering, runtime or original verifier changes. Qualification pending."
+}

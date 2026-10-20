@@ -1,0 +1,19 @@
+{
+  "kind": "phase113-product-import-catalogue",
+  "profile": 11301,
+  "stateAbi": 11101,
+  "symbol": "p113_rt_array_pair",
+  "parameters": ["state:Ptr", "operation:U32", "input:Ptr", "inputCount:U32", "output:Ptr", "outputCount:U32"],
+  "result": "U64 status zero",
+  "operations": [
+    {"name": "array_get", "id": 72, "inputs": 2, "outputs": 2, "credits": "array transferred; element retained by native_array_get"},
+    {"name": "array_swap", "id": 74, "inputs": 3, "outputs": 2, "credits": "array transferred; replacement consumed; previous element transferred"},
+    {"name": "array_size", "id": 75, "inputs": 1, "outputs": 2, "credits": "array transferred; immediate size"},
+    {"name": "array_clone", "id": 76, "inputs": 1, "outputs": 2, "credits": "array transferred; independently owned blk_copy result"}
+  ],
+  "checks": ["exact operation and input count before arguments read", "output count exactly two before operation", "non-null state/input/output", "compiler proves input/output local allocation capacities", "no state pointer used as array buffer"],
+  "failure": "CPU fail-stop via existing err_fail/p111_require; no nonzero-return path or partially valid vector",
+  "effects": "Existing heap/array/ownership work; no dispatcher frame, rn, next or register-bank writes",
+  "privateFunctionAbi": {"flatInputWordsMax": 32, "resultWordsMax": 8, "single": "l (state, Terms...) -> owning Term", "multiple": "l (state, outPtr, Terms...) -> status zero; exact result count of owning U64 slots"},
+  "scope": "Checked source and authenticated mature layout only; unknown/escaping products retain generic boxed public entry"
+}

@@ -1,0 +1,162 @@
+{
+  "kind": "phase113-independent-array-pair-boundary-controls",
+  "version": 1,
+  "frozenUtc": "2026-10-20T18:22:05.484776+00:00",
+  "targetsRun": false,
+  "inputs": [
+    {
+      "file": "selfhost/tools/performance/phase113/controls/array-pair-boundary.c",
+      "bytes": 8411,
+      "sha256": "876419cf193b767e10cf8a95e15273fe491aaf2c5150c83cb5010b8f4dec5bda"
+    },
+    {
+      "file": "selfhost/tools/performance/phase113/controls/run-array-pair.py",
+      "bytes": 3217,
+      "sha256": "5dbf70f05e540555abe1d3daedb2c21ad63b3c0f2c322e2a0d33f3f1541925d2"
+    }
+  ],
+  "cases": [
+    {
+      "name": "get-array-first",
+      "expected": {
+        "status": 0,
+        "stdout": "get-array-first:ok\n0\n",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "get-value-first",
+      "expected": {
+        "status": 0,
+        "stdout": "get-value-first:ok\n0\n",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "swap-unique",
+      "expected": {
+        "status": 0,
+        "stdout": "swap-unique:ok\n0\n",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "swap-shared",
+      "expected": {
+        "status": 0,
+        "stdout": "swap-shared:ok\n0\n",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "clone-original-first",
+      "expected": {
+        "status": 0,
+        "stdout": "clone-original-first:ok\n0\n",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "clone-copy-first",
+      "expected": {
+        "status": 0,
+        "stdout": "clone-copy-first:ok\n0\n",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "overlap-exact",
+      "expected": {
+        "status": 0,
+        "stdout": "overlap-exact:ok\n0\n",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "overlap-forward",
+      "expected": {
+        "status": 0,
+        "stdout": "overlap-forward:ok\n0\n",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "sizes",
+      "expected": {
+        "status": 0,
+        "stdout": "sizes:ok\n0\n",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "repeat-ownership",
+      "expected": {
+        "status": 0,
+        "stdout": "repeat-ownership:ok\n0\n",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "reject-operation",
+      "expected": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "bend: phase113: unsupported array pair operation\n"
+      }
+    },
+    {
+      "name": "reject-argument-count",
+      "expected": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "bend: phase113: array pair argument count mismatch\n"
+      }
+    },
+    {
+      "name": "reject-output-count",
+      "expected": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "bend: phase113: array pair output count mismatch\n"
+      }
+    },
+    {
+      "name": "reject-null-state",
+      "expected": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "bend: phase113: array pair missing state or buffer\n"
+      }
+    },
+    {
+      "name": "reject-null-input",
+      "expected": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "bend: phase113: array pair missing state or buffer\n"
+      }
+    },
+    {
+      "name": "reject-null-output",
+      "expected": {
+        "status": 1,
+        "stdout": "",
+        "stderr": "bend: phase113: array pair missing state or buffer\n"
+      }
+    }
+  ],
+  "scope": "Finite root-executed runtime ABI observations, not source frontend conformance, optimizer admission, allocator balance or general ownership proof. Each positive checks generic Tuple route and new flat route independently against literal Unicode and scalar observations. Runtime04 ABI/header plus additive profile11301 required. No benchmark gain inference.",
+  "buildRecipe": [
+    "clang",
+    "-std=c11",
+    "-O2",
+    "-I",
+    "ADDITIVE_RUNTIME_DIR",
+    "selfhost/tools/performance/phase113/controls/array-pair-boundary.c",
+    "ADDITIVE_RUNTIME_DIR/runtime.o",
+    "-pthread",
+    "-lm",
+    "-o",
+    "FRESH_BINARY"
+  ]
+}

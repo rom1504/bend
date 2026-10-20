@@ -1,0 +1,33 @@
+{
+  "schema": "phase113-fact-overrides-v1",
+  "overrides": [
+    {
+      "name": "p111_bind_value",
+      "origin": "selfhost/tools/performance/phase112/typed-ownership/overrides.bend",
+      "origin_declaration_sha256": "e94c301b817d9c6c4163239e93b33bf92efffe36ee4c532cad892e75980d0821",
+      "replacement": "nk_binding(id, value, env) -> p113_binding(book, id, value, env)",
+      "new_declaration_sha256": "64c5c24afd575e8758991f572d3cbd5ab9dbb49fcb5087aa7d8d751b557fc511"
+    },
+    {
+      "name": "p112_liveness_value",
+      "origin": "selfhost/tools/performance/phase112/typed-ownership/overrides.bend",
+      "origin_declaration_sha256": "74c4aecc167bc2917f0ac93123087fcd9e414e1b35fd5d2e19633e40a5089e74",
+      "replacement": "nk_binding(id, value, env) -> p113_binding(book, id, value, env)",
+      "new_declaration_sha256": "27af977cc69e1d65871cc6cf5f818bc473b8d718602e116b3ade86cb6d127f74"
+    },
+    {
+      "name": "p112_liveness_cut",
+      "origin": "selfhost/tools/performance/phase112/liveness/continuation.bend",
+      "origin_declaration_sha256": "7b7fc14082041cbdfb6d4305819ca316503d142421799a289b544e530936fb72",
+      "replacement": "nc_binding(id) -> p113_binding(book, id, value, env)",
+      "new_declaration_sha256": "b9ce5c784e2c33ac4c4b37d2462c7918b3f3763b931a1318b87fcfe8d3b4c95a"
+    },
+    {
+      "name": "p111_let_cut",
+      "origin": "selfhost/tools/performance/phase111/segment/lower-control.bend",
+      "origin_declaration_sha256": "44595d522fdfbecc24647ce2b44036d34570c7df9041bdd866fedbc6748b14a1",
+      "replacement": "nc_binding(id) -> p113_binding(book, id, value, env)",
+      "new_declaration_sha256": "3f6a72fd2303947135ff3a8676dc4be185944775d9cd385789eb2147a35a8450"
+    }
+  ]
+}

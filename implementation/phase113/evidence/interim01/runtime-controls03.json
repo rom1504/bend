@@ -1,0 +1,132 @@
+{
+  "kind": "phase113-serial-jobs",
+  "complete": true,
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/runtime-controls-plan03.json",
+      "sha256": "d1e5a520dd8bda264d8d6512a86f57ed06aea40e3800e51be4c60e7f6beb2dd1",
+      "bytes": 2842
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase113/run-jobs.py",
+      "sha256": "eda86523253d9b0f0abd8dfd3e8b2167252cfff0352b0d9949458c7b0969309e",
+      "bytes": 1692
+    }
+  ],
+  "jobs": [
+    {
+      "name": "boundary-build",
+      "command": [
+        "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+        "-isystem",
+        "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/include/clang",
+        "-std=c11",
+        "-O2",
+        "-I",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/runtime-products01",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase113/controls/array-pair-boundary.c",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/runtime-products-build01/runtime.o",
+        "-pthread",
+        "-lm",
+        "-o",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/array-pair-boundary01"
+      ],
+      "seconds": 0.16523443604819477,
+      "status": 0,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/runtime-controls03/0.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/runtime-controls03/0.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "name": "boundary-observe",
+      "command": [
+        "python3",
+        "-B",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase113/controls/run-array-pair.py",
+        "--binary",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/array-pair-boundary01",
+        "--runtime",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/runtime-products-build01/runtime.o",
+        "--out",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/array-pair-observe01"
+      ],
+      "seconds": 0.11609027185477316,
+      "status": 0,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/runtime-controls03/1.stdout",
+        "sha256": "c2803bbb825f4790b0953989f675205043e0cf91e2a864fea21144a1bf1de5f2",
+        "bytes": 709
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/runtime-controls03/1.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "name": "shared-build",
+      "command": [
+        "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+        "-isystem",
+        "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/include/clang",
+        "-std=c11",
+        "-O2",
+        "-I",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/runtime-products01",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase113/controls/array-shared-handle.c",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/runtime-products-build01/runtime.o",
+        "-pthread",
+        "-lm",
+        "-o",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/array-shared-handle01"
+      ],
+      "seconds": 0.16475642286241055,
+      "status": 0,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/runtime-controls03/2.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/runtime-controls03/2.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "name": "shared-observe",
+      "command": [
+        "python3",
+        "-B",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase113/controls/run-array-pair-v2.py",
+        "--binary",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/array-shared-handle01",
+        "--runtime",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/runtime-products-build01/runtime.o",
+        "--manifest",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase113/controls/array-shared-handle-manifest01.json",
+        "--out",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/array-shared-observe01"
+      ],
+      "seconds": 0.06514950515702367,
+      "status": 0,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/runtime-controls03/3.stdout",
+        "sha256": "b8aa4c3f18d09bc9f894cc89cc82f9a6d9261ecae680b325a284ddad30f9f3dd",
+        "bytes": 97
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/runtime-controls03/3.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    }
+  ]
+}

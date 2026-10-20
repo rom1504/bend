@@ -1,0 +1,503 @@
+{
+  "kind": "phase112-frozen-diagnostic-batch",
+  "version": 1,
+  "targetsRun": false,
+  "createdUTC": "2026-10-20T18:44:00.094737+00:00",
+  "role": "scalar08",
+  "binding": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase112/p113-scalar-binding08.json",
+    "bytes": 38662,
+    "sha256": "226954c1c7548b514b283d42bab2e4fdc92fffa27eab53617925da35b4929792"
+  },
+  "benchmarkManifest": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase113/bench/manifest01.json",
+    "bytes": 39488,
+    "sha256": "0fb806d6c0b13bd66de02b72629681f9bbc952403cfc7060aa6e1d826eb3e5ea"
+  },
+  "compiler": {
+    "file": "/usr/bin/x86_64-linux-gnu-gcc-10",
+    "bytes": 817704,
+    "sha256": "693abcb42e67fb871673f258a3644257ca69a209691ec4d8137a42442834bd19"
+  },
+  "cases": [
+    {
+      "name": "scalar-region-8192",
+      "object": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-scalar08-scalar-region-8192-build/program.o",
+        "bytes": 185424,
+        "sha256": "6dceaaa32ea2d2418d9ece7b1e0337592b6aa604771d235464390af89a3575a7"
+      },
+      "qbe": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-scalar08-scalar-region-8192-emit/program.ssa",
+        "bytes": 484220,
+        "sha256": "f9c0ce3824f8edde4180b329d744d3145a907a3f24421846f5749fa7ca610dab"
+      },
+      "build": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-scalar08-scalar-region-8192-build/report.json",
+        "bytes": 5043,
+        "sha256": "545f43f3bee974ffcefd0fc500a264e3ccd6742e483b68e6619f8b4e80d28887"
+      },
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-scalar08-scalar-region-8192-emit/report.json",
+        "bytes": 9869,
+        "sha256": "746006ca65bb3913eb288113d975377803508d16311ae7d9e0f720ba4b8ab362"
+      },
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/fixtures01/scalar-region-8192.bend",
+        "bytes": 3454,
+        "sha256": "ee300ddfdeda2e89e2f52550ec10d9f22842276cef737fbd19578bed095133f7"
+      },
+      "oracle": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase111/coverage/full45/expected/scalar-region-8192.stdout",
+        "bytes": 5,
+        "sha256": "131e490ede5d344e5a8539d4a5335ccc70db7eacb397b876cffc72578b1331bf"
+      },
+      "runtimeArgs": [
+        8192,
+        524800
+      ],
+      "repetitions": 1,
+      "warmups": 0,
+      "expected": {
+        "kind": "phase112-diagnostic-batch-output",
+        "status": 0,
+        "stdoutPrefix": "8192\n0\n1\n",
+        "stderr": "",
+        "suffixRule": "unsigned-decimal-milliseconds-newline"
+      }
+    },
+    {
+      "name": "local-pair",
+      "object": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-scalar08-local-pair-build/program.o",
+        "bytes": 227936,
+        "sha256": "9b8cb3d8947dac256bbcae5ad4b5cfa8251c7a22c8e141197a6f7ea75841dc0d"
+      },
+      "qbe": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-scalar08-local-pair-emit/program.ssa",
+        "bytes": 551558,
+        "sha256": "723932732d08ef776c9d6767bb1614ee5ecab7a2364c0cf3c553191999e1d5f6"
+      },
+      "build": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-scalar08-local-pair-build/report.json",
+        "bytes": 4917,
+        "sha256": "a962a67c66df7268534913ae4cc428f296d3a21396e11ef93ae3e6402a81c3e9"
+      },
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-scalar08-local-pair-emit/report.json",
+        "bytes": 9845,
+        "sha256": "8238b75bd39f6525516ad2ff027bbf56e02d8ae42fa1e38b92b6ba7195fc7e71"
+      },
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/fixtures01/local-pair.bend",
+        "bytes": 8202,
+        "sha256": "acb8a8bc1d8ed6fd5c3a57e08c154042e0524a8d4f3f12ddcec9da75a327e78c"
+      },
+      "oracle": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase111/coverage/full45/expected/local-pair.stdout",
+        "bytes": 11,
+        "sha256": "4a736bfb1ff7d70ef494f46a67ca008db9fb990a30e28898d56d21583bf734fe"
+      },
+      "runtimeArgs": [
+        0,
+        0
+      ],
+      "repetitions": 1,
+      "warmups": 0,
+      "expected": {
+        "kind": "phase112-diagnostic-batch-output",
+        "status": 0,
+        "stdoutPrefix": "1866542166\n0\n1\n",
+        "stderr": "",
+        "suffixRule": "unsigned-decimal-milliseconds-newline"
+      }
+    },
+    {
+      "name": "editdist",
+      "object": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-scalar08-editdist-build/program.o",
+        "bytes": 231376,
+        "sha256": "4574a27e22a1afc2907ca5f5d085b003ca6c91ec2747864aadcaf0c3b168c580"
+      },
+      "qbe": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-scalar08-editdist-emit/program.ssa",
+        "bytes": 559557,
+        "sha256": "36bc0349fa2267d6da8b885ba0394e4caedfe57bcd451bf34c6a4f34bdca0888"
+      },
+      "build": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-scalar08-editdist-build/report.json",
+        "bytes": 4883,
+        "sha256": "a846a8acfbfc42b186f02fb82524f7928ef67de1b9a7e9bbf4ab3e3ed3544f07"
+      },
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-scalar08-editdist-emit/report.json",
+        "bytes": 9842,
+        "sha256": "935caaec74681bdee108d3c10bb9966b763add06fa3cb67d7713881fa71cfaf7"
+      },
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/fixtures01/editdist.bend",
+        "bytes": 7835,
+        "sha256": "759d82e26789e55187d175cb8416d6ebe4266a53f73a53ca6d32b69d4f71e988"
+      },
+      "oracle": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase111/coverage/full45/expected/editdist.stdout",
+        "bytes": 11,
+        "sha256": "cc6e43baccd95c4f6e49e8df91d27c77ab7d18524070d83af32977422f0b1280"
+      },
+      "runtimeArgs": [
+        2,
+        0
+      ],
+      "repetitions": 1,
+      "warmups": 0,
+      "expected": {
+        "kind": "phase112-diagnostic-batch-output",
+        "status": 0,
+        "stdoutPrefix": "2065873279\n0\n1\n",
+        "stderr": "",
+        "suffixRule": "unsigned-decimal-milliseconds-newline"
+      }
+    },
+    {
+      "name": "variation-ray-active-256-2240",
+      "object": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-scalar08-variation-ray-active-256-2240-build/program.o",
+        "bytes": 348080,
+        "sha256": "24a0a97cd44f9597798348fd721eef0e5a3a7bb719084cbaee3b820660fd8be3"
+      },
+      "qbe": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-scalar08-variation-ray-active-256-2240-emit/program.ssa",
+        "bytes": 1131373,
+        "sha256": "fc486bbac456b4653681c5a27add835426579ce8aac0f793bfeba1a5de99543b"
+      },
+      "build": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-scalar08-variation-ray-active-256-2240-build/report.json",
+        "bytes": 5219,
+        "sha256": "d8751412508b54f2130764218042fa1dd05058abe8ed3eaecd000d7962d38578"
+      },
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-scalar08-variation-ray-active-256-2240-emit/report.json",
+        "bytes": 9911,
+        "sha256": "f1f50604f7cdde70a6b93e2963ff77ca255a066e8b28d87c86a6dd6f1bff66b8"
+      },
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/fixtures01/variation-ray-active-256-2240.bend",
+        "bytes": 16661,
+        "sha256": "7099448e301e2cab7cb5ab47e2a4892dbf44ac246676b4f950282c7a57007669"
+      },
+      "oracle": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase111/coverage/full45/expected/variation-ray-active-256-2240.stdout",
+        "bytes": 11,
+        "sha256": "15adde12f874e278a5e96d86c4ee20d18706611252e5cfc76a3ba63d29170dcf"
+      },
+      "runtimeArgs": [
+        256,
+        2240
+      ],
+      "repetitions": 1,
+      "warmups": 0,
+      "expected": {
+        "kind": "phase112-diagnostic-batch-output",
+        "status": 0,
+        "stdoutPrefix": "2166930202\n0\n1\n",
+        "stderr": "",
+        "suffixRule": "unsigned-decimal-milliseconds-newline"
+      }
+    },
+    {
+      "name": "lexer",
+      "object": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-scalar08-lexer-build/program.o",
+        "bytes": 231624,
+        "sha256": "a5919b370ab4eea802ba634da61d37edd297c253ed93c0afe773d9ed0a635287"
+      },
+      "qbe": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-scalar08-lexer-emit/program.ssa",
+        "bytes": 574951,
+        "sha256": "284797130a7df3b659d9018179c9a24c93b4a7fe797de8318c80a352cadb0830"
+      },
+      "build": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-scalar08-lexer-build/report.json",
+        "bytes": 4836,
+        "sha256": "6491c08516aadb77e441c17dfa26452b4ca667cefb58efc53bba4b67d0e9235a"
+      },
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-scalar08-lexer-emit/report.json",
+        "bytes": 9848,
+        "sha256": "0ba0b592880133352394cd594bf6d747b19732d6e715ba95c57898a54ab06398"
+      },
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/fixtures01/lexer.bend",
+        "bytes": 9095,
+        "sha256": "bfb62870600b63fd6ec6088471a2d805fabb819a7f2e9d47c9b0ef3c368d169a"
+      },
+      "oracle": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase111/coverage/full45/expected/lexer.stdout",
+        "bytes": 11,
+        "sha256": "ce7ae380f780c64e26dc0b2fd2f547364c4e837bdecd61714cf04150768acf0a"
+      },
+      "runtimeArgs": [
+        8,
+        0
+      ],
+      "repetitions": 1,
+      "warmups": 0,
+      "expected": {
+        "kind": "phase112-diagnostic-batch-output",
+        "status": 0,
+        "stdoutPrefix": "1822208108\n0\n1\n",
+        "stderr": "",
+        "suffixRule": "unsigned-decimal-milliseconds-newline"
+      }
+    },
+    {
+      "name": "coverage-closures-256",
+      "object": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-scalar08-coverage-closures-256-build/program.o",
+        "bytes": 162632,
+        "sha256": "a943ab8e12743633648c029d455009c1f27097be15d6bb1f8d84b184fe57db3a"
+      },
+      "qbe": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-scalar08-coverage-closures-256-emit/program.ssa",
+        "bytes": 376677,
+        "sha256": "1bdeb1c3af5a74f83643da33f080c4cde624b041f939a98fbd2ff754c3917070"
+      },
+      "build": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-scalar08-coverage-closures-256-build/report.json",
+        "bytes": 5089,
+        "sha256": "fb0aeaf96a0d6b44ef2b7eaf4f3999efe4e9fc0fc31b3abcb5bce5996ea3ef15"
+      },
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-scalar08-coverage-closures-256-emit/report.json",
+        "bytes": 9883,
+        "sha256": "c9a804d70a914dacd2b1038bf4b278a6378a3e44e0b585a76034a72099989439"
+      },
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/fixtures01/coverage-closures-256.bend",
+        "bytes": 3369,
+        "sha256": "d0e35c8343fcbe86b45211f7738d293a27a0a5184060e0136b0275fc9556cef4"
+      },
+      "oracle": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase111/coverage/full45/expected/coverage-closures-256.stdout",
+        "bytes": 6,
+        "sha256": "8cf0773ed5fb75c07a06d48185cd73ff8f1921c588db76a3df3731a557c40b15"
+      },
+      "runtimeArgs": [
+        256,
+        123
+      ],
+      "repetitions": 1,
+      "warmups": 0,
+      "expected": {
+        "kind": "phase112-diagnostic-batch-output",
+        "status": 0,
+        "stdoutPrefix": "33019\n0\n1\n",
+        "stderr": "",
+        "suffixRule": "unsigned-decimal-milliseconds-newline"
+      }
+    }
+  ],
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase113/bench/prepare-counter-plan.py",
+      "bytes": 2709,
+      "sha256": "14a22d763ca683f85ea1c78c93e40e9669f8332b3191107cf8d33cc8f7018d71"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase112/p113-scalar-binding08.json",
+      "bytes": 38662,
+      "sha256": "226954c1c7548b514b283d42bab2e4fdc92fffa27eab53617925da35b4929792"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase113/bench/manifest01.json",
+      "bytes": 39488,
+      "sha256": "0fb806d6c0b13bd66de02b72629681f9bbc952403cfc7060aa6e1d826eb3e5ea"
+    },
+    {
+      "file": "/usr/bin/x86_64-linux-gnu-gcc-10",
+      "bytes": 817704,
+      "sha256": "693abcb42e67fb871673f258a3644257ca69a209691ec4d8137a42442834bd19"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-scalar08-scalar-region-8192-build/program.o",
+      "bytes": 185424,
+      "sha256": "6dceaaa32ea2d2418d9ece7b1e0337592b6aa604771d235464390af89a3575a7"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-scalar08-scalar-region-8192-emit/program.ssa",
+      "bytes": 484220,
+      "sha256": "f9c0ce3824f8edde4180b329d744d3145a907a3f24421846f5749fa7ca610dab"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-scalar08-scalar-region-8192-build/report.json",
+      "bytes": 5043,
+      "sha256": "545f43f3bee974ffcefd0fc500a264e3ccd6742e483b68e6619f8b4e80d28887"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-scalar08-scalar-region-8192-emit/report.json",
+      "bytes": 9869,
+      "sha256": "746006ca65bb3913eb288113d975377803508d16311ae7d9e0f720ba4b8ab362"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/fixtures01/scalar-region-8192.bend",
+      "bytes": 3454,
+      "sha256": "ee300ddfdeda2e89e2f52550ec10d9f22842276cef737fbd19578bed095133f7"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase111/coverage/full45/expected/scalar-region-8192.stdout",
+      "bytes": 5,
+      "sha256": "131e490ede5d344e5a8539d4a5335ccc70db7eacb397b876cffc72578b1331bf"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-scalar08-local-pair-build/program.o",
+      "bytes": 227936,
+      "sha256": "9b8cb3d8947dac256bbcae5ad4b5cfa8251c7a22c8e141197a6f7ea75841dc0d"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-scalar08-local-pair-emit/program.ssa",
+      "bytes": 551558,
+      "sha256": "723932732d08ef776c9d6767bb1614ee5ecab7a2364c0cf3c553191999e1d5f6"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-scalar08-local-pair-build/report.json",
+      "bytes": 4917,
+      "sha256": "a962a67c66df7268534913ae4cc428f296d3a21396e11ef93ae3e6402a81c3e9"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-scalar08-local-pair-emit/report.json",
+      "bytes": 9845,
+      "sha256": "8238b75bd39f6525516ad2ff027bbf56e02d8ae42fa1e38b92b6ba7195fc7e71"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/fixtures01/local-pair.bend",
+      "bytes": 8202,
+      "sha256": "acb8a8bc1d8ed6fd5c3a57e08c154042e0524a8d4f3f12ddcec9da75a327e78c"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase111/coverage/full45/expected/local-pair.stdout",
+      "bytes": 11,
+      "sha256": "4a736bfb1ff7d70ef494f46a67ca008db9fb990a30e28898d56d21583bf734fe"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-scalar08-editdist-build/program.o",
+      "bytes": 231376,
+      "sha256": "4574a27e22a1afc2907ca5f5d085b003ca6c91ec2747864aadcaf0c3b168c580"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-scalar08-editdist-emit/program.ssa",
+      "bytes": 559557,
+      "sha256": "36bc0349fa2267d6da8b885ba0394e4caedfe57bcd451bf34c6a4f34bdca0888"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-scalar08-editdist-build/report.json",
+      "bytes": 4883,
+      "sha256": "a846a8acfbfc42b186f02fb82524f7928ef67de1b9a7e9bbf4ab3e3ed3544f07"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-scalar08-editdist-emit/report.json",
+      "bytes": 9842,
+      "sha256": "935caaec74681bdee108d3c10bb9966b763add06fa3cb67d7713881fa71cfaf7"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/fixtures01/editdist.bend",
+      "bytes": 7835,
+      "sha256": "759d82e26789e55187d175cb8416d6ebe4266a53f73a53ca6d32b69d4f71e988"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase111/coverage/full45/expected/editdist.stdout",
+      "bytes": 11,
+      "sha256": "cc6e43baccd95c4f6e49e8df91d27c77ab7d18524070d83af32977422f0b1280"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-scalar08-variation-ray-active-256-2240-build/program.o",
+      "bytes": 348080,
+      "sha256": "24a0a97cd44f9597798348fd721eef0e5a3a7bb719084cbaee3b820660fd8be3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-scalar08-variation-ray-active-256-2240-emit/program.ssa",
+      "bytes": 1131373,
+      "sha256": "fc486bbac456b4653681c5a27add835426579ce8aac0f793bfeba1a5de99543b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-scalar08-variation-ray-active-256-2240-build/report.json",
+      "bytes": 5219,
+      "sha256": "d8751412508b54f2130764218042fa1dd05058abe8ed3eaecd000d7962d38578"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-scalar08-variation-ray-active-256-2240-emit/report.json",
+      "bytes": 9911,
+      "sha256": "f1f50604f7cdde70a6b93e2963ff77ca255a066e8b28d87c86a6dd6f1bff66b8"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/fixtures01/variation-ray-active-256-2240.bend",
+      "bytes": 16661,
+      "sha256": "7099448e301e2cab7cb5ab47e2a4892dbf44ac246676b4f950282c7a57007669"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase111/coverage/full45/expected/variation-ray-active-256-2240.stdout",
+      "bytes": 11,
+      "sha256": "15adde12f874e278a5e96d86c4ee20d18706611252e5cfc76a3ba63d29170dcf"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-scalar08-lexer-build/program.o",
+      "bytes": 231624,
+      "sha256": "a5919b370ab4eea802ba634da61d37edd297c253ed93c0afe773d9ed0a635287"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-scalar08-lexer-emit/program.ssa",
+      "bytes": 574951,
+      "sha256": "284797130a7df3b659d9018179c9a24c93b4a7fe797de8318c80a352cadb0830"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-scalar08-lexer-build/report.json",
+      "bytes": 4836,
+      "sha256": "6491c08516aadb77e441c17dfa26452b4ca667cefb58efc53bba4b67d0e9235a"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-scalar08-lexer-emit/report.json",
+      "bytes": 9848,
+      "sha256": "0ba0b592880133352394cd594bf6d747b19732d6e715ba95c57898a54ab06398"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/fixtures01/lexer.bend",
+      "bytes": 9095,
+      "sha256": "bfb62870600b63fd6ec6088471a2d805fabb819a7f2e9d47c9b0ef3c368d169a"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase111/coverage/full45/expected/lexer.stdout",
+      "bytes": 11,
+      "sha256": "ce7ae380f780c64e26dc0b2fd2f547364c4e837bdecd61714cf04150768acf0a"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-scalar08-coverage-closures-256-build/program.o",
+      "bytes": 162632,
+      "sha256": "a943ab8e12743633648c029d455009c1f27097be15d6bb1f8d84b184fe57db3a"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-scalar08-coverage-closures-256-emit/program.ssa",
+      "bytes": 376677,
+      "sha256": "1bdeb1c3af5a74f83643da33f080c4cde624b041f939a98fbd2ff754c3917070"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-scalar08-coverage-closures-256-build/report.json",
+      "bytes": 5089,
+      "sha256": "fb0aeaf96a0d6b44ef2b7eaf4f3999efe4e9fc0fc31b3abcb5bce5996ea3ef15"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-scalar08-coverage-closures-256-emit/report.json",
+      "bytes": 9883,
+      "sha256": "c9a804d70a914dacd2b1038bf4b278a6378a3e44e0b585a76034a72099989439"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/fixtures01/coverage-closures-256.bend",
+      "bytes": 3369,
+      "sha256": "d0e35c8343fcbe86b45211f7738d293a27a0a5184060e0136b0275fc9556cef4"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase111/coverage/full45/expected/coverage-closures-256.stdout",
+      "bytes": 6,
+      "sha256": "8cf0773ed5fb75c07a06d48185cd73ff8f1921c588db76a3df3731a557c40b15"
+    }
+  ],
+  "scope": "Phase113 current-six counter-only plan for unchanged Phase112 profile runner. Whole-process counts include initial output plus one repeated workload, setup and readback. Instrumented clocks are not performance samples."
+}

@@ -1,0 +1,531 @@
+{
+  "kind": "phase113-independent-source-controls",
+  "version": 1,
+  "frozenUtc": "2026-10-20T18:16:16.634256+00:00",
+  "targetsRun": false,
+  "checkedByCompiler": false,
+  "fixtures": [
+    {
+      "name": "scalar-closed-loop",
+      "kind": "positive",
+      "source": {
+        "file": "selfhost/tools/performance/phase113/controls/fixtures/scalar-closed-loop.bend",
+        "bytes": 570,
+        "sha256": "5178566e62ca8695a8d87f276d3d0d7c92780678a387fbf3ca7c817e32c7e96b"
+      },
+      "expected": {
+        "file": "selfhost/tools/performance/phase113/controls/expected/scalar-closed-loop.json",
+        "bytes": 101,
+        "sha256": "6b2eede53674265ab29898a788ff319032760364040636907faba61d146638c9"
+      },
+      "stdout": {
+        "file": "selfhost/tools/performance/phase113/controls/expected/scalar-closed-loop.stdout",
+        "bytes": 46,
+        "sha256": "48a9f3ed9624cbe69be17c76d4a62d0a8d9486a51cad23ccadf820ff2bd36761"
+      },
+      "purpose": "Complete tail loop with closed scalar result",
+      "functions": [
+        "loop",
+        "step"
+      ],
+      "admissionScope": "semantic output only; direct optimization admission requires separate observation",
+      "expectedStage": "execute"
+    },
+    {
+      "name": "tail-argument-permutation",
+      "kind": "positive",
+      "source": {
+        "file": "selfhost/tools/performance/phase113/controls/fixtures/tail-argument-permutation.bend",
+        "bytes": 521,
+        "sha256": "2127fc55f65735daca75841de102ac31726a25a703900a2ca1148b284d9a68ef"
+      },
+      "expected": {
+        "file": "selfhost/tools/performance/phase113/controls/expected/tail-argument-permutation.json",
+        "bytes": 70,
+        "sha256": "474ded863e3f54dadf78354504aef8358d9eb26f0f967cc83fda313284f66bbb"
+      },
+      "stdout": {
+        "file": "selfhost/tools/performance/phase113/controls/expected/tail-argument-permutation.stdout",
+        "bytes": 16,
+        "sha256": "8f32271692bdc0f33c276def9b7f103eb9e6fac42b3081375322d7f0e91ddbad"
+      },
+      "purpose": "Simultaneous tail argument transfer, empty and100001 steps",
+      "functions": [
+        "rotate"
+      ],
+      "admissionScope": "semantic output only; direct optimization admission requires separate observation",
+      "expectedStage": "execute"
+    },
+    {
+      "name": "closed-branch-suffix",
+      "kind": "positive",
+      "source": {
+        "file": "selfhost/tools/performance/phase113/controls/fixtures/closed-branch-suffix.bend",
+        "bytes": 581,
+        "sha256": "4b251c08dbdbbb4a09e409509247ff2c7c83c82efa734a93d4cba242fcd1cadd"
+      },
+      "expected": {
+        "file": "selfhost/tools/performance/phase113/controls/expected/closed-branch-suffix.json",
+        "bytes": 74,
+        "sha256": "d2c6b7d346b7824d5456f1775a66b4f49d297da3c3e4bb03a8b7756df5586f42"
+      },
+      "stdout": {
+        "file": "selfhost/tools/performance/phase113/controls/expected/closed-branch-suffix.stdout",
+        "bytes": 20,
+        "sha256": "45b2cfa76f12760540b4a3a2e5a47398025ed7b4bdf8c55a7d08e833ad711498"
+      },
+      "purpose": "Scalar branch results at shared suffix",
+      "functions": [
+        "branch",
+        "suffix"
+      ],
+      "admissionScope": "semantic output only; direct optimization admission requires separate observation",
+      "expectedStage": "execute"
+    },
+    {
+      "name": "scalar-shadow-nested-arguments",
+      "kind": "positive",
+      "source": {
+        "file": "selfhost/tools/performance/phase113/controls/fixtures/scalar-shadow-nested-arguments.bend",
+        "bytes": 440,
+        "sha256": "559307d14f5a146db75c0a4d2b51a259ff29ef0b34c7298c00ff5f2759b1bce1"
+      },
+      "expected": {
+        "file": "selfhost/tools/performance/phase113/controls/expected/scalar-shadow-nested-arguments.json",
+        "bytes": 59,
+        "sha256": "226c0d1d4f6e31b94e38125ac3b755d177d222792ac118b37853e4aec771b205"
+      },
+      "stdout": {
+        "file": "selfhost/tools/performance/phase113/controls/expected/scalar-shadow-nested-arguments.stdout",
+        "bytes": 7,
+        "sha256": "eec4f082e19871270185040ca125cac18690bf510cc1851a9c18ec22ed2b9cf3"
+      },
+      "purpose": "Binder shadowing and nested argument results",
+      "functions": [
+        "shadow",
+        "combine"
+      ],
+      "admissionScope": "semantic output only; direct optimization admission requires separate observation",
+      "expectedStage": "execute"
+    },
+    {
+      "name": "array-scalar-return",
+      "kind": "positive",
+      "source": {
+        "file": "selfhost/tools/performance/phase113/controls/fixtures/array-scalar-return.bend",
+        "bytes": 863,
+        "sha256": "9a2529e2930c32b1271f543baf9df3c5da17020d83cc8152940f435b83beffc7"
+      },
+      "expected": {
+        "file": "selfhost/tools/performance/phase113/controls/expected/array-scalar-return.json",
+        "bytes": 62,
+        "sha256": "298c9eb37db2f83c6928335818ceae74b01712027fd7358deafbe7442b7a4c3e"
+      },
+      "stdout": {
+        "file": "selfhost/tools/performance/phase113/controls/expected/array-scalar-return.stdout",
+        "bytes": 9,
+        "sha256": "df5f87f37ca5525ff097ad98eb2d2dc83569cadaf17a1321347f09af1de2005b"
+      },
+      "purpose": "Array owner and scalar across two returned products",
+      "functions": [
+        "read",
+        "advance"
+      ],
+      "admissionScope": "semantic output only; direct optimization admission requires separate observation",
+      "expectedStage": "execute"
+    },
+    {
+      "name": "array-shared-swaps",
+      "kind": "positive",
+      "source": {
+        "file": "selfhost/tools/performance/phase113/controls/fixtures/array-shared-swaps.bend",
+        "bytes": 886,
+        "sha256": "cf1cceae958c4bc304142accb988863af8a286c81345651adb398bc34f1b93ac"
+      },
+      "expected": {
+        "file": "selfhost/tools/performance/phase113/controls/expected/array-shared-swaps.json",
+        "bytes": 62,
+        "sha256": "204c68b3c3017b5aa400a9112b50e4e4151068b1b7ec3d8a1a7c1d6f57cb8243"
+      },
+      "stdout": {
+        "file": "selfhost/tools/performance/phase113/controls/expected/array-shared-swaps.stdout",
+        "bytes": 8,
+        "sha256": "63890d2f428d462573be2699e49363472dea7a4eaa77c8fc0f1901a91fe163e5"
+      },
+      "purpose": "Cloned arrays, field swaps, copy-on-write and both release orders",
+      "functions": [
+        "touch",
+        "swap"
+      ],
+      "admissionScope": "semantic output only; direct optimization admission requires separate observation",
+      "expectedStage": "execute"
+    },
+    {
+      "name": "string-field-alias",
+      "kind": "positive",
+      "source": {
+        "file": "selfhost/tools/performance/phase113/controls/fixtures/string-field-alias.bend",
+        "bytes": 656,
+        "sha256": "a5e1d6b231b3e0231903959c5e4c661983c520582d15e091520ce2ce4209d990"
+      },
+      "expected": {
+        "file": "selfhost/tools/performance/phase113/controls/expected/string-field-alias.json",
+        "bytes": 86,
+        "sha256": "272f1ec857c3fc7721270e3fbf7a35b0396e75e40e5bae60417e11e8e768ddb8"
+      },
+      "stdout": {
+        "file": "selfhost/tools/performance/phase113/controls/expected/string-field-alias.stdout",
+        "bytes": 31,
+        "sha256": "90c33946d4b7b789da29c583e3f3ffb31208b16b8d82d5cd4ff64c2121cb3532"
+      },
+      "purpose": "Owned String product field with surviving external alias",
+      "functions": [
+        "pack",
+        "reverse_field"
+      ],
+      "admissionScope": "semantic output only; direct optimization admission requires separate observation",
+      "expectedStage": "execute"
+    },
+    {
+      "name": "owned-capture-call",
+      "kind": "fallback-positive",
+      "source": {
+        "file": "selfhost/tools/performance/phase113/controls/fixtures/owned-capture-call.bend",
+        "bytes": 564,
+        "sha256": "e18d255fdcda1ced2772c96eac0479a3d02741ebe5b3247d6a9af1d75118ab7c"
+      },
+      "expected": {
+        "file": "selfhost/tools/performance/phase113/controls/expected/owned-capture-call.json",
+        "bytes": 93,
+        "sha256": "b03a3d2ea11e92871aa5b8ad12c99abfe4d1687d675bd7a52a0823b08bd56ff6"
+      },
+      "stdout": {
+        "file": "selfhost/tools/performance/phase113/controls/expected/owned-capture-call.stdout",
+        "bytes": 39,
+        "sha256": "c4a0503e4b491e805ddc730938fac1f7e82373fac72c5d9a3b9c303848392099"
+      },
+      "purpose": "Escaping captured String and ordinary call lifetime",
+      "functions": [
+        "capture",
+        "apply"
+      ],
+      "admissionScope": "semantic output only; direct optimization admission requires separate observation",
+      "expectedStage": "execute"
+    },
+    {
+      "name": "non-tail-reconstruction",
+      "kind": "fallback-positive",
+      "source": {
+        "file": "selfhost/tools/performance/phase113/controls/fixtures/non-tail-reconstruction.bend",
+        "bytes": 640,
+        "sha256": "5c87d68b787648265511d29c1df583593a1b12954feb26ca197d4d10e1ff6e6f"
+      },
+      "expected": {
+        "file": "selfhost/tools/performance/phase113/controls/expected/non-tail-reconstruction.json",
+        "bytes": 60,
+        "sha256": "dbf19702dca4557f18b3e7b6d0f5d7912f307f3fc391e9accaec34b10edd07e7"
+      },
+      "stdout": {
+        "file": "selfhost/tools/performance/phase113/controls/expected/non-tail-reconstruction.stdout",
+        "bytes": 7,
+        "sha256": "25a7a5fa0594ebff3ca703821547a30e2167b69dbe63d1734a06cf2d831f553c"
+      },
+      "purpose": "Non-tail recursion reconstructs after recursive return",
+      "functions": [
+        "increment",
+        "weighted"
+      ],
+      "admissionScope": "semantic output only; direct optimization admission requires separate observation",
+      "expectedStage": "execute"
+    },
+    {
+      "name": "product-escape-branch",
+      "kind": "fallback-positive",
+      "source": {
+        "file": "selfhost/tools/performance/phase113/controls/fixtures/product-escape-branch.bend",
+        "bytes": 727,
+        "sha256": "92b7abb15bdb6722ae261502fb7a8ea23e4ea22fe98d22a7066fb1ad67f56af3"
+      },
+      "expected": {
+        "file": "selfhost/tools/performance/phase113/controls/expected/product-escape-branch.json",
+        "bytes": 65,
+        "sha256": "e3c57fbfd2714828ce2e6d5692a49be93913d834d7d522361d4ea0109f28ac16"
+      },
+      "stdout": {
+        "file": "selfhost/tools/performance/phase113/controls/expected/product-escape-branch.stdout",
+        "bytes": 13,
+        "sha256": "b97036f90d874a755c64a9acbb3a49f766c866fefd04db6bedd47bb1e5c5dae7"
+      },
+      "purpose": "Branch-selected owned product escapes into closure",
+      "functions": [
+        "escape",
+        "choose"
+      ],
+      "admissionScope": "semantic output only; direct optimization admission requires separate observation",
+      "expectedStage": "execute"
+    },
+    {
+      "name": "lazy-branch-no-overflow",
+      "kind": "positive",
+      "source": {
+        "file": "selfhost/tools/performance/phase113/controls/fixtures/lazy-branch-no-overflow.bend",
+        "bytes": 341,
+        "sha256": "7561366286e12d52a7f96f0c1fe28e1bbad48d3d17184fc67179aa60bd665729"
+      },
+      "expected": {
+        "file": "selfhost/tools/performance/phase113/controls/expected/lazy-branch-no-overflow.json",
+        "bytes": 53,
+        "sha256": "7390575e10da59729cbec71a31b3516a3e9de073d7a688c13182dfb5a0019cbf"
+      },
+      "stdout": {
+        "file": "selfhost/tools/performance/phase113/controls/expected/lazy-branch-no-overflow.stdout",
+        "bytes": 2,
+        "sha256": "10159baf262b43a92d95db59dae1f72c645127301661e0a3ce4e38b295a97c58"
+      },
+      "purpose": "Unchosen delayed branch must not overflow",
+      "functions": [
+        "choose"
+      ],
+      "admissionScope": "semantic output only; direct optimization admission requires separate observation",
+      "expectedStage": "execute"
+    },
+    {
+      "name": "strict-unused-overflow",
+      "kind": "execution-failure",
+      "source": {
+        "file": "selfhost/tools/performance/phase113/controls/fixtures/strict-unused-overflow.bend",
+        "bytes": 578,
+        "sha256": "f062b38c7d2f7ec957a8085ff3cf70c1b5dce7069b4800db817200b9289e080d"
+      },
+      "expected": {
+        "file": "selfhost/tools/performance/phase113/controls/expected/strict-unused-overflow.json",
+        "bytes": 97,
+        "sha256": "128fc1837bb7fb956b1375b6fd6a4e306433bb78344c8f8b9a64331cdb551cba"
+      },
+      "stdout": {
+        "file": "selfhost/tools/performance/phase113/controls/expected/strict-unused-overflow.stdout",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "purpose": "Strict unused actual must retain Nat overflow",
+      "functions": [
+        "strict_choose"
+      ],
+      "admissionScope": "semantic output only; direct optimization admission requires separate observation",
+      "expectedStage": "execute"
+    }
+  ],
+  "fastOrder": [
+    "scalar-closed-loop",
+    "tail-argument-permutation",
+    "scalar-shadow-nested-arguments",
+    "array-scalar-return",
+    "string-field-alias",
+    "non-tail-reconstruction"
+  ],
+  "origins": [
+    {
+      "file": "selfhost/tools/performance/phase112/selectors/fixtures/strict-unused.bend",
+      "bytes": 578,
+      "sha256": "f062b38c7d2f7ec957a8085ff3cf70c1b5dce7069b4800db817200b9289e080d"
+    },
+    {
+      "file": "selfhost/build/phase112/selector-fixture-expect01/strict-unused.json",
+      "bytes": 97,
+      "sha256": "128fc1837bb7fb956b1375b6fd6a4e306433bb78344c8f8b9a64331cdb551cba"
+    }
+  ],
+  "inputs": [
+    {
+      "file": "selfhost/tools/performance/phase113/controls/oracle.py",
+      "bytes": 3034,
+      "sha256": "499c0335edaac41caad0fef0c3011d9d6b76554b63cc4157e438c9c0c69a33dc"
+    },
+    {
+      "file": "selfhost/tools/performance/phase113/controls/prepare-jobs.py",
+      "bytes": 3496,
+      "sha256": "52771e36fc7d0e8dfe18bc606911fdeda3423ae3e87b62298f1527186ee7e023"
+    },
+    {
+      "file": "selfhost/tools/performance/phase113/controls/fixtures/scalar-closed-loop.bend",
+      "bytes": 570,
+      "sha256": "5178566e62ca8695a8d87f276d3d0d7c92780678a387fbf3ca7c817e32c7e96b"
+    },
+    {
+      "file": "selfhost/tools/performance/phase113/controls/expected/scalar-closed-loop.json",
+      "bytes": 101,
+      "sha256": "6b2eede53674265ab29898a788ff319032760364040636907faba61d146638c9"
+    },
+    {
+      "file": "selfhost/tools/performance/phase113/controls/expected/scalar-closed-loop.stdout",
+      "bytes": 46,
+      "sha256": "48a9f3ed9624cbe69be17c76d4a62d0a8d9486a51cad23ccadf820ff2bd36761"
+    },
+    {
+      "file": "selfhost/tools/performance/phase113/controls/fixtures/tail-argument-permutation.bend",
+      "bytes": 521,
+      "sha256": "2127fc55f65735daca75841de102ac31726a25a703900a2ca1148b284d9a68ef"
+    },
+    {
+      "file": "selfhost/tools/performance/phase113/controls/expected/tail-argument-permutation.json",
+      "bytes": 70,
+      "sha256": "474ded863e3f54dadf78354504aef8358d9eb26f0f967cc83fda313284f66bbb"
+    },
+    {
+      "file": "selfhost/tools/performance/phase113/controls/expected/tail-argument-permutation.stdout",
+      "bytes": 16,
+      "sha256": "8f32271692bdc0f33c276def9b7f103eb9e6fac42b3081375322d7f0e91ddbad"
+    },
+    {
+      "file": "selfhost/tools/performance/phase113/controls/fixtures/closed-branch-suffix.bend",
+      "bytes": 581,
+      "sha256": "4b251c08dbdbbb4a09e409509247ff2c7c83c82efa734a93d4cba242fcd1cadd"
+    },
+    {
+      "file": "selfhost/tools/performance/phase113/controls/expected/closed-branch-suffix.json",
+      "bytes": 74,
+      "sha256": "d2c6b7d346b7824d5456f1775a66b4f49d297da3c3e4bb03a8b7756df5586f42"
+    },
+    {
+      "file": "selfhost/tools/performance/phase113/controls/expected/closed-branch-suffix.stdout",
+      "bytes": 20,
+      "sha256": "45b2cfa76f12760540b4a3a2e5a47398025ed7b4bdf8c55a7d08e833ad711498"
+    },
+    {
+      "file": "selfhost/tools/performance/phase113/controls/fixtures/scalar-shadow-nested-arguments.bend",
+      "bytes": 440,
+      "sha256": "559307d14f5a146db75c0a4d2b51a259ff29ef0b34c7298c00ff5f2759b1bce1"
+    },
+    {
+      "file": "selfhost/tools/performance/phase113/controls/expected/scalar-shadow-nested-arguments.json",
+      "bytes": 59,
+      "sha256": "226c0d1d4f6e31b94e38125ac3b755d177d222792ac118b37853e4aec771b205"
+    },
+    {
+      "file": "selfhost/tools/performance/phase113/controls/expected/scalar-shadow-nested-arguments.stdout",
+      "bytes": 7,
+      "sha256": "eec4f082e19871270185040ca125cac18690bf510cc1851a9c18ec22ed2b9cf3"
+    },
+    {
+      "file": "selfhost/tools/performance/phase113/controls/fixtures/array-scalar-return.bend",
+      "bytes": 863,
+      "sha256": "9a2529e2930c32b1271f543baf9df3c5da17020d83cc8152940f435b83beffc7"
+    },
+    {
+      "file": "selfhost/tools/performance/phase113/controls/expected/array-scalar-return.json",
+      "bytes": 62,
+      "sha256": "298c9eb37db2f83c6928335818ceae74b01712027fd7358deafbe7442b7a4c3e"
+    },
+    {
+      "file": "selfhost/tools/performance/phase113/controls/expected/array-scalar-return.stdout",
+      "bytes": 9,
+      "sha256": "df5f87f37ca5525ff097ad98eb2d2dc83569cadaf17a1321347f09af1de2005b"
+    },
+    {
+      "file": "selfhost/tools/performance/phase113/controls/fixtures/array-shared-swaps.bend",
+      "bytes": 886,
+      "sha256": "cf1cceae958c4bc304142accb988863af8a286c81345651adb398bc34f1b93ac"
+    },
+    {
+      "file": "selfhost/tools/performance/phase113/controls/expected/array-shared-swaps.json",
+      "bytes": 62,
+      "sha256": "204c68b3c3017b5aa400a9112b50e4e4151068b1b7ec3d8a1a7c1d6f57cb8243"
+    },
+    {
+      "file": "selfhost/tools/performance/phase113/controls/expected/array-shared-swaps.stdout",
+      "bytes": 8,
+      "sha256": "63890d2f428d462573be2699e49363472dea7a4eaa77c8fc0f1901a91fe163e5"
+    },
+    {
+      "file": "selfhost/tools/performance/phase113/controls/fixtures/string-field-alias.bend",
+      "bytes": 656,
+      "sha256": "a5e1d6b231b3e0231903959c5e4c661983c520582d15e091520ce2ce4209d990"
+    },
+    {
+      "file": "selfhost/tools/performance/phase113/controls/expected/string-field-alias.json",
+      "bytes": 86,
+      "sha256": "272f1ec857c3fc7721270e3fbf7a35b0396e75e40e5bae60417e11e8e768ddb8"
+    },
+    {
+      "file": "selfhost/tools/performance/phase113/controls/expected/string-field-alias.stdout",
+      "bytes": 31,
+      "sha256": "90c33946d4b7b789da29c583e3f3ffb31208b16b8d82d5cd4ff64c2121cb3532"
+    },
+    {
+      "file": "selfhost/tools/performance/phase113/controls/fixtures/owned-capture-call.bend",
+      "bytes": 564,
+      "sha256": "e18d255fdcda1ced2772c96eac0479a3d02741ebe5b3247d6a9af1d75118ab7c"
+    },
+    {
+      "file": "selfhost/tools/performance/phase113/controls/expected/owned-capture-call.json",
+      "bytes": 93,
+      "sha256": "b03a3d2ea11e92871aa5b8ad12c99abfe4d1687d675bd7a52a0823b08bd56ff6"
+    },
+    {
+      "file": "selfhost/tools/performance/phase113/controls/expected/owned-capture-call.stdout",
+      "bytes": 39,
+      "sha256": "c4a0503e4b491e805ddc730938fac1f7e82373fac72c5d9a3b9c303848392099"
+    },
+    {
+      "file": "selfhost/tools/performance/phase113/controls/fixtures/non-tail-reconstruction.bend",
+      "bytes": 640,
+      "sha256": "5c87d68b787648265511d29c1df583593a1b12954feb26ca197d4d10e1ff6e6f"
+    },
+    {
+      "file": "selfhost/tools/performance/phase113/controls/expected/non-tail-reconstruction.json",
+      "bytes": 60,
+      "sha256": "dbf19702dca4557f18b3e7b6d0f5d7912f307f3fc391e9accaec34b10edd07e7"
+    },
+    {
+      "file": "selfhost/tools/performance/phase113/controls/expected/non-tail-reconstruction.stdout",
+      "bytes": 7,
+      "sha256": "25a7a5fa0594ebff3ca703821547a30e2167b69dbe63d1734a06cf2d831f553c"
+    },
+    {
+      "file": "selfhost/tools/performance/phase113/controls/fixtures/product-escape-branch.bend",
+      "bytes": 727,
+      "sha256": "92b7abb15bdb6722ae261502fb7a8ea23e4ea22fe98d22a7066fb1ad67f56af3"
+    },
+    {
+      "file": "selfhost/tools/performance/phase113/controls/expected/product-escape-branch.json",
+      "bytes": 65,
+      "sha256": "e3c57fbfd2714828ce2e6d5692a49be93913d834d7d522361d4ea0109f28ac16"
+    },
+    {
+      "file": "selfhost/tools/performance/phase113/controls/expected/product-escape-branch.stdout",
+      "bytes": 13,
+      "sha256": "b97036f90d874a755c64a9acbb3a49f766c866fefd04db6bedd47bb1e5c5dae7"
+    },
+    {
+      "file": "selfhost/tools/performance/phase113/controls/fixtures/lazy-branch-no-overflow.bend",
+      "bytes": 341,
+      "sha256": "7561366286e12d52a7f96f0c1fe28e1bbad48d3d17184fc67179aa60bd665729"
+    },
+    {
+      "file": "selfhost/tools/performance/phase113/controls/expected/lazy-branch-no-overflow.json",
+      "bytes": 53,
+      "sha256": "7390575e10da59729cbec71a31b3516a3e9de073d7a688c13182dfb5a0019cbf"
+    },
+    {
+      "file": "selfhost/tools/performance/phase113/controls/expected/lazy-branch-no-overflow.stdout",
+      "bytes": 2,
+      "sha256": "10159baf262b43a92d95db59dae1f72c645127301661e0a3ce4e38b295a97c58"
+    },
+    {
+      "file": "selfhost/tools/performance/phase113/controls/fixtures/strict-unused-overflow.bend",
+      "bytes": 578,
+      "sha256": "f062b38c7d2f7ec957a8085ff3cf70c1b5dce7069b4800db817200b9289e080d"
+    },
+    {
+      "file": "selfhost/tools/performance/phase113/controls/expected/strict-unused-overflow.json",
+      "bytes": 97,
+      "sha256": "128fc1837bb7fb956b1375b6fd6a4e306433bb78344c8f8b9a64331cdb551cba"
+    },
+    {
+      "file": "selfhost/tools/performance/phase113/controls/expected/strict-unused-overflow.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "scope": "Twelve source contracts, eleven successful executions and one required execution failure. Positive fallback cases are not source refusals. No optimizer admission/ownership proof inferred."
+}

@@ -1,0 +1,108 @@
+{
+  "kind": "phase112-frozen-runtime-profile",
+  "name": "phase113-upstream15ms01",
+  "version": 1,
+  "frozenUtc": "2026-10-20T18:13:26.945354+00:00",
+  "targetsRun": false,
+  "manifest": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase113/bench/manifest01.json",
+    "bytes": 39488,
+    "sha256": "0fb806d6c0b13bd66de02b72629681f9bbc952403cfc7060aa6e1d826eb3e5ea"
+  },
+  "cases": {
+    "scalar-region-8192": {
+      "repetitions": 419,
+      "warmups": 1
+    },
+    "local-pair": {
+      "repetitions": 72,
+      "warmups": 1
+    },
+    "editdist": {
+      "repetitions": 18,
+      "warmups": 1
+    },
+    "variation-ray-active-256-2240": {
+      "repetitions": 114,
+      "warmups": 1
+    },
+    "lexer": {
+      "repetitions": 39,
+      "warmups": 1
+    },
+    "coverage-closures-256": {
+      "repetitions": 1470,
+      "warmups": 1
+    }
+  },
+  "minimumMs": 5,
+  "derivation": {
+    "scalar-region-8192": {
+      "originalRepetitions": 6940,
+      "historicalUpstreamMedianMs": 249,
+      "historicalUpstreamSamplesMs": [
+        248,
+        249,
+        252
+      ],
+      "targetMs": 15,
+      "estimatedUpstreamMs": 15.03328530259366
+    },
+    "local-pair": {
+      "originalRepetitions": 1186,
+      "historicalUpstreamMedianMs": 249,
+      "historicalUpstreamSamplesMs": [
+        249,
+        249,
+        249
+      ],
+      "targetMs": 15,
+      "estimatedUpstreamMs": 15.116357504215852
+    },
+    "editdist": {
+      "originalRepetitions": 298,
+      "historicalUpstreamMedianMs": 251,
+      "historicalUpstreamSamplesMs": [
+        251,
+        251,
+        250
+      ],
+      "targetMs": 15,
+      "estimatedUpstreamMs": 15.161073825503356
+    },
+    "variation-ray-active-256-2240": {
+      "originalRepetitions": 1883,
+      "historicalUpstreamMedianMs": 249,
+      "historicalUpstreamSamplesMs": [
+        249,
+        248,
+        254
+      ],
+      "targetMs": 15,
+      "estimatedUpstreamMs": 15.074880509824748
+    },
+    "lexer": {
+      "originalRepetitions": 685,
+      "historicalUpstreamMedianMs": 268,
+      "historicalUpstreamSamplesMs": [
+        264,
+        270,
+        268
+      ],
+      "targetMs": 15,
+      "estimatedUpstreamMs": 15.258394160583942
+    },
+    "coverage-closures-256": {
+      "originalRepetitions": 81920,
+      "historicalUpstreamMedianMs": 836,
+      "historicalUpstreamSamplesMs": [
+        836,
+        835,
+        839
+      ],
+      "targetMs": 15,
+      "estimatedUpstreamMs": 15.00146484375
+    }
+  },
+  "scope": "New Phase113 profile: ceil(original repetitions*15/historical upstream median milliseconds), minimum1; warmups1. Only prior upstream times determine counts. Diagnostic1 is not paired evidence. Paired3 retains three rounds, exact full results and identical role counts; 1ms resolution limits small gains."
+}

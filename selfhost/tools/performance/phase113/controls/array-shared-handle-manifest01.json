@@ -1,0 +1,55 @@
+{
+  "kind": "phase113-independent-shared-array-handle-controls",
+  "version": 1,
+  "frozenUtc": "2026-10-20T18:25:05.896644+00:00",
+  "targetsRun": false,
+  "inputs": [
+    {
+      "file": "selfhost/tools/performance/phase113/controls/array-pair-boundary.c",
+      "bytes": 8411,
+      "sha256": "876419cf193b767e10cf8a95e15273fe491aaf2c5150c83cb5010b8f4dec5bda"
+    },
+    {
+      "file": "selfhost/tools/performance/phase113/controls/array-shared-handle.c",
+      "bytes": 2103,
+      "sha256": "54ffd876212b32b1e9a214b951c8b552bfa47b2ba5770bd52cc567c89a61cea2"
+    },
+    {
+      "file": "selfhost/tools/performance/phase113/controls/run-array-pair-v2.py",
+      "bytes": 3441,
+      "sha256": "d084350f5aa26eed8deb73d9a18bc5ef94a858e22c162a259a77d14484c8b863"
+    }
+  ],
+  "cases": [
+    {
+      "name": "handle-alias-first",
+      "expected": {
+        "status": 0,
+        "stdout": "handle-alias-first:ok\n0\n",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "handle-original-first",
+      "expected": {
+        "status": 0,
+        "stdout": "handle-original-first:ok\n0\n",
+        "stderr": ""
+      }
+    }
+  ],
+  "scope": "Supplement to array-pair-manifest01: actual reference-counted shared array handles (not cloned handles) observe mutation through both aliases, in both release orders, while removed Unicode String survives both roots. Both generic and flat routes checked against literal values. Finite ownership observations, not allocation balance or correctness proof.",
+  "buildRecipe": [
+    "clang",
+    "-std=c11",
+    "-O2",
+    "-I",
+    "ADDITIVE_RUNTIME_DIR",
+    "selfhost/tools/performance/phase113/controls/array-shared-handle.c",
+    "ADDITIVE_RUNTIME_DIR/runtime.o",
+    "-pthread",
+    "-lm",
+    "-o",
+    "FRESH_BINARY"
+  ]
+}

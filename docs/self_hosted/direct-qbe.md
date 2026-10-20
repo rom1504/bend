@@ -1,5 +1,24 @@
 # Direct QBE backend for the Bend compiler written in Bend
 
+## Phase114 runtime frontier
+
+The [Phase114 report](../../implementation/phase114/README.md) records a direct-QBE
+candidate whose broad generated-program runtime is5.386×pinned upstream C/Clang,
+down from7.082×in the matched campaign. All405 output/count observations pass;
+this is44 timed programs plus one zero-work control, not a compiler-throughput
+ratio. Local recursive regions and a bounded continuation table provide most
+of the gain. The C runtime object is unchanged and cached; ordinary program
+emission does not use C or cproc.
+
+[Reproduction](../../selfhost/tools/performance/phase114/README.md) distinguishes
+source01, which produced the timed programs, from source02, which repairs a
+stack-consuming verifier traversal for full native acquisition. Both are Bend
+sources. Full native source02 qualification is in progress; until it passes,
+the Phase112 native checkpoint below remains authoritative. Installed production
+selection is unchanged. Do not infer native generation or whole-language
+correctness from the hosted benchmark.
+
+
 Phase111 adds a general structured native backend to the checked Bend compiler.
 It emits QBE IL directly and links a separately cached runtime object. Ordinary
 program construction needs no generated C translation unit or cproc invocation.

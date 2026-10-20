@@ -10,11 +10,12 @@ tools and retain measurements. They do not implement semantic lowering.
 
 ## Selected source
 
-The selected recipe is
-`integration/recipes-v3/table-unwind-first.json`. Reproduce its source with
-`integration/prepare-v3.py`, acquire a checked API with the existing Phase111
-`check-api.py`, then authenticate source/API/runtime with
-`integration/admit-v3.py`. Exact commands, dependencies and exports are in
+The runtime-measured recipe is `integration/recipes-v3/table-unwind-first.json`
+(source01). The full-native candidate adds a stack-bounded verifier traversal:
+`integration/recipe-table-unwind-first-namespace01.json` (source02). Reproduce
+source02 with `integration/prepare-v4.py`, acquire a checked API with the existing
+Phase111 `check-api.py`, then authenticate source/API/runtime with
+`integration/admit-v4.py`. The old v3 recipe and measured products remain frozen. Exact commands, dependencies and exports are in
 [integration/README.md](integration/README.md). Required historical source,
 Base/cache and runtime artifacts are pinned; missing artifacts must be rebuilt
 through their existing recipes, not replaced with unverified substitutes.

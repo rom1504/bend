@@ -15,15 +15,19 @@ coverage, not a blind holdout. Parity is not reached. Source grows3.53% to50,565
 
 Checked source/API/runtime admission and19 ordinary source programs pass.
 The runtime products are hosted-API emitted. Final native qualification is
-running from `phase114/native-final01-with-transport-plan.json`; until it passes,
+running from `phase114/native-final02-with-transport-plan.json`; until it passes,
 Phase112 facts remains the qualified native checkpoint. Installed production
 selection remains unchanged. The intermediate scaling/index-only native image
-already builds in bounded time and passes the fast five.
+already builds in bounded time and passes the fast five. The first final native
+acquisition failed with a host stack exception in verification. Source02 replaces
+six namespace list traversals with loops, retaining all checks. Its checked API,
+independent source review and three byte-exact ordinary QBE comparisons pass.
+The broad runtime score remains bound to source01; source02 is50,590lines.
 
 The separate scalar-operands prototype removes private scratch traffic only
-when every buffer use is an exact admitted pure scalar operation. Its source
-checks and exact composition admission pass; runtime/structural qualification
-is pending and it is excluded from the selected source and broad score.
+when every buffer use is an exact admitted pure scalar operation. Source, structural,
+ordinary-output and24 runtime observations pass, but its two-case gain is only1.41%;
+it remains excluded from the selected source and broad score.
 Isolated Take2, packed Take1 and generic complete-call bridge remain deferred:
 small selected gains did not justify their added complexity.
 
@@ -34,7 +38,7 @@ lane with2/4GiB tree caps and16GiB available floor. No PR comments. Read the
 before adding more isolated templates: preserve typed owned extraction and flat
 products through recursive regions; needed live captures still require storage.
 
-# Current development frontier: Phase113 complete functions and products
+# Previous frontier: Phase113 complete functions and products
 
 [Report](../implementation/phase113/README.md) ·
 [Design](../design/phase113/qbe-program-parity.md) ·

@@ -69,7 +69,7 @@ split reports, `scaling-controls01`, `scaling-session01`, and associated guards.
 Compiler source: `phase113/p114-scaling-source01/compiler.bend`, SHA256
 `57247caf806136c4581ae23191449775348246a496852a9f14c174dde0373685`.
 
-## Runtime experiments in progress
+## Runtime experiments and their disposition
 
 The first runtime template exposes two-field constructor consumption to QBE,
 with ordinary runtime fallback for shared/static/allocator-boundary cases. It
@@ -86,8 +86,7 @@ descent/unwind region while preserving the original explicit frame stack and
 allocation order. Candidate04 passes source checking, actual admission and seven
 ordinary complete-output gates. List-pipeline improves700→464ms over three
 paired rounds (1.509×). Tree and lexer QBE remain byte-identical; their small
-timing changes are noise. Initial checker failures are retained. A bounded
-general continuation extension is under development, not yet qualified.
+timing changes are noise. Initial checker failures are retained. The later general continuation and table extensions below supersede this first slice.
 
 The next representation experiment restores mature unary constructor packing
 at the shared constructor lowerer. Source checking, exact runtime admission,
@@ -109,9 +108,7 @@ exact QBE on the two small staged kernels.
 
 The QBE/as/link machine build completes in7.969s. Its native image passes all
 five fast-suite programs in5.777s. This clears the prior600s lowering timeout;
-these changed-source observations are not a controlled speed ratio. N2/full
-self-reproduction are not yet established. The image contains the scaling/index
-changes only; the runtime experiments remain separate at this point.
+these changed-source observations are not a controlled speed ratio. This intermediate checkpoint does not establish N2/full self-reproduction. It contains the scaling/index changes only; the runtime candidates were separate at this point.
 Receipts: `phase114/catalogue-full01`, `phase111/p114-catalogue-native01`,
 `phase111/p114-catalogue-native-fast01`, and corresponding Phase114 guards.
 
@@ -135,8 +132,7 @@ The final-emission frame/pop/get expansion passes source/runtime admission,
 Four-case elapsed time falls5.47% geometrically (tree555→523ms, lexer358→345,
 list707→674, expression489→451), still9.830× upstream on that subset.
 See [P114-005](../../experiments/phase114/P114-005-fixed-transport.md).
-A combined candidate is being checked; none of these isolated ratios is a
-combined or broad45 result.
+The later combined results below supersede these isolated screens; isolated ratios are not multiplied.
 
 The eight-program development screen is frozen before candidate timing, uses
 unchanged original45 sources/oracles/repetitions and includes scalar, arrays,
@@ -158,7 +154,7 @@ Exact receipts: `phase114/combined-admission01`,
 `phase113/p114-combined-qualification01-jobs`,
 `phase112/p114-combined-screen01-measure` beneath `selfhost/build`.
 The17-program plus eight-kernel acquisition/measurement gate takes202.680s wall,
-peak380MiB. Full45/native qualification awaits the next integration checkpoint.
+peak380MiB. The later broad45 checkpoint below supersedes this development screen.
 
 ## Closed continuation table
 
@@ -202,3 +198,46 @@ pass; native integration is in progress.
 Reproduction uses `integration/prepare-v3.py` and
 `integration/recipes-v3/table-unwind-first.json`, followed by checked API and
 `integration/admit-v3.py`; [instructions](../../selfhost/tools/performance/phase114/integration/README.md).
+
+
+## Stack-bounded native integration
+
+The first full acquisition of the selected runtime candidate passed frontend
+checking (221.705s) and lowering (201.763s), then failed final verification with a
+host `RangeError`. The run took472.137s and peaked at3.121GiB. Its output receipt
+is retained; it produced no native image. Inspection found that the added
+namespace check recursively traversed35,734 segments through a nested Boolean
+conjunction. That consumes host stack even for a flat list. The saved exception
+has no stack trace, so attribution to this concrete defect is an inference from
+the generated code, rather than an observed exception frame.
+
+The v4 composition replaces six pure list walkers with accumulator loops. It
+preserves the predicates, original verifier and final admission gate. Independent
+review establishes the finite-list identity `go(xs, valid) = valid && old(xs)`;
+[actual generated JavaScript](namespace-js-review01.txt) has six loops and no
+self calls. Three frozen ordinary requests (tree, list128, ray) produce
+[byte-identical complete QBE](namespace-products01.json). This is scoped product
+evidence, not an assertion that every future input is byte-identical.
+
+The repaired source02 SHA256 is
+`500211d484785778e75d5d4388b0d5ebc7282effd233c6b8f3d0e0269ac777f8`,
+2,306,979bytes and6,383 declarations. Its checked API and exact composition
+admission pass. The native generation chain is running through unchanged gates.
+The broad runtime campaign remains bound to source01; the traversal repair
+changes compiler validation, not its target renderer.
+
+## Scalar operands: tested, deferred
+
+The optional whole-function scratch-use audit removes a temporary buffer only
+when every use belongs to a recognized scalar operation. Unknown uses, aliases,
+loads and mixed operations retain the original renderer. Structural controls
+show arithmetic scratch stores8→0 and conversion1→0; a mixed square-root case
+retains3→3. The ordinary complete-output control covers floating-point bit
+patterns, comparisons, signed zero, conversion and the fallback.
+
+The paired two-program screen passes24 observations: ray425→411ms, local
+pair389→391ms. Geometric elapsed time falls only1.41%; the candidate remains
+8.018×upstream on this selected pair. This is insufficient evidence to promote
+the extra audit/renderer complexity. It is excluded from the selected source.
+The compiler remains written in Bend; Python orchestrates file preparation and
+measurement, and does not implement this transformation.

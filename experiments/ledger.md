@@ -5015,3 +5015,29 @@ Native request screens: v1 4.18×, v2 4.02×, v3 3.22× versus selected Clang-bu
 successor 3.34× on a separate single round with identical executable text. These
 are not upstream or generated-program speed ratios. General runtime helper inlining
 is the next opportunity; a 3 GiB guard failure and lossy 2 ms profile are retained.
+
+## Phase113 — complete QBE functions, flat products and explicit widths
+
+[Design](../design/phase113/qbe-program-parity.md) ·
+[Report](../implementation/phase113/README.md) ·
+[Exact final receipts](../implementation/phase113/evidence/final31/manifest.json).
+
+Candidate31 composes complete functions/local loops, flat products, bounded
+inlining, typed ownership, operation-derived range facts and explicit machine
+widths, all implemented in Bend. The rejected branch24 output mismatch remains
+evidence. Current80 ordinary jobs and90 paired-development observations pass.
+Six-case geometric time falls37.206×→5.720×upstream, a6.505×paired improvement.
+
+The original45 survey passes270 full-output/count observations. Its44 timed
+points average7.088×upstream versus prior facts15.943×on the same frozen corpus
+and profile, in separate controlled campaigns:2.249×normalized improvement.
+Tree/list gaps remain; no parity or universal improvement is claimed.
+
+Full hosted compiler acquisition times out at600s during lowering; frontend
+passes in204.208s. No candidate31N1/N2 or new native compilation ratio is
+qualified. Broad products use checked hosted API31. Phase112 facts remains the
+qualified native checkpoint and installed selection is unchanged. The source
+grows10.03% to48,839lines. Next isolate repeated full verification, product
+suffix work and range joins before another full acquisition. Root's finalized
+76guards cover57m11.946s; interruption and other uncovered time are unattributed.
+Final capsule contains246exact JSON receipts, with nativeQualified=false.

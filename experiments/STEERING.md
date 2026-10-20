@@ -1,4 +1,38 @@
-# Current frontier: Phase112 faster direct QBE compiler and typed ownership
+# Current development frontier: Phase113 complete functions and products
+
+[Report](../implementation/phase113/README.md) ·
+[Design](../design/phase113/qbe-program-parity.md) ·
+[Experimental selection](../implementation/phase113/selection.json) ·
+[Recipe](../selfhost/tools/performance/phase113/README.md).
+
+The Bend-written candidate31 retains whole functions/local loops, flat product
+results, typed ownership, bounded inlining and operation-derived facts. Explicit
+Boolean/low32 machine widths correct the rejected branch24 workload mismatch.
+All 80 ordinary jobs pass. The paired six-case screen improves6.505×, from37.206×
+to5.720×upstream. Original broad45 passes270 output/count observations; its44
+timed points average7.088×upstream versus facts15.943×in the previous controlled
+campaign (2.249×normalized improvement). This is not parity or universal gain.
+
+Full candidate31 acquisition fails its600s job limit during lowering, after a
+successful204.208s frontend; peak treeRSS3.701GiB. NoN1/N2, self-reproduction or
+new native compiler-request ratio is qualified. **Phase112 facts below remains
+the qualified native checkpoint.** Broad45 was emitted by checked hosted API31.
+Installed production selection is unchanged. Source grows10.03% to48,839lines.
+
+Next isolate whole-function/product planning, inlining and range stages on one
+checked request. Four full verifications occur inside lowering; product-suffix
+rebuilding and fact-map joins also repeat work. Their timing attribution remains
+unmeasured. Read the [scaling audit](../selfhost/tools/performance/phase113/direct/scaling.md)
+before another full acquisition. Preserve final verification and frozen output
+gates. Runtime opportunities: array descriptor/guard reuse, scalar identities,
+flat tagged state and narrow destination-passing for constructor spines. See
+the [machine-code audit](../selfhost/tools/performance/phase113/direct/remaining.md).
+
+Use ordinary compiler/functional tests and established bounded benchmarks. Custom
+failure reproductions were stopped at user request. One serial CPU3 target lane,
+2/4GiB process-tree limits and16GiB available floor remain. No PR comments.
+
+# Qualified native checkpoint: Phase112 faster direct QBE compiler and typed ownership
 
 [Report](../implementation/phase112/README.md) ·
 [Design](../design/phase112/qbe-parity.md) ·

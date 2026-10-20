@@ -1,0 +1,82 @@
+{
+  "kind": "phase113-final-summary",
+  "inputs": [
+    {
+      "file": "selfhost/build/phase112/p113-final31-hosted45-runtime01/report.json",
+      "bytes": 623943,
+      "sha256": "c41706116002b7df5a5e95388c1685cc67697462b21908f9453bac4e2af9330f"
+    },
+    {
+      "file": "implementation/phase112/broad-runtime.csv",
+      "bytes": 3795,
+      "sha256": "61403537ddb234a29e80ab3eb74254b2b3b8da1bcfec6d58f24df03a3948a538"
+    },
+    {
+      "file": "implementation/phase113/time-account-checkpoint.json",
+      "bytes": 99181,
+      "sha256": "b9daf4e387c44aa8815f776fe70683eb6aa2a6e3984e27212317d5edecf74747"
+    }
+  ],
+  "broad": {
+    "outputObservations": 270,
+    "allOutputsPassed": true,
+    "timingPoints": 44,
+    "sourcePrograms": 45,
+    "geomeanRatioToUpstream": 7.087588376608841,
+    "previousFactsGeomeanRatioToUpstream": 15.943239497957798,
+    "normalizedImprovementFactor": 2.2494590050651433,
+    "normalizedTimeReductionPercent": 55.544866665794586,
+    "comparison": "Same frozen corpus and profile; separate controlled campaigns, not a paired facts/candidate trial. Current candidate/upstream measurements are three rotated rounds.",
+    "actualPhase113DevelopmentNames": [
+      "scalar-region-8192",
+      "local-pair",
+      "editdist",
+      "variation-ray-active-256-2240",
+      "lexer",
+      "coverage-closures-256"
+    ],
+    "outsideActualDevelopmentCount": 38,
+    "outsideActualDevelopmentGeomeanRatio": 7.348753030406472
+  },
+  "nativeQualified": false,
+  "nativeBlocker": "600second hosted full-image acquisition limit during lowering, before N1",
+  "time": {
+    "earlierCheckpoint": {
+      "file": "implementation/phase113/time-account-checkpoint.json",
+      "bytes": 99181,
+      "sha256": "b9daf4e387c44aa8815f776fe70683eb6aa2a6e3984e27212317d5edecf74747"
+    },
+    "additionalGuards": [
+      {
+        "receipt": {
+          "file": "selfhost/build/phase113/final31-hosted45-guard/process.json",
+          "bytes": 675,
+          "sha256": "451a5b5a6956f36749a210c91d30980f51911a33a018826adcc8cbd5dc93d10a"
+        },
+        "wallSeconds": 360.0236175020691,
+        "complete": false
+      },
+      {
+        "receipt": {
+          "file": "selfhost/build/phase113/final31-hosted45-rest-guard/process.json",
+          "bytes": 657,
+          "sha256": "8628852083352988a1acd98eae5c1d07859717b9411390ac53a312a8936adb28"
+        },
+        "wallSeconds": 137.36127768387087,
+        "complete": true
+      },
+      {
+        "receipt": {
+          "file": "selfhost/build/phase113/final31-hosted45-rest-followup-guard/process.json",
+          "bytes": 779,
+          "sha256": "5b316ff2f53f8945b3df8cd644f38d273cc7b67ea0a24a6a9cc8a053dbfea05b"
+        },
+        "wallSeconds": 114.1570600620471,
+        "complete": true
+      }
+    ],
+    "finalizedGuards": 76,
+    "guardIntervalUnionSeconds": 3431.9460752010345,
+    "scope": "Guard occupancy includes startup/waits/I/O. No CPU-seconds, model compute or active authoring time inferred; interruption interval stays unattributed."
+  }
+}

@@ -1,0 +1,232 @@
+{
+  "kind": "phase113-candidate31-static-counts",
+  "targetsRun": false,
+  "scope": "Static source/assembly counts including fallback paths; not dynamic call counts or timing.",
+  "programs": [
+    {
+      "program": "scalar-region-8192",
+      "inputs": [
+        {
+          "file": "selfhost/build/phase111/p113-wide31-scalar-region-8192-emit/program.ssa",
+          "bytes": 527179,
+          "sha256": "dc53725a31a81cae273b5240c854d428b08343612712551bc79074dfbe92bbfd"
+        },
+        {
+          "file": "selfhost/build/phase111/p113-wide31-scalar-region-8192-build/program.s",
+          "bytes": 590125,
+          "sha256": "fa6a775ac37dc9b5d6e7103e8a3009087b9564f6e0f9207311e03c370c693f6d"
+        },
+        {
+          "file": "selfhost/build/phase111/p113-wide31-scalar-region-8192-emit/report.json",
+          "bytes": 10305,
+          "sha256": "05c80fd488bda1cb48456676d7821432a03142cb4f9b0a20f227aa906a055b04"
+        }
+      ],
+      "functions": [
+        {
+          "function": "p113d_$direct.mit",
+          "qbeBytes": 32465,
+          "qbeCalls": {
+            "p111_rt_fail": 1
+          },
+          "assemblyInstructions": 121,
+          "assemblyCalls": {},
+          "negativeRbpMemoryReferences": 0
+        }
+      ]
+    },
+    {
+      "program": "local-pair",
+      "inputs": [
+        {
+          "file": "selfhost/build/phase111/p113-wide31-local-pair-emit/program.ssa",
+          "bytes": 966059,
+          "sha256": "3bb8a1e0dd20df8a0e897524254b82bf4dabf97401cb6fe15dc01d537c6158c3"
+        },
+        {
+          "file": "selfhost/build/phase111/p113-wide31-local-pair-build/program.s",
+          "bytes": 803546,
+          "sha256": "ccf4261ad8b9fcece0e2bc9f9894c79a667aa3c4c83cd32b54c25a31d213f98b"
+        },
+        {
+          "file": "selfhost/build/phase111/p113-wide31-local-pair-emit/report.json",
+          "bytes": 10308,
+          "sha256": "a81701471a1c246397c0dfe5667342c86e6e860db9099f9191297be51535cf57"
+        }
+      ],
+      "functions": [
+        {
+          "function": "p113d_$product.cell.f3",
+          "qbeBytes": 18517,
+          "qbeCalls": {
+            "p113_rt_array_pair": 2,
+            "p111_rt_op": 2
+          },
+          "assemblyInstructions": 178,
+          "assemblyCalls": {
+            "p113_rt_array_pair": 2,
+            "p111_rt_op": 2
+          },
+          "negativeRbpMemoryReferences": 44
+        },
+        {
+          "function": "p113d_$product.cell",
+          "qbeBytes": 52273,
+          "qbeCalls": {
+            "p113_rt_array_pair": 8,
+            "p111_rt_op": 2
+          },
+          "assemblyInstructions": 392,
+          "assemblyCalls": {
+            "p113_rt_array_pair": 8,
+            "p111_rt_op": 2
+          },
+          "negativeRbpMemoryReferences": 129
+        },
+        {
+          "function": "p113d_$product.row",
+          "qbeBytes": 5999,
+          "qbeCalls": {
+            "p113d_$product.cell": 1,
+            "p111_rt_fail": 1
+          },
+          "assemblyInstructions": 58,
+          "assemblyCalls": {
+            "p113d_$product.cell": 1
+          },
+          "negativeRbpMemoryReferences": 5
+        }
+      ]
+    },
+    {
+      "program": "lexer",
+      "inputs": [
+        {
+          "file": "selfhost/build/phase111/p113-wide31-lexer-emit/program.ssa",
+          "bytes": 771695,
+          "sha256": "f9eb0fecb833cb663840f775b72af00a30981e3beee95483af30e5ff353bfc81"
+        },
+        {
+          "file": "selfhost/build/phase111/p113-wide31-lexer-build/program.s",
+          "bytes": 749061,
+          "sha256": "01aeea96609c99f70009ad01c8ddc014c14b03114097262859d5b4d61f885424"
+        },
+        {
+          "file": "selfhost/build/phase111/p113-wide31-lexer-emit/report.json",
+          "bytes": 10286,
+          "sha256": "9c23d1fe4ac572f2af25c8c484db1b3ded02842644ea34e936d2b1e1fe30dc5b"
+        }
+      ],
+      "functions": [
+        {
+          "function": "p113d_$product.step.at",
+          "qbeBytes": 40624,
+          "qbeCalls": {
+            "p111_rt_ctor": 6,
+            "p111_rt_fail": 4,
+            "p111_rt_take": 2
+          },
+          "assemblyInstructions": 266,
+          "assemblyCalls": {
+            "p111_rt_fail": 4,
+            "p111_rt_take": 2,
+            "p111_rt_ctor": 6
+          },
+          "negativeRbpMemoryReferences": 26
+        },
+        {
+          "function": "p113d_$product.lex",
+          "qbeBytes": 33440,
+          "qbeCalls": {
+            "p111_rt_take": 3,
+            "p111_rt_fail": 3,
+            "p111_rt_special_take": 1,
+            "p113d_$product.step.at": 1
+          },
+          "assemblyInstructions": 160,
+          "assemblyCalls": {
+            "p111_rt_take": 3,
+            "p111_rt_special_take": 1,
+            "p113d_$product.step.at": 1,
+            "p111_rt_fail": 2
+          },
+          "negativeRbpMemoryReferences": 12
+        },
+        {
+          "function": "p111_$direct.num",
+          "qbeBytes": 3601,
+          "qbeCalls": {
+            "p111_rt_return": 1,
+            "p111_rt_special_take": 1,
+            "p112w_$direct.prng": 1,
+            "p111_rt_op": 1,
+            "p111_rt_special_ctor": 1,
+            "p111_rt_frame": 4,
+            "p111_rt_jump": 1,
+            "p111_rt_fail": 1
+          },
+          "assemblyInstructions": 71,
+          "assemblyCalls": {
+            "p111_rt_special_take": 1,
+            "p112w_$direct.prng": 1,
+            "p111_rt_op": 1,
+            "p111_rt_special_ctor": 1,
+            "p111_rt_frame": 1,
+            "p111_rt_jump": 1,
+            "p111_rt_return": 1
+          },
+          "negativeRbpMemoryReferences": 15
+        },
+        {
+          "function": "p111_$direct.ident",
+          "qbeBytes": 3609,
+          "qbeCalls": {
+            "p111_rt_return": 1,
+            "p111_rt_special_take": 1,
+            "p112w_$direct.prng": 1,
+            "p111_rt_op": 1,
+            "p111_rt_special_ctor": 1,
+            "p111_rt_frame": 4,
+            "p111_rt_jump": 1,
+            "p111_rt_fail": 1
+          },
+          "assemblyInstructions": 71,
+          "assemblyCalls": {
+            "p111_rt_special_take": 1,
+            "p112w_$direct.prng": 1,
+            "p111_rt_op": 1,
+            "p111_rt_special_ctor": 1,
+            "p111_rt_frame": 1,
+            "p111_rt_jump": 1,
+            "p111_rt_return": 1
+          },
+          "negativeRbpMemoryReferences": 15
+        },
+        {
+          "function": "p111_$direct.gen",
+          "qbeBytes": 4449,
+          "qbeCalls": {
+            "p111_rt_return": 1,
+            "p111_rt_take": 1,
+            "p111_rt_special_take": 1,
+            "p112w_$direct.salt": 1,
+            "p111_rt_frame": 8,
+            "p111_rt_jump": 1,
+            "p111_rt_fail": 2
+          },
+          "assemblyInstructions": 99,
+          "assemblyCalls": {
+            "p111_rt_frame": 4,
+            "p111_rt_fail": 1,
+            "p111_rt_take": 1,
+            "p111_rt_special_take": 1,
+            "p112w_$direct.salt": 1,
+            "p111_rt_jump": 1,
+            "p111_rt_return": 1
+          },
+          "negativeRbpMemoryReferences": 20
+        }
+      ]
+    }
+  ]
+}

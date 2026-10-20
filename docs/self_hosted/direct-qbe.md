@@ -24,6 +24,17 @@ installed [`selfhost/bend` CLI](NATIVE_CLI.md), JavaScript release and
 
 ## Architecture and language boundaries
 
+Phase113's [whole-function and flat-product candidate](../../implementation/phase113/README.md)
+is a newer development experiment. It adds complete call/loop regions, flat
+product results, bounded inlining, operation-derived range facts and explicit
+machine-width emission. All transformations remain Bend code. Its six-case
+development screen is 6.5× faster than facts. The original broad45 corpus passes
+all270 output/count checks and averages7.088×upstream across44 timed points,
+versus the prior facts15.943×campaign. Full compiler acquisition hits
+the 600-second limit while lowering. It has therefore **not** replaced the
+qualified facts native checkpoint. The report separates broad program runtime,
+finite correctness checks and the unfinished native-generation gate.
+
 ```text
 Bend source + authenticated Base/prepared Base
   → existing Bend parser, checker, erasure and checked request

@@ -78,7 +78,9 @@ The [direct QBE compiler](docs/self_hosted/direct-qbe.md) builds the complete
 compiler through structured Bend IR, QBE and a cached runtime object, without
 per-program C generation or cproc. Its [Phase111 report](implementation/phase111/README.md)
 records complete native self-reproduction, independent source checks and its
-remaining performance limits. It remains
+remaining performance limits. The [Phase113 report](implementation/phase113/README.md)
+explores faster complete functions and flat products, with native scaling still
+blocking promotion. It remains
 experimental; the installed compiler is unchanged.
 
 The [native IR research prototype](docs/self_hosted/NATIVE_IR_RESEARCH.md) now

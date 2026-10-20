@@ -1,0 +1,3010 @@
+{
+  "kind": "phase113-completed-guard-time-resource-checkpoint",
+  "complete": true,
+  "createdUtc": "2026-10-20T21:04:56.841185+00:00",
+  "targetsExecutedByAccount": false,
+  "scope": "All process.json receipts inside selfhost/build/phase113 guard directories found at snapshot. Finalized successful and unsuccessful runs count; unfinished intervals do not. Inner job/stage durations are not added.",
+  "method": {
+    "discovery": "Scoped recursive process.json search, filtered to paths containing a guard directory.",
+    "finalized": "Finite started, finished and wallSeconds; finished>=started and wallSeconds>=0. complete is an outcome flag, not the terminal-state test.",
+    "wall": "Union of [started,finished] intervals. Also report monotonic wallSeconds sum; do not add nested job or emission/build stage durations.",
+    "resources": "Maximum sampled process-tree RSS and minimum sampled host MemAvailable across finalized guards. Never sum memory peaks.",
+    "limitations": [
+      "Guard coverage includes process startup, waits and I/O; it is not CPU execution time.",
+      "Gaps are unaccounted by these guards, not proof of inactivity or an estimate of model labor.",
+      "Host-side source work, user interruptions and work outside this guard scope are not measured.",
+      "No model token cost, engineer labor or CPU-seconds are available from these receipts.",
+      "An ongoing receipt can change after this snapshot; it is excluded from the totals."
+    ]
+  },
+  "counts": {
+    "discovered": 74,
+    "finalized": 73,
+    "successful": 54,
+    "unsuccessfulFinalized": 19,
+    "ongoingOrIncompleteExcluded": 1,
+    "strictlyContainedIntervals": 0
+  },
+  "time": {
+    "declaredCampaignStartUtc": "2026-10-20T18:07:00+00:00",
+    "declaredStartPrecision": "minute",
+    "firstFinalizedGuardStartedUtc": "2026-10-20T18:15:45.377427+00:00",
+    "lastFinalizedGuardFinishedUtc": "2026-10-20T20:57:57.449614+00:00",
+    "finalizedGuardSpanSeconds": 9732.072187662125,
+    "unionGuardWallSeconds": 2820.404121875763,
+    "sumReceiptWallSeconds": 2820.404269506689,
+    "sumEpochIntervalSeconds": 2820.404121875763,
+    "overlapRemovedSeconds": 0.0,
+    "successfulGuardWallSeconds": 2128.631929155439,
+    "unsuccessfulFinalizedGuardWallSeconds": 691.77234035125,
+    "uncoveredWithinGuardSpanSeconds": 6911.668065786362,
+    "declaredCampaignToLastFinalizedGuardSeconds": 10257.449614286423,
+    "uncoveredFromDeclaredStartSeconds": 7437.04549241066
+  },
+  "resources": {
+    "maximumSampledTreeRssBytes": 3974184960,
+    "maximumRssGuard": "p113-final31-qualification-guard",
+    "minimumSampledHostAvailableBytes": 23034712064,
+    "minimumAvailableGuard": "p113-final31-qualification-guard",
+    "configuredRssLimitsBytes": [
+      2147483648,
+      4294967296
+    ],
+    "configuredAvailableFloorsBytes": [
+      17179869184
+    ],
+    "cpuAffinities": [
+      "3"
+    ]
+  },
+  "native31FinalAttempt": {
+    "guard": "p113-final31-qualification-guard",
+    "guardReceipt": {
+      "file": "selfhost/build/phase113/p113-final31-qualification-guard/process.json",
+      "bytes": 761,
+      "sha256": "b6e7e5a5e8a361e117ef31e8a0ee71406dc2b0ab55a7a08cbccc54ae036d848d"
+    },
+    "jobReceipt": {
+      "file": "selfhost/build/phase113/p113-final31-qualification/report.json",
+      "bytes": 2498,
+      "sha256": "adf170e0b461991fcfe9ed759abc6b758cc734b69f933e2a8fd4f6e3b88187ff"
+    },
+    "status": "Finalized unsuccessful: hosted full-compiler emission reached its 600-second job timeout. No completed native image or self-reproduction is inferred.",
+    "jobTimeoutSeconds": 600,
+    "guardWallSeconds": 600.7636708819773,
+    "returncode": 1,
+    "errorClass": "TimeoutExpired",
+    "peakTreeRssBytes": 3974184960,
+    "minimumAvailableBytes": 23034712064
+  },
+  "longestUncoveredIntervals": [
+    {
+      "started": 1792526100.494279,
+      "finished": 1792528782.6951542,
+      "startedUtc": "2026-10-20T19:55:00.494279+00:00",
+      "finishedUtc": "2026-10-20T20:39:42.695154+00:00",
+      "seconds": 2682.2008752822876
+    },
+    {
+      "started": 1792525725.9263012,
+      "finished": 1792526100.203761,
+      "startedUtc": "2026-10-20T19:48:45.926301+00:00",
+      "finishedUtc": "2026-10-20T19:55:00.203761+00:00",
+      "seconds": 374.277459859848
+    },
+    {
+      "started": 1792523720.5449948,
+      "finished": 1792524020.5520172,
+      "startedUtc": "2026-10-20T19:15:20.544995+00:00",
+      "finishedUtc": "2026-10-20T19:20:20.552017+00:00",
+      "seconds": 300.00702238082886
+    },
+    {
+      "started": 1792522037.8305774,
+      "finished": 1792522265.867688,
+      "startedUtc": "2026-10-20T18:47:17.830577+00:00",
+      "finishedUtc": "2026-10-20T18:51:05.867688+00:00",
+      "seconds": 228.0371105670929
+    },
+    {
+      "started": 1792524637.983312,
+      "finished": 1792524857.736897,
+      "startedUtc": "2026-10-20T19:30:37.983312+00:00",
+      "finishedUtc": "2026-10-20T19:34:17.736897+00:00",
+      "seconds": 219.75358510017395
+    },
+    {
+      "started": 1792521457.6507075,
+      "finished": 1792521603.2440667,
+      "startedUtc": "2026-10-20T18:37:37.650707+00:00",
+      "finishedUtc": "2026-10-20T18:40:03.244067+00:00",
+      "seconds": 145.59335923194885
+    },
+    {
+      "started": 1792524045.6515117,
+      "finished": 1792524179.7969503,
+      "startedUtc": "2026-10-20T19:20:45.651512+00:00",
+      "finishedUtc": "2026-10-20T19:22:59.796950+00:00",
+      "seconds": 134.14543867111206
+    },
+    {
+      "started": 1792524200.212185,
+      "finished": 1792524331.2061315,
+      "startedUtc": "2026-10-20T19:23:20.212185+00:00",
+      "finishedUtc": "2026-10-20T19:25:31.206131+00:00",
+      "seconds": 130.9939465522766
+    }
+  ],
+  "unionIntervals": [
+    {
+      "started": 1792520145.3774266,
+      "finished": 1792520154.3497894,
+      "seconds": 8.972362756729126,
+      "guards": [
+        "scalar-check01-guard"
+      ]
+    },
+    {
+      "started": 1792520225.9221766,
+      "finished": 1792520233.7072437,
+      "seconds": 7.785067081451416,
+      "guards": [
+        "baseline-screen01-guard"
+      ]
+    },
+    {
+      "started": 1792520248.6562064,
+      "finished": 1792520251.0365314,
+      "seconds": 2.3803250789642334,
+      "guards": [
+        "scalar-check02-guard"
+      ]
+    },
+    {
+      "started": 1792520312.1682744,
+      "finished": 1792520314.508184,
+      "seconds": 2.339909553527832,
+      "guards": [
+        "scalar-check03-guard"
+      ]
+    },
+    {
+      "started": 1792520375.6380918,
+      "finished": 1792520420.666472,
+      "seconds": 45.028380155563354,
+      "guards": [
+        "baseline-controls01-guard"
+      ]
+    },
+    {
+      "started": 1792520457.237078,
+      "finished": 1792520462.0719376,
+      "seconds": 4.834859609603882,
+      "guards": [
+        "scalar-check04-guard"
+      ]
+    },
+    {
+      "started": 1792520533.4212296,
+      "finished": 1792520537.9986565,
+      "seconds": 4.577426910400391,
+      "guards": [
+        "scalar-check05-guard"
+      ]
+    },
+    {
+      "started": 1792520635.079155,
+      "finished": 1792520644.8118227,
+      "seconds": 9.732667684555054,
+      "guards": [
+        "scalar-check06-guard"
+      ]
+    },
+    {
+      "started": 1792520656.5230062,
+      "finished": 1792520703.3882613,
+      "seconds": 46.86525511741638,
+      "guards": [
+        "direct-controls06-guard"
+      ]
+    },
+    {
+      "started": 1792520718.887914,
+      "finished": 1792520770.0361562,
+      "seconds": 51.148242235183716,
+      "guards": [
+        "scalar-bench06-guard"
+      ]
+    },
+    {
+      "started": 1792520793.1404061,
+      "finished": 1792520799.7448063,
+      "seconds": 6.604400157928467,
+      "guards": [
+        "scalar-inspect06-guard"
+      ]
+    },
+    {
+      "started": 1792520832.9420896,
+      "finished": 1792520833.3533866,
+      "seconds": 0.411297082901001,
+      "guards": [
+        "direct-ir06-guard"
+      ]
+    },
+    {
+      "started": 1792520849.4918425,
+      "finished": 1792520851.6245675,
+      "seconds": 2.1327250003814697,
+      "guards": [
+        "runtime-products-build01-guard"
+      ]
+    },
+    {
+      "started": 1792520871.3610368,
+      "finished": 1792520871.4861615,
+      "seconds": 0.12512469291687012,
+      "guards": [
+        "runtime-controls01-guard"
+      ]
+    },
+    {
+      "started": 1792520906.1852334,
+      "finished": 1792520906.3740003,
+      "seconds": 0.1887669563293457,
+      "guards": [
+        "runtime-controls02-guard"
+      ]
+    },
+    {
+      "started": 1792520906.4976292,
+      "finished": 1792520916.5655322,
+      "seconds": 10.0679030418396,
+      "guards": [
+        "diagnostic-check07-guard"
+      ]
+    },
+    {
+      "started": 1792520931.0542753,
+      "finished": 1792520936.3787236,
+      "seconds": 5.324448347091675,
+      "guards": [
+        "diagnostic-inspect07-guard"
+      ]
+    },
+    {
+      "started": 1792520955.1768556,
+      "finished": 1792520955.7785897,
+      "seconds": 0.6017341613769531,
+      "guards": [
+        "runtime-controls03-guard"
+      ]
+    },
+    {
+      "started": 1792521022.99606,
+      "finished": 1792521033.033627,
+      "seconds": 10.037567138671875,
+      "guards": [
+        "scalar-check08-guard"
+      ]
+    },
+    {
+      "started": 1792521054.657742,
+      "finished": 1792521149.9735596,
+      "seconds": 95.3158175945282,
+      "guards": [
+        "scalar-all08-guard"
+      ]
+    },
+    {
+      "started": 1792521177.3159015,
+      "finished": 1792521188.3469896,
+      "seconds": 11.03108811378479,
+      "guards": [
+        "scalar-screen08-guard"
+      ]
+    },
+    {
+      "started": 1792521240.7270262,
+      "finished": 1792521250.5643687,
+      "seconds": 9.837342500686646,
+      "guards": [
+        "enhanced-check09-guard"
+      ]
+    },
+    {
+      "started": 1792521315.4986432,
+      "finished": 1792521317.0502734,
+      "seconds": 1.5516302585601807,
+      "guards": [
+        "fact-controls09-guard"
+      ]
+    },
+    {
+      "started": 1792521317.9592102,
+      "finished": 1792521415.269024,
+      "seconds": 97.30981373786926,
+      "guards": [
+        "enhanced-all09-guard"
+      ]
+    },
+    {
+      "started": 1792521423.7032933,
+      "finished": 1792521428.4981806,
+      "seconds": 4.79488730430603,
+      "guards": [
+        "products-check10-guard"
+      ]
+    },
+    {
+      "started": 1792521443.867276,
+      "finished": 1792521457.6507075,
+      "seconds": 13.78343152999878,
+      "guards": [
+        "enhanced-screen09-guard"
+      ]
+    },
+    {
+      "started": 1792521603.2440667,
+      "finished": 1792521613.4255202,
+      "seconds": 10.181453466415405,
+      "guards": [
+        "products-check11-guard"
+      ]
+    },
+    {
+      "started": 1792521710.0874798,
+      "finished": 1792521711.681532,
+      "seconds": 1.5940520763397217,
+      "guards": [
+        "product-controls11-guard"
+      ]
+    },
+    {
+      "started": 1792521712.4580743,
+      "finished": 1792521811.9064088,
+      "seconds": 99.44833445549011,
+      "guards": [
+        "products-all11-guard"
+      ]
+    },
+    {
+      "started": 1792521874.3978004,
+      "finished": 1792521878.954643,
+      "seconds": 4.556842565536499,
+      "guards": [
+        "inline-check12-guard"
+      ]
+    },
+    {
+      "started": 1792521901.2356665,
+      "finished": 1792521913.9368858,
+      "seconds": 12.701219320297241,
+      "guards": [
+        "products-screen11-guard"
+      ]
+    },
+    {
+      "started": 1792522028.0157747,
+      "finished": 1792522037.8305774,
+      "seconds": 9.814802646636963,
+      "guards": [
+        "inline-check13-guard"
+      ]
+    },
+    {
+      "started": 1792522265.867688,
+      "finished": 1792522371.4722593,
+      "seconds": 105.60457134246826,
+      "guards": [
+        "inline-all13-guard"
+      ]
+    },
+    {
+      "started": 1792522379.7468271,
+      "finished": 1792522390.1580338,
+      "seconds": 10.411206722259521,
+      "guards": [
+        "facts-api14-guard"
+      ]
+    },
+    {
+      "started": 1792522405.2362397,
+      "finished": 1792522406.829545,
+      "seconds": 1.5933053493499756,
+      "guards": [
+        "fact-controls14-guard"
+      ]
+    },
+    {
+      "started": 1792522422.912137,
+      "finished": 1792522436.0087633,
+      "seconds": 13.096626281738281,
+      "guards": [
+        "inline-screen13-guard"
+      ]
+    },
+    {
+      "started": 1792522458.089705,
+      "finished": 1792522477.0776076,
+      "seconds": 18.987902641296387,
+      "guards": [
+        "facts-all14-guard"
+      ]
+    },
+    {
+      "started": 1792522544.8455226,
+      "finished": 1792522545.7883186,
+      "seconds": 0.942795991897583,
+      "guards": [
+        "inliner-reflect01-guard"
+      ]
+    },
+    {
+      "started": 1792522576.6031647,
+      "finished": 1792522681.7477963,
+      "seconds": 105.1446316242218,
+      "guards": [
+        "facts-main14-guard"
+      ]
+    },
+    {
+      "started": 1792522707.6018996,
+      "finished": 1792522719.36347,
+      "seconds": 11.761570453643799,
+      "guards": [
+        "inline-products-api15-guard"
+      ]
+    },
+    {
+      "started": 1792522758.2317164,
+      "finished": 1792522758.2956207,
+      "seconds": 0.0639042854309082,
+      "guards": [
+        "facts-screen14-guard"
+      ]
+    },
+    {
+      "started": 1792522770.0306983,
+      "finished": 1792522781.7813568,
+      "seconds": 11.750658512115479,
+      "guards": [
+        "facts-screen14b-guard"
+      ]
+    },
+    {
+      "started": 1792522828.355084,
+      "finished": 1792522943.2124567,
+      "seconds": 114.8573727607727,
+      "guards": [
+        "inline-all15-guard"
+      ]
+    },
+    {
+      "started": 1792522963.8301244,
+      "finished": 1792522974.5527275,
+      "seconds": 10.72260308265686,
+      "guards": [
+        "shared-api16-guard"
+      ]
+    },
+    {
+      "started": 1792522992.390193,
+      "finished": 1792523003.7302067,
+      "seconds": 11.3400137424469,
+      "guards": [
+        "inline-screen15-guard"
+      ]
+    },
+    {
+      "started": 1792523045.3795853,
+      "finished": 1792523060.2391777,
+      "seconds": 14.85959243774414,
+      "guards": [
+        "counters01-guard"
+      ]
+    },
+    {
+      "started": 1792523119.2667928,
+      "finished": 1792523121.0433009,
+      "seconds": 1.776508092880249,
+      "guards": [
+        "shared-controls16-guard"
+      ]
+    },
+    {
+      "started": 1792523164.823834,
+      "finished": 1792523175.4402878,
+      "seconds": 10.616453886032104,
+      "guards": [
+        "arrays-api17-guard"
+      ]
+    },
+    {
+      "started": 1792523194.9639533,
+      "finished": 1792523288.359737,
+      "seconds": 93.39578366279602,
+      "guards": [
+        "shared-all16-guard"
+      ]
+    },
+    {
+      "started": 1792523407.4760416,
+      "finished": 1792523410.2743258,
+      "seconds": 2.7982842922210693,
+      "guards": [
+        "field-array17-guard"
+      ]
+    },
+    {
+      "started": 1792523511.6372354,
+      "finished": 1792523522.384236,
+      "seconds": 10.747000694274902,
+      "guards": [
+        "shared-screen16-guard"
+      ]
+    },
+    {
+      "started": 1792523546.6356587,
+      "finished": 1792523657.2173345,
+      "seconds": 110.58167576789856,
+      "guards": [
+        "array-all17-guard"
+      ]
+    },
+    {
+      "started": 1792523712.3870249,
+      "finished": 1792523720.5449948,
+      "seconds": 8.157969951629639,
+      "guards": [
+        "field-array17b-guard"
+      ]
+    },
+    {
+      "started": 1792524020.5520172,
+      "finished": 1792524045.6515117,
+      "seconds": 25.099494457244873,
+      "guards": [
+        "checks18-19-guard"
+      ]
+    },
+    {
+      "started": 1792524179.7969503,
+      "finished": 1792524200.212185,
+      "seconds": 20.415234565734863,
+      "guards": [
+        "screen-controls17-19-guard"
+      ]
+    },
+    {
+      "started": 1792524331.2061315,
+      "finished": 1792524377.3441467,
+      "seconds": 46.138015270233154,
+      "guards": [
+        "field-array17c-guard"
+      ]
+    },
+    {
+      "started": 1792524483.0002897,
+      "finished": 1792524637.983312,
+      "seconds": 154.98302221298218,
+      "guards": [
+        "wide-ranges18-19-guard"
+      ]
+    },
+    {
+      "started": 1792524857.736897,
+      "finished": 1792524891.1911938,
+      "seconds": 33.454296827316284,
+      "guards": [
+        "api-screen20-21-guard"
+      ]
+    },
+    {
+      "started": 1792524908.9161642,
+      "finished": 1792525062.7799869,
+      "seconds": 153.86382269859314,
+      "guards": [
+        "bottom-identity20-21-guard"
+      ]
+    },
+    {
+      "started": 1792525081.2255206,
+      "finished": 1792525095.7837594,
+      "seconds": 14.558238744735718,
+      "guards": [
+        "heap-branch22-23-check-guard"
+      ]
+    },
+    {
+      "started": 1792525123.3470957,
+      "finished": 1792525134.9703832,
+      "seconds": 11.623287439346313,
+      "guards": [
+        "screen21-guard"
+      ]
+    },
+    {
+      "started": 1792525144.3503087,
+      "finished": 1792525144.6396773,
+      "seconds": 0.2893686294555664,
+      "guards": [
+        "heap22-native-guard"
+      ]
+    },
+    {
+      "started": 1792525214.9369662,
+      "finished": 1792525290.6730494,
+      "seconds": 75.73608326911926,
+      "guards": [
+        "heap22-native-v2-guard"
+      ]
+    },
+    {
+      "started": 1792525297.4323723,
+      "finished": 1792525313.526365,
+      "seconds": 16.093992710113525,
+      "guards": [
+        "branch-width24-25-check-guard"
+      ]
+    },
+    {
+      "started": 1792525373.5826995,
+      "finished": 1792525459.8667088,
+      "seconds": 86.28400921821594,
+      "guards": [
+        "branch-native24-guard"
+      ]
+    },
+    {
+      "started": 1792525480.9731002,
+      "finished": 1792525504.4626148,
+      "seconds": 23.489514589309692,
+      "guards": [
+        "width-wide26-27-check-guard"
+      ]
+    },
+    {
+      "started": 1792525599.5056763,
+      "finished": 1792525600.1890976,
+      "seconds": 0.6834213733673096,
+      "guards": [
+        "width-wide26-27-native-guard"
+      ]
+    },
+    {
+      "started": 1792525721.2916973,
+      "finished": 1792525725.9263012,
+      "seconds": 4.634603977203369,
+      "guards": [
+        "branch-screen24-guard"
+      ]
+    },
+    {
+      "started": 1792526100.203761,
+      "finished": 1792526100.494279,
+      "seconds": 0.29051780700683594,
+      "guards": [
+        "spill-reproductions01-guard"
+      ]
+    },
+    {
+      "started": 1792528782.6951542,
+      "finished": 1792528805.100534,
+      "seconds": 22.40537977218628,
+      "guards": [
+        "width-wide30-31-check-guard"
+      ]
+    },
+    {
+      "started": 1792528880.897622,
+      "finished": 1792529119.2421036,
+      "seconds": 238.34448146820068,
+      "guards": [
+        "width-wide30-31-native-guard"
+      ]
+    },
+    {
+      "started": 1792529204.8958023,
+      "finished": 1792529235.85986,
+      "seconds": 30.964057683944702,
+      "guards": [
+        "final31-screen-guard"
+      ]
+    },
+    {
+      "started": 1792529276.685945,
+      "finished": 1792529877.4496143,
+      "seconds": 600.7636692523956,
+      "guards": [
+        "p113-final31-qualification-guard"
+      ]
+    }
+  ],
+  "containedIntervals": [],
+  "excludedReceipts": [
+    {
+      "guard": "final31-hosted45-guard",
+      "receipt": {
+        "file": "selfhost/build/phase113/final31-hosted45-guard/process.json",
+        "bytes": 550,
+        "sha256": "2f2396fd95bb38b7c875b1710d38511f914def48a0c9251eb380c280a7f4880a"
+      },
+      "snapshot": {
+        "complete": false,
+        "started": 1792530193.5361817,
+        "rssLimitBytes": 4294967296,
+        "availableFloorBytes": 17179869184,
+        "peakTreeRssBytes": 0,
+        "minimumAvailableBytes": 26979377152
+      },
+      "exclusion": "No finalized started/finished/wallSeconds interval; ongoing or incomplete receipt."
+    }
+  ],
+  "finalizedReceipts": [
+    {
+      "guard": "scalar-check01-guard",
+      "receipt": {
+        "file": "selfhost/build/phase113/scalar-check01-guard/process.json",
+        "bytes": 787,
+        "sha256": "458b6021f2cd2095fdd0e2c9e189594e05466bf99d4da909f1e3a9f186332734"
+      },
+      "snapshot": {
+        "complete": true,
+        "started": 1792520145.3774266,
+        "rssLimitBytes": 2147483648,
+        "availableFloorBytes": 17179869184,
+        "peakTreeRssBytes": 1096953856,
+        "minimumAvailableBytes": 26038288384,
+        "returncode": 0,
+        "wallSeconds": 8.972365197027102,
+        "finished": 1792520154.3497894
+      },
+      "startedUtc": "2026-10-20T18:15:45.377427+00:00",
+      "finishedUtc": "2026-10-20T18:15:54.349789+00:00",
+      "intervalSeconds": 8.972362756729126,
+      "outcome": "successful",
+      "guardMethod": {
+        "file": "selfhost/build/phase113/scalar-check01-guard/method.json",
+        "bytes": 475,
+        "sha256": "1bea4fbebbc83075dbbffc17076676e4fae73be4541a61c23f391e67f86d52fe"
+      },
+      "limits": {
+        "cpu": "3"
+      }
+    },
+    {
+      "guard": "baseline-screen01-guard",
+      "receipt": {
+        "file": "selfhost/build/phase113/baseline-screen01-guard/process.json",
+        "bytes": 746,
+        "sha256": "e70d5cd8aa908f0d073328c2964d9caeceee612333fd8d92d63a3ebac7581446"
+      },
+      "snapshot": {
+        "complete": true,
+        "started": 1792520225.9221766,
+        "rssLimitBytes": 2147483648,
+        "availableFloorBytes": 17179869184,
+        "peakTreeRssBytes": 19693568,
+        "minimumAvailableBytes": 27000434688,
+        "returncode": 0,
+        "wallSeconds": 7.78507019393146,
+        "finished": 1792520233.7072437
+      },
+      "startedUtc": "2026-10-20T18:17:05.922177+00:00",
+      "finishedUtc": "2026-10-20T18:17:13.707244+00:00",
+      "intervalSeconds": 7.785067081451416,
+      "outcome": "successful",
+      "guardMethod": {
+        "file": "selfhost/build/phase113/baseline-screen01-guard/method.json",
+        "bytes": 476,
+        "sha256": "a94b890a6c2246fda3dfe90a211e1be8041fe16ef78e990270ac91224ce070ae"
+      },
+      "limits": {
+        "cpu": "3"
+      }
+    },
+    {
+      "guard": "scalar-check02-guard",
+      "receipt": {
+        "file": "selfhost/build/phase113/scalar-check02-guard/process.json",
+        "bytes": 870,
+        "sha256": "8dac6ac4678573127e4a3346cc1ec0bf27a54677e9ba7f59baaeaa44e90d2321"
+      },
+      "snapshot": {
+        "complete": false,
+        "started": 1792520248.6562064,
+        "rssLimitBytes": 2147483648,
+        "availableFloorBytes": 17179869184,
+        "peakTreeRssBytes": 237174784,
+        "minimumAvailableBytes": 26851987456,
+        "returncode": 1,
+        "wallSeconds": 2.380329095060006,
+        "finished": 1792520251.0365314
+      },
+      "startedUtc": "2026-10-20T18:17:28.656206+00:00",
+      "finishedUtc": "2026-10-20T18:17:31.036531+00:00",
+      "intervalSeconds": 2.3803250789642334,
+      "outcome": "unsuccessful-finalized",
+      "guardMethod": {
+        "file": "selfhost/build/phase113/scalar-check02-guard/method.json",
+        "bytes": 476,
+        "sha256": "2aca4706abf06f9f0d98ca996c91088a30ed5c6c1945555d47d9833997159ebc"
+      },
+      "limits": {
+        "cpu": "3"
+      }
+    },
+    {
+      "guard": "scalar-check03-guard",
+      "receipt": {
+        "file": "selfhost/build/phase113/scalar-check03-guard/process.json",
+        "bytes": 898,
+        "sha256": "5a538a8c7ae7b14b389df495a85a63e85ea3a168a1b2115c0ee7c8d279b8d3eb"
+      },
+      "snapshot": {
+        "complete": false,
+        "started": 1792520312.1682744,
+        "rssLimitBytes": 2147483648,
+        "availableFloorBytes": 17179869184,
+        "peakTreeRssBytes": 237494272,
+        "minimumAvailableBytes": 26890346496,
+        "returncode": 1,
+        "wallSeconds": 2.339911548886448,
+        "finished": 1792520314.508184
+      },
+      "startedUtc": "2026-10-20T18:18:32.168274+00:00",
+      "finishedUtc": "2026-10-20T18:18:34.508184+00:00",
+      "intervalSeconds": 2.339909553527832,
+      "outcome": "unsuccessful-finalized",
+      "guardMethod": {
+        "file": "selfhost/build/phase113/scalar-check03-guard/method.json",
+        "bytes": 476,
+        "sha256": "d87eda5f9083f351f05d2f530d10093b8902f79d8ab46cda4c6a3cf6c89ad787"
+      },
+      "limits": {
+        "cpu": "3"
+      }
+    },
+    {
+      "guard": "baseline-controls01-guard",
+      "receipt": {
+        "file": "selfhost/build/phase113/baseline-controls01-guard/process.json",
+        "bytes": 643,
+        "sha256": "b57f9fe69a5565e1ce48429cc91f12231d2e9f3ed37a6e3121f795da0269be53"
+      },
+      "snapshot": {
+        "complete": true,
+        "started": 1792520375.6380918,
+        "rssLimitBytes": 2147483648,
+        "availableFloorBytes": 17179869184,
+        "peakTreeRssBytes": 142761984,
+        "minimumAvailableBytes": 26722848768,
+        "returncode": 0,
+        "wallSeconds": 45.0283804689534,
+        "finished": 1792520420.666472
+      },
+      "startedUtc": "2026-10-20T18:19:35.638092+00:00",
+      "finishedUtc": "2026-10-20T18:20:20.666472+00:00",
+      "intervalSeconds": 45.028380155563354,
+      "outcome": "successful",
+      "guardMethod": {
+        "file": "selfhost/build/phase113/baseline-controls01-guard/method.json",
+        "bytes": 476,
+        "sha256": "2f1e1d31709444a055d6bce017cc779be93cb0a40e669de6b6fd8d20701e8cde"
+      },
+      "limits": {
+        "cpu": "3"
+      }
+    },
+    {
+      "guard": "scalar-check04-guard",
+      "receipt": {
+        "file": "selfhost/build/phase113/scalar-check04-guard/process.json",
+        "bytes": 925,
+        "sha256": "89bc43018b51b08c84711a45971f0983dca91bbc5d172683b720ee97bcf47f9b"
+      },
+      "snapshot": {
+        "complete": false,
+        "started": 1792520457.237078,
+        "rssLimitBytes": 2147483648,
+        "availableFloorBytes": 17179869184,
+        "peakTreeRssBytes": 556613632,
+        "minimumAvailableBytes": 26558795776,
+        "returncode": 1,
+        "wallSeconds": 4.834863675059751,
+        "finished": 1792520462.0719376
+      },
+      "startedUtc": "2026-10-20T18:20:57.237078+00:00",
+      "finishedUtc": "2026-10-20T18:21:02.071938+00:00",
+      "intervalSeconds": 4.834859609603882,
+      "outcome": "unsuccessful-finalized",
+      "guardMethod": {
+        "file": "selfhost/build/phase113/scalar-check04-guard/method.json",
+        "bytes": 476,
+        "sha256": "1b53b41cc43378594ef0c9d82b7e01763fbdec1d72a5d332e179348064877121"
+      },
+      "limits": {
+        "cpu": "3"
+      }
+    },
+    {
+      "guard": "scalar-check05-guard",
+      "receipt": {
+        "file": "selfhost/build/phase113/scalar-check05-guard/process.json",
+        "bytes": 926,
+        "sha256": "385c474d47b6ecdf49138fd064a4c66a048045df4b45129befb61f66f7643502"
+      },
+      "snapshot": {
+        "complete": false,
+        "started": 1792520533.4212296,
+        "rssLimitBytes": 2147483648,
+        "availableFloorBytes": 17179869184,
+        "peakTreeRssBytes": 522915840,
+        "minimumAvailableBytes": 26602278912,
+        "returncode": 1,
+        "wallSeconds": 4.577430087141693,
+        "finished": 1792520537.9986565
+      },
+      "startedUtc": "2026-10-20T18:22:13.421230+00:00",
+      "finishedUtc": "2026-10-20T18:22:17.998657+00:00",
+      "intervalSeconds": 4.577426910400391,
+      "outcome": "unsuccessful-finalized",
+      "guardMethod": {
+        "file": "selfhost/build/phase113/scalar-check05-guard/method.json",
+        "bytes": 476,
+        "sha256": "01568ab71ce4fe0a267c56e1d038dd926d6bb7123d2dcf7c4ad04f0e3ddaa808"
+      },
+      "limits": {
+        "cpu": "3"
+      }
+    },
+    {
+      "guard": "scalar-check06-guard",
+      "receipt": {
+        "file": "selfhost/build/phase113/scalar-check06-guard/process.json",
+        "bytes": 924,
+        "sha256": "74e2b33b42442d50cbb0f639e08005066c9173f8ff16f776158c8d38559e86c6"
+      },
+      "snapshot": {
+        "complete": true,
+        "started": 1792520635.079155,
+        "rssLimitBytes": 2147483648,
+        "availableFloorBytes": 17179869184,
+        "peakTreeRssBytes": 1204137984,
+        "minimumAvailableBytes": 25912979456,
+        "returncode": 0,
+        "wallSeconds": 9.73267031298019,
+        "finished": 1792520644.8118227
+      },
+      "startedUtc": "2026-10-20T18:23:55.079155+00:00",
+      "finishedUtc": "2026-10-20T18:24:04.811823+00:00",
+      "intervalSeconds": 9.732667684555054,
+      "outcome": "successful",
+      "guardMethod": {
+        "file": "selfhost/build/phase113/scalar-check06-guard/method.json",
+        "bytes": 476,
+        "sha256": "190d23eab2f88b3af01e0c660b586f880b302fb3b3bfd3c4485b835b5b754246"
+      },
+      "limits": {
+        "cpu": "3"
+      }
+    },
+    {
+      "guard": "direct-controls06-guard",
+      "receipt": {
+        "file": "selfhost/build/phase113/direct-controls06-guard/process.json",
+        "bytes": 641,
+        "sha256": "b8fe299815644a2a015555d3b7432db0d93ec54214c1126f53343a1668df8f79"
+      },
+      "snapshot": {
+        "complete": true,
+        "started": 1792520656.5230062,
+        "rssLimitBytes": 2147483648,
+        "availableFloorBytes": 17179869184,
+        "peakTreeRssBytes": 145600512,
+        "minimumAvailableBytes": 26958176256,
+        "returncode": 0,
+        "wallSeconds": 46.86525603197515,
+        "finished": 1792520703.3882613
+      },
+      "startedUtc": "2026-10-20T18:24:16.523006+00:00",
+      "finishedUtc": "2026-10-20T18:25:03.388261+00:00",
+      "intervalSeconds": 46.86525511741638,
+      "outcome": "successful",
+      "guardMethod": {
+        "file": "selfhost/build/phase113/direct-controls06-guard/method.json",
+        "bytes": 476,
+        "sha256": "5e9b4cc33aefd4cef7401ac4cc35cab5998c8f51cde88d4e19ac3b82d10961bf"
+      },
+      "limits": {
+        "cpu": "3"
+      }
+    },
+    {
+      "guard": "scalar-bench06-guard",
+      "receipt": {
+        "file": "selfhost/build/phase113/scalar-bench06-guard/process.json",
+        "bytes": 635,
+        "sha256": "6237bc7346a8ac97b68363f737e7b71a5a537a2740b824bf1ed8eb8bb8ffe591"
+      },
+      "snapshot": {
+        "complete": true,
+        "started": 1792520718.887914,
+        "rssLimitBytes": 2147483648,
+        "availableFloorBytes": 17179869184,
+        "peakTreeRssBytes": 265617408,
+        "minimumAvailableBytes": 26666590208,
+        "returncode": 0,
+        "wallSeconds": 51.148242881987244,
+        "finished": 1792520770.0361562
+      },
+      "startedUtc": "2026-10-20T18:25:18.887914+00:00",
+      "finishedUtc": "2026-10-20T18:26:10.036156+00:00",
+      "intervalSeconds": 51.148242235183716,
+      "outcome": "successful",
+      "guardMethod": {
+        "file": "selfhost/build/phase113/scalar-bench06-guard/method.json",
+        "bytes": 476,
+        "sha256": "2c2497ca226234c8cf1b6a7ccfc49d82ac4f8c628be9344ddb6abc2ec0ec0257"
+      },
+      "limits": {
+        "cpu": "3"
+      }
+    },
+    {
+      "guard": "scalar-inspect06-guard",
+      "receipt": {
+        "file": "selfhost/build/phase113/scalar-inspect06-guard/process.json",
+        "bytes": 733,
+        "sha256": "ab4a29a70d41090973b878451ffd2e35e8fe689c2f33e94974dc37acdf7981ad"
+      },
+      "snapshot": {
+        "complete": true,
+        "started": 1792520793.1404061,
+        "rssLimitBytes": 2147483648,
+        "availableFloorBytes": 17179869184,
+        "peakTreeRssBytes": 168808448,
+        "minimumAvailableBytes": 26921320448,
+        "returncode": 0,
+        "wallSeconds": 6.6044018471147865,
+        "finished": 1792520799.7448063
+      },
+      "startedUtc": "2026-10-20T18:26:33.140406+00:00",
+      "finishedUtc": "2026-10-20T18:26:39.744806+00:00",
+      "intervalSeconds": 6.604400157928467,
+      "outcome": "successful",
+      "guardMethod": {
+        "file": "selfhost/build/phase113/scalar-inspect06-guard/method.json",
+        "bytes": 476,
+        "sha256": "076a14608f4cbc40b3a054a032db06712c13348c6446a2992da038714c47ee93"
+      },
+      "limits": {
+        "cpu": "3"
+      }
+    },
+    {
+      "guard": "direct-ir06-guard",
+      "receipt": {
+        "file": "selfhost/build/phase113/direct-ir06-guard/process.json",
+        "bytes": 642,
+        "sha256": "550c10fc6f4b0481e0ee240e31deb657510e6266724c79a630c91d7f38b1cb74"
+      },
+      "snapshot": {
+        "complete": true,
+        "started": 1792520832.9420896,
+        "rssLimitBytes": 2147483648,
+        "availableFloorBytes": 17179869184,
+        "peakTreeRssBytes": 74801152,
+        "minimumAvailableBytes": 27012128768,
+        "returncode": 0,
+        "wallSeconds": 0.4112992729060352,
+        "finished": 1792520833.3533866
+      },
+      "startedUtc": "2026-10-20T18:27:12.942090+00:00",
+      "finishedUtc": "2026-10-20T18:27:13.353387+00:00",
+      "intervalSeconds": 0.411297082901001,
+      "outcome": "successful",
+      "guardMethod": {
+        "file": "selfhost/build/phase113/direct-ir06-guard/method.json",
+        "bytes": 476,
+        "sha256": "c0b3077f9cbb7c2bc7b789b84a9e09e196169086e984fe18b10634dda4756e16"
+      },
+      "limits": {
+        "cpu": "3"
+      }
+    },
+    {
+      "guard": "runtime-products-build01-guard",
+      "receipt": {
+        "file": "selfhost/build/phase113/runtime-products-build01-guard/process.json",
+        "bytes": 656,
+        "sha256": "bbfffdc2fc851033aac1fb31e8b542440316fa9a565f02cdeef65f47fd05e2af"
+      },
+      "snapshot": {
+        "complete": true,
+        "started": 1792520849.4918425,
+        "rssLimitBytes": 2147483648,
+        "availableFloorBytes": 17179869184,
+        "peakTreeRssBytes": 78925824,
+        "minimumAvailableBytes": 27009212416,
+        "returncode": 0,
+        "wallSeconds": 2.1327255880460143,
+        "finished": 1792520851.6245675
+      },
+      "startedUtc": "2026-10-20T18:27:29.491843+00:00",
+      "finishedUtc": "2026-10-20T18:27:31.624568+00:00",
+      "intervalSeconds": 2.1327250003814697,
+      "outcome": "successful",
+      "guardMethod": {
+        "file": "selfhost/build/phase113/runtime-products-build01-guard/method.json",
+        "bytes": 476,
+        "sha256": "c8f958e2b34394ac8d635f684e368c3d9abaf8b7acbcff0705d9f71f504ad827"
+      },
+      "limits": {
+        "cpu": "3"
+      }
+    },
+    {
+      "guard": "runtime-controls01-guard",
+      "receipt": {
+        "file": "selfhost/build/phase113/runtime-controls01-guard/process.json",
+        "bytes": 645,
+        "sha256": "d71580846d42580ec501717b7d8a7b1757886821d55b04e94e0f2c94417fc080"
+      },
+      "snapshot": {
+        "complete": false,
+        "started": 1792520871.3610368,
+        "rssLimitBytes": 2147483648,
+        "availableFloorBytes": 17179869184,
+        "peakTreeRssBytes": 14344192,
+        "minimumAvailableBytes": 27052818432,
+        "returncode": 1,
+        "wallSeconds": 0.12512763403356075,
+        "finished": 1792520871.4861615
+      },
+      "startedUtc": "2026-10-20T18:27:51.361037+00:00",
+      "finishedUtc": "2026-10-20T18:27:51.486161+00:00",
+      "intervalSeconds": 0.12512469291687012,
+      "outcome": "unsuccessful-finalized",
+      "guardMethod": {
+        "file": "selfhost/build/phase113/runtime-controls01-guard/method.json",
+        "bytes": 476,
+        "sha256": "dbe5f112fc43367fff9da300250f2b5d7b4f02825211df45baf671634f4755ab"
+      },
+      "limits": {
+        "cpu": "3"
+      }
+    },
+    {
+      "guard": "runtime-controls02-guard",
+      "receipt": {
+        "file": "selfhost/build/phase113/runtime-controls02-guard/process.json",
+        "bytes": 646,
+        "sha256": "467e1a1a4c1650b3617145cb66ffe86b62866ffd7d4c55e6d68ea9ef9e9dc58b"
+      },
+      "snapshot": {
+        "complete": false,
+        "started": 1792520906.1852334,
+        "rssLimitBytes": 2147483648,
+        "availableFloorBytes": 17179869184,
+        "peakTreeRssBytes": 125911040,
+        "minimumAvailableBytes": 27042037760,
+        "returncode": 1,
+        "wallSeconds": 0.18876963201910257,
+        "finished": 1792520906.3740003
+      },
+      "startedUtc": "2026-10-20T18:28:26.185233+00:00",
+      "finishedUtc": "2026-10-20T18:28:26.374000+00:00",
+      "intervalSeconds": 0.1887669563293457,
+      "outcome": "unsuccessful-finalized",
+      "guardMethod": {
+        "file": "selfhost/build/phase113/runtime-controls02-guard/method.json",
+        "bytes": 476,
+        "sha256": "b3550550ace45c2e8fc3cfd916c58696303e607ec88699d35482ae1b25592593"
+      },
+      "limits": {
+        "cpu": "3"
+      }
+    },
+    {
+      "guard": "diagnostic-check07-guard",
+      "receipt": {
+        "file": "selfhost/build/phase113/diagnostic-check07-guard/process.json",
+        "bytes": 754,
+        "sha256": "f2d02eb8f86ef13d0b84b281c21529d76ad4aee2f1d2b809e15d1800b1f01fa9"
+      },
+      "snapshot": {
+        "complete": true,
+        "started": 1792520906.4976292,
+        "rssLimitBytes": 2147483648,
+        "availableFloorBytes": 17179869184,
+        "peakTreeRssBytes": 940793856,
+        "minimumAvailableBytes": 24718204928,
+        "returncode": 0,
+        "wallSeconds": 10.06790652894415,
+        "finished": 1792520916.5655322
+      },
+      "startedUtc": "2026-10-20T18:28:26.497629+00:00",
+      "finishedUtc": "2026-10-20T18:28:36.565532+00:00",
+      "intervalSeconds": 10.0679030418396,
+      "outcome": "successful",
+      "guardMethod": {
+        "file": "selfhost/build/phase113/diagnostic-check07-guard/method.json",
+        "bytes": 476,
+        "sha256": "026d2cfb245f4e9d2de078369c5b8fb24bad1cf3fcdfe0c283ba155b7b8cd0b2"
+      },
+      "limits": {
+        "cpu": "3"
+      }
+    },
+    {
+      "guard": "diagnostic-inspect07-guard",
+      "receipt": {
+        "file": "selfhost/build/phase113/diagnostic-inspect07-guard/process.json",
+        "bytes": 724,
+        "sha256": "ac8b3b76f393a6d74d72662ef42fc54e1b702b37252f14b961905ef03c7543e1"
+      },
+      "snapshot": {
+        "complete": true,
+        "started": 1792520931.0542753,
+        "rssLimitBytes": 2147483648,
+        "availableFloorBytes": 17179869184,
+        "peakTreeRssBytes": 148148224,
+        "minimumAvailableBytes": 25692880896,
+        "returncode": 0,
+        "wallSeconds": 5.324451861903071,
+        "finished": 1792520936.3787236
+      },
+      "startedUtc": "2026-10-20T18:28:51.054275+00:00",
+      "finishedUtc": "2026-10-20T18:28:56.378724+00:00",
+      "intervalSeconds": 5.324448347091675,
+      "outcome": "successful",
+      "guardMethod": {
+        "file": "selfhost/build/phase113/diagnostic-inspect07-guard/method.json",
+        "bytes": 476,
+        "sha256": "670af68d671ca546b99646e74646b4395ff4f33bc49de4cefac638bcf8918dfe"
+      },
+      "limits": {
+        "cpu": "3"
+      }
+    },
+    {
+      "guard": "runtime-controls03-guard",
+      "receipt": {
+        "file": "selfhost/build/phase113/runtime-controls03-guard/process.json",
+        "bytes": 644,
+        "sha256": "3727d4021f8530dc4d1f55a20e06390b62dbeef707ec4688ec9c6df31b99e9ae"
+      },
+      "snapshot": {
+        "complete": true,
+        "started": 1792520955.1768556,
+        "rssLimitBytes": 2147483648,
+        "availableFloorBytes": 17179869184,
+        "peakTreeRssBytes": 149999616,
+        "minimumAvailableBytes": 25812283392,
+        "returncode": 0,
+        "wallSeconds": 0.6017360938712955,
+        "finished": 1792520955.7785897
+      },
+      "startedUtc": "2026-10-20T18:29:15.176856+00:00",
+      "finishedUtc": "2026-10-20T18:29:15.778590+00:00",
+      "intervalSeconds": 0.6017341613769531,
+      "outcome": "successful",
+      "guardMethod": {
+        "file": "selfhost/build/phase113/runtime-controls03-guard/method.json",
+        "bytes": 476,
+        "sha256": "e9793945fb2d5cfcfacbbf832db15d1f6854a588e4c0ffa1872867a3587a0400"
+      },
+      "limits": {
+        "cpu": "3"
+      }
+    },
+    {
+      "guard": "scalar-check08-guard",
+      "receipt": {
+        "file": "selfhost/build/phase113/scalar-check08-guard/process.json",
+        "bytes": 953,
+        "sha256": "8a58e47a164d06116855db5a7f7b6784b06a0c00d4b4535cb9f1034ecdb06ebb"
+      },
+      "snapshot": {
+        "complete": true,
+        "started": 1792521022.99606,
+        "rssLimitBytes": 2147483648,
+        "availableFloorBytes": 17179869184,
+        "peakTreeRssBytes": 1170571264,
+        "minimumAvailableBytes": 25910333440,
+        "returncode": 0,
+        "wallSeconds": 10.037570069078356,
+        "finished": 1792521033.033627
+      },
+      "startedUtc": "2026-10-20T18:30:22.996060+00:00",
+      "finishedUtc": "2026-10-20T18:30:33.033627+00:00",
+      "intervalSeconds": 10.037567138671875,
+      "outcome": "successful",
+      "guardMethod": {
+        "file": "selfhost/build/phase113/scalar-check08-guard/method.json",
+        "bytes": 476,
+        "sha256": "0cf6ec38481af921244973f4ce146bfdb27a21c355477acae6c198bd2855fda9"
+      },
+      "limits": {
+        "cpu": "3"
+      }
+    },
+    {
+      "guard": "scalar-all08-guard",
+      "receipt": {
+        "file": "selfhost/build/phase113/scalar-all08-guard/process.json",
+        "bytes": 630,
+        "sha256": "a1d6f024651fc5183ae70edda0661d54c9b2021d5467617ddee59b1583d6a63b"
+      },
+      "snapshot": {
+        "complete": true,
+        "started": 1792521054.657742,
+        "rssLimitBytes": 2147483648,
+        "availableFloorBytes": 17179869184,
+        "peakTreeRssBytes": 269746176,
+        "minimumAvailableBytes": 26767867904,
+        "returncode": 0,
+        "wallSeconds": 95.31581783900037,
+        "finished": 1792521149.9735596
+      },
+      "startedUtc": "2026-10-20T18:30:54.657742+00:00",
+      "finishedUtc": "2026-10-20T18:32:29.973560+00:00",
+      "intervalSeconds": 95.3158175945282,
+      "outcome": "successful",
+      "guardMethod": {
+        "file": "selfhost/build/phase113/scalar-all08-guard/method.json",
+        "bytes": 476,
+        "sha256": "2d0229e884b95812a59e6be94532e9a0f68e629ecc38b3aea59866354a9c70b1"
+      },
+      "limits": {
+        "cpu": "3"
+      }
+    },
+    {
+      "guard": "scalar-screen08-guard",
+      "receipt": {
+        "file": "selfhost/build/phase113/scalar-screen08-guard/process.json",
+        "bytes": 804,
+        "sha256": "8b14dd4ec5e3e927a584d01e49d8c650846f29cfe62e25936b4827d6337c7d9b"
+      },
+      "snapshot": {
+        "complete": true,
+        "started": 1792521177.3159015,
+        "rssLimitBytes": 2147483648,
+        "availableFloorBytes": 17179869184,
+        "peakTreeRssBytes": 19759104,
+        "minimumAvailableBytes": 27081043968,
+        "returncode": 0,
+        "wallSeconds": 11.031089399941266,
+        "finished": 1792521188.3469896
+      },
+      "startedUtc": "2026-10-20T18:32:57.315902+00:00",
+      "finishedUtc": "2026-10-20T18:33:08.346990+00:00",
+      "intervalSeconds": 11.03108811378479,
+      "outcome": "successful",
+      "guardMethod": {
+        "file": "selfhost/build/phase113/scalar-screen08-guard/method.json",
+        "bytes": 476,
+        "sha256": "52b8f2640f0c3196f4592863638ae3a2b75a82c29ad8fb3e799bb7fbafbb7c5d"
+      },
+      "limits": {
+        "cpu": "3"
+      }
+    },
+    {
+      "guard": "enhanced-check09-guard",
+      "receipt": {
+        "file": "selfhost/build/phase113/enhanced-check09-guard/process.json",
+        "bytes": 925,
+        "sha256": "52a028fc5ecbef11013c5ba63db11f78ecccf499d6cc124965c94c2a9b3cec40"
+      },
+      "snapshot": {
+        "complete": true,
+        "started": 1792521240.7270262,
+        "rssLimitBytes": 2147483648,
+        "availableFloorBytes": 17179869184,
+        "peakTreeRssBytes": 1282596864,
+        "minimumAvailableBytes": 25843892224,
+        "returncode": 0,
+        "wallSeconds": 9.837346110958606,
+        "finished": 1792521250.5643687
+      },
+      "startedUtc": "2026-10-20T18:34:00.727026+00:00",
+      "finishedUtc": "2026-10-20T18:34:10.564369+00:00",
+      "intervalSeconds": 9.837342500686646,
+      "outcome": "successful",
+      "guardMethod": {
+        "file": "selfhost/build/phase113/enhanced-check09-guard/method.json",
+        "bytes": 476,
+        "sha256": "aadc29415cf98f6749b76e2be31bc484c90826ef122c46a1a8494a73184edc72"
+      },
+      "limits": {
+        "cpu": "3"
+      }
+    },
+    {
+      "guard": "fact-controls09-guard",
+      "receipt": {
+        "file": "selfhost/build/phase113/fact-controls09-guard/process.json",
+        "bytes": 670,
+        "sha256": "e25a99dbf52019a13d11a83baac939cd059a1cffeb209b244a1553d363d69f7c"
+      },
+      "snapshot": {
+        "complete": true,
+        "started": 1792521315.4986432,
+        "rssLimitBytes": 2147483648,
+        "availableFloorBytes": 17179869184,
+        "peakTreeRssBytes": 203771904,
+        "minimumAvailableBytes": 26909642752,
+        "returncode": 0,
+        "wallSeconds": 1.5516319328453392,
+        "finished": 1792521317.0502734
+      },
+      "startedUtc": "2026-10-20T18:35:15.498643+00:00",
+      "finishedUtc": "2026-10-20T18:35:17.050273+00:00",
+      "intervalSeconds": 1.5516302585601807,
+      "outcome": "successful",
+      "guardMethod": {
+        "file": "selfhost/build/phase113/fact-controls09-guard/method.json",
+        "bytes": 476,
+        "sha256": "1f76c99887437377fc09d0b22dd98212f6cc6ede36fd5b9c7107ae753a017d55"
+      },
+      "limits": {
+        "cpu": "3"
+      }
+    },
+    {
+      "guard": "enhanced-all09-guard",
+      "receipt": {
+        "file": "selfhost/build/phase113/enhanced-all09-guard/process.json",
+        "bytes": 634,
+        "sha256": "bf62d80def099e6d22a54ca37bc7606b031e7cc8501122f3fe2c502e5b2b4684"
+      },
+      "snapshot": {
+        "complete": true,
+        "started": 1792521317.9592102,
+        "rssLimitBytes": 2147483648,
+        "availableFloorBytes": 17179869184,
+        "peakTreeRssBytes": 266948608,
+        "minimumAvailableBytes": 26806652928,
+        "returncode": 0,
+        "wallSeconds": 97.30981403891928,
+        "finished": 1792521415.269024
+      },
+      "startedUtc": "2026-10-20T18:35:17.959210+00:00",
+      "finishedUtc": "2026-10-20T18:36:55.269024+00:00",
+      "intervalSeconds": 97.30981373786926,
+      "outcome": "successful",
+      "guardMethod": {
+        "file": "selfhost/build/phase113/enhanced-all09-guard/method.json",
+        "bytes": 476,
+        "sha256": "e75a530e3015b9333e089c33cae9890da7aa82b512c51da4f03076c6fa1cd1a8"
+      },
+      "limits": {
+        "cpu": "3"
+      }
+    },
+    {
+      "guard": "products-check10-guard",
+      "receipt": {
+        "file": "selfhost/build/phase113/products-check10-guard/process.json",
+        "bytes": 953,
+        "sha256": "97da6d085ca453f1d4427b301534e4fa953d3a2e1ac387559cf6f8ddcd97650d"
+      },
+      "snapshot": {
+        "complete": false,
+        "started": 1792521423.7032933,
+        "rssLimitBytes": 2147483648,
+        "availableFloorBytes": 17179869184,
+        "peakTreeRssBytes": 528838656,
+        "minimumAvailableBytes": 26591977472,
+        "returncode": 1,
+        "wallSeconds": 4.794890089891851,
+        "finished": 1792521428.4981806
+      },
+      "startedUtc": "2026-10-20T18:37:03.703293+00:00",
+      "finishedUtc": "2026-10-20T18:37:08.498181+00:00",
+      "intervalSeconds": 4.79488730430603,
+      "outcome": "unsuccessful-finalized",
+      "guardMethod": {
+        "file": "selfhost/build/phase113/products-check10-guard/method.json",
+        "bytes": 476,
+        "sha256": "1877ab7ba9bb542d993737429a07760e56ea3e655da37993d897e30f5d07e21c"
+      },
+      "limits": {
+        "cpu": "3"
+      }
+    },
+    {
+      "guard": "enhanced-screen09-guard",
+      "receipt": {
+        "file": "selfhost/build/phase113/enhanced-screen09-guard/process.json",
+        "bytes": 865,
+        "sha256": "524ef53396fa9a51c9966d5706a9de11023a5f92210649767b62a77f4ba10e27"
+      },
+      "snapshot": {
+        "complete": true,
+        "started": 1792521443.867276,
+        "rssLimitBytes": 2147483648,
+        "availableFloorBytes": 17179869184,
+        "peakTreeRssBytes": 20316160,
+        "minimumAvailableBytes": 27048730624,
+        "returncode": 0,
+        "wallSeconds": 13.783432766096666,
+        "finished": 1792521457.6507075
+      },
+      "startedUtc": "2026-10-20T18:37:23.867276+00:00",
+      "finishedUtc": "2026-10-20T18:37:37.650707+00:00",
+      "intervalSeconds": 13.78343152999878,
+      "outcome": "successful",
+      "guardMethod": {
+        "file": "selfhost/build/phase113/enhanced-screen09-guard/method.json",
+        "bytes": 476,
+        "sha256": "b1163c9b327b03a62ad6cb2c82d2b21394827c517d54ba408cb2bef5a4f84ab4"
+      },
+      "limits": {
+        "cpu": "3"
+      }
+    },
+    {
+      "guard": "products-check11-guard",
+      "receipt": {
+        "file": "selfhost/build/phase113/products-check11-guard/process.json",
+        "bytes": 954,
+        "sha256": "f7a30a33dbe60c038b3e8daac308dbe59c76937fcea9c91e705bac80a0280729"
+      },
+      "snapshot": {
+        "complete": true,
+        "started": 1792521603.2440667,
+        "rssLimitBytes": 2147483648,
+        "availableFloorBytes": 17179869184,
+        "peakTreeRssBytes": 1226604544,
+        "minimumAvailableBytes": 25880670208,
+        "returncode": 0,
+        "wallSeconds": 10.181455908808857,
+        "finished": 1792521613.4255202
+      },
+      "startedUtc": "2026-10-20T18:40:03.244067+00:00",
+      "finishedUtc": "2026-10-20T18:40:13.425520+00:00",
+      "intervalSeconds": 10.181453466415405,
+      "outcome": "successful",
+      "guardMethod": {
+        "file": "selfhost/build/phase113/products-check11-guard/method.json",
+        "bytes": 476,
+        "sha256": "0856fd152a11e1352405d871735f7de781074ab3d397c9e20d590197ed66a9d1"
+      },
+      "limits": {
+        "cpu": "3"
+      }
+    },
+    {
+      "guard": "product-controls11-guard",
+      "receipt": {
+        "file": "selfhost/build/phase113/product-controls11-guard/process.json",
+        "bytes": 703,
+        "sha256": "bb00bd4bdab926c194868ba1e7e98b81078ac17753734c8eefa4b7cd9068f9e3"
+      },
+      "snapshot": {
+        "complete": true,
+        "started": 1792521710.0874798,
+        "rssLimitBytes": 2147483648,
+        "availableFloorBytes": 17179869184,
+        "peakTreeRssBytes": 231514112,
+        "minimumAvailableBytes": 26865209344,
+        "returncode": 0,
+        "wallSeconds": 1.5940539541188627,
+        "finished": 1792521711.681532
+      },
+      "startedUtc": "2026-10-20T18:41:50.087480+00:00",
+      "finishedUtc": "2026-10-20T18:41:51.681532+00:00",
+      "intervalSeconds": 1.5940520763397217,
+      "outcome": "successful",
+      "guardMethod": {
+        "file": "selfhost/build/phase113/product-controls11-guard/method.json",
+        "bytes": 476,
+        "sha256": "d7a7f91b1ef8fc85eb2b72f028691e5408c6edd659ca5c7dc844d2d908e91c1b"
+      },
+      "limits": {
+        "cpu": "3"
+      }
+    },
+    {
+      "guard": "products-all11-guard",
+      "receipt": {
+        "file": "selfhost/build/phase113/products-all11-guard/process.json",
+        "bytes": 635,
+        "sha256": "c99cf329e019414be1b36e2f327f4689a1af3295d1bf8861c234dfce2a654257"
+      },
+      "snapshot": {
+        "complete": true,
+        "started": 1792521712.4580743,
+        "rssLimitBytes": 2147483648,
+        "availableFloorBytes": 17179869184,
+        "peakTreeRssBytes": 285052928,
+        "minimumAvailableBytes": 26821550080,
+        "returncode": 0,
+        "wallSeconds": 99.44833516213112,
+        "finished": 1792521811.9064088
+      },
+      "startedUtc": "2026-10-20T18:41:52.458074+00:00",
+      "finishedUtc": "2026-10-20T18:43:31.906409+00:00",
+      "intervalSeconds": 99.44833445549011,
+      "outcome": "successful",
+      "guardMethod": {
+        "file": "selfhost/build/phase113/products-all11-guard/method.json",
+        "bytes": 476,
+        "sha256": "f944ef0e1ecbbe9a416019125f339706a12a4485a0e3da4669c6e7efa5665c32"
+      },
+      "limits": {
+        "cpu": "3"
+      }
+    },
+    {
+      "guard": "inline-check12-guard",
+      "receipt": {
+        "file": "selfhost/build/phase113/inline-check12-guard/process.json",
+        "bytes": 1011,
+        "sha256": "171c9fc4a1a8898753d9205f2f120b39ee095f910fd41e476d44578c5d5b070d"
+      },
+      "snapshot": {
+        "complete": false,
+        "started": 1792521874.3978004,
+        "rssLimitBytes": 2147483648,
+        "availableFloorBytes": 17179869184,
+        "peakTreeRssBytes": 526827520,
+        "minimumAvailableBytes": 26572701696,
+        "returncode": 1,
+        "wallSeconds": 4.556845454033464,
+        "finished": 1792521878.954643
+      },
+      "startedUtc": "2026-10-20T18:44:34.397800+00:00",
+      "finishedUtc": "2026-10-20T18:44:38.954643+00:00",
+      "intervalSeconds": 4.556842565536499,
+      "outcome": "unsuccessful-finalized",
+      "guardMethod": {
+        "file": "selfhost/build/phase113/inline-check12-guard/method.json",
+        "bytes": 476,
+        "sha256": "550dd492e61d0a1e57ef5b24050c4f6ffa20b06f86523ecb43feb10c7a6d1f9c"
+      },
+      "limits": {
+        "cpu": "3"
+      }
+    },
+    {
+      "guard": "products-screen11-guard",
+      "receipt": {
+        "file": "selfhost/build/phase113/products-screen11-guard/process.json",
+        "bytes": 868,
+        "sha256": "49f0b61c7fd879b24702222ae03c995a9e58d6ddc06cd39bc34cd801461b1228"
+      },
+      "snapshot": {
+        "complete": true,
+        "started": 1792521901.2356665,
+        "rssLimitBytes": 2147483648,
+        "availableFloorBytes": 17179869184,
+        "peakTreeRssBytes": 20078592,
+        "minimumAvailableBytes": 27052277760,
+        "returncode": 0,
+        "wallSeconds": 12.701221773168072,
+        "finished": 1792521913.9368858
+      },
+      "startedUtc": "2026-10-20T18:45:01.235667+00:00",
+      "finishedUtc": "2026-10-20T18:45:13.936886+00:00",
+      "intervalSeconds": 12.701219320297241,
+      "outcome": "successful",
+      "guardMethod": {
+        "file": "selfhost/build/phase113/products-screen11-guard/method.json",
+        "bytes": 476,
+        "sha256": "8d0058cf59fc193aae45593a95e74f1f61be40f9996ff1e97898f9193202c6fc"
+      },
+      "limits": {
+        "cpu": "3"
+      }
+    },
+    {
+      "guard": "inline-check13-guard",
+      "receipt": {
+        "file": "selfhost/build/phase113/inline-check13-guard/process.json",
+        "bytes": 1012,
+        "sha256": "4899bb868e2fc946950e529b0d0a8f7dcc6c9e4a4e716aee11964f0b26151b8d"
+      },
+      "snapshot": {
+        "complete": true,
+        "started": 1792522028.0157747,
+        "rssLimitBytes": 2147483648,
+        "availableFloorBytes": 17179869184,
+        "peakTreeRssBytes": 1161338880,
+        "minimumAvailableBytes": 25933332480,
+        "returncode": 0,
+        "wallSeconds": 9.814805791946128,
+        "finished": 1792522037.8305774
+      },
+      "startedUtc": "2026-10-20T18:47:08.015775+00:00",
+      "finishedUtc": "2026-10-20T18:47:17.830577+00:00",
+      "intervalSeconds": 9.814802646636963,
+      "outcome": "successful",
+      "guardMethod": {
+        "file": "selfhost/build/phase113/inline-check13-guard/method.json",
+        "bytes": 476,
+        "sha256": "c9e4ab40c8569002960c54bad430d965bae183a4c6e9523ec41564fadea6789e"
+      },
+      "limits": {
+        "cpu": "3"
+      }
+    },
+    {
+      "guard": "inline-all13-guard",
+      "receipt": {
+        "file": "selfhost/build/phase113/inline-all13-guard/process.json",
+        "bytes": 631,
+        "sha256": "aafd2b67f29157c638bfa9387cd3d34e03ffb905c47491c38c1a7e4f447c428c"
+      },
+      "snapshot": {
+        "complete": true,
+        "started": 1792522265.867688,
+        "rssLimitBytes": 2147483648,
+        "availableFloorBytes": 17179869184,
+        "peakTreeRssBytes": 272596992,
+        "minimumAvailableBytes": 26745397248,
+        "returncode": 0,
+        "wallSeconds": 105.60457373713143,
+        "finished": 1792522371.4722593
+      },
+      "startedUtc": "2026-10-20T18:51:05.867688+00:00",
+      "finishedUtc": "2026-10-20T18:52:51.472259+00:00",
+      "intervalSeconds": 105.60457134246826,
+      "outcome": "successful",
+      "guardMethod": {
+        "file": "selfhost/build/phase113/inline-all13-guard/method.json",
+        "bytes": 476,
+        "sha256": "be11179d995d110b769d1b7f7c61096e8231d07bf4b9055f07208e9b3fae4871"
+      },
+      "limits": {
+        "cpu": "3"
+      }
+    },
+    {
+      "guard": "facts-api14-guard",
+      "receipt": {
+        "file": "selfhost/build/phase113/facts-api14-guard/process.json",
+        "bytes": 1012,
+        "sha256": "7e0d44647e8872330f119790f2d4273c6e2c2c41c6da649bf59ad6b32e085437"
+      },
+      "snapshot": {
+        "complete": true,
+        "started": 1792522379.7468271,
+        "rssLimitBytes": 2147483648,
+        "availableFloorBytes": 17179869184,
+        "peakTreeRssBytes": 1387679744,
+        "minimumAvailableBytes": 25705422848,
+        "returncode": 0,
+        "wallSeconds": 10.411209044978023,
+        "finished": 1792522390.1580338
+      },
+      "startedUtc": "2026-10-20T18:52:59.746827+00:00",
+      "finishedUtc": "2026-10-20T18:53:10.158034+00:00",
+      "intervalSeconds": 10.411206722259521,
+      "outcome": "successful",
+      "guardMethod": {
+        "file": "selfhost/build/phase113/facts-api14-guard/method.json",
+        "bytes": 476,
+        "sha256": "67e40b81597f511bf6cba35d21ad6bd13e26ea56d74011cce2169ce91e6ec7a9"
+      },
+      "limits": {
+        "cpu": "3"
+      }
+    },
+    {
+      "guard": "fact-controls14-guard",
+      "receipt": {
+        "file": "selfhost/build/phase113/fact-controls14-guard/process.json",
+        "bytes": 766,
+        "sha256": "8775682c8c04e1df164f67464ed77346563420f9366d736899e57682b27333b3"
+      },
+      "snapshot": {
+        "complete": true,
+        "started": 1792522405.2362397,
+        "rssLimitBytes": 2147483648,
+        "availableFloorBytes": 17179869184,
+        "peakTreeRssBytes": 235204608,
+        "minimumAvailableBytes": 26850521088,
+        "returncode": 0,
+        "wallSeconds": 1.593303797999397,
+        "finished": 1792522406.829545
+      },
+      "startedUtc": "2026-10-20T18:53:25.236240+00:00",
+      "finishedUtc": "2026-10-20T18:53:26.829545+00:00",
+      "intervalSeconds": 1.5933053493499756,
+      "outcome": "successful",
+      "guardMethod": {
+        "file": "selfhost/build/phase113/fact-controls14-guard/method.json",
+        "bytes": 476,
+        "sha256": "2482569bd2e7d49696eaebd7ff159d613a1074487000064505782b17d7792249"
+      },
+      "limits": {
+        "cpu": "3"
+      }
+    },
+    {
+      "guard": "inline-screen13-guard",
+      "receipt": {
+        "file": "selfhost/build/phase113/inline-screen13-guard/process.json",
+        "bytes": 863,
+        "sha256": "9f9ff2ec37a1e2f5c1c66981a411797c3421e7dba8f5c330902a0ddec8cdbc2b"
+      },
+      "snapshot": {
+        "complete": true,
+        "started": 1792522422.912137,
+        "rssLimitBytes": 2147483648,
+        "availableFloorBytes": 17179869184,
+        "peakTreeRssBytes": 20185088,
+        "minimumAvailableBytes": 27031474176,
+        "returncode": 0,
+        "wallSeconds": 13.096627781167626,
+        "finished": 1792522436.0087633
+      },
+      "startedUtc": "2026-10-20T18:53:42.912137+00:00",
+      "finishedUtc": "2026-10-20T18:53:56.008763+00:00",
+      "intervalSeconds": 13.096626281738281,
+      "outcome": "successful",
+      "guardMethod": {
+        "file": "selfhost/build/phase113/inline-screen13-guard/method.json",
+        "bytes": 476,
+        "sha256": "65f1739a85e95dd2f211e0f9500be7b6edd79c7db539766fadad555f2a255728"
+      },
+      "limits": {
+        "cpu": "3"
+      }
+    },
+    {
+      "guard": "facts-all14-guard",
+      "receipt": {
+        "file": "selfhost/build/phase113/facts-all14-guard/process.json",
+        "bytes": 629,
+        "sha256": "04e492e8394eac2b270c4e88310ed560d925a49c0dc22d4076e0c41a6275b38b"
+      },
+      "snapshot": {
+        "complete": false,
+        "started": 1792522458.089705,
+        "rssLimitBytes": 2147483648,
+        "availableFloorBytes": 17179869184,
+        "peakTreeRssBytes": 141565952,
+        "minimumAvailableBytes": 26921664512,
+        "returncode": 1,
+        "wallSeconds": 18.98790473304689,
+        "finished": 1792522477.0776076
+      },
+      "startedUtc": "2026-10-20T18:54:18.089705+00:00",
+      "finishedUtc": "2026-10-20T18:54:37.077608+00:00",
+      "intervalSeconds": 18.987902641296387,
+      "outcome": "unsuccessful-finalized",
+      "guardMethod": {
+        "file": "selfhost/build/phase113/facts-all14-guard/method.json",
+        "bytes": 476,
+        "sha256": "e047c74259f6c7df635d7b1ef7fcf580a02672d35a55421b398d1966e6154b42"
+      },
+      "limits": {
+        "cpu": "3"
+      }
+    },
+    {
+      "guard": "inliner-reflect01-guard",
+      "receipt": {
+        "file": "selfhost/build/phase113/inliner-reflect01-guard/process.json",
+        "bytes": 646,
+        "sha256": "017f78eed958c364bd2fcb6a6f8aed613c3b5d5955ddc71ec307fdd2b3454dad"
+      },
+      "snapshot": {
+        "complete": false,
+        "started": 1792522544.8455226,
+        "rssLimitBytes": 2147483648,
+        "availableFloorBytes": 17179869184,
+        "peakTreeRssBytes": 82702336,
+        "minimumAvailableBytes": 26976575488,
+        "returncode": 1,
+        "wallSeconds": 0.9427987989038229,
+        "finished": 1792522545.7883186
+      },
+      "startedUtc": "2026-10-20T18:55:44.845523+00:00",
+      "finishedUtc": "2026-10-20T18:55:45.788319+00:00",
+      "intervalSeconds": 0.942795991897583,
+      "outcome": "unsuccessful-finalized",
+      "guardMethod": {
+        "file": "selfhost/build/phase113/inliner-reflect01-guard/method.json",
+        "bytes": 476,
+        "sha256": "931e98f58a500871933ac627e4aa1e2164bff51116aa1be82037296942ae12a4"
+      },
+      "limits": {
+        "cpu": "3"
+      }
+    },
+    {
+      "guard": "facts-main14-guard",
+      "receipt": {
+        "file": "selfhost/build/phase113/facts-main14-guard/process.json",
+        "bytes": 635,
+        "sha256": "e5aa5c84e701320901f8dc1a95446fe65f942288eb133fbe2e9028b81bfde9ce"
+      },
+      "snapshot": {
+        "complete": true,
+        "started": 1792522576.6031647,
+        "rssLimitBytes": 2147483648,
+        "availableFloorBytes": 17179869184,
+        "peakTreeRssBytes": 280436736,
+        "minimumAvailableBytes": 26638532608,
+        "returncode": 0,
+        "wallSeconds": 105.14463259186596,
+        "finished": 1792522681.7477963
+      },
+      "startedUtc": "2026-10-20T18:56:16.603165+00:00",
+      "finishedUtc": "2026-10-20T18:58:01.747796+00:00",
+      "intervalSeconds": 105.1446316242218,
+      "outcome": "successful",
+      "guardMethod": {
+        "file": "selfhost/build/phase113/facts-main14-guard/method.json",
+        "bytes": 476,
+        "sha256": "45dece302c1a59ecc5fc90aaf242718bb7554a37978caf5c5a59bd8d70509fbc"
+      },
+      "limits": {
+        "cpu": "3"
+      }
+    },
+    {
+      "guard": "inline-products-api15-guard",
+      "receipt": {
+        "file": "selfhost/build/phase113/inline-products-api15-guard/process.json",
+        "bytes": 1288,
+        "sha256": "f8566607534a2e372c7f09bbfdab622d6059eb936228ebb0662f156d2ee399ec"
+      },
+      "snapshot": {
+        "complete": true,
+        "started": 1792522707.6018996,
+        "rssLimitBytes": 2147483648,
+        "availableFloorBytes": 17179869184,
+        "peakTreeRssBytes": 1251233792,
+        "minimumAvailableBytes": 24312852480,
+        "returncode": 0,
+        "wallSeconds": 11.761577578028664,
+        "finished": 1792522719.36347
+      },
+      "startedUtc": "2026-10-20T18:58:27.601900+00:00",
+      "finishedUtc": "2026-10-20T18:58:39.363470+00:00",
+      "intervalSeconds": 11.761570453643799,
+      "outcome": "successful",
+      "guardMethod": {
+        "file": "selfhost/build/phase113/inline-products-api15-guard/method.json",
+        "bytes": 476,
+        "sha256": "f139cf98eb8d5bcb7fab1da9a1283d271cefc8178b4438993a29e82648c6e89e"
+      },
+      "limits": {
+        "cpu": "3"
+      }
+    },
+    {
+      "guard": "facts-screen14-guard",
+      "receipt": {
+        "file": "selfhost/build/phase113/facts-screen14-guard/process.json",
+        "bytes": 791,
+        "sha256": "d9967c0e54c9fe9e70cce2e3a0349f8aaaf16a12095f252e3eab1019917117a0"
+      },
+      "snapshot": {
+        "complete": false,
+        "started": 1792522758.2317164,
+        "rssLimitBytes": 2147483648,
+        "availableFloorBytes": 17179869184,
+        "peakTreeRssBytes": 13869056,
+        "minimumAvailableBytes": 25737834496,
+        "returncode": 1,
+        "wallSeconds": 0.06390701793134212,
+        "finished": 1792522758.2956207
+      },
+      "startedUtc": "2026-10-20T18:59:18.231716+00:00",
+      "finishedUtc": "2026-10-20T18:59:18.295621+00:00",
+      "intervalSeconds": 0.0639042854309082,
+      "outcome": "unsuccessful-finalized",
+      "guardMethod": {
+        "file": "selfhost/build/phase113/facts-screen14-guard/method.json",
+        "bytes": 476,
+        "sha256": "bbaeae3d5081673d5eaee04e8d97fa02c42a6d5a2554fffba24650c764a54a77"
+      },
+      "limits": {
+        "cpu": "3"
+      }
+    },
+    {
+      "guard": "facts-screen14b-guard",
+      "receipt": {
+        "file": "selfhost/build/phase113/facts-screen14b-guard/process.json",
+        "bytes": 863,
+        "sha256": "7efcfceb638d2a2e7ef82613eca571075505a897b9c085056544333419b71499"
+      },
+      "snapshot": {
+        "complete": true,
+        "started": 1792522770.0306983,
+        "rssLimitBytes": 2147483648,
+        "availableFloorBytes": 17179869184,
+        "peakTreeRssBytes": 20168704,
+        "minimumAvailableBytes": 25792217088,
+        "returncode": 0,
+        "wallSeconds": 11.750661090016365,
+        "finished": 1792522781.7813568
+      },
+      "startedUtc": "2026-10-20T18:59:30.030698+00:00",
+      "finishedUtc": "2026-10-20T18:59:41.781357+00:00",
+      "intervalSeconds": 11.750658512115479,
+      "outcome": "successful",
+      "guardMethod": {
+        "file": "selfhost/build/phase113/facts-screen14b-guard/method.json",
+        "bytes": 476,
+        "sha256": "1d9769f4e11c28dd374251467a051ceb96eb7962be61266fdae56bb9efb3c091"
+      },
+      "limits": {
+        "cpu": "3"
+      }
+    },
+    {
+      "guard": "inline-all15-guard",
+      "receipt": {
+        "file": "selfhost/build/phase113/inline-all15-guard/process.json",
+        "bytes": 634,
+        "sha256": "e8846efd900ecdfc5c55c200d784ca27b649191dd0b5a10f126e5e8058be148b"
+      },
+      "snapshot": {
+        "complete": true,
+        "started": 1792522828.355084,
+        "rssLimitBytes": 2147483648,
+        "availableFloorBytes": 17179869184,
+        "peakTreeRssBytes": 324640768,
+        "minimumAvailableBytes": 26502430720,
+        "returncode": 0,
+        "wallSeconds": 114.85737394890748,
+        "finished": 1792522943.2124567
+      },
+      "startedUtc": "2026-10-20T19:00:28.355084+00:00",
+      "finishedUtc": "2026-10-20T19:02:23.212457+00:00",
+      "intervalSeconds": 114.8573727607727,
+      "outcome": "successful",
+      "guardMethod": {
+        "file": "selfhost/build/phase113/inline-all15-guard/method.json",
+        "bytes": 476,
+        "sha256": "055ef6b233960ba36a65c190e936fa880ccdb379b471bb240c6c1b45a3f42640"
+      },
+      "limits": {
+        "cpu": "3"
+      }
+    },
+    {
+      "guard": "shared-api16-guard",
+      "receipt": {
+        "file": "selfhost/build/phase113/shared-api16-guard/process.json",
+        "bytes": 1265,
+        "sha256": "35f151b1ef18bd4cc41f4244e9683078bb034f71922af6345abc07b932471e5b"
+      },
+      "snapshot": {
+        "complete": true,
+        "started": 1792522963.8301244,
+        "rssLimitBytes": 2147483648,
+        "availableFloorBytes": 17179869184,
+        "peakTreeRssBytes": 1370341376,
+        "minimumAvailableBytes": 25722327040,
+        "returncode": 0,
+        "wallSeconds": 10.722606973024085,
+        "finished": 1792522974.5527275
+      },
+      "startedUtc": "2026-10-20T19:02:43.830124+00:00",
+      "finishedUtc": "2026-10-20T19:02:54.552727+00:00",
+      "intervalSeconds": 10.72260308265686,
+      "outcome": "successful",
+      "guardMethod": {
+        "file": "selfhost/build/phase113/shared-api16-guard/method.json",
+        "bytes": 476,
+        "sha256": "7ef9e9d3b1ec556203a768692ccf24f344784711484cd235a85f78f678ab46fc"
+      },
+      "limits": {
+        "cpu": "3"
+      }
+    },
+    {
+      "guard": "inline-screen15-guard",
+      "receipt": {
+        "file": "selfhost/build/phase113/inline-screen15-guard/process.json",
+        "bytes": 859,
+        "sha256": "7b0ad53f729ff5335ff5ee1551deb0524abafe2786abc7b077b8e98d4a0779c6"
+      },
+      "snapshot": {
+        "complete": true,
+        "started": 1792522992.390193,
+        "rssLimitBytes": 2147483648,
+        "availableFloorBytes": 17179869184,
+        "peakTreeRssBytes": 20148224,
+        "minimumAvailableBytes": 27022966784,
+        "returncode": 0,
+        "wallSeconds": 11.34001696901396,
+        "finished": 1792523003.7302067
+      },
+      "startedUtc": "2026-10-20T19:03:12.390193+00:00",
+      "finishedUtc": "2026-10-20T19:03:23.730207+00:00",
+      "intervalSeconds": 11.3400137424469,
+      "outcome": "successful",
+      "guardMethod": {
+        "file": "selfhost/build/phase113/inline-screen15-guard/method.json",
+        "bytes": 476,
+        "sha256": "775b33c0d8cf9697bd8f75036696e808cdd97db679928389b10293a855064862"
+      },
+      "limits": {
+        "cpu": "3"
+      }
+    },
+    {
+      "guard": "counters01-guard",
+      "receipt": {
+        "file": "selfhost/build/phase113/counters01-guard/process.json",
+        "bytes": 668,
+        "sha256": "5e940b93c1fc7729706b72b4c86fe9aaaca12e1263d44d9f7c26f6e45a9ec954"
+      },
+      "snapshot": {
+        "complete": true,
+        "started": 1792523045.3795853,
+        "rssLimitBytes": 2147483648,
+        "availableFloorBytes": 17179869184,
+        "peakTreeRssBytes": 99328000,
+        "minimumAvailableBytes": 26990739456,
+        "returncode": 0,
+        "wallSeconds": 14.859593380941078,
+        "finished": 1792523060.2391777
+      },
+      "startedUtc": "2026-10-20T19:04:05.379585+00:00",
+      "finishedUtc": "2026-10-20T19:04:20.239178+00:00",
+      "intervalSeconds": 14.85959243774414,
+      "outcome": "successful",
+      "guardMethod": {
+        "file": "selfhost/build/phase113/counters01-guard/method.json",
+        "bytes": 476,
+        "sha256": "6a7bb7f6b596fd685afa764d11e8baa1975ce51d0e576261155ecd5de2545288"
+      },
+      "limits": {
+        "cpu": "3"
+      }
+    },
+    {
+      "guard": "shared-controls16-guard",
+      "receipt": {
+        "file": "selfhost/build/phase113/shared-controls16-guard/process.json",
+        "bytes": 848,
+        "sha256": "9e595debfaa4f648090fa5096b7d5b8d232cd2829c505306546e3a5c98e54d27"
+      },
+      "snapshot": {
+        "complete": true,
+        "started": 1792523119.2667928,
+        "rssLimitBytes": 2147483648,
+        "availableFloorBytes": 17179869184,
+        "peakTreeRssBytes": 236998656,
+        "minimumAvailableBytes": 26844196864,
+        "returncode": 0,
+        "wallSeconds": 1.776510267984122,
+        "finished": 1792523121.0433009
+      },
+      "startedUtc": "2026-10-20T19:05:19.266793+00:00",
+      "finishedUtc": "2026-10-20T19:05:21.043301+00:00",
+      "intervalSeconds": 1.776508092880249,
+      "outcome": "successful",
+      "guardMethod": {
+        "file": "selfhost/build/phase113/shared-controls16-guard/method.json",
+        "bytes": 476,
+        "sha256": "558f20a8a284609e2b8ee5eae57956a309ca145fcd2f751d52e3e5af5e1fac8f"
+      },
+      "limits": {
+        "cpu": "3"
+      }
+    },
+    {
+      "guard": "arrays-api17-guard",
+      "receipt": {
+        "file": "selfhost/build/phase113/arrays-api17-guard/process.json",
+        "bytes": 1422,
+        "sha256": "14c22fec68654fd669f6990fb39702c151e815e33763bbfc90dafd369fb301cd"
+      },
+      "snapshot": {
+        "complete": true,
+        "started": 1792523164.823834,
+        "rssLimitBytes": 2147483648,
+        "availableFloorBytes": 17179869184,
+        "peakTreeRssBytes": 1361453056,
+        "minimumAvailableBytes": 25726984192,
+        "returncode": 0,
+        "wallSeconds": 10.616459042066708,
+        "finished": 1792523175.4402878
+      },
+      "startedUtc": "2026-10-20T19:06:04.823834+00:00",
+      "finishedUtc": "2026-10-20T19:06:15.440288+00:00",
+      "intervalSeconds": 10.616453886032104,
+      "outcome": "successful",
+      "guardMethod": {
+        "file": "selfhost/build/phase113/arrays-api17-guard/method.json",
+        "bytes": 476,
+        "sha256": "0ece4e9e120b976bebbfe7148b1a08e5c458a72785a8bbc7e8c033989d8cc8b7"
+      },
+      "limits": {
+        "cpu": "3"
+      }
+    },
+    {
+      "guard": "shared-all16-guard",
+      "receipt": {
+        "file": "selfhost/build/phase113/shared-all16-guard/process.json",
+        "bytes": 630,
+        "sha256": "823357a2280ccf962db30ba1d69a3c60ae897c152a257fb6fb2298e2db98ad2b"
+      },
+      "snapshot": {
+        "complete": true,
+        "started": 1792523194.9639533,
+        "rssLimitBytes": 2147483648,
+        "availableFloorBytes": 17179869184,
+        "peakTreeRssBytes": 320790528,
+        "minimumAvailableBytes": 26625212416,
+        "returncode": 0,
+        "wallSeconds": 93.39578533591703,
+        "finished": 1792523288.359737
+      },
+      "startedUtc": "2026-10-20T19:06:34.963953+00:00",
+      "finishedUtc": "2026-10-20T19:08:08.359737+00:00",
+      "intervalSeconds": 93.39578366279602,
+      "outcome": "successful",
+      "guardMethod": {
+        "file": "selfhost/build/phase113/shared-all16-guard/method.json",
+        "bytes": 476,
+        "sha256": "cfc1c3aa6f1fbf9398dd01c51961ba76d9f91ec516c92c8991a3198c68348f5c"
+      },
+      "limits": {
+        "cpu": "3"
+      }
+    },
+    {
+      "guard": "field-array17-guard",
+      "receipt": {
+        "file": "selfhost/build/phase113/field-array17-guard/process.json",
+        "bytes": 662,
+        "sha256": "ff0ff7c811fcdbc0b974fe064dfc2002232ff90d555e40c060f7cc866961decb"
+      },
+      "snapshot": {
+        "complete": false,
+        "started": 1792523407.4760416,
+        "rssLimitBytes": 2147483648,
+        "availableFloorBytes": 17179869184,
+        "peakTreeRssBytes": 128925696,
+        "minimumAvailableBytes": 26943791104,
+        "returncode": 1,
+        "wallSeconds": 2.7982857020106167,
+        "finished": 1792523410.2743258
+      },
+      "startedUtc": "2026-10-20T19:10:07.476042+00:00",
+      "finishedUtc": "2026-10-20T19:10:10.274326+00:00",
+      "intervalSeconds": 2.7982842922210693,
+      "outcome": "unsuccessful-finalized",
+      "guardMethod": {
+        "file": "selfhost/build/phase113/field-array17-guard/method.json",
+        "bytes": 476,
+        "sha256": "d38131210f1c4e85c475734b059a6c0e033c8380ed0b11e703b693192399bca6"
+      },
+      "limits": {
+        "cpu": "3"
+      }
+    },
+    {
+      "guard": "shared-screen16-guard",
+      "receipt": {
+        "file": "selfhost/build/phase113/shared-screen16-guard/process.json",
+        "bytes": 860,
+        "sha256": "ff67a346f12a551f8a5433497dfff471555df865058e2e613631f9bd4d52177c"
+      },
+      "snapshot": {
+        "complete": true,
+        "started": 1792523511.6372354,
+        "rssLimitBytes": 2147483648,
+        "availableFloorBytes": 17179869184,
+        "peakTreeRssBytes": 20312064,
+        "minimumAvailableBytes": 27024269312,
+        "returncode": 0,
+        "wallSeconds": 10.74700253806077,
+        "finished": 1792523522.384236
+      },
+      "startedUtc": "2026-10-20T19:11:51.637235+00:00",
+      "finishedUtc": "2026-10-20T19:12:02.384236+00:00",
+      "intervalSeconds": 10.747000694274902,
+      "outcome": "successful",
+      "guardMethod": {
+        "file": "selfhost/build/phase113/shared-screen16-guard/method.json",
+        "bytes": 476,
+        "sha256": "15f8cd830af614727683cc28c686559a7f12cabe5decd4131d82d8de4cd35457"
+      },
+      "limits": {
+        "cpu": "3"
+      }
+    },
+    {
+      "guard": "array-all17-guard",
+      "receipt": {
+        "file": "selfhost/build/phase113/array-all17-guard/process.json",
+        "bytes": 630,
+        "sha256": "2a319c498611fdfa1a6334a3b36996d830bc821f7410e42546ff6a2b1ddbf7dc"
+      },
+      "snapshot": {
+        "complete": true,
+        "started": 1792523546.6356587,
+        "rssLimitBytes": 2147483648,
+        "availableFloorBytes": 17179869184,
+        "peakTreeRssBytes": 308572160,
+        "minimumAvailableBytes": 26638807040,
+        "returncode": 0,
+        "wallSeconds": 110.58167686196975,
+        "finished": 1792523657.2173345
+      },
+      "startedUtc": "2026-10-20T19:12:26.635659+00:00",
+      "finishedUtc": "2026-10-20T19:14:17.217335+00:00",
+      "intervalSeconds": 110.58167576789856,
+      "outcome": "successful",
+      "guardMethod": {
+        "file": "selfhost/build/phase113/array-all17-guard/method.json",
+        "bytes": 476,
+        "sha256": "25ec2e8440385e20d6ca1333ac8b554216ca56c4c70752a80754e7f7c5d31079"
+      },
+      "limits": {
+        "cpu": "3"
+      }
+    },
+    {
+      "guard": "field-array17b-guard",
+      "receipt": {
+        "file": "selfhost/build/phase113/field-array17b-guard/process.json",
+        "bytes": 660,
+        "sha256": "327a13be5cbcca75e028c77e06826c7a88988c4e79af10fcee256415ebc56dc4"
+      },
+      "snapshot": {
+        "complete": false,
+        "started": 1792523712.3870249,
+        "rssLimitBytes": 2147483648,
+        "availableFloorBytes": 17179869184,
+        "peakTreeRssBytes": 169242624,
+        "minimumAvailableBytes": 26880577536,
+        "returncode": 1,
+        "wallSeconds": 8.15797207201831,
+        "finished": 1792523720.5449948
+      },
+      "startedUtc": "2026-10-20T19:15:12.387025+00:00",
+      "finishedUtc": "2026-10-20T19:15:20.544995+00:00",
+      "intervalSeconds": 8.157969951629639,
+      "outcome": "unsuccessful-finalized",
+      "guardMethod": {
+        "file": "selfhost/build/phase113/field-array17b-guard/method.json",
+        "bytes": 476,
+        "sha256": "ee8d6a582671867c51dc2530063f3859dbdb521f91ebb2df4284de0b4d19ca28"
+      },
+      "limits": {
+        "cpu": "3"
+      }
+    },
+    {
+      "guard": "checks18-19-guard",
+      "receipt": {
+        "file": "selfhost/build/phase113/checks18-19-guard/process.json",
+        "bytes": 631,
+        "sha256": "7895bebc07056513a9a48852e0c7b8d2e6e1b548fc413af31a030ad506c4c873"
+      },
+      "snapshot": {
+        "complete": true,
+        "started": 1792524020.5520172,
+        "rssLimitBytes": 2147483648,
+        "availableFloorBytes": 17179869184,
+        "peakTreeRssBytes": 1388933120,
+        "minimumAvailableBytes": 25661517824,
+        "returncode": 0,
+        "wallSeconds": 25.099496262148023,
+        "finished": 1792524045.6515117
+      },
+      "startedUtc": "2026-10-20T19:20:20.552017+00:00",
+      "finishedUtc": "2026-10-20T19:20:45.651512+00:00",
+      "intervalSeconds": 25.099494457244873,
+      "outcome": "successful",
+      "guardMethod": {
+        "file": "selfhost/build/phase113/checks18-19-guard/method.json",
+        "bytes": 476,
+        "sha256": "6ee3c8ed64ebde116ad1d1ea88025e1c1423f87a319e39609d995a74df93c7bf"
+      },
+      "limits": {
+        "cpu": "3"
+      }
+    },
+    {
+      "guard": "screen-controls17-19-guard",
+      "receipt": {
+        "file": "selfhost/build/phase113/screen-controls17-19-guard/process.json",
+        "bytes": 647,
+        "sha256": "7a831335623911b7e7aff0703c3c016e32e719edc3915041909e874d1e2f7a73"
+      },
+      "snapshot": {
+        "complete": true,
+        "started": 1792524179.7969503,
+        "rssLimitBytes": 2147483648,
+        "availableFloorBytes": 17179869184,
+        "peakTreeRssBytes": 335970304,
+        "minimumAvailableBytes": 26693509120,
+        "returncode": 0,
+        "wallSeconds": 20.415236617904156,
+        "finished": 1792524200.212185
+      },
+      "startedUtc": "2026-10-20T19:22:59.796950+00:00",
+      "finishedUtc": "2026-10-20T19:23:20.212185+00:00",
+      "intervalSeconds": 20.415234565734863,
+      "outcome": "successful",
+      "guardMethod": {
+        "file": "selfhost/build/phase113/screen-controls17-19-guard/method.json",
+        "bytes": 476,
+        "sha256": "a15a0a9d236c3b5889c3b1b2fce82cfdb43269b1d72f2aa1affad5052fe3355b"
+      },
+      "limits": {
+        "cpu": "3"
+      }
+    },
+    {
+      "guard": "field-array17c-guard",
+      "receipt": {
+        "file": "selfhost/build/phase113/field-array17c-guard/process.json",
+        "bytes": 660,
+        "sha256": "dfa9cb79aa12f44e14a9f2349a5e47362e1069c9d97e3310e39277b64638e2b8"
+      },
+      "snapshot": {
+        "complete": true,
+        "started": 1792524331.2061315,
+        "rssLimitBytes": 2147483648,
+        "availableFloorBytes": 17179869184,
+        "peakTreeRssBytes": 170758144,
+        "minimumAvailableBytes": 26759364608,
+        "returncode": 0,
+        "wallSeconds": 46.13801621180028,
+        "finished": 1792524377.3441467
+      },
+      "startedUtc": "2026-10-20T19:25:31.206131+00:00",
+      "finishedUtc": "2026-10-20T19:26:17.344147+00:00",
+      "intervalSeconds": 46.138015270233154,
+      "outcome": "successful",
+      "guardMethod": {
+        "file": "selfhost/build/phase113/field-array17c-guard/method.json",
+        "bytes": 476,
+        "sha256": "9b920210f47bb656d58653c73db99b792c79667919fe4386125a230a2fca20d2"
+      },
+      "limits": {
+        "cpu": "3"
+      }
+    },
+    {
+      "guard": "wide-ranges18-19-guard",
+      "receipt": {
+        "file": "selfhost/build/phase113/wide-ranges18-19-guard/process.json",
+        "bytes": 639,
+        "sha256": "89c716b3a00469936ab8cbf86e28ff9c456f787a0f6d0288be1482f8e1fa6829"
+      },
+      "snapshot": {
+        "complete": true,
+        "started": 1792524483.0002897,
+        "rssLimitBytes": 2147483648,
+        "availableFloorBytes": 17179869184,
+        "peakTreeRssBytes": 350736384,
+        "minimumAvailableBytes": 25003470848,
+        "returncode": 0,
+        "wallSeconds": 154.98302262090147,
+        "finished": 1792524637.983312
+      },
+      "startedUtc": "2026-10-20T19:28:03.000290+00:00",
+      "finishedUtc": "2026-10-20T19:30:37.983312+00:00",
+      "intervalSeconds": 154.98302221298218,
+      "outcome": "successful",
+      "guardMethod": {
+        "file": "selfhost/build/phase113/wide-ranges18-19-guard/method.json",
+        "bytes": 476,
+        "sha256": "5e17e2879c8dce3ad42acb19dee6e204c88f235964e02f9daf15766fc6a112e1"
+      },
+      "limits": {
+        "cpu": "3"
+      }
+    },
+    {
+      "guard": "api-screen20-21-guard",
+      "receipt": {
+        "file": "selfhost/build/phase113/api-screen20-21-guard/process.json",
+        "bytes": 637,
+        "sha256": "57e904b81c9ab20ff365a1b93127834a3d149072ff399d5fd7bec96163493550"
+      },
+      "snapshot": {
+        "complete": true,
+        "started": 1792524857.736897,
+        "rssLimitBytes": 2147483648,
+        "availableFloorBytes": 17179869184,
+        "peakTreeRssBytes": 1478819840,
+        "minimumAvailableBytes": 25603764224,
+        "returncode": 0,
+        "wallSeconds": 33.45429851999506,
+        "finished": 1792524891.1911938
+      },
+      "startedUtc": "2026-10-20T19:34:17.736897+00:00",
+      "finishedUtc": "2026-10-20T19:34:51.191194+00:00",
+      "intervalSeconds": 33.454296827316284,
+      "outcome": "successful",
+      "guardMethod": {
+        "file": "selfhost/build/phase113/api-screen20-21-guard/method.json",
+        "bytes": 476,
+        "sha256": "fcd6d3495e5549f8a32d822510fe51d0380a5500e00e0d2abc501e43c4708688"
+      },
+      "limits": {
+        "cpu": "3"
+      }
+    },
+    {
+      "guard": "bottom-identity20-21-guard",
+      "receipt": {
+        "file": "selfhost/build/phase113/bottom-identity20-21-guard/process.json",
+        "bytes": 648,
+        "sha256": "e3f3a48d6c720929b44054226dae6394b6b9d9d11d753f6a1efaa374a81fd251"
+      },
+      "snapshot": {
+        "complete": true,
+        "started": 1792524908.9161642,
+        "rssLimitBytes": 2147483648,
+        "availableFloorBytes": 17179869184,
+        "peakTreeRssBytes": 370163712,
+        "minimumAvailableBytes": 26615054336,
+        "returncode": 0,
+        "wallSeconds": 153.86382515891455,
+        "finished": 1792525062.7799869
+      },
+      "startedUtc": "2026-10-20T19:35:08.916164+00:00",
+      "finishedUtc": "2026-10-20T19:37:42.779987+00:00",
+      "intervalSeconds": 153.86382269859314,
+      "outcome": "successful",
+      "guardMethod": {
+        "file": "selfhost/build/phase113/bottom-identity20-21-guard/method.json",
+        "bytes": 476,
+        "sha256": "aa0059a9c18638b11f53b192cf5fd5d9e2c416435a4fcac9626af24f2a3b1055"
+      },
+      "limits": {
+        "cpu": "3"
+      }
+    },
+    {
+      "guard": "heap-branch22-23-check-guard",
+      "receipt": {
+        "file": "selfhost/build/phase113/heap-branch22-23-check-guard/process.json",
+        "bytes": 652,
+        "sha256": "8aeb4ee69d6bfd55f193d6c9ad9ed421342f984946e17e9f095da947ac01542c"
+      },
+      "snapshot": {
+        "complete": false,
+        "started": 1792525081.2255206,
+        "rssLimitBytes": 2147483648,
+        "availableFloorBytes": 17179869184,
+        "peakTreeRssBytes": 1444724736,
+        "minimumAvailableBytes": 25588404224,
+        "returncode": 1,
+        "wallSeconds": 14.5582394041121,
+        "finished": 1792525095.7837594
+      },
+      "startedUtc": "2026-10-20T19:38:01.225521+00:00",
+      "finishedUtc": "2026-10-20T19:38:15.783759+00:00",
+      "intervalSeconds": 14.558238744735718,
+      "outcome": "unsuccessful-finalized",
+      "guardMethod": {
+        "file": "selfhost/build/phase113/heap-branch22-23-check-guard/method.json",
+        "bytes": 476,
+        "sha256": "674adf2ab5d8a3d80e6d6fc975ec3b079e3f793d7147c9dff63d9e948c271a93"
+      },
+      "limits": {
+        "cpu": "3"
+      }
+    },
+    {
+      "guard": "screen21-guard",
+      "receipt": {
+        "file": "selfhost/build/phase113/screen21-guard/process.json",
+        "bytes": 623,
+        "sha256": "ef031cc223ec5e3975e7c5222f58f1ea2339cc2778fee6b2e40e6fd19bbaebe7"
+      },
+      "snapshot": {
+        "complete": true,
+        "started": 1792525123.3470957,
+        "rssLimitBytes": 2147483648,
+        "availableFloorBytes": 17179869184,
+        "peakTreeRssBytes": 40771584,
+        "minimumAvailableBytes": 26978394112,
+        "returncode": 0,
+        "wallSeconds": 11.623287968104705,
+        "finished": 1792525134.9703832
+      },
+      "startedUtc": "2026-10-20T19:38:43.347096+00:00",
+      "finishedUtc": "2026-10-20T19:38:54.970383+00:00",
+      "intervalSeconds": 11.623287439346313,
+      "outcome": "successful",
+      "guardMethod": {
+        "file": "selfhost/build/phase113/screen21-guard/method.json",
+        "bytes": 476,
+        "sha256": "754fffdf0cd2e59b6bcb9cc3da823a411d1c10d58bd822260b227be227b48ab0"
+      },
+      "limits": {
+        "cpu": "3"
+      }
+    },
+    {
+      "guard": "heap22-native-guard",
+      "receipt": {
+        "file": "selfhost/build/phase113/heap22-native-guard/process.json",
+        "bytes": 634,
+        "sha256": "ccd469c8eca1c7f9867bcea69d115bea58b30d37b02ddb3b6dd809579a2c8080"
+      },
+      "snapshot": {
+        "complete": false,
+        "started": 1792525144.3503087,
+        "rssLimitBytes": 2147483648,
+        "availableFloorBytes": 17179869184,
+        "peakTreeRssBytes": 90304512,
+        "minimumAvailableBytes": 26966806528,
+        "returncode": 1,
+        "wallSeconds": 0.2893706080503762,
+        "finished": 1792525144.6396773
+      },
+      "startedUtc": "2026-10-20T19:39:04.350309+00:00",
+      "finishedUtc": "2026-10-20T19:39:04.639677+00:00",
+      "intervalSeconds": 0.2893686294555664,
+      "outcome": "unsuccessful-finalized",
+      "guardMethod": {
+        "file": "selfhost/build/phase113/heap22-native-guard/method.json",
+        "bytes": 476,
+        "sha256": "f70342014181ae6ddf1e36eab4af7786b380035fb0f3d17a981be7d18705f0b4"
+      },
+      "limits": {
+        "cpu": "3"
+      }
+    },
+    {
+      "guard": "heap22-native-v2-guard",
+      "receipt": {
+        "file": "selfhost/build/phase113/heap22-native-v2-guard/process.json",
+        "bytes": 639,
+        "sha256": "baf843c92677a82083ed50f5303f815605ac0667d1ef768815c6434991f15b49"
+      },
+      "snapshot": {
+        "complete": true,
+        "started": 1792525214.9369662,
+        "rssLimitBytes": 2147483648,
+        "availableFloorBytes": 17179869184,
+        "peakTreeRssBytes": 367165440,
+        "minimumAvailableBytes": 26689847296,
+        "returncode": 0,
+        "wallSeconds": 75.73608458787203,
+        "finished": 1792525290.6730494
+      },
+      "startedUtc": "2026-10-20T19:40:14.936966+00:00",
+      "finishedUtc": "2026-10-20T19:41:30.673049+00:00",
+      "intervalSeconds": 75.73608326911926,
+      "outcome": "successful",
+      "guardMethod": {
+        "file": "selfhost/build/phase113/heap22-native-v2-guard/method.json",
+        "bytes": 476,
+        "sha256": "8ecc36cc00f7aa257191d58f3768d8359280d682e0991272108702ed50c1ba31"
+      },
+      "limits": {
+        "cpu": "3"
+      }
+    },
+    {
+      "guard": "branch-width24-25-check-guard",
+      "receipt": {
+        "file": "selfhost/build/phase113/branch-width24-25-check-guard/process.json",
+        "bytes": 651,
+        "sha256": "0a2eb54228c57c60832f8355d202eed81e6c7b7d01636d683b0fa7c8f0c22a4c"
+      },
+      "snapshot": {
+        "complete": false,
+        "started": 1792525297.4323723,
+        "rssLimitBytes": 2147483648,
+        "availableFloorBytes": 17179869184,
+        "peakTreeRssBytes": 1494609920,
+        "minimumAvailableBytes": 25564471296,
+        "returncode": 1,
+        "wallSeconds": 16.09399428498,
+        "finished": 1792525313.526365
+      },
+      "startedUtc": "2026-10-20T19:41:37.432372+00:00",
+      "finishedUtc": "2026-10-20T19:41:53.526365+00:00",
+      "intervalSeconds": 16.093992710113525,
+      "outcome": "unsuccessful-finalized",
+      "guardMethod": {
+        "file": "selfhost/build/phase113/branch-width24-25-check-guard/method.json",
+        "bytes": 476,
+        "sha256": "54defddf54e45e0c46f86a4d4f28c29655d22521fc0d406488eb655752ee9bfe"
+      },
+      "limits": {
+        "cpu": "3"
+      }
+    },
+    {
+      "guard": "branch-native24-guard",
+      "receipt": {
+        "file": "selfhost/build/phase113/branch-native24-guard/process.json",
+        "bytes": 637,
+        "sha256": "4b23f9ce39e39ffeac1a4b5bcf53ef08c1f9b1c3db1fadf287093b30849f3a7f"
+      },
+      "snapshot": {
+        "complete": true,
+        "started": 1792525373.5826995,
+        "rssLimitBytes": 2147483648,
+        "availableFloorBytes": 17179869184,
+        "peakTreeRssBytes": 375742464,
+        "minimumAvailableBytes": 26648702976,
+        "returncode": 0,
+        "wallSeconds": 86.28401016094722,
+        "finished": 1792525459.8667088
+      },
+      "startedUtc": "2026-10-20T19:42:53.582700+00:00",
+      "finishedUtc": "2026-10-20T19:44:19.866709+00:00",
+      "intervalSeconds": 86.28400921821594,
+      "outcome": "successful",
+      "guardMethod": {
+        "file": "selfhost/build/phase113/branch-native24-guard/method.json",
+        "bytes": 476,
+        "sha256": "e05a65d7d92286657601a1fea5b577d9639e33862f40da7273af852025a39e69"
+      },
+      "limits": {
+        "cpu": "3"
+      }
+    },
+    {
+      "guard": "width-wide26-27-check-guard",
+      "receipt": {
+        "file": "selfhost/build/phase113/width-wide26-27-check-guard/process.json",
+        "bytes": 651,
+        "sha256": "d579582448b082489c70bb363a7aecfcab43cb4fca779d952fe82b0813cf8b94"
+      },
+      "snapshot": {
+        "complete": true,
+        "started": 1792525480.9731002,
+        "rssLimitBytes": 2147483648,
+        "availableFloorBytes": 17179869184,
+        "peakTreeRssBytes": 1479942144,
+        "minimumAvailableBytes": 25576112128,
+        "returncode": 0,
+        "wallSeconds": 23.489514030050486,
+        "finished": 1792525504.4626148
+      },
+      "startedUtc": "2026-10-20T19:44:40.973100+00:00",
+      "finishedUtc": "2026-10-20T19:45:04.462615+00:00",
+      "intervalSeconds": 23.489514589309692,
+      "outcome": "successful",
+      "guardMethod": {
+        "file": "selfhost/build/phase113/width-wide26-27-check-guard/method.json",
+        "bytes": 476,
+        "sha256": "a56a6989e54662846048b81ad12af91b06bd8a5a9fadfb7511081cdc481519f7"
+      },
+      "limits": {
+        "cpu": "3"
+      }
+    },
+    {
+      "guard": "width-wide26-27-native-guard",
+      "receipt": {
+        "file": "selfhost/build/phase113/width-wide26-27-native-guard/process.json",
+        "bytes": 653,
+        "sha256": "d5e86626feed5243aea88b2053bf2719e2bf78288bae524bd8c9e28efbf53053"
+      },
+      "snapshot": {
+        "complete": false,
+        "started": 1792525599.5056763,
+        "rssLimitBytes": 2147483648,
+        "availableFloorBytes": 17179869184,
+        "peakTreeRssBytes": 118235136,
+        "minimumAvailableBytes": 26873409536,
+        "returncode": 1,
+        "wallSeconds": 0.6834242909681052,
+        "finished": 1792525600.1890976
+      },
+      "startedUtc": "2026-10-20T19:46:39.505676+00:00",
+      "finishedUtc": "2026-10-20T19:46:40.189098+00:00",
+      "intervalSeconds": 0.6834213733673096,
+      "outcome": "unsuccessful-finalized",
+      "guardMethod": {
+        "file": "selfhost/build/phase113/width-wide26-27-native-guard/method.json",
+        "bytes": 476,
+        "sha256": "54cb615072ef44f4b57c14cc415a27ec9d0325db327d168e4c2007da285437af"
+      },
+      "limits": {
+        "cpu": "3"
+      }
+    },
+    {
+      "guard": "branch-screen24-guard",
+      "receipt": {
+        "file": "selfhost/build/phase113/branch-screen24-guard/process.json",
+        "bytes": 946,
+        "sha256": "8d77d31cc2863a00ce9b38fc826d6d869c49b2ec0853389816d1c879613e2f1d"
+      },
+      "snapshot": {
+        "complete": false,
+        "started": 1792525721.2916973,
+        "rssLimitBytes": 2147483648,
+        "availableFloorBytes": 17179869184,
+        "peakTreeRssBytes": 20033536,
+        "minimumAvailableBytes": 26963210240,
+        "returncode": 1,
+        "wallSeconds": 4.63460534112528,
+        "finished": 1792525725.9263012
+      },
+      "startedUtc": "2026-10-20T19:48:41.291697+00:00",
+      "finishedUtc": "2026-10-20T19:48:45.926301+00:00",
+      "intervalSeconds": 4.634603977203369,
+      "outcome": "unsuccessful-finalized",
+      "guardMethod": {
+        "file": "selfhost/build/phase113/branch-screen24-guard/method.json",
+        "bytes": 476,
+        "sha256": "0f68ebbcc0753852d3c16f0bb1013e8a3e918016ed813e5a04274dbca4edc7aa"
+      },
+      "limits": {
+        "cpu": "3"
+      }
+    },
+    {
+      "guard": "spill-reproductions01-guard",
+      "receipt": {
+        "file": "selfhost/build/phase113/spill-reproductions01-guard/process.json",
+        "bytes": 535,
+        "sha256": "29a7139eb2feb805c6ea2c0b85ce405b6b6de72435c95afcd137c7828fda79d7"
+      },
+      "snapshot": {
+        "complete": true,
+        "started": 1792526100.203761,
+        "rssLimitBytes": 2147483648,
+        "availableFloorBytes": 17179869184,
+        "peakTreeRssBytes": 282546176,
+        "minimumAvailableBytes": 26735915008,
+        "returncode": 0,
+        "wallSeconds": 0.2905198261141777,
+        "finished": 1792526100.494279
+      },
+      "startedUtc": "2026-10-20T19:55:00.203761+00:00",
+      "finishedUtc": "2026-10-20T19:55:00.494279+00:00",
+      "intervalSeconds": 0.29051780700683594,
+      "outcome": "successful",
+      "guardMethod": {
+        "file": "selfhost/build/phase113/spill-reproductions01-guard/method.json",
+        "bytes": 476,
+        "sha256": "8835427778d4ecec9b143251e1f45b3ad70c048c15bf18c94a920cda996bf5da"
+      },
+      "limits": {
+        "cpu": "3"
+      }
+    },
+    {
+      "guard": "width-wide30-31-check-guard",
+      "receipt": {
+        "file": "selfhost/build/phase113/width-wide30-31-check-guard/process.json",
+        "bytes": 650,
+        "sha256": "ebbcd43c7f6e5fb80ef236ad446462ba6be8273868f939544341bf1699991108"
+      },
+      "snapshot": {
+        "complete": true,
+        "started": 1792528782.6951542,
+        "rssLimitBytes": 2147483648,
+        "availableFloorBytes": 17179869184,
+        "peakTreeRssBytes": 1477816320,
+        "minimumAvailableBytes": 25615233024,
+        "returncode": 0,
+        "wallSeconds": 22.405380711890757,
+        "finished": 1792528805.100534
+      },
+      "startedUtc": "2026-10-20T20:39:42.695154+00:00",
+      "finishedUtc": "2026-10-20T20:40:05.100534+00:00",
+      "intervalSeconds": 22.40537977218628,
+      "outcome": "successful",
+      "guardMethod": {
+        "file": "selfhost/build/phase113/width-wide30-31-check-guard/method.json",
+        "bytes": 476,
+        "sha256": "fc311a3bb582e5d22b0d5263ebe52d056948e945811a2c2c907de48494e28e3b"
+      },
+      "limits": {
+        "cpu": "3"
+      }
+    },
+    {
+      "guard": "width-wide30-31-native-guard",
+      "receipt": {
+        "file": "selfhost/build/phase113/width-wide30-31-native-guard/process.json",
+        "bytes": 651,
+        "sha256": "284b9a8fdeb0f121d02fe31090980b0a8c8cc986fdcdaffaeb8ce8bdd8b4ba39"
+      },
+      "snapshot": {
+        "complete": true,
+        "started": 1792528880.897622,
+        "rssLimitBytes": 2147483648,
+        "availableFloorBytes": 17179869184,
+        "peakTreeRssBytes": 390971392,
+        "minimumAvailableBytes": 26431311872,
+        "returncode": 0,
+        "wallSeconds": 238.34448553202674,
+        "finished": 1792529119.2421036
+      },
+      "startedUtc": "2026-10-20T20:41:20.897622+00:00",
+      "finishedUtc": "2026-10-20T20:45:19.242104+00:00",
+      "intervalSeconds": 238.34448146820068,
+      "outcome": "successful",
+      "guardMethod": {
+        "file": "selfhost/build/phase113/width-wide30-31-native-guard/method.json",
+        "bytes": 476,
+        "sha256": "cb77d2184727c1af5732184c0da43e422f247e9e8db517b756b20b2b140a02db"
+      },
+      "limits": {
+        "cpu": "3"
+      }
+    },
+    {
+      "guard": "final31-screen-guard",
+      "receipt": {
+        "file": "selfhost/build/phase113/final31-screen-guard/process.json",
+        "bytes": 935,
+        "sha256": "2368d8c937a44947a55eabb3a6a3d86b291d886ef1acb609463c04374336449c"
+      },
+      "snapshot": {
+        "complete": true,
+        "started": 1792529204.8958023,
+        "rssLimitBytes": 2147483648,
+        "availableFloorBytes": 17179869184,
+        "peakTreeRssBytes": 26382336,
+        "minimumAvailableBytes": 26958630912,
+        "returncode": 0,
+        "wallSeconds": 30.964058981044218,
+        "finished": 1792529235.85986
+      },
+      "startedUtc": "2026-10-20T20:46:44.895802+00:00",
+      "finishedUtc": "2026-10-20T20:47:15.859860+00:00",
+      "intervalSeconds": 30.964057683944702,
+      "outcome": "successful",
+      "guardMethod": {
+        "file": "selfhost/build/phase113/final31-screen-guard/method.json",
+        "bytes": 476,
+        "sha256": "464a1d28ff7315e37ddcc732dd7c2d97cc0fc5da993675090f163c3206adf98d"
+      },
+      "limits": {
+        "cpu": "3"
+      }
+    },
+    {
+      "guard": "p113-final31-qualification-guard",
+      "receipt": {
+        "file": "selfhost/build/phase113/p113-final31-qualification-guard/process.json",
+        "bytes": 761,
+        "sha256": "b6e7e5a5e8a361e117ef31e8a0ee71406dc2b0ab55a7a08cbccc54ae036d848d"
+      },
+      "snapshot": {
+        "complete": false,
+        "started": 1792529276.685945,
+        "rssLimitBytes": 4294967296,
+        "availableFloorBytes": 17179869184,
+        "peakTreeRssBytes": 3974184960,
+        "minimumAvailableBytes": 23034712064,
+        "returncode": 1,
+        "wallSeconds": 600.7636708819773,
+        "finished": 1792529877.4496143
+      },
+      "startedUtc": "2026-10-20T20:47:56.685945+00:00",
+      "finishedUtc": "2026-10-20T20:57:57.449614+00:00",
+      "intervalSeconds": 600.7636692523956,
+      "outcome": "unsuccessful-finalized",
+      "guardMethod": {
+        "file": "selfhost/build/phase113/p113-final31-qualification-guard/method.json",
+        "bytes": 508,
+        "sha256": "129fbe576b48845a9b2a53d5a6d119798411513fb25c62b2e927e42b80e62422"
+      },
+      "limits": {
+        "cpu": "3",
+        "fileLimitBytes": 134217728
+      }
+    }
+  ]
+}

@@ -189,3 +189,36 @@ unchanged and remains recursive. Actual generated-JS loop inspection and the
 full compiler retry are separate checks; no compiler target was run while
 preparing this integration. The earlier qualified final-source01 and all v3
 method hashes remain unchanged.
+
+The subsequent successful `p114-final-api02` was inspected without execution.
+All six actual JS helpers contain one `for (;;)` loop, rest/accumulator updates
+and `continue`, with zero direct self calls. The body walker has four such
+branches; each other helper has one. Exact function excerpts and API/source
+pins are recorded in `implementation/phase114/namespace-js-review01.json`
+and its companion `.txt`. This establishes the flat traversal shape, not the
+outcome of the full compiler retry.
+
+## Optional version 5: P114-010 table buffers
+
+`recipe-table-buffers01.json`, `prepare-v5.py` and `admit-v5.py` append only
+`transport/table-buffers-modules01.json` to the exact source02/v4 recipe.
+This is an optional experiment, not a change to selected source02. The design
+is `experiments/phase114/P114-010-table-buffer-transport-coverage.md`.
+
+The two permitted replacements are `p114t_buffer` and `p114t_local_name`;
+only `p114t_table_buffer_at` and `p114t_table_buffer` may be added. Admission
+authenticates the complete source02 declaration map, parent API/admission,
+runtime, transport/table/namespace inventories and the frozen allocation,
+renaming and frame-template declarations. The original final verifier is
+unchanged. Checked exports must include the three normal gate exports plus
+`p114t_table_buffer`, `p114t_buffer` and `p114t_local_name`.
+
+Use the same CLI with `-v5.py` and the table-buffer recipe. The prepared optional
+snapshot is `selfhost/build/phase114/table-buffers-source01/compiler.bend`,
+2,307,628 bytes, SHA256
+`0ef15ba8db16fae9147d00c54e442ec62fff1ed74fef612d0db4d39526759f1e`.
+Expected counts are 6,385 declarations and 18 total replacements. Its preparation
+receipt records the full module transport and pins; `methods-v5.json` freezes
+the method, recipe and pre-target design. Compiler/API, ordinary semantic,
+runtime and selection gates remain pending and separate. Earlier methods and
+selected sources remain byte-identical.

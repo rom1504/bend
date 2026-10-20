@@ -1,0 +1,32 @@
+{
+  "kind": "phase113-width-native-control-jobs",
+  "targetsRun": false,
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase113/width/run-controls.py",
+      "bytes": 3959,
+      "sha256": "f1d9f743b6dc9e23a4abee236aa2ab91e35ef82ff5a9b995d717119330dda60b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/width-controls-prepared01/manifest.json",
+      "bytes": 2070,
+      "sha256": "8a8e1be2f0b6cdc4c66040264a896547fff1ae72af81038132c898e76cb9fab2"
+    }
+  ],
+  "jobs": [
+    {
+      "name": "width25-native-controls",
+      "seconds": 120,
+      "command": [
+        "python3",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase113/width/run-controls.py",
+        "--api",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-width-api25/api.mjs",
+        "--prepared",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/width-controls-prepared01",
+        "--out",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/width-native25"
+      ]
+    }
+  ]
+}

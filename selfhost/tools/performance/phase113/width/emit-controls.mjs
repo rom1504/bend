@@ -2,7 +2,7 @@
 // are implemented in the checked Bend module. No machine lowering lives here.
 import fs from 'node:fs';
 import path from 'node:path';
-import {pathToFileURL} from 'node:url';
+import {pathToFileURL, fileURLToPath} from 'node:url';
 import crypto from 'node:crypto';
 
 const [apiPath, preparedPath, outputPath] = process.argv.slice(2);
@@ -23,8 +23,17 @@ for (const item of [...manifest.inputs, ...manifest.outputs]) {
   if (actual.sha256 !== item.sha256 || actual.bytes !== item.bytes)
     throw new Error(`changed prepared input: ${item.file}`);
 }
-const api = await import(pathToFileURL(path.resolve(apiPath)));
-const rows = api.p113_width_control_report();
+const receiptPath = path.join(path.dirname(path.resolve(apiPath)), 'report.json');
+const receipt = JSON.parse(fs.readFileSync(receiptPath, 'utf8'));
+const required = ['p113_width_control_report', 'p113_width_case_error', 'p113_width_case_qbe'];
+if (!receipt.complete || !receipt.checked || receipt.api.sha256 !== pin(apiPath).sha256 ||
+    !required.every(name => receipt.exports?.includes(name)))
+  throw new Error('checked API receipt/export mismatch');
+const api = (await import(pathToFileURL(path.resolve(apiPath)))).default;
+const rows = [];
+let list = api.p113_width_control_report();
+for (; list?.$ === 'Con'; list = list.tail) rows.push(list.head);
+if (list?.$ !== 'Nil') throw new Error('malformed control report list');
 if (!Array.isArray(rows) || rows.length !== 22 || rows.some(x => !x.startsWith('PASS ')))
   throw new Error(`width controls failed: ${JSON.stringify(rows)}`);
 let qbe = '';
@@ -36,6 +45,6 @@ for (let which = 0; which < 16; which++) {
 fs.writeFileSync(path.join(outputPath, 'program.ssa'), qbe);
 const report = {kind: 'phase113-width-control-emission', complete: true,
   targetExecutions: false, structuralControls: rows, functions: 16, observations: 128,
-  inputs: [pin(apiPath), pin(manifestPath), pin(new URL(import.meta.url))],
+  inputs: [pin(apiPath), pin(receiptPath), pin(manifestPath), pin(fileURLToPath(import.meta.url))],
   outputs: [pin(path.join(outputPath, 'program.ssa'))]};
 fs.writeFileSync(path.join(outputPath, 'report.json'), JSON.stringify(report, null, 2) + '\n');

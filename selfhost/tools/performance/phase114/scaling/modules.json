@@ -1,0 +1,73 @@
+{
+  "kind": "phase114-verification-session-source-modules",
+  "version": 1,
+  "prepared": true,
+  "checked": false,
+  "targetsRun": false,
+  "baseline": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/wide-source31/compiler.bend",
+    "bytes": 2232290,
+    "sha256": "287c85558f3eb40d5576b51a4f7c0238100a9c4c93fc36ee52e3b8bc4e2ac303"
+  },
+  "modules": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase114/scaling/model.bend",
+      "bytes": 455,
+      "sha256": "170bcd13082e13780d34849025a4ab5feeb94ffc2b1d452435d73caca5135593"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase114/scaling/boundary.bend",
+      "bytes": 3005,
+      "sha256": "10250cd861dbbd04dd9e1fb5e8f02b7f47ae4f7b0e2859f9a7840046e4e96107"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase114/scaling/stages.bend",
+      "bytes": 1127,
+      "sha256": "37eb4f027aabede6296d0943fa1f87e8b60764899d1738d962a3b6c626ea33f4"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase114/scaling/controls.bend",
+      "bytes": 4257,
+      "sha256": "3d753325a1589445f6f6c5405b813b06238ab19cc8a6091ed342bc7cea91d691"
+    }
+  ],
+  "override": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase114/scaling/overrides.bend",
+    "bytes": 260,
+    "sha256": "bdaa441b8689a2c53a2c1d23ffd2449b548ca60cb4506f5f87326fb4957ca249"
+  },
+  "replacement": {
+    "name": "p113d_lower_request",
+    "old": "@unsafe\ndef p113d_lower_request(request: NR_Request) -> P113DLowering:\n  p113k_lowered(p113i_lowered(p113pl_lower_request(request)))\n",
+    "oldSha256": "118b26de5e4f17004a75ccf7c1cf6cb431d1e5f6eaecaf9ae752a1ffcdacc4fc",
+    "new": "@unsafe\ndef p113d_lower_request(request: NR_Request) -> P113DLowering:\n  p114s_lower_request(request)\n",
+    "newSha256": "fe0910c1d94f5af82143b1b6c6188d23bc4be7c3ef82d5696a3e17c7299396a9"
+  },
+  "unchangedPublicGates": [
+    "p113d_verify",
+    "p113a_verify",
+    "p113a_emit_lowered",
+    "p113a_emit_verified"
+  ],
+  "stageExports": [
+    "p114s_open_lowered",
+    "p114s_inline_lowered",
+    "p114s_ranges_lowered",
+    "p114s_close_lowered"
+  ],
+  "controlExports": [
+    "p114s_control_report",
+    "p114s_control_request"
+  ],
+  "positiveControls": 18,
+  "transport": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase114/scaling/staged-emit.mjs",
+    "bytes": 15957,
+    "sha256": "b0a328747f56e44ba268c8e4e5b16da7063f097aae063cfce66963462b462c2c"
+  },
+  "readme": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase114/scaling/README.md",
+    "bytes": 4928,
+    "sha256": "68a6073fbd2696ea85762bdf185a826411cc8434abeedd52131c77fa7809ecee"
+  }
+}

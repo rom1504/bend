@@ -1,0 +1,414 @@
+{
+  "kind": "phase114-ordinary-functional-controls",
+  "version": 2,
+  "frozenUtc": "2026-10-20T21:45:27.327722+00:00",
+  "targetsRun": false,
+  "cases": [
+    {
+      "name": "two-owned-fields",
+      "source": "selfhost/tools/performance/phase114/controls/fixtures/two-owned-fields.bend",
+      "sourcePin": {
+        "file": "selfhost/tools/performance/phase114/controls/fixtures/two-owned-fields.bend",
+        "bytes": 1603,
+        "sha256": "4b0e312e9feecc81397731751b068460ba7b1cf8d376b9f5773a0a6dbc8ff031"
+      },
+      "expected": {
+        "file": "selfhost/tools/performance/phase114/controls/expected/two-owned-fields.json",
+        "bytes": 137,
+        "sha256": "2156a3aa1f7b8c21cf8e7d312cd2bde25c64ce63fd976d8532020c9b16479450"
+      },
+      "stdout": {
+        "file": "selfhost/tools/performance/phase114/controls/expected/two-owned-fields.stdout",
+        "bytes": 78,
+        "sha256": "394c55c99a8db620bf1ad785d4147b15eae2cb5c4f9d90334b517eaa7db165b4"
+      },
+      "purposes": [
+        "unique/shared owning fields",
+        "literal roots",
+        "partial selection/drop",
+        "field order",
+        "257-step reconstruction"
+      ],
+      "provenance": "new ordinary source; root frontend preflight required before backend qualification"
+    },
+    {
+      "name": "nested-owned-fields",
+      "source": "selfhost/tools/performance/phase114/controls/fixtures/nested-owned-fields-v2.bend",
+      "sourcePin": {
+        "file": "selfhost/tools/performance/phase114/controls/fixtures/nested-owned-fields-v2.bend",
+        "bytes": 1314,
+        "sha256": "b18d975f3976bc41c1197010adeb6bf67e55f94b4514de59733b6278668bad2d"
+      },
+      "expected": {
+        "file": "selfhost/tools/performance/phase114/controls/expected/nested-owned-fields.json",
+        "bytes": 146,
+        "sha256": "9bd6a658348c158e7d70e1f9b9bfb49ad867d1c960874a2aa4281efba97e4bb6"
+      },
+      "stdout": {
+        "file": "selfhost/tools/performance/phase114/controls/expected/nested-owned-fields.stdout",
+        "bytes": 89,
+        "sha256": "a25d9629a422bfb6f0f91b001265b465eebad8d44825d7accb7922d8549143e8"
+      },
+      "purposes": [
+        "nested String/List owners",
+        "shared parent",
+        "partial selection/drop",
+        "empty and nonempty recursion"
+      ],
+      "provenance": "Explicit duplicable List quantity in Data field; v1 rejection retained"
+    },
+    {
+      "name": "same-names-other-layout",
+      "source": "selfhost/tools/performance/phase114/controls/fixtures/same-names-other-layout.bend",
+      "sourcePin": {
+        "file": "selfhost/tools/performance/phase114/controls/fixtures/same-names-other-layout.bend",
+        "bytes": 640,
+        "sha256": "ecfc8112516a19539b49af7e8983983d5a02bc3e3ea9d37c576372d34aedccd9"
+      },
+      "expected": {
+        "file": "selfhost/tools/performance/phase114/controls/expected/same-names-other-layout.json",
+        "bytes": 80,
+        "sha256": "9e5ae61c921bdbb4644c429954a5333eee17cd07cf1c9d54d78ece0d58756afe"
+      },
+      "stdout": {
+        "file": "selfhost/tools/performance/phase114/controls/expected/same-names-other-layout.stdout",
+        "bytes": 28,
+        "sha256": "e5aebf08bec0aacf80d36d14686f9071aeeef1cbe2b5ba9c17124587f1b5ad59"
+      },
+      "purposes": [
+        "independent valid request",
+        "same names with changed constructor arity",
+        "same function name with changed call arity"
+      ],
+      "provenance": "new ordinary source; root frontend preflight required before backend qualification"
+    },
+    {
+      "name": "string-field-alias",
+      "source": "selfhost/tools/performance/phase113/controls/fixtures/string-field-alias.bend",
+      "sourcePin": {
+        "file": "selfhost/tools/performance/phase113/controls/fixtures/string-field-alias.bend",
+        "bytes": 656,
+        "sha256": "a5e1d6b231b3e0231903959c5e4c661983c520582d15e091520ce2ce4209d990"
+      },
+      "expected": {
+        "file": "selfhost/tools/performance/phase113/controls/expected/string-field-alias.json",
+        "bytes": 86,
+        "sha256": "272f1ec857c3fc7721270e3fbf7a35b0396e75e40e5bae60417e11e8e768ddb8"
+      },
+      "stdout": {
+        "file": "selfhost/tools/performance/phase113/controls/expected/string-field-alias.stdout",
+        "bytes": 31,
+        "sha256": "90c33946d4b7b789da29c583e3f3ffb31208b16b8d82d5cd4ff64c2121cb3532"
+      },
+      "purposes": [
+        "Owned String product field with surviving external alias"
+      ],
+      "provenance": "unchanged Phase113 ordinary positive fixture; prior qualification remains separate"
+    },
+    {
+      "name": "owned-capture-call",
+      "source": "selfhost/tools/performance/phase113/controls/fixtures/owned-capture-call.bend",
+      "sourcePin": {
+        "file": "selfhost/tools/performance/phase113/controls/fixtures/owned-capture-call.bend",
+        "bytes": 564,
+        "sha256": "e18d255fdcda1ced2772c96eac0479a3d02741ebe5b3247d6a9af1d75118ab7c"
+      },
+      "expected": {
+        "file": "selfhost/tools/performance/phase113/controls/expected/owned-capture-call.json",
+        "bytes": 93,
+        "sha256": "b03a3d2ea11e92871aa5b8ad12c99abfe4d1687d675bd7a52a0823b08bd56ff6"
+      },
+      "stdout": {
+        "file": "selfhost/tools/performance/phase113/controls/expected/owned-capture-call.stdout",
+        "bytes": 39,
+        "sha256": "c4a0503e4b491e805ddc730938fac1f7e82373fac72c5d9a3b9c303848392099"
+      },
+      "purposes": [
+        "Escaping captured String and ordinary call lifetime"
+      ],
+      "provenance": "unchanged Phase113 ordinary positive fixture; prior qualification remains separate"
+    },
+    {
+      "name": "product-escape-branch",
+      "source": "selfhost/tools/performance/phase113/controls/fixtures/product-escape-branch.bend",
+      "sourcePin": {
+        "file": "selfhost/tools/performance/phase113/controls/fixtures/product-escape-branch.bend",
+        "bytes": 727,
+        "sha256": "92b7abb15bdb6722ae261502fb7a8ea23e4ea22fe98d22a7066fb1ad67f56af3"
+      },
+      "expected": {
+        "file": "selfhost/tools/performance/phase113/controls/expected/product-escape-branch.json",
+        "bytes": 65,
+        "sha256": "e3c57fbfd2714828ce2e6d5692a49be93913d834d7d522361d4ea0109f28ac16"
+      },
+      "stdout": {
+        "file": "selfhost/tools/performance/phase113/controls/expected/product-escape-branch.stdout",
+        "bytes": 13,
+        "sha256": "b97036f90d874a755c64a9acbb3a49f766c866fefd04db6bedd47bb1e5c5dae7"
+      },
+      "purposes": [
+        "Branch-selected owned product escapes into closure"
+      ],
+      "provenance": "unchanged Phase113 ordinary positive fixture; prior qualification remains separate"
+    },
+    {
+      "name": "non-tail-reconstruction",
+      "source": "selfhost/tools/performance/phase113/controls/fixtures/non-tail-reconstruction.bend",
+      "sourcePin": {
+        "file": "selfhost/tools/performance/phase113/controls/fixtures/non-tail-reconstruction.bend",
+        "bytes": 640,
+        "sha256": "5c87d68b787648265511d29c1df583593a1b12954feb26ca197d4d10e1ff6e6f"
+      },
+      "expected": {
+        "file": "selfhost/tools/performance/phase113/controls/expected/non-tail-reconstruction.json",
+        "bytes": 60,
+        "sha256": "dbf19702dca4557f18b3e7b6d0f5d7912f307f3fc391e9accaec34b10edd07e7"
+      },
+      "stdout": {
+        "file": "selfhost/tools/performance/phase113/controls/expected/non-tail-reconstruction.stdout",
+        "bytes": 7,
+        "sha256": "25a7a5fa0594ebff3ca703821547a30e2167b69dbe63d1734a06cf2d831f553c"
+      },
+      "purposes": [
+        "Non-tail recursion reconstructs after recursive return"
+      ],
+      "provenance": "unchanged Phase113 ordinary positive fixture; prior qualification remains separate"
+    },
+    {
+      "name": "tail-argument-permutation",
+      "source": "selfhost/tools/performance/phase113/controls/fixtures/tail-argument-permutation.bend",
+      "sourcePin": {
+        "file": "selfhost/tools/performance/phase113/controls/fixtures/tail-argument-permutation.bend",
+        "bytes": 521,
+        "sha256": "2127fc55f65735daca75841de102ac31726a25a703900a2ca1148b284d9a68ef"
+      },
+      "expected": {
+        "file": "selfhost/tools/performance/phase113/controls/expected/tail-argument-permutation.json",
+        "bytes": 70,
+        "sha256": "474ded863e3f54dadf78354504aef8358d9eb26f0f967cc83fda313284f66bbb"
+      },
+      "stdout": {
+        "file": "selfhost/tools/performance/phase113/controls/expected/tail-argument-permutation.stdout",
+        "bytes": 16,
+        "sha256": "8f32271692bdc0f33c276def9b7f103eb9e6fac42b3081375322d7f0e91ddbad"
+      },
+      "purposes": [
+        "Simultaneous tail argument transfer, empty and100001 steps"
+      ],
+      "provenance": "unchanged Phase113 ordinary positive fixture; prior qualification remains separate"
+    },
+    {
+      "name": "scalar-closed-loop",
+      "source": "selfhost/tools/performance/phase113/controls/fixtures/scalar-closed-loop.bend",
+      "sourcePin": {
+        "file": "selfhost/tools/performance/phase113/controls/fixtures/scalar-closed-loop.bend",
+        "bytes": 570,
+        "sha256": "5178566e62ca8695a8d87f276d3d0d7c92780678a387fbf3ca7c817e32c7e96b"
+      },
+      "expected": {
+        "file": "selfhost/tools/performance/phase113/controls/expected/scalar-closed-loop.json",
+        "bytes": 101,
+        "sha256": "6b2eede53674265ab29898a788ff319032760364040636907faba61d146638c9"
+      },
+      "stdout": {
+        "file": "selfhost/tools/performance/phase113/controls/expected/scalar-closed-loop.stdout",
+        "bytes": 46,
+        "sha256": "48a9f3ed9624cbe69be17c76d4a62d0a8d9486a51cad23ccadf820ff2bd36761"
+      },
+      "purposes": [
+        "Complete tail loop with closed scalar result"
+      ],
+      "provenance": "unchanged Phase113 ordinary positive fixture; prior qualification remains separate"
+    }
+  ],
+  "inputs": [
+    {
+      "file": "selfhost/tools/performance/phase114/controls/freeze.py",
+      "bytes": 3252,
+      "sha256": "456192bf4d42711c6f10b957275c5a66190915494caeb58d9b196b8c94612933"
+    },
+    {
+      "file": "selfhost/tools/performance/phase113/controls/manifest01.json",
+      "bytes": 21850,
+      "sha256": "31a6a1d4dc7f82ccbb0a39c35cd6346795408837370dac0f4675bf45b2846b9b"
+    },
+    {
+      "file": "selfhost/tools/performance/phase114/controls/fixtures/two-owned-fields.bend",
+      "bytes": 1603,
+      "sha256": "4b0e312e9feecc81397731751b068460ba7b1cf8d376b9f5773a0a6dbc8ff031"
+    },
+    {
+      "file": "selfhost/tools/performance/phase114/controls/expected/two-owned-fields.json",
+      "bytes": 137,
+      "sha256": "2156a3aa1f7b8c21cf8e7d312cd2bde25c64ce63fd976d8532020c9b16479450"
+    },
+    {
+      "file": "selfhost/tools/performance/phase114/controls/expected/two-owned-fields.stdout",
+      "bytes": 78,
+      "sha256": "394c55c99a8db620bf1ad785d4147b15eae2cb5c4f9d90334b517eaa7db165b4"
+    },
+    {
+      "file": "selfhost/tools/performance/phase114/controls/fixtures/nested-owned-fields-v2.bend",
+      "bytes": 1314,
+      "sha256": "b18d975f3976bc41c1197010adeb6bf67e55f94b4514de59733b6278668bad2d"
+    },
+    {
+      "file": "selfhost/tools/performance/phase114/controls/expected/nested-owned-fields.json",
+      "bytes": 146,
+      "sha256": "9bd6a658348c158e7d70e1f9b9bfb49ad867d1c960874a2aa4281efba97e4bb6"
+    },
+    {
+      "file": "selfhost/tools/performance/phase114/controls/expected/nested-owned-fields.stdout",
+      "bytes": 89,
+      "sha256": "a25d9629a422bfb6f0f91b001265b465eebad8d44825d7accb7922d8549143e8"
+    },
+    {
+      "file": "selfhost/tools/performance/phase114/controls/fixtures/same-names-other-layout.bend",
+      "bytes": 640,
+      "sha256": "ecfc8112516a19539b49af7e8983983d5a02bc3e3ea9d37c576372d34aedccd9"
+    },
+    {
+      "file": "selfhost/tools/performance/phase114/controls/expected/same-names-other-layout.json",
+      "bytes": 80,
+      "sha256": "9e5ae61c921bdbb4644c429954a5333eee17cd07cf1c9d54d78ece0d58756afe"
+    },
+    {
+      "file": "selfhost/tools/performance/phase114/controls/expected/same-names-other-layout.stdout",
+      "bytes": 28,
+      "sha256": "e5aebf08bec0aacf80d36d14686f9071aeeef1cbe2b5ba9c17124587f1b5ad59"
+    },
+    {
+      "file": "selfhost/tools/performance/phase113/controls/fixtures/string-field-alias.bend",
+      "bytes": 656,
+      "sha256": "a5e1d6b231b3e0231903959c5e4c661983c520582d15e091520ce2ce4209d990"
+    },
+    {
+      "file": "selfhost/tools/performance/phase113/controls/expected/string-field-alias.json",
+      "bytes": 86,
+      "sha256": "272f1ec857c3fc7721270e3fbf7a35b0396e75e40e5bae60417e11e8e768ddb8"
+    },
+    {
+      "file": "selfhost/tools/performance/phase113/controls/expected/string-field-alias.stdout",
+      "bytes": 31,
+      "sha256": "90c33946d4b7b789da29c583e3f3ffb31208b16b8d82d5cd4ff64c2121cb3532"
+    },
+    {
+      "file": "selfhost/tools/performance/phase113/controls/fixtures/owned-capture-call.bend",
+      "bytes": 564,
+      "sha256": "e18d255fdcda1ced2772c96eac0479a3d02741ebe5b3247d6a9af1d75118ab7c"
+    },
+    {
+      "file": "selfhost/tools/performance/phase113/controls/expected/owned-capture-call.json",
+      "bytes": 93,
+      "sha256": "b03a3d2ea11e92871aa5b8ad12c99abfe4d1687d675bd7a52a0823b08bd56ff6"
+    },
+    {
+      "file": "selfhost/tools/performance/phase113/controls/expected/owned-capture-call.stdout",
+      "bytes": 39,
+      "sha256": "c4a0503e4b491e805ddc730938fac1f7e82373fac72c5d9a3b9c303848392099"
+    },
+    {
+      "file": "selfhost/tools/performance/phase113/controls/fixtures/product-escape-branch.bend",
+      "bytes": 727,
+      "sha256": "92b7abb15bdb6722ae261502fb7a8ea23e4ea22fe98d22a7066fb1ad67f56af3"
+    },
+    {
+      "file": "selfhost/tools/performance/phase113/controls/expected/product-escape-branch.json",
+      "bytes": 65,
+      "sha256": "e3c57fbfd2714828ce2e6d5692a49be93913d834d7d522361d4ea0109f28ac16"
+    },
+    {
+      "file": "selfhost/tools/performance/phase113/controls/expected/product-escape-branch.stdout",
+      "bytes": 13,
+      "sha256": "b97036f90d874a755c64a9acbb3a49f766c866fefd04db6bedd47bb1e5c5dae7"
+    },
+    {
+      "file": "selfhost/tools/performance/phase113/controls/fixtures/non-tail-reconstruction.bend",
+      "bytes": 640,
+      "sha256": "5c87d68b787648265511d29c1df583593a1b12954feb26ca197d4d10e1ff6e6f"
+    },
+    {
+      "file": "selfhost/tools/performance/phase113/controls/expected/non-tail-reconstruction.json",
+      "bytes": 60,
+      "sha256": "dbf19702dca4557f18b3e7b6d0f5d7912f307f3fc391e9accaec34b10edd07e7"
+    },
+    {
+      "file": "selfhost/tools/performance/phase113/controls/expected/non-tail-reconstruction.stdout",
+      "bytes": 7,
+      "sha256": "25a7a5fa0594ebff3ca703821547a30e2167b69dbe63d1734a06cf2d831f553c"
+    },
+    {
+      "file": "selfhost/tools/performance/phase113/controls/fixtures/tail-argument-permutation.bend",
+      "bytes": 521,
+      "sha256": "2127fc55f65735daca75841de102ac31726a25a703900a2ca1148b284d9a68ef"
+    },
+    {
+      "file": "selfhost/tools/performance/phase113/controls/expected/tail-argument-permutation.json",
+      "bytes": 70,
+      "sha256": "474ded863e3f54dadf78354504aef8358d9eb26f0f967cc83fda313284f66bbb"
+    },
+    {
+      "file": "selfhost/tools/performance/phase113/controls/expected/tail-argument-permutation.stdout",
+      "bytes": 16,
+      "sha256": "8f32271692bdc0f33c276def9b7f103eb9e6fac42b3081375322d7f0e91ddbad"
+    },
+    {
+      "file": "selfhost/tools/performance/phase113/controls/fixtures/scalar-closed-loop.bend",
+      "bytes": 570,
+      "sha256": "5178566e62ca8695a8d87f276d3d0d7c92780678a387fbf3ca7c817e32c7e96b"
+    },
+    {
+      "file": "selfhost/tools/performance/phase113/controls/expected/scalar-closed-loop.json",
+      "bytes": 101,
+      "sha256": "6b2eede53674265ab29898a788ff319032760364040636907faba61d146638c9"
+    },
+    {
+      "file": "selfhost/tools/performance/phase113/controls/expected/scalar-closed-loop.stdout",
+      "bytes": 46,
+      "sha256": "48a9f3ed9624cbe69be17c76d4a62d0a8d9486a51cad23ccadf820ff2bd36761"
+    },
+    {
+      "file": "selfhost/tools/performance/phase114/controls/manifest01.json",
+      "bytes": 16591,
+      "sha256": "eeca49923d33c4a626a2aadbbed4c3b3bd6c514f0084dfc356301644c557ce88"
+    }
+  ],
+  "fastOrder": [
+    "two-owned-fields",
+    "nested-owned-fields",
+    "same-names-other-layout",
+    "string-field-alias",
+    "non-tail-reconstruction"
+  ],
+  "sessionSequence": [
+    "two-owned-fields",
+    "same-names-other-layout",
+    "two-owned-fields",
+    "nested-owned-fields",
+    "two-owned-fields"
+  ],
+  "scope": "Positive complete-output Bend programs only. New sources require frontend preflight. Physical unique/shared/static fastpath admission must be observed separately; correct fallback is valid. No malformed memory or ABI probes.",
+  "prior": {
+    "file": "selfhost/tools/performance/phase114/controls/manifest01.json",
+    "bytes": 16591,
+    "sha256": "eeca49923d33c4a626a2aadbbed4c3b3bd6c514f0084dfc356301644c557ce88"
+  },
+  "correction": {
+    "source": {
+      "file": "selfhost/tools/performance/phase114/controls/fixtures/nested-owned-fields-v2.bend",
+      "bytes": 1314,
+      "sha256": "b18d975f3976bc41c1197010adeb6bf67e55f94b4514de59733b6278668bad2d"
+    },
+    "previous": {
+      "file": "selfhost/tools/performance/phase114/controls/fixtures/nested-owned-fields.bend",
+      "bytes": 1306,
+      "sha256": "1c2f4d9c70863f5b1a1847137c4fcee171a0a612944bd967cf36fb6171e5ffc7"
+    },
+    "reason": "List<String> defaults to affine kind; Envelope is Data and repeated shared ownership requires List<&2,String>",
+    "failureReceipt": {
+      "file": "selfhost/build/phase114/controls-preflight01/report.json",
+      "bytes": 3626,
+      "sha256": "da38cc78037b44909cb2a09b2c5360eee5727672b9b90d06c8cec09d83a6c745"
+    }
+  }
+}

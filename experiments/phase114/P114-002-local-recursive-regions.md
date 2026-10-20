@@ -29,3 +29,22 @@ resume call. The actual keep_gt1 continuation retains two aliases and evaluates
 its predicate after recursion. Preserve that order; a constructor-only matcher
 cannot admit it. A later bounded continuation table could handle two-child
 recursion. Neither extension is qualified by the first result.
+
+## Broader captured environments
+
+The separately checked general01 extension now passes its two ordinary controls.
+It admits keep_gt1 with two captured aliases and the original post-recursive
+predicate. Paired three-round list time766→360ms (2.128× faster than31), lexer
+393→392ms; all18 output/count observations pass. The list remains6.923× upstream.
+See `phase114/general-controls-plan02.json` and
+`phase112/p114-general-screen01-measure/report.json` beneath `selfhost/build`.
+The original invalid local-match fixture and its unchanged-output helper repair
+are retained. General02 only substitutes the independently reviewed faster
+recursive-plan scan; it still needs composition qualification.
+
+Next, actual expression eval contains six continuation identities, all with one
+capture; tree scan contains two. Some resumes save the first result and descend
+again into the second child. This supports a bounded local table experiment,
+with exact FID/layout dispatch and a local depth boundary, instead of unbounded
+native recursive calls. Implement separately, preserve the single-frame result,
+and qualify real generated code before increasing scope.

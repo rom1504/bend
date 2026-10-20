@@ -31,8 +31,7 @@ Single-run stage diagnostics, seconds (not a qualified speed benchmark):
 | local-pair | 4.702 | 3.242 |
 | coverage-list-pipeline-128 | 1.622 | 0.636 |
 
-The separate final verifier remains in both cases. Full-image scaling remains
-unmeasured. Exact receipts are under `selfhost/build/phase114/`: baseline/cached
+The separate final verifier remains in both cases. Full-image scaling now completes; see the acquisition result below. Exact receipts are under `selfhost/build/phase114/`: baseline/cached
 split reports, `scaling-controls01`, `scaling-session01`, and associated guards.
 Compiler source: `phase113/p114-scaling-source01/compiler.bend`, SHA256
 `57247caf806136c4581ae23191449775348246a496852a9f14c174dde0373685`.
@@ -65,9 +64,46 @@ and list700→699ms (effectively unchanged). The three-case geometric mean impro
 5.995%, still10.723× upstream. This is separate from the recursive candidate.
 See [P114-003](../../experiments/phase114/P114-003-unary-representation.md).
 
-Restoring the mature product signature index also preserves exact QBE on both
-small staged kernels. Its small measured contribution does not establish the
-large-source benefit; the full scaling gate remains outstanding.
+## Full compiler acquisition now completes
+
+Verification reuse plus the mature product signature index emits the complete
+compiler's own source in502.479s guard wall, peak3.547GiB. The output contains
+60,356,569 QBE bytes,33,800 segments and808 direct functions. Stage seconds:
+frontend206.715; product planning96.965; verification boundary33.149;
+inlining/direct check30.502; ranges/direct check28.769; final verifier43.014;
+QBE emission59.808. The signature index preserves first-definition lookup and
+exact QBE on the two small staged kernels.
+
+The QBE/as/link machine build completes in7.969s. Its native image passes all
+five fast-suite programs in5.777s. This clears the prior600s lowering timeout;
+these changed-source observations are not a controlled speed ratio. N2/full
+self-reproduction are not yet established. The image contains the scaling/index
+changes only; the runtime experiments remain separate at this point.
+Receipts: `phase114/catalogue-full01`, `phase111/p114-catalogue-native01`,
+`phase111/p114-catalogue-native-fast01`, and corresponding Phase114 guards.
+
+## General continuation result
+
+The next prototype admits a bounded captured environment and a checked local
+resume helper, preserving operations after recursion. Both independent ordinary
+controls (zero captures and multiple owning captures) pass complete outputs.
+The initial second fixture had a frontend-invalid local match; its preserved
+v2 gives that match an explicit helper argument, with unchanged expected bytes.
+
+In three paired rounds, list pipeline falls766→360ms (2.128× faster than31),
+while lexer393→392ms is unchanged. All18 measured outputs/counts pass. The list
+remains6.923× upstream; the two-case geometric mean is7.295×. This is a broader
+local-control mechanism, not aggregate45 parity. Source/receipts:
+`phase113/p114-general-source01`, `phase114/general-controls-plan02`,
+`phase112/p114-general-screen01-measure`.
+
+The final-emission frame/pop/get expansion passes source/runtime admission,
+12 structural groups,11 ordinary programs and36 benchmark output/count checks.
+Four-case elapsed time falls5.47% geometrically (tree555→523ms, lexer358→345,
+list707→674, expression489→451), still9.830× upstream on that subset.
+See [P114-005](../../experiments/phase114/P114-005-fixed-transport.md).
+A combined candidate is being checked; none of these isolated ratios is a
+combined or broad45 result.
 
 The eight-program development screen is frozen before candidate timing, uses
 unchanged original45 sources/oracles/repetitions and includes scalar, arrays,

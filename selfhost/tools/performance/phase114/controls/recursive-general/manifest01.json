@@ -1,0 +1,102 @@
+{
+  "kind": "phase114-ordinary-general-recursive-controls",
+  "version": 1,
+  "targetsRun": false,
+  "frozenUtc": "2026-10-20T22:22:25.611336+00:00",
+  "cases": [
+    {
+      "name": "zero-capture-length",
+      "source": "selfhost/tools/performance/phase114/controls/recursive-general/fixtures/zero-capture-length.bend",
+      "sourcePin": {
+        "file": "selfhost/tools/performance/phase114/controls/recursive-general/fixtures/zero-capture-length.bend",
+        "bytes": 872,
+        "sha256": "fb29b26808ff132e2dcd709b189196762d252ca25c25fb65b8fe98faaccfc4c9"
+      },
+      "expected": {
+        "file": "selfhost/tools/performance/phase114/controls/recursive-general/expected/zero-capture-length.json",
+        "bytes": 67,
+        "sha256": "d892b15c9f36d36eb65aab122eea8e55db67cda68cae58edff335af7a1e6802f"
+      },
+      "stdout": {
+        "file": "selfhost/tools/performance/phase114/controls/recursive-general/expected/zero-capture-length.stdout",
+        "bytes": 12,
+        "sha256": "a3812456e88a72b7ed2dc7dea1e9d531be4b268bf4eb43a083c3dc63d72a4a6d"
+      },
+      "purposes": [
+        "zero captured fields across post-recursive increment",
+        "empty/singleton/deep ordinary list",
+        "shared list and allocated String heads"
+      ],
+      "sourceChecked": false
+    },
+    {
+      "name": "multiple-owned-captures",
+      "source": "selfhost/tools/performance/phase114/controls/recursive-general/fixtures/multiple-owned-captures.bend",
+      "sourcePin": {
+        "file": "selfhost/tools/performance/phase114/controls/recursive-general/fixtures/multiple-owned-captures.bend",
+        "bytes": 1927,
+        "sha256": "7977197fbedc66ff8ab871ef1d58140d05e68102980626bc10ec4e21f71378d7"
+      },
+      "expected": {
+        "file": "selfhost/tools/performance/phase114/controls/recursive-general/expected/multiple-owned-captures.json",
+        "bytes": 165,
+        "sha256": "52386c26bd21dadc3c733ef441378dd7f7a0524853b420f7911dc495e3571fb3"
+      },
+      "stdout": {
+        "file": "selfhost/tools/performance/phase114/controls/recursive-general/expected/multiple-owned-captures.stdout",
+        "bytes": 107,
+        "sha256": "83096c94e2be1f10f9c975acaa1421e9949bf450e73ef98fb2fa6b71e6034f3e"
+      },
+      "purposes": [
+        "two owned and two scalar fields across recursion",
+        "post-recursive predicate and conditional reconstruction",
+        "duplicated selected field and discarded unselected field",
+        "external aliases survive repeated traversal",
+        "unsigned scalar limits and Unicode"
+      ],
+      "sourceChecked": false
+    }
+  ],
+  "fastOrder": [
+    "zero-capture-length",
+    "multiple-owned-captures"
+  ],
+  "inputs": [
+    {
+      "file": "selfhost/tools/performance/phase114/controls/recursive-general/freeze.py",
+      "bytes": 2347,
+      "sha256": "7e3d9b442cb0fceaac3a6394002d1ea77d8897746c67d672e73dd8f27e4644ca"
+    },
+    {
+      "file": "selfhost/tools/performance/phase114/controls/recursive-general/fixtures/zero-capture-length.bend",
+      "bytes": 872,
+      "sha256": "fb29b26808ff132e2dcd709b189196762d252ca25c25fb65b8fe98faaccfc4c9"
+    },
+    {
+      "file": "selfhost/tools/performance/phase114/controls/recursive-general/expected/zero-capture-length.json",
+      "bytes": 67,
+      "sha256": "d892b15c9f36d36eb65aab122eea8e55db67cda68cae58edff335af7a1e6802f"
+    },
+    {
+      "file": "selfhost/tools/performance/phase114/controls/recursive-general/expected/zero-capture-length.stdout",
+      "bytes": 12,
+      "sha256": "a3812456e88a72b7ed2dc7dea1e9d531be4b268bf4eb43a083c3dc63d72a4a6d"
+    },
+    {
+      "file": "selfhost/tools/performance/phase114/controls/recursive-general/fixtures/multiple-owned-captures.bend",
+      "bytes": 1927,
+      "sha256": "7977197fbedc66ff8ab871ef1d58140d05e68102980626bc10ec4e21f71378d7"
+    },
+    {
+      "file": "selfhost/tools/performance/phase114/controls/recursive-general/expected/multiple-owned-captures.json",
+      "bytes": 165,
+      "sha256": "52386c26bd21dadc3c733ef441378dd7f7a0524853b420f7911dc495e3571fb3"
+    },
+    {
+      "file": "selfhost/tools/performance/phase114/controls/recursive-general/expected/multiple-owned-captures.stdout",
+      "bytes": 107,
+      "sha256": "83096c94e2be1f10f9c975acaa1421e9949bf450e73ef98fb2fa6b71e6034f3e"
+    }
+  ],
+  "scope": "Two ordinary positive source controls. Exact independent stdout checks finite semantics and aliases; separate checked lowering inspection must establish actual capture count and general-spine admission. Root must source-check then compare baseline/candidate native outputs. No raw ABI, malformed-memory or custom failure experiment."
+}

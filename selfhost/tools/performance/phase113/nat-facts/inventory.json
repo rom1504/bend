@@ -1,0 +1,165 @@
+{
+  "schema": "phase113-nat-facts-v1",
+  "scope": "source-only; all controls and fixtures unexecuted",
+  "sources": [
+    {
+      "path": "selfhost/tools/performance/phase113/nat-facts/README.md",
+      "bytes": 3762,
+      "sha256": "50446e9460eca38cd510821051375bf89f759fa8a190fbd5e302e99c6a3a1129"
+    },
+    {
+      "path": "selfhost/tools/performance/phase113/nat-facts/controls.bend",
+      "bytes": 6411,
+      "sha256": "28309f869d181fb85db8cb2390724b6e32b973e7dab11a2bd3f6ae9577f6097d"
+    },
+    {
+      "path": "selfhost/tools/performance/phase113/nat-facts/field-overrides.bend",
+      "bytes": 435,
+      "sha256": "ec7be9b8556d738b71075c4068c8e6cbd3adb5072c79e78a778c1b1076ad9f76"
+    },
+    {
+      "path": "selfhost/tools/performance/phase113/nat-facts/fixtures/high-values.bend",
+      "bytes": 764,
+      "sha256": "4db1a6626ddf124f88c9156f5c4c5bbabd00266922869858061fc410477c3855"
+    },
+    {
+      "path": "selfhost/tools/performance/phase113/nat-facts/fixtures/manifest.json",
+      "bytes": 2613,
+      "sha256": "f7decf55ad73a011c4987b126d8f4550ff8cf012492c6575480e2064786eb2df"
+    },
+    {
+      "path": "selfhost/tools/performance/phase113/nat-facts/fixtures/overflow-add.bend",
+      "bytes": 194,
+      "sha256": "333a9a379189bc6c380a223abdedb74d3135fd3480f1ab54b5cd9e0e213757e5"
+    },
+    {
+      "path": "selfhost/tools/performance/phase113/nat-facts/fixtures/overflow-double.bend",
+      "bytes": 107,
+      "sha256": "ea6dda7164b953643ae8314f3c3619adf3267e17bbf2431ec9b59fc69494f5d6"
+    },
+    {
+      "path": "selfhost/tools/performance/phase113/nat-facts/fixtures/overflow-mul.bend",
+      "bytes": 120,
+      "sha256": "a05fd4717b6a553170133b673b55251ad76a9048c8ae6e563b4dc183cc0c21e8"
+    },
+    {
+      "path": "selfhost/tools/performance/phase113/nat-facts/fixtures/overflow-succ.bend",
+      "bytes": 182,
+      "sha256": "d6c82cb3b3f30f37e593bdfe8dd0734f07c1c018d7219a78ddc52e5b6fc281c4"
+    },
+    {
+      "path": "selfhost/tools/performance/phase113/nat-facts/fixtures/owned-record.bend",
+      "bytes": 538,
+      "sha256": "b582187992c5ac95aeea8c1622085db7aad9543a04726ca98b70fb59509c4488"
+    },
+    {
+      "path": "selfhost/tools/performance/phase113/nat-facts/helpers.bend",
+      "bytes": 4233,
+      "sha256": "dded4bd09f6e17fe68f6f92da09d579f5fb5e75b80729562bd4f0cdb3c1fba68"
+    },
+    {
+      "path": "selfhost/tools/performance/phase113/nat-facts/model.bend",
+      "bytes": 217,
+      "sha256": "e843b53a3e856495c0b8b7a23d7559760a6ee4b84a768fccbc9ebb827ab36bf6"
+    },
+    {
+      "path": "selfhost/tools/performance/phase113/nat-facts/overrides.bend",
+      "bytes": 2353,
+      "sha256": "ce7e5e4bc717843b9257c1b6f2e1b753cb0c583108ca3cd37820520c33713ae7"
+    },
+    {
+      "path": "selfhost/tools/performance/phase113/nat-facts/overrides.json",
+      "bytes": 3646,
+      "sha256": "23dcbdbd8b3bce2cbbb1f55d64216104fda2f954736752b63d61c07f24153df1"
+    },
+    {
+      "path": "selfhost/tools/performance/phase113/nat-facts/type-consumers.md",
+      "bytes": 2460,
+      "sha256": "20abd118aaaff71796d16f743b3a13dd6b6a71378dd00c5880f03cda6c1a9c41"
+    }
+  ],
+  "dependencies": [
+    {
+      "path": "selfhost/build/phase111/full-source05/compiler.bend",
+      "bytes": 1879953,
+      "sha256": "825cb03276c30a944ef1b1e8ed0624531253d2f39a502b0fcbfbfea3f3bb3f44"
+    },
+    {
+      "path": "selfhost/build/phase111/runtime-source04/runtime.c",
+      "bytes": 136808,
+      "sha256": "c0fc18aabb2749cc85b5040c29756d8d73d90b73bb954d10ed1d0d410528aa50"
+    },
+    {
+      "path": "selfhost/build/phase111/runtime-source04/runtime.o",
+      "bytes": 94392,
+      "sha256": "560bbec83395b6a4b2be247e14b362fc1e803ee0a86c680f3797d895ed67c23e"
+    },
+    {
+      "path": "selfhost/tools/performance/phase113/facts/value.bend",
+      "bytes": 4003,
+      "sha256": "07e951648edf981e8ebde5d4c5cc71ad8472c13a2be16eab55f57c25d16c94ec"
+    },
+    {
+      "path": "selfhost/tools/performance/phase113/direct-fields/model.bend",
+      "bytes": 2219,
+      "sha256": "23c21e96c962b8ae0f18c6c6288221768121c92b13eeba10d88e691136ef8432"
+    },
+    {
+      "path": "selfhost/tools/performance/phase112/typed-ownership/overrides.bend",
+      "bytes": 2783,
+      "sha256": "b001298223e8c46b08f5b2e7d3a90fb162f905f1dbf188903d7a6a56355b6a6f"
+    }
+  ],
+  "control_count": 46,
+  "control_names": [
+    "nat-canonical-type",
+    "nat-lookalike-refused",
+    "nat-type-arguments-refused",
+    "nat-unknown-type-refused",
+    "nat-parameter-seed",
+    "nat-parameter-wrong-arity",
+    "nat-lookalike-parameter",
+    "nat-callee-result",
+    "nat-callee-partial",
+    "nat-callee-overapplied",
+    "nat-callee-lookalike",
+    "nat-add-result",
+    "nat-sub-result",
+    "nat-mul-result",
+    "nat-double-result",
+    "u32-to-nat-result",
+    "nat-wrong-primitive-arity",
+    "nat-unknown-primitive",
+    "nat-ordering-carrier-opaque",
+    "nat-divmod-carrier-owned",
+    "string-result-still-owned",
+    "nat-alias",
+    "nat-capture",
+    "nat-alias-shadowed",
+    "nat-succ-field",
+    "nat-lookalike-field",
+    "nat-wrong-field-count",
+    "nat-outside-field-index",
+    "nat-zero-constructor",
+    "nat-succ-constructor",
+    "nat-lookalike-constructor",
+    "nat-constructor-wrong-arity",
+    "nat-field-producer",
+    "nat-field-malformed-mask",
+    "nat-keep-elided",
+    "nat-sink-elided",
+    "opaque-keep-retained",
+    "opaque-sink-retained",
+    "boxed-keep-retained",
+    "boxed-sink-retained",
+    "nat-c-type-term",
+    "nat-private-type-term",
+    "nat-not-u32",
+    "nat-2pow32-fullword",
+    "nat-2pow40-fullword",
+    "nat-2pow48-minus1-fullword"
+  ],
+  "exports": [
+    "p113_nat_control_report"
+  ]
+}

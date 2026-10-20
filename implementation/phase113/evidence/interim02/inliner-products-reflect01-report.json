@@ -1,0 +1,535 @@
+{
+  "kind": "phase113-independent-product-inliner-controls",
+  "complete": true,
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase113/controls/inliner/products-reflect.mjs",
+      "bytes": 11690,
+      "sha256": "6c7e3678b71dd1f01ce5972ab587bc1544a3708d4e1d1133e552541eec538f34"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase113/controls/inliner/ir-model.mjs",
+      "bytes": 7927,
+      "sha256": "6b78d1bbec98639d189c06a571e86ce065f587af784d78e935283bfc7bfc6103"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-inline-products-api15/api.mjs",
+      "bytes": 1567448,
+      "sha256": "e3880dbda639a331c23daf1bd578c2f90173d6f65d94424c987a0d5384b7530b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-inline-products-api15/report.json",
+      "bytes": 4242,
+      "sha256": "d8a3a45b2220052b65a2e352e6f571bd22f64cb2d02b8d49ce08ae133b187f51"
+    }
+  ],
+  "cases": [
+    {
+      "name": "two-results-destination-permutation",
+      "expected": {
+        "values": [
+          "72"
+        ],
+        "trace": []
+      },
+      "expectedRemainingCalls": 0,
+      "beforeDiagnostic": "",
+      "afterDiagnostic": "",
+      "before": {
+        "values": [
+          "72"
+        ],
+        "trace": []
+      },
+      "after": {
+        "values": [
+          "72"
+        ],
+        "trace": []
+      },
+      "remainingCalls": 0,
+      "explicitStackBytes": 0,
+      "originalRetained": true,
+      "idempotent": true,
+      "unchanged": false,
+      "eligibility": null,
+      "auditBefore": "pair args=2 results=2 nodes=1 stack=0 scratch=0 candidate=eligible calls=[]\ncaller args=0 results=1 nodes=6 stack=0 scratch=0 candidate=eligible calls=[pair]\n",
+      "auditAfter": "pair args=2 results=2 nodes=1 stack=0 scratch=0 candidate=eligible calls=[]\ncaller args=0 results=1 nodes=11 stack=0 scratch=0 candidate=eligible calls=[]\n",
+      "pass": true
+    },
+    {
+      "name": "three-results-overlapping-actuals",
+      "expected": {
+        "values": [
+          "792"
+        ],
+        "trace": []
+      },
+      "expectedRemainingCalls": 0,
+      "beforeDiagnostic": "",
+      "afterDiagnostic": "",
+      "before": {
+        "values": [
+          "792"
+        ],
+        "trace": []
+      },
+      "after": {
+        "values": [
+          "792"
+        ],
+        "trace": []
+      },
+      "remainingCalls": 0,
+      "explicitStackBytes": 0,
+      "originalRetained": true,
+      "idempotent": true,
+      "unchanged": false,
+      "eligibility": null,
+      "auditBefore": "triple args=3 results=3 nodes=1 stack=0 scratch=0 candidate=eligible calls=[]\ncaller args=0 results=1 nodes=9 stack=0 scratch=0 candidate=eligible calls=[triple]\n",
+      "auditAfter": "triple args=3 results=3 nodes=1 stack=0 scratch=0 candidate=eligible calls=[]\ncaller args=0 results=1 nodes=17 stack=0 scratch=0 candidate=eligible calls=[]\n",
+      "pass": true
+    },
+    {
+      "name": "retained-call-inside-copied-dag",
+      "expected": {
+        "values": [
+          "99"
+        ],
+        "trace": []
+      },
+      "expectedRemainingCalls": 1,
+      "beforeDiagnostic": "",
+      "afterDiagnostic": "",
+      "before": {
+        "values": [
+          "99"
+        ],
+        "trace": []
+      },
+      "after": {
+        "values": [
+          "99"
+        ],
+        "trace": []
+      },
+      "remainingCalls": 1,
+      "explicitStackBytes": 0,
+      "originalRetained": true,
+      "idempotent": true,
+      "unchanged": false,
+      "eligibility": false,
+      "auditBefore": "loop args=1 results=1 nodes=5 stack=0 scratch=0 candidate=loop-or-partial-return calls=[]\nwrapper args=1 results=1 nodes=2 stack=0 scratch=0 candidate=eligible calls=[loop]\ncaller args=0 results=1 nodes=2 stack=0 scratch=0 candidate=eligible calls=[wrapper]\n",
+      "auditAfter": "loop args=1 results=1 nodes=5 stack=0 scratch=0 candidate=loop-or-partial-return calls=[]\nwrapper args=1 results=1 nodes=2 stack=0 scratch=0 candidate=eligible calls=[loop]\ncaller args=0 results=1 nodes=5 stack=0 scratch=0 candidate=eligible calls=[loop]\n",
+      "pass": true
+    },
+    {
+      "name": "array-pair-hygienic-nested-buffers",
+      "expected": {
+        "values": [
+          "344"
+        ],
+        "trace": [
+          "p113_rt_array_pair:72:100"
+        ]
+      },
+      "expectedRemainingCalls": 0,
+      "beforeDiagnostic": "",
+      "afterDiagnostic": "",
+      "before": {
+        "values": [
+          "344"
+        ],
+        "trace": [
+          "p113_rt_array_pair:72:100"
+        ]
+      },
+      "after": {
+        "values": [
+          "344"
+        ],
+        "trace": [
+          "p113_rt_array_pair:72:100"
+        ]
+      },
+      "remainingCalls": 0,
+      "explicitStackBytes": 32,
+      "originalRetained": true,
+      "idempotent": true,
+      "unchanged": false,
+      "eligibility": null,
+      "auditBefore": "get args=2 results=2 nodes=7 stack=16 scratch=16 candidate=eligible calls=[]\nwrapper args=2 results=2 nodes=2 stack=0 scratch=0 candidate=eligible calls=[get]\ncaller args=0 results=1 nodes=5 stack=0 scratch=8 candidate=eligible calls=[wrapper]\n",
+      "auditAfter": "get args=2 results=2 nodes=7 stack=16 scratch=16 candidate=eligible calls=[]\nwrapper args=2 results=2 nodes=14 stack=32 scratch=0 candidate=eligible calls=[]\ncaller args=0 results=1 nodes=23 stack=32 scratch=8 candidate=eligible calls=[]\n",
+      "pass": true
+    },
+    {
+      "name": "array-swap-then-get-order",
+      "expected": {
+        "values": [
+          "1119"
+        ],
+        "trace": [
+          "p113_rt_array_pair:74:100",
+          "p113_rt_array_pair:72:100"
+        ]
+      },
+      "expectedRemainingCalls": 0,
+      "beforeDiagnostic": "",
+      "afterDiagnostic": "",
+      "before": {
+        "values": [
+          "1119"
+        ],
+        "trace": [
+          "p113_rt_array_pair:74:100",
+          "p113_rt_array_pair:72:100"
+        ]
+      },
+      "after": {
+        "values": [
+          "1119"
+        ],
+        "trace": [
+          "p113_rt_array_pair:74:100",
+          "p113_rt_array_pair:72:100"
+        ]
+      },
+      "remainingCalls": 0,
+      "explicitStackBytes": 72,
+      "originalRetained": true,
+      "idempotent": true,
+      "unchanged": false,
+      "eligibility": null,
+      "auditBefore": "swap args=3 results=2 nodes=8 stack=16 scratch=24 candidate=eligible calls=[]\nget args=2 results=2 nodes=7 stack=16 scratch=16 candidate=eligible calls=[]\ncaller args=0 results=1 nodes=5 stack=0 scratch=0 candidate=eligible calls=[swap,get]\n",
+      "auditAfter": "swap args=3 results=2 nodes=8 stack=16 scratch=24 candidate=eligible calls=[]\nget args=2 results=2 nodes=7 stack=16 scratch=16 candidate=eligible calls=[]\ncaller args=0 results=1 nodes=31 stack=72 scratch=0 candidate=eligible calls=[]\n",
+      "pass": true
+    },
+    {
+      "name": "refuse-partial-return-product",
+      "expected": {
+        "values": [
+          "5"
+        ],
+        "trace": []
+      },
+      "expectedRemainingCalls": 1,
+      "beforeDiagnostic": "",
+      "afterDiagnostic": "",
+      "before": {
+        "values": [
+          "5"
+        ],
+        "trace": []
+      },
+      "after": {
+        "values": [
+          "5"
+        ],
+        "trace": []
+      },
+      "remainingCalls": 1,
+      "explicitStackBytes": 0,
+      "originalRetained": true,
+      "idempotent": true,
+      "unchanged": true,
+      "eligibility": false,
+      "auditBefore": "pair args=1 results=2 nodes=5 stack=0 scratch=0 candidate=loop-or-partial-return calls=[]\ncaller args=0 results=1 nodes=3 stack=0 scratch=0 candidate=eligible calls=[pair]\n",
+      "auditAfter": "pair args=1 results=2 nodes=5 stack=0 scratch=0 candidate=loop-or-partial-return calls=[]\ncaller args=0 results=1 nodes=3 stack=0 scratch=0 candidate=eligible calls=[pair]\n",
+      "pass": true
+    },
+    {
+      "name": "refuse-again-product",
+      "expected": {
+        "values": [
+          "5"
+        ],
+        "trace": []
+      },
+      "expectedRemainingCalls": 1,
+      "beforeDiagnostic": "",
+      "afterDiagnostic": "",
+      "before": {
+        "values": [
+          "5"
+        ],
+        "trace": []
+      },
+      "after": {
+        "values": [
+          "5"
+        ],
+        "trace": []
+      },
+      "remainingCalls": 1,
+      "explicitStackBytes": 0,
+      "originalRetained": true,
+      "idempotent": true,
+      "unchanged": true,
+      "eligibility": false,
+      "auditBefore": "pair args=1 results=2 nodes=5 stack=0 scratch=0 candidate=loop-or-partial-return calls=[]\ncaller args=0 results=1 nodes=3 stack=0 scratch=0 candidate=eligible calls=[pair]\n",
+      "auditAfter": "pair args=1 results=2 nodes=5 stack=0 scratch=0 candidate=loop-or-partial-return calls=[]\ncaller args=0 results=1 nodes=3 stack=0 scratch=0 candidate=eligible calls=[pair]\n",
+      "pass": true
+    },
+    {
+      "name": "two-result-branch-snapshots",
+      "expected": {
+        "values": [
+          "17"
+        ],
+        "trace": []
+      },
+      "expectedRemainingCalls": 0,
+      "beforeDiagnostic": "",
+      "afterDiagnostic": "",
+      "before": {
+        "values": [
+          "17"
+        ],
+        "trace": []
+      },
+      "after": {
+        "values": [
+          "17"
+        ],
+        "trace": []
+      },
+      "remainingCalls": 0,
+      "explicitStackBytes": 0,
+      "originalRetained": true,
+      "idempotent": true,
+      "unchanged": false,
+      "eligibility": null,
+      "auditBefore": "pair args=2 results=2 nodes=4 stack=0 scratch=0 candidate=eligible calls=[]\ncaller args=0 results=1 nodes=5 stack=0 scratch=0 candidate=eligible calls=[pair]\n",
+      "auditAfter": "pair args=2 results=2 nodes=4 stack=0 scratch=0 candidate=eligible calls=[]\ncaller args=0 results=1 nodes=16 stack=0 scratch=0 candidate=eligible calls=[]\n",
+      "pass": true
+    }
+  ],
+  "footprints": [
+    {
+      "name": "unused",
+      "expected": 0,
+      "actual": 0,
+      "pass": true
+    },
+    {
+      "name": "one-word-store",
+      "expected": 8,
+      "actual": 8,
+      "pass": true
+    },
+    {
+      "name": "two-word-load",
+      "expected": 16,
+      "actual": 16,
+      "pass": true
+    },
+    {
+      "name": "full-buffer",
+      "expected": 2048,
+      "actual": 2048,
+      "pass": true
+    },
+    {
+      "name": "branch-maximum",
+      "expected": 16,
+      "actual": 16,
+      "pass": true
+    },
+    {
+      "name": "array-get-input",
+      "expected": 16,
+      "actual": 16,
+      "pass": true
+    },
+    {
+      "name": "array-swap-input",
+      "expected": 24,
+      "actual": 24,
+      "pass": true
+    },
+    {
+      "name": "unknown-pointer-alias",
+      "expected": 2048,
+      "actual": 2048,
+      "pass": true
+    },
+    {
+      "name": "unknown-runtime-import",
+      "expected": 2048,
+      "actual": 2048,
+      "pass": true
+    },
+    {
+      "name": "scratch-twice-in-import",
+      "expected": 2048,
+      "actual": 2048,
+      "pass": true
+    },
+    {
+      "name": "scratch-value-escape",
+      "expected": 2048,
+      "actual": 2048,
+      "pass": true
+    }
+  ],
+  "bufferNames": [
+    {
+      "name": "scratch",
+      "input": true,
+      "expected": true,
+      "actual": true,
+      "pass": true
+    },
+    {
+      "name": "p113p_out_0",
+      "input": false,
+      "expected": true,
+      "actual": true,
+      "pass": true
+    },
+    {
+      "name": "p113i_0_local_scratch",
+      "input": true,
+      "expected": true,
+      "actual": true,
+      "pass": true
+    },
+    {
+      "name": "p113i_15_local_scratch",
+      "input": true,
+      "expected": true,
+      "actual": true,
+      "pass": true
+    },
+    {
+      "name": "p113i_0_local_p113i_15_local_scratch",
+      "input": true,
+      "expected": true,
+      "actual": true,
+      "pass": true
+    },
+    {
+      "name": "p113i_10_local_p113i_1_local_p113p_out_7",
+      "input": false,
+      "expected": true,
+      "actual": true,
+      "pass": true
+    },
+    {
+      "name": "state",
+      "input": true,
+      "expected": false,
+      "actual": false,
+      "pass": true
+    },
+    {
+      "name": "p113i_0_local_state",
+      "input": true,
+      "expected": false,
+      "actual": false,
+      "pass": true
+    },
+    {
+      "name": "p113i_16_local_scratch",
+      "input": true,
+      "expected": false,
+      "actual": false,
+      "pass": true
+    },
+    {
+      "name": "p113i_00_local_scratch",
+      "input": true,
+      "expected": false,
+      "actual": false,
+      "pass": true
+    },
+    {
+      "name": "p113i_-1_local_scratch",
+      "input": true,
+      "expected": false,
+      "actual": false,
+      "pass": true
+    },
+    {
+      "name": "p113i_0_localscratch",
+      "input": true,
+      "expected": false,
+      "actual": false,
+      "pass": true
+    },
+    {
+      "name": "scratch",
+      "input": false,
+      "expected": false,
+      "actual": false,
+      "pass": true
+    },
+    {
+      "name": "p113p_out_0",
+      "input": true,
+      "expected": false,
+      "actual": false,
+      "pass": true
+    },
+    {
+      "name": "p113i_0_local_p113p_out_7",
+      "input": true,
+      "expected": false,
+      "actual": false,
+      "pass": true
+    },
+    {
+      "name": "p113i_0_local_scratch",
+      "input": false,
+      "expected": false,
+      "actual": false,
+      "pass": true
+    },
+    {
+      "name": "arbitrary_heap",
+      "input": true,
+      "expected": false,
+      "actual": false,
+      "pass": true
+    }
+  ],
+  "boundaries": [
+    {
+      "name": "renamed-buffers-valid",
+      "expected": true,
+      "diagnostic": "",
+      "pass": true
+    },
+    {
+      "name": "nested-buffers-valid",
+      "expected": true,
+      "diagnostic": "",
+      "pass": true
+    },
+    {
+      "name": "input-capacity-short",
+      "expected": false,
+      "diagnostic": "product array import signature/count/capacity mismatch",
+      "pass": true
+    },
+    {
+      "name": "output-capacity-short",
+      "expected": false,
+      "diagnostic": "product array import signature/count/capacity mismatch",
+      "pass": true
+    },
+    {
+      "name": "invalid-input-ancestry",
+      "expected": false,
+      "diagnostic": "product array import signature/count/capacity mismatch",
+      "pass": true
+    },
+    {
+      "name": "invalid-output-ancestry",
+      "expected": false,
+      "diagnostic": "product array import signature/count/capacity mismatch",
+      "pass": true
+    }
+  ],
+  "scope": "Independent finite scalar-word/array-contract interpretation, structural admission, hygiene and footprint checks. Logical array handle100=[7,11]; no production heap/RC ownership proof or native execution."
+}

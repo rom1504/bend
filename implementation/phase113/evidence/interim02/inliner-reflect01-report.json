@@ -1,0 +1,664 @@
+{
+  "kind": "phase113-independent-inliner-reflection",
+  "complete": false,
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase113/controls/inliner/reflect.mjs",
+      "bytes": 15544,
+      "sha256": "315c234f1017ecbd1f45fff9a941a6ea712d96f14231e467ab523f96329ebb61"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-inline-api13/api.mjs",
+      "bytes": 1452999,
+      "sha256": "daeb1afe6d69820beeef3c412ef24ee96311c359e2f64f4235205cbbd2e073f9"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-inline-api13/report.json",
+      "bytes": 3650,
+      "sha256": "3a6534df8e7d23a2f179e6fc781d0467ba4314564dfd3fab9fba9d6428314302"
+    }
+  ],
+  "cases": [
+    {
+      "name": "aliased-destination-argument-snapshot",
+      "expected": {
+        "values": [
+          "72"
+        ],
+        "trace": []
+      },
+      "expectedRemainingCalls": 0,
+      "beforeDiagnostic": "",
+      "afterDiagnostic": "",
+      "before": {
+        "values": [
+          "72"
+        ],
+        "trace": []
+      },
+      "after": {
+        "values": [
+          "72"
+        ],
+        "trace": []
+      },
+      "remainingCalls": 0,
+      "explicitStackBytes": 2048,
+      "eligibility": {},
+      "originalRetained": true,
+      "idempotent": true,
+      "unchanged": false,
+      "pass": true
+    },
+    {
+      "name": "hygienic-scratch",
+      "expected": {
+        "values": [
+          "908"
+        ],
+        "trace": []
+      },
+      "expectedRemainingCalls": 0,
+      "beforeDiagnostic": "",
+      "afterDiagnostic": "",
+      "before": {
+        "values": [
+          "908"
+        ],
+        "trace": []
+      },
+      "after": {
+        "values": [
+          "908"
+        ],
+        "trace": []
+      },
+      "remainingCalls": 0,
+      "explicitStackBytes": 2048,
+      "eligibility": {},
+      "originalRetained": true,
+      "idempotent": true,
+      "unchanged": false,
+      "pass": true
+    },
+    {
+      "name": "evaluated-once-actual",
+      "expected": {
+        "values": [
+          "187"
+        ],
+        "trace": [
+          "p111_rt_keep:17"
+        ]
+      },
+      "expectedRemainingCalls": 0,
+      "beforeDiagnostic": "",
+      "afterDiagnostic": "",
+      "before": {
+        "values": [
+          "187"
+        ],
+        "trace": [
+          "p111_rt_keep:17"
+        ]
+      },
+      "after": {
+        "values": [
+          "187"
+        ],
+        "trace": [
+          "p111_rt_keep:17"
+        ]
+      },
+      "remainingCalls": 0,
+      "explicitStackBytes": 2048,
+      "eligibility": {},
+      "originalRetained": true,
+      "idempotent": true,
+      "unchanged": false,
+      "pass": true
+    },
+    {
+      "name": "ordered-ownership-operations",
+      "expected": {
+        "values": [
+          "10"
+        ],
+        "trace": [
+          "p111_rt_keep:44",
+          "p111_rt_keep:10",
+          "p111_rt_sink:10",
+          "p111_rt_keep:33"
+        ]
+      },
+      "expectedRemainingCalls": 0,
+      "beforeDiagnostic": "",
+      "afterDiagnostic": "",
+      "before": {
+        "values": [
+          "10"
+        ],
+        "trace": [
+          "p111_rt_keep:44",
+          "p111_rt_keep:10",
+          "p111_rt_sink:10",
+          "p111_rt_keep:33"
+        ]
+      },
+      "after": {
+        "values": [
+          "10"
+        ],
+        "trace": [
+          "p111_rt_keep:44",
+          "p111_rt_keep:10",
+          "p111_rt_sink:10",
+          "p111_rt_keep:33"
+        ]
+      },
+      "remainingCalls": 0,
+      "explicitStackBytes": 2048,
+      "eligibility": {},
+      "originalRetained": true,
+      "idempotent": true,
+      "unchanged": false,
+      "pass": true
+    },
+    {
+      "name": "terminal-branch-both-values",
+      "expected": {
+        "values": [
+          "30"
+        ],
+        "trace": []
+      },
+      "expectedRemainingCalls": 0,
+      "beforeDiagnostic": "",
+      "afterDiagnostic": "",
+      "before": {
+        "values": [
+          "30"
+        ],
+        "trace": []
+      },
+      "after": {
+        "values": [
+          "30"
+        ],
+        "trace": []
+      },
+      "remainingCalls": 0,
+      "explicitStackBytes": 4096,
+      "eligibility": {},
+      "originalRetained": true,
+      "idempotent": true,
+      "unchanged": false,
+      "pass": true
+    },
+    {
+      "name": "scalar-branch-local-join",
+      "expected": {
+        "values": [
+          "13"
+        ],
+        "trace": []
+      },
+      "expectedRemainingCalls": 0,
+      "beforeDiagnostic": "",
+      "afterDiagnostic": "",
+      "before": {
+        "values": [
+          "13"
+        ],
+        "trace": []
+      },
+      "after": {
+        "values": [
+          "13"
+        ],
+        "trace": []
+      },
+      "remainingCalls": 0,
+      "explicitStackBytes": 4096,
+      "eligibility": {},
+      "originalRetained": true,
+      "idempotent": true,
+      "unchanged": false,
+      "pass": true
+    },
+    {
+      "name": "bottom-up-wrapper-chain",
+      "expected": {
+        "values": [
+          "81"
+        ],
+        "trace": []
+      },
+      "expectedRemainingCalls": 0,
+      "beforeDiagnostic": "",
+      "afterDiagnostic": "",
+      "before": {
+        "values": [
+          "81"
+        ],
+        "trace": []
+      },
+      "after": {
+        "values": [
+          "81"
+        ],
+        "trace": []
+      },
+      "remainingCalls": 0,
+      "explicitStackBytes": 4096,
+      "eligibility": {
+        "middle": {
+          "expected": false,
+          "actual": false
+        }
+      },
+      "originalRetained": true,
+      "idempotent": true,
+      "unchanged": false,
+      "pass": true
+    },
+    {
+      "name": "refuse-partial-return-common-suffix",
+      "expected": {
+        "values": [
+          "15"
+        ],
+        "trace": []
+      },
+      "expectedRemainingCalls": 2,
+      "beforeDiagnostic": "",
+      "afterDiagnostic": "",
+      "before": {
+        "values": [
+          "15"
+        ],
+        "trace": []
+      },
+      "after": {
+        "values": [
+          "15"
+        ],
+        "trace": []
+      },
+      "remainingCalls": 2,
+      "explicitStackBytes": 0,
+      "eligibility": {
+        "leaf": {
+          "expected": false,
+          "actual": false
+        }
+      },
+      "originalRetained": true,
+      "idempotent": true,
+      "unchanged": false,
+      "pass": false
+    },
+    {
+      "name": "refuse-self-loop-leaf",
+      "expected": {
+        "values": [
+          "9"
+        ],
+        "trace": []
+      },
+      "expectedRemainingCalls": 1,
+      "beforeDiagnostic": "",
+      "afterDiagnostic": "",
+      "before": {
+        "values": [
+          "9"
+        ],
+        "trace": []
+      },
+      "after": {
+        "values": [
+          "9"
+        ],
+        "trace": []
+      },
+      "remainingCalls": 1,
+      "explicitStackBytes": 0,
+      "eligibility": {
+        "leaf": {
+          "expected": false,
+          "actual": false
+        }
+      },
+      "originalRetained": true,
+      "idempotent": true,
+      "unchanged": false,
+      "pass": false
+    },
+    {
+      "name": "refuse-private-product",
+      "expected": {
+        "values": [
+          "6"
+        ],
+        "trace": []
+      },
+      "expectedRemainingCalls": 1,
+      "beforeDiagnostic": "",
+      "afterDiagnostic": "",
+      "before": {
+        "values": [
+          "6"
+        ],
+        "trace": []
+      },
+      "after": {
+        "values": [
+          "6"
+        ],
+        "trace": []
+      },
+      "remainingCalls": 1,
+      "explicitStackBytes": 0,
+      "eligibility": {
+        "pair": {
+          "expected": false,
+          "actual": false
+        }
+      },
+      "originalRetained": true,
+      "idempotent": true,
+      "unchanged": false,
+      "pass": false
+    },
+    {
+      "name": "refuse-caller-prefix-collision",
+      "expected": {
+        "values": [
+          "23"
+        ],
+        "trace": []
+      },
+      "expectedRemainingCalls": 1,
+      "beforeDiagnostic": "",
+      "afterDiagnostic": "",
+      "before": {
+        "values": [
+          "23"
+        ],
+        "trace": []
+      },
+      "after": {
+        "values": [
+          "23"
+        ],
+        "trace": []
+      },
+      "remainingCalls": 1,
+      "explicitStackBytes": 0,
+      "eligibility": {},
+      "originalRetained": true,
+      "idempotent": true,
+      "unchanged": false,
+      "pass": false
+    },
+    {
+      "name": "refuse-callee-prefix-collision",
+      "expected": {
+        "values": [
+          "23"
+        ],
+        "trace": []
+      },
+      "expectedRemainingCalls": 1,
+      "beforeDiagnostic": "",
+      "afterDiagnostic": "",
+      "before": {
+        "values": [
+          "23"
+        ],
+        "trace": []
+      },
+      "after": {
+        "values": [
+          "23"
+        ],
+        "trace": []
+      },
+      "remainingCalls": 1,
+      "explicitStackBytes": 0,
+      "eligibility": {},
+      "originalRetained": true,
+      "idempotent": true,
+      "unchanged": false,
+      "pass": false
+    },
+    {
+      "name": "four-site-budget",
+      "expected": {
+        "values": [
+          "4"
+        ],
+        "trace": []
+      },
+      "expectedRemainingCalls": 1,
+      "beforeDiagnostic": "",
+      "afterDiagnostic": "",
+      "before": {
+        "values": [
+          "4"
+        ],
+        "trace": []
+      },
+      "after": {
+        "values": [
+          "4"
+        ],
+        "trace": []
+      },
+      "remainingCalls": 1,
+      "explicitStackBytes": 8192,
+      "eligibility": {},
+      "originalRetained": true,
+      "idempotent": true,
+      "unchanged": false,
+      "pass": true
+    },
+    {
+      "name": "growth-budget",
+      "expected": {
+        "values": [
+          "3"
+        ],
+        "trace": []
+      },
+      "expectedRemainingCalls": 1,
+      "beforeDiagnostic": "",
+      "afterDiagnostic": "",
+      "before": {
+        "values": [
+          "3"
+        ],
+        "trace": []
+      },
+      "after": {
+        "values": [
+          "3"
+        ],
+        "trace": []
+      },
+      "remainingCalls": 1,
+      "explicitStackBytes": 6144,
+      "eligibility": {},
+      "originalRetained": true,
+      "idempotent": true,
+      "unchanged": false,
+      "pass": true
+    },
+    {
+      "name": "callee-node-limit",
+      "expected": {
+        "values": [
+          "4"
+        ],
+        "trace": []
+      },
+      "expectedRemainingCalls": 1,
+      "beforeDiagnostic": "",
+      "afterDiagnostic": "",
+      "before": {
+        "values": [
+          "4"
+        ],
+        "trace": []
+      },
+      "after": {
+        "values": [
+          "4"
+        ],
+        "trace": []
+      },
+      "remainingCalls": 1,
+      "explicitStackBytes": 0,
+      "eligibility": {
+        "leaf": {
+          "expected": false,
+          "actual": false
+        }
+      },
+      "originalRetained": true,
+      "idempotent": true,
+      "unchanged": false,
+      "pass": false
+    },
+    {
+      "name": "callee-stack-limit",
+      "expected": {
+        "values": [
+          "4"
+        ],
+        "trace": []
+      },
+      "expectedRemainingCalls": 1,
+      "beforeDiagnostic": "",
+      "afterDiagnostic": "",
+      "before": {
+        "values": [
+          "4"
+        ],
+        "trace": []
+      },
+      "after": {
+        "values": [
+          "4"
+        ],
+        "trace": []
+      },
+      "remainingCalls": 1,
+      "explicitStackBytes": 0,
+      "eligibility": {
+        "leaf": {
+          "expected": false,
+          "actual": false
+        }
+      },
+      "originalRetained": true,
+      "idempotent": true,
+      "unchanged": false,
+      "pass": false
+    },
+    {
+      "name": "caller-stack-at-limit",
+      "expected": {
+        "values": [
+          "4"
+        ],
+        "trace": []
+      },
+      "expectedRemainingCalls": 0,
+      "beforeDiagnostic": "",
+      "afterDiagnostic": "",
+      "before": {
+        "values": [
+          "4"
+        ],
+        "trace": []
+      },
+      "after": {
+        "values": [
+          "4"
+        ],
+        "trace": []
+      },
+      "remainingCalls": 0,
+      "explicitStackBytes": 16384,
+      "eligibility": {},
+      "originalRetained": true,
+      "idempotent": true,
+      "unchanged": false,
+      "pass": true
+    },
+    {
+      "name": "caller-stack-rollback",
+      "expected": {
+        "values": [
+          "4"
+        ],
+        "trace": []
+      },
+      "expectedRemainingCalls": 1,
+      "beforeDiagnostic": "",
+      "afterDiagnostic": "",
+      "before": {
+        "values": [
+          "4"
+        ],
+        "trace": []
+      },
+      "after": {
+        "values": [
+          "4"
+        ],
+        "trace": []
+      },
+      "remainingCalls": 1,
+      "explicitStackBytes": 16384,
+      "eligibility": {},
+      "originalRetained": true,
+      "idempotent": true,
+      "unchanged": false,
+      "pass": false
+    },
+    {
+      "name": "caller-node-limit",
+      "expected": {
+        "values": [
+          "4"
+        ],
+        "trace": []
+      },
+      "expectedRemainingCalls": 1,
+      "beforeDiagnostic": "",
+      "afterDiagnostic": "",
+      "before": {
+        "values": [
+          "4"
+        ],
+        "trace": []
+      },
+      "after": {
+        "values": [
+          "4"
+        ],
+        "trace": []
+      },
+      "remainingCalls": 1,
+      "explicitStackBytes": 0,
+      "eligibility": {},
+      "originalRetained": true,
+      "idempotent": true,
+      "unchanged": false,
+      "pass": false
+    }
+  ],
+  "scope": "Finite raw-IR interpretation and structural shape gates. No native execution, heap/reference-count proof, general optimizer correctness or speed claim."
+}

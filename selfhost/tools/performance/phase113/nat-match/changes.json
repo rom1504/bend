@@ -1,0 +1,24 @@
+{
+  "schema": "phase113-nat-match-exact-overrides-v1",
+  "targetsRun": false,
+  "records": [
+    {
+      "name": "p113dm_original_match",
+      "origin": "selfhost/tools/performance/phase113/direct-fields/overrides-direct.bend",
+      "replacement_file": "selfhost/tools/performance/phase113/nat-match/overrides-direct.bend",
+      "origin_declaration_sha256": "f4ebe4fb43b4b6a82a1ebdf9de1e76f3e919153e55a332c97264853fef7ab167",
+      "replacement_declaration_sha256": "648860f95a94558c11d8c2b5127e43f630b723f15cfb7bd9d513e6dbac7e46cc",
+      "old": "p111_take(nm(mat),word,count,n)",
+      "new": "p113nm_take(book,mat,word,count,n)"
+    },
+    {
+      "name": "p113pm_original_match",
+      "origin": "selfhost/tools/performance/phase113/direct-fields/overrides-products.bend",
+      "replacement_file": "selfhost/tools/performance/phase113/nat-match/overrides-products.bend",
+      "origin_declaration_sha256": "8c40ea09827594da13462698fa430a4d2d418b332823f59d327d256f1a6d2904",
+      "replacement_declaration_sha256": "071590780b980c37514a35f3dfc425ce4d317b04b0dab9c367ca5bad57222fde",
+      "old": "p111_take(nm(mat),word,count,n)",
+      "new": "p113nm_take(book,mat,word,count,n)"
+    }
+  ]
+}

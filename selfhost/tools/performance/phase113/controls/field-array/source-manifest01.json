@@ -1,0 +1,113 @@
+{
+  "kind": "phase113-independent-field-array-source-controls",
+  "version": 1,
+  "frozenUtc": "2026-10-20T19:02:46.762616+00:00",
+  "targetsRun": false,
+  "sourceChecked": false,
+  "inputs": [
+    {
+      "file": "selfhost/tools/performance/phase113/controls/field-array/scalar-array-wrap.bend",
+      "bytes": 3249,
+      "sha256": "d1f9327f8e92bbb164ca928ad9baaaa1df67ea174a0806a9654f2a4716db592f"
+    },
+    {
+      "file": "selfhost/tools/performance/phase113/controls/field-array/shared-array-capture.bend",
+      "bytes": 625,
+      "sha256": "876bec6e8ef29f0ac84423b5776781b37832e6ec9047221aa8fdc9268b114e5e"
+    },
+    {
+      "file": "selfhost/tools/performance/phase113/controls/field-array/string-array-owners.bend",
+      "bytes": 790,
+      "sha256": "58036392369eff947007f56e9fefb8c6490da38885597d68f7bbf885fb599ac4"
+    },
+    {
+      "file": "selfhost/tools/performance/phase113/controls/field-array/mixed-record-owner.bend",
+      "bytes": 613,
+      "sha256": "d3f47d35ffd78a35ce561d42a6cf8bfa11d3908bca8fb1b3592833e151db759b"
+    },
+    {
+      "file": "tests/compile/array_generic_cell.bend",
+      "bytes": 2016,
+      "sha256": "97ba0e0bacdf14cb2b412190579bdedc29ac650bc31ca739c5b1b3a24e24718a"
+    },
+    {
+      "file": "tests/reg/array_borrow_generic.bend",
+      "bytes": 1382,
+      "sha256": "8795ab8145b79524cc5a9d72a76a44caf11758327e4394b1275da1918e945856"
+    },
+    {
+      "file": "selfhost/tools/performance/phase113/controls/field-array/scalar-array-wrap.expected.json",
+      "bytes": 121,
+      "sha256": "45c84fb1349a7cc0a0ae5ad5b1c2d1b4cf365cbde966895f60e0095c98044e17"
+    },
+    {
+      "file": "selfhost/tools/performance/phase113/controls/field-array/shared-array-capture.expected.json",
+      "bytes": 57,
+      "sha256": "3b977a72127e7f461cc44aba88b0cb196746ccd9d97b4025c7e54f80164f9dd4"
+    },
+    {
+      "file": "selfhost/tools/performance/phase113/controls/field-array/string-array-owners.expected.json",
+      "bytes": 83,
+      "sha256": "22d5e1949563f8391426f832b4440e7eec63d8b9dbdaff6dc2e9183da3f1ba1a"
+    },
+    {
+      "file": "selfhost/tools/performance/phase113/controls/field-array/mixed-record-owner.expected.json",
+      "bytes": 78,
+      "sha256": "30e39d7c3dffa7c4407c2e118d79eb6bd550aed21bac631c55696e70ab6dc7e6"
+    },
+    {
+      "file": "selfhost/tools/performance/phase113/controls/field-array/upstream-generic-cell.expected.json",
+      "bytes": 65,
+      "sha256": "a255bc6c27936ced399dcedd0d03004911bfd6beb9727185b4d1ed4ac14d25a0"
+    },
+    {
+      "file": "selfhost/tools/performance/phase113/controls/field-array/upstream-borrowed-generic.expected.json",
+      "bytes": 55,
+      "sha256": "fac3d89859d2c3c669f46dac744bfc06f9ac13fe190b6c20f0b2ab82e32367e6"
+    },
+    {
+      "file": "selfhost/tools/performance/phase113/controls/field-array/prepare-jobs.py",
+      "bytes": 3925,
+      "sha256": "32d83384d63bfb38181b5b8d9be0291669f97b5620b3edde8c999f8981eb812a"
+    }
+  ],
+  "cases": [
+    {
+      "name": "scalar-array-wrap",
+      "source": "selfhost/tools/performance/phase113/controls/field-array/scalar-array-wrap.bend",
+      "expected": "selfhost/tools/performance/phase113/controls/field-array/scalar-array-wrap.expected.json",
+      "rationale": "U32/Bool/Char/F32 literal cells; indices7,11,3 all select cell3 in depth2 array; size4. Float output values exactly representable."
+    },
+    {
+      "name": "shared-array-capture",
+      "source": "selfhost/tools/performance/phase113/controls/field-array/shared-array-capture.bend",
+      "expected": "selfhost/tools/performance/phase113/controls/field-array/shared-array-capture.expected.json",
+      "rationale": "Shared mutable array handle is captured before swap5\u219242; alias observes42 after original handle is dropped."
+    },
+    {
+      "name": "string-array-owners",
+      "source": "selfhost/tools/performance/phase113/controls/field-array/string-array-owners.bend",
+      "expected": "selfhost/tools/performance/phase113/controls/field-array/string-array-owners.expected.json",
+      "rationale": "Index3 wraps to1 of depth1; seed cell retained by old return, index0, and original external alias."
+    },
+    {
+      "name": "mixed-record-owner",
+      "source": "selfhost/tools/performance/phase113/controls/field-array/mixed-record-owner.bend",
+      "expected": "selfhost/tools/performance/phase113/controls/field-array/mixed-record-owner.expected.json",
+      "rationale": "U32 max+3 wraps to2; allocated Unicode field and repeated shared parent survive both field projections."
+    },
+    {
+      "name": "upstream-generic-cell",
+      "source": "tests/compile/array_generic_cell.bend",
+      "expected": "selfhost/tools/performance/phase113/controls/field-array/upstream-generic-cell.expected.json",
+      "rationale": "Unchanged upstream type/layout witness; independent literal output False and two captures10+1,20+1 =>32."
+    },
+    {
+      "name": "upstream-borrowed-generic",
+      "source": "tests/reg/array_borrow_generic.bend",
+      "expected": "selfhost/tools/performance/phase113/controls/field-array/upstream-borrowed-generic.expected.json",
+      "rationale": "Unchanged upstream witness: list[10,20]sum30, duplication contributes60, borrowed secondread30 =>120."
+    }
+  ],
+  "scope": "Four new actual Bend sources plus2 byte-unchanged upstream regressions; complete output independently fixed from literal data. Source acceptance baseline required. No standalone erased-constructor-field or scalar-name-shadow claim; reflection controls cover erased position, and mature mixed/generic tests cover opaque owners. Runtime outputs do not prove scalar/unshared certificate selection."
+}

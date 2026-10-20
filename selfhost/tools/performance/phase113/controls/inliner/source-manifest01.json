@@ -1,0 +1,52 @@
+{
+  "kind": "phase113-independent-inliner-source-controls",
+  "version": 1,
+  "frozenUtc": "2026-10-20T18:56:00.464176+00:00",
+  "targetsRun": false,
+  "sourceChecked": false,
+  "inputs": [
+    {
+      "file": "selfhost/tools/performance/phase113/controls/inliner/hot-helper.bend",
+      "bytes": 536,
+      "sha256": "5a10e16ec96a08c1c7478f6925eb189a4f0f50ee0155d4bf2935042e18ff5566"
+    },
+    {
+      "file": "selfhost/tools/performance/phase113/controls/inliner/owned-helper.bend",
+      "bytes": 419,
+      "sha256": "dd2d63866eba25664f311e2f619bad2a860a6598fe23d9f23e3dcc31eb409d11"
+    },
+    {
+      "file": "selfhost/tools/performance/phase113/controls/inliner/hot-helper.expected.json",
+      "bytes": 97,
+      "sha256": "f194b61fb743e5380a8a154b7161cce39893bc484800a2528b557b6d1c913fb3"
+    },
+    {
+      "file": "selfhost/tools/performance/phase113/controls/inliner/owned-helper.expected.json",
+      "bytes": 92,
+      "sha256": "2ead65d8bbef03b7aaafa58569e15085f7aa7625ae126ca8c62621552d5d0bea"
+    },
+    {
+      "file": "selfhost/tools/performance/phase113/controls/inliner/oracle.py",
+      "bytes": 1295,
+      "sha256": "4d914d1723f06964ac1fb7148e7c4c06feab6c9db48b864e523cd3a43b325176"
+    },
+    {
+      "file": "selfhost/tools/performance/phase113/controls/inliner/prepare-jobs.py",
+      "bytes": 3791,
+      "sha256": "cba3de396be51670afc84cf8f533ef88855b9fbf42907c41b0c6bfcc1f66f7e8"
+    }
+  ],
+  "cases": [
+    {
+      "name": "hot-helper",
+      "source": "selfhost/tools/performance/phase113/controls/inliner/hot-helper.bend",
+      "expected": "selfhost/tools/performance/phase113/controls/inliner/hot-helper.expected.json"
+    },
+    {
+      "name": "owned-helper",
+      "source": "selfhost/tools/performance/phase113/controls/inliner/owned-helper.bend",
+      "expected": "selfhost/tools/performance/phase113/controls/inliner/owned-helper.expected.json"
+    }
+  ],
+  "scope": "Actual Bend sources with independent U32 recurrence and literal Unicode outputs. Complete original checker acceptance remains prerequisite. Semantic equality does not prove actual helper inlining; inspect corresponding direct bodies separately."
+}

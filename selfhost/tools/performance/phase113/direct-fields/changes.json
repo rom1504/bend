@@ -1,0 +1,28 @@
+{
+  "kind": "phase113-checked-match-field-facts-source-delta",
+  "records": [
+    {
+      "origin": "selfhost/tools/performance/phase113/direct/word-refusal.bend",
+      "sha256": "5e54cd91d0dc84f6026a4a8c47e2108df321b116454cd26de6a04ea61d8e0e07",
+      "replacement": "selfhost/tools/performance/phase113/direct-fields/overrides-direct.bend",
+      "old": "p111_field_env(count,0,n)",
+      "new": "p113df_field_env(book,mat,count,0,n)"
+    },
+    {
+      "origin": "selfhost/tools/performance/phase113/products/word-original.bend",
+      "sha256": "e1fc87d6eb0bfc50eaba8af54126aa7de2e616bb49c94ebd0b7896546fc7fc5e",
+      "replacement": "selfhost/tools/performance/phase113/direct-fields/overrides-products.bend",
+      "old": "p111_field_env(count,0,n)",
+      "new": "p113df_field_env(book,mat,count,0,n)"
+    },
+    {
+      "origin": "selfhost/tools/performance/phase113/products/lower.bend",
+      "declaration": "p113pl_match",
+      "sha256": "41829b2dfed45b39d9637bcbecc4d0dea221d3f1a89dd4eabf4d6563173f50bf",
+      "replacement": "selfhost/tools/performance/phase113/direct-fields/overrides-products.bend",
+      "old": "nq_field_bindings(ks(arg),env)",
+      "new": "p113df_bundle_env(mat,arg,env)"
+    }
+  ],
+  "targetsRun": false
+}

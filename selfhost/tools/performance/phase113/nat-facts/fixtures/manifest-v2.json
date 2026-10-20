@@ -1,0 +1,62 @@
+{
+  "schema": "phase113-nat-fixtures-v2",
+  "fixtures": [
+    {
+      "name": "high-values",
+      "source": "selfhost/tools/performance/phase113/nat-facts/fixtures/high-values.bend",
+      "sha256": "4db1a6626ddf124f88c9156f5c4c5bbabd00266922869858061fc410477c3855",
+      "expected_status": 0,
+      "expected_stdout": "4294967296\n4294967296\n4294967295\n1099511627776\n1099511627776\n1099511627775\n281474976710655\n281474976710655\n281474976710654\n",
+      "expected_stderr": "",
+      "scope": "source expectation only; no execution"
+    },
+    {
+      "name": "overflow-add",
+      "source": "selfhost/tools/performance/phase113/nat-facts/fixtures/overflow-add.bend",
+      "sha256": "333a9a379189bc6c380a223abdedb74d3135fd3480f1ab54b5cd9e0e213757e5",
+      "expected_status": 1,
+      "expected_stdout": "",
+      "expected_stderr": "bend: a Nat past the largest immediate 2^48-1\n",
+      "scope": "source expectation only; no execution"
+    },
+    {
+      "name": "overflow-double",
+      "source": "selfhost/tools/performance/phase113/nat-facts/fixtures/overflow-double.bend",
+      "sha256": "ea6dda7164b953643ae8314f3c3619adf3267e17bbf2431ec9b59fc69494f5d6",
+      "expected_status": 1,
+      "expected_stdout": "",
+      "expected_stderr": "bend: a Nat past the largest immediate 2^48-1\n",
+      "scope": "source expectation only; no execution"
+    },
+    {
+      "name": "overflow-mul",
+      "source": "selfhost/tools/performance/phase113/nat-facts/fixtures/overflow-mul.bend",
+      "sha256": "a05fd4717b6a553170133b673b55251ad76a9048c8ae6e563b4dc183cc0c21e8",
+      "expected_status": 1,
+      "expected_stdout": "",
+      "expected_stderr": "bend: a Nat past the largest immediate 2^48-1\n",
+      "scope": "source expectation only; no execution"
+    },
+    {
+      "name": "overflow-succ",
+      "source": "selfhost/tools/performance/phase113/nat-facts/fixtures/overflow-succ.bend",
+      "sha256": "d6c82cb3b3f30f37e593bdfe8dd0734f07c1c018d7219a78ddc52e5b6fc281c4",
+      "expected_status": 1,
+      "expected_stdout": "",
+      "expected_stderr": "bend: a Nat past the largest immediate 2^48-1\n",
+      "scope": "source expectation only; no execution"
+    },
+    {
+      "name": "owned-record-v2",
+      "source": "selfhost/tools/performance/phase113/nat-facts/fixtures/owned-record-v2.bend",
+      "sha256": "75696bc05bc22a6bef8adf968eb08daed4839c103ac87601715ffacfd2f42905",
+      "expected_status": 0,
+      "expected_stdout": "1099511627776\n1099511627776\nNat\ud83d\ude42\nNat\ud83d\ude42\n",
+      "expected_stderr": "",
+      "scope": "source expectation only; no execution",
+      "supersedes": "owned-record.bend: invalid computed-value destructuring; original preserved"
+    }
+  ],
+  "prior_manifest_sha256": "f7decf55ad73a011c4987b126d8f4550ff8cf012492c6575480e2064786eb2df",
+  "change": "Only owned-record moved computed pair destructuring into a function parameter; same expected output and retained alias observation."
+}

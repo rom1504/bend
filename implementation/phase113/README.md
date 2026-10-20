@@ -68,9 +68,10 @@ boxed tuple carriers returned by array operations.
   state layout and underlying array operations. Its18 independent observations
   pass, including actual shared handles, Unicode contents, release orders,
   buffer overlap and exact invalid-ABI failures.
-- The product compiler source checks and passes20 finite representation
-  controls. Its native candidate campaign is still in progress.
-- The proposed bounded IR inliner is source-only at this checkpoint.
+- The product compiler passes 20 finite representation controls and the same
+  12 actual-source observations.
+- The bounded scalar and product inliners now pass independent reflected
+  execution, scratch-boundary, namespace and native-source gates.
 - Full45, native compiler acquisition and successive generations remain
   pending. The existing production selection is unchanged.
 
@@ -83,3 +84,56 @@ The [fast-loop README](../../selfhost/tools/performance/phase113/bench/README.md
 documents diagnostic versus paired grades, and
 [the full45 adapter](../../selfhost/tools/performance/phase113/bench/HOSTED45.md)
 preserves the original broad corpus and profile.
+
+## Second checkpoint: allocation and ordinary-call boundaries
+
+The product path uses the mature layout plan and caller-owned result slots.
+The additive runtime returns array result fields without allocating a tuple.
+Diagnostic local-pair counts, for the same two workload evaluations:
+
+| Event | Frozen facts | Complete functions | Flat products |
+|---|---:|---:|---:|
+| Heap allocations | 657,030 | 657,030 | 126 |
+| Continuation frames | 262,727 | 60 | 59 |
+| Underlying term keeps | 527,888 | 527,888 | 524,811 |
+
+These are event counts, not CPU shares; nested counters overlap. They explain
+both the large allocation win and the remaining array access work.
+
+The next inliner handles verified acyclic calls and result vectors with
+two-phase assignment, fresh names and bounded code/stack growth. A fresh
+one-round diagnostic gives:
+
+| Program | Upstream ms | Frozen facts ms | Products + facts14 ms | Product inliner15 ms |
+|---|---:|---:|---:|---:|
+| scalar-region8192 | 16 | 178 | 139 | 76 |
+| local-pair | 15 | 2,148 | 378 | 235 |
+| editdist | 20 | 2,203 | 376 | 238 |
+| active ray256 | 15 | 926 | 351 | 300 |
+| lexer | 15 | 211 | 116 | 116 |
+| closures256 | 15 | 190 | 186 | 191 |
+
+This remains a six-point diagnostic, without a qualified aggregate. Source:
+`selfhost/build/phase112/p113-inline-screen15/phase113-report.json`. Removing
+all 17 keep/drop sites from one ray worker barely changes runtime, so helper
+counts alone are not a speed estimate.
+
+Facts14 passes 148 finite controls and six actual Nat observations, including
+48-bit values, four exact overflow failures and a retained String alias. The
+first mixed-owner fixture used prohibited computed-value destructuring and
+failed at the frontend; its corrected version and rejected receipt are retained.
+
+Scalar inlining passes 19 independent interpretation/shape cases. Its first
+harness incorrectly compared JSON property order; an independent structural
+comparison established that defect, and the corrected version retains every
+semantic expectation. Product inlining passes eight independent executions,
+11 scratch-footprint checks, 17 namespace cases and six verifier boundaries.
+Inline15 also passes the 12 actual-source controls.
+
+Source16 adds canonical Nat extraction and known-combinator reuse; all 185
+finite controls pass and its native campaign is ongoing. Source17's guarded
+array prototype checks, but still awaits execution. These are experimental
+sources, not new native compiler generations. Full45 and self-host gates remain
+pending. See the [second receipt index](evidence/interim02/index.json), the
+[ownership experiment](../../experiments/phase113/P113-002-preserve-ownership-facts.md)
+and [inlining experiment](../../experiments/phase113/P113-003-bounded-ir-inlining.md).

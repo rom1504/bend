@@ -1,0 +1,102 @@
+{
+  "schema": "phase113-nat-match-v1",
+  "scope": "source-only; controls unexecuted",
+  "sources": [
+    {
+      "path": "selfhost/tools/performance/phase113/nat-match/README.md",
+      "bytes": 2567,
+      "sha256": "c86bd71f7f09e30e6dd6f27e17ca9e1cb3012e4bcde21cf9b9641934e96fa7a0"
+    },
+    {
+      "path": "selfhost/tools/performance/phase113/nat-match/changes.json",
+      "bytes": 1200,
+      "sha256": "0abba2433a86a796fdeda6de1daa97d1f2b2d0201888fc797857ab30d464dbf9"
+    },
+    {
+      "path": "selfhost/tools/performance/phase113/nat-match/controls.bend",
+      "bytes": 3451,
+      "sha256": "15f796ea8a30784286680ed0ee5f33c7e064ed61fb60d6fcdb40e953c3735830"
+    },
+    {
+      "path": "selfhost/tools/performance/phase113/nat-match/model.bend",
+      "bytes": 822,
+      "sha256": "3142f7f79dedf8baac4634a89e7aee7587691cd5a20db9a69c8ebbe84ac599ea"
+    },
+    {
+      "path": "selfhost/tools/performance/phase113/nat-match/overrides-direct.bend",
+      "bytes": 1025,
+      "sha256": "6c3c28df4b85ede2e1112c00fe0df21415bd8c2fec4bc57fd95a3dcfc9d7ac44"
+    },
+    {
+      "path": "selfhost/tools/performance/phase113/nat-match/overrides-products.bend",
+      "bytes": 1040,
+      "sha256": "ee3022716a7d2886e2362f293fcc33ebdef8acc83aa4f1f02e1239e02bd26124"
+    }
+  ],
+  "dependencies": [
+    {
+      "path": "selfhost/tools/performance/phase113/direct-fields/overrides-direct.bend",
+      "bytes": 1020,
+      "sha256": "0742b3a71a147099fc2ac937c094eb784572e737062b492a097eaf6d37abc3c1"
+    },
+    {
+      "path": "selfhost/tools/performance/phase113/direct-fields/overrides-products.bend",
+      "bytes": 1794,
+      "sha256": "30a35d5416734d7d9aae104e64288adad4b54ead96217ba615f7784bb30063b1"
+    },
+    {
+      "path": "selfhost/tools/performance/phase113/nat-facts/helpers.bend",
+      "bytes": 4233,
+      "sha256": "dded4bd09f6e17fe68f6f92da09d579f5fb5e75b80729562bd4f0cdb3c1fba68"
+    },
+    {
+      "path": "selfhost/tools/performance/phase112/accessors/special-tests.bend",
+      "bytes": 2773,
+      "sha256": "3541d7ed5841a026a1fcb35cf01b483df7b17508270f298152fc38d44a6f5dd4"
+    },
+    {
+      "path": "selfhost/build/phase111/runtime-source04/runtime.c",
+      "bytes": 136808,
+      "sha256": "c0fc18aabb2749cc85b5040c29756d8d73d90b73bb954d10ed1d0d410528aa50"
+    },
+    {
+      "path": "selfhost/tools/performance/phase113/nat-facts/fixtures/manifest-v2.json",
+      "bytes": 2960,
+      "sha256": "138ba0dc9ebc9b76f30e0b85a96aef681eabcfba11f802bae4f353f6f9b3fc2f"
+    }
+  ],
+  "observed_qbe": {
+    "path": "selfhost/build/phase111/p113-products11-scalar-region-8192-emit/program.ssa",
+    "bytes": 491083,
+    "sha256": "6c51ed0cf2b0b6ad0a4b852a1afb4b916f95a016c93a090ea4c40c2e72ee5cbd"
+  },
+  "observed_function": "p113d_FID_36_100_105_114_101_99_116_46_109_105_116_",
+  "function_start_line": 674,
+  "function_special_take_calls": 1,
+  "function_special_test_calls": 0,
+  "control_count": 19,
+  "control_names": [
+    "nat-match-canonical-succ",
+    "nat-match-unknown-book-refused",
+    "nat-match-lookalike-refused",
+    "nat-match-wrong-constructor",
+    "nat-match-zero-keeps-no-fields",
+    "nat-match-legacy-arity-refused",
+    "nat-match-wrong-arity-refused",
+    "nat-match-wrong-field-count",
+    "nat-match-narrow-mask-refused",
+    "nat-match-wrong-tag-refused",
+    "nat-match-missing-arms-refused",
+    "nat-match-local-single-sub",
+    "nat-match-one-fullword",
+    "nat-match-2pow32-fullword",
+    "nat-match-2pow40-fullword",
+    "nat-match-2pow48-minus1-fullword",
+    "nat-match-unknown-uses-original-special",
+    "nat-match-generic-uses-original-take",
+    "nat-match-char-keeps-special-take"
+  ],
+  "exports": [
+    "p113_nat_match_control_report"
+  ]
+}

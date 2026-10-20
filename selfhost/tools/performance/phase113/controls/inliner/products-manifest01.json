@@ -1,0 +1,28 @@
+{
+  "kind": "phase113-independent-product-inliner-freeze",
+  "version": 1,
+  "frozenUtc": "2026-10-20T18:59:49.455395+00:00",
+  "targetsRun": false,
+  "executionCases": 8,
+  "footprintCases": 11,
+  "bufferNameCases": 17,
+  "verifierBoundaryCases": 6,
+  "inputs": [
+    {
+      "file": "selfhost/tools/performance/phase113/controls/inliner/products-reflect.mjs",
+      "bytes": 11690,
+      "sha256": "6c7e3678b71dd1f01ce5972ab587bc1544a3708d4e1d1133e552541eec538f34"
+    },
+    {
+      "file": "selfhost/tools/performance/phase113/controls/inliner/ir-model.mjs",
+      "bytes": 7927,
+      "sha256": "6b78d1bbec98639d189c06a571e86ce065f587af784d78e935283bfc7bfc6103"
+    }
+  ],
+  "priorScalarMethod": {
+    "file": "selfhost/tools/performance/phase113/controls/inliner/reflect-v2.mjs",
+    "bytes": 15544,
+    "sha256": "8643ed8a7ca9ea08a951bfb3cdeff6b57ba7410f79034f09094077e748eda1e6"
+  },
+  "scope": "Separate source15 policy suite; original scalar13suite retained. Independent reflected values/calltrace and mutable scalar-cell array contract; raw footprint diagnostics intentionally include malformed IR to test conservative unknown handling, separately from six full verifier guards. No target execution by controls author."
+}

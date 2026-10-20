@@ -1,0 +1,32 @@
+{
+  "kind": "phase113-known-literal-combinator-controls",
+  "version": 1,
+  "targetsRun": false,
+  "reflectedControlCount": 18,
+  "fixtures": [
+    {
+      "source": "selfhost/tools/performance/phase113/direct-closure/fixtures/positive.bend",
+      "sha256": "a12bf189a3ed2e6e2dc343db392939ac7e5138b67ccb832ac40b5e1b74f81365",
+      "oracle": "stdout",
+      "stdout": "15\n35\n20\nk🙂!k🙂\nk🙂\n"
+    },
+    {
+      "source": "selfhost/tools/performance/phase113/direct-closure/fixtures/strict-overflow.bend",
+      "sha256": "565be082c1c3c61e32576e34613fbd9faa7f8751475ec46ed9d64afb8c38b0c2",
+      "oracle": "native-failure",
+      "stdout": null
+    }
+  ],
+  "existingDynamicClosureCase": {
+    "source": "selfhost/build/phase93/fixtures01/coverage-closures-256.bend",
+    "sha256": "d0e35c8343fcbe86b45211f7738d293a27a0a5184060e0136b0275fc9556cef4",
+    "expectedCompleteValue": 33019
+  },
+  "structuralExpectations": [
+    "No compose factory call from the recursive chain branch after successful plan application.",
+    "Residual closure still exists and owns its captures.",
+    "Its body applies the remaining unknown closure once after the inlined U32 addition.",
+    "Nonliteral actual order and strict overflow remain observable."
+  ],
+  "status": "prepared-unexecuted"
+}

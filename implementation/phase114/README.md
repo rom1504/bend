@@ -142,3 +142,29 @@ The generic-to-complete bridge is semantically qualified on its control and48
 runtime observations, but improves its selected4 only1.5% over the earlier
 combined candidate. It remains optional: static call counts were not a useful
 prediction of aggregate benefit. The table remains the main candidate.
+
+## Selected region composition
+
+Structured table unwinding reuses the admitted frame/pop/get renderer. It removes
+opaque stack helper calls without changing stack layout or owner transfer.
+Trying the table before older narrow plans is neutral alone, but helps when
+combined with structured unwinding. In the joint three-kernel comparison, tree
+falls554→334ms, list701→290ms and expression491→134ms versus source31. All45
+paired observations and five ordinary programs pass. The geometric mean falls
+11.364→4.640× upstream on this selected subset (2.449× faster). This is not a
+broad45 result. See [P114-007](../../experiments/phase114/P114-007-structured-region-unwind.md).
+
+The separate packed Take1 template passes six structural groups, six ordinary
+programs and36 runtime observations, but gains only1.60% over the original table
+and makes the list median3.31% worse. It remains optional alongside the complete
+call bridge; neither belongs in the selected composition.
+
+The frozen v3 recipe selects verification reuse, indexed product lookup, guarded
+unary packing, local recursive regions/table, transport, structured unwind and
+table-first precedence. Its exact checked source has6,377 declarations,
+2,306,291bytes and SHA256
+`4fb0572f0a011f6c1921594372d816bb49f26289ecc0e079328edd7491598587`.
+Source/API/runtime admission passes; broad and native integration are in progress.
+Reproduction uses `integration/prepare-v3.py` and
+`integration/recipes-v3/table-unwind-first.json`, followed by checked API and
+`integration/admit-v3.py`; [instructions](../../selfhost/tools/performance/phase114/integration/README.md).

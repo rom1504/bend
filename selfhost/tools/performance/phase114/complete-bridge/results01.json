@@ -1,0 +1,223 @@
+{
+  "kind": "phase114-complete-bridge-results01",
+  "decision": "optional; deferred from default",
+  "measurementExecutedBy": "root",
+  "offlineSummaryOnly": true,
+  "rounds": 3,
+  "cpuAffinity": [
+    3
+  ],
+  "observations": 48,
+  "allCorrect": true,
+  "allQualified": true,
+  "rows": [
+    {
+      "case": "tree-bitonic",
+      "parentMedianMs": 459,
+      "bridgeMedianMs": 462,
+      "ratio": 1.0065359477124183,
+      "parentSamplesMs": [
+        474,
+        459,
+        458
+      ],
+      "bridgeSamplesMs": [
+        460,
+        464,
+        462
+      ]
+    },
+    {
+      "case": "lexer",
+      "parentMedianMs": 342,
+      "bridgeMedianMs": 331,
+      "ratio": 0.9678362573099415,
+      "parentSamplesMs": [
+        338,
+        351,
+        342
+      ],
+      "bridgeSamplesMs": [
+        330,
+        344,
+        331
+      ]
+    },
+    {
+      "case": "local-pair",
+      "parentMedianMs": 394,
+      "bridgeMedianMs": 393,
+      "ratio": 0.9974619289340102,
+      "parentSamplesMs": [
+        393,
+        394,
+        435
+      ],
+      "bridgeSamplesMs": [
+        391,
+        393,
+        444
+      ]
+    },
+    {
+      "case": "coverage-map-churn-128",
+      "parentMedianMs": 477,
+      "bridgeMedianMs": 462,
+      "ratio": 0.9685534591194969,
+      "parentSamplesMs": [
+        476,
+        477,
+        479
+      ],
+      "bridgeSamplesMs": [
+        463,
+        462,
+        462
+      ]
+    }
+  ],
+  "bridgeOverParentGeomean": 0.9849468048715738,
+  "medianReductionPercent": 1.5053195128426178,
+  "treeQbeByteIdentical": true,
+  "treeQbe": [
+    {
+      "path": "selfhost/build/phase111/p114-combined-screen01-tree-bitonic-emit/program.ssa",
+      "bytes": 610427,
+      "sha256": "5bdde3182acbf1fccc0caffc3bf48b172f19a112421784d2592ca3bdfbdc65d7"
+    },
+    {
+      "path": "selfhost/build/phase111/p114-bridge-screen01-tree-bitonic-emit/program.ssa",
+      "bytes": 610427,
+      "sha256": "5bdde3182acbf1fccc0caffc3bf48b172f19a112421784d2592ca3bdfbdc65d7"
+    }
+  ],
+  "pins": [
+    {
+      "path": "selfhost/build/phase112/p114-bridge-screen01-measure/report.json",
+      "bytes": 267660,
+      "sha256": "d9c677eb303e963455ba6ea36503706f882fd06e35b1885e91ebfe523d4abbe6"
+    },
+    {
+      "path": "selfhost/build/phase114/bridge-screen01-jobs-reports.json",
+      "bytes": 1118,
+      "sha256": "f5591547d884adb0bc81815204105e706d4fd89595e8613c4973abbe003e4a66"
+    },
+    {
+      "path": "selfhost/build/phase114/combined-screen01-jobs-reports.json",
+      "bytes": 2406,
+      "sha256": "a7a6d851a33bd7f4f58d8fe31003f10fd8f8c133617dc7df9277f311df633520"
+    },
+    {
+      "path": "selfhost/build/phase114/bridge-admission01/manifest.json",
+      "bytes": 4122,
+      "sha256": "0363508adde89bdaf5267b775a50d41a0ee6002696b9f0d2de553015f11facaa"
+    },
+    {
+      "path": "selfhost/build/phase114/bridge-structural01/report.json",
+      "bytes": 2047,
+      "sha256": "82a50520aaf3d5b82cd5416704440b322b3e5fd1947c8da243acc573f378943a"
+    },
+    {
+      "path": "selfhost/build/phase111/p114-bridge-api01/report.json",
+      "bytes": 6584,
+      "sha256": "c8d7f7b44d90432aa8c93c5d1d70c24cae559a3f9c2610f47bb876b49e8b096c"
+    },
+    {
+      "path": "selfhost/build/phase111/p114-bridge01-dynamic-owned-arguments-observe/report.json",
+      "bytes": 1087,
+      "sha256": "d6a7339ff942c2bfa2715cbb7d954b165de4dfd5f46b2dab5a6725cbf146a410"
+    },
+    {
+      "path": "selfhost/tools/performance/phase114/transport/direct-bridge-census01.json",
+      "bytes": 93510,
+      "sha256": "7e3c9cb344eb2aea790fdfaa6c6fa9665941eb5dfa169203ade010c7a6952f52"
+    },
+    {
+      "path": "selfhost/build/phase111/p114-bridge-screen01-tree-bitonic-emit/report.json",
+      "bytes": 10326,
+      "sha256": "1cb66ce700224bc2ac97c907995e2722ae4fa5f271a23edbc806fbdb58b291be"
+    },
+    {
+      "path": "selfhost/build/phase111/p114-bridge-screen01-tree-bitonic-build/report.json",
+      "bytes": 5075,
+      "sha256": "fa313012c3b8b8428b4f33736ab54a2cbddae1b7f0a4d6fa1aef3583afaf3777"
+    },
+    {
+      "path": "selfhost/build/phase111/p114-bridge-screen01-lexer-emit/report.json",
+      "bytes": 10316,
+      "sha256": "dfc0895a2fb0766e6766a2f33bf7a8e390b7f16d15d26f5efec59876a52cab68"
+    },
+    {
+      "path": "selfhost/build/phase111/p114-bridge-screen01-lexer-build/report.json",
+      "bytes": 4964,
+      "sha256": "72ae47759c8192c2cef3df1513eed3d8495a06dca6606262c71cab164af14138"
+    },
+    {
+      "path": "selfhost/build/phase111/p114-bridge-screen01-local-pair-emit/report.json",
+      "bytes": 10325,
+      "sha256": "b8c7b99d323483254a91e444276d0a3d26ea2dcd0b79fdf3e33a880a44af24a7"
+    },
+    {
+      "path": "selfhost/build/phase111/p114-bridge-screen01-local-pair-build/report.json",
+      "bytes": 5046,
+      "sha256": "625492d891a8b5fab7d8d8939e878d19ce72cdc9ba6ebb6ac1ef89b133b46078"
+    },
+    {
+      "path": "selfhost/build/phase111/p114-bridge-screen01-coverage-map-churn-128-emit/report.json",
+      "bytes": 10336,
+      "sha256": "b0ecee21254d0c8352e744b73882c2e6ceb5e9b7f77d5e8c8fb2c479ddb9de6a"
+    },
+    {
+      "path": "selfhost/build/phase111/p114-bridge-screen01-coverage-map-churn-128-build/report.json",
+      "bytes": 5237,
+      "sha256": "5c89880bd1c85b0ff3bde67b34f8d31d5097d78ecc754181ddde6f1e98a4224a"
+    },
+    {
+      "path": "selfhost/build/phase111/p114-combined-screen01-tree-bitonic-emit/report.json",
+      "bytes": 10324,
+      "sha256": "9417d88fc65814ab5abed2400dd50c0eec1f7768480a1d9fca7795b6e7ef8f3e"
+    },
+    {
+      "path": "selfhost/build/phase111/p114-combined-screen01-tree-bitonic-build/report.json",
+      "bytes": 5108,
+      "sha256": "d4b9f364992eeec5898b6978d2d79fe09956825b946ec16ee1627c5ccfb8e9de"
+    },
+    {
+      "path": "selfhost/build/phase111/p114-combined-screen01-lexer-emit/report.json",
+      "bytes": 10323,
+      "sha256": "aaf73b97d05ba1eade623d513b2172dbd3ab0f7928d67aa5374bdbf1a58e816f"
+    },
+    {
+      "path": "selfhost/build/phase111/p114-combined-screen01-lexer-build/report.json",
+      "bytes": 4994,
+      "sha256": "51b4f7f17f335011622bd45cb1f31f09a5800fb158ecbe2e220076f32c7e4b7b"
+    },
+    {
+      "path": "selfhost/build/phase111/p114-combined-screen01-local-pair-emit/report.json",
+      "bytes": 10323,
+      "sha256": "2920227774e02a4c38b450014c8e4a74fca2a18b964cf8354a3f897839658165"
+    },
+    {
+      "path": "selfhost/build/phase111/p114-combined-screen01-local-pair-build/report.json",
+      "bytes": 5078,
+      "sha256": "08fb28ffcd2632396a42ed258f5531327a5c791af45e49f16625e586463f556c"
+    },
+    {
+      "path": "selfhost/build/phase111/p114-combined-screen01-coverage-map-churn-128-emit/report.json",
+      "bytes": 10344,
+      "sha256": "aaa8891a47f0b18b973180a296214ec5fecc2fff5d2a8caefee01a42fa2d3f86"
+    },
+    {
+      "path": "selfhost/build/phase111/p114-combined-screen01-coverage-map-churn-128-build/report.json",
+      "bytes": 5266,
+      "sha256": "87fa3f82d4ae9af2376257a5fceefd0a3a7437236a12269ff443880e7f2252be"
+    }
+  ],
+  "limitations": [
+    "Four selected kernels only; not a full-corpus result.",
+    "Three rounds and 1ms program timing resolution limit small-gain claims.",
+    "470 static potential edges in 34/45 source31 programs do not establish runtime hotness.",
+    "Tree emitted QBE is byte-identical; its measured change cannot be attributed to the bridge.",
+    "No executable byte-identity claim."
+  ]
+}

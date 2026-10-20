@@ -1,0 +1,225 @@
+{
+  "kind": "phase114-ordinary-unary-packing-controls",
+  "version": 2,
+  "targetsRun": false,
+  "frozenUtc": "2026-10-20T22:12:31.726738+00:00",
+  "cases": [
+    {
+      "name": "unary-scalars",
+      "source": "selfhost/tools/performance/phase114/controls/packing/fixtures/unary-scalars.bend",
+      "sourcePin": {
+        "file": "selfhost/tools/performance/phase114/controls/packing/fixtures/unary-scalars.bend",
+        "bytes": 1388,
+        "sha256": "7683ca720966fc71f136eaee3c8f78a8137f4000aca0232265787e31bdfe82aa"
+      },
+      "expected": {
+        "file": "selfhost/tools/performance/phase114/controls/packing/expected/unary-scalars.json",
+        "bytes": 166,
+        "sha256": "46eb60849ec490c064e2aa2516ce656ea24d6b90385043bce42c4bdf539c286a"
+      },
+      "stdout": {
+        "file": "selfhost/tools/performance/phase114/controls/packing/expected/unary-scalars.stdout",
+        "bytes": 100,
+        "sha256": "21eb902622a400a53e04585d88a4cebf69a7ab1c3fa11a60cc646103c1754456"
+      },
+      "purposes": [
+        "U32 zero/one/signed-boundary/max",
+        "unsigned identities",
+        "two constructor identities",
+        "Char and F32 fields"
+      ],
+      "sourceChecked": false
+    },
+    {
+      "name": "unary-nat-boundaries",
+      "source": "selfhost/tools/performance/phase114/controls/packing/fixtures/unary-nat-boundaries-v2.bend",
+      "sourcePin": {
+        "file": "selfhost/tools/performance/phase114/controls/packing/fixtures/unary-nat-boundaries-v2.bend",
+        "bytes": 1260,
+        "sha256": "cc9a87bedf533c0336d0c9ad3c9eb555a954f5f8e5659957adde830947dabdbb"
+      },
+      "expected": {
+        "file": "selfhost/tools/performance/phase114/controls/packing/expected/unary-nat-boundaries.json",
+        "bytes": 160,
+        "sha256": "f1edfbc82e18eff757e30433f05ffc3e738a7f7388523f74356d7e5252e9889f"
+      },
+      "stdout": {
+        "file": "selfhost/tools/performance/phase114/controls/packing/expected/unary-nat-boundaries.stdout",
+        "bytes": 102,
+        "sha256": "daed755155bd96c614a01c1e4b5c248ce42aaf3b856f37e1d2b6c70afa557109"
+      },
+      "purposes": [
+        "exact low40 boundary",
+        "larger Nat heap fallback",
+        "shared duplicate extraction",
+        "runtime scalar arithmetic"
+      ],
+      "sourceChecked": false
+    },
+    {
+      "name": "unary-owned-strings",
+      "source": "selfhost/tools/performance/phase114/controls/packing/fixtures/unary-owned-strings.bend",
+      "sourcePin": {
+        "file": "selfhost/tools/performance/phase114/controls/packing/fixtures/unary-owned-strings.bend",
+        "bytes": 1054,
+        "sha256": "eec4fbfc39eb20764f55fdcabe10cab7bf5465cb4171e9e900a9f4e2addaab3e"
+      },
+      "expected": {
+        "file": "selfhost/tools/performance/phase114/controls/packing/expected/unary-owned-strings.json",
+        "bytes": 110,
+        "sha256": "955fa0239cfa3179c878cba2b195ade52478a06e68e29bbfc08ba79493754a91"
+      },
+      "stdout": {
+        "file": "selfhost/tools/performance/phase114/controls/packing/expected/unary-owned-strings.stdout",
+        "bytes": 52,
+        "sha256": "7818ff0356928c785a88a6364399cc0426928d317a60ba23b7094681c8ccea6e"
+      },
+      "purposes": [
+        "empty/literal/allocated owning String child",
+        "two nested unary constructor identities",
+        "retained outside alias",
+        "repeated shared extraction and release"
+      ],
+      "sourceChecked": false
+    },
+    {
+      "name": "unary-nested-tree-list",
+      "source": "selfhost/tools/performance/phase114/controls/packing/fixtures/unary-nested-tree-list.bend",
+      "sourcePin": {
+        "file": "selfhost/tools/performance/phase114/controls/packing/fixtures/unary-nested-tree-list.bend",
+        "bytes": 1158,
+        "sha256": "9af3f30ecd12bd8f0056cd61f852f96901958e45e63bc311e53f7d2c7e991cc0"
+      },
+      "expected": {
+        "file": "selfhost/tools/performance/phase114/controls/packing/expected/unary-nested-tree-list.json",
+        "bytes": 77,
+        "sha256": "92217e8c59bc2445e81f27d35b1b21a0f3a2f898c71402ef91bf6380b0da5a30"
+      },
+      "stdout": {
+        "file": "selfhost/tools/performance/phase114/controls/packing/expected/unary-nested-tree-list.stdout",
+        "bytes": 22,
+        "sha256": "852d1bd899d425a59a26ea83504d25a5aedb82a91dff7e3890da520ce12a941e"
+      },
+      "purposes": [
+        "unary leaves nested in List and binary tree",
+        "constructor-sensitive numeric results",
+        "U32 wrap",
+        "shared recursively built tree"
+      ],
+      "sourceChecked": false
+    }
+  ],
+  "fastOrder": [
+    "unary-scalars",
+    "unary-nat-boundaries",
+    "unary-owned-strings",
+    "unary-nested-tree-list"
+  ],
+  "inputs": [
+    {
+      "file": "selfhost/tools/performance/phase114/controls/packing/freeze.py",
+      "bytes": 2847,
+      "sha256": "07a6a7aee86a9e997d162b2d7c9aea792651f278fbbe1573cffde453dbc491ab"
+    },
+    {
+      "file": "selfhost/tools/performance/phase114/controls/packing/fixtures/unary-scalars.bend",
+      "bytes": 1388,
+      "sha256": "7683ca720966fc71f136eaee3c8f78a8137f4000aca0232265787e31bdfe82aa"
+    },
+    {
+      "file": "selfhost/tools/performance/phase114/controls/packing/expected/unary-scalars.json",
+      "bytes": 166,
+      "sha256": "46eb60849ec490c064e2aa2516ce656ea24d6b90385043bce42c4bdf539c286a"
+    },
+    {
+      "file": "selfhost/tools/performance/phase114/controls/packing/expected/unary-scalars.stdout",
+      "bytes": 100,
+      "sha256": "21eb902622a400a53e04585d88a4cebf69a7ab1c3fa11a60cc646103c1754456"
+    },
+    {
+      "file": "selfhost/tools/performance/phase114/controls/packing/fixtures/unary-nat-boundaries-v2.bend",
+      "bytes": 1260,
+      "sha256": "cc9a87bedf533c0336d0c9ad3c9eb555a954f5f8e5659957adde830947dabdbb"
+    },
+    {
+      "file": "selfhost/tools/performance/phase114/controls/packing/expected/unary-nat-boundaries.json",
+      "bytes": 160,
+      "sha256": "f1edfbc82e18eff757e30433f05ffc3e738a7f7388523f74356d7e5252e9889f"
+    },
+    {
+      "file": "selfhost/tools/performance/phase114/controls/packing/expected/unary-nat-boundaries.stdout",
+      "bytes": 102,
+      "sha256": "daed755155bd96c614a01c1e4b5c248ce42aaf3b856f37e1d2b6c70afa557109"
+    },
+    {
+      "file": "selfhost/tools/performance/phase114/controls/packing/fixtures/unary-owned-strings.bend",
+      "bytes": 1054,
+      "sha256": "eec4fbfc39eb20764f55fdcabe10cab7bf5465cb4171e9e900a9f4e2addaab3e"
+    },
+    {
+      "file": "selfhost/tools/performance/phase114/controls/packing/expected/unary-owned-strings.json",
+      "bytes": 110,
+      "sha256": "955fa0239cfa3179c878cba2b195ade52478a06e68e29bbfc08ba79493754a91"
+    },
+    {
+      "file": "selfhost/tools/performance/phase114/controls/packing/expected/unary-owned-strings.stdout",
+      "bytes": 52,
+      "sha256": "7818ff0356928c785a88a6364399cc0426928d317a60ba23b7094681c8ccea6e"
+    },
+    {
+      "file": "selfhost/tools/performance/phase114/controls/packing/fixtures/unary-nested-tree-list.bend",
+      "bytes": 1158,
+      "sha256": "9af3f30ecd12bd8f0056cd61f852f96901958e45e63bc311e53f7d2c7e991cc0"
+    },
+    {
+      "file": "selfhost/tools/performance/phase114/controls/packing/expected/unary-nested-tree-list.json",
+      "bytes": 77,
+      "sha256": "92217e8c59bc2445e81f27d35b1b21a0f3a2f898c71402ef91bf6380b0da5a30"
+    },
+    {
+      "file": "selfhost/tools/performance/phase114/controls/packing/expected/unary-nested-tree-list.stdout",
+      "bytes": 22,
+      "sha256": "852d1bd899d425a59a26ea83504d25a5aedb82a91dff7e3890da520ce12a941e"
+    }
+  ],
+  "priorResearch": [
+    {
+      "file": "implementation/phase68/constructor-packing.md",
+      "bytes": 4345,
+      "sha256": "becde1765b5acb86704527f217e4c8c64774b5902c3fce0e313e913969217caf"
+    },
+    {
+      "file": "implementation/phase68/evidence/packing14-focused-controls.json",
+      "bytes": 9612,
+      "sha256": "0021e61a14d75e151676aedfa877b15c000521a7c579f8ca5c724176bcac4b09"
+    },
+    {
+      "file": "selfhost/tools/performance/phase68/constructor-packing/controls-v1/raw-controls-v2.mjs",
+      "bytes": 10350,
+      "sha256": "71b931919894ccdddfc5fa318b7fcab4203411c52bb78ba854c1ee849661c22f"
+    }
+  ],
+  "scope": "Four ordinary positive Bend sources with independently literal complete stdout. Root must frontend-check before backend qualification. Based on Phase68 payload boundaries and alias questions; no raw-core/C instrumentation or old failure probes reused. Correct output alone does not prove packed representation or measured gain.",
+  "priorManifest": {
+    "file": "selfhost/tools/performance/phase114/controls/packing/manifest01.json",
+    "bytes": 8508,
+    "sha256": "de1c327a11b61bab3cd2773bc202c5bc91312924f1bbeed00754646ad8f9ee8a"
+  },
+  "correction": {
+    "failedReceipt": {
+      "file": "selfhost/build/phase114/packing-preflight01/report.json",
+      "bytes": 4158,
+      "sha256": "566b202d8df9261f0abb2a22bc29a851a32e50edc94f637f95486e79c2cd1f61"
+    },
+    "reason": "V1 Nat decimal literals exceed the checked frontend U32 literal accumulator. V2 forms identical values with Nat arithmetic over supported literals; every intermediate remains within 2^48-1. Other three sources and all complete-output oracles are unchanged.",
+    "previousSource": {
+      "file": "selfhost/tools/performance/phase114/controls/packing/fixtures/unary-nat-boundaries.bend",
+      "bytes": 976,
+      "sha256": "d1ed6c5cf8ac52d1df7517c00e38ba42277d003db1f5c3b503bd9cfce8ed72e0"
+    },
+    "independentArithmetic": {
+      "threshold": 1099511627776,
+      "maximum": 281474976710655
+    }
+  }
+}

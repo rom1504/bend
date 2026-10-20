@@ -44,14 +44,30 @@ with ordinary runtime fallback for shared/static/allocator-boundary cases. It
 uses the unchanged authenticated runtime object. Its source API and exact
 source/runtime admission pass. Five ordinary generated programs pass complete
 outputs: two-owned-fields, nested-owned-fields, string-field-alias,
-append-owned-suffix and recursive-fallback-shapes. Timing remains pending.
+append-owned-suffix and recursive-fallback-shapes. Three paired kernels improve
+only2.83% in geometric mean elapsed time, still11.16× upstream on that selected
+set. This establishes limited reach and motivates representation/control work;
+it does not justify a broad performance claim.
 
 The ambitious prototype keeps a recursive constructor spine in a local
 descent/unwind region while preserving the original explicit frame stack and
-allocation order. This aims to remove repeated global dispatch without arbitrary
-native recursion. It remains unqualified until source checking, actual admission
-and complete-output gates pass. Initial checker failures are retained; they are
-not program performance observations.
+allocation order. Candidate04 passes source checking, actual admission and seven
+ordinary complete-output gates. List-pipeline improves700→464ms over three
+paired rounds (1.509×). Tree and lexer QBE remain byte-identical; their small
+timing changes are noise. Initial checker failures are retained. A bounded
+general continuation extension is under development, not yet qualified.
+
+The next representation experiment restores mature unary constructor packing
+at the shared constructor lowerer. Source checking, exact runtime admission,
+all four ordinary output checks and27 benchmark observations pass. Three paired
+rounds give tree554→490ms (11.55% less elapsed time), expression488→459ms (5.94%),
+and list700→699ms (effectively unchanged). The three-case geometric mean improves
+5.995%, still10.723× upstream. This is separate from the recursive candidate.
+See [P114-003](../../experiments/phase114/P114-003-unary-representation.md).
+
+Restoring the mature product signature index also preserves exact QBE on both
+small staged kernels. Its small measured contribution does not establish the
+large-source benefit; the full scaling gate remains outstanding.
 
 The eight-program development screen is frozen before candidate timing, uses
 unchanged original45 sources/oracles/repetitions and includes scalar, arrays,

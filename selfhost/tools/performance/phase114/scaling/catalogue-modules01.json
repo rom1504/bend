@@ -1,0 +1,94 @@
+{
+  "kind": "phase114-product-catalogue-index-source",
+  "version": 1,
+  "prepared": true,
+  "checked": false,
+  "targetsRun": false,
+  "baseline": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/wide-source31/compiler.bend",
+    "bytes": 2232290,
+    "sha256": "287c85558f3eb40d5576b51a4f7c0238100a9c4c93fc36ee52e3b8bc4e2ac303"
+  },
+  "override": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase114/scaling/catalogue.bend",
+    "bytes": 943,
+    "sha256": "7c5fa25679b4463deaa74e715c2c9595b1a8b4709c4e3d166cca65206bb77e9c"
+  },
+  "replacements": [
+    {
+      "name": "p113pl_plan",
+      "old": "@unsafe\ndef p113pl_plan(+book: List<&2,KDef>, +names: List<&2,String>) -> List<&2,P113DFunction>:\n  p113d_passes(p113pl_candidates(book,names,nc_bangs_names(book,names),nq_signatures(book,names)),missing(),[],32)\n",
+      "oldSha256": "206070cea4ea8c11e43754be35146fcb8b5e046c5157f7b847919d8132943753",
+      "new": "@unsafe\ndef p113pl_plan(+book: List<&2,KDef>, +names: List<&2,String>) -> List<&2,P113DFunction>:\n  p113d_passes(p113pl_candidates(book,names,nc_bangs_names(book,names),\n    book_cached(nq_signatures(book,names),0)),missing(),[],32)\n",
+      "newSha256": "1a8b5add08e3e4eaf2804bd11e5be9e7752f7b073debdc588485d2a7880645d1"
+    },
+    {
+      "name": "p113pl_inspect_prepared",
+      "old": "@unsafe\ndef p113pl_inspect_prepared(+names: List<&2,String>, prepared: P112SPrepared) -> List<&2,P113DCandidate>:\n  match prepared:\n    case P112SPrepared{+book,nodes,+error}:\n      nt_choose(List<&2,P113DCandidate>,String.is_empty(error),\n        u => p113pl_candidates(book,names,nc_bangs_names(book,names),nq_signatures(book,names)),\n        u => p113d_diagnostic_error(error))\n",
+      "oldSha256": "9b1d47a7e9ba34f9ff2983329bb3d38ff53f65b558c7fc4dccebee8b324dea02",
+      "new": "@unsafe\ndef p113pl_inspect_prepared(+names: List<&2,String>, prepared: P112SPrepared) -> List<&2,P113DCandidate>:\n  match prepared:\n    case P112SPrepared{+book,nodes,+error}:\n      nt_choose(List<&2,P113DCandidate>,String.is_empty(error),\n        u => p113pl_candidates(book,names,nc_bangs_names(book,names),\n          book_cached(nq_signatures(book,names),0)),\n        u => p113d_diagnostic_error(error))\n",
+      "newSha256": "1ec3715ec5a3e182bbee9c8699254ad1671b57c59ec94aeecb11dba4af41e0ba"
+    }
+  ],
+  "unchangedHelperDeclarations": [
+    {
+      "name": "lookup",
+      "sha256": "128080ba80feaf270a48cffd010cf2f4138a2ef7c76f4f57feef1dc580269e53"
+    },
+    {
+      "name": "lookup_cached",
+      "sha256": "41b661930a1da147f4f918b68c9f884a756c88ad27f34509e84187cafd2e98fd"
+    },
+    {
+      "name": "lookup_named",
+      "sha256": "79c8f87693a5d1767b841b653c75796c1a14b7f8fcec575118084aa6651b8349"
+    },
+    {
+      "name": "index_build",
+      "sha256": "af3301c72ffdc1ea9e4fb305b8f091518691117ae6df510bd9b30800c9642a49"
+    },
+    {
+      "name": "index_set",
+      "sha256": "87da3d4c09cb8c61bca22089ff54662bc6667ed6fee84370f60a17136ffcfaa5"
+    },
+    {
+      "name": "index_leaf",
+      "sha256": "4a6b7f52930ec33e288a24bf3c1944969109473bc547f3a5b43ef76e58526df4"
+    },
+    {
+      "name": "index_lookup",
+      "sha256": "8c1c361bf53dad4b71886b3964c1b52b99c5baf2667bb690ee40095ed9a6c893"
+    },
+    {
+      "name": "book_cached",
+      "sha256": "52163ae21304bf618c4689da6222c9ce6a99cf592f782c68db3c8a214b7af33c"
+    },
+    {
+      "name": "nq_signatures",
+      "sha256": "85e9a085d2c5d37f60a7015ccf371a9365b1ba1e3092d53f74aef92dcfcea07f"
+    },
+    {
+      "name": "nq_signature_cons",
+      "sha256": "b4adf7e9f71183a2f36e40703a711c9d364c5de05d71d5c4209f8d9eb09d4917"
+    },
+    {
+      "name": "nq_constructor_shapes",
+      "sha256": "9304371bf002277e5cec75d07597619bc10652f63457c91127b4840fc4e717c1"
+    },
+    {
+      "name": "nq_info",
+      "sha256": "b83aa4a8cbfc4dbb46ce633667bdada5e81b33e1b8aa1cb3fe752f9daab4b4bc"
+    },
+    {
+      "name": "nq_signature",
+      "sha256": "7b1348b345bbcb2a6f3eb3e1d14f318c10a788ea1b88a9fbc6fa71914e291eb9"
+    }
+  ],
+  "readme": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase114/scaling/catalogue.md",
+    "bytes": 3899,
+    "sha256": "de507d984fa28bc60cad0ee1a992489f9e262e40c69f1cd6e843ddc6274d6d59"
+  },
+  "productionReplacements": 2,
+  "semantics": "same signature list, first-definition-wins exact name lookup; mature planner representation reused"
+}

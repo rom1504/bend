@@ -1,0 +1,81 @@
+{
+  "kind": "phase114-take2-results-and-source-inspection",
+  "targetsExecutedByAudit": false,
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase112/p114-take-screen01-measure/report.json",
+      "bytes": 212234,
+      "sha256": "32c764be9f0a92a5721a937a099d28a213666af4f42ac73791c0077e05ae9e9d"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase114/take-screen01-jobs-reports.json",
+      "bytes": 900,
+      "sha256": "ca39d4d62219b7ef88d577b5eecc91a34287e75f6ecafd930bf3fc811a597baa"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p114-take-screen01-tree-bitonic-emit/program.ssa",
+      "bytes": 578853,
+      "sha256": "e639bb709e49c634e2a059281c8001c1c0e5530b255041f73500e4aa976e8206"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/broad01/tree-bitonic/upstream.1.c",
+      "bytes": 151635,
+      "sha256": "39eb05d988e1074234c8a7ff72112b2df3f61de3d2cdea3bc8d6881420c0331d"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p114-take-screen01-coverage-list-pipeline-128-emit/program.ssa",
+      "bytes": 426337,
+      "sha256": "0fd321ca12a26cbdc815f47c8f9e43b54ac18fbf5ff5550536a1189f93eae5a5"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/broad01/coverage-list-pipeline-128/upstream.1.c",
+      "bytes": 134882,
+      "sha256": "21906fcbdc34aea9ec7f8960353a3242f6d7a5ee69af9ed1ff12170512c0f655"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p114-take-screen01-coverage-expression-128-emit/program.ssa",
+      "bytes": 416896,
+      "sha256": "230f6f72a9229487dbf6febd2cc908b69b6f6db2d2064a81fca786e385cf0283"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/broad01/coverage-expression-128/upstream.1.c",
+      "bytes": 136639,
+      "sha256": "74be6b265cc5da23637788d592892a99f295155122a12e86394e039cfec0705e"
+    }
+  ],
+  "rows": [
+    {
+      "name": "tree-bitonic",
+      "mediansMs": {
+        "upstream": 50,
+        "p113-final31-hosted": 555,
+        "p114-take-screen01": 541
+      },
+      "candidateOverBaseline": 0.9747747747747748
+    },
+    {
+      "name": "coverage-list-pipeline-128",
+      "mediansMs": {
+        "upstream": 51,
+        "p113-final31-hosted": 719,
+        "p114-take-screen01": 697
+      },
+      "candidateOverBaseline": 0.9694019471488178
+    },
+    {
+      "name": "coverage-expression-128",
+      "mediansMs": {
+        "upstream": 50,
+        "p113-final31-hosted": 484,
+        "p114-take-screen01": 470
+      },
+      "candidateOverBaseline": 0.9710743801652892
+    }
+  ],
+  "candidateOverBaselineGeomean": 0.971747775950679,
+  "candidateOverUpstreamGeomean": 11.160215277996452,
+  "records": 27,
+  "allRecordedCorrect": true,
+  "rounds": 3,
+  "method": "Read root-completed measurement and preserved generated sources only. Static lowering/control-flow inspection, not dynamic attribution."
+}

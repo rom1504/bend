@@ -1,0 +1,104 @@
+{
+  "kind": "phase114-namespace-generated-js-review",
+  "version": 1,
+  "complete": true,
+  "targetsRun": false,
+  "apiChecked": true,
+  "allSixFlatWalkersAreLoops": true,
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p114-final-api02/api.mjs",
+      "bytes": 1849995,
+      "sha256": "e388dde6a3f6a4412f0e0417ba86edd8a7f46f49807a852fdadd20bc599cbe72"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p114-final-api02/report.json",
+      "bytes": 6500,
+      "sha256": "cd8a08c53705e64a25ecf7cc1bae573fd036205f5cc840fffb776c4da35f9bbb"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase114/final-source02/compiler.bend",
+      "bytes": 2306979,
+      "sha256": "500211d484785778e75d5d4388b0d5ebc7282effd233c6b8f3d0e0269ac777f8"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase114/transport/namespace-tail-modules01.json",
+      "bytes": 3176,
+      "sha256": "524b5213e36db61b7902a11ee9247a642a692884003a750044c241eff35944ba"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase114/transport/namespace-tail.bend",
+      "bytes": 2371,
+      "sha256": "8006bf1482b9ebec30da17830198b9b3ad33596e94fee5430bdea4ba2f5cdde0"
+    }
+  ],
+  "functions": [
+    {
+      "name": "p114ts_names",
+      "startLine": 17009,
+      "bytes": 393,
+      "sha256": "d73784d5c203a66dac778edfca582a181a812ff23c3a4bd28b35d699972e028b",
+      "forEverLoops": 1,
+      "continues": 1,
+      "directSelfCalls": 0,
+      "returnsAccumulator": true
+    },
+    {
+      "name": "p114ts_params",
+      "startLine": 11222,
+      "bytes": 433,
+      "sha256": "3c7985754808516c471ea62ca7ae865308cba2c84abcee70659e4f2e290ceecc",
+      "forEverLoops": 1,
+      "continues": 1,
+      "directSelfCalls": 0,
+      "returnsAccumulator": true
+    },
+    {
+      "name": "p114ts_scalar_list",
+      "startLine": 11204,
+      "bytes": 397,
+      "sha256": "d8b85ab30c651d92ff946446fb4cf17a4d515bbab7cabd89bae1b15f10eda603",
+      "forEverLoops": 1,
+      "continues": 1,
+      "directSelfCalls": 0,
+      "returnsAccumulator": true
+    },
+    {
+      "name": "p114ts_body",
+      "startLine": 11241,
+      "bytes": 1191,
+      "sha256": "00e1996921e5035d445e3356151682420fbd6cc7d6cad1ba793bf05fc2ac1892",
+      "forEverLoops": 1,
+      "continues": 4,
+      "directSelfCalls": 0,
+      "returnsAccumulator": true
+    },
+    {
+      "name": "p114ts_functions",
+      "startLine": 6221,
+      "bytes": 533,
+      "sha256": "ef856982819290748efc64c004b25e9eef0d0c831da1f427b9a876edc0d43e2e",
+      "forEverLoops": 1,
+      "continues": 1,
+      "directSelfCalls": 0,
+      "returnsAccumulator": true
+    },
+    {
+      "name": "p114ts_segments",
+      "startLine": 6202,
+      "bytes": 450,
+      "sha256": "22c51b66c1105bcb65131a2a90bc562da6a328071376664ccdbe0da3c8eae223",
+      "forEverLoops": 1,
+      "continues": 1,
+      "directSelfCalls": 0,
+      "returnsAccumulator": true
+    }
+  ],
+  "excerpts": {
+    "file": "/home/ai/bend2/build/publish/bend/implementation/phase114/namespace-js-review01.txt",
+    "bytes": 3402,
+    "sha256": "5f84466193d25ae2639207d0d7283d63d269e38e965067a6374249a55c1581df"
+  },
+  "conclusion": "Each actual generated helper has one for(;;) loop, accumulator/rest assignments followed by continue, and no direct self call. Flat traversal does not recurse through Bool.and. Nested branch callbacks remain recursive as intended. Original source predicates and final gate were separately reviewed unchanged.",
+  "limitation": "Source inspection of the successful checked API; no full compiler retry, native execution or arbitrary nesting stack guarantee inferred."
+}

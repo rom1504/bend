@@ -163,3 +163,29 @@ had 2,313,893 bytes and SHA256
 No compiler, API or native target was executed. A different declaration order
 in a manually composed source is accepted only when its complete normalized
 map matches; its own exact byte pin still needs a successful checked API.
+
+## Version 4 namespace traversal
+
+`recipe-table-unwind-first-namespace01.json`, `prepare-v4.py` and `admit-v4.py`
+retain the exact selected v3 recipe and append only the frozen
+`transport/namespace-tail-modules01.json` overlay. It replaces six flat-list
+namespace wrappers and adds six direct self-tail accumulator helpers. The
+parent source, successful API and composition admission are authenticated; its
+full declaration map must equal the selected v3 map. The original verifier,
+namespace predicate and error wrapper remain exact. Packed Take1 and bridge
+are excluded.
+
+Use the same commands above with `-v4.py` and the namespace recipe. The three
+normal checked exports remain sufficient: `p113a_lower_request`,
+`p113a_verify`, `p113a_admitted_chunks`. Expected counts are 6,383 declarations
+and 16 replacements. `methods-v4.json` pins the methods, recipe and overlay.
+In-memory source replay produced 2,306,979 bytes, SHA256
+`500211d484785778e75d5d4388b0d5ebc7282effd233c6b8f3d0e0269ac777f8`.
+
+Source review establishes `go(xs, valid) = valid && old(xs)` for each finite
+flat list. Recursive calls are the outermost helper return, with conjunctions
+used only to compute the next accumulator. Nested branch traversal is
+unchanged and remains recursive. Actual generated-JS loop inspection and the
+full compiler retry are separate checks; no compiler target was run while
+preparing this integration. The earlier qualified final-source01 and all v3
+method hashes remain unchanged.

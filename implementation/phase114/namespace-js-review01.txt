@@ -1,0 +1,132 @@
+function $p114ts_names$($0, $1) {
+  for (;;) {
+    {
+      const _names_0 = $0;
+      const _valid_0 = $1;
+      if (_names_0.$ === "Nil") {
+        return _valid_0;
+      } else {
+        const _name_0 = _names_0["head"];
+        const _rest_0 = _names_0["tail"];
+        $0 = _rest_0;
+        $1 = ($Bool$and$(_valid_0, ($p114t_local_name$(_name_0))));
+        continue;
+      }
+    }
+  }
+}
+
+function $p114ts_params$($0, $1) {
+  for (;;) {
+    {
+      const _params_0 = $0;
+      const _valid_0 = $1;
+      if (_params_0.$ === "Nil") {
+        return _valid_0;
+      } else {
+        const _t_0 = _params_0["head"];
+        const _word_0 = _t_0["word"];
+        const _rest_0 = _params_0["tail"];
+        $0 = _rest_0;
+        $1 = ($Bool$and$(_valid_0, ($p114t_local_name$(_word_0))));
+        continue;
+      }
+    }
+  }
+}
+
+function $p114ts_scalar_list$($0, $1) {
+  for (;;) {
+    {
+      const _body_0 = $0;
+      const _valid_0 = $1;
+      if (_body_0.$ === "Nil") {
+        return _valid_0;
+      } else {
+        const _head_0 = _body_0["head"];
+        const _rest_0 = _body_0["tail"];
+        $0 = _rest_0;
+        $1 = ($Bool$and$(_valid_0, ($p114t_scalar_names$(_head_0))));
+        continue;
+      }
+    }
+  }
+}
+
+function $p114ts_body$($0, $1) {
+  for (;;) {
+    {
+      const _body_0 = $0;
+      const _valid_0 = $1;
+      if (_body_0.$ === "Nil") {
+        return _valid_0;
+      } else {
+        const _t_0 = _body_0["head"];
+        if (_t_0.$ === "P113DScalar") {
+          const _stmt_0 = _t_0["stmt"];
+          const _rest_0 = _body_0["tail"];
+          $0 = _rest_0;
+          $1 = ($Bool$and$(_valid_0, ($p114t_scalar_names$(_stmt_0))));
+          continue;
+        } else if (_t_0.$ === "P113DIf") {
+          const _yes_0 = _t_0["yes"];
+          const _no_0 = _t_0["no"];
+          const _rest_1 = _body_0["tail"];
+          $0 = _rest_1;
+          $1 = ($Bool$and$(($Bool$and$(_valid_0, ($p114t_body_names$(_yes_0)))), ($p114t_body_names$(_no_0))));
+          continue;
+        } else if (_t_0.$ === "P113DCall") {
+          const _destinations_0 = _t_0["destinations"];
+          const _rest_2 = _body_0["tail"];
+          $0 = _rest_2;
+          $1 = ($Bool$and$(_valid_0, ($p114t_names$(_destinations_0))));
+          continue;
+        } else {
+          const _rest_3 = _body_0["tail"];
+          $0 = _rest_3;
+          $1 = _valid_0;
+          continue;
+        }
+      }
+    }
+  }
+}
+
+function $p114ts_functions$($0, $1) {
+  for (;;) {
+    {
+      const _functions_0 = $0;
+      const _valid_0 = $1;
+      if (_functions_0.$ === "Nil") {
+        return _valid_0;
+      } else {
+        const _t_0 = _functions_0["head"];
+        const _params_0 = _t_0["params"];
+        const _body_0 = _t_0["body"];
+        const _rest_0 = _functions_0["tail"];
+        $0 = _rest_0;
+        $1 = ($Bool$and$(($Bool$and$(_valid_0, ($p114t_params$(_params_0)))), ($p114t_body_names$(_body_0))));
+        continue;
+      }
+    }
+  }
+}
+
+function $p114ts_segments$($0, $1) {
+  for (;;) {
+    {
+      const _segments_0 = $0;
+      const _valid_0 = $1;
+      if (_segments_0.$ === "Nil") {
+        return _valid_0;
+      } else {
+        const _t_0 = _segments_0["head"];
+        const _body_0 = _t_0["body"];
+        const _rest_0 = _segments_0["tail"];
+        $0 = _rest_0;
+        $1 = ($Bool$and$(_valid_0, ($p114t_scalar_list_names$(_body_0))));
+        continue;
+      }
+    }
+  }
+}

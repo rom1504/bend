@@ -1,0 +1,162 @@
+{
+  "kind": "phase113-ray16-exact-static-delta",
+  "complete": true,
+  "targetsRun": false,
+  "inputs": [
+    {
+      "file": "selfhost/build/phase111/p113-inline15-variation-ray-active-256-2240-emit/program.ssa",
+      "bytes": 1584462,
+      "sha256": "475862976dd80b923ae5a2c1c79c03716ef6c8dadb1618b8115d34bb58209c2d"
+    },
+    {
+      "file": "selfhost/build/phase111/p113-shared16-variation-ray-active-256-2240-emit/program.ssa",
+      "bytes": 1572006,
+      "sha256": "4efc2ea439e548cb5e0c2b60572365647d95fa115169ec5d4e6f0b53ff3f7dd0"
+    }
+  ],
+  "method": {
+    "file": "selfhost/tools/performance/phase113/direct/inspect-ray16.py",
+    "bytes": 2765,
+    "sha256": "4c59cdf05f193864e2a13ecb4a0c75163d4c5ea8676703e5be02d1f9b726ecef"
+  },
+  "entireProgramEqualAfterSuccessorReplacement": true,
+  "successorSites": 111,
+  "changedFunctions": [
+    {
+      "function": "p113d_$direct.skr",
+      "successorSites": 8,
+      "oldBytes": 20761,
+      "newBytes": 20057
+    },
+    {
+      "function": "p113d_$direct.sr",
+      "successorSites": 8,
+      "oldBytes": 11328,
+      "newBytes": 10624
+    },
+    {
+      "function": "p113d_$direct.sz",
+      "successorSites": 8,
+      "oldBytes": 9750,
+      "newBytes": 9046
+    },
+    {
+      "function": "p113d_$direct.sy",
+      "successorSites": 8,
+      "oldBytes": 19788,
+      "newBytes": 19084
+    },
+    {
+      "function": "p113d_$direct.sx",
+      "successorSites": 8,
+      "oldBytes": 11910,
+      "newBytes": 11206
+    },
+    {
+      "function": "p113d_$product.nearest",
+      "successorSites": 17,
+      "oldBytes": 48001,
+      "newBytes": 45833
+    },
+    {
+      "function": "p113d_$direct.nearest.t",
+      "successorSites": 17,
+      "oldBytes": 43991,
+      "newBytes": 41823
+    },
+    {
+      "function": "p113d_$product.trace",
+      "successorSites": 9,
+      "oldBytes": 118690,
+      "newBytes": 117562
+    },
+    {
+      "function": "p113d_$direct.nearest",
+      "successorSites": 17,
+      "oldBytes": 47106,
+      "newBytes": 44938
+    },
+    {
+      "function": "p113d_$direct.coverage.active.loop",
+      "successorSites": 1,
+      "oldBytes": 4183,
+      "newBytes": 4095
+    },
+    {
+      "function": "p113d_$direct.p93.loop",
+      "successorSites": 1,
+      "oldBytes": 7056,
+      "newBytes": 6968
+    },
+    {
+      "function": "p113d_$direct.trace",
+      "successorSites": 9,
+      "oldBytes": 118270,
+      "newBytes": 117142
+    }
+  ],
+  "selectedCallRoute": [
+    {
+      "function": "p113d_$product.nearest",
+      "calls": {
+        "p111_rt_fail": 19,
+        "p113d_$direct.sx": 2,
+        "p113d_$direct.sy": 2,
+        "p113d_$direct.sr": 2,
+        "p113d_$direct.isect5": 2,
+        "p111_rt_op": 2
+      }
+    },
+    {
+      "function": "p113d_$product.trace",
+      "calls": {
+        "p111_rt_op": 4,
+        "p113d_$direct.sr": 2,
+        "p113d_$direct.sx": 2,
+        "p113d_$direct.sy": 2,
+        "p111_rt_fail": 14,
+        "p113d_$direct.nearest.t": 2,
+        "p113d_$direct.sz": 1,
+        "p113d_$direct.fl": 2,
+        "p113d_$direct.shade": 1,
+        "p113d_$direct.skr": 1,
+        "p113d_$product.nearest": 1
+      }
+    },
+    {
+      "function": "p113d_$direct.subray",
+      "calls": {
+        "p111_rt_op": 1,
+        "p113d_$product.nearest": 1,
+        "p113d_$product.trace": 1
+      }
+    },
+    {
+      "function": "p113d_$direct.pixel",
+      "calls": {
+        "p111_rt_op": 3,
+        "p113d_$product.nearest": 2,
+        "p113d_$product.trace": 2,
+        "p113d_$direct.subray": 2,
+        "p113d_$direct.clamp01": 1
+      }
+    },
+    {
+      "function": "p113d_$direct.coverage.active.loop",
+      "calls": {
+        "p111_rt_op": 2,
+        "p113d_$direct.pixel": 1,
+        "p111_rt_fail": 1
+      }
+    },
+    {
+      "function": "p113d_$direct.p93.loop",
+      "calls": {
+        "p111_rt_op": 1,
+        "p113d_$direct.coverage.active.loop": 1,
+        "p111_rt_fail": 2
+      }
+    }
+  ],
+  "scope": "Static source comparison; no new timing or dynamic counts."
+}

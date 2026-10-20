@@ -106,3 +106,55 @@ module, dependency and controls hashes. The v2 admitter authenticates that
 inventory before inspecting a composed source. Original admitter/admission01
 and the unexecuted original controls transport are preserved; controls-v2 fixes
 the API's default-export access without changing any Bend source.
+
+## Separate identity and stable-base experiments
+
+`identity.bend` plus the exact overrides in `identity-entry.bend` preserve every
+array helper call, status and second result. They snapshot the already evaluated
+array word before argument stores and reuse it for the first pair result or set
+return. This is the runtime's full-word transfer identity, including RFC/shared
+handles; it asserts no new uniqueness or scalar fact and creates no owner credit.
+Only the original result credit escapes. The independent source review found no
+ordering or ownership defect. `identity-modules01.json` freezes the two modules
+and `identity-controls.mjs` (eight structural controls; root executes them).
+
+Source21 adds identity to source20's range and bottom-up inliner composition.
+Its exact data-only receipt is
+`selfhost/build/phase113/array-identity-admission21/manifest.json` (214 declaration
+checks, nine mutation refusals). `identity-admit-v2.py` additionally binds
+`composition21.json` and replays all91 frozen modules and572 declaration edits
+byte-for-byte from the pinned baseline. This pins the active lowering wrappers
+and pass order as well as the original array/runtime facts. `composition.py`
+only reconstructs source text; it does not execute the composer or implement
+semantic lowering. Previous source17 and identity-v1 methods remain unchanged.
+
+The separate `heap.bend`/`heap-entry.bend` option reads `state->e.mem` once before
+the self-loop label in private workers that contain eligible array sites. It
+retains all guards and payload reads. Other private workers use the original
+emitter. The reserved `p113a_` namespace protects the cached base. The exact CPU
+runtime assigns this base once, extends the corpus at its existing base, and
+rejects relocation; admitted private imports cannot close or replace the context.
+Mutable heap contents and allocator metadata are still read where required.
+Independent source review confirmed this lifetime boundary; no new runtime or
+device claim follows. `heap-modules01.json` freezes this separate option.
+
+For a root-only checked API, append `heap.bend` and `heap-controls.bend`, then
+override with `heap-entry.bend`, and export `p113ah_control_text`. Run
+`heap-controls-v2.mjs CHECKED_API FRESH_PHASE113_OUT` for four emitted-text checks
+(array/no-array, return/self-loop); the synthetic owning graph is never executed.
+Native qualification should reuse wrapped-index, shared-capture and owning-cell
+witnesses. Source22's separate data-only receipt is
+`selfhost/build/phase113/array-identity-heap-admission22/manifest.json` (219 exact
+declarations,14 mutation refusals). `heap-admit.py` binds `composition22.json`,
+the complete replayed source, exact heap overlays and the unchanged runtime.
+Source21's receipt cannot authorize an added heap override. Later compiler
+compositions likewise require new source-bound receipts and their own companion
+pass qualification.
+
+The first heap host-control run failed before its first assertion completed:
+the host sent reflected `False` objects, but the checked JS API uses primitive
+Booleans. Both objects were truthy and selected the array/self-loop fixture.
+`heap-controls02.json` pins this generated-API evidence, preserved failure, and
+the v2 host-only correction. All Bend modules, runtime bytes and assertions are
+unchanged. The original control method/inventory remain preserved; use the v2
+transport receipt conjunctively with the source admission.

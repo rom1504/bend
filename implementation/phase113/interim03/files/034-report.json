@@ -1,0 +1,119 @@
+{
+  "kind": "phase113-serial-jobs",
+  "complete": false,
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase113/bench/field-array17-jobs02.json",
+      "sha256": "2ada922c0be097d5023529b6cd930d85cfc4526ebb2191487fa7c0b99afad791",
+      "bytes": 35361
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase113/run-jobs.py",
+      "sha256": "eda86523253d9b0f0abd8dfd3e8b2167252cfff0352b0d9949458c7b0969309e",
+      "bytes": 1692
+    }
+  ],
+  "jobs": [
+    {
+      "name": "baseline-scalar-array-wrap-emit",
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/bun-1.4.3/bun",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase113/staged-emit-v2.mjs",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-shared-api16/api.mjs",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase113/controls/field-array/scalar-array-wrap-v2.bend",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-field-array17-matched02-baseline-scalar-array-wrap-emit",
+        "cache",
+        "direct"
+      ],
+      "seconds": 5.692422553896904,
+      "status": 0,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/field-array17-jobs02/0.stdout",
+        "sha256": "c5cf328f56b7153a625cd31a16132b3d760a2b376e95e2c438b7b668169d725e",
+        "bytes": 4177
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/field-array17-jobs02/0.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "name": "baseline-scalar-array-wrap-build",
+      "command": [
+        "python3",
+        "-B",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase111/build.py",
+        "--source",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-field-array17-matched02-baseline-scalar-array-wrap-emit/program.ssa",
+        "--runtime",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/runtime-products-build01/runtime.o",
+        "--out",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-field-array17-matched02-baseline-scalar-array-wrap-build"
+      ],
+      "seconds": 0.1653589610941708,
+      "status": 0,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/field-array17-jobs02/1.stdout",
+        "sha256": "7b32c0d74c0d67d36d90fa67043e74cfc28b3e5ddd2dd331d306680d33a7bcdd",
+        "bytes": 302
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/field-array17-jobs02/1.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "name": "baseline-scalar-array-wrap-observe",
+      "command": [
+        "python3",
+        "-B",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase112/observe.py",
+        "--binary",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-field-array17-matched02-baseline-scalar-array-wrap-build/program",
+        "--expected",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase113/controls/field-array/scalar-array-wrap.expected.json",
+        "--out",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-field-array17-matched02-baseline-scalar-array-wrap-observe"
+      ],
+      "seconds": 0.06514282594434917,
+      "status": 0,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/field-array17-jobs02/2.stdout",
+        "sha256": "e534266c4db7800c84006a3a34f5ae4d779ea23b321772a91ba8f87fb87394ed",
+        "bytes": 32
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/field-array17-jobs02/2.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "name": "baseline-shared-array-capture-emit",
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/bun-1.4.3/bun",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase113/staged-emit-v2.mjs",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-shared-api16/api.mjs",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase113/controls/field-array/shared-array-capture.bend",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-field-array17-matched02-baseline-shared-array-capture-emit",
+        "cache",
+        "direct"
+      ],
+      "seconds": 2.1190015128813684,
+      "status": 1,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/field-array17-jobs02/3.stdout",
+        "sha256": "a8767d8403b796153da1df960238400ad1361a6343a40e1fe5be8e6f45f59345",
+        "bytes": 1322
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/field-array17-jobs02/3.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    }
+  ],
+  "error": "RuntimeError('Failed baseline-shared-array-capture-emit')"
+}

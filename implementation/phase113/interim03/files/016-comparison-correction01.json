@@ -1,0 +1,293 @@
+{
+  "kind": "phase113-inliner-control-comparison-correction",
+  "createdUtc": "2026-10-20T18:56:59.760583+00:00",
+  "targetsRun": false,
+  "priorMethod": {
+    "file": "selfhost/tools/performance/phase113/controls/inliner/reflect.mjs",
+    "bytes": 15544,
+    "sha256": "315c234f1017ecbd1f45fff9a941a6ea712d96f14231e467ab523f96329ebb61"
+  },
+  "priorReport": {
+    "file": "selfhost/build/phase113/inliner-reflect01/report.json",
+    "bytes": 13669,
+    "sha256": "b875484f1f0c0ee8c4825750f2321d59cb31f22db366626eec35f522a2e9bad0"
+  },
+  "newMethod": {
+    "file": "selfhost/tools/performance/phase113/controls/inliner/reflect-v2.mjs",
+    "bytes": 15544,
+    "sha256": "8643ed8a7ca9ea08a951bfb3cdeff6b57ba7410f79034f09094077e748eda1e6"
+  },
+  "explanation": "All9 failed unchanged checks differ only in JavaScript object property insertion order. Independent Python decoded-object equality confirms every full original/optimized IR pair equal. V2 uses standard deep structural equality for IR retention/idempotence/unchanged gates; values, traces, eligibility, call counts, budgets and refusal requirements remain identical. V1 and its root receipt remain untouched.",
+  "proof": [
+    {
+      "name": "refuse-partial-return-common-suffix",
+      "before": {
+        "file": "selfhost/build/phase113/inliner-reflect01/refuse-partial-return-common-suffix.before.json",
+        "bytes": 4141,
+        "sha256": "91efbcacb55d3f8c13efa87fb4953bc89e4477be12306a95bfa257d94b52f933"
+      },
+      "after": {
+        "file": "selfhost/build/phase113/inliner-reflect01/refuse-partial-return-common-suffix.after.json",
+        "bytes": 4141,
+        "sha256": "47310a82a5f449fc95e82d00ee7bbacb984a7789662c0083c9f7efbd44fa7c70"
+      },
+      "structurallyEqual": true,
+      "beforeFunctionKeys": [
+        "$",
+        "name",
+        "params",
+        "body",
+        "result",
+        "public"
+      ],
+      "afterFunctionKeys": [
+        "$",
+        "name",
+        "params",
+        "result",
+        "public",
+        "body"
+      ]
+    },
+    {
+      "name": "refuse-self-loop-leaf",
+      "before": {
+        "file": "selfhost/build/phase113/inliner-reflect01/refuse-self-loop-leaf.before.json",
+        "bytes": 3813,
+        "sha256": "de4448759f4b0ec3620a6a6e593b8e6c7d57bf801eb46a422a45172bf0fbe76c"
+      },
+      "after": {
+        "file": "selfhost/build/phase113/inliner-reflect01/refuse-self-loop-leaf.after.json",
+        "bytes": 3813,
+        "sha256": "1b5f8d9cb068e9e2d74b1880b88538d59842c4fa8b0e37dd14ffd7ae65e0a963"
+      },
+      "structurallyEqual": true,
+      "beforeFunctionKeys": [
+        "$",
+        "name",
+        "params",
+        "body",
+        "result",
+        "public"
+      ],
+      "afterFunctionKeys": [
+        "$",
+        "name",
+        "params",
+        "result",
+        "public",
+        "body"
+      ]
+    },
+    {
+      "name": "refuse-private-product",
+      "before": {
+        "file": "selfhost/build/phase113/inliner-reflect01/refuse-private-product.before.json",
+        "bytes": 3416,
+        "sha256": "48286b28223913598ea7f633527a27493c4913f300ad490a2e383ceb84c1b225"
+      },
+      "after": {
+        "file": "selfhost/build/phase113/inliner-reflect01/refuse-private-product.after.json",
+        "bytes": 3416,
+        "sha256": "9433402af98641bdf2f61b4baba618e63d9abaa28ce62afe3fb7bac05000aa6c"
+      },
+      "structurallyEqual": true,
+      "beforeFunctionKeys": [
+        "$",
+        "name",
+        "params",
+        "body",
+        "result",
+        "public"
+      ],
+      "afterFunctionKeys": [
+        "$",
+        "name",
+        "params",
+        "result",
+        "public",
+        "body"
+      ]
+    },
+    {
+      "name": "refuse-caller-prefix-collision",
+      "before": {
+        "file": "selfhost/build/phase113/inliner-reflect01/refuse-caller-prefix-collision.before.json",
+        "bytes": 3346,
+        "sha256": "bc9b44cedd684bd00cbae646687f5bbe6102a4e7f7c49859cc69638735815ad3"
+      },
+      "after": {
+        "file": "selfhost/build/phase113/inliner-reflect01/refuse-caller-prefix-collision.after.json",
+        "bytes": 3346,
+        "sha256": "fc06f33f738789e36d8081c5e678129648891e6d9e7c1897398bbbad15c38358"
+      },
+      "structurallyEqual": true,
+      "beforeFunctionKeys": [
+        "$",
+        "name",
+        "params",
+        "body",
+        "result",
+        "public"
+      ],
+      "afterFunctionKeys": [
+        "$",
+        "name",
+        "params",
+        "result",
+        "public",
+        "body"
+      ]
+    },
+    {
+      "name": "refuse-callee-prefix-collision",
+      "before": {
+        "file": "selfhost/build/phase113/inliner-reflect01/refuse-callee-prefix-collision.before.json",
+        "bytes": 3346,
+        "sha256": "39d23d8c38c50193f61a7fe53e0a27ae1abf7b8873f9ba6030166932db2eb0f5"
+      },
+      "after": {
+        "file": "selfhost/build/phase113/inliner-reflect01/refuse-callee-prefix-collision.after.json",
+        "bytes": 3346,
+        "sha256": "e210355be375c29f3612e6666da440ffb43f0df35da37f608d8c50052b254cc5"
+      },
+      "structurallyEqual": true,
+      "beforeFunctionKeys": [
+        "$",
+        "name",
+        "params",
+        "body",
+        "result",
+        "public"
+      ],
+      "afterFunctionKeys": [
+        "$",
+        "name",
+        "params",
+        "result",
+        "public",
+        "body"
+      ]
+    },
+    {
+      "name": "callee-node-limit",
+      "before": {
+        "file": "selfhost/build/phase113/inliner-reflect01/callee-node-limit.before.json",
+        "bytes": 10089,
+        "sha256": "87de300c6b697d54f868c3de054e3909a3cee4ecf3cfab243c9f551f469c93b1"
+      },
+      "after": {
+        "file": "selfhost/build/phase113/inliner-reflect01/callee-node-limit.after.json",
+        "bytes": 10089,
+        "sha256": "d9e3de920182144231e03eebbfa75059655ac44f6c8ee2c655081d1cfc359cde"
+      },
+      "structurallyEqual": true,
+      "beforeFunctionKeys": [
+        "$",
+        "name",
+        "params",
+        "body",
+        "result",
+        "public"
+      ],
+      "afterFunctionKeys": [
+        "$",
+        "name",
+        "params",
+        "result",
+        "public",
+        "body"
+      ]
+    },
+    {
+      "name": "callee-stack-limit",
+      "before": {
+        "file": "selfhost/build/phase113/inliner-reflect01/callee-stack-limit.before.json",
+        "bytes": 3748,
+        "sha256": "f0b10701684fc4ff72af51d4a6fc5a23319be8879f50158d954473e45b07ac38"
+      },
+      "after": {
+        "file": "selfhost/build/phase113/inliner-reflect01/callee-stack-limit.after.json",
+        "bytes": 3748,
+        "sha256": "b41bfe3055e8153412c64e8c14bf4af9ef4892c791d50fcf6d56737e96224626"
+      },
+      "structurallyEqual": true,
+      "beforeFunctionKeys": [
+        "$",
+        "name",
+        "params",
+        "body",
+        "result",
+        "public"
+      ],
+      "afterFunctionKeys": [
+        "$",
+        "name",
+        "params",
+        "result",
+        "public",
+        "body"
+      ]
+    },
+    {
+      "name": "caller-stack-rollback",
+      "before": {
+        "file": "selfhost/build/phase113/inliner-reflect01/caller-stack-rollback.before.json",
+        "bytes": 4084,
+        "sha256": "ee318a8782666da33feb10f4bb34f828735ea56ac30173f56333b2e824e455f4"
+      },
+      "after": {
+        "file": "selfhost/build/phase113/inliner-reflect01/caller-stack-rollback.after.json",
+        "bytes": 4084,
+        "sha256": "337af93886ed84db7542536ac359a83cb9163f21f12dd9bed5a2c5e4a1140bf0"
+      },
+      "structurallyEqual": true,
+      "beforeFunctionKeys": [
+        "$",
+        "name",
+        "params",
+        "body",
+        "result",
+        "public"
+      ],
+      "afterFunctionKeys": [
+        "$",
+        "name",
+        "params",
+        "result",
+        "public",
+        "body"
+      ]
+    },
+    {
+      "name": "caller-node-limit",
+      "before": {
+        "file": "selfhost/build/phase113/inliner-reflect01/caller-node-limit.before.json",
+        "bytes": 153544,
+        "sha256": "9bd4369bbe58399edf9c175301d13d50de56308685d1a5a51fe8e977c8b93891"
+      },
+      "after": {
+        "file": "selfhost/build/phase113/inliner-reflect01/caller-node-limit.after.json",
+        "bytes": 153544,
+        "sha256": "e129c139ae54c532d507a43a17aa291a86a1dd35ff7222110915be04b9ecc4b5"
+      },
+      "structurallyEqual": true,
+      "beforeFunctionKeys": [
+        "$",
+        "name",
+        "params",
+        "body",
+        "result",
+        "public"
+      ],
+      "afterFunctionKeys": [
+        "$",
+        "name",
+        "params",
+        "result",
+        "public",
+        "body"
+      ]
+    }
+  ]
+}

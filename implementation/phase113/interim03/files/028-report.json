@@ -1,0 +1,938 @@
+{
+  "kind": "phase113-serial-jobs",
+  "complete": true,
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/shared-all16-plan.json",
+      "sha256": "059fe4e2f0fa1369cb8f6d3a43235d095f964faa1e6c6f32f4a18336ada1373a",
+      "bytes": 21351
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase113/run-jobs.py",
+      "sha256": "eda86523253d9b0f0abd8dfd3e8b2167252cfff0352b0d9949458c7b0969309e",
+      "bytes": 1692
+    }
+  ],
+  "jobs": [
+    {
+      "name": "high-values-emit",
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/bun-1.4.3/bun",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase113/staged-emit.mjs",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-shared-api16/api.mjs",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase113/nat-facts/fixtures/high-values.bend",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-nat16-high-values-emit",
+        "cache",
+        "direct"
+      ],
+      "seconds": 3.828923946013674,
+      "status": 0,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/shared-all16/0.stdout",
+        "sha256": "a83d7b085886b2fc9091db469c746d9c2349a36a1e6df6120774e83e98a5c405",
+        "bytes": 4182
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/shared-all16/0.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "name": "high-values-build",
+      "command": [
+        "python3",
+        "-B",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase111/build.py",
+        "--source",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-nat16-high-values-emit/program.ssa",
+        "--runtime",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/runtime-products-build01/runtime.o",
+        "--out",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-nat16-high-values-build"
+      ],
+      "seconds": 0.16546115092933178,
+      "status": 0,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/shared-all16/1.stdout",
+        "sha256": "cbf364d4fda43f4f5cbd43f3842c781ac80c081ec6ec52f6e7870d9fdcdb8a80",
+        "bytes": 269
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/shared-all16/1.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "name": "high-values-observe",
+      "command": [
+        "python3",
+        "-B",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase112/observe.py",
+        "--binary",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-nat16-high-values-build/program",
+        "--expected",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/nat16-high-values-expected.json",
+        "--out",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/nat16-high-values-observe"
+      ],
+      "seconds": 0.06513138907030225,
+      "status": 0,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/shared-all16/2.stdout",
+        "sha256": "e534266c4db7800c84006a3a34f5ae4d779ea23b321772a91ba8f87fb87394ed",
+        "bytes": 32
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/shared-all16/2.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "name": "overflow-add-emit",
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/bun-1.4.3/bun",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase113/staged-emit.mjs",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-shared-api16/api.mjs",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase113/nat-facts/fixtures/overflow-add.bend",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-nat16-overflow-add-emit",
+        "cache",
+        "direct"
+      ],
+      "seconds": 2.987706062849611,
+      "status": 0,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/shared-all16/3.stdout",
+        "sha256": "c9a9de7e52ba7f6a67593493eac454c28674cb58e7858cffea8fa68a2ce67fb4",
+        "bytes": 4191
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/shared-all16/3.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "name": "overflow-add-build",
+      "command": [
+        "python3",
+        "-B",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase111/build.py",
+        "--source",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-nat16-overflow-add-emit/program.ssa",
+        "--runtime",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/runtime-products-build01/runtime.o",
+        "--out",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-nat16-overflow-add-build"
+      ],
+      "seconds": 0.16636009002104402,
+      "status": 0,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/shared-all16/4.stdout",
+        "sha256": "7dcc437c57661ca5170682ee762ea9850029488834dd84e42c86b816d18cd94e",
+        "bytes": 269
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/shared-all16/4.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "name": "overflow-add-observe",
+      "command": [
+        "python3",
+        "-B",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase112/observe.py",
+        "--binary",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-nat16-overflow-add-build/program",
+        "--expected",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/nat16-overflow-add-expected.json",
+        "--out",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/nat16-overflow-add-observe"
+      ],
+      "seconds": 0.06509734014980495,
+      "status": 0,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/shared-all16/5.stdout",
+        "sha256": "0eb8eb5832b6772ddea9d4fc5187c58715bc455d70803683a277ae13ee88ff9d",
+        "bytes": 32
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/shared-all16/5.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "name": "overflow-double-emit",
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/bun-1.4.3/bun",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase113/staged-emit.mjs",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-shared-api16/api.mjs",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase113/nat-facts/fixtures/overflow-double.bend",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-nat16-overflow-double-emit",
+        "cache",
+        "direct"
+      ],
+      "seconds": 2.925483151106164,
+      "status": 0,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/shared-all16/6.stdout",
+        "sha256": "fc6b7bb8a35c4b42159d76ec2910fae89a9f913884648f0b05a2599062a35fb4",
+        "bytes": 4173
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/shared-all16/6.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "name": "overflow-double-build",
+      "command": [
+        "python3",
+        "-B",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase111/build.py",
+        "--source",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-nat16-overflow-double-emit/program.ssa",
+        "--runtime",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/runtime-products-build01/runtime.o",
+        "--out",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-nat16-overflow-double-build"
+      ],
+      "seconds": 0.11522606899961829,
+      "status": 0,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/shared-all16/7.stdout",
+        "sha256": "983f2b561e4b74d9f0fdf92bc715e4dab524668ef7db3baa09a6c43dd7269bfb",
+        "bytes": 274
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/shared-all16/7.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "name": "overflow-double-observe",
+      "command": [
+        "python3",
+        "-B",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase112/observe.py",
+        "--binary",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-nat16-overflow-double-build/program",
+        "--expected",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/nat16-overflow-double-expected.json",
+        "--out",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/nat16-overflow-double-observe"
+      ],
+      "seconds": 0.06513054901733994,
+      "status": 0,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/shared-all16/8.stdout",
+        "sha256": "0eb8eb5832b6772ddea9d4fc5187c58715bc455d70803683a277ae13ee88ff9d",
+        "bytes": 32
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/shared-all16/8.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "name": "overflow-mul-emit",
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/bun-1.4.3/bun",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase113/staged-emit.mjs",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-shared-api16/api.mjs",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase113/nat-facts/fixtures/overflow-mul.bend",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-nat16-overflow-mul-emit",
+        "cache",
+        "direct"
+      ],
+      "seconds": 2.920867077074945,
+      "status": 0,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/shared-all16/9.stdout",
+        "sha256": "a2ebf4512a50fca2dc072362b8372c4f45fbadf537a1195c3e09fa15844cfeda",
+        "bytes": 4184
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/shared-all16/9.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "name": "overflow-mul-build",
+      "command": [
+        "python3",
+        "-B",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase111/build.py",
+        "--source",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-nat16-overflow-mul-emit/program.ssa",
+        "--runtime",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/runtime-products-build01/runtime.o",
+        "--out",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-nat16-overflow-mul-build"
+      ],
+      "seconds": 0.16548957489430904,
+      "status": 0,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/shared-all16/10.stdout",
+        "sha256": "b40b9e6016de74579aa8d02cf40a0b4957fd1087b833888dcef79fd64ff95fe2",
+        "bytes": 270
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/shared-all16/10.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "name": "overflow-mul-observe",
+      "command": [
+        "python3",
+        "-B",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase112/observe.py",
+        "--binary",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-nat16-overflow-mul-build/program",
+        "--expected",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/nat16-overflow-mul-expected.json",
+        "--out",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/nat16-overflow-mul-observe"
+      ],
+      "seconds": 0.06525045400485396,
+      "status": 0,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/shared-all16/11.stdout",
+        "sha256": "0eb8eb5832b6772ddea9d4fc5187c58715bc455d70803683a277ae13ee88ff9d",
+        "bytes": 32
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/shared-all16/11.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "name": "overflow-succ-emit",
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/bun-1.4.3/bun",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase113/staged-emit.mjs",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-shared-api16/api.mjs",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase113/nat-facts/fixtures/overflow-succ.bend",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-nat16-overflow-succ-emit",
+        "cache",
+        "direct"
+      ],
+      "seconds": 3.081237100996077,
+      "status": 0,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/shared-all16/12.stdout",
+        "sha256": "c006aea11114284a896d0f9b1ac5300419ca2d958a3ef5bd5b57c51230a51b13",
+        "bytes": 4173
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/shared-all16/12.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "name": "overflow-succ-build",
+      "command": [
+        "python3",
+        "-B",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase111/build.py",
+        "--source",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-nat16-overflow-succ-emit/program.ssa",
+        "--runtime",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/runtime-products-build01/runtime.o",
+        "--out",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-nat16-overflow-succ-build"
+      ],
+      "seconds": 0.16654899902641773,
+      "status": 0,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/shared-all16/13.stdout",
+        "sha256": "ba74f9c1a68843419735d37e69b3aafe43aa006e4a15d976e02866e3392d5faf",
+        "bytes": 271
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/shared-all16/13.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "name": "overflow-succ-observe",
+      "command": [
+        "python3",
+        "-B",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase112/observe.py",
+        "--binary",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-nat16-overflow-succ-build/program",
+        "--expected",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/nat16-overflow-succ-expected.json",
+        "--out",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/nat16-overflow-succ-observe"
+      ],
+      "seconds": 0.06511571491137147,
+      "status": 0,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/shared-all16/14.stdout",
+        "sha256": "0eb8eb5832b6772ddea9d4fc5187c58715bc455d70803683a277ae13ee88ff9d",
+        "bytes": 32
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/shared-all16/14.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "name": "owned-record-emit",
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/bun-1.4.3/bun",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase113/staged-emit.mjs",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-shared-api16/api.mjs",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase113/nat-facts/fixtures/owned-record-v2.bend",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-nat16-owned-record-emit",
+        "cache",
+        "direct"
+      ],
+      "seconds": 3.9782456120010465,
+      "status": 0,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/shared-all16/15.stdout",
+        "sha256": "04894ac8d4902e932a562d248570853c7f5548296cbd1e1315ecf57a1db47d38",
+        "bytes": 4174
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/shared-all16/15.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "name": "owned-record-build",
+      "command": [
+        "python3",
+        "-B",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase111/build.py",
+        "--source",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-nat16-owned-record-emit/program.ssa",
+        "--runtime",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/runtime-products-build01/runtime.o",
+        "--out",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-nat16-owned-record-build"
+      ],
+      "seconds": 0.1654120939783752,
+      "status": 0,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/shared-all16/16.stdout",
+        "sha256": "694b15e2eb8e91ee32299f69f99e71fc79139b10eda4f3c000994f93c5fa2aba",
+        "bytes": 270
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/shared-all16/16.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "name": "owned-record-observe",
+      "command": [
+        "python3",
+        "-B",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase112/observe.py",
+        "--binary",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-nat16-owned-record-build/program",
+        "--expected",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/nat16-owned-record-expected.json",
+        "--out",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/nat16-owned-record-observe"
+      ],
+      "seconds": 0.06518885982222855,
+      "status": 0,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/shared-all16/17.stdout",
+        "sha256": "e534266c4db7800c84006a3a34f5ae4d779ea23b321772a91ba8f87fb87394ed",
+        "bytes": 32
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/shared-all16/17.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "name": "closure-positive-emit",
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/bun-1.4.3/bun",
+        "selfhost/tools/performance/phase113/staged-emit.mjs",
+        "selfhost/build/phase111/p113-shared-api16/api.mjs",
+        "selfhost/tools/performance/phase113/direct-closure/fixtures/positive.bend",
+        "selfhost/build/phase111/p113-shared16-closure-positive-emit",
+        "cache",
+        "direct"
+      ],
+      "seconds": 4.127139949938282,
+      "status": 0,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/shared-all16/18.stdout",
+        "sha256": "1944377ebff0d7651a01a831da88e5c29ee92989f950785bfefdc3ecf9e8c229",
+        "bytes": 4169
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/shared-all16/18.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "name": "closure-positive-build",
+      "command": [
+        "python3",
+        "-B",
+        "selfhost/tools/performance/phase111/build.py",
+        "--source",
+        "selfhost/build/phase111/p113-shared16-closure-positive-emit/program.ssa",
+        "--runtime",
+        "selfhost/build/phase113/runtime-products-build01/runtime.o",
+        "--out",
+        "selfhost/build/phase111/p113-shared16-closure-positive-build"
+      ],
+      "seconds": 0.16531547019258142,
+      "status": 0,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/shared-all16/19.stdout",
+        "sha256": "4be30332823c13b8f4aade12a3de153f072bb7a500c32ae4fa70118edf9313f8",
+        "bytes": 277
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/shared-all16/19.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "name": "closure-positive-observe",
+      "command": [
+        "python3",
+        "-B",
+        "selfhost/tools/performance/phase112/observe.py",
+        "--binary",
+        "selfhost/build/phase111/p113-shared16-closure-positive-build/program",
+        "--expected",
+        "selfhost/build/phase113/closure-positive16-expected.json",
+        "--out",
+        "selfhost/build/phase113/closure-positive16-observe"
+      ],
+      "seconds": 0.06517350999638438,
+      "status": 0,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/shared-all16/20.stdout",
+        "sha256": "e534266c4db7800c84006a3a34f5ae4d779ea23b321772a91ba8f87fb87394ed",
+        "bytes": 32
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/shared-all16/20.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "name": "closure-overflow-emit",
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/bun-1.4.3/bun",
+        "selfhost/tools/performance/phase113/staged-emit.mjs",
+        "selfhost/build/phase111/p113-shared-api16/api.mjs",
+        "selfhost/tools/performance/phase113/direct-closure/fixtures/strict-overflow.bend",
+        "selfhost/build/phase111/p113-shared16-closure-overflow-emit",
+        "cache",
+        "direct"
+      ],
+      "seconds": 3.034408784005791,
+      "status": 0,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/shared-all16/21.stdout",
+        "sha256": "a3a9055c7dd121e53ad90187ae1bd0cdaa2b802e395503292356e7fb19a4f558",
+        "bytes": 4175
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/shared-all16/21.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "name": "closure-overflow-build",
+      "command": [
+        "python3",
+        "-B",
+        "selfhost/tools/performance/phase111/build.py",
+        "--source",
+        "selfhost/build/phase111/p113-shared16-closure-overflow-emit/program.ssa",
+        "--runtime",
+        "selfhost/build/phase113/runtime-products-build01/runtime.o",
+        "--out",
+        "selfhost/build/phase111/p113-shared16-closure-overflow-build"
+      ],
+      "seconds": 0.1654872288927436,
+      "status": 0,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/shared-all16/22.stdout",
+        "sha256": "c09fa89bcf13565428cb689be7c678bbb1c6634e981a9913c5ae7f1e23ece2e1",
+        "bytes": 277
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/shared-all16/22.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "name": "closure-overflow-observe",
+      "command": [
+        "python3",
+        "-B",
+        "selfhost/tools/performance/phase112/observe.py",
+        "--binary",
+        "selfhost/build/phase111/p113-shared16-closure-overflow-build/program",
+        "--expected",
+        "selfhost/build/phase113/closure-overflow16-expected.json",
+        "--out",
+        "selfhost/build/phase113/closure-overflow16-observe"
+      ],
+      "seconds": 0.06516005098819733,
+      "status": 0,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/shared-all16/23.stdout",
+        "sha256": "0eb8eb5832b6772ddea9d4fc5187c58715bc455d70803683a277ae13ee88ff9d",
+        "bytes": 32
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/shared-all16/23.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "name": "scalar-region-8192-emit",
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/bun-1.4.3/bun",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase113/staged-emit.mjs",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-shared-api16/api.mjs",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/fixtures01/scalar-region-8192.bend",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-shared16-scalar-region-8192-emit",
+        "cache",
+        "direct"
+      ],
+      "seconds": 8.318264628062025,
+      "status": 0,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/shared-all16/24.stdout",
+        "sha256": "a39d60a8da6da0a7ee2926ba1e493c96f62d0def215ae2d25816221d4e2d423f",
+        "bytes": 4169
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/shared-all16/24.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "name": "scalar-region-8192-build",
+      "command": [
+        "/usr/bin/python3",
+        "-B",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase111/build.py",
+        "--source",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-shared16-scalar-region-8192-emit/program.ssa",
+        "--runtime",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/runtime-products-build01/runtime.o",
+        "--out",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-shared16-scalar-region-8192-build",
+        "--seconds",
+        "12"
+      ],
+      "seconds": 0.6254170800093561,
+      "status": 0,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/shared-all16/25.stdout",
+        "sha256": "58c0b7e81a51eb7399a551bc95cef1fe09f64de92665dfd40b8f7686fc0a3d15",
+        "bytes": 279
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/shared-all16/25.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "name": "local-pair-emit",
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/bun-1.4.3/bun",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase113/staged-emit.mjs",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-shared-api16/api.mjs",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/fixtures01/local-pair.bend",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-shared16-local-pair-emit",
+        "cache",
+        "direct"
+      ],
+      "seconds": 9.909849506104365,
+      "status": 0,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/shared-all16/26.stdout",
+        "sha256": "b40bd8aa9a3ba4566a44e6baae2700e0c845d62a7ab2b2c7d5c44a4f6e0efdd0",
+        "bytes": 4168
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/shared-all16/26.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "name": "local-pair-build",
+      "command": [
+        "/usr/bin/python3",
+        "-B",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase111/build.py",
+        "--source",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-shared16-local-pair-emit/program.ssa",
+        "--runtime",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/runtime-products-build01/runtime.o",
+        "--out",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-shared16-local-pair-build",
+        "--seconds",
+        "12"
+      ],
+      "seconds": 0.2649778979830444,
+      "status": 0,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/shared-all16/27.stdout",
+        "sha256": "4b526813e6944b1a28acf54c0b075a051709195f6e276cda8390f6ee5566a27c",
+        "bytes": 271
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/shared-all16/27.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "name": "editdist-emit",
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/bun-1.4.3/bun",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase113/staged-emit.mjs",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-shared-api16/api.mjs",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/fixtures01/editdist.bend",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-shared16-editdist-emit",
+        "cache",
+        "direct"
+      ],
+      "seconds": 9.867932579945773,
+      "status": 0,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/shared-all16/28.stdout",
+        "sha256": "dbff7702f7e96aab31fa1188eb4e9aa842238ca9487d2a2aa6ca2fd3063d3b91",
+        "bytes": 4184
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/shared-all16/28.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "name": "editdist-build",
+      "command": [
+        "/usr/bin/python3",
+        "-B",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase111/build.py",
+        "--source",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-shared16-editdist-emit/program.ssa",
+        "--runtime",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/runtime-products-build01/runtime.o",
+        "--out",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-shared16-editdist-build",
+        "--seconds",
+        "12"
+      ],
+      "seconds": 0.2655685117933899,
+      "status": 0,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/shared-all16/29.stdout",
+        "sha256": "c97255cf1e372ac592d2d294c2e47a61d47cbe7eac3bc59524320c17840e932d",
+        "bytes": 268
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/shared-all16/29.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "name": "variation-ray-active-256-2240-emit",
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/bun-1.4.3/bun",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase113/staged-emit.mjs",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-shared-api16/api.mjs",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/fixtures01/variation-ray-active-256-2240.bend",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-shared16-variation-ray-active-256-2240-emit",
+        "cache",
+        "direct"
+      ],
+      "seconds": 16.092715944861993,
+      "status": 0,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/shared-all16/30.stdout",
+        "sha256": "89d84e44664c92074867e81c18e67860d76f1e63428c31a075620a572cfb28a6",
+        "bytes": 4165
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/shared-all16/30.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "name": "variation-ray-active-256-2240-build",
+      "command": [
+        "/usr/bin/python3",
+        "-B",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase111/build.py",
+        "--source",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-shared16-variation-ray-active-256-2240-emit/program.ssa",
+        "--runtime",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/runtime-products-build01/runtime.o",
+        "--out",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-shared16-variation-ray-active-256-2240-build",
+        "--seconds",
+        "12"
+      ],
+      "seconds": 0.36541495006531477,
+      "status": 0,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/shared-all16/31.stdout",
+        "sha256": "7a693b2a6cbdf822c66f81b8f203afe106a9656a4c6b6a0fa1236b6a8f083993",
+        "bytes": 289
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/shared-all16/31.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "name": "lexer-emit",
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/bun-1.4.3/bun",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase113/staged-emit.mjs",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-shared-api16/api.mjs",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/fixtures01/lexer.bend",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-shared16-lexer-emit",
+        "cache",
+        "direct"
+      ],
+      "seconds": 9.825163680827245,
+      "status": 0,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/shared-all16/32.stdout",
+        "sha256": "64a7651702fa388e0628233c648f1ad63ecdb382f0c8b1e0cfd45d32920063ff",
+        "bytes": 4176
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/shared-all16/32.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "name": "lexer-build",
+      "command": [
+        "/usr/bin/python3",
+        "-B",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase111/build.py",
+        "--source",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-shared16-lexer-emit/program.ssa",
+        "--runtime",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/runtime-products-build01/runtime.o",
+        "--out",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-shared16-lexer-build",
+        "--seconds",
+        "12"
+      ],
+      "seconds": 0.26492459420114756,
+      "status": 0,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/shared-all16/33.stdout",
+        "sha256": "b6b4cb1741ca7261ee49565e2a254a66ca492e18f29219251518db27513ba1b1",
+        "bytes": 264
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/shared-all16/33.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "name": "coverage-closures-256-emit",
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/bun-1.4.3/bun",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase113/staged-emit.mjs",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-shared-api16/api.mjs",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/fixtures01/coverage-closures-256.bend",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-shared16-coverage-closures-256-emit",
+        "cache",
+        "direct"
+      ],
+      "seconds": 7.501476434059441,
+      "status": 0,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/shared-all16/34.stdout",
+        "sha256": "ef5dcb76f810d15e0d80e39890fab9debca03c64b11b9ca41f9a3da6158b2460",
+        "bytes": 4157
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/shared-all16/34.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "name": "coverage-closures-256-build",
+      "command": [
+        "/usr/bin/python3",
+        "-B",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase111/build.py",
+        "--source",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-shared16-coverage-closures-256-emit/program.ssa",
+        "--runtime",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/runtime-products-build01/runtime.o",
+        "--out",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-shared16-coverage-closures-256-build",
+        "--seconds",
+        "12"
+      ],
+      "seconds": 0.21487316908314824,
+      "status": 0,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/shared-all16/35.stdout",
+        "sha256": "d5cfa4dadb8e3fc43601629dcf1dd1d80f47fca6fb830969a7b068b0fdce1015",
+        "bytes": 282
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/shared-all16/35.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    }
+  ]
+}

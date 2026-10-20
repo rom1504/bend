@@ -1,0 +1,161 @@
+{
+  "kind": "phase113-staged-checked-source-qbe-emission",
+  "complete": false,
+  "mode": "cache",
+  "pipeline": "direct",
+  "transportVersion": 2,
+  "lowering": "p113d_lower_request",
+  "verifier": "p113d_verify",
+  "renderer": "p113e_admitted_chunks",
+  "rendererReverifies": false,
+  "explicitVerificationPasses": 1,
+  "admittedRendererGuard": "Only called after successful explicit verification of the same in-memory program; no replacement or host semantic transformation.",
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase113/staged-emit-v2.mjs",
+      "bytes": 13504,
+      "sha256": "48f8840619a5da16eb3416ad80aa774ad7bca4ee7a3616fc3b5ba92d03298193"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-shared-api16/api.mjs",
+      "bytes": 1587131,
+      "sha256": "63dfc10af1da7145f7f66a2af297ce22233b6d96630f815f210f9aaaab7f9b7e"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-shared-api16/report.json",
+      "bytes": 4156,
+      "sha256": "5d641b923450fd74daee73ce2129722edcce8188963e695890d6071919766a43"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase113/controls/field-array/shared-array-capture.bend",
+      "bytes": 625,
+      "sha256": "876bec6e8ef29f0ac84423b5776781b37832e6ec9047221aa8fdc9268b114e5e"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/native/selection.json",
+      "bytes": 335,
+      "sha256": "abcf83f679c38aacd21dc121dcc479337f9e4bd77001be8dbfa261da6ca20285"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase102/native-chain04/admission.json",
+      "sha256": "a8a7abd1c985604d7d3e944c558a770c08e3e43d9035dfe54977d122e880c8b0",
+      "bytes": 1809272
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/base.bend",
+      "sha256": "99ac43f2b2bb3e3f39acdcedcecbbd3cb44749ce13969c827d6973fa66f7facf",
+      "bytes": 75064
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase88/base/carrier01/base.p88",
+      "sha256": "07af8cddb84820d861fc9f5d9475907754a64a9319de7d597c925149d8b186a7",
+      "bytes": 1100924
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/bun-1.4.3/bun",
+      "bytes": 88979072,
+      "sha256": "7ce7d6b654eddeec20afddf2396317fba6dc19ab52788a27e894e1806bf8f24b"
+    }
+  ],
+  "requiredExports": [
+    "p88_cache_prepare",
+    "p86_prepare",
+    "p86_plan",
+    "p111_runtime_admission",
+    "p113d_lower_request",
+    "p113d_verify",
+    "p113e_admitted_chunks"
+  ],
+  "startedUtc": "2026-10-20T19:15:18.690Z",
+  "stages": [
+    {
+      "name": "api-import",
+      "status": "complete",
+      "compiler": false,
+      "startedUtc": "2026-10-20T19:15:18.690Z",
+      "before": {
+        "rssBytes": 33431552,
+        "processLifetimeMaxRssBytes": 36077568,
+        "heapUsedBytes": 2705265
+      },
+      "seconds": 0.13831915500000003,
+      "after": {
+        "rssBytes": 76095488,
+        "processLifetimeMaxRssBytes": 76095488,
+        "heapUsedBytes": 2705265
+      }
+    },
+    {
+      "name": "input-read",
+      "status": "complete",
+      "compiler": false,
+      "startedUtc": "2026-10-20T19:15:18.829Z",
+      "before": {
+        "rssBytes": 76095488,
+        "processLifetimeMaxRssBytes": 76095488,
+        "heapUsedBytes": 2705265
+      },
+      "seconds": 0.00031557199999997465,
+      "after": {
+        "rssBytes": 76095488,
+        "processLifetimeMaxRssBytes": 76095488,
+        "heapUsedBytes": 2705265
+      }
+    },
+    {
+      "name": "preparation",
+      "status": "complete",
+      "compiler": true,
+      "startedUtc": "2026-10-20T19:15:18.830Z",
+      "before": {
+        "rssBytes": 76095488,
+        "processLifetimeMaxRssBytes": 76095488,
+        "heapUsedBytes": 2705265
+      },
+      "seconds": 1.4191798430000002,
+      "after": {
+        "rssBytes": 83406848,
+        "processLifetimeMaxRssBytes": 85213184,
+        "heapUsedBytes": 13691473
+      }
+    },
+    {
+      "name": "frontend",
+      "status": "failed",
+      "compiler": true,
+      "startedUtc": "2026-10-20T19:15:20.249Z",
+      "before": {
+        "rssBytes": 83406848,
+        "processLifetimeMaxRssBytes": 85213184,
+        "heapUsedBytes": 13691473
+      },
+      "error": "Error: check: observe: type mismatch",
+      "seconds": 0.227419126,
+      "after": {
+        "rssBytes": 97751040,
+        "processLifetimeMaxRssBytes": 98066432,
+        "heapUsedBytes": 10648276
+      }
+    }
+  ],
+  "sourceChecked": false,
+  "runtimeAdmitted": false,
+  "irVerified": false,
+  "compilerHost": "checked Bend source API acquired by pinned TypeScript",
+  "composition": "prepare -> p86_plan -> runtime admission -> lower -> verify -> QBE chunks -> exact chunk write",
+  "timingScope": "compilerSeconds sums only marked Bend API stages. List counting, import/read, output hashing and write are separate. totalSeconds starts after preflight authentication; outer guard includes process startup and preflight.",
+  "memoryScope": "Host process RSS snapshots and Linux lifetime high-water RSS; not isolated per-stage peaks or full process-tree RSS. No forced GC.",
+  "scope": "Staged acquisition diagnosis. List walks count metadata only; no graph JSON, semantic transformation, native compiler or self-host qualification.",
+  "diagnostic": "check: observe: type mismatch",
+  "failedStage": "frontend",
+  "error": "Error: check: observe: type mismatch",
+  "compilerSeconds": 1.6465989690000002,
+  "writeSeconds": 0,
+  "totalSeconds": 1.787088097,
+  "finishedUtc": "2026-10-20T19:15:20.477Z",
+  "memory": {
+    "rssBytes": 97751040,
+    "processLifetimeMaxRssBytes": 98066432,
+    "heapUsedBytes": 10648276
+  }
+}

@@ -1,0 +1,766 @@
+{
+  "kind": "phase113-independent-field-array-jobs",
+  "version": 3,
+  "transportVersion": 2,
+  "targetsRun": false,
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase113/controls/field-array/source-manifest02.json",
+      "bytes": 6302,
+      "sha256": "458ecb4843309063df746eeaae23d282d7185eac58a1dfeaad6bcea04577aee3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase113/controls/field-array/prepare-jobs-v3.py",
+      "bytes": 6376,
+      "sha256": "3e2c10ef973e345d9ce58250ee962a4b841dfa889093cec3cac376db890e44a9"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase113/bench/transport-v2.py",
+      "bytes": 1049,
+      "sha256": "0741fb0a8c66b8428f1c4c899bb4e2e7eb2b0850632dcfb0b6ad70b52528b5de"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase113/staged-emit-v2.mjs",
+      "bytes": 13504,
+      "sha256": "48f8840619a5da16eb3416ad80aa774ad7bca4ee7a3616fc3b5ba92d03298193"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/runtime-products-build01/runtime.o",
+      "bytes": 96224,
+      "sha256": "c0f6f2ca5b5a58418f326794e97a29cc21a68f32e924ce5974ad4ffccfc9c9f9"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase113/controls/field-array/scalar-array-wrap-v2.bend",
+      "bytes": 3257,
+      "sha256": "84980d0265b05ad6d33dcb1aa87b44f52df432225f5b253795145e0cb8923e9d"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase113/controls/field-array/shared-array-capture.bend",
+      "bytes": 625,
+      "sha256": "876bec6e8ef29f0ac84423b5776781b37832e6ec9047221aa8fdc9268b114e5e"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase113/controls/field-array/string-array-owners.bend",
+      "bytes": 790,
+      "sha256": "58036392369eff947007f56e9fefb8c6490da38885597d68f7bbf885fb599ac4"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase113/controls/field-array/mixed-record-owner.bend",
+      "bytes": 613,
+      "sha256": "d3f47d35ffd78a35ce561d42a6cf8bfa11d3908bca8fb1b3592833e151db759b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/tests/compile/array_generic_cell.bend",
+      "bytes": 2016,
+      "sha256": "97ba0e0bacdf14cb2b412190579bdedc29ac650bc31ca739c5b1b3a24e24718a"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/tests/reg/array_borrow_generic.bend",
+      "bytes": 1382,
+      "sha256": "8795ab8145b79524cc5a9d72a76a44caf11758327e4394b1275da1918e945856"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase113/controls/field-array/scalar-array-wrap.expected.json",
+      "bytes": 121,
+      "sha256": "45c84fb1349a7cc0a0ae5ad5b1c2d1b4cf365cbde966895f60e0095c98044e17"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase113/controls/field-array/shared-array-capture.expected.json",
+      "bytes": 57,
+      "sha256": "3b977a72127e7f461cc44aba88b0cb196746ccd9d97b4025c7e54f80164f9dd4"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase113/controls/field-array/string-array-owners.expected.json",
+      "bytes": 83,
+      "sha256": "22d5e1949563f8391426f832b4440e7eec63d8b9dbdaff6dc2e9183da3f1ba1a"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase113/controls/field-array/mixed-record-owner.expected.json",
+      "bytes": 78,
+      "sha256": "30e39d7c3dffa7c4407c2e118d79eb6bd550aed21bac631c55696e70ab6dc7e6"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase113/controls/field-array/upstream-generic-cell.expected.json",
+      "bytes": 65,
+      "sha256": "a255bc6c27936ced399dcedd0d03004911bfd6beb9727185b4d1ed4ac14d25a0"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase113/controls/field-array/upstream-borrowed-generic.expected.json",
+      "bytes": 55,
+      "sha256": "fac3d89859d2c3c669f46dac744bfc06f9ac13fe190b6c20f0b2ab82e32367e6"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase113/controls/field-array/prepare-jobs.py",
+      "bytes": 3925,
+      "sha256": "32d83384d63bfb38181b5b8d9be0291669f97b5620b3edde8c999f8981eb812a"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-shared-api16/api.mjs",
+      "bytes": 1587131,
+      "sha256": "63dfc10af1da7145f7f66a2af297ce22233b6d96630f815f210f9aaaab7f9b7e"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-shared-api16/report.json",
+      "bytes": 4156,
+      "sha256": "5d641b923450fd74daee73ce2129722edcce8188963e695890d6071919766a43"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-shared-api16/method.py",
+      "bytes": 2711,
+      "sha256": "f30b66931589f2c30037418a08a622eb543b0c5052332095223c01d115b2084b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase111/prepare.py",
+      "bytes": 5771,
+      "sha256": "efbd89d752e682295a76107ae4a8935a5f033ba3039288d12c06ea553cecad88"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-shared-api16/stage0-library.mjs",
+      "bytes": 4172,
+      "sha256": "ec3506de1558fa1e56cef54345053ffaf7bfcc92b8632eaf96e217c15b8a59c1"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/bun-1.4.3/bun",
+      "bytes": 88979072,
+      "sha256": "7ce7d6b654eddeec20afddf2396317fba6dc19ab52788a27e894e1806bf8f24b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/shared-source16/compiler.bend",
+      "bytes": 2179715,
+      "sha256": "1c177a1b91326166c4835e7a436a40602f8db454db715dea1ed59d02c01ca9fc"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/bend.ts",
+      "bytes": 138101,
+      "sha256": "1d133151652b597a1a035c77c172475e6de096da37f3b9e3adc23c2f75bdfe49"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/comp.ts",
+      "bytes": 185124,
+      "sha256": "2b13224ba09a9e39e37cccf06e449c1bdafe5e03a81641654f7d0e455507629c"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/base.bend",
+      "bytes": 75064,
+      "sha256": "99ac43f2b2bb3e3f39acdcedcecbbd3cb44749ce13969c827d6973fa66f7facf"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-arrays-api17/api.mjs",
+      "bytes": 1593201,
+      "sha256": "1c90370361a4b11f2b45f9938fb28d0c5134b5d587f0057d59d56bdf9bdbc0a4"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-arrays-api17/report.json",
+      "bytes": 4471,
+      "sha256": "6999b40ce6309c17b1e708ca391f2207956cec79dc4e0ce2f3ac2380b197acd7"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-arrays-api17/method.py",
+      "bytes": 2711,
+      "sha256": "f30b66931589f2c30037418a08a622eb543b0c5052332095223c01d115b2084b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-arrays-api17/stage0-library.mjs",
+      "bytes": 4172,
+      "sha256": "ec3506de1558fa1e56cef54345053ffaf7bfcc92b8632eaf96e217c15b8a59c1"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/arrays-source17/compiler.bend",
+      "bytes": 2196750,
+      "sha256": "d9c6738399cd75d43a96d58b7302a267ff5492cf1fb183dc122455b75168ee09"
+    }
+  ],
+  "roles": {
+    "baseline": {
+      "api": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-shared-api16/api.mjs",
+        "bytes": 1587131,
+        "sha256": "63dfc10af1da7145f7f66a2af297ce22233b6d96630f815f210f9aaaab7f9b7e"
+      },
+      "apiReceipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-shared-api16/report.json",
+        "bytes": 4156,
+        "sha256": "5d641b923450fd74daee73ce2129722edcce8188963e695890d6071919766a43"
+      },
+      "pipeline": "direct",
+      "lowering": "p113d_lower_request",
+      "verifier": "p113d_verify",
+      "renderer": "p113e_admitted_chunks",
+      "rendererReverifies": false,
+      "explicitVerificationPasses": 1,
+      "requiredExports": [
+        "p88_cache_prepare",
+        "p86_prepare",
+        "p86_plan",
+        "p111_runtime_admission",
+        "p113d_lower_request",
+        "p113d_verify",
+        "p113e_admitted_chunks"
+      ]
+    },
+    "candidate": {
+      "api": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-arrays-api17/api.mjs",
+        "bytes": 1593201,
+        "sha256": "1c90370361a4b11f2b45f9938fb28d0c5134b5d587f0057d59d56bdf9bdbc0a4"
+      },
+      "apiReceipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-arrays-api17/report.json",
+        "bytes": 4471,
+        "sha256": "6999b40ce6309c17b1e708ca391f2207956cec79dc4e0ce2f3ac2380b197acd7"
+      },
+      "pipeline": "array",
+      "lowering": "p113a_lower_request",
+      "verifier": "p113a_verify",
+      "renderer": "p113a_admitted_chunks",
+      "rendererReverifies": false,
+      "explicitVerificationPasses": 1,
+      "requiredExports": [
+        "p88_cache_prepare",
+        "p86_prepare",
+        "p86_plan",
+        "p111_runtime_admission",
+        "p113a_lower_request",
+        "p113a_verify",
+        "p113a_admitted_chunks"
+      ]
+    }
+  },
+  "names": [
+    "scalar-array-wrap",
+    "shared-array-capture",
+    "string-array-owners",
+    "mixed-record-owner",
+    "upstream-generic-cell",
+    "upstream-borrowed-generic"
+  ],
+  "manifest": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase113/controls/field-array/source-manifest02.json",
+    "bytes": 6302,
+    "sha256": "458ecb4843309063df746eeaae23d282d7185eac58a1dfeaad6bcea04577aee3"
+  },
+  "runtime": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/runtime-products-build01/runtime.o",
+    "bytes": 96224,
+    "sha256": "c0f6f2ca5b5a58418f326794e97a29cc21a68f32e924ce5974ad4ffccfc9c9f9"
+  },
+  "jobs": [
+    {
+      "name": "baseline-scalar-array-wrap-emit",
+      "seconds": 60,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/bun-1.4.3/bun",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase113/staged-emit-v2.mjs",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-shared-api16/api.mjs",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase113/controls/field-array/scalar-array-wrap-v2.bend",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-field-array17-matched02-baseline-scalar-array-wrap-emit",
+        "cache",
+        "direct"
+      ]
+    },
+    {
+      "name": "baseline-scalar-array-wrap-build",
+      "seconds": 60,
+      "command": [
+        "python3",
+        "-B",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase111/build.py",
+        "--source",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-field-array17-matched02-baseline-scalar-array-wrap-emit/program.ssa",
+        "--runtime",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/runtime-products-build01/runtime.o",
+        "--out",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-field-array17-matched02-baseline-scalar-array-wrap-build"
+      ]
+    },
+    {
+      "name": "baseline-scalar-array-wrap-observe",
+      "seconds": 20,
+      "command": [
+        "python3",
+        "-B",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase112/observe.py",
+        "--binary",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-field-array17-matched02-baseline-scalar-array-wrap-build/program",
+        "--expected",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase113/controls/field-array/scalar-array-wrap.expected.json",
+        "--out",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-field-array17-matched02-baseline-scalar-array-wrap-observe"
+      ]
+    },
+    {
+      "name": "baseline-shared-array-capture-emit",
+      "seconds": 60,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/bun-1.4.3/bun",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase113/staged-emit-v2.mjs",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-shared-api16/api.mjs",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase113/controls/field-array/shared-array-capture.bend",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-field-array17-matched02-baseline-shared-array-capture-emit",
+        "cache",
+        "direct"
+      ]
+    },
+    {
+      "name": "baseline-shared-array-capture-build",
+      "seconds": 60,
+      "command": [
+        "python3",
+        "-B",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase111/build.py",
+        "--source",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-field-array17-matched02-baseline-shared-array-capture-emit/program.ssa",
+        "--runtime",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/runtime-products-build01/runtime.o",
+        "--out",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-field-array17-matched02-baseline-shared-array-capture-build"
+      ]
+    },
+    {
+      "name": "baseline-shared-array-capture-observe",
+      "seconds": 20,
+      "command": [
+        "python3",
+        "-B",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase112/observe.py",
+        "--binary",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-field-array17-matched02-baseline-shared-array-capture-build/program",
+        "--expected",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase113/controls/field-array/shared-array-capture.expected.json",
+        "--out",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-field-array17-matched02-baseline-shared-array-capture-observe"
+      ]
+    },
+    {
+      "name": "baseline-string-array-owners-emit",
+      "seconds": 60,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/bun-1.4.3/bun",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase113/staged-emit-v2.mjs",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-shared-api16/api.mjs",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase113/controls/field-array/string-array-owners.bend",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-field-array17-matched02-baseline-string-array-owners-emit",
+        "cache",
+        "direct"
+      ]
+    },
+    {
+      "name": "baseline-string-array-owners-build",
+      "seconds": 60,
+      "command": [
+        "python3",
+        "-B",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase111/build.py",
+        "--source",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-field-array17-matched02-baseline-string-array-owners-emit/program.ssa",
+        "--runtime",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/runtime-products-build01/runtime.o",
+        "--out",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-field-array17-matched02-baseline-string-array-owners-build"
+      ]
+    },
+    {
+      "name": "baseline-string-array-owners-observe",
+      "seconds": 20,
+      "command": [
+        "python3",
+        "-B",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase112/observe.py",
+        "--binary",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-field-array17-matched02-baseline-string-array-owners-build/program",
+        "--expected",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase113/controls/field-array/string-array-owners.expected.json",
+        "--out",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-field-array17-matched02-baseline-string-array-owners-observe"
+      ]
+    },
+    {
+      "name": "baseline-mixed-record-owner-emit",
+      "seconds": 60,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/bun-1.4.3/bun",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase113/staged-emit-v2.mjs",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-shared-api16/api.mjs",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase113/controls/field-array/mixed-record-owner.bend",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-field-array17-matched02-baseline-mixed-record-owner-emit",
+        "cache",
+        "direct"
+      ]
+    },
+    {
+      "name": "baseline-mixed-record-owner-build",
+      "seconds": 60,
+      "command": [
+        "python3",
+        "-B",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase111/build.py",
+        "--source",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-field-array17-matched02-baseline-mixed-record-owner-emit/program.ssa",
+        "--runtime",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/runtime-products-build01/runtime.o",
+        "--out",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-field-array17-matched02-baseline-mixed-record-owner-build"
+      ]
+    },
+    {
+      "name": "baseline-mixed-record-owner-observe",
+      "seconds": 20,
+      "command": [
+        "python3",
+        "-B",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase112/observe.py",
+        "--binary",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-field-array17-matched02-baseline-mixed-record-owner-build/program",
+        "--expected",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase113/controls/field-array/mixed-record-owner.expected.json",
+        "--out",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-field-array17-matched02-baseline-mixed-record-owner-observe"
+      ]
+    },
+    {
+      "name": "baseline-upstream-generic-cell-emit",
+      "seconds": 60,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/bun-1.4.3/bun",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase113/staged-emit-v2.mjs",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-shared-api16/api.mjs",
+        "/home/ai/bend2/build/publish/bend/tests/compile/array_generic_cell.bend",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-field-array17-matched02-baseline-upstream-generic-cell-emit",
+        "cache",
+        "direct"
+      ]
+    },
+    {
+      "name": "baseline-upstream-generic-cell-build",
+      "seconds": 60,
+      "command": [
+        "python3",
+        "-B",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase111/build.py",
+        "--source",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-field-array17-matched02-baseline-upstream-generic-cell-emit/program.ssa",
+        "--runtime",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/runtime-products-build01/runtime.o",
+        "--out",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-field-array17-matched02-baseline-upstream-generic-cell-build"
+      ]
+    },
+    {
+      "name": "baseline-upstream-generic-cell-observe",
+      "seconds": 20,
+      "command": [
+        "python3",
+        "-B",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase112/observe.py",
+        "--binary",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-field-array17-matched02-baseline-upstream-generic-cell-build/program",
+        "--expected",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase113/controls/field-array/upstream-generic-cell.expected.json",
+        "--out",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-field-array17-matched02-baseline-upstream-generic-cell-observe"
+      ]
+    },
+    {
+      "name": "baseline-upstream-borrowed-generic-emit",
+      "seconds": 60,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/bun-1.4.3/bun",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase113/staged-emit-v2.mjs",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-shared-api16/api.mjs",
+        "/home/ai/bend2/build/publish/bend/tests/reg/array_borrow_generic.bend",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-field-array17-matched02-baseline-upstream-borrowed-generic-emit",
+        "cache",
+        "direct"
+      ]
+    },
+    {
+      "name": "baseline-upstream-borrowed-generic-build",
+      "seconds": 60,
+      "command": [
+        "python3",
+        "-B",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase111/build.py",
+        "--source",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-field-array17-matched02-baseline-upstream-borrowed-generic-emit/program.ssa",
+        "--runtime",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/runtime-products-build01/runtime.o",
+        "--out",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-field-array17-matched02-baseline-upstream-borrowed-generic-build"
+      ]
+    },
+    {
+      "name": "baseline-upstream-borrowed-generic-observe",
+      "seconds": 20,
+      "command": [
+        "python3",
+        "-B",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase112/observe.py",
+        "--binary",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-field-array17-matched02-baseline-upstream-borrowed-generic-build/program",
+        "--expected",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase113/controls/field-array/upstream-borrowed-generic.expected.json",
+        "--out",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-field-array17-matched02-baseline-upstream-borrowed-generic-observe"
+      ]
+    },
+    {
+      "name": "candidate-scalar-array-wrap-emit",
+      "seconds": 60,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/bun-1.4.3/bun",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase113/staged-emit-v2.mjs",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-arrays-api17/api.mjs",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase113/controls/field-array/scalar-array-wrap-v2.bend",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-field-array17-matched02-candidate-scalar-array-wrap-emit",
+        "cache",
+        "array"
+      ]
+    },
+    {
+      "name": "candidate-scalar-array-wrap-build",
+      "seconds": 60,
+      "command": [
+        "python3",
+        "-B",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase111/build.py",
+        "--source",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-field-array17-matched02-candidate-scalar-array-wrap-emit/program.ssa",
+        "--runtime",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/runtime-products-build01/runtime.o",
+        "--out",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-field-array17-matched02-candidate-scalar-array-wrap-build"
+      ]
+    },
+    {
+      "name": "candidate-scalar-array-wrap-observe",
+      "seconds": 20,
+      "command": [
+        "python3",
+        "-B",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase112/observe.py",
+        "--binary",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-field-array17-matched02-candidate-scalar-array-wrap-build/program",
+        "--expected",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase113/controls/field-array/scalar-array-wrap.expected.json",
+        "--out",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-field-array17-matched02-candidate-scalar-array-wrap-observe"
+      ]
+    },
+    {
+      "name": "candidate-shared-array-capture-emit",
+      "seconds": 60,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/bun-1.4.3/bun",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase113/staged-emit-v2.mjs",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-arrays-api17/api.mjs",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase113/controls/field-array/shared-array-capture.bend",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-field-array17-matched02-candidate-shared-array-capture-emit",
+        "cache",
+        "array"
+      ]
+    },
+    {
+      "name": "candidate-shared-array-capture-build",
+      "seconds": 60,
+      "command": [
+        "python3",
+        "-B",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase111/build.py",
+        "--source",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-field-array17-matched02-candidate-shared-array-capture-emit/program.ssa",
+        "--runtime",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/runtime-products-build01/runtime.o",
+        "--out",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-field-array17-matched02-candidate-shared-array-capture-build"
+      ]
+    },
+    {
+      "name": "candidate-shared-array-capture-observe",
+      "seconds": 20,
+      "command": [
+        "python3",
+        "-B",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase112/observe.py",
+        "--binary",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-field-array17-matched02-candidate-shared-array-capture-build/program",
+        "--expected",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase113/controls/field-array/shared-array-capture.expected.json",
+        "--out",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-field-array17-matched02-candidate-shared-array-capture-observe"
+      ]
+    },
+    {
+      "name": "candidate-string-array-owners-emit",
+      "seconds": 60,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/bun-1.4.3/bun",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase113/staged-emit-v2.mjs",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-arrays-api17/api.mjs",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase113/controls/field-array/string-array-owners.bend",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-field-array17-matched02-candidate-string-array-owners-emit",
+        "cache",
+        "array"
+      ]
+    },
+    {
+      "name": "candidate-string-array-owners-build",
+      "seconds": 60,
+      "command": [
+        "python3",
+        "-B",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase111/build.py",
+        "--source",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-field-array17-matched02-candidate-string-array-owners-emit/program.ssa",
+        "--runtime",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/runtime-products-build01/runtime.o",
+        "--out",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-field-array17-matched02-candidate-string-array-owners-build"
+      ]
+    },
+    {
+      "name": "candidate-string-array-owners-observe",
+      "seconds": 20,
+      "command": [
+        "python3",
+        "-B",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase112/observe.py",
+        "--binary",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-field-array17-matched02-candidate-string-array-owners-build/program",
+        "--expected",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase113/controls/field-array/string-array-owners.expected.json",
+        "--out",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-field-array17-matched02-candidate-string-array-owners-observe"
+      ]
+    },
+    {
+      "name": "candidate-mixed-record-owner-emit",
+      "seconds": 60,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/bun-1.4.3/bun",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase113/staged-emit-v2.mjs",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-arrays-api17/api.mjs",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase113/controls/field-array/mixed-record-owner.bend",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-field-array17-matched02-candidate-mixed-record-owner-emit",
+        "cache",
+        "array"
+      ]
+    },
+    {
+      "name": "candidate-mixed-record-owner-build",
+      "seconds": 60,
+      "command": [
+        "python3",
+        "-B",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase111/build.py",
+        "--source",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-field-array17-matched02-candidate-mixed-record-owner-emit/program.ssa",
+        "--runtime",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/runtime-products-build01/runtime.o",
+        "--out",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-field-array17-matched02-candidate-mixed-record-owner-build"
+      ]
+    },
+    {
+      "name": "candidate-mixed-record-owner-observe",
+      "seconds": 20,
+      "command": [
+        "python3",
+        "-B",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase112/observe.py",
+        "--binary",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-field-array17-matched02-candidate-mixed-record-owner-build/program",
+        "--expected",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase113/controls/field-array/mixed-record-owner.expected.json",
+        "--out",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-field-array17-matched02-candidate-mixed-record-owner-observe"
+      ]
+    },
+    {
+      "name": "candidate-upstream-generic-cell-emit",
+      "seconds": 60,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/bun-1.4.3/bun",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase113/staged-emit-v2.mjs",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-arrays-api17/api.mjs",
+        "/home/ai/bend2/build/publish/bend/tests/compile/array_generic_cell.bend",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-field-array17-matched02-candidate-upstream-generic-cell-emit",
+        "cache",
+        "array"
+      ]
+    },
+    {
+      "name": "candidate-upstream-generic-cell-build",
+      "seconds": 60,
+      "command": [
+        "python3",
+        "-B",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase111/build.py",
+        "--source",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-field-array17-matched02-candidate-upstream-generic-cell-emit/program.ssa",
+        "--runtime",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/runtime-products-build01/runtime.o",
+        "--out",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-field-array17-matched02-candidate-upstream-generic-cell-build"
+      ]
+    },
+    {
+      "name": "candidate-upstream-generic-cell-observe",
+      "seconds": 20,
+      "command": [
+        "python3",
+        "-B",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase112/observe.py",
+        "--binary",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-field-array17-matched02-candidate-upstream-generic-cell-build/program",
+        "--expected",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase113/controls/field-array/upstream-generic-cell.expected.json",
+        "--out",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-field-array17-matched02-candidate-upstream-generic-cell-observe"
+      ]
+    },
+    {
+      "name": "candidate-upstream-borrowed-generic-emit",
+      "seconds": 60,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/bun-1.4.3/bun",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase113/staged-emit-v2.mjs",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-arrays-api17/api.mjs",
+        "/home/ai/bend2/build/publish/bend/tests/reg/array_borrow_generic.bend",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-field-array17-matched02-candidate-upstream-borrowed-generic-emit",
+        "cache",
+        "array"
+      ]
+    },
+    {
+      "name": "candidate-upstream-borrowed-generic-build",
+      "seconds": 60,
+      "command": [
+        "python3",
+        "-B",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase111/build.py",
+        "--source",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-field-array17-matched02-candidate-upstream-borrowed-generic-emit/program.ssa",
+        "--runtime",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/runtime-products-build01/runtime.o",
+        "--out",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-field-array17-matched02-candidate-upstream-borrowed-generic-build"
+      ]
+    },
+    {
+      "name": "candidate-upstream-borrowed-generic-observe",
+      "seconds": 20,
+      "command": [
+        "python3",
+        "-B",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase112/observe.py",
+        "--binary",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-field-array17-matched02-candidate-upstream-borrowed-generic-build/program",
+        "--expected",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase113/controls/field-array/upstream-borrowed-generic.expected.json",
+        "--out",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-field-array17-matched02-candidate-upstream-borrowed-generic-observe"
+      ]
+    }
+  ],
+  "scope": "Exact frozen source execution parity through explicitly recorded baseline/candidate pipelines. Optional array structural controls are separate from source/native/runtime qualification."
+}

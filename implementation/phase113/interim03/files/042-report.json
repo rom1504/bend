@@ -1,0 +1,131 @@
+{
+  "kind": "phase113-checked-direct-inlining-audit",
+  "complete": true,
+  "mode": "cache",
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase113/direct-opt-products/audit.mjs",
+      "bytes": 6083,
+      "sha256": "b3b37e207238a1f26563f4778731945a05d1f9d631210a55ced47e73b50ecdbc"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-wide-api18/api.mjs",
+      "bytes": 1593321,
+      "sha256": "ba06f78af82ed397fb5bb77ad02a27f5810db05566586a43fd5e002a74e7a56c"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p113-wide-api18/report.json",
+      "bytes": 4512,
+      "sha256": "40d7964a8b13416c890ef0cd13282a9ccfa713b66a3ae2c4ddee62939ddbffa1"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/fixtures01/local-pair.bend",
+      "bytes": 8202,
+      "sha256": "acb8a8bc1d8ed6fd5c3a57e08c154042e0524a8d4f3f12ddcec9da75a327e78c"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/native/selection.json",
+      "bytes": 335,
+      "sha256": "abcf83f679c38aacd21dc121dcc479337f9e4bd77001be8dbfa261da6ca20285"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase102/native-chain04/admission.json",
+      "sha256": "a8a7abd1c985604d7d3e944c558a770c08e3e43d9035dfe54977d122e880c8b0",
+      "bytes": 1809272
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/base.bend",
+      "sha256": "99ac43f2b2bb3e3f39acdcedcecbbd3cb44749ce13969c827d6973fa66f7facf",
+      "bytes": 75064
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase88/base/carrier01/base.p88",
+      "sha256": "07af8cddb84820d861fc9f5d9475907754a64a9319de7d597c925149d8b186a7",
+      "bytes": 1100924
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/bun-1.4.3/bun",
+      "bytes": 88979072,
+      "sha256": "7ce7d6b654eddeec20afddf2396317fba6dc19ab52788a27e894e1806bf8f24b"
+    }
+  ],
+  "requiredExports": [
+    "p86_plan",
+    "p111_runtime_admission",
+    "p113d_lower_request",
+    "p113d_verify",
+    "p113i_optimize",
+    "p113j_audit",
+    "p88_cache_prepare"
+  ],
+  "stages": [
+    {
+      "name": "api-import",
+      "status": "complete",
+      "seconds": 0.13698609799999997
+    },
+    {
+      "name": "preparation",
+      "status": "complete",
+      "seconds": 1.436579337
+    },
+    {
+      "name": "frontend",
+      "status": "complete",
+      "seconds": 2.041187224
+    },
+    {
+      "name": "runtime-admission",
+      "status": "complete",
+      "seconds": 0.014028101999999763
+    },
+    {
+      "name": "lower-before",
+      "status": "complete",
+      "seconds": 1.7175363529999994
+    },
+    {
+      "name": "verify-before",
+      "status": "complete",
+      "seconds": 0.6571468420000001
+    },
+    {
+      "name": "optimize",
+      "status": "complete",
+      "seconds": 1.392724303
+    },
+    {
+      "name": "verify-after",
+      "status": "complete",
+      "seconds": 0.7886445989999993
+    },
+    {
+      "name": "write-audits",
+      "status": "complete",
+      "seconds": 0.051662936999999146
+    }
+  ],
+  "sourceChecked": true,
+  "runtimeAdmitted": true,
+  "scope": "Checked frontend and runtime admission, Bend before/after IR verification and audit text. No QBE build, native execution, performance qualification, or host semantic transformation.",
+  "verdict": "ALL PROOFS CHECK\nUse --verdict for mathematical validity.\n",
+  "loweringEntry": "p113pl_lower_request",
+  "beforeInliningAvailable": true,
+  "beforeScope": "Unoptimized direct lowerer output",
+  "functionCounts": {
+    "before": 45,
+    "after": 45
+  },
+  "outputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/wide-audit18/before.txt",
+      "bytes": 4615,
+      "sha256": "fb69122499343c37f838fa03f24a9ac3e2bf772d9e1ef714e26dbbd31947821c"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/wide-audit18/after.txt",
+      "bytes": 4397,
+      "sha256": "a1c4cd403993ce889982b80746e7c0137202aa31767d8d9a0adbcfe9ff86a015"
+    }
+  ]
+}

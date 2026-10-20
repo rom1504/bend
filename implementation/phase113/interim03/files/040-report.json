@@ -1,0 +1,161 @@
+{
+  "kind": "phase113-serial-jobs",
+  "complete": true,
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/checks18-19-plan.json",
+      "sha256": "ae053d21066a935a7c6a0a0fe98cb5e2c872370bb4c57e79225ea71e41712213",
+      "bytes": 3211
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase113/run-jobs.py",
+      "sha256": "eda86523253d9b0f0abd8dfd3e8b2167252cfff0352b0d9949458c7b0969309e",
+      "bytes": 1692
+    }
+  ],
+  "jobs": [
+    {
+      "name": "wide-check",
+      "command": [
+        "python3",
+        "-B",
+        "selfhost/tools/performance/phase111/check-api.py",
+        "--source",
+        "selfhost/build/phase113/wide-source18/compiler.bend",
+        "--out",
+        "selfhost/build/phase111/p113-wide-api18",
+        "p111_compile_source",
+        "p88_cache_prepare",
+        "p86_prepare",
+        "p86_plan",
+        "p111_runtime_admission",
+        "p113d_lower_request",
+        "p113d_verify",
+        "p113d_chunks",
+        "p113d_inspect_request",
+        "p113e_admitted_chunks",
+        "p113a_lower_request",
+        "p113a_verify",
+        "p113a_chunks",
+        "p113a_admitted_chunks",
+        "p113a_inspect_lowered",
+        "p113a_inspect_request",
+        "p113a_stmt_id",
+        "p113a_template",
+        "p113a_scan",
+        "p113a_heap_min",
+        "p113a_enabled",
+        "p113a_body_names",
+        "p113_closure_control_report",
+        "p113_nat_match_control_report",
+        "p113i_optimize",
+        "p113i_eligible",
+        "p113j_audit",
+        "p113j_function_info",
+        "p113j_reason",
+        "p113j_scratch",
+        "p113j_buffer_origin",
+        "p113j_returns",
+        "p113pl_lower_request"
+      ],
+      "seconds": 10.778765828115866,
+      "status": 0,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/checks18-19/0.stdout",
+        "sha256": "bdfe01b430d74f37ec170cbeefa94bf4c01fc8039397414783f4f00c10acb237",
+        "bytes": 134
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/checks18-19/0.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "name": "ranges-check",
+      "command": [
+        "python3",
+        "-B",
+        "selfhost/tools/performance/phase111/check-api.py",
+        "--source",
+        "selfhost/build/phase113/ranges-source19/compiler.bend",
+        "--out",
+        "selfhost/build/phase111/p113-ranges-api19",
+        "p111_compile_source",
+        "p88_cache_prepare",
+        "p86_prepare",
+        "p86_plan",
+        "p111_runtime_admission",
+        "p113d_lower_request",
+        "p113d_verify",
+        "p113d_chunks",
+        "p113d_inspect_request",
+        "p113e_admitted_chunks",
+        "p113a_lower_request",
+        "p113a_verify",
+        "p113a_chunks",
+        "p113a_admitted_chunks",
+        "p113a_inspect_lowered",
+        "p113a_inspect_request",
+        "p113a_stmt_id",
+        "p113a_template",
+        "p113a_scan",
+        "p113a_heap_min",
+        "p113a_enabled",
+        "p113a_body_names",
+        "p113_closure_control_report",
+        "p113_nat_match_control_report",
+        "p113i_optimize",
+        "p113i_eligible",
+        "p113j_audit",
+        "p113j_function_info",
+        "p113j_reason",
+        "p113j_scratch",
+        "p113j_buffer_origin",
+        "p113j_returns",
+        "p113pl_lower_request",
+        "p113k_optimize",
+        "p113k_lowered"
+      ],
+      "seconds": 10.554394989972934,
+      "status": 0,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/checks18-19/1.stdout",
+        "sha256": "8439661d1462247b8ed279a69efc03d728e9c56af951e6c0e4b1480897464751",
+        "bytes": 135
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/checks18-19/1.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "name": "field-array-preflight03",
+      "command": [
+        "selfhost/.bootstrap/bun-1.4.3/bun",
+        "selfhost/tools/performance/phase113/controls/frontend-preflight.mjs",
+        "selfhost/build/phase111/p113-shared-api16/api.mjs",
+        "selfhost/tools/performance/phase113/controls/field-array/source-manifest03.json",
+        "selfhost/build/phase113/field-array-preflight03",
+        "shared-array-capture",
+        "string-array-owners",
+        "mixed-record-owner",
+        "upstream-generic-cell",
+        "upstream-borrowed-generic"
+      ],
+      "seconds": 3.638014611089602,
+      "status": 0,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/checks18-19/2.stdout",
+        "sha256": "fda4e44f019dee6ab336a04981219960a1a58593cc31b9e1f177e908172b7320",
+        "bytes": 1974
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/checks18-19/2.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    }
+  ]
+}

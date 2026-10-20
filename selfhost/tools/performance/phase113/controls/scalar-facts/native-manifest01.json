@@ -1,0 +1,33 @@
+{
+  "kind": "phase113-independent-scalar-facts-native-source",
+  "version": 1,
+  "frozenUtc": "2026-10-20T19:19:55.222577+00:00",
+  "targetsRun": false,
+  "sourceChecked": false,
+  "inputs": [
+    {
+      "file": "selfhost/tools/performance/phase113/controls/scalar-facts/native-bools-nat.bend",
+      "bytes": 1722,
+      "sha256": "b954cf46e92a694a95cb635950b6bed07e79a0a0c69fe8472685af5501f22010"
+    },
+    {
+      "file": "selfhost/tools/performance/phase113/controls/scalar-facts/native-bools-nat.expected.json",
+      "bytes": 182,
+      "sha256": "cb53138d52f44f1e42dfc7e53b4fa9c9e12f19be64a04b65ad84262acff0cef4"
+    },
+    {
+      "file": "selfhost/tools/performance/phase113/controls/scalar-facts/prepare-native.py",
+      "bytes": 3789,
+      "sha256": "233102762e709073c67af13c084278a1debcd6be4b2481de35383f8ac1cf5b7f"
+    }
+  ],
+  "cases": [
+    {
+      "name": "native-bools-nat",
+      "source": "selfhost/tools/performance/phase113/controls/scalar-facts/native-bools-nat.bend",
+      "expected": "selfhost/tools/performance/phase113/controls/scalar-facts/native-bools-nat.expected.json"
+    }
+  ],
+  "rationale": "U32 threshold select returns n+1 below2^31 else n-1; Natthreshold2^40 returnsn belowthreshold else n-1; true/false record fieldselects2^40 or2^48\u22121 twiceunder sharedparent. Allintegeroutputs independentlycalculatedfromliteralinputs.",
+  "scope": "Logical Bool and full-width Nat sourcewitness, plusallocatedStringfields under sharedparent. Source syntax doesnotprescribeactualpackedBoolrepresentation: actualpackedTrue word is tested separatelyinrawIR. Frontend acceptance required before nativecompile; outputequalitydoesnotproveoptimizationselection."
+}

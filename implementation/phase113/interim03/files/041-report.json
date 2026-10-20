@@ -1,0 +1,93 @@
+{
+  "kind": "phase113-serial-jobs",
+  "complete": true,
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/screen-controls17-19-plan.json",
+      "sha256": "0dc929def0ec3d11b39483cb1aa244d23207646c2c0064dcc028e0faaa1e93ea",
+      "bytes": 1350
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase113/run-jobs.py",
+      "sha256": "eda86523253d9b0f0abd8dfd3e8b2167252cfff0352b0d9949458c7b0969309e",
+      "bytes": 1692
+    }
+  ],
+  "jobs": [
+    {
+      "name": "array17-screen",
+      "command": [
+        "python3",
+        "-B",
+        "selfhost/tools/performance/phase113/bench/run.py",
+        "measure",
+        "--bindings",
+        "selfhost/tools/performance/phase113/bench/baseline-binding01.json",
+        "selfhost/build/phase112/p113-shared-binding16.json",
+        "selfhost/build/phase112/p113-arrays-producer17-binding.json",
+        "--grade",
+        "diagnostic1",
+        "--budget-seconds",
+        "40",
+        "--out",
+        "selfhost/build/phase112/p113-array-screen17"
+      ],
+      "seconds": 10.290832662023604,
+      "status": 0,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/screen-controls17-19/0.stdout",
+        "sha256": "a76d4a185eab47e0a5f9460da562c6c4fe61a3e504833a23d618e99e34ee74f7",
+        "bytes": 2208
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/screen-controls17-19/0.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "name": "range-properties",
+      "command": [
+        "selfhost/.bootstrap/bun-1.4.3/bun",
+        "selfhost/tools/performance/phase113/controls/scalar-facts/controls-v2.mjs",
+        "selfhost/build/phase111/p113-ranges-api19/api.mjs",
+        "selfhost/build/phase113/scalar-facts-controls01"
+      ],
+      "seconds": 0.9663863950408995,
+      "status": 0,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/screen-controls17-19/1.stdout",
+        "sha256": "bd889d4c7f38a6028acee90b03d5b4d6e9a8c0c89e5ce5d8cb053ca81803454c",
+        "bytes": 6584
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/screen-controls17-19/1.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "name": "wide-audit",
+      "command": [
+        "selfhost/.bootstrap/bun-1.4.3/bun",
+        "selfhost/tools/performance/phase113/direct-opt-products/audit.mjs",
+        "selfhost/build/phase111/p113-wide-api18/api.mjs",
+        "selfhost/build/phase93/fixtures01/local-pair.bend",
+        "selfhost/build/phase113/wide-audit18",
+        "cache"
+      ],
+      "seconds": 8.971445089904591,
+      "status": 0,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/screen-controls17-19/2.stdout",
+        "sha256": "aa0df49c29dfd04831ce3accdce554028a6988311f85011ab3e83b95fa5d92ec",
+        "bytes": 636
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/screen-controls17-19/2.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    }
+  ]
+}

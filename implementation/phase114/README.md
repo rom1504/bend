@@ -1,14 +1,47 @@
 # Phase114 — visible runtime semantics and bounded compilation
 
-Work in progress, started 2026-10-20 21:31 UTC from `6259718`.
+Started 2026-10-20 21:31 UTC from `6259718`.
 [Design](../../design/phase114/qbe-parity-and-staged-runtime.md) ·
 [Architectural comparison](../../design/phase114/architecture-options.md).
 
-The starting candidate31 is 7.088× pinned upstream C/Clang program runtime over
-44 timed points of the original45 corpus. Its full native image acquisition
-times out during lowering. Phase112 facts remains the qualified native compiler;
-installed selection is unchanged. New observations below are not a new broad
-ratio or a native self-hosting claim.
+The selected QBE compiler reduces broad generated-program runtime from
+**7.082× to5.386× pinned upstream**, measured together on the original45 corpus
+(44 timed points plus one zero-work control). That is **23.95% less runtime,
+or1.315× faster**. All405 complete-output/count observations pass. Parity is not
+reached. These products were emitted by the checked hosted Bend API; native
+self-reproduction is being qualified separately. Installed selection is unchanged.
+
+The improvement extends beyond the frozen eight-program development screen:
+the other36 timed points improve6.925→5.337× upstream (22.93% less time). These
+are previously seen historical workloads, not a blind holdout. Across44 medians,
+33 decrease,6 tie and5 increase. The only increase above3%,
+`variation-editdist-0-17`, does not reproduce: five additional paired rounds give
+both old and new a389ms median. The original broad score retains its434ms
+candidate median; the repeat does not replace or cherry-pick that observation.
+
+[Exact summary](results.json) · [Per-program samples](broad-runtime.csv).
+
+![Matched 44-program runtime comparison; lower is faster](broad-runtime.svg)
+
+The main finding is that **retaining recursive computations as local control
+regions matters much more than exposing isolated runtime helpers**. Eligible
+recursion uses local descent/unwind and a closed continuation table, preserving
+the explicit stack, owning captures and generic fallback. This removes global
+dispatch and register-bank transfers. Unary representation packing and structured
+frame access add smaller gains. The best three-kernel screen is2.449× faster;
+its size must not be confused with the1.315× broad result.
+
+The selected assembled source grows48,839→50,565 physical lines (+3.53%), and
+2,232,290→2,306,291bytes. This phase adds capability rather than simplifying LOC.
+All compiler transformations remain Bend; the host scripts transport files and
+measure outcomes. The separately prepared scalar-operand experiment is not in
+this selected source or the broad score.
+
+Runtime integration takes214.314s for19 ordinary programs plus the frozen eight,
+then634.502s for the remaining37 acquisitions and the complete paired45 campaign.
+Neither gate exceeds433MiB process-tree RSS. Source checking and full native
+acquisition have separate larger limits and clocks. All target work uses one
+serial CPU3 lane; source-only agent work overlaps it.
 
 ## Verification reuse: first completed change
 
@@ -164,7 +197,8 @@ unary packing, local recursive regions/table, transport, structured unwind and
 table-first precedence. Its exact checked source has6,377 declarations,
 2,306,291bytes and SHA256
 `4fb0572f0a011f6c1921594372d816bb49f26289ecc0e079328edd7491598587`.
-Source/API/runtime admission passes; broad and native integration are in progress.
+Source/API/runtime admission,19 ordinary programs and the broad45 integration
+pass; native integration is in progress.
 Reproduction uses `integration/prepare-v3.py` and
 `integration/recipes-v3/table-unwind-first.json`, followed by checked API and
 `integration/admit-v3.py`; [instructions](../../selfhost/tools/performance/phase114/integration/README.md).

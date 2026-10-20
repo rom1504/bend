@@ -1,3 +1,39 @@
+# Current development frontier: Phase114 local recursive QBE regions
+
+[Report](../implementation/phase114/README.md) ·
+[1×/10×/100× design](../design/phase114/qbe-parity-and-staged-runtime.md) ·
+[Exact runtime summary](../implementation/phase114/results.json) ·
+[Source recipe](../selfhost/tools/performance/phase114/integration/README.md).
+
+The selected Bend-written source composes immutable verification sessions,
+indexed product lookup, guarded unary packing, local recursive continuation
+regions, a bounded multi-continuation table and structured frame restoration.
+The unchanged original45 campaign passes all405 output/count observations;
+44 timed points improve7.082→5.386×upstream (23.95% less time,1.315× faster).
+The36 timed points outside the frozen eight improve22.93%; they are historical
+coverage, not a blind holdout. Parity is not reached. Source grows3.53% to50,565lines.
+
+Checked source/API/runtime admission and19 ordinary source programs pass.
+The runtime products are hosted-API emitted. Final native qualification is
+running from `phase114/native-final01-with-transport-plan.json`; until it passes,
+Phase112 facts remains the qualified native checkpoint. Installed production
+selection remains unchanged. The intermediate scaling/index-only native image
+already builds in bounded time and passes the fast five.
+
+The separate scalar-operands prototype removes private scratch traffic only
+when every buffer use is an exact admitted pure scalar operation. Its source
+checks and exact composition admission pass; runtime/structural qualification
+is pending and it is excluded from the selected source and broad score.
+Isolated Take2, packed Take1 and generic complete-call bridge remain deferred:
+small selected gains did not justify their added complexity.
+
+Use ordinary source/functional controls and frozen bounded benchmarks only;
+do not resume Phase113 custom failure reproductions. Root owns one serial CPU3
+lane with2/4GiB tree caps and16GiB available floor. No PR comments. Read the
+[remaining architectural opportunities](../selfhost/tools/performance/phase114/runtime/next-architecture.md)
+before adding more isolated templates: preserve typed owned extraction and flat
+products through recursive regions; needed live captures still require storage.
+
 # Current development frontier: Phase113 complete functions and products
 
 [Report](../implementation/phase113/README.md) ·

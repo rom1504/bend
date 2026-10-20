@@ -1,0 +1,55 @@
+{
+  "kind": "phase114-scalar-operands-ordinary-source-control",
+  "version": 1,
+  "targetsRun": false,
+  "frozenUtc": "2026-10-20T23:16:42.858628+00:00",
+  "cases": [
+    {
+      "name": "ordinary-floats",
+      "source": "selfhost/tools/performance/phase114/scalar-operands/controls/fixtures/ordinary-floats.bend",
+      "sourcePin": {
+        "file": "selfhost/tools/performance/phase114/scalar-operands/controls/fixtures/ordinary-floats.bend",
+        "bytes": 1029,
+        "sha256": "71054b47b62c3b671b5d292a1d0b252bd3043f1550f0a20bbcf81ecfd63daba2"
+      },
+      "expected": {
+        "file": "selfhost/tools/performance/phase114/scalar-operands/controls/expected/ordinary-floats.json",
+        "bytes": 110,
+        "sha256": "79691d47736785f7f05b9d3acaf744c9a26cf588ee77dd93bf3f46db5b487e6f"
+      },
+      "stdout": {
+        "file": "selfhost/tools/performance/phase114/scalar-operands/controls/expected/ordinary-floats.stdout",
+        "bytes": 53,
+        "sha256": "19fe56bd4fcf423a3d60fd164fba5cbc1c3747a03595afb7717ffb1a4261b919"
+      },
+      "sourceChecked": false,
+      "purposes": [
+        "shared F32 inputs and arithmetic bit output",
+        "true/false/comparison signed-zero behavior",
+        "sqrt keeps shared fallback scratch",
+        "U32-to-F32 rounding boundary"
+      ]
+    }
+  ],
+  "fastOrder": [
+    "ordinary-floats"
+  ],
+  "inputs": [
+    {
+      "file": "selfhost/tools/performance/phase114/scalar-operands/controls/fixtures/ordinary-floats.bend",
+      "bytes": 1029,
+      "sha256": "71054b47b62c3b671b5d292a1d0b252bd3043f1550f0a20bbcf81ecfd63daba2"
+    },
+    {
+      "file": "selfhost/tools/performance/phase114/scalar-operands/controls/expected/ordinary-floats.json",
+      "bytes": 110,
+      "sha256": "79691d47736785f7f05b9d3acaf744c9a26cf588ee77dd93bf3f46db5b487e6f"
+    },
+    {
+      "file": "selfhost/tools/performance/phase114/scalar-operands/controls/expected/ordinary-floats.stdout",
+      "bytes": 53,
+      "sha256": "19fe56bd4fcf423a3d60fd164fba5cbc1c3747a03595afb7717ffb1a4261b919"
+    }
+  ],
+  "scope": "Independent literal IEEE binary32 output bits, ordinary valid source only; source/structural/native gates run separately by root."
+}

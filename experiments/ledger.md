@@ -5041,3 +5041,28 @@ grows10.03% to48,839lines. Next isolate repeated full verification, product
 suffix work and range joins before another full acquisition. Root's finalized
 76guards cover57m11.946s; interruption and other uncovered time are unattributed.
 Final capsule contains246exact JSON receipts, with nativeQualified=false.
+
+
+## Phase114 — local recursive QBE regions and bounded compiler acquisition
+
+[Design](../design/phase114/qbe-parity-and-staged-runtime.md) ·
+[Report](../implementation/phase114/README.md) ·
+[Exact broad result](../implementation/phase114/results.json).
+
+The original45 campaign now passes405 observations (three rotated rounds,
+upstream/source31/selected). Its44 timing points improve7.082→5.386×upstream,
+23.95% less elapsed time geometrically. The remaining36 points outside the
+frozen eight improve22.93%. The source remains Bend and programs use direct QBE
+with the unchanged cached C runtime. No per-program C/cproc is introduced.
+
+Local descent/unwind regions and a closed continuation table deliver the main
+runtime gain; isolated helper expansions give much smaller benefits. Immutable
+verification sessions and indexed signatures also make a full intermediate
+compiler acquisition complete in502.479s, replacing the earlier600s timeout.
+That intermediate image passes five fast cases. Final native N1/N2 integration
+is still running and is not inferred from the broad hosted-product campaign.
+
+Selected source SHA2564fb0572f0a011f6c1921594372d816bb49f26289ecc0e079328edd7491598587;
+50,565physical lines (+3.53% versus31). Optional scalar-buffer elimination is
+source-checked only and excluded from this selection. Full reports retain all
+isolated/deferred experiments. Production selection remains unchanged.

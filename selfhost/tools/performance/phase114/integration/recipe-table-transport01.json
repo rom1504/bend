@@ -1,0 +1,85 @@
+{
+  "kind": "phase114-composition-recipe",
+  "version": 1,
+  "baseline": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/wide-source31/compiler.bend",
+    "bytes": 2232290,
+    "sha256": "287c85558f3eb40d5576b51a4f7c0238100a9c4c93fc36ee52e3b8bc4e2ac303"
+  },
+  "components": [
+    {
+      "name": "verification-session",
+      "inventory": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase114/scaling/modules.json",
+        "bytes": 2830,
+        "sha256": "37bc38671cb4a6a743308bca7aae3b9367ee990f2fffa50cb346eeacf5778531"
+      },
+      "moduleFields": [
+        "modules",
+        "override"
+      ],
+      "allowedOverrides": [
+        "p113d_lower_request"
+      ]
+    },
+    {
+      "name": "catalogue-index",
+      "inventory": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase114/scaling/catalogue-modules01.json",
+        "bytes": 4426,
+        "sha256": "4a589f2328f1d1002bbbf4df402ab59c37851588ee033e02214391c04babab9c"
+      },
+      "moduleFields": [
+        "override"
+      ],
+      "allowedOverrides": [
+        "p113pl_plan",
+        "p113pl_inspect_prepared"
+      ]
+    },
+    {
+      "name": "unary-packing",
+      "inventory": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase114/packing/modules01.json",
+        "bytes": 2787,
+        "sha256": "0a8351f6ff541bf3e84afaf6b26cdfe30d8602271dd8921f60a0baaac6b34ce4"
+      },
+      "moduleFields": [
+        "modules"
+      ],
+      "allowedOverrides": [
+        "p111_constructor"
+      ]
+    },
+    {
+      "name": "recursive-table",
+      "inventory": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase114/recursive-table/modules01.json",
+        "bytes": 4026,
+        "sha256": "aaeb0f545f4e5cc758173d540023ab6f7ce7388c38e8c9b0152fcf3498f2152a"
+      },
+      "moduleFields": [
+        "modules",
+        "overrides"
+      ],
+      "allowedOverrides": [
+        "p113e_public_chunk"
+      ]
+    },
+    {
+      "name": "transport",
+      "inventory": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase114/transport/modules01.json",
+        "bytes": 3187,
+        "sha256": "6ee601762afd81803e5d5eec25687f2ab952b669515b09413c599365b34cd5e5"
+      },
+      "moduleFields": [
+        "modules"
+      ],
+      "allowedOverrides": [
+        "p111q_stmt",
+        "p113a_verify"
+      ]
+    }
+  ]
+}

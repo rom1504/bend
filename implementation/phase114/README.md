@@ -109,3 +109,36 @@ The eight-program development screen is frozen before candidate timing, uses
 unchanged original45 sources/oracles/repetitions and includes scalar, arrays,
 ray, lexer, list, tree, expression and map workloads. It does not replace45.
 All target work is serial on CPU3 with memory/time guards. No PR comments.
+
+## First combined checkpoint
+
+The combined source (verification session, indexed catalogue, unary packing,
+general02 recursive plans and transport01) passes exact composition admission,
+17 ordinary complete-output programs and all72 paired benchmark observations.
+On the frozen eight-program screen, elapsed time improves15.19% geometrically:
+7.810× upstream for31 versus6.623× for this candidate. List695→305ms, tree561→461,
+expression490→395, lexer355→339 and map463→443 improve; scalar108→108, pair390→391
+and ray425→427 are effectively unchanged. This remains a development subset.
+
+Source SHA256 `23d4d70598bb958c9b30a145594fd5a02f2e988283fdda93ade7a41d4e3a15be`.
+Exact receipts: `phase114/combined-admission01`,
+`phase113/p114-combined-qualification01-jobs`,
+`phase112/p114-combined-screen01-measure` beneath `selfhost/build`.
+The17-program plus eight-kernel acquisition/measurement gate takes202.680s wall,
+peak380MiB. Full45/native qualification awaits the next integration checkpoint.
+
+## Closed continuation table
+
+The larger region plan now handles multiple resumptions and two-child recursion,
+with constant native stack depth and the original explicit frames. The actual
+expression evaluator admits six continuation identities; tree scan admits two.
+Independent owned-data/caller controls and all36 measured output/count checks
+pass. Compared with the prior combined candidate, expression389→163ms and
+tree466→358ms; list remains305ms. The selected3 geometric mean improves31.47%,
+remaining5.054× upstream. Source and machine evidence are recorded in
+[P114-006](../../experiments/phase114/P114-006-local-continuation-table.md).
+
+The generic-to-complete bridge is semantically qualified on its control and48
+runtime observations, but improves its selected4 only1.5% over the earlier
+combined candidate. It remains optional: static call counts were not a useful
+prediction of aggregate benefit. The table remains the main candidate.

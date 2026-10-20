@@ -1,0 +1,56 @@
+{
+  "kind": "phase114-ordinary-generic-complete-bridge-control",
+  "version": 1,
+  "targetsRun": false,
+  "frozenUtc": "2026-10-20T22:40:26.398445+00:00",
+  "cases": [
+    {
+      "name": "dynamic-owned-arguments",
+      "source": "selfhost/tools/performance/phase114/controls/generic-bridge/fixtures/dynamic-owned-arguments.bend",
+      "sourcePin": {
+        "file": "selfhost/tools/performance/phase114/controls/generic-bridge/fixtures/dynamic-owned-arguments.bend",
+        "bytes": 1539,
+        "sha256": "bf4147c9e06ea5657b1b04556ce176bf7f6657265e3e9bc14076d8b508e2a015"
+      },
+      "expected": {
+        "file": "selfhost/tools/performance/phase114/controls/generic-bridge/expected/dynamic-owned-arguments.json",
+        "bytes": 112,
+        "sha256": "426cf1557bbae1895f073c62dbb92d77d305034b2038819f53802ca8ce2f6d6b"
+      },
+      "stdout": {
+        "file": "selfhost/tools/performance/phase114/controls/generic-bridge/expected/dynamic-owned-arguments.stdout",
+        "bytes": 53,
+        "sha256": "c8905ee159d6dd477a2dc7350e2867faad84714d6f4526aa69865670fae5e3b3"
+      },
+      "purposes": [
+        "dynamic closure call with two owned String captures",
+        "known scalar-result continuation target",
+        "both Boolean results and swapped argument order",
+        "unused whole String and selected tail drops",
+        "retained external aliases and empty roots"
+      ],
+      "sourceChecked": false
+    }
+  ],
+  "fastOrder": [
+    "dynamic-owned-arguments"
+  ],
+  "inputs": [
+    {
+      "file": "selfhost/tools/performance/phase114/controls/generic-bridge/fixtures/dynamic-owned-arguments.bend",
+      "bytes": 1539,
+      "sha256": "bf4147c9e06ea5657b1b04556ce176bf7f6657265e3e9bc14076d8b508e2a015"
+    },
+    {
+      "file": "selfhost/tools/performance/phase114/controls/generic-bridge/expected/dynamic-owned-arguments.json",
+      "bytes": 112,
+      "sha256": "426cf1557bbae1895f073c62dbb92d77d305034b2038819f53802ca8ce2f6d6b"
+    },
+    {
+      "file": "selfhost/tools/performance/phase114/controls/generic-bridge/expected/dynamic-owned-arguments.stdout",
+      "bytes": 53,
+      "sha256": "c8905ee159d6dd477a2dc7350e2867faad84714d6f4526aa69865670fae5e3b3"
+    }
+  ],
+  "scope": "Ordinary positive source candidate only. Literal complete output is independent of bridge code. Root must check source, admission of generic-continuation edge to existing complete public worker, and native output separately. No custom ABI/failure probes."
+}

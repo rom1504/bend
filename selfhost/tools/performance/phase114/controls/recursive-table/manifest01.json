@@ -1,0 +1,103 @@
+{
+  "kind": "phase114-ordinary-recursive-table-controls",
+  "version": 1,
+  "targetsRun": false,
+  "frozenUtc": "2026-10-20T22:34:03.137460+00:00",
+  "cases": [
+    {
+      "name": "expression-two-children",
+      "source": "selfhost/tools/performance/phase114/controls/recursive-table/fixtures/expression-two-children.bend",
+      "sourcePin": {
+        "file": "selfhost/tools/performance/phase114/controls/recursive-table/fixtures/expression-two-children.bend",
+        "bytes": 1431,
+        "sha256": "e4af5c61102849dd1397a0db0ec083682c63ac43fcdcc6d32e1bde7fa4b8b370"
+      },
+      "expected": {
+        "file": "selfhost/tools/performance/phase114/controls/recursive-table/expected/expression-two-children.json",
+        "bytes": 75,
+        "sha256": "c4347f3bef07c02d25e19257058ba7cdb85f33d6dd6a21ed6240637a0e32ce6e"
+      },
+      "stdout": {
+        "file": "selfhost/tools/performance/phase114/controls/recursive-table/expected/expression-two-children.stdout",
+        "bytes": 19,
+        "sha256": "28c3166fde4eaaafa91a2c24d7aa5073bff730de7054e3f83a6588c719d2a03c"
+      },
+      "purposes": [
+        "three binary operations with nested two-child recursion",
+        "same owner resumed then descended again",
+        "ordered subtraction and multiplication",
+        "shared tree, depth at most six"
+      ],
+      "sourceChecked": false
+    },
+    {
+      "name": "owned-scan-caller",
+      "source": "selfhost/tools/performance/phase114/controls/recursive-table/fixtures/owned-scan-caller.bend",
+      "sourcePin": {
+        "file": "selfhost/tools/performance/phase114/controls/recursive-table/fixtures/owned-scan-caller.bend",
+        "bytes": 2973,
+        "sha256": "f8919fa940f9e186d697ea73484ed14537c6908436852d197c6869b66fd34408"
+      },
+      "expected": {
+        "file": "selfhost/tools/performance/phase114/controls/recursive-table/expected/owned-scan-caller.json",
+        "bytes": 216,
+        "sha256": "ef114af117f5ce4afefd7fc3e9296dc823c6856f1543b3028608d2026b26976f"
+      },
+      "stdout": {
+        "file": "selfhost/tools/performance/phase114/controls/recursive-table/expected/owned-scan-caller.stdout",
+        "bytes": 157,
+        "sha256": "bd2c0abd15029e80a428c5c125d40fcc4fd6372a18ece02d618c44207ff3a7e8"
+      },
+      "purposes": [
+        "owning first-child result survives second recursive descent",
+        "rebuilt owned Tree plus scalar count",
+        "owned caller String retained outside recursive region",
+        "shared external tree and label aliases",
+        "empty/nested/Unicode/depth-six observations"
+      ],
+      "sourceChecked": false
+    }
+  ],
+  "fastOrder": [
+    "expression-two-children",
+    "owned-scan-caller"
+  ],
+  "inputs": [
+    {
+      "file": "selfhost/tools/performance/phase114/controls/recursive-table/freeze.py",
+      "bytes": 2625,
+      "sha256": "ce4df1d6f301ee57e5c44c67921d93d488991aa915a2a63f153eacc1ca1ab4f5"
+    },
+    {
+      "file": "selfhost/tools/performance/phase114/controls/recursive-table/fixtures/expression-two-children.bend",
+      "bytes": 1431,
+      "sha256": "e4af5c61102849dd1397a0db0ec083682c63ac43fcdcc6d32e1bde7fa4b8b370"
+    },
+    {
+      "file": "selfhost/tools/performance/phase114/controls/recursive-table/expected/expression-two-children.json",
+      "bytes": 75,
+      "sha256": "c4347f3bef07c02d25e19257058ba7cdb85f33d6dd6a21ed6240637a0e32ce6e"
+    },
+    {
+      "file": "selfhost/tools/performance/phase114/controls/recursive-table/expected/expression-two-children.stdout",
+      "bytes": 19,
+      "sha256": "28c3166fde4eaaafa91a2c24d7aa5073bff730de7054e3f83a6588c719d2a03c"
+    },
+    {
+      "file": "selfhost/tools/performance/phase114/controls/recursive-table/fixtures/owned-scan-caller.bend",
+      "bytes": 2973,
+      "sha256": "f8919fa940f9e186d697ea73484ed14537c6908436852d197c6869b66fd34408"
+    },
+    {
+      "file": "selfhost/tools/performance/phase114/controls/recursive-table/expected/owned-scan-caller.json",
+      "bytes": 216,
+      "sha256": "ef114af117f5ce4afefd7fc3e9296dc823c6856f1543b3028608d2026b26976f"
+    },
+    {
+      "file": "selfhost/tools/performance/phase114/controls/recursive-table/expected/owned-scan-caller.stdout",
+      "bytes": 157,
+      "sha256": "bd2c0abd15029e80a428c5c125d40fcc4fd6372a18ece02d618c44207ff3a7e8"
+    }
+  ],
+  "scope": "Ordinary positive source controls only; independent complete expected stdout. Finite maximum constructed depth six, no stress or custom failure cases. Source checks, continuation count/admission and native complete-output comparison remain separate root-run gates."
+}

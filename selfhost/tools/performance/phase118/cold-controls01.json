@@ -1,0 +1,68 @@
+{
+  "kind": "phase118-independent-ordinary-controls",
+  "complete": true,
+  "targetsRun": false,
+  "method": "Copy each literal #| line in source order, append newline, and require observer-v2 stdout identical to the preserved original observer oracle. No compiler algorithms or target execution.",
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/base.bend",
+      "bytes": 75064,
+      "sha256": "99ac43f2b2bb3e3f39acdcedcecbbd3cb44749ce13969c827d6973fa66f7facf"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase118/controls01.json",
+      "bytes": 5295,
+      "sha256": "3db0e336873db26acbe2ebff7704c98d77244374792e2f99daa55390c536b019"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase118/observer-control.bend",
+      "bytes": 1259,
+      "sha256": "d586787c3f8508a2cf4ffeab297e43398309c01ff537366c0b145463f8adcab6"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase118/observer.expected.json",
+      "bytes": 161,
+      "sha256": "8c5ac707ee83903603bdee047081b3ee36a311b2e081616e96724c3dc1cc73cd"
+    }
+  ],
+  "cases": [
+    {
+      "name": "cold-transitive",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase118/cold-controls.bend",
+        "bytes": 2680,
+        "sha256": "6ffb8c0a25e7d839aa5ad80af1be7bacf9667424ff3823f481a60d9b4babe16b"
+      },
+      "expected": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase118/cold-transitive.expected.json",
+        "bytes": 200,
+        "sha256": "9469c47f4bcbb2f20ad017d3d9d65f718edc32f171599b2779b02f3c23a7a8e1"
+      },
+      "expectedStdoutEvidence": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase118/cold-transitive.expected.json",
+        "bytes": 200,
+        "sha256": "9469c47f4bcbb2f20ad017d3d9d65f718edc32f171599b2779b02f3c23a7a8e1"
+      },
+      "provenance": "Independent literal #| full output embedded before target execution. Source-only preparation; no frontend or native qualification asserted."
+    },
+    {
+      "name": "observer-v2",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase118/observer-control-v2.bend",
+        "bytes": 1506,
+        "sha256": "1707367d4630350275e1cc6dbf7a15e997df9ae51e4d75842a4719cc817cce2c"
+      },
+      "expected": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase118/observer-v2.expected.json",
+        "bytes": 161,
+        "sha256": "8c5ac707ee83903603bdee047081b3ee36a311b2e081616e96724c3dc1cc73cd"
+      },
+      "expectedStdoutEvidence": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase118/observer-v2.expected.json",
+        "bytes": 161,
+        "sha256": "8c5ac707ee83903603bdee047081b3ee36a311b2e081616e96724c3dc1cc73cd"
+      },
+      "provenance": "Independent literal #| full output embedded before target execution. Source-only preparation; no frontend or native qualification asserted."
+    }
+  ]
+}

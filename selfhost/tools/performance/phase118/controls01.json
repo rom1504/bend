@@ -1,0 +1,118 @@
+{
+  "complete": true,
+  "targetsRun": false,
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase118/freeze-controls.py",
+      "bytes": 2670,
+      "sha256": "2b1de38e60a64c17bbeef1f807d2bea6b824fee29eca6ac10889840c5fed4f17"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase102/trmc-cold/controls/prepare.py",
+      "bytes": 2960,
+      "sha256": "70ffcdf6db76c79439f04c21eaa67a3d454a96daf83ffe1b37ac89c5a63962d3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase102/fusion/controls-v5.json",
+      "bytes": 4725,
+      "sha256": "033ca8bf4c3db7d579a05d6a9fcd0488000186e1d213383703a8c34e73070c6f"
+    }
+  ],
+  "cases": [
+    {
+      "name": "construction",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase102/fusion/fixtures-v3/construction.bend",
+        "bytes": 2472,
+        "sha256": "bb5ab6769d91082c22b0981240ac58904b6cc87ad85fe6baaa05309ce8066c02"
+      },
+      "expected": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase118/construction.expected.json",
+        "bytes": 173,
+        "sha256": "b7fc0364cc8fa6d0de1b1b4ec5782a0371eca1f470fb94a11bfb3f57a63703b1"
+      },
+      "expectedStdoutEvidence": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase118/construction.expected.json",
+        "bytes": 173,
+        "sha256": "b7fc0364cc8fa6d0de1b1b4ec5782a0371eca1f470fb94a11bfb3f57a63703b1"
+      },
+      "provenance": "Independent full literal #| output; ordinary source only."
+    },
+    {
+      "name": "observer",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase118/observer-control.bend",
+        "bytes": 1259,
+        "sha256": "d586787c3f8508a2cf4ffeab297e43398309c01ff537366c0b145463f8adcab6"
+      },
+      "expected": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase118/observer.expected.json",
+        "bytes": 161,
+        "sha256": "8c5ac707ee83903603bdee047081b3ee36a311b2e081616e96724c3dc1cc73cd"
+      },
+      "expectedStdoutEvidence": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase118/observer.expected.json",
+        "bytes": 161,
+        "sha256": "8c5ac707ee83903603bdee047081b3ee36a311b2e081616e96724c3dc1cc73cd"
+      },
+      "provenance": "Independent full literal #| output; ordinary source only."
+    },
+    {
+      "name": "refusals",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase102/fusion/fixtures-v5/refusals.bend",
+        "bytes": 1397,
+        "sha256": "857c180b93555538072aebc3df1cf89c1d15d7c2b4c7c8c5eed89f479362a85d"
+      },
+      "expected": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase118/refusals.expected.json",
+        "bytes": 67,
+        "sha256": "66979d29d8c3ce7c5c4dcfa4732bb70855817d39b1500df2ef568dc2cdf6a2e7"
+      },
+      "expectedStdoutEvidence": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase118/refusals.expected.json",
+        "bytes": 67,
+        "sha256": "66979d29d8c3ce7c5c4dcfa4732bb70855817d39b1500df2ef568dc2cdf6a2e7"
+      },
+      "provenance": "Retained qualified ordinary non-final/multiple/mutual recursion refusal witnesses."
+    },
+    {
+      "name": "mixed",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase102/trmc-cold/controls/mixed-construction.bend",
+        "bytes": 1504,
+        "sha256": "fc00ef256b469692940c81750e8e57188e165bf112f5aa0ba7a603bdcb8d6f63"
+      },
+      "expected": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase118/mixed.expected.json",
+        "bytes": 344,
+        "sha256": "c7cd9d04f3450e212b0d61b880e9d46af67caf5d63b4ae313fc1da82dd57c2cc"
+      },
+      "expectedStdoutEvidence": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase118/mixed.expected.json",
+        "bytes": 344,
+        "sha256": "c7cd9d04f3450e212b0d61b880e9d46af67caf5d63b4ae313fc1da82dd57c2cc"
+      },
+      "provenance": "Prior independent flat output oracle; alternating final slots1/3 and owned terminal."
+    },
+    {
+      "name": "shared",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase118/shared-construction.bend",
+        "bytes": 1311,
+        "sha256": "f4462e06af7e11fb14fa72391f26171d35ead670dd020e408faf30f7fd9cd251"
+      },
+      "expected": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase118/shared.expected.json",
+        "bytes": 301,
+        "sha256": "9f7ef6b32f8ce10c91b9c5c9b49965397654fb6bc4c9b69809602e3d5b279bc3"
+      },
+      "expectedStdoutEvidence": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase118/shared.expected.json",
+        "bytes": 301,
+        "sha256": "9f7ef6b32f8ce10c91b9c5c9b49965397654fb6bc4c9b69809602e3d5b279bc3"
+      },
+      "provenance": "Duplicate completed root; children retain ordinary sealing; both release orders represented by repeated observers."
+    }
+  ]
+}

@@ -5234,3 +5234,31 @@ while retaining useful smaller prerequisite wins. Full parity still requires
 the original corpus, distribution/uncertainty reporting and independent gates.
 The design records estimates, costs, laws, stack/ownership/effect obligations,
 resource limits, negative-result retention and criteria for declining expansion.
+
+## Phase120 — first numeric cycle, with cost and negative results
+
+[Report](../implementation/phase120/README.md) ·
+[Candidate](../implementation/phase120/candidate.json) ·
+[Results](../implementation/phase120/results.json) ·
+[Reproduce](../selfhost/tools/performance/phase120/README.md).
+
+Checked-hosted Bend emits the direct QBE candidate; original45 passes405
+observations. Same-run paired equal-point runtime2.98283→2.87077×upstream,
+3.76% less time. Scalar improves30.14%, active ray21.69%, ordinary Mandelbrot10%;
+related variants transfer but most unrelated families remain unchanged. Exact
+signed-word recovery, explicit word projection and bounded numeric regions retain
+original ABI/runtime/verifiers. All admission/output controls and failures stay.
+
+The simpler combined01 is retained experimentally. It adds17.95% hosted prepared
+compilation cost on four sources and1199 active source lines including controls.
+A later prefilter cuts Mandelbrot's isolated word analysis2.368→0.966s, but its
+complete cost screen is1.20558×parent; no whole-cost gain is demonstrated, so03
+is unselected despite exact45+6 QBE identity. Boolean width rewriting caused
+correct-but-slow verifier fallback; corrected-neutral rewriting is also excluded.
+
+Through16:51:49,86.65min elapsed includes47.04min guarded work;87 guards,
+10 failed source/control attempts consuming31.63s, peak1.856GiB and22.23GiB
+minimum available memory. Two offline agents; one serial target lane. No native
+N1/N2 rebuild, installed selection change, full proof or recursive acceleration
+claim. Next remove intermediate container work and reduce fact/unchanged-pass
+cost using a small complete-cost gate before broad integration.

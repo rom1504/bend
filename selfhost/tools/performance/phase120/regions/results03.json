@@ -1,0 +1,319 @@
+{
+  "kind": "phase120-regions03-runtime-and-coverage-audit",
+  "complete": true,
+  "targetsRunByAuthor": false,
+  "measurementsRunBy": "root",
+  "runtimeObservations": {
+    "count": 27,
+    "allCorrect": true
+  },
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase120/regions/modules03.json",
+      "bytes": 6378,
+      "sha256": "93a3527c5316669ff20884194b80506248873077f5f0f353cc82efd7215e71fc"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase120/regions/regions03.json",
+      "bytes": 4732,
+      "sha256": "697a49078e0b8e5fb30d43820019560793d6c9876bcf8fdb2fdf581595ec7f64"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase120/region-numeric-screen03/report.json",
+      "bytes": 51803,
+      "sha256": "20273e9e944601a2935bce126cddcb9be7ea1b6d6c1d200cd1123edb7dba7884"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase120/region-ctor03.json",
+      "bytes": 2623,
+      "sha256": "647e7fd4129e1b649325c7e00235154b21dafbe27579cb44e3a1fad4c0d90a21"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase120/regions/ctor-controls02.bend",
+      "bytes": 1464,
+      "sha256": "1e29100e0b86665a6c42831114315b5807d25e4e6b2880c2ae256c8d81b2e60d"
+    }
+  ],
+  "cases": {
+    "coverage-numeric-recurrence-1024": {
+      "samplesMs": {
+        "baseline": [
+          417,
+          419,
+          424
+        ],
+        "candidate": [
+          415,
+          417,
+          417
+        ],
+        "upstream": [
+          200,
+          200,
+          201
+        ]
+      },
+      "mediansMs": {
+        "baseline": 419,
+        "candidate": 417,
+        "upstream": 200
+      },
+      "candidateOverBaseline": 0.9952267303102625
+    },
+    "raytrace": {
+      "samplesMs": {
+        "baseline": [
+          1884,
+          1880,
+          1885
+        ],
+        "candidate": [
+          1842,
+          1841,
+          1849
+        ],
+        "upstream": [
+          229,
+          228,
+          229
+        ]
+      },
+      "mediansMs": {
+        "baseline": 1884,
+        "candidate": 1842,
+        "upstream": 229
+      },
+      "candidateOverBaseline": 0.9777070063694268
+    },
+    "variation-ray-active-256-2240": {
+      "samplesMs": {
+        "baseline": [
+          1714,
+          1694,
+          1705
+        ],
+        "candidate": [
+          1363,
+          1349,
+          1363
+        ],
+        "upstream": [
+          206,
+          201,
+          207
+        ]
+      },
+      "mediansMs": {
+        "baseline": 1705,
+        "candidate": 1363,
+        "upstream": 206
+      },
+      "candidateOverBaseline": 0.7994134897360704
+    }
+  },
+  "geomeanCandidateOverBaseline": 0.9196743569004153,
+  "products": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/p120-region-numeric-emit02/variation-ray-active-256-2240.ssa",
+      "bytes": 2025339,
+      "sha256": "75b22c98a55e51a8191b002727e21ce3156a2b74755ae36b2fbeee6396cf1427"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/p120-region-numeric-emit03/variation-ray-active-256-2240.ssa",
+      "bytes": 2034048,
+      "sha256": "c99cb67da0ff26a6f5a22f478d01da3e45337bb9ecbb33b11a7db1fae4352272"
+    }
+  ],
+  "sourceFunctions": [
+    {
+      "version": "02",
+      "name": "$direct.isect5",
+      "linesIncludingHeader": 379,
+      "isectCalls": 0,
+      "regionSites": [],
+      "casts": 48
+    },
+    {
+      "version": "02",
+      "name": "$product.nearest",
+      "linesIncludingHeader": 3150,
+      "isectCalls": 2,
+      "regionSites": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "casts": 156
+    },
+    {
+      "version": "02",
+      "name": "$direct.nearest.t",
+      "linesIncludingHeader": 3044,
+      "isectCalls": 2,
+      "regionSites": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "casts": 156
+    },
+    {
+      "version": "03",
+      "name": "$direct.isect5",
+      "linesIncludingHeader": 379,
+      "isectCalls": 0,
+      "regionSites": [],
+      "casts": 48
+    },
+    {
+      "version": "03",
+      "name": "$product.nearest",
+      "linesIncludingHeader": 2927,
+      "isectCalls": 1,
+      "regionSites": [
+        0,
+        1,
+        2
+      ],
+      "casts": 176
+    },
+    {
+      "version": "03",
+      "name": "$direct.nearest.t",
+      "linesIncludingHeader": 2821,
+      "isectCalls": 1,
+      "regionSites": [
+        0,
+        1,
+        2
+      ],
+      "casts": 176
+    }
+  ],
+  "machine": {
+    "02": {
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase120/region-machine02/report.json",
+        "bytes": 143895,
+        "sha256": "6158182d5508f8d441908152ae42d82b3ba9d8654eaa791d7ceed64a48c0006a"
+      },
+      "functions": [
+        {
+          "name": "p113d_FID_$direct.isect5",
+          "counts": {
+            "instructions": 129,
+            "calls": 3,
+            "conditionalBranches": 5,
+            "setcc": 6,
+            "floatIntegerMoves": 24,
+            "stackReferences": 13
+          },
+          "assembly": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase120/region-machine02/variation-ray-active-256-2240-candidate-p113d_FID_36_100_105_114_101_99_116_46_105_115_101_99_116_53_.asm",
+            "bytes": 4638,
+            "sha256": "fe949cf073c634545321ac47c620e3ad3fe034ca726ea04df033e5b50b526a6f"
+          }
+        },
+        {
+          "name": "p113d_FID_$product.nearest",
+          "counts": {
+            "instructions": 553,
+            "calls": 6,
+            "conditionalBranches": 64,
+            "setcc": 7,
+            "floatIntegerMoves": 4,
+            "stackReferences": 150
+          },
+          "assembly": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase120/region-machine02/variation-ray-active-256-2240-candidate-p113d_FID_36_112_114_111_100_117_99_116_46_110_101_97_114_101_115_116_.asm",
+            "bytes": 26212,
+            "sha256": "862b23e3ab0396b46ee7a1368f43e8b086b5bff367be8049304a4c3381163b81"
+          }
+        },
+        {
+          "name": "p113d_FID_$direct.nearest.t",
+          "counts": {
+            "instructions": 496,
+            "calls": 4,
+            "conditionalBranches": 64,
+            "setcc": 5,
+            "floatIntegerMoves": 4,
+            "stackReferences": 124
+          },
+          "assembly": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase120/region-machine02/variation-ray-active-256-2240-candidate-p113d_FID_36_100_105_114_101_99_116_46_110_101_97_114_101_115_116_46_116_.asm",
+            "bytes": 24713,
+            "sha256": "3312147101daf3bebdddd2cdb99277e8d9548e83cd5823fe04dce02639c55412"
+          }
+        }
+      ]
+    },
+    "03": {
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase120/region-machine03/report.json",
+        "bytes": 143909,
+        "sha256": "79589406ecd8b9472b5febe85e4c5c776f412950437a167d1365f112298c9063"
+      },
+      "functions": [
+        {
+          "name": "p113d_FID_$direct.isect5",
+          "counts": {
+            "instructions": 129,
+            "calls": 3,
+            "conditionalBranches": 5,
+            "setcc": 6,
+            "floatIntegerMoves": 24,
+            "stackReferences": 13
+          },
+          "assembly": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase120/region-machine03/variation-ray-active-256-2240-candidate-p113d_FID_36_100_105_114_101_99_116_46_105_115_101_99_116_53_.asm",
+            "bytes": 4638,
+            "sha256": "4d78c14ce636a284cc74daebf8939f3921aad010e092a648ee35c1cf2ba8e0b2"
+          }
+        },
+        {
+          "name": "p113d_FID_$product.nearest",
+          "counts": {
+            "instructions": 596,
+            "calls": 10,
+            "conditionalBranches": 56,
+            "setcc": 13,
+            "floatIntegerMoves": 28,
+            "stackReferences": 134
+          },
+          "assembly": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase120/region-machine03/variation-ray-active-256-2240-candidate-p113d_FID_36_112_114_111_100_117_99_116_46_110_101_97_114_101_115_116_.asm",
+            "bytes": 25863,
+            "sha256": "f21f26966b751d6a1381a81d2b88915ebcf877be902c231b8ca2c72ab4ec0108"
+          }
+        },
+        {
+          "name": "p113d_FID_$direct.nearest.t",
+          "counts": {
+            "instructions": 559,
+            "calls": 8,
+            "conditionalBranches": 56,
+            "setcc": 11,
+            "floatIntegerMoves": 28,
+            "stackReferences": 139
+          },
+          "assembly": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase120/region-machine03/variation-ray-active-256-2240-candidate-p113d_FID_36_100_105_114_101_99_116_46_110_101_97_114_101_115_116_46_116_.asm",
+            "bytes": 25076,
+            "sha256": "8f2d48f973829c27e71764b90569a1c9e26b22a3453a856c37286de12599d56a"
+          }
+        }
+      ]
+    }
+  },
+  "controlStatus": "Original compound CtorId control failed because fixture used kind ctor instead of N111Id. Preserved receipt; separate ctor-controls02 uses original catalogue producer and nine named checks. No successful repair execution claimed here.",
+  "finding": "CtorId-only admission removes the first of two isect5 calls in both nearest workers. Three sites are copied (0=isect5, 1/2=selectors); remaining identical isect5 misses remaining 1024-node budget, not site cap or semantic eligibility.",
+  "limits": [
+    "Three selected numeric cases, not whole45 or promotion.",
+    "Each screen is paired with safe03; region02 and region03 screens are separate runs, so cross-version timing is descriptive only.",
+    "Machine counts are static whole-function counts; copied failure branches and helpers increase static call count while removing a real private call.",
+    "Public and private ABI remain integer words; no typed float ABI or arithmetic reassociation."
+  ]
+}

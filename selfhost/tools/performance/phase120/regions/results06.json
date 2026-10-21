@@ -1,0 +1,393 @@
+{
+  "kind": "phase120-region-profit-runtime-and-machine-audit",
+  "complete": true,
+  "targetsRunByAuthor": false,
+  "measurementsRunBy": "root",
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase120/regions/profit02.bend",
+      "bytes": 1357,
+      "sha256": "d9aa2a5925f7f28b2b08199789ae809b310381dec1e6ad05da27ba98a0f58f9d"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase120/regions/profit-controls.mjs",
+      "bytes": 6435,
+      "sha256": "9e792e121da05d5e9ba4997c8b7d3281f659ef470e9f405c8ac5442b3c3ee623"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase120/region-source06/manifest.json",
+      "bytes": 7590,
+      "sha256": "a9e7fcaa209211cc5b72647f6cefb69c928ac49b85d7ad07b53fd7ae5a8fd941"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p120-region-api06/report.json",
+      "bytes": 3546,
+      "sha256": "9838ccb898008838bfc4e7f94822c0b8719dd883afe7fb91ffa1b02e87614633"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase120/region-inspect04.json",
+      "bytes": 11366,
+      "sha256": "cf7967c18ace7c5db8f2aa4f12b1ea6a158b8cbd711ab258ca811448f1b6f92b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase120/region-numeric-screen06/report.json",
+      "bytes": 52036,
+      "sha256": "4defa164a16866ba6a6ab9631f6615e1891b67b4e701cb21332c94274acee263"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase120/region-profit06.json",
+      "bytes": 2741,
+      "sha256": "584a6483d32e15d29c1517efdfc7c08dc31b19cf6077ddd0bd8e21bfdba207b0"
+    }
+  ],
+  "observations": 27,
+  "allCorrect": true,
+  "cases": {
+    "coverage-numeric-recurrence-1024": {
+      "samplesMs": {
+        "baseline": [
+          415,
+          417,
+          417
+        ],
+        "candidate": [
+          416,
+          417,
+          416
+        ],
+        "upstream": [
+          200,
+          202,
+          221
+        ]
+      },
+      "mediansMs": {
+        "baseline": 417,
+        "candidate": 416,
+        "upstream": 202
+      },
+      "candidateOverBaseline": 0.9976019184652278
+    },
+    "raytrace": {
+      "samplesMs": {
+        "baseline": [
+          1884,
+          1943,
+          1884
+        ],
+        "candidate": [
+          1877,
+          1846,
+          1848
+        ],
+        "upstream": [
+          229,
+          230,
+          229
+        ]
+      },
+      "mediansMs": {
+        "baseline": 1884,
+        "candidate": 1848,
+        "upstream": 229
+      },
+      "candidateOverBaseline": 0.9808917197452229
+    },
+    "variation-ray-active-256-2240": {
+      "samplesMs": {
+        "baseline": [
+          1690,
+          1692,
+          1695
+        ],
+        "candidate": [
+          1324,
+          1324,
+          1330
+        ],
+        "upstream": [
+          199,
+          200,
+          204
+        ]
+      },
+      "mediansMs": {
+        "baseline": 1692,
+        "candidate": 1324,
+        "upstream": 200
+      },
+      "candidateOverBaseline": 0.7825059101654847
+    }
+  },
+  "geomeanCandidateOverBaseline": 0.91486144075055,
+  "products": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/p120-region-numeric-emit03/variation-ray-active-256-2240.ssa",
+      "bytes": 2034048,
+      "sha256": "c99cb67da0ff26a6f5a22f478d01da3e45337bb9ecbb33b11a7db1fae4352272"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/p120-region-numeric-emit06/variation-ray-active-256-2240.ssa",
+      "bytes": 2009959,
+      "sha256": "c7e077fe93e5647566319c560ed4021d6fd00a6a671fbc1a2dc04eb7351867bf"
+    }
+  ],
+  "sourceFunctions": [
+    {
+      "version": "03",
+      "name": "$product.nearest",
+      "linesIncludingHeader": 2927,
+      "isectCalls": 1,
+      "regionSites": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "version": "03",
+      "name": "$direct.nearest.t",
+      "linesIncludingHeader": 2821,
+      "isectCalls": 1,
+      "regionSites": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "version": "06",
+      "name": "$product.nearest",
+      "linesIncludingHeader": 2538,
+      "isectCalls": 0,
+      "regionSites": [
+        0,
+        1
+      ]
+    },
+    {
+      "version": "06",
+      "name": "$direct.nearest.t",
+      "linesIncludingHeader": 2432,
+      "isectCalls": 0,
+      "regionSites": [
+        0,
+        1
+      ]
+    }
+  ],
+  "machine": {
+    "03": {
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase120/region-machine03/report.json",
+        "bytes": 143909,
+        "sha256": "79589406ecd8b9472b5febe85e4c5c776f412950437a167d1365f112298c9063"
+      },
+      "rows": [
+        {
+          "name": "variation-ray-active-256-2240",
+          "role": "candidate",
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_105_115_101_99_116_53_",
+          "decoded": "p113d_FID_$direct.isect5",
+          "start": "0x405e90",
+          "end": "0x4060a0",
+          "counts": {
+            "instructions": 129,
+            "calls": 3,
+            "conditionalBranches": 5,
+            "setcc": 6,
+            "floatIntegerMoves": 24,
+            "stackReferences": 13
+          },
+          "assembly": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase120/region-machine03/variation-ray-active-256-2240-candidate-p113d_FID_36_100_105_114_101_99_116_46_105_115_101_99_116_53_.asm",
+            "bytes": 4638,
+            "sha256": "4d78c14ce636a284cc74daebf8939f3921aad010e092a648ee35c1cf2ba8e0b2"
+          },
+          "command": [
+            "objdump",
+            "-d",
+            "--no-show-raw-insn",
+            "--start-address=0x405e90",
+            "--stop-address=0x4060a0",
+            "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p120-region-numeric03-variation-ray-active-256-2240-build/program"
+          ]
+        },
+        {
+          "name": "variation-ray-active-256-2240",
+          "role": "candidate",
+          "symbol": "p113d_FID_36_112_114_111_100_117_99_116_46_110_101_97_114_101_115_116_",
+          "decoded": "p113d_FID_$product.nearest",
+          "start": "0x406480",
+          "end": "0x406e40",
+          "counts": {
+            "instructions": 596,
+            "calls": 10,
+            "conditionalBranches": 56,
+            "setcc": 13,
+            "floatIntegerMoves": 28,
+            "stackReferences": 134
+          },
+          "assembly": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase120/region-machine03/variation-ray-active-256-2240-candidate-p113d_FID_36_112_114_111_100_117_99_116_46_110_101_97_114_101_115_116_.asm",
+            "bytes": 25863,
+            "sha256": "f21f26966b751d6a1381a81d2b88915ebcf877be902c231b8ca2c72ab4ec0108"
+          },
+          "command": [
+            "objdump",
+            "-d",
+            "--no-show-raw-insn",
+            "--start-address=0x406480",
+            "--stop-address=0x406e40",
+            "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p120-region-numeric03-variation-ray-active-256-2240-build/program"
+          ]
+        },
+        {
+          "name": "variation-ray-active-256-2240",
+          "role": "candidate",
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_110_101_97_114_101_115_116_46_116_",
+          "decoded": "p113d_FID_$direct.nearest.t",
+          "start": "0x406e40",
+          "end": "0x407740",
+          "counts": {
+            "instructions": 559,
+            "calls": 8,
+            "conditionalBranches": 56,
+            "setcc": 11,
+            "floatIntegerMoves": 28,
+            "stackReferences": 139
+          },
+          "assembly": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase120/region-machine03/variation-ray-active-256-2240-candidate-p113d_FID_36_100_105_114_101_99_116_46_110_101_97_114_101_115_116_46_116_.asm",
+            "bytes": 25076,
+            "sha256": "8f2d48f973829c27e71764b90569a1c9e26b22a3453a856c37286de12599d56a"
+          },
+          "command": [
+            "objdump",
+            "-d",
+            "--no-show-raw-insn",
+            "--start-address=0x406e40",
+            "--stop-address=0x407740",
+            "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p120-region-numeric03-variation-ray-active-256-2240-build/program"
+          ]
+        }
+      ]
+    },
+    "06": {
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase120/region-machine06/report.json",
+        "bytes": 143911,
+        "sha256": "20f6b760dcd2ab1eb41b9f2021fed2f2cab821b9d8f9a2019dc94d1e62f313d7"
+      },
+      "rows": [
+        {
+          "name": "variation-ray-active-256-2240",
+          "role": "candidate",
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_105_115_101_99_116_53_",
+          "decoded": "p113d_FID_$direct.isect5",
+          "start": "0x405e90",
+          "end": "0x4060a0",
+          "counts": {
+            "instructions": 129,
+            "calls": 3,
+            "conditionalBranches": 5,
+            "setcc": 6,
+            "floatIntegerMoves": 24,
+            "stackReferences": 13
+          },
+          "assembly": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase120/region-machine06/variation-ray-active-256-2240-candidate-p113d_FID_36_100_105_114_101_99_116_46_105_115_101_99_116_53_.asm",
+            "bytes": 4638,
+            "sha256": "6bb39d16608dba602d364b049525ac65d73d08ea80784494603f4837ba0bf23d"
+          },
+          "command": [
+            "objdump",
+            "-d",
+            "--no-show-raw-insn",
+            "--start-address=0x405e90",
+            "--stop-address=0x4060a0",
+            "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p120-region-numeric06-variation-ray-active-256-2240-build/program"
+          ]
+        },
+        {
+          "name": "variation-ray-active-256-2240",
+          "role": "candidate",
+          "symbol": "p113d_FID_36_112_114_111_100_117_99_116_46_110_101_97_114_101_115_116_",
+          "decoded": "p113d_FID_$product.nearest",
+          "start": "0x406480",
+          "end": "0x406e20",
+          "counts": {
+            "instructions": 586,
+            "calls": 14,
+            "conditionalBranches": 46,
+            "setcc": 20,
+            "floatIntegerMoves": 46,
+            "stackReferences": 107
+          },
+          "assembly": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase120/region-machine06/variation-ray-active-256-2240-candidate-p113d_FID_36_112_114_111_100_117_99_116_46_110_101_97_114_101_115_116_.asm",
+            "bytes": 23966,
+            "sha256": "02e528ae6819a7c7b3e5ab5948fc320f1e628438ad8ea8fc11d90f2bd55bef67"
+          },
+          "command": [
+            "objdump",
+            "-d",
+            "--no-show-raw-insn",
+            "--start-address=0x406480",
+            "--stop-address=0x406e20",
+            "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p120-region-numeric06-variation-ray-active-256-2240-build/program"
+          ]
+        },
+        {
+          "name": "variation-ray-active-256-2240",
+          "role": "candidate",
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_110_101_97_114_101_115_116_46_116_",
+          "decoded": "p113d_FID_$direct.nearest.t",
+          "start": "0x406e20",
+          "end": "0x407910",
+          "counts": {
+            "instructions": 603,
+            "calls": 12,
+            "conditionalBranches": 50,
+            "setcc": 18,
+            "floatIntegerMoves": 46,
+            "stackReferences": 167
+          },
+          "assembly": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase120/region-machine06/variation-ray-active-256-2240-candidate-p113d_FID_36_100_105_114_101_99_116_46_110_101_97_114_101_115_116_46_116_.asm",
+            "bytes": 24966,
+            "sha256": "f7834d4e92cb46aa37e3c3dc471db79410f013c19f917f63325f2e1b951928c2"
+          },
+          "command": [
+            "objdump",
+            "-d",
+            "--no-show-raw-insn",
+            "--start-address=0x406e20",
+            "--stop-address=0x407910",
+            "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p120-region-numeric06-variation-ray-active-256-2240-build/program"
+          ]
+        }
+      ]
+    }
+  },
+  "admissionScope": {
+    "unchangedSemanticEligibility": true,
+    "minimumArithmeticPrefix": 4,
+    "countedOpIds": [
+      26,
+      27,
+      28,
+      29
+    ],
+    "siteBudget": 4,
+    "nodeBudget": 1024,
+    "isectCopyCost": 295,
+    "twoCopiesCost": 590
+  },
+  "limits": [
+    "Three selected numeric cases, no whole45 or parity/promotion claim.",
+    "Screens03 and06 are separately paired with safe03, not a direct paired comparison of policies.",
+    "Static instructions/calls/spills are whole functions including exposed failure paths; they are not dynamic fractions.",
+    "Integer public/private ABI and every generic word result remain unchanged."
+  ]
+}

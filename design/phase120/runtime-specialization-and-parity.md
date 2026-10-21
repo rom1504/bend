@@ -1,7 +1,9 @@
 # Phase120: specialize verified computation toward native runtime parity
 
-Status: **planned; implementation has not started**. This document is the sole
-deliverable of the current request, together with navigation links and a commit.
+Status: the initial bounded execution cycle is recorded in the
+[first-cycle design](first-cycle.md) and [Phase120 report](../../implementation/phase120/README.md).
+The larger sequence below remains a research roadmap; completing the first
+numeric experiments does not complete the parity or native-qualification goals.
 Starting repository: `selfhost/bootstrap`, `26f2af2be303c24ef139f19f45a4941c97a89c9e`.
 The qualified research compiler remains Phase118 safe03; installed selections
 remain unchanged. Estimates below are hypotheses, not achieved performance.

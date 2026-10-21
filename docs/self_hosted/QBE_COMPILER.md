@@ -1,5 +1,11 @@
 # Full native compiler through QBE
 
+This page documents the historical Phase108 compatibility route. The current
+qualified research compiler uses direct QBE emission, without cproc; see
+[Phase118 native qualification](../../implementation/phase118/native-results.md).
+[Phase120](../../implementation/phase120/README.md) experiments extend that
+direct backend but do not yet qualify replacement native compiler images.
+
 Phase108 extends the Clang-free experiment to the full self-hosted compiler.
 The new compatibility path is:
 

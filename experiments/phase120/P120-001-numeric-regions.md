@@ -1,6 +1,6 @@
 # P120-001: operands, lanes, then a bounded numeric region
 
-Status: planned/running,2026-10-21. Parent qualified Phase118 safe03 at`962a3ef`.
+Status: first bounded cycle completed,2026-10-21. Parent qualified Phase118 safe03 at`962a3ef`.
 Question: does preserving numeric representation across a larger structured
 computation remove materially more work than the existing local prototypes?
 
@@ -24,3 +24,14 @@ isolated Bend modules. No full native-image/default change in this first test.
 
 Initial source:`selfhost/build/phase120/operands-source01/manifest.json`.
 Later evidence and conclusions will be added after measured runs.
+
+## First-cycle outcome
+
+Completed focused ablations and original45 integration; see the
+[report](../../implementation/phase120/README.md) and Phase120 receipts.
+Operand-only/local-lane/initial-region/metadata/profit active-ray ratios are
+0.9728/0.8698/0.8297/0.7994/0.7825× their paired parents. The integrated original45
+run improves active ray21.69% and ordinary ray2.39%; no broad2× claim.
+Both intended intersection calls disappear under unchanged growth/stack limits.
+The exact-output shortcut avoids range cleanup on unchanged functions. Original
+ABI/runtime stay fixed; no full native-image or production promotion.

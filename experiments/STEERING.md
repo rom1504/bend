@@ -1,13 +1,40 @@
-# Planned next work: Phase120 native runtime parity
+# Latest experiment: Phase120 numeric regions and signed words
 
-[Plan](../design/phase120/runtime-specialization-and-parity.md).
-Design only; implementation has not started. Extend existing structured regions
-with checked representation/ownership/effect facts, specialize generic runtime
-work, then eliminate intermediate containers. Begin with a signed-word identity
-pilot; separate typed ABI, local representation and region-formation ablations.
-Seek roughly2× on two unrelated complete workload families before broad expansion.
-Use original45 and independent native qualification for final claims. Gain ranges
-are hypotheses; all measured compiler/runtime/default selections below are unchanged.
+[Report](../implementation/phase120/README.md) ·
+[Design](../design/phase120/runtime-specialization-and-parity.md) ·
+[Reproduce](../selfhost/tools/performance/phase120/README.md).
+
+The experimental checked-hosted producer passes405 original45 observations.
+Same-run equal-point runtime improves2.98283→2.87077× pinned upstream C,
+3.76% less time;44 timed points and the zero-work sentinel remain unchanged.
+Scalar runtime falls30.14%, active ray21.69%, ordinary Mandelbrot10.00%.
+Related inputs transfer; most other families are unchanged. Three rounds are a
+screen, not a claim that no small regression exists. Native N1/N2 and installed
+selections remain Phase118/earlier, respectively.
+
+Exact low32/sign provenance recovers SAR; explicit word rendering preserves
+zero extension. Existing operand/float-lane ablations are distinguished from new
+bounded arithmetic regions. CtorId metadata admission and reserving the unchanged
+1024-node budget for arithmetic leaves remove both hot intersection calls.
+No new public/private ABI, runtime, SIMD pass or workload-name selection.
+Retained combined01 adds17.95% hosted prepared-request cost on four sources.
+Combined03 reduces local word analysis59% but gives no whole-cost win (20.56%
+over parent in a separate paired screen), so it remains unselected. Its45+6
+exact-QBE bridge and failed attempts are preserved.
+
+A Boolean width rewrite triggered correct-but-slow fallback; its corrected
+variant was neutral. Both are excluded. Check accepted transformation activation
+as well as final outputs. Word analysis costs2.368s versus0.519s verification
+on one prepared Mandelbrot graph; repeated fact-list maintenance is the main
+new cost. This cycle adds1199 active Bend lines including controls; no simplicity
+or native compiler-speed improvement is claimed. See the final report for paired
+hosted cost, resource accounting and remaining qualification.
+
+Next: remove intermediate container construction across a measured producer/
+consumer region, with unrelated transfer. Reduce analysis cost using exact-output
+fast loops before full image acquisition. Existing numeric improvements do not
+meet the proposed two-family2× architecture signal or establish recursive research
+acceleration. Preserve the qualified Phase118 source/runtime below.
 
 # Latest diagnostic: Phase119 profile refresh
 

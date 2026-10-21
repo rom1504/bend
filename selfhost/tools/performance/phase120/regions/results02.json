@@ -1,0 +1,698 @@
+{
+  "kind": "phase120-regions02-runtime-and-machine-audit",
+  "complete": true,
+  "targetsRunByAuthor": false,
+  "measurementsRunBy": "root",
+  "offlineTools": [
+    "existing QBE/source readers",
+    "root machine.py",
+    "nm",
+    "objdump"
+  ],
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase120/regions/modules02.json",
+      "bytes": 5803,
+      "sha256": "6267ee348302099b0f57a1b7f2a1744cc760dfec9c9a078748ee9d7176e552ed"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase120/regions/regions02.json",
+      "bytes": 4256,
+      "sha256": "a1fc2ca4d77b0c203a8794361ba7b8e3b942f7f8072d785d3111097686458104"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase120/region-finite02.json",
+      "bytes": 2159,
+      "sha256": "d1aa89f3f3fdc23c2c68c9c63fab9bbcae4649bb28b759729746395a604cea23"
+    }
+  ],
+  "timings": {
+    "operands-numeric-screen01": {
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase120/operands-numeric-screen01/report.json",
+        "bytes": 49267,
+        "sha256": "9be7de5051e4dfea2a3490d88913c4cec93ad9228af99530bed1048255a03438"
+      },
+      "cases": {
+        "coverage-numeric-recurrence-1024": {
+          "samplesMs": {
+            "baseline": [
+              416,
+              426,
+              418
+            ],
+            "candidate": [
+              416,
+              418,
+              418
+            ],
+            "upstream": [
+              196,
+              208,
+              201
+            ]
+          },
+          "mediansMs": {
+            "baseline": 418,
+            "candidate": 418,
+            "upstream": 201
+          },
+          "candidateOverBaseline": 1.0
+        },
+        "raytrace": {
+          "samplesMs": {
+            "baseline": [
+              1879,
+              1982,
+              1892
+            ],
+            "candidate": [
+              1883,
+              1878,
+              1871
+            ],
+            "upstream": [
+              229,
+              228,
+              228
+            ]
+          },
+          "mediansMs": {
+            "baseline": 1892,
+            "candidate": 1878,
+            "upstream": 228
+          },
+          "candidateOverBaseline": 0.992600422832981
+        },
+        "variation-ray-active-256-2240": {
+          "samplesMs": {
+            "baseline": [
+              1693,
+              1693,
+              1689
+            ],
+            "candidate": [
+              1647,
+              1646,
+              1653
+            ],
+            "upstream": [
+              202,
+              200,
+              199
+            ]
+          },
+          "mediansMs": {
+            "baseline": 1693,
+            "candidate": 1647,
+            "upstream": 200
+          },
+          "candidateOverBaseline": 0.9728292971057295
+        }
+      },
+      "geomeanCandidateOverBaseline": 0.9884097762481514
+    },
+    "lanes-numeric-screen01": {
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase120/lanes-numeric-screen01/report.json",
+        "bytes": 49690,
+        "sha256": "05c18b06096e896a314c40a9dae9f0cc384f5564d8e8b55d1aa0b7196a9c0b3f"
+      },
+      "cases": {
+        "coverage-numeric-recurrence-1024": {
+          "samplesMs": {
+            "baseline": [
+              416,
+              417,
+              417
+            ],
+            "candidate": [
+              416,
+              417,
+              419
+            ],
+            "upstream": [
+              200,
+              220,
+              219
+            ]
+          },
+          "mediansMs": {
+            "baseline": 417,
+            "candidate": 417,
+            "upstream": 219
+          },
+          "candidateOverBaseline": 1.0
+        },
+        "raytrace": {
+          "samplesMs": {
+            "baseline": [
+              1877,
+              1883,
+              2087
+            ],
+            "candidate": [
+              1850,
+              1861,
+              1895
+            ],
+            "upstream": [
+              229,
+              228,
+              230
+            ]
+          },
+          "mediansMs": {
+            "baseline": 1883,
+            "candidate": 1861,
+            "upstream": 229
+          },
+          "candidateOverBaseline": 0.9883165161975571
+        },
+        "variation-ray-active-256-2240": {
+          "samplesMs": {
+            "baseline": [
+              1697,
+              1692,
+              1703
+            ],
+            "candidate": [
+              1469,
+              1477,
+              1476
+            ],
+            "upstream": [
+              201,
+              199,
+              200
+            ]
+          },
+          "mediansMs": {
+            "baseline": 1697,
+            "candidate": 1476,
+            "upstream": 200
+          },
+          "candidateOverBaseline": 0.8697701826753094
+        }
+      },
+      "geomeanCandidateOverBaseline": 0.950824118425336
+    },
+    "region-numeric-screen02": {
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase120/region-numeric-screen02/report.json",
+        "bytes": 51349,
+        "sha256": "97b9e1a2fc66c86cb89284ac191fbbac77be21e786ae2529ec4b7af9d1c7506e"
+      },
+      "cases": {
+        "coverage-numeric-recurrence-1024": {
+          "samplesMs": {
+            "baseline": [
+              421,
+              424,
+              419
+            ],
+            "candidate": [
+              414,
+              420,
+              418
+            ],
+            "upstream": [
+              219,
+              219,
+              219
+            ]
+          },
+          "mediansMs": {
+            "baseline": 421,
+            "candidate": 418,
+            "upstream": 219
+          },
+          "candidateOverBaseline": 0.9928741092636579
+        },
+        "raytrace": {
+          "samplesMs": {
+            "baseline": [
+              1885,
+              1885,
+              1876
+            ],
+            "candidate": [
+              1868,
+              1883,
+              1895
+            ],
+            "upstream": [
+              228,
+              229,
+              233
+            ]
+          },
+          "mediansMs": {
+            "baseline": 1885,
+            "candidate": 1883,
+            "upstream": 229
+          },
+          "candidateOverBaseline": 0.9989389920424403
+        },
+        "variation-ray-active-256-2240": {
+          "samplesMs": {
+            "baseline": [
+              1717,
+              1704,
+              1715
+            ],
+            "candidate": [
+              1421,
+              1423,
+              1427
+            ],
+            "upstream": [
+              200,
+              200,
+              204
+            ]
+          },
+          "mediansMs": {
+            "baseline": 1715,
+            "candidate": 1423,
+            "upstream": 200
+          },
+          "candidateOverBaseline": 0.8297376093294461
+        }
+      },
+      "geomeanCandidateOverBaseline": 0.9371115897072416
+    }
+  },
+  "products": {
+    "variation-ray-active-256-2240": {
+      "lanes": {
+        "qbe": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/p120-lanes-numeric-emit01/variation-ray-active-256-2240.ssa",
+          "bytes": 1931806,
+          "sha256": "61564ff019d2a8e5f73cdd91860337d6bfff1f528d04676a7c34492f3986712f"
+        },
+        "regionPrefixOccurrences": 0,
+        "floatOperandCasts": 1416,
+        "selectedFunctions": [
+          {
+            "name": "$direct.isect5",
+            "lines": 404,
+            "floatOperandCasts": 26,
+            "regionPrefixOccurrences": 0,
+            "privateCalls": [],
+            "runtimeCallCount": 3
+          },
+          {
+            "name": "$product.nearest",
+            "lines": 2079,
+            "floatOperandCasts": 44,
+            "regionPrefixOccurrences": 0,
+            "privateCalls": [
+              "$direct.isect5",
+              "$direct.sx",
+              "$direct.sy",
+              "$direct.sz",
+              "$direct.sr",
+              "$direct.isect5"
+            ],
+            "runtimeCallCount": 37
+          },
+          {
+            "name": "$direct.nearest.t",
+            "lines": 1985,
+            "floatOperandCasts": 44,
+            "regionPrefixOccurrences": 0,
+            "privateCalls": [
+              "$direct.isect5",
+              "$direct.sx",
+              "$direct.sy",
+              "$direct.sz",
+              "$direct.sr",
+              "$direct.isect5"
+            ],
+            "runtimeCallCount": 35
+          }
+        ]
+      },
+      "regions02": {
+        "qbe": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/p120-region-numeric-emit02/variation-ray-active-256-2240.ssa",
+          "bytes": 2025339,
+          "sha256": "75b22c98a55e51a8191b002727e21ce3156a2b74755ae36b2fbeee6396cf1427"
+        },
+        "regionPrefixOccurrences": 3750,
+        "floatOperandCasts": 1129,
+        "selectedFunctions": [
+          {
+            "name": "$direct.isect5",
+            "lines": 378,
+            "floatOperandCasts": 22,
+            "regionPrefixOccurrences": 0,
+            "privateCalls": [],
+            "runtimeCallCount": 3
+          },
+          {
+            "name": "$product.nearest",
+            "lines": 3149,
+            "floatOperandCasts": 4,
+            "regionPrefixOccurrences": 1194,
+            "privateCalls": [
+              "$direct.isect5",
+              "$direct.isect5"
+            ],
+            "runtimeCallCount": 69
+          },
+          {
+            "name": "$direct.nearest.t",
+            "lines": 3043,
+            "floatOperandCasts": 4,
+            "regionPrefixOccurrences": 1194,
+            "privateCalls": [
+              "$direct.isect5",
+              "$direct.isect5"
+            ],
+            "runtimeCallCount": 67
+          }
+        ]
+      },
+      "byteIdentical": false
+    },
+    "raytrace": {
+      "lanes": {
+        "qbe": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/p120-lanes-numeric-emit01/raytrace.ssa",
+          "bytes": 1988978,
+          "sha256": "3dbb601225671789c17fe12563fc6ffe2beec78fae0a41c8547bd16a9fa0f9a6"
+        },
+        "regionPrefixOccurrences": 0,
+        "floatOperandCasts": 1416,
+        "selectedFunctions": [
+          {
+            "name": "$direct.isect5",
+            "lines": 404,
+            "floatOperandCasts": 26,
+            "regionPrefixOccurrences": 0,
+            "privateCalls": [],
+            "runtimeCallCount": 3
+          },
+          {
+            "name": "$product.nearest",
+            "lines": 2079,
+            "floatOperandCasts": 44,
+            "regionPrefixOccurrences": 0,
+            "privateCalls": [
+              "$direct.isect5",
+              "$direct.sx",
+              "$direct.sy",
+              "$direct.sz",
+              "$direct.sr",
+              "$direct.isect5"
+            ],
+            "runtimeCallCount": 37
+          },
+          {
+            "name": "$direct.nearest.t",
+            "lines": 1985,
+            "floatOperandCasts": 44,
+            "regionPrefixOccurrences": 0,
+            "privateCalls": [
+              "$direct.isect5",
+              "$direct.sx",
+              "$direct.sy",
+              "$direct.sz",
+              "$direct.sr",
+              "$direct.isect5"
+            ],
+            "runtimeCallCount": 35
+          }
+        ]
+      },
+      "regions02": {
+        "qbe": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/p120-region-numeric-emit02/raytrace.ssa",
+          "bytes": 2082511,
+          "sha256": "3a536666260e3c56d0426d7f45fb2a4a54b5d9df4346ff16a6b34daa38e3c366"
+        },
+        "regionPrefixOccurrences": 3750,
+        "floatOperandCasts": 1129,
+        "selectedFunctions": [
+          {
+            "name": "$direct.isect5",
+            "lines": 378,
+            "floatOperandCasts": 22,
+            "regionPrefixOccurrences": 0,
+            "privateCalls": [],
+            "runtimeCallCount": 3
+          },
+          {
+            "name": "$product.nearest",
+            "lines": 3149,
+            "floatOperandCasts": 4,
+            "regionPrefixOccurrences": 1194,
+            "privateCalls": [
+              "$direct.isect5",
+              "$direct.isect5"
+            ],
+            "runtimeCallCount": 69
+          },
+          {
+            "name": "$direct.nearest.t",
+            "lines": 3043,
+            "floatOperandCasts": 4,
+            "regionPrefixOccurrences": 1194,
+            "privateCalls": [
+              "$direct.isect5",
+              "$direct.isect5"
+            ],
+            "runtimeCallCount": 67
+          }
+        ]
+      },
+      "byteIdentical": false
+    },
+    "coverage-numeric-recurrence-1024": {
+      "lanes": {
+        "qbe": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/p120-lanes-numeric-emit01/coverage-numeric-recurrence-1024.ssa",
+          "bytes": 470664,
+          "sha256": "28d87137697396bbe2ce88c0cc3de31202fc994d78c671a4bac9b5bac91459ed"
+        },
+        "regionPrefixOccurrences": 0,
+        "floatOperandCasts": 43,
+        "selectedFunctions": []
+      },
+      "regions02": {
+        "qbe": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/p120-region-numeric-emit02/coverage-numeric-recurrence-1024.ssa",
+          "bytes": 470664,
+          "sha256": "28d87137697396bbe2ce88c0cc3de31202fc994d78c671a4bac9b5bac91459ed"
+        },
+        "regionPrefixOccurrences": 0,
+        "floatOperandCasts": 43,
+        "selectedFunctions": []
+      },
+      "byteIdentical": true
+    }
+  },
+  "machine": {
+    "regions02": {
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase120/region-machine02/report.json",
+        "bytes": 143895,
+        "sha256": "6158182d5508f8d441908152ae42d82b3ba9d8654eaa791d7ceed64a48c0006a"
+      },
+      "selectedRows": [
+        {
+          "name": "variation-ray-active-256-2240",
+          "role": "candidate",
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_105_115_101_99_116_53_",
+          "decoded": "p113d_FID_$direct.isect5",
+          "start": "0x405e90",
+          "end": "0x4060a0",
+          "counts": {
+            "instructions": 129,
+            "calls": 3,
+            "conditionalBranches": 5,
+            "setcc": 6,
+            "floatIntegerMoves": 24,
+            "stackReferences": 13
+          },
+          "assembly": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase120/region-machine02/variation-ray-active-256-2240-candidate-p113d_FID_36_100_105_114_101_99_116_46_105_115_101_99_116_53_.asm",
+            "bytes": 4638,
+            "sha256": "fe949cf073c634545321ac47c620e3ad3fe034ca726ea04df033e5b50b526a6f"
+          },
+          "command": [
+            "objdump",
+            "-d",
+            "--no-show-raw-insn",
+            "--start-address=0x405e90",
+            "--stop-address=0x4060a0",
+            "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p120-region-numeric02-variation-ray-active-256-2240-build/program"
+          ]
+        },
+        {
+          "name": "variation-ray-active-256-2240",
+          "role": "candidate",
+          "symbol": "p113d_FID_36_112_114_111_100_117_99_116_46_110_101_97_114_101_115_116_",
+          "decoded": "p113d_FID_$product.nearest",
+          "start": "0x406480",
+          "end": "0x406dc0",
+          "counts": {
+            "instructions": 553,
+            "calls": 6,
+            "conditionalBranches": 64,
+            "setcc": 7,
+            "floatIntegerMoves": 4,
+            "stackReferences": 150
+          },
+          "assembly": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase120/region-machine02/variation-ray-active-256-2240-candidate-p113d_FID_36_112_114_111_100_117_99_116_46_110_101_97_114_101_115_116_.asm",
+            "bytes": 26212,
+            "sha256": "862b23e3ab0396b46ee7a1368f43e8b086b5bff367be8049304a4c3381163b81"
+          },
+          "command": [
+            "objdump",
+            "-d",
+            "--no-show-raw-insn",
+            "--start-address=0x406480",
+            "--stop-address=0x406dc0",
+            "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p120-region-numeric02-variation-ray-active-256-2240-build/program"
+          ]
+        },
+        {
+          "name": "variation-ray-active-256-2240",
+          "role": "candidate",
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_110_101_97_114_101_115_116_46_116_",
+          "decoded": "p113d_FID_$direct.nearest.t",
+          "start": "0x406dc0",
+          "end": "0x4075c0",
+          "counts": {
+            "instructions": 496,
+            "calls": 4,
+            "conditionalBranches": 64,
+            "setcc": 5,
+            "floatIntegerMoves": 4,
+            "stackReferences": 124
+          },
+          "assembly": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase120/region-machine02/variation-ray-active-256-2240-candidate-p113d_FID_36_100_105_114_101_99_116_46_110_101_97_114_101_115_116_46_116_.asm",
+            "bytes": 24713,
+            "sha256": "3312147101daf3bebdddd2cdb99277e8d9548e83cd5823fe04dce02639c55412"
+          },
+          "command": [
+            "objdump",
+            "-d",
+            "--no-show-raw-insn",
+            "--start-address=0x406dc0",
+            "--stop-address=0x4075c0",
+            "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p120-region-numeric02-variation-ray-active-256-2240-build/program"
+          ]
+        }
+      ]
+    },
+    "lanes": {
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase120/region-lanes-machine02/report.json",
+        "bytes": 43273,
+        "sha256": "aefc87d67cbb36d4643d17c2cc839063a682a45acd48f3eec4f443be6ce67f90"
+      },
+      "selectedRows": [
+        {
+          "name": "variation-ray-active-256-2240",
+          "role": "candidate",
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_105_115_101_99_116_53_",
+          "decoded": "p113d_FID_$direct.isect5",
+          "start": "0x405e90",
+          "end": "0x4060b0",
+          "counts": {
+            "instructions": 131,
+            "calls": 3,
+            "conditionalBranches": 5,
+            "setcc": 6,
+            "floatIntegerMoves": 25,
+            "stackReferences": 13
+          },
+          "assembly": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase120/region-lanes-machine02/variation-ray-active-256-2240-candidate-p113d_FID_36_100_105_114_101_99_116_46_105_115_101_99_116_53_.asm",
+            "bytes": 4708,
+            "sha256": "f75e8652476568222e679ef6ca4710897895479785479c27d2209342d4aec4e6"
+          },
+          "command": [
+            "objdump",
+            "-d",
+            "--no-show-raw-insn",
+            "--start-address=0x405e90",
+            "--stop-address=0x4060b0",
+            "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p120-lanes-numeric01-variation-ray-active-256-2240-build/program"
+          ]
+        },
+        {
+          "name": "variation-ray-active-256-2240",
+          "role": "candidate",
+          "symbol": "p113d_FID_36_112_114_111_100_117_99_116_46_110_101_97_114_101_115_116_",
+          "decoded": "p113d_FID_$product.nearest",
+          "start": "0x406610",
+          "end": "0x406d00",
+          "counts": {
+            "instructions": 421,
+            "calls": 10,
+            "conditionalBranches": 36,
+            "setcc": 8,
+            "floatIntegerMoves": 4,
+            "stackReferences": 113
+          },
+          "assembly": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase120/region-lanes-machine02/variation-ray-active-256-2240-candidate-p113d_FID_36_112_114_111_100_117_99_116_46_110_101_97_114_101_115_116_.asm",
+            "bytes": 18058,
+            "sha256": "8a1beee19409e7a2bf81f84dd6306b09877930ea16e096a4f1e0eeeb1cb7c078"
+          },
+          "command": [
+            "objdump",
+            "-d",
+            "--no-show-raw-insn",
+            "--start-address=0x406610",
+            "--stop-address=0x406d00",
+            "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p120-lanes-numeric01-variation-ray-active-256-2240-build/program"
+          ]
+        },
+        {
+          "name": "variation-ray-active-256-2240",
+          "role": "candidate",
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_110_101_97_114_101_115_116_46_116_",
+          "decoded": "p113d_FID_$direct.nearest.t",
+          "start": "0x406d00",
+          "end": "0x4072d0",
+          "counts": {
+            "instructions": 368,
+            "calls": 8,
+            "conditionalBranches": 36,
+            "setcc": 6,
+            "floatIntegerMoves": 4,
+            "stackReferences": 93
+          },
+          "assembly": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase120/region-lanes-machine02/variation-ray-active-256-2240-candidate-p113d_FID_36_100_105_114_101_99_116_46_110_101_97_114_101_115_116_46_116_.asm",
+            "bytes": 16576,
+            "sha256": "a40abf852c089cf6c62768325e586118ccb34c7ad296843cc0ba78f16b9acec1"
+          },
+          "command": [
+            "objdump",
+            "-d",
+            "--no-show-raw-insn",
+            "--start-address=0x406d00",
+            "--stop-address=0x4072d0",
+            "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p120-lanes-numeric01-variation-ray-active-256-2240-build/program"
+          ]
+        }
+      ]
+    }
+  },
+  "scope": [
+    "Each timing arm is a separate matched3-case baseline/candidate/upstream screen; do not treat cross-screen candidate differences as a paired lanes-vs-region experiment.",
+    "All81 timed observations across the three screens passed. Region02 itself has27; ordinary controls are separate.",
+    "Static count/size changes do not establish dynamic cost fractions or an upstream parity result.",
+    "Region03 is a separate CtorId-only follow-up, not credited to these results."
+  ],
+  "finding": "Region02 expands scalar selector helpers, but not the intended isect5 call. Its first residual isect5 call precedes region site0 in nearest, excluding the site cap as that first cause. The pure operand gate rejects N111CtorId used by ordinary Boolean decoding; original verifier treats those as known integer metadata. Region03 isolates that missing constant category."
+}

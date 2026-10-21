@@ -1,0 +1,55 @@
+{
+  "complete": true,
+  "attempts": [
+    {
+      "receipt": "selfhost/build/phase117/api01-guard/process.json",
+      "status": 1,
+      "seconds": 0.8814131019171327,
+      "stderr": "selfhost/build/phase117/api01-guard/stderr.log"
+    },
+    {
+      "receipt": "selfhost/build/phase117/boolean-api01-guard/process.json",
+      "status": 1,
+      "seconds": 5.23342160298489,
+      "stderr": "selfhost/build/phase117/boolean-api01-guard/stderr.log"
+    },
+    {
+      "receipt": "selfhost/build/phase117/emit02-guard/process.json",
+      "status": 1,
+      "seconds": 0.8387509079184383,
+      "stderr": "selfhost/build/phase117/emit02-guard/stderr.log"
+    },
+    {
+      "receipt": "selfhost/build/phase117/functional02-guard/process.json",
+      "status": 1,
+      "seconds": 2.499689874937758,
+      "stderr": "selfhost/build/phase117/functional02-guard/stderr.log"
+    },
+    {
+      "receipt": "selfhost/build/phase117/version-api01-guard/process.json",
+      "status": 1,
+      "seconds": 2.8113521460909396,
+      "stderr": "selfhost/build/phase117/version-api01-guard/stderr.log"
+    },
+    {
+      "receipt": "selfhost/build/phase117/version-api02-guard/process.json",
+      "status": 1,
+      "seconds": 5.212599188787863,
+      "stderr": "selfhost/build/phase117/version-api02-guard/stderr.log"
+    },
+    {
+      "stage": "preflight",
+      "attempt": "functional02 before inline API completed",
+      "error": "Another compiler/benchmark job holds execution lock",
+      "childStarted": false,
+      "resolution": "Waited for prior job completion and retried; lock unchanged"
+    },
+    {
+      "stage": "preflight",
+      "attempt": "fallback-api01 initial launch",
+      "error": "Need command and bounded output disk headroom",
+      "childStarted": false,
+      "resolution": "Exact byte/mode dedup04 reclaimed61014628B; unchanged guard and same fresh destination retried"
+    }
+  ]
+}

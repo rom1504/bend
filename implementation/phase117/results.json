@@ -1,0 +1,4757 @@
+{
+  "complete": true,
+  "method": {
+    "file": "selfhost/tools/performance/phase117/summarize.py",
+    "bytes": 4289,
+    "sha256": "9a9891828fb03e961b8bccd88942d28b8b996d58786797efa98f31fe6fb15127"
+  },
+  "scope": "Hosted checked Bend emitter; runtime programs are native QBE. No new native compiler image or installed promotion.",
+  "campaigns": {
+    "scalar-screen03": {
+      "receipt": {
+        "file": "selfhost/build/phase117/scalar-screen03/report.json",
+        "bytes": 30075,
+        "sha256": "383859928ffdda33af992609181c0a5bcdc01ee8a8a4f06bb7d1ea15fa574d43"
+      },
+      "observations": 18,
+      "allCorrect": true,
+      "cases": [
+        {
+          "name": "variation-local-fold-128-0",
+          "samplesMs": {
+            "candidate": [
+              428,
+              429,
+              430
+            ],
+            "baseline": [
+              593,
+              588,
+              694
+            ],
+            "upstream": [
+              50,
+              51,
+              58
+            ]
+          },
+          "medianMs": {
+            "candidate": 429,
+            "baseline": 593,
+            "upstream": 51
+          },
+          "timed": true,
+          "speedup": 1.3822843822843822,
+          "candidateVsUpstream": 8.411764705882353,
+          "baselineVsUpstream": 11.627450980392156
+        },
+        {
+          "name": "editdist",
+          "samplesMs": {
+            "candidate": [
+              348,
+              348,
+              350
+            ],
+            "baseline": [
+              391,
+              390,
+              389
+            ],
+            "upstream": [
+              50,
+              50,
+              51
+            ]
+          },
+          "medianMs": {
+            "candidate": 348,
+            "baseline": 390,
+            "upstream": 50
+          },
+          "timed": true,
+          "speedup": 1.1206896551724137,
+          "candidateVsUpstream": 6.96,
+          "baselineVsUpstream": 7.8
+        }
+      ],
+      "timedCases": 2,
+      "candidateVsUpstream": 7.651528105740787,
+      "baselineVsUpstream": 9.523345927091947,
+      "speedup": 1.244633202085055
+    },
+    "packed-screen01": {
+      "receipt": {
+        "file": "selfhost/build/phase117/packed-screen01/report.json",
+        "bytes": 31968,
+        "sha256": "20fda8f8c889be82483813b15501675e04c03115ddc325b6308d97b5fd11daac"
+      },
+      "observations": 18,
+      "allCorrect": true,
+      "cases": [
+        {
+          "name": "variation-local-fold-128-0",
+          "samplesMs": {
+            "candidate": [
+              302,
+              305,
+              305
+            ],
+            "baseline": [
+              592,
+              592,
+              593
+            ],
+            "upstream": [
+              51,
+              50,
+              51
+            ]
+          },
+          "medianMs": {
+            "candidate": 305,
+            "baseline": 592,
+            "upstream": 51
+          },
+          "timed": true,
+          "speedup": 1.9409836065573771,
+          "candidateVsUpstream": 5.980392156862745,
+          "baselineVsUpstream": 11.607843137254902
+        },
+        {
+          "name": "editdist",
+          "samplesMs": {
+            "candidate": [
+              347,
+              346,
+              347
+            ],
+            "baseline": [
+              393,
+              391,
+              392
+            ],
+            "upstream": [
+              50,
+              50,
+              51
+            ]
+          },
+          "medianMs": {
+            "candidate": 347,
+            "baseline": 392,
+            "upstream": 50
+          },
+          "timed": true,
+          "speedup": 1.1296829971181557,
+          "candidateVsUpstream": 6.94,
+          "baselineVsUpstream": 7.84
+        }
+      ],
+      "timedCases": 2,
+      "candidateVsUpstream": 6.442353728927608,
+      "baselineVsUpstream": 9.53967977429423,
+      "speedup": 1.48077553262233
+    },
+    "hoist-screen01": {
+      "receipt": {
+        "file": "selfhost/build/phase117/hoist-screen01/report.json",
+        "bytes": 32136,
+        "sha256": "f7b10b757f0bdf35a5fabd7d0f5303ec7ea0498526b4c1c5e3b97aad803a938a"
+      },
+      "observations": 18,
+      "allCorrect": true,
+      "cases": [
+        {
+          "name": "variation-local-fold-128-0",
+          "samplesMs": {
+            "candidate": [
+              300,
+              299,
+              305
+            ],
+            "baseline": [
+              598,
+              588,
+              593
+            ],
+            "upstream": [
+              50,
+              50,
+              50
+            ]
+          },
+          "medianMs": {
+            "candidate": 300,
+            "baseline": 593,
+            "upstream": 50
+          },
+          "timed": true,
+          "speedup": 1.9766666666666666,
+          "candidateVsUpstream": 6.0,
+          "baselineVsUpstream": 11.86
+        },
+        {
+          "name": "editdist",
+          "samplesMs": {
+            "candidate": [
+              345,
+              345,
+              344
+            ],
+            "baseline": [
+              390,
+              393,
+              390
+            ],
+            "upstream": [
+              50,
+              50,
+              51
+            ]
+          },
+          "medianMs": {
+            "candidate": 345,
+            "baseline": 390,
+            "upstream": 50
+          },
+          "timed": true,
+          "speedup": 1.1304347826086956,
+          "candidateVsUpstream": 6.9,
+          "baselineVsUpstream": 7.8
+        }
+      ],
+      "timedCases": 2,
+      "candidateVsUpstream": 6.434283176858165,
+      "baselineVsUpstream": 9.61810792203955,
+      "speedup": 1.494821980579356
+    },
+    "hoist-screen02": {
+      "receipt": {
+        "file": "selfhost/build/phase117/hoist-screen02/report.json",
+        "bytes": 32141,
+        "sha256": "a9e4606243dd4841d35084457b3ae1acb551552665be1af98793991557b60339"
+      },
+      "observations": 18,
+      "allCorrect": true,
+      "cases": [
+        {
+          "name": "variation-local-fold-128-0",
+          "samplesMs": {
+            "candidate": [
+              217,
+              218,
+              216
+            ],
+            "baseline": [
+              590,
+              593,
+              596
+            ],
+            "upstream": [
+              50,
+              50,
+              50
+            ]
+          },
+          "medianMs": {
+            "candidate": 217,
+            "baseline": 593,
+            "upstream": 50
+          },
+          "timed": true,
+          "speedup": 2.7327188940092166,
+          "candidateVsUpstream": 4.34,
+          "baselineVsUpstream": 11.86
+        },
+        {
+          "name": "editdist",
+          "samplesMs": {
+            "candidate": [
+              343,
+              345,
+              344
+            ],
+            "baseline": [
+              391,
+              392,
+              391
+            ],
+            "upstream": [
+              50,
+              50,
+              50
+            ]
+          },
+          "medianMs": {
+            "candidate": 344,
+            "baseline": 391,
+            "upstream": 50
+          },
+          "timed": true,
+          "speedup": 1.1366279069767442,
+          "candidateVsUpstream": 6.88,
+          "baselineVsUpstream": 7.82
+        }
+      ],
+      "timedCases": 2,
+      "candidateVsUpstream": 5.464357235759756,
+      "baselineVsUpstream": 9.630430935321641,
+      "speedup": 1.7624087371700978
+    },
+    "inline-screen01": {
+      "receipt": {
+        "file": "selfhost/build/phase117/inline-screen01/report.json",
+        "bytes": 19172,
+        "sha256": "50cbb0feb65c643c11010459a1a619d1377bd13bcd29d763068d0504e81bfbd4"
+      },
+      "observations": 9,
+      "allCorrect": true,
+      "cases": [
+        {
+          "name": "editdist",
+          "samplesMs": {
+            "candidate": [
+              281,
+              282,
+              282
+            ],
+            "baseline": [
+              392,
+              391,
+              392
+            ],
+            "upstream": [
+              50,
+              50,
+              56
+            ]
+          },
+          "medianMs": {
+            "candidate": 282,
+            "baseline": 392,
+            "upstream": 50
+          },
+          "timed": true,
+          "speedup": 1.3900709219858156,
+          "candidateVsUpstream": 5.64,
+          "baselineVsUpstream": 7.84
+        }
+      ],
+      "timedCases": 1,
+      "candidateVsUpstream": 5.64,
+      "baselineVsUpstream": 7.839999999999998,
+      "speedup": 1.3900709219858156
+    },
+    "version-screen01": {
+      "receipt": {
+        "file": "selfhost/build/phase117/version-screen01/report.json",
+        "bytes": 32714,
+        "sha256": "e192d31148a29fc9db999f1be2fdad3fa2fa4f478ec586bfcdb0c7ac491ef428"
+      },
+      "observations": 18,
+      "allCorrect": true,
+      "cases": [
+        {
+          "name": "variation-local-fold-128-0",
+          "samplesMs": {
+            "candidate": [
+              136,
+              136,
+              137
+            ],
+            "baseline": [
+              597,
+              589,
+              592
+            ],
+            "upstream": [
+              50,
+              50,
+              50
+            ]
+          },
+          "medianMs": {
+            "candidate": 136,
+            "baseline": 592,
+            "upstream": 50
+          },
+          "timed": true,
+          "speedup": 4.352941176470588,
+          "candidateVsUpstream": 2.72,
+          "baselineVsUpstream": 11.84
+        },
+        {
+          "name": "editdist",
+          "samplesMs": {
+            "candidate": [
+              109,
+              112,
+              110
+            ],
+            "baseline": [
+              392,
+              390,
+              390
+            ],
+            "upstream": [
+              51,
+              51,
+              51
+            ]
+          },
+          "medianMs": {
+            "candidate": 110,
+            "baseline": 390,
+            "upstream": 51
+          },
+          "timed": true,
+          "speedup": 3.5454545454545454,
+          "candidateVsUpstream": 2.156862745098039,
+          "baselineVsUpstream": 7.647058823529412
+        }
+      ],
+      "timedCases": 2,
+      "candidateVsUpstream": 2.422120283277993,
+      "baselineVsUpstream": 9.515312736352296,
+      "speedup": 3.9285054512134643
+    },
+    "boolean-screen02": {
+      "receipt": {
+        "file": "selfhost/build/phase117/boolean-screen02/report.json",
+        "bytes": 17732,
+        "sha256": "25492aa9d2e7e80e58f73ab4c33d1e5ebf767fbcd3490b360b3e3dfd5fb8c3d2"
+      },
+      "observations": 9,
+      "allCorrect": true,
+      "cases": [
+        {
+          "name": "scalar-region-8192",
+          "samplesMs": {
+            "candidate": [
+              428,
+              427,
+              429
+            ],
+            "baseline": [
+              430,
+              428,
+              428
+            ],
+            "upstream": [
+              199,
+              199,
+              201
+            ]
+          },
+          "medianMs": {
+            "candidate": 428,
+            "baseline": 428,
+            "upstream": 199
+          },
+          "timed": true,
+          "speedup": 1.0,
+          "candidateVsUpstream": 2.150753768844221,
+          "baselineVsUpstream": 2.150753768844221
+        }
+      ],
+      "timedCases": 1,
+      "candidateVsUpstream": 2.150753768844221,
+      "baselineVsUpstream": 2.150753768844221,
+      "speedup": 1.0
+    },
+    "broad-screen01": {
+      "receipt": {
+        "file": "selfhost/build/phase117/broad-screen01/report.json",
+        "bytes": 579611,
+        "sha256": "c27c5f3d5e7a368f4bb07c28ba6bfb5140107c1aee66e7c70095c97dd8669854"
+      },
+      "observations": 405,
+      "allCorrect": true,
+      "cases": [
+        {
+          "name": "mandelbrot",
+          "samplesMs": {
+            "candidate": [
+              269,
+              270,
+              271
+            ],
+            "baseline": [
+              274,
+              273,
+              269
+            ],
+            "upstream": [
+              50,
+              50,
+              50
+            ]
+          },
+          "medianMs": {
+            "candidate": 270,
+            "baseline": 273,
+            "upstream": 50
+          },
+          "timed": true,
+          "speedup": 1.011111111111111,
+          "candidateVsUpstream": 5.4,
+          "baselineVsUpstream": 5.46
+        },
+        {
+          "name": "editdist",
+          "samplesMs": {
+            "candidate": [
+              110,
+              110,
+              110
+            ],
+            "baseline": [
+              391,
+              390,
+              393
+            ],
+            "upstream": [
+              51,
+              51,
+              51
+            ]
+          },
+          "medianMs": {
+            "candidate": 110,
+            "baseline": 391,
+            "upstream": 51
+          },
+          "timed": true,
+          "speedup": 3.5545454545454547,
+          "candidateVsUpstream": 2.156862745098039,
+          "baselineVsUpstream": 7.666666666666667
+        },
+        {
+          "name": "tree-bitonic",
+          "samplesMs": {
+            "candidate": [
+              337,
+              334,
+              335
+            ],
+            "baseline": [
+              334,
+              336,
+              337
+            ],
+            "upstream": [
+              51,
+              50,
+              50
+            ]
+          },
+          "medianMs": {
+            "candidate": 335,
+            "baseline": 336,
+            "upstream": 50
+          },
+          "timed": true,
+          "speedup": 1.0029850746268656,
+          "candidateVsUpstream": 6.7,
+          "baselineVsUpstream": 6.72
+        },
+        {
+          "name": "lexer",
+          "samplesMs": {
+            "candidate": [
+              338,
+              352,
+              335
+            ],
+            "baseline": [
+              341,
+              340,
+              339
+            ],
+            "upstream": [
+              47,
+              47,
+              46
+            ]
+          },
+          "medianMs": {
+            "candidate": 338,
+            "baseline": 340,
+            "upstream": 47
+          },
+          "timed": true,
+          "speedup": 1.0059171597633136,
+          "candidateVsUpstream": 7.191489361702128,
+          "baselineVsUpstream": 7.23404255319149
+        },
+        {
+          "name": "symreg",
+          "samplesMs": {
+            "candidate": [
+              93,
+              93,
+              93
+            ],
+            "baseline": [
+              94,
+              94,
+              94
+            ],
+            "upstream": [
+              50,
+              51,
+              50
+            ]
+          },
+          "medianMs": {
+            "candidate": 93,
+            "baseline": 94,
+            "upstream": 50
+          },
+          "timed": true,
+          "speedup": 1.010752688172043,
+          "candidateVsUpstream": 1.86,
+          "baselineVsUpstream": 1.88
+        },
+        {
+          "name": "test-morning-program",
+          "samplesMs": {
+            "candidate": [
+              332,
+              336,
+              334
+            ],
+            "baseline": [
+              330,
+              335,
+              348
+            ],
+            "upstream": [
+              50,
+              50,
+              50
+            ]
+          },
+          "medianMs": {
+            "candidate": 334,
+            "baseline": 335,
+            "upstream": 50
+          },
+          "timed": true,
+          "speedup": 1.0029940119760479,
+          "candidateVsUpstream": 6.68,
+          "baselineVsUpstream": 6.7
+        },
+        {
+          "name": "test-evening-program",
+          "samplesMs": {
+            "candidate": [
+              535,
+              524,
+              525
+            ],
+            "baseline": [
+              525,
+              522,
+              520
+            ],
+            "upstream": [
+              50,
+              50,
+              51
+            ]
+          },
+          "medianMs": {
+            "candidate": 525,
+            "baseline": 522,
+            "upstream": 50
+          },
+          "timed": true,
+          "speedup": 0.9942857142857143,
+          "candidateVsUpstream": 10.5,
+          "baselineVsUpstream": 10.44
+        },
+        {
+          "name": "test-rle-roundtrip",
+          "samplesMs": {
+            "candidate": [
+              455,
+              463,
+              454
+            ],
+            "baseline": [
+              461,
+              465,
+              453
+            ],
+            "upstream": [
+              51,
+              50,
+              50
+            ]
+          },
+          "medianMs": {
+            "candidate": 455,
+            "baseline": 461,
+            "upstream": 50
+          },
+          "timed": true,
+          "speedup": 1.0131868131868131,
+          "candidateVsUpstream": 9.1,
+          "baselineVsUpstream": 9.22
+        },
+        {
+          "name": "test-map-set-ops",
+          "samplesMs": {
+            "candidate": [
+              441,
+              436,
+              436
+            ],
+            "baseline": [
+              438,
+              432,
+              437
+            ],
+            "upstream": [
+              50,
+              50,
+              50
+            ]
+          },
+          "medianMs": {
+            "candidate": 436,
+            "baseline": 437,
+            "upstream": 50
+          },
+          "timed": true,
+          "speedup": 1.0022935779816513,
+          "candidateVsUpstream": 8.72,
+          "baselineVsUpstream": 8.74
+        },
+        {
+          "name": "raytrace",
+          "samplesMs": {
+            "candidate": [
+              609,
+              608,
+              607
+            ],
+            "baseline": [
+              619,
+              618,
+              623
+            ],
+            "upstream": [
+              58,
+              58,
+              57
+            ]
+          },
+          "medianMs": {
+            "candidate": 608,
+            "baseline": 619,
+            "upstream": 58
+          },
+          "timed": true,
+          "speedup": 1.018092105263158,
+          "candidateVsUpstream": 10.482758620689655,
+          "baselineVsUpstream": 10.672413793103448
+        },
+        {
+          "name": "local-pair",
+          "samplesMs": {
+            "candidate": [
+              109,
+              109,
+              110
+            ],
+            "baseline": [
+              390,
+              386,
+              388
+            ],
+            "upstream": [
+              50,
+              50,
+              51
+            ]
+          },
+          "medianMs": {
+            "candidate": 109,
+            "baseline": 388,
+            "upstream": 50
+          },
+          "timed": true,
+          "speedup": 3.5596330275229358,
+          "candidateVsUpstream": 2.18,
+          "baselineVsUpstream": 7.76
+        },
+        {
+          "name": "local-fold",
+          "samplesMs": {
+            "candidate": [
+              85,
+              86,
+              85
+            ],
+            "baseline": [
+              419,
+              420,
+              421
+            ],
+            "upstream": [
+              50,
+              50,
+              50
+            ]
+          },
+          "medianMs": {
+            "candidate": 85,
+            "baseline": 420,
+            "upstream": 50
+          },
+          "timed": true,
+          "speedup": 4.9411764705882355,
+          "candidateVsUpstream": 1.7,
+          "baselineVsUpstream": 8.4
+        },
+        {
+          "name": "scalar-region-0",
+          "samplesMs": {
+            "candidate": [
+              0,
+              0,
+              0
+            ],
+            "baseline": [
+              0,
+              0,
+              0
+            ],
+            "upstream": [
+              0,
+              0,
+              0
+            ]
+          },
+          "medianMs": {
+            "candidate": 0,
+            "baseline": 0,
+            "upstream": 0
+          },
+          "timed": false
+        },
+        {
+          "name": "scalar-region-8192",
+          "samplesMs": {
+            "candidate": [
+              107,
+              107,
+              107
+            ],
+            "baseline": [
+              107,
+              107,
+              107
+            ],
+            "upstream": [
+              50,
+              50,
+              51
+            ]
+          },
+          "medianMs": {
+            "candidate": 107,
+            "baseline": 107,
+            "upstream": 50
+          },
+          "timed": true,
+          "speedup": 1.0,
+          "candidateVsUpstream": 2.14,
+          "baselineVsUpstream": 2.14
+        },
+        {
+          "name": "complete-generic-row32",
+          "samplesMs": {
+            "candidate": [
+              250,
+              254,
+              251
+            ],
+            "baseline": [
+              255,
+              257,
+              257
+            ],
+            "upstream": [
+              51,
+              50,
+              50
+            ]
+          },
+          "medianMs": {
+            "candidate": 251,
+            "baseline": 257,
+            "upstream": 50
+          },
+          "timed": true,
+          "speedup": 1.0239043824701195,
+          "candidateVsUpstream": 5.02,
+          "baselineVsUpstream": 5.14
+        },
+        {
+          "name": "variation-editdist-0-17",
+          "samplesMs": {
+            "candidate": [
+              109,
+              110,
+              110
+            ],
+            "baseline": [
+              390,
+              394,
+              391
+            ],
+            "upstream": [
+              50,
+              50,
+              51
+            ]
+          },
+          "medianMs": {
+            "candidate": 110,
+            "baseline": 391,
+            "upstream": 50
+          },
+          "timed": true,
+          "speedup": 3.5545454545454547,
+          "candidateVsUpstream": 2.2,
+          "baselineVsUpstream": 7.82
+        },
+        {
+          "name": "variation-editdist-3-123",
+          "samplesMs": {
+            "candidate": [
+              116,
+              120,
+              118
+            ],
+            "baseline": [
+              437,
+              431,
+              431
+            ],
+            "upstream": [
+              53,
+              52,
+              54
+            ]
+          },
+          "medianMs": {
+            "candidate": 118,
+            "baseline": 431,
+            "upstream": 53
+          },
+          "timed": true,
+          "speedup": 3.652542372881356,
+          "candidateVsUpstream": 2.2264150943396226,
+          "baselineVsUpstream": 8.132075471698114
+        },
+        {
+          "name": "variation-lexer-6-17",
+          "samplesMs": {
+            "candidate": [
+              396,
+              401,
+              361
+            ],
+            "baseline": [
+              410,
+              439,
+              383
+            ],
+            "upstream": [
+              59,
+              59,
+              50
+            ]
+          },
+          "medianMs": {
+            "candidate": 396,
+            "baseline": 410,
+            "upstream": 59
+          },
+          "timed": true,
+          "speedup": 1.0353535353535352,
+          "candidateVsUpstream": 6.711864406779661,
+          "baselineVsUpstream": 6.9491525423728815
+        },
+        {
+          "name": "variation-lexer-10-123",
+          "samplesMs": {
+            "candidate": [
+              336,
+              334,
+              335
+            ],
+            "baseline": [
+              339,
+              342,
+              339
+            ],
+            "upstream": [
+              47,
+              46,
+              47
+            ]
+          },
+          "medianMs": {
+            "candidate": 335,
+            "baseline": 339,
+            "upstream": 47
+          },
+          "timed": true,
+          "speedup": 1.0119402985074626,
+          "candidateVsUpstream": 7.127659574468085,
+          "baselineVsUpstream": 7.212765957446808
+        },
+        {
+          "name": "variation-tree-bitonic-6-17",
+          "samplesMs": {
+            "candidate": [
+              357,
+              359,
+              363
+            ],
+            "baseline": [
+              364,
+              357,
+              366
+            ],
+            "upstream": [
+              50,
+              51,
+              50
+            ]
+          },
+          "medianMs": {
+            "candidate": 359,
+            "baseline": 364,
+            "upstream": 50
+          },
+          "timed": true,
+          "speedup": 1.0139275766016713,
+          "candidateVsUpstream": 7.18,
+          "baselineVsUpstream": 7.28
+        },
+        {
+          "name": "variation-tree-bitonic-9-123",
+          "samplesMs": {
+            "candidate": [
+              317,
+              313,
+              314
+            ],
+            "baseline": [
+              318,
+              319,
+              312
+            ],
+            "upstream": [
+              50,
+              50,
+              50
+            ]
+          },
+          "medianMs": {
+            "candidate": 314,
+            "baseline": 318,
+            "upstream": 50
+          },
+          "timed": true,
+          "speedup": 1.0127388535031847,
+          "candidateVsUpstream": 6.28,
+          "baselineVsUpstream": 6.36
+        },
+        {
+          "name": "variation-symreg-4-17",
+          "samplesMs": {
+            "candidate": [
+              93,
+              93,
+              93
+            ],
+            "baseline": [
+              93,
+              93,
+              97
+            ],
+            "upstream": [
+              50,
+              54,
+              50
+            ]
+          },
+          "medianMs": {
+            "candidate": 93,
+            "baseline": 93,
+            "upstream": 50
+          },
+          "timed": true,
+          "speedup": 1.0,
+          "candidateVsUpstream": 1.86,
+          "baselineVsUpstream": 1.86
+        },
+        {
+          "name": "variation-symreg-7-123",
+          "samplesMs": {
+            "candidate": [
+              95,
+              94,
+              95
+            ],
+            "baseline": [
+              94,
+              94,
+              94
+            ],
+            "upstream": [
+              51,
+              51,
+              52
+            ]
+          },
+          "medianMs": {
+            "candidate": 95,
+            "baseline": 94,
+            "upstream": 51
+          },
+          "timed": true,
+          "speedup": 0.9894736842105263,
+          "candidateVsUpstream": 1.8627450980392157,
+          "baselineVsUpstream": 1.8431372549019607
+        },
+        {
+          "name": "variation-local-fold-128-0",
+          "samplesMs": {
+            "candidate": [
+              135,
+              137,
+              136
+            ],
+            "baseline": [
+              587,
+              586,
+              591
+            ],
+            "upstream": [
+              50,
+              50,
+              51
+            ]
+          },
+          "medianMs": {
+            "candidate": 136,
+            "baseline": 587,
+            "upstream": 50
+          },
+          "timed": true,
+          "speedup": 4.3161764705882355,
+          "candidateVsUpstream": 2.72,
+          "baselineVsUpstream": 11.74
+        },
+        {
+          "name": "variation-local-fold-8192-123",
+          "samplesMs": {
+            "candidate": [
+              85,
+              83,
+              84
+            ],
+            "baseline": [
+              420,
+              420,
+              419
+            ],
+            "upstream": [
+              50,
+              50,
+              50
+            ]
+          },
+          "medianMs": {
+            "candidate": 84,
+            "baseline": 420,
+            "upstream": 50
+          },
+          "timed": true,
+          "speedup": 5.0,
+          "candidateVsUpstream": 1.68,
+          "baselineVsUpstream": 8.4
+        },
+        {
+          "name": "variation-mandelbrot-grid-4-7",
+          "samplesMs": {
+            "candidate": [
+              155,
+              156,
+              156
+            ],
+            "baseline": [
+              154,
+              154,
+              154
+            ],
+            "upstream": [
+              50,
+              50,
+              50
+            ]
+          },
+          "medianMs": {
+            "candidate": 156,
+            "baseline": 154,
+            "upstream": 50
+          },
+          "timed": true,
+          "speedup": 0.9871794871794872,
+          "candidateVsUpstream": 3.12,
+          "baselineVsUpstream": 3.08
+        },
+        {
+          "name": "variation-mandelbrot-grid-5-31",
+          "samplesMs": {
+            "candidate": [
+              110,
+              111,
+              118
+            ],
+            "baseline": [
+              116,
+              110,
+              111
+            ],
+            "upstream": [
+              50,
+              50,
+              50
+            ]
+          },
+          "medianMs": {
+            "candidate": 111,
+            "baseline": 111,
+            "upstream": 50
+          },
+          "timed": true,
+          "speedup": 1.0,
+          "candidateVsUpstream": 2.22,
+          "baselineVsUpstream": 2.22
+        },
+        {
+          "name": "variation-ray-active-64-2440",
+          "samplesMs": {
+            "candidate": [
+              431,
+              430,
+              431
+            ],
+            "baseline": [
+              429,
+              426,
+              427
+            ],
+            "upstream": [
+              50,
+              51,
+              50
+            ]
+          },
+          "medianMs": {
+            "candidate": 431,
+            "baseline": 427,
+            "upstream": 50
+          },
+          "timed": true,
+          "speedup": 0.9907192575406032,
+          "candidateVsUpstream": 8.62,
+          "baselineVsUpstream": 8.54
+        },
+        {
+          "name": "variation-ray-active-256-2240",
+          "samplesMs": {
+            "candidate": [
+              424,
+              424,
+              423
+            ],
+            "baseline": [
+              422,
+              423,
+              422
+            ],
+            "upstream": [
+              50,
+              51,
+              58
+            ]
+          },
+          "medianMs": {
+            "candidate": 424,
+            "baseline": 422,
+            "upstream": 51
+          },
+          "timed": true,
+          "speedup": 0.9952830188679245,
+          "candidateVsUpstream": 8.313725490196079,
+          "baselineVsUpstream": 8.27450980392157
+        },
+        {
+          "name": "coverage-closures-64",
+          "samplesMs": {
+            "candidate": [
+              153,
+              153,
+              151
+            ],
+            "baseline": [
+              146,
+              147,
+              147
+            ],
+            "upstream": [
+              50,
+              50,
+              50
+            ]
+          },
+          "medianMs": {
+            "candidate": 153,
+            "baseline": 147,
+            "upstream": 50
+          },
+          "timed": true,
+          "speedup": 0.9607843137254902,
+          "candidateVsUpstream": 3.06,
+          "baselineVsUpstream": 2.94
+        },
+        {
+          "name": "coverage-closures-256",
+          "samplesMs": {
+            "candidate": [
+              150,
+              162,
+              150
+            ],
+            "baseline": [
+              147,
+              146,
+              145
+            ],
+            "upstream": [
+              51,
+              50,
+              50
+            ]
+          },
+          "medianMs": {
+            "candidate": 150,
+            "baseline": 146,
+            "upstream": 50
+          },
+          "timed": true,
+          "speedup": 0.9733333333333334,
+          "candidateVsUpstream": 3.0,
+          "baselineVsUpstream": 2.92
+        },
+        {
+          "name": "coverage-list-pipeline-128",
+          "samplesMs": {
+            "candidate": [
+              288,
+              287,
+              301
+            ],
+            "baseline": [
+              290,
+              291,
+              297
+            ],
+            "upstream": [
+              57,
+              55,
+              50
+            ]
+          },
+          "medianMs": {
+            "candidate": 288,
+            "baseline": 291,
+            "upstream": 55
+          },
+          "timed": true,
+          "speedup": 1.0104166666666667,
+          "candidateVsUpstream": 5.236363636363636,
+          "baselineVsUpstream": 5.290909090909091
+        },
+        {
+          "name": "coverage-list-pipeline-512",
+          "samplesMs": {
+            "candidate": [
+              283,
+              283,
+              286
+            ],
+            "baseline": [
+              282,
+              282,
+              285
+            ],
+            "upstream": [
+              50,
+              49,
+              56
+            ]
+          },
+          "medianMs": {
+            "candidate": 283,
+            "baseline": 282,
+            "upstream": 50
+          },
+          "timed": true,
+          "speedup": 0.9964664310954063,
+          "candidateVsUpstream": 5.66,
+          "baselineVsUpstream": 5.64
+        },
+        {
+          "name": "coverage-bst-32",
+          "samplesMs": {
+            "candidate": [
+              340,
+              344,
+              341
+            ],
+            "baseline": [
+              343,
+              340,
+              343
+            ],
+            "upstream": [
+              49,
+              49,
+              48
+            ]
+          },
+          "medianMs": {
+            "candidate": 341,
+            "baseline": 343,
+            "upstream": 49
+          },
+          "timed": true,
+          "speedup": 1.0058651026392962,
+          "candidateVsUpstream": 6.959183673469388,
+          "baselineVsUpstream": 7.0
+        },
+        {
+          "name": "coverage-bst-64",
+          "samplesMs": {
+            "candidate": [
+              246,
+              272,
+              247
+            ],
+            "baseline": [
+              246,
+              258,
+              248
+            ],
+            "upstream": [
+              46,
+              50,
+              49
+            ]
+          },
+          "medianMs": {
+            "candidate": 247,
+            "baseline": 248,
+            "upstream": 49
+          },
+          "timed": true,
+          "speedup": 1.0040485829959513,
+          "candidateVsUpstream": 5.040816326530612,
+          "baselineVsUpstream": 5.061224489795919
+        },
+        {
+          "name": "coverage-unicode-text-16",
+          "samplesMs": {
+            "candidate": [
+              180,
+              180,
+              178
+            ],
+            "baseline": [
+              177,
+              182,
+              178
+            ],
+            "upstream": [
+              47,
+              47,
+              54
+            ]
+          },
+          "medianMs": {
+            "candidate": 180,
+            "baseline": 178,
+            "upstream": 47
+          },
+          "timed": true,
+          "speedup": 0.9888888888888889,
+          "candidateVsUpstream": 3.8297872340425534,
+          "baselineVsUpstream": 3.7872340425531914
+        },
+        {
+          "name": "coverage-unicode-text-64",
+          "samplesMs": {
+            "candidate": [
+              186,
+              187,
+              186
+            ],
+            "baseline": [
+              192,
+              185,
+              185
+            ],
+            "upstream": [
+              51,
+              51,
+              50
+            ]
+          },
+          "medianMs": {
+            "candidate": 186,
+            "baseline": 185,
+            "upstream": 51
+          },
+          "timed": true,
+          "speedup": 0.9946236559139785,
+          "candidateVsUpstream": 3.6470588235294117,
+          "baselineVsUpstream": 3.627450980392157
+        },
+        {
+          "name": "coverage-expression-32",
+          "samplesMs": {
+            "candidate": [
+              140,
+              138,
+              138
+            ],
+            "baseline": [
+              140,
+              144,
+              141
+            ],
+            "upstream": [
+              54,
+              50,
+              50
+            ]
+          },
+          "medianMs": {
+            "candidate": 138,
+            "baseline": 141,
+            "upstream": 50
+          },
+          "timed": true,
+          "speedup": 1.0217391304347827,
+          "candidateVsUpstream": 2.76,
+          "baselineVsUpstream": 2.82
+        },
+        {
+          "name": "coverage-expression-128",
+          "samplesMs": {
+            "candidate": [
+              137,
+              131,
+              131
+            ],
+            "baseline": [
+              133,
+              134,
+              132
+            ],
+            "upstream": [
+              51,
+              50,
+              56
+            ]
+          },
+          "medianMs": {
+            "candidate": 131,
+            "baseline": 133,
+            "upstream": 51
+          },
+          "timed": true,
+          "speedup": 1.015267175572519,
+          "candidateVsUpstream": 2.5686274509803924,
+          "baselineVsUpstream": 2.607843137254902
+        },
+        {
+          "name": "coverage-map-churn-32",
+          "samplesMs": {
+            "candidate": [
+              423,
+              428,
+              425
+            ],
+            "baseline": [
+              446,
+              426,
+              427
+            ],
+            "upstream": [
+              50,
+              49,
+              50
+            ]
+          },
+          "medianMs": {
+            "candidate": 425,
+            "baseline": 427,
+            "upstream": 50
+          },
+          "timed": true,
+          "speedup": 1.0047058823529411,
+          "candidateVsUpstream": 8.5,
+          "baselineVsUpstream": 8.54
+        },
+        {
+          "name": "coverage-map-churn-128",
+          "samplesMs": {
+            "candidate": [
+              437,
+              433,
+              432
+            ],
+            "baseline": [
+              436,
+              432,
+              439
+            ],
+            "upstream": [
+              57,
+              50,
+              51
+            ]
+          },
+          "medianMs": {
+            "candidate": 433,
+            "baseline": 436,
+            "upstream": 51
+          },
+          "timed": true,
+          "speedup": 1.0069284064665127,
+          "candidateVsUpstream": 8.490196078431373,
+          "baselineVsUpstream": 8.549019607843137
+        },
+        {
+          "name": "coverage-numeric-recurrence-256",
+          "samplesMs": {
+            "candidate": [
+              126,
+              127,
+              124
+            ],
+            "baseline": [
+              125,
+              126,
+              127
+            ],
+            "upstream": [
+              55,
+              55,
+              54
+            ]
+          },
+          "medianMs": {
+            "candidate": 126,
+            "baseline": 126,
+            "upstream": 55
+          },
+          "timed": true,
+          "speedup": 1.0,
+          "candidateVsUpstream": 2.290909090909091,
+          "baselineVsUpstream": 2.290909090909091
+        },
+        {
+          "name": "coverage-numeric-recurrence-1024",
+          "samplesMs": {
+            "candidate": [
+              124,
+              122,
+              126
+            ],
+            "baseline": [
+              125,
+              125,
+              125
+            ],
+            "upstream": [
+              55,
+              55,
+              54
+            ]
+          },
+          "medianMs": {
+            "candidate": 124,
+            "baseline": 125,
+            "upstream": 55
+          },
+          "timed": true,
+          "speedup": 1.0080645161290323,
+          "candidateVsUpstream": 2.2545454545454544,
+          "baselineVsUpstream": 2.272727272727273
+        },
+        {
+          "name": "coverage-record-aggregation-64",
+          "samplesMs": {
+            "candidate": [
+              390,
+              390,
+              388
+            ],
+            "baseline": [
+              387,
+              388,
+              390
+            ],
+            "upstream": [
+              50,
+              50,
+              50
+            ]
+          },
+          "medianMs": {
+            "candidate": 390,
+            "baseline": 388,
+            "upstream": 50
+          },
+          "timed": true,
+          "speedup": 0.9948717948717949,
+          "candidateVsUpstream": 7.8,
+          "baselineVsUpstream": 7.76
+        },
+        {
+          "name": "coverage-record-aggregation-256",
+          "samplesMs": {
+            "candidate": [
+              408,
+              392,
+              392
+            ],
+            "baseline": [
+              391,
+              398,
+              395
+            ],
+            "upstream": [
+              54,
+              55,
+              52
+            ]
+          },
+          "medianMs": {
+            "candidate": 392,
+            "baseline": 395,
+            "upstream": 54
+          },
+          "timed": true,
+          "speedup": 1.0076530612244898,
+          "candidateVsUpstream": 7.2592592592592595,
+          "baselineVsUpstream": 7.314814814814815
+        }
+      ],
+      "timedCases": 44,
+      "candidateVsUpstream": 4.239927113203098,
+      "baselineVsUpstream": 5.307733198437673,
+      "speedup": 1.2518453871316408
+    },
+    "fallback-screen01": {
+      "receipt": {
+        "file": "selfhost/build/phase117/fallback-screen01/report.json",
+        "bytes": 17854,
+        "sha256": "a95e99ec16a634418f0707b681d53c29bb5dd0c8dc78b1fdd55982c1858480bd"
+      },
+      "observations": 6,
+      "allCorrect": true,
+      "cases": [
+        {
+          "name": "variation-local-fold-128-0",
+          "samplesMs": {
+            "candidate": [
+              307
+            ],
+            "baseline": [
+              596
+            ],
+            "upstream": [
+              50
+            ]
+          },
+          "medianMs": {
+            "candidate": 307,
+            "baseline": 596,
+            "upstream": 50
+          },
+          "timed": true,
+          "speedup": 1.9413680781758957,
+          "candidateVsUpstream": 6.14,
+          "baselineVsUpstream": 11.92
+        },
+        {
+          "name": "editdist",
+          "samplesMs": {
+            "candidate": [
+              287
+            ],
+            "baseline": [
+              392
+            ],
+            "upstream": [
+              51
+            ]
+          },
+          "medianMs": {
+            "candidate": 287,
+            "baseline": 392,
+            "upstream": 51
+          },
+          "timed": true,
+          "speedup": 1.3658536585365855,
+          "candidateVsUpstream": 5.627450980392157,
+          "baselineVsUpstream": 7.686274509803922
+        }
+      ],
+      "timedCases": 2,
+      "candidateVsUpstream": 5.878141629767681,
+      "baselineVsUpstream": 9.571854165043613,
+      "speedup": 1.628381003371965
+    },
+    "unroll-screen01": {
+      "receipt": {
+        "file": "selfhost/build/phase117/unroll-screen01/report.json",
+        "bytes": 58245,
+        "sha256": "b74e1da243e344404bcc686f322a4de69486185b68818a8fe0fb62a0e22e3762"
+      },
+      "observations": 36,
+      "allCorrect": true,
+      "cases": [
+        {
+          "name": "variation-local-fold-128-0",
+          "samplesMs": {
+            "candidate": [
+              141,
+              143,
+              142
+            ],
+            "baseline": [
+              668,
+              657,
+              654
+            ],
+            "upstream": [
+              62,
+              62,
+              54
+            ]
+          },
+          "medianMs": {
+            "candidate": 142,
+            "baseline": 657,
+            "upstream": 62
+          },
+          "timed": true,
+          "speedup": 4.626760563380282,
+          "candidateVsUpstream": 2.2903225806451615,
+          "baselineVsUpstream": 10.596774193548388
+        },
+        {
+          "name": "variation-local-fold-8192-123",
+          "samplesMs": {
+            "candidate": [
+              86,
+              77,
+              76
+            ],
+            "baseline": [
+              457,
+              420,
+              421
+            ],
+            "upstream": [
+              50,
+              50,
+              50
+            ]
+          },
+          "medianMs": {
+            "candidate": 77,
+            "baseline": 421,
+            "upstream": 50
+          },
+          "timed": true,
+          "speedup": 5.467532467532467,
+          "candidateVsUpstream": 1.54,
+          "baselineVsUpstream": 8.42
+        },
+        {
+          "name": "local-fold",
+          "samplesMs": {
+            "candidate": [
+              77,
+              76,
+              77
+            ],
+            "baseline": [
+              422,
+              422,
+              420
+            ],
+            "upstream": [
+              50,
+              50,
+              50
+            ]
+          },
+          "medianMs": {
+            "candidate": 77,
+            "baseline": 422,
+            "upstream": 50
+          },
+          "timed": true,
+          "speedup": 5.48051948051948,
+          "candidateVsUpstream": 1.54,
+          "baselineVsUpstream": 8.44
+        },
+        {
+          "name": "editdist",
+          "samplesMs": {
+            "candidate": [
+              112,
+              110,
+              109
+            ],
+            "baseline": [
+              390,
+              390,
+              390
+            ],
+            "upstream": [
+              51,
+              50,
+              50
+            ]
+          },
+          "medianMs": {
+            "candidate": 110,
+            "baseline": 390,
+            "upstream": 50
+          },
+          "timed": true,
+          "speedup": 3.5454545454545454,
+          "candidateVsUpstream": 2.2,
+          "baselineVsUpstream": 7.8
+        }
+      ],
+      "timedCases": 4,
+      "candidateVsUpstream": 1.8592602925419954,
+      "baselineVsUpstream": 8.754487061865825,
+      "speedup": 4.708586041977277
+    },
+    "unroll-recheck01": {
+      "receipt": {
+        "file": "selfhost/build/phase117/unroll-recheck01/report.json",
+        "bytes": 76404,
+        "sha256": "aab13a2576481e64d08fc54c9ce4257d1a14ca462fe270f543178995bc44a1a7"
+      },
+      "observations": 60,
+      "allCorrect": true,
+      "cases": [
+        {
+          "name": "variation-local-fold-128-0",
+          "samplesMs": {
+            "candidate": [
+              514,
+              513,
+              514,
+              511,
+              512
+            ],
+            "baseline": [
+              546,
+              544,
+              542,
+              544,
+              544
+            ],
+            "upstream": [
+              199,
+              201,
+              200,
+              200,
+              201
+            ]
+          },
+          "medianMs": {
+            "candidate": 513,
+            "baseline": 544,
+            "upstream": 200
+          },
+          "timed": true,
+          "speedup": 1.060428849902534,
+          "candidateVsUpstream": 2.565,
+          "baselineVsUpstream": 2.72
+        },
+        {
+          "name": "variation-local-fold-8192-123",
+          "samplesMs": {
+            "candidate": [
+              302,
+              302,
+              302,
+              302,
+              303
+            ],
+            "baseline": [
+              336,
+              336,
+              344,
+              335,
+              336
+            ],
+            "upstream": [
+              200,
+              200,
+              199,
+              200,
+              200
+            ]
+          },
+          "medianMs": {
+            "candidate": 302,
+            "baseline": 336,
+            "upstream": 200
+          },
+          "timed": true,
+          "speedup": 1.1125827814569536,
+          "candidateVsUpstream": 1.51,
+          "baselineVsUpstream": 1.68
+        },
+        {
+          "name": "local-fold",
+          "samplesMs": {
+            "candidate": [
+              304,
+              305,
+              303,
+              306,
+              307
+            ],
+            "baseline": [
+              340,
+              337,
+              339,
+              338,
+              339
+            ],
+            "upstream": [
+              198,
+              199,
+              198,
+              208,
+              199
+            ]
+          },
+          "medianMs": {
+            "candidate": 305,
+            "baseline": 339,
+            "upstream": 199
+          },
+          "timed": true,
+          "speedup": 1.1114754098360655,
+          "candidateVsUpstream": 1.5326633165829147,
+          "baselineVsUpstream": 1.7035175879396984
+        },
+        {
+          "name": "editdist",
+          "samplesMs": {
+            "candidate": [
+              443,
+              438,
+              438,
+              437,
+              438
+            ],
+            "baseline": [
+              437,
+              439,
+              439,
+              438,
+              437
+            ],
+            "upstream": [
+              201,
+              201,
+              203,
+              202,
+              201
+            ]
+          },
+          "medianMs": {
+            "candidate": 438,
+            "baseline": 438,
+            "upstream": 201
+          },
+          "timed": true,
+          "speedup": 1.0,
+          "candidateVsUpstream": 2.1791044776119404,
+          "baselineVsUpstream": 2.1791044776119404
+        }
+      ],
+      "timedCases": 4,
+      "candidateVsUpstream": 1.8964757036496835,
+      "baselineVsUpstream": 2.02943765954218,
+      "speedup": 1.0701100233641894
+    },
+    "o3-screen01": {
+      "receipt": {
+        "file": "selfhost/build/phase117/o3-screen01/report.json",
+        "bytes": 127081,
+        "sha256": "e55f64330575cf3f1c21673686f6c55bddd287ca75d23a5257a1a16138a55ae4"
+      },
+      "observations": 72,
+      "allCorrect": true,
+      "cases": [
+        {
+          "name": "editdist",
+          "samplesMs": {
+            "candidate": [
+              109,
+              111,
+              110
+            ],
+            "baseline": [
+              393,
+              390,
+              390
+            ],
+            "upstream": [
+              51,
+              51,
+              50
+            ]
+          },
+          "medianMs": {
+            "candidate": 110,
+            "baseline": 390,
+            "upstream": 51
+          },
+          "timed": true,
+          "speedup": 3.5454545454545454,
+          "candidateVsUpstream": 2.156862745098039,
+          "baselineVsUpstream": 7.647058823529412
+        },
+        {
+          "name": "tree-bitonic",
+          "samplesMs": {
+            "candidate": [
+              353,
+              357,
+              352
+            ],
+            "baseline": [
+              335,
+              337,
+              336
+            ],
+            "upstream": [
+              51,
+              50,
+              50
+            ]
+          },
+          "medianMs": {
+            "candidate": 353,
+            "baseline": 336,
+            "upstream": 50
+          },
+          "timed": true,
+          "speedup": 0.9518413597733711,
+          "candidateVsUpstream": 7.06,
+          "baselineVsUpstream": 6.72
+        },
+        {
+          "name": "lexer",
+          "samplesMs": {
+            "candidate": [
+              347,
+              347,
+              347
+            ],
+            "baseline": [
+              343,
+              343,
+              344
+            ],
+            "upstream": [
+              47,
+              47,
+              47
+            ]
+          },
+          "medianMs": {
+            "candidate": 347,
+            "baseline": 343,
+            "upstream": 47
+          },
+          "timed": true,
+          "speedup": 0.9884726224783862,
+          "candidateVsUpstream": 7.382978723404255,
+          "baselineVsUpstream": 7.297872340425532
+        },
+        {
+          "name": "raytrace",
+          "samplesMs": {
+            "candidate": [
+              621,
+              619,
+              618
+            ],
+            "baseline": [
+              624,
+              629,
+              686
+            ],
+            "upstream": [
+              58,
+              57,
+              57
+            ]
+          },
+          "medianMs": {
+            "candidate": 619,
+            "baseline": 629,
+            "upstream": 57
+          },
+          "timed": true,
+          "speedup": 1.0161550888529887,
+          "candidateVsUpstream": 10.859649122807017,
+          "baselineVsUpstream": 11.035087719298245
+        },
+        {
+          "name": "local-fold",
+          "samplesMs": {
+            "candidate": [
+              84,
+              84,
+              84
+            ],
+            "baseline": [
+              428,
+              422,
+              428
+            ],
+            "upstream": [
+              50,
+              50,
+              50
+            ]
+          },
+          "medianMs": {
+            "candidate": 84,
+            "baseline": 428,
+            "upstream": 50
+          },
+          "timed": true,
+          "speedup": 5.095238095238095,
+          "candidateVsUpstream": 1.68,
+          "baselineVsUpstream": 8.56
+        },
+        {
+          "name": "variation-local-fold-128-0",
+          "samplesMs": {
+            "candidate": [
+              110,
+              111,
+              110
+            ],
+            "baseline": [
+              596,
+              594,
+              598
+            ],
+            "upstream": [
+              51,
+              50,
+              50
+            ]
+          },
+          "medianMs": {
+            "candidate": 110,
+            "baseline": 596,
+            "upstream": 50
+          },
+          "timed": true,
+          "speedup": 5.418181818181818,
+          "candidateVsUpstream": 2.2,
+          "baselineVsUpstream": 11.92
+        },
+        {
+          "name": "coverage-closures-64",
+          "samplesMs": {
+            "candidate": [
+              154,
+              153,
+              155
+            ],
+            "baseline": [
+              146,
+              146,
+              147
+            ],
+            "upstream": [
+              50,
+              50,
+              50
+            ]
+          },
+          "medianMs": {
+            "candidate": 154,
+            "baseline": 146,
+            "upstream": 50
+          },
+          "timed": true,
+          "speedup": 0.948051948051948,
+          "candidateVsUpstream": 3.08,
+          "baselineVsUpstream": 2.92
+        },
+        {
+          "name": "coverage-map-churn-128",
+          "samplesMs": {
+            "candidate": [
+              446,
+              447,
+              452
+            ],
+            "baseline": [
+              431,
+              435,
+              434
+            ],
+            "upstream": [
+              50,
+              50,
+              50
+            ]
+          },
+          "medianMs": {
+            "candidate": 447,
+            "baseline": 434,
+            "upstream": 50
+          },
+          "timed": true,
+          "speedup": 0.970917225950783,
+          "candidateVsUpstream": 8.94,
+          "baselineVsUpstream": 8.68
+        }
+      ],
+      "timedCases": 8,
+      "candidateVsUpstream": 4.332981674453824,
+      "baselineVsUpstream": 7.562859704823045,
+      "speedup": 1.745416960660548
+    },
+    "fill-o3-screen01": {
+      "receipt": {
+        "file": "selfhost/build/phase117/fill-o3-screen01/report.json",
+        "bytes": 128125,
+        "sha256": "beaac4fe848ca224f7f0f212d84b0253a5f38142ebf7ed49517d337fb5f5291d"
+      },
+      "observations": 72,
+      "allCorrect": true,
+      "cases": [
+        {
+          "name": "editdist",
+          "samplesMs": {
+            "candidate": [
+              114,
+              117,
+              114
+            ],
+            "baseline": [
+              441,
+              437,
+              439
+            ],
+            "upstream": [
+              53,
+              54,
+              53
+            ]
+          },
+          "medianMs": {
+            "candidate": 114,
+            "baseline": 439,
+            "upstream": 53
+          },
+          "timed": true,
+          "speedup": 3.8508771929824563,
+          "candidateVsUpstream": 2.150943396226415,
+          "baselineVsUpstream": 8.283018867924529
+        },
+        {
+          "name": "tree-bitonic",
+          "samplesMs": {
+            "candidate": [
+              367,
+              365,
+              368
+            ],
+            "baseline": [
+              369,
+              372,
+              371
+            ],
+            "upstream": [
+              54,
+              55,
+              54
+            ]
+          },
+          "medianMs": {
+            "candidate": 367,
+            "baseline": 371,
+            "upstream": 54
+          },
+          "timed": true,
+          "speedup": 1.0108991825613078,
+          "candidateVsUpstream": 6.796296296296297,
+          "baselineVsUpstream": 6.87037037037037
+        },
+        {
+          "name": "lexer",
+          "samplesMs": {
+            "candidate": [
+              369,
+              369,
+              364
+            ],
+            "baseline": [
+              373,
+              373,
+              371
+            ],
+            "upstream": [
+              53,
+              50,
+              52
+            ]
+          },
+          "medianMs": {
+            "candidate": 369,
+            "baseline": 373,
+            "upstream": 52
+          },
+          "timed": true,
+          "speedup": 1.010840108401084,
+          "candidateVsUpstream": 7.096153846153846,
+          "baselineVsUpstream": 7.173076923076923
+        },
+        {
+          "name": "raytrace",
+          "samplesMs": {
+            "candidate": [
+              617,
+              635,
+              616
+            ],
+            "baseline": [
+              622,
+              635,
+              629
+            ],
+            "upstream": [
+              57,
+              57,
+              57
+            ]
+          },
+          "medianMs": {
+            "candidate": 617,
+            "baseline": 629,
+            "upstream": 57
+          },
+          "timed": true,
+          "speedup": 1.019448946515397,
+          "candidateVsUpstream": 10.824561403508772,
+          "baselineVsUpstream": 11.035087719298245
+        },
+        {
+          "name": "local-fold",
+          "samplesMs": {
+            "candidate": [
+              84,
+              83,
+              84
+            ],
+            "baseline": [
+              420,
+              420,
+              421
+            ],
+            "upstream": [
+              50,
+              50,
+              49
+            ]
+          },
+          "medianMs": {
+            "candidate": 84,
+            "baseline": 420,
+            "upstream": 50
+          },
+          "timed": true,
+          "speedup": 5.0,
+          "candidateVsUpstream": 1.68,
+          "baselineVsUpstream": 8.4
+        },
+        {
+          "name": "variation-local-fold-128-0",
+          "samplesMs": {
+            "candidate": [
+              109,
+              110,
+              109
+            ],
+            "baseline": [
+              588,
+              588,
+              589
+            ],
+            "upstream": [
+              51,
+              50,
+              50
+            ]
+          },
+          "medianMs": {
+            "candidate": 109,
+            "baseline": 588,
+            "upstream": 50
+          },
+          "timed": true,
+          "speedup": 5.394495412844036,
+          "candidateVsUpstream": 2.18,
+          "baselineVsUpstream": 11.76
+        },
+        {
+          "name": "coverage-closures-64",
+          "samplesMs": {
+            "candidate": [
+              146,
+              146,
+              146
+            ],
+            "baseline": [
+              147,
+              146,
+              147
+            ],
+            "upstream": [
+              49,
+              50,
+              49
+            ]
+          },
+          "medianMs": {
+            "candidate": 146,
+            "baseline": 147,
+            "upstream": 49
+          },
+          "timed": true,
+          "speedup": 1.0068493150684932,
+          "candidateVsUpstream": 2.979591836734694,
+          "baselineVsUpstream": 3.0
+        },
+        {
+          "name": "coverage-map-churn-128",
+          "samplesMs": {
+            "candidate": [
+              434,
+              430,
+              433
+            ],
+            "baseline": [
+              431,
+              435,
+              433
+            ],
+            "upstream": [
+              50,
+              50,
+              50
+            ]
+          },
+          "medianMs": {
+            "candidate": 433,
+            "baseline": 433,
+            "upstream": 50
+          },
+          "timed": true,
+          "speedup": 1.0,
+          "candidateVsUpstream": 8.66,
+          "baselineVsUpstream": 8.66
+        }
+      ],
+      "timedCases": 8,
+      "candidateVsUpstream": 4.248365589442301,
+      "baselineVsUpstream": 7.636106540266154,
+      "speedup": 1.7974221802480457
+    },
+    "fill-broad01": {
+      "receipt": {
+        "file": "selfhost/build/phase117/fill-broad01/report.json",
+        "bytes": 589452,
+        "sha256": "1597f60f905bab2a874fe1eed3779c73022b61e0c6dbdc6d3abdb713d2956d0d"
+      },
+      "observations": 405,
+      "allCorrect": true,
+      "cases": [
+        {
+          "name": "mandelbrot",
+          "samplesMs": {
+            "candidate": [
+              274,
+              273,
+              285
+            ],
+            "baseline": [
+              268,
+              278,
+              269
+            ],
+            "upstream": [
+              50,
+              50,
+              49
+            ]
+          },
+          "medianMs": {
+            "candidate": 274,
+            "baseline": 269,
+            "upstream": 50
+          },
+          "timed": true,
+          "speedup": 0.9817518248175182,
+          "candidateVsUpstream": 5.48,
+          "baselineVsUpstream": 5.38
+        },
+        {
+          "name": "editdist",
+          "samplesMs": {
+            "candidate": [
+              108,
+              108,
+              108
+            ],
+            "baseline": [
+              394,
+              393,
+              393
+            ],
+            "upstream": [
+              50,
+              50,
+              51
+            ]
+          },
+          "medianMs": {
+            "candidate": 108,
+            "baseline": 393,
+            "upstream": 50
+          },
+          "timed": true,
+          "speedup": 3.638888888888889,
+          "candidateVsUpstream": 2.16,
+          "baselineVsUpstream": 7.86
+        },
+        {
+          "name": "tree-bitonic",
+          "samplesMs": {
+            "candidate": [
+              335,
+              333,
+              334
+            ],
+            "baseline": [
+              336,
+              335,
+              340
+            ],
+            "upstream": [
+              51,
+              50,
+              50
+            ]
+          },
+          "medianMs": {
+            "candidate": 334,
+            "baseline": 336,
+            "upstream": 50
+          },
+          "timed": true,
+          "speedup": 1.0059880239520957,
+          "candidateVsUpstream": 6.68,
+          "baselineVsUpstream": 6.72
+        },
+        {
+          "name": "lexer",
+          "samplesMs": {
+            "candidate": [
+              335,
+              336,
+              335
+            ],
+            "baseline": [
+              351,
+              340,
+              343
+            ],
+            "upstream": [
+              51,
+              47,
+              47
+            ]
+          },
+          "medianMs": {
+            "candidate": 335,
+            "baseline": 343,
+            "upstream": 47
+          },
+          "timed": true,
+          "speedup": 1.0238805970149254,
+          "candidateVsUpstream": 7.127659574468085,
+          "baselineVsUpstream": 7.297872340425532
+        },
+        {
+          "name": "symreg",
+          "samplesMs": {
+            "candidate": [
+              94,
+              93,
+              96
+            ],
+            "baseline": [
+              94,
+              94,
+              92
+            ],
+            "upstream": [
+              50,
+              50,
+              50
+            ]
+          },
+          "medianMs": {
+            "candidate": 94,
+            "baseline": 94,
+            "upstream": 50
+          },
+          "timed": true,
+          "speedup": 1.0,
+          "candidateVsUpstream": 1.88,
+          "baselineVsUpstream": 1.88
+        },
+        {
+          "name": "test-morning-program",
+          "samplesMs": {
+            "candidate": [
+              336,
+              340,
+              332
+            ],
+            "baseline": [
+              338,
+              333,
+              338
+            ],
+            "upstream": [
+              50,
+              50,
+              50
+            ]
+          },
+          "medianMs": {
+            "candidate": 336,
+            "baseline": 338,
+            "upstream": 50
+          },
+          "timed": true,
+          "speedup": 1.005952380952381,
+          "candidateVsUpstream": 6.72,
+          "baselineVsUpstream": 6.76
+        },
+        {
+          "name": "test-evening-program",
+          "samplesMs": {
+            "candidate": [
+              540,
+              537,
+              527
+            ],
+            "baseline": [
+              526,
+              519,
+              522
+            ],
+            "upstream": [
+              50,
+              50,
+              50
+            ]
+          },
+          "medianMs": {
+            "candidate": 537,
+            "baseline": 522,
+            "upstream": 50
+          },
+          "timed": true,
+          "speedup": 0.9720670391061452,
+          "candidateVsUpstream": 10.74,
+          "baselineVsUpstream": 10.44
+        },
+        {
+          "name": "test-rle-roundtrip",
+          "samplesMs": {
+            "candidate": [
+              457,
+              500,
+              499
+            ],
+            "baseline": [
+              452,
+              478,
+              497
+            ],
+            "upstream": [
+              51,
+              54,
+              54
+            ]
+          },
+          "medianMs": {
+            "candidate": 499,
+            "baseline": 478,
+            "upstream": 54
+          },
+          "timed": true,
+          "speedup": 0.9579158316633266,
+          "candidateVsUpstream": 9.24074074074074,
+          "baselineVsUpstream": 8.851851851851851
+        },
+        {
+          "name": "test-map-set-ops",
+          "samplesMs": {
+            "candidate": [
+              487,
+              484,
+              491
+            ],
+            "baseline": [
+              481,
+              475,
+              477
+            ],
+            "upstream": [
+              57,
+              56,
+              53
+            ]
+          },
+          "medianMs": {
+            "candidate": 487,
+            "baseline": 477,
+            "upstream": 56
+          },
+          "timed": true,
+          "speedup": 0.9794661190965093,
+          "candidateVsUpstream": 8.696428571428571,
+          "baselineVsUpstream": 8.517857142857142
+        },
+        {
+          "name": "raytrace",
+          "samplesMs": {
+            "candidate": [
+              702,
+              634,
+              632
+            ],
+            "baseline": [
+              672,
+              646,
+              626
+            ],
+            "upstream": [
+              59,
+              57,
+              58
+            ]
+          },
+          "medianMs": {
+            "candidate": 634,
+            "baseline": 646,
+            "upstream": 58
+          },
+          "timed": true,
+          "speedup": 1.0189274447949528,
+          "candidateVsUpstream": 10.931034482758621,
+          "baselineVsUpstream": 11.137931034482758
+        },
+        {
+          "name": "local-pair",
+          "samplesMs": {
+            "candidate": [
+              106,
+              107,
+              106
+            ],
+            "baseline": [
+              390,
+              389,
+              390
+            ],
+            "upstream": [
+              50,
+              57,
+              50
+            ]
+          },
+          "medianMs": {
+            "candidate": 106,
+            "baseline": 390,
+            "upstream": 50
+          },
+          "timed": true,
+          "speedup": 3.6792452830188678,
+          "candidateVsUpstream": 2.12,
+          "baselineVsUpstream": 7.8
+        },
+        {
+          "name": "local-fold",
+          "samplesMs": {
+            "candidate": [
+              84,
+              83,
+              84
+            ],
+            "baseline": [
+              428,
+              421,
+              426
+            ],
+            "upstream": [
+              49,
+              50,
+              49
+            ]
+          },
+          "medianMs": {
+            "candidate": 84,
+            "baseline": 426,
+            "upstream": 49
+          },
+          "timed": true,
+          "speedup": 5.071428571428571,
+          "candidateVsUpstream": 1.7142857142857142,
+          "baselineVsUpstream": 8.693877551020408
+        },
+        {
+          "name": "scalar-region-0",
+          "samplesMs": {
+            "candidate": [
+              0,
+              0,
+              0
+            ],
+            "baseline": [
+              0,
+              0,
+              0
+            ],
+            "upstream": [
+              0,
+              0,
+              0
+            ]
+          },
+          "medianMs": {
+            "candidate": 0,
+            "baseline": 0,
+            "upstream": 0
+          },
+          "timed": false
+        },
+        {
+          "name": "scalar-region-8192",
+          "samplesMs": {
+            "candidate": [
+              108,
+              109,
+              110
+            ],
+            "baseline": [
+              107,
+              108,
+              107
+            ],
+            "upstream": [
+              50,
+              49,
+              50
+            ]
+          },
+          "medianMs": {
+            "candidate": 109,
+            "baseline": 107,
+            "upstream": 50
+          },
+          "timed": true,
+          "speedup": 0.981651376146789,
+          "candidateVsUpstream": 2.18,
+          "baselineVsUpstream": 2.14
+        },
+        {
+          "name": "complete-generic-row32",
+          "samplesMs": {
+            "candidate": [
+              251,
+              251,
+              251
+            ],
+            "baseline": [
+              258,
+              254,
+              254
+            ],
+            "upstream": [
+              50,
+              50,
+              50
+            ]
+          },
+          "medianMs": {
+            "candidate": 251,
+            "baseline": 254,
+            "upstream": 50
+          },
+          "timed": true,
+          "speedup": 1.0119521912350598,
+          "candidateVsUpstream": 5.02,
+          "baselineVsUpstream": 5.08
+        },
+        {
+          "name": "variation-editdist-0-17",
+          "samplesMs": {
+            "candidate": [
+              106,
+              106,
+              107
+            ],
+            "baseline": [
+              389,
+              389,
+              389
+            ],
+            "upstream": [
+              51,
+              50,
+              50
+            ]
+          },
+          "medianMs": {
+            "candidate": 106,
+            "baseline": 389,
+            "upstream": 50
+          },
+          "timed": true,
+          "speedup": 3.669811320754717,
+          "candidateVsUpstream": 2.12,
+          "baselineVsUpstream": 7.78
+        },
+        {
+          "name": "variation-editdist-3-123",
+          "samplesMs": {
+            "candidate": [
+              107,
+              108,
+              107
+            ],
+            "baseline": [
+              391,
+              395,
+              389
+            ],
+            "upstream": [
+              50,
+              50,
+              51
+            ]
+          },
+          "medianMs": {
+            "candidate": 107,
+            "baseline": 391,
+            "upstream": 50
+          },
+          "timed": true,
+          "speedup": 3.6542056074766354,
+          "candidateVsUpstream": 2.14,
+          "baselineVsUpstream": 7.82
+        },
+        {
+          "name": "variation-lexer-6-17",
+          "samplesMs": {
+            "candidate": [
+              365,
+              361,
+              362
+            ],
+            "baseline": [
+              368,
+              373,
+              368
+            ],
+            "upstream": [
+              51,
+              50,
+              50
+            ]
+          },
+          "medianMs": {
+            "candidate": 362,
+            "baseline": 368,
+            "upstream": 50
+          },
+          "timed": true,
+          "speedup": 1.0165745856353592,
+          "candidateVsUpstream": 7.24,
+          "baselineVsUpstream": 7.36
+        },
+        {
+          "name": "variation-lexer-10-123",
+          "samplesMs": {
+            "candidate": [
+              338,
+              336,
+              336
+            ],
+            "baseline": [
+              340,
+              342,
+              341
+            ],
+            "upstream": [
+              47,
+              47,
+              46
+            ]
+          },
+          "medianMs": {
+            "candidate": 336,
+            "baseline": 341,
+            "upstream": 47
+          },
+          "timed": true,
+          "speedup": 1.0148809523809523,
+          "candidateVsUpstream": 7.148936170212766,
+          "baselineVsUpstream": 7.25531914893617
+        },
+        {
+          "name": "variation-tree-bitonic-6-17",
+          "samplesMs": {
+            "candidate": [
+              359,
+              363,
+              357
+            ],
+            "baseline": [
+              365,
+              359,
+              364
+            ],
+            "upstream": [
+              50,
+              50,
+              50
+            ]
+          },
+          "medianMs": {
+            "candidate": 359,
+            "baseline": 364,
+            "upstream": 50
+          },
+          "timed": true,
+          "speedup": 1.0139275766016713,
+          "candidateVsUpstream": 7.18,
+          "baselineVsUpstream": 7.28
+        },
+        {
+          "name": "variation-tree-bitonic-9-123",
+          "samplesMs": {
+            "candidate": [
+              314,
+              313,
+              313
+            ],
+            "baseline": [
+              316,
+              315,
+              316
+            ],
+            "upstream": [
+              51,
+              51,
+              51
+            ]
+          },
+          "medianMs": {
+            "candidate": 313,
+            "baseline": 316,
+            "upstream": 51
+          },
+          "timed": true,
+          "speedup": 1.0095846645367412,
+          "candidateVsUpstream": 6.137254901960785,
+          "baselineVsUpstream": 6.196078431372549
+        },
+        {
+          "name": "variation-symreg-4-17",
+          "samplesMs": {
+            "candidate": [
+              93,
+              93,
+              93
+            ],
+            "baseline": [
+              94,
+              93,
+              92
+            ],
+            "upstream": [
+              50,
+              50,
+              50
+            ]
+          },
+          "medianMs": {
+            "candidate": 93,
+            "baseline": 93,
+            "upstream": 50
+          },
+          "timed": true,
+          "speedup": 1.0,
+          "candidateVsUpstream": 1.86,
+          "baselineVsUpstream": 1.86
+        },
+        {
+          "name": "variation-symreg-7-123",
+          "samplesMs": {
+            "candidate": [
+              95,
+              95,
+              95
+            ],
+            "baseline": [
+              95,
+              141,
+              94
+            ],
+            "upstream": [
+              56,
+              53,
+              52
+            ]
+          },
+          "medianMs": {
+            "candidate": 95,
+            "baseline": 95,
+            "upstream": 53
+          },
+          "timed": true,
+          "speedup": 1.0,
+          "candidateVsUpstream": 1.7924528301886793,
+          "baselineVsUpstream": 1.7924528301886793
+        },
+        {
+          "name": "variation-local-fold-128-0",
+          "samplesMs": {
+            "candidate": [
+              109,
+              108,
+              109
+            ],
+            "baseline": [
+              589,
+              587,
+              587
+            ],
+            "upstream": [
+              50,
+              50,
+              51
+            ]
+          },
+          "medianMs": {
+            "candidate": 109,
+            "baseline": 587,
+            "upstream": 50
+          },
+          "timed": true,
+          "speedup": 5.385321100917431,
+          "candidateVsUpstream": 2.18,
+          "baselineVsUpstream": 11.74
+        },
+        {
+          "name": "variation-local-fold-8192-123",
+          "samplesMs": {
+            "candidate": [
+              84,
+              84,
+              84
+            ],
+            "baseline": [
+              419,
+              423,
+              422
+            ],
+            "upstream": [
+              50,
+              51,
+              55
+            ]
+          },
+          "medianMs": {
+            "candidate": 84,
+            "baseline": 422,
+            "upstream": 51
+          },
+          "timed": true,
+          "speedup": 5.023809523809524,
+          "candidateVsUpstream": 1.6470588235294117,
+          "baselineVsUpstream": 8.27450980392157
+        },
+        {
+          "name": "variation-mandelbrot-grid-4-7",
+          "samplesMs": {
+            "candidate": [
+              159,
+              158,
+              159
+            ],
+            "baseline": [
+              155,
+              155,
+              157
+            ],
+            "upstream": [
+              50,
+              51,
+              51
+            ]
+          },
+          "medianMs": {
+            "candidate": 159,
+            "baseline": 155,
+            "upstream": 51
+          },
+          "timed": true,
+          "speedup": 0.9748427672955975,
+          "candidateVsUpstream": 3.1176470588235294,
+          "baselineVsUpstream": 3.0392156862745097
+        },
+        {
+          "name": "variation-mandelbrot-grid-5-31",
+          "samplesMs": {
+            "candidate": [
+              113,
+              113,
+              113
+            ],
+            "baseline": [
+              111,
+              111,
+              110
+            ],
+            "upstream": [
+              50,
+              50,
+              51
+            ]
+          },
+          "medianMs": {
+            "candidate": 113,
+            "baseline": 111,
+            "upstream": 50
+          },
+          "timed": true,
+          "speedup": 0.9823008849557522,
+          "candidateVsUpstream": 2.26,
+          "baselineVsUpstream": 2.22
+        },
+        {
+          "name": "variation-ray-active-64-2440",
+          "samplesMs": {
+            "candidate": [
+              429,
+              428,
+              428
+            ],
+            "baseline": [
+              427,
+              426,
+              426
+            ],
+            "upstream": [
+              51,
+              50,
+              50
+            ]
+          },
+          "medianMs": {
+            "candidate": 428,
+            "baseline": 426,
+            "upstream": 50
+          },
+          "timed": true,
+          "speedup": 0.9953271028037384,
+          "candidateVsUpstream": 8.56,
+          "baselineVsUpstream": 8.52
+        },
+        {
+          "name": "variation-ray-active-256-2240",
+          "samplesMs": {
+            "candidate": [
+              423,
+              422,
+              423
+            ],
+            "baseline": [
+              419,
+              421,
+              420
+            ],
+            "upstream": [
+              50,
+              50,
+              50
+            ]
+          },
+          "medianMs": {
+            "candidate": 423,
+            "baseline": 420,
+            "upstream": 50
+          },
+          "timed": true,
+          "speedup": 0.9929078014184397,
+          "candidateVsUpstream": 8.46,
+          "baselineVsUpstream": 8.4
+        },
+        {
+          "name": "coverage-closures-64",
+          "samplesMs": {
+            "candidate": [
+              145,
+              147,
+              146
+            ],
+            "baseline": [
+              146,
+              147,
+              147
+            ],
+            "upstream": [
+              50,
+              49,
+              49
+            ]
+          },
+          "medianMs": {
+            "candidate": 146,
+            "baseline": 147,
+            "upstream": 49
+          },
+          "timed": true,
+          "speedup": 1.0068493150684932,
+          "candidateVsUpstream": 2.979591836734694,
+          "baselineVsUpstream": 3.0
+        },
+        {
+          "name": "coverage-closures-256",
+          "samplesMs": {
+            "candidate": [
+              145,
+              145,
+              145
+            ],
+            "baseline": [
+              147,
+              148,
+              145
+            ],
+            "upstream": [
+              51,
+              50,
+              50
+            ]
+          },
+          "medianMs": {
+            "candidate": 145,
+            "baseline": 147,
+            "upstream": 50
+          },
+          "timed": true,
+          "speedup": 1.013793103448276,
+          "candidateVsUpstream": 2.9,
+          "baselineVsUpstream": 2.94
+        },
+        {
+          "name": "coverage-list-pipeline-128",
+          "samplesMs": {
+            "candidate": [
+              290,
+              288,
+              287
+            ],
+            "baseline": [
+              296,
+              296,
+              295
+            ],
+            "upstream": [
+              54,
+              51,
+              51
+            ]
+          },
+          "medianMs": {
+            "candidate": 288,
+            "baseline": 296,
+            "upstream": 51
+          },
+          "timed": true,
+          "speedup": 1.0277777777777777,
+          "candidateVsUpstream": 5.647058823529412,
+          "baselineVsUpstream": 5.803921568627451
+        },
+        {
+          "name": "coverage-list-pipeline-512",
+          "samplesMs": {
+            "candidate": [
+              283,
+              284,
+              285
+            ],
+            "baseline": [
+              283,
+              283,
+              283
+            ],
+            "upstream": [
+              50,
+              52,
+              50
+            ]
+          },
+          "medianMs": {
+            "candidate": 284,
+            "baseline": 283,
+            "upstream": 50
+          },
+          "timed": true,
+          "speedup": 0.9964788732394366,
+          "candidateVsUpstream": 5.68,
+          "baselineVsUpstream": 5.66
+        },
+        {
+          "name": "coverage-bst-32",
+          "samplesMs": {
+            "candidate": [
+              346,
+              342,
+              361
+            ],
+            "baseline": [
+              355,
+              341,
+              343
+            ],
+            "upstream": [
+              49,
+              49,
+              49
+            ]
+          },
+          "medianMs": {
+            "candidate": 346,
+            "baseline": 343,
+            "upstream": 49
+          },
+          "timed": true,
+          "speedup": 0.9913294797687862,
+          "candidateVsUpstream": 7.061224489795919,
+          "baselineVsUpstream": 7.0
+        },
+        {
+          "name": "coverage-bst-64",
+          "samplesMs": {
+            "candidate": [
+              247,
+              246,
+              247
+            ],
+            "baseline": [
+              248,
+              250,
+              249
+            ],
+            "upstream": [
+              46,
+              45,
+              45
+            ]
+          },
+          "medianMs": {
+            "candidate": 247,
+            "baseline": 249,
+            "upstream": 45
+          },
+          "timed": true,
+          "speedup": 1.008097165991903,
+          "candidateVsUpstream": 5.488888888888889,
+          "baselineVsUpstream": 5.533333333333333
+        },
+        {
+          "name": "coverage-unicode-text-16",
+          "samplesMs": {
+            "candidate": [
+              176,
+              176,
+              178
+            ],
+            "baseline": [
+              177,
+              178,
+              176
+            ],
+            "upstream": [
+              46,
+              47,
+              56
+            ]
+          },
+          "medianMs": {
+            "candidate": 176,
+            "baseline": 177,
+            "upstream": 47
+          },
+          "timed": true,
+          "speedup": 1.0056818181818181,
+          "candidateVsUpstream": 3.74468085106383,
+          "baselineVsUpstream": 3.765957446808511
+        },
+        {
+          "name": "coverage-unicode-text-64",
+          "samplesMs": {
+            "candidate": [
+              185,
+              185,
+              182
+            ],
+            "baseline": [
+              186,
+              185,
+              184
+            ],
+            "upstream": [
+              50,
+              51,
+              51
+            ]
+          },
+          "medianMs": {
+            "candidate": 185,
+            "baseline": 185,
+            "upstream": 51
+          },
+          "timed": true,
+          "speedup": 1.0,
+          "candidateVsUpstream": 3.627450980392157,
+          "baselineVsUpstream": 3.627450980392157
+        },
+        {
+          "name": "coverage-expression-32",
+          "samplesMs": {
+            "candidate": [
+              139,
+              138,
+              144
+            ],
+            "baseline": [
+              139,
+              141,
+              139
+            ],
+            "upstream": [
+              56,
+              50,
+              54
+            ]
+          },
+          "medianMs": {
+            "candidate": 139,
+            "baseline": 139,
+            "upstream": 54
+          },
+          "timed": true,
+          "speedup": 1.0,
+          "candidateVsUpstream": 2.574074074074074,
+          "baselineVsUpstream": 2.574074074074074
+        },
+        {
+          "name": "coverage-expression-128",
+          "samplesMs": {
+            "candidate": [
+              142,
+              133,
+              135
+            ],
+            "baseline": [
+              133,
+              133,
+              133
+            ],
+            "upstream": [
+              51,
+              50,
+              50
+            ]
+          },
+          "medianMs": {
+            "candidate": 135,
+            "baseline": 133,
+            "upstream": 50
+          },
+          "timed": true,
+          "speedup": 0.9851851851851852,
+          "candidateVsUpstream": 2.7,
+          "baselineVsUpstream": 2.66
+        },
+        {
+          "name": "coverage-map-churn-32",
+          "samplesMs": {
+            "candidate": [
+              425,
+              431,
+              422
+            ],
+            "baseline": [
+              428,
+              424,
+              431
+            ],
+            "upstream": [
+              50,
+              51,
+              50
+            ]
+          },
+          "medianMs": {
+            "candidate": 425,
+            "baseline": 428,
+            "upstream": 50
+          },
+          "timed": true,
+          "speedup": 1.0070588235294118,
+          "candidateVsUpstream": 8.5,
+          "baselineVsUpstream": 8.56
+        },
+        {
+          "name": "coverage-map-churn-128",
+          "samplesMs": {
+            "candidate": [
+              434,
+              432,
+              435
+            ],
+            "baseline": [
+              439,
+              432,
+              432
+            ],
+            "upstream": [
+              50,
+              54,
+              51
+            ]
+          },
+          "medianMs": {
+            "candidate": 434,
+            "baseline": 432,
+            "upstream": 51
+          },
+          "timed": true,
+          "speedup": 0.9953917050691244,
+          "candidateVsUpstream": 8.509803921568627,
+          "baselineVsUpstream": 8.470588235294118
+        },
+        {
+          "name": "coverage-numeric-recurrence-256",
+          "samplesMs": {
+            "candidate": [
+              125,
+              125,
+              124
+            ],
+            "baseline": [
+              126,
+              125,
+              126
+            ],
+            "upstream": [
+              55,
+              48,
+              50
+            ]
+          },
+          "medianMs": {
+            "candidate": 125,
+            "baseline": 126,
+            "upstream": 50
+          },
+          "timed": true,
+          "speedup": 1.008,
+          "candidateVsUpstream": 2.5,
+          "baselineVsUpstream": 2.52
+        },
+        {
+          "name": "coverage-numeric-recurrence-1024",
+          "samplesMs": {
+            "candidate": [
+              122,
+              124,
+              123
+            ],
+            "baseline": [
+              125,
+              126,
+              125
+            ],
+            "upstream": [
+              50,
+              49,
+              50
+            ]
+          },
+          "medianMs": {
+            "candidate": 123,
+            "baseline": 125,
+            "upstream": 50
+          },
+          "timed": true,
+          "speedup": 1.016260162601626,
+          "candidateVsUpstream": 2.46,
+          "baselineVsUpstream": 2.5
+        },
+        {
+          "name": "coverage-record-aggregation-64",
+          "samplesMs": {
+            "candidate": [
+              390,
+              383,
+              385
+            ],
+            "baseline": [
+              386,
+              386,
+              388
+            ],
+            "upstream": [
+              50,
+              53,
+              50
+            ]
+          },
+          "medianMs": {
+            "candidate": 385,
+            "baseline": 386,
+            "upstream": 50
+          },
+          "timed": true,
+          "speedup": 1.0025974025974025,
+          "candidateVsUpstream": 7.7,
+          "baselineVsUpstream": 7.72
+        },
+        {
+          "name": "coverage-record-aggregation-256",
+          "samplesMs": {
+            "candidate": [
+              391,
+              392,
+              389
+            ],
+            "baseline": [
+              400,
+              388,
+              390
+            ],
+            "upstream": [
+              50,
+              50,
+              50
+            ]
+          },
+          "medianMs": {
+            "candidate": 391,
+            "baseline": 390,
+            "upstream": 50
+          },
+          "timed": true,
+          "speedup": 0.9974424552429667,
+          "candidateVsUpstream": 7.82,
+          "baselineVsUpstream": 7.8
+        }
+      ],
+      "timedCases": 44,
+      "candidateVsUpstream": 4.252758899293404,
+      "baselineVsUpstream": 5.351245428345772,
+      "speedup": 1.2582997426058837
+    },
+    "closure-recheck01": {
+      "receipt": {
+        "file": "selfhost/build/phase117/closure-recheck01/report.json",
+        "bytes": 39038,
+        "sha256": "61e0dd4abe794a2b4bd9f96b095921ae77b2e295aa877c4e3d583e348b4594ca"
+      },
+      "observations": 30,
+      "allCorrect": true,
+      "cases": [
+        {
+          "name": "coverage-closures-64",
+          "samplesMs": {
+            "candidate": [
+              646,
+              601,
+              606,
+              604,
+              600
+            ],
+            "baseline": [
+              620,
+              586,
+              586,
+              588,
+              586
+            ],
+            "upstream": [
+              199,
+              200,
+              196,
+              197,
+              196
+            ]
+          },
+          "medianMs": {
+            "candidate": 604,
+            "baseline": 586,
+            "upstream": 197
+          },
+          "timed": true,
+          "speedup": 0.9701986754966887,
+          "candidateVsUpstream": 3.065989847715736,
+          "baselineVsUpstream": 2.9746192893401013
+        },
+        {
+          "name": "coverage-closures-256",
+          "samplesMs": {
+            "candidate": [
+              618,
+              608,
+              600,
+              645,
+              654
+            ],
+            "baseline": [
+              581,
+              626,
+              625,
+              620,
+              632
+            ],
+            "upstream": [
+              202,
+              200,
+              199,
+              211,
+              215
+            ]
+          },
+          "medianMs": {
+            "candidate": 618,
+            "baseline": 625,
+            "upstream": 202
+          },
+          "timed": true,
+          "speedup": 1.0113268608414239,
+          "candidateVsUpstream": 3.0594059405940595,
+          "baselineVsUpstream": 3.094059405940594
+        }
+      ],
+      "timedCases": 2,
+      "candidateVsUpstream": 3.062696124969403,
+      "baselineVsUpstream": 3.033751603423567,
+      "speedup": 0.9905493328868449
+    }
+  },
+  "compilerCost": {
+    "receipt": {
+      "file": "selfhost/build/phase117/compiler-cost01/report.json",
+      "bytes": 43312,
+      "sha256": "6ed2f2db160826e14d2aa7cddc7517967894312eb0000ad45e6834b8c4991aa0"
+    },
+    "scope": "Checked hosted APIs, prepared-Base whole request; one warmup + three alternating rounds; no native B1/B2 or upstream compilation claim.",
+    "cases": [
+      {
+        "name": "variation-local-fold-128-0",
+        "samplesSeconds": {
+          "baseline": [
+            4.64833627,
+            4.1028797699999995,
+            4.139628290000001
+          ],
+          "candidate": [
+            4.842675898999998,
+            4.2946736209999985,
+            4.2532123849999985
+          ]
+        },
+        "medianSeconds": {
+          "baseline": 4.139628290000001,
+          "candidate": 4.2946736209999985
+        },
+        "stageMedianSeconds": {
+          "baseline": {
+            "frontend": 0.968939824000001,
+            "admission": 0.015420246000001497,
+            "lower": 2.073563301000002,
+            "verify": 0.32031413199999953,
+            "emit": 0.8372066569999989
+          },
+          "candidate": {
+            "frontend": 0.9766482019999967,
+            "admission": 0.013913037999998778,
+            "lower": 2.130400206000006,
+            "verify": 0.37046993500000097,
+            "emit": 0.9535531169999958
+          }
+        },
+        "ratio": 1.0374539258451143
+      },
+      {
+        "name": "editdist",
+        "samplesSeconds": {
+          "baseline": [
+            5.827748303999994,
+            6.2172824370000015,
+            6.772652612999998
+          ],
+          "candidate": [
+            7.524861169000004,
+            8.089690782999998,
+            7.691991292999999
+          ]
+        },
+        "medianSeconds": {
+          "baseline": 6.2172824370000015,
+          "candidate": 7.691991292999999
+        },
+        "stageMedianSeconds": {
+          "baseline": {
+            "frontend": 1.0096693479999959,
+            "admission": 0.004320611000002828,
+            "lower": 3.5663267940000076,
+            "verify": 0.7229162429999997,
+            "emit": 0.9635585379999975
+          },
+          "candidate": {
+            "frontend": 1.0614379380000027,
+            "admission": 0.004368789000000106,
+            "lower": 4.271318806999996,
+            "verify": 0.8558982309999992,
+            "emit": 1.398868069999997
+          }
+        },
+        "ratio": 1.2371950881986282
+      },
+      {
+        "name": "lexer",
+        "samplesSeconds": {
+          "baseline": [
+            5.989168653000001,
+            5.706568784000003,
+            6.927059772000008
+          ],
+          "candidate": [
+            5.927022735000006,
+            5.953183240000013,
+            6.810126339999988
+          ]
+        },
+        "medianSeconds": {
+          "baseline": 5.989168653000001,
+          "candidate": 5.953183240000013
+        },
+        "stageMedianSeconds": {
+          "baseline": {
+            "frontend": 1.2928737600000169,
+            "admission": 0.003971648000006098,
+            "lower": 3.2305180880000117,
+            "verify": 0.664601158000005,
+            "emit": 0.8562442980000051
+          },
+          "candidate": {
+            "frontend": 1.1673932870000134,
+            "admission": 0.0040803069999965375,
+            "lower": 3.218960439000002,
+            "verify": 0.7062963680000103,
+            "emit": 0.8760676570000069
+          }
+        },
+        "ratio": 0.9939915846280329
+      }
+    ],
+    "geometricRatio": 1.0845841108109162
+  },
+  "source": {
+    "manifest": {
+      "file": "selfhost/build/phase117/version-source03/manifest.json",
+      "bytes": 3937,
+      "sha256": "ac08ce14fe8b0ff7d3d0d27cc42f59cbe50d1b8a7355460a9063ff4e7a82e395"
+    },
+    "source": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase117/version-source03/compiler.bend",
+      "bytes": 2329586,
+      "sha256": "8010f9b5691a32f9b8d3a45da444e05b4bf4275fd1380e2acb122bfd2e53fec6"
+    },
+    "parent": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase114/final-source02/compiler.bend",
+      "bytes": 2306979,
+      "sha256": "500211d484785778e75d5d4388b0d5ebc7282effd233c6b8f3d0e0269ac777f8"
+    },
+    "lines": 51056,
+    "parentLines": 50590,
+    "addedHelpers": 54,
+    "overrides": [
+      "p113a_bundle_chunks",
+      "p113a_success",
+      "p113a_raw",
+      "p113a_template",
+      "p111q_memory",
+      "p113ah_function",
+      "p113i_eligible"
+    ]
+  },
+  "generated": {
+    "qbeBytes": 39079507,
+    "baselineQbeBytes": 38182706,
+    "versionedPrograms": [
+      {
+        "name": "editdist",
+        "functions": 3
+      },
+      {
+        "name": "local-pair",
+        "functions": 3
+      },
+      {
+        "name": "local-fold",
+        "functions": 1
+      },
+      {
+        "name": "complete-generic-row32",
+        "functions": 3
+      },
+      {
+        "name": "variation-editdist-0-17",
+        "functions": 3
+      },
+      {
+        "name": "variation-editdist-3-123",
+        "functions": 3
+      },
+      {
+        "name": "variation-local-fold-128-0",
+        "functions": 1
+      },
+      {
+        "name": "variation-local-fold-8192-123",
+        "functions": 1
+      }
+    ]
+  },
+  "execution": {
+    "guards": [
+      {
+        "receipt": {
+          "file": "selfhost/build/phase117/api01-guard/process.json",
+          "bytes": 755,
+          "sha256": "3b0c19ed507b9b2186296e6a5323c0e256cea0237d8ae5dc2dc9e2ee42e0765d"
+        },
+        "complete": false,
+        "seconds": 0.8814131019171327,
+        "peakBytes": 103370752
+      },
+      {
+        "receipt": {
+          "file": "selfhost/build/phase117/api02-guard/process.json",
+          "bytes": 753,
+          "sha256": "f17fa1ec8ceecc13b366536cae1d9b5326d9020546862e491f634370d1cb6315"
+        },
+        "complete": true,
+        "seconds": 8.885136652970687,
+        "peakBytes": 894099456
+      },
+      {
+        "receipt": {
+          "file": "selfhost/build/phase117/api03-guard/process.json",
+          "bytes": 796,
+          "sha256": "b6f3924cf4bdd4f2bdefa4eee3f2a47665bad3c959145c40433fce566077863d"
+        },
+        "complete": true,
+        "seconds": 11.045405589975417,
+        "peakBytes": 1425461248
+      },
+      {
+        "receipt": {
+          "file": "selfhost/build/phase117/boolean-api01-guard/process.json",
+          "bytes": 823,
+          "sha256": "892d1c06749048a6f4f2eba613c1f996781a6b425f1a18b469c02d0c7eee9513"
+        },
+        "complete": false,
+        "seconds": 5.23342160298489,
+        "peakBytes": 576774144
+      },
+      {
+        "receipt": {
+          "file": "selfhost/build/phase117/boolean-api02-guard/process.json",
+          "bytes": 826,
+          "sha256": "6170300a4b4a7b08acd5fbd5b09c6432de599111080571f616aa1576e2366519"
+        },
+        "complete": true,
+        "seconds": 11.175501397112384,
+        "peakBytes": 1426706432
+      },
+      {
+        "receipt": {
+          "file": "selfhost/build/phase117/boolean-controls02-guard/process.json",
+          "bytes": 532,
+          "sha256": "8da80508930d5f8b6ff32e965377305a26e54f3d8146dfcbb36b87149d5294ef"
+        },
+        "complete": true,
+        "seconds": 0.20678812894038856,
+        "peakBytes": 72904704
+      },
+      {
+        "receipt": {
+          "file": "selfhost/build/phase117/boolean-emit02-guard/process.json",
+          "bytes": 716,
+          "sha256": "c1c27363a658eb6f9f14b98a902aecece7b97d2a85337d5590c1454aa9c714a9"
+        },
+        "complete": true,
+        "seconds": 10.052967610070482,
+        "peakBytes": 343678976
+      },
+      {
+        "receipt": {
+          "file": "selfhost/build/phase117/boolean-screen02-guard/process.json",
+          "bytes": 698,
+          "sha256": "da6d07bd381c66a3c8abdfbd327707dc698c5d2ef4712910fa05c0da32a154c8"
+        },
+        "complete": true,
+        "seconds": 3.9626628949772567,
+        "peakBytes": 41906176
+      },
+      {
+        "receipt": {
+          "file": "selfhost/build/phase117/broad-emit01-guard/process.json",
+          "bytes": 2073,
+          "sha256": "1e168943bb796dae77b3fdb8f65862d2ea1dc10e218771a0d9f164a500361e84"
+        },
+        "complete": true,
+        "seconds": 282.488832292147,
+        "peakBytes": 856449024
+      },
+      {
+        "receipt": {
+          "file": "selfhost/build/phase117/broad-screen01-guard/process.json",
+          "bytes": 665,
+          "sha256": "d3e62a453f965011275150b9ee0448ea00ff71fb83cd711eea4559ca3905079d"
+        },
+        "complete": true,
+        "seconds": 115.1299590349663,
+        "peakBytes": 48033792
+      },
+      {
+        "receipt": {
+          "file": "selfhost/build/phase117/closure-recheck01-guard/process.json",
+          "bytes": 667,
+          "sha256": "7f86f324cc7e0dac9b4d5076f387ef56c4102a318677a91b8a62340a23b60dfe"
+        },
+        "complete": true,
+        "seconds": 14.901257974095643,
+        "peakBytes": 29732864
+      },
+      {
+        "receipt": {
+          "file": "selfhost/build/phase117/compiler-cost01-guard/process.json",
+          "bytes": 697,
+          "sha256": "3a2547ddf3e921710240c184860ef8cf162f984abd90871a918a24dd7cd2943f"
+        },
+        "complete": true,
+        "seconds": 167.49906304012984,
+        "peakBytes": 1037713408
+      },
+      {
+        "receipt": {
+          "file": "selfhost/build/phase117/controls-emit02-guard/process.json",
+          "bytes": 961,
+          "sha256": "8eae18cbbe4f49eace87d73ad618f76b783e21126bd803a30d201aded0120b68"
+        },
+        "complete": true,
+        "seconds": 24.419999106088653,
+        "peakBytes": 444358656
+      },
+      {
+        "receipt": {
+          "file": "selfhost/build/phase117/controls-emit03-guard/process.json",
+          "bytes": 1128,
+          "sha256": "5084d7d059ff39d245d3029c44eff4ced374f2f2632b29087b92411581e16719"
+        },
+        "complete": true,
+        "seconds": 23.954214791068807,
+        "peakBytes": 444858368
+      },
+      {
+        "receipt": {
+          "file": "selfhost/build/phase117/emit02-guard/process.json",
+          "bytes": 740,
+          "sha256": "5be0e3512082e85ccc06039bc8c80354a9f4fdcac694e04de7ae4bbeb1f5549c"
+        },
+        "complete": false,
+        "seconds": 0.8387509079184383,
+        "peakBytes": 129728512
+      },
+      {
+        "receipt": {
+          "file": "selfhost/build/phase117/emit03-guard/process.json",
+          "bytes": 737,
+          "sha256": "9050731de4569e1aecba0954ec316da4b50aafe11156337ed39ba048707ad7a6"
+        },
+        "complete": true,
+        "seconds": 19.01324556884356,
+        "peakBytes": 443826176
+      },
+      {
+        "receipt": {
+          "file": "selfhost/build/phase117/fallback-api01-guard/process.json",
+          "bytes": 799,
+          "sha256": "5e012586fee4e24a9f1e2a699d2b933ab5067ee64740f679a6c5b8e51eba2e1f"
+        },
+        "complete": true,
+        "seconds": 10.835926885949448,
+        "peakBytes": 1435041792
+      },
+      {
+        "receipt": {
+          "file": "selfhost/build/phase117/fallback-emit01-guard/process.json",
+          "bytes": 831,
+          "sha256": "995e10232cdd5407814ab574584b4c085f1431443f5e55c2fe683a5dc5dabd42"
+        },
+        "complete": true,
+        "seconds": 19.985988346859813,
+        "peakBytes": 422379520
+      },
+      {
+        "receipt": {
+          "file": "selfhost/build/phase117/fallback-screen01-guard/process.json",
+          "bytes": 700,
+          "sha256": "66d78a740621842aa5601a94c291644a6261094fa3c99cc6e291af0d27aa4031"
+        },
+        "complete": true,
+        "seconds": 2.786088722059503,
+        "peakBytes": 43769856
+      },
+      {
+        "receipt": {
+          "file": "selfhost/build/phase117/fill-broad01-guard/process.json",
+          "bytes": 685,
+          "sha256": "f9f4d6f30bf2ac8313990feeef914e7d683aa5fdefb0520d470c9eedf169e83a"
+        },
+        "complete": true,
+        "seconds": 107.11250972398557,
+        "peakBytes": 47742976
+      },
+      {
+        "receipt": {
+          "file": "selfhost/build/phase117/fill-o3-screen01-guard/process.json",
+          "bytes": 675,
+          "sha256": "df25baa8ea9c804fd9d21ddb2d206a08ce26036742cb282ab77ff983c6bef541"
+        },
+        "complete": true,
+        "seconds": 29.40297523699701,
+        "peakBytes": 44613632
+      },
+      {
+        "receipt": {
+          "file": "selfhost/build/phase117/functional02-guard/process.json",
+          "bytes": 679,
+          "sha256": "092db030b45fc58282a3cc9f8a353c63a0c9eccfdd4e58f9d095df40f70e46a1"
+        },
+        "complete": false,
+        "seconds": 2.499689874937758,
+        "peakBytes": 105324544
+      },
+      {
+        "receipt": {
+          "file": "selfhost/build/phase117/functional03-guard/process.json",
+          "bytes": 679,
+          "sha256": "6c67106d383743c30a69786266ef3ffc9a4b405e58db56e9a9db8c6b153ccb59"
+        },
+        "complete": true,
+        "seconds": 2.561264088843018,
+        "peakBytes": 105324544
+      },
+      {
+        "receipt": {
+          "file": "selfhost/build/phase117/hoist-api01-guard/process.json",
+          "bytes": 792,
+          "sha256": "f185fa0a59c68e8dd071bf8c3c614aa2b837dba6b0f68e60a904a992a14ac11c"
+        },
+        "complete": true,
+        "seconds": 10.97883683303371,
+        "peakBytes": 1484959744
+      },
+      {
+        "receipt": {
+          "file": "selfhost/build/phase117/hoist-api02-guard/process.json",
+          "bytes": 793,
+          "sha256": "334cf5ca4ff714913be40ae1a408b6e5121d0f3a43e360f7dfc813d4d383fe6a"
+        },
+        "complete": true,
+        "seconds": 10.968005805974826,
+        "peakBytes": 1482145792
+      },
+      {
+        "receipt": {
+          "file": "selfhost/build/phase117/hoist-emit01-guard/process.json",
+          "bytes": 738,
+          "sha256": "85a8f0cf18c27c5af6b6621ef923bdab39af9fb923cca97c8acfde30b97f8235"
+        },
+        "complete": true,
+        "seconds": 18.478111368836835,
+        "peakBytes": 413052928
+      },
+      {
+        "receipt": {
+          "file": "selfhost/build/phase117/hoist-emit02-guard/process.json",
+          "bytes": 738,
+          "sha256": "0ec28dca74b27fdfb88e906b591c706731244e5ff1f88dd41a2f65f50132c991"
+        },
+        "complete": true,
+        "seconds": 18.833673633867875,
+        "peakBytes": 421494784
+      },
+      {
+        "receipt": {
+          "file": "selfhost/build/phase117/hoist-screen01-guard/process.json",
+          "bytes": 667,
+          "sha256": "a4600a411281f733b4b91ae0e8a1afdbae796979cff31c6a20bd8b160e21dd43"
+        },
+        "complete": true,
+        "seconds": 6.479168243939057,
+        "peakBytes": 43888640
+      },
+      {
+        "receipt": {
+          "file": "selfhost/build/phase117/hoist-screen02-guard/process.json",
+          "bytes": 667,
+          "sha256": "2ad0dd1a7079c0e5967acafbafb968fb51ffbb82d0d38bcf660ff1b72a322340"
+        },
+        "complete": true,
+        "seconds": 6.355503337923437,
+        "peakBytes": 43532288
+      },
+      {
+        "receipt": {
+          "file": "selfhost/build/phase117/inline-api01-guard/process.json",
+          "bytes": 796,
+          "sha256": "c35ce8766532f610af379ce9cf3037e3f0e530c4101abec694d674b0daba9e94"
+        },
+        "complete": true,
+        "seconds": 10.793566942214966,
+        "peakBytes": 1508560896
+      },
+      {
+        "receipt": {
+          "file": "selfhost/build/phase117/inline-emit01-guard/process.json",
+          "bytes": 791,
+          "sha256": "442737f77d46714cfadc1c8b5fab8b10906bca2830e65b10be89475c3ae640c6"
+        },
+        "complete": true,
+        "seconds": 14.522235597018152,
+        "peakBytes": 396075008
+      },
+      {
+        "receipt": {
+          "file": "selfhost/build/phase117/inline-screen01-guard/process.json",
+          "bytes": 670,
+          "sha256": "57a427f42a315d5c8718646ab3ca27ca74388622b2cfc1e0532c84b8dc089bb9"
+        },
+        "complete": true,
+        "seconds": 3.7440065019764006,
+        "peakBytes": 45838336
+      },
+      {
+        "receipt": {
+          "file": "selfhost/build/phase117/loop-control-emit01-guard/process.json",
+          "bytes": 877,
+          "sha256": "aa8ba96fd7ec5fd7e1daabf08ab6fd5f2b631ddff85783a361fec8ac7feb8eee"
+        },
+        "complete": true,
+        "seconds": 5.312415848020464,
+        "peakBytes": 257413120
+      },
+      {
+        "receipt": {
+          "file": "selfhost/build/phase117/loop-control01-guard/process.json",
+          "bytes": 688,
+          "sha256": "eb2210fa5be0f03d498853e5e024c3397b50c4fe32088c44ad35aa5db83e2212"
+        },
+        "complete": true,
+        "seconds": 0.618493391899392,
+        "peakBytes": 105222144
+      },
+      {
+        "receipt": {
+          "file": "selfhost/build/phase117/o3-screen01-guard/process.json",
+          "bytes": 662,
+          "sha256": "78800dc985f5750903b708e7c3eec255c7d6945aa26162cd8689406f724d966b"
+        },
+        "complete": true,
+        "seconds": 29.023006834089756,
+        "peakBytes": 47190016
+      },
+      {
+        "receipt": {
+          "file": "selfhost/build/phase117/origin-controls-api01-guard/process.json",
+          "bytes": 685,
+          "sha256": "adbcf59fa259299a902b9076d1d4f00c436ed21737ee9b226a86eb00bfa031e8"
+        },
+        "complete": true,
+        "seconds": 6.48212321405299,
+        "peakBytes": 655212544
+      },
+      {
+        "receipt": {
+          "file": "selfhost/build/phase117/origin-controls01-guard/process.json",
+          "bytes": 529,
+          "sha256": "42ba8a5b7021aa3e4b780551d72d446b9e1ee55b5e848c5fc41cacdae165bf6c"
+        },
+        "complete": true,
+        "seconds": 0.06407912401482463,
+        "peakBytes": 31993856
+      },
+      {
+        "receipt": {
+          "file": "selfhost/build/phase117/packed-api01-guard/process.json",
+          "bytes": 796,
+          "sha256": "24682115962f3d502e25ebbe3d812d9c001cc30893981d0c9c1781bb858e61d3"
+        },
+        "complete": true,
+        "seconds": 10.693765918025747,
+        "peakBytes": 1482485760
+      },
+      {
+        "receipt": {
+          "file": "selfhost/build/phase117/packed-emit01-guard/process.json",
+          "bytes": 741,
+          "sha256": "0ba42e974e176b6db4ed4cb5f6792f0f730acc538efb6d33c66f4aeea2d64eb8"
+        },
+        "complete": true,
+        "seconds": 18.320798978907987,
+        "peakBytes": 414765056
+      },
+      {
+        "receipt": {
+          "file": "selfhost/build/phase117/packed-screen01-guard/process.json",
+          "bytes": 668,
+          "sha256": "517ee9e1b303e60759c976ef7a08850a2c2a81a93ca18fd08a404d5c1c86f4c6"
+        },
+        "complete": true,
+        "seconds": 6.68982096388936,
+        "peakBytes": 44146688
+      },
+      {
+        "receipt": {
+          "file": "selfhost/build/phase117/post-profile01-guard/process.json",
+          "bytes": 658,
+          "sha256": "a19db6c31ffba777feab2ba991fe4f81687e84b491a018991394d80354a294b5"
+        },
+        "complete": true,
+        "seconds": 8.161560568958521,
+        "peakBytes": 30511104
+      },
+      {
+        "receipt": {
+          "file": "selfhost/build/phase117/runtime-fill-o3-01-guard/process.json",
+          "bytes": 513,
+          "sha256": "6b8bb9ff352bdac686cbbd214f39c4f839a7490b78b083c0eef4280e63802f6f"
+        },
+        "complete": true,
+        "seconds": 1.4642572950106114,
+        "peakBytes": 80658432
+      },
+      {
+        "receipt": {
+          "file": "selfhost/build/phase117/runtime-o3-01-guard/process.json",
+          "bytes": 508,
+          "sha256": "f6a9e818a08f6bc52d1c65a78208d1ea7988e7bc0056fdcb4cc491d5b15e20da"
+        },
+        "complete": true,
+        "seconds": 1.8193594058975577,
+        "peakBytes": 85340160
+      },
+      {
+        "receipt": {
+          "file": "selfhost/build/phase117/runtime01-guard/process.json",
+          "bytes": 505,
+          "sha256": "5aa4b07a4330cc92ff935cff751b47992cea30701a1240a04d9e43d808e952b3"
+        },
+        "complete": true,
+        "seconds": 1.4013124671764672,
+        "peakBytes": 78315520
+      },
+      {
+        "receipt": {
+          "file": "selfhost/build/phase117/screen03-guard/process.json",
+          "bytes": 669,
+          "sha256": "4bc9eb39be1f861d3c966e75dc477d2e926d698e054ee9f75672c2ad7f267631"
+        },
+        "complete": true,
+        "seconds": 7.093469354091212,
+        "peakBytes": 43753472
+      },
+      {
+        "receipt": {
+          "file": "selfhost/build/phase117/unroll-api01-guard/process.json",
+          "bytes": 795,
+          "sha256": "6e4820f9539017ea216e73331d70b51ffa4c4a19a6581c4676bf107b83f4e2f1"
+        },
+        "complete": true,
+        "seconds": 11.021235080901533,
+        "peakBytes": 1482747904
+      },
+      {
+        "receipt": {
+          "file": "selfhost/build/phase117/unroll-emit01-guard/process.json",
+          "bytes": 880,
+          "sha256": "e2252540d39c111a48420a200314419e01fb11ce33991e7969059d428e0c8ba8"
+        },
+        "complete": true,
+        "seconds": 28.995981293031946,
+        "peakBytes": 466575360
+      },
+      {
+        "receipt": {
+          "file": "selfhost/build/phase117/unroll-recheck01-guard/process.json",
+          "bytes": 800,
+          "sha256": "afdd51badf7b0934abbc84894f1aacf3b1a2bad4652691c7efbdcac699566121"
+        },
+        "complete": true,
+        "seconds": 21.45727521390654,
+        "peakBytes": 30367744
+      },
+      {
+        "receipt": {
+          "file": "selfhost/build/phase117/unroll-screen01-guard/process.json",
+          "bytes": 670,
+          "sha256": "ff91f5a271a571c2f8d1d8a250fa0cc3ac208cd750b86fd6661340171c83a8e5"
+        },
+        "complete": true,
+        "seconds": 9.957108480855823,
+        "peakBytes": 44195840
+      },
+      {
+        "receipt": {
+          "file": "selfhost/build/phase117/version-api01-guard/process.json",
+          "bytes": 797,
+          "sha256": "d9678600797e30c85495e05ce598e74f31b728f576fa86ca1b059141a2b6e431"
+        },
+        "complete": false,
+        "seconds": 2.8113521460909396,
+        "peakBytes": 253603840
+      },
+      {
+        "receipt": {
+          "file": "selfhost/build/phase117/version-api02-guard/process.json",
+          "bytes": 796,
+          "sha256": "618109830037408502b14256a6f2f7e896e683b859e5e9d5d794ebae47c7c882"
+        },
+        "complete": false,
+        "seconds": 5.212599188787863,
+        "peakBytes": 557953024
+      },
+      {
+        "receipt": {
+          "file": "selfhost/build/phase117/version-api03-guard/process.json",
+          "bytes": 797,
+          "sha256": "21edede805d5c8dfa49b1caa3b9d8e2a0d519a085c1cde9f8388e86257c2d744"
+        },
+        "complete": true,
+        "seconds": 10.897856566123664,
+        "peakBytes": 1436524544
+      },
+      {
+        "receipt": {
+          "file": "selfhost/build/phase117/version-emit01-guard/process.json",
+          "bytes": 826,
+          "sha256": "10cf10a3998737c1ca679ecb7625ebd621adeef0cf63052eb3270b327b46ed05"
+        },
+        "complete": true,
+        "seconds": 19.95734951994382,
+        "peakBytes": 436813824
+      },
+      {
+        "receipt": {
+          "file": "selfhost/build/phase117/version-screen01-guard/process.json",
+          "bytes": 673,
+          "sha256": "4157bf390eb4512a748112cffc63766ad348d2590cd0a42f139c3fcba508ad9d"
+        },
+        "complete": true,
+        "seconds": 5.441912269918248,
+        "peakBytes": 45383680
+      }
+    ],
+    "guardSeconds": 1188.9233039622195,
+    "failedGuardSeconds": 17.47722682263702,
+    "peakBytes": 1508560896
+  }
+}

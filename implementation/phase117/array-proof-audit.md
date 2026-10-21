@@ -417,3 +417,57 @@ an actual runtime handle, or reproduce a runtime failure. In particular, alias
 and effectful-conditional inputs exercise analysis refusal rather than runtime
 behavior. Unique labels and lexical delimiters were checked statically; root
 owns the checked compilation and execution of this pure analysis report.
+
+## Bounded two-iteration expansion prototype
+
+`unroll-two.bend` is a separate107-line experiment and overrides only
+`p117v_private`. It receives the already-versioned structured fast body; the
+original fallback and entry guard remain unchanged. It admits at most16 formals,
+exactly one static `Again` site and a small body budget. It rejects private calls
+and runtime calls except the existing exact `p111_rt_fail(state,w4)` used by
+exhaustive pattern matching. Root explicitly authorized retaining this narrow
+profitability exception because the machine optimizer removes its unreachable
+branch in the measured fold; the unroll transformation itself does not delete,
+move or assume away failure behavior, and no failure input is constructed.
+
+At the first `Again`, the pass snapshots every full-word actual into a fresh
+reserved `p113a_unroll_i`, then assigns all formals from those snapshots before
+appending one copy of the original body. That copy's `Again` remains unchanged.
+This is the same parallel update as the existing loop emitter followed by the
+same next iteration. Both copies retain all exit tests, so zero, odd and even
+iteration counts do not require a divisibility or positive-count assumption.
+Source effects, including the retained failure helper, keep their logical
+iteration order. Metadata outside the loop is neither duplicated nor modified.
+
+All explicit allocas are removed from the second copy, including nested scalar
+branches: the existing emitter already lifts every original alloca into the
+entry block exactly once. Consequently second-iteration locals reuse precisely
+the same stack buffers as an ordinary loop iteration. Original verified pointer
+rules plus the versioning factory justify the generated address operations;
+the gate additionally refuses pointer copies/loads/stores and permits offsets
+only in the existing private array namespace. Fresh snapshot names cannot
+collide with source locals or the established template role names.
+
+The budget counts each structured `Again` as its existing two moves per formal
+plus jump, instead of pretending the eventual parallel transfer costs one
+instruction. Admission requires at most256 such transfer-expanded units; the
+candidate must cost no more than twice its original, hence at most512. This is
+a bounded structural-growth metric, not a promise that final machine code or
+register spills grow by at most2×. Exactly one static backedge prevents repeated
+body copies in several branch arms. All other bodies retain their original
+versioned emission. The ordinary `p113e` emitter still performs its existing
+width and Boolean lowering; no generated-code text replacement is used.
+
+Only static delimiter checks were run by the audit agent. Root owns checked
+compilation, activation inspection, ordinary exact-output controls and timing.
+Useful checks are unchanged alloca count, one retained loop backedge, fresh
+parallel-copy temporaries, both exit tests and unchanged fallback bytes. An
+unprofitable result should leave this module outside the selected composition.
+
+## Root qualification outcome
+
+Selected source03/API03 passes22 finite origin controls,11 ordinary owner/array
+controls, forced-slow fold/edit scalar/product ABI observations, and405 original45
+observations. Unroll source01 passes its separate ordinary count control and
+matched screens, but remains unselected. Full native compiler/stack qualification
+is still outstanding. See the main report for cost and runtime limitations.

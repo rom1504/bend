@@ -16,3 +16,9 @@ retain per-access guarded emission. New symbols use a distinct emitter namespace
 
 Measure pair first; inspect machine shape and complete outputs. Then ordinary
 array controls and broad original45. Preserve any regression/failed attempt.
+
+## Outcome
+
+Selected version-source03/API03 passes22 finite analysis checks,11 ordinary controls, forced-slow scalar/product ABI checks and405 broad observations. Fold loop machine code loses calls/scratch traffic. Full native successor remains unqualified.
+
+[Complete report](../../implementation/phase117/README.md) retains exact receipts and limits.

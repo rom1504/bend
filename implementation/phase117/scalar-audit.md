@@ -179,3 +179,11 @@ V2:5,074bytes, SHA256
 `e667b1c9c2a027d136641dea454e6daf7efbe833ad6affd5549097fda0cecdb0`.
 Original preserved SHA256
 `d70fcb6966edc5cfa432df61da4083b2fa9b530415e7c274bf22c7f1e19807a2`.
+
+## Root qualification outcome
+
+The checked v2 API and all eight finite controls pass. The nine-observation
+scalar screen removes ten normalizations but measures no meaningful speed gain
+(428ms candidate/428ms baseline medians). This pass is excluded from selection;
+see `results.json` boolean-screen02. Earlier unmeasured status describes the
+source-review handoff, not the completed root experiment.

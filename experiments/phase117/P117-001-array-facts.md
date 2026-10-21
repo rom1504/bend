@@ -11,3 +11,9 @@ initial diagnostic pair; other array and unrelated programs test transfer.
 
 Parent and method: [design](../../design/phase117/array-facts-and-scalar-code.md).
 Outcomes will be recorded in [report](../../implementation/phase117/README.md).
+
+## Outcome
+
+Selected scalar/layout/origin/versioning composition passes the original45; geomean5.308→4.240×upstream. The facts-only step was useful but smaller. See Phase117 report/results for ablations and compiler-cost tradeoff.
+
+[Complete report](../../implementation/phase117/README.md) retains exact receipts and limits.

@@ -1,0 +1,256 @@
+{
+  "kind": "phase117-ordinary-array-transfer",
+  "complete": true,
+  "targetsRun": false,
+  "cases": [
+    {
+      "name": "scalar-array-wrap",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase113/controls/field-array/scalar-array-wrap-v2.bend",
+        "bytes": 3257,
+        "sha256": "84980d0265b05ad6d33dcb1aa87b44f52df432225f5b253795145e0cb8923e9d"
+      },
+      "expectedStdoutEvidence": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase113/controls/field-array/scalar-array-wrap.expected.json",
+        "bytes": 121,
+        "sha256": "45c84fb1349a7cc0a0ae5ad5b1c2d1b4cf365cbde966895f60e0095c98044e17"
+      },
+      "expected": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase113/controls/field-array/scalar-array-wrap.expected.json",
+        "bytes": 121,
+        "sha256": "45c84fb1349a7cc0a0ae5ad5b1c2d1b4cf365cbde966895f60e0095c98044e17"
+      },
+      "provenance": "U32/Bool/Char/F32 literal cells; indices7,11,3 all select cell3 in depth2 array; size4. Float output values exactly representable."
+    },
+    {
+      "name": "string-array-owners",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase113/controls/field-array/string-array-owners.bend",
+        "bytes": 790,
+        "sha256": "58036392369eff947007f56e9fefb8c6490da38885597d68f7bbf885fb599ac4"
+      },
+      "expectedStdoutEvidence": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase113/controls/field-array/string-array-owners.expected.json",
+        "bytes": 83,
+        "sha256": "22d5e1949563f8391426f832b4440e7eec63d8b9dbdaff6dc2e9183da3f1ba1a"
+      },
+      "expected": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase113/controls/field-array/string-array-owners.expected.json",
+        "bytes": 83,
+        "sha256": "22d5e1949563f8391426f832b4440e7eec63d8b9dbdaff6dc2e9183da3f1ba1a"
+      },
+      "provenance": "Index3 wraps to1 of depth1; seed cell retained by old return, index0, and original external alias."
+    },
+    {
+      "name": "mixed-record-owner",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase113/controls/field-array/mixed-record-owner.bend",
+        "bytes": 613,
+        "sha256": "d3f47d35ffd78a35ce561d42a6cf8bfa11d3908bca8fb1b3592833e151db759b"
+      },
+      "expectedStdoutEvidence": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase113/controls/field-array/mixed-record-owner.expected.json",
+        "bytes": 78,
+        "sha256": "30e39d7c3dffa7c4407c2e118d79eb6bd550aed21bac631c55696e70ab6dc7e6"
+      },
+      "expected": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase113/controls/field-array/mixed-record-owner.expected.json",
+        "bytes": 78,
+        "sha256": "30e39d7c3dffa7c4407c2e118d79eb6bd550aed21bac631c55696e70ab6dc7e6"
+      },
+      "provenance": "U32 max+3 wraps to2; allocated Unicode field and repeated shared parent survive both field projections."
+    },
+    {
+      "name": "upstream-generic-cell",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/tests/compile/array_generic_cell.bend",
+        "bytes": 2016,
+        "sha256": "97ba0e0bacdf14cb2b412190579bdedc29ac650bc31ca739c5b1b3a24e24718a"
+      },
+      "expectedStdoutEvidence": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase113/controls/field-array/upstream-generic-cell.expected.json",
+        "bytes": 65,
+        "sha256": "a255bc6c27936ced399dcedd0d03004911bfd6beb9727185b4d1ed4ac14d25a0"
+      },
+      "expected": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase113/controls/field-array/upstream-generic-cell.expected.json",
+        "bytes": 65,
+        "sha256": "a255bc6c27936ced399dcedd0d03004911bfd6beb9727185b4d1ed4ac14d25a0"
+      },
+      "provenance": "Unchanged upstream type/layout witness; independent literal output False and two captures10+1,20+1 =>32."
+    },
+    {
+      "name": "upstream-borrowed-generic",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/tests/reg/array_borrow_generic.bend",
+        "bytes": 1382,
+        "sha256": "8795ab8145b79524cc5a9d72a76a44caf11758327e4394b1275da1918e945856"
+      },
+      "expectedStdoutEvidence": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase113/controls/field-array/upstream-borrowed-generic.expected.json",
+        "bytes": 55,
+        "sha256": "fac3d89859d2c3c669f46dac744bfc06f9ac13fe190b6c20f0b2ab82e32367e6"
+      },
+      "expected": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase113/controls/field-array/upstream-borrowed-generic.expected.json",
+        "bytes": 55,
+        "sha256": "fac3d89859d2c3c669f46dac744bfc06f9ac13fe190b6c20f0b2ab82e32367e6"
+      },
+      "provenance": "Unchanged upstream witness: list[10,20]sum30, duplication contributes60, borrowed secondread30 =>120."
+    },
+    {
+      "name": "array_split_join",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/tests/run/array_split_join.bend",
+        "bytes": 1766,
+        "sha256": "c0b5288ba9530a3179d0c30a7b5fe0153653490afd8f96cb7719a89c55981081"
+      },
+      "expectedStdoutEvidence": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase117/array_split_join.expected.json",
+        "bytes": 58,
+        "sha256": "846e8ef74d41054cb26f8388c4bc11337e35a68a47754c5e9fac10fe799785df"
+      },
+      "expected": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase117/array_split_join.expected.json",
+        "bytes": 58,
+        "sha256": "846e8ef74d41054cb26f8388c4bc11337e35a68a47754c5e9fac10fe799785df"
+      },
+      "provenance": "Unchanged upstream ordinary source #| literal oracle; compile and independent native output required."
+    },
+    {
+      "name": "array_wrap_index",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/tests/run/array_wrap_index.bend",
+        "bytes": 1005,
+        "sha256": "3f4ec0359ae14e9c645ac6e8d446e0b331bc24f241721820e3de1e57472575bb"
+      },
+      "expectedStdoutEvidence": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase117/array_wrap_index.expected.json",
+        "bytes": 58,
+        "sha256": "3ef89590e435c825bff61b3abd866b97e65785cffbfac268afa0b952b61c5fb2"
+      },
+      "expected": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase117/array_wrap_index.expected.json",
+        "bytes": 58,
+        "sha256": "3ef89590e435c825bff61b3abd866b97e65785cffbfac268afa0b952b61c5fb2"
+      },
+      "provenance": "Unchanged upstream ordinary source #| literal oracle; compile and independent native output required."
+    },
+    {
+      "name": "array_size",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/tests/run/array_size.bend",
+        "bytes": 633,
+        "sha256": "327fddb82da45b164802369d45376a051800da5dc9d91cb1cb5213cbaa8449a2"
+      },
+      "expectedStdoutEvidence": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase117/array_size.expected.json",
+        "bytes": 57,
+        "sha256": "a720c69af59b790cd8da8ff15c69ead59c58b747a24b841289d0b6488d80861b"
+      },
+      "expected": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase117/array_size.expected.json",
+        "bytes": 57,
+        "sha256": "a720c69af59b790cd8da8ff15c69ead59c58b747a24b841289d0b6488d80861b"
+      },
+      "provenance": "Unchanged upstream ordinary source #| literal oracle; compile and independent native output required."
+    },
+    {
+      "name": "array_boxed_get",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/tests/run/array_boxed_get.bend",
+        "bytes": 1299,
+        "sha256": "2f997297d8600b2785a1a05e04ba2013746020403e354daf6fff59f152d1071e"
+      },
+      "expectedStdoutEvidence": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase117/array_boxed_get.expected.json",
+        "bytes": 58,
+        "sha256": "bcfd8c79c9e7d67e1ebb76917714ba04a06f07229bb49942f56f8c6b4a9f5ea9"
+      },
+      "expected": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase117/array_boxed_get.expected.json",
+        "bytes": 58,
+        "sha256": "bcfd8c79c9e7d67e1ebb76917714ba04a06f07229bb49942f56f8c6b4a9f5ea9"
+      },
+      "provenance": "Unchanged upstream ordinary source #| literal oracle; compile and independent native output required."
+    },
+    {
+      "name": "array_atomic_fadd",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/tests/run/array_atomic_fadd.bend",
+        "bytes": 1705,
+        "sha256": "077641b1cb37f81803ee48192f13c0c89b2592bef42eb502fe0bb62614957d82"
+      },
+      "expectedStdoutEvidence": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase117/array_atomic_fadd.expected.json",
+        "bytes": 63,
+        "sha256": "1c8b9ef1699927bcdaff32a6b700dcb4e5976e4024008b87b01365e91f6ad0d0"
+      },
+      "expected": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase117/array_atomic_fadd.expected.json",
+        "bytes": 63,
+        "sha256": "1c8b9ef1699927bcdaff32a6b700dcb4e5976e4024008b87b01365e91f6ad0d0"
+      },
+      "provenance": "Unchanged upstream ordinary source #| literal oracle; compile and independent native output required."
+    },
+    {
+      "name": "arrays-io",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase111/coverage/fixtures/arrays-io.bend",
+        "bytes": 878,
+        "sha256": "733e76ff92db5e4eece60e2bd2b047d67218a56a0d2b5fdac7447ef1238d1cc1"
+      },
+      "expectedStdoutEvidence": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase111/coverage/expected/arrays-io.json",
+        "bytes": 100,
+        "sha256": "efbb647774ab022571bf7ce71d8450d06b1a6d0ab4e5f50e9ab1370a63c4bbac"
+      },
+      "expected": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase117/arrays-io.expected.json",
+        "bytes": 76,
+        "sha256": "366293b4fa6c542a47c23bacf2d337d2e6e506463dc6f8b33ab540560d00568e"
+      },
+      "provenance": "Frozen ordinary String array clone independence control."
+    },
+    {
+      "name": "loop-counts",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase117/loop-counts.bend",
+        "bytes": 920,
+        "sha256": "e90d5ab75bb5326ac4213f9fcb0588e1705f3212c5758f7a8d09479286ba114f"
+      },
+      "expected": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase117/loop-counts.expected.json",
+        "bytes": 66,
+        "sha256": "a164157dbca2df1b365eba6c0edc22e73f441687bcaf57ff657c10d0285b1a50"
+      },
+      "expectedStdoutEvidence": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase117/loop-counts.expected.json",
+        "bytes": 66,
+        "sha256": "a164157dbca2df1b365eba6c0edc22e73f441687bcaf57ff657c10d0285b1a50"
+      }
+    }
+  ],
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase117/freeze-controls.py",
+      "bytes": 1941,
+      "sha256": "f1cfc0cc80f511b3cf54b1023da6dd48456a85b85c3a091d20bb4cee9f3dc176"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase113/controls/field-array/source-manifest03.json",
+      "bytes": 6909,
+      "sha256": "86b5e5f5d584140510534a1af0cd0ccd5d6052acd7107cb9ad4e97e96ab79baa"
+    }
+  ],
+  "scope": "Independent literal full outputs; no custom failure or memory fault probes.",
+  "schemaCorrection": "arrays-io: exact status/stdout/stderr translated from unchanged Phase111 exitCode oracle; values unchanged",
+  "ordinaryLoopCountControl": {
+    "parent": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/fixtures01/variation-local-fold-128-0.bend",
+      "bytes": 2724,
+      "sha256": "73ce97cc78fd63446fe943dc3b8cc5604d8a95a49ac9b1b6d51853adee583bea"
+    },
+    "scope": "Original fold kernel; ordinary main prints four independently computed n*17 values before wrap. No benchmark changed."
+  }
+}

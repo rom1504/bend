@@ -20,3 +20,9 @@ clone/half/atomics, or no useful complete-runtime gain. Use ordinary checked
 functional controls and frozen benchmarks. No fault-injection campaigns.
 
 This is an optional candidate, not installed promotion or native self-reproduction.
+
+## Outcome
+
+Packed capability is selected with GCC10-O2 runtime01. Complete selected45/ordinary controls pass. Scalar lifetime specialization transfers beyond the initial pair; old capability1 behavior and generic/shared fallbacks remain.
+
+[Complete report](../../implementation/phase117/README.md) retains exact receipts and limits.

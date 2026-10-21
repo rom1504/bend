@@ -5130,3 +5130,32 @@ costs, supporting a future transfer experiment without claiming self-improvement
 Five serial target guards total 405.229s; two source-review agents execute no
 benchmarks. Exact hard-link dedup reclaims 70,325,607B while retaining every frozen
 artifact path/byte. Profiles, corrections, methods and bounded evidence retained.
+
+## Phase117 — scalar-array representation and invariant loop versioning
+
+[Design](../design/phase117/array-facts-and-scalar-code.md) ·
+[Report](../implementation/phase117/README.md) · [Measurements](../implementation/phase117/results.json).
+
+Checked Bend source03 coherently selects packed32 scalar arrays, preserves exact
+entry-handle facts, hoists pure metadata and versions complete loops with an
+original guarded fallback. General inline cap384→512 exposes the391-node edit
+helper; other budgets remain. No workload-name decisions or host IR lowering.
+Original45 passes405 observations;44 timed points improve5.308→4.240×upstream,
+1.25185×faster (20.12% less runtime), up to5× on arrays. Longer closure64 regresses
+3.1%; record the limitation. Hosted request cost rises8.46% across three inputs,
+including23.7%editdist; native N1/N2 throughput is not remeasured. Source grows
+466lines/0.92%; QBE2.35%. No new native image or installed-default promotion.
+
+22 finite analysis checks,11 ordinary controls and forced-slow scalar/product ABI
+controls pass.1,198 selected/rejected runtime observations independently replay
+through the unchanged oracle. Post-profiles show scalar destruction mostly gone,
+fold allocation exposed and edit's hot computation inside row. Boolean normalization,
+small unroll2, whole-runtime O3 and allocator-only O3 remain excluded after measured
+zero/limited/mixed gains. An authenticated object-relink harness avoids repeating
+282s of broad emission for runtime-only trials, with all output gates retained.
+
+Selected source8010f9b5691a32f9b8d3a45da444e05b4bf4275fd1380e2acb122bfd2e53fec6;
+selected runtime remains capability-adapted GCC10-O2.54 target guards total1,188.92s,
+17.48s failed, peak1.405GiB; two existing agents perform offline source/audit work.
+Exact dedup retains every frozen artifact path. Evidence capsule stores3,806 files,
+131.23MB raw/10.89MB compressed. No PR comments or recursive-acceleration claim.

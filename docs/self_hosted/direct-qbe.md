@@ -1,5 +1,11 @@
 # Direct QBE backend for the Bend compiler written in Bend
 
+The [Phase117 scalar-array candidate](../../implementation/phase117/README.md)
+adds packed scalar storage, invariant-handle facts and loop versioning, with
+matched45-program runtime evidence and an explicit compiler-cost tradeoff.
+[Usage and reproduction](../../selfhost/tools/performance/phase117/README.md)
+keep it separate from the qualified native checkpoint and installed default.
+
 The [Phase115 optimizer experiment](../../implementation/phase115/README.md)
 adds a Bend interface for retaining legal plans and evaluating policy data
 without rebuilding the compiler per choice. Its 30.3% reduction concerns repeated

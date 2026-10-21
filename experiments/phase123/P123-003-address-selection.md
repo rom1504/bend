@@ -1,6 +1,6 @@
 # P123-003: retain scaled addresses in QBE's recognizable form
 
-Status: implemented and focused controls/runtime pass; broad qualification pending. Inspecting the remaining editdist
+Status: implemented and focused controls/runtime pass; original45 qualification complete. Inspecting the remaining editdist
 loop found explicit shifts before every packed-array access. The pinned QBE1.3
 amd64 address matcher (`amd64/isel.c:681`, `opn`) recognizes multiplication by
 1/2/4/8, but not the equivalent left shift. Our `p117h_address` emits a U64 shift
@@ -15,9 +15,14 @@ This is an extension of Phase122's machine-level evidence, not a QBE fork or a
 new array representation. Require additional array workload/controls and full
 compiler/runtime qualification of any retained combination.
 
-Version01 failed source checking because U32.shl is unavailable; version02 selects
+Version01 failed source checking because U32.shl accepts one argument; version02 selects
 literal1/2/4/8 and retains the old shift otherwise. The combined short editdist
 screen is252ms vs430ms parent and203ms upstream. Longer four-role comparison
 confirms an additional8.7% reduction over predicates alone.80 modular-arithmetic
 and450 masked-offset checks pass, with exact GET/SET/SWAP templates. Local-fold
 is neutral. No bounds/ownership check or runtime representation changed.
+
+Final combination and assembler policy:405 original45 observations pass,
+2.15074→2.00584×upstream; positive log-slowdown1.01575→0.94810. Three-case
+hosted request cost0.97485×parent;95 source lines added. Qualified native images
+and installed selections unchanged. See implementation/phase123/README.md.

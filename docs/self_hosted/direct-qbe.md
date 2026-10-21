@@ -1,5 +1,11 @@
 # Direct QBE backend for the Bend compiler written in Bend
 
+The [Phase123 predicate/address experiment](native-predicates.md) removes repeated
+Boolean conversion and exposes packed-array scales to QBE instruction selection.
+Its [report](../../implementation/phase123/README.md) separates per-case gains,
+original45 qualification and hosted compilation cost.
+
+
 The [Phase121 construction-elimination experiment](native-fusion.md) reuses
 checked producer/consumer and callback patterns from the JS backend, emitting
 scalar native loops before temporary data is materialized. See its

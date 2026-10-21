@@ -21,7 +21,7 @@ for file in sorted((ROOT / 'selfhost/build/phase123').glob('*guard*/process.json
         category = 'compiler cost measurement'
     elif 'emit-integrated.mjs' in command:
         category = 'checked program emission'
-    elif 'screen.py' in command or 'functional-v2.py' in command or 'replay.py' in command:
+    elif any(x in command for x in ['screen.py','screen-final.py','screen-aligned.py','functional-v2.py','functional-aligned.py','replay.py','ablation.py']):
         category = 'native build and output/runtime measurement'
     else:
         category = 'finite controls and analysis'

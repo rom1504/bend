@@ -5332,3 +5332,37 @@ builds. Two agents performed bounded offline audits. At19:03 UTC the approximate
 session elapsed17.2min; inference/quota not metered. Sources/products remain
 external authenticated artifacts; small raw profiles, outputs and methods are
 archived with integrity replay. Qualified Phase118 and installed selections stay.
+
+
+## Phase123 — predicate origins and target-aware selection — 2026-10-21
+
+[Design](../design/phase123/typed-private-computations.md) ·
+[Report](../implementation/phase123/README.md) ·
+[Results](../implementation/phase123/results.json) ·
+[Reproduce](../selfhost/tools/performance/phase123/README.md).
+
+Two checked Bend rules keep exact canonical predicate origins through copies and
+Boolean matches, and express masked array scaling in QBE's recognized multiplication
+form. Editdist hot loop65→44 instructions and9→4 stack operands; longer runtime
+4306→2549.5ms versus2023msupstream. Mandelbrot's active worker122→99 instructions.
+The improvements transfer across those two source lineages; most other cases are
+neutral. RLE state-lane ceilings are modest; strict alias/subterm layout attempt
+is excluded, with failed syntax/admission preserved. The ready-call audit identifies
+two genuine interface barriers and sketches a safe explicit-stack extension.
+
+A smaller fused list loop regresses in ordinary assembly. Longer replay confirms
+it. The documented GNU assembler branch-alignment option recovers14–21% on the
+same QBE, without affecting the two winning programs. An additional machine-only
+original45 gate qualifies this policy; ordinary-assembler results remain archived.
+Final405 observations pass;44-point ratio2.15074→2.00584×upstream,6.74% less.
+Positive log-slowdown1.01575→0.94810,6.66% less; exp(L)2.76142→2.58079.
+Above2× count31→24; above1.1× stays40. Fixed-batch sum improves3.67%; no final
+point exceeds2.5% slowdown. These screens are not universal parity guarantees.
+
+Hosted compiler cost0.97485×parent onthree cases; source+95lines(0.18%). Native
+N1/N2 throughput and self-reproduction remain unmeasured here. Qualified Phase118
+and installed defaults stay intact. At20:12:57,50.87min elapsed includes27.74min
+in34 guarded jobs; three failed processes8.40s, no resource/output failure.
+Two bounded offline agents; one root-owned CPU3 lane. No measured agent quota or
+recursive acceleration claim. Source/SSA/ELF remain external with exact pins;
+small raw receipts and disassembly are sealed and replay-verified.

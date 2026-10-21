@@ -9,7 +9,7 @@ Retained candidate: `predicate/model02.bend` plus `scaled-address02.bend`, repla
 exactly `p113l_record`, `p113k_scalar_bin`, `p117h_address`. Build with `prepare.py`
 against `implementation/phase121/candidate.json`; acquire an API using the unchanged
 Phase111 `check-api.py`. Source04 is the combined candidate. Source03 preserves
-a rejected use of unavailable source primitive `U32.shl`; its failed emission
+a rejected two-argument use of unary `U32.shl`; its failed emission
 correctly refused an unchecked receipt. Do not overwrite frozen attempts.
 
 All target commands run serially on CPU3 under the Phase111 process-tree guard:
@@ -41,8 +41,13 @@ receipt. This measures checked-hosted prepared request work, not native N1/N2.
 
 ## Broader gate and evidence
 
-Emit the original45 with the same emitter/manifest, then `screen.py --rounds 3
---scale 4`. `summarize.py` preserves the44 timed points and zero-work sentinel;
+Emit the original45 with the same emitter/manifest. `screen.py --rounds 3 --scale 4`
+retains the ordinary-assembler comparison. The final selected experiment uses
+`screen-final.py` with `build-aligned.py`: GNU assembler receives
+`-mbranches-within-32B-boundaries`. `screen-aligned.py` isolates that policy against
+the same unaligned candidate; `replay.py` confirms suspicious short-screen results
+without rebuilding. `functional-aligned.py` uses the same selected builder for
+ordinary controls. No generated QBE or assembly text is rewritten. `summarize.py` preserves the44 timed points and zero-work sentinel;
 `analyze-broad.py` also preserves the frozen family labels, sum-of-batches and
 emitted sizes. A gain on one family is never evidence of full-corpus parity.
 
@@ -56,3 +61,7 @@ with all state lanes flattened, so they are not an isolated shell-depth ablation
 The strict-subterm layout experiment failed to admit the actual RLE aliases; its
 control parser failure and all receipts are retained. The ready-call audit proposes
 an explicit continuation node plus authenticated callable view; it is not implemented.
+
+`reproduce.py --out FRESH_PHASE123_DIRECTORY` verifies the recipe and reproduces
+the exact combined source. `finalize.py` pins the completed hosted candidate and
+its separately qualified machine-build policy; it does not install or promote it.

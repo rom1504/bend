@@ -89,6 +89,11 @@ pipelines and immediately applied closure chains before native lowering. Its
 [Phase121 report](implementation/phase121/README.md) separates local gains,
 the original45 comparison, compiler cost and native qualification limits.
 
+The [native predicate/address experiment](docs/self_hosted/native-predicates.md)
+retains comparison origins and exposes scaled array addresses to QBE. Its
+[Phase123 report](implementation/phase123/README.md) records the focused gain,
+broad qualification and remaining ownership/control-flow opportunities.
+
 The [native IR research prototype](docs/self_hosted/NATIVE_IR_RESEARCH.md) now
 implements a small Bend IR with C and Cranelift consumers, checked folding laws,
 and a reproducible policy experiment. Its [report and diagrams](implementation/phase106/README.md)

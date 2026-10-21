@@ -1,4 +1,43 @@
-# Latest diagnostic: Phase122 remaining gap to upstream
+# Latest experiment: Phase123 predicate origins and machine selection
+
+[Report](../implementation/phase123/README.md) ·
+[Design](../design/phase123/typed-private-computations.md) ·
+[Reproduce](../selfhost/tools/performance/phase123/README.md) ·
+[Candidate](../implementation/phase123/candidate.json).
+
+Checked-hosted Phase123 source04 on Phase121 retains exact comparison origins
+through Boolean/copy lowering and exposes masked array scales to QBE's address
+matcher. Two Bend modules add95 source lines; runtime/ABI unchanged. Final amd64
+builder additionally passes GNU assembler `-mbranches-within-32B-boundaries` after
+a smaller loop caused a measured list regression. Same-QBE ablation fixes it;
+this machine policy is pinned separately and is not silently installed.
+
+Final original45 passes405 observations. Same-run44-point geometric ratio is
+2.15074→2.00584×upstream (6.74% less), family-weighted2.05886×. New diagnostic
+mean positive log-slowdown is1.01575→0.94810 (6.66% less); exp(L)2.76142→2.58079.
+Programs above2× fall31→24, but40 still exceed1.1×. Fixed-batch medians fall3.67%.
+Do not let four already-fast points cancel the remaining deficit in planning.
+Gains concentrate in editdist and Mandelbrot lineages; local-pair and scalar-region
+are derivatives, not extra independent algorithms. Longer editdist1.69× parent,
+1.26×upstream. Hot loop65→44 instructions,9→4 stack operands; Mandelbrot mit122→99.
+
+Compiler hosted three-case cost0.97485×parent (small screen); native N1/N2 cost
+unmeasured. Qualified Phase118 and installed selections remain unchanged. Final
+finite controls and81 ordinary output lines pass. No GPU/parallel or recursive
+research acceleration claim. The ordinary-assembler negative results stay archived.
+50.87min checkpoint includes27.74min guarded work,34 jobs, three failures8.40s;
+one broad emission, two machine-policy screens, no full compiler acquisition.
+
+RLE explicit-state ceilings give only10–14% and both flatten all state lanes.
+Strict-subterm layout rule does not admit its nested aliases; excluded. The next
+bounded experiment is ready-helper→local-resume: actual helpers are P113D complete
+workers, while recursive-region admission consumes P112 readiness. Both callable
+view and explicit resume node are needed; preserve exact ownership/arguments,
+existing explicit stack and fallback. Prototype against independent heap-owned
+walker and a compiler-hot analogue, then check compiler cost before a broad gate.
+Do not revive generic cell credits or add a universal IR first.
+
+# Previous diagnostic: Phase122 remaining gap to upstream
 
 [Report](../implementation/phase122/README.md) ·
 [Design](../design/phase122/remaining-gap-profiles.md) ·

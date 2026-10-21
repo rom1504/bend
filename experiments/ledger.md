@@ -5298,3 +5298,37 @@ controls/review; root owns CPU3. Actual quota/inference cost is not metered.
 Preserve failures, exact-code bridges and source/tool/runtime pins in the capsule.
 Next test a measured compiler-hot or remaining slow producer/consumer ceiling;
 repair Phase120 analysis cost before combining it and acquiring native images.
+
+## Phase122 — profile the remaining runtime gap — 2026-10-21
+
+[Design](../design/phase122/remaining-gap-profiles.md) ·
+[Experiment](phase122/P122-001-remaining-gap.md) ·
+[Report](../implementation/phase122/README.md) ·
+[Results](../implementation/phase122/results.json) ·
+[Reproduce](../selfhost/tools/performance/phase122/README.md).
+
+No optimizer/runtime/default changes. Ten current-QBE121/mature-C102/upstream-C
+triples pass90 clean observations and60 zero-loss physical-PC captures;33,274
+samples,150 complete-output/count checks. Fresh selected-case QBE ratios range
+2.12–8.47× upstream. The4.240× diagnostic geometric ratio is not a new full45 score.
+Mature C is near upstream on lexer/BST/scalar/editdist and faster on map/records;
+different compiler vintages/toolchains prevent backend-only causal attribution.
+
+Concrete missed capabilities: ready helper calls cannot locally resume within
+the private recursive-table region; finite nested/shared products rebox; consumed
+tree storage is lost before reconstruction. BST has51.3% take/ctor leaves but
+only0.5% control/transport. Editdist avoids hot runtime calls yet has65 loop
+instructions/9 stack-memory operands versus26/0 in both C products. Its redundant
+predicate conversions are a cheap distinct target. Ray needs persistent F32
+interfaces and further work beyond mature C, which remains3.41× upstream.
+
+Start with predicate canonicalization and explicit RLE state lanes, then require
+unrelated transfer before expanding typed private plans. Preserve earlier neutral
+cell-credit reuse, map fusion and costly numeric-analysis results. Gains in the
+ranked table are hypotheses; no new optimization or recursive acceleration claim.
+
+Two serial guards cost380.42s, peak32.06MiB, no failed targets or image/program
+builds. Two agents performed bounded offline audits. At19:03 UTC the approximate
+session elapsed17.2min; inference/quota not metered. Sources/products remain
+external authenticated artifacts; small raw profiles, outputs and methods are
+archived with integrity replay. Qualified Phase118 and installed selections stay.

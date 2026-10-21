@@ -1,3 +1,31 @@
+# Latest diagnostic: Phase122 remaining gap to upstream
+
+[Report](../implementation/phase122/README.md) ·
+[Design](../design/phase122/remaining-gap-profiles.md) ·
+[Reproduce](../selfhost/tools/performance/phase122/README.md).
+
+Unchanged Phase121 products:90 clean observations,60 usable zero-loss captures,
+33,274 samples and150 complete-output/count checks. Ten difficult cases are4.240×
+upstream geometrically; this is not the full44-point2.144× score below. Mature C
+is near1× on lexer/BST/scalar/editdist, faster on map/records; QBE remains2–4.5×
+on those programs. Vintages/toolchains differ, so no backend-only attribution.
+
+Private ready calls cannot resume inside the current recursive-table region;
+finite nested Sigma states rebox; ownership consumption loses reusable storage.
+BST take/ctor leaves are51.3%, control only0.5%. Editdist already avoids hot helpers,
+but its inner loop has65 instructions/9 stack operands versus26/0 in both C
+products: repeated predicate conversion is a concrete cheap test. Ray stays8.47×
+QBE/3.41× mature C, requiring persistent typed numeric regions and possibly a
+separate vector/specialization advance. Helper tuning alone cannot close these gaps.
+
+Next: post-inline predicate canonicalization and RLE explicit-state ceilings,
+then composable typed private calls/products if they transfer. Preserve exact
+ownership, widths and explicit-stack safety. No large IR rewrite, policy search,
+or another already-fast list/closure optimization before those tests. Generic
+cell-credit reuse and expensive Phase120 fact analysis remain negative evidence.
+Two serial guards cost6.34min; no builds or selection changes. Qualified Phase118
+and installed compiler identities below remain authoritative.
+
 # Latest experiment: Phase121 native construction elimination
 
 [Report](../implementation/phase121/README.md) ·

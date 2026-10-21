@@ -9,9 +9,12 @@ generated-program runtime, hosted compiler cost and native qualification distinc
 candidate: 3.76% less corpus runtime, 17.95% more hosted compiler cost. Those modules
 are not combined into Phase121; qualified Phase118 remains the comparison parent.
 
-Latest diagnostic: [Phase119 profile refresh](../implementation/phase119/README.md).
-Current profiles shift attention from clearing to scalar identities, numeric
-regions and construction/lifetime work. No compiler or selection change.
+Latest diagnostic: [Phase122 remaining gap](../implementation/phase122/README.md).
+Ten matched QBE/mature-C/upstream-C cases,60 usable profiles and150 checked outputs
+separate scalar machine-code quality, private-call composition and ownership/layout
+costs. Mature C already approaches upstream on several QBE-slow families. Start
+with compact predicate and state-lane ceilings; no compiler or selection change.
+[Phase119](../implementation/phase119/README.md) remains historical supporting evidence.
 
 Latest optimization: [Phase118 ownership and transport](../implementation/phase118/README.md).
 Original45 passes405 output/count observations;44 timed points improve4.3165→3.0089×

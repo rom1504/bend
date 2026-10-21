@@ -1,0 +1,142 @@
+# p113d_$direct.lconcat
+# selfhost/build/phase118/p124-ready-fast-emit01/test-rle-roundtrip.ssa:804
+function l $p113d_FID_36_100_105_114_101_99_116_46_108_99_111_110_99_97_116_(l %state, l %v_v_4294967295, l %v_v_4294967294) {
+@entry
+%v_scratch =l alloc8 2048
+jmp @p113_loop
+@p113_loop
+%v_p118_public_result =l call $p113d_FID_36_112_49_49_56_46_116_114_109_99_46_36_100_105_114_101_99_116_46_108_99_111_110_99_97_116_(l %state, l %v_v_4294967295, l %v_v_4294967294, l 0, l 0)
+ret %v_p118_public_result
+}
+
+# p113d_$p118.trmc.$direct.lconcat
+# selfhost/build/phase118/p124-ready-fast-emit01/test-rle-roundtrip.ssa:742
+function l $p113d_FID_36_112_49_49_56_46_116_114_109_99_46_36_100_105_114_101_99_116_46_108_99_111_110_99_97_116_(l %state, l %v_v_4294967295, l %v_v_4294967294, l %v_p118_root, l %v_p118_parent) {
+@entry
+%v_scratch =l alloc8 2048
+jmp @p113_loop
+@p113_loop
+%v_p113p_move_4_0 =l copy %v_v_4294967295
+%v_v_4294967293 =l copy %v_p113p_move_4_0
+%v_p113p_move_5_0 =l copy %v_v_4294967294
+%v_v_4294967292 =l copy %v_p113p_move_5_0
+%v_tag =l shr %v_v_4294967293, 40
+%v_tag =l and %v_tag, 65535
+%v_match_condition =w ceql %v_tag, 17
+jnz %v_match_condition, @b_0, @b_1
+@b_0
+%v_p118_finished_6 =l call $p118_rt_finish(l %state, l %v_p118_root, l %v_p118_parent, l %v_v_4294967292)
+ret %v_p118_finished_6
+@b_1
+%v_p113p_move_9_0 =l copy %v_v_4294967293
+%v_v_4294967288 =l copy %v_p113p_move_9_0
+%v_p113p_move_10_0 =l copy %v_v_4294967292
+%v_v_4294967287 =l copy %v_p113p_move_10_0
+%v_tag =l shr %v_v_4294967288, 40
+%v_tag =l and %v_tag, 65535
+%v_match_condition =w ceql %v_tag, 18
+jnz %v_match_condition, @b_3, @b_4
+@b_3
+%v_ignored =l call $p118_p111_rt_take2(l %state, l %v_v_4294967288, l %v_scratch, w 2)
+%v_v_4294967284 =l loadl %v_scratch
+%t_6 =l add %v_scratch, 8
+%v_v_4294967283 =l loadl %t_6
+%v_p113p_move_16_0 =l copy %v_v_4294967284
+%v_v_4294967282 =l copy %v_p113p_move_16_0
+%v_p113p_move_17_0 =l copy %v_v_4294967283
+%v_v_4294967281 =l copy %v_p113p_move_17_0
+%v_p113p_move_18_0 =l copy %v_v_4294967287
+%v_v_4294967280 =l copy %v_p113p_move_18_0
+storel %v_v_4294967282, %v_scratch
+%v_p118_node_19 =l call $p118_rt_extend1(l %state, l %v_p118_parent, w 18, l %v_scratch)
+%v_p118_root_empty_19 =w ceql %v_p118_root, 0
+jnz %v_p118_root_empty_19, @b_7, @b_8
+@b_7
+%v_p118_next_root_19 =l copy %v_p118_node_19
+jmp @b_9
+@b_8
+%v_p118_next_root_19 =l copy %v_p118_root
+jmp @b_9
+@b_9
+%p113_again_0 =l copy %v_v_4294967281
+%p113_again_1 =l copy %v_v_4294967280
+%p113_again_2 =l copy %v_p118_next_root_19
+%p113_again_3 =l copy %v_p118_node_19
+%v_v_4294967295 =l copy %p113_again_0
+%v_v_4294967294 =l copy %p113_again_1
+%v_p118_root =l copy %p113_again_2
+%v_p118_parent =l copy %p113_again_3
+jmp @p113_loop
+@b_4
+%v_ignored =l call $p111_rt_fail(l %state, w 4)
+%v_p118_finished_20 =l call $p118_rt_finish(l %state, l %v_p118_root, l %v_p118_parent, l 0)
+ret %v_p118_finished_20
+}
+
+# p113d_$direct.lrepeat
+# selfhost/build/phase118/p124-ready-fast-emit01/test-rle-roundtrip.ssa:733
+function l $p113d_FID_36_100_105_114_101_99_116_46_108_114_101_112_101_97_116_(l %state, l %v_v_4294967295, l %v_v_4294967294) {
+@entry
+%v_scratch =l alloc8 2048
+jmp @p113_loop
+@p113_loop
+%v_p118_public_result =l call $p113d_FID_36_112_49_49_56_46_116_114_109_99_46_36_100_105_114_101_99_116_46_108_114_101_112_101_97_116_(l %state, l %v_v_4294967295, l %v_v_4294967294, l 0, l 0)
+ret %v_p118_public_result
+}
+
+# p113d_$p118.trmc.$direct.lrepeat
+# selfhost/build/phase118/p124-ready-fast-emit01/test-rle-roundtrip.ssa:678
+function l $p113d_FID_36_112_49_49_56_46_116_114_109_99_46_36_100_105_114_101_99_116_46_108_114_101_112_101_97_116_(l %state, l %v_v_4294967295, l %v_v_4294967294, l %v_p118_root, l %v_p118_parent) {
+@entry
+%v_scratch =l alloc8 2048
+jmp @p113_loop
+@p113_loop
+%v_p113p_move_4_0 =l copy %v_v_4294967295
+%v_v_4294967293 =l copy %v_p113p_move_4_0
+%v_p113p_move_5_0 =l copy %v_v_4294967294
+%v_v_4294967292 =l copy %v_p113p_move_5_0
+%v_match_condition =w ceql %v_v_4294967293, 0
+jnz %v_match_condition, @b_0, @b_1
+@b_0
+%v_p118_finished_6 =l call $p118_rt_finish(l %state, l %v_p118_root, l %v_p118_parent, l 72076285735600128)
+ret %v_p118_finished_6
+@b_1
+%v_p113p_move_9_0 =l copy %v_v_4294967293
+%v_v_4294967288 =l copy %v_p113p_move_9_0
+%v_p113p_move_10_0 =l copy %v_v_4294967292
+%v_v_4294967287 =l copy %v_p113p_move_10_0
+%v_match_condition =w cnel %v_v_4294967288, 0
+jnz %v_match_condition, @b_3, @b_4
+@b_3
+%v_v_4294967284 =l sub %v_v_4294967288, 1
+%v_p113p_move_15_0 =l copy %v_v_4294967287
+%v_v_4294967283 =l copy %v_p113p_move_15_0
+%v_p113p_move_16_0 =l copy %v_v_4294967284
+%v_v_4294967282 =l copy %v_p113p_move_16_0
+%v_p113p_move_17_0 =l copy %v_v_4294967287
+%v_v_4294967281 =l copy %v_p113p_move_17_0
+storel %v_v_4294967283, %v_scratch
+%v_p118_node_18 =l call $p118_rt_extend1(l %state, l %v_p118_parent, w 18, l %v_scratch)
+%v_p118_root_empty_18 =w ceql %v_p118_root, 0
+jnz %v_p118_root_empty_18, @b_6, @b_7
+@b_6
+%v_p118_next_root_18 =l copy %v_p118_node_18
+jmp @b_8
+@b_7
+%v_p118_next_root_18 =l copy %v_p118_root
+jmp @b_8
+@b_8
+%p113_again_0 =l copy %v_v_4294967282
+%p113_again_1 =l copy %v_v_4294967281
+%p113_again_2 =l copy %v_p118_next_root_18
+%p113_again_3 =l copy %v_p118_node_18
+%v_v_4294967295 =l copy %p113_again_0
+%v_v_4294967294 =l copy %p113_again_1
+%v_p118_root =l copy %p113_again_2
+%v_p118_parent =l copy %p113_again_3
+jmp @p113_loop
+@b_4
+%v_ignored =l call $p111_rt_fail(l %state, w 4)
+%v_p118_finished_19 =l call $p118_rt_finish(l %state, l %v_p118_root, l %v_p118_parent, l 0)
+ret %v_p118_finished_19
+}

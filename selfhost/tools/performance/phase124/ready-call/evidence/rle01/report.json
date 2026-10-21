@@ -1,0 +1,323 @@
+{
+  "kind": "phase124-static-rle-owner-and-absorbed-continuations",
+  "execution": false,
+  "dynamic_counts": false,
+  "inputs": {
+    "parent": {
+      "file": "selfhost/build/phase118/p123-broad-emit04/test-rle-roundtrip.ssa",
+      "bytes": 508469,
+      "sha256": "2dd3df93cd146f706642e151e17f770bef3ad309f30baaaa3309cb9a56fb31fd"
+    },
+    "ready": {
+      "file": "selfhost/build/phase118/p124-ready-fast-emit01/test-rle-roundtrip.ssa",
+      "bytes": 516803,
+      "sha256": "bb5d1d752f3504edada55ab4aba16a123c5564c4341cc78a685bc4dd55261c2f"
+    }
+  },
+  "continuations": [
+    {
+      "fid": 263,
+      "symbol": "p111_FID_36_112_49_49_49_46_107_46_52_57_57_53_53_",
+      "decoded": "p111_$p111.k.49955"
+    },
+    {
+      "fid": 264,
+      "symbol": "p111_FID_36_112_49_49_49_46_107_46_52_57_57_53_54_",
+      "decoded": "p111_$p111.k.49956"
+    }
+  ],
+  "roles": {
+    "parent": [
+      {
+        "symbol": "p111_FID_36_100_105_114_101_99_116_46_108_114_101_112_101_97_116_",
+        "decoded": "p111_$direct.lrepeat",
+        "line": 9217,
+        "calls": {
+          "p111_rt_reg_get": 2,
+          "p113d_$direct.lrepeat": 1,
+          "p111_rt_return": 1
+        },
+        "runtime_jump_edges": []
+      },
+      {
+        "symbol": "p111_FID_36_100_105_114_101_99_116_46_108_99_111_110_99_97_116_",
+        "decoded": "p111_$direct.lconcat",
+        "line": 9324,
+        "calls": {
+          "p111_rt_reg_get": 2,
+          "p113d_$direct.lconcat": 1,
+          "p111_rt_return": 1
+        },
+        "runtime_jump_edges": []
+      },
+      {
+        "symbol": "p111_FID_36_100_105_114_101_99_116_46_101_120_112_97_110_100_",
+        "decoded": "p111_$direct.expand",
+        "line": 9415,
+        "calls": {
+          "p111_rt_return": 1,
+          "p118_p111_rt_take2": 2,
+          "p111_rt_op": 1,
+          "p111_rt_jump": 1,
+          "p111_rt_fail": 2
+        },
+        "runtime_jump_edges": [
+          {
+            "fid": 249,
+            "target": "p111_$direct.lrepeat"
+          }
+        ]
+      },
+      {
+        "symbol": "p111_FID_36_112_49_49_49_46_107_46_52_57_57_53_53_",
+        "decoded": "p111_$p111.k.49955",
+        "line": 9513,
+        "calls": {
+          "p111_rt_jump": 1
+        },
+        "runtime_jump_edges": [
+          {
+            "fid": 262,
+            "target": "p111_$direct.expand"
+          }
+        ]
+      },
+      {
+        "symbol": "p111_FID_36_112_49_49_49_46_107_46_52_57_57_53_54_",
+        "decoded": "p111_$p111.k.49956",
+        "line": 9544,
+        "calls": {
+          "p111_rt_jump": 1
+        },
+        "runtime_jump_edges": [
+          {
+            "fid": 256,
+            "target": "p111_$direct.lconcat"
+          }
+        ]
+      }
+    ],
+    "ready": [
+      {
+        "symbol": "p111_FID_36_100_105_114_101_99_116_46_108_114_101_112_101_97_116_",
+        "decoded": "p111_$direct.lrepeat",
+        "line": 9324,
+        "calls": {
+          "p111_rt_reg_get": 2,
+          "p113d_$direct.lrepeat": 1,
+          "p111_rt_return": 1
+        },
+        "runtime_jump_edges": []
+      },
+      {
+        "symbol": "p111_FID_36_100_105_114_101_99_116_46_108_99_111_110_99_97_116_",
+        "decoded": "p111_$direct.lconcat",
+        "line": 9431,
+        "calls": {
+          "p111_rt_reg_get": 2,
+          "p113d_$direct.lconcat": 1,
+          "p111_rt_return": 1
+        },
+        "runtime_jump_edges": []
+      },
+      {
+        "symbol": "p111_FID_36_100_105_114_101_99_116_46_101_120_112_97_110_100_",
+        "decoded": "p111_$direct.expand",
+        "line": 9522,
+        "calls": {
+          "p111_rt_reg_get": 1,
+          "p114r_$direct.expand": 1,
+          "p111_rt_return": 1
+        },
+        "runtime_jump_edges": []
+      },
+      {
+        "symbol": "p114r_FID_36_100_105_114_101_99_116_46_101_120_112_97_110_100_",
+        "decoded": "p114r_$direct.expand",
+        "line": 9531,
+        "calls": {
+          "p118_p111_rt_take2": 2,
+          "p111_rt_op": 1,
+          "p113d_$direct.lrepeat": 1,
+          "p111_rt_fail": 3,
+          "p111_rt_frame": 1,
+          "p113d_$direct.lconcat": 1
+        },
+        "runtime_jump_edges": []
+      }
+    ]
+  },
+  "private_closure": [
+    {
+      "symbol": "p114r_FID_36_100_105_114_101_99_116_46_101_120_112_97_110_100_",
+      "decoded": "p114r_$direct.expand",
+      "line": 9531,
+      "calls": {
+        "p118_p111_rt_take2": 2,
+        "p111_rt_op": 1,
+        "p113d_$direct.lrepeat": 1,
+        "p111_rt_fail": 3,
+        "p111_rt_frame": 1,
+        "p113d_$direct.lconcat": 1
+      },
+      "runtime_jump_edges": []
+    },
+    {
+      "symbol": "p113d_FID_36_100_105_114_101_99_116_46_108_99_111_110_99_97_116_",
+      "decoded": "p113d_$direct.lconcat",
+      "line": 804,
+      "calls": {
+        "p113d_$p118.trmc.$direct.lconcat": 1
+      },
+      "runtime_jump_edges": []
+    },
+    {
+      "symbol": "p113d_FID_36_112_49_49_56_46_116_114_109_99_46_36_100_105_114_101_99_116_46_108_99_111_110_99_97_116_",
+      "decoded": "p113d_$p118.trmc.$direct.lconcat",
+      "line": 742,
+      "calls": {
+        "p118_rt_finish": 2,
+        "p118_p111_rt_take2": 1,
+        "p118_rt_extend1": 1,
+        "p111_rt_fail": 1
+      },
+      "runtime_jump_edges": []
+    },
+    {
+      "symbol": "p113d_FID_36_100_105_114_101_99_116_46_108_114_101_112_101_97_116_",
+      "decoded": "p113d_$direct.lrepeat",
+      "line": 733,
+      "calls": {
+        "p113d_$p118.trmc.$direct.lrepeat": 1
+      },
+      "runtime_jump_edges": []
+    },
+    {
+      "symbol": "p113d_FID_36_112_49_49_56_46_116_114_109_99_46_36_100_105_114_101_99_116_46_108_114_101_112_101_97_116_",
+      "decoded": "p113d_$p118.trmc.$direct.lrepeat",
+      "line": 678,
+      "calls": {
+        "p118_rt_finish": 2,
+        "p118_rt_extend1": 1,
+        "p111_rt_fail": 1
+      },
+      "runtime_jump_edges": []
+    }
+  ],
+  "supporting_inputs": [
+    {
+      "file": "selfhost/tools/performance/programs/fixtures/test-rle-roundtrip.bend",
+      "bytes": 2743,
+      "sha256": "ce4083dab9a8022b2c8867a30802113735917229341cecb8ce18ff9ac2e33989"
+    },
+    {
+      "file": "selfhost/build/phase118/runtime-extend01/runtime.c",
+      "bytes": 144796,
+      "sha256": "371f58c5d47db192fc1bbe38e990057af2145a0bccfb733062c08896c9c09f35"
+    },
+    {
+      "file": "selfhost/build/phase118/runtime-extend01/primitives.h",
+      "bytes": 3067,
+      "sha256": "ecbdfe62b875fc20e5805840b83c3779ed8fb8fb1de83c543ba1ce1217165d20"
+    },
+    {
+      "file": "selfhost/tools/performance/phase118/runtime-extend-sized.c",
+      "bytes": 1028,
+      "sha256": "e5d6404d1a6e614c62d89055cc03002c608d195c9cfa1bdc0fcc7bfcf1b23e5b"
+    },
+    {
+      "file": "selfhost/build/phase124/fast-machine01/report.json",
+      "bytes": 13119,
+      "sha256": "0253a0f4e15e73f0d75d26a0d498b2a2786a203363f67820c56655a328739091"
+    }
+  ],
+  "root_machine_rows": [
+    {
+      "name": "test-rle-roundtrip",
+      "role": "baseline",
+      "symbol": "p111_FID_36_100_105_114_101_99_116_46_101_120_112_97_110_100_",
+      "decoded": "p111_FID_$direct.expand",
+      "start": "0x40f1b0",
+      "end": "0x40f350",
+      "counts": {
+        "instructions": 88,
+        "calls": 7,
+        "conditionalBranches": 5,
+        "setcc": 1,
+        "floatIntegerMoves": 0,
+        "stackReferences": 17
+      },
+      "assembly": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase124/fast-machine01/test-rle-roundtrip-baseline-p111_FID_36_100_105_114_101_99_116_46_101_120_112_97_110_100_.asm",
+        "bytes": 3363,
+        "sha256": "9273ce6ceb9671cef91737d8fc1a720c8e313f4f1aea3139c1c50a5d42c6eca0"
+      },
+      "command": [
+        "objdump",
+        "-d",
+        "--no-show-raw-insn",
+        "--start-address=0x40f1b0",
+        "--stop-address=0x40f350",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p123-broad05-test-rle-roundtrip-build/program"
+      ]
+    },
+    {
+      "name": "test-rle-roundtrip",
+      "role": "candidate",
+      "symbol": "p111_FID_36_100_105_114_101_99_116_46_101_120_112_97_110_100_",
+      "decoded": "p111_FID_$direct.expand",
+      "start": "0x40f370",
+      "end": "0x40f3b0",
+      "counts": {
+        "instructions": 18,
+        "calls": 3,
+        "conditionalBranches": 0,
+        "setcc": 0,
+        "floatIntegerMoves": 0,
+        "stackReferences": 2
+      },
+      "assembly": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase124/fast-machine01/test-rle-roundtrip-candidate-p111_FID_36_100_105_114_101_99_116_46_101_120_112_97_110_100_.asm",
+        "bytes": 852,
+        "sha256": "b8e3e58c063afec4e3bacc1109bfcbbcb25f896769ef303910c570c4af169e61"
+      },
+      "command": [
+        "objdump",
+        "-d",
+        "--no-show-raw-insn",
+        "--start-address=0x40f370",
+        "--stop-address=0x40f3b0",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p124-fast01-test-rle-roundtrip-build/program"
+      ]
+    },
+    {
+      "name": "test-rle-roundtrip",
+      "role": "candidate",
+      "symbol": "p114r_FID_36_100_105_114_101_99_116_46_101_120_112_97_110_100_",
+      "decoded": "p114r_FID_$direct.expand",
+      "start": "0x40f3b0",
+      "end": "0x40f610",
+      "counts": {
+        "instructions": 131,
+        "calls": 9,
+        "conditionalBranches": 9,
+        "setcc": 1,
+        "floatIntegerMoves": 0,
+        "stackReferences": 19
+      },
+      "assembly": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase124/fast-machine01/test-rle-roundtrip-candidate-p114r_FID_36_100_105_114_101_99_116_46_101_120_112_97_110_100_.asm",
+        "bytes": 5118,
+        "sha256": "5601bb36367c221090e64a55ad19b09539440e2af6ce68d893439490adf45f94"
+      },
+      "command": [
+        "objdump",
+        "-d",
+        "--no-show-raw-insn",
+        "--start-address=0x40f3b0",
+        "--stop-address=0x40f610",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p124-fast01-test-rle-roundtrip-build/program"
+      ]
+    }
+  ]
+}

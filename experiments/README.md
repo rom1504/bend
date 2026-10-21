@@ -1,5 +1,9 @@
 # Compiler experiment workflow
 
+Planned next: [Phase120 native runtime parity](../design/phase120/runtime-specialization-and-parity.md).
+The design extends existing verified regions, specializes runtime work and tests
+container elimination. Implementation has not started; no new performance claim.
+
 Latest diagnostic: [Phase119 profile refresh](../implementation/phase119/README.md).
 Current profiles shift attention from clearing to scalar identities, numeric
 regions and construction/lifetime work. No compiler or selection change.

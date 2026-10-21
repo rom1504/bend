@@ -1,3 +1,14 @@
+# Planned next work: Phase120 native runtime parity
+
+[Plan](../design/phase120/runtime-specialization-and-parity.md).
+Design only; implementation has not started. Extend existing structured regions
+with checked representation/ownership/effect facts, specialize generic runtime
+work, then eliminate intermediate containers. Begin with a signed-word identity
+pilot; separate typed ABI, local representation and region-formation ablations.
+Seek roughly2× on two unrelated complete workload families before broad expansion.
+Use original45 and independent native qualification for final claims. Gain ranges
+are hypotheses; all measured compiler/runtime/default selections below are unchanged.
+
 # Latest diagnostic: Phase119 profile refresh
 
 [Report](../implementation/phase119/README.md) ·

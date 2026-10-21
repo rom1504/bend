@@ -5217,3 +5217,20 @@ The six-case4.103× ratio is diagnostic, not a change to broad45's3.009×.
 313.254s guarded execution,82.64MiB peak, no target failures, image rebuilds,
 compiler/runtime changes, promotion or new JavaScript measurement. One bounded
 offline numeric audit accompanies the serial root-owned target lane.
+
+## Planned Phase120 — runtime specialization toward parity
+
+[Design](../design/phase120/runtime-specialization-and-parity.md), starting at
+`26f2af2`. This is a committed plan only: no compiler edits, target runs, new
+performance results or promotion. Existing qualified and installed selections
+remain authoritative.
+
+Sequence: exact scalar identity and fact-invalidation pilot; bounded typed/native
+regions with ABI/local-representation ablations; unrelated-family transfer;
+producer/consumer elimination; compiler workload and shared planning; broad and
+native qualification. A four-to-six-hour initial prototype budget seeks roughly
+2× complete-workload gains in two unrelated families as an architecture signal,
+while retaining useful smaller prerequisite wins. Full parity still requires
+the original corpus, distribution/uncertainty reporting and independent gates.
+The design records estimates, costs, laws, stack/ownership/effect obligations,
+resource limits, negative-result retention and criteria for declining expansion.

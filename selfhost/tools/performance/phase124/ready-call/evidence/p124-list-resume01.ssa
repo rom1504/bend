@@ -1,0 +1,275 @@
+# parent: p111_$direct.parcel.collect
+# selfhost/build/phase118/p124-parent-controls-emit01/p124-list-resume01.ssa:1604
+export function l $p111_FID_36_100_105_114_101_99_116_46_112_97_114_99_101_108_46_99_111_108_108_101_99_116_(l %state) {
+@entry
+%v_scratch =l alloc8 2048
+%v_p112f_0_local_scratch =l alloc8 2048
+%t_0 =l add %state, 40
+%v_v_4294961040 =l loadl %t_0
+%v_v_4294961039 =l copy %v_v_4294961040
+%v_tag =l shr %v_v_4294961039, 40
+%v_tag =l and %v_tag, 65535
+%v_match_condition =w ceql %v_tag, 17
+jnz %v_match_condition, @b_1, @b_2
+@b_1
+storel 72076285735600128, %v_scratch
+%v_reply =l call $p111_rt_return(l %state, l %v_scratch, w 1)
+ret %v_reply
+@b_2
+%v_v_4294961038 =l copy %v_v_4294961039
+%v_tag =l shr %v_v_4294961038, 40
+%v_tag =l and %v_tag, 65535
+%v_match_condition =w ceql %v_tag, 18
+jnz %v_match_condition, @b_4, @b_5
+@b_4
+%v_ignored =l call $p118_p111_rt_take2(l %state, l %v_v_4294961038, l %v_scratch, w 2)
+%v_v_4294961037 =l loadl %v_scratch
+%t_7 =l add %v_scratch, 8
+%v_v_4294961036 =l loadl %t_7
+%v_p112f_0_capture_0 =l copy %v_v_4294961036
+%v_ignored =l copy 0
+%v_v_4294961030 =l copy %v_v_4294961037
+%v_v_4294961029 =l copy 72076285735600128
+%v_p112f_0_arg_0 =l copy %v_v_4294961030
+%v_p112f_0_arg_1 =l copy %v_v_4294961029
+%v_p112f_0_result =l call $p112w_FID_36_100_105_114_101_99_116_46_112_97_114_99_101_108_46_116_117_114_110_(l %state, l %v_p112f_0_arg_0, l %v_p112f_0_arg_1)
+%v_p112f_0_local_ignored =l copy 0
+%v_p112f_0_local_v_4294961036 =l copy %v_p112f_0_capture_0
+%v_p112f_0_local_v_3480 =l copy %v_p112f_0_result
+storel %v_p112f_0_local_v_3480, %v_p112f_0_local_scratch
+%t_9 =l add %state, 16
+%v_p114t_8_sp =l loadl %t_9
+%v_p114t_8_capture =l loadl %v_p112f_0_local_scratch
+storel %v_p114t_8_capture, %v_p114t_8_sp
+%t_10 =l add %v_p114t_8_sp, 8
+storel 37, %t_10
+%v_p114t_8_next_sp =l add %v_p114t_8_sp, 16
+%t_11 =l add %state, 16
+storel %v_p114t_8_next_sp, %t_11
+%v_p112f_0_local_ignored =l copy 0
+%v_p112f_0_local_v_4294961031 =l copy %v_p112f_0_local_v_4294961036
+storel %v_p112f_0_local_v_4294961031, %v_p112f_0_local_scratch
+%v_p112f_0_local_reply =l call $p111_rt_jump(l %state, w 35, l %v_p112f_0_local_scratch, w 1)
+ret %v_p112f_0_local_reply
+@b_5
+storel %v_v_4294961038, %v_scratch
+%t_13 =l add %state, 16
+%v_p114t_12_sp =l loadl %t_13
+%v_p114t_12_capture =l loadl %v_scratch
+storel %v_p114t_12_capture, %v_p114t_12_sp
+%t_14 =l add %v_p114t_12_sp, 8
+storel 38, %t_14
+%v_p114t_12_next_sp =l add %v_p114t_12_sp, 16
+%t_15 =l add %state, 16
+storel %v_p114t_12_next_sp, %t_15
+%v_ignored =l copy 0
+%v_reply =l call $p111_rt_fail(l %state, w 4)
+ret %v_reply
+}
+
+# parent: p111_$p111.k.6260
+# selfhost/build/phase118/p124-parent-controls-emit01/p124-list-resume01.ssa:1671
+export function l $p111_FID_36_112_49_49_49_46_107_46_54_50_54_48_(l %state) {
+@entry
+%v_scratch =l alloc8 2048
+%t_1 =l add %state, 16
+%v_p114t_0_sp =l loadl %t_1
+%v_p114t_0_next_sp =l add %v_p114t_0_sp, 18446744073709551608
+%t_2 =l add %state, 16
+storel %v_p114t_0_next_sp, %t_2
+%v_ignored =l copy 0
+%t_4 =l add %state, 16
+%v_p114t_3_sp =l loadl %t_4
+%v_v_4294961036 =l loadl %v_p114t_3_sp
+%t_5 =l add %state, 40
+%v_v_3480 =l loadl %t_5
+storel %v_v_3480, %v_scratch
+%t_7 =l add %state, 16
+%v_p114t_6_sp =l loadl %t_7
+%v_p114t_6_capture =l loadl %v_scratch
+storel %v_p114t_6_capture, %v_p114t_6_sp
+%t_8 =l add %v_p114t_6_sp, 8
+storel 37, %t_8
+%v_p114t_6_next_sp =l add %v_p114t_6_sp, 16
+%t_9 =l add %state, 16
+storel %v_p114t_6_next_sp, %t_9
+%v_ignored =l copy 0
+%v_v_4294961031 =l copy %v_v_4294961036
+storel %v_v_4294961031, %v_scratch
+%v_reply =l call $p111_rt_jump(l %state, w 35, l %v_scratch, w 1)
+ret %v_reply
+}
+
+# parent: p111_$p111.k.6261
+# selfhost/build/phase118/p124-parent-controls-emit01/p124-list-resume01.ssa:1702
+export function l $p111_FID_36_112_49_49_49_46_107_46_54_50_54_49_(l %state) {
+@entry
+%v_scratch =l alloc8 2048
+%t_1 =l add %state, 16
+%v_p114t_0_sp =l loadl %t_1
+%v_p114t_0_next_sp =l add %v_p114t_0_sp, 18446744073709551608
+%t_2 =l add %state, 16
+storel %v_p114t_0_next_sp, %t_2
+%v_ignored =l copy 0
+%t_4 =l add %state, 16
+%v_p114t_3_sp =l loadl %t_4
+%v_v_3480 =l loadl %v_p114t_3_sp
+%t_5 =l add %state, 40
+%v_v_3481 =l loadl %t_5
+%v_v_4294961033 =l copy %v_v_3480
+%v_v_4294961032 =l copy %v_v_3481
+storel %v_v_4294961033, %v_scratch
+%t_6 =l add %v_scratch, 8
+storel %v_v_4294961032, %t_6
+%v_reply =l call $p111_rt_jump(l %state, w 19, l %v_scratch, w 2)
+ret %v_reply
+}
+
+# ready: p111_$direct.parcel.collect
+# selfhost/build/phase118/p124-ready-controls-emit01/p124-list-resume01.ssa:1604
+export function l $p111_FID_36_100_105_114_101_99_116_46_112_97_114_99_101_108_46_99_111_108_108_101_99_116_(l %state) {
+@entry
+%p114r_outer_out =l alloc8 8
+%p113_arg_0 =l call $p111_rt_reg_get(l %state, w 0)
+%p114r_outer_value =l call $p114r_FID_36_100_105_114_101_99_116_46_112_97_114_99_101_108_46_99_111_108_108_101_99_116_(l %state, l %p113_arg_0)
+storel %p114r_outer_value, %p114r_outer_out
+%p114r_outer_reply =l call $p111_rt_return(l %state, l %p114r_outer_out, w 1)
+ret %p114r_outer_reply
+}
+
+# ready: p114r_$direct.parcel.collect
+# selfhost/build/phase118/p124-ready-controls-emit01/p124-list-resume01.ssa:1613
+function l $p114r_FID_36_100_105_114_101_99_116_46_112_97_114_99_101_108_46_99_111_108_108_101_99_116_(l %state, l %v_v_4294961040) {
+@entry
+%v_scratch =l alloc8 2048
+%v_p114h_case_0_local_scratch =l alloc8 2048
+%v_p114h_case_1_local_scratch =l alloc8 2048
+%p114r_depth =l copy 0
+jmp @p114r_descend
+@p114r_descend
+%v_v_4294961039 =l copy %v_v_4294961040
+%v_tag =l shr %v_v_4294961039, 40
+%v_tag =l and %v_tag, 65535
+%v_match_condition =w ceql %v_tag, 17
+jnz %v_match_condition, @b_0, @b_1
+@b_0
+%p114r_value =l copy 72076285735600128
+jmp @p114r_unwind
+@b_1
+%v_v_4294961038 =l copy %v_v_4294961039
+%v_tag =l shr %v_v_4294961038, 40
+%v_tag =l and %v_tag, 65535
+%v_match_condition =w ceql %v_tag, 18
+jnz %v_match_condition, @b_3, @b_4
+@b_3
+%v_ignored =l call $p118_p111_rt_take2(l %state, l %v_v_4294961038, l %v_scratch, w 2)
+%v_v_4294961037 =l loadl %v_scratch
+%t_6 =l add %v_scratch, 8
+%v_v_4294961036 =l loadl %t_6
+storel %v_v_4294961036, %v_scratch
+%t_8 =l add %state, 16
+%v_p114t_7_sp =l loadl %t_8
+%v_p114t_7_capture =l loadl %v_scratch
+storel %v_p114t_7_capture, %v_p114t_7_sp
+%t_9 =l add %v_p114t_7_sp, 8
+storel 36, %t_9
+%v_p114t_7_next_sp =l add %v_p114t_7_sp, 16
+%t_10 =l add %state, 16
+storel %v_p114t_7_next_sp, %t_10
+%v_ignored =l copy 0
+%p114r_depth =l add %p114r_depth, 1
+%v_v_4294961030 =l copy %v_v_4294961037
+%v_v_4294961029 =l copy 72076285735600128
+storel %v_v_4294961030, %v_scratch
+%t_11 =l add %v_scratch, 8
+storel %v_v_4294961029, %t_11
+%v_p114h_arg_0 =l loadl %v_scratch
+%t_12 =l add %v_scratch, 8
+%v_p114h_arg_1 =l loadl %t_12
+%v_p114h_call_result =l call $p113d_FID_36_100_105_114_101_99_116_46_112_97_114_99_101_108_46_116_117_114_110_(l %state, l %v_p114h_arg_0, l %v_p114h_arg_1)
+%p114r_value =l copy %v_p114h_call_result
+jmp @p114r_unwind
+@b_4
+storel %v_v_4294961038, %v_scratch
+%t_14 =l add %state, 16
+%v_p114t_13_sp =l loadl %t_14
+%v_p114t_13_capture =l loadl %v_scratch
+storel %v_p114t_13_capture, %v_p114t_13_sp
+%t_15 =l add %v_p114t_13_sp, 8
+storel 38, %t_15
+%v_p114t_13_next_sp =l add %v_p114t_13_sp, 16
+%t_16 =l add %state, 16
+storel %v_p114t_13_next_sp, %t_16
+%v_ignored =l copy 0
+%v_reply =l call $p111_rt_fail(l %state, w 4)
+ret %v_reply
+@p114r_unwind
+%p114r_pending =w cnel %p114r_depth, 0
+jnz %p114r_pending, @p114h_dispatch, @p114h_done
+@p114h_done
+ret %p114r_value
+@p114h_dispatch
+%p114r_depth =l sub %p114r_depth, 1
+%t_18 =l add %state, 16
+%v_p114t_17_sp =l loadl %t_18
+%v_p114t_17_next_sp =l add %v_p114t_17_sp, 18446744073709551608
+%t_19 =l add %state, 16
+storel %v_p114t_17_next_sp, %t_19
+%v_p114h_popped =l copy 0
+%t_21 =l add %state, 16
+%v_p114t_20_sp =l loadl %t_21
+%v_p114h_fid =l loadl %v_p114t_20_sp
+%p114h_fid =l copy %v_p114h_fid
+%p114h_test_0 =w ceql %p114h_fid, 36
+jnz %p114h_test_0, @p114h_case_0, @p114h_next_0
+@p114h_next_0
+%p114h_test_1 =w ceql %p114h_fid, 37
+jnz %p114h_test_1, @p114h_case_1, @p114h_next_1
+@p114h_next_1
+%p114h_bad =l call $p111_rt_fail(l %state, w 4)
+ret %p114h_bad
+@p114h_case_0
+%t_23 =l add %state, 16
+%v_p114t_22_sp =l loadl %t_23
+%v_p114t_22_next_sp =l add %v_p114t_22_sp, 18446744073709551608
+%t_24 =l add %state, 16
+storel %v_p114t_22_next_sp, %t_24
+%v_p114h_popped =l copy 0
+%v_p114h_case_0_local_ignored =l copy 0
+%t_26 =l add %state, 16
+%v_p114t_25_sp =l loadl %t_26
+%v_p114h_case_0_local_v_4294961036 =l loadl %v_p114t_25_sp
+%v_p114h_case_0_local_v_3480 =l copy %p114r_value
+storel %v_p114h_case_0_local_v_3480, %v_p114h_case_0_local_scratch
+%v_p114h_case_0_local_ignored =l call $p111_rt_frame(l %state, w 37, l %v_p114h_case_0_local_scratch, w 1)
+%p114r_depth =l add %p114r_depth, 1
+%v_p114h_case_0_local_v_4294961031 =l copy %v_p114h_case_0_local_v_4294961036
+storel %v_p114h_case_0_local_v_4294961031, %v_p114h_case_0_local_scratch
+%p114h_slot_0 =l add %v_p114h_case_0_local_scratch, 0
+%p114h_edge_0 =l loadl %p114h_slot_0
+%v_v_4294961040 =l copy %p114h_edge_0
+jmp @p114r_descend
+@p114h_case_1
+%t_28 =l add %state, 16
+%v_p114t_27_sp =l loadl %t_28
+%v_p114t_27_next_sp =l add %v_p114t_27_sp, 18446744073709551608
+%t_29 =l add %state, 16
+storel %v_p114t_27_next_sp, %t_29
+%v_p114h_popped =l copy 0
+%v_p114h_case_1_local_ignored =l copy 0
+%t_31 =l add %state, 16
+%v_p114t_30_sp =l loadl %t_31
+%v_p114h_case_1_local_v_3480 =l loadl %v_p114t_30_sp
+%v_p114h_case_1_local_v_3481 =l copy %p114r_value
+%v_p114h_case_1_local_v_4294961033 =l copy %v_p114h_case_1_local_v_3480
+%v_p114h_case_1_local_v_4294961032 =l copy %v_p114h_case_1_local_v_3481
+storel %v_p114h_case_1_local_v_4294961033, %v_p114h_case_1_local_scratch
+%t_32 =l add %v_p114h_case_1_local_scratch, 8
+storel %v_p114h_case_1_local_v_4294961032, %t_32
+%v_p114h_case_1_local_p114h_arg_0 =l loadl %v_p114h_case_1_local_scratch
+%t_33 =l add %v_p114h_case_1_local_scratch, 8
+%v_p114h_case_1_local_p114h_arg_1 =l loadl %t_33
+%v_p114h_case_1_local_p114h_call_result =l call $p113d_FID_36_100_105_114_101_99_116_46_112_97_114_99_101_108_46_106_111_105_110_(l %state, l %v_p114h_case_1_local_p114h_arg_0, l %v_p114h_case_1_local_p114h_arg_1)
+%p114r_value =l copy %v_p114h_case_1_local_p114h_call_result
+jmp @p114r_unwind
+}

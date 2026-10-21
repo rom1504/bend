@@ -1,0 +1,372 @@
+{
+  "kind": "phase124-static-qbe-owner-comparison",
+  "dynamic_counts": false,
+  "program_execution": false,
+  "cases": [
+    {
+      "case": "p124-list-resume01",
+      "owner": "$direct.parcel.collect",
+      "inputs": {
+        "parent": {
+          "file": "selfhost/build/phase118/p124-parent-controls-emit01/p124-list-resume01.ssa",
+          "sha256": "f5ded0632d57e833962eadb780965eb734c6749a6aea96f4eaed1e8a7b2d774d",
+          "bytes": 153732
+        },
+        "ready": {
+          "file": "selfhost/build/phase118/p124-ready-controls-emit01/p124-list-resume01.ssa",
+          "sha256": "5222f4ac11785b0d24e75e7e4bc2c7a5cae5d46ab9b8a67a4ca472acb85254f6",
+          "bytes": 156810
+        }
+      },
+      "continuations": [
+        {
+          "fid": 36,
+          "symbol": "p111_FID_36_112_49_49_49_46_107_46_54_50_54_48_",
+          "decoded": "p111_$p111.k.6260"
+        },
+        {
+          "fid": 37,
+          "symbol": "p111_FID_36_112_49_49_49_46_107_46_54_50_54_49_",
+          "decoded": "p111_$p111.k.6261"
+        }
+      ],
+      "roles": {
+        "parent": [
+          {
+            "symbol": "p111_FID_36_100_105_114_101_99_116_46_112_97_114_99_101_108_46_99_111_108_108_101_99_116_",
+            "decoded": "p111_$direct.parcel.collect",
+            "source_line": 1604,
+            "call_sites": {
+              "p111_rt_return": 1,
+              "p118_p111_rt_take2": 1,
+              "p112w_$direct.parcel.turn": 1,
+              "p111_rt_jump": 1,
+              "p111_rt_fail": 1
+            },
+            "line_count": 66,
+            "descend_jumps": 0,
+            "unwind_jumps": 0,
+            "owner_native_reentry": 0
+          },
+          {
+            "symbol": "p111_FID_36_112_49_49_49_46_107_46_54_50_54_48_",
+            "decoded": "p111_$p111.k.6260",
+            "source_line": 1671,
+            "call_sites": {
+              "p111_rt_jump": 1
+            },
+            "line_count": 30,
+            "descend_jumps": 0,
+            "unwind_jumps": 0,
+            "owner_native_reentry": 0
+          },
+          {
+            "symbol": "p111_FID_36_112_49_49_49_46_107_46_54_50_54_49_",
+            "decoded": "p111_$p111.k.6261",
+            "source_line": 1702,
+            "call_sites": {
+              "p111_rt_jump": 1
+            },
+            "line_count": 22,
+            "descend_jumps": 0,
+            "unwind_jumps": 0,
+            "owner_native_reentry": 0
+          }
+        ],
+        "ready": [
+          {
+            "symbol": "p111_FID_36_100_105_114_101_99_116_46_112_97_114_99_101_108_46_99_111_108_108_101_99_116_",
+            "decoded": "p111_$direct.parcel.collect",
+            "source_line": 1604,
+            "call_sites": {
+              "p111_rt_reg_get": 1,
+              "p114r_$direct.parcel.collect": 1,
+              "p111_rt_return": 1
+            },
+            "line_count": 9,
+            "descend_jumps": 0,
+            "unwind_jumps": 0,
+            "owner_native_reentry": 0
+          },
+          {
+            "symbol": "p114r_FID_36_100_105_114_101_99_116_46_112_97_114_99_101_108_46_99_111_108_108_101_99_116_",
+            "decoded": "p114r_$direct.parcel.collect",
+            "source_line": 1613,
+            "call_sites": {
+              "p118_p111_rt_take2": 1,
+              "p113d_$direct.parcel.turn": 1,
+              "p111_rt_fail": 2,
+              "p111_rt_frame": 1,
+              "p113d_$direct.parcel.join": 1
+            },
+            "line_count": 134,
+            "descend_jumps": 2,
+            "unwind_jumps": 3,
+            "owner_native_reentry": 0
+          }
+        ]
+      },
+      "candidate_direct_call_closure": [
+        {
+          "symbol": "p114r_FID_36_100_105_114_101_99_116_46_112_97_114_99_101_108_46_99_111_108_108_101_99_116_",
+          "decoded": "p114r_$direct.parcel.collect",
+          "source_line": 1613,
+          "call_sites": {
+            "p118_p111_rt_take2": 1,
+            "p113d_$direct.parcel.turn": 1,
+            "p111_rt_fail": 2,
+            "p111_rt_frame": 1,
+            "p113d_$direct.parcel.join": 1
+          },
+          "line_count": 134,
+          "descend_jumps": 2,
+          "unwind_jumps": 3,
+          "owner_native_reentry": 0
+        },
+        {
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_97_114_99_101_108_46_106_111_105_110_",
+          "decoded": "p113d_$direct.parcel.join",
+          "source_line": 132,
+          "call_sites": {
+            "p113d_$p118.trmc.$direct.parcel.join": 1
+          },
+          "line_count": 8,
+          "descend_jumps": 0,
+          "unwind_jumps": 0,
+          "owner_native_reentry": 0
+        },
+        {
+          "symbol": "p113d_FID_36_112_49_49_56_46_116_114_109_99_46_36_100_105_114_101_99_116_46_112_97_114_99_101_108_46_106_111_105_110_",
+          "decoded": "p113d_$p118.trmc.$direct.parcel.join",
+          "source_line": 70,
+          "call_sites": {
+            "p118_rt_finish": 2,
+            "p118_p111_rt_take2": 1,
+            "p118_rt_extend1": 1,
+            "p111_rt_fail": 1
+          },
+          "line_count": 61,
+          "descend_jumps": 0,
+          "unwind_jumps": 0,
+          "owner_native_reentry": 0
+        },
+        {
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_97_114_99_101_108_46_116_117_114_110_",
+          "decoded": "p113d_$direct.parcel.turn",
+          "source_line": 141,
+          "call_sites": {
+            "p118_p111_rt_take2": 1,
+            "p118_p111_rt_ctor2": 1,
+            "p111_rt_fail": 1
+          },
+          "line_count": 67,
+          "descend_jumps": 0,
+          "unwind_jumps": 0,
+          "owner_native_reentry": 0
+        }
+      ],
+      "candidate_closure_owner_reentry": false
+    },
+    {
+      "case": "p124-tree-resume01",
+      "owner": "$direct.archive.collect",
+      "inputs": {
+        "parent": {
+          "file": "selfhost/build/phase118/p124-parent-controls-emit01/p124-tree-resume01.ssa",
+          "sha256": "f0514a1ea9018d6bb015ed68a52ebd0d710f46c85933c8eaf10477202a896ca2",
+          "bytes": 165159
+        },
+        "ready": {
+          "file": "selfhost/build/phase118/p124-ready-controls-emit01/p124-tree-resume01.ssa",
+          "sha256": "567849c48287fa1f74337ea852cdfd10f2ce73062b99ac4d2fb3449aaad2e734",
+          "bytes": 171222
+        }
+      },
+      "continuations": [
+        {
+          "fid": 42,
+          "symbol": "p111_FID_36_112_49_49_49_46_107_46_54_50_57_48_",
+          "decoded": "p111_$p111.k.6290"
+        },
+        {
+          "fid": 43,
+          "symbol": "p111_FID_36_112_49_49_49_46_107_46_54_50_57_49_",
+          "decoded": "p111_$p111.k.6291"
+        },
+        {
+          "fid": 44,
+          "symbol": "p111_FID_36_112_49_49_49_46_107_46_54_50_57_50_",
+          "decoded": "p111_$p111.k.6292"
+        },
+        {
+          "fid": 45,
+          "symbol": "p111_FID_36_112_49_49_49_46_107_46_54_50_57_53_",
+          "decoded": "p111_$p111.k.6295"
+        }
+      ],
+      "roles": {
+        "parent": [
+          {
+            "symbol": "p111_FID_36_100_105_114_101_99_116_46_97_114_99_104_105_118_101_46_99_111_108_108_101_99_116_",
+            "decoded": "p111_$direct.archive.collect",
+            "source_line": 1801,
+            "call_sites": {
+              "p118_p111_rt_take1": 1,
+              "p112w_$direct.archive.stamp": 2,
+              "p111_rt_return": 1,
+              "p118_p111_rt_take3": 1,
+              "p111_rt_jump": 1,
+              "p111_rt_fail": 1
+            },
+            "line_count": 88,
+            "descend_jumps": 0,
+            "unwind_jumps": 0,
+            "owner_native_reentry": 0
+          },
+          {
+            "symbol": "p111_FID_36_112_49_49_49_46_107_46_54_50_57_48_",
+            "decoded": "p111_$p111.k.6290",
+            "source_line": 1890,
+            "call_sites": {
+              "p111_rt_jump": 1
+            },
+            "line_count": 40,
+            "descend_jumps": 0,
+            "unwind_jumps": 0,
+            "owner_native_reentry": 0
+          },
+          {
+            "symbol": "p111_FID_36_112_49_49_49_46_107_46_54_50_57_49_",
+            "decoded": "p111_$p111.k.6291",
+            "source_line": 1931,
+            "call_sites": {
+              "p111_rt_jump": 1
+            },
+            "line_count": 40,
+            "descend_jumps": 0,
+            "unwind_jumps": 0,
+            "owner_native_reentry": 0
+          },
+          {
+            "symbol": "p111_FID_36_112_49_49_49_46_107_46_54_50_57_50_",
+            "decoded": "p111_$p111.k.6292",
+            "source_line": 1972,
+            "call_sites": {
+              "p111_rt_jump": 1
+            },
+            "line_count": 38,
+            "descend_jumps": 0,
+            "unwind_jumps": 0,
+            "owner_native_reentry": 0
+          },
+          {
+            "symbol": "p111_FID_36_112_49_49_49_46_107_46_54_50_57_53_",
+            "decoded": "p111_$p111.k.6295",
+            "source_line": 2011,
+            "call_sites": {
+              "p111_rt_jump": 1
+            },
+            "line_count": 20,
+            "descend_jumps": 0,
+            "unwind_jumps": 0,
+            "owner_native_reentry": 0
+          }
+        ],
+        "ready": [
+          {
+            "symbol": "p111_FID_36_100_105_114_101_99_116_46_97_114_99_104_105_118_101_46_99_111_108_108_101_99_116_",
+            "decoded": "p111_$direct.archive.collect",
+            "source_line": 1801,
+            "call_sites": {
+              "p111_rt_reg_get": 1,
+              "p114r_$direct.archive.collect": 1,
+              "p111_rt_return": 1
+            },
+            "line_count": 9,
+            "descend_jumps": 0,
+            "unwind_jumps": 0,
+            "owner_native_reentry": 0
+          },
+          {
+            "symbol": "p114r_FID_36_100_105_114_101_99_116_46_97_114_99_104_105_118_101_46_99_111_108_108_101_99_116_",
+            "decoded": "p114r_$direct.archive.collect",
+            "source_line": 1810,
+            "call_sites": {
+              "p118_p111_rt_take1": 1,
+              "p113d_$direct.archive.stamp": 2,
+              "p118_p111_rt_take3": 1,
+              "p111_rt_fail": 2,
+              "p111_rt_frame": 3,
+              "p113d_$direct.archive.join": 2
+            },
+            "line_count": 223,
+            "descend_jumps": 3,
+            "unwind_jumps": 4,
+            "owner_native_reentry": 0
+          }
+        ]
+      },
+      "candidate_direct_call_closure": [
+        {
+          "symbol": "p114r_FID_36_100_105_114_101_99_116_46_97_114_99_104_105_118_101_46_99_111_108_108_101_99_116_",
+          "decoded": "p114r_$direct.archive.collect",
+          "source_line": 1810,
+          "call_sites": {
+            "p118_p111_rt_take1": 1,
+            "p113d_$direct.archive.stamp": 2,
+            "p118_p111_rt_take3": 1,
+            "p111_rt_fail": 2,
+            "p111_rt_frame": 3,
+            "p113d_$direct.archive.join": 2
+          },
+          "line_count": 223,
+          "descend_jumps": 3,
+          "unwind_jumps": 4,
+          "owner_native_reentry": 0
+        },
+        {
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_97_114_99_104_105_118_101_46_106_111_105_110_",
+          "decoded": "p113d_$direct.archive.join",
+          "source_line": 168,
+          "call_sites": {
+            "p113d_$p118.trmc.$direct.archive.join": 1
+          },
+          "line_count": 8,
+          "descend_jumps": 0,
+          "unwind_jumps": 0,
+          "owner_native_reentry": 0
+        },
+        {
+          "symbol": "p113d_FID_36_112_49_49_56_46_116_114_109_99_46_36_100_105_114_101_99_116_46_97_114_99_104_105_118_101_46_106_111_105_110_",
+          "decoded": "p113d_$p118.trmc.$direct.archive.join",
+          "source_line": 106,
+          "call_sites": {
+            "p118_rt_finish": 2,
+            "p118_p111_rt_take2": 1,
+            "p118_rt_extend1": 1,
+            "p111_rt_fail": 1
+          },
+          "line_count": 61,
+          "descend_jumps": 0,
+          "unwind_jumps": 0,
+          "owner_native_reentry": 0
+        },
+        {
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_97_114_99_104_105_118_101_46_115_116_97_109_112_",
+          "decoded": "p113d_$direct.archive.stamp",
+          "source_line": 177,
+          "call_sites": {
+            "p118_p111_rt_take2": 1,
+            "p118_p111_rt_ctor2": 1,
+            "p111_rt_fail": 1
+          },
+          "line_count": 67,
+          "descend_jumps": 0,
+          "unwind_jumps": 0,
+          "owner_native_reentry": 0
+        }
+      ],
+      "candidate_closure_owner_reentry": false
+    }
+  ]
+}

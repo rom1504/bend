@@ -1,0 +1,199 @@
+{
+  "kind": "phase123-source-only-RLE-state-ceilings",
+  "cases": [
+    {
+      "name": "test-rle-roundtrip-v2-outer",
+      "family": "test-rle-roundtrip",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase123/rle-v2-outer.bend",
+        "bytes": 5626,
+        "sha256": "950bc36844a59b3b4e5cc013fc540ee8c2778cd788c4da8f2fd9bb44cd16b8bf"
+      },
+      "source88": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase88/broad-fixtures03/test-rle-roundtrip.bend",
+        "bytes": 2878,
+        "sha256": "20187aee760181fb99e5ef7bb5a99657a8ddc280209b64bb81199f7f72f5ff45"
+      },
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase37/fixtures-historical/test-rle-roundtrip.bend",
+        "bytes": 2743,
+        "sha256": "ce4083dab9a8022b2c8867a30802113735917229341cecb8ce18ff9ac2e33989"
+      },
+      "expectedStdout": "11\n",
+      "expectedStdoutEvidence": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase111/coverage/full45/expected/test-rle-roundtrip.stdout",
+        "bytes": 3,
+        "sha256": "25d4f2a86deb5e2574bb3210b67bb24fcc4afb19f93a7b65a057daa874a9d18e"
+      },
+      "runtimeArgs": [
+        0,
+        0
+      ],
+      "repetitions": 1213630,
+      "warmups": 32,
+      "ratioEligible": true,
+      "phase112Heldout": true,
+      "upstream": {
+        "binary": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/broad01/test-rle-roundtrip/upstream.program",
+          "bytes": 67080,
+          "sha256": "c010aa62bbf854a4513651cdef6f8802a80b24e3f33f0a5b149d4ac0fe9464ae"
+        },
+        "source": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/fixtures01/test-rle-roundtrip.bend",
+          "bytes": 4708,
+          "sha256": "b46580acb1656502d0e37a0115d172529e648719acb75eadb3b9ad45db5b078d"
+        },
+        "generatedC": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/broad01/test-rle-roundtrip/upstream.1.c",
+          "bytes": 141020,
+          "sha256": "c92d70265547bdb1122a101de0e7ab70310e03aabf802a037ccd84ebf7c191a9"
+        },
+        "buildCommand": [
+          "/usr/bin/python3",
+          "-B",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase86/guard.py",
+          "--out",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/broad01/test-rle-roundtrip/upstream-build",
+          "--seconds",
+          "60",
+          "--cpu",
+          "3",
+          "--rss-mib",
+          "2048",
+          "--available-mib",
+          "4096",
+          "--",
+          "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+          "-isystem",
+          "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/include/clang",
+          "-std=c11",
+          "-O3",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/broad01/test-rle-roundtrip/upstream.1.c",
+          "-o",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/broad01/test-rle-roundtrip/upstream.program",
+          "-lpthread",
+          "-lm"
+        ],
+        "clang": {
+          "file": "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+          "bytes": 119320,
+          "sha256": "9fcd5fc4baeea9c449bcc9ca4b9db7714465107669498b0056a853f22f5f4def"
+        }
+      },
+      "historicalSamplesMs": {
+        "upstream": [
+          250,
+          251,
+          250
+        ],
+        "own": [
+          650,
+          656,
+          651
+        ]
+      },
+      "oracleProvenance": "Exact Phase93 complete expected output, authenticated against preserved independent Phase92/105 evidence in Phase111 full45; reused historical regression oracle.",
+      "parentName": "test-rle-roundtrip",
+      "diagnosticOnly": true,
+      "benchmarkClaim": false
+    },
+    {
+      "name": "test-rle-roundtrip-v2-full",
+      "family": "test-rle-roundtrip",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase123/rle-v2-full.bend",
+        "bytes": 5556,
+        "sha256": "a4643af63c87f422c45c14ca26d08bb5caa53b4cb11c032f3195bc7dfad782d2"
+      },
+      "source88": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase88/broad-fixtures03/test-rle-roundtrip.bend",
+        "bytes": 2878,
+        "sha256": "20187aee760181fb99e5ef7bb5a99657a8ddc280209b64bb81199f7f72f5ff45"
+      },
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase37/fixtures-historical/test-rle-roundtrip.bend",
+        "bytes": 2743,
+        "sha256": "ce4083dab9a8022b2c8867a30802113735917229341cecb8ce18ff9ac2e33989"
+      },
+      "expectedStdout": "11\n",
+      "expectedStdoutEvidence": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase111/coverage/full45/expected/test-rle-roundtrip.stdout",
+        "bytes": 3,
+        "sha256": "25d4f2a86deb5e2574bb3210b67bb24fcc4afb19f93a7b65a057daa874a9d18e"
+      },
+      "runtimeArgs": [
+        0,
+        0
+      ],
+      "repetitions": 1213630,
+      "warmups": 32,
+      "ratioEligible": true,
+      "phase112Heldout": true,
+      "upstream": {
+        "binary": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/broad01/test-rle-roundtrip/upstream.program",
+          "bytes": 67080,
+          "sha256": "c010aa62bbf854a4513651cdef6f8802a80b24e3f33f0a5b149d4ac0fe9464ae"
+        },
+        "source": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/fixtures01/test-rle-roundtrip.bend",
+          "bytes": 4708,
+          "sha256": "b46580acb1656502d0e37a0115d172529e648719acb75eadb3b9ad45db5b078d"
+        },
+        "generatedC": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/broad01/test-rle-roundtrip/upstream.1.c",
+          "bytes": 141020,
+          "sha256": "c92d70265547bdb1122a101de0e7ab70310e03aabf802a037ccd84ebf7c191a9"
+        },
+        "buildCommand": [
+          "/usr/bin/python3",
+          "-B",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase86/guard.py",
+          "--out",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/broad01/test-rle-roundtrip/upstream-build",
+          "--seconds",
+          "60",
+          "--cpu",
+          "3",
+          "--rss-mib",
+          "2048",
+          "--available-mib",
+          "4096",
+          "--",
+          "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+          "-isystem",
+          "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/include/clang",
+          "-std=c11",
+          "-O3",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/broad01/test-rle-roundtrip/upstream.1.c",
+          "-o",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/broad01/test-rle-roundtrip/upstream.program",
+          "-lpthread",
+          "-lm"
+        ],
+        "clang": {
+          "file": "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+          "bytes": 119320,
+          "sha256": "9fcd5fc4baeea9c449bcc9ca4b9db7714465107669498b0056a853f22f5f4def"
+        }
+      },
+      "historicalSamplesMs": {
+        "upstream": [
+          250,
+          251,
+          250
+        ],
+        "own": [
+          650,
+          656,
+          651
+        ]
+      },
+      "oracleProvenance": "Exact Phase93 complete expected output, authenticated against preserved independent Phase92/105 evidence in Phase111 full45; reused historical regression oracle.",
+      "parentName": "test-rle-roundtrip",
+      "diagnosticOnly": true,
+      "benchmarkClaim": false
+    }
+  ]
+}

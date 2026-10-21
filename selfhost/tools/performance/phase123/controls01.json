@@ -1,0 +1,52 @@
+{
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase123/predicate/ordinary.json",
+      "bytes": 1098,
+      "sha256": "84598c6facedbd7a5fbd5617a64ac59fe71990dfe0213654dd0d288f6c8882d1"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase123/rle-v2-controls.json",
+      "bytes": 836,
+      "sha256": "ef642692073f8ac7f5b239ed478d13b47e89eadb7e4a78ff31a80398a4de5a6a"
+    }
+  ],
+  "cases": [
+    {
+      "name": "predicate-ordinary",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase123/predicate/ordinary.bend",
+        "bytes": 1764,
+        "sha256": "1f96de799bdc535f74d44a55016cf5f9922e54897505f39bda31bcf2ab1c62df"
+      },
+      "expected": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase123/predicate/ordinary.expected.json",
+        "bytes": 617,
+        "sha256": "861bed1bac58aad0a311cf1427fa6ded1602b7f78acc5f0e84c7dc5991db6df4"
+      },
+      "expectedStdoutEvidence": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase123/predicate/ordinary.expected.json",
+        "bytes": 617,
+        "sha256": "861bed1bac58aad0a311cf1427fa6ded1602b7f78acc5f0e84c7dc5991db6df4"
+      }
+    },
+    {
+      "name": "rle-v2-controls",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase123/rle-v2-controls.bend",
+        "bytes": 6017,
+        "sha256": "0e6d268c16d2f41497ba441bab0c02f1bff7ee8d9865f5575285ef8df439f20d"
+      },
+      "expected": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase123/rle-v2-controls.expected.json",
+        "bytes": 1243,
+        "sha256": "73c6851cf87ed240cb46d4c728f33792fbe995543f7a3715a6bdb0c11b6307ee"
+      },
+      "expectedStdoutEvidence": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase123/rle-v2-controls.expected.json",
+        "bytes": 1243,
+        "sha256": "73c6851cf87ed240cb46d4c728f33792fbe995543f7a3715a6bdb0c11b6307ee"
+      }
+    }
+  ]
+}

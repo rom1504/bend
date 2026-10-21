@@ -1,6 +1,10 @@
 # Compiler experiment workflow
 
-Latest bounded investigation: [Phase115 policy search](../implementation/phase115/README.md).
+Latest bounded investigation: [Phase116 backend profiles](../implementation/phase116/README.md),
+with matched QBE/C/JS timings and current native/compiler hot paths.
+No compiler or production change.
+
+Previous bounded investigation: [Phase115 policy search](../implementation/phase115/README.md).
 Retained plans reduce policy-emission work 30.3%; independent runtime comparison
 finds no better code-generation policy. A 17-line candidate preserves exact QBE
 and reduces full warm emission 4.15%; no installed/native promotion.

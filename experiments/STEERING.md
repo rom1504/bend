@@ -1,3 +1,24 @@
+# Latest investigation: Phase116 matched backend profiles
+
+[Report](../implementation/phase116/README.md) ·
+[Design](../design/phase116/profile-and-backend-comparison.md) ·
+[Exact data](../implementation/phase116/results.json).
+
+Eight matched historical programs: QBE 6.649× upstream C, selfhost C 1.089×;
+these are diagnostic subset ratios, not a replacement for the broad 5.386×.
+120 clean observations, 48 unchanged-native captures (21,301 zero-loss samples),
+16 V8 profiles and six exact compiler requests pass original output gates.
+No compiler implementation, runtime, qualified image or production selection changed.
+
+Prioritize verified scalar-array representation/facts, then mature borrowed
+observers and destination-passing constructor plans. QBE already computes the
+scalar/unshared certificate; coherent layout/access/lifetime projection is missing.
+Tree/map hot take uses shared RFC, so do not assume uniqueness. Actual warp and
+ownership paths dominate tree; scan Stat is cold in this input. Compiler profiling
+shows the same ownership/copying categories. Typed float/scalar specialization is
+a separate numeric path. Read measured attribution and conditional estimates
+before another isolated template or policy-search expansion. No PR comments.
+
 # Current experiment: Phase115 reusable plans and policy search
 
 [Report](../implementation/phase115/README.md) ·

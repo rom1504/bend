@@ -5102,3 +5102,31 @@ QBE outputs, and reduces full warm emission 4.15% geometrically (summed medians
 The API match-order failure and array-adapter mismatch remain recorded. No new
 full native chain, installed promotion, broad 45 runtime or whole-request metric.
 Recorded target guards 593.31 s, including 78.75 s failed guards. No subagents or PR comments.
+
+
+## Phase116 — matched backend profiles and recoverable QBE capabilities
+
+[Design](../design/phase116/profile-and-backend-comparison.md) ·
+[Report](../implementation/phase116/README.md) · [Data](../implementation/phase116/results.json).
+
+Eight exact-source diagnostic programs, five roles, three rotated rounds: all
+120 clean observations pass. Fresh subset geomeans vs upstream C are QBE 6.649×,
+selfhost C 1.089×, upstream JS 4.906×, selfhost JS 5.490×; different backend producer
+histories and selected coverage preclude a new broad45/regression claim.
+48 unchanged native captures yield 21,301 zero-loss samples; 16 V8 profiles and
+six qualified native compiler lexer requests (four sampled) also pass. Original
+Phase112 complete-output/count/interval replay checks 184 observations; compiler
+outputs are byte-exact. No optimization or production selection change.
+
+Array loop/layout/destruction, shared constructor ownership, observer forwarding,
+destination passing and control copying are actual hot mechanisms. QBE already
+has the scalar/unshared admission certificate, but lacks stronger lifetime/layout
+projection. Existing C observer and constructor plans offer concrete reusable
+capabilities. Tree scan is cold; defer Stat flattening as the main tree proposal.
+Scalar hot loop has no calls; arithmetic identities and typed float/call/constant
+flow need a separate path. Compiler samples show the same generic ownership
+costs, supporting a future transfer experiment without claiming self-improvement.
+
+Five serial target guards total 405.229s; two source-review agents execute no
+benchmarks. Exact hard-link dedup reclaims 70,325,607B while retaining every frozen
+artifact path/byte. Profiles, corrections, methods and bounded evidence retained.

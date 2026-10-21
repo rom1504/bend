@@ -1,0 +1,5696 @@
+{
+  "complete": true,
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase119/summarize.py",
+      "bytes": 6015,
+      "sha256": "d1536afbcc42980d9547daf2917c714898b22afe534275c30c4808cc3d14f777"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase119/manifest01.json",
+      "bytes": 50588,
+      "sha256": "29f7c57cf3f4bfa4fa8484f4f334147f13dfef321f23ed909261e9342ff26103"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase119/clean01/report.json",
+      "bytes": 71433,
+      "sha256": "b032a3f1dbb2f6484da099e0ae1589f2de615b9acd0524d0b70fcaafc4cdc723"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase119/native01/report.json",
+      "bytes": 87273,
+      "sha256": "f3f4d894c15c61349c41d2808065f506556cf28525094053cf65bf8021c458ed"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase119/compiler01/report.json",
+      "bytes": 28436,
+      "sha256": "25e4965a2c263072d732b8b4e11f951ee6347c7ed07315c9d567b1238cb12d1a"
+    },
+    {
+      "file": "/usr/lib/x86_64-linux-gnu/libc-2.31.so",
+      "bytes": 1901536,
+      "sha256": "d13f170ab30a0f91d9713e0c2196efa5fe0bc42f0f2737cf0e56380df8051159"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/implementation/phase119/libc-copy-fill.asm",
+      "bytes": 18900,
+      "sha256": "835fede900264fb8b40f3daa674df3835f03139aca0fb5d1183c87be3fa2af0e"
+    }
+  ],
+  "outputReplayCount": 102,
+  "cases": [
+    {
+      "name": "scalar-region-8192",
+      "mediansMs": {
+        "upstream_c": 201,
+        "selfhost_c": 207,
+        "qbe": 429
+      },
+      "ratiosToUpstreamC": {
+        "upstream_c": 1.0,
+        "selfhost_c": 1.0298507462686568,
+        "qbe": 2.1343283582089554
+      }
+    },
+    {
+      "name": "variation-ray-active-256-2240",
+      "mediansMs": {
+        "upstream_c": 201,
+        "selfhost_c": 688,
+        "qbe": 1703
+      },
+      "ratiosToUpstreamC": {
+        "upstream_c": 1.0,
+        "selfhost_c": 3.4228855721393034,
+        "qbe": 8.472636815920398
+      }
+    },
+    {
+      "name": "lexer",
+      "mediansMs": {
+        "upstream_c": 186,
+        "selfhost_c": 199,
+        "qbe": 832
+      },
+      "ratiosToUpstreamC": {
+        "upstream_c": 1.0,
+        "selfhost_c": 1.0698924731182795,
+        "qbe": 4.473118279569892
+      }
+    },
+    {
+      "name": "tree-bitonic",
+      "mediansMs": {
+        "upstream_c": 201,
+        "selfhost_c": 271,
+        "qbe": 963
+      },
+      "ratiosToUpstreamC": {
+        "upstream_c": 1.0,
+        "selfhost_c": 1.3482587064676617,
+        "qbe": 4.791044776119403
+      }
+    },
+    {
+      "name": "coverage-list-pipeline-128",
+      "mediansMs": {
+        "upstream_c": 198,
+        "selfhost_c": 137,
+        "qbe": 677
+      },
+      "ratiosToUpstreamC": {
+        "upstream_c": 1.0,
+        "selfhost_c": 0.6919191919191919,
+        "qbe": 3.419191919191919
+      }
+    },
+    {
+      "name": "coverage-map-churn-128",
+      "mediansMs": {
+        "upstream_c": 200,
+        "selfhost_c": 126,
+        "qbe": 720
+      },
+      "ratiosToUpstreamC": {
+        "upstream_c": 1.0,
+        "selfhost_c": 0.63,
+        "qbe": 3.6
+      }
+    }
+  ],
+  "programProfiles": [
+    {
+      "case": "scalar-region-8192",
+      "role": "upstream_c",
+      "samples": 1412,
+      "captures": [
+        {
+          "samples": 872,
+          "periodUs": 8000,
+          "overruns": 0,
+          "dropped": 0,
+          "coverage": 0.9999999946971744,
+          "analysis": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase119/native01/scalar-region-8192-upstream_c-8000.analysis.json",
+            "bytes": 5647,
+            "sha256": "f11dc1e0f4d3845ad9a19994c43aeaab47638203f3ecc73e436ef16de7fb7f80"
+          }
+        },
+        {
+          "samples": 540,
+          "periodUs": 13000,
+          "overruns": 0,
+          "dropped": 0,
+          "coverage": 1.0000000116735017,
+          "analysis": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase119/native01/scalar-region-8192-upstream_c-13000.analysis.json",
+            "bytes": 5503,
+            "sha256": "735b814c0c188fefdcb347d58158c2f110392361b0acbd4e16066c7074d2f808"
+          }
+        }
+      ],
+      "libc": {},
+      "libcPCs": [],
+      "symbols": [
+        {
+          "name": "WL_FID_MAIN_C101",
+          "decoded": "WL_FID_MAIN_C101",
+          "samples": 1412,
+          "fraction": 1.0
+        }
+      ]
+    },
+    {
+      "case": "scalar-region-8192",
+      "role": "selfhost_c",
+      "samples": 1420,
+      "captures": [
+        {
+          "samples": 877,
+          "periodUs": 8000,
+          "overruns": 0,
+          "dropped": 0,
+          "coverage": 0.999999959724764,
+          "analysis": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase119/native01/scalar-region-8192-selfhost_c-8000.analysis.json",
+            "bytes": 6788,
+            "sha256": "17f9ea84bb2c43d8f0eaf0c1cb489527fe684383b785da15b2d0620011fa825d"
+          }
+        },
+        {
+          "samples": 543,
+          "periodUs": 13000,
+          "overruns": 0,
+          "dropped": 0,
+          "coverage": 0.9999999473627812,
+          "analysis": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase119/native01/scalar-region-8192-selfhost_c-13000.analysis.json",
+            "bytes": 6790,
+            "sha256": "ed310fb98bbdd209c3c7e4523802c3c4d736b3e5479f8fafb04afc520b82b37e"
+          }
+        }
+      ],
+      "libc": {},
+      "libcPCs": [],
+      "symbols": [
+        {
+          "name": "WL_FID_110_97_116_105_118_101_95_107_95_53_50_51_54_",
+          "decoded": "WL_FID_native_k_5236",
+          "samples": 1420,
+          "fraction": 1.0
+        }
+      ]
+    },
+    {
+      "case": "scalar-region-8192",
+      "role": "qbe",
+      "samples": 1460,
+      "captures": [
+        {
+          "samples": 873,
+          "periodUs": 8000,
+          "overruns": 0,
+          "dropped": 0,
+          "coverage": 1.0000000054347016,
+          "analysis": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase119/native01/scalar-region-8192-qbe-8000.analysis.json",
+            "bytes": 14411,
+            "sha256": "6700f83f7ff5f9f159a9fe284762b96a12bda9c2455c562d880b59751ad03560"
+          }
+        },
+        {
+          "samples": 587,
+          "periodUs": 13000,
+          "overruns": 0,
+          "dropped": 0,
+          "coverage": 0.9999999860029101,
+          "analysis": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase119/native01/scalar-region-8192-qbe-13000.analysis.json",
+            "bytes": 16353,
+            "sha256": "39d853da2cbb6a64716a4c9e49e6ce45c14bd84b92903951cf3cf293c9dd9791"
+          }
+        }
+      ],
+      "libc": {},
+      "libcPCs": [],
+      "symbols": [
+        {
+          "name": "p113d_FID_36_100_105_114_101_99_116_46_109_105_116_",
+          "decoded": "p113d_FID_$direct.mit",
+          "samples": 1460,
+          "fraction": 1.0
+        }
+      ]
+    },
+    {
+      "case": "variation-ray-active-256-2240",
+      "role": "upstream_c",
+      "samples": 1405,
+      "captures": [
+        {
+          "samples": 869,
+          "periodUs": 8000,
+          "overruns": 0,
+          "dropped": 0,
+          "coverage": 0.9999999780060826,
+          "analysis": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase119/native01/variation-ray-active-256-2240-upstream_c-8000.analysis.json",
+            "bytes": 50842,
+            "sha256": "5c38a4f47201f821bc907969275ca007ce95c62b8e58b7d4ea588fbcb3506c4d"
+          }
+        },
+        {
+          "samples": 536,
+          "periodUs": 13000,
+          "overruns": 0,
+          "dropped": 0,
+          "coverage": 1.000001239879786,
+          "analysis": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase119/native01/variation-ray-active-256-2240-upstream_c-13000.analysis.json",
+            "bytes": 42985,
+            "sha256": "e7934e858c4d561716ea5b890f2457faee0195324296b9046b92bc6936fc50eb"
+          }
+        }
+      ],
+      "libc": {},
+      "libcPCs": [],
+      "symbols": [
+        {
+          "name": "spin_22",
+          "decoded": "spin_22",
+          "samples": 1371,
+          "fraction": 0.9758007117437723
+        },
+        {
+          "name": "spin_32",
+          "decoded": "spin_32",
+          "samples": 34,
+          "fraction": 0.024199288256227757
+        }
+      ]
+    },
+    {
+      "case": "variation-ray-active-256-2240",
+      "role": "selfhost_c",
+      "samples": 1412,
+      "captures": [
+        {
+          "samples": 873,
+          "periodUs": 8000,
+          "overruns": 0,
+          "dropped": 0,
+          "coverage": 0.9999999982832382,
+          "analysis": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase119/native01/variation-ray-active-256-2240-selfhost_c-8000.analysis.json",
+            "bytes": 46791,
+            "sha256": "915f84380e79436838b97a45345226c4a50667a2882d25d6ea921bb54745baa8"
+          }
+        },
+        {
+          "samples": 539,
+          "periodUs": 13000,
+          "overruns": 0,
+          "dropped": 0,
+          "coverage": 1.0000000504375859,
+          "analysis": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase119/native01/variation-ray-active-256-2240-selfhost_c-13000.analysis.json",
+            "bytes": 37970,
+            "sha256": "d85ebfa52736219c2e299d01a27eabb74de90e96673adee2bb966ea022a5d601"
+          }
+        }
+      ],
+      "libc": {},
+      "libcPCs": [],
+      "symbols": [
+        {
+          "name": "NF_FID_36_112_114_111_100_117_99_116_46_110_101_97_114_101_115_116_",
+          "decoded": "NF_FID_$product.nearest",
+          "samples": 844,
+          "fraction": 0.5977337110481586
+        },
+        {
+          "name": "NF_FID_110_101_97_114_101_115_116_46_116_",
+          "decoded": "NF_FID_nearest.t",
+          "samples": 419,
+          "fraction": 0.29674220963172804
+        },
+        {
+          "name": "NF_FID_36_112_114_111_100_117_99_116_46_116_114_97_99_101_",
+          "decoded": "NF_FID_$product.trace",
+          "samples": 79,
+          "fraction": 0.05594900849858357
+        },
+        {
+          "name": "NF_FID_112_105_120_101_108_",
+          "decoded": "NF_FID_pixel",
+          "samples": 64,
+          "fraction": 0.0453257790368272
+        },
+        {
+          "name": "WL_FID_110_97_116_105_118_101_95_107_95_53_50_51_54_",
+          "decoded": "WL_FID_native_k_5236",
+          "samples": 6,
+          "fraction": 0.00424929178470255
+        }
+      ]
+    },
+    {
+      "case": "variation-ray-active-256-2240",
+      "role": "qbe",
+      "samples": 1411,
+      "captures": [
+        {
+          "samples": 873,
+          "periodUs": 8000,
+          "overruns": 0,
+          "dropped": 0,
+          "coverage": 0.9999999596598894,
+          "analysis": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase119/native01/variation-ray-active-256-2240-qbe-8000.analysis.json",
+            "bytes": 75241,
+            "sha256": "edc1d68da84e4023d86447bb96dd94a0b40c91a5e9682a4ebd919c51f69a2aab"
+          }
+        },
+        {
+          "samples": 538,
+          "periodUs": 13000,
+          "overruns": 0,
+          "dropped": 0,
+          "coverage": 1.0000000081452014,
+          "analysis": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase119/native01/variation-ray-active-256-2240-qbe-13000.analysis.json",
+            "bytes": 58547,
+            "sha256": "6c975ee48f4fc13c6717fc7017ebcf127a7b6a08808ea0c7485bcf4768412682"
+          }
+        }
+      ],
+      "libc": {},
+      "libcPCs": [],
+      "symbols": [
+        {
+          "name": "p113d_FID_36_100_105_114_101_99_116_46_105_115_101_99_116_53_",
+          "decoded": "p113d_FID_$direct.isect5",
+          "samples": 590,
+          "fraction": 0.4181431608788094
+        },
+        {
+          "name": "p113d_FID_36_112_114_111_100_117_99_116_46_110_101_97_114_101_115_116_",
+          "decoded": "p113d_FID_$product.nearest",
+          "samples": 309,
+          "fraction": 0.21899362154500354
+        },
+        {
+          "name": "p111_rt_op",
+          "decoded": "p111_rt_op",
+          "samples": 154,
+          "fraction": 0.10914245216158752
+        },
+        {
+          "name": "p113d_FID_36_112_114_111_100_117_99_116_46_116_114_97_99_101_",
+          "decoded": "p113d_FID_$product.trace",
+          "samples": 149,
+          "fraction": 0.10559886605244508
+        },
+        {
+          "name": "p113d_FID_36_100_105_114_101_99_116_46_110_101_97_114_101_115_116_46_116_",
+          "decoded": "p113d_FID_$direct.nearest.t",
+          "samples": 119,
+          "fraction": 0.08433734939759036
+        },
+        {
+          "name": "p113d_FID_36_100_105_114_101_99_116_46_112_105_120_101_108_",
+          "decoded": "p113d_FID_$direct.pixel",
+          "samples": 35,
+          "fraction": 0.024805102763997167
+        },
+        {
+          "name": "p113d_FID_36_100_105_114_101_99_116_46_102_108_",
+          "decoded": "p113d_FID_$direct.fl",
+          "samples": 18,
+          "fraction": 0.012756909992912827
+        },
+        {
+          "name": "p113d_FID_36_100_105_114_101_99_116_46_115_114_",
+          "decoded": "p113d_FID_$direct.sr",
+          "samples": 16,
+          "fraction": 0.011339475549255847
+        },
+        {
+          "name": "p113d_FID_36_100_105_114_101_99_116_46_99_111_118_101_114_97_103_101_46_97_99_116_105_118_101_46_108_111_111_112_",
+          "decoded": "p113d_FID_$direct.coverage.active.loop",
+          "samples": 5,
+          "fraction": 0.003543586109142452
+        },
+        {
+          "name": "p113d_FID_36_100_105_114_101_99_116_46_115_104_97_100_101_",
+          "decoded": "p113d_FID_$direct.shade",
+          "samples": 4,
+          "fraction": 0.002834868887313962
+        },
+        {
+          "name": "p113d_FID_36_100_105_114_101_99_116_46_115_120_",
+          "decoded": "p113d_FID_$direct.sx",
+          "samples": 3,
+          "fraction": 0.002126151665485471
+        },
+        {
+          "name": "p113d_FID_36_100_105_114_101_99_116_46_115_121_",
+          "decoded": "p113d_FID_$direct.sy",
+          "samples": 3,
+          "fraction": 0.002126151665485471
+        },
+        {
+          "name": "p113d_FID_36_100_105_114_101_99_116_46_102_109_97_120_48_",
+          "decoded": "p113d_FID_$direct.fmax0",
+          "samples": 3,
+          "fraction": 0.002126151665485471
+        },
+        {
+          "name": "p113d_FID_36_100_105_114_101_99_116_46_115_122_",
+          "decoded": "p113d_FID_$direct.sz",
+          "samples": 2,
+          "fraction": 0.001417434443656981
+        },
+        {
+          "name": "p113d_FID_36_100_105_114_101_99_116_46_115_107_114_",
+          "decoded": "p113d_FID_$direct.skr",
+          "samples": 1,
+          "fraction": 0.0007087172218284905
+        }
+      ]
+    },
+    {
+      "case": "lexer",
+      "role": "upstream_c",
+      "samples": 1415,
+      "captures": [
+        {
+          "samples": 875,
+          "periodUs": 8000,
+          "overruns": 0,
+          "dropped": 0,
+          "coverage": 1.0000000779057592,
+          "analysis": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase119/native01/lexer-upstream_c-8000.analysis.json",
+            "bytes": 32902,
+            "sha256": "d89308547fed3330d8878c78aea02c614ac0d8cb61eb5151744c77b525e1fb5e"
+          }
+        },
+        {
+          "samples": 540,
+          "periodUs": 13000,
+          "overruns": 0,
+          "dropped": 0,
+          "coverage": 0.9999999941673106,
+          "analysis": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase119/native01/lexer-upstream_c-13000.analysis.json",
+            "bytes": 30072,
+            "sha256": "31055c43178b83213d3602fa1188efbb539d86ddf1ccfe81c2c88a7b31cbe28f"
+          }
+        }
+      ],
+      "libc": {},
+      "libcPCs": [],
+      "symbols": [
+        {
+          "name": "WL_FID_BATCH_K49",
+          "decoded": "WL_FID_BATCH_K49",
+          "samples": 725,
+          "fraction": 0.5123674911660777
+        },
+        {
+          "name": "WL_FID_GEN_K29",
+          "decoded": "WL_FID_GEN_K29",
+          "samples": 225,
+          "fraction": 0.15901060070671377
+        },
+        {
+          "name": "rfc_wrap",
+          "decoded": "rfc_wrap",
+          "samples": 144,
+          "fraction": 0.10176678445229682
+        },
+        {
+          "name": "WL_FID_IDENT_K6",
+          "decoded": "WL_FID_IDENT_K6",
+          "samples": 109,
+          "fraction": 0.07703180212014134
+        },
+        {
+          "name": "WL_FID_GEN",
+          "decoded": "WL_FID_GEN",
+          "samples": 71,
+          "fraction": 0.05017667844522968
+        },
+        {
+          "name": "WL_FID_NUM_K4",
+          "decoded": "WL_FID_NUM_K4",
+          "samples": 52,
+          "fraction": 0.03674911660777385
+        },
+        {
+          "name": "WL_FID_IDENT",
+          "decoded": "WL_FID_IDENT",
+          "samples": 42,
+          "fraction": 0.029681978798586573
+        },
+        {
+          "name": "WL_FID_NUM",
+          "decoded": "WL_FID_NUM",
+          "samples": 31,
+          "fraction": 0.021908127208480566
+        },
+        {
+          "name": "WL_FID_BATCH_K51",
+          "decoded": "WL_FID_BATCH_K51",
+          "samples": 5,
+          "fraction": 0.0035335689045936395
+        },
+        {
+          "name": "WL_FID_BATCH_K50",
+          "decoded": "WL_FID_BATCH_K50",
+          "samples": 4,
+          "fraction": 0.0028268551236749115
+        },
+        {
+          "name": "WL_FID_BATCH_J50",
+          "decoded": "WL_FID_BATCH_J50",
+          "samples": 4,
+          "fraction": 0.0028268551236749115
+        },
+        {
+          "name": "WL_FID_BATCH",
+          "decoded": "WL_FID_BATCH",
+          "samples": 3,
+          "fraction": 0.0021201413427561835
+        }
+      ]
+    },
+    {
+      "case": "lexer",
+      "role": "selfhost_c",
+      "samples": 1418,
+      "captures": [
+        {
+          "samples": 878,
+          "periodUs": 8000,
+          "overruns": 0,
+          "dropped": 0,
+          "coverage": 1.0000000035556915,
+          "analysis": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase119/native01/lexer-selfhost_c-8000.analysis.json",
+            "bytes": 50492,
+            "sha256": "878175fed373c0813284935ed069def2c97764b2e418af0729ea4d0f20fd1729"
+          }
+        },
+        {
+          "samples": 540,
+          "periodUs": 13000,
+          "overruns": 0,
+          "dropped": 0,
+          "coverage": 1.00000009193322,
+          "analysis": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase119/native01/lexer-selfhost_c-13000.analysis.json",
+            "bytes": 44412,
+            "sha256": "d067e5a7712c76f0e3fd007d82680e1070c024b69e028f5716740c5d8665d81d"
+          }
+        }
+      ],
+      "libc": {},
+      "libcPCs": [],
+      "symbols": [
+        {
+          "name": "NF_FID_36_112_114_111_100_117_99_116_46_115_116_101_112_46_97_116_",
+          "decoded": "NF_FID_$product.step.at",
+          "samples": 402,
+          "fraction": 0.2834978843441467
+        },
+        {
+          "name": "WL_FID_36_100_105_114_101_99_116_46_108_101_120_",
+          "decoded": "WL_FID_$direct.lex",
+          "samples": 394,
+          "fraction": 0.2778561354019746
+        },
+        {
+          "name": "WL_FID_36_100_105_114_101_99_116_46_103_101_110_46_97_116_",
+          "decoded": "WL_FID_$direct.gen.at",
+          "samples": 304,
+          "fraction": 0.2143864598025388
+        },
+        {
+          "name": "rfc_wrap",
+          "decoded": "rfc_wrap",
+          "samples": 198,
+          "fraction": 0.13963328631875882
+        },
+        {
+          "name": "WL_FID_36_100_105_114_101_99_116_46_103_101_110_",
+          "decoded": "WL_FID_$direct.gen",
+          "samples": 81,
+          "fraction": 0.057122708039492244
+        },
+        {
+          "name": "WL_FID_110_97_116_105_118_101_95_107_95_50_52_56_56_57_",
+          "decoded": "WL_FID_native_k_24889",
+          "samples": 16,
+          "fraction": 0.011283497884344146
+        },
+        {
+          "name": "WL_FID_110_97_116_105_118_101_95_107_95_49_52_53_57_56_",
+          "decoded": "WL_FID_native_k_14598",
+          "samples": 8,
+          "fraction": 0.005641748942172073
+        },
+        {
+          "name": "WL_FID_110_97_116_105_118_101_95_107_95_49_51_53_51_56_",
+          "decoded": "WL_FID_native_k_13538",
+          "samples": 7,
+          "fraction": 0.004936530324400564
+        },
+        {
+          "name": "WL_FID_36_100_105_114_101_99_116_46_98_97_116_99_104_",
+          "decoded": "WL_FID_$direct.batch",
+          "samples": 4,
+          "fraction": 0.0028208744710860366
+        },
+        {
+          "name": "WL_FID_110_97_116_105_118_101_95_107_95_49_51_53_51_55_",
+          "decoded": "WL_FID_native_k_13537",
+          "samples": 2,
+          "fraction": 0.0014104372355430183
+        },
+        {
+          "name": "WL_FID_116_112_108_",
+          "decoded": "WL_FID_tpl",
+          "samples": 1,
+          "fraction": 0.0007052186177715092
+        },
+        {
+          "name": "WL_FID_110_97_116_105_118_101_95_107_95_49_52_54_48_50_",
+          "decoded": "WL_FID_native_k_14602",
+          "samples": 1,
+          "fraction": 0.0007052186177715092
+        }
+      ]
+    },
+    {
+      "case": "lexer",
+      "role": "qbe",
+      "samples": 1426,
+      "captures": [
+        {
+          "samples": 884,
+          "periodUs": 8000,
+          "overruns": 0,
+          "dropped": 0,
+          "coverage": 0.9999999940674111,
+          "analysis": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase119/native01/lexer-qbe-8000.analysis.json",
+            "bytes": 65946,
+            "sha256": "99508c1730b3249cbbfa8b23b19b9e9975a1ca644abf12ff1c07694cebd2fc71"
+          }
+        },
+        {
+          "samples": 542,
+          "periodUs": 13000,
+          "overruns": 0,
+          "dropped": 0,
+          "coverage": 1.0000000062382335,
+          "analysis": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase119/native01/lexer-qbe-13000.analysis.json",
+            "bytes": 51103,
+            "sha256": "2888b575f3381a80b875521ea626c19953fd9af5534d0b52ae8ec2b9782dcf43"
+          }
+        }
+      ],
+      "libc": {
+        "copy": {
+          "samples": 138,
+          "fraction": 0.0967741935483871
+        }
+      },
+      "libcPCs": [
+        {
+          "kind": "copy",
+          "address": "0xa3933",
+          "samples": 38
+        },
+        {
+          "kind": "copy",
+          "address": "0xa3993",
+          "samples": 20
+        },
+        {
+          "kind": "copy",
+          "address": "0xa3942",
+          "samples": 18
+        },
+        {
+          "kind": "copy",
+          "address": "0xa3930",
+          "samples": 16
+        },
+        {
+          "kind": "copy",
+          "address": "0xa394a",
+          "samples": 11
+        },
+        {
+          "kind": "copy",
+          "address": "0xa394f",
+          "samples": 11
+        },
+        {
+          "kind": "copy",
+          "address": "0xa399b",
+          "samples": 6
+        },
+        {
+          "kind": "copy",
+          "address": "0xa393f",
+          "samples": 5
+        },
+        {
+          "kind": "copy",
+          "address": "0xa3947",
+          "samples": 5
+        },
+        {
+          "kind": "copy",
+          "address": "0xa399e",
+          "samples": 5
+        },
+        {
+          "kind": "copy",
+          "address": "0xa398e",
+          "samples": 3
+        }
+      ],
+      "symbols": [
+        {
+          "name": "<mapping:/usr/lib/x86_64-linux-gnu/libc-2.31.so>",
+          "decoded": "<mapping:/usr/lib/x86_64-linux-gnu/libc-2.31.so>",
+          "samples": 138,
+          "fraction": 0.0967741935483871
+        },
+        {
+          "name": "p118_p111_rt_take2",
+          "decoded": "p118_p111_rt_take2",
+          "samples": 128,
+          "fraction": 0.08976157082748948
+        },
+        {
+          "name": "p113d_FID_36_112_114_111_100_117_99_116_46_108_101_120_",
+          "decoded": "p113d_FID_$product.lex",
+          "samples": 116,
+          "fraction": 0.08134642356241234
+        },
+        {
+          "name": "p111_FID_36_100_105_114_101_99_116_46_103_101_110_46_97_116_",
+          "decoded": "p111_FID_$direct.gen.at",
+          "samples": 101,
+          "fraction": 0.07082748948106592
+        },
+        {
+          "name": "p111_FID_36_112_49_49_49_46_107_46_54_50_52_55_48_",
+          "decoded": "p111_FID_$p111.k.62470",
+          "samples": 83,
+          "fraction": 0.05820476858345021
+        },
+        {
+          "name": "work_loop",
+          "decoded": "work_loop",
+          "samples": 83,
+          "fraction": 0.05820476858345021
+        },
+        {
+          "name": "p111_rt_jump",
+          "decoded": "p111_rt_jump",
+          "samples": 76,
+          "fraction": 0.05329593267882188
+        },
+        {
+          "name": "p113d_FID_36_112_114_111_100_117_99_116_46_115_116_101_112_46_97_116_",
+          "decoded": "p113d_FID_$product.step.at",
+          "samples": 72,
+          "fraction": 0.05049088359046283
+        },
+        {
+          "name": "p111_set_regs",
+          "decoded": "p111_set_regs",
+          "samples": 72,
+          "fraction": 0.05049088359046283
+        },
+        {
+          "name": "p113d_FID_36_100_105_114_101_99_116_46_103_101_110_46_97_116_",
+          "decoded": "p113d_FID_$direct.gen.at",
+          "samples": 72,
+          "fraction": 0.05049088359046283
+        },
+        {
+          "name": "p111_rt_special_take",
+          "decoded": "p111_rt_special_take",
+          "samples": 61,
+          "fraction": 0.042776998597475455
+        },
+        {
+          "name": "p113d_FID_36_112_49_49_56_46_116_114_109_99_46_36_100_105_114_101_99_116_46_105_100_101_110_116_",
+          "decoded": "p113d_FID_$p118.trmc.$direct.ident",
+          "samples": 54,
+          "fraction": 0.037868162692847124
+        },
+        {
+          "name": "p111_FID_36_100_105_114_101_99_116_46_103_101_110_",
+          "decoded": "p111_FID_$direct.gen",
+          "samples": 53,
+          "fraction": 0.03716690042075736
+        },
+        {
+          "name": "p111_rt_return",
+          "decoded": "p111_rt_return",
+          "samples": 43,
+          "fraction": 0.030154277699859747
+        },
+        {
+          "name": "p118_p111_rt_ctor2",
+          "decoded": "p118_p111_rt_ctor2",
+          "samples": 41,
+          "fraction": 0.028751753155680224
+        },
+        {
+          "name": "p111_rt_special_ctor",
+          "decoded": "p111_rt_special_ctor",
+          "samples": 34,
+          "fraction": 0.023842917251051893
+        },
+        {
+          "name": "p118_destination_fill",
+          "decoded": "p118_destination_fill",
+          "samples": 30,
+          "fraction": 0.021037868162692847
+        },
+        {
+          "name": "heap_alloc",
+          "decoded": "heap_alloc",
+          "samples": 29,
+          "fraction": 0.020336605890603085
+        },
+        {
+          "name": "p118_rt_extend1",
+          "decoded": "p118_rt_extend1",
+          "samples": 26,
+          "fraction": 0.0182328190743338
+        },
+        {
+          "name": "p113d_FID_36_112_49_49_56_46_116_114_109_99_46_36_100_105_114_101_99_116_46_110_117_109_",
+          "decoded": "p113d_FID_$p118.trmc.$direct.num",
+          "samples": 23,
+          "fraction": 0.016129032258064516
+        },
+        {
+          "name": "rfc_wrap",
+          "decoded": "rfc_wrap",
+          "samples": 20,
+          "fraction": 0.014025245441795231
+        },
+        {
+          "name": "p118_p111_rt_take1",
+          "decoded": "p118_p111_rt_take1",
+          "samples": 15,
+          "fraction": 0.010518934081346423
+        },
+        {
+          "name": "p113d_FID_36_100_105_114_101_99_116_46_115_97_108_116_",
+          "decoded": "p113d_FID_$direct.salt",
+          "samples": 13,
+          "fraction": 0.0091164095371669
+        },
+        {
+          "name": "p111_rt_reg_get",
+          "decoded": "p111_rt_reg_get",
+          "samples": 10,
+          "fraction": 0.0070126227208976155
+        },
+        {
+          "name": "p118_destination_fill.cold",
+          "decoded": "p118_destination_fill.cold",
+          "samples": 7,
+          "fraction": 0.004908835904628331
+        },
+        {
+          "name": "p111_rt_op",
+          "decoded": "p111_rt_op",
+          "samples": 5,
+          "fraction": 0.0035063113604488078
+        },
+        {
+          "name": "p111_FID_36_112_49_49_49_46_107_46_55_57_50_57_48_",
+          "decoded": "p111_FID_$p111.k.79290",
+          "samples": 4,
+          "fraction": 0.002805049088359046
+        },
+        {
+          "name": "p111_FID_36_100_105_114_101_99_116_46_108_105_110_101_",
+          "decoded": "p111_FID_$direct.line",
+          "samples": 3,
+          "fraction": 0.0021037868162692847
+        },
+        {
+          "name": "p112w_FID_36_100_105_114_101_99_116_46_115_97_108_116_",
+          "decoded": "p112w_FID_$direct.salt",
+          "samples": 3,
+          "fraction": 0.0021037868162692847
+        },
+        {
+          "name": "p111_FID_36_100_105_114_101_99_116_46_98_97_116_99_104_",
+          "decoded": "p111_FID_$direct.batch",
+          "samples": 2,
+          "fraction": 0.001402524544179523
+        },
+        {
+          "name": "p118_rt_finish",
+          "decoded": "p118_rt_finish",
+          "samples": 2,
+          "fraction": 0.001402524544179523
+        },
+        {
+          "name": "p111_FID_36_100_105_114_101_99_116_46_108_101_120_",
+          "decoded": "p111_FID_$direct.lex",
+          "samples": 2,
+          "fraction": 0.001402524544179523
+        },
+        {
+          "name": "p111_rt_keep",
+          "decoded": "p111_rt_keep",
+          "samples": 1,
+          "fraction": 0.0007012622720897616
+        },
+        {
+          "name": "p112w_FID_36_100_105_114_101_99_116_46_115_101_101_100_",
+          "decoded": "p112w_FID_$direct.seed",
+          "samples": 1,
+          "fraction": 0.0007012622720897616
+        },
+        {
+          "name": "p112w_FID_116_112_108_",
+          "decoded": "p112w_FID_tpl",
+          "samples": 1,
+          "fraction": 0.0007012622720897616
+        },
+        {
+          "name": "p111_FID_36_112_49_49_49_46_107_46_55_56_50_52_55_",
+          "decoded": "p111_FID_$p111.k.78247",
+          "samples": 1,
+          "fraction": 0.0007012622720897616
+        },
+        {
+          "name": "p113d_FID_36_100_105_114_101_99_116_46_108_101_120_",
+          "decoded": "p113d_FID_$direct.lex",
+          "samples": 1,
+          "fraction": 0.0007012622720897616
+        }
+      ]
+    },
+    {
+      "case": "tree-bitonic",
+      "role": "upstream_c",
+      "samples": 1413,
+      "captures": [
+        {
+          "samples": 878,
+          "periodUs": 8000,
+          "overruns": 0,
+          "dropped": 0,
+          "coverage": 1.0000000112342444,
+          "analysis": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase119/native01/tree-bitonic-upstream_c-8000.analysis.json",
+            "bytes": 32711,
+            "sha256": "9a8d1e28357088752e50ac23d6508378cf7345ade6b3ceaf839d84d2974e1293"
+          }
+        },
+        {
+          "samples": 535,
+          "periodUs": 13000,
+          "overruns": 0,
+          "dropped": 0,
+          "coverage": 1.0000000178036204,
+          "analysis": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase119/native01/tree-bitonic-upstream_c-13000.analysis.json",
+            "bytes": 27338,
+            "sha256": "f7d9c5da10a5aae8bf1a940d8003a330b7eb3c7f859448cbdd5e23fe2df65516"
+          }
+        }
+      ],
+      "libc": {},
+      "libcPCs": [],
+      "symbols": [
+        {
+          "name": "WL_FID_WARP",
+          "decoded": "WL_FID_WARP",
+          "samples": 389,
+          "fraction": 0.27530077848549184
+        },
+        {
+          "name": "WL_FID_WARP_J19",
+          "decoded": "WL_FID_WARP_J19",
+          "samples": 253,
+          "fraction": 0.17905166312809626
+        },
+        {
+          "name": "WL_FID_WARP_K19",
+          "decoded": "WL_FID_WARP_K19",
+          "samples": 178,
+          "fraction": 0.1259731068648266
+        },
+        {
+          "name": "WL_FID_WARP_K20",
+          "decoded": "WL_FID_WARP_K20",
+          "samples": 134,
+          "fraction": 0.09483368719037509
+        },
+        {
+          "name": "WL_FID_FLOW_K23",
+          "decoded": "WL_FID_FLOW_K23",
+          "samples": 58,
+          "fraction": 0.04104741684359519
+        },
+        {
+          "name": "WL_FID_FLOW_K24",
+          "decoded": "WL_FID_FLOW_K24",
+          "samples": 57,
+          "fraction": 0.040339702760084924
+        },
+        {
+          "name": "WL_FID_FLOW_K25",
+          "decoded": "WL_FID_FLOW_K25",
+          "samples": 55,
+          "fraction": 0.038924274593064405
+        },
+        {
+          "name": "WL_FID_FLOW",
+          "decoded": "WL_FID_FLOW",
+          "samples": 46,
+          "fraction": 0.03255484784147204
+        },
+        {
+          "name": "WL_FID_WARP_NODE",
+          "decoded": "WL_FID_WARP_NODE",
+          "samples": 45,
+          "fraction": 0.03184713375796178
+        },
+        {
+          "name": "WL_FID_FLOW_K26",
+          "decoded": "WL_FID_FLOW_K26",
+          "samples": 44,
+          "fraction": 0.03113941967445152
+        },
+        {
+          "name": "WL_FID_FLOW_J25",
+          "decoded": "WL_FID_FLOW_J25",
+          "samples": 35,
+          "fraction": 0.024769992922859165
+        },
+        {
+          "name": "WL_FID_BSORT_K41",
+          "decoded": "WL_FID_BSORT_K41",
+          "samples": 29,
+          "fraction": 0.020523708421797595
+        },
+        {
+          "name": "WL_FID_SCAN_K46",
+          "decoded": "WL_FID_SCAN_K46",
+          "samples": 24,
+          "fraction": 0.016985138004246284
+        },
+        {
+          "name": "WL_FID_SCAN",
+          "decoded": "WL_FID_SCAN",
+          "samples": 16,
+          "fraction": 0.01132342533616419
+        },
+        {
+          "name": "WL_FID_BSORT_K42",
+          "decoded": "WL_FID_BSORT_K42",
+          "samples": 15,
+          "fraction": 0.010615711252653927
+        },
+        {
+          "name": "WL_FID_BSORT",
+          "decoded": "WL_FID_BSORT",
+          "samples": 12,
+          "fraction": 0.008492569002123142
+        },
+        {
+          "name": "WL_FID_SCAN_K47",
+          "decoded": "WL_FID_SCAN_K47",
+          "samples": 8,
+          "fraction": 0.005661712668082095
+        },
+        {
+          "name": "WL_FID_BSORT_K44",
+          "decoded": "WL_FID_BSORT_K44",
+          "samples": 8,
+          "fraction": 0.005661712668082095
+        },
+        {
+          "name": "WL_FID_SCAN_J46",
+          "decoded": "WL_FID_SCAN_J46",
+          "samples": 3,
+          "fraction": 0.0021231422505307855
+        },
+        {
+          "name": "WL_FID_BSORT_J41",
+          "decoded": "WL_FID_BSORT_J41",
+          "samples": 3,
+          "fraction": 0.0021231422505307855
+        },
+        {
+          "name": "WL_FID_P93_VALUE_K74",
+          "decoded": "WL_FID_P93_VALUE_K74",
+          "samples": 1,
+          "fraction": 0.0007077140835102619
+        }
+      ]
+    },
+    {
+      "case": "tree-bitonic",
+      "role": "selfhost_c",
+      "samples": 1407,
+      "captures": [
+        {
+          "samples": 873,
+          "periodUs": 8000,
+          "overruns": 0,
+          "dropped": 0,
+          "coverage": 0.9999999949895142,
+          "analysis": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase119/native01/tree-bitonic-selfhost_c-8000.analysis.json",
+            "bytes": 49489,
+            "sha256": "03c47661315dc8b8e77dabba0976a0a904f122ab41e6fca7c9dd5096c469e84d"
+          }
+        },
+        {
+          "samples": 534,
+          "periodUs": 13000,
+          "overruns": 0,
+          "dropped": 0,
+          "coverage": 0.9999999935266554,
+          "analysis": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase119/native01/tree-bitonic-selfhost_c-13000.analysis.json",
+            "bytes": 37704,
+            "sha256": "0299ea9a40c0e0ed801e0cf05be34ef1bfba0067a93ee2640cd6ebb58e6bea8a"
+          }
+        }
+      ],
+      "libc": {},
+      "libcPCs": [],
+      "symbols": [
+        {
+          "name": "WL_FID_36_100_105_114_101_99_116_46_119_97_114_112_95_122_105_112_",
+          "decoded": "WL_FID_$direct.warp_zip",
+          "samples": 357,
+          "fraction": 0.2537313432835821
+        },
+        {
+          "name": "WL_FID_36_100_105_114_101_99_116_46_119_97_114_112_",
+          "decoded": "WL_FID_$direct.warp",
+          "samples": 232,
+          "fraction": 0.1648898365316276
+        },
+        {
+          "name": "WL_FID_36_100_105_114_101_99_116_46_119_97_114_112_95_108_101_97_102_",
+          "decoded": "WL_FID_$direct.warp_leaf",
+          "samples": 167,
+          "fraction": 0.11869225302061123
+        },
+        {
+          "name": "WL_FID_110_97_116_105_118_101_95_107_95_50_50_57_56_52_",
+          "decoded": "WL_FID_native_k_22984",
+          "samples": 166,
+          "fraction": 0.11798152096659559
+        },
+        {
+          "name": "WL_FID_36_100_105_114_101_99_116_46_102_108_111_119_",
+          "decoded": "WL_FID_$direct.flow",
+          "samples": 118,
+          "fraction": 0.08386638237384506
+        },
+        {
+          "name": "WL_FID_110_97_116_105_118_101_95_107_95_50_50_57_56_53_",
+          "decoded": "WL_FID_native_k_22985",
+          "samples": 97,
+          "fraction": 0.0689410092395167
+        },
+        {
+          "name": "WL_FID_110_97_116_105_118_101_95_107_95_50_48_56_51_50_",
+          "decoded": "WL_FID_native_k_20832",
+          "samples": 58,
+          "fraction": 0.0412224591329069
+        },
+        {
+          "name": "WL_FID_110_97_116_105_118_101_95_107_95_50_48_56_51_49_",
+          "decoded": "WL_FID_native_k_20831",
+          "samples": 43,
+          "fraction": 0.030561478322672354
+        },
+        {
+          "name": "WL_FID_36_100_105_114_101_99_116_46_115_116_97_116_95_106_111_105_110_",
+          "decoded": "WL_FID_$direct.stat_join",
+          "samples": 31,
+          "fraction": 0.02203269367448472
+        },
+        {
+          "name": "WL_FID_110_97_116_105_118_101_95_107_95_50_48_56_51_57_",
+          "decoded": "WL_FID_native_k_20839",
+          "samples": 26,
+          "fraction": 0.01847903340440654
+        },
+        {
+          "name": "WL_FID_36_100_105_114_101_99_116_46_119_97_114_112_95_110_111_100_101_",
+          "decoded": "WL_FID_$direct.warp_node",
+          "samples": 24,
+          "fraction": 0.017057569296375266
+        },
+        {
+          "name": "WL_FID_110_97_116_105_118_101_95_107_95_50_48_56_52_53_",
+          "decoded": "WL_FID_native_k_20845",
+          "samples": 20,
+          "fraction": 0.014214641080312722
+        },
+        {
+          "name": "WL_FID_110_97_116_105_118_101_95_107_95_49_55_54_56_50_",
+          "decoded": "WL_FID_native_k_17682",
+          "samples": 16,
+          "fraction": 0.011371712864250177
+        },
+        {
+          "name": "WL_FID_36_100_105_114_101_99_116_46_115_99_97_110_",
+          "decoded": "WL_FID_$direct.scan",
+          "samples": 14,
+          "fraction": 0.009950248756218905
+        },
+        {
+          "name": "WL_FID_110_97_116_105_118_101_95_107_95_49_55_54_56_51_",
+          "decoded": "WL_FID_native_k_17683",
+          "samples": 13,
+          "fraction": 0.00923951670220327
+        },
+        {
+          "name": "WL_FID_36_100_105_114_101_99_116_46_98_115_111_114_116_",
+          "decoded": "WL_FID_$direct.bsort",
+          "samples": 8,
+          "fraction": 0.005685856432125089
+        },
+        {
+          "name": "WL_FID_110_97_116_105_118_101_95_107_95_49_52_53_54_57_",
+          "decoded": "WL_FID_native_k_14569",
+          "samples": 6,
+          "fraction": 0.0042643923240938165
+        },
+        {
+          "name": "WL_FID_110_97_116_105_118_101_95_107_95_49_52_53_54_56_",
+          "decoded": "WL_FID_native_k_14568",
+          "samples": 6,
+          "fraction": 0.0042643923240938165
+        },
+        {
+          "name": "WL_FID_110_97_116_105_118_101_95_107_95_49_55_54_56_55_",
+          "decoded": "WL_FID_native_k_17687",
+          "samples": 5,
+          "fraction": 0.0035536602700781805
+        }
+      ]
+    },
+    {
+      "case": "tree-bitonic",
+      "role": "qbe",
+      "samples": 1424,
+      "captures": [
+        {
+          "samples": 880,
+          "periodUs": 8000,
+          "overruns": 0,
+          "dropped": 0,
+          "coverage": 1.000000008085823,
+          "analysis": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase119/native01/tree-bitonic-qbe-8000.analysis.json",
+            "bytes": 70046,
+            "sha256": "eaf52d19b115f7f69c7fde426b78239ac8d75103d26ed2438012a2a897240680"
+          }
+        },
+        {
+          "samples": 544,
+          "periodUs": 13000,
+          "overruns": 0,
+          "dropped": 0,
+          "coverage": 1.0000000293533928,
+          "analysis": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase119/native01/tree-bitonic-qbe-13000.analysis.json",
+            "bytes": 51392,
+            "sha256": "e7cea5e85cde209e3a3f3d9709fe73a88c9160b5cba89b7e3f066e5c13c9052c"
+          }
+        }
+      ],
+      "libc": {
+        "copy": {
+          "samples": 117,
+          "fraction": 0.08216292134831461
+        }
+      },
+      "libcPCs": [
+        {
+          "kind": "copy",
+          "address": "0xa3933",
+          "samples": 36
+        },
+        {
+          "kind": "copy",
+          "address": "0xa3993",
+          "samples": 22
+        },
+        {
+          "kind": "copy",
+          "address": "0xa394a",
+          "samples": 15
+        },
+        {
+          "kind": "copy",
+          "address": "0xa3942",
+          "samples": 14
+        },
+        {
+          "kind": "copy",
+          "address": "0xa3947",
+          "samples": 9
+        },
+        {
+          "kind": "copy",
+          "address": "0xa394f",
+          "samples": 5
+        },
+        {
+          "kind": "copy",
+          "address": "0xa3930",
+          "samples": 5
+        },
+        {
+          "kind": "copy",
+          "address": "0xa393f",
+          "samples": 4
+        },
+        {
+          "kind": "copy",
+          "address": "0xa398e",
+          "samples": 2
+        },
+        {
+          "kind": "copy",
+          "address": "0xa3977",
+          "samples": 2
+        },
+        {
+          "kind": "copy",
+          "address": "0xa399b",
+          "samples": 2
+        },
+        {
+          "kind": "copy",
+          "address": "0xa399e",
+          "samples": 1
+        }
+      ],
+      "symbols": [
+        {
+          "name": "p118_p111_rt_ctor2",
+          "decoded": "p118_p111_rt_ctor2",
+          "samples": 208,
+          "fraction": 0.14606741573033707
+        },
+        {
+          "name": "p118_p111_rt_take2",
+          "decoded": "p118_p111_rt_take2",
+          "samples": 193,
+          "fraction": 0.13553370786516855
+        },
+        {
+          "name": "p114r_FID_36_100_105_114_101_99_116_46_119_97_114_112_",
+          "decoded": "p114r_FID_$direct.warp",
+          "samples": 133,
+          "fraction": 0.09339887640449439
+        },
+        {
+          "name": "<mapping:/usr/lib/x86_64-linux-gnu/libc-2.31.so>",
+          "decoded": "<mapping:/usr/lib/x86_64-linux-gnu/libc-2.31.so>",
+          "samples": 117,
+          "fraction": 0.08216292134831461
+        },
+        {
+          "name": "p113d_FID_36_100_105_114_101_99_116_46_119_97_114_112_95_108_101_97_102_",
+          "decoded": "p113d_FID_$direct.warp_leaf",
+          "samples": 77,
+          "fraction": 0.05407303370786517
+        },
+        {
+          "name": "work_loop",
+          "decoded": "work_loop",
+          "samples": 68,
+          "fraction": 0.047752808988764044
+        },
+        {
+          "name": "p111_rt_op",
+          "decoded": "p111_rt_op",
+          "samples": 64,
+          "fraction": 0.0449438202247191
+        },
+        {
+          "name": "p118_p111_rt_take1",
+          "decoded": "p118_p111_rt_take1",
+          "samples": 63,
+          "fraction": 0.04424157303370786
+        },
+        {
+          "name": "p111_FID_36_100_105_114_101_99_116_46_119_97_114_112_",
+          "decoded": "p111_FID_$direct.warp",
+          "samples": 62,
+          "fraction": 0.04353932584269663
+        },
+        {
+          "name": "p111_set_regs",
+          "decoded": "p111_set_regs",
+          "samples": 55,
+          "fraction": 0.038623595505617975
+        },
+        {
+          "name": "p111_FID_36_100_105_114_101_99_116_46_102_108_111_119_",
+          "decoded": "p111_FID_$direct.flow",
+          "samples": 45,
+          "fraction": 0.03160112359550562
+        },
+        {
+          "name": "p111_FID_36_100_105_114_101_99_116_46_119_97_114_112_95_110_111_100_101_",
+          "decoded": "p111_FID_$direct.warp_node",
+          "samples": 43,
+          "fraction": 0.030196629213483147
+        },
+        {
+          "name": "p113d_FID_36_100_105_114_101_99_116_46_119_97_114_112_95_122_105_112_",
+          "decoded": "p113d_FID_$direct.warp_zip",
+          "samples": 39,
+          "fraction": 0.027387640449438203
+        },
+        {
+          "name": "p111_rt_jump",
+          "decoded": "p111_rt_jump",
+          "samples": 37,
+          "fraction": 0.02598314606741573
+        },
+        {
+          "name": "p111_rt_return",
+          "decoded": "p111_rt_return",
+          "samples": 34,
+          "fraction": 0.023876404494382022
+        },
+        {
+          "name": "p111_FID_36_112_49_49_49_46_107_46_53_54_50_53_52_",
+          "decoded": "p111_FID_$p111.k.56254",
+          "samples": 31,
+          "fraction": 0.021769662921348316
+        },
+        {
+          "name": "p111_FID_36_112_49_49_49_46_107_46_53_54_50_54_49_",
+          "decoded": "p111_FID_$p111.k.56261",
+          "samples": 24,
+          "fraction": 0.016853932584269662
+        },
+        {
+          "name": "p111_rt_frame",
+          "decoded": "p111_rt_frame",
+          "samples": 20,
+          "fraction": 0.014044943820224719
+        },
+        {
+          "name": "p111_FID_36_100_105_114_101_99_116_46_98_115_111_114_116_",
+          "decoded": "p111_FID_$direct.bsort",
+          "samples": 16,
+          "fraction": 0.011235955056179775
+        },
+        {
+          "name": "p111_FID_36_112_49_49_49_46_107_46_53_54_50_54_55_",
+          "decoded": "p111_FID_$p111.k.56267",
+          "samples": 11,
+          "fraction": 0.007724719101123595
+        },
+        {
+          "name": "p118_p111_rt_ctor4",
+          "decoded": "p118_p111_rt_ctor4",
+          "samples": 10,
+          "fraction": 0.007022471910112359
+        },
+        {
+          "name": "p111_FID_36_112_49_49_49_46_107_46_54_51_53_48_51_",
+          "decoded": "p111_FID_$p111.k.63503",
+          "samples": 10,
+          "fraction": 0.007022471910112359
+        },
+        {
+          "name": "p111_FID_36_112_49_49_49_46_107_46_53_54_50_53_53_",
+          "decoded": "p111_FID_$p111.k.56255",
+          "samples": 10,
+          "fraction": 0.007022471910112359
+        },
+        {
+          "name": "p113d_FID_36_100_105_114_101_99_116_46_115_116_97_116_95_106_111_105_110_",
+          "decoded": "p113d_FID_$direct.stat_join",
+          "samples": 7,
+          "fraction": 0.0049157303370786515
+        },
+        {
+          "name": "p112w_FID_36_100_105_114_101_99_116_46_119_97_114_112_95_108_101_97_102_",
+          "decoded": "p112w_FID_$direct.warp_leaf",
+          "samples": 7,
+          "fraction": 0.0049157303370786515
+        },
+        {
+          "name": "p112w_FID_36_100_105_114_101_99_116_46_119_97_114_112_95_122_105_112_",
+          "decoded": "p112w_FID_$direct.warp_zip",
+          "samples": 6,
+          "fraction": 0.004213483146067416
+        },
+        {
+          "name": "p118_p111_rt_take4",
+          "decoded": "p118_p111_rt_take4",
+          "samples": 6,
+          "fraction": 0.004213483146067416
+        },
+        {
+          "name": "p111_FID_36_112_49_49_49_46_107_46_54_51_53_48_52_",
+          "decoded": "p111_FID_$p111.k.63504",
+          "samples": 6,
+          "fraction": 0.004213483146067416
+        },
+        {
+          "name": "p114r_FID_36_100_105_114_101_99_116_46_115_99_97_110_",
+          "decoded": "p114r_FID_$direct.scan",
+          "samples": 5,
+          "fraction": 0.0035112359550561797
+        },
+        {
+          "name": "p111_rt_reg_get",
+          "decoded": "p111_rt_reg_get",
+          "samples": 4,
+          "fraction": 0.0028089887640449437
+        },
+        {
+          "name": "p111_FID_36_112_49_49_49_46_107_46_54_51_53_48_56_",
+          "decoded": "p111_FID_$p111.k.63508",
+          "samples": 4,
+          "fraction": 0.0028089887640449437
+        },
+        {
+          "name": "p111_rt_special_take",
+          "decoded": "p111_rt_special_take",
+          "samples": 3,
+          "fraction": 0.002106741573033708
+        },
+        {
+          "name": "p111_rt_keep",
+          "decoded": "p111_rt_keep",
+          "samples": 2,
+          "fraction": 0.0014044943820224719
+        },
+        {
+          "name": "_init",
+          "decoded": "_init",
+          "samples": 1,
+          "fraction": 0.0007022471910112359
+        },
+        {
+          "name": "p112w_FID_36_100_105_114_101_99_116_46_115_116_97_116_95_106_111_105_110_",
+          "decoded": "p112w_FID_$direct.stat_join",
+          "samples": 1,
+          "fraction": 0.0007022471910112359
+        },
+        {
+          "name": "p113d_FID_36_100_105_114_101_99_116_46_107_101_121_",
+          "decoded": "p113d_FID_$direct.key",
+          "samples": 1,
+          "fraction": 0.0007022471910112359
+        },
+        {
+          "name": "p113d_FID_36_100_105_114_101_99_116_46_66_111_111_108_46_116_111_95_117_51_50_",
+          "decoded": "p113d_FID_$direct.Bool.to_u32",
+          "samples": 1,
+          "fraction": 0.0007022471910112359
+        }
+      ]
+    },
+    {
+      "case": "coverage-list-pipeline-128",
+      "role": "upstream_c",
+      "samples": 1423,
+      "captures": [
+        {
+          "samples": 877,
+          "periodUs": 8000,
+          "overruns": 0,
+          "dropped": 0,
+          "coverage": 1.000000001139106,
+          "analysis": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase119/native01/coverage-list-pipeline-128-upstream_c-8000.analysis.json",
+            "bytes": 18855,
+            "sha256": "85ff9dd15d53e89a50a2a467f73a482aaa5d0f114514a63acaf66e5d7add7fd0"
+          }
+        },
+        {
+          "samples": 546,
+          "periodUs": 13000,
+          "overruns": 0,
+          "dropped": 0,
+          "coverage": 1.0000000012670458,
+          "analysis": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase119/native01/coverage-list-pipeline-128-upstream_c-13000.analysis.json",
+            "bytes": 17667,
+            "sha256": "fd64c2585ca5154f9a98a190a1fca66365d6f85cc5977e7b2c84e92a524fedad"
+          }
+        }
+      ],
+      "libc": {},
+      "libcPCs": [],
+      "symbols": [
+        {
+          "name": "WL_FID_DBL_K28",
+          "decoded": "WL_FID_DBL_K28",
+          "samples": 276,
+          "fraction": 0.19395643007730148
+        },
+        {
+          "name": "WL_FID_P37_LIST_K24",
+          "decoded": "WL_FID_P37_LIST_K24",
+          "samples": 271,
+          "fraction": 0.1904427266338721
+        },
+        {
+          "name": "WL_FID_KEEP_GT1_K26",
+          "decoded": "WL_FID_KEEP_GT1_K26",
+          "samples": 256,
+          "fraction": 0.17990161630358398
+        },
+        {
+          "name": "WL_FID_KEEP_GT1",
+          "decoded": "WL_FID_KEEP_GT1",
+          "samples": 190,
+          "fraction": 0.13352073085031624
+        },
+        {
+          "name": "WL_FID_DBL",
+          "decoded": "WL_FID_DBL",
+          "samples": 159,
+          "fraction": 0.11173576950105411
+        },
+        {
+          "name": "WL_FID_P93_VALUE_K56",
+          "decoded": "WL_FID_P93_VALUE_K56",
+          "samples": 158,
+          "fraction": 0.11103302881236823
+        },
+        {
+          "name": "WL_FID_P37_LIST",
+          "decoded": "WL_FID_P37_LIST",
+          "samples": 102,
+          "fraction": 0.07167955024595925
+        },
+        {
+          "name": "WL_FID_P93_VALUE_K55",
+          "decoded": "WL_FID_P93_VALUE_K55",
+          "samples": 4,
+          "fraction": 0.0028109627547434997
+        },
+        {
+          "name": "WL_FID_P93_LOOP",
+          "decoded": "WL_FID_P93_LOOP",
+          "samples": 2,
+          "fraction": 0.0014054813773717498
+        },
+        {
+          "name": "WL_FID_P93_LOOP_K52",
+          "decoded": "WL_FID_P93_LOOP_K52",
+          "samples": 2,
+          "fraction": 0.0014054813773717498
+        },
+        {
+          "name": "WL_FID_P93_VALUE",
+          "decoded": "WL_FID_P93_VALUE",
+          "samples": 2,
+          "fraction": 0.0014054813773717498
+        },
+        {
+          "name": "WL_FID_P93_VALUE_K54",
+          "decoded": "WL_FID_P93_VALUE_K54",
+          "samples": 1,
+          "fraction": 0.0007027406886858749
+        }
+      ]
+    },
+    {
+      "case": "coverage-list-pipeline-128",
+      "role": "selfhost_c",
+      "samples": 1462,
+      "captures": [
+        {
+          "samples": 919,
+          "periodUs": 8000,
+          "overruns": 0,
+          "dropped": 0,
+          "coverage": 1.0000000029887657,
+          "analysis": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase119/native01/coverage-list-pipeline-128-selfhost_c-8000.analysis.json",
+            "bytes": 28179,
+            "sha256": "652ac3b03695b8cdaf4818a1816c0d568ec96526b2a4966a6eac0efa34a3cb14"
+          }
+        },
+        {
+          "samples": 543,
+          "periodUs": 13000,
+          "overruns": 0,
+          "dropped": 0,
+          "coverage": 1.000000013863663,
+          "analysis": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase119/native01/coverage-list-pipeline-128-selfhost_c-13000.analysis.json",
+            "bytes": 24015,
+            "sha256": "c143462bf5e61c467f9c77c1ac72ac351d6b176cc9d027e9032c17b5b6e145a0"
+          }
+        }
+      ],
+      "libc": {},
+      "libcPCs": [],
+      "symbols": [
+        {
+          "name": "WL_FID_36_100_105_114_101_99_116_46_98_101_110_99_104_",
+          "decoded": "WL_FID_$direct.bench",
+          "samples": 341,
+          "fraction": 0.2332421340629275
+        },
+        {
+          "name": "WL_FID_36_100_105_114_101_99_116_46_107_101_101_112_95_103_116_49_",
+          "decoded": "WL_FID_$direct.keep_gt1",
+          "samples": 298,
+          "fraction": 0.20383036935704515
+        },
+        {
+          "name": "WL_FID_36_100_105_114_101_99_116_46_107_101_101_112_95_103_116_49_46_97_116_",
+          "decoded": "WL_FID_$direct.keep_gt1.at",
+          "samples": 279,
+          "fraction": 0.1908344733242134
+        },
+        {
+          "name": "WL_FID_110_97_116_105_118_101_95_107_95_49_50_53_48_53_",
+          "decoded": "WL_FID_native_k_12505",
+          "samples": 254,
+          "fraction": 0.17373461012311903
+        },
+        {
+          "name": "WL_FID_36_100_105_114_101_99_116_46_115_117_109_97_",
+          "decoded": "WL_FID_$direct.suma",
+          "samples": 223,
+          "fraction": 0.15253077975376197
+        },
+        {
+          "name": "WL_FID_110_97_116_105_118_101_95_107_95_49_53_53_57_51_",
+          "decoded": "WL_FID_native_k_15593",
+          "samples": 64,
+          "fraction": 0.04377564979480164
+        },
+        {
+          "name": "WL_FID_110_97_116_105_118_101_95_107_95_49_56_54_57_48_",
+          "decoded": "WL_FID_native_k_18690",
+          "samples": 2,
+          "fraction": 0.0013679890560875513
+        },
+        {
+          "name": "WL_FID_36_100_105_114_101_99_116_46_112_57_51_46_108_111_111_112_",
+          "decoded": "WL_FID_$direct.p93.loop",
+          "samples": 1,
+          "fraction": 0.0006839945280437756
+        }
+      ]
+    },
+    {
+      "case": "coverage-list-pipeline-128",
+      "role": "qbe",
+      "samples": 1421,
+      "captures": [
+        {
+          "samples": 880,
+          "periodUs": 8000,
+          "overruns": 0,
+          "dropped": 0,
+          "coverage": 1.000000000283647,
+          "analysis": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase119/native01/coverage-list-pipeline-128-qbe-8000.analysis.json",
+            "bytes": 45705,
+            "sha256": "0748d64287802cd3729218eb5aa87075403b6ce24f87fbded6782c79212ac0a6"
+          }
+        },
+        {
+          "samples": 541,
+          "periodUs": 13000,
+          "overruns": 0,
+          "dropped": 0,
+          "coverage": 0.9999999845179647,
+          "analysis": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase119/native01/coverage-list-pipeline-128-qbe-13000.analysis.json",
+            "bytes": 36375,
+            "sha256": "48eb78e616a4e03fc7bd1d0ed3c215fa1388e22ce4c83419c78d4818a675c2b6"
+          }
+        }
+      ],
+      "libc": {
+        "copy": {
+          "samples": 12,
+          "fraction": 0.00844475721323012
+        }
+      },
+      "libcPCs": [
+        {
+          "kind": "copy",
+          "address": "0xa3930",
+          "samples": 4
+        },
+        {
+          "kind": "copy",
+          "address": "0xa3933",
+          "samples": 3
+        },
+        {
+          "kind": "copy",
+          "address": "0xa399b",
+          "samples": 2
+        },
+        {
+          "kind": "copy",
+          "address": "0xa3993",
+          "samples": 1
+        },
+        {
+          "kind": "copy",
+          "address": "0xa398e",
+          "samples": 1
+        },
+        {
+          "kind": "copy",
+          "address": "0xa3942",
+          "samples": 1
+        }
+      ],
+      "symbols": [
+        {
+          "name": "p118_destination_fill",
+          "decoded": "p118_destination_fill",
+          "samples": 308,
+          "fraction": 0.21674876847290642
+        },
+        {
+          "name": "p118_p111_rt_take2",
+          "decoded": "p118_p111_rt_take2",
+          "samples": 295,
+          "fraction": 0.2076002814919071
+        },
+        {
+          "name": "p118_rt_extend1",
+          "decoded": "p118_rt_extend1",
+          "samples": 243,
+          "fraction": 0.17100633356790992
+        },
+        {
+          "name": "p114r_FID_36_100_105_114_101_99_116_46_107_101_101_112_95_103_116_49_",
+          "decoded": "p114r_FID_$direct.keep_gt1",
+          "samples": 153,
+          "fraction": 0.10767065446868403
+        },
+        {
+          "name": "p118_p111_rt_ctor2",
+          "decoded": "p118_p111_rt_ctor2",
+          "samples": 105,
+          "fraction": 0.07389162561576355
+        },
+        {
+          "name": "p113d_FID_36_112_49_49_56_46_116_114_109_99_46_36_100_105_114_101_99_116_46_100_98_108_",
+          "decoded": "p113d_FID_$p118.trmc.$direct.dbl",
+          "samples": 66,
+          "fraction": 0.04644616467276566
+        },
+        {
+          "name": "p113d_FID_36_112_49_49_56_46_116_114_109_99_46_36_100_105_114_101_99_116_46_112_51_55_46_108_105_115_116_",
+          "decoded": "p113d_FID_$p118.trmc.$direct.p37.list",
+          "samples": 58,
+          "fraction": 0.04081632653061224
+        },
+        {
+          "name": "p112w_FID_36_100_105_114_101_99_116_46_107_101_101_112_95_103_116_49_46_97_116_",
+          "decoded": "p112w_FID_$direct.keep_gt1.at",
+          "samples": 48,
+          "fraction": 0.03377902885292048
+        },
+        {
+          "name": "p113d_FID_36_100_105_114_101_99_116_46_107_101_101_112_95_103_116_49_46_97_116_",
+          "decoded": "p113d_FID_$direct.keep_gt1.at",
+          "samples": 48,
+          "fraction": 0.03377902885292048
+        },
+        {
+          "name": "p113d_FID_36_100_105_114_101_99_116_46_115_117_109_97_",
+          "decoded": "p113d_FID_$direct.suma",
+          "samples": 36,
+          "fraction": 0.025334271639690358
+        },
+        {
+          "name": "p111_rt_keep",
+          "decoded": "p111_rt_keep",
+          "samples": 14,
+          "fraction": 0.009852216748768473
+        },
+        {
+          "name": "<mapping:/usr/lib/x86_64-linux-gnu/libc-2.31.so>",
+          "decoded": "<mapping:/usr/lib/x86_64-linux-gnu/libc-2.31.so>",
+          "samples": 12,
+          "fraction": 0.00844475721323012
+        },
+        {
+          "name": "p111_rt_return",
+          "decoded": "p111_rt_return",
+          "samples": 6,
+          "fraction": 0.00422237860661506
+        },
+        {
+          "name": "work_loop",
+          "decoded": "work_loop",
+          "samples": 5,
+          "fraction": 0.003518648838845883
+        },
+        {
+          "name": "p111_FID_36_112_49_49_49_46_107_46_53_54_49_54_48_",
+          "decoded": "p111_FID_$p111.k.56160",
+          "samples": 4,
+          "fraction": 0.0028149190710767065
+        },
+        {
+          "name": "p111_rt_jump",
+          "decoded": "p111_rt_jump",
+          "samples": 3,
+          "fraction": 0.00211118930330753
+        },
+        {
+          "name": "p111_set_regs",
+          "decoded": "p111_set_regs",
+          "samples": 3,
+          "fraction": 0.00211118930330753
+        },
+        {
+          "name": "p111_FID_36_100_105_114_101_99_116_46_107_101_101_112_95_103_116_49_",
+          "decoded": "p111_FID_$direct.keep_gt1",
+          "samples": 3,
+          "fraction": 0.00211118930330753
+        },
+        {
+          "name": "p111_FID_36_100_105_114_101_99_116_46_100_98_108_",
+          "decoded": "p111_FID_$direct.dbl",
+          "samples": 2,
+          "fraction": 0.0014074595355383533
+        },
+        {
+          "name": "p113d_FID_36_100_105_114_101_99_116_46_112_51_55_46_108_105_115_116_",
+          "decoded": "p113d_FID_$direct.p37.list",
+          "samples": 2,
+          "fraction": 0.0014074595355383533
+        },
+        {
+          "name": "p111_rt_reg_get",
+          "decoded": "p111_rt_reg_get",
+          "samples": 2,
+          "fraction": 0.0014074595355383533
+        },
+        {
+          "name": "p113d_FID_36_100_105_114_101_99_116_46_66_111_111_108_46_116_111_95_117_51_50_",
+          "decoded": "p113d_FID_$direct.Bool.to_u32",
+          "samples": 1,
+          "fraction": 0.0007037297677691766
+        },
+        {
+          "name": "p111_rt_op",
+          "decoded": "p111_rt_op",
+          "samples": 1,
+          "fraction": 0.0007037297677691766
+        },
+        {
+          "name": "p111_FID_36_100_105_114_101_99_116_46_112_57_51_46_108_111_111_112_",
+          "decoded": "p111_FID_$direct.p93.loop",
+          "samples": 1,
+          "fraction": 0.0007037297677691766
+        },
+        {
+          "name": "p111_FID_36_100_105_114_101_99_116_46_98_101_110_99_104_",
+          "decoded": "p111_FID_$direct.bench",
+          "samples": 1,
+          "fraction": 0.0007037297677691766
+        },
+        {
+          "name": "p111_FID_36_112_49_49_49_46_107_46_53_54_49_54_50_",
+          "decoded": "p111_FID_$p111.k.56162",
+          "samples": 1,
+          "fraction": 0.0007037297677691766
+        }
+      ]
+    },
+    {
+      "case": "coverage-map-churn-128",
+      "role": "upstream_c",
+      "samples": 1492,
+      "captures": [
+        {
+          "samples": 906,
+          "periodUs": 8000,
+          "overruns": 0,
+          "dropped": 0,
+          "coverage": 1.0000000337800468,
+          "analysis": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase119/native01/coverage-map-churn-128-upstream_c-8000.analysis.json",
+            "bytes": 71938,
+            "sha256": "f1642f88bffcc549e8183f7b7ff5157d998199c9db99f40b3fe536a39376bafe"
+          }
+        },
+        {
+          "samples": 586,
+          "periodUs": 13000,
+          "overruns": 0,
+          "dropped": 0,
+          "coverage": 1.0000000081361395,
+          "analysis": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase119/native01/coverage-map-churn-128-upstream_c-13000.analysis.json",
+            "bytes": 59168,
+            "sha256": "1e1dce13d22c4dd369d9b29aa3d266ee0c247713e5db160717396cc712130fa6"
+          }
+        }
+      ],
+      "libc": {},
+      "libcPCs": [],
+      "symbols": [
+        {
+          "name": "WL_FID_MAP_BIT_GO_K50",
+          "decoded": "WL_FID_MAP_BIT_GO_K50",
+          "samples": 260,
+          "fraction": 0.1742627345844504
+        },
+        {
+          "name": "WL_FID_MAP_BIT_GO",
+          "decoded": "WL_FID_MAP_BIT_GO",
+          "samples": 251,
+          "fraction": 0.16823056300268097
+        },
+        {
+          "name": "term_drop",
+          "decoded": "term_drop",
+          "samples": 167,
+          "fraction": 0.11193029490616623
+        },
+        {
+          "name": "rfc_wrap",
+          "decoded": "rfc_wrap",
+          "samples": 161,
+          "fraction": 0.1079088471849866
+        },
+        {
+          "name": "span_fade",
+          "decoded": "span_fade",
+          "samples": 61,
+          "fraction": 0.04088471849865952
+        },
+        {
+          "name": "heap_free",
+          "decoded": "heap_free",
+          "samples": 58,
+          "fraction": 0.0388739946380697
+        },
+        {
+          "name": "WL_FID_MAP_SEEK_GO",
+          "decoded": "WL_FID_MAP_SEEK_GO",
+          "samples": 43,
+          "fraction": 0.028820375335120642
+        },
+        {
+          "name": "WL_FID_MAP_INS_GO",
+          "decoded": "WL_FID_MAP_INS_GO",
+          "samples": 29,
+          "fraction": 0.01943699731903485
+        },
+        {
+          "name": "WL_FID_STRING_CMP_K111",
+          "decoded": "WL_FID_STRING_CMP_K111",
+          "samples": 28,
+          "fraction": 0.01876675603217158
+        },
+        {
+          "name": "WL_FID_MAP_SEEK_GO_K102",
+          "decoded": "WL_FID_MAP_SEEK_GO_K102",
+          "samples": 27,
+          "fraction": 0.018096514745308313
+        },
+        {
+          "name": "WL_FID_STRING_CMP",
+          "decoded": "WL_FID_STRING_CMP",
+          "samples": 24,
+          "fraction": 0.0160857908847185
+        },
+        {
+          "name": "WL_FID_MAP_SEEK_GO_K101",
+          "decoded": "WL_FID_MAP_SEEK_GO_K101",
+          "samples": 23,
+          "fraction": 0.015415549597855228
+        },
+        {
+          "name": "WL_FID_MAP_DIFF",
+          "decoded": "WL_FID_MAP_DIFF",
+          "samples": 23,
+          "fraction": 0.015415549597855228
+        },
+        {
+          "name": "WL_FID_MAP_SEEK_GO_K103",
+          "decoded": "WL_FID_MAP_SEEK_GO_K103",
+          "samples": 22,
+          "fraction": 0.014745308310991957
+        },
+        {
+          "name": "WL_FID_MAP_SEEK_GO_K96",
+          "decoded": "WL_FID_MAP_SEEK_GO_K96",
+          "samples": 21,
+          "fraction": 0.014075067024128687
+        },
+        {
+          "name": "WL_FID_P93_VALUE_K194",
+          "decoded": "WL_FID_P93_VALUE_K194",
+          "samples": 15,
+          "fraction": 0.010053619302949061
+        },
+        {
+          "name": "WL_FID_STRING_APPEND_K118",
+          "decoded": "WL_FID_STRING_APPEND_K118",
+          "samples": 15,
+          "fraction": 0.010053619302949061
+        },
+        {
+          "name": "WL_FID_MAP_SET_K140",
+          "decoded": "WL_FID_MAP_SET_K140",
+          "samples": 15,
+          "fraction": 0.010053619302949061
+        },
+        {
+          "name": "WL_FID_MAP_SEEK_GO_K104",
+          "decoded": "WL_FID_MAP_SEEK_GO_K104",
+          "samples": 14,
+          "fraction": 0.00938337801608579
+        },
+        {
+          "name": "WL_FID_MAP_INS_GO_K30",
+          "decoded": "WL_FID_MAP_INS_GO_K30",
+          "samples": 13,
+          "fraction": 0.00871313672922252
+        },
+        {
+          "name": "WL_FID_MAP_PUT_GO",
+          "decoded": "WL_FID_MAP_PUT_GO",
+          "samples": 12,
+          "fraction": 0.00804289544235925
+        },
+        {
+          "name": "WL_FID_MAP_POP_GO",
+          "decoded": "WL_FID_MAP_POP_GO",
+          "samples": 12,
+          "fraction": 0.00804289544235925
+        },
+        {
+          "name": "WL_FID_MAP_INS_GO_K33",
+          "decoded": "WL_FID_MAP_INS_GO_K33",
+          "samples": 11,
+          "fraction": 0.007372654155495978
+        },
+        {
+          "name": "WL_FID_MAP_PUT_GO_K45",
+          "decoded": "WL_FID_MAP_PUT_GO_K45",
+          "samples": 10,
+          "fraction": 0.006702412868632708
+        },
+        {
+          "name": "WL_FID_MAP_INS_GO_K32",
+          "decoded": "WL_FID_MAP_INS_GO_K32",
+          "samples": 9,
+          "fraction": 0.006032171581769437
+        },
+        {
+          "name": "WL_FID_P37_MAP_FILL_K164",
+          "decoded": "WL_FID_P37_MAP_FILL_K164",
+          "samples": 9,
+          "fraction": 0.006032171581769437
+        },
+        {
+          "name": "WL_FID_MAP_POP_GO_K86",
+          "decoded": "WL_FID_MAP_POP_GO_K86",
+          "samples": 8,
+          "fraction": 0.005361930294906166
+        },
+        {
+          "name": "WL_FID_MAP_DIFF_K53",
+          "decoded": "WL_FID_MAP_DIFF_K53",
+          "samples": 8,
+          "fraction": 0.005361930294906166
+        },
+        {
+          "name": "WL_FID_MAP_INS_GO_K31",
+          "decoded": "WL_FID_MAP_INS_GO_K31",
+          "samples": 7,
+          "fraction": 0.004691689008042895
+        },
+        {
+          "name": "WL_FID_MAP_MSB_U",
+          "decoded": "WL_FID_MAP_MSB_U",
+          "samples": 7,
+          "fraction": 0.004691689008042895
+        },
+        {
+          "name": "WL_FID_U32_SHOW_GO",
+          "decoded": "WL_FID_U32_SHOW_GO",
+          "samples": 6,
+          "fraction": 0.004021447721179625
+        },
+        {
+          "name": "WL_FID_MAP_PUT_GO_K46",
+          "decoded": "WL_FID_MAP_PUT_GO_K46",
+          "samples": 6,
+          "fraction": 0.004021447721179625
+        },
+        {
+          "name": "WL_FID_MAP_PUT_GO_K47",
+          "decoded": "WL_FID_MAP_PUT_GO_K47",
+          "samples": 6,
+          "fraction": 0.004021447721179625
+        },
+        {
+          "name": "WL_FID_MAP_SET_K142",
+          "decoded": "WL_FID_MAP_SET_K142",
+          "samples": 6,
+          "fraction": 0.004021447721179625
+        },
+        {
+          "name": "WL_FID_MAP_INS_GO_K24",
+          "decoded": "WL_FID_MAP_INS_GO_K24",
+          "samples": 6,
+          "fraction": 0.004021447721179625
+        },
+        {
+          "name": "WL_FID_MAP_DIFF_CHR_K6",
+          "decoded": "WL_FID_MAP_DIFF_CHR_K6",
+          "samples": 5,
+          "fraction": 0.003351206434316354
+        },
+        {
+          "name": "WL_FID_MAP_SEEK_GO_K100",
+          "decoded": "WL_FID_MAP_SEEK_GO_K100",
+          "samples": 5,
+          "fraction": 0.003351206434316354
+        },
+        {
+          "name": "WL_FID_STRING_APPEND",
+          "decoded": "WL_FID_STRING_APPEND",
+          "samples": 5,
+          "fraction": 0.003351206434316354
+        },
+        {
+          "name": "WL_FID_MAP_SEEK_K120",
+          "decoded": "WL_FID_MAP_SEEK_K120",
+          "samples": 4,
+          "fraction": 0.002680965147453083
+        },
+        {
+          "name": "WL_FID_MAP_INS_GO_K23",
+          "decoded": "WL_FID_MAP_INS_GO_K23",
+          "samples": 4,
+          "fraction": 0.002680965147453083
+        },
+        {
+          "name": "WL_FID_MAP_INS_SPLICE_K35",
+          "decoded": "WL_FID_MAP_INS_SPLICE_K35",
+          "samples": 4,
+          "fraction": 0.002680965147453083
+        },
+        {
+          "name": "WL_FID_MAP_POP_GO_K87",
+          "decoded": "WL_FID_MAP_POP_GO_K87",
+          "samples": 4,
+          "fraction": 0.002680965147453083
+        },
+        {
+          "name": "term_keep",
+          "decoded": "term_keep",
+          "samples": 4,
+          "fraction": 0.002680965147453083
+        },
+        {
+          "name": "WL_FID_MAP_SEEK",
+          "decoded": "WL_FID_MAP_SEEK",
+          "samples": 4,
+          "fraction": 0.002680965147453083
+        },
+        {
+          "name": "WL_FID_MAP_INS_GO_K29",
+          "decoded": "WL_FID_MAP_INS_GO_K29",
+          "samples": 4,
+          "fraction": 0.002680965147453083
+        },
+        {
+          "name": "WL_FID_MAP_PUT_GO_K40",
+          "decoded": "WL_FID_MAP_PUT_GO_K40",
+          "samples": 4,
+          "fraction": 0.002680965147453083
+        },
+        {
+          "name": "WL_FID_MAP_PUT_GO_K48",
+          "decoded": "WL_FID_MAP_PUT_GO_K48",
+          "samples": 4,
+          "fraction": 0.002680965147453083
+        },
+        {
+          "name": "WL_FID_MAP_SEEK_GO_K95",
+          "decoded": "WL_FID_MAP_SEEK_GO_K95",
+          "samples": 4,
+          "fraction": 0.002680965147453083
+        },
+        {
+          "name": "WL_FID_MAP_DIFF_K52",
+          "decoded": "WL_FID_MAP_DIFF_K52",
+          "samples": 3,
+          "fraction": 0.0020107238605898124
+        },
+        {
+          "name": "WL_FID_MAP_BIT",
+          "decoded": "WL_FID_MAP_BIT",
+          "samples": 3,
+          "fraction": 0.0020107238605898124
+        },
+        {
+          "name": "WL_FID_MAP_DIFF_STEP_K12",
+          "decoded": "WL_FID_MAP_DIFF_STEP_K12",
+          "samples": 3,
+          "fraction": 0.0020107238605898124
+        },
+        {
+          "name": "WL_FID_MAP_DIFF_CHR",
+          "decoded": "WL_FID_MAP_DIFF_CHR",
+          "samples": 3,
+          "fraction": 0.0020107238605898124
+        },
+        {
+          "name": "WL_FID_MAP_DIFF_STEP",
+          "decoded": "WL_FID_MAP_DIFF_STEP",
+          "samples": 3,
+          "fraction": 0.0020107238605898124
+        },
+        {
+          "name": "WL_FID_P37_MAP_UPDATE_K160",
+          "decoded": "WL_FID_P37_MAP_UPDATE_K160",
+          "samples": 3,
+          "fraction": 0.0020107238605898124
+        },
+        {
+          "name": "WL_FID_MAP_SET_K139",
+          "decoded": "WL_FID_MAP_SET_K139",
+          "samples": 3,
+          "fraction": 0.0020107238605898124
+        },
+        {
+          "name": "WL_FID_P37_MAP_UPDATE_K161",
+          "decoded": "WL_FID_P37_MAP_UPDATE_K161",
+          "samples": 3,
+          "fraction": 0.0020107238605898124
+        },
+        {
+          "name": "WL_FID_P37_MAP_REMOVE_K157",
+          "decoded": "WL_FID_P37_MAP_REMOVE_K157",
+          "samples": 2,
+          "fraction": 0.0013404825737265416
+        },
+        {
+          "name": "WL_FID_P37_MAP_UPDATE",
+          "decoded": "WL_FID_P37_MAP_UPDATE",
+          "samples": 2,
+          "fraction": 0.0013404825737265416
+        },
+        {
+          "name": "WL_FID_MAP_TO_LIST_GO",
+          "decoded": "WL_FID_MAP_TO_LIST_GO",
+          "samples": 2,
+          "fraction": 0.0013404825737265416
+        },
+        {
+          "name": "WL_FID_MAP_SET_K143",
+          "decoded": "WL_FID_MAP_SET_K143",
+          "samples": 2,
+          "fraction": 0.0013404825737265416
+        },
+        {
+          "name": "WL_FID_MAP_POP_GO_K76",
+          "decoded": "WL_FID_MAP_POP_GO_K76",
+          "samples": 2,
+          "fraction": 0.0013404825737265416
+        },
+        {
+          "name": "WL_FID_MAP_MSB_U_K3",
+          "decoded": "WL_FID_MAP_MSB_U_K3",
+          "samples": 2,
+          "fraction": 0.0013404825737265416
+        },
+        {
+          "name": "WL_FID_MAP_INS_SPLICE",
+          "decoded": "WL_FID_MAP_INS_SPLICE",
+          "samples": 1,
+          "fraction": 0.0006702412868632708
+        },
+        {
+          "name": "WL_FID_P37_MAP_FILL_K165",
+          "decoded": "WL_FID_P37_MAP_FILL_K165",
+          "samples": 1,
+          "fraction": 0.0006702412868632708
+        },
+        {
+          "name": "WL_FID_MAP_INS_GO_K20",
+          "decoded": "WL_FID_MAP_INS_GO_K20",
+          "samples": 1,
+          "fraction": 0.0006702412868632708
+        },
+        {
+          "name": "WL_FID_MAP_SET_K141",
+          "decoded": "WL_FID_MAP_SET_K141",
+          "samples": 1,
+          "fraction": 0.0006702412868632708
+        },
+        {
+          "name": "WL_FID_MAP_POP_GO_K80",
+          "decoded": "WL_FID_MAP_POP_GO_K80",
+          "samples": 1,
+          "fraction": 0.0006702412868632708
+        },
+        {
+          "name": "WL_FID_MAP_PUT_GO_K44",
+          "decoded": "WL_FID_MAP_PUT_GO_K44",
+          "samples": 1,
+          "fraction": 0.0006702412868632708
+        },
+        {
+          "name": "WL_FID_MAP_POP_GO_K89",
+          "decoded": "WL_FID_MAP_POP_GO_K89",
+          "samples": 1,
+          "fraction": 0.0006702412868632708
+        },
+        {
+          "name": "WL_FID_P37_MAP_FILL",
+          "decoded": "WL_FID_P37_MAP_FILL",
+          "samples": 1,
+          "fraction": 0.0006702412868632708
+        }
+      ]
+    },
+    {
+      "case": "coverage-map-churn-128",
+      "role": "selfhost_c",
+      "samples": 1411,
+      "captures": [
+        {
+          "samples": 877,
+          "periodUs": 8000,
+          "overruns": 0,
+          "dropped": 0,
+          "coverage": 0.9999999984325256,
+          "analysis": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase119/native01/coverage-map-churn-128-selfhost_c-8000.analysis.json",
+            "bytes": 111192,
+            "sha256": "44940fcda44eec60fa3ad9c6158788f677c4fdb4fa1219bd22327da663bae502"
+          }
+        },
+        {
+          "samples": 534,
+          "periodUs": 13000,
+          "overruns": 0,
+          "dropped": 0,
+          "coverage": 1.0000000156845295,
+          "analysis": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase119/native01/coverage-map-churn-128-selfhost_c-13000.analysis.json",
+            "bytes": 72257,
+            "sha256": "7ee85c96ea3fce51cc12b1c8a820bb6fccace6ee1a3b74180de93162a4576735"
+          }
+        }
+      ],
+      "libc": {},
+      "libcPCs": [],
+      "symbols": [
+        {
+          "name": "WL_FID_36_100_105_114_101_99_116_46_77_97_112_46_98_105_116_46_103_111_",
+          "decoded": "WL_FID_$direct.Map.bit.go",
+          "samples": 288,
+          "fraction": 0.20411055988660523
+        },
+        {
+          "name": "term_drop",
+          "decoded": "term_drop",
+          "samples": 154,
+          "fraction": 0.10914245216158752
+        },
+        {
+          "name": "WL_FID_36_100_105_114_101_99_116_46_77_97_112_46_115_101_101_107_46_103_111_",
+          "decoded": "WL_FID_$direct.Map.seek.go",
+          "samples": 125,
+          "fraction": 0.0885896527285613
+        },
+        {
+          "name": "WL_FID_36_100_105_114_101_99_116_46_77_97_112_46_105_110_115_46_103_111_",
+          "decoded": "WL_FID_$direct.Map.ins.go",
+          "samples": 118,
+          "fraction": 0.08362863217576187
+        },
+        {
+          "name": "span_fade",
+          "decoded": "span_fade",
+          "samples": 76,
+          "fraction": 0.05386250885896527
+        },
+        {
+          "name": "WL_FID_36_100_105_114_101_99_116_46_77_97_112_46_112_111_112_46_103_111_",
+          "decoded": "WL_FID_$direct.Map.pop.go",
+          "samples": 49,
+          "fraction": 0.03472714386959603
+        },
+        {
+          "name": "term_keep",
+          "decoded": "term_keep",
+          "samples": 42,
+          "fraction": 0.029766123316796598
+        },
+        {
+          "name": "WL_FID_36_100_105_114_101_99_116_46_77_97_112_46_112_117_116_46_103_111_",
+          "decoded": "WL_FID_$direct.Map.put.go",
+          "samples": 40,
+          "fraction": 0.028348688873139617
+        },
+        {
+          "name": "WL_FID_36_100_105_114_101_99_116_46_77_97_112_46_98_105_116_",
+          "decoded": "WL_FID_$direct.Map.bit",
+          "samples": 39,
+          "fraction": 0.027639971651311126
+        },
+        {
+          "name": "WL_FID_36_100_105_114_101_99_116_46_77_97_112_46_98_105_116_46_97_116_",
+          "decoded": "WL_FID_$direct.Map.bit.at",
+          "samples": 38,
+          "fraction": 0.026931254429482635
+        },
+        {
+          "name": "rfc_wrap",
+          "decoded": "rfc_wrap",
+          "samples": 36,
+          "fraction": 0.025513819985825654
+        },
+        {
+          "name": "WL_FID_36_100_105_114_101_99_116_46_77_97_112_46_115_101_116_46_102_105_110_",
+          "decoded": "WL_FID_$direct.Map.set.fin",
+          "samples": 31,
+          "fraction": 0.021970233876683204
+        },
+        {
+          "name": "WL_FID_36_100_105_114_101_99_116_46_77_97_112_46_108_111_",
+          "decoded": "WL_FID_$direct.Map.lo",
+          "samples": 31,
+          "fraction": 0.021970233876683204
+        },
+        {
+          "name": "WL_FID_36_100_105_114_101_99_116_46_77_97_112_46_104_105_",
+          "decoded": "WL_FID_$direct.Map.hi",
+          "samples": 28,
+          "fraction": 0.019844082211197732
+        },
+        {
+          "name": "WL_FID_36_100_105_114_101_99_116_46_112_51_55_46_109_97_112_46_100_105_103_101_115_116_",
+          "decoded": "WL_FID_$direct.p37.map.digest",
+          "samples": 22,
+          "fraction": 0.01559177888022679
+        },
+        {
+          "name": "WL_FID_110_97_116_105_118_101_95_107_95_51_50_52_51_51_",
+          "decoded": "WL_FID_native_k_32433",
+          "samples": 19,
+          "fraction": 0.013465627214741318
+        },
+        {
+          "name": "WL_FID_36_100_105_114_101_99_116_46_85_51_50_46_115_104_111_119_46_102_105_110_",
+          "decoded": "WL_FID_$direct.U32.show.fin",
+          "samples": 17,
+          "fraction": 0.012048192771084338
+        },
+        {
+          "name": "WL_FID_36_100_105_114_101_99_116_46_83_116_114_105_110_103_46_97_112_112_101_110_100_",
+          "decoded": "WL_FID_$direct.String.append",
+          "samples": 16,
+          "fraction": 0.011339475549255847
+        },
+        {
+          "name": "WL_FID_36_100_105_114_101_99_116_46_77_97_112_46_100_105_102_102_",
+          "decoded": "WL_FID_$direct.Map.diff",
+          "samples": 14,
+          "fraction": 0.009922041105598866
+        },
+        {
+          "name": "WL_FID_110_97_116_105_118_101_95_107_95_51_52_54_50_53_",
+          "decoded": "WL_FID_native_k_34625",
+          "samples": 13,
+          "fraction": 0.009213323883770375
+        },
+        {
+          "name": "WL_FID_36_100_105_114_101_99_116_46_77_97_112_46_100_105_102_102_46_102_105_110_",
+          "decoded": "WL_FID_$direct.Map.diff.fin",
+          "samples": 13,
+          "fraction": 0.009213323883770375
+        },
+        {
+          "name": "WL_FID_110_97_116_105_118_101_95_107_95_50_48_49_56_57_",
+          "decoded": "WL_FID_native_k_20189",
+          "samples": 11,
+          "fraction": 0.007795889440113395
+        },
+        {
+          "name": "WL_FID_36_100_105_114_101_99_116_46_77_97_112_46_115_101_116_46_102_105_110_46_103_111_",
+          "decoded": "WL_FID_$direct.Map.set.fin.go",
+          "samples": 10,
+          "fraction": 0.007087172218284904
+        },
+        {
+          "name": "WL_FID_110_97_116_105_118_101_95_107_95_51_53_54_54_54_",
+          "decoded": "WL_FID_native_k_35666",
+          "samples": 10,
+          "fraction": 0.007087172218284904
+        },
+        {
+          "name": "WL_FID_36_100_105_114_101_99_116_46_77_97_112_46_109_115_98_46_117_46_105_102_",
+          "decoded": "WL_FID_$direct.Map.msb.u.if",
+          "samples": 10,
+          "fraction": 0.007087172218284904
+        },
+        {
+          "name": "WL_FID_36_100_105_114_101_99_116_46_77_97_112_46_115_101_101_107_",
+          "decoded": "WL_FID_$direct.Map.seek",
+          "samples": 9,
+          "fraction": 0.0063784549964564135
+        },
+        {
+          "name": "WL_FID_110_97_116_105_118_101_95_107_95_52_53_51_56_48_",
+          "decoded": "WL_FID_native_k_45380",
+          "samples": 8,
+          "fraction": 0.005669737774627924
+        },
+        {
+          "name": "WL_FID_110_97_116_105_118_101_95_107_95_51_56_55_56_50_",
+          "decoded": "WL_FID_native_k_38782",
+          "samples": 8,
+          "fraction": 0.005669737774627924
+        },
+        {
+          "name": "WL_FID_110_97_116_105_118_101_95_107_95_51_50_52_56_49_",
+          "decoded": "WL_FID_native_k_32481",
+          "samples": 8,
+          "fraction": 0.005669737774627924
+        },
+        {
+          "name": "WL_FID_110_97_116_105_118_101_95_107_95_49_52_54_50_54_",
+          "decoded": "WL_FID_native_k_14626",
+          "samples": 7,
+          "fraction": 0.004961020552799433
+        },
+        {
+          "name": "WL_FID_110_97_116_105_118_101_95_107_95_51_50_49_53_57_",
+          "decoded": "WL_FID_native_k_32159",
+          "samples": 7,
+          "fraction": 0.004961020552799433
+        },
+        {
+          "name": "WL_FID_36_100_105_114_101_99_116_46_77_97_112_46_116_111_95_108_105_115_116_46_103_111_",
+          "decoded": "WL_FID_$direct.Map.to_list.go",
+          "samples": 6,
+          "fraction": 0.004252303330970942
+        },
+        {
+          "name": "WL_FID_36_100_105_114_101_99_116_46_77_97_112_46_115_101_116_46_103_111_",
+          "decoded": "WL_FID_$direct.Map.set.go",
+          "samples": 6,
+          "fraction": 0.004252303330970942
+        },
+        {
+          "name": "WL_FID_110_97_116_105_118_101_95_107_95_50_48_50_49_50_",
+          "decoded": "WL_FID_native_k_20212",
+          "samples": 6,
+          "fraction": 0.004252303330970942
+        },
+        {
+          "name": "WL_FID_110_97_116_105_118_101_95_107_95_51_50_52_52_56_",
+          "decoded": "WL_FID_native_k_32448",
+          "samples": 6,
+          "fraction": 0.004252303330970942
+        },
+        {
+          "name": "WL_FID_110_97_116_105_118_101_95_107_95_52_53_51_54_51_",
+          "decoded": "WL_FID_native_k_45363",
+          "samples": 6,
+          "fraction": 0.004252303330970942
+        },
+        {
+          "name": "WL_FID_110_97_116_105_118_101_95_107_95_52_53_50_51_55_",
+          "decoded": "WL_FID_native_k_45237",
+          "samples": 6,
+          "fraction": 0.004252303330970942
+        },
+        {
+          "name": "WL_FID_36_100_105_114_101_99_116_46_77_97_112_46_100_101_108_46_102_105_110_",
+          "decoded": "WL_FID_$direct.Map.del.fin",
+          "samples": 5,
+          "fraction": 0.003543586109142452
+        },
+        {
+          "name": "WL_FID_36_100_105_114_101_99_116_46_77_97_112_46_112_111_112_46_104_105_",
+          "decoded": "WL_FID_$direct.Map.pop.hi",
+          "samples": 5,
+          "fraction": 0.003543586109142452
+        },
+        {
+          "name": "WL_FID_36_100_105_114_101_99_116_46_77_97_112_46_112_111_112_46_108_111_",
+          "decoded": "WL_FID_$direct.Map.pop.lo",
+          "samples": 4,
+          "fraction": 0.002834868887313962
+        },
+        {
+          "name": "WL_FID_110_97_116_105_118_101_95_107_95_49_55_55_53_52_",
+          "decoded": "WL_FID_native_k_17754",
+          "samples": 4,
+          "fraction": 0.002834868887313962
+        },
+        {
+          "name": "WL_FID_110_97_116_105_118_101_95_107_95_53_51_55_48_48_",
+          "decoded": "WL_FID_native_k_53700",
+          "samples": 4,
+          "fraction": 0.002834868887313962
+        },
+        {
+          "name": "WL_FID_36_100_105_114_101_99_116_46_77_97_112_46_100_105_102_102_46_99_104_114_",
+          "decoded": "WL_FID_$direct.Map.diff.chr",
+          "samples": 4,
+          "fraction": 0.002834868887313962
+        },
+        {
+          "name": "WL_FID_36_100_105_114_101_99_116_46_77_97_112_46_105_110_115_46_115_112_108_105_99_101_",
+          "decoded": "WL_FID_$direct.Map.ins.splice",
+          "samples": 4,
+          "fraction": 0.002834868887313962
+        },
+        {
+          "name": "WL_FID_110_97_116_105_118_101_95_107_95_50_56_53_53_48_",
+          "decoded": "WL_FID_native_k_28550",
+          "samples": 4,
+          "fraction": 0.002834868887313962
+        },
+        {
+          "name": "WL_FID_110_97_116_105_118_101_95_107_95_51_54_55_48_57_",
+          "decoded": "WL_FID_native_k_36709",
+          "samples": 3,
+          "fraction": 0.002126151665485471
+        },
+        {
+          "name": "WL_FID_36_100_105_114_101_99_116_46_77_97_112_46_105_110_115_",
+          "decoded": "WL_FID_$direct.Map.ins",
+          "samples": 3,
+          "fraction": 0.002126151665485471
+        },
+        {
+          "name": "WL_FID_110_97_116_105_118_101_95_107_95_50_48_48_54_53_",
+          "decoded": "WL_FID_native_k_20065",
+          "samples": 3,
+          "fraction": 0.002126151665485471
+        },
+        {
+          "name": "WL_FID_36_100_105_114_101_99_116_46_77_97_112_46_109_115_98_46_117_",
+          "decoded": "WL_FID_$direct.Map.msb.u",
+          "samples": 3,
+          "fraction": 0.002126151665485471
+        },
+        {
+          "name": "WL_FID_110_97_116_105_118_101_95_107_95_51_50_52_57_50_",
+          "decoded": "WL_FID_native_k_32492",
+          "samples": 3,
+          "fraction": 0.002126151665485471
+        },
+        {
+          "name": "WL_FID_36_100_105_114_101_99_116_46_77_97_112_46_100_105_102_102_46_115_116_101_112_",
+          "decoded": "WL_FID_$direct.Map.diff.step",
+          "samples": 3,
+          "fraction": 0.002126151665485471
+        },
+        {
+          "name": "WL_FID_110_97_116_105_118_101_95_107_95_52_53_51_55_48_",
+          "decoded": "WL_FID_native_k_45370",
+          "samples": 3,
+          "fraction": 0.002126151665485471
+        },
+        {
+          "name": "WL_FID_36_100_105_114_101_99_116_46_77_97_112_46_112_117_116_",
+          "decoded": "WL_FID_$direct.Map.put",
+          "samples": 2,
+          "fraction": 0.001417434443656981
+        },
+        {
+          "name": "WL_FID_110_97_116_105_118_101_95_107_95_51_50_49_55_48_",
+          "decoded": "WL_FID_native_k_32170",
+          "samples": 2,
+          "fraction": 0.001417434443656981
+        },
+        {
+          "name": "WL_FID_110_97_116_105_118_101_95_107_95_49_51_53_55_53_",
+          "decoded": "WL_FID_native_k_13575",
+          "samples": 2,
+          "fraction": 0.001417434443656981
+        },
+        {
+          "name": "WL_FID_110_97_116_105_118_101_95_107_95_53_56_49_50_54_",
+          "decoded": "WL_FID_native_k_58126",
+          "samples": 2,
+          "fraction": 0.001417434443656981
+        },
+        {
+          "name": "WL_FID_36_100_105_114_101_99_116_46_85_51_50_46_115_104_111_119_46_103_111_",
+          "decoded": "WL_FID_$direct.U32.show.go",
+          "samples": 2,
+          "fraction": 0.001417434443656981
+        },
+        {
+          "name": "WL_FID_110_97_116_105_118_101_95_107_95_52_51_57_53_53_",
+          "decoded": "WL_FID_native_k_43955",
+          "samples": 2,
+          "fraction": 0.001417434443656981
+        },
+        {
+          "name": "WL_FID_36_100_105_114_101_99_116_46_85_51_50_46_115_104_111_119_",
+          "decoded": "WL_FID_$direct.U32.show",
+          "samples": 1,
+          "fraction": 0.0007087172218284905
+        },
+        {
+          "name": "WL_FID_110_97_116_105_118_101_95_107_95_51_50_51_55_54_",
+          "decoded": "WL_FID_native_k_32376",
+          "samples": 1,
+          "fraction": 0.0007087172218284905
+        },
+        {
+          "name": "WL_FID_110_97_116_105_118_101_95_107_95_51_50_51_51_48_",
+          "decoded": "WL_FID_native_k_32330",
+          "samples": 1,
+          "fraction": 0.0007087172218284905
+        },
+        {
+          "name": "WL_FID_110_97_116_105_118_101_95_107_95_50_48_50_48_50_",
+          "decoded": "WL_FID_native_k_20202",
+          "samples": 1,
+          "fraction": 0.0007087172218284905
+        },
+        {
+          "name": "WL_FID_36_100_105_114_101_99_116_46_112_51_55_46_109_97_112_46_102_105_108_108_",
+          "decoded": "WL_FID_$direct.p37.map.fill",
+          "samples": 1,
+          "fraction": 0.0007087172218284905
+        },
+        {
+          "name": "WL_FID_110_97_116_105_118_101_95_107_95_52_53_50_52_52_",
+          "decoded": "WL_FID_native_k_45244",
+          "samples": 1,
+          "fraction": 0.0007087172218284905
+        },
+        {
+          "name": "WL_FID_110_97_116_105_118_101_95_107_95_50_48_49_52_54_",
+          "decoded": "WL_FID_native_k_20146",
+          "samples": 1,
+          "fraction": 0.0007087172218284905
+        },
+        {
+          "name": "WL_FID_110_97_116_105_118_101_95_107_95_53_56_49_51_51_",
+          "decoded": "WL_FID_native_k_58133",
+          "samples": 1,
+          "fraction": 0.0007087172218284905
+        },
+        {
+          "name": "WL_FID_110_97_116_105_118_101_95_107_95_49_51_53_55_57_",
+          "decoded": "WL_FID_native_k_13579",
+          "samples": 1,
+          "fraction": 0.0007087172218284905
+        },
+        {
+          "name": "WL_FID_110_97_116_105_118_101_95_107_95_52_53_51_56_55_",
+          "decoded": "WL_FID_native_k_45387",
+          "samples": 1,
+          "fraction": 0.0007087172218284905
+        },
+        {
+          "name": "WL_FID_110_97_116_105_118_101_95_107_95_51_50_48_54_52_",
+          "decoded": "WL_FID_native_k_32064",
+          "samples": 1,
+          "fraction": 0.0007087172218284905
+        }
+      ]
+    },
+    {
+      "case": "coverage-map-churn-128",
+      "role": "qbe",
+      "samples": 1418,
+      "captures": [
+        {
+          "samples": 878,
+          "periodUs": 8000,
+          "overruns": 0,
+          "dropped": 0,
+          "coverage": 1.0000000118146697,
+          "analysis": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase119/native01/coverage-map-churn-128-qbe-8000.analysis.json",
+            "bytes": 88386,
+            "sha256": "b178049e392d7235472f15d5da22ce1d48ff3af0ffe3c8d6ce14fc37d4c4a299"
+          }
+        },
+        {
+          "samples": 540,
+          "periodUs": 13000,
+          "overruns": 0,
+          "dropped": 0,
+          "coverage": 1.0000000075437105,
+          "analysis": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase119/native01/coverage-map-churn-128-qbe-13000.analysis.json",
+            "bytes": 70015,
+            "sha256": "874c1abea862026d1980aa3a9ede5f938a3f164c5929fb3f76734f31b5aa4681"
+          }
+        }
+      ],
+      "libc": {
+        "copy": {
+          "samples": 242,
+          "fraction": 0.17066290550070523
+        }
+      },
+      "libcPCs": [
+        {
+          "kind": "copy",
+          "address": "0xa394a",
+          "samples": 60
+        },
+        {
+          "kind": "copy",
+          "address": "0xa394f",
+          "samples": 59
+        },
+        {
+          "kind": "copy",
+          "address": "0xa3933",
+          "samples": 34
+        },
+        {
+          "kind": "copy",
+          "address": "0xa3993",
+          "samples": 23
+        },
+        {
+          "kind": "copy",
+          "address": "0xa3942",
+          "samples": 19
+        },
+        {
+          "kind": "copy",
+          "address": "0xa3930",
+          "samples": 16
+        },
+        {
+          "kind": "copy",
+          "address": "0xa398e",
+          "samples": 8
+        },
+        {
+          "kind": "copy",
+          "address": "0xa393f",
+          "samples": 7
+        },
+        {
+          "kind": "copy",
+          "address": "0xa399b",
+          "samples": 4
+        },
+        {
+          "kind": "copy",
+          "address": "0xa3947",
+          "samples": 4
+        },
+        {
+          "kind": "copy",
+          "address": "0xa3a30",
+          "samples": 3
+        },
+        {
+          "kind": "copy",
+          "address": "0xa399e",
+          "samples": 2
+        },
+        {
+          "kind": "copy",
+          "address": "0xa3a23",
+          "samples": 2
+        },
+        {
+          "kind": "copy",
+          "address": "0xa3a1f",
+          "samples": 1
+        }
+      ],
+      "symbols": [
+        {
+          "name": "<mapping:/usr/lib/x86_64-linux-gnu/libc-2.31.so>",
+          "decoded": "<mapping:/usr/lib/x86_64-linux-gnu/libc-2.31.so>",
+          "samples": 242,
+          "fraction": 0.17066290550070523
+        },
+        {
+          "name": "p118_rt_borrow_fields",
+          "decoded": "p118_rt_borrow_fields",
+          "samples": 119,
+          "fraction": 0.08392101551480959
+        },
+        {
+          "name": "p111_rt_op",
+          "decoded": "p111_rt_op",
+          "samples": 93,
+          "fraction": 0.06558533145275035
+        },
+        {
+          "name": "p111_set_regs",
+          "decoded": "p111_set_regs",
+          "samples": 79,
+          "fraction": 0.05571227080394922
+        },
+        {
+          "name": "p111_rt_jump",
+          "decoded": "p111_rt_jump",
+          "samples": 69,
+          "fraction": 0.04866008462623413
+        },
+        {
+          "name": "p118_p111_rt_take2",
+          "decoded": "p118_p111_rt_take2",
+          "samples": 68,
+          "fraction": 0.047954866008462625
+        },
+        {
+          "name": "work_loop",
+          "decoded": "work_loop",
+          "samples": 67,
+          "fraction": 0.04724964739069112
+        },
+        {
+          "name": "p118_p111_rt_ctor3",
+          "decoded": "p118_p111_rt_ctor3",
+          "samples": 54,
+          "fraction": 0.0380818053596615
+        },
+        {
+          "name": "p118_p111_rt_take3",
+          "decoded": "p118_p111_rt_take3",
+          "samples": 48,
+          "fraction": 0.03385049365303244
+        },
+        {
+          "name": "p118_p111_rt_ctor2",
+          "decoded": "p118_p111_rt_ctor2",
+          "samples": 43,
+          "fraction": 0.030324400564174896
+        },
+        {
+          "name": "p111_FID_36_100_105_114_101_99_116_46_77_97_112_46_115_101_101_107_46_103_111_",
+          "decoded": "p111_FID_$direct.Map.seek.go",
+          "samples": 37,
+          "fraction": 0.02609308885754584
+        },
+        {
+          "name": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_77_97_112_46_98_105_116_46_103_111_",
+          "decoded": "p113d_FID_$p118borrow.read.Map.bit.go",
+          "samples": 35,
+          "fraction": 0.02468265162200282
+        },
+        {
+          "name": "p111_FID_36_100_105_114_101_99_116_46_77_97_112_46_105_110_115_46_103_111_",
+          "decoded": "p111_FID_$direct.Map.ins.go",
+          "samples": 32,
+          "fraction": 0.022566995768688293
+        },
+        {
+          "name": "p111_FID_36_100_105_114_101_99_116_46_77_97_112_46_98_105_116_46_103_111_",
+          "decoded": "p111_FID_$direct.Map.bit.go",
+          "samples": 30,
+          "fraction": 0.021156558533145273
+        },
+        {
+          "name": "term_drop",
+          "decoded": "term_drop",
+          "samples": 27,
+          "fraction": 0.01904090267983075
+        },
+        {
+          "name": "p111_rt_return",
+          "decoded": "p111_rt_return",
+          "samples": 21,
+          "fraction": 0.014809590973201692
+        },
+        {
+          "name": "p113d_FID_36_100_105_114_101_99_116_46_77_97_112_46_98_105_116_46_103_111_",
+          "decoded": "p113d_FID_$direct.Map.bit.go",
+          "samples": 21,
+          "fraction": 0.014809590973201692
+        },
+        {
+          "name": "p111_FID_36_100_105_114_101_99_116_46_77_97_112_46_98_105_116_",
+          "decoded": "p111_FID_$direct.Map.bit",
+          "samples": 18,
+          "fraction": 0.012693935119887164
+        },
+        {
+          "name": "p111_rt_special_take",
+          "decoded": "p111_rt_special_take",
+          "samples": 16,
+          "fraction": 0.011283497884344146
+        },
+        {
+          "name": "p111_FID_36_100_105_114_101_99_116_46_77_97_112_46_98_105_116_46_97_116_",
+          "decoded": "p111_FID_$direct.Map.bit.at",
+          "samples": 15,
+          "fraction": 0.010578279266572637
+        },
+        {
+          "name": "p111_FID_36_100_105_114_101_99_116_46_77_97_112_46_109_115_98_46_117_",
+          "decoded": "p111_FID_$direct.Map.msb.u",
+          "samples": 13,
+          "fraction": 0.009167842031029619
+        },
+        {
+          "name": "p111_FID_36_100_105_114_101_99_116_46_85_51_50_46_115_104_111_119_46_102_105_110_",
+          "decoded": "p111_FID_$direct.U32.show.fin",
+          "samples": 12,
+          "fraction": 0.00846262341325811
+        },
+        {
+          "name": "p111_FID_36_100_105_114_101_99_116_46_77_97_112_46_112_117_116_46_103_111_",
+          "decoded": "p111_FID_$direct.Map.put.go",
+          "samples": 10,
+          "fraction": 0.007052186177715092
+        },
+        {
+          "name": "p111_FID_36_112_49_49_49_46_107_46_55_49_54_49_51_",
+          "decoded": "p111_FID_$p111.k.71613",
+          "samples": 9,
+          "fraction": 0.006346967559943582
+        },
+        {
+          "name": "p111_FID_36_112_49_49_49_46_107_46_55_53_55_56_56_",
+          "decoded": "p111_FID_$p111.k.75788",
+          "samples": 9,
+          "fraction": 0.006346967559943582
+        },
+        {
+          "name": "p111_FID_36_100_105_114_101_99_116_46_77_97_112_46_100_105_102_102_46_102_105_110_",
+          "decoded": "p111_FID_$direct.Map.diff.fin",
+          "samples": 9,
+          "fraction": 0.006346967559943582
+        },
+        {
+          "name": "p111_FID_36_100_105_114_101_99_116_46_77_97_112_46_109_115_98_46_117_46_105_102_",
+          "decoded": "p111_FID_$direct.Map.msb.u.if",
+          "samples": 9,
+          "fraction": 0.006346967559943582
+        },
+        {
+          "name": "span_fade",
+          "decoded": "span_fade",
+          "samples": 7,
+          "fraction": 0.004936530324400564
+        },
+        {
+          "name": "p111_rt_special_ctor",
+          "decoded": "p111_rt_special_ctor",
+          "samples": 7,
+          "fraction": 0.004936530324400564
+        },
+        {
+          "name": "p111_FID_36_112_49_49_49_46_107_46_53_57_48_48_57_",
+          "decoded": "p111_FID_$p111.k.59009",
+          "samples": 7,
+          "fraction": 0.004936530324400564
+        },
+        {
+          "name": "p111_FID_36_100_105_114_101_99_116_46_77_97_112_46_112_111_112_46_103_111_",
+          "decoded": "p111_FID_$direct.Map.pop.go",
+          "samples": 7,
+          "fraction": 0.004936530324400564
+        },
+        {
+          "name": "p111_FID_36_100_105_114_101_99_116_46_77_97_112_46_100_105_102_102_46_115_116_101_112_",
+          "decoded": "p111_FID_$direct.Map.diff.step",
+          "samples": 7,
+          "fraction": 0.004936530324400564
+        },
+        {
+          "name": "p111_FID_36_100_105_114_101_99_116_46_77_97_112_46_100_105_102_102_",
+          "decoded": "p111_FID_$direct.Map.diff",
+          "samples": 7,
+          "fraction": 0.004936530324400564
+        },
+        {
+          "name": "p111_FID_36_112_49_49_49_46_107_46_53_57_48_48_51_",
+          "decoded": "p111_FID_$p111.k.59003",
+          "samples": 6,
+          "fraction": 0.004231311706629055
+        },
+        {
+          "name": "p111_FID_36_100_105_114_101_99_116_46_83_116_114_105_110_103_46_99_109_112_",
+          "decoded": "p111_FID_$direct.String.cmp",
+          "samples": 6,
+          "fraction": 0.004231311706629055
+        },
+        {
+          "name": "p111_FID_36_112_49_49_49_46_107_46_54_57_53_51_50_",
+          "decoded": "p111_FID_$p111.k.69532",
+          "samples": 5,
+          "fraction": 0.003526093088857546
+        },
+        {
+          "name": "p111_FID_36_112_49_49_49_46_107_46_55_56_51_52_53_",
+          "decoded": "p111_FID_$p111.k.78345",
+          "samples": 5,
+          "fraction": 0.003526093088857546
+        },
+        {
+          "name": "p111_FID_36_100_105_114_101_99_116_46_85_51_50_46_115_104_111_119_46_103_111_",
+          "decoded": "p111_FID_$direct.U32.show.go",
+          "samples": 5,
+          "fraction": 0.003526093088857546
+        },
+        {
+          "name": "p118_destination_fill",
+          "decoded": "p118_destination_fill",
+          "samples": 5,
+          "fraction": 0.003526093088857546
+        },
+        {
+          "name": "p111_FID_36_112_49_49_49_46_107_46_55_56_54_51_55_",
+          "decoded": "p111_FID_$p111.k.78637",
+          "samples": 5,
+          "fraction": 0.003526093088857546
+        },
+        {
+          "name": "p113d_FID_36_100_105_114_101_99_116_46_77_97_112_46_104_105_",
+          "decoded": "p113d_FID_$direct.Map.hi",
+          "samples": 5,
+          "fraction": 0.003526093088857546
+        },
+        {
+          "name": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_83_116_114_105_110_103_46_99_109_112_",
+          "decoded": "p113d_FID_$p118borrow.read.String.cmp",
+          "samples": 5,
+          "fraction": 0.003526093088857546
+        },
+        {
+          "name": "p111_FID_36_112_49_49_49_46_107_46_55_56_54_52_54_",
+          "decoded": "p111_FID_$p111.k.78646",
+          "samples": 4,
+          "fraction": 0.0028208744710860366
+        },
+        {
+          "name": "p111_rt_reg_get",
+          "decoded": "p111_rt_reg_get",
+          "samples": 4,
+          "fraction": 0.0028208744710860366
+        },
+        {
+          "name": "p111_FID_36_112_49_49_49_46_107_46_55_56_53_57_52_",
+          "decoded": "p111_FID_$p111.k.78594",
+          "samples": 4,
+          "fraction": 0.0028208744710860366
+        },
+        {
+          "name": "p111_tuple",
+          "decoded": "p111_tuple",
+          "samples": 4,
+          "fraction": 0.0028208744710860366
+        },
+        {
+          "name": "p111_FID_36_100_105_114_101_99_116_46_77_97_112_46_100_105_102_102_46_99_104_114_",
+          "decoded": "p111_FID_$direct.Map.diff.chr",
+          "samples": 4,
+          "fraction": 0.0028208744710860366
+        },
+        {
+          "name": "p111_FID_36_100_105_114_101_99_116_46_77_97_112_46_115_101_116_46_102_105_110_46_103_111_",
+          "decoded": "p111_FID_$direct.Map.set.fin.go",
+          "samples": 4,
+          "fraction": 0.0028208744710860366
+        },
+        {
+          "name": "p111_FID_36_112_49_49_49_46_107_46_57_53_53_55_55_",
+          "decoded": "p111_FID_$p111.k.95577",
+          "samples": 4,
+          "fraction": 0.0028208744710860366
+        },
+        {
+          "name": "p111_FID_36_100_105_114_101_99_116_46_77_97_112_46_105_110_115_",
+          "decoded": "p111_FID_$direct.Map.ins",
+          "samples": 4,
+          "fraction": 0.0028208744710860366
+        },
+        {
+          "name": "p111_FID_36_112_49_49_49_46_107_46_57_53_54_56_57_",
+          "decoded": "p111_FID_$p111.k.95689",
+          "samples": 3,
+          "fraction": 0.0021156558533145277
+        },
+        {
+          "name": "rfc_wrap",
+          "decoded": "rfc_wrap",
+          "samples": 3,
+          "fraction": 0.0021156558533145277
+        },
+        {
+          "name": "p111_FID_36_112_49_49_49_46_107_46_55_52_55_51_53_",
+          "decoded": "p111_FID_$p111.k.74735",
+          "samples": 3,
+          "fraction": 0.0021156558533145277
+        },
+        {
+          "name": "p111_FID_36_100_105_114_101_99_116_46_77_97_112_46_115_101_101_107_",
+          "decoded": "p111_FID_$direct.Map.seek",
+          "samples": 3,
+          "fraction": 0.0021156558533145277
+        },
+        {
+          "name": "p111_FID_36_112_49_49_49_46_107_46_53_57_48_49_57_",
+          "decoded": "p111_FID_$p111.k.59019",
+          "samples": 3,
+          "fraction": 0.0021156558533145277
+        },
+        {
+          "name": "p111_rt_keep",
+          "decoded": "p111_rt_keep",
+          "samples": 3,
+          "fraction": 0.0021156558533145277
+        },
+        {
+          "name": "p118_p111_rt_ctor1",
+          "decoded": "p118_p111_rt_ctor1",
+          "samples": 3,
+          "fraction": 0.0021156558533145277
+        },
+        {
+          "name": "p113d_FID_36_100_105_114_101_99_116_46_83_116_114_105_110_103_46_97_112_112_101_110_100_",
+          "decoded": "p113d_FID_$direct.String.append",
+          "samples": 3,
+          "fraction": 0.0021156558533145277
+        },
+        {
+          "name": "p113d_FID_36_100_105_114_101_99_116_46_77_97_112_46_105_110_115_46_115_112_108_105_99_101_46_98_105_116_",
+          "decoded": "p113d_FID_$direct.Map.ins.splice.bit",
+          "samples": 3,
+          "fraction": 0.0021156558533145277
+        },
+        {
+          "name": "p111_FID_36_100_105_114_101_99_116_46_83_116_114_105_110_103_46_97_112_112_101_110_100_",
+          "decoded": "p111_FID_$direct.String.append",
+          "samples": 3,
+          "fraction": 0.0021156558533145277
+        },
+        {
+          "name": "p111_FID_36_100_105_114_101_99_116_46_77_97_112_46_115_101_116_",
+          "decoded": "p111_FID_$direct.Map.set",
+          "samples": 3,
+          "fraction": 0.0021156558533145277
+        },
+        {
+          "name": "p118_rt_extend1",
+          "decoded": "p118_rt_extend1",
+          "samples": 2,
+          "fraction": 0.0014104372355430183
+        },
+        {
+          "name": "_init",
+          "decoded": "_init",
+          "samples": 2,
+          "fraction": 0.0014104372355430183
+        },
+        {
+          "name": "p111_FID_36_112_49_49_49_46_107_46_57_55_56_54_54_",
+          "decoded": "p111_FID_$p111.k.97866",
+          "samples": 2,
+          "fraction": 0.0014104372355430183
+        },
+        {
+          "name": "p111_FID_36_112_49_49_49_46_107_46_55_50_54_53_51_",
+          "decoded": "p111_FID_$p111.k.72653",
+          "samples": 2,
+          "fraction": 0.0014104372355430183
+        },
+        {
+          "name": "p111_FID_36_100_105_114_101_99_116_46_77_97_112_46_115_101_116_46_102_105_110_",
+          "decoded": "p111_FID_$direct.Map.set.fin",
+          "samples": 2,
+          "fraction": 0.0014104372355430183
+        },
+        {
+          "name": "p111_rt_sink",
+          "decoded": "p111_rt_sink",
+          "samples": 2,
+          "fraction": 0.0014104372355430183
+        },
+        {
+          "name": "p113d_FID_36_112_49_49_56_46_116_114_109_99_46_36_100_105_114_101_99_116_46_83_116_114_105_110_103_46_97_112_112_101_110_100_",
+          "decoded": "p113d_FID_$p118.trmc.$direct.String.append",
+          "samples": 2,
+          "fraction": 0.0014104372355430183
+        },
+        {
+          "name": "p111_FID_36_100_105_114_101_99_116_46_77_97_112_46_112_117_116_",
+          "decoded": "p111_FID_$direct.Map.put",
+          "samples": 2,
+          "fraction": 0.0014104372355430183
+        },
+        {
+          "name": "p111_FID_36_112_49_49_49_46_107_46_53_56_57_53_57_",
+          "decoded": "p111_FID_$p111.k.58959",
+          "samples": 2,
+          "fraction": 0.0014104372355430183
+        },
+        {
+          "name": "p111_FID_36_100_105_114_101_99_116_46_85_51_50_46_115_104_111_119_",
+          "decoded": "p111_FID_$direct.U32.show",
+          "samples": 2,
+          "fraction": 0.0014104372355430183
+        },
+        {
+          "name": "p111_FID_36_112_49_49_49_46_107_46_52_52_48_51_56_",
+          "decoded": "p111_FID_$p111.k.44038",
+          "samples": 2,
+          "fraction": 0.0014104372355430183
+        },
+        {
+          "name": "p111_FID_36_100_105_114_101_99_116_46_85_51_50_46_115_104_111_119_46_105_102_",
+          "decoded": "p111_FID_$direct.U32.show.if",
+          "samples": 2,
+          "fraction": 0.0014104372355430183
+        },
+        {
+          "name": "p111_FID_36_100_105_114_101_99_116_46_112_51_55_46_109_97_112_46_102_105_108_108_",
+          "decoded": "p111_FID_$direct.p37.map.fill",
+          "samples": 2,
+          "fraction": 0.0014104372355430183
+        },
+        {
+          "name": "p111_FID_36_112_49_49_49_46_107_46_57_53_55_48_57_",
+          "decoded": "p111_FID_$p111.k.95709",
+          "samples": 2,
+          "fraction": 0.0014104372355430183
+        },
+        {
+          "name": "p111_FID_36_112_49_49_49_46_107_46_53_56_56_56_52_",
+          "decoded": "p111_FID_$p111.k.58884",
+          "samples": 2,
+          "fraction": 0.0014104372355430183
+        },
+        {
+          "name": "p111_FID_36_100_105_114_101_99_116_46_77_97_112_46_115_101_116_46_103_111_",
+          "decoded": "p111_FID_$direct.Map.set.go",
+          "samples": 2,
+          "fraction": 0.0014104372355430183
+        },
+        {
+          "name": "p114r_FID_36_100_105_114_101_99_116_46_77_97_112_46_116_111_95_108_105_115_116_46_103_111_",
+          "decoded": "p114r_FID_$direct.Map.to_list.go",
+          "samples": 2,
+          "fraction": 0.0014104372355430183
+        },
+        {
+          "name": "p111_FID_36_112_49_49_49_46_107_46_57_54_56_48_51_",
+          "decoded": "p111_FID_$p111.k.96803",
+          "samples": 1,
+          "fraction": 0.0007052186177715092
+        },
+        {
+          "name": "p111_FID_36_112_49_49_49_46_107_46_55_56_53_49_48_",
+          "decoded": "p111_FID_$p111.k.78510",
+          "samples": 1,
+          "fraction": 0.0007052186177715092
+        },
+        {
+          "name": "p111_FID_36_112_49_49_49_46_107_46_53_48_51_55_53_",
+          "decoded": "p111_FID_$p111.k.50375",
+          "samples": 1,
+          "fraction": 0.0007052186177715092
+        },
+        {
+          "name": "p111_FID_36_112_49_49_49_46_107_46_55_56_54_48_54_",
+          "decoded": "p111_FID_$p111.k.78606",
+          "samples": 1,
+          "fraction": 0.0007052186177715092
+        },
+        {
+          "name": "p111_FID_36_112_49_49_49_46_107_46_53_57_48_50_53_",
+          "decoded": "p111_FID_$p111.k.59025",
+          "samples": 1,
+          "fraction": 0.0007052186177715092
+        },
+        {
+          "name": "p111_FID_36_112_49_49_49_46_107_46_52_51_57_50_53_",
+          "decoded": "p111_FID_$p111.k.43925",
+          "samples": 1,
+          "fraction": 0.0007052186177715092
+        },
+        {
+          "name": "p113d_FID_36_100_105_114_101_99_116_46_83_116_114_105_110_103_46_99_109_112_",
+          "decoded": "p113d_FID_$direct.String.cmp",
+          "samples": 1,
+          "fraction": 0.0007052186177715092
+        },
+        {
+          "name": "p113d_FID_36_100_105_114_101_99_116_46_77_97_112_46_108_111_",
+          "decoded": "p113d_FID_$direct.Map.lo",
+          "samples": 1,
+          "fraction": 0.0007052186177715092
+        },
+        {
+          "name": "p111_FID_36_112_49_49_49_46_107_46_57_53_54_57_57_",
+          "decoded": "p111_FID_$p111.k.95699",
+          "samples": 1,
+          "fraction": 0.0007052186177715092
+        },
+        {
+          "name": "p118_p111_rt_take1",
+          "decoded": "p118_p111_rt_take1",
+          "samples": 1,
+          "fraction": 0.0007052186177715092
+        },
+        {
+          "name": "p111_FID_36_112_49_49_49_46_107_46_55_56_51_51_54_",
+          "decoded": "p111_FID_$p111.k.78336",
+          "samples": 1,
+          "fraction": 0.0007052186177715092
+        },
+        {
+          "name": "p113d_FID_36_100_105_114_101_99_116_46_77_97_112_46_112_111_112_46_108_111_",
+          "decoded": "p113d_FID_$direct.Map.pop.lo",
+          "samples": 1,
+          "fraction": 0.0007052186177715092
+        },
+        {
+          "name": "p111_FID_36_100_105_114_101_99_116_46_112_51_55_46_109_97_112_46_114_101_109_111_118_101_",
+          "decoded": "p111_FID_$direct.p37.map.remove",
+          "samples": 1,
+          "fraction": 0.0007052186177715092
+        },
+        {
+          "name": "p111_FID_36_112_49_49_49_46_107_46_57_56_57_50_49_",
+          "decoded": "p111_FID_$p111.k.98921",
+          "samples": 1,
+          "fraction": 0.0007052186177715092
+        },
+        {
+          "name": "p112w_FID_36_100_105_114_101_99_116_46_77_97_112_46_108_111_",
+          "decoded": "p112w_FID_$direct.Map.lo",
+          "samples": 1,
+          "fraction": 0.0007052186177715092
+        },
+        {
+          "name": "p113d_FID_36_100_105_114_101_99_116_46_77_97_112_46_112_111_112_46_104_105_",
+          "decoded": "p113d_FID_$direct.Map.pop.hi",
+          "samples": 1,
+          "fraction": 0.0007052186177715092
+        },
+        {
+          "name": "p111_FID_36_112_49_49_49_46_107_46_53_48_51_55_49_",
+          "decoded": "p111_FID_$p111.k.50371",
+          "samples": 1,
+          "fraction": 0.0007052186177715092
+        },
+        {
+          "name": "p111_FID_36_112_49_49_49_46_107_46_49_48_50_48_54_56_",
+          "decoded": "p111_FID_$p111.k.102068",
+          "samples": 1,
+          "fraction": 0.0007052186177715092
+        },
+        {
+          "name": "heap_alloc",
+          "decoded": "heap_alloc",
+          "samples": 1,
+          "fraction": 0.0007052186177715092
+        },
+        {
+          "name": "p111_FID_36_100_105_114_101_99_116_46_112_51_55_46_109_97_112_46_117_112_100_97_116_101_",
+          "decoded": "p111_FID_$direct.p37.map.update",
+          "samples": 1,
+          "fraction": 0.0007052186177715092
+        },
+        {
+          "name": "p111_FID_36_112_49_49_49_46_107_46_52_51_57_48_55_",
+          "decoded": "p111_FID_$p111.k.43907",
+          "samples": 1,
+          "fraction": 0.0007052186177715092
+        },
+        {
+          "name": "p111_FID_36_112_49_49_49_46_107_46_53_56_56_57_48_",
+          "decoded": "p111_FID_$p111.k.58890",
+          "samples": 1,
+          "fraction": 0.0007052186177715092
+        },
+        {
+          "name": "p111_FID_36_112_49_49_49_46_107_46_53_53_53_52_55_",
+          "decoded": "p111_FID_$p111.k.55547",
+          "samples": 1,
+          "fraction": 0.0007052186177715092
+        },
+        {
+          "name": "p113d_FID_36_100_105_114_101_99_116_46_112_51_55_46_109_97_112_46_115_116_114_105_110_103_",
+          "decoded": "p113d_FID_$direct.p37.map.string",
+          "samples": 1,
+          "fraction": 0.0007052186177715092
+        },
+        {
+          "name": "p111_FID_36_100_105_114_101_99_116_46_112_51_55_46_109_97_112_46_107_101_121_",
+          "decoded": "p111_FID_$direct.p37.map.key",
+          "samples": 1,
+          "fraction": 0.0007052186177715092
+        }
+      ]
+    }
+  ],
+  "compilerProfiles": [
+    {
+      "role": "phase114",
+      "cleanSeconds": [
+        2.6797266679350287,
+        2.6888896429445595
+      ],
+      "samples": 1085,
+      "captures": [
+        {
+          "samples": 333,
+          "periodUs": 8000,
+          "overruns": 0,
+          "dropped": 0,
+          "coverage": 0.9998138455505101,
+          "analysis": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase119/compiler01/phase114-1.analysis.json",
+            "bytes": 50893,
+            "sha256": "07dfabce679a1f422e6cf48f0de9251e9b76d01d32c2d4a3fe9ca3b741f0576c"
+          }
+        },
+        {
+          "samples": 206,
+          "periodUs": 13000,
+          "overruns": 0,
+          "dropped": 0,
+          "coverage": 0.9998146524731792,
+          "analysis": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase119/compiler01/phase114-2.analysis.json",
+            "bytes": 30202,
+            "sha256": "3ccf95a165f5a4f1d2a97f931fc1e7fe4dd2e5f00dfb3b28fef6e667a11c08f1"
+          }
+        },
+        {
+          "samples": 340,
+          "periodUs": 8000,
+          "overruns": 0,
+          "dropped": 0,
+          "coverage": 0.9998172563733355,
+          "analysis": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase119/compiler01/phase114-3.analysis.json",
+            "bytes": 44120,
+            "sha256": "164cb355c209486906ed57bc733729753c3b2aef43ce6ca46077f1356c63b30f"
+          }
+        },
+        {
+          "samples": 206,
+          "periodUs": 13000,
+          "overruns": 0,
+          "dropped": 0,
+          "coverage": 0.99981782203831,
+          "analysis": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase119/compiler01/phase114-4.analysis.json",
+            "bytes": 34346,
+            "sha256": "17f5366fb1c71df0906f52cd1bb745709b607929416c873a295b3b275d58fb25"
+          }
+        }
+      ],
+      "libc": {
+        "copy": {
+          "samples": 51,
+          "fraction": 0.047004608294930875
+        },
+        "fill": {
+          "samples": 163,
+          "fraction": 0.15023041474654378
+        }
+      },
+      "libcPCs": [
+        {
+          "kind": "fill",
+          "address": "0xa3d00",
+          "samples": 45
+        },
+        {
+          "kind": "fill",
+          "address": "0xa3d71",
+          "samples": 21
+        },
+        {
+          "kind": "fill",
+          "address": "0xa3d04",
+          "samples": 19
+        },
+        {
+          "kind": "fill",
+          "address": "0xa3d66",
+          "samples": 17
+        },
+        {
+          "kind": "fill",
+          "address": "0xa3d5c",
+          "samples": 13
+        },
+        {
+          "kind": "copy",
+          "address": "0xa3930",
+          "samples": 12
+        },
+        {
+          "kind": "copy",
+          "address": "0xa3933",
+          "samples": 11
+        },
+        {
+          "kind": "copy",
+          "address": "0xa3993",
+          "samples": 8
+        },
+        {
+          "kind": "fill",
+          "address": "0xa3d7c",
+          "samples": 7
+        },
+        {
+          "kind": "copy",
+          "address": "0xa3942",
+          "samples": 7
+        },
+        {
+          "kind": "fill",
+          "address": "0xa3d58",
+          "samples": 7
+        },
+        {
+          "kind": "fill",
+          "address": "0xa3d0b",
+          "samples": 7
+        },
+        {
+          "kind": "fill",
+          "address": "0xa3d14",
+          "samples": 6
+        },
+        {
+          "kind": "copy",
+          "address": "0xa399b",
+          "samples": 3
+        },
+        {
+          "kind": "fill",
+          "address": "0xa3da6",
+          "samples": 3
+        },
+        {
+          "kind": "fill",
+          "address": "0xa3d54",
+          "samples": 3
+        },
+        {
+          "kind": "fill",
+          "address": "0xa3d8e",
+          "samples": 3
+        },
+        {
+          "kind": "fill",
+          "address": "0xa3d0f",
+          "samples": 2
+        },
+        {
+          "kind": "copy",
+          "address": "0xa399e",
+          "samples": 2
+        },
+        {
+          "kind": "copy",
+          "address": "0xa3a1f",
+          "samples": 2
+        },
+        {
+          "kind": "copy",
+          "address": "0xa398e",
+          "samples": 2
+        },
+        {
+          "kind": "copy",
+          "address": "0xa394f",
+          "samples": 2
+        },
+        {
+          "kind": "fill",
+          "address": "0xa3daa",
+          "samples": 2
+        },
+        {
+          "kind": "fill",
+          "address": "0xa3d81",
+          "samples": 2
+        },
+        {
+          "kind": "fill",
+          "address": "0xa3d07",
+          "samples": 1
+        },
+        {
+          "kind": "fill",
+          "address": "0xa3d9c",
+          "samples": 1
+        },
+        {
+          "kind": "fill",
+          "address": "0xa3d6b",
+          "samples": 1
+        },
+        {
+          "kind": "copy",
+          "address": "0xa393f",
+          "samples": 1
+        },
+        {
+          "kind": "fill",
+          "address": "0xa3d93",
+          "samples": 1
+        },
+        {
+          "kind": "fill",
+          "address": "0xa3d97",
+          "samples": 1
+        },
+        {
+          "kind": "fill",
+          "address": "0xa3da1",
+          "samples": 1
+        },
+        {
+          "kind": "copy",
+          "address": "0xa3947",
+          "samples": 1
+        }
+      ],
+      "symbols": [
+        {
+          "name": "<mapping:/usr/lib/x86_64-linux-gnu/libc-2.31.so>",
+          "decoded": "<mapping:/usr/lib/x86_64-linux-gnu/libc-2.31.so>",
+          "samples": 214,
+          "fraction": 0.19723502304147467
+        },
+        {
+          "name": "term_drop",
+          "decoded": "term_drop",
+          "samples": 158,
+          "fraction": 0.1456221198156682
+        },
+        {
+          "name": "p111_rt_take",
+          "decoded": "p111_rt_take",
+          "samples": 135,
+          "fraction": 0.12442396313364056
+        },
+        {
+          "name": "span_fade",
+          "decoded": "span_fade",
+          "samples": 100,
+          "fraction": 0.09216589861751152
+        },
+        {
+          "name": "p111_rt_ctor",
+          "decoded": "p111_rt_ctor",
+          "samples": 92,
+          "fraction": 0.0847926267281106
+        },
+        {
+          "name": "p111_set_regs",
+          "decoded": "p111_set_regs",
+          "samples": 19,
+          "fraction": 0.017511520737327188
+        },
+        {
+          "name": "p111_rt_special_take",
+          "decoded": "p111_rt_special_take",
+          "samples": 17,
+          "fraction": 0.01566820276497696
+        },
+        {
+          "name": "p111_rt_keep",
+          "decoded": "p111_rt_keep",
+          "samples": 15,
+          "fraction": 0.013824884792626729
+        },
+        {
+          "name": "work_loop",
+          "decoded": "work_loop",
+          "samples": 15,
+          "fraction": 0.013824884792626729
+        },
+        {
+          "name": "p113d_FID_36_100_105_114_101_99_116_46_112_56_56_95_115_116_114_105_110_103_95_101_113_95_103_111_",
+          "decoded": "p113d_FID_$direct.p88_string_eq_go",
+          "samples": 14,
+          "fraction": 0.012903225806451613
+        },
+        {
+          "name": "heap_alloc",
+          "decoded": "heap_alloc",
+          "samples": 14,
+          "fraction": 0.012903225806451613
+        },
+        {
+          "name": "p111_rt_sink",
+          "decoded": "p111_rt_sink",
+          "samples": 13,
+          "fraction": 0.011981566820276499
+        },
+        {
+          "name": "rfc_wrap",
+          "decoded": "rfc_wrap",
+          "samples": 12,
+          "fraction": 0.011059907834101382
+        },
+        {
+          "name": "p111_FID_36_100_105_114_101_99_116_46_83_116_114_105_110_103_46_99_109_112_46_102_105_110_",
+          "decoded": "p111_FID_$direct.String.cmp.fin",
+          "samples": 12,
+          "fraction": 0.011059907834101382
+        },
+        {
+          "name": "p111_FID_36_100_105_114_101_99_116_46_83_116_114_105_110_103_46_99_109_112_",
+          "decoded": "p111_FID_$direct.String.cmp",
+          "samples": 11,
+          "fraction": 0.010138248847926268
+        },
+        {
+          "name": "p111_FID_36_100_105_114_101_99_116_46_112_56_56_95_100_105_103_105_116_115_",
+          "decoded": "p111_FID_$direct.p88_digits",
+          "samples": 10,
+          "fraction": 0.009216589861751152
+        },
+        {
+          "name": "p111_rt_jump",
+          "decoded": "p111_rt_jump",
+          "samples": 10,
+          "fraction": 0.009216589861751152
+        },
+        {
+          "name": "p111_FID_36_100_105_114_101_99_116_46_66_111_111_108_46_97_110_100_",
+          "decoded": "p111_FID_$direct.Bool.and",
+          "samples": 9,
+          "fraction": 0.008294930875576038
+        },
+        {
+          "name": "p111_FID_36_100_105_114_101_99_116_46_105_110_100_101_120_95_102_105_110_100_",
+          "decoded": "p111_FID_$direct.index_find",
+          "samples": 9,
+          "fraction": 0.008294930875576038
+        },
+        {
+          "name": "p111_rt_return",
+          "decoded": "p111_rt_return",
+          "samples": 8,
+          "fraction": 0.007373271889400922
+        },
+        {
+          "name": "p111_rt_op",
+          "decoded": "p111_rt_op",
+          "samples": 8,
+          "fraction": 0.007373271889400922
+        },
+        {
+          "name": "p113d_FID_36_100_105_114_101_99_116_46_105_110_100_101_120_95_104_97_115_104_",
+          "decoded": "p113d_FID_$direct.index_hash",
+          "samples": 7,
+          "fraction": 0.0064516129032258064
+        },
+        {
+          "name": "p113d_FID_36_100_105_114_101_99_116_46_67_104_97_114_46_99_109_112_",
+          "decoded": "p113d_FID_$direct.Char.cmp",
+          "samples": 7,
+          "fraction": 0.0064516129032258064
+        },
+        {
+          "name": "p111_rt_special_ctor",
+          "decoded": "p111_rt_special_ctor",
+          "samples": 6,
+          "fraction": 0.005529953917050691
+        },
+        {
+          "name": "p111_rt_take.cold",
+          "decoded": "p111_rt_take.cold",
+          "samples": 6,
+          "fraction": 0.005529953917050691
+        },
+        {
+          "name": "p111_FID_36_112_49_49_49_46_107_46_56_48_53_57_51_",
+          "decoded": "p111_FID_$p111.k.80593",
+          "samples": 5,
+          "fraction": 0.004608294930875576
+        },
+        {
+          "name": "p111_FID_36_100_105_114_101_99_116_46_112_56_56_95_115_116_114_105_110_103_95_101_113_",
+          "decoded": "p111_FID_$direct.p88_string_eq",
+          "samples": 4,
+          "fraction": 0.003686635944700461
+        },
+        {
+          "name": "p111_FID_36_100_105_114_101_99_116_46_112_56_56_95_102_105_101_108_100_115_",
+          "decoded": "p111_FID_$direct.p88_fields",
+          "samples": 4,
+          "fraction": 0.003686635944700461
+        },
+        {
+          "name": "p111_FID_36_112_49_49_49_46_107_46_56_51_56_51_50_",
+          "decoded": "p111_FID_$p111.k.83832",
+          "samples": 4,
+          "fraction": 0.003686635944700461
+        },
+        {
+          "name": "p114r_FID_36_100_105_114_101_99_116_46_83_116_114_105_110_103_46_97_112_112_101_110_100_",
+          "decoded": "p114r_FID_$direct.String.append",
+          "samples": 4,
+          "fraction": 0.003686635944700461
+        },
+        {
+          "name": "p113d_FID_36_100_105_114_101_99_116_46_66_111_111_108_46_97_110_100_",
+          "decoded": "p113d_FID_$direct.Bool.and",
+          "samples": 4,
+          "fraction": 0.003686635944700461
+        },
+        {
+          "name": "p111_FID_36_100_105_114_101_99_116_46_112_56_56_95_100_105_103_105_116_",
+          "decoded": "p111_FID_$direct.p88_digit",
+          "samples": 4,
+          "fraction": 0.003686635944700461
+        },
+        {
+          "name": "p111_FID_36_112_49_49_49_46_107_46_51_50_51_52_48_49_49_",
+          "decoded": "p111_FID_$p111.k.3234011",
+          "samples": 4,
+          "fraction": 0.003686635944700461
+        },
+        {
+          "name": "p113d_FID_36_100_105_114_101_99_116_46_83_116_114_105_110_103_46_99_109_112_46_114_101_99_",
+          "decoded": "p113d_FID_$direct.String.cmp.rec",
+          "samples": 4,
+          "fraction": 0.003686635944700461
+        },
+        {
+          "name": "heap_alloc_miss",
+          "decoded": "heap_alloc_miss",
+          "samples": 3,
+          "fraction": 0.0027649769585253456
+        },
+        {
+          "name": "p111_FID_36_112_49_49_49_46_107_46_56_48_54_51_48_",
+          "decoded": "p111_FID_$p111.k.80630",
+          "samples": 3,
+          "fraction": 0.0027649769585253456
+        },
+        {
+          "name": "p111_FID_36_112_49_49_49_46_107_46_51_50_51_57_50_51_53_",
+          "decoded": "p111_FID_$p111.k.3239235",
+          "samples": 3,
+          "fraction": 0.0027649769585253456
+        },
+        {
+          "name": "p111_FID_36_112_49_49_49_46_107_46_50_56_57_56_53_49_54_",
+          "decoded": "p111_FID_$p111.k.2898516",
+          "samples": 3,
+          "fraction": 0.0027649769585253456
+        },
+        {
+          "name": "io_cbuf",
+          "decoded": "io_cbuf",
+          "samples": 3,
+          "fraction": 0.0027649769585253456
+        },
+        {
+          "name": "p111_FID_36_100_105_114_101_99_116_46_112_49_49_49_118_95_110_97_109_101_95_99_104_97_114_115_",
+          "decoded": "p111_FID_$direct.p111v_name_chars",
+          "samples": 3,
+          "fraction": 0.0027649769585253456
+        },
+        {
+          "name": "p111_FID_36_112_49_49_49_46_107_46_56_48_54_52_52_",
+          "decoded": "p111_FID_$p111.k.80644",
+          "samples": 3,
+          "fraction": 0.0027649769585253456
+        },
+        {
+          "name": "p111_FID_36_100_105_114_101_99_116_46_112_56_56_95_110_117_109_98_101_114_",
+          "decoded": "p111_FID_$direct.p88_number",
+          "samples": 2,
+          "fraction": 0.0018433179723502304
+        },
+        {
+          "name": "p111_FID_36_112_49_49_49_46_107_46_57_55_53_52_53_",
+          "decoded": "p111_FID_$p111.k.97545",
+          "samples": 2,
+          "fraction": 0.0018433179723502304
+        },
+        {
+          "name": "p111_FID_36_100_105_114_101_99_116_46_112_56_56_95_102_105_101_108_100_115_95_110_101_120_116_",
+          "decoded": "p111_FID_$direct.p88_fields_next",
+          "samples": 2,
+          "fraction": 0.0018433179723502304
+        },
+        {
+          "name": "p111_FID_36_112_49_49_49_46_107_46_56_48_54_48_55_",
+          "decoded": "p111_FID_$p111.k.80607",
+          "samples": 2,
+          "fraction": 0.0018433179723502304
+        },
+        {
+          "name": "p111_FID_36_112_49_49_49_46_107_46_50_50_49_49_54_51_51_",
+          "decoded": "p111_FID_$p111.k.2211633",
+          "samples": 2,
+          "fraction": 0.0018433179723502304
+        },
+        {
+          "name": "p111_FID_36_100_105_114_101_99_116_46_105_110_100_101_120_95_105_110_115_101_114_116_",
+          "decoded": "p111_FID_$direct.index_insert",
+          "samples": 2,
+          "fraction": 0.0018433179723502304
+        },
+        {
+          "name": "p111_FID_36_100_105_114_101_99_116_46_112_49_49_49_118_95_105_110_116_101_114_115_101_99_116_105_111_110_",
+          "decoded": "p111_FID_$direct.p111v_intersection",
+          "samples": 2,
+          "fraction": 0.0018433179723502304
+        },
+        {
+          "name": "p111_FID_36_112_49_49_49_46_107_46_50_57_48_50_57_48_49_",
+          "decoded": "p111_FID_$p111.k.2902901",
+          "samples": 2,
+          "fraction": 0.0018433179723502304
+        },
+        {
+          "name": "p111_FID_36_100_105_114_101_99_116_46_112_49_49_51_107_95_106_111_105_110_",
+          "decoded": "p111_FID_$direct.p113k_join",
+          "samples": 2,
+          "fraction": 0.0018433179723502304
+        },
+        {
+          "name": "p111_FID_36_112_49_49_49_46_107_46_50_56_57_56_54_49_48_",
+          "decoded": "p111_FID_$p111.k.2898610",
+          "samples": 2,
+          "fraction": 0.0018433179723502304
+        },
+        {
+          "name": "_init",
+          "decoded": "_init",
+          "samples": 2,
+          "fraction": 0.0018433179723502304
+        },
+        {
+          "name": "p111_FID_36_112_49_49_49_46_107_46_50_57_57_51_50_53_55_",
+          "decoded": "p111_FID_$p111.k.2993257",
+          "samples": 2,
+          "fraction": 0.0018433179723502304
+        },
+        {
+          "name": "p114r_FID_36_100_105_114_101_99_116_46_76_105_115_116_46_108_101_110_103_116_104_",
+          "decoded": "p114r_FID_$direct.List.length",
+          "samples": 2,
+          "fraction": 0.0018433179723502304
+        },
+        {
+          "name": "p111_FID_36_112_49_49_49_46_107_46_50_53_49_54_49_52_54_",
+          "decoded": "p111_FID_$p111.k.2516146",
+          "samples": 2,
+          "fraction": 0.0018433179723502304
+        },
+        {
+          "name": "p111_FID_36_100_105_114_101_99_116_46_112_56_56_95_117_51_50_",
+          "decoded": "p111_FID_$direct.p88_u32",
+          "samples": 2,
+          "fraction": 0.0018433179723502304
+        },
+        {
+          "name": "p111_FID_36_112_49_49_49_46_107_46_56_48_54_50_55_",
+          "decoded": "p111_FID_$p111.k.80627",
+          "samples": 2,
+          "fraction": 0.0018433179723502304
+        },
+        {
+          "name": "p112w_FID_36_100_105_114_101_99_116_46_66_111_111_108_46_110_111_116_",
+          "decoded": "p112w_FID_$direct.Bool.not",
+          "samples": 2,
+          "fraction": 0.0018433179723502304
+        },
+        {
+          "name": "p111_FID_36_112_49_49_49_46_107_46_51_50_51_55_49_55_51_",
+          "decoded": "p111_FID_$p111.k.3237173",
+          "samples": 2,
+          "fraction": 0.0018433179723502304
+        },
+        {
+          "name": "p112w_FID_36_100_105_114_101_99_116_46_66_111_111_108_46_97_110_100_",
+          "decoded": "p112w_FID_$direct.Bool.and",
+          "samples": 1,
+          "fraction": 0.0009216589861751152
+        },
+        {
+          "name": "p111_FID_36_112_49_49_49_46_107_46_56_48_53_51_51_",
+          "decoded": "p111_FID_$p111.k.80533",
+          "samples": 1,
+          "fraction": 0.0009216589861751152
+        },
+        {
+          "name": "p114r_FID_36_100_105_114_101_99_116_46_110_111_114_109_95_106_111_105_110_",
+          "decoded": "p114r_FID_$direct.norm_join",
+          "samples": 1,
+          "fraction": 0.0009216589861751152
+        },
+        {
+          "name": "p112w_FID_36_100_105_114_101_99_116_46_112_57_56_95_116_97_103_95_101_113_",
+          "decoded": "p112w_FID_$direct.p98_tag_eq",
+          "samples": 1,
+          "fraction": 0.0009216589861751152
+        },
+        {
+          "name": "p111_rt_ctor.cold",
+          "decoded": "p111_rt_ctor.cold",
+          "samples": 1,
+          "fraction": 0.0009216589861751152
+        },
+        {
+          "name": "p111_FID_36_100_105_114_101_99_116_46_83_116_114_105_110_103_46_101_113_",
+          "decoded": "p111_FID_$direct.String.eq",
+          "samples": 1,
+          "fraction": 0.0009216589861751152
+        },
+        {
+          "name": "p111_FID_36_112_49_49_49_46_107_46_50_57_48_49_55_56_48_",
+          "decoded": "p111_FID_$p111.k.2901780",
+          "samples": 1,
+          "fraction": 0.0009216589861751152
+        },
+        {
+          "name": "p111_FID_36_100_105_114_101_99_116_46_112_49_49_51_107_95_98_111_100_121_",
+          "decoded": "p111_FID_$direct.p113k_body",
+          "samples": 1,
+          "fraction": 0.0009216589861751152
+        },
+        {
+          "name": "p111_FID_36_100_105_114_101_99_116_46_113_116_",
+          "decoded": "p111_FID_$direct.qt",
+          "samples": 1,
+          "fraction": 0.0009216589861751152
+        },
+        {
+          "name": "p111_FID_36_112_49_49_49_46_107_46_50_57_48_50_56_56_53_",
+          "decoded": "p111_FID_$p111.k.2902885",
+          "samples": 1,
+          "fraction": 0.0009216589861751152
+        },
+        {
+          "name": "p111_FID_36_112_49_49_49_46_107_46_50_52_57_55_49_50_50_",
+          "decoded": "p111_FID_$p111.k.2497122",
+          "samples": 1,
+          "fraction": 0.0009216589861751152
+        },
+        {
+          "name": "p113d_FID_36_100_105_114_101_99_116_46_105_110_100_101_120_95_110_111_100_101_",
+          "decoded": "p113d_FID_$direct.index_node",
+          "samples": 1,
+          "fraction": 0.0009216589861751152
+        },
+        {
+          "name": "p111_FID_36_100_105_114_101_99_116_46_105_110_100_101_120_95_116_105_112_",
+          "decoded": "p111_FID_$direct.index_tip",
+          "samples": 1,
+          "fraction": 0.0009216589861751152
+        },
+        {
+          "name": "p113d_FID_36_100_105_114_101_99_116_46_100_120_",
+          "decoded": "p113d_FID_$direct.dx",
+          "samples": 1,
+          "fraction": 0.0009216589861751152
+        },
+        {
+          "name": "p111_FID_36_112_49_49_49_46_107_46_50_53_52_55_57_55_48_",
+          "decoded": "p111_FID_$p111.k.2547970",
+          "samples": 1,
+          "fraction": 0.0009216589861751152
+        },
+        {
+          "name": "p111_FID_36_100_105_114_101_99_116_46_85_51_50_46_115_104_111_119_46_103_111_",
+          "decoded": "p111_FID_$direct.U32.show.go",
+          "samples": 1,
+          "fraction": 0.0009216589861751152
+        },
+        {
+          "name": "p111_FID_36_112_49_49_49_46_107_46_50_56_55_51_51_56_54_",
+          "decoded": "p111_FID_$p111.k.2873386",
+          "samples": 1,
+          "fraction": 0.0009216589861751152
+        },
+        {
+          "name": "p111_FID_36_112_49_49_49_46_107_46_50_57_55_48_53_53_51_",
+          "decoded": "p111_FID_$p111.k.2970553",
+          "samples": 1,
+          "fraction": 0.0009216589861751152
+        },
+        {
+          "name": "p111_FID_36_112_49_49_49_46_107_46_51_49_49_51_55_49_56_",
+          "decoded": "p111_FID_$p111.k.3113718",
+          "samples": 1,
+          "fraction": 0.0009216589861751152
+        },
+        {
+          "name": "p111_FID_36_112_49_49_49_46_107_46_51_49_51_51_57_53_54_",
+          "decoded": "p111_FID_$p111.k.3133956",
+          "samples": 1,
+          "fraction": 0.0009216589861751152
+        },
+        {
+          "name": "p111_FID_36_112_49_49_49_46_107_46_51_48_48_53_49_57_50_",
+          "decoded": "p111_FID_$p111.k.3005192",
+          "samples": 1,
+          "fraction": 0.0009216589861751152
+        },
+        {
+          "name": "p111_FID_36_100_105_114_101_99_116_46_85_51_50_46_115_104_111_119_",
+          "decoded": "p111_FID_$direct.U32.show",
+          "samples": 1,
+          "fraction": 0.0009216589861751152
+        },
+        {
+          "name": "p111_FID_36_100_105_114_101_99_116_46_112_49_49_50_116_95_98_117_102_102_101_114_95_97_114_103_115_",
+          "decoded": "p111_FID_$direct.p112t_buffer_args",
+          "samples": 1,
+          "fraction": 0.0009216589861751152
+        },
+        {
+          "name": "p112w_FID_36_100_105_114_101_99_116_46_112_56_56_95_102_105_101_108_100_95_110_117_109_98_101_114_",
+          "decoded": "p112w_FID_$direct.p88_field_number",
+          "samples": 1,
+          "fraction": 0.0009216589861751152
+        },
+        {
+          "name": "p111_FID_36_112_49_49_49_46_107_46_56_48_53_53_51_",
+          "decoded": "p111_FID_$p111.k.80553",
+          "samples": 1,
+          "fraction": 0.0009216589861751152
+        },
+        {
+          "name": "p111_FID_36_112_49_49_49_46_107_46_50_50_53_54_52_55_49_",
+          "decoded": "p111_FID_$p111.k.2256471",
+          "samples": 1,
+          "fraction": 0.0009216589861751152
+        },
+        {
+          "name": "p113d_FID_36_100_105_114_101_99_116_46_105_110_100_101_120_95_116_105_112_",
+          "decoded": "p113d_FID_$direct.index_tip",
+          "samples": 1,
+          "fraction": 0.0009216589861751152
+        },
+        {
+          "name": "p111_FID_36_112_49_49_49_46_107_46_50_50_49_49_54_52_52_",
+          "decoded": "p111_FID_$p111.k.2211644",
+          "samples": 1,
+          "fraction": 0.0009216589861751152
+        },
+        {
+          "name": "p113d_FID_36_100_105_114_101_99_116_46_105_110_100_101_120_95_98_117_99_107_101_116_",
+          "decoded": "p113d_FID_$direct.index_bucket",
+          "samples": 1,
+          "fraction": 0.0009216589861751152
+        },
+        {
+          "name": "p111_FID_36_100_105_114_101_99_116_46_105_110_100_101_120_95_106_111_105_110_",
+          "decoded": "p111_FID_$direct.index_join",
+          "samples": 1,
+          "fraction": 0.0009216589861751152
+        },
+        {
+          "name": "p111_FID_36_112_49_49_49_46_107_46_50_52_54_56_53_48_54_",
+          "decoded": "p111_FID_$p111.k.2468506",
+          "samples": 1,
+          "fraction": 0.0009216589861751152
+        },
+        {
+          "name": "p111_FID_36_100_105_114_101_99_116_46_83_116_114_105_110_103_46_115_116_97_114_116_115_95_119_105_116_104_",
+          "decoded": "p111_FID_$direct.String.starts_with",
+          "samples": 1,
+          "fraction": 0.0009216589861751152
+        },
+        {
+          "name": "p111_FID_36_100_105_114_101_99_116_46_112_49_49_50_102_95_99_108_101_97_110_95_118_97_108_117_101_",
+          "decoded": "p111_FID_$direct.p112f_clean_value",
+          "samples": 1,
+          "fraction": 0.0009216589861751152
+        },
+        {
+          "name": "p111_FID_36_100_105_114_101_99_116_46_112_49_49_49_113_95_118_97_108_117_101_",
+          "decoded": "p111_FID_$direct.p111q_value",
+          "samples": 1,
+          "fraction": 0.0009216589861751152
+        },
+        {
+          "name": "io_str.cold",
+          "decoded": "io_str.cold",
+          "samples": 1,
+          "fraction": 0.0009216589861751152
+        },
+        {
+          "name": "p111_FID_36_112_49_49_49_46_107_46_55_53_50_53_55_",
+          "decoded": "p111_FID_$p111.k.75257",
+          "samples": 1,
+          "fraction": 0.0009216589861751152
+        },
+        {
+          "name": "p111_FID_36_112_49_49_49_46_107_46_56_48_53_49_57_",
+          "decoded": "p111_FID_$p111.k.80519",
+          "samples": 1,
+          "fraction": 0.0009216589861751152
+        },
+        {
+          "name": "p113d_FID_36_100_105_114_101_99_116_46_76_105_115_116_46_114_101_118_101_114_115_101_46_103_111_",
+          "decoded": "p113d_FID_$direct.List.reverse.go",
+          "samples": 1,
+          "fraction": 0.0009216589861751152
+        },
+        {
+          "name": "p113d_FID_36_100_105_114_101_99_116_46_112_56_56_95_102_105_101_108_100_95_110_117_109_98_101_114_",
+          "decoded": "p113d_FID_$direct.p88_field_number",
+          "samples": 1,
+          "fraction": 0.0009216589861751152
+        },
+        {
+          "name": "p111_FID_36_112_49_49_49_46_107_46_56_48_53_57_48_",
+          "decoded": "p111_FID_$p111.k.80590",
+          "samples": 1,
+          "fraction": 0.0009216589861751152
+        },
+        {
+          "name": "p113d_FID_36_100_105_114_101_99_116_46_100_99_",
+          "decoded": "p113d_FID_$direct.dc",
+          "samples": 1,
+          "fraction": 0.0009216589861751152
+        },
+        {
+          "name": "p111_FID_36_100_105_114_101_99_116_46_110_99_95_111_99_99_117_114_115_95_108_105_115_116_",
+          "decoded": "p111_FID_$direct.nc_occurs_list",
+          "samples": 1,
+          "fraction": 0.0009216589861751152
+        },
+        {
+          "name": "p111_FID_36_112_49_49_49_46_107_46_50_51_53_56_57_50_57_",
+          "decoded": "p111_FID_$p111.k.2358929",
+          "samples": 1,
+          "fraction": 0.0009216589861751152
+        },
+        {
+          "name": "p111_FID_36_100_105_114_101_99_116_46_112_49_49_51_112_108_95_99_97_110_100_105_100_97_116_101_95_99_111_100_101_",
+          "decoded": "p111_FID_$direct.p113pl_candidate_code",
+          "samples": 1,
+          "fraction": 0.0009216589861751152
+        },
+        {
+          "name": "p111_FID_36_100_105_114_101_99_116_46_105_110_100_101_120_95_108_101_97_102_",
+          "decoded": "p111_FID_$direct.index_leaf",
+          "samples": 1,
+          "fraction": 0.0009216589861751152
+        },
+        {
+          "name": "p111_FID_36_112_49_49_49_46_107_46_50_50_52_54_54_55_56_",
+          "decoded": "p111_FID_$p111.k.2246678",
+          "samples": 1,
+          "fraction": 0.0009216589861751152
+        },
+        {
+          "name": "p111_FID_36_112_49_49_49_46_107_46_50_52_54_56_52_56_55_",
+          "decoded": "p111_FID_$p111.k.2468487",
+          "samples": 1,
+          "fraction": 0.0009216589861751152
+        },
+        {
+          "name": "p113d_FID_36_100_105_114_101_99_116_46_100_97_",
+          "decoded": "p113d_FID_$direct.da",
+          "samples": 1,
+          "fraction": 0.0009216589861751152
+        },
+        {
+          "name": "p112w_FID_36_100_105_114_101_99_116_46_112_49_49_51_107_95_119_105_100_116_104_",
+          "decoded": "p112w_FID_$direct.p113k_width",
+          "samples": 1,
+          "fraction": 0.0009216589861751152
+        },
+        {
+          "name": "p113d_FID_36_100_105_114_101_99_116_46_100_116_",
+          "decoded": "p113d_FID_$direct.dt",
+          "samples": 1,
+          "fraction": 0.0009216589861751152
+        },
+        {
+          "name": "p111_FID_36_112_49_49_49_46_107_46_50_52_54_56_52_56_56_",
+          "decoded": "p111_FID_$p111.k.2468488",
+          "samples": 1,
+          "fraction": 0.0009216589861751152
+        },
+        {
+          "name": "p111_FID_36_112_49_49_49_46_107_46_50_57_56_51_55_52_53_",
+          "decoded": "p111_FID_$p111.k.2983745",
+          "samples": 1,
+          "fraction": 0.0009216589861751152
+        },
+        {
+          "name": "p113d_FID_36_100_105_114_101_99_116_46_67_109_112_46_105_115_95_101_113_",
+          "decoded": "p113d_FID_$direct.Cmp.is_eq",
+          "samples": 1,
+          "fraction": 0.0009216589861751152
+        },
+        {
+          "name": "p111_FID_36_100_105_114_101_99_116_46_85_51_50_46_115_104_111_119_46_102_105_110_",
+          "decoded": "p111_FID_$direct.U32.show.fin",
+          "samples": 1,
+          "fraction": 0.0009216589861751152
+        },
+        {
+          "name": "p111_FID_36_100_105_114_101_99_116_46_112_56_56_95_102_105_101_108_100_",
+          "decoded": "p111_FID_$direct.p88_field",
+          "samples": 1,
+          "fraction": 0.0009216589861751152
+        },
+        {
+          "name": "p113d_FID_36_100_105_114_101_99_116_46_112_56_56_95_115_116_114_105_110_103_95_101_113_",
+          "decoded": "p113d_FID_$direct.p88_string_eq",
+          "samples": 1,
+          "fraction": 0.0009216589861751152
+        },
+        {
+          "name": "p111_FID_36_112_49_49_49_46_107_46_50_52_51_50_54_56_57_",
+          "decoded": "p111_FID_$p111.k.2432689",
+          "samples": 1,
+          "fraction": 0.0009216589861751152
+        },
+        {
+          "name": "p111_FID_36_112_49_49_49_46_107_46_49_53_48_48_50_53_54_",
+          "decoded": "p111_FID_$p111.k.1500256",
+          "samples": 1,
+          "fraction": 0.0009216589861751152
+        },
+        {
+          "name": "p111_FID_36_100_105_114_101_99_116_46_110_116_95_114_101_112_108_97_99_101_95_103_111_",
+          "decoded": "p111_FID_$direct.nt_replace_go",
+          "samples": 1,
+          "fraction": 0.0009216589861751152
+        },
+        {
+          "name": "p111_FID_36_100_105_114_101_99_116_46_110_116_95_99_108_101_97_110_",
+          "decoded": "p111_FID_$direct.nt_clean",
+          "samples": 1,
+          "fraction": 0.0009216589861751152
+        },
+        {
+          "name": "p111_FID_36_100_105_114_101_99_116_46_110_113_95_108_97_121_111_117_116_95_101_118_97_108_",
+          "decoded": "p111_FID_$direct.nq_layout_eval",
+          "samples": 1,
+          "fraction": 0.0009216589861751152
+        },
+        {
+          "name": "p111_FID_36_112_49_49_49_46_107_46_49_54_49_54_48_50_57_",
+          "decoded": "p111_FID_$p111.k.1616029",
+          "samples": 1,
+          "fraction": 0.0009216589861751152
+        },
+        {
+          "name": "p112w_FID_36_100_105_114_101_99_116_46_100_118_",
+          "decoded": "p112w_FID_$direct.dv",
+          "samples": 1,
+          "fraction": 0.0009216589861751152
+        },
+        {
+          "name": "p111_FID_36_100_105_114_101_99_116_46_83_116_114_105_110_103_46_111_114_100_101_114_",
+          "decoded": "p111_FID_$direct.String.order",
+          "samples": 1,
+          "fraction": 0.0009216589861751152
+        },
+        {
+          "name": "p111_rt_reg_get",
+          "decoded": "p111_rt_reg_get",
+          "samples": 1,
+          "fraction": 0.0009216589861751152
+        },
+        {
+          "name": "p111_FID_36_112_49_49_49_46_107_46_51_49_54_55_53_57_57_",
+          "decoded": "p111_FID_$p111.k.3167599",
+          "samples": 1,
+          "fraction": 0.0009216589861751152
+        },
+        {
+          "name": "p111_FID_36_112_49_49_49_46_107_46_50_57_57_53_51_50_55_",
+          "decoded": "p111_FID_$p111.k.2995327",
+          "samples": 1,
+          "fraction": 0.0009216589861751152
+        },
+        {
+          "name": "p111_FID_36_100_105_114_101_99_116_46_112_49_49_50_116_95_102_97_105_108_117_114_101_",
+          "decoded": "p111_FID_$direct.p112t_failure",
+          "samples": 1,
+          "fraction": 0.0009216589861751152
+        },
+        {
+          "name": "p111_FID_36_100_105_114_101_99_116_46_83_116_114_105_110_103_46_97_112_112_101_110_100_",
+          "decoded": "p111_FID_$direct.String.append",
+          "samples": 1,
+          "fraction": 0.0009216589861751152
+        },
+        {
+          "name": "p111_FID_36_100_105_114_101_99_116_46_110_99_95_99_116_111_114_95_99_111_100_101_115_",
+          "decoded": "p111_FID_$direct.nc_ctor_codes",
+          "samples": 1,
+          "fraction": 0.0009216589861751152
+        }
+      ]
+    },
+    {
+      "role": "phase118",
+      "cleanSeconds": [
+        1.8918747510761023,
+        1.8902052009943873
+      ],
+      "samples": 758,
+      "captures": [
+        {
+          "samples": 235,
+          "periodUs": 8000,
+          "overruns": 0,
+          "dropped": 0,
+          "coverage": 0.9997340282855658,
+          "analysis": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase119/compiler01/phase118-1.analysis.json",
+            "bytes": 42577,
+            "sha256": "d6380602d1c4cd3b5e65b3602e74dc8ecf69e8f168f756afded12d35ac2d31b6"
+          }
+        },
+        {
+          "samples": 145,
+          "periodUs": 13000,
+          "overruns": 0,
+          "dropped": 0,
+          "coverage": 0.9997396749856161,
+          "analysis": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase119/compiler01/phase118-2.analysis.json",
+            "bytes": 28357,
+            "sha256": "b03d41995e24189395a55dde1f548a748a4836729d5d3158a1f9955396fa084b"
+          }
+        },
+        {
+          "samples": 234,
+          "periodUs": 8000,
+          "overruns": 0,
+          "dropped": 0,
+          "coverage": 0.9997348893748448,
+          "analysis": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase119/compiler01/phase118-3.analysis.json",
+            "bytes": 39980,
+            "sha256": "be6309c5e0da61ef6bad40b4d33167f130db338c7c7a9fefee01ea8ab0cc9e4a"
+          }
+        },
+        {
+          "samples": 144,
+          "periodUs": 13000,
+          "overruns": 0,
+          "dropped": 0,
+          "coverage": 0.9997300265949316,
+          "analysis": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase119/compiler01/phase118-4.analysis.json",
+            "bytes": 27538,
+            "sha256": "17aef79a1d86763bc2bc676e1a3427773a7c5661f21af800f9235ed98b4de1c2"
+          }
+        }
+      ],
+      "libc": {
+        "copy": {
+          "samples": 61,
+          "fraction": 0.08047493403693931
+        }
+      },
+      "libcPCs": [
+        {
+          "kind": "copy",
+          "address": "0xa3933",
+          "samples": 14
+        },
+        {
+          "kind": "copy",
+          "address": "0xa3930",
+          "samples": 8
+        },
+        {
+          "kind": "copy",
+          "address": "0xa3993",
+          "samples": 6
+        },
+        {
+          "kind": "copy",
+          "address": "0xa399b",
+          "samples": 5
+        },
+        {
+          "kind": "copy",
+          "address": "0xa3942",
+          "samples": 5
+        },
+        {
+          "kind": "copy",
+          "address": "0xa394f",
+          "samples": 4
+        },
+        {
+          "kind": "copy",
+          "address": "0xa394a",
+          "samples": 4
+        },
+        {
+          "kind": "copy",
+          "address": "0xa393f",
+          "samples": 3
+        },
+        {
+          "kind": "copy",
+          "address": "0xa3947",
+          "samples": 2
+        },
+        {
+          "kind": "copy",
+          "address": "0xa3a1f",
+          "samples": 2
+        },
+        {
+          "kind": "copy",
+          "address": "0xa399e",
+          "samples": 2
+        },
+        {
+          "kind": "copy",
+          "address": "0xa3a28",
+          "samples": 2
+        },
+        {
+          "kind": "copy",
+          "address": "0xa3a3e",
+          "samples": 1
+        },
+        {
+          "kind": "copy",
+          "address": "0xa3a2d",
+          "samples": 1
+        },
+        {
+          "kind": "copy",
+          "address": "0xa3a34",
+          "samples": 1
+        },
+        {
+          "kind": "copy",
+          "address": "0xa398e",
+          "samples": 1
+        }
+      ],
+      "symbols": [
+        {
+          "name": "term_drop",
+          "decoded": "term_drop",
+          "samples": 134,
+          "fraction": 0.17678100263852242
+        },
+        {
+          "name": "span_fade",
+          "decoded": "span_fade",
+          "samples": 79,
+          "fraction": 0.10422163588390501
+        },
+        {
+          "name": "<mapping:/usr/lib/x86_64-linux-gnu/libc-2.31.so>",
+          "decoded": "<mapping:/usr/lib/x86_64-linux-gnu/libc-2.31.so>",
+          "samples": 61,
+          "fraction": 0.08047493403693931
+        },
+        {
+          "name": "p118_p111_rt_take2",
+          "decoded": "p118_p111_rt_take2",
+          "samples": 52,
+          "fraction": 0.06860158311345646
+        },
+        {
+          "name": "p111_rt_special_take",
+          "decoded": "p111_rt_special_take",
+          "samples": 22,
+          "fraction": 0.029023746701846966
+        },
+        {
+          "name": "p111_FID_36_100_105_114_101_99_116_46_112_56_56_95_100_105_103_105_116_115_",
+          "decoded": "p111_FID_$direct.p88_digits",
+          "samples": 19,
+          "fraction": 0.025065963060686015
+        },
+        {
+          "name": "p111_rt_return",
+          "decoded": "p111_rt_return",
+          "samples": 19,
+          "fraction": 0.025065963060686015
+        },
+        {
+          "name": "p118_p111_rt_take2.cold",
+          "decoded": "p118_p111_rt_take2.cold",
+          "samples": 17,
+          "fraction": 0.022427440633245383
+        },
+        {
+          "name": "p111_rt_ctor",
+          "decoded": "p111_rt_ctor",
+          "samples": 16,
+          "fraction": 0.021108179419525065
+        },
+        {
+          "name": "work_loop",
+          "decoded": "work_loop",
+          "samples": 16,
+          "fraction": 0.021108179419525065
+        },
+        {
+          "name": "p118_rt_borrow_fields",
+          "decoded": "p118_rt_borrow_fields",
+          "samples": 15,
+          "fraction": 0.01978891820580475
+        },
+        {
+          "name": "p111_rt_sink",
+          "decoded": "p111_rt_sink",
+          "samples": 14,
+          "fraction": 0.018469656992084433
+        },
+        {
+          "name": "p111_set_regs",
+          "decoded": "p111_set_regs",
+          "samples": 14,
+          "fraction": 0.018469656992084433
+        },
+        {
+          "name": "p111_rt_jump",
+          "decoded": "p111_rt_jump",
+          "samples": 13,
+          "fraction": 0.017150395778364115
+        },
+        {
+          "name": "p111_rt_take",
+          "decoded": "p111_rt_take",
+          "samples": 12,
+          "fraction": 0.0158311345646438
+        },
+        {
+          "name": "p113d_FID_36_100_105_114_101_99_116_46_112_56_56_95_115_116_114_105_110_103_95_101_113_95_103_111_",
+          "decoded": "p113d_FID_$direct.p88_string_eq_go",
+          "samples": 12,
+          "fraction": 0.0158311345646438
+        },
+        {
+          "name": "p111_FID_36_100_105_114_101_99_116_46_105_110_100_101_120_95_102_105_110_100_",
+          "decoded": "p111_FID_$direct.index_find",
+          "samples": 11,
+          "fraction": 0.014511873350923483
+        },
+        {
+          "name": "p118_p111_rt_ctor2",
+          "decoded": "p118_p111_rt_ctor2",
+          "samples": 10,
+          "fraction": 0.013192612137203167
+        },
+        {
+          "name": "heap_alloc",
+          "decoded": "heap_alloc",
+          "samples": 9,
+          "fraction": 0.011873350923482849
+        },
+        {
+          "name": "p111_rt_keep",
+          "decoded": "p111_rt_keep",
+          "samples": 9,
+          "fraction": 0.011873350923482849
+        },
+        {
+          "name": "p111_FID_36_100_105_114_101_99_116_46_66_111_111_108_46_97_110_100_",
+          "decoded": "p111_FID_$direct.Bool.and",
+          "samples": 6,
+          "fraction": 0.0079155672823219
+        },
+        {
+          "name": "p111_rt_op",
+          "decoded": "p111_rt_op",
+          "samples": 6,
+          "fraction": 0.0079155672823219
+        },
+        {
+          "name": "p113d_FID_36_100_105_114_101_99_116_46_105_110_100_101_120_95_104_97_115_104_",
+          "decoded": "p113d_FID_$direct.index_hash",
+          "samples": 6,
+          "fraction": 0.0079155672823219
+        },
+        {
+          "name": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_83_116_114_105_110_103_46_99_109_112_",
+          "decoded": "p113d_FID_$p118borrow.read.String.cmp",
+          "samples": 6,
+          "fraction": 0.0079155672823219
+        },
+        {
+          "name": "rfc_wrap",
+          "decoded": "rfc_wrap",
+          "samples": 6,
+          "fraction": 0.0079155672823219
+        },
+        {
+          "name": "p113d_FID_36_100_105_114_101_99_116_46_66_111_111_108_46_97_110_100_",
+          "decoded": "p113d_FID_$direct.Bool.and",
+          "samples": 5,
+          "fraction": 0.006596306068601583
+        },
+        {
+          "name": "p118_rt_extend1",
+          "decoded": "p118_rt_extend1",
+          "samples": 5,
+          "fraction": 0.006596306068601583
+        },
+        {
+          "name": "p118_p111_rt_take4",
+          "decoded": "p118_p111_rt_take4",
+          "samples": 5,
+          "fraction": 0.006596306068601583
+        },
+        {
+          "name": "p118_destination_fill",
+          "decoded": "p118_destination_fill",
+          "samples": 4,
+          "fraction": 0.005277044854881266
+        },
+        {
+          "name": "p113d_FID_36_100_105_114_101_99_116_46_112_56_56_95_102_105_101_108_100_95_110_117_109_98_101_114_",
+          "decoded": "p113d_FID_$direct.p88_field_number",
+          "samples": 4,
+          "fraction": 0.005277044854881266
+        },
+        {
+          "name": "io_cbuf",
+          "decoded": "io_cbuf",
+          "samples": 4,
+          "fraction": 0.005277044854881266
+        },
+        {
+          "name": "p111_FID_36_112_49_49_49_46_107_46_56_48_54_52_52_",
+          "decoded": "p111_FID_$p111.k.80644",
+          "samples": 3,
+          "fraction": 0.00395778364116095
+        },
+        {
+          "name": "p111_FID_36_112_49_49_49_46_107_46_56_48_54_51_48_",
+          "decoded": "p111_FID_$p111.k.80630",
+          "samples": 3,
+          "fraction": 0.00395778364116095
+        },
+        {
+          "name": "p111_FID_36_112_49_49_49_46_107_46_56_48_54_50_55_",
+          "decoded": "p111_FID_$p111.k.80627",
+          "samples": 3,
+          "fraction": 0.00395778364116095
+        },
+        {
+          "name": "p111_FID_36_112_49_49_49_46_107_46_56_51_56_51_50_",
+          "decoded": "p111_FID_$p111.k.83832",
+          "samples": 3,
+          "fraction": 0.00395778364116095
+        },
+        {
+          "name": "p113d_FID_36_100_105_114_101_99_116_46_83_116_114_105_110_103_46_99_109_112_",
+          "decoded": "p113d_FID_$direct.String.cmp",
+          "samples": 3,
+          "fraction": 0.00395778364116095
+        },
+        {
+          "name": "p111_FID_36_112_49_49_49_46_107_46_51_51_49_50_48_51_54_",
+          "decoded": "p111_FID_$p111.k.3312036",
+          "samples": 3,
+          "fraction": 0.00395778364116095
+        },
+        {
+          "name": "p111_FID_36_100_105_114_101_99_116_46_105_110_100_101_120_95_105_110_115_101_114_116_",
+          "decoded": "p111_FID_$direct.index_insert",
+          "samples": 3,
+          "fraction": 0.00395778364116095
+        },
+        {
+          "name": "p111_FID_36_112_49_49_49_46_107_46_51_54_51_54_57_48_54_",
+          "decoded": "p111_FID_$p111.k.3636906",
+          "samples": 3,
+          "fraction": 0.00395778364116095
+        },
+        {
+          "name": "p118_p111_rt_ctor4",
+          "decoded": "p118_p111_rt_ctor4",
+          "samples": 3,
+          "fraction": 0.00395778364116095
+        },
+        {
+          "name": "p111_FID_36_100_105_114_101_99_116_46_83_116_114_105_110_103_46_99_109_112_",
+          "decoded": "p111_FID_$direct.String.cmp",
+          "samples": 3,
+          "fraction": 0.00395778364116095
+        },
+        {
+          "name": "p111_FID_36_100_105_114_101_99_116_46_83_116_114_105_110_103_46_101_113_",
+          "decoded": "p111_FID_$direct.String.eq",
+          "samples": 3,
+          "fraction": 0.00395778364116095
+        },
+        {
+          "name": "p111_FID_36_112_49_49_49_46_107_46_50_54_48_52_56_54_57_",
+          "decoded": "p111_FID_$p111.k.2604869",
+          "samples": 2,
+          "fraction": 0.002638522427440633
+        },
+        {
+          "name": "p111_FID_36_100_105_114_101_99_116_46_112_56_56_95_100_105_103_105_116_",
+          "decoded": "p111_FID_$direct.p88_digit",
+          "samples": 2,
+          "fraction": 0.002638522427440633
+        },
+        {
+          "name": "p111_FID_36_100_105_114_101_99_116_46_110_99_95_111_99_99_117_114_115_",
+          "decoded": "p111_FID_$direct.nc_occurs",
+          "samples": 2,
+          "fraction": 0.002638522427440633
+        },
+        {
+          "name": "p113d_FID_36_100_105_114_101_99_116_46_105_120_",
+          "decoded": "p113d_FID_$direct.ix",
+          "samples": 2,
+          "fraction": 0.002638522427440633
+        },
+        {
+          "name": "p111_FID_36_112_49_49_49_46_107_46_50_49_50_54_49_50_56_",
+          "decoded": "p111_FID_$p111.k.2126128",
+          "samples": 2,
+          "fraction": 0.002638522427440633
+        },
+        {
+          "name": "p111_FID_36_100_105_114_101_99_116_46_105_120_",
+          "decoded": "p111_FID_$direct.ix",
+          "samples": 2,
+          "fraction": 0.002638522427440633
+        },
+        {
+          "name": "p112w_FID_36_100_105_114_101_99_116_46_100_97_",
+          "decoded": "p112w_FID_$direct.da",
+          "samples": 2,
+          "fraction": 0.002638522427440633
+        },
+        {
+          "name": "p111_FID_36_100_105_114_101_99_116_46_112_56_56_95_115_116_114_105_110_103_95_101_113_",
+          "decoded": "p111_FID_$direct.p88_string_eq",
+          "samples": 2,
+          "fraction": 0.002638522427440633
+        },
+        {
+          "name": "p118_p111_rt_take4.cold",
+          "decoded": "p118_p111_rt_take4.cold",
+          "samples": 2,
+          "fraction": 0.002638522427440633
+        },
+        {
+          "name": "p111_FID_36_112_49_49_49_46_107_46_51_51_49_54_52_50_49_",
+          "decoded": "p111_FID_$p111.k.3316421",
+          "samples": 2,
+          "fraction": 0.002638522427440633
+        },
+        {
+          "name": "p111_FID_36_100_105_114_101_99_116_46_83_116_114_105_110_103_46_111_114_100_101_114_",
+          "decoded": "p111_FID_$direct.String.order",
+          "samples": 2,
+          "fraction": 0.002638522427440633
+        },
+        {
+          "name": "p112w_FID_36_100_105_114_101_99_116_46_112_56_56_95_110_117_109_98_101_114_95_114_101_97_100_",
+          "decoded": "p112w_FID_$direct.p88_number_read",
+          "samples": 2,
+          "fraction": 0.002638522427440633
+        },
+        {
+          "name": "p111_FID_36_100_105_114_101_99_116_46_112_56_56_95_114_101_99_111_114_100_95_119_105_100_116_104_95_103_97_116_101_",
+          "decoded": "p111_FID_$direct.p88_record_width_gate",
+          "samples": 2,
+          "fraction": 0.002638522427440633
+        },
+        {
+          "name": "p111_FID_36_100_105_114_101_99_116_46_105_110_100_101_120_95_98_117_99_107_101_116_",
+          "decoded": "p111_FID_$direct.index_bucket",
+          "samples": 2,
+          "fraction": 0.002638522427440633
+        },
+        {
+          "name": "p111_FID_36_112_49_49_49_46_107_46_55_51_49_52_56_",
+          "decoded": "p111_FID_$p111.k.73148",
+          "samples": 2,
+          "fraction": 0.002638522427440633
+        },
+        {
+          "name": "p114r_FID_36_100_105_114_101_99_116_46_76_105_115_116_46_108_101_110_103_116_104_",
+          "decoded": "p114r_FID_$direct.List.length",
+          "samples": 2,
+          "fraction": 0.002638522427440633
+        },
+        {
+          "name": "p118_p111_rt_take1",
+          "decoded": "p118_p111_rt_take1",
+          "samples": 2,
+          "fraction": 0.002638522427440633
+        },
+        {
+          "name": "p111_FID_36_100_105_114_101_99_116_46_112_56_56_95_102_105_101_108_100_",
+          "decoded": "p111_FID_$direct.p88_field",
+          "samples": 1,
+          "fraction": 0.0013192612137203166
+        },
+        {
+          "name": "p111_FID_36_112_49_49_49_46_107_46_56_48_53_57_48_",
+          "decoded": "p111_FID_$p111.k.80590",
+          "samples": 1,
+          "fraction": 0.0013192612137203166
+        },
+        {
+          "name": "p111_FID_36_100_105_114_101_99_116_46_112_56_56_95_114_101_99_111_114_100_95_116_97_103_",
+          "decoded": "p111_FID_$direct.p88_record_tag",
+          "samples": 1,
+          "fraction": 0.0013192612137203166
+        },
+        {
+          "name": "p111_FID_36_112_49_49_49_46_107_46_51_51_49_50_49_50_48_",
+          "decoded": "p111_FID_$p111.k.3312120",
+          "samples": 1,
+          "fraction": 0.0013192612137203166
+        },
+        {
+          "name": "p111_FID_36_100_105_114_101_99_116_46_106_95_102_105_110_100_95_99_116_111_114_95_99_104_105_108_100_114_101_110_",
+          "decoded": "p111_FID_$direct.j_find_ctor_children",
+          "samples": 1,
+          "fraction": 0.0013192612137203166
+        },
+        {
+          "name": "p111_FID_36_112_49_49_49_46_107_46_49_50_49_56_48_56_52_",
+          "decoded": "p111_FID_$p111.k.1218084",
+          "samples": 1,
+          "fraction": 0.0013192612137203166
+        },
+        {
+          "name": "p111_FID_36_100_105_114_101_99_116_46_108_111_111_107_117_112_",
+          "decoded": "p111_FID_$direct.lookup",
+          "samples": 1,
+          "fraction": 0.0013192612137203166
+        },
+        {
+          "name": "p111_FID_36_112_49_49_49_46_107_46_49_54_48_56_54_51_57_",
+          "decoded": "p111_FID_$p111.k.1608639",
+          "samples": 1,
+          "fraction": 0.0013192612137203166
+        },
+        {
+          "name": "p113d_FID_36_100_105_114_101_99_116_46_107_115_",
+          "decoded": "p113d_FID_$direct.ks",
+          "samples": 1,
+          "fraction": 0.0013192612137203166
+        },
+        {
+          "name": "p111_FID_36_112_49_49_49_46_107_46_51_51_49_54_52_48_53_",
+          "decoded": "p111_FID_$p111.k.3316405",
+          "samples": 1,
+          "fraction": 0.0013192612137203166
+        },
+        {
+          "name": "p113d_FID_36_100_105_114_101_99_116_46_83_116_114_105_110_103_46_105_115_95_101_109_112_116_121_",
+          "decoded": "p113d_FID_$direct.String.is_empty",
+          "samples": 1,
+          "fraction": 0.0013192612137203166
+        },
+        {
+          "name": "p111_FID_36_112_49_49_49_46_107_46_50_49_49_55_51_53_49_",
+          "decoded": "p111_FID_$p111.k.2117351",
+          "samples": 1,
+          "fraction": 0.0013192612137203166
+        },
+        {
+          "name": "p113d_FID_36_100_105_114_101_99_116_46_105_110_100_101_120_95_110_111_100_101_",
+          "decoded": "p113d_FID_$direct.index_node",
+          "samples": 1,
+          "fraction": 0.0013192612137203166
+        },
+        {
+          "name": "p111_FID_36_100_105_114_101_99_116_46_112_49_49_49_118_95_105_110_116_101_114_115_101_99_116_105_111_110_",
+          "decoded": "p111_FID_$direct.p111v_intersection",
+          "samples": 1,
+          "fraction": 0.0013192612137203166
+        },
+        {
+          "name": "p111_FID_36_100_105_114_101_99_116_46_112_49_49_49_118_95_103_101_116_",
+          "decoded": "p111_FID_$direct.p111v_get",
+          "samples": 1,
+          "fraction": 0.0013192612137203166
+        },
+        {
+          "name": "p113d_FID_36_100_105_114_101_99_116_46_100_110_",
+          "decoded": "p113d_FID_$direct.dn",
+          "samples": 1,
+          "fraction": 0.0013192612137203166
+        },
+        {
+          "name": "p111_FID_36_100_105_114_101_99_116_46_112_49_49_49_118_95_112_117_116_",
+          "decoded": "p111_FID_$direct.p111v_put",
+          "samples": 1,
+          "fraction": 0.0013192612137203166
+        },
+        {
+          "name": "p111_FID_36_112_49_49_49_46_107_46_50_53_57_49_49_56_57_",
+          "decoded": "p111_FID_$p111.k.2591189",
+          "samples": 1,
+          "fraction": 0.0013192612137203166
+        },
+        {
+          "name": "p111_FID_36_100_105_114_101_99_116_46_112_49_49_49_118_95_118_97_108_117_101_",
+          "decoded": "p111_FID_$direct.p111v_value",
+          "samples": 1,
+          "fraction": 0.0013192612137203166
+        },
+        {
+          "name": "p111_FID_36_100_105_114_101_99_116_46_83_116_114_105_110_103_46_115_116_97_114_116_115_95_119_105_116_104_",
+          "decoded": "p111_FID_$direct.String.starts_with",
+          "samples": 1,
+          "fraction": 0.0013192612137203166
+        },
+        {
+          "name": "p113d_FID_36_112_49_49_56_46_116_114_109_99_46_36_100_105_114_101_99_116_46_110_111_97_95_117_110_97_109_101_115_",
+          "decoded": "p113d_FID_$p118.trmc.$direct.noa_unames",
+          "samples": 1,
+          "fraction": 0.0013192612137203166
+        },
+        {
+          "name": "p111_FID_36_112_49_49_49_46_107_46_51_52_52_57_50_54_48_",
+          "decoded": "p111_FID_$p111.k.3449260",
+          "samples": 1,
+          "fraction": 0.0013192612137203166
+        },
+        {
+          "name": "p111_FID_36_100_105_114_101_99_116_46_112_49_49_50_114_95_98_117_102_102_101_114_",
+          "decoded": "p111_FID_$direct.p112r_buffer",
+          "samples": 1,
+          "fraction": 0.0013192612137203166
+        },
+        {
+          "name": "p111_FID_36_112_49_49_49_46_107_46_50_57_53_48_52_50_51_",
+          "decoded": "p111_FID_$p111.k.2950423",
+          "samples": 1,
+          "fraction": 0.0013192612137203166
+        },
+        {
+          "name": "p111_FID_36_112_49_49_49_46_107_46_51_49_53_51_51_50_50_",
+          "decoded": "p111_FID_$p111.k.3153322",
+          "samples": 1,
+          "fraction": 0.0013192612137203166
+        },
+        {
+          "name": "p111_FID_36_100_105_114_101_99_116_46_112_49_49_50_102_95_99_108_101_97_110_95_115_116_109_116_",
+          "decoded": "p111_FID_$direct.p112f_clean_stmt",
+          "samples": 1,
+          "fraction": 0.0013192612137203166
+        },
+        {
+          "name": "p118_destination_fill.cold",
+          "decoded": "p118_destination_fill.cold",
+          "samples": 1,
+          "fraction": 0.0013192612137203166
+        },
+        {
+          "name": "p112w_FID_36_100_105_114_101_99_116_46_66_111_111_108_46_97_110_100_",
+          "decoded": "p112w_FID_$direct.Bool.and",
+          "samples": 1,
+          "fraction": 0.0013192612137203166
+        },
+        {
+          "name": "p111_FID_36_100_105_114_101_99_116_46_112_56_56_95_114_101_99_111_114_100_95_112_117_116_",
+          "decoded": "p111_FID_$direct.p88_record_put",
+          "samples": 1,
+          "fraction": 0.0013192612137203166
+        },
+        {
+          "name": "p111_FID_36_100_105_114_101_99_116_46_112_56_56_95_98_117_105_108_100_",
+          "decoded": "p111_FID_$direct.p88_build",
+          "samples": 1,
+          "fraction": 0.0013192612137203166
+        },
+        {
+          "name": "p111_rt_take.cold",
+          "decoded": "p111_rt_take.cold",
+          "samples": 1,
+          "fraction": 0.0013192612137203166
+        },
+        {
+          "name": "p113d_FID_36_100_105_114_101_99_116_46_110_111_114_109_95_109_97_120_95_119_97_108_107_",
+          "decoded": "p113d_FID_$direct.norm_max_walk",
+          "samples": 1,
+          "fraction": 0.0013192612137203166
+        },
+        {
+          "name": "p111_FID_36_112_49_49_49_46_107_46_49_56_55_49_53_54_48_",
+          "decoded": "p111_FID_$p111.k.1871560",
+          "samples": 1,
+          "fraction": 0.0013192612137203166
+        },
+        {
+          "name": "p111_FID_36_100_105_114_101_99_116_46_112_49_49_49_118_95_109_101_109_111_114_121_",
+          "decoded": "p111_FID_$direct.p111v_memory",
+          "samples": 1,
+          "fraction": 0.0013192612137203166
+        },
+        {
+          "name": "p111_FID_36_100_105_114_101_99_116_46_112_49_49_51_107_95_98_111_100_121_",
+          "decoded": "p111_FID_$direct.p113k_body",
+          "samples": 1,
+          "fraction": 0.0013192612137203166
+        },
+        {
+          "name": "p111_FID_36_100_105_114_101_99_116_46_105_110_100_101_120_95_116_105_112_",
+          "decoded": "p111_FID_$direct.index_tip",
+          "samples": 1,
+          "fraction": 0.0013192612137203166
+        },
+        {
+          "name": "p112w_FID_36_100_105_114_101_99_116_46_105_110_100_101_120_95_110_111_100_101_",
+          "decoded": "p112w_FID_$direct.index_node",
+          "samples": 1,
+          "fraction": 0.0013192612137203166
+        },
+        {
+          "name": "p111_FID_36_100_105_114_101_99_116_46_105_110_100_101_120_95_115_101_116_",
+          "decoded": "p111_FID_$direct.index_set",
+          "samples": 1,
+          "fraction": 0.0013192612137203166
+        },
+        {
+          "name": "p113d_FID_36_100_105_114_101_99_116_46_100_97_",
+          "decoded": "p113d_FID_$direct.da",
+          "samples": 1,
+          "fraction": 0.0013192612137203166
+        },
+        {
+          "name": "io_str",
+          "decoded": "io_str",
+          "samples": 1,
+          "fraction": 0.0013192612137203166
+        },
+        {
+          "name": "p111_FID_36_112_49_49_49_46_107_46_56_48_53_55_48_",
+          "decoded": "p111_FID_$p111.k.80570",
+          "samples": 1,
+          "fraction": 0.0013192612137203166
+        },
+        {
+          "name": "p111_FID_36_112_49_49_49_46_107_46_57_55_53_52_53_",
+          "decoded": "p111_FID_$p111.k.97545",
+          "samples": 1,
+          "fraction": 0.0013192612137203166
+        },
+        {
+          "name": "p113_rt_array_pair",
+          "decoded": "p113_rt_array_pair",
+          "samples": 1,
+          "fraction": 0.0013192612137203166
+        },
+        {
+          "name": "p111_FID_36_112_49_49_49_46_107_46_56_48_54_48_55_",
+          "decoded": "p111_FID_$p111.k.80607",
+          "samples": 1,
+          "fraction": 0.0013192612137203166
+        },
+        {
+          "name": "p113d_FID_36_100_105_114_101_99_116_46_100_107_",
+          "decoded": "p113d_FID_$direct.dk",
+          "samples": 1,
+          "fraction": 0.0013192612137203166
+        },
+        {
+          "name": "p111_FID_36_100_105_114_101_99_116_46_108_111_111_107_117_112_95_99_97_99_104_101_100_",
+          "decoded": "p111_FID_$direct.lookup_cached",
+          "samples": 1,
+          "fraction": 0.0013192612137203166
+        },
+        {
+          "name": "p113d_FID_36_100_105_114_101_99_116_46_112_57_56_95_116_97_103_95_101_113_",
+          "decoded": "p113d_FID_$direct.p98_tag_eq",
+          "samples": 1,
+          "fraction": 0.0013192612137203166
+        },
+        {
+          "name": "p118_p111_rt_ctor3",
+          "decoded": "p118_p111_rt_ctor3",
+          "samples": 1,
+          "fraction": 0.0013192612137203166
+        },
+        {
+          "name": "p111_FID_36_112_49_49_49_46_107_46_50_49_48_57_54_48_50_",
+          "decoded": "p111_FID_$p111.k.2109602",
+          "samples": 1,
+          "fraction": 0.0013192612137203166
+        },
+        {
+          "name": "p111_FID_36_112_49_49_49_46_107_46_51_54_51_56_57_54_56_",
+          "decoded": "p111_FID_$p111.k.3638968",
+          "samples": 1,
+          "fraction": 0.0013192612137203166
+        },
+        {
+          "name": "p111_FID_36_100_105_114_101_99_116_46_113_116_",
+          "decoded": "p111_FID_$direct.qt",
+          "samples": 1,
+          "fraction": 0.0013192612137203166
+        },
+        {
+          "name": "p111_FID_36_100_105_114_101_99_116_46_112_49_49_51_105_95_115_105_122_101_",
+          "decoded": "p111_FID_$direct.p113i_size",
+          "samples": 1,
+          "fraction": 0.0013192612137203166
+        },
+        {
+          "name": "p111_FID_36_112_49_49_49_46_107_46_50_53_57_49_49_55_49_",
+          "decoded": "p111_FID_$p111.k.2591171",
+          "samples": 1,
+          "fraction": 0.0013192612137203166
+        },
+        {
+          "name": "p111_FID_36_112_49_49_49_46_107_46_50_54_48_52_57_51_56_",
+          "decoded": "p111_FID_$p111.k.2604938",
+          "samples": 1,
+          "fraction": 0.0013192612137203166
+        },
+        {
+          "name": "p111_FID_36_112_49_49_49_46_107_46_51_51_49_53_51_48_48_",
+          "decoded": "p111_FID_$p111.k.3315300",
+          "samples": 1,
+          "fraction": 0.0013192612137203166
+        },
+        {
+          "name": "p111_FID_36_112_49_49_49_46_107_46_50_53_57_50_52_55_52_",
+          "decoded": "p111_FID_$p111.k.2592474",
+          "samples": 1,
+          "fraction": 0.0013192612137203166
+        },
+        {
+          "name": "p111_FID_36_100_105_114_101_99_116_46_112_49_49_51_101_95_115_116_109_116_",
+          "decoded": "p111_FID_$direct.p113e_stmt",
+          "samples": 1,
+          "fraction": 0.0013192612137203166
+        },
+        {
+          "name": "p111_FID_36_112_49_49_49_46_107_46_51_49_53_51_50_53_55_",
+          "decoded": "p111_FID_$p111.k.3153257",
+          "samples": 1,
+          "fraction": 0.0013192612137203166
+        },
+        {
+          "name": "p111_FID_36_112_49_49_49_46_107_46_51_49_57_53_49_49_50_",
+          "decoded": "p111_FID_$p111.k.3195112",
+          "samples": 1,
+          "fraction": 0.0013192612137203166
+        },
+        {
+          "name": "p111_FID_36_100_105_114_101_99_116_46_112_49_49_50_97_95_119_111_114_100_115_",
+          "decoded": "p111_FID_$direct.p112a_words",
+          "samples": 1,
+          "fraction": 0.0013192612137203166
+        },
+        {
+          "name": "p111_FID_36_100_105_114_101_99_116_46_83_116_114_105_110_103_46_97_112_112_101_110_100_",
+          "decoded": "p111_FID_$direct.String.append",
+          "samples": 1,
+          "fraction": 0.0013192612137203166
+        },
+        {
+          "name": "p111_FID_36_100_105_114_101_99_116_46_112_49_49_50_119_95_115_116_109_116_115_",
+          "decoded": "p111_FID_$direct.p112w_stmts",
+          "samples": 1,
+          "fraction": 0.0013192612137203166
+        },
+        {
+          "name": "heap_alloc_miss",
+          "decoded": "heap_alloc_miss",
+          "samples": 1,
+          "fraction": 0.0013192612137203166
+        },
+        {
+          "name": "p111_FID_36_112_49_49_49_46_107_46_56_48_53_49_54_",
+          "decoded": "p111_FID_$p111.k.80516",
+          "samples": 1,
+          "fraction": 0.0013192612137203166
+        },
+        {
+          "name": "p111_FID_36_100_105_114_101_99_116_46_112_56_56_95_102_105_101_108_100_115_",
+          "decoded": "p111_FID_$direct.p88_fields",
+          "samples": 1,
+          "fraction": 0.0013192612137203166
+        },
+        {
+          "name": "heap_hand",
+          "decoded": "heap_hand",
+          "samples": 1,
+          "fraction": 0.0013192612137203166
+        },
+        {
+          "name": "p113d_FID_36_100_105_114_101_99_116_46_76_105_115_116_46_114_101_118_101_114_115_101_",
+          "decoded": "p113d_FID_$direct.List.reverse",
+          "samples": 1,
+          "fraction": 0.0013192612137203166
+        },
+        {
+          "name": "p111_FID_36_100_105_114_101_99_116_46_83_116_114_105_110_103_46_115_116_97_114_116_115_95_119_105_116_104_46_105_102_",
+          "decoded": "p111_FID_$direct.String.starts_with.if",
+          "samples": 1,
+          "fraction": 0.0013192612137203166
+        },
+        {
+          "name": "p111_FID_36_112_49_49_49_46_107_46_49_50_49_56_48_55_57_",
+          "decoded": "p111_FID_$p111.k.1218079",
+          "samples": 1,
+          "fraction": 0.0013192612137203166
+        },
+        {
+          "name": "p113d_FID_36_100_105_114_101_99_116_46_80_97_105_114_46_115_110_100_",
+          "decoded": "p113d_FID_$direct.Pair.snd",
+          "samples": 1,
+          "fraction": 0.0013192612137203166
+        },
+        {
+          "name": "p111_FID_36_112_49_49_49_46_107_46_51_51_49_50_49_51_48_",
+          "decoded": "p111_FID_$p111.k.3312130",
+          "samples": 1,
+          "fraction": 0.0013192612137203166
+        },
+        {
+          "name": "p111_FID_36_112_49_49_49_46_107_46_50_48_55_57_48_52_54_",
+          "decoded": "p111_FID_$p111.k.2079046",
+          "samples": 1,
+          "fraction": 0.0013192612137203166
+        },
+        {
+          "name": "p112w_FID_36_100_105_114_101_99_116_46_80_97_105_114_46_115_110_100_",
+          "decoded": "p112w_FID_$direct.Pair.snd",
+          "samples": 1,
+          "fraction": 0.0013192612137203166
+        },
+        {
+          "name": "p111_FID_36_112_49_49_49_46_107_46_50_49_50_55_49_54_51_",
+          "decoded": "p111_FID_$p111.k.2127163",
+          "samples": 1,
+          "fraction": 0.0013192612137203166
+        },
+        {
+          "name": "p118_p111_rt_ctor2.cold",
+          "decoded": "p118_p111_rt_ctor2.cold",
+          "samples": 1,
+          "fraction": 0.0013192612137203166
+        },
+        {
+          "name": "p111_FID_36_112_49_49_49_46_107_46_51_51_50_57_56_51_53_",
+          "decoded": "p111_FID_$p111.k.3329835",
+          "samples": 1,
+          "fraction": 0.0013192612137203166
+        },
+        {
+          "name": "p111_FID_36_112_49_49_49_46_107_46_50_54_51_50_52_51_55_",
+          "decoded": "p111_FID_$p111.k.2632437",
+          "samples": 1,
+          "fraction": 0.0013192612137203166
+        },
+        {
+          "name": "p113d_FID_36_100_105_114_101_99_116_46_67_109_112_46_105_115_95_101_113_",
+          "decoded": "p113d_FID_$direct.Cmp.is_eq",
+          "samples": 1,
+          "fraction": 0.0013192612137203166
+        },
+        {
+          "name": "p111_FID_36_100_105_114_101_99_116_46_112_49_49_51_101_95_98_117_102_102_101_114_115_",
+          "decoded": "p111_FID_$direct.p113e_buffers",
+          "samples": 1,
+          "fraction": 0.0013192612137203166
+        },
+        {
+          "name": "p111_FID_36_112_49_49_49_46_107_46_50_57_48_54_50_48_52_",
+          "decoded": "p111_FID_$p111.k.2906204",
+          "samples": 1,
+          "fraction": 0.0013192612137203166
+        }
+      ]
+    }
+  ],
+  "scope": "Six selected diagnostic programs, not a new broad45 score. Three clean rounds; two physical-PC periods. Shared kernels may have different inlining boundaries. Library leaves are not caller attribution or allocation counts.",
+  "diagnosticSubsetGeomeanRatiosToUpstreamC": {
+    "upstream_c": 1.0,
+    "selfhost_c": 1.1418594754677718,
+    "qbe": 4.10290129753124
+  },
+  "totalSamples": 27493,
+  "zeroLossCaptures": 44
+}

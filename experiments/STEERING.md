@@ -1,4 +1,28 @@
-# Current frontier: Phase118 ownership and live transport
+# Latest diagnostic: Phase119 profile refresh
+
+[Report](../implementation/phase119/README.md) ·
+[Numeric audit](../implementation/phase119/numeric-audit.md) ·
+[Reproduce](../selfhost/tools/performance/phase119/README.md).
+
+No compiler/runtime/default change. Six matched current-QBE/mature-C/upstream-C
+cases plus the exact Phase114/118 N1 lexer request pass102 output observations;
+44 zero-loss captures yield27,493 physical samples. All current QBE libc samples
+are copying, with no sampled fill. Compiler destruction/reclamation is28.1%.
+Ray intersection/nearest remains72.1%; list destination-fill/take2/extend1 is59.5%.
+Core numeric assembly is unchanged despite ownership wins. IR/QBE already support
+sar; general signed-word identity recovery is missing. Upstream's larger ray
+region also exposes SIMD, a separate capability rather than an automatic fusion gain.
+
+Next smallest experiment: exact signed-word recognition with independent boundary
+controls and unrelated transfer. Larger opportunities: typed private numeric
+regions, then eliminate intermediate containers. Do not revive dead-scalar cleanup,
+assume all runtime checks are removable, or infer inclusive analysis cost from
+destructor leaves. Existing policy search and a new broad survey are lower value.
+The six-case4.103× diagnostic ratio is not the original45 score3.009×. Ordinary
+compiler request1.89s versus2.68s is a two-observation check, not the N1/N2/upstream
+screen. Three serial guards take5.22min; no rebuild or selection change.
+
+# Current compiler frontier: Phase118 ownership and live transport
 
 [Report](../implementation/phase118/README.md) ·
 [Native results](../implementation/phase118/native-results.md) ·

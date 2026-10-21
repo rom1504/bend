@@ -1,5 +1,9 @@
 # Compiler experiment workflow
 
+Latest diagnostic: [Phase119 profile refresh](../implementation/phase119/README.md).
+Current profiles shift attention from clearing to scalar identities, numeric
+regions and construction/lifetime work. No compiler or selection change.
+
 Latest optimization: [Phase118 ownership and transport](../implementation/phase118/README.md).
 Original45 passes405 output/count observations;44 timed points improve4.3165→3.0089×
 upstream. Native safe03 N1/N2 reproduce85.83MB QBE, pass focused19, and N2 passes45.

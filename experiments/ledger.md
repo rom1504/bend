@@ -5192,3 +5192,28 @@ acceleration claim. Read Phase118 accounting/evidence for complete research cost
 
 P118-005 staged eligibility preserves exact QBE but costs1.00045× on three sources;
 it remains excluded. Avoidable eager work did not produce a measurable gain.
+
+## Phase119 — focused profile refresh without a rebuild
+
+[Experiment](phase119/P119-001-refresh.md) ·
+[Report](../implementation/phase119/README.md) ·
+[Numeric audit](../implementation/phase119/numeric-audit.md).
+
+Six fixed diagnostic programs compare current QBE118, mature C102 and pinned
+upstream C.54 clean runs,36 program captures and12 exact compiler requests all
+pass;44 zero-loss captures yield27,493 physical samples. Program captures cover
+more than99.97% process CPU. All current QBE libc samples normalize to copying,
+with no sampled fill. Compiler term_drop/span_fade reaches28.1% of leaves; the
+same request takes1.89s versus2.68s on Phase114 in two clean observations each.
+
+Current scalar/ray kernels remain assembly-identical to earlier versions and
+hot, at2.134×/8.473× upstream. QBE and our IR already support sar; identity
+recovery is missing. Upstream's larger ray region also contains SIMD arithmetic,
+which scalar region fusion alone cannot be assumed to reproduce. List destination
+fill/take2/extend1 accounts for59.5% of samples. Next test signed-word identities,
+typed regions and eliminating intermediate construction; retain semantic gates.
+
+The six-case4.103× ratio is diagnostic, not a change to broad45's3.009×.
+313.254s guarded execution,82.64MiB peak, no target failures, image rebuilds,
+compiler/runtime changes, promotion or new JavaScript measurement. One bounded
+offline numeric audit accompanies the serial root-owned target lane.

@@ -1,0 +1,1348 @@
+{
+  "kind": "phase119-offline-numeric-machine-audit",
+  "complete": true,
+  "repositoryHeadAtStart": "6315f14182d887d4a7365b3977817cb995807505",
+  "method": "Read and SHA256-check existing source/API/QBE/ELF/build receipts. Extract each generated assembly function from label through .type, normalize only .Lbb numeric labels by first-occurrence order, compare exact remaining text. Count tab-indented assembly instructions, excluding directives/labels; not decoded-instruction or dynamic counts. No compiler/target execution.",
+  "selection": {
+    "source": {
+      "file": "selfhost/build/phase118/safe-source03/compiler.bend",
+      "bytes": 2389209,
+      "sha256": "a1aac003bbcac3731cc47b3c00dcc7e27f9323842fd26cb60417c2115e85ff10"
+    },
+    "api": {
+      "file": "selfhost/build/phase111/p118-safe-api03/api.mjs",
+      "bytes": 2028199,
+      "sha256": "f0205f5e241b440460d476135a9cb11fc555a451bd28d1e7a46bb9838b6b46aa"
+    },
+    "runtime": {
+      "file": "selfhost/build/phase118/runtime-extend01/runtime.o",
+      "bytes": 113728,
+      "sha256": "1b740d48e0db4504b214e0c909d0b5f28cd49064850e9be69fdb20a53a6c55fe"
+    },
+    "timingProducer": {
+      "file": "selfhost/build/phase118/float-source01/compiler.bend",
+      "bytes": 2376955,
+      "sha256": "b16a71925e94585b5d66a010a8377a1f6500376de217d90fee7eb2e8fcb26c08"
+    },
+    "broad": {
+      "file": "selfhost/build/phase118/broad-screen01/report.json",
+      "bytes": 583403,
+      "sha256": "670195ecb6d49f19b5bd98fb2f6094234f868b1b55d77f63c602c250ef0bf844"
+    },
+    "sourceBridge45": {
+      "file": "selfhost/build/phase118/safe-broad-emit04/report.json",
+      "bytes": 87818,
+      "sha256": "4b9973e698dcdb22bd6f6fbf8ef7edc00448cf2065fa19a9808a2eef225a48b2"
+    }
+  },
+  "bridge": [
+    {
+      "case": "variation-ray-active-256-2240",
+      "source": {
+        "file": "selfhost/build/phase93/fixtures01/variation-ray-active-256-2240.bend",
+        "bytes": 16661,
+        "sha256": "7099448e301e2cab7cb5ab47e2a4892dbf44ac246676b4f950282c7a57007669"
+      },
+      "safeQbe": {
+        "file": "selfhost/build/phase118/safe-broad-emit04/variation-ray-active-256-2240.ssa",
+        "bytes": 1942029,
+        "sha256": "1e0f9c024c12a1e7a9a52c976083e3c7a0468dd07d6c941fa84c2c1ad9fb6bb2"
+      },
+      "timedQbe": {
+        "file": "selfhost/build/phase118/broad-emit01/variation-ray-active-256-2240.ssa",
+        "bytes": 1942029,
+        "sha256": "1e0f9c024c12a1e7a9a52c976083e3c7a0468dd07d6c941fa84c2c1ad9fb6bb2"
+      }
+    },
+    {
+      "case": "scalar-region-8192",
+      "source": {
+        "file": "selfhost/build/phase93/fixtures01/scalar-region-8192.bend",
+        "bytes": 3454,
+        "sha256": "ee300ddfdeda2e89e2f52550ec10d9f22842276cef737fbd19578bed095133f7"
+      },
+      "safeQbe": {
+        "file": "selfhost/build/phase118/safe-broad-emit04/scalar-region-8192.ssa",
+        "bytes": 581371,
+        "sha256": "a64e291ab2a59a4260052a6a00ac5d8e2cd0ba6dfb46ca6167c0cebef1143867"
+      },
+      "timedQbe": {
+        "file": "selfhost/build/phase118/broad-emit01/scalar-region-8192.ssa",
+        "bytes": 581371,
+        "sha256": "a64e291ab2a59a4260052a6a00ac5d8e2cd0ba6dfb46ca6167c0cebef1143867"
+      }
+    },
+    {
+      "case": "mandelbrot",
+      "source": {
+        "file": "selfhost/build/phase93/fixtures01/mandelbrot.bend",
+        "bytes": 8536,
+        "sha256": "7d47d183cf02b3e943e0e35532eb8ba12c683eafd9b2031bbc25983181174897"
+      },
+      "safeQbe": {
+        "file": "selfhost/build/phase118/safe-broad-emit04/mandelbrot.ssa",
+        "bytes": 1215846,
+        "sha256": "5611743852ca588fcdeaf09371f3e2e14f62b76ef3ee9f785685fbcdb7266401"
+      },
+      "timedQbe": {
+        "file": "selfhost/build/phase118/broad-emit01/mandelbrot.ssa",
+        "bytes": 1215846,
+        "sha256": "5611743852ca588fcdeaf09371f3e2e14f62b76ef3ee9f785685fbcdb7266401"
+      }
+    },
+    {
+      "case": "coverage-numeric-recurrence-1024",
+      "source": {
+        "file": "selfhost/build/phase93/fixtures01/coverage-numeric-recurrence-1024.bend",
+        "bytes": 2514,
+        "sha256": "39c7c7be54d5a47b6042b0d8f70b124610ea5a2fee28866d85599b7f0f5bbb46"
+      },
+      "safeQbe": {
+        "file": "selfhost/build/phase118/safe-broad-emit04/coverage-numeric-recurrence-1024.ssa",
+        "bytes": 470664,
+        "sha256": "28d87137697396bbe2ce88c0cc3de31202fc994d78c671a4bac9b5bac91459ed"
+      },
+      "timedQbe": {
+        "file": "selfhost/build/phase118/broad-emit01/coverage-numeric-recurrence-1024.ssa",
+        "bytes": 470664,
+        "sha256": "28d87137697396bbe2ce88c0cc3de31202fc994d78c671a4bac9b5bac91459ed"
+      }
+    }
+  ],
+  "functions": [
+    {
+      "case": "variation-ray-active-256-2240",
+      "version": "p114-final-screen01",
+      "function": "$direct.isect5",
+      "assembly": {
+        "file": "selfhost/build/phase111/p114-final-screen01-variation-ray-active-256-2240-build/program.s",
+        "bytes": 1087281,
+        "sha256": "cbf5170cd7cbf35238ca8ac269ee72d3614883a3b846fcee22f632e3ceb6433e"
+      },
+      "line": 1185,
+      "normalizedBodySha256": "82842300b49f04ba749a840723c83e826faef26da5bb5d7b3e210c27dbe82200",
+      "assemblyInstructions": 200,
+      "callSites": [
+        "callq p111_rt_fail",
+        "callq p111_rt_op",
+        "callq p111_rt_fail"
+      ],
+      "gprXmmMoves": 49,
+      "framePointerReferences": 47,
+      "floatArithmetic": 19,
+      "explicitStackReservations": [
+        "subq $2072, %rsp"
+      ]
+    },
+    {
+      "case": "variation-ray-active-256-2240",
+      "version": "p117-broad01",
+      "function": "$direct.isect5",
+      "assembly": {
+        "file": "selfhost/build/phase111/p117-broad01-variation-ray-active-256-2240-build/program.s",
+        "bytes": 1087281,
+        "sha256": "359e24e4d4c22c915f4342b51ad8a9ef0983aafab1361ea2a547e1c380f91603"
+      },
+      "line": 1185,
+      "normalizedBodySha256": "82842300b49f04ba749a840723c83e826faef26da5bb5d7b3e210c27dbe82200",
+      "assemblyInstructions": 200,
+      "callSites": [
+        "callq p111_rt_fail",
+        "callq p111_rt_op",
+        "callq p111_rt_fail"
+      ],
+      "gprXmmMoves": 49,
+      "framePointerReferences": 47,
+      "floatArithmetic": 19,
+      "explicitStackReservations": [
+        "subq $2072, %rsp"
+      ]
+    },
+    {
+      "case": "variation-ray-active-256-2240",
+      "version": "p118-broad01",
+      "function": "$direct.isect5",
+      "assembly": {
+        "file": "selfhost/build/phase111/p118-broad01-variation-ray-active-256-2240-build/program.s",
+        "bytes": 1089154,
+        "sha256": "7a45b7c3ae52f4f657876808eb6afd88fbe6a5c2769c8690795f4faafa81bd59"
+      },
+      "line": 1369,
+      "normalizedBodySha256": "82842300b49f04ba749a840723c83e826faef26da5bb5d7b3e210c27dbe82200",
+      "assemblyInstructions": 200,
+      "callSites": [
+        "callq p111_rt_fail",
+        "callq p111_rt_op",
+        "callq p111_rt_fail"
+      ],
+      "gprXmmMoves": 49,
+      "framePointerReferences": 47,
+      "floatArithmetic": 19,
+      "explicitStackReservations": [
+        "subq $2072, %rsp"
+      ]
+    },
+    {
+      "case": "variation-ray-active-256-2240",
+      "version": "p114-final-screen01",
+      "function": "$product.nearest",
+      "assembly": {
+        "file": "selfhost/build/phase111/p114-final-screen01-variation-ray-active-256-2240-build/program.s",
+        "bytes": 1087281,
+        "sha256": "cbf5170cd7cbf35238ca8ac269ee72d3614883a3b846fcee22f632e3ceb6433e"
+      },
+      "line": 1812,
+      "normalizedBodySha256": "2a77b57c36d87e62f7dc4374745d58c09789d2a723d33d0c0d75c3a94b926e26",
+      "assemblyInstructions": 421,
+      "callSites": [
+        "callq p113d_FID_36_100_105_114_101_99_116_46_115_120_",
+        "callq p113d_FID_36_100_105_114_101_99_116_46_115_121_",
+        "callq p113d_FID_36_100_105_114_101_99_116_46_115_122_",
+        "callq p113d_FID_36_100_105_114_101_99_116_46_115_114_",
+        "callq p113d_FID_36_100_105_114_101_99_116_46_105_115_101_99_116_53_",
+        "callq p111_rt_op",
+        "callq p111_rt_fail",
+        "callq p113d_FID_36_100_105_114_101_99_116_46_105_115_101_99_116_53_",
+        "callq p111_rt_op",
+        "callq p111_rt_fail"
+      ],
+      "gprXmmMoves": 4,
+      "framePointerReferences": 113,
+      "floatArithmetic": 0,
+      "explicitStackReservations": [
+        "subq $2280, %rsp",
+        "subq $48, %rsp",
+        "subq $48, %rsp"
+      ]
+    },
+    {
+      "case": "variation-ray-active-256-2240",
+      "version": "p117-broad01",
+      "function": "$product.nearest",
+      "assembly": {
+        "file": "selfhost/build/phase111/p117-broad01-variation-ray-active-256-2240-build/program.s",
+        "bytes": 1087281,
+        "sha256": "359e24e4d4c22c915f4342b51ad8a9ef0983aafab1361ea2a547e1c380f91603"
+      },
+      "line": 1812,
+      "normalizedBodySha256": "2a77b57c36d87e62f7dc4374745d58c09789d2a723d33d0c0d75c3a94b926e26",
+      "assemblyInstructions": 421,
+      "callSites": [
+        "callq p113d_FID_36_100_105_114_101_99_116_46_115_120_",
+        "callq p113d_FID_36_100_105_114_101_99_116_46_115_121_",
+        "callq p113d_FID_36_100_105_114_101_99_116_46_115_122_",
+        "callq p113d_FID_36_100_105_114_101_99_116_46_115_114_",
+        "callq p113d_FID_36_100_105_114_101_99_116_46_105_115_101_99_116_53_",
+        "callq p111_rt_op",
+        "callq p111_rt_fail",
+        "callq p113d_FID_36_100_105_114_101_99_116_46_105_115_101_99_116_53_",
+        "callq p111_rt_op",
+        "callq p111_rt_fail"
+      ],
+      "gprXmmMoves": 4,
+      "framePointerReferences": 113,
+      "floatArithmetic": 0,
+      "explicitStackReservations": [
+        "subq $2280, %rsp",
+        "subq $48, %rsp",
+        "subq $48, %rsp"
+      ]
+    },
+    {
+      "case": "variation-ray-active-256-2240",
+      "version": "p118-broad01",
+      "function": "$product.nearest",
+      "assembly": {
+        "file": "selfhost/build/phase111/p118-broad01-variation-ray-active-256-2240-build/program.s",
+        "bytes": 1089154,
+        "sha256": "7a45b7c3ae52f4f657876808eb6afd88fbe6a5c2769c8690795f4faafa81bd59"
+      },
+      "line": 1996,
+      "normalizedBodySha256": "2a77b57c36d87e62f7dc4374745d58c09789d2a723d33d0c0d75c3a94b926e26",
+      "assemblyInstructions": 421,
+      "callSites": [
+        "callq p113d_FID_36_100_105_114_101_99_116_46_115_120_",
+        "callq p113d_FID_36_100_105_114_101_99_116_46_115_121_",
+        "callq p113d_FID_36_100_105_114_101_99_116_46_115_122_",
+        "callq p113d_FID_36_100_105_114_101_99_116_46_115_114_",
+        "callq p113d_FID_36_100_105_114_101_99_116_46_105_115_101_99_116_53_",
+        "callq p111_rt_op",
+        "callq p111_rt_fail",
+        "callq p113d_FID_36_100_105_114_101_99_116_46_105_115_101_99_116_53_",
+        "callq p111_rt_op",
+        "callq p111_rt_fail"
+      ],
+      "gprXmmMoves": 4,
+      "framePointerReferences": 113,
+      "floatArithmetic": 0,
+      "explicitStackReservations": [
+        "subq $2280, %rsp",
+        "subq $48, %rsp",
+        "subq $48, %rsp"
+      ]
+    },
+    {
+      "case": "variation-ray-active-256-2240",
+      "version": "p114-final-screen01",
+      "function": "$direct.nearest.t",
+      "assembly": {
+        "file": "selfhost/build/phase111/p114-final-screen01-variation-ray-active-256-2240-build/program.s",
+        "bytes": 1087281,
+        "sha256": "cbf5170cd7cbf35238ca8ac269ee72d3614883a3b846fcee22f632e3ceb6433e"
+      },
+      "line": 2283,
+      "normalizedBodySha256": "16cdeb3d3d39f60c9ff4c16c6ba26f95e25af3c53202974418826261310686a0",
+      "assemblyInstructions": 366,
+      "callSites": [
+        "callq p113d_FID_36_100_105_114_101_99_116_46_115_120_",
+        "callq p113d_FID_36_100_105_114_101_99_116_46_115_121_",
+        "callq p113d_FID_36_100_105_114_101_99_116_46_115_122_",
+        "callq p113d_FID_36_100_105_114_101_99_116_46_115_114_",
+        "callq p113d_FID_36_100_105_114_101_99_116_46_105_115_101_99_116_53_",
+        "callq p111_rt_fail",
+        "callq p113d_FID_36_100_105_114_101_99_116_46_105_115_101_99_116_53_",
+        "callq p111_rt_fail"
+      ],
+      "gprXmmMoves": 4,
+      "framePointerReferences": 93,
+      "floatArithmetic": 0,
+      "explicitStackReservations": [
+        "subq $2232, %rsp",
+        "subq $48, %rsp",
+        "subq $48, %rsp"
+      ]
+    },
+    {
+      "case": "variation-ray-active-256-2240",
+      "version": "p117-broad01",
+      "function": "$direct.nearest.t",
+      "assembly": {
+        "file": "selfhost/build/phase111/p117-broad01-variation-ray-active-256-2240-build/program.s",
+        "bytes": 1087281,
+        "sha256": "359e24e4d4c22c915f4342b51ad8a9ef0983aafab1361ea2a547e1c380f91603"
+      },
+      "line": 2283,
+      "normalizedBodySha256": "16cdeb3d3d39f60c9ff4c16c6ba26f95e25af3c53202974418826261310686a0",
+      "assemblyInstructions": 366,
+      "callSites": [
+        "callq p113d_FID_36_100_105_114_101_99_116_46_115_120_",
+        "callq p113d_FID_36_100_105_114_101_99_116_46_115_121_",
+        "callq p113d_FID_36_100_105_114_101_99_116_46_115_122_",
+        "callq p113d_FID_36_100_105_114_101_99_116_46_115_114_",
+        "callq p113d_FID_36_100_105_114_101_99_116_46_105_115_101_99_116_53_",
+        "callq p111_rt_fail",
+        "callq p113d_FID_36_100_105_114_101_99_116_46_105_115_101_99_116_53_",
+        "callq p111_rt_fail"
+      ],
+      "gprXmmMoves": 4,
+      "framePointerReferences": 93,
+      "floatArithmetic": 0,
+      "explicitStackReservations": [
+        "subq $2232, %rsp",
+        "subq $48, %rsp",
+        "subq $48, %rsp"
+      ]
+    },
+    {
+      "case": "variation-ray-active-256-2240",
+      "version": "p118-broad01",
+      "function": "$direct.nearest.t",
+      "assembly": {
+        "file": "selfhost/build/phase111/p118-broad01-variation-ray-active-256-2240-build/program.s",
+        "bytes": 1089154,
+        "sha256": "7a45b7c3ae52f4f657876808eb6afd88fbe6a5c2769c8690795f4faafa81bd59"
+      },
+      "line": 2467,
+      "normalizedBodySha256": "16cdeb3d3d39f60c9ff4c16c6ba26f95e25af3c53202974418826261310686a0",
+      "assemblyInstructions": 366,
+      "callSites": [
+        "callq p113d_FID_36_100_105_114_101_99_116_46_115_120_",
+        "callq p113d_FID_36_100_105_114_101_99_116_46_115_121_",
+        "callq p113d_FID_36_100_105_114_101_99_116_46_115_122_",
+        "callq p113d_FID_36_100_105_114_101_99_116_46_115_114_",
+        "callq p113d_FID_36_100_105_114_101_99_116_46_105_115_101_99_116_53_",
+        "callq p111_rt_fail",
+        "callq p113d_FID_36_100_105_114_101_99_116_46_105_115_101_99_116_53_",
+        "callq p111_rt_fail"
+      ],
+      "gprXmmMoves": 4,
+      "framePointerReferences": 93,
+      "floatArithmetic": 0,
+      "explicitStackReservations": [
+        "subq $2232, %rsp",
+        "subq $48, %rsp",
+        "subq $48, %rsp"
+      ]
+    },
+    {
+      "case": "scalar-region-8192",
+      "version": "p114-final-screen01",
+      "function": "$direct.mit",
+      "assembly": {
+        "file": "selfhost/build/phase111/p114-final-screen01-scalar-region-8192-build/program.s",
+        "bytes": 572425,
+        "sha256": "79e60feb7397414902a2c1fb754ea648529ad697aca0b383f8d4f8fe7ebf5508"
+      },
+      "line": 742,
+      "normalizedBodySha256": "a44bd1b859b2bd66b6a5052b4e75d49d6ce0a5c88a67202466a888929718f40b",
+      "assemblyInstructions": 121,
+      "callSites": [],
+      "gprXmmMoves": 0,
+      "framePointerReferences": 2,
+      "floatArithmetic": 0,
+      "explicitStackReservations": [
+        "subq $8, %rsp"
+      ]
+    },
+    {
+      "case": "scalar-region-8192",
+      "version": "p117-broad01",
+      "function": "$direct.mit",
+      "assembly": {
+        "file": "selfhost/build/phase111/p117-broad01-scalar-region-8192-build/program.s",
+        "bytes": 572425,
+        "sha256": "db5cab1c910639c6333222633f46a6cd469aa9548201f40b9f021949d6f7bef5"
+      },
+      "line": 742,
+      "normalizedBodySha256": "a44bd1b859b2bd66b6a5052b4e75d49d6ce0a5c88a67202466a888929718f40b",
+      "assemblyInstructions": 121,
+      "callSites": [],
+      "gprXmmMoves": 0,
+      "framePointerReferences": 2,
+      "floatArithmetic": 0,
+      "explicitStackReservations": [
+        "subq $8, %rsp"
+      ]
+    },
+    {
+      "case": "scalar-region-8192",
+      "version": "p118-broad01",
+      "function": "$direct.mit",
+      "assembly": {
+        "file": "selfhost/build/phase111/p118-broad01-scalar-region-8192-build/program.s",
+        "bytes": 573706,
+        "sha256": "88dccc5ac98b3e4a01212053646e77dc648563d670c6c92622afc361538c4e98"
+      },
+      "line": 926,
+      "normalizedBodySha256": "a44bd1b859b2bd66b6a5052b4e75d49d6ce0a5c88a67202466a888929718f40b",
+      "assemblyInstructions": 121,
+      "callSites": [],
+      "gprXmmMoves": 0,
+      "framePointerReferences": 2,
+      "floatArithmetic": 0,
+      "explicitStackReservations": [
+        "subq $8, %rsp"
+      ]
+    },
+    {
+      "case": "mandelbrot",
+      "version": "p117-broad01",
+      "function": "$direct.mit",
+      "assembly": {
+        "file": "selfhost/build/phase111/p117-broad01-mandelbrot-build/program.s",
+        "bytes": 837341,
+        "sha256": "98b78a7f312aa45e2547806ae952244a781881d92a9bdac8dbe3cb432697c872"
+      },
+      "line": 1322,
+      "normalizedBodySha256": "a44bd1b859b2bd66b6a5052b4e75d49d6ce0a5c88a67202466a888929718f40b",
+      "assemblyInstructions": 121,
+      "callSites": [],
+      "gprXmmMoves": 0,
+      "framePointerReferences": 2,
+      "floatArithmetic": 0,
+      "explicitStackReservations": [
+        "subq $8, %rsp"
+      ]
+    },
+    {
+      "case": "mandelbrot",
+      "version": "p118-broad01",
+      "function": "$direct.mit",
+      "assembly": {
+        "file": "selfhost/build/phase111/p118-broad01-mandelbrot-build/program.s",
+        "bytes": 836253,
+        "sha256": "74a2b98ed3e04ea23de14b21284fdc8b207ca6d8515da227c0e5f5a9a71d9c09"
+      },
+      "line": 1491,
+      "normalizedBodySha256": "a44bd1b859b2bd66b6a5052b4e75d49d6ce0a5c88a67202466a888929718f40b",
+      "assemblyInstructions": 121,
+      "callSites": [],
+      "gprXmmMoves": 0,
+      "framePointerReferences": 2,
+      "floatArithmetic": 0,
+      "explicitStackReservations": [
+        "subq $8, %rsp"
+      ]
+    },
+    {
+      "case": "coverage-numeric-recurrence-1024",
+      "version": "p117-broad01",
+      "function": "$direct.p37.numeric",
+      "assembly": {
+        "file": "selfhost/build/phase111/p117-broad01-coverage-numeric-recurrence-1024-build/program.s",
+        "bytes": 531864,
+        "sha256": "9a2bf5931e2fb1e0855c394af04b7710ce3366cf54fd5f0cf181f1b27c2d657c"
+      },
+      "line": 635,
+      "normalizedBodySha256": "e3e94f72aa9b603abe58a96f91a58c9e277fbf0869ba492dca41d055f8bba700",
+      "assemblyInstructions": 65,
+      "callSites": [
+        "callq p111_rt_op"
+      ],
+      "gprXmmMoves": 8,
+      "framePointerReferences": 10,
+      "floatArithmetic": 4,
+      "explicitStackReservations": [
+        "subq $2048, %rsp"
+      ]
+    },
+    {
+      "case": "coverage-numeric-recurrence-1024",
+      "version": "p118-broad01",
+      "function": "$direct.p37.numeric",
+      "assembly": {
+        "file": "selfhost/build/phase111/p118-broad01-coverage-numeric-recurrence-1024-build/program.s",
+        "bytes": 533318,
+        "sha256": "d91c6a1b51321d4acb69871cef4ff3009760507a6a02b4b314dc7a345ff25dad"
+      },
+      "line": 819,
+      "normalizedBodySha256": "e251e27cf492914ae301b30f3549a45c33ab203fb0eeb6f7114c1e74f80cdc55",
+      "assemblyInstructions": 60,
+      "callSites": [],
+      "gprXmmMoves": 9,
+      "framePointerReferences": 9,
+      "floatArithmetic": 4,
+      "explicitStackReservations": [
+        "subq $2048, %rsp"
+      ]
+    }
+  ],
+  "comparisons": [
+    {
+      "case": "variation-ray-active-256-2240",
+      "function": "$direct.isect5",
+      "old": "p114-final-screen01",
+      "current": "p118-broad01",
+      "equalModuloLocalLabelsOnly": true
+    },
+    {
+      "case": "variation-ray-active-256-2240",
+      "function": "$direct.isect5",
+      "old": "p117-broad01",
+      "current": "p118-broad01",
+      "equalModuloLocalLabelsOnly": true
+    },
+    {
+      "case": "variation-ray-active-256-2240",
+      "function": "$product.nearest",
+      "old": "p114-final-screen01",
+      "current": "p118-broad01",
+      "equalModuloLocalLabelsOnly": true
+    },
+    {
+      "case": "variation-ray-active-256-2240",
+      "function": "$product.nearest",
+      "old": "p117-broad01",
+      "current": "p118-broad01",
+      "equalModuloLocalLabelsOnly": true
+    },
+    {
+      "case": "variation-ray-active-256-2240",
+      "function": "$direct.nearest.t",
+      "old": "p114-final-screen01",
+      "current": "p118-broad01",
+      "equalModuloLocalLabelsOnly": true
+    },
+    {
+      "case": "variation-ray-active-256-2240",
+      "function": "$direct.nearest.t",
+      "old": "p117-broad01",
+      "current": "p118-broad01",
+      "equalModuloLocalLabelsOnly": true
+    },
+    {
+      "case": "scalar-region-8192",
+      "function": "$direct.mit",
+      "old": "p114-final-screen01",
+      "current": "p118-broad01",
+      "equalModuloLocalLabelsOnly": true
+    },
+    {
+      "case": "scalar-region-8192",
+      "function": "$direct.mit",
+      "old": "p117-broad01",
+      "current": "p118-broad01",
+      "equalModuloLocalLabelsOnly": true
+    },
+    {
+      "case": "mandelbrot",
+      "function": "$direct.mit",
+      "old": "p117-broad01",
+      "current": "p118-broad01",
+      "equalModuloLocalLabelsOnly": true
+    },
+    {
+      "case": "coverage-numeric-recurrence-1024",
+      "function": "$direct.p37.numeric",
+      "old": "p117-broad01",
+      "current": "p118-broad01",
+      "equalModuloLocalLabelsOnly": false
+    }
+  ],
+  "existingTimings": [
+    {
+      "case": "variation-ray-active-256-2240",
+      "role": "baseline",
+      "milliseconds": [
+        478,
+        482,
+        478
+      ],
+      "medianMs": 478,
+      "argv": [
+        "--threads",
+        "1",
+        "--gpu",
+        "off",
+        "--",
+        "379",
+        "4",
+        "256",
+        "2240"
+      ]
+    },
+    {
+      "case": "variation-ray-active-256-2240",
+      "role": "candidate",
+      "milliseconds": [
+        481,
+        479,
+        478
+      ],
+      "medianMs": 479,
+      "argv": [
+        "--threads",
+        "1",
+        "--gpu",
+        "off",
+        "--",
+        "379",
+        "4",
+        "256",
+        "2240"
+      ]
+    },
+    {
+      "case": "variation-ray-active-256-2240",
+      "role": "upstream",
+      "milliseconds": [
+        54,
+        57,
+        57
+      ],
+      "medianMs": 57,
+      "argv": [
+        "--threads",
+        "1",
+        "--gpu",
+        "off",
+        "--",
+        "379",
+        "4",
+        "256",
+        "2240"
+      ]
+    },
+    {
+      "case": "scalar-region-8192",
+      "role": "baseline",
+      "milliseconds": [
+        107,
+        108,
+        107
+      ],
+      "medianMs": 107,
+      "argv": [
+        "--threads",
+        "1",
+        "--gpu",
+        "off",
+        "--",
+        "1394",
+        "4",
+        "8192",
+        "524800"
+      ]
+    },
+    {
+      "case": "scalar-region-8192",
+      "role": "candidate",
+      "milliseconds": [
+        107,
+        107,
+        108
+      ],
+      "medianMs": 107,
+      "argv": [
+        "--threads",
+        "1",
+        "--gpu",
+        "off",
+        "--",
+        "1394",
+        "4",
+        "8192",
+        "524800"
+      ]
+    },
+    {
+      "case": "scalar-region-8192",
+      "role": "upstream",
+      "milliseconds": [
+        50,
+        50,
+        50
+      ],
+      "medianMs": 50,
+      "argv": [
+        "--threads",
+        "1",
+        "--gpu",
+        "off",
+        "--",
+        "1394",
+        "4",
+        "8192",
+        "524800"
+      ]
+    },
+    {
+      "case": "mandelbrot",
+      "role": "baseline",
+      "milliseconds": [
+        270,
+        271,
+        273
+      ],
+      "medianMs": 271,
+      "argv": [
+        "--threads",
+        "1",
+        "--gpu",
+        "off",
+        "--",
+        "2259",
+        "4",
+        "2",
+        "0"
+      ]
+    },
+    {
+      "case": "mandelbrot",
+      "role": "candidate",
+      "milliseconds": [
+        201,
+        202,
+        228
+      ],
+      "medianMs": 202,
+      "argv": [
+        "--threads",
+        "1",
+        "--gpu",
+        "off",
+        "--",
+        "2259",
+        "4",
+        "2",
+        "0"
+      ]
+    },
+    {
+      "case": "mandelbrot",
+      "role": "upstream",
+      "milliseconds": [
+        49,
+        51,
+        51
+      ],
+      "medianMs": 51,
+      "argv": [
+        "--threads",
+        "1",
+        "--gpu",
+        "off",
+        "--",
+        "2259",
+        "4",
+        "2",
+        "0"
+      ]
+    },
+    {
+      "case": "coverage-numeric-recurrence-1024",
+      "role": "baseline",
+      "milliseconds": [
+        123,
+        123,
+        122
+      ],
+      "medianMs": 123,
+      "argv": [
+        "--threads",
+        "1",
+        "--gpu",
+        "off",
+        "--",
+        "15484",
+        "4",
+        "1024",
+        "123"
+      ]
+    },
+    {
+      "case": "coverage-numeric-recurrence-1024",
+      "role": "candidate",
+      "milliseconds": [
+        104,
+        104,
+        104
+      ],
+      "medianMs": 104,
+      "argv": [
+        "--threads",
+        "1",
+        "--gpu",
+        "off",
+        "--",
+        "15484",
+        "4",
+        "1024",
+        "123"
+      ]
+    },
+    {
+      "case": "coverage-numeric-recurrence-1024",
+      "role": "upstream",
+      "milliseconds": [
+        50,
+        49,
+        52
+      ],
+      "medianMs": 50,
+      "argv": [
+        "--threads",
+        "1",
+        "--gpu",
+        "off",
+        "--",
+        "15484",
+        "4",
+        "1024",
+        "123"
+      ]
+    }
+  ],
+  "retainedReferences": [
+    {
+      "case": "variation-ray-active-256-2240",
+      "role": "upstream_c",
+      "source": {
+        "file": "selfhost/build/phase93/fixtures01/variation-ray-active-256-2240.bend",
+        "bytes": 16661,
+        "sha256": "7099448e301e2cab7cb5ab47e2a4892dbf44ac246676b4f950282c7a57007669"
+      },
+      "product": {
+        "file": "selfhost/build/phase93/broad01/variation-ray-active-256-2240/upstream.program",
+        "bytes": 68080,
+        "sha256": "673a5086e23e7381d967d946b14d456012ba2140d6e6a2dee09aba2f47c821ee"
+      },
+      "generated": {
+        "file": "selfhost/build/phase93/broad01/variation-ray-active-256-2240/upstream.1.c",
+        "bytes": 156030,
+        "sha256": "18faa3fc10c9e388a5ee819481a4ea397f446358277f4c152e2391a69e99deec"
+      }
+    },
+    {
+      "case": "variation-ray-active-256-2240",
+      "role": "selfhost_c",
+      "source": {
+        "file": "selfhost/build/phase93/fixtures01/variation-ray-active-256-2240.bend",
+        "bytes": 16661,
+        "sha256": "7099448e301e2cab7cb5ab47e2a4892dbf44ac246676b4f950282c7a57007669"
+      },
+      "product": {
+        "file": "selfhost/build/phase99/phase102-runtime-products04/variation-ray-active-256-2240/candidate.program",
+        "bytes": 118272,
+        "sha256": "317f0f764b1071d5ec73acab72233f8f1a49cdfde82e6ddc9a3e4580119615b9"
+      },
+      "generated": {
+        "file": "selfhost/build/phase102/native-chain04/runtime-continuity/28-variation-ray-active-256-2240/output.1.c",
+        "bytes": 545848,
+        "sha256": "11b6770ef8e0c08fe91a107e3b1dfcdaac484282f55188d8b966bd456ad88973"
+      }
+    },
+    {
+      "case": "variation-ray-active-256-2240",
+      "role": "qbe",
+      "source": {
+        "file": "selfhost/build/phase93/fixtures01/variation-ray-active-256-2240.bend",
+        "bytes": 16661,
+        "sha256": "7099448e301e2cab7cb5ab47e2a4892dbf44ac246676b4f950282c7a57007669"
+      },
+      "product": {
+        "file": "selfhost/build/phase111/p114-final-screen01-variation-ray-active-256-2240-build/program",
+        "bytes": 333208,
+        "sha256": "24c4ac3dc59543d22eb9717567aaaad8210c8b7a056bd92c9d349d3080c1ae81"
+      },
+      "generated": {
+        "file": "selfhost/build/phase111/p114-final-screen01-variation-ray-active-256-2240-emit/program.ssa",
+        "bytes": 1934596,
+        "sha256": "c971b03be7481773ee0e22cc65240af95b1538f38d4fa7516075b084708fc6c2"
+      }
+    },
+    {
+      "case": "scalar-region-8192",
+      "role": "upstream_c",
+      "source": {
+        "file": "selfhost/build/phase93/fixtures01/scalar-region-8192.bend",
+        "bytes": 3454,
+        "sha256": "ee300ddfdeda2e89e2f52550ec10d9f22842276cef737fbd19578bed095133f7"
+      },
+      "product": {
+        "file": "selfhost/build/phase93/broad01/scalar-region-8192/upstream.program",
+        "bytes": 57680,
+        "sha256": "12f6308ea92865750cf58c15bbb5185fe7617ceeff77362c78d9ff4565a860ac"
+      },
+      "generated": {
+        "file": "selfhost/build/phase93/broad01/scalar-region-8192/upstream.1.c",
+        "bytes": 128493,
+        "sha256": "3c4a755182d442714aa96a77f617c354741c6f3f62cd27b1c05efec6fcbba031"
+      }
+    },
+    {
+      "case": "scalar-region-8192",
+      "role": "selfhost_c",
+      "source": {
+        "file": "selfhost/build/phase93/fixtures01/scalar-region-8192.bend",
+        "bytes": 3454,
+        "sha256": "ee300ddfdeda2e89e2f52550ec10d9f22842276cef737fbd19578bed095133f7"
+      },
+      "product": {
+        "file": "selfhost/build/phase99/phase102-runtime-products04/scalar-region-8192/candidate.program",
+        "bytes": 90952,
+        "sha256": "df0fef9a3a3a2bec84c9747f6a08f03dc952a3d492703418d23505276a29068f"
+      },
+      "generated": {
+        "file": "selfhost/build/phase102/native-chain04/runtime-continuity/13-scalar-region-8192/output.1.c",
+        "bytes": 283651,
+        "sha256": "2d0005fb70a469e694345178463988aa9e8ace7ef4b18947ac95e014fc00badb"
+      }
+    },
+    {
+      "case": "scalar-region-8192",
+      "role": "qbe",
+      "source": {
+        "file": "selfhost/build/phase93/fixtures01/scalar-region-8192.bend",
+        "bytes": 3454,
+        "sha256": "ee300ddfdeda2e89e2f52550ec10d9f22842276cef737fbd19578bed095133f7"
+      },
+      "product": {
+        "file": "selfhost/build/phase111/p114-final-screen01-scalar-region-8192-build/program",
+        "bytes": 215824,
+        "sha256": "c018069f53ca6dd0e4ffdd953f3eadc85ab8b6ba8bc1c94379069983b5754ca0"
+      },
+      "generated": {
+        "file": "selfhost/build/phase111/p114-final-screen01-scalar-region-8192-emit/program.ssa",
+        "bytes": 577511,
+        "sha256": "0e39ac9922486ea62be2e560fa47bce9693499ea6a2e0cc95318181fc3229059"
+      }
+    }
+  ],
+  "retainedMachine": [
+    {
+      "case": "scalar-region-8192",
+      "role": "upstream_c",
+      "symbol": "WL_FID_MAIN_C101",
+      "assembly": {
+        "file": "implementation/phase116/numeric-machine/scalar-region-8192-upstream_c-0.asm",
+        "bytes": 8045,
+        "sha256": "fbf6e9a3e2fa25c2f5ed030fb2e1888128706d0afb1ee841a8c52405ad78c015"
+      },
+      "vectorArithmetic": {
+        "addps": 0,
+        "subps": 0,
+        "mulps": 0,
+        "divps": 0,
+        "sqrtps": 0
+      },
+      "scope": "Whole physical function, not equivalent work boundaries; static counts only."
+    },
+    {
+      "case": "scalar-region-8192",
+      "role": "selfhost_c",
+      "symbol": "WL_FID_native_k_5236",
+      "assembly": {
+        "file": "implementation/phase116/numeric-machine/scalar-region-8192-selfhost_c-0.asm",
+        "bytes": 7086,
+        "sha256": "8475ed9c418f39eae93c604afdd21525c6d73827c561290d8057badae9f87ac7"
+      },
+      "vectorArithmetic": {
+        "addps": 0,
+        "subps": 0,
+        "mulps": 0,
+        "divps": 0,
+        "sqrtps": 0
+      },
+      "scope": "Whole physical function, not equivalent work boundaries; static counts only."
+    },
+    {
+      "case": "scalar-region-8192",
+      "role": "qbe",
+      "symbol": "p113d_FID_$direct.mit",
+      "assembly": {
+        "file": "implementation/phase116/numeric-machine/scalar-region-8192-qbe-0.asm",
+        "bytes": 6290,
+        "sha256": "d1f2662322ae83a51d0d0a7e215c855d096f6ecc43c2e4afc0825dd01a61f5fc"
+      },
+      "vectorArithmetic": {
+        "addps": 0,
+        "subps": 0,
+        "mulps": 0,
+        "divps": 0,
+        "sqrtps": 0
+      },
+      "scope": "Whole physical function, not equivalent work boundaries; static counts only."
+    },
+    {
+      "case": "variation-ray-active-256-2240",
+      "role": "upstream_c",
+      "symbol": "spin_22",
+      "assembly": {
+        "file": "implementation/phase116/numeric-machine/variation-ray-active-256-2240-upstream_c-0.asm",
+        "bytes": 116214,
+        "sha256": "6133211ce2035b7403d1d6839cdd8c45725af6238cf0409b443f7cdd06e8e9de"
+      },
+      "vectorArithmetic": {
+        "addps": 15,
+        "subps": 5,
+        "mulps": 42,
+        "divps": 6,
+        "sqrtps": 0
+      },
+      "scope": "Whole physical function, not equivalent work boundaries; static counts only."
+    },
+    {
+      "case": "variation-ray-active-256-2240",
+      "role": "upstream_c",
+      "symbol": "spin_32",
+      "assembly": {
+        "file": "implementation/phase116/numeric-machine/variation-ray-active-256-2240-upstream_c-1.asm",
+        "bytes": 7020,
+        "sha256": "d5019797e618ab3c40a2fcd2682be7b45744507122d2a2f919977842c788dca8"
+      },
+      "vectorArithmetic": {
+        "addps": 0,
+        "subps": 0,
+        "mulps": 0,
+        "divps": 0,
+        "sqrtps": 0
+      },
+      "scope": "Whole physical function, not equivalent work boundaries; static counts only."
+    },
+    {
+      "case": "variation-ray-active-256-2240",
+      "role": "selfhost_c",
+      "symbol": "NF_FID_$product.nearest",
+      "assembly": {
+        "file": "implementation/phase116/numeric-machine/variation-ray-active-256-2240-selfhost_c-0.asm",
+        "bytes": 53281,
+        "sha256": "f01c8c82603949c94427fe1ade9e8255ba1f252dbc4d5168df808c78c8749261"
+      },
+      "vectorArithmetic": {
+        "addps": 0,
+        "subps": 0,
+        "mulps": 0,
+        "divps": 0,
+        "sqrtps": 0
+      },
+      "scope": "Whole physical function, not equivalent work boundaries; static counts only."
+    },
+    {
+      "case": "variation-ray-active-256-2240",
+      "role": "selfhost_c",
+      "symbol": "NF_FID_nearest.t",
+      "assembly": {
+        "file": "implementation/phase116/numeric-machine/variation-ray-active-256-2240-selfhost_c-1.asm",
+        "bytes": 50517,
+        "sha256": "1df01e768af17b0ccde7d70d8a1b47462edbe3222f00df39ec20a0bbd0752409"
+      },
+      "vectorArithmetic": {
+        "addps": 0,
+        "subps": 0,
+        "mulps": 0,
+        "divps": 0,
+        "sqrtps": 0
+      },
+      "scope": "Whole physical function, not equivalent work boundaries; static counts only."
+    },
+    {
+      "case": "variation-ray-active-256-2240",
+      "role": "qbe",
+      "symbol": "p113d_FID_$direct.isect5",
+      "assembly": {
+        "file": "implementation/phase116/numeric-machine/variation-ray-active-256-2240-qbe-0.asm",
+        "bytes": 11459,
+        "sha256": "e17255cb758665064d61ed5cd95b72539e45c6e2bef23a1dc3ce063ddbffb57f"
+      },
+      "vectorArithmetic": {
+        "addps": 0,
+        "subps": 0,
+        "mulps": 0,
+        "divps": 0,
+        "sqrtps": 0
+      },
+      "scope": "Whole physical function, not equivalent work boundaries; static counts only."
+    },
+    {
+      "case": "variation-ray-active-256-2240",
+      "role": "qbe",
+      "symbol": "p113d_FID_$product.nearest",
+      "assembly": {
+        "file": "implementation/phase116/numeric-machine/variation-ray-active-256-2240-qbe-1.asm",
+        "bytes": 28203,
+        "sha256": "a9c3fc9ad4582d9e109ab96bcb75df3f9b2aba0bfa25a94f8d68e5894e28e524"
+      },
+      "vectorArithmetic": {
+        "addps": 0,
+        "subps": 0,
+        "mulps": 0,
+        "divps": 0,
+        "sqrtps": 0
+      },
+      "scope": "Whole physical function, not equivalent work boundaries; static counts only."
+    }
+  ],
+  "authenticatedProducts": [
+    {
+      "file": "selfhost/build/phase111/p118-broad01-variation-ray-active-256-2240-build/program",
+      "bytes": 343304,
+      "sha256": "e615a8b73f7ef69cdbcfdcf303999fba6b8e8a70839bcf5e14930f475cd92727"
+    },
+    {
+      "file": "selfhost/build/phase111/p118-broad01-variation-ray-active-256-2240-build/program.o",
+      "bytes": 311104,
+      "sha256": "0cf2b30c72c9529027487c0b35563479de3c21b6d3072f5e178f70bc3f6e072d"
+    },
+    {
+      "file": "selfhost/build/phase111/p117-broad01-variation-ray-active-256-2240-build/program",
+      "bytes": 333296,
+      "sha256": "c3f9b59398231470d662576e3ac7ed9499796a4253108d8c69ebdaa20c00149b"
+    },
+    {
+      "file": "selfhost/build/phase93/broad01/variation-ray-active-256-2240/upstream.program",
+      "bytes": 68080,
+      "sha256": "673a5086e23e7381d967d946b14d456012ba2140d6e6a2dee09aba2f47c821ee"
+    },
+    {
+      "file": "selfhost/build/phase111/p118-broad01-scalar-region-8192-build/program",
+      "bytes": 225920,
+      "sha256": "3487e8545a4a1cdda30b3557858fa9a70d28f85ed4c05c52249702ff9cfc85c3"
+    },
+    {
+      "file": "selfhost/build/phase111/p118-broad01-scalar-region-8192-build/program.o",
+      "bytes": 170744,
+      "sha256": "54e788956091e2535edaf4512afd11d4e452a212609f7de4eb7c950de8a308ac"
+    },
+    {
+      "file": "selfhost/build/phase111/p117-broad01-scalar-region-8192-build/program",
+      "bytes": 215904,
+      "sha256": "e476ce1c98bb8ca8aab49785fd06963bb89bb10f4336e510496580f5834e4d63"
+    },
+    {
+      "file": "selfhost/build/phase93/broad01/scalar-region-8192/upstream.program",
+      "bytes": 57680,
+      "sha256": "12f6308ea92865750cf58c15bbb5185fe7617ceeff77362c78d9ff4565a860ac"
+    },
+    {
+      "file": "selfhost/build/phase111/p118-broad01-mandelbrot-build/program",
+      "bytes": 283072,
+      "sha256": "23be991e451dbf25f100688d907399016caecb3d12a9044cfa1fcc4bec94ce12"
+    },
+    {
+      "file": "selfhost/build/phase111/p118-broad01-mandelbrot-build/program.o",
+      "bytes": 240144,
+      "sha256": "592ac003d401824d03486d14d2299c65b357d4cca4cf6a7b8cbf45d3fb969f84"
+    },
+    {
+      "file": "selfhost/build/phase111/p117-broad01-mandelbrot-build/program",
+      "bytes": 277160,
+      "sha256": "e20a54b999668f752a276e683337e5138394dc92cb38f8690cfeb64b3e885b53"
+    },
+    {
+      "file": "selfhost/build/phase93/broad01/mandelbrot/upstream.program",
+      "bytes": 65520,
+      "sha256": "3ab38f8b020bc620d1fad0fa711204fbc4be4e0ac6d99c34df03aa989aa450a7"
+    },
+    {
+      "file": "selfhost/build/phase111/p118-broad01-coverage-numeric-recurrence-1024-build/program",
+      "bytes": 214792,
+      "sha256": "269a7e6bb1b964c4c9254bd2ea01797dd82f0f41a2eee27552d654da56278ff9"
+    },
+    {
+      "file": "selfhost/build/phase111/p118-broad01-coverage-numeric-recurrence-1024-build/program.o",
+      "bytes": 160296,
+      "sha256": "9750c5e3d8620eede2b7e46227ceaed69c6972791395a157736020287bac5942"
+    },
+    {
+      "file": "selfhost/build/phase111/p117-broad01-coverage-numeric-recurrence-1024-build/program",
+      "bytes": 208872,
+      "sha256": "ed9c358cf35ea8e988424b3f34d65f89ae26833e605b8259f078325b740290f2"
+    },
+    {
+      "file": "selfhost/build/phase93/broad01/coverage-numeric-recurrence-1024/upstream.program",
+      "bytes": 58032,
+      "sha256": "c1d55e8bd7504532731da7631a1f9a7a50158563ec5f1c02166d3e93e46c6106"
+    }
+  ],
+  "limits": [
+    "Historical C producers differ from current QBE; these are products, not isolated backend ablations.",
+    "Phase116 samples remain historical; new physical shares require root-owned refresh.",
+    "Assembly instruction counts exclude assembler alignment instructions; cannot directly compare with old objdump totals."
+  ],
+  "freshRootClean": {
+    "report": {
+      "file": "selfhost/build/phase119/clean01/report.json",
+      "sha256": "b032a3f1dbb2f6484da099e0ae1589f2de615b9acd0524d0b70fcaafc4cdc723",
+      "bytes": 71433
+    },
+    "rows": [
+      {
+        "case": "scalar-region-8192",
+        "role": "qbe",
+        "milliseconds": [
+          431,
+          427,
+          429
+        ],
+        "medianMs": 429,
+        "argv": [
+          "--threads",
+          "1",
+          "--gpu",
+          "off",
+          "--",
+          "5576",
+          "32",
+          "8192",
+          "524800"
+        ]
+      },
+      {
+        "case": "scalar-region-8192",
+        "role": "selfhost_c",
+        "milliseconds": [
+          208,
+          206,
+          207
+        ],
+        "medianMs": 207,
+        "argv": [
+          "--threads",
+          "1",
+          "--gpu",
+          "off",
+          "--",
+          "5576",
+          "32",
+          "8192",
+          "524800"
+        ]
+      },
+      {
+        "case": "scalar-region-8192",
+        "role": "upstream_c",
+        "milliseconds": [
+          200,
+          201,
+          202
+        ],
+        "medianMs": 201,
+        "argv": [
+          "--threads",
+          "1",
+          "--gpu",
+          "off",
+          "--",
+          "5576",
+          "32",
+          "8192",
+          "524800"
+        ]
+      },
+      {
+        "case": "variation-ray-active-256-2240",
+        "role": "qbe",
+        "milliseconds": [
+          1704,
+          1689,
+          1703
+        ],
+        "medianMs": 1703,
+        "argv": [
+          "--threads",
+          "1",
+          "--gpu",
+          "off",
+          "--",
+          "1516",
+          "32",
+          "256",
+          "2240"
+        ]
+      },
+      {
+        "case": "variation-ray-active-256-2240",
+        "role": "selfhost_c",
+        "milliseconds": [
+          683,
+          694,
+          688
+        ],
+        "medianMs": 688,
+        "argv": [
+          "--threads",
+          "1",
+          "--gpu",
+          "off",
+          "--",
+          "1516",
+          "32",
+          "256",
+          "2240"
+        ]
+      },
+      {
+        "case": "variation-ray-active-256-2240",
+        "role": "upstream_c",
+        "milliseconds": [
+          201,
+          205,
+          200
+        ],
+        "medianMs": 201,
+        "argv": [
+          "--threads",
+          "1",
+          "--gpu",
+          "off",
+          "--",
+          "1516",
+          "32",
+          "256",
+          "2240"
+        ]
+      }
+    ]
+  }
+}

@@ -40,8 +40,9 @@ The command emits `rootGuardCommand`; only the root coordinator runs it, after
 checking the chosen source/runtime and available resource window. Defaults are
 1200 seconds each for hosted and native self-emission, and 120 seconds per
 QBE/assembler/linker child. Options `--hosted-seconds`, `--native-seconds` and
-`--build-seconds` set explicit limits before freezing the plan. The outer guard
-retains CPU3, 4 GiB RSS, 16 GiB available-memory floor, and 128 MiB file cap.
+`--build-seconds` set explicit limits before freezing the plan. `--rss-mib`
+records an explicit 2–6 GiB RSS ceiling (default4 GiB). The outer guard
+retains CPU3, a16 GiB available-memory floor, and a128 MiB file cap.
 These are ceilings, not forecasts. A larger actual image may require a separate
 review of limits. Failed attempts and partial products remain in their own
 directories; a retry requires a fresh tag and plan.

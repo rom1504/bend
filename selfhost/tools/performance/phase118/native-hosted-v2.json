@@ -1,0 +1,29 @@
+{
+  "kind": "phase118-hosted-exception-diagnostics",
+  "complete": true,
+  "targetsRun": false,
+  "original": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase118/native-hosted.mjs",
+    "bytes": 11947,
+    "sha256": "1a222903b940c18b157760b89697e69bc381d55c3747ce1570fee841863c9bd3"
+  },
+  "method": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase118/native-hosted-v2.mjs",
+    "bytes": 13215,
+    "sha256": "30dfb557c35f1c37ed4f1572430b0df1ac97d21a3205dda8453e1a15b198770b"
+  },
+  "changes": [
+    "request host stack limit64",
+    "capture name/message/stack in failing stage and report",
+    "write and pin separate error-stack.txt",
+    "diagnostic metadata only"
+  ],
+  "preserved": [
+    "same checked API requirements",
+    "same complete original frontend and runtime admission",
+    "same api.p111_emit_admitted(plan.request, empty_error) call",
+    "same stage order and compiler clocks",
+    "same exact chunk writer and output authentication"
+  ],
+  "scope": "Source-only diagnostic revision; requires separately pinned native plan/comparison integration. No request/IR replay or serialization added."
+}

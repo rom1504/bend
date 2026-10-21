@@ -1,0 +1,1555 @@
+{
+  "kind": "phase118-measurements",
+  "complete": false,
+  "scope": "Broad runtime completed; initial native acquisition failed host stack limit; compiler-cost measurements running",
+  "source": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/float-source01/compiler.bend",
+    "bytes": 2376955,
+    "sha256": "b16a71925e94585b5d66a010a8377a1f6500376de217d90fee7eb2e8fcb26c08"
+  },
+  "api": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p118-float-api01/api.mjs",
+    "bytes": 2009619,
+    "sha256": "10998a568a26e90cc17c2914548ed4cf3a5c7df01fda10f8448bc9d62ea123f8"
+  },
+  "runtime": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/runtime-extend01/runtime.o",
+    "bytes": 113728,
+    "sha256": "1b740d48e0db4504b214e0c909d0b5f28cd49064850e9be69fdb20a53a6c55fe"
+  },
+  "broad": {
+    "complete": true,
+    "scope": "Original45 hosted-emitted native QBE programs; same-run Phase117 and pinned upstream C. No native-compiler throughput claim.",
+    "observations": 405,
+    "timedCases": 44,
+    "candidateVsUpstream": 3.008926120277161,
+    "speedup": 1.4345687959277815,
+    "cases": [
+      {
+        "name": "mandelbrot",
+        "samplesMs": {
+          "candidate": [
+            201,
+            202,
+            228
+          ],
+          "baseline": [
+            270,
+            271,
+            273
+          ],
+          "upstream": [
+            49,
+            51,
+            51
+          ]
+        },
+        "medianMs": {
+          "candidate": 202,
+          "baseline": 271,
+          "upstream": 51
+        },
+        "timed": true,
+        "candidateVsUpstream": 3.9607843137254903,
+        "speedup": 1.3415841584158417
+      },
+      {
+        "name": "editdist",
+        "samplesMs": {
+          "candidate": [
+            107,
+            108,
+            108
+          ],
+          "baseline": [
+            109,
+            111,
+            110
+          ],
+          "upstream": [
+            50,
+            51,
+            50
+          ]
+        },
+        "medianMs": {
+          "candidate": 108,
+          "baseline": 110,
+          "upstream": 50
+        },
+        "timed": true,
+        "candidateVsUpstream": 2.16,
+        "speedup": 1.0185185185185186
+      },
+      {
+        "name": "tree-bitonic",
+        "samplesMs": {
+          "candidate": [
+            249,
+            241,
+            240
+          ],
+          "baseline": [
+            336,
+            334,
+            333
+          ],
+          "upstream": [
+            50,
+            50,
+            50
+          ]
+        },
+        "medianMs": {
+          "candidate": 241,
+          "baseline": 334,
+          "upstream": 50
+        },
+        "timed": true,
+        "candidateVsUpstream": 4.82,
+        "speedup": 1.3858921161825726
+      },
+      {
+        "name": "lexer",
+        "samplesMs": {
+          "candidate": [
+            207,
+            208,
+            211
+          ],
+          "baseline": [
+            334,
+            338,
+            338
+          ],
+          "upstream": [
+            53,
+            46,
+            47
+          ]
+        },
+        "medianMs": {
+          "candidate": 208,
+          "baseline": 338,
+          "upstream": 47
+        },
+        "timed": true,
+        "candidateVsUpstream": 4.425531914893617,
+        "speedup": 1.625
+      },
+      {
+        "name": "symreg",
+        "samplesMs": {
+          "candidate": [
+            83,
+            86,
+            85
+          ],
+          "baseline": [
+            98,
+            93,
+            94
+          ],
+          "upstream": [
+            50,
+            50,
+            52
+          ]
+        },
+        "medianMs": {
+          "candidate": 85,
+          "baseline": 94,
+          "upstream": 50
+        },
+        "timed": true,
+        "candidateVsUpstream": 1.7,
+        "speedup": 1.1058823529411765
+      },
+      {
+        "name": "test-morning-program",
+        "samplesMs": {
+          "candidate": [
+            173,
+            168,
+            167
+          ],
+          "baseline": [
+            333,
+            335,
+            334
+          ],
+          "upstream": [
+            50,
+            49,
+            50
+          ]
+        },
+        "medianMs": {
+          "candidate": 168,
+          "baseline": 334,
+          "upstream": 50
+        },
+        "timed": true,
+        "candidateVsUpstream": 3.36,
+        "speedup": 1.9880952380952381
+      },
+      {
+        "name": "test-evening-program",
+        "samplesMs": {
+          "candidate": [
+            358,
+            359,
+            355
+          ],
+          "baseline": [
+            533,
+            533,
+            527
+          ],
+          "upstream": [
+            50,
+            50,
+            50
+          ]
+        },
+        "medianMs": {
+          "candidate": 358,
+          "baseline": 533,
+          "upstream": 50
+        },
+        "timed": true,
+        "candidateVsUpstream": 7.16,
+        "speedup": 1.488826815642458
+      },
+      {
+        "name": "test-rle-roundtrip",
+        "samplesMs": {
+          "candidate": [
+            381,
+            381,
+            391
+          ],
+          "baseline": [
+            456,
+            450,
+            451
+          ],
+          "upstream": [
+            51,
+            50,
+            51
+          ]
+        },
+        "medianMs": {
+          "candidate": 381,
+          "baseline": 451,
+          "upstream": 51
+        },
+        "timed": true,
+        "candidateVsUpstream": 7.470588235294118,
+        "speedup": 1.1837270341207349
+      },
+      {
+        "name": "test-map-set-ops",
+        "samplesMs": {
+          "candidate": [
+            234,
+            232,
+            231
+          ],
+          "baseline": [
+            434,
+            456,
+            444
+          ],
+          "upstream": [
+            50,
+            49,
+            50
+          ]
+        },
+        "medianMs": {
+          "candidate": 232,
+          "baseline": 444,
+          "upstream": 50
+        },
+        "timed": true,
+        "candidateVsUpstream": 4.64,
+        "speedup": 1.9137931034482758
+      },
+      {
+        "name": "raytrace",
+        "samplesMs": {
+          "candidate": [
+            469,
+            485,
+            470
+          ],
+          "baseline": [
+            605,
+            608,
+            613
+          ],
+          "upstream": [
+            57,
+            57,
+            58
+          ]
+        },
+        "medianMs": {
+          "candidate": 470,
+          "baseline": 608,
+          "upstream": 57
+        },
+        "timed": true,
+        "candidateVsUpstream": 8.24561403508772,
+        "speedup": 1.2936170212765958
+      },
+      {
+        "name": "local-pair",
+        "samplesMs": {
+          "candidate": [
+            108,
+            107,
+            106
+          ],
+          "baseline": [
+            109,
+            109,
+            110
+          ],
+          "upstream": [
+            50,
+            50,
+            50
+          ]
+        },
+        "medianMs": {
+          "candidate": 107,
+          "baseline": 109,
+          "upstream": 50
+        },
+        "timed": true,
+        "candidateVsUpstream": 2.14,
+        "speedup": 1.0186915887850467
+      },
+      {
+        "name": "local-fold",
+        "samplesMs": {
+          "candidate": [
+            85,
+            85,
+            85
+          ],
+          "baseline": [
+            85,
+            84,
+            85
+          ],
+          "upstream": [
+            50,
+            49,
+            50
+          ]
+        },
+        "medianMs": {
+          "candidate": 85,
+          "baseline": 85,
+          "upstream": 50
+        },
+        "timed": true,
+        "candidateVsUpstream": 1.7,
+        "speedup": 1.0
+      },
+      {
+        "name": "scalar-region-0",
+        "samplesMs": {
+          "candidate": [
+            0,
+            0,
+            0
+          ],
+          "baseline": [
+            0,
+            0,
+            0
+          ],
+          "upstream": [
+            0,
+            0,
+            0
+          ]
+        },
+        "medianMs": {
+          "candidate": 0,
+          "baseline": 0,
+          "upstream": 0
+        },
+        "timed": false,
+        "candidateVsUpstream": null,
+        "speedup": null
+      },
+      {
+        "name": "scalar-region-8192",
+        "samplesMs": {
+          "candidate": [
+            107,
+            107,
+            108
+          ],
+          "baseline": [
+            107,
+            108,
+            107
+          ],
+          "upstream": [
+            50,
+            50,
+            50
+          ]
+        },
+        "medianMs": {
+          "candidate": 107,
+          "baseline": 107,
+          "upstream": 50
+        },
+        "timed": true,
+        "candidateVsUpstream": 2.14,
+        "speedup": 1.0
+      },
+      {
+        "name": "complete-generic-row32",
+        "samplesMs": {
+          "candidate": [
+            136,
+            138,
+            136
+          ],
+          "baseline": [
+            250,
+            252,
+            257
+          ],
+          "upstream": [
+            50,
+            50,
+            50
+          ]
+        },
+        "medianMs": {
+          "candidate": 136,
+          "baseline": 252,
+          "upstream": 50
+        },
+        "timed": true,
+        "candidateVsUpstream": 2.72,
+        "speedup": 1.8529411764705883
+      },
+      {
+        "name": "variation-editdist-0-17",
+        "samplesMs": {
+          "candidate": [
+            106,
+            106,
+            107
+          ],
+          "baseline": [
+            109,
+            109,
+            109
+          ],
+          "upstream": [
+            51,
+            50,
+            50
+          ]
+        },
+        "medianMs": {
+          "candidate": 106,
+          "baseline": 109,
+          "upstream": 50
+        },
+        "timed": true,
+        "candidateVsUpstream": 2.12,
+        "speedup": 1.028301886792453
+      },
+      {
+        "name": "variation-editdist-3-123",
+        "samplesMs": {
+          "candidate": [
+            108,
+            107,
+            108
+          ],
+          "baseline": [
+            110,
+            111,
+            109
+          ],
+          "upstream": [
+            51,
+            50,
+            51
+          ]
+        },
+        "medianMs": {
+          "candidate": 108,
+          "baseline": 110,
+          "upstream": 51
+        },
+        "timed": true,
+        "candidateVsUpstream": 2.1176470588235294,
+        "speedup": 1.0185185185185186
+      },
+      {
+        "name": "variation-lexer-6-17",
+        "samplesMs": {
+          "candidate": [
+            226,
+            224,
+            228
+          ],
+          "baseline": [
+            371,
+            375,
+            363
+          ],
+          "upstream": [
+            52,
+            50,
+            50
+          ]
+        },
+        "medianMs": {
+          "candidate": 226,
+          "baseline": 371,
+          "upstream": 50
+        },
+        "timed": true,
+        "candidateVsUpstream": 4.52,
+        "speedup": 1.6415929203539823
+      },
+      {
+        "name": "variation-lexer-10-123",
+        "samplesMs": {
+          "candidate": [
+            207,
+            208,
+            208
+          ],
+          "baseline": [
+            339,
+            335,
+            342
+          ],
+          "upstream": [
+            47,
+            47,
+            46
+          ]
+        },
+        "medianMs": {
+          "candidate": 208,
+          "baseline": 339,
+          "upstream": 47
+        },
+        "timed": true,
+        "candidateVsUpstream": 4.425531914893617,
+        "speedup": 1.6298076923076923
+      },
+      {
+        "name": "variation-tree-bitonic-6-17",
+        "samplesMs": {
+          "candidate": [
+            274,
+            263,
+            263
+          ],
+          "baseline": [
+            359,
+            371,
+            358
+          ],
+          "upstream": [
+            51,
+            50,
+            50
+          ]
+        },
+        "medianMs": {
+          "candidate": 263,
+          "baseline": 359,
+          "upstream": 50
+        },
+        "timed": true,
+        "candidateVsUpstream": 5.26,
+        "speedup": 1.3650190114068441
+      },
+      {
+        "name": "variation-tree-bitonic-9-123",
+        "samplesMs": {
+          "candidate": [
+            225,
+            226,
+            227
+          ],
+          "baseline": [
+            314,
+            315,
+            315
+          ],
+          "upstream": [
+            51,
+            50,
+            51
+          ]
+        },
+        "medianMs": {
+          "candidate": 226,
+          "baseline": 315,
+          "upstream": 51
+        },
+        "timed": true,
+        "candidateVsUpstream": 4.431372549019608,
+        "speedup": 1.3938053097345133
+      },
+      {
+        "name": "variation-symreg-4-17",
+        "samplesMs": {
+          "candidate": [
+            83,
+            83,
+            84
+          ],
+          "baseline": [
+            97,
+            98,
+            93
+          ],
+          "upstream": [
+            50,
+            50,
+            55
+          ]
+        },
+        "medianMs": {
+          "candidate": 83,
+          "baseline": 97,
+          "upstream": 50
+        },
+        "timed": true,
+        "candidateVsUpstream": 1.66,
+        "speedup": 1.1686746987951808
+      },
+      {
+        "name": "variation-symreg-7-123",
+        "samplesMs": {
+          "candidate": [
+            85,
+            85,
+            86
+          ],
+          "baseline": [
+            97,
+            95,
+            95
+          ],
+          "upstream": [
+            51,
+            51,
+            51
+          ]
+        },
+        "medianMs": {
+          "candidate": 85,
+          "baseline": 95,
+          "upstream": 51
+        },
+        "timed": true,
+        "candidateVsUpstream": 1.6666666666666667,
+        "speedup": 1.1176470588235294
+      },
+      {
+        "name": "variation-local-fold-128-0",
+        "samplesMs": {
+          "candidate": [
+            140,
+            140,
+            140
+          ],
+          "baseline": [
+            137,
+            136,
+            138
+          ],
+          "upstream": [
+            51,
+            50,
+            50
+          ]
+        },
+        "medianMs": {
+          "candidate": 140,
+          "baseline": 137,
+          "upstream": 50
+        },
+        "timed": true,
+        "candidateVsUpstream": 2.8,
+        "speedup": 0.9785714285714285
+      },
+      {
+        "name": "variation-local-fold-8192-123",
+        "samplesMs": {
+          "candidate": [
+            92,
+            93,
+            93
+          ],
+          "baseline": [
+            94,
+            103,
+            94
+          ],
+          "upstream": [
+            54,
+            60,
+            57
+          ]
+        },
+        "medianMs": {
+          "candidate": 93,
+          "baseline": 94,
+          "upstream": 57
+        },
+        "timed": true,
+        "candidateVsUpstream": 1.631578947368421,
+        "speedup": 1.010752688172043
+      },
+      {
+        "name": "variation-mandelbrot-grid-4-7",
+        "samplesMs": {
+          "candidate": [
+            126,
+            125,
+            126
+          ],
+          "baseline": [
+            173,
+            172,
+            178
+          ],
+          "upstream": [
+            56,
+            53,
+            53
+          ]
+        },
+        "medianMs": {
+          "candidate": 126,
+          "baseline": 173,
+          "upstream": 53
+        },
+        "timed": true,
+        "candidateVsUpstream": 2.3773584905660377,
+        "speedup": 1.373015873015873
+      },
+      {
+        "name": "variation-mandelbrot-grid-5-31",
+        "samplesMs": {
+          "candidate": [
+            111,
+            109,
+            111
+          ],
+          "baseline": [
+            121,
+            125,
+            121
+          ],
+          "upstream": [
+            53,
+            52,
+            53
+          ]
+        },
+        "medianMs": {
+          "candidate": 111,
+          "baseline": 121,
+          "upstream": 53
+        },
+        "timed": true,
+        "candidateVsUpstream": 2.0943396226415096,
+        "speedup": 1.09009009009009
+      },
+      {
+        "name": "variation-ray-active-64-2440",
+        "samplesMs": {
+          "candidate": [
+            481,
+            480,
+            480
+          ],
+          "baseline": [
+            487,
+            489,
+            490
+          ],
+          "upstream": [
+            54,
+            54,
+            54
+          ]
+        },
+        "medianMs": {
+          "candidate": 480,
+          "baseline": 489,
+          "upstream": 54
+        },
+        "timed": true,
+        "candidateVsUpstream": 8.88888888888889,
+        "speedup": 1.01875
+      },
+      {
+        "name": "variation-ray-active-256-2240",
+        "samplesMs": {
+          "candidate": [
+            481,
+            479,
+            478
+          ],
+          "baseline": [
+            478,
+            482,
+            478
+          ],
+          "upstream": [
+            54,
+            57,
+            57
+          ]
+        },
+        "medianMs": {
+          "candidate": 479,
+          "baseline": 478,
+          "upstream": 57
+        },
+        "timed": true,
+        "candidateVsUpstream": 8.403508771929825,
+        "speedup": 0.9979123173277662
+      },
+      {
+        "name": "coverage-closures-64",
+        "samplesMs": {
+          "candidate": [
+            96,
+            100,
+            96
+          ],
+          "baseline": [
+            163,
+            163,
+            163
+          ],
+          "upstream": [
+            52,
+            52,
+            53
+          ]
+        },
+        "medianMs": {
+          "candidate": 96,
+          "baseline": 163,
+          "upstream": 52
+        },
+        "timed": true,
+        "candidateVsUpstream": 1.8461538461538463,
+        "speedup": 1.6979166666666667
+      },
+      {
+        "name": "coverage-closures-256",
+        "samplesMs": {
+          "candidate": [
+            99,
+            96,
+            98
+          ],
+          "baseline": [
+            168,
+            162,
+            164
+          ],
+          "upstream": [
+            56,
+            56,
+            53
+          ]
+        },
+        "medianMs": {
+          "candidate": 98,
+          "baseline": 164,
+          "upstream": 56
+        },
+        "timed": true,
+        "candidateVsUpstream": 1.75,
+        "speedup": 1.6734693877551021
+      },
+      {
+        "name": "coverage-list-pipeline-128",
+        "samplesMs": {
+          "candidate": [
+            187,
+            189,
+            189
+          ],
+          "baseline": [
+            322,
+            319,
+            319
+          ],
+          "upstream": [
+            61,
+            51,
+            52
+          ]
+        },
+        "medianMs": {
+          "candidate": 189,
+          "baseline": 319,
+          "upstream": 52
+        },
+        "timed": true,
+        "candidateVsUpstream": 3.6346153846153846,
+        "speedup": 1.687830687830688
+      },
+      {
+        "name": "coverage-list-pipeline-512",
+        "samplesMs": {
+          "candidate": [
+            166,
+            164,
+            165
+          ],
+          "baseline": [
+            287,
+            281,
+            295
+          ],
+          "upstream": [
+            51,
+            49,
+            49
+          ]
+        },
+        "medianMs": {
+          "candidate": 165,
+          "baseline": 287,
+          "upstream": 49
+        },
+        "timed": true,
+        "candidateVsUpstream": 3.36734693877551,
+        "speedup": 1.7393939393939395
+      },
+      {
+        "name": "coverage-bst-32",
+        "samplesMs": {
+          "candidate": [
+            194,
+            196,
+            195
+          ],
+          "baseline": [
+            340,
+            340,
+            341
+          ],
+          "upstream": [
+            56,
+            50,
+            50
+          ]
+        },
+        "medianMs": {
+          "candidate": 195,
+          "baseline": 340,
+          "upstream": 50
+        },
+        "timed": true,
+        "candidateVsUpstream": 3.9,
+        "speedup": 1.7435897435897436
+      },
+      {
+        "name": "coverage-bst-64",
+        "samplesMs": {
+          "candidate": [
+            155,
+            154,
+            155
+          ],
+          "baseline": [
+            255,
+            247,
+            261
+          ],
+          "upstream": [
+            50,
+            46,
+            46
+          ]
+        },
+        "medianMs": {
+          "candidate": 155,
+          "baseline": 255,
+          "upstream": 46
+        },
+        "timed": true,
+        "candidateVsUpstream": 3.369565217391304,
+        "speedup": 1.6451612903225807
+      },
+      {
+        "name": "coverage-unicode-text-16",
+        "samplesMs": {
+          "candidate": [
+            75,
+            76,
+            75
+          ],
+          "baseline": [
+            178,
+            181,
+            178
+          ],
+          "upstream": [
+            46,
+            46,
+            46
+          ]
+        },
+        "medianMs": {
+          "candidate": 75,
+          "baseline": 178,
+          "upstream": 46
+        },
+        "timed": true,
+        "candidateVsUpstream": 1.6304347826086956,
+        "speedup": 2.3733333333333335
+      },
+      {
+        "name": "coverage-unicode-text-64",
+        "samplesMs": {
+          "candidate": [
+            77,
+            84,
+            82
+          ],
+          "baseline": [
+            185,
+            196,
+            193
+          ],
+          "upstream": [
+            49,
+            50,
+            50
+          ]
+        },
+        "medianMs": {
+          "candidate": 82,
+          "baseline": 193,
+          "upstream": 50
+        },
+        "timed": true,
+        "candidateVsUpstream": 1.64,
+        "speedup": 2.3536585365853657
+      },
+      {
+        "name": "coverage-expression-32",
+        "samplesMs": {
+          "candidate": [
+            85,
+            93,
+            93
+          ],
+          "baseline": [
+            149,
+            151,
+            160
+          ],
+          "upstream": [
+            53,
+            52,
+            55
+          ]
+        },
+        "medianMs": {
+          "candidate": 93,
+          "baseline": 151,
+          "upstream": 53
+        },
+        "timed": true,
+        "candidateVsUpstream": 1.7547169811320755,
+        "speedup": 1.6236559139784945
+      },
+      {
+        "name": "coverage-expression-128",
+        "samplesMs": {
+          "candidate": [
+            88,
+            88,
+            94
+          ],
+          "baseline": [
+            145,
+            151,
+            152
+          ],
+          "upstream": [
+            54,
+            55,
+            52
+          ]
+        },
+        "medianMs": {
+          "candidate": 88,
+          "baseline": 151,
+          "upstream": 54
+        },
+        "timed": true,
+        "candidateVsUpstream": 1.6296296296296295,
+        "speedup": 1.7159090909090908
+      },
+      {
+        "name": "coverage-map-churn-32",
+        "samplesMs": {
+          "candidate": [
+            212,
+            207,
+            207
+          ],
+          "baseline": [
+            493,
+            473,
+            472
+          ],
+          "upstream": [
+            55,
+            59,
+            62
+          ]
+        },
+        "medianMs": {
+          "candidate": 207,
+          "baseline": 473,
+          "upstream": 59
+        },
+        "timed": true,
+        "candidateVsUpstream": 3.5084745762711864,
+        "speedup": 2.285024154589372
+      },
+      {
+        "name": "coverage-map-churn-128",
+        "samplesMs": {
+          "candidate": [
+            202,
+            197,
+            203
+          ],
+          "baseline": [
+            480,
+            479,
+            434
+          ],
+          "upstream": [
+            54,
+            55,
+            55
+          ]
+        },
+        "medianMs": {
+          "candidate": 202,
+          "baseline": 479,
+          "upstream": 55
+        },
+        "timed": true,
+        "candidateVsUpstream": 3.672727272727273,
+        "speedup": 2.371287128712871
+      },
+      {
+        "name": "coverage-numeric-recurrence-256",
+        "samplesMs": {
+          "candidate": [
+            110,
+            106,
+            105
+          ],
+          "baseline": [
+            124,
+            190,
+            124
+          ],
+          "upstream": [
+            50,
+            52,
+            51
+          ]
+        },
+        "medianMs": {
+          "candidate": 106,
+          "baseline": 124,
+          "upstream": 51
+        },
+        "timed": true,
+        "candidateVsUpstream": 2.0784313725490198,
+        "speedup": 1.169811320754717
+      },
+      {
+        "name": "coverage-numeric-recurrence-1024",
+        "samplesMs": {
+          "candidate": [
+            104,
+            104,
+            104
+          ],
+          "baseline": [
+            123,
+            123,
+            122
+          ],
+          "upstream": [
+            50,
+            49,
+            52
+          ]
+        },
+        "medianMs": {
+          "candidate": 104,
+          "baseline": 123,
+          "upstream": 50
+        },
+        "timed": true,
+        "candidateVsUpstream": 2.08,
+        "speedup": 1.1826923076923077
+      },
+      {
+        "name": "coverage-record-aggregation-64",
+        "samplesMs": {
+          "candidate": [
+            176,
+            175,
+            176
+          ],
+          "baseline": [
+            384,
+            382,
+            389
+          ],
+          "upstream": [
+            50,
+            54,
+            56
+          ]
+        },
+        "medianMs": {
+          "candidate": 176,
+          "baseline": 384,
+          "upstream": 54
+        },
+        "timed": true,
+        "candidateVsUpstream": 3.259259259259259,
+        "speedup": 2.1818181818181817
+      },
+      {
+        "name": "coverage-record-aggregation-256",
+        "samplesMs": {
+          "candidate": [
+            175,
+            176,
+            175
+          ],
+          "baseline": [
+            387,
+            386,
+            395
+          ],
+          "upstream": [
+            50,
+            50,
+            50
+          ]
+        },
+        "medianMs": {
+          "candidate": 175,
+          "baseline": 387,
+          "upstream": 50
+        },
+        "timed": true,
+        "candidateVsUpstream": 3.5,
+        "speedup": 2.2114285714285713
+      }
+    ]
+  },
+  "baselineVsUpstream": 4.316511521401658,
+  "runtimeReductionPercent": 30.29264244150327,
+  "simplicity": {
+    "parentLines": 51056,
+    "selectedLines": 52117,
+    "lineGrowthPercent": 2.0781103102475607,
+    "parentBroadQbeBytes": 39079507,
+    "selectedBroadQbeBytes": 39447110,
+    "qbeGrowthPercent": 0.9406541387535938
+  },
+  "evidence": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/broad-screen01/report.json",
+      "bytes": 583403,
+      "sha256": "670195ecb6d49f19b5bd98fb2f6094234f868b1b55d77f63c602c250ef0bf844"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/broad-emit01/report.json",
+      "bytes": 74873,
+      "sha256": "931823965050b375d9156212fc10b8465c468d998cb1356783a3235c84c693d8"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/all-controls-run01/report.json",
+      "bytes": 54987,
+      "sha256": "b4d88ed360b441437575d4e082d373a49775968c1b4645864e0d2b0789a934d2"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/float-finite01.json",
+      "bytes": 1502,
+      "sha256": "2186201b751c912c28e44389d749f71c3f49eff5c812f47a24c08ec241ea4456"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/cursor-clean01/report.json",
+      "bytes": 39481,
+      "sha256": "296f3c0abd767ccf37d0ddb29f2537994288fa34c3ec88ed70868952858f1fc6"
+    }
+  ],
+  "nativeAttempt01": {
+    "complete": false,
+    "failedStage": "integrated-compiler",
+    "error": "RangeError: Maximum call stack size exceeded.",
+    "frontendSeconds": 254.448806605,
+    "entrySeconds": 332.23821556200005,
+    "guardSeconds": 589.6245865400415,
+    "peakTreeRssBytes": 5217509376
+  },
+  "hostedCost": {
+    "complete": true,
+    "seconds": 324.920228986,
+    "peakRss": 1225932800,
+    "caseNames": [
+      "coverage-map-churn-128",
+      "coverage-list-pipeline-128",
+      "lexer",
+      "tree-bitonic",
+      "coverage-closures-256",
+      "editdist",
+      "variation-local-fold-128-0",
+      "coverage-numeric-recurrence-1024"
+    ],
+    "geometricCandidateOverParent": 1.1250075633703716,
+    "geometricAdmittedCandidateOverParent": 1.1866160550752276,
+    "summaries": [
+      {
+        "name": "coverage-map-churn-128",
+        "baseline": {
+          "wholePreparedMedian": 7.410870326999983,
+          "admittedMedian": 6.467409592000011,
+          "frontendMedian": 1.057979793000035,
+          "output": {
+            "sha256": "7005dbab652a89e8d0707b77f1f51eee5868aa5ffa3fd46842259f4860f682c4",
+            "bytes": 1269999,
+            "chunks": 1126
+          }
+        },
+        "candidate": {
+          "wholePreparedMedian": 7.833117671999993,
+          "admittedMedian": 6.937529215999995,
+          "frontendMedian": 1.0528203620000276,
+          "output": {
+            "sha256": "e898fcb903db3198e433b344af61a1f17ee6d3347bf4e40b6939f380b749a776",
+            "bytes": 1276042,
+            "chunks": 1132
+          }
+        },
+        "candidateOverParent": 1.0569767552755092,
+        "admittedCandidateOverParent": 1.072690559846636
+      },
+      {
+        "name": "coverage-list-pipeline-128",
+        "baseline": {
+          "wholePreparedMedian": 2.8385067889999482,
+          "admittedMedian": 1.93666393900002,
+          "frontendMedian": 0.920953296999971,
+          "output": {
+            "sha256": "7470be7b4520fa39c1c4a190db13414aafb4ae4991f6fd07a219bde5edec8a3a",
+            "bytes": 457469,
+            "chunks": 589
+          }
+        },
+        "candidate": {
+          "wholePreparedMedian": 3.307482942999981,
+          "admittedMedian": 2.4393695569999982,
+          "frontendMedian": 0.8632543549999827,
+          "output": {
+            "sha256": "e7787f8aff67862d4d6950164791ee4993b4ab41d9a22a081b97f56da2c0f07a",
+            "bytes": 459657,
+            "chunks": 595
+          }
+        },
+        "candidateOverParent": 1.165219317359907,
+        "admittedCandidateOverParent": 1.259572973852937
+      },
+      {
+        "name": "lexer",
+        "baseline": {
+          "wholePreparedMedian": 6.081523552999977,
+          "admittedMedian": 4.79810774799998,
+          "frontendMedian": 1.1569689070000022,
+          "output": {
+            "sha256": "2cac2db5ab748ec966c6d0414985f3304436d9eb72f5a7210833e0e6a2913b22",
+            "bytes": 841109,
+            "chunks": 775
+          }
+        },
+        "candidate": {
+          "wholePreparedMedian": 6.990693148999998,
+          "admittedMedian": 5.935280636999989,
+          "frontendMedian": 1.0677816489999967,
+          "output": {
+            "sha256": "e87b4871860c2253f85e854503dcf9b79c30a5e1af0ad5097fbc834069444bc7",
+            "bytes": 891811,
+            "chunks": 783
+          }
+        },
+        "candidateOverParent": 1.149497011411151,
+        "admittedCandidateOverParent": 1.2370044502385389
+      },
+      {
+        "name": "tree-bitonic",
+        "baseline": {
+          "wholePreparedMedian": 3.7815661290000135,
+          "admittedMedian": 2.729514767999994,
+          "frontendMedian": 1.0474379670000054,
+          "output": {
+            "sha256": "a531e3a055825a7cbf4db0da90e770c1456d7714cec04eed8b2be10a3fc8cd4d",
+            "bytes": 618583,
+            "chunks": 699
+          }
+        },
+        "candidate": {
+          "wholePreparedMedian": 4.567708836999984,
+          "admittedMedian": 3.4796629829999874,
+          "frontendMedian": 1.0838790799999842,
+          "output": {
+            "sha256": "0b41d9dcfc508169f9516a1247121569cc35f15fb16cdc1c8a76700260b80115",
+            "bytes": 622737,
+            "chunks": 701
+          }
+        },
+        "candidateOverParent": 1.2078881291989612,
+        "admittedCandidateOverParent": 1.274828414117595
+      },
+      {
+        "name": "coverage-closures-256",
+        "baseline": {
+          "wholePreparedMedian": 2.5254629309999874,
+          "admittedMedian": 1.834764308999991,
+          "frontendMedian": 0.6840528400000184,
+          "output": {
+            "sha256": "f7cba32e61a011d0f8f0e2072de15791fef85d2c9eeca97a5eb4e17bad1a2fe5",
+            "bytes": 427280,
+            "chunks": 567
+          }
+        },
+        "candidate": {
+          "wholePreparedMedian": 2.9302858650000125,
+          "admittedMedian": 2.306510852999985,
+          "frontendMedian": 0.6872732669999823,
+          "output": {
+            "sha256": "54d49be716026f56bfa9a7b95f8d28049167ed827a7ba5887cbf8fe3bfdadbe1",
+            "bytes": 431140,
+            "chunks": 569
+          }
+        },
+        "candidateOverParent": 1.1602965258491165,
+        "admittedCandidateOverParent": 1.257115609719437
+      },
+      {
+        "name": "editdist",
+        "baseline": {
+          "wholePreparedMedian": 6.812736189999967,
+          "admittedMedian": 5.876750904000015,
+          "frontendMedian": 0.8640001589999884,
+          "output": {
+            "sha256": "cc2c2e1d6fa904c1c058f480a8a54a79c995cba8dcf8d9e32a98a8220b28914b",
+            "bytes": 1168624,
+            "chunks": 759
+          }
+        },
+        "candidate": {
+          "wholePreparedMedian": 7.161102072000009,
+          "admittedMedian": 6.205623899999977,
+          "frontendMedian": 1.0378592010000138,
+          "output": {
+            "sha256": "972204b1436279b515c7dc504460406a36507069af662b39d4fde893ac88ece8",
+            "bytes": 1172628,
+            "chunks": 761
+          }
+        },
+        "candidateOverParent": 1.0511345034189623,
+        "admittedCandidateOverParent": 1.0559617042430902
+      },
+      {
+        "name": "variation-local-fold-128-0",
+        "baseline": {
+          "wholePreparedMedian": 2.8072697220000262,
+          "admittedMedian": 2.0985807989999885,
+          "frontendMedian": 0.7053366290000267,
+          "output": {
+            "sha256": "94798301f1d20158cb2c28035a8546eb911b8f80986c435bc48cc2fbe1e6ec1e",
+            "bytes": 523843,
+            "chunks": 607
+          }
+        },
+        "candidate": {
+          "wholePreparedMedian": 3.018054020999989,
+          "admittedMedian": 2.400758744999999,
+          "frontendMedian": 0.6133237840000074,
+          "output": {
+            "sha256": "001a29e3f975e5f581f425fda823c57f821388aba7a6b2ff0210a308242d4ec7",
+            "bytes": 527745,
+            "chunks": 609
+          }
+        },
+        "candidateOverParent": 1.0750851609833167,
+        "admittedCandidateOverParent": 1.1439915709435653
+      },
+      {
+        "name": "coverage-numeric-recurrence-1024",
+        "baseline": {
+          "wholePreparedMedian": 2.4241877030000034,
+          "admittedMedian": 1.8445414410000085,
+          "frontendMedian": 0.5753828250000079,
+          "output": {
+            "sha256": "0b891bc139400319457e13f62b491b4ca773d3200bf57606c9aedead21daf168",
+            "bytes": 463279,
+            "chunks": 585
+          }
+        },
+        "candidate": {
+          "wholePreparedMedian": 2.7741628910000435,
+          "admittedMedian": 2.2408004179999987,
+          "frontendMedian": 0.517690048999997,
+          "output": {
+            "sha256": "28d87137697396bbe2ce88c0cc3de31202fc994d78c671a4bac9b5bac91459ed",
+            "bytes": 470664,
+            "chunks": 587
+          }
+        },
+        "candidateOverParent": 1.1443680237990381,
+        "admittedCandidateOverParent": 1.2148279069214951
+      }
+    ]
+  }
+}

@@ -127,6 +127,7 @@ def main():
     prep.add_argument('--hosted-seconds', type=int, default=1200)
     prep.add_argument('--native-seconds', type=int, default=1200)
     prep.add_argument('--build-seconds', type=int, default=120)
+    prep.add_argument('--rss-mib', type=int, default=4096)
     check = modes.add_parser('verify')
     check.add_argument('--plan', type=Path, required=True)
     a = p.parse_args()
@@ -138,6 +139,7 @@ def main():
     require(not out.exists() and out.is_relative_to(ROOT / 'selfhost/build/phase118'), 'Fresh Phase118 plan required')
     require(re.fullmatch(r'p118-[a-z0-9_-]+', a.tag), 'Lowercase p118- tag required')
     require(min(a.hosted_seconds, a.native_seconds, a.build_seconds) > 0, 'Positive limits required')
+    require(2048 <= a.rss_mib <= 6144, 'Explicit full-image RSS ceiling must be 2–6 GiB')
     sr, ar, rr = source.parent / 'manifest.json', api.parent / 'report.json', runtime.parent / 'report.json'
     composed, checked, built = read(sr), read(ar), read(rr)
     require(checked.get('complete') and checked.get('checked') and checked['api'] == pin(api), 'Checked API required')
@@ -194,12 +196,12 @@ def main():
     for row in inputs:
         verify(row)
     seconds = sum(job['seconds'] for job in jobs) + 60
-    guard = py + [str(PHASE / 'guard.py'), '--out', str(artifacts['guard']), '--seconds', str(seconds), '--rss-mib', '4096', '--available-mib', '16384', '--file-mib', '128', '--cpu', '3', '--', *py, str(runner), '--plan', str(out), '--out', str(artifacts['jobs'])]
+    guard = py + [str(PHASE / 'guard.py'), '--out', str(artifacts['guard']), '--seconds', str(seconds), '--rss-mib', str(a.rss_mib), '--available-mib', '16384', '--file-mib', '128', '--cpu', '3', '--', *py, str(runner), '--plan', str(out), '--out', str(artifacts['jobs'])]
     plan = dict(kind=KIND, complete=True, targetsRun=False, inputs=inputs, source=pin(source), api=pin(api), runtime=pin(runtime),
                 sourceManifest=pin(sr), apiReport=pin(ar), runtimeReport=pin(rr), transportContract=contract,
                 assets={key: assets[key] for key in ['base', 'cache', 'selection', 'admission']}, jobs=jobs,
                 artifacts={k: str(v) for k, v in artifacts.items()}, rootGuardCommand=guard,
-                guard=dict(cpu=3, rssMiB=4096, availableMiB=16384, fileMiB=128, seconds=seconds),
+                guard=dict(cpu=3, rssMiB=a.rss_mib, availableMiB=16384, fileMiB=128, seconds=seconds),
                 scope='Root-only integrated hosted→N1→native-self→N2 raw-QBE reproduction plus unchanged ordinary focused19/full45 suites. New Phase118 entry contract, not the old staged hook; no ELF fixed point, N2 self-emission, timing or installed promotion claim.')
     out.parent.mkdir(parents=True, exist_ok=True)
     with out.open('x') as f:

@@ -1,7 +1,7 @@
 # Phase118: preserve ownership and live transport in direct QBE
 
-**Work in progress — compiler-cost measurement is running; the first full native
-acquisition failed a host stack limit and is being repaired.** The completed broad generated-program campaign improves the
+**Work in progress — broad runtime and hosted compiler cost are measured; native
+qualification is retrying after catalogue-stack repairs.** The completed broad generated-program campaign improves the
 44-point geometric runtime ratio from **4.3165× to 3.0089× pinned upstream C**:
 1.4346× faster, or 30.29% less execution time. All 405 complete-output/count
 observations across the original45 pass. The zero-work sentinel remains a
@@ -97,6 +97,7 @@ These are separate short screens, not additive speedups:
 | Sized destination extension | About3% beyond direct division on list/lexer | Keep small general helper |
 | Guarded F32-to-U32 | Numeric1024123→104ms, numeric256124→105ms | Keep with boundary controls |
 | Destination-slot cursor | Five-round paired list678→660ms; lexer834→841; map717→723 | Reject extra representation complexity |
+| Dead scalar cleanup + existing Boolean selection | Paired Mandelbrot845→913ms; lexer833→830ms | Reject; smaller IR produces worse hot machine code |
 
 The cursor comparison uses longer scale4 runs against the selected Phase118
 candidate, not Phase117. Thirty complete observations pass. Saving a parent
@@ -128,14 +129,34 @@ CPU-parallel, CUDA, Metal or arbitrary-foreign-provider qualification.
 The first full native acquisition passed its source frontend in254.45s, then
 failed the integrated compiler stage after332.24s with a Bun call-stack exception.
 The guard recorded589.62s total and4.86GiB peak RSS; this was not an OOM or a
-deadline. No N1 was produced. Generated API inspection establishes unbounded
-host recursion in the new whole-catalogue transport predicates, and in the mature
-effect predicate newly used by the observer permission path. Without an exception
-stack, attribution to one of those functions remains a hypothesis. The next
-candidate uses direct-tail catalogue traversals and retains error stacks.
-Small finite analysis checks precede another full acquisition.
+deadline. No N1 was produced. The first attempt did not capture its exception stack, so its exact dynamic
+culprit remains unknown. A second candidate repairs catalogue traversals and
+matches all45 broad and19 focused QBE emissions byte for byte. Its full request
+then fails an older eager `nc_pack_foreign` walk after0.966s in lowering. The
+captured trace establishes this failure precisely. The old qualified Phase114
+source uses the same walk: growth from6,186 to6,384 definitions and available
+host stack headroom matter. The earlier staged host did not bypass this scan.
 
-Native self-reproduction and compiler-cost results will be recorded separately.
+The third candidate adds an explicit DFS worklist with the identical foreign
+predicate and children-before-siblings order. Its40 finite/scale checks pass,
+including32768-element flat and nested catalogues. Do not infer that all recursive
+Bend source consumes host stack: the generated `nt_choose` path uses a trampoline.
+The independent [stack diagnosis](../../selfhost/tools/performance/phase118/native-stack-diagnosis.md)
+separates that case from eager Boolean recursion. Full native qualification is
+still a separate gate; no image is promoted merely from these analysis checks.
+
+## Compiler cost
+
+Eight sources, one retained warmup and three rotated paired rounds give64
+successful prepared requests. Every emitted hash agrees with the independently
+frozen output for its own compiler role. Whole prepared-request geometric cost
+is **1.12501× Phase117 (+12.50%)**; the admitted optimization/emission entry costs
+**1.18662× (+18.66%)**. The326.614s guard peaks at1.155GiB. The compared compiler
+is the exact timed float-source01, not the later traversal-repaired source.
+
+This cost regression accompanies the30.29% program-runtime gain. It does not
+measure native N1/N2 throughput. Keep acquisition, prepared frontend, optimization,
+serialization and machine build clocks distinct; see the [cost method](../../selfhost/tools/performance/phase118/cost.md).
 Installed native and JavaScript selections remain unchanged.
 
 ## Simplicity and ambition
@@ -164,11 +185,11 @@ measurements and accounting for acquisition/qualification overhead.
    Preserve representation across complete internal call regions, then compare
    the actual hot instructions. This needs ABI and semantic controls, not merely
    fewer printed QBE casts.
-2. **Boolean and selection cleanup.** Mandelbrot's hot region has97 static
-   instructions versus38 in the pinned upstream machine loop, despite no calls
-   or spills. Simple select diamonds already become conditional moves. Preserve
-   exact Boolean/path facts through inlining to remove redundant normalization
-   and impossible arms before considering more speculative eager selection.
+2. **Representation-aware scalar simplification.** Mandelbrot's selected hot
+   region has97 static instructions versus38 upstream, despite no calls or
+   spills. The tested cleanup exposes two Boolean diamonds but grows the loop
+   to99 instructions and regresses8.05%; it stays excluded. Impossible arms were
+   already gone. Future rules must remove normalization at the machine level.
 3. **Remaining ownership/continuation cost.** New profiles expose extension,
    field access, allocation and control costs after generic wrapper work falls.
    Prefer removing intermediate construction or a complete runtime transition
@@ -176,3 +197,5 @@ measurements and accounting for acquisition/qualification overhead.
 4. **Compiler cost and evidence reuse.** Measure the integrated entry and native
    compiler before adding more analyses. Reuse authenticated products for runtime
    ablations. A faster benchmark kernel alone does not accelerate research.
+
+See the evidence-ranked [remaining opportunities](remaining-opportunities.md).

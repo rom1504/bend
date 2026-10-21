@@ -1,0 +1,485 @@
+{
+  "kind": "phase118-dce-existing-machine-comparison",
+  "complete": true,
+  "method": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase118/dead-scalars-machine.py",
+    "bytes": 4343,
+    "sha256": "4cefa62ccd97823a3257a7cdc71fb4f70b6aa785c31b931d25957f8bf1cd45f7"
+  },
+  "targetsExecuted": false,
+  "counting": "Static instruction lines, excluding directives/labels. Loop includes both selection paths, first body label through its explicit backedge. Frame references count textual rbp/rsp memory operands, not dynamic spills.",
+  "roles": [
+    {
+      "role": "parent",
+      "case": "mandelbrot",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/float-source01/compiler.bend",
+        "bytes": 2376955,
+        "sha256": "b16a71925e94585b5d66a010a8377a1f6500376de217d90fee7eb2e8fcb26c08"
+      },
+      "inputs": [
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/broad-emit01/report.json",
+          "bytes": 74873,
+          "sha256": "931823965050b375d9156212fc10b8465c468d998cb1356783a3235c84c693d8"
+        },
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/broad-emit01/mandelbrot.ssa",
+          "bytes": 1215846,
+          "sha256": "5611743852ca588fcdeaf09371f3e2e14f62b76ef3ee9f785685fbcdb7266401"
+        },
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p118-broad01-mandelbrot-build/program.s",
+          "bytes": 836253,
+          "sha256": "74a2b98ed3e04ea23de14b21284fdc8b207ca6d8515da227c0e5f5a9a71d9c09"
+        },
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p118-broad01-mandelbrot-build/report.json",
+          "bytes": 4877,
+          "sha256": "b345d7da041207fdbb9b4df2c9c36128df3238bb502e1f0ed440ee36c1f5c1ad"
+        },
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p118-broad01-mandelbrot-build/program",
+          "bytes": 283072,
+          "sha256": "23be991e451dbf25f100688d907399016caecb3d12a9044cfa1fcc4bec94ce12"
+        }
+      ],
+      "functions": [
+        {
+          "name": "$direct.mit",
+          "qbeLine": 1990,
+          "qbeLines": 618,
+          "qbeJnz": 9,
+          "boolNormalizations": [
+            "%p113_bool_9 =w cnew %v_p113i_0_local_p113i_0_local_p112_s_test, 0",
+            "%p113_bool_16 =w cnew %v_p113i_1_local_p113i_0_local_p112_s_test, 0",
+            "%p113_bool_21 =w cnew %v_p112_s_test, 0",
+            "%p113_bool_33 =w cnew %v_p113i_3_local_p113i_0_local_p112_s_test, 0",
+            "%p113_bool_39 =w cnew %v_p113i_4_local_p112_s_test, 0",
+            "%p113_bool_43 =w cnew %v_p113i_5_local_p112_s_test, 0",
+            "%p113_bool_47 =w cnew %v_p112_s_test, 0"
+          ],
+          "assemblyLine": 1491,
+          "assembly": {
+            "instructions": 121,
+            "conditionalJumps": 3,
+            "setcc": 7,
+            "cmov": 5,
+            "calls": 0,
+            "frameMemoryReferences": 2
+          },
+          "loop": {
+            "instructions": 97,
+            "conditionalJumps": 3,
+            "setcc": 7,
+            "cmov": 5,
+            "calls": 0,
+            "frameMemoryReferences": 0,
+            "firstLine": 1509,
+            "lastLine": 1608
+          },
+          "frameReservations": [
+            "subq $8, %rsp"
+          ],
+          "savedRegisters": [
+            "pushq %rbp",
+            "pushq %rbx",
+            "pushq %r12",
+            "pushq %r13",
+            "pushq %r14",
+            "pushq %r15"
+          ]
+        }
+      ]
+    },
+    {
+      "role": "parent",
+      "case": "lexer",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/float-source01/compiler.bend",
+        "bytes": 2376955,
+        "sha256": "b16a71925e94585b5d66a010a8377a1f6500376de217d90fee7eb2e8fcb26c08"
+      },
+      "inputs": [
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/broad-emit01/report.json",
+          "bytes": 74873,
+          "sha256": "931823965050b375d9156212fc10b8465c468d998cb1356783a3235c84c693d8"
+        },
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/broad-emit01/lexer.ssa",
+          "bytes": 891811,
+          "sha256": "e87b4871860c2253f85e854503dcf9b79c30a5e1af0ad5097fbc834069444bc7"
+        },
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p118-broad01-lexer-build/program.s",
+          "bytes": 736815,
+          "sha256": "e0323ea31187bd4eaad4d8fdcb29a99059fdecf9e1e48dcb3c65fdef848a614e"
+        },
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p118-broad01-lexer-build/report.json",
+          "bytes": 4794,
+          "sha256": "a7b98ce5b55196f253251b6d72ddc5dbe6872edcd62e696ab3f8150f910a4ba6"
+        },
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p118-broad01-lexer-build/program",
+          "bytes": 260672,
+          "sha256": "d98e15ca79b689616a48aa9cf93e54bae390020fc85e3acb0bc72b5ff3e8a67d"
+        }
+      ],
+      "functions": [
+        {
+          "name": "$p118borrow.read.String.cmp",
+          "qbeLine": 1,
+          "qbeLines": 124,
+          "qbeJnz": 11,
+          "boolNormalizations": [],
+          "assemblyLine": 3,
+          "assembly": {
+            "instructions": 125,
+            "conditionalJumps": 9,
+            "setcc": 1,
+            "cmov": 0,
+            "calls": 13,
+            "frameMemoryReferences": 15
+          }
+        },
+        {
+          "name": "$p118.trmc.$direct.ident",
+          "qbeLine": 1213,
+          "qbeLines": 163,
+          "qbeJnz": 4,
+          "boolNormalizations": [],
+          "assemblyLine": 1032,
+          "assembly": {
+            "instructions": 88,
+            "conditionalJumps": 1,
+            "setcc": 0,
+            "cmov": 1,
+            "calls": 3,
+            "frameMemoryReferences": 10
+          }
+        },
+        {
+          "name": "$p118.trmc.$direct.num",
+          "qbeLine": 2167,
+          "qbeLines": 163,
+          "qbeJnz": 4,
+          "boolNormalizations": [],
+          "assemblyLine": 1436,
+          "assembly": {
+            "instructions": 88,
+            "conditionalJumps": 1,
+            "setcc": 0,
+            "cmov": 1,
+            "calls": 3,
+            "frameMemoryReferences": 10
+          }
+        },
+        {
+          "name": "$direct.gen.at",
+          "qbeLine": 2641,
+          "qbeLines": 497,
+          "qbeJnz": 15,
+          "boolNormalizations": [
+            "%p113_bool_1 =w cnew %v_p113i_0_local_p112_s_test, 0",
+            "%p113_bool_3 =w cnew %v_p113i_0_local_p112_s_test, 0",
+            "%p113_bool_5 =w cnew %v_p113i_0_local_p112_s_test, 0",
+            "%p113_bool_44 =w cnew %v_p113i_1_local_p113i_2_local_p112_s_test, 0",
+            "%p113_bool_46 =w cnew %v_p113i_1_local_p113i_2_local_p112_s_test, 0"
+          ],
+          "assemblyLine": 1697,
+          "assembly": {
+            "instructions": 161,
+            "conditionalJumps": 7,
+            "setcc": 9,
+            "cmov": 3,
+            "calls": 8,
+            "frameMemoryReferences": 14
+          }
+        },
+        {
+          "name": "$product.lex",
+          "qbeLine": 5495,
+          "qbeLines": 510,
+          "qbeJnz": 15,
+          "boolNormalizations": [
+            "%p113_bool_28 =w cnew %v_p113i_1_local_p113i_0_local_p112_s_test, 0",
+            "%p113_bool_30 =w cnew %v_p113i_1_local_p113i_0_local_p112_s_test, 0",
+            "%p113_bool_35 =w cnew %v_p113i_1_local_p113i_0_local_p112_s_test, 0",
+            "%p113_bool_37 =w cnew %v_p113i_1_local_p113i_0_local_p112_s_test, 0",
+            "%p113_bool_42 =w cnew %v_p113i_1_local_p113i_0_local_p112_s_test, 0"
+          ],
+          "assemblyLine": 2581,
+          "assembly": {
+            "instructions": 160,
+            "conditionalJumps": 7,
+            "setcc": 9,
+            "cmov": 3,
+            "calls": 7,
+            "frameMemoryReferences": 12
+          }
+        },
+        {
+          "name": "$direct.lex",
+          "qbeLine": 6006,
+          "qbeLines": 520,
+          "qbeJnz": 17,
+          "boolNormalizations": [
+            "%p113_bool_36 =w cnew %v_p113i_1_local_p113i_0_local_p112_s_test, 0",
+            "%p113_bool_38 =w cnew %v_p113i_1_local_p113i_0_local_p112_s_test, 0",
+            "%p113_bool_43 =w cnew %v_p113i_1_local_p113i_0_local_p112_s_test, 0",
+            "%p113_bool_45 =w cnew %v_p113i_1_local_p113i_0_local_p112_s_test, 0",
+            "%p113_bool_50 =w cnew %v_p113i_1_local_p113i_0_local_p112_s_test, 0"
+          ],
+          "assemblyLine": 2759,
+          "assembly": {
+            "instructions": 187,
+            "conditionalJumps": 9,
+            "setcc": 10,
+            "cmov": 3,
+            "calls": 13,
+            "frameMemoryReferences": 18
+          }
+        }
+      ]
+    },
+    {
+      "role": "dce",
+      "case": "mandelbrot",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/dce-source03/compiler.bend",
+        "bytes": 2389850,
+        "sha256": "43071bfecd9698168ee0598f0273d210b4583989cdc5c87be1898ee0985e3350"
+      },
+      "inputs": [
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/dce-emit03/report.json",
+          "bytes": 14870,
+          "sha256": "05ea8c7d2f54bbaaad80768e0b55d9a8c283f99dd11a966a596e6960355e0a57"
+        },
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/dce-emit03/mandelbrot.ssa",
+          "bytes": 1172669,
+          "sha256": "f730a66a2436efcde42a30328804f10cd3546941310bfb027ab2acfc3e2d066c"
+        },
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p118-dce03-mandelbrot-build/program.s",
+          "bytes": 836954,
+          "sha256": "d5b261771c6ecc5614724236d71c18a9d58a4fb06587670a702442871fbb8f03"
+        },
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p118-dce03-mandelbrot-build/report.json",
+          "bytes": 4845,
+          "sha256": "901cd9de1194bddfa390b9ab7175b09d5c7f42fe0dfbf42c8fb882778896e7d0"
+        },
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p118-dce03-mandelbrot-build/program",
+          "bytes": 283072,
+          "sha256": "d653669986a6e7f426a5c203ac15f62c32496090727f446748c41d90b0fd98a3"
+        }
+      ],
+      "functions": [
+        {
+          "name": "$direct.mit",
+          "qbeLine": 1880,
+          "qbeLines": 435,
+          "qbeJnz": 7,
+          "boolNormalizations": [
+            "%p113_bool_9 =w cnew %v_p113i_0_local_p113i_0_local_p112_s_test, 0",
+            "%p113_bool_16 =w cnew %v_p113i_1_local_p113i_0_local_p112_s_test, 0",
+            "%p113_bool_21 =w cnew %v_p112_s_test, 0",
+            "%p113_bool_22 =w ceqw %v_p113i_2_local_match_condition, 0",
+            "%p113_bool_31 =w cnew %v_p113i_3_local_p113i_0_local_p112_s_test, 0",
+            "%p113_bool_37 =w cnew %v_p113i_4_local_p112_s_test, 0",
+            "%p113_bool_41 =w cnew %v_p113i_5_local_p112_s_test, 0",
+            "%p113_bool_45 =w cnew %v_p112_s_test, 0",
+            "%p113_bool_46 =w ceqw %v_p113i_6_local_match_condition, 0"
+          ],
+          "assemblyLine": 1491,
+          "assembly": {
+            "instructions": 123,
+            "conditionalJumps": 3,
+            "setcc": 9,
+            "cmov": 3,
+            "calls": 0,
+            "frameMemoryReferences": 2
+          },
+          "loop": {
+            "instructions": 99,
+            "conditionalJumps": 3,
+            "setcc": 9,
+            "cmov": 3,
+            "calls": 0,
+            "frameMemoryReferences": 0,
+            "firstLine": 1509,
+            "lastLine": 1610
+          },
+          "frameReservations": [
+            "subq $8, %rsp"
+          ],
+          "savedRegisters": [
+            "pushq %rbp",
+            "pushq %rbx",
+            "pushq %r12",
+            "pushq %r13",
+            "pushq %r14",
+            "pushq %r15"
+          ]
+        }
+      ]
+    },
+    {
+      "role": "dce",
+      "case": "lexer",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/dce-source03/compiler.bend",
+        "bytes": 2389850,
+        "sha256": "43071bfecd9698168ee0598f0273d210b4583989cdc5c87be1898ee0985e3350"
+      },
+      "inputs": [
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/dce-emit03/report.json",
+          "bytes": 14870,
+          "sha256": "05ea8c7d2f54bbaaad80768e0b55d9a8c283f99dd11a966a596e6960355e0a57"
+        },
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/dce-emit03/lexer.ssa",
+          "bytes": 837409,
+          "sha256": "bcaf891d31fffebdcdb5f886da6067b538898c72593f0aff15a8c253735b8f35"
+        },
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p118-dce03-lexer-build/program.s",
+          "bytes": 736816,
+          "sha256": "fef938403d19e5a7c36081534fa9bb0edbcbbec7e4528bca9dbe14b25df2326e"
+        },
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p118-dce03-lexer-build/report.json",
+          "bytes": 4764,
+          "sha256": "79b0fb28d5aca1d932afbd7838b2f7f52ec43bbcf2b4318288c4e5056cbc3806"
+        },
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p118-dce03-lexer-build/program",
+          "bytes": 260672,
+          "sha256": "76e1f0d8086e19b8a98df297c5cc262eed7769ccc55e4f6b62dcaaf007741129"
+        }
+      ],
+      "functions": [
+        {
+          "name": "$p118borrow.read.String.cmp",
+          "qbeLine": 1,
+          "qbeLines": 124,
+          "qbeJnz": 11,
+          "boolNormalizations": [],
+          "assemblyLine": 3,
+          "assembly": {
+            "instructions": 125,
+            "conditionalJumps": 9,
+            "setcc": 1,
+            "cmov": 0,
+            "calls": 13,
+            "frameMemoryReferences": 15
+          }
+        },
+        {
+          "name": "$p118.trmc.$direct.ident",
+          "qbeLine": 1092,
+          "qbeLines": 146,
+          "qbeJnz": 4,
+          "boolNormalizations": [],
+          "assemblyLine": 1032,
+          "assembly": {
+            "instructions": 88,
+            "conditionalJumps": 1,
+            "setcc": 0,
+            "cmov": 1,
+            "calls": 3,
+            "frameMemoryReferences": 10
+          }
+        },
+        {
+          "name": "$p118.trmc.$direct.num",
+          "qbeLine": 1886,
+          "qbeLines": 146,
+          "qbeJnz": 4,
+          "boolNormalizations": [],
+          "assemblyLine": 1437,
+          "assembly": {
+            "instructions": 88,
+            "conditionalJumps": 1,
+            "setcc": 0,
+            "cmov": 1,
+            "calls": 3,
+            "frameMemoryReferences": 10
+          }
+        },
+        {
+          "name": "$direct.gen.at",
+          "qbeLine": 2278,
+          "qbeLines": 386,
+          "qbeJnz": 15,
+          "boolNormalizations": [
+            "%p113_bool_1 =w cnew %v_p113i_0_local_p112_s_test, 0",
+            "%p113_bool_3 =w cnew %v_p113i_0_local_p112_s_test, 0",
+            "%p113_bool_5 =w cnew %v_p113i_0_local_p112_s_test, 0",
+            "%p113_bool_44 =w cnew %v_p113i_1_local_p113i_2_local_p112_s_test, 0",
+            "%p113_bool_46 =w cnew %v_p113i_1_local_p113i_2_local_p112_s_test, 0"
+          ],
+          "assemblyLine": 1698,
+          "assembly": {
+            "instructions": 161,
+            "conditionalJumps": 7,
+            "setcc": 9,
+            "cmov": 3,
+            "calls": 8,
+            "frameMemoryReferences": 14
+          }
+        },
+        {
+          "name": "$product.lex",
+          "qbeLine": 4549,
+          "qbeLines": 408,
+          "qbeJnz": 15,
+          "boolNormalizations": [
+            "%p113_bool_28 =w cnew %v_p113i_1_local_p113i_0_local_p112_s_test, 0",
+            "%p113_bool_30 =w cnew %v_p113i_1_local_p113i_0_local_p112_s_test, 0",
+            "%p113_bool_35 =w cnew %v_p113i_1_local_p113i_0_local_p112_s_test, 0",
+            "%p113_bool_37 =w cnew %v_p113i_1_local_p113i_0_local_p112_s_test, 0",
+            "%p113_bool_42 =w cnew %v_p113i_1_local_p113i_0_local_p112_s_test, 0"
+          ],
+          "assemblyLine": 2581,
+          "assembly": {
+            "instructions": 160,
+            "conditionalJumps": 7,
+            "setcc": 9,
+            "cmov": 3,
+            "calls": 7,
+            "frameMemoryReferences": 12
+          }
+        },
+        {
+          "name": "$direct.lex",
+          "qbeLine": 4958,
+          "qbeLines": 418,
+          "qbeJnz": 17,
+          "boolNormalizations": [
+            "%p113_bool_36 =w cnew %v_p113i_1_local_p113i_0_local_p112_s_test, 0",
+            "%p113_bool_38 =w cnew %v_p113i_1_local_p113i_0_local_p112_s_test, 0",
+            "%p113_bool_43 =w cnew %v_p113i_1_local_p113i_0_local_p112_s_test, 0",
+            "%p113_bool_45 =w cnew %v_p113i_1_local_p113i_0_local_p112_s_test, 0",
+            "%p113_bool_50 =w cnew %v_p113i_1_local_p113i_0_local_p112_s_test, 0"
+          ],
+          "assemblyLine": 2759,
+          "assembly": {
+            "instructions": 187,
+            "conditionalJumps": 9,
+            "setcc": 10,
+            "cmov": 3,
+            "calls": 13,
+            "frameMemoryReferences": 18
+          }
+        }
+      ]
+    }
+  ]
+}

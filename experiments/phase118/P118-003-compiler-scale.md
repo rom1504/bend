@@ -1,7 +1,7 @@
 # P118-003: whole-compiler scale, cost and a stack-safe traversal boundary
 
-Status: hosted cost measured; first native acquisition failed; repaired-source
-small controls pass; broad exact-emission bridge and native retry pending.
+Status: hosted cost measured; two native acquisitions failed; safe02 exact45/19
+bridge passes; safe03 worklist repair passes40 analysis checks and retries native.
 
 ## Question
 
@@ -64,3 +64,19 @@ An empty-case invocation accidentally omitted the emitter's explicit case names;
 it emitted zero programs and establishes nothing. The following plan supplies
 all45 and19 names, and the independent evidence bridge requires those exact
 counts and source identities.
+
+## Captured second failure and third candidate
+
+The second attempt passes frontend255.526s, then fails lowering after0.966s in
+`nc_pack_foreign`. Guard259.211s, peak3,929,579,520B. The complete error trace is
+retained. This is an existing eager Boolean catalogue recursion, also present in
+qualified Phase114; the staged host used the same lowerer. Catalogue size grew
+6,186→6,384. There is no precise measured stack threshold, and the first failure
+remains unattributed. Recursive calls through `nt_choose` can use a trampoline;
+source recursion alone is insufficient evidence of host-stack growth.
+
+`native-pack-stack.bend` implements the same complete finite predicate using an
+explicit children-before-siblings worklist. It does not broaden permission or
+skip trusted cache children. safe03 passes the earlier28 plus12 new controls,
+including32768-element flat/deep inputs. Native acquisition is a fresh plan;
+failed plans and their cost remain. See the independent stack diagnosis for pins.

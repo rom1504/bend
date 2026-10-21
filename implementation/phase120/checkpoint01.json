@@ -1,0 +1,426 @@
+{
+  "complete": true,
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase120/summarize.py",
+      "bytes": 2655,
+      "sha256": "f217f54717521245f2ada71c9d62884689dc591adb2757e831e58d94ff538d8e"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase112/benchmark45/manifest01.json",
+      "bytes": 229972,
+      "sha256": "80b07bdc76528bf58ae322ffed470eaa8ccdc8fa3d5cea73aa6d652d66cc6adc"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase120/operands-numeric-screen01/report.json",
+      "bytes": 49267,
+      "sha256": "9be7de5051e4dfea2a3490d88913c4cec93ad9228af99530bed1048255a03438"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase120/lanes-numeric-screen01/report.json",
+      "bytes": 49690,
+      "sha256": "05c18b06096e896a314c40a9dae9f0cc384f5564d8e8b55d1aa0b7196a9c0b3f"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase120/region-numeric-screen02/report.json",
+      "bytes": 51349,
+      "sha256": "97b9e1a2fc66c86cb89284ac191fbbac77be21e786ae2529ec4b7af9d1c7506e"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase120/word-scalar-screen03/report.json",
+      "bytes": 47927,
+      "sha256": "6e0e8f29e15f86f7c13fc700947d38f49ab95d556a5a5a9c21a4dad6f7e34e1c"
+    }
+  ],
+  "screens": [
+    {
+      "file": "selfhost/build/phase120/operands-numeric-screen01/report.json",
+      "observations": 27,
+      "cases": [
+        {
+          "name": "variation-ray-active-256-2240",
+          "ratioEligible": true,
+          "samplesMs": {
+            "candidate": [
+              1647,
+              1646,
+              1653
+            ],
+            "baseline": [
+              1693,
+              1693,
+              1689
+            ],
+            "upstream": [
+              202,
+              200,
+              199
+            ]
+          },
+          "mediansMs": {
+            "candidate": 1647,
+            "baseline": 1693,
+            "upstream": 200
+          },
+          "candidateOverBaseline": 0.9728292971057295,
+          "candidateOverUpstream": 8.235,
+          "baselineOverUpstream": 8.465
+        },
+        {
+          "name": "raytrace",
+          "ratioEligible": true,
+          "samplesMs": {
+            "candidate": [
+              1883,
+              1878,
+              1871
+            ],
+            "baseline": [
+              1879,
+              1982,
+              1892
+            ],
+            "upstream": [
+              229,
+              228,
+              228
+            ]
+          },
+          "mediansMs": {
+            "candidate": 1878,
+            "baseline": 1892,
+            "upstream": 228
+          },
+          "candidateOverBaseline": 0.992600422832981,
+          "candidateOverUpstream": 8.236842105263158,
+          "baselineOverUpstream": 8.298245614035087
+        },
+        {
+          "name": "coverage-numeric-recurrence-1024",
+          "ratioEligible": true,
+          "samplesMs": {
+            "candidate": [
+              416,
+              418,
+              418
+            ],
+            "baseline": [
+              416,
+              426,
+              418
+            ],
+            "upstream": [
+              196,
+              208,
+              201
+            ]
+          },
+          "mediansMs": {
+            "candidate": 418,
+            "baseline": 418,
+            "upstream": 201
+          },
+          "candidateOverBaseline": 1.0,
+          "candidateOverUpstream": 2.0796019900497513,
+          "baselineOverUpstream": 2.0796019900497513
+        }
+      ],
+      "timedCases": 3,
+      "candidateOverBaseline": 0.9884097762481514,
+      "candidateOverUpstream": 5.205568786124143,
+      "baselineOverUpstream": 5.266609974138121
+    },
+    {
+      "file": "selfhost/build/phase120/lanes-numeric-screen01/report.json",
+      "observations": 27,
+      "cases": [
+        {
+          "name": "variation-ray-active-256-2240",
+          "ratioEligible": true,
+          "samplesMs": {
+            "candidate": [
+              1469,
+              1477,
+              1476
+            ],
+            "baseline": [
+              1697,
+              1692,
+              1703
+            ],
+            "upstream": [
+              201,
+              199,
+              200
+            ]
+          },
+          "mediansMs": {
+            "candidate": 1476,
+            "baseline": 1697,
+            "upstream": 200
+          },
+          "candidateOverBaseline": 0.8697701826753094,
+          "candidateOverUpstream": 7.38,
+          "baselineOverUpstream": 8.485
+        },
+        {
+          "name": "raytrace",
+          "ratioEligible": true,
+          "samplesMs": {
+            "candidate": [
+              1850,
+              1861,
+              1895
+            ],
+            "baseline": [
+              1877,
+              1883,
+              2087
+            ],
+            "upstream": [
+              229,
+              228,
+              230
+            ]
+          },
+          "mediansMs": {
+            "candidate": 1861,
+            "baseline": 1883,
+            "upstream": 229
+          },
+          "candidateOverBaseline": 0.9883165161975571,
+          "candidateOverUpstream": 8.126637554585153,
+          "baselineOverUpstream": 8.222707423580786
+        },
+        {
+          "name": "coverage-numeric-recurrence-1024",
+          "ratioEligible": true,
+          "samplesMs": {
+            "candidate": [
+              416,
+              417,
+              419
+            ],
+            "baseline": [
+              416,
+              417,
+              417
+            ],
+            "upstream": [
+              200,
+              220,
+              219
+            ]
+          },
+          "mediansMs": {
+            "candidate": 417,
+            "baseline": 417,
+            "upstream": 219
+          },
+          "candidateOverBaseline": 1.0,
+          "candidateOverUpstream": 1.904109589041096,
+          "baselineOverUpstream": 1.904109589041096
+        }
+      ],
+      "timedCases": 3,
+      "candidateOverBaseline": 0.950824118425336,
+      "candidateOverUpstream": 4.85161575369625,
+      "baselineOverUpstream": 5.102537535260498
+    },
+    {
+      "file": "selfhost/build/phase120/region-numeric-screen02/report.json",
+      "observations": 27,
+      "cases": [
+        {
+          "name": "variation-ray-active-256-2240",
+          "ratioEligible": true,
+          "samplesMs": {
+            "candidate": [
+              1421,
+              1423,
+              1427
+            ],
+            "baseline": [
+              1717,
+              1704,
+              1715
+            ],
+            "upstream": [
+              200,
+              200,
+              204
+            ]
+          },
+          "mediansMs": {
+            "candidate": 1423,
+            "baseline": 1715,
+            "upstream": 200
+          },
+          "candidateOverBaseline": 0.8297376093294461,
+          "candidateOverUpstream": 7.115,
+          "baselineOverUpstream": 8.575
+        },
+        {
+          "name": "raytrace",
+          "ratioEligible": true,
+          "samplesMs": {
+            "candidate": [
+              1868,
+              1883,
+              1895
+            ],
+            "baseline": [
+              1885,
+              1885,
+              1876
+            ],
+            "upstream": [
+              228,
+              229,
+              233
+            ]
+          },
+          "mediansMs": {
+            "candidate": 1883,
+            "baseline": 1885,
+            "upstream": 229
+          },
+          "candidateOverBaseline": 0.9989389920424403,
+          "candidateOverUpstream": 8.222707423580786,
+          "baselineOverUpstream": 8.231441048034934
+        },
+        {
+          "name": "coverage-numeric-recurrence-1024",
+          "ratioEligible": true,
+          "samplesMs": {
+            "candidate": [
+              414,
+              420,
+              418
+            ],
+            "baseline": [
+              421,
+              424,
+              419
+            ],
+            "upstream": [
+              219,
+              219,
+              219
+            ]
+          },
+          "mediansMs": {
+            "candidate": 418,
+            "baseline": 421,
+            "upstream": 219
+          },
+          "candidateOverBaseline": 0.9928741092636579,
+          "candidateOverUpstream": 1.908675799086758,
+          "baselineOverUpstream": 1.9223744292237444
+        }
+      ],
+      "timedCases": 3,
+      "candidateOverBaseline": 0.9371115897072416,
+      "candidateOverUpstream": 4.815491674483851,
+      "baselineOverUpstream": 5.138653419053578
+    },
+    {
+      "file": "selfhost/build/phase120/word-scalar-screen03/report.json",
+      "observations": 27,
+      "cases": [
+        {
+          "name": "scalar-region-8192",
+          "ratioEligible": true,
+          "samplesMs": {
+            "candidate": [
+              313,
+              312,
+              313
+            ],
+            "baseline": [
+              430,
+              432,
+              431
+            ],
+            "upstream": [
+              200,
+              201,
+              201
+            ]
+          },
+          "mediansMs": {
+            "candidate": 313,
+            "baseline": 431,
+            "upstream": 201
+          },
+          "candidateOverBaseline": 0.7262180974477959,
+          "candidateOverUpstream": 1.5572139303482586,
+          "baselineOverUpstream": 2.144278606965174
+        },
+        {
+          "name": "mandelbrot",
+          "ratioEligible": true,
+          "samplesMs": {
+            "candidate": [
+              720,
+              718,
+              718
+            ],
+            "baseline": [
+              807,
+              824,
+              803
+            ],
+            "upstream": [
+              198,
+              199,
+              199
+            ]
+          },
+          "mediansMs": {
+            "candidate": 718,
+            "baseline": 807,
+            "upstream": 199
+          },
+          "candidateOverBaseline": 0.8897149938042132,
+          "candidateOverUpstream": 3.608040201005025,
+          "baselineOverUpstream": 4.055276381909548
+        },
+        {
+          "name": "coverage-numeric-recurrence-1024",
+          "ratioEligible": true,
+          "samplesMs": {
+            "candidate": [
+              416,
+              421,
+              419
+            ],
+            "baseline": [
+              421,
+              430,
+              421
+            ],
+            "upstream": [
+              204,
+              219,
+              201
+            ]
+          },
+          "mediansMs": {
+            "candidate": 419,
+            "baseline": 421,
+            "upstream": 204
+          },
+          "candidateOverBaseline": 0.995249406175772,
+          "candidateOverUpstream": 2.053921568627451,
+          "baselineOverUpstream": 2.0637254901960786
+        }
+      ],
+      "timedCases": 3,
+      "candidateOverBaseline": 0.8631440902086022,
+      "candidateOverUpstream": 2.2597887096935607,
+      "baselineOverUpstream": 2.618089766619872
+    }
+  ],
+  "scope": "Clean original-source program execution medians. Each screen has its own same-run parent/upstream controls. Geometric ratios are comparable only for the same population; no bootstrap or compiler-speed inference."
+}

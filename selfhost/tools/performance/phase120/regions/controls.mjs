@@ -1,0 +1,58 @@
+// Reflected finite admission controls only. Root owns API/target execution.
+import fs from 'node:fs';
+import path from 'node:path';
+import crypto from 'node:crypto';
+import {pathToFileURL} from 'node:url';
+const [apiFile,outFile]=process.argv.slice(2);
+if(!apiFile||!outFile||process.argv.length!==4)throw Error('Usage: controls.mjs CHECKED_API FRESH_REPORT');
+if(fs.existsSync(outFile))throw Error('Fresh report required');
+const pin=p=>{p=path.resolve(p);const b=fs.readFileSync(p);return {file:p,bytes:b.length,sha256:crypto.createHash('sha256').update(b).digest('hex')};};
+const receipt=JSON.parse(fs.readFileSync(path.join(path.dirname(apiFile),'report.json')));
+if(!receipt.complete||!receipt.checked||receipt.api.sha256!==pin(apiFile).sha256)throw Error('Checked API required');
+const api=(await import(pathToFileURL(path.resolve(apiFile)))).default;
+const tag=($,fields={})=>({$,...fields}), list=xs=>xs.reduceRight((tail,head)=>tag('Con',{head,tail}),tag('Nil'));
+const arr=xs=>{const a=[];for(;xs.$==='Con';xs=xs.tail)a.push(xs.head);if(xs.$!=='Nil')throw Error('list');return a;};
+const U64=tag('N111U64'),U32=tag('N111U32'),Ptr=tag('N111Ptr'),local=name=>tag('N111Local',{name}),con=lo=>tag('N111Const',{lo,hi:0});
+const arg=(typ,value)=>tag('N111Arg',{typ,value}),scalar=stmt=>tag('P113DScalar',{stmt});
+const set=(name,value)=>scalar(tag('N111Set',{name,typ:U64,value}));
+const store=(buffer,offset,value)=>scalar(tag('N111Store',{typ:U64,base:local(buffer),offset,value}));
+const op=(id,count=2,buffer='scratch')=>scalar(tag('N111Call',{name:'value',typ:U64,symbol:'p111_rt_op',args:list([arg(Ptr,local('state')),arg(U32,con(id)),arg(Ptr,local(buffer)),arg(U32,con(count))])}));
+const result=values=>tag('P113DResult',{values:list(values)});
+const param=word=>tag('NC_Binding',{id:0,word,kind:tag('N_W32')});
+const body=[store('scratch',0,local('a')),store('scratch',8,local('b')),op(26),result([local('value')])];
+const fn=(b=body,patch={})=>tag('P113DFunction',{name:'$direct.numeric',params:list([param('a'),param('b')]),result:1,public:tag('True'),body:list(b),...patch});
+const yes=x=>x===true||x?.$==='True';
+const rows=[];function check(name,condition){rows.push({name,pass:!!condition});if(!condition)throw Error(name);}
+let complete=false,error=null;
+try{
+ check('pure-f32-leaf',yes(api.p120nr_eligible(fn())));
+ check('sqrt-retains-original-call',yes(api.p120nr_eligible(fn([store('scratch',0,local('a')),op(36,1),result([local('value')])]))));
+ check('private-call-refused',!yes(api.p120nr_eligible(fn([tag('P113DCall',{destinations:list(['value']),target:'$direct.other',args:list([local('a')])}),...body]))));
+ check('self-loop-refused',!yes(api.p120nr_eligible(fn([tag('P113DAgain',{values:list([local('a'),local('b')])})]))));
+ check('state-buffer-refused',!yes(api.p120nr_eligible(fn([store('state',0,local('a')),store('state',8,local('b')),op(26,2,'state'),result([local('value')])]))));
+ check('state-destination-refused',!yes(api.p120nr_eligible(fn([set('state',con(1)),...body]))));
+ check('buffer-word-escape-refused',!yes(api.p120nr_eligible(fn([...body.slice(0,-1),result([local('scratch')])]))));
+ check('ownership-helper-refused',!yes(api.p120nr_eligible(fn([scalar(tag('N111Call',{name:'value',typ:U64,symbol:'p111_rt_keep',args:list([arg(Ptr,local('state')),arg(U64,local('a'))])})),...body]))));
+ check('wrong-op-arity-refused',!yes(api.p120nr_eligible(fn([store('scratch',0,local('a')),op(26,1),result([local('value')])]))));
+ check('unknown-op-refused',!yes(api.p120nr_eligible(fn([store('scratch',0,local('a')),op(99,1),result([local('value')])]))));
+ check('integer-only-refused',!yes(api.p120nr_eligible(fn([result([local('a')])]))));
+ check('too-many-params-refused',!yes(api.p120nr_eligible(fn(body,{params:list(Array.from({length:33},(_,i)=>param('p'+i)))}))));
+ check('body-size-refused',!yes(api.p120nr_eligible(fn([...Array.from({length:512},(_,i)=>set('n'+i,con(i))),...body]))));
+ check('reserved-caller-refused',!yes(api.p120nr_clean(list([set('p120nr_0_local_value',con(0))]))));
+ check('preexisting-inliner-name-accepted',yes(api.p120nr_clean(list([set('p113i_0_local_value',con(0))]))));
+ const table=api.p120nr_table(list([fn()]),tag('P113IEmpty'));
+ const call=tag('P113DCall',{destinations:list(['out']),target:'$direct.numeric',args:list([local('b'),local('a')])});
+ const expanded=api.p120nr_scan(list([call]),table,0,1024),items=arr(expanded.body);
+ check('one-call-expanded',expanded.next===1&&!items.some(x=>x.$==='P113DCall'));
+ const bindings=items.filter(x=>x.$==='P113DScalar'&&x.stmt.$==='N111Set');
+ check('argument-order-preserved',bindings[0].stmt.value.name==='b'&&bindings[1].stmt.value.name==='a');
+ check('fresh-parameter-names',bindings[0].stmt.name==='p120nr_0_local_a'&&bindings[1].stmt.name==='p120nr_0_local_b');
+ const capped=api.p120nr_scan(list([call,call,call,call,call]),table,0,1024);
+ check('four-site-budget',capped.next===4&&arr(capped.body).filter(x=>x.$==='P113DCall').length===1);
+ const exhausted=api.p120nr_scan(list([call]),table,0,0);
+ check('growth-budget-fallback',exhausted.next===0&&arr(exhausted.body)[0].$==='P113DCall');
+ complete=true;
+}catch(e){error=String(e);}
+fs.mkdirSync(path.dirname(outFile),{recursive:true});
+fs.writeFileSync(outFile,JSON.stringify({kind:'phase120-numeric-region-finite-controls',complete,inputs:[pin(apiFile),pin(import.meta.filename)],cases:rows,error,scope:'Reflected structural admission/expansion only, not source provenance, native semantics or performance; no malformed native program is executed.'},null,2)+'\n');
+if(!complete)throw Error(error);

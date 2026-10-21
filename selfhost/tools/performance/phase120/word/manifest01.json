@@ -1,0 +1,26 @@
+{
+  "complete": true,
+  "targetsRun": false,
+  "cases": [
+    {
+      "name": "signed-word-boundaries",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase120/word/boundaries.bend",
+        "bytes": 3560,
+        "sha256": "54c1d519b108629bdb68789413fba15292f9cc18f17c7e725f621a0471132605"
+      },
+      "expected": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase120/word/boundaries.expected.json",
+        "bytes": 606,
+        "sha256": "1c9c468af52fedece103bfd13063bd7412c5222a096f176fa69544b4fc800851"
+      },
+      "expectedStdoutEvidence": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase120/word/boundaries.expected.json",
+        "bytes": 606,
+        "sha256": "1c9c468af52fedece103bfd13063bd7412c5222a096f176fa69544b4fc800851"
+      },
+      "provenance": "Literal complete ordinary source oracle; signed integer shifts computed independently; runtime argv seed defaults1."
+    }
+  ],
+  "scope": "Ordinary U32 boundaries; no malformed IR or failure-runtime input."
+}

@@ -1,8 +1,13 @@
 # Compiler experiment workflow
 
-Planned next: [Phase120 native runtime parity](../design/phase120/runtime-specialization-and-parity.md).
-The design extends existing verified regions, specializes runtime work and tests
-container elimination. Implementation has not started; no new performance claim.
+Latest experiment: [Phase121 construction elimination](../implementation/phase121/README.md).
+Two Bend rules reuse existing JS semantic checks to remove private list pipelines
+and immediately applied closure chains before native lowering. The report keeps
+generated-program runtime, hosted compiler cost and native qualification distinct.
+
+[Phase120 numeric regions](../implementation/phase120/README.md) are a separate
+candidate: 3.76% less corpus runtime, 17.95% more hosted compiler cost. Those modules
+are not combined into Phase121; qualified Phase118 remains the comparison parent.
 
 Latest diagnostic: [Phase119 profile refresh](../implementation/phase119/README.md).
 Current profiles shift attention from clearing to scalar identities, numeric

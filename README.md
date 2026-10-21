@@ -83,6 +83,12 @@ workflow reaches about1.02× upstream ready-executable time. See the report for
 compiler-cost and source-size tradeoffs. It remains experimental; the installed
 compiler is unchanged.
 
+The [native construction-elimination experiment](docs/self_hosted/native-fusion.md)
+reuses checked semantic patterns from the JS backend to remove private list
+pipelines and immediately applied closure chains before native lowering. Its
+[Phase121 report](implementation/phase121/README.md) separates local gains,
+the original45 comparison, compiler cost and native qualification limits.
+
 The [native IR research prototype](docs/self_hosted/NATIVE_IR_RESEARCH.md) now
 implements a small Bend IR with C and Cranelift consumers, checked folding laws,
 and a reproducible policy experiment. Its [report and diagrams](implementation/phase106/README.md)

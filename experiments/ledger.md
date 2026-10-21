@@ -5262,3 +5262,39 @@ minimum available memory. Two offline agents; one serial target lane. No native
 N1/N2 rebuild, installed selection change, full proof or recursive acceleration
 claim. Next remove intermediate container work and reduce fact/unchanged-pass
 cost using a small complete-cost gate before broad integration.
+
+## Phase121 — remove private constructions before native lowering — 2026-10-21
+
+[Design](../design/phase121/construction-elimination.md) ·
+[Experiment](phase121/P121-001-construction-elimination.md) ·
+[Report](../implementation/phase121/README.md) ·
+[Results](../implementation/phase121/results.json) ·
+[Reproduce](../selfhost/tools/performance/phase121/README.md).
+
+Source-only ceilings establish whole-list fusion and closure application as
+valuable; ordered-map digest fusion is neutral and stopped. Two Bend rules reuse
+existing JS semantic checks and native scalar lowering, preserving exact primitive
+identities, types, operation order, wrapping and conservative fallback. The
+analysis-only erased-lambda adapter repairs a source-view mismatch. No runtime,
+public ABI or workload-name optimization. Native N1/N2 and installed selections
+remain unchanged; Phase120 numeric modules are not part of this candidate.
+
+Original45 passes405 observations. Same-run44-point geometric runtime improves
+2.98762→2.14395× upstream,28.24% less; frozen-family score2.200×. The gain is
+concentrated in four points/two families:41 programs have exact parent QBE and
+40/44 timed points remain more than10% slower than upstream. Summed fixed-batch
+medians improve only6.48%. List cases improve20–21×; a longer closure check
+confirms84.3× parent and47.7× upstream. These are real local wins, not broad parity.
+
+Three independent ordinary controls match240 output lines; nine literal admission
+and emission expectations pass. Compiler source grows258 lines (0.49%). Complete
+hosted three-case requests add1.41%; admitted-entry cost is essentially unchanged.
+No native compiler-throughput or recursive-research acceleration claim.
+
+At18:14:31UTC,42.69min elapsed includes20.63min guarded work:26 serial guards,
+three rejected attempts costing16.85s, one broad campaign and no image rebuild.
+Peak1.803GiB; no resource or native output failure. One offline agent assists
+controls/review; root owns CPU3. Actual quota/inference cost is not metered.
+Preserve failures, exact-code bridges and source/tool/runtime pins in the capsule.
+Next test a measured compiler-hot or remaining slow producer/consumer ceiling;
+repair Phase120 analysis cost before combining it and acquiring native images.

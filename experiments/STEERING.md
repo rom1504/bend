@@ -1,4 +1,43 @@
-# Latest experiment: Phase120 numeric regions and signed words
+# Latest experiment: Phase121 native construction elimination
+
+[Report](../implementation/phase121/README.md) ·
+[Design](../design/phase121/construction-elimination.md) ·
+[Reproduce](../selfhost/tools/performance/phase121/README.md) ·
+[Backend guide](../docs/self_hosted/native-fusion.md).
+
+Checked-hosted source04 on qualified Phase118 reuses existing JS semantic
+admission to eliminate private list pipelines and immediately applied scalar
+closure chains. Native scalar lowering and verification remain shared; no new
+runtime or public ABI. Phase120 numeric modules are not included.
+
+Original45 passes405 output/count checks. Same-run44-point geometric runtime
+improves2.98762→2.14395× pinned upstream (28.24% less); frozen-family score2.200×.
+The gain is concentrated: four programs from two families change,41 emit exact
+parent QBE, and40/44 timed points remain over1.1× upstream. Summed fixed-batch
+medians fall only6.48%. Do not equate the geometric gain with broadly achieved
+parity. List cases improve20–21×; longer closure confirmation improves84.3×
+parent and47.7× upstream. Neutral map-digest fusion is excluded.
+
+Three standalone controls match240 output lines; nine literal acceptance/refusal
+expectations match checked admission and emitted activation. Selected scalar
+workers contain no calls/allocations. The checked erased-lambda adapter changes
+only an analysis view and reruns original full checks. Finite metadata-forgery
+controls, parallel/GPU behavior and native N1/N2 remain unqualified here.
+
+Complete hosted three-case request cost is+1.41%, admitted-entry+0.04%; compiler
+source grows258 lines (0.49%). These are not native compiler speed measurements.
+The42.69min snapshot includes20.63min guarded work and three failures totaling16.85s.
+One broad campaign; no full image rebuild. Experimental candidate and all rejected
+attempts are pinned; qualified Phase118 and installed selections remain intact.
+
+Next: measure a compiler-hot or remaining slow workload's producer/consumer
+ceiling, then preserve the semantic description before representation lowering.
+Active ray, RLE, evening-program and tree-bitonic remain large deficits. Repair
+Phase120 analysis cost before combining its numeric gains. A shared description
+is promising; another broad IR rewrite or general search framework is not yet
+justified. No recursive research acceleration has been demonstrated.
+
+# Previous experiment: Phase120 numeric regions and signed words
 
 [Report](../implementation/phase120/README.md) ·
 [Design](../design/phase120/runtime-specialization-and-parity.md) ·

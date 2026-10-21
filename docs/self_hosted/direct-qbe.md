@@ -1,5 +1,12 @@
 # Direct QBE backend for the Bend compiler written in Bend
 
+The [Phase121 construction-elimination experiment](native-fusion.md) reuses
+checked producer/consumer and callback patterns from the JS backend, emitting
+scalar native loops before temporary data is materialized. See its
+[report](../../implementation/phase121/README.md) and
+[reproduction guide](../../selfhost/tools/performance/phase121/README.md).
+Its checked-hosted producer is separate from the qualified Phase118 native chain.
+
 The [Phase118 ownership and transport candidate](../../implementation/phase118/README.md)
 improves the original44-point program-runtime ratio4.3165→3.0089× upstream.
 Its safe-source03 native N1/N2 reproduce85,831,654 QBE bytes; both pass focused19,

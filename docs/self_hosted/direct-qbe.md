@@ -1,5 +1,10 @@
 # Direct QBE backend for the Bend compiler written in Bend
 
+The [Phase124 local helper/resume experiment](local-ready-resume.md) composes
+verified complete helpers with explicit recursive continuation tables. Its
+[report](../../implementation/phase124/README.md) records independent alias/depth
+controls, runtime transfer, compiler cost and the remaining native qualification.
+
 The [Phase123 predicate/address experiment](native-predicates.md) removes repeated
 Boolean conversion and exposes packed-array scales to QBE instruction selection.
 Its [report](../../implementation/phase123/README.md) separates per-case gains,

@@ -1,4 +1,39 @@
-# Latest experiment: Phase123 predicate origins and machine selection
+# Latest experiment: Phase124 complete helpers and local resume
+
+[Report](../implementation/phase124/README.md) ·
+[Design](../design/phase124/local-ready-resume.md) ·
+[Candidate](../implementation/phase124/candidate.json) ·
+[Reproduce](../selfhost/tools/performance/phase124/README.md).
+
+Phase124 ready-only source02 extends Phase123 with a verified callable-catalogue
+view and explicit local helper/resume node. Existing successful selections and
+runtime/ownership gates remain unchanged. Original45 passes405 observations:
+same-run44-point runtime2.00033→1.92014×upstream (4.01% less), family-weighted1.97879×.
+Positive log-slowdown0.94870→0.90847 (4.24% less); fixed-batch medians5.03% less.
+Forty points still exceed1.1× and24 exceed2×. Largest regression1.29%.
+
+RLE22.82% less, three generate-and-lex inputs34.49–37.13% less, Unicode text3.59–3.87%
+less. Lexer core QBE is unchanged: its input generator is inside the frozen timer.
+Static96 new local regions include90 repeated library regions; selection counts
+are not hotness or speed evidence. Native alias/depth list/tree controls and17
+pure predicates pass. Hosted RLE/lexer compiler cost0.99532×parent, approximately
+neutral. Compiler source+172lines; emitted QBE+0.605%. Qualified Phase118 and
+installed selections stay unchanged; no native N1/N2 or recursive acceleration claim.
+
+Separate scoped frame expansion passes its small checks but saves only1–2%; excluded.
+One initial batch deadline is preserved; completed verified outputs were explicitly
+recovered. Phase through20:44:11 used27.20min,16.96min guarded,19 jobs including2
+failures, one broad emission/screen, no image build. Two bounded offline agents.
+
+Next: eliminate complete intermediate computations. RLE still builds a temporary
+lrepeat spine that lconcat consumes/reconstructs. Try a general checked
+producer/consumer or destination interface, preserving effect order/aliases and
+showing transfer beyond RLE. Do not revive generic cell credits, a named recognizer,
+or another global scratch-name rule. A compiler-decoder analogue exists but lacks
+measured admission/inclusive hotness. Qualify and measure it before claiming
+compiler self-optimization. Keep the existing resource/evidence rules below.
+
+# Previous experiment: Phase123 predicate origins and machine selection
 
 [Report](../implementation/phase123/README.md) ·
 [Design](../design/phase123/typed-private-computations.md) ·

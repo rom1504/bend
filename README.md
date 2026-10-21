@@ -94,6 +94,12 @@ retains comparison origins and exposes scaled array addresses to QBE. Its
 [Phase123 report](implementation/phase123/README.md) records the focused gain,
 broad qualification and remaining ownership/control-flow opportunities.
 
+The [local helper/resume experiment](docs/self_hosted/local-ready-resume.md)
+lets verified helpers compose with explicit recursive continuation tables while
+preserving ownership and bounded native stack use. See the
+[Phase124 report](implementation/phase124/README.md) for measured transfer,
+remaining slowdown, and the separate native-qualification boundary.
+
 The [native IR research prototype](docs/self_hosted/NATIVE_IR_RESEARCH.md) now
 implements a small Bend IR with C and Cranelift consumers, checked folding laws,
 and a reproducible policy experiment. Its [report and diagrams](implementation/phase106/README.md)

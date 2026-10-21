@@ -5366,3 +5366,28 @@ in34 guarded jobs; three failed processes8.40s, no resource/output failure.
 Two bounded offline agents; one root-owned CPU3 lane. No measured agent quota or
 recursive acceleration claim. Source/SSA/ELF remain external with exact pins;
 small raw receipts and disassembly are sealed and replay-verified.
+
+
+## Phase124 — verified helpers inside local recursive regions — 2026-10-21
+
+[Design](../design/phase124/local-ready-resume.md) ·
+[Experiments](phase124/P124-001-ready-resume.md) ·
+[Report](../implementation/phase124/README.md) ·
+[Results](../implementation/phase124/results.json).
+
+A shared verified callable view and explicit helper/resume node remove generic
+scheduler transitions across complete helpers, while keeping explicit recursion,
+ownership, exact argument/capture gates and prior selections. Original45 passes405
+observations; same-run runtime2.00033→1.92014×upstream, positive log deficit4.24%
+lower and fixed-batch time5.03% lower. RLE22.82%, generate-and-lex34.49–37.13%,
+Unicode text3.59–3.87% less time; most points stay near neutral.40 remain>1.1×,
+24>2×. Independent list/tree alias/depth outputs and17 finite controls pass.
+
+Hosted compiler cost0.99532×parent is neutral; source+172lines, QBE+0.605%.
+Small scoped frame expansion is excluded after only1–2% improvement. Keep its
+negative profitability evidence. Source02 is experimental and is not the qualified
+native chain or installed compiler.27.20min through20:44:11,16.96min guarded,
+19 jobs,2 failures including a retained partial emission; no full image build.
+The next general opportunity is elimination of temporary producer/concat spines,
+not additional policy search or source-name specialization. Recursive acceleration
+and compiler-hot transfer remain unmeasured.

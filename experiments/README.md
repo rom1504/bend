@@ -1,6 +1,11 @@
 # Compiler experiment workflow
 
-Current full compiler experiment: [Phase114 direct QBE](../implementation/phase114/README.md),
+Latest bounded investigation: [Phase115 policy search](../implementation/phase115/README.md).
+Retained plans reduce policy-emission work 30.3%; independent runtime comparison
+finds no better code-generation policy. A 17-line candidate preserves exact QBE
+and reduces full warm emission 4.15%; no installed/native promotion.
+
+Current qualified full compiler experiment: [Phase114 direct QBE](../implementation/phase114/README.md),
 with exact74.22 MB native self-emission and a qualified successor. The paired
 original45 program-runtime campaign improves7.082→5.386× upstream (24% less time);
 the native three-source request/build metrics are separate. Parity remains open.

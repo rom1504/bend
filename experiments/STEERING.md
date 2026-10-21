@@ -1,4 +1,26 @@
-# Current development frontier: Phase114 local recursive QBE regions
+# Current experiment: Phase115 reusable plans and policy search
+
+[Report](../implementation/phase115/README.md) ·
+[Design](../design/phase115/reusable-plans-and-policy-search.md) ·
+[Exact results](../implementation/phase115/results.json).
+
+One checked Bend API evaluates four existing legal emission policies as data.
+Retaining alternatives cuts four-policy emission work 30.3% across six historical
+inputs, including preparation; all 144 measured QBE comparisons pass. The full
+search's setup/build/validation costs substantially dilute that component gain.
+All 90 independent native runtime observations pass. The program-speed selection
+retains current policy0; no new generated-program gain or recursive acceleration.
+
+An exact-output policy search finds H→generic cheaper than H→R→G→generic on the
+six inputs, but that does not justify globally deleting fallback capability.
+A smaller candidate preserves R/G and skips only the repeated rejected H query:
+17 added lines, 60 exact output observations, 4.15% geometric full warm-emission
+reduction. Keep it for the next justified integration; it has no new native-chain
+or whole-request speed qualification. Larger reusable-plan machinery stays an
+experiment. Phase114 below remains the qualified native checkpoint and installed
+selection is unchanged. No subagents used and no PR comments posted in Phase115.
+
+# Qualified development checkpoint: Phase114 local recursive QBE regions
 
 [Report](../implementation/phase114/README.md) ·
 [1×/10×/100× design](../design/phase114/qbe-parity-and-staged-runtime.md) ·

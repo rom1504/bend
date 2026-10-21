@@ -1,0 +1,632 @@
+{
+  "kind": "phase115-frozen-policy-experiment",
+  "complete": true,
+  "policies": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "rounds": 3,
+  "warmupRounds": 1,
+  "cases": [
+    {
+      "name": "tree-bitonic",
+      "family": "tree-bitonic",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/fixtures01/tree-bitonic.bend",
+        "bytes": 6593,
+        "sha256": "405f8d8fb2066e6fedd8baa45943bcdf92b59cb40e23ce2ad3ea4bd3eeb53ae0"
+      },
+      "source88": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase88/broad-fixtures03/tree-bitonic.bend",
+        "bytes": 4756,
+        "sha256": "97be00441287e3983f24b9c0f96a98f6f4bf27293a80a93bec50f21939401d60"
+      },
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase37/fixtures-historical/tree-bitonic.bend",
+        "bytes": 4633,
+        "sha256": "ace0242c329b1628cb9d0a0142386380e0ca4e56fa741916974938eb079b2c0d"
+      },
+      "expectedStdout": "971629740\n",
+      "expectedStdoutEvidence": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase111/coverage/full45/expected/tree-bitonic.stdout",
+        "bytes": 10,
+        "sha256": "4d9faad3bd6736bd6b3be55577bba89ff3064588775afe8959dd2f709ca6aa21"
+      },
+      "runtimeArgs": [
+        8,
+        0
+      ],
+      "repetitions": 2043,
+      "warmups": 32,
+      "ratioEligible": true,
+      "phase112Heldout": true,
+      "upstream": {
+        "binary": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/broad01/tree-bitonic/upstream.program",
+          "bytes": 67952,
+          "sha256": "5afd7bca608250b93f0f701d566235c1e5c8ba2ea1ccba8c09ea34870b900a88"
+        },
+        "source": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/fixtures01/tree-bitonic.bend",
+          "bytes": 6593,
+          "sha256": "405f8d8fb2066e6fedd8baa45943bcdf92b59cb40e23ce2ad3ea4bd3eeb53ae0"
+        },
+        "generatedC": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/broad01/tree-bitonic/upstream.1.c",
+          "bytes": 151635,
+          "sha256": "39eb05d988e1074234c8a7ff72112b2df3f61de3d2cdea3bc8d6881420c0331d"
+        },
+        "buildCommand": [
+          "/usr/bin/python3",
+          "-B",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase86/guard.py",
+          "--out",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/broad01/tree-bitonic/upstream-build",
+          "--seconds",
+          "60",
+          "--cpu",
+          "3",
+          "--rss-mib",
+          "2048",
+          "--available-mib",
+          "4096",
+          "--",
+          "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+          "-isystem",
+          "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/include/clang",
+          "-std=c11",
+          "-O3",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/broad01/tree-bitonic/upstream.1.c",
+          "-o",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/broad01/tree-bitonic/upstream.program",
+          "-lpthread",
+          "-lm"
+        ],
+        "clang": {
+          "file": "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+          "bytes": 119320,
+          "sha256": "9fcd5fc4baeea9c449bcc9ca4b9db7714465107669498b0056a853f22f5f4def"
+        }
+      },
+      "historicalSamplesMs": {
+        "upstream": [
+          250,
+          248,
+          250
+        ],
+        "own": [
+          337,
+          337,
+          336
+        ]
+      },
+      "oracleProvenance": "Exact Phase93 complete expected output, authenticated against preserved independent Phase92/105 evidence in Phase111 full45; reused historical regression oracle.",
+      "partition": "training"
+    },
+    {
+      "name": "coverage-list-pipeline-128",
+      "family": "list-pipeline",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/fixtures01/coverage-list-pipeline-128.bend",
+        "bytes": 5223,
+        "sha256": "5a6bb5b6e3e4549ceae238b40485aa6d00facdab6bb8382790a486b165a1cd97"
+      },
+      "source88": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase88/broad-fixtures03/coverage-list-pipeline-128.bend",
+        "bytes": 3388,
+        "sha256": "f5bdc47ec9a89047f40a11b8e81d23eb33cb949c3505d6e1525a993e93d76f5e"
+      },
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase37/fixtures-new/list-pipeline.bend",
+        "bytes": 3249,
+        "sha256": "b4819808f26a6d5fe8ef0295c69b447121320c3e748a7fbc937bf8a88e3d48d0"
+      },
+      "expectedStdout": "1904\n",
+      "expectedStdoutEvidence": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase111/coverage/full45/expected/coverage-list-pipeline-128.stdout",
+        "bytes": 5,
+        "sha256": "809ab2f049b9783d5e9adfb1bf8d82e182bf71399bc90f29aaee87b629a2872d"
+      },
+      "runtimeArgs": [
+        128,
+        17
+      ],
+      "repetitions": 123374,
+      "warmups": 32,
+      "ratioEligible": true,
+      "phase112Heldout": true,
+      "upstream": {
+        "binary": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/broad01/coverage-list-pipeline-128/upstream.program",
+          "bytes": 62720,
+          "sha256": "42869ed0c17deda8b110e5f4db562bb4ee030166c0a4e2f4bc9d8b2127c03d66"
+        },
+        "source": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/fixtures01/coverage-list-pipeline-128.bend",
+          "bytes": 5223,
+          "sha256": "5a6bb5b6e3e4549ceae238b40485aa6d00facdab6bb8382790a486b165a1cd97"
+        },
+        "generatedC": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/broad01/coverage-list-pipeline-128/upstream.1.c",
+          "bytes": 134882,
+          "sha256": "21906fcbdc34aea9ec7f8960353a3242f6d7a5ee69af9ed1ff12170512c0f655"
+        },
+        "buildCommand": [
+          "/usr/bin/python3",
+          "-B",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase86/guard.py",
+          "--out",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/broad01/coverage-list-pipeline-128/upstream-build",
+          "--seconds",
+          "60",
+          "--cpu",
+          "3",
+          "--rss-mib",
+          "2048",
+          "--available-mib",
+          "4096",
+          "--",
+          "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+          "-isystem",
+          "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/include/clang",
+          "-std=c11",
+          "-O3",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/broad01/coverage-list-pipeline-128/upstream.1.c",
+          "-o",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/broad01/coverage-list-pipeline-128/upstream.program",
+          "-lpthread",
+          "-lm"
+        ],
+        "clang": {
+          "file": "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+          "bytes": 119320,
+          "sha256": "9fcd5fc4baeea9c449bcc9ca4b9db7714465107669498b0056a853f22f5f4def"
+        }
+      },
+      "historicalSamplesMs": {
+        "upstream": [
+          248,
+          248,
+          243
+        ],
+        "own": [
+          267,
+          265,
+          266
+        ]
+      },
+      "oracleProvenance": "Exact Phase93 complete expected output, authenticated against preserved independent Phase92/105 evidence in Phase111 full45; reused historical regression oracle.",
+      "partition": "training"
+    },
+    {
+      "name": "coverage-expression-128",
+      "family": "expression",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/fixtures01/coverage-expression-128.bend",
+        "bytes": 3504,
+        "sha256": "32ae9cc5bdaeff023b08403b357b7e8a3f03e06d37c461feb4a8930ad51c5a2c"
+      },
+      "source88": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase88/broad-fixtures03/coverage-expression-128.bend",
+        "bytes": 1662,
+        "sha256": "3276c1370eaba8646283c86e80177de9dc21c293e47dba6e78273f9430b58c68"
+      },
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase37/fixtures-new/expression.bend",
+        "bytes": 1522,
+        "sha256": "62f40333fa5e7dacd2fadbd622d22033a3434de004df93a6870e4cd33df9d4a5"
+      },
+      "expectedStdout": "3393903617\n",
+      "expectedStdoutEvidence": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase111/coverage/full45/expected/coverage-expression-128.stdout",
+        "bytes": 11,
+        "sha256": "17c0949f352d912dbd3adbf58715df4efca36ad86aac5f7935cde269d7db89d3"
+      },
+      "runtimeArgs": [
+        128,
+        123
+      ],
+      "repetitions": 44522,
+      "warmups": 32,
+      "ratioEligible": true,
+      "phase112Heldout": true,
+      "upstream": {
+        "binary": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/broad01/coverage-expression-128/upstream.program",
+          "bytes": 63448,
+          "sha256": "a3b8d56b994f0f9199f3e056c286ecd17b152e38260f0622eb5138d0773e9c02"
+        },
+        "source": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/fixtures01/coverage-expression-128.bend",
+          "bytes": 3504,
+          "sha256": "32ae9cc5bdaeff023b08403b357b7e8a3f03e06d37c461feb4a8930ad51c5a2c"
+        },
+        "generatedC": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/broad01/coverage-expression-128/upstream.1.c",
+          "bytes": 136639,
+          "sha256": "74be6b265cc5da23637788d592892a99f295155122a12e86394e039cfec0705e"
+        },
+        "buildCommand": [
+          "/usr/bin/python3",
+          "-B",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase86/guard.py",
+          "--out",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/broad01/coverage-expression-128/upstream-build",
+          "--seconds",
+          "60",
+          "--cpu",
+          "3",
+          "--rss-mib",
+          "2048",
+          "--available-mib",
+          "4096",
+          "--",
+          "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+          "-isystem",
+          "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/include/clang",
+          "-std=c11",
+          "-O3",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/broad01/coverage-expression-128/upstream.1.c",
+          "-o",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/broad01/coverage-expression-128/upstream.program",
+          "-lpthread",
+          "-lm"
+        ],
+        "clang": {
+          "file": "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+          "bytes": 119320,
+          "sha256": "9fcd5fc4baeea9c449bcc9ca4b9db7714465107669498b0056a853f22f5f4def"
+        }
+      },
+      "historicalSamplesMs": {
+        "upstream": [
+          236,
+          237,
+          236
+        ],
+        "own": [
+          382,
+          381,
+          380
+        ]
+      },
+      "oracleProvenance": "Exact Phase93 complete expected output, authenticated against preserved independent Phase92/105 evidence in Phase111 full45; reused historical regression oracle.",
+      "partition": "training"
+    },
+    {
+      "name": "lexer",
+      "family": "lexer",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/fixtures01/lexer.bend",
+        "bytes": 9095,
+        "sha256": "bfb62870600b63fd6ec6088471a2d805fabb819a7f2e9d47c9b0ef3c368d169a"
+      },
+      "source88": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase88/broad-fixtures03/lexer.bend",
+        "bytes": 7257,
+        "sha256": "f1d8e7e7e68f5c79053fadc35ba2f6e95f0115a40a5e6ce792e34d9f1faafdae"
+      },
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase37/fixtures-historical/lexer.bend",
+        "bytes": 7134,
+        "sha256": "6014af6bf7e97c8feaafa918e79f28a22d2c9c92bea836203fcd89b6d70a4fbb"
+      },
+      "expectedStdout": "1822208108\n",
+      "expectedStdoutEvidence": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase111/coverage/full45/expected/lexer.stdout",
+        "bytes": 11,
+        "sha256": "ce7ae380f780c64e26dc0b2fd2f547364c4e837bdecd61714cf04150768acf0a"
+      },
+      "runtimeArgs": [
+        8,
+        0
+      ],
+      "repetitions": 685,
+      "warmups": 32,
+      "ratioEligible": true,
+      "phase112Heldout": false,
+      "upstream": {
+        "binary": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/broad01/lexer/upstream.program",
+          "bytes": 65584,
+          "sha256": "8c1802ee57b2469c7eb3cd8220b3a32c3e499baf3a167009a0143d6fce9d10f4"
+        },
+        "source": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/fixtures01/lexer.bend",
+          "bytes": 9095,
+          "sha256": "bfb62870600b63fd6ec6088471a2d805fabb819a7f2e9d47c9b0ef3c368d169a"
+        },
+        "generatedC": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/broad01/lexer/upstream.1.c",
+          "bytes": 149721,
+          "sha256": "527fd7c7b7cb228550f4ffac88ce7823814ff5d0dc6f4671d9f80157c26ca8f3"
+        },
+        "buildCommand": [
+          "/usr/bin/python3",
+          "-B",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase86/guard.py",
+          "--out",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/broad01/lexer/upstream-build",
+          "--seconds",
+          "60",
+          "--cpu",
+          "3",
+          "--rss-mib",
+          "2048",
+          "--available-mib",
+          "4096",
+          "--",
+          "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+          "-isystem",
+          "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/include/clang",
+          "-std=c11",
+          "-O3",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/broad01/lexer/upstream.1.c",
+          "-o",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/broad01/lexer/upstream.program",
+          "-lpthread",
+          "-lm"
+        ],
+        "clang": {
+          "file": "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+          "bytes": 119320,
+          "sha256": "9fcd5fc4baeea9c449bcc9ca4b9db7714465107669498b0056a853f22f5f4def"
+        }
+      },
+      "historicalSamplesMs": {
+        "upstream": [
+          264,
+          270,
+          268
+        ],
+        "own": [
+          403,
+          399,
+          404
+        ]
+      },
+      "oracleProvenance": "Exact Phase93 complete expected output, authenticated against preserved independent Phase92/105 evidence in Phase111 full45; reused historical regression oracle.",
+      "partition": "evaluation"
+    },
+    {
+      "name": "local-pair",
+      "family": "local-pair",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/fixtures01/local-pair.bend",
+        "bytes": 8202,
+        "sha256": "acb8a8bc1d8ed6fd5c3a57e08c154042e0524a8d4f3f12ddcec9da75a327e78c"
+      },
+      "source88": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase88/broad-fixtures03/local-pair.bend",
+        "bytes": 6364,
+        "sha256": "56c01dca88ff7b512ae63fedc3d121d0f48ca4a1b503a44429642fcb35ecc308"
+      },
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase37/fixtures-historical/local-row.bend",
+        "bytes": 6245,
+        "sha256": "3987479425f7bf0d5c9e7655bb22bae29ed0d44635fdbf50eff2bb3cd869dfb4"
+      },
+      "expectedStdout": "1866542166\n",
+      "expectedStdoutEvidence": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase111/coverage/full45/expected/local-pair.stdout",
+        "bytes": 11,
+        "sha256": "4a736bfb1ff7d70ef494f46a67ca008db9fb990a30e28898d56d21583bf734fe"
+      },
+      "runtimeArgs": [
+        0,
+        0
+      ],
+      "repetitions": 1186,
+      "warmups": 32,
+      "ratioEligible": true,
+      "phase112Heldout": true,
+      "upstream": {
+        "binary": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/pilot02/local-pair/upstream.program",
+          "bytes": 58408,
+          "sha256": "665260dce5cedf4589a6abd40f73c4f9c39b58c9fee267b4eb12665b1d8d1945"
+        },
+        "source": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/fixtures01/local-pair.bend",
+          "bytes": 8202,
+          "sha256": "acb8a8bc1d8ed6fd5c3a57e08c154042e0524a8d4f3f12ddcec9da75a327e78c"
+        },
+        "generatedC": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/pilot02/local-pair/upstream.1.c",
+          "bytes": 136409,
+          "sha256": "0205c68209f228364c3cfa22bd87297918a9a13c557fb0ca8a3d98124c8a2513"
+        },
+        "buildCommand": [
+          "/usr/bin/python3",
+          "-B",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase86/guard.py",
+          "--out",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/pilot02/local-pair/upstream-build",
+          "--seconds",
+          "60",
+          "--cpu",
+          "3",
+          "--rss-mib",
+          "2048",
+          "--available-mib",
+          "4096",
+          "--",
+          "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+          "-isystem",
+          "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/include/clang",
+          "-std=c11",
+          "-O3",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/pilot02/local-pair/upstream.1.c",
+          "-o",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/pilot02/local-pair/upstream.program",
+          "-lpthread",
+          "-lm"
+        ],
+        "clang": {
+          "file": "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+          "bytes": 119320,
+          "sha256": "9fcd5fc4baeea9c449bcc9ca4b9db7714465107669498b0056a853f22f5f4def"
+        }
+      },
+      "historicalSamplesMs": {
+        "upstream": [
+          249,
+          249,
+          249
+        ],
+        "own": [
+          248,
+          250,
+          249
+        ]
+      },
+      "oracleProvenance": "Exact Phase93 complete expected output, authenticated against preserved independent Phase92/105 evidence in Phase111 full45; reused historical regression oracle.",
+      "partition": "evaluation"
+    },
+    {
+      "name": "variation-ray-active-256-2240",
+      "family": "raytrace",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/fixtures01/variation-ray-active-256-2240.bend",
+        "bytes": 16661,
+        "sha256": "7099448e301e2cab7cb5ab47e2a4892dbf44ac246676b4f950282c7a57007669"
+      },
+      "source88": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase88/broad-fixtures03/variation-ray-active-256-2240.bend",
+        "bytes": 14818,
+        "sha256": "df3b2a4cd2afd020421f634ebef7f5d80b422b0a2a13c4609f0350a9f94cb440"
+      },
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase37/fixtures-variants/raytrace-active.bend",
+        "bytes": 14680,
+        "sha256": "5ba03ffff01fc0825ecf7ec0d9fb5f5030fcc07c3d83582ad790394cbcf55955"
+      },
+      "expectedStdout": "2166930202\n",
+      "expectedStdoutEvidence": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase111/coverage/full45/expected/variation-ray-active-256-2240.stdout",
+        "bytes": 11,
+        "sha256": "15adde12f874e278a5e96d86c4ee20d18706611252e5cfc76a3ba63d29170dcf"
+      },
+      "runtimeArgs": [
+        256,
+        2240
+      ],
+      "repetitions": 1883,
+      "warmups": 32,
+      "ratioEligible": true,
+      "phase112Heldout": false,
+      "upstream": {
+        "binary": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/broad01/variation-ray-active-256-2240/upstream.program",
+          "bytes": 68080,
+          "sha256": "673a5086e23e7381d967d946b14d456012ba2140d6e6a2dee09aba2f47c821ee"
+        },
+        "source": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/fixtures01/variation-ray-active-256-2240.bend",
+          "bytes": 16661,
+          "sha256": "7099448e301e2cab7cb5ab47e2a4892dbf44ac246676b4f950282c7a57007669"
+        },
+        "generatedC": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/broad01/variation-ray-active-256-2240/upstream.1.c",
+          "bytes": 156030,
+          "sha256": "18faa3fc10c9e388a5ee819481a4ea397f446358277f4c152e2391a69e99deec"
+        },
+        "buildCommand": [
+          "/usr/bin/python3",
+          "-B",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase86/guard.py",
+          "--out",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/broad01/variation-ray-active-256-2240/upstream-build",
+          "--seconds",
+          "60",
+          "--cpu",
+          "3",
+          "--rss-mib",
+          "2048",
+          "--available-mib",
+          "4096",
+          "--",
+          "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+          "-isystem",
+          "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/include/clang",
+          "-std=c11",
+          "-O3",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/broad01/variation-ray-active-256-2240/upstream.1.c",
+          "-o",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/broad01/variation-ray-active-256-2240/upstream.program",
+          "-lpthread",
+          "-lm"
+        ],
+        "clang": {
+          "file": "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+          "bytes": 119320,
+          "sha256": "9fcd5fc4baeea9c449bcc9ca4b9db7714465107669498b0056a853f22f5f4def"
+        }
+      },
+      "historicalSamplesMs": {
+        "upstream": [
+          249,
+          248,
+          254
+        ],
+        "own": [
+          859,
+          859,
+          859
+        ]
+      },
+      "oracleProvenance": "Exact Phase93 complete expected output, authenticated against preserved independent Phase92/105 evidence in Phase111 full45; reused historical regression oracle.",
+      "partition": "evaluation"
+    }
+  ],
+  "api": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p115-api02/api.mjs",
+    "bytes": 1741659,
+    "sha256": "d3c0d21d092ebeefbd6e50de0b04f21b66b51ae5497ca79dfc8f1291a7923329"
+  },
+  "apiReport": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p115-api02/report.json",
+    "bytes": 3373,
+    "sha256": "5eb759abab5e591af716511ab97d9f8bc3a3e514fe090d0418b5eb792b1491d4"
+  },
+  "referenceApi": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p114-final-api02/api.mjs",
+    "bytes": 1849995,
+    "sha256": "e388dde6a3f6a4412f0e0417ba86edd8a7f46f49807a852fdadd20bc599cbe72"
+  },
+  "runtime": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/runtime-products-build01/runtime.o",
+    "bytes": 96224,
+    "sha256": "c0f6f2ca5b5a58418f326794e97a29cc21a68f32e924ce5974ad4ffccfc9c9f9"
+  },
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase114/final-source02/compiler.bend",
+    "bytes": 2306979,
+    "sha256": "500211d484785778e75d5d4388b0d5ebc7282effd233c6b8f3d0e0269ac777f8"
+  },
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase112/benchmark45/manifest01.json",
+      "bytes": 229972,
+      "sha256": "80b07bdc76528bf58ae322ffed470eaa8ccdc8fa3d5cea73aa6d652d66cc6adc"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase115/freeze.py",
+      "bytes": 1669,
+      "sha256": "d0b1667151ea031f1d9e2548499ba736d2323fb4df9a26c9622a23470ebfe368"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/design/phase115/reusable-plans-and-policy-search.md",
+      "bytes": 4995,
+      "sha256": "5fd28c94fb58c4e3afc5c2b9e514c79681df2ffeb1114a290c7841f422b69160"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase115/source02/manifest.json",
+      "bytes": 2741,
+      "sha256": "fbe3194f659056bd356b9d039ce3186515d501d3bdebd23749331fb9c6208816"
+    }
+  ],
+  "scope": "Historical sources; evaluation partition excluded from policy selection, not unseen research holdout. Policy0 compared with qualified unmodified API."
+}

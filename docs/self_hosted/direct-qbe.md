@@ -1,5 +1,13 @@
 # Direct QBE backend for the Bend compiler written in Bend
 
+The [Phase115 optimizer experiment](../../implementation/phase115/README.md)
+adds a Bend interface for retaining legal plans and evaluating policy data
+without rebuilding the compiler per choice. Its 30.3% reduction concerns repeated
+policy emission, not total compilation or generated-program runtime. A smaller
+17-line exact-output candidate removes repeated negative planning with 4.15%
+less full warm emission. Both remain separate from the qualified Phase114
+checkpoint below. [Reproduction](../../selfhost/tools/performance/phase115/README.md).
+
 ## Phase114 qualified native checkpoint
 
 The [Phase114 report](../../implementation/phase114/README.md) records a direct-QBE

@@ -5078,3 +5078,27 @@ the additional three-case family is mixed (0.33% geometric gain). Table-buffer
 expansion gains2.38%, below its3% selection threshold. These prototypes stay
 outside the qualified composition. Full reports retain all attempts, failures
 and limits. Production selection remains unchanged; no parity claim.
+
+## Phase115 — reusable plans and bounded optimizer policy search
+
+[Design](../design/phase115/reusable-plans-and-policy-search.md) ·
+[Report](../implementation/phase115/README.md) · [Exact results](../implementation/phase115/results.json).
+
+One agent appends a Bend-only immutable planning/policy interface to qualified
+source 02. Four legal policies are evaluated by one checked API. All 144 measured
+same-policy complete-QBE comparisons pass; policy0 matches untouched Phase114.
+Retained alternatives reduce four-policy emission work 30.3% geometrically,
+including preparation. All 90 original-method runtime observations pass across
+six sources/five roles/three rounds; 18 distinct QBE products are built.
+Program-first search retains policy0. Compilation-first chooses policy2 on exact
+training output, and evaluation output stays exact; this does not justify global
+removal of R/G. Setup/build/validation costs dominate the small search and no
+recursive research acceleration is demonstrated.
+
+A smaller follow-up retains the rejected H result in control flow, preserving
+R/G and generic fallback. It adds 17 lines/two helpers, retains 60 exact measured
+QBE outputs, and reduces full warm emission 4.15% geometrically (summed medians
+3.33%). Candidate source 7279b8d133b9cb03f9f34fe5dd547e3616e4790e647ef73ff0963bd2da7b448a.
+The API match-order failure and array-adapter mismatch remain recorded. No new
+full native chain, installed promotion, broad 45 runtime or whole-request metric.
+Recorded target guards 593.31 s, including 78.75 s failed guards. No subagents or PR comments.

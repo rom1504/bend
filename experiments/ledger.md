@@ -5159,3 +5159,36 @@ selected runtime remains capability-adapted GCC10-O2.54 target guards total1,188
 17.48s failed, peak1.405GiB; two existing agents perform offline source/audit work.
 Exact dedup retains every frozen artifact path. Evidence capsule stores3,806 files,
 131.23MB raw/10.89MB compressed. No PR comments or recursive-acceleration claim.
+
+
+## Phase118 — ownership, live transport and qualified native transfer
+
+[Design](../design/phase118/ownership-and-construction.md) ·
+[Report](../implementation/phase118/README.md) ·
+[Native clocks](../implementation/phase118/native-results.md) ·
+[Selection](../implementation/phase118/selection.json).
+
+Bend reuses mature destination/observer plans, retains cold facts, certifies live
+transport and emits exact sized/primitive helpers. Original45 passes405 output/
+count observations;44 timed points improve4.31651→3.00893× upstream,30.29% less
+runtime. Hosted prepared requests cost+12.50% on8 sources; do not hide this tradeoff.
+Timed source51,056→52,117lines; qualified traversal-repaired source52,411(+2.65%).
+Broad QBE grows0.94%. Cursor, consumed-cell reuse, scalar-only observers and dead
+scalar cleanup stay excluded. The last shrinks IR but regresses Mandelbrot8.05%.
+
+Native safe03 N1/N2 reproduce85,831,654 QBE bytes, pass16+3 focused cases each,
+and N2 passes45. Complete qualification21.43min/5.385GiB; prior589.6s/259.2s host
+stack failures retained. Exact45/19 QBE bridge connects safe03 to timed float01.
+Fresh three-source N1/N2 requests2.09187×/2.10976× upstream and ready stages1.01626×/
+1.02441×. Fresh Phase114 request/ready2.87824×/1.35829× N1 and2.89711×/1.36700× N2.
+Native request medians improve about26%, ready about25%. Preserve prepared-Base/
+cached-runtime versus upstream source-Base/C-Clang policy and observed drift.
+
+The source-only cost audit also identifies eager eligibility, duplicate bang
+analysis and discarded C residual generation; P118-005 holds the isolated first
+experiment. Native source and installed production selection stay separate.
+No ELF fixed point, N2-to-N3, broad native compiler-throughput or recursive
+acceleration claim. Read Phase118 accounting/evidence for complete research cost.
+
+P118-005 staged eligibility preserves exact QBE but costs1.00045× on three sources;
+it remains excluded. Avoidable eager work did not produce a measurable gain.

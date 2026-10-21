@@ -8,38 +8,38 @@ N1/N2 focused19 gates and N2 full45 gate have all completed successfully.
 It authenticates their actual image/runtime pins rather than accepting filenames
 as evidence of lineage. No existing plan, source or historical manifest changes.
 
-The selected candidate is the float01 native chain:
+The selected candidate is the safe03 native chain:
 
-- N1: `selfhost/build/phase111/p118-native-float01-n1/program`.
-- N2: `selfhost/build/phase111/p118-native-float01-self/build/program`.
+- N1: `selfhost/build/phase111/p118-native-safe03-n1/program`.
+- N2: `selfhost/build/phase111/p118-native-safe03-self/build/program`.
 - Runtime: `selfhost/build/phase118/runtime-extend01/runtime.o`.
-- Qualification plan: `selfhost/build/phase118/native-float01-plan.json`.
+- Qualification plan: `selfhost/build/phase118/native-safe03-plan.json`.
 
 After its qualification guard finishes, root prepares the manifests and commands:
 
 ```sh
 python3 -B selfhost/tools/performance/phase118/native-transport-plan.py \
-  --plan selfhost/build/phase118/native-float01-plan.json \
-  --out selfhost/build/phase118/native-float01-transport-manifest.json \
-  --tag p118-native-float01-transport --repeat-phase114
+  --plan selfhost/build/phase118/native-safe03-plan.json \
+  --out selfhost/build/phase118/native-safe03-transport-manifest.json \
+  --tag p118-native-safe03-transport --repeat-phase114
 ```
 
 This is read/authenticate/write only; it launches no targets. It produces the
-manifest plus `native-float01-transport-manifest-jobs.json`. Run those two serial
+manifest plus `native-safe03-transport-manifest-jobs.json`. Run those two serial
 timing jobs under the usual CPU3 guard:
 
 ```sh
 python3 -B selfhost/tools/performance/phase111/guard.py \
-  --out selfhost/build/phase118/native-float01-transport-guard \
+  --out selfhost/build/phase118/native-safe03-transport-guard \
   --seconds 420 --rss-mib 2048 --available-mib 16384 --file-mib 128 --cpu 3 -- \
   python3 -B selfhost/tools/performance/phase113/run-jobs.py \
-    --plan selfhost/build/phase118/native-float01-transport-manifest-jobs.json \
-    --out selfhost/build/phase113/p118-native-float01-transport-jobs
+    --plan selfhost/build/phase118/native-safe03-transport-manifest-jobs.json \
+    --out selfhost/build/phase113/p118-native-safe03-transport-jobs
 ```
 
 Each screen has a 180-second ceiling; the combined guard ceiling is deliberately
-larger than the anticipated roughly three-minute campaign. Timing is unmeasured
-until root runs it. The runner keeps the original per-child 30-second limits.
+larger than the anticipated roughly three-minute campaign. The Phase118 completed result is linked from implementation/phase118/native-results.md.
+A new invocation still needs fresh paths and produces a separate measurement. The runner keeps the original per-child 30-second limits.
 All result paths must be fresh. The only expected outputs are complete checked
 emissions, freshly built executables and their independent complete stdout.
 
@@ -53,8 +53,8 @@ not label historical Phase114 timings a contemporaneous measurement.
 
 Outputs:
 
-- `selfhost/build/phase112/p118-native-float01-transport/report.json`.
-- `selfhost/build/phase112/p118-native-float01-transport-phase114/report.json`.
+- `selfhost/build/phase112/p118-native-safe03-transport/report.json`.
+- `selfhost/build/phase112/p118-native-safe03-transport-phase114/report.json`.
 
 Both retain the original three unchanged one-shot source cases: lexer,
 coverage-closures-256 and coverage-map-churn-128. Their complete expected stdout
@@ -87,7 +87,7 @@ selected Phase117 source and exports all four required functions. Its API SHA256
 is `85a37716957b80cc1c58dfbea681bc03ad926b0b0904bf4575aaf3964b92ad28`.
 No new parent API acquisition is required.
 
-For the current float candidate, a concrete cost invocation is:
+For the earlier timed float01 candidate, the completed hosted-cost invocation is:
 
 ```sh
 P118_PARENT_API_REPORT=selfhost/build/phase111/p118-parent-entry-api01/report.json \

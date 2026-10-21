@@ -1,7 +1,6 @@
 # Phase118: preserve ownership and live transport in direct QBE
 
-**Work in progress — broad runtime and hosted compiler cost are measured; native
-qualification is retrying after catalogue-stack repairs.** The completed broad generated-program campaign improves the
+**Phase118 has a qualified native N1/N2 compiler and completed runtime/cost evidence.** The completed broad generated-program campaign improves the
 44-point geometric runtime ratio from **4.3165× to 3.0089× pinned upstream C**:
 1.4346× faster, or 30.29% less execution time. All 405 complete-output/count
 observations across the original45 pass. The zero-work sentinel remains a
@@ -9,7 +8,8 @@ correctness case and is excluded from ratios. This is a three-round screen,
 not a confidence interval or a claim that every program has that slowdown.
 
 [Design](../../design/phase118/ownership-and-construction.md) ·
-[Source recipe](source-recipe.json) ·
+[Timed source recipe](source-recipe.json) · [Native recipe](source-recipe-safe03.json) ·
+[Selection](selection.json) · [Native results](native-results.md) ·
 [Reproduction](../../selfhost/tools/performance/phase118/README.md).
 
 ## What changed and why
@@ -51,6 +51,9 @@ cached C runtime supplies the existing runtime plus explicit helper contracts.
 The runtime remains GCC-O2 with strict floating-point contraction disabled.
 
 ## Broad results
+
+![All44 timed programs](figures/runtime.png)
+
 
 The baseline is the exact selected Phase117 source/runtime, rerun beside the
 candidate and pinned upstream executables. Phase117's historical4.240× number
@@ -98,6 +101,7 @@ These are separate short screens, not additive speedups:
 | Guarded F32-to-U32 | Numeric1024123→104ms, numeric256124→105ms | Keep with boundary controls |
 | Destination-slot cursor | Five-round paired list678→660ms; lexer834→841; map717→723 | Reject extra representation complexity |
 | Dead scalar cleanup + existing Boolean selection | Paired Mandelbrot845→913ms; lexer833→830ms | Reject; smaller IR produces worse hot machine code |
+| Lazy observer eligibility | Exact three-program QBE; paired whole compiler cost1.00045× | Reject for no measured gain |
 
 The cursor comparison uses longer scale4 runs against the selected Phase118
 candidate, not Phase117. Thirty complete observations pass. Saving a parent
@@ -142,8 +146,10 @@ predicate and children-before-siblings order. Its40 finite/scale checks pass,
 including32768-element flat and nested catalogues. Do not infer that all recursive
 Bend source consumes host stack: the generated `nt_choose` path uses a trampoline.
 The independent [stack diagnosis](../../selfhost/tools/performance/phase118/native-stack-diagnosis.md)
-separates that case from eager Boolean recursion. Full native qualification is
-still a separate gate; no image is promoted merely from these analysis checks.
+separates that case from eager Boolean recursion. Full native qualification then passes: N1/N2 reproduce85,831,654 QBE bytes, both
+pass focused19, and N2 passes45. The safe03 API additionally matches all45 timed
+program QBE files and19 control files byte for byte; this does not relabel the
+hosted compilation-cost clock. No installed default is changed.
 
 ## Compiler cost
 
@@ -165,7 +171,10 @@ Selected composed source grows51,056→52,117 physical lines (+1,061,+2.08%). Th
 phase improves execution speed, not line count. Aggregate broad QBE grows0.94%.
 The experiment directory also
 retains rejected versions and harnesses; those are not all part of the selected
-compiler. The exact19-module composition is in `source-recipe.json`.
+compiler. The exact19-module timed composition is in `source-recipe.json`. The qualified
+22-module native source adds catalogue repairs and analysis controls, reaching
+52,411lines (+1,355/+2.65% versus Phase117). Its runtime object grows97,088→113,728B;
+the0.94% broad QBE increase is not an ELF-size claim.
 
 The1× goal became a general destination-passing implementation. The10× scope
 was useful: borrowing, constructor sharing, transport and primitive projection
@@ -174,9 +183,12 @@ not implemented: current evidence does not yet justify its evaluation-order,
 sharing and representation complexity. The cursor prototype tests a smaller
 cross-layer representation change and supplies an informative negative result.
 
-No recursive acceleration has been demonstrated. Faster generated compiler
-code could reduce future experiment cost, but that requires actual compiler
-measurements and accounting for acquisition/qualification overhead.
+No recursive acceleration has been demonstrated. The qualified native compiler
+now uses about26% less request time and25% less ready-executable time than a fresh
+Phase114 rerun on three sources. N1/N2 request ratios are2.092×/2.110× upstream;
+ready stages1.016×/1.024×. Native prepared Base and cached runtime differ from
+upstream source Base/full C/Clang. Actual future validated research throughput
+must still include acquisition, failed attempts and qualification overhead.
 
 ## Remaining opportunities
 
@@ -199,3 +211,25 @@ measurements and accounting for acquisition/qualification overhead.
    ablations. A faster benchmark kernel alone does not accelerate research.
 
 See the evidence-ranked [remaining opportunities](remaining-opportunities.md).
+
+## Evidence and complete-loop cost
+
+The [evidence capsule](evidence/capsule.tar.gz) contains2,386 unique payloads,
+32,635,243 uncompressed bytes,5,540,759 compressed bytes, mapped to7,060 original
+paths by [its manifest](evidence/capsule-manifest.json). All payload hashes were
+read back and verified. It preserves selected/rejected methods, source/API,
+reports, small observations and guards. Large machine artifacts remain local
+with their pins and explicit omissions; archive membership is not qualification.
+[Independent replay](evidence/replay.json) checks all405 output/count observations,
+19 ordinary controls and the exact45-source bridge, and recomputes the aggregate.
+
+The [time account](time-accounting.md), through12:48:23UTC, covers180.82 elapsed
+minutes and84.41 guarded minutes:102 guards,83 successful,18 failed and1 timeout.
+Failed/stopped guards account for17.71min. Native qualification including failed
+attempts costs35.58min; broad emission/gates15.48min; focused campaigns13.53min.
+Intervals are unioned, not double-counted. The remainder is unclassified, not
+measured thinking or waiting time; billing, tokens and quota are unavailable. Three reused
+agents performed bounded source/machine/review/accounting work; root alone ran
+the guarded targets. Production selection is unchanged, and no PR comment was
+posted. Design, implementation, negative results and report are committed together
+with their source identities; this phase does not promise runtime parity.

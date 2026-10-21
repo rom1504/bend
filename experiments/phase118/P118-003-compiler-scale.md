@@ -1,7 +1,8 @@
 # P118-003: whole-compiler scale, cost and a stack-safe traversal boundary
 
-Status: hosted cost measured; two native acquisitions failed; safe02 exact45/19
-bridge passes; safe03 worklist repair passes40 analysis checks and retries native.
+Status: complete. Broad safe03 exact45/19 bridge passes;40 analysis checks pass;
+native N1/N2 qualify and matched native requests improve about26% over Phase114.
+The timed hosted compiler still costs12.5% more than Phase117.
 
 ## Question
 
@@ -80,3 +81,14 @@ explicit children-before-siblings worklist. It does not broaden permission or
 skip trusted cache children. safe03 passes the earlier28 plus12 new controls,
 including32768-element flat/deep inputs. Native acquisition is a fresh plan;
 failed plans and their cost remain. See the independent stack diagnosis for pins.
+
+## Completed result
+
+safe03 passes the complete native gate in1286.036s, peak5.385GiB. Native self-request
+406.614s produces85,831,654 bytes exactly matching hosted acquisition; N1/N2 each
+pass focused19 and N2 passes45. Fresh native N1/N2 requests are2.09187×/2.10976×
+upstream, ready stages1.01626×/1.02441×. Direct native request medians use25.70%/
+25.55% less time than the contemporaneous Phase114 rerun; upstream drift is retained.
+See the phase native-results JSON for every pin, sample, clock and comparison.
+The native and timed-hosted sources remain distinct despite exact45/19 output
+bridges. Installed production stays unchanged; no recursive acceleration claim.

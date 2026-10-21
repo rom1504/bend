@@ -1,6 +1,6 @@
 # Phase118 native qualification preparation
 
-`native-plan.py` prepares commands and authenticates data; it executes no target.
+`native-plan-v2.py` prepares commands and authenticates data; it executes no target.
 `native-comparison.py` authenticates completed lineage and compares raw files;
 it executes no compiler or executable. No source/runtime combination is selected
 by these tools. Root supplies all three exact files and executes any target jobs.
@@ -8,7 +8,7 @@ by these tools. Root supplies all three exact files and executes any target jobs
 This is a new Phase118 contract. Phase114's wrapper only changed paths/time
 limits around the Phase113 staged lowering/verifier/renderer gate. That gate
 requires an older native hook and is not reused here. Hosted acquisition uses
-the current `native-hosted.mjs`: prepare Base, check source into one request,
+the current `native-hosted-v2.mjs`: prepare Base, check source into one request,
 check runtime admission, then invoke the actual request-bound
 `p111_emit_admitted(request, "")`. The checked Bend entry performs lowering,
 original verification and any applicable derived-worker checks. Internal work
@@ -28,11 +28,12 @@ factory or composition format needs explicit review rather than a relaxed gate.
 From the repository root, after choosing checked inputs:
 
 ```sh
-python3 -B selfhost/tools/performance/phase118/native-plan.py prepare \
+python3 -B selfhost/tools/performance/phase118/native-plan-v2.py prepare \
   --api /absolute/checked-api/api.mjs \
   --source /absolute/frozen-source/compiler.bend \
   --runtime /absolute/qualified-runtime/runtime.o \
   --tag p118-native-selected01 \
+  --rss-mib 6144 \
   --out selfhost/build/phase118/native-selected01-plan.json
 ```
 
@@ -87,7 +88,15 @@ No N2→N3 reproduction, ELF fixed point, native-produced runtime speed score,
 parallel/GPU qualification or installed-selection change is implied. The old
 Phase114 qualification remains historical evidence for its own pinned inputs.
 
-Source-only preparation check: both Python files parsed successfully, and the
+Historical source-only preparation check: both Python files parsed successfully, and the
 data-only composition/entry check replayed existing `transport-source01`
 exactly with 14 frozen module snapshots. No qualification plan was materialized
 and no target job was run by this preparation task.
+
+Completed qualification: safe-source03 with p118-safe-api03 and runtime-extend01
+passes the above workflow in the frozen `native-safe03-plan.json`. Its explicit
+6GiB guard is based on measured compiler-scale memory, not ordinary-run defaults.
+[Native result](../../../../implementation/phase118/native-results.md) records
+all gates and timings. Use fresh artifact paths for a repeat; existing outputs
+are immutable evidence. v2 preserves the integrated entry and captures exception
+stacks, which identified the older eager foreign-catalogue recursion.

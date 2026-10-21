@@ -61,7 +61,8 @@ must match the generated descriptor; an arbitrary old runtime is not equivalent.
 Every target/compiler execution uses `phase111/guard.py`: one CPU3 lane,
 2GiB RSS,16GiB available-memory floor,64MiB file ceiling, fresh output names.
 No concurrent target runs. A guarded whole-native campaign has a separately
-documented5GiB ceiling based on the prior3.82GiB peak and larger source/analyses.
+documented6GiB ceiling after a measured4.86GiB peak in the first acquisition;
+the16GiB available-memory floor remains.
 Frozen files may share hardlinked inodes; never modify them.
 
 For a small semantic/compiler change, wrap the following commands in separate
@@ -118,3 +119,35 @@ acquisition and hosted optimization-cost benchmark answer different questions.
 Keep them separate in summaries. Three-round equality/outputs do not establish
 formal equivalence or universal performance. No CPU-parallel/GPU qualification
 or recursive research acceleration is claimed.
+
+## Larger-source traversal repair and negative scalar experiment
+
+`native-stack-safe-v2.bend` plus `native-pack-stack.bend` form safe-source03.
+The latter fixes the captured eager-OR recursion in `nc_pack_foreign` with an
+explicit complete DFS worklist. `stack-controls-v2.mjs` invokes40 checked
+analysis controls, including32768-element cases. These do not deliberately
+fail an old host or execute malformed native input. Read
+[native-stack-diagnosis.md](native-stack-diagnosis.md) before treating ordinary
+source recursion as a stack hazard: generated `nt_choose` tail calls trampoline.
+
+The selected runtime remains runtime-extend01. The runtime-timed float-source01
+and traversal-repaired source have separate immutable identities and composition
+recipes. A byte-exact emitted-program bridge can transfer those program artifacts;
+it does not relabel old compiler-cost measurements or prove native acquisition.
+
+`dead-scalars-v3.bend` is an excluded experiment. Its24 finite checks pass, but
+[the machine audit](dead-scalars-machine.md) shows that two newly exposed Boolean
+selections grow the hot loop and regress the longer paired runtime by8.05%.
+Keep its earlier failed host Bool driver and corrected driver distinct.
+
+[The cost audit](hosted-cost-audit.md) identifies a new isolated
+`eligible-staged.bend` candidate: lazily stop after observer admission is false,
+retaining every acceptance gate. `cost-v2.mjs` permits an explicit authenticated
+baseline selection; measurement order, warmups and output checks are unchanged.
+This source is separate from the running safe03 qualification. Do not infer it
+is in that native image.
+
+[Time accounting](time-accounting.md) snapshots complete, failed and ongoing guard
+receipts without launching targets. It unions intervals rather than adding
+nested clocks, and does not infer model cost or quota. `plot-results.py` renders
+all44 timed points from frozen JSON without new executions.

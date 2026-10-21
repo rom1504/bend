@@ -1,19 +1,18 @@
 # Compiler experiment workflow
 
-Latest bounded investigation: [Phase116 backend profiles](../implementation/phase116/README.md),
-with matched QBE/C/JS timings and current native/compiler hot paths.
-No compiler or production change.
+Latest optimization: [Phase118 ownership and transport](../implementation/phase118/README.md).
+Original45 passes405 output/count observations;44 timed points improve4.3165→3.0089×
+upstream. Native safe03 N1/N2 reproduce85.83MB QBE, pass focused19, and N2 passes45.
+The three-source native request screen improves about26% versus a fresh Phase114
+rerun; configured ready-executable time is about1.02× upstream. Hosted compiler
+cost rises12.5%; source grows2.65%. Installed selections remain unchanged.
 
-Previous bounded investigation: [Phase115 policy search](../implementation/phase115/README.md).
-Retained plans reduce policy-emission work 30.3%; independent runtime comparison
-finds no better code-generation policy. A 17-line candidate preserves exact QBE
-and reduces full warm emission 4.15%; no installed/native promotion.
-
-Current qualified full compiler experiment: [Phase114 direct QBE](../implementation/phase114/README.md),
-with exact74.22 MB native self-emission and a qualified successor. The paired
-original45 program-runtime campaign improves7.082→5.386× upstream (24% less time);
-the native three-source request/build metrics are separate. Parity remains open.
-See [the frontier](STEERING.md) before choosing the next optimization.
+[Phase116 profiles](../implementation/phase116/README.md) motivated these changes.
+[Phase117](../implementation/phase117/README.md) supplies the exact runtime parent;
+[Phase114](../implementation/phase114/README.md) is the prior qualified native image.
+[Phase115 policy search](../implementation/phase115/README.md) remains an informative
+negative result: existing choices provide little diversity. Read [the frontier](STEERING.md)
+for measured identities, exclusions and unresolved opportunities before starting.
 
 ## Direct-IR implementation: Phase107 native source and QBE
 

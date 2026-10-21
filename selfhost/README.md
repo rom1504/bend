@@ -3,10 +3,11 @@
 The experimental [direct QBE backend](../docs/self_hosted/direct-qbe.md) lowers
 checked Bend to typed segments and QBE, then links a cached runtime object.
 Ordinary program builds need no generated C or cproc. See the
-[Phase114 report](../implementation/phase114/README.md) for qualified N1/N2
-self-reproduction. The [Phase117 candidate](../implementation/phase117/README.md)
-adds packed-array/loop improvements with broad runtime evidence and compiler-cost
-tradeoffs; it remains separate from the qualified image and installed default.
+[Phase118 report](../implementation/phase118/README.md) for qualified N1/N2
+self-reproduction,45-program correctness and ownership/transport improvements.
+Generated-program runtime is3.01× upstream on44 timed points; native compiler
+request/build clocks and hosted-cost tradeoffs are reported separately.
+The installed production default remains unchanged.
 
 The [ownership-preserving native IR guide](../docs/self_hosted/OWNED_NATIVE_IR.md)
 documents Phase110 typed entry/callee admission, structured runtime operations,

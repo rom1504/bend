@@ -1,5 +1,16 @@
 # Direct QBE backend for the Bend compiler written in Bend
 
+The [Phase118 ownership and transport candidate](../../implementation/phase118/README.md)
+improves the original44-point program-runtime ratio4.3165→3.0089× upstream.
+Its safe-source03 native N1/N2 reproduce85,831,654 QBE bytes; both pass focused19,
+and N2 passes the original45. The small three-source native screen reports
+request2.092×/2.110× upstream and request-plus-build1.016×/1.024×. These clocks
+use prepared Base and cached runtime, unlike upstream source Base/full C build.
+[Native results](../../implementation/phase118/native-results.md) keep this distinct
+from generated-program speed and the hosted compiler's12.5% cost increase.
+[Reproduction](../../selfhost/tools/performance/phase118/README.md) identifies each
+source, API, runtime and gate. Installed production remains unchanged.
+
 The [Phase117 scalar-array candidate](../../implementation/phase117/README.md)
 adds packed scalar storage, invariant-handle facts and loop versioning, with
 matched45-program runtime evidence and an explicit compiler-cost tradeoff.
@@ -14,7 +25,7 @@ policy emission, not total compilation or generated-program runtime. A smaller
 less full warm emission. Both remain separate from the qualified Phase114
 checkpoint below. [Reproduction](../../selfhost/tools/performance/phase115/README.md).
 
-## Phase114 qualified native checkpoint
+## Historical Phase114 qualified native checkpoint
 
 The [Phase114 report](../../implementation/phase114/README.md) records a direct-QBE
 candidate whose broad generated-program runtime is 5.386× pinned upstream C/Clang,

@@ -1,0 +1,4987 @@
+{
+  "kind": "phase118-guard-time-accounting",
+  "complete": true,
+  "method": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase118/time-accounting-v2.py",
+    "bytes": 11741,
+    "sha256": "e7bbf5ca98d8975c36ef6806b06a70c880a955de1b41097a37e05dd7296f6087"
+  },
+  "windowStart": "2026-10-21T09:47:34+00:00",
+  "windowEnd": "2026-10-21T12:48:23.207153+00:00",
+  "elapsedSeconds": 10849.207152843475,
+  "finishedGuardUnionSeconds": 5064.81548333168,
+  "guardEnvelopeUnionSeconds": 5064.81548333168,
+  "uncoveredElapsedSeconds": 5784.391669511795,
+  "summedReceiptSeconds": 5064.81548333168,
+  "overlapOrNestingSeconds": 0.0,
+  "uniqueReceipts": 102,
+  "statusCounts": {
+    "success": 83,
+    "failed": 18,
+    "timeout": 1
+  },
+  "categoryDisjointSeconds": {
+    "broad qualification and emission": 928.9560348987579,
+    "checked API acquisition": 254.80830645561218,
+    "finite controls": 2.703306198120117,
+    "focused experiments and mixed pipelines": 811.6171908378601,
+    "hosted cost": 326.6143581867218,
+    "native qualification": 2134.870964050293,
+    "other guarded work": 360.0769097805023,
+    "profiling and IR inspection": 228.51935386657715,
+    "runtime acquisition": 16.649059057235718
+  },
+  "failedGuardUnionSeconds": 1062.6578569412231,
+  "duplicates": [],
+  "rows": [
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/sized-api01-guard/process.json",
+        "bytes": 794,
+        "sha256": "fe1d654de22d1b00ec9d2f7dc458169db467a8eb96b3754233c65124b9f22b4c"
+      },
+      "aliases": [],
+      "from": 1792576535.0596375,
+      "to": 1792576546.7398732,
+      "seconds": 11.680235624313354,
+      "closedAtCutoff": true,
+      "category": "checked API acquisition",
+      "status": "success",
+      "returncode": 0,
+      "stoppedFor": null,
+      "recordedWallSeconds": 11.680238879984245,
+      "peakTreeRssBytes": 1443319808,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase111",
+        "taskset",
+        "-c",
+        "3",
+        "python3",
+        "-B",
+        "selfhost/tools/performance/phase111/check-api.py",
+        "--source",
+        "selfhost/build/phase118/sized-source01/compiler.bend",
+        "--out",
+        "selfhost/build/phase111/p118-sized-api01",
+        "p113a_lower_request",
+        "p113a_verify",
+        "p113a_admitted_chunks",
+        "p88_cache_prepare",
+        "p86_plan",
+        "p111_runtime_admission"
+      ]
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/runtime01-guard/process.json",
+        "bytes": 782,
+        "sha256": "e44665eb7ebaa4ffbb40785398be6c69831f4d2d7a317bd5581211b68a2a38f9"
+      },
+      "aliases": [],
+      "from": 1792576577.1161199,
+      "to": 1792576578.6853867,
+      "seconds": 1.5692667961120605,
+      "closedAtCutoff": true,
+      "category": "runtime acquisition",
+      "status": "success",
+      "returncode": 0,
+      "stoppedFor": null,
+      "recordedWallSeconds": 1.5692688550334424,
+      "peakTreeRssBytes": 82534400,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase111",
+        "taskset",
+        "-c",
+        "3",
+        "python3",
+        "-B",
+        "selfhost/tools/performance/phase118/runtime.py",
+        "--out",
+        "selfhost/build/phase118/runtime01",
+        "--extra",
+        "selfhost/tools/performance/phase118/runtime-sized.c",
+        "--extra",
+        "selfhost/tools/performance/phase118/runtime-dest.c",
+        "--extra",
+        "selfhost/tools/performance/phase118/runtime-borrow.c"
+      ]
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/sized-emit01-guard/process.json",
+        "bytes": 780,
+        "sha256": "d2ed137235f9493d6f61429d4ab4c202a337b7a57b8596920bae9c5b1c8a7038"
+      },
+      "aliases": [],
+      "from": 1792576594.8361819,
+      "to": 1792576629.881159,
+      "seconds": 35.04497718811035,
+      "closedAtCutoff": true,
+      "category": "focused experiments and mixed pipelines",
+      "status": "success",
+      "returncode": 0,
+      "stoppedFor": null,
+      "recordedWallSeconds": 35.04497933504172,
+      "peakTreeRssBytes": 495194112,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase111",
+        "taskset",
+        "-c",
+        "3",
+        "selfhost/.bootstrap/bun-1.4.3/bun",
+        "selfhost/tools/performance/phase118/emit.mjs",
+        "selfhost/build/phase111/p118-sized-api01/report.json",
+        "selfhost/build/phase118/sized-source01/manifest.json",
+        "selfhost/build/phase118/sized-emit01",
+        "coverage-list-pipeline-128",
+        "coverage-map-churn-128",
+        "tree-bitonic",
+        "lexer"
+      ]
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/sized-screen01-guard/process.json",
+        "bytes": 667,
+        "sha256": "d27faac16b0bbe1e3c62bae33d67402d3fe3bed94ef71a02a97d3b8efbed9f6b"
+      },
+      "aliases": [],
+      "from": 1792576681.467727,
+      "to": 1792576692.4812331,
+      "seconds": 11.013506174087524,
+      "closedAtCutoff": true,
+      "category": "focused experiments and mixed pipelines",
+      "status": "success",
+      "returncode": 0,
+      "stoppedFor": null,
+      "recordedWallSeconds": 11.013507194118574,
+      "peakTreeRssBytes": 45731840,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase111",
+        "taskset",
+        "-c",
+        "3",
+        "python3",
+        "-B",
+        "selfhost/tools/performance/phase118/screen.py",
+        "--emission",
+        "selfhost/build/phase118/sized-emit01/report.json",
+        "--out",
+        "selfhost/build/phase118/sized-screen01",
+        "--label",
+        "sized01"
+      ]
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/trmc-api01-guard/process.json",
+        "bytes": 791,
+        "sha256": "d440db6da5e8019aedea7f21f8c8e9a360261032ccba71140588da78a7d7e23a"
+      },
+      "aliases": [],
+      "from": 1792576738.1773024,
+      "to": 1792576741.3835561,
+      "seconds": 3.20625376701355,
+      "closedAtCutoff": true,
+      "category": "checked API acquisition",
+      "status": "failed",
+      "returncode": 1,
+      "stoppedFor": null,
+      "recordedWallSeconds": 3.206257797079161,
+      "peakTreeRssBytes": 236105728,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase111",
+        "taskset",
+        "-c",
+        "3",
+        "python3",
+        "-B",
+        "selfhost/tools/performance/phase111/check-api.py",
+        "--source",
+        "selfhost/build/phase118/trmc-source01/compiler.bend",
+        "--out",
+        "selfhost/build/phase111/p118-trmc-api01",
+        "p113a_lower_request",
+        "p113a_verify",
+        "p113a_admitted_chunks",
+        "p88_cache_prepare",
+        "p86_plan",
+        "p111_runtime_admission"
+      ]
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/borrow-api01-guard/process.json",
+        "bytes": 882,
+        "sha256": "2e47210a8920f26b4e1e20c400a2fd798b55a63f29c77b26992d5734fa3f44ff"
+      },
+      "aliases": [],
+      "from": 1792576808.469996,
+      "to": 1792576811.2205482,
+      "seconds": 2.750552177429199,
+      "closedAtCutoff": true,
+      "category": "checked API acquisition",
+      "status": "failed",
+      "returncode": 1,
+      "stoppedFor": null,
+      "recordedWallSeconds": 2.75055492692627,
+      "peakTreeRssBytes": 248688640,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase111",
+        "taskset",
+        "-c",
+        "3",
+        "python3",
+        "-B",
+        "selfhost/tools/performance/phase111/check-api.py",
+        "--source",
+        "selfhost/build/phase118/borrow-source01/compiler.bend",
+        "--out",
+        "selfhost/build/phase111/p118-borrow-api01",
+        "p113a_lower_request",
+        "p113a_verify",
+        "p113a_admitted_chunks",
+        "p88_cache_prepare",
+        "p86_plan",
+        "p111_runtime_admission",
+        "p118b_plan",
+        "p118b_plan_names",
+        "p118b_new_functions",
+        "p118b_chunks"
+      ]
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/trmc-api02-guard/process.json",
+        "bytes": 792,
+        "sha256": "141a8b613dccdbd900be777c5348ddfa5d2c4b3dd80aff99fa3ffa0ff2780fbe"
+      },
+      "aliases": [],
+      "from": 1792576910.0969458,
+      "to": 1792576912.5184305,
+      "seconds": 2.4214847087860107,
+      "closedAtCutoff": true,
+      "category": "checked API acquisition",
+      "status": "failed",
+      "returncode": 1,
+      "stoppedFor": null,
+      "recordedWallSeconds": 2.4214869430288672,
+      "peakTreeRssBytes": 226164736,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase111",
+        "taskset",
+        "-c",
+        "3",
+        "python3",
+        "-B",
+        "selfhost/tools/performance/phase111/check-api.py",
+        "--source",
+        "selfhost/build/phase118/trmc-source02/compiler.bend",
+        "--out",
+        "selfhost/build/phase111/p118-trmc-api02",
+        "p113a_lower_request",
+        "p113a_verify",
+        "p113a_admitted_chunks",
+        "p88_cache_prepare",
+        "p86_plan",
+        "p111_runtime_admission"
+      ]
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/borrow-api02-guard/process.json",
+        "bytes": 884,
+        "sha256": "79d5150dcde42bafd4c34d21f0f209ca00df62c4b3acbb971fe9058f2a1a1c8d"
+      },
+      "aliases": [],
+      "from": 1792576976.6244776,
+      "to": 1792576979.6390657,
+      "seconds": 3.0145881175994873,
+      "closedAtCutoff": true,
+      "category": "checked API acquisition",
+      "status": "failed",
+      "returncode": 1,
+      "stoppedFor": null,
+      "recordedWallSeconds": 3.014590999111533,
+      "peakTreeRssBytes": 250642432,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase111",
+        "taskset",
+        "-c",
+        "3",
+        "python3",
+        "-B",
+        "selfhost/tools/performance/phase111/check-api.py",
+        "--source",
+        "selfhost/build/phase118/borrow-source02/compiler.bend",
+        "--out",
+        "selfhost/build/phase111/p118-borrow-api02",
+        "p113a_lower_request",
+        "p113a_verify",
+        "p113a_admitted_chunks",
+        "p88_cache_prepare",
+        "p86_plan",
+        "p111_runtime_admission",
+        "p118b_plan",
+        "p118b_plan_names",
+        "p118b_new_functions",
+        "p118b_chunks"
+      ]
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/trmc-api03-guard/process.json",
+        "bytes": 790,
+        "sha256": "3b0fc080bdf5df9ecf380697c39bd4f0499e24b5a85f2d131d03646c7014eb7a"
+      },
+      "aliases": [],
+      "from": 1792577037.1612911,
+      "to": 1792577042.067077,
+      "seconds": 4.905785799026489,
+      "closedAtCutoff": true,
+      "category": "checked API acquisition",
+      "status": "failed",
+      "returncode": 1,
+      "stoppedFor": null,
+      "recordedWallSeconds": 4.905788294970989,
+      "peakTreeRssBytes": 542134272,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase111",
+        "taskset",
+        "-c",
+        "3",
+        "python3",
+        "-B",
+        "selfhost/tools/performance/phase111/check-api.py",
+        "--source",
+        "selfhost/build/phase118/trmc-source03/compiler.bend",
+        "--out",
+        "selfhost/build/phase111/p118-trmc-api03",
+        "p113a_lower_request",
+        "p113a_verify",
+        "p113a_admitted_chunks",
+        "p88_cache_prepare",
+        "p86_plan",
+        "p111_runtime_admission"
+      ]
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/runtime-only-screen01-guard/process.json",
+        "bytes": 683,
+        "sha256": "7415830cd60a08f0b3682d4209f2390e172b53124f188ffb047700389c7e47f1"
+      },
+      "aliases": [],
+      "from": 1792577110.1868768,
+      "to": 1792577121.4925394,
+      "seconds": 11.305662631988525,
+      "closedAtCutoff": true,
+      "category": "focused experiments and mixed pipelines",
+      "status": "success",
+      "returncode": 0,
+      "stoppedFor": null,
+      "recordedWallSeconds": 11.305664506042376,
+      "peakTreeRssBytes": 47304704,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase111",
+        "taskset",
+        "-c",
+        "3",
+        "python3",
+        "-B",
+        "selfhost/tools/performance/phase118/screen.py",
+        "--emission",
+        "selfhost/build/phase118/runtime-only01/report.json",
+        "--out",
+        "selfhost/build/phase118/runtime-only-screen01",
+        "--label",
+        "runtimeonly01"
+      ]
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/borrow-api03-guard/process.json",
+        "bytes": 883,
+        "sha256": "2209eab0573f4b86a7ca07670ad3f1371c7e50df40a8f4d56edd554e3e838ef0"
+      },
+      "aliases": [],
+      "from": 1792577121.831423,
+      "to": 1792577127.1493979,
+      "seconds": 5.317974805831909,
+      "closedAtCutoff": true,
+      "category": "checked API acquisition",
+      "status": "failed",
+      "returncode": 1,
+      "stoppedFor": null,
+      "recordedWallSeconds": 5.317976531106979,
+      "peakTreeRssBytes": 571990016,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase111",
+        "taskset",
+        "-c",
+        "3",
+        "python3",
+        "-B",
+        "selfhost/tools/performance/phase111/check-api.py",
+        "--source",
+        "selfhost/build/phase118/borrow-source03/compiler.bend",
+        "--out",
+        "selfhost/build/phase111/p118-borrow-api03",
+        "p113a_lower_request",
+        "p113a_verify",
+        "p113a_admitted_chunks",
+        "p88_cache_prepare",
+        "p86_plan",
+        "p111_runtime_admission",
+        "p118b_plan",
+        "p118b_plan_names",
+        "p118b_new_functions",
+        "p118b_chunks"
+      ]
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/trmc-api04-guard/process.json",
+        "bytes": 790,
+        "sha256": "cd2a614fe1a6941eb282d23c573c9f7c857d1c63bdfe2e6aebcef611961dd0b6"
+      },
+      "aliases": [],
+      "from": 1792577217.180859,
+      "to": 1792577222.4575102,
+      "seconds": 5.27665114402771,
+      "closedAtCutoff": true,
+      "category": "checked API acquisition",
+      "status": "failed",
+      "returncode": 1,
+      "stoppedFor": null,
+      "recordedWallSeconds": 5.276651960099116,
+      "peakTreeRssBytes": 552669184,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase111",
+        "taskset",
+        "-c",
+        "3",
+        "python3",
+        "-B",
+        "selfhost/tools/performance/phase111/check-api.py",
+        "--source",
+        "selfhost/build/phase118/trmc-source04/compiler.bend",
+        "--out",
+        "selfhost/build/phase111/p118-trmc-api04",
+        "p113a_lower_request",
+        "p113a_verify",
+        "p113a_admitted_chunks",
+        "p88_cache_prepare",
+        "p86_plan",
+        "p111_runtime_admission"
+      ]
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/borrow-api04-guard/process.json",
+        "bytes": 884,
+        "sha256": "d99f9e28659793e4a3e564e1aff39c71edb939a6adf97e4cee50938f646c9db0"
+      },
+      "aliases": [],
+      "from": 1792577245.047256,
+      "to": 1792577256.2938688,
+      "seconds": 11.246612787246704,
+      "closedAtCutoff": true,
+      "category": "checked API acquisition",
+      "status": "success",
+      "returncode": 0,
+      "stoppedFor": null,
+      "recordedWallSeconds": 11.246616149088368,
+      "peakTreeRssBytes": 1571454976,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase111",
+        "taskset",
+        "-c",
+        "3",
+        "python3",
+        "-B",
+        "selfhost/tools/performance/phase111/check-api.py",
+        "--source",
+        "selfhost/build/phase118/borrow-source04/compiler.bend",
+        "--out",
+        "selfhost/build/phase111/p118-borrow-api04",
+        "p113a_lower_request",
+        "p113a_verify",
+        "p113a_admitted_chunks",
+        "p88_cache_prepare",
+        "p86_plan",
+        "p111_runtime_admission",
+        "p118b_plan",
+        "p118b_plan_names",
+        "p118b_new_functions",
+        "p118b_chunks"
+      ]
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/borrow-emit01-guard/process.json",
+        "bytes": 767,
+        "sha256": "6cfbb75bbcc9dc48b9bf43e3cd9b599efb54ad858e911cf08441e1aa12e44702"
+      },
+      "aliases": [],
+      "from": 1792577283.3219676,
+      "to": 1792577315.7115192,
+      "seconds": 32.389551639556885,
+      "closedAtCutoff": true,
+      "category": "focused experiments and mixed pipelines",
+      "status": "success",
+      "returncode": 0,
+      "stoppedFor": null,
+      "recordedWallSeconds": 32.38955397717655,
+      "peakTreeRssBytes": 569315328,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase111",
+        "taskset",
+        "-c",
+        "3",
+        "selfhost/.bootstrap/bun-1.4.3/bun",
+        "selfhost/tools/performance/phase118/emit-v3.mjs",
+        "selfhost/build/phase111/p118-borrow-api04/report.json",
+        "selfhost/build/phase118/borrow-source04/manifest.json",
+        "selfhost/build/phase118/borrow-emit01",
+        "coverage-map-churn-128",
+        "lexer",
+        "coverage-list-pipeline-128"
+      ]
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/trmc-api05-guard/process.json",
+        "bytes": 790,
+        "sha256": "ac20a87615525f31bb45c1d1eaf1427181ab9d64c4bd8b1d13df9f74c492f20b"
+      },
+      "aliases": [],
+      "from": 1792577391.712222,
+      "to": 1792577403.0007162,
+      "seconds": 11.288494110107422,
+      "closedAtCutoff": true,
+      "category": "checked API acquisition",
+      "status": "success",
+      "returncode": 0,
+      "stoppedFor": null,
+      "recordedWallSeconds": 11.28849624702707,
+      "peakTreeRssBytes": 1524412416,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase111",
+        "taskset",
+        "-c",
+        "3",
+        "python3",
+        "-B",
+        "selfhost/tools/performance/phase111/check-api.py",
+        "--source",
+        "selfhost/build/phase118/trmc-source05/compiler.bend",
+        "--out",
+        "selfhost/build/phase111/p118-trmc-api05",
+        "p113a_lower_request",
+        "p113a_verify",
+        "p113a_admitted_chunks",
+        "p88_cache_prepare",
+        "p86_plan",
+        "p111_runtime_admission"
+      ]
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/borrow-screen01-guard/process.json",
+        "bytes": 669,
+        "sha256": "1b020c29f3ff4f436f5ec88f6959604cd411cf57b6d1ab6dc7df9dfaa46673da"
+      },
+      "aliases": [],
+      "from": 1792577432.034555,
+      "to": 1792577440.0307822,
+      "seconds": 7.996227264404297,
+      "closedAtCutoff": true,
+      "category": "focused experiments and mixed pipelines",
+      "status": "success",
+      "returncode": 0,
+      "stoppedFor": null,
+      "recordedWallSeconds": 7.996228433214128,
+      "peakTreeRssBytes": 43237376,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase111",
+        "taskset",
+        "-c",
+        "3",
+        "python3",
+        "-B",
+        "selfhost/tools/performance/phase118/screen.py",
+        "--emission",
+        "selfhost/build/phase118/borrow-emit01/report.json",
+        "--out",
+        "selfhost/build/phase118/borrow-screen01",
+        "--label",
+        "borrow01"
+      ]
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/trmc-emit01-guard/process.json",
+        "bytes": 762,
+        "sha256": "397c01b0bf05439ae5de47cba482fa814edc8f0ea6e2fb34151e4b5bcce28e8b"
+      },
+      "aliases": [],
+      "from": 1792577467.6345258,
+      "to": 1792577511.9060373,
+      "seconds": 44.27151155471802,
+      "closedAtCutoff": true,
+      "category": "focused experiments and mixed pipelines",
+      "status": "success",
+      "returncode": 0,
+      "stoppedFor": null,
+      "recordedWallSeconds": 44.271514498163015,
+      "peakTreeRssBytes": 660721664,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase111",
+        "taskset",
+        "-c",
+        "3",
+        "selfhost/.bootstrap/bun-1.4.3/bun",
+        "selfhost/tools/performance/phase118/emit-v3.mjs",
+        "selfhost/build/phase111/p118-trmc-api05/report.json",
+        "selfhost/build/phase118/trmc-source05/manifest.json",
+        "selfhost/build/phase118/trmc-emit01",
+        "coverage-list-pipeline-128",
+        "coverage-map-churn-128",
+        "lexer"
+      ]
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/trmc-screen01-guard/process.json",
+        "bytes": 663,
+        "sha256": "378ba6a3b6c71a2aa8ee3a0aec59106adbcc57b348ebe73d8d0d3753f8d3c7a6"
+      },
+      "aliases": [],
+      "from": 1792577635.3994768,
+      "to": 1792577643.9884815,
+      "seconds": 8.589004755020142,
+      "closedAtCutoff": true,
+      "category": "focused experiments and mixed pipelines",
+      "status": "success",
+      "returncode": 0,
+      "stoppedFor": null,
+      "recordedWallSeconds": 8.58900546701625,
+      "peakTreeRssBytes": 43966464,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase111",
+        "taskset",
+        "-c",
+        "3",
+        "python3",
+        "-B",
+        "selfhost/tools/performance/phase118/screen.py",
+        "--emission",
+        "selfhost/build/phase118/trmc-emit01/report.json",
+        "--out",
+        "selfhost/build/phase118/trmc-screen01",
+        "--label",
+        "trmc01"
+      ]
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/runtime-cold01-guard/process.json",
+        "bytes": 569,
+        "sha256": "021dd7888c2ad752000af32b29122f04ad64c401ffc369d0f2b1ce19131e3485"
+      },
+      "aliases": [],
+      "from": 1792577756.245761,
+      "to": 1792577757.8130193,
+      "seconds": 1.567258358001709,
+      "closedAtCutoff": true,
+      "category": "runtime acquisition",
+      "status": "success",
+      "returncode": 0,
+      "stoppedFor": null,
+      "recordedWallSeconds": 1.5672588250599802,
+      "peakTreeRssBytes": 82849792,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase111",
+        "taskset",
+        "-c",
+        "3",
+        "python3",
+        "-B",
+        "selfhost/tools/performance/phase118/runtime-cold.py",
+        "--out",
+        "selfhost/build/phase118/runtime-cold01"
+      ]
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/cold-api01-guard/process.json",
+        "bytes": 882,
+        "sha256": "35d29c65a69f88952b383bb1e155fde8ae9b962ddf50d400f0feed441c4ea3b1"
+      },
+      "aliases": [],
+      "from": 1792577826.762167,
+      "to": 1792577837.9896417,
+      "seconds": 11.227474689483643,
+      "closedAtCutoff": true,
+      "category": "checked API acquisition",
+      "status": "success",
+      "returncode": 0,
+      "stoppedFor": null,
+      "recordedWallSeconds": 11.227477679029107,
+      "peakTreeRssBytes": 1536724992,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase111",
+        "taskset",
+        "-c",
+        "3",
+        "python3",
+        "-B",
+        "selfhost/tools/performance/phase111/check-api.py",
+        "--source",
+        "selfhost/build/phase118/cold-source01/compiler.bend",
+        "--out",
+        "selfhost/build/phase111/p118-cold-api01",
+        "p113a_lower_request",
+        "p113a_verify",
+        "p113a_admitted_chunks",
+        "p88_cache_prepare",
+        "p86_plan",
+        "p111_runtime_admission",
+        "p118c_plan",
+        "p118c_hot",
+        "p118c_cold",
+        "p118c_valid",
+        "p118c_apply"
+      ]
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/cold-emit01-guard/process.json",
+        "bytes": 781,
+        "sha256": "da521a2bca72ddaaaee9d84bac02d17ae88e624262700c6ad27a78c10b22a640"
+      },
+      "aliases": [],
+      "from": 1792577903.7691238,
+      "to": 1792577944.5691876,
+      "seconds": 40.80006384849548,
+      "closedAtCutoff": true,
+      "category": "focused experiments and mixed pipelines",
+      "status": "success",
+      "returncode": 0,
+      "stoppedFor": null,
+      "recordedWallSeconds": 40.80006490601227,
+      "peakTreeRssBytes": 574013440,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase111",
+        "taskset",
+        "-c",
+        "3",
+        "selfhost/.bootstrap/bun-1.4.3/bun",
+        "selfhost/tools/performance/phase118/emit-v4.mjs",
+        "selfhost/build/phase111/p118-cold-api01/report.json",
+        "selfhost/build/phase118/cold-source01/manifest.json",
+        "selfhost/build/phase118/cold-emit01",
+        "tree-bitonic",
+        "coverage-list-pipeline-128",
+        "coverage-map-churn-128",
+        "lexer"
+      ]
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/cold-screen01-guard/process.json",
+        "bytes": 664,
+        "sha256": "bc75240df94be2d429481421ea330159a0e8c9da3454c6c83ff3c23560dbea5e"
+      },
+      "aliases": [],
+      "from": 1792578017.4252539,
+      "to": 1792578028.486599,
+      "seconds": 11.061345100402832,
+      "closedAtCutoff": true,
+      "category": "focused experiments and mixed pipelines",
+      "status": "success",
+      "returncode": 0,
+      "stoppedFor": null,
+      "recordedWallSeconds": 11.061345942085609,
+      "peakTreeRssBytes": 45555712,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase111",
+        "taskset",
+        "-c",
+        "3",
+        "python3",
+        "-B",
+        "selfhost/tools/performance/phase118/screen.py",
+        "--emission",
+        "selfhost/build/phase118/cold-emit01/report.json",
+        "--out",
+        "selfhost/build/phase118/cold-screen01",
+        "--label",
+        "cold01"
+      ]
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/combined-api01-guard/process.json",
+        "bytes": 980,
+        "sha256": "552d88820f5da99c323d5f5c8526e2989974a1a4dad17f1cf48e5f27c50f7f1f"
+      },
+      "aliases": [],
+      "from": 1792578298.0014098,
+      "to": 1792578309.5955842,
+      "seconds": 11.5941743850708,
+      "closedAtCutoff": true,
+      "category": "checked API acquisition",
+      "status": "success",
+      "returncode": 0,
+      "stoppedFor": null,
+      "recordedWallSeconds": 11.594177306862548,
+      "peakTreeRssBytes": 1584025600,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase111",
+        "taskset",
+        "-c",
+        "3",
+        "python3",
+        "-B",
+        "selfhost/tools/performance/phase111/check-api.py",
+        "--source",
+        "selfhost/build/phase118/combined-source01/compiler.bend",
+        "--out",
+        "selfhost/build/phase111/p118-combined-api01",
+        "p113a_lower_request",
+        "p113a_verify",
+        "p113a_admitted_chunks",
+        "p88_cache_prepare",
+        "p86_plan",
+        "p111_runtime_admission",
+        "p118b_plan",
+        "p118b_plan_names",
+        "p118b_new_functions",
+        "p118b_chunks",
+        "p118c_plan",
+        "p118c_valid",
+        "p118c_hot",
+        "p118c_cold",
+        "p118c_apply"
+      ]
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/combined-emit01-guard/process.json",
+        "bytes": 915,
+        "sha256": "005f834023d513afe310dc01d87db5ae94d7fb1273f0ae8a797b3bf791f0ebfe"
+      },
+      "aliases": [],
+      "from": 1792578325.5600128,
+      "to": 1792578358.5411031,
+      "seconds": 32.98109030723572,
+      "closedAtCutoff": true,
+      "category": "focused experiments and mixed pipelines",
+      "status": "success",
+      "returncode": 0,
+      "stoppedFor": null,
+      "recordedWallSeconds": 32.98109127092175,
+      "peakTreeRssBytes": 676999168,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase111",
+        "taskset",
+        "-c",
+        "3",
+        "env",
+        "P118_RUNTIME_REPORT=selfhost/build/phase118/runtime-cold01/report.json",
+        "P118_DERIVED=1",
+        "P118_BORROW=1",
+        "P118_COLD=1",
+        "node",
+        "selfhost/tools/performance/phase118/emit-v4.mjs",
+        "selfhost/build/phase111/p118-combined-api01/report.json",
+        "selfhost/build/phase118/combined-source01/manifest.json",
+        "selfhost/build/phase118/combined-emit01",
+        "coverage-list-pipeline-128",
+        "coverage-map-churn-128",
+        "tree-bitonic",
+        "lexer"
+      ]
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/combined-screen01-guard/process.json",
+        "bytes": 676,
+        "sha256": "cced858da8fe1389a3084d02372953833397d1c64b819c81745ad2014f368a70"
+      },
+      "aliases": [],
+      "from": 1792578365.5960193,
+      "to": 1792578375.6587813,
+      "seconds": 10.062762022018433,
+      "closedAtCutoff": true,
+      "category": "focused experiments and mixed pipelines",
+      "status": "success",
+      "returncode": 0,
+      "stoppedFor": null,
+      "recordedWallSeconds": 10.06276266509667,
+      "peakTreeRssBytes": 47185920,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase111",
+        "taskset",
+        "-c",
+        "3",
+        "python3",
+        "-B",
+        "selfhost/tools/performance/phase118/screen.py",
+        "--emission",
+        "selfhost/build/phase118/combined-emit01/report.json",
+        "--out",
+        "selfhost/build/phase118/combined-screen01",
+        "--label",
+        "combined01"
+      ]
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/combined-controls-emit01-guard/process.json",
+        "bytes": 984,
+        "sha256": "3be3c77fff527e5c23bb0f35ccc94478bad373905dbf8184b89bdfdcbc69d6c0"
+      },
+      "aliases": [],
+      "from": 1792578390.698729,
+      "to": 1792578396.2568476,
+      "seconds": 5.558118581771851,
+      "closedAtCutoff": true,
+      "category": "focused experiments and mixed pipelines",
+      "status": "failed",
+      "returncode": 1,
+      "stoppedFor": null,
+      "recordedWallSeconds": 5.558119094930589,
+      "peakTreeRssBytes": 204869632,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase111",
+        "taskset",
+        "-c",
+        "3",
+        "env",
+        "P118_RUNTIME_REPORT=selfhost/build/phase118/runtime-cold01/report.json",
+        "P118_CASE_MANIFEST=selfhost/tools/performance/phase118/controls01.json",
+        "P118_DERIVED=1",
+        "P118_BORROW=1",
+        "P118_COLD=1",
+        "node",
+        "selfhost/tools/performance/phase118/emit-v4.mjs",
+        "selfhost/build/phase111/p118-combined-api01/report.json",
+        "selfhost/build/phase118/combined-source01/manifest.json",
+        "selfhost/build/phase118/combined-controls-emit01",
+        "construction",
+        "observer",
+        "refusals",
+        "mixed",
+        "shared"
+      ]
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/combined-controls-emit02-guard/process.json",
+        "bytes": 968,
+        "sha256": "65f87bd2acbb02ccb775b887e1085e53366ff342bc5adf03285271d19e6ab404"
+      },
+      "aliases": [],
+      "from": 1792578548.2461598,
+      "to": 1792578557.7532153,
+      "seconds": 9.507055521011353,
+      "closedAtCutoff": true,
+      "category": "focused experiments and mixed pipelines",
+      "status": "success",
+      "returncode": 0,
+      "stoppedFor": null,
+      "recordedWallSeconds": 9.507058424176648,
+      "peakTreeRssBytes": 446935040,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase111",
+        "taskset",
+        "-c",
+        "3",
+        "env",
+        "P118_RUNTIME_REPORT=selfhost/build/phase118/runtime-cold01/report.json",
+        "P118_CASE_MANIFEST=selfhost/tools/performance/phase118/controls01.json",
+        "P118_DERIVED=1",
+        "P118_BORROW=1",
+        "P118_COLD=1",
+        "node",
+        "selfhost/tools/performance/phase118/emit-v4.mjs",
+        "selfhost/build/phase111/p118-combined-api01/report.json",
+        "selfhost/build/phase118/combined-source01/manifest.json",
+        "selfhost/build/phase118/combined-controls-emit02",
+        "construction",
+        "refusals",
+        "mixed",
+        "shared"
+      ]
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/observer-error01-guard/process.json",
+        "bytes": 915,
+        "sha256": "f70a7e37001a86dcb3aaf310e267e3a8bf5245a836073d5e39e4abf5f2bcce0f"
+      },
+      "aliases": [],
+      "from": 1792578584.3381767,
+      "to": 1792578586.8918095,
+      "seconds": 2.5536327362060547,
+      "closedAtCutoff": true,
+      "category": "other guarded work",
+      "status": "failed",
+      "returncode": 1,
+      "stoppedFor": null,
+      "recordedWallSeconds": 2.5536351159680635,
+      "peakTreeRssBytes": 192610304,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase111",
+        "taskset",
+        "-c",
+        "3",
+        "env",
+        "P118_RUNTIME_REPORT=selfhost/build/phase118/runtime-cold01/report.json",
+        "P118_CASE_MANIFEST=selfhost/tools/performance/phase118/controls01.json",
+        "P118_DERIVED=1",
+        "P118_BORROW=1",
+        "P118_COLD=1",
+        "node",
+        "selfhost/tools/performance/phase118/emit-v5.mjs",
+        "selfhost/build/phase111/p118-combined-api01/report.json",
+        "selfhost/build/phase118/combined-source01/manifest.json",
+        "selfhost/build/phase118/observer-error01",
+        "observer"
+      ]
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/combined-controls-run01-guard/process.json",
+        "bytes": 696,
+        "sha256": "0297824bfb5843b2a8ccc0dbbde24c20be9ab4314aa55e5b2933898469def601"
+      },
+      "aliases": [],
+      "from": 1792578630.1707594,
+      "to": 1792578631.5952077,
+      "seconds": 1.4244482517242432,
+      "closedAtCutoff": true,
+      "category": "focused experiments and mixed pipelines",
+      "status": "success",
+      "returncode": 0,
+      "stoppedFor": null,
+      "recordedWallSeconds": 1.424449348822236,
+      "peakTreeRssBytes": 140267520,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase111",
+        "taskset",
+        "-c",
+        "3",
+        "python3",
+        "-B",
+        "selfhost/tools/performance/phase118/functional.py",
+        "--emission",
+        "selfhost/build/phase118/combined-controls-emit02/report.json",
+        "--out",
+        "selfhost/build/phase118/combined-controls-run01",
+        "--label",
+        "controls01"
+      ]
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/cold-controls-emit01-guard/process.json",
+        "bytes": 948,
+        "sha256": "44de5b2206cf10098d2eef3a2de196fa7a3d6dd776a2b6f2c26db3f5b5172bb7"
+      },
+      "aliases": [],
+      "from": 1792578671.7874906,
+      "to": 1792578679.0857613,
+      "seconds": 7.2982707023620605,
+      "closedAtCutoff": true,
+      "category": "focused experiments and mixed pipelines",
+      "status": "success",
+      "returncode": 0,
+      "stoppedFor": null,
+      "recordedWallSeconds": 7.298273551976308,
+      "peakTreeRssBytes": 422293504,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase111",
+        "taskset",
+        "-c",
+        "3",
+        "env",
+        "P118_RUNTIME_REPORT=selfhost/build/phase118/runtime-cold01/report.json",
+        "P118_CASE_MANIFEST=selfhost/tools/performance/phase118/cold-controls01.json",
+        "P118_DERIVED=1",
+        "P118_BORROW=1",
+        "P118_COLD=1",
+        "node",
+        "selfhost/tools/performance/phase118/emit-v5.mjs",
+        "selfhost/build/phase111/p118-combined-api01/report.json",
+        "selfhost/build/phase118/combined-source01/manifest.json",
+        "selfhost/build/phase118/cold-controls-emit01",
+        "cold-transitive",
+        "observer-v2"
+      ]
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/cold-controls-run01-guard/process.json",
+        "bytes": 777,
+        "sha256": "ae9f3898383449458e1a9a5ba34d2699a15ee535ea10c20cf60b101ab29529c4"
+      },
+      "aliases": [],
+      "from": 1792578738.3305314,
+      "to": 1792578739.4199412,
+      "seconds": 1.0894098281860352,
+      "closedAtCutoff": true,
+      "category": "focused experiments and mixed pipelines",
+      "status": "success",
+      "returncode": 0,
+      "stoppedFor": null,
+      "recordedWallSeconds": 1.089411994908005,
+      "peakTreeRssBytes": 140148736,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase111",
+        "taskset",
+        "-c",
+        "3",
+        "python3",
+        "-B",
+        "selfhost/tools/performance/phase118/functional-v2.py",
+        "--emission",
+        "selfhost/build/phase118/cold-controls-emit01/report.json",
+        "--out",
+        "selfhost/build/phase118/cold-controls-run01",
+        "--label",
+        "coldcontrols01",
+        "--manifest",
+        "selfhost/tools/performance/phase118/cold-controls01.json"
+      ]
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/integrated-api01-guard/process.json",
+        "bytes": 1008,
+        "sha256": "db56dbc67253346c528a9aa577728fa5833fdc01efa2539464cb4fcbdbceba98"
+      },
+      "aliases": [],
+      "from": 1792578749.313378,
+      "to": 1792578760.992362,
+      "seconds": 11.678983926773071,
+      "closedAtCutoff": true,
+      "category": "checked API acquisition",
+      "status": "success",
+      "returncode": 0,
+      "stoppedFor": null,
+      "recordedWallSeconds": 11.678986181039363,
+      "peakTreeRssBytes": 1643839488,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase111",
+        "taskset",
+        "-c",
+        "3",
+        "python3",
+        "-B",
+        "selfhost/tools/performance/phase111/check-api.py",
+        "--source",
+        "selfhost/build/phase118/integrated-source01/compiler.bend",
+        "--out",
+        "selfhost/build/phase111/p118-integrated-api01",
+        "p113a_lower_request",
+        "p113a_verify",
+        "p113a_admitted_chunks",
+        "p88_cache_prepare",
+        "p86_plan",
+        "p111_runtime_admission",
+        "p118b_plan",
+        "p118b_plan_names",
+        "p118b_new_functions",
+        "p118b_chunks",
+        "p118c_plan",
+        "p118c_valid",
+        "p118c_hot",
+        "p118c_cold",
+        "p118c_apply",
+        "p111_emit_admitted"
+      ]
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/reuse-api01-guard/process.json",
+        "bytes": 1046,
+        "sha256": "473771f83c11aca71c4fcc6d3d65f9dfdc2591fc274f664038a76b8a2801200c"
+      },
+      "aliases": [],
+      "from": 1792578808.2310731,
+      "to": 1792578819.8499038,
+      "seconds": 11.618830680847168,
+      "closedAtCutoff": true,
+      "category": "checked API acquisition",
+      "status": "success",
+      "returncode": 0,
+      "stoppedFor": null,
+      "recordedWallSeconds": 11.618834192166105,
+      "peakTreeRssBytes": 1617559552,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase111",
+        "taskset",
+        "-c",
+        "3",
+        "python3",
+        "-B",
+        "selfhost/tools/performance/phase111/check-api.py",
+        "--source",
+        "selfhost/build/phase118/reuse-source01/compiler.bend",
+        "--out",
+        "selfhost/build/phase111/p118-reuse-api01",
+        "p113a_lower_request",
+        "p113a_verify",
+        "p113a_admitted_chunks",
+        "p88_cache_prepare",
+        "p86_plan",
+        "p111_runtime_admission",
+        "p118b_plan",
+        "p118b_plan_names",
+        "p118b_new_functions",
+        "p118b_chunks",
+        "p118c_plan",
+        "p118c_valid",
+        "p118c_hot",
+        "p118c_cold",
+        "p118c_apply",
+        "p111_emit_admitted",
+        "p118i_permission",
+        "p118t_controls"
+      ]
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/runtime-reuse01-guard/process.json",
+        "bytes": 644,
+        "sha256": "0b094ce711468a0f216b1ce80e7e5769eb44193adc26e1916e347631e2193277"
+      },
+      "aliases": [],
+      "from": 1792578856.629682,
+      "to": 1792578858.3822005,
+      "seconds": 1.7525184154510498,
+      "closedAtCutoff": true,
+      "category": "runtime acquisition",
+      "status": "success",
+      "returncode": 0,
+      "stoppedFor": null,
+      "recordedWallSeconds": 1.752518670866266,
+      "peakTreeRssBytes": 83615744,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase111",
+        "taskset",
+        "-c",
+        "3",
+        "python3",
+        "-B",
+        "selfhost/tools/performance/phase118/runtime-reuse.py",
+        "--out",
+        "selfhost/build/phase118/runtime-reuse01",
+        "--extra",
+        "selfhost/tools/performance/phase118/runtime-reuse.c"
+      ]
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/integrated-match01-guard/process.json",
+        "bytes": 954,
+        "sha256": "c9d8d52d2804ef1ba3ee5b385f83542bd4c165b9bdfd3160d50f916b96d9523c"
+      },
+      "aliases": [],
+      "from": 1792578878.3977277,
+      "to": 1792578905.1881607,
+      "seconds": 26.790432929992676,
+      "closedAtCutoff": true,
+      "category": "focused experiments and mixed pipelines",
+      "status": "success",
+      "returncode": 0,
+      "stoppedFor": null,
+      "recordedWallSeconds": 26.7904337849468,
+      "peakTreeRssBytes": 650899456,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase111",
+        "taskset",
+        "-c",
+        "3",
+        "env",
+        "P118_RUNTIME_REPORT=selfhost/build/phase118/runtime-cold01/report.json",
+        "P118_EXPECT_EMISSION_REPORT=selfhost/build/phase118/combined-emit01/report.json",
+        "node",
+        "selfhost/tools/performance/phase118/emit-integrated.mjs",
+        "selfhost/build/phase111/p118-integrated-api01/report.json",
+        "selfhost/build/phase118/integrated-source01/manifest.json",
+        "selfhost/build/phase118/integrated-match01",
+        "coverage-list-pipeline-128",
+        "coverage-map-churn-128",
+        "tree-bitonic",
+        "lexer"
+      ]
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/reuse-emit01-guard/process.json",
+        "bytes": 919,
+        "sha256": "cc5da462201e4923b485497c2115e16e21923d1951525a3be9c953fb93fb2869"
+      },
+      "aliases": [],
+      "from": 1792578942.2253988,
+      "to": 1792578942.2895622,
+      "seconds": 0.0641634464263916,
+      "closedAtCutoff": true,
+      "category": "focused experiments and mixed pipelines",
+      "status": "failed",
+      "returncode": 1,
+      "stoppedFor": null,
+      "recordedWallSeconds": 0.06416597496718168,
+      "peakTreeRssBytes": 52576256,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase111",
+        "taskset",
+        "-c",
+        "3",
+        "env",
+        "P118_RUNTIME_REPORT=selfhost/build/phase118/runtime-reuse01/report.json",
+        "node",
+        "selfhost/tools/performance/phase118/emit-integrated.mjs",
+        "selfhost/build/phase111/p118-reuse-api01/report.json",
+        "selfhost/build/phase118/reuse-source01/manifest.json",
+        "selfhost/build/phase118/reuse-emit01",
+        "coverage-list-pipeline-128",
+        "coverage-map-churn-128",
+        "tree-bitonic",
+        "lexer",
+        "coverage-list-pipeline-512",
+        "coverage-map-churn-512"
+      ]
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/reuse-emit02-guard/process.json",
+        "bytes": 916,
+        "sha256": "5634d1464a65314073662bb60f12cd39c846846e45dfe3a9badee58455b391a8"
+      },
+      "aliases": [],
+      "from": 1792578960.8997593,
+      "to": 1792578997.7112553,
+      "seconds": 36.8114960193634,
+      "closedAtCutoff": true,
+      "category": "focused experiments and mixed pipelines",
+      "status": "success",
+      "returncode": 0,
+      "stoppedFor": null,
+      "recordedWallSeconds": 36.81149708409794,
+      "peakTreeRssBytes": 661762048,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase111",
+        "taskset",
+        "-c",
+        "3",
+        "env",
+        "P118_RUNTIME_REPORT=selfhost/build/phase118/runtime-reuse01/report.json",
+        "node",
+        "selfhost/tools/performance/phase118/emit-integrated.mjs",
+        "selfhost/build/phase111/p118-reuse-api01/report.json",
+        "selfhost/build/phase118/reuse-source01/manifest.json",
+        "selfhost/build/phase118/reuse-emit02",
+        "coverage-list-pipeline-128",
+        "coverage-map-churn-128",
+        "tree-bitonic",
+        "lexer",
+        "coverage-list-pipeline-512",
+        "coverage-map-churn-32"
+      ]
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/reuse-screen01-guard/process.json",
+        "bytes": 668,
+        "sha256": "6ac35b15c8f280dbba638b4b491563fa54815ecee71b02e4e5157f734bd85bcc"
+      },
+      "aliases": [],
+      "from": 1792579005.0525982,
+      "to": 1792579019.3011413,
+      "seconds": 14.24854302406311,
+      "closedAtCutoff": true,
+      "category": "focused experiments and mixed pipelines",
+      "status": "success",
+      "returncode": 0,
+      "stoppedFor": null,
+      "recordedWallSeconds": 14.248543908121064,
+      "peakTreeRssBytes": 45240320,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase111",
+        "taskset",
+        "-c",
+        "3",
+        "python3",
+        "-B",
+        "selfhost/tools/performance/phase118/screen.py",
+        "--emission",
+        "selfhost/build/phase118/reuse-emit02/report.json",
+        "--out",
+        "selfhost/build/phase118/reuse-screen01",
+        "--label",
+        "reuse01"
+      ]
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/combined-profile01-guard/process.json",
+        "bytes": 834,
+        "sha256": "459d629e113d535df19d6a1376ef2c34852765526352016dfe76947f14df3c7c"
+      },
+      "aliases": [],
+      "from": 1792579043.6157837,
+      "to": 1792579118.3775077,
+      "seconds": 74.76172399520874,
+      "closedAtCutoff": true,
+      "category": "profiling and IR inspection",
+      "status": "success",
+      "returncode": 0,
+      "stoppedFor": null,
+      "recordedWallSeconds": 74.76172707299702,
+      "peakTreeRssBytes": 29040640,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase111",
+        "taskset",
+        "-c",
+        "3",
+        "python3",
+        "-B",
+        "selfhost/tools/performance/phase118/recheck.py",
+        "--mode",
+        "profile",
+        "--screen",
+        "selfhost/build/phase118/combined-screen01/report.json",
+        "--out",
+        "selfhost/build/phase118/combined-profile01",
+        "--names",
+        "coverage-list-pipeline-128",
+        "coverage-map-churn-128",
+        "tree-bitonic",
+        "lexer",
+        "--roles",
+        "candidate",
+        "baseline"
+      ]
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/transport-api01-guard/process.json",
+        "bytes": 942,
+        "sha256": "4854cf9e25a337e558bf22aab84f15f87a2540dfe0b7e2cd50c48b616c1a265e"
+      },
+      "aliases": [],
+      "from": 1792579277.5414758,
+      "to": 1792579289.2611754,
+      "seconds": 11.719699621200562,
+      "closedAtCutoff": true,
+      "category": "checked API acquisition",
+      "status": "success",
+      "returncode": 0,
+      "stoppedFor": null,
+      "recordedWallSeconds": 11.719703281996772,
+      "peakTreeRssBytes": 1680117760,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase111",
+        "taskset",
+        "-c",
+        "3",
+        "python3",
+        "-B",
+        "selfhost/tools/performance/phase111/check-api.py",
+        "--source",
+        "selfhost/build/phase118/transport-source01/compiler.bend",
+        "--out",
+        "selfhost/build/phase111/p118-transport-api01",
+        "p113a_lower_request",
+        "p113a_verify",
+        "p113a_admitted_chunks",
+        "p88_cache_prepare",
+        "p86_prepare",
+        "p86_plan",
+        "p111_runtime_admission",
+        "p111_emit_admitted",
+        "p111_compile_source",
+        "p118i_permission",
+        "p118z_eligible",
+        "p118z_controls"
+      ]
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/runtime-transport01-guard/process.json",
+        "bytes": 579,
+        "sha256": "91ec4edc3ed2eca16ca7dd7b6cf0b7e8f02bbc8db05515a4b2b26d73d8aacf5a"
+      },
+      "aliases": [],
+      "from": 1792579321.619036,
+      "to": 1792579323.2897813,
+      "seconds": 1.6707453727722168,
+      "closedAtCutoff": true,
+      "category": "runtime acquisition",
+      "status": "success",
+      "returncode": 0,
+      "stoppedFor": null,
+      "recordedWallSeconds": 1.6707456188742071,
+      "peakTreeRssBytes": 82808832,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase111",
+        "taskset",
+        "-c",
+        "3",
+        "python3",
+        "-B",
+        "selfhost/tools/performance/phase118/runtime-transport.py",
+        "--out",
+        "selfhost/build/phase118/runtime-transport01"
+      ]
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/transport-finite01-guard/process.json",
+        "bytes": 634,
+        "sha256": "21a48c6eca4124de1f78e7203111dca4afd53facc56e8563b811b5ee209d2364"
+      },
+      "aliases": [],
+      "from": 1792579372.794813,
+      "to": 1792579373.2069893,
+      "seconds": 0.41217637062072754,
+      "closedAtCutoff": true,
+      "category": "finite controls",
+      "status": "success",
+      "returncode": 0,
+      "stoppedFor": null,
+      "recordedWallSeconds": 0.4121826661285013,
+      "peakTreeRssBytes": 144306176,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase111",
+        "taskset",
+        "-c",
+        "3",
+        "node",
+        "selfhost/tools/performance/phase118/finite.mjs",
+        "selfhost/build/phase111/p118-transport-api01/report.json",
+        "selfhost/build/phase118/transport-finite01.json",
+        "p118z_controls"
+      ]
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/transport-emit01-guard/process.json",
+        "bytes": 865,
+        "sha256": "3fcb07344510d5a78933c305ef5f6961cb7e6e5d8a93949a633dd6d20458334a"
+      },
+      "aliases": [],
+      "from": 1792579382.1485372,
+      "to": 1792579409.2483215,
+      "seconds": 27.09978437423706,
+      "closedAtCutoff": true,
+      "category": "focused experiments and mixed pipelines",
+      "status": "success",
+      "returncode": 0,
+      "stoppedFor": null,
+      "recordedWallSeconds": 27.099784929072484,
+      "peakTreeRssBytes": 620322816,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase111",
+        "taskset",
+        "-c",
+        "3",
+        "env",
+        "P118_RUNTIME_REPORT=selfhost/build/phase118/runtime-transport01/report.json",
+        "node",
+        "selfhost/tools/performance/phase118/emit-integrated.mjs",
+        "selfhost/build/phase111/p118-transport-api01/report.json",
+        "selfhost/build/phase118/transport-source01/manifest.json",
+        "selfhost/build/phase118/transport-emit01",
+        "coverage-map-churn-128",
+        "lexer",
+        "tree-bitonic",
+        "coverage-closures-256"
+      ]
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/transport-screen01-guard/process.json",
+        "bytes": 679,
+        "sha256": "e6492ea8f82eaddfb6fe51849acca13f03a5842b6eee79919f407b9bf347c691"
+      },
+      "aliases": [],
+      "from": 1792579429.4301255,
+      "to": 1792579438.5567276,
+      "seconds": 9.126602172851562,
+      "closedAtCutoff": true,
+      "category": "focused experiments and mixed pipelines",
+      "status": "success",
+      "returncode": 0,
+      "stoppedFor": null,
+      "recordedWallSeconds": 9.126603204058483,
+      "peakTreeRssBytes": 44281856,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase111",
+        "taskset",
+        "-c",
+        "3",
+        "python3",
+        "-B",
+        "selfhost/tools/performance/phase118/screen.py",
+        "--emission",
+        "selfhost/build/phase118/transport-emit01/report.json",
+        "--out",
+        "selfhost/build/phase118/transport-screen01",
+        "--label",
+        "transport01"
+      ]
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/reuse-sized-api01-guard/process.json",
+        "bytes": 969,
+        "sha256": "de4e7886f0572176365cb8e236ae25ff33cef694a8f4f70647ba23fdef15928d"
+      },
+      "aliases": [],
+      "from": 1792579445.5117104,
+      "to": 1792579458.0698788,
+      "seconds": 12.558168411254883,
+      "closedAtCutoff": true,
+      "category": "checked API acquisition",
+      "status": "success",
+      "returncode": 0,
+      "stoppedFor": null,
+      "recordedWallSeconds": 12.558171031065285,
+      "peakTreeRssBytes": 1677053952,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase111",
+        "taskset",
+        "-c",
+        "3",
+        "python3",
+        "-B",
+        "selfhost/tools/performance/phase111/check-api.py",
+        "--source",
+        "selfhost/build/phase118/reuse-sized-source01/compiler.bend",
+        "--out",
+        "selfhost/build/phase111/p118-reuse-sized-api01",
+        "p113a_lower_request",
+        "p113a_verify",
+        "p113a_admitted_chunks",
+        "p88_cache_prepare",
+        "p86_prepare",
+        "p86_plan",
+        "p111_runtime_admission",
+        "p111_emit_admitted",
+        "p111_compile_source",
+        "p118i_permission",
+        "p118t_controls",
+        "p118r_controls",
+        "p118qs_controls"
+      ]
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/compiler-inspect01-guard/process.json",
+        "bytes": 688,
+        "sha256": "f3690d18177422d3c8b66f4c1b96dd975a8f31cf7a4fc658ad1b1aa8c73f5105"
+      },
+      "aliases": [],
+      "from": 1792579522.7038388,
+      "to": 1792579556.3445907,
+      "seconds": 33.64075183868408,
+      "closedAtCutoff": true,
+      "category": "profiling and IR inspection",
+      "status": "failed",
+      "returncode": 1,
+      "stoppedFor": null,
+      "recordedWallSeconds": 33.640752708073705,
+      "peakTreeRssBytes": 585166848,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase111",
+        "taskset",
+        "-c",
+        "3",
+        "node",
+        "selfhost/tools/performance/phase118/inspect-compiler.mjs",
+        "selfhost/build/phase111/p118-transport-api01/report.json",
+        "selfhost/build/phase118/transport-source01/compiler.bend",
+        "selfhost/build/phase118/compiler-inspect01.json"
+      ]
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/runtime-bank01-guard/process.json",
+        "bytes": 569,
+        "sha256": "1574ecfd82890f65b32ce13856964a85def84da2a88a1875f8f82f3a3dce2728"
+      },
+      "aliases": [],
+      "from": 1792579607.7661073,
+      "to": 1792579609.334516,
+      "seconds": 1.568408727645874,
+      "closedAtCutoff": true,
+      "category": "runtime acquisition",
+      "status": "success",
+      "returncode": 0,
+      "stoppedFor": null,
+      "recordedWallSeconds": 1.5683860450517386,
+      "peakTreeRssBytes": 83185664,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase111",
+        "taskset",
+        "-c",
+        "3",
+        "python3",
+        "-B",
+        "selfhost/tools/performance/phase118/runtime-bank.py",
+        "--out",
+        "selfhost/build/phase118/runtime-bank01"
+      ]
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/runtime-reuse-sized01-guard/process.json",
+        "bytes": 664,
+        "sha256": "ab1218ea2cddba22bba4b126fdbe190bb948c909b5ebc6c5d771946ee71de1be"
+      },
+      "aliases": [],
+      "from": 1792579609.4711974,
+      "to": 1792579611.3657947,
+      "seconds": 1.8945972919464111,
+      "closedAtCutoff": true,
+      "category": "runtime acquisition",
+      "status": "success",
+      "returncode": 0,
+      "stoppedFor": null,
+      "recordedWallSeconds": 1.8945974360685796,
+      "peakTreeRssBytes": 87535616,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase111",
+        "taskset",
+        "-c",
+        "3",
+        "python3",
+        "-B",
+        "selfhost/tools/performance/phase118/runtime-reuse-sized.py",
+        "--out",
+        "selfhost/build/phase118/runtime-reuse-sized01",
+        "--extra",
+        "selfhost/tools/performance/phase118/runtime-reuse-sized.c"
+      ]
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/reuse-finite01-guard/process.json",
+        "bytes": 677,
+        "sha256": "55645e61c3891b2a74a43d0fab873f022db215c36f3db5ddabada7dbf3a9539c"
+      },
+      "aliases": [],
+      "from": 1792579611.486381,
+      "to": 1792579611.937278,
+      "seconds": 0.4508969783782959,
+      "closedAtCutoff": true,
+      "category": "finite controls",
+      "status": "success",
+      "returncode": 0,
+      "stoppedFor": null,
+      "recordedWallSeconds": 0.45089865499176085,
+      "peakTreeRssBytes": 142209024,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase111",
+        "taskset",
+        "-c",
+        "3",
+        "node",
+        "selfhost/tools/performance/phase118/finite.mjs",
+        "selfhost/build/phase111/p118-reuse-sized-api01/report.json",
+        "selfhost/build/phase118/reuse-finite01.json",
+        "p118t_controls",
+        "p118r_controls",
+        "p118qs_controls"
+      ]
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/compiler-inspect02-guard/process.json",
+        "bytes": 747,
+        "sha256": "c0461b20a9481e16cd7d5c5522797ef323428a079c749c24b40b79546b8d7b9b"
+      },
+      "aliases": [],
+      "from": 1792579612.3278782,
+      "to": 1792579732.4447563,
+      "seconds": 120.11687803268433,
+      "closedAtCutoff": true,
+      "category": "profiling and IR inspection",
+      "status": "timeout",
+      "returncode": -9,
+      "stoppedFor": "deadline",
+      "recordedWallSeconds": 120.11687972699292,
+      "peakTreeRssBytes": 1554161664,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase111",
+        "taskset",
+        "-c",
+        "3",
+        "selfhost/.bootstrap/bun-1.4.3/bun",
+        "selfhost/tools/performance/phase118/inspect-compiler.mjs",
+        "selfhost/build/phase111/p118-transport-api01/report.json",
+        "selfhost/build/phase118/transport-source01/compiler.bend",
+        "selfhost/build/phase118/compiler-inspect02.json"
+      ]
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/bank-screen02-guard/process.json",
+        "bytes": 663,
+        "sha256": "189c85f3aee4b95e907081e2df458a4006979038009eeb320730d0dfdc3987cf"
+      },
+      "aliases": [],
+      "from": 1792579914.113401,
+      "to": 1792579923.2194202,
+      "seconds": 9.106019258499146,
+      "closedAtCutoff": true,
+      "category": "focused experiments and mixed pipelines",
+      "status": "success",
+      "returncode": 0,
+      "stoppedFor": null,
+      "recordedWallSeconds": 9.106020317878574,
+      "peakTreeRssBytes": 47149056,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase111",
+        "taskset",
+        "-c",
+        "3",
+        "python3",
+        "-B",
+        "selfhost/tools/performance/phase118/screen.py",
+        "--emission",
+        "selfhost/build/phase118/bank-bind01/report.json",
+        "--out",
+        "selfhost/build/phase118/bank-screen02",
+        "--label",
+        "bank01"
+      ]
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/scalar-api01-guard/process.json",
+        "bytes": 936,
+        "sha256": "5945aa18c1864e735d888e83bcde9031b719e1f3b1e2c9fb5bdb13a9a1c0ccca"
+      },
+      "aliases": [],
+      "from": 1792579935.9706264,
+      "to": 1792579947.7657208,
+      "seconds": 11.79509449005127,
+      "closedAtCutoff": true,
+      "category": "checked API acquisition",
+      "status": "success",
+      "returncode": 0,
+      "stoppedFor": null,
+      "recordedWallSeconds": 11.795097744092345,
+      "peakTreeRssBytes": 1613504512,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase111",
+        "taskset",
+        "-c",
+        "3",
+        "python3",
+        "-B",
+        "selfhost/tools/performance/phase111/check-api.py",
+        "--source",
+        "selfhost/build/phase118/scalar-source01/compiler.bend",
+        "--out",
+        "selfhost/build/phase111/p118-scalar-api01",
+        "p113a_lower_request",
+        "p113a_verify",
+        "p113a_admitted_chunks",
+        "p88_cache_prepare",
+        "p86_prepare",
+        "p86_plan",
+        "p111_runtime_admission",
+        "p111_emit_admitted",
+        "p111_compile_source",
+        "p118i_permission",
+        "p118z_eligible",
+        "p118z_controls"
+      ]
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/runtime-scalar01-guard/process.json",
+        "bytes": 656,
+        "sha256": "7fd744ffce9598c35ce58213a8a1f37ebf3be4d6674f87efa42623c610b8b900"
+      },
+      "aliases": [],
+      "from": 1792579962.0802712,
+      "to": 1792579963.6939678,
+      "seconds": 1.613696575164795,
+      "closedAtCutoff": true,
+      "category": "runtime acquisition",
+      "status": "success",
+      "returncode": 0,
+      "stoppedFor": null,
+      "recordedWallSeconds": 1.6136968969367445,
+      "peakTreeRssBytes": 83070976,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase111",
+        "taskset",
+        "-c",
+        "3",
+        "python3",
+        "-B",
+        "selfhost/tools/performance/phase118/runtime-scalar.py",
+        "--out",
+        "selfhost/build/phase118/runtime-scalar01",
+        "--extra",
+        "selfhost/tools/performance/phase118/runtime-scalar-borrow.c"
+      ]
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/scalar-controls-emit01-guard/process.json",
+        "bytes": 730,
+        "sha256": "d878bd16a619ef398fb509f04831db3cc7ec12e15b878769c7120d665321a4b9"
+      },
+      "aliases": [],
+      "from": 1792579972.553963,
+      "to": 1792579978.6229455,
+      "seconds": 6.0689826011657715,
+      "closedAtCutoff": true,
+      "category": "focused experiments and mixed pipelines",
+      "status": "failed",
+      "returncode": 1,
+      "stoppedFor": null,
+      "recordedWallSeconds": 6.068984515964985,
+      "peakTreeRssBytes": 196775936,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase111",
+        "taskset",
+        "-c",
+        "3",
+        "selfhost/.bootstrap/bun-1.4.3/bun",
+        "selfhost/tools/performance/phase118/emit-integrated.mjs",
+        "selfhost/build/phase111/p118-scalar-api01/report.json",
+        "selfhost/build/phase118/scalar-source01/manifest.json",
+        "selfhost/build/phase118/scalar-controls-emit01",
+        "scalar-observer"
+      ]
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/reuse-sized-emit01-guard/process.json",
+        "bytes": 777,
+        "sha256": "7d5bc7fc27a67105fa371a7647692a7022f3216c7fc2b696c851362b5723c22e"
+      },
+      "aliases": [],
+      "from": 1792580010.2679486,
+      "to": 1792580010.311758,
+      "seconds": 0.04380941390991211,
+      "closedAtCutoff": true,
+      "category": "focused experiments and mixed pipelines",
+      "status": "failed",
+      "returncode": 1,
+      "stoppedFor": null,
+      "recordedWallSeconds": 0.04381289496086538,
+      "peakTreeRssBytes": 19841024,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase111",
+        "taskset",
+        "-c",
+        "3",
+        "selfhost/.bootstrap/bun-1.4.3/bun",
+        "selfhost/tools/performance/phase118/emit-integrated.mjs",
+        "selfhost/build/phase111/p118-reuse-sized-api01/report.json",
+        "selfhost/build/phase118/reuse-sized-source01/manifest.json",
+        "selfhost/build/phase118/reuse-sized-emit01",
+        "coverage-list-128",
+        "lexer",
+        "coverage-list-512"
+      ]
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/reuse-sized-emit02-guard/process.json",
+        "bytes": 793,
+        "sha256": "b4c30585069e38bc537a9b29918035c724b3a0fe60f94d0977303ee70e5aa4fa"
+      },
+      "aliases": [],
+      "from": 1792580020.711185,
+      "to": 1792580055.4408321,
+      "seconds": 34.729647159576416,
+      "closedAtCutoff": true,
+      "category": "focused experiments and mixed pipelines",
+      "status": "success",
+      "returncode": 0,
+      "stoppedFor": null,
+      "recordedWallSeconds": 34.72964908881113,
+      "peakTreeRssBytes": 576180224,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase111",
+        "taskset",
+        "-c",
+        "3",
+        "selfhost/.bootstrap/bun-1.4.3/bun",
+        "selfhost/tools/performance/phase118/emit-integrated.mjs",
+        "selfhost/build/phase111/p118-reuse-sized-api01/report.json",
+        "selfhost/build/phase118/reuse-sized-source01/manifest.json",
+        "selfhost/build/phase118/reuse-sized-emit02",
+        "coverage-list-pipeline-128",
+        "lexer",
+        "coverage-list-pipeline-512"
+      ]
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/reuse-sized-screen01-guard/process.json",
+        "bytes": 684,
+        "sha256": "7840c6f94f56c101b58c1c9a7c4097c553a314363e2e4e4f810f83dc6607cbdd"
+      },
+      "aliases": [],
+      "from": 1792580068.3083715,
+      "to": 1792580075.039256,
+      "seconds": 6.730884552001953,
+      "closedAtCutoff": true,
+      "category": "focused experiments and mixed pipelines",
+      "status": "success",
+      "returncode": 0,
+      "stoppedFor": null,
+      "recordedWallSeconds": 6.730885193916038,
+      "peakTreeRssBytes": 45576192,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase111",
+        "taskset",
+        "-c",
+        "3",
+        "python3",
+        "-B",
+        "selfhost/tools/performance/phase118/screen.py",
+        "--emission",
+        "selfhost/build/phase118/reuse-sized-emit02/report.json",
+        "--out",
+        "selfhost/build/phase118/reuse-sized-screen01",
+        "--label",
+        "reuse-sized01"
+      ]
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/scalar-api02-guard/process.json",
+        "bytes": 936,
+        "sha256": "926e2b86eb2ed3142341942ab0ce519de77ac2afbebf7a66942e0bd8e943de2f"
+      },
+      "aliases": [],
+      "from": 1792580087.1643999,
+      "to": 1792580098.5567071,
+      "seconds": 11.39230728149414,
+      "closedAtCutoff": true,
+      "category": "checked API acquisition",
+      "status": "success",
+      "returncode": 0,
+      "stoppedFor": null,
+      "recordedWallSeconds": 11.392309352988377,
+      "peakTreeRssBytes": 1593217024,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase111",
+        "taskset",
+        "-c",
+        "3",
+        "python3",
+        "-B",
+        "selfhost/tools/performance/phase111/check-api.py",
+        "--source",
+        "selfhost/build/phase118/scalar-source02/compiler.bend",
+        "--out",
+        "selfhost/build/phase111/p118-scalar-api02",
+        "p113a_lower_request",
+        "p113a_verify",
+        "p113a_admitted_chunks",
+        "p88_cache_prepare",
+        "p86_prepare",
+        "p86_plan",
+        "p111_runtime_admission",
+        "p111_emit_admitted",
+        "p111_compile_source",
+        "p118i_permission",
+        "p118z_eligible",
+        "p118z_controls"
+      ]
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/scalar-controls-emit02-guard/process.json",
+        "bytes": 730,
+        "sha256": "c8f61e8f84cf34ca2c662498f4df5e31eb464e1d5ac3e60e5565e799fc470c6f"
+      },
+      "aliases": [],
+      "from": 1792580105.7717235,
+      "to": 1792580112.8776138,
+      "seconds": 7.105890274047852,
+      "closedAtCutoff": true,
+      "category": "focused experiments and mixed pipelines",
+      "status": "success",
+      "returncode": 0,
+      "stoppedFor": null,
+      "recordedWallSeconds": 7.105892271036282,
+      "peakTreeRssBytes": 321859584,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase111",
+        "taskset",
+        "-c",
+        "3",
+        "selfhost/.bootstrap/bun-1.4.3/bun",
+        "selfhost/tools/performance/phase118/emit-integrated.mjs",
+        "selfhost/build/phase111/p118-scalar-api02/report.json",
+        "selfhost/build/phase118/scalar-source02/manifest.json",
+        "selfhost/build/phase118/scalar-controls-emit02",
+        "scalar-observer"
+      ]
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/scalar-controls-run02-guard/process.json",
+        "bytes": 786,
+        "sha256": "6b5258229132ee7ec7b766d4db9704b4b2a56820ae5f3dac181b082633ed0491"
+      },
+      "aliases": [],
+      "from": 1792580123.3408637,
+      "to": 1792580123.979166,
+      "seconds": 0.6383023262023926,
+      "closedAtCutoff": true,
+      "category": "focused experiments and mixed pipelines",
+      "status": "success",
+      "returncode": 0,
+      "stoppedFor": null,
+      "recordedWallSeconds": 0.6383030160795897,
+      "peakTreeRssBytes": 105312256,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase111",
+        "taskset",
+        "-c",
+        "3",
+        "python3",
+        "-B",
+        "selfhost/tools/performance/phase118/functional-v2.py",
+        "--emission",
+        "selfhost/build/phase118/scalar-controls-emit02/report.json",
+        "--out",
+        "selfhost/build/phase118/scalar-controls-run02",
+        "--label",
+        "scalar-controls02",
+        "--manifest",
+        "selfhost/tools/performance/phase118/scalar-controls01.json"
+      ]
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/scalar-emit01-guard/process.json",
+        "bytes": 807,
+        "sha256": "90d0d5436466666bb4d4cc565120ac461d52ccd04f5d0183a8bddbd085ef9dd4"
+      },
+      "aliases": [],
+      "from": 1792580135.0163665,
+      "to": 1792580189.9832745,
+      "seconds": 54.96690797805786,
+      "closedAtCutoff": true,
+      "category": "focused experiments and mixed pipelines",
+      "status": "success",
+      "returncode": 0,
+      "stoppedFor": null,
+      "recordedWallSeconds": 54.96690803091042,
+      "peakTreeRssBytes": 739684352,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase111",
+        "taskset",
+        "-c",
+        "3",
+        "selfhost/.bootstrap/bun-1.4.3/bun",
+        "selfhost/tools/performance/phase118/emit-integrated.mjs",
+        "selfhost/build/phase111/p118-scalar-api02/report.json",
+        "selfhost/build/phase118/scalar-source02/manifest.json",
+        "selfhost/build/phase118/scalar-emit01",
+        "coverage-map-churn-128",
+        "lexer",
+        "coverage-unicode-text-64",
+        "coverage-list-pipeline-128"
+      ]
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/scalar-screen01-guard/process.json",
+        "bytes": 669,
+        "sha256": "6ff2e622e48388499be23f063f557cb771923b0ab4fa88d30a05aaf19d98fea3"
+      },
+      "aliases": [],
+      "from": 1792580208.4738848,
+      "to": 1792580217.052251,
+      "seconds": 8.57836627960205,
+      "closedAtCutoff": true,
+      "category": "focused experiments and mixed pipelines",
+      "status": "success",
+      "returncode": 0,
+      "stoppedFor": null,
+      "recordedWallSeconds": 8.578365965979174,
+      "peakTreeRssBytes": 45539328,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase111",
+        "taskset",
+        "-c",
+        "3",
+        "python3",
+        "-B",
+        "selfhost/tools/performance/phase118/screen.py",
+        "--emission",
+        "selfhost/build/phase118/scalar-emit01/report.json",
+        "--out",
+        "selfhost/build/phase118/scalar-screen01",
+        "--label",
+        "scalar01"
+      ]
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/runtime-u32-01-guard/process.json",
+        "bytes": 567,
+        "sha256": "d01341b74ff32ea96f2134fed7fed56eed68f04c66203baf8273d79ec702f237"
+      },
+      "aliases": [],
+      "from": 1792580223.510613,
+      "to": 1792580225.097099,
+      "seconds": 1.5864861011505127,
+      "closedAtCutoff": true,
+      "category": "runtime acquisition",
+      "status": "success",
+      "returncode": 0,
+      "stoppedFor": null,
+      "recordedWallSeconds": 1.5864878450520337,
+      "peakTreeRssBytes": 83038208,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase111",
+        "taskset",
+        "-c",
+        "3",
+        "python3",
+        "-B",
+        "selfhost/tools/performance/phase118/runtime-u32.py",
+        "--out",
+        "selfhost/build/phase118/runtime-u32-01"
+      ]
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/u32-screen01-guard/process.json",
+        "bytes": 668,
+        "sha256": "178460b0eca5515068011e04c6a19c47172afd1a02323891f73ac3ac3d0519dd"
+      },
+      "aliases": [],
+      "from": 1792580287.5241995,
+      "to": 1792580296.6069531,
+      "seconds": 9.082753658294678,
+      "closedAtCutoff": true,
+      "category": "focused experiments and mixed pipelines",
+      "status": "success",
+      "returncode": 0,
+      "stoppedFor": null,
+      "recordedWallSeconds": 9.082754072034732,
+      "peakTreeRssBytes": 47218688,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase111",
+        "taskset",
+        "-c",
+        "3",
+        "python3",
+        "-B",
+        "selfhost/tools/performance/phase118/screen.py",
+        "--emission",
+        "selfhost/build/phase118/u32-bind01/report.json",
+        "--out",
+        "selfhost/build/phase118/u32-screen01",
+        "--label",
+        "u32runtime01"
+      ]
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/divmod-api01-guard/process.json",
+        "bytes": 936,
+        "sha256": "3e4e4445617908b96cf82d7f108a9f786f5bd9cba2cf9b8e83f2ba162871eacf"
+      },
+      "aliases": [],
+      "from": 1792580315.8913145,
+      "to": 1792580328.7337906,
+      "seconds": 12.84247612953186,
+      "closedAtCutoff": true,
+      "category": "checked API acquisition",
+      "status": "success",
+      "returncode": 0,
+      "stoppedFor": null,
+      "recordedWallSeconds": 12.842483417131007,
+      "peakTreeRssBytes": 1629626368,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase111",
+        "taskset",
+        "-c",
+        "3",
+        "python3",
+        "-B",
+        "selfhost/tools/performance/phase111/check-api.py",
+        "--source",
+        "selfhost/build/phase118/divmod-source01/compiler.bend",
+        "--out",
+        "selfhost/build/phase111/p118-divmod-api01",
+        "p113a_lower_request",
+        "p113a_verify",
+        "p113a_admitted_chunks",
+        "p88_cache_prepare",
+        "p86_prepare",
+        "p86_plan",
+        "p111_runtime_admission",
+        "p111_emit_admitted",
+        "p111_compile_source",
+        "p118i_permission",
+        "p118z_eligible",
+        "p118z_controls"
+      ]
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/divmod-emit01-guard/process.json",
+        "bytes": 816,
+        "sha256": "8423457328d2984df848e9ed85116e1fa45cd84bc9b6fb175e13e43581dd371b"
+      },
+      "aliases": [],
+      "from": 1792580343.9775724,
+      "to": 1792580400.0316882,
+      "seconds": 56.054115772247314,
+      "closedAtCutoff": true,
+      "category": "focused experiments and mixed pipelines",
+      "status": "success",
+      "returncode": 0,
+      "stoppedFor": null,
+      "recordedWallSeconds": 56.054118213942274,
+      "peakTreeRssBytes": 682147840,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase111",
+        "taskset",
+        "-c",
+        "3",
+        "selfhost/.bootstrap/bun-1.4.3/bun",
+        "selfhost/tools/performance/phase118/emit-integrated.mjs",
+        "selfhost/build/phase111/p118-divmod-api01/report.json",
+        "selfhost/build/phase118/divmod-source01/manifest.json",
+        "selfhost/build/phase118/divmod-emit01",
+        "coverage-list-pipeline-128",
+        "lexer",
+        "coverage-map-churn-128",
+        "coverage-numeric-recurrence-1024"
+      ]
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/divmod-screen01-guard/process.json",
+        "bytes": 670,
+        "sha256": "8a5fdc61b6681bbc2a6b8780918817d9080ebc9f4e5f6e10913f6341c844eed1"
+      },
+      "aliases": [],
+      "from": 1792580424.5845752,
+      "to": 1792580433.5278215,
+      "seconds": 8.943246364593506,
+      "closedAtCutoff": true,
+      "category": "focused experiments and mixed pipelines",
+      "status": "success",
+      "returncode": 0,
+      "stoppedFor": null,
+      "recordedWallSeconds": 8.943246856098995,
+      "peakTreeRssBytes": 46776320,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase111",
+        "taskset",
+        "-c",
+        "3",
+        "python3",
+        "-B",
+        "selfhost/tools/performance/phase118/screen.py",
+        "--emission",
+        "selfhost/build/phase118/divmod-emit01/report.json",
+        "--out",
+        "selfhost/build/phase118/divmod-screen01",
+        "--label",
+        "divmod01"
+      ]
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/parent-entry-api01-guard/process.json",
+        "bytes": 752,
+        "sha256": "bd9ab4f5ef017502b3bc771564830b480838768962caf78f693129997015a71b"
+      },
+      "aliases": [],
+      "from": 1792580491.519326,
+      "to": 1792580502.8549867,
+      "seconds": 11.335660696029663,
+      "closedAtCutoff": true,
+      "category": "checked API acquisition",
+      "status": "success",
+      "returncode": 0,
+      "stoppedFor": null,
+      "recordedWallSeconds": 11.335662295110524,
+      "peakTreeRssBytes": 1480032256,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase111",
+        "taskset",
+        "-c",
+        "3",
+        "python3",
+        "-B",
+        "selfhost/tools/performance/phase111/check-api.py",
+        "--source",
+        "selfhost/build/phase117/version-source03/compiler.bend",
+        "--out",
+        "selfhost/build/phase111/p118-parent-entry-api01",
+        "p88_cache_prepare",
+        "p86_plan",
+        "p111_runtime_admission",
+        "p111_emit_admitted"
+      ]
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/transport-numeric-emit01-guard/process.json",
+        "bytes": 789,
+        "sha256": "5950c1ff6e26340709f925d75fab3d7a7070ebeec5caad0bdd5f5bf2ad805c22"
+      },
+      "aliases": [],
+      "from": 1792580512.7949986,
+      "to": 1792580533.529726,
+      "seconds": 20.734727382659912,
+      "closedAtCutoff": true,
+      "category": "focused experiments and mixed pipelines",
+      "status": "success",
+      "returncode": 0,
+      "stoppedFor": null,
+      "recordedWallSeconds": 20.734729321906343,
+      "peakTreeRssBytes": 497455104,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase111",
+        "taskset",
+        "-c",
+        "3",
+        "selfhost/.bootstrap/bun-1.4.3/bun",
+        "selfhost/tools/performance/phase118/emit-integrated.mjs",
+        "selfhost/build/phase111/p118-transport-api01/report.json",
+        "selfhost/build/phase118/transport-source01/manifest.json",
+        "selfhost/build/phase118/transport-numeric-emit01",
+        "coverage-numeric-recurrence-1024",
+        "coverage-list-pipeline-128"
+      ]
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/transport-numeric-screen01-guard/process.json",
+        "bytes": 703,
+        "sha256": "00f36f39b4e020d03827b5d503c9795cb03313403ca96e27e7c2c29147fc70c6"
+      },
+      "aliases": [],
+      "from": 1792580634.388408,
+      "to": 1792580637.9326675,
+      "seconds": 3.544259548187256,
+      "closedAtCutoff": true,
+      "category": "focused experiments and mixed pipelines",
+      "status": "success",
+      "returncode": 0,
+      "stoppedFor": null,
+      "recordedWallSeconds": 3.5442599959205836,
+      "peakTreeRssBytes": 44978176,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase111",
+        "taskset",
+        "-c",
+        "3",
+        "python3",
+        "-B",
+        "selfhost/tools/performance/phase118/screen.py",
+        "--emission",
+        "selfhost/build/phase118/transport-numeric-emit01/report.json",
+        "--out",
+        "selfhost/build/phase118/transport-numeric-screen01",
+        "--label",
+        "transport-numeric01"
+      ]
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/extend-api01-guard/process.json",
+        "bytes": 959,
+        "sha256": "fd6aaf16b23270fd40aff67be69b01b8a9224dc1db2c79fd025f21279b668eae"
+      },
+      "aliases": [],
+      "from": 1792580688.1397529,
+      "to": 1792580699.9182248,
+      "seconds": 11.778471946716309,
+      "closedAtCutoff": true,
+      "category": "checked API acquisition",
+      "status": "success",
+      "returncode": 0,
+      "stoppedFor": null,
+      "recordedWallSeconds": 11.778473845915869,
+      "peakTreeRssBytes": 1602768896,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase111",
+        "taskset",
+        "-c",
+        "3",
+        "python3",
+        "-B",
+        "selfhost/tools/performance/phase111/check-api.py",
+        "--source",
+        "selfhost/build/phase118/extend-source01/compiler.bend",
+        "--out",
+        "selfhost/build/phase111/p118-extend-api01",
+        "p113a_lower_request",
+        "p113a_verify",
+        "p113a_admitted_chunks",
+        "p88_cache_prepare",
+        "p86_prepare",
+        "p86_plan",
+        "p111_runtime_admission",
+        "p111_emit_admitted",
+        "p111_compile_source",
+        "p118i_permission",
+        "p118z_eligible",
+        "p118z_controls",
+        "p118xs_controls"
+      ]
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/runtime-extend01-guard/process.json",
+        "bytes": 659,
+        "sha256": "2a9261380feac6f1526458be12038b102b8be2bd00f425bf01ce8bbdf5b1ec35"
+      },
+      "aliases": [],
+      "from": 1792580713.545404,
+      "to": 1792580715.1953077,
+      "seconds": 1.6499037742614746,
+      "closedAtCutoff": true,
+      "category": "runtime acquisition",
+      "status": "success",
+      "returncode": 0,
+      "stoppedFor": null,
+      "recordedWallSeconds": 1.649903907906264,
+      "peakTreeRssBytes": 84959232,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase111",
+        "taskset",
+        "-c",
+        "3",
+        "python3",
+        "-B",
+        "selfhost/tools/performance/phase118/runtime-extend-sized.py",
+        "--out",
+        "selfhost/build/phase118/runtime-extend01",
+        "--extra",
+        "selfhost/tools/performance/phase118/runtime-extend-sized.c"
+      ]
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/extend-emit01-guard/process.json",
+        "bytes": 715,
+        "sha256": "e0eadd6cbbb8e13650a02361a3c4f0ce78e0caf9d6c18485d5508ffcb31714db"
+      },
+      "aliases": [],
+      "from": 1792580724.525758,
+      "to": 1792580739.471937,
+      "seconds": 14.946178913116455,
+      "closedAtCutoff": true,
+      "category": "focused experiments and mixed pipelines",
+      "status": "success",
+      "returncode": 0,
+      "stoppedFor": null,
+      "recordedWallSeconds": 14.946179387858137,
+      "peakTreeRssBytes": 554577920,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase111",
+        "taskset",
+        "-c",
+        "3",
+        "node",
+        "selfhost/tools/performance/phase118/emit-integrated.mjs",
+        "selfhost/build/phase111/p118-extend-api01/report.json",
+        "selfhost/build/phase118/extend-source01/manifest.json",
+        "selfhost/build/phase118/extend-emit01",
+        "coverage-list-pipeline-128",
+        "lexer"
+      ]
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/extend-screen01-guard/process.json",
+        "bytes": 670,
+        "sha256": "c63cb538679483556da065b8eb02eb75f8799e5ea59e7d716f45961206d7eb76"
+      },
+      "aliases": [],
+      "from": 1792580781.7782748,
+      "to": 1792580786.5090494,
+      "seconds": 4.730774641036987,
+      "closedAtCutoff": true,
+      "category": "focused experiments and mixed pipelines",
+      "status": "success",
+      "returncode": 0,
+      "stoppedFor": null,
+      "recordedWallSeconds": 4.730777682038024,
+      "peakTreeRssBytes": 42819584,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase111",
+        "taskset",
+        "-c",
+        "3",
+        "python3",
+        "-B",
+        "selfhost/tools/performance/phase118/screen.py",
+        "--emission",
+        "selfhost/build/phase118/extend-emit01/report.json",
+        "--out",
+        "selfhost/build/phase118/extend-screen01",
+        "--label",
+        "extend01"
+      ]
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/float-api01-guard/process.json",
+        "bytes": 957,
+        "sha256": "40219b016c183571d5305d891aa758239d8f77b7c5c813f9bbd445dd1cf62432"
+      },
+      "aliases": [],
+      "from": 1792580916.1749198,
+      "to": 1792580928.0290108,
+      "seconds": 11.854090929031372,
+      "closedAtCutoff": true,
+      "category": "checked API acquisition",
+      "status": "success",
+      "returncode": 0,
+      "stoppedFor": null,
+      "recordedWallSeconds": 11.854094110894948,
+      "peakTreeRssBytes": 1745108992,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase111",
+        "taskset",
+        "-c",
+        "3",
+        "python3",
+        "-B",
+        "selfhost/tools/performance/phase111/check-api.py",
+        "--source",
+        "selfhost/build/phase118/float-source01/compiler.bend",
+        "--out",
+        "selfhost/build/phase111/p118-float-api01",
+        "p113a_lower_request",
+        "p113a_verify",
+        "p113a_admitted_chunks",
+        "p88_cache_prepare",
+        "p86_prepare",
+        "p86_plan",
+        "p111_runtime_admission",
+        "p111_emit_admitted",
+        "p111_compile_source",
+        "p118i_permission",
+        "p118z_eligible",
+        "p118z_controls",
+        "p118xs_controls"
+      ]
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/float-jobs01-guard/process.json",
+        "bytes": 735,
+        "sha256": "c1719276046cf880c293e7a37c3711333e40a15a0ece551e694a0c186c05ea45"
+      },
+      "aliases": [],
+      "from": 1792580961.3409176,
+      "to": 1792580963.5639708,
+      "seconds": 2.223053216934204,
+      "closedAtCutoff": true,
+      "category": "focused experiments and mixed pipelines",
+      "status": "failed",
+      "returncode": 1,
+      "stoppedFor": null,
+      "recordedWallSeconds": 2.223053833004087,
+      "peakTreeRssBytes": 209313792,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase111",
+        "taskset",
+        "-c",
+        "3",
+        "python3",
+        "-B",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase113/run-jobs.py",
+        "--plan",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/float-jobs01.json",
+        "--out",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/p118-float-jobs01"
+      ]
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/float-jobs02-guard/process.json",
+        "bytes": 633,
+        "sha256": "aecc00b9d76600104bb6ce78654e146ae7e6cd603bbaa83ad0f19834245e79f7"
+      },
+      "aliases": [],
+      "from": 1792581050.1814106,
+      "to": 1792581075.6907613,
+      "seconds": 25.509350776672363,
+      "closedAtCutoff": true,
+      "category": "focused experiments and mixed pipelines",
+      "status": "success",
+      "returncode": 0,
+      "stoppedFor": null,
+      "recordedWallSeconds": 25.509351287968457,
+      "peakTreeRssBytes": 626880512,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase111",
+        "taskset",
+        "-c",
+        "3",
+        "python3",
+        "-B",
+        "selfhost/tools/performance/phase113/run-jobs.py",
+        "--plan",
+        "selfhost/build/phase118/float-jobs02.json",
+        "--out",
+        "selfhost/build/phase113/p118-float-jobs02"
+      ]
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/all-controls-emit01-guard/process.json",
+        "bytes": 1085,
+        "sha256": "d4199e7b04d4028ecddadca9b620a2e09e6263f055d90b29a6ae80dec6732d5e"
+      },
+      "aliases": [],
+      "from": 1792581205.8521225,
+      "to": 1792581232.607702,
+      "seconds": 26.755579471588135,
+      "closedAtCutoff": true,
+      "category": "focused experiments and mixed pipelines",
+      "status": "success",
+      "returncode": 0,
+      "stoppedFor": null,
+      "recordedWallSeconds": 26.755583063000813,
+      "peakTreeRssBytes": 591896576,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase111",
+        "taskset",
+        "-c",
+        "3",
+        "node",
+        "selfhost/tools/performance/phase118/emit-integrated.mjs",
+        "selfhost/build/phase111/p118-float-api01/report.json",
+        "selfhost/build/phase118/float-source01/manifest.json",
+        "selfhost/build/phase118/all-controls-emit01",
+        "construction",
+        "refusals",
+        "mixed",
+        "shared",
+        "cold-transitive",
+        "observer-v2",
+        "scalar-array-wrap",
+        "string-array-owners",
+        "mixed-record-owner",
+        "upstream-generic-cell",
+        "upstream-borrowed-generic",
+        "array_split_join",
+        "array_wrap_index",
+        "array_size",
+        "array_boxed_get",
+        "array_atomic_fadd",
+        "arrays-io",
+        "f32-to-u32",
+        "u32-divmod"
+      ]
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/broad-jobs01-guard/process.json",
+        "bytes": 735,
+        "sha256": "daf38e724557a97aba51d6096c39739df69f99ef6951242a05851bb71721724e"
+      },
+      "aliases": [],
+      "from": 1792581294.6151862,
+      "to": 1792581653.3484805,
+      "seconds": 358.73329424858093,
+      "closedAtCutoff": true,
+      "category": "broad qualification and emission",
+      "status": "success",
+      "returncode": 0,
+      "stoppedFor": null,
+      "recordedWallSeconds": 358.73329576617107,
+      "peakTreeRssBytes": 860528640,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase111",
+        "taskset",
+        "-c",
+        "3",
+        "python3",
+        "-B",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase113/run-jobs.py",
+        "--plan",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/broad-jobs01.json",
+        "--out",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/p118-broad-jobs01"
+      ]
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/cursor-api01-guard/process.json",
+        "bytes": 959,
+        "sha256": "280b29e56dbcd31be947e965efb43dbe92336bcbdde8f82e58210fac3c79215c"
+      },
+      "aliases": [],
+      "from": 1792581670.5227733,
+      "to": 1792581683.0000708,
+      "seconds": 12.47729754447937,
+      "closedAtCutoff": true,
+      "category": "checked API acquisition",
+      "status": "success",
+      "returncode": 0,
+      "stoppedFor": null,
+      "recordedWallSeconds": 12.477300740079954,
+      "peakTreeRssBytes": 1820925952,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase111",
+        "taskset",
+        "-c",
+        "3",
+        "python3",
+        "-B",
+        "selfhost/tools/performance/phase111/check-api.py",
+        "--source",
+        "selfhost/build/phase118/cursor-source01/compiler.bend",
+        "--out",
+        "selfhost/build/phase111/p118-cursor-api01",
+        "p113a_lower_request",
+        "p113a_verify",
+        "p113a_admitted_chunks",
+        "p88_cache_prepare",
+        "p86_prepare",
+        "p86_plan",
+        "p111_runtime_admission",
+        "p111_emit_admitted",
+        "p111_compile_source",
+        "p118i_permission",
+        "p118z_eligible",
+        "p118z_controls",
+        "p118ct_controls"
+      ]
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/runtime-cursor01-guard/process.json",
+        "bytes": 672,
+        "sha256": "7eea11db8def69e442d2f1b3bdd7e2855316a65e5fee123fb05321798c0ab300"
+      },
+      "aliases": [],
+      "from": 1792581755.752646,
+      "to": 1792581757.5288236,
+      "seconds": 1.7761776447296143,
+      "closedAtCutoff": true,
+      "category": "runtime acquisition",
+      "status": "success",
+      "returncode": 0,
+      "stoppedFor": null,
+      "recordedWallSeconds": 1.7761782777961344,
+      "peakTreeRssBytes": 85803008,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase111",
+        "taskset",
+        "-c",
+        "3",
+        "python3",
+        "-B",
+        "selfhost/tools/performance/phase118/runtime-destination-cursor.py",
+        "--out",
+        "selfhost/build/phase118/runtime-cursor01",
+        "--extra",
+        "selfhost/tools/performance/phase118/runtime-destination-cursor.c"
+      ]
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/cursor-emit01-guard/process.json",
+        "bytes": 747,
+        "sha256": "5c677c79913b33e5169e05ca61095707aaf66b41b839b49e85f5a734b354b287"
+      },
+      "aliases": [],
+      "from": 1792581800.1459026,
+      "to": 1792581824.2817078,
+      "seconds": 24.135805130004883,
+      "closedAtCutoff": true,
+      "category": "focused experiments and mixed pipelines",
+      "status": "success",
+      "returncode": 0,
+      "stoppedFor": null,
+      "recordedWallSeconds": 24.135805798927322,
+      "peakTreeRssBytes": 633389056,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase111",
+        "taskset",
+        "-c",
+        "3",
+        "node",
+        "selfhost/tools/performance/phase118/emit-integrated.mjs",
+        "selfhost/build/phase111/p118-cursor-api01/report.json",
+        "selfhost/build/phase118/cursor-source01/manifest.json",
+        "selfhost/build/phase118/cursor-emit01",
+        "coverage-list-pipeline-128",
+        "lexer",
+        "coverage-map-churn-128"
+      ]
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/cursor-screen01-guard/process.json",
+        "bytes": 670,
+        "sha256": "0263752cc70434355cb314f1cce2633e0ae9a9e6d084437c2d4ea2db0b3b1705"
+      },
+      "aliases": [],
+      "from": 1792581842.2491982,
+      "to": 1792581849.7963786,
+      "seconds": 7.547180414199829,
+      "closedAtCutoff": true,
+      "category": "focused experiments and mixed pipelines",
+      "status": "success",
+      "returncode": 0,
+      "stoppedFor": null,
+      "recordedWallSeconds": 7.547181569039822,
+      "peakTreeRssBytes": 44937216,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase111",
+        "taskset",
+        "-c",
+        "3",
+        "python3",
+        "-B",
+        "selfhost/tools/performance/phase118/screen.py",
+        "--emission",
+        "selfhost/build/phase118/cursor-emit01/report.json",
+        "--out",
+        "selfhost/build/phase118/cursor-screen01",
+        "--label",
+        "cursor01"
+      ]
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/cursor-clean01-guard/process.json",
+        "bytes": 940,
+        "sha256": "01ad3beafa9fed832a40ec58c6ed971b91261c0aceb4729cc752efe9b19010a6"
+      },
+      "aliases": [],
+      "from": 1792581915.506135,
+      "to": 1792581939.6002982,
+      "seconds": 24.094163179397583,
+      "closedAtCutoff": true,
+      "category": "focused experiments and mixed pipelines",
+      "status": "success",
+      "returncode": 0,
+      "stoppedFor": null,
+      "recordedWallSeconds": 24.09416527603753,
+      "peakTreeRssBytes": 22327296,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase111",
+        "taskset",
+        "-c",
+        "3",
+        "python3",
+        "-B",
+        "selfhost/tools/performance/phase118/recheck-v2.py",
+        "--mode",
+        "clean",
+        "--screen",
+        "selfhost/build/phase118/cursor-screen01/report.json",
+        "--baseline-screen",
+        "selfhost/build/phase118/broad-screen01/report.json",
+        "--out",
+        "selfhost/build/phase118/cursor-clean01",
+        "--names",
+        "coverage-list-pipeline-128",
+        "lexer",
+        "coverage-map-churn-128",
+        "--roles",
+        "candidate",
+        "baseline",
+        "--rounds",
+        "5",
+        "--scale",
+        "4"
+      ]
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/p118-native-float01-qualification-guard/process.json",
+        "bytes": 771,
+        "sha256": "17c685369907bb5ea9b925060a029532e2218668f9f33aa5efed88ae0c814545"
+      },
+      "aliases": [],
+      "from": 1792582267.8669665,
+      "to": 1792582857.4915507,
+      "seconds": 589.624584197998,
+      "closedAtCutoff": true,
+      "category": "native qualification",
+      "status": "failed",
+      "returncode": 1,
+      "stoppedFor": null,
+      "recordedWallSeconds": 589.6245865400415,
+      "peakTreeRssBytes": 5217509376,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 131072; ulimit -c 0; exec \"$@\"",
+        "phase111",
+        "taskset",
+        "-c",
+        "3",
+        "/usr/bin/python3.9",
+        "-B",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase113/run-jobs.py",
+        "--plan",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/native-float01-plan.json",
+        "--out",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/p118-native-float01-qualification"
+      ]
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/hosted-cost-guard01/process.json",
+        "bytes": 639,
+        "sha256": "4241f0983813c7a65de2d01d9350d5ce5e27c9aafeca38d1f75e4d1b97705597"
+      },
+      "aliases": [],
+      "from": 1792582945.41754,
+      "to": 1792583272.0318983,
+      "seconds": 326.6143581867218,
+      "closedAtCutoff": true,
+      "category": "hosted cost",
+      "status": "success",
+      "returncode": 0,
+      "stoppedFor": null,
+      "recordedWallSeconds": 326.61435890500434,
+      "peakTreeRssBytes": 1239793664,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase111",
+        "taskset",
+        "-c",
+        "3",
+        "python3",
+        "-B",
+        "selfhost/tools/performance/phase113/run-jobs.py",
+        "--plan",
+        "selfhost/build/phase118/hosted-cost-plan01.json",
+        "--out",
+        "selfhost/build/phase113/p118-hosted-cost01"
+      ]
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/safe-api-guard01/process.json",
+        "bytes": 906,
+        "sha256": "0a10dac0a05077f1be76aa58f8b91c6bee67a163754c9cab56d1756fa414288c"
+      },
+      "aliases": [],
+      "from": 1792583310.2254145,
+      "to": 1792583313.119011,
+      "seconds": 2.8935964107513428,
+      "closedAtCutoff": true,
+      "category": "checked API acquisition",
+      "status": "failed",
+      "returncode": 1,
+      "stoppedFor": null,
+      "recordedWallSeconds": 2.8935995078645647,
+      "peakTreeRssBytes": 250974208,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase111",
+        "taskset",
+        "-c",
+        "3",
+        "python3",
+        "-B",
+        "selfhost/tools/performance/phase111/check-api.py",
+        "--source",
+        "selfhost/build/phase118/safe-source01/compiler.bend",
+        "--out",
+        "selfhost/build/phase111/p118-safe-api01",
+        "p88_cache_prepare",
+        "p86_prepare",
+        "p86_plan",
+        "p111_runtime_admission",
+        "p111_emit_admitted",
+        "p111_compile_source",
+        "p113a_lower_request",
+        "p113a_verify",
+        "p113a_admitted_chunks",
+        "p118ns_controls",
+        "p118ns_scale"
+      ]
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/inspect-api-guard01/process.json",
+        "bytes": 743,
+        "sha256": "fcba938c66dd72305ab9e9545e5c8271a0a1ae6a7bf1f516262d1f1d91470a03"
+      },
+      "aliases": [],
+      "from": 1792583407.2810936,
+      "to": 1792583417.3631887,
+      "seconds": 10.0820951461792,
+      "closedAtCutoff": true,
+      "category": "checked API acquisition",
+      "status": "success",
+      "returncode": 0,
+      "stoppedFor": null,
+      "recordedWallSeconds": 10.08209640905261,
+      "peakTreeRssBytes": 1310404608,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase111",
+        "taskset",
+        "-c",
+        "3",
+        "python3",
+        "-B",
+        "selfhost/tools/performance/phase111/check-api.py",
+        "--source",
+        "selfhost/build/phase118/inspect-source01/compiler.bend",
+        "--out",
+        "selfhost/build/phase111/p118-inspect-api01",
+        "p88_cache_prepare",
+        "p86_plan",
+        "p111_runtime_admission",
+        "p118bp_request"
+      ]
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/safe-api-guard02/process.json",
+        "bytes": 905,
+        "sha256": "277c5bb24bc8589ba8477fcef6451d16cb1890376e301fb694d64d59edd6e002"
+      },
+      "aliases": [],
+      "from": 1792583460.59731,
+      "to": 1792583473.7801416,
+      "seconds": 13.182831525802612,
+      "closedAtCutoff": true,
+      "category": "checked API acquisition",
+      "status": "success",
+      "returncode": 0,
+      "stoppedFor": null,
+      "recordedWallSeconds": 13.182833953062072,
+      "peakTreeRssBytes": 1855696896,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase111",
+        "taskset",
+        "-c",
+        "3",
+        "python3",
+        "-B",
+        "selfhost/tools/performance/phase111/check-api.py",
+        "--source",
+        "selfhost/build/phase118/safe-source02/compiler.bend",
+        "--out",
+        "selfhost/build/phase111/p118-safe-api02",
+        "p88_cache_prepare",
+        "p86_prepare",
+        "p86_plan",
+        "p111_runtime_admission",
+        "p111_emit_admitted",
+        "p111_compile_source",
+        "p113a_lower_request",
+        "p113a_verify",
+        "p113a_admitted_chunks",
+        "p118ns_controls",
+        "p118ns_scale"
+      ]
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/safe-small-guard02/process.json",
+        "bytes": 637,
+        "sha256": "9e4a93d478094a0db74a294f7b197f9f50001d74184c313c223bec0dc930049e"
+      },
+      "aliases": [],
+      "from": 1792583508.7565377,
+      "to": 1792583517.9317145,
+      "seconds": 9.175176858901978,
+      "closedAtCutoff": true,
+      "category": "focused experiments and mixed pipelines",
+      "status": "success",
+      "returncode": 0,
+      "stoppedFor": null,
+      "recordedWallSeconds": 9.175178630044684,
+      "peakTreeRssBytes": 501600256,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase111",
+        "taskset",
+        "-c",
+        "3",
+        "python3",
+        "-B",
+        "selfhost/tools/performance/phase113/run-jobs.py",
+        "--plan",
+        "selfhost/build/phase118/safe-small-plan02.json",
+        "--out",
+        "selfhost/build/phase113/p118-safe-small02"
+      ]
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/safe-emission-guard02/process.json",
+        "bytes": 643,
+        "sha256": "efca66a72bd0e66313347c51eb4b3123930da37e9f96c36d1af74c3b8226a9b3"
+      },
+      "aliases": [],
+      "from": 1792583561.5130498,
+      "to": 1792583566.3849583,
+      "seconds": 4.87190842628479,
+      "closedAtCutoff": true,
+      "category": "broad qualification and emission",
+      "status": "success",
+      "returncode": 0,
+      "stoppedFor": null,
+      "recordedWallSeconds": 4.871909028850496,
+      "peakTreeRssBytes": 280506368,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase111",
+        "taskset",
+        "-c",
+        "3",
+        "python3",
+        "-B",
+        "selfhost/tools/performance/phase113/run-jobs.py",
+        "--plan",
+        "selfhost/build/phase118/safe-emission-plan02.json",
+        "--out",
+        "selfhost/build/phase113/p118-safe-emission02"
+      ]
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/safe-emission-guard03/process.json",
+        "bytes": 643,
+        "sha256": "9984013537a626667ad2c216a3e839d5fd7e8dee8626f6123e0bef262d01a1a5"
+      },
+      "aliases": [],
+      "from": 1792583582.3188992,
+      "to": 1792583863.4430852,
+      "seconds": 281.12418603897095,
+      "closedAtCutoff": true,
+      "category": "broad qualification and emission",
+      "status": "success",
+      "returncode": 0,
+      "stoppedFor": null,
+      "recordedWallSeconds": 281.1241868401412,
+      "peakTreeRssBytes": 865345536,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase111",
+        "taskset",
+        "-c",
+        "3",
+        "python3",
+        "-B",
+        "selfhost/tools/performance/phase113/run-jobs.py",
+        "--plan",
+        "selfhost/build/phase118/safe-emission-plan03.json",
+        "--out",
+        "selfhost/build/phase113/p118-safe-emission03"
+      ]
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/dce-guard03/process.json",
+        "bytes": 625,
+        "sha256": "7acd3b0669d8685958974f63037997cce99a87c669c1b98cc3648d6a449d8edb"
+      },
+      "aliases": [],
+      "from": 1792583947.9974833,
+      "to": 1792583961.7639163,
+      "seconds": 13.766433000564575,
+      "closedAtCutoff": true,
+      "category": "focused experiments and mixed pipelines",
+      "status": "failed",
+      "returncode": 1,
+      "stoppedFor": null,
+      "recordedWallSeconds": 13.76643531722948,
+      "peakTreeRssBytes": 1820467200,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase111",
+        "taskset",
+        "-c",
+        "3",
+        "python3",
+        "-B",
+        "selfhost/tools/performance/phase113/run-jobs.py",
+        "--plan",
+        "selfhost/build/phase118/dce-plan03.json",
+        "--out",
+        "selfhost/build/phase113/p118-dce03"
+      ]
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/dce-guard04/process.json",
+        "bytes": 624,
+        "sha256": "e77b8c14b96bdd0602ea6361b78818beecdf4874b7b64cc29ef92b045d8d2741"
+      },
+      "aliases": [],
+      "from": 1792584027.1490202,
+      "to": 1792584056.2502918,
+      "seconds": 29.101271629333496,
+      "closedAtCutoff": true,
+      "category": "focused experiments and mixed pipelines",
+      "status": "success",
+      "returncode": 0,
+      "stoppedFor": null,
+      "recordedWallSeconds": 29.101273064967245,
+      "peakTreeRssBytes": 626835456,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase111",
+        "taskset",
+        "-c",
+        "3",
+        "python3",
+        "-B",
+        "selfhost/tools/performance/phase113/run-jobs.py",
+        "--plan",
+        "selfhost/build/phase118/dce-plan04.json",
+        "--out",
+        "selfhost/build/phase113/p118-dce04"
+      ]
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/dce-clean-guard01/process.json",
+        "bytes": 890,
+        "sha256": "1f1848a78e2a81fb3f21decec2a5af26cdd09d39a15d06018cd0f75f5e48fc27"
+      },
+      "aliases": [],
+      "from": 1792584108.0384045,
+      "to": 1792584126.8086882,
+      "seconds": 18.770283699035645,
+      "closedAtCutoff": true,
+      "category": "focused experiments and mixed pipelines",
+      "status": "success",
+      "returncode": 0,
+      "stoppedFor": null,
+      "recordedWallSeconds": 18.770284848986194,
+      "peakTreeRssBytes": 22007808,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase111",
+        "taskset",
+        "-c",
+        "3",
+        "python3",
+        "-B",
+        "selfhost/tools/performance/phase118/recheck-v2.py",
+        "--mode",
+        "clean",
+        "--screen",
+        "selfhost/build/phase118/dce-screen03/report.json",
+        "--baseline-screen",
+        "selfhost/build/phase118/broad-screen01/report.json",
+        "--out",
+        "selfhost/build/phase118/dce-clean01",
+        "--names",
+        "mandelbrot",
+        "lexer",
+        "--roles",
+        "candidate",
+        "baseline",
+        "--scale",
+        "4",
+        "--rounds",
+        "5"
+      ]
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/p118-native-safe02-qualification-guard/process.json",
+        "bytes": 768,
+        "sha256": "b260db2c3c16c25acbbdab7b492e7e17e0340941ef80a3b357ba47cb2fd8944c"
+      },
+      "aliases": [],
+      "from": 1792584135.654455,
+      "to": 1792584394.865018,
+      "seconds": 259.21056294441223,
+      "closedAtCutoff": true,
+      "category": "native qualification",
+      "status": "failed",
+      "returncode": 1,
+      "stoppedFor": null,
+      "recordedWallSeconds": 259.21056536817923,
+      "peakTreeRssBytes": 3929579520,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 131072; ulimit -c 0; exec \"$@\"",
+        "phase111",
+        "taskset",
+        "-c",
+        "3",
+        "/usr/bin/python3.9",
+        "-B",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase113/run-jobs.py",
+        "--plan",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/native-safe02-plan.json",
+        "--out",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/p118-native-safe02-qualification"
+      ]
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/safe-api-guard03/process.json",
+        "bytes": 959,
+        "sha256": "25125c3ec9694b2277f201a167ecf7805312e62141d4c967b9406ac151c2270d"
+      },
+      "aliases": [],
+      "from": 1792584573.7830207,
+      "to": 1792584587.4514403,
+      "seconds": 13.668419599533081,
+      "closedAtCutoff": true,
+      "category": "checked API acquisition",
+      "status": "success",
+      "returncode": 0,
+      "stoppedFor": null,
+      "recordedWallSeconds": 13.668424940900877,
+      "peakTreeRssBytes": 1857183744,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase111",
+        "taskset",
+        "-c",
+        "3",
+        "/usr/bin/python3",
+        "-B",
+        "selfhost/tools/performance/phase111/check-api.py",
+        "--source",
+        "selfhost/build/phase118/safe-source03/compiler.bend",
+        "--out",
+        "selfhost/build/phase111/p118-safe-api03",
+        "p88_cache_prepare",
+        "p86_prepare",
+        "p86_plan",
+        "p111_runtime_admission",
+        "p111_emit_admitted",
+        "p111_compile_source",
+        "p113a_lower_request",
+        "p113a_verify",
+        "p113a_admitted_chunks",
+        "p118ns_controls",
+        "p118ns_scale",
+        "p118np_controls",
+        "p118np_scale"
+      ]
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/stack-controls-guard03/process.json",
+        "bytes": 622,
+        "sha256": "6df9f09f803de837a09b5ab74d538356f2f3ce0fb3639a680b0dfd41ce78d8ee"
+      },
+      "aliases": [],
+      "from": 1792584622.5059898,
+      "to": 1792584624.3462226,
+      "seconds": 1.8402328491210938,
+      "closedAtCutoff": true,
+      "category": "finite controls",
+      "status": "success",
+      "returncode": 0,
+      "stoppedFor": null,
+      "recordedWallSeconds": 1.8402340831235051,
+      "peakTreeRssBytes": 270249984,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase111",
+        "taskset",
+        "-c",
+        "3",
+        "node",
+        "selfhost/tools/performance/phase118/stack-controls-v2.mjs",
+        "selfhost/build/phase111/p118-safe-api03/report.json",
+        "selfhost/build/phase118/safe-stack-controls03.json"
+      ]
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/p118-native-safe03-qualification-guard/process.json",
+        "bytes": 768,
+        "sha256": "14edf98c4db608de0af977a6906e0ffd4e7839e7e4beb393827d45cbe6f22254"
+      },
+      "aliases": [],
+      "from": 1792584655.670611,
+      "to": 1792585941.7064278,
+      "seconds": 1286.0358169078827,
+      "closedAtCutoff": true,
+      "category": "native qualification",
+      "status": "success",
+      "returncode": 0,
+      "stoppedFor": null,
+      "recordedWallSeconds": 1286.0358189730905,
+      "peakTreeRssBytes": 5781692416,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 131072; ulimit -c 0; exec \"$@\"",
+        "phase111",
+        "taskset",
+        "-c",
+        "3",
+        "/usr/bin/python3.9",
+        "-B",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase113/run-jobs.py",
+        "--plan",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/native-safe03-plan.json",
+        "--out",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/p118-native-safe03-qualification"
+      ]
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/native-safe03-transport-guard/process.json",
+        "bytes": 675,
+        "sha256": "98f595ec95a820099442e34efcfc4e517ae2538286a191b1017bb81e85c560d4"
+      },
+      "aliases": [],
+      "from": 1792585983.1551814,
+      "to": 1792586118.1520698,
+      "seconds": 134.99688839912415,
+      "closedAtCutoff": true,
+      "category": "other guarded work",
+      "status": "success",
+      "returncode": 0,
+      "stoppedFor": null,
+      "recordedWallSeconds": 134.99688909598626,
+      "peakTreeRssBytes": 191033344,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 131072; ulimit -c 0; exec \"$@\"",
+        "phase111",
+        "taskset",
+        "-c",
+        "3",
+        "python3",
+        "-B",
+        "selfhost/tools/performance/phase113/run-jobs.py",
+        "--plan",
+        "selfhost/build/phase118/native-safe03-transport-manifest-jobs.json",
+        "--out",
+        "selfhost/build/phase113/p118-native-safe03-transport-jobs"
+      ]
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/safe-emission-guard04/process.json",
+        "bytes": 643,
+        "sha256": "828f098143c09c3abdbaf86a57156faa05bd6740f7dce943da08524fc56b4c8d"
+      },
+      "aliases": [],
+      "from": 1792586147.6482337,
+      "to": 1792586431.8748798,
+      "seconds": 284.22664618492126,
+      "closedAtCutoff": true,
+      "category": "broad qualification and emission",
+      "status": "success",
+      "returncode": 0,
+      "stoppedFor": null,
+      "recordedWallSeconds": 284.2266475588549,
+      "peakTreeRssBytes": 873390080,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase111",
+        "taskset",
+        "-c",
+        "3",
+        "python3",
+        "-B",
+        "selfhost/tools/performance/phase113/run-jobs.py",
+        "--plan",
+        "selfhost/build/phase118/safe-emission-plan04.json",
+        "--out",
+        "selfhost/build/phase113/p118-safe-emission04"
+      ]
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/lazy-cost-guard01/process.json",
+        "bytes": 637,
+        "sha256": "a6dcf97be8cf7cb7344721a493b4ac779449bd97d515c3b90ee2ca8665ce1dac"
+      },
+      "aliases": [],
+      "from": 1792586494.6848252,
+      "to": 1792586717.2112138,
+      "seconds": 222.52638864517212,
+      "closedAtCutoff": true,
+      "category": "other guarded work",
+      "status": "success",
+      "returncode": 0,
+      "stoppedFor": null,
+      "recordedWallSeconds": 222.52638925006613,
+      "peakTreeRssBytes": 1820602368,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase111",
+        "taskset",
+        "-c",
+        "3",
+        "python3",
+        "-B",
+        "selfhost/tools/performance/phase113/run-jobs.py",
+        "--plan",
+        "selfhost/build/phase118/lazy-cost-plan01.json",
+        "--out",
+        "selfhost/build/phase113/p118-lazy-cost01"
+      ]
+    }
+  ],
+  "disjointIntervals": [
+    {
+      "from": 1792576535.0596375,
+      "to": 1792576546.7398732,
+      "seconds": 11.680235624313354,
+      "category": "checked API acquisition",
+      "owners": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/sized-api01-guard/process.json"
+      ],
+      "activeReceipts": 1
+    },
+    {
+      "from": 1792576577.1161199,
+      "to": 1792576578.6853867,
+      "seconds": 1.5692667961120605,
+      "category": "runtime acquisition",
+      "owners": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/runtime01-guard/process.json"
+      ],
+      "activeReceipts": 1
+    },
+    {
+      "from": 1792576594.8361819,
+      "to": 1792576629.881159,
+      "seconds": 35.04497718811035,
+      "category": "focused experiments and mixed pipelines",
+      "owners": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/sized-emit01-guard/process.json"
+      ],
+      "activeReceipts": 1
+    },
+    {
+      "from": 1792576681.467727,
+      "to": 1792576692.4812331,
+      "seconds": 11.013506174087524,
+      "category": "focused experiments and mixed pipelines",
+      "owners": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/sized-screen01-guard/process.json"
+      ],
+      "activeReceipts": 1
+    },
+    {
+      "from": 1792576738.1773024,
+      "to": 1792576741.3835561,
+      "seconds": 3.20625376701355,
+      "category": "checked API acquisition",
+      "owners": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/trmc-api01-guard/process.json"
+      ],
+      "activeReceipts": 1
+    },
+    {
+      "from": 1792576808.469996,
+      "to": 1792576811.2205482,
+      "seconds": 2.750552177429199,
+      "category": "checked API acquisition",
+      "owners": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/borrow-api01-guard/process.json"
+      ],
+      "activeReceipts": 1
+    },
+    {
+      "from": 1792576910.0969458,
+      "to": 1792576912.5184305,
+      "seconds": 2.4214847087860107,
+      "category": "checked API acquisition",
+      "owners": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/trmc-api02-guard/process.json"
+      ],
+      "activeReceipts": 1
+    },
+    {
+      "from": 1792576976.6244776,
+      "to": 1792576979.6390657,
+      "seconds": 3.0145881175994873,
+      "category": "checked API acquisition",
+      "owners": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/borrow-api02-guard/process.json"
+      ],
+      "activeReceipts": 1
+    },
+    {
+      "from": 1792577037.1612911,
+      "to": 1792577042.067077,
+      "seconds": 4.905785799026489,
+      "category": "checked API acquisition",
+      "owners": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/trmc-api03-guard/process.json"
+      ],
+      "activeReceipts": 1
+    },
+    {
+      "from": 1792577110.1868768,
+      "to": 1792577121.4925394,
+      "seconds": 11.305662631988525,
+      "category": "focused experiments and mixed pipelines",
+      "owners": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/runtime-only-screen01-guard/process.json"
+      ],
+      "activeReceipts": 1
+    },
+    {
+      "from": 1792577121.831423,
+      "to": 1792577127.1493979,
+      "seconds": 5.317974805831909,
+      "category": "checked API acquisition",
+      "owners": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/borrow-api03-guard/process.json"
+      ],
+      "activeReceipts": 1
+    },
+    {
+      "from": 1792577217.180859,
+      "to": 1792577222.4575102,
+      "seconds": 5.27665114402771,
+      "category": "checked API acquisition",
+      "owners": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/trmc-api04-guard/process.json"
+      ],
+      "activeReceipts": 1
+    },
+    {
+      "from": 1792577245.047256,
+      "to": 1792577256.2938688,
+      "seconds": 11.246612787246704,
+      "category": "checked API acquisition",
+      "owners": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/borrow-api04-guard/process.json"
+      ],
+      "activeReceipts": 1
+    },
+    {
+      "from": 1792577283.3219676,
+      "to": 1792577315.7115192,
+      "seconds": 32.389551639556885,
+      "category": "focused experiments and mixed pipelines",
+      "owners": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/borrow-emit01-guard/process.json"
+      ],
+      "activeReceipts": 1
+    },
+    {
+      "from": 1792577391.712222,
+      "to": 1792577403.0007162,
+      "seconds": 11.288494110107422,
+      "category": "checked API acquisition",
+      "owners": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/trmc-api05-guard/process.json"
+      ],
+      "activeReceipts": 1
+    },
+    {
+      "from": 1792577432.034555,
+      "to": 1792577440.0307822,
+      "seconds": 7.996227264404297,
+      "category": "focused experiments and mixed pipelines",
+      "owners": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/borrow-screen01-guard/process.json"
+      ],
+      "activeReceipts": 1
+    },
+    {
+      "from": 1792577467.6345258,
+      "to": 1792577511.9060373,
+      "seconds": 44.27151155471802,
+      "category": "focused experiments and mixed pipelines",
+      "owners": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/trmc-emit01-guard/process.json"
+      ],
+      "activeReceipts": 1
+    },
+    {
+      "from": 1792577635.3994768,
+      "to": 1792577643.9884815,
+      "seconds": 8.589004755020142,
+      "category": "focused experiments and mixed pipelines",
+      "owners": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/trmc-screen01-guard/process.json"
+      ],
+      "activeReceipts": 1
+    },
+    {
+      "from": 1792577756.245761,
+      "to": 1792577757.8130193,
+      "seconds": 1.567258358001709,
+      "category": "runtime acquisition",
+      "owners": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/runtime-cold01-guard/process.json"
+      ],
+      "activeReceipts": 1
+    },
+    {
+      "from": 1792577826.762167,
+      "to": 1792577837.9896417,
+      "seconds": 11.227474689483643,
+      "category": "checked API acquisition",
+      "owners": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/cold-api01-guard/process.json"
+      ],
+      "activeReceipts": 1
+    },
+    {
+      "from": 1792577903.7691238,
+      "to": 1792577944.5691876,
+      "seconds": 40.80006384849548,
+      "category": "focused experiments and mixed pipelines",
+      "owners": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/cold-emit01-guard/process.json"
+      ],
+      "activeReceipts": 1
+    },
+    {
+      "from": 1792578017.4252539,
+      "to": 1792578028.486599,
+      "seconds": 11.061345100402832,
+      "category": "focused experiments and mixed pipelines",
+      "owners": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/cold-screen01-guard/process.json"
+      ],
+      "activeReceipts": 1
+    },
+    {
+      "from": 1792578298.0014098,
+      "to": 1792578309.5955842,
+      "seconds": 11.5941743850708,
+      "category": "checked API acquisition",
+      "owners": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/combined-api01-guard/process.json"
+      ],
+      "activeReceipts": 1
+    },
+    {
+      "from": 1792578325.5600128,
+      "to": 1792578358.5411031,
+      "seconds": 32.98109030723572,
+      "category": "focused experiments and mixed pipelines",
+      "owners": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/combined-emit01-guard/process.json"
+      ],
+      "activeReceipts": 1
+    },
+    {
+      "from": 1792578365.5960193,
+      "to": 1792578375.6587813,
+      "seconds": 10.062762022018433,
+      "category": "focused experiments and mixed pipelines",
+      "owners": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/combined-screen01-guard/process.json"
+      ],
+      "activeReceipts": 1
+    },
+    {
+      "from": 1792578390.698729,
+      "to": 1792578396.2568476,
+      "seconds": 5.558118581771851,
+      "category": "focused experiments and mixed pipelines",
+      "owners": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/combined-controls-emit01-guard/process.json"
+      ],
+      "activeReceipts": 1
+    },
+    {
+      "from": 1792578548.2461598,
+      "to": 1792578557.7532153,
+      "seconds": 9.507055521011353,
+      "category": "focused experiments and mixed pipelines",
+      "owners": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/combined-controls-emit02-guard/process.json"
+      ],
+      "activeReceipts": 1
+    },
+    {
+      "from": 1792578584.3381767,
+      "to": 1792578586.8918095,
+      "seconds": 2.5536327362060547,
+      "category": "other guarded work",
+      "owners": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/observer-error01-guard/process.json"
+      ],
+      "activeReceipts": 1
+    },
+    {
+      "from": 1792578630.1707594,
+      "to": 1792578631.5952077,
+      "seconds": 1.4244482517242432,
+      "category": "focused experiments and mixed pipelines",
+      "owners": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/combined-controls-run01-guard/process.json"
+      ],
+      "activeReceipts": 1
+    },
+    {
+      "from": 1792578671.7874906,
+      "to": 1792578679.0857613,
+      "seconds": 7.2982707023620605,
+      "category": "focused experiments and mixed pipelines",
+      "owners": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/cold-controls-emit01-guard/process.json"
+      ],
+      "activeReceipts": 1
+    },
+    {
+      "from": 1792578738.3305314,
+      "to": 1792578739.4199412,
+      "seconds": 1.0894098281860352,
+      "category": "focused experiments and mixed pipelines",
+      "owners": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/cold-controls-run01-guard/process.json"
+      ],
+      "activeReceipts": 1
+    },
+    {
+      "from": 1792578749.313378,
+      "to": 1792578760.992362,
+      "seconds": 11.678983926773071,
+      "category": "checked API acquisition",
+      "owners": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/integrated-api01-guard/process.json"
+      ],
+      "activeReceipts": 1
+    },
+    {
+      "from": 1792578808.2310731,
+      "to": 1792578819.8499038,
+      "seconds": 11.618830680847168,
+      "category": "checked API acquisition",
+      "owners": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/reuse-api01-guard/process.json"
+      ],
+      "activeReceipts": 1
+    },
+    {
+      "from": 1792578856.629682,
+      "to": 1792578858.3822005,
+      "seconds": 1.7525184154510498,
+      "category": "runtime acquisition",
+      "owners": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/runtime-reuse01-guard/process.json"
+      ],
+      "activeReceipts": 1
+    },
+    {
+      "from": 1792578878.3977277,
+      "to": 1792578905.1881607,
+      "seconds": 26.790432929992676,
+      "category": "focused experiments and mixed pipelines",
+      "owners": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/integrated-match01-guard/process.json"
+      ],
+      "activeReceipts": 1
+    },
+    {
+      "from": 1792578942.2253988,
+      "to": 1792578942.2895622,
+      "seconds": 0.0641634464263916,
+      "category": "focused experiments and mixed pipelines",
+      "owners": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/reuse-emit01-guard/process.json"
+      ],
+      "activeReceipts": 1
+    },
+    {
+      "from": 1792578960.8997593,
+      "to": 1792578997.7112553,
+      "seconds": 36.8114960193634,
+      "category": "focused experiments and mixed pipelines",
+      "owners": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/reuse-emit02-guard/process.json"
+      ],
+      "activeReceipts": 1
+    },
+    {
+      "from": 1792579005.0525982,
+      "to": 1792579019.3011413,
+      "seconds": 14.24854302406311,
+      "category": "focused experiments and mixed pipelines",
+      "owners": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/reuse-screen01-guard/process.json"
+      ],
+      "activeReceipts": 1
+    },
+    {
+      "from": 1792579043.6157837,
+      "to": 1792579118.3775077,
+      "seconds": 74.76172399520874,
+      "category": "profiling and IR inspection",
+      "owners": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/combined-profile01-guard/process.json"
+      ],
+      "activeReceipts": 1
+    },
+    {
+      "from": 1792579277.5414758,
+      "to": 1792579289.2611754,
+      "seconds": 11.719699621200562,
+      "category": "checked API acquisition",
+      "owners": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/transport-api01-guard/process.json"
+      ],
+      "activeReceipts": 1
+    },
+    {
+      "from": 1792579321.619036,
+      "to": 1792579323.2897813,
+      "seconds": 1.6707453727722168,
+      "category": "runtime acquisition",
+      "owners": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/runtime-transport01-guard/process.json"
+      ],
+      "activeReceipts": 1
+    },
+    {
+      "from": 1792579372.794813,
+      "to": 1792579373.2069893,
+      "seconds": 0.41217637062072754,
+      "category": "finite controls",
+      "owners": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/transport-finite01-guard/process.json"
+      ],
+      "activeReceipts": 1
+    },
+    {
+      "from": 1792579382.1485372,
+      "to": 1792579409.2483215,
+      "seconds": 27.09978437423706,
+      "category": "focused experiments and mixed pipelines",
+      "owners": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/transport-emit01-guard/process.json"
+      ],
+      "activeReceipts": 1
+    },
+    {
+      "from": 1792579429.4301255,
+      "to": 1792579438.5567276,
+      "seconds": 9.126602172851562,
+      "category": "focused experiments and mixed pipelines",
+      "owners": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/transport-screen01-guard/process.json"
+      ],
+      "activeReceipts": 1
+    },
+    {
+      "from": 1792579445.5117104,
+      "to": 1792579458.0698788,
+      "seconds": 12.558168411254883,
+      "category": "checked API acquisition",
+      "owners": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/reuse-sized-api01-guard/process.json"
+      ],
+      "activeReceipts": 1
+    },
+    {
+      "from": 1792579522.7038388,
+      "to": 1792579556.3445907,
+      "seconds": 33.64075183868408,
+      "category": "profiling and IR inspection",
+      "owners": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/compiler-inspect01-guard/process.json"
+      ],
+      "activeReceipts": 1
+    },
+    {
+      "from": 1792579607.7661073,
+      "to": 1792579609.334516,
+      "seconds": 1.568408727645874,
+      "category": "runtime acquisition",
+      "owners": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/runtime-bank01-guard/process.json"
+      ],
+      "activeReceipts": 1
+    },
+    {
+      "from": 1792579609.4711974,
+      "to": 1792579611.3657947,
+      "seconds": 1.8945972919464111,
+      "category": "runtime acquisition",
+      "owners": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/runtime-reuse-sized01-guard/process.json"
+      ],
+      "activeReceipts": 1
+    },
+    {
+      "from": 1792579611.486381,
+      "to": 1792579611.937278,
+      "seconds": 0.4508969783782959,
+      "category": "finite controls",
+      "owners": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/reuse-finite01-guard/process.json"
+      ],
+      "activeReceipts": 1
+    },
+    {
+      "from": 1792579612.3278782,
+      "to": 1792579732.4447563,
+      "seconds": 120.11687803268433,
+      "category": "profiling and IR inspection",
+      "owners": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/compiler-inspect02-guard/process.json"
+      ],
+      "activeReceipts": 1
+    },
+    {
+      "from": 1792579914.113401,
+      "to": 1792579923.2194202,
+      "seconds": 9.106019258499146,
+      "category": "focused experiments and mixed pipelines",
+      "owners": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/bank-screen02-guard/process.json"
+      ],
+      "activeReceipts": 1
+    },
+    {
+      "from": 1792579935.9706264,
+      "to": 1792579947.7657208,
+      "seconds": 11.79509449005127,
+      "category": "checked API acquisition",
+      "owners": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/scalar-api01-guard/process.json"
+      ],
+      "activeReceipts": 1
+    },
+    {
+      "from": 1792579962.0802712,
+      "to": 1792579963.6939678,
+      "seconds": 1.613696575164795,
+      "category": "runtime acquisition",
+      "owners": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/runtime-scalar01-guard/process.json"
+      ],
+      "activeReceipts": 1
+    },
+    {
+      "from": 1792579972.553963,
+      "to": 1792579978.6229455,
+      "seconds": 6.0689826011657715,
+      "category": "focused experiments and mixed pipelines",
+      "owners": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/scalar-controls-emit01-guard/process.json"
+      ],
+      "activeReceipts": 1
+    },
+    {
+      "from": 1792580010.2679486,
+      "to": 1792580010.311758,
+      "seconds": 0.04380941390991211,
+      "category": "focused experiments and mixed pipelines",
+      "owners": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/reuse-sized-emit01-guard/process.json"
+      ],
+      "activeReceipts": 1
+    },
+    {
+      "from": 1792580020.711185,
+      "to": 1792580055.4408321,
+      "seconds": 34.729647159576416,
+      "category": "focused experiments and mixed pipelines",
+      "owners": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/reuse-sized-emit02-guard/process.json"
+      ],
+      "activeReceipts": 1
+    },
+    {
+      "from": 1792580068.3083715,
+      "to": 1792580075.039256,
+      "seconds": 6.730884552001953,
+      "category": "focused experiments and mixed pipelines",
+      "owners": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/reuse-sized-screen01-guard/process.json"
+      ],
+      "activeReceipts": 1
+    },
+    {
+      "from": 1792580087.1643999,
+      "to": 1792580098.5567071,
+      "seconds": 11.39230728149414,
+      "category": "checked API acquisition",
+      "owners": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/scalar-api02-guard/process.json"
+      ],
+      "activeReceipts": 1
+    },
+    {
+      "from": 1792580105.7717235,
+      "to": 1792580112.8776138,
+      "seconds": 7.105890274047852,
+      "category": "focused experiments and mixed pipelines",
+      "owners": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/scalar-controls-emit02-guard/process.json"
+      ],
+      "activeReceipts": 1
+    },
+    {
+      "from": 1792580123.3408637,
+      "to": 1792580123.979166,
+      "seconds": 0.6383023262023926,
+      "category": "focused experiments and mixed pipelines",
+      "owners": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/scalar-controls-run02-guard/process.json"
+      ],
+      "activeReceipts": 1
+    },
+    {
+      "from": 1792580135.0163665,
+      "to": 1792580189.9832745,
+      "seconds": 54.96690797805786,
+      "category": "focused experiments and mixed pipelines",
+      "owners": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/scalar-emit01-guard/process.json"
+      ],
+      "activeReceipts": 1
+    },
+    {
+      "from": 1792580208.4738848,
+      "to": 1792580217.052251,
+      "seconds": 8.57836627960205,
+      "category": "focused experiments and mixed pipelines",
+      "owners": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/scalar-screen01-guard/process.json"
+      ],
+      "activeReceipts": 1
+    },
+    {
+      "from": 1792580223.510613,
+      "to": 1792580225.097099,
+      "seconds": 1.5864861011505127,
+      "category": "runtime acquisition",
+      "owners": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/runtime-u32-01-guard/process.json"
+      ],
+      "activeReceipts": 1
+    },
+    {
+      "from": 1792580287.5241995,
+      "to": 1792580296.6069531,
+      "seconds": 9.082753658294678,
+      "category": "focused experiments and mixed pipelines",
+      "owners": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/u32-screen01-guard/process.json"
+      ],
+      "activeReceipts": 1
+    },
+    {
+      "from": 1792580315.8913145,
+      "to": 1792580328.7337906,
+      "seconds": 12.84247612953186,
+      "category": "checked API acquisition",
+      "owners": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/divmod-api01-guard/process.json"
+      ],
+      "activeReceipts": 1
+    },
+    {
+      "from": 1792580343.9775724,
+      "to": 1792580400.0316882,
+      "seconds": 56.054115772247314,
+      "category": "focused experiments and mixed pipelines",
+      "owners": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/divmod-emit01-guard/process.json"
+      ],
+      "activeReceipts": 1
+    },
+    {
+      "from": 1792580424.5845752,
+      "to": 1792580433.5278215,
+      "seconds": 8.943246364593506,
+      "category": "focused experiments and mixed pipelines",
+      "owners": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/divmod-screen01-guard/process.json"
+      ],
+      "activeReceipts": 1
+    },
+    {
+      "from": 1792580491.519326,
+      "to": 1792580502.8549867,
+      "seconds": 11.335660696029663,
+      "category": "checked API acquisition",
+      "owners": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/parent-entry-api01-guard/process.json"
+      ],
+      "activeReceipts": 1
+    },
+    {
+      "from": 1792580512.7949986,
+      "to": 1792580533.529726,
+      "seconds": 20.734727382659912,
+      "category": "focused experiments and mixed pipelines",
+      "owners": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/transport-numeric-emit01-guard/process.json"
+      ],
+      "activeReceipts": 1
+    },
+    {
+      "from": 1792580634.388408,
+      "to": 1792580637.9326675,
+      "seconds": 3.544259548187256,
+      "category": "focused experiments and mixed pipelines",
+      "owners": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/transport-numeric-screen01-guard/process.json"
+      ],
+      "activeReceipts": 1
+    },
+    {
+      "from": 1792580688.1397529,
+      "to": 1792580699.9182248,
+      "seconds": 11.778471946716309,
+      "category": "checked API acquisition",
+      "owners": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/extend-api01-guard/process.json"
+      ],
+      "activeReceipts": 1
+    },
+    {
+      "from": 1792580713.545404,
+      "to": 1792580715.1953077,
+      "seconds": 1.6499037742614746,
+      "category": "runtime acquisition",
+      "owners": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/runtime-extend01-guard/process.json"
+      ],
+      "activeReceipts": 1
+    },
+    {
+      "from": 1792580724.525758,
+      "to": 1792580739.471937,
+      "seconds": 14.946178913116455,
+      "category": "focused experiments and mixed pipelines",
+      "owners": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/extend-emit01-guard/process.json"
+      ],
+      "activeReceipts": 1
+    },
+    {
+      "from": 1792580781.7782748,
+      "to": 1792580786.5090494,
+      "seconds": 4.730774641036987,
+      "category": "focused experiments and mixed pipelines",
+      "owners": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/extend-screen01-guard/process.json"
+      ],
+      "activeReceipts": 1
+    },
+    {
+      "from": 1792580916.1749198,
+      "to": 1792580928.0290108,
+      "seconds": 11.854090929031372,
+      "category": "checked API acquisition",
+      "owners": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/float-api01-guard/process.json"
+      ],
+      "activeReceipts": 1
+    },
+    {
+      "from": 1792580961.3409176,
+      "to": 1792580963.5639708,
+      "seconds": 2.223053216934204,
+      "category": "focused experiments and mixed pipelines",
+      "owners": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/float-jobs01-guard/process.json"
+      ],
+      "activeReceipts": 1
+    },
+    {
+      "from": 1792581050.1814106,
+      "to": 1792581075.6907613,
+      "seconds": 25.509350776672363,
+      "category": "focused experiments and mixed pipelines",
+      "owners": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/float-jobs02-guard/process.json"
+      ],
+      "activeReceipts": 1
+    },
+    {
+      "from": 1792581205.8521225,
+      "to": 1792581232.607702,
+      "seconds": 26.755579471588135,
+      "category": "focused experiments and mixed pipelines",
+      "owners": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/all-controls-emit01-guard/process.json"
+      ],
+      "activeReceipts": 1
+    },
+    {
+      "from": 1792581294.6151862,
+      "to": 1792581653.3484805,
+      "seconds": 358.73329424858093,
+      "category": "broad qualification and emission",
+      "owners": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/broad-jobs01-guard/process.json"
+      ],
+      "activeReceipts": 1
+    },
+    {
+      "from": 1792581670.5227733,
+      "to": 1792581683.0000708,
+      "seconds": 12.47729754447937,
+      "category": "checked API acquisition",
+      "owners": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/cursor-api01-guard/process.json"
+      ],
+      "activeReceipts": 1
+    },
+    {
+      "from": 1792581755.752646,
+      "to": 1792581757.5288236,
+      "seconds": 1.7761776447296143,
+      "category": "runtime acquisition",
+      "owners": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/runtime-cursor01-guard/process.json"
+      ],
+      "activeReceipts": 1
+    },
+    {
+      "from": 1792581800.1459026,
+      "to": 1792581824.2817078,
+      "seconds": 24.135805130004883,
+      "category": "focused experiments and mixed pipelines",
+      "owners": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/cursor-emit01-guard/process.json"
+      ],
+      "activeReceipts": 1
+    },
+    {
+      "from": 1792581842.2491982,
+      "to": 1792581849.7963786,
+      "seconds": 7.547180414199829,
+      "category": "focused experiments and mixed pipelines",
+      "owners": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/cursor-screen01-guard/process.json"
+      ],
+      "activeReceipts": 1
+    },
+    {
+      "from": 1792581915.506135,
+      "to": 1792581939.6002982,
+      "seconds": 24.094163179397583,
+      "category": "focused experiments and mixed pipelines",
+      "owners": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/cursor-clean01-guard/process.json"
+      ],
+      "activeReceipts": 1
+    },
+    {
+      "from": 1792582267.8669665,
+      "to": 1792582857.4915507,
+      "seconds": 589.624584197998,
+      "category": "native qualification",
+      "owners": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/p118-native-float01-qualification-guard/process.json"
+      ],
+      "activeReceipts": 1
+    },
+    {
+      "from": 1792582945.41754,
+      "to": 1792583272.0318983,
+      "seconds": 326.6143581867218,
+      "category": "hosted cost",
+      "owners": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/hosted-cost-guard01/process.json"
+      ],
+      "activeReceipts": 1
+    },
+    {
+      "from": 1792583310.2254145,
+      "to": 1792583313.119011,
+      "seconds": 2.8935964107513428,
+      "category": "checked API acquisition",
+      "owners": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/safe-api-guard01/process.json"
+      ],
+      "activeReceipts": 1
+    },
+    {
+      "from": 1792583407.2810936,
+      "to": 1792583417.3631887,
+      "seconds": 10.0820951461792,
+      "category": "checked API acquisition",
+      "owners": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/inspect-api-guard01/process.json"
+      ],
+      "activeReceipts": 1
+    },
+    {
+      "from": 1792583460.59731,
+      "to": 1792583473.7801416,
+      "seconds": 13.182831525802612,
+      "category": "checked API acquisition",
+      "owners": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/safe-api-guard02/process.json"
+      ],
+      "activeReceipts": 1
+    },
+    {
+      "from": 1792583508.7565377,
+      "to": 1792583517.9317145,
+      "seconds": 9.175176858901978,
+      "category": "focused experiments and mixed pipelines",
+      "owners": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/safe-small-guard02/process.json"
+      ],
+      "activeReceipts": 1
+    },
+    {
+      "from": 1792583561.5130498,
+      "to": 1792583566.3849583,
+      "seconds": 4.87190842628479,
+      "category": "broad qualification and emission",
+      "owners": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/safe-emission-guard02/process.json"
+      ],
+      "activeReceipts": 1
+    },
+    {
+      "from": 1792583582.3188992,
+      "to": 1792583863.4430852,
+      "seconds": 281.12418603897095,
+      "category": "broad qualification and emission",
+      "owners": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/safe-emission-guard03/process.json"
+      ],
+      "activeReceipts": 1
+    },
+    {
+      "from": 1792583947.9974833,
+      "to": 1792583961.7639163,
+      "seconds": 13.766433000564575,
+      "category": "focused experiments and mixed pipelines",
+      "owners": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/dce-guard03/process.json"
+      ],
+      "activeReceipts": 1
+    },
+    {
+      "from": 1792584027.1490202,
+      "to": 1792584056.2502918,
+      "seconds": 29.101271629333496,
+      "category": "focused experiments and mixed pipelines",
+      "owners": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/dce-guard04/process.json"
+      ],
+      "activeReceipts": 1
+    },
+    {
+      "from": 1792584108.0384045,
+      "to": 1792584126.8086882,
+      "seconds": 18.770283699035645,
+      "category": "focused experiments and mixed pipelines",
+      "owners": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/dce-clean-guard01/process.json"
+      ],
+      "activeReceipts": 1
+    },
+    {
+      "from": 1792584135.654455,
+      "to": 1792584394.865018,
+      "seconds": 259.21056294441223,
+      "category": "native qualification",
+      "owners": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/p118-native-safe02-qualification-guard/process.json"
+      ],
+      "activeReceipts": 1
+    },
+    {
+      "from": 1792584573.7830207,
+      "to": 1792584587.4514403,
+      "seconds": 13.668419599533081,
+      "category": "checked API acquisition",
+      "owners": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/safe-api-guard03/process.json"
+      ],
+      "activeReceipts": 1
+    },
+    {
+      "from": 1792584622.5059898,
+      "to": 1792584624.3462226,
+      "seconds": 1.8402328491210938,
+      "category": "finite controls",
+      "owners": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/stack-controls-guard03/process.json"
+      ],
+      "activeReceipts": 1
+    },
+    {
+      "from": 1792584655.670611,
+      "to": 1792585941.7064278,
+      "seconds": 1286.0358169078827,
+      "category": "native qualification",
+      "owners": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/p118-native-safe03-qualification-guard/process.json"
+      ],
+      "activeReceipts": 1
+    },
+    {
+      "from": 1792585983.1551814,
+      "to": 1792586118.1520698,
+      "seconds": 134.99688839912415,
+      "category": "other guarded work",
+      "owners": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/native-safe03-transport-guard/process.json"
+      ],
+      "activeReceipts": 1
+    },
+    {
+      "from": 1792586147.6482337,
+      "to": 1792586431.8748798,
+      "seconds": 284.22664618492126,
+      "category": "broad qualification and emission",
+      "owners": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/safe-emission-guard04/process.json"
+      ],
+      "activeReceipts": 1
+    },
+    {
+      "from": 1792586494.6848252,
+      "to": 1792586717.2112138,
+      "seconds": 222.52638864517212,
+      "category": "other guarded work",
+      "owners": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/lazy-cost-guard01/process.json"
+      ],
+      "activeReceipts": 1
+    }
+  ],
+  "discovery": {
+    "command": [
+      "rg",
+      "--files",
+      "--hidden",
+      "--no-ignore",
+      "selfhost/build",
+      "-g",
+      "process.json"
+    ],
+    "candidatePaths": 49865,
+    "mtimePrefilterBefore": "2026-10-21T09:47:34Z",
+    "scope": "All existing process.json paths under selfhost/build, including ignored/hidden trees; only guard-schema records overlapping the window are selected."
+  },
+  "unreadable": [],
+  "limitations": [
+    "Guard wall duration includes subprocess/build/validation/orchestration time, not CPU time.",
+    "An open receipt is an unfinished envelope, not proof its process remains active; it may be stale.",
+    "Categories label outermost named campaigns; bundled API, finite, and target work is not split without timestamps.",
+    "Uncovered elapsed time is unclassified, not thinking time: includes unguarded source work, tools, agents, waiting and possible missing receipts.",
+    "Source/static audits and agent/model tokens, monetary cost, quota, billing and CPU-seconds are not measured here.",
+    "mtime prefilter assumes normal ExecutionGuard writes; backdated/copied receipts outside selfhost/build require an explicit supplemental audit."
+  ],
+  "snapshot": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/time-accounting04/receipts.json",
+    "bytes": 126250,
+    "sha256": "bb7833b55ee444121855577774dc68a9e5f8cbeb20bb08b912e8b853d7e9b58c"
+  }
+}

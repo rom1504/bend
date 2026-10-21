@@ -1,0 +1,516 @@
+{
+  "kind": "phase118-native-qualification-summary",
+  "complete": true,
+  "installedPromotion": false,
+  "source": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/safe-source03/compiler.bend",
+    "bytes": 2389209,
+    "sha256": "a1aac003bbcac3731cc47b3c00dcc7e27f9323842fd26cb60417c2115e85ff10"
+  },
+  "api": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p118-safe-api03/api.mjs",
+    "bytes": 2028199,
+    "sha256": "f0205f5e241b440460d476135a9cb11fc555a451bd28d1e7a46bb9838b6b46aa"
+  },
+  "runtime": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/runtime-extend01/runtime.o",
+    "bytes": 113728,
+    "sha256": "1b740d48e0db4504b214e0c909d0b5f28cd49064850e9be69fdb20a53a6c55fe"
+  },
+  "sourceLines": 52411,
+  "rawQbe": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p118-native-safe03-self/program.ssa",
+    "bytes": 85831654,
+    "sha256": "a0b668b4d2804d1167014dd9e612e045a68e51989dc45e94516caa632586cb26"
+  },
+  "byteExactQbe": true,
+  "n1": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p118-native-safe03-n1/program",
+    "bytes": 14012336,
+    "sha256": "09d58c21c5f52652ad36ca8642d254f18d7e8caf31e12efedbd0b5e9ab7b9f31"
+  },
+  "n2": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p118-native-safe03-self/build/program",
+    "bytes": 14012344,
+    "sha256": "a2439547e4c237879570d7ef7d23f6dae0e8f2e5dcdfd98fa7278cb8d0bcc6ba"
+  },
+  "gates": {
+    "n1Focused": {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p118-native-safe03-n1-focused/report.json",
+        "bytes": 78104,
+        "sha256": "b6da6c2c297556851abdd91f0b72a3444f075441059359c43d0d7aaf85f49f73"
+      },
+      "summary": {
+        "positiveCompiled": 16,
+        "positiveBuilt": 16,
+        "positiveExecuted": 16,
+        "semanticPasses": 16,
+        "expectedRefusals": 3,
+        "expectedSourceRefusals": 2,
+        "expectedBackendRefusals": 1,
+        "pending": 0
+      }
+    },
+    "n2Focused": {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p118-native-safe03-n2-focused/report.json",
+        "bytes": 78266,
+        "sha256": "bc7d31a9fa4fe36932c732ad7e547f3f44a9231d11af49fcbb276876f60082c8"
+      },
+      "summary": {
+        "positiveCompiled": 16,
+        "positiveBuilt": 16,
+        "positiveExecuted": 16,
+        "semanticPasses": 16,
+        "expectedRefusals": 3,
+        "expectedSourceRefusals": 2,
+        "expectedBackendRefusals": 1,
+        "pending": 0
+      }
+    },
+    "n2Full45": {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p118-native-safe03-n2-full45/report.json",
+        "bytes": 228673,
+        "sha256": "337c83591dafb552257543cc9e3e693c8cd110c4c5dc5c2d58344520398ef289"
+      },
+      "summary": {
+        "positiveCompiled": 45,
+        "positiveBuilt": 45,
+        "positiveExecuted": 45,
+        "semanticPasses": 45,
+        "expectedRefusals": 0,
+        "expectedSourceRefusals": 0,
+        "expectedBackendRefusals": 0,
+        "pending": 0
+      }
+    }
+  },
+  "guard": {
+    "complete": true,
+    "command": [
+      "bash",
+      "-c",
+      "ulimit -f 131072; ulimit -c 0; exec \"$@\"",
+      "phase111",
+      "taskset",
+      "-c",
+      "3",
+      "/usr/bin/python3.9",
+      "-B",
+      "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase113/run-jobs.py",
+      "--plan",
+      "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/native-safe03-plan.json",
+      "--out",
+      "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/p118-native-safe03-qualification"
+    ],
+    "started": 1792584655.670611,
+    "rssLimitBytes": 6442450944,
+    "availableFloorBytes": 17179869184,
+    "peakTreeRssBytes": 5781692416,
+    "minimumAvailableBytes": 21246173184,
+    "returncode": 0,
+    "wallSeconds": 1286.0358189730905,
+    "finished": 1792585941.7064278
+  },
+  "nativeRequestSeconds": 406.6143417840358,
+  "hostedCompilerSeconds": 699.4410753039999,
+  "hostedTotalSeconds": 701.2582732289999,
+  "qualificationJobs": [
+    {
+      "name": "authenticate-plan",
+      "command": [
+        "/usr/bin/python3.9",
+        "-B",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase118/native-plan-v2.py",
+        "verify",
+        "--plan",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/native-safe03-plan.json"
+      ],
+      "seconds": 0.46590851806104183,
+      "status": 0,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/p118-native-safe03-qualification/0.stdout",
+        "sha256": "b7eb50e61c26f392ce54797b0f38a1fb0f3e2c63310240d1f1f1a08c9344ecd8",
+        "bytes": 238
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/p118-native-safe03-qualification/0.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "name": "full-hosted-integrated-emission",
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/bun-1.4.3/bun",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase118/native-hosted-v2.mjs",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p118-safe-api03/api.mjs",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/safe-source03/compiler.bend",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p118-native-safe03-full-emit",
+        "cache",
+        "array"
+      ],
+      "seconds": 701.8238554489799,
+      "status": 0,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/p118-native-safe03-qualification/1.stdout",
+        "sha256": "59263ef76d4f01aff2d243645bd00becfbce54f4bcbc953bc95de040bb21a3ee",
+        "bytes": 2955
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/p118-native-safe03-qualification/1.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "name": "n1-build",
+      "command": [
+        "/usr/bin/python3.9",
+        "-B",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase111/build.py",
+        "--source",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p118-native-safe03-full-emit/program.ssa",
+        "--runtime",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/runtime-extend01/runtime.o",
+        "--out",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p118-native-safe03-n1",
+        "--seconds",
+        "120"
+      ],
+      "seconds": 10.982232936192304,
+      "status": 0,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/p118-native-safe03-qualification/2.stdout",
+        "sha256": "91680168c1e576cad696cc1aa080114c5cfce9ffb6462c1b647d261fc91b15c9",
+        "bytes": 262
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/p118-native-safe03-qualification/2.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "name": "n1-focused19",
+      "command": [
+        "/usr/bin/python3.9",
+        "-B",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase111/coverage/native-run.py",
+        "--image",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p118-native-safe03-n1/program",
+        "--runtime",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/runtime-extend01/runtime.o",
+        "--suite",
+        "focused",
+        "--seconds",
+        "30",
+        "--build-seconds",
+        "30",
+        "--out",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p118-native-safe03-n1-focused"
+      ],
+      "seconds": 20.405916549032554,
+      "status": 0,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/p118-native-safe03-qualification/3.stdout",
+        "sha256": "2dfdf00c28b83cfa78a06bcb9b2167f1e329571b705422a6eb8d3199a68bd63c",
+        "bytes": 1975
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/p118-native-safe03-qualification/3.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "name": "native-self-emission-n2-build",
+      "command": [
+        "/usr/bin/python3.9",
+        "-B",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase111/native-emit.py",
+        "--image",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p118-native-safe03-n1/program",
+        "--source",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/safe-source03/compiler.bend",
+        "--out",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p118-native-safe03-self",
+        "--mode",
+        "cache",
+        "--runtime",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/runtime-extend01/runtime.o",
+        "--seconds",
+        "1200",
+        "--build-seconds",
+        "120"
+      ],
+      "seconds": 417.5120087771211,
+      "status": 0,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/p118-native-safe03-qualification/4.stdout",
+        "sha256": "ad314ceaaec20f99e455e1dd5d663232fa8478bb68819b06154c5d985b92958c",
+        "bytes": 624
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/p118-native-safe03-qualification/4.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "name": "exact-hosted-native-qbe",
+      "command": [
+        "/usr/bin/python3.9",
+        "-B",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase118/native-comparison.py",
+        "--plan",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/native-safe03-plan.json",
+        "--out",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/p118-native-safe03-qbe-comparison.json"
+      ],
+      "seconds": 1.5669068188872188,
+      "status": 0,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/p118-native-safe03-qualification/5.stdout",
+        "sha256": "eeee5fa6a4be9016e8e26d26820ecc0e2b408eecdf4888daa49e1a5d17c6d780",
+        "bytes": 255
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/p118-native-safe03-qualification/5.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "name": "n2-focused19",
+      "command": [
+        "/usr/bin/python3.9",
+        "-B",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase111/coverage/native-run.py",
+        "--image",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p118-native-safe03-self/build/program",
+        "--runtime",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/runtime-extend01/runtime.o",
+        "--suite",
+        "focused",
+        "--seconds",
+        "30",
+        "--build-seconds",
+        "30",
+        "--out",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p118-native-safe03-n2-focused"
+      ],
+      "seconds": 21.34733363194391,
+      "status": 0,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/p118-native-safe03-qualification/6.stdout",
+        "sha256": "2dfdf00c28b83cfa78a06bcb9b2167f1e329571b705422a6eb8d3199a68bd63c",
+        "bytes": 1975
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/p118-native-safe03-qualification/6.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "name": "n2-original-full45",
+      "command": [
+        "/usr/bin/python3.9",
+        "-B",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase111/coverage/full45/native-run.py",
+        "--partition",
+        "all45",
+        "--image",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p118-native-safe03-self/build/program",
+        "--runtime",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/runtime-extend01/runtime.o",
+        "--seconds",
+        "120",
+        "--build-seconds",
+        "10",
+        "--out",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p118-native-safe03-n2-full45"
+      ],
+      "seconds": 111.5691171779763,
+      "status": 0,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/p118-native-safe03-qualification/7.stdout",
+        "sha256": "3bebcceafc0399906b39a9bd7084d94cdec5284e06764abda2b9288f31c5098d",
+        "bytes": 5099
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/p118-native-safe03-qualification/7.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    }
+  ],
+  "plan": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/native-safe03-plan.json",
+    "bytes": 111172,
+    "sha256": "5cbb6268c6b11e6bcbb0e74edc180ad9b1429db168926d0faa0fe4d37e60406c"
+  },
+  "comparison": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/p118-native-safe03-qbe-comparison.json",
+    "bytes": 110285,
+    "sha256": "b51c35602490a7c1393ca5cd6ffd46b85b3f58be5f3daa0e3c864465868e4af7"
+  },
+  "nativeRequestBenchmark": {
+    "complete": true,
+    "observations": 54,
+    "reports": [
+      {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase112/p118-native-safe03-transport/report.json",
+        "bytes": 230886,
+        "sha256": "9ef0345b9e7f0bce7754aa089b0a33c47f9c07893a62b5c4b4214b65759ceb95"
+      },
+      {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase112/p118-native-safe03-transport-phase114/report.json",
+        "bytes": 236629,
+        "sha256": "bb8412bfdebd58574c043d3b7e658df8d0eab81e1c5d9b2b1da8e193d9cf895a"
+      }
+    ],
+    "rows": [
+      {
+        "name": "lexer",
+        "current": {
+          "N1": {
+            "requestSeconds": 2.219050813000649,
+            "readyExecutableStageSumSeconds": 2.3002797472290695
+          },
+          "N2": {
+            "requestSeconds": 2.2206932730041444,
+            "readyExecutableStageSumSeconds": 2.3029060440603644
+          },
+          "upstream": {
+            "requestSeconds": 0.7239729729481041,
+            "readyExecutableStageSumSeconds": 1.3833443007897586
+          }
+        },
+        "phase114": {
+          "N1": {
+            "requestSeconds": 2.8511364748701453,
+            "readyExecutableStageSumSeconds": 2.9298642647918314
+          },
+          "N2": {
+            "requestSeconds": 2.8484430271200836,
+            "readyExecutableStageSumSeconds": 2.927371395053342
+          },
+          "upstream": {
+            "requestSeconds": 0.6923780909273773,
+            "readyExecutableStageSumSeconds": 1.3688673877622932
+          }
+        }
+      },
+      {
+        "name": "coverage-closures-256",
+        "current": {
+          "N1": {
+            "requestSeconds": 0.5854676780290902,
+            "readyExecutableStageSumSeconds": 0.62530791410245
+          },
+          "N2": {
+            "requestSeconds": 0.5987758019473404,
+            "readyExecutableStageSumSeconds": 0.6385073596611619
+          },
+          "upstream": {
+            "requestSeconds": 0.5253595029935241,
+            "readyExecutableStageSumSeconds": 1.0866543769370764
+          }
+        },
+        "phase114": {
+          "N1": {
+            "requestSeconds": 0.75679163611494,
+            "readyExecutableStageSumSeconds": 0.7963084960356355
+          },
+          "N2": {
+            "requestSeconds": 0.7629050659015775,
+            "readyExecutableStageSumSeconds": 0.8025870218407363
+          },
+          "upstream": {
+            "requestSeconds": 0.5306025939062238,
+            "readyExecutableStageSumSeconds": 1.0783408109564334
+          }
+        }
+      },
+      {
+        "name": "coverage-map-churn-128",
+        "current": {
+          "N1": {
+            "requestSeconds": 3.019455339992419,
+            "readyExecutableStageSumSeconds": 3.1791083498392254
+          },
+          "N2": {
+            "requestSeconds": 3.0265057999640703,
+            "readyExecutableStageSumSeconds": 3.185273848939687
+          },
+          "upstream": {
+            "requestSeconds": 1.126724958885461,
+            "readyExecutableStageSumSeconds": 2.898300094064325
+          }
+        },
+        "phase114": {
+          "N1": {
+            "requestSeconds": 4.4317001779563725,
+            "readyExecutableStageSumSeconds": 4.590658952947706
+          },
+          "N2": {
+            "requestSeconds": 4.487463271943852,
+            "readyExecutableStageSumSeconds": 4.64683782029897
+          },
+          "upstream": {
+            "requestSeconds": 1.091614339966327,
+            "readyExecutableStageSumSeconds": 2.8953731830697507
+          }
+        }
+      }
+    ],
+    "currentRatios": {
+      "requestSeconds": {
+        "phase112/phase111": 1.0085525127054622,
+        "phase112/upstream": 2.1097572562459153,
+        "phase111/upstream": 2.091866541075238
+      },
+      "readyExecutableStageSumSeconds": {
+        "phase112/phase111": 1.0080211957142164,
+        "phase112/upstream": 1.02441189139972,
+        "phase111/upstream": 1.0162602688863998
+      }
+    },
+    "phase114Ratios": {
+      "requestSeconds": {
+        "phase112/phase111": 1.0065563217487308,
+        "phase112/upstream": 2.897114602451688,
+        "phase111/upstream": 2.8782439093109207
+      },
+      "readyExecutableStageSumSeconds": {
+        "phase112/phase111": 1.0064090444936862,
+        "phase112/upstream": 1.3669999610005916,
+        "phase111/upstream": 1.3582945905343238
+      }
+    },
+    "currentOverPhase114": {
+      "N1": {
+        "requestSeconds": 0.7430385739472238,
+        "readyExecutableStageSumSeconds": 0.7529948576788046
+      },
+      "N2": {
+        "requestSeconds": 0.7445121595278489,
+        "readyExecutableStageSumSeconds": 0.7542010685982133
+      },
+      "upstream": {
+        "requestSeconds": 1.0223626640862977,
+        "readyExecutableStageSumSeconds": 1.0064241151590403
+      }
+    },
+    "scope": "Separate consecutive three-source rotated screens, own exact runtime per source; cached Base/runtime direct QBE versus source Base/full C Clang upstream. Not original45 compiler throughput or generated-program runtime."
+  },
+  "limits": [
+    "No ELF fixed-point or N2-to-N3 claim",
+    "Native original45 is one-shot correctness, not batch program-speed timing",
+    "Installed native Phase102 and JS Phase90 selections remain unchanged"
+  ]
+}

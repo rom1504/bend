@@ -1,49 +1,56 @@
-# Current frontier: Phase117 scalar-array facts and loop versioning
+# Current frontier: Phase118 ownership and live transport
 
-[Report](../implementation/phase117/README.md) ·
-[Design](../design/phase117/array-facts-and-scalar-code.md) ·
-[Exact measurements](../implementation/phase117/results.json) ·
-[Selection](../implementation/phase117/selection.json) ·
-[Reproduction](../selfhost/tools/performance/phase117/README.md).
+[Report](../implementation/phase118/README.md) ·
+[Native results](../implementation/phase118/native-results.md) ·
+[Design](../design/phase118/ownership-and-construction.md) ·
+[Remaining opportunities](../implementation/phase118/remaining-opportunities.md) ·
+[Reproduction](../selfhost/tools/performance/phase118/README.md).
 
-Selected checked Bend source03 reuses packed32 scalar allocation/access/drop,
-tracks exact invariant entry handles, versions complete loops with an original
-fallback worker, and raises the general inline body cap384→512. All other budgets
-and independent admission/verifier boundaries remain. The selected runtime is
-capability-adapted GCC10-O2; global/allocator-only O3 experiments are NOT selected.
-No workload names guide compiler decisions.
+Bend source projects mature destination construction and borrowed-observer plans
+into direct QBE, retains cold-constructor facts, proves live-prefix transport and
+uses exact sized/primitive helpers. No workload-name selection. Allocation-only
+construction is selected; cell reuse, destination cursor, scalar-only observers
+and dead-scalar cleanup are excluded after small/neutral/negative results.
 
-Original45 passes405 complete output/count observations. Its44 timed points move
-5.308→4.240×pinned upstream C,1.25185×faster/20.12% less time. Array cases gain up
-to5×; tree/lexer/scalar families are mostly unchanged. Longer closure64 recheck
-regresses3.1%; closure256's small initial regression does not persist. These are
-hosted-API-produced native programs, not a new native-compiler qualification.
+The timed float-source01 passes405 original45 observations;44 timed ratios improve
+4.31651→3.00893× pinned upstream C,30.29% less runtime. Hosted prepared-request cost
+on8 sources increases12.50%; entry cost18.66%. Do not equate code quality with
+compiler/research-loop speed. The original timed source/API remains pinned;
+traversal-repaired safe03 is a distinct native producer with an exact-byte bridge.
 
-Hosted prepared-Base requests cost+3.7%fold,+23.7%editdist,−0.6%lexer; geometric
-cost+8.46%. Source50,590→51,056lines (+0.92%); broad QBE grows2.35%. Do not equate
-generated-code speed with compiler/request/research-loop speed. No native B1/B2
-throughput update, installed selection change or recursive acceleration claim.
+Safe03 N1/N2 reproduce85,831,654 raw QBE bytes, both pass focused19 (16 executions,
+3 expected refusals), and N2 passes45 one-shot programs. Full qualification costs
+21.43min, peak5.385GiB. Earlier589.6s/259.2s host-stack failures remain evidence.
+The captured older nc_pack_foreign scan now uses an exact worklist. nt_choose
+source recursion alone is not evidence of host recursion: inspect its trampoline.
 
-Selected source SHA8010f9b5691a32f9b8d3a45da444e05b4bf4275fd1380e2acb122bfd2e53fec6;
-API `phase111/p117-version-api03`, runtime `phase117/runtime01`.22 finite analysis
-controls,11 ordinary owner/array controls and forced-slow scalar/product ABI
-controls pass. Independent replay checks1,198 selected/rejected observations.
-Source/API checks plus finite controls are not a formal backend proof.
+Fresh native3-source screen: N1/N2 requests2.09187×/2.10976× upstream; configured
+request+machine build1.01626×/1.02441×. Fresh Phase114 requests2.87824×/2.89711× and
+ready1.35829×/1.36700×. Direct native median reductions25.70%/25.55% requests and
+24.70%/24.58% ready. Both screens pass27 observations. Native prepared Base/cached
+runtime versus upstream source Base/full C/Clang are explicit workflow differences.
+This is neither full45 compiler throughput nor native-produced batch45 timing.
 
-New profiles: fold59%kernel,28%allocation/fill,2%generic destruction (previously22%);
-editdist353/354 leaves in row. Boolean normalization has zero useful gain; optional
-unroll2 adds6–11% only on folds and remains excluded. Global runtime-O3 regresses
-ownership cases; allocator-only O3 improves small fold but broad marginal gain
-~0.5% and new2–4%slowdowns do not justify promotion. Preserve all negative results.
+Native source a1aac003bbcac3731cc47b3c00dcc7e27f9323842fd26cb60417c2115e85ff10;
+runtime runtime-extend01 SHA1b740d48e0db4504b214e0c909d0b5f28cd49064850e9be69fdb20a53a6c55fe.
+Source51,056→52,411lines (+2.65%); timed broad QBE grows0.94%. Installed Phase102
+native and Phase90 JS selections remain unchanged. No ELF fixed point, N2-to-N3,
+GPU/parallel qualification or recursive research acceleration claim.
 
-Prioritize broad ownership information/borrowed observers and destination-passing
-in hot tree/map/text computations, using Phase116 and mature-C plans. Shared RFC
-paths require proof, not uniqueness assumptions. Also isolate/reduce extra inlining,
-lowering and verification cost before claiming a faster compiler research loop.
-For runtime-only experiments reuse authenticated QBE/object artifacts; the new
-relink harness avoids282s broad emission while retaining original execution gates.
+Next highest-value generated-code experiment: typed private call regions with
+representation preserved across calls, compared against ABI-only changes and
+upstream hot instructions. Ray-only parity would leave the aggregate2.600×;
+require transfer to integer/Boolean/array programs. Old float-lane changes gave
+12.77% active-ray /4.17% raytrace, not2×. Dead scalar cleanup shrank IR but grew the
+hot loop97→99 instructions and regressed8.05%; do not repeat text-size claims.
 
-# Qualified native development checkpoint: Phase114 source02
+Compiler-cost audit identifies eager observer admission, duplicate prepared-book
+bang analysis, and discarded C residual text. Test the smallest exact-output
+change first. eligible-staged is isolated and excluded: exact QBE on3 sources but whole
+compiler cost1.00045× (neutral); see P118-005. No global cache is justified.
+Use authenticated artifact reuse for runtime-only experiments and retain failures.
+
+# Historical native development checkpoint: Phase114 source02
 
 [Report](../implementation/phase114/README.md) ·
 [Native results](../implementation/phase114/native-results.md) ·
@@ -87,7 +94,7 @@ and [direct-QBE guide](../docs/self_hosted/direct-qbe.md) before quoting metrics
 
 One root-owned serial CPU3 target lane; use existing process-tree guards,2GiB for
 ordinary experiments and a16GiB available floor. Larger qualified image campaigns
-have separate4GiB gates. No unsafe/failure-runtime probes; do not resume Phase113
+have an explicit6GiB gate after measured growth, retaining the16GiB floor. No unsafe/failure-runtime probes; do not resume Phase113
 custom failure reproductions. Ordinary valid source controls and frozen benchmarks
 are the iteration loop. Agents can perform disjoint offline audits; account for
 cost rather than using them reflexively. Keep rejected attempts and independent

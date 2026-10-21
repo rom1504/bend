@@ -1,7 +1,7 @@
 {
   "kind": "phase118-measurements",
-  "complete": false,
-  "scope": "Broad runtime completed; initial native acquisition failed host stack limit; compiler-cost measurements running",
+  "complete": true,
+  "scope": "Completed broad hosted-emitted program runtime and matched hosted cost; separate safe03 native qualification and three-source native request/build benchmark",
   "source": {
     "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/float-source01/compiler.bend",
     "bytes": 2376955,
@@ -1295,7 +1295,11 @@
     "lineGrowthPercent": 2.0781103102475607,
     "parentBroadQbeBytes": 39079507,
     "selectedBroadQbeBytes": 39447110,
-    "qbeGrowthPercent": 0.9406541387535938
+    "qbeGrowthPercent": 0.9406541387535938,
+    "qualifiedNativeSourceLines": 52411,
+    "qualifiedNativeLineGrowthPercent": 2.653948605452827,
+    "runtimeObjectBytes": 113728,
+    "parentRuntimeObjectBytes": 97088
   },
   "evidence": [
     {
@@ -1551,5 +1555,132 @@
         "admittedCandidateOverParent": 1.2148279069214951
       }
     ]
+  },
+  "qualifiedNativeSource": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/safe-source03/compiler.bend",
+    "bytes": 2389209,
+    "sha256": "a1aac003bbcac3731cc47b3c00dcc7e27f9323842fd26cb60417c2115e85ff10"
+  },
+  "nativeQualification": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/p118-native-safe03-qualification/report.json",
+    "bytes": 9874,
+    "sha256": "7fb8d2e57b98d3298fd0cbce7975866dfcf869cca99420efa68ed0513a73e690"
+  },
+  "nativeResults": {
+    "file": "/home/ai/bend2/build/publish/bend/implementation/phase118/native-results.json",
+    "bytes": 19300,
+    "sha256": "b77a3140dab5ae5b1293907ccda911b852fe1ad83b1eb8524897855b22ed154c"
+  },
+  "sourceBridge45": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/safe-broad-emit04/report.json",
+    "bytes": 87818,
+    "sha256": "4b9973e698dcdb22bd6f6fbf8ef7edc00448cf2065fa19a9808a2eef225a48b2"
+  },
+  "controlBridge19": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/safe-controls-emit04/report.json",
+    "bytes": 43540,
+    "sha256": "17820a5cb5b86d5a4dbe9bd6998a2d6828d7c09d886b5b9da213054eae238ce2"
+  },
+  "nativeAttempt02": {
+    "complete": false,
+    "failedStage": "integrated-compiler",
+    "error": "RangeError: Maximum call stack size exceeded.",
+    "trace": "nc_pack_foreign eager recursion",
+    "guardSeconds": 259.21056536817923,
+    "peakTreeRssBytes": 3929579520,
+    "receipt": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p118-native-safe02-full-emit/report.json",
+      "bytes": 126313,
+      "sha256": "87ecf94799cafe4abe983598f194c89d87c63f857c2d8e5fb6efbd6e6148b8b7"
+    }
+  },
+  "rejectedDeadScalars": {
+    "finiteChecks": 24,
+    "mandelbrotMedianMs": {
+      "baseline": 845,
+      "candidate": 913
+    },
+    "lexerMedianMs": {
+      "baseline": 833,
+      "candidate": 830
+    },
+    "receipt": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/dce-clean01/report.json",
+      "bytes": 25809,
+      "sha256": "46fa99244e8e5b0460a0ffc4a20d06520264186592b48b525974005694216cb9"
+    },
+    "selected": false
+  },
+  "isolatedEligibilityCost": {
+    "complete": true,
+    "selected": false,
+    "observations": 24,
+    "candidateOverFloat": 1.0004529358142025,
+    "entryOverFloat": 0.9958239124529974,
+    "guardSeconds": 222.52638925006613,
+    "scope": "Three ordinary sources; exact same emitted QBE; neutral small screen; separate source not native-qualified"
+  },
+  "accounting": {
+    "windowStart": "2026-10-21T09:47:34+00:00",
+    "windowEnd": "2026-10-21T12:48:23.207153+00:00",
+    "elapsedSeconds": 10849.207152843475,
+    "finishedGuardUnionSeconds": 5064.81548333168,
+    "uncoveredElapsedSeconds": 5784.391669511795,
+    "uniqueReceipts": 102,
+    "statusCounts": {
+      "success": 83,
+      "failed": 18,
+      "timeout": 1
+    },
+    "categoryDisjointSeconds": {
+      "broad qualification and emission": 928.9560348987579,
+      "checked API acquisition": 254.80830645561218,
+      "finite controls": 2.703306198120117,
+      "focused experiments and mixed pipelines": 811.6171908378601,
+      "hosted cost": 326.6143581867218,
+      "native qualification": 2134.870964050293,
+      "other guarded work": 360.0769097805023,
+      "profiling and IR inspection": 228.51935386657715,
+      "runtime acquisition": 16.649059057235718
+    },
+    "failedGuardUnionSeconds": 1062.6578569412231
+  },
+  "evidenceCapsule": {
+    "complete": true,
+    "targetsRun": false,
+    "replay": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/evidence-final01/replay.json",
+      "bytes": 662731,
+      "sha256": "0d92e8f91a4c42d04c40b7caecabd699aaabac56144a6916e9f4089a91171809"
+    },
+    "inventory": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/evidence-final01/capsule-manifest.json",
+      "bytes": 2595336,
+      "sha256": "09499fc76796320505a5badffb458165bae6bc21abe570be64164b7c105dc62b"
+    },
+    "observations": 405,
+    "controls": 19,
+    "timedCases": 44,
+    "candidateVsUpstream": 3.00892612027716,
+    "speedup": 1.4345687959277815,
+    "timingProducer": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/float-source01/compiler.bend",
+      "bytes": 2376955,
+      "sha256": "b16a71925e94585b5d66a010a8377a1f6500376de217d90fee7eb2e8fcb26c08"
+    },
+    "nativeProducer": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/safe-source03/compiler.bend",
+      "bytes": 2389209,
+      "sha256": "a1aac003bbcac3731cc47b3c00dcc7e27f9323842fd26cb60417c2115e85ff10"
+    },
+    "nativeBridgeCases": 45,
+    "nativeState": "all-receipts-reported-complete",
+    "capsuleCreated": true,
+    "archive": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/evidence-final01/capsule.tar.gz",
+      "bytes": 5540759,
+      "sha256": "e977008801729d6782d86b46a2a3c86698f5087fbce9323c28d8da56fc957b63"
+    },
+    "allPayloadsVerified": true
   }
 }

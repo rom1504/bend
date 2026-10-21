@@ -29,6 +29,12 @@ existing ray variants, then transfer to an unrelated numeric workload. Compare
 hot instructions and clean runtimes, not QBE text size. Reject the architecture
 if larger regions only move conversions to a different boundary.
 
+Setting just the three ray ratios to1× while leaving every other measured point
+unchanged would move the aggregate only to **2.600×**, not1×. That arithmetic
+is an illustration, not a predicted optimization result. The experiment must
+therefore test transfer to Boolean/integer and array computations as well; its
+purpose is a reusable representation-and-region capability.
+
 This is the highest-value generated-code investigation after the current native
 qualification. The missing capability is joint representation and call-region
 optimization, not another spelling of sqrt: the runtime already uses sqrtss on
@@ -40,8 +46,10 @@ sqrt overhead.
 
 The selected eight-source hosted prepared-request cost is1.12501× Phase117;
 its admitted optimization/emission entry is1.18662×. Faster generated programs
-have not automatically made experimentation cheaper. Measure the generated
-compiler before extrapolating that cost to a native successor.
+have not automatically made experimentation cheaper. The new native3-source screen independently establishes about26% less request
+time versus Phase114, while the hosted regression remains. Staged observer
+eligibility was tested on three sources and is neutral (1.00045×); avoidable
+work alone does not identify a dominant cost.
 
 The next cheap diagnostic should separate original lowering/verification,
 observer/cold-fact derivation, worker checking, catalogue scans and rendering.

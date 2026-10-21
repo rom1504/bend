@@ -1,0 +1,81 @@
+{
+  "kind": "phase121-source-specialized-closure-ceiling",
+  "compilerTransformation": false,
+  "targetRuns": false,
+  "manifest": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase112/benchmark45/manifest01.json",
+    "bytes": 229972,
+    "sha256": "80b07bdc76528bf58ae322ffed470eaa8ccdc8fa3d5cea73aa6d652d66cc6adc"
+  },
+  "generator": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase121/diagnostic-closures/prepare.py",
+    "bytes": 2337,
+    "sha256": "b970278c78331e9f36b2dd5dce5ce27e62edc782f6152a4c84f58c14a9f6e381"
+  },
+  "cases": [
+    {
+      "name": "coverage-closures-64",
+      "variant": "closure-loop",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase121/diagnostic-closures/coverage-closures-64-loop.bend",
+        "bytes": 3703,
+        "sha256": "03e15820954a4e338e23ba9c8a6838b93d4501b2b843099ca7252672276a366c"
+      },
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/fixtures01/coverage-closures-64.bend",
+        "bytes": 3364,
+        "sha256": "d5a0e144805beec3aafdfa5a5bf0ae1579659caff90d42fc178f0ac17b9db60a"
+      },
+      "helper": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase121/diagnostic-closures/helper.bend",
+        "bytes": 326,
+        "sha256": "c783081dbf97946d5a81a65a040a60cea53c058acf17410407a01bbdab3b93b6"
+      },
+      "expectedStdout": "2097\n",
+      "expectedStdoutEvidence": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase111/coverage/full45/expected/coverage-closures-64.stdout",
+        "bytes": 5,
+        "sha256": "802ecf9f67ccf8fda5913f286bd0b3236043f5f4b0c2ae7e7bf3d05f1758f865"
+      },
+      "runtimeArgs": [
+        64,
+        17
+      ],
+      "manifestRepetitions": 309582,
+      "manifestWarmups": 32,
+      "wrapperSuffixSha256": "6fba079216896e3a5c250189765325a336df48af0f4804847d3f84a369b9f09b"
+    },
+    {
+      "name": "coverage-closures-256",
+      "variant": "closure-loop",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase121/diagnostic-closures/coverage-closures-256-loop.bend",
+        "bytes": 3708,
+        "sha256": "bc1caa1e5be418b46456454b76243f39309834f9c7a70ee40daa0b3c9f1e438e"
+      },
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/fixtures01/coverage-closures-256.bend",
+        "bytes": 3369,
+        "sha256": "d0e35c8343fcbe86b45211f7738d293a27a0a5184060e0136b0275fc9556cef4"
+      },
+      "helper": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase121/diagnostic-closures/helper.bend",
+        "bytes": 326,
+        "sha256": "c783081dbf97946d5a81a65a040a60cea53c058acf17410407a01bbdab3b93b6"
+      },
+      "expectedStdout": "33019\n",
+      "expectedStdoutEvidence": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase111/coverage/full45/expected/coverage-closures-256.stdout",
+        "bytes": 6,
+        "sha256": "8cf0773ed5fb75c07a06d48185cd73ff8f1921c588db76a3df3731a557c40b15"
+      },
+      "runtimeArgs": [
+        256,
+        123
+      ],
+      "manifestRepetitions": 81920,
+      "manifestWarmups": 32,
+      "wrapperSuffixSha256": "84b2a9d2319dbbcfa9f66d295cff69f6620bcafcdbca246708cf00ae9186d50a"
+    }
+  ]
+}

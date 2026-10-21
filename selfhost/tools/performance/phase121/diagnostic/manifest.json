@@ -1,0 +1,209 @@
+{
+  "kind": "phase121-source-specialized-ceiling-diagnostics",
+  "targetRuns": false,
+  "compilerTransformation": false,
+  "manifest": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase112/benchmark45/manifest01.json",
+    "bytes": 229972,
+    "sha256": "80b07bdc76528bf58ae322ffed470eaa8ccdc8fa3d5cea73aa6d652d66cc6adc"
+  },
+  "generator": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase121/diagnostic/prepare.py",
+    "bytes": 3140,
+    "sha256": "7feef8b9a21c1bb59ad89d5cf4286dab03634272bbc954dae8a6a9651d84e4ee"
+  },
+  "cases": [
+    {
+      "name": "coverage-list-pipeline-128",
+      "variant": "mapfold",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase121/diagnostic/coverage-list-pipeline-128-mapfold.bend",
+        "bytes": 5545,
+        "sha256": "0dfacbb63a5b66e69dcbe293e78788a5729df6e6798938e13dd8399d796ca626"
+      },
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/fixtures01/coverage-list-pipeline-128.bend",
+        "bytes": 5223,
+        "sha256": "5a6bb5b6e3e4549ceae238b40485aa6d00facdab6bb8382790a486b165a1cd97"
+      },
+      "helper": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase121/diagnostic/list-mapfold-helper.bend",
+        "bytes": 317,
+        "sha256": "0bc570e302caea9d626a8d8e675ab0b96e10f367fb8663dea70197f1b4decc0f"
+      },
+      "runtimeArgs": [
+        128,
+        17
+      ],
+      "expectedStdout": "1904\n",
+      "expectedStdoutEvidence": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase111/coverage/full45/expected/coverage-list-pipeline-128.stdout",
+        "bytes": 5,
+        "sha256": "809ab2f049b9783d5e9adfb1bf8d82e182bf71399bc90f29aaee87b629a2872d"
+      },
+      "manifestRepetitions": 123374,
+      "manifestWarmups": 32,
+      "wrapperSuffixSha256": "fd695a07770a180008b5c533570e4bb1a6dc7ccf82e9389eb9396d0b7d7d1b13"
+    },
+    {
+      "name": "coverage-list-pipeline-128",
+      "variant": "full",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase121/diagnostic/coverage-list-pipeline-128-full.bend",
+        "bytes": 5794,
+        "sha256": "116de082db1818030ed73c689cb6553074731752ffe994a978cd0e75017da9da"
+      },
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/fixtures01/coverage-list-pipeline-128.bend",
+        "bytes": 5223,
+        "sha256": "5a6bb5b6e3e4549ceae238b40485aa6d00facdab6bb8382790a486b165a1cd97"
+      },
+      "helper": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase121/diagnostic/list-full-helper.bend",
+        "bytes": 585,
+        "sha256": "baa450248d2911df4ad91c2d52d533e2dea08e08dcefff3752100aa470dc33f5"
+      },
+      "runtimeArgs": [
+        128,
+        17
+      ],
+      "expectedStdout": "1904\n",
+      "expectedStdoutEvidence": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase111/coverage/full45/expected/coverage-list-pipeline-128.stdout",
+        "bytes": 5,
+        "sha256": "809ab2f049b9783d5e9adfb1bf8d82e182bf71399bc90f29aaee87b629a2872d"
+      },
+      "manifestRepetitions": 123374,
+      "manifestWarmups": 32,
+      "wrapperSuffixSha256": "fd695a07770a180008b5c533570e4bb1a6dc7ccf82e9389eb9396d0b7d7d1b13"
+    },
+    {
+      "name": "coverage-list-pipeline-512",
+      "variant": "mapfold",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase121/diagnostic/coverage-list-pipeline-512-mapfold.bend",
+        "bytes": 5547,
+        "sha256": "f7db8f42275481af7649c0faa49a96a814c151cac67a07595fa59d4a02992b84"
+      },
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/fixtures01/coverage-list-pipeline-512.bend",
+        "bytes": 5225,
+        "sha256": "c4eba973b7176ba8a0bc7c07aa69f32c7f8ed8b09fd32d8d3b92fa2a343e0fe9"
+      },
+      "helper": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase121/diagnostic/list-mapfold-helper.bend",
+        "bytes": 317,
+        "sha256": "0bc570e302caea9d626a8d8e675ab0b96e10f367fb8663dea70197f1b4decc0f"
+      },
+      "runtimeArgs": [
+        512,
+        123
+      ],
+      "expectedStdout": "7616\n",
+      "expectedStdoutEvidence": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase111/coverage/full45/expected/coverage-list-pipeline-512.stdout",
+        "bytes": 5,
+        "sha256": "44ab14762588da84f4ab2c7bf98c05ce405b5c4aaeb400a2744aece356e3de1b"
+      },
+      "manifestRepetitions": 31508,
+      "manifestWarmups": 32,
+      "wrapperSuffixSha256": "c8ed7b66b7cd83da5ffe1f84b1cb23c7690e32e441eea668f433d9bedd376a00"
+    },
+    {
+      "name": "coverage-list-pipeline-512",
+      "variant": "full",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase121/diagnostic/coverage-list-pipeline-512-full.bend",
+        "bytes": 5796,
+        "sha256": "fc5e99a538a31dc93cbee6e8f9c992fe6f5773466330effe9d93147ed944e7fc"
+      },
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/fixtures01/coverage-list-pipeline-512.bend",
+        "bytes": 5225,
+        "sha256": "c4eba973b7176ba8a0bc7c07aa69f32c7f8ed8b09fd32d8d3b92fa2a343e0fe9"
+      },
+      "helper": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase121/diagnostic/list-full-helper.bend",
+        "bytes": 585,
+        "sha256": "baa450248d2911df4ad91c2d52d533e2dea08e08dcefff3752100aa470dc33f5"
+      },
+      "runtimeArgs": [
+        512,
+        123
+      ],
+      "expectedStdout": "7616\n",
+      "expectedStdoutEvidence": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase111/coverage/full45/expected/coverage-list-pipeline-512.stdout",
+        "bytes": 5,
+        "sha256": "44ab14762588da84f4ab2c7bf98c05ce405b5c4aaeb400a2744aece356e3de1b"
+      },
+      "manifestRepetitions": 31508,
+      "manifestWarmups": 32,
+      "wrapperSuffixSha256": "c8ed7b66b7cd83da5ffe1f84b1cb23c7690e32e441eea668f433d9bedd376a00"
+    },
+    {
+      "name": "coverage-map-churn-32",
+      "variant": "treefold",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase121/diagnostic/coverage-map-churn-32-treefold.bend",
+        "bytes": 4049,
+        "sha256": "bc5f3bebb2d0d7b0cba5c086999d7878e7130f6c9a792609583a679f89f01e3a"
+      },
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/fixtures01/coverage-map-churn-32.bend",
+        "bytes": 3655,
+        "sha256": "ada0bc78c19c9ed252c779190144fa1155d2ff44fa12602166429140238870d9"
+      },
+      "helper": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase121/diagnostic/map-digest-helper.bend",
+        "bytes": 413,
+        "sha256": "d11d0c82f7367760fe3d85b9b31fe10d98983ebf6fcd7528e875ed8ff55b6926"
+      },
+      "runtimeArgs": [
+        32,
+        17
+      ],
+      "expectedStdout": "2930913555\n",
+      "expectedStdoutEvidence": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase111/coverage/full45/expected/coverage-map-churn-32.stdout",
+        "bytes": 11,
+        "sha256": "780a7cb6c7cd5f82e073caecb1b0f05fbcbad90380586829e3afc26683c7b474"
+      },
+      "manifestRepetitions": 4638,
+      "manifestWarmups": 32,
+      "wrapperSuffixSha256": "5f0ea50efdd104e43cbbf4bfe7a206493496ee0f6806e20791bc43e004a020d6"
+    },
+    {
+      "name": "coverage-map-churn-128",
+      "variant": "treefold",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase121/diagnostic/coverage-map-churn-128-treefold.bend",
+        "bytes": 4053,
+        "sha256": "6fc4225cc4bbdb2c06186f7a8e20358f12869ee235379b289961cc775cb4ed1f"
+      },
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/fixtures01/coverage-map-churn-128.bend",
+        "bytes": 3659,
+        "sha256": "cd22c831c180c0de12d84aeb80debf4881d08cbd18fcf8f6d634153fba2feb03"
+      },
+      "helper": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase121/diagnostic/map-digest-helper.bend",
+        "bytes": 413,
+        "sha256": "d11d0c82f7367760fe3d85b9b31fe10d98983ebf6fcd7528e875ed8ff55b6926"
+      },
+      "runtimeArgs": [
+        128,
+        123
+      ],
+      "expectedStdout": "3714872484\n",
+      "expectedStdoutEvidence": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase111/coverage/full45/expected/coverage-map-churn-128.stdout",
+        "bytes": 11,
+        "sha256": "f10e5e29d4f448b0f6aeef222b95d6790cf410196cd6d64d27156e08c7ecafb8"
+      },
+      "manifestRepetitions": 1050,
+      "manifestWarmups": 32,
+      "wrapperSuffixSha256": "3022a6f2b32eb474c672131b6efadddb6843dcc4fd139b0588cf37571b5325a5"
+    }
+  ]
+}

@@ -1,0 +1,195 @@
+{
+  "kind": "diagnostic source ceiling only",
+  "cases": [
+    {
+      "name": "coverage-closures-64-loop",
+      "family": "closures",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase121/diagnostic-closures/coverage-closures-64-loop.bend",
+        "bytes": 3703,
+        "sha256": "03e15820954a4e338e23ba9c8a6838b93d4501b2b843099ca7252672276a366c"
+      },
+      "source88": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase88/broad-fixtures03/coverage-closures-64.bend",
+        "bytes": 1530,
+        "sha256": "92fa3e271d5e214fd88483ec6e589d1d387fcfc2e7c721354d6bf69713a73d6a"
+      },
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase37/fixtures-new/closures.bend",
+        "bytes": 1392,
+        "sha256": "bc5fb44cba7971ae593dd642554dc468a9cbc51ce54567467a4d8bf84bb70943"
+      },
+      "expectedStdout": "2097\n",
+      "expectedStdoutEvidence": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase111/coverage/full45/expected/coverage-closures-64.stdout",
+        "bytes": 5,
+        "sha256": "802ecf9f67ccf8fda5913f286bd0b3236043f5f4b0c2ae7e7bf3d05f1758f865"
+      },
+      "runtimeArgs": [
+        64,
+        17
+      ],
+      "repetitions": 309582,
+      "warmups": 32,
+      "ratioEligible": true,
+      "phase112Heldout": true,
+      "upstream": {
+        "binary": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/broad01/coverage-closures-64/upstream.program",
+          "bytes": 60816,
+          "sha256": "bcb99b0af5b259ae3df2d4b03df32813d2c4b558efd3535492462bbc8936cd92"
+        },
+        "source": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/fixtures01/coverage-closures-64.bend",
+          "bytes": 3364,
+          "sha256": "d5a0e144805beec3aafdfa5a5bf0ae1579659caff90d42fc178f0ac17b9db60a"
+        },
+        "generatedC": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/broad01/coverage-closures-64/upstream.1.c",
+          "bytes": 132235,
+          "sha256": "cc9289f34a44e8d13720bcd4ed56b9585c540dd25fef3704ef53c3e6b8dc9aa8"
+        },
+        "buildCommand": [
+          "/usr/bin/python3",
+          "-B",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase86/guard.py",
+          "--out",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/broad01/coverage-closures-64/upstream-build",
+          "--seconds",
+          "60",
+          "--cpu",
+          "3",
+          "--rss-mib",
+          "2048",
+          "--available-mib",
+          "4096",
+          "--",
+          "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+          "-isystem",
+          "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/include/clang",
+          "-std=c11",
+          "-O3",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/broad01/coverage-closures-64/upstream.1.c",
+          "-o",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/broad01/coverage-closures-64/upstream.program",
+          "-lpthread",
+          "-lm"
+        ],
+        "clang": {
+          "file": "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+          "bytes": 119320,
+          "sha256": "9fcd5fc4baeea9c449bcc9ca4b9db7714465107669498b0056a853f22f5f4def"
+        }
+      },
+      "historicalSamplesMs": {
+        "upstream": [
+          814,
+          810,
+          802
+        ],
+        "own": [
+          249,
+          248,
+          247
+        ]
+      },
+      "oracleProvenance": "Exact Phase93 complete expected output, authenticated against preserved independent Phase92/105 evidence in Phase111 full45; reused historical regression oracle.",
+      "parentName": "coverage-closures-64"
+    },
+    {
+      "name": "coverage-closures-256-loop",
+      "family": "closures",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase121/diagnostic-closures/coverage-closures-256-loop.bend",
+        "bytes": 3708,
+        "sha256": "bc1caa1e5be418b46456454b76243f39309834f9c7a70ee40daa0b3c9f1e438e"
+      },
+      "source88": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase88/broad-fixtures03/coverage-closures-256.bend",
+        "bytes": 1532,
+        "sha256": "08b5d1183fe1d6238fe76c51f24b964ad2171c01073e2353e84b4b1f5870724c"
+      },
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase37/fixtures-new/closures.bend",
+        "bytes": 1392,
+        "sha256": "bc5fb44cba7971ae593dd642554dc468a9cbc51ce54567467a4d8bf84bb70943"
+      },
+      "expectedStdout": "33019\n",
+      "expectedStdoutEvidence": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase111/coverage/full45/expected/coverage-closures-256.stdout",
+        "bytes": 6,
+        "sha256": "8cf0773ed5fb75c07a06d48185cd73ff8f1921c588db76a3df3731a557c40b15"
+      },
+      "runtimeArgs": [
+        256,
+        123
+      ],
+      "repetitions": 81920,
+      "warmups": 32,
+      "ratioEligible": true,
+      "phase112Heldout": false,
+      "upstream": {
+        "binary": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/broad01/coverage-closures-256/upstream.program",
+          "bytes": 60816,
+          "sha256": "448a507bc4af56c7c2544d2f85d65ecc7a368266100e2b09cc641993d01958e2"
+        },
+        "source": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/fixtures01/coverage-closures-256.bend",
+          "bytes": 3369,
+          "sha256": "d0e35c8343fcbe86b45211f7738d293a27a0a5184060e0136b0275fc9556cef4"
+        },
+        "generatedC": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/broad01/coverage-closures-256/upstream.1.c",
+          "bytes": 132242,
+          "sha256": "9931120fd9dc5a53193b919d41e842d9f969d3df25e46cf5a579d947c7504a91"
+        },
+        "buildCommand": [
+          "/usr/bin/python3",
+          "-B",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase86/guard.py",
+          "--out",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/broad01/coverage-closures-256/upstream-build",
+          "--seconds",
+          "60",
+          "--cpu",
+          "3",
+          "--rss-mib",
+          "2048",
+          "--available-mib",
+          "4096",
+          "--",
+          "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+          "-isystem",
+          "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/include/clang",
+          "-std=c11",
+          "-O3",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/broad01/coverage-closures-256/upstream.1.c",
+          "-o",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/broad01/coverage-closures-256/upstream.program",
+          "-lpthread",
+          "-lm"
+        ],
+        "clang": {
+          "file": "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+          "bytes": 119320,
+          "sha256": "9fcd5fc4baeea9c449bcc9ca4b9db7714465107669498b0056a853f22f5f4def"
+        }
+      },
+      "historicalSamplesMs": {
+        "upstream": [
+          836,
+          835,
+          839
+        ],
+        "own": [
+          250,
+          251,
+          252
+        ]
+      },
+      "oracleProvenance": "Exact Phase93 complete expected output, authenticated against preserved independent Phase92/105 evidence in Phase111 full45; reused historical regression oracle.",
+      "parentName": "coverage-closures-256"
+    }
+  ]
+}

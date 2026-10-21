@@ -1,0 +1,575 @@
+{
+  "kind": "diagnostic source ceiling only",
+  "cases": [
+    {
+      "name": "coverage-list-pipeline-128-mapfold",
+      "family": "list-pipeline",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase121/diagnostic-v2/coverage-list-pipeline-128-mapfold.bend",
+        "bytes": 5544,
+        "sha256": "9ce253c1c26dc2e03e10394bf038941a6caffea541de67c4304f53776a2be026"
+      },
+      "source88": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase88/broad-fixtures03/coverage-list-pipeline-128.bend",
+        "bytes": 3388,
+        "sha256": "f5bdc47ec9a89047f40a11b8e81d23eb33cb949c3505d6e1525a993e93d76f5e"
+      },
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase37/fixtures-new/list-pipeline.bend",
+        "bytes": 3249,
+        "sha256": "b4819808f26a6d5fe8ef0295c69b447121320c3e748a7fbc937bf8a88e3d48d0"
+      },
+      "expectedStdout": "1904\n",
+      "expectedStdoutEvidence": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase111/coverage/full45/expected/coverage-list-pipeline-128.stdout",
+        "bytes": 5,
+        "sha256": "809ab2f049b9783d5e9adfb1bf8d82e182bf71399bc90f29aaee87b629a2872d"
+      },
+      "runtimeArgs": [
+        128,
+        17
+      ],
+      "repetitions": 123374,
+      "warmups": 32,
+      "ratioEligible": true,
+      "phase112Heldout": true,
+      "upstream": {
+        "binary": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/broad01/coverage-list-pipeline-128/upstream.program",
+          "bytes": 62720,
+          "sha256": "42869ed0c17deda8b110e5f4db562bb4ee030166c0a4e2f4bc9d8b2127c03d66"
+        },
+        "source": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/fixtures01/coverage-list-pipeline-128.bend",
+          "bytes": 5223,
+          "sha256": "5a6bb5b6e3e4549ceae238b40485aa6d00facdab6bb8382790a486b165a1cd97"
+        },
+        "generatedC": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/broad01/coverage-list-pipeline-128/upstream.1.c",
+          "bytes": 134882,
+          "sha256": "21906fcbdc34aea9ec7f8960353a3242f6d7a5ee69af9ed1ff12170512c0f655"
+        },
+        "buildCommand": [
+          "/usr/bin/python3",
+          "-B",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase86/guard.py",
+          "--out",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/broad01/coverage-list-pipeline-128/upstream-build",
+          "--seconds",
+          "60",
+          "--cpu",
+          "3",
+          "--rss-mib",
+          "2048",
+          "--available-mib",
+          "4096",
+          "--",
+          "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+          "-isystem",
+          "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/include/clang",
+          "-std=c11",
+          "-O3",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/broad01/coverage-list-pipeline-128/upstream.1.c",
+          "-o",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/broad01/coverage-list-pipeline-128/upstream.program",
+          "-lpthread",
+          "-lm"
+        ],
+        "clang": {
+          "file": "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+          "bytes": 119320,
+          "sha256": "9fcd5fc4baeea9c449bcc9ca4b9db7714465107669498b0056a853f22f5f4def"
+        }
+      },
+      "historicalSamplesMs": {
+        "upstream": [
+          248,
+          248,
+          243
+        ],
+        "own": [
+          267,
+          265,
+          266
+        ]
+      },
+      "oracleProvenance": "Exact Phase93 complete expected output, authenticated against preserved independent Phase92/105 evidence in Phase111 full45; reused historical regression oracle.",
+      "parentName": "coverage-list-pipeline-128"
+    },
+    {
+      "name": "coverage-list-pipeline-128-full",
+      "family": "list-pipeline",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase121/diagnostic-v2/coverage-list-pipeline-128-full.bend",
+        "bytes": 5793,
+        "sha256": "98358e0683f4db80292fe6eb5799cb1c3f14d68da493594babbeb65bbab88843"
+      },
+      "source88": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase88/broad-fixtures03/coverage-list-pipeline-128.bend",
+        "bytes": 3388,
+        "sha256": "f5bdc47ec9a89047f40a11b8e81d23eb33cb949c3505d6e1525a993e93d76f5e"
+      },
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase37/fixtures-new/list-pipeline.bend",
+        "bytes": 3249,
+        "sha256": "b4819808f26a6d5fe8ef0295c69b447121320c3e748a7fbc937bf8a88e3d48d0"
+      },
+      "expectedStdout": "1904\n",
+      "expectedStdoutEvidence": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase111/coverage/full45/expected/coverage-list-pipeline-128.stdout",
+        "bytes": 5,
+        "sha256": "809ab2f049b9783d5e9adfb1bf8d82e182bf71399bc90f29aaee87b629a2872d"
+      },
+      "runtimeArgs": [
+        128,
+        17
+      ],
+      "repetitions": 123374,
+      "warmups": 32,
+      "ratioEligible": true,
+      "phase112Heldout": true,
+      "upstream": {
+        "binary": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/broad01/coverage-list-pipeline-128/upstream.program",
+          "bytes": 62720,
+          "sha256": "42869ed0c17deda8b110e5f4db562bb4ee030166c0a4e2f4bc9d8b2127c03d66"
+        },
+        "source": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/fixtures01/coverage-list-pipeline-128.bend",
+          "bytes": 5223,
+          "sha256": "5a6bb5b6e3e4549ceae238b40485aa6d00facdab6bb8382790a486b165a1cd97"
+        },
+        "generatedC": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/broad01/coverage-list-pipeline-128/upstream.1.c",
+          "bytes": 134882,
+          "sha256": "21906fcbdc34aea9ec7f8960353a3242f6d7a5ee69af9ed1ff12170512c0f655"
+        },
+        "buildCommand": [
+          "/usr/bin/python3",
+          "-B",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase86/guard.py",
+          "--out",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/broad01/coverage-list-pipeline-128/upstream-build",
+          "--seconds",
+          "60",
+          "--cpu",
+          "3",
+          "--rss-mib",
+          "2048",
+          "--available-mib",
+          "4096",
+          "--",
+          "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+          "-isystem",
+          "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/include/clang",
+          "-std=c11",
+          "-O3",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/broad01/coverage-list-pipeline-128/upstream.1.c",
+          "-o",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/broad01/coverage-list-pipeline-128/upstream.program",
+          "-lpthread",
+          "-lm"
+        ],
+        "clang": {
+          "file": "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+          "bytes": 119320,
+          "sha256": "9fcd5fc4baeea9c449bcc9ca4b9db7714465107669498b0056a853f22f5f4def"
+        }
+      },
+      "historicalSamplesMs": {
+        "upstream": [
+          248,
+          248,
+          243
+        ],
+        "own": [
+          267,
+          265,
+          266
+        ]
+      },
+      "oracleProvenance": "Exact Phase93 complete expected output, authenticated against preserved independent Phase92/105 evidence in Phase111 full45; reused historical regression oracle.",
+      "parentName": "coverage-list-pipeline-128"
+    },
+    {
+      "name": "coverage-list-pipeline-512-mapfold",
+      "family": "list-pipeline",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase121/diagnostic-v2/coverage-list-pipeline-512-mapfold.bend",
+        "bytes": 5546,
+        "sha256": "f2b0d52a15cec648cf4173e9925172bf675577b2be0eb22dd7b3b0669da58ee6"
+      },
+      "source88": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase88/broad-fixtures03/coverage-list-pipeline-512.bend",
+        "bytes": 3389,
+        "sha256": "fbe32fc48373173da23e045061d7175418d49988c8978e1a83d5da1f9729b199"
+      },
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase37/fixtures-new/list-pipeline.bend",
+        "bytes": 3249,
+        "sha256": "b4819808f26a6d5fe8ef0295c69b447121320c3e748a7fbc937bf8a88e3d48d0"
+      },
+      "expectedStdout": "7616\n",
+      "expectedStdoutEvidence": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase111/coverage/full45/expected/coverage-list-pipeline-512.stdout",
+        "bytes": 5,
+        "sha256": "44ab14762588da84f4ab2c7bf98c05ce405b5c4aaeb400a2744aece356e3de1b"
+      },
+      "runtimeArgs": [
+        512,
+        123
+      ],
+      "repetitions": 31508,
+      "warmups": 32,
+      "ratioEligible": true,
+      "phase112Heldout": true,
+      "upstream": {
+        "binary": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/broad01/coverage-list-pipeline-512/upstream.program",
+          "bytes": 62720,
+          "sha256": "6295c4a4f5c144dff9f3df96b95f45fa7310633f9bd4b3088662acce7c46f655"
+        },
+        "source": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/fixtures01/coverage-list-pipeline-512.bend",
+          "bytes": 5225,
+          "sha256": "c4eba973b7176ba8a0bc7c07aa69f32c7f8ed8b09fd32d8d3b92fa2a343e0fe9"
+        },
+        "generatedC": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/broad01/coverage-list-pipeline-512/upstream.1.c",
+          "bytes": 134885,
+          "sha256": "90cfc0c1156b671bd186bd59060a3f72ac319e564f483017b8a4fc4c350133fb"
+        },
+        "buildCommand": [
+          "/usr/bin/python3",
+          "-B",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase86/guard.py",
+          "--out",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/broad01/coverage-list-pipeline-512/upstream-build",
+          "--seconds",
+          "60",
+          "--cpu",
+          "3",
+          "--rss-mib",
+          "2048",
+          "--available-mib",
+          "4096",
+          "--",
+          "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+          "-isystem",
+          "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/include/clang",
+          "-std=c11",
+          "-O3",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/broad01/coverage-list-pipeline-512/upstream.1.c",
+          "-o",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/broad01/coverage-list-pipeline-512/upstream.program",
+          "-lpthread",
+          "-lm"
+        ],
+        "clang": {
+          "file": "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+          "bytes": 119320,
+          "sha256": "9fcd5fc4baeea9c449bcc9ca4b9db7714465107669498b0056a853f22f5f4def"
+        }
+      },
+      "historicalSamplesMs": {
+        "upstream": [
+          252,
+          249,
+          252
+        ],
+        "own": [
+          265,
+          261,
+          264
+        ]
+      },
+      "oracleProvenance": "Exact Phase93 complete expected output, authenticated against preserved independent Phase92/105 evidence in Phase111 full45; reused historical regression oracle.",
+      "parentName": "coverage-list-pipeline-512"
+    },
+    {
+      "name": "coverage-list-pipeline-512-full",
+      "family": "list-pipeline",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase121/diagnostic-v2/coverage-list-pipeline-512-full.bend",
+        "bytes": 5795,
+        "sha256": "fcb4940f9bdee75a12ade917c2228dae4e7b9abc187257426c8d74f6c52dcfa1"
+      },
+      "source88": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase88/broad-fixtures03/coverage-list-pipeline-512.bend",
+        "bytes": 3389,
+        "sha256": "fbe32fc48373173da23e045061d7175418d49988c8978e1a83d5da1f9729b199"
+      },
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase37/fixtures-new/list-pipeline.bend",
+        "bytes": 3249,
+        "sha256": "b4819808f26a6d5fe8ef0295c69b447121320c3e748a7fbc937bf8a88e3d48d0"
+      },
+      "expectedStdout": "7616\n",
+      "expectedStdoutEvidence": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase111/coverage/full45/expected/coverage-list-pipeline-512.stdout",
+        "bytes": 5,
+        "sha256": "44ab14762588da84f4ab2c7bf98c05ce405b5c4aaeb400a2744aece356e3de1b"
+      },
+      "runtimeArgs": [
+        512,
+        123
+      ],
+      "repetitions": 31508,
+      "warmups": 32,
+      "ratioEligible": true,
+      "phase112Heldout": true,
+      "upstream": {
+        "binary": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/broad01/coverage-list-pipeline-512/upstream.program",
+          "bytes": 62720,
+          "sha256": "6295c4a4f5c144dff9f3df96b95f45fa7310633f9bd4b3088662acce7c46f655"
+        },
+        "source": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/fixtures01/coverage-list-pipeline-512.bend",
+          "bytes": 5225,
+          "sha256": "c4eba973b7176ba8a0bc7c07aa69f32c7f8ed8b09fd32d8d3b92fa2a343e0fe9"
+        },
+        "generatedC": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/broad01/coverage-list-pipeline-512/upstream.1.c",
+          "bytes": 134885,
+          "sha256": "90cfc0c1156b671bd186bd59060a3f72ac319e564f483017b8a4fc4c350133fb"
+        },
+        "buildCommand": [
+          "/usr/bin/python3",
+          "-B",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase86/guard.py",
+          "--out",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/broad01/coverage-list-pipeline-512/upstream-build",
+          "--seconds",
+          "60",
+          "--cpu",
+          "3",
+          "--rss-mib",
+          "2048",
+          "--available-mib",
+          "4096",
+          "--",
+          "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+          "-isystem",
+          "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/include/clang",
+          "-std=c11",
+          "-O3",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/broad01/coverage-list-pipeline-512/upstream.1.c",
+          "-o",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/broad01/coverage-list-pipeline-512/upstream.program",
+          "-lpthread",
+          "-lm"
+        ],
+        "clang": {
+          "file": "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+          "bytes": 119320,
+          "sha256": "9fcd5fc4baeea9c449bcc9ca4b9db7714465107669498b0056a853f22f5f4def"
+        }
+      },
+      "historicalSamplesMs": {
+        "upstream": [
+          252,
+          249,
+          252
+        ],
+        "own": [
+          265,
+          261,
+          264
+        ]
+      },
+      "oracleProvenance": "Exact Phase93 complete expected output, authenticated against preserved independent Phase92/105 evidence in Phase111 full45; reused historical regression oracle.",
+      "parentName": "coverage-list-pipeline-512"
+    },
+    {
+      "name": "coverage-map-churn-32-treefold",
+      "family": "map-churn",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase121/diagnostic-v2/coverage-map-churn-32-treefold.bend",
+        "bytes": 4048,
+        "sha256": "b0fc5dec7a40f60c3c935e179869201ee18e0560c633bcc7ed1475246c73ba41"
+      },
+      "source88": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase88/broad-fixtures03/coverage-map-churn-32.bend",
+        "bytes": 1815,
+        "sha256": "7d8cff63b0e5a64a215b8c1f787a187a59b9c5d8d6003a945b330247134fda97"
+      },
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase37/fixtures-new/map-churn.bend",
+        "bytes": 1703,
+        "sha256": "180fc1c2c96620613fb44e9f051a208121b65c499349dc08a10de08725c7f30e"
+      },
+      "expectedStdout": "2930913555\n",
+      "expectedStdoutEvidence": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase111/coverage/full45/expected/coverage-map-churn-32.stdout",
+        "bytes": 11,
+        "sha256": "780a7cb6c7cd5f82e073caecb1b0f05fbcbad90380586829e3afc26683c7b474"
+      },
+      "runtimeArgs": [
+        32,
+        17
+      ],
+      "repetitions": 4638,
+      "warmups": 32,
+      "ratioEligible": true,
+      "phase112Heldout": true,
+      "upstream": {
+        "binary": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/broad01/coverage-map-churn-32/upstream.program",
+          "bytes": 135360,
+          "sha256": "e25df48ad0305be38f58f314dc0287b74644daccf508bc5487db04b6cec4fbb1"
+        },
+        "source": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/fixtures01/coverage-map-churn-32.bend",
+          "bytes": 3655,
+          "sha256": "ada0bc78c19c9ed252c779190144fa1155d2ff44fa12602166429140238870d9"
+        },
+        "generatedC": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/broad01/coverage-map-churn-32/upstream.1.c",
+          "bytes": 324529,
+          "sha256": "3cf6a38c6de28d2ee5b32bc083b791fbc9a88903b52591abd49a59e36c052c73"
+        },
+        "buildCommand": [
+          "/usr/bin/python3",
+          "-B",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase86/guard.py",
+          "--out",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/broad01/coverage-map-churn-32/upstream-build",
+          "--seconds",
+          "60",
+          "--cpu",
+          "3",
+          "--rss-mib",
+          "2048",
+          "--available-mib",
+          "4096",
+          "--",
+          "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+          "-isystem",
+          "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/include/clang",
+          "-std=c11",
+          "-O3",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/broad01/coverage-map-churn-32/upstream.1.c",
+          "-o",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/broad01/coverage-map-churn-32/upstream.program",
+          "-lpthread",
+          "-lm"
+        ],
+        "clang": {
+          "file": "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+          "bytes": 119320,
+          "sha256": "9fcd5fc4baeea9c449bcc9ca4b9db7714465107669498b0056a853f22f5f4def"
+        }
+      },
+      "historicalSamplesMs": {
+        "upstream": [
+          329,
+          329,
+          329
+        ],
+        "own": [
+          218,
+          216,
+          217
+        ]
+      },
+      "oracleProvenance": "Exact Phase93 complete expected output, authenticated against preserved independent Phase92/105 evidence in Phase111 full45; reused historical regression oracle.",
+      "parentName": "coverage-map-churn-32"
+    },
+    {
+      "name": "coverage-map-churn-128-treefold",
+      "family": "map-churn",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase121/diagnostic-v2/coverage-map-churn-128-treefold.bend",
+        "bytes": 4052,
+        "sha256": "7b647e710e4a511ad09d228b4054aa25710b00a6f27bdffb01659f910312dd79"
+      },
+      "source88": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase88/broad-fixtures03/coverage-map-churn-128.bend",
+        "bytes": 1817,
+        "sha256": "99892f1c473588fcc814f17594b9d173343ef195bda6378113dbf088bea01120"
+      },
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase37/fixtures-new/map-churn.bend",
+        "bytes": 1703,
+        "sha256": "180fc1c2c96620613fb44e9f051a208121b65c499349dc08a10de08725c7f30e"
+      },
+      "expectedStdout": "3714872484\n",
+      "expectedStdoutEvidence": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase111/coverage/full45/expected/coverage-map-churn-128.stdout",
+        "bytes": 11,
+        "sha256": "f10e5e29d4f448b0f6aeef222b95d6790cf410196cd6d64d27156e08c7ecafb8"
+      },
+      "runtimeArgs": [
+        128,
+        123
+      ],
+      "repetitions": 1050,
+      "warmups": 32,
+      "ratioEligible": true,
+      "phase112Heldout": false,
+      "upstream": {
+        "binary": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/broad01/coverage-map-churn-128/upstream.program",
+          "bytes": 135360,
+          "sha256": "724a865b244eb19107b6e4b1580fa47bb5b07c36b798dd1a7998658da8a74552"
+        },
+        "source": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/fixtures01/coverage-map-churn-128.bend",
+          "bytes": 3659,
+          "sha256": "cd22c831c180c0de12d84aeb80debf4881d08cbd18fcf8f6d634153fba2feb03"
+        },
+        "generatedC": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/broad01/coverage-map-churn-128/upstream.1.c",
+          "bytes": 324535,
+          "sha256": "05ac1e4dfa8f8efafb07e8b8d654d46e18fb66dbd5ed6174ce43fa040758ad7f"
+        },
+        "buildCommand": [
+          "/usr/bin/python3",
+          "-B",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase86/guard.py",
+          "--out",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/broad01/coverage-map-churn-128/upstream-build",
+          "--seconds",
+          "60",
+          "--cpu",
+          "3",
+          "--rss-mib",
+          "2048",
+          "--available-mib",
+          "4096",
+          "--",
+          "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+          "-isystem",
+          "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/include/clang",
+          "-std=c11",
+          "-O3",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/broad01/coverage-map-churn-128/upstream.1.c",
+          "-o",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/broad01/coverage-map-churn-128/upstream.program",
+          "-lpthread",
+          "-lm"
+        ],
+        "clang": {
+          "file": "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+          "bytes": 119320,
+          "sha256": "9fcd5fc4baeea9c449bcc9ca4b9db7714465107669498b0056a853f22f5f4def"
+        }
+      },
+      "historicalSamplesMs": {
+        "upstream": [
+          392,
+          387,
+          387
+        ],
+        "own": [
+          247,
+          246,
+          246
+        ]
+      },
+      "oracleProvenance": "Exact Phase93 complete expected output, authenticated against preserved independent Phase92/105 evidence in Phase111 full45; reused historical regression oracle.",
+      "parentName": "coverage-map-churn-128"
+    }
+  ]
+}

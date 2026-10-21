@@ -112,3 +112,35 @@ improvement and transfer to compiler self-compilation remain unmeasured until
 separately tested. The separate register-transport certificate will conservatively
 refuse these new symbols unless its reviewed whitelist is extended; do not bypass
 that gate merely to combine experiments.
+
+## Bounded constant-count ABI ablation
+
+Root's first checked/focused reuse screen passed outputs but reported list about
+197→210ms against allocation-only plus cold metadata; map/tree were essentially
+flat and lexer changed only slightly. This is a negative first result, not proof
+that reuse lacks value. One concrete confound is that replacing a previously
+constant-sized owning take with generic `reuse_take` loses count specialization;
+the seven-argument extend also places one argument on the x86-64 stack.
+
+`sized-reuse-calls.bend` is a separate emission-only ablation. It overrides only
+`p118q_sized` and delegates all prior constructor/take specialization to an exact
+renamed copy. Verified literal takes1..4 become four-argument helpers; verified
+prefix counts1..7 become six-argument extend helpers. The count is encoded in
+the symbol and removed from the argument list. All other calls retain their
+original ABI. Result names, remaining argument order, hidden credit, and the
+credit-out buffer are unchanged. Original structured verification still precedes
+the projection and checks the unmodified generic signatures/contracts.
+
+Append `runtime-reuse-sized.c` after the generic reuse helpers. Its bounded macro
+bodies are textually identical to the generic helper bodies after replacing the
+constant macro parameter with `count` and ignoring whitespace/comments; a
+source-only comparison confirmed that equality. Every runtime guard and ownership
+effect is retained. Compile-time tautological count bounds may fold, while CID
+arity, pointer, ownership and credit guards remain. The six finite controls in
+`sized-reuse-controls.bend` test symbol/arity/credit-position projections and both
+fallback boundaries. No target measurement was performed by this audit agent.
+
+The decisive comparison is sized reuse versus the identical allocation-only
+plus cold source/runtime. If restoring specialization does not produce a useful
+transfer gain, retain reuse as rejected evidence instead of expanding its search
+space or weakening guards.

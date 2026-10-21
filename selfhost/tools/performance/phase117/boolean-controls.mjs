@@ -1,0 +1,5 @@
+import fs from 'node:fs';import path from 'node:path';import crypto from 'node:crypto';import {pathToFileURL} from 'node:url';
+const root=path.resolve(import.meta.dirname,'../../../..');const pin=file=>{file=path.resolve(file);const b=fs.readFileSync(file);return{file,bytes:b.length,sha256:crypto.createHash('sha256').update(b).digest('hex')}};
+const rp=path.join(root,'selfhost/build/phase111/p117-boolean-api02/report.json'),r=JSON.parse(fs.readFileSync(rp));if(!r.complete||!r.checked||JSON.stringify(pin(r.api.file))!==JSON.stringify(r.api))throw Error('Unchecked API');
+const api=(await import(pathToFileURL(r.api.file))).default;let xs=api.p117s_control_report(),rows=[];while(xs?.$==='Con'){rows.push(xs.head);xs=xs.tail}if(xs?.$!=='Nil'||rows.length!==8)throw Error('Control transport');
+const out=path.join(root,'selfhost/build/phase117/boolean-controls02.json');if(fs.existsSync(out))throw Error('Fresh output');const result={complete:rows.every(x=>x.startsWith('PASS ')),rows,inputs:[pin(import.meta.filename),pin(rp),r.api]};fs.writeFileSync(out,JSON.stringify(result,null,2)+'\n');console.log(result);if(!result.complete)process.exitCode=1;

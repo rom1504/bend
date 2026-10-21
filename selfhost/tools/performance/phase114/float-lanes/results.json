@@ -1,0 +1,728 @@
+{
+  "kind": "phase114-local-float-lanes-results01",
+  "complete": true,
+  "measuredBy": "root serial CPU3 lane",
+  "summarizedOffline": true,
+  "targetsExecutedBySummarizer": false,
+  "measurement": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase112/p114-float-lanes-screen01-measure/report.json",
+    "bytes": 249744,
+    "sha256": "8b791643ae2a81c71a59470d08f08be9444aa96908d6626953427165b1e7fafd"
+  },
+  "rounds": 3,
+  "cpuAffinity": [
+    3
+  ],
+  "observations": 30,
+  "allCorrect": true,
+  "allQualified": true,
+  "timings": [
+    {
+      "case": "local-pair",
+      "mediansMs": {
+        "upstream": 51,
+        "p113-final31-hosted": 392,
+        "p114-float-lanes-screen01": 389,
+        "p114-final-screen01": 391,
+        "p114-scalar-operands-screen01": 390
+      },
+      "samplesMs": {
+        "upstream": [
+          51,
+          50,
+          51
+        ],
+        "p113-final31-hosted": [
+          388,
+          392,
+          394
+        ],
+        "p114-float-lanes-screen01": [
+          389,
+          400,
+          388
+        ],
+        "p114-final-screen01": [
+          393,
+          388,
+          391
+        ],
+        "p114-scalar-operands-screen01": [
+          393,
+          390,
+          389
+        ]
+      },
+      "lanesOverOperands": 0.9974358974358974,
+      "lanesOverSelected": 0.9948849104859335
+    },
+    {
+      "case": "variation-ray-active-256-2240",
+      "mediansMs": {
+        "upstream": 51,
+        "p113-final31-hosted": 424,
+        "p114-float-lanes-screen01": 369,
+        "p114-final-screen01": 423,
+        "p114-scalar-operands-screen01": 411
+      },
+      "samplesMs": {
+        "upstream": [
+          53,
+          50,
+          51
+        ],
+        "p113-final31-hosted": [
+          446,
+          424,
+          423
+        ],
+        "p114-float-lanes-screen01": [
+          369,
+          369,
+          371
+        ],
+        "p114-final-screen01": [
+          425,
+          423,
+          421
+        ],
+        "p114-scalar-operands-screen01": [
+          411,
+          412,
+          410
+        ]
+      },
+      "lanesOverOperands": 0.8978102189781022,
+      "lanesOverSelected": 0.8723404255319149
+    }
+  ],
+  "lanesOverOperandsGeomean": 0.9463129194370872,
+  "lanesOverSelectedGeomean": 0.9315998745000883,
+  "machine": [
+    {
+      "profile": "selected",
+      "assembly": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p114-final-screen01-variation-ray-active-256-2240-build/program.s",
+        "bytes": 1087281,
+        "sha256": "cbf5170cd7cbf35238ca8ac269ee72d3614883a3b846fcee22f632e3ceb6433e"
+      },
+      "assemblyFunctionLine": 1185,
+      "assemblyFunctionSha256": "537d28ae0c140bc2af61e8fbc0170f54c912f5ae6c02857f668c9f77c150f319",
+      "qbe": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p114-final-screen01-variation-ray-active-256-2240-emit/program.ssa",
+        "bytes": 1934596,
+        "sha256": "c971b03be7481773ee0e22cc65240af95b1538f38d4fa7516075b084708fc6c2"
+      },
+      "qbeFunctionLine": 1718,
+      "signature": "function l $p113d_FID_36_100_105_114_101_99_116_46_105_115_101_99_116_53_(l %state, l %v_v_4294967295, l %v_v_4294967294, l %v_v_4294967293, l %v_v_4294967292, l %v_v_4294967291, l %v_v_4294967290, l %v_v_4294967289, l %v_v_4294967288, l %v_v_4294967287, l %v_v_4294967286) {",
+      "gprXmmMoves": 49,
+      "gprXmmMoveLines": [
+        "movq %r8, %xmm0",
+        "movq %rsi, %xmm1",
+        "movq %xmm0, %rsi",
+        "movq %r13, %xmm0",
+        "movq %rdx, %xmm1",
+        "movq %xmm0, %rdx",
+        "movq %r12, %xmm0",
+        "movq %rcx, %xmm1",
+        "movq %xmm0, %rcx",
+        "movq %r9, %xmm3",
+        "movq %rbx, %xmm0",
+        "movq %xmm0, %rcx",
+        "movq %r8, %xmm2",
+        "movq %r11, %xmm0",
+        "movq %xmm0, %rcx",
+        "movq %rdx, %xmm0",
+        "movq %rcx, %xmm1",
+        "movq %xmm0, %rcx",
+        "movq %rsi, %xmm1",
+        "movq %r10, %xmm0",
+        "movq %xmm0, %rcx",
+        "movq %rdx, %xmm0",
+        "movq %rcx, %xmm4",
+        "movq %xmm0, %rcx",
+        "movq %rcx, %xmm0",
+        "movq %xmm4, %rdx",
+        "movq %xmm3, %r9",
+        "movq %xmm2, %r8",
+        "movq %r9, %xmm2",
+        "movq %r8, %xmm3",
+        "movq %xmm2, %r8",
+        "movq %xmm1, %rsi",
+        "movq %r8, %xmm1",
+        "movq %rsi, %xmm2",
+        "movq %xmm1, %rsi",
+        "movq %rax, %xmm1",
+        "movq %xmm1, %rax",
+        "movq %rsi, %xmm1",
+        "movq %rax, %xmm2",
+        "movq %xmm1, %rax",
+        "movq %rdx, %xmm1",
+        "movq %rax, %xmm2",
+        "movq %xmm1, %rax",
+        "movq %rax, %xmm1",
+        "movq %xmm0, %rcx",
+        "movq %rbx, %xmm0",
+        "movq %rax, %xmm1",
+        "movq %xmm0, %rax",
+        "movq %rax, %xmm0"
+      ],
+      "stackReservationsBytes": [
+        2072
+      ],
+      "instructionLines": 200,
+      "scalarArithmeticCount": 19,
+      "floatComparisonCount": 2,
+      "callTargets": [
+        "p111_rt_fail",
+        "p111_rt_op",
+        "p111_rt_fail"
+      ],
+      "floatOperandCasts": 44,
+      "wordResultAssignments": 28,
+      "orderedQbeNumericOperations": [
+        " =s sub ",
+        " =s sub ",
+        " =s sub ",
+        " =s mul ",
+        " =s mul ",
+        " =s add ",
+        " =s mul ",
+        " =s add ",
+        " =s mul ",
+        " =s mul ",
+        " =s mul ",
+        " =s add ",
+        " =s mul ",
+        " =s add ",
+        " =s mul ",
+        " =s sub ",
+        " =s sub ",
+        " =s uwtof ",
+        " =w clts ",
+        " =s uwtof ",
+        " =s uwtof ",
+        " =s sub ",
+        " =s sub ",
+        " =s uwtof ",
+        " =s uwtof ",
+        " =s div ",
+        " =w clts ",
+        " =s uwtof "
+      ]
+    },
+    {
+      "profile": "scalarOperands",
+      "assembly": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p114-scalar-operands-screen01-variation-ray-active-256-2240-build/program.s",
+        "bytes": 1085888,
+        "sha256": "109c54601a153a6a55818e66b889a54bff20bf6fea9b971654e07ded85bd07ff"
+      },
+      "assemblyFunctionLine": 1161,
+      "assemblyFunctionSha256": "c7f8133823cde13d9c5e8bdc1f55535877868d40461a2da69fdacb31aaedee1e",
+      "qbe": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p114-scalar-operands-screen01-variation-ray-active-256-2240-emit/program.ssa",
+        "bytes": 1926406,
+        "sha256": "c5759422b44ba9c01cf3506571c3d3b85e97f6c81ecdada1d573b70743a575ad"
+      },
+      "qbeFunctionLine": 1660,
+      "signature": "function l $p113d_FID_36_100_105_114_101_99_116_46_105_115_101_99_116_53_(l %state, l %v_v_4294967295, l %v_v_4294967294, l %v_v_4294967293, l %v_v_4294967292, l %v_v_4294967291, l %v_v_4294967290, l %v_v_4294967289, l %v_v_4294967288, l %v_v_4294967287, l %v_v_4294967286) {",
+      "gprXmmMoves": 49,
+      "gprXmmMoveLines": [
+        "movq %r8, %xmm0",
+        "movq %rsi, %xmm1",
+        "movq %xmm0, %rsi",
+        "movq %r13, %xmm0",
+        "movq %rdx, %xmm1",
+        "movq %xmm0, %rdx",
+        "movq %r12, %xmm0",
+        "movq %rcx, %xmm1",
+        "movq %xmm0, %rcx",
+        "movq %rsi, %xmm3",
+        "movq %rbx, %xmm0",
+        "movq %xmm0, %rsi",
+        "movq %rdx, %xmm2",
+        "movq %r11, %xmm0",
+        "movq %xmm0, %rdx",
+        "movq %rsi, %xmm0",
+        "movq %rdx, %xmm1",
+        "movq %xmm0, %rdx",
+        "movq %rcx, %xmm1",
+        "movq %r10, %xmm0",
+        "movq %xmm0, %rcx",
+        "movq %rdx, %xmm0",
+        "movq %rcx, %xmm4",
+        "movq %xmm0, %rcx",
+        "movq %rcx, %xmm0",
+        "movq %xmm4, %rdx",
+        "movq %xmm3, %rsi",
+        "movq %xmm2, %rsi",
+        "movq %r8, %xmm2",
+        "movq %rsi, %xmm3",
+        "movq %xmm2, %rsi",
+        "movq %xmm1, %rsi",
+        "movq %r8, %xmm1",
+        "movq %rsi, %xmm2",
+        "movq %xmm1, %rsi",
+        "movq %rax, %xmm1",
+        "movq %xmm1, %rax",
+        "movq %rsi, %xmm1",
+        "movq %rax, %xmm2",
+        "movq %xmm1, %rax",
+        "movq %rdx, %xmm1",
+        "movq %rax, %xmm2",
+        "movq %xmm1, %rax",
+        "movq %rax, %xmm1",
+        "movq %xmm0, %rcx",
+        "movq %rbx, %xmm0",
+        "movq %rax, %xmm1",
+        "movq %xmm0, %rax",
+        "movq %rax, %xmm0"
+      ],
+      "stackReservationsBytes": [
+        24
+      ],
+      "instructionLines": 166,
+      "scalarArithmeticCount": 19,
+      "floatComparisonCount": 2,
+      "callTargets": [
+        "p111_rt_fail",
+        "p111_rt_op",
+        "p111_rt_fail"
+      ],
+      "floatOperandCasts": 44,
+      "wordResultAssignments": 28,
+      "orderedQbeNumericOperations": [
+        " =s sub ",
+        " =s sub ",
+        " =s sub ",
+        " =s mul ",
+        " =s mul ",
+        " =s add ",
+        " =s mul ",
+        " =s add ",
+        " =s mul ",
+        " =s mul ",
+        " =s mul ",
+        " =s add ",
+        " =s mul ",
+        " =s add ",
+        " =s mul ",
+        " =s sub ",
+        " =s sub ",
+        " =s uwtof ",
+        " =w clts ",
+        " =s uwtof ",
+        " =s uwtof ",
+        " =s sub ",
+        " =s sub ",
+        " =s uwtof ",
+        " =s uwtof ",
+        " =s div ",
+        " =w clts ",
+        " =s uwtof "
+      ]
+    },
+    {
+      "profile": "floatLanes",
+      "assembly": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p114-float-lanes-screen01-variation-ray-active-256-2240-build/program.s",
+        "bytes": 1085172,
+        "sha256": "48227be24c8c72b585a726386578b31e74d9319d91d4cce5e5c99d558cb7536c"
+      },
+      "assemblyFunctionLine": 1155,
+      "assemblyFunctionSha256": "b50c636496dc1b0231ca25d4195c015a87050ed9a5da92c5b8473caa22082edb",
+      "qbe": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p114-float-lanes-screen01-variation-ray-active-256-2240-emit/program.ssa",
+        "bytes": 1924373,
+        "sha256": "6e4146a35ba7e9f363c17a523dcae368b33c044004bcad3b6c3c7698857ad756"
+      },
+      "qbeFunctionLine": 1644,
+      "signature": "function l $p113d_FID_36_100_105_114_101_99_116_46_105_115_101_99_116_53_(l %state, l %v_v_4294967295, l %v_v_4294967294, l %v_v_4294967293, l %v_v_4294967292, l %v_v_4294967291, l %v_v_4294967290, l %v_v_4294967289, l %v_v_4294967288, l %v_v_4294967287, l %v_v_4294967286) {",
+      "gprXmmMoves": 25,
+      "gprXmmMoveLines": [
+        "movq %r8, %xmm0",
+        "movq %rsi, %xmm1",
+        "movq %xmm0, %rsi",
+        "movq %r13, %xmm1",
+        "movq %rdx, %xmm2",
+        "movq %xmm2, %rdx",
+        "movq %r12, %xmm1",
+        "movq %rcx, %xmm3",
+        "movq %xmm1, %rcx",
+        "movq %rbx, %xmm3",
+        "movq %r11, %xmm3",
+        "movq %r10, %xmm2",
+        "movq %rsi, %xmm2",
+        "movq %rdx, %xmm3",
+        "movq %rcx, %xmm3",
+        "movq %rax, %xmm3",
+        "movq %xmm1, %rax",
+        "movq %rax, %xmm1",
+        "movq %xmm0, %rcx",
+        "movq %rcx, %xmm0",
+        "movq %xmm0, %rcx",
+        "movq %rbx, %xmm0",
+        "movq %rax, %xmm1",
+        "movq %xmm0, %rax",
+        "movq %rax, %xmm0"
+      ],
+      "stackReservationsBytes": [
+        24
+      ],
+      "instructionLines": 131,
+      "scalarArithmeticCount": 19,
+      "floatComparisonCount": 2,
+      "callTargets": [
+        "p111_rt_fail",
+        "p111_rt_op",
+        "p111_rt_fail"
+      ],
+      "floatOperandCasts": 26,
+      "wordResultAssignments": 28,
+      "orderedQbeNumericOperations": [
+        " =s sub ",
+        " =s sub ",
+        " =s sub ",
+        " =s mul ",
+        " =s mul ",
+        " =s add ",
+        " =s mul ",
+        " =s add ",
+        " =s mul ",
+        " =s mul ",
+        " =s mul ",
+        " =s add ",
+        " =s mul ",
+        " =s add ",
+        " =s mul ",
+        " =s sub ",
+        " =s sub ",
+        " =s uwtof ",
+        " =w clts ",
+        " =s uwtof ",
+        " =s uwtof ",
+        " =s sub ",
+        " =s sub ",
+        " =s uwtof ",
+        " =s uwtof ",
+        " =s div ",
+        " =w clts ",
+        " =s uwtof "
+      ]
+    }
+  ],
+  "signaturesIdentical": true,
+  "orderedQbeNumericOperationsIdentical": true,
+  "wordResultNamesIdentical": true,
+  "localPairQbe": [
+    {
+      "profile": "selected",
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p114-final-screen01-local-pair-emit/program.ssa",
+      "bytes": 1019605,
+      "sha256": "47f686f066a9ee3de3dfb1899883c46a14cae33484c88bac77ab2f73ead73a57"
+    },
+    {
+      "profile": "scalarOperands",
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p114-scalar-operands-screen01-local-pair-emit/program.ssa",
+      "bytes": 1019605,
+      "sha256": "47f686f066a9ee3de3dfb1899883c46a14cae33484c88bac77ab2f73ead73a57"
+    },
+    {
+      "profile": "floatLanes",
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p114-float-lanes-screen01-local-pair-emit/program.ssa",
+      "bytes": 1019605,
+      "sha256": "47f686f066a9ee3de3dfb1899883c46a14cae33484c88bac77ab2f73ead73a57"
+    }
+  ],
+  "localPairQbeByteIdentical": true,
+  "actualSourceControls": {
+    "complete": true,
+    "factControls": [
+      {
+        "name": "known-result",
+        "pass": true
+      },
+      {
+        "name": "two-copy-aliases",
+        "pass": true
+      },
+      {
+        "name": "rebind-retains-old-alias",
+        "pass": true
+      },
+      {
+        "name": "unknown-copy-kills-destination",
+        "pass": true
+      },
+      {
+        "name": "self-copy-reads-old-fact",
+        "pass": true
+      },
+      {
+        "name": "comparison-kills-float-destination",
+        "pass": true
+      },
+      {
+        "name": "conversion-output-lane",
+        "pass": true
+      },
+      {
+        "name": "bounded-sixteen-facts",
+        "pass": true
+      }
+    ],
+    "cases": [
+      {
+        "name": "copy-chain",
+        "pass_": true,
+        "witnesses": [
+          {
+            "name": "copy_chain",
+            "pass": true,
+            "floatCastsBefore": 8,
+            "floatCastsAfter": 4,
+            "actualGroups": {
+              "copies": 26,
+              "groups": 4,
+              "rebindings": 3
+            },
+            "gates": {
+              "sameFloatOperationSequence": true,
+              "sameWordResults": true,
+              "scratchAdmitted": true,
+              "floatCastsRemoved": true,
+              "floatOperationPresent": true,
+              "actualLocalCopies": true,
+              "actualDestinationRebinding": true
+            }
+          },
+          {
+            "name": "convert_chain",
+            "pass": true,
+            "floatCastsBefore": 2,
+            "floatCastsAfter": 0,
+            "actualGroups": {
+              "copies": 8,
+              "groups": 2,
+              "rebindings": 1
+            },
+            "gates": {
+              "sameFloatOperationSequence": true,
+              "sameWordResults": true,
+              "scratchAdmitted": true,
+              "floatCastsRemoved": true,
+              "floatOperationPresent": true,
+              "actualLocalCopies": true
+            }
+          },
+          {
+            "name": "mixed",
+            "pass": true,
+            "floatCastsBefore": 2,
+            "floatCastsAfter": 2,
+            "actualGroups": {
+              "copies": 4,
+              "groups": 0,
+              "rebindings": 0
+            },
+            "gates": {
+              "sameFloatOperationSequence": true,
+              "sameWordResults": true,
+              "fallbackExactlyRetained": true,
+              "unsupportedOperationRetained": true
+            }
+          }
+        ]
+      },
+      {
+        "name": "ordinary-floats",
+        "pass_": true,
+        "witnesses": [
+          {
+            "name": "arithmetic",
+            "pass": true,
+            "floatCastsBefore": 8,
+            "floatCastsAfter": 6,
+            "actualGroups": {
+              "copies": 14,
+              "groups": 4,
+              "rebindings": 2
+            },
+            "gates": {
+              "sameFloatOperationSequence": true,
+              "sameWordResults": true,
+              "scratchAdmitted": true,
+              "floatCastsRemoved": true,
+              "floatOperationPresent": true,
+              "actualLocalCopies": true
+            }
+          },
+          {
+            "name": "mixed",
+            "pass": true,
+            "floatCastsBefore": 2,
+            "floatCastsAfter": 2,
+            "actualGroups": {
+              "copies": 4,
+              "groups": 0,
+              "rebindings": 0
+            },
+            "gates": {
+              "sameFloatOperationSequence": true,
+              "sameWordResults": true,
+              "fallbackExactlyRetained": true,
+              "unsupportedOperationRetained": true
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "ordinaryObservations": [
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p114-float-lanes-ordinary01-copy-chain-observe/report.json",
+        "bytes": 1076,
+        "sha256": "807a2a5e3f82d2e8b71ffb48accdfc04748aaf2219d13a9eda71a00e95566728"
+      },
+      "complete": true,
+      "expected": {
+        "status": 0,
+        "stdout": "1089470464\n1065353216\n1086324736\n1082130432\n3212836864\n1082130432\n",
+        "stderr": ""
+      },
+      "actual": {
+        "status": 0,
+        "stdout": "1089470464\n1065353216\n1086324736\n1082130432\n3212836864\n1082130432\n",
+        "stderr": ""
+      }
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p114-float-lanes-ordinary01-ordinary-floats-observe/report.json",
+        "bytes": 1066,
+        "sha256": "c54ba21bf134470a3dea6830b98a42996640fbdfa6406fa831ba73bf76e5d23c"
+      },
+      "complete": true,
+      "expected": {
+        "status": 0,
+        "stdout": "1071644672\n1067450368\n10\n20\n20\n1082130432\n1266679808\n",
+        "stderr": ""
+      },
+      "actual": {
+        "status": 0,
+        "stdout": "1071644672\n1067450368\n10\n20\n20\n1082130432\n1266679808\n",
+        "stderr": ""
+      }
+    }
+  ],
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p114-final-screen01-variation-ray-active-256-2240-build/program.s",
+      "bytes": 1087281,
+      "sha256": "cbf5170cd7cbf35238ca8ac269ee72d3614883a3b846fcee22f632e3ceb6433e"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p114-final-screen01-variation-ray-active-256-2240-emit/program.ssa",
+      "bytes": 1934596,
+      "sha256": "c971b03be7481773ee0e22cc65240af95b1538f38d4fa7516075b084708fc6c2"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p114-final-screen01-variation-ray-active-256-2240-build/report.json",
+      "bytes": 5329,
+      "sha256": "f5c37fe98c20266dce30109fe8fa45f83f633517ba365a7ccecc5a8aa64332ea"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p114-final-screen01-variation-ray-active-256-2240-emit/report.json",
+      "bytes": 10357,
+      "sha256": "e84ebc649978e59d9356a2b0f53f4e429186c70cfd68b409cc65e24dfd76a192"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p114-scalar-operands-screen01-variation-ray-active-256-2240-build/program.s",
+      "bytes": 1085888,
+      "sha256": "109c54601a153a6a55818e66b889a54bff20bf6fea9b971654e07ded85bd07ff"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p114-scalar-operands-screen01-variation-ray-active-256-2240-emit/program.ssa",
+      "bytes": 1926406,
+      "sha256": "c5759422b44ba9c01cf3506571c3d3b85e97f6c81ecdada1d573b70743a575ad"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p114-scalar-operands-screen01-variation-ray-active-256-2240-build/report.json",
+      "bytes": 5492,
+      "sha256": "1302c0406b65c2d80fa1e01719acd9198beba7f3d6d38f69cfdafec0648ef815"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p114-scalar-operands-screen01-variation-ray-active-256-2240-emit/report.json",
+      "bytes": 10378,
+      "sha256": "d743b407eab8bd78eb6803f8ad0ce05fcb3156b552adebb6158ed9de67d75669"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p114-float-lanes-screen01-variation-ray-active-256-2240-build/program.s",
+      "bytes": 1085172,
+      "sha256": "48227be24c8c72b585a726386578b31e74d9319d91d4cce5e5c99d558cb7536c"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p114-float-lanes-screen01-variation-ray-active-256-2240-emit/program.ssa",
+      "bytes": 1924373,
+      "sha256": "6e4146a35ba7e9f363c17a523dcae368b33c044004bcad3b6c3c7698857ad756"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p114-float-lanes-screen01-variation-ray-active-256-2240-build/report.json",
+      "bytes": 5429,
+      "sha256": "da9857fa51a0a03fc326d7a764b6fa0cba40ca5a92d4d5a1f97994c84841f072"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p114-float-lanes-screen01-variation-ray-active-256-2240-emit/report.json",
+      "bytes": 10394,
+      "sha256": "0f1edf78264d8d7ccae8d79e6c9b59eea4aaef75cb9c412d457670ca381efd92"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase114/float-lanes-screen01-plan-reports.json",
+      "bytes": 624,
+      "sha256": "182c04e7804bdcee6fbdefd17dee08499d485edc460992fb647570c2214c85ff"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase114/float-lanes-screen01-plan-binding.json",
+      "bytes": 16885,
+      "sha256": "ff8c579fa78fc0ed9933e7ae05875344f00f56675e892ae6bad6a23c0a4009b9"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase114/float-lanes-admission01/manifest.json",
+      "bytes": 6807,
+      "sha256": "5214eb4530fc6489decd10ac2a4a426cb7cad129517f80e9129c0f12adb45ee5"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase114/float-lanes-controls01/report.json",
+      "bytes": 14948,
+      "sha256": "dbf05c7303acade99f0f4ed9e83a0c51e0736c976674243be7ab460ab282cb0e"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p114-float-lanes-api01/report.json",
+      "bytes": 7009,
+      "sha256": "711dd1a74b83d3c195aa551bf01bf2c72467c012382ff9ead59d4d8136972b3b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p114-float-lanes-ordinary01-copy-chain-observe/report.json",
+      "bytes": 1076,
+      "sha256": "807a2a5e3f82d2e8b71ffb48accdfc04748aaf2219d13a9eda71a00e95566728"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p114-float-lanes-ordinary01-ordinary-floats-observe/report.json",
+      "bytes": 1066,
+      "sha256": "c54ba21bf134470a3dea6830b98a42996640fbdfa6406fa831ba73bf76e5d23c"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase114/float-lanes/modules01.json",
+      "bytes": 2711,
+      "sha256": "7939f8425d94d4a1d666689ec4bf676c96af37b2b0dec2c86d70b5268795fe37"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase114/float-lanes/review.md",
+      "bytes": 3231,
+      "sha256": "48faaa650b8d4fd2b668d4756f0bca71a694697261af1e0440cc2f3d35f9bd0f"
+    }
+  ],
+  "scope": "Two frozen programs, three rounds, hosted-emitted qualified source. Integer private/public ABI and full word results retained. No broad45, native compiler self-reproduction, general multiplier, or default promotion claim."
+}

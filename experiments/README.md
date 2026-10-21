@@ -1,7 +1,9 @@
 # Compiler experiment workflow
 
-Current full compiler experiment: [Phase108 QBE](../implementation/phase108/README.md),
-with exact full self-emission and an explicit runtime-performance deficit.
+Current full compiler experiment: [Phase114 direct QBE](../implementation/phase114/README.md),
+with exact74.22 MB native self-emission and a qualified successor. The paired
+original45 program-runtime campaign improves7.082→5.386× upstream (24% less time);
+the native three-source request/build metrics are separate. Parity remains open.
 See [the frontier](STEERING.md) before choosing the next optimization.
 
 ## Direct-IR implementation: Phase107 native source and QBE

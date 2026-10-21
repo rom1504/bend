@@ -1,0 +1,592 @@
+{
+  "kind": "phase114-table-buffer-result-review",
+  "version": 1,
+  "complete": true,
+  "experiment": "P114-010",
+  "analysisTargetsRun": false,
+  "decision": {
+    "selected": false,
+    "status": "deferred",
+    "requiredGeomeanElapsedReduction": 0.03,
+    "observedGeomeanElapsedReduction": 0.023793838126668576,
+    "reason": "Matched pair gain below preregistered 3% threshold. Selected source02 and qualified native image unchanged."
+  },
+  "inputs": {
+    "design": {
+      "file": "experiments/phase114/P114-010-table-buffer-transport-coverage.md",
+      "bytes": 3388,
+      "sha256": "e57cf913a2f81a59059f7137028712bd13d140fe256ac3c40d56db4c8556d6e3"
+    },
+    "overlay": {
+      "file": "selfhost/tools/performance/phase114/transport/table-buffers-modules01.json",
+      "bytes": 3434,
+      "sha256": "1109ddeac2f1f56c34b28aa9de3a3a38679cdc0af89dec47d0a4239b8d8f0513"
+    },
+    "runtimeReport": {
+      "file": "selfhost/build/phase112/p114-table-buffers-screen01-measure/report.json",
+      "bytes": 228763,
+      "sha256": "31c4fe081c760f8acec84f83e3962a921120eda4900773e288ff063623f79234"
+    },
+    "bindings": {
+      "parent": {
+        "file": "selfhost/build/phase114/final-screen01-jobs-binding.json",
+        "bytes": 54618,
+        "sha256": "a69f855f9734c6fe26bc93f796536992921cf7041e046ccab5f8be6f94cda77c"
+      },
+      "candidate": {
+        "file": "selfhost/build/phase114/table-buffers-screen01-plan-binding.json",
+        "bytes": 16896,
+        "sha256": "ea6e144f54c5c70f38bb5efe9711169b7b2f23c2c085ffa17b52988cec70fe4b"
+      }
+    },
+    "apiReport": {
+      "file": "selfhost/build/phase111/p114-table-buffers-api01/report.json",
+      "bytes": 6664,
+      "sha256": "13872e1564f885e03af8bb7228aa6f21e93b056973f3c5e8b3f7086dfef45214"
+    },
+    "admission": {
+      "file": "selfhost/build/phase114/table-buffers-admission01/manifest.json",
+      "bytes": 46591,
+      "sha256": "beb063ac06a877eb1f0bbedf347a8ada4aef9e767d7539dd1c528fc38813b4f2"
+    },
+    "policyReport": {
+      "file": "selfhost/build/phase114/table-buffers-controls02/report.json",
+      "bytes": 3784,
+      "sha256": "b2552b2517375419169609cca14106d21d523b308c20884e267584b98f545810"
+    },
+    "ordinaryReports": [
+      {
+        "file": "selfhost/build/phase111/p114-table-buffers-ordinary01-expression-two-children-observe/report.json",
+        "bytes": 1013,
+        "sha256": "2ad7da7c9b102c95c24443a79f944232eed39c9f6d79296b7a72a9e79c37c569"
+      },
+      {
+        "file": "selfhost/build/phase111/p114-table-buffers-ordinary01-owned-scan-caller-observe/report.json",
+        "bytes": 1436,
+        "sha256": "d0a499fa1a4880800390fc96d4dab755a3bcab8981ab0b08ef0c7df901262efb"
+      }
+    ],
+    "failedAdapterJobs": {
+      "file": "selfhost/build/phase113/p114-table-buffers-qualification01-jobs/report.json",
+      "bytes": 1638,
+      "sha256": "864c5e9beab756315c60fce216ea97167810638e1124e367d2bd4293148d35b3"
+    },
+    "failedAdapterGuard": {
+      "file": "selfhost/build/phase114/table-buffers-qualification01-guard/process.json",
+      "bytes": 678,
+      "sha256": "f25ad40ffa30eef2e9f97398b1f02f9eab46c81324f29152a55e618d8703e024"
+    },
+    "failedAdapterStderr": {
+      "file": "selfhost/build/phase113/p114-table-buffers-qualification01-jobs/0.stderr",
+      "bytes": 986,
+      "sha256": "683945491af2a571b219e4b4f3977ac819092a0f61e33ea489f6b86fb8723337"
+    },
+    "adapterV1": {
+      "file": "selfhost/tools/performance/phase114/transport/table-buffer-controls.mjs",
+      "bytes": 2314,
+      "sha256": "f84541038626e0ecf62981607d4d1739b97288dc5d2a32d403be57c5f52c5687"
+    },
+    "adapterV2": {
+      "file": "selfhost/tools/performance/phase114/transport/table-buffer-controls-v2.mjs",
+      "bytes": 2377,
+      "sha256": "ba8f04c0bb9dc07b11bf079be29609e52b3f6e61dfa72466c2d1126bc330a1c9"
+    }
+  },
+  "qualification": {
+    "checkedApi": true,
+    "exactComposition": true,
+    "policyCasesPassed": 13,
+    "ordinaryCompleteOutputsPassed": 2,
+    "timingCompleteOutputsPassed": 24,
+    "failedAdapter": "v1 expected boxed Bool; the checked API exposes native JS Boolean. Failed in 0.33075s outer guard before native jobs. Preserved v1 and corrected v2; Bend implementation unchanged."
+  },
+  "measurement": {
+    "parentRole": "p114-final-screen01",
+    "candidateRole": "p114-table-buffers-screen01",
+    "roles": [
+      "upstream",
+      "p113-final31-hosted",
+      "p114-table-buffers-screen01",
+      "p114-final-screen01"
+    ],
+    "cases": [
+      "tree-bitonic",
+      "coverage-expression-128"
+    ],
+    "rounds": 3,
+    "records": 24,
+    "perProgram": {
+      "tree-bitonic": {
+        "samplesMs": {
+          "upstream": [
+            52,
+            51,
+            50
+          ],
+          "p113-final31-hosted": [
+            561,
+            563,
+            556
+          ],
+          "p114-table-buffers-screen01": [
+            334,
+            333,
+            330
+          ],
+          "p114-final-screen01": [
+            339,
+            343,
+            338
+          ]
+        },
+        "mediansMs": {
+          "upstream": 51,
+          "p113-final31-hosted": 561,
+          "p114-table-buffers-screen01": 333,
+          "p114-final-screen01": 339
+        },
+        "missingProducts": [],
+        "ratiosToUpstream": {
+          "upstream": 1.0,
+          "p113-final31-hosted": 11.0,
+          "p114-table-buffers-screen01": 6.529411764705882,
+          "p114-final-screen01": 6.647058823529412
+        },
+        "ratiosToPhase111": {}
+      },
+      "coverage-expression-128": {
+        "samplesMs": {
+          "upstream": [
+            51,
+            51,
+            51
+          ],
+          "p113-final31-hosted": [
+            485,
+            487,
+            486
+          ],
+          "p114-table-buffers-screen01": [
+            130,
+            129,
+            130
+          ],
+          "p114-final-screen01": [
+            144,
+            134,
+            134
+          ]
+        },
+        "mediansMs": {
+          "upstream": 51,
+          "p113-final31-hosted": 486,
+          "p114-table-buffers-screen01": 130,
+          "p114-final-screen01": 134
+        },
+        "missingProducts": [],
+        "ratiosToUpstream": {
+          "upstream": 1.0,
+          "p113-final31-hosted": 9.529411764705882,
+          "p114-table-buffers-screen01": 2.549019607843137,
+          "p114-final-screen01": 2.627450980392157
+        },
+        "ratiosToPhase111": {}
+      }
+    },
+    "parentGeomeanToUpstream": 4.1790933493530265,
+    "candidateGeomeanToUpstream": 4.079656678682283,
+    "candidateToParentGeomean": 0.9762061618733314,
+    "clock": "Existing Phase93 in-program IO.now milliseconds: workload, full-result validation, loop, final success-count print. Excludes startup, initial result and warmups. Process wall recorded separately; compiler requests/builds excluded.",
+    "fullCorpusQualified": false,
+    "scope": "Two previously seen frozen workloads, three rotated rounds, four roles. No broad or native-compiler speed claim."
+  },
+  "products": {
+    "tree-bitonic": {
+      "parent": {
+        "qbe": {
+          "file": "selfhost/build/phase111/p114-final-screen01-tree-bitonic-emit/program.ssa",
+          "bytes": 618583,
+          "sha256": "9eaf9e479370b72729ada9776be15a30958992fa1ce56dbc4b32d8165ed52e85"
+        },
+        "binary": {
+          "file": "selfhost/build/phase111/p114-final-screen01-tree-bitonic-build/program",
+          "bytes": 235000,
+          "sha256": "462d2a44cbffcbd81236ccdd90575350d86b7a7b28f8fcd842305d91159e7a96"
+        },
+        "build": {
+          "file": "selfhost/build/phase111/p114-final-screen01-tree-bitonic-build/report.json",
+          "bytes": 5060,
+          "sha256": "470118e4eca287590a848f7053ed4fa8d0f675662c76845d6504f75bf6b42f60"
+        },
+        "emission": {
+          "file": "selfhost/build/phase111/p114-final-screen01-tree-bitonic-emit/report.json",
+          "bytes": 10320,
+          "sha256": "0edcd1faa3984770dfc977b4ced356557a6064815b4a2f4ed6e684e28901cfeb"
+        },
+        "runtime": {
+          "file": "selfhost/build/phase113/runtime-products-build01/runtime.o",
+          "bytes": 96224,
+          "sha256": "c0f6f2ca5b5a58418f326794e97a29cc21a68f32e924ce5974ad4ffccfc9c9f9"
+        },
+        "source": {
+          "file": "selfhost/build/phase93/fixtures01/tree-bitonic.bend",
+          "bytes": 6593,
+          "sha256": "405f8d8fb2066e6fedd8baa45943bcdf92b59cb40e23ce2ad3ea4bd3eeb53ae0"
+        },
+        "compilerSource": {
+          "file": "selfhost/build/phase114/final-source01/compiler.bend",
+          "bytes": 2306291,
+          "sha256": "4fb0572f0a011f6c1921594372d816bb49f26289ecc0e079328edd7491598587"
+        },
+        "assembly": {
+          "file": "selfhost/build/phase111/p114-final-screen01-tree-bitonic-build/program.s",
+          "bytes": 666017,
+          "sha256": "e46f7630d5c1503be43e59bc0358df2f769bba1e81073ff53a030e8746cfd750"
+        }
+      },
+      "candidate": {
+        "qbe": {
+          "file": "selfhost/build/phase111/p114-table-buffers-screen01-tree-bitonic-emit/program.ssa",
+          "bytes": 619065,
+          "sha256": "38bb555102144200d1d9669101566e762da4cb056040877047da4d5d0e39bd1d"
+        },
+        "binary": {
+          "file": "selfhost/build/phase111/p114-table-buffers-screen01-tree-bitonic-build/program",
+          "bytes": 235008,
+          "sha256": "a0b84c652beeb6755d24f330547d24af2c00c03d273612bffa4bf7ca19a7665e"
+        },
+        "build": {
+          "file": "selfhost/build/phase111/p114-table-buffers-screen01-tree-bitonic-build/report.json",
+          "bytes": 5189,
+          "sha256": "c8e414ba4fd76e878f09a5c5a93c4bab0ab7b19dba51cbbb997607a8789e4118"
+        },
+        "emission": {
+          "file": "selfhost/build/phase111/p114-table-buffers-screen01-tree-bitonic-emit/report.json",
+          "bytes": 10358,
+          "sha256": "46c6a7b533fd4376087920bf494056ed4df6dfad9c68f96ca85e1905376f3ffb"
+        },
+        "runtime": {
+          "file": "selfhost/build/phase113/runtime-products-build01/runtime.o",
+          "bytes": 96224,
+          "sha256": "c0f6f2ca5b5a58418f326794e97a29cc21a68f32e924ce5974ad4ffccfc9c9f9"
+        },
+        "source": {
+          "file": "selfhost/build/phase93/fixtures01/tree-bitonic.bend",
+          "bytes": 6593,
+          "sha256": "405f8d8fb2066e6fedd8baa45943bcdf92b59cb40e23ce2ad3ea4bd3eeb53ae0"
+        },
+        "compilerSource": {
+          "file": "selfhost/build/phase114/table-buffers-source01/compiler.bend",
+          "bytes": 2307628,
+          "sha256": "0ef15ba8db16fae9147d00c54e442ec62fff1ed74fef612d0db4d39526759f1e"
+        },
+        "assembly": {
+          "file": "selfhost/build/phase111/p114-table-buffers-screen01-tree-bitonic-build/program.s",
+          "bytes": 665918,
+          "sha256": "32b1b3d22a62d38d35cb9a68357a3b10bc2adfb3e7144e188a43a0262184a336"
+        }
+      }
+    },
+    "coverage-expression-128": {
+      "parent": {
+        "qbe": {
+          "file": "selfhost/build/phase111/p114-final-screen01-coverage-expression-128-emit/program.ssa",
+          "bytes": 458043,
+          "sha256": "9cd87786cb1109fd8f88db354fa42a08d2277f76d25e9a980a6a34f198f731ce"
+        },
+        "binary": {
+          "file": "selfhost/build/phase111/p114-final-screen01-coverage-expression-128-build/program",
+          "bytes": 202104,
+          "sha256": "fdc6422b30dbb9f5415c5977c86c98af5cf96a177fe3300ca0b21f12d570e2ba"
+        },
+        "build": {
+          "file": "selfhost/build/phase111/p114-final-screen01-coverage-expression-128-build/report.json",
+          "bytes": 5236,
+          "sha256": "ecca7156125ba9d825fc0bd0cd22270ca92249aae20015eddac67ed7d5c74c23"
+        },
+        "emission": {
+          "file": "selfhost/build/phase111/p114-final-screen01-coverage-expression-128-emit/report.json",
+          "bytes": 10318,
+          "sha256": "13bab70cf0a44e4ff136079df63e11d6b207bf21ffd555a8c04fdafe5733a901"
+        },
+        "runtime": {
+          "file": "selfhost/build/phase113/runtime-products-build01/runtime.o",
+          "bytes": 96224,
+          "sha256": "c0f6f2ca5b5a58418f326794e97a29cc21a68f32e924ce5974ad4ffccfc9c9f9"
+        },
+        "source": {
+          "file": "selfhost/build/phase93/fixtures01/coverage-expression-128.bend",
+          "bytes": 3504,
+          "sha256": "32ae9cc5bdaeff023b08403b357b7e8a3f03e06d37c461feb4a8930ad51c5a2c"
+        },
+        "compilerSource": {
+          "file": "selfhost/build/phase114/final-source01/compiler.bend",
+          "bytes": 2306291,
+          "sha256": "4fb0572f0a011f6c1921594372d816bb49f26289ecc0e079328edd7491598587"
+        },
+        "assembly": {
+          "file": "selfhost/build/phase111/p114-final-screen01-coverage-expression-128-build/program.s",
+          "bytes": 516995,
+          "sha256": "469c652f8251460837c5b61171f1e50977dd9c7ca295f11a75d5b6dc009550f3"
+        }
+      },
+      "candidate": {
+        "qbe": {
+          "file": "selfhost/build/phase111/p114-table-buffers-screen01-coverage-expression-128-emit/program.ssa",
+          "bytes": 458766,
+          "sha256": "611a811b9418e56176f2a7a362dd380cc97da17c6a763b596f0750cbb022a23b"
+        },
+        "binary": {
+          "file": "selfhost/build/phase111/p114-table-buffers-screen01-coverage-expression-128-build/program",
+          "bytes": 202112,
+          "sha256": "b302fe95b4deccfaf1411329d4c4dc4dcc41e80f84f563c7d4ffd03f863d0130"
+        },
+        "build": {
+          "file": "selfhost/build/phase111/p114-table-buffers-screen01-coverage-expression-128-build/report.json",
+          "bytes": 5364,
+          "sha256": "b81475ad76a887951b13f3dcb2d0af487ed0f2bd6f325b7a3aa6383e4871ac7a"
+        },
+        "emission": {
+          "file": "selfhost/build/phase111/p114-table-buffers-screen01-coverage-expression-128-emit/report.json",
+          "bytes": 10366,
+          "sha256": "4094b9f6ed5591e4ead0210c8eaddebb23d557fc73309acaa673452964cb8dd2"
+        },
+        "runtime": {
+          "file": "selfhost/build/phase113/runtime-products-build01/runtime.o",
+          "bytes": 96224,
+          "sha256": "c0f6f2ca5b5a58418f326794e97a29cc21a68f32e924ce5974ad4ffccfc9c9f9"
+        },
+        "source": {
+          "file": "selfhost/build/phase93/fixtures01/coverage-expression-128.bend",
+          "bytes": 3504,
+          "sha256": "32ae9cc5bdaeff023b08403b357b7e8a3f03e06d37c461feb4a8930ad51c5a2c"
+        },
+        "compilerSource": {
+          "file": "selfhost/build/phase114/table-buffers-source01/compiler.bend",
+          "bytes": 2307628,
+          "sha256": "0ef15ba8db16fae9147d00c54e442ec62fff1ed74fef612d0db4d39526759f1e"
+        },
+        "assembly": {
+          "file": "selfhost/build/phase111/p114-table-buffers-screen01-coverage-expression-128-build/program.s",
+          "bytes": 516926,
+          "sha256": "0ff4c8cbba22d1aca492767b1fde28a221b6d14436c9dbe6080cb9589f64d8c0"
+        }
+      }
+    }
+  },
+  "staticComparison": {
+    "method": "Read existing function declarations and bodies from pinned QBE; count direct runtime call spellings and corresponding calls inside pinned assembler functions. No transformed product or compiler invocation. Counts are static sites, not dynamic frequencies.",
+    "cases": [
+      {
+        "case": "tree-bitonic",
+        "functions": 802,
+        "byteIdenticalFunctionBodies": 800,
+        "changedFunctionBodies": 2,
+        "hWorkers": [
+          {
+            "symbol": "p114r_FID_36_100_105_114_101_99_116_46_83_116_114_105_110_103_46_108_101_110_103_116_104_",
+            "decodedSymbol": "p114r_$direct.String.length",
+            "changed": false,
+            "parent": {
+              "bodySha256": "7c675a263e74deaff5d564cb546babf60d70b987c71ad99611a6c273b263a6d2",
+              "qbeBodyLines": 82,
+              "qbeFrameCalls": 0,
+              "assemblyFrameCalls": 0,
+              "otherRuntimeCallCounts": {
+                "p111_rt_fail": 2,
+                "p111_rt_sink": 1,
+                "p111_rt_special_ctor": 1,
+                "p111_rt_take": 1
+              },
+              "frameCallLines": []
+            },
+            "candidate": {
+              "bodySha256": "7c675a263e74deaff5d564cb546babf60d70b987c71ad99611a6c273b263a6d2",
+              "qbeBodyLines": 82,
+              "qbeFrameCalls": 0,
+              "assemblyFrameCalls": 0,
+              "otherRuntimeCallCounts": {
+                "p111_rt_fail": 2,
+                "p111_rt_sink": 1,
+                "p111_rt_special_ctor": 1,
+                "p111_rt_take": 1
+              },
+              "frameCallLines": []
+            },
+            "nonFrameRuntimeCallSequenceIdentical": true
+          },
+          {
+            "symbol": "p114r_FID_36_100_105_114_101_99_116_46_119_97_114_112_",
+            "decodedSymbol": "p114r_$direct.warp",
+            "changed": true,
+            "parent": {
+              "bodySha256": "666b66e9447ade261541faa3b3cbf612602157ef560b9fad70bd708ae5e6ee20",
+              "qbeBodyLines": 317,
+              "qbeFrameCalls": 1,
+              "assemblyFrameCalls": 1,
+              "otherRuntimeCallCounts": {
+                "p111_rt_fail": 4,
+                "p111_rt_sink": 8,
+                "p111_rt_take": 6
+              },
+              "frameCallLines": [
+                "%v_p114h_case_0_local_ignored =l call $p111_rt_frame(l %state, w 285, l %v_p114h_case_0_local_scratch, w 1)"
+              ]
+            },
+            "candidate": {
+              "bodySha256": "8a6e48d3fc6c64b22e2b48d563ad8ba229a6a83abfc1350757d669fd22c5c904",
+              "qbeBodyLines": 326,
+              "qbeFrameCalls": 0,
+              "assemblyFrameCalls": 0,
+              "otherRuntimeCallCounts": {
+                "p111_rt_fail": 4,
+                "p111_rt_sink": 8,
+                "p111_rt_take": 6
+              },
+              "frameCallLines": []
+            },
+            "nonFrameRuntimeCallSequenceIdentical": true
+          },
+          {
+            "symbol": "p114r_FID_36_100_105_114_101_99_116_46_115_99_97_110_",
+            "decodedSymbol": "p114r_$direct.scan",
+            "changed": true,
+            "parent": {
+              "bodySha256": "567bfd474581d9515a1ee92f0f41ba48b9c5758905ffecaad6a770ef5e4a30f9",
+              "qbeBodyLines": 143,
+              "qbeFrameCalls": 1,
+              "assemblyFrameCalls": 1,
+              "otherRuntimeCallCounts": {
+                "p111_rt_ctor": 1,
+                "p111_rt_fail": 2,
+                "p111_rt_keep": 2,
+                "p111_rt_take": 2
+              },
+              "frameCallLines": [
+                "%v_p114h_case_0_local_ignored =l call $p111_rt_frame(l %state, w 372, l %v_p114h_case_0_local_scratch, w 1)"
+              ]
+            },
+            "candidate": {
+              "bodySha256": "b4bc30deb46cb7bf4453043a8f8eb03e03d7c9ed447a13953f7c2e689b06dea4",
+              "qbeBodyLines": 152,
+              "qbeFrameCalls": 0,
+              "assemblyFrameCalls": 0,
+              "otherRuntimeCallCounts": {
+                "p111_rt_ctor": 1,
+                "p111_rt_fail": 2,
+                "p111_rt_keep": 2,
+                "p111_rt_take": 2
+              },
+              "frameCallLines": []
+            },
+            "nonFrameRuntimeCallSequenceIdentical": true
+          }
+        ]
+      },
+      {
+        "case": "coverage-expression-128",
+        "functions": 613,
+        "byteIdenticalFunctionBodies": 612,
+        "changedFunctionBodies": 1,
+        "hWorkers": [
+          {
+            "symbol": "p114r_FID_36_100_105_114_101_99_116_46_83_116_114_105_110_103_46_108_101_110_103_116_104_",
+            "decodedSymbol": "p114r_$direct.String.length",
+            "changed": false,
+            "parent": {
+              "bodySha256": "7c675a263e74deaff5d564cb546babf60d70b987c71ad99611a6c273b263a6d2",
+              "qbeBodyLines": 82,
+              "qbeFrameCalls": 0,
+              "assemblyFrameCalls": 0,
+              "otherRuntimeCallCounts": {
+                "p111_rt_fail": 2,
+                "p111_rt_sink": 1,
+                "p111_rt_special_ctor": 1,
+                "p111_rt_take": 1
+              },
+              "frameCallLines": []
+            },
+            "candidate": {
+              "bodySha256": "7c675a263e74deaff5d564cb546babf60d70b987c71ad99611a6c273b263a6d2",
+              "qbeBodyLines": 82,
+              "qbeFrameCalls": 0,
+              "assemblyFrameCalls": 0,
+              "otherRuntimeCallCounts": {
+                "p111_rt_fail": 2,
+                "p111_rt_sink": 1,
+                "p111_rt_special_ctor": 1,
+                "p111_rt_take": 1
+              },
+              "frameCallLines": []
+            },
+            "nonFrameRuntimeCallSequenceIdentical": true
+          },
+          {
+            "symbol": "p114r_FID_36_100_105_114_101_99_116_46_112_51_55_46_101_120_112_114_",
+            "decodedSymbol": "p114r_$direct.p37.expr",
+            "changed": false,
+            "parent": {
+              "bodySha256": "1110bcc04bddd975a5a6aeb318bfaa9031671832404c0056dd9d01f8d960b3fb",
+              "qbeBodyLines": 158,
+              "qbeFrameCalls": 0,
+              "assemblyFrameCalls": 0,
+              "otherRuntimeCallCounts": {
+                "p111_rt_ctor": 1,
+                "p111_rt_fail": 2,
+                "p111_rt_op": 2,
+                "p111_rt_special_take": 1
+              },
+              "frameCallLines": []
+            },
+            "candidate": {
+              "bodySha256": "1110bcc04bddd975a5a6aeb318bfaa9031671832404c0056dd9d01f8d960b3fb",
+              "qbeBodyLines": 158,
+              "qbeFrameCalls": 0,
+              "assemblyFrameCalls": 0,
+              "otherRuntimeCallCounts": {
+                "p111_rt_ctor": 1,
+                "p111_rt_fail": 2,
+                "p111_rt_op": 2,
+                "p111_rt_special_take": 1
+              },
+              "frameCallLines": []
+            },
+            "nonFrameRuntimeCallSequenceIdentical": true
+          },
+          {
+            "symbol": "p114r_FID_36_100_105_114_101_99_116_46_101_118_97_108_",
+            "decodedSymbol": "p114r_$direct.eval",
+            "changed": true,
+            "parent": {
+              "bodySha256": "e199837f56371d8f294aad56305c15564f5a325536a31b8d6c2f7d42b256365a",
+              "qbeBodyLines": 276,
+              "qbeFrameCalls": 3,
+              "assemblyFrameCalls": 3,
+              "otherRuntimeCallCounts": {
+                "p111_rt_fail": 2,
+                "p111_rt_take": 4
+              },
+              "frameCallLines": [
+                "%v_p114h_case_0_local_ignored =l call $p111_rt_frame(l %state, w 276, l %v_p114h_case_0_local_scratch, w 1)",
+                "%v_p114h_case_2_local_ignored =l call $p111_rt_frame(l %state, w 278, l %v_p114h_case_2_local_scratch, w 1)",
+                "%v_p114h_case_4_local_ignored =l call $p111_rt_frame(l %state, w 280, l %v_p114h_case_4_local_scratch, w 1)"
+              ]
+            },
+            "candidate": {
+              "bodySha256": "18456d21780ab78dd384dfb5a1958792a6c4bd0c21a404ea0ab37e9d5c0d607f",
+              "qbeBodyLines": 303,
+              "qbeFrameCalls": 0,
+              "assemblyFrameCalls": 0,
+              "otherRuntimeCallCounts": {
+                "p111_rt_fail": 2,
+                "p111_rt_take": 4
+              },
+              "frameCallLines": []
+            },
+            "nonFrameRuntimeCallSequenceIdentical": true
+          }
+        ]
+      }
+    ]
+  }
+}

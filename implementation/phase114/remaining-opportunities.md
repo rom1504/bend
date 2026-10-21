@@ -8,6 +8,15 @@ the completed final-source01 campaign in [results.json](results.json) and
 walkers and adds their tail helpers; its full native chain is a separate gate,
 still in progress when this review was requested.
 
+Final update: the source02 native chain now passes; see [native results](native-results.md).
+The local F32 prototype subsequently removes some conversions and improves two
+ray variants, while leaving the integer ABI in place. The typed-call proposal
+below remains unmeasured. Two additional nominal numeric workloads use integer/
+fixed-point code and emit identical products, so they do not establish broader
+F32 coverage. [Initial prototype](../../selfhost/tools/performance/phase114/float-lanes/results.md)
+and [family extension](../../selfhost/tools/performance/phase114/float-lanes/family-results.md)
+record these distinctions; this review's original ranking is not a measured gain estimate.
+
 ## What the ambitions currently mean
 
 All 405 complete-output observations passed: 45 programs, three roles, three

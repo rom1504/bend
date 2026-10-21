@@ -1,0 +1,503 @@
+{
+  "kind": "phase114-float-lanes-family-results",
+  "experiment": "P114-012",
+  "complete": true,
+  "measuredBy": "root",
+  "summarizedOffline": true,
+  "targetsExecutedBySummarizer": false,
+  "measurement": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase112/p114-float-family01-measure/report.json",
+    "bytes": 207978,
+    "sha256": "4888e2165c455d41e0de4ec87b38c0742acabeafefd55c505c154bfb491b3951"
+  },
+  "rounds": 3,
+  "cpuAffinity": [
+    3
+  ],
+  "observations": 27,
+  "allCorrect": true,
+  "allQualified": true,
+  "roles": [
+    "upstream",
+    "p114-final-hosted45",
+    "p114-float-family01"
+  ],
+  "timings": {
+    "mandelbrot": {
+      "samplesMs": {
+        "upstream": [
+          50,
+          50,
+          50
+        ],
+        "p114-final-hosted45": [
+          269,
+          271,
+          268
+        ],
+        "p114-float-family01": [
+          275,
+          274,
+          275
+        ]
+      },
+      "mediansMs": {
+        "upstream": 50,
+        "p114-final-hosted45": 269,
+        "p114-float-family01": 275
+      },
+      "candidateOverSelected": 1.0223048327137547,
+      "ratiosToUpstream": {
+        "upstream": 1.0,
+        "p114-final-hosted45": 5.38,
+        "p114-float-family01": 5.5
+      },
+      "repetitions": 2259,
+      "warmups": 4
+    },
+    "symreg": {
+      "samplesMs": {
+        "upstream": [
+          50,
+          50,
+          50
+        ],
+        "p114-final-hosted45": [
+          95,
+          93,
+          93
+        ],
+        "p114-float-family01": [
+          94,
+          93,
+          94
+        ]
+      },
+      "mediansMs": {
+        "upstream": 50,
+        "p114-final-hosted45": 93,
+        "p114-float-family01": 94
+      },
+      "candidateOverSelected": 1.010752688172043,
+      "ratiosToUpstream": {
+        "upstream": 1.0,
+        "p114-final-hosted45": 1.86,
+        "p114-float-family01": 1.88
+      },
+      "repetitions": 36,
+      "warmups": 4
+    },
+    "raytrace": {
+      "samplesMs": {
+        "upstream": [
+          57,
+          57,
+          58
+        ],
+        "p114-final-hosted45": [
+          624,
+          673,
+          622
+        ],
+        "p114-float-family01": [
+          595,
+          598,
+          610
+        ]
+      },
+      "mediansMs": {
+        "upstream": 57,
+        "p114-final-hosted45": 624,
+        "p114-float-family01": 598
+      },
+      "candidateOverSelected": 0.9583333333333334,
+      "ratiosToUpstream": {
+        "upstream": 1.0,
+        "p114-final-hosted45": 10.947368421052632,
+        "p114-float-family01": 10.491228070175438
+      },
+      "repetitions": 3,
+      "warmups": 4
+    }
+  },
+  "selectedOverUpstreamGeomean": 4.784849893266184,
+  "candidateOverUpstreamGeomean": 4.7692375613287705,
+  "candidateOverSelectedGeomean": 0.996737132347791,
+  "candidateReductionPercent": 0.3262867652208956,
+  "products": {
+    "mandelbrot": {
+      "p114-final-hosted45": {
+        "binary": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p114-final45-mandelbrot-build/program",
+          "bytes": 277064,
+          "sha256": "30d979eb8ac70d24528997d6b7fb3c56fea511247815a808d47e8136db7b5f82"
+        },
+        "qbe": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p114-final45-mandelbrot-emit/program.ssa",
+          "bytes": 1199993,
+          "sha256": "cf561a212ce12eb5de88ba5da9ba21dad876a4dabc08c5d4e90ad1fee8970989"
+        },
+        "assembly": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p114-final45-mandelbrot-build/program.s",
+          "bytes": 837341,
+          "sha256": "47cf0993143a82d1ba15c8401bf469bde7ffbeb488f48ae3865cb978555c7f52"
+        },
+        "object": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p114-final45-mandelbrot-build/program.o",
+          "bytes": 241536,
+          "sha256": "ae2d769834a45ac58a58a1f1b34ec726568eacdc96e832037f311aca4c37d33d"
+        },
+        "buildReport": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p114-final45-mandelbrot-build/report.json",
+          "bytes": 4916,
+          "sha256": "56fcf14d7813fca7527ddc12ef4e07feb9810f783505bf59a29743f1a79cc47d"
+        },
+        "emitReport": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p114-final45-mandelbrot-emit/report.json",
+          "bytes": 10324,
+          "sha256": "e234e1061d42421ff53900cf0198cf7ff7f8d42e1bd139ef4b718ac85bce9424"
+        },
+        "wholeFileStaticCounts": {
+          "qbeFloatOperandCasts": 0,
+          "qbeFloatOperations": {},
+          "assemblyGprXmmMoves": 0,
+          "assemblyFloatOperations": {}
+        },
+        "qbeFloatOperationSequenceSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+      },
+      "p114-float-family01": {
+        "binary": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p114-float-family01-mandelbrot-build/program",
+          "bytes": 277072,
+          "sha256": "2322cbad60a61493407a9f712c901dc693ec45280a38127e04a38f56fdd540bf"
+        },
+        "qbe": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p114-float-family01-mandelbrot-emit/program.ssa",
+          "bytes": 1199993,
+          "sha256": "cf561a212ce12eb5de88ba5da9ba21dad876a4dabc08c5d4e90ad1fee8970989"
+        },
+        "assembly": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p114-float-family01-mandelbrot-build/program.s",
+          "bytes": 837341,
+          "sha256": "47cf0993143a82d1ba15c8401bf469bde7ffbeb488f48ae3865cb978555c7f52"
+        },
+        "object": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p114-float-family01-mandelbrot-build/program.o",
+          "bytes": 241536,
+          "sha256": "ae2d769834a45ac58a58a1f1b34ec726568eacdc96e832037f311aca4c37d33d"
+        },
+        "buildReport": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p114-float-family01-mandelbrot-build/report.json",
+          "bytes": 5030,
+          "sha256": "2dfb57dede08b59337ef52a17fcb2ea49ed5e73807f810f63bc95233de39594b"
+        },
+        "emitReport": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p114-float-family01-mandelbrot-emit/report.json",
+          "bytes": 10343,
+          "sha256": "31490c1c995b44cda717b719d871c0cde3e48665b6e9edbfa8a3877933d4640f"
+        },
+        "wholeFileStaticCounts": {
+          "qbeFloatOperandCasts": 0,
+          "qbeFloatOperations": {},
+          "assemblyGprXmmMoves": 0,
+          "assemblyFloatOperations": {}
+        },
+        "qbeFloatOperationSequenceSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+      },
+      "equality": {
+        "qbe": true,
+        "assembly": true,
+        "object": true,
+        "binary": false,
+        "orderedQbeFloatOperations": true
+      }
+    },
+    "symreg": {
+      "p114-final-hosted45": {
+        "binary": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p114-final45-symreg-build/program",
+          "bytes": 241824,
+          "sha256": "6f31272b768afdbdcc7fccca3f49d420cb89c2a189c5d7d122917a945fc6a862"
+        },
+        "qbe": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p114-final45-symreg-emit/program.ssa",
+          "bytes": 682953,
+          "sha256": "b3fc07b0fa270804f028d1acbad560bff239a2a908c9d4cd3042406458870baa"
+        },
+        "assembly": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p114-final45-symreg-build/program.s",
+          "bytes": 698455,
+          "sha256": "8e48e0b352e93f3577fc3a46b5bbb304acc1f827b7f346b9805506186d9d4e29"
+        },
+        "object": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p114-final45-symreg-build/program.o",
+          "bytes": 208096,
+          "sha256": "5c69ce75cd70c695e875fbd059eb22e4f29c5ece35a888be72925cc275bc8b1f"
+        },
+        "buildReport": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p114-final45-symreg-build/report.json",
+          "bytes": 4852,
+          "sha256": "a6a30fbbdbdee309c6ecd1708f8b4544f1cbdb78acae4479dd59982c6966836b"
+        },
+        "emitReport": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p114-final45-symreg-emit/report.json",
+          "bytes": 10302,
+          "sha256": "ce5dc878ec65ae469cf367f9d733660f7cf33a16805faed9e91a42afe37d9328"
+        },
+        "wholeFileStaticCounts": {
+          "qbeFloatOperandCasts": 0,
+          "qbeFloatOperations": {},
+          "assemblyGprXmmMoves": 0,
+          "assemblyFloatOperations": {}
+        },
+        "qbeFloatOperationSequenceSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+      },
+      "p114-float-family01": {
+        "binary": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p114-float-family01-symreg-build/program",
+          "bytes": 241824,
+          "sha256": "7014ee2df77fe1fa6ca156464353f2b2ec5e85a2e82e03634046034a2911e259"
+        },
+        "qbe": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p114-float-family01-symreg-emit/program.ssa",
+          "bytes": 682953,
+          "sha256": "b3fc07b0fa270804f028d1acbad560bff239a2a908c9d4cd3042406458870baa"
+        },
+        "assembly": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p114-float-family01-symreg-build/program.s",
+          "bytes": 698455,
+          "sha256": "8e48e0b352e93f3577fc3a46b5bbb304acc1f827b7f346b9805506186d9d4e29"
+        },
+        "object": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p114-float-family01-symreg-build/program.o",
+          "bytes": 208096,
+          "sha256": "5c69ce75cd70c695e875fbd059eb22e4f29c5ece35a888be72925cc275bc8b1f"
+        },
+        "buildReport": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p114-float-family01-symreg-build/report.json",
+          "bytes": 4962,
+          "sha256": "f0ab90dd460ab6282706752d5c073225b40ac32916873e5a58b9d1636e5b48db"
+        },
+        "emitReport": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p114-float-family01-symreg-emit/report.json",
+          "bytes": 10307,
+          "sha256": "5fe0420ba1c08dce3407e38d428ad3263b033990ebe74261bf84cfe4aeb22e85"
+        },
+        "wholeFileStaticCounts": {
+          "qbeFloatOperandCasts": 0,
+          "qbeFloatOperations": {},
+          "assemblyGprXmmMoves": 0,
+          "assemblyFloatOperations": {}
+        },
+        "qbeFloatOperationSequenceSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+      },
+      "equality": {
+        "qbe": true,
+        "assembly": true,
+        "object": true,
+        "binary": false,
+        "orderedQbeFloatOperations": true
+      }
+    },
+    "raytrace": {
+      "p114-final-hosted45": {
+        "binary": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p114-final45-raytrace-build/program",
+          "bytes": 342856,
+          "sha256": "de89f1d2515c09e3e43f608cf0f8076c2403970af3fcad8b6a724aecbb03c822"
+        },
+        "qbe": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p114-final45-raytrace-emit/program.ssa",
+          "bytes": 1991789,
+          "sha256": "d2a912b594010732a99b4a2918fa258eb3aafb70561e719dddba4703dbf78de3"
+        },
+        "assembly": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p114-final45-raytrace-build/program.s",
+          "bytes": 1140276,
+          "sha256": "189ecd39290874f630b4c53537e249326f38e880390f5fd43db8c9d78178fe94"
+        },
+        "object": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p114-final45-raytrace-build/program.o",
+          "bytes": 326720,
+          "sha256": "daca4f5d2144457b1174a8e5eec279643db09688369b575964f22fa68b8be865"
+        },
+        "buildReport": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p114-final45-raytrace-build/report.json",
+          "bytes": 4883,
+          "sha256": "dbfe3ac9907e167195d5f6e32b56d5aaa1d02e6eee72d21ab39a44c970e847f0"
+        },
+        "emitReport": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p114-final45-raytrace-emit/report.json",
+          "bytes": 10328,
+          "sha256": "f6743e2c9723b2081d7e557d08da83987edf2fdf06c817de450c6a2059534b51"
+        },
+        "wholeFileStaticCounts": {
+          "qbeFloatOperandCasts": 1446,
+          "qbeFloatOperations": {
+            "uwtof": 568,
+            "clts": 31,
+            "div": 196,
+            "sub": 152,
+            "mul": 187,
+            "add": 157
+          },
+          "assemblyGprXmmMoves": 1299,
+          "assemblyFloatOperations": {
+            "ucomiss": 31,
+            "divss": 84,
+            "addss": 175,
+            "subss": 76,
+            "mulss": 177
+          }
+        },
+        "qbeFloatOperationSequenceSha256": "258ad13510a177cc5c800cbb46f6e739ba1c4fb4b0a1ca293cf1707bdd69c5c4"
+      },
+      "p114-float-family01": {
+        "binary": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p114-float-family01-raytrace-build/program",
+          "bytes": 342864,
+          "sha256": "14a7eb9e5bf91295cf271757f59113e8875d79aa816d65c5738be30ea580da0d"
+        },
+        "qbe": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p114-float-family01-raytrace-emit/program.ssa",
+          "bytes": 1981566,
+          "sha256": "1e270cdd35fe07f1962fbfd91b10b7517ac99a291c4c9f7100c60e018c05420b"
+        },
+        "assembly": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p114-float-family01-raytrace-build/program.s",
+          "bytes": 1138167,
+          "sha256": "5cda80dcedaa34c0706553878188e75abd61f0316149c606850608b532fcf4fd"
+        },
+        "object": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p114-float-family01-raytrace-build/program.o",
+          "bytes": 326136,
+          "sha256": "7943138e5c8d5fd4361bff7c9438eaec2dcaad6d12a21f0a3fa1d65fd8f1667d"
+        },
+        "buildReport": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p114-float-family01-raytrace-build/report.json",
+          "bytes": 4998,
+          "sha256": "d40732c6c8b5da3a03ea23d5141d3aff7fedc045163f51dac9cbb8faaec27bfa"
+        },
+        "emitReport": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p114-float-family01-raytrace-emit/report.json",
+          "bytes": 10303,
+          "sha256": "d4b786e6ee21aa192e54cf572636a986d8355586edc5c5ee04247ed33a44f6b6"
+        },
+        "wholeFileStaticCounts": {
+          "qbeFloatOperandCasts": 1410,
+          "qbeFloatOperations": {
+            "uwtof": 568,
+            "clts": 31,
+            "div": 196,
+            "sub": 152,
+            "mul": 187,
+            "add": 157
+          },
+          "assemblyGprXmmMoves": 1271,
+          "assemblyFloatOperations": {
+            "ucomiss": 31,
+            "divss": 84,
+            "addss": 176,
+            "subss": 75,
+            "mulss": 177
+          }
+        },
+        "qbeFloatOperationSequenceSha256": "258ad13510a177cc5c800cbb46f6e739ba1c4fb4b0a1ca293cf1707bdd69c5c4"
+      },
+      "equality": {
+        "qbe": false,
+        "assembly": false,
+        "object": false,
+        "binary": false,
+        "orderedQbeFloatOperations": true
+      }
+    }
+  },
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/experiments/phase114/P114-012-float-family-extension.md",
+      "bytes": 1248,
+      "sha256": "d8f54c968e794328d8c98b5caca60694c6667a955086fb2d6e408ea6273f0964"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase114/float-family01-plan.json",
+      "bytes": 14493,
+      "sha256": "df4cf9eade2f25250b5eb4b6ba49c22443dfef2709b32e200e855144539c9820"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase114/float-family01-plan-reports.json",
+      "bytes": 795,
+      "sha256": "ab05d146add9d8d940aabe4d1a5a31f30d46b0e10dbd4eaa52f3507f89eb1ebb"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase114/float-family01-plan-binding.json",
+      "bytes": 22516,
+      "sha256": "066af839b2b9a34225caa1ea6cac05909b35c9e33dd276c3b2e4ad9ff801e5f9"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase114/float-lanes/modules01.json",
+      "bytes": 2711,
+      "sha256": "7939f8425d94d4a1d666689ec4bf676c96af37b2b0dec2c86d70b5268795fe37"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase114/float-lanes-source01/compiler.bend",
+      "bytes": 2326692,
+      "sha256": "a1185c8db5c5ca4b8e1ebbe7b8dc473cde5afa5e372589058a05484e14cfeb9e"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p114-float-lanes-api01/api.mjs",
+      "bytes": 1887086,
+      "sha256": "15b54617ec1e53c5f2009478c78e182c8dbd5edc861982ece1b471c288391ee4"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase114/float-lanes-admission01/manifest.json",
+      "bytes": 6807,
+      "sha256": "5214eb4530fc6489decd10ac2a4a426cb7cad129517f80e9129c0f12adb45ee5"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/runtime-products01/runtime.c",
+      "bytes": 138654,
+      "sha256": "ea10b5d993fed79738817ee14cc52270e4faf5474128cf082b083e3c09cf655a"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase113/runtime-products-build01/runtime.o",
+      "bytes": 96224,
+      "sha256": "c0f6f2ca5b5a58418f326794e97a29cc21a68f32e924ce5974ad4ffccfc9c9f9"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/fixtures01/mandelbrot.bend",
+      "bytes": 8536,
+      "sha256": "7d47d183cf02b3e943e0e35532eb8ba12c683eafd9b2031bbc25983181174897"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/fixtures01/symreg.bend",
+      "bytes": 7369,
+      "sha256": "3c8afa94641531b0e88a51e228cc5e5479db3e36ea244362fcaea5b7705b56a2"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/fixtures01/raytrace.bend",
+      "bytes": 16182,
+      "sha256": "17e96389638b1a6a12bf9a4f7cabaf00184f1974e75d8363d699aef6b318fd34"
+    }
+  ],
+  "methods": {
+    "artifactSelection": "Each selected/candidate build directory comes from the exact binary recorded by the measurement. Its build receipt supplies the QBE input. All recorded binary hashes were rechecked. No target or compiler was executed.",
+    "byteEquality": "SHA256 and byte lengths cover entire QBE, assembly, and object files separately; executable equality is reported independently.",
+    "qbeFloatOperandCasts": "Count textual =s cast in the complete QBE file.",
+    "qbeFloatOperations": "Ordered typed operations matched by =(?:s (?:add|sub|mul|div|uwtof)|w (?:ceqs|cnes|clts|cles|cgts|cges))\\b. Compare complete ordered opcode sequences, not only totals.",
+    "assemblyGprXmmMoves": "Count movq/movd instruction lines containing an XMM register and a general register; this is static instruction count, not execution frequency.",
+    "assemblyFloatOperations": "Count addss/subss/mulss/divss/ucomiss mnemonics over the entire assembly file."
+  },
+  "findings": [
+    "Mandelbrot and symreg have byte-identical QBE, assembly and object files across measured roles. Both use integer arithmetic and contain no emitted F32 operations; their small median regressions have no generated-code change attributable to this profile.",
+    "Raytrace removes36 float operand casts and28 GPR/XMM moves while preserving the full ordered QBE float-operation sequence. The assembly arithmetic total remains512 and comparisons31; instruction selection changes one subss to addss.",
+    "Public and private function signatures remain integer; original U64 word results remain emitted. This experiment propagates local float-value facts only."
+  ],
+  "scope": [
+    "Three deliberately selected historical original45 families, three rounds,27 observations; not blind holdouts and not whole45 qualification.",
+    "This extension compares the float-lanes profile with selected-source01 and upstream. It has no separate scalar-operands-only comparator, so its net effect does not isolate float lanes from their parent scalar-operands overlay.",
+    "Small timing differences use a1ms in-program clock and are not a significance claim; static counts do not establish dynamic fractions.",
+    "Mixed evidence: one changed floating-point program improves, two integer programs have unchanged generated code. No default promotion, broad speedup, or direct-native compiler claim.",
+    "Earlier P114-011 results and frozen compiler modules are preserved."
+  ]
+}

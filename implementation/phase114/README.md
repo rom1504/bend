@@ -8,8 +8,16 @@ The selected QBE compiler reduces broad generated-program runtime from
 **7.082× to5.386× pinned upstream**, measured together on the original45 corpus
 (44 timed points plus one zero-work control). That is **23.95% less runtime,
 or1.315× faster**. All405 complete-output/count observations pass. Parity is not
-reached. These products were emitted by the checked hosted Bend API; native
-self-reproduction is being qualified separately. Installed selection is unchanged.
+reached. These products were emitted by the checked hosted Bend API. The later
+source02 also completes native self-reproduction: hosted and N1 self-emission
+produce byte-identical74.22 MB QBE, N1 and N2 pass the focused19 gate, and N2 passes all45 original program
+checks. Installed selection is unchanged.
+
+The native compiler-request screen is **2.825× N1 / 2.827× N2 upstream**;
+request plus executable-build time is **1.355× / 1.357×**. These are separate
+three-source compilation metrics, not the broad generated-program score.
+See [native results](native-results.md), [exact evidence](native-results.json)
+and [separate source selections](selection.json).
 
 The improvement extends beyond the frozen eight-program development screen:
 the other36 timed points improve6.925→5.337× upstream (22.93% less time). These
@@ -31,8 +39,9 @@ dispatch and register-bank transfers. Unary representation packing and structure
 frame access add smaller gains. The best three-kernel screen is2.449× faster;
 its size must not be confused with the1.315× broad result.
 
-The selected assembled source grows48,839→50,565 physical lines (+3.53%), and
-2,232,290→2,306,291bytes. This phase adds capability rather than simplifying LOC.
+The runtime-measured assembled source grows48,839→50,565 physical lines (+3.53%),
+and2,232,290→2,306,291bytes. The qualified native source02 adds25 further lines,
+reaching50,590 (+3.59%) and2,306,979bytes. This phase adds capability rather than simplifying LOC.
 All compiler transformations remain Bend; the host scripts transport files and
 measure outcomes. The separately prepared scalar-operand experiment is not in
 this selected source or the broad score.
@@ -194,7 +203,7 @@ table-first precedence. Its exact checked source has6,377 declarations,
 2,306,291bytes and SHA256
 `4fb0572f0a011f6c1921594372d816bb49f26289ecc0e079328edd7491598587`.
 Source/API/runtime admission,19 ordinary programs and the broad45 integration
-pass; native integration is in progress.
+pass. The later source02 below completes native integration.
 Reproduction uses `integration/prepare-v3.py` and
 `integration/recipes-v3/table-unwind-first.json`, followed by checked API and
 `integration/admit-v3.py`; [instructions](../../selfhost/tools/performance/phase114/integration/README.md).
@@ -222,7 +231,13 @@ evidence, not an assertion that every future input is byte-identical.
 The repaired source02 SHA256 is
 `500211d484785778e75d5d4388b0d5ebc7282effd233c6b8f3d0e0269ac777f8`,
 2,306,979bytes and6,383 declarations. Its checked API and exact composition
-admission pass. The native generation chain is running through unchanged gates.
+admission pass. The complete native generation chain passes unchanged gates in
+1323.984s (22.07min), with3.820GiB peak tree RSS under the4GiB limit.
+Hosted acquisition takes560.524s and the N1 self-request466.724s; these nested
+clocks are included in the guard duration. Both generations pass16 positive
+focused programs and3 expected refusals. N2 also passes45 ordinary programs.
+The74,220,801-byte raw QBE is exact; executable hashes differ, and N2→N3 was
+not measured. [Full pins and compiler-request measurements](native-results.md).
 The broad runtime campaign remains bound to source01; the traversal repair
 changes compiler validation, not its target renderer.
 
@@ -241,3 +256,109 @@ pair389→391ms. Geometric elapsed time falls only1.41%; the candidate remains
 the extra audit/renderer complexity. It is excluded from the selected source.
 The compiler remains written in Bend; Python orchestrates file preparation and
 measurement, and does not implement this transformation.
+
+The machine audit explains the limited gain: the inspected ray worker loses34
+unconditional scratch stores and its stack frame shrinks2072→24bytes, but all49
+integer/floating-point register transfers remain. QBE had already eliminated
+some of the apparent scratch traffic. [Source and machine comparison](../../selfhost/tools/performance/phase114/scalar-operands/results.md).
+
+## Floating-point lanes: useful prototype, limited generalization
+
+A further Bend prototype retains operation-derived F32 temporaries across pure
+operations and exact local copies. It resets facts at other statements and
+control boundaries, preserves the integer ABI, and does not infer F32 from the
+shared32-bit width. The inspected ray worker drops49→25 register transfers and
+166→131 instructions. Ordinary output, signed-zero/bit-pattern, copy/rebinding,
+structural fallback and finite fact-map controls pass.
+
+In the paired initial screen, ray falls423→369ms (12.77% less time); the array
+control produces identical QBE. The three additional existing45-corpus programs
+give raytrace624→598ms, Mandelbrot269→275ms and symbolic regression93→94ms.
+All27 additional output/count observations pass, but the three-case geometric
+gain is only0.33%. Inspection then found that these Mandelbrot and symbolic
+regression fixtures use integers/fixed-point: their QBE, assembly and object
+files are byte-identical before/after. Their timing changes are not effects of
+this pass. The additional screen therefore supplies one changed raytrace program
+and two unchanged controls, not three distinct floating-point algorithms. It
+supports a ray-family benefit, not a broad floating-point or full-corpus gain.
+Both campaigns retain their original definitions and results.
+
+The prototype remains separate from the qualified source02. Its parent contains
+the older namespace walkers, and it has not passed a new native generation gate.
+The next larger question is whether checked F32 identity can survive through
+worker arguments/results and the calling convention, removing repeated packing
+and integer-register transport across function boundaries.
+[Prototype results](../../selfhost/tools/performance/phase114/float-lanes/results.md) ·
+[Extended family results](../../selfhost/tools/performance/phase114/float-lanes/family-results.md) ·
+[Typed representation proposal](next-category-removal.md).
+
+## Other late experiment: frame buffers
+
+Recognizing only the verified recursive table's eight private buffer names
+removes five remaining frame-helper sites across the inspected tree/expression
+workers. Policy checks, two ordinary programs and24 benchmark observations pass.
+Elapsed time improves2.38%, below the preregistered3% threshold, so this remains
+deferred. The first host control adapter expected the wrong Boolean transport;
+its failure and separately corrected adapter are retained. No compiler failure
+or successful control is inferred from that failed attempt.
+[Exact results](../../selfhost/tools/performance/phase114/transport/table-buffers-results.md).
+
+## Ambition, limits and next direction
+
+The design's ambition levels describe scope, not promised speed multipliers:
+
+- **1× implemented:** verification reuse, indexed signatures, representation
+  packing and structured helper emission; full acquisition now completes.
+- **10× meaningful slice implemented:** local recursive descent/unwind with
+  captured environments, multiple continuation cases and a shared explicit
+  stack. This produces most of the demonstrated broad gain.
+- **100× investigated, not built:** joint typed value/ownership/control lowering
+  that specializes runtime boundaries. The local F32 experiment tests one piece
+  of value preservation; it does not establish the larger architecture.
+
+Parity requires removing more categories of work. Prioritize typed owned
+extraction and flat recursive results, descriptor facts across loops, and typed
+worker ABIs where actual code shows representation traffic. Avoid more isolated
+helper expansion without a measured caller benefit. Source reachability already
+runs twice; a potentially missing step is pruning original segments after
+optimized regions are selected, with callable IDs distinguished from identity
+tags. [Architecture comparison](remaining-opportunities.md) and
+[reachability boundary](reachability-boundary.md) separate observations from proposals.
+The final [emitted-symbol census](reachability-census.md) finds9,040 unreferenced
+private definitions containing5,717,111 QBE text bytes. Start with a structured
+private-symbol selection plan before attempting scheduler-table pruning; static
+counts establish neither safe removal nor a speed multiplier.
+
+Conformance here is finite: focused programs, the original45, expected refusals
+and raw self-emission. This phase does not establish whole-language correctness,
+parallel/GPU qualification, installed promotion or upstream runtime parity.
+The later compiler-request ratios are higher than the historical Phase112 screen;
+the campaigns differ, so their comparison does not isolate which change costs
+time. A future matched compiler-throughput experiment must measure that tradeoff
+before expanding the optimizer further.
+
+## Time, resources and evidence
+
+By00:15:41 UTC,164.69minutes had elapsed since the21:31 start. Recorded finished
+guards occupied80.00minutes with no overlap;8.57minutes belonged to failed
+guards. The remaining84.69minutes are outside recorded guards, not measured
+idle time or agent labor. Source-only implementation/review overlapped targets,
+and those clocks cannot be added as a labor breakdown. The full qualification
+chain used22.07minutes; the paired broad gate10.58minutes. The failed full
+acquisition used7.87minutes before the namespace repair. Report finalization
+and evidence sealing follow this explicit cutoff.
+[Recorded intervals](../../selfhost/build/phase114/occupancy-final01.json).
+
+One CPU3 target lane and2/4GiB process-tree caps avoided concurrent large builds.
+Disk stayed constrained. Superseded catalogue and older intermediate QBE/
+assembly/object files were compressed losslessly; each archive was decompressed
+and checked against the original SHA256 and size before unlinking its source.
+Three receipts retain actual compressed bytes and restore paths:
+`phase114/catalogue-machine-archive01`, `catalogue-qbe-archive01`, and
+`superseded-code-archive01`. Current selected compiler products and executables
+remain available. The receipt capsule below is not a replacement for those
+machine payloads or authority to delete them.
+
+[Evidence capsule and limits](evidence/README.md) retain bounded exact receipts
+and logs, including failed and superseded attempts. No PR comment was posted;
+the work and reports are committed on `selfhost/bootstrap`.

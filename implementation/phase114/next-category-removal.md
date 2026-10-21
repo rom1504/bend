@@ -1,5 +1,13 @@
 The next bounded experiment should keep **canonical F32 values in the floating-point register domain across private arithmetic and calls**, with the existing full-Term ABI at generic boundaries. This removes a category that survives the operand-buffer experiment. Another general nonescaping-product pass is less well supported by the inspected hot paths: local-fold and ray already use their flat product workers. This proposal does not explain the entire 5.386× broad runtime gap or predict a multiplier.
 
+Follow-up: [the local F32-lane prototype](../../selfhost/tools/performance/phase114/float-lanes/results.md)
+has now tested reuse within arithmetic/copy regions, reducing the inspected
+worker's register transfers49→25 and active-ray runtime12.77%. It preserves the
+integer calling convention; typed calls described here remain a proposal.
+The [additional family check](../../selfhost/tools/performance/phase114/float-lanes/family-results.md)
+improves raytrace4.17%; its two integer/fixed-point cases have byte-identical
+products. This is evidence for a limited local slice, not the complete proposed ABI.
+
 The concrete witness is ray `isect5`, whose ten source arguments and result are F32 (`selfhost/build/phase93/fixtures01/variation-ray-active-256-2240.bend:91`). Selected QBE declares all ten arguments and the result as `l` at `p114-final-screen01-variation-ray-active-256-2240-emit/program.ssa:1718`. Each arithmetic operation converts full-word bits to `s`, performs the operation, then casts back to a zero-extended integer word. In the corresponding `program.s:1185`, the function contains **49 GPR/XMM moves**, 19 scalar arithmetic instructions and two floating comparisons. State plus ten integer arguments also places five input words on the stack.
 
 The operand-buffer version is a useful isolation: `p114-scalar-operands-screen01-variation-ray-active-256-2240-build/program.s:1161` shrinks this function's stack reservation from **2072 to 24 bytes**, but retains **the same 49 GPR/XMM moves**, arithmetic and call list. That experiment removes scratch transport, not the repeated floating/integer representation boundary. Some moves may be cheap or unavoidable around calls; their static count is evidence of removable instructions, not a dynamic cost fraction.

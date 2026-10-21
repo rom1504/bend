@@ -5059,10 +5059,22 @@ Local descent/unwind regions and a closed continuation table deliver the main
 runtime gain; isolated helper expansions give much smaller benefits. Immutable
 verification sessions and indexed signatures also make a full intermediate
 compiler acquisition complete in502.479s, replacing the earlier600s timeout.
-That intermediate image passes five fast cases. Final native N1/N2 integration
-is still running and is not inferred from the broad hosted-product campaign.
+That intermediate image passes five fast cases. Final source02 now passes full
+hosted→N1→self-emission→N2 qualification:74,220,801-byte raw QBE is exact,
+focused19 passes for each generation and N2 passes all45 original programs.
+The22.07min guard peaks at3.820GiB. This is separately measured native evidence,
+not inferred from the broad hosted-product campaign.
 
 Selected source SHA2564fb0572f0a011f6c1921594372d816bb49f26289ecc0e079328edd7491598587;
-50,565physical lines (+3.53% versus31). Optional scalar-buffer elimination is
-source-checked only and excluded from this selection. Full reports retain all
-isolated/deferred experiments. Production selection remains unchanged.
+50,565physical lines (+3.53% versus31). Qualified native source02 is
+500211d484785778e75d5d4388b0d5ebc7282effd233c6b8f3d0e0269ac777f8,
+50,590lines (+3.59%). Three-source requests average2.825× N1/2.827× N2 upstream;
+ready-executable stage sums are1.355×/1.357×. All27 observations pass.
+[Native details and comparison scope](../implementation/phase114/native-results.md).
+
+Optional scalar-buffer elimination has structural/output/runtime evidence but
+only1.41% selected-pair gain. Its F32-lane extension gives12.77% on ray, while
+the additional three-case family is mixed (0.33% geometric gain). Table-buffer
+expansion gains2.38%, below its3% selection threshold. These prototypes stay
+outside the qualified composition. Full reports retain all attempts, failures
+and limits. Production selection remains unchanged; no parity claim.

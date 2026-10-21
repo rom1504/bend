@@ -1,5 +1,64 @@
 # Phase114 native qualification and wall accounting
 
+Source02 N1/N2 qualification is complete. Hosted and N1 self-emitted QBE agree
+in all **74,220,801 bytes**. Each generation passes focused19 (16 positive
+executions and 3 expected refusals); N2 passes all 45 one-shot conformance
+programs. The complete guard takes 1323.984 s with observed peak process-tree
+RSS of 3.820 GiB. The N1 self-request takes 466.724 s.
+[Exact native results](../../../../../implementation/phase114/native-results.md) ·
+[Reporting-only selection](../../../../../implementation/phase114/selection.json).
+
+The 27-observation request screen gives N1/N2 ratios of 2.82490×/2.82713× upstream;
+request-plus-machine-build ratios are 1.35522×/1.35687×. Native prepared-Base/QBE
+requests and cached-runtime builds differ from upstream source-Base/C/Clang
+requests. The separate source01 hosted runtime result is 5.386× upstream across
+44 timed points plus one zero-work control. There is no native-produced full45
+runtime score, ELF fixed-point or N2-to-N3 self-emission claim. Installed
+selection is unchanged; float-lane and table-buffer prototypes are excluded.
+
+Recorded products under `selfhost/build/`:
+
+| Role | Path | SHA256 prefix |
+|---|---|---|
+| Source02 | `phase114/final-source02/compiler.bend` | `500211d484785778` |
+| Checked API02 | `phase111/p114-final-api02/api.mjs` | `e388dde6a3f6a441` |
+| N1 | `phase111/p114-native-final02-n1/program` | `88b101fac67691a1` |
+| N2 | `phase111/p114-native-final02-self/build/program` | `91b724d034a0b715` |
+| Cached runtime | `phase113/runtime-products-build01/runtime.o` | `c0f6f2ca5b5a5841` |
+
+## Use the qualified N2
+
+From the repository root, with fresh output directories:
+
+```sh
+python3 -B selfhost/tools/performance/phase111/guard.py \
+  --out selfhost/build/phase114/user-native01-guard \
+  --seconds 180 --rss-mib 4096 --available-mib 16384 --file-mib 128 --cpu 3 -- \
+  python3 -B selfhost/tools/performance/phase111/native-emit.py \
+    --image selfhost/build/phase111/p114-native-final02-self/build/program \
+    --source selfhost/tools/performance/phase111/coverage/fixtures/higher-order-capture.bend \
+    --out selfhost/build/phase111/p114-user-native01 --mode cache \
+    --runtime selfhost/build/phase113/runtime-products-build01/runtime.o \
+    --expected selfhost/tools/performance/phase111/coverage/expected/higher-order-capture.stdout \
+    --seconds 60 --build-seconds 20
+```
+
+This checks/emits the ordinary source, builds `build/program`, and checks its
+full stdout against the frozen `captured=42` oracle. The wrapper authenticates
+the selected Base/cache and records the adjacent native build receipt. Replace
+the source and expected-output file for another request; omit `--expected` for
+compile/build only. It retains raw stdout as `program.ssa`, with separate
+emission/build receipts. This example is documented from the argument parsers;
+it is not a new recorded execution.
+
+Local products must be restored or acquired through their pinned recipes in a
+fresh checkout. The runtime here includes the Phase113 product helper; the old
+Phase111 runtime is not an interchangeable replacement. Do not pass a staged-v2
+receipt to legacy `native-emit.py --reference`; full Phase114 reproduction uses
+the dedicated comparer in the qualification plan below.
+
+## Reproduce qualification
+
 `native-plan.py` invokes the exact SHA-pinned Phase113 qualification preparer,
 without modifying that gate or its comparer. `native-binding01.json` freezes
 the original preparer, comparer, transport selector and staged emitter. The
@@ -14,17 +73,17 @@ verification and exact-QBE comparison tools accept it unchanged.
 
 ```sh
 python3 -B selfhost/tools/performance/phase114/evidence/native-plan.py \
-  --api selfhost/build/phase111/p114-SELECTED-api/api.mjs \
-  --source selfhost/build/phase113/p114-SELECTED-source/compiler.bend \
+  --api selfhost/build/phase111/p114-final-api02/api.mjs \
+  --source selfhost/build/phase114/final-source02/compiler.bend \
   --runtime selfhost/build/phase113/runtime-products-build01/runtime.o \
-  --tag p114-native-final01 \
-  --out selfhost/build/phase114/native-final01-plan.json
+  --tag p114-native-user-replay01 \
+  --out selfhost/build/phase114/native-user-replay01-plan.json
 ```
 
-This preparation executes no targets. The default hosted-emission limit is900s
-and native self-request limit is900s. The latter retains the base gate's400s
+This preparation executes no targets. The default hosted-emission limit is 900 s
+and native self-request limit is 900 s. The latter retains the base gate's 400 s
 additional outer-job allowance for its unchanged machine build and supervision,
-so its job cap is1300s. Builder/fixture limits, flags, CPU3/4GiB/128MiB guard
+so its job cap is 1300 s. Builder/fixture limits, flags, CPU3/4GiB/128MiB guard
 policy and all other commands remain unchanged. `--hosted-seconds` and
 `--native-seconds` can set explicit alternatives before freezing a plan.
 
@@ -39,9 +98,13 @@ Products use `phase111/p114-*`; serial-job and guard directories use
 `phase113/p114-…-qbe-comparison/report.json`, ensuring the Phase114 evidence
 scope includes it. No loose out-of-scope Phase113 comparison file is created.
 
+The completed `native-final02-with-transport-plan.json` is historical evidence;
+its output paths already exist. Replays need fresh tags/plans as above. The
+failed final01 attempt remains separately recorded and is not overwritten.
+
 The stages remain full hosted array emission → N1 build → focused19 → actual
 N1 self-emission/N2 build → exact raw QBE comparison → N2 focused19 → N2 full45.
-Focused19 includes16 positive executions and3 expected refusals. Full45 is the
+Focused19 includes 16 positive executions and 3 expected refusals. Full45 is the
 unchanged one-shot conformance corpus, not the batch45 runtime benchmark. This
 chain does not claim N2-to-N3 output reproduction or program runtime parity.
 
@@ -56,30 +119,31 @@ Phase113 lineage to Phase114 and adds provenance; it preserves every source,
 complete output oracle, Base/cache, upstream product, build flag, clock and
 per-stage limit. Legacy role keys `phase111`/`phase112` mean Phase114 N1/N2.
 
-The source-only prepared orchestration is:
+The completed orchestration is:
 
 ```
-selfhost/build/phase114/native-final01-with-transport-plan.json
+selfhost/build/phase114/native-final02-with-transport-plan.json
 ```
 
 It retains every original job and its original plan/comparison references,
 inserting one optional job immediately after `exact-hosted-native-qbe` and before
-the N2 semantic suites. Use this plan's `rootGuardCommand` **instead of** the
-original plan's command. Both reserve the same native artifact destinations.
-The original `native-final01-plan.json` remains unchanged.
+the N2 semantic suites. It used this plan's `rootGuardCommand` instead of the
+original plan's command. Both reserve the same native artifact destinations;
+neither can be rerun into those existing paths. The original
+`native-final02-plan.json` remains unchanged.
 
-The optional job follows `native-final01-transport-plan.json`: authenticate and
+The optional job follows `native-final02-transport-plan.json`: authenticate and
 freeze the actual generation manifest (30s cap), then run the original transport
 method on lexer, closures256 and map-churn128, three rotated rounds and three
-roles in cache mode (27samples,120s cap). It retains the original full-output
+roles in cache mode (27 samples, 120 s cap). It retains the original full-output
 checks. Prior comparable screens took55–89s and retained21–24MiB. The outer
 wrapper adds160s to the original native guard ceiling; this is a cap, not a
 forecast. No image is assumed to exist until the gate verifies it.
 
 ```
-Attempt: selfhost/build/phase114/native-final01-transport-attempt/report.json
-Manifest: selfhost/build/phase114/native-final01-transport-manifest.json
-Measurement: selfhost/build/phase112/p114-native-final01-transport/report.json
+Attempt: selfhost/build/phase114/native-final02-transport-attempt/report.json
+Manifest: selfhost/build/phase114/native-final02-transport-manifest.json
+Measurement: selfhost/build/phase112/p114-native-final02-transport/report.json
 ```
 
 `optional-transport.py` records a failure or timeout and returns control to the
@@ -95,6 +159,10 @@ ready-executable request+build time (cached-runtime QBE/as/link versus Clang-O2)
 It does not measure program runtime, same-format throughput, or N2-to-N3
 reproduction. N1/N2 are generation names for this route, not the installed
 production compiler labels.
+
+The historical Phase112 facts `transport04` campaign reported N2 requests at
+2.071× upstream. It used a different full compiler source/runtime and is not a
+side-by-side role in this campaign; the difference does not isolate a regression.
 
 ## Disk forecast from retained earlier products
 

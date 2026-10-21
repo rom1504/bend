@@ -14,20 +14,37 @@ The36 timed points outside the frozen eight improve22.93%; they are historical
 coverage, not a blind holdout. Parity is not reached. Source grows3.53% to50,565lines.
 
 Checked source/API/runtime admission and19 ordinary source programs pass.
-The runtime products are hosted-API emitted. Final native qualification is
-running from `phase114/native-final02-with-transport-plan.json`; until it passes,
-Phase112 facts remains the qualified native checkpoint. Installed production
-selection remains unchanged. The intermediate scaling/index-only native image
-already builds in bounded time and passes the fast five. The first final native
+The runtime products are hosted-API emitted. Final source02 native qualification
+passes: hosted and N1 self-emission produce identical74,220,801-byte QBE; N1/N2
+each pass focused19 and N2 passes original45. The complete guard takes22.07min,
+peak3.820GiB. [Native result](../implementation/phase114/native-results.md) and
+[separate selections](../implementation/phase114/selection.json) preserve the
+source01/runtime versus source02/native distinction. Installed production
+selection remains unchanged. The first final native
 acquisition failed with a host stack exception in verification. Source02 replaces
 six namespace list traversals with loops, retaining all checks. Its checked API,
 independent source review and three byte-exact ordinary QBE comparisons pass.
 The broad runtime score remains bound to source01; source02 is50,590lines.
 
+The three-source native request screen is2.825× N1/2.827× N2 upstream;
+request+machine-build stage sums are1.355×/1.357×. All27 observations pass.
+These compilation metrics compare prepared-Base→QBE with source-Base→C and
+cached-runtime QBE/as/link with Clang-O2. They are not generated-program runtime.
+N1/N2 have almost identical request speed; the new optimizer does not establish
+compilation parity. Historical Phase112 ratios are not a matched regression test.
+
 The separate scalar-operands prototype removes private scratch traffic only
 when every buffer use is an exact admitted pure scalar operation. Source, structural,
 ordinary-output and24 runtime observations pass, but its two-case gain is only1.41%;
 it remains excluded from the selected source and broad score.
+Its optional F32-lane extension cuts ray runtime12.77% and register transfers
+49→25, but the additional raytrace/Mandelbrot/symbolic-regression screen is mixed
+(0.33% geometric gain). The latter two emit identical code and use integers/
+fixed-point, so this is one changed raytrace case plus unchanged controls, not
+three floating-point algorithms. Keep it separate pending broader value; do not label it
+a qualified native or full45 result. Private table-buffer expansion also remains
+deferred:2.38% gain misses its3% gate. All source/structural/output results and
+failed adapters are retained in the Phase114 report.
 Isolated Take2, packed Take1 and generic complete-call bridge remain deferred:
 small selected gains did not justify their added complexity.
 

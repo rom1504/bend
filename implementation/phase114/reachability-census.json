@@ -1,0 +1,511 @@
+{
+  "kind": "phase114-final-qbe-reachability-census",
+  "complete": true,
+  "targetsRun": false,
+  "inputs": [
+    {
+      "file": "selfhost/build/phase111/p114-native-final02-full-emit/program.ssa",
+      "bytes": 74220801,
+      "sha256": "f1abc6d75d176e30d4528f796bd9c866b20964cc74248c929e6b51deb7c4024b"
+    },
+    {
+      "file": "selfhost/build/phase111/p114-native-final02-full-emit/report.json",
+      "bytes": 110126,
+      "sha256": "b72642e24641d89c48e66662488cf90c42bfe29bcb9635d616b5cd85cc3e535b"
+    },
+    {
+      "file": "selfhost/build/phase114/final-source02/compiler.bend",
+      "bytes": 2306979,
+      "sha256": "500211d484785778e75d5d4388b0d5ebc7282effd233c6b8f3d0e0269ac777f8"
+    }
+  ],
+  "requestCounts": {
+    "source": 6186,
+    "book": 6186,
+    "names": 2885,
+    "paths": 6,
+    "scope": 2885
+  },
+  "functionDefinitions": 45931,
+  "functionFamilies": {
+    "p113d": 827,
+    "p112w": 9299,
+    "p111": 35767,
+    "p114r": 37,
+    "main": 1
+  },
+  "registeredSegments": 35767,
+  "registeredNameCategories": {
+    "named_factory_or_other": 2885,
+    "continuation_or_lambda": 30012,
+    "direct_entry": 2870
+  },
+  "selectedPublicImplementations": {
+    "other_generic_or_legacy": 35111,
+    "direct": 619,
+    "H": 37
+  },
+  "privateSymbolReferenceCensus": {
+    "p113d": {
+      "defined": 827,
+      "definitionOnlySymbolReferences": 198,
+      "definitionOnlyQbeTextBytes": 1676030,
+      "examples": [
+        "$product.fs_root",
+        "$product.dg_result_error",
+        "$product.p88_number_read",
+        "$product.p88_state_bad",
+        "$product.p88_bool_value",
+        "$product.p88_string_got",
+        "$product.p88_node_got",
+        "$product.p88_roots_gate"
+      ]
+    },
+    "p112w": {
+      "defined": 9299,
+      "definitionOnlySymbolReferences": 8842,
+      "definitionOnlyQbeTextBytes": 4041081,
+      "examples": [
+        "fs_root",
+        "f_completion_graph",
+        "fs_imports",
+        "$p111.k.3099",
+        "$p111.k.3100",
+        "$p111.k.3101",
+        "$p111.k.3102",
+        "$p111.k.3103"
+      ]
+    },
+    "p114r": {
+      "defined": 37,
+      "definitionOnlySymbolReferences": 0,
+      "definitionOnlyQbeTextBytes": 0,
+      "examples": []
+    }
+  },
+  "hDispatch": {
+    "workers": 37,
+    "caseSites": 42,
+    "distinctContinuationFids": 42,
+    "allRetainOriginalTableEntryAndBody": true,
+    "retainedQbeTextBytes": 36072,
+    "literalCallEvidenceAcrossAllBodies": {
+      "hasLiteralFrameReference": 2,
+      "hasLiteralJumpReference": 0,
+      "hasLiteralClosureReference": 0
+    },
+    "workersAndCases": [
+      {
+        "worker": "$direct.List.length",
+        "caseCount": 1,
+        "continuations": [
+          {
+            "fid": 652,
+            "name": "$p111.k.62875"
+          }
+        ]
+      },
+      {
+        "worker": "$direct.f_nat_prefix",
+        "caseCount": 1,
+        "continuations": [
+          {
+            "fid": 2868,
+            "name": "$p111.k.234283"
+          }
+        ]
+      },
+      {
+        "worker": "$direct.f_list_nodes",
+        "caseCount": 1,
+        "continuations": [
+          {
+            "fid": 3225,
+            "name": "$p111.k.262843"
+          }
+        ]
+      },
+      {
+        "worker": "$direct.dg_lines_count",
+        "caseCount": 1,
+        "continuations": [
+          {
+            "fid": 9367,
+            "name": "$p111.k.777778"
+          }
+        ]
+      },
+      {
+        "worker": "$direct.prefix_state_join",
+        "caseCount": 1,
+        "continuations": [
+          {
+            "fid": 13128,
+            "name": "$p111.k.1064366"
+          }
+        ]
+      },
+      {
+        "worker": "$direct.dr_count",
+        "caseCount": 1,
+        "continuations": [
+          {
+            "fid": 13443,
+            "name": "$p111.k.1098971"
+          }
+        ]
+      },
+      {
+        "worker": "$direct.kp_depth",
+        "caseCount": 1,
+        "continuations": [
+          {
+            "fid": 14324,
+            "name": "$p111.k.1179459"
+          }
+        ]
+      },
+      {
+        "worker": "$direct.nc_words",
+        "caseCount": 1,
+        "continuations": [
+          {
+            "fid": 18260,
+            "name": "$p111.k.1539336"
+          }
+        ]
+      },
+      {
+        "worker": "$direct.p113pl_zeroes",
+        "caseCount": 1,
+        "continuations": [
+          {
+            "fid": 18754,
+            "name": "$p111.k.1577787"
+          }
+        ]
+      },
+      {
+        "worker": "$direct.p113pl_locals",
+        "caseCount": 1,
+        "continuations": [
+          {
+            "fid": 19476,
+            "name": "$p111.k.1641303"
+          }
+        ]
+      },
+      {
+        "worker": "$direct.p113pl_sets",
+        "caseCount": 1,
+        "continuations": [
+          {
+            "fid": 19482,
+            "name": "$p111.k.1642350"
+          }
+        ]
+      },
+      {
+        "worker": "$direct.nf_opaque_kinds",
+        "caseCount": 1,
+        "continuations": [
+          {
+            "fid": 19990,
+            "name": "$p111.k.1685168"
+          }
+        ]
+      },
+      {
+        "worker": "$direct.nk_typed_bindings",
+        "caseCount": 1,
+        "continuations": [
+          {
+            "fid": 20016,
+            "name": "$p111.k.1688534"
+          }
+        ]
+      },
+      {
+        "worker": "$direct.nd_eta_body",
+        "caseCount": 1,
+        "continuations": [
+          {
+            "fid": 20049,
+            "name": "$p111.k.1691797"
+          }
+        ]
+      },
+      {
+        "worker": "$direct.nc_remove_env",
+        "caseCount": 1,
+        "continuations": [
+          {
+            "fid": 21079,
+            "name": "$p111.k.1782530"
+          }
+        ]
+      },
+      {
+        "worker": "$direct.nu_insert",
+        "caseCount": 2,
+        "continuations": [
+          {
+            "fid": 21452,
+            "name": "$p111.k.1814944"
+          },
+          {
+            "fid": 21453,
+            "name": "$p111.k.1814952"
+          }
+        ]
+      },
+      {
+        "worker": "$direct.p111_env_words",
+        "caseCount": 1,
+        "continuations": [
+          {
+            "fid": 22347,
+            "name": "$p111.k.1898722"
+          }
+        ]
+      },
+      {
+        "worker": "$direct.p111_store",
+        "caseCount": 1,
+        "continuations": [
+          {
+            "fid": 22703,
+            "name": "$p111.k.1930579"
+          }
+        ]
+      },
+      {
+        "worker": "$direct.norm_cmp_zip",
+        "caseCount": 1,
+        "continuations": [
+          {
+            "fid": 23568,
+            "name": "$p111.k.2010711"
+          }
+        ]
+      },
+      {
+        "worker": "$direct.norm_names_len",
+        "caseCount": 1,
+        "continuations": [
+          {
+            "fid": 23585,
+            "name": "$p111.k.2012881"
+          }
+        ]
+      },
+      {
+        "worker": "$direct.norm_defs_join",
+        "caseCount": 1,
+        "continuations": [
+          {
+            "fid": 24732,
+            "name": "$p111.k.2121592"
+          }
+        ]
+      },
+      {
+        "worker": "$direct.norm_join",
+        "caseCount": 1,
+        "continuations": [
+          {
+            "fid": 26463,
+            "name": "$p111.k.2304960"
+          }
+        ]
+      },
+      {
+        "worker": "$direct.String.length",
+        "caseCount": 1,
+        "continuations": [
+          {
+            "fid": 26884,
+            "name": "$p111.k.2345614"
+          }
+        ]
+      },
+      {
+        "worker": "$direct.List.append",
+        "caseCount": 1,
+        "continuations": [
+          {
+            "fid": 27215,
+            "name": "$p111.k.2382643"
+          }
+        ]
+      },
+      {
+        "worker": "$direct.terms_len",
+        "caseCount": 1,
+        "continuations": [
+          {
+            "fid": 27259,
+            "name": "$p111.k.2388038"
+          }
+        ]
+      },
+      {
+        "worker": "$direct.p114h_scalars",
+        "caseCount": 1,
+        "continuations": [
+          {
+            "fid": 29740,
+            "name": "$p111.k.2624466"
+          }
+        ]
+      },
+      {
+        "worker": "$direct.p114r_without_transition",
+        "caseCount": 2,
+        "continuations": [
+          {
+            "fid": 29776,
+            "name": "$p111.k.2627723"
+          },
+          {
+            "fid": 29777,
+            "name": "$p111.k.2627729"
+          }
+        ]
+      },
+      {
+        "worker": "$direct.p114r_prefix",
+        "caseCount": 1,
+        "continuations": [
+          {
+            "fid": 30258,
+            "name": "$p111.k.2672970"
+          }
+        ]
+      },
+      {
+        "worker": "$direct.p113d_scalars",
+        "caseCount": 1,
+        "continuations": [
+          {
+            "fid": 31107,
+            "name": "$p111.k.2746721"
+          }
+        ]
+      },
+      {
+        "worker": "$direct.p112w_failure_nodes",
+        "caseCount": 1,
+        "continuations": [
+          {
+            "fid": 32356,
+            "name": "$p111.k.2879077"
+          }
+        ]
+      },
+      {
+        "worker": "$direct.p112r_words",
+        "caseCount": 1,
+        "continuations": [
+          {
+            "fid": 32383,
+            "name": "$p111.k.2881305"
+          }
+        ]
+      },
+      {
+        "worker": "$direct.p112f_size",
+        "caseCount": 4,
+        "continuations": [
+          {
+            "fid": 33025,
+            "name": "$p111.k.2945063"
+          },
+          {
+            "fid": 33026,
+            "name": "$p111.k.2945066"
+          },
+          {
+            "fid": 33027,
+            "name": "$p111.k.2945067"
+          },
+          {
+            "fid": 33028,
+            "name": "$p111.k.2945072"
+          }
+        ]
+      },
+      {
+        "worker": "$direct.p112f_values",
+        "caseCount": 1,
+        "continuations": [
+          {
+            "fid": 33213,
+            "name": "$p111.k.2963895"
+          }
+        ]
+      },
+      {
+        "worker": "$direct.p112w_nodes",
+        "caseCount": 1,
+        "continuations": [
+          {
+            "fid": 33603,
+            "name": "$p111.k.3002004"
+          }
+        ]
+      },
+      {
+        "worker": "$direct.p112t_tail_nodes",
+        "caseCount": 1,
+        "continuations": [
+          {
+            "fid": 35039,
+            "name": "$p111.k.3159962"
+          }
+        ]
+      },
+      {
+        "worker": "$direct.p112t_scalars",
+        "caseCount": 1,
+        "continuations": [
+          {
+            "fid": 35113,
+            "name": "$p111.k.3168728"
+          }
+        ]
+      },
+      {
+        "worker": "$direct.String.append",
+        "caseCount": 1,
+        "continuations": [
+          {
+            "fid": 35289,
+            "name": "$p111.k.3187399"
+          }
+        ]
+      }
+    ]
+  },
+  "runtimeLiteralFidReferenceCensus": {
+    "jump": {
+      "sites": 17039,
+      "distinctFids": 2560
+    },
+    "closure": {
+      "sites": 16733,
+      "distinctFids": 8374
+    },
+    "frame": {
+      "sites": 2,
+      "distinctFids": 2
+    }
+  },
+  "method": "Read pinned existing QBE. Parse function declaration/body boundaries and exact symbolic references; count original descriptor-table relocations. H case identities are exact ceql operands on %p114h_fid generated by p114h_dispatch. No graph or product modification, target execution, or DCE implementation.",
+  "limitations": [
+    "Definition-only private symbols have no other dollar-symbol occurrences in this module and are not exported. This is a textual unused-definition bound, not a new whole-program semantic removal certificate.",
+    "H continuation comparisons test identity tags; they are not calls. Original callable bodies remain in the global scheduler table. Other generic paths may still require them.",
+    "Literal runtime jump/closure/frame sites count only exact immediate argument forms. Expanded frame stores and dynamic closure dispatch are deliberately not guessed from arbitrary numeric constants. Counts include retained unexecuted paths.",
+    "No complete main-root reachability graph, machine-byte savings, or speed estimate is claimed. Every registered segment remains address-taken by its table entry."
+  ]
+}

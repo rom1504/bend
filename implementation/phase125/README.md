@@ -11,6 +11,9 @@ progress; it does not establish parity. A separate fresh-list transfer improves
 [Semantic interface](../../docs/self_hosted/owned-native-composition.md) ·
 [Optimization findings](optimization-findings.md) · [Machine evidence](machine-findings.md).
 
+[Measured results](results.json) · [Native results](native-results.md) ·
+[Qualified candidate](candidate.json) · [Exact selected source](source06/compiler.bend.gz).
+
 ## What changed and what disappeared
 
 1. **Owned-prefix append.** Checked Bend proves exact structural append equations
@@ -114,12 +117,32 @@ source04 parent in a separate paired screen.
 
 ## Native integration status
 
-The selected source06 native campaign is in progress. It authenticates the exact
-source, checked API, additive runtime and import authority, then runs hosted→N1→N2,
-raw QBE reproduction, focused19 on both images and original45 correctness on N2.
-The final status and separate native compiler timings will replace this paragraph
-when the campaign completes. Until then Phase118 remains the qualified checkpoint.
-Installed JS/native selections remain unchanged.
+**Source06 is native-qualified.** Hosted and N1 self-emitted QBE match in all
+93049182bytes. Both N1/N2 pass focused19; N2 passes original45 one-shot correctness.
+This consolidates the Phase121–125 improvements beyond the old Phase118 checkpoint.
+Installed JS/native selections remain unchanged; ELF hashes differ and no N2→N3
+or GPU/parallel claim is made.
+
+The separate three-source screen gives N1/N2 request ratios2.13489×/2.11464×
+upstream and ready-executable stage sums1.02516×/1.01421×. Native uses prepared Base
+and a cached runtime; upstream rebuilds its runtime. A contemporaneous Phase118
+repeat is roughly neutral after block drift: there is no demonstrated compiler
+throughput gain. [Native results](native-results.md) retain all clocks and limits.
+
+Qualification costs22.55min with5.159GiB peak process-tree RSS under a6GiB guard.
+The hosted job is742.68s and native self-request425.04s, versus historical701.26s
+and406.61s on the smaller Phase118 source. Full-compiler QBE grows8.41% across the
+accumulated phases. Small-request cost neutrality does not establish unchanged
+acquisition cost, nor do program speedups establish recursive acceleration.
+
+Through22:22:48UTC, the phase used91.93min wall time,48.65min in the single guarded
+target lane, including22.55min native qualification and2.00min native timing.
+Forty guarded attempts include two failures totaling13.59s; no OOM occurs.
+Mixed plans include emission and execution within one guard, so the
+[accounting categories](accounting.json) are coarse; child receipts retain stage
+splits. Three bounded offline agents investigated ceilings/ownership, runtime
+legality/machine code and native/evidence tooling. They ran no competing target
+lane. Editing, agent inference and quota are not separately metered.
 
 ## What this teaches us
 
@@ -135,3 +158,14 @@ transformation needs them; do not introduce a universal IR to explain this resul
 The [remaining opportunities](remaining-opportunities.md) distinguish the measured
 ceiling from hypotheses needing new evidence. No causal recursive research
 acceleration has been demonstrated.
+
+## Evidence preservation
+
+The [sealed receipt bundle](evidence/receipts01.tar.gz) and
+[manifest](evidence/manifest.json) retain bounded outputs, methods, source modules,
+controls, counters, machine inspection and failed attempts. Large native images
+and QBE products remain external with exact identities. The selected full Bend
+source is separately tracked as [compiler.bend.gz](source06/compiler.bend.gz).
+Run `selfhost/tools/performance/phase125/seal.py replay` with the archive path to
+verify every archived byte; this verifies evidence integrity, not compiler
+correctness or the availability of external artifacts.

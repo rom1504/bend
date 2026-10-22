@@ -5391,3 +5391,30 @@ native chain or installed compiler.27.20min through20:44:11,16.96min guarded,
 The next general opportunity is elimination of temporary producer/concat spines,
 not additional policy search or source-name specialization. Recursive acceleration
 and compiler-hot transfer remain unmeasured.
+
+## Phase125 owned composition and native consolidation — 2026-10-22
+
+[Design](../design/phase125/owned-composition.md) ·
+[Report](../implementation/phase125/README.md) ·
+[Native results](../implementation/phase125/native-results.md) ·
+[Candidate](../implementation/phase125/candidate.json).
+
+Typed guarded append avoids prefix reconstruction; primitive identities avoid
+conversion transport; verified-sized calls avoid already-proved checks. Original45
+passes405 outputs and improves1.92031→1.89221× upstream. Positive log deficit falls
+1.47%;40/44 remain above1.1× and24 above2×. Independent map/append transfer improves
+32.37%, with diagnostic constructor/take counts770→514; excluded from44 score.
+Earlier raw-only append regresses and neutral ABI variants remain preserved.
+
+Source06 now qualifies through hosted→N1→N2:93049182 byte-identical QBE, focused19
+on both images and45 one-shot programs on N2. Installed selections stay unchanged.
+Hosted small compiler cost0.99143×Phase124; native requests2.13489×/2.11464× upstream,
+ready stage sums1.02516×/1.01421× with the explicitly different runtime-build policy.
+No demonstrated compiler throughput gain relative to the fresh Phase118 repeat.
+Qualification22.55min,5.159GiB peak; no OOM. Source+283lines including controls;
+full-compiler QBE+8.41% across the accumulated118→125 changes. Exact source archive,
+negative findings, machine evidence and guarded time accounting are retained.
+
+Next high-information tests: carry private producer destinations across resumes;
+matched layout/virtual product facts; typed F32 calls/backedges for the much larger
+ray deficit. No universal IR rewrite or recursive-research acceleration claim.

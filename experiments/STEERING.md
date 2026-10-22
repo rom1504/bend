@@ -1,4 +1,44 @@
-# Latest experiment: Phase124 complete helpers and local resume
+# Latest experiment: Phase125 owned composition and native consolidation
+
+[Report](../implementation/phase125/README.md) ·
+[Native results](../implementation/phase125/native-results.md) ·
+[Design](../design/phase125/owned-composition.md) ·
+[Candidate](../implementation/phase125/candidate.json) ·
+[Reproduce](../selfhost/tools/performance/phase125/README.md).
+
+Phase125 source06 adds checked owned-prefix append, primitive representation
+identities and post-verification sized runtime calls. Original45 passes405
+observations: same-run44-point ratio1.92031→1.89221× upstream (1.46% less).
+Positive log-slowdown0.908321→0.895002;40 cases still exceed1.1× and24 exceed2×.
+Final independent map/append transfer241→163ms (32.37% less), excluded from the
+historical score. Diagnostic transfer constructors/takes770→514. Raw-owner-only,
+RFC1 and result-ABI-only attempts preserve negative/neutral evidence. No parity claim.
+
+**New qualified native checkpoint:** hosted→N1→N2 reproduces93049182 QBE bytes;
+both images pass focused19 and N2 passes45 one-shot programs. Qualified source,
+API/runtime/images and exact selected compressed source are pinned. Installed
+JS/native selections remain unchanged. No ELF fixed point, N2→N3, GPU/parallel
+or recursive-acceleration claim. Prior Phase118 assets remain intact.
+
+Hosted two-request compiler cost0.99143×Phase124, approximately neutral. Native
+N1/N2 requests2.13489×/2.11464× upstream; ready stage sums1.02516×/1.01421× with
+prepared Base/cached runtime versus upstream full C/Clang builds. A fresh Phase118
+repeat shows no demonstrated throughput gain after block drift. Qualification
+cost22.55min, peak5.159GiB under6GiB; full-compiler QBE grows8.41% across118→125.
+Compiler source+283lines including controls; additive runtime65lines.
+
+Next: preserve private producer destinations across local resumes, requiring
+transfer and measured elimination of construction/ownership rediscovery. If the
+bounded prototype cannot demonstrate wider value, prioritize persistent typed
+F32 calls/backedges: ray contributes26.6% of positive excess runtime. Matched
+constructor witnesses/virtual products are another general capability; current
+verifier facts do not justify removing dynamic take-shape checks. See
+[remaining opportunities](../implementation/phase125/remaining-opportunities.md).
+Stop repeating broad campaigns for one-percent helper adjustments. Keep one
+controlled target lane, immutable evidence, exact fallbacks and the resource
+rules below. Do not revive generic cell credits or change benchmark weights.
+
+# Previous experiment: Phase124 complete helpers and local resume
 
 [Report](../implementation/phase124/README.md) ·
 [Design](../design/phase124/local-ready-resume.md) ·

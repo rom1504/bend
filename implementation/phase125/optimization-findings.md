@@ -1,11 +1,11 @@
-# Phase125 optimization findings before broad/native qualification
+# Phase125 optimization findings
 
-Checkpoint at `7d37d51`. Source06 combines typed append, exact primitive identities
-and verified sized-helper ABIs. The matched four-round ablation supports selecting
-it for broad45, native N1/N2 reproduction and native compiler-speed qualification;
-those qualifications are pending at this checkpoint. The historical 44-point result remains Phase124's
-1.92014× upstream. The observations below do not establish a new corpus score or
-recursive research acceleration.
+The initial bounded analysis at `7d37d51` compared append variants and selected
+source06 for integration. The variant observations below retain their original
+scope. Subsequent broad/native qualification passed: the final44-point ratio is
+1.89221× upstream and hosted→N1→N2 reproduces exact QBE. See the
+[final report](README.md) and [native results](native-results.md). No recursive
+research acceleration is established.
 
 ## Removed work is real; its value depends on the surrounding computation
 
@@ -126,5 +126,13 @@ unchanged outputs/aliases, explicit-stack safety and demonstrated disappearance
 of the extra scan/finalization. The source ceiling motivates this question but
 does not quantify its attainable gain. Compiler `nt_append`/reverse compositions
 are concrete later transfer candidates, with no established hotspot attribution.
-Complete source06 broad/native qualification first; no new broad framework is
-justified by these results.
+Source06 broad/native qualification subsequently passed; see the
+[final report](README.md) and [native results](native-results.md). No new broad
+framework is justified by these results.
+
+## Final integration outcome
+
+Source06 passes405 original45 observations, improves the44-point ratio
+1.92031→1.89221× upstream, and passes hosted→N1→N2 reproduction plus native
+focused19/full45. Its final independent transfer is241→163ms. The earlier
+variant-specific evidence above is retained without relabeling it as source06.

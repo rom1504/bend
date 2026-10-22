@@ -1,5 +1,13 @@
 # Direct QBE backend for the Bend compiler written in Bend
 
+The [Phase125 owned-composition candidate](owned-native-composition.md) is now
+native-qualified through hosted→N1→N2, exact93.0MB QBE reproduction, focused19 on
+both images and45 one-shot cases on N2. Its separate checked-hosted runtime gate
+measures1.89221× upstream on44 timed points. [Results](../../implementation/phase125/README.md)
+separate the small broad gain, stronger independent transfer, roughly unchanged
+compiler throughput and integration cost. It consolidates the experiments below;
+installed selections remain unchanged.
+
 The [Phase124 local helper/resume experiment](local-ready-resume.md) composes
 verified complete helpers with explicit recursive continuation tables. Its
 [report](../../implementation/phase124/README.md) records independent alias/depth

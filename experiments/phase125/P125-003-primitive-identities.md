@@ -1,6 +1,10 @@
 # P125-003: eliminate complete identity-call transport
 
-Status: checked fast-loop prototype; broad effects unmeasured.
+Status: selected in source06; broad and native qualification complete.
+
+Identity-only RLE screen0.98583×parent; no isolated broad contribution is claimed.
+Final source passes nine pure identity controls plus the combined ordinary and
+native gates. See the [report](../../implementation/phase125/README.md).
 
 Pinned runtime operations u32_to_nat and f32_bits return their single full-U64
 operand unchanged. Select a full-width result assignment at the existing

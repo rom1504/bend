@@ -31,6 +31,14 @@ The expected source SHA256 is
 The composition includes the pure test predicates, as does the measured source.
 Preparation alone does not type-check or qualify a compiler.
 
+The exact selected full source is also available as
+[compiler.bend.gz](../../../../implementation/phase125/source06/compiler.bend.gz),
+with a separate [identity receipt](../../../../implementation/phase125/source06/manifest.json).
+Decompress with `gzip -dc` into a fresh file and check the source SHA above.
+This avoids dependence on the historical composition chain for reading the
+selected source; toolchain, Base/cache, API and executable acquisition still have
+their separately authenticated prerequisites.
+
 Run all compiler/API/native execution through `phase111/guard.py`, with one serial
 CPU3 lane, 2048 MiB process-tree RSS, 16384 MiB available-memory floor, 64 MiB file
 limit, explicit deadline and fresh output. Full native-image qualification has a

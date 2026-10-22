@@ -1,6 +1,11 @@
 # P125-001: ownership-preserving append composition
 
-Status: hypothesis; no measured improvement yet.
+Status: selected typed variant; broad and native qualification complete.
+
+Final independent transfer32.37% less runtime; RLE5.49% less in the broad run.
+Raw-only regressed5.84%, RFC1/result-only variants were neutral. See the
+[final report](../../implementation/phase125/README.md) and
+[negative/transfer evidence](../../implementation/phase125/optimization-findings.md).
 
 Design: [owned composition](../../design/phase125/owned-composition.md).
 Parent: Phase124 source02, commit06dea60. Started2026-10-22 20:50:53UTC.

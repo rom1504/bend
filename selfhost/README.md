@@ -3,9 +3,9 @@
 The experimental [direct QBE backend](../docs/self_hosted/direct-qbe.md) lowers
 checked Bend to typed segments and QBE, then links a cached runtime object.
 Ordinary program builds need no generated C or cproc. See the
-[Phase118 report](../implementation/phase118/README.md) for qualified N1/N2
-self-reproduction,45-program correctness and ownership/transport improvements.
-Generated-program runtime is3.01× upstream on44 timed points; native compiler
+[Phase125 report](../implementation/phase125/README.md) for qualified N1/N2
+self-reproduction,45-program correctness and owned-composition improvements.
+Generated-program runtime is1.89× upstream on44 timed points; native compiler
 request/build clocks and hosted-cost tradeoffs are reported separately.
 The installed production default remains unchanged.
 

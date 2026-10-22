@@ -1,6 +1,12 @@
 # P125-002: carry existing verifier facts into the runtime ABI
 
-Status: prototype; broad performance unmeasured.
+Status: selected in source06; broad and native qualification complete.
+
+Static machine audit removes four constructor and two take branches; dynamic
+ownership/take-shape checks remain. The combined source improves broad runtime
+1.46%; this is not an isolated contribution claim. See the
+[report](../../implementation/phase125/README.md) and
+[machine evidence](../../implementation/phase125/machine-findings.md).
 
 P125-001 removes six allocations/takes in the frozen RLE invocation but its
 conservative runtime/transport variants are neutral or slower. This motivates

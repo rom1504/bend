@@ -1,0 +1,57 @@
+{
+  "seed": 17,
+  "salt": 99,
+  "iterations": 1024,
+  "expected": 1964461478,
+  "codes": [
+    2654435769,
+    7,
+    4294967295,
+    123456789,
+    0,
+    2147483648,
+    65537,
+    97,
+    2882400001,
+    4093,
+    271828183,
+    314159265,
+    42
+  ],
+  "weightBits": [
+    0,
+    1056964608,
+    1065353216,
+    3212836864,
+    1069547520,
+    1073741824,
+    1077936128,
+    1082130432
+  ],
+  "arithmetic": "U32 wrap after each addition/multiplication; two independent clamped finite selectors.",
+  "expectedWarmupSuccessCount": 2,
+  "expectedTimedSuccessCount": 2000,
+  "targetsRun": false,
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase126/specialization/transfer/prepare.py",
+      "bytes": 4452,
+      "sha256": "f6245f48777cd7a30e52c8e21be47a443c0d1893ac98080e207a22e52a324c26"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase126/specialization/transfer/routing1024.bend",
+      "bytes": 3043,
+      "sha256": "fa67033380771bbf623eed52b0af30de450dd7260e6b62ac09e84795f71bb6b2"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase126/specialization/transfer/routing-ordinary.bend",
+      "bytes": 1152,
+      "sha256": "13df09eb587ae1f4615359590fc41f9a600d40183b9aad39a52c49a5cbf3db5e"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/fixtures01/test-rle-roundtrip.bend",
+      "bytes": 4708,
+      "sha256": "b46580acb1656502d0e37a0115d172529e648719acb75eadb3b9ad45db5b078d"
+    }
+  ]
+}

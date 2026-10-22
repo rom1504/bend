@@ -1,0 +1,40 @@
+{
+  "cases": [
+    {
+      "name": "p126-routing1024",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase126/specialization/transfer/routing1024.bend",
+        "bytes": 3043,
+        "sha256": "fa67033380771bbf623eed52b0af30de450dd7260e6b62ac09e84795f71bb6b2"
+      },
+      "expectedStdoutEvidence": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase126/specialization/transfer/routing1024.expected.stdout",
+        "bytes": 11,
+        "sha256": "29e31be7a5bd7e3a4661ff38875981fcaac0b170d80dd935336be676eb37aefc"
+      },
+      "expectedStdout": "1964461478\n",
+      "runtimeArgs": [
+        17,
+        99
+      ],
+      "repetitions": 2000,
+      "warmups": 2,
+      "ratioEligible": false,
+      "family": "independent-finite-selectors",
+      "oracle": "Independent 1024-step U32 LCG/integer hash over fixed exact bit tables; unchanged Phase93 complete-result/count observer.",
+      "selection": "New transfer workload; not original45 or a blind heldout, and no production source-name recognition."
+    }
+  ],
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase126/specialization/transfer/prepare.py",
+      "bytes": 4452,
+      "sha256": "f6245f48777cd7a30e52c8e21be47a443c0d1893ac98080e207a22e52a324c26"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/fixtures01/test-rle-roundtrip.bend",
+      "bytes": 4708,
+      "sha256": "b46580acb1656502d0e37a0115d172529e648719acb75eadb3b9ad45db5b078d"
+    }
+  ]
+}

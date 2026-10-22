@@ -1,0 +1,33 @@
+{
+  "schema": "phase126-selector-ordinary-oracle-v1",
+  "observations": 17,
+  "expected": [
+    1056964608,
+    3227516928,
+    1266679808,
+    1081081856,
+    2147483648,
+    1036831949,
+    1036831949,
+    1036831949,
+    1036831949,
+    4294967295,
+    2147483648,
+    7,
+    123456789,
+    1073741824,
+    1077936128,
+    1077936128,
+    1073741824
+  ],
+  "admission": {
+    "palette": "six exact cells; admitted",
+    "words": "five exact cells; admitted",
+    "remainder": "refuse: default depends on remainder",
+    "owning_actual": "refuse: helper takes owning String",
+    "higher_order": "refuse: higher-order helper input",
+    "recursive_helper": "refuse: helper takes Nat"
+  },
+  "oracle": "Fixed IEEE-754 binary32 constants: 0.5,-3.5,16777216 (ties-to-even after U32 conversion and add1),3.75,-0,rounded1/10; exact U32 values and direct fallback outputs. Python only serializes specified values with struct, never evaluates Bend or compiler plans.",
+  "targetsRun": false
+}

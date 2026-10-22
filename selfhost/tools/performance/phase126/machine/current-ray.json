@@ -1,0 +1,65 @@
+{
+  "method": "Static objdump of retained Phase125 selected binary. Counts are not dynamic shares or cycle attribution. Padding included in instruction totals.",
+  "binary": {
+    "path": "selfhost/build/phase111/p125-broad06-variation-ray-active-256-2240-build/program",
+    "sha256": "e5f300685b1f827df173f9be28cabb7c80b6645696157f32ea805189e74cd1e7"
+  },
+  "ssa": {
+    "path": "selfhost/build/phase118/p125-final-remaining06/variation-ray-active-256-2240.ssa",
+    "sha256": "59051a7e53504aca7cdf06c050cef9c102b482aaf88d90bc9007be86613d228f"
+  },
+  "compiler": {
+    "path": "selfhost/build/phase125/verified-source06/compiler.bend",
+    "sha256": "d1399234ad28a3d03ee06fdad436a1585278bcbaea127425a226b5ceb79029b2"
+  },
+  "functions": [
+    {
+      "function": "p113d_$direct.isect5",
+      "file": "selfhost/tools/performance/phase126/machine/direct-isect5.asm",
+      "instructions_including_padding": 202,
+      "gpr_xmm_moves": 49,
+      "frame_references": 47,
+      "calls": [
+        "callq  42c8a0 <p111_rt_fail>",
+        "callq  42c8c0 <p111_rt_op>",
+        "callq  42c8a0 <p111_rt_fail>"
+      ]
+    },
+    {
+      "function": "p113d_$product.nearest",
+      "file": "selfhost/tools/performance/phase126/machine/product-nearest.asm",
+      "instructions_including_padding": 427,
+      "gpr_xmm_moves": 4,
+      "frame_references": 113,
+      "calls": [
+        "callq  406950 <p113d_$direct.sx>",
+        "callq  4067f0 <p113d_$direct.sy>",
+        "callq  406720 <p113d_$direct.sz>",
+        "callq  406650 <p113d_$direct.sr>",
+        "callq  406160 <p113d_$direct.isect5>",
+        "callq  42c8c0 <p111_rt_op>",
+        "callq  42c8a0 <p111_rt_fail>",
+        "callq  406160 <p113d_$direct.isect5>",
+        "callq  42c8c0 <p111_rt_op>",
+        "callq  42c8a0 <p111_rt_fail>"
+      ]
+    },
+    {
+      "function": "p113d_$direct.nearest.t",
+      "file": "selfhost/tools/performance/phase126/machine/direct-nearest-t.asm",
+      "instructions_including_padding": 372,
+      "gpr_xmm_moves": 4,
+      "frame_references": 93,
+      "calls": [
+        "callq  406950 <p113d_$direct.sx>",
+        "callq  4067f0 <p113d_$direct.sy>",
+        "callq  406720 <p113d_$direct.sz>",
+        "callq  406650 <p113d_$direct.sr>",
+        "callq  406160 <p113d_$direct.isect5>",
+        "callq  42c8a0 <p111_rt_fail>",
+        "callq  406160 <p113d_$direct.isect5>",
+        "callq  42c8a0 <p111_rt_fail>"
+      ]
+    }
+  ]
+}

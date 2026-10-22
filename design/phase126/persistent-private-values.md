@@ -76,3 +76,12 @@ record source growth and total research wall/guarded-target time separately.
 No recursive acceleration claim follows from a faster emitted program alone.
 
 Commit design, bounded useful implementations and honest reports during work.
+
+## Evidence-driven extension at 23:32 UTC
+
+The first typed experiment improves the active numeric workload but ordinary
+ray tracing remains dominated by a different work mix. In parallel, source and
+machine inspection found that upstream preserves constant-returning scalar
+selectors as tables, while QBE retains branches and closed arithmetic. The bounded
+P126-002 experiment tests that lost whole-computation fact separately, then tests
+composition only if it pays. It does not expand the campaign into a universal IR.

@@ -1,0 +1,787 @@
+{
+  "method": "Static QBE text counts; no dynamic cost or machine-cycle inference.",
+  "inputs": [
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/p126-typed04-emit/variation-ray-active-256-2240.ssa",
+      "sha256": "f6ee6adb440b739eb12d1885008f65039bd8a29b11ec9e6e9484321fbe5d3842",
+      "functions": [
+        {
+          "name": "p126_typed_$direct.fl",
+          "return": "l",
+          "formals": "l %state, s %p126_lane_v_4294967295, s %p126_lane_v_4294967294",
+          "float_formal_count": 2,
+          "float_formals": [
+            "%p126_lane_v_4294967295",
+            "%p126_lane_v_4294967294"
+          ],
+          "body_lines": 28,
+          "word_to_float_casts": 0,
+          "float_to_word_casts": 5,
+          "calls": [],
+          "allocations": [
+            "%v_scratch =l alloc8 2048"
+          ],
+          "backedge_jumps": 1
+        },
+        {
+          "name": "p126_typed_$direct.isect.go2",
+          "return": "l",
+          "formals": "l %state, s %p126_lane_v_4294967295, s %p126_lane_v_4294967294, l %v_v_4294967293",
+          "float_formal_count": 2,
+          "float_formals": [
+            "%p126_lane_v_4294967295",
+            "%p126_lane_v_4294967294"
+          ],
+          "body_lines": 157,
+          "word_to_float_casts": 0,
+          "float_to_word_casts": 11,
+          "calls": [
+            "%t_36 =d call $sqrt(d %t_35)",
+            "%v_p113i_0_local_p113i_1_local_ignored =l call $p111_rt_fail(l %state, w 4)",
+            "%v_ignored =l call $p111_rt_fail(l %state, w 4)"
+          ],
+          "allocations": [
+            "%v_scratch =l alloc8 2048",
+            "%v_p113i_0_local_scratch =l alloc8 16",
+            "%v_p113i_0_local_p113i_0_local_scratch =l alloc8 16",
+            "%v_p113i_0_local_p113i_1_local_scratch =l alloc8 8"
+          ],
+          "backedge_jumps": 1
+        },
+        {
+          "name": "p126_typed_$direct.isect.go",
+          "return": "l",
+          "formals": "l %state, s %p126_lane_v_4294967295, s %p126_lane_v_4294967294",
+          "float_formal_count": 2,
+          "float_formals": [
+            "%p126_lane_v_4294967295",
+            "%p126_lane_v_4294967294"
+          ],
+          "body_lines": 189,
+          "word_to_float_casts": 0,
+          "float_to_word_casts": 12,
+          "calls": [
+            "%t_54 =d call $sqrt(d %t_53)",
+            "%v_p113i_0_local_p113i_0_local_p113i_1_local_ignored =l call $p111_rt_fail(l %state, w 4)",
+            "%v_p113i_0_local_ignored =l call $p111_rt_fail(l %state, w 4)"
+          ],
+          "allocations": [
+            "%v_scratch =l alloc8 2048",
+            "%v_p113i_0_local_scratch =l alloc8 16",
+            "%v_p113i_0_local_p113i_0_local_scratch =l alloc8 16",
+            "%v_p113i_0_local_p113i_0_local_p113i_0_local_scratch =l alloc8 16",
+            "%v_p113i_0_local_p113i_0_local_p113i_1_local_scratch =l alloc8 8"
+          ],
+          "backedge_jumps": 1
+        },
+        {
+          "name": "p113d_$direct.isect5",
+          "return": "l",
+          "formals": "l %state, l %v_v_4294967295, l %v_v_4294967294, l %v_v_4294967293, l %v_v_4294967292, l %v_v_4294967291, l %v_v_4294967290, l %v_v_4294967289, l %v_v_4294967288, l %v_v_4294967287, l %v_v_4294967286",
+          "float_formal_count": 0,
+          "float_formals": [],
+          "body_lines": 23,
+          "word_to_float_casts": 10,
+          "float_to_word_casts": 0,
+          "calls": [
+            "%p126_return =l call $p126_typed_$direct.isect5(l %state, s %t_1, s %t_3, s %t_5, s %t_7, s %t_9, s %t_11, s %t_13, s %t_15, s %t_17, s %t_19)"
+          ],
+          "allocations": [],
+          "backedge_jumps": 0
+        },
+        {
+          "name": "p126_typed_$direct.isect5",
+          "return": "l",
+          "formals": "l %state, s %p126_lane_v_4294967295, s %p126_lane_v_4294967294, s %p126_lane_v_4294967293, s %p126_lane_v_4294967292, s %p126_lane_v_4294967291, s %p126_lane_v_4294967290, s %p126_lane_v_4294967289, s %p126_lane_v_4294967288, s %p126_lane_v_4294967287, s %p126_lane_v_4294967286",
+          "float_formal_count": 10,
+          "float_formals": [
+            "%p126_lane_v_4294967295",
+            "%p126_lane_v_4294967294",
+            "%p126_lane_v_4294967293",
+            "%p126_lane_v_4294967292",
+            "%p126_lane_v_4294967291",
+            "%p126_lane_v_4294967290",
+            "%p126_lane_v_4294967289",
+            "%p126_lane_v_4294967288",
+            "%p126_lane_v_4294967287",
+            "%p126_lane_v_4294967286"
+          ],
+          "body_lines": 367,
+          "word_to_float_casts": 13,
+          "float_to_word_casts": 37,
+          "calls": [
+            "%t_207 =d call $sqrt(d %t_206)",
+            "%v_p113i_0_local_p113i_0_local_p113i_0_local_p113i_1_local_ignored =l call $p111_rt_fail(l %state, w 4)",
+            "%v_p113i_0_local_p113i_0_local_ignored =l call $p111_rt_fail(l %state, w 4)"
+          ],
+          "allocations": [
+            "%v_scratch =l alloc8 2048",
+            "%v_p113i_0_local_scratch =l alloc8 16",
+            "%v_p113i_0_local_p113i_0_local_scratch =l alloc8 16",
+            "%v_p113i_0_local_p113i_0_local_p113i_0_local_scratch =l alloc8 16",
+            "%v_p113i_0_local_p113i_0_local_p113i_0_local_p113i_0_local_scratch =l alloc8 16",
+            "%v_p113i_0_local_p113i_0_local_p113i_0_local_p113i_1_local_scratch =l alloc8 8"
+          ],
+          "backedge_jumps": 1
+        },
+        {
+          "name": "p126_typed_$direct.shade",
+          "return": "l",
+          "formals": "l %state, s %p126_lane_v_4294967295, s %p126_lane_v_4294967294, l %v_v_4294967293",
+          "float_formal_count": 2,
+          "float_formals": [
+            "%p126_lane_v_4294967295",
+            "%p126_lane_v_4294967294"
+          ],
+          "body_lines": 64,
+          "word_to_float_casts": 0,
+          "float_to_word_casts": 3,
+          "calls": [
+            "%v_p113i_0_local_ignored =l call $p111_rt_fail(l %state, w 4)"
+          ],
+          "allocations": [
+            "%v_scratch =l alloc8 2048",
+            "%v_p113i_0_local_scratch =l alloc8 8"
+          ],
+          "backedge_jumps": 1
+        },
+        {
+          "name": "p113d_$product.nearest",
+          "return": "l",
+          "formals": "l %state, l %p113_result_out, l %v_v_4294967295, l %v_v_4294967294, l %v_v_4294967293, l %v_v_4294967292, l %v_v_4294967291, l %v_v_4294967290, l %v_v_4294967289, l %v_v_4294967288, l %v_v_4294967287, l %v_v_4294967286, l %v_v_4294967285, l %v_v_4294967284",
+          "float_formal_count": 0,
+          "float_formals": [],
+          "body_lines": 15,
+          "word_to_float_casts": 6,
+          "float_to_word_casts": 0,
+          "calls": [
+            "%p126_return =l call $p126_typed_$product.nearest(l %state, l %p113_result_out, l %v_v_4294967295, s %t_1, s %t_3, s %t_5, s %t_7, s %t_9, s %t_11, l %v_v_4294967288, l %v_v_4294967287, l %v_v_4294967286, l %v_v_4294967285, l %v_v_4294967284)"
+          ],
+          "allocations": [],
+          "backedge_jumps": 0
+        },
+        {
+          "name": "p126_typed_$product.nearest",
+          "return": "l",
+          "formals": "l %state, l %p113_result_out, l %v_v_4294967295, s %p126_lane_v_4294967294, s %p126_lane_v_4294967293, s %p126_lane_v_4294967292, s %p126_lane_v_4294967291, s %p126_lane_v_4294967290, s %p126_lane_v_4294967289, l %v_v_4294967288, l %v_v_4294967287, l %v_v_4294967286, l %v_v_4294967285, l %v_v_4294967284",
+          "float_formal_count": 6,
+          "float_formals": [
+            "%p126_lane_v_4294967294",
+            "%p126_lane_v_4294967293",
+            "%p126_lane_v_4294967292",
+            "%p126_lane_v_4294967291",
+            "%p126_lane_v_4294967290",
+            "%p126_lane_v_4294967289"
+          ],
+          "body_lines": 1827,
+          "word_to_float_casts": 28,
+          "float_to_word_casts": 82,
+          "calls": [
+            "%v_ignored =l call $p111_rt_fail(l %state, w 4)",
+            "%v_p113i_0_local_ignored =l call $p111_rt_fail(l %state, w 4)",
+            "%v_p113i_0_local_ignored =l call $p111_rt_fail(l %state, w 4)",
+            "%v_p113i_0_local_ignored =l call $p111_rt_fail(l %state, w 4)",
+            "%v_p113i_0_local_ignored =l call $p111_rt_fail(l %state, w 4)",
+            "%v_p113i_0_local_ignored =l call $p111_rt_fail(l %state, w 4)",
+            "%v_p113i_0_local_ignored =l call $p111_rt_fail(l %state, w 4)",
+            "%v_p113i_0_local_ignored =l call $p111_rt_fail(l %state, w 4)",
+            "%v_p113i_0_local_ignored =l call $p111_rt_fail(l %state, w 4)",
+            "%v_p113i_1_local_ignored =l call $p111_rt_fail(l %state, w 4)",
+            "%v_p113i_1_local_ignored =l call $p111_rt_fail(l %state, w 4)",
+            "%v_p113i_1_local_ignored =l call $p111_rt_fail(l %state, w 4)",
+            "%v_p113i_1_local_ignored =l call $p111_rt_fail(l %state, w 4)",
+            "%v_p113i_1_local_ignored =l call $p111_rt_fail(l %state, w 4)",
+            "%v_p113i_1_local_ignored =l call $p111_rt_fail(l %state, w 4)",
+            "%v_p113i_1_local_ignored =l call $p111_rt_fail(l %state, w 4)",
+            "%v_p113i_1_local_ignored =l call $p111_rt_fail(l %state, w 4)",
+            "%v_p113i_2_local_ignored =l call $p111_rt_fail(l %state, w 4)",
+            "%v_p113i_2_local_ignored =l call $p111_rt_fail(l %state, w 4)",
+            "%v_p113i_2_local_ignored =l call $p111_rt_fail(l %state, w 4)",
+            "%v_p113i_2_local_ignored =l call $p111_rt_fail(l %state, w 4)",
+            "%v_p113i_2_local_ignored =l call $p111_rt_fail(l %state, w 4)",
+            "%v_p113i_2_local_ignored =l call $p111_rt_fail(l %state, w 4)",
+            "%v_p113i_2_local_ignored =l call $p111_rt_fail(l %state, w 4)",
+            "%v_p113i_2_local_ignored =l call $p111_rt_fail(l %state, w 4)",
+            "%v_p113i_3_local_ignored =l call $p111_rt_fail(l %state, w 4)",
+            "%v_p113i_3_local_ignored =l call $p111_rt_fail(l %state, w 4)",
+            "%v_p113i_3_local_ignored =l call $p111_rt_fail(l %state, w 4)",
+            "%v_p113i_3_local_ignored =l call $p111_rt_fail(l %state, w 4)",
+            "%v_p113i_3_local_ignored =l call $p111_rt_fail(l %state, w 4)",
+            "%v_p113i_3_local_ignored =l call $p111_rt_fail(l %state, w 4)",
+            "%v_p113i_3_local_ignored =l call $p111_rt_fail(l %state, w 4)",
+            "%v_p113i_3_local_ignored =l call $p111_rt_fail(l %state, w 4)",
+            "%v_p113p_call_121_0 =l call $p126_typed_$direct.isect5(l %state, s %t_905, s %t_907, s %t_909, s %t_911, s %t_913, s %t_915, s %t_917, s %t_919, s %t_921, s %t_923)",
+            "%v_value =l call $p111_rt_op(l %state, w 25, l %v_scratch, w 1)",
+            "%v_p113p_call_169_0 =l call $p113d_$direct.sx(l %state, l %v_v_4294967128)",
+            "%v_p113p_call_173_0 =l call $p113d_$direct.sy(l %state, l %v_v_4294967124)",
+            "%v_p113p_call_177_0 =l call $p113d_$direct.sz(l %state, l %v_v_4294967120)",
+            "%v_p113p_call_181_0 =l call $p113d_$direct.sr(l %state, l %v_v_4294967116)",
+            "%v_p113p_call_189_0 =l call $p126_typed_$direct.isect5(l %state, s %t_950, s %t_952, s %t_954, s %t_956, s %p126_lane_v_4294967294, s %p126_lane_v_4294967293, s %p126_lane_v_4294967292, s %p126_lane_v_4294967291, s %p126_lane_v_4294967290, s %p126_lane_v_4294967289)",
+            "%v_value =l call $p111_rt_op(l %state, w 25, l %v_scratch, w 1)",
+            "%v_ignored =l call $p111_rt_fail(l %state, w 4)",
+            "%v_ignored =l call $p111_rt_fail(l %state, w 4)"
+          ],
+          "allocations": [
+            "%v_scratch =l alloc8 2048",
+            "%v_p113i_0_local_scratch =l alloc8 16",
+            "%v_p113i_0_local_p113i_0_local_scratch =l alloc8 16",
+            "%v_p113i_0_local_p113i_1_local_scratch =l alloc8 16",
+            "%v_p113i_1_local_scratch =l alloc8 16",
+            "%v_p113i_1_local_p113i_0_local_scratch =l alloc8 16",
+            "%v_p113i_1_local_p113i_1_local_scratch =l alloc8 16",
+            "%v_p113i_1_local_p113i_2_local_scratch =l alloc8 16",
+            "%v_p113i_1_local_p113i_3_local_scratch =l alloc8 16",
+            "%v_p113i_1_local_p113i_4_local_scratch =l alloc8 16",
+            "%v_p113i_1_local_p113i_5_local_scratch =l alloc8 16",
+            "%v_p113i_1_local_p113i_6_local_scratch =l alloc8 16",
+            "%v_p113i_2_local_scratch =l alloc8 8",
+            "%v_p113i_2_local_p113i_0_local_scratch =l alloc8 16",
+            "%v_p113i_2_local_p113i_1_local_scratch =l alloc8 16",
+            "%v_p113i_3_local_scratch =l alloc8 8",
+            "%v_p113i_3_local_p113i_0_local_scratch =l alloc8 16",
+            "%v_p113i_3_local_p113i_1_local_scratch =l alloc8 16",
+            "%v_p113i_3_local_p113i_2_local_scratch =l alloc8 16"
+          ],
+          "backedge_jumps": 3
+        },
+        {
+          "name": "p113d_$direct.nearest.t",
+          "return": "l",
+          "formals": "l %state, l %v_v_4294967295, l %v_v_4294967294, l %v_v_4294967293, l %v_v_4294967292, l %v_v_4294967291, l %v_v_4294967290, l %v_v_4294967289, l %v_v_4294967288, l %v_v_4294967287, l %v_v_4294967286",
+          "float_formal_count": 0,
+          "float_formals": [],
+          "body_lines": 15,
+          "word_to_float_casts": 6,
+          "float_to_word_casts": 0,
+          "calls": [
+            "%p126_return =l call $p126_typed_$direct.nearest.t(l %state, l %v_v_4294967295, s %t_1, s %t_3, s %t_5, s %t_7, s %t_9, s %t_11, l %v_v_4294967288, l %v_v_4294967287, l %v_v_4294967286)"
+          ],
+          "allocations": [],
+          "backedge_jumps": 0
+        },
+        {
+          "name": "p126_typed_$direct.nearest.t",
+          "return": "l",
+          "formals": "l %state, l %v_v_4294967295, s %p126_lane_v_4294967294, s %p126_lane_v_4294967293, s %p126_lane_v_4294967292, s %p126_lane_v_4294967291, s %p126_lane_v_4294967290, s %p126_lane_v_4294967289, l %v_v_4294967288, l %v_v_4294967287, l %v_v_4294967286",
+          "float_formal_count": 6,
+          "float_formals": [
+            "%p126_lane_v_4294967294",
+            "%p126_lane_v_4294967293",
+            "%p126_lane_v_4294967292",
+            "%p126_lane_v_4294967291",
+            "%p126_lane_v_4294967290",
+            "%p126_lane_v_4294967289"
+          ],
+          "body_lines": 1721,
+          "word_to_float_casts": 28,
+          "float_to_word_casts": 82,
+          "calls": [
+            "%v_ignored =l call $p111_rt_fail(l %state, w 4)",
+            "%v_p113i_0_local_ignored =l call $p111_rt_fail(l %state, w 4)",
+            "%v_p113i_0_local_ignored =l call $p111_rt_fail(l %state, w 4)",
+            "%v_p113i_0_local_ignored =l call $p111_rt_fail(l %state, w 4)",
+            "%v_p113i_0_local_ignored =l call $p111_rt_fail(l %state, w 4)",
+            "%v_p113i_0_local_ignored =l call $p111_rt_fail(l %state, w 4)",
+            "%v_p113i_0_local_ignored =l call $p111_rt_fail(l %state, w 4)",
+            "%v_p113i_0_local_ignored =l call $p111_rt_fail(l %state, w 4)",
+            "%v_p113i_0_local_ignored =l call $p111_rt_fail(l %state, w 4)",
+            "%v_p113i_1_local_ignored =l call $p111_rt_fail(l %state, w 4)",
+            "%v_p113i_1_local_ignored =l call $p111_rt_fail(l %state, w 4)",
+            "%v_p113i_1_local_ignored =l call $p111_rt_fail(l %state, w 4)",
+            "%v_p113i_1_local_ignored =l call $p111_rt_fail(l %state, w 4)",
+            "%v_p113i_1_local_ignored =l call $p111_rt_fail(l %state, w 4)",
+            "%v_p113i_1_local_ignored =l call $p111_rt_fail(l %state, w 4)",
+            "%v_p113i_1_local_ignored =l call $p111_rt_fail(l %state, w 4)",
+            "%v_p113i_1_local_ignored =l call $p111_rt_fail(l %state, w 4)",
+            "%v_p113i_2_local_ignored =l call $p111_rt_fail(l %state, w 4)",
+            "%v_p113i_2_local_ignored =l call $p111_rt_fail(l %state, w 4)",
+            "%v_p113i_2_local_ignored =l call $p111_rt_fail(l %state, w 4)",
+            "%v_p113i_2_local_ignored =l call $p111_rt_fail(l %state, w 4)",
+            "%v_p113i_2_local_ignored =l call $p111_rt_fail(l %state, w 4)",
+            "%v_p113i_2_local_ignored =l call $p111_rt_fail(l %state, w 4)",
+            "%v_p113i_2_local_ignored =l call $p111_rt_fail(l %state, w 4)",
+            "%v_p113i_2_local_ignored =l call $p111_rt_fail(l %state, w 4)",
+            "%v_p113i_3_local_ignored =l call $p111_rt_fail(l %state, w 4)",
+            "%v_p113i_3_local_ignored =l call $p111_rt_fail(l %state, w 4)",
+            "%v_p113i_3_local_ignored =l call $p111_rt_fail(l %state, w 4)",
+            "%v_p113i_3_local_ignored =l call $p111_rt_fail(l %state, w 4)",
+            "%v_p113i_3_local_ignored =l call $p111_rt_fail(l %state, w 4)",
+            "%v_p113i_3_local_ignored =l call $p111_rt_fail(l %state, w 4)",
+            "%v_p113i_3_local_ignored =l call $p111_rt_fail(l %state, w 4)",
+            "%v_p113i_3_local_ignored =l call $p111_rt_fail(l %state, w 4)",
+            "%v_p113p_call_89_0 =l call $p126_typed_$direct.isect5(l %state, s %t_892, s %t_894, s %t_896, s %t_898, s %t_900, s %t_902, s %t_904, s %t_906, s %t_908, s %t_910)",
+            "%v_p113p_call_130_0 =l call $p113d_$direct.sx(l %state, l %v_v_4294967167)",
+            "%v_p113p_call_134_0 =l call $p113d_$direct.sy(l %state, l %v_v_4294967163)",
+            "%v_p113p_call_138_0 =l call $p113d_$direct.sz(l %state, l %v_v_4294967159)",
+            "%v_p113p_call_142_0 =l call $p113d_$direct.sr(l %state, l %v_v_4294967155)",
+            "%v_p113p_call_150_0 =l call $p126_typed_$direct.isect5(l %state, s %t_936, s %t_938, s %t_940, s %t_942, s %p126_lane_v_4294967294, s %p126_lane_v_4294967293, s %p126_lane_v_4294967292, s %p126_lane_v_4294967291, s %p126_lane_v_4294967290, s %p126_lane_v_4294967289)",
+            "%v_ignored =l call $p111_rt_fail(l %state, w 4)",
+            "%v_ignored =l call $p111_rt_fail(l %state, w 4)"
+          ],
+          "allocations": [
+            "%v_scratch =l alloc8 2048",
+            "%v_p113i_0_local_scratch =l alloc8 16",
+            "%v_p113i_0_local_p113i_0_local_scratch =l alloc8 16",
+            "%v_p113i_0_local_p113i_1_local_scratch =l alloc8 16",
+            "%v_p113i_1_local_scratch =l alloc8 16",
+            "%v_p113i_1_local_p113i_0_local_scratch =l alloc8 16",
+            "%v_p113i_1_local_p113i_1_local_scratch =l alloc8 16",
+            "%v_p113i_1_local_p113i_2_local_scratch =l alloc8 16",
+            "%v_p113i_1_local_p113i_3_local_scratch =l alloc8 16",
+            "%v_p113i_1_local_p113i_4_local_scratch =l alloc8 16",
+            "%v_p113i_1_local_p113i_5_local_scratch =l alloc8 16",
+            "%v_p113i_1_local_p113i_6_local_scratch =l alloc8 16",
+            "%v_p113i_2_local_scratch =l alloc8 8",
+            "%v_p113i_2_local_p113i_0_local_scratch =l alloc8 16",
+            "%v_p113i_2_local_p113i_1_local_scratch =l alloc8 16",
+            "%v_p113i_3_local_scratch =l alloc8 8",
+            "%v_p113i_3_local_p113i_0_local_scratch =l alloc8 16",
+            "%v_p113i_3_local_p113i_1_local_scratch =l alloc8 16",
+            "%v_p113i_3_local_p113i_2_local_scratch =l alloc8 16"
+          ],
+          "backedge_jumps": 3
+        },
+        {
+          "name": "p126_typed_$product.trace",
+          "return": "l",
+          "formals": "l %state, l %v_v_4294967295, l %v_v_4294967285, s %p126_lane_v_4294967284, l %v_v_4294967283, s %p126_lane_v_4294967293, s %p126_lane_v_4294967292, s %p126_lane_v_4294967291, s %p126_lane_v_4294967290, s %p126_lane_v_4294967289, s %p126_lane_v_4294967288, l %v_v_4294967287, s %p126_lane_v_4294967286",
+          "float_formal_count": 8,
+          "float_formals": [
+            "%p126_lane_v_4294967284",
+            "%p126_lane_v_4294967293",
+            "%p126_lane_v_4294967292",
+            "%p126_lane_v_4294967291",
+            "%p126_lane_v_4294967290",
+            "%p126_lane_v_4294967289",
+            "%p126_lane_v_4294967288",
+            "%p126_lane_v_4294967286"
+          ],
+          "body_lines": 3068,
+          "word_to_float_casts": 129,
+          "float_to_word_casts": 200,
+          "calls": [
+            "%v_p113i_0_local_ignored =l call $p111_rt_fail(l %state, w 4)",
+            "%v_p113i_0_local_ignored =l call $p111_rt_fail(l %state, w 4)",
+            "%v_p113i_0_local_ignored =l call $p111_rt_fail(l %state, w 4)",
+            "%v_p113i_0_local_ignored =l call $p111_rt_fail(l %state, w 4)",
+            "%v_p113i_0_local_ignored =l call $p111_rt_fail(l %state, w 4)",
+            "%v_p113i_0_local_ignored =l call $p111_rt_fail(l %state, w 4)",
+            "%v_p113i_0_local_ignored =l call $p111_rt_fail(l %state, w 4)",
+            "%v_p113i_0_local_ignored =l call $p111_rt_fail(l %state, w 4)",
+            "%v_p113i_1_local_ignored =l call $p111_rt_fail(l %state, w 4)",
+            "%v_p113i_1_local_ignored =l call $p111_rt_fail(l %state, w 4)",
+            "%v_p113i_1_local_ignored =l call $p111_rt_fail(l %state, w 4)",
+            "%v_p113i_1_local_ignored =l call $p111_rt_fail(l %state, w 4)",
+            "%v_p113i_1_local_ignored =l call $p111_rt_fail(l %state, w 4)",
+            "%v_p113i_1_local_ignored =l call $p111_rt_fail(l %state, w 4)",
+            "%v_p113i_1_local_ignored =l call $p111_rt_fail(l %state, w 4)",
+            "%v_p113i_1_local_ignored =l call $p111_rt_fail(l %state, w 4)",
+            "%v_p113i_2_local_ignored =l call $p111_rt_fail(l %state, w 4)",
+            "%v_p113i_2_local_ignored =l call $p111_rt_fail(l %state, w 4)",
+            "%v_p113i_2_local_ignored =l call $p111_rt_fail(l %state, w 4)",
+            "%v_p113i_2_local_ignored =l call $p111_rt_fail(l %state, w 4)",
+            "%v_p113i_2_local_ignored =l call $p111_rt_fail(l %state, w 4)",
+            "%v_p113i_2_local_ignored =l call $p111_rt_fail(l %state, w 4)",
+            "%v_p113i_2_local_ignored =l call $p111_rt_fail(l %state, w 4)",
+            "%v_p113i_2_local_ignored =l call $p111_rt_fail(l %state, w 4)",
+            "%v_p113i_3_local_ignored =l call $p111_rt_fail(l %state, w 4)",
+            "%v_p113i_3_local_ignored =l call $p111_rt_fail(l %state, w 4)",
+            "%v_p113i_3_local_ignored =l call $p111_rt_fail(l %state, w 4)",
+            "%v_p113i_3_local_ignored =l call $p111_rt_fail(l %state, w 4)",
+            "%v_p113i_3_local_ignored =l call $p111_rt_fail(l %state, w 4)",
+            "%v_p113i_3_local_ignored =l call $p111_rt_fail(l %state, w 4)",
+            "%v_p113i_3_local_ignored =l call $p111_rt_fail(l %state, w 4)",
+            "%v_p113i_3_local_ignored =l call $p111_rt_fail(l %state, w 4)",
+            "%t_1113 =d call $sqrt(d %t_1112)",
+            "%v_p113i_4_local_p113i_0_local_ignored =l call $p111_rt_fail(l %state, w 4)",
+            "%v_p113p_call_320_0 =l call $p126_typed_$direct.fl(l %state, s %t_1270, s %t_1272)",
+            "%v_p113p_call_336_0 =l call $p126_typed_$direct.fl(l %state, s %t_1292, s %t_1294)",
+            "%v_p113p_call_369_0 =l call $p126_typed_$direct.nearest.t(l %state, l 9, s %t_1264, s %t_1286, s %t_1308, s %t_1338, s %t_1340, s %t_1342, l %v_v_4294966945, l %v_v_4294966944, l 0)",
+            "%v_p113p_call_383_0 =l call $p126_typed_$direct.fl(l %state, s %t_1344, s %t_1346)",
+            "%v_p113p_call_391_0 =l call $p126_typed_$direct.fl(l %state, s %t_1348, s %t_1350)",
+            "%v_p113p_call_399_0 =l call $p126_typed_$direct.shade(l %state, s %t_1352, s %t_1354, l %v_v_4294966900)",
+            "%v_ignored =l call $p111_rt_fail(l %state, w 4)",
+            "%v_p113p_call_503_0 =l call $p113d_$direct.sr(l %state, l %v_v_4294966794)",
+            "%v_p113p_call_545_0 =l call $p113d_$direct.sx(l %state, l %v_v_4294966752)",
+            "%v_p113p_call_559_0 =l call $p113d_$direct.sy(l %state, l %v_v_4294966738)",
+            "%v_p113p_call_573_0 =l call $p113d_$direct.sz(l %state, l %v_v_4294966724)",
+            "%t_1628 =d call $sqrt(d %t_1627)",
+            "%v_p113p_call_689_0 =l call $p113d_$direct.fmax0(l %state, l %v_v_4294966633)",
+            "%v_p113p_call_700_0 =l call $p126_typed_$direct.fl(l %state, s %t_1707, s %t_1709)",
+            "%v_p113p_call_716_0 =l call $p126_typed_$direct.fl(l %state, s %t_1729, s %t_1731)",
+            "%v_p113p_call_732_0 =l call $p126_typed_$direct.fl(l %state, s %t_1751, s %t_1753)",
+            "%v_p113p_call_765_0 =l call $p126_typed_$direct.nearest.t(l %state, l 9, s %t_1723, s %t_1745, s %t_1767, s %t_1797, s %t_1799, s %t_1801, l %v_v_4294966549, l %v_v_4294966548, l 0)",
+            "%v_p113p_call_773_0 =l call $p126_typed_$direct.fl(l %state, s %t_1803, s %t_1805)",
+            "%v_p113p_call_781_0 =l call $p126_typed_$direct.fl(l %state, s %t_1807, s %t_1809)",
+            "%v_p113p_call_789_0 =l call $p126_typed_$direct.shade(l %state, s %t_1811, s %t_1813, l %v_v_4294966510)",
+            "%v_p113p_call_797_0 =l call $p113d_$direct.skr(l %state, l %v_v_4294966500)",
+            "%p113_status =l call $p126_typed_$product.nearest(l %state, l %p113_results, l 9, s %t_1968, s %t_1970, s %t_1972, s %t_1908, s %t_1926, s %t_1944, l %v_v_4294966419, l 9, l %v_v_4294966417, l 9, l 0)",
+            "%v_ignored =l call $p111_rt_fail(l %state, w 4)",
+            "%v_ignored =l call $p111_rt_fail(l %state, w 4)"
+          ],
+          "allocations": [
+            "%v_scratch =l alloc8 2048",
+            "%v_p113i_0_local_scratch =l alloc8 8",
+            "%v_p113i_0_local_p113i_0_local_scratch =l alloc8 16",
+            "%v_p113i_0_local_p113i_1_local_scratch =l alloc8 16",
+            "%v_p113i_0_local_p113i_2_local_scratch =l alloc8 16",
+            "%v_p113i_1_local_scratch =l alloc8 16",
+            "%v_p113i_1_local_p113i_0_local_scratch =l alloc8 16",
+            "%v_p113i_1_local_p113i_1_local_scratch =l alloc8 16",
+            "%v_p113i_2_local_scratch =l alloc8 16",
+            "%v_p113i_2_local_p113i_0_local_scratch =l alloc8 16",
+            "%v_p113i_2_local_p113i_1_local_scratch =l alloc8 16",
+            "%v_p113i_2_local_p113i_2_local_scratch =l alloc8 16",
+            "%v_p113i_2_local_p113i_3_local_scratch =l alloc8 16",
+            "%v_p113i_2_local_p113i_4_local_scratch =l alloc8 16",
+            "%v_p113i_2_local_p113i_5_local_scratch =l alloc8 16",
+            "%v_p113i_2_local_p113i_6_local_scratch =l alloc8 16",
+            "%v_p113i_3_local_scratch =l alloc8 8",
+            "%v_p113i_3_local_p113i_0_local_scratch =l alloc8 16",
+            "%v_p113i_3_local_p113i_1_local_scratch =l alloc8 16",
+            "%v_p113i_4_local_scratch =l alloc8 16",
+            "%v_p113i_4_local_p113i_0_local_scratch =l alloc8 8",
+            "%v_p113i_5_local_scratch =l alloc8 16",
+            "%p113_results =l alloc8 64"
+          ],
+          "backedge_jumps": 2
+        },
+        {
+          "name": "p113d_$direct.nearest",
+          "return": "l",
+          "formals": "l %state, l %v_v_4294967295, l %v_v_4294967294, l %v_v_4294967293, l %v_v_4294967292, l %v_v_4294967291, l %v_v_4294967290, l %v_v_4294967289, l %v_v_4294967288, l %v_v_4294967287, l %v_v_4294967286, l %v_v_4294967285, l %v_v_4294967284",
+          "float_formal_count": 0,
+          "float_formals": [],
+          "body_lines": 15,
+          "word_to_float_casts": 6,
+          "float_to_word_casts": 0,
+          "calls": [
+            "%p126_return =l call $p126_typed_$direct.nearest(l %state, l %v_v_4294967295, s %t_1, s %t_3, s %t_5, s %t_7, s %t_9, s %t_11, l %v_v_4294967288, l %v_v_4294967287, l %v_v_4294967286, l %v_v_4294967285, l %v_v_4294967284)"
+          ],
+          "allocations": [],
+          "backedge_jumps": 0
+        },
+        {
+          "name": "p126_typed_$direct.nearest",
+          "return": "l",
+          "formals": "l %state, l %v_v_4294967295, s %p126_lane_v_4294967294, s %p126_lane_v_4294967293, s %p126_lane_v_4294967292, s %p126_lane_v_4294967291, s %p126_lane_v_4294967290, s %p126_lane_v_4294967289, l %v_v_4294967288, l %v_v_4294967287, l %v_v_4294967286, l %v_v_4294967285, l %v_v_4294967284",
+          "float_formal_count": 6,
+          "float_formals": [
+            "%p126_lane_v_4294967294",
+            "%p126_lane_v_4294967293",
+            "%p126_lane_v_4294967292",
+            "%p126_lane_v_4294967291",
+            "%p126_lane_v_4294967290",
+            "%p126_lane_v_4294967289"
+          ],
+          "body_lines": 1788,
+          "word_to_float_casts": 28,
+          "float_to_word_casts": 82,
+          "calls": [
+            "%v_value =l call $p125_rt_ctor3(l %state, w 151, l %v_scratch)",
+            "%v_value =l call $p125_rt_ctor3(l %state, w 151, l %v_scratch)",
+            "%v_ignored =l call $p111_rt_fail(l %state, w 4)",
+            "%v_p113i_0_local_ignored =l call $p111_rt_fail(l %state, w 4)",
+            "%v_p113i_0_local_ignored =l call $p111_rt_fail(l %state, w 4)",
+            "%v_p113i_0_local_ignored =l call $p111_rt_fail(l %state, w 4)",
+            "%v_p113i_0_local_ignored =l call $p111_rt_fail(l %state, w 4)",
+            "%v_p113i_0_local_ignored =l call $p111_rt_fail(l %state, w 4)",
+            "%v_p113i_0_local_ignored =l call $p111_rt_fail(l %state, w 4)",
+            "%v_p113i_0_local_ignored =l call $p111_rt_fail(l %state, w 4)",
+            "%v_p113i_0_local_ignored =l call $p111_rt_fail(l %state, w 4)",
+            "%v_p113i_1_local_ignored =l call $p111_rt_fail(l %state, w 4)",
+            "%v_p113i_1_local_ignored =l call $p111_rt_fail(l %state, w 4)",
+            "%v_p113i_1_local_ignored =l call $p111_rt_fail(l %state, w 4)",
+            "%v_p113i_1_local_ignored =l call $p111_rt_fail(l %state, w 4)",
+            "%v_p113i_1_local_ignored =l call $p111_rt_fail(l %state, w 4)",
+            "%v_p113i_1_local_ignored =l call $p111_rt_fail(l %state, w 4)",
+            "%v_p113i_1_local_ignored =l call $p111_rt_fail(l %state, w 4)",
+            "%v_p113i_1_local_ignored =l call $p111_rt_fail(l %state, w 4)",
+            "%v_p113i_2_local_ignored =l call $p111_rt_fail(l %state, w 4)",
+            "%v_p113i_2_local_ignored =l call $p111_rt_fail(l %state, w 4)",
+            "%v_p113i_2_local_ignored =l call $p111_rt_fail(l %state, w 4)",
+            "%v_p113i_2_local_ignored =l call $p111_rt_fail(l %state, w 4)",
+            "%v_p113i_2_local_ignored =l call $p111_rt_fail(l %state, w 4)",
+            "%v_p113i_2_local_ignored =l call $p111_rt_fail(l %state, w 4)",
+            "%v_p113i_2_local_ignored =l call $p111_rt_fail(l %state, w 4)",
+            "%v_p113i_2_local_ignored =l call $p111_rt_fail(l %state, w 4)",
+            "%v_p113i_3_local_ignored =l call $p111_rt_fail(l %state, w 4)",
+            "%v_p113i_3_local_ignored =l call $p111_rt_fail(l %state, w 4)",
+            "%v_p113i_3_local_ignored =l call $p111_rt_fail(l %state, w 4)",
+            "%v_p113i_3_local_ignored =l call $p111_rt_fail(l %state, w 4)",
+            "%v_p113i_3_local_ignored =l call $p111_rt_fail(l %state, w 4)",
+            "%v_p113i_3_local_ignored =l call $p111_rt_fail(l %state, w 4)",
+            "%v_p113i_3_local_ignored =l call $p111_rt_fail(l %state, w 4)",
+            "%v_p113i_3_local_ignored =l call $p111_rt_fail(l %state, w 4)",
+            "%v_p113p_call_121_0 =l call $p126_typed_$direct.isect5(l %state, s %t_900, s %t_902, s %t_904, s %t_906, s %t_908, s %t_910, s %t_912, s %t_914, s %t_916, s %t_918)",
+            "%v_value =l call $p111_rt_op(l %state, w 25, l %v_scratch, w 1)",
+            "%p113_status =l call $p126_typed_$product.nearest(l %state, l %p113_results, l %v_v_4294967172, s %t_930, s %t_932, s %t_934, s %t_936, s %t_938, s %t_940, l %v_v_4294967165, l %v_v_4294967164, l %v_v_4294967163, l %v_v_4294967162, l %v_v_4294967161)",
+            "%v_value =l call $p125_rt_ctor3(l %state, w 151, l %v_scratch)",
+            "%v_p113p_call_170_0 =l call $p113d_$direct.sx(l %state, l %v_v_4294967127)",
+            "%v_p113p_call_174_0 =l call $p113d_$direct.sy(l %state, l %v_v_4294967123)",
+            "%v_p113p_call_178_0 =l call $p113d_$direct.sz(l %state, l %v_v_4294967119)",
+            "%v_p113p_call_182_0 =l call $p113d_$direct.sr(l %state, l %v_v_4294967115)",
+            "%v_p113p_call_190_0 =l call $p126_typed_$direct.isect5(l %state, s %t_950, s %t_952, s %t_954, s %t_956, s %p126_lane_v_4294967294, s %p126_lane_v_4294967293, s %p126_lane_v_4294967292, s %p126_lane_v_4294967291, s %p126_lane_v_4294967290, s %p126_lane_v_4294967289)",
+            "%v_value =l call $p111_rt_op(l %state, w 25, l %v_scratch, w 1)",
+            "%p113_status =l call $p126_typed_$product.nearest(l %state, l %p113_results, l %v_v_4294967103, s %t_980, s %t_982, s %t_984, s %t_986, s %p126_lane_v_4294967290, s %p126_lane_v_4294967289, l %v_v_4294967096, l %v_v_4294967095, l %v_v_4294967094, l %v_v_4294967093, l %v_v_4294967092)",
+            "%v_value =l call $p125_rt_ctor3(l %state, w 151, l %v_scratch)",
+            "%v_ignored =l call $p111_rt_fail(l %state, w 4)",
+            "%v_ignored =l call $p111_rt_fail(l %state, w 4)"
+          ],
+          "allocations": [
+            "%v_scratch =l alloc8 2048",
+            "%v_p113i_0_local_scratch =l alloc8 16",
+            "%v_p113i_0_local_p113i_0_local_scratch =l alloc8 16",
+            "%v_p113i_0_local_p113i_1_local_scratch =l alloc8 16",
+            "%v_p113i_1_local_scratch =l alloc8 16",
+            "%v_p113i_1_local_p113i_0_local_scratch =l alloc8 16",
+            "%v_p113i_1_local_p113i_1_local_scratch =l alloc8 16",
+            "%v_p113i_1_local_p113i_2_local_scratch =l alloc8 16",
+            "%v_p113i_1_local_p113i_3_local_scratch =l alloc8 16",
+            "%v_p113i_1_local_p113i_4_local_scratch =l alloc8 16",
+            "%v_p113i_1_local_p113i_5_local_scratch =l alloc8 16",
+            "%v_p113i_1_local_p113i_6_local_scratch =l alloc8 16",
+            "%v_p113i_2_local_scratch =l alloc8 8",
+            "%v_p113i_2_local_p113i_0_local_scratch =l alloc8 16",
+            "%v_p113i_2_local_p113i_1_local_scratch =l alloc8 16",
+            "%v_p113i_3_local_scratch =l alloc8 8",
+            "%v_p113i_3_local_p113i_0_local_scratch =l alloc8 16",
+            "%v_p113i_3_local_p113i_1_local_scratch =l alloc8 16",
+            "%v_p113i_3_local_p113i_2_local_scratch =l alloc8 16",
+            "%p113_results =l alloc8 64"
+          ],
+          "backedge_jumps": 1
+        },
+        {
+          "name": "p126_typed_$direct.subray",
+          "return": "l",
+          "formals": "l %state, s %p126_lane_v_4294967295, s %p126_lane_v_4294967294",
+          "float_formal_count": 2,
+          "float_formals": [
+            "%p126_lane_v_4294967295",
+            "%p126_lane_v_4294967294"
+          ],
+          "body_lines": 222,
+          "word_to_float_casts": 7,
+          "float_to_word_casts": 22,
+          "calls": [
+            "%t_48 =d call $sqrt(d %t_47)",
+            "%p113_status =l call $p126_typed_$product.nearest(l %state, l %p113_results, l 9, s %t_94, s %t_103, s %t_112, s %t_142, s %t_67, s %t_85, l %v_v_4294967235, l 9, l %v_v_4294967233, l 9, l 0)",
+            "%v_p113p_call_132_0 =l call $p126_typed_$product.trace(l %state, l 4, l %v_v_4294967190, s %t_196, l %v_v_4294967188, s %t_154, s %t_163, s %t_172, s %t_204, s %t_206, s %t_208, l %v_v_4294967193, s %t_190)"
+          ],
+          "allocations": [
+            "%v_scratch =l alloc8 2048",
+            "%p113_results =l alloc8 64"
+          ],
+          "backedge_jumps": 1
+        },
+        {
+          "name": "p112w_nearest.t",
+          "return": "l",
+          "formals": "l %state",
+          "float_formal_count": 0,
+          "float_formals": [],
+          "body_lines": 9,
+          "word_to_float_casts": 0,
+          "float_to_word_casts": 0,
+          "calls": [
+            "%v_value =l call $p111_rt_closure(l %state, w 283, l %v_scratch, w 0)"
+          ],
+          "allocations": [
+            "%v_scratch =l alloc8 2048"
+          ],
+          "backedge_jumps": 0
+        },
+        {
+          "name": "p112w_isect5",
+          "return": "l",
+          "formals": "l %state",
+          "float_formal_count": 0,
+          "float_formals": [],
+          "body_lines": 9,
+          "word_to_float_casts": 0,
+          "float_to_word_casts": 0,
+          "calls": [
+            "%v_value =l call $p111_rt_closure(l %state, w 497, l %v_scratch, w 0)"
+          ],
+          "allocations": [
+            "%v_scratch =l alloc8 2048"
+          ],
+          "backedge_jumps": 0
+        },
+        {
+          "name": "p112w_nearest",
+          "return": "l",
+          "formals": "l %state",
+          "float_formal_count": 0,
+          "float_formals": [],
+          "body_lines": 9,
+          "word_to_float_casts": 0,
+          "float_to_word_casts": 0,
+          "calls": [
+            "%v_value =l call $p111_rt_closure(l %state, w 513, l %v_scratch, w 0)"
+          ],
+          "allocations": [
+            "%v_scratch =l alloc8 2048"
+          ],
+          "backedge_jumps": 0
+        },
+        {
+          "name": "p112w_$direct.isect5",
+          "return": "l",
+          "formals": "l %state, l %v_v_4294893617, l %v_v_4294893616, l %v_v_4294893615, l %v_v_4294893614, l %v_v_4294893613, l %v_v_4294893612, l %v_v_4294893611, l %v_v_4294893610, l %v_v_4294893609, l %v_v_4294893608",
+          "float_formal_count": 0,
+          "float_formals": [],
+          "body_lines": 3,
+          "word_to_float_casts": 0,
+          "float_to_word_casts": 0,
+          "calls": [
+            "%p113_forward =l call $p113d_$direct.isect5(l %state, l %v_v_4294893617, l %v_v_4294893616, l %v_v_4294893615, l %v_v_4294893614, l %v_v_4294893613, l %v_v_4294893612, l %v_v_4294893611, l %v_v_4294893610, l %v_v_4294893609, l %v_v_4294893608)"
+          ],
+          "allocations": [],
+          "backedge_jumps": 0
+        },
+        {
+          "name": "p111_nearest.t",
+          "return": "l",
+          "formals": "l %state",
+          "float_formal_count": 0,
+          "float_formals": [],
+          "body_lines": 6,
+          "word_to_float_casts": 0,
+          "float_to_word_casts": 0,
+          "calls": [
+            "%v_value =l call $p111_rt_closure(l %state, w 283, l %v_scratch, w 0)",
+            "%v_reply =l call $p111_rt_return(l %state, l %v_scratch, w 1)"
+          ],
+          "allocations": [
+            "%v_scratch =l alloc8 2048"
+          ],
+          "backedge_jumps": 0
+        },
+        {
+          "name": "p111_$direct.nearest.t",
+          "return": "l",
+          "formals": "l %state",
+          "float_formal_count": 0,
+          "float_formals": [],
+          "body_lines": 16,
+          "word_to_float_casts": 0,
+          "float_to_word_casts": 0,
+          "calls": [
+            "%p113_arg_0 =l call $p111_rt_reg_get(l %state, w 0)",
+            "%p113_arg_1 =l call $p111_rt_reg_get(l %state, w 1)",
+            "%p113_arg_2 =l call $p111_rt_reg_get(l %state, w 2)",
+            "%p113_arg_3 =l call $p111_rt_reg_get(l %state, w 3)",
+            "%p113_arg_4 =l call $p111_rt_reg_get(l %state, w 4)",
+            "%p113_arg_5 =l call $p111_rt_reg_get(l %state, w 5)",
+            "%p113_arg_6 =l call $p111_rt_reg_get(l %state, w 6)",
+            "%p113_arg_7 =l call $p111_rt_reg_get(l %state, w 7)",
+            "%p113_arg_8 =l call $p111_rt_reg_get(l %state, w 8)",
+            "%p113_arg_9 =l call $p111_rt_reg_get(l %state, w 9)",
+            "%p113_public_value =l call $p113d_$direct.nearest.t(l %state, l %p113_arg_0, l %p113_arg_1, l %p113_arg_2, l %p113_arg_3, l %p113_arg_4, l %p113_arg_5, l %p113_arg_6, l %p113_arg_7, l %p113_arg_8, l %p113_arg_9)",
+            "%p113_public_reply =l call $p111_rt_return(l %state, l %p113_public_out, w 1)"
+          ],
+          "allocations": [
+            "%p113_public_out =l alloc8 8"
+          ],
+          "backedge_jumps": 0
+        },
+        {
+          "name": "p111_isect5",
+          "return": "l",
+          "formals": "l %state",
+          "float_formal_count": 0,
+          "float_formals": [],
+          "body_lines": 6,
+          "word_to_float_casts": 0,
+          "float_to_word_casts": 0,
+          "calls": [
+            "%v_value =l call $p111_rt_closure(l %state, w 497, l %v_scratch, w 0)",
+            "%v_reply =l call $p111_rt_return(l %state, l %v_scratch, w 1)"
+          ],
+          "allocations": [
+            "%v_scratch =l alloc8 2048"
+          ],
+          "backedge_jumps": 0
+        },
+        {
+          "name": "p111_$direct.isect5",
+          "return": "l",
+          "formals": "l %state",
+          "float_formal_count": 0,
+          "float_formals": [],
+          "body_lines": 16,
+          "word_to_float_casts": 0,
+          "float_to_word_casts": 0,
+          "calls": [
+            "%p113_arg_0 =l call $p111_rt_reg_get(l %state, w 0)",
+            "%p113_arg_1 =l call $p111_rt_reg_get(l %state, w 1)",
+            "%p113_arg_2 =l call $p111_rt_reg_get(l %state, w 2)",
+            "%p113_arg_3 =l call $p111_rt_reg_get(l %state, w 3)",
+            "%p113_arg_4 =l call $p111_rt_reg_get(l %state, w 4)",
+            "%p113_arg_5 =l call $p111_rt_reg_get(l %state, w 5)",
+            "%p113_arg_6 =l call $p111_rt_reg_get(l %state, w 6)",
+            "%p113_arg_7 =l call $p111_rt_reg_get(l %state, w 7)",
+            "%p113_arg_8 =l call $p111_rt_reg_get(l %state, w 8)",
+            "%p113_arg_9 =l call $p111_rt_reg_get(l %state, w 9)",
+            "%p113_public_value =l call $p113d_$direct.isect5(l %state, l %p113_arg_0, l %p113_arg_1, l %p113_arg_2, l %p113_arg_3, l %p113_arg_4, l %p113_arg_5, l %p113_arg_6, l %p113_arg_7, l %p113_arg_8, l %p113_arg_9)",
+            "%p113_public_reply =l call $p111_rt_return(l %state, l %p113_public_out, w 1)"
+          ],
+          "allocations": [
+            "%p113_public_out =l alloc8 8"
+          ],
+          "backedge_jumps": 0
+        },
+        {
+          "name": "p111_nearest",
+          "return": "l",
+          "formals": "l %state",
+          "float_formal_count": 0,
+          "float_formals": [],
+          "body_lines": 6,
+          "word_to_float_casts": 0,
+          "float_to_word_casts": 0,
+          "calls": [
+            "%v_value =l call $p111_rt_closure(l %state, w 513, l %v_scratch, w 0)",
+            "%v_reply =l call $p111_rt_return(l %state, l %v_scratch, w 1)"
+          ],
+          "allocations": [
+            "%v_scratch =l alloc8 2048"
+          ],
+          "backedge_jumps": 0
+        },
+        {
+          "name": "p111_$direct.nearest",
+          "return": "l",
+          "formals": "l %state",
+          "float_formal_count": 0,
+          "float_formals": [],
+          "body_lines": 18,
+          "word_to_float_casts": 0,
+          "float_to_word_casts": 0,
+          "calls": [
+            "%p113_arg_0 =l call $p111_rt_reg_get(l %state, w 0)",
+            "%p113_arg_1 =l call $p111_rt_reg_get(l %state, w 1)",
+            "%p113_arg_2 =l call $p111_rt_reg_get(l %state, w 2)",
+            "%p113_arg_3 =l call $p111_rt_reg_get(l %state, w 3)",
+            "%p113_arg_4 =l call $p111_rt_reg_get(l %state, w 4)",
+            "%p113_arg_5 =l call $p111_rt_reg_get(l %state, w 5)",
+            "%p113_arg_6 =l call $p111_rt_reg_get(l %state, w 6)",
+            "%p113_arg_7 =l call $p111_rt_reg_get(l %state, w 7)",
+            "%p113_arg_8 =l call $p111_rt_reg_get(l %state, w 8)",
+            "%p113_arg_9 =l call $p111_rt_reg_get(l %state, w 9)",
+            "%p113_arg_10 =l call $p111_rt_reg_get(l %state, w 10)",
+            "%p113_arg_11 =l call $p111_rt_reg_get(l %state, w 11)",
+            "%p113_public_value =l call $p113d_$direct.nearest(l %state, l %p113_arg_0, l %p113_arg_1, l %p113_arg_2, l %p113_arg_3, l %p113_arg_4, l %p113_arg_5, l %p113_arg_6, l %p113_arg_7, l %p113_arg_8, l %p113_arg_9, l %p113_arg_10, l %p113_arg_11)",
+            "%p113_public_reply =l call $p111_rt_return(l %state, l %p113_public_out, w 1)"
+          ],
+          "allocations": [
+            "%p113_public_out =l alloc8 8"
+          ],
+          "backedge_jumps": 0
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "kind": "ordinary-source-independent-oracle",
+  "source": "selfhost/tools/performance/phase126/scalar-resume/shift-tree.bend",
+  "sourceSha256": "407fa8ee6020dbee76b692caa45fc6499ea56d8ed0b6b798684fa0676e477ab5",
+  "expectedStdout": "5120\n658432\n0\n7168\n9216\n9\n",
+  "inputs": [
+    [
+      10,
+      0,
+      0
+    ],
+    [
+      10,
+      7,
+      3
+    ],
+    [
+      10,
+      31,
+      0
+    ],
+    [
+      10,
+      32,
+      7
+    ],
+    [
+      10,
+      40,
+      9
+    ],
+    [
+      0,
+      40,
+      9
+    ]
+  ],
+  "oracle": "Closed sum: (2^depth*x + depth*2^(depth-1)*(step<32 ? 2^step : 0)) modulo2^32; depth0 returnsx. Independent Python arithmetic, no Bend compiler or target executed.",
+  "projectionExpectation": "If admitted, same explicit-stack local-resume worker; this file does not assert measured admission or performance."
+}

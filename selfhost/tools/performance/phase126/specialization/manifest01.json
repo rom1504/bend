@@ -1,0 +1,87 @@
+{
+  "kind": "phase126-finite-scalar-selector-source-v1",
+  "complete": true,
+  "checked": false,
+  "targetsRun": false,
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase125/verified-source06/compiler.bend",
+    "bytes": 2429750,
+    "sha256": "d1399234ad28a3d03ee06fdad436a1585278bcbaea127425a226b5ceb79029b2"
+  },
+  "modules": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase126/specialization/plan.bend",
+      "bytes": 7832,
+      "sha256": "31e92b04dc222d0dad204ccce2a2adffd2c2eb110063de299fa181b239f3b1ce"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase126/specialization/lower.bend",
+      "bytes": 2088,
+      "sha256": "4bf7c90a3cacdc50099f38c2b9e931f98bf9bbf17a98190094dd39b277ce7035"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase126/specialization/emit.bend",
+      "bytes": 3116,
+      "sha256": "1c80baf8f86c82965c95a9db67c2799234bc05c1d0a42a823e390723081c39b1"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase126/specialization/entry.bend",
+      "bytes": 194,
+      "sha256": "0b412a14bfa964240432063ec4f32849857759092c85d6862f674a598bfa6ea3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase126/specialization/inlining.bend",
+      "bytes": 572,
+      "sha256": "87cc577c025e4299b367320c3fed3276699db9210da6b181cce9a1736d2b36ba"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase126/specialization/render-entry.bend",
+      "bytes": 974,
+      "sha256": "f7ad50954eba3feeb6ccba26836d7ac0576ec815b32acc23db7415a35f7ca028"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase126/specialization/diagnose.bend",
+      "bytes": 825,
+      "sha256": "227f5a176794e86d298e0407bbcccda8060b22b41e5a73b362d10197716a4aef"
+    }
+  ],
+  "overrides": [
+    "p113pl_boxed_candidate",
+    "p113i_eligible",
+    "p113ah_function"
+  ],
+  "fallbackAliasByteIdentity": true,
+  "exports": [
+    "p126s_inspect",
+    "p126s_projection_control",
+    "p126s_float_bits"
+  ],
+  "controls": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase126/specialization/cases.json",
+    "bytes": 1407,
+    "sha256": "7e264b54d9796281736956803d3ae3b9dfc6e0950e2fa3d62a84d6fda17c2ec4"
+  },
+  "evidence": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/fixtures01/variation-ray-active-256-2240.bend",
+      "bytes": 16661,
+      "sha256": "7099448e301e2cab7cb5ab47e2a4892dbf44ac246676b4f950282c7a57007669"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/p125-final-remaining06/variation-ray-active-256-2240.ssa",
+      "bytes": 1945144,
+      "sha256": "59051a7e53504aca7cdf06c050cef9c102b482aaf88d90bc9007be86613d228f"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/broad01/variation-ray-active-256-2240/upstream.1.c",
+      "bytes": 156030,
+      "sha256": "18faa3fc10c9e388a5ee819481a4ea397f446358277f4c152e2391a69e99deec"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/comp.ts",
+      "bytes": 185124,
+      "sha256": "2b13224ba09a9e39e37cccf06e449c1bdafe5e03a81641654f7d0e455507629c"
+    }
+  ],
+  "notes": "Root-render hook selected; emit-entry.bend is an unselected alternative. Full original final verification remains unchanged. New globals are derived only from exact recognized verified IR."
+}

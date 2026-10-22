@@ -1,0 +1,67 @@
+{
+  "kind": "phase126-selected-local-native-abi-offline-review",
+  "complete": true,
+  "targetsRun": false,
+  "method": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase126/native/rebind-abi-v2.py",
+    "bytes": 9538,
+    "sha256": "49fa521d611070abd499d581a2f2b9c92cb770b73c380be5debd694d37d37208"
+  },
+  "parentMethod": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase126/native/rebind-abi.py",
+    "bytes": 8345,
+    "sha256": "814aff15f2f83edcb85ca14dedd95c1fd66b283bde8a9c717f7b83de57af3791"
+  },
+  "localProjectionChecks": [
+    {
+      "name": "p126l_sqrt",
+      "refused": true,
+      "reason": "Changed local projection: p126l_sqrt"
+    },
+    {
+      "name": "p114so_group_call",
+      "refused": true,
+      "reason": "Changed local projection: p114so_group_call"
+    },
+    {
+      "name": "p126l_to_u32",
+      "refused": true,
+      "reason": "Changed local projection: p126l_to_u32"
+    },
+    {
+      "name": "p114fl_result",
+      "refused": true,
+      "reason": "Changed local projection: p114fl_result"
+    },
+    {
+      "name": "extra-local-helper",
+      "refused": true,
+      "reason": "Unexpected local helper declaration"
+    }
+  ],
+  "positiveReceipts": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase126/tooling-native-rebind-clean11-smoke02.json",
+      "bytes": 43847,
+      "sha256": "541428c0b112b455b490b6eff115328b36c2e82ab5f1facebda6a9a31cc021b6"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase126/tooling-native-rebind-combined14-smoke01.json",
+      "bytes": 45734,
+      "sha256": "56fabbf7f62938d73f63be89163e813bbd2e27892488b70cc6c153738df71a4a"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase126/tooling-native-plan-combined14-smoke01.json",
+      "bytes": 125948,
+      "sha256": "67b9e97a923bfd39817d1a2d4c1bfc11346936a067652a6243631bada79e472a"
+    }
+  ],
+  "firstAttempt": {
+    "source": "clean-source11",
+    "targetsRun": false,
+    "outputWritten": false,
+    "error": "Primitive IDs not bound by runtime build",
+    "resolution": "Original runtime build pins inherited header path; authenticate that pin then require materialized header exact hash, length and bytes. No weakening of IDs or runtime source/object pins."
+  },
+  "scope": "Source-only metadata/source admission checks; no generated code or compiler execution. Old helper, old smokes and original receipt remain unchanged."
+}

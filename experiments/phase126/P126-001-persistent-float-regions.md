@@ -32,3 +32,14 @@ the intended path actually runs. The first three-case candidate emission is
 Status: experiment running; no performance/promotion claim yet. Exact source/API
 receipts retain all inputs and original verifier authority. No installation or
 native-image change. Subsequent outcomes belong in implementation/phase126/.
+# Paired ablation at 23:37 UTC
+
+The same-run existing-product comparison selects local-only cleanup over the
+typed-private ABI. Active-ray medians are1175ms local,1297ms typed,1712ms parent;
+ordinary ray1835/1863/1973ms, recurrence418/419/416ms. All27 observations pass.
+Receipt: `selfhost/build/phase126/local-typed-paired01/report.json`.
+These three cases do not establish a new broad geometric score. The original
+typed-boundary hypothesis did not win: fewer integer/XMM transfers came with more
+XMM register shuffles and adapters. Keep the simpler local representation work
+and preserve the typed experiment as negative comparative evidence.
+

@@ -1,0 +1,60 @@
+{
+  "complete": true,
+  "targetsRun": false,
+  "scope": "Offline tool syntax and exact runner derivation only; no compiler/API/benchmark executed",
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase125/screen.py",
+      "bytes": 4258,
+      "sha256": "0726211753f59862f3256fbf413dc2e4667ff45b2611027bbc682e4cf9b145c3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/implementation/phase125/candidate.json",
+      "bytes": 5194,
+      "sha256": "64831146ef1aae5d937efcc47710ef79cf303451e0de588f0a7e3776df0c5540"
+    }
+  ],
+  "outputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase126/prepare.py",
+      "bytes": 6137,
+      "sha256": "358fddd4408e263d8e3316f8dbd3efb639331ad50753f520124e06ce983d6207"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase126/screen.py",
+      "bytes": 4258,
+      "sha256": "60ec8a5feb1e8ac196ea95fa08dbbbff5ea3e869bbb8d5acd1f2e3eea6d9265e"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase126/tooling/dedup.py",
+      "bytes": 4616,
+      "sha256": "a399573ab3609535faff515b8b4706c1421ef398dc5a003df0ce2cfaca516dd2"
+    }
+  ],
+  "screenReplacements": [
+    [
+      "exact Phase124 and upstream",
+      "exact Phase125 and upstream"
+    ],
+    [
+      "selfhost/build/phase125'",
+      "selfhost/build/phase126'"
+    ],
+    [
+      "implementation/phase124/candidate.json",
+      "implementation/phase125/candidate.json"
+    ],
+    [
+      "selfhost/build/phase124/broad-screen02/report.json",
+      "selfhost/build/phase125/broad-screen06/report.json"
+    ],
+    [
+      "experimental-parent124",
+      "experimental-parent125"
+    ],
+    [
+      "('p125-'",
+      "('p126-'"
+    ]
+  ]
+}

@@ -1,0 +1,84 @@
+{
+  "kind": "phase126-local-table-call-projection-modules-v1",
+  "complete": true,
+  "checked": false,
+  "targetsRun": false,
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase126/clean-source11/compiler.bend",
+    "bytes": 2469046,
+    "sha256": "44035a9f2bf244e922c40f90eb664d170a7447b844ba0a28dba98457728ea349"
+  },
+  "parentManifest": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase126/clean-source11/manifest.json",
+    "bytes": 11114,
+    "sha256": "c5ac6aa4933bc68d771356c71154b9e4d30c616a00332f10e67c8fe189f87cde"
+  },
+  "dependencies": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase126/local/modules01.json",
+      "bytes": 4598,
+      "sha256": "b9a35987b7d936a30801360f6bc3428bcc350ff7693a22e5d5356924d6b8485c"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase126/specialization/manifest01.json",
+      "bytes": 3623,
+      "sha256": "6387830ecd6a58fbeac5557fa46640e876f99cfe1545896a884fa22e6fd07dfd"
+    }
+  ],
+  "modules": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase126/local-inline/model.bend",
+      "bytes": 2649,
+      "sha256": "423aaf89391ca0631feb06bfbfc4c7ce81329e4868ba0b2f834e07c65bd4e76a"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase126/local-inline/emit.bend",
+      "bytes": 2258,
+      "sha256": "1c6231991274b40ced5dd672e4eff1c94f99072f033ab6a28f636443347b9a56"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase126/local-inline/dispatch.bend",
+      "bytes": 4487,
+      "sha256": "822bd3a1b2e4fe933a111f91ed4816719b7951d349454f6ee6f00b1bac63ad32"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase126/local-inline/entry.bend",
+      "bytes": 1966,
+      "sha256": "0774cf5806e7372a2b6b8dc52e7d57024bc183c4b1eee180270cbc53050275f8"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase126/local-inline/controls.bend",
+      "bytes": 3001,
+      "sha256": "e3f5015f1c3374aac8e9cab1926ddd8ee1001b14d430d7a2bcbf99066fea2d6e"
+    }
+  ],
+  "overrides": [
+    "p113ah_private_chunks"
+  ],
+  "moduleOverrides": [],
+  "exports": [
+    "p126i_controls"
+  ],
+  "finiteControlCount": 12,
+  "ordinaryControls": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase126/specialization/cases-v02.json",
+      "bytes": 2037,
+      "sha256": "eb5d017e5fe74a52582e4b637776c6a8a98290d6ded9f7fd7b8bfde02de79057"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase126/specialization/transfer/ordinary-cases.json",
+      "bytes": 913,
+      "sha256": "aa5cca2c08b473924c341bda2e89c4e9542ec21a2b3f3052d320828243ab0109"
+    }
+  ],
+  "transfer": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase126/specialization/transfer/cases.json",
+    "bytes": 1588,
+    "sha256": "680b80a93dd5b880e8f7df61ab87b7e541d99e045ec49faf0984bed9e660689d"
+  },
+  "dispatchEquivalence": "Exact local dispatch after context/name substitution and replacing only p113e_call_emit with p126i_call",
+  "scope": "Post-verification immutable table loads for exact one-result/one-argument private calls; no IR/ABI/runtime changes",
+  "physicalLines": 257,
+  "qualification": "Root checked API, finite analysis controls, ordinary outputs and matched timing pending"
+}

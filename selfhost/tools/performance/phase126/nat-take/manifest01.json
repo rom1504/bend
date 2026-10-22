@@ -1,0 +1,48 @@
+{
+  "kind": "phase126-postverified-nat-take-v1",
+  "complete": true,
+  "checked": false,
+  "targetsRun": false,
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase125/verified-source06/compiler.bend",
+    "bytes": 2429750,
+    "sha256": "d1399234ad28a3d03ee06fdad436a1585278bcbaea127425a226b5ceb79029b2"
+  },
+  "runtime": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase125/runtime-verified01/runtime.c",
+    "bytes": 147811,
+    "sha256": "4822c54600663e1bf1b2cc65766d95f1f0956ae72b24eaa63d9020ead5631de5"
+  },
+  "modules": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase126/nat-take/model.bend",
+      "bytes": 1813,
+      "sha256": "6a352a845cd37f69e62e5a6e6a0c4357caf97f490a3d5749e9f41f8c0daa1032"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase126/nat-take/controls.bend",
+      "bytes": 3529,
+      "sha256": "3fde2bf166aab58e13b9d920adb8c7ab5cf666481f386489bc7b2999f564ff6f"
+    }
+  ],
+  "overrides": [
+    "p111q_stmt"
+  ],
+  "fallbackAliasByteIdentity": true,
+  "exports": [
+    "p126nt_controls"
+  ],
+  "controls": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase126/nat-take/cases.json",
+    "bytes": 1178,
+    "sha256": "5f97d0e5d5248c229c4bc7bb3da47f26d96aea7dc9e6e86f98facf8361b6b490"
+  },
+  "finiteControlCount": 16,
+  "ordinaryOutputLineCount": 13,
+  "oracle": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase126/nat-take/prepare.py",
+    "bytes": 2447,
+    "sha256": "ce5eb2895ab29c3ce99a4a46e8002b5d541f00313e7f2417a21595466a988b89"
+  },
+  "scope": "Only exact special_take U64 result, state pointer, constant kind4/count1 and typed term/output arguments; original independent verifier required"
+}

@@ -1,0 +1,305 @@
+{
+  "method": "Static objdump; padding included; no target execution or dynamic/cycle attribution.",
+  "roles": {
+    "typed05": {
+      "binary": "selfhost/build/phase111/p126-typed05-variation-ray-active-256-2240-build/program",
+      "sha256": "9e5513fe33105691a6aebb61ee499b85ed7363eb49bfaa790f07ab243b0c8d66",
+      "functions": [
+        {
+          "function": "p113d_$direct.isect5",
+          "file": "selfhost/tools/performance/phase126/machine/local06/typed05-p113d_direct-isect5.asm",
+          "instructions_including_padding": 34,
+          "gpr_xmm_moves": 12,
+          "xmm_reg_moves": 0,
+          "frame_references": 5,
+          "initial_sub_rsp": "sub    $0x10,%rsp",
+          "branches": 0,
+          "calls": [
+            "callq  406110 <p126_typed_$direct.isect5>"
+          ]
+        },
+        {
+          "function": "p126_typed_$direct.isect5",
+          "file": "selfhost/tools/performance/phase126/machine/local06/typed05-p126_typed_direct-isect5.asm",
+          "instructions_including_padding": 117,
+          "gpr_xmm_moves": 3,
+          "xmm_reg_moves": 25,
+          "frame_references": 4,
+          "initial_sub_rsp": "sub    $0x18,%rsp",
+          "branches": 8,
+          "calls": [
+            "callq  42afa0 <p111_rt_fail>",
+            "callq  4024c0 <sqrt@plt>",
+            "callq  42afa0 <p111_rt_fail>"
+          ]
+        },
+        {
+          "function": "p113d_$product.nearest",
+          "file": "selfhost/tools/performance/phase126/machine/local06/typed05-p113d_product-nearest.asm",
+          "instructions_including_padding": 40,
+          "gpr_xmm_moves": 6,
+          "xmm_reg_moves": 0,
+          "frame_references": 8,
+          "initial_sub_rsp": "sub    $0x8,%rsp",
+          "branches": 0,
+          "calls": [
+            "callq  406800 <p126_typed_$product.nearest>"
+          ]
+        },
+        {
+          "function": "p126_typed_$product.nearest",
+          "file": "selfhost/tools/performance/phase126/machine/local06/typed05-p126_typed_product-nearest.asm",
+          "instructions_including_padding": 381,
+          "gpr_xmm_moves": 16,
+          "xmm_reg_moves": 24,
+          "frame_references": 62,
+          "initial_sub_rsp": "sub    $0x88,%rsp",
+          "branches": 66,
+          "calls": [
+            "callq  4066b0 <p113d_$direct.sx>",
+            "callq  4065e0 <p113d_$direct.sy>",
+            "callq  406510 <p113d_$direct.sz>",
+            "callq  406440 <p113d_$direct.sr>",
+            "callq  406110 <p126_typed_$direct.isect5>",
+            "callq  42afa0 <p111_rt_fail>",
+            "callq  406110 <p126_typed_$direct.isect5>",
+            "callq  42afa0 <p111_rt_fail>"
+          ]
+        },
+        {
+          "function": "p113d_$direct.nearest.t",
+          "file": "selfhost/tools/performance/phase126/machine/local06/typed05-p113d_direct-nearest-t.asm",
+          "instructions_including_padding": 24,
+          "gpr_xmm_moves": 6,
+          "xmm_reg_moves": 0,
+          "frame_references": 5,
+          "initial_sub_rsp": null,
+          "branches": 0,
+          "calls": [
+            "callq  406e00 <p126_typed_$direct.nearest.t>"
+          ]
+        },
+        {
+          "function": "p126_typed_$direct.nearest.t",
+          "file": "selfhost/tools/performance/phase126/machine/local06/typed05-p126_typed_direct-nearest-t.asm",
+          "instructions_including_padding": 361,
+          "gpr_xmm_moves": 16,
+          "xmm_reg_moves": 14,
+          "frame_references": 42,
+          "initial_sub_rsp": "sub    $0x48,%rsp",
+          "branches": 65,
+          "calls": [
+            "callq  4066b0 <p113d_$direct.sx>",
+            "callq  4065e0 <p113d_$direct.sy>",
+            "callq  406510 <p113d_$direct.sz>",
+            "callq  406440 <p113d_$direct.sr>",
+            "callq  406110 <p126_typed_$direct.isect5>",
+            "callq  42afa0 <p111_rt_fail>",
+            "callq  406110 <p126_typed_$direct.isect5>",
+            "callq  42afa0 <p111_rt_fail>"
+          ]
+        },
+        {
+          "function": "p113d_$product.trace",
+          "file": "selfhost/tools/performance/phase126/machine/local06/typed05-p113d_product-trace.asm",
+          "instructions_including_padding": 32,
+          "gpr_xmm_moves": 8,
+          "xmm_reg_moves": 0,
+          "frame_references": 7,
+          "initial_sub_rsp": null,
+          "branches": 0,
+          "calls": [
+            "callq  4073b0 <p126_typed_$product.trace>"
+          ]
+        },
+        {
+          "function": "p126_typed_$product.trace",
+          "file": "selfhost/tools/performance/phase126/machine/local06/typed05-p126_typed_product-trace.asm",
+          "instructions_including_padding": 692,
+          "gpr_xmm_moves": 63,
+          "xmm_reg_moves": 32,
+          "frame_references": 121,
+          "initial_sub_rsp": "sub    $0x138,%rsp",
+          "branches": 69,
+          "calls": [
+            "callq  406440 <p113d_$direct.sr>",
+            "callq  4066b0 <p113d_$direct.sx>",
+            "callq  4065e0 <p113d_$direct.sy>",
+            "callq  406510 <p113d_$direct.sz>",
+            "callq  4024c0 <sqrt@plt>",
+            "callq  405cc0 <p113d_$direct.fmax0>",
+            "callq  405d50 <p126_typed_$direct.fl>",
+            "callq  405d50 <p126_typed_$direct.fl>",
+            "callq  405d50 <p126_typed_$direct.fl>",
+            "callq  406e00 <p126_typed_$direct.nearest.t>",
+            "callq  405d50 <p126_typed_$direct.fl>",
+            "callq  405d50 <p126_typed_$direct.fl>",
+            "callq  4063e0 <p126_typed_$direct.shade>",
+            "callq  4062f0 <p113d_$direct.skr>",
+            "callq  406800 <p126_typed_$product.nearest>",
+            "callq  42afa0 <p111_rt_fail>",
+            "callq  42afa0 <p111_rt_fail>",
+            "callq  4024c0 <sqrt@plt>",
+            "callq  42afa0 <p111_rt_fail>",
+            "callq  405d50 <p126_typed_$direct.fl>",
+            "callq  405d50 <p126_typed_$direct.fl>",
+            "callq  406e00 <p126_typed_$direct.nearest.t>",
+            "callq  405d50 <p126_typed_$direct.fl>",
+            "callq  405d50 <p126_typed_$direct.fl>",
+            "callq  4063e0 <p126_typed_$direct.shade>"
+          ]
+        },
+        {
+          "function": "p113d_$direct.pixel",
+          "file": "selfhost/tools/performance/phase126/machine/local06/typed05-p113d_direct-pixel.asm",
+          "instructions_including_padding": 527,
+          "gpr_xmm_moves": 49,
+          "xmm_reg_moves": 31,
+          "frame_references": 151,
+          "initial_sub_rsp": "sub    $0x8f8,%rsp",
+          "branches": 7,
+          "calls": [
+            "callq  4024c0 <sqrt@plt>",
+            "callq  406800 <p126_typed_$product.nearest>",
+            "callq  4073b0 <p126_typed_$product.trace>",
+            "callq  4024c0 <sqrt@plt>",
+            "callq  406800 <p126_typed_$product.nearest>",
+            "callq  4073b0 <p126_typed_$product.trace>",
+            "callq  4024c0 <sqrt@plt>",
+            "callq  406800 <p126_typed_$product.nearest>",
+            "callq  4073b0 <p126_typed_$product.trace>",
+            "callq  4024c0 <sqrt@plt>",
+            "callq  406800 <p126_typed_$product.nearest>",
+            "callq  4073b0 <p126_typed_$product.trace>",
+            "callq  42afa0 <p111_rt_fail>",
+            "callq  42afa0 <p111_rt_fail>"
+          ]
+        }
+      ]
+    },
+    "local06": {
+      "binary": "selfhost/build/phase111/p126-local06-variation-ray-active-256-2240-build/program",
+      "sha256": "1c4eb79c757e2cd7814dbcf10446852b828a078a88799ffb88c77a7168d6e061",
+      "functions": [
+        {
+          "function": "p113d_$direct.isect5",
+          "file": "selfhost/tools/performance/phase126/machine/local06/local06-p113d_direct-isect5.asm",
+          "instructions_including_padding": 111,
+          "gpr_xmm_moves": 11,
+          "xmm_reg_moves": 5,
+          "frame_references": 7,
+          "initial_sub_rsp": "sub    $0x18,%rsp",
+          "branches": 8,
+          "calls": [
+            "callq  42afa0 <p111_rt_fail>",
+            "callq  4024c0 <sqrt@plt>",
+            "callq  42afa0 <p111_rt_fail>"
+          ]
+        },
+        {
+          "function": "p113d_$product.nearest",
+          "file": "selfhost/tools/performance/phase126/machine/local06/local06-p113d_product-nearest.asm",
+          "instructions_including_padding": 410,
+          "gpr_xmm_moves": 4,
+          "xmm_reg_moves": 0,
+          "frame_references": 104,
+          "initial_sub_rsp": "sub    $0xd8,%rsp",
+          "branches": 66,
+          "calls": [
+            "callq  406580 <p113d_$direct.sx>",
+            "callq  4064b0 <p113d_$direct.sy>",
+            "callq  4063e0 <p113d_$direct.sz>",
+            "callq  406310 <p113d_$direct.sr>",
+            "callq  406020 <p113d_$direct.isect5>",
+            "callq  42afa0 <p111_rt_fail>",
+            "callq  406020 <p113d_$direct.isect5>",
+            "callq  42afa0 <p111_rt_fail>"
+          ]
+        },
+        {
+          "function": "p113d_$direct.nearest.t",
+          "file": "selfhost/tools/performance/phase126/machine/local06/local06-p113d_direct-nearest-t.asm",
+          "instructions_including_padding": 369,
+          "gpr_xmm_moves": 4,
+          "xmm_reg_moves": 0,
+          "frame_references": 89,
+          "initial_sub_rsp": "sub    $0xb8,%rsp",
+          "branches": 65,
+          "calls": [
+            "callq  406580 <p113d_$direct.sx>",
+            "callq  4064b0 <p113d_$direct.sy>",
+            "callq  4063e0 <p113d_$direct.sz>",
+            "callq  406310 <p113d_$direct.sr>",
+            "callq  406020 <p113d_$direct.isect5>",
+            "callq  42afa0 <p111_rt_fail>",
+            "callq  406020 <p113d_$direct.isect5>",
+            "callq  42afa0 <p111_rt_fail>"
+          ]
+        },
+        {
+          "function": "p113d_$product.trace",
+          "file": "selfhost/tools/performance/phase126/machine/local06/local06-p113d_product-trace.asm",
+          "instructions_including_padding": 698,
+          "gpr_xmm_moves": 69,
+          "xmm_reg_moves": 10,
+          "frame_references": 116,
+          "initial_sub_rsp": "sub    $0x148,%rsp",
+          "branches": 69,
+          "calls": [
+            "callq  406310 <p113d_$direct.sr>",
+            "callq  406580 <p113d_$direct.sx>",
+            "callq  4064b0 <p113d_$direct.sy>",
+            "callq  4063e0 <p113d_$direct.sz>",
+            "callq  4024c0 <sqrt@plt>",
+            "callq  405cc0 <p113d_$direct.fmax0>",
+            "callq  405d30 <p113d_$direct.fl>",
+            "callq  405d30 <p113d_$direct.fl>",
+            "callq  405d30 <p113d_$direct.fl>",
+            "callq  406cd0 <p113d_$direct.nearest.t>",
+            "callq  405d30 <p113d_$direct.fl>",
+            "callq  405d30 <p113d_$direct.fl>",
+            "callq  4062a0 <p113d_$direct.shade>",
+            "callq  4061d0 <p113d_$direct.skr>",
+            "callq  406650 <p113d_$product.nearest>",
+            "callq  42afa0 <p111_rt_fail>",
+            "callq  42afa0 <p111_rt_fail>",
+            "callq  4024c0 <sqrt@plt>",
+            "callq  42afa0 <p111_rt_fail>",
+            "callq  405d30 <p113d_$direct.fl>",
+            "callq  405d30 <p113d_$direct.fl>",
+            "callq  406cd0 <p113d_$direct.nearest.t>",
+            "callq  405d30 <p113d_$direct.fl>",
+            "callq  405d30 <p113d_$direct.fl>",
+            "callq  4062a0 <p113d_$direct.shade>"
+          ]
+        },
+        {
+          "function": "p113d_$direct.pixel",
+          "file": "selfhost/tools/performance/phase126/machine/local06/local06-p113d_direct-pixel.asm",
+          "instructions_including_padding": 562,
+          "gpr_xmm_moves": 57,
+          "xmm_reg_moves": 7,
+          "frame_references": 149,
+          "initial_sub_rsp": "sub    $0x928,%rsp",
+          "branches": 7,
+          "calls": [
+            "callq  4024c0 <sqrt@plt>",
+            "callq  406650 <p113d_$product.nearest>",
+            "callq  4072a0 <p113d_$product.trace>",
+            "callq  4024c0 <sqrt@plt>",
+            "callq  406650 <p113d_$product.nearest>",
+            "callq  4072a0 <p113d_$product.trace>",
+            "callq  4024c0 <sqrt@plt>",
+            "callq  406650 <p113d_$product.nearest>",
+            "callq  4072a0 <p113d_$product.trace>",
+            "callq  4024c0 <sqrt@plt>",
+            "callq  406650 <p113d_$product.nearest>",
+            "callq  4072a0 <p113d_$product.trace>",
+            "callq  42afa0 <p111_rt_fail>",
+            "callq  42afa0 <p111_rt_fail>"
+          ]
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,120 @@
+{
+  "kind": "phase125-read-only-exact-dedup-candidates",
+  "targetsRun": false,
+  "mutationsPerformed": false,
+  "groups": [
+    {
+      "bytes": 85831654,
+      "mode": 420,
+      "sha256": "a0b668b4d2804d1167014dd9e612e045a68e51989dc45e94516caa632586cb26",
+      "paths": [
+        "selfhost/build/phase111/p118-native-safe03-full-emit/program.ssa",
+        "selfhost/build/phase111/p118-native-safe03-self/program.ssa"
+      ]
+    },
+    {
+      "bytes": 63190018,
+      "mode": 420,
+      "sha256": "cedd2aa70009c8b453d850434a76981f04c756e868f4eb03d05243f4bca8a606",
+      "paths": [
+        "selfhost/build/phase111/p118-native-safe03-n1/program.s",
+        "selfhost/build/phase111/p118-native-safe03-self/build/program.s"
+      ]
+    },
+    {
+      "bytes": 18731776,
+      "mode": 420,
+      "sha256": "42ab2e84a2c8e9f676862516a56bb6282ff110c40c06aed6dacb9ae2bc8e0b5f",
+      "paths": [
+        "selfhost/build/phase111/p118-native-safe03-n1/program.o",
+        "selfhost/build/phase111/p118-native-safe03-self/build/program.o"
+      ]
+    }
+  ],
+  "roots": [],
+  "detail": [
+    {
+      "inputs": [
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p118-native-safe03-full-emit/program.ssa",
+          "bytes": 85831654,
+          "sha256": "a0b668b4d2804d1167014dd9e612e045a68e51989dc45e94516caa632586cb26"
+        },
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p118-native-safe03-self/program.ssa",
+          "bytes": 85831654,
+          "sha256": "a0b668b4d2804d1167014dd9e612e045a68e51989dc45e94516caa632586cb26"
+        }
+      ],
+      "inodes": [
+        79070040,
+        79070040
+      ],
+      "links": [
+        2,
+        2
+      ],
+      "allocatedBytes": [
+        85835776,
+        85835776
+      ],
+      "recoverableAllocatedBytes": 0
+    },
+    {
+      "inputs": [
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p118-native-safe03-n1/program.s",
+          "bytes": 63190018,
+          "sha256": "cedd2aa70009c8b453d850434a76981f04c756e868f4eb03d05243f4bca8a606"
+        },
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p118-native-safe03-self/build/program.s",
+          "bytes": 63190018,
+          "sha256": "cedd2aa70009c8b453d850434a76981f04c756e868f4eb03d05243f4bca8a606"
+        }
+      ],
+      "inodes": [
+        79070048,
+        79070048
+      ],
+      "links": [
+        2,
+        2
+      ],
+      "allocatedBytes": [
+        63197184,
+        63197184
+      ],
+      "recoverableAllocatedBytes": 0
+    },
+    {
+      "inputs": [
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p118-native-safe03-n1/program.o",
+          "bytes": 18731776,
+          "sha256": "42ab2e84a2c8e9f676862516a56bb6282ff110c40c06aed6dacb9ae2bc8e0b5f"
+        },
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p118-native-safe03-self/build/program.o",
+          "bytes": 18731776,
+          "sha256": "42ab2e84a2c8e9f676862516a56bb6282ff110c40c06aed6dacb9ae2bc8e0b5f"
+        }
+      ],
+      "inodes": [
+        79070051,
+        79070051
+      ],
+      "links": [
+        2,
+        2
+      ],
+      "allocatedBytes": [
+        18735104,
+        18735104
+      ],
+      "recoverableAllocatedBytes": 0
+    }
+  ],
+  "recoverableAllocatedBytes": 0,
+  "scope": "Only the three exact frozen Phase118 generated artifact pairs. Compatible with Phase118 deduplicate.py --plan FILE --apply FRESH_RECEIPT. No application performed."
+}

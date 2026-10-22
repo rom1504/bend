@@ -1,0 +1,39 @@
+{
+  "cases": [
+    {
+      "name": "p125-map-append256",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase125/transfer/map-append256-02.bend",
+        "bytes": 2792,
+        "sha256": "90e7ed220bc9acebb443d04a6eb26816dbe86129d315a906fc72f09e4a81e9c0"
+      },
+      "expectedStdoutEvidence": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase125/transfer/map-append256-02.expected.stdout",
+        "bytes": 10,
+        "sha256": "9b8e58580ba1158a0c5258bc92ed72de876e672f305f9c6f5777d8f4aaebf1cf"
+      },
+      "expectedStdout": "384634374\n",
+      "runtimeArgs": [
+        2,
+        17
+      ],
+      "repetitions": 20000,
+      "warmups": 2,
+      "ratioEligible": false,
+      "family": "independent-map-append",
+      "oracle": "Independent Python integer fold over descending varied mapped values and fixed suffix; original Phase93 complete result/count observer unchanged."
+    }
+  ],
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase125/transfer/prepare02.py",
+      "bytes": 2260,
+      "sha256": "9494a6ef1fdf1de280be35780ffb867ea44ff0dd46bb511715d38c6f425a7809"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/fixtures01/test-rle-roundtrip.bend",
+      "bytes": 4708,
+      "sha256": "b46580acb1656502d0e37a0115d172529e648719acb75eadb3b9ad45db5b078d"
+    }
+  ]
+}

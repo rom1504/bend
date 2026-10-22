@@ -1,0 +1,307 @@
+{
+  "kind": "phase125-aligned-native-adapter-derivation",
+  "targetsRun": false,
+  "adapters": [
+    {
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase111/native-emit.py",
+        "bytes": 13327,
+        "sha256": "b9e29a1ef421de2ab0b2fe95d56f0a50b99a6e0345164b2477deda45ec398eea"
+      },
+      "derived": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase125/native/native-emit.py",
+        "bytes": 13626,
+        "sha256": "1eb3d76b674924c730a9bce96f600621f6f2687d06357f09f0f626f706f9cc58"
+      },
+      "changes": [
+        {
+          "old": "ROOT = HERE.parents[3]",
+          "new": "ROOT = HERE.parents[4]\nPHASE = ROOT / \"selfhost/tools/performance/phase111\"\nBUILDER = ROOT / \"selfhost/tools/performance/phase123/build-aligned.py\"",
+          "count": 1
+        },
+        {
+          "old": "HERE / 'native-assets01.json'",
+          "new": "PHASE / 'native-assets01.json'",
+          "count": 1
+        },
+        {
+          "old": "HERE / 'build.py'",
+          "new": "BUILDER",
+          "count": 2
+        },
+        {
+          "old": "inputs = [pin(__file__), pin(assets_file)",
+          "new": "inputs = [pin(__file__), pin(PHASE / 'native-emit.py'), pin(HERE / 'derivation01.json'), pin(assets_file)",
+          "count": 1
+        },
+        {
+          "old": "report = dict(kind='phase111-native-source-qbe-emission', version=1",
+          "new": "report = dict(kind='phase125-aligned-native-source-qbe-emission', version=1",
+          "count": 1
+        },
+        {
+          "old": "    'phase111-native-source-qbe-emission',",
+          "new": "    'phase111-native-source-qbe-emission',\n    'phase125-aligned-native-source-qbe-emission',",
+          "count": 1
+        },
+        {
+          "old": "                  mode=args.mode, startedUtc=utc(), inputs=inputs, image=image_pin,",
+          "new": "                  assemblerOption='-mbranches-within-32B-boundaries',\n                  mode=args.mode, startedUtc=utc(), inputs=inputs, image=image_pin,",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase111/coverage/native-run.py",
+        "bytes": 14214,
+        "sha256": "adde7011fbbec23c27fdf9ccb2b0446e1c7a5d5b992d7a51d0b3de0a5a72caf2"
+      },
+      "derived": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase125/native/coverage.py",
+        "bytes": 14932,
+        "sha256": "b0d9f246a9b1fda5aadbb1b9493a0d8449ec3de59321230807aa0b5649bf7104"
+      },
+      "changes": [
+        {
+          "old": "HERE = Path(__file__).resolve().parent\nPHASE = HERE.parent\nROOT = HERE.parents[4]",
+          "new": "ADAPTER = Path(__file__).resolve().parent\nROOT = ADAPTER.parents[4]\nPHASE = ROOT / \"selfhost/tools/performance/phase111\"\nHERE = PHASE / \"coverage\"\nBUILDER = ROOT / \"selfhost/tools/performance/phase123/build-aligned.py\"",
+          "count": 1
+        },
+        {
+          "old": "PHASE / 'native-emit.py'",
+          "new": "ADAPTER / 'native-emit.py'",
+          "count": 3
+        },
+        {
+          "old": "pin(PHASE / 'build.py')",
+          "new": "pin(BUILDER), pin(ADAPTER / 'derivation01.json'), pin(PHASE / 'coverage/native-run.py')",
+          "count": 1
+        },
+        {
+          "old": "kind='phase111-native-source-semantic-coverage'",
+          "new": "kind='phase125-aligned-native-source-semantic-coverage'",
+          "count": 1
+        },
+        {
+          "old": "emission.get('kind') == 'phase111-native-source-qbe-emission'",
+          "new": "emission.get('kind') == 'phase125-aligned-native-source-qbe-emission'",
+          "count": 1
+        },
+        {
+          "old": "                        row['buildSeconds'] = built.get('buildSeconds')",
+          "new": "                        if built.get('kind') != 'phase123-branch-aligned-qbe-build':\n                            raise RuntimeError('Phase123 aligned build receipt required')\n                        assemblies = [j for j in built.get('jobs', []) if j.get('label') == 'assemble']\n                        if len(assemblies) != 1 or assemblies[0]['command'][1:2] != ['-mbranches-within-32B-boundaries']:\n                            raise RuntimeError('Selected assembler alignment option missing')\n                        row['buildSeconds'] = built.get('buildSeconds')",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase111/coverage/full45/native-run.py",
+        "bytes": 1890,
+        "sha256": "eb76b0d8f4f97fca28ee6bba7018aa2ff87f4978b383cd3181f8175a58d81f58"
+      },
+      "derived": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase125/native/full45.py",
+        "bytes": 2705,
+        "sha256": "9ec39333129be6e5d8df644f9c8152f7bed009fc0e88aae70e080ce11d558287"
+      },
+      "changes": [
+        {
+          "old": "HERE = Path(__file__).resolve().parent",
+          "new": "ADAPTER = Path(__file__).resolve().parent\nROOT = ADAPTER.parents[4]\nHERE = ROOT / \"selfhost/tools/performance/phase111/coverage/full45\"",
+          "count": 1
+        },
+        {
+          "old": "    spec = importlib.util.spec_from_file_location('phase111_frozen_native_supervisor', runner_path)",
+          "new": "    # Authenticate the original corpus-bound supervisor before selecting the explicit aligned derivative.\n    derivation = json.loads((ADAPTER / 'derivation01.json').read_text())\n    derived = [r for r in derivation['adapters'] if Path(r['derived']['file']).name == 'coverage.py']\n    if len(derived) != 1 or derived[0]['original'] != binding:\n        raise ValueError('Aligned coverage derivative is not bound to the frozen supervisor')\n    runner_path = ADAPTER / 'coverage.py'\n    data = runner_path.read_bytes()\n    if (len(data) != derived[0]['derived']['bytes'] or hashlib.sha256(data).hexdigest() != derived[0]['derived']['sha256']):\n        raise ValueError('Aligned supervisor differs from derivation receipt')\n    spec = importlib.util.spec_from_file_location('phase125_aligned_native_supervisor', runner_path)",
+          "count": 1
+        },
+        {
+          "old": "    # Only the data-directory binding changes. ROOT, PHASE, subprocess methods,\n    # byte checks and native/compiler/runtime commands remain the frozen ones.",
+          "new": "    # Original full45 data/oracles and supervision remain; the separately pinned\n    # derivative selects Phase123 aligned builds for every native product.",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase118/native-comparison.py",
+        "bytes": 5948,
+        "sha256": "6d55f14651e11d800083d0aa034c999ea483ea623d674b341f557357595d772e"
+      },
+      "derived": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase125/native/comparison.py",
+        "bytes": 6282,
+        "sha256": "0247a43d645d74f6b55c2c805717f558414dce87ee5e23abefeb17b6489b15c1"
+      },
+      "changes": [
+        {
+          "old": "HERE / 'native-plan.py'",
+          "new": "HERE / 'plan.py'",
+          "count": 1
+        },
+        {
+          "old": "phase118-integrated-native-qbe-reproduction",
+          "new": "phase125-integrated-native-qbe-reproduction",
+          "count": 1
+        },
+        {
+          "old": "native.get('kind') == 'phase111-native-source-qbe-emission'",
+          "new": "native.get('kind') == 'phase125-aligned-native-source-qbe-emission'",
+          "count": 1
+        },
+        {
+          "old": "image.get('kind') == 'phase111-direct-qbe-build'",
+          "new": "image.get('kind') == 'phase123-branch-aligned-qbe-build'",
+          "count": 1
+        },
+        {
+          "old": "                    all(r['exitCode'] == 0 for r in image['jobs']), 'Machine build stages incomplete')",
+          "new": "                    all(r['exitCode'] == 0 for r in image['jobs']), 'Machine build stages incomplete')\n            require(image['jobs'][1]['command'][1:2] == ['-mbranches-within-32B-boundaries'], 'Assembler policy mismatch')\n            method = plan['machineBuild']['method']\n            require(any(r['bytes'] == method['bytes'] and r['sha256'] == method['sha256'] for r in image['inputs']), 'Aligned build method mismatch')",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase112/transport/run.py",
+        "bytes": 15256,
+        "sha256": "bde6f9dae553a15055c89f578fc9575b48ab3a7f4868b2cc4db4c893a19bd41f"
+      },
+      "derived": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase125/native/timing-run.py",
+        "bytes": 15450,
+        "sha256": "d11362384088effd695e2872e7a55cb8e2c4cf943fdc8eeace10bca4780e9e6f"
+      },
+      "changes": [
+        {
+          "old": "('assemble', [tools['assembler']['file'], '-o'",
+          "new": "('assemble', [tools['assembler']['file'], '-mbranches-within-32B-boundaries', '-o'",
+          "count": 1
+        },
+        {
+          "old": "    inputs = {row['file']: row for row in pins(manifest)}",
+          "new": "    if manifest.get('assemblerOption') != '-mbranches-within-32B-boundaries':\n        raise ValueError('Explicit Phase123 assembler policy required')\n    inputs = {row['file']: row for row in pins(manifest)}",
+          "count": 1
+        },
+        {
+          "old": "kind='phase112-matched-native-transport-build'",
+          "new": "kind='phase125-aligned-matched-native-transport-build'",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase118/native-transport-plan.py",
+        "bytes": 6718,
+        "sha256": "35e0dbda30a98415e7e07fa2690f9de7e9c5688e4df695601d2d028645ab07cb"
+      },
+      "derived": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase125/native/timing-plan.py",
+        "bytes": 8791,
+        "sha256": "3b20729f708c68af9d9863bec1df2258f3332fc96154f8aa0cdae05960ca7523"
+      },
+      "changes": [
+        {
+          "old": "ROOT = HERE.parents[3]",
+          "new": "ROOT = HERE.parents[4]",
+          "count": 1
+        },
+        {
+          "old": "HERE / 'native-plan.py'",
+          "new": "HERE / 'plan.py'",
+          "count": 1
+        },
+        {
+          "old": "RUNNER = ROOT / 'selfhost/tools/performance/phase112/transport/run.py'",
+          "new": "RUNNER = HERE / 'timing-run.py'",
+          "count": 1
+        },
+        {
+          "old": "RUNNER_HASH = 'bde6f9dae553a15055c89f578fc9575b48ab3a7f4868b2cc4db4c893a19bd41f'",
+          "new": "RUNNER_HASH = 'd11362384088effd695e2872e7a55cb8e2c4cf943fdc8eeace10bca4780e9e6f'\nBASE118 = ROOT / 'selfhost/build/phase118/native-safe03-transport-manifest.json'\nBASE118_HASH = 'a56eece17e10a2b767424033fc672eb8fd88a8322e72b5ce95a924c03bbc44ec'",
+          "count": 1
+        },
+        {
+          "old": "parser.add_argument('--repeat-phase114', action='store_true')",
+          "new": "parser.add_argument('--repeat-phase118', action='store_true', help='Separate contemporaneous block with old qualified images, same aligned output build policy')",
+          "count": 1
+        },
+        {
+          "old": "out.is_relative_to(ROOT / 'selfhost/build/phase118'), 'Fresh Phase118 manifest required'",
+          "new": "out.is_relative_to(ROOT / 'selfhost/build/phase125'), 'Fresh Phase125 manifest required'",
+          "count": 1
+        },
+        {
+          "old": "re.fullmatch(r'p118-[a-z0-9_-]+', args.tag), 'Lowercase p118- tag required'",
+          "new": "re.fullmatch(r'p125-[a-z0-9_-]+', args.tag), 'Lowercase p125- tag required'",
+          "count": 1
+        },
+        {
+          "old": "comparison.get('kind') == 'phase118-integrated-native-qbe-reproduction'",
+          "new": "comparison.get('kind') == 'phase125-integrated-native-qbe-reproduction'",
+          "count": 1
+        },
+        {
+          "old": "require(report.get('complete') and report.get('passed'), 'Incomplete semantic gate: ' + key)",
+          "new": "require(report.get('complete') and report.get('passed') and report.get('kind') == 'phase125-aligned-native-source-semantic-coverage', 'Incomplete aligned semantic gate: ' + key)",
+          "count": 1
+        },
+        {
+          "old": "    manifest = {key: base[key] for key in keys}",
+          "new": "    manifest = {key: base[key] for key in keys}\n    manifest['buildPolicy'] = dict(base['buildPolicy'], native='Pinned QBE amd64_sysv, GNU as -mbranches-within-32B-boundaries, gcc -no-pie objects -pthread -lm')\n    manifest['assemblerOption'] = '-mbranches-within-32B-boundaries'",
+          "count": 1
+        },
+        {
+          "old": "'Phase118 N1; legacy phase111 key'",
+          "new": "'Phase125 N1; legacy phase111 key'",
+          "count": 1
+        },
+        {
+          "old": "'Phase118 N2; legacy phase112 key'",
+          "new": "'Phase125 N2; legacy phase112 key'",
+          "count": 1
+        },
+        {
+          "old": "Same qualified Phase118 source",
+          "new": "Same qualified Phase125 source",
+          "count": 1
+        },
+        {
+          "old": "dict(phase111='Phase118 N1', phase112='Phase118 N2'",
+          "new": "dict(phase111='Phase125 N1', phase112='Phase125 N2'",
+          "count": 1
+        },
+        {
+          "old": "inputs=[pin(__file__), pin(RUNNER), pin(BASE)",
+          "new": "inputs=[pin(__file__), pin(RUNNER), pin(HERE / 'derivation01.json'), pin(BASE)",
+          "count": 1
+        },
+        {
+          "old": "kind='phase118-qualified-native-transport', unchanged='Phase114 cases, outputs, upstream, Base/cache, timing runner, schedule, clocks, tools, limits and build policy. Only the native generation pair/runtime and their exact qualification lineage change.'",
+          "new": "kind='phase125-qualified-native-transport', unchanged='Phase114 cases, complete outputs, upstream, Base/cache, schedule, clocks, tools and limits. Native generations/runtime are source-bound to qualification; only GNU as gains the selected Phase123 alignment option.'",
+          "count": 1
+        },
+        {
+          "old": "name='phase118-n1-n2-upstream-three-source'",
+          "new": "name='phase125-n1-n2-upstream-three-source'",
+          "count": 1
+        },
+        {
+          "old": "kind='phase118-native-timing-jobs'",
+          "new": "kind='phase125-native-timing-jobs'",
+          "count": 1
+        },
+        {
+          "old": "Prepare a qualified Phase118 native timing manifest",
+          "new": "Prepare a qualified aligned Phase125 native timing manifest",
+          "count": 1
+        }
+      ],
+      "additionalCode": "Optional exact qualified Phase118 image repeat with identical aligned output build policy, separate timing block."
+    }
+  ],
+  "scope": "Exact versioned transport/supervisor derivatives. No compiler semantic transformation; original source admission, native verification, refusal and complete-output gates retained. Plan/timing-plan are separately pinned."
+}

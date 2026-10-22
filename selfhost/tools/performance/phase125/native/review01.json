@@ -1,0 +1,166 @@
+{
+  "kind": "phase125-native-offline-adapter-review",
+  "complete": true,
+  "targetsRun": false,
+  "checks": [
+    {
+      "name": "python-ast:comparison.py",
+      "passed": true
+    },
+    {
+      "name": "python-ast:coverage.py",
+      "passed": true
+    },
+    {
+      "name": "python-ast:full45.py",
+      "passed": true
+    },
+    {
+      "name": "python-ast:native-emit.py",
+      "passed": true
+    },
+    {
+      "name": "python-ast:plan.py",
+      "passed": true
+    },
+    {
+      "name": "python-ast:timing-plan.py",
+      "passed": true
+    },
+    {
+      "name": "python-ast:timing-run.py",
+      "passed": true
+    },
+    {
+      "name": "derivation:native-emit.py",
+      "passed": true
+    },
+    {
+      "name": "derivation:coverage.py",
+      "passed": true
+    },
+    {
+      "name": "derivation:full45.py",
+      "passed": true
+    },
+    {
+      "name": "derivation:comparison.py",
+      "passed": true
+    },
+    {
+      "name": "derivation:timing-run.py",
+      "passed": true
+    },
+    {
+      "name": "derivation:timing-plan.py",
+      "passed": true
+    },
+    {
+      "name": "original-source-contract-replay",
+      "passed": true
+    },
+    {
+      "name": "unchanged-runtime-admission",
+      "passed": true
+    },
+    {
+      "name": "changed-runtime-without-abi-refused",
+      "passed": true
+    },
+    {
+      "name": "full45-original-supervisor-binding",
+      "passed": true
+    }
+  ],
+  "sourceContract": {
+    "kind": "phase118-integrated-request-bound-entry",
+    "transportVersion": 118,
+    "entry": "p111_emit_admitted",
+    "pipeline": "array",
+    "mode": "cache",
+    "explicitVerificationPasses": 1,
+    "fullCompositionReplay": true,
+    "nativeBridgeDeclarations": [
+      "main",
+      "p111_native_args",
+      "p111_native_request",
+      "p111_compile_source",
+      "p111_compile_prepared",
+      "p111_emit_plan"
+    ],
+    "snapshots": [
+      {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase124/ready-source02/module0.bend",
+        "bytes": 12007,
+        "sha256": "845f64d671f805783b4110a15477094fc66c046973abffc736b647bf7815c055"
+      }
+    ],
+    "scope": "New integrated-entry contract; not the Phase113/114 staged renderer gate."
+  },
+  "currentCandidate": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase124/ready-source02/compiler.bend",
+    "bytes": 2414385,
+    "sha256": "0b3d94f75cee1390299fdeb8f8af7d3bd3d79cfe8be72408bdd7c83315390663"
+  },
+  "currentApi": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p124-ready-api02/api.mjs",
+    "bytes": 2113775,
+    "sha256": "2994b9d2cd4a0056ffbb400609043c08ede014c478db199047749f20eccc1535"
+  },
+  "requiredFreshApiExports": [
+    "p88_cache_prepare",
+    "p86_prepare",
+    "p86_plan",
+    "p111_runtime_admission",
+    "p111_emit_admitted",
+    "p111_compile_source"
+  ],
+  "currentApiMissingExports": [
+    "p111_compile_source",
+    "p86_prepare"
+  ],
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase125/native/comparison.py",
+      "bytes": 6282,
+      "sha256": "0247a43d645d74f6b55c2c805717f558414dce87ee5e23abefeb17b6489b15c1"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase125/native/coverage.py",
+      "bytes": 14932,
+      "sha256": "b0d9f246a9b1fda5aadbb1b9493a0d8449ec3de59321230807aa0b5649bf7104"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase125/native/full45.py",
+      "bytes": 2705,
+      "sha256": "9ec39333129be6e5d8df644f9c8152f7bed009fc0e88aae70e080ce11d558287"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase125/native/native-emit.py",
+      "bytes": 13626,
+      "sha256": "1eb3d76b674924c730a9bce96f600621f6f2687d06357f09f0f626f706f9cc58"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase125/native/plan.py",
+      "bytes": 11837,
+      "sha256": "8047df642608b86f3b4384cd09292483e141bafbd8cc2a59fb3b48063823d895"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase125/native/timing-plan.py",
+      "bytes": 8791,
+      "sha256": "3b20729f708c68af9d9863bec1df2258f3332fc96154f8aa0cdae05960ca7523"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase125/native/timing-run.py",
+      "bytes": 15450,
+      "sha256": "d11362384088effd695e2872e7a55cb8e2c4cf943fdc8eeace10bca4780e9e6f"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase125/native/derivation01.json",
+      "bytes": 15352,
+      "sha256": "69a5272f644ad1525232333f5f26393215db15b3e13ce697846eebd64a4dbac3"
+    }
+  ],
+  "diskFreeBytes": 951496704,
+  "scope": "AST parsing, exact recorded derivative replay (timing-plan includes separately reviewed orchestration), original source-contract replay, runtime admission boundary. No compiler/API/native/target execution and no semantic qualification claim."
+}

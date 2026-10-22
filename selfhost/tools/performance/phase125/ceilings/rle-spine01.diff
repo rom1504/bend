@@ -1,0 +1,24 @@
+--- frozen/test-rle-roundtrip.bend
++++ ceilings/rle-spine01.bend
+@@ -107,6 +107,12 @@
+       +cur = {cur0 : U32}
+       rle(t, rle.step(cur, h, n, acc, U32.is_eq(h, cur)))
+ 
++# Diagnostic only: construct the repeated prefix directly onto its final tail.
++def p125.repeat_into(n: Nat, +value: U32, tail: List<&2, U32>) -> List<&2, U32>:
++  match n:
++    case 0n: tail
++    case 1n+p: p125.repeat_into(p, value, value <> tail)
++
+ law expand:
+   for ps: List<&2, P2()>
+   List<&2, U32>
+@@ -116,7 +122,7 @@
+     case Nil{}:
+       Nil{}
+     case (n, v) <> t:
+-      lconcat(lrepeat(U32.to_nat(n), v), expand(t))
++      p125.repeat_into(U32.to_nat(n), v, expand(t))
+ 
+ law digest.go:
+   for xs  : List<&2, U32>

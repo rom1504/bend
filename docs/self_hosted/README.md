@@ -1,9 +1,9 @@
 # Self-hosted compiler: current architecture and development
 
 For the current direct-QBE research frontier, read the
-[Phase118 native qualification](../../implementation/phase118/native-results.md)
-and [Phase120 numeric experiments](../../implementation/phase120/README.md).
-The [Phase120 reproduction guide](../../selfhost/tools/performance/phase120/README.md)
+[Phase125 report](../../implementation/phase125/README.md) and
+[owned composition guide](owned-native-composition.md).
+The [Phase125 reproduction guide](../../selfhost/tools/performance/phase125/README.md)
 separates experimental checked-hosted producers, generated native programs and
 qualified N1/N2 images. These experiments do not change installed selection.
 The older milestones below retain their original scope and dates.

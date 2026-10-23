@@ -1,0 +1,183 @@
+{
+  "targetsRunByAudit": false,
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase126/observer-divmod-source32/compiler.bend",
+      "bytes": 2527616,
+      "sha256": "40c469114c4d1c75dceab456e1979bb5c0278744a02e6dbe4a37e63667740abb"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase126/observer-optimize-source33/compiler.bend",
+      "bytes": 2529181,
+      "sha256": "3843dfbfa136bfd800ecb70c5b6bb33e8a8a2ccb585030755d2d4882b162269e"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase126/observer32-screen/report.json",
+      "bytes": 88418,
+      "sha256": "9e9fe6d5193fe5cd51e21f7b3af27b9438586410f62afc7ed4f2a8c5bcb79138"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase126/product-primitive/optimize-new.bend",
+      "bytes": 2211,
+      "sha256": "602d567945724ee1f6e84d6742672f0f711654a46dc0f66e24151d41e1effac8"
+    }
+  ],
+  "source32to33": {
+    "changedDeclarations": [
+      "p126bp_close"
+    ],
+    "addedDeclarations": [
+      "p126bo_finish",
+      "p126bo_functions",
+      "p126bo_index",
+      "p126bo_one",
+      "p126bo_result"
+    ],
+    "removedDeclarations": [],
+    "allOtherDeclarationsIdenticalIgnoringCommentsWhitespace": true,
+    "source32Lines": 55285,
+    "source33Lines": 55321
+  },
+  "screen32": {
+    "rootExecuted": true,
+    "correctRows": 45,
+    "rows": [
+      {
+        "name": "coverage-record-aggregation-256",
+        "samplesMs": {
+          "candidate": [
+            567,
+            585,
+            566
+          ],
+          "baseline": [
+            693,
+            678,
+            684
+          ],
+          "upstream": [
+            199,
+            200,
+            200
+          ]
+        },
+        "medianMs": {
+          "candidate": 567,
+          "baseline": 684,
+          "upstream": 200
+        },
+        "candidateOverParent": 0.8289473684210527,
+        "candidateOverUpstream": 2.835
+      },
+      {
+        "name": "test-evening-program",
+        "samplesMs": {
+          "candidate": [
+            1292,
+            1279,
+            1293
+          ],
+          "baseline": [
+            1382,
+            1370,
+            1426
+          ],
+          "upstream": [
+            198,
+            215,
+            211
+          ]
+        },
+        "medianMs": {
+          "candidate": 1292,
+          "baseline": 1382,
+          "upstream": 211
+        },
+        "candidateOverParent": 0.934876989869754,
+        "candidateOverUpstream": 6.123222748815166
+      },
+      {
+        "name": "coverage-map-churn-128",
+        "samplesMs": {
+          "candidate": [
+            658,
+            653,
+            641
+          ],
+          "baseline": [
+            719,
+            712,
+            710
+          ],
+          "upstream": [
+            201,
+            200,
+            200
+          ]
+        },
+        "medianMs": {
+          "candidate": 653,
+          "baseline": 712,
+          "upstream": 200
+        },
+        "candidateOverParent": 0.9171348314606742,
+        "candidateOverUpstream": 3.265
+      },
+      {
+        "name": "test-rle-roundtrip",
+        "samplesMs": {
+          "candidate": [
+            1137,
+            1130,
+            1126
+          ],
+          "baseline": [
+            1142,
+            1145,
+            1199
+          ],
+          "upstream": [
+            202,
+            200,
+            203
+          ]
+        },
+        "medianMs": {
+          "candidate": 1130,
+          "baseline": 1145,
+          "upstream": 202
+        },
+        "candidateOverParent": 0.9868995633187773,
+        "candidateOverUpstream": 5.594059405940594
+      },
+      {
+        "name": "lexer",
+        "samplesMs": {
+          "candidate": [
+            504,
+            506,
+            504
+          ],
+          "baseline": [
+            513,
+            521,
+            528
+          ],
+          "upstream": [
+            192,
+            192,
+            185
+          ]
+        },
+        "medianMs": {
+          "candidate": 504,
+          "baseline": 521,
+          "upstream": 192
+        },
+        "candidateOverParent": 0.9673704414587332,
+        "candidateOverUpstream": 2.625
+      }
+    ]
+  },
+  "limits": "Screen32 is combined Phase126 candidate against qualified Phase125 and retained upstream; it does not isolate SCC, borrowed closure or divmod gains. Source33 requires own matched runtime and cost measurement."
+}

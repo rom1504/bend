@@ -1,0 +1,41 @@
+{
+  "complete": true,
+  "targetsRun": false,
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase126/product-primitive/divmod-oracle.json",
+      "bytes": 1351,
+      "sha256": "2a7a5fa687ee04dd84a17850fc024029240938ef753f0529ea149186790f00c8"
+    }
+  ],
+  "cases": [
+    {
+      "name": "divmod-boundaries",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase126/product-primitive/divmod-boundaries05.bend",
+        "bytes": 2352,
+        "sha256": "99cf863faca3a8e4a7ea60f211d1343d18904b0ed43f32e19fa5bf2961dfdf4f"
+      },
+      "expected": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase126/product-primitive/divmod-boundaries.observe.json",
+        "bytes": 508,
+        "sha256": "68cddf22887a37d8fc91d6424c359dd3fceb5e4b214ac4770865627812dc2c9f"
+      },
+      "oracleExplanation": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase126/product-primitive/divmod-oracle.json",
+        "bytes": 1351,
+        "sha256": "2a7a5fa687ee04dd84a17850fc024029240938ef753f0529ea149186790f00c8"
+      },
+      "stdoutEvidence": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase126/product-primitive/divmod-boundaries.stdout",
+        "bytes": 422,
+        "sha256": "31e032b4ba6ea1ea45ee4aed67d3b607fe3b72880ba00ea0e95a502c2dbd6ec7"
+      },
+      "expectedStdoutEvidence": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase126/product-primitive/divmod-boundaries.observe.json",
+        "bytes": 508,
+        "sha256": "68cddf22887a37d8fc91d6424c359dd3fceb5e4b214ac4770865627812dc2c9f"
+      }
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+function l $p113d_$direct.Map.bit(l %state, l %v_v_4294967295, l %v_v_4294967294) {
+@entry
+%v_scratch =l alloc8 2048
+%v_p126dp_out_11 =l alloc8 16
+%p113_results =l alloc8 64
+jmp @p113_loop
+@p113_loop
+%v_p113p_move_4_0 =l copy %v_v_4294967295
+%v_v_4294967293 =l copy %v_p113p_move_4_0
+%v_p113p_move_9_0 =l copy %v_v_4294967294
+%v_v_4294967288 =l copy %v_p113p_move_9_0
+%v_p113p_move_10_0 =l copy 33
+%v_v_4294967287 =l copy 33
+%v_p126dp_status_11 =l call $p126_rt_nat_divmod(l %state, l %v_v_4294967288, l 33, l %v_p126dp_out_11)
+%v_p126dp_first_11 =l loadl %v_p126dp_out_11
+%t_0 =l add %v_p126dp_out_11, 8
+%v_p126dp_second_11 =l loadl %t_0
+%v_p113p_move_12_0 =l copy %v_p126dp_first_11
+%v_p113p_move_12_1 =l copy %v_p126dp_second_11
+%v_v_4294967290 =l copy %v_p113p_move_12_0
+%v_v_4294967289 =l copy %v_p113p_move_12_1
+%v_p113i_0_local_v_4294967295 =l copy %v_v_4294967293
+%v_p113i_0_local_v_4294967293 =l copy %v_v_4294967290
+%v_p113i_0_local_v_4294967292 =l copy %v_v_4294967289
+%v_p113i_0_local_p113p_move_7_0 =l copy %v_p113i_0_local_v_4294967293
+%v_p113i_0_local_p113p_move_7_1 =l copy %v_p113i_0_local_v_4294967292
+%v_p113i_0_local_v_4294967290 =l copy %v_p113i_0_local_p113p_move_7_0
+%v_p113i_0_local_v_4294967289 =l copy %v_p113i_0_local_p113p_move_7_1
+%v_p113i_0_local_p113p_move_11_0 =l copy %v_p113i_0_local_v_4294967295
+%v_p113i_0_local_v_4294967287 =l copy %v_p113i_0_local_p113p_move_11_0
+%v_p113i_0_local_p113p_move_12_0 =l copy %v_p113i_0_local_v_4294967290
+%v_p113i_0_local_v_4294967286 =l copy %v_p113i_0_local_p113p_move_12_0
+%v_p113i_0_local_p113p_move_13_0 =l copy %v_p113i_0_local_v_4294967289
+%v_p113i_0_local_v_4294967285 =l copy %v_p113i_0_local_p113p_move_13_0
+%p113_status =l call $p113d_$product.Map.bit.go(l %state, l %p113_results, l %v_p113i_0_local_v_4294967287, l %v_p113i_0_local_v_4294967286, l %v_p113i_0_local_v_4294967285)
+%p113_result_at_1 =l add %p113_results, 0
+%v_p113i_0_local_p113p_call_14_0 =l loadl %p113_result_at_1
+%p113_result_at_2 =l add %p113_results, 8
+%v_p113i_0_local_p113p_call_14_1 =l loadl %p113_result_at_2
+%v_p113i_0_result_0 =l copy %v_p113i_0_local_p113p_call_14_0
+%v_p113i_0_result_1 =l copy %v_p113i_0_local_p113p_call_14_1
+%v_p113p_call_13_0 =l copy %v_p113i_0_result_0
+%v_p113p_call_13_1 =l copy %v_p113i_0_result_1
+storel %v_p113p_call_13_0, %v_scratch
+%t_3 =l add %v_scratch, 8
+storel %v_p113p_call_13_1, %t_3
+%v_value =l call $p125_rt_ctor2(l %state, w 8, l %v_scratch)
+ret %v_value
+}

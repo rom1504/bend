@@ -1,0 +1,1067 @@
+{
+  "targetsRun": false,
+  "scope": "Static sites and function identities only; not dynamic counts, samples, cycles or speed.",
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase126/product-primitive/evidence33/inspect.py",
+      "bytes": 3029,
+      "sha256": "2d08ef99300bdeb2e7c20de86764fb4a3224078ee4cbeaa631eef5a4c884af6c"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/p126-observer32-emit/coverage-record-aggregation-256.ssa",
+      "bytes": 1301609,
+      "sha256": "59ba0df51b8d0953ac323240908cfe44590a41c65d797a996b7ab4952e04de47"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/p126-observer33-emit/coverage-record-aggregation-256.ssa",
+      "bytes": 1320854,
+      "sha256": "27eebbe7abd511a7a65563438bb6428f137c163872dc72a0ff7ee994d7d27bdd"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/p126-observer32-emit/test-evening-program.ssa",
+      "bytes": 1472908,
+      "sha256": "de1b604d175d95ec3649114bc0e4aa330caa6559c59217510820ed289489d7a0"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/p126-observer33-emit/test-evening-program.ssa",
+      "bytes": 1490795,
+      "sha256": "818b70f5d8aff56ebd2087f0a0dd5650bb4e2d0972d61185173b6a1bfa4d035d"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/p126-observer32-emit/coverage-map-churn-128.ssa",
+      "bytes": 1313322,
+      "sha256": "5f025a5b6f56532eca8e2a6706f2ef833cbbeaac34a61805193da267cbbc88ef"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/p126-observer33-emit/coverage-map-churn-128.ssa",
+      "bytes": 1331209,
+      "sha256": "80dd2d545cf31fa0d287052027d92584670d9443c11400f35ffa337b4337d00a"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/p126-observer32-emit/lexer.ssa",
+      "bytes": 928865,
+      "sha256": "657a086e7a6cded1208e762a99c4e4e4cc98668ce53cc94cc9e82e0bc66ce844"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/p126-observer33-emit/lexer.ssa",
+      "bytes": 928865,
+      "sha256": "657a086e7a6cded1208e762a99c4e4e4cc98668ce53cc94cc9e82e0bc66ce844"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/p126-observer32-emit/test-rle-roundtrip.ssa",
+      "bytes": 546194,
+      "sha256": "a77dd22e0d5685fc1aef5452c9073a72055f4e5f3bdc8b2d12efebe1c5f4a578"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/p126-observer33-emit/test-rle-roundtrip.ssa",
+      "bytes": 546194,
+      "sha256": "a77dd22e0d5685fc1aef5452c9073a72055f4e5f3bdc8b2d12efebe1c5f4a578"
+    }
+  ],
+  "cases": [
+    {
+      "name": "coverage-record-aggregation-256",
+      "comparison": "32 to 33 changes only the existing optimizer on late admitted functions",
+      "parentPrivateCount": 68,
+      "candidatePrivateCount": 68,
+      "addedPrivate": [],
+      "removedPrivate": [],
+      "changedPrivate": [
+        "p113d_$direct.Map.bit",
+        "p113d_$direct.Map.bit.at",
+        "p113d_$direct.Map.ins.splice",
+        "p113d_$direct.String.cmp.fin",
+        "p113d_$direct.String.eq",
+        "p113d_$direct.String.is_le",
+        "p113d_$direct.String.order",
+        "p113d_$product.Map.bit",
+        "p113d_$product.Map.bit.at"
+      ],
+      "functions": {
+        "parent": {
+          "p113d_$p118borrow.read.Map.bit.go": {
+            "symbol": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_77_97_112_46_98_105_116_46_103_111_",
+            "line": 148,
+            "lines": 117,
+            "calls": {
+              "p111_rt_special_ctor": 2,
+              "p118_rt_borrow_fields": 1,
+              "p111_rt_op": 1,
+              "p111_rt_fail": 4
+            },
+            "ops": {
+              "63": 1
+            }
+          },
+          "p113d_$direct.Map.bit.go": {
+            "symbol": "p113d_FID_36_100_105_114_101_99_116_46_77_97_112_46_98_105_116_46_103_111_",
+            "line": 266,
+            "lines": 15,
+            "calls": {
+              "p113d_$p118borrow.read.Map.bit.go": 1,
+              "p125_rt_ctor2": 1
+            },
+            "ops": {}
+          },
+          "p113d_$product.Map.bit.go": {
+            "symbol": "p113d_FID_36_112_114_111_100_117_99_116_46_77_97_112_46_98_105_116_46_103_111_",
+            "line": 282,
+            "lines": 12,
+            "calls": {
+              "p113d_$p118borrow.read.Map.bit.go": 1
+            },
+            "ops": {}
+          },
+          "p113d_$direct.String.cmp.fin": {
+            "symbol": "p113d_FID_36_100_105_114_101_99_116_46_83_116_114_105_110_103_46_99_109_112_46_102_105_110_",
+            "line": 3345,
+            "lines": 155,
+            "calls": {
+              "p125_rt_take2": 2,
+              "p125_rt_ctor2": 8,
+              "p113d_$direct.String.cmp": 1,
+              "p113d_$direct.String.cmp.rec": 1,
+              "p111_rt_sink": 6,
+              "p111_rt_fail": 3
+            },
+            "ops": {}
+          },
+          "p113d_$direct.Map.bit.at": {
+            "symbol": "p113d_FID_36_100_105_114_101_99_116_46_77_97_112_46_98_105_116_46_97_116_",
+            "line": 3501,
+            "lines": 38,
+            "calls": {
+              "p125_rt_take2": 1,
+              "p113d_$product.Map.bit.go": 1,
+              "p125_rt_ctor2": 1,
+              "p111_rt_sink": 1,
+              "p111_rt_fail": 1
+            },
+            "ops": {}
+          },
+          "p113d_$product.Map.bit.at": {
+            "symbol": "p113d_FID_36_112_114_111_100_117_99_116_46_77_97_112_46_98_105_116_46_97_116_",
+            "line": 3540,
+            "lines": 27,
+            "calls": {
+              "p113d_$product.Map.bit.go": 1
+            },
+            "ops": {}
+          },
+          "p113d_$direct.Map.bit": {
+            "symbol": "p113d_FID_36_100_105_114_101_99_116_46_77_97_112_46_98_105_116_",
+            "line": 3568,
+            "lines": 32,
+            "calls": {
+              "p126_rt_nat_divmod": 1,
+              "p113d_$product.Map.bit.at": 1,
+              "p125_rt_ctor2": 1
+            },
+            "ops": {}
+          },
+          "p113d_$product.Map.bit": {
+            "symbol": "p113d_FID_36_112_114_111_100_117_99_116_46_77_97_112_46_98_105_116_",
+            "line": 3601,
+            "lines": 32,
+            "calls": {
+              "p126_rt_nat_divmod": 1,
+              "p113d_$product.Map.bit.at": 1
+            },
+            "ops": {}
+          },
+          "p111_$direct.String.cmp.fin": {
+            "symbol": "p111_FID_36_100_105_114_101_99_116_46_83_116_114_105_110_103_46_99_109_112_46_102_105_110_",
+            "line": 18661,
+            "lines": 11,
+            "calls": {
+              "p111_rt_reg_get": 3,
+              "p113d_$direct.String.cmp.fin": 1,
+              "p111_rt_return": 1
+            },
+            "ops": {}
+          },
+          "p111_$direct.Map.bit.go": {
+            "symbol": "p111_FID_36_100_105_114_101_99_116_46_77_97_112_46_98_105_116_46_103_111_",
+            "line": 27300,
+            "lines": 11,
+            "calls": {
+              "p111_rt_reg_get": 3,
+              "p113d_$direct.Map.bit.go": 1,
+              "p111_rt_return": 1
+            },
+            "ops": {}
+          },
+          "p111_$direct.Map.bit.at": {
+            "symbol": "p111_FID_36_100_105_114_101_99_116_46_77_97_112_46_98_105_116_46_97_116_",
+            "line": 27496,
+            "lines": 10,
+            "calls": {
+              "p111_rt_reg_get": 2,
+              "p113d_$direct.Map.bit.at": 1,
+              "p111_rt_return": 1
+            },
+            "ops": {}
+          },
+          "p111_$direct.Map.bit": {
+            "symbol": "p111_FID_36_100_105_114_101_99_116_46_77_97_112_46_98_105_116_",
+            "line": 27561,
+            "lines": 10,
+            "calls": {
+              "p111_rt_reg_get": 2,
+              "p113d_$direct.Map.bit": 1,
+              "p111_rt_return": 1
+            },
+            "ops": {}
+          }
+        },
+        "candidate": {
+          "p113d_$p118borrow.read.Map.bit.go": {
+            "symbol": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_77_97_112_46_98_105_116_46_103_111_",
+            "line": 148,
+            "lines": 117,
+            "calls": {
+              "p111_rt_special_ctor": 2,
+              "p118_rt_borrow_fields": 1,
+              "p111_rt_op": 1,
+              "p111_rt_fail": 4
+            },
+            "ops": {
+              "63": 1
+            }
+          },
+          "p113d_$direct.Map.bit.go": {
+            "symbol": "p113d_FID_36_100_105_114_101_99_116_46_77_97_112_46_98_105_116_46_103_111_",
+            "line": 266,
+            "lines": 15,
+            "calls": {
+              "p113d_$p118borrow.read.Map.bit.go": 1,
+              "p125_rt_ctor2": 1
+            },
+            "ops": {}
+          },
+          "p113d_$product.Map.bit.go": {
+            "symbol": "p113d_FID_36_112_114_111_100_117_99_116_46_77_97_112_46_98_105_116_46_103_111_",
+            "line": 282,
+            "lines": 12,
+            "calls": {
+              "p113d_$p118borrow.read.Map.bit.go": 1
+            },
+            "ops": {}
+          },
+          "p113d_$direct.String.cmp.fin": {
+            "symbol": "p113d_FID_36_100_105_114_101_99_116_46_83_116_114_105_110_103_46_99_109_112_46_102_105_110_",
+            "line": 3412,
+            "lines": 252,
+            "calls": {
+              "p125_rt_take2": 4,
+              "p125_rt_ctor2": 14,
+              "p113d_$p118borrow.read.String.cmp": 1,
+              "p111_rt_fail": 5,
+              "p111_rt_sink": 6
+            },
+            "ops": {}
+          },
+          "p113d_$direct.Map.bit.at": {
+            "symbol": "p113d_FID_36_100_105_114_101_99_116_46_77_97_112_46_98_105_116_46_97_116_",
+            "line": 3665,
+            "lines": 40,
+            "calls": {
+              "p125_rt_take2": 1,
+              "p113d_$p118borrow.read.Map.bit.go": 1,
+              "p125_rt_ctor2": 1,
+              "p111_rt_sink": 1,
+              "p111_rt_fail": 1
+            },
+            "ops": {}
+          },
+          "p113d_$product.Map.bit.at": {
+            "symbol": "p113d_FID_36_112_114_111_100_117_99_116_46_77_97_112_46_98_105_116_46_97_116_",
+            "line": 3706,
+            "lines": 29,
+            "calls": {
+              "p113d_$p118borrow.read.Map.bit.go": 1
+            },
+            "ops": {}
+          },
+          "p113d_$direct.Map.bit": {
+            "symbol": "p113d_FID_36_100_105_114_101_99_116_46_77_97_112_46_98_105_116_",
+            "line": 3736,
+            "lines": 49,
+            "calls": {
+              "p126_rt_nat_divmod": 1,
+              "p113d_$product.Map.bit.go": 1,
+              "p125_rt_ctor2": 1
+            },
+            "ops": {}
+          },
+          "p113d_$product.Map.bit": {
+            "symbol": "p113d_FID_36_112_114_111_100_117_99_116_46_77_97_112_46_98_105_116_",
+            "line": 3786,
+            "lines": 49,
+            "calls": {
+              "p126_rt_nat_divmod": 1,
+              "p113d_$product.Map.bit.go": 1
+            },
+            "ops": {}
+          },
+          "p111_$direct.String.cmp.fin": {
+            "symbol": "p111_FID_36_100_105_114_101_99_116_46_83_116_114_105_110_103_46_99_109_112_46_102_105_110_",
+            "line": 18999,
+            "lines": 11,
+            "calls": {
+              "p111_rt_reg_get": 3,
+              "p113d_$direct.String.cmp.fin": 1,
+              "p111_rt_return": 1
+            },
+            "ops": {}
+          },
+          "p111_$direct.Map.bit.go": {
+            "symbol": "p111_FID_36_100_105_114_101_99_116_46_77_97_112_46_98_105_116_46_103_111_",
+            "line": 27638,
+            "lines": 11,
+            "calls": {
+              "p111_rt_reg_get": 3,
+              "p113d_$direct.Map.bit.go": 1,
+              "p111_rt_return": 1
+            },
+            "ops": {}
+          },
+          "p111_$direct.Map.bit.at": {
+            "symbol": "p111_FID_36_100_105_114_101_99_116_46_77_97_112_46_98_105_116_46_97_116_",
+            "line": 27834,
+            "lines": 10,
+            "calls": {
+              "p111_rt_reg_get": 2,
+              "p113d_$direct.Map.bit.at": 1,
+              "p111_rt_return": 1
+            },
+            "ops": {}
+          },
+          "p111_$direct.Map.bit": {
+            "symbol": "p111_FID_36_100_105_114_101_99_116_46_77_97_112_46_98_105_116_",
+            "line": 27899,
+            "lines": 10,
+            "calls": {
+              "p111_rt_reg_get": 2,
+              "p113d_$direct.Map.bit": 1,
+              "p111_rt_return": 1
+            },
+            "ops": {}
+          }
+        }
+      }
+    },
+    {
+      "name": "test-evening-program",
+      "comparison": "32 to 33 changes only the existing optimizer on late admitted functions",
+      "parentPrivateCount": 82,
+      "candidatePrivateCount": 82,
+      "addedPrivate": [],
+      "removedPrivate": [],
+      "changedPrivate": [
+        "p113d_$direct.Map.bit",
+        "p113d_$direct.Map.bit.at",
+        "p113d_$direct.Map.ins.splice",
+        "p113d_$direct.String.cmp.fin",
+        "p113d_$direct.String.is_le",
+        "p113d_$direct.String.order",
+        "p113d_$product.Map.bit",
+        "p113d_$product.Map.bit.at"
+      ],
+      "functions": {
+        "parent": {
+          "p113d_$p118borrow.read.Map.bit.go": {
+            "symbol": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_77_97_112_46_98_105_116_46_103_111_",
+            "line": 1,
+            "lines": 117,
+            "calls": {
+              "p111_rt_special_ctor": 2,
+              "p118_rt_borrow_fields": 1,
+              "p111_rt_op": 1,
+              "p111_rt_fail": 4
+            },
+            "ops": {
+              "63": 1
+            }
+          },
+          "p113d_$direct.Map.bit.go": {
+            "symbol": "p113d_FID_36_100_105_114_101_99_116_46_77_97_112_46_98_105_116_46_103_111_",
+            "line": 119,
+            "lines": 15,
+            "calls": {
+              "p113d_$p118borrow.read.Map.bit.go": 1,
+              "p125_rt_ctor2": 1
+            },
+            "ops": {}
+          },
+          "p113d_$product.Map.bit.go": {
+            "symbol": "p113d_FID_36_112_114_111_100_117_99_116_46_77_97_112_46_98_105_116_46_103_111_",
+            "line": 135,
+            "lines": 12,
+            "calls": {
+              "p113d_$p118borrow.read.Map.bit.go": 1
+            },
+            "ops": {}
+          },
+          "p113d_$direct.Map.bit.at": {
+            "symbol": "p113d_FID_36_100_105_114_101_99_116_46_77_97_112_46_98_105_116_46_97_116_",
+            "line": 4128,
+            "lines": 38,
+            "calls": {
+              "p125_rt_take2": 1,
+              "p113d_$product.Map.bit.go": 1,
+              "p125_rt_ctor2": 1,
+              "p111_rt_sink": 1,
+              "p111_rt_fail": 1
+            },
+            "ops": {}
+          },
+          "p113d_$product.Map.bit.at": {
+            "symbol": "p113d_FID_36_112_114_111_100_117_99_116_46_77_97_112_46_98_105_116_46_97_116_",
+            "line": 4167,
+            "lines": 27,
+            "calls": {
+              "p113d_$product.Map.bit.go": 1
+            },
+            "ops": {}
+          },
+          "p113d_$direct.Map.bit": {
+            "symbol": "p113d_FID_36_100_105_114_101_99_116_46_77_97_112_46_98_105_116_",
+            "line": 4195,
+            "lines": 32,
+            "calls": {
+              "p126_rt_nat_divmod": 1,
+              "p113d_$product.Map.bit.at": 1,
+              "p125_rt_ctor2": 1
+            },
+            "ops": {}
+          },
+          "p113d_$product.Map.bit": {
+            "symbol": "p113d_FID_36_112_114_111_100_117_99_116_46_77_97_112_46_98_105_116_",
+            "line": 4228,
+            "lines": 32,
+            "calls": {
+              "p126_rt_nat_divmod": 1,
+              "p113d_$product.Map.bit.at": 1
+            },
+            "ops": {}
+          },
+          "p113d_$direct.String.cmp.fin": {
+            "symbol": "p113d_FID_36_100_105_114_101_99_116_46_83_116_114_105_110_103_46_99_109_112_46_102_105_110_",
+            "line": 4261,
+            "lines": 155,
+            "calls": {
+              "p125_rt_take2": 2,
+              "p125_rt_ctor2": 8,
+              "p113d_$direct.String.cmp": 1,
+              "p113d_$direct.String.cmp.rec": 1,
+              "p111_rt_sink": 6,
+              "p111_rt_fail": 3
+            },
+            "ops": {}
+          },
+          "p111_$direct.Map.bit.go": {
+            "symbol": "p111_FID_36_100_105_114_101_99_116_46_77_97_112_46_98_105_116_46_103_111_",
+            "line": 28898,
+            "lines": 11,
+            "calls": {
+              "p111_rt_reg_get": 3,
+              "p113d_$direct.Map.bit.go": 1,
+              "p111_rt_return": 1
+            },
+            "ops": {}
+          },
+          "p111_$direct.Map.bit.at": {
+            "symbol": "p111_FID_36_100_105_114_101_99_116_46_77_97_112_46_98_105_116_46_97_116_",
+            "line": 29094,
+            "lines": 10,
+            "calls": {
+              "p111_rt_reg_get": 2,
+              "p113d_$direct.Map.bit.at": 1,
+              "p111_rt_return": 1
+            },
+            "ops": {}
+          },
+          "p111_$direct.Map.bit": {
+            "symbol": "p111_FID_36_100_105_114_101_99_116_46_77_97_112_46_98_105_116_",
+            "line": 29159,
+            "lines": 10,
+            "calls": {
+              "p111_rt_reg_get": 2,
+              "p113d_$direct.Map.bit": 1,
+              "p111_rt_return": 1
+            },
+            "ops": {}
+          },
+          "p111_$direct.String.cmp.fin": {
+            "symbol": "p111_FID_36_100_105_114_101_99_116_46_83_116_114_105_110_103_46_99_109_112_46_102_105_110_",
+            "line": 33927,
+            "lines": 11,
+            "calls": {
+              "p111_rt_reg_get": 3,
+              "p113d_$direct.String.cmp.fin": 1,
+              "p111_rt_return": 1
+            },
+            "ops": {}
+          }
+        },
+        "candidate": {
+          "p113d_$p118borrow.read.Map.bit.go": {
+            "symbol": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_77_97_112_46_98_105_116_46_103_111_",
+            "line": 1,
+            "lines": 117,
+            "calls": {
+              "p111_rt_special_ctor": 2,
+              "p118_rt_borrow_fields": 1,
+              "p111_rt_op": 1,
+              "p111_rt_fail": 4
+            },
+            "ops": {
+              "63": 1
+            }
+          },
+          "p113d_$direct.Map.bit.go": {
+            "symbol": "p113d_FID_36_100_105_114_101_99_116_46_77_97_112_46_98_105_116_46_103_111_",
+            "line": 119,
+            "lines": 15,
+            "calls": {
+              "p113d_$p118borrow.read.Map.bit.go": 1,
+              "p125_rt_ctor2": 1
+            },
+            "ops": {}
+          },
+          "p113d_$product.Map.bit.go": {
+            "symbol": "p113d_FID_36_112_114_111_100_117_99_116_46_77_97_112_46_98_105_116_46_103_111_",
+            "line": 135,
+            "lines": 12,
+            "calls": {
+              "p113d_$p118borrow.read.Map.bit.go": 1
+            },
+            "ops": {}
+          },
+          "p113d_$direct.Map.bit.at": {
+            "symbol": "p113d_FID_36_100_105_114_101_99_116_46_77_97_112_46_98_105_116_46_97_116_",
+            "line": 4128,
+            "lines": 40,
+            "calls": {
+              "p125_rt_take2": 1,
+              "p113d_$p118borrow.read.Map.bit.go": 1,
+              "p125_rt_ctor2": 1,
+              "p111_rt_sink": 1,
+              "p111_rt_fail": 1
+            },
+            "ops": {}
+          },
+          "p113d_$product.Map.bit.at": {
+            "symbol": "p113d_FID_36_112_114_111_100_117_99_116_46_77_97_112_46_98_105_116_46_97_116_",
+            "line": 4169,
+            "lines": 29,
+            "calls": {
+              "p113d_$p118borrow.read.Map.bit.go": 1
+            },
+            "ops": {}
+          },
+          "p113d_$direct.Map.bit": {
+            "symbol": "p113d_FID_36_100_105_114_101_99_116_46_77_97_112_46_98_105_116_",
+            "line": 4199,
+            "lines": 49,
+            "calls": {
+              "p126_rt_nat_divmod": 1,
+              "p113d_$product.Map.bit.go": 1,
+              "p125_rt_ctor2": 1
+            },
+            "ops": {}
+          },
+          "p113d_$product.Map.bit": {
+            "symbol": "p113d_FID_36_112_114_111_100_117_99_116_46_77_97_112_46_98_105_116_",
+            "line": 4249,
+            "lines": 49,
+            "calls": {
+              "p126_rt_nat_divmod": 1,
+              "p113d_$product.Map.bit.go": 1
+            },
+            "ops": {}
+          },
+          "p113d_$direct.String.cmp.fin": {
+            "symbol": "p113d_FID_36_100_105_114_101_99_116_46_83_116_114_105_110_103_46_99_109_112_46_102_105_110_",
+            "line": 4299,
+            "lines": 252,
+            "calls": {
+              "p125_rt_take2": 4,
+              "p125_rt_ctor2": 14,
+              "p113d_$p118borrow.read.String.cmp": 1,
+              "p111_rt_fail": 5,
+              "p111_rt_sink": 6
+            },
+            "ops": {}
+          },
+          "p111_$direct.Map.bit.go": {
+            "symbol": "p111_FID_36_100_105_114_101_99_116_46_77_97_112_46_98_105_116_46_103_111_",
+            "line": 29209,
+            "lines": 11,
+            "calls": {
+              "p111_rt_reg_get": 3,
+              "p113d_$direct.Map.bit.go": 1,
+              "p111_rt_return": 1
+            },
+            "ops": {}
+          },
+          "p111_$direct.Map.bit.at": {
+            "symbol": "p111_FID_36_100_105_114_101_99_116_46_77_97_112_46_98_105_116_46_97_116_",
+            "line": 29405,
+            "lines": 10,
+            "calls": {
+              "p111_rt_reg_get": 2,
+              "p113d_$direct.Map.bit.at": 1,
+              "p111_rt_return": 1
+            },
+            "ops": {}
+          },
+          "p111_$direct.Map.bit": {
+            "symbol": "p111_FID_36_100_105_114_101_99_116_46_77_97_112_46_98_105_116_",
+            "line": 29470,
+            "lines": 10,
+            "calls": {
+              "p111_rt_reg_get": 2,
+              "p113d_$direct.Map.bit": 1,
+              "p111_rt_return": 1
+            },
+            "ops": {}
+          },
+          "p111_$direct.String.cmp.fin": {
+            "symbol": "p111_FID_36_100_105_114_101_99_116_46_83_116_114_105_110_103_46_99_109_112_46_102_105_110_",
+            "line": 34238,
+            "lines": 11,
+            "calls": {
+              "p111_rt_reg_get": 3,
+              "p113d_$direct.String.cmp.fin": 1,
+              "p111_rt_return": 1
+            },
+            "ops": {}
+          }
+        }
+      }
+    },
+    {
+      "name": "coverage-map-churn-128",
+      "comparison": "32 to 33 changes only the existing optimizer on late admitted functions",
+      "parentPrivateCount": 73,
+      "candidatePrivateCount": 73,
+      "addedPrivate": [],
+      "removedPrivate": [],
+      "changedPrivate": [
+        "p113d_$direct.Map.bit",
+        "p113d_$direct.Map.bit.at",
+        "p113d_$direct.Map.ins.splice",
+        "p113d_$direct.String.cmp.fin",
+        "p113d_$direct.String.is_le",
+        "p113d_$direct.String.order",
+        "p113d_$product.Map.bit",
+        "p113d_$product.Map.bit.at"
+      ],
+      "functions": {
+        "parent": {
+          "p113d_$p118borrow.read.Map.bit.go": {
+            "symbol": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_77_97_112_46_98_105_116_46_103_111_",
+            "line": 148,
+            "lines": 117,
+            "calls": {
+              "p111_rt_special_ctor": 2,
+              "p118_rt_borrow_fields": 1,
+              "p111_rt_op": 1,
+              "p111_rt_fail": 4
+            },
+            "ops": {
+              "63": 1
+            }
+          },
+          "p113d_$direct.Map.bit.go": {
+            "symbol": "p113d_FID_36_100_105_114_101_99_116_46_77_97_112_46_98_105_116_46_103_111_",
+            "line": 266,
+            "lines": 15,
+            "calls": {
+              "p113d_$p118borrow.read.Map.bit.go": 1,
+              "p125_rt_ctor2": 1
+            },
+            "ops": {}
+          },
+          "p113d_$product.Map.bit.go": {
+            "symbol": "p113d_FID_36_112_114_111_100_117_99_116_46_77_97_112_46_98_105_116_46_103_111_",
+            "line": 282,
+            "lines": 12,
+            "calls": {
+              "p113d_$p118borrow.read.Map.bit.go": 1
+            },
+            "ops": {}
+          },
+          "p113d_$direct.String.cmp.fin": {
+            "symbol": "p113d_FID_36_100_105_114_101_99_116_46_83_116_114_105_110_103_46_99_109_112_46_102_105_110_",
+            "line": 3506,
+            "lines": 155,
+            "calls": {
+              "p125_rt_take2": 2,
+              "p125_rt_ctor2": 8,
+              "p113d_$direct.String.cmp": 1,
+              "p113d_$direct.String.cmp.rec": 1,
+              "p111_rt_sink": 6,
+              "p111_rt_fail": 3
+            },
+            "ops": {}
+          },
+          "p113d_$direct.Map.bit.at": {
+            "symbol": "p113d_FID_36_100_105_114_101_99_116_46_77_97_112_46_98_105_116_46_97_116_",
+            "line": 3662,
+            "lines": 38,
+            "calls": {
+              "p125_rt_take2": 1,
+              "p113d_$product.Map.bit.go": 1,
+              "p125_rt_ctor2": 1,
+              "p111_rt_sink": 1,
+              "p111_rt_fail": 1
+            },
+            "ops": {}
+          },
+          "p113d_$product.Map.bit.at": {
+            "symbol": "p113d_FID_36_112_114_111_100_117_99_116_46_77_97_112_46_98_105_116_46_97_116_",
+            "line": 3701,
+            "lines": 27,
+            "calls": {
+              "p113d_$product.Map.bit.go": 1
+            },
+            "ops": {}
+          },
+          "p113d_$direct.Map.bit": {
+            "symbol": "p113d_FID_36_100_105_114_101_99_116_46_77_97_112_46_98_105_116_",
+            "line": 3729,
+            "lines": 32,
+            "calls": {
+              "p126_rt_nat_divmod": 1,
+              "p113d_$product.Map.bit.at": 1,
+              "p125_rt_ctor2": 1
+            },
+            "ops": {}
+          },
+          "p113d_$product.Map.bit": {
+            "symbol": "p113d_FID_36_112_114_111_100_117_99_116_46_77_97_112_46_98_105_116_",
+            "line": 3762,
+            "lines": 32,
+            "calls": {
+              "p126_rt_nat_divmod": 1,
+              "p113d_$product.Map.bit.at": 1
+            },
+            "ops": {}
+          },
+          "p111_$direct.String.cmp.fin": {
+            "symbol": "p111_FID_36_100_105_114_101_99_116_46_83_116_114_105_110_103_46_99_109_112_46_102_105_110_",
+            "line": 19794,
+            "lines": 11,
+            "calls": {
+              "p111_rt_reg_get": 3,
+              "p113d_$direct.String.cmp.fin": 1,
+              "p111_rt_return": 1
+            },
+            "ops": {}
+          },
+          "p111_$direct.Map.bit.go": {
+            "symbol": "p111_FID_36_100_105_114_101_99_116_46_77_97_112_46_98_105_116_46_103_111_",
+            "line": 28433,
+            "lines": 11,
+            "calls": {
+              "p111_rt_reg_get": 3,
+              "p113d_$direct.Map.bit.go": 1,
+              "p111_rt_return": 1
+            },
+            "ops": {}
+          },
+          "p111_$direct.Map.bit.at": {
+            "symbol": "p111_FID_36_100_105_114_101_99_116_46_77_97_112_46_98_105_116_46_97_116_",
+            "line": 28629,
+            "lines": 10,
+            "calls": {
+              "p111_rt_reg_get": 2,
+              "p113d_$direct.Map.bit.at": 1,
+              "p111_rt_return": 1
+            },
+            "ops": {}
+          },
+          "p111_$direct.Map.bit": {
+            "symbol": "p111_FID_36_100_105_114_101_99_116_46_77_97_112_46_98_105_116_",
+            "line": 28694,
+            "lines": 10,
+            "calls": {
+              "p111_rt_reg_get": 2,
+              "p113d_$direct.Map.bit": 1,
+              "p111_rt_return": 1
+            },
+            "ops": {}
+          }
+        },
+        "candidate": {
+          "p113d_$p118borrow.read.Map.bit.go": {
+            "symbol": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_77_97_112_46_98_105_116_46_103_111_",
+            "line": 148,
+            "lines": 117,
+            "calls": {
+              "p111_rt_special_ctor": 2,
+              "p118_rt_borrow_fields": 1,
+              "p111_rt_op": 1,
+              "p111_rt_fail": 4
+            },
+            "ops": {
+              "63": 1
+            }
+          },
+          "p113d_$direct.Map.bit.go": {
+            "symbol": "p113d_FID_36_100_105_114_101_99_116_46_77_97_112_46_98_105_116_46_103_111_",
+            "line": 266,
+            "lines": 15,
+            "calls": {
+              "p113d_$p118borrow.read.Map.bit.go": 1,
+              "p125_rt_ctor2": 1
+            },
+            "ops": {}
+          },
+          "p113d_$product.Map.bit.go": {
+            "symbol": "p113d_FID_36_112_114_111_100_117_99_116_46_77_97_112_46_98_105_116_46_103_111_",
+            "line": 282,
+            "lines": 12,
+            "calls": {
+              "p113d_$p118borrow.read.Map.bit.go": 1
+            },
+            "ops": {}
+          },
+          "p113d_$direct.String.cmp.fin": {
+            "symbol": "p113d_FID_36_100_105_114_101_99_116_46_83_116_114_105_110_103_46_99_109_112_46_102_105_110_",
+            "line": 3573,
+            "lines": 252,
+            "calls": {
+              "p125_rt_take2": 4,
+              "p125_rt_ctor2": 14,
+              "p113d_$p118borrow.read.String.cmp": 1,
+              "p111_rt_fail": 5,
+              "p111_rt_sink": 6
+            },
+            "ops": {}
+          },
+          "p113d_$direct.Map.bit.at": {
+            "symbol": "p113d_FID_36_100_105_114_101_99_116_46_77_97_112_46_98_105_116_46_97_116_",
+            "line": 3826,
+            "lines": 40,
+            "calls": {
+              "p125_rt_take2": 1,
+              "p113d_$p118borrow.read.Map.bit.go": 1,
+              "p125_rt_ctor2": 1,
+              "p111_rt_sink": 1,
+              "p111_rt_fail": 1
+            },
+            "ops": {}
+          },
+          "p113d_$product.Map.bit.at": {
+            "symbol": "p113d_FID_36_112_114_111_100_117_99_116_46_77_97_112_46_98_105_116_46_97_116_",
+            "line": 3867,
+            "lines": 29,
+            "calls": {
+              "p113d_$p118borrow.read.Map.bit.go": 1
+            },
+            "ops": {}
+          },
+          "p113d_$direct.Map.bit": {
+            "symbol": "p113d_FID_36_100_105_114_101_99_116_46_77_97_112_46_98_105_116_",
+            "line": 3897,
+            "lines": 49,
+            "calls": {
+              "p126_rt_nat_divmod": 1,
+              "p113d_$product.Map.bit.go": 1,
+              "p125_rt_ctor2": 1
+            },
+            "ops": {}
+          },
+          "p113d_$product.Map.bit": {
+            "symbol": "p113d_FID_36_112_114_111_100_117_99_116_46_77_97_112_46_98_105_116_",
+            "line": 3947,
+            "lines": 49,
+            "calls": {
+              "p126_rt_nat_divmod": 1,
+              "p113d_$product.Map.bit.go": 1
+            },
+            "ops": {}
+          },
+          "p111_$direct.String.cmp.fin": {
+            "symbol": "p111_FID_36_100_105_114_101_99_116_46_83_116_114_105_110_103_46_99_109_112_46_102_105_110_",
+            "line": 20105,
+            "lines": 11,
+            "calls": {
+              "p111_rt_reg_get": 3,
+              "p113d_$direct.String.cmp.fin": 1,
+              "p111_rt_return": 1
+            },
+            "ops": {}
+          },
+          "p111_$direct.Map.bit.go": {
+            "symbol": "p111_FID_36_100_105_114_101_99_116_46_77_97_112_46_98_105_116_46_103_111_",
+            "line": 28744,
+            "lines": 11,
+            "calls": {
+              "p111_rt_reg_get": 3,
+              "p113d_$direct.Map.bit.go": 1,
+              "p111_rt_return": 1
+            },
+            "ops": {}
+          },
+          "p111_$direct.Map.bit.at": {
+            "symbol": "p111_FID_36_100_105_114_101_99_116_46_77_97_112_46_98_105_116_46_97_116_",
+            "line": 28940,
+            "lines": 10,
+            "calls": {
+              "p111_rt_reg_get": 2,
+              "p113d_$direct.Map.bit.at": 1,
+              "p111_rt_return": 1
+            },
+            "ops": {}
+          },
+          "p111_$direct.Map.bit": {
+            "symbol": "p111_FID_36_100_105_114_101_99_116_46_77_97_112_46_98_105_116_",
+            "line": 29005,
+            "lines": 10,
+            "calls": {
+              "p111_rt_reg_get": 2,
+              "p113d_$direct.Map.bit": 1,
+              "p111_rt_return": 1
+            },
+            "ops": {}
+          }
+        }
+      }
+    },
+    {
+      "name": "lexer",
+      "comparison": "32 to 33 changes only the existing optimizer on late admitted functions",
+      "parentPrivateCount": 60,
+      "candidatePrivateCount": 60,
+      "addedPrivate": [],
+      "removedPrivate": [],
+      "changedPrivate": [],
+      "functions": {
+        "parent": {
+          "p111_$direct.String.cmp.fin": {
+            "symbol": "p111_FID_36_100_105_114_101_99_116_46_83_116_114_105_110_103_46_99_109_112_46_102_105_110_",
+            "line": 12059,
+            "lines": 11,
+            "calls": {
+              "p111_rt_reg_get": 3,
+              "p114r_$direct.String.cmp.fin": 1,
+              "p111_rt_return": 1
+            },
+            "ops": {}
+          },
+          "p114r_$direct.String.cmp.fin": {
+            "symbol": "p114r_FID_36_100_105_114_101_99_116_46_83_116_114_105_110_103_46_99_109_112_46_102_105_110_",
+            "line": 12070,
+            "lines": 244,
+            "calls": {
+              "p125_rt_take2": 2,
+              "p125_rt_ctor2": 8,
+              "p113d_$direct.String.cmp": 1,
+              "p111_rt_sink": 8,
+              "p111_rt_fail": 4,
+              "p113d_$direct.String.cmp.rec": 1
+            },
+            "ops": {}
+          }
+        },
+        "candidate": {
+          "p111_$direct.String.cmp.fin": {
+            "symbol": "p111_FID_36_100_105_114_101_99_116_46_83_116_114_105_110_103_46_99_109_112_46_102_105_110_",
+            "line": 12059,
+            "lines": 11,
+            "calls": {
+              "p111_rt_reg_get": 3,
+              "p114r_$direct.String.cmp.fin": 1,
+              "p111_rt_return": 1
+            },
+            "ops": {}
+          },
+          "p114r_$direct.String.cmp.fin": {
+            "symbol": "p114r_FID_36_100_105_114_101_99_116_46_83_116_114_105_110_103_46_99_109_112_46_102_105_110_",
+            "line": 12070,
+            "lines": 244,
+            "calls": {
+              "p125_rt_take2": 2,
+              "p125_rt_ctor2": 8,
+              "p113d_$direct.String.cmp": 1,
+              "p111_rt_sink": 8,
+              "p111_rt_fail": 4,
+              "p113d_$direct.String.cmp.rec": 1
+            },
+            "ops": {}
+          }
+        }
+      }
+    },
+    {
+      "name": "test-rle-roundtrip",
+      "comparison": "32 to 33 changes only the existing optimizer on late admitted functions",
+      "parentPrivateCount": 46,
+      "candidatePrivateCount": 46,
+      "addedPrivate": [],
+      "removedPrivate": [],
+      "changedPrivate": [],
+      "functions": {
+        "parent": {
+          "p111_$direct.String.cmp.fin": {
+            "symbol": "p111_FID_36_100_105_114_101_99_116_46_83_116_114_105_110_103_46_99_109_112_46_102_105_110_",
+            "line": 6002,
+            "lines": 11,
+            "calls": {
+              "p111_rt_reg_get": 3,
+              "p114r_$direct.String.cmp.fin": 1,
+              "p111_rt_return": 1
+            },
+            "ops": {}
+          },
+          "p114r_$direct.String.cmp.fin": {
+            "symbol": "p114r_FID_36_100_105_114_101_99_116_46_83_116_114_105_110_103_46_99_109_112_46_102_105_110_",
+            "line": 6013,
+            "lines": 244,
+            "calls": {
+              "p125_rt_take2": 2,
+              "p125_rt_ctor2": 8,
+              "p113d_$direct.String.cmp": 1,
+              "p111_rt_sink": 8,
+              "p111_rt_fail": 4,
+              "p113d_$direct.String.cmp.rec": 1
+            },
+            "ops": {}
+          }
+        },
+        "candidate": {
+          "p111_$direct.String.cmp.fin": {
+            "symbol": "p111_FID_36_100_105_114_101_99_116_46_83_116_114_105_110_103_46_99_109_112_46_102_105_110_",
+            "line": 6002,
+            "lines": 11,
+            "calls": {
+              "p111_rt_reg_get": 3,
+              "p114r_$direct.String.cmp.fin": 1,
+              "p111_rt_return": 1
+            },
+            "ops": {}
+          },
+          "p114r_$direct.String.cmp.fin": {
+            "symbol": "p114r_FID_36_100_105_114_101_99_116_46_83_116_114_105_110_103_46_99_109_112_46_102_105_110_",
+            "line": 6013,
+            "lines": 244,
+            "calls": {
+              "p125_rt_take2": 2,
+              "p125_rt_ctor2": 8,
+              "p113d_$direct.String.cmp": 1,
+              "p111_rt_sink": 8,
+              "p111_rt_fail": 4,
+              "p113d_$direct.String.cmp.rec": 1
+            },
+            "ops": {}
+          }
+        }
+      }
+    }
+  ]
+}

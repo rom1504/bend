@@ -1,0 +1,11 @@
+export function l $p111_$direct.String.cmp.fin(l %state) {
+@entry
+%p114r_outer_out =l alloc8 8
+%p113_arg_0 =l call $p111_rt_reg_get(l %state, w 0)
+%p113_arg_1 =l call $p111_rt_reg_get(l %state, w 1)
+%p113_arg_2 =l call $p111_rt_reg_get(l %state, w 2)
+%p114r_outer_value =l call $p114r_$direct.String.cmp.fin(l %state, l %p113_arg_0, l %p113_arg_1, l %p113_arg_2)
+storel %p114r_outer_value, %p114r_outer_out
+%p114r_outer_reply =l call $p111_rt_return(l %state, l %p114r_outer_out, w 1)
+ret %p114r_outer_reply
+}

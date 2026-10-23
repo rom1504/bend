@@ -1,0 +1,38 @@
+function l $p113d_$direct.Map.bit.at(l %state, l %v_v_4294967295, l %v_v_4294967294) {
+@entry
+%v_scratch =l alloc8 2048
+%p113_results =l alloc8 64
+jmp @p113_loop
+@p113_loop
+%v_p113p_move_3_0 =l copy %v_v_4294967294
+%v_v_4294967293 =l copy %v_p113p_move_3_0
+%v_tag =l shr %v_v_4294967293, 40
+%v_tag =l and %v_tag, 65535
+%v_match_condition =w ceql %v_tag, 8
+jnz %v_match_condition, @b_0, @b_1
+@b_0
+%v_ignored =l call $p125_rt_take2(l %state, l %v_v_4294967293, l %v_scratch)
+%v_v_4294967291 =l loadl %v_scratch
+%t_3 =l add %v_scratch, 8
+%v_v_4294967290 =l loadl %t_3
+%v_p113p_move_9_0 =l copy %v_v_4294967295
+%v_v_4294967289 =l copy %v_p113p_move_9_0
+%v_p113p_move_10_0 =l copy %v_v_4294967291
+%v_v_4294967288 =l copy %v_p113p_move_10_0
+%v_p113p_move_11_0 =l copy %v_v_4294967290
+%v_v_4294967287 =l copy %v_p113p_move_11_0
+%p113_status =l call $p113d_$product.Map.bit.go(l %state, l %p113_results, l %v_v_4294967289, l %v_v_4294967288, l %v_v_4294967287)
+%p113_result_at_4 =l add %p113_results, 0
+%v_p113p_call_12_0 =l loadl %p113_result_at_4
+%p113_result_at_5 =l add %p113_results, 8
+%v_p113p_call_12_1 =l loadl %p113_result_at_5
+storel %v_p113p_call_12_0, %v_scratch
+%t_6 =l add %v_scratch, 8
+storel %v_p113p_call_12_1, %t_6
+%v_value =l call $p125_rt_ctor2(l %state, w 8, l %v_scratch)
+ret %v_value
+@b_1
+%v_ignored =l call $p111_rt_sink(l %state, l %v_v_4294967295)
+%v_ignored =l call $p111_rt_fail(l %state, w 4)
+ret 0
+}

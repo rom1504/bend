@@ -1,0 +1,584 @@
+{
+  "targetsRun": false,
+  "scope": "Static sites and function identities only; not dynamic counts, samples, cycles or speed.",
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase126/product-primitive/evidence26/inspect.py",
+      "bytes": 2834,
+      "sha256": "ffe0ab49f8a0f382abdd5ce591c9951237d1dc869f73ec292b91107cdf97be82"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/p125-verified-families06/coverage-record-aggregation-256.ssa",
+      "bytes": 1257006,
+      "sha256": "8bbf3c2d4a3620c08b9b853bb357af2a5dd005b3a4ac92591700f3973bab43a7"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/p126-observer26-emit/coverage-record-aggregation-256.ssa",
+      "bytes": 1260789,
+      "sha256": "5c83ddb5d0dd0504eb70e66b5b3a982486e9c0e081bc8c92212acb34d8485859"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/p125-final-remaining06/test-evening-program.ssa",
+      "bytes": 1435495,
+      "sha256": "427c5c4a1a9447aa900e88d0c3adfb5cf5f1bf544ec2e82a9c204ee2eb1a8591"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/p126-observer26-emit/test-evening-program.ssa",
+      "bytes": 1438657,
+      "sha256": "7da1306bab226a195c375358ab50d0ddcdaed2d210006d6da2e349b8a92e5a96"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/p125-verified-families06/coverage-map-churn-128.ssa",
+      "bytes": 1275730,
+      "sha256": "d7e26df00998a485b7af44513d38d6223ddfc5d7832c68b29c0dcb809daf4f49"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/p126-observer26-emit/coverage-map-churn-128.ssa",
+      "bytes": 1278938,
+      "sha256": "f914f95382b541c00e8a82c7f0791835a69a7be9ddc349588ea6773b582648a1"
+    }
+  ],
+  "cases": [
+    {
+      "name": "coverage-record-aggregation-256",
+      "parentPrivateCount": 37,
+      "candidatePrivateCount": 45,
+      "addedPrivate": [
+        "p113d_$direct.Map.bit",
+        "p113d_$direct.Map.bit.at",
+        "p113d_$direct.String.cmp.fin",
+        "p113d_$direct.String.eq",
+        "p113d_$direct.String.is_le",
+        "p113d_$direct.String.order",
+        "p113d_$product.Map.bit.at",
+        "p113d_$product.Map.bit.go"
+      ],
+      "removedPrivate": [],
+      "functions": {
+        "parent": {
+          "p113d_$p118borrow.read.Map.bit.go": {
+            "symbol": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_77_97_112_46_98_105_116_46_103_111_",
+            "line": 148,
+            "lines": 117,
+            "calls": {
+              "p111_rt_special_ctor": 2,
+              "p118_rt_borrow_fields": 1,
+              "p111_rt_op": 1,
+              "p111_rt_fail": 4
+            },
+            "ops": {
+              "63": 1
+            }
+          },
+          "p113d_$direct.Map.bit.go": {
+            "symbol": "p113d_FID_36_100_105_114_101_99_116_46_77_97_112_46_98_105_116_46_103_111_",
+            "line": 266,
+            "lines": 15,
+            "calls": {
+              "p113d_$p118borrow.read.Map.bit.go": 1,
+              "p125_rt_ctor2": 1
+            },
+            "ops": {}
+          },
+          "p111_$direct.Map.bit.go": {
+            "symbol": "p111_FID_36_100_105_114_101_99_116_46_77_97_112_46_98_105_116_46_103_111_",
+            "line": 26599,
+            "lines": 11,
+            "calls": {
+              "p111_rt_reg_get": 3,
+              "p113d_$direct.Map.bit.go": 1,
+              "p111_rt_return": 1
+            },
+            "ops": {}
+          },
+          "p111_$direct.Map.bit.at": {
+            "symbol": "p111_FID_36_100_105_114_101_99_116_46_77_97_112_46_98_105_116_46_97_116_",
+            "line": 26795,
+            "lines": 43,
+            "calls": {
+              "p125_rt_take2": 1,
+              "p111_rt_jump": 1,
+              "p111_rt_sink": 1,
+              "p111_rt_fail": 1
+            },
+            "ops": {}
+          },
+          "p111_$direct.Map.bit": {
+            "symbol": "p111_FID_36_100_105_114_101_99_116_46_77_97_112_46_98_105_116_",
+            "line": 26893,
+            "lines": 21,
+            "calls": {
+              "p111_rt_op": 1,
+              "p111_rt_jump": 1
+            },
+            "ops": {
+              "70": 1
+            }
+          }
+        },
+        "candidate": {
+          "p113d_$p118borrow.read.Map.bit.go": {
+            "symbol": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_77_97_112_46_98_105_116_46_103_111_",
+            "line": 148,
+            "lines": 117,
+            "calls": {
+              "p111_rt_special_ctor": 2,
+              "p118_rt_borrow_fields": 1,
+              "p111_rt_op": 1,
+              "p111_rt_fail": 4
+            },
+            "ops": {
+              "63": 1
+            }
+          },
+          "p113d_$direct.Map.bit.go": {
+            "symbol": "p113d_FID_36_100_105_114_101_99_116_46_77_97_112_46_98_105_116_46_103_111_",
+            "line": 266,
+            "lines": 15,
+            "calls": {
+              "p113d_$p118borrow.read.Map.bit.go": 1,
+              "p125_rt_ctor2": 1
+            },
+            "ops": {}
+          },
+          "p113d_$product.Map.bit.go": {
+            "symbol": "p113d_FID_36_112_114_111_100_117_99_116_46_77_97_112_46_98_105_116_46_103_111_",
+            "line": 282,
+            "lines": 12,
+            "calls": {
+              "p113d_$p118borrow.read.Map.bit.go": 1
+            },
+            "ops": {}
+          },
+          "p113d_$direct.Map.bit.at": {
+            "symbol": "p113d_FID_36_100_105_114_101_99_116_46_77_97_112_46_98_105_116_46_97_116_",
+            "line": 2030,
+            "lines": 38,
+            "calls": {
+              "p125_rt_take2": 1,
+              "p113d_$product.Map.bit.go": 1,
+              "p125_rt_ctor2": 1,
+              "p111_rt_sink": 1,
+              "p111_rt_fail": 1
+            },
+            "ops": {}
+          },
+          "p113d_$product.Map.bit.at": {
+            "symbol": "p113d_FID_36_112_114_111_100_117_99_116_46_77_97_112_46_98_105_116_46_97_116_",
+            "line": 2069,
+            "lines": 27,
+            "calls": {
+              "p113d_$product.Map.bit.go": 1
+            },
+            "ops": {}
+          },
+          "p113d_$direct.Map.bit": {
+            "symbol": "p113d_FID_36_100_105_114_101_99_116_46_77_97_112_46_98_105_116_",
+            "line": 2097,
+            "lines": 20,
+            "calls": {
+              "p111_rt_op": 1,
+              "p113d_$direct.Map.bit.at": 1
+            },
+            "ops": {
+              "70": 1
+            }
+          },
+          "p111_$direct.Map.bit.go": {
+            "symbol": "p111_FID_36_100_105_114_101_99_116_46_77_97_112_46_98_105_116_46_103_111_",
+            "line": 26662,
+            "lines": 11,
+            "calls": {
+              "p111_rt_reg_get": 3,
+              "p113d_$direct.Map.bit.go": 1,
+              "p111_rt_return": 1
+            },
+            "ops": {}
+          },
+          "p111_$direct.Map.bit.at": {
+            "symbol": "p111_FID_36_100_105_114_101_99_116_46_77_97_112_46_98_105_116_46_97_116_",
+            "line": 26858,
+            "lines": 10,
+            "calls": {
+              "p111_rt_reg_get": 2,
+              "p113d_$direct.Map.bit.at": 1,
+              "p111_rt_return": 1
+            },
+            "ops": {}
+          },
+          "p111_$direct.Map.bit": {
+            "symbol": "p111_FID_36_100_105_114_101_99_116_46_77_97_112_46_98_105_116_",
+            "line": 26923,
+            "lines": 10,
+            "calls": {
+              "p111_rt_reg_get": 2,
+              "p113d_$direct.Map.bit": 1,
+              "p111_rt_return": 1
+            },
+            "ops": {}
+          }
+        }
+      }
+    },
+    {
+      "name": "test-evening-program",
+      "parentPrivateCount": 53,
+      "candidatePrivateCount": 60,
+      "addedPrivate": [
+        "p113d_$direct.Map.bit",
+        "p113d_$direct.Map.bit.at",
+        "p113d_$direct.String.cmp.fin",
+        "p113d_$direct.String.is_le",
+        "p113d_$direct.String.order",
+        "p113d_$product.Map.bit.at",
+        "p113d_$product.Map.bit.go"
+      ],
+      "removedPrivate": [],
+      "functions": {
+        "parent": {
+          "p113d_$p118borrow.read.Map.bit.go": {
+            "symbol": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_77_97_112_46_98_105_116_46_103_111_",
+            "line": 1,
+            "lines": 117,
+            "calls": {
+              "p111_rt_special_ctor": 2,
+              "p118_rt_borrow_fields": 1,
+              "p111_rt_op": 1,
+              "p111_rt_fail": 4
+            },
+            "ops": {
+              "63": 1
+            }
+          },
+          "p113d_$direct.Map.bit.go": {
+            "symbol": "p113d_FID_36_100_105_114_101_99_116_46_77_97_112_46_98_105_116_46_103_111_",
+            "line": 119,
+            "lines": 15,
+            "calls": {
+              "p113d_$p118borrow.read.Map.bit.go": 1,
+              "p125_rt_ctor2": 1
+            },
+            "ops": {}
+          },
+          "p111_$direct.Map.bit.go": {
+            "symbol": "p111_FID_36_100_105_114_101_99_116_46_77_97_112_46_98_105_116_46_103_111_",
+            "line": 27499,
+            "lines": 11,
+            "calls": {
+              "p111_rt_reg_get": 3,
+              "p113d_$direct.Map.bit.go": 1,
+              "p111_rt_return": 1
+            },
+            "ops": {}
+          },
+          "p111_$direct.Map.bit.at": {
+            "symbol": "p111_FID_36_100_105_114_101_99_116_46_77_97_112_46_98_105_116_46_97_116_",
+            "line": 27695,
+            "lines": 43,
+            "calls": {
+              "p125_rt_take2": 1,
+              "p111_rt_jump": 1,
+              "p111_rt_sink": 1,
+              "p111_rt_fail": 1
+            },
+            "ops": {}
+          },
+          "p111_$direct.Map.bit": {
+            "symbol": "p111_FID_36_100_105_114_101_99_116_46_77_97_112_46_98_105_116_",
+            "line": 27793,
+            "lines": 21,
+            "calls": {
+              "p111_rt_op": 1,
+              "p111_rt_jump": 1
+            },
+            "ops": {
+              "70": 1
+            }
+          }
+        },
+        "candidate": {
+          "p113d_$p118borrow.read.Map.bit.go": {
+            "symbol": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_77_97_112_46_98_105_116_46_103_111_",
+            "line": 1,
+            "lines": 117,
+            "calls": {
+              "p111_rt_special_ctor": 2,
+              "p118_rt_borrow_fields": 1,
+              "p111_rt_op": 1,
+              "p111_rt_fail": 4
+            },
+            "ops": {
+              "63": 1
+            }
+          },
+          "p113d_$direct.Map.bit.go": {
+            "symbol": "p113d_FID_36_100_105_114_101_99_116_46_77_97_112_46_98_105_116_46_103_111_",
+            "line": 119,
+            "lines": 15,
+            "calls": {
+              "p113d_$p118borrow.read.Map.bit.go": 1,
+              "p125_rt_ctor2": 1
+            },
+            "ops": {}
+          },
+          "p113d_$product.Map.bit.go": {
+            "symbol": "p113d_FID_36_112_114_111_100_117_99_116_46_77_97_112_46_98_105_116_46_103_111_",
+            "line": 135,
+            "lines": 12,
+            "calls": {
+              "p113d_$p118borrow.read.Map.bit.go": 1
+            },
+            "ops": {}
+          },
+          "p113d_$direct.Map.bit.at": {
+            "symbol": "p113d_FID_36_100_105_114_101_99_116_46_77_97_112_46_98_105_116_46_97_116_",
+            "line": 2854,
+            "lines": 38,
+            "calls": {
+              "p125_rt_take2": 1,
+              "p113d_$product.Map.bit.go": 1,
+              "p125_rt_ctor2": 1,
+              "p111_rt_sink": 1,
+              "p111_rt_fail": 1
+            },
+            "ops": {}
+          },
+          "p113d_$product.Map.bit.at": {
+            "symbol": "p113d_FID_36_112_114_111_100_117_99_116_46_77_97_112_46_98_105_116_46_97_116_",
+            "line": 2893,
+            "lines": 27,
+            "calls": {
+              "p113d_$product.Map.bit.go": 1
+            },
+            "ops": {}
+          },
+          "p113d_$direct.Map.bit": {
+            "symbol": "p113d_FID_36_100_105_114_101_99_116_46_77_97_112_46_98_105_116_",
+            "line": 2921,
+            "lines": 20,
+            "calls": {
+              "p111_rt_op": 1,
+              "p113d_$direct.Map.bit.at": 1
+            },
+            "ops": {
+              "70": 1
+            }
+          },
+          "p111_$direct.Map.bit.go": {
+            "symbol": "p111_FID_36_100_105_114_101_99_116_46_77_97_112_46_98_105_116_46_103_111_",
+            "line": 27868,
+            "lines": 11,
+            "calls": {
+              "p111_rt_reg_get": 3,
+              "p113d_$direct.Map.bit.go": 1,
+              "p111_rt_return": 1
+            },
+            "ops": {}
+          },
+          "p111_$direct.Map.bit.at": {
+            "symbol": "p111_FID_36_100_105_114_101_99_116_46_77_97_112_46_98_105_116_46_97_116_",
+            "line": 28064,
+            "lines": 10,
+            "calls": {
+              "p111_rt_reg_get": 2,
+              "p113d_$direct.Map.bit.at": 1,
+              "p111_rt_return": 1
+            },
+            "ops": {}
+          },
+          "p111_$direct.Map.bit": {
+            "symbol": "p111_FID_36_100_105_114_101_99_116_46_77_97_112_46_98_105_116_",
+            "line": 28129,
+            "lines": 10,
+            "calls": {
+              "p111_rt_reg_get": 2,
+              "p113d_$direct.Map.bit": 1,
+              "p111_rt_return": 1
+            },
+            "ops": {}
+          }
+        }
+      }
+    },
+    {
+      "name": "coverage-map-churn-128",
+      "parentPrivateCount": 44,
+      "candidatePrivateCount": 51,
+      "addedPrivate": [
+        "p113d_$direct.Map.bit",
+        "p113d_$direct.Map.bit.at",
+        "p113d_$direct.String.cmp.fin",
+        "p113d_$direct.String.is_le",
+        "p113d_$direct.String.order",
+        "p113d_$product.Map.bit.at",
+        "p113d_$product.Map.bit.go"
+      ],
+      "removedPrivate": [],
+      "functions": {
+        "parent": {
+          "p113d_$p118borrow.read.Map.bit.go": {
+            "symbol": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_77_97_112_46_98_105_116_46_103_111_",
+            "line": 148,
+            "lines": 117,
+            "calls": {
+              "p111_rt_special_ctor": 2,
+              "p118_rt_borrow_fields": 1,
+              "p111_rt_op": 1,
+              "p111_rt_fail": 4
+            },
+            "ops": {
+              "63": 1
+            }
+          },
+          "p113d_$direct.Map.bit.go": {
+            "symbol": "p113d_FID_36_100_105_114_101_99_116_46_77_97_112_46_98_105_116_46_103_111_",
+            "line": 266,
+            "lines": 15,
+            "calls": {
+              "p113d_$p118borrow.read.Map.bit.go": 1,
+              "p125_rt_ctor2": 1
+            },
+            "ops": {}
+          },
+          "p111_$direct.Map.bit.go": {
+            "symbol": "p111_FID_36_100_105_114_101_99_116_46_77_97_112_46_98_105_116_46_103_111_",
+            "line": 27844,
+            "lines": 11,
+            "calls": {
+              "p111_rt_reg_get": 3,
+              "p113d_$direct.Map.bit.go": 1,
+              "p111_rt_return": 1
+            },
+            "ops": {}
+          },
+          "p111_$direct.Map.bit.at": {
+            "symbol": "p111_FID_36_100_105_114_101_99_116_46_77_97_112_46_98_105_116_46_97_116_",
+            "line": 28040,
+            "lines": 43,
+            "calls": {
+              "p125_rt_take2": 1,
+              "p111_rt_jump": 1,
+              "p111_rt_sink": 1,
+              "p111_rt_fail": 1
+            },
+            "ops": {}
+          },
+          "p111_$direct.Map.bit": {
+            "symbol": "p111_FID_36_100_105_114_101_99_116_46_77_97_112_46_98_105_116_",
+            "line": 28138,
+            "lines": 21,
+            "calls": {
+              "p111_rt_op": 1,
+              "p111_rt_jump": 1
+            },
+            "ops": {
+              "70": 1
+            }
+          }
+        },
+        "candidate": {
+          "p113d_$p118borrow.read.Map.bit.go": {
+            "symbol": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_77_97_112_46_98_105_116_46_103_111_",
+            "line": 148,
+            "lines": 117,
+            "calls": {
+              "p111_rt_special_ctor": 2,
+              "p118_rt_borrow_fields": 1,
+              "p111_rt_op": 1,
+              "p111_rt_fail": 4
+            },
+            "ops": {
+              "63": 1
+            }
+          },
+          "p113d_$direct.Map.bit.go": {
+            "symbol": "p113d_FID_36_100_105_114_101_99_116_46_77_97_112_46_98_105_116_46_103_111_",
+            "line": 266,
+            "lines": 15,
+            "calls": {
+              "p113d_$p118borrow.read.Map.bit.go": 1,
+              "p125_rt_ctor2": 1
+            },
+            "ops": {}
+          },
+          "p113d_$product.Map.bit.go": {
+            "symbol": "p113d_FID_36_112_114_111_100_117_99_116_46_77_97_112_46_98_105_116_46_103_111_",
+            "line": 282,
+            "lines": 12,
+            "calls": {
+              "p113d_$p118borrow.read.Map.bit.go": 1
+            },
+            "ops": {}
+          },
+          "p113d_$direct.Map.bit.at": {
+            "symbol": "p113d_FID_36_100_105_114_101_99_116_46_77_97_112_46_98_105_116_46_97_116_",
+            "line": 2408,
+            "lines": 38,
+            "calls": {
+              "p125_rt_take2": 1,
+              "p113d_$product.Map.bit.go": 1,
+              "p125_rt_ctor2": 1,
+              "p111_rt_sink": 1,
+              "p111_rt_fail": 1
+            },
+            "ops": {}
+          },
+          "p113d_$product.Map.bit.at": {
+            "symbol": "p113d_FID_36_112_114_111_100_117_99_116_46_77_97_112_46_98_105_116_46_97_116_",
+            "line": 2447,
+            "lines": 27,
+            "calls": {
+              "p113d_$product.Map.bit.go": 1
+            },
+            "ops": {}
+          },
+          "p113d_$direct.Map.bit": {
+            "symbol": "p113d_FID_36_100_105_114_101_99_116_46_77_97_112_46_98_105_116_",
+            "line": 2475,
+            "lines": 20,
+            "calls": {
+              "p111_rt_op": 1,
+              "p113d_$direct.Map.bit.at": 1
+            },
+            "ops": {
+              "70": 1
+            }
+          },
+          "p111_$direct.Map.bit.go": {
+            "symbol": "p111_FID_36_100_105_114_101_99_116_46_77_97_112_46_98_105_116_46_103_111_",
+            "line": 27905,
+            "lines": 11,
+            "calls": {
+              "p111_rt_reg_get": 3,
+              "p113d_$direct.Map.bit.go": 1,
+              "p111_rt_return": 1
+            },
+            "ops": {}
+          },
+          "p111_$direct.Map.bit.at": {
+            "symbol": "p111_FID_36_100_105_114_101_99_116_46_77_97_112_46_98_105_116_46_97_116_",
+            "line": 28101,
+            "lines": 10,
+            "calls": {
+              "p111_rt_reg_get": 2,
+              "p113d_$direct.Map.bit.at": 1,
+              "p111_rt_return": 1
+            },
+            "ops": {}
+          },
+          "p111_$direct.Map.bit": {
+            "symbol": "p111_FID_36_100_105_114_101_99_116_46_77_97_112_46_98_105_116_",
+            "line": 28166,
+            "lines": 10,
+            "calls": {
+              "p111_rt_reg_get": 2,
+              "p113d_$direct.Map.bit": 1,
+              "p111_rt_return": 1
+            },
+            "ops": {}
+          }
+        }
+      }
+    }
+  ]
+}

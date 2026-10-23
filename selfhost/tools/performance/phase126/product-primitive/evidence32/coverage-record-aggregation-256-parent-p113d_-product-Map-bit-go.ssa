@@ -1,0 +1,12 @@
+function l $p113d_$product.Map.bit.go(l %state, l %p113_result_out, l %v_v_4294967295, l %v_v_4294967294, l %v_v_4294967293) {
+@entry
+%v_scratch =l alloc8 2048
+jmp @p113_loop
+@p113_loop
+%v_p118b_observation =l call $p113d_$p118borrow.read.Map.bit.go(l %state, l %v_v_4294967295, l %v_v_4294967294, l %v_v_4294967293)
+%p113_output_at_0 =l add %p113_result_out, 0
+storel %v_v_4294967295, %p113_output_at_0
+%p113_output_at_1 =l add %p113_result_out, 8
+storel %v_p118b_observation, %p113_output_at_1
+ret 0
+}

@@ -84,3 +84,27 @@ measured useful changes, then run ordinary controls, the frozen45 corpus and a
 matched compiler-cost screen. A native checkpoint is contingent on material
 benefit, memory/disk headroom and enough remaining time; it is not inferred from
 hosted benchmark success. Final report will replace these pending statements.
+
+## Third focused checkpoint, 00:40 UTC
+
+The flat observer bridge now reaches the actual integrated entry. On five matched
+cases it improves records256 and map-churn128 by about11–13%, evening by6%, and
+leaves RLE nearly unchanged; lexer regresses about8%. The exact two-case hosted
+request experiment gives0.99384× parent total and1.00548× admitted cost, so it
+has no demonstrated compiler-cost improvement or significant penalty in that
+small screen. A bounded existing-pass composition is being tested for the lexer.
+
+The closed tree reshape is rejected. Exact counters show5630 attempts and5630
+successes,11260 fewer allocations/takes, and37.92% fewer Node allocation calls.
+Nevertheless two runtime variants regress5.47% and3.35% geometrically over three
+tree cases. The baseline already recycles the same two cells through its freelist;
+removed allocator calls do not establish reduced fresh-memory traffic. See
+[the negative experiment](tree-reshape.md). RFC1 was built but not timed.
+
+A source-local Nat.divmod product prototype passes77 combined finite checks, but
+all five real emitted programs are byte-identical to the preceding compiler:
+its initial shape hook misses the still-authenticated App before NOp lowering.
+This static activation gate correctly prevents wasting a timing campaign on an
+inactive optimization. Two-function tail-SCC fusion is also still a prototype;
+its first source acquisition failed parsing before target execution. Neither is
+selected or included in a performance claim at this checkpoint.

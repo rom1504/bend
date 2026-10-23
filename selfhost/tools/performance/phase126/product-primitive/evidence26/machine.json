@@ -1,0 +1,131 @@
+{
+  "targetsRun": false,
+  "scope": "objdump reads existing binaries only; static instruction/call sites, not cycles.",
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p125-broad06-coverage-record-aggregation-256-build/program",
+      "bytes": 378776,
+      "sha256": "a11407ee985158d9b4b5de0cc274b2f2d93d3fd95860b5d6b20b4f15860f7ba4"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p126-observer26-coverage-record-aggregation-256-build/program",
+      "bytes": 379496,
+      "sha256": "8de1ff1111db65090fcfe33081409fc228fc600bdbbafbac81a3b4f5a8d67ca9"
+    }
+  ],
+  "functions": [
+    {
+      "role": "parent",
+      "name": "p111_$direct.Map.bit.at",
+      "symbol": "p111_FID_36_100_105_114_101_99_116_46_77_97_112_46_98_105_116_46_97_116_",
+      "instructions": 45,
+      "callSites": [
+        "422186:\tcallq  42f140 <p111_rt_sink>",
+        "4221b4:\tcallq  42f8d0 <p111_rt_fail>",
+        "4221c5:\tcallq  4348f0 <p125_rt_take2>",
+        "422201:\tcallq  42f700 <p111_rt_jump>"
+      ],
+      "assembly": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase126/product-primitive/evidence26/parent-p111_-direct-Map-bit-at.asm",
+        "bytes": 1839,
+        "sha256": "2dd4ff2e2deb61bf728657117802e53b373908a56313c595c1c3e994ba529b50"
+      }
+    },
+    {
+      "role": "parent",
+      "name": "p111_$direct.Map.bit",
+      "symbol": "p111_FID_36_100_105_114_101_99_116_46_77_97_112_46_98_105_116_",
+      "instructions": 26,
+      "callSites": [
+        "422370:\tcallq  42f8f0 <p111_rt_op>",
+        "422397:\tcallq  42f700 <p111_rt_jump>"
+      ],
+      "assembly": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase126/product-primitive/evidence26/parent-p111_-direct-Map-bit.asm",
+        "bytes": 1095,
+        "sha256": "44956912945883a73f58b152bd539673d5baf92255f6a882a7658427549c860a"
+      }
+    },
+    {
+      "role": "candidate",
+      "name": "p113d_$product.Map.bit.go",
+      "symbol": "p113d_FID_36_112_114_111_100_117_99_116_46_77_97_112_46_98_105_116_46_103_111_",
+      "instructions": 20,
+      "callSites": [
+        "4053ca:\tcallq  405220 <p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_77_97_112_46_98_105_116_46_103_111_>"
+      ],
+      "assembly": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase126/product-primitive/evidence26/candidate-p113d_-product-Map-bit-go.asm",
+        "bytes": 975,
+        "sha256": "c2615dbf628947100efd8beb7709ccc31b17ee981d15a368cb80ba802e02ccad"
+      }
+    },
+    {
+      "role": "candidate",
+      "name": "p113d_$direct.Map.bit.at",
+      "symbol": "p113d_FID_36_100_105_114_101_99_116_46_77_97_112_46_98_105_116_46_97_116_",
+      "instructions": 43,
+      "callSites": [
+        "406fde:\tcallq  42f120 <p111_rt_sink>",
+        "406feb:\tcallq  42f8b0 <p111_rt_fail>",
+        "407004:\tcallq  4348d0 <p125_rt_take2>",
+        "407024:\tcallq  4053b0 <p113d_FID_36_112_114_111_100_117_99_116_46_77_97_112_46_98_105_116_46_103_111_>",
+        "40704e:\tcallq  4347e0 <p125_rt_ctor2>"
+      ],
+      "assembly": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase126/product-primitive/evidence26/candidate-p113d_-direct-Map-bit-at.asm",
+        "bytes": 1838,
+        "sha256": "3942747710b61e846de2af1ed05823de3fc082d2fa37b5840279008911077fc1"
+      }
+    },
+    {
+      "role": "candidate",
+      "name": "p113d_$direct.Map.bit",
+      "symbol": "p113d_FID_36_100_105_114_101_99_116_46_77_97_112_46_98_105_116_",
+      "instructions": 22,
+      "callSites": [
+        "4070db:\tcallq  42f8d0 <p111_rt_op>",
+        "4070e9:\tcallq  406fb0 <p113d_FID_36_100_105_114_101_99_116_46_77_97_112_46_98_105_116_46_97_116_>"
+      ],
+      "assembly": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase126/product-primitive/evidence26/candidate-p113d_-direct-Map-bit.asm",
+        "bytes": 1014,
+        "sha256": "c823259424b6da2bfd7ace079db38e090ceecdc14d8cd158e4f66710f2cfe0e1"
+      }
+    },
+    {
+      "role": "candidate",
+      "name": "p111_$direct.Map.bit.at",
+      "symbol": "p111_FID_36_100_105_114_101_99_116_46_77_97_112_46_98_105_116_46_97_116_",
+      "instructions": 29,
+      "callSites": [
+        "422217:\tcallq  42f890 <p111_rt_reg_get>",
+        "42222d:\tcallq  42f890 <p111_rt_reg_get>",
+        "42223e:\tcallq  406fb0 <p113d_FID_36_100_105_114_101_99_116_46_77_97_112_46_98_105_116_46_97_116_>",
+        "422253:\tcallq  42f740 <p111_rt_return>"
+      ],
+      "assembly": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase126/product-primitive/evidence26/candidate-p111_-direct-Map-bit-at.asm",
+        "bytes": 1231,
+        "sha256": "097c8f149dc93f99027dbd0ee638f8499d84cc5ebf12d5ff451d98fdf73ce8d1"
+      }
+    },
+    {
+      "role": "candidate",
+      "name": "p111_$direct.Map.bit",
+      "symbol": "p111_FID_36_100_105_114_101_99_116_46_77_97_112_46_98_105_116_",
+      "instructions": 29,
+      "callSites": [
+        "422397:\tcallq  42f890 <p111_rt_reg_get>",
+        "4223ad:\tcallq  42f890 <p111_rt_reg_get>",
+        "4223be:\tcallq  4070a0 <p113d_FID_36_100_105_114_101_99_116_46_77_97_112_46_98_105_116_>",
+        "4223d3:\tcallq  42f740 <p111_rt_return>"
+      ],
+      "assembly": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase126/product-primitive/evidence26/candidate-p111_-direct-Map-bit.asm",
+        "bytes": 1211,
+        "sha256": "de53307f8cba2ac97caabede405134ad8e5c8f6fc712faeedb7a914778b19b1a"
+      }
+    }
+  ]
+}

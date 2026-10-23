@@ -1,10 +1,10 @@
 # Phase126: keep representations useful across optimization boundaries
 
-Final integration is in progress. Source32 is frozen; the checked hosted API,
-98 finite checks and nine ordinary native programs pass. N1 builds and passes
-focused19. The native campaign stopped at its storage reserve before self-emission;
-the failed receipt is preserved. Original45 timing and the resumed native chain
-must finish before this report can claim broad gains or native qualification.
+Source32 is **native-qualified**: exact hosted→N1→N2 QBE reproduction, both
+focused19 suites and all45 N2 correctness cases pass. The checked hosted API,
+98 finite checks and nine ordinary native programs also pass. The final original45
+runtime comparison is running; broad performance claims remain pending.
+See [native results](native-results.md) for acquisition costs and storage recovery.
 
 [Design](../../design/phase126/persistent-private-values.md) ·
 [Reproduce](../../selfhost/tools/performance/phase126/README.md) ·

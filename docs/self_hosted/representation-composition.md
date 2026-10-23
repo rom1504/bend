@@ -12,6 +12,8 @@ The selected composition has six parts:
 - Keep exact F32 values in local machine temporaries across a proven buffer region.
   Calls retain the original full-Term ABI. Rounding, signed zero and observation
   boundaries remain explicit; there is no fast-math or reassociation.
+  The raw-bit transport and guarded-conversion controls do not establish a
+  general arithmetic NaN-payload or floating-environment equivalence claim.
 - Evaluate small closed scalar selectors into readonly tables. The checked plan
   proves every row and the full-width default. Unknown, effectful, nonfinite or
   unsupported expressions retain the ordinary path.

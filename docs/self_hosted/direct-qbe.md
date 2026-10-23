@@ -1,5 +1,11 @@
 # Direct QBE backend for the Bend compiler written in Bend
 
+The [Phase126 representation-composition candidate](representation-composition.md)
+is native-qualified through hosted→N1→N2: exact99,526,466-byte QBE reproduction,
+focused19 on both images and original45 correctness on N2. Its independent final
+runtime and compiler-cost results are in the [Phase126 report](../../implementation/phase126/README.md).
+Installed selections remain unchanged.
+
 The [Phase125 owned-composition candidate](owned-native-composition.md) is now
 native-qualified through hosted→N1→N2, exact93.0MB QBE reproduction, focused19 on
 both images and45 one-shot cases on N2. Its separate checked-hosted runtime gate

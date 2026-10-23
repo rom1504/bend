@@ -8,11 +8,13 @@ contains the reusable workflow; [the design](../../design/phase127/general-nativ
 records the investigation's scope.
 
 Its first causal result is a missing transport admission: restoring an audited
-helper certificate makes the same-source native compiler **11.37% faster across
+helper certificate makes the same-source native compiler take **11.37% less time across
 three short requests** and reduces one full-source request from **494.0 to
 444.8 seconds**. No compiler instructions change. The latest profiles then
 identify ownership-heavy name operations and duplicated lowering as useful
-next targets. This is evidence for specific experiments, not an upstream-parity
+next targets. An extracted real name-search kernel runs14.65× slower than
+upstream C while performing tens of millions of ownership operations, giving
+the next investigation a small, independently checked workload. This is evidence for specific experiments, not an upstream-parity
 claim or a production promotion.
 
 Parent: Phase126 `6fe4f29`, branch `selfhost/bootstrap`. Work started2026-10-23
@@ -80,6 +82,13 @@ samples contain no fill. The [caller audit](physical-caller-audit.md),
 [P127-002](../../experiments/phase127/P127-002-live-bank-admission.md), and retained
 machine/counter comparisons provide the chain from source omission to runtime
 work to clean timing.
+
+A separate ordinary tree-bitonic transfer passes14 complete-output observations.
+Its clean three-round process median falls1.04674→0.93074s, or11.08%; the
+125,089-byte machine text is identical and the descriptor changes11→15.
+This is one frozen workload, not a new44-point score or a matched Phase125
+regression-recovery measurement. Its short sampled captures remain below the
+quantitative profile threshold.
 
 **Qualification boundary:** this experimental executable still contains original
 Phase126 compiler source, so it emits original Phase126 QBE. The repaired
@@ -178,6 +187,38 @@ Linux x86-64 native ELF, including other native binaries for physical sampling.
 This version does not provide all-thread/GPU profiling, logical recursive
 stacks, source-line debug information or allocation-origin tracking.
 
+## A cheap real compiler kernel for the next iteration
+
+The [name-search workload](../../selfhost/tools/performance/phase127/name-search/README.md)
+extracts five compiler functions byte-for-byte: owning string equality, its
+root-retaining wrapper, and name membership. A retained name catalogue and
+fourteen query patterns cover aliases, separately constructed equal strings,
+early/late hits, misses and Unicode. Expected Booleans and modular digests come
+from an independent host oracle, frozen before execution.
+
+The first128-repeat calibration takes0.383s. The512-repeat comparison takes
+1.49571s in QBE versus0.10208s in pinned upstream C/Clang O3 (three clean rounds),
+or14.65×. This is an extracted shared-name workload, not a full compiler ratio
+or general program-runtime estimate. Both compilers pass the same independent
+ordinary and timed outputs. No kernel optimization has been implemented.
+
+Events show66.53million `term_drop` entries and55.92million takes, against only
+63,613 allocation calls,187 dispatches, zero frames and zero register clearing.
+Repeated references and ownership consumption, rather than high allocation or
+scheduler volume, are therefore a concrete target. Active context remains in
+the outer loop during private helper calls; physical leaves provide the needed
+complementary view. See the [proxy analysis](name-search-proxy.md).
+
+The initial2–3ms sampling attempt overruns and is excluded from quantitative
+CPU attribution. The profiler correctly detects this failure; the frozen
+8ms/13ms repeat is separate. Accepted QBE samples place54.20% in the two
+destruction/reclamation leaves; upstream remains too short for quantitative
+CPU shares. Its generated C directly uses borrowed `term_peek` and field loads,
+where QBE emits owning takes. This difference already exists before Clang
+optimizes the C. The original clean timing and event counts remain valid.
+The proxy is deliberately small enough to test borrowing and indexing as
+independent factors before acquiring another full compiler executable.
+
 ## Independent checks and retained failures
 
 The offline suite passes80 tests, including seven ordered-timeline controls. The frozen
@@ -189,7 +230,10 @@ presented as an independent blind first-run prediction.
 
 Two checked-API attempts exceeded their2GiB guard; the4GiB attempt succeeded.
 A stale tool pin rejected an ordinary-program plan after the runner changed.
-A wrong fixture name was rejected before execution. A full request was refused
+A wrong fixture name was rejected before execution. The new proxy scaffold
+was rejected once for a computed match scrutinee and once for affine variable
+reuse; corrected scaffold quantities/syntax preserve every extracted function
+and expected result. A full request was refused
 for insufficient disk before launching. None of these gates was weakened.
 An initial ELF comparison treated NOBITS as file data; the corrected durable
 comparison handles its zero-initialized extent properly. Rejected observations
@@ -197,10 +241,12 @@ and obsolete diagnostics are preserved rather than substituted silently.
 
 ## Research cost and next steps
 
-At the report-data checkpoint,31 recorded guarded jobs total56.72minutes:
+At the final measurement checkpoint,42 recorded guarded jobs total58.06minutes:
 31.07minutes for full-source measurements,13.86minutes for the single full-image
-emission,10.84minutes for short experiments/checks, and0.95minutes for acquisition,
-linking and profiling controls. Four recorded failed target jobs total26.47s.
+emission,12.14minutes for short experiments/checks, and0.99minutes for acquisition,
+linking and profiling controls. Six recorded failed target jobs total31.09s.
+The profiler records306 output-checked observations, including12 captures
+rejected for CPU-attribution loss; semantic success does not override that gate.
 Offline development, source/machine audits, report work and agent time are
 additional and overlap the target lane; guarded time is not total research cost.
 No model quota counter was available, so token/quota consumption is not inferred.
@@ -211,9 +257,14 @@ review. Peak measured process-tree RSS was5.55GiB under a6GiB bound with a16GiB
 available-memory floor. A recoverable extracted Lean download archive and
 exact-output hardlinks provided disk headroom while retaining evidence paths.
 See [storage receipt](storage.json), capture dedup receipts, and
-[measurement data](figures/data.json).
+[measurement data](figures/data.json) and [cost inventory](research-cost.json).
+The generic tooling adds2,939 Python lines,452 sampler/runtime C lines and1,021
+Python test lines at this checkpoint, excluding control fixtures and phase
+workload scripts. No selected compiler source changes. This is a maintenance
+cost of the new measurement capability, not a compiler simplicity improvement.
 
-Recommended next sequence:
+The [next-experiment note](next-experiments.md) gives falsifiers, ownership
+obligations and measured fast-loop costs. Recommended next sequence:
 
 1. Integrate the audited live-bank admission and qualify the repaired source.
    The gain is already measured; also audit the separate concat-helper admission.
@@ -233,3 +284,15 @@ Recommended next sequence:
 The phase establishes better diagnosis and one causal compiler-runtime result.
 It does not demonstrate recursive research acceleration, broad QBE/upstream
 parity, improved N2 compilation throughput or a new45-program runtime score.
+
+## Reproduction and archived evidence
+
+The [workbench](../../selfhost/tools/performance/phase127/README.md) links exact
+commands and manifests; the [profiler guide](../../docs/self_hosted/PROFILING.md)
+explains how to add an unrelated program. The [evidence capsule](evidence/README.md)
+contains raw ordered samples, event vectors, outputs, manifests, method snapshots,
+source/ABI audits and derived attribution, with an inventory checked after
+compression. Full compiler executables/objects and99.5MB QBE products remain
+in the retained build directories with pinned identities and checked rebuild
+commands. The archive is inspectable without those executables; reproducing a
+new capture requires the original binaries or a qualified rebuild.

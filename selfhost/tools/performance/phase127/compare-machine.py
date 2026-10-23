@@ -46,7 +46,10 @@ def main():
     assert len(da['.data'])==len(db['.data'])
     differences=[dict(offset=i,before=x,after=y)for i,(x,y)in enumerate(zip(da['.data'],db['.data']))if x!=y]
     expected=pa-sa['.data']['address']+88
-    assert differences==[dict(offset=expected,before=1,after=5)],differences
+    assert 0 <= expected < len(da['.data'])
+    capability=da['.data'][expected]
+    assert not capability & 4
+    assert differences==[dict(offset=expected,before=capability,after=capability|4)],differences
     save(a.out,dict(complete=True,inputs=inputs,textByteIdentical=True,textBytes=sa['.text']['bytes'],
         changedAllocatedSections=changed,dataByteDifferences=differences,before=sa,after=sb,
         scope='Same machine instructions, layout and allocated sections except the verified capability byte and linker build ID. NOBITS is compared as zero-initialized extent, not read as file data.'))

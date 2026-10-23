@@ -1,5 +1,9 @@
 # Compiler experiment workflow
 
+Latest diagnostic: [Phase127 general native profiler](../implementation/phase127/README.md).
+Read the [current frontier](STEERING.md) for qualification, causal compiler-cost
+results and the next measured optimization opportunities.
+
 Latest experiment: [Phase121 construction elimination](../implementation/phase121/README.md).
 Two Bend rules reuse existing JS semantic checks to remove private list pipelines
 and immediately applied closure chains before native lowering. The report keeps

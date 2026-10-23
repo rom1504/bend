@@ -1,0 +1,146 @@
+{
+  "checkpoint": "2026-10-23T12:29:35.853822+00:00",
+  "start": "2026-10-23T09:44:37Z",
+  "profilerObservations": 306,
+  "modes": {
+    "clean": 96,
+    "sample": 192,
+    "events": 18
+  },
+  "runs": [
+    {
+      "path": "selfhost/build/phase127/paired01/report.json",
+      "observations": 42
+    },
+    {
+      "path": "selfhost/build/phase127/events01/report.json",
+      "observations": 6
+    },
+    {
+      "path": "selfhost/build/phase127/physical02/report.json",
+      "observations": 24
+    },
+    {
+      "path": "selfhost/build/phase127/dispatch02/report.json",
+      "observations": 24
+    },
+    {
+      "path": "selfhost/build/phase127/live-bank-paired01/report.json",
+      "observations": 45
+    },
+    {
+      "path": "selfhost/build/phase127/live-bank-diagnostic01/report.json",
+      "observations": 30
+    },
+    {
+      "path": "selfhost/build/phase127/full-clean02/report.json",
+      "observations": 2
+    },
+    {
+      "path": "selfhost/build/phase127/full-profile01/report.json",
+      "observations": 1
+    },
+    {
+      "path": "selfhost/build/phase127/full-physical01/report.json",
+      "observations": 1
+    },
+    {
+      "path": "selfhost/build/phase127/cache-live01/report.json",
+      "observations": 30
+    },
+    {
+      "path": "selfhost/build/phase127/programs02/run01/report.json",
+      "observations": 50
+    },
+    {
+      "path": "selfhost/build/phase127/tree-live-bank01/report.json",
+      "observations": 14
+    },
+    {
+      "path": "selfhost/build/phase127/name-search-calibrate01/report.json",
+      "observations": 1
+    },
+    {
+      "path": "selfhost/build/phase127/name-search-profile01/report.json",
+      "observations": 24
+    },
+    {
+      "path": "selfhost/build/phase127/name-search-profile02/report.json",
+      "observations": 12
+    }
+  ],
+  "guardedJobs": 42,
+  "guardedSeconds": 3483.324105391046,
+  "guardedSecondsByCategory": {
+    "short experiments and validation": 728.5746223917231,
+    "profiling machinery and controls": 19.25901359366253,
+    "full-source measurements": 1863.9948274451308,
+    "compiler acquisition and build": 39.86529424972832,
+    "full-image emission": 831.6303477108013
+  },
+  "failedGuardedJobs": [
+    {
+      "path": "selfhost/build/phase127/live-bank-api01-guard/process.json",
+      "category": "compiler acquisition and build",
+      "started": 1792750841.5543895,
+      "finished": 1792750854.695343,
+      "wallSeconds": 13.140957150841132,
+      "returncode": -9,
+      "complete": false,
+      "peakTreeRssBytes": 2149384192
+    },
+    {
+      "path": "selfhost/build/phase127/live-bank-api02-guard/process.json",
+      "category": "compiler acquisition and build",
+      "started": 1792751254.8123882,
+      "finished": 1792751267.7867756,
+      "wallSeconds": 12.9743918760214,
+      "returncode": -9,
+      "complete": false,
+      "peakTreeRssBytes": 2147991552
+    },
+    {
+      "path": "selfhost/build/phase127/live-bank-small01-guard/process.json",
+      "category": "short experiments and validation",
+      "started": 1792751350.0916219,
+      "finished": 1792751350.1761174,
+      "wallSeconds": 0.084498206153512,
+      "returncode": 1,
+      "complete": false,
+      "peakTreeRssBytes": 54198272
+    },
+    {
+      "path": "selfhost/build/phase127/name-search-emission01-guard/process.json",
+      "category": "short experiments and validation",
+      "started": 1792757313.492161,
+      "finished": 1792757315.8030846,
+      "wallSeconds": 2.3109254019800574,
+      "returncode": 1,
+      "complete": false,
+      "peakTreeRssBytes": 195813376
+    },
+    {
+      "path": "selfhost/build/phase127/name-search-emission02-guard/process.json",
+      "category": "short experiments and validation",
+      "started": 1792757517.8871586,
+      "finished": 1792757520.1968265,
+      "wallSeconds": 2.309668679954484,
+      "returncode": 1,
+      "complete": false,
+      "peakTreeRssBytes": 198324224
+    },
+    {
+      "path": "selfhost/build/phase127/runtime-drop-control01-guard/process.json",
+      "category": "profiling machinery and controls",
+      "started": 1792752952.8481097,
+      "finished": 1792752953.1182964,
+      "wallSeconds": 0.2701899812091142,
+      "returncode": 1,
+      "complete": false,
+      "peakTreeRssBytes": 33640448
+    }
+  ],
+  "cpuSamplesRejectedForOverruns": 12,
+  "scope": "CPU sample quality is separate from output correctness. Guard sums omit offline and agent work; they are not complete research time or model quota. No usage/quota telemetry was available.",
+  "deduplicatedAllocatedBytes": 494419968
+}

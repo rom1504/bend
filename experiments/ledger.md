@@ -5462,3 +5462,42 @@ helper result through its outer Map continuation. Require unrelated transfer,
 independent correctness and real runtime wins. Do not infer hotness from refusal
 counts or allocator-call reductions. Keep one serial guarded target lane and
 preserve qualified Phase125 as the cheaper iteration alternative.
+
+
+## Phase127 native profiling and causal cost recovery — 2026-10-23
+
+[Design](../design/phase127/general-native-profiler.md) ·
+[Report](../implementation/phase127/README.md) ·
+[Generic profiler](../docs/self_hosted/PROFILING.md) ·
+[Experiments](phase127/P127-001-general-profiler.md).
+
+Reusable native profiling now covers compiler requests and ordinary programs;
+80 offline controls pass. Clean timings, physical samples, authenticated callers,
+active Bend owners, event counters and approximate CPU timelines remain distinct.
+Ordinary transfer shows about1% physical-sampling overhead versus25–90% for
+counters, which are kept out of performance claims.
+
+A missing divmod-helper transport certificate explains a large part of the
+Phase126 native slowdown. Checked same-source image: exact machine instructions,
+one capability byte1→5,49 finite predicates pass; short request medians improve
+11.37%, single full-source494.0→444.8s (9.95%). Counter clearing disappears while
+all15 other channels match per FID. No installed change or new repaired-source
+N1/N2 gate. No new upstream or44-point runtime comparison.
+
+Full-source ownership destruction/reclamation is40.03% of original-ELF samples;
+the diagnostic timeline identifies early declaration search, middle membership/
+provenance work, later verifier/index operations and final text construction.
+Source tracing motivates scalar-result borrowed comparison and amortized lookup,
+with archived prototype status corrected. Map-specific native lowering repeats;
+existing prepared Base already saves~1.7s versus live preparation. Preserve the
+negative/failed evidence and qualify changes separately from diagnosis.
+
+A bounded exact name-search kernel now passes QBE/upstream ordinary and timed
+outputs, with clean1.496s versus0.102s (14.65× on this proxy only). It performs
+66.53million destruction entries versus63,613 allocations; accepted QBE samples
+put54.20% in destruction/reclamation. Upstream C emits borrowed field reads
+before Clang, where QBE still consumes nodes. The2–3ms sampling attempt overruns
+and is retained/excluded;8–13ms succeeds for QBE. This supplies a cheap next
+experiment, not a broad score or completed optimization. Ordinary tree transfer
+of the admission repair improves11.08%, with identical instructions; no44-point
+score is recomputed.

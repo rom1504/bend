@@ -26,11 +26,11 @@ Root-owned serial validation commands, with fresh output paths:
 
 ```sh
 python3 -B selfhost/tools/performance/phase111/guard.py \
-  --out selfhost/build/phase127/live-bank-api01-guard --seconds 90 \
-  --rss-mib 2048 --available-mib 16384 --file-mib 64 --cpu 3 -- \
+  --out selfhost/build/phase127/live-bank-api-replay-guard --seconds 90 \
+  --rss-mib 4096 --available-mib 16384 --file-mib 64 --cpu 3 -- \
   python3 -B selfhost/tools/performance/phase111/check-api.py \
   --source selfhost/build/phase127/live-bank-source01/compiler.bend \
-  --out selfhost/build/phase111/p127-live-bank-api01 \
+  --out selfhost/build/phase111/p127-live-bank-api-replay \
   p88_cache_prepare p86_prepare p86_plan p111_runtime_admission \
   p111_emit_admitted p111_compile_source p127lb_controls \
   p118z_controls p126dp_controls p126dp_app_controls
@@ -40,9 +40,13 @@ python3 -B selfhost/tools/performance/phase111/guard.py \
   --rss-mib 2048 --available-mib 16384 --file-mib 64 --cpu 3 -- \
   node --stack-size=8192 \
   selfhost/tools/performance/phase127/live-bank/finite.mjs \
-  selfhost/build/phase111/p127-live-bank-api01/report.json \
+  selfhost/build/phase111/p127-live-bank-api-replay/report.json \
   selfhost/build/phase127/live-bank-finite01
 ```
+
+The retained successful acquisition is `p127-live-bank-api03`; two earlier
+2GiB guard stops demonstrate why the replay uses4GiB. Use fresh paths for every
+replay, including the finite runner and source materialization.
 
 The 49 predicates are 20 new transport/ABI controls, eight original transport
 controls, 16 original divmod controls and five original application controls.
@@ -83,7 +87,7 @@ python3 -B selfhost/tools/performance/phase111/guard.py \
   --rss-mib 6144 --available-mib 16384 --file-mib 128 --cpu 3 -- \
   selfhost/.bootstrap/bun-1.4.3/bun \
   selfhost/tools/performance/phase118/native-hosted-v2.mjs \
-  selfhost/build/phase111/p127-live-bank-api01/api.mjs \
+  selfhost/build/phase111/p127-live-bank-api-replay/api.mjs \
   selfhost/build/phase126/observer-divmod-source32/compiler.bend \
   selfhost/build/phase111/p127-live-bank-same-source-emit cache array
 ```

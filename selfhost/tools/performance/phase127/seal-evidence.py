@@ -36,6 +36,20 @@ def main():
         if path.suffix in extensions or (path.name in {'stdout', 'stderr'} and path.stat().st_size < 64*1024):
             files.append(path)
     files += [ROOT/'selfhost/build/phase126/observer-divmod-source32/compiler.bend']
+    for directory in [
+        'phase111/p127-live-bank-api03',
+        'phase111/p127-live-bank-same-source01-emit',
+        'phase111/p127-live-bank-same-source01-n1',
+        'phase111/p127-tree-live-bank-build01',
+        'phase111/p127-name-search-build01',
+        'phase118/p127-live-bank-small02',
+        'phase118/p127-name-search-emit01',
+        'phase118/p127-name-search-emit02',
+        'phase118/p127-name-search-emit03',
+    ]:
+        files.append(ROOT/'selfhost/build'/directory/'report.json')
+    files += [ROOT/'selfhost/build/phase118/p127-name-search-emit03/compiler-name-search.ssa',
+              ROOT/'selfhost/build/phase118/p127-live-bank-small02/tree-bitonic.ssa']
     # The three exact-QBE expectations are independent of the repaired image.
     manifest = json.loads((BUILD/'followup01/n1-manifest.json').read_text())
     for workload in manifest['workloads']:

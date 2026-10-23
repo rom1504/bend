@@ -1,3 +1,47 @@
+# Latest diagnostic: Phase127 reusable native profiler and cost recovery
+
+[Report](../implementation/phase127/README.md) ·
+[Profiler guide](../docs/self_hosted/PROFILING.md) ·
+[Full-scale opportunities](../implementation/phase127/full-scale-opportunities.md) ·
+[Design](../design/phase127/general-native-profiler.md).
+
+General sequential Linux/x86-64 profiling now combines unchanged-ELF samples,
+authenticated selected physical callers, active Bend contexts, conditional
+lowered owners, sixteen event counters and ordered CPU windows. Unknowns and
+instrumentation overhead stay explicit. Ordinary Mandelbrot/tree transfer,
+independent ABI controls and80 offline tests pass. No installed selection change.
+
+A missing `p126_rt_nat_divmod` live-bank admission globally disabled transport
+in Phase126. A checked producer repair compiles unchanged source32 with only
+one QBE capability-field difference and byte-identical10.10MB machine text.
+Contemporaneous three-request medians improve11.37% geometrically; one full-source
+request494.0→444.8s improves9.95%. Other15 counters match exactly per FID;
+requested register clearing falls to zero. This is a causal same-source image,
+**not repaired-source N1/N2 qualification**. Existing Phase126/125 images remain.
+
+Full-source uninstrumented sampling puts40.03% in term_drop/span_fade. Context
+profiles and source/machine inspection point to owning string comparison,
+linear name/declaration search, constructor-provenance rescans and borrowed
+observer product transport. The archived scalar-result observer V2 passed
+bounded checks but has no demonstrated compiler-level admission or isolated
+gain; do not relabel it as an established performance rejection. Short requests
+also retain fixed Base decoding and Map-specific repeated native lowering.
+
+An exact five-function name-search extraction now passes both QBE and upstream
+C outputs. QBE takes1.496s versus0.102s for upstream (14.65× on this shared-name
+proxy only);66.53million drop entries accompany just63,613 allocations and187
+dispatches. Accepted samples put54.20% in destruction/reclamation. Upstream C
+already emits borrowed peeks where QBE emits owning takes. This is a cheap,
+concrete optimization workload, not a new whole-compiler ratio. The initial
+2–3ms samples overrun and are excluded;8–13ms QBE repeats pass.
+
+Next: qualify the admission repair; skip guaranteed-unused late preparation
+with exact-QBE equivalence; test borrowed scalar equality versus indexed lookup
+in a small real compiler computation before another full image. Keep effects,
+sharing, nonowning-result and transport admission obligations. No new upstream
+ratio,44-point program-runtime score, optimizer rewrite or recursive-acceleration
+claim follows from these profiles.
+
 # Latest experiment: Phase126 representation composition and native checkpoint
 
 [Report](../implementation/phase126/README.md) ·

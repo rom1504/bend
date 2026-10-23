@@ -1,7 +1,7 @@
 # P127-001: can reusable attribution explain native compiler cost?
 
-Status: reusable profiler and causal diagnosis demonstrated; final consolidation
-in progress. Parent `6fe4f29`; start2026-10-23 09:44 UTC.
+Status: complete; reusable profiler, causal diagnosis and frozen compiler-kernel
+transfer demonstrated. Parent `6fe4f29`; start2026-10-23 09:44 UTC.
 
 Hypothesis: unchanged-binary samples plus a small generic context/counter layer
 can distinguish repeated compiler work from runtime representation costs, making
@@ -40,8 +40,8 @@ failed expectation is retained; source tracing explains the extra allocation,
 refill and free, and the corrected expectation passes. This is a corrected
 source-audited control, not a blind first-run prediction.
 
-Other retained failures: a2GiB checked-API acquisition was stopped by the RSS
-guard and passed with a4GiB bound; a stale tooling pin rejected a prepared
+Other retained failures: two2GiB checked-API acquisitions were stopped by the RSS
+guard; acquisition passed with a4GiB bound; a stale tooling pin rejected a prepared
 ordinary-program plan after the runner changed; a full-request launch was
 refused for insufficient disk before execution. Fresh plans and exact-byte
 deduplication resolved these without weakening gates. An early section-inspection
@@ -55,3 +55,11 @@ context samples and an ordered CPU timeline. Full-scale ownership/name-search
 costs differ materially from fixed short-request preparation. Evidence,
 limitations, cost and next steps belong in
 the [report](../../implementation/phase127/README.md).
+
+A final compiler-derived name-search proxy transfers the ownership hotspot:
+independent QBE/upstream outputs pass, clean runtime differs14.65× on the
+shared-name workload, and event counts show66.53million destruction entries
+against63,613 allocations. The first2–3ms samples overrun and are rejected;
+8–13ms sampling qualifies the QBE distribution. Upstream's emitted C already
+uses borrowed peeks, identifying a missing lowering capability before machine
+optimization. The proxy is excluded from the frozen broad benchmark.

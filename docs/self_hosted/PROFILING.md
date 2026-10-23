@@ -186,7 +186,10 @@ their frozen oracle. It preserves every path and byte and records metadata
 changes; those shared files must remain immutable. Never edit retained artifacts
 in place. Counter-on and context-only timing distributions stay separate.
 
-Use two sampling periods to expose periodic aliasing. Reports retain low-sample
+Use two sampling periods to expose periodic aliasing. Shorter is not always
+better: the name-search control produced timer overruns at2–3ms on this host;
+8ms/13ms captures were therefore collected separately. Retain and exclude
+failed captures rather than counting more interrupts as better evidence. Reports retain low-sample
 captures but suppress confident quantitative attribution. Comparison can pool
 compatible captures; it requires at least 500 accepted samples, no reported loss,
 adequate main-thread CPU coverage and plausible timer delivery before estimating

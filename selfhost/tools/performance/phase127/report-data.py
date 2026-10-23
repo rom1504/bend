@@ -141,6 +141,8 @@ def main():
     for ext in ['svg', 'png']:
         fig.savefig(a.out/f'full-profile.{ext}', dpi=160)
     plt.close(fig)
+    for svg in a.out.glob('*.svg'):
+        svg.write_text('\n'.join(line.rstrip() for line in svg.read_text().splitlines())+'\n')
     print(json.dumps({'out': str(a.out), 'shortRatio': result['repairedOverPhase126'],
                       'fullRatio': result['fullSinglePairRatio'], 'guardedSeconds': sum(totals.values())}))
 

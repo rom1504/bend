@@ -1,0 +1,1211 @@
+{
+  "schema": "bend-name-search-proxy-summary-v1",
+  "complete": true,
+  "scope": "Extracted compiler workload; no whole-compiler or frozen-suite speedup claim.",
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase127/name-search-profile01/report.json",
+      "bytes": 57408,
+      "sha256": "2908a3cd431159e0aad6e46c770e416d12f3fd79532365ea5870a02a89418d5e"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase127/name-search-comparison01.json",
+      "bytes": 59253,
+      "sha256": "58aa7849ae680559d1018a2945fcc554112db5c06dc22dfa9ecc616ea10a31c8"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase127/name-search/benchmark.bend",
+      "bytes": 4805,
+      "sha256": "c599109a40883b3136fc0d0e5c56243e3a1046f0a54d3c1dcb7f9be8fbd20b1b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase127/name-search/oracle.json",
+      "bytes": 10104,
+      "sha256": "baf160a867db00113d4f4aa332c00657d961f06481a92badad5e6b630bb002e3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase127/name-search-timing-oracle02.json",
+      "bytes": 390,
+      "sha256": "5437fbd2ff74ab2f23cfdb28335c2c939aed3c85cef11f9d770e29c0c14601d0"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase127/name-search-profile02/report.json",
+      "bytes": 38777,
+      "sha256": "dd977e543a577d89dc3a1e132c45b4a1b8b5e7564a5cb0fee70385aa9b06f84a"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase127/name-search-comparison02.json",
+      "bytes": 105765,
+      "sha256": "7ec398cf1651f1dd6c2beebda337d1381369eb9e11894ee78cc16240b3d97f18"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase127/name-search-upstream01/source.1.c",
+      "bytes": 179851,
+      "sha256": "59d213a92e300404444645ec14a57513f7b572d63113a6644e7b8268590945e7"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/p127-name-search-emit03/compiler-name-search.ssa",
+      "bytes": 681079,
+      "sha256": "d6564bbf24cc2605c9574713aa222fed8ba396cee2eba86d8c761a6de3a2058f"
+    }
+  ],
+  "arguments": [
+    "512",
+    "2",
+    "1024",
+    "0"
+  ],
+  "variants": {
+    "qbe": {
+      "binary": {
+        "bytes": 256304,
+        "sha256": "5cd030cc7a6e7e2d85f75dbcc4f04c9c846ea9d0e35b38424649e3da9a91038c"
+      },
+      "clean": {
+        "wallSeconds": {
+          "samples": [
+            1.4977025089319795,
+            1.4934067679569125,
+            1.4957061770837754
+          ],
+          "count": 3,
+          "median": 1.4957061770837754,
+          "minimum": 1.4934067679569125,
+          "maximum": 1.4977025089319795
+        },
+        "cpuSeconds": {
+          "samples": [
+            1.496245,
+            1.492553,
+            1.4948739999999998
+          ],
+          "count": 3,
+          "median": 1.4948739999999998,
+          "minimum": 1.492553,
+          "maximum": 1.496245
+        },
+        "peakRssKiB": {
+          "samples": [
+            9640,
+            9792,
+            9824
+          ],
+          "count": 3,
+          "median": 9792,
+          "minimum": 9640,
+          "maximum": 9824
+        }
+      },
+      "contextOnlyUnsampled": {
+        "wallSeconds": {
+          "samples": [],
+          "count": 0,
+          "median": null,
+          "minimum": null,
+          "maximum": null
+        },
+        "cpuSeconds": {
+          "samples": [],
+          "count": 0,
+          "median": null,
+          "minimum": null,
+          "maximum": null
+        },
+        "peakRssKiB": {
+          "samples": [],
+          "count": 0,
+          "median": null,
+          "minimum": null,
+          "maximum": null
+        }
+      },
+      "counterEnabled": {
+        "wallSeconds": {
+          "samples": [],
+          "count": 0,
+          "median": null,
+          "minimum": null,
+          "maximum": null
+        },
+        "cpuSeconds": {
+          "samples": [],
+          "count": 0,
+          "median": null,
+          "minimum": null,
+          "maximum": null
+        },
+        "peakRssKiB": {
+          "samples": [],
+          "count": 0,
+          "median": null,
+          "minimum": null,
+          "maximum": null
+        }
+      },
+      "internalMilliseconds": {
+        "samples": [
+          1486,
+          1482,
+          1485
+        ],
+        "median": 1485,
+        "kind": "clean"
+      },
+      "profile": {
+        "samples": 603,
+        "adequate": true,
+        "estimateAvailable": true,
+        "acceptedCaptures": [
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase127/name-search-profile02/000-sample-compiler-name-search-1024-qbe/analysis.json",
+            "bytes": 49953,
+            "sha256": "1bea2cdc14095bf453a6927f9d643d4de7e8fe891cd5f731013fdc9d0b8c982b",
+            "samples": 185,
+            "periodUs": 8000,
+            "dropped": 0,
+            "overruns": 0,
+            "captureWindowChildCpuFraction": 0.9983489411006106,
+            "wholeChildCpuCoverageAdequate": true
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase127/name-search-profile02/005-sample-compiler-name-search-1024-qbe/analysis.json",
+            "bytes": 44434,
+            "sha256": "7f27ba7e5da8cbeb4a001608cd11f1703da0a5ea5542e391af83ef96a64b8cab",
+            "samples": 115,
+            "periodUs": 13000,
+            "dropped": 0,
+            "overruns": 0,
+            "captureWindowChildCpuFraction": 0.9986705712337888,
+            "wholeChildCpuCoverageAdequate": true
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase127/name-search-profile02/007-sample-compiler-name-search-1024-qbe/analysis.json",
+            "bytes": 56187,
+            "sha256": "3ddb1d61bb784097b35be37470dae651cabb08ddacb0a245ac6bfc6c8876cb3d",
+            "samples": 189,
+            "periodUs": 8000,
+            "dropped": 0,
+            "overruns": 0,
+            "captureWindowChildCpuFraction": 0.9983522126638751,
+            "wholeChildCpuCoverageAdequate": true
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase127/name-search-profile02/009-sample-compiler-name-search-1024-qbe/analysis.json",
+            "bytes": 49511,
+            "sha256": "7323d4fb984a027c853d5aed76fed8b600e29edc8a9f3c63e72a624c6bf5f12b",
+            "samples": 114,
+            "periodUs": 13000,
+            "dropped": 0,
+            "overruns": 0,
+            "captureWindowChildCpuFraction": 0.998477861682183,
+            "wholeChildCpuCoverageAdequate": true
+          }
+        ],
+        "rejectedCaptures": [
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase127/name-search-profile01/009-sample-compiler-name-search-1024-qbe/analysis.json",
+            "bytes": 71635,
+            "sha256": "ceb0bb5790ef83597cd55ba5f3ac4eb121fce88939f0139f6ac6704f36096876",
+            "samples": 380,
+            "periodUs": 2000,
+            "dropped": 0,
+            "overruns": 380,
+            "captureWindowChildCpuFraction": 0.9975908874130189,
+            "wholeChildCpuCoverageAdequate": true,
+            "reasons": [
+              "overruns",
+              "delivery_plausible"
+            ]
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase127/name-search-profile01/014-sample-compiler-name-search-1024-qbe/analysis.json",
+            "bytes": 74040,
+            "sha256": "9d985d435ddfff69a5036f0fffa4d0a6edd932de5d1fc73667a624f41dc8b10c",
+            "samples": 370,
+            "periodUs": 3000,
+            "dropped": 0,
+            "overruns": 123,
+            "captureWindowChildCpuFraction": 0.9975684757563243,
+            "wholeChildCpuCoverageAdequate": true,
+            "reasons": [
+              "overruns",
+              "delivery_plausible"
+            ]
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase127/name-search-profile01/016-sample-compiler-name-search-1024-qbe/analysis.json",
+            "bytes": 74959,
+            "sha256": "71c17653a59ad4998d8e01c750b915fce74eb4c7862625dea1700856b37af075",
+            "samples": 373,
+            "periodUs": 2000,
+            "dropped": 0,
+            "overruns": 372,
+            "captureWindowChildCpuFraction": 0.9973845616160053,
+            "wholeChildCpuCoverageAdequate": true,
+            "reasons": [
+              "overruns",
+              "delivery_plausible"
+            ]
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase127/name-search-profile01/018-sample-compiler-name-search-1024-qbe/analysis.json",
+            "bytes": 72148,
+            "sha256": "b1f8a19cf4453d964260a32c4cf0dd714e7c1bac61dcf61341ad0f079f6ffee2",
+            "samples": 373,
+            "periodUs": 3000,
+            "dropped": 0,
+            "overruns": 125,
+            "captureWindowChildCpuFraction": 0.9976001408734421,
+            "wholeChildCpuCoverageAdequate": true,
+            "reasons": [
+              "overruns",
+              "delivery_plausible"
+            ]
+          }
+        ],
+        "captureLossTotals": {
+          "dropped": 0,
+          "overruns": 1000
+        },
+        "estimateUnavailableReasons": [],
+        "topFunctions": [
+          {
+            "object": "executable",
+            "name": "term_drop",
+            "decoded": "term_drop",
+            "samples": 184,
+            "rawFraction": 0.30514096185737977,
+            "periodWeightedMicroseconds": 1752000,
+            "periodWeightedFraction": 0.2935165019266209,
+            "lowPrecision": false,
+            "estimatedCleanCpuSeconds": 0.4387701873010554
+          },
+          {
+            "object": "executable",
+            "name": "span_fade",
+            "decoded": "span_fade",
+            "samples": 146,
+            "rawFraction": 0.24212271973466004,
+            "periodWeightedMicroseconds": 1483000,
+            "periodWeightedFraction": 0.2484503266878874,
+            "lowPrecision": false,
+            "estimatedCleanCpuSeconds": 0.37140193365722896
+          },
+          {
+            "object": "executable",
+            "name": "p125_rt_take2",
+            "decoded": "p125_rt_take2",
+            "samples": 77,
+            "rawFraction": 0.12769485903814262,
+            "periodWeightedMicroseconds": 746000,
+            "periodWeightedFraction": 0.12497905846875523,
+            "lowPrecision": false,
+            "estimatedCleanCpuSeconds": 0.186827945049422
+          },
+          {
+            "object": "executable",
+            "name": "p113d_FID_36_100_105_114_101_99_116_46_112_56_56_95_115_116_114_105_110_103_95_101_113_95_103_111_",
+            "decoded": "p113d_FID_$direct.p88_string_eq_go",
+            "samples": 69,
+            "rawFraction": 0.11442786069651742,
+            "periodWeightedMicroseconds": 717000,
+            "periodWeightedFraction": 0.12012062321996984,
+            "lowPrecision": false,
+            "estimatedCleanCpuSeconds": 0.17956519651532918
+          },
+          {
+            "object": "executable",
+            "name": "p111_rt_keep",
+            "decoded": "p111_rt_keep",
+            "samples": 41,
+            "rawFraction": 0.06799336650082918,
+            "periodWeightedMicroseconds": 403000,
+            "periodWeightedFraction": 0.06751549673312113,
+            "lowPrecision": false,
+            "estimatedCleanCpuSeconds": 0.1009271606634277
+          },
+          {
+            "object": "executable",
+            "name": "p111_rt_special_take",
+            "decoded": "p111_rt_special_take",
+            "samples": 42,
+            "rawFraction": 0.06965174129353234,
+            "periodWeightedMicroseconds": 401000,
+            "periodWeightedFraction": 0.0671804322332049,
+            "lowPrecision": false,
+            "estimatedCleanCpuSeconds": 0.10042628145417992
+          },
+          {
+            "object": "executable",
+            "name": "p125_rt_take2.cold",
+            "decoded": "p125_rt_take2.cold",
+            "samples": 20,
+            "rawFraction": 0.03316749585406302,
+            "periodWeightedMicroseconds": 215000,
+            "periodWeightedFraction": 0.036019433740995144,
+            "lowPrecision": false,
+            "estimatedCleanCpuSeconds": 0.05384451499413637
+          },
+          {
+            "object": "executable",
+            "name": "p111_rt_sink",
+            "decoded": "p111_rt_sink",
+            "samples": 12,
+            "rawFraction": 0.01990049751243781,
+            "periodWeightedMicroseconds": 121000,
+            "periodWeightedFraction": 0.02027140224493215,
+            "lowPrecision": true,
+            "estimatedCleanCpuSeconds": 0.030303192159490698
+          },
+          {
+            "object": "executable",
+            "name": "p113d_FID_36_112_49_50_54_115_99_99_46_51_55_",
+            "decoded": "p113d_FID_$p126scc.37",
+            "samples": 6,
+            "rawFraction": 0.009950248756218905,
+            "periodWeightedMicroseconds": 68000,
+            "periodWeightedFraction": 0.011392192997151952,
+            "lowPrecision": true,
+            "estimatedCleanCpuSeconds": 0.017029893114424526
+          },
+          {
+            "object": "executable",
+            "name": "p113d_FID_36_100_105_114_101_99_116_46_112_56_56_95_115_116_114_105_110_103_95_101_113_",
+            "decoded": "p113d_FID_$direct.p88_string_eq",
+            "samples": 6,
+            "rawFraction": 0.009950248756218905,
+            "periodWeightedMicroseconds": 63000,
+            "periodWeightedFraction": 0.010554531747361368,
+            "lowPrecision": true,
+            "estimatedCleanCpuSeconds": 0.015777695091305076
+          }
+        ]
+      }
+    },
+    "qbe-diagnostic": {
+      "binary": {
+        "bytes": 265648,
+        "sha256": "3ae0e27b8dd42bb2fc832b50dae443e57f62ed6484edcf2294c00f462e064d8b"
+      },
+      "clean": {
+        "wallSeconds": {
+          "samples": [],
+          "count": 0,
+          "median": null,
+          "minimum": null,
+          "maximum": null
+        },
+        "cpuSeconds": {
+          "samples": [],
+          "count": 0,
+          "median": null,
+          "minimum": null,
+          "maximum": null
+        },
+        "peakRssKiB": {
+          "samples": [],
+          "count": 0,
+          "median": null,
+          "minimum": null,
+          "maximum": null
+        }
+      },
+      "contextOnlyUnsampled": {
+        "wallSeconds": {
+          "samples": [
+            1.5952138709835708,
+            1.614354666089639,
+            1.5978941561188549
+          ],
+          "count": 3,
+          "median": 1.5978941561188549,
+          "minimum": 1.5952138709835708,
+          "maximum": 1.614354666089639
+        },
+        "cpuSeconds": {
+          "samples": [
+            1.594364,
+            1.613445,
+            1.597016
+          ],
+          "count": 3,
+          "median": 1.597016,
+          "minimum": 1.594364,
+          "maximum": 1.613445
+        },
+        "peakRssKiB": {
+          "samples": [
+            9716,
+            9760,
+            9836
+          ],
+          "count": 3,
+          "median": 9760,
+          "minimum": 9716,
+          "maximum": 9836
+        }
+      },
+      "counterEnabled": {
+        "wallSeconds": {
+          "samples": [
+            2.4667383818887174,
+            2.4629459681455046,
+            2.474140845006332
+          ],
+          "count": 3,
+          "median": 2.4667383818887174,
+          "minimum": 2.4629459681455046,
+          "maximum": 2.474140845006332
+        },
+        "cpuSeconds": {
+          "samples": [
+            2.465809,
+            2.462002,
+            2.4731710000000002
+          ],
+          "count": 3,
+          "median": 2.465809,
+          "minimum": 2.462002,
+          "maximum": 2.4731710000000002
+        },
+        "peakRssKiB": {
+          "samples": [
+            11376,
+            11376,
+            11376
+          ],
+          "count": 3,
+          "median": 11376,
+          "minimum": 11376,
+          "maximum": 11376
+        }
+      },
+      "internalMilliseconds": {
+        "samples": [
+          1583,
+          1602,
+          1585
+        ],
+        "median": 1585,
+        "kind": "diagnostic-runtime"
+      },
+      "profile": {
+        "samples": 642,
+        "adequate": true,
+        "estimateAvailable": true,
+        "acceptedCaptures": [
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase127/name-search-profile02/001-sample-compiler-name-search-1024-qbe-diagnostic/analysis.json",
+            "bytes": 53886,
+            "sha256": "3b83e93a6a855fb7ce85e152b3d19d2a4e630b0384f5256920da55aac4dcaee1",
+            "samples": 199,
+            "periodUs": 8000,
+            "dropped": 0,
+            "overruns": 0,
+            "captureWindowChildCpuFraction": 0.9980428455871155,
+            "wholeChildCpuCoverageAdequate": true
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase127/name-search-profile02/003-sample-compiler-name-search-1024-qbe-diagnostic/analysis.json",
+            "bytes": 43973,
+            "sha256": "c9f280f2c07fde78db0074e2b66812324767c3c9c711464c9664679519af15f2",
+            "samples": 122,
+            "periodUs": 13000,
+            "dropped": 0,
+            "overruns": 0,
+            "captureWindowChildCpuFraction": 0.998450344015566,
+            "wholeChildCpuCoverageAdequate": true
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase127/name-search-profile02/008-sample-compiler-name-search-1024-qbe-diagnostic/analysis.json",
+            "bytes": 55757,
+            "sha256": "5317302564c0926b5a707c032b356986936b1203f93fb0d0301bc7748215d0fe",
+            "samples": 198,
+            "periodUs": 8000,
+            "dropped": 0,
+            "overruns": 0,
+            "captureWindowChildCpuFraction": 0.9980064049762654,
+            "wholeChildCpuCoverageAdequate": true
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase127/name-search-profile02/010-sample-compiler-name-search-1024-qbe-diagnostic/analysis.json",
+            "bytes": 48244,
+            "sha256": "26de160beb2587e69043a3dc7d71607d9844626ae68fd15d5ebc1f6efc9e5d2b",
+            "samples": 123,
+            "periodUs": 13000,
+            "dropped": 0,
+            "overruns": 0,
+            "captureWindowChildCpuFraction": 0.9984520108024031,
+            "wholeChildCpuCoverageAdequate": true
+          }
+        ],
+        "rejectedCaptures": [
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase127/name-search-profile01/010-sample-compiler-name-search-1024-qbe-diagnostic/analysis.json",
+            "bytes": 81767,
+            "sha256": "edf0213786f6163fcf86443287aa38ac2930e7080d0de8e3dccf1c1051cd6f60",
+            "samples": 398,
+            "periodUs": 2000,
+            "dropped": 0,
+            "overruns": 398,
+            "captureWindowChildCpuFraction": 0.9968880475689542,
+            "wholeChildCpuCoverageAdequate": true,
+            "reasons": [
+              "overruns",
+              "delivery_plausible"
+            ]
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase127/name-search-profile01/012-sample-compiler-name-search-1024-qbe-diagnostic/analysis.json",
+            "bytes": 80630,
+            "sha256": "6210644004d424c60351bfaf4bd5c010bf10504fbe08907fcd863d53c20a38a4",
+            "samples": 398,
+            "periodUs": 3000,
+            "dropped": 0,
+            "overruns": 133,
+            "captureWindowChildCpuFraction": 0.9969580140405461,
+            "wholeChildCpuCoverageAdequate": true,
+            "reasons": [
+              "overruns",
+              "delivery_plausible"
+            ]
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase127/name-search-profile01/017-sample-compiler-name-search-1024-qbe-diagnostic/analysis.json",
+            "bytes": 82832,
+            "sha256": "24bbfb4c6e49663aed9eb4b0495f59f30251ec29e6e11498f8c595c092333d8f",
+            "samples": 404,
+            "periodUs": 2000,
+            "dropped": 0,
+            "overruns": 403,
+            "captureWindowChildCpuFraction": 0.9967799427107299,
+            "wholeChildCpuCoverageAdequate": true,
+            "reasons": [
+              "overruns",
+              "delivery_plausible"
+            ]
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase127/name-search-profile01/019-sample-compiler-name-search-1024-qbe-diagnostic/analysis.json",
+            "bytes": 73600,
+            "sha256": "173c577d3771fb0b3ff57a4c1d7850704846ddf3bd623abe9c07dc9f852994b3",
+            "samples": 399,
+            "periodUs": 3000,
+            "dropped": 0,
+            "overruns": 133,
+            "captureWindowChildCpuFraction": 0.9968957350464074,
+            "wholeChildCpuCoverageAdequate": true,
+            "reasons": [
+              "overruns",
+              "delivery_plausible"
+            ]
+          }
+        ],
+        "captureLossTotals": {
+          "dropped": 0,
+          "overruns": 1067
+        },
+        "estimateUnavailableReasons": [],
+        "topFunctions": [
+          {
+            "object": "executable",
+            "name": "term_drop",
+            "decoded": "term_drop",
+            "samples": 213,
+            "rawFraction": 0.3317757009345794,
+            "periodWeightedMicroseconds": 2059000,
+            "periodWeightedFraction": 0.3236912435151706,
+            "lowPrecision": false,
+            "estimatedCleanCpuSeconds": 0.48387762395849704
+          },
+          {
+            "object": "executable",
+            "name": "span_fade",
+            "decoded": "span_fade",
+            "samples": 172,
+            "rawFraction": 0.26791277258566976,
+            "periodWeightedMicroseconds": 1741000,
+            "periodWeightedFraction": 0.2736991039144789,
+            "lowPrecision": false,
+            "estimatedCleanCpuSeconds": 0.40914567426505266
+          },
+          {
+            "object": "executable",
+            "name": "p125_rt_take2",
+            "decoded": "p125_rt_take2",
+            "samples": 88,
+            "rawFraction": 0.13707165109034267,
+            "periodWeightedMicroseconds": 849000,
+            "periodWeightedFraction": 0.13346958025467695,
+            "lowPrecision": false,
+            "estimatedCleanCpuSeconds": 0.19952020531362993
+          },
+          {
+            "object": "executable",
+            "name": "p113d_FID_36_100_105_114_101_99_116_46_112_56_56_95_115_116_114_105_110_103_95_101_113_95_103_111_",
+            "decoded": "p113d_FID_$direct.p88_string_eq_go",
+            "samples": 50,
+            "rawFraction": 0.0778816199376947,
+            "periodWeightedMicroseconds": 515000,
+            "periodWeightedFraction": 0.08096211287533407,
+            "lowPrecision": false,
+            "estimatedCleanCpuSeconds": 0.12102815752240213
+          },
+          {
+            "object": "executable",
+            "name": "p111_rt_special_take",
+            "decoded": "p111_rt_special_take",
+            "samples": 35,
+            "rawFraction": 0.05451713395638629,
+            "periodWeightedMicroseconds": 360000,
+            "periodWeightedFraction": 0.056594875019651,
+            "lowPrecision": false,
+            "estimatedCleanCpuSeconds": 0.08460220720012576
+          },
+          {
+            "object": "executable",
+            "name": "p111_rt_keep",
+            "decoded": "p111_rt_keep",
+            "samples": 31,
+            "rawFraction": 0.048286604361370715,
+            "periodWeightedMicroseconds": 313000,
+            "periodWeightedFraction": 0.04920609966986323,
+            "lowPrecision": false,
+            "estimatedCleanCpuSeconds": 0.07355691903788712
+          },
+          {
+            "object": "executable",
+            "name": "p125_rt_take2.cold",
+            "decoded": "p125_rt_take2.cold",
+            "samples": 26,
+            "rawFraction": 0.040498442367601244,
+            "periodWeightedMicroseconds": 248000,
+            "periodWeightedFraction": 0.03898758056909291,
+            "lowPrecision": false,
+            "estimatedCleanCpuSeconds": 0.05828152051564219
+          },
+          {
+            "object": "executable",
+            "name": "term_triv",
+            "decoded": "term_triv",
+            "samples": 14,
+            "rawFraction": 0.021806853582554516,
+            "periodWeightedMicroseconds": 147000,
+            "periodWeightedFraction": 0.023109573966357492,
+            "lowPrecision": true,
+            "estimatedCleanCpuSeconds": 0.03454590127338469
+          },
+          {
+            "object": "executable",
+            "name": "p111_rt_sink",
+            "decoded": "p111_rt_sink",
+            "samples": 8,
+            "rawFraction": 0.012461059190031152,
+            "periodWeightedMicroseconds": 79000,
+            "periodWeightedFraction": 0.01241943090709008,
+            "lowPrecision": true,
+            "estimatedCleanCpuSeconds": 0.018565484357805376
+          },
+          {
+            "object": "executable",
+            "name": "p113d_FID_36_100_105_114_101_99_116_46_112_56_56_95_115_116_114_105_110_103_95_101_113_",
+            "decoded": "p113d_FID_$direct.p88_string_eq",
+            "samples": 3,
+            "rawFraction": 0.004672897196261682,
+            "periodWeightedMicroseconds": 34000,
+            "periodWeightedFraction": 0.005345071529633706,
+            "lowPrecision": true,
+            "estimatedCleanCpuSeconds": 0.007990208457789656
+          }
+        ]
+      }
+    },
+    "upstream": {
+      "binary": {
+        "bytes": 85144,
+        "sha256": "fd94ee905de100f75cfd7b50533735fa17e06d0de45d7a2b51b7081441c05993"
+      },
+      "clean": {
+        "wallSeconds": {
+          "samples": [
+            0.10280099394731224,
+            0.10207614884711802,
+            0.10204957309179008
+          ],
+          "count": 3,
+          "median": 0.10207614884711802,
+          "minimum": 0.10204957309179008,
+          "maximum": 0.10280099394731224
+        },
+        "cpuSeconds": {
+          "samples": [
+            0.101904,
+            0.10120399999999999,
+            0.101189
+          ],
+          "count": 3,
+          "median": 0.10120399999999999,
+          "minimum": 0.101189,
+          "maximum": 0.101904
+        },
+        "peakRssKiB": {
+          "samples": [
+            9732,
+            9772,
+            9812
+          ],
+          "count": 3,
+          "median": 9772,
+          "minimum": 9732,
+          "maximum": 9812
+        }
+      },
+      "contextOnlyUnsampled": {
+        "wallSeconds": {
+          "samples": [],
+          "count": 0,
+          "median": null,
+          "minimum": null,
+          "maximum": null
+        },
+        "cpuSeconds": {
+          "samples": [],
+          "count": 0,
+          "median": null,
+          "minimum": null,
+          "maximum": null
+        },
+        "peakRssKiB": {
+          "samples": [],
+          "count": 0,
+          "median": null,
+          "minimum": null,
+          "maximum": null
+        }
+      },
+      "counterEnabled": {
+        "wallSeconds": {
+          "samples": [],
+          "count": 0,
+          "median": null,
+          "minimum": null,
+          "maximum": null
+        },
+        "cpuSeconds": {
+          "samples": [],
+          "count": 0,
+          "median": null,
+          "minimum": null,
+          "maximum": null
+        },
+        "peakRssKiB": {
+          "samples": [],
+          "count": 0,
+          "median": null,
+          "minimum": null,
+          "maximum": null
+        }
+      },
+      "internalMilliseconds": {
+        "samples": [
+          100,
+          99,
+          100
+        ],
+        "median": 100,
+        "kind": "clean"
+      },
+      "profile": {
+        "samples": 38,
+        "adequate": false,
+        "estimateAvailable": false,
+        "acceptedCaptures": [
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase127/name-search-profile02/002-sample-compiler-name-search-1024-upstream/analysis.json",
+            "bytes": 21253,
+            "sha256": "5bc7f712a6a662a4bb86bd487f027aa6c515e2d27cf314192b413545173ed7fe",
+            "samples": 12,
+            "periodUs": 8000,
+            "dropped": 0,
+            "overruns": 0,
+            "captureWindowChildCpuFraction": 0.9871279760434065,
+            "wholeChildCpuCoverageAdequate": true
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase127/name-search-profile02/004-sample-compiler-name-search-1024-upstream/analysis.json",
+            "bytes": 20379,
+            "sha256": "e13d27c7425f52ba98e10bf8c5ecea5c142a25f3bcd7036db6c2b645bdbf0561",
+            "samples": 7,
+            "periodUs": 13000,
+            "dropped": 0,
+            "overruns": 0,
+            "captureWindowChildCpuFraction": 0.9871339831521149,
+            "wholeChildCpuCoverageAdequate": true
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase127/name-search-profile02/006-sample-compiler-name-search-1024-upstream/analysis.json",
+            "bytes": 20811,
+            "sha256": "08260adda286379c3f62430af8e4e9967f4c3bba0e26cfa11a60dad4ca56056f",
+            "samples": 12,
+            "periodUs": 8000,
+            "dropped": 0,
+            "overruns": 0,
+            "captureWindowChildCpuFraction": 0.986979542629646,
+            "wholeChildCpuCoverageAdequate": true
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase127/name-search-profile02/011-sample-compiler-name-search-1024-upstream/analysis.json",
+            "bytes": 19495,
+            "sha256": "7ae4843735f1bbba1497347c08d83855fb793b6f865614e816c382a8ea8da014",
+            "samples": 7,
+            "periodUs": 13000,
+            "dropped": 0,
+            "overruns": 0,
+            "captureWindowChildCpuFraction": 0.98532342997543,
+            "wholeChildCpuCoverageAdequate": true
+          }
+        ],
+        "rejectedCaptures": [
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase127/name-search-profile01/011-sample-compiler-name-search-1024-upstream/analysis.json",
+            "bytes": 22391,
+            "sha256": "24076e8d7794a969fc92a0f7934d68dcbbd9c76ad57f6e0efb33c81bb06bb7c3",
+            "samples": 24,
+            "periodUs": 2000,
+            "dropped": 0,
+            "overruns": 24,
+            "captureWindowChildCpuFraction": 0.9836435010234609,
+            "wholeChildCpuCoverageAdequate": true,
+            "reasons": [
+              "overruns",
+              "delivery_plausible"
+            ]
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase127/name-search-profile01/013-sample-compiler-name-search-1024-upstream/analysis.json",
+            "bytes": 21082,
+            "sha256": "3b3424dc2d29b87cb5de84c9754cace5df3f8f4f5f18679f96cd741281f7a84d",
+            "samples": 24,
+            "periodUs": 3000,
+            "dropped": 0,
+            "overruns": 8,
+            "captureWindowChildCpuFraction": 0.9858006637016092,
+            "wholeChildCpuCoverageAdequate": true,
+            "reasons": [
+              "overruns",
+              "delivery_plausible"
+            ]
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase127/name-search-profile01/015-sample-compiler-name-search-1024-upstream/analysis.json",
+            "bytes": 21507,
+            "sha256": "104904a5bbf9c51e9d6a7cfebd52721c7eb20b93acefeef9d7029ef8ca59ff90",
+            "samples": 25,
+            "periodUs": 2000,
+            "dropped": 0,
+            "overruns": 24,
+            "captureWindowChildCpuFraction": 0.9846644758299647,
+            "wholeChildCpuCoverageAdequate": true,
+            "reasons": [
+              "overruns",
+              "delivery_plausible"
+            ]
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase127/name-search-profile01/020-sample-compiler-name-search-1024-upstream/analysis.json",
+            "bytes": 21948,
+            "sha256": "f69ad1f89014f1967bb18284bc6c179f17c2cda639d889c665aef9e328038281",
+            "samples": 24,
+            "periodUs": 3000,
+            "dropped": 0,
+            "overruns": 8,
+            "captureWindowChildCpuFraction": 0.9843785550929457,
+            "wholeChildCpuCoverageAdequate": true,
+            "reasons": [
+              "overruns",
+              "delivery_plausible"
+            ]
+          }
+        ],
+        "captureLossTotals": {
+          "dropped": 0,
+          "overruns": 64
+        },
+        "estimateUnavailableReasons": [
+          "Insufficient pooled samples"
+        ],
+        "topFunctions": [
+          {
+            "object": "executable",
+            "name": "WL_FID_HAS_NAME",
+            "decoded": "WL_FID_HAS_NAME",
+            "samples": 38,
+            "rawFraction": 1.0,
+            "periodWeightedMicroseconds": 374000,
+            "periodWeightedFraction": 1.0,
+            "lowPrecision": false
+          }
+        ]
+      }
+    }
+  },
+  "attributions": [
+    {
+      "mode": "sample",
+      "periodUs": 2000,
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase127/name-search-attribution01/010-sample.json/report.json",
+        "bytes": 13706,
+        "sha256": "8995caefc006d0dd4d6678843a29aaf4a53573e926b9adaa6d1b8558d4fde2d5"
+      }
+    },
+    {
+      "mode": "sample",
+      "periodUs": 3000,
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase127/name-search-attribution01/012-sample.json/report.json",
+        "bytes": 13718,
+        "sha256": "c542fb23e902b2685c99172cc8929ff83fa3d860e3a2b678916aa05ec2e8124a"
+      }
+    },
+    {
+      "mode": "sample",
+      "periodUs": 2000,
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase127/name-search-attribution01/017-sample.json/report.json",
+        "bytes": 14294,
+        "sha256": "fb128a85ebc012e5cbbf2615dfa25d735159485f944970787c7adc6014530599"
+      }
+    },
+    {
+      "mode": "sample",
+      "periodUs": 3000,
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase127/name-search-attribution01/019-sample.json/report.json",
+        "bytes": 14287,
+        "sha256": "d9794c8b2e52bffe5d441024cec70a30a65e59d84e1a1592c6663395b7fc4439"
+      }
+    },
+    {
+      "mode": "events",
+      "periodUs": null,
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase127/name-search-attribution01/021-events.json/report.json",
+        "bytes": 51052,
+        "sha256": "0c33f54e07c885090116a13cbe5a832597ba5c48efd273c88f17092d9562b3eb"
+      }
+    },
+    {
+      "mode": "events",
+      "periodUs": null,
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase127/name-search-attribution01/022-events.json/report.json",
+        "bytes": 51052,
+        "sha256": "7cae102a166bd615fb4524e5b8655f0014266b08c299812dc49559991ca16786"
+      }
+    },
+    {
+      "mode": "events",
+      "periodUs": null,
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase127/name-search-attribution01/023-events.json/report.json",
+        "bytes": 51052,
+        "sha256": "56e1148e4a6610294cdbbb0b911a895b0bbd6d796dec502e2f8bd17f7fb67f05"
+      }
+    },
+    {
+      "mode": "sample-repeat-zero-loss",
+      "periodUs": 8000,
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase127/name-search-attribution02/001-sample/report.json",
+        "bytes": 13584,
+        "sha256": "fa92561466470994085286243c6e2fb4bd4836355f0c7d07f1e897ddfa4ac1dc"
+      }
+    },
+    {
+      "mode": "sample-repeat-zero-loss",
+      "periodUs": 13000,
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase127/name-search-attribution02/003-sample/report.json",
+        "bytes": 12170,
+        "sha256": "485f6a7f22b03d6b3ae6126a12d6c82e5fa2064201e9d97d4b662742c142c468"
+      }
+    },
+    {
+      "mode": "sample-repeat-zero-loss",
+      "periodUs": 8000,
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase127/name-search-attribution02/008-sample/report.json",
+        "bytes": 12009,
+        "sha256": "92b855a87b7baf7e0da29fbf928601ad21f2d260c238822f06c90fac76b00b8b"
+      }
+    },
+    {
+      "mode": "sample-repeat-zero-loss",
+      "periodUs": 13000,
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase127/name-search-attribution02/010-sample/report.json",
+        "bytes": 12017,
+        "sha256": "880bc53de1224873fe0314c6b148fca6ae7c24f748ac951e5145be924e30dc23"
+      }
+    }
+  ],
+  "events": {
+    "identicalRuns": 3,
+    "totals": {
+      "dispatches": 187,
+      "heap_alloc_calls": 63613,
+      "heap_alloc_miss_calls": 15,
+      "heap_free_calls": 63613,
+      "heap_alloc_requested_words": 95448,
+      "heap_free_words": 95448,
+      "term_keep_calls": 13593434,
+      "term_sink_calls": 17594469,
+      "term_drop_calls": 66530802,
+      "ctr_take_calls": 55924305,
+      "frame_push_calls": 0,
+      "frame_capture_words": 0,
+      "return_calls": 62,
+      "primitive_calls": 25,
+      "register_words_copy_requested": 189,
+      "register_words_clear_requested": 0
+    },
+    "topDropOwners": [
+      {
+        "owner": "p127ns_loop",
+        "kind": "lowered_owner",
+        "count": 66400580,
+        "fractionOfAllEvents": 0.9980426810426846
+      },
+      {
+        "owner": "p127ns_once",
+        "kind": "lowered_owner",
+        "count": 129184,
+        "fractionOfAllEvents": 0.001941717161323262
+      },
+      {
+        "owner": "p127ns_queries",
+        "kind": "lowered_owner",
+        "count": 1030,
+        "fractionOfAllEvents": 1.5481550936361778e-05
+      }
+    ]
+  },
+  "ratios": {
+    "cleanWallQbeOverUpstream": 14.652846859690325,
+    "cleanInternalQbeOverUpstream": 14.85
+  },
+  "treeTransfer": {
+    "inputs": [
+      {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase127/tree-live-bank-comparison01.json",
+        "bytes": 74226,
+        "sha256": "654b25f4409af94b20e8a66093d96c10531ff3386f530bb4c17fa2425cb5236f"
+      },
+      {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase127/tree-machine-identity01.json",
+        "bytes": 11084,
+        "sha256": "7e55c66f4f287474faa88adb14ebbc3a4749147cb2af7f0603bceb19720b348a"
+      }
+    ],
+    "cleanWall": {
+      "phase126": {
+        "samples": [
+          1.0536215519532561,
+          1.0467381589114666,
+          1.0354592518415302
+        ],
+        "count": 3,
+        "median": 1.0467381589114666,
+        "minimum": 1.0354592518415302,
+        "maximum": 1.0536215519532561
+      },
+      "live-bank": {
+        "samples": [
+          0.9303738819435239,
+          0.9307350150775164,
+          0.9446094299200922
+        ],
+        "count": 3,
+        "median": 0.9307350150775164,
+        "minimum": 0.9303738819435239,
+        "maximum": 0.9446094299200922
+      }
+    },
+    "ratio": 0.8891765406215961,
+    "textByteIdentical": true,
+    "changedAllocatedSections": [
+      ".data",
+      ".note.gnu.build-id"
+    ],
+    "dataByteDifferences": [
+      {
+        "offset": 5976,
+        "before": 11,
+        "after": 15
+      }
+    ]
+  },
+  "limitations": [
+    "Initial2ms/3ms captures all fail overrun/delivery gates and remain excluded; repeated8ms/13ms captures pass, QBE603/diagnostic642 samples, upstream38 insufficient.",
+    "Valid event counts are runtime entries, not reclaimed-node counts or CPU shares; most drops need not free memory.",
+    "Private calls retain p127ns_loop context, so dispatch ownership does not isolate equality helper ancestry.",
+    "Timing is one1024-name proxy with512repetitions; it does not predict compiler or broad user-program speed.",
+    "Instrumented timings and event-counter overhead are separate from clean baseline.",
+    "The libc one-frame table recovered no caller edges in these diagnostic captures; runtime leaf PCs were outside that libc table."
+  ],
+  "acceptedDiagnosticAttribution": {
+    "samples": 642,
+    "weightedUs": 6361000,
+    "knownDispatchSamples": 642,
+    "recoveredCallerSamples": 0,
+    "topLeafFractions": [
+      {
+        "leaf": "term_drop",
+        "periodWeightedFraction": 0.3236912435151706
+      },
+      {
+        "leaf": "span_fade",
+        "periodWeightedFraction": 0.2736991039144789
+      },
+      {
+        "leaf": "p125_rt_take2",
+        "periodWeightedFraction": 0.13346958025467695
+      },
+      {
+        "leaf": "p113d_FID_36_100_105_114_101_99_116_46_112_56_56_95_115_116_114_105_110_103_95_101_113_95_103_111_",
+        "periodWeightedFraction": 0.08096211287533407
+      },
+      {
+        "leaf": "p111_rt_special_take",
+        "periodWeightedFraction": 0.056594875019651
+      },
+      {
+        "leaf": "p111_rt_keep",
+        "periodWeightedFraction": 0.04920609966986323
+      },
+      {
+        "leaf": "p125_rt_take2.cold",
+        "periodWeightedFraction": 0.03898758056909291
+      },
+      {
+        "leaf": "term_triv",
+        "periodWeightedFraction": 0.023109573966357492
+      },
+      {
+        "leaf": "p111_rt_sink",
+        "periodWeightedFraction": 0.01241943090709008
+      },
+      {
+        "leaf": "p113d_FID_36_100_105_114_101_99_116_46_112_56_56_95_115_116_114_105_110_103_95_101_113_",
+        "periodWeightedFraction": 0.005345071529633706
+      }
+    ],
+    "ownerFractions": [
+      {
+        "owner": "p127ns_loop",
+        "periodWeightedFraction": 1.0
+      }
+    ]
+  }
+}

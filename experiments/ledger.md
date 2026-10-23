@@ -5574,3 +5574,24 @@ queries, plus one small proof-connected reusable usage summary. Conditional
 1×/10×/100× scopes target progressively larger elimination of repeated analysis,
 ownership and transport; multicore/GPU and wholesale IR work remain gated by
 small decisive experiments. No claim of recursive acceleration.
+
+## Phase130 — compact prepared Base, native-qualified (2026-10-23)
+
+[P130-001](phase130/P130-001-compact-prepared-base.md) accepted;
+[P130-002](phase130/P130-002-scalar-order-ceilings.md) rejected.
+[Report](../implementation/phase130/README.md),
+[candidate](../implementation/phase130/candidate.json).
+
+An exact numeric-transport discriminator cut decoder process time35.47%; explicit
+backward-compatible mode retained36.01%. Native requests improve11.68% in a
+fresh three-case block,2.0412→1.8028× upstream; separate qualifiedN1/N2 block
+1.7949×/1.7924×. Ready-executable child sums~0.88× include prepared-Base/cached
+runtime policy and are a separate metric. Hosted→N1→N2 exact102,432,076-byte QBE,
+focused19 onboth, ordinary45 onN2. All45 emittedQBE and allocated machine sections
+are unchanged fromPhase128; historical wrappers not retimed. Scalar Cmp/U32
+rewrites1.1203×/1.2190× slower, excluded. Source+114 lines including67 controls.
+
+22 guards cost1,870.65s including6 failures; maxRSS6.34GB on hosted acquisition.
+Native self-emission399.32s/2.81GB; old historical full-build times are not paired
+controls. Explicitcompact carrier is required for the new fast research route.
+Production selection unchanged; no recursive research acceleration claim.

@@ -18,8 +18,8 @@ def main():
   roots=[folder] if phase=='phase130' else [p for p in folder.glob('p130-*') if p.is_dir()]
   for base in roots:
    for p in base.rglob('*'):
-    if not p.is_file() or p.is_symlink() or p.stat().st_size>2*1024**2:continue
-    if p.suffix in ['.json','.log'] or p.name in ['stdout','stderr','emit.stderr','execute.stdout','execute.stderr'] or p.name.endswith(('.stdout','.stderr')):
+    if not p.is_file() or p.is_symlink() or p.stat().st_size>8*1024**2:continue
+    if p.suffix in ['.json','.log','.p88','.p130','.carrier'] or p.name in ['stdout','stderr','emit.stderr','execute.stdout','execute.stderr'] or p.name.endswith(('.stdout','.stderr')):
      paths.add(p)
  for p in (ROOT/'selfhost/tools/performance/phase130').rglob('*'):
   if p.is_file() and p.suffix in ['.py','.mjs','.bend','.json','.md']:paths.add(p)

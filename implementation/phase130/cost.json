@@ -1,0 +1,643 @@
+{
+  "complete": true,
+  "guardCount": 22,
+  "successfulGuards": 16,
+  "failedGuards": 6,
+  "guardedSeconds": 1870.6502871816047,
+  "maximumTreeRssBytes": 6339612672,
+  "guards": [
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase130/base-api01-guard/process.json",
+        "bytes": 910,
+        "sha256": "83444b83e6cd3c36bffd637d8947ac44963c20e2306db79048f6d488b40b9427"
+      },
+      "complete": true,
+      "seconds": 14.288809539983049,
+      "peakRssBytes": 2010144768,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase111",
+        "taskset",
+        "-c",
+        "3",
+        "python3",
+        "-B",
+        "selfhost/tools/performance/phase111/check-api.py",
+        "--source",
+        "selfhost/build/phase130/base-source01/compiler.bend",
+        "--out",
+        "selfhost/build/phase111/p130-base-api01",
+        "p88_cache_prepare",
+        "p88_decode_admitted",
+        "p86_prepare",
+        "p86_plan",
+        "p111_runtime_admission",
+        "p111_emit_admitted",
+        "p111_compile_source",
+        "p130b_controls",
+        "p128raw_controls",
+        "p128raw_br_controls",
+        "p128bf_controls"
+      ]
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase130/base-carrier01-guard/process.json",
+        "bytes": 645,
+        "sha256": "3277a169cffa0360ca197e79758f1fddb4eaa14098757ef2d7d86ed78295aac3"
+      },
+      "complete": true,
+      "seconds": 0.5954325587954372,
+      "peakRssBytes": 142934016,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase111",
+        "taskset",
+        "-c",
+        "3",
+        "selfhost/.bootstrap/bun-1.4.3/bun",
+        "selfhost/tools/performance/phase130/base/carrier.mjs",
+        "selfhost/tools/performance/phase88/base/carrier01/receipt.json",
+        "selfhost/build/phase130/base-carrier01"
+      ]
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase130/base-equivalence01-guard/process.json",
+        "bytes": 760,
+        "sha256": "293979ffd9ecaf9e43a268b0a20a811fd8c20f7bd06c1f9d9eaf85f1477aa12c"
+      },
+      "complete": true,
+      "seconds": 58.96308976691216,
+      "peakRssBytes": 767299584,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase111",
+        "taskset",
+        "-c",
+        "3",
+        "selfhost/.bootstrap/bun-1.4.3/bun",
+        "selfhost/tools/performance/phase130/base-equivalence.mjs",
+        "selfhost/build/phase111/p128-native-api02/report.json",
+        "selfhost/build/phase111/p130-base-api01/report.json",
+        "selfhost/build/phase130/base-carrier01/receipt.json",
+        "selfhost/build/phase130/base-equivalence01"
+      ]
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase130/base-proxy-timing01-guard/process.json",
+        "bytes": 602,
+        "sha256": "a49e2d5a51f29b9d13f56eefe1478224825ba09beec17ba4407f31bad91923a2"
+      },
+      "complete": true,
+      "seconds": 6.508818955859169,
+      "peakRssBytes": 241238016,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase111",
+        "taskset",
+        "-c",
+        "3",
+        "python3",
+        "-B",
+        "selfhost/tools/performance/phase130/base-proxy-run.py",
+        "--out",
+        "selfhost/build/phase130/base-proxy-timing01",
+        "--rounds",
+        "9"
+      ]
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase130/base-proxy01-guard/process.json",
+        "bytes": 637,
+        "sha256": "595a411537e1d2b40e1e415c0a8961af4233ba505ed8e19d82c37e45035732b8"
+      },
+      "complete": false,
+      "seconds": 2.682091729948297,
+      "peakRssBytes": 87052288,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase111",
+        "taskset",
+        "-c",
+        "3",
+        "python3",
+        "-B",
+        "selfhost/tools/performance/phase113/run-jobs.py",
+        "--plan",
+        "selfhost/build/phase130/base-proxy-jobs01.json",
+        "--out",
+        "selfhost/build/phase113/p130-base-proxy01"
+      ]
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase130/base-proxy02-guard/process.json",
+        "bytes": 637,
+        "sha256": "359b1409ca06d24e31c7590f5ca074adbd9f0053e387b0e622a2cf7244b99aa1"
+      },
+      "complete": true,
+      "seconds": 21.086962901055813,
+      "peakRssBytes": 122155008,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase111",
+        "taskset",
+        "-c",
+        "3",
+        "python3",
+        "-B",
+        "selfhost/tools/performance/phase113/run-jobs.py",
+        "--plan",
+        "selfhost/build/phase130/base-proxy-jobs02.json",
+        "--out",
+        "selfhost/build/phase113/p130-base-proxy02"
+      ]
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase130/early-native01-guard/process.json",
+        "bytes": 642,
+        "sha256": "7b4006ed531fe129ef2c88bc4a9cbd6a10496dfe78bc4be7eb89fe1d50083d54"
+      },
+      "complete": true,
+      "seconds": 95.91437296499498,
+      "peakRssBytes": 910061568,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 131072; ulimit -c 0; exec \"$@\"",
+        "phase111",
+        "taskset",
+        "-c",
+        "3",
+        "python3",
+        "-B",
+        "selfhost/tools/performance/phase113/run-jobs.py",
+        "--plan",
+        "selfhost/build/phase130/early-native-jobs01.json",
+        "--out",
+        "selfhost/build/phase113/p130-early-native01"
+      ]
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase130/final-native01-guard/process.json",
+        "bytes": 642,
+        "sha256": "e504cce75f9f21f1ce13e37940584a0d672c9719b7082248515258b3a42a3da9"
+      },
+      "complete": true,
+      "seconds": 148.62526144296862,
+      "peakRssBytes": 910147584,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 131072; ulimit -c 0; exec \"$@\"",
+        "phase111",
+        "taskset",
+        "-c",
+        "3",
+        "python3",
+        "-B",
+        "selfhost/tools/performance/phase113/run-jobs.py",
+        "--plan",
+        "selfhost/build/phase130/final-native-jobs01.json",
+        "--out",
+        "selfhost/build/phase113/p130-final-native01"
+      ]
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase130/full-emit01-guard/process.json",
+        "bytes": 722,
+        "sha256": "40f093df39b53b31316371d8f994897cf3c4fe262c8ef7fa9cc544e4b3ae7493"
+      },
+      "complete": true,
+      "seconds": 872.5041521210223,
+      "peakRssBytes": 6339612672,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 131072; ulimit -c 0; exec \"$@\"",
+        "phase111",
+        "taskset",
+        "-c",
+        "3",
+        "selfhost/.bootstrap/bun-1.4.3/bun",
+        "selfhost/tools/performance/phase118/native-hosted-v2.mjs",
+        "selfhost/build/phase111/p130-mode-api01/api.mjs",
+        "selfhost/build/phase130/mode-source01/compiler.bend",
+        "selfhost/build/phase111/p130-full-emit01",
+        "cache",
+        "array"
+      ]
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase130/mode-api01-guard/process.json",
+        "bytes": 911,
+        "sha256": "44fdce0d3c289a9527f762c14bbddca2558a658e20c22370a0fc0a17d2d87245"
+      },
+      "complete": true,
+      "seconds": 14.480018707923591,
+      "peakRssBytes": 2209304576,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase111",
+        "taskset",
+        "-c",
+        "3",
+        "python3",
+        "-B",
+        "selfhost/tools/performance/phase111/check-api.py",
+        "--source",
+        "selfhost/build/phase130/mode-source01/compiler.bend",
+        "--out",
+        "selfhost/build/phase111/p130-mode-api01",
+        "p88_cache_prepare",
+        "p88_decode_admitted",
+        "p86_prepare",
+        "p86_plan",
+        "p111_runtime_admission",
+        "p111_emit_admitted",
+        "p111_compile_source",
+        "p130m_controls",
+        "p128raw_controls",
+        "p128raw_br_controls",
+        "p128bf_controls"
+      ]
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase130/mode-equivalence01-guard/process.json",
+        "bytes": 764,
+        "sha256": "15c772d38a727cea307c26db9c51210551adb2042f0d3ee35d9ca8f28c7d802c"
+      },
+      "complete": true,
+      "seconds": 84.99913226999342,
+      "peakRssBytes": 907247616,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase111",
+        "taskset",
+        "-c",
+        "3",
+        "selfhost/.bootstrap/bun-1.4.3/bun",
+        "selfhost/tools/performance/phase130/base-equivalence-v2.mjs",
+        "selfhost/build/phase111/p128-native-api02/report.json",
+        "selfhost/build/phase111/p130-mode-api01/report.json",
+        "selfhost/build/phase130/base-carrier01/receipt.json",
+        "selfhost/build/phase130/mode-equivalence01"
+      ]
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase130/n1-n2-timing01-guard/process.json",
+        "bytes": 694,
+        "sha256": "299c31646802d36867b5bb245e6a89ad79c5b186e78cf706e132751bea5a5317"
+      },
+      "complete": true,
+      "seconds": 54.00459466991015,
+      "peakRssBytes": 179666944,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase111",
+        "taskset",
+        "-c",
+        "3",
+        "python3",
+        "-B",
+        "selfhost/tools/performance/phase130/timing-run.py",
+        "--manifest",
+        "selfhost/build/phase130/n1-n2-timing01.json",
+        "--out",
+        "selfhost/build/phase112/p130-n1-n2-native01",
+        "--rounds",
+        "3",
+        "--modes",
+        "cache"
+      ]
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase130/native-self01-guard/process.json",
+        "bytes": 913,
+        "sha256": "28bfc5af96ddb282ac2a3e005f9f21c7ac3f15e81f884ca5060f3f283cbece9c"
+      },
+      "complete": true,
+      "seconds": 399.3180812478531,
+      "peakRssBytes": 2810163200,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 131072; ulimit -c 0; exec \"$@\"",
+        "phase111",
+        "taskset",
+        "-c",
+        "3",
+        "python3",
+        "-B",
+        "selfhost/tools/performance/phase130/native-request.py",
+        "--image",
+        "selfhost/build/phase111/p130-native01-n1/program",
+        "--source",
+        "selfhost/build/phase130/mode-source01/compiler.bend",
+        "--carrier-receipt",
+        "selfhost/build/phase130/base-carrier01/receipt.json",
+        "--expected-qbe",
+        "selfhost/build/phase111/p130-full-emit01/program.ssa",
+        "--out",
+        "selfhost/build/phase130/native-self01",
+        "--seconds",
+        "900"
+      ]
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase130/proxies03-guard/process.json",
+        "bytes": 629,
+        "sha256": "01cb59cb35e636bbbdcced061a9d125ae8040de51c515983acbcab7163e51753"
+      },
+      "complete": true,
+      "seconds": 27.566086495062336,
+      "peakRssBytes": 255938560,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase111",
+        "taskset",
+        "-c",
+        "3",
+        "python3",
+        "-B",
+        "selfhost/tools/performance/phase113/run-jobs.py",
+        "--plan",
+        "selfhost/build/phase130/proxy-jobs03.json",
+        "--out",
+        "selfhost/build/phase113/p130-proxies03"
+      ]
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase130/scalar-emit01-guard/process.json",
+        "bytes": 934,
+        "sha256": "e77692c8890b67f617227820dec2e4c75a4b2afbfb18a02c1bf883929563765a"
+      },
+      "complete": false,
+      "seconds": 3.168603183934465,
+      "peakRssBytes": 145993728,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase111",
+        "taskset",
+        "-c",
+        "3",
+        "env",
+        "P118_CASE_MANIFEST=selfhost/tools/performance/phase130/scalar/cases.json",
+        "P118_RUNTIME_REPORT=selfhost/build/phase128/runtime-borrow01/report.json",
+        "selfhost/.bootstrap/bun-1.4.3/bun",
+        "selfhost/tools/performance/phase128/emit-entry.mjs",
+        "selfhost/build/phase111/p128-native-api02/report.json",
+        "selfhost/build/phase128/native-source02/manifest.json",
+        "selfhost/build/phase118/p130-scalar-ceiling-emit01",
+        "scalar-order-baseline",
+        "scalar-order-scalar"
+      ]
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase130/scalar-emit02-guard/process.json",
+        "bytes": 939,
+        "sha256": "dcce88dd5d22c86094ddf0a50020b035ad990efefdffe0e1ac7fc94efd22cba2"
+      },
+      "complete": false,
+      "seconds": 3.3299510520882905,
+      "peakRssBytes": 145416192,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase111",
+        "taskset",
+        "-c",
+        "3",
+        "env",
+        "P118_CASE_MANIFEST=selfhost/tools/performance/phase130/scalar/cases-v02.json",
+        "P118_RUNTIME_REPORT=selfhost/build/phase128/runtime-borrow01/report.json",
+        "selfhost/.bootstrap/bun-1.4.3/bun",
+        "selfhost/tools/performance/phase128/emit-entry.mjs",
+        "selfhost/build/phase111/p128-native-api02/report.json",
+        "selfhost/build/phase128/native-source02/manifest.json",
+        "selfhost/build/phase118/p130-scalar-ceiling-emit02",
+        "scalar-order-baseline",
+        "scalar-order-scalar"
+      ]
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase130/scalar-emit03-guard/process.json",
+        "bytes": 938,
+        "sha256": "20be3de0c9085edef83729bcfc8271d33ac6c5cc7307bfe84fc9133ad1e11d1c"
+      },
+      "complete": false,
+      "seconds": 3.496249133022502,
+      "peakRssBytes": 145620992,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase111",
+        "taskset",
+        "-c",
+        "3",
+        "env",
+        "P118_CASE_MANIFEST=selfhost/tools/performance/phase130/scalar/cases-v03.json",
+        "P118_RUNTIME_REPORT=selfhost/build/phase128/runtime-borrow01/report.json",
+        "selfhost/.bootstrap/bun-1.4.3/bun",
+        "selfhost/tools/performance/phase128/emit-entry.mjs",
+        "selfhost/build/phase111/p128-native-api02/report.json",
+        "selfhost/build/phase128/native-source02/manifest.json",
+        "selfhost/build/phase118/p130-scalar-ceiling-emit03",
+        "scalar-order-baseline",
+        "scalar-order-scalar"
+      ]
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase130/scalar-emit04-guard/process.json",
+        "bytes": 936,
+        "sha256": "2d2fca926622db1e6a16fd21c155b7b971fd77bee3c0b5294147c8c6af62071d"
+      },
+      "complete": false,
+      "seconds": 3.78335133404471,
+      "peakRssBytes": 142897152,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase111",
+        "taskset",
+        "-c",
+        "3",
+        "env",
+        "P118_CASE_MANIFEST=selfhost/tools/performance/phase130/scalar/cases-v04.json",
+        "P118_RUNTIME_REPORT=selfhost/build/phase128/runtime-borrow01/report.json",
+        "selfhost/.bootstrap/bun-1.4.3/bun",
+        "selfhost/tools/performance/phase128/emit-entry.mjs",
+        "selfhost/build/phase111/p128-native-api02/report.json",
+        "selfhost/build/phase128/native-source02/manifest.json",
+        "selfhost/build/phase118/p130-scalar-ceiling-emit04",
+        "scalar-order-baseline",
+        "scalar-order-scalar"
+      ]
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase130/scalar-emit05-guard/process.json",
+        "bytes": 936,
+        "sha256": "5b901171481a4b7674e614a6fcfb479b7dc506a14fad1e82deec86d4aa2f9c46"
+      },
+      "complete": true,
+      "seconds": 24.267618444981053,
+      "peakRssBytes": 584069120,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase111",
+        "taskset",
+        "-c",
+        "3",
+        "env",
+        "P118_CASE_MANIFEST=selfhost/tools/performance/phase130/scalar/cases-v05.json",
+        "P118_RUNTIME_REPORT=selfhost/build/phase128/runtime-borrow01/report.json",
+        "selfhost/.bootstrap/bun-1.4.3/bun",
+        "selfhost/tools/performance/phase128/emit-entry.mjs",
+        "selfhost/build/phase111/p128-native-api02/report.json",
+        "selfhost/build/phase128/native-source02/manifest.json",
+        "selfhost/build/phase118/p130-scalar-ceiling-emit05",
+        "scalar-order-baseline",
+        "scalar-order-scalar"
+      ]
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase130/scalar-timing01-guard/process.json",
+        "bytes": 855,
+        "sha256": "9332d68f429f2ca0d5840776a3c5b935c27d97a48008b215740d29853f7010ee"
+      },
+      "complete": true,
+      "seconds": 2.009167781099677,
+      "peakRssBytes": 42516480,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase111",
+        "taskset",
+        "-c",
+        "3",
+        "python3",
+        "-B",
+        "selfhost/tools/performance/phase130/scalar-run.py",
+        "--emission",
+        "selfhost/build/phase118/p130-scalar-ceiling-emit05/report.json",
+        "--cases",
+        "selfhost/tools/performance/phase130/scalar/cases-v05.json",
+        "--out",
+        "selfhost/build/phase130/scalar-timing01",
+        "--build-tag",
+        "p130-scalar01",
+        "--rounds",
+        "5",
+        "--repeats",
+        "16384",
+        "--size",
+        "64"
+      ]
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase130/scalar-u32-emit01-guard/process.json",
+        "bytes": 932,
+        "sha256": "41f5ec11b23504bc41300cee16321512b2510cc6f8d2f5b74d0d7f2fb216d13f"
+      },
+      "complete": false,
+      "seconds": 3.374642902985215,
+      "peakRssBytes": 145326080,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase111",
+        "taskset",
+        "-c",
+        "3",
+        "env",
+        "P118_CASE_MANIFEST=selfhost/tools/performance/phase130/scalar/cases-u32-v01.json",
+        "P118_RUNTIME_REPORT=selfhost/build/phase128/runtime-borrow01/report.json",
+        "selfhost/.bootstrap/bun-1.4.3/bun",
+        "selfhost/tools/performance/phase128/emit-entry.mjs",
+        "selfhost/build/phase111/p128-native-api02/report.json",
+        "selfhost/build/phase128/native-source02/manifest.json",
+        "selfhost/build/phase118/p130-scalar-u32-emit01",
+        "scalar-u32-baseline",
+        "scalar-u32-scalar"
+      ]
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase130/scalar-u32-emit02-guard/process.json",
+        "bytes": 933,
+        "sha256": "af4e72ef632775c1a2b8a9a6386635eb65966ac39afcf562d888628221418713"
+      },
+      "complete": true,
+      "seconds": 25.68379797716625,
+      "peakRssBytes": 583163904,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase111",
+        "taskset",
+        "-c",
+        "3",
+        "env",
+        "P118_CASE_MANIFEST=selfhost/tools/performance/phase130/scalar/cases-u32-v02.json",
+        "P118_RUNTIME_REPORT=selfhost/build/phase128/runtime-borrow01/report.json",
+        "selfhost/.bootstrap/bun-1.4.3/bun",
+        "selfhost/tools/performance/phase128/emit-entry.mjs",
+        "selfhost/build/phase111/p128-native-api02/report.json",
+        "selfhost/build/phase128/native-source02/manifest.json",
+        "selfhost/build/phase118/p130-scalar-u32-emit02",
+        "scalar-u32-baseline",
+        "scalar-u32-scalar"
+      ]
+    }
+  ],
+  "scope": "Sum of serial guarded envelopes, including targets, authentication and failures. Agents/source research/storage work and billing quota are not inferred from these clocks."
+}

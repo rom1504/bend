@@ -1,7 +1,7 @@
 {
   "complete": true,
-  "nativeQualified": false,
-  "qualificationScope": "Actual N1 build and focused19 passed; N1 self-reproduction running.",
+  "nativeQualified": true,
+  "qualificationScope": "Hosted\u2192N1\u2192N2 exact QBE, focused19 on N1/N2 and ordinary45 on N2.",
   "comparison": "Same fresh three-round block: qualified Phase128 N1 decimal, experimental Phase130 N1 compact, pinned upstream Bun/TypeScript.",
   "sourceToQbeRatios": {
     "phase112/phase111": 0.8832407637119296,
@@ -69,5 +69,30 @@
     "file": "selfhost/build/phase112/p130-vs128-native01/report.json",
     "sha256": "40fc69c68b476d6054ef26ae8066a834dfb9fa618db865d7e19634c3ff6476b9",
     "bytes": 231970
+  },
+  "qualification": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase130/native-qualification01.json",
+    "bytes": 280305,
+    "sha256": "34bdae144a0da01b17daa8220600d46da11547aade0fa9ca4eff3a2a22b13ae8"
+  },
+  "separateN1N2Block": {
+    "rawReport": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase112/p130-n1-n2-native01/report.json",
+      "bytes": 232106,
+      "sha256": "40e39423f0197afa0b78fde3f683c19370aee91d298dd079a81599fb5227b644"
+    },
+    "scope": "Do not pool with parent/candidate block.",
+    "ratios": {
+      "requestSeconds": {
+        "phase112/phase111": 0.9985893227354892,
+        "phase112/upstream": 1.7923933618469452,
+        "phase111/upstream": 1.7949254223317213
+      },
+      "readyExecutableStageSumSeconds": {
+        "phase112/phase111": 0.9984082711498813,
+        "phase112/upstream": 0.8802268384785527,
+        "phase111/upstream": 0.8816301546308132
+      }
+    }
   }
 }

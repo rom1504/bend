@@ -1,11 +1,46 @@
-# Latest research: Phase129 Bend capability audit and fresh N1 profiles
+# Latest qualified experiment: Phase130 compact prepared Base
+
+[Report](../implementation/phase130/README.md) ·
+[Candidate](../implementation/phase130/candidate.json) ·
+[Native timings](../implementation/phase130/native-results.json) ·
+[Guide](../docs/self_hosted/prepared-base-transport.md).
+
+Native source-to-QBE request time falls11.68% in the same three-case block:
+Phase128N1/upstream2.0412× → Phase130N1/upstream1.8028×. A separate qualified
+N1/N2 block measures1.7949×/1.7924× upstream. Request+machine-build child sums
+are~0.88× upstream under the existing prepared-Base/cached-runtime policy; do
+not call that request parity. Both scalar-order source rewrites were slower and
+are excluded. Whole compiler source grows114 lines (0.20%), including67 controls.
+
+The qualified source is995d6b4b…; hosted→N1→N2 reproduces102,432,076 QBE bytes.
+Focused19 passes on both images, ordinary45 onN2. All45 ordinary QBE products,
+.text and allocated machine sections matchPhase128 exactly; only nonallocated
+symbol strings differ. Historical runtime wrappers were not retimed;1.6526×
+remains their last measured Phase128 score. Installed CLI selection is unchanged.
+
+**Select the compact carrier explicitly** from the candidate receipt with the
+Phase130 native-request/timing recipes. Old Phase125 qualification recipes keep
+using decimal Base and do not automatically obtain the transport gain. The host
+must authenticate the complete carrier/producer/Base identity; the stamp alone
+is not permission. Original reconstruction/verification and runtime ABI remain.
+
+Full hosted acquisition cost872.50s and peaked near6GiB; native self-emission
+cost399.32 guarded seconds/2.81GB. Prefer the qualified native producer for a
+future byte-preserving acquisition after independent source checks, retaining
+reproduction/semantic gates; codegen changes may require an extra generation.
+Use small exact proxies before another image. Next investigate remaining
+materialization and repeated name/use queries; complete scalar projection must
+reuse the existing traversal/ownership contract rather than another source
+rewrite. No recursive acceleration is claimed. See Phase130 cost/evidence.
+
+# Research foundation: Phase129 Bend capability audit and fresh N1 profiles
 
 [Research](../research/phase129/README.md) ·
 [Ranked next experiments](../research/phase129/qbe-opportunities.md) ·
 [Measurements](../implementation/phase129/README.md).
 
-Compiler and installed selections are unchanged; Phase128 remains the qualified
-performance frontier below. The audit distinguishes mathematical proofs from
+That audit left compiler and installed selections unchanged; Phase128 was the
+qualified performance frontier at that point. The audit distinguishes mathematical proofs from
 forward `law` signatures, structural checks, unsafe/model boundaries and native
 qualification. QBE remains deliberately sequential; ordinary RFC loads rely on
 that premise. Latest upstream has a newer equality-adequacy theorem, but the
@@ -27,7 +62,7 @@ universal IR, multicore/GPU ABI or large proof project until a bounded experimen
 establishes value. Conditional gains and 1×/10×/100× ambition scopes are in the
 ranked plan, not measured performance claims.
 
-# Latest qualified experiment: Phase128 borrowed queries and shared preparation
+# Previous qualified experiment: Phase128 borrowed queries and shared preparation
 
 [Report](../implementation/phase128/README.md) ·
 [Candidate](../implementation/phase128/candidate.json) ·

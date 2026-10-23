@@ -1,5 +1,13 @@
 # Profiling native Bend programs
 
+For a current compiler example, [Phase129](../../implementation/phase129/README.md)
+reuses these tools with workload-specific repeat budgets, an unchanged qualified
+N1, a small diagnostic runtime relink and pooled active-owner contexts. Its
+[audit](../../research/phase129/profiler-audit.md) demonstrates how authenticated
+caller data resolves register-copy cost without another target run. The
+[reproduction adapters](../../selfhost/tools/performance/phase129/README.md)
+keep diagnostic overhead and cold request time separate.
+
 The [general native profiler](../../selfhost/tools/profiler/) measures arbitrary
 sequential native programs, including the Bend compiler. It separates clean
 execution time from diagnostic CPU sampling, active Bend dispatch attribution,

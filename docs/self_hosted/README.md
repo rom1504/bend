@@ -1,5 +1,9 @@
 # Self-hosted compiler: current architecture and development
 
+The [Phase129 Bend capability audit](../../research/phase129/README.md) explains
+which proof, ownership, erasure and parallelism guarantees the selected compiler
+uses, and links the [next QBE optimization proposals](../../research/phase129/qbe-opportunities.md).
+
 Use the [native profiling guide](PROFILING.md) for clean execution measurements,
 CPU samples, selected physical callers and Bend runtime event attribution on
 compiler requests or ordinary native programs.

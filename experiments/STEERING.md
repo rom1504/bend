@@ -1,3 +1,32 @@
+# Latest research: Phase129 Bend capability audit and fresh N1 profiles
+
+[Research](../research/phase129/README.md) ·
+[Ranked next experiments](../research/phase129/qbe-opportunities.md) ·
+[Measurements](../implementation/phase129/README.md).
+
+Compiler and installed selections are unchanged; Phase128 remains the qualified
+performance frontier below. The audit distinguishes mathematical proofs from
+forward `law` signatures, structural checks, unsafe/model boundaries and native
+qualification. QBE remains deliberately sequential; ordinary RFC loads rely on
+that premise. Latest upstream has a newer equality-adequacy theorem, but the
+active language/kernel pin was not changed.
+
+Fresh current-N1 evidence: 55 exact-QBE observations, 40 loss-free sampled
+captures on three short requests. Every request executes 1,087,899 decimal-parser
+entry segments. Decimal active contexts are 38.84% closures / 10.47% lexer /
+8.74% Map; usage-query contexts are 10.97% Map. All 218 sampled unresolved libc
+PCs authenticate as register copy called by `p111_set_regs`; copy plus exclusive
+helper leaves expose 9–13%. Requested register clearing remains zero. Physical,
+context and counter views overlap; diagnostic overhead stays explicit. No new
+upstream ratio or full-source profile is inferred.
+
+Next compare compact/static prepared-Base materialization against a complete
+borrowed scalar-query ceiling. Test one reusable use-summary with a small safe
+theorem/bridge. Preserve existing QBE and independent verification; postpone a
+universal IR, multicore/GPU ABI or large proof project until a bounded experiment
+establishes value. Conditional gains and 1×/10×/100× ambition scopes are in the
+ranked plan, not measured performance claims.
+
 # Latest qualified experiment: Phase128 borrowed queries and shared preparation
 
 [Report](../implementation/phase128/README.md) ·

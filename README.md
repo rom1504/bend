@@ -120,6 +120,11 @@ preserves ownership across read-only calls and reuses request preparation.
 See the [Phase128 report](implementation/phase128/README.md) for native compiler
 timings, generated-program results and qualification.
 
+The [Bend capability audit](research/phase129/README.md) examines how the selected
+compiler uses proofs, types, ownership and parallelism. Its
+[QBE roadmap](research/phase129/qbe-opportunities.md) ranks the next opportunities
+using fresh compiler profiles and explicit gain/cost estimates.
+
 The [native IR research prototype](docs/self_hosted/NATIVE_IR_RESEARCH.md) now
 implements a small Bend IR with C and Cranelift consumers, checked folding laws,
 and a reproducible policy experiment. Its [report and diagrams](implementation/phase106/README.md)

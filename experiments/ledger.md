@@ -5542,3 +5542,35 @@ Next: refresh qualified-image profiles, then use a cheap compiler-derived test
 for AST query or checked-Base decoding elimination. Borrowed call contracts and
 immutable preparation are the demonstrated transferable lessons from the Lean,
 Zig and Go research; a large representation rewrite remains conditional.
+
+
+## Phase129 Bend capability research and current-N1 profiling — 2026-10-23
+
+[Design](../design/phase129/README.md) ·
+[Research](../research/phase129/README.md) ·
+[Report](../implementation/phase129/README.md) ·
+[Ranked proposals](../research/phase129/qbe-opportunities.md).
+
+Compiler and installed selections unchanged; Phase128 remains the qualified
+performance frontier. The source-grounded audit distinguishes live/dead proof
+semantics, quantities, erasure, template specialization, ownership and actual
+parallel-runtime support. Latest upstream has an equality-adequacy theorem absent
+from our active pin; no migration. Existing local helper proofs do not establish
+whole-compiler preservation; selected optimizer plans remain ordinary records.
+
+Current N1 physical/context/counter refresh passes 55 exact-QBE observations and
+40 loss-free captures. All three requests execute 1,087,899 decimal-parser
+entries. Decimal active contexts cover 38.84% closures, 10.47% lexer, 8.74% Map;
+usage queries cover 10.97% Map. Authenticated CFI recovers all 218 sampled libc
+copies at p111_set_regs; copy plus exclusive helper exposes 9–13% original CPU.
+Clearing remains zero. Context/counter overhead is explicit; no new upstream,
+full-source or generated-runtime benchmark claim. Guarded runs/build cost 120.62s;
+80 existing profiler tests pass. Bounded repeat planning and context pooling reuse
+existing tools. One missing-header preparation and one report-path correction
+required no target reruns.
+
+Recommended next: compact/static prepared state and complete borrowed scalar
+queries, plus one small proof-connected reusable usage summary. Conditional
+1×/10×/100× scopes target progressively larger elimination of repeated analysis,
+ownership and transport; multicore/GPU and wholesale IR work remain gated by
+small decisive experiments. No claim of recursive acceleration.

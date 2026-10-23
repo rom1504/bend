@@ -1,0 +1,605 @@
+{
+  "complete": true,
+  "targetsRunByThisTool": false,
+  "head": "a4ecad0e2e33944814fbad0b53705c2460e60f8a",
+  "selected": {
+    "file": "/home/ai/bend2/build/publish/bend/implementation/phase128/candidate.json",
+    "bytes": 5091,
+    "sha256": "39893d1eeb5adf4b3541161aeb864dd10f076640f682af1679e62c93dfc32064"
+  },
+  "observations": 55,
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase129/profile-comparison01.json",
+      "bytes": 312478,
+      "sha256": "1ce965b0dfdc255cb0e80505d4edb8051067444bf32a979620e39d91d27327bf"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase129/complete-comparison01.json",
+      "bytes": 657844,
+      "sha256": "b8205e9007747bdc156f029727894a0da93ce8877210a6913fb5f356898c1d36"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase129/context-summary01/report.json",
+      "bytes": 362376,
+      "sha256": "98f3e602a5b9eb8fd4585eb838afc425865464ef184b0fd3b1951571f58bee40"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase88/cache-js01/entry.bend",
+      "bytes": 38417,
+      "sha256": "e4f262e04519cb6ca044e7f7a870b6f9e749c7d70cdd530b96c2412c8d3fc4f6"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase129/report.py",
+      "bytes": 4414,
+      "sha256": "3978ded4bf9cd62f0051ef8c3a2f9b382a9c5325f2c3d4d3d520153311d32c40"
+    }
+  ],
+  "decoderNames": [
+    "p88_array_depth",
+    "p88_array_depth_step",
+    "p88_bool_value",
+    "p88_build",
+    "p88_decode_admitted",
+    "p88_digit",
+    "p88_digits",
+    "p88_field",
+    "p88_field_number",
+    "p88_fields",
+    "p88_fields_finish",
+    "p88_fields_next",
+    "p88_head_at",
+    "p88_header_allocate",
+    "p88_header_counts",
+    "p88_header_gate",
+    "p88_header_nodes",
+    "p88_header_stamp",
+    "p88_node_at",
+    "p88_node_gate",
+    "p88_node_got",
+    "p88_number",
+    "p88_number_read",
+    "p88_record_put",
+    "p88_record_tag",
+    "p88_record_tag_gate",
+    "p88_record_width",
+    "p88_record_width_gate",
+    "p88_records",
+    "p88_role_empty",
+    "p88_roles",
+    "p88_roots",
+    "p88_roots_done",
+    "p88_roots_gate",
+    "p88_roots_next",
+    "p88_roots_ready",
+    "p88_span",
+    "p88_state_bad",
+    "p88_string_at",
+    "p88_string_gate",
+    "p88_string_got",
+    "p88_strings",
+    "p88_strings_gate",
+    "p88_strings_read",
+    "p88_text",
+    "p88_text_char",
+    "p88_text_chars",
+    "p88_text_gate",
+    "p88_text_size",
+    "p88_u32",
+    "p88_valid_node"
+  ],
+  "workloads": [
+    {
+      "name": "lexer",
+      "cleanWallSeconds": 2.184205120895058,
+      "cleanCpuSeconds": 2.182057,
+      "physicalSamples": 886,
+      "physicalGroups": [
+        {
+          "name": "generated_bend",
+          "samples": 262,
+          "rawFraction": 0.29571106094808125,
+          "periodWeightedMicroseconds": 2551000,
+          "periodWeightedFraction": 0.2926129846295022,
+          "lowPrecision": false,
+          "estimatedCleanCpuSeconds": 0.6384982114016976
+        },
+        {
+          "name": "reclamation",
+          "samples": 193,
+          "rawFraction": 0.2178329571106095,
+          "periodWeightedMicroseconds": 1914000,
+          "periodWeightedFraction": 0.21954576737783896,
+          "lowPrecision": false,
+          "estimatedCleanCpuSeconds": 0.4790613785271851
+        },
+        {
+          "name": "ownership_and_products",
+          "samples": 151,
+          "rawFraction": 0.17042889390519186,
+          "periodWeightedMicroseconds": 1498000,
+          "periodWeightedFraction": 0.17182840100940583,
+          "lowPrecision": false,
+          "estimatedCleanCpuSeconds": 0.37493936522138105
+        },
+        {
+          "name": "other",
+          "samples": 146,
+          "rawFraction": 0.16478555304740405,
+          "periodWeightedMicroseconds": 1448000,
+          "periodWeightedFraction": 0.16609314062858455,
+          "lowPrecision": false,
+          "estimatedCleanCpuSeconds": 0.3624247001605873
+        },
+        {
+          "name": "unresolved",
+          "samples": 84,
+          "rawFraction": 0.09480812641083522,
+          "periodWeightedMicroseconds": 817000,
+          "periodWeightedFraction": 0.09371415462261987,
+          "lowPrecision": false,
+          "estimatedCleanCpuSeconds": 0.20448962709337004
+        },
+        {
+          "name": "scheduler",
+          "samples": 36,
+          "rawFraction": 0.040632054176072234,
+          "periodWeightedMicroseconds": 368000,
+          "periodWeightedFraction": 0.042211516402844686,
+          "lowPrecision": false,
+          "estimatedCleanCpuSeconds": 0.09210793484744206
+        },
+        {
+          "name": "allocation",
+          "samples": 14,
+          "rawFraction": 0.01580135440180587,
+          "periodWeightedMicroseconds": 122000,
+          "periodWeightedFraction": 0.013994035329203946,
+          "lowPrecision": true,
+          "estimatedCleanCpuSeconds": 0.030535782748336772
+        }
+      ],
+      "contextSamples": 974,
+      "decoderContextFraction": 0.16040282392026578,
+      "decimalContextFraction": 0.10465116279069767,
+      "useQueryContextFraction": 0.003010797342192691,
+      "stringOrderContextFraction": 0.07246677740863787,
+      "indexContextFraction": 0.17732558139534885,
+      "contextOnlyWallOverClean": 1.1545378196656855,
+      "countersWallOverClean": 1.6208906351980525,
+      "eventTotals": {
+        "dispatches": 25705885,
+        "heap_alloc_calls": 24604082,
+        "heap_alloc_miss_calls": 1536,
+        "heap_free_calls": 24604082,
+        "heap_alloc_requested_words": 49594143,
+        "heap_free_words": 49594143,
+        "term_keep_calls": 9347917,
+        "term_sink_calls": 35148014,
+        "term_drop_calls": 24763812,
+        "ctr_take_calls": 23528169,
+        "frame_push_calls": 69769,
+        "frame_capture_words": 74138,
+        "return_calls": 11221716,
+        "primitive_calls": 6273647,
+        "register_words_copy_requested": 51658333,
+        "register_words_clear_requested": 0
+      },
+      "selectedEntries": [
+        {
+          "fid": 47398,
+          "symbol": "p111_FID_36_100_105_114_101_99_116_46_105_110_100_101_120_95_102_105_110_100_",
+          "loweredOwner": "index_find",
+          "role": "direct_segment",
+          "dispatches": 1630841
+        },
+        {
+          "fid": 780,
+          "symbol": "p111_FID_36_100_105_114_101_99_116_46_112_56_56_95_100_105_103_105_116_115_",
+          "loweredOwner": "p88_digits",
+          "role": "direct_segment",
+          "dispatches": 1087899
+        },
+        {
+          "fid": 48151,
+          "symbol": "p111_FID_36_100_105_114_101_99_116_46_83_116_114_105_110_103_46_111_114_100_101_114_",
+          "loweredOwner": "String.order",
+          "role": "direct_segment",
+          "dispatches": 815101
+        },
+        {
+          "fid": 774,
+          "symbol": "p111_FID_36_100_105_114_101_99_116_46_112_56_56_95_100_105_103_105_116_",
+          "loweredOwner": "p88_digit",
+          "role": "direct_segment",
+          "dispatches": 762943
+        },
+        {
+          "fid": 931,
+          "symbol": "p111_FID_36_100_105_114_101_99_116_46_112_56_56_95_110_117_109_98_101_114_",
+          "loweredOwner": "p88_number",
+          "role": "direct_segment",
+          "dispatches": 324069
+        },
+        {
+          "fid": 1029,
+          "symbol": "p111_FID_36_100_105_114_101_99_116_46_112_56_56_95_102_105_101_108_100_",
+          "loweredOwner": "p88_field",
+          "role": "direct_segment",
+          "dispatches": 228745
+        },
+        {
+          "fid": 36793,
+          "symbol": "p111_FID_36_100_105_114_101_99_116_46_110_113_95_117_115_101_115_95_108_105_115_116_",
+          "loweredOwner": "nq_uses_list",
+          "role": "direct_segment",
+          "dispatches": 12729
+        },
+        {
+          "fid": 36842,
+          "symbol": "p111_FID_36_100_105_114_101_99_116_46_110_113_95_117_115_101_115_",
+          "loweredOwner": "nq_uses",
+          "role": "direct_segment",
+          "dispatches": 8166
+        }
+      ],
+      "eventReceipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase129/context-summary01/lexer-events.json",
+        "bytes": 2058439,
+        "sha256": "3e63362f01147d749377faf453851085e94d52511676af4d1b985551cf7f283f"
+      }
+    },
+    {
+      "name": "coverage-closures-256",
+      "cleanWallSeconds": 0.6025087260641158,
+      "cleanCpuSeconds": 0.600559,
+      "physicalSamples": 717,
+      "physicalGroups": [
+        {
+          "name": "generated_bend",
+          "samples": 260,
+          "rawFraction": 0.36262203626220363,
+          "periodWeightedMicroseconds": 2525000,
+          "periodWeightedFraction": 0.3560851783951488,
+          "lowPrecision": false,
+          "estimatedCleanCpuSeconds": 0.21385015865181214
+        },
+        {
+          "name": "ownership_and_products",
+          "samples": 134,
+          "rawFraction": 0.18688981868898186,
+          "periodWeightedMicroseconds": 1362000,
+          "periodWeightedFraction": 0.19207446058383867,
+          "lowPrecision": false,
+          "estimatedCleanCpuSeconds": 0.11535204597376957
+        },
+        {
+          "name": "other",
+          "samples": 133,
+          "rawFraction": 0.18549511854951187,
+          "periodWeightedMicroseconds": 1334000,
+          "periodWeightedFraction": 0.1881257932590608,
+          "lowPrecision": false,
+          "estimatedCleanCpuSeconds": 0.11298063827386828
+        },
+        {
+          "name": "reclamation",
+          "samples": 84,
+          "rawFraction": 0.11715481171548117,
+          "periodWeightedMicroseconds": 832000,
+          "periodWeightedFraction": 0.11733182907911437,
+          "lowPrecision": false,
+          "estimatedCleanCpuSeconds": 0.07046468593992385
+        },
+        {
+          "name": "unresolved",
+          "samples": 63,
+          "rawFraction": 0.08786610878661087,
+          "periodWeightedMicroseconds": 604000,
+          "periodWeightedFraction": 0.08517839514878014,
+          "lowPrecision": false,
+          "estimatedCleanCpuSeconds": 0.051154651812156254
+        },
+        {
+          "name": "scheduler",
+          "samples": 32,
+          "rawFraction": 0.044630404463040445,
+          "periodWeightedMicroseconds": 321000,
+          "periodWeightedFraction": 0.04526865040191792,
+          "lowPrecision": false,
+          "estimatedCleanCpuSeconds": 0.027186495416725423
+        },
+        {
+          "name": "allocation",
+          "samples": 11,
+          "rawFraction": 0.015341701534170154,
+          "periodWeightedMicroseconds": 113000,
+          "periodWeightedFraction": 0.01593569313213933,
+          "lowPrecision": true,
+          "estimatedCleanCpuSeconds": 0.009570323931744463
+        }
+      ],
+      "contextSamples": 832,
+      "decoderContextFraction": 0.5352934029887012,
+      "decimalContextFraction": 0.38840967075689464,
+      "useQueryContextFraction": 0,
+      "stringOrderContextFraction": 0.024541367999028063,
+      "indexContextFraction": 0.04215769651318188,
+      "contextOnlyWallOverClean": 1.1723834979613301,
+      "countersWallOverClean": 1.7664067007906714,
+      "eventTotals": {
+        "dispatches": 9940644,
+        "heap_alloc_calls": 9550224,
+        "heap_alloc_miss_calls": 1219,
+        "heap_free_calls": 9550224,
+        "heap_alloc_requested_words": 19701567,
+        "heap_free_words": 19701567,
+        "term_keep_calls": 1731336,
+        "term_sink_calls": 5420631,
+        "term_drop_calls": 3437820,
+        "ctr_take_calls": 6824471,
+        "frame_push_calls": 29210,
+        "frame_capture_words": 29801,
+        "return_calls": 4299517,
+        "primitive_calls": 2246348,
+        "register_words_copy_requested": 21015484,
+        "register_words_clear_requested": 0
+      },
+      "selectedEntries": [
+        {
+          "fid": 780,
+          "symbol": "p111_FID_36_100_105_114_101_99_116_46_112_56_56_95_100_105_103_105_116_115_",
+          "loweredOwner": "p88_digits",
+          "role": "direct_segment",
+          "dispatches": 1087899
+        },
+        {
+          "fid": 774,
+          "symbol": "p111_FID_36_100_105_114_101_99_116_46_112_56_56_95_100_105_103_105_116_",
+          "loweredOwner": "p88_digit",
+          "role": "direct_segment",
+          "dispatches": 762943
+        },
+        {
+          "fid": 931,
+          "symbol": "p111_FID_36_100_105_114_101_99_116_46_112_56_56_95_110_117_109_98_101_114_",
+          "loweredOwner": "p88_number",
+          "role": "direct_segment",
+          "dispatches": 324069
+        },
+        {
+          "fid": 1029,
+          "symbol": "p111_FID_36_100_105_114_101_99_116_46_112_56_56_95_102_105_101_108_100_",
+          "loweredOwner": "p88_field",
+          "role": "direct_segment",
+          "dispatches": 228745
+        },
+        {
+          "fid": 47398,
+          "symbol": "p111_FID_36_100_105_114_101_99_116_46_105_110_100_101_120_95_102_105_110_100_",
+          "loweredOwner": "index_find",
+          "role": "direct_segment",
+          "dispatches": 113695
+        },
+        {
+          "fid": 48151,
+          "symbol": "p111_FID_36_100_105_114_101_99_116_46_83_116_114_105_110_103_46_111_114_100_101_114_",
+          "loweredOwner": "String.order",
+          "role": "direct_segment",
+          "dispatches": 83489
+        },
+        {
+          "fid": 36793,
+          "symbol": "p111_FID_36_100_105_114_101_99_116_46_110_113_95_117_115_101_115_95_108_105_115_116_",
+          "loweredOwner": "nq_uses_list",
+          "role": "direct_segment",
+          "dispatches": 770
+        },
+        {
+          "fid": 36842,
+          "symbol": "p111_FID_36_100_105_114_101_99_116_46_110_113_95_117_115_101_115_",
+          "loweredOwner": "nq_uses",
+          "role": "direct_segment",
+          "dispatches": 524
+        }
+      ],
+      "eventReceipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase129/context-summary01/coverage-closures-256-events.json",
+        "bytes": 1980258,
+        "sha256": "34be6421c958e54fb3621c4253cd3b60d67aeabea76dd4033f182cbc3b569ea4"
+      }
+    },
+    {
+      "name": "coverage-map-churn-128",
+      "cleanWallSeconds": 2.9052078269887716,
+      "cleanCpuSeconds": 2.9021049999999997,
+      "physicalSamples": 1176,
+      "physicalGroups": [
+        {
+          "name": "generated_bend",
+          "samples": 349,
+          "rawFraction": 0.2967687074829932,
+          "periodWeightedMicroseconds": 3472000,
+          "periodWeightedFraction": 0.2978212386344141,
+          "lowPrecision": false,
+          "estimatedCleanCpuSeconds": 0.8643085057471263
+        },
+        {
+          "name": "reclamation",
+          "samples": 292,
+          "rawFraction": 0.24829931972789115,
+          "periodWeightedMicroseconds": 2831000,
+          "periodWeightedFraction": 0.24283753645565276,
+          "lowPrecision": false,
+          "estimatedCleanCpuSeconds": 0.7047400287356321
+        },
+        {
+          "name": "ownership_and_products",
+          "samples": 217,
+          "rawFraction": 0.18452380952380953,
+          "periodWeightedMicroseconds": 2126000,
+          "periodWeightedFraction": 0.18236404185966718,
+          "lowPrecision": false,
+          "estimatedCleanCpuSeconds": 0.5292395977011494
+        },
+        {
+          "name": "other",
+          "samples": 173,
+          "rawFraction": 0.14710884353741496,
+          "periodWeightedMicroseconds": 1774000,
+          "periodWeightedFraction": 0.15217018356493395,
+          "lowPrecision": false,
+          "estimatedCleanCpuSeconds": 0.4416138505747126
+        },
+        {
+          "name": "unresolved",
+          "samples": 75,
+          "rawFraction": 0.06377551020408163,
+          "periodWeightedMicroseconds": 745000,
+          "periodWeightedFraction": 0.06390461485675072,
+          "lowPrecision": false,
+          "estimatedCleanCpuSeconds": 0.18545790229885054
+        },
+        {
+          "name": "scheduler",
+          "samples": 48,
+          "rawFraction": 0.04081632653061224,
+          "periodWeightedMicroseconds": 484000,
+          "periodWeightedFraction": 0.04151655515525819,
+          "lowPrecision": false,
+          "estimatedCleanCpuSeconds": 0.12048540229885056
+        },
+        {
+          "name": "allocation",
+          "samples": 22,
+          "rawFraction": 0.01870748299319728,
+          "periodWeightedMicroseconds": 226000,
+          "periodWeightedFraction": 0.01938582947332304,
+          "lowPrecision": false,
+          "estimatedCleanCpuSeconds": 0.056259712643678156
+        }
+      ],
+      "contextSamples": 1275,
+      "decoderContextFraction": 0.11904950495049507,
+      "decimalContextFraction": 0.08744554455445544,
+      "useQueryContextFraction": 0.1097029702970297,
+      "stringOrderContextFraction": 0.09291089108910891,
+      "indexContextFraction": 0.07706930693069307,
+      "contextOnlyWallOverClean": 1.0957140079248944,
+      "countersWallOverClean": 1.6774972292420616,
+      "eventTotals": {
+        "dispatches": 35144004,
+        "heap_alloc_calls": 34594756,
+        "heap_alloc_miss_calls": 1970,
+        "heap_free_calls": 34594756,
+        "heap_alloc_requested_words": 63810794,
+        "heap_free_words": 63810794,
+        "term_keep_calls": 18036541,
+        "term_sink_calls": 59669646,
+        "term_drop_calls": 38356506,
+        "ctr_take_calls": 30997059,
+        "frame_push_calls": 192337,
+        "frame_capture_words": 201473,
+        "return_calls": 15401896,
+        "primitive_calls": 9576971,
+        "register_words_copy_requested": 66865189,
+        "register_words_clear_requested": 0
+      },
+      "selectedEntries": [
+        {
+          "fid": 48151,
+          "symbol": "p111_FID_36_100_105_114_101_99_116_46_83_116_114_105_110_103_46_111_114_100_101_114_",
+          "loweredOwner": "String.order",
+          "role": "direct_segment",
+          "dispatches": 1614589
+        },
+        {
+          "fid": 47398,
+          "symbol": "p111_FID_36_100_105_114_101_99_116_46_105_110_100_101_120_95_102_105_110_100_",
+          "loweredOwner": "index_find",
+          "role": "direct_segment",
+          "dispatches": 1507119
+        },
+        {
+          "fid": 780,
+          "symbol": "p111_FID_36_100_105_114_101_99_116_46_112_56_56_95_100_105_103_105_116_115_",
+          "loweredOwner": "p88_digits",
+          "role": "direct_segment",
+          "dispatches": 1087899
+        },
+        {
+          "fid": 774,
+          "symbol": "p111_FID_36_100_105_114_101_99_116_46_112_56_56_95_100_105_103_105_116_",
+          "loweredOwner": "p88_digit",
+          "role": "direct_segment",
+          "dispatches": 762943
+        },
+        {
+          "fid": 36793,
+          "symbol": "p111_FID_36_100_105_114_101_99_116_46_110_113_95_117_115_101_115_95_108_105_115_116_",
+          "loweredOwner": "nq_uses_list",
+          "role": "direct_segment",
+          "dispatches": 750375
+        },
+        {
+          "fid": 36842,
+          "symbol": "p111_FID_36_100_105_114_101_99_116_46_110_113_95_117_115_101_115_",
+          "loweredOwner": "nq_uses",
+          "role": "direct_segment",
+          "dispatches": 565251
+        },
+        {
+          "fid": 931,
+          "symbol": "p111_FID_36_100_105_114_101_99_116_46_112_56_56_95_110_117_109_98_101_114_",
+          "loweredOwner": "p88_number",
+          "role": "direct_segment",
+          "dispatches": 324069
+        },
+        {
+          "fid": 1029,
+          "symbol": "p111_FID_36_100_105_114_101_99_116_46_112_56_56_95_102_105_101_108_100_",
+          "loweredOwner": "p88_field",
+          "role": "direct_segment",
+          "dispatches": 228745
+        }
+      ],
+      "eventReceipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase129/context-summary01/coverage-map-churn-128-events.json",
+        "bytes": 2175287,
+        "sha256": "83bc2a430b251a62395f1073e5afe83569c78c77b11e3d98d0b532e72391a95c"
+      }
+    }
+  ],
+  "guards": [
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase129/profile01-guard/process.json",
+        "bytes": 629,
+        "sha256": "d846b5285745b30c4d62688c0092054860c742d14f6a02af3d28ff3155921a55"
+      },
+      "seconds": 58.0266856639646,
+      "peakRss": 154079232
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase129/context02-build-guard/process.json",
+        "bytes": 632,
+        "sha256": "deba80511fc0694c6d610ed61d7ff7b8b0c2ebd7de8d112f021b7c1a91c09613"
+      },
+      "seconds": 2.536344911903143,
+      "peakRss": 90533888
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase129/context02-run-guard/process.json",
+        "bytes": 626,
+        "sha256": "c0ad5627dd1004adb5fb758c5169c00b4c29eb2582607cd160383f3bd3b23476"
+      },
+      "seconds": 60.05848183319904,
+      "peakRss": 152608768
+    }
+  ],
+  "guardedSeconds": 120.62151240906678,
+  "peakGuardedRssBytes": 154079232,
+  "scope": "No new compiler or upstream comparison. Original-image physical profiles, diagnostic active contexts and counters are separate overlapping views. Cold three-request screen; full compiler and broad generated-program runtime remain Phase128 evidence."
+}

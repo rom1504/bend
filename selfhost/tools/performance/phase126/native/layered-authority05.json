@@ -1,0 +1,134 @@
+{
+  "kind": "phase126-exact-native-layered-authority",
+  "baseManifest": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase126/observer-source26/manifest.json",
+    "bytes": 16100,
+    "sha256": "dcd6a79fd48a78ede076becbc5f40e72477c2241962ba3dd0897b97ec783a2d4"
+  },
+  "layers": [
+    {
+      "kind": "divmod",
+      "manifest": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase126/observer-divmod-source27/manifest.json",
+        "bytes": 12488,
+        "sha256": "3f3b9229b7c707b788f18d874bdd2392a5d8d3344cbce8aa9143c5b71615e543"
+      },
+      "authority": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase126/product-primitive/divmod-manifest01.json",
+        "bytes": 1463,
+        "sha256": "dfe8e73b21605c69576516d73804fae14cf8034c8dbcecaca2e67cf34154d4d4"
+      },
+      "producer": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase126/product-primitive/prepare-divmod.py",
+        "bytes": 4570,
+        "sha256": "b0ba97b273db3625b89d497fb270aece20bffd232486904a262572d83c271c27"
+      },
+      "modules": [
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase126/product-primitive/divmod.bend",
+          "bytes": 6263,
+          "sha256": "09541c1f5378188b3f6228c9918eb7ba6a3f5fe82669ff9ab44306ad529aace5"
+        },
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase126/product-primitive/divmod-controls.bend",
+          "bytes": 3254,
+          "sha256": "f2f8f6b5d4dfaa0e66c216973ea31be742dab03bb88d1ff69c61f4e856007d82"
+        }
+      ],
+      "overrides": [
+        "p113pl_let",
+        "p113px_let",
+        "p113p_primitive",
+        "p113e_scalar_safe",
+        "p113e_stmt"
+      ],
+      "aliases": {
+        "p113pl_let": "p126dp_original_let",
+        "p113px_let": "p126dp_original_live_let",
+        "p113p_primitive": "p126dp_original_primitive",
+        "p113e_scalar_safe": "p126dp_original_scalar_safe",
+        "p113e_stmt": "p126dp_original_stmt"
+      }
+    },
+    {
+      "kind": "tail-scc",
+      "manifest": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase126/tail-scc-source28/manifest.json",
+        "bytes": 18671,
+        "sha256": "45c28a99de115450da018a9990b8ddb0fa311464b31792c6db4785b3d9998541"
+      },
+      "authority": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase126/tail-scc/modules01.json",
+        "bytes": 3385,
+        "sha256": "812a42384b5d6fb494c4cafd76c92674fcbf1be9afe63a3a0d3ea66fcc6b7631"
+      },
+      "producer": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase126/tail-scc/prepare.py",
+        "bytes": 3324,
+        "sha256": "e510d2d2f51e7335865e02fa4644e0f628c9b9ba190842cfead01adf8d4d845f"
+      },
+      "modules": [
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase126/tail-scc/model.bend",
+          "bytes": 7077,
+          "sha256": "d47caeef4794bb24046f5a202cfc5b55074675f5bcec776880b3f5996809f558"
+        },
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase126/tail-scc/plan.bend",
+          "bytes": 5753,
+          "sha256": "030942bc37b1b8febc66ae2ee35c697feae019a3285d99e08c68264afa33e5b7"
+        },
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase126/tail-scc/entry.bend",
+          "bytes": 414,
+          "sha256": "584a599e17f4fde9c2c8fd2ea34fb10ce5a4ce5e9af2032d27b05513d27cdbd6"
+        },
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase126/tail-scc/controls.bend",
+          "bytes": 3789,
+          "sha256": "17ee02ee880e5ff8708155730a319cd5850a3c2a47c15d2a973fc99448d57c41"
+        }
+      ],
+      "overrides": [
+        "p113pl_plan"
+      ],
+      "aliases": {}
+    }
+  ],
+  "runtimeReport": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase126/runtime-divmod01/report.json",
+    "bytes": 5362,
+    "sha256": "5b5f57ea8d35fc2ad5c03f2bb3f854d0513b2f9d8ea12211505805d544860880"
+  },
+  "runtimeBuilder": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase126/product-primitive/runtime-divmod.py",
+    "bytes": 3832,
+    "sha256": "cd1ebbd749f43bf27419f30242b7be7aa322dd1f280b47f4c3bb7b1c93530b72"
+  },
+  "divmodAuthority": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase126/product-primitive/divmod-manifest01.json",
+    "bytes": 1463,
+    "sha256": "dfe8e73b21605c69576516d73804fae14cf8034c8dbcecaca2e67cf34154d4d4"
+  },
+  "runtimeExtension": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase126/product-primitive/divmod-runtime.c",
+    "bytes": 594,
+    "sha256": "67bd56b2d3dea8158042cf2450e1f8647607f6e87baec6ff7091ccefd28dcfb5"
+  },
+  "runtimeHeader": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase126/product-primitive/divmod-runtime.h",
+    "bytes": 86,
+    "sha256": "475b2d1896c40f30fbe3a6cdfdce63fb5db69091203981e0e502269abb8bb828"
+  },
+  "parentRuntimeReport": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase125/runtime-verified01/report.json",
+    "bytes": 2723,
+    "sha256": "ce147603b8923705d9d6059ed9ec65c51d8b987dff49163ded904e233654bba3"
+  },
+  "parentAbi": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase125/verified-abi06.json",
+    "bytes": 16874,
+    "sha256": "d7ec32126ba8e434b7f17440dfe3eedece7e1554df8184fa126a928b3cc0ca86"
+  },
+  "scope": "Exact closed source-layer replay, preserved original alias authorities, reviewed one-helper runtime extension only. Root checked API and target qualification remain separate."
+}

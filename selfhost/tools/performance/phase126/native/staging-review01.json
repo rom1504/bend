@@ -1,0 +1,66 @@
+{
+  "complete": true,
+  "targetsRun": false,
+  "source": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase126/observer-divmod-source32/compiler.bend",
+    "bytes": 2527616,
+    "sha256": "40c469114c4d1c75dceab456e1979bb5c0278744a02e6dbe4a37e63667740abb"
+  },
+  "abi": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase126/native32-abi01.json",
+    "bytes": 74460,
+    "sha256": "a464c08f61a59d33f5cb512a25924d89e2e131bb48a76803dbacb9763ac9a7d4"
+  },
+  "plan": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase126/native32-staged-plan01.json",
+    "bytes": 166683,
+    "sha256": "a84f90bdc2504e38bee4aad3575a99c859e66ccd67ad657a08e2d6543bbaff61"
+  },
+  "methods": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase126/native/stage-plan-v2.py",
+      "bytes": 4682,
+      "sha256": "00e36e831e93d7163ba2e119a7869fd85f528589a178b239183a719d8078a5d7"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase126/native/storage-checkpoint.py",
+      "bytes": 4862,
+      "sha256": "5eadaf4368f02a355ebd09dcfa0a35153593080bcf6784cd079a32f38cde697e"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase126/native/comparison-staged.py",
+      "bytes": 7102,
+      "sha256": "59c42f69d3bb6dd038fff2a51215f70a9fad3c676ceb9c03aa21a5d417f2aac1"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase126/native/dedup-completed-build.py",
+      "bytes": 3128,
+      "sha256": "fad55e65fa21db18b0e81839ca75f07c71d3f6f8042d8093da0bc5f2ef640442"
+    }
+  ],
+  "parentComparison": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase125/native/comparison.py",
+    "bytes": 6282,
+    "sha256": "0247a43d645d74f6b55c2c805717f558414dce87ee5e23abefeb17b6489b15c1"
+  },
+  "unchangedEmitter": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase125/native/native-emit.py",
+    "bytes": 13626,
+    "sha256": "1eb3d76b674924c730a9bce96f600621f6f2687d06357f09f0f626f706f9cc58"
+  },
+  "unchangedBuilder": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase123/build-aligned.py",
+    "bytes": 3923,
+    "sha256": "67fffc05bdbedf2fcf13eace395fd203f45a981b3a1d7de000d465fcc2693701"
+  },
+  "checks": [
+    "original 8 gate obligations retained in 12 serial jobs",
+    "emission-only native receipt must report build not-requested; separately complete N2 build required",
+    "prebuild receipt pins actual N1 image and equal source/Base/cache/admission request; raw SSA SHA+byte equality",
+    "final comparison retains all hosted stages, exact native stdout, native image/build lineage, aligned assembler, runtime and actual bytes checks",
+    "N2 build QBE source path bound directly to native product",
+    "SSA dedup occurs after emission closes; asm/object dedup after final comparison; all changed files rehashed",
+    "post-N1 free reserve: max(128MiB native stdout cap, actual N1 machine artifacts +8MiB)+96MiB remaining suites+32MiB slack",
+    "native32 permanent data-only ABI and plan preparations passed; no target execution"
+  ]
+}

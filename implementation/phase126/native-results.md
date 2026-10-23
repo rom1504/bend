@@ -49,3 +49,21 @@ uses actual staged storage needs while retaining CPU3,6GiB RSS,16GiB available,
 This checkpoint does not claim ELF identity, N2→N3 self-emission, GPU/parallel
 qualification, full-language proof or recursive research acceleration. Native
 one-shot45 correctness and hosted-emitted timed batch45 runtime remain distinct.
+
+## Fresh fixed-request comparison
+
+Both27-observation blocks pass. Candidate N1/N2 request ratios are2.57814×/2.55781×
+upstream; request-plus-machine-build stage sums are1.23123×/1.22218×. The fresh
+Phase125 block gives2.10503×/2.10256× requests and1.01851×/1.01715× stage sums.
+
+Comparing actual same-source case medians between these sequential blocks, N1
+requests grow22.82%, N2 requests21.99%; ready stage sums grow21.61%/20.87%.
+Upstream requests drift+0.28% and ready sums+0.60%, so ordinary block drift does
+not explain the whole regression. Three programs and three rounds remain a small
+screen, not a full compiler-workload survey or a confidence interval. Native
+prepared-Base/cached-runtime policy and upstream full C/Clang builds remain explicit.
+
+[Derived ratios](native-cost.json) preserve the roles and raw report paths.
+This phase improves generated-program runtime while making this native research
+tool slower. Do not label it recursive acceleration. Recover duplicated analysis
+and investigate the remaining cost before adopting it as the iteration compiler.

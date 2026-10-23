@@ -13,6 +13,12 @@ intentionally refer to the selected, already authenticated bytes. Retain failed
 attempts. Do not execute inner plan jobs outside the outer guard or launch both
 native plans into their shared artifact paths.
 
+The completed native checkpoint is recorded in
+[implementation/phase126/native-results.md](../../../../implementation/phase126/native-results.md).
+The original staged attempt stopped after N1 focused19 at its disk reserve; the
+[authenticated resume](native/README-resume.md) completed the remaining gates.
+Use fresh replay paths below, not the already consumed campaign directories.
+
 ## Selected identities and source reconstruction
 
 The source manifest is
@@ -265,3 +271,14 @@ These recipes were checked against source and actual manifests/command receipts
 without executing targets. Earlier implementation experiments, failed controls,
 source33, rejected tree-reshape variants, and partial screens remain separate
 from the selected source32 qualification and broad denominator.
+
+## Final selection and archived evidence
+
+After the complete original45 screen and native gates, `select-final.py` checks
+the exact selected source/runtime and writes `implementation/phase126/candidate.json`.
+It records actual qualification and timing receipts without installing anything.
+The compressed source at `implementation/phase126/compiler-source32.bend.gz`
+unpacks to the source SHA above. It can recover the selected compiler independently
+of the earlier scratch source directories; the manifests separately retain its
+module derivation. The final report links the bounded evidence capsule and its
+hash-checking replay command.

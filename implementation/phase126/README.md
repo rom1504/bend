@@ -1,16 +1,68 @@
 # Phase126: keep representations useful across optimization boundaries
 
-Source32 is **native-qualified**: exact hosted→N1→N2 QBE reproduction, both
-focused19 suites and all45 N2 correctness cases pass. The checked hosted API,
-98 finite checks and nine ordinary native programs also pass. The final original45
-runtime comparison is running; broad performance claims remain pending.
-See [native results](native-results.md) for acquisition costs and storage recovery.
+The frozen original44-point runtime ratio improves **1.90357→1.75263× upstream**
+in a matched run: **7.93% less geometric-mean runtime** and13.90% less total
+fixed-batch time. **Parity is not reached:**40 of44 cases still exceed1.1× upstream.
+All405 correctness observations pass, and source32 is native-qualified through
+hosted→N1→N2. However, tree/morning programs regress and native compiler requests
+cost about22% more. This is a qualified **experimental** program-speed candidate,
+not an installed promotion or a research-throughput improvement.
+See [candidate identities](candidate.json), [native results](native-results.md)
+and the [regression audit](broad-regression-audit.md).
 
 [Design](../../design/phase126/persistent-private-values.md) ·
 [Reproduce](../../selfhost/tools/performance/phase126/README.md) ·
 [Architecture](../../docs/self_hosted/representation-composition.md) ·
 [Semantic review](final-semantic-review.md) ·
 [Next opportunities](remaining-opportunities.md).
+
+## Complete matched runtime result
+
+The same original45 sources, complete outputs and repetition counts are retained.
+One zero-work sentinel remains excluded only from timing ratios. Three rotated
+rounds produce405 checked observations. Timed products come from the checked
+hosted API of the selected Bend source; N2 one-shot45 is a separate native gate.
+
+| Metric | Phase125, same run | Phase126 |
+| --- | ---: | ---: |
+| 44-point geometric ratio to upstream | 1.90357× | 1.75263× |
+| Mean positive log-slowdown | 0.902235 | 0.814547 |
+| Equal-family geometric ratio | 1.96066× | 1.84688× |
+| Cases above1.1× / above2× | 40 / 24 | 40 / 21 |
+| Sum of fixed-batch medians | 26.235s | 22.589s |
+| Positive excess over upstream | 18.010s | 14.363s |
+
+Positive log deficit falls9.72%; positive excess time falls20.25%. The three
+roundwise candidate/parent geometric ratios are0.91508,0.91155,0.92483. These
+describe the observed spread, not a confidence interval. The historical Phase125
+score1.89221 is retained as history; the gain uses its contemporaneous1.90357 score.
+
+| Program | Phase126 ms | Phase125 ms | Upstream ms | Change vs Phase125 |
+| --- | ---: | ---: | ---: | ---: |
+| raytrace | 371 | 1905 | 229 | -80.52% |
+| variation-ray-active-256-2240 | 829 | 1848 | 217 | -55.14% |
+| coverage-numeric-recurrence-1024 | 301 | 417 | 201 | -27.82% |
+| coverage-record-aggregation-256 | 570 | 681 | 200 | -16.30% |
+| coverage-map-churn-128 | 652 | 718 | 203 | -9.19% |
+| test-evening-program | 1268 | 1382 | 200 | -8.25% |
+| test-morning-program | 769 | 667 | 202 | +15.29% |
+| tree-bitonic | 1040 | 934 | 201 | +11.35% |
+| variation-tree-bitonic-6-17 | 1262 | 1126 | 214 | +12.08% |
+| variation-tree-bitonic-9-123 | 961 | 864 | 201 | +11.23% |
+
+**Regressions are real observations, not discarded outliers.** Morning is15.29%
+slower, and all three tree-bitonic cases are11.23–12.08% slower. Closures64 grows
+4→5ms (25% at integer-millisecond resolution) while remaining far faster than
+upstream. Eighteen points improve, eight tie and eighteen worsen. The main tree
+ownership workers have byte-identical QBE; predecessor lowering and added-worker
+layout are candidate causes, not established explanations. Morning changes its
+Map/String helper graph and needs a separate ablation. See the regression audit.
+
+![All44 matched runtime ratios](performance.svg)
+
+[Raw summary](../../selfhost/build/phase126/final32-summary.json) is also preserved
+in the final evidence capsule. The strongest remaining fixed-batch deficits are
+evening, the tree family, RLE and map/set operations. There is no all-family parity claim.
 
 ## What changed
 
@@ -115,6 +167,14 @@ runtime or native B1/B2 throughput. Static inspection identifies repeated late
 candidate preparation as a cleanup opportunity; it does not attribute the
 measured overhead without a profile or ablation.
 
+The separately measured native compiler regression is larger: N1/N2 fixed requests
+cost22.82%/21.99% more than a fresh Phase125 repeat. Their request ratios are
+2.578×/2.558× upstream; ready-executable stage sums are1.231×/1.222×. The reference
+block drifts only0.28% in upstream request time. These three-source measurements
+and their preparation/build policies are detailed in [native results](native-results.md).
+Thus this cycle does **not** improve the complete research loop despite its
+user-program gains. Recover preparation overhead and ablate the regressions first.
+
 The compiler source grows53,219→55,285 physical lines: **+2066 lines,+3.88%**,
 including controls. Bytes grow2,429,750→2,527,616. The runtime gains594 bytes.
 This cycle improves capabilities at a real simplicity and compilation-cost price.
@@ -144,7 +204,9 @@ capabilities without replacing the whole IR. The negative tree experiment also
 prevented promoting an attractive but slower cross-layer transformation. Neither
 result justifies a universal IR rewrite or a parity forecast.
 
-The strongest next experiment is the **outer Map continuation boundary**. Actual
+First ablate the tree predecessor/layout changes and morning call-graph regression,
+and recover duplicated preparation with byte-identical-output checks. After that,
+the strongest capability experiment is the **outer Map continuation boundary**. Actual
 final32 machine code still takes and reconstructs MNode roots, saves frames and
 jumps to boxed Map.bit even though a useful flat helper exists. Preserve that flat
 result through its immediate return consumer first; test a renamed binary search
@@ -152,3 +214,43 @@ with aliases/missing keys and an unrelated consumer before widening its ownershi
 schema. A second bounded task can skip already-ready flat candidate preparation
 and require byte-identical QBE to recover compiler overhead. See
 [ranked opportunities and falsifiers](remaining-opportunities.md).
+
+## Research cost and evidence
+
+The planned three-hour window started22:59:07 UTC. Through01:59:15, there are
+**180.13 wall minutes**, **77.37 minutes inside115 exclusive guards**, and102.76
+minutes outside those guards. Guarded time comprises26.27min native qualification,
+14.24min broad emission/build/timing,2.16min matched native compiler requests and
+34.71min other bounded experiments and checks. Code, review and documentation also
+overlap guarded execution; these categories are not model inference or quota meters.
+Final reporting, capsule sealing and pushing follow that accounting endpoint.
+
+Twenty-seven guards fail, mostly early fixture/parser/admission attempts. The
+26 failures other than the storage refusal total2.21min. The storage-refused guard
+contains14.79min of successful emission/build/check work, which the resume reuses.
+No full compiler build was repeated for that interruption. A broad read-only
+duplicate audit plus exact snapshot dedup recovered room without discarding evidence.
+
+Agents handled disjoint representation/machine investigations, semantic review,
+SCC/observer experiments, validation recipes and native/storage authority. Root
+selected and integrated the candidate and owned the single CPU3 execution lane.
+Only one final native chain and one final broad campaign ran. The storage detour
+and late regressions are reasons to improve the next cycle, not evidence that
+more validation or more agents automatically improve research throughput.
+
+[Accounting](time-accounting.json) pins the completed guard data.
+The [evidence capsule](evidence/receipts01.tar.gz) retains bounded methods, receipts,
+ordinary outputs, exact identities, failed attempts and machine excerpts; large
+rebuildable binaries/SSA are omitted with identities. The separately committed
+source archive recovers the exact selected compiler. Verify the capsule without
+running a compiler or target:
+
+```sh
+python3 -B selfhost/tools/performance/phase126/seal.py replay \
+  implementation/phase126/evidence/receipts01.tar.gz
+```
+
+The cycle demonstrates useful generated-code gains and a native checkpoint,
+but not parity, a cheaper iteration loop, or recursive acceleration. The next
+acceptance criterion should include recovering compiler cost and the recorded
+regressions as well as improving the remaining user-program deficit.

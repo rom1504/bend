@@ -5418,3 +5418,47 @@ negative findings, machine evidence and guarded time accounting are retained.
 Next high-information tests: carry private producer destinations across resumes;
 matched layout/virtual product facts; typed F32 calls/backedges for the much larger
 ray deficit. No universal IR rewrite or recursive-research acceleration claim.
+
+
+## Phase126 representation composition — 2026-10-23
+
+[Report](../implementation/phase126/README.md) ·
+[Candidate](../implementation/phase126/candidate.json) ·
+[Native results](../implementation/phase126/native-results.md) ·
+[Regressions](../implementation/phase126/broad-regression-audit.md) ·
+[Design](../design/phase126/persistent-private-values.md) ·
+[Reproduce](../selfhost/tools/performance/phase126/README.md).
+
+Source32 is native-qualified: exact99,526,466-byte hosted→N1→N2 QBE,
+focused19 on both images and original45 correctness on N2. Installed selections
+remain unchanged. Checked API,98 finite predicates and9 ordinary programs/152
+output lines pass. Original45 timing passes405 observations.
+
+Matched44-point runtime ratio1.90357→1.75263×upstream (7.93% less), fixed-batch
+sum13.90% less, positive log deficit0.902235→0.814547, positive excess20.25% less.
+Forty cases still exceed1.1×;21 exceed2× (previous24). Equal-family ratio1.84688×.
+Ray runtime80.52% less, active rays55–56% less, numeric recurrence~28% less,
+records16.3% less. **Not parity:** morning regresses15.29%, tree-bitonic11–12%;
+closures64 grows4→5ms. Preserve all these observations and the independent oracles.
+
+Selected capabilities: local F32 values, verified finite scalar tables and inline
+reads, safe conditional recursive preparation, flat borrowed products, allocation-
+free Nat.divmod product transport, exact two-function tail-cycle loops. Typed
+private ABI, local tree-shell reuse and source33 optimizer composition are excluded.
+The tree-shell attempt removes37.92% of Node allocation calls but regresses runtime.
+
+**Cost warning for research priorities:** hosted two-request cost+8.75%; native
+N1/N2 requests+22.82%/+21.99% against a fresh Phase125 repeat. Native request ratios
+2.578×/2.558× upstream; ready stage sums1.231×/1.222× with explicit prepared-Base and
+cached-runtime policy. Source+2066 lines (+3.88%), full-compiler QBE+6.96%. Native
+qualification26.27 active guarded minutes, peak5.502GiB. A storage refusal was
+preserved and resumed without repeating completed work; exact duplicate snapshots
+reclaimed430,489,600 bytes. This does not demonstrate recursive acceleration.
+
+Next priorities: first ablate the tree predecessor/layout and morning call-graph
+regressions, and skip known-ready late flat candidates to recover duplicated
+preparation without changing emitted QBE. Then test carrying a verified flat
+helper result through its outer Map continuation. Require unrelated transfer,
+independent correctness and real runtime wins. Do not infer hotness from refusal
+counts or allocator-call reductions. Keep one serial guarded target lane and
+preserve qualified Phase125 as the cheaper iteration alternative.

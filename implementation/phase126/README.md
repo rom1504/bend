@@ -26,6 +26,39 @@ These numbers are compiled-program execution time. They are not compiler
 throughput or a replacement for the original44-point geometric mean. Full
 composition, additional controls, broad timing and integration are still pending.
 
+## Second focused checkpoint, 00:17 UTC
+
+The checked inline20 composition passes seven ordinary programs (106 output
+lines), including float boundaries, full-width valid Nat values, aliases and
+recursive shifts. Its five-case screen gives active-ray769/1696/200ms,
+recurrence303/418/201ms and ordinary-ray374/1913/230ms
+(candidate/Phase125/upstream). RLE1253/1266/217ms and lexer504/515/186ms are
+approximately unchanged. These subsets must not be pooled into a corpus score.
+
+Machine inspection explains the recurrence improvement: explicit operation58
+admission unlocks the entire local float buffer, reducing60→40 instructions,
+9→0 stack-memory operands and9→2 integer/XMM transfers. There was no runtime
+call in either worker. The additional Nat predecessor projection removes one
+helper call and six stack operands in the recursive ray column worker; its
+numeric workers remain byte-identical. Table-call projection then removes the
+remaining selector boundaries, improving active-ray beyond whole-table emission.
+See [machine evidence](machine-work14-17.md) and the pinned inline20 screen.
+
+Two broader experiments are now bounded independently. Actual map diagnostics
+show a missing flat result interface (`$product.Map.bit.go`) despite an existing
+verified boxed observer; a Var-only residual adapter plus dependency closure is
+checked and passes11 new finite predicates, with runtime results pending.
+The tree reshape recognizer admits both the frozen tree computation and an
+independent owning-payload fixture; its guarded two-shell reuse still awaits
+execution. Neither prototype is a measured improvement or a native checkpoint.
+
+Rejected attempts remain explicit: an overbroad constant-field adapter and a raw
+constructor-ID integration were caught in offline review; a bounded type-size
+predicate initially used a helper with a fixed4097 offset and refused every
+positive. Ordinary fixture corrections repaired parser notation, affine reuse
+and a max-Nat expression whose intermediate exceeded the supported limit. The
+independent expected outputs were retained; failed receipts were not overwritten.
+
 ## Current evidence
 
 - [Design](../../design/phase126/persistent-private-values.md).

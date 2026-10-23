@@ -1,0 +1,73 @@
+{
+  "kind": "phase126-local-reshape-canonical-constructor-import",
+  "complete": true,
+  "checked": false,
+  "targetsRun": false,
+  "selected": false,
+  "modules": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase126/local-reshape/recognizer-v02.bend",
+      "bytes": 3403,
+      "sha256": "80339454c852dd3387e1377c589a51d7de33cdb70c099d4be5f4753143397fea"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase126/local-reshape/integration-v02.bend",
+      "bytes": 5061,
+      "sha256": "e4856665d73adde0dba349213753702774eea779a74d8b26cc9578b87761046f"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase126/local-reshape/controls.bend",
+      "bytes": 3592,
+      "sha256": "4d4383ed5d90cf1eccd5c4a2d343fd8508839ebd39c91f45e332c704326ff682"
+    }
+  ],
+  "overrides": [
+    "p121f_selected",
+    "p113e_scalar_safe",
+    "p113e_stmt"
+  ],
+  "fallbackAliasByteIdentity": true,
+  "runtime": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase126/local-reshape/runtime-prototype.c",
+    "bytes": 1652,
+    "sha256": "a7728974516c3aa8da194082b1608b5cdc3d290ee1ea6e0b45f4dd940ecea4b9"
+  },
+  "controls": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase126/local-reshape/cases.json",
+    "bytes": 1137,
+    "sha256": "a62f59f4a7eaa427c504b50c122bc84fde1719c412dc8f72179a7f8a65839dd9"
+  },
+  "inspection": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase126/local-reshape/inspect-manifest02.json",
+    "bytes": 1687,
+    "sha256": "1a6ab9c00595a24a72d19efe9dcb947ece0b8e6187ca38015abc68a3eb9a79eb"
+  },
+  "original": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase126/local-reshape/manifest01.json",
+    "bytes": 2064,
+    "sha256": "ed36d7aa326ec3ac5ce9f1ae0955e1ae3fb808c7f236769380d2f29345178b54"
+  },
+  "missing": [
+    "checked finite control execution",
+    "native/output/count/timing checks"
+  ],
+  "scope": "Whole worker guard with original body fallback. Raw dynamic distinct roots only; no RFC1, recursive ABI, carried credits or new backend.",
+  "previous": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase126/local-reshape/manifest03.json",
+    "bytes": 2666,
+    "sha256": "a983ad99ade225862e5ca000f63364bd2c52ba52bcc932d359c5e1ff658b46d2"
+  },
+  "exports": [
+    "p126lr_inspect",
+    "p126lr_equation",
+    "p126lr_types",
+    "p126lr_controls"
+  ],
+  "finiteControlCount": 18,
+  "change": "Canonicalize checked source constructor through nc_ctor_identity before N111CtorId. Earlier integration/source22 refused by exact import identity; not executed.",
+  "actualSourceQuery": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase126/reshape-query02/report.json",
+    "bytes": 371195,
+    "sha256": "f9c4c745bc4e8b10374b9ca424828dca6c74c6046493a23c80596ef5b2c7f804"
+  }
+}

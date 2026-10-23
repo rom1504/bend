@@ -1,0 +1,21 @@
+export function l $p111_$direct.Map.bit(l %state) {
+@entry
+%v_scratch =l alloc8 2048
+%t_0 =l add %state, 40
+%v_v_4294872959 =l loadl %t_0
+%t_1 =l add %state, 48
+%v_v_4294872958 =l loadl %t_1
+%v_v_4294872957 =l copy %v_v_4294872959
+%v_v_4294872955 =l copy %v_v_4294872958
+%v_v_4294872954 =l copy 33
+storel %v_v_4294872955, %v_scratch
+%t_2 =l add %v_scratch, 8
+storel %v_v_4294872954, %t_2
+%v_value =l call $p111_rt_op(l %state, w 70, l %v_scratch, w 2)
+%v_v_4294872956 =l copy %v_value
+storel %v_v_4294872957, %v_scratch
+%t_3 =l add %v_scratch, 8
+storel %v_v_4294872956, %t_3
+%v_reply =l call $p111_rt_jump(l %state, w 694, l %v_scratch, w 2)
+ret %v_reply
+}

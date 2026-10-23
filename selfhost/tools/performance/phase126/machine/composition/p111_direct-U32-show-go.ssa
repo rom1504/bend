@@ -1,0 +1,89 @@
+export function l $p111_$direct.U32.show.go(l %state) {
+@entry
+%v_scratch =l alloc8 2048
+%t_0 =l add %state, 40
+%v_v_4294865253 =l loadl %t_0
+%t_1 =l add %state, 48
+%v_v_4294865252 =l loadl %t_1
+%t_2 =l add %state, 56
+%v_v_4294865251 =l loadl %t_2
+%v_v_4294865250 =l copy %v_v_4294865253
+%v_v_4294865249 =l copy %v_v_4294865252
+%v_v_4294865248 =l copy %v_v_4294865251
+%v_match_condition =w ceql %v_v_4294865250, 0
+jnz %v_match_condition, @b_3, @b_4
+@b_3
+storel %v_v_4294865248, %v_scratch
+%v_reply =l call $p111_rt_return(l %state, l %v_scratch, w 1)
+ret %v_reply
+@b_4
+%v_v_4294865247 =l copy %v_v_4294865250
+%v_v_4294865246 =l copy %v_v_4294865249
+%v_v_4294865245 =l copy %v_v_4294865248
+%v_match_condition =w cnel %v_v_4294865247, 0
+jnz %v_match_condition, @b_6, @b_7
+@b_6
+%v_ignored =l call $p111_rt_special_take(l %state, w 4, l %v_v_4294865247, l %v_scratch, w 1)
+%v_v_4294865244 =l loadl %v_scratch
+%v_v_4294865243 =l copy %v_v_4294865244
+%v_v_4294865242 =l copy %v_v_4294865245
+%v_v_4294865241 =l copy %v_v_4294865246
+%v_v_4294865239 =l copy %v_v_4294865246
+%v_p112_s_a =l and %v_v_4294865239, 4294967295
+%v_p112_s_b =l and 0, 4294967295
+%v_p112_s_test =w ceql %v_p112_s_a, %v_p112_s_b
+jnz %v_p112_s_test, @b_9, @b_10
+@b_9
+%v_value =l copy 1
+jmp @b_11
+@b_10
+%v_value =l copy 0
+jmp @b_11
+@b_11
+%v_v_4294865240 =l copy %v_value
+storel %v_v_4294865243, %v_scratch
+%t_12 =l add %v_scratch, 8
+storel %v_v_4294865242, %t_12
+%t_13 =l add %v_scratch, 16
+storel %v_v_4294865241, %t_13
+%t_14 =l add %v_scratch, 24
+storel %v_v_4294865240, %t_14
+%v_reply =l call $p111_rt_jump(l %state, w 783, l %v_scratch, w 4)
+ret %v_reply
+@b_7
+storel %v_v_4294865245, %v_scratch
+%t_16 =l add %state, 16
+%v_p114t_15_sp =l loadl %t_16
+%v_p114t_15_capture =l loadl %v_scratch
+storel %v_p114t_15_capture, %v_p114t_15_sp
+%t_17 =l add %v_p114t_15_sp, 8
+storel 790, %t_17
+%v_p114t_15_next_sp =l add %v_p114t_15_sp, 16
+%t_18 =l add %state, 16
+storel %v_p114t_15_next_sp, %t_18
+%v_ignored =l copy 0
+storel %v_v_4294865246, %v_scratch
+%t_20 =l add %state, 16
+%v_p114t_19_sp =l loadl %t_20
+%v_p114t_19_capture =l loadl %v_scratch
+storel %v_p114t_19_capture, %v_p114t_19_sp
+%t_21 =l add %v_p114t_19_sp, 8
+storel 791, %t_21
+%v_p114t_19_next_sp =l add %v_p114t_19_sp, 16
+%t_22 =l add %state, 16
+storel %v_p114t_19_next_sp, %t_22
+%v_ignored =l copy 0
+storel %v_v_4294865247, %v_scratch
+%t_24 =l add %state, 16
+%v_p114t_23_sp =l loadl %t_24
+%v_p114t_23_capture =l loadl %v_scratch
+storel %v_p114t_23_capture, %v_p114t_23_sp
+%t_25 =l add %v_p114t_23_sp, 8
+storel 792, %t_25
+%v_p114t_23_next_sp =l add %v_p114t_23_sp, 16
+%t_26 =l add %state, 16
+storel %v_p114t_23_next_sp, %t_26
+%v_ignored =l copy 0
+%v_reply =l call $p111_rt_fail(l %state, w 4)
+ret %v_reply
+}

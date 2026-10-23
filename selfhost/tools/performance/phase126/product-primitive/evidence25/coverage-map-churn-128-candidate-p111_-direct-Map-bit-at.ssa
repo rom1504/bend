@@ -1,0 +1,43 @@
+export function l $p111_$direct.Map.bit.at(l %state) {
+@entry
+%v_scratch =l alloc8 2048
+%t_0 =l add %state, 40
+%v_v_4294873998 =l loadl %t_0
+%t_1 =l add %state, 48
+%v_v_4294873997 =l loadl %t_1
+%v_v_4294873996 =l copy %v_v_4294873997
+%v_tag =l shr %v_v_4294873996, 40
+%v_tag =l and %v_tag, 65535
+%v_match_condition =w ceql %v_tag, 8
+jnz %v_match_condition, @b_2, @b_3
+@b_2
+%v_ignored =l call $p125_rt_take2(l %state, l %v_v_4294873996, l %v_scratch)
+%v_v_4294873995 =l loadl %v_scratch
+%t_5 =l add %v_scratch, 8
+%v_v_4294873994 =l loadl %t_5
+%v_v_4294873993 =l copy %v_v_4294873998
+%v_v_4294873992 =l copy %v_v_4294873995
+%v_v_4294873991 =l copy %v_v_4294873994
+storel %v_v_4294873993, %v_scratch
+%t_6 =l add %v_scratch, 8
+storel %v_v_4294873992, %t_6
+%t_7 =l add %v_scratch, 16
+storel %v_v_4294873991, %t_7
+%v_reply =l call $p111_rt_jump(l %state, w 683, l %v_scratch, w 3)
+ret %v_reply
+@b_3
+%v_ignored =l call $p111_rt_sink(l %state, l %v_v_4294873998)
+storel %v_v_4294873996, %v_scratch
+%t_9 =l add %state, 16
+%v_p114t_8_sp =l loadl %t_9
+%v_p114t_8_capture =l loadl %v_scratch
+storel %v_p114t_8_capture, %v_p114t_8_sp
+%t_10 =l add %v_p114t_8_sp, 8
+storel 695, %t_10
+%v_p114t_8_next_sp =l add %v_p114t_8_sp, 16
+%t_11 =l add %state, 16
+storel %v_p114t_8_next_sp, %t_11
+%v_ignored =l copy 0
+%v_reply =l call $p111_rt_fail(l %state, w 4)
+ret %v_reply
+}

@@ -1,0 +1,115 @@
+export function l $p111_$direct.U32.show.fin(l %state) {
+@entry
+%v_scratch =l alloc8 2048
+%t_0 =l add %state, 40
+%v_v_4294866304 =l loadl %t_0
+%t_1 =l add %state, 48
+%v_v_4294866303 =l loadl %t_1
+%t_2 =l add %state, 56
+%v_v_4294866302 =l loadl %t_2
+%t_3 =l add %state, 64
+%v_v_4294866301 =l loadl %t_3
+%v_v_4294866300 =l copy %v_v_4294866301
+%v_p112_b_raw =w ceql %v_v_4294866300, 1
+%v_p112_b_bits =l shr %v_v_4294866300, 40
+%v_p112_b_bits =l and %v_p112_b_bits, 8388607
+%v_p112_b_expected =l or 2, 65536
+%v_p112_b_boxed =w ceql %v_p112_b_bits, %v_p112_b_expected
+%v_match_condition =w or %v_p112_b_raw, %v_p112_b_boxed
+jnz %v_match_condition, @b_4, @b_5
+@b_4
+storel %v_v_4294866303, %v_scratch
+%v_reply =l call $p111_rt_return(l %state, l %v_scratch, w 1)
+ret %v_reply
+@b_5
+%v_v_4294866299 =l copy %v_v_4294866300
+%v_p112_b_raw =w ceql %v_v_4294866299, 1
+%v_p112_b_bits =l shr %v_v_4294866299, 40
+%v_p112_b_bits =l and %v_p112_b_bits, 8388607
+%v_p112_b_expected =l or 2, 65536
+%v_p112_b_boxed =w ceql %v_p112_b_bits, %v_p112_b_expected
+%v_match_condition =w or %v_p112_b_raw, %v_p112_b_boxed
+%v_match_condition =w xor %v_match_condition, 1
+jnz %v_match_condition, @b_7, @b_8
+@b_7
+%v_v_4294866298 =l copy %v_v_4294866304
+%v_v_4294866295 =l copy %v_v_4294866302
+%v_v_4294866294 =l copy 10
+storel %v_v_4294866295, %v_scratch
+%t_10 =l add %v_scratch, 8
+storel %v_v_4294866294, %t_10
+%v_p114t_11_u_raw =l loadl %v_scratch
+%v_p114t_11_u_left =w copy %v_p114t_11_u_raw
+%v_p114t_11_u_ptr =l add %v_scratch, 8
+%v_p114t_11_u_right_word =l loadl %v_p114t_11_u_ptr
+%v_p114t_11_u_right =w copy %v_p114t_11_u_right_word
+%v_p114t_11_u_nonzero =w cnew %v_p114t_11_u_right, 0
+jnz %v_p114t_11_u_nonzero, @b_11, @b_12
+@b_11
+%v_p114t_11_u_answer =w udiv %v_p114t_11_u_left, %v_p114t_11_u_right
+%v_value =l extuw %v_p114t_11_u_answer
+jmp @b_13
+@b_12
+%v_value =l copy 0
+jmp @b_13
+@b_13
+%v_v_4294866297 =l copy %v_value
+%v_v_4294866290 =l copy 48
+%v_v_4294866288 =l copy %v_v_4294866302
+%v_v_4294866287 =l copy 10
+storel %v_v_4294866288, %v_scratch
+%t_14 =l add %v_scratch, 8
+storel %v_v_4294866287, %t_14
+%v_p114t_15_u_raw =l loadl %v_scratch
+%v_p114t_15_u_left =w copy %v_p114t_15_u_raw
+%v_p114t_15_u_ptr =l add %v_scratch, 8
+%v_p114t_15_u_right_word =l loadl %v_p114t_15_u_ptr
+%v_p114t_15_u_right =w copy %v_p114t_15_u_right_word
+%v_p114t_15_u_nonzero =w cnew %v_p114t_15_u_right, 0
+jnz %v_p114t_15_u_nonzero, @b_15, @b_16
+@b_15
+%v_p114t_15_u_answer =w urem %v_p114t_15_u_left, %v_p114t_15_u_right
+%v_value =l extuw %v_p114t_15_u_answer
+jmp @b_17
+@b_16
+%v_value =l copy %v_p114t_15_u_raw
+jmp @b_17
+@b_17
+%v_v_4294866289 =l copy %v_value
+%v_p112_s_a =l and %v_v_4294866290, 4294967295
+%v_p112_s_b =l and %v_v_4294866289, 4294967295
+%v_value =l add %v_p112_s_a, %v_p112_s_b
+%v_value =l and %v_value, 4294967295
+%v_v_4294866291 =l copy %v_value
+storel %v_v_4294866291, %v_scratch
+%v_value =l call $p111_rt_special_ctor(l %state, w 5, l %v_scratch, w 1)
+%v_v_4294866293 =l copy %v_value
+%v_v_4294866292 =l copy %v_v_4294866303
+storel %v_v_4294866293, %v_scratch
+%t_18 =l add %v_scratch, 8
+storel %v_v_4294866292, %t_18
+%v_value =l call $p125_rt_ctor2(l %state, w 25, l %v_scratch)
+%v_v_4294866296 =l copy %v_value
+storel %v_v_4294866298, %v_scratch
+%t_19 =l add %v_scratch, 8
+storel %v_v_4294866297, %t_19
+%t_20 =l add %v_scratch, 16
+storel %v_v_4294866296, %t_20
+%v_reply =l call $p111_rt_jump(l %state, w 789, l %v_scratch, w 3)
+ret %v_reply
+@b_8
+%v_ignored =l call $p111_rt_sink(l %state, l %v_v_4294866303)
+storel %v_v_4294866299, %v_scratch
+%t_22 =l add %state, 16
+%v_p114t_21_sp =l loadl %t_22
+%v_p114t_21_capture =l loadl %v_scratch
+storel %v_p114t_21_capture, %v_p114t_21_sp
+%t_23 =l add %v_p114t_21_sp, 8
+storel 784, %t_23
+%v_p114t_21_next_sp =l add %v_p114t_21_sp, 16
+%t_24 =l add %state, 16
+storel %v_p114t_21_next_sp, %t_24
+%v_ignored =l copy 0
+%v_reply =l call $p111_rt_fail(l %state, w 4)
+ret %v_reply
+}

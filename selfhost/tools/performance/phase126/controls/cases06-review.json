@@ -1,0 +1,40 @@
+{
+  "kind": "phase126-ordinary-nat-boundary-fixture-repair",
+  "complete": true,
+  "targetsRun": false,
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase126/controls/cases05.json",
+    "bytes": 8126,
+    "sha256": "771d569fba735db84b33654ae909b421ab6781edd7cba8995c6c8ac48df53d92"
+  },
+  "cases": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase126/controls/cases06.json",
+    "bytes": 8126,
+    "sha256": "d75739fa7f58dfe85c90d238b77c061ab671470e0d2675b73bd024d6f13104c2"
+  },
+  "before": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase126/nat-take/fixtures/nat-boundaries02.bend",
+    "bytes": 911,
+    "sha256": "20e0c8e92dc76e7bf27ff20243ae9bdbdbc7f85e9219737724d758fb3171a33b"
+  },
+  "after": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase126/nat-take/fixtures/nat-boundaries03.bend",
+    "bytes": 943,
+    "sha256": "7109820a8bf611751a76186240e12e30288a9a35a735dfeaaadd755ceb03e8cc"
+  },
+  "oracle": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase126/nat-take/fixtures/nat-boundaries01.expected.json",
+    "bytes": 168,
+    "sha256": "7180ca618d39a2a2cc1934b3aa16b366fec954edc4d26530b63b481140ea3464"
+  },
+  "oracleChanged": false,
+  "intermediateValues": [
+    4294967296,
+    281470681743360,
+    4294967295,
+    281474976710655
+  ],
+  "maxImmediate": 281474976710655,
+  "reason": "Old source constructed out-of-domain 2^48 before subtracting one. New source constructs the identical 2^48-1 result using only valid immediate Nat intermediates.",
+  "scope": "Source-only fixture correction; no compiler/runtime change or target execution."
+}

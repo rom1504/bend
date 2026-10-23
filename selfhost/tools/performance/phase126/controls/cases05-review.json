@@ -1,0 +1,34 @@
+{
+  "kind": "phase126-ordinary-fixture-affine-repair",
+  "complete": true,
+  "targetsRun": false,
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase126/controls/cases04.json",
+    "bytes": 8126,
+    "sha256": "7395b3b42f12a1be522e77af510e9edac29a43cdbd01293ca2cd57e55a9a9ff6"
+  },
+  "cases": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase126/controls/cases05.json",
+    "bytes": 8126,
+    "sha256": "771d569fba735db84b33654ae909b421ab6781edd7cba8995c6c8ac48df53d92"
+  },
+  "before": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase126/scalar-resume/shift-tree-v02.bend",
+    "bytes": 709,
+    "sha256": "3534d1c5fb0d969b66acf0f98fea6b40121481e43f0ca637c49ed17a4d08e993"
+  },
+  "after": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase126/scalar-resume/shift-tree-v03.bend",
+    "bytes": 739,
+    "sha256": "ef285500b4dd326370392efffa6adf1e1b4b219faf3b93dad19df7fea7ac7b43"
+  },
+  "failedReport": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/p126-combined14-controls-d/report.json",
+    "bytes": 22148,
+    "sha256": "793ddf04282b70aa17f69d8d4b06f2b31c3e6f073a0f838f1276f2c756100835"
+  },
+  "reason": "Pattern predecessor p was consumed twice; move it once into explicitly shared typed Nat binding, preserving two recursive calls and exact arithmetic.",
+  "oracleChanged": false,
+  "oracleArithmeticRechecked": true,
+  "scope": "Source-only ordinary fixture repair; checked/native qualification remains root-owned."
+}

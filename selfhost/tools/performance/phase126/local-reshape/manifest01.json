@@ -1,0 +1,53 @@
+{
+  "kind": "phase126-local-reshape-unintegrated-prototype",
+  "complete": false,
+  "checked": false,
+  "targetsRun": false,
+  "compilerHooks": [],
+  "modules": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase126/local-reshape/recognizer.bend",
+      "bytes": 3385,
+      "sha256": "2afad262c43e9819407c05aecb8a7f7604e7db8e2f01b955cfd27fbed302e957"
+    }
+  ],
+  "exports": [
+    "p126lr_inspect"
+  ],
+  "runtime": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase126/local-reshape/runtime-prototype.c",
+    "bytes": 1652,
+    "sha256": "a7728974516c3aa8da194082b1608b5cdc3d290ee1ea6e0b45f4dd940ecea4b9"
+  },
+  "frozenRuntime": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase125/runtime-verified01/runtime.c",
+    "bytes": 147811,
+    "sha256": "4822c54600663e1bf1b2cc65766d95f1f0956ae72b24eaa63d9020ead5631de5"
+  },
+  "evidenceQbe": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/p125-verified-families06/tree-bitonic.ssa",
+    "bytes": 625972,
+    "sha256": "c507a732e3ab06ba1208ccb8903e4aa12add21fd8b304bbb820e37058b4da34b"
+  },
+  "sourceCeiling": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase126/local-reshape/ceiling.json",
+    "bytes": 1793,
+    "sha256": "f8818bfe9763978d219ddf4d1d846acca03107e40c6d611d3dc1421ba3f553ef"
+  },
+  "controls": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase126/local-reshape/cases.json",
+    "bytes": 1137,
+    "sha256": "a62f59f4a7eaa427c504b50c122bc84fde1719c412dc8f72179a7f8a65839dd9"
+  },
+  "oracle": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase126/local-reshape/prepare.py",
+    "bytes": 3358,
+    "sha256": "11aac460363763e666fe04ec436640ef59fdd5ac2adff232fcb9e8073c3c09df"
+  },
+  "missing": [
+    "checked source admission query",
+    "finite semantic/refusal controls",
+    "original candidate wrapper and independently verified helper import",
+    "native/output/count/timing checks"
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "kind": "phase126-local-reshape-inspection-inputs",
+  "recognizer": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase126/local-reshape/recognizer.bend",
+    "bytes": 3385,
+    "sha256": "2afad262c43e9819407c05aecb8a7f7604e7db8e2f01b955cfd27fbed302e957"
+  },
+  "exports": [
+    "p88_cache_prepare",
+    "p86_plan",
+    "p126lr_inspect",
+    "p126lr_equation",
+    "p126lr_types"
+  ],
+  "cases": [
+    {
+      "name": "frozen-tree-bitonic",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/fixtures01/tree-bitonic.bend",
+        "bytes": 6593,
+        "sha256": "405f8d8fb2066e6fedd8baa45943bcdf92b59cb40e23ce2ad3ea4bd3eeb53ae0"
+      },
+      "names": [
+        "warp_zip"
+      ]
+    },
+    {
+      "name": "independent-owning-hedge",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase126/local-reshape/ordinary.bend",
+        "bytes": 1662,
+        "sha256": "d67fb7209613d0287f18fd996213c5b7e6ab892fb1b22c2b6b2aefd930f24774"
+      },
+      "names": [
+        "hedge.cross"
+      ]
+    }
+  ],
+  "method": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase126/local-reshape/inspect.mjs",
+    "bytes": 4278,
+    "sha256": "986f0d1dd2518d7e804437966720fe160853a74096533bc08b195a2e77b1083a"
+  }
+}

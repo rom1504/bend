@@ -1,0 +1,135 @@
+export function l $p111_$direct.Map.seek(l %state) {
+@entry
+%v_scratch =l alloc8 2048
+%t_0 =l add %state, 40
+%v_v_4294916575 =l loadl %t_0
+%t_1 =l add %state, 48
+%v_v_4294916574 =l loadl %t_1
+%v_v_4294916573 =l copy %v_v_4294916575
+%v_v_4294916572 =l copy %v_v_4294916574
+%v_tag =l shr %v_v_4294916573, 40
+%v_tag =l and %v_tag, 65535
+%v_match_condition =w ceql %v_tag, 36
+jnz %v_match_condition, @b_2, @b_3
+@b_2
+%v_v_4294916571 =l copy 72097176456527872
+%v_v_4294916569 =l copy %v_v_4294916572
+%v_v_4294916568 =l copy 72069688665833472
+storel %v_v_4294916569, %v_scratch
+%t_5 =l add %v_scratch, 8
+storel %v_v_4294916568, %t_5
+%v_value =l call $p125_rt_ctor2(l %state, w 8, l %v_scratch)
+%v_v_4294916570 =l copy %v_value
+storel %v_v_4294916571, %v_scratch
+%t_6 =l add %v_scratch, 8
+storel %v_v_4294916570, %t_6
+%v_value =l call $p125_rt_ctor2(l %state, w 8, l %v_scratch)
+storel %v_value, %v_scratch
+%v_reply =l call $p111_rt_return(l %state, l %v_scratch, w 1)
+ret %v_reply
+@b_3
+%v_v_4294916567 =l copy %v_v_4294916573
+%v_v_4294916566 =l copy %v_v_4294916572
+%v_tag =l shr %v_v_4294916567, 40
+%v_tag =l and %v_tag, 65535
+%v_match_condition =w ceql %v_tag, 37
+jnz %v_match_condition, @b_7, @b_8
+@b_7
+%v_ignored =l call $p125_rt_take2(l %state, l %v_v_4294916567, l %v_scratch)
+%v_v_4294916565 =l loadl %v_scratch
+%t_10 =l add %v_scratch, 8
+%v_v_4294916564 =l loadl %t_10
+%v_v_4294916565 =l call $p111_rt_keep(l %state, l %v_v_4294916565)
+%v_v_4294916561 =l copy %v_v_4294916565
+%v_v_4294916560 =l copy %v_v_4294916564
+storel %v_v_4294916561, %v_scratch
+%t_11 =l add %v_scratch, 8
+storel %v_v_4294916560, %t_11
+%v_value =l call $p125_rt_ctor2(l %state, w 37, l %v_scratch)
+%v_v_4294916563 =l copy %v_value
+%v_v_4294916559 =l copy %v_v_4294916566
+%v_v_4294916557 =l copy %v_v_4294916565
+storel %v_v_4294916557, %v_scratch
+%v_value =l call $p125_rt_ctor1(l %state, w 12, l %v_scratch)
+%v_v_4294916558 =l copy %v_value
+storel %v_v_4294916559, %v_scratch
+%t_12 =l add %v_scratch, 8
+storel %v_v_4294916558, %t_12
+%v_value =l call $p125_rt_ctor2(l %state, w 8, l %v_scratch)
+%v_v_4294916562 =l copy %v_value
+storel %v_v_4294916563, %v_scratch
+%t_13 =l add %v_scratch, 8
+storel %v_v_4294916562, %t_13
+%v_value =l call $p125_rt_ctor2(l %state, w 8, l %v_scratch)
+storel %v_value, %v_scratch
+%v_reply =l call $p111_rt_return(l %state, l %v_scratch, w 1)
+ret %v_reply
+@b_8
+%v_v_4294916556 =l copy %v_v_4294916567
+%v_v_4294916555 =l copy %v_v_4294916566
+%v_tag =l shr %v_v_4294916556, 40
+%v_tag =l and %v_tag, 65535
+%v_match_condition =w ceql %v_tag, 38
+jnz %v_match_condition, @b_14, @b_15
+@b_14
+%v_ignored =l call $p125_rt_take3(l %state, l %v_v_4294916556, l %v_scratch)
+%v_v_4294916554 =l loadl %v_scratch
+%t_17 =l add %v_scratch, 8
+%v_v_4294916553 =l loadl %t_17
+%t_18 =l add %v_scratch, 16
+%v_v_4294916552 =l loadl %t_18
+%v_v_4294916554 =l call $p111_rt_keep(l %state, l %v_v_4294916554)
+%v_v_4294916549 =l copy %v_v_4294916554
+%v_v_4294916548 =l copy %v_v_4294916553
+%v_v_4294916547 =l copy %v_v_4294916552
+storel %v_v_4294916549, %v_scratch
+%t_19 =l add %v_scratch, 8
+storel %v_v_4294916548, %t_19
+%t_20 =l add %v_scratch, 16
+storel %v_v_4294916547, %t_20
+%v_value =l call $p125_rt_ctor3(l %state, w 38, l %v_scratch)
+%v_v_4294916551 =l copy %v_value
+storel %v_v_4294916551, %v_scratch
+%t_22 =l add %state, 16
+%v_p114t_21_sp =l loadl %t_22
+%v_p114t_21_capture =l loadl %v_scratch
+storel %v_p114t_21_capture, %v_p114t_21_sp
+%t_23 =l add %v_p114t_21_sp, 8
+storel 356, %t_23
+%v_p114t_21_next_sp =l add %v_p114t_21_sp, 16
+%t_24 =l add %state, 16
+storel %v_p114t_21_next_sp, %t_24
+%v_ignored =l copy 0
+%v_v_4294916545 =l copy %v_v_4294916555
+%v_v_4294916544 =l copy %v_v_4294916554
+storel %v_v_4294916545, %v_scratch
+%t_25 =l add %v_scratch, 8
+storel %v_v_4294916544, %t_25
+%v_reply =l call $p111_rt_jump(l %state, w 645, l %v_scratch, w 2)
+ret %v_reply
+@b_15
+storel %v_v_4294916555, %v_scratch
+%t_27 =l add %state, 16
+%v_p114t_26_sp =l loadl %t_27
+%v_p114t_26_capture =l loadl %v_scratch
+storel %v_p114t_26_capture, %v_p114t_26_sp
+%t_28 =l add %v_p114t_26_sp, 8
+storel 357, %t_28
+%v_p114t_26_next_sp =l add %v_p114t_26_sp, 16
+%t_29 =l add %state, 16
+storel %v_p114t_26_next_sp, %t_29
+%v_ignored =l copy 0
+storel %v_v_4294916556, %v_scratch
+%t_31 =l add %state, 16
+%v_p114t_30_sp =l loadl %t_31
+%v_p114t_30_capture =l loadl %v_scratch
+storel %v_p114t_30_capture, %v_p114t_30_sp
+%t_32 =l add %v_p114t_30_sp, 8
+storel 358, %t_32
+%v_p114t_30_next_sp =l add %v_p114t_30_sp, 16
+%t_33 =l add %state, 16
+storel %v_p114t_30_next_sp, %t_33
+%v_ignored =l copy 0
+%v_reply =l call $p111_rt_fail(l %state, w 4)
+ret %v_reply
+}

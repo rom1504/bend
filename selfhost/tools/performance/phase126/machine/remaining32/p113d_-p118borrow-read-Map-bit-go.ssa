@@ -1,0 +1,117 @@
+function l $p113d_$p118borrow.read.Map.bit.go(l %state, l %v_v_4294967295, l %v_v_4294967294, l %v_v_4294967293) {
+@entry
+%v_scratch =l alloc8 2048
+jmp @p113_loop
+@p113_loop
+%v_tag =l shr %v_v_4294967295, 40
+%v_tag =l and %v_tag, 65535
+%v_match_condition =w ceql %v_tag, 24
+jnz %v_match_condition, @b_0, @b_1
+@b_0
+%v_value =l call $p111_rt_special_ctor(l %state, w 1, l %v_scratch, w 0)
+%v_p118b_value_0 =l copy %v_value
+ret %v_p118b_value_0
+@b_1
+%v_tag =l shr %v_v_4294967295, 40
+%v_tag =l and %v_tag, 65535
+%v_match_condition =w ceql %v_tag, 25
+jnz %v_match_condition, @b_3, @b_4
+@b_3
+%v_p118b_read_status =l call $p118_rt_borrow_fields(l %state, l %v_v_4294967295, l %v_scratch, w 25, w 2)
+%v_v_4294967291 =l loadl %v_scratch
+%t_6 =l add %v_scratch, 8
+%v_v_4294967290 =l loadl %t_6
+%v_match_condition =w ceql %v_v_4294967294, 0
+jnz %v_match_condition, @b_7, @b_8
+@b_7
+%v_match_condition =w ceql %v_v_4294967291, %v_v_4294967291
+jnz %v_match_condition, @b_10, @b_11
+@b_10
+%v_v_4294967289 =l copy %v_v_4294967291
+%v_match_condition =w ceql %v_v_4294967293, 0
+jnz %v_match_condition, @b_13, @b_14
+@b_13
+%v_value =l call $p111_rt_special_ctor(l %state, w 2, l %v_scratch, w 0)
+%v_p118b_value_1 =l copy %v_value
+ret %v_p118b_value_1
+@b_14
+%v_match_condition =w cnel %v_v_4294967293, 0
+jnz %v_match_condition, @b_16, @b_17
+@b_16
+%v_v_4294967288 =l sub %v_v_4294967293, 1
+%v_p118b_value_3 =l copy 31
+%v_p118b_value_4 =l copy %v_v_4294967288
+storel %v_p118b_value_3, %v_scratch
+%t_19 =l add %v_scratch, 8
+storel %v_p118b_value_4, %t_19
+%v_value =l call $p111_rt_op(l %state, w 63, l %v_scratch, w 2)
+%v_p118b_value_2 =l copy %v_value
+%v_v_4294967287 =l copy %v_p118b_value_2
+%v_p118b_value_6 =l copy %v_v_4294967289
+%v_p118b_value_7 =l copy %v_v_4294967287
+%p113_width_20 =w copy %v_p118b_value_6
+%v_p112_s_a =l extuw %p113_width_20
+%v_p112_s_b =l copy %v_p118b_value_7
+%v_p112_s_test =w cultl %v_p112_s_b, 32
+jnz %v_p112_s_test, @b_21, @b_22
+@b_21
+%v_value =l shr %v_p112_s_a, %v_p112_s_b
+%v_value =l and %v_value, 4294967295
+jmp @b_23
+@b_22
+%v_value =l copy 0
+jmp @b_23
+@b_23
+%v_p118b_value_5 =l copy %v_value
+%v_v_4294967286 =l copy %v_p118b_value_5
+%v_p118b_value_9 =l copy %v_v_4294967286
+%v_p118b_value_10 =l copy 1
+%p113_width_24 =w copy %v_p118b_value_9
+%v_p112_s_a =l extuw %p113_width_24
+%p113_width_25 =w copy %v_p118b_value_10
+%v_p112_s_b =l extuw %p113_width_25
+%p113_width_26 =w and %v_p112_s_a, %v_p112_s_b
+%v_value =l extuw %p113_width_26
+%v_p118b_value_8 =l copy %v_value
+%v_v_4294967285 =l copy %v_p118b_value_8
+%v_p118b_value_12 =l copy %v_v_4294967285
+%v_p118b_value_13 =l copy 0
+%p113_width_27 =w copy %v_p118b_value_12
+%v_p112_s_a =l extuw %p113_width_27
+%p113_width_28 =w copy %v_p118b_value_13
+%v_p112_s_b =l extuw %p113_width_28
+%v_p112_s_test =w cnel %v_p112_s_a, %v_p112_s_b
+%p113_bool_29 =w cnew %v_p112_s_test, 0
+%v_value =l extuw %p113_bool_29
+%v_p118b_value_11 =l copy %v_value
+%v_v_4294967284 =l copy %v_p118b_value_11
+%v_p118b_value_14 =l copy %v_v_4294967284
+ret %v_p118b_value_14
+@b_17
+%v_ignored =l call $p111_rt_fail(l %state, w 4)
+ret 0
+@b_11
+%v_ignored =l call $p111_rt_fail(l %state, w 4)
+ret 0
+@b_8
+%v_match_condition =w cnel %v_v_4294967294, 0
+jnz %v_match_condition, @b_30, @b_31
+@b_30
+%v_v_4294967283 =l sub %v_v_4294967294, 1
+%v_p118b_value_15 =l copy %v_v_4294967290
+%v_p118b_value_16 =l copy %v_v_4294967283
+%v_p118b_value_17 =l copy %v_v_4294967293
+%p113_again_0 =l copy %v_p118b_value_15
+%p113_again_1 =l copy %v_p118b_value_16
+%p113_again_2 =l copy %v_p118b_value_17
+%v_v_4294967295 =l copy %p113_again_0
+%v_v_4294967294 =l copy %p113_again_1
+%v_v_4294967293 =l copy %p113_again_2
+jmp @p113_loop
+@b_31
+%v_ignored =l call $p111_rt_fail(l %state, w 4)
+ret 0
+@b_4
+%v_ignored =l call $p111_rt_fail(l %state, w 4)
+ret 0
+}

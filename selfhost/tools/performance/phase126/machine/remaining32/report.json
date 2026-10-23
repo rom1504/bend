@@ -1,0 +1,174 @@
+{
+  "targetsRun": false,
+  "scope": "Static source32 machine/IR only. objdump reads retained artifacts. No timing or dynamic invocation inference.",
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/p126-observer32-emit/coverage-record-aggregation-256.ssa",
+      "bytes": 1301609,
+      "sha256": "59ba0df51b8d0953ac323240908cfe44590a41c65d797a996b7ab4952e04de47"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p126-observer32-coverage-record-aggregation-256-build/program",
+      "bytes": 385776,
+      "sha256": "80e5c00a1bf06124c6be312946489bf8f235f73a05954a6ca01a003845de2546"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/broad01/coverage-record-aggregation-256/upstream.program",
+      "bytes": 138040,
+      "sha256": "566e82563d1c107cb82e3e6d56e9d27ac4c2e32acadb18e5531e9789c2eaf1af"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/broad01/coverage-record-aggregation-256/upstream.1.c",
+      "bytes": 334912,
+      "sha256": "b865e0244805e777ae7474477d6a257cd0078e5d54d7c8e2091cf41889f531b9"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase126/runtime-divmod01/runtime.o",
+      "bytes": 121176,
+      "sha256": "5cbc477f3f04fe87621fde3e347a913b869727aa8365a22af31d71c1d097d011"
+    }
+  ],
+  "functions": {
+    "p113d_$direct.Map.bit": {
+      "symbol": "p113d_FID_36_100_105_114_101_99_116_46_77_97_112_46_98_105_116_",
+      "qbeLine": 3568,
+      "qbeLines": 32,
+      "staticQbeCalls": {
+        "p126_rt_nat_divmod": 1,
+        "p113d_$product.Map.bit.at": 1,
+        "p125_rt_ctor2": 1
+      },
+      "machineInstructions": 31,
+      "machineCalls": [
+        "4354f0 <p126_rt_nat_divmod>",
+        "407ed0 <p113d_FID_36_112_114_111_100_117_99_116_46_77_97_112_46_98_105_116_46_97_116_>",
+        "434d90 <p125_rt_ctor2>"
+      ],
+      "machineBranches": 0
+    },
+    "p113d_$product.Map.bit": {
+      "symbol": "p113d_FID_36_112_114_111_100_117_99_116_46_77_97_112_46_98_105_116_",
+      "qbeLine": 3601,
+      "qbeLines": 32,
+      "staticQbeCalls": {
+        "p126_rt_nat_divmod": 1,
+        "p113d_$product.Map.bit.at": 1
+      },
+      "machineInstructions": 33,
+      "machineCalls": [
+        "4354f0 <p126_rt_nat_divmod>",
+        "407ed0 <p113d_FID_36_112_114_111_100_117_99_116_46_77_97_112_46_98_105_116_46_97_116_>"
+      ],
+      "machineBranches": 0
+    },
+    "p113d_$p118borrow.read.Map.bit.go": {
+      "symbol": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_77_97_112_46_98_105_116_46_103_111_",
+      "qbeLine": 148,
+      "qbeLines": 117,
+      "staticQbeCalls": {
+        "p111_rt_special_ctor": 2,
+        "p118_rt_borrow_fields": 1,
+        "p111_rt_op": 1,
+        "p111_rt_fail": 4
+      },
+      "machineInstructions": 78,
+      "machineCalls": [
+        "434100 <p118_rt_borrow_fields>",
+        "42fe80 <p111_rt_op>",
+        "431000 <p111_rt_special_ctor>",
+        "42fe60 <p111_rt_fail>",
+        "431000 <p111_rt_special_ctor>"
+      ],
+      "machineBranches": 10
+    },
+    "p111_$direct.Map.get": {
+      "symbol": "p111_FID_36_100_105_114_101_99_116_46_77_97_112_46_103_101_116_",
+      "qbeLine": 14662,
+      "qbeLines": 141,
+      "staticQbeCalls": {
+        "p111_rt_sink": 2,
+        "p125_rt_ctor2": 1,
+        "p111_rt_return": 1,
+        "p125_rt_take2": 1,
+        "p111_rt_jump": 2,
+        "p125_rt_take3": 1,
+        "p111_rt_keep": 1,
+        "p125_rt_ctor3": 1,
+        "p111_rt_fail": 1
+      },
+      "machineInstructions": 136,
+      "machineCalls": [
+        "42f6d0 <p111_rt_sink>",
+        "42fe60 <p111_rt_fail>",
+        "4350e0 <p125_rt_take3>",
+        "42f640 <p111_rt_keep>",
+        "435010 <p125_rt_ctor3>",
+        "42fc90 <p111_rt_jump>",
+        "434e80 <p125_rt_take2>",
+        "42fc90 <p111_rt_jump>",
+        "42f6d0 <p111_rt_sink>",
+        "434d90 <p125_rt_ctor2>",
+        "42fcf0 <p111_rt_return>"
+      ],
+      "machineBranches": 6
+    },
+    "p111_$direct.Map.seek": {
+      "symbol": "p111_FID_36_100_105_114_101_99_116_46_77_97_112_46_115_101_101_107_",
+      "qbeLine": 18117,
+      "qbeLines": 135,
+      "staticQbeCalls": {
+        "p125_rt_ctor2": 5,
+        "p111_rt_return": 2,
+        "p125_rt_take2": 1,
+        "p111_rt_keep": 2,
+        "p125_rt_ctor1": 1,
+        "p125_rt_take3": 1,
+        "p125_rt_ctor3": 1,
+        "p111_rt_jump": 1,
+        "p111_rt_fail": 1
+      },
+      "machineInstructions": 146,
+      "machineCalls": [
+        "42fe60 <p111_rt_fail>",
+        "4350e0 <p125_rt_take3>",
+        "42f640 <p111_rt_keep>",
+        "435010 <p125_rt_ctor3>",
+        "42fc90 <p111_rt_jump>",
+        "434e80 <p125_rt_take2>",
+        "42f640 <p111_rt_keep>",
+        "434d90 <p125_rt_ctor2>",
+        "434b60 <p125_rt_ctor1>",
+        "434d90 <p125_rt_ctor2>",
+        "434d90 <p125_rt_ctor2>",
+        "42fcf0 <p111_rt_return>",
+        "434d90 <p125_rt_ctor2>",
+        "434d90 <p125_rt_ctor2>",
+        "42fcf0 <p111_rt_return>"
+      ],
+      "machineBranches": 6
+    },
+    "p111_$direct.p37.aggregate": {
+      "symbol": "p111_FID_36_100_105_114_101_99_116_46_112_51_55_46_97_103_103_114_101_103_97_116_101_",
+      "qbeLine": 31428,
+      "qbeLines": 152,
+      "staticQbeCalls": {
+        "p111_rt_return": 1,
+        "p125_rt_take2": 2,
+        "p111_rt_keep": 1,
+        "p111_rt_jump": 1,
+        "p111_rt_fail": 2
+      },
+      "machineInstructions": 113,
+      "machineCalls": [
+        "42fe60 <p111_rt_fail>",
+        "434e80 <p125_rt_take2>",
+        "42fe60 <p111_rt_fail>",
+        "434e80 <p125_rt_take2>",
+        "42f640 <p111_rt_keep>",
+        "42fc90 <p111_rt_jump>",
+        "42fcf0 <p111_rt_return>"
+      ],
+      "machineBranches": 6
+    }
+  }
+}

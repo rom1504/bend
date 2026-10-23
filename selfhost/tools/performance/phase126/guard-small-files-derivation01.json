@@ -1,0 +1,34 @@
+{
+  "kind": "phase126-explicit-small-file-guard-derivation",
+  "targetsRun": false,
+  "original": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase111/guard.py",
+    "bytes": 2107,
+    "sha256": "5aa01d48c6d994e06c02fac4ae72f8cabe9bafeec0f477e526a9acaedc72fe88"
+  },
+  "derived": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase126/guard-small-files.py",
+    "bytes": 2196,
+    "sha256": "1a4f99e03b9e06bf0b00622be0aff5309c2dc95ead87232f224851b1dd73f2c0"
+  },
+  "support": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/programs/support.py",
+    "bytes": 6779,
+    "sha256": "36e000b43f92809e2de0bcdb462e6e42005fad7341f6ec2122734311073d1cef"
+  },
+  "edits": [
+    {
+      "before": "\"\"\"Phase111 guard: unchanged process-tree limits, bounded large assembly files.\n\nThe full direct image produced more than the historical64MiB assembly limit.\nThis preserves the shared lock/RSS/deadline supervisor and records an explicit\nper-file cap plus enough disk for two maximum-size output files and160MiB slack.\n\"\"\"",
+      "after": "\"\"\"Phase126 small-batch guard: exact8MiB per-file cap; never full native builds.\n\nExplicit derivation of Phase111 guard: same process-tree RSS/deadline/host\nheadroom, execution lock and cleanup. The original disk formula is unchanged:\n160MiB +2*filecap =176MiB required at startup. Root authorized this profile\nfor the bounded original45 batch campaign; it does not cap total output bytes.\n\"\"\""
+    },
+    {
+      "before": "p.add_argument('--file-mib',type=int,default=128)",
+      "after": "p.add_argument('--file-mib',type=int,default=8)"
+    },
+    {
+      "before": "assert 64<=a.file_mib<=256,'File cap must be64..256MiB'",
+      "after": "assert a.file_mib==8,'This batch-only guard requires exactly8MiB per file'"
+    }
+  ],
+  "scope": "Root-authorized stricter8MiB individual-file limit with unchanged160+2*fileMiB disk startup formula, resource supervisor, lock and cleanup. Whole batch campaign runs inside one guard; no semantic/admission changes, no full native image acquisition."
+}

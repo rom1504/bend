@@ -1,0 +1,61 @@
+{
+  "kind": "phase126-tail-scc-root-qualification-review",
+  "complete": true,
+  "reviewTargetsRun": false,
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase126/tail-scc/cases05.json",
+      "bytes": 2336,
+      "sha256": "1a6b1d5d2741bca0cd49c8defb1ec915bafacb3b55b1d6417086425e46e487e1"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase126/tail-scc/ordinary-v05.bend",
+      "bytes": 1971,
+      "sha256": "ecef3d21190c071f6b6974fe40e6c11d8a57709fcce3053b173e094f5a21c964"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase126/tail-scc/ordinary.observe.json",
+      "bytes": 127,
+      "sha256": "3b9710ac4ac5e87dbdf7364fdc6a63f817c55a228991900764075e59d5146da2"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase126/tail-scc30-finite/report.json",
+      "bytes": 3530,
+      "sha256": "136baf09a2810fb43ae6a3eb47bc30eb51777bd30bcec57d850055b901fbb6b6"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/p126-final32-controls-d/report.json",
+      "bytes": 36134,
+      "sha256": "ca6effaf95e1325ca5e498bbd7779093cb8c0146160ba3915ec38d3924e25eed"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/p126-final32-controls-d/p126-two-function-tail-scc.ssa",
+      "bytes": 257708,
+      "sha256": "683f9e78c437dd7f7010ca42909aa152cd708041ff6963d040d59412bea2ae9b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/p126-final32-controls-run/report.json",
+      "bytes": 44723,
+      "sha256": "b345895b6aed8043e96787938c2e9592bbf1dd8f4de28a90dee37173c0aee7d3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/p126-final32-controls-run/p126-two-function-tail-scc-observe/report.json",
+      "bytes": 1085,
+      "sha256": "3ab384584434319748dd23d3aae695bcc15ec2a64f9c79793f7ac59517e54b57"
+    }
+  ],
+  "sourceContract": "Three ordinary source helpers explicitly use @unsafe for forward mutual recursion; unlike Base laws, user laws are not native/trusted. This changes no compiler or machine verifier.",
+  "finiteRows": 16,
+  "ordinaryLines": 10,
+  "actualPaths": {
+    "$direct.owner": "$p126scc.6",
+    "$direct.owner_more": "$p126scc.6",
+    "$direct.turn": "$p126scc.8",
+    "$direct.turn_more": "$p126scc.8"
+  },
+  "fullWidthValue": 1099511627776,
+  "nonTailDirectWorkerAdmitted": false,
+  "performanceClaim": false,
+  "deepFuelSteps": 100001,
+  "internalTransfersPerDeepCall": 200002
+}

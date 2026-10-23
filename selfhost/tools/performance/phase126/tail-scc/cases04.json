@@ -1,0 +1,35 @@
+{
+  "cases": [
+    {
+      "name": "p126-two-function-tail-scc",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase126/tail-scc/ordinary-v04.bend",
+        "bytes": 1711,
+        "sha256": "245d835d001297264e42f9ac615cacfc15d2aad7e7a33e02f371ff72d45ebf4b"
+      },
+      "expected": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase126/tail-scc/ordinary.observe.json",
+        "bytes": 127,
+        "sha256": "3b9710ac4ac5e87dbdf7364fdc6a63f817c55a228991900764075e59d5146da2"
+      },
+      "expectedStdoutEvidence": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase126/tail-scc/ordinary.observe.json",
+        "bytes": 127,
+        "sha256": "3b9710ac4ac5e87dbdf7364fdc6a63f817c55a228991900764075e59d5146da2"
+      },
+      "stdoutEvidence": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase126/tail-scc/ordinary.expected.stdout",
+        "bytes": 67,
+        "sha256": "5ba72031b5e0a4b767461af2739205ab82587615a66d15da5d4fdd60998a961e"
+      }
+    }
+  ],
+  "oracle": "Each turn step swaps two full-width values once; 100001 is odd. Owning String permutation follows the same parity. Non-tail increments once per descent. Exact mathematical 2^40 and U32 max renderings are independent expected constants.",
+  "targetsRun": false,
+  "previous": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase126/tail-scc/cases03.json",
+    "bytes": 1825,
+    "sha256": "17c31899f9ed8aae3ccd546212dec2e7b2f47b6b448b3063e0925b750f7f42bb"
+  },
+  "revision": "Mirror exact Base go/fin declaration order: law for fuel-matching turn/owner/non_tail, typed helper first, then inferred main definition. Source bodies and oracle unchanged."
+}

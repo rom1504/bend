@@ -1,0 +1,47 @@
+{
+  "cases": [
+    {
+      "name": "p126-two-function-tail-scc",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase126/tail-scc/ordinary-v05.bend",
+        "bytes": 1971,
+        "sha256": "ecef3d21190c071f6b6974fe40e6c11d8a57709fcce3053b173e094f5a21c964"
+      },
+      "expected": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase126/tail-scc/ordinary.observe.json",
+        "bytes": 127,
+        "sha256": "3b9710ac4ac5e87dbdf7364fdc6a63f817c55a228991900764075e59d5146da2"
+      },
+      "expectedStdoutEvidence": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase126/tail-scc/ordinary.observe.json",
+        "bytes": 127,
+        "sha256": "3b9710ac4ac5e87dbdf7364fdc6a63f817c55a228991900764075e59d5146da2"
+      },
+      "stdoutEvidence": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase126/tail-scc/ordinary.expected.stdout",
+        "bytes": 67,
+        "sha256": "5ba72031b5e0a4b767461af2739205ab82587615a66d15da5d4fdd60998a961e"
+      }
+    }
+  ],
+  "oracle": "Each turn step swaps two full-width values once; 100001 is odd. Owning String permutation follows the same parity. Non-tail increments once per descent. Exact mathematical 2^40 and U32 max renderings are independent expected constants.",
+  "targetsRun": false,
+  "previous": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase126/tail-scc/cases04.json",
+    "bytes": 1810,
+    "sha256": "425fd79ef0b55528c8860454672cfd0d6e213ea514b1de5b6f01e9afe67676e6"
+  },
+  "revision": "Annotate only three typed helpers that call unfilled forward laws with the language-required @unsafe recursion permission. Base declarations have native trust; user declarations do not. Bodies, oracles, compiler and machine verifier unchanged.",
+  "sourceAdmissionEvidence": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/check/kernel.bend",
+      "bytes": 49206,
+      "sha256": "bbeebc44d278044349a9cb7a35fe5956251e32098dcb0722d96542dee23148e1"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/bend.ts",
+      "bytes": 138101,
+      "sha256": "1d133151652b597a1a035c77c172475e6de096da37f3b9e3adc23c2f75bdfe49"
+    }
+  ]
+}

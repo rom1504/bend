@@ -1,6 +1,11 @@
 # Compiler experiment workflow
 
-Latest diagnostic: [Phase127 general native profiler](../implementation/phase127/README.md).
+Latest qualified experiment: [Phase128 borrowed queries and shared preparation](../implementation/phase128/README.md).
+Native requests take 21.16% less time than qualified Phase126; generated-program
+runtime improves 4.72%. Exact hosted → N1 → N2 QBE reproduction and independent
+correctness gates pass. Installed selections remain unchanged.
+
+Profiling foundation: [Phase127 general native profiler](../implementation/phase127/README.md).
 Read the [current frontier](STEERING.md) for qualification, causal compiler-cost
 results and the next measured optimization opportunities.
 

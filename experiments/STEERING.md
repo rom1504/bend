@@ -1,4 +1,52 @@
-# Latest diagnostic: Phase127 reusable native profiler and cost recovery
+# Latest qualified experiment: Phase128 borrowed queries and shared preparation
+
+[Report](../implementation/phase128/README.md) ·
+[Candidate](../implementation/phase128/candidate.json) ·
+[Native timings](../implementation/phase128/native-results.json) ·
+[Program timings](../implementation/phase128/program-results.json) ·
+[Guide](../docs/self_hosted/borrowed-native-queries.md) ·
+[Research](../research/compilers_architecture_and_techniques/phase128-fast-compilers.md).
+
+Final source02 is native-qualified: hosted → N1 → N2 reproduces exactly
+102,187,679 bytes of QBE, focused19 passes on both images, and N2 passes ordinary45.
+The final checked API passes 100 finite predicates and an independent field-ABI
+fixture passes 545 checks. Installed selections and previous qualified images
+remain unchanged. The final admission receipt is **native-admission03.json**;
+the earlier receipt's documentation-pin drift is preserved and explained.
+
+Fresh paired native request time is **21.16% less than qualified Phase126**,
+2.55439× → 2.01378× upstream. A separate qualified-generation block gives
+N1/N2 1.93696× / 1.91912× upstream; do not pool blocks. Request plus machine-build
+child-stage sums reach approximately 0.95–0.99× upstream under the established
+prepared-Base/cached-native-runtime policy. That is not source-to-QBE parity.
+
+Actual N2-produced historical45 wrappers pass all 405 timed observations.
+The 44-point generated-runtime ratio improves 1.73444× → 1.65258× upstream
+(4.72% less time); positive log deficit 0.808172 → 0.759829. Forty cases still
+exceed 1.1× and 21 exceed 2×. Fixed-batch time falls 6.52%, positive excess 10.27%.
+Largest observed regression is 1.34%; morning improves 21.39%, tree 10.96%.
+
+Selected capabilities: scalar borrowed observers, verified borrowed helper
+calls and nested layouts, exact thin-wrapper restoration, guarded late field
+loads, one observer scan, indexed reachability and shared raw request preparation.
+The Phase127 live-bank repair is now propagated through self-hosting. Broad
+gains belong to this composition; the compiler-name kernel's 4.04× speedup is
+not a compiler-wide result. Source grows 1,619 lines (+2.93%), including controls.
+
+Negative evidence: late-flat-only skipping was inconclusive and excluded;
+nested-reader admission alone missed its hot caller; constructor-provenance
+indexing has precedence hazards and low measured short-request exposure.
+Shared preparation preserves complete QBE on Map/RLE/tree. Static instruction
+counts grow in field readers because correct fallbacks remain.
+
+Next: profile this qualified image, then test repeated AST usage queries or
+checked-Base decoding in a bounded compiler workload. Old decimal-decoder and
+`nq_uses` percentages are stale exposures, not new gain estimates. Preserve one
+serial target lane, independent verification, ownership and fallback contracts.
+No backend rewrite, global cache, installed promotion or recursive-acceleration
+claim is justified by this result.
+
+# Previous diagnostic: Phase127 reusable native profiler and cost recovery
 
 [Report](../implementation/phase127/README.md) ·
 [Profiler guide](../docs/self_hosted/PROFILING.md) ·

@@ -5501,3 +5501,44 @@ and is retained/excluded;8–13ms succeeds for QBE. This supplies a cheap next
 experiment, not a broad score or completed optimization. Ordinary tree transfer
 of the admission repair improves11.08%, with identical instructions; no44-point
 score is recomputed.
+
+
+## Phase128 borrowed queries and reusable preparation — 2026-10-23
+
+[Design](../design/phase128/README.md) ·
+[Report](../implementation/phase128/README.md) ·
+[Candidate](../implementation/phase128/candidate.json) ·
+[Research](../research/compilers_architecture_and_techniques/phase128-fast-compilers.md).
+
+Final source02 is native-qualified: exact 102,187,679-byte hosted → N1 → N2 QBE,
+focused19 on both images and ordinary45 on N2. Independent checks include 100
+finite predicates and 545 field-ABI cases. No installed selection change.
+
+Native request time falls 21.16% versus qualified Phase126, from 2.55439× to
+2.01378× upstream in a fresh paired block. Separate N1/N2 timing gives
+1.93696× / 1.91912× upstream. Request plus machine-build child-stage sums are
+approximately 0.95–0.99× under prepared-Base/cached-runtime policy; that does not
+establish compiler-execution parity. Blocks remain separate.
+
+N2-produced original45 wrappers pass 405 observations. Runtime ratio improves
+1.73444× → 1.65258× upstream (4.72% less), positive log deficit 0.808172 → 0.759829,
+fixed-batch time 6.52% less. Forty cases remain above 1.1×, 21 above 2×; maximum
+observed regression 1.34%. Morning improves 21.39%, tree 10.96%, main ray unchanged.
+
+Borrowed scalar/helper/nested readers, exact call-boundary restoration and a
+verified late field template compose with request-local preparation reuse and
+indexed reachability. The Phase127 live-bank admission repair now self-hosts.
+The extracted compiler search improves 4.04×; broad gains are from the composition,
+not an isolated borrowing attribution. Source grows 1,619 lines (+2.93%).
+
+Rejected/inconclusive: late-flat-only skipping, nested admission without hot
+caller composition, and premature provenance-index replacement. Final capsule
+preserves failures, oracles, raw timings, hashes and source snapshots. At the
+measurement checkpoint, 152.84 minutes elapsed, 50.26 in 90 guarded jobs including
+13 unsuccessful attempts; four bounded agents, one serial target lane. Peak
+process-tree RSS 3.44 GiB. This is not demonstrated recursive acceleration.
+
+Next: refresh qualified-image profiles, then use a cheap compiler-derived test
+for AST query or checked-Base decoding elimination. Borrowed call contracts and
+immutable preparation are the demonstrated transferable lessons from the Lean,
+Zig and Go research; a large representation rewrite remains conditional.

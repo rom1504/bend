@@ -115,6 +115,11 @@ CPU samples, physical callers, active Bend dispatch and runtime event counts.
 It supports compiler requests and ordinary native programs with frozen output
 oracles; see the [Phase127 investigation](implementation/phase127/README.md).
 
+The [borrowed-query compiler work](docs/self_hosted/borrowed-native-queries.md)
+preserves ownership across read-only calls and reuses request preparation.
+See the [Phase128 report](implementation/phase128/README.md) for native compiler
+timings, generated-program results and qualification.
+
 The [native IR research prototype](docs/self_hosted/NATIVE_IR_RESEARCH.md) now
 implements a small Bend IR with C and Cranelift consumers, checked folding laws,
 and a reproducible policy experiment. Its [report and diagrams](implementation/phase106/README.md)

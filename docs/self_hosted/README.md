@@ -5,9 +5,9 @@ CPU samples, selected physical callers and Bend runtime event attribution on
 compiler requests or ordinary native programs.
 
 For the current direct-QBE research frontier, read the
-[Phase125 report](../../implementation/phase125/README.md) and
-[owned composition guide](owned-native-composition.md).
-The [Phase125 reproduction guide](../../selfhost/tools/performance/phase125/README.md)
+[Phase128 report](../../implementation/phase128/README.md) and
+[borrowed query guide](borrowed-native-queries.md).
+The [Phase128 reproduction guide](../../selfhost/tools/performance/phase128/native/MEASURE.md)
 separates experimental checked-hosted producers, generated native programs and
 qualified N1/N2 images. These experiments do not change installed selection.
 The older milestones below retain their original scope and dates.

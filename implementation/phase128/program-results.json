@@ -1,0 +1,5743 @@
+{
+  "complete": true,
+  "targetsRun": false,
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase126/summarize.py",
+      "bytes": 14014,
+      "sha256": "5598769ca28407db7a4f55a6743f3ff51e6ede597c49c2209b0c6bbc45e4d4ad"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase112/benchmark45/manifest01.json",
+      "bytes": 229972,
+      "sha256": "80b07bdc76528bf58ae322ffed470eaa8ccdc8fa3d5cea73aa6d652d66cc6adc"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase123/summarize.py",
+      "bytes": 2655,
+      "sha256": "f217f54717521245f2ada71c9d62884689dc591adb2757e831e58d94ff538d8e"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase125/accounting.py",
+      "bytes": 2524,
+      "sha256": "6592bf60502ffffca51035af078ce012a1e0ad14bd5c7b923302844b700c05e3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase128/native-runtime01/report.json",
+      "bytes": 600011,
+      "sha256": "8fff43e0beed449b7715aaf6d548055803e6315398adb1c35b523e0164f38e04"
+    }
+  ],
+  "screens": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase128/native-runtime01/report.json",
+      "observations": 405,
+      "cases": [
+        {
+          "name": "mandelbrot",
+          "family": "mandelbrot",
+          "ratioEligible": true,
+          "rounds": [
+            0,
+            1,
+            2
+          ],
+          "binaries": {
+            "candidate": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p128-native-runtime01-mandelbrot-build/program",
+              "bytes": 294144,
+              "sha256": "dc4ee5604ec041a388816e0a84c23dd8ea6f0f2dda7549123acac175618477c2"
+            },
+            "baseline": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p126-final32-mandelbrot-build/program",
+              "bytes": 294080,
+              "sha256": "652c4ea44818edd62c2b1b3512c5f8911b0f02d63bc5f72dca237adc23617a3a"
+            },
+            "upstream": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/broad01/mandelbrot/upstream.program",
+              "bytes": 65520,
+              "sha256": "3ab38f8b020bc620d1fad0fa711204fbc4be4e0ac6d99c34df03aa989aa450a7"
+            }
+          },
+          "samplesMs": {
+            "candidate": [
+              696,
+              679,
+              683
+            ],
+            "baseline": [
+              778,
+              779,
+              787
+            ],
+            "upstream": [
+              198,
+              204,
+              198
+            ]
+          },
+          "mediansMs": {
+            "candidate": 683,
+            "baseline": 779,
+            "upstream": 198
+          },
+          "spreadMs": {
+            "candidate": {
+              "count": 3,
+              "minimum": 679,
+              "median": 683,
+              "maximum": 696,
+              "rangeOverMedian": 0.024890190336749635,
+              "medianAbsoluteDeviation": 4
+            },
+            "baseline": {
+              "count": 3,
+              "minimum": 778,
+              "median": 779,
+              "maximum": 787,
+              "rangeOverMedian": 0.011553273427471117,
+              "medianAbsoluteDeviation": 1
+            },
+            "upstream": {
+              "count": 3,
+              "minimum": 198,
+              "median": 198,
+              "maximum": 204,
+              "rangeOverMedian": 0.030303030303030304,
+              "medianAbsoluteDeviation": 0
+            }
+          },
+          "candidateOverBaseline": 0.8767650834403081,
+          "candidateOverUpstream": 3.4494949494949494,
+          "baselineOverUpstream": 3.9343434343434343,
+          "roundRatios": {
+            "candidateOverBaseline": [
+              0.8946015424164524,
+              0.8716302952503209,
+              0.8678526048284625
+            ],
+            "candidateOverUpstream": [
+              3.515151515151515,
+              3.3284313725490198,
+              3.4494949494949494
+            ],
+            "baselineOverUpstream": [
+              3.9292929292929295,
+              3.8186274509803924,
+              3.974747474747475
+            ]
+          },
+          "ratioSpread": {
+            "candidateOverBaseline": {
+              "count": 3,
+              "minimum": 0.8678526048284625,
+              "median": 0.8716302952503209,
+              "maximum": 0.8946015424164524,
+              "rangeOverMedian": 0.03068839820477782,
+              "medianAbsoluteDeviation": 0.0037776904218583818
+            },
+            "candidateOverUpstream": {
+              "count": 3,
+              "minimum": 3.3284313725490198,
+              "median": 3.4494949494949494,
+              "maximum": 3.515151515151515,
+              "rangeOverMedian": 0.054129704590474496,
+              "medianAbsoluteDeviation": 0.06565656565656575
+            },
+            "baselineOverUpstream": {
+              "count": 3,
+              "minimum": 3.8186274509803924,
+              "median": 3.9292929292929295,
+              "maximum": 3.974747474747475,
+              "rangeOverMedian": 0.0397323453803115,
+              "medianAbsoluteDeviation": 0.045454545454545414
+            }
+          }
+        },
+        {
+          "name": "editdist",
+          "family": "editdist",
+          "ratioEligible": true,
+          "rounds": [
+            0,
+            1,
+            2
+          ],
+          "binaries": {
+            "candidate": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p128-native-runtime01-editdist-build/program",
+              "bytes": 287848,
+              "sha256": "7b9fab46540d20b99efa7eb06753c99c1453acc34407868838c3347bff4d323f"
+            },
+            "baseline": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p126-final32-editdist-build/program",
+              "bytes": 283688,
+              "sha256": "f615a52f9eea87768098635ec2c9de7aa51dea3b90d73d30cda07812d37443f4"
+            },
+            "upstream": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/broad01/editdist/upstream.program",
+              "bytes": 61216,
+              "sha256": "87b33ae9f2cf1f787ada519e8c43fc891b3dddd45549739fe661fb48e6fd0292"
+            }
+          },
+          "samplesMs": {
+            "candidate": [
+              252,
+              253,
+              251
+            ],
+            "baseline": [
+              252,
+              252,
+              252
+            ],
+            "upstream": [
+              201,
+              201,
+              202
+            ]
+          },
+          "mediansMs": {
+            "candidate": 252,
+            "baseline": 252,
+            "upstream": 201
+          },
+          "spreadMs": {
+            "candidate": {
+              "count": 3,
+              "minimum": 251,
+              "median": 252,
+              "maximum": 253,
+              "rangeOverMedian": 0.007936507936507936,
+              "medianAbsoluteDeviation": 1
+            },
+            "baseline": {
+              "count": 3,
+              "minimum": 252,
+              "median": 252,
+              "maximum": 252,
+              "rangeOverMedian": 0.0,
+              "medianAbsoluteDeviation": 0
+            },
+            "upstream": {
+              "count": 3,
+              "minimum": 201,
+              "median": 201,
+              "maximum": 202,
+              "rangeOverMedian": 0.004975124378109453,
+              "medianAbsoluteDeviation": 0
+            }
+          },
+          "candidateOverBaseline": 1.0,
+          "candidateOverUpstream": 1.2537313432835822,
+          "baselineOverUpstream": 1.2537313432835822,
+          "roundRatios": {
+            "candidateOverBaseline": [
+              1.0,
+              1.003968253968254,
+              0.996031746031746
+            ],
+            "candidateOverUpstream": [
+              1.2537313432835822,
+              1.2587064676616915,
+              1.2425742574257426
+            ],
+            "baselineOverUpstream": [
+              1.2537313432835822,
+              1.2537313432835822,
+              1.2475247524752475
+            ]
+          },
+          "ratioSpread": {
+            "candidateOverBaseline": {
+              "count": 3,
+              "minimum": 0.996031746031746,
+              "median": 1.0,
+              "maximum": 1.003968253968254,
+              "rangeOverMedian": 0.007936507936507908,
+              "medianAbsoluteDeviation": 0.003968253968253954
+            },
+            "candidateOverUpstream": {
+              "count": 3,
+              "minimum": 1.2425742574257426,
+              "median": 1.2537313432835822,
+              "maximum": 1.2587064676616915,
+              "rangeOverMedian": 0.012867358164387818,
+              "medianAbsoluteDeviation": 0.004975124378109319
+            },
+            "baselineOverUpstream": {
+              "count": 3,
+              "minimum": 1.2475247524752475,
+              "median": 1.2537313432835822,
+              "maximum": 1.2537313432835822,
+              "rangeOverMedian": 0.004950495049505005,
+              "medianAbsoluteDeviation": 0.0
+            }
+          }
+        },
+        {
+          "name": "tree-bitonic",
+          "family": "tree-bitonic",
+          "ratioEligible": true,
+          "rounds": [
+            0,
+            1,
+            2
+          ],
+          "binaries": {
+            "candidate": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p128-native-runtime01-tree-bitonic-build/program",
+              "bytes": 260264,
+              "sha256": "b0817539691f51404b61d99bbf594ce4bb4006f6bf8bbd3ca40090e989bc2ab4"
+            },
+            "baseline": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p126-final32-tree-bitonic-build/program",
+              "bytes": 256104,
+              "sha256": "47c7164a1516ba27a7e7297c5d78f5d11b28267f84bab1a58dc6a60a8a653e40"
+            },
+            "upstream": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/broad01/tree-bitonic/upstream.program",
+              "bytes": 67952,
+              "sha256": "5afd7bca608250b93f0f701d566235c1e5c8ba2ea1ccba8c09ea34870b900a88"
+            }
+          },
+          "samplesMs": {
+            "candidate": [
+              923,
+              928,
+              926
+            ],
+            "baseline": [
+              1040,
+              1041,
+              1038
+            ],
+            "upstream": [
+              205,
+              199,
+              204
+            ]
+          },
+          "mediansMs": {
+            "candidate": 926,
+            "baseline": 1040,
+            "upstream": 204
+          },
+          "spreadMs": {
+            "candidate": {
+              "count": 3,
+              "minimum": 923,
+              "median": 926,
+              "maximum": 928,
+              "rangeOverMedian": 0.005399568034557235,
+              "medianAbsoluteDeviation": 2
+            },
+            "baseline": {
+              "count": 3,
+              "minimum": 1038,
+              "median": 1040,
+              "maximum": 1041,
+              "rangeOverMedian": 0.0028846153846153848,
+              "medianAbsoluteDeviation": 1
+            },
+            "upstream": {
+              "count": 3,
+              "minimum": 199,
+              "median": 204,
+              "maximum": 205,
+              "rangeOverMedian": 0.029411764705882353,
+              "medianAbsoluteDeviation": 1
+            }
+          },
+          "candidateOverBaseline": 0.8903846153846153,
+          "candidateOverUpstream": 4.53921568627451,
+          "baselineOverUpstream": 5.098039215686274,
+          "roundRatios": {
+            "candidateOverBaseline": [
+              0.8875,
+              0.8914505283381364,
+              0.8921001926782274
+            ],
+            "candidateOverUpstream": [
+              4.5024390243902435,
+              4.663316582914573,
+              4.53921568627451
+            ],
+            "baselineOverUpstream": [
+              5.073170731707317,
+              5.231155778894473,
+              5.088235294117647
+            ]
+          },
+          "ratioSpread": {
+            "candidateOverBaseline": {
+              "count": 3,
+              "minimum": 0.8875,
+              "median": 0.8914505283381364,
+              "maximum": 0.8921001926782274,
+              "rangeOverMedian": 0.005160345450468476,
+              "medianAbsoluteDeviation": 0.0006496643400909496
+            },
+            "candidateOverUpstream": {
+              "count": 3,
+              "minimum": 4.5024390243902435,
+              "median": 4.53921568627451,
+              "maximum": 4.663316582914573,
+              "rangeOverMedian": 0.03544170835741161,
+              "medianAbsoluteDeviation": 0.036776661884266204
+            },
+            "baselineOverUpstream": {
+              "count": 3,
+              "minimum": 5.073170731707317,
+              "median": 5.088235294117647,
+              "maximum": 5.231155778894473,
+              "rangeOverMedian": 0.031049084418284908,
+              "medianAbsoluteDeviation": 0.015064562410329607
+            }
+          }
+        },
+        {
+          "name": "lexer",
+          "family": "lexer",
+          "ratioEligible": true,
+          "rounds": [
+            0,
+            1,
+            2
+          ],
+          "binaries": {
+            "candidate": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p128-native-runtime01-lexer-build/program",
+              "bytes": 275912,
+              "sha256": "8be28203e3e8acf581c5c7844ead0533bdee4233cb5609909d35b53984c46591"
+            },
+            "baseline": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p126-final32-lexer-build/program",
+              "bytes": 271752,
+              "sha256": "b23b263da853ad3feda6c24455717a91fe2c681ef81d350168b07b99d39a00c9"
+            },
+            "upstream": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/broad01/lexer/upstream.program",
+              "bytes": 65584,
+              "sha256": "8c1802ee57b2469c7eb3cd8220b3a32c3e499baf3a167009a0143d6fce9d10f4"
+            }
+          },
+          "samplesMs": {
+            "candidate": [
+              502,
+              504,
+              504
+            ],
+            "baseline": [
+              506,
+              506,
+              507
+            ],
+            "upstream": [
+              186,
+              186,
+              187
+            ]
+          },
+          "mediansMs": {
+            "candidate": 504,
+            "baseline": 506,
+            "upstream": 186
+          },
+          "spreadMs": {
+            "candidate": {
+              "count": 3,
+              "minimum": 502,
+              "median": 504,
+              "maximum": 504,
+              "rangeOverMedian": 0.003968253968253968,
+              "medianAbsoluteDeviation": 0
+            },
+            "baseline": {
+              "count": 3,
+              "minimum": 506,
+              "median": 506,
+              "maximum": 507,
+              "rangeOverMedian": 0.001976284584980237,
+              "medianAbsoluteDeviation": 0
+            },
+            "upstream": {
+              "count": 3,
+              "minimum": 186,
+              "median": 186,
+              "maximum": 187,
+              "rangeOverMedian": 0.005376344086021506,
+              "medianAbsoluteDeviation": 0
+            }
+          },
+          "candidateOverBaseline": 0.9960474308300395,
+          "candidateOverUpstream": 2.7096774193548385,
+          "baselineOverUpstream": 2.7204301075268815,
+          "roundRatios": {
+            "candidateOverBaseline": [
+              0.9920948616600791,
+              0.9960474308300395,
+              0.9940828402366864
+            ],
+            "candidateOverUpstream": [
+              2.6989247311827955,
+              2.7096774193548385,
+              2.695187165775401
+            ],
+            "baselineOverUpstream": [
+              2.7204301075268815,
+              2.7204301075268815,
+              2.7112299465240643
+            ]
+          },
+          "ratioSpread": {
+            "candidateOverBaseline": {
+              "count": 3,
+              "minimum": 0.9920948616600791,
+              "median": 0.9940828402366864,
+              "maximum": 0.9960474308300395,
+              "rangeOverMedian": 0.0039760963674006925,
+              "medianAbsoluteDeviation": 0.001964590593353188
+            },
+            "candidateOverUpstream": {
+              "count": 3,
+              "minimum": 2.695187165775401,
+              "median": 2.6989247311827955,
+              "maximum": 2.7096774193548385,
+              "rangeOverMedian": 0.005368898736604274,
+              "medianAbsoluteDeviation": 0.0037375654073943387
+            },
+            "baselineOverUpstream": {
+              "count": 3,
+              "minimum": 2.7112299465240643,
+              "median": 2.7204301075268815,
+              "maximum": 2.7204301075268815,
+              "rangeOverMedian": 0.0033818773646719265,
+              "medianAbsoluteDeviation": 0.0
+            }
+          }
+        },
+        {
+          "name": "symreg",
+          "family": "symreg",
+          "ratioEligible": true,
+          "rounds": [
+            0,
+            1,
+            2
+          ],
+          "binaries": {
+            "candidate": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p128-native-runtime01-symreg-build/program",
+              "bytes": 267088,
+              "sha256": "ef46eee77dc8c46369d3f39a2a2edc6ce000fa2b2d4e7a2966eb7cd8928ef443"
+            },
+            "baseline": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p126-final32-symreg-build/program",
+              "bytes": 262936,
+              "sha256": "06fa04dc32f2e656b13db1e2db4a39c6ca5c5b34d8c5c34928631495d8b725a8"
+            },
+            "upstream": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/broad01/symreg/upstream.program",
+              "bytes": 71616,
+              "sha256": "84c52e7b12573065b2119943c9d68c8614e704ce481c963088dc71ef1d4f539c"
+            }
+          },
+          "samplesMs": {
+            "candidate": [
+              326,
+              324,
+              325
+            ],
+            "baseline": [
+              345,
+              349,
+              342
+            ],
+            "upstream": [
+              202,
+              200,
+              201
+            ]
+          },
+          "mediansMs": {
+            "candidate": 325,
+            "baseline": 345,
+            "upstream": 201
+          },
+          "spreadMs": {
+            "candidate": {
+              "count": 3,
+              "minimum": 324,
+              "median": 325,
+              "maximum": 326,
+              "rangeOverMedian": 0.006153846153846154,
+              "medianAbsoluteDeviation": 1
+            },
+            "baseline": {
+              "count": 3,
+              "minimum": 342,
+              "median": 345,
+              "maximum": 349,
+              "rangeOverMedian": 0.020289855072463767,
+              "medianAbsoluteDeviation": 3
+            },
+            "upstream": {
+              "count": 3,
+              "minimum": 200,
+              "median": 201,
+              "maximum": 202,
+              "rangeOverMedian": 0.009950248756218905,
+              "medianAbsoluteDeviation": 1
+            }
+          },
+          "candidateOverBaseline": 0.9420289855072463,
+          "candidateOverUpstream": 1.6169154228855722,
+          "baselineOverUpstream": 1.7164179104477613,
+          "roundRatios": {
+            "candidateOverBaseline": [
+              0.9449275362318841,
+              0.9283667621776505,
+              0.9502923976608187
+            ],
+            "candidateOverUpstream": [
+              1.613861386138614,
+              1.62,
+              1.6169154228855722
+            ],
+            "baselineOverUpstream": [
+              1.7079207920792079,
+              1.745,
+              1.7014925373134329
+            ]
+          },
+          "ratioSpread": {
+            "candidateOverBaseline": {
+              "count": 3,
+              "minimum": 0.9283667621776505,
+              "median": 0.9449275362318841,
+              "maximum": 0.9502923976608187,
+              "rangeOverMedian": 0.023203509943843733,
+              "medianAbsoluteDeviation": 0.005364861428934664
+            },
+            "candidateOverUpstream": {
+              "count": 3,
+              "minimum": 1.613861386138614,
+              "median": 1.6169154228855722,
+              "maximum": 1.62,
+              "rangeOverMedian": 0.0037964965727342,
+              "medianAbsoluteDeviation": 0.0030540367469582552
+            },
+            "baselineOverUpstream": {
+              "count": 3,
+              "minimum": 1.7014925373134329,
+              "median": 1.7079207920792079,
+              "maximum": 1.745,
+              "rangeOverMedian": 0.025473934674453864,
+              "medianAbsoluteDeviation": 0.006428254765775021
+            }
+          }
+        },
+        {
+          "name": "test-morning-program",
+          "family": "test-morning-program",
+          "ratioEligible": true,
+          "rounds": [
+            0,
+            1,
+            2
+          ],
+          "binaries": {
+            "candidate": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p128-native-runtime01-test-morning-program-build/program",
+              "bytes": 392288,
+              "sha256": "033926eba38ebd5caf6ea61068cdaa05513950763812ff5248a9ed710002e381"
+            },
+            "baseline": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p126-final32-test-morning-program-build/program",
+              "bytes": 392232,
+              "sha256": "f4fc9f5f93e9ca6d12e0700bb27d0ecebe3d342ad6c8f1ea93af125566ecd6d7"
+            },
+            "upstream": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/broad01/test-morning-program/upstream.program",
+              "bytes": 141328,
+              "sha256": "dc770b19ed9c062cf576ee944def8c397af5a154638ce9d78f23af1053711bb2"
+            }
+          },
+          "samplesMs": {
+            "candidate": [
+              599,
+              601,
+              595
+            ],
+            "baseline": [
+              762,
+              763,
+              760
+            ],
+            "upstream": [
+              199,
+              204,
+              199
+            ]
+          },
+          "mediansMs": {
+            "candidate": 599,
+            "baseline": 762,
+            "upstream": 199
+          },
+          "spreadMs": {
+            "candidate": {
+              "count": 3,
+              "minimum": 595,
+              "median": 599,
+              "maximum": 601,
+              "rangeOverMedian": 0.01001669449081803,
+              "medianAbsoluteDeviation": 2
+            },
+            "baseline": {
+              "count": 3,
+              "minimum": 760,
+              "median": 762,
+              "maximum": 763,
+              "rangeOverMedian": 0.003937007874015748,
+              "medianAbsoluteDeviation": 1
+            },
+            "upstream": {
+              "count": 3,
+              "minimum": 199,
+              "median": 199,
+              "maximum": 204,
+              "rangeOverMedian": 0.02512562814070352,
+              "medianAbsoluteDeviation": 0
+            }
+          },
+          "candidateOverBaseline": 0.7860892388451444,
+          "candidateOverUpstream": 3.0100502512562812,
+          "baselineOverUpstream": 3.829145728643216,
+          "roundRatios": {
+            "candidateOverBaseline": [
+              0.7860892388451444,
+              0.7876802096985583,
+              0.7828947368421053
+            ],
+            "candidateOverUpstream": [
+              3.0100502512562812,
+              2.946078431372549,
+              2.9899497487437188
+            ],
+            "baselineOverUpstream": [
+              3.829145728643216,
+              3.7401960784313726,
+              3.819095477386935
+            ]
+          },
+          "ratioSpread": {
+            "candidateOverBaseline": {
+              "count": 3,
+              "minimum": 0.7828947368421053,
+              "median": 0.7860892388451444,
+              "maximum": 0.7876802096985583,
+              "rangeOverMedian": 0.006087696688843423,
+              "medianAbsoluteDeviation": 0.0015909708534139755
+            },
+            "candidateOverUpstream": {
+              "count": 3,
+              "minimum": 2.946078431372549,
+              "median": 2.9899497487437188,
+              "maximum": 3.0100502512562812,
+              "rangeOverMedian": 0.02139561707035743,
+              "medianAbsoluteDeviation": 0.020100502512562457
+            },
+            "baselineOverUpstream": {
+              "count": 3,
+              "minimum": 3.7401960784313726,
+              "median": 3.819095477386935,
+              "maximum": 3.829145728643216,
+              "rangeOverMedian": 0.02329076367389058,
+              "medianAbsoluteDeviation": 0.010050251256281229
+            }
+          }
+        },
+        {
+          "name": "test-evening-program",
+          "family": "test-evening-program",
+          "ratioEligible": true,
+          "rounds": [
+            0,
+            1,
+            2
+          ],
+          "binaries": {
+            "candidate": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p128-native-runtime01-test-evening-program-build/program",
+              "bytes": 417232,
+              "sha256": "14622831a2201d159ad873e7280ae1a0863cec0252128f303886a72cf278ed5d"
+            },
+            "baseline": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p126-final32-test-evening-program-build/program",
+              "bytes": 417176,
+              "sha256": "eb545be217e7586f4ecbe9143040e0cde9e23f4f18ea3a1074e0e13eaf747f42"
+            },
+            "upstream": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/pilot02/test-evening-program/upstream.program",
+              "bytes": 148520,
+              "sha256": "373e63802f8a9d5abf038dc30f5bb8bcb27e05a40ab7a319c3cc4d37f89f88f1"
+            }
+          },
+          "samplesMs": {
+            "candidate": [
+              1100,
+              1212,
+              1209
+            ],
+            "baseline": [
+              1343,
+              1380,
+              1387
+            ],
+            "upstream": [
+              223,
+              220,
+              223
+            ]
+          },
+          "mediansMs": {
+            "candidate": 1209,
+            "baseline": 1380,
+            "upstream": 223
+          },
+          "spreadMs": {
+            "candidate": {
+              "count": 3,
+              "minimum": 1100,
+              "median": 1209,
+              "maximum": 1212,
+              "rangeOverMedian": 0.09263854425144748,
+              "medianAbsoluteDeviation": 3
+            },
+            "baseline": {
+              "count": 3,
+              "minimum": 1343,
+              "median": 1380,
+              "maximum": 1387,
+              "rangeOverMedian": 0.03188405797101449,
+              "medianAbsoluteDeviation": 7
+            },
+            "upstream": {
+              "count": 3,
+              "minimum": 220,
+              "median": 223,
+              "maximum": 223,
+              "rangeOverMedian": 0.013452914798206279,
+              "medianAbsoluteDeviation": 0
+            }
+          },
+          "candidateOverBaseline": 0.8760869565217392,
+          "candidateOverUpstream": 5.42152466367713,
+          "baselineOverUpstream": 6.188340807174888,
+          "roundRatios": {
+            "candidateOverBaseline": [
+              0.8190618019359642,
+              0.8782608695652174,
+              0.8716654650324441
+            ],
+            "candidateOverUpstream": [
+              4.932735426008969,
+              5.509090909090909,
+              5.42152466367713
+            ],
+            "baselineOverUpstream": [
+              6.022421524663677,
+              6.2727272727272725,
+              6.219730941704036
+            ]
+          },
+          "ratioSpread": {
+            "candidateOverBaseline": {
+              "count": 3,
+              "minimum": 0.8190618019359642,
+              "median": 0.8716654650324441,
+              "maximum": 0.8782608695652174,
+              "rangeOverMedian": 0.06791489396341951,
+              "medianAbsoluteDeviation": 0.006595404532773297
+            },
+            "candidateOverUpstream": {
+              "count": 3,
+              "minimum": 4.932735426008969,
+              "median": 5.42152466367713,
+              "maximum": 5.509090909090909,
+              "rangeOverMedian": 0.10630874501842238,
+              "medianAbsoluteDeviation": 0.08756624541377889
+            },
+            "baselineOverUpstream": {
+              "count": 3,
+              "minimum": 6.022421524663677,
+              "median": 6.219730941704036,
+              "maximum": 6.2727272727272725,
+              "rangeOverMedian": 0.040243822507701296,
+              "medianAbsoluteDeviation": 0.05299633102323664
+            }
+          }
+        },
+        {
+          "name": "test-rle-roundtrip",
+          "family": "test-rle-roundtrip",
+          "ratioEligible": true,
+          "rounds": [
+            0,
+            1,
+            2
+          ],
+          "binaries": {
+            "candidate": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p128-native-runtime01-test-rle-roundtrip-build/program",
+              "bytes": 237936,
+              "sha256": "53653ce493efceba8a480cf89f54bd53558833bc6368763f6f0a057613cd089c"
+            },
+            "baseline": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p126-final32-test-rle-roundtrip-build/program",
+              "bytes": 237608,
+              "sha256": "0b706ec6b03b29f8ba88e6a32f6d8e3414c7901a70c327fda945bde5ffc0c33d"
+            },
+            "upstream": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/broad01/test-rle-roundtrip/upstream.program",
+              "bytes": 67080,
+              "sha256": "c010aa62bbf854a4513651cdef6f8802a80b24e3f33f0a5b149d4ac0fe9464ae"
+            }
+          },
+          "samplesMs": {
+            "candidate": [
+              1271,
+              1141,
+              1143
+            ],
+            "baseline": [
+              1143,
+              1152,
+              1118
+            ],
+            "upstream": [
+              205,
+              202,
+              200
+            ]
+          },
+          "mediansMs": {
+            "candidate": 1143,
+            "baseline": 1143,
+            "upstream": 202
+          },
+          "spreadMs": {
+            "candidate": {
+              "count": 3,
+              "minimum": 1141,
+              "median": 1143,
+              "maximum": 1271,
+              "rangeOverMedian": 0.1137357830271216,
+              "medianAbsoluteDeviation": 2
+            },
+            "baseline": {
+              "count": 3,
+              "minimum": 1118,
+              "median": 1143,
+              "maximum": 1152,
+              "rangeOverMedian": 0.02974628171478565,
+              "medianAbsoluteDeviation": 9
+            },
+            "upstream": {
+              "count": 3,
+              "minimum": 200,
+              "median": 202,
+              "maximum": 205,
+              "rangeOverMedian": 0.024752475247524754,
+              "medianAbsoluteDeviation": 2
+            }
+          },
+          "candidateOverBaseline": 1.0,
+          "candidateOverUpstream": 5.658415841584159,
+          "baselineOverUpstream": 5.658415841584159,
+          "roundRatios": {
+            "candidateOverBaseline": [
+              1.1119860017497813,
+              0.9904513888888888,
+              1.022361359570662
+            ],
+            "candidateOverUpstream": [
+              6.2,
+              5.648514851485149,
+              5.715
+            ],
+            "baselineOverUpstream": [
+              5.575609756097561,
+              5.702970297029703,
+              5.59
+            ]
+          },
+          "ratioSpread": {
+            "candidateOverBaseline": {
+              "count": 3,
+              "minimum": 0.9904513888888888,
+              "median": 1.022361359570662,
+              "maximum": 1.1119860017497813,
+              "rangeOverMedian": 0.11887637548423256,
+              "medianAbsoluteDeviation": 0.03190997068177315
+            },
+            "candidateOverUpstream": {
+              "count": 3,
+              "minimum": 5.648514851485149,
+              "median": 5.715,
+              "maximum": 6.2,
+              "rangeOverMedian": 0.09649783876025399,
+              "medianAbsoluteDeviation": 0.06648514851485121
+            },
+            "baselineOverUpstream": {
+              "count": 3,
+              "minimum": 5.575609756097561,
+              "median": 5.59,
+              "maximum": 5.702970297029703,
+              "rangeOverMedian": 0.022783638807181057,
+              "medianAbsoluteDeviation": 0.01439024390243926
+            }
+          }
+        },
+        {
+          "name": "test-map-set-ops",
+          "family": "test-map-set-ops",
+          "ratioEligible": true,
+          "rounds": [
+            0,
+            1,
+            2
+          ],
+          "binaries": {
+            "candidate": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p128-native-runtime01-test-map-set-ops-build/program",
+              "bytes": 483272,
+              "sha256": "3d25414a079ce9c3d5f7dda796ce811c29aef24b28bd75f8759f640aaecf0c20"
+            },
+            "baseline": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p126-final32-test-map-set-ops-build/program",
+              "bytes": 482968,
+              "sha256": "0aa78d8a931f0cd325b8d4d56f158091417b1b948d115f519572f4d22d587a5d"
+            },
+            "upstream": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/broad01/test-map-set-ops/upstream.program",
+              "bytes": 189280,
+              "sha256": "02f5e9b7600e0ef0670425a9161b9d006584062edfb9d8e695356934b33cd326"
+            }
+          },
+          "samplesMs": {
+            "candidate": [
+              790,
+              785,
+              786
+            ],
+            "baseline": [
+              921,
+              923,
+              916
+            ],
+            "upstream": [
+              203,
+              198,
+              198
+            ]
+          },
+          "mediansMs": {
+            "candidate": 786,
+            "baseline": 921,
+            "upstream": 198
+          },
+          "spreadMs": {
+            "candidate": {
+              "count": 3,
+              "minimum": 785,
+              "median": 786,
+              "maximum": 790,
+              "rangeOverMedian": 0.006361323155216285,
+              "medianAbsoluteDeviation": 1
+            },
+            "baseline": {
+              "count": 3,
+              "minimum": 916,
+              "median": 921,
+              "maximum": 923,
+              "rangeOverMedian": 0.00760043431053203,
+              "medianAbsoluteDeviation": 2
+            },
+            "upstream": {
+              "count": 3,
+              "minimum": 198,
+              "median": 198,
+              "maximum": 203,
+              "rangeOverMedian": 0.025252525252525252,
+              "medianAbsoluteDeviation": 0
+            }
+          },
+          "candidateOverBaseline": 0.8534201954397395,
+          "candidateOverUpstream": 3.9696969696969697,
+          "baselineOverUpstream": 4.651515151515151,
+          "roundRatios": {
+            "candidateOverBaseline": [
+              0.8577633007600435,
+              0.8504875406283857,
+              0.8580786026200873
+            ],
+            "candidateOverUpstream": [
+              3.8916256157635467,
+              3.9646464646464645,
+              3.9696969696969697
+            ],
+            "baselineOverUpstream": [
+              4.536945812807882,
+              4.661616161616162,
+              4.626262626262626
+            ]
+          },
+          "ratioSpread": {
+            "candidateOverBaseline": {
+              "count": 3,
+              "minimum": 0.8504875406283857,
+              "median": 0.8577633007600435,
+              "maximum": 0.8580786026200873,
+              "rangeOverMedian": 0.008849833030831823,
+              "medianAbsoluteDeviation": 0.000315301860043804
+            },
+            "candidateOverUpstream": {
+              "count": 3,
+              "minimum": 3.8916256157635467,
+              "median": 3.9646464646464645,
+              "maximum": 3.9696969696969697,
+              "rangeOverMedian": 0.019691882902952557,
+              "medianAbsoluteDeviation": 0.005050505050505194
+            },
+            "baselineOverUpstream": {
+              "count": 3,
+              "minimum": 4.536945812807882,
+              "median": 4.626262626262626,
+              "maximum": 4.661616161616162,
+              "rangeOverMedian": 0.026948394174715565,
+              "medianAbsoluteDeviation": 0.03535353535353547
+            }
+          }
+        },
+        {
+          "name": "raytrace",
+          "family": "raytrace",
+          "ratioEligible": true,
+          "rounds": [
+            0,
+            1,
+            2
+          ],
+          "binaries": {
+            "candidate": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p128-native-runtime01-raytrace-build/program",
+              "bytes": 356720,
+              "sha256": "026d62cde84d38be1682a97d2a209370663e9618a8638e6092e391b2556d57c6"
+            },
+            "baseline": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p126-final32-raytrace-build/program",
+              "bytes": 356664,
+              "sha256": "83e64fd3dfe3fd2bddecbb6a8105028a928fe1037aa462d6a104940ab830f89c"
+            },
+            "upstream": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/broad01/raytrace/upstream.program",
+              "bytes": 72264,
+              "sha256": "773abdcb0d0f50ba6ee33ef519c9aa2f12c76594188762d6d2e23cf516a39836"
+            }
+          },
+          "samplesMs": {
+            "candidate": [
+              374,
+              375,
+              371
+            ],
+            "baseline": [
+              374,
+              374,
+              372
+            ],
+            "upstream": [
+              230,
+              229,
+              229
+            ]
+          },
+          "mediansMs": {
+            "candidate": 374,
+            "baseline": 374,
+            "upstream": 229
+          },
+          "spreadMs": {
+            "candidate": {
+              "count": 3,
+              "minimum": 371,
+              "median": 374,
+              "maximum": 375,
+              "rangeOverMedian": 0.0106951871657754,
+              "medianAbsoluteDeviation": 1
+            },
+            "baseline": {
+              "count": 3,
+              "minimum": 372,
+              "median": 374,
+              "maximum": 374,
+              "rangeOverMedian": 0.0053475935828877,
+              "medianAbsoluteDeviation": 0
+            },
+            "upstream": {
+              "count": 3,
+              "minimum": 229,
+              "median": 229,
+              "maximum": 230,
+              "rangeOverMedian": 0.004366812227074236,
+              "medianAbsoluteDeviation": 0
+            }
+          },
+          "candidateOverBaseline": 1.0,
+          "candidateOverUpstream": 1.6331877729257642,
+          "baselineOverUpstream": 1.6331877729257642,
+          "roundRatios": {
+            "candidateOverBaseline": [
+              1.0,
+              1.0026737967914439,
+              0.9973118279569892
+            ],
+            "candidateOverUpstream": [
+              1.626086956521739,
+              1.6375545851528384,
+              1.6200873362445414
+            ],
+            "baselineOverUpstream": [
+              1.626086956521739,
+              1.6331877729257642,
+              1.6244541484716157
+            ]
+          },
+          "ratioSpread": {
+            "candidateOverBaseline": {
+              "count": 3,
+              "minimum": 0.9973118279569892,
+              "median": 1.0,
+              "maximum": 1.0026737967914439,
+              "rangeOverMedian": 0.005361968834454611,
+              "medianAbsoluteDeviation": 0.002673796791443861
+            },
+            "candidateOverUpstream": {
+              "count": 3,
+              "minimum": 1.6200873362445414,
+              "median": 1.626086956521739,
+              "maximum": 1.6375545851528384,
+              "rangeOverMedian": 0.010741891039861782,
+              "medianAbsoluteDeviation": 0.0059996202771976925
+            },
+            "baselineOverUpstream": {
+              "count": 3,
+              "minimum": 1.6244541484716157,
+              "median": 1.626086956521739,
+              "maximum": 1.6331877729257642,
+              "rangeOverMedian": 0.005370945519930891,
+              "medianAbsoluteDeviation": 0.0016328080501233355
+            }
+          }
+        },
+        {
+          "name": "local-pair",
+          "family": "local-pair",
+          "ratioEligible": true,
+          "rounds": [
+            0,
+            1,
+            2
+          ],
+          "binaries": {
+            "candidate": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p128-native-runtime01-local-pair-build/program",
+              "bytes": 282600,
+              "sha256": "3517fe4ff4908a9628375ba6c7a9a918814ee57af4e595eee5fcbdf5d98e7732"
+            },
+            "baseline": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p126-final32-local-pair-build/program",
+              "bytes": 282544,
+              "sha256": "00eb495e2034db1954f688ff769847aa7de880c456807492945280c56c831944"
+            },
+            "upstream": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/pilot02/local-pair/upstream.program",
+              "bytes": 58408,
+              "sha256": "665260dce5cedf4589a6abd40f73c4f9c39b58c9fee267b4eb12665b1d8d1945"
+            }
+          },
+          "samplesMs": {
+            "candidate": [
+              251,
+              252,
+              252
+            ],
+            "baseline": [
+              256,
+              255,
+              254
+            ],
+            "upstream": [
+              202,
+              201,
+              201
+            ]
+          },
+          "mediansMs": {
+            "candidate": 252,
+            "baseline": 255,
+            "upstream": 201
+          },
+          "spreadMs": {
+            "candidate": {
+              "count": 3,
+              "minimum": 251,
+              "median": 252,
+              "maximum": 252,
+              "rangeOverMedian": 0.003968253968253968,
+              "medianAbsoluteDeviation": 0
+            },
+            "baseline": {
+              "count": 3,
+              "minimum": 254,
+              "median": 255,
+              "maximum": 256,
+              "rangeOverMedian": 0.00784313725490196,
+              "medianAbsoluteDeviation": 1
+            },
+            "upstream": {
+              "count": 3,
+              "minimum": 201,
+              "median": 201,
+              "maximum": 202,
+              "rangeOverMedian": 0.004975124378109453,
+              "medianAbsoluteDeviation": 0
+            }
+          },
+          "candidateOverBaseline": 0.9882352941176471,
+          "candidateOverUpstream": 1.2537313432835822,
+          "baselineOverUpstream": 1.2686567164179106,
+          "roundRatios": {
+            "candidateOverBaseline": [
+              0.98046875,
+              0.9882352941176471,
+              0.9921259842519685
+            ],
+            "candidateOverUpstream": [
+              1.2425742574257426,
+              1.2537313432835822,
+              1.2537313432835822
+            ],
+            "baselineOverUpstream": [
+              1.2673267326732673,
+              1.2686567164179106,
+              1.263681592039801
+            ]
+          },
+          "ratioSpread": {
+            "candidateOverBaseline": {
+              "count": 3,
+              "minimum": 0.98046875,
+              "median": 0.9882352941176471,
+              "maximum": 0.9921259842519685,
+              "rangeOverMedian": 0.011796010850206238,
+              "medianAbsoluteDeviation": 0.0038906901343214173
+            },
+            "candidateOverUpstream": {
+              "count": 3,
+              "minimum": 1.2425742574257426,
+              "median": 1.2537313432835822,
+              "maximum": 1.2537313432835822,
+              "rangeOverMedian": 0.008899104196133956,
+              "medianAbsoluteDeviation": 0.0
+            },
+            "baselineOverUpstream": {
+              "count": 3,
+              "minimum": 1.263681592039801,
+              "median": 1.2673267326732673,
+              "maximum": 1.2686567164179106,
+              "rangeOverMedian": 0.00392568407960206,
+              "medianAbsoluteDeviation": 0.001329983744643215
+            }
+          }
+        },
+        {
+          "name": "local-fold",
+          "family": "local-fold",
+          "ratioEligible": true,
+          "rounds": [
+            0,
+            1,
+            2
+          ],
+          "binaries": {
+            "candidate": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p128-native-runtime01-local-fold-build/program",
+              "bytes": 236448,
+              "sha256": "7e8c02933f4909732a711ed882e0f0728cebe483e17e5d1cdb220e1c7129c965"
+            },
+            "baseline": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p126-final32-local-fold-build/program",
+              "bytes": 232296,
+              "sha256": "87343a4f4f007821df10e5f00bdcaea5859d2f8e7a2cd8fed83f5f95d4fdd321"
+            },
+            "upstream": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/broad01/local-fold/upstream.program",
+              "bytes": 58896,
+              "sha256": "7c06950a827200c1c5570088d07c26c62e6379392d5fa0d9f79bb3e29201f72e"
+            }
+          },
+          "samplesMs": {
+            "candidate": [
+              336,
+              337,
+              337
+            ],
+            "baseline": [
+              337,
+              337,
+              341
+            ],
+            "upstream": [
+              199,
+              199,
+              199
+            ]
+          },
+          "mediansMs": {
+            "candidate": 337,
+            "baseline": 337,
+            "upstream": 199
+          },
+          "spreadMs": {
+            "candidate": {
+              "count": 3,
+              "minimum": 336,
+              "median": 337,
+              "maximum": 337,
+              "rangeOverMedian": 0.002967359050445104,
+              "medianAbsoluteDeviation": 0
+            },
+            "baseline": {
+              "count": 3,
+              "minimum": 337,
+              "median": 337,
+              "maximum": 341,
+              "rangeOverMedian": 0.011869436201780416,
+              "medianAbsoluteDeviation": 0
+            },
+            "upstream": {
+              "count": 3,
+              "minimum": 199,
+              "median": 199,
+              "maximum": 199,
+              "rangeOverMedian": 0.0,
+              "medianAbsoluteDeviation": 0
+            }
+          },
+          "candidateOverBaseline": 1.0,
+          "candidateOverUpstream": 1.693467336683417,
+          "baselineOverUpstream": 1.693467336683417,
+          "roundRatios": {
+            "candidateOverBaseline": [
+              0.9970326409495549,
+              1.0,
+              0.9882697947214076
+            ],
+            "candidateOverUpstream": [
+              1.6884422110552764,
+              1.693467336683417,
+              1.693467336683417
+            ],
+            "baselineOverUpstream": [
+              1.693467336683417,
+              1.693467336683417,
+              1.7135678391959799
+            ]
+          },
+          "ratioSpread": {
+            "candidateOverBaseline": {
+              "count": 3,
+              "minimum": 0.9882697947214076,
+              "median": 0.9970326409495549,
+              "maximum": 1.0,
+              "rangeOverMedian": 0.011765116603826271,
+              "medianAbsoluteDeviation": 0.0029673590504450953
+            },
+            "candidateOverUpstream": {
+              "count": 3,
+              "minimum": 1.6884422110552764,
+              "median": 1.693467336683417,
+              "maximum": 1.693467336683417,
+              "rangeOverMedian": 0.0029673590504450515,
+              "medianAbsoluteDeviation": 0.0
+            },
+            "baselineOverUpstream": {
+              "count": 3,
+              "minimum": 1.693467336683417,
+              "median": 1.693467336683417,
+              "maximum": 1.7135678391959799,
+              "rangeOverMedian": 0.011869436201780468,
+              "medianAbsoluteDeviation": 0.0
+            }
+          }
+        },
+        {
+          "name": "scalar-region-0",
+          "family": "scalar-region-0",
+          "ratioEligible": false,
+          "rounds": [
+            0,
+            1,
+            2
+          ],
+          "binaries": {
+            "candidate": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p128-native-runtime01-scalar-region-0-build/program",
+              "bytes": 236984,
+              "sha256": "74b731ea2ff116a323ac43f4dd335aa31e7299ac6433ef3e9480df51f4477c4d"
+            },
+            "baseline": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p126-final32-scalar-region-0-build/program",
+              "bytes": 236928,
+              "sha256": "c971e8a9baca9e8cc7902e208855c6a0c5ec9de9838ae862d8f1c7ee1a7d9b42"
+            },
+            "upstream": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/broad01/scalar-region-0/upstream.program",
+              "bytes": 57696,
+              "sha256": "a8fa6ff422c8411998472d66003958faa61cd38d96a81c9c386efb60ecb5940c"
+            }
+          },
+          "samplesMs": {
+            "candidate": [
+              0,
+              0,
+              0
+            ],
+            "baseline": [
+              0,
+              0,
+              1
+            ],
+            "upstream": [
+              0,
+              0,
+              0
+            ]
+          },
+          "mediansMs": {
+            "candidate": 0,
+            "baseline": 0,
+            "upstream": 0
+          },
+          "spreadMs": {
+            "candidate": {
+              "count": 3,
+              "minimum": 0,
+              "median": 0,
+              "maximum": 0,
+              "rangeOverMedian": null,
+              "medianAbsoluteDeviation": 0
+            },
+            "baseline": {
+              "count": 3,
+              "minimum": 0,
+              "median": 0,
+              "maximum": 1,
+              "rangeOverMedian": null,
+              "medianAbsoluteDeviation": 0
+            },
+            "upstream": {
+              "count": 3,
+              "minimum": 0,
+              "median": 0,
+              "maximum": 0,
+              "rangeOverMedian": null,
+              "medianAbsoluteDeviation": 0
+            }
+          }
+        },
+        {
+          "name": "scalar-region-8192",
+          "family": "scalar-region-8192",
+          "ratioEligible": true,
+          "rounds": [
+            0,
+            1,
+            2
+          ],
+          "binaries": {
+            "candidate": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p128-native-runtime01-scalar-region-8192-build/program",
+              "bytes": 236984,
+              "sha256": "ca2515f99ec1cdd6a2f9cc0f118c4070ac4c9dd91fdd354d97c0ab0822cfad63"
+            },
+            "baseline": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p126-final32-scalar-region-8192-build/program",
+              "bytes": 236928,
+              "sha256": "2b368f9d62ded233bc138a5d3153b82e59e1a37a3cc35b2a31b11bddceb231a2"
+            },
+            "upstream": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/broad01/scalar-region-8192/upstream.program",
+              "bytes": 57680,
+              "sha256": "12f6308ea92865750cf58c15bbb5185fe7617ceeff77362c78d9ff4565a860ac"
+            }
+          },
+          "samplesMs": {
+            "candidate": [
+              343,
+              345,
+              342
+            ],
+            "baseline": [
+              341,
+              342,
+              342
+            ],
+            "upstream": [
+              199,
+              200,
+              203
+            ]
+          },
+          "mediansMs": {
+            "candidate": 343,
+            "baseline": 342,
+            "upstream": 200
+          },
+          "spreadMs": {
+            "candidate": {
+              "count": 3,
+              "minimum": 342,
+              "median": 343,
+              "maximum": 345,
+              "rangeOverMedian": 0.008746355685131196,
+              "medianAbsoluteDeviation": 1
+            },
+            "baseline": {
+              "count": 3,
+              "minimum": 341,
+              "median": 342,
+              "maximum": 342,
+              "rangeOverMedian": 0.0029239766081871343,
+              "medianAbsoluteDeviation": 0
+            },
+            "upstream": {
+              "count": 3,
+              "minimum": 199,
+              "median": 200,
+              "maximum": 203,
+              "rangeOverMedian": 0.02,
+              "medianAbsoluteDeviation": 1
+            }
+          },
+          "candidateOverBaseline": 1.0029239766081872,
+          "candidateOverUpstream": 1.715,
+          "baselineOverUpstream": 1.71,
+          "roundRatios": {
+            "candidateOverBaseline": [
+              1.0058651026392962,
+              1.0087719298245614,
+              1.0
+            ],
+            "candidateOverUpstream": [
+              1.7236180904522613,
+              1.725,
+              1.6847290640394088
+            ],
+            "baselineOverUpstream": [
+              1.7135678391959799,
+              1.71,
+              1.6847290640394088
+            ]
+          },
+          "ratioSpread": {
+            "candidateOverBaseline": {
+              "count": 3,
+              "minimum": 1.0,
+              "median": 1.0058651026392962,
+              "maximum": 1.0087719298245614,
+              "rangeOverMedian": 0.008720781545701014,
+              "medianAbsoluteDeviation": 0.0029068271852652483
+            },
+            "candidateOverUpstream": {
+              "count": 3,
+              "minimum": 1.6847290640394088,
+              "median": 1.7236180904522613,
+              "maximum": 1.725,
+              "rangeOverMedian": 0.02336418733573663,
+              "medianAbsoluteDeviation": 0.0013819095477387577
+            },
+            "baselineOverUpstream": {
+              "count": 3,
+              "minimum": 1.6847290640394088,
+              "median": 1.71,
+              "maximum": 1.7135678391959799,
+              "rangeOverMedian": 0.016864780793316415,
+              "medianAbsoluteDeviation": 0.003567839195979916
+            }
+          }
+        },
+        {
+          "name": "complete-generic-row32",
+          "family": "complete-generic-row32",
+          "ratioEligible": true,
+          "rounds": [
+            0,
+            1,
+            2
+          ],
+          "binaries": {
+            "candidate": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p128-native-runtime01-complete-generic-row32-build/program",
+              "bytes": 301472,
+              "sha256": "ee8f192437f8e7ef94048ed8c7285f4dab209685116c7cd7a21f15631c2f55b2"
+            },
+            "baseline": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p126-final32-complete-generic-row32-build/program",
+              "bytes": 301408,
+              "sha256": "392a4d0d98c57c95be9fef5debb78f71b3fc27cae39be1a0885b31c4beb2dd43"
+            },
+            "upstream": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/pilot02/complete-generic-row32/upstream.program",
+              "bytes": 88744,
+              "sha256": "f3eff88a45a14d29b8f6f2b929d4748407398ab69551dd6bb32a301670c2bae3"
+            }
+          },
+          "samplesMs": {
+            "candidate": [
+              558,
+              506,
+              521
+            ],
+            "baseline": [
+              567,
+              563,
+              564
+            ],
+            "upstream": [
+              201,
+              201,
+              200
+            ]
+          },
+          "mediansMs": {
+            "candidate": 521,
+            "baseline": 564,
+            "upstream": 201
+          },
+          "spreadMs": {
+            "candidate": {
+              "count": 3,
+              "minimum": 506,
+              "median": 521,
+              "maximum": 558,
+              "rangeOverMedian": 0.09980806142034548,
+              "medianAbsoluteDeviation": 15
+            },
+            "baseline": {
+              "count": 3,
+              "minimum": 563,
+              "median": 564,
+              "maximum": 567,
+              "rangeOverMedian": 0.0070921985815602835,
+              "medianAbsoluteDeviation": 1
+            },
+            "upstream": {
+              "count": 3,
+              "minimum": 200,
+              "median": 201,
+              "maximum": 201,
+              "rangeOverMedian": 0.004975124378109453,
+              "medianAbsoluteDeviation": 0
+            }
+          },
+          "candidateOverBaseline": 0.9237588652482269,
+          "candidateOverUpstream": 2.5920398009950247,
+          "baselineOverUpstream": 2.8059701492537314,
+          "roundRatios": {
+            "candidateOverBaseline": [
+              0.9841269841269841,
+              0.8987566607460036,
+              0.9237588652482269
+            ],
+            "candidateOverUpstream": [
+              2.7761194029850746,
+              2.517412935323383,
+              2.605
+            ],
+            "baselineOverUpstream": [
+              2.8208955223880596,
+              2.800995024875622,
+              2.82
+            ]
+          },
+          "ratioSpread": {
+            "candidateOverBaseline": {
+              "count": 3,
+              "minimum": 0.8987566607460036,
+              "median": 0.9237588652482269,
+              "maximum": 0.9841269841269841,
+              "rangeOverMedian": 0.09241624258516891,
+              "medianAbsoluteDeviation": 0.025002204502223346
+            },
+            "candidateOverUpstream": {
+              "count": 3,
+              "minimum": 2.517412935323383,
+              "median": 2.605,
+              "maximum": 2.7761194029850746,
+              "rangeOverMedian": 0.09931150390084134,
+              "medianAbsoluteDeviation": 0.08758706467661703
+            },
+            "baselineOverUpstream": {
+              "count": 3,
+              "minimum": 2.800995024875622,
+              "median": 2.82,
+              "maximum": 2.8208955223880596,
+              "rangeOverMedian": 0.007056914011502738,
+              "medianAbsoluteDeviation": 0.0008955223880597885
+            }
+          }
+        },
+        {
+          "name": "variation-editdist-0-17",
+          "family": "editdist",
+          "ratioEligible": true,
+          "rounds": [
+            0,
+            1,
+            2
+          ],
+          "binaries": {
+            "candidate": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p128-native-runtime01-variation-editdist-0-17-build/program",
+              "bytes": 287864,
+              "sha256": "87cd9ad9c34e2d77abc2d30e576b8854df608941a0bce009f2743b4bfe3b90cc"
+            },
+            "baseline": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p126-final32-variation-editdist-0-17-build/program",
+              "bytes": 283704,
+              "sha256": "a1acd4b451af34798973ad8d82a1a11c93b43e4d1fd955dc82c0922530309df9"
+            },
+            "upstream": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/broad01/variation-editdist-0-17/upstream.program",
+              "bytes": 61216,
+              "sha256": "9495bac79960c4ffe89602aa9c872102380fbd5881e66be526d627d520000cbc"
+            }
+          },
+          "samplesMs": {
+            "candidate": [
+              251,
+              251,
+              251
+            ],
+            "baseline": [
+              251,
+              252,
+              250
+            ],
+            "upstream": [
+              201,
+              201,
+              200
+            ]
+          },
+          "mediansMs": {
+            "candidate": 251,
+            "baseline": 251,
+            "upstream": 201
+          },
+          "spreadMs": {
+            "candidate": {
+              "count": 3,
+              "minimum": 251,
+              "median": 251,
+              "maximum": 251,
+              "rangeOverMedian": 0.0,
+              "medianAbsoluteDeviation": 0
+            },
+            "baseline": {
+              "count": 3,
+              "minimum": 250,
+              "median": 251,
+              "maximum": 252,
+              "rangeOverMedian": 0.00796812749003984,
+              "medianAbsoluteDeviation": 1
+            },
+            "upstream": {
+              "count": 3,
+              "minimum": 200,
+              "median": 201,
+              "maximum": 201,
+              "rangeOverMedian": 0.004975124378109453,
+              "medianAbsoluteDeviation": 0
+            }
+          },
+          "candidateOverBaseline": 1.0,
+          "candidateOverUpstream": 1.2487562189054726,
+          "baselineOverUpstream": 1.2487562189054726,
+          "roundRatios": {
+            "candidateOverBaseline": [
+              1.0,
+              0.996031746031746,
+              1.004
+            ],
+            "candidateOverUpstream": [
+              1.2487562189054726,
+              1.2487562189054726,
+              1.255
+            ],
+            "baselineOverUpstream": [
+              1.2487562189054726,
+              1.2537313432835822,
+              1.25
+            ]
+          },
+          "ratioSpread": {
+            "candidateOverBaseline": {
+              "count": 3,
+              "minimum": 0.996031746031746,
+              "median": 1.0,
+              "maximum": 1.004,
+              "rangeOverMedian": 0.007968253968253958,
+              "medianAbsoluteDeviation": 0.003968253968253954
+            },
+            "candidateOverUpstream": {
+              "count": 3,
+              "minimum": 1.2487562189054726,
+              "median": 1.2487562189054726,
+              "maximum": 1.255,
+              "rangeOverMedian": 0.0049999999999999324,
+              "medianAbsoluteDeviation": 0.0
+            },
+            "baselineOverUpstream": {
+              "count": 3,
+              "minimum": 1.2487562189054726,
+              "median": 1.25,
+              "maximum": 1.2537313432835822,
+              "rangeOverMedian": 0.003980099502487633,
+              "medianAbsoluteDeviation": 0.0012437810945273853
+            }
+          }
+        },
+        {
+          "name": "variation-editdist-3-123",
+          "family": "editdist",
+          "ratioEligible": true,
+          "rounds": [
+            0,
+            1,
+            2
+          ],
+          "binaries": {
+            "candidate": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p128-native-runtime01-variation-editdist-3-123-build/program",
+              "bytes": 287864,
+              "sha256": "c2b3ad7fc4ead0ed3b44da5f2fd6068012079a5e82d95ad705202d592f31be43"
+            },
+            "baseline": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p126-final32-variation-editdist-3-123-build/program",
+              "bytes": 283704,
+              "sha256": "526c6b2650efea8f19ab88c7b7d6f3ca99cc3c50932e6844ba42fed1ea0fc1fa"
+            },
+            "upstream": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/broad01/variation-editdist-3-123/upstream.program",
+              "bytes": 61216,
+              "sha256": "92f2a86ec167da19e4820f2b25e5b1e09da61dd9aac2d622c01c3a25784a9b69"
+            }
+          },
+          "samplesMs": {
+            "candidate": [
+              253,
+              254,
+              253
+            ],
+            "baseline": [
+              252,
+              252,
+              253
+            ],
+            "upstream": [
+              202,
+              203,
+              205
+            ]
+          },
+          "mediansMs": {
+            "candidate": 253,
+            "baseline": 252,
+            "upstream": 203
+          },
+          "spreadMs": {
+            "candidate": {
+              "count": 3,
+              "minimum": 253,
+              "median": 253,
+              "maximum": 254,
+              "rangeOverMedian": 0.003952569169960474,
+              "medianAbsoluteDeviation": 0
+            },
+            "baseline": {
+              "count": 3,
+              "minimum": 252,
+              "median": 252,
+              "maximum": 253,
+              "rangeOverMedian": 0.003968253968253968,
+              "medianAbsoluteDeviation": 0
+            },
+            "upstream": {
+              "count": 3,
+              "minimum": 202,
+              "median": 203,
+              "maximum": 205,
+              "rangeOverMedian": 0.014778325123152709,
+              "medianAbsoluteDeviation": 1
+            }
+          },
+          "candidateOverBaseline": 1.003968253968254,
+          "candidateOverUpstream": 1.2463054187192117,
+          "baselineOverUpstream": 1.2413793103448276,
+          "roundRatios": {
+            "candidateOverBaseline": [
+              1.003968253968254,
+              1.007936507936508,
+              1.0
+            ],
+            "candidateOverUpstream": [
+              1.2524752475247525,
+              1.251231527093596,
+              1.2341463414634146
+            ],
+            "baselineOverUpstream": [
+              1.2475247524752475,
+              1.2413793103448276,
+              1.2341463414634146
+            ]
+          },
+          "ratioSpread": {
+            "candidateOverBaseline": {
+              "count": 3,
+              "minimum": 1.0,
+              "median": 1.003968253968254,
+              "maximum": 1.007936507936508,
+              "rangeOverMedian": 0.00790513833992092,
+              "medianAbsoluteDeviation": 0.003968253968253954
+            },
+            "candidateOverUpstream": {
+              "count": 3,
+              "minimum": 1.2341463414634146,
+              "median": 1.251231527093596,
+              "maximum": 1.2524752475247525,
+              "rangeOverMedian": 0.014648692639573168,
+              "medianAbsoluteDeviation": 0.001243720431156392
+            },
+            "baselineOverUpstream": {
+              "count": 3,
+              "minimum": 1.2341463414634146,
+              "median": 1.2413793103448276,
+              "maximum": 1.2475247524752475,
+              "rangeOverMedian": 0.010777053315087616,
+              "medianAbsoluteDeviation": 0.006145442130419898
+            }
+          }
+        },
+        {
+          "name": "variation-lexer-6-17",
+          "family": "lexer",
+          "ratioEligible": true,
+          "rounds": [
+            0,
+            1,
+            2
+          ],
+          "binaries": {
+            "candidate": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p128-native-runtime01-variation-lexer-6-17-build/program",
+              "bytes": 275928,
+              "sha256": "e85bebd218ea868f43c39d182afe917ebe4dce55129a310d6ea2fcd734fd7cbe"
+            },
+            "baseline": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p126-final32-variation-lexer-6-17-build/program",
+              "bytes": 271768,
+              "sha256": "e4ac635c7f5291b95a5d0d406f3ec66e2e142b263fa60b5d6176e4dd9ab87b51"
+            },
+            "upstream": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/broad01/variation-lexer-6-17/upstream.program",
+              "bytes": 65584,
+              "sha256": "3cf4cbcdbf34c9dbf156f26d20ebe475857476f3c6db86c790529481e90ab01e"
+            }
+          },
+          "samplesMs": {
+            "candidate": [
+              544,
+              543,
+              545
+            ],
+            "baseline": [
+              549,
+              549,
+              549
+            ],
+            "upstream": [
+              200,
+              205,
+              200
+            ]
+          },
+          "mediansMs": {
+            "candidate": 544,
+            "baseline": 549,
+            "upstream": 200
+          },
+          "spreadMs": {
+            "candidate": {
+              "count": 3,
+              "minimum": 543,
+              "median": 544,
+              "maximum": 545,
+              "rangeOverMedian": 0.003676470588235294,
+              "medianAbsoluteDeviation": 1
+            },
+            "baseline": {
+              "count": 3,
+              "minimum": 549,
+              "median": 549,
+              "maximum": 549,
+              "rangeOverMedian": 0.0,
+              "medianAbsoluteDeviation": 0
+            },
+            "upstream": {
+              "count": 3,
+              "minimum": 200,
+              "median": 200,
+              "maximum": 205,
+              "rangeOverMedian": 0.025,
+              "medianAbsoluteDeviation": 0
+            }
+          },
+          "candidateOverBaseline": 0.9908925318761385,
+          "candidateOverUpstream": 2.72,
+          "baselineOverUpstream": 2.745,
+          "roundRatios": {
+            "candidateOverBaseline": [
+              0.9908925318761385,
+              0.9890710382513661,
+              0.9927140255009107
+            ],
+            "candidateOverUpstream": [
+              2.72,
+              2.648780487804878,
+              2.725
+            ],
+            "baselineOverUpstream": [
+              2.745,
+              2.678048780487805,
+              2.745
+            ]
+          },
+          "ratioSpread": {
+            "candidateOverBaseline": {
+              "count": 3,
+              "minimum": 0.9890710382513661,
+              "median": 0.9908925318761385,
+              "maximum": 0.9927140255009107,
+              "rangeOverMedian": 0.0036764705882352607,
+              "medianAbsoluteDeviation": 0.0018214936247722413
+            },
+            "candidateOverUpstream": {
+              "count": 3,
+              "minimum": 2.648780487804878,
+              "median": 2.72,
+              "maximum": 2.725,
+              "rangeOverMedian": 0.0280218794835007,
+              "medianAbsoluteDeviation": 0.004999999999999893
+            },
+            "baselineOverUpstream": {
+              "count": 3,
+              "minimum": 2.678048780487805,
+              "median": 2.745,
+              "maximum": 2.745,
+              "rangeOverMedian": 0.024390243902439004,
+              "medianAbsoluteDeviation": 0.0
+            }
+          }
+        },
+        {
+          "name": "variation-lexer-10-123",
+          "family": "lexer",
+          "ratioEligible": true,
+          "rounds": [
+            0,
+            1,
+            2
+          ],
+          "binaries": {
+            "candidate": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p128-native-runtime01-variation-lexer-10-123-build/program",
+              "bytes": 275928,
+              "sha256": "e253db18245a1275af286fbdc9ad960610bb8a7333e306d451e3b2303076b261"
+            },
+            "baseline": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p126-final32-variation-lexer-10-123-build/program",
+              "bytes": 271768,
+              "sha256": "e68af0fe0f4c47606c94dbdc901525679035d75b95368b4dbb7efa7a54eafd64"
+            },
+            "upstream": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/broad01/variation-lexer-10-123/upstream.program",
+              "bytes": 65584,
+              "sha256": "9ca21172e4839471653a0f43be39b2545ffba4ac0f5540e3c415e805110b12da"
+            }
+          },
+          "samplesMs": {
+            "candidate": [
+              502,
+              503,
+              502
+            ],
+            "baseline": [
+              508,
+              508,
+              509
+            ],
+            "upstream": [
+              188,
+              187,
+              187
+            ]
+          },
+          "mediansMs": {
+            "candidate": 502,
+            "baseline": 508,
+            "upstream": 187
+          },
+          "spreadMs": {
+            "candidate": {
+              "count": 3,
+              "minimum": 502,
+              "median": 502,
+              "maximum": 503,
+              "rangeOverMedian": 0.00199203187250996,
+              "medianAbsoluteDeviation": 0
+            },
+            "baseline": {
+              "count": 3,
+              "minimum": 508,
+              "median": 508,
+              "maximum": 509,
+              "rangeOverMedian": 0.001968503937007874,
+              "medianAbsoluteDeviation": 0
+            },
+            "upstream": {
+              "count": 3,
+              "minimum": 187,
+              "median": 187,
+              "maximum": 188,
+              "rangeOverMedian": 0.0053475935828877,
+              "medianAbsoluteDeviation": 0
+            }
+          },
+          "candidateOverBaseline": 0.9881889763779528,
+          "candidateOverUpstream": 2.6844919786096257,
+          "baselineOverUpstream": 2.716577540106952,
+          "roundRatios": {
+            "candidateOverBaseline": [
+              0.9881889763779528,
+              0.9901574803149606,
+              0.9862475442043221
+            ],
+            "candidateOverUpstream": [
+              2.6702127659574466,
+              2.6898395721925135,
+              2.6844919786096257
+            ],
+            "baselineOverUpstream": [
+              2.702127659574468,
+              2.716577540106952,
+              2.72192513368984
+            ]
+          },
+          "ratioSpread": {
+            "candidateOverBaseline": {
+              "count": 3,
+              "minimum": 0.9862475442043221,
+              "median": 0.9881889763779528,
+              "maximum": 0.9901574803149606,
+              "rangeOverMedian": 0.003956668414749718,
+              "medianAbsoluteDeviation": 0.0019414321736306306
+            },
+            "candidateOverUpstream": {
+              "count": 3,
+              "minimum": 2.6702127659574466,
+              "median": 2.6844919786096257,
+              "maximum": 2.6898395721925135,
+              "rangeOverMedian": 0.007311180808680281,
+              "medianAbsoluteDeviation": 0.005347593582887722
+            },
+            "baselineOverUpstream": {
+              "count": 3,
+              "minimum": 2.702127659574468,
+              "median": 2.716577540106952,
+              "maximum": 2.72192513368984,
+              "rangeOverMedian": 0.0072876528731782445,
+              "medianAbsoluteDeviation": 0.005347593582887722
+            }
+          }
+        },
+        {
+          "name": "variation-tree-bitonic-6-17",
+          "family": "tree-bitonic",
+          "ratioEligible": true,
+          "rounds": [
+            0,
+            1,
+            2
+          ],
+          "binaries": {
+            "candidate": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p128-native-runtime01-variation-tree-bitonic-6-17-build/program",
+              "bytes": 260272,
+              "sha256": "6d71e60bb5e125051cd3c998c9532d1c91273db9249b6698b5e05f971fc0ab73"
+            },
+            "baseline": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p126-final32-variation-tree-bitonic-6-17-build/program",
+              "bytes": 256120,
+              "sha256": "13d328046bd33beb83be75de1b2588109e450e0fd3e52f9c588a473fe97fa20c"
+            },
+            "upstream": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/broad01/variation-tree-bitonic-6-17/upstream.program",
+              "bytes": 67952,
+              "sha256": "d7046155101af1a656eccb48427dda9652fbfcd82c5e7e9162ffbd52dcdb525e"
+            }
+          },
+          "samplesMs": {
+            "candidate": [
+              1024,
+              1015,
+              1009
+            ],
+            "baseline": [
+              1149,
+              1148,
+              1144
+            ],
+            "upstream": [
+              202,
+              203,
+              199
+            ]
+          },
+          "mediansMs": {
+            "candidate": 1015,
+            "baseline": 1148,
+            "upstream": 202
+          },
+          "spreadMs": {
+            "candidate": {
+              "count": 3,
+              "minimum": 1009,
+              "median": 1015,
+              "maximum": 1024,
+              "rangeOverMedian": 0.014778325123152709,
+              "medianAbsoluteDeviation": 6
+            },
+            "baseline": {
+              "count": 3,
+              "minimum": 1144,
+              "median": 1148,
+              "maximum": 1149,
+              "rangeOverMedian": 0.004355400696864111,
+              "medianAbsoluteDeviation": 1
+            },
+            "upstream": {
+              "count": 3,
+              "minimum": 199,
+              "median": 202,
+              "maximum": 203,
+              "rangeOverMedian": 0.019801980198019802,
+              "medianAbsoluteDeviation": 1
+            }
+          },
+          "candidateOverBaseline": 0.8841463414634146,
+          "candidateOverUpstream": 5.024752475247524,
+          "baselineOverUpstream": 5.683168316831683,
+          "roundRatios": {
+            "candidateOverBaseline": [
+              0.8912097476066144,
+              0.8841463414634146,
+              0.881993006993007
+            ],
+            "candidateOverUpstream": [
+              5.069306930693069,
+              5.0,
+              5.0703517587939695
+            ],
+            "baselineOverUpstream": [
+              5.688118811881188,
+              5.655172413793103,
+              5.748743718592965
+            ]
+          },
+          "ratioSpread": {
+            "candidateOverBaseline": {
+              "count": 3,
+              "minimum": 0.881993006993007,
+              "median": 0.8841463414634146,
+              "maximum": 0.8912097476066144,
+              "rangeOverMedian": 0.010424451452631867,
+              "medianAbsoluteDeviation": 0.002153334470407664
+            },
+            "candidateOverUpstream": {
+              "count": 3,
+              "minimum": 5.0,
+              "median": 5.069306930693069,
+              "maximum": 5.0703517587939695,
+              "rangeOverMedian": 0.013877983668341637,
+              "medianAbsoluteDeviation": 0.0010448281009001192
+            },
+            "baselineOverUpstream": {
+              "count": 3,
+              "minimum": 5.655172413793103,
+              "median": 5.688118811881188,
+              "maximum": 5.748743718592965,
+              "rangeOverMedian": 0.016450307719383855,
+              "medianAbsoluteDeviation": 0.03294639808808508
+            }
+          }
+        },
+        {
+          "name": "variation-tree-bitonic-9-123",
+          "family": "tree-bitonic",
+          "ratioEligible": true,
+          "rounds": [
+            0,
+            1,
+            2
+          ],
+          "binaries": {
+            "candidate": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p128-native-runtime01-variation-tree-bitonic-9-123-build/program",
+              "bytes": 260280,
+              "sha256": "78b03f746e68e9ac4eb947affb16f7fa1ed90ad880ea2f170328fb43ac4cd19c"
+            },
+            "baseline": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p126-final32-variation-tree-bitonic-9-123-build/program",
+              "bytes": 256120,
+              "sha256": "efdc60e40f66d87a8b722d5fee4cfb35afe4ad77daeabc32e6ae375c4bd36482"
+            },
+            "upstream": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/broad01/variation-tree-bitonic-9-123/upstream.program",
+              "bytes": 67952,
+              "sha256": "8f2b295e56fdeb5eadd711f8b0db8c567260d0ebfd75275f02fa990f447367e0"
+            }
+          },
+          "samplesMs": {
+            "candidate": [
+              912,
+              867,
+              866
+            ],
+            "baseline": [
+              965,
+              959,
+              976
+            ],
+            "upstream": [
+              199,
+              199,
+              199
+            ]
+          },
+          "mediansMs": {
+            "candidate": 867,
+            "baseline": 965,
+            "upstream": 199
+          },
+          "spreadMs": {
+            "candidate": {
+              "count": 3,
+              "minimum": 866,
+              "median": 867,
+              "maximum": 912,
+              "rangeOverMedian": 0.0530565167243368,
+              "medianAbsoluteDeviation": 1
+            },
+            "baseline": {
+              "count": 3,
+              "minimum": 959,
+              "median": 965,
+              "maximum": 976,
+              "rangeOverMedian": 0.017616580310880828,
+              "medianAbsoluteDeviation": 6
+            },
+            "upstream": {
+              "count": 3,
+              "minimum": 199,
+              "median": 199,
+              "maximum": 199,
+              "rangeOverMedian": 0.0,
+              "medianAbsoluteDeviation": 0
+            }
+          },
+          "candidateOverBaseline": 0.8984455958549222,
+          "candidateOverUpstream": 4.35678391959799,
+          "baselineOverUpstream": 4.849246231155779,
+          "roundRatios": {
+            "candidateOverBaseline": [
+              0.9450777202072539,
+              0.9040667361835245,
+              0.8872950819672131
+            ],
+            "candidateOverUpstream": [
+              4.582914572864322,
+              4.35678391959799,
+              4.351758793969849
+            ],
+            "baselineOverUpstream": [
+              4.849246231155779,
+              4.819095477386934,
+              4.9045226130653266
+            ]
+          },
+          "ratioSpread": {
+            "candidateOverBaseline": {
+              "count": 3,
+              "minimum": 0.8872950819672131,
+              "median": 0.9040667361835245,
+              "maximum": 0.9450777202072539,
+              "rangeOverMedian": 0.06391412926435887,
+              "medianAbsoluteDeviation": 0.016771654216311438
+            },
+            "candidateOverUpstream": {
+              "count": 3,
+              "minimum": 4.351758793969849,
+              "median": 4.35678391959799,
+              "maximum": 4.582914572864322,
+              "rangeOverMedian": 0.05305651672433687,
+              "medianAbsoluteDeviation": 0.005025125628140614
+            },
+            "baselineOverUpstream": {
+              "count": 3,
+              "minimum": 4.819095477386934,
+              "median": 4.849246231155779,
+              "maximum": 4.9045226130653266,
+              "rangeOverMedian": 0.017616580310880883,
+              "medianAbsoluteDeviation": 0.030150753768844574
+            }
+          }
+        },
+        {
+          "name": "variation-symreg-4-17",
+          "family": "symreg",
+          "ratioEligible": true,
+          "rounds": [
+            0,
+            1,
+            2
+          ],
+          "binaries": {
+            "candidate": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p128-native-runtime01-variation-symreg-4-17-build/program",
+              "bytes": 267104,
+              "sha256": "40575a257d8e3576d75db7e388c0298e7fd4702fdf64ebf785e55606c7e1bba4"
+            },
+            "baseline": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p126-final32-variation-symreg-4-17-build/program",
+              "bytes": 262952,
+              "sha256": "d9572e9a241ed28529ce0433924a62970e6b426fbadccc1ff9f09b5898da437d"
+            },
+            "upstream": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/broad01/variation-symreg-4-17/upstream.program",
+              "bytes": 71616,
+              "sha256": "559aefcaa2480c5896e4a0df754a1ce39e114e35f8b658c15365658c01e962d3"
+            }
+          },
+          "samplesMs": {
+            "candidate": [
+              327,
+              325,
+              324
+            ],
+            "baseline": [
+              343,
+              342,
+              341
+            ],
+            "upstream": [
+              202,
+              199,
+              199
+            ]
+          },
+          "mediansMs": {
+            "candidate": 325,
+            "baseline": 342,
+            "upstream": 199
+          },
+          "spreadMs": {
+            "candidate": {
+              "count": 3,
+              "minimum": 324,
+              "median": 325,
+              "maximum": 327,
+              "rangeOverMedian": 0.009230769230769232,
+              "medianAbsoluteDeviation": 1
+            },
+            "baseline": {
+              "count": 3,
+              "minimum": 341,
+              "median": 342,
+              "maximum": 343,
+              "rangeOverMedian": 0.005847953216374269,
+              "medianAbsoluteDeviation": 1
+            },
+            "upstream": {
+              "count": 3,
+              "minimum": 199,
+              "median": 199,
+              "maximum": 202,
+              "rangeOverMedian": 0.01507537688442211,
+              "medianAbsoluteDeviation": 0
+            }
+          },
+          "candidateOverBaseline": 0.9502923976608187,
+          "candidateOverUpstream": 1.6331658291457287,
+          "baselineOverUpstream": 1.7185929648241205,
+          "roundRatios": {
+            "candidateOverBaseline": [
+              0.9533527696793003,
+              0.9502923976608187,
+              0.9501466275659824
+            ],
+            "candidateOverUpstream": [
+              1.618811881188119,
+              1.6331658291457287,
+              1.6281407035175879
+            ],
+            "baselineOverUpstream": [
+              1.698019801980198,
+              1.7185929648241205,
+              1.7135678391959799
+            ]
+          },
+          "ratioSpread": {
+            "candidateOverBaseline": {
+              "count": 3,
+              "minimum": 0.9501466275659824,
+              "median": 0.9502923976608187,
+              "maximum": 0.9533527696793003,
+              "rangeOverMedian": 0.0033738480084759856,
+              "medianAbsoluteDeviation": 0.000145770094836295
+            },
+            "candidateOverUpstream": {
+              "count": 3,
+              "minimum": 1.618811881188119,
+              "median": 1.6281407035175879,
+              "maximum": 1.6331658291457287,
+              "rangeOverMedian": 0.008816159393717132,
+              "medianAbsoluteDeviation": 0.005025125628140836
+            },
+            "baselineOverUpstream": {
+              "count": 3,
+              "minimum": 1.698019801980198,
+              "median": 1.7135678391959799,
+              "maximum": 1.7185929648241205,
+              "rangeOverMedian": 0.012006039313608744,
+              "medianAbsoluteDeviation": 0.005025125628140614
+            }
+          }
+        },
+        {
+          "name": "variation-symreg-7-123",
+          "family": "symreg",
+          "ratioEligible": true,
+          "rounds": [
+            0,
+            1,
+            2
+          ],
+          "binaries": {
+            "candidate": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p128-native-runtime01-variation-symreg-7-123-build/program",
+              "bytes": 267104,
+              "sha256": "fde6a5deb73574690f2343635c4b6a44db55df35e414bd4d536c5d85d6ced313"
+            },
+            "baseline": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p126-final32-variation-symreg-7-123-build/program",
+              "bytes": 262952,
+              "sha256": "6a7f5974757269b8807c2720505014638367473c6545c165d592b051200bfbe8"
+            },
+            "upstream": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/broad01/variation-symreg-7-123/upstream.program",
+              "bytes": 71616,
+              "sha256": "50841f8221a7232af152740f11e050596b532c395bdf1f412f17a8f6675c82f6"
+            }
+          },
+          "samplesMs": {
+            "candidate": [
+              330,
+              330,
+              334
+            ],
+            "baseline": [
+              347,
+              368,
+              347
+            ],
+            "upstream": [
+              205,
+              205,
+              206
+            ]
+          },
+          "mediansMs": {
+            "candidate": 330,
+            "baseline": 347,
+            "upstream": 205
+          },
+          "spreadMs": {
+            "candidate": {
+              "count": 3,
+              "minimum": 330,
+              "median": 330,
+              "maximum": 334,
+              "rangeOverMedian": 0.012121212121212121,
+              "medianAbsoluteDeviation": 0
+            },
+            "baseline": {
+              "count": 3,
+              "minimum": 347,
+              "median": 347,
+              "maximum": 368,
+              "rangeOverMedian": 0.06051873198847262,
+              "medianAbsoluteDeviation": 0
+            },
+            "upstream": {
+              "count": 3,
+              "minimum": 205,
+              "median": 205,
+              "maximum": 206,
+              "rangeOverMedian": 0.004878048780487805,
+              "medianAbsoluteDeviation": 0
+            }
+          },
+          "candidateOverBaseline": 0.9510086455331412,
+          "candidateOverUpstream": 1.6097560975609757,
+          "baselineOverUpstream": 1.6926829268292682,
+          "roundRatios": {
+            "candidateOverBaseline": [
+              0.9510086455331412,
+              0.8967391304347826,
+              0.962536023054755
+            ],
+            "candidateOverUpstream": [
+              1.6097560975609757,
+              1.6097560975609757,
+              1.6213592233009708
+            ],
+            "baselineOverUpstream": [
+              1.6926829268292682,
+              1.7951219512195122,
+              1.6844660194174756
+            ]
+          },
+          "ratioSpread": {
+            "candidateOverBaseline": {
+              "count": 3,
+              "minimum": 0.8967391304347826,
+              "median": 0.9510086455331412,
+              "maximum": 0.962536023054755,
+              "rangeOverMedian": 0.0691864295125165,
+              "medianAbsoluteDeviation": 0.011527377521613813
+            },
+            "candidateOverUpstream": {
+              "count": 3,
+              "minimum": 1.6097560975609757,
+              "median": 1.6097560975609757,
+              "maximum": 1.6213592233009708,
+              "rangeOverMedian": 0.007208002353633327,
+              "medianAbsoluteDeviation": 0.0
+            },
+            "baselineOverUpstream": {
+              "count": 3,
+              "minimum": 1.6844660194174756,
+              "median": 1.6926829268292682,
+              "maximum": 1.7951219512195122,
+              "rangeOverMedian": 0.06537310092051153,
+              "medianAbsoluteDeviation": 0.008216907411792596
+            }
+          }
+        },
+        {
+          "name": "variation-local-fold-128-0",
+          "family": "local-fold",
+          "ratioEligible": true,
+          "rounds": [
+            0,
+            1,
+            2
+          ],
+          "binaries": {
+            "candidate": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p128-native-runtime01-variation-local-fold-128-0-build/program",
+              "bytes": 236464,
+              "sha256": "494eabca57ea9bf1b1b69b33397aa202c7fa5ecb2f480cdcf918509c127f0288"
+            },
+            "baseline": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p126-final32-variation-local-fold-128-0-build/program",
+              "bytes": 232312,
+              "sha256": "58e49f1ea04198f7f71df8c9b09c79c19b3e35759ba5dc3b5e3575cb7ed1b667"
+            },
+            "upstream": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/broad01/variation-local-fold-128-0/upstream.program",
+              "bytes": 58864,
+              "sha256": "1a4534c5b56fd19d83688dd9f4dbd7aae2c34c0e729daefa97186744c4ac9517"
+            }
+          },
+          "samplesMs": {
+            "candidate": [
+              516,
+              514,
+              514
+            ],
+            "baseline": [
+              515,
+              513,
+              513
+            ],
+            "upstream": [
+              200,
+              199,
+              201
+            ]
+          },
+          "mediansMs": {
+            "candidate": 514,
+            "baseline": 513,
+            "upstream": 200
+          },
+          "spreadMs": {
+            "candidate": {
+              "count": 3,
+              "minimum": 514,
+              "median": 514,
+              "maximum": 516,
+              "rangeOverMedian": 0.0038910505836575876,
+              "medianAbsoluteDeviation": 0
+            },
+            "baseline": {
+              "count": 3,
+              "minimum": 513,
+              "median": 513,
+              "maximum": 515,
+              "rangeOverMedian": 0.003898635477582846,
+              "medianAbsoluteDeviation": 0
+            },
+            "upstream": {
+              "count": 3,
+              "minimum": 199,
+              "median": 200,
+              "maximum": 201,
+              "rangeOverMedian": 0.01,
+              "medianAbsoluteDeviation": 1
+            }
+          },
+          "candidateOverBaseline": 1.0019493177387915,
+          "candidateOverUpstream": 2.57,
+          "baselineOverUpstream": 2.565,
+          "roundRatios": {
+            "candidateOverBaseline": [
+              1.0019417475728156,
+              1.0019493177387915,
+              1.0019493177387915
+            ],
+            "candidateOverUpstream": [
+              2.58,
+              2.5829145728643215,
+              2.557213930348259
+            ],
+            "baselineOverUpstream": [
+              2.575,
+              2.577889447236181,
+              2.5522388059701493
+            ]
+          },
+          "ratioSpread": {
+            "candidateOverBaseline": {
+              "count": 3,
+              "minimum": 1.0019417475728156,
+              "median": 1.0019493177387915,
+              "maximum": 1.0019493177387915,
+              "rangeOverMedian": 7.5554380264870975e-06,
+              "medianAbsoluteDeviation": 0.0
+            },
+            "candidateOverUpstream": {
+              "count": 3,
+              "minimum": 2.557213930348259,
+              "median": 2.58,
+              "maximum": 2.5829145728643215,
+              "rangeOverMedian": 0.009961489347311097,
+              "medianAbsoluteDeviation": 0.0029145728643213964
+            },
+            "baselineOverUpstream": {
+              "count": 3,
+              "minimum": 2.5522388059701493,
+              "median": 2.575,
+              "maximum": 2.577889447236181,
+              "rangeOverMedian": 0.009961414083895751,
+              "medianAbsoluteDeviation": 0.0028894472361806756
+            }
+          }
+        },
+        {
+          "name": "variation-local-fold-8192-123",
+          "family": "local-fold",
+          "ratioEligible": true,
+          "rounds": [
+            0,
+            1,
+            2
+          ],
+          "binaries": {
+            "candidate": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p128-native-runtime01-variation-local-fold-8192-123-build/program",
+              "bytes": 236472,
+              "sha256": "11391b222baa159b7f1110b4bf449a0d0c74b3a58bb2dab3055c13eba2df9736"
+            },
+            "baseline": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p126-final32-variation-local-fold-8192-123-build/program",
+              "bytes": 232312,
+              "sha256": "bde04e8001b6a165512a1292623f8da6c20b9951eb8cc68d6e59971a5abd6b1f"
+            },
+            "upstream": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/broad01/variation-local-fold-8192-123/upstream.program",
+              "bytes": 58896,
+              "sha256": "7aaed57935b1cd6352a524e03a7cd31c4b669c383ff663f3ae17bfaaa5db7940"
+            }
+          },
+          "samplesMs": {
+            "candidate": [
+              337,
+              335,
+              335
+            ],
+            "baseline": [
+              336,
+              335,
+              335
+            ],
+            "upstream": [
+              200,
+              199,
+              200
+            ]
+          },
+          "mediansMs": {
+            "candidate": 335,
+            "baseline": 335,
+            "upstream": 200
+          },
+          "spreadMs": {
+            "candidate": {
+              "count": 3,
+              "minimum": 335,
+              "median": 335,
+              "maximum": 337,
+              "rangeOverMedian": 0.005970149253731343,
+              "medianAbsoluteDeviation": 0
+            },
+            "baseline": {
+              "count": 3,
+              "minimum": 335,
+              "median": 335,
+              "maximum": 336,
+              "rangeOverMedian": 0.0029850746268656717,
+              "medianAbsoluteDeviation": 0
+            },
+            "upstream": {
+              "count": 3,
+              "minimum": 199,
+              "median": 200,
+              "maximum": 200,
+              "rangeOverMedian": 0.005,
+              "medianAbsoluteDeviation": 0
+            }
+          },
+          "candidateOverBaseline": 1.0,
+          "candidateOverUpstream": 1.675,
+          "baselineOverUpstream": 1.675,
+          "roundRatios": {
+            "candidateOverBaseline": [
+              1.0029761904761905,
+              1.0,
+              1.0
+            ],
+            "candidateOverUpstream": [
+              1.685,
+              1.6834170854271358,
+              1.675
+            ],
+            "baselineOverUpstream": [
+              1.68,
+              1.6834170854271358,
+              1.675
+            ]
+          },
+          "ratioSpread": {
+            "candidateOverBaseline": {
+              "count": 3,
+              "minimum": 1.0,
+              "median": 1.0,
+              "maximum": 1.0029761904761905,
+              "rangeOverMedian": 0.0029761904761904656,
+              "medianAbsoluteDeviation": 0.0
+            },
+            "candidateOverUpstream": {
+              "count": 3,
+              "minimum": 1.675,
+              "median": 1.6834170854271358,
+              "maximum": 1.685,
+              "rangeOverMedian": 0.005940298507462692,
+              "medianAbsoluteDeviation": 0.0015829145728643024
+            },
+            "baselineOverUpstream": {
+              "count": 3,
+              "minimum": 1.675,
+              "median": 1.68,
+              "maximum": 1.6834170854271358,
+              "rangeOverMedian": 0.005010169897104588,
+              "medianAbsoluteDeviation": 0.003417085427135813
+            }
+          }
+        },
+        {
+          "name": "variation-mandelbrot-grid-4-7",
+          "family": "mandelbrot",
+          "ratioEligible": true,
+          "rounds": [
+            0,
+            1,
+            2
+          ],
+          "binaries": {
+            "candidate": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p128-native-runtime01-variation-mandelbrot-grid-4-7-build/program",
+              "bytes": 245496,
+              "sha256": "70abfc7923ca09a65d2649eae7f5bdfbf24f58e32cb75fbf6bb93d44df4a81fd"
+            },
+            "baseline": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p126-final32-variation-mandelbrot-grid-4-7-build/program",
+              "bytes": 245432,
+              "sha256": "0409bc1eb912011a8329f275ef6c0945d305bbb5f6398581594e1754400c4c12"
+            },
+            "upstream": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/broad01/variation-mandelbrot-grid-4-7/upstream.program",
+              "bytes": 57904,
+              "sha256": "4e002f451cfc666a5c0f89f609787bf6ba500abe9b5c33ff2cea77cbfc35f9ad"
+            }
+          },
+          "samplesMs": {
+            "candidate": [
+              363,
+              363,
+              363
+            ],
+            "baseline": [
+              366,
+              365,
+              365
+            ],
+            "upstream": [
+              200,
+              199,
+              200
+            ]
+          },
+          "mediansMs": {
+            "candidate": 363,
+            "baseline": 365,
+            "upstream": 200
+          },
+          "spreadMs": {
+            "candidate": {
+              "count": 3,
+              "minimum": 363,
+              "median": 363,
+              "maximum": 363,
+              "rangeOverMedian": 0.0,
+              "medianAbsoluteDeviation": 0
+            },
+            "baseline": {
+              "count": 3,
+              "minimum": 365,
+              "median": 365,
+              "maximum": 366,
+              "rangeOverMedian": 0.0027397260273972603,
+              "medianAbsoluteDeviation": 0
+            },
+            "upstream": {
+              "count": 3,
+              "minimum": 199,
+              "median": 200,
+              "maximum": 200,
+              "rangeOverMedian": 0.005,
+              "medianAbsoluteDeviation": 0
+            }
+          },
+          "candidateOverBaseline": 0.9945205479452055,
+          "candidateOverUpstream": 1.815,
+          "baselineOverUpstream": 1.825,
+          "roundRatios": {
+            "candidateOverBaseline": [
+              0.9918032786885246,
+              0.9945205479452055,
+              0.9945205479452055
+            ],
+            "candidateOverUpstream": [
+              1.815,
+              1.8241206030150754,
+              1.815
+            ],
+            "baselineOverUpstream": [
+              1.83,
+              1.8341708542713568,
+              1.825
+            ]
+          },
+          "ratioSpread": {
+            "candidateOverBaseline": {
+              "count": 3,
+              "minimum": 0.9918032786885246,
+              "median": 0.9945205479452055,
+              "maximum": 0.9945205479452055,
+              "rangeOverMedian": 0.0027322404371585016,
+              "medianAbsoluteDeviation": 0.0
+            },
+            "candidateOverUpstream": {
+              "count": 3,
+              "minimum": 1.815,
+              "median": 1.815,
+              "maximum": 1.8241206030150754,
+              "rangeOverMedian": 0.005025125628140742,
+              "medianAbsoluteDeviation": 0.0
+            },
+            "baselineOverUpstream": {
+              "count": 3,
+              "minimum": 1.825,
+              "median": 1.83,
+              "maximum": 1.8341708542713568,
+              "rangeOverMedian": 0.005011395776697752,
+              "medianAbsoluteDeviation": 0.004170854271356772
+            }
+          }
+        },
+        {
+          "name": "variation-mandelbrot-grid-5-31",
+          "family": "mandelbrot",
+          "ratioEligible": true,
+          "rounds": [
+            0,
+            1,
+            2
+          ],
+          "binaries": {
+            "candidate": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p128-native-runtime01-variation-mandelbrot-grid-5-31-build/program",
+              "bytes": 245496,
+              "sha256": "0cf45a556b7f091a71468e4949b133cb06c967ec91b7cf6daa1c5ac165dbc58a"
+            },
+            "baseline": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p126-final32-variation-mandelbrot-grid-5-31-build/program",
+              "bytes": 245432,
+              "sha256": "cf7b0a8aade595ffce302428f5f0b7b56ed07d41cf7d13d3e9d39ad0103bdf16"
+            },
+            "upstream": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/broad01/variation-mandelbrot-grid-5-31/upstream.program",
+              "bytes": 57904,
+              "sha256": "200c4ba9efa48a6ce820e01179f0b42cad5a7c4bb96fadfefb079300fc2a7ae7"
+            }
+          },
+          "samplesMs": {
+            "candidate": [
+              308,
+              309,
+              307
+            ],
+            "baseline": [
+              308,
+              308,
+              307
+            ],
+            "upstream": [
+              202,
+              200,
+              201
+            ]
+          },
+          "mediansMs": {
+            "candidate": 308,
+            "baseline": 308,
+            "upstream": 201
+          },
+          "spreadMs": {
+            "candidate": {
+              "count": 3,
+              "minimum": 307,
+              "median": 308,
+              "maximum": 309,
+              "rangeOverMedian": 0.006493506493506494,
+              "medianAbsoluteDeviation": 1
+            },
+            "baseline": {
+              "count": 3,
+              "minimum": 307,
+              "median": 308,
+              "maximum": 308,
+              "rangeOverMedian": 0.003246753246753247,
+              "medianAbsoluteDeviation": 0
+            },
+            "upstream": {
+              "count": 3,
+              "minimum": 200,
+              "median": 201,
+              "maximum": 202,
+              "rangeOverMedian": 0.009950248756218905,
+              "medianAbsoluteDeviation": 1
+            }
+          },
+          "candidateOverBaseline": 1.0,
+          "candidateOverUpstream": 1.5323383084577114,
+          "baselineOverUpstream": 1.5323383084577114,
+          "roundRatios": {
+            "candidateOverBaseline": [
+              1.0,
+              1.0032467532467533,
+              1.0
+            ],
+            "candidateOverUpstream": [
+              1.5247524752475248,
+              1.545,
+              1.527363184079602
+            ],
+            "baselineOverUpstream": [
+              1.5247524752475248,
+              1.54,
+              1.527363184079602
+            ]
+          },
+          "ratioSpread": {
+            "candidateOverBaseline": {
+              "count": 3,
+              "minimum": 1.0,
+              "median": 1.0,
+              "maximum": 1.0032467532467533,
+              "rangeOverMedian": 0.0032467532467532756,
+              "medianAbsoluteDeviation": 0.0
+            },
+            "candidateOverUpstream": {
+              "count": 3,
+              "minimum": 1.5247524752475248,
+              "median": 1.527363184079602,
+              "maximum": 1.545,
+              "rangeOverMedian": 0.013256522720675915,
+              "medianAbsoluteDeviation": 0.0026107088320772576
+            },
+            "baselineOverUpstream": {
+              "count": 3,
+              "minimum": 1.5247524752475248,
+              "median": 1.527363184079602,
+              "maximum": 1.54,
+              "rangeOverMedian": 0.009982907085496831,
+              "medianAbsoluteDeviation": 0.0026107088320772576
+            }
+          }
+        },
+        {
+          "name": "variation-ray-active-64-2440",
+          "family": "raytrace",
+          "ratioEligible": true,
+          "rounds": [
+            0,
+            1,
+            2
+          ],
+          "binaries": {
+            "candidate": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p128-native-runtime01-variation-ray-active-64-2440-build/program",
+              "bytes": 346984,
+              "sha256": "e8858ff8533d6a0ee75a29c8ffe0f67cde09b3d78897fc90e4fe8fdc5cf624fd"
+            },
+            "baseline": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p126-final32-variation-ray-active-64-2440-build/program",
+              "bytes": 346928,
+              "sha256": "42c35dd04d1003a9ad61c0401ca13b16342487c82537f14d44b8314489338371"
+            },
+            "upstream": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/broad01/variation-ray-active-64-2440/upstream.program",
+              "bytes": 68064,
+              "sha256": "a665ee8601322103a2f3411987d24b2a389f35142dc0ebd173e92bfc59b054d3"
+            }
+          },
+          "samplesMs": {
+            "candidate": [
+              776,
+              755,
+              748
+            ],
+            "baseline": [
+              744,
+              747,
+              745
+            ],
+            "upstream": [
+              200,
+              202,
+              200
+            ]
+          },
+          "mediansMs": {
+            "candidate": 755,
+            "baseline": 745,
+            "upstream": 200
+          },
+          "spreadMs": {
+            "candidate": {
+              "count": 3,
+              "minimum": 748,
+              "median": 755,
+              "maximum": 776,
+              "rangeOverMedian": 0.03708609271523179,
+              "medianAbsoluteDeviation": 7
+            },
+            "baseline": {
+              "count": 3,
+              "minimum": 744,
+              "median": 745,
+              "maximum": 747,
+              "rangeOverMedian": 0.004026845637583893,
+              "medianAbsoluteDeviation": 1
+            },
+            "upstream": {
+              "count": 3,
+              "minimum": 200,
+              "median": 200,
+              "maximum": 202,
+              "rangeOverMedian": 0.01,
+              "medianAbsoluteDeviation": 0
+            }
+          },
+          "candidateOverBaseline": 1.0134228187919463,
+          "candidateOverUpstream": 3.775,
+          "baselineOverUpstream": 3.725,
+          "roundRatios": {
+            "candidateOverBaseline": [
+              1.043010752688172,
+              1.0107095046854082,
+              1.0040268456375838
+            ],
+            "candidateOverUpstream": [
+              3.88,
+              3.737623762376238,
+              3.74
+            ],
+            "baselineOverUpstream": [
+              3.72,
+              3.698019801980198,
+              3.725
+            ]
+          },
+          "ratioSpread": {
+            "candidateOverBaseline": {
+              "count": 3,
+              "minimum": 1.0040268456375838,
+              "median": 1.0107095046854082,
+              "maximum": 1.043010752688172,
+              "rangeOverMedian": 0.03857083253879388,
+              "medianAbsoluteDeviation": 0.006682659047824391
+            },
+            "candidateOverUpstream": {
+              "count": 3,
+              "minimum": 3.737623762376238,
+              "median": 3.74,
+              "maximum": 3.88,
+              "rangeOverMedian": 0.038068512733626214,
+              "medianAbsoluteDeviation": 0.0023762376237623783
+            },
+            "baselineOverUpstream": {
+              "count": 3,
+              "minimum": 3.698019801980198,
+              "median": 3.72,
+              "maximum": 3.725,
+              "rangeOverMedian": 0.007252741403172552,
+              "medianAbsoluteDeviation": 0.004999999999999893
+            }
+          }
+        },
+        {
+          "name": "variation-ray-active-256-2240",
+          "family": "raytrace",
+          "ratioEligible": true,
+          "rounds": [
+            0,
+            1,
+            2
+          ],
+          "binaries": {
+            "candidate": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p128-native-runtime01-variation-ray-active-256-2240-build/program",
+              "bytes": 346984,
+              "sha256": "e0ff1f82afd4472884b4158fe52e51d1f046623a0f7fcad56a08bffda7d5cebc"
+            },
+            "baseline": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p126-final32-variation-ray-active-256-2240-build/program",
+              "bytes": 346928,
+              "sha256": "deb7f246abd27a205e83db6369930eeb30f8e313343a6080977b61d075b601a0"
+            },
+            "upstream": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/broad01/variation-ray-active-256-2240/upstream.program",
+              "bytes": 68080,
+              "sha256": "673a5086e23e7381d967d946b14d456012ba2140d6e6a2dee09aba2f47c821ee"
+            }
+          },
+          "samplesMs": {
+            "candidate": [
+              754,
+              760,
+              752
+            ],
+            "baseline": [
+              752,
+              751,
+              757
+            ],
+            "upstream": [
+              205,
+              201,
+              203
+            ]
+          },
+          "mediansMs": {
+            "candidate": 754,
+            "baseline": 752,
+            "upstream": 203
+          },
+          "spreadMs": {
+            "candidate": {
+              "count": 3,
+              "minimum": 752,
+              "median": 754,
+              "maximum": 760,
+              "rangeOverMedian": 0.010610079575596816,
+              "medianAbsoluteDeviation": 2
+            },
+            "baseline": {
+              "count": 3,
+              "minimum": 751,
+              "median": 752,
+              "maximum": 757,
+              "rangeOverMedian": 0.007978723404255319,
+              "medianAbsoluteDeviation": 1
+            },
+            "upstream": {
+              "count": 3,
+              "minimum": 201,
+              "median": 203,
+              "maximum": 205,
+              "rangeOverMedian": 0.019704433497536946,
+              "medianAbsoluteDeviation": 2
+            }
+          },
+          "candidateOverBaseline": 1.002659574468085,
+          "candidateOverUpstream": 3.7142857142857144,
+          "baselineOverUpstream": 3.7044334975369457,
+          "roundRatios": {
+            "candidateOverBaseline": [
+              1.002659574468085,
+              1.0119840213049267,
+              0.9933949801849405
+            ],
+            "candidateOverUpstream": [
+              3.678048780487805,
+              3.781094527363184,
+              3.7044334975369457
+            ],
+            "baselineOverUpstream": [
+              3.6682926829268294,
+              3.736318407960199,
+              3.729064039408867
+            ]
+          },
+          "ratioSpread": {
+            "candidateOverBaseline": {
+              "count": 3,
+              "minimum": 0.9933949801849405,
+              "median": 1.002659574468085,
+              "maximum": 1.0119840213049267,
+              "rangeOverMedian": 0.018539733318606887,
+              "medianAbsoluteDeviation": 0.009264594283144523
+            },
+            "candidateOverUpstream": {
+              "count": 3,
+              "minimum": 3.678048780487805,
+              "median": 3.7044334975369457,
+              "maximum": 3.781094527363184,
+              "rangeOverMedian": 0.027816870499603682,
+              "medianAbsoluteDeviation": 0.026384717049140693
+            },
+            "baselineOverUpstream": {
+              "count": 3,
+              "minimum": 3.6682926829268294,
+              "median": 3.729064039408867,
+              "maximum": 3.736318407960199,
+              "rangeOverMedian": 0.01824203722823523,
+              "medianAbsoluteDeviation": 0.007254368551332213
+            }
+          }
+        },
+        {
+          "name": "coverage-closures-64",
+          "family": "closures",
+          "ratioEligible": true,
+          "rounds": [
+            0,
+            1,
+            2
+          ],
+          "binaries": {
+            "candidate": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p128-native-runtime01-coverage-closures-64-build/program",
+              "bytes": 221736,
+              "sha256": "01ac37a7e1b3a8528854c72dbe469cf901897e4661b827c4b4c3c282c80325c2"
+            },
+            "baseline": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p126-final32-coverage-closures-64-build/program",
+              "bytes": 221672,
+              "sha256": "f10642af7abfdfea78301143e340be8be9fb3e161435eb2a60936fbd2d8aa026"
+            },
+            "upstream": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/broad01/coverage-closures-64/upstream.program",
+              "bytes": 60816,
+              "sha256": "bcb99b0af5b259ae3df2d4b03df32813d2c4b558efd3535492462bbc8936cd92"
+            }
+          },
+          "samplesMs": {
+            "candidate": [
+              4,
+              5,
+              5
+            ],
+            "baseline": [
+              5,
+              5,
+              5
+            ],
+            "upstream": [
+              198,
+              207,
+              196
+            ]
+          },
+          "mediansMs": {
+            "candidate": 5,
+            "baseline": 5,
+            "upstream": 198
+          },
+          "spreadMs": {
+            "candidate": {
+              "count": 3,
+              "minimum": 4,
+              "median": 5,
+              "maximum": 5,
+              "rangeOverMedian": 0.2,
+              "medianAbsoluteDeviation": 0
+            },
+            "baseline": {
+              "count": 3,
+              "minimum": 5,
+              "median": 5,
+              "maximum": 5,
+              "rangeOverMedian": 0.0,
+              "medianAbsoluteDeviation": 0
+            },
+            "upstream": {
+              "count": 3,
+              "minimum": 196,
+              "median": 198,
+              "maximum": 207,
+              "rangeOverMedian": 0.05555555555555555,
+              "medianAbsoluteDeviation": 2
+            }
+          },
+          "candidateOverBaseline": 1.0,
+          "candidateOverUpstream": 0.025252525252525252,
+          "baselineOverUpstream": 0.025252525252525252,
+          "roundRatios": {
+            "candidateOverBaseline": [
+              0.8,
+              1.0,
+              1.0
+            ],
+            "candidateOverUpstream": [
+              0.020202020202020204,
+              0.024154589371980676,
+              0.025510204081632654
+            ],
+            "baselineOverUpstream": [
+              0.025252525252525252,
+              0.024154589371980676,
+              0.025510204081632654
+            ]
+          },
+          "ratioSpread": {
+            "candidateOverBaseline": {
+              "count": 3,
+              "minimum": 0.8,
+              "median": 1.0,
+              "maximum": 1.0,
+              "rangeOverMedian": 0.19999999999999996,
+              "medianAbsoluteDeviation": 0.0
+            },
+            "candidateOverUpstream": {
+              "count": 3,
+              "minimum": 0.020202020202020204,
+              "median": 0.024154589371980676,
+              "maximum": 0.025510204081632654,
+              "rangeOverMedian": 0.21975881261595542,
+              "medianAbsoluteDeviation": 0.0013556147096519776
+            },
+            "baselineOverUpstream": {
+              "count": 3,
+              "minimum": 0.024154589371980676,
+              "median": 0.025252525252525252,
+              "maximum": 0.025510204081632654,
+              "rangeOverMedian": 0.053682342502218316,
+              "medianAbsoluteDeviation": 0.00025767882910740156
+            }
+          }
+        },
+        {
+          "name": "coverage-closures-256",
+          "family": "closures",
+          "ratioEligible": true,
+          "rounds": [
+            0,
+            1,
+            2
+          ],
+          "binaries": {
+            "candidate": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p128-native-runtime01-coverage-closures-256-build/program",
+              "bytes": 221736,
+              "sha256": "758a97f02fa7d55e3299c79db96649477618c75b4ca914ca00356758247b5216"
+            },
+            "baseline": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p126-final32-coverage-closures-256-build/program",
+              "bytes": 221672,
+              "sha256": "7c585d9d2f68f952130199c224c08431cb90beaf0659e0ab856a93ba2ac2e828"
+            },
+            "upstream": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/broad01/coverage-closures-256/upstream.program",
+              "bytes": 60816,
+              "sha256": "448a507bc4af56c7c2544d2f85d65ecc7a368266100e2b09cc641993d01958e2"
+            }
+          },
+          "samplesMs": {
+            "candidate": [
+              5,
+              4,
+              4
+            ],
+            "baseline": [
+              5,
+              4,
+              4
+            ],
+            "upstream": [
+              205,
+              200,
+              200
+            ]
+          },
+          "mediansMs": {
+            "candidate": 4,
+            "baseline": 4,
+            "upstream": 200
+          },
+          "spreadMs": {
+            "candidate": {
+              "count": 3,
+              "minimum": 4,
+              "median": 4,
+              "maximum": 5,
+              "rangeOverMedian": 0.25,
+              "medianAbsoluteDeviation": 0
+            },
+            "baseline": {
+              "count": 3,
+              "minimum": 4,
+              "median": 4,
+              "maximum": 5,
+              "rangeOverMedian": 0.25,
+              "medianAbsoluteDeviation": 0
+            },
+            "upstream": {
+              "count": 3,
+              "minimum": 200,
+              "median": 200,
+              "maximum": 205,
+              "rangeOverMedian": 0.025,
+              "medianAbsoluteDeviation": 0
+            }
+          },
+          "candidateOverBaseline": 1.0,
+          "candidateOverUpstream": 0.02,
+          "baselineOverUpstream": 0.02,
+          "roundRatios": {
+            "candidateOverBaseline": [
+              1.0,
+              1.0,
+              1.0
+            ],
+            "candidateOverUpstream": [
+              0.024390243902439025,
+              0.02,
+              0.02
+            ],
+            "baselineOverUpstream": [
+              0.024390243902439025,
+              0.02,
+              0.02
+            ]
+          },
+          "ratioSpread": {
+            "candidateOverBaseline": {
+              "count": 3,
+              "minimum": 1.0,
+              "median": 1.0,
+              "maximum": 1.0,
+              "rangeOverMedian": 0.0,
+              "medianAbsoluteDeviation": 0.0
+            },
+            "candidateOverUpstream": {
+              "count": 3,
+              "minimum": 0.02,
+              "median": 0.02,
+              "maximum": 0.024390243902439025,
+              "rangeOverMedian": 0.21951219512195125,
+              "medianAbsoluteDeviation": 0.0
+            },
+            "baselineOverUpstream": {
+              "count": 3,
+              "minimum": 0.02,
+              "median": 0.02,
+              "maximum": 0.024390243902439025,
+              "rangeOverMedian": 0.21951219512195125,
+              "medianAbsoluteDeviation": 0.0
+            }
+          }
+        },
+        {
+          "name": "coverage-list-pipeline-128",
+          "family": "list-pipeline",
+          "ratioEligible": true,
+          "rounds": [
+            0,
+            1,
+            2
+          ],
+          "binaries": {
+            "candidate": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p128-native-runtime01-coverage-list-pipeline-128-build/program",
+              "bytes": 229416,
+              "sha256": "37006ad748fa996b6425fbd2296fcacafac35a65f7cdfe131d1a9244925a995c"
+            },
+            "baseline": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p126-final32-coverage-list-pipeline-128-build/program",
+              "bytes": 225040,
+              "sha256": "a859f8f45323e9c3675807ae1f03b5b6d112cc2662abfa6bcc172fee55008341"
+            },
+            "upstream": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/broad01/coverage-list-pipeline-128/upstream.program",
+              "bytes": 62720,
+              "sha256": "42869ed0c17deda8b110e5f4db562bb4ee030166c0a4e2f4bc9d8b2127c03d66"
+            }
+          },
+          "samplesMs": {
+            "candidate": [
+              31,
+              31,
+              31
+            ],
+            "baseline": [
+              31,
+              31,
+              34
+            ],
+            "upstream": [
+              203,
+              201,
+              201
+            ]
+          },
+          "mediansMs": {
+            "candidate": 31,
+            "baseline": 31,
+            "upstream": 201
+          },
+          "spreadMs": {
+            "candidate": {
+              "count": 3,
+              "minimum": 31,
+              "median": 31,
+              "maximum": 31,
+              "rangeOverMedian": 0.0,
+              "medianAbsoluteDeviation": 0
+            },
+            "baseline": {
+              "count": 3,
+              "minimum": 31,
+              "median": 31,
+              "maximum": 34,
+              "rangeOverMedian": 0.0967741935483871,
+              "medianAbsoluteDeviation": 0
+            },
+            "upstream": {
+              "count": 3,
+              "minimum": 201,
+              "median": 201,
+              "maximum": 203,
+              "rangeOverMedian": 0.009950248756218905,
+              "medianAbsoluteDeviation": 0
+            }
+          },
+          "candidateOverBaseline": 1.0,
+          "candidateOverUpstream": 0.15422885572139303,
+          "baselineOverUpstream": 0.15422885572139303,
+          "roundRatios": {
+            "candidateOverBaseline": [
+              1.0,
+              1.0,
+              0.9117647058823529
+            ],
+            "candidateOverUpstream": [
+              0.15270935960591134,
+              0.15422885572139303,
+              0.15422885572139303
+            ],
+            "baselineOverUpstream": [
+              0.15270935960591134,
+              0.15422885572139303,
+              0.1691542288557214
+            ]
+          },
+          "ratioSpread": {
+            "candidateOverBaseline": {
+              "count": 3,
+              "minimum": 0.9117647058823529,
+              "median": 1.0,
+              "maximum": 1.0,
+              "rangeOverMedian": 0.08823529411764708,
+              "medianAbsoluteDeviation": 0.0
+            },
+            "candidateOverUpstream": {
+              "count": 3,
+              "minimum": 0.15270935960591134,
+              "median": 0.15422885572139303,
+              "maximum": 0.15422885572139303,
+              "rangeOverMedian": 0.00985221674876837,
+              "medianAbsoluteDeviation": 0.0
+            },
+            "baselineOverUpstream": {
+              "count": 3,
+              "minimum": 0.15270935960591134,
+              "median": 0.15422885572139303,
+              "maximum": 0.1691542288557214,
+              "rangeOverMedian": 0.10662641029715557,
+              "medianAbsoluteDeviation": 0.0015194961154816888
+            }
+          }
+        },
+        {
+          "name": "coverage-list-pipeline-512",
+          "family": "list-pipeline",
+          "ratioEligible": true,
+          "rounds": [
+            0,
+            1,
+            2
+          ],
+          "binaries": {
+            "candidate": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p128-native-runtime01-coverage-list-pipeline-512-build/program",
+              "bytes": 229416,
+              "sha256": "f61805aaf29d2f4bd9a16f0586f6ed97493d53c0fc259669e8dbb7d0048cb227"
+            },
+            "baseline": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p126-final32-coverage-list-pipeline-512-build/program",
+              "bytes": 225040,
+              "sha256": "b26f107f4b93c1e5d48bcde3ed94d34a0adc673838ecb4bb05a531f86c9f474e"
+            },
+            "upstream": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/broad01/coverage-list-pipeline-512/upstream.program",
+              "bytes": 62720,
+              "sha256": "6295c4a4f5c144dff9f3df96b95f45fa7310633f9bd4b3088662acce7c46f655"
+            }
+          },
+          "samplesMs": {
+            "candidate": [
+              30,
+              31,
+              31
+            ],
+            "baseline": [
+              31,
+              30,
+              31
+            ],
+            "upstream": [
+              201,
+              198,
+              201
+            ]
+          },
+          "mediansMs": {
+            "candidate": 31,
+            "baseline": 31,
+            "upstream": 201
+          },
+          "spreadMs": {
+            "candidate": {
+              "count": 3,
+              "minimum": 30,
+              "median": 31,
+              "maximum": 31,
+              "rangeOverMedian": 0.03225806451612903,
+              "medianAbsoluteDeviation": 0
+            },
+            "baseline": {
+              "count": 3,
+              "minimum": 30,
+              "median": 31,
+              "maximum": 31,
+              "rangeOverMedian": 0.03225806451612903,
+              "medianAbsoluteDeviation": 0
+            },
+            "upstream": {
+              "count": 3,
+              "minimum": 198,
+              "median": 201,
+              "maximum": 201,
+              "rangeOverMedian": 0.014925373134328358,
+              "medianAbsoluteDeviation": 0
+            }
+          },
+          "candidateOverBaseline": 1.0,
+          "candidateOverUpstream": 0.15422885572139303,
+          "baselineOverUpstream": 0.15422885572139303,
+          "roundRatios": {
+            "candidateOverBaseline": [
+              0.967741935483871,
+              1.0333333333333334,
+              1.0
+            ],
+            "candidateOverUpstream": [
+              0.14925373134328357,
+              0.15656565656565657,
+              0.15422885572139303
+            ],
+            "baselineOverUpstream": [
+              0.15422885572139303,
+              0.15151515151515152,
+              0.15422885572139303
+            ]
+          },
+          "ratioSpread": {
+            "candidateOverBaseline": {
+              "count": 3,
+              "minimum": 0.967741935483871,
+              "median": 1.0,
+              "maximum": 1.0333333333333334,
+              "rangeOverMedian": 0.06559139784946244,
+              "medianAbsoluteDeviation": 0.032258064516129004
+            },
+            "candidateOverUpstream": {
+              "count": 3,
+              "minimum": 0.14925373134328357,
+              "median": 0.15422885572139303,
+              "maximum": 0.15656565656565657,
+              "rangeOverMedian": 0.04740957966764433,
+              "medianAbsoluteDeviation": 0.002336800844263548
+            },
+            "baselineOverUpstream": {
+              "count": 3,
+              "minimum": 0.15151515151515152,
+              "median": 0.15422885572139303,
+              "maximum": 0.15422885572139303,
+              "rangeOverMedian": 0.017595307917888485,
+              "medianAbsoluteDeviation": 0.0
+            }
+          }
+        },
+        {
+          "name": "coverage-bst-32",
+          "family": "bst",
+          "ratioEligible": true,
+          "rounds": [
+            0,
+            1,
+            2
+          ],
+          "binaries": {
+            "candidate": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p128-native-runtime01-coverage-bst-32-build/program",
+              "bytes": 237936,
+              "sha256": "ed520e8a98f1db1b8653475dff1f185d9853307680b9f2cd0c5d0bfe10664fcf"
+            },
+            "baseline": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p126-final32-coverage-bst-32-build/program",
+              "bytes": 237880,
+              "sha256": "e190e1db4c48984a9a5fe969b4c76f3159ba2da442a434613520de6919fd10c9"
+            },
+            "upstream": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/broad01/coverage-bst-32/upstream.program",
+              "bytes": 61664,
+              "sha256": "4e1d319f9067b13820e7da1acf8b34784329be309aebaafe6246feef9e2d524d"
+            }
+          },
+          "samplesMs": {
+            "candidate": [
+              759,
+              759,
+              759
+            ],
+            "baseline": [
+              762,
+              756,
+              759
+            ],
+            "upstream": [
+              195,
+              194,
+              195
+            ]
+          },
+          "mediansMs": {
+            "candidate": 759,
+            "baseline": 759,
+            "upstream": 195
+          },
+          "spreadMs": {
+            "candidate": {
+              "count": 3,
+              "minimum": 759,
+              "median": 759,
+              "maximum": 759,
+              "rangeOverMedian": 0.0,
+              "medianAbsoluteDeviation": 0
+            },
+            "baseline": {
+              "count": 3,
+              "minimum": 756,
+              "median": 759,
+              "maximum": 762,
+              "rangeOverMedian": 0.007905138339920948,
+              "medianAbsoluteDeviation": 3
+            },
+            "upstream": {
+              "count": 3,
+              "minimum": 194,
+              "median": 195,
+              "maximum": 195,
+              "rangeOverMedian": 0.005128205128205128,
+              "medianAbsoluteDeviation": 0
+            }
+          },
+          "candidateOverBaseline": 1.0,
+          "candidateOverUpstream": 3.8923076923076922,
+          "baselineOverUpstream": 3.8923076923076922,
+          "roundRatios": {
+            "candidateOverBaseline": [
+              0.9960629921259843,
+              1.003968253968254,
+              1.0
+            ],
+            "candidateOverUpstream": [
+              3.8923076923076922,
+              3.9123711340206184,
+              3.8923076923076922
+            ],
+            "baselineOverUpstream": [
+              3.9076923076923076,
+              3.8969072164948453,
+              3.8923076923076922
+            ]
+          },
+          "ratioSpread": {
+            "candidateOverBaseline": {
+              "count": 3,
+              "minimum": 0.9960629921259843,
+              "median": 1.0,
+              "maximum": 1.003968253968254,
+              "rangeOverMedian": 0.007905261842269695,
+              "medianAbsoluteDeviation": 0.003937007874015741
+            },
+            "candidateOverUpstream": {
+              "count": 3,
+              "minimum": 3.8923076923076922,
+              "median": 3.8923076923076922,
+              "maximum": 3.9123711340206184,
+              "rangeOverMedian": 0.005154639175257714,
+              "medianAbsoluteDeviation": 0.0
+            },
+            "baselineOverUpstream": {
+              "count": 3,
+              "minimum": 3.8923076923076922,
+              "median": 3.8969072164948453,
+              "maximum": 3.9076923076923076,
+              "rangeOverMedian": 0.003947903947903934,
+              "medianAbsoluteDeviation": 0.004599524187153037
+            }
+          }
+        },
+        {
+          "name": "coverage-bst-64",
+          "family": "bst",
+          "ratioEligible": true,
+          "rounds": [
+            0,
+            1,
+            2
+          ],
+          "binaries": {
+            "candidate": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p128-native-runtime01-coverage-bst-64-build/program",
+              "bytes": 237936,
+              "sha256": "f0c860646c18f86fb43cf165bc825694db9384afe0e94d6831fea181b90426f3"
+            },
+            "baseline": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p126-final32-coverage-bst-64-build/program",
+              "bytes": 237880,
+              "sha256": "eb8a53aa6053199bb6daa1297331bc9255d72293fac0fc659ff4daec85da7d70"
+            },
+            "upstream": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/broad01/coverage-bst-64/upstream.program",
+              "bytes": 61664,
+              "sha256": "b500e37ab9714da846c3de8b2e49d23d024a3d18634dfe6e0bac226fdc62ba23"
+            }
+          },
+          "samplesMs": {
+            "candidate": [
+              608,
+              608,
+              616
+            ],
+            "baseline": [
+              608,
+              612,
+              609
+            ],
+            "upstream": [
+              180,
+              181,
+              181
+            ]
+          },
+          "mediansMs": {
+            "candidate": 608,
+            "baseline": 609,
+            "upstream": 181
+          },
+          "spreadMs": {
+            "candidate": {
+              "count": 3,
+              "minimum": 608,
+              "median": 608,
+              "maximum": 616,
+              "rangeOverMedian": 0.013157894736842105,
+              "medianAbsoluteDeviation": 0
+            },
+            "baseline": {
+              "count": 3,
+              "minimum": 608,
+              "median": 609,
+              "maximum": 612,
+              "rangeOverMedian": 0.006568144499178982,
+              "medianAbsoluteDeviation": 1
+            },
+            "upstream": {
+              "count": 3,
+              "minimum": 180,
+              "median": 181,
+              "maximum": 181,
+              "rangeOverMedian": 0.0055248618784530384,
+              "medianAbsoluteDeviation": 0
+            }
+          },
+          "candidateOverBaseline": 0.9983579638752053,
+          "candidateOverUpstream": 3.3591160220994474,
+          "baselineOverUpstream": 3.3646408839779007,
+          "roundRatios": {
+            "candidateOverBaseline": [
+              1.0,
+              0.9934640522875817,
+              1.0114942528735633
+            ],
+            "candidateOverUpstream": [
+              3.3777777777777778,
+              3.3591160220994474,
+              3.403314917127072
+            ],
+            "baselineOverUpstream": [
+              3.3777777777777778,
+              3.3812154696132595,
+              3.3646408839779007
+            ]
+          },
+          "ratioSpread": {
+            "candidateOverBaseline": {
+              "count": 3,
+              "minimum": 0.9934640522875817,
+              "median": 1.0,
+              "maximum": 1.0114942528735633,
+              "rangeOverMedian": 0.018030200585981593,
+              "medianAbsoluteDeviation": 0.006535947712418277
+            },
+            "candidateOverUpstream": {
+              "count": 3,
+              "minimum": 3.3591160220994474,
+              "median": 3.3777777777777778,
+              "maximum": 3.403314917127072,
+              "rangeOverMedian": 0.013085199185809927,
+              "medianAbsoluteDeviation": 0.018661755678330394
+            },
+            "baselineOverUpstream": {
+              "count": 3,
+              "minimum": 3.3646408839779007,
+              "median": 3.3777777777777778,
+              "maximum": 3.3812154696132595,
+              "rangeOverMedian": 0.004906949694678575,
+              "medianAbsoluteDeviation": 0.0034376918354817043
+            }
+          }
+        },
+        {
+          "name": "coverage-unicode-text-16",
+          "family": "unicode-text",
+          "ratioEligible": true,
+          "rounds": [
+            0,
+            1,
+            2
+          ],
+          "binaries": {
+            "candidate": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p128-native-runtime01-coverage-unicode-text-16-build/program",
+              "bytes": 234144,
+              "sha256": "50e524ff22c2db34cfd01a0d4f422c0dc73e418ba7f54d0f0fe847348330158a"
+            },
+            "baseline": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p126-final32-coverage-unicode-text-16-build/program",
+              "bytes": 234088,
+              "sha256": "eadfa560ba4f2226f83acab242a6d8d1e01bc7e1b5ff7488c470ad8f04a9a478"
+            },
+            "upstream": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/broad01/coverage-unicode-text-16/upstream.program",
+              "bytes": 72768,
+              "sha256": "30b28008937fb22a7ab9bff6343dd651d3034518b81f89b551a1abe570f21bf1"
+            }
+          },
+          "samplesMs": {
+            "candidate": [
+              278,
+              277,
+              277
+            ],
+            "baseline": [
+              307,
+              307,
+              306
+            ],
+            "upstream": [
+              188,
+              187,
+              186
+            ]
+          },
+          "mediansMs": {
+            "candidate": 277,
+            "baseline": 307,
+            "upstream": 187
+          },
+          "spreadMs": {
+            "candidate": {
+              "count": 3,
+              "minimum": 277,
+              "median": 277,
+              "maximum": 278,
+              "rangeOverMedian": 0.0036101083032490976,
+              "medianAbsoluteDeviation": 0
+            },
+            "baseline": {
+              "count": 3,
+              "minimum": 306,
+              "median": 307,
+              "maximum": 307,
+              "rangeOverMedian": 0.003257328990228013,
+              "medianAbsoluteDeviation": 0
+            },
+            "upstream": {
+              "count": 3,
+              "minimum": 186,
+              "median": 187,
+              "maximum": 188,
+              "rangeOverMedian": 0.0106951871657754,
+              "medianAbsoluteDeviation": 1
+            }
+          },
+          "candidateOverBaseline": 0.9022801302931596,
+          "candidateOverUpstream": 1.481283422459893,
+          "baselineOverUpstream": 1.641711229946524,
+          "roundRatios": {
+            "candidateOverBaseline": [
+              0.9055374592833876,
+              0.9022801302931596,
+              0.9052287581699346
+            ],
+            "candidateOverUpstream": [
+              1.4787234042553192,
+              1.481283422459893,
+              1.489247311827957
+            ],
+            "baselineOverUpstream": [
+              1.6329787234042554,
+              1.641711229946524,
+              1.6451612903225807
+            ]
+          },
+          "ratioSpread": {
+            "candidateOverBaseline": {
+              "count": 3,
+              "minimum": 0.9022801302931596,
+              "median": 0.9052287581699346,
+              "maximum": 0.9055374592833876,
+              "rangeOverMedian": 0.0035983489928150627,
+              "medianAbsoluteDeviation": 0.00030870111345293605
+            },
+            "candidateOverUpstream": {
+              "count": 3,
+              "minimum": 1.4787234042553192,
+              "median": 1.481283422459893,
+              "maximum": 1.489247311827957,
+              "rangeOverMedian": 0.00710458742268326,
+              "medianAbsoluteDeviation": 0.002560018204573744
+            },
+            "baselineOverUpstream": {
+              "count": 3,
+              "minimum": 1.6329787234042554,
+              "median": 1.641711229946524,
+              "maximum": 1.6451612903225807,
+              "rangeOverMedian": 0.007420651510510857,
+              "medianAbsoluteDeviation": 0.003450060376056774
+            }
+          }
+        },
+        {
+          "name": "coverage-unicode-text-64",
+          "family": "unicode-text",
+          "ratioEligible": true,
+          "rounds": [
+            0,
+            1,
+            2
+          ],
+          "binaries": {
+            "candidate": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p128-native-runtime01-coverage-unicode-text-64-build/program",
+              "bytes": 243616,
+              "sha256": "893680c18fd90b48546a9a4a9d0cc2ce04182f19dd69aa77cc94d44496f2585d"
+            },
+            "baseline": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p126-final32-coverage-unicode-text-64-build/program",
+              "bytes": 243560,
+              "sha256": "597be245fa6d66a670ca58c4e79d983854c96013280bc6a6bd3e2a0fd32ac4ef"
+            },
+            "upstream": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/broad01/coverage-unicode-text-64/upstream.program",
+              "bytes": 82240,
+              "sha256": "5627cd0313869f046a5248b673eef23f20ee9f4007da2c5351f8615fd1cf502d"
+            }
+          },
+          "samplesMs": {
+            "candidate": [
+              289,
+              285,
+              285
+            ],
+            "baseline": [
+              312,
+              312,
+              313
+            ],
+            "upstream": [
+              200,
+              201,
+              200
+            ]
+          },
+          "mediansMs": {
+            "candidate": 285,
+            "baseline": 312,
+            "upstream": 200
+          },
+          "spreadMs": {
+            "candidate": {
+              "count": 3,
+              "minimum": 285,
+              "median": 285,
+              "maximum": 289,
+              "rangeOverMedian": 0.014035087719298246,
+              "medianAbsoluteDeviation": 0
+            },
+            "baseline": {
+              "count": 3,
+              "minimum": 312,
+              "median": 312,
+              "maximum": 313,
+              "rangeOverMedian": 0.003205128205128205,
+              "medianAbsoluteDeviation": 0
+            },
+            "upstream": {
+              "count": 3,
+              "minimum": 200,
+              "median": 200,
+              "maximum": 201,
+              "rangeOverMedian": 0.005,
+              "medianAbsoluteDeviation": 0
+            }
+          },
+          "candidateOverBaseline": 0.9134615384615384,
+          "candidateOverUpstream": 1.425,
+          "baselineOverUpstream": 1.56,
+          "roundRatios": {
+            "candidateOverBaseline": [
+              0.9262820512820513,
+              0.9134615384615384,
+              0.9105431309904153
+            ],
+            "candidateOverUpstream": [
+              1.445,
+              1.4179104477611941,
+              1.425
+            ],
+            "baselineOverUpstream": [
+              1.56,
+              1.5522388059701493,
+              1.565
+            ]
+          },
+          "ratioSpread": {
+            "candidateOverBaseline": {
+              "count": 3,
+              "minimum": 0.9105431309904153,
+              "median": 0.9134615384615384,
+              "maximum": 0.9262820512820513,
+              "rangeOverMedian": 0.017229975898212086,
+              "medianAbsoluteDeviation": 0.0029184074711231522
+            },
+            "candidateOverUpstream": {
+              "count": 3,
+              "minimum": 1.4179104477611941,
+              "median": 1.425,
+              "maximum": 1.445,
+              "rangeOverMedian": 0.019010212097407674,
+              "medianAbsoluteDeviation": 0.0070895522388059184
+            },
+            "baselineOverUpstream": {
+              "count": 3,
+              "minimum": 1.5522388059701493,
+              "median": 1.56,
+              "maximum": 1.565,
+              "rangeOverMedian": 0.008180252583237598,
+              "medianAbsoluteDeviation": 0.004999999999999893
+            }
+          }
+        },
+        {
+          "name": "coverage-expression-32",
+          "family": "expression",
+          "ratioEligible": true,
+          "rounds": [
+            0,
+            1,
+            2
+          ],
+          "binaries": {
+            "candidate": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p128-native-runtime01-coverage-expression-32-build/program",
+              "bytes": 223272,
+              "sha256": "ac2de457dc3895c8a68ddbc4368927533a532e0dda63993ac81a290aed79e832"
+            },
+            "baseline": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p126-final32-coverage-expression-32-build/program",
+              "bytes": 223208,
+              "sha256": "f9e0d84120429b1099a1f52450d1aa361c21f0d1b0eec7041154ed41ac396167"
+            },
+            "upstream": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/broad01/coverage-expression-32/upstream.program",
+              "bytes": 63448,
+              "sha256": "3379e7436aa00e97debbe6b4d2c8f6a74e9791333d09428faf1300851c6b9f20"
+            }
+          },
+          "samplesMs": {
+            "candidate": [
+              300,
+              298,
+              300
+            ],
+            "baseline": [
+              310,
+              308,
+              305
+            ],
+            "upstream": [
+              201,
+              200,
+              201
+            ]
+          },
+          "mediansMs": {
+            "candidate": 300,
+            "baseline": 308,
+            "upstream": 201
+          },
+          "spreadMs": {
+            "candidate": {
+              "count": 3,
+              "minimum": 298,
+              "median": 300,
+              "maximum": 300,
+              "rangeOverMedian": 0.006666666666666667,
+              "medianAbsoluteDeviation": 0
+            },
+            "baseline": {
+              "count": 3,
+              "minimum": 305,
+              "median": 308,
+              "maximum": 310,
+              "rangeOverMedian": 0.016233766233766232,
+              "medianAbsoluteDeviation": 2
+            },
+            "upstream": {
+              "count": 3,
+              "minimum": 200,
+              "median": 201,
+              "maximum": 201,
+              "rangeOverMedian": 0.004975124378109453,
+              "medianAbsoluteDeviation": 0
+            }
+          },
+          "candidateOverBaseline": 0.974025974025974,
+          "candidateOverUpstream": 1.492537313432836,
+          "baselineOverUpstream": 1.5323383084577114,
+          "roundRatios": {
+            "candidateOverBaseline": [
+              0.967741935483871,
+              0.9675324675324676,
+              0.9836065573770492
+            ],
+            "candidateOverUpstream": [
+              1.492537313432836,
+              1.49,
+              1.492537313432836
+            ],
+            "baselineOverUpstream": [
+              1.5422885572139304,
+              1.54,
+              1.5174129353233832
+            ]
+          },
+          "ratioSpread": {
+            "candidateOverBaseline": {
+              "count": 3,
+              "minimum": 0.9675324675324676,
+              "median": 0.967741935483871,
+              "maximum": 0.9836065573770492,
+              "rangeOverMedian": 0.01660989283940097,
+              "medianAbsoluteDeviation": 0.00020946795140341923
+            },
+            "candidateOverUpstream": {
+              "count": 3,
+              "minimum": 1.49,
+              "median": 1.492537313432836,
+              "maximum": 1.492537313432836,
+              "rangeOverMedian": 0.0017000000000000658,
+              "medianAbsoluteDeviation": 0.0
+            },
+            "baselineOverUpstream": {
+              "count": 3,
+              "minimum": 1.5174129353233832,
+              "median": 1.54,
+              "maximum": 1.5422885572139304,
+              "rangeOverMedian": 0.01615300122762809,
+              "medianAbsoluteDeviation": 0.002288557213930398
+            }
+          }
+        },
+        {
+          "name": "coverage-expression-128",
+          "family": "expression",
+          "ratioEligible": true,
+          "rounds": [
+            0,
+            1,
+            2
+          ],
+          "binaries": {
+            "candidate": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p128-native-runtime01-coverage-expression-128-build/program",
+              "bytes": 223272,
+              "sha256": "b59cd6d89a6fd7f945805ecee186cd9d779b34b7fbd2dc87fdb723122e738c02"
+            },
+            "baseline": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p126-final32-coverage-expression-128-build/program",
+              "bytes": 223216,
+              "sha256": "e72a344c5f4d7754b28b07df60c0396ffd11117d0774631135f17f4ce4aa83fe"
+            },
+            "upstream": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/broad01/coverage-expression-128/upstream.program",
+              "bytes": 63448,
+              "sha256": "a3b8d56b994f0f9199f3e056c286ecd17b152e38260f0622eb5138d0773e9c02"
+            }
+          },
+          "samplesMs": {
+            "candidate": [
+              281,
+              283,
+              281
+            ],
+            "baseline": [
+              283,
+              284,
+              283
+            ],
+            "upstream": [
+              200,
+              201,
+              201
+            ]
+          },
+          "mediansMs": {
+            "candidate": 281,
+            "baseline": 283,
+            "upstream": 201
+          },
+          "spreadMs": {
+            "candidate": {
+              "count": 3,
+              "minimum": 281,
+              "median": 281,
+              "maximum": 283,
+              "rangeOverMedian": 0.0071174377224199285,
+              "medianAbsoluteDeviation": 0
+            },
+            "baseline": {
+              "count": 3,
+              "minimum": 283,
+              "median": 283,
+              "maximum": 284,
+              "rangeOverMedian": 0.0035335689045936395,
+              "medianAbsoluteDeviation": 0
+            },
+            "upstream": {
+              "count": 3,
+              "minimum": 200,
+              "median": 201,
+              "maximum": 201,
+              "rangeOverMedian": 0.004975124378109453,
+              "medianAbsoluteDeviation": 0
+            }
+          },
+          "candidateOverBaseline": 0.9929328621908127,
+          "candidateOverUpstream": 1.3980099502487562,
+          "baselineOverUpstream": 1.407960199004975,
+          "roundRatios": {
+            "candidateOverBaseline": [
+              0.9929328621908127,
+              0.9964788732394366,
+              0.9929328621908127
+            ],
+            "candidateOverUpstream": [
+              1.405,
+              1.407960199004975,
+              1.3980099502487562
+            ],
+            "baselineOverUpstream": [
+              1.415,
+              1.4129353233830846,
+              1.407960199004975
+            ]
+          },
+          "ratioSpread": {
+            "candidateOverBaseline": {
+              "count": 3,
+              "minimum": 0.9929328621908127,
+              "median": 0.9929328621908127,
+              "maximum": 0.9964788732394366,
+              "rangeOverMedian": 0.003571249561425548,
+              "medianAbsoluteDeviation": 0.0
+            },
+            "candidateOverUpstream": {
+              "count": 3,
+              "minimum": 1.3980099502487562,
+              "median": 1.405,
+              "maximum": 1.407960199004975,
+              "rangeOverMedian": 0.007082027584497409,
+              "medianAbsoluteDeviation": 0.002960199004975017
+            },
+            "baselineOverUpstream": {
+              "count": 3,
+              "minimum": 1.407960199004975,
+              "median": 1.4129353233830846,
+              "maximum": 1.415,
+              "rangeOverMedian": 0.0049823943661972655,
+              "medianAbsoluteDeviation": 0.0020646766169154507
+            }
+          }
+        },
+        {
+          "name": "coverage-map-churn-32",
+          "family": "map-churn",
+          "ratioEligible": true,
+          "rounds": [
+            0,
+            1,
+            2
+          ],
+          "binaries": {
+            "candidate": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p128-native-runtime01-coverage-map-churn-32-build/program",
+              "bytes": 387728,
+              "sha256": "28fc5a1e3cf41f768e0a4fd5ad4e71330fa0c0eb2c10064ae0efed78daa52d3e"
+            },
+            "baseline": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p126-final32-coverage-map-churn-32-build/program",
+              "bytes": 387368,
+              "sha256": "2342bdf28eddd52d0e86826e2be9609f3c43b71f1e77d0d0242609784fb023a0"
+            },
+            "upstream": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/broad01/coverage-map-churn-32/upstream.program",
+              "bytes": 135360,
+              "sha256": "e25df48ad0305be38f58f314dc0287b74644daccf508bc5487db04b6cec4fbb1"
+            }
+          },
+          "samplesMs": {
+            "candidate": [
+              589,
+              569,
+              569
+            ],
+            "baseline": [
+              667,
+              668,
+              679
+            ],
+            "upstream": [
+              213,
+              199,
+              199
+            ]
+          },
+          "mediansMs": {
+            "candidate": 569,
+            "baseline": 668,
+            "upstream": 199
+          },
+          "spreadMs": {
+            "candidate": {
+              "count": 3,
+              "minimum": 569,
+              "median": 569,
+              "maximum": 589,
+              "rangeOverMedian": 0.0351493848857645,
+              "medianAbsoluteDeviation": 0
+            },
+            "baseline": {
+              "count": 3,
+              "minimum": 667,
+              "median": 668,
+              "maximum": 679,
+              "rangeOverMedian": 0.017964071856287425,
+              "medianAbsoluteDeviation": 1
+            },
+            "upstream": {
+              "count": 3,
+              "minimum": 199,
+              "median": 199,
+              "maximum": 213,
+              "rangeOverMedian": 0.07035175879396985,
+              "medianAbsoluteDeviation": 0
+            }
+          },
+          "candidateOverBaseline": 0.8517964071856288,
+          "candidateOverUpstream": 2.85929648241206,
+          "baselineOverUpstream": 3.35678391959799,
+          "roundRatios": {
+            "candidateOverBaseline": [
+              0.8830584707646177,
+              0.8517964071856288,
+              0.8379970544918999
+            ],
+            "candidateOverUpstream": [
+              2.7652582159624415,
+              2.85929648241206,
+              2.85929648241206
+            ],
+            "baselineOverUpstream": [
+              3.131455399061033,
+              3.35678391959799,
+              3.4120603015075375
+            ]
+          },
+          "ratioSpread": {
+            "candidateOverBaseline": {
+              "count": 3,
+              "minimum": 0.8379970544918999,
+              "median": 0.8517964071856288,
+              "maximum": 0.8830584707646177,
+              "rangeOverMedian": 0.05290162753985156,
+              "medianAbsoluteDeviation": 0.013799352693728895
+            },
+            "candidateOverUpstream": {
+              "count": 3,
+              "minimum": 2.7652582159624415,
+              "median": 2.85929648241206,
+              "maximum": 2.85929648241206,
+              "rangeOverMedian": 0.03288860285320582,
+              "medianAbsoluteDeviation": 0.0
+            },
+            "baselineOverUpstream": {
+              "count": 3,
+              "minimum": 3.131455399061033,
+              "median": 3.35678391959799,
+              "maximum": 3.4120603015075375,
+              "rangeOverMedian": 0.08359337662702754,
+              "medianAbsoluteDeviation": 0.055276381909547645
+            }
+          }
+        },
+        {
+          "name": "coverage-map-churn-128",
+          "family": "map-churn",
+          "ratioEligible": true,
+          "rounds": [
+            0,
+            1,
+            2
+          ],
+          "binaries": {
+            "candidate": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p128-native-runtime01-coverage-map-churn-128-build/program",
+              "bytes": 387728,
+              "sha256": "31aa12629551820a293547f24fcd347d814cc70c75940bfcb359d56ef93761dc"
+            },
+            "baseline": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p126-final32-coverage-map-churn-128-build/program",
+              "bytes": 387376,
+              "sha256": "f10fe77653477cb1303c2f95361aabed2b81305bd3e58e3bda2f75fcf6c4d2b8"
+            },
+            "upstream": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/broad01/coverage-map-churn-128/upstream.program",
+              "bytes": 135360,
+              "sha256": "724a865b244eb19107b6e4b1580fa47bb5b07c36b798dd1a7998658da8a74552"
+            }
+          },
+          "samplesMs": {
+            "candidate": [
+              545,
+              547,
+              547
+            ],
+            "baseline": [
+              651,
+              645,
+              654
+            ],
+            "upstream": [
+              201,
+              201,
+              213
+            ]
+          },
+          "mediansMs": {
+            "candidate": 547,
+            "baseline": 651,
+            "upstream": 201
+          },
+          "spreadMs": {
+            "candidate": {
+              "count": 3,
+              "minimum": 545,
+              "median": 547,
+              "maximum": 547,
+              "rangeOverMedian": 0.003656307129798903,
+              "medianAbsoluteDeviation": 0
+            },
+            "baseline": {
+              "count": 3,
+              "minimum": 645,
+              "median": 651,
+              "maximum": 654,
+              "rangeOverMedian": 0.013824884792626729,
+              "medianAbsoluteDeviation": 3
+            },
+            "upstream": {
+              "count": 3,
+              "minimum": 201,
+              "median": 201,
+              "maximum": 213,
+              "rangeOverMedian": 0.05970149253731343,
+              "medianAbsoluteDeviation": 0
+            }
+          },
+          "candidateOverBaseline": 0.8402457757296466,
+          "candidateOverUpstream": 2.7213930348258706,
+          "baselineOverUpstream": 3.2388059701492535,
+          "roundRatios": {
+            "candidateOverBaseline": [
+              0.837173579109063,
+              0.8480620155038759,
+              0.8363914373088684
+            ],
+            "candidateOverUpstream": [
+              2.711442786069652,
+              2.7213930348258706,
+              2.568075117370892
+            ],
+            "baselineOverUpstream": [
+              3.2388059701492535,
+              3.208955223880597,
+              3.0704225352112675
+            ]
+          },
+          "ratioSpread": {
+            "candidateOverBaseline": {
+              "count": 3,
+              "minimum": 0.8363914373088684,
+              "median": 0.837173579109063,
+              "maximum": 0.8480620155038759,
+              "rangeOverMedian": 0.013940452119174093,
+              "medianAbsoluteDeviation": 0.0007821418001945357
+            },
+            "candidateOverUpstream": {
+              "count": 3,
+              "minimum": 2.568075117370892,
+              "median": 2.711442786069652,
+              "maximum": 2.7213930348258706,
+              "rangeOverMedian": 0.05654477322651503,
+              "medianAbsoluteDeviation": 0.009950248756218638
+            },
+            "baselineOverUpstream": {
+              "count": 3,
+              "minimum": 3.0704225352112675,
+              "median": 3.208955223880597,
+              "maximum": 3.2388059701492535,
+              "rangeOverMedian": 0.052472977399279364,
+              "medianAbsoluteDeviation": 0.02985074626865636
+            }
+          }
+        },
+        {
+          "name": "coverage-numeric-recurrence-256",
+          "family": "numeric-recurrence",
+          "ratioEligible": true,
+          "rounds": [
+            0,
+            1,
+            2
+          ],
+          "binaries": {
+            "candidate": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p128-native-runtime01-coverage-numeric-recurrence-256-build/program",
+              "bytes": 229952,
+              "sha256": "60bb925b79dc0f7f87c1a15aeea4063ed84fee4e84707f9533a7a13def6750bc"
+            },
+            "baseline": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p126-final32-coverage-numeric-recurrence-256-build/program",
+              "bytes": 225792,
+              "sha256": "aab56afa87ab48a934a50e9d778754cb3bf1b3106572375059193a565a77e4c2"
+            },
+            "upstream": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/pilot02/coverage-numeric-recurrence-256/upstream.program",
+              "bytes": 58032,
+              "sha256": "4a98ddcdd5847a3383a16ca74acde7c6b074dc7971ce02296db26b40f1ec4640"
+            }
+          },
+          "samplesMs": {
+            "candidate": [
+              308,
+              304,
+              305
+            ],
+            "baseline": [
+              311,
+              304,
+              304
+            ],
+            "upstream": [
+              201,
+              201,
+              219
+            ]
+          },
+          "mediansMs": {
+            "candidate": 305,
+            "baseline": 304,
+            "upstream": 201
+          },
+          "spreadMs": {
+            "candidate": {
+              "count": 3,
+              "minimum": 304,
+              "median": 305,
+              "maximum": 308,
+              "rangeOverMedian": 0.013114754098360656,
+              "medianAbsoluteDeviation": 1
+            },
+            "baseline": {
+              "count": 3,
+              "minimum": 304,
+              "median": 304,
+              "maximum": 311,
+              "rangeOverMedian": 0.023026315789473683,
+              "medianAbsoluteDeviation": 0
+            },
+            "upstream": {
+              "count": 3,
+              "minimum": 201,
+              "median": 201,
+              "maximum": 219,
+              "rangeOverMedian": 0.08955223880597014,
+              "medianAbsoluteDeviation": 0
+            }
+          },
+          "candidateOverBaseline": 1.0032894736842106,
+          "candidateOverUpstream": 1.5174129353233832,
+          "baselineOverUpstream": 1.5124378109452736,
+          "roundRatios": {
+            "candidateOverBaseline": [
+              0.9903536977491961,
+              1.0,
+              1.0032894736842106
+            ],
+            "candidateOverUpstream": [
+              1.5323383084577114,
+              1.5124378109452736,
+              1.3926940639269407
+            ],
+            "baselineOverUpstream": [
+              1.5472636815920398,
+              1.5124378109452736,
+              1.3881278538812785
+            ]
+          },
+          "ratioSpread": {
+            "candidateOverBaseline": {
+              "count": 3,
+              "minimum": 0.9903536977491961,
+              "median": 1.0,
+              "maximum": 1.0032894736842106,
+              "rangeOverMedian": 0.012935775935014493,
+              "medianAbsoluteDeviation": 0.00328947368421062
+            },
+            "candidateOverUpstream": {
+              "count": 3,
+              "minimum": 1.3926940639269407,
+              "median": 1.5124378109452736,
+              "maximum": 1.5323383084577114,
+              "rangeOverMedian": 0.09233056957462137,
+              "medianAbsoluteDeviation": 0.01990049751243772
+            },
+            "baselineOverUpstream": {
+              "count": 3,
+              "minimum": 1.3881278538812785,
+              "median": 1.5124378109452736,
+              "maximum": 1.5472636815920398,
+              "rangeOverMedian": 0.10521809661139152,
+              "medianAbsoluteDeviation": 0.03482587064676612
+            }
+          }
+        },
+        {
+          "name": "coverage-numeric-recurrence-1024",
+          "family": "numeric-recurrence",
+          "ratioEligible": true,
+          "rounds": [
+            0,
+            1,
+            2
+          ],
+          "binaries": {
+            "candidate": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p128-native-runtime01-coverage-numeric-recurrence-1024-build/program",
+              "bytes": 229952,
+              "sha256": "6c18941fd97922149bfaecbc4067599f7eae98a27da2accb60c36813d5e35261"
+            },
+            "baseline": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p126-final32-coverage-numeric-recurrence-1024-build/program",
+              "bytes": 225792,
+              "sha256": "3d1dc19e5874fb9789a0cf3752b603d850b5854cca652198d3198e327f7db151"
+            },
+            "upstream": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/broad01/coverage-numeric-recurrence-1024/upstream.program",
+              "bytes": 58032,
+              "sha256": "c1d55e8bd7504532731da7631a1f9a7a50158563ec5f1c02166d3e93e46c6106"
+            }
+          },
+          "samplesMs": {
+            "candidate": [
+              302,
+              300,
+              301
+            ],
+            "baseline": [
+              301,
+              302,
+              301
+            ],
+            "upstream": [
+              223,
+              201,
+              201
+            ]
+          },
+          "mediansMs": {
+            "candidate": 301,
+            "baseline": 301,
+            "upstream": 201
+          },
+          "spreadMs": {
+            "candidate": {
+              "count": 3,
+              "minimum": 300,
+              "median": 301,
+              "maximum": 302,
+              "rangeOverMedian": 0.006644518272425249,
+              "medianAbsoluteDeviation": 1
+            },
+            "baseline": {
+              "count": 3,
+              "minimum": 301,
+              "median": 301,
+              "maximum": 302,
+              "rangeOverMedian": 0.0033222591362126247,
+              "medianAbsoluteDeviation": 0
+            },
+            "upstream": {
+              "count": 3,
+              "minimum": 201,
+              "median": 201,
+              "maximum": 223,
+              "rangeOverMedian": 0.10945273631840796,
+              "medianAbsoluteDeviation": 0
+            }
+          },
+          "candidateOverBaseline": 1.0,
+          "candidateOverUpstream": 1.4975124378109452,
+          "baselineOverUpstream": 1.4975124378109452,
+          "roundRatios": {
+            "candidateOverBaseline": [
+              1.0033222591362125,
+              0.9933774834437086,
+              1.0
+            ],
+            "candidateOverUpstream": [
+              1.3542600896860986,
+              1.492537313432836,
+              1.4975124378109452
+            ],
+            "baselineOverUpstream": [
+              1.3497757847533631,
+              1.5024875621890548,
+              1.4975124378109452
+            ]
+          },
+          "ratioSpread": {
+            "candidateOverBaseline": {
+              "count": 3,
+              "minimum": 0.9933774834437086,
+              "median": 1.0,
+              "maximum": 1.0033222591362125,
+              "rangeOverMedian": 0.00994477569250396,
+              "medianAbsoluteDeviation": 0.0033222591362125353
+            },
+            "candidateOverUpstream": {
+              "count": 3,
+              "minimum": 1.3542600896860986,
+              "median": 1.492537313432836,
+              "maximum": 1.4975124378109452,
+              "rangeOverMedian": 0.09597907324364725,
+              "medianAbsoluteDeviation": 0.004975124378109319
+            },
+            "baselineOverUpstream": {
+              "count": 3,
+              "minimum": 1.3497757847533631,
+              "median": 1.4975124378109452,
+              "maximum": 1.5024875621890548,
+              "rangeOverMedian": 0.1019769676563921,
+              "medianAbsoluteDeviation": 0.004975124378109541
+            }
+          }
+        },
+        {
+          "name": "coverage-record-aggregation-64",
+          "family": "record-aggregation",
+          "ratioEligible": true,
+          "rounds": [
+            0,
+            1,
+            2
+          ],
+          "binaries": {
+            "candidate": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p128-native-runtime01-coverage-record-aggregation-64-build/program",
+              "bytes": 385832,
+              "sha256": "2187346d30594114cdea57ecd5b1e5ad82734ce8999219d05598f587e5bc14df"
+            },
+            "baseline": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p126-final32-coverage-record-aggregation-64-build/program",
+              "bytes": 385768,
+              "sha256": "61b2117fd6e2f6151b4097dfa13e9d646daaf625ab94e62bab363f757e368679"
+            },
+            "upstream": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/pilot02/coverage-record-aggregation-64/upstream.program",
+              "bytes": 138040,
+              "sha256": "849fa3f396fbeff099276af41976d7ead0b5f747b2dffdea76e5c872db39d97b"
+            }
+          },
+          "samplesMs": {
+            "candidate": [
+              497,
+              507,
+              495
+            ],
+            "baseline": [
+              578,
+              577,
+              615
+            ],
+            "upstream": [
+              199,
+              199,
+              200
+            ]
+          },
+          "mediansMs": {
+            "candidate": 497,
+            "baseline": 578,
+            "upstream": 199
+          },
+          "spreadMs": {
+            "candidate": {
+              "count": 3,
+              "minimum": 495,
+              "median": 497,
+              "maximum": 507,
+              "rangeOverMedian": 0.02414486921529175,
+              "medianAbsoluteDeviation": 2
+            },
+            "baseline": {
+              "count": 3,
+              "minimum": 577,
+              "median": 578,
+              "maximum": 615,
+              "rangeOverMedian": 0.0657439446366782,
+              "medianAbsoluteDeviation": 1
+            },
+            "upstream": {
+              "count": 3,
+              "minimum": 199,
+              "median": 199,
+              "maximum": 200,
+              "rangeOverMedian": 0.005025125628140704,
+              "medianAbsoluteDeviation": 0
+            }
+          },
+          "candidateOverBaseline": 0.8598615916955017,
+          "candidateOverUpstream": 2.4974874371859297,
+          "baselineOverUpstream": 2.9045226130653266,
+          "roundRatios": {
+            "candidateOverBaseline": [
+              0.8598615916955017,
+              0.878682842287695,
+              0.8048780487804879
+            ],
+            "candidateOverUpstream": [
+              2.4974874371859297,
+              2.5477386934673367,
+              2.475
+            ],
+            "baselineOverUpstream": [
+              2.9045226130653266,
+              2.899497487437186,
+              3.075
+            ]
+          },
+          "ratioSpread": {
+            "candidateOverBaseline": {
+              "count": 3,
+              "minimum": 0.8048780487804879,
+              "median": 0.8598615916955017,
+              "maximum": 0.878682842287695,
+              "rangeOverMedian": 0.08583334134238578,
+              "medianAbsoluteDeviation": 0.018821250592193306
+            },
+            "candidateOverUpstream": {
+              "count": 3,
+              "minimum": 2.475,
+              "median": 2.4974874371859297,
+              "maximum": 2.5477386934673367,
+              "rangeOverMedian": 0.029124748490945655,
+              "medianAbsoluteDeviation": 0.022487437185929604
+            },
+            "baselineOverUpstream": {
+              "count": 3,
+              "minimum": 2.899497487437186,
+              "median": 2.9045226130653266,
+              "maximum": 3.075,
+              "rangeOverMedian": 0.06042387543252601,
+              "medianAbsoluteDeviation": 0.005025125628140614
+            }
+          }
+        },
+        {
+          "name": "coverage-record-aggregation-256",
+          "family": "record-aggregation",
+          "ratioEligible": true,
+          "rounds": [
+            0,
+            1,
+            2
+          ],
+          "binaries": {
+            "candidate": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p128-native-runtime01-coverage-record-aggregation-256-build/program",
+              "bytes": 385832,
+              "sha256": "b4b020f6c3904f414a5b7e9c05baed5073434af8fb330fad62c35de4316f2448"
+            },
+            "baseline": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p126-final32-coverage-record-aggregation-256-build/program",
+              "bytes": 385768,
+              "sha256": "d28471b08a94bf65936bfea69449b1f0716fa4ddefc975ac96fdd71fe0d1c880"
+            },
+            "upstream": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/broad01/coverage-record-aggregation-256/upstream.program",
+              "bytes": 138040,
+              "sha256": "566e82563d1c107cb82e3e6d56e9d27ac4c2e32acadb18e5531e9789c2eaf1af"
+            }
+          },
+          "samplesMs": {
+            "candidate": [
+              488,
+              490,
+              492
+            ],
+            "baseline": [
+              567,
+              570,
+              569
+            ],
+            "upstream": [
+              200,
+              209,
+              201
+            ]
+          },
+          "mediansMs": {
+            "candidate": 490,
+            "baseline": 569,
+            "upstream": 201
+          },
+          "spreadMs": {
+            "candidate": {
+              "count": 3,
+              "minimum": 488,
+              "median": 490,
+              "maximum": 492,
+              "rangeOverMedian": 0.00816326530612245,
+              "medianAbsoluteDeviation": 2
+            },
+            "baseline": {
+              "count": 3,
+              "minimum": 567,
+              "median": 569,
+              "maximum": 570,
+              "rangeOverMedian": 0.005272407732864675,
+              "medianAbsoluteDeviation": 1
+            },
+            "upstream": {
+              "count": 3,
+              "minimum": 200,
+              "median": 201,
+              "maximum": 209,
+              "rangeOverMedian": 0.04477611940298507,
+              "medianAbsoluteDeviation": 1
+            }
+          },
+          "candidateOverBaseline": 0.8611599297012302,
+          "candidateOverUpstream": 2.4378109452736316,
+          "baselineOverUpstream": 2.8308457711442787,
+          "roundRatios": {
+            "candidateOverBaseline": [
+              0.8606701940035273,
+              0.8596491228070176,
+              0.8646748681898067
+            ],
+            "candidateOverUpstream": [
+              2.44,
+              2.3444976076555024,
+              2.4477611940298507
+            ],
+            "baselineOverUpstream": [
+              2.835,
+              2.727272727272727,
+              2.8308457711442787
+            ]
+          },
+          "ratioSpread": {
+            "candidateOverBaseline": {
+              "count": 3,
+              "minimum": 0.8596491228070176,
+              "median": 0.8606701940035273,
+              "maximum": 0.8646748681898067,
+              "rangeOverMedian": 0.005839339409920947,
+              "medianAbsoluteDeviation": 0.0010210711965097374
+            },
+            "candidateOverUpstream": {
+              "count": 3,
+              "minimum": 2.3444976076555024,
+              "median": 2.44,
+              "maximum": 2.4477611940298507,
+              "rangeOverMedian": 0.04232114195670012,
+              "medianAbsoluteDeviation": 0.00776119402985076
+            },
+            "baselineOverUpstream": {
+              "count": 3,
+              "minimum": 2.727272727272727,
+              "median": 2.8308457711442787,
+              "maximum": 2.835,
+              "rangeOverMedian": 0.03805480108643559,
+              "medianAbsoluteDeviation": 0.004154228855721254
+            }
+          }
+        }
+      ],
+      "timedCases": 44,
+      "population": "full-original45",
+      "originalCases": 45,
+      "originalTimedCases": 44,
+      "missingOriginalCases": [],
+      "missingOriginalTimedCases": [],
+      "fullTimedPopulation": true,
+      "correctnessObservationCount": 405,
+      "rounds": [
+        0,
+        1,
+        2
+      ],
+      "candidateOverBaseline": 0.952806693854115,
+      "candidateOverUpstream": 1.652584939760844,
+      "baselineOverUpstream": 1.7344388430733177,
+      "deficit": {
+        "candidate": {
+          "points": 44,
+          "geometricRatio": 1.652584939760844,
+          "positiveLogSlowdown": 0.7598290451592776,
+          "thresholds": {
+            "1": 40,
+            "1.1": 40,
+            "2": 21,
+            "5": 3,
+            "10": 0
+          }
+        },
+        "baseline": {
+          "points": 44,
+          "geometricRatio": 1.7344388430733177,
+          "positiveLogSlowdown": 0.8081722806693825,
+          "thresholds": {
+            "1": 40,
+            "1.1": 40,
+            "2": 21,
+            "5": 4,
+            "10": 0
+          }
+        }
+      },
+      "countsAgainstBaseline": {
+        "faster": 25,
+        "equal": 13,
+        "slower": 6
+      },
+      "roundGeometricRatios": [
+        {
+          "round": 0,
+          "candidateOverBaseline": 0.9523962898572943,
+          "candidateOverUpstream": 1.6503463919296926,
+          "baselineOverUpstream": 1.7328358053316
+        },
+        {
+          "round": 1,
+          "candidateOverBaseline": 0.9519957921380177,
+          "candidateOverUpstream": 1.6497298413209114,
+          "baselineOverUpstream": 1.7329171567196784
+        },
+        {
+          "round": 2,
+          "candidateOverBaseline": 0.9490315347665838,
+          "candidateOverUpstream": 1.6464639249233743,
+          "baselineOverUpstream": 1.7348885306833617
+        }
+      ],
+      "summedMedianBatchMs": {
+        "candidate": 20660,
+        "baseline": 22100,
+        "upstream": 8809
+      },
+      "positiveExcessBatchMs": {
+        "candidate": 12580,
+        "baseline": 14020
+      },
+      "families": [
+        {
+          "family": "bst",
+          "cases": [
+            "coverage-bst-32",
+            "coverage-bst-64"
+          ],
+          "candidateOverBaseline": 0.9991786446252768,
+          "candidateOverUpstream": 3.6158972789850785,
+          "baselineOverUpstream": 3.6188696570283017
+        },
+        {
+          "family": "closures",
+          "cases": [
+            "coverage-closures-64",
+            "coverage-closures-256"
+          ],
+          "candidateOverBaseline": 1.0,
+          "candidateOverUpstream": 0.022473328748774734,
+          "baselineOverUpstream": 0.022473328748774734
+        },
+        {
+          "family": "complete-generic-row32",
+          "cases": [
+            "complete-generic-row32"
+          ],
+          "candidateOverBaseline": 0.9237588652482269,
+          "candidateOverUpstream": 2.5920398009950247,
+          "baselineOverUpstream": 2.805970149253732
+        },
+        {
+          "family": "editdist",
+          "cases": [
+            "editdist",
+            "variation-editdist-0-17",
+            "variation-editdist-3-123"
+          ],
+          "candidateOverBaseline": 1.0013210054988142,
+          "candidateOverUpstream": 1.2495938436112348,
+          "baselineOverUpstream": 1.2479453010063863
+        },
+        {
+          "family": "expression",
+          "cases": [
+            "coverage-expression-32",
+            "coverage-expression-128"
+          ],
+          "candidateOverBaseline": 0.9834339826535407,
+          "candidateOverUpstream": 1.4445006110405945,
+          "baselineOverUpstream": 1.4688333294554103
+        },
+        {
+          "family": "lexer",
+          "cases": [
+            "lexer",
+            "variation-lexer-6-17",
+            "variation-lexer-10-123"
+          ],
+          "candidateOverBaseline": 0.9917042929509056,
+          "candidateOverUpstream": 2.704681947314485,
+          "baselineOverUpstream": 2.7273068862760086
+        },
+        {
+          "family": "list-pipeline",
+          "cases": [
+            "coverage-list-pipeline-128",
+            "coverage-list-pipeline-512"
+          ],
+          "candidateOverBaseline": 1.0,
+          "candidateOverUpstream": 0.15422885572139305,
+          "baselineOverUpstream": 0.15422885572139305
+        },
+        {
+          "family": "local-fold",
+          "cases": [
+            "local-fold",
+            "variation-local-fold-128-0",
+            "variation-local-fold-8192-123"
+          ],
+          "candidateOverBaseline": 1.0006493508318266,
+          "candidateOverUpstream": 1.9389870998956145,
+          "baselineOverUpstream": 1.9377288340653598
+        },
+        {
+          "family": "local-pair",
+          "cases": [
+            "local-pair"
+          ],
+          "candidateOverBaseline": 0.9882352941176471,
+          "candidateOverUpstream": 1.2537313432835822,
+          "baselineOverUpstream": 1.2686567164179106
+        },
+        {
+          "family": "mandelbrot",
+          "cases": [
+            "mandelbrot",
+            "variation-mandelbrot-grid-4-7",
+            "variation-mandelbrot-grid-5-31"
+          ],
+          "candidateOverBaseline": 0.9553569533404068,
+          "candidateOverUpstream": 2.1248532131713542,
+          "baselineOverUpstream": 2.2241458606040414
+        },
+        {
+          "family": "map-churn",
+          "cases": [
+            "coverage-map-churn-32",
+            "coverage-map-churn-128"
+          ],
+          "candidateOverBaseline": 0.8460013787928568,
+          "candidateOverUpstream": 2.789492701502962,
+          "baselineOverUpstream": 3.2972673229956624
+        },
+        {
+          "family": "numeric-recurrence",
+          "cases": [
+            "coverage-numeric-recurrence-256",
+            "coverage-numeric-recurrence-1024"
+          ],
+          "candidateOverBaseline": 1.0016433864825398,
+          "candidateOverUpstream": 1.507429847104661,
+          "baselineOverUpstream": 1.5049566217356918
+        },
+        {
+          "family": "raytrace",
+          "cases": [
+            "raytrace",
+            "variation-ray-active-64-2440",
+            "variation-ray-active-256-2240"
+          ],
+          "candidateOverBaseline": 1.0053440872722121,
+          "candidateOverUpstream": 2.839723973942342,
+          "baselineOverUpstream": 2.8246289105328413
+        },
+        {
+          "family": "record-aggregation",
+          "cases": [
+            "coverage-record-aggregation-64",
+            "coverage-record-aggregation-256"
+          ],
+          "candidateOverBaseline": 0.8605105158319021,
+          "candidateOverUpstream": 2.467468786034638,
+          "baselineOverUpstream": 2.8674475682022345
+        },
+        {
+          "family": "scalar-region-8192",
+          "cases": [
+            "scalar-region-8192"
+          ],
+          "candidateOverBaseline": 1.0029239766081872,
+          "candidateOverUpstream": 1.715,
+          "baselineOverUpstream": 1.71
+        },
+        {
+          "family": "symreg",
+          "cases": [
+            "symreg",
+            "variation-symreg-4-17",
+            "variation-symreg-7-123"
+          ],
+          "candidateOverBaseline": 0.9477678996397152,
+          "candidateOverUpstream": 1.6199162262773146,
+          "baselineOverUpstream": 1.7091908545257861
+        },
+        {
+          "family": "test-evening-program",
+          "cases": [
+            "test-evening-program"
+          ],
+          "candidateOverBaseline": 0.8760869565217392,
+          "candidateOverUpstream": 5.42152466367713,
+          "baselineOverUpstream": 6.188340807174888
+        },
+        {
+          "family": "test-map-set-ops",
+          "cases": [
+            "test-map-set-ops"
+          ],
+          "candidateOverBaseline": 0.8534201954397395,
+          "candidateOverUpstream": 3.96969696969697,
+          "baselineOverUpstream": 4.651515151515151
+        },
+        {
+          "family": "test-morning-program",
+          "cases": [
+            "test-morning-program"
+          ],
+          "candidateOverBaseline": 0.7860892388451444,
+          "candidateOverUpstream": 3.0100502512562817,
+          "baselineOverUpstream": 3.829145728643216
+        },
+        {
+          "family": "test-rle-roundtrip",
+          "cases": [
+            "test-rle-roundtrip"
+          ],
+          "candidateOverBaseline": 1.0,
+          "candidateOverUpstream": 5.658415841584159,
+          "baselineOverUpstream": 5.658415841584159
+        },
+        {
+          "family": "tree-bitonic",
+          "cases": [
+            "tree-bitonic",
+            "variation-tree-bitonic-6-17",
+            "variation-tree-bitonic-9-123"
+          ],
+          "candidateOverBaseline": 0.8909729695735765,
+          "candidateOverUpstream": 4.631843079948307,
+          "baselineOverUpstream": 5.198634793786311
+        },
+        {
+          "family": "unicode-text",
+          "cases": [
+            "coverage-unicode-text-16",
+            "coverage-unicode-text-64"
+          ],
+          "candidateOverBaseline": 0.9078536203270144,
+          "candidateOverUpstream": 1.4528691878504918,
+          "baselineOverUpstream": 1.6003341896980698
+        }
+      ],
+      "equalObservedFamilyRatios": {
+        "candidateOverBaseline": 0.9441001927786727,
+        "candidateOverUpstream": 1.7266647499304564,
+        "baselineOverUpstream": 1.8288999018722176
+      },
+      "scope": "Same-screen medians/rounds only. Subset metrics are not original44 parity. Spread is descriptive, not a confidence interval. Product pins are retained; small output receipts are verified; no fresh oracle or binary execution."
+    }
+  ],
+  "scope": "Independent screen populations, never pooled across attempts. No benchmark/compiler execution or report modification. No broad improvement claim follows from a three-case screen."
+}

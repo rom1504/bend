@@ -51,3 +51,33 @@ actual inodes and verified every path; see the retained completion audit.
 
 Final native/request/program metrics, qualification, source growth, law scope,
 negative findings and complete cost accounting will replace this progress note.
+
+## Native checkpoint at 23:10 UTC
+
+The first combined FAST image passes focused19. A fresh rotated three-round
+request comparison passes27 independent output observations. Native request
+time improves6.11% geometrically,1.81467→1.70384 times upstream. Map improves
+17.58%, closures1.59%; lexer is2.05% slower, with overlapping noisy ranges.
+Request plus machine-build child sums are0.80532 times upstream under the
+explicit compact prepared-Base/cached-runtime policy; this is a different clock.
+This checkpoint is experimental pending self-reproduction and ordinary45.
+
+Cheap native discriminators establish narrower facts:
+
+| Computation | Candidate / original time | Scope |
+|---|---:|---|
+| Reused usage summary | 0.03648 | 64-ID extracted workload; not compiler-wide |
+| Proved closure-based summary / fast summary | 2.5640 | Negative safe-codegen result |
+| General selector fix on unchanged safe summary | 0.40642 | Recovers the closure overhead |
+| Proved first-order summary / fast summary | 1.02643 | Similar speed, stronger source equivalence |
+| Static missing value, mixed index hits/misses | 0.90190 | Source-only constant exposure |
+| Closed index read loop | 0.7562 | Retained compiler-name tree |
+| Borrowed scalar product, short string/list query | 0.5171 / 0.5516 | Includes worker closure |
+| Same product projection / closure-only control | 0.8952 / 0.8884 | Isolates incremental projection |
+
+These ratios are not additive and do not predict the combined compiler gain.
+The useful architectural lesson is preserving already verified semantic facts
+through function boundaries: use facts, static constants, borrowed origins and
+scalar product results. Exact source laws currently prove arithmetic, absent-side
+behavior and first-order algorithm equivalence; they do not prove whole KTerm
+analysis, backend correctness or native ownership.

@@ -1,0 +1,9 @@
+{
+  "source": "selfhost/tools/performance/phase131/usage/summary-v02.bend",
+  "sourceSha256": "38e97881628e486d52d6e60e5493b0eacc3738139b9663f0c2f651dc7dd728c6",
+  "output": "selfhost/tools/performance/phase131/laws/absent-production.bend",
+  "outputSha256": "5bcd1dbb1b692b1578f9cb7d70a321f20acb2f0b4ead507990f3618022fcab63",
+  "originalDeclaration": "@unsafe\ndef p131u_absent(entries: List<&2,P131UEntry>, +mode: U32) -> List<&2,P131UEntry>:\n  match entries mode:\n    case values 0: values\n    case Nil{} other: []\n    case Con{P131UEntry{id,low,high},rest} other:\n      Con{P131UEntry{id,0,high},p131u_absent(rest,mode)}\n",
+  "extractedDeclaration": "def p131u_absent(entries: List<&2,P131UEntry>, +mode: U32) -> List<&2,P131UEntry>:\n  match entries mode:\n    case values 0: values\n    case Nil{} other: []\n    case Con{P131UEntry{id,low,high},rest} other:\n      Con{P131UEntry{id,0,high},p131u_absent(rest,mode)}\n",
+  "difference": "Only @unsafe annotation removed; type and implementation identical."
+}

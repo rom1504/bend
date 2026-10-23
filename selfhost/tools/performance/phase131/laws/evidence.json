@@ -1,0 +1,1104 @@
+{
+  "schema": "phase131-usage-laws-v1",
+  "complete": true,
+  "acceptedUniqueLawCount": 20,
+  "acceptedUniqueLaws": [
+    "aligned_maximum",
+    "aligned_merge_exact",
+    "aligned_minimum",
+    "branch_missing_exact",
+    "choose_zero",
+    "clear_preserves_highs",
+    "high_choose",
+    "low_choose",
+    "lower_combination_exact",
+    "merge_same_key",
+    "merged_maximum",
+    "merged_minimum",
+    "missing_branch_maximum",
+    "missing_branch_minimum",
+    "pattern_missing_exact",
+    "saturated_sequence_exact",
+    "sequence_missing_identity",
+    "u32_compare_reflexive",
+    "upper_combination_exact",
+    "word_compare_reflexive"
+  ],
+  "accepted": [
+    {
+      "run": "laws-add01",
+      "receipt": {
+        "file": "selfhost/build/phase131/laws-add01/report.json",
+        "bytes": 12360,
+        "sha256": "f28847ecc0988fdb69533989971aa3f6b603f0114457211b73476489adb00112"
+      },
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/laws/add-only.bend",
+        "bytes": 702,
+        "sha256": "d5b3289fb2e0eafd981e52ccfcb6ec5f0acb016d15726e07033fff91a8e85725"
+      },
+      "elaboration": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/laws-add01/laws.bendtt",
+        "bytes": 53972,
+        "sha256": "12447a27ce8cbe9a5e5cfc232a52a06d7802244c6c09d46df61af62d4535f21d"
+      },
+      "lawNames": [
+        "saturated_sequence_exact"
+      ],
+      "opaqueDefinitions": [],
+      "sourceClosure": [
+        {
+          "origin": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/laws/add-only.bend",
+            "bytes": 702,
+            "sha256": "d5b3289fb2e0eafd981e52ccfcb6ec5f0acb016d15726e07033fff91a8e85725"
+          },
+          "snapshot": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/laws-add01/snapshot/selfhost/tools/performance/phase131/laws/add-only.bend",
+            "bytes": 702,
+            "sha256": "d5b3289fb2e0eafd981e52ccfcb6ec5f0acb016d15726e07033fff91a8e85725"
+          }
+        },
+        {
+          "origin": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/laws/production.bend",
+            "bytes": 579,
+            "sha256": "4c4e7d6b12a30f97e9dc0ec482740e253a47db923716b7d7473c3de1055da047"
+          },
+          "snapshot": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/laws-add01/snapshot/selfhost/tools/performance/phase131/laws/production.bend",
+            "bytes": 579,
+            "sha256": "4c4e7d6b12a30f97e9dc0ec482740e253a47db923716b7d7473c3de1055da047"
+          }
+        },
+        {
+          "origin": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/laws/reference.bend",
+            "bytes": 1666,
+            "sha256": "2c307630e01b283db9fcea6ee3bf50ad3268e9055c0b8108e95418cbfde4dbe3"
+          },
+          "snapshot": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/laws-add01/snapshot/selfhost/tools/performance/phase131/laws/reference.bend",
+            "bytes": 1666,
+            "sha256": "2c307630e01b283db9fcea6ee3bf50ad3268e9055c0b8108e95418cbfde4dbe3"
+          }
+        }
+      ],
+      "costs": {
+        "check": {
+          "returncode": 0,
+          "wallSeconds": 1.2112202639691532,
+          "peakTreeRssBytes": 81510400,
+          "stoppedFor": null
+        },
+        "elaborate": {
+          "returncode": 0,
+          "wallSeconds": 0.9817316778935492,
+          "peakTreeRssBytes": 80867328,
+          "stoppedFor": null
+        },
+        "kernel": {
+          "returncode": 0,
+          "wallSeconds": 22.47297429293394,
+          "peakTreeRssBytes": 633561088,
+          "stoppedFor": null
+        },
+        "kernel-negative": {
+          "returncode": 1,
+          "wallSeconds": 0.3295897578354925,
+          "peakTreeRssBytes": 628187136,
+          "stoppedFor": null
+        }
+      }
+    },
+    {
+      "run": "laws-low01",
+      "receipt": {
+        "file": "selfhost/build/phase131/laws-low01/report.json",
+        "bytes": 12362,
+        "sha256": "e50bdf453e7c82c20116670138650bcd00efa6ca6684e8ab5b53687c180b3caf"
+      },
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/laws/low-only.bend",
+        "bytes": 1917,
+        "sha256": "8478e5af67da8aebd74cd9f0487105764d8568cff05efcc0498adf05f04115a2"
+      },
+      "elaboration": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/laws-low01/laws.bendtt",
+        "bytes": 55324,
+        "sha256": "f97df808e8ae4db8f43b4eee6027e9939156073c3764f760565142df75c1db38"
+      },
+      "lawNames": [
+        "lower_combination_exact"
+      ],
+      "opaqueDefinitions": [],
+      "sourceClosure": [
+        {
+          "origin": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/laws/low-only.bend",
+            "bytes": 1917,
+            "sha256": "8478e5af67da8aebd74cd9f0487105764d8568cff05efcc0498adf05f04115a2"
+          },
+          "snapshot": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/laws-low01/snapshot/selfhost/tools/performance/phase131/laws/low-only.bend",
+            "bytes": 1917,
+            "sha256": "8478e5af67da8aebd74cd9f0487105764d8568cff05efcc0498adf05f04115a2"
+          }
+        },
+        {
+          "origin": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/laws/production.bend",
+            "bytes": 579,
+            "sha256": "4c4e7d6b12a30f97e9dc0ec482740e253a47db923716b7d7473c3de1055da047"
+          },
+          "snapshot": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/laws-low01/snapshot/selfhost/tools/performance/phase131/laws/production.bend",
+            "bytes": 579,
+            "sha256": "4c4e7d6b12a30f97e9dc0ec482740e253a47db923716b7d7473c3de1055da047"
+          }
+        },
+        {
+          "origin": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/laws/reference.bend",
+            "bytes": 1666,
+            "sha256": "2c307630e01b283db9fcea6ee3bf50ad3268e9055c0b8108e95418cbfde4dbe3"
+          },
+          "snapshot": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/laws-low01/snapshot/selfhost/tools/performance/phase131/laws/reference.bend",
+            "bytes": 1666,
+            "sha256": "2c307630e01b283db9fcea6ee3bf50ad3268e9055c0b8108e95418cbfde4dbe3"
+          }
+        }
+      ],
+      "costs": {
+        "check": {
+          "returncode": 0,
+          "wallSeconds": 0.5749084409326315,
+          "peakTreeRssBytes": 79958016,
+          "stoppedFor": null
+        },
+        "elaborate": {
+          "returncode": 0,
+          "wallSeconds": 0.6595254940912127,
+          "peakTreeRssBytes": 88866816,
+          "stoppedFor": null
+        },
+        "kernel": {
+          "returncode": 0,
+          "wallSeconds": 1.3250254529993981,
+          "peakTreeRssBytes": 641765376,
+          "stoppedFor": null
+        },
+        "kernel-negative": {
+          "returncode": 1,
+          "wallSeconds": 0.28890193812549114,
+          "peakTreeRssBytes": 630042624,
+          "stoppedFor": null
+        }
+      }
+    },
+    {
+      "run": "laws-high01",
+      "receipt": {
+        "file": "selfhost/build/phase131/laws-high01/report.json",
+        "bytes": 12382,
+        "sha256": "02e9f02f422c628408b29f90e0c7c5f5af4df381947f89c6631e7ae9e24cacb1"
+      },
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/laws/high-only.bend",
+        "bytes": 1919,
+        "sha256": "490b4455e059901cd6ac2e68f2a8f018ee76560e0f3af59bd9831740a3d7aca1"
+      },
+      "elaboration": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/laws-high01/laws.bendtt",
+        "bytes": 55326,
+        "sha256": "53f2cf7950210fb861e81d81d52db6708b7c5c2428692a0daec8968a00d4482e"
+      },
+      "lawNames": [
+        "upper_combination_exact"
+      ],
+      "opaqueDefinitions": [],
+      "sourceClosure": [
+        {
+          "origin": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/laws/high-only.bend",
+            "bytes": 1919,
+            "sha256": "490b4455e059901cd6ac2e68f2a8f018ee76560e0f3af59bd9831740a3d7aca1"
+          },
+          "snapshot": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/laws-high01/snapshot/selfhost/tools/performance/phase131/laws/high-only.bend",
+            "bytes": 1919,
+            "sha256": "490b4455e059901cd6ac2e68f2a8f018ee76560e0f3af59bd9831740a3d7aca1"
+          }
+        },
+        {
+          "origin": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/laws/production.bend",
+            "bytes": 579,
+            "sha256": "4c4e7d6b12a30f97e9dc0ec482740e253a47db923716b7d7473c3de1055da047"
+          },
+          "snapshot": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/laws-high01/snapshot/selfhost/tools/performance/phase131/laws/production.bend",
+            "bytes": 579,
+            "sha256": "4c4e7d6b12a30f97e9dc0ec482740e253a47db923716b7d7473c3de1055da047"
+          }
+        },
+        {
+          "origin": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/laws/reference.bend",
+            "bytes": 1666,
+            "sha256": "2c307630e01b283db9fcea6ee3bf50ad3268e9055c0b8108e95418cbfde4dbe3"
+          },
+          "snapshot": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/laws-high01/snapshot/selfhost/tools/performance/phase131/laws/reference.bend",
+            "bytes": 1666,
+            "sha256": "2c307630e01b283db9fcea6ee3bf50ad3268e9055c0b8108e95418cbfde4dbe3"
+          }
+        }
+      ],
+      "costs": {
+        "check": {
+          "returncode": 0,
+          "wallSeconds": 0.6164567600935698,
+          "peakTreeRssBytes": 82358272,
+          "stoppedFor": null
+        },
+        "elaborate": {
+          "returncode": 0,
+          "wallSeconds": 0.7194479620084167,
+          "peakTreeRssBytes": 81616896,
+          "stoppedFor": null
+        },
+        "kernel": {
+          "returncode": 0,
+          "wallSeconds": 1.4948335220105946,
+          "peakTreeRssBytes": 632528896,
+          "stoppedFor": null
+        },
+        "kernel-negative": {
+          "returncode": 1,
+          "wallSeconds": 0.35069855907931924,
+          "peakTreeRssBytes": 626143232,
+          "stoppedFor": null
+        }
+      }
+    },
+    {
+      "run": "laws-absent04",
+      "receipt": {
+        "file": "selfhost/build/phase131/laws-absent04/report.json",
+        "bytes": 12389,
+        "sha256": "064372420c01a9032507da5f80b6e83fc7685eba9321a08fdd07bfce5dcf35fc"
+      },
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/laws/absent-laws.bend",
+        "bytes": 1596,
+        "sha256": "97e28c2cb6eb7db1532a3bd027aa62112bb08e6e2de8247591e735fd8dbd7311"
+      },
+      "elaboration": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/laws-absent04/laws.bendtt",
+        "bytes": 54657,
+        "sha256": "a2175a4b6d7a011563ff5420b0b59a27a46a962aa27b36d940029acab1f1428a"
+      },
+      "lawNames": [
+        "sequence_missing_identity",
+        "branch_missing_exact",
+        "pattern_missing_exact",
+        "clear_preserves_highs"
+      ],
+      "opaqueDefinitions": [],
+      "sourceClosure": [
+        {
+          "origin": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/laws/absent-laws.bend",
+            "bytes": 1596,
+            "sha256": "97e28c2cb6eb7db1532a3bd027aa62112bb08e6e2de8247591e735fd8dbd7311"
+          },
+          "snapshot": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/laws-absent04/snapshot/selfhost/tools/performance/phase131/laws/absent-laws.bend",
+            "bytes": 1596,
+            "sha256": "97e28c2cb6eb7db1532a3bd027aa62112bb08e6e2de8247591e735fd8dbd7311"
+          }
+        },
+        {
+          "origin": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/laws/absent-production.bend",
+            "bytes": 349,
+            "sha256": "5bcd1dbb1b692b1578f9cb7d70a321f20acb2f0b4ead507990f3618022fcab63"
+          },
+          "snapshot": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/laws-absent04/snapshot/selfhost/tools/performance/phase131/laws/absent-production.bend",
+            "bytes": 349,
+            "sha256": "5bcd1dbb1b692b1578f9cb7d70a321f20acb2f0b4ead507990f3618022fcab63"
+          }
+        },
+        {
+          "origin": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/laws/absent-reference.bend",
+            "bytes": 692,
+            "sha256": "8d1b01cd2dd3df20ce4dd94a9db677ffce018932cb329be3b5edc11ad5233df7"
+          },
+          "snapshot": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/laws-absent04/snapshot/selfhost/tools/performance/phase131/laws/absent-reference.bend",
+            "bytes": 692,
+            "sha256": "8d1b01cd2dd3df20ce4dd94a9db677ffce018932cb329be3b5edc11ad5233df7"
+          }
+        }
+      ],
+      "costs": {
+        "check": {
+          "returncode": 0,
+          "wallSeconds": 0.6157561470754445,
+          "peakTreeRssBytes": 79331328,
+          "stoppedFor": null
+        },
+        "elaborate": {
+          "returncode": 0,
+          "wallSeconds": 0.7182194930501282,
+          "peakTreeRssBytes": 82444288,
+          "stoppedFor": null
+        },
+        "kernel": {
+          "returncode": 0,
+          "wallSeconds": 1.0247409020084888,
+          "peakTreeRssBytes": 638574592,
+          "stoppedFor": null
+        },
+        "kernel-negative": {
+          "returncode": 1,
+          "wallSeconds": 0.31005342793650925,
+          "peakTreeRssBytes": 626536448,
+          "stoppedFor": null
+        }
+      }
+    },
+    {
+      "run": "laws-lookup03",
+      "receipt": {
+        "file": "selfhost/build/phase131/laws-lookup03/report.json",
+        "bytes": 12360,
+        "sha256": "dbc8ac9b054284f996824ee428734fa3a175b3cf1d54d611e42d28c6f323ec2a"
+      },
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/laws/lookup-laws.bend",
+        "bytes": 1525,
+        "sha256": "a36aef3ed16122a89f25cb9d2343b87d0dac6606e69bfb982c5960a99dc2fef6"
+      },
+      "elaboration": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/laws-lookup03/laws.bendtt",
+        "bytes": 54822,
+        "sha256": "4b9c0c8592b7019c415346039e20a89160e890f993b91339a9206be55e668574"
+      },
+      "lawNames": [
+        "choose_zero",
+        "missing_branch_maximum",
+        "missing_branch_minimum"
+      ],
+      "opaqueDefinitions": [],
+      "sourceClosure": [
+        {
+          "origin": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/laws/lookup-laws.bend",
+            "bytes": 1525,
+            "sha256": "a36aef3ed16122a89f25cb9d2343b87d0dac6606e69bfb982c5960a99dc2fef6"
+          },
+          "snapshot": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/laws-lookup03/snapshot/selfhost/tools/performance/phase131/laws/lookup-laws.bend",
+            "bytes": 1525,
+            "sha256": "a36aef3ed16122a89f25cb9d2343b87d0dac6606e69bfb982c5960a99dc2fef6"
+          }
+        },
+        {
+          "origin": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/laws/absent-production.bend",
+            "bytes": 349,
+            "sha256": "5bcd1dbb1b692b1578f9cb7d70a321f20acb2f0b4ead507990f3618022fcab63"
+          },
+          "snapshot": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/laws-lookup03/snapshot/selfhost/tools/performance/phase131/laws/absent-production.bend",
+            "bytes": 349,
+            "sha256": "5bcd1dbb1b692b1578f9cb7d70a321f20acb2f0b4ead507990f3618022fcab63"
+          }
+        },
+        {
+          "origin": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/laws/lookup-production-v02.bend",
+            "bytes": 700,
+            "sha256": "a9ef7717bfdc3d57dbee006118a14691aae4383dbd9ec29f2975e6b5e9b1cdfd"
+          },
+          "snapshot": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/laws-lookup03/snapshot/selfhost/tools/performance/phase131/laws/lookup-production-v02.bend",
+            "bytes": 700,
+            "sha256": "a9ef7717bfdc3d57dbee006118a14691aae4383dbd9ec29f2975e6b5e9b1cdfd"
+          }
+        }
+      ],
+      "costs": {
+        "check": {
+          "returncode": 0,
+          "wallSeconds": 0.6155678979121149,
+          "peakTreeRssBytes": 78708736,
+          "stoppedFor": null
+        },
+        "elaborate": {
+          "returncode": 0,
+          "wallSeconds": 0.6383862639777362,
+          "peakTreeRssBytes": 81227776,
+          "stoppedFor": null
+        },
+        "kernel": {
+          "returncode": 0,
+          "wallSeconds": 1.044460997916758,
+          "peakTreeRssBytes": 634380288,
+          "stoppedFor": null
+        },
+        "kernel-negative": {
+          "returncode": 1,
+          "wallSeconds": 0.32969766994938254,
+          "peakTreeRssBytes": 626356224,
+          "stoppedFor": null
+        }
+      }
+    },
+    {
+      "run": "laws-compare01",
+      "receipt": {
+        "file": "selfhost/build/phase131/laws-compare01/report.json",
+        "bytes": 10232,
+        "sha256": "c8797988fcef0265b084c336a1961d7eeca603fbc48c8bcd27ac37cb9c6b5aa5"
+      },
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/laws/compare-laws.bend",
+        "bytes": 842,
+        "sha256": "628aeb9055766b99f97c1950b174e18d220b265bcc9bace20906f3124024c7d9"
+      },
+      "elaboration": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/laws-compare01/laws.bendtt",
+        "bytes": 4465,
+        "sha256": "d416931078551e8a657116556096b4092c1005cdc4b6262793e9662dac786fd3"
+      },
+      "lawNames": [
+        "word_compare_reflexive",
+        "u32_compare_reflexive"
+      ],
+      "opaqueDefinitions": [],
+      "sourceClosure": [
+        {
+          "origin": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/laws/compare-laws.bend",
+            "bytes": 842,
+            "sha256": "628aeb9055766b99f97c1950b174e18d220b265bcc9bace20906f3124024c7d9"
+          },
+          "snapshot": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/laws-compare01/snapshot/selfhost/tools/performance/phase131/laws/compare-laws.bend",
+            "bytes": 842,
+            "sha256": "628aeb9055766b99f97c1950b174e18d220b265bcc9bace20906f3124024c7d9"
+          }
+        }
+      ],
+      "costs": {
+        "check": {
+          "returncode": 0,
+          "wallSeconds": 0.4531319688539952,
+          "peakTreeRssBytes": 72622080,
+          "stoppedFor": null
+        },
+        "elaborate": {
+          "returncode": 0,
+          "wallSeconds": 0.4749614130705595,
+          "peakTreeRssBytes": 72974336,
+          "stoppedFor": null
+        },
+        "kernel": {
+          "returncode": 0,
+          "wallSeconds": 0.329417556989938,
+          "peakTreeRssBytes": 629182464,
+          "stoppedFor": null
+        },
+        "kernel-negative": {
+          "returncode": 1,
+          "wallSeconds": 0.2898322739638388,
+          "peakTreeRssBytes": 626085888,
+          "stoppedFor": null
+        }
+      }
+    },
+    {
+      "run": "laws-aligned-merge01",
+      "receipt": {
+        "file": "selfhost/build/phase131/laws-aligned-merge01/report.json",
+        "bytes": 16853,
+        "sha256": "daa8d962c510954fbeaa5b82d73e6a6715428503fd56328c461f8b7e3ed21317"
+      },
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/laws/aligned-merge-laws.bend",
+        "bytes": 2224,
+        "sha256": "7a7fe4162630251b3517c9b686cfea6e5100984df59721caa14b0dce0cc1cc82"
+      },
+      "elaboration": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/laws-aligned-merge01/laws.bendtt",
+        "bytes": 108588,
+        "sha256": "39131ee8442e6e259dc7e3ca140187f8f24e44be4d15f94c0a76d08c6aab97af"
+      },
+      "lawNames": [
+        "merge_same_key",
+        "aligned_merge_exact",
+        "word_compare_reflexive",
+        "u32_compare_reflexive"
+      ],
+      "opaqueDefinitions": [],
+      "sourceClosure": [
+        {
+          "origin": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/laws/aligned-merge-laws.bend",
+            "bytes": 2224,
+            "sha256": "7a7fe4162630251b3517c9b686cfea6e5100984df59721caa14b0dce0cc1cc82"
+          },
+          "snapshot": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/laws-aligned-merge01/snapshot/selfhost/tools/performance/phase131/laws/aligned-merge-laws.bend",
+            "bytes": 2224,
+            "sha256": "7a7fe4162630251b3517c9b686cfea6e5100984df59721caa14b0dce0cc1cc82"
+          }
+        },
+        {
+          "origin": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/laws/production.bend",
+            "bytes": 579,
+            "sha256": "4c4e7d6b12a30f97e9dc0ec482740e253a47db923716b7d7473c3de1055da047"
+          },
+          "snapshot": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/laws-aligned-merge01/snapshot/selfhost/tools/performance/phase131/laws/production.bend",
+            "bytes": 579,
+            "sha256": "4c4e7d6b12a30f97e9dc0ec482740e253a47db923716b7d7473c3de1055da047"
+          }
+        },
+        {
+          "origin": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/laws/reference.bend",
+            "bytes": 1666,
+            "sha256": "2c307630e01b283db9fcea6ee3bf50ad3268e9055c0b8108e95418cbfde4dbe3"
+          },
+          "snapshot": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/laws-aligned-merge01/snapshot/selfhost/tools/performance/phase131/laws/reference.bend",
+            "bytes": 1666,
+            "sha256": "2c307630e01b283db9fcea6ee3bf50ad3268e9055c0b8108e95418cbfde4dbe3"
+          }
+        },
+        {
+          "origin": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/laws/absent-production.bend",
+            "bytes": 349,
+            "sha256": "5bcd1dbb1b692b1578f9cb7d70a321f20acb2f0b4ead507990f3618022fcab63"
+          },
+          "snapshot": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/laws-aligned-merge01/snapshot/selfhost/tools/performance/phase131/laws/absent-production.bend",
+            "bytes": 349,
+            "sha256": "5bcd1dbb1b692b1578f9cb7d70a321f20acb2f0b4ead507990f3618022fcab63"
+          }
+        },
+        {
+          "origin": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/laws/merge-production-v01.bend",
+            "bytes": 1129,
+            "sha256": "a2cf225859400c8157e45c8c5d5da82e2c39676f02a12bf92564293c58a0e11f"
+          },
+          "snapshot": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/laws-aligned-merge01/snapshot/selfhost/tools/performance/phase131/laws/merge-production-v01.bend",
+            "bytes": 1129,
+            "sha256": "a2cf225859400c8157e45c8c5d5da82e2c39676f02a12bf92564293c58a0e11f"
+          }
+        },
+        {
+          "origin": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/laws/aligned-production.bend",
+            "bytes": 1005,
+            "sha256": "2a812da61e597d0e93f4992e2815f437f00a4213455f7d8111b632090aa473f8"
+          },
+          "snapshot": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/laws-aligned-merge01/snapshot/selfhost/tools/performance/phase131/laws/aligned-production.bend",
+            "bytes": 1005,
+            "sha256": "2a812da61e597d0e93f4992e2815f437f00a4213455f7d8111b632090aa473f8"
+          }
+        },
+        {
+          "origin": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/laws/compare-laws.bend",
+            "bytes": 842,
+            "sha256": "628aeb9055766b99f97c1950b174e18d220b265bcc9bace20906f3124024c7d9"
+          },
+          "snapshot": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/laws-aligned-merge01/snapshot/selfhost/tools/performance/phase131/laws/compare-laws.bend",
+            "bytes": 842,
+            "sha256": "628aeb9055766b99f97c1950b174e18d220b265bcc9bace20906f3124024c7d9"
+          }
+        }
+      ],
+      "costs": {
+        "check": {
+          "returncode": 0,
+          "wallSeconds": 0.597663541091606,
+          "peakTreeRssBytes": 78680064,
+          "stoppedFor": null
+        },
+        "elaborate": {
+          "returncode": 0,
+          "wallSeconds": 0.697427311912179,
+          "peakTreeRssBytes": 86642688,
+          "stoppedFor": null
+        },
+        "kernel": {
+          "returncode": 0,
+          "wallSeconds": 1.4866970649454743,
+          "peakTreeRssBytes": 638660608,
+          "stoppedFor": null
+        },
+        "kernel-negative": {
+          "returncode": 1,
+          "wallSeconds": 0.28969724592752755,
+          "peakTreeRssBytes": 626356224,
+          "stoppedFor": null
+        }
+      }
+    },
+    {
+      "run": "laws-aligned-lookup01",
+      "receipt": {
+        "file": "selfhost/build/phase131/laws-aligned-lookup01/report.json",
+        "bytes": 19458,
+        "sha256": "50928cab32167a37e6192eedcf014e73cc931e90a56fe03fa7ea6ed5dec9e746"
+      },
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/laws/aligned-lookup-laws.bend",
+        "bytes": 5373,
+        "sha256": "9ab1bd0654d49a83510e62b9ddab89a6b72c6f033cddf8bb2504f712cc01ee6e"
+      },
+      "elaboration": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/laws-aligned-lookup01/laws.bendtt",
+        "bytes": 118846,
+        "sha256": "8fb69f03941aed539097771658b04fbc32ff2daf998ad4d56fab25cfcbd5c303"
+      },
+      "lawNames": [
+        "high_choose",
+        "low_choose",
+        "aligned_maximum",
+        "aligned_minimum",
+        "merged_maximum",
+        "merged_minimum",
+        "merge_same_key",
+        "aligned_merge_exact",
+        "word_compare_reflexive",
+        "u32_compare_reflexive"
+      ],
+      "opaqueDefinitions": [],
+      "sourceClosure": [
+        {
+          "origin": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/laws/aligned-lookup-laws.bend",
+            "bytes": 5373,
+            "sha256": "9ab1bd0654d49a83510e62b9ddab89a6b72c6f033cddf8bb2504f712cc01ee6e"
+          },
+          "snapshot": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/laws-aligned-lookup01/snapshot/selfhost/tools/performance/phase131/laws/aligned-lookup-laws.bend",
+            "bytes": 5373,
+            "sha256": "9ab1bd0654d49a83510e62b9ddab89a6b72c6f033cddf8bb2504f712cc01ee6e"
+          }
+        },
+        {
+          "origin": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/laws/production.bend",
+            "bytes": 579,
+            "sha256": "4c4e7d6b12a30f97e9dc0ec482740e253a47db923716b7d7473c3de1055da047"
+          },
+          "snapshot": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/laws-aligned-lookup01/snapshot/selfhost/tools/performance/phase131/laws/production.bend",
+            "bytes": 579,
+            "sha256": "4c4e7d6b12a30f97e9dc0ec482740e253a47db923716b7d7473c3de1055da047"
+          }
+        },
+        {
+          "origin": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/laws/reference.bend",
+            "bytes": 1666,
+            "sha256": "2c307630e01b283db9fcea6ee3bf50ad3268e9055c0b8108e95418cbfde4dbe3"
+          },
+          "snapshot": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/laws-aligned-lookup01/snapshot/selfhost/tools/performance/phase131/laws/reference.bend",
+            "bytes": 1666,
+            "sha256": "2c307630e01b283db9fcea6ee3bf50ad3268e9055c0b8108e95418cbfde4dbe3"
+          }
+        },
+        {
+          "origin": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/laws/absent-production.bend",
+            "bytes": 349,
+            "sha256": "5bcd1dbb1b692b1578f9cb7d70a321f20acb2f0b4ead507990f3618022fcab63"
+          },
+          "snapshot": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/laws-aligned-lookup01/snapshot/selfhost/tools/performance/phase131/laws/absent-production.bend",
+            "bytes": 349,
+            "sha256": "5bcd1dbb1b692b1578f9cb7d70a321f20acb2f0b4ead507990f3618022fcab63"
+          }
+        },
+        {
+          "origin": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/laws/merge-production-v01.bend",
+            "bytes": 1129,
+            "sha256": "a2cf225859400c8157e45c8c5d5da82e2c39676f02a12bf92564293c58a0e11f"
+          },
+          "snapshot": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/laws-aligned-lookup01/snapshot/selfhost/tools/performance/phase131/laws/merge-production-v01.bend",
+            "bytes": 1129,
+            "sha256": "a2cf225859400c8157e45c8c5d5da82e2c39676f02a12bf92564293c58a0e11f"
+          }
+        },
+        {
+          "origin": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/laws/lookup-production-v02.bend",
+            "bytes": 700,
+            "sha256": "a9ef7717bfdc3d57dbee006118a14691aae4383dbd9ec29f2975e6b5e9b1cdfd"
+          },
+          "snapshot": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/laws-aligned-lookup01/snapshot/selfhost/tools/performance/phase131/laws/lookup-production-v02.bend",
+            "bytes": 700,
+            "sha256": "a9ef7717bfdc3d57dbee006118a14691aae4383dbd9ec29f2975e6b5e9b1cdfd"
+          }
+        },
+        {
+          "origin": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/laws/aligned-production.bend",
+            "bytes": 1005,
+            "sha256": "2a812da61e597d0e93f4992e2815f437f00a4213455f7d8111b632090aa473f8"
+          },
+          "snapshot": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/laws-aligned-lookup01/snapshot/selfhost/tools/performance/phase131/laws/aligned-production.bend",
+            "bytes": 1005,
+            "sha256": "2a812da61e597d0e93f4992e2815f437f00a4213455f7d8111b632090aa473f8"
+          }
+        },
+        {
+          "origin": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/laws/aligned-merge-laws.bend",
+            "bytes": 2224,
+            "sha256": "7a7fe4162630251b3517c9b686cfea6e5100984df59721caa14b0dce0cc1cc82"
+          },
+          "snapshot": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/laws-aligned-lookup01/snapshot/selfhost/tools/performance/phase131/laws/aligned-merge-laws.bend",
+            "bytes": 2224,
+            "sha256": "7a7fe4162630251b3517c9b686cfea6e5100984df59721caa14b0dce0cc1cc82"
+          }
+        },
+        {
+          "origin": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/laws/compare-laws.bend",
+            "bytes": 842,
+            "sha256": "628aeb9055766b99f97c1950b174e18d220b265bcc9bace20906f3124024c7d9"
+          },
+          "snapshot": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/laws-aligned-lookup01/snapshot/selfhost/tools/performance/phase131/laws/compare-laws.bend",
+            "bytes": 842,
+            "sha256": "628aeb9055766b99f97c1950b174e18d220b265bcc9bace20906f3124024c7d9"
+          }
+        }
+      ],
+      "costs": {
+        "check": {
+          "returncode": 0,
+          "wallSeconds": 0.6768997709732503,
+          "peakTreeRssBytes": 85311488,
+          "stoppedFor": null
+        },
+        "elaborate": {
+          "returncode": 0,
+          "wallSeconds": 0.8012267600279301,
+          "peakTreeRssBytes": 101142528,
+          "stoppedFor": null
+        },
+        "kernel": {
+          "returncode": 0,
+          "wallSeconds": 1.770493428921327,
+          "peakTreeRssBytes": 637849600,
+          "stoppedFor": null
+        },
+        "kernel-negative": {
+          "returncode": 1,
+          "wallSeconds": 0.3092568861320615,
+          "peakTreeRssBytes": 628142080,
+          "stoppedFor": null
+        }
+      }
+    }
+  ],
+  "semanticMutations": [
+    {
+      "run": "laws-mutation02",
+      "receipt": {
+        "file": "selfhost/build/phase131/laws-mutation02/report.json",
+        "bytes": 5817,
+        "sha256": "ee1f8b46e72e2ff337698b6b74e89b1290bcd1c3afc534120cab86587873df04"
+      },
+      "mutation": {
+        "original": "production.p131a_add : \u2200x0 : U32 -> \u2200x1 : U32 -> U32 =\n  \u03bbx0 => \u03bbx1 => (U32.min U32.lit2 (U32.add x0 x1))",
+        "replacement": "production.p131a_add : \u2200x0 : U32 -> \u2200x1 : U32 -> U32 =\n  \u03bbx0 => \u03bbx1 => (U32.min x0 x1)",
+        "witness": "Once followed by Once must be Many (2); minimum incorrectly returns Once (1)."
+      },
+      "artifacts": {
+        "program": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/laws-mutation02/wrong-program.bendtt",
+          "bytes": 53156,
+          "sha256": "d78ecb9d7e2fd1fc29482fe9d9fb2cb0ce9c77b77619c637928298e4298ee2e9"
+        },
+        "law": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/laws-mutation02/wrong-law.bendtt",
+          "bytes": 53953,
+          "sha256": "424d28d9145e1c3c94b2f7844314cc837985ec2276924916fdd69426a137acd8"
+        }
+      },
+      "wrongProgramAccepted": true,
+      "unchangedLawRejected": true,
+      "rows": {
+        "program": {
+          "stdout": "ALL PROOFS CHECK\n",
+          "returncode": 0,
+          "wallSeconds": 0.9015574641525745
+        },
+        "law": {
+          "stdout": "SOME PROOFS FAIL\nIn saturated_sequence_exact:\nexpected: ((production.p131a_add (reference.encode (.reference.P131Zero, ()))) (reference.encode (.reference.P131Once, ())))\nobserved: (reference.encode ((reference.sequence (.reference.P131Zero, ())) (.reference.P131Once, ())))\n",
+          "returncode": 1,
+          "wallSeconds": 0.8412323619704694
+        }
+      }
+    },
+    {
+      "run": "laws-merge-mutation02",
+      "receipt": {
+        "file": "selfhost/build/phase131/laws-merge-mutation02/report.json",
+        "bytes": 6722,
+        "sha256": "bae27b4d047cea54170a3fa481070a9acbec578da31db34844ce6ab43859f111"
+      },
+      "mutation": {
+        "declaration": "merge_2d_production_2d_v01.p131u_merge_choose",
+        "before": [
+          ".EQ: \u03bb{(): (x1 (.Unit, ()))",
+          ".LT: \u03bb{(): (x0 (.Unit, ()))"
+        ],
+        "after": [
+          ".EQ: \u03bb{(): (x0 (.Unit, ()))",
+          ".LT: \u03bb{(): (x1 (.Unit, ()))"
+        ],
+        "meaning": "Exchange LT and EQ continuations, preserving affine use count. Equal keys wrongly take the LT continuation; unequal LT keys wrongly combine fields."
+      },
+      "artifacts": {
+        "program": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/laws-merge-mutation02/wrong-program.bendtt",
+          "bytes": 105604,
+          "sha256": "42b0dfa51aac3e27974f9cc1e5bb8899a0c790e6917b65588f5e9291b3515ff8"
+        },
+        "law": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/laws-merge-mutation02/wrong-laws.bendtt",
+          "bytes": 118846,
+          "sha256": "77320e6775874495b6bbd06aa52b4a7f35509350ee9b462171af64a7f67d2e06"
+        }
+      },
+      "wrongProgramAccepted": true,
+      "unchangedLawRejected": true,
+      "rows": {
+        "program": {
+          "stdout": "ALL PROOFS CHECK\n",
+          "returncode": 0,
+          "wallSeconds": 1.4709429189097136
+        },
+        "law": {
+          "stdout": "SOME PROOFS FAIL\nIn aligned_2d_merge_2d_laws.merge_same_key:\nexpected: {((((merge_2d_production_2d_v01.p131u_merge_choose \u03bbx4 => (x0 x4)) \u03bbx4 => (x1 x4)) \u03bbx4 => (x2 x4)) ((U32.cmp x3) x3)) == (x1 (.Unit, ())) : ((List -.Q2) -absent_2d_production.P131UEntry)}\nobserved: {((((merge_2d_production_2d_v01.p131u_merge_choose \u03bbx4 => (x0 x4)) \u03bbx4 => (x1 x4)) \u03bbx4 => (x2 x4)) ((U32.cmp x3) x3)) == ((((merge_2d_production_2d_v01.p131u_merge_choose \u03bbx4 => (x0 x4)) \u03bbx4 => (x1 x4)) \u03bbx4 => (x2 x4)) (.EQ, ())) : ((List -.Q2) -absent_2d_production.P131UEntry)}\n",
+          "returncode": 1,
+          "wallSeconds": 1.5069720370229334
+        }
+      }
+    }
+  ],
+  "connections": [
+    {
+      "file": "selfhost/build/phase131/laws-bridge01/report.json",
+      "bytes": 1704,
+      "sha256": "100873a2c3e845247425a9c6252b2101d6f2541bef5219ad045307cfd1ffe616"
+    },
+    {
+      "file": "selfhost/build/phase131/laws-safe-summary01/report.json",
+      "bytes": 2241,
+      "sha256": "1759a6d2f901721c49ad17e2334c62052c170e27be33359f0419afbb5d790695"
+    }
+  ],
+  "rejectedOrIncomplete": [
+    {
+      "receipt": {
+        "file": "selfhost/build/phase131/laws-absent01/report.json",
+        "bytes": 7984,
+        "sha256": "16e93818610e4940b133f882aaf2bc0d941e58f15c50c25b5a8ffad8eba10520"
+      },
+      "complete": false,
+      "error": "AssertionError(('check', '', \"SOME PROOFS FAIL\\nError:\\n- message  : 'entries' can't be matched in this position (it is matched after a local statement or after a match on a later binder, it was already matched, or it is a def)\\nLocation:\\n6 | def p131u_absent(entries: List<&2,P131UEntry>, +mode: U32) -> List<&2,P131UEntry>:\\n7>|   match mode entries:\\n  |              ^^^^^^^\\n8 |     case 0 values: values\\n\"))",
+      "rows": {
+        "check": {
+          "returncode": 1,
+          "wallSeconds": 0.24788458994589746,
+          "stoppedFor": null
+        }
+      }
+    },
+    {
+      "receipt": {
+        "file": "selfhost/build/phase131/laws-absent02/report.json",
+        "bytes": 7797,
+        "sha256": "28cd9932e88b747ff4cdc49c99979dd7fd2eb162590d78abb926ccfdef6494ba"
+      },
+      "complete": false,
+      "error": "AssertionError(('check', '', 'SOME PROOFS FAIL\\nError:\\n- expected : A.p131u_absent(entries, 0)\\n- observed : entries\\nContext:\\n- entries : List<&2, A.P131UEntry>\\nLocation: sequence_missing_identity\\n 8 | \\n 9>| def sequence_missing_identity(entries): {==}\\n   |                                         ^^^^\\n10 | \\n'))",
+      "rows": {
+        "check": {
+          "returncode": 1,
+          "wallSeconds": 0.5569632682017982,
+          "stoppedFor": null
+        }
+      }
+    },
+    {
+      "receipt": {
+        "file": "selfhost/build/phase131/laws-absent03/report.json",
+        "bytes": 7837,
+        "sha256": "2e7ce7a6f2543cdae6e0322ccff143efd109f88a4a87e249d26732dd9d6ac61c"
+      },
+      "complete": false,
+      "error": "AssertionError(('check', '', 'SOME PROOFS FAIL\\nError:\\n- expected : A.p131u_absent(head <> rest, 0)\\n- observed : head <> rest\\nContext:\\n- head : A.P131UEntry\\n- rest : List<&2, A.P131UEntry>\\nLocation: sequence_missing_identity\\n11 |     case Nil{}: {==}\\n12>|     case Con{head,rest}: {==}\\n   |                          ^^^^\\n13 | \\n'))",
+      "rows": {
+        "check": {
+          "returncode": 1,
+          "wallSeconds": 0.5765863880515099,
+          "stoppedFor": null
+        }
+      }
+    },
+    {
+      "receipt": {
+        "file": "selfhost/build/phase131/laws-first01/report.json",
+        "bytes": 6158,
+        "sha256": "ab0b74332aa4fbbfda159fd8e8607e6f984da4a4e14cb3da4946560b287b0166"
+      },
+      "complete": false,
+      "error": "FileNotFoundError(2, 'No such file or directory')",
+      "rows": {}
+    },
+    {
+      "receipt": {
+        "file": "selfhost/build/phase131/laws-first02/report.json",
+        "bytes": 11293,
+        "sha256": "161ae958e80c3a74a523874cae890dc821b4df99198d901b601dba5635ef5322"
+      },
+      "complete": false,
+      "error": "AssertionError(('kernel', '', ''))",
+      "rows": {
+        "check": {
+          "returncode": 0,
+          "wallSeconds": 0.878932795021683,
+          "stoppedFor": null
+        },
+        "elaborate": {
+          "returncode": 0,
+          "wallSeconds": 1.0017765671946108,
+          "stoppedFor": null
+        },
+        "kernel": {
+          "returncode": -9,
+          "wallSeconds": 60.035012241918594,
+          "stoppedFor": "deadline"
+        }
+      }
+    },
+    {
+      "receipt": {
+        "file": "selfhost/build/phase131/laws-lookup-source01/report.json",
+        "bytes": 5787,
+        "sha256": "75ed390e4162d5f7c617a81281da64bca0c5c56d5fa6d325912f7a11083987f2"
+      },
+      "complete": false,
+      "error": "AssertionError(('check', '', 'SOME PROOFS FAIL\\nError:\\n- message  : a parameter or field scrutinee (a match cannot scrutinize a local binder: give it its own def)\\nLocation:\\n 8 |     case Con{A.P131UEntry{+key,low,high},rest}:\\n 9>|       order : Cmp = U32.cmp(key,id)\\n   |       ^^^^^\\n10 |       match order:\\n'))",
+      "rows": {
+        "check": {
+          "returncode": 1,
+          "wallSeconds": 0.26873858692124486,
+          "stoppedFor": null
+        }
+      }
+    },
+    {
+      "receipt": {
+        "file": "selfhost/build/phase131/laws-lookup01/report.json",
+        "bytes": 8334,
+        "sha256": "e1e49d7b5f3292b98a26b3e981e2facac5a4773233886a1a81a0ed8080f7ed83"
+      },
+      "complete": false,
+      "error": "AssertionError(('check', '', 'SOME PROOFS FAIL\\nError:\\n- expected : {L.p131u_choose(0, u => L.p131u_min(A.p131u_absent(rest, 1), id), U32.cmp(key, id)) == 0 : U32}\\n- observed : {L.p131u_choose(0, u => 0, U32.cmp(key, id)) == 0 : U32}\\nContext:\\n- key  : U32\\n- low  : U32\\n- high : U32\\n- rest : List<&2, A.P131UEntry>\\n- id   : U32\\nLocation: missing_branch_minimum\\n38 |       %missing_branch_minimum(rest,id) : {L.p131u_choose(0,u => L.p131u_min(A.p131u_absent(rest,1),id),U32.cmp(key,id)) == 0 : U32}\\n39>|       choose_zero(U32.cmp(key,id))\\n   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^\\n40 | \\n'))",
+      "rows": {
+        "check": {
+          "returncode": 1,
+          "wallSeconds": 0.5343231419101357,
+          "stoppedFor": null
+        }
+      }
+    },
+    {
+      "receipt": {
+        "file": "selfhost/build/phase131/laws-lookup02/report.json",
+        "bytes": 8476,
+        "sha256": "7ba9e3439cd89f4db96abd22b1c00c54f2ce252e40d225fbb9bc2a269b9f396c"
+      },
+      "complete": false,
+      "error": "AssertionError(('check', '', 'SOME PROOFS FAIL\\nError:\\n- expected : {L.p131u_choose(0, u => L.p131u_min(A.p131u_absent(rest, 1), id), U32.cmp(key, id)) == 0 : U32}\\n- observed : {L.p131u_choose(0, u => 0, U32.cmp(key, id)) == 0 : U32}\\nContext:\\n- key  : U32\\n- low  : U32\\n- high : U32\\n- rest : List<&2, A.P131UEntry>\\n- id   : U32\\nLocation: missing_branch_minimum\\n37 |     case Con{A.P131UEntry{+key,low,high},+rest}:\\n38>|       %missing_branch_minimum(rest,id) : {L.p131u_choose(0,u => _,U32.cmp(key,id)) == 0 : U32}\\n   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\\n39 |       choose_zero(U32.cmp(key,id))\\n'))",
+      "rows": {
+        "check": {
+          "returncode": 1,
+          "wallSeconds": 0.5139462598599494,
+          "stoppedFor": null
+        }
+      }
+    },
+    {
+      "receipt": {
+        "file": "selfhost/build/phase131/laws-merge-mutation01/report.json",
+        "bytes": 4944,
+        "sha256": "34e549565955f4f507ea6f8a55cce94281485fa5cccb1d60d8d98bb26b3ee628"
+      },
+      "complete": false,
+      "error": "AssertionError()",
+      "rows": {
+        "program": {
+          "returncode": 1,
+          "wallSeconds": 1.4672215629834682,
+          "stoppedFor": null
+        }
+      }
+    },
+    {
+      "receipt": {
+        "file": "selfhost/build/phase131/laws-mutation01/report.json",
+        "bytes": 4472,
+        "sha256": "05568e2a8b0d220de955ac4c7ff12292693aed1409f1e80f47b953989cbd3c63"
+      },
+      "complete": false,
+      "error": "AssertionError()",
+      "rows": {
+        "program": {
+          "returncode": 1,
+          "wallSeconds": 0.7155002641957253,
+          "stoppedFor": null
+        }
+      }
+    }
+  ],
+  "totalRecordedTargetWallSeconds": 117.10546792065725,
+  "costScope": "Sum of retained supervised target wall times, including negative checks and failures; not elapsed research time, agent compute or benchmarking evidence.",
+  "limits": [
+    "Only the first3 arithmetic helper bodies and p131u_absent exactly occur in frozen usage-source02.",
+    "The aligned merge/lookup laws target source-connected safe replacement algorithms generated by prepare-safe-summary.py; they are not evidence these replacements were selected or benchmarked.",
+    "Aligned maps have the same key sequence. Disjoint-key merge, map invariants and KTerm traversal equivalence remain unproved.",
+    "No proof of frontend elaboration, native backend/runtime, ownership implementation, stack bound or compilation throughput."
+  ]
+}

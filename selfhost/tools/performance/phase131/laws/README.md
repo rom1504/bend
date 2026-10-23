@@ -1,0 +1,78 @@
+# Phase131 usage-summary laws
+
+See [the report](../../../../../research/phase131/laws.md) and
+[evidence.json](evidence.json). Twenty-eight distinct laws were independently checked. The first twenty
+are recorded in evidence.json; the eight later first-order equivalence and
+transport laws are recorded in [first-order-evidence.json](first-order-evidence.json).
+The admitted merge domain is two maps with the same key sequence. Full generic
+KTerm traversal and disjoint-key merge correctness are still unproved.
+
+## Replay
+
+Run from the repository root. Every output directory must be fresh. The guard
+serializes CPU4 work, caps each target at 60s/2GiB, and requires at least16GiB
+available memory. Coordinate this lane with other compiler measurements.
+
+```sh
+python3 -B selfhost/tools/performance/phase131/laws/check.py \
+  --source selfhost/tools/performance/phase131/laws/aligned-lookup-laws.bend \
+  --out selfhost/build/phase131/laws-aligned-lookup-replay01
+```
+
+The other independently accepted entrypoints are `add-only.bend`,
+`low-only.bend`, `high-only.bend`, `absent-laws.bend`, `lookup-laws.bend`,
+`compare-laws.bend` and `aligned-merge-laws.bend`. The last two are already in
+the aligned-lookup dependency closure. `laws.bend` is the retained combined
+attempt that exceeded the kernel deadline; `lookup-production.bend` is the
+retained parser-rejected local-match attempt. Do not treat a glob of all Bend
+files as a positive test suite.
+
+The source connection to the acquired candidate can be rechecked without
+executing Bend:
+
+```sh
+python3 -B selfhost/tools/performance/phase131/laws/source-bridge.py \
+  --candidate selfhost/build/phase131/usage-source02/compiler.bend \
+  --out selfhost/build/phase131/laws-bridge-replay01
+python3 -B selfhost/tools/performance/phase131/laws/prepare-safe-summary.py \
+  --out selfhost/build/phase131/laws-safe-summary-replay01
+```
+
+The second command constructs a smaller safe algorithm candidate from exact
+proved declarations, preserving every other analyzer declaration. It does not
+check the full compiler, qualify native code, select the candidate or measure
+performance.
+
+The negative controls first independently accept the law-free mutant, then
+require semantic rejection with the unchanged laws:
+
+```sh
+python3 -B selfhost/tools/performance/phase131/laws/mutation.py \
+  --accepted selfhost/build/phase131/laws-add01 \
+  --out selfhost/build/phase131/laws-mutation-replay01
+python3 -B selfhost/tools/performance/phase131/laws/merge-mutation.py \
+  --accepted selfhost/build/phase131/laws-aligned-lookup01 \
+  --out selfhost/build/phase131/laws-merge-mutation-replay01
+```
+
+No toolchain download/build is performed. The pinned existing frontend,
+elaborator and independent kernel must still authenticate against the retained
+Phase94 receipt. The runner intentionally refuses changed or missing inputs.
+
+## First-order alternative
+
+The initial safe source was2.564× slower on the parent's native proxy. The
+first-order source removes callbacks and repeated current-head reconstruction.
+Its all-input equivalence to the earlier safe algorithms and the transported
+aligned-map contract can be replayed with:
+
+```sh
+python3 -B selfhost/tools/performance/phase131/laws/check.py \
+  --source selfhost/tools/performance/phase131/laws/first-order-summary-laws.bend \
+  --out selfhost/build/phase131/laws-first-order-summary-replay01
+```
+
+The closure includes18 laws. It does not prove native speed, production
+selection, generic KTerm traversal or the full differing-key map specification.
+The first-order proof-source declarations must be authenticated again in any
+actual acquired compiler candidate.

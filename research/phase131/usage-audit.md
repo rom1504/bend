@@ -161,6 +161,79 @@ compiler's declared unsafe helpers by policy. They are not type/ownership
 failures. The existing checked bootstrap API route then successfully validates
 both complete proxy books, preserving its unchanged checker and hole gates.
 
+Root's controlled native usage screen is now complete:
+`selfhost/build/phase131/usage-timing01/timing/report.json` records five
+alternating pairs with exact ordinary outputs. Median process wall time falls
+2.579477→0.094107s, ratio0.036483 (27.41× faster). Both exceed the20ms timing
+floor. This is the deliberately repeated-query proxy, not a27× compiler gain;
+the measured exploratory whole-request mean remains only3.3% lower. Both native
+programs were emitted by qualified Phase130 N1 using compact Base, built with
+the same runtime and aligned assembler policy. A failed unrelated identity
+extraction did not cause either successful usage acquisition to be repeated.
+
+## Proof-connected algorithm candidate
+
+The proof agent supplied source-connected safe absent, merge and lookup
+algorithms, with ten independently checked bounded/aligned-key laws. The
+generic KTerm traversal and complete disjoint-key merge theorem remain outside
+that proof scope. `laws-safe-summary01/report.json` records exact proved-source
+substitution and unchanged traversal bodies. It removes three mutually recursive
+dispatch helpers and uses two small deferred branch dispatchers; this is a
+candidate whose performance must be measured, not an automatic consequence of
+proving it.
+
+`usage-safe-source01` checks all11 API exports in14.53s with2.15GB peak RSS.
+The22 finite controls pass. `usage-safe-request01/report.json` adds16 real Base
+bodies and six full emissions from current/safe summaries on the same three
+requests, all byte-identical to frozen QBE. These are correctness gates;
+single-order diagnostic timings do not establish a speed change.
+
+`usage-safe-proxy02` copies the entire proved module in declaration order while
+preserving the prior proxy's workload and oracle. The first extraction appended
+the safe chooser after its caller and correctly failed the filled-definition
+gate; that attempt is retained. The repaired complete proxy checks successfully.
+`usage-safe-jobs01/jobs.json` acquires only its new binary, then compares it
+against the already qualified0.094s current-summary executable. No baseline
+rebuild or full compiler acquisition is needed for this discriminator.
+
+That screen rejects automatic adoption: safe callbacks take0.241731s versus
+0.094279s for the fast helper-recursive summary, **2.564× slower**. They still
+beat the original repeated walkers substantially, but proof-connected source
+alone is not a performance result. Both safe and fast artifacts remain intact.
+
+Independent static inspection identifies a concrete cost boundary. Fast maximum
+and minimum queries each forward to a local tail-SCC worker. The safe versions
+become137-line scheduler functions with a two-value closure and a32-byte
+continuation capture; their chooser performs generic application. Safe merging
+also grows314→605 QBE lines, with additional constructor/reconstruction sites.
+These static counts do not attribute the entire runtime regression to closures.
+
+Two disjoint next candidates were prepared and checked without a full compiler
+rebuild:
+
+1. **General selector lowering.** The existing closed-selector analysis omitted
+   scalar literal leaves. A two-declaration override plus one helper admits
+   canonical scalar leaves in a bounded, checked callee. V02 rejects unsupported
+   source shapes before compaction, avoiding expansion of a huge String literal.
+   It passes19 finite controls and independently emits the **unchanged safe proxy**.
+   Max/min now have107-line local workers, explicit loop backedges and no closure,
+   application or generic-jump calls. Merge is unchanged. V01/V02 emit the same
+   644,797 QBE bytes; this is a structural result pending native timing. The root
+   has a build-only/timing plan reusing the old safe binary and an ordinary
+   eight-line text/shared-capture transfer gate. No failure-runtime probes ran.
+2. **First-order safe algorithms.** Exact proof-agent source replaces callbacks
+   with pending comparison state and scalar current heads. It preserves the
+   remaining summary traversal. The extracted complete source checks;22 controls
+   and three independent output checks pass. Four lookup and two merge equivalence
+   laws connect these algorithms to the previous safe implementations without
+   sorted/aligned-input preconditions; the full summary theorem remains separate.
+   Root's plan emits only this new proxy and reuses the fast-summary binary.
+
+The new source/proof experiments retain separate identities and costs. Neither
+has been folded into the selected native compiler merely because it type-checks
+or proves an equation. Their purpose is to test whether proof-friendly source
+and efficient lowering can be made to cooperate without weakening either.
+
 The useful abstraction, if this wins, is a body-scoped semantic summary whose
 legality is independent of QBE text. It removes repeated ownership-sensitive
 interpretation without changing generated-program behavior. Whether it actually

@@ -1,0 +1,544 @@
+{
+  "schema": "phase131-first-order-laws-v1",
+  "complete": true,
+  "previousEvidence": {
+    "file": "selfhost/tools/performance/phase131/laws/evidence.json",
+    "bytes": 45994,
+    "sha256": "eda9e16ba1fe1b82ebdfdbc098f2905965adc55ea0e042cb66ecd5779b441041"
+  },
+  "newLawCount": 8,
+  "newLaws": [
+    "first_order_merged_maximum",
+    "first_order_merged_minimum",
+    "maximum_exact",
+    "maximum_loop_exact",
+    "merge_exact",
+    "merge_loop_exact",
+    "minimum_exact",
+    "minimum_loop_exact"
+  ],
+  "totalDistinctAcceptedLaws": 28,
+  "accepted": [
+    {
+      "run": "laws-first-order-lookup01",
+      "receipt": {
+        "file": "selfhost/build/phase131/laws-first-order-lookup01/report.json",
+        "bytes": 13734,
+        "sha256": "d674764902883350489ee67dabcfd5ae768cdbe4a895f10bcf4b80f386dadc2f"
+      },
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/laws/first-order-lookup-laws.bend",
+        "bytes": 1798,
+        "sha256": "13e3bc3d602beddfc40138abb25137eb7ab3d92c748de01c06c566fb4fb7178d"
+      },
+      "elaboration": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/laws-first-order-lookup01/laws.bendtt",
+        "bytes": 55869,
+        "sha256": "3c6178d391a1250e38ea2555187a827c1a06f4b16a5535717a344ee495a3e477"
+      },
+      "lawNames": [
+        "maximum_loop_exact",
+        "maximum_exact",
+        "minimum_loop_exact",
+        "minimum_exact"
+      ],
+      "sourceClosure": [
+        {
+          "origin": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/laws/first-order-lookup-laws.bend",
+            "bytes": 1798,
+            "sha256": "13e3bc3d602beddfc40138abb25137eb7ab3d92c748de01c06c566fb4fb7178d"
+          },
+          "snapshot": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/laws-first-order-lookup01/snapshot/selfhost/tools/performance/phase131/laws/first-order-lookup-laws.bend",
+            "bytes": 1798,
+            "sha256": "13e3bc3d602beddfc40138abb25137eb7ab3d92c748de01c06c566fb4fb7178d"
+          }
+        },
+        {
+          "origin": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/laws/absent-production.bend",
+            "bytes": 349,
+            "sha256": "5bcd1dbb1b692b1578f9cb7d70a321f20acb2f0b4ead507990f3618022fcab63"
+          },
+          "snapshot": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/laws-first-order-lookup01/snapshot/selfhost/tools/performance/phase131/laws/absent-production.bend",
+            "bytes": 349,
+            "sha256": "5bcd1dbb1b692b1578f9cb7d70a321f20acb2f0b4ead507990f3618022fcab63"
+          }
+        },
+        {
+          "origin": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/laws/lookup-production-v02.bend",
+            "bytes": 700,
+            "sha256": "a9ef7717bfdc3d57dbee006118a14691aae4383dbd9ec29f2975e6b5e9b1cdfd"
+          },
+          "snapshot": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/laws-first-order-lookup01/snapshot/selfhost/tools/performance/phase131/laws/lookup-production-v02.bend",
+            "bytes": 700,
+            "sha256": "a9ef7717bfdc3d57dbee006118a14691aae4383dbd9ec29f2975e6b5e9b1cdfd"
+          }
+        },
+        {
+          "origin": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/laws/lookup-first-order-v02.bend",
+            "bytes": 1059,
+            "sha256": "33da18ae174e5eace9aa5ac73a3f7f07138d9ebb7b46f3451f792639b380dec8"
+          },
+          "snapshot": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/laws-first-order-lookup01/snapshot/selfhost/tools/performance/phase131/laws/lookup-first-order-v02.bend",
+            "bytes": 1059,
+            "sha256": "33da18ae174e5eace9aa5ac73a3f7f07138d9ebb7b46f3451f792639b380dec8"
+          }
+        }
+      ],
+      "opaqueDefinitions": [],
+      "costs": {
+        "check": {
+          "returncode": 0,
+          "wallSeconds": 0.5740447458811104,
+          "peakTreeRssBytes": 80478208,
+          "stoppedFor": null
+        },
+        "elaborate": {
+          "returncode": 0,
+          "wallSeconds": 0.6570906108245254,
+          "peakTreeRssBytes": 79515648,
+          "stoppedFor": null
+        },
+        "kernel": {
+          "returncode": 0,
+          "wallSeconds": 1.0240553698968142,
+          "peakTreeRssBytes": 634839040,
+          "stoppedFor": null
+        },
+        "kernel-negative": {
+          "returncode": 1,
+          "wallSeconds": 0.31017421488650143,
+          "peakTreeRssBytes": 626016256,
+          "stoppedFor": null
+        }
+      }
+    },
+    {
+      "run": "laws-first-order-merge02",
+      "receipt": {
+        "file": "selfhost/build/phase131/laws-first-order-merge02/report.json",
+        "bytes": 14572,
+        "sha256": "7255131bc9f28321dd263e5805878c9125418b8fc03620d144d0cb9b5292ebc3"
+      },
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/laws/first-order-merge-laws.bend",
+        "bytes": 3821,
+        "sha256": "2cae8e011e9da909bcde1fa19d4de2bad291d014e02b7cdea0bbd3e116e69a8e"
+      },
+      "elaboration": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/laws-first-order-merge02/laws.bendtt",
+        "bytes": 111110,
+        "sha256": "bf5d041ced7ac3c8c9623a8fa2e6101cafcf13943ce0df563be60bbd69492674"
+      },
+      "lawNames": [
+        "merge_loop_exact",
+        "merge_exact"
+      ],
+      "sourceClosure": [
+        {
+          "origin": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/laws/first-order-merge-laws.bend",
+            "bytes": 3821,
+            "sha256": "2cae8e011e9da909bcde1fa19d4de2bad291d014e02b7cdea0bbd3e116e69a8e"
+          },
+          "snapshot": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/laws-first-order-merge02/snapshot/selfhost/tools/performance/phase131/laws/first-order-merge-laws.bend",
+            "bytes": 3821,
+            "sha256": "2cae8e011e9da909bcde1fa19d4de2bad291d014e02b7cdea0bbd3e116e69a8e"
+          }
+        },
+        {
+          "origin": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/laws/production.bend",
+            "bytes": 579,
+            "sha256": "4c4e7d6b12a30f97e9dc0ec482740e253a47db923716b7d7473c3de1055da047"
+          },
+          "snapshot": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/laws-first-order-merge02/snapshot/selfhost/tools/performance/phase131/laws/production.bend",
+            "bytes": 579,
+            "sha256": "4c4e7d6b12a30f97e9dc0ec482740e253a47db923716b7d7473c3de1055da047"
+          }
+        },
+        {
+          "origin": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/laws/absent-production.bend",
+            "bytes": 349,
+            "sha256": "5bcd1dbb1b692b1578f9cb7d70a321f20acb2f0b4ead507990f3618022fcab63"
+          },
+          "snapshot": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/laws-first-order-merge02/snapshot/selfhost/tools/performance/phase131/laws/absent-production.bend",
+            "bytes": 349,
+            "sha256": "5bcd1dbb1b692b1578f9cb7d70a321f20acb2f0b4ead507990f3618022fcab63"
+          }
+        },
+        {
+          "origin": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/laws/merge-production-v01.bend",
+            "bytes": 1129,
+            "sha256": "a2cf225859400c8157e45c8c5d5da82e2c39676f02a12bf92564293c58a0e11f"
+          },
+          "snapshot": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/laws-first-order-merge02/snapshot/selfhost/tools/performance/phase131/laws/merge-production-v01.bend",
+            "bytes": 1129,
+            "sha256": "a2cf225859400c8157e45c8c5d5da82e2c39676f02a12bf92564293c58a0e11f"
+          }
+        },
+        {
+          "origin": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/laws/merge-first-order-v01.bend",
+            "bytes": 2029,
+            "sha256": "cfe6aacdec209f9af3dcb085083c1cce1d1d8be0ce1c7d2ab3d176fb6e78752b"
+          },
+          "snapshot": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/laws-first-order-merge02/snapshot/selfhost/tools/performance/phase131/laws/merge-first-order-v01.bend",
+            "bytes": 2029,
+            "sha256": "cfe6aacdec209f9af3dcb085083c1cce1d1d8be0ce1c7d2ab3d176fb6e78752b"
+          }
+        }
+      ],
+      "opaqueDefinitions": [],
+      "costs": {
+        "check": {
+          "returncode": 0,
+          "wallSeconds": 0.6361006149090827,
+          "peakTreeRssBytes": 84336640,
+          "stoppedFor": null
+        },
+        "elaborate": {
+          "returncode": 0,
+          "wallSeconds": 0.7983631389215589,
+          "peakTreeRssBytes": 96784384,
+          "stoppedFor": null
+        },
+        "kernel": {
+          "returncode": 0,
+          "wallSeconds": 1.5703171079512686,
+          "peakTreeRssBytes": 634183680,
+          "stoppedFor": null
+        },
+        "kernel-negative": {
+          "returncode": 1,
+          "wallSeconds": 0.28776834392920136,
+          "peakTreeRssBytes": 624259072,
+          "stoppedFor": null
+        }
+      }
+    },
+    {
+      "run": "laws-first-order-summary01",
+      "receipt": {
+        "file": "selfhost/build/phase131/laws-first-order-summary01/report.json",
+        "bytes": 25995,
+        "sha256": "1cf45f192ab86119352be6ad69a2906ca10e0cf21981c23773cd3415550b17cb"
+      },
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/laws/first-order-summary-laws.bend",
+        "bytes": 3290,
+        "sha256": "4ccf5faa56b7e851e2ea01bb2fd8ec61d09c210c11e12a365fd506b651daf5b4"
+      },
+      "elaboration": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/laws-first-order-summary01/laws.bendtt",
+        "bytes": 142427,
+        "sha256": "237b82724efb21781305af99d72a722f2c123a71afc7b767d07f87489050cd4c"
+      },
+      "lawNames": [
+        "first_order_merged_maximum",
+        "first_order_merged_minimum",
+        "high_choose",
+        "low_choose",
+        "aligned_maximum",
+        "aligned_minimum",
+        "merged_maximum",
+        "merged_minimum",
+        "merge_same_key",
+        "aligned_merge_exact",
+        "word_compare_reflexive",
+        "u32_compare_reflexive",
+        "merge_loop_exact",
+        "merge_exact",
+        "maximum_loop_exact",
+        "maximum_exact",
+        "minimum_loop_exact",
+        "minimum_exact"
+      ],
+      "sourceClosure": [
+        {
+          "origin": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/laws/first-order-summary-laws.bend",
+            "bytes": 3290,
+            "sha256": "4ccf5faa56b7e851e2ea01bb2fd8ec61d09c210c11e12a365fd506b651daf5b4"
+          },
+          "snapshot": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/laws-first-order-summary01/snapshot/selfhost/tools/performance/phase131/laws/first-order-summary-laws.bend",
+            "bytes": 3290,
+            "sha256": "4ccf5faa56b7e851e2ea01bb2fd8ec61d09c210c11e12a365fd506b651daf5b4"
+          }
+        },
+        {
+          "origin": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/laws/production.bend",
+            "bytes": 579,
+            "sha256": "4c4e7d6b12a30f97e9dc0ec482740e253a47db923716b7d7473c3de1055da047"
+          },
+          "snapshot": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/laws-first-order-summary01/snapshot/selfhost/tools/performance/phase131/laws/production.bend",
+            "bytes": 579,
+            "sha256": "4c4e7d6b12a30f97e9dc0ec482740e253a47db923716b7d7473c3de1055da047"
+          }
+        },
+        {
+          "origin": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/laws/reference.bend",
+            "bytes": 1666,
+            "sha256": "2c307630e01b283db9fcea6ee3bf50ad3268e9055c0b8108e95418cbfde4dbe3"
+          },
+          "snapshot": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/laws-first-order-summary01/snapshot/selfhost/tools/performance/phase131/laws/reference.bend",
+            "bytes": 1666,
+            "sha256": "2c307630e01b283db9fcea6ee3bf50ad3268e9055c0b8108e95418cbfde4dbe3"
+          }
+        },
+        {
+          "origin": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/laws/absent-production.bend",
+            "bytes": 349,
+            "sha256": "5bcd1dbb1b692b1578f9cb7d70a321f20acb2f0b4ead507990f3618022fcab63"
+          },
+          "snapshot": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/laws-first-order-summary01/snapshot/selfhost/tools/performance/phase131/laws/absent-production.bend",
+            "bytes": 349,
+            "sha256": "5bcd1dbb1b692b1578f9cb7d70a321f20acb2f0b4ead507990f3618022fcab63"
+          }
+        },
+        {
+          "origin": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/laws/aligned-production.bend",
+            "bytes": 1005,
+            "sha256": "2a812da61e597d0e93f4992e2815f437f00a4213455f7d8111b632090aa473f8"
+          },
+          "snapshot": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/laws-first-order-summary01/snapshot/selfhost/tools/performance/phase131/laws/aligned-production.bend",
+            "bytes": 1005,
+            "sha256": "2a812da61e597d0e93f4992e2815f437f00a4213455f7d8111b632090aa473f8"
+          }
+        },
+        {
+          "origin": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/laws/aligned-lookup-laws.bend",
+            "bytes": 5373,
+            "sha256": "9ab1bd0654d49a83510e62b9ddab89a6b72c6f033cddf8bb2504f712cc01ee6e"
+          },
+          "snapshot": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/laws-first-order-summary01/snapshot/selfhost/tools/performance/phase131/laws/aligned-lookup-laws.bend",
+            "bytes": 5373,
+            "sha256": "9ab1bd0654d49a83510e62b9ddab89a6b72c6f033cddf8bb2504f712cc01ee6e"
+          }
+        },
+        {
+          "origin": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/laws/merge-production-v01.bend",
+            "bytes": 1129,
+            "sha256": "a2cf225859400c8157e45c8c5d5da82e2c39676f02a12bf92564293c58a0e11f"
+          },
+          "snapshot": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/laws-first-order-summary01/snapshot/selfhost/tools/performance/phase131/laws/merge-production-v01.bend",
+            "bytes": 1129,
+            "sha256": "a2cf225859400c8157e45c8c5d5da82e2c39676f02a12bf92564293c58a0e11f"
+          }
+        },
+        {
+          "origin": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/laws/lookup-production-v02.bend",
+            "bytes": 700,
+            "sha256": "a9ef7717bfdc3d57dbee006118a14691aae4383dbd9ec29f2975e6b5e9b1cdfd"
+          },
+          "snapshot": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/laws-first-order-summary01/snapshot/selfhost/tools/performance/phase131/laws/lookup-production-v02.bend",
+            "bytes": 700,
+            "sha256": "a9ef7717bfdc3d57dbee006118a14691aae4383dbd9ec29f2975e6b5e9b1cdfd"
+          }
+        },
+        {
+          "origin": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/laws/aligned-merge-laws.bend",
+            "bytes": 2224,
+            "sha256": "7a7fe4162630251b3517c9b686cfea6e5100984df59721caa14b0dce0cc1cc82"
+          },
+          "snapshot": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/laws-first-order-summary01/snapshot/selfhost/tools/performance/phase131/laws/aligned-merge-laws.bend",
+            "bytes": 2224,
+            "sha256": "7a7fe4162630251b3517c9b686cfea6e5100984df59721caa14b0dce0cc1cc82"
+          }
+        },
+        {
+          "origin": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/laws/compare-laws.bend",
+            "bytes": 842,
+            "sha256": "628aeb9055766b99f97c1950b174e18d220b265bcc9bace20906f3124024c7d9"
+          },
+          "snapshot": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/laws-first-order-summary01/snapshot/selfhost/tools/performance/phase131/laws/compare-laws.bend",
+            "bytes": 842,
+            "sha256": "628aeb9055766b99f97c1950b174e18d220b265bcc9bace20906f3124024c7d9"
+          }
+        },
+        {
+          "origin": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/laws/merge-first-order-v01.bend",
+            "bytes": 2029,
+            "sha256": "cfe6aacdec209f9af3dcb085083c1cce1d1d8be0ce1c7d2ab3d176fb6e78752b"
+          },
+          "snapshot": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/laws-first-order-summary01/snapshot/selfhost/tools/performance/phase131/laws/merge-first-order-v01.bend",
+            "bytes": 2029,
+            "sha256": "cfe6aacdec209f9af3dcb085083c1cce1d1d8be0ce1c7d2ab3d176fb6e78752b"
+          }
+        },
+        {
+          "origin": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/laws/lookup-first-order-v02.bend",
+            "bytes": 1059,
+            "sha256": "33da18ae174e5eace9aa5ac73a3f7f07138d9ebb7b46f3451f792639b380dec8"
+          },
+          "snapshot": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/laws-first-order-summary01/snapshot/selfhost/tools/performance/phase131/laws/lookup-first-order-v02.bend",
+            "bytes": 1059,
+            "sha256": "33da18ae174e5eace9aa5ac73a3f7f07138d9ebb7b46f3451f792639b380dec8"
+          }
+        },
+        {
+          "origin": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/laws/first-order-merge-laws.bend",
+            "bytes": 3821,
+            "sha256": "2cae8e011e9da909bcde1fa19d4de2bad291d014e02b7cdea0bbd3e116e69a8e"
+          },
+          "snapshot": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/laws-first-order-summary01/snapshot/selfhost/tools/performance/phase131/laws/first-order-merge-laws.bend",
+            "bytes": 3821,
+            "sha256": "2cae8e011e9da909bcde1fa19d4de2bad291d014e02b7cdea0bbd3e116e69a8e"
+          }
+        },
+        {
+          "origin": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/laws/first-order-lookup-laws.bend",
+            "bytes": 1798,
+            "sha256": "13e3bc3d602beddfc40138abb25137eb7ab3d92c748de01c06c566fb4fb7178d"
+          },
+          "snapshot": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/laws-first-order-summary01/snapshot/selfhost/tools/performance/phase131/laws/first-order-lookup-laws.bend",
+            "bytes": 1798,
+            "sha256": "13e3bc3d602beddfc40138abb25137eb7ab3d92c748de01c06c566fb4fb7178d"
+          }
+        }
+      ],
+      "opaqueDefinitions": [],
+      "costs": {
+        "check": {
+          "returncode": 0,
+          "wallSeconds": 0.7166199288330972,
+          "peakTreeRssBytes": 87576576,
+          "stoppedFor": null
+        },
+        "elaborate": {
+          "returncode": 0,
+          "wallSeconds": 0.8808665429241955,
+          "peakTreeRssBytes": 103497728,
+          "stoppedFor": null
+        },
+        "kernel": {
+          "returncode": 0,
+          "wallSeconds": 2.1035452249925584,
+          "peakTreeRssBytes": 636518400,
+          "stoppedFor": null
+        },
+        "kernel-negative": {
+          "returncode": 1,
+          "wallSeconds": 0.35284859989769757,
+          "peakTreeRssBytes": 626524160,
+          "stoppedFor": null
+        }
+      }
+    }
+  ],
+  "previousSafePerformanceFalsification": {
+    "receipt": {
+      "file": "selfhost/build/phase131/usage-safe-jobs01/timing/report.json",
+      "bytes": 40019,
+      "sha256": "3444f785c53a46802cae6d58378b5520afea57ab4f5f70529a4548adb325ed27"
+    },
+    "summaries": {
+      "usage": {
+        "medianSeconds": {
+          "original": 0.09427899098955095,
+          "candidate": 0.24173130304552615
+        },
+        "candidateOverOriginal": 2.5639996833686682,
+        "timerFloorPassed": true
+      }
+    },
+    "scope": "Five alternating paired executions after ordinary output gates and bounded calibration. Fixed usage batch includes process startup; identity timer excludes initialization and warmups. This is generated proxy performance, not whole compiler speed."
+  },
+  "rejectedAttempts": [
+    {
+      "receipt": {
+        "file": "selfhost/build/phase131/laws-lookup-template01/report.json",
+        "bytes": 5937,
+        "sha256": "5a151ac946351e3ff7cb8e1b04e89d5cd5b71c4e0cea62088d2b0cff25ac5146"
+      },
+      "complete": false,
+      "error": "AssertionError(('check', '', 'SOME PROOFS FAIL\\nError:\\n- expected : @_:List<&2, A.P131UEntry> -> @_:U32 -> U32\\n- observed : @entries:List<&2, A.P131UEntry> -> @+id:U32 -> U32\\nLocation: p131u_max\\n13 |     case Con{A.P131UEntry{key,low,high},rest}:\\n14>|       p131u_template_choose(~p131u_max,rest,id,high,U32.cmp(key,id))\\n   |                              ^^^^^^^^^\\n15 | \\n'))",
+      "rows": {
+        "check": {
+          "stderr": "SOME PROOFS FAIL\nError:\n- expected : @_:List<&2, A.P131UEntry> -> @_:U32 -> U32\n- observed : @entries:List<&2, A.P131UEntry> -> @+id:U32 -> U32\nLocation: p131u_max\n13 |     case Con{A.P131UEntry{key,low,high},rest}:\n14>|       p131u_template_choose(~p131u_max,rest,id,high,U32.cmp(key,id))\n   |                              ^^^^^^^^^\n15 | \n",
+          "returncode": 1,
+          "wallSeconds": 0.5154563968535513
+        }
+      }
+    },
+    {
+      "receipt": {
+        "file": "selfhost/build/phase131/laws-lookup-first-order01/report.json",
+        "bytes": 6222,
+        "sha256": "4873f4a1379ebff472dfe542d04afed8d06f08357be36bc00d7c4c68dd323393"
+      },
+      "complete": false,
+      "error": "AssertionError(('check', '', 'SOME PROOFS FAIL\\nError:\\n- expected : a decreasing self-call (arguments are read left to right: each passed unchanged until one shrinks)\\n- observed : p131u_max_loop\\nContext:\\n- value : U32\\n- key   : U32\\n- low   : U32\\n- high  : U32\\n- rest  : List<&2, A.P131UEntry>\\n- id    : U32\\nLocation: p131u_max_loop\\n13 |         case Con{A.P131UEntry{key,low,high},rest}:\\n14>|           p131u_max_loop(U32.cmp(key,id),high,rest,id)\\n   |           ^^^^^^^^^^^^^^\\n15 | \\n'))",
+      "rows": {
+        "check": {
+          "stderr": "SOME PROOFS FAIL\nError:\n- expected : a decreasing self-call (arguments are read left to right: each passed unchanged until one shrinks)\n- observed : p131u_max_loop\nContext:\n- value : U32\n- key   : U32\n- low   : U32\n- high  : U32\n- rest  : List<&2, A.P131UEntry>\n- id    : U32\nLocation: p131u_max_loop\n13 |         case Con{A.P131UEntry{key,low,high},rest}:\n14>|           p131u_max_loop(U32.cmp(key,id),high,rest,id)\n   |           ^^^^^^^^^^^^^^\n15 | \n",
+          "returncode": 1,
+          "wallSeconds": 0.49380608391948044
+        }
+      }
+    },
+    {
+      "receipt": {
+        "file": "selfhost/build/phase131/laws-first-order-merge01/report.json",
+        "bytes": 9692,
+        "sha256": "ba21eb44a695ad8cd4a5f8f1c676526b2f20bca4e6787a6c7a163309ea2ac614"
+      },
+      "complete": false,
+      "error": "AssertionError(('check', '', 'SOME PROOFS FAIL\\nError:\\n- expected : F.p131u_merge([], right, mode)\\n- observed : M.p131u_merge([], right, mode)\\nContext:\\n- right : List<&2, A.P131UEntry> - Nil{}\\n- mode  : U32\\nLocation: merge_exact\\n60 |   match left right:\\n61>|     case Nil{} values: {==}\\n   |                        ^^^^\\n62 |     case values Nil{}: {==}\\n'))",
+      "rows": {
+        "check": {
+          "stderr": "SOME PROOFS FAIL\nError:\n- expected : F.p131u_merge([], right, mode)\n- observed : M.p131u_merge([], right, mode)\nContext:\n- right : List<&2, A.P131UEntry> - Nil{}\n- mode  : U32\nLocation: merge_exact\n60 |   match left right:\n61>|     case Nil{} values: {==}\n   |                        ^^^^\n62 |     case values Nil{}: {==}\n",
+          "returncode": 1,
+          "wallSeconds": 0.6590402030851692
+        }
+      }
+    }
+  ],
+  "semantics": "Both first-order lookup and merge are independently proved equal to the previous safe algorithms for all input entry lists, all U32 keys/counts/modes and query IDs. The aligned pointwise lookup-combination result is transported directly to the first-order algorithms.",
+  "limits": [
+    "Native performance and selection of the first-order candidate are not established by these proofs.",
+    "The source bridge for a generated compiler must separately authenticate the exact first-order algorithm bodies.",
+    "All-input algorithm equivalence is not a proof of full disjoint-key merge correctness against a map specification, nor of generic KTerm analysis or callers."
+  ]
+}

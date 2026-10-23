@@ -1,0 +1,392 @@
+{
+  "complete": true,
+  "targetsRun": false,
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/projection-timed01/report.json",
+      "bytes": 112308,
+      "sha256": "e4ab3deac331dd86bfd6afc16ab6a968ae01832a5e5e09abc110e17e7a72ad3d"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/projection-events01/run/report.json",
+      "bytes": 29079,
+      "sha256": "fd809388e65b44fb8826a18d62260970f5022fbdff76d3c2f659a13cf82e8bd1"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/projection-long01/report.json",
+      "bytes": 25928,
+      "sha256": "19323389fb4fe5bd9b14b2c980cbe3cc24e22ce69138ee2b6119310a9497b88d"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/projection-events01/run/003-events-projection-list-size8-closure/events.json",
+      "bytes": 7387,
+      "sha256": "3326b6549ff75afd01924d05d749253ea5296c2d33f5d862c09889f72c6b68af"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/projection-events01/run/004-events-projection-list-size8-candidate/events.json",
+      "bytes": 7377,
+      "sha256": "909ded9dd93f973a910246a5352b1a540f495c710d98d707e3cedd84b8ae7486"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/projection-events01/run/005-events-projection-list-size8-baseline/events.json",
+      "bytes": 8047,
+      "sha256": "e1faec5c786a1a9e60d09fe5cc73335d78298edee25292ddc0dd385e81f6f227"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/projection-events01/run/000-events-projection-string-size8-baseline/events.json",
+      "bytes": 8134,
+      "sha256": "e132b081eae1f5600b4190ba51c26c150aa1accbe44bb316a172d5332c286da2"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/projection-events01/run/001-events-projection-string-size8-closure/events.json",
+      "bytes": 7467,
+      "sha256": "02bb989689bc67cfa0843b42ea73b804069bb7d97b778de751dd22fe131442ec"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/projection-events01/run/002-events-projection-string-size8-candidate/events.json",
+      "bytes": 7459,
+      "sha256": "4a0c3307d0025fcc768d76d790bdb7c4bd32903af89d14b970d1f2e1f9fc9182"
+    }
+  ],
+  "timing": [
+    {
+      "workload": "projection-list-size128",
+      "roles": {
+        "baseline": {
+          "rounds": 5,
+          "medianWallSeconds": 0.3638060688972473,
+          "medianCPUSeconds": 0.362761,
+          "wallMinMax": [
+            0.3576238069217652,
+            0.38022323488257825
+          ],
+          "medianInternalMilliseconds": 361,
+          "maxRssKiB": 10464
+        },
+        "closure": {
+          "rounds": 5,
+          "medianWallSeconds": 0.3294333179946989,
+          "medianCPUSeconds": 0.32847299999999996,
+          "wallMinMax": [
+            0.3280227710492909,
+            0.34204487199895084
+          ],
+          "medianInternalMilliseconds": 327,
+          "maxRssKiB": 10432
+        },
+        "candidate": {
+          "rounds": 5,
+          "medianWallSeconds": 0.3228178131394088,
+          "medianCPUSeconds": 0.321939,
+          "wallMinMax": [
+            0.3210636239964515,
+            0.33671740302816033
+          ],
+          "medianInternalMilliseconds": 320,
+          "maxRssKiB": 10444
+        }
+      },
+      "candidateOverBaseline": 0.8873348762925252,
+      "candidateOverClosure": 0.9799185313265839,
+      "closureOverBaseline": 0.9055190282923603
+    },
+    {
+      "workload": "projection-list-size8",
+      "roles": {
+        "baseline": {
+          "rounds": 5,
+          "medianWallSeconds": 0.3882347361650318,
+          "medianCPUSeconds": 0.38725,
+          "wallMinMax": [
+            0.3855466318782419,
+            0.3952608620747924
+          ],
+          "medianInternalMilliseconds": 386,
+          "maxRssKiB": 10524
+        },
+        "closure": {
+          "rounds": 5,
+          "medianWallSeconds": 0.24105480802245438,
+          "medianCPUSeconds": 0.24015099999999998,
+          "wallMinMax": [
+            0.2390446118079126,
+            0.24681748799048364
+          ],
+          "medianInternalMilliseconds": 239,
+          "maxRssKiB": 10524
+        },
+        "candidate": {
+          "rounds": 5,
+          "medianWallSeconds": 0.21414927393198013,
+          "medianCPUSeconds": 0.213285,
+          "wallMinMax": [
+            0.21227983082644641,
+            0.22136142593808472
+          ],
+          "medianInternalMilliseconds": 212,
+          "maxRssKiB": 10556
+        }
+      },
+      "candidateOverBaseline": 0.5515974074018689,
+      "candidateOverClosure": 0.8883841632896698,
+      "closureOverBaseline": 0.6208996402629625
+    },
+    {
+      "workload": "projection-string-size128",
+      "roles": {
+        "baseline": {
+          "rounds": 5,
+          "medianWallSeconds": 0.36858992790803313,
+          "medianCPUSeconds": 0.367681,
+          "wallMinMax": [
+            0.3656139599625021,
+            0.3764555819798261
+          ],
+          "medianInternalMilliseconds": 366,
+          "maxRssKiB": 10512
+        },
+        "closure": {
+          "rounds": 5,
+          "medianWallSeconds": 0.32874064706265926,
+          "medianCPUSeconds": 0.327829,
+          "wallMinMax": [
+            0.32792568299919367,
+            0.33095381991006434
+          ],
+          "medianInternalMilliseconds": 326,
+          "maxRssKiB": 10516
+        },
+        "candidate": {
+          "rounds": 5,
+          "medianWallSeconds": 0.327259715879336,
+          "medianCPUSeconds": 0.325744,
+          "wallMinMax": [
+            0.3232673481106758,
+            0.33248496800661087
+          ],
+          "medianInternalMilliseconds": 324,
+          "maxRssKiB": 10628
+        }
+      },
+      "candidateOverBaseline": 0.8878693938728314,
+      "candidateOverClosure": 0.9954951381991988,
+      "closureOverBaseline": 0.8918872225523301
+    },
+    {
+      "workload": "projection-string-size8",
+      "roles": {
+        "baseline": {
+          "rounds": 5,
+          "medianWallSeconds": 0.44374437909573317,
+          "medianCPUSeconds": 0.442191,
+          "wallMinMax": [
+            0.43657455197535455,
+            0.4552513910457492
+          ],
+          "medianInternalMilliseconds": 441,
+          "maxRssKiB": 10592
+        },
+        "closure": {
+          "rounds": 5,
+          "medianWallSeconds": 0.2563427190762013,
+          "medianCPUSeconds": 0.25504,
+          "wallMinMax": [
+            0.2542350550647825,
+            0.2577521298080683
+          ],
+          "medianInternalMilliseconds": 253,
+          "maxRssKiB": 10568
+        },
+        "candidate": {
+          "rounds": 5,
+          "medianWallSeconds": 0.2294720250647515,
+          "medianCPUSeconds": 0.22857899999999998,
+          "wallMinMax": [
+            0.22553262091241777,
+            0.23365221894346178
+          ],
+          "medianInternalMilliseconds": 228,
+          "maxRssKiB": 10576
+        }
+      },
+      "candidateOverBaseline": 0.5171266068369631,
+      "candidateOverClosure": 0.8951766833546688,
+      "closureOverBaseline": 0.5776810505151166
+    }
+  ],
+  "events": [
+    {
+      "workload": "projection-list-size8",
+      "roles": {
+        "closure": {
+          "dispatches": 192,
+          "heap_alloc_calls": 41410,
+          "heap_alloc_miss_calls": 3,
+          "heap_free_calls": 41410,
+          "heap_alloc_requested_words": 82653,
+          "heap_free_words": 82653,
+          "term_keep_calls": 2077,
+          "term_sink_calls": 20530,
+          "term_drop_calls": 61623,
+          "ctr_take_calls": 61677,
+          "frame_push_calls": 0,
+          "frame_capture_words": 0,
+          "return_calls": 65,
+          "primitive_calls": 129241,
+          "register_words_copy_requested": 189,
+          "register_words_clear_requested": 0
+        },
+        "candidate": {
+          "dispatches": 192,
+          "heap_alloc_calls": 4486,
+          "heap_alloc_miss_calls": 3,
+          "heap_free_calls": 4486,
+          "heap_alloc_requested_words": 8805,
+          "heap_free_words": 8805,
+          "term_keep_calls": 2077,
+          "term_sink_calls": 38990,
+          "term_drop_calls": 80082,
+          "ctr_take_calls": 43215,
+          "frame_push_calls": 0,
+          "frame_capture_words": 0,
+          "return_calls": 65,
+          "primitive_calls": 129241,
+          "register_words_copy_requested": 189,
+          "register_words_clear_requested": 0
+        },
+        "baseline": {
+          "dispatches": 90439,
+          "heap_alloc_calls": 41413,
+          "heap_alloc_miss_calls": 3,
+          "heap_free_calls": 41413,
+          "heap_alloc_requested_words": 82658,
+          "heap_free_words": 82658,
+          "term_keep_calls": 2077,
+          "term_sink_calls": 20530,
+          "term_drop_calls": 61623,
+          "ctr_take_calls": 61679,
+          "frame_push_calls": 0,
+          "frame_capture_words": 0,
+          "return_calls": 43138,
+          "primitive_calls": 129243,
+          "register_words_copy_requested": 137610,
+          "register_words_clear_requested": 0
+        }
+      },
+      "candidateMinusClosure": {
+        "dispatches": 0,
+        "heap_alloc_calls": -36924,
+        "heap_alloc_miss_calls": 0,
+        "heap_free_calls": -36924,
+        "heap_alloc_requested_words": -73848,
+        "heap_free_words": -73848,
+        "term_keep_calls": 0,
+        "term_sink_calls": 18460,
+        "term_drop_calls": 18459,
+        "ctr_take_calls": -18462,
+        "frame_push_calls": 0,
+        "frame_capture_words": 0,
+        "return_calls": 0,
+        "primitive_calls": 0,
+        "register_words_copy_requested": 0,
+        "register_words_clear_requested": 0
+      }
+    },
+    {
+      "workload": "projection-string-size8",
+      "roles": {
+        "baseline": {
+          "dispatches": 110938,
+          "heap_alloc_calls": 41401,
+          "heap_alloc_miss_calls": 3,
+          "heap_free_calls": 41401,
+          "heap_alloc_requested_words": 82635,
+          "heap_free_words": 82635,
+          "term_keep_calls": 2075,
+          "term_sink_calls": 20527,
+          "term_drop_calls": 61621,
+          "ctr_take_calls": 61678,
+          "frame_push_calls": 0,
+          "frame_capture_words": 0,
+          "return_calls": 43132,
+          "primitive_calls": 135390,
+          "register_words_copy_requested": 178616,
+          "register_words_clear_requested": 0
+        },
+        "closure": {
+          "dispatches": 183,
+          "heap_alloc_calls": 41398,
+          "heap_alloc_miss_calls": 3,
+          "heap_free_calls": 41398,
+          "heap_alloc_requested_words": 82630,
+          "heap_free_words": 82630,
+          "term_keep_calls": 2075,
+          "term_sink_calls": 20527,
+          "term_drop_calls": 61621,
+          "ctr_take_calls": 61676,
+          "frame_push_calls": 0,
+          "frame_capture_words": 0,
+          "return_calls": 60,
+          "primitive_calls": 135388,
+          "register_words_copy_requested": 178,
+          "register_words_clear_requested": 0
+        },
+        "candidate": {
+          "dispatches": 183,
+          "heap_alloc_calls": 4476,
+          "heap_alloc_miss_calls": 3,
+          "heap_free_calls": 4476,
+          "heap_alloc_requested_words": 8786,
+          "heap_free_words": 8786,
+          "term_keep_calls": 2075,
+          "term_sink_calls": 38986,
+          "term_drop_calls": 80080,
+          "ctr_take_calls": 43215,
+          "frame_push_calls": 0,
+          "frame_capture_words": 0,
+          "return_calls": 60,
+          "primitive_calls": 135388,
+          "register_words_copy_requested": 178,
+          "register_words_clear_requested": 0
+        }
+      },
+      "candidateMinusClosure": {
+        "dispatches": 0,
+        "heap_alloc_calls": -36922,
+        "heap_alloc_miss_calls": 0,
+        "heap_free_calls": -36922,
+        "heap_alloc_requested_words": -73844,
+        "heap_free_words": -73844,
+        "term_keep_calls": 0,
+        "term_sink_calls": 18459,
+        "term_drop_calls": 18459,
+        "ctr_take_calls": -18461,
+        "frame_push_calls": 0,
+        "frame_capture_words": 0,
+        "return_calls": 0,
+        "primitive_calls": 0,
+        "register_words_copy_requested": 0,
+        "register_words_clear_requested": 0
+      }
+    }
+  ],
+  "source": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/projection-source06/compiler.bend",
+    "bytes": 2621660,
+    "sha256": "f5af5564993c03e121b96a90e3df70e35506717ee386acbc727e8aabcb505a06"
+  },
+  "cost": {
+    "cleanTimedChildSeconds": 19.14165505883284,
+    "pilotChildSeconds": 0.2079153056256473,
+    "longPrefixChildSeconds": 0.03422254207544029,
+    "diagnosticEventChildSeconds": 0.0614868919365108,
+    "scope": "Selected completed child executions only, excludes agent effort, all earlier failed attempts, API acquisition, independent emission and builds; no end-to-end research speed claim."
+  },
+  "limits": [
+    "Small extracted workloads, not the frozen45-program suite or compiler-request performance.",
+    "Five alternating rounds are descriptive; no statistical significance or confidence interval claimed.",
+    "Counter events are hooked runtime calls and may omit inline operations.",
+    "Diagnostic time is not clean execution time.",
+    "Whole compiler qualification and integration cost are separate."
+  ]
+}

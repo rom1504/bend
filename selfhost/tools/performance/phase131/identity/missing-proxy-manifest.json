@@ -1,0 +1,58 @@
+{
+  "complete": true,
+  "targetsRun": false,
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/identity/prepare-missing-proxy.py",
+      "bytes": 1987,
+      "sha256": "2791fc5226fbc1cf1a95d277dbeb8f87392c5045e13bf9f7a158a619c9009a97"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/identity/read-proxy-candidate.bend",
+      "bytes": 20019,
+      "sha256": "e5d0f0e55963515347682f775c2a8667be40b322fdf8ed922f8a54a48b199f1f"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/identity/missing-static-v01.bend",
+      "bytes": 416,
+      "sha256": "c92408454fbf195e6d4e2cabcbb80cda221ad3b9b3cf548bbfcdf1a8f2523801"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/identity/proxy-v02-expected.json",
+      "bytes": 107,
+      "sha256": "5cc511eb642480648e8fb271f60f63480b53de3984f73fe731acb13ea309c7d2"
+    }
+  ],
+  "cases": [
+    {
+      "name": "identity-missing-original",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/identity/read-proxy-candidate.bend",
+        "bytes": 20019,
+        "sha256": "e5d0f0e55963515347682f775c2a8667be40b322fdf8ed922f8a54a48b199f1f"
+      },
+      "expected": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/identity/proxy-v02-expected.json",
+        "bytes": 107,
+        "sha256": "5cc511eb642480648e8fb271f60f63480b53de3984f73fe731acb13ea309c7d2"
+      }
+    },
+    {
+      "name": "identity-missing-candidate",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/identity/missing-proxy-candidate.bend",
+        "bytes": 20059,
+        "sha256": "16a6aa3d1afbd1cf1c123ceabaeeecb06994778841a1c17b35974fbb2c62ec4a"
+      },
+      "expected": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/identity/proxy-v02-expected.json",
+        "bytes": 107,
+        "sha256": "5cc511eb642480648e8fb271f60f63480b53de3984f73fe731acb13ea309c7d2"
+      }
+    }
+  ],
+  "overrides": [
+    "missing"
+  ],
+  "scope": "Frozen exact same closed index proxy with only syntactic inlining of the immutable missing sentinel. First gate is emitted-code evidence that existing static preparation eliminates construction. Successful lookup timing alone is not a useful test of missed-lookup performance."
+}

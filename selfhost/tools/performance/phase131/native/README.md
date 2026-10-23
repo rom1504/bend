@@ -43,7 +43,12 @@ The admission kind is `phase131-native-acquisition-admission`, with
 `runtimeContractsUnchanged` true. Required pins are `source`, `api`, `runtime`,
 `sourceBinding`, `checkedApi`, `parentAdmission`, and a nonempty `semanticChecks`
 list. It also declares `changedDeclarations`, `addedDeclarations`, and `inputs`.
-Each semantic-check report must be complete and explicitly `pass` or `passed`.
+Each semantic-check report must be complete. Ordinary successful reports declare
+`pass` or `passed`; the unchanged Phase128 `finite.mjs` schema instead requires
+`finiteGroups[REPORT_ABSOLUTE_PATH]` mapping exact group names to positive counts,
+complete groups and every original `:pass` (or `p118z_controls` `PASS `) row. Such
+finite evidence must consume this exact admission source/API/source manifest.
+No synthetic top-level success field is added to historical reports.
 Admission remains root-owned: attaching an unrelated successful check does not
 establish a semantic connection; the source/body audit and focused controls must
 justify that connection before root issues admission.
@@ -83,3 +88,26 @@ unique files. No target ran and no Phase131 qualification was fabricated. The
 new-source admission and optional N3 path still require their actual root-produced
 receipts. No code-generation-change qualification is inferred from this schema
 replay.
+
+`admission-templates.json` retains two unissued branch templates (regions-source03
+and projection-source03) with exact checked APIs and finite groups. Their
+`complete:false` status is deliberate: root must review/select the integration
+and issue its actual admission. Neither claims generated-code preservation.
+Readloop is excluded pending its independent controls. The CPU6 check guard
+derivative permits3GiB with a16GiB available-memory floor and retains the same
+CPU6 correctness lock; its exact edits are in `check-guard.derivation.json`.
+The first regions API attempt stopped at the older2GiB cap and remains intact.
+
+`admit-combined.py` is the narrower issued-admission producer for exact
+`combined-fast-source02`/`p131-combined-fast-api02`. It joins the four actual
+finite/differential campaigns,16 real Base-body comparisons and six complete
+QBE/oracle products from three sources. It replays the source/body contract and
+binds the actual safe algebra/absent declarations to seven independently checked
+helper laws. Unsafe merge, generic traversal, callers and native compilation are
+not thereby proved. The separate semantic join has its own successful verdict;
+original campaign reports remain unchanged.
+
+The actual acquisition permission is
+`selfhost/build/phase131/combined-fast-admission01.json`. It is complete and
+source-checked, while `nativeQualified`, `selected`, and `installed` remain false.
+Full-source native reproduction and focused19/ordinary45 are still required.

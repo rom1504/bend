@@ -1,0 +1,11 @@
+function l $p112w_FID_105_110_100_101_120_95_102_105_110_100_95_104_97_115_104_(l %state) {
+@entry
+%v_scratch =l alloc8 2048
+jmp @p112_again
+@p112_again
+%v_value =l call $p111_rt_closure(l %state, w 240, l %v_scratch, w 0)
+%v_p112f_region_exit_0 =l copy %v_value
+storel %v_p112f_region_exit_0, %v_scratch
+%p112_result =l loadl %v_scratch
+ret %p112_result
+}

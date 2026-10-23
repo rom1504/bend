@@ -238,3 +238,78 @@ The useful abstraction, if this wins, is a body-scoped semantic summary whose
 legality is independent of QBE text. It removes repeated ownership-sensitive
 interpretation without changing generated-program behavior. Whether it actually
 makes research cheaper is an end-to-end measurement, not implied by the design.
+
+## Measured proof/performance reconciliation and integration
+
+Both alternatives now have controlled native results. The selector-only compiler
+change emits the **unchanged** callback-safe source and reduces its median from
+0.245831 to0.099911s (ratio0.406423,59.36% less). Its independent ordinary
+text/shared-capture transfer gate passes. The first-order safe algorithms run in
+0.096660s against0.094172s for the fast unsafe summary (ratio1.026426), recovering
+nearly all of the callback regression while connecting the actual implementation
+to independently checked all-input equivalence laws. These are separate paired
+blocks; do not combine their medians into a precise ranking. Evidence is in
+`selector-jobs01/timing/report.json` and
+`usage-first-order-jobs01/timing/report.json`.
+
+The source-level first-order alternative is selected for the next algorithm-only
+composition. `combined-first-order-source01` preserves the FAST identity changes,
+substitutes the exact safe summary and exposes the existing `missing()` sentinel
+as its literal constructor expression. The latter has a separate mixed hit/miss
+native discriminator (ratio0.901899); it introduces no mutable pool or cache.
+Compared with FAST, the combined source adds818 bytes and11 physical lines.
+`combined-first-order-bridge01/report.json` authenticates11 actual compiler
+declarations against the accepted proof snapshots, removing only namespace
+qualifiers. This proves neither generic KTerm traversal nor backend correctness.
+
+The complete algorithm source checks in15.70 guarded seconds (2.19GB peak).
+All22 usage controls,16 sampled real Base bodies and six FAST/new complete QBE
+emissions pass; all three request products match independent frozen QBE bytes.
+The single ordered CPU5 pair is a correctness/cost screen, not native timing:
+lexer8.586→8.953s, closures1.807→1.377s, Map10.483→10.150s. JIT order and concurrent
+root work preclude claiming these differences as compiler gains.
+
+`combined-codegen-source01` is a distinct candidate adding frozen selector V02
+and projection-source06's raw-stage retry. It excludes selector V03 and the
+rejected late duplicate-preparation path. It checks in15.72s (2.24GB), passes69
+finite controls and the same source/proof bridge. Three request QBE products
+remain exactly frozen, so they do not exercise the new codegen paths. The
+one-pair hosted cost ratio is0.98565 geometrically, with Map1.06072, lexer1.01855
+and closures0.88631; this is not evidence that analysis overhead is free.
+Dedicated ordinary selector/projection transfer sources are therefore emitted
+separately before native qualification. All original final verifiers remain.
+
+The reusable summary remains local to an immutable body; there is no cross-request
+cache or invalidation mechanism. Its unresolved scale tradeoff is building facts
+for every body ID even when callers query only a subset, and computing lower
+bounds although these two consumers need only upper bounds. The safe first-order
+merge carries current heads explicitly to avoid callbacks/reconstruction; its
+larger individual generated worker must be compared with the entire displaced
+helper family, not with one function. Whole-compiler execution and native
+self-reproduction remain separate root-owned gates.
+
+The final ambitious candidate is `combined-literals-source01`, SHA
+`1bc5930edcf80cda6c3572645df3c846fa631a83c2b936f20c83b05e0a6728f9`.
+It adds the shallow-layout/virtual-reader composition and replays literal
+constructor exposure on the **current** source bodies. It does not restore old
+whole definitions. Its exact419 replacements preserve all91 original verifier
+declarations and all11 proof-connected declarations byte for byte against its
+direct parent. `combined-literals-bridge01` independently authenticates the latter.
+
+The actual final API checks20 exports. All98 finite predicates pass. Six paired
+FAST/final emissions and16 real Base-body min/max comparisons pass; all three
+complete QBE outputs still match their frozen originals. The one-order CPU5
+request ratio is0.95914 geometrically, with lexer1.03821, closures0.83485 and
+Map1.01800. This remains an exploratory cost screen, not native compiler evidence.
+Its42.11 guarded seconds include both compilers and output checking.
+
+Four actual-final transfer emissions independently pass source lowering and the
+unchanged final verifier: scalar selectors, String projection, list projection
+and the actual compiler `nq_uses` computation. Acquisition costs36.44 guarded
+seconds/594MB peak. Root-only plans at `combined-literals-ordinary01/jobs.json`
+and `combined-literals-transfer-jobs01/jobs.json` now require seven aligned
+native builds with independent exact ordinary-output oracles. Their completion
+and the full self-hosting chain are separate gates; this note does not preclaim
+either. The separate final admission method replays the original module
+composition followed by the exact recorded literal patch, rather than treating
+the derived source as a plain overlay or weakening the frozen native qualifier.

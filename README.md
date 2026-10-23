@@ -122,6 +122,9 @@ timings, generated-program results and qualification.
 The [prepared-Base transport experiment](docs/self_hosted/prepared-base-transport.md)
 removes repeated decimal decoding; the [Phase130 report](implementation/phase130/README.md)
 keeps proxy gains, complete request timings and native qualification separate.
+The [analysis and proof guide](docs/self_hosted/analysis-and-proof-boundaries.md)
+explains reusable usage facts, borrowed results, static values and the exact
+scope of the [Phase131 laws and optimizations](implementation/phase131/README.md).
 
 The [Bend capability audit](research/phase129/README.md) examines how the selected
 compiler uses proofs, types, ownership and parallelism. Its

@@ -1,0 +1,88 @@
+{
+  "complete": true,
+  "targetsRun": false,
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/identity/prepare-missing-mixed-v02.py",
+      "bytes": 2294,
+      "sha256": "564f12cb7b8287ff9e6354495238b8f1752c64114996b6936002f44c5eef78f5"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/identity/prepare-read-proxy.py",
+      "bytes": 2582,
+      "sha256": "4fb18bb8b13fe4a9ca648eb0b8aca3b1f4c9fd2e4e36844d63ae35b65ff4687c"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/identity/read-proxy-candidate.bend",
+      "bytes": 20019,
+      "sha256": "e5d0f0e55963515347682f775c2a8667be40b322fdf8ed922f8a54a48b199f1f"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/identity/missing-mixed-workload.bend",
+      "bytes": 1112,
+      "sha256": "9b0cd8abbdb5316c81d949770fc3844e9a50e890c4e1c38cffaa6bb2000c23e9"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/identity/missing-static-v01.bend",
+      "bytes": 416,
+      "sha256": "c92408454fbf195e6d4e2cabcbb80cda221ad3b9b3cf548bbfcdf1a8f2523801"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/identity/missing-timing-oracle.py",
+      "bytes": 1522,
+      "sha256": "e9a38c6cdf05852ce867368b3093bc56a8cd1b3bac8a8a9e1d4c5eee5cb46bd3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/identity/missing-mixed-expected-v02.json",
+      "bytes": 110,
+      "sha256": "ed281d18d30ee982e7231c51f48b2b7e521e18c6b781c7d6c6057a97029c8604"
+    }
+  ],
+  "cases": [
+    {
+      "name": "identity-missing-original",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/identity/missing-mixed-original.bend",
+        "bytes": 20284,
+        "sha256": "7f22bf60dcffb9bc2c9a584c7786dc6e4de17ddfa8f3a1c143dd680de8644861"
+      },
+      "expected": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/identity/missing-mixed-expected-v02.json",
+        "bytes": 110,
+        "sha256": "ed281d18d30ee982e7231c51f48b2b7e521e18c6b781c7d6c6057a97029c8604"
+      },
+      "expectedStdoutEvidence": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/identity/missing-mixed-expected-v02.json",
+        "bytes": 110,
+        "sha256": "ed281d18d30ee982e7231c51f48b2b7e521e18c6b781c7d6c6057a97029c8604"
+      }
+    },
+    {
+      "name": "identity-missing-candidate",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/identity/missing-mixed-candidate.bend",
+        "bytes": 20323,
+        "sha256": "e114d7c700a5f8210a902022bde2feb48f739253a3be61633ffdd7f60473a1d8"
+      },
+      "expected": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/identity/missing-mixed-expected-v02.json",
+        "bytes": 110,
+        "sha256": "ed281d18d30ee982e7231c51f48b2b7e521e18c6b781c7d6c6057a97029c8604"
+      },
+      "expectedStdoutEvidence": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/identity/missing-mixed-expected-v02.json",
+        "bytes": 110,
+        "sha256": "ed281d18d30ee982e7231c51f48b2b7e521e18c6b781c7d6c6057a97029c8604"
+      }
+    }
+  ],
+  "overrides": [
+    "missing"
+  ],
+  "identityOracle": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/identity/missing-timing-oracle.py",
+    "bytes": 1522,
+    "sha256": "e9a38c6cdf05852ce867368b3093bc56a8cd1b3bac8a8a9e1d4c5eee5cb46bd3"
+  },
+  "scope": "Same256actual compiler names and immutable constructed index. Alternate one present lookup and one guaranteed-absent lookup per name. Construct index and strings outside IO.now; exact independent U32 checksum. Only expose the closed missing sentinel to the existing verified static-data preparation."
+}

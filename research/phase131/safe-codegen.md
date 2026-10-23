@@ -217,6 +217,18 @@ then decide whether a native paired test is worthwhile. Added context lookup and
 bounded scans must also be counted. Synthetic image controls are data only and
 never native targets. Production selection remains unchanged.
 
+The useful longer-term abstraction is a **prepared semantic value**, rather than
+another profitability pass. There are two separate lost-visibility boundaries:
+constructor factories hide closed values before static preparation; later
+inlining reintroduces raw constructors after preparation. The missing() source
+experiment tests the first, and V03 tests the second. If broad source exposure
+pays, a bounded constructor-factory expansion before the existing preparation
+could eventually replace mechanical callsite edits. Restrict its first experiment
+to closed value actuals and finite constructor/lambda/application skeletons;
+refuse primitive evaluation, effects, unknown functions and recursive expansion.
+No such evaluator or framework has been implemented here. A source-level win
+alone does not establish that its automatic analysis cost will amortize.
+
 ## Interpretation and remaining gates
 
 This experiment tests whether a proof-friendly source formulation can reuse an

@@ -1,0 +1,101 @@
+function l $p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_105_110_100_101_120_95_104_97_115_104_(l %state, l %v_v_4294967295, l %v_v_4294967294) {
+@entry
+%v_scratch =l alloc8 2048
+jmp @p113_loop
+@p113_loop
+%v_tag =l shr %v_v_4294967295, 40
+%v_tag =l and %v_tag, 65535
+%v_match_condition =w ceql %v_tag, 24
+jnz %v_match_condition, @b_0, @b_1
+@b_0
+%v_p118b_value_0 =l copy %v_v_4294967294
+ret %v_p118b_value_0
+@b_1
+%v_tag =l shr %v_v_4294967295, 40
+%v_tag =l and %v_tag, 65535
+%v_match_condition =w ceql %v_tag, 25
+jnz %v_match_condition, @b_3, @b_4
+@b_3
+%v_p114t_6_borrow_word =l copy %v_v_4294967295
+%v_p114t_6_borrow_tag_bits =l shr %v_p114t_6_borrow_word, 56
+%v_p114t_6_borrow_tag =l and %v_p114t_6_borrow_tag_bits, 127
+%v_p114t_6_borrow_is_ctr =w ceql %v_p114t_6_borrow_tag, 2
+%v_p114t_6_borrow_aux_bits =l shr %v_p114t_6_borrow_word, 40
+%v_p114t_6_borrow_aux =l and %v_p114t_6_borrow_aux_bits, 65535
+%v_p114t_6_borrow_is_ctor =w ceql %v_p114t_6_borrow_aux, 25
+%v_p114t_6_borrow_guard =w and %v_p114t_6_borrow_is_ctr, %v_p114t_6_borrow_is_ctor
+jnz %v_p114t_6_borrow_guard, @b_7, @b_8
+@b_7
+%v_p114t_6_borrow_heap =l loadl %state
+%v_p114t_6_borrow_location =l and %v_p114t_6_borrow_word, 1099511627775
+%v_p114t_6_borrow_rfc_bit =l shr %v_p114t_6_borrow_word, 63
+%v_p114t_6_borrow_is_rfc =w cnel %v_p114t_6_borrow_rfc_bit, 0
+jnz %v_p114t_6_borrow_is_rfc, @b_10, @b_11
+@b_10
+%v_p114t_6_borrow_header_bytes =l shl %v_p114t_6_borrow_location, 3
+%v_p114t_6_borrow_header =l add %v_p114t_6_borrow_heap, %v_p114t_6_borrow_header_bytes
+%v_p114t_6_borrow_low =l loaduw %v_p114t_6_borrow_header
+%t_13 =l add %v_p114t_6_borrow_header, 4
+%v_p114t_6_borrow_high =l loaduw %t_13
+%v_p114t_6_borrow_high_shift =l shl %v_p114t_6_borrow_high, 32
+%v_p114t_6_borrow_header_word =l or %v_p114t_6_borrow_low, %v_p114t_6_borrow_high_shift
+%v_p114t_6_borrow_location =l shr %v_p114t_6_borrow_header_word, 24
+jmp @b_12
+@b_11
+jmp @b_12
+@b_12
+%v_p114t_6_borrow_field_bytes =l shl %v_p114t_6_borrow_location, 3
+%v_p114t_6_borrow_fields =l add %v_p114t_6_borrow_heap, %v_p114t_6_borrow_field_bytes
+%v_p114t_6_borrow_field_0 =l loadl %v_p114t_6_borrow_fields
+storel %v_p114t_6_borrow_field_0, %v_scratch
+%t_14 =l add %v_p114t_6_borrow_fields, 8
+%v_p114t_6_borrow_field_1 =l loadl %t_14
+%t_15 =l add %v_scratch, 8
+storel %v_p114t_6_borrow_field_1, %t_15
+%v_p118b_read_status =l copy 2
+jmp @b_9
+@b_8
+%v_p118b_read_status =l call $p118_rt_borrow_fields(l %state, l %v_v_4294967295, l %v_scratch, w 25, w 2)
+jmp @b_9
+@b_9
+%v_v_4294967292 =l loadl %v_scratch
+%t_16 =l add %v_scratch, 8
+%v_v_4294967291 =l loadl %t_16
+%v_match_condition =w ceql %v_v_4294967292, %v_v_4294967292
+jnz %v_match_condition, @b_17, @b_18
+@b_17
+%v_v_4294967290 =l copy %v_v_4294967292
+%v_p118b_value_2 =l copy %v_v_4294967294
+%v_p118b_value_3 =l copy %v_v_4294967290
+%p113_width_20 =w copy %v_p118b_value_2
+%v_p112_s_a =l extuw %p113_width_20
+%p113_width_21 =w copy %v_p118b_value_3
+%v_p112_s_b =l extuw %p113_width_21
+%p113_width_22 =w xor %v_p112_s_a, %v_p112_s_b
+%v_value =l extuw %p113_width_22
+%v_p118b_value_1 =l copy %v_value
+%v_v_4294967289 =l copy %v_p118b_value_1
+%v_p118b_value_5 =l copy %v_v_4294967289
+%v_p118b_value_6 =l copy 16777619
+%p113_width_23 =w copy %v_p118b_value_5
+%v_p112_s_a =l extuw %p113_width_23
+%p113_width_24 =w copy %v_p118b_value_6
+%v_p112_s_b =l extuw %p113_width_24
+%p113_width_25 =w mul %v_p112_s_a, %v_p112_s_b
+%v_value =l extuw %p113_width_25
+%v_p118b_value_4 =l copy %v_value
+%v_v_4294967288 =l copy %v_p118b_value_4
+%v_p118b_value_7 =l copy %v_v_4294967291
+%v_p118b_value_8 =l copy %v_v_4294967288
+%p113_again_0 =l copy %v_p118b_value_7
+%p113_again_1 =l copy %v_p118b_value_8
+%v_v_4294967295 =l copy %p113_again_0
+%v_v_4294967294 =l copy %p113_again_1
+jmp @p113_loop
+@b_18
+%v_ignored =l call $p111_rt_fail(l %state, w 4)
+ret 0
+@b_4
+%v_ignored =l call $p111_rt_fail(l %state, w 4)
+ret 0
+}

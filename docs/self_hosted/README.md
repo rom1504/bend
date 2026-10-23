@@ -9,8 +9,11 @@ CPU samples, selected physical callers and Bend runtime event attribution on
 compiler requests or ordinary native programs.
 
 For the current direct-QBE research frontier, read the
-[Phase128 report](../../implementation/phase128/README.md) and
-[borrowed query guide](borrowed-native-queries.md).
+[experiment steering](../../experiments/STEERING.md),
+[prepared-Base guide](prepared-base-transport.md) and
+[reusable analysis facts and proof boundaries](analysis-and-proof-boundaries.md).
+The [borrowed query guide](borrowed-native-queries.md) explains the verified
+ownership interfaces used by these experiments.
 The [Phase128 reproduction guide](../../selfhost/tools/performance/phase128/native/MEASURE.md)
 separates experimental checked-hosted producers, generated native programs and
 qualified N1/N2 images. These experiments do not change installed selection.

@@ -1,6 +1,6 @@
 # Phase131: source-connected usage-summary laws
 
-Twenty-eight distinct Bend laws were accepted by the retained independent BendTT
+Forty-two distinct Bend laws were accepted by the retained independent BendTT
 kernel. They cover the actual saturating-count helpers, the actual missing-side
 summary transform, and a source-connected safe replacement for merge and lookup
 on an explicitly restricted domain. Two type-correct wrong algorithms were
@@ -8,7 +8,7 @@ accepted without their laws and rejected with the unchanged laws.
 
 This establishes useful reusable proof obligations. It does **not** establish
 correctness of the whole usage analyzer, its callers, or native code generation.
-No performance or production-selection claim is made here.
+These proofs make no whole-compiler speed or production-selection claim.
 
 The machine-readable [evidence](../../selfhost/tools/performance/phase131/laws/evidence.json)
 records exact source closures, elaborated terms, report hashes, costs and failed
@@ -172,8 +172,52 @@ The final eighteen-law dependency closure took **2.10s** in BendTT with about
 failed variants and performance falsifier are preserved in
 [`first-order-evidence.json`](../../selfhost/tools/performance/phase131/laws/first-order-evidence.json).
 The source files and proofs are frozen for independent compiler acquisition.
-Native performance, broad output identity and selection of the first-order
-candidate remain separate gates; these laws assert none of them.
+The parent's subsequent five paired native proxy executions measured
+**0.094172s → 0.096660s**, or **1.0264×** the original fast summary, versus the
+initial safe version's 2.564× penalty. This independently measured result is
+retained in `usage-first-order-jobs01/timing/report.json`; it does not establish
+whole-compiler request latency or final production qualification. Proofs and
+performance gates jointly found a practical algorithm rather than forcing the
+slow proof-friendly source into production.
+
+The independent `first-order-source-bridge.py` check authenticated all eleven
+actual declarations in `usage-first-order-proxy01/main.bend` against their
+accepted proof snapshots, removing only the explicit local module qualifiers.
+Successor native admission must rerun that exact bridge on its own full source.
+
+## Consolidation: the next missing contract is count validity
+
+Fourteen additional laws establish a universal bounded-count lookup result and
+an empty-right merge base case. They quantify over arbitrary-length entry
+lists, arbitrary U32 keys and queries, including duplicate or unsorted keys;
+this is not a finite test catalogue. The input-domain witness represents each
+count by Zero/Once/Many and encodes it as 0/1/2. Actual first-order maximum and
+minimum lookup are proved equal to an encoded count, and therefore at most 2.
+For all three admitted combination modes, maximum lookup after merging such a
+map with an empty right map equals the intended pointwise combination with 0.
+
+This exposes an essential limitation of a proposed unrestricted merge law.
+For `[P131UEntry{0,0,3}]`, an empty right map and sequence mode, actual merge
+preserves the existing count 3; applying the saturating combiner to 3 and 0 yields 2.
+That is a counterexample by direct reduction of the source definitions, not a
+separate runtime measurement. Full summary correctness must establish the
+bounded-count invariant as well as sortedness and uniqueness. The new domain
+witness does not prove that `p131u_build` always produces such inputs.
+
+The complete eighteen-law dependency closure for the empty-side result took
+**2.09s** in the independent kernel with zero opaque definitions. Reproducible
+sources are `bounded-lookup-laws.bend` and `empty-merge-laws.bend`;
+[consolidation-evidence.json](../../selfhost/tools/performance/phase131/laws/consolidation-evidence.json)
+binds the new receipts, the actual eleven-declaration source bridge and the
+first-order native proxy result.
+
+The smallest remaining universal obligations are: prove bounded-count and
+sorted/unique preservation through arbitrary merge branches; prove query-order
+compatibility using actual U32 comparison; then prove lookup combination for
+nonempty different key domains. Only after that does the generic KTerm
+traversal become the main missing theorem. Its Var, exact-arity Mat,
+NWPattern and malformed-fallback cases must match the existing queries exactly.
+The present 42 laws do not constitute a whole-analyzer or compiler theorem.
 
 ## Highest-value next steps
 

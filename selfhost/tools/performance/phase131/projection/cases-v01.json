@@ -1,0 +1,55 @@
+{
+  "complete": true,
+  "targetsRun": false,
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/projection/prepare-fixtures.py",
+      "bytes": 1673,
+      "sha256": "6c9e035c994008697b8e80ec7c40578e0fed3225a552da5337a4e491178cc743"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase130/scalar/cases-v04.json",
+      "bytes": 1648,
+      "sha256": "ee258f7dc7432fbc58c97a0d5b91c043031f66bcc717f4d1bab96921053b10d2"
+    }
+  ],
+  "cases": [
+    {
+      "name": "projection-string",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase130/scalar/baseline-v04.bend",
+        "bytes": 4243,
+        "sha256": "bc276df872317ff44d37075ace2754780f1565ab1d436068c1cc73486552b1f8"
+      },
+      "expected": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase130/scalar/expected.json",
+        "bytes": 106,
+        "sha256": "6dc06b9da2553b676e7b8f90bd2df4b39b29b0bf554f6f24dd3bf31e8c357a6b"
+      },
+      "expectedStdoutEvidence": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase130/scalar/expected.json",
+        "bytes": 106,
+        "sha256": "6dc06b9da2553b676e7b8f90bd2df4b39b29b0bf554f6f24dd3bf31e8c357a6b"
+      }
+    },
+    {
+      "name": "projection-list",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/projection/list-workload-v01.bend",
+        "bytes": 4371,
+        "sha256": "3ba7498fe8b762a53d3ad19d7a0994eecf5af6576c2efb5265cf00934d85019e"
+      },
+      "expected": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/projection/list-expected-v01.json",
+        "bytes": 106,
+        "sha256": "6dc06b9da2553b676e7b8f90bd2df4b39b29b0bf554f6f24dd3bf31e8c357a6b"
+      },
+      "expectedStdoutEvidence": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/projection/list-expected-v01.json",
+        "bytes": 106,
+        "sha256": "6dc06b9da2553b676e7b8f90bd2df4b39b29b0bf554f6f24dd3bf31e8c357a6b"
+      }
+    }
+  ],
+  "scope": "Same ordinary source for parent and candidate compilers. Existing String oracle; independent lexicographic U32-list oracle. No target executed or output learned."
+}

@@ -1,0 +1,320 @@
+{
+  "complete": true,
+  "passed": true,
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/regions-uses-timed01/report.json",
+      "bytes": 37015,
+      "sha256": "6f44caac52ae5bf21bd52ab8b033ac069cb63448ea5791a8505acc5adb45e766"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/regions-uses-timing02/manifest.json",
+      "bytes": 32066,
+      "sha256": "77e073d8e6e22c895d4741d14b33a30445e2817ae7055f650ff0f28027241dcf"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/regions/attempt03-evidence.json",
+      "bytes": 39265,
+      "sha256": "44d337129cb56bb17aa76df7eb1f2fc4dc1c99fcd0dade9cbd535d4509ef04ec"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/regions/uses.oracle.json",
+      "bytes": 5525,
+      "sha256": "b08b0fbba8cf9b302f93e80b3f77e827ba7f0c5d5c22001562d1dd30e2837be6"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/regions-uses-pilot01/report.json",
+      "bytes": 31172,
+      "sha256": "ab3928404de698c556c24e21f83d958d3629962816d2cd4808589c47bd48a6c4"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/p131-regions-uses01-baseline/report.json",
+      "bytes": 13400,
+      "sha256": "de9fff8a4c6fb716cd5bfd3a77790db404adf8e78e1fc108b959009c4a2bb2bb"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p131-regions-uses01-baseline-build/report.json",
+      "bytes": 6121,
+      "sha256": "13ca91ad771d761050a38b020c77139dccb0264f26bb109f09fa45b61e8e5040"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/regions-source03/manifest.json",
+      "bytes": 5122,
+      "sha256": "8839010ed34f594e9802abb5f303975ef46dfbcce7ebe44d7baecd5362f4b906"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/p131-regions-uses01-candidate/report.json",
+      "bytes": 13658,
+      "sha256": "2315bdab9d503aa27b7246fe85c9ce49cfad4e7480920dc2c93bed243a5fe0a9"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p131-regions-uses01-candidate-build/report.json",
+      "bytes": 6140,
+      "sha256": "15ff8ad9f7475074dfc9202f1ec39ead4a294a4aafa4c5e1c1324ba620991a7c"
+    }
+  ],
+  "case": "compiler-uses",
+  "candidate": "regions-source03",
+  "baseline": "phase130/mode-source01",
+  "sourceUnchangedAcrossVariants": true,
+  "runtimeUnchangedAcrossVariants": true,
+  "lateInliningRescheduling": false,
+  "cleanRounds": 3,
+  "repetitions": 2047,
+  "cpuAffinity": [
+    3
+  ],
+  "summary": {
+    "baseline": {
+      "cleanRuns": 3,
+      "clean": {
+        "wallSeconds": {
+          "samples": [
+            0.6394861061125994,
+            0.5953271938487887,
+            0.5943662959616631
+          ],
+          "median": 0.5953271938487887,
+          "minimum": 0.5943662959616631,
+          "maximum": 0.6394861061125994
+        },
+        "cpuSeconds": {
+          "samples": [
+            0.637797,
+            0.594337,
+            0.593328
+          ],
+          "median": 0.594337,
+          "minimum": 0.593328,
+          "maximum": 0.637797
+        },
+        "peakRssKiB": {
+          "samples": [
+            9692,
+            9800,
+            9812
+          ],
+          "median": 9800,
+          "minimum": 9692,
+          "maximum": 9812
+        }
+      },
+      "instrumentedUnsampledRuns": 0,
+      "instrumentedUnsampledWallSeconds": [],
+      "sampledRuns": 0,
+      "usableCaptures": 0,
+      "diagnosticWallSeconds": [],
+      "diagnosticOverCleanWallRatio": null
+    },
+    "candidate": {
+      "cleanRuns": 3,
+      "clean": {
+        "wallSeconds": {
+          "samples": [
+            0.4796293929684907,
+            0.4797014680225402,
+            0.49032005202025175
+          ],
+          "median": 0.4797014680225402,
+          "minimum": 0.4796293929684907,
+          "maximum": 0.49032005202025175
+        },
+        "cpuSeconds": {
+          "samples": [
+            0.47875799999999996,
+            0.47878499999999996,
+            0.489423
+          ],
+          "median": 0.47878499999999996,
+          "minimum": 0.47875799999999996,
+          "maximum": 0.489423
+        },
+        "peakRssKiB": {
+          "samples": [
+            9768,
+            9796,
+            9832
+          ],
+          "median": 9796,
+          "minimum": 9768,
+          "maximum": 9832
+        }
+      },
+      "instrumentedUnsampledRuns": 0,
+      "instrumentedUnsampledWallSeconds": [],
+      "sampledRuns": 0,
+      "usableCaptures": 0,
+      "diagnosticWallSeconds": [],
+      "diagnosticOverCleanWallRatio": null
+    }
+  },
+  "ratios": {
+    "wall": 0.8057778528833388,
+    "cpu": 0.8055783166789211
+  },
+  "rows": [
+    {
+      "variant": "baseline",
+      "round": 1,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p131-regions-uses01-baseline-build/program",
+        "--threads",
+        "1",
+        "--gpu",
+        "off",
+        "--",
+        "2047"
+      ],
+      "wallSeconds": 0.6394861061125994,
+      "cpuSeconds": 0.637797,
+      "peakRssKiB": 9692,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/regions-uses-timed01/000-clean-compiler-uses-baseline/stdout",
+        "bytes": 11,
+        "sha256": "88b1ae49fd0942d841c1ae4e4361c30e2e518050bdce6f4e7c66a4446a7e70ee"
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/regions-uses-timed01/000-clean-compiler-uses-baseline/stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "correct": true
+    },
+    {
+      "variant": "candidate",
+      "round": 1,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p131-regions-uses01-candidate-build/program",
+        "--threads",
+        "1",
+        "--gpu",
+        "off",
+        "--",
+        "2047"
+      ],
+      "wallSeconds": 0.4796293929684907,
+      "cpuSeconds": 0.47875799999999996,
+      "peakRssKiB": 9768,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/regions-uses-timed01/001-clean-compiler-uses-candidate/stdout",
+        "bytes": 11,
+        "sha256": "e3b2332f847fce2abac79808d74191586955a18a4541b5599164c7c60894a847"
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/regions-uses-timed01/001-clean-compiler-uses-candidate/stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "correct": true
+    },
+    {
+      "variant": "candidate",
+      "round": 2,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p131-regions-uses01-candidate-build/program",
+        "--threads",
+        "1",
+        "--gpu",
+        "off",
+        "--",
+        "2047"
+      ],
+      "wallSeconds": 0.4797014680225402,
+      "cpuSeconds": 0.47878499999999996,
+      "peakRssKiB": 9796,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/regions-uses-timed01/002-clean-compiler-uses-candidate/stdout",
+        "bytes": 11,
+        "sha256": "e3b2332f847fce2abac79808d74191586955a18a4541b5599164c7c60894a847"
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/regions-uses-timed01/002-clean-compiler-uses-candidate/stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "correct": true
+    },
+    {
+      "variant": "baseline",
+      "round": 2,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p131-regions-uses01-baseline-build/program",
+        "--threads",
+        "1",
+        "--gpu",
+        "off",
+        "--",
+        "2047"
+      ],
+      "wallSeconds": 0.5953271938487887,
+      "cpuSeconds": 0.594337,
+      "peakRssKiB": 9800,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/regions-uses-timed01/003-clean-compiler-uses-baseline/stdout",
+        "bytes": 11,
+        "sha256": "85fb2849e96c246cef2d664308f0a2de720988cde5a72ee353bde889c6ba547c"
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/regions-uses-timed01/003-clean-compiler-uses-baseline/stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "correct": true
+    },
+    {
+      "variant": "baseline",
+      "round": 3,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p131-regions-uses01-baseline-build/program",
+        "--threads",
+        "1",
+        "--gpu",
+        "off",
+        "--",
+        "2047"
+      ],
+      "wallSeconds": 0.5943662959616631,
+      "cpuSeconds": 0.593328,
+      "peakRssKiB": 9812,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/regions-uses-timed01/004-clean-compiler-uses-baseline/stdout",
+        "bytes": 11,
+        "sha256": "c47e32afdf17dd02a276d231e655e1a4b33cf76cf5e5e50d6fdac16efc6d8c1d"
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/regions-uses-timed01/004-clean-compiler-uses-baseline/stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "correct": true
+    },
+    {
+      "variant": "candidate",
+      "round": 3,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p131-regions-uses01-candidate-build/program",
+        "--threads",
+        "1",
+        "--gpu",
+        "off",
+        "--",
+        "2047"
+      ],
+      "wallSeconds": 0.49032005202025175,
+      "cpuSeconds": 0.489423,
+      "peakRssKiB": 9832,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/regions-uses-timed01/005-clean-compiler-uses-candidate/stdout",
+        "bytes": 11,
+        "sha256": "b016a131ab5429aecfc16f98c8c054ff0092ebe83a22af698603be6c68035193"
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/regions-uses-timed01/005-clean-compiler-uses-candidate/stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "correct": true
+    }
+  ],
+  "scope": "Generated native execution of an unchanged extracted compiler occurrence-count algorithm on synthetic retained shared trees. Independent10-output ordinary oracle passed before timings. Source03 adds shallow layouts and finite virtual helper specialization only, preserving runtime/guard/fallback/stack safety gates. This is a transfer result to actual compiler computation, not a full compiler request or broad-program score. Three rounds do not establish a precise confidence interval."
+}

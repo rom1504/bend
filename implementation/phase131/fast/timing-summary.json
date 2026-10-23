@@ -1,0 +1,374 @@
+{
+  "complete": true,
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/native/timing-analysis.py",
+      "bytes": 6120,
+      "sha256": "a4f77227053a4ece88ff72492ac72270fd8e5af939c68265556ae51fe9e84007"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase112/p131-fast-parent-timing01/report.json",
+      "bytes": 232650,
+      "sha256": "96b4645afa2711c7971b0c01cdc36cf7782d37da33772222252d436680ab920f"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/fast-parent-timing01.json",
+      "bytes": 13241,
+      "sha256": "f2ff680faafe3566db4e9d666be7add183784a0384ec52ea4e3e86bef1eda4e8"
+    }
+  ],
+  "roles": {
+    "phase111": {
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p130-native01-n1/program",
+        "bytes": 16586488,
+        "sha256": "a25e4c7f55a6a48829bf9d148498d6392b98fe1ab66b9664d99ce1987715c2c5"
+      },
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase130/mode-source01/compiler.bend",
+        "bytes": 2613588,
+        "sha256": "995d6b4bf14963debb9a810de2ed941c3cd30a71fc34a156d96b1adbd1b06bdd"
+      },
+      "generation": "Qualified Phase130 N1; compact Base",
+      "nativeQualified": true,
+      "carrierReceipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase130/base-carrier01/receipt.json",
+        "bytes": 4362,
+        "sha256": "6b170fc62a4a8b4e7588019a1b2cbdcc932ba10477029d966fbfa62cc61c89cf"
+      }
+    },
+    "phase112": {
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p131-fast-native01-n1/program",
+        "bytes": 16771824,
+        "sha256": "78d09ed3b9ce380c2a26837e92b453faa887d837755fdfad32a2b9460c387fe6"
+      },
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/combined-fast-source02/compiler.bend",
+        "bytes": 2628217,
+        "sha256": "7f7952989ca1dd4b9c5246ee7f2fdbdee6c9b0e1a603f2bfb2244d76a75d22fd"
+      },
+      "generation": "Experimental Phase131 N1; focused19 passed; compact Base",
+      "nativeQualified": false,
+      "carrierReceipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase130/base-carrier01/receipt.json",
+        "bytes": 4362,
+        "sha256": "6b170fc62a4a8b4e7588019a1b2cbdcc932ba10477029d966fbfa62cc61c89cf"
+      }
+    },
+    "upstream": {
+      "bun": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/bun-1.4.3/bun",
+        "bytes": 88979072,
+        "sha256": "7ce7d6b654eddeec20afddf2396317fba6dc19ab52788a27e894e1806bf8f24b"
+      },
+      "modules": {
+        "bend": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/bend.ts",
+          "sha256": "1d133151652b597a1a035c77c172475e6de096da37f3b9e3adc23c2f75bdfe49",
+          "bytes": 138101
+        },
+        "compiler": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/comp.ts",
+          "sha256": "2b13224ba09a9e39e37cccf06e449c1bdafe5e03a81641654f7d0e455507629c",
+          "bytes": 185124
+        },
+        "base": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/base.bend",
+          "sha256": "99ac43f2b2bb3e3f39acdcedcecbbd3cb44749ce13969c827d6973fa66f7facf",
+          "bytes": 75064
+        }
+      },
+      "manifest": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase105/screen01/upstream.json",
+        "bytes": 665,
+        "sha256": "f3ea63f22513f7907a4c622376a99556617f9be099ff4c80c64b15a2e2d8ded8"
+      },
+      "worker": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase105/upstream.mjs",
+        "bytes": 1428,
+        "sha256": "746f787e532beb4380d78858012f4ef2f20be0c53cc069bb254a75ae804d3181"
+      }
+    }
+  },
+  "observations": 27,
+  "cases": [
+    {
+      "name": "lexer",
+      "roles": {
+        "phase111": {
+          "requestSeconds": [
+            2.2019777321256697,
+            1.914314596913755,
+            1.9932528529316187
+          ],
+          "requestMedian": 1.9932528529316187,
+          "requestCpuSeconds": [
+            2.20052,
+            1.913419,
+            1.9922819999999999
+          ],
+          "cpuMedian": 1.9922819999999999,
+          "requestWallOverCpu": [
+            1.0006624489328293,
+            1.0004680610539327,
+            1.0004873069834586
+          ],
+          "machineMedian": 0.08989506936632097,
+          "readyMedian": 2.0831479222979397,
+          "rawOutputSha256": [
+            "d7f319ddfe98e211951e305d692fa0190f4c2ade7cf0beb998a5e88ae7f13559"
+          ]
+        },
+        "phase112": {
+          "requestSeconds": [
+            2.03987820004113,
+            1.753726992988959,
+            2.034117800882086
+          ],
+          "requestMedian": 2.034117800882086,
+          "requestCpuSeconds": [
+            2.038779,
+            1.752705,
+            2.0328049999999998
+          ],
+          "cpuMedian": 2.0328049999999998,
+          "requestWallOverCpu": [
+            1.0005391462444582,
+            1.0005830946958896,
+            1.0006458075821765
+          ],
+          "machineMedian": 0.10046977992169559,
+          "readyMedian": 2.1345875808037817,
+          "rawOutputSha256": [
+            "d7f319ddfe98e211951e305d692fa0190f4c2ade7cf0beb998a5e88ae7f13559"
+          ]
+        },
+        "upstream": {
+          "requestSeconds": [
+            0.7436049720272422,
+            0.7251701899804175,
+            0.8130882650148124
+          ],
+          "requestMedian": 0.7436049720272422,
+          "requestCpuSeconds": [
+            0.742285,
+            0.724046,
+            0.812068
+          ],
+          "cpuMedian": 0.742285,
+          "requestWallOverCpu": [
+            1.0017782550196248,
+            1.0015526499427074,
+            1.0012563787944018
+          ],
+          "machineMedian": 0.7388749569654465,
+          "readyMedian": 1.4824799289926887,
+          "rawOutputSha256": [
+            "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          ]
+        }
+      },
+      "candidateOverParent": 1.020501637757781,
+      "candidateOverUpstream": 2.73548171058701,
+      "parentOverUpstream": 2.680526526735751,
+      "requestPercentChange": 2.050163775778091,
+      "pairedRoundRatios": [
+        0.9263845725051645,
+        0.9161122188674243,
+        1.020501637757781
+      ],
+      "nativeQbeExact": true,
+      "observedRangeHint": "ranges_overlap"
+    },
+    {
+      "name": "coverage-closures-256",
+      "roles": {
+        "phase111": {
+          "requestSeconds": [
+            0.4780329877976328,
+            0.4737308139447123,
+            0.5049671160522848
+          ],
+          "requestMedian": 0.4780329877976328,
+          "requestCpuSeconds": [
+            0.47689099999999995,
+            0.472898,
+            0.503983
+          ],
+          "cpuMedian": 0.47689099999999995,
+          "requestWallOverCpu": [
+            1.0023946516030557,
+            1.0017610857832182,
+            1.0019526770789589
+          ],
+          "machineMedian": 0.04181297309696674,
+          "readyMedian": 0.5198459608945996,
+          "rawOutputSha256": [
+            "c5b9d940e875610ccb93b9ebbc8105964f16c98169ed8ead1edbcc08b0becbd7"
+          ]
+        },
+        "phase112": {
+          "requestSeconds": [
+            0.47266353806480765,
+            0.4479980368632823,
+            0.47041561687365174
+          ],
+          "requestMedian": 0.47041561687365174,
+          "requestCpuSeconds": [
+            0.471752,
+            0.447142,
+            0.469483
+          ],
+          "cpuMedian": 0.469483,
+          "requestWallOverCpu": [
+            1.0019322399582993,
+            1.001914463108548,
+            1.0019864763445145
+          ],
+          "machineMedian": 0.04430606891401112,
+          "readyMedian": 0.5149391598533839,
+          "rawOutputSha256": [
+            "c5b9d940e875610ccb93b9ebbc8105964f16c98169ed8ead1edbcc08b0becbd7"
+          ]
+        },
+        "upstream": {
+          "requestSeconds": [
+            0.5660549851600081,
+            0.5140980000142008,
+            0.5352716948837042
+          ],
+          "requestMedian": 0.5352716948837042,
+          "requestCpuSeconds": [
+            0.56503,
+            0.513003,
+            0.5343129999999999
+          ],
+          "cpuMedian": 0.5343129999999999,
+          "requestWallOverCpu": [
+            1.0018140367060298,
+            1.0021344904692582,
+            1.00179425708097
+          ],
+          "machineMedian": 0.6451525830198079,
+          "readyMedian": 1.1804242779035121,
+          "rawOutputSha256": [
+            "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          ]
+        }
+      },
+      "candidateOverParent": 0.9840651772609347,
+      "candidateOverUpstream": 0.8788352183947568,
+      "parentOverUpstream": 0.89306606788071,
+      "requestPercentChange": -1.5934822739065324,
+      "pairedRoundRatios": [
+        0.9887676167338095,
+        0.9456805925982404,
+        0.9315767342460859
+      ],
+      "nativeQbeExact": true,
+      "observedRangeHint": "candidate_range_below_parent"
+    },
+    {
+      "name": "coverage-map-churn-128",
+      "roles": {
+        "phase111": {
+          "requestSeconds": [
+            2.765064497012645,
+            2.7880886720959097,
+            2.8750685988925397
+          ],
+          "requestMedian": 2.7880886720959097,
+          "requestCpuSeconds": [
+            2.764248,
+            2.787059,
+            2.8740639999999997
+          ],
+          "cpuMedian": 2.787059,
+          "requestWallOverCpu": [
+            1.000295377626264,
+            1.0003694475416234,
+            1.0003495394996562
+          ],
+          "machineMedian": 0.18337297113612294,
+          "readyMedian": 2.9714616432320327,
+          "rawOutputSha256": [
+            "37fd22e781e93290c2ab661c06f1991d57542f58e90d983890cebff6f7ef24e5"
+          ]
+        },
+        "phase112": {
+          "requestSeconds": [
+            2.2838047312106937,
+            2.298064110102132,
+            2.2993691549636424
+          ],
+          "requestMedian": 2.298064110102132,
+          "requestCpuSeconds": [
+            2.282771,
+            2.297211,
+            2.298536
+          ],
+          "cpuMedian": 2.297211,
+          "requestWallOverCpu": [
+            1.0004528405217579,
+            1.000371367759484,
+            1.0003624720098543
+          ],
+          "machineMedian": 0.1825772230513394,
+          "readyMedian": 2.4782170332036912,
+          "rawOutputSha256": [
+            "37fd22e781e93290c2ab661c06f1991d57542f58e90d983890cebff6f7ef24e5"
+          ]
+        },
+        "upstream": {
+          "requestSeconds": [
+            1.1158877771813422,
+            1.1169009669683874,
+            1.138222326990217
+          ],
+          "requestMedian": 1.1169009669683874,
+          "requestCpuSeconds": [
+            1.11487,
+            1.116015,
+            1.137317
+          ],
+          "cpuMedian": 1.116015,
+          "requestWallOverCpu": [
+            1.0009129110850075,
+            1.0007938665415674,
+            1.0007960199225168
+          ],
+          "machineMedian": 1.8645453420467675,
+          "readyMedian": 2.9804331192281097,
+          "rawOutputSha256": [
+            "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          ]
+        }
+      },
+      "candidateOverParent": 0.82424355190059,
+      "candidateOverUpstream": 2.0575361451604652,
+      "parentOverUpstream": 2.496272055044987,
+      "requestPercentChange": -17.575644809941004,
+      "pairedRoundRatios": [
+        0.8259498950849425,
+        0.82424355190059,
+        0.7997614929429324
+      ],
+      "nativeQbeExact": true,
+      "observedRangeHint": "candidate_range_below_parent"
+    }
+  ],
+  "geometricRequestRatios": {
+    "candidateOverParent": 0.9389253024932417,
+    "candidateOverUpstream": 1.7038430236948916,
+    "parentOverUpstream": 1.814673669109216
+  },
+  "geometricReadyRatios": {
+    "phase112/phase111": 0.9459788817663213,
+    "phase112/upstream": 0.805318420995834,
+    "phase111/upstream": 0.8513069757880348
+  },
+  "exactNativeQbeAllCases": true,
+  "sampleWindowSeconds": 53.6192352771759,
+  "scope": "Same requested programs and controlled workflow; compiler source identities are recorded, not assumed equal. Three repetitions are a screen. Request and ready-child sums are distinct; execution is correctness-only. No full45 or recursive-improvement claim."
+}

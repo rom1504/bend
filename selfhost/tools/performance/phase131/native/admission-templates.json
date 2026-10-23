@@ -1,0 +1,1191 @@
+{
+  "complete": false,
+  "issued": false,
+  "targetsRun": false,
+  "method": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/native/qualify.py",
+    "bytes": 19311,
+    "sha256": "28a5d00beb5744d8d41c192f5efca3926a28a0b78952124f7123b43b45626e14"
+  },
+  "producerSelection": {
+    "file": "/home/ai/bend2/build/publish/bend/implementation/phase130/candidate.json",
+    "bytes": 3819,
+    "sha256": "28c819c35af862d996a1eef590a9b003a4854a5e1c92dc0a03c5b265b5d8a22c"
+  },
+  "candidates": [
+    {
+      "candidate": "regions03",
+      "admissionTemplate": {
+        "kind": "phase131-native-acquisition-admission",
+        "complete": false,
+        "sourceChecked": true,
+        "originalVerifiersUnchanged": true,
+        "runtimeContractsUnchanged": true,
+        "parentAdmission": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase130/native-admission01.json",
+          "bytes": 60919,
+          "sha256": "3a4fe762da40b14e51a11c4cb822a55b5dffda0995857ca2498adaa7fc50a8b8"
+        },
+        "runtime": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase128/runtime-borrow01/runtime.o",
+          "bytes": 121816,
+          "sha256": "9b3f57afb46b4db8c63f6f3c5f1af1194e0854a7329de28f25d2e11aef887749"
+        },
+        "source": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/regions-source03/compiler.bend",
+          "bytes": 2623147,
+          "sha256": "977086cb05df5a1c8e6518f7961158e161ecaf40d7fa653c1354e195cb0c947b"
+        },
+        "api": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p131-regions-api04/api.mjs",
+          "bytes": 2410948,
+          "sha256": "acc679de3f5aea3cd3378ec4c5eefa9eb6a40768a79772245d39c0dd507badb9"
+        },
+        "sourceBinding": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/regions-source03/manifest.json",
+          "bytes": 5122,
+          "sha256": "8839010ed34f594e9802abb5f303975ef46dfbcce7ebe44d7baecd5362f4b906"
+        },
+        "checkedApi": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p131-regions-api04/report.json",
+          "bytes": 3456,
+          "sha256": "5600873b4b1590cd2c4fc3c99246ae32703936386d6315bb50310988b4b5c484"
+        },
+        "changedDeclarations": [
+          "p128bl_node",
+          "p128br_reference"
+        ],
+        "addedDeclarations": [
+          "p131rg_case",
+          "p131rg_children",
+          "p131rg_control_context",
+          "p131rg_control_match",
+          "p131rg_control_opaque",
+          "p131rg_controls",
+          "p131rg_ctors",
+          "p131rg_fallback",
+          "p131rg_join",
+          "p131rg_names",
+          "p131rg_node",
+          "p131rg_opaque",
+          "p131rg_symbol_available",
+          "p131rg_visible",
+          "p131rg_width",
+          "p131rv_arguments",
+          "p131rv_constructor",
+          "p131rv_context",
+          "p131rv_controls",
+          "p131rv_fields",
+          "p131rv_reference",
+          "p131rv_value"
+        ],
+        "semanticChecks": [
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase128/p131-regions-finite03/report.json",
+            "bytes": 7303,
+            "sha256": "251765384f9635811c9be34200f6b9501688850147d76694db57e89baf5a43c0"
+          }
+        ],
+        "finiteGroups": {
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase128/p131-regions-finite03/report.json": {
+            "p131rg_controls": 13,
+            "p128bl_controls": 7,
+            "p128br_call_controls": 10,
+            "p131rv_controls": 9
+          }
+        },
+        "nativeQualified": false,
+        "selected": false,
+        "installed": false,
+        "generatedCodePreservation": false,
+        "changeKind": "codegen-changing",
+        "sourceBodyAudit": {
+          "completeSourceReplay": true,
+          "changedDeclarations": [
+            "p128bl_node",
+            "p128br_reference"
+          ],
+          "addedDeclarations": [
+            "p131rg_case",
+            "p131rg_children",
+            "p131rg_control_context",
+            "p131rg_control_match",
+            "p131rg_control_opaque",
+            "p131rg_controls",
+            "p131rg_ctors",
+            "p131rg_fallback",
+            "p131rg_join",
+            "p131rg_names",
+            "p131rg_node",
+            "p131rg_opaque",
+            "p131rg_symbol_available",
+            "p131rg_visible",
+            "p131rg_width",
+            "p131rv_arguments",
+            "p131rv_constructor",
+            "p131rv_context",
+            "p131rv_controls",
+            "p131rv_fields",
+            "p131rv_reference",
+            "p131rv_value"
+          ],
+          "changedBodies": [
+            {
+              "name": "p128bl_node",
+              "bytes": 394,
+              "sha256": "6a1932bade3401ce8ca254fb9e66e8b4eda3e70f38dfbaef897f05f0b2109d80"
+            },
+            {
+              "name": "p128br_reference",
+              "bytes": 723,
+              "sha256": "e08b853ac71254a825968d25042c721061a0ccba39220f0ddadb27dc24d28d7c"
+            },
+            {
+              "name": "p131rg_case",
+              "bytes": 582,
+              "sha256": "2feb922b48c4d96bc322669e10786d89dfa73bd35a6a8803e93e1bf600e2e425"
+            },
+            {
+              "name": "p131rg_children",
+              "bytes": 337,
+              "sha256": "23df6191b03b87f12a048faa8004175d72c4da5dcb4397a5519bd31474b3a6dc"
+            },
+            {
+              "name": "p131rg_control_context",
+              "bytes": 151,
+              "sha256": "2f4dcca510559e86bb6c1585cd94dc6cf6b1a5115ffe392ada14a36c026bda2a"
+            },
+            {
+              "name": "p131rg_control_match",
+              "bytes": 363,
+              "sha256": "d5058827f1b66d5956b58c43c115287e20fba18411e59b779850d51e4f87de07"
+            },
+            {
+              "name": "p131rg_control_opaque",
+              "bytes": 150,
+              "sha256": "92e37cbd57ae115ef9d023a6276dbb18204cbabbb603c8d3b33d32d5910ad880"
+            },
+            {
+              "name": "p131rg_controls",
+              "bytes": 1420,
+              "sha256": "3a399c1645075154ca9d034286edcfdcb8e5394ce661f90718a43960c8955e15"
+            },
+            {
+              "name": "p131rg_ctors",
+              "bytes": 434,
+              "sha256": "56690f1e7e5a623a10a8d41d719da12802c99baaff857490704141b34c8b9a66"
+            },
+            {
+              "name": "p131rg_fallback",
+              "bytes": 478,
+              "sha256": "3655315ee005d8f56c4b253ce7ea77d5f84aba396095c31a83e516da88d4831b"
+            },
+            {
+              "name": "p131rg_join",
+              "bytes": 231,
+              "sha256": "12fb1a7b88dd26aff03edc1d256c99470ae2cfba013be881820bafd1c261f0c4"
+            },
+            {
+              "name": "p131rg_names",
+              "bytes": 280,
+              "sha256": "80682a21af1f5961a2d2ddcc2d3038d5ba0903ac71c5ada115eb7b2b67ba8b30"
+            },
+            {
+              "name": "p131rg_node",
+              "bytes": 394,
+              "sha256": "3bff6cbd7a5bd7bbab2c60ad1c2712dc62e5284c42390c7a4c9145725808cbe5"
+            },
+            {
+              "name": "p131rg_opaque",
+              "bytes": 67,
+              "sha256": "825e7fef2ebfa0b1c398a7ac51c1ba0ac4fcdd70d06f1b515d804c607aec0b3b"
+            },
+            {
+              "name": "p131rg_symbol_available",
+              "bytes": 123,
+              "sha256": "0074f4b72a73d96fb5ccc840314e41db807a7d64294faa42362a67239a7ad383"
+            },
+            {
+              "name": "p131rg_visible",
+              "bytes": 157,
+              "sha256": "891ed579563338c696603ac05419e5b03b403ad70898dbe1e5733a604ee5d034"
+            },
+            {
+              "name": "p131rg_width",
+              "bytes": 116,
+              "sha256": "05cb6688d9d253ae6b845a6a5584c42267e2837ca7938f37c6ba57dc82bdc467"
+            },
+            {
+              "name": "p131rv_arguments",
+              "bytes": 611,
+              "sha256": "972d7d92b361a48f332fea735d0c3b68b5bb867213904ffed04196c96e842b6e"
+            },
+            {
+              "name": "p131rv_constructor",
+              "bytes": 409,
+              "sha256": "cf9dc66c74e1eac5b8f177c6913371f6fff89dff60a1a90a28dff8179ab6c2b9"
+            },
+            {
+              "name": "p131rv_context",
+              "bytes": 281,
+              "sha256": "c2f0643eeb0cd1322f7dda4ab2cb3a8ce091c6123fbd96c33365c489ee1792a0"
+            },
+            {
+              "name": "p131rv_controls",
+              "bytes": 1251,
+              "sha256": "45799d61387a3573f28d556c5b31824b81c3826462205e68310ad2349d7f2ad8"
+            },
+            {
+              "name": "p131rv_fields",
+              "bytes": 302,
+              "sha256": "c3ddd9d31bd0125e0cdd10623d0674d4a115589e9930f897266ca2d40206f2cb"
+            },
+            {
+              "name": "p131rv_reference",
+              "bytes": 743,
+              "sha256": "4b62c5ded5e7d8125aa85d3d5a81614e2368442f431aeabf26749709900cb15f"
+            },
+            {
+              "name": "p131rv_value",
+              "bytes": 520,
+              "sha256": "65b38aa08d2ab27208bf635da4cd2c4b7faf3afc6a1fd9703b25c88f911fac7b"
+            }
+          ],
+          "protectedDeclarations": [
+            "main",
+            "p111_compile_prepared",
+            "p111_compile_source",
+            "p111_emit_admitted",
+            "p111_emit_plan",
+            "p111_native_args",
+            "p111_native_request",
+            "p111_runtime_admission",
+            "p111v_arg",
+            "p111v_args",
+            "p111v_assign",
+            "p111v_at",
+            "p111v_body",
+            "p111v_buffer",
+            "p111v_call",
+            "p111v_capacity",
+            "p111v_comparison",
+            "p111v_constructors",
+            "p111v_contract",
+            "p111v_counted_call",
+            "p111v_decl",
+            "p111v_finish",
+            "p111v_functions",
+            "p111v_get",
+            "p111v_intersection",
+            "p111v_intersection_bucket",
+            "p111v_join",
+            "p111v_literal",
+            "p111v_memory",
+            "p111v_name_chars",
+            "p111v_offset",
+            "p111v_operator",
+            "p111v_primitive_arities",
+            "p111v_program_indexed",
+            "p111v_put",
+            "p111v_raw_name",
+            "p111v_raw_name_chars",
+            "p111v_schema",
+            "p111v_schema_stmt",
+            "p111v_segment",
+            "p111v_segment_error",
+            "p111v_segment_flow",
+            "p111v_segments",
+            "p111v_signature",
+            "p111v_special_arity",
+            "p111v_state_argument",
+            "p111v_step",
+            "p111v_stmt",
+            "p111v_target",
+            "p111v_type",
+            "p111v_value",
+            "p113a_body_names",
+            "p113a_function_names",
+            "p113a_names",
+            "p113a_namespace",
+            "p113a_params",
+            "p113a_scalar_list_names",
+            "p113a_scalar_names",
+            "p113a_verify",
+            "p113a_verify_after",
+            "p113d_verify",
+            "p113e_assign_names",
+            "p113e_body",
+            "p113e_buffers",
+            "p113e_call",
+            "p113e_declare_names",
+            "p113e_distinct",
+            "p113e_flow",
+            "p113e_function",
+            "p113e_functions",
+            "p113e_insert",
+            "p113e_nonstate_pointer",
+            "p113e_originals",
+            "p113e_runtime_args",
+            "p113e_scalar_safe",
+            "p113e_scalars",
+            "p113e_schema",
+            "p113e_schema_stmt",
+            "p113e_seed",
+            "p113e_seed_params",
+            "p113e_seeded",
+            "p113e_signature",
+            "p113e_signatures",
+            "p113e_stmt",
+            "p113e_values",
+            "p113e_vector",
+            "p113e_verified_original",
+            "p113e_verify",
+            "p113e_verify_original",
+            "p118e_lowered",
+            "p118e_verified"
+          ],
+          "unchangedRuntimeBodies": [
+            {
+              "name": "p111v_buffer",
+              "bytes": 202,
+              "sha256": "b02e8cdbc7e4707e1edf2643d769ee770fb1df6eedc26c312ba23e644e764b4e"
+            },
+            {
+              "name": "p111v_counted_call",
+              "bytes": 934,
+              "sha256": "c4827d1354df288514ad8b61eab73392e99b823ccf8dea9fefda325777d93b2a"
+            },
+            {
+              "name": "p111v_decl",
+              "bytes": 871,
+              "sha256": "57aedb623041df42b0ebea81d6b092555d41a5b00b9fe835a90ca78bdf7365cb"
+            },
+            {
+              "name": "p113e_scalar_safe",
+              "bytes": 296,
+              "sha256": "63591f2bcb977e36a7ac66395d3f3a368309414ad2e7e65422ee4b83a8f2c6ef"
+            },
+            {
+              "name": "p113e_stmt",
+              "bytes": 478,
+              "sha256": "0c0d807fd1b0277f278f6c1380cf772b07cf0f18ad242033bd3ca834902434e8"
+            },
+            {
+              "name": "p118b_project_call",
+              "bytes": 500,
+              "sha256": "dadb2f2136fc464e7c52928d9f7f65b9a7158f0f8132936c0a2c9f76c89ebd86"
+            },
+            {
+              "name": "p118b_verify_functions",
+              "bytes": 373,
+              "sha256": "c839330bf9557e5110cbcd424187db292864e7efbd8068dce6880b16693f5845"
+            },
+            {
+              "name": "p118e_verified",
+              "bytes": 253,
+              "sha256": "af97991d8f98bff71bba24b5b9508eed7b2e1472e4fa5a0724f80a62cc7fd18b"
+            },
+            {
+              "name": "p118xs_original",
+              "bytes": 1190,
+              "sha256": "9778aa1ec1d61d7dcf0f7a09d77f8e74c91928666c02b47a5b8d63748f4c2147"
+            },
+            {
+              "name": "p125p_admitted",
+              "bytes": 539,
+              "sha256": "6feb42d18beb69fd3a61aa0c726715d309e1bb2908bcf2c8c5cdc9383727332d"
+            },
+            {
+              "name": "p125p_equations",
+              "bytes": 630,
+              "sha256": "7926048c8c597f6bb0f8ab73ebdbe3963070ac953b12d6dd80cfd63ef1434b6b"
+            },
+            {
+              "name": "p125p_import",
+              "bytes": 624,
+              "sha256": "67598a5e0d6ce52e6a73d6da3f6e75afe8a8a8fa5607b9fb51273053fe8e66e2"
+            },
+            {
+              "name": "p125p_owner",
+              "bytes": 842,
+              "sha256": "ed017a028cb2c700f388ec7dc7d87ddf77060148e11125564c1d31802283ebca"
+            },
+            {
+              "name": "p125p_types",
+              "bytes": 428,
+              "sha256": "b67a800f25673715347671c42a1708fcd7378521167de3f4a64b7180c1225bd3"
+            },
+            {
+              "name": "p125p_wrap",
+              "bytes": 320,
+              "sha256": "3438c74350bda2a8a6cceac2f12ddeb44d31390ffae4ea3fb45a517e4fc4ff20"
+            },
+            {
+              "name": "p126bp_complete",
+              "bytes": 652,
+              "sha256": "b9fa0501e46299a0ae0f5c1e433566f71e8aeb59ab8cfdcc474dd51a780970d6"
+            },
+            {
+              "name": "p126dp_code",
+              "bytes": 570,
+              "sha256": "736a1cf704641f4179096e76c7d3d1a0cd8812954b7498b1b34b592be27dad82"
+            },
+            {
+              "name": "p126dp_import",
+              "bytes": 388,
+              "sha256": "8b430f0ca020e7b82323bfe4be8e8a8966c00f167dba165b608cd6bfb901ee07"
+            },
+            {
+              "name": "p126dp_original_scalar_safe",
+              "bytes": 307,
+              "sha256": "b600b79230e68657f67a6c2a0e01c463d0c533490776da38bb02e0d6b20d2e43"
+            },
+            {
+              "name": "p126dp_original_stmt",
+              "bytes": 488,
+              "sha256": "f02784ea7985b36972f1d550c66f741b85fc195949159d2938f9e9684444d867"
+            },
+            {
+              "name": "p126dp_selected",
+              "bytes": 262,
+              "sha256": "3e963d3fbf51c234d46598e532114ff508c390078ca1100b743d1398240c3851"
+            },
+            {
+              "name": "p126dp_value_shape",
+              "bytes": 524,
+              "sha256": "a8718edbf8749dfd66fe129a9e40729a7e176c0fcef034a87563d4f1e3d2501f"
+            },
+            {
+              "name": "p126l_chunks",
+              "bytes": 296,
+              "sha256": "cd471e741e62a9efcfb4d70e37f1a189726af0f2f84598bda32d91dec0b69de1"
+            },
+            {
+              "name": "p126l_dispatch",
+              "bytes": 624,
+              "sha256": "17fd41b0baf75bc8bd6354d76b216d3fe9b4247d5250e1d66f0b1cf9da25faf6"
+            },
+            {
+              "name": "p126l_emit_one",
+              "bytes": 379,
+              "sha256": "b73ebf672f60aa6ee1ac6637bbc4adc01113f35e75631b2c041595d1001ecf35"
+            },
+            {
+              "name": "p126l_forget",
+              "bytes": 212,
+              "sha256": "913ee7fe9047fa420242f49e9a4e1021803d2fdcd47c95b1d169677f38121fb8"
+            },
+            {
+              "name": "p126l_if",
+              "bytes": 431,
+              "sha256": "2cf4db84a3ef437115c329232c464752ebb8e0b9068cdbe93d824689f4020ef5"
+            },
+            {
+              "name": "p126l_if_original",
+              "bytes": 549,
+              "sha256": "31399f866afeefe5caa3e5909532d15c88b1ff128261583bf66c7677db5395fb"
+            },
+            {
+              "name": "p126l_if_yes",
+              "bytes": 470,
+              "sha256": "8a730f80c1cf5f2bef53e6499f4d4f25164d6c27b5064c34f76646b355e5372b"
+            },
+            {
+              "name": "p126l_kill",
+              "bytes": 510,
+              "sha256": "bfa953cde8e653dc42e3d234f8bfcb256125b98d80347592e109545dca004c14"
+            },
+            {
+              "name": "p126l_kill_scalar",
+              "bytes": 606,
+              "sha256": "5b7055f7d023310b98e07133cffed66fa93b184ae138464be27c32b25edbf565"
+            },
+            {
+              "name": "p126l_kill_scalars",
+              "bytes": 227,
+              "sha256": "67209d67e769f2568d7b769ee55cd1ac0f28f2e0c8d740aa455fd8e93b32d9b7"
+            },
+            {
+              "name": "p126l_moves",
+              "bytes": 334,
+              "sha256": "b6ecc36ed78a09e02901137447d2194ea5f39150b734e7460ae255637cb76a09"
+            },
+            {
+              "name": "p126l_other",
+              "bytes": 804,
+              "sha256": "0091561503e4ad83113ac1089a33c3143eb99df55499acd2be996c7aad407b85"
+            },
+            {
+              "name": "p126l_private",
+              "bytes": 773,
+              "sha256": "51676222ec15b710b360513e879f90173e2bce11ec15515787ea52aaf95c845d"
+            },
+            {
+              "name": "p126l_scalar_facts",
+              "bytes": 240,
+              "sha256": "a96a5b8d23402c44b743af0ca5d9abebce617c70932bc66ccd46f45401805dda"
+            },
+            {
+              "name": "p126l_snapshot",
+              "bytes": 520,
+              "sha256": "49f13b51f0c72186c1f056e92f5765bd9f8f3ad779442992578feef78b4dc048"
+            },
+            {
+              "name": "p126l_sqrt",
+              "bytes": 762,
+              "sha256": "d508d574831a6920ddb98ade28fa52dd1618b8165c959c4b1b6f078532c47d97"
+            },
+            {
+              "name": "p126l_stmts",
+              "bytes": 495,
+              "sha256": "ef70bde9a931b601e46abb4bc193b08f36451e0c0eeccc10308fad16c6575bd1"
+            },
+            {
+              "name": "p126l_to_u32",
+              "bytes": 1001,
+              "sha256": "107f1d4927ee63e3d097f21927ac1ae9c3fcd2749e2b40abe6bc3dd2364edc8e"
+            },
+            {
+              "name": "p126l_width",
+              "bytes": 508,
+              "sha256": "f7c486cd0b7bcae5dfc1137beb597f835ae2a3fe5cd2bb7f658ff374d4f65e63"
+            },
+            {
+              "name": "p126l_width_one",
+              "bytes": 407,
+              "sha256": "c97183fdf4fab5b3f92b20d0211d55c9599d0cd08e08773b0a89fd167f631016"
+            },
+            {
+              "name": "p128bs_eligible",
+              "bytes": 859,
+              "sha256": "4cf4b96c1f483b3e46a4edbd08ed1e4b88b5a583c821a669f671d6131e4f63e2"
+            },
+            {
+              "name": "p128bs_functions",
+              "bytes": 1421,
+              "sha256": "1fd25aff7b53377ecdac40f1efcef373ab48de9539943014480e775c50856f68"
+            },
+            {
+              "name": "p128bs_guard_args",
+              "bytes": 247,
+              "sha256": "e674131b61477e8d3a649503dd314c4749edf3d2bfd876067169d9fc0c7917b1"
+            },
+            {
+              "name": "p128bs_project_guard",
+              "bytes": 509,
+              "sha256": "fe1f9c772a1658ef370d5231e20b99ec57b8b0ba98e32e9d5f2b00f00d175f98"
+            }
+          ],
+          "independentCheckedApi": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p131-regions-api04/report.json",
+            "bytes": 3456,
+            "sha256": "5600873b4b1590cd2c4fc3c99246ae32703936386d6315bb50310988b4b5c484"
+          }
+        },
+        "inputs": [
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/native/qualify.py",
+            "bytes": 19311,
+            "sha256": "28a5d00beb5744d8d41c192f5efca3926a28a0b78952124f7123b43b45626e14"
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/implementation/phase130/candidate.json",
+            "bytes": 3819,
+            "sha256": "28c819c35af862d996a1eef590a9b003a4854a5e1c92dc0a03c5b265b5d8a22c"
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase130/native-admission01.json",
+            "bytes": 60919,
+            "sha256": "3a4fe762da40b14e51a11c4cb822a55b5dffda0995857ca2498adaa7fc50a8b8"
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/regions-source03/manifest.json",
+            "bytes": 5122,
+            "sha256": "8839010ed34f594e9802abb5f303975ef46dfbcce7ebe44d7baecd5362f4b906"
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p131-regions-api04/report.json",
+            "bytes": 3456,
+            "sha256": "5600873b4b1590cd2c4fc3c99246ae32703936386d6315bb50310988b4b5c484"
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase128/p131-regions-finite03/report.json",
+            "bytes": 7303,
+            "sha256": "251765384f9635811c9be34200f6b9501688850147d76694db57e89baf5a43c0"
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/regions-source03/compiler.bend",
+            "bytes": 2623147,
+            "sha256": "977086cb05df5a1c8e6518f7961158e161ecaf40d7fa653c1354e195cb0c947b"
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p131-regions-api04/api.mjs",
+            "bytes": 2410948,
+            "sha256": "acc679de3f5aea3cd3378ec4c5eefa9eb6a40768a79772245d39c0dd507badb9"
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase128/runtime-borrow01/runtime.o",
+            "bytes": 121816,
+            "sha256": "9b3f57afb46b4db8c63f6f3c5f1af1194e0854a7329de28f25d2e11aef887749"
+          }
+        ],
+        "scope": "UNISSUED template only. Exact checked source, complete composition and finite schema were revalidated data-only. Root must review, select and issue admission. No generated-code preservation or native qualification; exact reproduction and native19/45 remain required."
+      }
+    },
+    {
+      "candidate": "projection03",
+      "admissionTemplate": {
+        "kind": "phase131-native-acquisition-admission",
+        "complete": false,
+        "sourceChecked": true,
+        "originalVerifiersUnchanged": true,
+        "runtimeContractsUnchanged": true,
+        "parentAdmission": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase130/native-admission01.json",
+          "bytes": 60919,
+          "sha256": "3a4fe762da40b14e51a11c4cb822a55b5dffda0995857ca2498adaa7fc50a8b8"
+        },
+        "runtime": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase128/runtime-borrow01/runtime.o",
+          "bytes": 121816,
+          "sha256": "9b3f57afb46b4db8c63f6f3c5f1af1194e0854a7329de28f25d2e11aef887749"
+        },
+        "source": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/projection-source03/compiler.bend",
+          "bytes": 2618858,
+          "sha256": "75bc3b7d9d885dde80fdb54c0faec89d0e46d5806d771f3b951a4b27175c0728"
+        },
+        "api": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p131-projection-api03/api.mjs",
+          "bytes": 2401086,
+          "sha256": "95bf55432508b782ec4d57ecb53d5a497e551727a756723c3646a215bfe0adaf"
+        },
+        "sourceBinding": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/projection-source03/manifest.json",
+          "bytes": 5820,
+          "sha256": "eb8695709ce3ab6e1c0666c5f2dffe3589a58dd55db0b8cff9e13fdaaee3ac7b"
+        },
+        "checkedApi": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p131-projection-api03/report.json",
+          "bytes": 3386,
+          "sha256": "c162e4cef258de952435daac08c0799e577ee1f142abdd9cd2a86a2624510be9"
+        },
+        "changedDeclarations": [
+          "P128BRHelper",
+          "p128br_call",
+          "p128br_helper_names",
+          "p128br_lookup",
+          "p128br_scan_ready",
+          "p128br_seed",
+          "p128br_summaries"
+        ],
+        "addedDeclarations": [
+          "p131p_argument",
+          "p131p_controls",
+          "p131p_parameter",
+          "p131p_reader",
+          "p131p_virtual",
+          "p131p_virtual_fields",
+          "p131p_wrapper_fields",
+          "p131p_wrapper_ok"
+        ],
+        "semanticChecks": [
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase128/p131-projection-finite03/report.json",
+            "bytes": 7050,
+            "sha256": "8e94142634ea0da7ce0c42a02ebf333c999a976dd04db43397ecbca3514836a3"
+          }
+        ],
+        "finiteGroups": {
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase128/p131-projection-finite03/report.json": {
+            "p131p_controls": 14,
+            "p128br_call_controls": 10
+          }
+        },
+        "nativeQualified": false,
+        "selected": false,
+        "installed": false,
+        "generatedCodePreservation": false,
+        "changeKind": "codegen-changing",
+        "sourceBodyAudit": {
+          "completeSourceReplay": true,
+          "changedDeclarations": [
+            "P128BRHelper",
+            "p128br_call",
+            "p128br_helper_names",
+            "p128br_lookup",
+            "p128br_scan_ready",
+            "p128br_seed",
+            "p128br_summaries"
+          ],
+          "addedDeclarations": [
+            "p131p_argument",
+            "p131p_controls",
+            "p131p_parameter",
+            "p131p_reader",
+            "p131p_virtual",
+            "p131p_virtual_fields",
+            "p131p_wrapper_fields",
+            "p131p_wrapper_ok"
+          ],
+          "changedBodies": [
+            {
+              "name": "P128BRHelper",
+              "bytes": 173,
+              "sha256": "3c505cdc6471285bb4f1485c455c00567313b11c95efead4a7613aa9d4be64d3"
+            },
+            {
+              "name": "p128br_call",
+              "bytes": 1044,
+              "sha256": "5f9d5432519b864797e490ec529da280eca5cb2382bb00370fbebda3468cc93c"
+            },
+            {
+              "name": "p128br_helper_names",
+              "bytes": 539,
+              "sha256": "3ba1063aa4abac70fb32d05420f14efe66e3b2cb2718b758d6ae16922b240263"
+            },
+            {
+              "name": "p128br_lookup",
+              "bytes": 375,
+              "sha256": "f3aa0e410673e6041c01f4e08baeee82c64198758b743762de25162a60be07b5"
+            },
+            {
+              "name": "p128br_scan_ready",
+              "bytes": 739,
+              "sha256": "74d6caecfc4f34274d75d7149c9777e564dcadb1a0aea2e1522bc43fb7eaaf67"
+            },
+            {
+              "name": "p128br_seed",
+              "bytes": 852,
+              "sha256": "27b386b9b00a7c5e391db48d4a70b9da2a24bb02b7e7b7ad65fc0d19cfc2000f"
+            },
+            {
+              "name": "p128br_summaries",
+              "bytes": 649,
+              "sha256": "f1d3fb42e93cc2cf58c6a401b0f5ed6e0d3b864c23e6dd9ccab9559f539c70a2"
+            },
+            {
+              "name": "p131p_argument",
+              "bytes": 267,
+              "sha256": "263469b95bd8576127171d5dfd96e80775df876e261790f78226cd8e13c10367"
+            },
+            {
+              "name": "p131p_controls",
+              "bytes": 1978,
+              "sha256": "9f3cddcdfa53a30e925b71f8f550967935bdf11ba3e0358645966b7be41e4b1d"
+            },
+            {
+              "name": "p131p_parameter",
+              "bytes": 183,
+              "sha256": "fdc47f5e0db9320c058849036771b8e85fc1238106ddcda8e84702ed8af3da99"
+            },
+            {
+              "name": "p131p_reader",
+              "bytes": 393,
+              "sha256": "76439d9a5ee4a21840be6f66d808282468e60c56a9be78f579f45763c2d06492"
+            },
+            {
+              "name": "p131p_virtual",
+              "bytes": 417,
+              "sha256": "72d1c040725f5350509b26009d09e58e19b34998d2f19d74daf1a6927ca3a216"
+            },
+            {
+              "name": "p131p_virtual_fields",
+              "bytes": 320,
+              "sha256": "3910168ddbd3f7470f271fa3796ab994a30d48e563ce77ab383a051349483363"
+            },
+            {
+              "name": "p131p_wrapper_fields",
+              "bytes": 277,
+              "sha256": "4ddc38f3de02d1fe12b158418c0beb2bf2b179ccca09cd51ebdd454c55a119ec"
+            },
+            {
+              "name": "p131p_wrapper_ok",
+              "bytes": 320,
+              "sha256": "6b09b4c43d5be0a82d291671a821ed80b9266333ec9d15e0e539a5654dc48b12"
+            }
+          ],
+          "protectedDeclarations": [
+            "main",
+            "p111_compile_prepared",
+            "p111_compile_source",
+            "p111_emit_admitted",
+            "p111_emit_plan",
+            "p111_native_args",
+            "p111_native_request",
+            "p111_runtime_admission",
+            "p111v_arg",
+            "p111v_args",
+            "p111v_assign",
+            "p111v_at",
+            "p111v_body",
+            "p111v_buffer",
+            "p111v_call",
+            "p111v_capacity",
+            "p111v_comparison",
+            "p111v_constructors",
+            "p111v_contract",
+            "p111v_counted_call",
+            "p111v_decl",
+            "p111v_finish",
+            "p111v_functions",
+            "p111v_get",
+            "p111v_intersection",
+            "p111v_intersection_bucket",
+            "p111v_join",
+            "p111v_literal",
+            "p111v_memory",
+            "p111v_name_chars",
+            "p111v_offset",
+            "p111v_operator",
+            "p111v_primitive_arities",
+            "p111v_program_indexed",
+            "p111v_put",
+            "p111v_raw_name",
+            "p111v_raw_name_chars",
+            "p111v_schema",
+            "p111v_schema_stmt",
+            "p111v_segment",
+            "p111v_segment_error",
+            "p111v_segment_flow",
+            "p111v_segments",
+            "p111v_signature",
+            "p111v_special_arity",
+            "p111v_state_argument",
+            "p111v_step",
+            "p111v_stmt",
+            "p111v_target",
+            "p111v_type",
+            "p111v_value",
+            "p113a_body_names",
+            "p113a_function_names",
+            "p113a_names",
+            "p113a_namespace",
+            "p113a_params",
+            "p113a_scalar_list_names",
+            "p113a_scalar_names",
+            "p113a_verify",
+            "p113a_verify_after",
+            "p113d_verify",
+            "p113e_assign_names",
+            "p113e_body",
+            "p113e_buffers",
+            "p113e_call",
+            "p113e_declare_names",
+            "p113e_distinct",
+            "p113e_flow",
+            "p113e_function",
+            "p113e_functions",
+            "p113e_insert",
+            "p113e_nonstate_pointer",
+            "p113e_originals",
+            "p113e_runtime_args",
+            "p113e_scalar_safe",
+            "p113e_scalars",
+            "p113e_schema",
+            "p113e_schema_stmt",
+            "p113e_seed",
+            "p113e_seed_params",
+            "p113e_seeded",
+            "p113e_signature",
+            "p113e_signatures",
+            "p113e_stmt",
+            "p113e_values",
+            "p113e_vector",
+            "p113e_verified_original",
+            "p113e_verify",
+            "p113e_verify_original",
+            "p118e_lowered",
+            "p118e_verified"
+          ],
+          "unchangedRuntimeBodies": [
+            {
+              "name": "p111v_buffer",
+              "bytes": 202,
+              "sha256": "b02e8cdbc7e4707e1edf2643d769ee770fb1df6eedc26c312ba23e644e764b4e"
+            },
+            {
+              "name": "p111v_counted_call",
+              "bytes": 934,
+              "sha256": "c4827d1354df288514ad8b61eab73392e99b823ccf8dea9fefda325777d93b2a"
+            },
+            {
+              "name": "p111v_decl",
+              "bytes": 871,
+              "sha256": "57aedb623041df42b0ebea81d6b092555d41a5b00b9fe835a90ca78bdf7365cb"
+            },
+            {
+              "name": "p113e_scalar_safe",
+              "bytes": 296,
+              "sha256": "63591f2bcb977e36a7ac66395d3f3a368309414ad2e7e65422ee4b83a8f2c6ef"
+            },
+            {
+              "name": "p113e_stmt",
+              "bytes": 478,
+              "sha256": "0c0d807fd1b0277f278f6c1380cf772b07cf0f18ad242033bd3ca834902434e8"
+            },
+            {
+              "name": "p118b_project_call",
+              "bytes": 500,
+              "sha256": "dadb2f2136fc464e7c52928d9f7f65b9a7158f0f8132936c0a2c9f76c89ebd86"
+            },
+            {
+              "name": "p118b_verify_functions",
+              "bytes": 373,
+              "sha256": "c839330bf9557e5110cbcd424187db292864e7efbd8068dce6880b16693f5845"
+            },
+            {
+              "name": "p118e_verified",
+              "bytes": 253,
+              "sha256": "af97991d8f98bff71bba24b5b9508eed7b2e1472e4fa5a0724f80a62cc7fd18b"
+            },
+            {
+              "name": "p118xs_original",
+              "bytes": 1190,
+              "sha256": "9778aa1ec1d61d7dcf0f7a09d77f8e74c91928666c02b47a5b8d63748f4c2147"
+            },
+            {
+              "name": "p125p_admitted",
+              "bytes": 539,
+              "sha256": "6feb42d18beb69fd3a61aa0c726715d309e1bb2908bcf2c8c5cdc9383727332d"
+            },
+            {
+              "name": "p125p_equations",
+              "bytes": 630,
+              "sha256": "7926048c8c597f6bb0f8ab73ebdbe3963070ac953b12d6dd80cfd63ef1434b6b"
+            },
+            {
+              "name": "p125p_import",
+              "bytes": 624,
+              "sha256": "67598a5e0d6ce52e6a73d6da3f6e75afe8a8a8fa5607b9fb51273053fe8e66e2"
+            },
+            {
+              "name": "p125p_owner",
+              "bytes": 842,
+              "sha256": "ed017a028cb2c700f388ec7dc7d87ddf77060148e11125564c1d31802283ebca"
+            },
+            {
+              "name": "p125p_types",
+              "bytes": 428,
+              "sha256": "b67a800f25673715347671c42a1708fcd7378521167de3f4a64b7180c1225bd3"
+            },
+            {
+              "name": "p125p_wrap",
+              "bytes": 320,
+              "sha256": "3438c74350bda2a8a6cceac2f12ddeb44d31390ffae4ea3fb45a517e4fc4ff20"
+            },
+            {
+              "name": "p126bp_complete",
+              "bytes": 652,
+              "sha256": "b9fa0501e46299a0ae0f5c1e433566f71e8aeb59ab8cfdcc474dd51a780970d6"
+            },
+            {
+              "name": "p126dp_code",
+              "bytes": 570,
+              "sha256": "736a1cf704641f4179096e76c7d3d1a0cd8812954b7498b1b34b592be27dad82"
+            },
+            {
+              "name": "p126dp_import",
+              "bytes": 388,
+              "sha256": "8b430f0ca020e7b82323bfe4be8e8a8966c00f167dba165b608cd6bfb901ee07"
+            },
+            {
+              "name": "p126dp_original_scalar_safe",
+              "bytes": 307,
+              "sha256": "b600b79230e68657f67a6c2a0e01c463d0c533490776da38bb02e0d6b20d2e43"
+            },
+            {
+              "name": "p126dp_original_stmt",
+              "bytes": 488,
+              "sha256": "f02784ea7985b36972f1d550c66f741b85fc195949159d2938f9e9684444d867"
+            },
+            {
+              "name": "p126dp_selected",
+              "bytes": 262,
+              "sha256": "3e963d3fbf51c234d46598e532114ff508c390078ca1100b743d1398240c3851"
+            },
+            {
+              "name": "p126dp_value_shape",
+              "bytes": 524,
+              "sha256": "a8718edbf8749dfd66fe129a9e40729a7e176c0fcef034a87563d4f1e3d2501f"
+            },
+            {
+              "name": "p126l_chunks",
+              "bytes": 296,
+              "sha256": "cd471e741e62a9efcfb4d70e37f1a189726af0f2f84598bda32d91dec0b69de1"
+            },
+            {
+              "name": "p126l_dispatch",
+              "bytes": 624,
+              "sha256": "17fd41b0baf75bc8bd6354d76b216d3fe9b4247d5250e1d66f0b1cf9da25faf6"
+            },
+            {
+              "name": "p126l_emit_one",
+              "bytes": 379,
+              "sha256": "b73ebf672f60aa6ee1ac6637bbc4adc01113f35e75631b2c041595d1001ecf35"
+            },
+            {
+              "name": "p126l_forget",
+              "bytes": 212,
+              "sha256": "913ee7fe9047fa420242f49e9a4e1021803d2fdcd47c95b1d169677f38121fb8"
+            },
+            {
+              "name": "p126l_if",
+              "bytes": 431,
+              "sha256": "2cf4db84a3ef437115c329232c464752ebb8e0b9068cdbe93d824689f4020ef5"
+            },
+            {
+              "name": "p126l_if_original",
+              "bytes": 549,
+              "sha256": "31399f866afeefe5caa3e5909532d15c88b1ff128261583bf66c7677db5395fb"
+            },
+            {
+              "name": "p126l_if_yes",
+              "bytes": 470,
+              "sha256": "8a730f80c1cf5f2bef53e6499f4d4f25164d6c27b5064c34f76646b355e5372b"
+            },
+            {
+              "name": "p126l_kill",
+              "bytes": 510,
+              "sha256": "bfa953cde8e653dc42e3d234f8bfcb256125b98d80347592e109545dca004c14"
+            },
+            {
+              "name": "p126l_kill_scalar",
+              "bytes": 606,
+              "sha256": "5b7055f7d023310b98e07133cffed66fa93b184ae138464be27c32b25edbf565"
+            },
+            {
+              "name": "p126l_kill_scalars",
+              "bytes": 227,
+              "sha256": "67209d67e769f2568d7b769ee55cd1ac0f28f2e0c8d740aa455fd8e93b32d9b7"
+            },
+            {
+              "name": "p126l_moves",
+              "bytes": 334,
+              "sha256": "b6ecc36ed78a09e02901137447d2194ea5f39150b734e7460ae255637cb76a09"
+            },
+            {
+              "name": "p126l_other",
+              "bytes": 804,
+              "sha256": "0091561503e4ad83113ac1089a33c3143eb99df55499acd2be996c7aad407b85"
+            },
+            {
+              "name": "p126l_private",
+              "bytes": 773,
+              "sha256": "51676222ec15b710b360513e879f90173e2bce11ec15515787ea52aaf95c845d"
+            },
+            {
+              "name": "p126l_scalar_facts",
+              "bytes": 240,
+              "sha256": "a96a5b8d23402c44b743af0ca5d9abebce617c70932bc66ccd46f45401805dda"
+            },
+            {
+              "name": "p126l_snapshot",
+              "bytes": 520,
+              "sha256": "49f13b51f0c72186c1f056e92f5765bd9f8f3ad779442992578feef78b4dc048"
+            },
+            {
+              "name": "p126l_sqrt",
+              "bytes": 762,
+              "sha256": "d508d574831a6920ddb98ade28fa52dd1618b8165c959c4b1b6f078532c47d97"
+            },
+            {
+              "name": "p126l_stmts",
+              "bytes": 495,
+              "sha256": "ef70bde9a931b601e46abb4bc193b08f36451e0c0eeccc10308fad16c6575bd1"
+            },
+            {
+              "name": "p126l_to_u32",
+              "bytes": 1001,
+              "sha256": "107f1d4927ee63e3d097f21927ac1ae9c3fcd2749e2b40abe6bc3dd2364edc8e"
+            },
+            {
+              "name": "p126l_width",
+              "bytes": 508,
+              "sha256": "f7c486cd0b7bcae5dfc1137beb597f835ae2a3fe5cd2bb7f658ff374d4f65e63"
+            },
+            {
+              "name": "p126l_width_one",
+              "bytes": 407,
+              "sha256": "c97183fdf4fab5b3f92b20d0211d55c9599d0cd08e08773b0a89fd167f631016"
+            },
+            {
+              "name": "p128bs_eligible",
+              "bytes": 859,
+              "sha256": "4cf4b96c1f483b3e46a4edbd08ed1e4b88b5a583c821a669f671d6131e4f63e2"
+            },
+            {
+              "name": "p128bs_functions",
+              "bytes": 1421,
+              "sha256": "1fd25aff7b53377ecdac40f1efcef373ab48de9539943014480e775c50856f68"
+            },
+            {
+              "name": "p128bs_guard_args",
+              "bytes": 247,
+              "sha256": "e674131b61477e8d3a649503dd314c4749edf3d2bfd876067169d9fc0c7917b1"
+            },
+            {
+              "name": "p128bs_project_guard",
+              "bytes": 509,
+              "sha256": "fe1f9c772a1658ef370d5231e20b99ec57b8b0ba98e32e9d5f2b00f00d175f98"
+            }
+          ],
+          "independentCheckedApi": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p131-projection-api03/report.json",
+            "bytes": 3386,
+            "sha256": "c162e4cef258de952435daac08c0799e577ee1f142abdd9cd2a86a2624510be9"
+          }
+        },
+        "inputs": [
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/native/qualify.py",
+            "bytes": 19311,
+            "sha256": "28a5d00beb5744d8d41c192f5efca3926a28a0b78952124f7123b43b45626e14"
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/implementation/phase130/candidate.json",
+            "bytes": 3819,
+            "sha256": "28c819c35af862d996a1eef590a9b003a4854a5e1c92dc0a03c5b265b5d8a22c"
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase130/native-admission01.json",
+            "bytes": 60919,
+            "sha256": "3a4fe762da40b14e51a11c4cb822a55b5dffda0995857ca2498adaa7fc50a8b8"
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/projection-source03/manifest.json",
+            "bytes": 5820,
+            "sha256": "eb8695709ce3ab6e1c0666c5f2dffe3589a58dd55db0b8cff9e13fdaaee3ac7b"
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p131-projection-api03/report.json",
+            "bytes": 3386,
+            "sha256": "c162e4cef258de952435daac08c0799e577ee1f142abdd9cd2a86a2624510be9"
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase128/p131-projection-finite03/report.json",
+            "bytes": 7050,
+            "sha256": "8e94142634ea0da7ce0c42a02ebf333c999a976dd04db43397ecbca3514836a3"
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/projection-source03/compiler.bend",
+            "bytes": 2618858,
+            "sha256": "75bc3b7d9d885dde80fdb54c0faec89d0e46d5806d771f3b951a4b27175c0728"
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p131-projection-api03/api.mjs",
+            "bytes": 2401086,
+            "sha256": "95bf55432508b782ec4d57ecb53d5a497e551727a756723c3646a215bfe0adaf"
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase128/runtime-borrow01/runtime.o",
+            "bytes": 121816,
+            "sha256": "9b3f57afb46b4db8c63f6f3c5f1af1194e0854a7329de28f25d2e11aef887749"
+          }
+        ],
+        "scope": "UNISSUED template only. Exact checked source, complete composition and finite schema were revalidated data-only. Root must review, select and issue admission. No generated-code preservation or native qualification; exact reproduction and native19/45 remain required."
+      }
+    }
+  ],
+  "scope": "Two unissued candidate templates. Not a selected integration or completed native acquisition. Readloop has checked API only and is deliberately excluded until its semantic controls close. Transitive input inventories remain referenced by exact receipt hashes rather than duplicated here."
+}

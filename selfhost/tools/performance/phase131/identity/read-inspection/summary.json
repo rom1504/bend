@@ -1,0 +1,158 @@
+[
+  {
+    "symbol": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_105_110_100_101_120_95_104_97_115_104_",
+    "name": "p113d:$p118borrow.read.index_hash",
+    "lines": 101,
+    "calls": {
+      "p111_rt_fail": 2,
+      "p118_rt_borrow_fields": 1
+    },
+    "file": "p113d-p118borrow-read-index_hash.ssa"
+  },
+  {
+    "symbol": "p113d_FID_36_100_105_114_101_99_116_46_105_110_100_101_120_95_104_97_115_104_",
+    "name": "p113d:$direct.index_hash",
+    "lines": 16,
+    "calls": {
+      "p118_rt_borrow_scalar_safe": 1,
+      "p113d:$p118borrow.read.index_hash": 1,
+      "p111_rt_sink": 1,
+      "p113d:$p128borrow.owned.index_hash": 1
+    },
+    "file": "p113d-direct-index_hash.ssa"
+  },
+  {
+    "symbol": "p113d_FID_36_100_105_114_101_99_116_46_105_110_100_101_120_95_98_117_99_107_101_116_",
+    "name": "p113d:$direct.index_bucket",
+    "lines": 352,
+    "calls": {
+      "p111_rt_ctor": 5,
+      "p111_rt_keep": 4,
+      "p125_rt_take4": 1,
+      "p125_rt_take2": 2,
+      "p111_rt_sink": 21,
+      "p111_rt_fail": 3,
+      "p113d:$direct.p88_string_eq_go": 1,
+      "p111_rt_take": 1
+    },
+    "file": "p113d-direct-index_bucket.ssa"
+  },
+  {
+    "symbol": "p113d_FID_36_100_105_114_101_99_116_46_105_110_100_101_120_95_102_105_110_100_95_104_97_115_104_",
+    "name": "p113d:$direct.index_find_hash",
+    "lines": 289,
+    "calls": {
+      "p111_rt_ctor": 3,
+      "p113d:$direct.index_bucket": 1,
+      "p125_rt_take4": 1,
+      "p125_rt_take2": 1,
+      "p111_rt_sink": 10,
+      "p111_rt_fail": 2,
+      "p125_rt_ctor2": 2,
+      "p111_rt_take": 1
+    },
+    "file": "p113d-direct-index_find_hash.ssa"
+  },
+  {
+    "symbol": "p112w_FID_36_100_105_114_101_99_116_46_105_110_100_101_120_95_104_97_115_104_",
+    "name": "p112w:$direct.index_hash",
+    "lines": 5,
+    "calls": {
+      "p113d:$direct.index_hash": 1
+    },
+    "file": "p112w-direct-index_hash.ssa"
+  },
+  {
+    "symbol": "p111_FID_36_100_105_114_101_99_116_46_105_110_100_101_120_95_98_117_99_107_101_116_",
+    "name": "p111:$direct.index_bucket",
+    "lines": 10,
+    "calls": {
+      "p111_rt_reg_get": 2,
+      "p111_rt_return": 1,
+      "p113d:$direct.index_bucket": 1
+    },
+    "file": "p111-direct-index_bucket.ssa"
+  },
+  {
+    "symbol": "p111_FID_36_100_105_114_101_99_116_46_105_110_100_101_120_95_102_105_110_100_95_104_97_115_104_",
+    "name": "p111:$direct.index_find_hash",
+    "lines": 11,
+    "calls": {
+      "p111_rt_reg_get": 3,
+      "p111_rt_return": 1,
+      "p113d:$direct.index_find_hash": 1
+    },
+    "file": "p111-direct-index_find_hash.ssa"
+  },
+  {
+    "symbol": "p111_FID_36_100_105_114_101_99_116_46_105_110_100_101_120_95_102_105_110_100_95_108_101_97_102_",
+    "name": "p111:$direct.index_find_leaf",
+    "lines": 153,
+    "calls": {
+      "p111_rt_keep": 2,
+      "p112w:$direct.da": 1,
+      "p111_rt_sink": 2,
+      "p111_rt_fail": 1,
+      "p112w:$direct.dx": 1,
+      "p111_rt_jump": 2
+    },
+    "file": "p111-direct-index_find_leaf.ssa"
+  },
+  {
+    "symbol": "p111_FID_36_100_105_114_101_99_116_46_105_110_100_101_120_95_102_105_110_100_95_97_98_115_101_110_116_",
+    "name": "p111:$direct.index_find_absent",
+    "lines": 100,
+    "calls": {
+      "p111_rt_keep": 1,
+      "p111_rt_return": 1,
+      "p111_rt_sink": 4,
+      "p111_rt_fail": 1,
+      "p112w:missing": 1,
+      "p112w:$direct.dx": 1,
+      "p111_rt_jump": 1
+    },
+    "file": "p111-direct-index_find_absent.ssa"
+  },
+  {
+    "symbol": "p111_FID_36_100_105_114_101_99_116_46_105_110_100_101_120_95_102_105_110_100_",
+    "name": "p111:$direct.index_find",
+    "lines": 431,
+    "calls": {
+      "p111_rt_ctor": 7,
+      "p111_rt_keep": 3,
+      "p125_rt_take4": 1,
+      "p111_rt_return": 1,
+      "p125_rt_take2": 1,
+      "p111_rt_sink": 17,
+      "p111_rt_fail": 4,
+      "p112w:missing": 1,
+      "p125_rt_ctor4": 1,
+      "p112w:$direct.p88_string_eq": 1,
+      "p111_rt_jump": 5,
+      "p111_rt_take": 1
+    },
+    "file": "p111-direct-index_find.ssa"
+  },
+  {
+    "symbol": "p111_FID_36_100_105_114_101_99_116_46_112_49_49_49_118_95_103_101_116_",
+    "name": "p111:$direct.p111v_get",
+    "lines": 34,
+    "calls": {
+      "p112w:$direct.index_hash": 1,
+      "p111_rt_keep": 1,
+      "p111_rt_jump": 1
+    },
+    "file": "p111-direct-p111v_get.ssa"
+  },
+  {
+    "symbol": "p111_FID_36_100_105_114_101_99_116_46_105_110_100_101_120_95_104_97_115_104_",
+    "name": "p111:$direct.index_hash",
+    "lines": 10,
+    "calls": {
+      "p111_rt_reg_get": 2,
+      "p111_rt_return": 1,
+      "p113d:$direct.index_hash": 1
+    },
+    "file": "p111-direct-index_hash.ssa"
+  }
+]

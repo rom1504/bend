@@ -1,0 +1,96 @@
+{
+  "complete": true,
+  "targetsRun": false,
+  "cases": [
+    {
+      "name": "projection-string",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/projection/projection-string-v03.bend",
+        "bytes": 4291,
+        "sha256": "cc6b504fa0b2bd862c17de7c9b3bc1e428f160367fa8ef6cf698cda8f98e64f9"
+      },
+      "expected": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase130/scalar/expected.json",
+        "bytes": 106,
+        "sha256": "6dc06b9da2553b676e7b8f90bd2df4b39b29b0bf554f6f24dd3bf31e8c357a6b"
+      },
+      "expectedStdoutEvidence": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase130/scalar/expected.json",
+        "bytes": 106,
+        "sha256": "6dc06b9da2553b676e7b8f90bd2df4b39b29b0bf554f6f24dd3bf31e8c357a6b"
+      }
+    },
+    {
+      "name": "projection-list",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/projection/projection-list-v03.bend",
+        "bytes": 4425,
+        "sha256": "f837845c04ca85797267104853a0bebd40333b70ab3934d3dea217d56c7d8e42"
+      },
+      "expected": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/projection/list-expected-v01.json",
+        "bytes": 106,
+        "sha256": "6dc06b9da2553b676e7b8f90bd2df4b39b29b0bf554f6f24dd3bf31e8c357a6b"
+      },
+      "expectedStdoutEvidence": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/projection/list-expected-v01.json",
+        "bytes": 106,
+        "sha256": "6dc06b9da2553b676e7b8f90bd2df4b39b29b0bf554f6f24dd3bf31e8c357a6b"
+      }
+    }
+  ],
+  "edits": [
+    {
+      "parent": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/projection/projection-string-v02.bend",
+        "bytes": 4270,
+        "sha256": "327ed4061853c2261df3cbd725281696dedcbddd830ae9607035dfe4679fe058"
+      },
+      "candidate": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/projection/projection-string-v03.bend",
+        "bytes": 4291,
+        "sha256": "cc6b504fa0b2bd862c17de7c9b3bc1e428f160367fa8ef6cf698cda8f98e64f9"
+      },
+      "replacement": [
+        "+pairs =",
+        "+pairs : List<&2,P130SCase> ="
+      ],
+      "annotationOnly": true
+    },
+    {
+      "parent": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/projection/projection-list-v02.bend",
+        "bytes": 4404,
+        "sha256": "ee087482a17d4eb2b5ae1132f4cf9a0549ad4beb19a1a54513179d42f8b66420"
+      },
+      "candidate": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/projection/projection-list-v03.bend",
+        "bytes": 4425,
+        "sha256": "f837845c04ca85797267104853a0bebd40333b70ab3934d3dea217d56c7d8e42"
+      },
+      "replacement": [
+        "+pairs =",
+        "+pairs : List<&2,P131LCase> ="
+      ],
+      "annotationOnly": true
+    }
+  ],
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/projection/prepare-fixtures-v03.py",
+      "bytes": 1618,
+      "sha256": "215a5c67438f43573dd322e1508184b646d4d37a0d2dc357bd8fae48368750af"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/projection/cases-v02.json",
+      "bytes": 4002,
+      "sha256": "2807d6bba9d38fe96a7f1d96ffe5178ba2f640483c7036288fff6872a663c1ab"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase130/scalar/baseline-v05.bend",
+      "bytes": 4291,
+      "sha256": "cc6b504fa0b2bd862c17de7c9b3bc1e428f160367fa8ef6cf698cda8f98e64f9"
+    }
+  ],
+  "scope": "Only missing corpus type annotations. String source is exact final qualified Phase130 baseline-v05; all independent output oracles remain unchanged."
+}

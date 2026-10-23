@@ -1,0 +1,41 @@
+{
+  "complete": true,
+  "cases": [
+    {
+      "name": "identity-bucket-original",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/identity/read-proxy-candidate.bend",
+        "bytes": 20019,
+        "sha256": "e5d0f0e55963515347682f775c2a8667be40b322fdf8ed922f8a54a48b199f1f"
+      },
+      "expected": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/identity/proxy-v02-expected.json",
+        "bytes": 107,
+        "sha256": "5cc511eb642480648e8fb271f60f63480b53de3984f73fe731acb13ea309c7d2"
+      },
+      "expectedStdoutEvidence": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/identity/proxy-v02-expected.json",
+        "bytes": 107,
+        "sha256": "5cc511eb642480648e8fb271f60f63480b53de3984f73fe731acb13ea309c7d2"
+      }
+    },
+    {
+      "name": "identity-bucket-candidate",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/identity/bucket-proxy-candidate.bend",
+        "bytes": 19997,
+        "sha256": "a130e4394686ccd888e341eb118d98acf5c909fe614b373baf97a63ef46e239a"
+      },
+      "expected": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/identity/proxy-v02-expected.json",
+        "bytes": 107,
+        "sha256": "5cc511eb642480648e8fb271f60f63480b53de3984f73fe731acb13ea309c7d2"
+      },
+      "expectedStdoutEvidence": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/identity/proxy-v02-expected.json",
+        "bytes": 107,
+        "sha256": "5cc511eb642480648e8fb271f60f63480b53de3984f73fe731acb13ea309c7d2"
+      }
+    }
+  ]
+}

@@ -1,0 +1,100 @@
+export function l $p111_FID_36_100_105_114_101_99_116_46_105_110_100_101_120_95_102_105_110_100_95_97_98_115_101_110_116_(l %state) {
+@entry
+%v_scratch =l alloc8 2048
+%v_p112f_0_local_scratch =l alloc8 2048
+%t_0 =l add %state, 40
+%v_v_4294926553 =l loadl %t_0
+%t_1 =l add %state, 48
+%v_v_4294926552 =l loadl %t_1
+%t_2 =l add %state, 56
+%v_v_4294926551 =l loadl %t_2
+%t_3 =l add %state, 64
+%v_v_4294926550 =l loadl %t_3
+%t_4 =l add %state, 72
+%v_v_4294926549 =l loadl %t_4
+%v_v_4294926548 =l copy %v_v_4294926549
+%v_p112_b_raw =w ceql %v_v_4294926548, 1
+%v_p112_b_bits =l shr %v_v_4294926548, 40
+%v_p112_b_bits =l and %v_p112_b_bits, 8388607
+%v_p112_b_expected =l or 2, 65536
+%v_p112_b_boxed =w ceql %v_p112_b_bits, %v_p112_b_expected
+%v_match_condition =w or %v_p112_b_raw, %v_p112_b_boxed
+jnz %v_match_condition, @b_5, @b_6
+@b_5
+%v_ignored =l call $p111_rt_sink(l %state, l %v_v_4294926553)
+%v_ignored =l call $p111_rt_sink(l %state, l %v_v_4294926552)
+%p112_result =l call $p112w_FID_109_105_115_115_105_110_103_(l %state)
+storel %p112_result, %v_scratch
+%p112_reply =l call $p111_rt_return(l %state, l %v_scratch, w 1)
+ret %p112_reply
+@b_6
+%v_v_4294926547 =l copy %v_v_4294926548
+%v_p112_b_raw =w ceql %v_v_4294926547, 1
+%v_p112_b_bits =l shr %v_v_4294926547, 40
+%v_p112_b_bits =l and %v_p112_b_bits, 8388607
+%v_p112_b_expected =l or 2, 65536
+%v_p112_b_boxed =w ceql %v_p112_b_bits, %v_p112_b_expected
+%v_match_condition =w or %v_p112_b_raw, %v_p112_b_boxed
+%v_match_condition =w xor %v_match_condition, 1
+jnz %v_match_condition, @b_8, @b_9
+@b_8
+%v_v_4294926553 =l call $p111_rt_keep(l %state, l %v_v_4294926553)
+%v_v_4294926546 =l copy %v_v_4294926553
+%v_v_4294926545 =l copy %v_v_4294926552
+%v_v_4294926544 =l copy %v_v_4294926551
+%v_v_4294926543 =l copy %v_v_4294926550
+%v_p112f_0_capture_0 =l copy %v_v_4294926546
+%v_p112f_0_capture_1 =l copy %v_v_4294926545
+%v_p112f_0_capture_2 =l copy %v_v_4294926544
+%v_p112f_0_capture_3 =l copy %v_v_4294926543
+%v_ignored =l copy 0
+%v_v_4294926538 =l copy %v_v_4294926553
+%v_p112f_0_arg_0 =l copy %v_v_4294926538
+%v_p112f_0_result =l call $p112w_FID_36_100_105_114_101_99_116_46_100_120_(l %state, l %v_p112f_0_arg_0)
+%v_p112f_0_local_ignored =l copy 0
+%v_p112f_0_local_v_4294926546 =l copy %v_p112f_0_capture_0
+%v_p112f_0_local_v_4294926545 =l copy %v_p112f_0_capture_1
+%v_p112f_0_local_v_4294926544 =l copy %v_p112f_0_capture_2
+%v_p112f_0_local_v_4294926543 =l copy %v_p112f_0_capture_3
+%v_p112f_0_local_v_4294926541 =l copy %v_p112f_0_result
+%v_p112f_0_local_v_4294926540 =l copy 0
+%v_p112f_0_local_p112_s_a =l and %v_p112f_0_local_v_4294926541, 4294967295
+%v_p112f_0_local_p112_s_b =l and %v_p112f_0_local_v_4294926540, 4294967295
+%v_p112f_0_local_p112_s_test =w ceql %v_p112f_0_local_p112_s_a, %v_p112f_0_local_p112_s_b
+jnz %v_p112f_0_local_p112_s_test, @b_11, @b_12
+@b_11
+%v_p112f_0_local_value =l copy 1
+jmp @b_13
+@b_12
+%v_p112f_0_local_value =l copy 0
+jmp @b_13
+@b_13
+%v_p112f_0_local_v_4294926542 =l copy %v_p112f_0_local_value
+storel %v_p112f_0_local_v_4294926546, %v_p112f_0_local_scratch
+%t_14 =l add %v_p112f_0_local_scratch, 8
+storel %v_p112f_0_local_v_4294926545, %t_14
+%t_15 =l add %v_p112f_0_local_scratch, 16
+storel %v_p112f_0_local_v_4294926544, %t_15
+%t_16 =l add %v_p112f_0_local_scratch, 24
+storel %v_p112f_0_local_v_4294926543, %t_16
+%t_17 =l add %v_p112f_0_local_scratch, 32
+storel %v_p112f_0_local_v_4294926542, %t_17
+%v_p112f_0_local_reply =l call $p111_rt_jump(l %state, w 252, l %v_p112f_0_local_scratch, w 5)
+ret %v_p112f_0_local_reply
+@b_9
+%v_ignored =l call $p111_rt_sink(l %state, l %v_v_4294926553)
+%v_ignored =l call $p111_rt_sink(l %state, l %v_v_4294926552)
+storel %v_v_4294926547, %v_scratch
+%t_19 =l add %state, 16
+%v_p114t_18_sp =l loadl %t_19
+%v_p114t_18_capture =l loadl %v_scratch
+storel %v_p114t_18_capture, %v_p114t_18_sp
+%t_20 =l add %v_p114t_18_sp, 8
+storel 266, %t_20
+%v_p114t_18_next_sp =l add %v_p114t_18_sp, 16
+%t_21 =l add %state, 16
+storel %v_p114t_18_next_sp, %t_21
+%v_ignored =l copy 0
+%v_reply =l call $p111_rt_fail(l %state, w 4)
+ret %v_reply
+}

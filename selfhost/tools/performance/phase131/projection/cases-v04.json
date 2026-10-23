@@ -1,0 +1,55 @@
+{
+  "complete": true,
+  "targetsRun": false,
+  "cases": [
+    {
+      "name": "projection-string",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/projection/projection-string-v03.bend",
+        "bytes": 4291,
+        "sha256": "cc6b504fa0b2bd862c17de7c9b3bc1e428f160367fa8ef6cf698cda8f98e64f9"
+      },
+      "expected": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase130/scalar/expected.json",
+        "bytes": 106,
+        "sha256": "6dc06b9da2553b676e7b8f90bd2df4b39b29b0bf554f6f24dd3bf31e8c357a6b"
+      },
+      "expectedStdoutEvidence": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase130/scalar/expected.json",
+        "bytes": 106,
+        "sha256": "6dc06b9da2553b676e7b8f90bd2df4b39b29b0bf554f6f24dd3bf31e8c357a6b"
+      }
+    },
+    {
+      "name": "projection-list",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/projection/projection-list-v04.bend",
+        "bytes": 4157,
+        "sha256": "6f8a61ecf692d56441fcac41d33e569251ce88bab26c77e9a22383999f265aa2"
+      },
+      "expected": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/projection/list-expected-v01.json",
+        "bytes": 106,
+        "sha256": "6dc06b9da2553b676e7b8f90bd2df4b39b29b0bf554f6f24dd3bf31e8c357a6b"
+      },
+      "expectedStdoutEvidence": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/projection/list-expected-v01.json",
+        "bytes": 106,
+        "sha256": "6dc06b9da2553b676e7b8f90bd2df4b39b29b0bf554f6f24dd3bf31e8c357a6b"
+      }
+    }
+  ],
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/projection/prepare-fixtures-v04.py",
+      "bytes": 2022,
+      "sha256": "04364331178eb2192e1d9981d51a1db17ae222241139f0585a4d4531df38c308"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/projection/cases-v03.json",
+      "bytes": 3929,
+      "sha256": "1b1272af60b24adb68391ef0e2b49d1c0bef0d4bb98335b4f1891de64a584677"
+    }
+  ],
+  "scope": "String exact qualified baseline-v05 unchanged; list transfer uses one directly recursive comparator instead of forward-law helpers, with identical retained-root algorithm and independent oracle. Same sources under both compilers."
+}

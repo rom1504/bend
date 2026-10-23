@@ -1,0 +1,110 @@
+{
+  "complete": true,
+  "targetsRun": false,
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/identity/prepare-bucket-proxy.py",
+      "bytes": 2639,
+      "sha256": "381f33718a49583b483f99bf80408ea376d832d4a2ced76ef74547d309ace669"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/identity/read-proxy-candidate.bend",
+      "bytes": 20019,
+      "sha256": "e5d0f0e55963515347682f775c2a8667be40b322fdf8ed922f8a54a48b199f1f"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/identity/bucket-consuming-v01.bend",
+      "bytes": 566,
+      "sha256": "97500f0c86e424365cd19f5010b402b180a77f07f08de7648956ef782612b968"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/identity/proxy-v02-expected.json",
+      "bytes": 107,
+      "sha256": "5cc511eb642480648e8fb271f60f63480b53de3984f73fe731acb13ea309c7d2"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/identity/timing-oracle.py",
+      "bytes": 2441,
+      "sha256": "441a4a7a048c3519a5c54e162aafb5bed8eba404bb162f4cf45484d3d1565430"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p131-read-lookup01-identity-candidate-build/report.json",
+      "bytes": 6270,
+      "sha256": "12dfe323d2f2da1c6d7ddce4d298fdc7b93b9921c8cf77ee35ad296c0953a539"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase130/p131-read-lookup01-identity-candidate-emit/report.json",
+      "bytes": 9801,
+      "sha256": "926c8ba6a3f37dae33c8e4ff83f476c42e8044bd33f9f0a6c665485bda65a278"
+    }
+  ],
+  "baselineReuse": {
+    "source": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/identity/read-proxy-candidate.bend",
+      "bytes": 20019,
+      "sha256": "e5d0f0e55963515347682f775c2a8667be40b322fdf8ed922f8a54a48b199f1f"
+    },
+    "build": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p131-read-lookup01-identity-candidate-build/report.json",
+      "bytes": 6270,
+      "sha256": "12dfe323d2f2da1c6d7ddce4d298fdc7b93b9921c8cf77ee35ad296c0953a539"
+    },
+    "emission": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase130/p131-read-lookup01-identity-candidate-emit/report.json",
+      "bytes": 9801,
+      "sha256": "926c8ba6a3f37dae33c8e4ff83f476c42e8044bd33f9f0a6c665485bda65a278"
+    },
+    "binary": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p131-read-lookup01-identity-candidate-build/program",
+      "bytes": 352760,
+      "sha256": "3fae8df932062b1926207f24a75db6ff7c0823bfea97a15797bb70b3c2c03333"
+    },
+    "qbe": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase130/p131-read-lookup01-identity-candidate-emit/program.ssa",
+      "bytes": 1228019,
+      "sha256": "3b1af19d47900af68af770a70805db87e5322a4704694989ec6200a99b6a6205"
+    }
+  },
+  "cases": [
+    {
+      "name": "identity-bucket-original",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/identity/read-proxy-candidate.bend",
+        "bytes": 20019,
+        "sha256": "e5d0f0e55963515347682f775c2a8667be40b322fdf8ed922f8a54a48b199f1f"
+      },
+      "expected": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/identity/proxy-v02-expected.json",
+        "bytes": 107,
+        "sha256": "5cc511eb642480648e8fb271f60f63480b53de3984f73fe731acb13ea309c7d2"
+      },
+      "expectedStdoutEvidence": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/identity/proxy-v02-expected.json",
+        "bytes": 107,
+        "sha256": "5cc511eb642480648e8fb271f60f63480b53de3984f73fe731acb13ea309c7d2"
+      }
+    },
+    {
+      "name": "identity-bucket-candidate",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/identity/bucket-proxy-candidate.bend",
+        "bytes": 19997,
+        "sha256": "a130e4394686ccd888e341eb118d98acf5c909fe614b373baf97a63ef46e239a"
+      },
+      "expected": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/identity/proxy-v02-expected.json",
+        "bytes": 107,
+        "sha256": "5cc511eb642480648e8fb271f60f63480b53de3984f73fe731acb13ea309c7d2"
+      },
+      "expectedStdoutEvidence": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/identity/proxy-v02-expected.json",
+        "bytes": 107,
+        "sha256": "5cc511eb642480648e8fb271f60f63480b53de3984f73fe731acb13ea309c7d2"
+      }
+    }
+  ],
+  "overrides": [
+    "index_bucket"
+  ],
+  "scope": "Same measured closed lookup proxy and immutable index. Only index_bucket invokes the consuming equality directly. Reuse the independently checked closed-loop baseline binary; one new candidate build suffices. No compiler selection change."
+}

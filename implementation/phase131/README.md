@@ -1,6 +1,7 @@
 # Phase131 — laws and ambitious compiler work elimination
 
-**In progress. No new compiler qualification or promotion yet.**
+**In progress. FAST is native-qualified; the stronger composition is being
+acquired. Installed selection is unchanged.**
 Parent: qualified Phase130 at `9f7ab43`. See the
 [design](../../design/phase131/README.md). The campaign began at22:00 UTC on
 2026-10-23 with a minimum three-hour work budget.
@@ -60,7 +61,9 @@ time improves6.11% geometrically,1.81467→1.70384 times upstream. Map improves
 17.58%, closures1.59%; lexer is2.05% slower, with overlapping noisy ranges.
 Request plus machine-build child sums are0.80532 times upstream under the
 explicit compact prepared-Base/cached-runtime policy; this is a different clock.
-This checkpoint is experimental pending self-reproduction and ordinary45.
+The [FAST checkpoint](fast/README.md) subsequently passed exact full-source
+self-reproduction, focused19 on N1/N2 and ordinary45 on N2. The timing block
+measures N1; it is not a separate N2 performance measurement.
 
 Cheap native discriminators establish narrower facts:
 

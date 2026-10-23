@@ -1,0 +1,107 @@
+{
+  "complete": true,
+  "frozenBeforeExecution": true,
+  "targetsRun": false,
+  "checked": false,
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase130/mode-source01/compiler.bend",
+      "bytes": 2613588,
+      "sha256": "995d6b4bf14963debb9a810de2ed941c3cd30a71fc34a156d96b1adbd1b06bdd"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/regions/prepare-fixture.py",
+      "bytes": 3874,
+      "sha256": "7be05ef281a112a903505f745d4a38fa7e9616f0fdfe7e217c36fb547a60b468"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/regions/workload.bend",
+      "bytes": 3945,
+      "sha256": "b9cfca7f89b2d4f370ceb35f6751acf7f3b335550dda1185a89afb354335bcdd"
+    }
+  ],
+  "extracted": [
+    {
+      "name": "KTerm",
+      "firstLine": 41,
+      "lastLine": 44,
+      "sha256": "02c95c149b637e8395a8a2127afed3f66f5086d9524dbdcc507f08da620ba759"
+    },
+    {
+      "name": "p88_string_eq_go",
+      "firstLine": 6,
+      "lastLine": 13,
+      "sha256": "7f97887d6cdca9ac204cd191473b0f64fa20e58032c164af6bd27d5f40323f2e"
+    },
+    {
+      "name": "p98_eq_finish",
+      "firstLine": 15,
+      "lastLine": 16,
+      "sha256": "76609129df033f0aa2235c65a8c3b63b7794286dfd117d1603c90df33709f673"
+    },
+    {
+      "name": "p88_string_eq",
+      "firstLine": 18,
+      "lastLine": 19,
+      "sha256": "a83e92adca6e0c14e504eab320374f49faab2d69b50f5cd68d47acdad93c47e0"
+    },
+    {
+      "name": "p98_tag_eq_read",
+      "firstLine": 38766,
+      "lastLine": 38773,
+      "sha256": "e9c297427386c95efd035ec4ccca94a73d5df4fb4294fff0e78d492532474864"
+    },
+    {
+      "name": "p98_tag_eq_finish",
+      "firstLine": 38775,
+      "lastLine": 38776,
+      "sha256": "60755896a90324893fcb97f2d246d3e2336725ad10b3173387fffdceaf42fd95"
+    },
+    {
+      "name": "p98_tag_eq",
+      "firstLine": 38778,
+      "lastLine": 38779,
+      "sha256": "3cecf249595037c969cbf58ef95edf9892eb800ee5eae28958774268a75748b2"
+    }
+  ],
+  "cases": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/regions/cases.json",
+    "bytes": 1642,
+    "sha256": "c55e301ad413b799a7112c1092f689016253fc66adcd02c4f965250a72f53ecd"
+  },
+  "ordinary": {
+    "expected": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/regions/expected.json",
+      "bytes": 86,
+      "sha256": "492fd12da67bf556ef30bdc5ca6e41b750efb0629debfb6233a5e4679e423259"
+    },
+    "stdout": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/regions/expected.stdout",
+      "bytes": 24,
+      "sha256": "1b768dc411247d7759768fceab1efe007e51896bb1bc8f90584a0e66ea262323"
+    },
+    "method": "Specified equality of explicit KTerm tags and packet labels; payload list [3,5,7] has length three. No target outputs used."
+  },
+  "timed": {
+    "argv": [
+      "100000"
+    ],
+    "expectedPrefix": "1\n100000\n",
+    "lastLine": "one unsigned elapsed integer in IO.now milliseconds",
+    "calibrated": false,
+    "method": "Each repetition performs one successful and one failed equality, adding one modulo 2^32; sum is repetitions modulo 2^32."
+  },
+  "admission": {
+    "positive": [
+      "p98_tag_eq",
+      "p98_tag_eq_read",
+      "p131_packet_query",
+      "p131_packet_read"
+    ],
+    "negative": [
+      "p131_opaque_count",
+      "p131_opaque_escape"
+    ]
+  },
+  "scope": "Exact source extraction and independent output construction, not checked admission, execution or performance evidence."
+}

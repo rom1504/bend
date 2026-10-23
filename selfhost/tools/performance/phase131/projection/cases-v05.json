@@ -1,0 +1,60 @@
+{
+  "complete": true,
+  "targetsRun": false,
+  "cases": [
+    {
+      "name": "projection-string",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/projection/projection-string-v03.bend",
+        "bytes": 4291,
+        "sha256": "cc6b504fa0b2bd862c17de7c9b3bc1e428f160367fa8ef6cf698cda8f98e64f9"
+      },
+      "expected": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase130/scalar/expected.json",
+        "bytes": 106,
+        "sha256": "6dc06b9da2553b676e7b8f90bd2df4b39b29b0bf554f6f24dd3bf31e8c357a6b"
+      },
+      "expectedStdoutEvidence": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase130/scalar/expected.json",
+        "bytes": 106,
+        "sha256": "6dc06b9da2553b676e7b8f90bd2df4b39b29b0bf554f6f24dd3bf31e8c357a6b"
+      }
+    },
+    {
+      "name": "projection-list",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/projection/projection-list-v05.bend",
+        "bytes": 4584,
+        "sha256": "f8e3b39563da1ea1fd17a67f493247d9cdb9dfb5716903cee0cfeeab7ff0acd2"
+      },
+      "expected": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/projection/list-expected-v01.json",
+        "bytes": 106,
+        "sha256": "6dc06b9da2553b676e7b8f90bd2df4b39b29b0bf554f6f24dd3bf31e8c357a6b"
+      },
+      "expectedStdoutEvidence": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/projection/list-expected-v01.json",
+        "bytes": 106,
+        "sha256": "6dc06b9da2553b676e7b8f90bd2df4b39b29b0bf554f6f24dd3bf31e8c357a6b"
+      }
+    }
+  ],
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/projection/prepare-fixtures-v05.py",
+      "bytes": 2351,
+      "sha256": "0bbe92452df019a7500b9848b9026a052e04e9863ef25b6d989fd349d72a99c6"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/projection/cases-v04.json",
+      "bytes": 2446,
+      "sha256": "45c282a2c34817ba9ebddfdbfe435b03cb097e460c8545b43e1623900f5b427d"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/laws/merge-production-v01.bend",
+      "bytes": 1129,
+      "sha256": "a2cf225859400c8157e45c8c5d5da82e2c39676f02a12bf92564293c58a0e11f"
+    }
+  ],
+  "scope": "String unchanged. List comparator uses checked parameter-Cmp/Unit-thunk selector pattern, preserving one comparison and selected reconstruction branch; direct structural self recursion replaces unresolved forward law. Same source and independent oracle for both compilers."
+}

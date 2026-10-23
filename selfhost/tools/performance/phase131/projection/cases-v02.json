@@ -1,0 +1,111 @@
+{
+  "complete": true,
+  "targetsRun": false,
+  "cases": [
+    {
+      "name": "projection-string",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/projection/projection-string-v02.bend",
+        "bytes": 4270,
+        "sha256": "327ed4061853c2261df3cbd725281696dedcbddd830ae9607035dfe4679fe058"
+      },
+      "expected": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase130/scalar/expected.json",
+        "bytes": 106,
+        "sha256": "6dc06b9da2553b676e7b8f90bd2df4b39b29b0bf554f6f24dd3bf31e8c357a6b"
+      },
+      "expectedStdoutEvidence": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase130/scalar/expected.json",
+        "bytes": 106,
+        "sha256": "6dc06b9da2553b676e7b8f90bd2df4b39b29b0bf554f6f24dd3bf31e8c357a6b"
+      }
+    },
+    {
+      "name": "projection-list",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/projection/projection-list-v02.bend",
+        "bytes": 4404,
+        "sha256": "ee087482a17d4eb2b5ae1132f4cf9a0549ad4beb19a1a54513179d42f8b66420"
+      },
+      "expected": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/projection/list-expected-v01.json",
+        "bytes": 106,
+        "sha256": "6dc06b9da2553b676e7b8f90bd2df4b39b29b0bf554f6f24dd3bf31e8c357a6b"
+      },
+      "expectedStdoutEvidence": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/projection/list-expected-v01.json",
+        "bytes": 106,
+        "sha256": "6dc06b9da2553b676e7b8f90bd2df4b39b29b0bf554f6f24dd3bf31e8c357a6b"
+      }
+    }
+  ],
+  "edits": [
+    {
+      "parent": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase130/scalar/baseline-v04.bend",
+        "bytes": 4243,
+        "sha256": "bc276df872317ff44d37075ace2754780f1565ab1d436068c1cc73486552b1f8"
+      },
+      "candidate": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/projection/projection-string-v02.bend",
+        "bytes": 4270,
+        "sha256": "327ed4061853c2261df3cbd725281696dedcbddd830ae9607035dfe4679fe058"
+      },
+      "replacements": [
+        [
+          "+suffix =",
+          "+suffix : String ="
+        ],
+        [
+          "+left =",
+          "+left : String ="
+        ],
+        [
+          "+right =",
+          "+right : String ="
+        ]
+      ],
+      "annotationOnly": true
+    },
+    {
+      "parent": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/projection/list-workload-v01.bend",
+        "bytes": 4371,
+        "sha256": "3ba7498fe8b762a53d3ad19d7a0994eecf5af6576c2efb5265cf00934d85019e"
+      },
+      "candidate": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/projection/projection-list-v02.bend",
+        "bytes": 4404,
+        "sha256": "ee087482a17d4eb2b5ae1132f4cf9a0549ad4beb19a1a54513179d42f8b66420"
+      },
+      "replacements": [
+        [
+          "+tail =",
+          "+tail : P131List ="
+        ],
+        [
+          "+a =",
+          "+a : P131List ="
+        ],
+        [
+          "+b =",
+          "+b : P131List ="
+        ]
+      ],
+      "annotationOnly": true
+    }
+  ],
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/projection/prepare-fixtures-v02.py",
+      "bytes": 1804,
+      "sha256": "7324d36edb3d2669c9778fea676537231d6c3753dcdbbb931897faf85bec317e"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/projection/cases-v01.json",
+      "bytes": 2355,
+      "sha256": "c797066d61de7cd8f496c1056edd1d7f9f3d2a8f38d6683cb08543f05d7bac81"
+    }
+  ],
+  "scope": "Only explicit local String/P131List annotations; same sources for both compiler variants. All comparison algorithms and independent ordinary oracles unchanged."
+}

@@ -1,0 +1,18 @@
+{
+  "complete": true,
+  "targetsRun": false,
+  "original": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/programs/screen.py",
+    "bytes": 5328,
+    "sha256": "47c90ab98d121ebb0bb1af2962b7ecee919b8c1bfee159b2cec61bf539328b46"
+  },
+  "derived": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/programs/screen-cpu6.py",
+    "bytes": 5387,
+    "sha256": "4fcca537e448073ece9d99b9322a519c059b4f825920ad1239495a2914bc5ccd"
+  },
+  "inverseExact": true,
+  "originalText": "assert sorted(os.sched_getaffinity(0))==[3]",
+  "derivedText": "assert sorted(os.sched_getaffinity(0))==[3] or (a.check_only and sorted(os.sched_getaffinity(0))==[6])",
+  "scope": "Only allow explicit root-authorized CPU6 correctness-only execution. Timing mode still requiresCPU3. Original benchmark source, output oracle, counts and build policy unchanged."
+}

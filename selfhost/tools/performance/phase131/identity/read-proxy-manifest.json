@@ -1,0 +1,83 @@
+{
+  "complete": true,
+  "targetsRun": false,
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/identity/prepare-read-proxy.py",
+      "bytes": 2582,
+      "sha256": "4fb18bb8b13fe4a9ca648eb0b8aca3b1f4c9fd2e4e36844d63ae35b65ff4687c"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/identity/proxy-v02-baseline.bend",
+      "bytes": 19394,
+      "sha256": "38f4bda790bb965d4c71a5a19a85fefa690509387b5986094f084eff488d2377"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/identity/read-workload.bend",
+      "bytes": 977,
+      "sha256": "0322d0a51ef63de7bb4e03d78d46dee9b5731fc249383768b295701c3df792b1"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/identity/read-loop-v01.bend",
+      "bytes": 1501,
+      "sha256": "1d1d4d5522a1a2c79c541a8c8bdb91bf548a910469dfba27c9e22ed865d89e29"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/identity/proxy-v02-manifest.json",
+      "bytes": 8775,
+      "sha256": "9de87a0a3fe889fc9d63fb6d61a7bb22d4d9503cf9e63d412cba87a8961e3041"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/identity/proxy-v02-expected.json",
+      "bytes": 107,
+      "sha256": "5cc511eb642480648e8fb271f60f63480b53de3984f73fe731acb13ea309c7d2"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/identity/timing-oracle.py",
+      "bytes": 2441,
+      "sha256": "441a4a7a048c3519a5c54e162aafb5bed8eba404bb162f4cf45484d3d1565430"
+    }
+  ],
+  "cases": [
+    {
+      "name": "identity-read-baseline",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/identity/read-proxy-baseline.bend",
+        "bytes": 19723,
+        "sha256": "d8ef2c5df6659e6fb862b7d44fa913d62f75203882c6654a2531fd235b522b1d"
+      },
+      "expected": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/identity/proxy-v02-expected.json",
+        "bytes": 107,
+        "sha256": "5cc511eb642480648e8fb271f60f63480b53de3984f73fe731acb13ea309c7d2"
+      },
+      "expectedStdoutEvidence": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/identity/proxy-v02-expected.json",
+        "bytes": 107,
+        "sha256": "5cc511eb642480648e8fb271f60f63480b53de3984f73fe731acb13ea309c7d2"
+      }
+    },
+    {
+      "name": "identity-read-candidate",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/identity/read-proxy-candidate.bend",
+        "bytes": 20019,
+        "sha256": "e5d0f0e55963515347682f775c2a8667be40b322fdf8ed922f8a54a48b199f1f"
+      },
+      "expected": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/identity/proxy-v02-expected.json",
+        "bytes": 107,
+        "sha256": "5cc511eb642480648e8fb271f60f63480b53de3984f73fe731acb13ea309c7d2"
+      },
+      "expectedStdoutEvidence": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/identity/proxy-v02-expected.json",
+        "bytes": 107,
+        "sha256": "5cc511eb642480648e8fb271f60f63480b53de3984f73fe731acb13ea309c7d2"
+      }
+    }
+  ],
+  "overrides": [
+    "index_find"
+  ],
+  "scope": "Same constructed immutable index held across reads; exact256actual compiler names. Original selected lookup versus closed-self-loop lookup, compiled by same qualified compiler. Build/update/reclamation outside IO.now timing window, identical whole ordinary controls. No full compiler throughput claim."
+}

@@ -1,7 +1,7 @@
 # Phase131 usage-summary laws
 
 See [the report](../../../../../research/phase131/laws.md) and
-[evidence.json](evidence.json). Twenty-eight distinct laws were independently checked. The first twenty
+[evidence.json](evidence.json). Forty-two distinct laws were independently checked. The first twenty
 are recorded in evidence.json; the eight later first-order equivalence and
 transport laws are recorded in [first-order-evidence.json](first-order-evidence.json).
 The admitted merge domain is two maps with the same key sequence. Full generic
@@ -10,7 +10,7 @@ KTerm traversal and disjoint-key merge correctness are still unproved.
 ## Replay
 
 Run from the repository root. Every output directory must be fresh. The guard
-serializes CPU4 work, caps each target at 60s/2GiB, and requires at least16GiB
+serializes CPU4 work, caps each target at 60s/2GiB, and requires at least 16GiB
 available memory. Coordinate this lane with other compiler measurements.
 
 ```sh
@@ -61,7 +61,7 @@ Phase94 receipt. The runner intentionally refuses changed or missing inputs.
 
 ## First-order alternative
 
-The initial safe source was2.564× slower on the parent's native proxy. The
+The initial safe source was 2.564× slower on the parent's native proxy. The
 first-order source removes callbacks and repeated current-head reconstruction.
 Its all-input equivalence to the earlier safe algorithms and the transported
 aligned-map contract can be replayed with:
@@ -72,7 +72,28 @@ python3 -B selfhost/tools/performance/phase131/laws/check.py \
   --out selfhost/build/phase131/laws-first-order-summary-replay01
 ```
 
-The closure includes18 laws. It does not prove native speed, production
+The closure includes 18 laws. It does not prove native speed, production
 selection, generic KTerm traversal or the full differing-key map specification.
 The first-order proof-source declarations must be authenticated again in any
 actual acquired compiler candidate.
+
+## Bounded-map consolidation
+
+The fourteen later laws and actual native proxy/eleven-declaration source
+bridge are recorded in [consolidation-evidence.json](consolidation-evidence.json).
+`bounded-lookup-laws.bend` proves universal lookup count validity under an
+explicit 0/1/many input domain; `empty-merge-laws.bend` proves the maximum lookup
+base case for an empty right map in all three modes. Replay either through
+`check.py` into a fresh output directory. Full differing-key merge correctness
+and KTerm traversal remain unproved.
+
+Authenticate the exact first-order algorithms in an acquired source with:
+
+```sh
+python3 -B selfhost/tools/performance/phase131/laws/first-order-source-bridge.py \
+  --source selfhost/build/phase131/usage-first-order-proxy01/main.bend \
+  --out selfhost/build/phase131/laws-first-order-bridge-replay01
+```
+
+This checks eleven declarations against pinned accepted proof snapshots; it
+performs no target execution and does not replace native qualification.

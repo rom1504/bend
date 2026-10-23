@@ -1,0 +1,39 @@
+{
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/identity/guard.py",
+    "bytes": 1831,
+    "sha256": "ad1b74f97922440702ca3a67f6c523ab332bf834ac751618a2817c2021474a3b"
+  },
+  "derived": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/native/check-guard.py",
+    "bytes": 1827,
+    "sha256": "2b2718d3c4b308faf037e67ba3635d60e5ece32293704b40da47a860ea2982f7"
+  },
+  "edits": [
+    {
+      "old": "Independent bounded Phase131 identity correctness lane; retain all attempts.",
+      "new": "Independent bounded Phase131 API correctness lane; retain all attempts.",
+      "count": 1
+    },
+    {
+      "old": "default=2048",
+      "new": "default=3072",
+      "count": 1
+    },
+    {
+      "old": "default=4096",
+      "new": "default=16384",
+      "count": 1
+    },
+    {
+      "old": "a.rss_mib <= 2048",
+      "new": "a.rss_mib <= 3072",
+      "count": 1
+    }
+  ],
+  "cpu": 6,
+  "rssMiB": 3072,
+  "availableMiB": 16384,
+  "lock": "selfhost/build/phase131/identity-execution.lock",
+  "scope": "Same CPU6 lock serializes correctness jobs; independent of root CPU3 performance lock. Parent explicitly authorized 3GiB after actual2GiB stop. No target semantics changed."
+}

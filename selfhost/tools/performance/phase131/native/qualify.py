@@ -112,9 +112,19 @@ def source_contract(ad, selected):
             'Admission changed/added bodies differ')
     require(all(C.norm(before[n]) == C.norm(after[n]) for n in protected), 'Protected body changed')
     old_ad = bound(selected['admission'])
-    inherited = bound(old_ad['parentAdmission'])['runtimeContract']
-    require(inherited['complete'] and inherited['sourceChecked'] and inherited['runtime'] == ad['runtime'],
-            'Inherited runtime contract differs')
+    inherited_admission = bound(old_ad['parentAdmission'])
+    inherited = inherited_admission['runtimeContract']
+    # The original structural contract retains its pending-check flags verbatim;
+    # its completed outer admission supplies the later checked-source authority.
+    require(inherited_admission.get('kind') == 'phase128-checked-native-acquisition-admission'
+            and inherited_admission.get('complete') and inherited_admission.get('sourceChecked')
+            and inherited['source'] == inherited_admission['source']
+            and inherited['runtime'] == inherited_admission['runtime'] == ad['runtime'],
+            'Inherited checked runtime admission differs')
+    inherited_api = bound(inherited_admission['checkedApi'])
+    require(inherited_api.get('complete') and inherited_api.get('checked') and inherited_api['status'] == 0
+            and inherited_api['api'] == inherited_admission['api']
+            and inherited['source'] in inherited_api['inputs'], 'Inherited source check differs')
     authority = C.blocks(Path(inherited['source']['file']).read_text())
     runtime_bodies = inherited['sourceDeclarations']
     for row in runtime_bodies:
@@ -126,8 +136,27 @@ def source_contract(ad, selected):
     require(ad.get('semanticChecks'), 'No candidate semantic-check authorities declared')
     for row in ad['semanticChecks']:
         check = bound(row)
-        require(check.get('complete') and (check.get('passed') is True or check.get('pass') is True),
-                'Candidate semantic check is incomplete or failed')
+        require(check.get('complete'), 'Candidate semantic check is incomplete')
+        finite = ROOT / 'selfhost/tools/performance/phase128/finite.mjs'
+        if Q.pin(finite) in check.get('inputs', []):
+            expected = ad.get('finiteGroups', {}).get(row['file'], {})
+            groups = check.get('groups', [])
+            require(expected and len(groups) == len(expected)
+                    and len({g['name'] for g in groups}) == len(groups)
+                    and {g['name']: g['expectedCount'] for g in groups} == expected,
+                    'Exact declared finite groups required')
+            require(check['source'] == ad['source'] and check['sourceManifest'] == ad['sourceBinding']
+                    and ad['api'] in check['inputs'] and ad['checkedApi'] in check['inputs'],
+                    'Finite controls do not consume this exact checked source/API')
+            for group in groups:
+                require(group.get('complete') and isinstance(group['expectedCount'], int)
+                        and group['expectedCount'] > 0 and len(group['rows']) == group['expectedCount']
+                        and all(isinstance(v, str) and
+                            (v.startswith('PASS ') if group['name'] == 'p118z_controls' else v.endswith(':pass'))
+                            for v in group['rows']), 'Finite predicate failed or count differs')
+        else:
+            require(check.get('passed') is True or check.get('pass') is True,
+                    'Candidate semantic check lacks an explicit successful verdict')
     return dict(completeSourceReplay=True, changedDeclarations=changed, addedDeclarations=added,
                 changedBodies=[dict(name=n, bytes=len(after[n].encode()),
                     sha256=hashlib.sha256(after[n].encode()).hexdigest()) for n in changed + added],

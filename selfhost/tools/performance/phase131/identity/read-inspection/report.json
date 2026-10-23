@@ -1,0 +1,305 @@
+{
+  "complete": true,
+  "targetsRun": false,
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/identity/inspect-read.py",
+      "bytes": 3093,
+      "sha256": "9263c20981fd2f7450b2d2677e90a950174778e6eeb6de1559841db69143831b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p130-full-emit01/program.ssa",
+      "bytes": 102432076,
+      "sha256": "336dc0a3e385360c7e80be1d4c12fdacaae435f77215bc63841e8e62438d1cea"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p130-native01-n1/program",
+      "bytes": 16586488,
+      "sha256": "a25e4c7f55a6a48829bf9d148498d6392b98fe1ab66b9664d99ce1987715c2c5"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/implementation/phase130/candidate.json",
+      "bytes": 3819,
+      "sha256": "28c819c35af862d996a1eef590a9b003a4854a5e1c92dc0a03c5b265b5d8a22c"
+    }
+  ],
+  "rows": [
+    {
+      "name": "p113d:$p118borrow.read.index_hash",
+      "symbol": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_105_110_100_101_120_95_104_97_115_104_",
+      "qbeLines": 101,
+      "machineInstructions": 71,
+      "calls": {
+        "p111_rt_fail": 2,
+        "p118_rt_borrow_fields": 1
+      },
+      "qbe": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/identity/read-inspection/p113d-p118borrow-read-index_hash.ssa",
+        "bytes": 3893,
+        "sha256": "849b233ee7c684d37f49d9778755b5fc699fea3932f8455125171bd6527f7a06"
+      },
+      "assembly": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/identity/read-inspection/p113d-p118borrow-read-index_hash.asm",
+        "bytes": 4783,
+        "sha256": "e38cae0a0194ade30051e490c347224712366896b5e482040a0693297ec383df"
+      }
+    },
+    {
+      "name": "p113d:$direct.index_hash",
+      "symbol": "p113d_FID_36_100_105_114_101_99_116_46_105_110_100_101_120_95_104_97_115_104_",
+      "qbeLines": 16,
+      "machineInstructions": 33,
+      "calls": {
+        "p111_rt_sink": 1,
+        "p113d:$p118borrow.read.index_hash": 1,
+        "p113d:$p128borrow.owned.index_hash": 1,
+        "p118_rt_borrow_scalar_safe": 1
+      },
+      "qbe": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/identity/read-inspection/p113d-direct-index_hash.ssa",
+        "bytes": 882,
+        "sha256": "62e9857cd7424178ac8f80e6eb520952eaefd6c52c841314df22d5439996213e"
+      },
+      "assembly": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/identity/read-inspection/p113d-direct-index_hash.asm",
+        "bytes": 2316,
+        "sha256": "5bbb70018a7a1a1f50f83b4cbbbfe84fd3f1f574b0a564d13a938b2415861300"
+      }
+    },
+    {
+      "name": "p113d:$direct.index_bucket",
+      "symbol": "p113d_FID_36_100_105_114_101_99_116_46_105_110_100_101_120_95_98_117_99_107_101_116_",
+      "qbeLines": 352,
+      "machineInstructions": 327,
+      "calls": {
+        "p111_rt_ctor": 5,
+        "p111_rt_fail": 3,
+        "p111_rt_keep": 4,
+        "p111_rt_sink": 21,
+        "p111_rt_take": 1,
+        "p113d:$direct.p88_string_eq_go": 1,
+        "p125_rt_take2": 2,
+        "p125_rt_take4": 1
+      },
+      "qbe": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/identity/read-inspection/p113d-direct-index_bucket.ssa",
+        "bytes": 19374,
+        "sha256": "48570b06d8add881a5c5de3ae35d9c31ba6b3ba0f5c755368f40b4274f2b0c92"
+      },
+      "assembly": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/identity/read-inspection/p113d-direct-index_bucket.asm",
+        "bytes": 19293,
+        "sha256": "a6d807643e8e60d84b2d71a0911ccf5d2318d7eec211e0d16751a79976a9a338"
+      }
+    },
+    {
+      "name": "p113d:$direct.index_find_hash",
+      "symbol": "p113d_FID_36_100_105_114_101_99_116_46_105_110_100_101_120_95_102_105_110_100_95_104_97_115_104_",
+      "qbeLines": 289,
+      "machineInstructions": 215,
+      "calls": {
+        "p111_rt_ctor": 3,
+        "p111_rt_fail": 2,
+        "p111_rt_sink": 10,
+        "p111_rt_take": 1,
+        "p113d:$direct.index_bucket": 1,
+        "p125_rt_ctor2": 2,
+        "p125_rt_take2": 1,
+        "p125_rt_take4": 1
+      },
+      "qbe": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/identity/read-inspection/p113d-direct-index_find_hash.ssa",
+        "bytes": 16188,
+        "sha256": "0e3ef19a3cc22b9870d79aeaac816a371d6b2052d34e9cd2a5b62c26ee7a3cdb"
+      },
+      "assembly": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/identity/read-inspection/p113d-direct-index_find_hash.asm",
+        "bytes": 13231,
+        "sha256": "0394b505537b48da4f697e3a3a59a538537257dcbccf836787e8884ca8befc66"
+      }
+    },
+    {
+      "name": "p112w:$direct.index_hash",
+      "symbol": "p112w_FID_36_100_105_114_101_99_116_46_105_110_100_101_120_95_104_97_115_104_",
+      "qbeLines": 5,
+      "machineInstructions": 6,
+      "calls": {
+        "p113d:$direct.index_hash": 1
+      },
+      "qbe": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/identity/read-inspection/p112w-direct-index_hash.ssa",
+        "bytes": 316,
+        "sha256": "dc16e9f7ea06d4ff33b3a5fb603624cce56f8a9cf5ac0ff8a10efe45be31267f"
+      },
+      "assembly": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/identity/read-inspection/p112w-direct-index_hash.asm",
+        "bytes": 677,
+        "sha256": "3d819d5468c1a5e5a614f4f3361c426a4d01d367823d25ecd8b167a96e40ae46"
+      }
+    },
+    {
+      "name": "p111:$direct.index_bucket",
+      "symbol": "p111_FID_36_100_105_114_101_99_116_46_105_110_100_101_120_95_98_117_99_107_101_116_",
+      "qbeLines": 10,
+      "machineInstructions": 29,
+      "calls": {
+        "p111_rt_reg_get": 2,
+        "p111_rt_return": 1,
+        "p113d:$direct.index_bucket": 1
+      },
+      "qbe": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/identity/read-inspection/p111-direct-index_bucket.ssa",
+        "bytes": 555,
+        "sha256": "99123c50fa3565c92df96ed567109269a158fb9085e4bbd18881ca622e055c60"
+      },
+      "assembly": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/identity/read-inspection/p111-direct-index_bucket.asm",
+        "bytes": 1854,
+        "sha256": "1decca9109347f16b69d0db5a1287dbe3026131271a34163ec157d20e37b01ff"
+      }
+    },
+    {
+      "name": "p111:$direct.index_find_hash",
+      "symbol": "p111_FID_36_100_105_114_101_99_116_46_105_110_100_101_120_95_102_105_110_100_95_104_97_115_104_",
+      "qbeLines": 11,
+      "machineInstructions": 39,
+      "calls": {
+        "p111_rt_reg_get": 3,
+        "p111_rt_return": 1,
+        "p113d:$direct.index_find_hash": 1
+      },
+      "qbe": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/identity/read-inspection/p111-direct-index_find_hash.ssa",
+        "bytes": 646,
+        "sha256": "22e136694b517ea45bf00644fe22cf0609a4567dbc28c7e9df5a1ddf28623c02"
+      },
+      "assembly": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/identity/read-inspection/p111-direct-index_find_hash.asm",
+        "bytes": 2373,
+        "sha256": "e52b1e71b784dc43301d8782518b5ea8d3e84394f277f43e05ea08198bfffafc"
+      }
+    },
+    {
+      "name": "p111:$direct.index_find_leaf",
+      "symbol": "p111_FID_36_100_105_114_101_99_116_46_105_110_100_101_120_95_102_105_110_100_95_108_101_97_102_",
+      "qbeLines": 153,
+      "machineInstructions": 112,
+      "calls": {
+        "p111_rt_fail": 1,
+        "p111_rt_jump": 2,
+        "p111_rt_keep": 2,
+        "p111_rt_sink": 2,
+        "p112w:$direct.dx": 1,
+        "p112w:$direct.da": 1
+      },
+      "qbe": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/identity/read-inspection/p111-direct-index_find_leaf.ssa",
+        "bytes": 6101,
+        "sha256": "1fb528c133ce2fb24eb3971c8acbdf4e99845efcf9fa7d598ab1a8313598a62c"
+      },
+      "assembly": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/identity/read-inspection/p111-direct-index_find_leaf.asm",
+        "bytes": 6616,
+        "sha256": "8332df570b1a1b64ff3aca8f2b624fe069612da86875edb761052f77594f01ad"
+      }
+    },
+    {
+      "name": "p111:$direct.index_find_absent",
+      "symbol": "p111_FID_36_100_105_114_101_99_116_46_105_110_100_101_120_95_102_105_110_100_95_97_98_115_101_110_116_",
+      "qbeLines": 100,
+      "machineInstructions": 95,
+      "calls": {
+        "p111_rt_fail": 1,
+        "p111_rt_jump": 1,
+        "p111_rt_keep": 1,
+        "p111_rt_return": 1,
+        "p111_rt_sink": 4,
+        "p112w:missing": 1,
+        "p112w:$direct.dx": 1
+      },
+      "qbe": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/identity/read-inspection/p111-direct-index_find_absent.ssa",
+        "bytes": 4050,
+        "sha256": "567cb176252c962efa42dcc1063f4076ec0f954009ee2db4b5cec179eb1cdae5"
+      },
+      "assembly": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/identity/read-inspection/p111-direct-index_find_absent.asm",
+        "bytes": 5694,
+        "sha256": "bcc986d23dc4c6c5d25c084159369b9fbce243d82fe3d8979a01bc66f8eea58d"
+      }
+    },
+    {
+      "name": "p111:$direct.index_find",
+      "symbol": "p111_FID_36_100_105_114_101_99_116_46_105_110_100_101_120_95_102_105_110_100_",
+      "qbeLines": 431,
+      "machineInstructions": 426,
+      "calls": {
+        "p111_rt_ctor": 7,
+        "p111_rt_fail": 4,
+        "p111_rt_jump": 5,
+        "p111_rt_keep": 3,
+        "p111_rt_return": 1,
+        "p111_rt_sink": 17,
+        "p111_rt_take": 1,
+        "p112w:missing": 1,
+        "p112w:$direct.p88_string_eq": 1,
+        "p125_rt_ctor4": 1,
+        "p125_rt_take2": 1,
+        "p125_rt_take4": 1
+      },
+      "qbe": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/identity/read-inspection/p111-direct-index_find.ssa",
+        "bytes": 15386,
+        "sha256": "71348be7219fb70963f169d10d8b2ae3636da4eebc6d2c846f55f2663e0c262b"
+      },
+      "assembly": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/identity/read-inspection/p111-direct-index_find.asm",
+        "bytes": 24433,
+        "sha256": "875dc90d98f962183ed63daf529291a409e1c8384b89216f9ca009bc5190ceba"
+      }
+    },
+    {
+      "name": "p111:$direct.p111v_get",
+      "symbol": "p111_FID_36_100_105_114_101_99_116_46_112_49_49_49_118_95_103_101_116_",
+      "qbeLines": 34,
+      "machineInstructions": 31,
+      "calls": {
+        "p111_rt_jump": 1,
+        "p111_rt_keep": 1,
+        "p112w:$direct.index_hash": 1
+      },
+      "qbe": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/identity/read-inspection/p111-direct-p111v_get.ssa",
+        "bytes": 1541,
+        "sha256": "ff39b53e99b91b2ecc2d3cbc2bac6269a590c61504ecb285b3ce23ed267c094b"
+      },
+      "assembly": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/identity/read-inspection/p111-direct-p111v_get.asm",
+        "bytes": 1977,
+        "sha256": "5fea08f9535769547414ebed3e070bd4f84280a36eb81df1e1abba89683ee545"
+      }
+    },
+    {
+      "name": "p111:$direct.index_hash",
+      "symbol": "p111_FID_36_100_105_114_101_99_116_46_105_110_100_101_120_95_104_97_115_104_",
+      "qbeLines": 10,
+      "machineInstructions": 29,
+      "calls": {
+        "p111_rt_reg_get": 2,
+        "p111_rt_return": 1,
+        "p113d:$direct.index_hash": 1
+      },
+      "qbe": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/identity/read-inspection/p111-direct-index_hash.ssa",
+        "bytes": 541,
+        "sha256": "562fb7ebec2fbf4471c75ee95447b3d8e155c77510402fca3b724a5d3c351e4d"
+      },
+      "assembly": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/identity/read-inspection/p111-direct-index_hash.asm",
+        "bytes": 1840,
+        "sha256": "e099fa0df644a5f1e41f874ca5550a4a183f84ff763f24eda6733e43182a1da7"
+      }
+    }
+  ],
+  "scope": "Static callsites/instructions, not dynamic frequencies. All selected definitions include generic/owning fallbacks. Runtime callsite counts cannot be treated as per-lookup costs."
+}

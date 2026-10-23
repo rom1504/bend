@@ -301,3 +301,84 @@ must not be mistaken for that proof. This can eliminate repeated searches
 across several real compiler stages without changing symbol identity or
 introducing a new backend. No combined gain is established by adding the
 shared-context percentages.
+
+## Follow-up: constructor provenance is not the next short-request win
+
+Source-only investigation, 2026-10-23 16:34–16:39 UTC. No new target execution
+or implementation was performed. The coordinating agent's newer short-request
+result is separate from the older profile used below; no refreshed attribution
+is claimed.
+
+The proposed reuse of `nc_ctor_index` needs more than attaching a Base flag to
+its existing winner:
+
+- [`nc_find_ctor_plain` / `nc_ctor_index`](../../selfhost/src/back/native/bridge.bend)
+  select the first constructor in recursive depth-first order, including
+  constructors reached through cache children.
+- [`nc_ctor_owned`](../../selfhost/src/back/native/identity.bend) instead scans
+  **top-level ADT records**, uses `lookup(dc(d), name)` on each ADT's direct
+  children, and returns the **parent ADT's** `db` flag for the first matching
+  `Ctr`. It ignores a top-level constructor and non-ADT nested containers.
+- For example, a standalone `Ctr("C")` before a user ADT containing another
+  `Ctr("C")` wins `nc_find_ctor`, but the user ADT decides `nc_ctor_owned`.
+  Within one ADT, a same-name non-constructor preceding a `Ctr` blocks the
+  ordinary direct lookup; the depth-first constructor index can still select
+  that later constructor. A simple shared winner is not equivalent.
+- Preparation occurs too late for some consumers:
+  [`nr_prepare_annotated`](../../selfhost/src/back/native/request.bend) calls
+  `nr_walk`, which erases bodies, **before** `nr_prepared` attaches the native
+  static/constructor context. Both annotated and raw erasure can request
+  constructor identity. Enriching the late native index cannot eliminate that
+  earlier scan.
+
+An exact future representation could retain the original constructor plus a
+separate, proved parent-identity fact in the same request product. It must
+preserve both selectors, appear before erasure, and leave raw/unprepared
+fallbacks exact. Reusing the constructor's own `db` flag, assuming every nested
+constructor belongs to its nearest traversed ADT, or changing constructor
+records returned to existing consumers would not satisfy that contract.
+Known annotated parent provenance can eventually avoid rediscovery, but the
+checked-domain proof must be explicit; the current raw helpers deliberately
+handle unusual books too.
+
+The cost evidence favors stopping this candidate for the current short-request
+objective. In Phase127's period-weighted Phase126 diagnostic survey:
+
+| Active owner | lexer | Map churn128 | closures256 |
+| --- | ---: | ---: | ---: |
+| `nc_ctor_owned` | 0.547% | 0.327% | not present in retained owner rows |
+| `p88_digits` | 6.979% | 4.195% | 25.993% |
+| `p88_number` | 1.915% | 1.035% | 6.093% |
+| `nq_uses` | 0.198% | 8.289% | not present in retained owner rows |
+| `nc_uses_term` | 0.198% | 1.898% | not present in retained owner rows |
+
+The source is the existing
+`selfhost/build/phase127/owner-survey01/report.json:sampleSummary`; no new target
+was run to obtain these rows. Closure sampling is sparse. The full-source
+constructor context's 1,561/36,220 samples (4.31%) is a different workload.
+Neither attribution is a formal inclusive speedup ceiling, but the contrast is
+enough to reject a speculative multi-boundary change as the best next way to
+improve the three short-request score.
+
+Two alternatives have stronger measured exposure:
+
+1. **Prepared-Base scalar transport.** The same requests repeatedly reconstruct
+   cursor/number/step products while decoding identical carrier records.
+   Existing controls cover canonical numbers and malformed graphs. First
+   inspect whether the newly selected scalar observer/late-helper work already
+   improves this region; then test eliminating virtual cursor/result transport
+   on the existing decoder workload. Preserve the carrier format and final
+   checks. This targets a fixed cost in every fresh process, not warm caching.
+2. **Repeated per-ID use counting on Map.** `ns_unshared_terms` and `nh_terms`
+   request `nq_uses(body, id)` while walking multiple variables from one body.
+   An existing `NU_Set` records presence, so do not add another presence cache.
+   A useful summary must instead preserve the saturated count and its control
+   algebra: sequential children combine by capped addition, a two-arm `Mat`
+   combines by maximum, and `NWPattern` has its own branch rule. First establish
+   repeated body/ID queries at the same immutable boundary; a count summary is
+   unjustified when those queries are mostly distinct or fail early.
+
+These are ranked next hypotheses, not new implemented optimizations or promised
+gains. The constructor investigation's result is negative: its semantics and
+placement are more complicated than the name “reuse the existing index” suggests,
+and its measured short-request exposure does not justify that complexity now.

@@ -1,0 +1,51 @@
+{
+  "kind": "phase128-native-screen-source-derivation",
+  "complete": true,
+  "targetsRun": false,
+  "original": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase126/screen.py",
+    "bytes": 4258,
+    "sha256": "60ec8a5feb1e8ac196ea95fa08dbbbff5ea3e869bbb8d5acd1f2e3eea6d9265e"
+  },
+  "derived": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase128/native/screen.py",
+    "bytes": 4211,
+    "sha256": "dea409188d68bbdb664255839ddbaed2d5d538154bdbea05ee495e78bce2a31e"
+  },
+  "changes": [
+    {
+      "before": "\"\"\"Build checked emissions and compare with exact Phase125 and upstream products.\"\"\"",
+      "after": "\"\"\"Build authenticated native/hosted QBE and compare with a frozen Phase126 baseline.\"\"\""
+    },
+    {
+      "before": "ROOT=Path(__file__).resolve().parents[4]",
+      "after": "ROOT=Path(__file__).resolve().parents[5]"
+    },
+    {
+      "before": "p.add_argument('--manifest',type=Path);",
+      "after": "p.add_argument('--manifest',type=Path);p.add_argument('--baseline',type=Path,required=True);"
+    },
+    {
+      "before": "ROOT/'selfhost/build/phase126'",
+      "after": "ROOT/'selfhost/build/phase128'"
+    },
+    {
+      "before": "selection=ROOT/'implementation/phase125/candidate.json';parent=O.read(selection);parent['broad']=O.pin(ROOT/'selfhost/build/phase125/broad-screen06/report.json');broad=O.read(parent['broad']['file']);assert broad['complete']",
+      "after": "assert a.baseline.resolve().is_relative_to(ROOT/'selfhost/build/phase126')\nbroad=O.read(a.baseline);assert broad['complete']"
+    },
+    {
+      "before": "O.pin(selection),parent['broad']",
+      "after": "O.pin(a.baseline)"
+    },
+    {
+      "before": "aligned candidate/experimental-parent125/pinned upstream products",
+      "after": "aligned candidate/explicit frozen Phase126 baseline/pinned upstream products"
+    },
+    {
+      "before": "('p126-'+a.label+'-'+name+'-build')",
+      "after": "('p128-'+a.label+'-'+name+'-build')"
+    }
+  ],
+  "inverseByteIdentity": true,
+  "scope": "Exact source-only derivative. Only location/docstring, explicit Phase126 baseline argument, result/build prefixes and baseline description change. Original benchmark/count oracle, rounds, build command, runtime arguments, timing and success checks unchanged. No target execution."
+}

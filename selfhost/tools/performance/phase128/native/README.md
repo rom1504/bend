@@ -47,3 +47,6 @@ independent native gates in
 The pending runtime contract must be combined with that fresh checked-source
 evidence before being treated as admissible by an acquisition tool. It does
 not itself grant ABI admission or permit installing the candidate.
+
+See [MEASURE.md](MEASURE.md) for early N1 timing, complete native qualification,
+N1/N2 timing, and native acquisition of the historical runtime wrappers.

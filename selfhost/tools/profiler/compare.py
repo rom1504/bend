@@ -304,9 +304,15 @@ def summarize_reports(paths, reference=None, *, baseline_variants=None, minimum_
         clean_cpu = statistics.median(r['cpuSeconds'] for r in baseline_rows) if baseline_rows else None
         sampled = [r for r in rows if r['mode'] == 'sample']
         diagnostics = [r for r in rows if r['mode'] != 'sample' and r not in clean]
+        context_only = [r for r in diagnostics if r['mode'] == 'clean']
+        counted = [r for r in diagnostics if r['mode'] == 'events']
+        diagnostic_modes = sorted(set(r['mode'] for r in diagnostics))
+        homogeneous_diagnostics = diagnostics if len(diagnostic_modes) <= 1 else []
         event_names = set().union(*(e.keys() for e in group['events']))
         if any(set(e) != event_names for e in group['events']): raise ValueError('Counter names changed within variant')
-        summary = dict(identity=group['identity'], clean=timing(clean), diagnosticUnsampled=timing(diagnostics),
+        summary = dict(identity=group['identity'], clean=timing(clean),
+            diagnosticUnsampled=timing(homogeneous_diagnostics), diagnosticModes=diagnostic_modes,
+            contextOnlyUnsampled=timing(context_only), counterEnabled=timing(counted),
             sampled=timing(sampled), baselineVariant=baseline_name,
             profile=pool_captures(group['captures'], clean_cpu, minimum_samples),
             eventCounts={name:stats([e[name] for e in group['events']]) for name in sorted(event_names)},
@@ -314,7 +320,9 @@ def summarize_reports(paths, reference=None, *, baseline_variants=None, minimum_
         if baseline_rows:
             base_wall = statistics.median(r['wallSeconds'] for r in baseline_rows)
             summary['sampledOverCleanWallRatio'] = statistics.median(r['wallSeconds'] for r in sampled)/base_wall if sampled else None
-            summary['diagnosticOverCleanWallRatio'] = statistics.median(r['wallSeconds'] for r in diagnostics)/base_wall if diagnostics else None
+            summary['diagnosticOverCleanWallRatio'] = statistics.median(r['wallSeconds'] for r in homogeneous_diagnostics)/base_wall if homogeneous_diagnostics else None
+            summary['contextOnlyOverCleanWallRatio'] = statistics.median(r['wallSeconds'] for r in context_only)/base_wall if context_only else None
+            summary['countersOverCleanWallRatio'] = statistics.median(r['wallSeconds'] for r in counted)/base_wall if counted else None
         result['workloads'].setdefault(workload, {})[variant] = summary
     if reference:
         for workload, variants in result['workloads'].items():

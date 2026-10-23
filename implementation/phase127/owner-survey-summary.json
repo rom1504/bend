@@ -1,0 +1,1607 @@
+{
+  "schema": "bend-owner-survey-summary-v1",
+  "source": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase127/owner-survey01/report.json",
+    "bytes": 1383759,
+    "sha256": "1bb8e8e0c050e5597cfb1c445bc0df2a05e13cd240e9610c4331e02b2e98b7ce"
+  },
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase127/events01/report.json",
+      "bytes": 27868,
+      "sha256": "5610fd8cb8d74a61318a716bef9afd6bc07e79c4f72bdb45c8954427e11dc57b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase127/dispatch02/report.json",
+      "bytes": 88395,
+      "sha256": "0d0df130adca251d5b0d93f5f2ab13c3921ed8009dc8db5be5624f60ef5ba232"
+    }
+  ],
+  "methods": [
+    {
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/profiler/attribute.py",
+        "bytes": 28130,
+        "sha256": "1ccdbee5915cd0d62aff5049717a5a895ec4f3ea971ab32209d163328cd99014"
+      },
+      "snapshot": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase127/owner-survey01/methods/attribute.py",
+        "bytes": 28130,
+        "sha256": "1ccdbee5915cd0d62aff5049717a5a895ec4f3ea971ab32209d163328cd99014"
+      }
+    },
+    {
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/profiler/analyze.py",
+        "bytes": 16597,
+        "sha256": "c6e15ec505367631dbf5f08e6c734e03a604323eb2a914180806b5dc5ffa72e0"
+      },
+      "snapshot": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase127/owner-survey01/methods/analyze.py",
+        "bytes": 16597,
+        "sha256": "c6e15ec505367631dbf5f08e6c734e03a604323eb2a914180806b5dc5ffa72e0"
+      }
+    },
+    {
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/profiler/owners.py",
+        "bytes": 11643,
+        "sha256": "f2bc2333e455821c6ee3df0796af3d7b4d984c696395963c361652c90a4c35ac"
+      },
+      "snapshot": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase127/owner-survey01/methods/owners.py",
+        "bytes": 11643,
+        "sha256": "f2bc2333e455821c6ee3df0796af3d7b4d984c696395963c361652c90a4c35ac"
+      }
+    },
+    {
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase127/owner-survey-run.py",
+        "bytes": 6102,
+        "sha256": "ac9af9e2a7d488d259c1dc26858c7fb927ef9e293ac7c8ff6e15ec8a71a50ce1"
+      },
+      "snapshot": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase127/owner-survey01/methods/owner-survey-run.py",
+        "bytes": 6102,
+        "sha256": "ac9af9e2a7d488d259c1dc26858c7fb927ef9e293ac7c8ff6e15ec8a71a50ce1"
+      }
+    }
+  ],
+  "sampleSummary": [
+    {
+      "workload": "coverage-closures-256",
+      "variant": "phase125",
+      "samples": 257,
+      "zeroLoss": true,
+      "contextKnown": 241,
+      "ownerKnown": 241,
+      "topOwners": [
+        {
+          "owner": "p88_digits",
+          "samples": 68,
+          "rawFraction": 0.26459143968871596,
+          "periodWeightedUs": 679000,
+          "periodWeightedFraction": 0.2666928515318146
+        },
+        {
+          "owner": "p88_number",
+          "samples": 17,
+          "rawFraction": 0.06614785992217899,
+          "periodWeightedUs": 166000,
+          "periodWeightedFraction": 0.06520031421838178
+        },
+        {
+          "owner": "[unknown]",
+          "samples": 16,
+          "rawFraction": 0.0622568093385214,
+          "periodWeightedUs": 163000,
+          "periodWeightedFraction": 0.06402199528672427
+        },
+        {
+          "owner": "Bool.and",
+          "samples": 13,
+          "rawFraction": 0.05058365758754864,
+          "periodWeightedUs": 129000,
+          "periodWeightedFraction": 0.05066771406127259
+        },
+        {
+          "owner": "p88_field",
+          "samples": 9,
+          "rawFraction": 0.03501945525291829,
+          "periodWeightedUs": 77000,
+          "periodWeightedFraction": 0.030243519245875882
+        },
+        {
+          "owner": "String.order",
+          "samples": 9,
+          "rawFraction": 0.03501945525291829,
+          "periodWeightedUs": 92000,
+          "periodWeightedFraction": 0.03613511390416339
+        },
+        {
+          "owner": "String.append",
+          "samples": 7,
+          "rawFraction": 0.027237354085603113,
+          "periodWeightedUs": 71000,
+          "periodWeightedFraction": 0.02788688138256088
+        },
+        {
+          "owner": "p88_build",
+          "samples": 6,
+          "rawFraction": 0.023346303501945526,
+          "periodWeightedUs": 68000,
+          "periodWeightedFraction": 0.02670856245090338
+        },
+        {
+          "owner": "constructor_exists",
+          "samples": 6,
+          "rawFraction": 0.023346303501945526,
+          "periodWeightedUs": 58000,
+          "periodWeightedFraction": 0.022780832678711706
+        },
+        {
+          "owner": "p88_u32",
+          "samples": 5,
+          "rawFraction": 0.019455252918287938,
+          "periodWeightedUs": 55000,
+          "periodWeightedFraction": 0.021602513747054203
+        },
+        {
+          "owner": "p88_digit",
+          "samples": 5,
+          "rawFraction": 0.019455252918287938,
+          "periodWeightedUs": 50000,
+          "periodWeightedFraction": 0.019638648860958365
+        },
+        {
+          "owner": "p88_string_eq",
+          "samples": 5,
+          "rawFraction": 0.019455252918287938,
+          "periodWeightedUs": 45000,
+          "periodWeightedFraction": 0.01767478397486253
+        },
+        {
+          "owner": "index_find",
+          "samples": 5,
+          "rawFraction": 0.019455252918287938,
+          "periodWeightedUs": 50000,
+          "periodWeightedFraction": 0.019638648860958365
+        },
+        {
+          "owner": "nc_native_primitive",
+          "samples": 4,
+          "rawFraction": 0.01556420233463035,
+          "periodWeightedUs": 42000,
+          "periodWeightedFraction": 0.016496465043205028
+        },
+        {
+          "owner": "has_name",
+          "samples": 4,
+          "rawFraction": 0.01556420233463035,
+          "periodWeightedUs": 37000,
+          "periodWeightedFraction": 0.014532600157109192
+        }
+      ],
+      "families": {
+        "p88_": {
+          "samples": 131,
+          "periodWeightedFraction": 0.5078554595443833
+        },
+        "p111v_": {
+          "samples": 6,
+          "periodWeightedFraction": 0.024744697564807544
+        },
+        "index_": {
+          "samples": 12,
+          "periodWeightedFraction": 0.045561665357423405
+        },
+        "String.": {
+          "samples": 18,
+          "periodWeightedFraction": 0.07030636292223097
+        },
+        "nq_uses": {
+          "samples": 0,
+          "periodWeightedFraction": 0
+        },
+        "p126bp_": {
+          "samples": 0,
+          "periodWeightedFraction": 0
+        },
+        "p113pl_": {
+          "samples": 0,
+          "periodWeightedFraction": 0
+        }
+      },
+      "topReclamationOwnerLeaves": [
+        {
+          "owner": "has_name",
+          "group": "reclamation",
+          "leaf": "term_drop",
+          "samples": 3,
+          "rawFraction": 0.011673151750972763,
+          "periodWeightedUs": 24000,
+          "periodWeightedFraction": 0.009426551453260016
+        },
+        {
+          "owner": "nc_native_primitive",
+          "group": "reclamation",
+          "leaf": "term_drop",
+          "samples": 2,
+          "rawFraction": 0.007782101167315175,
+          "periodWeightedUs": 16000,
+          "periodWeightedFraction": 0.006284367635506678
+        },
+        {
+          "owner": "index_find",
+          "group": "reclamation",
+          "leaf": "term_drop",
+          "samples": 2,
+          "rawFraction": 0.007782101167315175,
+          "periodWeightedUs": 21000,
+          "periodWeightedFraction": 0.008248232521602514
+        },
+        {
+          "owner": "norm_max_book",
+          "group": "reclamation",
+          "leaf": "span_fade",
+          "samples": 2,
+          "rawFraction": 0.007782101167315175,
+          "periodWeightedUs": 21000,
+          "periodWeightedFraction": 0.008248232521602514
+        },
+        {
+          "owner": "p88_string_eq",
+          "group": "reclamation",
+          "leaf": "term_drop",
+          "samples": 2,
+          "rawFraction": 0.007782101167315175,
+          "periodWeightedUs": 21000,
+          "periodWeightedFraction": 0.008248232521602514
+        },
+        {
+          "owner": "String.order",
+          "group": "reclamation",
+          "leaf": "term_drop",
+          "samples": 2,
+          "rawFraction": 0.007782101167315175,
+          "periodWeightedUs": 21000,
+          "periodWeightedFraction": 0.008248232521602514
+        },
+        {
+          "owner": "constructor_exists",
+          "group": "reclamation",
+          "leaf": "span_fade",
+          "samples": 1,
+          "rawFraction": 0.0038910505836575876,
+          "periodWeightedUs": 8000,
+          "periodWeightedFraction": 0.003142183817753339
+        },
+        {
+          "owner": "index_remove",
+          "group": "reclamation",
+          "leaf": "span_fade",
+          "samples": 1,
+          "rawFraction": 0.0038910505836575876,
+          "periodWeightedUs": 8000,
+          "periodWeightedFraction": 0.003142183817753339
+        }
+      ]
+    },
+    {
+      "workload": "coverage-closures-256",
+      "variant": "phase126",
+      "samples": 305,
+      "zeroLoss": true,
+      "contextKnown": 290,
+      "ownerKnown": 290,
+      "topOwners": [
+        {
+          "owner": "p88_digits",
+          "samples": 80,
+          "rawFraction": 0.26229508196721313,
+          "periodWeightedUs": 785000,
+          "periodWeightedFraction": 0.2599337748344371
+        },
+        {
+          "owner": "p88_number",
+          "samples": 18,
+          "rawFraction": 0.05901639344262295,
+          "periodWeightedUs": 184000,
+          "periodWeightedFraction": 0.060927152317880796
+        },
+        {
+          "owner": "[unknown]",
+          "samples": 15,
+          "rawFraction": 0.04918032786885246,
+          "periodWeightedUs": 140000,
+          "periodWeightedFraction": 0.046357615894039736
+        },
+        {
+          "owner": "p88_field",
+          "samples": 15,
+          "rawFraction": 0.04918032786885246,
+          "periodWeightedUs": 140000,
+          "periodWeightedFraction": 0.046357615894039736
+        },
+        {
+          "owner": "Bool.and",
+          "samples": 11,
+          "rawFraction": 0.036065573770491806,
+          "periodWeightedUs": 113000,
+          "periodWeightedFraction": 0.03741721854304636
+        },
+        {
+          "owner": "String.append",
+          "samples": 10,
+          "rawFraction": 0.03278688524590164,
+          "periodWeightedUs": 100000,
+          "periodWeightedFraction": 0.033112582781456956
+        },
+        {
+          "owner": "p88_digit",
+          "samples": 8,
+          "rawFraction": 0.02622950819672131,
+          "periodWeightedUs": 69000,
+          "periodWeightedFraction": 0.0228476821192053
+        },
+        {
+          "owner": "p88_build",
+          "samples": 7,
+          "rawFraction": 0.022950819672131147,
+          "periodWeightedUs": 71000,
+          "periodWeightedFraction": 0.023509933774834436
+        },
+        {
+          "owner": "constructor_exists",
+          "samples": 7,
+          "rawFraction": 0.022950819672131147,
+          "periodWeightedUs": 71000,
+          "periodWeightedFraction": 0.023509933774834436
+        },
+        {
+          "owner": "p88_fields",
+          "samples": 6,
+          "rawFraction": 0.019672131147540985,
+          "periodWeightedUs": 63000,
+          "periodWeightedFraction": 0.020860927152317882
+        },
+        {
+          "owner": "p88_u32",
+          "samples": 5,
+          "rawFraction": 0.01639344262295082,
+          "periodWeightedUs": 60000,
+          "periodWeightedFraction": 0.019867549668874173
+        },
+        {
+          "owner": "index_find",
+          "samples": 5,
+          "rawFraction": 0.01639344262295082,
+          "periodWeightedUs": 45000,
+          "periodWeightedFraction": 0.014900662251655629
+        },
+        {
+          "owner": "String.eq",
+          "samples": 5,
+          "rawFraction": 0.01639344262295082,
+          "periodWeightedUs": 45000,
+          "periodWeightedFraction": 0.014900662251655629
+        },
+        {
+          "owner": "String.order",
+          "samples": 5,
+          "rawFraction": 0.01639344262295082,
+          "periodWeightedUs": 55000,
+          "periodWeightedFraction": 0.018211920529801324
+        },
+        {
+          "owner": "p88_fields_next",
+          "samples": 5,
+          "rawFraction": 0.01639344262295082,
+          "periodWeightedUs": 50000,
+          "periodWeightedFraction": 0.016556291390728478
+        }
+      ],
+      "families": {
+        "p88_": {
+          "samples": 166,
+          "periodWeightedFraction": 0.5473509933774835
+        },
+        "p111v_": {
+          "samples": 10,
+          "periodWeightedFraction": 0.03145695364238411
+        },
+        "index_": {
+          "samples": 21,
+          "periodWeightedFraction": 0.07052980132450332
+        },
+        "String.": {
+          "samples": 20,
+          "periodWeightedFraction": 0.06622516556291391
+        },
+        "nq_uses": {
+          "samples": 0,
+          "periodWeightedFraction": 0
+        },
+        "p126bp_": {
+          "samples": 2,
+          "periodWeightedFraction": 0.00695364238410596
+        },
+        "p113pl_": {
+          "samples": 0,
+          "periodWeightedFraction": 0
+        }
+      },
+      "topReclamationOwnerLeaves": [
+        {
+          "owner": "constructor_exists",
+          "group": "reclamation",
+          "leaf": "term_drop",
+          "samples": 3,
+          "rawFraction": 0.009836065573770493,
+          "periodWeightedUs": 34000,
+          "periodWeightedFraction": 0.011258278145695364
+        },
+        {
+          "owner": "String.order",
+          "group": "reclamation",
+          "leaf": "term_drop",
+          "samples": 3,
+          "rawFraction": 0.009836065573770493,
+          "periodWeightedUs": 29000,
+          "periodWeightedFraction": 0.009602649006622516
+        },
+        {
+          "owner": "p88_roots_done",
+          "group": "reclamation",
+          "leaf": "term_drop",
+          "samples": 2,
+          "rawFraction": 0.006557377049180328,
+          "periodWeightedUs": 21000,
+          "periodWeightedFraction": 0.00695364238410596
+        },
+        {
+          "owner": "p88_string_eq",
+          "group": "reclamation",
+          "leaf": "span_fade",
+          "samples": 2,
+          "rawFraction": 0.006557377049180328,
+          "periodWeightedUs": 21000,
+          "periodWeightedFraction": 0.00695364238410596
+        },
+        {
+          "owner": "j_find_ctor",
+          "group": "reclamation",
+          "leaf": "span_fade",
+          "samples": 2,
+          "rawFraction": 0.006557377049180328,
+          "periodWeightedUs": 21000,
+          "periodWeightedFraction": 0.00695364238410596
+        },
+        {
+          "owner": "kr_filter",
+          "group": "reclamation",
+          "leaf": "term_drop",
+          "samples": 2,
+          "rawFraction": 0.006557377049180328,
+          "periodWeightedUs": 16000,
+          "periodWeightedFraction": 0.005298013245033113
+        },
+        {
+          "owner": "norm_max_book",
+          "group": "reclamation",
+          "leaf": "term_drop",
+          "samples": 2,
+          "rawFraction": 0.006557377049180328,
+          "periodWeightedUs": 21000,
+          "periodWeightedFraction": 0.00695364238410596
+        },
+        {
+          "owner": "p126bp_integrated",
+          "group": "reclamation",
+          "leaf": "term_drop",
+          "samples": 2,
+          "rawFraction": 0.006557377049180328,
+          "periodWeightedUs": 21000,
+          "periodWeightedFraction": 0.00695364238410596
+        }
+      ]
+    },
+    {
+      "workload": "coverage-map-churn-128",
+      "variant": "phase125",
+      "samples": 1295,
+      "zeroLoss": true,
+      "contextKnown": 1245,
+      "ownerKnown": 1245,
+      "topOwners": [
+        {
+          "owner": "nq_uses",
+          "samples": 134,
+          "rawFraction": 0.10347490347490347,
+          "periodWeightedUs": 1307000,
+          "periodWeightedFraction": 0.10202966432474629
+        },
+        {
+          "owner": "String.order",
+          "samples": 119,
+          "rawFraction": 0.0918918918918919,
+          "periodWeightedUs": 1187000,
+          "periodWeightedFraction": 0.09266198282591726
+        },
+        {
+          "owner": "String.append",
+          "samples": 70,
+          "rawFraction": 0.05405405405405406,
+          "periodWeightedUs": 690000,
+          "periodWeightedFraction": 0.053864168618266976
+        },
+        {
+          "owner": "p88_digits",
+          "samples": 60,
+          "rawFraction": 0.04633204633204633,
+          "periodWeightedUs": 620000,
+          "periodWeightedFraction": 0.04839968774395004
+        },
+        {
+          "owner": "index_find",
+          "samples": 54,
+          "rawFraction": 0.0416988416988417,
+          "periodWeightedUs": 512000,
+          "periodWeightedFraction": 0.0399687743950039
+        },
+        {
+          "owner": "[unknown]",
+          "samples": 50,
+          "rawFraction": 0.03861003861003861,
+          "periodWeightedUs": 490000,
+          "periodWeightedFraction": 0.03825136612021858
+        },
+        {
+          "owner": "String.eq",
+          "samples": 30,
+          "rawFraction": 0.023166023166023165,
+          "periodWeightedUs": 305000,
+          "periodWeightedFraction": 0.023809523809523808
+        },
+        {
+          "owner": "has_name",
+          "samples": 23,
+          "rawFraction": 0.01776061776061776,
+          "periodWeightedUs": 229000,
+          "periodWeightedFraction": 0.017876658860265418
+        },
+        {
+          "owner": "index_insert",
+          "samples": 23,
+          "rawFraction": 0.01776061776061776,
+          "periodWeightedUs": 254000,
+          "periodWeightedFraction": 0.019828259172521467
+        },
+        {
+          "owner": "nc_uses_term",
+          "samples": 22,
+          "rawFraction": 0.01698841698841699,
+          "periodWeightedUs": 221000,
+          "periodWeightedFraction": 0.017252146760343482
+        },
+        {
+          "owner": "p88_string_eq",
+          "samples": 19,
+          "rawFraction": 0.014671814671814672,
+          "periodWeightedUs": 167000,
+          "periodWeightedFraction": 0.013036690085870413
+        },
+        {
+          "owner": "nc_native_primitive",
+          "samples": 18,
+          "rawFraction": 0.013899613899613899,
+          "periodWeightedUs": 194000,
+          "periodWeightedFraction": 0.015144418423106949
+        },
+        {
+          "owner": "index_bucket",
+          "samples": 18,
+          "rawFraction": 0.013899613899613899,
+          "periodWeightedUs": 174000,
+          "periodWeightedFraction": 0.013583138173302109
+        },
+        {
+          "owner": "nq_uses_list",
+          "samples": 16,
+          "rawFraction": 0.012355212355212355,
+          "periodWeightedUs": 158000,
+          "periodWeightedFraction": 0.012334113973458237
+        },
+        {
+          "owner": "p111v_name_chars",
+          "samples": 15,
+          "rawFraction": 0.011583011583011582,
+          "periodWeightedUs": 150000,
+          "periodWeightedFraction": 0.0117096018735363
+        }
+      ],
+      "families": {
+        "p88_": {
+          "samples": 152,
+          "periodWeightedFraction": 0.11600312256049962
+        },
+        "p111v_": {
+          "samples": 81,
+          "periodWeightedFraction": 0.06112412177985948
+        },
+        "index_": {
+          "samples": 113,
+          "periodWeightedFraction": 0.08813427010148323
+        },
+        "String.": {
+          "samples": 244,
+          "periodWeightedFraction": 0.18946135831381733
+        },
+        "nq_uses": {
+          "samples": 150,
+          "periodWeightedFraction": 0.11436377829820453
+        },
+        "p126bp_": {
+          "samples": 0,
+          "periodWeightedFraction": 0
+        },
+        "p113pl_": {
+          "samples": 2,
+          "periodWeightedFraction": 0.001639344262295082
+        }
+      },
+      "topReclamationOwnerLeaves": [
+        {
+          "owner": "String.order",
+          "group": "reclamation",
+          "leaf": "term_drop",
+          "samples": 28,
+          "rawFraction": 0.021621621621621623,
+          "periodWeightedUs": 269000,
+          "periodWeightedFraction": 0.020999219359875098
+        },
+        {
+          "owner": "nq_uses",
+          "group": "reclamation",
+          "leaf": "term_drop",
+          "samples": 25,
+          "rawFraction": 0.019305019305019305,
+          "periodWeightedUs": 225000,
+          "periodWeightedFraction": 0.01756440281030445
+        },
+        {
+          "owner": "nq_uses",
+          "group": "reclamation",
+          "leaf": "span_fade",
+          "samples": 19,
+          "rawFraction": 0.014671814671814672,
+          "periodWeightedUs": 182000,
+          "periodWeightedFraction": 0.014207650273224045
+        },
+        {
+          "owner": "index_find",
+          "group": "reclamation",
+          "leaf": "term_drop",
+          "samples": 13,
+          "rawFraction": 0.010038610038610039,
+          "periodWeightedUs": 109000,
+          "periodWeightedFraction": 0.008508977361436378
+        },
+        {
+          "owner": "p88_string_eq",
+          "group": "reclamation",
+          "leaf": "term_drop",
+          "samples": 8,
+          "rawFraction": 0.006177606177606178,
+          "periodWeightedUs": 74000,
+          "periodWeightedFraction": 0.005776736924277908
+        },
+        {
+          "owner": "has_name",
+          "group": "reclamation",
+          "leaf": "term_drop",
+          "samples": 8,
+          "rawFraction": 0.006177606177606178,
+          "periodWeightedUs": 69000,
+          "periodWeightedFraction": 0.005386416861826698
+        },
+        {
+          "owner": "index_bucket",
+          "group": "reclamation",
+          "leaf": "term_drop",
+          "samples": 8,
+          "rawFraction": 0.006177606177606178,
+          "periodWeightedUs": 79000,
+          "periodWeightedFraction": 0.006167056986729118
+        },
+        {
+          "owner": "has_name",
+          "group": "reclamation",
+          "leaf": "span_fade",
+          "samples": 6,
+          "rawFraction": 0.004633204633204633,
+          "periodWeightedUs": 68000,
+          "periodWeightedFraction": 0.005308352849336456
+        }
+      ]
+    },
+    {
+      "workload": "coverage-map-churn-128",
+      "variant": "phase126",
+      "samples": 1695,
+      "zeroLoss": true,
+      "contextKnown": 1628,
+      "ownerKnown": 1628,
+      "topOwners": [
+        {
+          "owner": "String.order",
+          "samples": 175,
+          "rawFraction": 0.10324483775811209,
+          "periodWeightedUs": 1765000,
+          "periodWeightedFraction": 0.10502826539720321
+        },
+        {
+          "owner": "nq_uses",
+          "samples": 141,
+          "rawFraction": 0.0831858407079646,
+          "periodWeightedUs": 1393000,
+          "periodWeightedFraction": 0.08289199642963403
+        },
+        {
+          "owner": "p88_digits",
+          "samples": 70,
+          "rawFraction": 0.04129793510324484,
+          "periodWeightedUs": 705000,
+          "periodWeightedFraction": 0.0419518000595061
+        },
+        {
+          "owner": "index_find",
+          "samples": 69,
+          "rawFraction": 0.04070796460176991,
+          "periodWeightedUs": 692000,
+          "periodWeightedFraction": 0.041178220767628684
+        },
+        {
+          "owner": "String.append",
+          "samples": 68,
+          "rawFraction": 0.040117994100294985,
+          "periodWeightedUs": 684000,
+          "periodWeightedFraction": 0.040702171972627196
+        },
+        {
+          "owner": "[unknown]",
+          "samples": 67,
+          "rawFraction": 0.03952802359882006,
+          "periodWeightedUs": 671000,
+          "periodWeightedFraction": 0.039928592680749775
+        },
+        {
+          "owner": "String.eq",
+          "samples": 55,
+          "rawFraction": 0.032448377581120944,
+          "periodWeightedUs": 515000,
+          "periodWeightedFraction": 0.03064564117822077
+        },
+        {
+          "owner": "nc_uses_term",
+          "samples": 33,
+          "rawFraction": 0.019469026548672566,
+          "periodWeightedUs": 319000,
+          "periodWeightedFraction": 0.01898244570068432
+        },
+        {
+          "owner": "index_bucket",
+          "samples": 31,
+          "rawFraction": 0.018289085545722714,
+          "periodWeightedUs": 303000,
+          "periodWeightedFraction": 0.018030348110681344
+        },
+        {
+          "owner": "nq_uses_list",
+          "samples": 29,
+          "rawFraction": 0.01710914454277286,
+          "periodWeightedUs": 297000,
+          "periodWeightedFraction": 0.017673311514430228
+        },
+        {
+          "owner": "Bool.and",
+          "samples": 26,
+          "rawFraction": 0.015339233038348082,
+          "periodWeightedUs": 268000,
+          "periodWeightedFraction": 0.015947634632549838
+        },
+        {
+          "owner": "p88_string_eq",
+          "samples": 21,
+          "rawFraction": 0.012389380530973451,
+          "periodWeightedUs": 213000,
+          "periodWeightedFraction": 0.01267479916691461
+        },
+        {
+          "owner": "p88_field",
+          "samples": 20,
+          "rawFraction": 0.011799410029498525,
+          "periodWeightedUs": 185000,
+          "periodWeightedFraction": 0.011008628384409401
+        },
+        {
+          "owner": "index_insert",
+          "samples": 20,
+          "rawFraction": 0.011799410029498525,
+          "periodWeightedUs": 190000,
+          "periodWeightedFraction": 0.011306158881285331
+        },
+        {
+          "owner": "nc_native_primitive",
+          "samples": 19,
+          "rawFraction": 0.011209439528023599,
+          "periodWeightedUs": 187000,
+          "periodWeightedFraction": 0.011127640583159773
+        }
+      ],
+      "families": {
+        "p88_": {
+          "samples": 177,
+          "periodWeightedFraction": 0.10360011901219875
+        },
+        "p111v_": {
+          "samples": 95,
+          "periodWeightedFraction": 0.05504314192204701
+        },
+        "index_": {
+          "samples": 161,
+          "periodWeightedFraction": 0.0953882772984231
+        },
+        "String.": {
+          "samples": 301,
+          "periodWeightedFraction": 0.17810175542993156
+        },
+        "nq_uses": {
+          "samples": 170,
+          "periodWeightedFraction": 0.10056530794406426
+        },
+        "p126bp_": {
+          "samples": 0,
+          "periodWeightedFraction": 0
+        },
+        "p113pl_": {
+          "samples": 13,
+          "periodWeightedFraction": 0.007676286819398988
+        }
+      },
+      "topReclamationOwnerLeaves": [
+        {
+          "owner": "String.order",
+          "group": "reclamation",
+          "leaf": "term_drop",
+          "samples": 38,
+          "rawFraction": 0.022418879056047197,
+          "periodWeightedUs": 409000,
+          "periodWeightedFraction": 0.024337994644451057
+        },
+        {
+          "owner": "nq_uses",
+          "group": "reclamation",
+          "leaf": "span_fade",
+          "samples": 28,
+          "rawFraction": 0.016519174041297935,
+          "periodWeightedUs": 284000,
+          "periodWeightedFraction": 0.01689973222255281
+        },
+        {
+          "owner": "nq_uses",
+          "group": "reclamation",
+          "leaf": "term_drop",
+          "samples": 19,
+          "rawFraction": 0.011209439528023599,
+          "periodWeightedUs": 192000,
+          "periodWeightedFraction": 0.011425171080035703
+        },
+        {
+          "owner": "index_find",
+          "group": "reclamation",
+          "leaf": "term_drop",
+          "samples": 16,
+          "rawFraction": 0.00943952802359882,
+          "periodWeightedUs": 153000,
+          "periodWeightedFraction": 0.009104433204403451
+        },
+        {
+          "owner": "index_bucket",
+          "group": "reclamation",
+          "leaf": "term_drop",
+          "samples": 12,
+          "rawFraction": 0.007079646017699115,
+          "periodWeightedUs": 121000,
+          "periodWeightedFraction": 0.007200238024397501
+        },
+        {
+          "owner": "nc_uses_term",
+          "group": "reclamation",
+          "leaf": "term_drop",
+          "samples": 10,
+          "rawFraction": 0.0058997050147492625,
+          "periodWeightedUs": 95000,
+          "periodWeightedFraction": 0.005653079440642666
+        },
+        {
+          "owner": "index_find",
+          "group": "reclamation",
+          "leaf": "span_fade",
+          "samples": 9,
+          "rawFraction": 0.005309734513274336,
+          "periodWeightedUs": 97000,
+          "periodWeightedFraction": 0.005772091639393038
+        },
+        {
+          "owner": "p88_string_eq",
+          "group": "reclamation",
+          "leaf": "term_drop",
+          "samples": 7,
+          "rawFraction": 0.004129793510324484,
+          "periodWeightedUs": 66000,
+          "periodWeightedFraction": 0.003927402558762273
+        }
+      ]
+    },
+    {
+      "workload": "lexer",
+      "variant": "phase125",
+      "samples": 962,
+      "zeroLoss": true,
+      "contextKnown": 915,
+      "ownerKnown": 915,
+      "topOwners": [
+        {
+          "owner": "index_bucket",
+          "samples": 82,
+          "rawFraction": 0.08523908523908524,
+          "periodWeightedUs": 786000,
+          "periodWeightedFraction": 0.08238130175034064
+        },
+        {
+          "owner": "String.order",
+          "samples": 60,
+          "rawFraction": 0.062370062370062374,
+          "periodWeightedUs": 580000,
+          "periodWeightedFraction": 0.060790273556231005
+        },
+        {
+          "owner": "p111v_get",
+          "samples": 56,
+          "rawFraction": 0.058212058212058215,
+          "periodWeightedUs": 548000,
+          "periodWeightedFraction": 0.05743632742899067
+        },
+        {
+          "owner": "p88_digits",
+          "samples": 53,
+          "rawFraction": 0.0550935550935551,
+          "periodWeightedUs": 509000,
+          "periodWeightedFraction": 0.053348705586416516
+        },
+        {
+          "owner": "index_find",
+          "samples": 51,
+          "rawFraction": 0.05301455301455302,
+          "periodWeightedUs": 523000,
+          "periodWeightedFraction": 0.05481605701708416
+        },
+        {
+          "owner": "[unknown]",
+          "samples": 47,
+          "rawFraction": 0.04885654885654886,
+          "periodWeightedUs": 481000,
+          "periodWeightedFraction": 0.05041400272508123
+        },
+        {
+          "owner": "String.append",
+          "samples": 40,
+          "rawFraction": 0.04158004158004158,
+          "periodWeightedUs": 395000,
+          "periodWeightedFraction": 0.04140027250812284
+        },
+        {
+          "owner": "index_insert",
+          "samples": 34,
+          "rawFraction": 0.035343035343035345,
+          "periodWeightedUs": 327000,
+          "periodWeightedFraction": 0.03427313698773714
+        },
+        {
+          "owner": "Bool.and",
+          "samples": 24,
+          "rawFraction": 0.02494802494802495,
+          "periodWeightedUs": 227000,
+          "periodWeightedFraction": 0.0237920553401111
+        },
+        {
+          "owner": "p111v_put",
+          "samples": 23,
+          "rawFraction": 0.02390852390852391,
+          "periodWeightedUs": 259000,
+          "periodWeightedFraction": 0.02714600146735143
+        },
+        {
+          "owner": "p111v_name_chars",
+          "samples": 23,
+          "rawFraction": 0.02390852390852391,
+          "periodWeightedUs": 214000,
+          "periodWeightedFraction": 0.022429514725919714
+        },
+        {
+          "owner": "p88_number",
+          "samples": 22,
+          "rawFraction": 0.02286902286902287,
+          "periodWeightedUs": 201000,
+          "periodWeightedFraction": 0.02106697411172833
+        },
+        {
+          "owner": "p88_string_eq",
+          "samples": 18,
+          "rawFraction": 0.018711018711018712,
+          "periodWeightedUs": 169000,
+          "periodWeightedFraction": 0.017713027984488
+        },
+        {
+          "owner": "constructor_exists",
+          "samples": 17,
+          "rawFraction": 0.017671517671517672,
+          "periodWeightedUs": 161000,
+          "periodWeightedFraction": 0.016874541452677916
+        },
+        {
+          "owner": "index_tip",
+          "samples": 15,
+          "rawFraction": 0.015592515592515593,
+          "periodWeightedUs": 145000,
+          "periodWeightedFraction": 0.015197568389057751
+        }
+      ],
+      "families": {
+        "p88_": {
+          "samples": 146,
+          "periodWeightedFraction": 0.15019390001048114
+        },
+        "p111v_": {
+          "samples": 144,
+          "periodWeightedFraction": 0.15218530552353005
+        },
+        "index_": {
+          "samples": 206,
+          "periodWeightedFraction": 0.2130803898962373
+        },
+        "String.": {
+          "samples": 117,
+          "periodWeightedFraction": 0.12063724976417568
+        },
+        "nq_uses": {
+          "samples": 1,
+          "periodWeightedFraction": 0.0008384865318100828
+        },
+        "p126bp_": {
+          "samples": 0,
+          "periodWeightedFraction": 0
+        },
+        "p113pl_": {
+          "samples": 1,
+          "periodWeightedFraction": 0.0008384865318100828
+        }
+      },
+      "topReclamationOwnerLeaves": [
+        {
+          "owner": "index_bucket",
+          "group": "reclamation",
+          "leaf": "term_drop",
+          "samples": 23,
+          "rawFraction": 0.02390852390852391,
+          "periodWeightedUs": 219000,
+          "periodWeightedFraction": 0.022953568808301017
+        },
+        {
+          "owner": "p111v_get",
+          "group": "reclamation",
+          "leaf": "span_fade",
+          "samples": 21,
+          "rawFraction": 0.02182952182952183,
+          "periodWeightedUs": 208000,
+          "periodWeightedFraction": 0.021800649827062153
+        },
+        {
+          "owner": "p111v_get",
+          "group": "reclamation",
+          "leaf": "term_drop",
+          "samples": 18,
+          "rawFraction": 0.018711018711018712,
+          "periodWeightedUs": 174000,
+          "periodWeightedFraction": 0.0182370820668693
+        },
+        {
+          "owner": "String.order",
+          "group": "reclamation",
+          "leaf": "term_drop",
+          "samples": 17,
+          "rawFraction": 0.017671517671517672,
+          "periodWeightedUs": 156000,
+          "periodWeightedFraction": 0.016350487370296613
+        },
+        {
+          "owner": "index_bucket",
+          "group": "reclamation",
+          "leaf": "span_fade",
+          "samples": 16,
+          "rawFraction": 0.016632016632016633,
+          "periodWeightedUs": 163000,
+          "periodWeightedFraction": 0.017084163085630436
+        },
+        {
+          "owner": "index_find",
+          "group": "reclamation",
+          "leaf": "term_drop",
+          "samples": 11,
+          "rawFraction": 0.011434511434511435,
+          "periodWeightedUs": 93000,
+          "periodWeightedFraction": 0.009747405932292213
+        },
+        {
+          "owner": "index_find",
+          "group": "reclamation",
+          "leaf": "span_fade",
+          "samples": 10,
+          "rawFraction": 0.010395010395010396,
+          "periodWeightedUs": 105000,
+          "periodWeightedFraction": 0.011005135730007337
+        },
+        {
+          "owner": "index_tip",
+          "group": "reclamation",
+          "leaf": "term_drop",
+          "samples": 6,
+          "rawFraction": 0.006237006237006237,
+          "periodWeightedUs": 63000,
+          "periodWeightedFraction": 0.006603081438004402
+        }
+      ]
+    },
+    {
+      "workload": "lexer",
+      "variant": "phase126",
+      "samples": 1071,
+      "zeroLoss": true,
+      "contextKnown": 1035,
+      "ownerKnown": 1035,
+      "topOwners": [
+        {
+          "owner": "index_bucket",
+          "samples": 92,
+          "rawFraction": 0.08590102707749767,
+          "periodWeightedUs": 921000,
+          "periodWeightedFraction": 0.0868622088088277
+        },
+        {
+          "owner": "p88_digits",
+          "samples": 75,
+          "rawFraction": 0.0700280112044818,
+          "periodWeightedUs": 740000,
+          "periodWeightedFraction": 0.06979156842403093
+        },
+        {
+          "owner": "index_find",
+          "samples": 70,
+          "rawFraction": 0.06535947712418301,
+          "periodWeightedUs": 685000,
+          "periodWeightedFraction": 0.06460435725738
+        },
+        {
+          "owner": "p111v_get",
+          "samples": 57,
+          "rawFraction": 0.05322128851540616,
+          "periodWeightedUs": 571000,
+          "periodWeightedFraction": 0.05385268320286711
+        },
+        {
+          "owner": "String.order",
+          "samples": 53,
+          "rawFraction": 0.04948646125116713,
+          "periodWeightedUs": 514000,
+          "periodWeightedFraction": 0.048476846175610676
+        },
+        {
+          "owner": "String.append",
+          "samples": 46,
+          "rawFraction": 0.04295051353874883,
+          "periodWeightedUs": 473000,
+          "periodWeightedFraction": 0.044610016033198155
+        },
+        {
+          "owner": "[unknown]",
+          "samples": 36,
+          "rawFraction": 0.03361344537815126,
+          "periodWeightedUs": 363000,
+          "periodWeightedFraction": 0.034235593699896254
+        },
+        {
+          "owner": "Bool.and",
+          "samples": 30,
+          "rawFraction": 0.028011204481792718,
+          "periodWeightedUs": 290000,
+          "periodWeightedFraction": 0.027350749787795905
+        },
+        {
+          "owner": "index_insert",
+          "samples": 30,
+          "rawFraction": 0.028011204481792718,
+          "periodWeightedUs": 275000,
+          "periodWeightedFraction": 0.02593605583325474
+        },
+        {
+          "owner": "p88_string_eq",
+          "samples": 29,
+          "rawFraction": 0.02707749766573296,
+          "periodWeightedUs": 297000,
+          "periodWeightedFraction": 0.02801094029991512
+        },
+        {
+          "owner": "p111v_name_chars",
+          "samples": 28,
+          "rawFraction": 0.026143790849673203,
+          "periodWeightedUs": 269000,
+          "periodWeightedFraction": 0.025370178251438273
+        },
+        {
+          "owner": "p111v_put",
+          "samples": 22,
+          "rawFraction": 0.02054154995331466,
+          "periodWeightedUs": 231000,
+          "periodWeightedFraction": 0.02178628689993398
+        },
+        {
+          "owner": "p88_number",
+          "samples": 21,
+          "rawFraction": 0.0196078431372549,
+          "periodWeightedUs": 203000,
+          "periodWeightedFraction": 0.019145524851457135
+        },
+        {
+          "owner": "String.eq",
+          "samples": 21,
+          "rawFraction": 0.0196078431372549,
+          "periodWeightedUs": 203000,
+          "periodWeightedFraction": 0.019145524851457135
+        },
+        {
+          "owner": "constructor_exists",
+          "samples": 17,
+          "rawFraction": 0.015873015873015872,
+          "periodWeightedUs": 171000,
+          "periodWeightedFraction": 0.01612751108176931
+        }
+      ],
+      "families": {
+        "p88_": {
+          "samples": 187,
+          "periodWeightedFraction": 0.1741016693388663
+        },
+        "p111v_": {
+          "samples": 161,
+          "periodWeightedFraction": 0.1521267565783269
+        },
+        "index_": {
+          "samples": 237,
+          "periodWeightedFraction": 0.21984344053569743
+        },
+        "String.": {
+          "samples": 122,
+          "periodWeightedFraction": 0.11468452324813731
+        },
+        "nq_uses": {
+          "samples": 2,
+          "periodWeightedFraction": 0.0019805715363576345
+        },
+        "p126bp_": {
+          "samples": 1,
+          "periodWeightedFraction": 0.0007545034424219561
+        },
+        "p113pl_": {
+          "samples": 3,
+          "periodWeightedFraction": 0.003206639630293313
+        }
+      },
+      "topReclamationOwnerLeaves": [
+        {
+          "owner": "index_bucket",
+          "group": "reclamation",
+          "leaf": "term_drop",
+          "samples": 25,
+          "rawFraction": 0.02334267040149393,
+          "periodWeightedUs": 245000,
+          "periodWeightedFraction": 0.023106667924172403
+        },
+        {
+          "owner": "p111v_get",
+          "group": "reclamation",
+          "leaf": "span_fade",
+          "samples": 21,
+          "rawFraction": 0.0196078431372549,
+          "periodWeightedUs": 218000,
+          "periodWeightedFraction": 0.0205602188059983
+        },
+        {
+          "owner": "index_find",
+          "group": "reclamation",
+          "leaf": "term_drop",
+          "samples": 18,
+          "rawFraction": 0.01680672268907563,
+          "periodWeightedUs": 179000,
+          "periodWeightedFraction": 0.016882014524191268
+        },
+        {
+          "owner": "index_bucket",
+          "group": "reclamation",
+          "leaf": "span_fade",
+          "samples": 17,
+          "rawFraction": 0.015873015873015872,
+          "periodWeightedUs": 161000,
+          "periodWeightedFraction": 0.015184381778741865
+        },
+        {
+          "owner": "p111v_get",
+          "group": "reclamation",
+          "leaf": "term_drop",
+          "samples": 12,
+          "rawFraction": 0.011204481792717087,
+          "periodWeightedUs": 116000,
+          "periodWeightedFraction": 0.010940299915118364
+        },
+        {
+          "owner": "String.order",
+          "group": "reclamation",
+          "leaf": "term_drop",
+          "samples": 10,
+          "rawFraction": 0.009337068160597572,
+          "periodWeightedUs": 95000,
+          "periodWeightedFraction": 0.008959728378760728
+        },
+        {
+          "owner": "index_find",
+          "group": "reclamation",
+          "leaf": "span_fade",
+          "samples": 9,
+          "rawFraction": 0.008403361344537815,
+          "periodWeightedUs": 92000,
+          "periodWeightedFraction": 0.008676789587852495
+        },
+        {
+          "owner": "p88_string_eq",
+          "group": "reclamation",
+          "leaf": "term_drop",
+          "samples": 8,
+          "rawFraction": 0.007469654528478058,
+          "periodWeightedUs": 89000,
+          "periodWeightedFraction": 0.008393850796944262
+        }
+      ]
+    }
+  ],
+  "eventSummary": [
+    {
+      "workload": "lexer",
+      "variant": "phase125",
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase127/owner-survey01/events-000-lexer-phase125.json",
+        "bytes": 1516804,
+        "sha256": "2e7dbb7e3ac394745eda98d7597cec17cb0f583ef06c49a68039d22effc7dde8"
+      },
+      "totals": {
+        "dispatches": 26127698,
+        "heap_alloc_calls": 23968375,
+        "heap_alloc_miss_calls": 1777,
+        "heap_free_calls": 23968375,
+        "heap_alloc_requested_words": 48476083,
+        "heap_free_words": 48476083,
+        "term_keep_calls": 10429514,
+        "term_sink_calls": 34819421,
+        "term_drop_calls": 35669144,
+        "ctr_take_calls": 39969157,
+        "frame_push_calls": 44381,
+        "frame_capture_words": 48520,
+        "return_calls": 11019623,
+        "primitive_calls": 6120445,
+        "register_words_copy_requested": 53179747,
+        "register_words_clear_requested": 0
+      },
+      "quality": {
+        "usableCounts": true,
+        "complete": true,
+        "counts_enabled": true,
+        "counter_overflow": false,
+        "invalid_context_events": 0,
+        "global_context_scope": "one-active-dispatch-thread-only"
+      }
+    },
+    {
+      "workload": "lexer",
+      "variant": "phase126",
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase127/owner-survey01/events-001-lexer-phase126.json",
+        "bytes": 1561455,
+        "sha256": "cd19d14a0bc89699dfadefc2d53fefb8f3e5dec05c186ced8f6ac5f81a0e5483"
+      },
+      "totals": {
+        "dispatches": 25617860,
+        "heap_alloc_calls": 24563699,
+        "heap_alloc_miss_calls": 1553,
+        "heap_free_calls": 24563699,
+        "heap_alloc_requested_words": 49480080,
+        "heap_free_words": 49480080,
+        "term_keep_calls": 10676041,
+        "term_sink_calls": 35531355,
+        "term_drop_calls": 36361134,
+        "ctr_take_calls": 40679079,
+        "frame_push_calls": 69665,
+        "frame_capture_words": 74034,
+        "return_calls": 11189894,
+        "primitive_calls": 6258731,
+        "register_words_copy_requested": 51460743,
+        "register_words_clear_requested": 614487605
+      },
+      "quality": {
+        "usableCounts": true,
+        "complete": true,
+        "counts_enabled": true,
+        "counter_overflow": false,
+        "invalid_context_events": 0,
+        "global_context_scope": "one-active-dispatch-thread-only"
+      }
+    },
+    {
+      "workload": "coverage-closures-256",
+      "variant": "phase126",
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase127/owner-survey01/events-002-coverage-closures-256-phase126.json",
+        "bytes": 1505913,
+        "sha256": "b578c89e087990c9a7ed484edff0f8b42c9ad97021c60f5ed345f5e077a30ea7"
+      },
+      "totals": {
+        "dispatches": 9914279,
+        "heap_alloc_calls": 9531984,
+        "heap_alloc_miss_calls": 1180,
+        "heap_free_calls": 9531984,
+        "heap_alloc_requested_words": 19644313,
+        "heap_free_words": 19644313,
+        "term_keep_calls": 2188144,
+        "term_sink_calls": 5779013,
+        "term_drop_calls": 4951053,
+        "ctr_take_calls": 9354680,
+        "frame_push_calls": 29186,
+        "frame_capture_words": 29777,
+        "return_calls": 4290192,
+        "primitive_calls": 2242059,
+        "register_words_copy_requested": 20955098,
+        "register_words_clear_requested": 236753496
+      },
+      "quality": {
+        "usableCounts": true,
+        "complete": true,
+        "counts_enabled": true,
+        "counter_overflow": false,
+        "invalid_context_events": 0,
+        "global_context_scope": "one-active-dispatch-thread-only"
+      }
+    },
+    {
+      "workload": "coverage-closures-256",
+      "variant": "phase125",
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase127/owner-survey01/events-003-coverage-closures-256-phase125.json",
+        "bytes": 1422031,
+        "sha256": "4c9ee11243dd2a63ca8c6a06ecb0174e90b97c72e32161257d01aeecef9f1b7e"
+      },
+      "totals": {
+        "dispatches": 9961769,
+        "heap_alloc_calls": 9279820,
+        "heap_alloc_miss_calls": 1193,
+        "heap_free_calls": 9279820,
+        "heap_alloc_requested_words": 19161981,
+        "heap_free_words": 19161981,
+        "term_keep_calls": 2079028,
+        "term_sink_calls": 5400232,
+        "term_drop_calls": 4511400,
+        "ctr_take_calls": 8877679,
+        "frame_push_calls": 23225,
+        "frame_capture_words": 23794,
+        "return_calls": 4209284,
+        "primitive_calls": 2172386,
+        "register_words_copy_requested": 21183352,
+        "register_words_clear_requested": 0
+      },
+      "quality": {
+        "usableCounts": true,
+        "complete": true,
+        "counts_enabled": true,
+        "counter_overflow": false,
+        "invalid_context_events": 0,
+        "global_context_scope": "one-active-dispatch-thread-only"
+      }
+    },
+    {
+      "workload": "coverage-map-churn-128",
+      "variant": "phase125",
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase127/owner-survey01/events-004-coverage-map-churn-128-phase125.json",
+        "bytes": 1578419,
+        "sha256": "58e5076142a3b56ca3912bda5ce1f251282ee7326aa081d474e56d82ee594951"
+      },
+      "totals": {
+        "dispatches": 35809151,
+        "heap_alloc_calls": 32337669,
+        "heap_alloc_miss_calls": 2079,
+        "heap_free_calls": 32337669,
+        "heap_alloc_requested_words": 59942730,
+        "heap_free_words": 59942730,
+        "term_keep_calls": 19152594,
+        "term_sink_calls": 57174306,
+        "term_drop_calls": 43932343,
+        "ctr_take_calls": 50855113,
+        "frame_push_calls": 84902,
+        "frame_capture_words": 89126,
+        "return_calls": 14833936,
+        "primitive_calls": 9173946,
+        "register_words_copy_requested": 69622521,
+        "register_words_clear_requested": 0
+      },
+      "quality": {
+        "usableCounts": true,
+        "complete": true,
+        "counts_enabled": true,
+        "counter_overflow": false,
+        "invalid_context_events": 0,
+        "global_context_scope": "one-active-dispatch-thread-only"
+      }
+    },
+    {
+      "workload": "coverage-map-churn-128",
+      "variant": "phase126",
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase127/owner-survey01/events-005-coverage-map-churn-128-phase126.json",
+        "bytes": 1638873,
+        "sha256": "8d4956b9487d03aa39ab28aee5bce7af4b3c3ccc40bdd7ed6fdbd2dc9e554707"
+      },
+      "totals": {
+        "dispatches": 39609460,
+        "heap_alloc_calls": 38187070,
+        "heap_alloc_miss_calls": 3383,
+        "heap_free_calls": 38187070,
+        "heap_alloc_requested_words": 70295499,
+        "heap_free_words": 70295499,
+        "term_keep_calls": 24039429,
+        "term_sink_calls": 72005276,
+        "term_drop_calls": 54141955,
+        "ctr_take_calls": 60739560,
+        "frame_push_calls": 216286,
+        "frame_capture_words": 226321,
+        "return_calls": 17284627,
+        "primitive_calls": 10065715,
+        "register_words_copy_requested": 74902710,
+        "register_words_clear_requested": 954732702
+      },
+      "quality": {
+        "usableCounts": true,
+        "complete": true,
+        "counts_enabled": true,
+        "counter_overflow": false,
+        "invalid_context_events": 0,
+        "global_context_scope": "one-active-dispatch-thread-only"
+      }
+    }
+  ],
+  "limitations": [
+    "Diagnostic runtime contexts are not clean timing measurements.",
+    "Active-dispatch ownership does not reveal allocation creation sites or erased source ancestry.",
+    "Event counts and CPU samples have different denominators and should not be compared as equivalent costs.",
+    "Fixed sampling periods can alias; raw and period-weighted results are both retained.",
+    "Private synchronous calls retain the active outer dispatch; known contexts can still hide inner functions.",
+    "Native FID binding is checked against every linked table pointer; lexical owners remain conditional on emitter provenance.",
+    "Raw ordered samples and sidecars remain in their original pinned captures; no duplicate event streams are written."
+  ]
+}

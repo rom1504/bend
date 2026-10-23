@@ -18,6 +18,13 @@ import analyze
 UNKNOWN = 2**32 - 1
 
 
+def pinned_text(path):
+    """Hash the exact bytes that are parsed, including ordered sample vectors."""
+    path = Path(path).resolve()
+    data = path.read_bytes()
+    return data.decode(), {"file": str(path), "bytes": len(data), "sha256": hashlib.sha256(data).hexdigest()}
+
+
 def checked_pin(identity):
     actual = analyze.pin(identity["file"])
     if actual["sha256"] != identity["sha256"] or actual["bytes"] != identity["bytes"]:
@@ -205,6 +212,8 @@ def bind_owners(owner_map, binary):
         expected = {0: 11101, 8: 192, 16: abi["segment_count"], 32: abi["main_fid"], 96: table}
         if any(word(desc + offset) != value for offset, value in expected.items()):
             raise ValueError("ELF descriptor does not match owner map")
+        runtime_descriptor = {"capabilities": word(desc + 88),
+                              "registerWidth": word(desc + 48), "resultWidth": word(desc + 56)}
         fids = owner_map["fids"]
         if len(fids) != abi["segment_count"] or any(row["fid"] != i for i, row in enumerate(fids)):
             raise ValueError("Owner FIDs are not the exact descriptor sequence")
@@ -217,6 +226,9 @@ def bind_owners(owner_map, binary):
     linked_fids = [{**row, "elfAddress": symbols[row["symbol"]]} for row in fids]
     return functions, linked_fids, {"kind": "exact-ELF-segment-table-pointers", "checkedFids": len(fids),
                               "checkedFunctionSymbols": len(functions),
+                              "runtimeDescriptor": runtime_descriptor,
+                              "liveRegisterBank": bool(runtime_descriptor["capabilities"] & 4),
+                              "ownerMapCapabilities": abi.get("capabilities"),
                               "elfType": struct.unpack_from("<H", elf, 16)[0],
                               "producerProvenanceVerified": False,
                               "lexicalOwnerConditionalOnEmitterContract": True}
@@ -226,25 +238,38 @@ def receipt_binding(analysis_path, identities):
     candidate = analysis_path.parent.parent / "report.json"
     if not candidate.is_file():
         return {"verified": False, "reason": "No enclosing run receipt; vector pairing is structural only"}
-    document = json.loads(candidate.read_text())
+    text, receipt_pin = pinned_text(candidate)
+    document = json.loads(text)
+    if document.get("schema") != "bend-native-profile-run-v1":
+        return {"verified": False, "reason": "Enclosing report is not a native profiler run receipt"}
+    if document.get("complete") is not True or document.get("changedInputs"):
+        raise ValueError("Incomplete or changed-input capture receipt")
     matches = [r for r in document.get("rows", []) if r.get("analysis", {}).get("file") == str(analysis_path)]
     if not matches:
-        return {"verified": False, "reason": "Enclosing receipt does not identify this analysis"}
+        raise ValueError("Capture receipt does not identify this analysis")
     if len(matches) != 1:
         raise ValueError("Ambiguous capture receipt")
     row = matches[0]
     for key, identity in identities.items():
+        if key == "binary":
+            pins = [p for p in document.get("inputs", []) if p.get("file") == identity["file"]]
+            if not pins or any(p["sha256"] != identity["sha256"] for p in pins):
+                raise ValueError("Capture receipt does not authenticate the binary")
+            continue
         wanted = "profile" if key == "capture" else key
         expected = row.get(wanted)
         if not expected or expected["sha256"] != identity["sha256"] or expected["file"] != identity["file"]:
             raise ValueError("Sidecar/capture receipt identity mismatch: " + key)
-    return {"verified": True, "receipt": analyze.pin(candidate), "workload": row.get("workload"),
+    return {"verified": True, "receipt": receipt_pin, "workload": row.get("workload"),
             "variant": row.get("variant"), "round": row.get("round"), "correct": row.get("correct")}
 
 
-def attribute(analysis_path, callers_path, table_path, contexts_path=None, owners_path=None):
-    analysis_path, callers_path, table_path = (Path(p).resolve() for p in (analysis_path, callers_path, table_path))
-    analysis = json.loads(analysis_path.read_text())
+def attribute(analysis_path, callers_path=None, table_path=None, contexts_path=None, owners_path=None):
+    if bool(callers_path) != bool(table_path):
+        raise ValueError("Physical caller attribution requires --callers and --table together")
+    analysis_path = Path(analysis_path).resolve()
+    analysis_text, analysis_pin = pinned_text(analysis_path)
+    analysis = json.loads(analysis_text)
     capture = checked_pin(analysis["identities"]["capture"])
     binary = checked_pin(analysis["identities"]["binary"])
     header, maps, counts = analyze.parse_capture(capture["file"])
@@ -253,32 +278,40 @@ def attribute(analysis_path, callers_path, table_path, contexts_path=None, owner
     expected_counts = {int(row["pc"], 16): row["samples"] for row in analysis["pcs"]}
     if len(expected_counts) != len(analysis["pcs"]) or dict(counts) != expected_counts:
         raise ValueError("Analysis PC histogram does not match raw capture")
-    lines = Path(capture["file"]).read_text().splitlines()
+    capture_text, raw_pin = pinned_text(capture["file"])
+    if raw_pin != capture:
+        raise ValueError("Ordered raw capture changed during attribution")
+    lines = capture_text.splitlines()
     pcs = [int(line, 16) for line in lines[lines.index("PCS") + 1:-1]]
-    caller_header, callers = parse_callers(callers_path.read_text())
-    table = json.loads(table_path.read_text())
-    validate_table(table, caller_header)
-    checked_pin(table["object"])
-    if caller_header["samples"] != len(pcs):
-        raise ValueError("Caller/capture sample count mismatch")
-    identities = {"analysis": analyze.pin(analysis_path), "callers": analyze.pin(callers_path),
-                  "capture": capture}
+    table, table_pin, callers = None, None, [(UNKNOWN, 0)] * len(pcs)
+    identities = {"analysis": analysis_pin, "capture": capture, "binary": binary}
+    if callers_path:
+        caller_text, identities["callers"] = pinned_text(callers_path)
+        caller_header, callers = parse_callers(caller_text)
+        table_text, table_pin = pinned_text(table_path)
+        table = json.loads(table_text)
+        validate_table(table, caller_header)
+        checked_pin(table["object"])
+        if caller_header["samples"] != len(pcs):
+            raise ValueError("Caller/capture sample count mismatch")
     context_header, contexts = None, [UNKNOWN] * len(pcs)
     if contexts_path:
         contexts_path = Path(contexts_path).resolve()
-        context_header, contexts = parse_contexts(contexts_path.read_text())
+        context_text, identities["contexts"] = pinned_text(contexts_path)
+        context_header, contexts = parse_contexts(context_text)
         if len(contexts) != len(pcs):
             raise ValueError("Context/capture sample count mismatch")
-        identities["contexts"] = analyze.pin(contexts_path)
     pairing = receipt_binding(analysis_path, identities)
-    identities.update(table=analyze.pin(table_path), binary=binary, tool=analyze.pin(__file__),
+    identities.update(tool=analyze.pin(__file__),
                       dependencies=[analyze.pin(analyze.__file__), analyze.pin(analyze.DEPENDENCY)])
+    if table_pin:
+        identities["table"] = table_pin
     resolver = Resolver(maps, analysis["identities"]["mapped_objects"])
     functions, fids, binding = {}, [], None
     if owners_path:
         owners_path = Path(owners_path).resolve()
-        functions, fids, binding = bind_owners(json.loads(owners_path.read_text()), binary["file"])
-        identities["owners"] = analyze.pin(owners_path)
+        owner_text, identities["owners"] = pinned_text(owners_path)
+        functions, fids, binding = bind_owners(json.loads(owner_text), binary["file"])
 
     def ownership(resolved):
         row = functions.get(resolved.get("symbol")) if resolved.get("objectSha256") == binary["sha256"] else None
@@ -295,10 +328,11 @@ def attribute(analysis_path, callers_path, table_path, contexts_path=None, owner
         return cache[pc]
     for number, (pc, (rule, address), fid) in enumerate(zip(pcs, callers, contexts)):
         leaf = resolve(pc)
-        eligible = leaf.get("objectSha256") == table["object"]["sha256"] and any(
+        eligible = table is not None and leaf.get("objectSha256") == table["object"]["sha256"] and any(
             r["start"] <= leaf["elfAddress"] < r["end"] for r in table["rows"] if leaf["elfAddress"] is not None)
         totals["eligibleLeafSamples"] += bool(eligible)
-        validate_applied_rule(rule, leaf, table)
+        if table is not None:
+            validate_applied_rule(rule, leaf, table)
         caller = resolve(address - 1) if rule != UNKNOWN else None
         totals["recoveredCallerSamples"] += caller is not None
         totals["symbolizedCallerSamples"] += caller is not None and caller["symbol"] is not None
@@ -320,7 +354,8 @@ def attribute(analysis_path, callers_path, table_path, contexts_path=None, owner
             context_leaves[(context.get("fid"), context.get("loweredOwner"),
                             leaf["object"], leaf["symbol"], leaf.get("loweredOwner"))] += 1
         event = {"sample": number, "leaf": leaf, "unwindRule": None if rule == UNKNOWN else rule,
-                 "returnAddress": hex(address) if address else None, "caller": caller}
+                 "returnAddress": hex(address) if address else None, "caller": caller,
+                 "callerStatus": "unavailable" if table is None else "recovered" if caller else "unknown"}
         if contexts_path:
             event["dispatchContext"] = context
         events.append(event)
@@ -334,7 +369,9 @@ def attribute(analysis_path, callers_path, table_path, contexts_path=None, owner
     totals["eligibleWithoutCallerSamples"] = totals["eligibleLeafSamples"] - totals["recoveredCallerSamples"]
     quality = analyze.capture_quality(header)
     result = {"schema": "bend-physical-attribution-v1", "identities": identities,
-              "pairing": pairing, "unwindId": table["id"], "ownerBinding": binding,
+              "pairing": pairing, "unwindId": table["id"] if table else None, "ownerBinding": binding,
+              "physicalCallerAttribution": {"available": table is not None,
+                  "reason": "CFI sidecar supplied" if table else "No physical-caller sidecar/table supplied"},
               "coverage": dict(totals), "quality": quality, "contextHeader": context_header,
               "matrix": [{"leafObject": key[0], "leafSymbol": key[1], "unwindRule": key[2],
                           "callerObject": key[3], "callerSymbol": key[4], "callerLoweredOwner": key[5],
@@ -372,6 +409,7 @@ def aggregate_events(document, fids, binding):
     if not names or len(set(names)) != len(names) or any(not isinstance(n, str) or not n for n in names):
         raise ValueError("Invalid or duplicate runtime-event counter names")
     grouped, totals, seen, biases = {}, collections.Counter(), set(), set()
+    entries = []
     for row in document["rows"]:
         fid, values = row["fid"], row["counts"]
         if type(fid) is not int or fid in seen or not (0 <= fid < count + runtime_count or fid == UNKNOWN):
@@ -386,6 +424,12 @@ def aggregate_events(document, fids, binding):
             biases.add(address - fids[fid]["elfAddress"])
             owner = fids[fid].get("lowered_owner")
             kind = "lowered_owner" if owner is not None else "unowned_program_segment"
+            role = fids[fid].get("role")
+            if role in ("direct_segment", "named_factory") and "dispatches" in names:
+                dispatches = values[names.index("dispatches")]
+                if dispatches:
+                    entries.append({"fid": fid, "symbol": fids[fid].get("symbol"),
+                                    "loweredOwner": owner, "role": role, "dispatches": dispatches})
         else:
             if address != 0:
                 raise ValueError("Non-program event has a segment address")
@@ -410,6 +454,7 @@ def aggregate_events(document, fids, binding):
                   for group in sorted(groups, key=lambda g: g["counts"][name], reverse=True)[:25]
                   if group["counts"][name]] for name in names}
     return {"totals": dict(totals), "owners": groups, "topOwnersPerCounter": top,
+            "entrySegmentDispatches": sorted(entries, key=lambda r: r["dispatches"], reverse=True),
             "coverage": {"observedFids": len(seen), "descriptorFids": count,
                          "observedOwnerGroups": len(groups), "eventAddressLoadBias": next(iter(biases)) if biases else None},
             "quality": {"usableCounts": good, **{key: document.get(key) for key in
@@ -418,17 +463,25 @@ def aggregate_events(document, fids, binding):
 
 def attribute_events(events_path, binary_path, owners_path):
     events_path, binary_path, owners_path = (Path(p).resolve() for p in (events_path, binary_path, owners_path))
-    identities = {"events": analyze.pin(events_path), "binary": analyze.pin(binary_path),
-                  "owners": analyze.pin(owners_path), "tool": analyze.pin(__file__),
+    event_text, event_pin = pinned_text(events_path)
+    owner_text, owner_pin = pinned_text(owners_path)
+    identities = {"events": event_pin, "binary": analyze.pin(binary_path),
+                  "owners": owner_pin, "tool": analyze.pin(__file__),
                   "dependencies": [analyze.pin(analyze.__file__), analyze.pin(analyze.DEPENDENCY)]}
-    document = json.loads(events_path.read_text())
-    _, fids, binding = bind_owners(json.loads(owners_path.read_text()), binary_path)
+    document = json.loads(event_text)
+    _, fids, binding = bind_owners(json.loads(owner_text), binary_path)
     result = aggregate_events(document, fids, binding)
     receipt_path = events_path.parent.parent / "report.json"
     pairing = {"verified": False, "reason": "No matching external event receipt"}
     if receipt_path.is_file():
-        receipt = json.loads(receipt_path.read_text())
+        receipt_text, receipt_pin = pinned_text(receipt_path)
+        receipt = json.loads(receipt_text)
         rows = [row for row in receipt.get("rows", []) if row.get("events", {}).get("file") == str(events_path)]
+        recognized = receipt.get("schema") == "bend-native-profile-run-v1"
+        if recognized and (receipt.get("complete") is not True or receipt.get("changedInputs") or not rows):
+            raise ValueError("Incomplete, changed-input or mismatching event receipt")
+        if rows and not recognized:
+            raise ValueError("Unrecognized event receipt schema")
         if rows:
             row = rows[0]
             if (len(rows) != 1 or row["events"]["sha256"] != identities["events"]["sha256"] or
@@ -437,25 +490,32 @@ def attribute_events(events_path, binary_path, owners_path):
             binary_pins = [p for p in receipt.get("inputs", []) if p.get("file") == str(binary_path)]
             if not binary_pins or any(p["sha256"] != identities["binary"]["sha256"] for p in binary_pins):
                 raise ValueError("Event receipt does not authenticate the binary")
-            pairing = {"verified": True, "receipt": analyze.pin(receipt_path), "workload": row.get("workload"),
+            pairing = {"verified": True, "receipt": receipt_pin, "workload": row.get("workload"),
                        "variant": row.get("variant"), "correct": row.get("correct")}
     return {"schema": "bend-runtime-owner-attribution-v1", "identities": identities,
             "ownerBinding": binding, "pairing": pairing, **result,
             "limitations": document.get("limitations", []) + [
                 "Counts are attributed to active dispatch execution context, not object creation or logical ancestry.",
                 "Synchronous private calls retain the outer dispatch; inlined operations can bypass hooks.",
+                "Entry-segment dispatch counts are observed runtime entries, not all source invocations: private calls and inlining may bypass them.",
                 "Each counter has its own all-event denominator; unknown and runtime FIDs are retained.",
                 "Linked segment pointers/FIDs are exact; lexical owners still depend on the emitter contract.",
                 "Counts are diagnostic event volumes, not CPU-time shares or demonstrated optimization savings."]}
 
 
 def main():
-    parser = argparse.ArgumentParser(description=__doc__)
+    parser = argparse.ArgumentParser(description=__doc__, epilog=(
+        "Samples: --analysis FILE [--contexts FILE] [--owners FILE] "
+        "[--callers FILE --table FILE] --out FRESH. "
+        "Runtime events: --events FILE --binary ELF --owners FILE --out FRESH. "
+        "Dispatch/owner attribution does not require a physical-caller sidecar."))
     for name in ("analysis", "callers", "table", "events", "binary"):
         parser.add_argument("--" + name, type=Path)
     parser.add_argument("--out", type=Path, required=True)
     parser.add_argument("--contexts", type=Path)
     parser.add_argument("--owners", type=Path)
+    parser.add_argument("--summary-only", action="store_true",
+                        help="Keep aggregate matrices; raw ordered vectors already remain in the capture")
     args = parser.parse_args()
     try:
         if args.out.exists():
@@ -466,11 +526,11 @@ def main():
             report = attribute_events(args.events, args.binary, args.owners)
             events = None
         else:
-            if not all((args.analysis, args.callers, args.table)) or args.binary:
-                raise ValueError("Sample mode requires --analysis --callers --table")
+            if not args.analysis or args.binary:
+                raise ValueError("Sample mode requires --analysis; --callers/--table are optional together")
             report, events = attribute(args.analysis, args.callers, args.table, args.contexts, args.owners)
         args.out.mkdir(parents=True)
-        if events is not None:
+        if events is not None and not args.summary_only:
             event_path = args.out / "events.jsonl"
             with event_path.open("x") as stream:
                 for event in events:

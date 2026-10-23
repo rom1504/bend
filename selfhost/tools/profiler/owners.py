@@ -100,7 +100,11 @@ def descriptor(block):
     count, main = int(values[2]), int(values[4])
     if count > 65532 or (count and main >= count):
         raise ValueError("Descriptor FIDs exceed supported bounds")
-    return dict(magic=11101, bytes=192, segment_count=count, main_fid=main)
+    if any(not values[i].isdigit() for i in (6,7,11)):
+        raise ValueError('Nonliteral runtime transport descriptor')
+    return dict(magic=11101, bytes=192, segment_count=count, main_fid=main,
+                register_width=int(values[6]), result_width=int(values[7]),
+                capabilities=int(values[11]))
 
 
 def group_fids(fids):

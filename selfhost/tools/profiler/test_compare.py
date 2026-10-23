@@ -168,6 +168,22 @@ class Reports(unittest.TestCase):
         a=self.build('a')
         with self.assertRaisesRegex(ValueError,'Duplicate run report'):C.summarize_reports([a,a])
 
+    def test_context_only_and_counter_overheads_are_not_pooled(self):
+        a=self.build('a',variant='base',clean_cpu=2)
+        d=self.build('d',variant='diagnostic',diagnostic=True,clean_cpu=4)
+        document=json.loads(d.read_text()); row=copy.deepcopy(document['rows'][0])
+        row.update(mode='events',wallSeconds=8,cpuSeconds=8)
+        events=d.with_name('events.json');events.write_text(json.dumps(dict(
+            schema='bend-native-dispatch-events-v1',complete=True,counts_enabled=True,
+            counter_overflow=False,invalid_context_events=0,counter_names=['calls'],
+            rows=[dict(fid=0,counts=[3])])))
+        row['events']=C.pin(events);document['rows'].append(row);d.write_text(json.dumps(document))
+        diag=C.summarize_reports([a,d],baseline_variants={'diagnostic':'base'})['workloads']['work']['diagnostic']
+        self.assertEqual(diag['contextOnlyOverCleanWallRatio'],2)
+        self.assertEqual(diag['countersOverCleanWallRatio'],4)
+        self.assertIsNone(diag['diagnosticOverCleanWallRatio'])
+        self.assertEqual(diag['diagnosticUnsampled']['wallSeconds']['count'],0)
+
     def test_changed_analysis_is_rejected(self):
         a=self.build('a');r=json.loads(a.read_text());path=Path(r['rows'][1]['analysis']['file'])
         path.write_text(path.read_text()+' ')

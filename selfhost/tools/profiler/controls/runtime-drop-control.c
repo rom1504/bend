@@ -1,0 +1,67 @@
+/* Independently specified small ABI program. Source-frozen before first run.
+ * Exercises a boxed constructor and three-segment continuation, not a compiler. */
+#include "runtime.h"
+#include "primitives.h"
+#include <stdio.h>
+#include <stdlib.h>
+
+static void expect(int good) {
+  if (!good) { fputs("counter-control: wrong value\n", stderr); exit(2); }
+}
+static uint64_t first(P111State *s) {
+  uint64_t operands[] = {7, 5};
+  uint64_t sum = p111_rt_op(s, P111_OP_U32_ADD, operands, 2);
+  expect(sum == 12);
+  uint64_t retained = p111_rt_keep(s, sum);
+  p111_rt_sink(s, retained);
+  /* One drop entry traverses and frees two uniquely owned Tuple cells.
+   * Primitive fields are trivial; no nested term_drop call is needed. */
+  uint64_t abandoned_inner_fields[] = {sum, 3};
+  uint64_t abandoned_inner = p111_rt_ctor(s, 6, abandoned_inner_fields, 2);
+  uint64_t abandoned_outer_fields[] = {abandoned_inner, 7};
+  uint64_t abandoned_outer = p111_rt_ctor(s, 6, abandoned_outer_fields, 2);
+  p111_rt_sink(s, abandoned_outer);
+  uint64_t values[] = {sum, 3}, fields[2];
+  uint64_t tuple = p111_rt_ctor(s, 6, values, 2);
+  expect(p111_rt_tag(s, tuple) == 6);
+  p111_rt_take(s, tuple, fields, 2);
+  expect(fields[0] == 12 && fields[1] == 3);
+  uint64_t capture = 9;
+  p111_rt_frame(s, 2, &capture, 1);
+  return p111_rt_jump(s, 1, fields, 2);
+}
+static uint64_t second(P111State *s) {
+  uint64_t values[] = {p111_rt_reg_get(s, 0), p111_rt_reg_get(s, 1)};
+  uint64_t result = p111_rt_op(s, P111_OP_U32_MUL, values, 2);
+  expect(result == 36);
+  return p111_rt_return(s, &result, 1);
+}
+static uint64_t continuation(P111State *s) {
+  expect(s->rn == 1);
+  uint64_t result = p111_rt_reg_get(s, 0);
+  p111_rt_stack_pop(s, 1);
+  uint64_t capture = p111_rt_stack_get(s, 0);
+  expect(result == 36 && capture == 9);
+  result += capture;
+  return p111_rt_return(s, &result, 1);
+}
+static const P111Segment segments[] = {first, second, continuation};
+static const uint8_t arity[] = {0,2,2}, flags[] = {2,2,3}, results[] = {0,0,1};
+static const uint8_t ctor_arity[] = {0,2,0,2,0,2,2,0,0,1,1,1,1,2,0,0,0,0};
+static const uint8_t ctor_hot[] = {0,1,0,1,0,1,1,0,0,1,1,1,1,1,0,0,0,0};
+static const char *const ctor_names[] = {
+  "SNil","SCon","WNil","WCon","Nil","Con","Tuple","Unit",
+  "None","Some","Fail","Done","Emit","Halt","True","LT","EQ","GT"};
+static const uint64_t static_image[] = {0};
+static const uint32_t show[] = {0};
+static const char *const show_names[] = {"U32"};
+static const P111Program program = {
+  P111_ABI_VERSION,sizeof(P111Program),3,18,0,1,2,1,0,1,1,P111_SEQUENTIAL,
+  segments,arity,flags,results,ctor_arity,ctor_hot,ctor_names,static_image,
+  show,show_names,0,NULL
+};
+int main(int argc, char **argv) {
+  (void)argc;
+  char *runtime_argv[] = {argv[0], "--threads", "1", "--gpu", "off", NULL};
+  return p111_rt_main(5, runtime_argv, &program);
+}

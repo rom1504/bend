@@ -1,0 +1,810 @@
+{
+  "scope": "Static retained source/QBE/machine inspection; no target execution. Call counts count textual call sites, not dynamic frequency.",
+  "qbeFile": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p126-native32-full-emit/program.ssa",
+  "functions": [
+    {
+      "symbol": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_83_116_114_105_110_103_46_99_109_112_",
+      "decoded": "$p118borrow.read.String.cmp",
+      "qbeStartLine": 1,
+      "qbeLines": 124,
+      "calls": {
+        "p111_rt_ctor": 5,
+        "p118_rt_borrow_fields": 3,
+        "p111_rt_fail": 6,
+        "p111_rt_op": 1
+      },
+      "excerpt": [
+        "16:%v_value =l call $p111_rt_ctor(l %state, w 4, l %v_scratch, w 0)",
+        "25:%v_p118b_read_status =l call $p118_rt_borrow_fields(l %state, l %v_v_4294967294, l %v_scratch, w 25, w 2)",
+        "29:%v_value =l call $p111_rt_ctor(l %state, w 3, l %v_scratch, w 0)",
+        "33:%v_ignored =l call $p111_rt_fail(l %state, w 4)",
+        "41:%v_p118b_read_status =l call $p118_rt_borrow_fields(l %state, l %v_v_4294967295, l %v_scratch, w 25, w 2)",
+        "50:%v_value =l call $p111_rt_ctor(l %state, w 5, l %v_scratch, w 0)",
+        "59:%v_p118b_read_status =l call $p118_rt_borrow_fields(l %state, l %v_v_4294967294, l %v_scratch, w 25, w 2)",
+        "76:%v_value =l call $p111_rt_op(l %state, w 22, l %v_scratch, w 2)",
+        "84:%v_value =l call $p111_rt_ctor(l %state, w 3, l %v_scratch, w 0)",
+        "106:%v_value =l call $p111_rt_ctor(l %state, w 5, l %v_scratch, w 0)",
+        "110:%v_ignored =l call $p111_rt_fail(l %state, w 4)",
+        "113:%v_ignored =l call $p111_rt_fail(l %state, w 4)",
+        "116:%v_ignored =l call $p111_rt_fail(l %state, w 4)",
+        "119:%v_ignored =l call $p111_rt_fail(l %state, w 4)",
+        "122:%v_ignored =l call $p111_rt_fail(l %state, w 4)"
+      ],
+      "machineInstructions": 127,
+      "machineCalls": [
+        "404e13:\tcallq  da57d0 <p118_rt_borrow_fields>",
+        "404e68:\tcallq  da57d0 <p118_rt_borrow_fields>",
+        "404ea9:\tcallq  da0a30 <p111_rt_op>",
+        "404edc:\tcallq  da0a10 <p111_rt_fail>",
+        "404efc:\tcallq  da02b0 <p111_rt_ctor>",
+        "404f1b:\tcallq  da02b0 <p111_rt_ctor>",
+        "404f2a:\tcallq  da0a10 <p111_rt_fail>",
+        "404f4a:\tcallq  da02b0 <p111_rt_ctor>",
+        "404f59:\tcallq  da0a10 <p111_rt_fail>",
+        "404f79:\tcallq  da0a10 <p111_rt_fail>",
+        "404f9a:\tcallq  da57d0 <p118_rt_borrow_fields>",
+        "404fb3:\tcallq  da02b0 <p111_rt_ctor>",
+        "404fcb:\tcallq  da02b0 <p111_rt_ctor>"
+      ]
+    },
+    {
+      "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_56_56_95_115_116_114_105_110_103_95_101_113_95_103_111_",
+      "decoded": "$direct.p88_string_eq_go",
+      "qbeStartLine": 106814,
+      "qbeLines": 187,
+      "calls": {
+        "p125_rt_take2": 3,
+        "p111_rt_sink": 7,
+        "p111_rt_fail": 6,
+        "p111_rt_special_take": 2
+      },
+      "excerpt": [
+        "106851:%v_ignored =l call $p125_rt_take2(l %state, l %v_v_4294967282, l %v_scratch)",
+        "106855:%v_ignored =l call $p111_rt_sink(l %state, l %v_v_4294967277)",
+        "106858:%v_ignored =l call $p111_rt_fail(l %state, w 4)",
+        "106872:%v_ignored =l call $p125_rt_take2(l %state, l %v_v_4294967276, l %v_scratch)",
+        "106885:%v_ignored =l call $p111_rt_sink(l %state, l %v_v_4294967269)",
+        "106897:%v_ignored =l call $p125_rt_take2(l %state, l %v_v_4294967264, l %v_scratch)",
+        "106912:%v_ignored =l call $p111_rt_sink(l %state, l %v_v_4294967269)",
+        "106913:%v_ignored =l call $p111_rt_sink(l %state, l %v_v_4294967259)",
+        "106943:%v_p113i_0_local_ignored =l call $p111_rt_special_take(l %state, w 5, l %v_p113i_0_local_v_4294967293, l %v_p113i_0_local_scratch, w 1)",
+        "106950:%v_p113i_0_local_ignored =l call $p111_rt_special_take(l %state, w 5, l %v_p113i_0_local_v_4294967288, l %v_p113i_0_local_scratch, w 1)",
+        "106967:%v_p113i_0_local_ignored =l call $p111_rt_fail(l %state, w 4)",
+        "106974:%v_p113i_0_local_ignored =l call $p111_rt_fail(l %state, w 4)",
+        "106989:%v_ignored =l call $p111_rt_sink(l %state, l %v_v_4294967269)",
+        "106990:%v_ignored =l call $p111_rt_sink(l %state, l %v_v_4294967259)",
+        "106991:%v_ignored =l call $p111_rt_fail(l %state, w 4)",
+        "106994:%v_ignored =l call $p111_rt_sink(l %state, l %v_v_4294967269)",
+        "106995:%v_ignored =l call $p111_rt_fail(l %state, w 4)",
+        "106998:%v_ignored =l call $p111_rt_fail(l %state, w 4)"
+      ],
+      "machineInstructions": 154,
+      "machineCalls": [
+        "45dae7:\tcallq  da6dc0 <p125_rt_take2>",
+        "45db27:\tcallq  da6dc0 <p125_rt_take2>",
+        "45db95:\tcallq  da2480 <p111_rt_special_take>",
+        "45dbbc:\tcallq  da2480 <p111_rt_special_take>",
+        "45dbeb:\tcallq  da01c0 <p111_rt_sink>",
+        "45dbfc:\tcallq  da01c0 <p111_rt_sink>",
+        "45dc09:\tcallq  da0a10 <p111_rt_fail>",
+        "45dc1e:\tcallq  da01c0 <p111_rt_sink>",
+        "45dc2c:\tcallq  da01c0 <p111_rt_sink>",
+        "45dc3e:\tcallq  da01c0 <p111_rt_sink>",
+        "45dc4b:\tcallq  da0a10 <p111_rt_fail>",
+        "45dc57:\tcallq  da01c0 <p111_rt_sink>",
+        "45dc68:\tcallq  da0a10 <p111_rt_fail>",
+        "45dc91:\tcallq  da0a10 <p111_rt_fail>",
+        "45dca7:\tcallq  da6dc0 <p125_rt_take2>",
+        "45dcb6:\tcallq  da01c0 <p111_rt_sink>"
+      ]
+    },
+    {
+      "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_56_56_95_115_116_114_105_110_103_95_101_113_",
+      "decoded": "$direct.p88_string_eq",
+      "qbeStartLine": 107002,
+      "qbeLines": 29,
+      "calls": {
+        "p111_rt_keep": 2,
+        "p113d_FID_36_100_105_114_101_99_116_46_112_56_56_95_115_116_114_105_110_103_95_101_113_95_103_111_": 1,
+        "p111_rt_sink": 2
+      },
+      "excerpt": [
+        "107007:%v_v_4294967295 =l call $p111_rt_keep(l %state, l %v_v_4294967295)",
+        "107008:%v_v_4294967294 =l call $p111_rt_keep(l %state, l %v_v_4294967294)",
+        "107015:%v_p113p_call_11_0 =l call $p113d_FID_36_100_105_114_101_99_116_46_112_56_56_95_115_116_114_105_110_103_95_101_113_95_103_111_(l %state, l %v_v_4294967290, l %v_v_4294967289, l 1)",
+        "107025:%v_p113i_0_local_ignored =l call $p111_rt_sink(l %state, l %v_p113i_0_local_v_4294967294)",
+        "107026:%v_p113i_0_local_ignored =l call $p111_rt_sink(l %state, l %v_p113i_0_local_v_4294967293)"
+      ]
+    },
+    {
+      "symbol": "p113d_FID_36_100_105_114_101_99_116_46_104_97_115_95_110_97_109_101_95_110_101_120_116_",
+      "decoded": "$direct.has_name_next",
+      "qbeStartLine": 148499,
+      "qbeLines": 8,
+      "calls": {
+        "p113d_FID_36_112_49_50_54_115_99_99_46_51_48_48_57_": 1
+      },
+      "excerpt": [
+        "148504:%v_p126scc_result =l call $p113d_FID_36_112_49_50_54_115_99_99_46_51_48_48_57_(l %state, l 0, l %v_v_4294967295, l %v_v_4294967294, l %v_v_4294967293)"
+      ]
+    },
+    {
+      "symbol": "p113d_FID_36_100_105_114_101_99_116_46_104_97_115_95_110_97_109_101_",
+      "decoded": "$direct.has_name",
+      "qbeStartLine": 148508,
+      "qbeLines": 8,
+      "calls": {
+        "p113d_FID_36_112_49_50_54_115_99_99_46_51_48_48_57_": 1
+      },
+      "excerpt": [
+        "148513:%v_p126scc_result =l call $p113d_FID_36_112_49_50_54_115_99_99_46_51_48_48_57_(l %state, l 1, l %v_v_4294967295, l %v_v_4294967294, l 0)"
+      ],
+      "machineInstructions": 10,
+      "machineCalls": [
+        "482499:\tcallq  4822f0 <p113d_FID_36_112_49_50_54_115_99_99_46_51_48_48_57_>"
+      ]
+    },
+    {
+      "symbol": "p113d_FID_36_100_105_114_101_99_116_46_102_95_102_105_110_100_95_110_101_120_116_",
+      "decoded": "$direct.f_find_next",
+      "qbeStartLine": 205701,
+      "qbeLines": 8,
+      "calls": {
+        "p113d_FID_36_112_49_50_54_115_99_99_46_49_48_48_48_": 1
+      },
+      "excerpt": [
+        "205706:%v_p126scc_result =l call $p113d_FID_36_112_49_50_54_115_99_99_46_49_48_48_48_(l %state, l 0, l %v_v_4294967295, l %v_v_4294967294, l %v_v_4294967293, l %v_v_4294967292)"
+      ]
+    },
+    {
+      "symbol": "p113d_FID_36_100_105_114_101_99_116_46_102_95_102_105_110_100_",
+      "decoded": "$direct.f_find",
+      "qbeStartLine": 205710,
+      "qbeLines": 8,
+      "calls": {
+        "p113d_FID_36_112_49_50_54_115_99_99_46_49_48_48_48_": 1
+      },
+      "excerpt": [
+        "205715:%v_p126scc_result =l call $p113d_FID_36_112_49_50_54_115_99_99_46_49_48_48_48_(l %state, l 1, l %v_v_4294967295, l %v_v_4294967294, l 0, l 0)"
+      ],
+      "machineInstructions": 11,
+      "machineCalls": [
+        "4b606f:\tcallq  4b5de0 <p113d_FID_36_112_49_50_54_115_99_99_46_49_48_48_48_>"
+      ]
+    },
+    {
+      "symbol": "p112w_FID_36_100_105_114_101_99_116_46_112_56_56_95_115_116_114_105_110_103_95_101_113_95_103_111_",
+      "decoded": "$direct.p88_string_eq_go",
+      "qbeStartLine": 447566,
+      "qbeLines": 5,
+      "calls": {
+        "p113d_FID_36_100_105_114_101_99_116_46_112_56_56_95_115_116_114_105_110_103_95_101_113_95_103_111_": 1
+      },
+      "excerpt": [
+        "447568:%p113_forward =l call $p113d_FID_36_100_105_114_101_99_116_46_112_56_56_95_115_116_114_105_110_103_95_101_113_95_103_111_(l %state, l %v_v_4290960662, l %v_v_4290960661, l %v_v_4290960660)"
+      ]
+    },
+    {
+      "symbol": "p112w_FID_36_100_105_114_101_99_116_46_112_56_56_95_115_116_114_105_110_103_95_101_113_",
+      "decoded": "$direct.p88_string_eq",
+      "qbeStartLine": 449547,
+      "qbeLines": 5,
+      "calls": {
+        "p113d_FID_36_100_105_114_101_99_116_46_112_56_56_95_115_116_114_105_110_103_95_101_113_": 1
+      },
+      "excerpt": [
+        "449549:%p113_forward =l call $p113d_FID_36_100_105_114_101_99_116_46_112_56_56_95_115_116_114_105_110_103_95_101_113_(l %state, l %v_v_4290958546, l %v_v_4290958545)"
+      ]
+    },
+    {
+      "symbol": "p111_FID_36_100_105_114_101_99_116_46_102_95_102_105_110_100_95_110_101_120_116_",
+      "decoded": "$direct.f_find_next",
+      "qbeStartLine": 819220,
+      "qbeLines": 12,
+      "calls": {
+        "p111_rt_reg_get": 4,
+        "p113d_FID_36_100_105_114_101_99_116_46_102_95_102_105_110_100_95_110_101_120_116_": 1,
+        "p111_rt_return": 1
+      },
+      "excerpt": [
+        "819223:%p113_arg_0 =l call $p111_rt_reg_get(l %state, w 0)",
+        "819224:%p113_arg_1 =l call $p111_rt_reg_get(l %state, w 1)",
+        "819225:%p113_arg_2 =l call $p111_rt_reg_get(l %state, w 2)",
+        "819226:%p113_arg_3 =l call $p111_rt_reg_get(l %state, w 3)",
+        "819227:%p113_public_value =l call $p113d_FID_36_100_105_114_101_99_116_46_102_95_102_105_110_100_95_110_101_120_116_(l %state, l %p113_arg_0, l %p113_arg_1, l %p113_arg_2, l %p113_arg_3)",
+        "819229:%p113_public_reply =l call $p111_rt_return(l %state, l %p113_public_out, w 1)"
+      ]
+    },
+    {
+      "symbol": "p111_FID_36_100_105_114_101_99_116_46_102_95_102_105_110_100_",
+      "decoded": "$direct.f_find",
+      "qbeStartLine": 819287,
+      "qbeLines": 10,
+      "calls": {
+        "p111_rt_reg_get": 2,
+        "p113d_FID_36_100_105_114_101_99_116_46_102_95_102_105_110_100_": 1,
+        "p111_rt_return": 1
+      },
+      "excerpt": [
+        "819290:%p113_arg_0 =l call $p111_rt_reg_get(l %state, w 0)",
+        "819291:%p113_arg_1 =l call $p111_rt_reg_get(l %state, w 1)",
+        "819292:%p113_public_value =l call $p113d_FID_36_100_105_114_101_99_116_46_102_95_102_105_110_100_(l %state, l %p113_arg_0, l %p113_arg_1)",
+        "819294:%p113_public_reply =l call $p111_rt_return(l %state, l %p113_public_out, w 1)"
+      ]
+    },
+    {
+      "symbol": "p111_FID_36_100_105_114_101_99_116_46_104_97_115_95_110_97_109_101_95_110_101_120_116_",
+      "decoded": "$direct.has_name_next",
+      "qbeStartLine": 1561959,
+      "qbeLines": 11,
+      "calls": {
+        "p111_rt_reg_get": 3,
+        "p113d_FID_36_100_105_114_101_99_116_46_104_97_115_95_110_97_109_101_95_110_101_120_116_": 1,
+        "p111_rt_return": 1
+      },
+      "excerpt": [
+        "1561962:%p113_arg_0 =l call $p111_rt_reg_get(l %state, w 0)",
+        "1561963:%p113_arg_1 =l call $p111_rt_reg_get(l %state, w 1)",
+        "1561964:%p113_arg_2 =l call $p111_rt_reg_get(l %state, w 2)",
+        "1561965:%p113_public_value =l call $p113d_FID_36_100_105_114_101_99_116_46_104_97_115_95_110_97_109_101_95_110_101_120_116_(l %state, l %p113_arg_0, l %p113_arg_1, l %p113_arg_2)",
+        "1561967:%p113_public_reply =l call $p111_rt_return(l %state, l %p113_public_out, w 1)"
+      ]
+    },
+    {
+      "symbol": "p111_FID_36_100_105_114_101_99_116_46_104_97_115_95_110_97_109_101_",
+      "decoded": "$direct.has_name",
+      "qbeStartLine": 1562025,
+      "qbeLines": 10,
+      "calls": {
+        "p111_rt_reg_get": 2,
+        "p113d_FID_36_100_105_114_101_99_116_46_104_97_115_95_110_97_109_101_": 1,
+        "p111_rt_return": 1
+      },
+      "excerpt": [
+        "1562028:%p113_arg_0 =l call $p111_rt_reg_get(l %state, w 0)",
+        "1562029:%p113_arg_1 =l call $p111_rt_reg_get(l %state, w 1)",
+        "1562030:%p113_public_value =l call $p113d_FID_36_100_105_114_101_99_116_46_104_97_115_95_110_97_109_101_(l %state, l %p113_arg_0, l %p113_arg_1)",
+        "1562032:%p113_public_reply =l call $p111_rt_return(l %state, l %p113_public_out, w 1)"
+      ]
+    },
+    {
+      "symbol": "p111_FID_36_100_105_114_101_99_116_46_110_99_95_99_116_111_114_95_111_119_110_101_100_",
+      "decoded": "$direct.nc_ctor_owned",
+      "qbeStartLine": 2308252,
+      "qbeLines": 92,
+      "calls": {
+        "p111_rt_sink": 1,
+        "p111_rt_return": 1,
+        "p125_rt_take2": 1,
+        "p111_rt_keep": 1,
+        "p112w_FID_36_100_105_114_101_99_116_46_100_107_": 1,
+        "p111_rt_jump": 1,
+        "p111_rt_fail": 1
+      },
+      "excerpt": [
+        "2308267:%v_ignored =l call $p111_rt_sink(l %state, l %v_v_4291189230)",
+        "2308269:%v_reply =l call $p111_rt_return(l %state, l %v_scratch, w 1)",
+        "2308279:%v_ignored =l call $p125_rt_take2(l %state, l %v_v_4291189229, l %v_scratch)",
+        "2308283:%v_v_4291189227 =l call $p111_rt_keep(l %state, l %v_v_4291189227)",
+        "2308310:%v_p112f_0_result =l call $p112w_FID_36_100_105_114_101_99_116_46_100_107_(l %state, l %v_p112f_0_arg_0)",
+        "2308316:%v_p112f_0_local_reply =l call $p111_rt_jump(l %state, w 46480, l %v_p112f_0_local_scratch, w 2)",
+        "2308341:%v_reply =l call $p111_rt_fail(l %state, w 4)"
+      ]
+    },
+    {
+      "symbol": "p111_FID_36_100_105_114_101_99_116_46_110_98_95_99_111_110_116_97_105_110_115_",
+      "decoded": "$direct.nb_contains",
+      "qbeStartLine": 2430864,
+      "qbeLines": 10,
+      "calls": {
+        "p111_rt_reg_get": 2,
+        "p114r_FID_36_100_105_114_101_99_116_46_110_98_95_99_111_110_116_97_105_110_115_": 1,
+        "p111_rt_return": 1
+      },
+      "excerpt": [
+        "2430867:%p113_arg_0 =l call $p111_rt_reg_get(l %state, w 0)",
+        "2430868:%p113_arg_1 =l call $p111_rt_reg_get(l %state, w 1)",
+        "2430869:%p114r_outer_value =l call $p114r_FID_36_100_105_114_101_99_116_46_110_98_95_99_111_110_116_97_105_110_115_(l %state, l %p113_arg_0, l %p113_arg_1)",
+        "2430871:%p114r_outer_reply =l call $p111_rt_return(l %state, l %p114r_outer_out, w 1)"
+      ]
+    },
+    {
+      "symbol": "p114r_FID_36_100_105_114_101_99_116_46_110_98_95_99_111_110_116_97_105_110_115_",
+      "decoded": "$direct.nb_contains",
+      "qbeStartLine": 2430874,
+      "qbeLines": 160,
+      "calls": {
+        "p111_rt_sink": 1,
+        "p125_rt_take2": 1,
+        "p111_rt_keep": 1,
+        "p113d_FID_36_100_105_114_101_99_116_46_112_56_56_95_115_116_114_105_110_103_95_101_113_": 1,
+        "p111_rt_fail": 2,
+        "p111_rt_frame": 1,
+        "p111_rt_op": 1
+      },
+      "excerpt": [
+        "2430889:%v_ignored =l call $p111_rt_sink(l %state, l %v_v_4290977344)",
+        "2430900:%v_ignored =l call $p125_rt_take2(l %state, l %v_v_4290977343, l %v_scratch)",
+        "2430904:%v_v_4290977342 =l call $p111_rt_keep(l %state, l %v_v_4290977342)",
+        "2430931:%v_p114h_call_result =l call $p113d_FID_36_100_105_114_101_99_116_46_112_56_56_95_115_116_114_105_110_103_95_101_113_(l %state, l %v_p114h_arg_0, l %v_p114h_arg_1)",
+        "2430957:%v_reply =l call $p111_rt_fail(l %state, w 4)",
+        "2430982:%p114h_bad =l call $p111_rt_fail(l %state, w 4)",
+        "2431001:%v_p114h_case_0_local_ignored =l call $p111_rt_frame(l %state, w 46383, l %v_p114h_case_0_local_scratch, w 1)",
+        "2431030:%v_p114h_case_1_local_value =l call $p111_rt_op(l %state, w 68, l %v_p114h_case_1_local_scratch, w 2)"
+      ]
+    },
+    {
+      "symbol": "p111_FID_36_100_105_114_101_99_116_46_112_56_56_95_115_116_114_105_110_103_95_101_113_95_103_111_",
+      "decoded": "$direct.p88_string_eq_go",
+      "qbeStartLine": 2432282,
+      "qbeLines": 11,
+      "calls": {
+        "p111_rt_reg_get": 3,
+        "p113d_FID_36_100_105_114_101_99_116_46_112_56_56_95_115_116_114_105_110_103_95_101_113_95_103_111_": 1,
+        "p111_rt_return": 1
+      },
+      "excerpt": [
+        "2432285:%p113_arg_0 =l call $p111_rt_reg_get(l %state, w 0)",
+        "2432286:%p113_arg_1 =l call $p111_rt_reg_get(l %state, w 1)",
+        "2432287:%p113_arg_2 =l call $p111_rt_reg_get(l %state, w 2)",
+        "2432288:%p113_public_value =l call $p113d_FID_36_100_105_114_101_99_116_46_112_56_56_95_115_116_114_105_110_103_95_101_113_95_103_111_(l %state, l %p113_arg_0, l %p113_arg_1, l %p113_arg_2)",
+        "2432290:%p113_public_reply =l call $p111_rt_return(l %state, l %p113_public_out, w 1)"
+      ]
+    },
+    {
+      "symbol": "p111_FID_36_100_105_114_101_99_116_46_112_56_56_95_115_116_114_105_110_103_95_101_113_",
+      "decoded": "$direct.p88_string_eq",
+      "qbeStartLine": 2432597,
+      "qbeLines": 10,
+      "calls": {
+        "p111_rt_reg_get": 2,
+        "p113d_FID_36_100_105_114_101_99_116_46_112_56_56_95_115_116_114_105_110_103_95_101_113_": 1,
+        "p111_rt_return": 1
+      },
+      "excerpt": [
+        "2432600:%p113_arg_0 =l call $p111_rt_reg_get(l %state, w 0)",
+        "2432601:%p113_arg_1 =l call $p111_rt_reg_get(l %state, w 1)",
+        "2432602:%p113_public_value =l call $p113d_FID_36_100_105_114_101_99_116_46_112_56_56_95_115_116_114_105_110_103_95_101_113_(l %state, l %p113_arg_0, l %p113_arg_1)",
+        "2432604:%p113_public_reply =l call $p111_rt_return(l %state, l %p113_public_out, w 1)"
+      ]
+    },
+    {
+      "symbol": "p111_FID_36_100_105_114_101_99_116_46_105_110_100_101_120_95_102_105_110_100_",
+      "decoded": "$direct.index_find",
+      "qbeStartLine": 2433749,
+      "qbeLines": 431,
+      "calls": {
+        "p111_rt_take": 1,
+        "p111_rt_keep": 3,
+        "p111_rt_ctor": 7,
+        "p112w_FID_36_100_105_114_101_99_116_46_112_56_56_95_115_116_114_105_110_103_95_101_113_": 1,
+        "p111_rt_jump": 5,
+        "p125_rt_take2": 1,
+        "p111_rt_sink": 17,
+        "p112w_FID_109_105_115_115_105_110_103_": 1,
+        "p111_rt_return": 1,
+        "p111_rt_fail": 4,
+        "p125_rt_take4": 1,
+        "p125_rt_ctor4": 1
+      },
+      "excerpt": [
+        "2433770:%v_ignored =l call $p111_rt_take(l %state, l %v_v_4290953222, l %v_scratch, w 9)",
+        "2433789:%v_v_4290953217 =l call $p111_rt_keep(l %state, l %v_v_4290953217)",
+        "2433815:%v_value =l call $p111_rt_ctor(l %state, w 153, l %v_scratch, w 9)",
+        "2433829:%v_p112f_0_result =l call $p112w_FID_36_100_105_114_101_99_116_46_112_56_56_95_115_116_114_105_110_103_95_101_113_(l %state, l %v_p112f_0_arg_0, l %v_p112f_0_arg_1)",
+        "2433845:%v_p112f_0_local_reply =l call $p111_rt_jump(l %state, w 46516, l %v_p112f_0_local_scratch, w 5)",
+        "2433857:%v_ignored =l call $p125_rt_take2(l %state, l %v_v_4290953192, l %v_scratch)",
+        "2433884:%v_value =l call $p111_rt_ctor(l %state, w 0, l %v_scratch, w 0)",
+        "2433886:%v_ignored =l call $p111_rt_sink(l %state, l %v_v_7323)",
+        "2433892:%v_reply =l call $p111_rt_jump(l %state, w 46485, l %v_scratch, w 2)",
+        "2433895:%v_ignored =l call $p111_rt_sink(l %state, l %v_v_4290953191)",
+        "2433896:%v_ignored =l call $p111_rt_sink(l %state, l %v_v_4290953187)",
+        "2433907:%v_value =l call $p111_rt_ctor(l %state, w 0, l %v_scratch, w 0)",
+        "2433909:%v_ignored =l call $p111_rt_sink(l %state, l %v_v_7324)",
+        "2433910:%p112_result =l call $p112w_FID_109_105_115_115_105_110_103_(l %state)",
+        "2433912:%p112_reply =l call $p111_rt_return(l %state, l %v_scratch, w 1)",
+        "2433926:%v_reply =l call $p111_rt_fail(l %state, w 4)",
+        "2433938:%v_ignored =l call $p125_rt_take4(l %state, l %v_v_4290953113, l %v_scratch)",
+        "2433946:%v_v_4290953108 =l call $p111_rt_keep(l %state, l %v_v_4290953108)",
+        "2433970:%v_value =l call $p111_rt_ctor(l %state, w 0, l %v_scratch, w 0)",
+        "2433972:%v_ignored =l call $p111_rt_sink(l %state, l %v_v_7332)",
+        "2433973:%v_v_4290953109 =l call $p111_rt_keep(l %state, l %v_v_4290953109)",
+        "2433985:%v_value =l call $p125_rt_ctor4(l %state, w 155, l %v_scratch)"
+      ]
+    },
+    {
+      "symbol": "p111_FID_36_100_105_114_101_99_116_46_83_116_114_105_110_103_46_111_114_100_101_114_",
+      "decoded": "$direct.String.order",
+      "qbeStartLine": 2444045,
+      "qbeLines": 10,
+      "calls": {
+        "p111_rt_reg_get": 2,
+        "p114r_FID_36_100_105_114_101_99_116_46_83_116_114_105_110_103_46_111_114_100_101_114_": 1,
+        "p111_rt_return": 1
+      },
+      "excerpt": [
+        "2444048:%p113_arg_0 =l call $p111_rt_reg_get(l %state, w 0)",
+        "2444049:%p113_arg_1 =l call $p111_rt_reg_get(l %state, w 1)",
+        "2444050:%p114r_outer_value =l call $p114r_FID_36_100_105_114_101_99_116_46_83_116_114_105_110_103_46_111_114_100_101_114_(l %state, l %p113_arg_0, l %p113_arg_1)",
+        "2444052:%p114r_outer_reply =l call $p111_rt_return(l %state, l %p114r_outer_out, w 1)"
+      ]
+    },
+    {
+      "symbol": "p114r_FID_36_100_105_114_101_99_116_46_83_116_114_105_110_103_46_111_114_100_101_114_",
+      "decoded": "$direct.String.order",
+      "qbeStartLine": 2444055,
+      "qbeLines": 56,
+      "calls": {
+        "p113d_FID_36_100_105_114_101_99_116_46_83_116_114_105_110_103_46_99_109_112_": 1,
+        "p111_rt_fail": 1,
+        "p113d_FID_36_100_105_114_101_99_116_46_80_97_105_114_46_115_110_100_": 1
+      },
+      "excerpt": [
+        "2444078:%v_p114h_call_result =l call $p113d_FID_36_100_105_114_101_99_116_46_83_116_114_105_110_103_46_99_109_112_(l %state, l %v_p114h_arg_0, l %v_p114h_arg_1)",
+        "2444101:%p114h_bad =l call $p111_rt_fail(l %state, w 4)",
+        "2444107:%v_p114h_case_0_local_p114h_call_result =l call $p113d_FID_36_100_105_114_101_99_116_46_80_97_105_114_46_115_110_100_(l %state, l %v_p114h_case_0_local_p114h_arg_0)"
+      ]
+    }
+  ],
+  "profileOwners": [
+    {
+      "owner": "p88_string_eq",
+      "samples": 2725,
+      "shareAll": 0.07523467697404748,
+      "termDrop": 662,
+      "spanFade": 403,
+      "dropFadeShareOfOwner": 0.3908256880733945,
+      "dropFadeShareAll": 0.029403644395361677,
+      "topLeaves": [
+        [
+          "term_drop",
+          662
+        ],
+        [
+          "span_fade",
+          403
+        ],
+        [
+          "p125_rt_take2",
+          288
+        ],
+        [
+          "p113d_FID_36_100_105_114_101_99_116_46_112_56_56_95_115_116_114_105_110_103_95_101_113_95_103_111_",
+          228
+        ],
+        [
+          "p125_rt_take2.cold",
+          191
+        ],
+        [
+          "p111_FID_36_100_105_114_101_99_116_46_112_56_56_95_115_116_114_105_110_103_95_101_113_",
+          165
+        ],
+        [
+          "p111_rt_special_take",
+          152
+        ],
+        [
+          "p111_rt_keep",
+          150
+        ]
+      ]
+    },
+    {
+      "owner": "has_name",
+      "samples": 2651,
+      "shareAll": 0.07319160684704583,
+      "termDrop": 995,
+      "spanFade": 614,
+      "dropFadeShareOfOwner": 0.6069407770652584,
+      "dropFadeShareAll": 0.044422970734400886,
+      "topLeaves": [
+        [
+          "term_drop",
+          995
+        ],
+        [
+          "span_fade",
+          614
+        ],
+        [
+          "p111_rt_keep",
+          230
+        ],
+        [
+          "p125_rt_take2",
+          226
+        ],
+        [
+          "p113d_FID_36_100_105_114_101_99_116_46_112_56_56_95_115_116_114_105_110_103_95_101_113_95_103_111_",
+          160
+        ],
+        [
+          "p111_rt_sink",
+          96
+        ],
+        [
+          "p125_rt_take2.cold",
+          95
+        ],
+        [
+          "p111_rt_special_take",
+          90
+        ]
+      ]
+    },
+    {
+      "owner": "String.order",
+      "samples": 1921,
+      "shareAll": 0.053036996134732194,
+      "termDrop": 493,
+      "spanFade": 0,
+      "dropFadeShareOfOwner": 0.25663716814159293,
+      "dropFadeShareAll": 0.013611264494754279,
+      "topLeaves": [
+        [
+          "term_drop",
+          493
+        ],
+        [
+          "p118_rt_borrow_fields",
+          359
+        ],
+        [
+          "p111_rt_op",
+          202
+        ],
+        [
+          "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_83_116_114_105_110_103_46_99_109_112_",
+          172
+        ],
+        [
+          "p125_rt_ctor2",
+          108
+        ],
+        [
+          "p111_FID_36_100_105_114_101_99_116_46_83_116_114_105_110_103_46_111_114_100_101_114_",
+          79
+        ],
+        [
+          "p114r_FID_36_100_105_114_101_99_116_46_83_116_114_105_110_103_46_111_114_100_101_114_",
+          70
+        ],
+        [
+          "p125_rt_take2",
+          50
+        ]
+      ]
+    },
+    {
+      "owner": "f_find",
+      "samples": 1765,
+      "shareAll": 0.04872998343456654,
+      "termDrop": 523,
+      "spanFade": 616,
+      "dropFadeShareOfOwner": 0.6453257790368272,
+      "dropFadeShareAll": 0.031446714522363334,
+      "topLeaves": [
+        [
+          "span_fade",
+          616
+        ],
+        [
+          "term_drop",
+          523
+        ],
+        [
+          "p125_rt_take2.cold",
+          102
+        ],
+        [
+          "p111_rt_keep",
+          99
+        ],
+        [
+          "p125_rt_take2",
+          87
+        ],
+        [
+          "p111_rt_sink",
+          81
+        ],
+        [
+          "ctr_take",
+          58
+        ],
+        [
+          "p113d_FID_36_100_105_114_101_99_116_46_112_56_56_95_115_116_114_105_110_103_95_101_113_95_103_111_",
+          51
+        ]
+      ]
+    },
+    {
+      "owner": "nc_ctor_owned",
+      "samples": 1561,
+      "shareAll": 0.04309773605742684,
+      "termDrop": 390,
+      "spanFade": 424,
+      "dropFadeShareOfOwner": 0.521460602178091,
+      "dropFadeShareAll": 0.02247377139701822,
+      "topLeaves": [
+        [
+          "span_fade",
+          424
+        ],
+        [
+          "term_drop",
+          390
+        ],
+        [
+          "p111_FID_36_112_49_49_49_46_107_46_51_55_55_56_49_51_52_",
+          94
+        ],
+        [
+          "p111_FID_36_100_105_114_101_99_116_46_110_99_95_99_116_111_114_95_111_119_110_101_100_",
+          93
+        ],
+        [
+          "p111_rt_sink",
+          92
+        ],
+        [
+          "ctr_take",
+          72
+        ],
+        [
+          "<unresolved>",
+          56
+        ],
+        [
+          "p111_rt_keep",
+          49
+        ]
+      ]
+    },
+    {
+      "owner": "index_find",
+      "samples": 1361,
+      "shareAll": 0.03757592490336831,
+      "termDrop": 271,
+      "spanFade": 298,
+      "dropFadeShareOfOwner": 0.4180749448934607,
+      "dropFadeShareAll": 0.015709552733296522,
+      "topLeaves": [
+        [
+          "span_fade",
+          298
+        ],
+        [
+          "term_drop",
+          271
+        ],
+        [
+          "p111_FID_36_100_105_114_101_99_116_46_105_110_100_101_120_95_102_105_110_100_",
+          242
+        ],
+        [
+          "p125_rt_take4",
+          142
+        ],
+        [
+          "p111_rt_ctor",
+          81
+        ],
+        [
+          "<unresolved>",
+          77
+        ],
+        [
+          "p111_rt_sink",
+          69
+        ],
+        [
+          "p111_rt_jump",
+          41
+        ]
+      ]
+    },
+    {
+      "owner": "nb_contains",
+      "samples": 1258,
+      "shareAll": 0.03473219215902816,
+      "termDrop": 400,
+      "spanFade": 309,
+      "dropFadeShareOfOwner": 0.5635930047694754,
+      "dropFadeShareAll": 0.019574820541137492,
+      "topLeaves": [
+        [
+          "term_drop",
+          400
+        ],
+        [
+          "span_fade",
+          309
+        ],
+        [
+          "p125_rt_take2",
+          111
+        ],
+        [
+          "p111_rt_keep",
+          103
+        ],
+        [
+          "p113d_FID_36_100_105_114_101_99_116_46_112_56_56_95_115_116_114_105_110_103_95_101_113_95_103_111_",
+          74
+        ],
+        [
+          "p125_rt_take2.cold",
+          45
+        ],
+        [
+          "p111_rt_sink",
+          38
+        ],
+        [
+          "p111_rt_special_take",
+          36
+        ]
+      ]
+    }
+  ],
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase126/observer-divmod-source32/compiler.bend",
+      "bytes": 2527616,
+      "sha256": "40c469114c4d1c75dceab456e1979bb5c0278744a02e6dbe4a37e63667740abb"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p126-native32-full-emit/program.ssa",
+      "bytes": 99526466,
+      "sha256": "7aa7d259bdaf445713ee07f5b076a1435dd3a7387a4443506dca838e2c946804"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase127/followup01/runtime/program",
+      "bytes": 16122528,
+      "sha256": "6474b220654d67a2a8ccac8c3e6e6d315980bdb4bb75a676176b5c8a97dcebe2"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase127/full-profile01-attribution/report.json",
+      "bytes": 3115938,
+      "sha256": "93243d9545e8733d8733c8eb2a94cb25a1e454a5755f76d28e69e8b051293996"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase127/full-profile01/report.json",
+      "bytes": 13271,
+      "sha256": "86f2ccb7e1953876ca118804f1243c94968786ba122b387975387b4756e3e5ab"
+    }
+  ],
+  "joinedSearchWorkers": [
+    {
+      "symbol": "p113d_FID_36_112_49_50_54_115_99_99_46_51_48_48_57_",
+      "qbeStartLine": 148390,
+      "qbeLines": 108,
+      "calls": {
+        "p111_rt_sink": 5,
+        "p111_rt_fail": 2,
+        "p125_rt_take2": 1,
+        "p111_rt_keep": 1,
+        "p113d_FID_36_100_105_114_101_99_116_46_112_56_56_95_115_116_114_105_110_103_95_101_113_": 1
+      },
+      "localLoopBackedges": 3
+    },
+    {
+      "symbol": "p113d_FID_36_112_49_50_54_115_99_99_46_49_48_48_48_",
+      "qbeStartLine": 205542,
+      "qbeLines": 158,
+      "calls": {
+        "p111_rt_sink": 6,
+        "p111_rt_fail": 2,
+        "p113d_FID_36_100_105_114_101_99_116_46_97_116_111_109_": 2,
+        "p111_rt_ctor": 1,
+        "p125_rt_take2": 1,
+        "p111_rt_keep": 2,
+        "p113d_FID_36_100_105_114_101_99_116_46_100_110_": 1,
+        "p113d_FID_36_100_105_114_101_99_116_46_102_95_101_113_": 1
+      },
+      "localLoopBackedges": 3
+    }
+  ]
+}

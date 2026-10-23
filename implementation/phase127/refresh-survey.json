@@ -1,0 +1,2784 @@
+{
+  "schema": "bend-profile-refresh-survey-v1",
+  "methods": [
+    {
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase127/refresh-survey-run.py",
+        "bytes": 9903,
+        "sha256": "ab2b5beb0dc8d7cc8beb731d3ed8e8110d4b3e09eff6cfa2f91e29307b71c9a5"
+      },
+      "snapshot": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase127/refresh-survey01/methods/refresh-survey-run.py",
+        "bytes": 9903,
+        "sha256": "ab2b5beb0dc8d7cc8beb731d3ed8e8110d4b3e09eff6cfa2f91e29307b71c9a5"
+      }
+    },
+    {
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/profiler/attribute.py",
+        "bytes": 31268,
+        "sha256": "2d9a422cc8828e70072eadfccdace64caa84e972427aeee2d4917db31c3aea80"
+      },
+      "snapshot": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase127/refresh-survey01/methods/attribute.py",
+        "bytes": 31268,
+        "sha256": "2d9a422cc8828e70072eadfccdace64caa84e972427aeee2d4917db31c3aea80"
+      }
+    },
+    {
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/profiler/analyze.py",
+        "bytes": 16597,
+        "sha256": "c6e15ec505367631dbf5f08e6c734e03a604323eb2a914180806b5dc5ffa72e0"
+      },
+      "snapshot": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase127/refresh-survey01/methods/analyze.py",
+        "bytes": 16597,
+        "sha256": "c6e15ec505367631dbf5f08e6c734e03a604323eb2a914180806b5dc5ffa72e0"
+      }
+    }
+  ],
+  "sharedCompilerOwnerBinding": {
+    "ownerMap": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase127/phase126-owners01.json",
+      "bytes": 29384625,
+      "sha256": "4b1d564518121e69b020799df158a5654822c209e9ed8910a94ef4e505860a56"
+    },
+    "capabilityOnlySsaComparison": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase127/live-bank-full-comparison01.json",
+      "bytes": 969,
+      "sha256": "ee26fe62b068a59e8380c49e6c30e764efbe65bc596e58525ec174068ba663f2"
+    },
+    "reason": "Reuse immutable Phase126 FID/owner map because checked SSA changes only descriptor capability 1 to 5; attribution independently validates every linked FID pointer."
+  },
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase127/live-bank-diagnostic01/report.json",
+      "bytes": 98584,
+      "sha256": "72bb5ba06d5078e8964bf60c75e7ba15e0065b0cabe0462e061b5b210480eb63"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase127/programs02/run01/report.json",
+      "bytes": 125500,
+      "sha256": "5118142d16d7db2de680dcba7ab5a49f45bfc46310dd19ba62c0d93424080197"
+    }
+  ],
+  "ordinaryProgramChecks": [
+    {
+      "workload": "mandelbrot",
+      "cleanCpuSeconds": [
+        0.7774019999999999,
+        0.77689,
+        0.9627429999999999
+      ],
+      "cleanCpuMedian": 0.7774019999999999,
+      "sampleOnlyCpuMedian": 0.7835989999999999,
+      "sampleOnlyRatio": 1.0079714227645413,
+      "diagnosticUnsampledCpuSeconds": [
+        0.817522,
+        0.8171419999999999,
+        0.829117
+      ],
+      "diagnosticUnsampledCpuMedian": 0.817522,
+      "diagnosticUnsampledRatio": 1.0516077910784898,
+      "diagnosticSampleCpuMedian": 0.8201244999999999,
+      "diagnosticSampleRatio": 1.0549554799190124,
+      "eventCpuSeconds": [
+        0.9775879999999999,
+        0.972039,
+        0.96876
+      ],
+      "eventCpuMedian": 0.972039,
+      "eventRatio": 1.2503685351980058,
+      "eventCaptures": 3,
+      "eventTotalsIdentical": true,
+      "eventFilesIdentical": true
+    },
+    {
+      "workload": "tree-bitonic",
+      "cleanCpuSeconds": [
+        1.033182,
+        1.032051,
+        1.058746
+      ],
+      "cleanCpuMedian": 1.033182,
+      "sampleOnlyCpuMedian": 1.0427905,
+      "sampleOnlyRatio": 1.0092999103739708,
+      "diagnosticUnsampledCpuSeconds": [
+        1.172032,
+        1.156793,
+        1.159056
+      ],
+      "diagnosticUnsampledCpuMedian": 1.159056,
+      "diagnosticUnsampledRatio": 1.1218313907907804,
+      "diagnosticSampleCpuMedian": 1.1596285,
+      "diagnosticSampleRatio": 1.122385504199647,
+      "eventCpuSeconds": [
+        1.9820820000000001,
+        1.966603,
+        1.963647
+      ],
+      "eventCpuMedian": 1.966603,
+      "eventRatio": 1.903442955839339,
+      "eventCaptures": 3,
+      "eventTotalsIdentical": true,
+      "eventFilesIdentical": true
+    }
+  ],
+  "limitations": [
+    "No new target programs executed; this is an offline join of completed captures.",
+    "Raw and period-weighted shares retain unknown samples; individual short captures remain low precision.",
+    "Diagnostic context/counter runtimes are not clean performance measurements.",
+    "Active dispatch identifies execution context, not inclusive ancestry or allocation origin.",
+    "Entry-segment dispatch counts count named factory/direct entries, not all source-level calls or inlined iterations.",
+    "Original Phase126 ownership is reused only under explicit capability-only SSA comparison and exact linked FID checks.",
+    "No original owner maps, runtime events or raw sample vectors are duplicated."
+  ],
+  "fullReport": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase127/refresh-survey01/report.json",
+    "bytes": 1500217,
+    "sha256": "060b7b0edcde0ca1f9d5bb554a3434596b668b1bf26ecdab07fe95c4d67e0238"
+  },
+  "summaries": [
+    {
+      "workload": "coverage-closures-256",
+      "variant": "live-bank-diagnostic",
+      "samples": 530,
+      "weightedUs": 5250000,
+      "ownerKnown": 496,
+      "contextKnown": 496,
+      "leafOwnerKnown": 152,
+      "fillSamples": 0,
+      "copySamples": 52,
+      "zeroLoss": true,
+      "groups": [
+        {
+          "name": "generated_bend",
+          "samples": 155,
+          "rawFraction": 0.29245283018867924,
+          "periodWeightedUs": 1560000,
+          "periodWeightedFraction": 0.29714285714285715
+        },
+        {
+          "name": "other",
+          "samples": 113,
+          "rawFraction": 0.21320754716981133,
+          "periodWeightedUs": 1099000,
+          "periodWeightedFraction": 0.20933333333333334
+        },
+        {
+          "name": "ownership_and_products",
+          "samples": 107,
+          "rawFraction": 0.2018867924528302,
+          "periodWeightedUs": 1066000,
+          "periodWeightedFraction": 0.20304761904761906
+        },
+        {
+          "name": "reclamation",
+          "samples": 68,
+          "rawFraction": 0.12830188679245283,
+          "periodWeightedUs": 674000,
+          "periodWeightedFraction": 0.12838095238095237
+        },
+        {
+          "name": "memory_copy",
+          "samples": 52,
+          "rawFraction": 0.09811320754716982,
+          "periodWeightedUs": 486000,
+          "periodWeightedFraction": 0.09257142857142857
+        },
+        {
+          "name": "scheduler",
+          "samples": 27,
+          "rawFraction": 0.0509433962264151,
+          "periodWeightedUs": 281000,
+          "periodWeightedFraction": 0.05352380952380952
+        },
+        {
+          "name": "allocation",
+          "samples": 8,
+          "rawFraction": 0.01509433962264151,
+          "periodWeightedUs": 84000,
+          "periodWeightedFraction": 0.016
+        }
+      ],
+      "families": {
+        "p88_": {
+          "samples": 260,
+          "periodWeightedFraction": 0.48857142857142855
+        },
+        "p111v_": {
+          "samples": 12,
+          "periodWeightedFraction": 0.025904761904761906
+        },
+        "index_": {
+          "samples": 29,
+          "periodWeightedFraction": 0.05180952380952381
+        },
+        "String.": {
+          "samples": 33,
+          "periodWeightedFraction": 0.06361904761904762
+        },
+        "nq_uses": {
+          "samples": 0,
+          "periodWeightedFraction": 0.0
+        },
+        "p126bp_": {
+          "samples": 4,
+          "periodWeightedFraction": 0.008952380952380953
+        },
+        "p113pl_": {
+          "samples": 0,
+          "periodWeightedFraction": 0.0
+        }
+      },
+      "owners": [
+        {
+          "name": "p88_digits",
+          "samples": 110,
+          "rawFraction": 0.20754716981132076,
+          "periodWeightedUs": 1045000,
+          "periodWeightedFraction": 0.19904761904761906
+        },
+        {
+          "name": "[unknown]",
+          "samples": 34,
+          "rawFraction": 0.06415094339622641,
+          "periodWeightedUs": 357000,
+          "periodWeightedFraction": 0.068
+        },
+        {
+          "name": "p88_number",
+          "samples": 32,
+          "rawFraction": 0.06037735849056604,
+          "periodWeightedUs": 331000,
+          "periodWeightedFraction": 0.06304761904761905
+        },
+        {
+          "name": "p88_field",
+          "samples": 26,
+          "rawFraction": 0.04905660377358491,
+          "periodWeightedUs": 263000,
+          "periodWeightedFraction": 0.050095238095238095
+        },
+        {
+          "name": "Bool.and",
+          "samples": 26,
+          "rawFraction": 0.04905660377358491,
+          "periodWeightedUs": 248000,
+          "periodWeightedFraction": 0.04723809523809524
+        },
+        {
+          "name": "p88_build",
+          "samples": 16,
+          "rawFraction": 0.03018867924528302,
+          "periodWeightedUs": 163000,
+          "periodWeightedFraction": 0.031047619047619046
+        },
+        {
+          "name": "String.append",
+          "samples": 16,
+          "rawFraction": 0.03018867924528302,
+          "periodWeightedUs": 163000,
+          "periodWeightedFraction": 0.031047619047619046
+        },
+        {
+          "name": "p88_digit",
+          "samples": 15,
+          "rawFraction": 0.02830188679245283,
+          "periodWeightedUs": 145000,
+          "periodWeightedFraction": 0.02761904761904762
+        }
+      ],
+      "leafOwners": [
+        {
+          "name": "[unknown]",
+          "samples": 378,
+          "rawFraction": 0.7132075471698113,
+          "periodWeightedUs": 3719000,
+          "periodWeightedFraction": 0.7083809523809523
+        },
+        {
+          "name": "p88_digits",
+          "samples": 42,
+          "rawFraction": 0.07924528301886792,
+          "periodWeightedUs": 406000,
+          "periodWeightedFraction": 0.07733333333333334
+        },
+        {
+          "name": "Bool.and",
+          "samples": 20,
+          "rawFraction": 0.03773584905660377,
+          "periodWeightedUs": 210000,
+          "periodWeightedFraction": 0.04
+        },
+        {
+          "name": "p88_number",
+          "samples": 12,
+          "rawFraction": 0.022641509433962263,
+          "periodWeightedUs": 121000,
+          "periodWeightedFraction": 0.023047619047619046
+        },
+        {
+          "name": "p88_digit",
+          "samples": 8,
+          "rawFraction": 0.01509433962264151,
+          "periodWeightedUs": 74000,
+          "periodWeightedFraction": 0.014095238095238095
+        },
+        {
+          "name": "p88_fields_next",
+          "samples": 5,
+          "rawFraction": 0.009433962264150943,
+          "periodWeightedUs": 45000,
+          "periodWeightedFraction": 0.008571428571428572
+        }
+      ],
+      "leafs": [
+        {
+          "name": "[unresolved]",
+          "samples": 52,
+          "rawFraction": 0.09811320754716982,
+          "periodWeightedUs": 486000,
+          "periodWeightedFraction": 0.09257142857142857
+        },
+        {
+          "name": "p125_rt_take2",
+          "samples": 47,
+          "rawFraction": 0.08867924528301886,
+          "periodWeightedUs": 476000,
+          "periodWeightedFraction": 0.09066666666666667
+        },
+        {
+          "name": "term_drop",
+          "samples": 45,
+          "rawFraction": 0.08490566037735849,
+          "periodWeightedUs": 435000,
+          "periodWeightedFraction": 0.08285714285714285
+        },
+        {
+          "name": "p111_set_regs",
+          "samples": 36,
+          "rawFraction": 0.06792452830188679,
+          "periodWeightedUs": 348000,
+          "periodWeightedFraction": 0.06628571428571428
+        },
+        {
+          "name": "work_loop",
+          "samples": 27,
+          "rawFraction": 0.0509433962264151,
+          "periodWeightedUs": 281000,
+          "periodWeightedFraction": 0.05352380952380952
+        },
+        {
+          "name": "span_fade",
+          "samples": 23,
+          "rawFraction": 0.04339622641509434,
+          "periodWeightedUs": 239000,
+          "periodWeightedFraction": 0.04552380952380952
+        }
+      ],
+      "ownerLeafs": [
+        {
+          "name": [
+            "p88_digits",
+            "memory_copy",
+            "[unresolved]"
+          ],
+          "samples": 23,
+          "rawFraction": 0.04339622641509434,
+          "periodWeightedUs": 214000,
+          "periodWeightedFraction": 0.04076190476190476
+        },
+        {
+          "name": [
+            "p88_digits",
+            "generated_bend",
+            "p111_FID_$direct.p88_digits"
+          ],
+          "samples": 22,
+          "rawFraction": 0.04150943396226415,
+          "periodWeightedUs": 206000,
+          "periodWeightedFraction": 0.03923809523809524
+        },
+        {
+          "name": [
+            "[unknown]",
+            "scheduler",
+            "work_loop"
+          ],
+          "samples": 22,
+          "rawFraction": 0.04150943396226415,
+          "periodWeightedUs": 231000,
+          "periodWeightedFraction": 0.044
+        },
+        {
+          "name": [
+            "Bool.and",
+            "generated_bend",
+            "p111_FID_$direct.Bool.and"
+          ],
+          "samples": 11,
+          "rawFraction": 0.020754716981132074,
+          "periodWeightedUs": 108000,
+          "periodWeightedFraction": 0.02057142857142857
+        }
+      ]
+    },
+    {
+      "workload": "coverage-map-churn-128",
+      "variant": "live-bank-diagnostic",
+      "samples": 3047,
+      "weightedUs": 30156000,
+      "ownerKnown": 2910,
+      "contextKnown": 2910,
+      "leafOwnerKnown": 647,
+      "fillSamples": 0,
+      "copySamples": 164,
+      "zeroLoss": true,
+      "groups": [
+        {
+          "name": "reclamation",
+          "samples": 750,
+          "rawFraction": 0.2461437479488021,
+          "periodWeightedUs": 7375000,
+          "periodWeightedFraction": 0.24456161294601406
+        },
+        {
+          "name": "generated_bend",
+          "samples": 703,
+          "rawFraction": 0.2307187397440105,
+          "periodWeightedUs": 6929000,
+          "periodWeightedFraction": 0.22977185303090594
+        },
+        {
+          "name": "other",
+          "samples": 663,
+          "rawFraction": 0.21759107318674106,
+          "periodWeightedUs": 6539000,
+          "periodWeightedFraction": 0.21683910332935402
+        },
+        {
+          "name": "ownership_and_products",
+          "samples": 580,
+          "rawFraction": 0.19035116508040695,
+          "periodWeightedUs": 5850000,
+          "periodWeightedFraction": 0.19399124552327895
+        },
+        {
+          "name": "memory_copy",
+          "samples": 164,
+          "rawFraction": 0.05382343288480473,
+          "periodWeightedUs": 1592000,
+          "periodWeightedFraction": 0.05279214749966839
+        },
+        {
+          "name": "scheduler",
+          "samples": 139,
+          "rawFraction": 0.04561864128651132,
+          "periodWeightedUs": 1407000,
+          "periodWeightedFraction": 0.04665738161559889
+        },
+        {
+          "name": "allocation",
+          "samples": 48,
+          "rawFraction": 0.015753199868723335,
+          "periodWeightedUs": 464000,
+          "periodWeightedFraction": 0.015386656055179733
+        }
+      ],
+      "families": {
+        "p88_": {
+          "samples": 306,
+          "periodWeightedFraction": 0.09958217270194986
+        },
+        "p111v_": {
+          "samples": 180,
+          "periodWeightedFraction": 0.060021222973869214
+        },
+        "index_": {
+          "samples": 298,
+          "periodWeightedFraction": 0.09994694256532696
+        },
+        "String.": {
+          "samples": 552,
+          "periodWeightedFraction": 0.17993102533492505
+        },
+        "nq_uses": {
+          "samples": 301,
+          "periodWeightedFraction": 0.09891895476853695
+        },
+        "p126bp_": {
+          "samples": 0,
+          "periodWeightedFraction": 0.0
+        },
+        "p113pl_": {
+          "samples": 25,
+          "periodWeightedFraction": 0.008290224167661493
+        }
+      },
+      "owners": [
+        {
+          "name": "String.order",
+          "samples": 310,
+          "rawFraction": 0.1017394158188382,
+          "periodWeightedUs": 3035000,
+          "periodWeightedFraction": 0.10064332139541053
+        },
+        {
+          "name": "nq_uses",
+          "samples": 263,
+          "rawFraction": 0.0863144076140466,
+          "periodWeightedUs": 2624000,
+          "periodWeightedFraction": 0.08701419286377504
+        },
+        {
+          "name": "String.append",
+          "samples": 149,
+          "rawFraction": 0.04890055792582868,
+          "periodWeightedUs": 1492000,
+          "periodWeightedFraction": 0.049476057832603795
+        },
+        {
+          "name": "[unknown]",
+          "samples": 137,
+          "rawFraction": 0.04496225795864785,
+          "periodWeightedUs": 1366000,
+          "periodWeightedFraction": 0.0452977848521024
+        },
+        {
+          "name": "index_find",
+          "samples": 121,
+          "rawFraction": 0.039711191335740074,
+          "periodWeightedUs": 1223000,
+          "periodWeightedFraction": 0.04055577662820003
+        },
+        {
+          "name": "p88_digits",
+          "samples": 115,
+          "rawFraction": 0.037742041352149654,
+          "periodWeightedUs": 1140000,
+          "periodWeightedFraction": 0.03780342220453641
+        },
+        {
+          "name": "String.eq",
+          "samples": 89,
+          "rawFraction": 0.029209058089924515,
+          "periodWeightedUs": 862000,
+          "periodWeightedFraction": 0.02858469293009683
+        },
+        {
+          "name": "index_bucket",
+          "samples": 80,
+          "rawFraction": 0.02625533311453889,
+          "periodWeightedUs": 795000,
+          "periodWeightedFraction": 0.02636291285316355
+        }
+      ],
+      "leafOwners": [
+        {
+          "name": "[unknown]",
+          "samples": 2400,
+          "rawFraction": 0.7876599934361668,
+          "periodWeightedUs": 23755000,
+          "periodWeightedFraction": 0.7877371004111952
+        },
+        {
+          "name": "p88_string_eq_go",
+          "samples": 55,
+          "rawFraction": 0.018050541516245487,
+          "periodWeightedUs": 545000,
+          "periodWeightedFraction": 0.018072688685502054
+        },
+        {
+          "name": "p88_digits",
+          "samples": 48,
+          "rawFraction": 0.015753199868723335,
+          "periodWeightedUs": 459000,
+          "periodWeightedFraction": 0.015220851571826502
+        },
+        {
+          "name": "String.eq",
+          "samples": 38,
+          "rawFraction": 0.012471283229405973,
+          "periodWeightedUs": 364000,
+          "periodWeightedFraction": 0.012070566388115135
+        },
+        {
+          "name": "Bool.and",
+          "samples": 31,
+          "rawFraction": 0.01017394158188382,
+          "periodWeightedUs": 308000,
+          "periodWeightedFraction": 0.01021355617455896
+        },
+        {
+          "name": "String.order",
+          "samples": 30,
+          "rawFraction": 0.009845749917952083,
+          "periodWeightedUs": 290000,
+          "periodWeightedFraction": 0.009616660034487332
+        }
+      ],
+      "leafs": [
+        {
+          "name": "term_drop",
+          "samples": 482,
+          "rawFraction": 0.15818838201509683,
+          "periodWeightedUs": 4831000,
+          "periodWeightedFraction": 0.1602002918158907
+        },
+        {
+          "name": "span_fade",
+          "samples": 268,
+          "rawFraction": 0.08795536593370529,
+          "periodWeightedUs": 2544000,
+          "periodWeightedFraction": 0.08436132113012336
+        },
+        {
+          "name": "p125_rt_take2",
+          "samples": 189,
+          "rawFraction": 0.06202822448309813,
+          "periodWeightedUs": 1927000,
+          "periodWeightedFraction": 0.06390104788433479
+        },
+        {
+          "name": "[unresolved]",
+          "samples": 168,
+          "rawFraction": 0.05513619954053167,
+          "periodWeightedUs": 1634000,
+          "periodWeightedFraction": 0.054184905159835525
+        },
+        {
+          "name": "work_loop",
+          "samples": 139,
+          "rawFraction": 0.04561864128651132,
+          "periodWeightedUs": 1407000,
+          "periodWeightedFraction": 0.04665738161559889
+        },
+        {
+          "name": "p111_set_regs",
+          "samples": 100,
+          "rawFraction": 0.032819166393173616,
+          "periodWeightedUs": 965000,
+          "periodWeightedFraction": 0.03200026528717337
+        }
+      ],
+      "ownerLeafs": [
+        {
+          "name": [
+            "[unknown]",
+            "scheduler",
+            "work_loop"
+          ],
+          "samples": 109,
+          "rawFraction": 0.03577289136855924,
+          "periodWeightedUs": 1087000,
+          "periodWeightedFraction": 0.036045894680992174
+        },
+        {
+          "name": [
+            "String.order",
+            "reclamation",
+            "term_drop"
+          ],
+          "samples": 69,
+          "rawFraction": 0.022645224811289794,
+          "periodWeightedUs": 702000,
+          "periodWeightedFraction": 0.023278949462793474
+        },
+        {
+          "name": [
+            "String.order",
+            "other",
+            "p118_rt_borrow_fields"
+          ],
+          "samples": 55,
+          "rawFraction": 0.018050541516245487,
+          "periodWeightedUs": 530000,
+          "periodWeightedFraction": 0.017575275235442365
+        },
+        {
+          "name": [
+            "nq_uses",
+            "reclamation",
+            "term_drop"
+          ],
+          "samples": 46,
+          "rawFraction": 0.015096816540859863,
+          "periodWeightedUs": 473000,
+          "periodWeightedFraction": 0.015685104125215545
+        }
+      ]
+    },
+    {
+      "workload": "lexer",
+      "variant": "live-bank-diagnostic",
+      "samples": 1925,
+      "weightedUs": 19075000,
+      "ownerKnown": 1836,
+      "contextKnown": 1836,
+      "leafOwnerKnown": 418,
+      "fillSamples": 0,
+      "copySamples": 103,
+      "zeroLoss": true,
+      "groups": [
+        {
+          "name": "reclamation",
+          "samples": 547,
+          "rawFraction": 0.28415584415584416,
+          "periodWeightedUs": 5511000,
+          "periodWeightedFraction": 0.2889121887287025
+        },
+        {
+          "name": "generated_bend",
+          "samples": 445,
+          "rawFraction": 0.23116883116883116,
+          "periodWeightedUs": 4475000,
+          "periodWeightedFraction": 0.2346002621231979
+        },
+        {
+          "name": "other",
+          "samples": 417,
+          "rawFraction": 0.21662337662337663,
+          "periodWeightedUs": 4026000,
+          "periodWeightedFraction": 0.2110615989515072
+        },
+        {
+          "name": "ownership_and_products",
+          "samples": 313,
+          "rawFraction": 0.1625974025974026,
+          "periodWeightedUs": 3029000,
+          "periodWeightedFraction": 0.15879423328964615
+        },
+        {
+          "name": "memory_copy",
+          "samples": 103,
+          "rawFraction": 0.05350649350649351,
+          "periodWeightedUs": 1029000,
+          "periodWeightedFraction": 0.053944954128440366
+        },
+        {
+          "name": "scheduler",
+          "samples": 80,
+          "rawFraction": 0.04155844155844156,
+          "periodWeightedUs": 800000,
+          "periodWeightedFraction": 0.04193971166448231
+        },
+        {
+          "name": "allocation",
+          "samples": 20,
+          "rawFraction": 0.01038961038961039,
+          "periodWeightedUs": 205000,
+          "periodWeightedFraction": 0.010747051114023591
+        }
+      ],
+      "families": {
+        "p88_": {
+          "samples": 296,
+          "periodWeightedFraction": 0.1527129750982962
+        },
+        "p111v_": {
+          "samples": 283,
+          "periodWeightedFraction": 0.14332896461336828
+        },
+        "index_": {
+          "samples": 418,
+          "periodWeightedFraction": 0.22196592398427262
+        },
+        "String.": {
+          "samples": 275,
+          "periodWeightedFraction": 0.14154652686762778
+        },
+        "nq_uses": {
+          "samples": 2,
+          "periodWeightedFraction": 0.0011009174311926607
+        },
+        "p126bp_": {
+          "samples": 4,
+          "periodWeightedFraction": 0.0016775884665792922
+        },
+        "p113pl_": {
+          "samples": 3,
+          "periodWeightedFraction": 0.0012581913499344693
+        }
+      },
+      "owners": [
+        {
+          "name": "index_bucket",
+          "samples": 184,
+          "rawFraction": 0.09558441558441559,
+          "periodWeightedUs": 1832000,
+          "periodWeightedFraction": 0.09604193971166448
+        },
+        {
+          "name": "String.order",
+          "samples": 149,
+          "rawFraction": 0.0774025974025974,
+          "periodWeightedUs": 1452000,
+          "periodWeightedFraction": 0.07612057667103539
+        },
+        {
+          "name": "p88_digits",
+          "samples": 116,
+          "rawFraction": 0.06025974025974026,
+          "periodWeightedUs": 1148000,
+          "periodWeightedFraction": 0.06018348623853211
+        },
+        {
+          "name": "p111v_get",
+          "samples": 116,
+          "rawFraction": 0.06025974025974026,
+          "periodWeightedUs": 1108000,
+          "periodWeightedFraction": 0.058086500655307995
+        },
+        {
+          "name": "index_find",
+          "samples": 97,
+          "rawFraction": 0.05038961038961039,
+          "periodWeightedUs": 991000,
+          "periodWeightedFraction": 0.05195281782437746
+        },
+        {
+          "name": "String.append",
+          "samples": 92,
+          "rawFraction": 0.047792207792207796,
+          "periodWeightedUs": 906000,
+          "periodWeightedFraction": 0.04749672346002621
+        },
+        {
+          "name": "[unknown]",
+          "samples": 89,
+          "rawFraction": 0.04623376623376623,
+          "periodWeightedUs": 897000,
+          "periodWeightedFraction": 0.04702490170380079
+        },
+        {
+          "name": "index_insert",
+          "samples": 53,
+          "rawFraction": 0.027532467532467533,
+          "periodWeightedUs": 539000,
+          "periodWeightedFraction": 0.028256880733944955
+        }
+      ],
+      "leafOwners": [
+        {
+          "name": "[unknown]",
+          "samples": 1507,
+          "rawFraction": 0.7828571428571428,
+          "periodWeightedUs": 14876000,
+          "periodWeightedFraction": 0.7798689384010485
+        },
+        {
+          "name": "p88_digits",
+          "samples": 53,
+          "rawFraction": 0.027532467532467533,
+          "periodWeightedUs": 524000,
+          "periodWeightedFraction": 0.02747051114023591
+        },
+        {
+          "name": "p88_string_eq_go",
+          "samples": 37,
+          "rawFraction": 0.01922077922077922,
+          "periodWeightedUs": 381000,
+          "periodWeightedFraction": 0.019973787680209697
+        },
+        {
+          "name": "Bool.and",
+          "samples": 29,
+          "rawFraction": 0.015064935064935066,
+          "periodWeightedUs": 302000,
+          "periodWeightedFraction": 0.015832241153342072
+        },
+        {
+          "name": "p88_digit",
+          "samples": 16,
+          "rawFraction": 0.008311688311688312,
+          "periodWeightedUs": 158000,
+          "periodWeightedFraction": 0.008283093053735256
+        },
+        {
+          "name": "p111v_name_chars",
+          "samples": 15,
+          "rawFraction": 0.007792207792207792,
+          "periodWeightedUs": 160000,
+          "periodWeightedFraction": 0.008387942332896461
+        }
+      ],
+      "leafs": [
+        {
+          "name": "term_drop",
+          "samples": 348,
+          "rawFraction": 0.1807792207792208,
+          "periodWeightedUs": 3509000,
+          "periodWeightedFraction": 0.18395806028833553
+        },
+        {
+          "name": "span_fade",
+          "samples": 199,
+          "rawFraction": 0.10337662337662337,
+          "periodWeightedUs": 2002000,
+          "periodWeightedFraction": 0.10495412844036697
+        },
+        {
+          "name": "[unresolved]",
+          "samples": 105,
+          "rawFraction": 0.05454545454545454,
+          "periodWeightedUs": 1055000,
+          "periodWeightedFraction": 0.05530799475753604
+        },
+        {
+          "name": "p125_rt_take2",
+          "samples": 103,
+          "rawFraction": 0.05350649350649351,
+          "periodWeightedUs": 964000,
+          "periodWeightedFraction": 0.05053735255570118
+        },
+        {
+          "name": "work_loop",
+          "samples": 80,
+          "rawFraction": 0.04155844155844156,
+          "periodWeightedUs": 800000,
+          "periodWeightedFraction": 0.04193971166448231
+        },
+        {
+          "name": "p111_set_regs",
+          "samples": 67,
+          "rawFraction": 0.034805194805194804,
+          "periodWeightedUs": 646000,
+          "periodWeightedFraction": 0.03386631716906946
+        }
+      ],
+      "ownerLeafs": [
+        {
+          "name": [
+            "[unknown]",
+            "scheduler",
+            "work_loop"
+          ],
+          "samples": 63,
+          "rawFraction": 0.03272727272727273,
+          "periodWeightedUs": 634000,
+          "periodWeightedFraction": 0.03323722149410223
+        },
+        {
+          "name": [
+            "index_bucket",
+            "reclamation",
+            "term_drop"
+          ],
+          "samples": 62,
+          "rawFraction": 0.032207792207792206,
+          "periodWeightedUs": 626000,
+          "periodWeightedFraction": 0.03281782437745741
+        },
+        {
+          "name": [
+            "p111v_get",
+            "reclamation",
+            "term_drop"
+          ],
+          "samples": 46,
+          "rawFraction": 0.023896103896103898,
+          "periodWeightedUs": 438000,
+          "periodWeightedFraction": 0.022961992136304062
+        },
+        {
+          "name": [
+            "String.order",
+            "reclamation",
+            "term_drop"
+          ],
+          "samples": 40,
+          "rawFraction": 0.02077922077922078,
+          "periodWeightedUs": 415000,
+          "periodWeightedFraction": 0.021756225425950196
+        }
+      ]
+    },
+    {
+      "workload": "mandelbrot",
+      "variant": "phase126",
+      "samples": 627,
+      "weightedUs": 6211000,
+      "ownerKnown": 0,
+      "contextKnown": 0,
+      "leafOwnerKnown": 372,
+      "fillSamples": 46,
+      "copySamples": 58,
+      "zeroLoss": true,
+      "groups": [
+        {
+          "name": "generated_bend",
+          "samples": 410,
+          "rawFraction": 0.6539074960127592,
+          "periodWeightedUs": 4090000,
+          "periodWeightedFraction": 0.6585090967638062
+        },
+        {
+          "name": "other",
+          "samples": 75,
+          "rawFraction": 0.11961722488038277,
+          "periodWeightedUs": 735000,
+          "periodWeightedFraction": 0.11833843181452262
+        },
+        {
+          "name": "memory_copy",
+          "samples": 58,
+          "rawFraction": 0.09250398724082935,
+          "periodWeightedUs": 589000,
+          "periodWeightedFraction": 0.0948317501207535
+        },
+        {
+          "name": "memory_fill",
+          "samples": 46,
+          "rawFraction": 0.0733652312599681,
+          "periodWeightedUs": 423000,
+          "periodWeightedFraction": 0.06810497504427629
+        },
+        {
+          "name": "scheduler",
+          "samples": 32,
+          "rawFraction": 0.051036682615629984,
+          "periodWeightedUs": 311000,
+          "periodWeightedFraction": 0.050072452101110936
+        },
+        {
+          "name": "ownership_and_products",
+          "samples": 6,
+          "rawFraction": 0.009569377990430622,
+          "periodWeightedUs": 63000,
+          "periodWeightedFraction": 0.010143294155530511
+        }
+      ],
+      "families": {
+        "p88_": {
+          "samples": 0,
+          "periodWeightedFraction": 0.0
+        },
+        "p111v_": {
+          "samples": 0,
+          "periodWeightedFraction": 0.0
+        },
+        "index_": {
+          "samples": 0,
+          "periodWeightedFraction": 0.0
+        },
+        "String.": {
+          "samples": 0,
+          "periodWeightedFraction": 0.0
+        },
+        "nq_uses": {
+          "samples": 0,
+          "periodWeightedFraction": 0.0
+        },
+        "p126bp_": {
+          "samples": 0,
+          "periodWeightedFraction": 0.0
+        },
+        "p113pl_": {
+          "samples": 0,
+          "periodWeightedFraction": 0.0
+        }
+      },
+      "owners": [
+        {
+          "name": "[unknown]",
+          "samples": 627,
+          "rawFraction": 1.0,
+          "periodWeightedUs": 6211000,
+          "periodWeightedFraction": 1.0
+        }
+      ],
+      "leafOwners": [
+        {
+          "name": "[unknown]",
+          "samples": 255,
+          "rawFraction": 0.40669856459330145,
+          "periodWeightedUs": 2490000,
+          "periodWeightedFraction": 0.40090162614715824
+        },
+        {
+          "name": "mit",
+          "samples": 165,
+          "rawFraction": 0.2631578947368421,
+          "periodWeightedUs": 1655000,
+          "periodWeightedFraction": 0.26646272741909516
+        },
+        {
+          "name": "rcol",
+          "samples": 107,
+          "rawFraction": 0.17065390749601275,
+          "periodWeightedUs": 1066000,
+          "periodWeightedFraction": 0.17163097729834165
+        },
+        {
+          "name": "rpix",
+          "samples": 95,
+          "rawFraction": 0.15151515151515152,
+          "periodWeightedUs": 950000,
+          "periodWeightedFraction": 0.15295443567863468
+        },
+        {
+          "name": "hzip",
+          "samples": 1,
+          "rawFraction": 0.001594896331738437,
+          "periodWeightedUs": 13000,
+          "periodWeightedFraction": 0.002093060698760264
+        },
+        {
+          "name": "bench",
+          "samples": 1,
+          "rawFraction": 0.001594896331738437,
+          "periodWeightedUs": 8000,
+          "periodWeightedFraction": 0.0012880373530832394
+        }
+      ],
+      "leafs": [
+        {
+          "name": "p113d_FID_$direct.mit",
+          "samples": 165,
+          "rawFraction": 0.2631578947368421,
+          "periodWeightedUs": 1655000,
+          "periodWeightedFraction": 0.26646272741909516
+        },
+        {
+          "name": "[unresolved]",
+          "samples": 106,
+          "rawFraction": 0.16905901116427433,
+          "periodWeightedUs": 1028000,
+          "periodWeightedFraction": 0.16551279987119627
+        },
+        {
+          "name": "p111_FID_$direct.rcol",
+          "samples": 62,
+          "rawFraction": 0.09888357256778309,
+          "periodWeightedUs": 616000,
+          "periodWeightedFraction": 0.09917887618740943
+        },
+        {
+          "name": "p113d_FID_$direct.rpix",
+          "samples": 53,
+          "rawFraction": 0.08452950558213716,
+          "periodWeightedUs": 514000,
+          "periodWeightedFraction": 0.08275639993559814
+        },
+        {
+          "name": "p111_FID_$direct.rpix",
+          "samples": 42,
+          "rawFraction": 0.06698564593301436,
+          "periodWeightedUs": 436000,
+          "periodWeightedFraction": 0.07019803574303655
+        },
+        {
+          "name": "p113d_FID_$product.hchunk",
+          "samples": 38,
+          "rawFraction": 0.06060606060606061,
+          "periodWeightedUs": 369000,
+          "periodWeightedFraction": 0.05941072291096442
+        }
+      ],
+      "ownerLeafs": [
+        {
+          "name": [
+            "[unknown]",
+            "generated_bend",
+            "p113d_FID_$direct.mit"
+          ],
+          "samples": 165,
+          "rawFraction": 0.2631578947368421,
+          "periodWeightedUs": 1655000,
+          "periodWeightedFraction": 0.26646272741909516
+        },
+        {
+          "name": [
+            "[unknown]",
+            "generated_bend",
+            "p111_FID_$direct.rcol"
+          ],
+          "samples": 62,
+          "rawFraction": 0.09888357256778309,
+          "periodWeightedUs": 616000,
+          "periodWeightedFraction": 0.09917887618740943
+        },
+        {
+          "name": [
+            "[unknown]",
+            "memory_copy",
+            "[unresolved]"
+          ],
+          "samples": 58,
+          "rawFraction": 0.09250398724082935,
+          "periodWeightedUs": 589000,
+          "periodWeightedFraction": 0.0948317501207535
+        },
+        {
+          "name": [
+            "[unknown]",
+            "generated_bend",
+            "p113d_FID_$direct.rpix"
+          ],
+          "samples": 53,
+          "rawFraction": 0.08452950558213716,
+          "periodWeightedUs": 514000,
+          "periodWeightedFraction": 0.08275639993559814
+        }
+      ]
+    },
+    {
+      "workload": "mandelbrot",
+      "variant": "phase126-diagnostic",
+      "samples": 654,
+      "weightedUs": 6477000,
+      "ownerKnown": 620,
+      "contextKnown": 620,
+      "leafOwnerKnown": 334,
+      "fillSamples": 88,
+      "copySamples": 71,
+      "zeroLoss": true,
+      "groups": [
+        {
+          "name": "generated_bend",
+          "samples": 368,
+          "rawFraction": 0.5626911314984709,
+          "periodWeightedUs": 3684000,
+          "periodWeightedFraction": 0.5687818434460399
+        },
+        {
+          "name": "memory_fill",
+          "samples": 88,
+          "rawFraction": 0.1345565749235474,
+          "periodWeightedUs": 859000,
+          "periodWeightedFraction": 0.13262312799135403
+        },
+        {
+          "name": "other",
+          "samples": 78,
+          "rawFraction": 0.11926605504587157,
+          "periodWeightedUs": 764000,
+          "periodWeightedFraction": 0.11795584375482476
+        },
+        {
+          "name": "memory_copy",
+          "samples": 71,
+          "rawFraction": 0.10856269113149847,
+          "periodWeightedUs": 688000,
+          "periodWeightedFraction": 0.10622201636560136
+        },
+        {
+          "name": "scheduler",
+          "samples": 45,
+          "rawFraction": 0.06880733944954129,
+          "periodWeightedUs": 445000,
+          "periodWeightedFraction": 0.068704647213216
+        },
+        {
+          "name": "ownership_and_products",
+          "samples": 4,
+          "rawFraction": 0.0061162079510703364,
+          "periodWeightedUs": 37000,
+          "periodWeightedFraction": 0.0057125212289640265
+        }
+      ],
+      "families": {
+        "p88_": {
+          "samples": 0,
+          "periodWeightedFraction": 0.0
+        },
+        "p111v_": {
+          "samples": 0,
+          "periodWeightedFraction": 0.0
+        },
+        "index_": {
+          "samples": 0,
+          "periodWeightedFraction": 0.0
+        },
+        "String.": {
+          "samples": 0,
+          "periodWeightedFraction": 0.0
+        },
+        "nq_uses": {
+          "samples": 0,
+          "periodWeightedFraction": 0.0
+        },
+        "p126bp_": {
+          "samples": 0,
+          "periodWeightedFraction": 0.0
+        },
+        "p113pl_": {
+          "samples": 0,
+          "periodWeightedFraction": 0.0
+        }
+      },
+      "owners": [
+        {
+          "name": "rcol",
+          "samples": 273,
+          "rawFraction": 0.41743119266055045,
+          "periodWeightedUs": 2704000,
+          "periodWeightedFraction": 0.41747722711131696
+        },
+        {
+          "name": "rpix",
+          "samples": 229,
+          "rawFraction": 0.35015290519877673,
+          "periodWeightedUs": 2277000,
+          "periodWeightedFraction": 0.35155164427975916
+        },
+        {
+          "name": "hchunk",
+          "samples": 111,
+          "rawFraction": 0.16972477064220184,
+          "periodWeightedUs": 1088000,
+          "periodWeightedFraction": 0.1679790026246719
+        },
+        {
+          "name": "[unknown]",
+          "samples": 34,
+          "rawFraction": 0.05198776758409786,
+          "periodWeightedUs": 337000,
+          "periodWeightedFraction": 0.052030260923266944
+        },
+        {
+          "name": "rend",
+          "samples": 2,
+          "rawFraction": 0.0030581039755351682,
+          "periodWeightedUs": 21000,
+          "periodWeightedFraction": 0.003242241778601204
+        },
+        {
+          "name": "hfold",
+          "samples": 2,
+          "rawFraction": 0.0030581039755351682,
+          "periodWeightedUs": 16000,
+          "periodWeightedFraction": 0.0024702794503628223
+        },
+        {
+          "name": "rend.mix",
+          "samples": 2,
+          "rawFraction": 0.0030581039755351682,
+          "periodWeightedUs": 21000,
+          "periodWeightedFraction": 0.003242241778601204
+        },
+        {
+          "name": "p93.loop",
+          "samples": 1,
+          "rawFraction": 0.0015290519877675841,
+          "periodWeightedUs": 13000,
+          "periodWeightedFraction": 0.002007102053419793
+        }
+      ],
+      "leafOwners": [
+        {
+          "name": "[unknown]",
+          "samples": 320,
+          "rawFraction": 0.4892966360856269,
+          "periodWeightedUs": 3140000,
+          "periodWeightedFraction": 0.48479234213370387
+        },
+        {
+          "name": "mit",
+          "samples": 148,
+          "rawFraction": 0.22629969418960244,
+          "periodWeightedUs": 1474000,
+          "periodWeightedFraction": 0.227574494364675
+        },
+        {
+          "name": "rcol",
+          "samples": 107,
+          "rawFraction": 0.1636085626911315,
+          "periodWeightedUs": 1096000,
+          "periodWeightedFraction": 0.16921414234985332
+        },
+        {
+          "name": "rpix",
+          "samples": 78,
+          "rawFraction": 0.11926605504587157,
+          "periodWeightedUs": 759000,
+          "periodWeightedFraction": 0.11718388142658638
+        },
+        {
+          "name": "hfold",
+          "samples": 1,
+          "rawFraction": 0.0015290519877675841,
+          "periodWeightedUs": 8000,
+          "periodWeightedFraction": 0.0012351397251814111
+        }
+      ],
+      "leafs": [
+        {
+          "name": "[unresolved]",
+          "samples": 160,
+          "rawFraction": 0.24464831804281345,
+          "periodWeightedUs": 1555000,
+          "periodWeightedFraction": 0.2400802840821368
+        },
+        {
+          "name": "p113d_FID_$direct.mit",
+          "samples": 148,
+          "rawFraction": 0.22629969418960244,
+          "periodWeightedUs": 1474000,
+          "periodWeightedFraction": 0.227574494364675
+        },
+        {
+          "name": "p111_FID_$direct.rcol",
+          "samples": 54,
+          "rawFraction": 0.08256880733944955,
+          "periodWeightedUs": 552000,
+          "periodWeightedFraction": 0.08522464103751737
+        },
+        {
+          "name": "work_loop",
+          "samples": 45,
+          "rawFraction": 0.06880733944954129,
+          "periodWeightedUs": 445000,
+          "periodWeightedFraction": 0.068704647213216
+        },
+        {
+          "name": "p113d_FID_$direct.rpix",
+          "samples": 45,
+          "rawFraction": 0.06880733944954129,
+          "periodWeightedUs": 450000,
+          "periodWeightedFraction": 0.06947660954145438
+        },
+        {
+          "name": "p111_FID_$p111.k.68044",
+          "samples": 42,
+          "rawFraction": 0.06422018348623854,
+          "periodWeightedUs": 436000,
+          "periodWeightedFraction": 0.0673151150223869
+        }
+      ],
+      "ownerLeafs": [
+        {
+          "name": [
+            "rpix",
+            "generated_bend",
+            "p113d_FID_$direct.mit"
+          ],
+          "samples": 82,
+          "rawFraction": 0.12538226299694188,
+          "periodWeightedUs": 846000,
+          "periodWeightedFraction": 0.13061602593793423
+        },
+        {
+          "name": [
+            "hchunk",
+            "generated_bend",
+            "p113d_FID_$direct.mit"
+          ],
+          "samples": 66,
+          "rawFraction": 0.10091743119266056,
+          "periodWeightedUs": 628000,
+          "periodWeightedFraction": 0.09695846842674077
+        },
+        {
+          "name": [
+            "rcol",
+            "memory_fill",
+            "[unresolved]"
+          ],
+          "samples": 62,
+          "rawFraction": 0.09480122324159021,
+          "periodWeightedUs": 586000,
+          "periodWeightedFraction": 0.09047398486953837
+        },
+        {
+          "name": [
+            "rcol",
+            "memory_copy",
+            "[unresolved]"
+          ],
+          "samples": 59,
+          "rawFraction": 0.09021406727828746,
+          "periodWeightedUs": 582000,
+          "periodWeightedFraction": 0.08985641500694766
+        }
+      ]
+    },
+    {
+      "workload": "tree-bitonic",
+      "variant": "phase126",
+      "samples": 835,
+      "weightedUs": 8270000,
+      "ownerKnown": 0,
+      "contextKnown": 0,
+      "leafOwnerKnown": 301,
+      "fillSamples": 93,
+      "copySamples": 52,
+      "zeroLoss": true,
+      "groups": [
+        {
+          "name": "generated_bend",
+          "samples": 301,
+          "rawFraction": 0.36047904191616764,
+          "periodWeightedUs": 3008000,
+          "periodWeightedFraction": 0.3637243047158404
+        },
+        {
+          "name": "ownership_and_products",
+          "samples": 212,
+          "rawFraction": 0.25389221556886227,
+          "periodWeightedUs": 2081000,
+          "periodWeightedFraction": 0.25163240628778716
+        },
+        {
+          "name": "other",
+          "samples": 133,
+          "rawFraction": 0.1592814371257485,
+          "periodWeightedUs": 1334000,
+          "periodWeightedFraction": 0.16130592503022975
+        },
+        {
+          "name": "memory_fill",
+          "samples": 93,
+          "rawFraction": 0.11137724550898204,
+          "periodWeightedUs": 889000,
+          "periodWeightedFraction": 0.10749697702539299
+        },
+        {
+          "name": "memory_copy",
+          "samples": 52,
+          "rawFraction": 0.06227544910179641,
+          "periodWeightedUs": 526000,
+          "periodWeightedFraction": 0.06360338573155985
+        },
+        {
+          "name": "scheduler",
+          "samples": 44,
+          "rawFraction": 0.05269461077844311,
+          "periodWeightedUs": 432000,
+          "periodWeightedFraction": 0.052237001209189844
+        }
+      ],
+      "families": {
+        "p88_": {
+          "samples": 0,
+          "periodWeightedFraction": 0.0
+        },
+        "p111v_": {
+          "samples": 0,
+          "periodWeightedFraction": 0.0
+        },
+        "index_": {
+          "samples": 0,
+          "periodWeightedFraction": 0.0
+        },
+        "String.": {
+          "samples": 0,
+          "periodWeightedFraction": 0.0
+        },
+        "nq_uses": {
+          "samples": 0,
+          "periodWeightedFraction": 0.0
+        },
+        "p126bp_": {
+          "samples": 0,
+          "periodWeightedFraction": 0.0
+        },
+        "p113pl_": {
+          "samples": 0,
+          "periodWeightedFraction": 0.0
+        }
+      },
+      "owners": [
+        {
+          "name": "[unknown]",
+          "samples": 835,
+          "rawFraction": 1.0,
+          "periodWeightedUs": 8270000,
+          "periodWeightedFraction": 1.0
+        }
+      ],
+      "leafOwners": [
+        {
+          "name": "[unknown]",
+          "samples": 534,
+          "rawFraction": 0.6395209580838324,
+          "periodWeightedUs": 5262000,
+          "periodWeightedFraction": 0.6362756952841596
+        },
+        {
+          "name": "warp",
+          "samples": 103,
+          "rawFraction": 0.12335329341317365,
+          "periodWeightedUs": 1059000,
+          "periodWeightedFraction": 0.12805320435308343
+        },
+        {
+          "name": "flow",
+          "samples": 80,
+          "rawFraction": 0.09580838323353294,
+          "periodWeightedUs": 765000,
+          "periodWeightedFraction": 0.09250302297460701
+        },
+        {
+          "name": "warp_leaf",
+          "samples": 46,
+          "rawFraction": 0.055089820359281436,
+          "periodWeightedUs": 483000,
+          "periodWeightedFraction": 0.05840386940749698
+        },
+        {
+          "name": "warp_zip",
+          "samples": 27,
+          "rawFraction": 0.032335329341317366,
+          "periodWeightedUs": 276000,
+          "periodWeightedFraction": 0.03337363966142685
+        },
+        {
+          "name": "bsort",
+          "samples": 24,
+          "rawFraction": 0.02874251497005988,
+          "periodWeightedUs": 217000,
+          "periodWeightedFraction": 0.026239419588875452
+        }
+      ],
+      "leafs": [
+        {
+          "name": "[unresolved]",
+          "samples": 145,
+          "rawFraction": 0.17365269461077845,
+          "periodWeightedUs": 1415000,
+          "periodWeightedFraction": 0.17110036275695284
+        },
+        {
+          "name": "p125_rt_ctor2",
+          "samples": 96,
+          "rawFraction": 0.11497005988023952,
+          "periodWeightedUs": 923000,
+          "periodWeightedFraction": 0.11160822249093108
+        },
+        {
+          "name": "p125_rt_take2",
+          "samples": 86,
+          "rawFraction": 0.1029940119760479,
+          "periodWeightedUs": 858000,
+          "periodWeightedFraction": 0.1037484885126965
+        },
+        {
+          "name": "p114r_FID_$direct.warp",
+          "samples": 75,
+          "rawFraction": 0.08982035928143713,
+          "periodWeightedUs": 790000,
+          "periodWeightedFraction": 0.09552599758162031
+        },
+        {
+          "name": "p111_set_regs",
+          "samples": 46,
+          "rawFraction": 0.055089820359281436,
+          "periodWeightedUs": 458000,
+          "periodWeightedFraction": 0.05538089480048368
+        },
+        {
+          "name": "work_loop",
+          "samples": 44,
+          "rawFraction": 0.05269461077844311,
+          "periodWeightedUs": 432000,
+          "periodWeightedFraction": 0.052237001209189844
+        }
+      ],
+      "ownerLeafs": [
+        {
+          "name": [
+            "[unknown]",
+            "ownership_and_products",
+            "p125_rt_ctor2"
+          ],
+          "samples": 96,
+          "rawFraction": 0.11497005988023952,
+          "periodWeightedUs": 923000,
+          "periodWeightedFraction": 0.11160822249093108
+        },
+        {
+          "name": [
+            "[unknown]",
+            "memory_fill",
+            "[unresolved]"
+          ],
+          "samples": 93,
+          "rawFraction": 0.11137724550898204,
+          "periodWeightedUs": 889000,
+          "periodWeightedFraction": 0.10749697702539299
+        },
+        {
+          "name": [
+            "[unknown]",
+            "ownership_and_products",
+            "p125_rt_take2"
+          ],
+          "samples": 86,
+          "rawFraction": 0.1029940119760479,
+          "periodWeightedUs": 858000,
+          "periodWeightedFraction": 0.1037484885126965
+        },
+        {
+          "name": [
+            "[unknown]",
+            "generated_bend",
+            "p114r_FID_$direct.warp"
+          ],
+          "samples": 75,
+          "rawFraction": 0.08982035928143713,
+          "periodWeightedUs": 790000,
+          "periodWeightedFraction": 0.09552599758162031
+        }
+      ]
+    },
+    {
+      "workload": "tree-bitonic",
+      "variant": "phase126-diagnostic",
+      "samples": 930,
+      "weightedUs": 9205000,
+      "ownerKnown": 893,
+      "contextKnown": 893,
+      "leafOwnerKnown": 322,
+      "fillSamples": 87,
+      "copySamples": 68,
+      "zeroLoss": true,
+      "groups": [
+        {
+          "name": "generated_bend",
+          "samples": 322,
+          "rawFraction": 0.34623655913978496,
+          "periodWeightedUs": 3226000,
+          "periodWeightedFraction": 0.35046170559478546
+        },
+        {
+          "name": "ownership_and_products",
+          "samples": 270,
+          "rawFraction": 0.2903225806451613,
+          "periodWeightedUs": 2645000,
+          "periodWeightedFraction": 0.287343834872352
+        },
+        {
+          "name": "other",
+          "samples": 136,
+          "rawFraction": 0.14623655913978495,
+          "periodWeightedUs": 1333000,
+          "periodWeightedFraction": 0.14481260184682238
+        },
+        {
+          "name": "memory_fill",
+          "samples": 87,
+          "rawFraction": 0.0935483870967742,
+          "periodWeightedUs": 896000,
+          "periodWeightedFraction": 0.09733840304182509
+        },
+        {
+          "name": "memory_copy",
+          "samples": 68,
+          "rawFraction": 0.07311827956989247,
+          "periodWeightedUs": 664000,
+          "periodWeightedFraction": 0.07213470939706682
+        },
+        {
+          "name": "scheduler",
+          "samples": 47,
+          "rawFraction": 0.05053763440860215,
+          "periodWeightedUs": 441000,
+          "periodWeightedFraction": 0.04790874524714829
+        }
+      ],
+      "families": {
+        "p88_": {
+          "samples": 0,
+          "periodWeightedFraction": 0.0
+        },
+        "p111v_": {
+          "samples": 0,
+          "periodWeightedFraction": 0.0
+        },
+        "index_": {
+          "samples": 0,
+          "periodWeightedFraction": 0.0
+        },
+        "String.": {
+          "samples": 0,
+          "periodWeightedFraction": 0.0
+        },
+        "nq_uses": {
+          "samples": 0,
+          "periodWeightedFraction": 0.0
+        },
+        "p126bp_": {
+          "samples": 0,
+          "periodWeightedFraction": 0.0
+        },
+        "p113pl_": {
+          "samples": 0,
+          "periodWeightedFraction": 0.0
+        }
+      },
+      "owners": [
+        {
+          "name": "warp",
+          "samples": 511,
+          "rawFraction": 0.5494623655913978,
+          "periodWeightedUs": 5013000,
+          "periodWeightedFraction": 0.5445953286257469
+        },
+        {
+          "name": "flow",
+          "samples": 270,
+          "rawFraction": 0.2903225806451613,
+          "periodWeightedUs": 2705000,
+          "periodWeightedFraction": 0.29386203150461704
+        },
+        {
+          "name": "warp_node",
+          "samples": 56,
+          "rawFraction": 0.060215053763440864,
+          "periodWeightedUs": 583000,
+          "periodWeightedFraction": 0.06333514394350896
+        },
+        {
+          "name": "bsort",
+          "samples": 44,
+          "rawFraction": 0.047311827956989246,
+          "periodWeightedUs": 442000,
+          "periodWeightedFraction": 0.04801738185768604
+        },
+        {
+          "name": "[unknown]",
+          "samples": 37,
+          "rawFraction": 0.03978494623655914,
+          "periodWeightedUs": 346000,
+          "periodWeightedFraction": 0.03758826724606192
+        },
+        {
+          "name": "scan",
+          "samples": 12,
+          "rawFraction": 0.012903225806451613,
+          "periodWeightedUs": 116000,
+          "periodWeightedFraction": 0.012601846822379142
+        }
+      ],
+      "leafOwners": [
+        {
+          "name": "[unknown]",
+          "samples": 608,
+          "rawFraction": 0.6537634408602151,
+          "periodWeightedUs": 5979000,
+          "periodWeightedFraction": 0.6495382944052146
+        },
+        {
+          "name": "warp",
+          "samples": 132,
+          "rawFraction": 0.14193548387096774,
+          "periodWeightedUs": 1296000,
+          "periodWeightedFraction": 0.1407930472569256
+        },
+        {
+          "name": "flow",
+          "samples": 88,
+          "rawFraction": 0.09462365591397849,
+          "periodWeightedUs": 889000,
+          "periodWeightedFraction": 0.09657794676806084
+        },
+        {
+          "name": "warp_leaf",
+          "samples": 35,
+          "rawFraction": 0.03763440860215054,
+          "periodWeightedUs": 360000,
+          "periodWeightedFraction": 0.03910917979359044
+        },
+        {
+          "name": "warp_zip",
+          "samples": 24,
+          "rawFraction": 0.025806451612903226,
+          "periodWeightedUs": 247000,
+          "periodWeightedFraction": 0.026833242802824554
+        },
+        {
+          "name": "bsort",
+          "samples": 18,
+          "rawFraction": 0.01935483870967742,
+          "periodWeightedUs": 179000,
+          "periodWeightedFraction": 0.019445953286257468
+        }
+      ],
+      "leafs": [
+        {
+          "name": "[unresolved]",
+          "samples": 156,
+          "rawFraction": 0.16774193548387098,
+          "periodWeightedUs": 1573000,
+          "periodWeightedFraction": 0.17088538837588269
+        },
+        {
+          "name": "p125_rt_ctor2",
+          "samples": 128,
+          "rawFraction": 0.13763440860215054,
+          "periodWeightedUs": 1209000,
+          "periodWeightedFraction": 0.13134166214014123
+        },
+        {
+          "name": "p125_rt_take2",
+          "samples": 99,
+          "rawFraction": 0.1064516129032258,
+          "periodWeightedUs": 997000,
+          "periodWeightedFraction": 0.10831070070613796
+        },
+        {
+          "name": "p114r_FID_$direct.warp",
+          "samples": 94,
+          "rawFraction": 0.1010752688172043,
+          "periodWeightedUs": 912000,
+          "periodWeightedFraction": 0.09907658881042912
+        },
+        {
+          "name": "work_loop",
+          "samples": 47,
+          "rawFraction": 0.05053763440860215,
+          "periodWeightedUs": 441000,
+          "periodWeightedFraction": 0.04790874524714829
+        },
+        {
+          "name": "p111_set_regs",
+          "samples": 41,
+          "rawFraction": 0.04408602150537634,
+          "periodWeightedUs": 388000,
+          "periodWeightedFraction": 0.042151004888647474
+        }
+      ],
+      "ownerLeafs": [
+        {
+          "name": [
+            "warp",
+            "ownership_and_products",
+            "p125_rt_ctor2"
+          ],
+          "samples": 106,
+          "rawFraction": 0.11397849462365592,
+          "periodWeightedUs": 993000,
+          "periodWeightedFraction": 0.10787615426398696
+        },
+        {
+          "name": [
+            "warp",
+            "generated_bend",
+            "p114r_FID_$direct.warp"
+          ],
+          "samples": 94,
+          "rawFraction": 0.1010752688172043,
+          "periodWeightedUs": 912000,
+          "periodWeightedFraction": 0.09907658881042912
+        },
+        {
+          "name": [
+            "warp",
+            "ownership_and_products",
+            "p125_rt_take2"
+          ],
+          "samples": 64,
+          "rawFraction": 0.06881720430107527,
+          "periodWeightedUs": 632000,
+          "periodWeightedFraction": 0.06865833785985877
+        },
+        {
+          "name": [
+            "flow",
+            "memory_fill",
+            "[unresolved]"
+          ],
+          "samples": 51,
+          "rawFraction": 0.054838709677419356,
+          "periodWeightedUs": 543000,
+          "periodWeightedFraction": 0.05898967952199891
+        }
+      ]
+    }
+  ],
+  "eventCases": [
+    {
+      "workload": "lexer",
+      "variant": "live-bank-diagnostic",
+      "totals": {
+        "dispatches": 25617860,
+        "heap_alloc_calls": 24563699,
+        "heap_alloc_miss_calls": 1553,
+        "heap_free_calls": 24563699,
+        "heap_alloc_requested_words": 49480080,
+        "heap_free_words": 49480080,
+        "term_keep_calls": 10676041,
+        "term_sink_calls": 35531355,
+        "term_drop_calls": 36361134,
+        "ctr_take_calls": 40679079,
+        "frame_push_calls": 69665,
+        "frame_capture_words": 74034,
+        "return_calls": 11189894,
+        "primitive_calls": 6258731,
+        "register_words_copy_requested": 51460743,
+        "register_words_clear_requested": 0
+      },
+      "quality": {
+        "usableCounts": true,
+        "complete": true,
+        "counts_enabled": true,
+        "counter_overflow": false,
+        "invalid_context_events": 0,
+        "global_context_scope": "one-active-dispatch-thread-only"
+      },
+      "captures": [
+        {
+          "round": 1,
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase127/live-bank-diagnostic01/027-events-lexer-live-bank-diagnostic/events.json",
+            "bytes": 789316,
+            "sha256": "b9a58836b533325a8ace99c9aaeb8e6d64d2b040e37651e1e8ec1a081fc6bb63"
+          },
+          "report": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase127/refresh-survey01/compiler-events-027-lexer.json",
+            "bytes": 1392740,
+            "sha256": "4decc081d00a46c4c739d289e18112a6134c300b247fac9ee2352ffc915038bc"
+          }
+        }
+      ],
+      "entrySegmentDispatches": [
+        {
+          "fid": 46934,
+          "loweredOwner": "Bool.and",
+          "role": "direct_segment",
+          "dispatches": 1675175
+        },
+        {
+          "fid": 46524,
+          "loweredOwner": "index_find",
+          "role": "direct_segment",
+          "dispatches": 1621117
+        },
+        {
+          "fid": 780,
+          "loweredOwner": "p88_digits",
+          "role": "direct_segment",
+          "dispatches": 1087899
+        },
+        {
+          "fid": 46891,
+          "loweredOwner": "String.order",
+          "role": "direct_segment",
+          "dispatches": 811328
+        },
+        {
+          "fid": 46899,
+          "loweredOwner": "String.eq",
+          "role": "direct_segment",
+          "dispatches": 811328
+        }
+      ],
+      "topOwnersPerCounter": {
+        "heap_alloc_calls": [
+          {
+            "owner": "String.append",
+            "kind": "lowered_owner",
+            "count": 7188642,
+            "fractionOfAllEvents": 0.29265307313853667
+          },
+          {
+            "owner": "String.order",
+            "kind": "lowered_owner",
+            "count": 3297615,
+            "fractionOfAllEvents": 0.13424749261094593
+          },
+          {
+            "owner": null,
+            "kind": "outside_dispatch",
+            "count": 2367746,
+            "fractionOfAllEvents": 0.0963920784080606
+          }
+        ],
+        "term_drop_calls": [
+          {
+            "owner": "index_bucket",
+            "kind": "lowered_owner",
+            "count": 7498341,
+            "fractionOfAllEvents": 0.20621856843078656
+          },
+          {
+            "owner": "p111v_get",
+            "kind": "lowered_owner",
+            "count": 4312191,
+            "fractionOfAllEvents": 0.1185934135057504
+          },
+          {
+            "owner": "index_find",
+            "kind": "lowered_owner",
+            "count": 3135117,
+            "fractionOfAllEvents": 0.08622165084290276
+          }
+        ],
+        "dispatches": [
+          {
+            "owner": "p88_digits",
+            "kind": "lowered_owner",
+            "count": 3376728,
+            "fractionOfAllEvents": 0.1318114783982737
+          },
+          {
+            "owner": "Bool.and",
+            "kind": "lowered_owner",
+            "count": 1675175,
+            "fractionOfAllEvents": 0.06539090306528336
+          },
+          {
+            "owner": "p111v_name_chars",
+            "kind": "lowered_owner",
+            "count": 1662287,
+            "fractionOfAllEvents": 0.06488781654673731
+          }
+        ],
+        "register_words_clear_requested": []
+      }
+    },
+    {
+      "workload": "coverage-closures-256",
+      "variant": "live-bank-diagnostic",
+      "totals": {
+        "dispatches": 9914279,
+        "heap_alloc_calls": 9531984,
+        "heap_alloc_miss_calls": 1180,
+        "heap_free_calls": 9531984,
+        "heap_alloc_requested_words": 19644313,
+        "heap_free_words": 19644313,
+        "term_keep_calls": 2188144,
+        "term_sink_calls": 5779013,
+        "term_drop_calls": 4951053,
+        "ctr_take_calls": 9354680,
+        "frame_push_calls": 29186,
+        "frame_capture_words": 29777,
+        "return_calls": 4290192,
+        "primitive_calls": 2242059,
+        "register_words_copy_requested": 20955098,
+        "register_words_clear_requested": 0
+      },
+      "quality": {
+        "usableCounts": true,
+        "complete": true,
+        "counts_enabled": true,
+        "counter_overflow": false,
+        "invalid_context_events": 0,
+        "global_context_scope": "one-active-dispatch-thread-only"
+      },
+      "captures": [
+        {
+          "round": 1,
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase127/live-bank-diagnostic01/028-events-coverage-closures-256-live-bank-diagnostic/events.json",
+            "bytes": 738795,
+            "sha256": "9f28312e9553fc61bdf23a5c3deb0474673255a59a30cf09165c86c2ad4f3f5d"
+          },
+          "report": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase127/refresh-survey01/compiler-events-028-coverage-closures-256.json",
+            "bytes": 1341441,
+            "sha256": "5dd192683a90467cb73038956930e1dadedf1f9477e28059a361a1ba789ca927"
+          }
+        }
+      ],
+      "entrySegmentDispatches": [
+        {
+          "fid": 780,
+          "loweredOwner": "p88_digits",
+          "role": "direct_segment",
+          "dispatches": 1087899
+        },
+        {
+          "fid": 46934,
+          "loweredOwner": "Bool.and",
+          "role": "direct_segment",
+          "dispatches": 836294
+        },
+        {
+          "fid": 774,
+          "loweredOwner": "p88_digit",
+          "role": "direct_segment",
+          "dispatches": 762943
+        },
+        {
+          "fid": 915,
+          "loweredOwner": "p88_u32",
+          "role": "direct_segment",
+          "dispatches": 324956
+        },
+        {
+          "fid": 931,
+          "loweredOwner": "p88_number",
+          "role": "direct_segment",
+          "dispatches": 324069
+        }
+      ],
+      "topOwnersPerCounter": {
+        "heap_alloc_calls": [
+          {
+            "owner": null,
+            "kind": "outside_dispatch",
+            "count": 2356100,
+            "fractionOfAllEvents": 0.24717834188559276
+          },
+          {
+            "owner": "p88_number",
+            "kind": "lowered_owner",
+            "count": 1620345,
+            "fractionOfAllEvents": 0.1699903189094736
+          },
+          {
+            "owner": "String.append",
+            "kind": "lowered_owner",
+            "count": 1106179,
+            "fractionOfAllEvents": 0.1160491876612466
+          }
+        ],
+        "term_drop_calls": [
+          {
+            "owner": "kr_filter",
+            "kind": "lowered_owner",
+            "count": 364532,
+            "fractionOfAllEvents": 0.07362716577665397
+          },
+          {
+            "owner": "p88_string_eq",
+            "kind": "lowered_owner",
+            "count": 344414,
+            "fractionOfAllEvents": 0.06956378774373856
+          },
+          {
+            "owner": "index_bucket",
+            "kind": "lowered_owner",
+            "count": 248085,
+            "fractionOfAllEvents": 0.05010752258155992
+          }
+        ],
+        "dispatches": [
+          {
+            "owner": "p88_digits",
+            "kind": "lowered_owner",
+            "count": 3376728,
+            "fractionOfAllEvents": 0.340592392043839
+          },
+          {
+            "owner": "Bool.and",
+            "kind": "lowered_owner",
+            "count": 836294,
+            "fractionOfAllEvents": 0.08435247787559741
+          },
+          {
+            "owner": "p88_digit",
+            "kind": "lowered_owner",
+            "count": 762943,
+            "fractionOfAllEvents": 0.07695395701492766
+          }
+        ],
+        "register_words_clear_requested": []
+      }
+    },
+    {
+      "workload": "coverage-map-churn-128",
+      "variant": "live-bank-diagnostic",
+      "totals": {
+        "dispatches": 39609460,
+        "heap_alloc_calls": 38187070,
+        "heap_alloc_miss_calls": 3383,
+        "heap_free_calls": 38187070,
+        "heap_alloc_requested_words": 70295499,
+        "heap_free_words": 70295499,
+        "term_keep_calls": 24039429,
+        "term_sink_calls": 72005276,
+        "term_drop_calls": 54141955,
+        "ctr_take_calls": 60739560,
+        "frame_push_calls": 216286,
+        "frame_capture_words": 226321,
+        "return_calls": 17284627,
+        "primitive_calls": 10065715,
+        "register_words_copy_requested": 74902710,
+        "register_words_clear_requested": 0
+      },
+      "quality": {
+        "usableCounts": true,
+        "complete": true,
+        "counts_enabled": true,
+        "counter_overflow": false,
+        "invalid_context_events": 0,
+        "global_context_scope": "one-active-dispatch-thread-only"
+      },
+      "captures": [
+        {
+          "round": 1,
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase127/live-bank-diagnostic01/029-events-coverage-map-churn-128-live-bank-diagnostic/events.json",
+            "bytes": 838626,
+            "sha256": "efeb233982cf77a66bd2bce0e6fc24acaaa9cd954c83e790e71f7917d3a0431d"
+          },
+          "report": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase127/refresh-survey01/compiler-events-029-coverage-map-churn-128.json",
+            "bytes": 1462181,
+            "sha256": "c638106e67b79bb11333ec23c60e45e318cef61aaae93c576d5c0af097d95075"
+          }
+        }
+      ],
+      "entrySegmentDispatches": [
+        {
+          "fid": 46891,
+          "loweredOwner": "String.order",
+          "role": "direct_segment",
+          "dispatches": 2075608
+        },
+        {
+          "fid": 46899,
+          "loweredOwner": "String.eq",
+          "role": "direct_segment",
+          "dispatches": 2075608
+        },
+        {
+          "fid": 46524,
+          "loweredOwner": "index_find",
+          "role": "direct_segment",
+          "dispatches": 1628203
+        },
+        {
+          "fid": 46934,
+          "loweredOwner": "Bool.and",
+          "role": "direct_segment",
+          "dispatches": 1464188
+        },
+        {
+          "fid": 780,
+          "loweredOwner": "p88_digits",
+          "role": "direct_segment",
+          "dispatches": 1087899
+        }
+      ],
+      "topOwnersPerCounter": {
+        "heap_alloc_calls": [
+          {
+            "owner": "String.append",
+            "kind": "lowered_owner",
+            "count": 10857714,
+            "fractionOfAllEvents": 0.2843295911417137
+          },
+          {
+            "owner": "String.order",
+            "kind": "lowered_owner",
+            "count": 8474987,
+            "fractionOfAllEvents": 0.2219334188247488
+          },
+          {
+            "owner": null,
+            "kind": "outside_dispatch",
+            "count": 2357304,
+            "fractionOfAllEvents": 0.061730423412951034
+          }
+        ],
+        "term_drop_calls": [
+          {
+            "owner": "nq_uses",
+            "kind": "lowered_owner",
+            "count": 8487508,
+            "fractionOfAllEvents": 0.15676397352108914
+          },
+          {
+            "owner": "index_find",
+            "kind": "lowered_owner",
+            "count": 3167160,
+            "fractionOfAllEvents": 0.05849733353736488
+          },
+          {
+            "owner": "index_bucket",
+            "kind": "lowered_owner",
+            "count": 2668465,
+            "fractionOfAllEvents": 0.049286454469551384
+          }
+        ],
+        "dispatches": [
+          {
+            "owner": "String.eq",
+            "kind": "lowered_owner",
+            "count": 4151216,
+            "fractionOfAllEvents": 0.1048036504410815
+          },
+          {
+            "owner": "p88_digits",
+            "kind": "lowered_owner",
+            "count": 3376728,
+            "fractionOfAllEvents": 0.08525054368325143
+          },
+          {
+            "owner": "String.order",
+            "kind": "lowered_owner",
+            "count": 2075608,
+            "fractionOfAllEvents": 0.05240182522054075
+          }
+        ],
+        "register_words_clear_requested": []
+      }
+    },
+    {
+      "workload": "mandelbrot",
+      "variant": "phase126-diagnostic",
+      "totals": {
+        "dispatches": 11780608,
+        "heap_alloc_calls": 72442,
+        "heap_alloc_miss_calls": 4,
+        "heap_free_calls": 72442,
+        "heap_alloc_requested_words": 578832,
+        "heap_free_words": 578832,
+        "term_keep_calls": 4737488,
+        "term_sink_calls": 12,
+        "term_drop_calls": 8,
+        "ctr_take_calls": 72386,
+        "frame_push_calls": 0,
+        "frame_capture_words": 0,
+        "return_calls": 4701380,
+        "primitive_calls": 4674222,
+        "register_words_copy_requested": 79371125,
+        "register_words_clear_requested": 144459268
+      },
+      "quality": {
+        "usableCounts": true,
+        "complete": true,
+        "counts_enabled": true,
+        "counter_overflow": false,
+        "invalid_context_events": 0,
+        "global_context_scope": "one-active-dispatch-thread-only"
+      },
+      "captures": [
+        {
+          "round": 1,
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase127/programs02/run01/044-events-mandelbrot-phase126-diagnostic/events.json",
+            "bytes": 9116,
+            "sha256": "a1adf50bdce9d5bb7828779ff42b0dfb93a2c2f27243bd4ab72d8b6e776027d2"
+          },
+          "report": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase127/refresh-survey01/program-events-044-mandelbrot.json",
+            "bytes": 42139,
+            "sha256": "b1256874ec8ab846a1d0629318f945db8669134c2f05f7ea63d016a86edd6a99"
+          }
+        },
+        {
+          "round": 2,
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase127/programs02/run01/047-events-mandelbrot-phase126-diagnostic/events.json",
+            "bytes": 9116,
+            "sha256": "a1adf50bdce9d5bb7828779ff42b0dfb93a2c2f27243bd4ab72d8b6e776027d2"
+          },
+          "report": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase127/refresh-survey01/program-events-047-mandelbrot.json",
+            "bytes": 42139,
+            "sha256": "c85ca33a5f71a036fec1575f38003c4c8905b962ff9cac41bb8ee84ded039b85"
+          }
+        },
+        {
+          "round": 3,
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase127/programs02/run01/048-events-mandelbrot-phase126-diagnostic/events.json",
+            "bytes": 9116,
+            "sha256": "a1adf50bdce9d5bb7828779ff42b0dfb93a2c2f27243bd4ab72d8b6e776027d2"
+          },
+          "report": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase127/refresh-survey01/program-events-048-mandelbrot.json",
+            "bytes": 42139,
+            "sha256": "6fa744b39279debb4c1d09e32295149c863fd907a20bd598a1113946ad359618"
+          }
+        }
+      ],
+      "entrySegmentDispatches": [
+        {
+          "fid": 413,
+          "loweredOwner": "rcol",
+          "role": "direct_segment",
+          "dispatches": 4619951
+        },
+        {
+          "fid": 390,
+          "loweredOwner": "rpix",
+          "role": "direct_segment",
+          "dispatches": 2314496
+        },
+        {
+          "fid": 280,
+          "loweredOwner": "hfold",
+          "role": "direct_segment",
+          "dispatches": 63287
+        },
+        {
+          "fid": 254,
+          "loweredOwner": "hchunk",
+          "role": "direct_segment",
+          "dispatches": 36164
+        },
+        {
+          "fid": 225,
+          "loweredOwner": "p93.loop",
+          "role": "direct_segment",
+          "dispatches": 9042
+        }
+      ],
+      "topOwnersPerCounter": {
+        "heap_alloc_calls": [
+          {
+            "owner": "hchunk",
+            "kind": "lowered_owner",
+            "count": 36164,
+            "fractionOfAllEvents": 0.49921316363435575
+          },
+          {
+            "owner": "hfold",
+            "kind": "lowered_owner",
+            "count": 27123,
+            "fractionOfAllEvents": 0.3744098727257668
+          },
+          {
+            "owner": "rend",
+            "kind": "lowered_owner",
+            "count": 9041,
+            "fractionOfAllEvents": 0.12480329090858894
+          }
+        ],
+        "term_drop_calls": [
+          {
+            "owner": "String.length",
+            "kind": "lowered_owner",
+            "count": 5,
+            "fractionOfAllEvents": 0.625
+          },
+          {
+            "owner": "String.order",
+            "kind": "lowered_owner",
+            "count": 2,
+            "fractionOfAllEvents": 0.25
+          },
+          {
+            "owner": null,
+            "kind": "outside_dispatch",
+            "count": 1,
+            "fractionOfAllEvents": 0.125
+          }
+        ],
+        "dispatches": [
+          {
+            "owner": "rcol",
+            "kind": "lowered_owner",
+            "count": 9230861,
+            "fractionOfAllEvents": 0.7835640571352515
+          },
+          {
+            "owner": "rpix",
+            "kind": "lowered_owner",
+            "count": 2314496,
+            "fractionOfAllEvents": 0.19646660002607674
+          },
+          {
+            "owner": "hfold",
+            "kind": "lowered_owner",
+            "count": 117533,
+            "fractionOfAllEvents": 0.00997681953257421
+          }
+        ],
+        "register_words_clear_requested": [
+          {
+            "owner": "rcol",
+            "kind": "lowered_owner",
+            "count": 99215934,
+            "fractionOfAllEvents": 0.686809059561343
+          },
+          {
+            "owner": "rpix",
+            "kind": "lowered_owner",
+            "count": 41660928,
+            "fractionOfAllEvents": 0.28839221309082086
+          },
+          {
+            "owner": "hfold",
+            "kind": "lowered_owner",
+            "count": 1645462,
+            "fractionOfAllEvents": 0.011390491055236415
+          }
+        ]
+      }
+    },
+    {
+      "workload": "tree-bitonic",
+      "variant": "phase126-diagnostic",
+      "totals": {
+        "dispatches": 15561788,
+        "heap_alloc_calls": 25200954,
+        "heap_alloc_miss_calls": 3,
+        "heap_free_calls": 25200954,
+        "heap_alloc_requested_words": 52078989,
+        "heap_free_words": 52078989,
+        "term_keep_calls": 2939035,
+        "term_sink_calls": 13,
+        "term_drop_calls": 8,
+        "ctr_take_calls": 25200897,
+        "frame_push_calls": 5037870,
+        "frame_capture_words": 5037870,
+        "return_calls": 6308064,
+        "primitive_calls": 7561755,
+        "register_words_copy_requested": 31540206,
+        "register_words_clear_requested": 77391883
+      },
+      "quality": {
+        "usableCounts": true,
+        "complete": true,
+        "counts_enabled": true,
+        "counter_overflow": false,
+        "invalid_context_events": 0,
+        "global_context_scope": "one-active-dispatch-thread-only"
+      },
+      "captures": [
+        {
+          "round": 1,
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase127/programs02/run01/045-events-tree-bitonic-phase126-diagnostic/events.json",
+            "bytes": 9269,
+            "sha256": "699f40f3a3694a54a34d0056dec5b86fe3ea323af0734311239fe0466fb412a3"
+          },
+          "report": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase127/refresh-survey01/program-events-045-tree-bitonic.json",
+            "bytes": 42392,
+            "sha256": "479b2476e78df334d6f6ffd25c1eb18af2838dd812602532ba0f72eaea24b809"
+          }
+        },
+        {
+          "round": 2,
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase127/programs02/run01/046-events-tree-bitonic-phase126-diagnostic/events.json",
+            "bytes": 9269,
+            "sha256": "699f40f3a3694a54a34d0056dec5b86fe3ea323af0734311239fe0466fb412a3"
+          },
+          "report": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase127/refresh-survey01/program-events-046-tree-bitonic.json",
+            "bytes": 42392,
+            "sha256": "cc0e931b08b1181c737bfc0dcd967fd6922cea5716dceb5ee44e7354c6adce42"
+          }
+        },
+        {
+          "round": 3,
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase127/programs02/run01/049-events-tree-bitonic-phase126-diagnostic/events.json",
+            "bytes": 9269,
+            "sha256": "699f40f3a3694a54a34d0056dec5b86fe3ea323af0734311239fe0466fb412a3"
+          },
+          "report": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase127/refresh-survey01/program-events-049-tree-bitonic.json",
+            "bytes": 42392,
+            "sha256": "f30c29bb8f47c1ef824e73b0752ab80194867d1fc5c3883eaaf7e7131570e8c6"
+          }
+        }
+      ],
+      "entrySegmentDispatches": [
+        {
+          "fid": 281,
+          "loweredOwner": "warp",
+          "role": "direct_segment",
+          "dispatches": 2942313
+        },
+        {
+          "fid": 301,
+          "loweredOwner": "flow",
+          "role": "direct_segment",
+          "dispatches": 2942313
+        },
+        {
+          "fid": 294,
+          "loweredOwner": "warp_node",
+          "role": "direct_segment",
+          "dispatches": 2523858
+        },
+        {
+          "fid": 335,
+          "loweredOwner": "bsort",
+          "role": "direct_segment",
+          "dispatches": 838551
+        },
+        {
+          "fid": 240,
+          "loweredOwner": "p93.loop",
+          "role": "direct_segment",
+          "dispatches": 1642
+        }
+      ],
+      "topOwnersPerCounter": {
+        "heap_alloc_calls": [
+          {
+            "owner": "warp",
+            "kind": "lowered_owner",
+            "count": 21419973,
+            "fractionOfAllEvents": 0.8499667512587024
+          },
+          {
+            "owner": "flow",
+            "kind": "lowered_owner",
+            "count": 2942313,
+            "fractionOfAllEvents": 0.11675403240686841
+          },
+          {
+            "owner": "scan",
+            "kind": "lowered_owner",
+            "count": 838551,
+            "fractionOfAllEvents": 0.033274573653045036
+          }
+        ],
+        "term_drop_calls": [
+          {
+            "owner": "String.length",
+            "kind": "lowered_owner",
+            "count": 5,
+            "fractionOfAllEvents": 0.625
+          },
+          {
+            "owner": "String.order",
+            "kind": "lowered_owner",
+            "count": 2,
+            "fractionOfAllEvents": 0.25
+          },
+          {
+            "owner": null,
+            "kind": "outside_dispatch",
+            "count": 1,
+            "fractionOfAllEvents": 0.125
+          }
+        ],
+        "dispatches": [
+          {
+            "owner": "flow",
+            "kind": "lowered_owner",
+            "count": 7990029,
+            "fractionOfAllEvents": 0.5134390084224255
+          },
+          {
+            "owner": "warp",
+            "kind": "lowered_owner",
+            "count": 2942313,
+            "fractionOfAllEvents": 0.18907293943343786
+          },
+          {
+            "owner": "warp_node",
+            "kind": "lowered_owner",
+            "count": 2523858,
+            "fractionOfAllEvents": 0.1621830344944938
+          }
+        ],
+        "register_words_clear_requested": [
+          {
+            "owner": "flow",
+            "kind": "lowered_owner",
+            "count": 40368600,
+            "fractionOfAllEvents": 0.5216128414914003
+          },
+          {
+            "owner": "warp",
+            "kind": "lowered_owner",
+            "count": 17653878,
+            "fractionOfAllEvents": 0.228110201169288
+          },
+          {
+            "owner": "warp_node",
+            "kind": "lowered_owner",
+            "count": 10095432,
+            "fractionOfAllEvents": 0.1304456179209388
+          }
+        ]
+      }
+    }
+  ]
+}

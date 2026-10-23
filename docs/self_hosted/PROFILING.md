@@ -86,6 +86,9 @@ python3 -B selfhost/tools/performance/phase111/guard.py \
 python3 -B selfhost/tools/profiler/compare.py \
   --report selfhost/build/profile-run/report.json \
   --out selfhost/build/profile-comparison.json
+python3 -B selfhost/tools/profiler/render.py \
+  --comparison selfhost/build/profile-comparison.json \
+  --out selfhost/build/profile-summary.md
 ```
 
 Add another variant with the same input/output contract to compare compilers or
@@ -118,6 +121,18 @@ FID-to-address correspondence against the linked executable. Its output states
 the conditional emitter-contract provenance; symbol names alone are not proof
 of source identity. Preserve the build/source receipts alongside the map.
 
+Sample attribution needs only `--analysis`, with optional `--contexts` and
+`--owners`. Physical `--callers` and `--table` are optional together. Event
+reports also expose observed direct-entry/factory dispatch counts separately from
+continuations; private calls and inlining can bypass these entries, so they are
+not a universal source-function invocation count.
+
+The binding includes the executable's actual runtime descriptor and capability
+bits. An owner map may remain reusable after a capability-only change, but that
+requires explicit source/QBE comparison evidence as well as linked-FID checks.
+Use `attribute.py --summary-only` when the original ordered vectors already
+exist and another per-sample JSONL copy would only consume disk.
+
 Use `compare.py --baseline diagnostic=baseline` to associate diagnostic captures
 with a separately measured clean executable. This association is explicit; the
 tool does not infer it from naming conventions. The investigator must establish
@@ -137,6 +152,26 @@ names do not identify the actual hot code. It is intentionally bounded to one
 physical caller and supported rules. It does not invent missing stack frames or
 recover optimized-away Bend continuations.
 
+## Follow a long computation over time
+
+`timeline.py` reuses authenticated captures and attribution without running the
+program again. For example:
+
+```sh
+python3 -B selfhost/tools/profiler/timeline.py \
+  --analysis CAPTURE/analysis.json --contexts CAPTURE/contexts.txt \
+  --owners OWNERS.json --window-cpu-seconds 25 --out FRESH_TIMELINE
+```
+
+Contexts and owners are optional for a physical-only view. JSON and Markdown
+show the leading physical leaves and active owners in each window, retaining
+unknowns in the denominator. Coordinates approximate sampled-thread CPU time
+from sample order and timer period; they are not measured wall timestamps.
+Loss, unsupported thread coverage or unauthenticated pairing suppress CPU
+coordinates and retain ordinal sample windows. A changing mix of function names
+does not itself establish compiler phase boundaries. Use `--window-samples`
+for explicit ordinal windows.
+
 ## Quality gates and interpretation
 
 Every run must match its independent status/stdout/stderr contract. Inputs,
@@ -144,6 +179,12 @@ executable, sampler, methods and analysis dependencies are hashed; captures keep
 ELF mappings, timer periods, loss, CPU coverage and exact raw sample order.
 Fresh output paths prevent accidental overwrite. Cancellation kills and reaps
 the workload process group. The runner does not execute shell command strings.
+
+For large compiler outputs, `deduplicate.py --report RUN/report.json --out
+RECEIPT.json` can replace completed exact-oracle output copies with hardlinks to
+their frozen oracle. It preserves every path and byte and records metadata
+changes; those shared files must remain immutable. Never edit retained artifacts
+in place. Counter-on and context-only timing distributions stay separate.
 
 Use two sampling periods to expose periodic aliasing. Reports retain low-sample
 captures but suppress confident quantitative attribution. Comparison can pool

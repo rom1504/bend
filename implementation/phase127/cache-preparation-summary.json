@@ -1,0 +1,1439 @@
+{
+  "schema": "bend-cache-preparation-ablation-v1",
+  "complete": true,
+  "scope": "Offline revalidation and summaries; no target execution by this analysis. Cache/live are deliberately different workload identities, never pooled together.",
+  "derivation": {
+    "method": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/profiler/compare.py",
+      "bytes": 23242,
+      "sha256": "f192a8ea1d6d32a1ee7a68fa18eb6c89a19fddb68551b299ab5c477363ac831e"
+    },
+    "statistics": "Median of three independent clean observations; delta = live median minus cache median; liveOverCache = live median / cache median. Sample captures pool only within mode; threshold500, zero-loss and coverage gates.",
+    "timing": "Complete child process including source/Base I/O and output; native compiler request only, no QBE machine build."
+  },
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase127/cache-live01/report.json",
+      "bytes": 81777,
+      "sha256": "d736058381be08e3f9612dc5aac969e995abe21f50c45c8ddc8ce086f921f130"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase127/cache-live01/manifest.json",
+      "bytes": 26093,
+      "sha256": "ce02d6b7933a493d57761dde3f8391d4440f73b78b03ade3171e8f8dc0e41d76"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase127/full-comparison01.json",
+      "bytes": 1442496,
+      "sha256": "71a2b64d94e92815deaeb59ff20c97a23fa158ed3fae3e72bdc384d493fd21fa"
+    }
+  ],
+  "elapsedSeconds": 96.53111577033997,
+  "cpuAffinity": [
+    3
+  ],
+  "observations": 30,
+  "cleanObservations": 18,
+  "sampleObservations": 12,
+  "cases": [
+    {
+      "workload": "lexer",
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p127-live-bank-same-source01-n1/program",
+        "bytes": 16109088,
+        "sha256": "7d74f5254509970f53ceda6f5305dc195afbb38bf8486005ffab8f1c62c61734"
+      },
+      "commands": {
+        "cache": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p127-live-bank-same-source01-n1/program",
+          "--threads",
+          "1",
+          "--gpu",
+          "off",
+          "--",
+          "phase111",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase88/broad-fixtures03/lexer.bend",
+          "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/base.bend",
+          "cache",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase88/base/carrier01/base.p88",
+          "p88-private-base-text-1:8dec5b64d3900d61a208e51d92113194b91364c4f4d35d1903edb481d678ed03"
+        ],
+        "live": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p127-live-bank-same-source01-n1/program",
+          "--threads",
+          "1",
+          "--gpu",
+          "off",
+          "--",
+          "phase111",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase88/broad-fixtures03/lexer.bend",
+          "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/base.bend",
+          "live",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase88/base/carrier01/base.p88",
+          "p88-private-base-text-1:8dec5b64d3900d61a208e51d92113194b91364c4f4d35d1903edb481d678ed03"
+        ]
+      },
+      "inputs": [
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase88/broad-fixtures03/lexer.bend",
+          "bytes": 7257,
+          "sha256": "f1d8e7e7e68f5c79053fadc35ba2f6e95f0115a40a5e6ce792e34d9f1faafdae"
+        },
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/base.bend",
+          "bytes": 75064,
+          "sha256": "99ac43f2b2bb3e3f39acdcedcecbbd3cb44749ce13969c827d6973fa66f7facf"
+        },
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase88/base/carrier01/base.p88",
+          "bytes": 1100924,
+          "sha256": "07af8cddb84820d861fc9f5d9475907754a64a9319de7d597c925149d8b186a7"
+        }
+      ],
+      "carrierStamp": "p88-private-base-text-1:8dec5b64d3900d61a208e51d92113194b91364c4f4d35d1903edb481d678ed03",
+      "oracle": {
+        "exitCode": 0,
+        "stdout": {
+          "kind": "exact",
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase112/p126-native32-transport01/000-lexer-cache-phase111/program.ssa",
+          "bytes": 577297,
+          "sha256": "d7f319ddfe98e211951e305d692fa0190f4c2ade7cf0beb998a5e88ae7f13559"
+        },
+        "stderr": {
+          "kind": "exact",
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase112/p126-native32-transport01/000-lexer-cache-phase111/compile.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "modes": {
+        "cache": {
+          "clean": {
+            "wallSeconds": {
+              "samples": [
+                2.2218380358535796,
+                2.231825718889013,
+                2.2643115101382136
+              ],
+              "count": 3,
+              "median": 2.231825718889013,
+              "minimum": 2.2218380358535796,
+              "maximum": 2.2643115101382136
+            },
+            "cpuSeconds": {
+              "samples": [
+                2.220213,
+                2.2309059999999996,
+                2.263435
+              ],
+              "count": 3,
+              "median": 2.2309059999999996,
+              "minimum": 2.220213,
+              "maximum": 2.263435
+            },
+            "peakRssKiB": {
+              "samples": [
+                51028,
+                51184,
+                51124
+              ],
+              "count": 3,
+              "median": 51124,
+              "minimum": 51028,
+              "maximum": 51184
+            }
+          },
+          "sampled": {
+            "wallSeconds": {
+              "samples": [
+                2.2588259170297533,
+                2.2190857608802617
+              ],
+              "count": 2,
+              "median": 2.2389558389550075,
+              "minimum": 2.2190857608802617,
+              "maximum": 2.2588259170297533
+            },
+            "cpuSeconds": {
+              "samples": [
+                2.22679,
+                2.2174799999999997
+              ],
+              "count": 2,
+              "median": 2.2221349999999997,
+              "minimum": 2.2174799999999997,
+              "maximum": 2.22679
+            },
+            "peakRssKiB": {
+              "samples": [
+                51508,
+                53536
+              ],
+              "count": 2,
+              "median": 52522.0,
+              "minimum": 51508,
+              "maximum": 53536
+            }
+          },
+          "sampledOverCleanWallRatio": 1.0031947476927292,
+          "profile": {
+            "samples": 447,
+            "adequate": false,
+            "estimateAvailable": false,
+            "estimateUnavailableReasons": [
+              "Insufficient pooled samples"
+            ],
+            "wholeChildCpuCoverageAdequate": true,
+            "unknownSamples": 28,
+            "captureLossTotals": {
+              "dropped": 0,
+              "overruns": 0
+            },
+            "sampleCountsByPeriodUs": {
+              "8000": 277,
+              "13000": 170
+            },
+            "acceptedCaptures": [
+              {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase127/cache-live01/018-sample-lexer-cache-live-bank/analysis.json",
+                "bytes": 133170,
+                "sha256": "da58f000c37833b1833004390551fa06f7f8238a3405886ffd2cc8088299ebf9",
+                "samples": 277,
+                "periodUs": 8000,
+                "dropped": 0,
+                "overruns": 0,
+                "captureWindowChildCpuFraction": 0.9983529466182263,
+                "wholeChildCpuCoverageAdequate": true
+              },
+              {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase127/cache-live01/029-sample-lexer-cache-live-bank/analysis.json",
+                "bytes": 101532,
+                "sha256": "eb552b5305f610acac85cd7fe449cd36b48ac7447a8b4a18cd0d1439a655c4c2",
+                "samples": 170,
+                "periodUs": 13000,
+                "dropped": 0,
+                "overruns": 0,
+                "captureWindowChildCpuFraction": 0.998547686563126,
+                "wholeChildCpuCoverageAdequate": true
+              }
+            ],
+            "rejectedCaptures": []
+          }
+        },
+        "live": {
+          "clean": {
+            "wallSeconds": {
+              "samples": [
+                3.8862946359440684,
+                3.9021027048584074,
+                3.8860559829045087
+              ],
+              "count": 3,
+              "median": 3.8862946359440684,
+              "minimum": 3.8860559829045087,
+              "maximum": 3.9021027048584074
+            },
+            "cpuSeconds": {
+              "samples": [
+                3.885246,
+                3.901192,
+                3.885104
+              ],
+              "count": 3,
+              "median": 3.885246,
+              "minimum": 3.885104,
+              "maximum": 3.901192
+            },
+            "peakRssKiB": {
+              "samples": [
+                36984,
+                37084,
+                36928
+              ],
+              "count": 3,
+              "median": 36984,
+              "minimum": 36928,
+              "maximum": 37084
+            }
+          },
+          "sampled": {
+            "wallSeconds": {
+              "samples": [
+                3.9237724270205945,
+                3.921104638837278
+              ],
+              "count": 2,
+              "median": 3.922438532928936,
+              "minimum": 3.921104638837278,
+              "maximum": 3.9237724270205945
+            },
+            "cpuSeconds": {
+              "samples": [
+                3.922267,
+                3.918689
+              ],
+              "count": 2,
+              "median": 3.920478,
+              "minimum": 3.918689,
+              "maximum": 3.922267
+            },
+            "peakRssKiB": {
+              "samples": [
+                37296,
+                40756
+              ],
+              "count": 2,
+              "median": 39026.0,
+              "minimum": 37296,
+              "maximum": 40756
+            }
+          },
+          "sampledOverCleanWallRatio": 1.0093003491424906,
+          "profile": {
+            "samples": 789,
+            "adequate": true,
+            "estimateAvailable": true,
+            "estimateUnavailableReasons": [],
+            "wholeChildCpuCoverageAdequate": true,
+            "unknownSamples": 30,
+            "captureLossTotals": {
+              "dropped": 0,
+              "overruns": 0
+            },
+            "sampleCountsByPeriodUs": {
+              "8000": 489,
+              "13000": 300
+            },
+            "acceptedCaptures": [
+              {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase127/cache-live01/019-sample-lexer-live-live-bank/analysis.json",
+                "bytes": 196656,
+                "sha256": "2aa5473dd6be3452262db0266b79c30f62d28006a249bf038df096f5dbb3d29c",
+                "samples": 489,
+                "periodUs": 8000,
+                "dropped": 0,
+                "overruns": 0,
+                "captureWindowChildCpuFraction": 0.9986949799694921,
+                "wholeChildCpuCoverageAdequate": true
+              },
+              {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase127/cache-live01/024-sample-lexer-live-live-bank/analysis.json",
+                "bytes": 128722,
+                "sha256": "4216d826490b1d84f96a8cd8b50d27b47941e25fc2304843d321afc3bb44ecf0",
+                "samples": 300,
+                "periodUs": 13000,
+                "dropped": 0,
+                "overruns": 0,
+                "captureWindowChildCpuFraction": 0.9989381270113551,
+                "wholeChildCpuCoverageAdequate": true
+              }
+            ],
+            "rejectedCaptures": []
+          }
+        }
+      },
+      "comparison": {
+        "wallSeconds": {
+          "cacheMedian": 2.231825718889013,
+          "liveMedian": 3.8862946359440684,
+          "liveMinusCache": 1.6544689170550555,
+          "liveOverCache": 1.7413073982670288,
+          "cacheReductionFraction": 0.4257188587177585
+        },
+        "cpuSeconds": {
+          "cacheMedian": 2.2309059999999996,
+          "liveMedian": 3.885246,
+          "liveMinusCache": 1.6543400000000004,
+          "liveOverCache": 1.7415552246486408,
+          "cacheReductionFraction": 0.42580057993753817
+        },
+        "peakRssKiB": {
+          "cacheMedian": 51124,
+          "liveMedian": 36984,
+          "liveMinusCache": -14140,
+          "liveOverCache": 0.7234175729598623,
+          "cacheReductionFraction": -0.38232749296993296
+        }
+      }
+    },
+    {
+      "workload": "coverage-closures-256",
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p127-live-bank-same-source01-n1/program",
+        "bytes": 16109088,
+        "sha256": "7d74f5254509970f53ceda6f5305dc195afbb38bf8486005ffab8f1c62c61734"
+      },
+      "commands": {
+        "cache": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p127-live-bank-same-source01-n1/program",
+          "--threads",
+          "1",
+          "--gpu",
+          "off",
+          "--",
+          "phase111",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase88/broad-fixtures03/coverage-closures-256.bend",
+          "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/base.bend",
+          "cache",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase88/base/carrier01/base.p88",
+          "p88-private-base-text-1:8dec5b64d3900d61a208e51d92113194b91364c4f4d35d1903edb481d678ed03"
+        ],
+        "live": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p127-live-bank-same-source01-n1/program",
+          "--threads",
+          "1",
+          "--gpu",
+          "off",
+          "--",
+          "phase111",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase88/broad-fixtures03/coverage-closures-256.bend",
+          "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/base.bend",
+          "live",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase88/base/carrier01/base.p88",
+          "p88-private-base-text-1:8dec5b64d3900d61a208e51d92113194b91364c4f4d35d1903edb481d678ed03"
+        ]
+      },
+      "inputs": [
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase88/broad-fixtures03/coverage-closures-256.bend",
+          "bytes": 1532,
+          "sha256": "08b5d1183fe1d6238fe76c51f24b964ad2171c01073e2353e84b4b1f5870724c"
+        },
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/base.bend",
+          "bytes": 75064,
+          "sha256": "99ac43f2b2bb3e3f39acdcedcecbbd3cb44749ce13969c827d6973fa66f7facf"
+        },
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase88/base/carrier01/base.p88",
+          "bytes": 1100924,
+          "sha256": "07af8cddb84820d861fc9f5d9475907754a64a9319de7d597c925149d8b186a7"
+        }
+      ],
+      "carrierStamp": "p88-private-base-text-1:8dec5b64d3900d61a208e51d92113194b91364c4f4d35d1903edb481d678ed03",
+      "oracle": {
+        "exitCode": 0,
+        "stdout": {
+          "kind": "exact",
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase112/p126-native32-transport01/005-coverage-closures-256-cache-phase111/program.ssa",
+          "bytes": 99537,
+          "sha256": "c5b9d940e875610ccb93b9ebbc8105964f16c98169ed8ead1edbcc08b0becbd7"
+        },
+        "stderr": {
+          "kind": "exact",
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase112/p126-native32-transport01/005-coverage-closures-256-cache-phase111/compile.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "modes": {
+        "cache": {
+          "clean": {
+            "wallSeconds": {
+              "samples": [
+                0.6244400299619883,
+                0.6371440859511495,
+                0.6147974550258368
+              ],
+              "count": 3,
+              "median": 0.6244400299619883,
+              "minimum": 0.6147974550258368,
+              "maximum": 0.6371440859511495
+            },
+            "cpuSeconds": {
+              "samples": [
+                0.623549,
+                0.6211479999999999,
+                0.613908
+              ],
+              "count": 3,
+              "median": 0.6211479999999999,
+              "minimum": 0.613908,
+              "maximum": 0.623549
+            },
+            "peakRssKiB": {
+              "samples": [
+                49076,
+                49136,
+                48972
+              ],
+              "count": 3,
+              "median": 49076,
+              "minimum": 48972,
+              "maximum": 49136
+            }
+          },
+          "sampled": {
+            "wallSeconds": {
+              "samples": [
+                0.6184782339259982,
+                0.6191401260439306
+              ],
+              "count": 2,
+              "median": 0.6188091799849644,
+              "minimum": 0.6184782339259982,
+              "maximum": 0.6191401260439306
+            },
+            "cpuSeconds": {
+              "samples": [
+                0.61681,
+                0.617575
+              ],
+              "count": 2,
+              "median": 0.6171925,
+              "minimum": 0.61681,
+              "maximum": 0.617575
+            },
+            "peakRssKiB": {
+              "samples": [
+                49784,
+                49380
+              ],
+              "count": 2,
+              "median": 49582.0,
+              "minimum": 49380,
+              "maximum": 49784
+            }
+          },
+          "sampledOverCleanWallRatio": 0.9909825608435663,
+          "profile": {
+            "samples": 123,
+            "adequate": false,
+            "estimateAvailable": false,
+            "estimateUnavailableReasons": [
+              "Insufficient pooled samples"
+            ],
+            "wholeChildCpuCoverageAdequate": true,
+            "unknownSamples": 7,
+            "captureLossTotals": {
+              "dropped": 0,
+              "overruns": 0
+            },
+            "sampleCountsByPeriodUs": {
+              "8000": 76,
+              "13000": 47
+            },
+            "acceptedCaptures": [
+              {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase127/cache-live01/020-sample-coverage-closures-256-cache-live-bank/analysis.json",
+                "bytes": 67966,
+                "sha256": "8f2bce9a138258740ba144a3fb4bfd32920711fe4aa0ee7ec8aeb68891c12b50",
+                "samples": 76,
+                "periodUs": 8000,
+                "dropped": 0,
+                "overruns": 0,
+                "captureWindowChildCpuFraction": 0.9956882686726869,
+                "wholeChildCpuCoverageAdequate": true
+              },
+              {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase127/cache-live01/025-sample-coverage-closures-256-cache-live-bank/analysis.json",
+                "bytes": 46510,
+                "sha256": "85802c73a1bdfa8f2371d38c7415b3086961d0c3f7aecf82f3574845e646c5ee",
+                "samples": 47,
+                "periodUs": 13000,
+                "dropped": 0,
+                "overruns": 0,
+                "captureWindowChildCpuFraction": 0.9960768667773146,
+                "wholeChildCpuCoverageAdequate": true
+              }
+            ],
+            "rejectedCaptures": []
+          }
+        },
+        "live": {
+          "clean": {
+            "wallSeconds": {
+              "samples": [
+                2.376886191079393,
+                2.323217765893787,
+                2.318469873163849
+              ],
+              "count": 3,
+              "median": 2.323217765893787,
+              "minimum": 2.318469873163849,
+              "maximum": 2.376886191079393
+            },
+            "cpuSeconds": {
+              "samples": [
+                2.3322,
+                2.322296,
+                2.317589
+              ],
+              "count": 3,
+              "median": 2.322296,
+              "minimum": 2.317589,
+              "maximum": 2.3322
+            },
+            "peakRssKiB": {
+              "samples": [
+                28820,
+                28824,
+                28892
+              ],
+              "count": 3,
+              "median": 28824,
+              "minimum": 28820,
+              "maximum": 28892
+            }
+          },
+          "sampled": {
+            "wallSeconds": {
+              "samples": [
+                2.3172169849276543,
+                2.310055501991883
+              ],
+              "count": 2,
+              "median": 2.3136362434597686,
+              "minimum": 2.310055501991883,
+              "maximum": 2.3172169849276543
+            },
+            "cpuSeconds": {
+              "samples": [
+                2.3158019999999997,
+                2.3085880000000003
+              ],
+              "count": 2,
+              "median": 2.312195,
+              "minimum": 2.3085880000000003,
+              "maximum": 2.3158019999999997
+            },
+            "peakRssKiB": {
+              "samples": [
+                33008,
+                35864
+              ],
+              "count": 2,
+              "median": 34436.0,
+              "minimum": 33008,
+              "maximum": 35864
+            }
+          },
+          "sampledOverCleanWallRatio": 0.9958757536315876,
+          "profile": {
+            "samples": 465,
+            "adequate": false,
+            "estimateAvailable": false,
+            "estimateUnavailableReasons": [
+              "Insufficient pooled samples"
+            ],
+            "wholeChildCpuCoverageAdequate": true,
+            "unknownSamples": 28,
+            "captureLossTotals": {
+              "dropped": 0,
+              "overruns": 0
+            },
+            "sampleCountsByPeriodUs": {
+              "8000": 288,
+              "13000": 177
+            },
+            "acceptedCaptures": [
+              {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase127/cache-live01/021-sample-coverage-closures-256-live-live-bank/analysis.json",
+                "bytes": 129460,
+                "sha256": "e5c67e73f1088e721b6f6096c7b31356917812889795cbe85b4e82bd0f0bb7dc",
+                "samples": 288,
+                "periodUs": 8000,
+                "dropped": 0,
+                "overruns": 0,
+                "captureWindowChildCpuFraction": 0.998337874308771,
+                "wholeChildCpuCoverageAdequate": true
+              },
+              {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase127/cache-live01/026-sample-coverage-closures-256-live-live-bank/analysis.json",
+                "bytes": 80901,
+                "sha256": "9ad2875297b32190917dcdf1ed29a625a5788d9dea2afd6f9273343524b80881",
+                "samples": 177,
+                "periodUs": 13000,
+                "dropped": 0,
+                "overruns": 0,
+                "captureWindowChildCpuFraction": 0.9986290009304386,
+                "wholeChildCpuCoverageAdequate": true
+              }
+            ],
+            "rejectedCaptures": []
+          }
+        }
+      },
+      "comparison": {
+        "wallSeconds": {
+          "cacheMedian": 0.6244400299619883,
+          "liveMedian": 2.323217765893787,
+          "liveMinusCache": 1.6987777359317988,
+          "liveOverCache": 3.7204817987649013,
+          "cacheReductionFraction": 0.7312176072647438
+        },
+        "cpuSeconds": {
+          "cacheMedian": 0.6211479999999999,
+          "liveMedian": 2.322296,
+          "liveMinusCache": 1.7011480000000003,
+          "liveOverCache": 3.7387160547888754,
+          "cacheReductionFraction": 0.7325284976592132
+        },
+        "peakRssKiB": {
+          "cacheMedian": 49076,
+          "liveMedian": 28824,
+          "liveMinusCache": -20252,
+          "liveOverCache": 0.587333931045725,
+          "cacheReductionFraction": -0.702608936996947
+        }
+      }
+    },
+    {
+      "workload": "coverage-map-churn-128",
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p127-live-bank-same-source01-n1/program",
+        "bytes": 16109088,
+        "sha256": "7d74f5254509970f53ceda6f5305dc195afbb38bf8486005ffab8f1c62c61734"
+      },
+      "commands": {
+        "cache": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p127-live-bank-same-source01-n1/program",
+          "--threads",
+          "1",
+          "--gpu",
+          "off",
+          "--",
+          "phase111",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase88/broad-fixtures03/coverage-map-churn-128.bend",
+          "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/base.bend",
+          "cache",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase88/base/carrier01/base.p88",
+          "p88-private-base-text-1:8dec5b64d3900d61a208e51d92113194b91364c4f4d35d1903edb481d678ed03"
+        ],
+        "live": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p127-live-bank-same-source01-n1/program",
+          "--threads",
+          "1",
+          "--gpu",
+          "off",
+          "--",
+          "phase111",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase88/broad-fixtures03/coverage-map-churn-128.bend",
+          "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/base.bend",
+          "live",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase88/base/carrier01/base.p88",
+          "p88-private-base-text-1:8dec5b64d3900d61a208e51d92113194b91364c4f4d35d1903edb481d678ed03"
+        ]
+      },
+      "inputs": [
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase88/broad-fixtures03/coverage-map-churn-128.bend",
+          "bytes": 1817,
+          "sha256": "99892f1c473588fcc814f17594b9d173343ef195bda6378113dbf088bea01120"
+        },
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/base.bend",
+          "bytes": 75064,
+          "sha256": "99ac43f2b2bb3e3f39acdcedcecbbd3cb44749ce13969c827d6973fa66f7facf"
+        },
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase88/base/carrier01/base.p88",
+          "bytes": 1100924,
+          "sha256": "07af8cddb84820d861fc9f5d9475907754a64a9319de7d597c925149d8b186a7"
+        }
+      ],
+      "carrierStamp": "p88-private-base-text-1:8dec5b64d3900d61a208e51d92113194b91364c4f4d35d1903edb481d678ed03",
+      "oracle": {
+        "exitCode": 0,
+        "stdout": {
+          "kind": "exact",
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase112/p126-native32-transport01/007-coverage-map-churn-128-cache-phase111/program.ssa",
+          "bytes": 1015982,
+          "sha256": "139079549cee48a1f7b3bcac093ae288b6fc5bf8ca7e1b759baa2f6d5b8f27c4"
+        },
+        "stderr": {
+          "kind": "exact",
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase112/p126-native32-transport01/007-coverage-map-churn-128-cache-phase111/compile.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "modes": {
+        "cache": {
+          "clean": {
+            "wallSeconds": {
+              "samples": [
+                3.515404222998768,
+                3.4864240719471127,
+                3.501553219044581
+              ],
+              "count": 3,
+              "median": 3.501553219044581,
+              "minimum": 3.4864240719471127,
+              "maximum": 3.515404222998768
+            },
+            "cpuSeconds": {
+              "samples": [
+                3.51443,
+                3.485505,
+                3.50066
+              ],
+              "count": 3,
+              "median": 3.50066,
+              "minimum": 3.485505,
+              "maximum": 3.51443
+            },
+            "peakRssKiB": {
+              "samples": [
+                53304,
+                53368,
+                53308
+              ],
+              "count": 3,
+              "median": 53308,
+              "minimum": 53304,
+              "maximum": 53368
+            }
+          },
+          "sampled": {
+            "wallSeconds": {
+              "samples": [
+                3.4979590200819075,
+                3.4987358970101923
+              ],
+              "count": 2,
+              "median": 3.49834745854605,
+              "minimum": 3.4979590200819075,
+              "maximum": 3.4987358970101923
+            },
+            "cpuSeconds": {
+              "samples": [
+                3.496512,
+                3.4972389999999995
+              ],
+              "count": 2,
+              "median": 3.4968755,
+              "minimum": 3.496512,
+              "maximum": 3.4972389999999995
+            },
+            "peakRssKiB": {
+              "samples": [
+                53644,
+                53684
+              ],
+              "count": 2,
+              "median": 53664.0,
+              "minimum": 53644,
+              "maximum": 53684
+            }
+          },
+          "sampledOverCleanWallRatio": 0.999084474717935,
+          "profile": {
+            "samples": 703,
+            "adequate": true,
+            "estimateAvailable": true,
+            "estimateUnavailableReasons": [],
+            "wholeChildCpuCoverageAdequate": true,
+            "unknownSamples": 37,
+            "captureLossTotals": {
+              "dropped": 0,
+              "overruns": 0
+            },
+            "sampleCountsByPeriodUs": {
+              "8000": 435,
+              "13000": 268
+            },
+            "acceptedCaptures": [
+              {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase127/cache-live01/022-sample-coverage-map-churn-128-cache-live-bank/analysis.json",
+                "bytes": 196440,
+                "sha256": "3762ddc06d10feed9b85eb328f0a0aa422d113398c3df3c9f2f6adef09772177",
+                "samples": 435,
+                "periodUs": 8000,
+                "dropped": 0,
+                "overruns": 0,
+                "captureWindowChildCpuFraction": 0.9986069119739901,
+                "wholeChildCpuCoverageAdequate": true
+              },
+              {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase127/cache-live01/027-sample-coverage-map-churn-128-cache-live-bank/analysis.json",
+                "bytes": 133405,
+                "sha256": "f55a3d79a559bef7449fdad3351417fc21e8d5756a9ccdbffbbb06df5c9894a4",
+                "samples": 268,
+                "periodUs": 13000,
+                "dropped": 0,
+                "overruns": 0,
+                "captureWindowChildCpuFraction": 0.9988998855954656,
+                "wholeChildCpuCoverageAdequate": true
+              }
+            ],
+            "rejectedCaptures": []
+          }
+        },
+        "live": {
+          "clean": {
+            "wallSeconds": {
+              "samples": [
+                5.1976276559289545,
+                5.209509011823684,
+                5.152258314890787
+              ],
+              "count": 3,
+              "median": 5.1976276559289545,
+              "minimum": 5.152258314890787,
+              "maximum": 5.209509011823684
+            },
+            "cpuSeconds": {
+              "samples": [
+                5.196654,
+                5.179625,
+                5.151308
+              ],
+              "count": 3,
+              "median": 5.179625,
+              "minimum": 5.151308,
+              "maximum": 5.196654
+            },
+            "peakRssKiB": {
+              "samples": [
+                53536,
+                53564,
+                53516
+              ],
+              "count": 3,
+              "median": 53536,
+              "minimum": 53516,
+              "maximum": 53564
+            }
+          },
+          "sampled": {
+            "wallSeconds": {
+              "samples": [
+                5.176914286101237,
+                5.161374469986185
+              ],
+              "count": 2,
+              "median": 5.169144378043711,
+              "minimum": 5.161374469986185,
+              "maximum": 5.176914286101237
+            },
+            "cpuSeconds": {
+              "samples": [
+                5.175444,
+                5.159692
+              ],
+              "count": 2,
+              "median": 5.167567999999999,
+              "minimum": 5.159692,
+              "maximum": 5.175444
+            },
+            "peakRssKiB": {
+              "samples": [
+                53820,
+                53748
+              ],
+              "count": 2,
+              "median": 53784.0,
+              "minimum": 53748,
+              "maximum": 53820
+            }
+          },
+          "sampledOverCleanWallRatio": 0.9945199464504249,
+          "profile": {
+            "samples": 1041,
+            "adequate": true,
+            "estimateAvailable": true,
+            "estimateUnavailableReasons": [],
+            "wholeChildCpuCoverageAdequate": true,
+            "unknownSamples": 59,
+            "captureLossTotals": {
+              "dropped": 0,
+              "overruns": 0
+            },
+            "sampleCountsByPeriodUs": {
+              "8000": 645,
+              "13000": 396
+            },
+            "acceptedCaptures": [
+              {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase127/cache-live01/023-sample-coverage-map-churn-128-live-live-bank/analysis.json",
+                "bytes": 242802,
+                "sha256": "c855abc498baefc51638a62573214d3f505a4a5253bc8f05b4167b893d023f48",
+                "samples": 645,
+                "periodUs": 8000,
+                "dropped": 0,
+                "overruns": 0,
+                "captureWindowChildCpuFraction": 0.9987999275038045,
+                "wholeChildCpuCoverageAdequate": true
+              },
+              {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase127/cache-live01/028-sample-coverage-map-churn-128-live-live-bank/analysis.json",
+                "bytes": 162800,
+                "sha256": "a5b5e17c01e2386554f5dd0d64355f69713d516a2eeaff2c8c240496c89fb6b2",
+                "samples": 396,
+                "periodUs": 13000,
+                "dropped": 0,
+                "overruns": 0,
+                "captureWindowChildCpuFraction": 0.9990664338103903,
+                "wholeChildCpuCoverageAdequate": true
+              }
+            ],
+            "rejectedCaptures": []
+          }
+        }
+      },
+      "comparison": {
+        "wallSeconds": {
+          "cacheMedian": 3.501553219044581,
+          "liveMedian": 5.1976276559289545,
+          "liveMinusCache": 1.6960744368843734,
+          "liveOverCache": 1.4843777406151082,
+          "cacheReductionFraction": 0.3263170333006934
+        },
+        "cpuSeconds": {
+          "cacheMedian": 3.50066,
+          "liveMedian": 5.179625,
+          "liveMinusCache": 1.6789649999999998,
+          "liveOverCache": 1.4796138442465134,
+          "cacheReductionFraction": 0.32414798368607767
+        },
+        "peakRssKiB": {
+          "cacheMedian": 53308,
+          "liveMedian": 53536,
+          "liveMinusCache": 228,
+          "liveOverCache": 1.0042770315900051,
+          "cacheReductionFraction": 0.004258816497310192
+        }
+      }
+    }
+  ],
+  "fullScale": {
+    "workload": "compiler-source32",
+    "sourceReports": [
+      {
+        "report": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase127/full-clean02/report.json",
+          "bytes": 14539,
+          "sha256": "456e6787467e5457f29228d83153f30753171bcf9f5aa3460dd4926881e3d69b"
+        },
+        "manifest": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase127/full-clean02/manifest.json",
+          "bytes": 10867,
+          "sha256": "283ce59e24e0ec1a092c6fca9300d78102b3166d0c7712afbecb1c800c5c6b62"
+        },
+        "elapsedSeconds": 940.4550783634186,
+        "observations": 2,
+        "childWallSeconds": 938.8191513908096,
+        "childCpuSeconds": 938.8109440000001
+      },
+      {
+        "report": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase127/full-profile01/report.json",
+          "bytes": 13271,
+          "sha256": "86f2ccb7e1953876ca118804f1243c94968786ba122b387975387b4756e3e5ab"
+        },
+        "manifest": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase127/full-profile01/manifest.json",
+          "bytes": 9154,
+          "sha256": "124bc0977d8216e9fc2ef6cf268a1c0c5d16e84c25997aba60bc2715c6561a78"
+        },
+        "elapsedSeconds": 473.43987703323364,
+        "observations": 1,
+        "childWallSeconds": 471.33082851115614,
+        "childCpuSeconds": 471.298207
+      },
+      {
+        "report": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase127/full-physical01/report.json",
+          "bytes": 12571,
+          "sha256": "e7a7f80ca1cab4fb12748b9c458ed133e40b55a8404cf636eabfcfb1249bb9e4"
+        },
+        "manifest": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase127/full-physical01/manifest.json",
+          "bytes": 7295,
+          "sha256": "497116960582a3f6ddbd2a890fc20565a8df43dd7775adc43e51f62bbd177b61"
+        },
+        "elapsedSeconds": 448.48857617378235,
+        "observations": 1,
+        "childWallSeconds": 446.54076323099434,
+        "childCpuSeconds": 446.537597
+      }
+    ],
+    "observationsPerVariant": 1,
+    "variants": {
+      "phase126": {
+        "identity": {
+          "source": {
+            "cwd": "/home/ai/bend2/build/publish/bend",
+            "arguments": [
+              "--threads",
+              "1",
+              "--gpu",
+              "off",
+              "--",
+              "phase111",
+              "/home/ai/bend2/build/publish/bend/selfhost/build/phase126/observer-divmod-source32/compiler.bend",
+              "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/base.bend",
+              "cache",
+              "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase88/base/carrier01/base.p88",
+              "p88-private-base-text-1:8dec5b64d3900d61a208e51d92113194b91364c4f4d35d1903edb481d678ed03"
+            ],
+            "inputFiles": [
+              [
+                "/home/ai/bend2/build/publish/bend/selfhost/build/phase126/observer-divmod-source32/compiler.bend",
+                [
+                  2527616,
+                  "40c469114c4d1c75dceab456e1979bb5c0278744a02e6dbe4a37e63667740abb"
+                ]
+              ],
+              [
+                "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/base.bend",
+                [
+                  75064,
+                  "99ac43f2b2bb3e3f39acdcedcecbbd3cb44749ce13969c827d6973fa66f7facf"
+                ]
+              ],
+              [
+                "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase88/base/carrier01/base.p88",
+                [
+                  1100924,
+                  "07af8cddb84820d861fc9f5d9475907754a64a9319de7d597c925149d8b186a7"
+                ]
+              ]
+            ]
+          },
+          "binary": {
+            "bytes": 16109080,
+            "sha256": "74db7c372ad48b21ebcd5b72e881dfb4e26d0df64985bb6669ebb90d376c1ca2"
+          },
+          "expected": {
+            "exitCode": 0,
+            "stdout": {
+              "kind": "exact",
+              "bytes": 99526466,
+              "sha256": "7aa7d259bdaf445713ee07f5b076a1435dd3a7387a4443506dca838e2c946804"
+            },
+            "stderr": {
+              "kind": "exact",
+              "bytes": 0,
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+            }
+          },
+          "diagnostic": false
+        },
+        "clean": {
+          "wallSeconds": {
+            "samples": [
+              493.99566276581027
+            ],
+            "count": 1,
+            "median": 493.99566276581027,
+            "minimum": 493.99566276581027,
+            "maximum": 493.99566276581027
+          },
+          "cpuSeconds": {
+            "samples": [
+              493.99039700000003
+            ],
+            "count": 1,
+            "median": 493.99039700000003,
+            "minimum": 493.99039700000003,
+            "maximum": 493.99039700000003
+          },
+          "peakRssKiB": {
+            "samples": [
+              2739824
+            ],
+            "count": 1,
+            "median": 2739824,
+            "minimum": 2739824,
+            "maximum": 2739824
+          }
+        },
+        "sampled": {
+          "wallSeconds": {
+            "samples": [],
+            "count": 0,
+            "median": null,
+            "minimum": null,
+            "maximum": null
+          },
+          "cpuSeconds": {
+            "samples": [],
+            "count": 0,
+            "median": null,
+            "minimum": null,
+            "maximum": null
+          },
+          "peakRssKiB": {
+            "samples": [],
+            "count": 0,
+            "median": null,
+            "minimum": null,
+            "maximum": null
+          }
+        },
+        "sampledOverCleanWallRatio": null,
+        "profile": {
+          "samples": 0,
+          "adequate": false,
+          "estimateAvailable": false,
+          "wholeChildCpuCoverageAdequate": false,
+          "captureLossTotals": {}
+        }
+      },
+      "live-bank": {
+        "identity": {
+          "source": {
+            "cwd": "/home/ai/bend2/build/publish/bend",
+            "arguments": [
+              "--threads",
+              "1",
+              "--gpu",
+              "off",
+              "--",
+              "phase111",
+              "/home/ai/bend2/build/publish/bend/selfhost/build/phase126/observer-divmod-source32/compiler.bend",
+              "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/base.bend",
+              "cache",
+              "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase88/base/carrier01/base.p88",
+              "p88-private-base-text-1:8dec5b64d3900d61a208e51d92113194b91364c4f4d35d1903edb481d678ed03"
+            ],
+            "inputFiles": [
+              [
+                "/home/ai/bend2/build/publish/bend/selfhost/build/phase126/observer-divmod-source32/compiler.bend",
+                [
+                  2527616,
+                  "40c469114c4d1c75dceab456e1979bb5c0278744a02e6dbe4a37e63667740abb"
+                ]
+              ],
+              [
+                "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/base.bend",
+                [
+                  75064,
+                  "99ac43f2b2bb3e3f39acdcedcecbbd3cb44749ce13969c827d6973fa66f7facf"
+                ]
+              ],
+              [
+                "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase88/base/carrier01/base.p88",
+                [
+                  1100924,
+                  "07af8cddb84820d861fc9f5d9475907754a64a9319de7d597c925149d8b186a7"
+                ]
+              ]
+            ]
+          },
+          "binary": {
+            "bytes": 16109088,
+            "sha256": "7d74f5254509970f53ceda6f5305dc195afbb38bf8486005ffab8f1c62c61734"
+          },
+          "expected": {
+            "exitCode": 0,
+            "stdout": {
+              "kind": "exact",
+              "bytes": 99526466,
+              "sha256": "7aa7d259bdaf445713ee07f5b076a1435dd3a7387a4443506dca838e2c946804"
+            },
+            "stderr": {
+              "kind": "exact",
+              "bytes": 0,
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+            }
+          },
+          "diagnostic": false
+        },
+        "clean": {
+          "wallSeconds": {
+            "samples": [
+              444.8234886249993
+            ],
+            "count": 1,
+            "median": 444.8234886249993,
+            "minimum": 444.8234886249993,
+            "maximum": 444.8234886249993
+          },
+          "cpuSeconds": {
+            "samples": [
+              444.820547
+            ],
+            "count": 1,
+            "median": 444.820547,
+            "minimum": 444.820547,
+            "maximum": 444.820547
+          },
+          "peakRssKiB": {
+            "samples": [
+              2739688
+            ],
+            "count": 1,
+            "median": 2739688,
+            "minimum": 2739688,
+            "maximum": 2739688
+          }
+        },
+        "sampled": {
+          "wallSeconds": {
+            "samples": [
+              446.54076323099434
+            ],
+            "count": 1,
+            "median": 446.54076323099434,
+            "minimum": 446.54076323099434,
+            "maximum": 446.54076323099434
+          },
+          "cpuSeconds": {
+            "samples": [
+              446.537597
+            ],
+            "count": 1,
+            "median": 446.537597,
+            "minimum": 446.537597,
+            "maximum": 446.537597
+          },
+          "peakRssKiB": {
+            "samples": [
+              2741316
+            ],
+            "count": 1,
+            "median": 2741316,
+            "minimum": 2741316,
+            "maximum": 2741316
+          }
+        },
+        "sampledOverCleanWallRatio": 1.0038605753740732,
+        "profile": {
+          "samples": 55761,
+          "adequate": true,
+          "estimateAvailable": true,
+          "wholeChildCpuCoverageAdequate": true,
+          "captureLossTotals": {
+            "dropped": 0,
+            "overruns": 0
+          }
+        }
+      },
+      "live-bank-diagnostic": {
+        "identity": {
+          "source": {
+            "cwd": "/home/ai/bend2/build/publish/bend",
+            "arguments": [
+              "--threads",
+              "1",
+              "--gpu",
+              "off",
+              "--",
+              "phase111",
+              "/home/ai/bend2/build/publish/bend/selfhost/build/phase126/observer-divmod-source32/compiler.bend",
+              "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/base.bend",
+              "cache",
+              "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase88/base/carrier01/base.p88",
+              "p88-private-base-text-1:8dec5b64d3900d61a208e51d92113194b91364c4f4d35d1903edb481d678ed03"
+            ],
+            "inputFiles": [
+              [
+                "/home/ai/bend2/build/publish/bend/selfhost/build/phase126/observer-divmod-source32/compiler.bend",
+                [
+                  2527616,
+                  "40c469114c4d1c75dceab456e1979bb5c0278744a02e6dbe4a37e63667740abb"
+                ]
+              ],
+              [
+                "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/base.bend",
+                [
+                  75064,
+                  "99ac43f2b2bb3e3f39acdcedcecbbd3cb44749ce13969c827d6973fa66f7facf"
+                ]
+              ],
+              [
+                "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase88/base/carrier01/base.p88",
+                [
+                  1100924,
+                  "07af8cddb84820d861fc9f5d9475907754a64a9319de7d597c925149d8b186a7"
+                ]
+              ]
+            ]
+          },
+          "binary": {
+            "bytes": 16122528,
+            "sha256": "6474b220654d67a2a8ccac8c3e6e6d315980bdb4bb75a676176b5c8a97dcebe2"
+          },
+          "expected": {
+            "exitCode": 0,
+            "stdout": {
+              "kind": "exact",
+              "bytes": 99526466,
+              "sha256": "7aa7d259bdaf445713ee07f5b076a1435dd3a7387a4443506dca838e2c946804"
+            },
+            "stderr": {
+              "kind": "exact",
+              "bytes": 0,
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+            }
+          },
+          "diagnostic": true
+        },
+        "clean": {
+          "wallSeconds": {
+            "samples": [],
+            "count": 0,
+            "median": null,
+            "minimum": null,
+            "maximum": null
+          },
+          "cpuSeconds": {
+            "samples": [],
+            "count": 0,
+            "median": null,
+            "minimum": null,
+            "maximum": null
+          },
+          "peakRssKiB": {
+            "samples": [],
+            "count": 0,
+            "median": null,
+            "minimum": null,
+            "maximum": null
+          }
+        },
+        "sampled": {
+          "wallSeconds": {
+            "samples": [
+              471.33082851115614
+            ],
+            "count": 1,
+            "median": 471.33082851115614,
+            "minimum": 471.33082851115614,
+            "maximum": 471.33082851115614
+          },
+          "cpuSeconds": {
+            "samples": [
+              471.298207
+            ],
+            "count": 1,
+            "median": 471.298207,
+            "minimum": 471.298207,
+            "maximum": 471.298207
+          },
+          "peakRssKiB": {
+            "samples": [
+              2741020
+            ],
+            "count": 1,
+            "median": 2741020,
+            "minimum": 2741020,
+            "maximum": 2741020
+          }
+        },
+        "sampledOverCleanWallRatio": 1.059590692856832,
+        "profile": {
+          "samples": 36220,
+          "adequate": true,
+          "estimateAvailable": true,
+          "wholeChildCpuCoverageAdequate": true,
+          "captureLossTotals": {
+            "dropped": 0,
+            "overruns": 0
+          }
+        }
+      }
+    }
+  },
+  "limitations": [
+    "Cache/live timing difference is net preparation replacement, not absolute decoder cost.",
+    "Three clean repeats provide a range, not a confidence interval; fixed scheduling may retain order effects.",
+    "Small profiles with pooled counts below500 retain descriptive fractions only; no quantitative CPU costs.",
+    "No dispatch-counter runtime instrumentation was enabled in cache/live runs.",
+    "Full-scale physical and context profiles use different intervals and runtime instrumentation; each has one observation, so overhead differences are descriptive, not isolated causal estimates.",
+    "The full-scale diagnostic runtime is context-instrumented; counter collection is disabled, so its overhead is not event-counter cost."
+  ]
+}

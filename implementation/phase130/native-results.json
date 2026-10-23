@@ -1,0 +1,73 @@
+{
+  "complete": true,
+  "nativeQualified": false,
+  "qualificationScope": "Actual N1 build and focused19 passed; N1 self-reproduction running.",
+  "comparison": "Same fresh three-round block: qualified Phase128 N1 decimal, experimental Phase130 N1 compact, pinned upstream Bun/TypeScript.",
+  "sourceToQbeRatios": {
+    "phase112/phase111": 0.8832407637119296,
+    "phase112/upstream": 1.8028323608959873,
+    "phase111/upstream": 2.0411561999463874
+  },
+  "requestPlusMachineBuildRatios": {
+    "phase112/phase111": 0.8911371775882496,
+    "phase112/upstream": 0.8823718710333776,
+    "phase111/upstream": 0.9901639087950586
+  },
+  "cases": {
+    "lexer": {
+      "nativeBeforeSeconds": 2.2166054090484977,
+      "nativeAfterSeconds": 1.9888545139692724,
+      "upstreamSeconds": 0.7673319380264729,
+      "ratios": {
+        "phase112/phase111": 0.8972523958709503,
+        "phase112/upstream": 2.591908945018599,
+        "phase111/upstream": 2.888717775451209
+      }
+    },
+    "coverage-closures-256": {
+      "nativeBeforeSeconds": 0.6155652129091322,
+      "nativeAfterSeconds": 0.48546753101982176,
+      "upstreamSeconds": 0.5394868250004947,
+      "ratios": {
+        "phase112/phase111": 0.7886532910551021,
+        "phase112/upstream": 0.8998691136143623,
+        "phase111/upstream": 1.1410199181575338
+      }
+    },
+    "coverage-map-churn-128": {
+      "nativeBeforeSeconds": 2.9769387759733945,
+      "nativeAfterSeconds": 2.898721355944872,
+      "upstreamSeconds": 1.1538238748908043,
+      "ratios": {
+        "phase112/phase111": 0.9737255530211745,
+        "phase112/upstream": 2.5122736832076744,
+        "phase111/upstream": 2.580063422812365
+      }
+    }
+  },
+  "nativeQbeEquality": [
+    {
+      "name": "lexer",
+      "nativeObservations": 6,
+      "byteIdentical": true,
+      "sha256": "d7f319ddfe98e211951e305d692fa0190f4c2ade7cf0beb998a5e88ae7f13559"
+    },
+    {
+      "name": "coverage-closures-256",
+      "nativeObservations": 6,
+      "byteIdentical": true,
+      "sha256": "c5b9d940e875610ccb93b9ebbc8105964f16c98169ed8ead1edbcc08b0becbd7"
+    },
+    {
+      "name": "coverage-map-churn-128",
+      "nativeObservations": 6,
+      "byteIdentical": true,
+      "sha256": "37fd22e781e93290c2ab661c06f1991d57542f58e90d983890cebff6f7ef24e5"
+    }
+  ],
+  "rawReport": {
+    "file": "selfhost/build/phase112/p130-vs128-native01/report.json",
+    "sha256": "40fc69c68b476d6054ef26ae8066a834dfb9fa618db865d7e19634c3ff6476b9",
+    "bytes": 231970
+  }
+}

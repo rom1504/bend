@@ -1,0 +1,51 @@
+{
+  "complete": true,
+  "method": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase130/scalar/prepare-u32.py",
+    "bytes": 2707,
+    "sha256": "f9aa695abd7a245b7e0dfea7a7f43418389498a309e3fcd99c9a85383d9a4187"
+  },
+  "modules": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase130/scalar/order-u32-v01.bend",
+      "bytes": 918,
+      "sha256": "4ce66cec1485753441b1819c9d663465db046b4d7b0feb058cd9bbdf0b634218"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase130/scalar/workload-u32-v01.bend",
+      "bytes": 3313,
+      "sha256": "15671bd0fcd07e886f826b523864e43181168a9fad438d0859806d00f38873ce"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase130/scalar/semantic-body-u32-v01.bend",
+      "bytes": 1026,
+      "sha256": "1f173d2e4f92302343e0be8e16696a6105f181caaa6f44a586f7e630fbf79a4f"
+    }
+  ],
+  "base": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/base.bend",
+    "bytes": 75064,
+    "sha256": "99ac43f2b2bb3e3f39acdcedcecbbd3cb44749ce13969c827d6973fa66f7facf"
+  },
+  "independentOracle": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase130/scalar/oracle.json",
+    "bytes": 1981,
+    "sha256": "0567a4a9851d8b6d595aedbb059bcaacf440d8cdd911db5255637286737328dd"
+  },
+  "expected": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase130/scalar/expected.json",
+    "bytes": 106,
+    "sha256": "6dc06b9da2553b676e7b8f90bd2df4b39b29b0bf554f6f24dd3bf31e8c357a6b"
+  },
+  "semanticExpected": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase130/scalar/semantic-controls.expected.json",
+    "bytes": 261,
+    "sha256": "cd9def9165c6fe85b6fa79143b09c71a253800ecdc11003fdf9a27b36bff7857"
+  },
+  "priorCmpCeiling": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase130/scalar/cases-v05.json",
+    "bytes": 1648,
+    "sha256": "e8136f567ad953e11f2424ffbd57cce061f5c094807a7080abbbd6f9aec356f9"
+  },
+  "change": "Both query interfaces return U32 directly; candidate uses two Bool predicate state lanes and primitive unsigned comparisons, without Cmp construction or projection."
+}

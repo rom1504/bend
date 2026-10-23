@@ -119,6 +119,9 @@ The [borrowed-query compiler work](docs/self_hosted/borrowed-native-queries.md)
 preserves ownership across read-only calls and reuses request preparation.
 See the [Phase128 report](implementation/phase128/README.md) for native compiler
 timings, generated-program results and qualification.
+The [prepared-Base transport experiment](docs/self_hosted/prepared-base-transport.md)
+removes repeated decimal decoding; the [Phase130 report](implementation/phase130/README.md)
+keeps proxy gains, complete request timings and native qualification separate.
 
 The [Bend capability audit](research/phase129/README.md) examines how the selected
 compiler uses proofs, types, ownership and parallelism. Its

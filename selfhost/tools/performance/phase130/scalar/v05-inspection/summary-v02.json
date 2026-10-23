@@ -1,0 +1,384 @@
+{
+  "kind": "phase130-readonly-v05-artifact-inspection",
+  "complete": true,
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase130/scalar/inspect-v05.py",
+      "bytes": 2632,
+      "sha256": "55da9f68dbbed92cafc2c56ae130387ac0464071937c8ded973a63a4cfdb63ff"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/p130-scalar-ceiling-emit05/scalar-order-baseline.ssa",
+      "bytes": 593203,
+      "sha256": "7cc34b3472e9d90ba744ce0c468c7cdde92191dd44398bf9b783a643114f2e6f"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p130-scalar01-scalar-order-baseline/program",
+      "bytes": 240688,
+      "sha256": "f9cfcf370a66f6e4277413fcb983622d8735603c72f5aa6d5465cee17f17f49c"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/p130-scalar-ceiling-emit05/scalar-order-scalar.ssa",
+      "bytes": 680804,
+      "sha256": "7cecd109806b958471939b9341b2cdda232c8fc1d479fac319ab3a2e2d34ae7f"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p130-scalar01-scalar-order-scalar/program",
+      "bytes": 254088,
+      "sha256": "0807abb5b5bdaeb869c74fe68ac9d83a90ad7342b58820b5c84845fd581e1d7f"
+    }
+  ],
+  "scope": "Static qualified artifact inspection only. Counts exclude objdump continuation rows; dynamic execution counts and causal timing attribution remain unmeasured.",
+  "rows": [
+    {
+      "variant": "baseline",
+      "name": "p113d:$p118borrow.read.String.cmp",
+      "symbol": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_83_116_114_105_110_103_46_99_109_112_",
+      "ssaLines": 245,
+      "ssaCalls": {
+        "p111_rt_ctor": 5,
+        "p111_rt_fail": 6,
+        "p111_rt_op": 1,
+        "p118_rt_borrow_fields": 3
+      },
+      "machineInstructions": 227,
+      "machineCalls": [
+        "405050:\te8 2b 93 01 00       \tcallq  41e380 <p118_rt_borrow_fields>",
+        "40510d:\te8 6e 92 01 00       \tcallq  41e380 <p118_rt_borrow_fields>",
+        "405196:\te8 65 4f 01 00       \tcallq  41a100 <p111_rt_op>",
+        "4051cb:\te8 10 4f 01 00       \tcallq  41a0e0 <p111_rt_fail>",
+        "4051eb:\te8 d0 47 01 00       \tcallq  4199c0 <p111_rt_ctor>",
+        "405206:\te8 b5 47 01 00       \tcallq  4199c0 <p111_rt_ctor>",
+        "405216:\te8 c5 4e 01 00       \tcallq  41a0e0 <p111_rt_fail>",
+        "40523b:\te8 80 47 01 00       \tcallq  4199c0 <p111_rt_ctor>",
+        "40524a:\te8 91 4e 01 00       \tcallq  41a0e0 <p111_rt_fail>",
+        "405276:\te8 65 4e 01 00       \tcallq  41a0e0 <p111_rt_fail>",
+        "40529f:\te8 dc 90 01 00       \tcallq  41e380 <p118_rt_borrow_fields>",
+        "4052fd:\te8 be 46 01 00       \tcallq  4199c0 <p111_rt_ctor>",
+        "405315:\te8 a6 46 01 00       \tcallq  4199c0 <p111_rt_ctor>"
+      ]
+    },
+    {
+      "variant": "baseline",
+      "name": "p113d:$direct.String.cmp",
+      "symbol": "p113d_FID_36_100_105_114_101_99_116_46_83_116_114_105_110_103_46_99_109_112_",
+      "ssaLines": 19,
+      "ssaCalls": {
+        "p113d:$p118borrow.read.String.cmp": 1,
+        "p125_rt_ctor2": 2
+      },
+      "machineInstructions": 32,
+      "machineCalls": [
+        "40534d:\te8 0e fc ff ff       \tcallq  404f60 <p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_83_116_114_105_110_103_46_99_109_112_>",
+        "40537b:\te8 90 9c 01 00       \tcallq  41f010 <p125_rt_ctor2>",
+        "40539d:\te8 6e 9c 01 00       \tcallq  41f010 <p125_rt_ctor2>"
+      ]
+    },
+    {
+      "variant": "baseline",
+      "name": "p113d:$direct.String.cmp.rec",
+      "symbol": "p113d_FID_36_100_105_114_101_99_116_46_83_116_114_105_110_103_46_99_109_112_46_114_101_99_",
+      "ssaLines": 71,
+      "ssaCalls": {
+        "p111_rt_fail": 2,
+        "p125_rt_ctor2": 4,
+        "p125_rt_take2": 2
+      },
+      "machineInstructions": 82,
+      "machineCalls": [
+        "406276:\te8 65 3e 01 00       \tcallq  41a0e0 <p111_rt_fail>",
+        "406294:\te8 67 8e 01 00       \tcallq  41f100 <p125_rt_take2>",
+        "4062cb:\te8 10 3e 01 00       \tcallq  41a0e0 <p111_rt_fail>",
+        "4062e7:\te8 14 8e 01 00       \tcallq  41f100 <p125_rt_take2>",
+        "406323:\te8 e8 8c 01 00       \tcallq  41f010 <p125_rt_ctor2>",
+        "40634e:\te8 bd 8c 01 00       \tcallq  41f010 <p125_rt_ctor2>",
+        "406373:\te8 98 8c 01 00       \tcallq  41f010 <p125_rt_ctor2>",
+        "406395:\te8 76 8c 01 00       \tcallq  41f010 <p125_rt_ctor2>"
+      ]
+    },
+    {
+      "variant": "baseline",
+      "name": "p113d:$direct.Pair.snd",
+      "symbol": "p113d_FID_36_100_105_114_101_99_116_46_80_97_105_114_46_115_110_100_",
+      "ssaLines": 20,
+      "ssaCalls": {
+        "p111_rt_fail": 1,
+        "p111_rt_sink": 1,
+        "p125_rt_take2": 1
+      },
+      "machineInstructions": 25,
+      "machineCalls": [
+        "4063d8:\te8 03 3d 01 00       \tcallq  41a0e0 <p111_rt_fail>",
+        "4063ee:\te8 0d 8d 01 00       \tcallq  41f100 <p125_rt_take2>",
+        "406404:\te8 47 35 01 00       \tcallq  419950 <p111_rt_sink>"
+      ]
+    },
+    {
+      "variant": "baseline",
+      "name": "p113d:$product.Pair.snd",
+      "symbol": "p113d_FID_36_112_114_111_100_117_99_116_46_80_97_105_114_46_115_110_100_",
+      "ssaLines": 10,
+      "ssaCalls": {
+        "p111_rt_sink": 1
+      },
+      "machineInstructions": 11,
+      "machineCalls": [
+        "406420:\te8 2b 35 01 00       \tcallq  419950 <p111_rt_sink>"
+      ]
+    },
+    {
+      "variant": "scalar",
+      "name": "p113d:$p118borrow.read.String.cmp",
+      "symbol": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_83_116_114_105_110_103_46_99_109_112_",
+      "ssaLines": 245,
+      "ssaCalls": {
+        "p111_rt_ctor": 5,
+        "p111_rt_fail": 6,
+        "p111_rt_op": 1,
+        "p118_rt_borrow_fields": 3
+      },
+      "machineInstructions": 227,
+      "machineCalls": [
+        "405050:\te8 8b af 01 00       \tcallq  41ffe0 <p118_rt_borrow_fields>",
+        "40510d:\te8 ce ae 01 00       \tcallq  41ffe0 <p118_rt_borrow_fields>",
+        "405196:\te8 c5 6b 01 00       \tcallq  41bd60 <p111_rt_op>",
+        "4051cb:\te8 70 6b 01 00       \tcallq  41bd40 <p111_rt_fail>",
+        "4051eb:\te8 30 64 01 00       \tcallq  41b620 <p111_rt_ctor>",
+        "405206:\te8 15 64 01 00       \tcallq  41b620 <p111_rt_ctor>",
+        "405216:\te8 25 6b 01 00       \tcallq  41bd40 <p111_rt_fail>",
+        "40523b:\te8 e0 63 01 00       \tcallq  41b620 <p111_rt_ctor>",
+        "40524a:\te8 f1 6a 01 00       \tcallq  41bd40 <p111_rt_fail>",
+        "405276:\te8 c5 6a 01 00       \tcallq  41bd40 <p111_rt_fail>",
+        "40529f:\te8 3c ad 01 00       \tcallq  41ffe0 <p118_rt_borrow_fields>",
+        "4052fd:\te8 1e 63 01 00       \tcallq  41b620 <p111_rt_ctor>",
+        "405315:\te8 06 63 01 00       \tcallq  41b620 <p111_rt_ctor>"
+      ]
+    },
+    {
+      "variant": "scalar",
+      "name": "p113d:$direct.String.cmp",
+      "symbol": "p113d_FID_36_100_105_114_101_99_116_46_83_116_114_105_110_103_46_99_109_112_",
+      "ssaLines": 19,
+      "ssaCalls": {
+        "p113d:$p118borrow.read.String.cmp": 1,
+        "p125_rt_ctor2": 2
+      },
+      "machineInstructions": 32,
+      "machineCalls": [
+        "40534d:\te8 0e fc ff ff       \tcallq  404f60 <p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_83_116_114_105_110_103_46_99_109_112_>",
+        "40537b:\te8 f0 b8 01 00       \tcallq  420c70 <p125_rt_ctor2>",
+        "40539d:\te8 ce b8 01 00       \tcallq  420c70 <p125_rt_ctor2>"
+      ]
+    },
+    {
+      "variant": "scalar",
+      "name": "p113d:$p128borrow.owned.p130s_order_go",
+      "symbol": "p113d_FID_36_112_49_50_56_98_111_114_114_111_119_46_111_119_110_101_100_46_112_49_51_48_115_95_111_114_100_101_114_95_103_111_",
+      "ssaLines": 243,
+      "ssaCalls": {
+        "p111_rt_fail": 8,
+        "p111_rt_op": 1,
+        "p111_rt_sink": 9,
+        "p111_rt_special_take": 2,
+        "p125_rt_take2": 3
+      },
+      "machineInstructions": 200,
+      "machineCalls": [
+        "405447:\te8 14 b9 01 00       \tcallq  420d60 <p125_rt_take2>",
+        "405487:\te8 d4 b8 01 00       \tcallq  420d60 <p125_rt_take2>",
+        "4054df:\te8 dc 81 01 00       \tcallq  41d6c0 <p111_rt_special_take>",
+        "405509:\te8 b2 81 01 00       \tcallq  41d6c0 <p111_rt_special_take>",
+        "405543:\te8 18 68 01 00       \tcallq  41bd60 <p111_rt_op>",
+        "40555f:\te8 4c 60 01 00       \tcallq  41b5b0 <p111_rt_sink>",
+        "405570:\te8 3b 60 01 00       \tcallq  41b5b0 <p111_rt_sink>",
+        "40557d:\te8 be 67 01 00       \tcallq  41bd40 <p111_rt_fail>",
+        "405592:\te8 19 60 01 00       \tcallq  41b5b0 <p111_rt_sink>",
+        "4055a0:\te8 0b 60 01 00       \tcallq  41b5b0 <p111_rt_sink>",
+        "4055ba:\te8 f1 5f 01 00       \tcallq  41b5b0 <p111_rt_sink>",
+        "4055c8:\te8 e3 5f 01 00       \tcallq  41b5b0 <p111_rt_sink>",
+        "4055df:\te8 cc 5f 01 00       \tcallq  41b5b0 <p111_rt_sink>",
+        "4055ec:\te8 4f 67 01 00       \tcallq  41bd40 <p111_rt_fail>",
+        "4055fe:\te8 ad 5f 01 00       \tcallq  41b5b0 <p111_rt_sink>",
+        "40561d:\te8 1e 67 01 00       \tcallq  41bd40 <p111_rt_fail>",
+        "40565e:\te8 dd 66 01 00       \tcallq  41bd40 <p111_rt_fail>",
+        "40568b:\te8 b0 66 01 00       \tcallq  41bd40 <p111_rt_fail>",
+        "4056a6:\te8 b5 b6 01 00       \tcallq  420d60 <p125_rt_take2>",
+        "4056b8:\te8 f3 5e 01 00       \tcallq  41b5b0 <p111_rt_sink>",
+        "4056d7:\te8 64 66 01 00       \tcallq  41bd40 <p111_rt_fail>"
+      ]
+    },
+    {
+      "variant": "scalar",
+      "name": "p113d:$p118borrow.read.p130s_order_go",
+      "symbol": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_112_49_51_48_115_95_111_114_100_101_114_95_103_111_",
+      "ssaLines": 299,
+      "ssaCalls": {
+        "p111_rt_ctor": 8,
+        "p111_rt_fail": 8,
+        "p111_rt_op": 1,
+        "p118_rt_borrow_fields": 3
+      },
+      "machineInstructions": 265,
+      "machineCalls": [
+        "40581d:\te8 be a7 01 00       \tcallq  41ffe0 <p118_rt_borrow_fields>",
+        "4058d7:\te8 04 a7 01 00       \tcallq  41ffe0 <p118_rt_borrow_fields>",
+        "40596f:\te8 ec 63 01 00       \tcallq  41bd60 <p111_rt_op>",
+        "40598a:\te8 b1 63 01 00       \tcallq  41bd40 <p111_rt_fail>",
+        "4059aa:\te8 71 5c 01 00       \tcallq  41b620 <p111_rt_ctor>",
+        "4059c5:\te8 56 5c 01 00       \tcallq  41b620 <p111_rt_ctor>",
+        "4059d6:\te8 65 63 01 00       \tcallq  41bd40 <p111_rt_fail>",
+        "4059fc:\te8 3f 63 01 00       \tcallq  41bd40 <p111_rt_fail>",
+        "405a1c:\te8 ff 5b 01 00       \tcallq  41b620 <p111_rt_ctor>",
+        "405a3b:\te8 e0 5b 01 00       \tcallq  41b620 <p111_rt_ctor>",
+        "405a5b:\te8 c0 5b 01 00       \tcallq  41b620 <p111_rt_ctor>",
+        "405a6a:\te8 d1 62 01 00       \tcallq  41bd40 <p111_rt_fail>",
+        "405a97:\te8 a4 62 01 00       \tcallq  41bd40 <p111_rt_fail>",
+        "405ac0:\te8 1b a5 01 00       \tcallq  41ffe0 <p118_rt_borrow_fields>",
+        "405b1a:\te8 21 62 01 00       \tcallq  41bd40 <p111_rt_fail>",
+        "405b37:\te8 e4 5a 01 00       \tcallq  41b620 <p111_rt_ctor>",
+        "405b4f:\te8 cc 5a 01 00       \tcallq  41b620 <p111_rt_ctor>",
+        "405b67:\te8 b4 5a 01 00       \tcallq  41b620 <p111_rt_ctor>"
+      ]
+    },
+    {
+      "variant": "scalar",
+      "name": "p113d:$direct.p130s_order_go",
+      "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_49_51_48_115_95_111_114_100_101_114_95_103_111_",
+      "ssaLines": 15,
+      "ssaCalls": {
+        "p111_rt_sink": 2,
+        "p113d:$p118borrow.read.p130s_order_go": 1,
+        "p113d:$p128borrow.owned.p130s_order_go": 1,
+        "p118_rt_borrow_scalar_safe": 1
+      },
+      "machineInstructions": 41,
+      "machineCalls": [
+        "405ba3:\te8 68 b8 01 00       \tcallq  421410 <p118_rt_borrow_scalar_safe>",
+        "405bbb:\te8 f0 f7 ff ff       \tcallq  4053b0 <p113d_FID_36_112_49_50_56_98_111_114_114_111_119_46_111_119_110_101_100_46_112_49_51_48_115_95_111_114_100_101_114_95_103_111_>",
+        "405bcb:\te8 40 fb ff ff       \tcallq  405710 <p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_112_49_51_48_115_95_111_114_100_101_114_95_103_111_>",
+        "405bdc:\te8 cf 59 01 00       \tcallq  41b5b0 <p111_rt_sink>",
+        "405be7:\te8 c4 59 01 00       \tcallq  41b5b0 <p111_rt_sink>"
+      ]
+    },
+    {
+      "variant": "scalar",
+      "name": "p113d:$direct.String.cmp.rec",
+      "symbol": "p113d_FID_36_100_105_114_101_99_116_46_83_116_114_105_110_103_46_99_109_112_46_114_101_99_",
+      "ssaLines": 71,
+      "ssaCalls": {
+        "p111_rt_fail": 2,
+        "p125_rt_ctor2": 4,
+        "p125_rt_take2": 2
+      },
+      "machineInstructions": 82,
+      "machineCalls": [
+        "406056:\te8 e5 5c 01 00       \tcallq  41bd40 <p111_rt_fail>",
+        "406074:\te8 e7 ac 01 00       \tcallq  420d60 <p125_rt_take2>",
+        "4060ab:\te8 90 5c 01 00       \tcallq  41bd40 <p111_rt_fail>",
+        "4060c7:\te8 94 ac 01 00       \tcallq  420d60 <p125_rt_take2>",
+        "406103:\te8 68 ab 01 00       \tcallq  420c70 <p125_rt_ctor2>",
+        "40612e:\te8 3d ab 01 00       \tcallq  420c70 <p125_rt_ctor2>",
+        "406153:\te8 18 ab 01 00       \tcallq  420c70 <p125_rt_ctor2>",
+        "406175:\te8 f6 aa 01 00       \tcallq  420c70 <p125_rt_ctor2>"
+      ]
+    },
+    {
+      "variant": "scalar",
+      "name": "p113d:$direct.Pair.snd",
+      "symbol": "p113d_FID_36_100_105_114_101_99_116_46_80_97_105_114_46_115_110_100_",
+      "ssaLines": 20,
+      "ssaCalls": {
+        "p111_rt_fail": 1,
+        "p111_rt_sink": 1,
+        "p125_rt_take2": 1
+      },
+      "machineInstructions": 25,
+      "machineCalls": [
+        "4061b8:\te8 83 5b 01 00       \tcallq  41bd40 <p111_rt_fail>",
+        "4061ce:\te8 8d ab 01 00       \tcallq  420d60 <p125_rt_take2>",
+        "4061e4:\te8 c7 53 01 00       \tcallq  41b5b0 <p111_rt_sink>"
+      ]
+    },
+    {
+      "variant": "scalar",
+      "name": "p113d:$product.Pair.snd",
+      "symbol": "p113d_FID_36_112_114_111_100_117_99_116_46_80_97_105_114_46_115_110_100_",
+      "ssaLines": 10,
+      "ssaCalls": {
+        "p111_rt_sink": 1
+      },
+      "machineInstructions": 11,
+      "machineCalls": [
+        "406200:\te8 ab 53 01 00       \tcallq  41b5b0 <p111_rt_sink>"
+      ]
+    },
+    {
+      "variant": "scalar",
+      "name": "p113d:$p128borrow.owned.p130s_query",
+      "symbol": "p113d_FID_36_112_49_50_56_98_111_114_114_111_119_46_111_119_110_101_100_46_112_49_51_48_115_95_113_117_101_114_121_",
+      "ssaLines": 20,
+      "ssaCalls": {
+        "p113d:$direct.p130s_order_go": 1
+      },
+      "machineInstructions": 7,
+      "machineCalls": [
+        "406dd2:\te8 a9 ed ff ff       \tcallq  405b80 <p113d_FID_36_100_105_114_101_99_116_46_112_49_51_48_115_95_111_114_100_101_114_95_103_111_>"
+      ]
+    },
+    {
+      "variant": "scalar",
+      "name": "p113d:$p118borrow.read.p130s_query",
+      "symbol": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_112_49_51_48_115_95_113_117_101_114_121_",
+      "ssaLines": 12,
+      "ssaCalls": {
+        "p111_rt_ctor": 1,
+        "p113d:$p118borrow.read.p130s_order_go": 1
+      },
+      "machineInstructions": 24,
+      "machineCalls": [
+        "406e0e:\te8 0d 48 01 00       \tcallq  41b620 <p111_rt_ctor>",
+        "406e1f:\te8 ec e8 ff ff       \tcallq  405710 <p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_112_49_51_48_115_95_111_114_100_101_114_95_103_111_>"
+      ]
+    },
+    {
+      "variant": "scalar",
+      "name": "p113d:$direct.p130s_query",
+      "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_49_51_48_115_95_113_117_101_114_121_",
+      "ssaLines": 15,
+      "ssaCalls": {
+        "p111_rt_sink": 2,
+        "p113d:$p118borrow.read.p130s_query": 1,
+        "p113d:$p128borrow.owned.p130s_query": 1,
+        "p118_rt_borrow_scalar_safe": 1
+      },
+      "machineInstructions": 38,
+      "machineCalls": [
+        "406e55:\te8 b6 a5 01 00       \tcallq  421410 <p118_rt_borrow_scalar_safe>",
+        "406e69:\te8 52 ff ff ff       \tcallq  406dc0 <p113d_FID_36_112_49_50_56_98_111_114_114_111_119_46_111_119_110_101_100_46_112_49_51_48_115_95_113_117_101_114_121_>",
+        "406e79:\te8 62 ff ff ff       \tcallq  406de0 <p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_112_49_51_48_115_95_113_117_101_114_121_>",
+        "406e8a:\te8 21 47 01 00       \tcallq  41b5b0 <p111_rt_sink>",
+        "406e95:\te8 16 47 01 00       \tcallq  41b5b0 <p111_rt_sink>"
+      ]
+    },
+    {
+      "variant": "scalar",
+      "name": "p113d:$direct.p130s_digest",
+      "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_49_51_48_115_95_100_105_103_101_115_116_",
+      "ssaLines": 143,
+      "ssaCalls": {
+        "p111_rt_fail": 3,
+        "p113d:$direct.p130s_order_go": 1,
+        "p125_rt_take2": 2
+      },
+      "machineInstructions": 92,
+      "machineCalls": [
+        "406f5a:\te8 01 9e 01 00       \tcallq  420d60 <p125_rt_take2>",
+        "406f9c:\te8 bf 9d 01 00       \tcallq  420d60 <p125_rt_take2>",
+        "406fcb:\te8 b0 eb ff ff       \tcallq  405b80 <p113d_FID_36_100_105_114_101_99_116_46_112_49_51_48_115_95_111_114_100_101_114_95_103_111_>",
+        "406ffd:\te8 3e 4d 01 00       \tcallq  41bd40 <p111_rt_fail>",
+        "40704a:\te8 f1 4c 01 00       \tcallq  41bd40 <p111_rt_fail>",
+        "40705b:\te8 e0 4c 01 00       \tcallq  41bd40 <p111_rt_fail>"
+      ]
+    }
+  ]
+}

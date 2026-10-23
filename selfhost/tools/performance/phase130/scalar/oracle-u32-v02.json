@@ -1,0 +1,46 @@
+{
+  "complete": true,
+  "method": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase130/scalar/prepare-u32-v02.py",
+    "bytes": 1698,
+    "sha256": "4cf76401e14a9253755c6a25cf8c4c56e68126ef98758870299a13dd3610fb6c"
+  },
+  "modules": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase130/scalar/order-u32-v01.bend",
+      "bytes": 918,
+      "sha256": "4ce66cec1485753441b1819c9d663465db046b4d7b0feb058cd9bbdf0b634218"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase130/scalar/workload-u32-v01.bend",
+      "bytes": 3313,
+      "sha256": "15671bd0fcd07e886f826b523864e43181168a9fad438d0859806d00f38873ce"
+    }
+  ],
+  "base": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/base.bend",
+    "bytes": 75064,
+    "sha256": "99ac43f2b2bb3e3f39acdcedcecbbd3cb44749ce13969c827d6973fa66f7facf"
+  },
+  "independentOracle": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase130/scalar/oracle.json",
+    "bytes": 1981,
+    "sha256": "0567a4a9851d8b6d595aedbb059bcaacf440d8cdd911db5255637286737328dd"
+  },
+  "expected": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase130/scalar/expected.json",
+    "bytes": 106,
+    "sha256": "6dc06b9da2553b676e7b8f90bd2df4b39b29b0bf554f6f24dd3bf31e8c357a6b"
+  },
+  "semanticControls": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase130/scalar/semantic-controls-u32-v01.cases.json",
+    "bytes": 894,
+    "sha256": "02cb8b28ceeac97df3b6b86280342132b33219ecb3b623370f894fd0e6210963"
+  },
+  "negativeV01": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase130/scalar/cases-u32-v01.json",
+    "bytes": 1652,
+    "sha256": "c56ec0884e28d44dc2d89ac3863609ea2ec5875e0c5eabb4201769851c779c81"
+  },
+  "change": "Safe p130s_code definition now precedes baseline p130s_query; no forward unfilled law, no unsafe annotation, semantics unchanged."
+}

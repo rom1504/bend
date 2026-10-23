@@ -1,6 +1,7 @@
 # Phase130 — measured decoder gain, scalar query still under investigation
 
-**Work in progress.** Phase128 remains the qualified compiler. No installed
+**Native qualification in progress.** The Phase130 N1 image passes focused19;
+its self-reproduction is running. Phase128 remains the fully qualified compiler. No installed
 selection or runtime changed. [Design](../../design/phase130/README.md),
 [contracts](../../design/phase130/contracts.md),
 [initial measurements](initial-results.json).
@@ -43,3 +44,27 @@ inodes/mtimes and every replacement are recorded in `dedup-applied01/report.json
 Next integrate explicit carrier mode without duplicating the decoder, measure
 complete native requests, and qualify only if the whole-request result pays for
 its complexity. The35% decoder result is **not** a35% compiler improvement.
+
+## First complete native request result
+
+The fresh three-round block reduces request time11.68% geometrically: qualified
+Phase128N1 is2.0412× upstream; Phase130N1 with compact Base is1.8028×. Lexer
+improves10.27%, closures21.13%, Map2.63%. All27 independent complete outputs
+pass, and all18 native QBE observations are byte-identical across both compilers.
+Request plus machine-build child sums are0.8824× upstream, with the existing
+prepared-Base/cached-runtime policy advantage explicitly retained.
+
+The integrated decoder proxy retains36.01% less time (0.367932→0.235432s). Its
+legacy decimal mode takes0.372475s,1.23% above the old decoder in that block.
+The second direct-U32 scalar ceiling is also rejected:525→640ms,21.90% slower.
+Neither scalar rewrite changes the compiler.
+
+Hosted full-image acquisition takes872.50 guarded seconds, peak6,339,612,672
+bytes—close to the6GiB cap. The previous Phase128 historical acquisition was
+512s/2.67GiB; this is not a same-source controlled comparison. Native request
+gains must not be presented as faster full-image acquisition or demonstrated
+research acceleration. Full native self-reproduction and final gates remain.
+
+The selected source has57,018 physical lines,114 above Phase128 (0.20%), including
+67 new control lines. Seventeen existing decoder declarations change; backend,
+runtime and original final verification stay unchanged.

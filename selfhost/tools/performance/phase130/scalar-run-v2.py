@@ -67,7 +67,7 @@ def main():
                 assert p.returncode==0 and not p.stderr and len(lines)==4 and lines[:3]==prefix and lines[3].isdigit()
                 row['runtimeSeconds']=int(lines[3])*1e-3; save()
         r['medians']={name:statistics.median(x['runtimeSeconds'] for x in r['runs'] if x['name']==name) for name in names}
-        r['candidateOverBaseline']=r['medians']['scalar-order-scalar']/r['medians']['scalar-order-baseline']
+        r['candidateOverBaseline']=next(v for n,v in r['medians'].items() if n.endswith('-scalar'))/next(v for n,v in r['medians'].items() if n.endswith('-baseline'))
         for row in r['inputs']:check(row)
         r['complete']=True
     except BaseException as error:

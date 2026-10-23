@@ -105,6 +105,11 @@ reuses exclusive list prefixes and consumes verified facts in smaller runtime
 calls. The [Phase125 report](implementation/phase125/README.md) distinguishes
 work eliminated, broad performance, compiler cost and native self-hosting.
 
+The [representation-composition experiment](docs/self_hosted/representation-composition.md)
+keeps float values, verified product results and tail-recursive control flow
+across optimization boundaries. Its [Phase126 report](implementation/phase126/README.md)
+records the selected compiler, measured gains, rejected experiments and qualification.
+
 The [native IR research prototype](docs/self_hosted/NATIVE_IR_RESEARCH.md) now
 implements a small Bend IR with C and Cranelift consumers, checked folding laws,
 and a reproducible policy experiment. Its [report and diagrams](implementation/phase106/README.md)

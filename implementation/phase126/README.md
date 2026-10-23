@@ -1,110 +1,154 @@
-# Phase126: compose useful optimizations and remove failed machinery
+# Phase126: keep representations useful across optimization boundaries
 
-Campaign in progress, starting `3c94d98` at 2026-10-22 22:59 UTC. The authorized
-three-hour window ends around 01:59 UTC. Phase125 remains the native-qualified
-checkpoint; no Phase126 native qualification or installed selection change yet.
+Final integration is in progress. Source32 is frozen; the checked hosted API,
+98 finite checks and nine ordinary native programs pass. N1 builds and passes
+focused19. The native campaign stopped at its storage reserve before self-emission;
+the failed receipt is preserved. Original45 timing and the resumed native chain
+must finish before this report can claim broad gains or native qualification.
 
-## Findings established by the first focused experiments
+[Design](../../design/phase126/persistent-private-values.md) ·
+[Reproduce](../../selfhost/tools/performance/phase126/README.md) ·
+[Architecture](../../docs/self_hosted/representation-composition.md) ·
+[Semantic review](final-semantic-review.md) ·
+[Next opportunities](remaining-opportunities.md).
 
-1. Persistent local float values help, but a typed private ABI did not. In a
-   rotated paired run, active-ray medians were1175ms local-only,1297ms typed and
-   1712ms Phase125. The simpler option also won ordinary ray,1835/1863/1973ms;
-   recurrence418/419/416ms was neutral. Keep the successful cleanup and discard
-   the extra ABI/analysis from the candidate. The compact implementation emits
-   byte-identical QBE to the selected prior composition on all three sources.
-2. Finite scalar tables compose with the float cleanup. Table-only active-ray
-   median1391ms versus1692ms parent; their composition903ms versus1699ms parent
-   and201ms upstream. Actual scalar definitions/refusals are independently
-   inspected, including full-width Nat defaults. This remains a focused result.
-3. A safe conditional in recursive argument preparation blocked a whole local
-   continuation region. Admitting that exact retained branch cuts ordinary-ray
-   runtime1911→561ms, with upstream229ms. Tree-bitonic, Mandelbrot and local-fold
-   in the same screen remain approximately unchanged. The column worker now
-   uses the existing explicit-stack region instead of scheduler transfers.
+## What changed
 
-These numbers are compiled-program execution time. They are not compiler
-throughput or a replacement for the original44-point geometric mean. Full
-composition, additional controls, broad timing and integration are still pending.
+The useful capability is composition: retain information that an existing pass
+already established so the next pass can remove a whole boundary. The selected
+compiler is still checked Bend emitting QBE directly. There is no generated C or
+cproc stage; one small arithmetic helper is added to the cached runtime.
 
-## Second focused checkpoint, 00:17 UTC
+1. **Persistent local floats.** Keep F32 machine temporaries across admitted local
+   operations, preserving rounding and explicit observation boundaries. Function
+   calls retain the original full-Term ABI. The typed-private-ABI experiment was
+   slower and is excluded. This is not fast-math or a promise about arithmetic
+   NaN payloads beyond the stated transport/conversion controls.
+2. **Finite scalar selectors.** Evaluate small closed selectors into verified
+   readonly tables, then project their reads into consumers. Keep the full-width
+   default, exact supported operations and a bounded admission policy. Effects,
+   nonfinite intermediate values and unknown expressions retain fallback.
+3. **Recursive computation composition.** Admit already-safe conditional argument
+   preparation into the existing explicit-stack regions, and project the exact
+   Nat predecessor operation. A small local admission now unlocks a much larger
+   ray computation; stack safety continues to use the existing continuation stack.
+4. **Flat observer products.** Give an existing certified borrowed reader a flat
+   result interface, then rerun dependency closure with that interface available.
+   The production hook matters: merely creating a helper did not activate the
+   optimization at the integrated entry point.
+5. **Unboxed quotient/remainder.** Authenticate the native Nat.divmod application
+   and return its two full-width results in a local 16-byte buffer. This removes
+   a temporary heap Tuple, its construction and take. The exact new runtime
+   import preserves divisor-zero behavior `(0, dividend)` and performs no
+   ownership operation. A final publicly observable Tuple still materializes.
+6. **Two-member tail cycles.** Join exact mutual tail calls into one existing-IR
+   loop with word arguments and a discriminator. Original wrappers retain their
+   interfaces. Exact call/result identity, hygiene, arity and final verifier
+   checks remain mandatory; unresolved and non-tail cycles retain fallback.
 
-The checked inline20 composition passes seven ordinary programs (106 output
-lines), including float boundaries, full-width valid Nat values, aliases and
-recursive shifts. Its five-case screen gives active-ray769/1696/200ms,
-recurrence303/418/201ms and ordinary-ray374/1913/230ms
-(candidate/Phase125/upstream). RLE1253/1266/217ms and lexer504/515/186ms are
-approximately unchanged. These subsets must not be pooled into a corpus score.
+The selected source SHA256 is
+`40c469114c4d1c75dceab456e1979bb5c0278744a02e6dbe4a37e63667740abb`.
+[Its compressed source](compiler-source32.bend.gz) is independently recoverable;
+the manifests retain the module-by-module derivation and protected declarations.
+Source33's extra optimizer composition is excluded.
 
-Machine inspection explains the recurrence improvement: explicit operation58
-admission unlocks the entire local float buffer, reducing60→40 instructions,
-9→0 stack-memory operands and9→2 integer/XMM transfers. There was no runtime
-call in either worker. The additional Nat predecessor projection removes one
-helper call and six stack operands in the recursive ray column worker; its
-numeric workers remain byte-identical. Table-call projection then removes the
-remaining selector boundaries, improving active-ray beyond whole-table emission.
-See [machine evidence](machine-work14-17.md) and the pinned inline20 screen.
+## Focused findings before the broad gate
 
-Two broader experiments are now bounded independently. Actual map diagnostics
-show a missing flat result interface (`$product.Map.bit.go`) despite an existing
-verified boxed observer; a Var-only residual adapter plus dependency closure is
-checked and passes11 new finite predicates, with runtime results pending.
-The tree reshape recognizer admits both the frozen tree computation and an
-independent owning-payload fixture; its guarded two-shell reuse still awaits
-execution. Neither prototype is a measured improvement or a native checkpoint.
+These are three-round, fixed-repetition screens, not a pooled corpus score.
+Numbers are generated-program runtime in milliseconds, candidate / same-run
+Phase125 / pinned upstream C-Clang.
 
-Rejected attempts remain explicit: an overbroad constant-field adapter and a raw
-constructor-ID integration were caught in offline review; a bounded type-size
-predicate initially used a helper with a fixed4097 offset and refused every
-positive. Ordinary fixture corrections repaired parser notation, affine reuse
-and a max-Nat expression whose intermediate exceeded the supported limit. The
-independent expected outputs were retained; failed receipts were not overwritten.
+| Selected capability screen | Candidate | Phase125 | Upstream |
+| --- | ---: | ---: | ---: |
+| Ordinary ray, numeric composition20 | 374 | 1913 | 230 |
+| Active ray256, numeric composition20 | 769 | 1696 | 200 |
+| Numeric recurrence, composition20 | 303 | 418 | 201 |
+| Record aggregation256, final32 | 567 | 684 | 200 |
+| Map churn128, final32 | 653 | 712 | 200 |
+| Evening program, final32 | 1292 | 1382 | 211 |
+| RLE, final32 | 1130 | 1145 | 202 |
+| Lexer, final32 | 504 | 521 | 192 |
 
-## Current evidence
+Composition20's numeric changes are included in final32, but its measurements
+remain measurements of composition20 until the final broad run checks them.
+The final32 five-case geometric ratio is0.92537×Phase125 and3.83755×upstream;
+its difficult subset is not the original44-point metric.
 
-- [Design](../../design/phase126/persistent-private-values.md).
-- [Float experiment](../../experiments/phase126/P126-001-persistent-float-regions.md)
-  and `selfhost/build/phase126/local-typed-paired01/report.json`.
-- [Table experiment](../../experiments/phase126/P126-002-finite-scalar-selectors.md),
-  `table-inspect02/report.json` and `combined-screen08/report.json` under Phase126.
-- [Conditional recursion experiment](../../experiments/phase126/P126-003-conditional-recursive-preparation.md),
-  `resume-finite10/report.json` and `resume-screen10/report.json` under Phase126.
-- [Machine evidence](machine-audit-v02.md), [local ablation](machine-audit-local06.md),
-  [table review](table-review.md), [recursion review](scalar-resume-review.md).
+Machine inspection explains specific work removed. The recurrence worker has
+60→40 instructions,9→0 stack-memory operands and9→2 integer/XMM transfers.
+Neither version called a runtime helper there: operation admission unlocked the
+entire local float buffer. The ray column worker loses a Nat helper boundary
+and six stack operands. All five inspected final programs contain joined
+Nat/U32 read/format tail workers with local backedges and no mutual native
+recursion. See [numeric machine evidence](machine-work14-17.md),
+[product evidence](product-observer-report.md) and [SCC evidence](tail-scc-machine-review.md).
+Static counts establish changed code, not each mechanism's runtime share.
 
-All timed observations use the unchanged complete-result/count oracle, selected
-Phase125 runtime, branch-aligned QBE machine builds and one guarded CPU3 lane.
-Frozen sources, failed acquisitions and unsupported control literals remain
-preserved. Agents inspect disjoint code/proofs/tooling; only the root runs targets.
+## Correctness and qualification boundaries
 
-## Remaining work in this campaign
+The checked API and combined98 finite predicates pass. Nine ordinary native
+programs pass152 exact output lines, including float boundaries, table defaults,
+full-width Nat arithmetic, zero-divisor divmod, ownership aliases and deep mutual
+recursion. The SCC controls exercise200002 internal transfers with full-width
+arguments and an aliased String. Their three forward-calling helpers use the
+language's explicit `@unsafe` permission for user forward laws; this does not
+relax the IR verifier or prove general termination. Earlier invalid fixtures
+remain preserved with their original failures and unchanged expected outputs.
 
-Test the missing F32-to-U32 operand case, exact Nat predecessor projection and
-bounded constructor identity. Test table-call composition if ready. Retain only
-measured useful changes, then run ordinary controls, the frozen45 corpus and a
-matched compiler-cost screen. A native checkpoint is contingent on material
-benefit, memory/disk headroom and enough remaining time; it is not inferred from
-hosted benchmark success. Final report will replace these pending statements.
+The native ABI is source-bound and retains the previous runtime prefix and
+verifier fallbacks. Seven data-only mutations are refused. A complete native
+checkpoint additionally requires hosted→N1→N2, byte-identical raw QBE, both
+focused19 suites and N2's original45 correctness suite. ABI admission or hosted
+success alone cannot substitute for these obligations.
 
-## Third focused checkpoint, 00:40 UTC
+The native one-shot45 sources and the timed batch45 sources have different
+entry points:0/45 source hashes match. They are deliberately separate gates.
+The installed JS/native selection remains unchanged. There is no N2→N3, ELF
+fixed-point, GPU/parallel or recursive-research-acceleration claim.
 
-The flat observer bridge now reaches the actual integrated entry. On five matched
-cases it improves records256 and map-churn128 by about11–13%, evening by6%, and
-leaves RLE nearly unchanged; lexer regresses about8%. The exact two-case hosted
-request experiment gives0.99384× parent total and1.00548× admitted cost, so it
-has no demonstrated compiler-cost improvement or significant penalty in that
-small screen. A bounded existing-pass composition is being tested for the lexer.
+## Costs and rejected alternatives
 
-The closed tree reshape is rejected. Exact counters show5630 attempts and5630
-successes,11260 fewer allocations/takes, and37.92% fewer Node allocation calls.
-Nevertheless two runtime variants regress5.47% and3.35% geometrically over three
-tree cases. The baseline already recycles the same two cells through its freelist;
-removed allocator calls do not establish reduced fresh-memory traffic. See
-[the negative experiment](tree-reshape.md). RFC1 was built but not timed.
+Two matched hosted compiler requests cost **1.08745×Phase125** overall and
+1.13212× for the admitted entry, using the unchanged paired method. RLE grows
+4.221→4.639s and lexer8.055→8.668s. These are compilation costs, not user-program
+runtime or native B1/B2 throughput. Static inspection identifies repeated late
+candidate preparation as a cleanup opportunity; it does not attribute the
+measured overhead without a profile or ablation.
 
-A source-local Nat.divmod product prototype passes77 combined finite checks, but
-all five real emitted programs are byte-identical to the preceding compiler:
-its initial shape hook misses the still-authenticated App before NOp lowering.
-This static activation gate correctly prevents wasting a timing campaign on an
-inactive optimization. Two-function tail-SCC fusion is also still a prototype;
-its first source acquisition failed parsing before target execution. Neither is
-selected or included in a performance claim at this checkpoint.
+The compiler source grows53,219→55,285 physical lines: **+2066 lines,+3.88%**,
+including controls. Bytes grow2,429,750→2,527,616. The runtime gains594 bytes.
+This cycle improves capabilities at a real simplicity and compilation-cost price.
+It does not establish a simpler compiler or lower research cost overall.
+
+- **Typed private float ABI:** local-only values win the paired ablation
+  (active ray1175ms local,1297ms typed,1712ms parent). Keep the simpler choice.
+- **Tree-shell reconstruction:**5630/5630 guarded attempts succeed and Node
+  allocator calls fall37.92%, but runtime regresses5.47% and3.35% in two variants.
+  The old freelist already recycles those cells. Fewer allocator calls do not
+  establish less fresh memory traffic; cache-placement effects remain unmeasured.
+  Both variants are excluded. [Full negative result](tree-reshape.md).
+- **Initial divmod hook:** all five programs were byte-identical to the parent,
+  because the hook missed the authenticated App form. Static activation inspection
+  avoided wasting a timing campaign; source32 fixes that boundary.
+- **Source33:** extra bounded optimizer composition changes few private workers;
+  lexer/RLE QBE remains byte-identical to32 and the separate five-case score differs
+  only about0.3%. That does not justify its extra machinery;32 remains selected.
+- Earlier rejected constant-field/constructor adapters and parser/type/law fixture
+  failures remain in the evidence. No correctness gate was weakened to accept them.
+
+## What the ambitious path taught us
+
+The larger experiment was to compose representation, borrowed products and local
+control flow using existing verified interfaces. It produced useful general
+capabilities without replacing the whole IR. The negative tree experiment also
+prevented promoting an attractive but slower cross-layer transformation. Neither
+result justifies a universal IR rewrite or a parity forecast.
+
+The strongest next experiment is the **outer Map continuation boundary**. Actual
+final32 machine code still takes and reconstructs MNode roots, saves frames and
+jumps to boxed Map.bit even though a useful flat helper exists. Preserve that flat
+result through its immediate return consumer first; test a renamed binary search
+with aliases/missing keys and an unrelated consumer before widening its ownership
+schema. A second bounded task can skip already-ready flat candidate preparation
+and require byte-identical QBE to recover compiler overhead. See
+[ranked opportunities and falsifiers](remaining-opportunities.md).

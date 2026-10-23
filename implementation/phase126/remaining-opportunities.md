@@ -114,3 +114,44 @@ The next decisive information is whether a general flat-helper/local-resume
 projection removes work in an actual outer caller. Preserve the qualified
 source32 compiler while answering that question; another full rebuild or
 broad profile is unnecessary for the first falsifier.
+
+## Output-preserving preparation cleanup
+
+The completed root-run `phase118/p126-final32-cost/report.json` measures
+**+8.75%** geometric whole prepared-request time on RLE/lexer and **+13.21%**
+inside the admitted entry. RLE is 4.221→4.639 seconds; lexer is
+8.055→8.668 seconds. These timings do not identify the responsible pass.
+The candidate emits 19 additional chunks for each request, so some extra
+lowering/verification/rendering is legitimate new output, not removable waste.
+
+**Concrete static duplication.** `p126bp_close` calls
+`p113pl_inspect_request(request)` after the original program and borrowed workers
+are already available. That repeats `p112s_prepare`, bang/signature analysis
+and candidate lowering for the whole source catalogue. Then
+`p113d_pass_function` immediately discards candidates whose symbols are already
+in the merged ready index. Exact source32 locations are
+`compiler.bend:46079` (repeat preparation), `:46031` (candidate enumeration),
+and `:44685` (ready-name discard); the new closure is in
+`product-primitive/flat-observer-v02.bend`.
+
+**Small first cleanup:** give a late-only candidate enumerator the existing
+`p113e_signatures(merged, missing())` index. Before invoking
+`p113pl_flat_candidate`, test whether its exact signature symbol
+`nm(dv(info))` is already ready. If so, omit that candidate. Keep full source
+names for signature/bang derivation, preserve boxed candidate bundles and
+their order, and retain the unchanged final closure/verifier. A flat factory
+produces exactly one deterministically named candidate; the old closure would
+discard it regardless of its body or error. Boxed factories can additionally
+produce TRMC/stream workers, so skipping an entire source definition merely
+because its public entry exists would be unsound as an output-equivalence
+claim. This narrow change needs no persistent cache or new IR.
+
+Check exact QBE bytes against frozen source32 for both cost fixtures and a
+product-heavy record request, then rerun the same paired cost measurement.
+This is a plausible recovery of part of the overhead, **not** a measured
+attribution or promise to recover all 8.75%. Broader prepared-state reuse is
+worth considering only if this exposes substantial repeated lowering cost.
+The SCC pass already uses indexed identities and reciprocal-call filtering;
+table-call emission already builds one compact catalogue and skips empty
+catalogue searches. Neither justifies a speculative replacement cache before
+the simpler guaranteed-unused lowering is removed.

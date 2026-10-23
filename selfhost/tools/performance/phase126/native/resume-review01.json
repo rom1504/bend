@@ -1,0 +1,38 @@
+{
+  "complete": true,
+  "targetsRun": false,
+  "plan": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase126/native32-resume-plan01.json",
+    "bytes": 206550,
+    "sha256": "ad3b78bd4402effc7960521cefe72037c3d652b0294e34fa9bcf4b719c00f966"
+  },
+  "methods": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase126/native/resume.py",
+      "bytes": 8051,
+      "sha256": "8b4e695bfa0129d6cfd2d0696b9ec569c6d90cdcec7dbc97f4abc580861f6267"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase126/native/resume-guard.py",
+      "bytes": 3920,
+      "sha256": "c7e2fe8764f8b3ab20e825c828924efc35c14486e6208bb5bfb1453df7b12af4"
+    }
+  ],
+  "actualSizes": {
+    "binary": 16109080,
+    "object": 21504144,
+    "assembly": 72734853,
+    "qbe": 99526466
+  },
+  "sameInputN2WithMargin": 118736685,
+  "requiredBytes": 268435456,
+  "checks": [
+    "exact four completed jobs reused with their original commands/logs/receipts",
+    "failed storage attempt and original failed guard retained",
+    "same remaining target commands except fresh plan/checkpoint paths",
+    "fresh aggregate has exactly12 named original gate obligations",
+    "memory,available-memory,filecap,CPU,wall and shared ExecutionGuard unchanged",
+    "context guard accepts only exact resume-plan hash; no generic low-disk permission",
+    "original storage gates still rerun; current disk must exceed256MiB; no target executed"
+  ]
+}

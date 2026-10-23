@@ -1,0 +1,51 @@
+{
+  "complete": true,
+  "method": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase130/scalar/prepare-v05.py",
+    "bytes": 2870,
+    "sha256": "929af4770ac7ff7c0e9501ef96705c3d09cd222b1740ab516dd607637b851955"
+  },
+  "modules": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase130/scalar/order-v03.bend",
+      "bytes": 849,
+      "sha256": "d319096ee2727779bd547ead00c96a3e2314eb2e325b23d412dbe3b798f276d1"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase130/scalar/workload-v05.bend",
+      "bytes": 3361,
+      "sha256": "aef62dd854489adae8f230c96f413a0bc25241a74e25a07cb49a55b010a90670"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase130/scalar/semantic-body-v05.bend",
+      "bytes": 1038,
+      "sha256": "083d0b9beabaa4e90189a80d67f025b0f0da2a8011298c58d0a9c89367fb5b84"
+    }
+  ],
+  "base": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/base.bend",
+    "bytes": 75064,
+    "sha256": "99ac43f2b2bb3e3f39acdcedcecbbd3cb44749ce13969c827d6973fa66f7facf"
+  },
+  "independentOracle": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase130/scalar/oracle.json",
+    "bytes": 1981,
+    "sha256": "0567a4a9851d8b6d595aedbb059bcaacf440d8cdd911db5255637286737328dd"
+  },
+  "expected": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase130/scalar/expected.json",
+    "bytes": 106,
+    "sha256": "6dc06b9da2553b676e7b8f90bd2df4b39b29b0bf554f6f24dd3bf31e8c357a6b"
+  },
+  "semanticExpected": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase130/scalar/semantic-controls.expected.json",
+    "bytes": 261,
+    "sha256": "cd9def9165c6fe85b6fa79143b09c71a253800ecdc11003fdf9a27b36bff7857"
+  },
+  "negativeV04": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase130/scalar/cases-v04.json",
+    "bytes": 1648,
+    "sha256": "ee258f7dc7432fbc58c97a0d5b91c043031f66bcc717f4d1bab96921053b10d2"
+  },
+  "change": "Explicit types for all retained String and corpus local bindings; no computation or expected output change."
+}

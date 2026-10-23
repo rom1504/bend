@@ -1,0 +1,41 @@
+{
+  "complete": true,
+  "method": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase130/scalar/prepare-v02.py",
+    "bytes": 1332,
+    "sha256": "74d951965606dc8910d489c800ea039aab0a5eeec32b217001817fa2c0d82870"
+  },
+  "modules": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase130/scalar/order-v02.bend",
+      "bytes": 605,
+      "sha256": "dee32f81f03d93cea2fde474cac2c392ac4e53f64818840a40a279a035401220"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase130/scalar/workload.bend",
+      "bytes": 3190,
+      "sha256": "1e56078d0c9b703af98f8933c7351323a551852309e7fd7fee684ae2eb0cb8fd"
+    }
+  ],
+  "base": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/base.bend",
+    "bytes": 75064,
+    "sha256": "99ac43f2b2bb3e3f39acdcedcecbbd3cb44749ce13969c827d6973fa66f7facf"
+  },
+  "independentOracle": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase130/scalar/oracle.json",
+    "bytes": 1981,
+    "sha256": "0567a4a9851d8b6d595aedbb059bcaacf440d8cdd911db5255637286737328dd"
+  },
+  "expected": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase130/scalar/expected.json",
+    "bytes": 106,
+    "sha256": "6dc06b9da2553b676e7b8f90bd2df4b39b29b0bf554f6f24dd3bf31e8c357a6b"
+  },
+  "negativeV01": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase130/scalar/cases.json",
+    "bytes": 1640,
+    "sha256": "e16f5603e38ee88cee4a917eb536d6a75d5ef4b458d0534aaebcb1097a22785a"
+  },
+  "change": "Reorder scalar accumulator before strings to satisfy pattern binder order; expected values unchanged."
+}

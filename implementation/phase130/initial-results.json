@@ -1,0 +1,49 @@
+{
+  "stage": "initial discriminators; no compiler promotion",
+  "base": {
+    "oldBytes": 1100924,
+    "newBytes": 2612691,
+    "numericTokens": 324956,
+    "scalars": {
+      "before": 1100924,
+      "after": 662955
+    },
+    "completeEquivalence": [
+      {
+        "name": "complete-candidate-versus-original-cache",
+        "objectPairs": 88578,
+        "scalarChecks": 221919,
+        "exact": true
+      },
+      {
+        "name": "complete-candidate-versus-fresh-prepare",
+        "objectPairs": 125089,
+        "scalarChecks": 318383,
+        "exact": true
+      }
+    ],
+    "requestEquality": [
+      "lexer",
+      "coverage-closures-256",
+      "coverage-map-churn-128"
+    ],
+    "proxyTiming": {
+      "medians": {
+        "decimal": 0.3744013588875532,
+        "word": 0.2415960340294987
+      },
+      "candidateOverBaseline": 0.6452862103581709
+    },
+    "evidence": "selfhost/build/phase130/base-proxy-timing01/report.json"
+  },
+  "scalar": {
+    "rawTimerUnit": "milliseconds per runtime io_tick()/1000000",
+    "correctedMediansSeconds": {
+      "scalar-order-baseline": 0.133,
+      "scalar-order-scalar": 0.149
+    },
+    "candidateOverBaseline": 1.120300751879699,
+    "note": "Initial runner mislabeled milliseconds as nanoseconds; raw printed integers and wall timing retained; ratio unaffected. scalar-run-v2.py fixes future reporting.",
+    "evidence": "selfhost/build/phase130/scalar-timing01/report.json"
+  }
+}

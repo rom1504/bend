@@ -118,6 +118,23 @@ or a semantic equivalence claim. Nonempty target text alone proves no borrowing
 contract: the checked summary derivation above remains essential. A standalone
 raw `NO_ReadCall` API must not be treated as trusted optimization input.
 
+## Error propagation in the actual selected runtime
+
+The later root-built `runtime-borrow01/report.json` records source SHA256
+`6eb24c8d4a5d6358a9b8b4107a75af777a8dbdd06fe5fdce18d73b9f85f4824a` and object
+`9b3f57afb46b4db8c63f6f3c5f1af1194e0854a7329de28f25d2e11aef887749`.
+This source is the exact Phase126 runtime plus the unchanged scalar guard.
+Ordinary GCC10 CPU compilation selects `DEVICE=0`: `p111_rt_fail` at line3980
+calls `err_post` at575, which calls `err_fail` at569 and `_exit(1)`. Its textual
+`return 0` is unreachable under this runtime contract. A borrowed helper therefore
+cannot record a failure and then let its caller continue using a false scalar
+result. This preserves the existing Phase113 applied-Efq fail-stop obligation.
+
+The device branch has a different error protocol. This argument must not be
+transferred to Metal/CUDA or a future non-fail-stop runtime without revisiting
+call error propagation. The audit inspected source/manifest only; the root
+campaign performed the runtime build.
+
 ## Small controls with highest value
 
 - Ordinary direct wrapper-to-reader composition and an unrelated scalar reader;

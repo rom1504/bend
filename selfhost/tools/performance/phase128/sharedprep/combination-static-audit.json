@@ -1,0 +1,54 @@
+{
+  "complete": true,
+  "checked": false,
+  "targetsRun": false,
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase128/borrow-layout-source04/compiler.bend",
+    "bytes": 2563884,
+    "sha256": "7d79fca002e6b6c57b646ae84a9ab363c77d80b9d2e3688d6db9da6491786293"
+  },
+  "modules": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase128/borrow/next/single-scan.bend",
+      "bytes": 4557,
+      "sha256": "10e038dd4d78d0e50861443f8eb355a1e422fae0802579946919880d84536db3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase128/sharedprep/raw-session.bend",
+      "bytes": 6136,
+      "sha256": "e0ddf2f2a5d2e2675cffc0dc781658bee8ec34901b1b0847d19e735bc9bb58b5"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase128/sharedprep/controls.bend",
+      "bytes": 3584,
+      "sha256": "1fb7b4150b789c64f7edd19e40bd8c791e2c7f553f190c544dc57c0a5007847f"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase128/sharedprep/combination.bend",
+      "bytes": 4178,
+      "sha256": "dc6df7d8ba67a83e826d79514f8ed872aee8e00791184313fe21685ae0e36e94"
+    }
+  ],
+  "parentOverrides": [
+    "p128br_prepare"
+  ],
+  "moduleOverrides": [
+    "p128raw_prepare"
+  ],
+  "combinationOnlyOverride": [
+    "p128raw_prepare"
+  ],
+  "combinationNewDeclarations": [
+    "p128raw_br_compose",
+    "p128raw_br_controls",
+    "p128raw_br_finish",
+    "p128raw_br_prepare",
+    "p128raw_br_scanned"
+  ],
+  "unchangedProtectedDeclarations": 91,
+  "parentLines": 56004,
+  "candidateLines": 56329,
+  "combinationLines": 68,
+  "candidateSourceSha256": "4cb4fffab45c50c95e1634b68fda90810a6b12614ea4c74ee29aadca84bfd4a8",
+  "scope": "Static composition example on frozen borrow-layout-source04; single-scan replaces its older experimental preparation and combination replaces only experimental p128raw_prepare. No build, target execution or qualification. Root final combination may also include separately reviewed reachability and inverse-wrapper modules."
+}

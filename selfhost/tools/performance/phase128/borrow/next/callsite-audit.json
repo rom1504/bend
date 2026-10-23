@@ -1,0 +1,161 @@
+{
+  "kind": "phase128-static-observer-reachability",
+  "source": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/p128-borrow-layout-emit01/compiler-name-search.ssa",
+    "bytes": 698052,
+    "sha256": "2b8a98202e9b6b90b19954a0883b2d86bc844b987692884b69d9a2fb9bf61207"
+  },
+  "observation": "Private digest calls selector1 SCC directly. Borrowed public has_name adapter is absent from this hot path. This is static reachability, not a dynamic profile.",
+  "functions": [
+    {
+      "function": "p113d_[$p126scc.37]",
+      "line": 1891,
+      "calls": [
+        {
+          "callee": "p111_rt_sink",
+          "arguments": "(l %state, l %v_p113i_14_local_v_4294967295)"
+        },
+        {
+          "callee": "p111_rt_sink",
+          "arguments": "(l %state, l %v_p113i_14_local_v_4294967294)"
+        },
+        {
+          "callee": "p111_rt_sink",
+          "arguments": "(l %state, l %v_p113i_14_local_v_4294967295)"
+        },
+        {
+          "callee": "p111_rt_sink",
+          "arguments": "(l %state, l %v_p113i_14_local_v_4294967294)"
+        },
+        {
+          "callee": "p111_rt_fail",
+          "arguments": "(l %state, w 4)"
+        },
+        {
+          "callee": "p111_rt_sink",
+          "arguments": "(l %state, l %v_p113i_15_local_v_4294967292)"
+        },
+        {
+          "callee": "p125_rt_take2",
+          "arguments": "(l %state, l %v_p113i_15_local_v_4294967289, l %v_p113i_15_local_scratch)"
+        },
+        {
+          "callee": "p111_rt_keep",
+          "arguments": "(l %state, l %v_p113i_15_local_v_4294967288)"
+        },
+        {
+          "callee": "p113d_[$direct.p88_string_eq]",
+          "arguments": "(l %state, l %v_p113i_15_local_v_4294967278, l %v_p113i_15_local_v_4294967277)"
+        },
+        {
+          "callee": "p111_rt_fail",
+          "arguments": "(l %state, w 4)"
+        }
+      ]
+    },
+    {
+      "function": "p113d_[$p128borrow.owned.has_name]",
+      "line": 2100,
+      "calls": [
+        {
+          "callee": "p113d_[$p126scc.37]",
+          "arguments": "(l %state, l 1, l %v_v_4294967295, l %v_v_4294967294, l 0)"
+        }
+      ]
+    },
+    {
+      "function": "p113d_[$p118borrow.read.has_name]",
+      "line": 2109,
+      "calls": [
+        {
+          "callee": "p111_rt_special_ctor",
+          "arguments": "(l %state, w 1, l %v_scratch, w 0)"
+        },
+        {
+          "callee": "p118_rt_borrow_fields",
+          "arguments": "(l %state, l %v_v_4294967295, l %v_scratch, w 18, w 2)"
+        },
+        {
+          "callee": "p111_rt_special_ctor",
+          "arguments": "(l %state, w 2, l %v_scratch, w 0)"
+        },
+        {
+          "callee": "p113d_[$p118borrow.read.p88_string_eq_go]",
+          "arguments": "(l %state, l %v_p118b_value_2, l %v_p118b_value_3, l %v_p118b_value_4)"
+        },
+        {
+          "callee": "p113d_[$p118borrow.read.p98_eq_finish]",
+          "arguments": "(l %state, l %v_p118b_value_6, l %v_p118b_value_7, l %v_p118b_value_8)"
+        },
+        {
+          "callee": "p111_rt_special_ctor",
+          "arguments": "(l %state, w 2, l %v_scratch, w 0)"
+        },
+        {
+          "callee": "p111_rt_fail",
+          "arguments": "(l %state, w 4)"
+        },
+        {
+          "callee": "p111_rt_fail",
+          "arguments": "(l %state, w 4)"
+        }
+      ]
+    },
+    {
+      "function": "p113d_[$direct.has_name]",
+      "line": 2179,
+      "calls": [
+        {
+          "callee": "p118_rt_borrow_scalar_safe",
+          "arguments": "(l %state, l %v_v_4294967295, l %v_v_4294967294, w 2)"
+        },
+        {
+          "callee": "p113d_[$p118borrow.read.has_name]",
+          "arguments": "(l %state, l %v_v_4294967295, l %v_v_4294967294)"
+        },
+        {
+          "callee": "p111_rt_sink",
+          "arguments": "(l %state, l %v_v_4294967295)"
+        },
+        {
+          "callee": "p111_rt_sink",
+          "arguments": "(l %state, l %v_v_4294967294)"
+        },
+        {
+          "callee": "p113d_[$p128borrow.owned.has_name]",
+          "arguments": "(l %state, l %v_v_4294967295, l %v_v_4294967294)"
+        }
+      ]
+    },
+    {
+      "function": "p113d_[$direct.p127ns_digest]",
+      "line": 2231,
+      "calls": [
+        {
+          "callee": "p111_rt_sink",
+          "arguments": "(l %state, l %v_v_4294967291)"
+        },
+        {
+          "callee": "p125_rt_take2",
+          "arguments": "(l %state, l %v_v_4294967286, l %v_scratch)"
+        },
+        {
+          "callee": "p111_rt_keep",
+          "arguments": "(l %state, l %v_v_4294967285)"
+        },
+        {
+          "callee": "p113d_[$p126scc.37]",
+          "arguments": "(l %state, l 1, l %v_p113i_0_local_v_4294967295, l %v_p113i_0_local_v_4294967294, l 0)"
+        },
+        {
+          "callee": "p111_rt_fail",
+          "arguments": "(l %state, w 4)"
+        },
+        {
+          "callee": "p111_rt_fail",
+          "arguments": "(l %state, w 4)"
+        }
+      ]
+    }
+  ]
+}

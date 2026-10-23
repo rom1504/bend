@@ -1,0 +1,205 @@
+{
+  "schema": "bend-physical-attribution-batch-v1",
+  "source": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase127/physical02/report.json",
+    "bytes": 77873,
+    "sha256": "d6b8792c4ff3f5ebb31e83e12c43de6a43703514194b346328d8e6567ff5724b"
+  },
+  "tool": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/profiler/attribute.py",
+    "bytes": 20327,
+    "sha256": "250244ec6a8b957dc5169b9e5d24a6c22e059cb01ea5840527a67d20896b1054"
+  },
+  "methodSnapshot": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase127/physical-attribution02/methods/attribute.py",
+    "bytes": 20327,
+    "sha256": "250244ec6a8b957dc5169b9e5d24a6c22e059cb01ea5840527a67d20896b1054"
+  },
+  "summary": [
+    {
+      "workload": "coverage-closures-256",
+      "variant": "phase125",
+      "allSamples": 238,
+      "weightedAllUs": 2354000,
+      "zeroLoss": true,
+      "eligible": 23,
+      "recovered": 23,
+      "fill": [],
+      "copy": [
+        {
+          "caller": "p111_set_regs",
+          "samples": 23,
+          "rawFractionOfAll": 0.09663865546218488,
+          "periodWeightedUs": 224000,
+          "periodWeightedFractionOfAll": 0.0951571792693288
+        }
+      ]
+    },
+    {
+      "workload": "coverage-closures-256",
+      "variant": "phase126",
+      "allSamples": 284,
+      "weightedAllUs": 2812000,
+      "zeroLoss": true,
+      "eligible": 55,
+      "recovered": 55,
+      "fill": [
+        {
+          "caller": "p111_rt_jump",
+          "samples": 21,
+          "rawFractionOfAll": 0.07394366197183098,
+          "periodWeightedUs": 198000,
+          "periodWeightedFractionOfAll": 0.07041251778093884
+        },
+        {
+          "caller": "p111_rt_return",
+          "samples": 17,
+          "rawFractionOfAll": 0.05985915492957746,
+          "periodWeightedUs": 176000,
+          "periodWeightedFractionOfAll": 0.06258890469416785
+        }
+      ],
+      "copy": [
+        {
+          "caller": "p111_set_regs",
+          "samples": 17,
+          "rawFractionOfAll": 0.05985915492957746,
+          "periodWeightedUs": 191000,
+          "periodWeightedFractionOfAll": 0.06792318634423898
+        }
+      ]
+    },
+    {
+      "workload": "coverage-map-churn-128",
+      "variant": "phase125",
+      "allSamples": 1188,
+      "weightedAllUs": 11764000,
+      "zeroLoss": true,
+      "eligible": 73,
+      "recovered": 73,
+      "fill": [],
+      "copy": [
+        {
+          "caller": "p111_set_regs",
+          "samples": 73,
+          "rawFractionOfAll": 0.061447811447811446,
+          "periodWeightedUs": 754000,
+          "periodWeightedFractionOfAll": 0.06409384563073785
+        }
+      ]
+    },
+    {
+      "workload": "coverage-map-churn-128",
+      "variant": "phase126",
+      "allSamples": 1582,
+      "weightedAllUs": 15666000,
+      "zeroLoss": true,
+      "eligible": 252,
+      "recovered": 252,
+      "fill": [
+        {
+          "caller": "p111_rt_return",
+          "samples": 87,
+          "rawFractionOfAll": 0.054993678887484194,
+          "periodWeightedUs": 836000,
+          "periodWeightedFractionOfAll": 0.05336397293501851
+        },
+        {
+          "caller": "p111_rt_jump",
+          "samples": 84,
+          "rawFractionOfAll": 0.05309734513274336,
+          "periodWeightedUs": 822000,
+          "periodWeightedFractionOfAll": 0.052470317885867486
+        },
+        {
+          "caller": "WL_BEND_CLO_APPLY",
+          "samples": 1,
+          "rawFractionOfAll": 0.0006321112515802782,
+          "periodWeightedUs": 13000,
+          "periodWeightedFractionOfAll": 0.00082982254564024
+        }
+      ],
+      "copy": [
+        {
+          "caller": "p111_set_regs",
+          "samples": 80,
+          "rawFractionOfAll": 0.05056890012642225,
+          "periodWeightedUs": 810000,
+          "periodWeightedFractionOfAll": 0.05170432784373803
+        }
+      ]
+    },
+    {
+      "workload": "lexer",
+      "variant": "phase125",
+      "allSamples": 892,
+      "weightedAllUs": 8846000,
+      "zeroLoss": true,
+      "eligible": 49,
+      "recovered": 49,
+      "fill": [],
+      "copy": [
+        {
+          "caller": "p111_set_regs",
+          "samples": 49,
+          "rawFractionOfAll": 0.05493273542600897,
+          "periodWeightedUs": 502000,
+          "periodWeightedFractionOfAll": 0.05674881302283518
+        }
+      ]
+    },
+    {
+      "workload": "lexer",
+      "variant": "phase126",
+      "allSamples": 1005,
+      "weightedAllUs": 9965000,
+      "zeroLoss": true,
+      "eligible": 160,
+      "recovered": 160,
+      "fill": [
+        {
+          "caller": "p111_rt_jump",
+          "samples": 55,
+          "rawFractionOfAll": 0.05472636815920398,
+          "periodWeightedUs": 520000,
+          "periodWeightedFractionOfAll": 0.05218263923733066
+        },
+        {
+          "caller": "p111_rt_return",
+          "samples": 49,
+          "rawFractionOfAll": 0.04875621890547264,
+          "periodWeightedUs": 487000,
+          "periodWeightedFractionOfAll": 0.04887104867034621
+        }
+      ],
+      "copy": [
+        {
+          "caller": "p111_set_regs",
+          "samples": 55,
+          "rawFractionOfAll": 0.05472636815920398,
+          "periodWeightedUs": 580000,
+          "periodWeightedFractionOfAll": 0.05820371299548419
+        },
+        {
+          "caller": "WL_BEND_CLO_APPLY",
+          "samples": 1,
+          "rawFractionOfAll": 0.0009950248756218905,
+          "periodWeightedUs": 13000,
+          "periodWeightedFractionOfAll": 0.0013045659809332664
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "One physical caller only; source ancestors erased by tail calls/inlining are not recovered.",
+    "Raw pooling mixes sampling rates; period-weighted shares additionally weight each sample by its actual period.",
+    "All samples, including unsupported PCs, remain in the denominator.",
+    "Zero-loss short captures remain diagnostically useful but no individual capture met the 500-sample precision gate.",
+    "Observed attribution does not establish the gain from restoring live-register admission."
+  ],
+  "batchReport": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase127/physical-attribution02/report.json",
+    "bytes": 15657,
+    "sha256": "5606d3f6e56d3e9b20f4965a7b62f353af56f237740198e588bd919578287120"
+  }
+}

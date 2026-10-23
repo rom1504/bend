@@ -1,0 +1,1158 @@
+{
+  "kind": "phase127-static-live-bank-admission-audit",
+  "scope": "Static inspection only; no emitted target execution, capability mutation, or compiler edits.",
+  "inputs": [
+    {
+      "file": "selfhost/build/phase125/broad-emission06.json",
+      "bytes": 91040,
+      "sha256": "c96dca29e19dab0ff569dad55cfef70887c743b2adcc078a7fa1f0d8174b02c1"
+    },
+    {
+      "file": "selfhost/build/phase126/final32-emission.json",
+      "bytes": 199905,
+      "sha256": "435fe65f6de69a90aaaee6a135806db5967c2f2f73408de436d3453fe6799bc0"
+    },
+    {
+      "file": "selfhost/build/phase126/observer-divmod-source32/compiler.bend",
+      "bytes": 2527616,
+      "sha256": "40c469114c4d1c75dceab456e1979bb5c0278744a02e6dbe4a37e63667740abb"
+    },
+    {
+      "file": "selfhost/build/phase126/runtime-divmod01/runtime.c",
+      "bytes": 148406,
+      "sha256": "2125198f0a44bac52de957754190d759161a289c5d6f8c802248ae24b41bfc52"
+    }
+  ],
+  "summary": {
+    "cases": 45,
+    "live_bank_lost": 44,
+    "phase126_cases_with_divmod": 45
+  },
+  "cases": [
+    {
+      "name": "complete-generic-row32",
+      "phase125": {
+        "qbe": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/p125-final-remaining06/complete-generic-row32.ssa",
+          "bytes": 1157728,
+          "sha256": "d245aa20aa9fbf74bcf21ae3e8e65f033242e9f0ac5924dd982036407d6ea5a2"
+        },
+        "capabilities": 15,
+        "register_width": 8,
+        "nat_divmod_calls": 0,
+        "concat_typed_calls": 0
+      },
+      "phase126": {
+        "qbe": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/p126-final32-emit-batch02/complete-generic-row32.ssa",
+          "bytes": 1188267,
+          "sha256": "91210fc5270d7f8b53ac3c75be032830bec40d579c5a0595ea4278a583983bc2"
+        },
+        "capabilities": 11,
+        "register_width": 8,
+        "nat_divmod_calls": 2,
+        "concat_typed_calls": 0
+      }
+    },
+    {
+      "name": "coverage-bst-32",
+      "phase125": {
+        "qbe": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/p125-final-remaining06/coverage-bst-32.ssa",
+          "bytes": 566284,
+          "sha256": "ffc1a8f203423714c58fd901cd88dbf731dc2a8a45f831c6e7e02fd3cd1e4c22"
+        },
+        "capabilities": 15,
+        "register_width": 5,
+        "nat_divmod_calls": 0,
+        "concat_typed_calls": 0
+      },
+      "phase126": {
+        "qbe": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/p126-final32-emit-batch05/coverage-bst-32.ssa",
+          "bytes": 596816,
+          "sha256": "610caaacc7b5bedb911b3da9a11c0b4dac3e931e63590e997b5e6fa392e7ae4f"
+        },
+        "capabilities": 11,
+        "register_width": 5,
+        "nat_divmod_calls": 2,
+        "concat_typed_calls": 0
+      }
+    },
+    {
+      "name": "coverage-bst-64",
+      "phase125": {
+        "qbe": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/p125-verified-families06/coverage-bst-64.ssa",
+          "bytes": 566285,
+          "sha256": "5c1aee8fd96f211a0455b120631d17b2565906e82acea0efa2d5ac289afc4a55"
+        },
+        "capabilities": 15,
+        "register_width": 5,
+        "nat_divmod_calls": 0,
+        "concat_typed_calls": 0
+      },
+      "phase126": {
+        "qbe": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/p126-final32-emit-batch05/coverage-bst-64.ssa",
+          "bytes": 596817,
+          "sha256": "a15f6224c50f9c9c3daed8ee412b302b844d5cb884f9ed8ed39bc478a55d9666"
+        },
+        "capabilities": 11,
+        "register_width": 5,
+        "nat_divmod_calls": 2,
+        "concat_typed_calls": 0
+      }
+    },
+    {
+      "name": "coverage-closures-256",
+      "phase125": {
+        "qbe": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/p125-final-remaining06/coverage-closures-256.ssa",
+          "bytes": 439326,
+          "sha256": "33f33987cec40788f1d216c44c39157a37a7fe45fcce82e3b4f75130be3e02db"
+        },
+        "capabilities": 15,
+        "register_width": 5,
+        "nat_divmod_calls": 0,
+        "concat_typed_calls": 0
+      },
+      "phase126": {
+        "qbe": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/p126-final32-emit-batch04/coverage-closures-256.ssa",
+          "bytes": 469856,
+          "sha256": "c4027b34f0770bbae80e224585cc42b27271f3dfc0d95ea3d60e32e2e19d3849"
+        },
+        "capabilities": 11,
+        "register_width": 5,
+        "nat_divmod_calls": 2,
+        "concat_typed_calls": 0
+      }
+    },
+    {
+      "name": "coverage-closures-64",
+      "phase125": {
+        "qbe": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/p125-final-remaining06/coverage-closures-64.ssa",
+          "bytes": 439317,
+          "sha256": "6f4735e5ab4d160e55b0cf208112f00c8280dd4c5ea4f38d84ecd683a7155739"
+        },
+        "capabilities": 15,
+        "register_width": 5,
+        "nat_divmod_calls": 0,
+        "concat_typed_calls": 0
+      },
+      "phase126": {
+        "qbe": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/p126-final32-emit-batch04/coverage-closures-64.ssa",
+          "bytes": 469847,
+          "sha256": "b490a12c421f357a4b6cab7f133e7b251cd730dd298d3664286bf38829d2ae2a"
+        },
+        "capabilities": 11,
+        "register_width": 5,
+        "nat_divmod_calls": 2,
+        "concat_typed_calls": 0
+      }
+    },
+    {
+      "name": "coverage-expression-128",
+      "phase125": {
+        "qbe": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/p125-final-remaining06/coverage-expression-128.ssa",
+          "bytes": 466416,
+          "sha256": "267b2b18f322e17d35091e601a1d38739f294aa8bae4b41d707a05e803d8ade7"
+        },
+        "capabilities": 15,
+        "register_width": 5,
+        "nat_divmod_calls": 0,
+        "concat_typed_calls": 0
+      },
+      "phase126": {
+        "qbe": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/p126-final32-emit-batch05/coverage-expression-128.ssa",
+          "bytes": 496962,
+          "sha256": "0d5ce39e421e7b1e567c644bc307467c1c8e28397bdbecd819f16223122b0d52"
+        },
+        "capabilities": 11,
+        "register_width": 5,
+        "nat_divmod_calls": 2,
+        "concat_typed_calls": 0
+      }
+    },
+    {
+      "name": "coverage-expression-32",
+      "phase125": {
+        "qbe": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/p125-final-remaining06/coverage-expression-32.ssa",
+          "bytes": 466409,
+          "sha256": "1609cd7abf4c60ca2a97ffbcc1e34e84343df6a5cab1b9d81298fa520c1ccdbe"
+        },
+        "capabilities": 15,
+        "register_width": 5,
+        "nat_divmod_calls": 0,
+        "concat_typed_calls": 0
+      },
+      "phase126": {
+        "qbe": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/p126-final32-emit-batch05/coverage-expression-32.ssa",
+          "bytes": 496955,
+          "sha256": "25dd0573a4a0ee213008a08f62021c2bdab3115af0e8e15b6756a8be1018796c"
+        },
+        "capabilities": 11,
+        "register_width": 5,
+        "nat_divmod_calls": 2,
+        "concat_typed_calls": 0
+      }
+    },
+    {
+      "name": "coverage-list-pipeline-128",
+      "phase125": {
+        "qbe": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/p125-final-remaining06/coverage-list-pipeline-128.ssa",
+          "bytes": 469349,
+          "sha256": "52ab7f7079ffb1edae9edf3d154d6ee7ff0d0c80d76d3d17524fc4008c02fe44"
+        },
+        "capabilities": 15,
+        "register_width": 5,
+        "nat_divmod_calls": 0,
+        "concat_typed_calls": 0
+      },
+      "phase126": {
+        "qbe": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/p126-final32-emit-batch04/coverage-list-pipeline-128.ssa",
+          "bytes": 499867,
+          "sha256": "df3e7aebb7b683881d3f23b449bad917a195ec448e9f26109d88bac8141bb31d"
+        },
+        "capabilities": 11,
+        "register_width": 5,
+        "nat_divmod_calls": 2,
+        "concat_typed_calls": 0
+      }
+    },
+    {
+      "name": "coverage-list-pipeline-512",
+      "phase125": {
+        "qbe": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/p125-final-remaining06/coverage-list-pipeline-512.ssa",
+          "bytes": 469351,
+          "sha256": "865fff7104ce3a4cc0443b7c7fc8ef7c82eb9e9a898db2a745a0e8c0c3dff7ca"
+        },
+        "capabilities": 15,
+        "register_width": 5,
+        "nat_divmod_calls": 0,
+        "concat_typed_calls": 0
+      },
+      "phase126": {
+        "qbe": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/p126-final32-emit-batch05/coverage-list-pipeline-512.ssa",
+          "bytes": 499869,
+          "sha256": "6035b4aacd524bd45c0d0534d1e4932d9e1f70ffcafbcc6c3e8b6d35942fef10"
+        },
+        "capabilities": 11,
+        "register_width": 5,
+        "nat_divmod_calls": 2,
+        "concat_typed_calls": 0
+      }
+    },
+    {
+      "name": "coverage-map-churn-128",
+      "phase125": {
+        "qbe": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/p125-verified-families06/coverage-map-churn-128.ssa",
+          "bytes": 1275730,
+          "sha256": "d7e26df00998a485b7af44513d38d6223ddfc5d7832c68b29c0dcb809daf4f49"
+        },
+        "capabilities": 15,
+        "register_width": 6,
+        "nat_divmod_calls": 0,
+        "concat_typed_calls": 0
+      },
+      "phase126": {
+        "qbe": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/p126-final32-emit-batch06/coverage-map-churn-128.ssa",
+          "bytes": 1313322,
+          "sha256": "5f025a5b6f56532eca8e2a6706f2ef833cbbeaac34a61805193da267cbbc88ef"
+        },
+        "capabilities": 11,
+        "register_width": 6,
+        "nat_divmod_calls": 4,
+        "concat_typed_calls": 0
+      }
+    },
+    {
+      "name": "coverage-map-churn-32",
+      "phase125": {
+        "qbe": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/p125-final-remaining06/coverage-map-churn-32.ssa",
+          "bytes": 1275726,
+          "sha256": "ee392fe38d0ce22f7bb90ccc37efd0f9247b1502cce6d52263cbe00c6871b7db"
+        },
+        "capabilities": 15,
+        "register_width": 6,
+        "nat_divmod_calls": 0,
+        "concat_typed_calls": 0
+      },
+      "phase126": {
+        "qbe": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/p126-final32-emit-batch05/coverage-map-churn-32.ssa",
+          "bytes": 1313318,
+          "sha256": "6609c506f5f0972df6ef3934aae58392cf7d2dbeab6e9c05616467a9c3709454"
+        },
+        "capabilities": 11,
+        "register_width": 6,
+        "nat_divmod_calls": 4,
+        "concat_typed_calls": 0
+      }
+    },
+    {
+      "name": "coverage-numeric-recurrence-1024",
+      "phase125": {
+        "qbe": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/p125-final-remaining06/coverage-numeric-recurrence-1024.ssa",
+          "bytes": 474191,
+          "sha256": "a65d54f547654cad53e7365db51f719341972d5bed70d224e7261e966e82930e"
+        },
+        "capabilities": 15,
+        "register_width": 5,
+        "nat_divmod_calls": 0,
+        "concat_typed_calls": 0
+      },
+      "phase126": {
+        "qbe": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/p126-final32-emit-batch06/coverage-numeric-recurrence-1024.ssa",
+          "bytes": 503624,
+          "sha256": "944d904e73618096ec7051b027a72ecef83945bae26ab09f5053cef03f8f97a4"
+        },
+        "capabilities": 11,
+        "register_width": 5,
+        "nat_divmod_calls": 2,
+        "concat_typed_calls": 0
+      }
+    },
+    {
+      "name": "coverage-numeric-recurrence-256",
+      "phase125": {
+        "qbe": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/p125-final-remaining06/coverage-numeric-recurrence-256.ssa",
+          "bytes": 474187,
+          "sha256": "f3ee1481d7f9471e36c30de25cc413d3d3e3d5a8d700d2300b66b75567e67f7b"
+        },
+        "capabilities": 15,
+        "register_width": 5,
+        "nat_divmod_calls": 0,
+        "concat_typed_calls": 0
+      },
+      "phase126": {
+        "qbe": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/p126-final32-emit-batch06/coverage-numeric-recurrence-256.ssa",
+          "bytes": 503620,
+          "sha256": "54592b9180deef82fb81b14cb4805f1e9e1a18f9b17c5877f8c9be27129aa89c"
+        },
+        "capabilities": 11,
+        "register_width": 5,
+        "nat_divmod_calls": 2,
+        "concat_typed_calls": 0
+      }
+    },
+    {
+      "name": "coverage-record-aggregation-256",
+      "phase125": {
+        "qbe": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/p125-verified-families06/coverage-record-aggregation-256.ssa",
+          "bytes": 1257006,
+          "sha256": "8bbf3c2d4a3620c08b9b853bb357af2a5dd005b3a4ac92591700f3973bab43a7"
+        },
+        "capabilities": 5,
+        "register_width": 6,
+        "nat_divmod_calls": 0,
+        "concat_typed_calls": 0
+      },
+      "phase126": {
+        "qbe": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/p126-final32-emit-batch06/coverage-record-aggregation-256.ssa",
+          "bytes": 1301609,
+          "sha256": "59ba0df51b8d0953ac323240908cfe44590a41c65d797a996b7ab4952e04de47"
+        },
+        "capabilities": 1,
+        "register_width": 6,
+        "nat_divmod_calls": 4,
+        "concat_typed_calls": 0
+      }
+    },
+    {
+      "name": "coverage-record-aggregation-64",
+      "phase125": {
+        "qbe": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/p125-final-remaining06/coverage-record-aggregation-64.ssa",
+          "bytes": 1257002,
+          "sha256": "2ef89738acdb65eee47c6ecc3d23eafd8c8074e1057b362bf28a2383ce1a3495"
+        },
+        "capabilities": 5,
+        "register_width": 6,
+        "nat_divmod_calls": 0,
+        "concat_typed_calls": 0
+      },
+      "phase126": {
+        "qbe": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/p126-final32-emit-batch06/coverage-record-aggregation-64.ssa",
+          "bytes": 1301605,
+          "sha256": "21e48bb0d50f6f6103d22e11f085e7975a766c450416925eb13f66156cfb6971"
+        },
+        "capabilities": 1,
+        "register_width": 6,
+        "nat_divmod_calls": 4,
+        "concat_typed_calls": 0
+      }
+    },
+    {
+      "name": "coverage-unicode-text-16",
+      "phase125": {
+        "qbe": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/p125-final-remaining06/coverage-unicode-text-16.ssa",
+          "bytes": 495288,
+          "sha256": "0bd87944b3379505b8110099325e78007ade89bca9ac851ae31617e7888e1601"
+        },
+        "capabilities": 15,
+        "register_width": 5,
+        "nat_divmod_calls": 0,
+        "concat_typed_calls": 0
+      },
+      "phase126": {
+        "qbe": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/p126-final32-emit-batch05/coverage-unicode-text-16.ssa",
+          "bytes": 525837,
+          "sha256": "7bda39b2c3bd5de6eacd8ea16bc5a95b28fd3bcb6250c556edf82e974bb191bc"
+        },
+        "capabilities": 11,
+        "register_width": 5,
+        "nat_divmod_calls": 2,
+        "concat_typed_calls": 0
+      }
+    },
+    {
+      "name": "coverage-unicode-text-64",
+      "phase125": {
+        "qbe": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/p125-final-remaining06/coverage-unicode-text-64.ssa",
+          "bytes": 512539,
+          "sha256": "05a5f09e0e15c222d08cc7878c83697e8ac1606b76cc1cb2d67ebf685589a99a"
+        },
+        "capabilities": 15,
+        "register_width": 5,
+        "nat_divmod_calls": 0,
+        "concat_typed_calls": 0
+      },
+      "phase126": {
+        "qbe": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/p126-final32-emit-batch05/coverage-unicode-text-64.ssa",
+          "bytes": 543088,
+          "sha256": "169552c03f7f89ac48801d3536b7602b888d216896e68274f0ae5cec4791b212"
+        },
+        "capabilities": 11,
+        "register_width": 5,
+        "nat_divmod_calls": 2,
+        "concat_typed_calls": 0
+      }
+    },
+    {
+      "name": "editdist",
+      "phase125": {
+        "qbe": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/p125-final-remaining06/editdist.ssa",
+          "bytes": 1175537,
+          "sha256": "13c64ca5d9ffa3b394c6e8a8665e4f13ae908567521d10fb054687c92d4287d7"
+        },
+        "capabilities": 15,
+        "register_width": 8,
+        "nat_divmod_calls": 0,
+        "concat_typed_calls": 0
+      },
+      "phase126": {
+        "qbe": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/p126-final32-emit-batch01/editdist.ssa",
+          "bytes": 1211329,
+          "sha256": "f1986336ccaaadda80bbad6a47b0ecf327c78bd52d48f5041efe40d542efa541"
+        },
+        "capabilities": 11,
+        "register_width": 8,
+        "nat_divmod_calls": 2,
+        "concat_typed_calls": 0
+      }
+    },
+    {
+      "name": "lexer",
+      "phase125": {
+        "qbe": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/p125-verified-families06/lexer.ssa",
+          "bytes": 898310,
+          "sha256": "723cbabfdb7ab8cb41e529c380c4a8736e0950ab392765b230622f417ca35f44"
+        },
+        "capabilities": 15,
+        "register_width": 5,
+        "nat_divmod_calls": 0,
+        "concat_typed_calls": 0
+      },
+      "phase126": {
+        "qbe": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/p126-final32-emit-batch01/lexer.ssa",
+          "bytes": 928865,
+          "sha256": "657a086e7a6cded1208e762a99c4e4e4cc98668ce53cc94cc9e82e0bc66ce844"
+        },
+        "capabilities": 11,
+        "register_width": 5,
+        "nat_divmod_calls": 2,
+        "concat_typed_calls": 0
+      }
+    },
+    {
+      "name": "local-fold",
+      "phase125": {
+        "qbe": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/p125-final-remaining06/local-fold.ssa",
+          "bytes": 531251,
+          "sha256": "96156c30d3f997c1c922ec5e04abfe62f3c6fc08c52536337ab8187972d1242a"
+        },
+        "capabilities": 15,
+        "register_width": 5,
+        "nat_divmod_calls": 0,
+        "concat_typed_calls": 0
+      },
+      "phase126": {
+        "qbe": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/p126-final32-emit-batch02/local-fold.ssa",
+          "bytes": 561767,
+          "sha256": "2fa22336d1a61db3077e78992c8378141317c59598dbbd00154d56fc46c65d45"
+        },
+        "capabilities": 11,
+        "register_width": 5,
+        "nat_divmod_calls": 2,
+        "concat_typed_calls": 0
+      }
+    },
+    {
+      "name": "local-pair",
+      "phase125": {
+        "qbe": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/p125-final-remaining06/local-pair.ssa",
+          "bytes": 1199926,
+          "sha256": "cc12c971ecfbb5688ffe1a0248cf71ac78efa070430cdfe1c255fed023d14034"
+        },
+        "capabilities": 15,
+        "register_width": 8,
+        "nat_divmod_calls": 0,
+        "concat_typed_calls": 0
+      },
+      "phase126": {
+        "qbe": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/p126-final32-emit-batch02/local-pair.ssa",
+          "bytes": 1230444,
+          "sha256": "ebcf51cddf8c8e0bb13022cb0df2b8ddfd489afa3c98631b42989ef2f205a466"
+        },
+        "capabilities": 11,
+        "register_width": 8,
+        "nat_divmod_calls": 2,
+        "concat_typed_calls": 0
+      }
+    },
+    {
+      "name": "mandelbrot",
+      "phase125": {
+        "qbe": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/p125-final-remaining06/mandelbrot.ssa",
+          "bytes": 1218869,
+          "sha256": "65d00ec1a3b266016dd5467b00ae2c2c21a391a2aad8b6ab4d310d52df08e1ba"
+        },
+        "capabilities": 15,
+        "register_width": 19,
+        "nat_divmod_calls": 0,
+        "concat_typed_calls": 0
+      },
+      "phase126": {
+        "qbe": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/p126-final32-emit-batch01/mandelbrot.ssa",
+          "bytes": 1249382,
+          "sha256": "db041c1a7daca1402e9bae6316aa56f55c9a4f52d9d6451fe5ca420b582edca7"
+        },
+        "capabilities": 11,
+        "register_width": 19,
+        "nat_divmod_calls": 2,
+        "concat_typed_calls": 0
+      }
+    },
+    {
+      "name": "raytrace",
+      "phase125": {
+        "qbe": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/p125-final-remaining06/raytrace.ssa",
+          "bytes": 2002620,
+          "sha256": "2c4def5ecd65534eacd44dffa59de0e3c2b752819440f575441f37dbef0dbaf5"
+        },
+        "capabilities": 15,
+        "register_width": 19,
+        "nat_divmod_calls": 0,
+        "concat_typed_calls": 0
+      },
+      "phase126": {
+        "qbe": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/p126-final32-emit-batch02/raytrace.ssa",
+          "bytes": 1764607,
+          "sha256": "282ab9d6754a95e302a7166ba70155c98aa715bd47325b08c2008898aede5f6f"
+        },
+        "capabilities": 11,
+        "register_width": 19,
+        "nat_divmod_calls": 2,
+        "concat_typed_calls": 0
+      }
+    },
+    {
+      "name": "scalar-region-0",
+      "phase125": {
+        "qbe": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/p125-final-remaining06/scalar-region-0.ssa",
+          "bytes": 584627,
+          "sha256": "69f88f0891fd6cc55ff94d158553002b863ffbaf6958dbb753e37ed2eef9714d"
+        },
+        "capabilities": 15,
+        "register_width": 10,
+        "nat_divmod_calls": 0,
+        "concat_typed_calls": 0
+      },
+      "phase126": {
+        "qbe": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/p126-final32-emit-batch02/scalar-region-0.ssa",
+          "bytes": 615145,
+          "sha256": "5a66cdbba0d6fefc5454b105359e34572810718a48d1f7a2b8665ddc3fd53769"
+        },
+        "capabilities": 11,
+        "register_width": 10,
+        "nat_divmod_calls": 2,
+        "concat_typed_calls": 0
+      }
+    },
+    {
+      "name": "scalar-region-8192",
+      "phase125": {
+        "qbe": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/p125-final-remaining06/scalar-region-8192.ssa",
+          "bytes": 584648,
+          "sha256": "7b140deeb747fb725f384d9aa530cba39c50a3f2c7e8ea5bc6bdfdbc97de3e33"
+        },
+        "capabilities": 15,
+        "register_width": 10,
+        "nat_divmod_calls": 0,
+        "concat_typed_calls": 0
+      },
+      "phase126": {
+        "qbe": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/p126-final32-emit-batch02/scalar-region-8192.ssa",
+          "bytes": 615166,
+          "sha256": "d58ea57bb201e22466f837ca2926848ae4463e2216e6b9fd928f0f5578808428"
+        },
+        "capabilities": 11,
+        "register_width": 10,
+        "nat_divmod_calls": 2,
+        "concat_typed_calls": 0
+      }
+    },
+    {
+      "name": "symreg",
+      "phase125": {
+        "qbe": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/p125-final-remaining06/symreg.ssa",
+          "bytes": 690687,
+          "sha256": "1f610a28a98f5e2bdba993bf78ffb645b7c564d7ea5f16bdcdd306c580758d60"
+        },
+        "capabilities": 13,
+        "register_width": 7,
+        "nat_divmod_calls": 0,
+        "concat_typed_calls": 0
+      },
+      "phase126": {
+        "qbe": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/p126-final32-emit-batch01/symreg.ssa",
+          "bytes": 721274,
+          "sha256": "fb85b1445c38cb573cda4084b9a20e59ee1bb9b90f262c7475e415eb67ca85d1"
+        },
+        "capabilities": 9,
+        "register_width": 7,
+        "nat_divmod_calls": 2,
+        "concat_typed_calls": 0
+      }
+    },
+    {
+      "name": "test-evening-program",
+      "phase125": {
+        "qbe": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/p125-final-remaining06/test-evening-program.ssa",
+          "bytes": 1435495,
+          "sha256": "427c5c4a1a9447aa900e88d0c3adfb5cf5f1bf544ec2e82a9c204ee2eb1a8591"
+        },
+        "capabilities": 5,
+        "register_width": 6,
+        "nat_divmod_calls": 0,
+        "concat_typed_calls": 0
+      },
+      "phase126": {
+        "qbe": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/p126-final32-emit-batch01/test-evening-program.ssa",
+          "bytes": 1472908,
+          "sha256": "de1b604d175d95ec3649114bc0e4aa330caa6559c59217510820ed289489d7a0"
+        },
+        "capabilities": 1,
+        "register_width": 6,
+        "nat_divmod_calls": 4,
+        "concat_typed_calls": 0
+      }
+    },
+    {
+      "name": "test-map-set-ops",
+      "phase125": {
+        "qbe": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/p125-final-remaining06/test-map-set-ops.ssa",
+          "bytes": 1771919,
+          "sha256": "def92cc5b0927ecdcfd833c8ab2495613ad8ec7d76c9b7eebbe3cd8baaf4f262"
+        },
+        "capabilities": 5,
+        "register_width": 6,
+        "nat_divmod_calls": 0,
+        "concat_typed_calls": 0
+      },
+      "phase126": {
+        "qbe": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/p126-final32-emit-batch02/test-map-set-ops.ssa",
+          "bytes": 1810629,
+          "sha256": "6802cad3ab5f8bb031f8dfab871bf55e932e230a638880cc566a1a4f599bdd80"
+        },
+        "capabilities": 1,
+        "register_width": 6,
+        "nat_divmod_calls": 4,
+        "concat_typed_calls": 0
+      }
+    },
+    {
+      "name": "test-morning-program",
+      "phase125": {
+        "qbe": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/p125-final-remaining06/test-morning-program.ssa",
+          "bytes": 1303890,
+          "sha256": "4a37539a0901774a56411ef4a492d2481d3d8412a386983609e04c0ca1304f09"
+        },
+        "capabilities": 5,
+        "register_width": 7,
+        "nat_divmod_calls": 0,
+        "concat_typed_calls": 0
+      },
+      "phase126": {
+        "qbe": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/p126-final32-emit-batch01/test-morning-program.ssa",
+          "bytes": 1337564,
+          "sha256": "f56395c4c3c8b446f05904120e96ca0e95aeea0dddadf9b51ab697616df3c729"
+        },
+        "capabilities": 1,
+        "register_width": 7,
+        "nat_divmod_calls": 4,
+        "concat_typed_calls": 0
+      }
+    },
+    {
+      "name": "test-rle-roundtrip",
+      "phase125": {
+        "qbe": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/p125-verified-fast06/test-rle-roundtrip.ssa",
+          "bytes": 515662,
+          "sha256": "bb4ab2cd386b0ae9d5421cbef1f0660392dce5cba1d6cb331725143ea92ed5d4"
+        },
+        "capabilities": 11,
+        "register_width": 5,
+        "nat_divmod_calls": 0,
+        "concat_typed_calls": 1
+      },
+      "phase126": {
+        "qbe": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/p126-final32-emit-batch01/test-rle-roundtrip.ssa",
+          "bytes": 546194,
+          "sha256": "a77dd22e0d5685fc1aef5452c9073a72055f4e5f3bdc8b2d12efebe1c5f4a578"
+        },
+        "capabilities": 11,
+        "register_width": 5,
+        "nat_divmod_calls": 2,
+        "concat_typed_calls": 1
+      }
+    },
+    {
+      "name": "tree-bitonic",
+      "phase125": {
+        "qbe": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/p125-verified-families06/tree-bitonic.ssa",
+          "bytes": 625972,
+          "sha256": "c507a732e3ab06ba1208ccb8903e4aa12add21fd8b304bbb820e37058b4da34b"
+        },
+        "capabilities": 15,
+        "register_width": 7,
+        "nat_divmod_calls": 0,
+        "concat_typed_calls": 0
+      },
+      "phase126": {
+        "qbe": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/p126-final32-emit-batch01/tree-bitonic.ssa",
+          "bytes": 656532,
+          "sha256": "1c0b89ec27373f2cc58a9992a8a64fae581e3bc66df008e7d4df703786c05d74"
+        },
+        "capabilities": 11,
+        "register_width": 7,
+        "nat_divmod_calls": 2,
+        "concat_typed_calls": 0
+      }
+    },
+    {
+      "name": "variation-editdist-0-17",
+      "phase125": {
+        "qbe": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/p125-final-remaining06/variation-editdist-0-17.ssa",
+          "bytes": 1175538,
+          "sha256": "b966313bb3b71453554f236e3272dbead2ffba19127aaf575b57c922445f2013"
+        },
+        "capabilities": 15,
+        "register_width": 8,
+        "nat_divmod_calls": 0,
+        "concat_typed_calls": 0
+      },
+      "phase126": {
+        "qbe": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/p126-final32-emit-batch02/variation-editdist-0-17.ssa",
+          "bytes": 1211330,
+          "sha256": "b2db2051bd0735544677797762eebf2165198b1df427e7926e4fe9a7a27eb0ca"
+        },
+        "capabilities": 11,
+        "register_width": 8,
+        "nat_divmod_calls": 2,
+        "concat_typed_calls": 0
+      }
+    },
+    {
+      "name": "variation-editdist-3-123",
+      "phase125": {
+        "qbe": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/p125-final-remaining06/variation-editdist-3-123.ssa",
+          "bytes": 1175541,
+          "sha256": "4284acff6759bbb29eb5a5c58c36d6949822e06c94f8e30eb4aa5ff61556bd51"
+        },
+        "capabilities": 15,
+        "register_width": 8,
+        "nat_divmod_calls": 0,
+        "concat_typed_calls": 0
+      },
+      "phase126": {
+        "qbe": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/p126-final32-emit-batch03/variation-editdist-3-123.ssa",
+          "bytes": 1211333,
+          "sha256": "a301680183ca5effe3ed0e4b782f5e02c3a58754027b1f4c88e2f0f3222f7d88"
+        },
+        "capabilities": 11,
+        "register_width": 8,
+        "nat_divmod_calls": 2,
+        "concat_typed_calls": 0
+      }
+    },
+    {
+      "name": "variation-lexer-10-123",
+      "phase125": {
+        "qbe": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/p125-final-remaining06/variation-lexer-10-123.ssa",
+          "bytes": 898316,
+          "sha256": "e25698189ccc1a900bf9a40230538c0c4ca91457c57b88f06db6361b364c16f9"
+        },
+        "capabilities": 15,
+        "register_width": 5,
+        "nat_divmod_calls": 0,
+        "concat_typed_calls": 0
+      },
+      "phase126": {
+        "qbe": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/p126-final32-emit-batch03/variation-lexer-10-123.ssa",
+          "bytes": 928871,
+          "sha256": "b639c1045c4372baaeee4dba2780ee4067c1e5ed07ecb8fca871f7cb47eb2d09"
+        },
+        "capabilities": 11,
+        "register_width": 5,
+        "nat_divmod_calls": 2,
+        "concat_typed_calls": 0
+      }
+    },
+    {
+      "name": "variation-lexer-6-17",
+      "phase125": {
+        "qbe": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/p125-final-remaining06/variation-lexer-6-17.ssa",
+          "bytes": 898312,
+          "sha256": "95549098c29eae1c3813e095988050940f2f8c7d5578ed85ce9bc5a2b66bdca5"
+        },
+        "capabilities": 15,
+        "register_width": 5,
+        "nat_divmod_calls": 0,
+        "concat_typed_calls": 0
+      },
+      "phase126": {
+        "qbe": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/p126-final32-emit-batch03/variation-lexer-6-17.ssa",
+          "bytes": 928867,
+          "sha256": "f64b7cf4b6674a8965633d1ca37c12d0fa98fce9753e5152aa9fe319c5b74348"
+        },
+        "capabilities": 11,
+        "register_width": 5,
+        "nat_divmod_calls": 2,
+        "concat_typed_calls": 0
+      }
+    },
+    {
+      "name": "variation-local-fold-128-0",
+      "phase125": {
+        "qbe": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/p125-final-remaining06/variation-local-fold-128-0.ssa",
+          "bytes": 531202,
+          "sha256": "7c1862ff2ef0cc27d80df71c351d635263e3660564e5a31b7c32c110b3dbca7f"
+        },
+        "capabilities": 15,
+        "register_width": 5,
+        "nat_divmod_calls": 0,
+        "concat_typed_calls": 0
+      },
+      "phase126": {
+        "qbe": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/p126-final32-emit-batch03/variation-local-fold-128-0.ssa",
+          "bytes": 561718,
+          "sha256": "640dd8336d2f5aac092006b5504b18bf4350d26511b711021787d2050c18a5ba"
+        },
+        "capabilities": 11,
+        "register_width": 5,
+        "nat_divmod_calls": 2,
+        "concat_typed_calls": 0
+      }
+    },
+    {
+      "name": "variation-local-fold-8192-123",
+      "phase125": {
+        "qbe": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/p125-final-remaining06/variation-local-fold-8192-123.ssa",
+          "bytes": 531248,
+          "sha256": "8e5be6c8cb504175fc103f5ef38b43a389409f90d45f5538cb4ad353d2fafc8b"
+        },
+        "capabilities": 15,
+        "register_width": 5,
+        "nat_divmod_calls": 0,
+        "concat_typed_calls": 0
+      },
+      "phase126": {
+        "qbe": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/p126-final32-emit-batch04/variation-local-fold-8192-123.ssa",
+          "bytes": 561764,
+          "sha256": "49ed93c55b34b82f021160ed5850debe5eb060fb27ede46c2952106988da5a2a"
+        },
+        "capabilities": 11,
+        "register_width": 5,
+        "nat_divmod_calls": 2,
+        "concat_typed_calls": 0
+      }
+    },
+    {
+      "name": "variation-mandelbrot-grid-4-7",
+      "phase125": {
+        "qbe": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/p125-final-remaining06/variation-mandelbrot-grid-4-7.ssa",
+          "bytes": 635857,
+          "sha256": "24ac34515dd58908723bd27e0d3cd523148ba095836664e53f5c035acd907ea5"
+        },
+        "capabilities": 15,
+        "register_width": 10,
+        "nat_divmod_calls": 0,
+        "concat_typed_calls": 0
+      },
+      "phase126": {
+        "qbe": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/p126-final32-emit-batch04/variation-mandelbrot-grid-4-7.ssa",
+          "bytes": 666375,
+          "sha256": "f61adb24fece392bb21fcf80fb7ac87dc0dac4cbf044aff7226b0d5a590409e8"
+        },
+        "capabilities": 11,
+        "register_width": 10,
+        "nat_divmod_calls": 2,
+        "concat_typed_calls": 0
+      }
+    },
+    {
+      "name": "variation-mandelbrot-grid-5-31",
+      "phase125": {
+        "qbe": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/p125-final-remaining06/variation-mandelbrot-grid-5-31.ssa",
+          "bytes": 635859,
+          "sha256": "1bf7f290100dabf8407cc4ce55a39ae9b080656846854d8ce8ed47ae7209b8e1"
+        },
+        "capabilities": 15,
+        "register_width": 10,
+        "nat_divmod_calls": 0,
+        "concat_typed_calls": 0
+      },
+      "phase126": {
+        "qbe": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/p126-final32-emit-batch04/variation-mandelbrot-grid-5-31.ssa",
+          "bytes": 666377,
+          "sha256": "9f7293aae92a1e1f4000048e75e11d32cb1f843f1ca7c6b944fc04f37f77a58d"
+        },
+        "capabilities": 11,
+        "register_width": 10,
+        "nat_divmod_calls": 2,
+        "concat_typed_calls": 0
+      }
+    },
+    {
+      "name": "variation-ray-active-256-2240",
+      "phase125": {
+        "qbe": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/p125-final-remaining06/variation-ray-active-256-2240.ssa",
+          "bytes": 1945144,
+          "sha256": "59051a7e53504aca7cdf06c050cef9c102b482aaf88d90bc9007be86613d228f"
+        },
+        "capabilities": 15,
+        "register_width": 19,
+        "nat_divmod_calls": 0,
+        "concat_typed_calls": 0
+      },
+      "phase126": {
+        "qbe": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/p126-final32-emit-batch04/variation-ray-active-256-2240.ssa",
+          "bytes": 1699203,
+          "sha256": "a2c5fcd406c3cb9e35ca602553110a2c49e4173a4159e95004592bb377331099"
+        },
+        "capabilities": 11,
+        "register_width": 19,
+        "nat_divmod_calls": 2,
+        "concat_typed_calls": 0
+      }
+    },
+    {
+      "name": "variation-ray-active-64-2440",
+      "phase125": {
+        "qbe": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/p125-verified-families06/variation-ray-active-64-2440.ssa",
+          "bytes": 1945142,
+          "sha256": "818452285914bb9025e43c020485fe10a6752153b80e4a8adf207d29ff9a68db"
+        },
+        "capabilities": 15,
+        "register_width": 19,
+        "nat_divmod_calls": 0,
+        "concat_typed_calls": 0
+      },
+      "phase126": {
+        "qbe": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/p126-final32-emit-batch04/variation-ray-active-64-2440.ssa",
+          "bytes": 1699201,
+          "sha256": "397779bd6556045280b7c6fa1e3663db0626204831c66931ecb3a355034c87c1"
+        },
+        "capabilities": 11,
+        "register_width": 19,
+        "nat_divmod_calls": 2,
+        "concat_typed_calls": 0
+      }
+    },
+    {
+      "name": "variation-symreg-4-17",
+      "phase125": {
+        "qbe": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/p125-final-remaining06/variation-symreg-4-17.ssa",
+          "bytes": 690687,
+          "sha256": "ccab1a4bdf9fc9f8004544c7cc032847fb5c9ce732cbeba522ffc33781336cb2"
+        },
+        "capabilities": 13,
+        "register_width": 7,
+        "nat_divmod_calls": 0,
+        "concat_typed_calls": 0
+      },
+      "phase126": {
+        "qbe": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/p126-final32-emit-batch03/variation-symreg-4-17.ssa",
+          "bytes": 721274,
+          "sha256": "fffeefdd08bcad1cc311917000b1b5d77dcf4f8323f77a3f4d388ea1bc24859b"
+        },
+        "capabilities": 9,
+        "register_width": 7,
+        "nat_divmod_calls": 2,
+        "concat_typed_calls": 0
+      }
+    },
+    {
+      "name": "variation-symreg-7-123",
+      "phase125": {
+        "qbe": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/p125-final-remaining06/variation-symreg-7-123.ssa",
+          "bytes": 690689,
+          "sha256": "281a770e694a8cd0f4f9dc21b510e644d3f48335dd294ee2df0c36b022186eea"
+        },
+        "capabilities": 13,
+        "register_width": 7,
+        "nat_divmod_calls": 0,
+        "concat_typed_calls": 0
+      },
+      "phase126": {
+        "qbe": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/p126-final32-emit-batch03/variation-symreg-7-123.ssa",
+          "bytes": 721276,
+          "sha256": "36f4ba783c471fbe6a213abaef56b2096c6f485ba164bd3d33375ec1fbd10b59"
+        },
+        "capabilities": 9,
+        "register_width": 7,
+        "nat_divmod_calls": 2,
+        "concat_typed_calls": 0
+      }
+    },
+    {
+      "name": "variation-tree-bitonic-6-17",
+      "phase125": {
+        "qbe": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/p125-final-remaining06/variation-tree-bitonic-6-17.ssa",
+          "bytes": 625975,
+          "sha256": "5e3a0bff92859e82d11fb971abdba521947e69f642a8fe2060a916945f1edf2f"
+        },
+        "capabilities": 15,
+        "register_width": 7,
+        "nat_divmod_calls": 0,
+        "concat_typed_calls": 0
+      },
+      "phase126": {
+        "qbe": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/p126-final32-emit-batch03/variation-tree-bitonic-6-17.ssa",
+          "bytes": 656535,
+          "sha256": "88720f1991fdd1cfd79e64271d4f90a3e5c4b48febacf18fb8edd7455432addb"
+        },
+        "capabilities": 11,
+        "register_width": 7,
+        "nat_divmod_calls": 2,
+        "concat_typed_calls": 0
+      }
+    },
+    {
+      "name": "variation-tree-bitonic-9-123",
+      "phase125": {
+        "qbe": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/p125-final-remaining06/variation-tree-bitonic-9-123.ssa",
+          "bytes": 625977,
+          "sha256": "08615cea99373f3422c0d9c4d4d8a5c520a0843981737765128c135232ae187b"
+        },
+        "capabilities": 15,
+        "register_width": 7,
+        "nat_divmod_calls": 0,
+        "concat_typed_calls": 0
+      },
+      "phase126": {
+        "qbe": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/p126-final32-emit-batch03/variation-tree-bitonic-9-123.ssa",
+          "bytes": 656537,
+          "sha256": "302ab030ca03b5e4e40a36a129f5863b91a7f907fd817742d36979b475ab26ec"
+        },
+        "capabilities": 11,
+        "register_width": 7,
+        "nat_divmod_calls": 2,
+        "concat_typed_calls": 0
+      }
+    }
+  ]
+}

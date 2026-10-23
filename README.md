@@ -110,6 +110,11 @@ keeps float values, verified product results and tail-recursive control flow
 across optimization boundaries. Its [Phase126 report](implementation/phase126/README.md)
 records the selected compiler, measured gains, rejected experiments and qualification.
 
+The [native Bend profiler](docs/self_hosted/PROFILING.md) separates clean timing,
+CPU samples, physical callers, active Bend dispatch and runtime event counts.
+It supports compiler requests and ordinary native programs with frozen output
+oracles; see the [Phase127 investigation](implementation/phase127/README.md).
+
 The [native IR research prototype](docs/self_hosted/NATIVE_IR_RESEARCH.md) now
 implements a small Bend IR with C and Cranelift consumers, checked folding laws,
 and a reproducible policy experiment. Its [report and diagrams](implementation/phase106/README.md)

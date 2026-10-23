@@ -1,0 +1,121 @@
+{
+  "schema": "bend-reviewed-elf-regions-v1",
+  "object": {
+    "file": "/usr/lib/x86_64-linux-gnu/libc-2.31.so",
+    "bytes": 1901536,
+    "sha256": "d13f170ab30a0f91d9713e0c2196efa5fe0bc42f0f2737cf0e56380df8051159"
+  },
+  "evidence": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/implementation/phase119/libc-copy-fill.asm",
+      "bytes": 18900,
+      "sha256": "835fede900264fb8b40f3daa674df3835f03139aca0fb5d1183c87be3fa2af0e"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/implementation/phase127/libc-cfi.txt",
+      "bytes": 1602,
+      "sha256": "61a313ebda82ee452f1544a480e1c480a7dd7ceb20b8e64f5ad7ec3a98941902"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/implementation/phase127/libc-audit.py",
+      "bytes": 7468,
+      "sha256": "680995ec7e883c3eb1da94999d0742eefb6c3bdb8ec8b339f2c42fd937251045"
+    }
+  ],
+  "addressSpace": "ELF virtual addresses; end exclusive; translate ASLR mapping before lookup",
+  "ranges": [
+    {
+      "start": "0xa3930",
+      "end": "0xa3c29",
+      "name": "libc.copy_region",
+      "category": "memory_copy",
+      "basis": "Reviewed loads/stores, overlap branches and REP MOVS"
+    },
+    {
+      "start": "0xa3c30",
+      "end": "0xa3de3",
+      "name": "libc.fill_region",
+      "category": "memory_fill",
+      "basis": "Reviewed byte broadcast, vector stores and REP STOS"
+    }
+  ],
+  "physicalUnwindRows": [
+    {
+      "start": "0xa3930",
+      "end": "0xa3c29",
+      "cfaRegister": "rsp",
+      "cfaOffset": 8,
+      "returnAddressOffset": -8
+    },
+    {
+      "start": "0xa3c30",
+      "end": "0xa3c3c",
+      "cfaRegister": "rsp",
+      "cfaOffset": 8,
+      "returnAddressOffset": -8
+    },
+    {
+      "start": "0xa3c40",
+      "end": "0xa3c49",
+      "cfaRegister": "rsp",
+      "cfaOffset": 8,
+      "returnAddressOffset": -8
+    },
+    {
+      "start": "0xa3c50",
+      "end": "0xa3c62",
+      "cfaRegister": "rsp",
+      "cfaOffset": 8,
+      "returnAddressOffset": -8
+    },
+    {
+      "start": "0xa3c70",
+      "end": "0xa3c79",
+      "cfaRegister": "rsp",
+      "cfaOffset": 8,
+      "returnAddressOffset": -8
+    },
+    {
+      "start": "0xa3c80",
+      "end": "0xa3cb3",
+      "cfaRegister": "rsp",
+      "cfaOffset": 8,
+      "returnAddressOffset": -8
+    },
+    {
+      "start": "0xa3cc0",
+      "end": "0xa3cc9",
+      "cfaRegister": "rsp",
+      "cfaOffset": 8,
+      "returnAddressOffset": -8
+    },
+    {
+      "start": "0xa3cd0",
+      "end": "0xa3ce9",
+      "cfaRegister": "rsp",
+      "cfaOffset": 8,
+      "returnAddressOffset": -8
+    },
+    {
+      "start": "0xa3cf0",
+      "end": "0xa3cf9",
+      "cfaRegister": "rsp",
+      "cfaOffset": 8,
+      "returnAddressOffset": -8
+    },
+    {
+      "start": "0xa3d00",
+      "end": "0xa3de3",
+      "cfaRegister": "rsp",
+      "cfaOffset": 8,
+      "returnAddressOffset": -8
+    }
+  ],
+  "limitations": [
+    "Region names describe instructions, not an exported dynamic symbol or source caller.",
+    "Fill includes bzero/memset/wmemset entries and checks; sampled PCs do not establish fill byte or length.",
+    "Use individual FDE intervals for unwind, not the broad classification ranges or intervening padding.",
+    "Return-address recovery requires authenticated module mapping, mapped-stack bounds and alignment.",
+    "Only one physical caller is established; tail-erased logical ancestors cannot be recovered."
+  ]
+}

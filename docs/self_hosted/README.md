@@ -1,5 +1,9 @@
 # Self-hosted compiler: current architecture and development
 
+Use the [native profiling guide](PROFILING.md) for clean execution measurements,
+CPU samples, selected physical callers and Bend runtime event attribution on
+compiler requests or ordinary native programs.
+
 For the current direct-QBE research frontier, read the
 [Phase125 report](../../implementation/phase125/README.md) and
 [owned composition guide](owned-native-composition.md).

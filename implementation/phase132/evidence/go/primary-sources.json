@@ -1,0 +1,161 @@
+{
+  "observedDate": "2026-10-24",
+  "commits": [
+    {
+      "sha": "2aae1000ea1d4b28923b96db28acf4e3b99d6aff",
+      "url": "https://github.com/golang/go/commit/2aae1000ea1d4b28923b96db28acf4e3b99d6aff",
+      "apiUrl": "https://api.github.com/repos/golang/go/commits/go1.27.3",
+      "date": "2026-10-20T01:26:06Z",
+      "message": "[release-branch.go1.27] go1.27.3\n\nChange-Id: Icf51c3e5809b43e3137f6e269b1196ec9f74626e\nReviewed-on: https://go-review.googlesource.com/c/go/+/851146\nTryBot-Bypass: Gopher Robot <gobot@golang.org>\nReviewed-by: Dmitri Shuralyov <dmitshur@google.com>\nReviewed-by: Carlos Amedee <carlos@golang.org>\nAuto-Submit: Gopher Robot <gobot@golang.org>",
+      "tree": "09275a3482ffe831661a72c202c6261e0eb6ae7f"
+    },
+    {
+      "sha": "c4bf0b94ba5bff279eb7b8864ac77971a874efe0",
+      "url": "https://github.com/golang/go/commit/c4bf0b94ba5bff279eb7b8864ac77971a874efe0",
+      "apiUrl": "https://api.github.com/repos/golang/go/commits/master",
+      "date": "2026-10-23T23:01:11Z",
+      "message": "net/http: enable more tests that can already pass for HTTP/3\n\nFor #70914\n\nChange-Id: I2f3abd653f8a56a1c45c5e844c217c926a6a6964\nReviewed-on: https://go-review.googlesource.com/c/go/+/850026\nLUCI-TryBot-Result: golang-scoped@luci-project-accounts.iam.gserviceaccount.com <golang-scoped@luci-project-accounts.iam.gserviceaccount.com>\nReviewed-by: Nicholas Husin <husin@google.com>\nReviewed-by: Damien Neil <dneil@google.com>",
+      "tree": "65972ada77b05ddddd02843501816f4a793d8625"
+    }
+  ],
+  "files": [
+    {
+      "commit": "2aae1000ea1d4b28923b96db28acf4e3b99d6aff",
+      "path": "src/cmd/go/internal/work/buildid.go",
+      "gitBlobSha": "584c1ac6f41d237d2191af5a66888970a80dd78b",
+      "url": "https://github.com/golang/go/blob/2aae1000ea1d4b28923b96db28acf4e3b99d6aff/src/cmd/go/internal/work/buildid.go",
+      "retrieval": "GitHub plugin fetch_file; retained exact UTF-8 ranges from inspected source, not a substitute for full Git blob.",
+      "excerpts": [
+        {
+          "startLine": 26,
+          "endLine": 142,
+          "text": "// Build IDs\n//\n// Go packages and binaries are stamped with build IDs that record both\n// the action ID, which is a hash of the inputs to the action that produced\n// the packages or binary, and the content ID, which is a hash of the action\n// output, namely the archive or binary itself. The hash is the same one\n// used by the build artifact cache (see cmd/go/internal/cache), but\n// truncated when stored in packages and binaries, as the full length is not\n// needed and is a bit unwieldy. The precise form is\n//\n//\tactionID/[.../]contentID\n//\n// where the actionID and contentID are prepared by buildid.HashToString below.\n// and are found by looking for the first or last slash.\n// Usually the buildID is simply actionID/contentID, but see below for an\n// exception.\n//\n// The build ID serves two primary purposes.\n//\n// 1. The action ID half allows installed packages and binaries to serve as\n// one-element cache entries. If we intend to build math.a with a given\n// set of inputs summarized in the action ID, and the installed math.a already\n// has that action ID, we can reuse the installed math.a instead of rebuilding it.\n//\n// 2. The content ID half allows the easy preparation of action IDs for steps\n// that consume a particular package or binary. The content hash of every\n// input file for a given action must be included in the action ID hash.\n// Storing the content ID in the build ID lets us read it from the file with\n// minimal I/O, instead of reading and hashing the entire file.\n// This is especially effective since packages and binaries are typically\n// the largest inputs to an action.\n//\n// Separating action ID from content ID is important for reproducible builds.\n// The compiler is compiled with itself. If an output were represented by its\n// own action ID (instead of content ID) when computing the action ID of\n// the next step in the build process, then the compiler could never have its\n// own input action ID as its output action ID (short of a miraculous hash collision).\n// Instead we use the content IDs to compute the next action ID, and because\n// the content IDs converge, so too do the action IDs and therefore the\n// build IDs and the overall compiler binary. See cmd/dist's cmdbootstrap\n// for the actual convergence sequence.\n//\n// The \u201cone-element cache\u201d purpose is a bit more complex for installed\n// binaries. For a binary, like cmd/gofmt, there are two steps: compile\n// cmd/gofmt/*.go into main.a, and then link main.a into the gofmt binary.\n// We do not install gofmt's main.a, only the gofmt binary. Being able to\n// decide that the gofmt binary is up-to-date means computing the action ID\n// for the final link of the gofmt binary and comparing it against the\n// already-installed gofmt binary. But computing the action ID for the link\n// means knowing the content ID of main.a, which we did not keep.\n// To sidestep this problem, each binary actually stores an expanded build ID:\n//\n//\tactionID(binary)/actionID(main.a)/contentID(main.a)/contentID(binary)\n//\n// (Note that this can be viewed equivalently as:\n//\n//\tactionID(binary)/buildID(main.a)/contentID(binary)\n//\n// Storing the buildID(main.a) in the middle lets the computations that care\n// about the prefix or suffix halves ignore the middle and preserves the\n// original build ID as a contiguous string.)\n//\n// During the build, when it's time to build main.a, the gofmt binary has the\n// information needed to decide whether the eventual link would produce\n// the same binary: if the action ID for main.a's inputs matches and then\n// the action ID for the link step matches when assuming the given main.a\n// content ID, then the binary as a whole is up-to-date and need not be rebuilt.\n//\n// This is all a bit complex and may be simplified once we can rely on the\n// main cache, but at least at the start we will be using the content-based\n// staleness determination without a cache beyond the usual installed\n// package and binary locations.\n\nconst buildIDSeparator = \"/\"\n\n// actionID returns the action ID half of a build ID.\nfunc actionID(buildID string) string {\n\ti := strings.Index(buildID, buildIDSeparator)\n\tif i < 0 {\n\t\treturn buildID\n\t}\n\treturn buildID[:i]\n}\n\n// contentID returns the content ID half of a build ID.\nfunc contentID(buildID string) string {\n\treturn buildID[strings.LastIndex(buildID, buildIDSeparator)+1:]\n}\n\n// toolID returns the unique ID to use for the current copy of the\n// named tool (asm, compile, cover, link).\n//\n// It is important that if the tool changes (for example a compiler bug is fixed\n// and the compiler reinstalled), toolID returns a different string, so that old\n// package archives look stale and are rebuilt (with the fixed compiler).\n// This suggests using a content hash of the tool binary, as stored in the build ID.\n//\n// Unfortunately, we can't just open the tool binary, because the tool might be\n// invoked via a wrapper program specified by -toolexec and we don't know\n// what the wrapper program does. In particular, we want \"-toolexec toolstash\"\n// to continue working: it does no good if \"-toolexec toolstash\" is executing a\n// stashed copy of the compiler but the go command is acting as if it will run\n// the standard copy of the compiler. The solution is to ask the tool binary to tell\n// us its own build ID using the \"-V=full\" flag now supported by all tools.\n// Then we know we're getting the build ID of the compiler that will actually run\n// during the build. (How does the compiler binary know its own content hash?\n// We store it there using updateBuildID after the standard link step.)\n//\n// A final twist is that we'd prefer to have reproducible builds for release toolchains.\n// It should be possible to cross-compile for Windows from either Linux or Mac\n// or Windows itself and produce the same binaries, bit for bit. If the tool ID,\n// which influences the action ID half of the build ID, is based on the content ID,\n// then the Linux compiler binary and Mac compiler binary will have different tool IDs\n// and therefore produce executables with different action IDs.\n// To avoid this problem, for releases we use the release version string instead\n// of the compiler binary's content hash. This assumes that all compilers built\n// on all different systems are semantically equivalent, which is of course only true"
+        }
+      ]
+    },
+    {
+      "commit": "2aae1000ea1d4b28923b96db28acf4e3b99d6aff",
+      "path": "src/cmd/compile/README.md",
+      "gitBlobSha": "de667e60e37f2ef02658253b74e90498a5fb5f92",
+      "url": "https://github.com/golang/go/blob/2aae1000ea1d4b28923b96db28acf4e3b99d6aff/src/cmd/compile/README.md",
+      "retrieval": "GitHub plugin fetch_file; retained exact UTF-8 ranges from inspected source, not a substitute for full Git blob.",
+      "excerpts": [
+        {
+          "startLine": 49,
+          "endLine": 62,
+          "text": "\n* `cmd/compile/internal/types` (compiler types)\n* `cmd/compile/internal/ir` (compiler AST)\n* `cmd/compile/internal/noder` (create compiler AST)\n\nThe compiler middle end uses its own AST definition and representation of Go\ntypes carried over from when it was written in C. All of its code is written in\nterms of these, so the next step after type checking is to convert the syntax\nand types2 representations to ir and types. This process is referred to as\n\"noding.\"\n\nNoding uses a process called Unified IR, which builds a node representation\nusing a serialized version of the typechecked code from step 2.\nUnified IR is also involved in import/export of packages and inlining.\n"
+        },
+        {
+          "startLine": 144,
+          "endLine": 154,
+          "text": "### 7a. Export\n\nIn addition to writing a file of object code for the linker, the\ncompiler also writes a file of \"export data\" for downstream\ncompilation units. The export data file holds all the information\ncomputed during compilation of package P that may be needed when\ncompiling a package Q that directly imports P. It includes type\ninformation for all exported declarations, IR for bodies of functions\nthat are candidates for inlining, IR for bodies of generic functions\nthat may be instantiated in another package, and a summary of the\nfindings of escape analysis on function parameters.\n"
+        }
+      ]
+    },
+    {
+      "commit": "2aae1000ea1d4b28923b96db28acf4e3b99d6aff",
+      "path": "src/cmd/go/internal/work/exec.go",
+      "gitBlobSha": "3ed01c0fbd49b8b106e1a084e463e8cc601f84c7",
+      "url": "https://github.com/golang/go/blob/2aae1000ea1d4b28923b96db28acf4e3b99d6aff/src/cmd/go/internal/work/exec.go",
+      "retrieval": "GitHub plugin fetch_file; retained exact UTF-8 ranges from inspected source, not a substitute for full Git blob.",
+      "excerpts": [
+        {
+          "startLine": 249,
+          "endLine": 445,
+          "text": "\t\t}()\n\t}\n\n\twg.Wait()\n\n\tif tokens != totalTokens || concurrentProcesses != 0 {\n\t\tbase.Fatalf(\"internal error: tokens not restored at end of build: tokens: %d, totalTokens: %d, concurrentProcesses: %d\",\n\t\t\ttokens, totalTokens, concurrentProcesses)\n\t}\n\n\t// Write action graph again, this time with timing information.\n\twriteActionGraph()\n}\n\n// buildActionID computes the action ID for a build action.\nfunc (b *Builder) buildActionID(a *Action) cache.ActionID {\n\tp := a.Package\n\th := cache.NewHash(\"build \" + p.ImportPath)\n\n\t// Configuration independent of compiler toolchain.\n\t// Note: buildmode has already been accounted for in buildGcflags\n\t// and should not be inserted explicitly. Most buildmodes use the\n\t// same compiler settings and can reuse each other's results.\n\t// If not, the reason is already recorded in buildGcflags.\n\tfmt.Fprintf(h, \"compile\\n\")\n\n\t// Include information about the origin of the package that\n\t// may be embedded in the debug info for the object file.\n\tif cfg.BuildTrimpath {\n\t\t// When -trimpath is used with a package built from the module cache,\n\t\t// its debug information refers to the module path and version\n\t\t// instead of the directory.\n\t\tif p.Module != nil {\n\t\t\tfmt.Fprintf(h, \"module %s@%s\\n\", p.Module.Path, p.Module.Version)\n\t\t}\n\t} else if p.Goroot {\n\t\t// The Go compiler always hides the exact value of $GOROOT\n\t\t// when building things in GOROOT.\n\t\t//\n\t\t// The C compiler does not, but for packages in GOROOT we rewrite the path\n\t\t// as though -trimpath were set. This used to be so that we did not invalidate\n\t\t// the build cache (and especially precompiled archive files) when changing\n\t\t// GOROOT_FINAL, but we no longer ship precompiled archive files as of Go 1.20\n\t\t// (https://go.dev/issue/47257) and no longer support GOROOT_FINAL\n\t\t// (https://go.dev/issue/62047).\n\t\t// TODO(bcmills): Figure out whether this behavior is still useful.\n\t\t//\n\t\t// b.WorkDir is always either trimmed or rewritten to\n\t\t// the literal string \"/tmp/go-build\".\n\t} else if !strings.HasPrefix(p.Dir, b.WorkDir) {\n\t\t// -trimpath is not set and no other rewrite rules apply,\n\t\t// so the object file may refer to the absolute directory\n\t\t// containing the package.\n\t\tfmt.Fprintf(h, \"dir %s\\n\", p.Dir)\n\t}\n\n\tif p.Module != nil {\n\t\tfmt.Fprintf(h, \"go %s\\n\", p.Module.GoVersion)\n\t}\n\tfmt.Fprintf(h, \"goos %s goarch %s\\n\", cfg.Goos, cfg.Goarch)\n\tfmt.Fprintf(h, \"import %q\\n\", p.ImportPath)\n\tfmt.Fprintf(h, \"omitdebug %v standard %v local %v prefix %q\\n\", p.Internal.OmitDebug, p.Standard, p.Internal.Local, p.Internal.LocalPrefix)\n\tif cfg.BuildTrimpath {\n\t\tfmt.Fprintln(h, \"trimpath\")\n\t}\n\tif p.Internal.ForceLibrary {\n\t\tfmt.Fprintf(h, \"forcelibrary\\n\")\n\t}\n\tif len(p.CgoFiles)+len(p.SwigFiles)+len(p.SwigCXXFiles) > 0 {\n\t\tfmt.Fprintf(h, \"cgo %q\\n\", b.toolID(\"cgo\"))\n\t\tcppflags, cflags, cxxflags, fflags, ldflags, _ := b.CFlags(p)\n\n\t\tccExe := b.ccExe()\n\t\tfmt.Fprintf(h, \"CC=%q %q %q %q\\n\", ccExe, cppflags, cflags, ldflags)\n\t\t// Include the C compiler tool ID so that if the C\n\t\t// compiler changes we rebuild the package.\n\t\tif ccID, _, err := b.gccToolID(ccExe[0], \"c\"); err == nil {\n\t\t\tfmt.Fprintf(h, \"CC ID=%q\\n\", ccID)\n\t\t} else {\n\t\t\tfmt.Fprintf(h, \"CC ID ERROR=%q\\n\", err)\n\t\t}\n\t\tif len(p.CXXFiles)+len(p.SwigCXXFiles) > 0 {\n\t\t\tcxxExe := b.cxxExe()\n\t\t\tfmt.Fprintf(h, \"CXX=%q %q\\n\", cxxExe, cxxflags)\n\t\t\tif cxxID, _, err := b.gccToolID(cxxExe[0], \"c++\"); err == nil {\n\t\t\t\tfmt.Fprintf(h, \"CXX ID=%q\\n\", cxxID)\n\t\t\t} else {\n\t\t\t\tfmt.Fprintf(h, \"CXX ID ERROR=%q\\n\", err)\n\t\t\t}\n\t\t}\n\t\tif len(p.FFiles) > 0 {\n\t\t\tfcExe := b.fcExe()\n\t\t\tfmt.Fprintf(h, \"FC=%q %q\\n\", fcExe, fflags)\n\t\t\tif fcID, _, err := b.gccToolID(fcExe[0], \"f95\"); err == nil {\n\t\t\t\tfmt.Fprintf(h, \"FC ID=%q\\n\", fcID)\n\t\t\t} else {\n\t\t\t\tfmt.Fprintf(h, \"FC ID ERROR=%q\\n\", err)\n\t\t\t}\n\t\t}\n\t\t// TODO(rsc): Should we include the SWIG version?\n\t}\n\tif p.Internal.Cover.Mode != \"\" {\n\t\tfmt.Fprintf(h, \"cover %q %q\\n\", p.Internal.Cover.Mode, b.toolID(\"cover\"))\n\t}\n\tif p.Internal.FuzzInstrument {\n\t\tif fuzzFlags := fuzzInstrumentFlags(); fuzzFlags != nil {\n\t\t\tfmt.Fprintf(h, \"fuzz %q\\n\", fuzzFlags)\n\t\t}\n\t}\n\tif p.Internal.BuildInfo != nil {\n\t\tfmt.Fprintf(h, \"modinfo %q\\n\", p.Internal.BuildInfo.String())\n\t}\n\n\t// Configuration specific to compiler toolchain.\n\tswitch cfg.BuildToolchainName {\n\tdefault:\n\t\tbase.Fatalf(\"buildActionID: unknown build toolchain %q\", cfg.BuildToolchainName)\n\tcase \"gc\":\n\t\tfmt.Fprintf(h, \"compile %s %q %q\\n\", b.toolID(\"compile\"), forcedGcflags, p.Internal.Gcflags)\n\t\tif len(p.SFiles) > 0 {\n\t\t\tfmt.Fprintf(h, \"asm %q %q %q\\n\", b.toolID(\"asm\"), forcedAsmflags, p.Internal.Asmflags)\n\t\t}\n\n\t\t// GOARM, GOMIPS, etc.\n\t\tkey, val, _ := cfg.GetArchEnv()\n\t\tfmt.Fprintf(h, \"%s=%s\\n\", key, val)\n\n\t\tif cfg.CleanGOEXPERIMENT != \"\" {\n\t\t\tfmt.Fprintf(h, \"GOEXPERIMENT=%q\\n\", cfg.CleanGOEXPERIMENT)\n\t\t}\n\n\t\t// TODO(rsc): Convince compiler team not to add more magic environment variables,\n\t\t// or perhaps restrict the environment variables passed to subprocesses.\n\t\t// Because these are clumsy, undocumented special-case hacks\n\t\t// for debugging the compiler, they are not settable using 'go env -w',\n\t\t// and so here we use os.Getenv, not cfg.Getenv.\n\t\tmagic := []string{\n\t\t\t\"GOCLOBBERDEADHASH\",\n\t\t\t\"GOSSAFUNC\",\n\t\t\t\"GOSSADIR\",\n\t\t\t\"GOCOMPILEDEBUG\",\n\t\t}\n\t\tfor _, env := range magic {\n\t\t\tif x := os.Getenv(env); x != \"\" {\n\t\t\t\tfmt.Fprintf(h, \"magic %s=%s\\n\", env, x)\n\t\t\t}\n\t\t}\n\n\tcase \"gccgo\":\n\t\tid, _, err := b.gccToolID(BuildToolchain.compiler(), \"go\")\n\t\tif err != nil {\n\t\t\tbase.Fatalf(\"%v\", err)\n\t\t}\n\t\tfmt.Fprintf(h, \"compile %s %q %q\\n\", id, forcedGccgoflags, p.Internal.Gccgoflags)\n\t\tfmt.Fprintf(h, \"pkgpath %s\\n\", gccgoPkgpath(p))\n\t\tfmt.Fprintf(h, \"ar %q\\n\", BuildToolchain.(gccgoToolchain).ar())\n\t\tif len(p.SFiles) > 0 {\n\t\t\tid, _, _ = b.gccToolID(BuildToolchain.compiler(), \"assembler-with-cpp\")\n\t\t\t// Ignore error; different assembler versions\n\t\t\t// are unlikely to make any difference anyhow.\n\t\t\tfmt.Fprintf(h, \"asm %q\\n\", id)\n\t\t}\n\t}\n\n\t// Input files.\n\tinputFiles := str.StringList(\n\t\tp.GoFiles,\n\t\tp.CgoFiles,\n\t\tp.CFiles,\n\t\tp.CXXFiles,\n\t\tp.FFiles,\n\t\tp.MFiles,\n\t\tp.HFiles,\n\t\tp.SFiles,\n\t\tp.SysoFiles,\n\t\tp.SwigFiles,\n\t\tp.SwigCXXFiles,\n\t\tp.EmbedFiles,\n\t)\n\tfor _, file := range inputFiles {\n\t\tfmt.Fprintf(h, \"file %s %s\\n\", file, b.fileHash(filepath.Join(p.Dir, file)))\n\t}\n\tfor _, a1 := range a.Deps {\n\t\tp1 := a1.Package\n\t\tif p1 != nil {\n\t\t\tfmt.Fprintf(h, \"import %s %s\\n\", p1.ImportPath, contentID(a1.buildID))\n\t\t}\n\t\tif a1.Mode == \"preprocess PGO profile\" {\n\t\t\tfmt.Fprintf(h, \"pgofile %s\\n\", b.fileHash(a1.built))\n\t\t}\n\t}\n\n\treturn h.Sum()\n}\n\n// needCgoHdr reports whether the actions triggered by this one\n// expect to be able to access the cgo-generated header file."
+        }
+      ]
+    },
+    {
+      "commit": "2aae1000ea1d4b28923b96db28acf4e3b99d6aff",
+      "path": "src/cmd/compile/internal/noder/unified.go",
+      "gitBlobSha": "b8b0a0a144a6ec3b567a3df11d56b26bb1ceb1e7",
+      "url": "https://github.com/golang/go/blob/2aae1000ea1d4b28923b96db28acf4e3b99d6aff/src/cmd/compile/internal/noder/unified.go",
+      "retrieval": "GitHub plugin fetch_file; retained exact UTF-8 ranges from inspected source, not a substitute for full Git blob.",
+      "excerpts": [
+        {
+          "startLine": 151,
+          "endLine": 172,
+          "text": "// unified constructs the local package's Internal Representation (IR)\n// from its syntax tree (AST).\n//\n// The pipeline contains 2 steps:\n//\n//  1. Generate the export data \"stub\".\n//\n//  2. Generate the IR from the export data above.\n//\n// The package data \"stub\" at step (1) contains everything from the local package,\n// but nothing that has been imported. When we're actually writing out export data\n// to the output files (see writeNewExport), we run the \"linker\", which:\n//\n//   - Updates compiler extensions data (e.g. inlining cost, escape analysis results).\n//\n//   - Handles re-exporting any transitive dependencies.\n//\n//   - Prunes out any unnecessary details (e.g. non-inlineable functions, because any\n//     downstream importers only care about inlinable functions).\n//\n// The source files are typechecked twice: once before writing the export data\n// using types2, and again after reading the export data using gc/typecheck."
+        },
+        {
+          "startLine": 465,
+          "endLine": 474,
+          "text": "}\n\n// writeUnifiedExport writes to `out` the finalized, self-contained\n// Unified IR export data file for the current compilation unit.\nfunc writeUnifiedExport(out io.Writer) {\n\tl := linker{\n\t\tpw: pkgbits.NewPkgEncoder(uirVersion, base.Debug.SyncFrames),\n\n\t\tpkgs:   make(map[string]index),\n\t\tdecls:  make(map[*types.Sym]index),"
+        }
+      ]
+    },
+    {
+      "commit": "2aae1000ea1d4b28923b96db28acf4e3b99d6aff",
+      "path": "src/cmd/go/internal/cache/cache.go",
+      "gitBlobSha": "67f8202c06a55c99cfb88467574aadc0494f9b1f",
+      "url": "https://github.com/golang/go/blob/2aae1000ea1d4b28923b96db28acf4e3b99d6aff/src/cmd/go/internal/cache/cache.go",
+      "retrieval": "GitHub plugin fetch_file; retained exact UTF-8 ranges from inspected source, not a substitute for full Git blob.",
+      "excerpts": [
+        {
+          "startLine": 26,
+          "endLine": 36,
+          "text": ")\n\n// An ActionID is a cache action key, the hash of a complete description of a\n// repeatable computation (command line, environment variables,\n// input file contents, executable contents).\ntype ActionID [HashSize]byte\n\n// An OutputID is a cache output key, the hash of an output of a computation.\ntype OutputID [HashSize]byte\n\n// Cache is the interface as used by the cmd/go."
+        }
+      ]
+    },
+    {
+      "commit": "c4bf0b94ba5bff279eb7b8864ac77971a874efe0",
+      "path": "src/cmd/go/internal/work/buildid.go",
+      "gitBlobSha": "3eb169c00275ffef554f1b4879518a7ef9b335f5",
+      "url": "https://github.com/golang/go/blob/c4bf0b94ba5bff279eb7b8864ac77971a874efe0/src/cmd/go/internal/work/buildid.go",
+      "retrieval": "GitHub plugin fetch_file; retained exact UTF-8 ranges from inspected source, not a substitute for full Git blob.",
+      "excerpts": [
+        {
+          "startLine": 26,
+          "endLine": 76,
+          "text": ")\n\n// Build IDs\n//\n// Go packages and binaries are stamped with build IDs that record both\n// the action ID, which is a hash of the inputs to the action that produced\n// the packages or binary, and their content IDs which are hashes of the\n// action outputs. The content IDs are hashes of the export and object files\n// in the case of gc package builds, or of the entire archive or binary, in the case\n// of gccgo builds or link actions. These hashes are the same\n// used by the build artifact cache (see cmd/go/internal/cache), but\n// truncated when stored in packages and binaries, as the full length is not\n// needed and is a bit unwieldy. The precise forms are\n//\n//\tactionID/contentID(export)/contentID(object)\n//\tactionID(link)/actionID(build)/contentID(build object)/contentID(link)\n//\n// where the first form is used for build actions and the second form is used\n// for link actions. The actionID and contentID are prepared by buildid.HashToString below.\n// and are found by looking for the first or last slash.\n// gccgo actions use the same gccgo output for the export and object\n// content ids because they do not have separate export data files.\n//\n// The build ID serves two primary purposes.\n//\n// 1. The action ID part allows installed packages and binaries to serve as\n// one-element cache entries. If we intend to build math.a with a given\n// set of inputs summarized in the action ID, and the installed math.a already\n// has that action ID, we can reuse the installed math.a instead of rebuilding it.\n//\n// 2. The content ID parts allow the easy preparation of action IDs for steps\n// that consume a particular package's export or object files or its binary.\n// The content hash of every input file for a given action must be included\n// in the action ID hash. Storing the content IDs in the build ID lets us read\n// it from the file with minimal I/O, instead of reading and hashing the entire\n// file. This is especially effective since packages and binaries are typically\n// the largest inputs to an action.\n//\n// Separating action ID from content IDs is important for reproducible builds.\n// The compiler is compiled with itself. If an output were represented by its\n// own action ID (instead of content IDs) when computing the action ID of\n// the next step in the build process, then the compiler could never have its\n// own input action ID as its output action ID (short of a miraculous hash collision).\n// Instead we use the content IDs to compute the next action ID, and because\n// the content IDs converge, so too do the action IDs and therefore the\n// build IDs and the overall compiler binary. See cmd/dist's cmdbootstrap\n// for the actual convergence sequence.\n//\n// The \u201cone-element cache\u201d purpose is a bit more complex for installed\n// binaries. For a binary, like cmd/gofmt, there are two steps: compile\n// cmd/gofmt/*.go into main.a, and then link main.a into the gofmt binary."
+        },
+        {
+          "startLine": 115,
+          "endLine": 130,
+          "text": "// buildObjectID returns the content ID for the object data.\nfunc buildObjectID(buildID string) string {\n\treturn buildID[strings.LastIndex(buildID, buildIDSeparator)+1:]\n}\n\n// buildExportID returns the content ID for the export data.\nfunc buildExportID(buildID string) string {\n\tif buildID == \"\" {\n\t\treturn \"\"\n\t}\n\tchopContent := buildID[:strings.LastIndex(buildID, buildIDSeparator)]\n\treturn chopContent[strings.LastIndex(chopContent, buildIDSeparator)+1:]\n}\n\n// toolID returns the unique ID to use for the current copy of the\n// named tool (asm, compile, cover, link)."
+        }
+      ]
+    },
+    {
+      "commit": "c4bf0b94ba5bff279eb7b8864ac77971a874efe0",
+      "path": "src/cmd/go/internal/work/exec.go",
+      "gitBlobSha": "94b53cef7c9e6b0ab24d15e1f56a572cb8551106",
+      "url": "https://github.com/golang/go/blob/c4bf0b94ba5bff279eb7b8864ac77971a874efe0/src/cmd/go/internal/work/exec.go",
+      "retrieval": "GitHub plugin fetch_file; retained exact UTF-8 ranges from inspected source, not a substitute for full Git blob.",
+      "excerpts": [
+        {
+          "startLine": 370,
+          "endLine": 382,
+          "text": "\t)\n\tfor _, file := range inputFiles {\n\t\tfmt.Fprintf(h, \"file %s %s\\n\", file, b.fileHash(filepath.Join(p.Dir, file)))\n\t}\n\tfor _, a1 := range a.Deps {\n\t\tp1 := a1.Package\n\t\tif p1 != nil && p1 != p { // p can show up in its own action deps in a cache or cgo action\n\t\t\tfmt.Fprintf(h, \"import %s %s\\n\", p1.ImportPath, buildExportID(a1.buildID))\n\t\t}\n\t\tif a1.Mode == \"preprocess PGO profile\" {\n\t\t\tfmt.Fprintf(h, \"pgofile %s\\n\", b.fileHash(a1.built))\n\t\t}\n\t}\n"
+        },
+        {
+          "startLine": 2045,
+          "endLine": 2075,
+          "text": "\t\tfmt.Fprintln(h, \"trimpath\")\n\t}\n\n\t// Toolchain-dependent configuration, shared with b.linkSharedActionID.\n\tb.printLinkerConfig(h, p)\n\n\t// Input files.\n\tfor _, a1 := range a.Deps {\n\t\tp1 := a1.Package\n\t\tif p1 != nil {\n\t\t\tif a1.built != \"\" || a1.buildID != \"\" {\n\t\t\t\tbuildID := a1.buildID\n\t\t\t\tif buildID == \"\" {\n\t\t\t\t\tbuildID = b.buildID(a1.built)\n\t\t\t\t}\n\t\t\t\tfmt.Fprintf(h, \"packagefile %s=%s\\n\", p1.ImportPath, buildObjectID(buildID))\n\t\t\t}\n\t\t\t// Because we put package main's action ID and object data content ID into the binary's build ID,\n\t\t\t// we must also put the action ID and object data content ID into the binary's action ID hash.\n\t\t\t// We only put in the object data content ID, which was hashed from everything other than the export data,\n\t\t\t// and not the export data content ID, because the export data is not given to the linker.\n\t\t\tif p1.Name == \"main\" {\n\t\t\t\tfmt.Fprintf(h, \"packagemain %s\\n\", buildActionID(a1.buildID)+buildIDSeparator+buildObjectID(a1.buildID))\n\t\t\t}\n\t\t\tif p1.Shlib != \"\" {\n\t\t\t\tfmt.Fprintf(h, \"packageshlib %s=%s\\n\", p1.ImportPath, buildObjectID(b.buildID(p1.Shlib)))\n\t\t\t}\n\t\t}\n\t}\n\n\treturn h.Sum()"
+        }
+      ]
+    },
+    {
+      "commit": "c4bf0b94ba5bff279eb7b8864ac77971a874efe0",
+      "path": "src/cmd/go/internal/work/action.go",
+      "gitBlobSha": "5e27ff6242655d9e522f045f50e48f70e1da39ad",
+      "url": "https://github.com/golang/go/blob/c4bf0b94ba5bff279eb7b8864ac77971a874efe0/src/cmd/go/internal/work/action.go",
+      "retrieval": "GitHub plugin fetch_file; retained exact UTF-8 ranges from inspected source, not a substitute for full Git blob.",
+      "excerpts": [
+        {
+          "startLine": 589,
+          "endLine": 620,
+          "text": "// BuildExportAction returns the action to start the compile for p.\n// The compile process is logically split between the export action\n// and the compile action. The export action completing signifies the\n// availability of the export data for dependent build actions, while\n// the build action completing signifies that the complete archive for\n// a package is ready.\nfunc (b *Builder) BuildExportAction(mode, depMode BuildMode, p *load.Package) *Action {\n\tvetOnly := mode&ModeVetOnly != 0\n\tmode &^= ModeVetOnly\n\n\ta := b.cacheAction(\"build-export\", p, func() *Action {\n\t\ta := &Action{\n\t\t\tMode:    \"build-export\",\n\t\t\tPackage: p,\n\t\t\tActor:   ActorFunc((*Builder).buildExport),\n\t\t\tObjdir:  b.NewObjdir(),\n\t\t}\n\n\t\tif p.Error == nil || !p.Error.IsImportCycle {\n\t\t\tfor _, p1 := range p.Internal.Imports {\n\t\t\t\tif cfg.BuildToolchainName == \"gccgo\" {\n\t\t\t\t\t// gccgo can't do early export. it wants the full object\n\t\t\t\t\ta.Deps = append(a.Deps, b.CompileAction(depMode, depMode, p1))\n\t\t\t\t} else {\n\t\t\t\t\ta.Deps = append(a.Deps, b.BuildExportAction(depMode, depMode, p1))\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\n\t\tif p.Internal.PGOProfile != \"\" {\n\t\t\tpgoAction := b.cacheAction(\"preprocess PGO profile \"+p.Internal.PGOProfile, nil, func() *Action {\n\t\t\t\ta := &Action{"
+        },
+        {
+          "startLine": 695,
+          "endLine": 716,
+          "text": "\t\tmode = ModeBuild\n\t}\n\n\ta := b.cacheAction(\"build\", p, func() *Action {\n\t\texportAction := b.BuildExportAction(mode, depMode, p)\n\t\tif exportAction.Actor == nil {\n\t\t\treturn exportAction\n\t\t}\n\n\t\ta := &Action{\n\t\t\tMode:       \"build\",\n\t\t\tPackage:    p,\n\t\t\tActor:      ActorFunc((*Builder).buildObject),\n\t\t\tObjdir:     exportAction.Objdir,\n\t\t\tDeps:       []*Action{exportAction},\n\t\t\tIgnoreFail: true,\n\t\t}\n\n\t\treturn a\n\t})\n\n\t// Construct install action."
+        }
+      ]
+    }
+  ],
+  "scope": "Primary-source receipts for research only. Installed local Go1.22.2 executed separately; neither referenced Go1.27.3 nor development toolchain was installed or run."
+}

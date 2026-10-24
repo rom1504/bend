@@ -1,0 +1,53 @@
+WORK=/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/tmp/go-build3650348705
+mkdir -p $WORK/b003/
+echo '# import config' > $WORK/b003/importcfg # internal
+cd /home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/work
+/home/ai/go-install/go/pkg/tool/linux_amd64/compile -o $WORK/b003/_pkg_.a -trimpath "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/work/leaf=>example.invalid/p132/leaf;$WORK/b003=>" -p example.invalid/p132/leaf -lang=go1.22 -complete -buildid JHgGAgpzt1Uac3ZIaPC_/JHgGAgpzt1Uac3ZIaPC_ -goversion go1.22.2 -nolocalimports -importcfg $WORK/b003/importcfg -pack ./leaf/leaf.go
+/home/ai/go-install/go/pkg/tool/linux_amd64/buildid -w $WORK/b003/_pkg_.a # internal
+cp $WORK/b003/_pkg_.a /home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/cache/96/96be3d57f009b22e2abbf8b9d9ad6ff44c22a2457c6362b30f53060a43c00771-d # internal
+mkdir -p $WORK/b002/
+cat >/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/tmp/go-build3650348705/b002/importcfg << 'EOF' # internal
+# import config
+packagefile example.invalid/p132/leaf=/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/tmp/go-build3650348705/b003/_pkg_.a
+EOF
+/home/ai/go-install/go/pkg/tool/linux_amd64/compile -o $WORK/b002/_pkg_.a -trimpath "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/work/mid=>example.invalid/p132/mid;$WORK/b002=>" -p example.invalid/p132/mid -lang=go1.22 -complete -buildid q1oB2UmU2PPETOCqHKDX/q1oB2UmU2PPETOCqHKDX -goversion go1.22.2 -nolocalimports -importcfg $WORK/b002/importcfg -pack ./mid/mid.go
+/home/ai/go-install/go/pkg/tool/linux_amd64/buildid -w $WORK/b002/_pkg_.a # internal
+cp $WORK/b002/_pkg_.a /home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/cache/6f/6ff28ae9c5d007f1795673a08311dc0ba90417db51f56df831dc79022a09c1fe-d # internal
+mkdir -p $WORK/b001/
+cat >/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/tmp/go-build3650348705/b001/importcfg << 'EOF' # internal
+# import config
+packagefile example.invalid/p132/mid=/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/tmp/go-build3650348705/b002/_pkg_.a
+packagefile example.invalid/p132/side=/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/cache/2f/2f8f64e78f8d643719f33310f9ac47323f8708e249b68cbd5122d85d3ebc141b-d
+packagefile runtime=/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/cache/b0/b06ed73c28fb638d0ef12cc43e23a73b975d66d3214d83c6328473619849972e-d
+EOF
+/home/ai/go-install/go/pkg/tool/linux_amd64/compile -o $WORK/b001/_pkg_.a -trimpath "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/work=>example.invalid/p132;$WORK/b001=>" -p main -lang=go1.22 -complete -buildid 8enF-xuFNBQv8uf0qDIQ/8enF-xuFNBQv8uf0qDIQ -goversion go1.22.2 -nolocalimports -importcfg $WORK/b001/importcfg -pack ./main.go
+/home/ai/go-install/go/pkg/tool/linux_amd64/buildid -w $WORK/b001/_pkg_.a # internal
+cp $WORK/b001/_pkg_.a /home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/cache/db/db5b6f1cb0b8f18c8d5ff13be578900ec0f918c79ddb3b4da5d72440fcb610fa-d # internal
+cat >/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/tmp/go-build3650348705/b001/importcfg.link << 'EOF' # internal
+packagefile example.invalid/p132=/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/tmp/go-build3650348705/b001/_pkg_.a
+packagefile example.invalid/p132/mid=/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/tmp/go-build3650348705/b002/_pkg_.a
+packagefile example.invalid/p132/side=/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/cache/2f/2f8f64e78f8d643719f33310f9ac47323f8708e249b68cbd5122d85d3ebc141b-d
+packagefile runtime=/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/cache/b0/b06ed73c28fb638d0ef12cc43e23a73b975d66d3214d83c6328473619849972e-d
+packagefile example.invalid/p132/leaf=/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/tmp/go-build3650348705/b003/_pkg_.a
+packagefile internal/abi=/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/cache/1f/1f08eb5b4531acff9bd35d6e41edca50373b96e14e587015823174b79c123b05-d
+packagefile internal/bytealg=/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/cache/f6/f60ceb14295c8f7ddf2dd7c8de983bf22370ee1315f23d3d52bc0627539eb460-d
+packagefile internal/chacha8rand=/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/cache/0e/0e082ef6ebccbe668a8a6bad9593d6d6462299126eb41d9161aec3ba20045a5c-d
+packagefile internal/coverage/rtcov=/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/cache/68/68eb5fa0d5e96cce89792c889c496adcecad797d3665a5240170d1713ac645ac-d
+packagefile internal/cpu=/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/cache/38/380656db846d2db15b612d55788397d791f2d348734052aa3fa91a2caf82ae2c-d
+packagefile internal/goarch=/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/cache/36/36fb3f2f2f94e5b9cb4a9ed82d08e5950a7b38a2efb94d6e07e284205094334e-d
+packagefile internal/godebugs=/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/cache/f2/f2f759819fbc0fccb76693f0834316f0cce400b3caea561f1370b52bf7d11e07-d
+packagefile internal/goexperiment=/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/cache/ff/ff4bce23436b3e890194e154cc379a66b54d30fb848a728f2b6f322da80d1b09-d
+packagefile internal/goos=/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/cache/65/659d5e59863c2a9633dddf10f4133648d9d50970dff0dfa61cec70153edb1537-d
+packagefile runtime/internal/atomic=/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/cache/46/465b67a0e7fb9798794aca26cd0dcb10d02f1d55cb6ec774ca31273710fbf23b-d
+packagefile runtime/internal/math=/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/cache/5f/5f15ed5493c7ad9449c1ad2aef7a47d10378ffa1ea9a57b1670a429b105afaaa-d
+packagefile runtime/internal/sys=/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/cache/61/616ed929af0d6e91ce676b953b07c2dce651c89744bbdf1f4b4935047464e844-d
+packagefile runtime/internal/syscall=/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/cache/11/111b2ca6031d6309485101938c2969b1ad7ee0967eed94041de23e7fbe378604-d
+modinfo "0w\xaf\f\x92t\b\x02A\xe1\xc1\a\xe6\xd6\x18\xe6path\texample.invalid/p132\nmod\texample.invalid/p132\t(devel)\t\nbuild\t-buildmode=exe\nbuild\t-compiler=gc\nbuild\t-trimpath=true\nbuild\tCGO_ENABLED=0\nbuild\tGOARCH=amd64\nbuild\tGOOS=linux\nbuild\tGOAMD64=v1\n\xf92C1\x86\x18 r\x00\x82B\x10A\x16\xd8\xf2"
+EOF
+mkdir -p $WORK/b001/exe/
+cd .
+GOROOT_FINAL='$GOROOT' /home/ai/go-install/go/pkg/tool/linux_amd64/link -o $WORK/b001/exe/a.out -importcfg $WORK/b001/importcfg.link -buildmode=exe -buildid=fMlkZySk1UJsY0XMGH07/8enF-xuFNBQv8uf0qDIQ/C5HVh2uFhlYj1BSvspGb/fMlkZySk1UJsY0XMGH07 -extld=gcc $WORK/b001/_pkg_.a
+/home/ai/go-install/go/pkg/tool/linux_amd64/buildid -w $WORK/b001/exe/a.out # internal
+mkdir -p /home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/work/
+mv $WORK/b001/exe/a.out /home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/work/program
+rm -rf $WORK/b001/

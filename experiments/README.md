@@ -1,5 +1,10 @@
 # Compiler experiment workflow
 
+Latest architectural investigation: [Phase132 incremental native development](../implementation/phase132/README.md).
+Real-edit object reuse, compact-name machine equivalence, Go cache research and
+a full-request memory trace establish the next reusable-unit boundary. This is
+not an incremental frontend or a newly qualified compiler selection.
+
 Latest qualified experiment: [Phase131 laws and borrowed computations](../implementation/phase131/README.md).
 Native requests take20.92% less time than Phase130, reaching1.443× upstream;
 fixed-source N1/N2 shows10.64% less time from improved generated compiler code.

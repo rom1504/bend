@@ -1,0 +1,7 @@
+WORK=/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/tmp/go-build4142645100
+mkdir -p $WORK/b003/
+echo '# import config' > $WORK/b003/importcfg # internal
+cd /home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/work
+/home/ai/go-install/go/pkg/tool/linux_amd64/compile -o $WORK/b003/_pkg_.a -trimpath "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/work/leaf=>example.invalid/p132/leaf;$WORK/b003=>" -p example.invalid/p132/leaf -lang=go1.22 -complete -buildid YyIftSoAMpQFDGyNVWzh/YyIftSoAMpQFDGyNVWzh -goversion go1.22.2 -nolocalimports -importcfg $WORK/b003/importcfg -pack ./leaf/leaf.go
+/home/ai/go-install/go/pkg/tool/linux_amd64/buildid -w $WORK/b003/_pkg_.a # internal
+cp $WORK/b003/_pkg_.a /home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/cache/1a/1a2a2c8437aae1f526b3f4fa0fdf4909ec794751200dc4bd92917290a603c389-d # internal

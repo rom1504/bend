@@ -1,0 +1,123 @@
+{
+  "kind": "phase123-branch-aligned-qbe-build",
+  "complete": true,
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p132-compact-build02-private-local/method.py",
+      "bytes": 3923,
+      "sha256": "67fffc05bdbedf2fcf13eace395fd203f45a981b3a1d7de000d465fcc2693701"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/compact-locals01/private-local.ssa",
+      "bytes": 57519368,
+      "sha256": "45d354a96a4ebda50d5393241d7e8a0e755b6b903b55cfb0a910a0d542bb46b7"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase128/runtime-borrow01/runtime.o",
+      "bytes": 121816,
+      "sha256": "9b3f57afb46b4db8c63f6f3c5f1af1194e0854a7329de28f25d2e11aef887749"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase108/toolchain/qbe-1.3/qbe",
+      "bytes": 262024,
+      "sha256": "1eca24288f9574ad57032ac88f11c3f74ced605838749226d77a9acd4443e5f4"
+    },
+    {
+      "file": "/usr/bin/x86_64-linux-gnu-as",
+      "bytes": 472248,
+      "sha256": "fac4e966afe9223dbab23aa15d27d144af81de4a44c8cad97c1dde290adb9493"
+    },
+    {
+      "file": "/usr/bin/x86_64-linux-gnu-gcc-10",
+      "bytes": 817704,
+      "sha256": "693abcb42e67fb871673f258a3644257ca69a209691ec4d8137a42442834bd19"
+    }
+  ],
+  "jobs": [
+    {
+      "label": "qbe",
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase108/toolchain/qbe-1.3/qbe",
+        "-t",
+        "amd64_sysv",
+        "-o",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p132-compact-build02-private-local/program.s",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/compact-locals01/private-local.ssa"
+      ],
+      "seconds": 8.277120334096253,
+      "exitCode": 0,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p132-compact-build02-private-local/qbe.stdout",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p132-compact-build02-private-local/qbe.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "label": "assemble",
+      "command": [
+        "/usr/bin/as",
+        "-mbranches-within-32B-boundaries",
+        "-o",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p132-compact-build02-private-local/program.o",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p132-compact-build02-private-local/program.s"
+      ],
+      "seconds": 4.773354227188975,
+      "exitCode": 0,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p132-compact-build02-private-local/assemble.stdout",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p132-compact-build02-private-local/assemble.stderr",
+        "bytes": 743,
+        "sha256": "2ce37c465993170d56275fa76cb1686cc61b1fa284af4c17ae1bbe9385dd08ee"
+      }
+    },
+    {
+      "label": "link",
+      "command": [
+        "/usr/bin/gcc",
+        "-no-pie",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p132-compact-build02-private-local/program.o",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase128/runtime-borrow01/runtime.o",
+        "-pthread",
+        "-lm",
+        "-o",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p132-compact-build02-private-local/program"
+      ],
+      "seconds": 0.26495792903006077,
+      "exitCode": 0,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p132-compact-build02-private-local/link.stdout",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p132-compact-build02-private-local/link.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  ],
+  "perProgramC": false,
+  "cproc": false,
+  "cachedRuntime": true,
+  "scope": "QBE emission is an input; this gate builds and optionally executes its exact bytes.",
+  "binary": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p132-compact-build02-private-local/program",
+    "bytes": 16278648,
+    "sha256": "b6b191e83874b3df4b9e12edbfcdf509b302c7d9d4faae16c549c4af6334f716"
+  },
+  "object": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p132-compact-build02-private-local/program.o",
+    "bytes": 22068808,
+    "sha256": "92bf70ef67f9e540bb5b2f4ac91c28e71173dea3b050c58f9b46ec7ef182c501"
+  },
+  "buildSeconds": 13.315432490315288
+}

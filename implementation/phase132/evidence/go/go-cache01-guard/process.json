@@ -1,0 +1,25 @@
+{
+  "complete": false,
+  "command": [
+    "bash",
+    "-c",
+    "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+    "phase86",
+    "taskset",
+    "-c",
+    "5",
+    "python3",
+    "-B",
+    "selfhost/tools/performance/phase132/go/cache-experiment.py",
+    "--out",
+    "selfhost/build/phase132/go-cache01"
+  ],
+  "started": 1792804725.0327353,
+  "rssLimitBytes": 2147483648,
+  "availableFloorBytes": 17179869184,
+  "peakTreeRssBytes": 250159104,
+  "minimumAvailableBytes": 26938601472,
+  "returncode": 1,
+  "wallSeconds": 6.315425619017333,
+  "finished": 1792804731.3481605
+}

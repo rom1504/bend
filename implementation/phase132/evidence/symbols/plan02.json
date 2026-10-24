@@ -1,0 +1,141 @@
+{
+  "complete": true,
+  "targetsRun": false,
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase132/symbols/build-plan-v02.py",
+      "bytes": 2823,
+      "sha256": "6f742fab7020f82f45a95a0ac80957850c264081fb69f6ddcaae37a9107a33d8"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/compact-locals01/report.json",
+      "bytes": 4861,
+      "sha256": "2a98392faac31b13e4f5619eee1d12e38f11d6a0fe42b7b6a4d6abdbe3b9abf9"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase128/runtime-borrow01/runtime.o",
+      "bytes": 121816,
+      "sha256": "9b3f57afb46b4db8c63f6f3c5f1af1194e0854a7329de28f25d2e11aef887749"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase123/build-aligned.py",
+      "bytes": 3923,
+      "sha256": "67fffc05bdbedf2fcf13eace395fd203f45a981b3a1d7de000d465fcc2693701"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase111/guard.py",
+      "bytes": 2107,
+      "sha256": "5aa01d48c6d994e06c02fac4ae72f8cabe9bafeec0f477e526a9acaedc72fe88"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase132/symbols/machine-v02.py",
+      "bytes": 4806,
+      "sha256": "05b268c2a5e5943a1899ddcc9f4b1df01c1a036f5567ca9135c3743266f97995"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase130/p131-final-self01/program.ssa",
+      "bytes": 107059385,
+      "sha256": "f3ff63b04b58e5a5b92be781d0d1cba8cc574a37765cbf66d817c3d38f4b576e"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase130/p131-final-self01/program.ssa",
+      "bytes": 107059385,
+      "sha256": "f3ff63b04b58e5a5b92be781d0d1cba8cc574a37765cbf66d817c3d38f4b576e"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/compact-locals01/private-local.ssa",
+      "bytes": 57519368,
+      "sha256": "45d354a96a4ebda50d5393241d7e8a0e755b6b903b55cfb0a910a0d542bb46b7"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/compact-symbols01/private-map.json",
+      "bytes": 2564509,
+      "sha256": "9320d1273b03aa9de3f5ab226f9c34d05c08fc5ca099e9cc25247836fd297fec"
+    }
+  ],
+  "jobs": [
+    {
+      "name": "baseline",
+      "command": [
+        "python3",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase111/guard.py",
+        "--out",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/compact-build02/baseline-guard",
+        "--seconds",
+        "90",
+        "--rss-mib",
+        "3072",
+        "--available-mib",
+        "16384",
+        "--file-mib",
+        "128",
+        "--cpu",
+        "3",
+        "--",
+        "python3",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase123/build-aligned.py",
+        "--source",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase130/p131-final-self01/program.ssa",
+        "--runtime",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase128/runtime-borrow01/runtime.o",
+        "--out",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p132-compact-build02-baseline",
+        "--seconds",
+        "60"
+      ],
+      "heavyTarget": true
+    },
+    {
+      "name": "private-local",
+      "command": [
+        "python3",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase111/guard.py",
+        "--out",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/compact-build02/private-local-guard",
+        "--seconds",
+        "90",
+        "--rss-mib",
+        "3072",
+        "--available-mib",
+        "16384",
+        "--file-mib",
+        "128",
+        "--cpu",
+        "3",
+        "--",
+        "python3",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase123/build-aligned.py",
+        "--source",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/compact-locals01/private-local.ssa",
+        "--runtime",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase128/runtime-borrow01/runtime.o",
+        "--out",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p132-compact-build02-private-local",
+        "--seconds",
+        "60"
+      ],
+      "heavyTarget": true
+    },
+    {
+      "name": "private-local-machine-audit",
+      "command": [
+        "python3",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase132/symbols/machine-v02.py",
+        "--before",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p132-compact-build02-baseline/report.json",
+        "--after",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p132-compact-build02-private-local/report.json",
+        "--mapping",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/compact-symbols01/private-map.json",
+        "--out",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/compact-build02/private-local-machine"
+      ],
+      "heavyTarget": false
+    }
+  ],
+  "builds": {
+    "baseline": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p132-compact-build02-baseline/report.json",
+    "private-local": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p132-compact-build02-private-local/report.json"
+  },
+  "scope": "Fresh baseline and compact QBE with identical cached runtime/QBE1.3/as alignment/gcc link. Root owns one CPU3 lane. First pair is code/layout and descriptive-cost discriminator; not a controlled timing campaign. No compiler sources, defaults or qualification changed."
+}

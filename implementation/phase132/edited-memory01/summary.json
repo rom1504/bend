@@ -1,0 +1,132 @@
+{
+  "kind": "phase132-edited-source-memory-output-observation",
+  "complete": true,
+  "noNewTargetExecution": true,
+  "source": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/source-edit01/compiler.bend",
+    "bytes": 2667581,
+    "sha256": "3ebf67c2ad9664dacee53a3a00ec590a91487a3f16ec1f3eb29161a7e0f3e7fa"
+  },
+  "image": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p131-final-native01-n2/program",
+    "bytes": 17132048,
+    "sha256": "2fae36020081ccc5cbfb847caf0b285b762387327e4bb44e1d62d96d1affd5dc"
+  },
+  "product": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase130/p132-edited-full01/program.ssa",
+    "bytes": 107059557,
+    "sha256": "c48ad08b501f646aa8e253ca325bdb78cdee5ddac47a9e4598eac57813d8a784"
+  },
+  "observationMethod": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase132/edit/observe-request.py",
+    "bytes": 4991,
+    "sha256": "58f5d410107e55edd2758875182f9b6b7399122d09d598d1eb9371aeb3bef32e"
+  },
+  "nativeRequestSeconds": 368.97587816091254,
+  "nativeCpuSeconds": 368.759084,
+  "nativeChildPeakRssBytes": 2899660800,
+  "observerWallSeconds": 370.5759157910943,
+  "outerGuardSeconds": 370.66711007989943,
+  "outerGuardPeakTreeRssBytes": 2930077696,
+  "sampledPeakDescendantRssBytes": 2910449664,
+  "sampledPeakAtSeconds": 368.5284550730139,
+  "maxSampleIntervalSeconds": 1.0283120109234005,
+  "sampleCount": 371,
+  "lastZeroOutputAtSeconds": 367.5268422991503,
+  "firstNonzeroOutputAtSeconds": 368.5284550730139,
+  "firstNonzeroOutputBytes": 45563904,
+  "completeOutputObservedAtSeconds": 369.52926276414655,
+  "lateGrowth": {
+    "firstAtSeconds": 330.4772755031008,
+    "firstRssBytes": 1006821376,
+    "lastAtSeconds": 364.52280772617087,
+    "lastRssBytes": 2903797760,
+    "increaseBytes": 1896976384
+  },
+  "independentMinimalApi": {
+    "checked": true,
+    "seconds": 5.476974486839026,
+    "outerGuardSeconds": 6.153866179054603,
+    "outerGuardPeakTreeRssBytes": 681246720,
+    "apiBytes": 3892,
+    "exports": [
+      "p111q_main"
+    ],
+    "scope": "Whole-book independent checking and one-helper JS API emission; not equivalent to Phase131 many-export API gate; pure checking unmeasured."
+  },
+  "caveats": [
+    "Single required changed-source run; observer overhead unmeasured; no old/new speedup claim.",
+    "Observer time origin precedes native child startup; not native phase coordinates.",
+    "RSS sum can count shared pages repeatedly and retained arena pages; not PSS or peak live heap.",
+    "Output file size reflects visible writes/page cache, not fsync or disk completion; initial stdio buffering is possible.",
+    "No exclusive parsing/checking/lowering/verification/rendering timing is established.",
+    "Final artifact is a full changed-source reference, not yet a self-host-qualified successor."
+  ],
+  "evidenceArchive": {
+    "file": "/home/ai/bend2/build/publish/bend/implementation/phase132/edited-memory01/evidence.tar.gz",
+    "bytes": 23719,
+    "sha256": "3b5d6a1ca6c8fb092dff3fc38248c50920bf8474b7c7b07ad90f00279a4d6740"
+  },
+  "archiveMembers": {
+    "observation-report.json": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/edited-full-observation01/report.json",
+      "bytes": 1988,
+      "sha256": "69c8742d00967e62554c1b0a45f0b1e8f7086b0d8bf0c76728764ac4aa7dd111"
+    },
+    "samples.jsonl": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/edited-full-observation01/samples.jsonl",
+      "bytes": 119541,
+      "sha256": "d5bcbb87c3db606900128eccd0a32c63d78053676d50951ea5e8c6575b978465"
+    },
+    "native-request-report.json": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase130/p132-edited-full01/report.json",
+      "bytes": 9742,
+      "sha256": "b5018a70ad204fffdc064018ccf5ea94f601c8dd4e55abc2f96058eac39ab90b"
+    },
+    "native-guard.json": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/edited-full01-guard/process.json",
+      "bytes": 1180,
+      "sha256": "8f1b39a011fddc00cfdd9ef580bd346ea73128ec9edbd6da11e2a4ef49a6859e"
+    },
+    "minimal-api-report.json": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p132-edited-api01/report.json",
+      "bytes": 2950,
+      "sha256": "03274253ea843cc2cf78ef062a3889b919520ab9395a77e87c0ff5242ac11a7c"
+    },
+    "minimal-api-guard.json": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/source-check01-guard/process.json",
+      "bytes": 661,
+      "sha256": "e2de17191b330c56fbe3f24e987ea2c836eed56e7ff279687804fe0d037a90ba"
+    },
+    "observe-request.py": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase132/edit/observe-request.py",
+      "bytes": 4991,
+      "sha256": "58f5d410107e55edd2758875182f9b6b7399122d09d598d1eb9371aeb3bef32e"
+    },
+    "test-observe-request.py": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase132/edit/test-observe-request.py",
+      "bytes": 1383,
+      "sha256": "21080ea8a8cf6ca4907b66337dc601958e82cabb5648153972bd957ba42f780a"
+    },
+    "analyze-observation.py": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase132/edit/analyze-observation.py",
+      "bytes": 8063,
+      "sha256": "8e7ddec6e6891d2ee16ca8ba87de89da503f97b12af8ce069522ed570de30a88"
+    },
+    "native-request-method.py": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase130/native-request.py",
+      "bytes": 9884,
+      "sha256": "e32e5e99502a9b6485e54ce6669200ee48eaba0c289d7bfb2809a1dc6ef0bf2f"
+    },
+    "independent-check-method.py": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase111/check-api.py",
+      "bytes": 2711,
+      "sha256": "f30b66931589f2c30037418a08a622eb543b0c5052332095223c01d115b2084b"
+    },
+    "stage0-library.mjs": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/stage0-library.mjs",
+      "bytes": 4172,
+      "sha256": "ec3506de1558fa1e56cef54345053ffaf7bfcc92b8632eaf96e217c15b8a59c1"
+    }
+  }
+}

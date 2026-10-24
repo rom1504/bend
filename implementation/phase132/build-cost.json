@@ -1,0 +1,556 @@
+{
+  "kind": "phase132-existing-evidence-build-cost-audit",
+  "complete": true,
+  "createdUnixSeconds": 1792805005.8032045,
+  "noTargetExecution": true,
+  "source": {
+    "file": "selfhost/build/phase131/combined-literals-source01/compiler.bend",
+    "bytes": 2667581,
+    "sha256": "1bc5930edcf80cda6c3572645df3c846fa631a83c2b936f20c83b05e0a6728f9",
+    "device": 2306,
+    "inode": 79306431,
+    "nlink": 1,
+    "allocatedBytes": 2670592
+  },
+  "evidenceLedger": {
+    "file": "implementation/phase131/cost-evidence/report.json",
+    "bytes": 1169667,
+    "sha256": "3b7abc8b90f27ba4c27f5953201e3bf168a52f0f9241f04c39cad88c6e553b3e"
+  },
+  "emissions": [
+    {
+      "stage": "parent N0 emits Q1",
+      "receipt": {
+        "file": "selfhost/build/phase130/p131-final-acquire01/report.json",
+        "bytes": 9754,
+        "sha256": "7ed2c88e1dda01885ec2ca5f4aa571cfae8dfbf5ab1c8a6cb78afc6bcb6b0086"
+      },
+      "nativeSeconds": 489.61878469306976,
+      "cpuSeconds": 489.616695,
+      "childPeakRssBytes": 2843697152,
+      "harnessSeconds": 490.37425474403426,
+      "outerGuardSeconds": 490.75882621482015,
+      "outerGuardPeakTreeRssBytes": 2860138496,
+      "output": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase130/p131-final-acquire01/program.ssa",
+        "bytes": 104373390,
+        "sha256": "d8f27ccf328a1ebd3900d5eb923c7792c1a5fbae0cd2dfedae8fd792d1a25468"
+      },
+      "byteExact": null,
+      "guardReceipt": {
+        "file": "selfhost/build/phase131/final-acquire01-guard/process.json",
+        "bytes": 852,
+        "sha256": "785f8bcf2331f86118ecffd1143a9d4bbaa75d865d75814f5cfb7cce16ef5395"
+      }
+    },
+    {
+      "stage": "final N1 emits Q2",
+      "receipt": {
+        "file": "selfhost/build/phase130/p131-final-self01/report.json",
+        "bytes": 9779,
+        "sha256": "398bd8d5ea10828380fef81f4ca0ddb9e9cddcfb83e54c56775b4dacf875087f"
+      },
+      "nativeSeconds": 393.5993043759372,
+      "cpuSeconds": 393.59814400000005,
+      "childPeakRssBytes": 2907488256,
+      "harnessSeconds": 394.33309606509283,
+      "outerGuardSeconds": 394.7054689801298,
+      "outerGuardPeakTreeRssBytes": 2923991040,
+      "output": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase130/p131-final-self01/program.ssa",
+        "bytes": 107059385,
+        "sha256": "f3ff63b04b58e5a5b92be781d0d1cba8cc574a37765cbf66d817c3d38f4b576e"
+      },
+      "byteExact": null,
+      "guardReceipt": {
+        "file": "selfhost/build/phase131/final-self01-guard/process.json",
+        "bytes": 854,
+        "sha256": "cdb7ca5d3b0ba293c3816fc5e03f9e16f8eced3102621eff9f5b3d7e8b98c83f"
+      }
+    },
+    {
+      "stage": "final N2 emits Q3",
+      "receipt": {
+        "file": "selfhost/build/phase130/p131-final-reproduce01/report.json",
+        "bytes": 10245,
+        "sha256": "50793e94d2016d9344163a625498a7a5b03a8797b4479d34af213656851b35e5"
+      },
+      "nativeSeconds": 379.228316223016,
+      "cpuSeconds": 379.22571100000005,
+      "childPeakRssBytes": 2905808896,
+      "harnessSeconds": 380.31572490301915,
+      "outerGuardSeconds": 381.5898829270154,
+      "outerGuardPeakTreeRssBytes": 2922270720,
+      "output": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase130/p131-final-reproduce01/program.ssa",
+        "bytes": 107059385,
+        "sha256": "f3ff63b04b58e5a5b92be781d0d1cba8cc574a37765cbf66d817c3d38f4b576e"
+      },
+      "byteExact": true,
+      "guardReceipt": {
+        "file": "selfhost/build/phase131/final-reproduce01-guard/process.json",
+        "bytes": 941,
+        "sha256": "b072578febb282bba8556400d1dcbb38648879890e7412deca1762c4e25f2a18"
+      }
+    }
+  ],
+  "machineBuilds": [
+    {
+      "stage": "Q1 -> N1",
+      "receipt": {
+        "file": "selfhost/build/phase111/p131-final-native01-n1/report.json",
+        "bytes": 4843,
+        "sha256": "bfb56b8af4c475b34aa9e139c1771d419e83ca35b48489a082a44bfb0b5541e7"
+      },
+      "buildSeconds": 13.565137370955199,
+      "jobs": [
+        {
+          "label": "qbe",
+          "seconds": 8.627459548879415
+        },
+        {
+          "label": "assemble",
+          "seconds": 4.672759633045644
+        },
+        {
+          "label": "link",
+          "seconds": 0.26491818903014064
+        }
+      ],
+      "outerGuardSeconds": 14.491445207037032,
+      "outerGuardPeakTreeRssBytes": 915734528,
+      "guardReceipt": {
+        "file": "selfhost/build/phase131/final-n1-build01-guard/process.json",
+        "bytes": 763,
+        "sha256": "d307dbc3cabab5e0367672547defe140d827ea821392d21a8f8c3d73d0698cc6"
+      },
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p131-final-native01-n1/program",
+        "bytes": 16878376,
+        "sha256": "57b6f168d2fa1d6f14c368f479f506cec7934c4e2d82a120e82b761e399e7c3a"
+      },
+      "object": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p131-final-native01-n1/program.o",
+        "bytes": 22577032,
+        "sha256": "0bbfbddb5a8e419a9192c87d8b6ee8fcb61eedd8207e486871c558d9d4c7ffe8"
+      },
+      "cpuSeconds": null,
+      "perJobPeakRssBytes": null
+    },
+    {
+      "stage": "Q2 -> N2",
+      "receipt": {
+        "file": "selfhost/build/phase111/p131-final-native01-n2/report.json",
+        "bytes": 4836,
+        "sha256": "94273bd10abeed0f1adaf6af54d6bce4921b783d7124a1584278779c46638f22"
+      },
+      "buildSeconds": 13.816228380892426,
+      "jobs": [
+        {
+          "label": "qbe",
+          "seconds": 8.727625392843038
+        },
+        {
+          "label": "assemble",
+          "seconds": 4.823642096016556
+        },
+        {
+          "label": "link",
+          "seconds": 0.2649608920328319
+        }
+      ],
+      "outerGuardSeconds": 14.84651766391471,
+      "outerGuardPeakTreeRssBytes": 935313408,
+      "guardReceipt": {
+        "file": "selfhost/build/phase131/final-n2-build01-guard/process.json",
+        "bytes": 758,
+        "sha256": "7a98fdbbff57d876b84e82a643747d39b8ec37f62b97c9927a33993e515fe026"
+      },
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p131-final-native01-n2/program",
+        "bytes": 17132048,
+        "sha256": "2fae36020081ccc5cbfb847caf0b285b762387327e4bb44e1d62d96d1affd5dc"
+      },
+      "object": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p131-final-native01-n2/program.o",
+        "bytes": 22922224,
+        "sha256": "5a18d84aacca1ed008184304bd7b3151e35d4ef182f60f0f378169162db12597"
+      },
+      "cpuSeconds": null,
+      "perJobPeakRssBytes": null
+    },
+    {
+      "stage": "Q3 -> N3",
+      "receipt": {
+        "file": "selfhost/build/phase111/p131-final-native01-n3/report.json",
+        "bytes": 4845,
+        "sha256": "28a2f1b5b836c3bd5c85a0de4dc239c494f8987197c28f92e96ce64c1eb79f92"
+      },
+      "buildSeconds": 13.81581303360872,
+      "jobs": [
+        {
+          "label": "qbe",
+          "seconds": 8.727757107000798
+        },
+        {
+          "label": "assemble",
+          "seconds": 4.823085609823465
+        },
+        {
+          "label": "link",
+          "seconds": 0.2649703167844564
+        }
+      ],
+      "outerGuardSeconds": 14.770329642109573,
+      "outerGuardPeakTreeRssBytes": 935997440,
+      "guardReceipt": {
+        "file": "selfhost/build/phase131/final-n3-build01-guard/process.json",
+        "bytes": 763,
+        "sha256": "749f032346888cd5c2d32638a694342a0522731b8da479d0220aaa32ee9eab62"
+      },
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p131-final-native01-n3/program",
+        "bytes": 17132048,
+        "sha256": "c00778cf4f79088b1ed015e763e42958dec92b0866f7de284469b18ce023a27f"
+      },
+      "object": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p131-final-native01-n3/program.o",
+        "bytes": 22922224,
+        "sha256": "5a18d84aacca1ed008184304bd7b3151e35d4ef182f60f0f378169162db12597"
+      },
+      "cpuSeconds": null,
+      "perJobPeakRssBytes": null
+    }
+  ],
+  "independentApiGate": {
+    "receipt": {
+      "file": "selfhost/build/phase111/p131-combined-literals-api01/report.json",
+      "bytes": 3948,
+      "sha256": "dd76d4454c8b134860cc59d714d031158e7f2a38915a5bb27fce9de6c0f6f9a1"
+    },
+    "combinedCheckAndJsEmitSeconds": 14.177631828002632,
+    "outerGuardSeconds": 14.866353718796745,
+    "outerGuardPeakTreeRssBytes": 2293219328,
+    "guardReceipt": {
+      "file": "selfhost/build/phase131/combined-literals-api01-guard/process.json",
+      "bytes": 1238,
+      "sha256": "1f11718d579a10d19b76693bd78b00fb534cde986f70268686ad6c83f56d55b2"
+    },
+    "pureSourceCheckSeconds": null
+  },
+  "storageSnapshot": {
+    "scope": "Only listed final current-chain source/API/Base/runtime/Q1-Q3/assembly/object/executables; excludes all diagnostics,logs,oldchains and qualification artifacts. Hashes freshly streamed; blocks/inodes metadata at audit time. Hardlinked paths counted once within selection; external aliases exist.",
+    "files": [
+      {
+        "file": "selfhost/build/phase131/combined-literals-source01/compiler.bend",
+        "bytes": 2667581,
+        "sha256": "1bc5930edcf80cda6c3572645df3c846fa631a83c2b936f20c83b05e0a6728f9",
+        "device": 2306,
+        "inode": 79306431,
+        "nlink": 1,
+        "allocatedBytes": 2670592
+      },
+      {
+        "file": "selfhost/build/phase111/p131-combined-literals-api01/api.mjs",
+        "bytes": 2486230,
+        "sha256": "0c76f0aa919dcdf3a62a78bd699060a14b03f93b3cfec832966d1439837b3c62",
+        "device": 2306,
+        "inode": 79306476,
+        "nlink": 1,
+        "allocatedBytes": 2486272
+      },
+      {
+        "file": "selfhost/build/phase130/base-carrier01/base.p130",
+        "bytes": 2612691,
+        "sha256": "984fad041a0ba855ea0aaedd384485afa2153da644655c00882eb50ace33817f",
+        "device": 2306,
+        "inode": 79169867,
+        "nlink": 1,
+        "allocatedBytes": 2613248
+      },
+      {
+        "file": "selfhost/build/phase128/runtime-borrow01/runtime.o",
+        "bytes": 121816,
+        "sha256": "9b3f57afb46b4db8c63f6f3c5f1af1194e0854a7329de28f25d2e11aef887749",
+        "device": 2306,
+        "inode": 79197045,
+        "nlink": 1,
+        "allocatedBytes": 122880
+      },
+      {
+        "file": "selfhost/build/phase130/p131-final-acquire01/program.ssa",
+        "bytes": 104373390,
+        "sha256": "d8f27ccf328a1ebd3900d5eb923c7792c1a5fbae0cd2dfedae8fd792d1a25468",
+        "device": 2306,
+        "inode": 79308276,
+        "nlink": 1,
+        "allocatedBytes": 104378368
+      },
+      {
+        "file": "selfhost/build/phase111/p131-final-native01-n1/program.s",
+        "bytes": 76278267,
+        "sha256": "b944c0f8bf7033cefe6259361be0a9c9cf91ddd882d767602ff9005ae28c58e4",
+        "device": 2306,
+        "inode": 79309165,
+        "nlink": 1,
+        "allocatedBytes": 76283904
+      },
+      {
+        "file": "selfhost/build/phase111/p131-final-native01-n1/program.o",
+        "bytes": 22577032,
+        "sha256": "0bbfbddb5a8e419a9192c87d8b6ee8fcb61eedd8207e486871c558d9d4c7ffe8",
+        "device": 2306,
+        "inode": 79309168,
+        "nlink": 1,
+        "allocatedBytes": 22577152
+      },
+      {
+        "file": "selfhost/build/phase111/p131-final-native01-n1/program",
+        "bytes": 16878376,
+        "sha256": "57b6f168d2fa1d6f14c368f479f506cec7934c4e2d82a120e82b761e399e7c3a",
+        "device": 2306,
+        "inode": 79309171,
+        "nlink": 1,
+        "allocatedBytes": 16879616
+      },
+      {
+        "file": "selfhost/build/phase130/p131-final-self01/program.ssa",
+        "bytes": 107059385,
+        "sha256": "f3ff63b04b58e5a5b92be781d0d1cba8cc574a37765cbf66d817c3d38f4b576e",
+        "device": 2306,
+        "inode": 79310882,
+        "nlink": 1,
+        "allocatedBytes": 107065344
+      },
+      {
+        "file": "selfhost/build/phase111/p131-final-native01-n2/program.s",
+        "bytes": 77659473,
+        "sha256": "7a3d64eb492feff5d3f8ef643ab616f989f22f63401c09f959dc511b1505a6e9",
+        "device": 2306,
+        "inode": 79310903,
+        "nlink": 1,
+        "allocatedBytes": 77664256
+      },
+      {
+        "file": "selfhost/build/phase111/p131-final-native01-n2/program.o",
+        "bytes": 22922224,
+        "sha256": "5a18d84aacca1ed008184304bd7b3151e35d4ef182f60f0f378169162db12597",
+        "device": 2306,
+        "inode": 79310906,
+        "nlink": 1,
+        "allocatedBytes": 22925312
+      },
+      {
+        "file": "selfhost/build/phase111/p131-final-native01-n2/program",
+        "bytes": 17132048,
+        "sha256": "2fae36020081ccc5cbfb847caf0b285b762387327e4bb44e1d62d96d1affd5dc",
+        "device": 2306,
+        "inode": 79310909,
+        "nlink": 1,
+        "allocatedBytes": 17133568
+      },
+      {
+        "file": "selfhost/build/phase130/p131-final-reproduce01/program.ssa",
+        "bytes": 107059385,
+        "sha256": "f3ff63b04b58e5a5b92be781d0d1cba8cc574a37765cbf66d817c3d38f4b576e",
+        "device": 2306,
+        "inode": 79312236,
+        "nlink": 1,
+        "allocatedBytes": 107065344
+      },
+      {
+        "file": "selfhost/build/phase111/p131-final-native01-n3/program.s",
+        "bytes": 77659473,
+        "sha256": "7a3d64eb492feff5d3f8ef643ab616f989f22f63401c09f959dc511b1505a6e9",
+        "device": 2306,
+        "inode": 79313057,
+        "nlink": 1,
+        "allocatedBytes": 77664256
+      },
+      {
+        "file": "selfhost/build/phase111/p131-final-native01-n3/program.o",
+        "bytes": 22922224,
+        "sha256": "5a18d84aacca1ed008184304bd7b3151e35d4ef182f60f0f378169162db12597",
+        "device": 2306,
+        "inode": 79313060,
+        "nlink": 1,
+        "allocatedBytes": 22925312
+      },
+      {
+        "file": "selfhost/build/phase111/p131-final-native01-n3/program",
+        "bytes": 17132048,
+        "sha256": "c00778cf4f79088b1ed015e763e42958dec92b0866f7de284469b18ce023a27f",
+        "device": 2306,
+        "inode": 79313063,
+        "nlink": 1,
+        "allocatedBytes": 17133568
+      }
+    ],
+    "pathLogicalBytes": 677541643,
+    "uniqueSelectedInodesAllocatedBytes": 677588992,
+    "uniqueSelectedInodes": 16
+  },
+  "elfSections": [
+    {
+      "name": ".interp",
+      "bytes": 28,
+      "address": 4194984
+    },
+    {
+      "name": ".note.gnu.build-id",
+      "bytes": 36,
+      "address": 4195012
+    },
+    {
+      "name": ".note.ABI-tag",
+      "bytes": 32,
+      "address": 4195048
+    },
+    {
+      "name": ".gnu.hash",
+      "bytes": 40,
+      "address": 4195080
+    },
+    {
+      "name": ".dynsym",
+      "bytes": 1968,
+      "address": 4195120
+    },
+    {
+      "name": ".dynstr",
+      "bytes": 736,
+      "address": 4197088
+    },
+    {
+      "name": ".gnu.version",
+      "bytes": 164,
+      "address": 4197824
+    },
+    {
+      "name": ".gnu.version_r",
+      "bytes": 208,
+      "address": 4197992
+    },
+    {
+      "name": ".rela.dyn",
+      "bytes": 96,
+      "address": 4198200
+    },
+    {
+      "name": ".rela.plt",
+      "bytes": 1848,
+      "address": 4198296
+    },
+    {
+      "name": ".init",
+      "bytes": 23,
+      "address": 4202496
+    },
+    {
+      "name": ".plt",
+      "bytes": 1248,
+      "address": 4202528
+    },
+    {
+      "name": ".text",
+      "bytes": 10815649,
+      "address": 4203776
+    },
+    {
+      "name": ".fini",
+      "bytes": 9,
+      "address": 15019428
+    },
+    {
+      "name": ".rodata",
+      "bytes": 4984,
+      "address": 15020032
+    },
+    {
+      "name": ".eh_frame_hdr",
+      "bytes": 1540,
+      "address": 15025016
+    },
+    {
+      "name": ".eh_frame",
+      "bytes": 9376,
+      "address": 15026560
+    },
+    {
+      "name": ".init_array",
+      "bytes": 8,
+      "address": 15043824
+    },
+    {
+      "name": ".fini_array",
+      "bytes": 8,
+      "address": 15043832
+    },
+    {
+      "name": ".data.rel.ro",
+      "bytes": 240,
+      "address": 15043840
+    },
+    {
+      "name": ".dynamic",
+      "bytes": 496,
+      "address": 15044080
+    },
+    {
+      "name": ".got",
+      "bytes": 16,
+      "address": 15044576
+    },
+    {
+      "name": ".got.plt",
+      "bytes": 640,
+      "address": 15044608
+    },
+    {
+      "name": ".data",
+      "bytes": 930312,
+      "address": 15045248
+    },
+    {
+      "name": ".bss",
+      "bytes": 1148424,
+      "address": 15975680
+    },
+    {
+      "name": ".comment",
+      "bytes": 39,
+      "address": 0
+    }
+  ],
+  "amdahl": {
+    "observedN2RequestPlusN3MachineStageSeconds": 393.04412925662473,
+    "scope": "Arithmetic sum of separate sequential stage observations, not a measured complete-loop sample; excludes check gate,harness,qualification.",
+    "machineFraction": 0.035150793524734616,
+    "unlimitedMachineSpeedupCeiling": 1.0364313856391565,
+    "requestSpeedupNeededFor10Seconds": 37.9228316223016,
+    "totalSpeedupNeededFor10Seconds": 39.304412925662476,
+    "requestBudgetWithCurrentMachine": -3.8158130336087197,
+    "requestFractionAllowedWithOneSecondOtherCosts": 0.023732405031451537,
+    "requestFractionAllowedWithTwoSecondOtherCosts": 0.021095471139068032
+  },
+  "memoryInterpretation": {
+    "expandedAsciiQbeStringCellPayloadBytes": 1712950160,
+    "assumption": "Each independently materialized ASCII QBE character uses a two-word SCon cell (16 bytes); ignores chunk LF differences,shared suffixes,allocator/RC metadata,and temporary IR. Not a heap census or rigorous resident lower bound.",
+    "rssIsNotCumulativeAllocation": true,
+    "virtualReservationIsNotRss": true,
+    "peakStageMeasured": false
+  },
+  "unmeasured": [
+    "Exclusive source parsing/checking/ownership time",
+    "Lowering/analysis/verifier/render/write stage wall times",
+    "Per-phase native resident/liveness census",
+    "Per-QBE/as/link child CPU/RSS (outer process-tree guard only)",
+    "Same-source full compiler JS-hosted vs native request comparison",
+    "Source-to-executable incremental speedup and invalidation locality"
+  ],
+  "editedSourceObservation": {
+    "summary": "implementation/phase132/edited-memory01/summary.json",
+    "sha256": "23cea68e9667bff9ed5cf10ec4e5692ece59e1781afb385a1343812b60b708f5",
+    "scope": "One required changed-source reference request with sampled memory/output timeline; no old/new speed ratio."
+  }
+}

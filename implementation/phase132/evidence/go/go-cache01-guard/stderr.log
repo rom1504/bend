@@ -1,0 +1,12 @@
+Traceback (most recent call last):
+  File "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase132/go/cache-experiment.py", line 104, in <module>
+    row['execute']=run([stage/'program'],stage/'execute',5)
+  File "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase132/go/cache-experiment.py", line 39, in run
+    child=subprocess.run(list(map(str, cmd)), cwd=WORK, env=ENV, stdout=so, stderr=se, timeout=seconds)
+  File "/usr/lib/python3.9/subprocess.py", line 505, in run
+    with Popen(*popenargs, **kwargs) as process:
+  File "/usr/lib/python3.9/subprocess.py", line 951, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File "/usr/lib/python3.9/subprocess.py", line 1823, in _execute_child
+    raise child_exception_type(errno_num, err_msg, err_filename)
+PermissionError: [Errno 13] Permission denied: '/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache01/00-cold/program'

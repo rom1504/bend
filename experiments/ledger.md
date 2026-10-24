@@ -5645,3 +5645,33 @@ the requested three-hour campaign. Source/diagnostic/cost capsules and rejected
 attempts are retained. The next native-first/compact/incremental direction is
 saved in [Phase132](../design/phase132/incremental-native-development.md), not
 silently implemented as a new cache or backend.
+
+
+## Phase132 — incremental native development investigation (2026-10-24)
+
+[Report](../implementation/phase132/README.md) ·
+[Design](../design/phase132/incremental-native-development.md).
+
+Qualified Phase131 and installed selection remain unchanged.107.06MB QBE contains
+63,239functions/2.29M instructions;57.15% of bytes are local variable names.
+Private/local compaction gives57.52MB,46.27% less, with exact allocated machine
+computation except build-ID and unchanged exported symbols. Single-pair build
+13.97→13.32s is descriptive;~159s diagnostic host rewriting is not a profitable
+production postprocessor or a Bend emitter-time result.
+
+One real p111q_main string-local edit is independently checked and compiled by
+fixed qualified N2.368.98s native request,2.90GB peak.55/65 cached object units
+survive; changed machine construction5.98s versus19.85s independent cold build.
+Allocated sections, ELF entry/headers and independent full-QBE/ordinary output
+gates pass.476function bodies+2data declarations change. Full frontend plus~21s
+host partitioning remains charged; no end-to-end gain or10s rebuild claimed.
+
+Go package/action/content/interface research and a tiny controlled edit graph
+support stable semantic units with explicit consumed dependencies. RSS rises
+~1.90GB late before output appears; complete output becomes visible in final~2s.
+Packed/streamed verified emission and reusable named lowering before numeric/
+static binding are next candidates.9.07MB unrooted private functions and13.55MB
+normalized duplicated bodies are overlapping static opportunities, not deletions.
+
+Preserve failed Go permission-copy and metadata-parser attempts. No backend
+rewrite, production cache, new compiler theorem or native selection promotion.

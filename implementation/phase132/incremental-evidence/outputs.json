@@ -1,0 +1,326 @@
+{
+  "complete": true,
+  "plan": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/object-output-gates01/plan.json",
+  "planSha256": "788b671b99be1e848402a8d8699e8149590312a9798262bca5471d525ecf80a2",
+  "jobs": [
+    {
+      "name": "baseline-lexer-request",
+      "command": [
+        "python3",
+        "-B",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase130/native-request.py",
+        "--image",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/object-baseline-build01/program",
+        "--source",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase88/broad-fixtures03/lexer.bend",
+        "--carrier-receipt",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase130/base-carrier01/receipt.json",
+        "--out",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase130/p132-objects-baseline-lexer01",
+        "--expected-qbe",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase112/p128-qualified01-n1-n2/000-lexer-cache-phase111/program.ssa",
+        "--seconds",
+        "30"
+      ],
+      "returncode": 0,
+      "seconds": 2.0682569860946387
+    },
+    {
+      "name": "cached-lexer-request",
+      "command": [
+        "python3",
+        "-B",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase130/native-request.py",
+        "--image",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/object-changed-cached01/program",
+        "--source",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase88/broad-fixtures03/lexer.bend",
+        "--carrier-receipt",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase130/base-carrier01/receipt.json",
+        "--out",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase130/p132-objects-cached-lexer01",
+        "--expected-qbe",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/object-output-gates01/lexer-edited.ssa",
+        "--seconds",
+        "30"
+      ],
+      "returncode": 0,
+      "seconds": 2.018312325933948
+    },
+    {
+      "name": "reference-lexer-request",
+      "command": [
+        "python3",
+        "-B",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase130/native-request.py",
+        "--image",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/object-changed-reference01/program",
+        "--source",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase88/broad-fixtures03/lexer.bend",
+        "--carrier-receipt",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase130/base-carrier01/receipt.json",
+        "--out",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase130/p132-objects-reference-lexer01",
+        "--expected-qbe",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/object-output-gates01/lexer-edited.ssa",
+        "--seconds",
+        "30"
+      ],
+      "returncode": 0,
+      "seconds": 2.0181933960411698
+    },
+    {
+      "name": "baseline-lexer-ordinary",
+      "command": [
+        "python3",
+        "-B",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase123/build-aligned.py",
+        "--source",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase130/p132-objects-baseline-lexer01/program.ssa",
+        "--runtime",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase128/runtime-borrow01/runtime.o",
+        "--out",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p132-objects-baseline-lexer01",
+        "--expected",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase111/coverage/expected/broad-lexer.stdout",
+        "--seconds",
+        "30"
+      ],
+      "returncode": 0,
+      "seconds": 0.21548600704409182
+    },
+    {
+      "name": "reference-lexer-ordinary",
+      "command": [
+        "python3",
+        "-B",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase123/build-aligned.py",
+        "--source",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase130/p132-objects-reference-lexer01/program.ssa",
+        "--runtime",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase128/runtime-borrow01/runtime.o",
+        "--out",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p132-objects-reference-lexer01",
+        "--expected",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase111/coverage/expected/broad-lexer.stdout",
+        "--seconds",
+        "30"
+      ],
+      "returncode": 0,
+      "seconds": 0.21536342590115964
+    },
+    {
+      "name": "baseline-coverage-closures-256-request",
+      "command": [
+        "python3",
+        "-B",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase130/native-request.py",
+        "--image",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/object-baseline-build01/program",
+        "--source",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase88/broad-fixtures03/coverage-closures-256.bend",
+        "--carrier-receipt",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase130/base-carrier01/receipt.json",
+        "--out",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase130/p132-objects-baseline-coverage-closures-25601",
+        "--expected-qbe",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase112/p128-qualified01-n1-n2/005-coverage-closures-256-cache-phase111/program.ssa",
+        "--seconds",
+        "30"
+      ],
+      "returncode": 0,
+      "seconds": 0.8664202529471368
+    },
+    {
+      "name": "cached-coverage-closures-256-request",
+      "command": [
+        "python3",
+        "-B",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase130/native-request.py",
+        "--image",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/object-changed-cached01/program",
+        "--source",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase88/broad-fixtures03/coverage-closures-256.bend",
+        "--carrier-receipt",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase130/base-carrier01/receipt.json",
+        "--out",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase130/p132-objects-cached-coverage-closures-25601",
+        "--expected-qbe",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/object-output-gates01/coverage-closures-256-edited.ssa",
+        "--seconds",
+        "30"
+      ],
+      "returncode": 0,
+      "seconds": 0.8664045659825206
+    },
+    {
+      "name": "reference-coverage-closures-256-request",
+      "command": [
+        "python3",
+        "-B",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase130/native-request.py",
+        "--image",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/object-changed-reference01/program",
+        "--source",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase88/broad-fixtures03/coverage-closures-256.bend",
+        "--carrier-receipt",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase130/base-carrier01/receipt.json",
+        "--out",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase130/p132-objects-reference-coverage-closures-25601",
+        "--expected-qbe",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/object-output-gates01/coverage-closures-256-edited.ssa",
+        "--seconds",
+        "30"
+      ],
+      "returncode": 0,
+      "seconds": 0.8664461690932512
+    },
+    {
+      "name": "baseline-coverage-closures-256-ordinary",
+      "command": [
+        "python3",
+        "-B",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase123/build-aligned.py",
+        "--source",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase130/p132-objects-baseline-coverage-closures-25601/program.ssa",
+        "--runtime",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase128/runtime-borrow01/runtime.o",
+        "--out",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p132-objects-baseline-coverage-closures-25601",
+        "--expected",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase111/coverage/expected/broad-coverage-closures-256.stdout",
+        "--seconds",
+        "30"
+      ],
+      "returncode": 0,
+      "seconds": 0.16541068395599723
+    },
+    {
+      "name": "reference-coverage-closures-256-ordinary",
+      "command": [
+        "python3",
+        "-B",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase123/build-aligned.py",
+        "--source",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase130/p132-objects-reference-coverage-closures-25601/program.ssa",
+        "--runtime",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase128/runtime-borrow01/runtime.o",
+        "--out",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p132-objects-reference-coverage-closures-25601",
+        "--expected",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase111/coverage/expected/broad-coverage-closures-256.stdout",
+        "--seconds",
+        "30"
+      ],
+      "returncode": 0,
+      "seconds": 0.21544759813696146
+    },
+    {
+      "name": "baseline-coverage-map-churn-128-request",
+      "command": [
+        "python3",
+        "-B",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase130/native-request.py",
+        "--image",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/object-baseline-build01/program",
+        "--source",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase88/broad-fixtures03/coverage-map-churn-128.bend",
+        "--carrier-receipt",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase130/base-carrier01/receipt.json",
+        "--out",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase130/p132-objects-baseline-coverage-map-churn-12801",
+        "--expected-qbe",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase112/p128-qualified01-n1-n2/007-coverage-map-churn-128-cache-phase111/program.ssa",
+        "--seconds",
+        "30"
+      ],
+      "returncode": 0,
+      "seconds": 2.5190890750382096
+    },
+    {
+      "name": "cached-coverage-map-churn-128-request",
+      "command": [
+        "python3",
+        "-B",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase130/native-request.py",
+        "--image",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/object-changed-cached01/program",
+        "--source",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase88/broad-fixtures03/coverage-map-churn-128.bend",
+        "--carrier-receipt",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase130/base-carrier01/receipt.json",
+        "--out",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase130/p132-objects-cached-coverage-map-churn-12801",
+        "--expected-qbe",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/object-output-gates01/coverage-map-churn-128-edited.ssa",
+        "--seconds",
+        "30"
+      ],
+      "returncode": 0,
+      "seconds": 2.381786177866161
+    },
+    {
+      "name": "reference-coverage-map-churn-128-request",
+      "command": [
+        "python3",
+        "-B",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase130/native-request.py",
+        "--image",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/object-changed-reference01/program",
+        "--source",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase88/broad-fixtures03/coverage-map-churn-128.bend",
+        "--carrier-receipt",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase130/base-carrier01/receipt.json",
+        "--out",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase130/p132-objects-reference-coverage-map-churn-12801",
+        "--expected-qbe",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/object-output-gates01/coverage-map-churn-128-edited.ssa",
+        "--seconds",
+        "30"
+      ],
+      "returncode": 0,
+      "seconds": 2.418939471943304
+    },
+    {
+      "name": "baseline-coverage-map-churn-128-ordinary",
+      "command": [
+        "python3",
+        "-B",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase123/build-aligned.py",
+        "--source",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase130/p132-objects-baseline-coverage-map-churn-12801/program.ssa",
+        "--runtime",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase128/runtime-borrow01/runtime.o",
+        "--out",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p132-objects-baseline-coverage-map-churn-12801",
+        "--expected",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase111/coverage/expected/broad-coverage-map-churn-128.stdout",
+        "--seconds",
+        "30"
+      ],
+      "returncode": 0,
+      "seconds": 0.3157034928444773
+    },
+    {
+      "name": "reference-coverage-map-churn-128-ordinary",
+      "command": [
+        "python3",
+        "-B",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase123/build-aligned.py",
+        "--source",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase130/p132-objects-reference-coverage-map-churn-12801/program.ssa",
+        "--runtime",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase128/runtime-borrow01/runtime.o",
+        "--out",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p132-objects-reference-coverage-map-churn-12801",
+        "--expected",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase111/coverage/expected/broad-coverage-map-churn-128.stdout",
+        "--seconds",
+        "30"
+      ],
+      "returncode": 0,
+      "seconds": 0.3157045068219304
+    }
+  ],
+  "seconds": 17.51036650291644
+}

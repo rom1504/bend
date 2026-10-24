@@ -1,0 +1,113 @@
+{
+  "complete": true,
+  "targetsRun": false,
+  "productionChange": false,
+  "source": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase130/p131-final-self01/program.ssa",
+    "bytes": 107059385,
+    "sha256": "f3ff63b04b58e5a5b92be781d0d1cba8cc574a37765cbf66d817c3d38f4b576e"
+  },
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase132/symbols/locals.py",
+      "bytes": 7513,
+      "sha256": "38daece13bdca372f7cda341356c3355507a90045fa46ab48bc26a4b96e8a492"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase132/symbols/compact.py",
+      "bytes": 10433,
+      "sha256": "09868cb26883b2801c3c0adb4a6df71594eed6b593289c108b8366ebd00530a4"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/compact-symbols01/report.json",
+      "bytes": 3425208,
+      "sha256": "05d44f4245ba19e6cba01bdffa8c30395271f7bc83c5563927cf066aab4d3cc7"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase130/p131-final-self01/program.ssa",
+      "bytes": 107059385,
+      "sha256": "f3ff63b04b58e5a5b92be781d0d1cba8cc574a37765cbf66d817c3d38f4b576e"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/compact-symbols01/private-map.json",
+      "bytes": 2564509,
+      "sha256": "9320d1273b03aa9de3f5ab226f9c34d05c08fc5ca099e9cc25247836fd297fec"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/compact-symbols01/closed-map.json",
+      "bytes": 10793591,
+      "sha256": "052d3c9e98625d81eca98626745b21debcb8020ac0532fb24bed721d5acde574"
+    }
+  ],
+  "selftest": {
+    "passed": true,
+    "checks": 3,
+    "scope": "Repeated non-SSA identifier, parameter, branch labels, string/comment exclusion."
+  },
+  "functions": 63239,
+  "counts": {
+    "variableOccurrences": 4504082,
+    "labelOccurrences": 231393,
+    "variableBytesRemoved": 46199481,
+    "labelBytesRemoved": 660418,
+    "variableDefinitions": 1616264,
+    "labelDefinitions": 142134
+  },
+  "localMap": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/compact-locals01/locals.jsonl",
+    "bytes": 45990913,
+    "sha256": "ddab694b20a62e3483d0f0a53c419e54611f91dafdb298bbebaaae957e9a085e"
+  },
+  "modes": [
+    {
+      "mode": "private-local",
+      "output": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/compact-locals01/private-local.ssa",
+        "bytes": 57519368,
+        "sha256": "45d354a96a4ebda50d5393241d7e8a0e755b6b903b55cfb0a910a0d542bb46b7"
+      },
+      "globalMap": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/compact-symbols01/private-map.json",
+        "bytes": 2564509,
+        "sha256": "9320d1273b03aa9de3f5ab226f9c34d05c08fc5ca099e9cc25247836fd297fec"
+      },
+      "localMap": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/compact-locals01/locals.jsonl",
+        "bytes": 45990913,
+        "sha256": "ddab694b20a62e3483d0f0a53c419e54611f91dafdb298bbebaaae957e9a085e"
+      },
+      "changedExportNames": 0,
+      "reverseSha256": "f3ff63b04b58e5a5b92be781d0d1cba8cc574a37765cbf66d817c3d38f4b576e",
+      "totalBytesRemoved": 49540017,
+      "localBytesRemoved": 46859899,
+      "allStringsAndCommentsExact": true
+    },
+    {
+      "mode": "closed-local",
+      "output": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/compact-locals01/closed-local.ssa",
+        "bytes": 52281530,
+        "sha256": "ed9af2aa5ad7fc63e37ac1c170a08961a6582056c1b8c30f7861e8c614ade5c3"
+      },
+      "globalMap": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/compact-symbols01/closed-map.json",
+        "bytes": 10793591,
+        "sha256": "052d3c9e98625d81eca98626745b21debcb8020ac0532fb24bed721d5acde574"
+      },
+      "localMap": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/compact-locals01/locals.jsonl",
+        "bytes": 45990913,
+        "sha256": "ddab694b20a62e3483d0f0a53c419e54611f91dafdb298bbebaaae957e9a085e"
+      },
+      "changedExportNames": 48911,
+      "reverseSha256": "f3ff63b04b58e5a5b92be781d0d1cba8cc574a37765cbf66d817c3d38f4b576e",
+      "totalBytesRemoved": 54777855,
+      "localBytesRemoved": 46859899,
+      "allStringsAndCommentsExact": true
+    }
+  ],
+  "rewriteSeconds": 47.59681557887234,
+  "totalHostSeconds": 115.87492771400139,
+  "peakRssKiB": 137596,
+  "scope": "Per-function positional variable and block-label alpha-renaming, repeated non-SSA names kept consistent. Exact inverse-byte proof covers parameters, definitions, uses, data relocations, globals, strings and comments. Private-local retains all export names; closed-local changes generated segment exports. Host rewrite cost is not Bend emitter speed."
+}

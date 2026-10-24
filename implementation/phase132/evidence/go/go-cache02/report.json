@@ -1,0 +1,1230 @@
+{
+  "complete": true,
+  "version": {
+    "command": [
+      "/home/ai/go-install/go/bin/go",
+      "version"
+    ],
+    "wallSeconds": 0.0050253430381417274,
+    "exitCode": 0,
+    "stdout": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/version.stdout",
+      "bytes": 32,
+      "sha256": "65593ce58a2f4d22e9222d43a2c8330d6e6d2f6257da2f06b80949958c14a4ec"
+    },
+    "stderr": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/version.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/method.py",
+      "bytes": 5726,
+      "sha256": "527e27cca388d0602a83b995ffa593f00d59c0ff46e6a930e208ef0476a985e3"
+    },
+    {
+      "file": "/home/ai/go-install/go/bin/go",
+      "bytes": 12684603,
+      "sha256": "0c400948a291e457233182eb257d63ce42d2adc1f66f2c871a4c4f4032d744f4"
+    },
+    {
+      "file": "/home/ai/go-install/go/VERSION",
+      "bytes": 35,
+      "sha256": "e5cbf874a59045b1b1b55d6fafcb09dbc009b78edf7c70015c0bd6bb05a4e9bd"
+    },
+    {
+      "file": "/home/ai/go-install/go/src/cmd/go/internal/work/buildid.go",
+      "bytes": 25867,
+      "sha256": "d13b66c6368be675fbd2a1e4b774f83f027cd8df33474f48047d367ca61bbd8e"
+    },
+    {
+      "file": "/home/ai/go-install/go/src/cmd/go/internal/work/exec.go",
+      "bytes": 107114,
+      "sha256": "fc613f8d0ea13d0e3c305ed1586796e828b42f30a63e311107de251acececb8a"
+    }
+  ],
+  "stages": [
+    {
+      "name": "00-cold",
+      "source": [
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/00-cold/source/go.mod",
+          "bytes": 37,
+          "sha256": "6368e70a2a06834e7bf7f6f1fb9ff016e08e0ab0ca4dc02bfaf3a86b6d3398f6"
+        },
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/00-cold/source/leaf/leaf.go",
+          "bytes": 226,
+          "sha256": "0440d4a4e7fab13fbc8a71ca23e0b0ba422dfc5d5a3239d0f372d7f601e92556"
+        },
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/00-cold/source/side/side.go",
+          "bytes": 41,
+          "sha256": "7241bfef9fc60a40c5817b9a0d25a560c23bf15b5fc023b0d2a3491e08dd727c"
+        },
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/00-cold/source/mid/mid.go",
+          "bytes": 140,
+          "sha256": "3662ca218886e0e680ce8d7cfd991a0badf5d22cbba29fa8fc3d0868766d32e6"
+        },
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/00-cold/source/main.go",
+          "bytes": 130,
+          "sha256": "c7d9f0255b39bc3442f986a7d50293de76168b8d8eac94d4b185c0a1b262441e"
+        }
+      ],
+      "build": {
+        "command": [
+          "/home/ai/go-install/go/bin/go",
+          "build",
+          "-x",
+          "-p=1",
+          "-trimpath",
+          "-buildvcs=false",
+          "-o",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/work/program",
+          "."
+        ],
+        "wallSeconds": 4.6829037219285965,
+        "exitCode": 0,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/00-cold/build.stdout",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stderr": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/00-cold/build.stderr",
+          "bytes": 43203,
+          "sha256": "c7bfbc7d5eb4abe0dca7b1c5232cbc9b2efba37df645109246e7cbabbce81a5a"
+        }
+      },
+      "compilePackages": [
+        "example.invalid/p132/leaf",
+        "example.invalid/p132/mid",
+        "example.invalid/p132/side",
+        "internal/goarch",
+        "internal/abi",
+        "internal/cpu",
+        "internal/bytealg",
+        "internal/chacha8rand",
+        "internal/coverage/rtcov",
+        "internal/godebugs",
+        "internal/goexperiment",
+        "internal/goos",
+        "runtime/internal/atomic",
+        "runtime/internal/math",
+        "runtime/internal/sys",
+        "runtime/internal/syscall",
+        "runtime",
+        "main"
+      ],
+      "linkInvocations": 1,
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/00-cold/program",
+        "bytes": 1376754,
+        "sha256": "b03481ce69c0465d1a4c99c0f8e9cb6df2c9d85787b9a789fb135027228752c6"
+      },
+      "execute": {
+        "command": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/00-cold/program"
+        ],
+        "wallSeconds": 0.002339591970667243,
+        "exitCode": 0,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/00-cold/execute.stdout",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stderr": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/00-cold/execute.stderr",
+          "bytes": 2,
+          "sha256": "10159baf262b43a92d95db59dae1f72c645127301661e0a3ce4e38b295a97c58"
+        }
+      },
+      "outputExact": true,
+      "list": {
+        "command": [
+          "/home/ai/go-install/go/bin/go",
+          "list",
+          "-export",
+          "-trimpath",
+          "-buildvcs=false",
+          "-f",
+          "{{.ImportPath}}|{{.Export}}|{{.BuildID}}",
+          "./..."
+        ],
+        "wallSeconds": 0.040606464026495814,
+        "exitCode": 0,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/00-cold/list.stdout",
+          "bytes": 846,
+          "sha256": "aa5fdbe0cc3d94ad112956ae7ac417153dd57f4cddc8a11d029eb1f82444f3e4"
+        },
+        "stderr": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/00-cold/list.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "packages": [
+        {
+          "name": "example.invalid/p132",
+          "archive": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/cache/be/beca0cd95300d05e25023ddbb4706b6f8692dd9ccbde62d9035d13861a114c27-d",
+            "bytes": 3446,
+            "sha256": "beca0cd95300d05e25023ddbb4706b6f8692dd9ccbde62d9035d13861a114c27"
+          },
+          "buildID": "LeZ2PqDEH0TMt_xwlyi9/w1SEMYNaDm5-dYcjimLd",
+          "exportData": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/00-cold/export-p132.stdout",
+            "bytes": 440,
+            "sha256": "2fc51effb656587c705323969e393b34656798f841b6061f9678691467f422b2"
+          }
+        },
+        {
+          "name": "example.invalid/p132/leaf",
+          "archive": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/cache/78/78be4a40cb7337a4d9e87ce11213f5080204c948e3e9f2a2f28517c0717d5654-d",
+            "bytes": 6788,
+            "sha256": "78be4a40cb7337a4d9e87ce11213f5080204c948e3e9f2a2f28517c0717d5654"
+          },
+          "buildID": "8fQOCvKk-VFmoLJTOsvK/O8fVyyp2pJCYxsNwGusj",
+          "exportData": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/00-cold/export-leaf.stdout",
+            "bytes": 879,
+            "sha256": "7cb39f026e3541fa6e99e045cf2f284cc6dbe93f2e49afbdfcc2bbe2b1f04213"
+          }
+        },
+        {
+          "name": "example.invalid/p132/mid",
+          "archive": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/cache/66/6658e8d2042b3c9d643077237263206396e9b995266b8db3c0ed9261a54a73ff-d",
+            "bytes": 3594,
+            "sha256": "6658e8d2042b3c9d643077237263206396e9b995266b8db3c0ed9261a54a73ff"
+          },
+          "buildID": "d5WptIzvGCCVnz82vWlh/5igrJG1Gp-L_NIkuy0RQ",
+          "exportData": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/00-cold/export-mid.stdout",
+            "bytes": 1259,
+            "sha256": "2c96cedf6c08ac358bc3b704f4847c457c309dc12efbd095717d481b5120333e"
+          }
+        },
+        {
+          "name": "example.invalid/p132/side",
+          "archive": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/cache/2f/2f8f64e78f8d643719f33310f9ac47323f8708e249b68cbd5122d85d3ebc141b-d",
+            "bytes": 2028,
+            "sha256": "2f8f64e78f8d643719f33310f9ac47323f8708e249b68cbd5122d85d3ebc141b"
+          },
+          "buildID": "UykiTBI3SHqwbrnDxTLJ/C1a5VDZcxrXRB8HLHHOi",
+          "exportData": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/00-cold/export-side.stdout",
+            "bytes": 479,
+            "sha256": "2c9c93ab0224f132aaaad0a8f42ca2ebf0d8207aaddc2ba59f1e637384ad4cb5"
+          }
+        }
+      ]
+    },
+    {
+      "name": "01-noop",
+      "source": [
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/01-noop/source/go.mod",
+          "bytes": 37,
+          "sha256": "6368e70a2a06834e7bf7f6f1fb9ff016e08e0ab0ca4dc02bfaf3a86b6d3398f6"
+        },
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/01-noop/source/leaf/leaf.go",
+          "bytes": 226,
+          "sha256": "0440d4a4e7fab13fbc8a71ca23e0b0ba422dfc5d5a3239d0f372d7f601e92556"
+        },
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/01-noop/source/side/side.go",
+          "bytes": 41,
+          "sha256": "7241bfef9fc60a40c5817b9a0d25a560c23bf15b5fc023b0d2a3491e08dd727c"
+        },
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/01-noop/source/mid/mid.go",
+          "bytes": 140,
+          "sha256": "3662ca218886e0e680ce8d7cfd991a0badf5d22cbba29fa8fc3d0868766d32e6"
+        },
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/01-noop/source/main.go",
+          "bytes": 130,
+          "sha256": "c7d9f0255b39bc3442f986a7d50293de76168b8d8eac94d4b185c0a1b262441e"
+        }
+      ],
+      "build": {
+        "command": [
+          "/home/ai/go-install/go/bin/go",
+          "build",
+          "-x",
+          "-p=1",
+          "-trimpath",
+          "-buildvcs=false",
+          "-o",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/work/program",
+          "."
+        ],
+        "wallSeconds": 0.03857296705245972,
+        "exitCode": 0,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/01-noop/build.stdout",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stderr": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/01-noop/build.stderr",
+          "bytes": 97,
+          "sha256": "cba4c23e2e50f78417d02d549bd53e7b9352563292d041e3f44a58fc2a5b7a86"
+        }
+      },
+      "compilePackages": [],
+      "linkInvocations": 0,
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/01-noop/program",
+        "bytes": 1376754,
+        "sha256": "b03481ce69c0465d1a4c99c0f8e9cb6df2c9d85787b9a789fb135027228752c6"
+      },
+      "execute": {
+        "command": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/01-noop/program"
+        ],
+        "wallSeconds": 0.0025053760036826134,
+        "exitCode": 0,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/01-noop/execute.stdout",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stderr": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/01-noop/execute.stderr",
+          "bytes": 2,
+          "sha256": "10159baf262b43a92d95db59dae1f72c645127301661e0a3ce4e38b295a97c58"
+        }
+      },
+      "outputExact": true,
+      "list": {
+        "command": [
+          "/home/ai/go-install/go/bin/go",
+          "list",
+          "-export",
+          "-trimpath",
+          "-buildvcs=false",
+          "-f",
+          "{{.ImportPath}}|{{.Export}}|{{.BuildID}}",
+          "./..."
+        ],
+        "wallSeconds": 0.039323125034570694,
+        "exitCode": 0,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/01-noop/list.stdout",
+          "bytes": 846,
+          "sha256": "aa5fdbe0cc3d94ad112956ae7ac417153dd57f4cddc8a11d029eb1f82444f3e4"
+        },
+        "stderr": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/01-noop/list.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "packages": [
+        {
+          "name": "example.invalid/p132",
+          "archive": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/cache/be/beca0cd95300d05e25023ddbb4706b6f8692dd9ccbde62d9035d13861a114c27-d",
+            "bytes": 3446,
+            "sha256": "beca0cd95300d05e25023ddbb4706b6f8692dd9ccbde62d9035d13861a114c27"
+          },
+          "buildID": "LeZ2PqDEH0TMt_xwlyi9/w1SEMYNaDm5-dYcjimLd",
+          "exportData": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/01-noop/export-p132.stdout",
+            "bytes": 440,
+            "sha256": "2fc51effb656587c705323969e393b34656798f841b6061f9678691467f422b2"
+          }
+        },
+        {
+          "name": "example.invalid/p132/leaf",
+          "archive": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/cache/78/78be4a40cb7337a4d9e87ce11213f5080204c948e3e9f2a2f28517c0717d5654-d",
+            "bytes": 6788,
+            "sha256": "78be4a40cb7337a4d9e87ce11213f5080204c948e3e9f2a2f28517c0717d5654"
+          },
+          "buildID": "8fQOCvKk-VFmoLJTOsvK/O8fVyyp2pJCYxsNwGusj",
+          "exportData": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/01-noop/export-leaf.stdout",
+            "bytes": 879,
+            "sha256": "7cb39f026e3541fa6e99e045cf2f284cc6dbe93f2e49afbdfcc2bbe2b1f04213"
+          }
+        },
+        {
+          "name": "example.invalid/p132/mid",
+          "archive": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/cache/66/6658e8d2042b3c9d643077237263206396e9b995266b8db3c0ed9261a54a73ff-d",
+            "bytes": 3594,
+            "sha256": "6658e8d2042b3c9d643077237263206396e9b995266b8db3c0ed9261a54a73ff"
+          },
+          "buildID": "d5WptIzvGCCVnz82vWlh/5igrJG1Gp-L_NIkuy0RQ",
+          "exportData": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/01-noop/export-mid.stdout",
+            "bytes": 1259,
+            "sha256": "2c96cedf6c08ac358bc3b704f4847c457c309dc12efbd095717d481b5120333e"
+          }
+        },
+        {
+          "name": "example.invalid/p132/side",
+          "archive": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/cache/2f/2f8f64e78f8d643719f33310f9ac47323f8708e249b68cbd5122d85d3ebc141b-d",
+            "bytes": 2028,
+            "sha256": "2f8f64e78f8d643719f33310f9ac47323f8708e249b68cbd5122d85d3ebc141b"
+          },
+          "buildID": "UykiTBI3SHqwbrnDxTLJ/C1a5VDZcxrXRB8HLHHOi",
+          "exportData": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/01-noop/export-side.stdout",
+            "bytes": 479,
+            "sha256": "2c9c93ab0224f132aaaad0a8f42ca2ebf0d8207aaddc2ba59f1e637384ad4cb5"
+          }
+        }
+      ]
+    },
+    {
+      "name": "02-comment",
+      "source": [
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/02-comment/source/go.mod",
+          "bytes": 37,
+          "sha256": "6368e70a2a06834e7bf7f6f1fb9ff016e08e0ab0ca4dc02bfaf3a86b6d3398f6"
+        },
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/02-comment/source/leaf/leaf.go",
+          "bytes": 269,
+          "sha256": "d0921f3b3275311cc3dc1e41a625bca31e981eb479107039c0ee92626124a972"
+        },
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/02-comment/source/side/side.go",
+          "bytes": 41,
+          "sha256": "7241bfef9fc60a40c5817b9a0d25a560c23bf15b5fc023b0d2a3491e08dd727c"
+        },
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/02-comment/source/mid/mid.go",
+          "bytes": 140,
+          "sha256": "3662ca218886e0e680ce8d7cfd991a0badf5d22cbba29fa8fc3d0868766d32e6"
+        },
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/02-comment/source/main.go",
+          "bytes": 130,
+          "sha256": "c7d9f0255b39bc3442f986a7d50293de76168b8d8eac94d4b185c0a1b262441e"
+        }
+      ],
+      "build": {
+        "command": [
+          "/home/ai/go-install/go/bin/go",
+          "build",
+          "-x",
+          "-p=1",
+          "-trimpath",
+          "-buildvcs=false",
+          "-o",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/work/program",
+          "."
+        ],
+        "wallSeconds": 0.04657117114402354,
+        "exitCode": 0,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/02-comment/build.stdout",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stderr": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/02-comment/build.stderr",
+          "bytes": 912,
+          "sha256": "4991ae77268bd8e380fedc6df77ce06b40d6c141ef1ee091b9ae479039daf0ff"
+        }
+      },
+      "compilePackages": [
+        "example.invalid/p132/leaf"
+      ],
+      "linkInvocations": 0,
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/02-comment/program",
+        "bytes": 1376754,
+        "sha256": "b03481ce69c0465d1a4c99c0f8e9cb6df2c9d85787b9a789fb135027228752c6"
+      },
+      "execute": {
+        "command": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/02-comment/program"
+        ],
+        "wallSeconds": 0.0023495780769735575,
+        "exitCode": 0,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/02-comment/execute.stdout",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stderr": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/02-comment/execute.stderr",
+          "bytes": 2,
+          "sha256": "10159baf262b43a92d95db59dae1f72c645127301661e0a3ce4e38b295a97c58"
+        }
+      },
+      "outputExact": true,
+      "list": {
+        "command": [
+          "/home/ai/go-install/go/bin/go",
+          "list",
+          "-export",
+          "-trimpath",
+          "-buildvcs=false",
+          "-f",
+          "{{.ImportPath}}|{{.Export}}|{{.BuildID}}",
+          "./..."
+        ],
+        "wallSeconds": 0.03952654218301177,
+        "exitCode": 0,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/02-comment/list.stdout",
+          "bytes": 846,
+          "sha256": "decbb16126b04c8bf339ff4afb669e26b38afae470d784048be538ef3d59ed1a"
+        },
+        "stderr": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/02-comment/list.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "packages": [
+        {
+          "name": "example.invalid/p132",
+          "archive": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/cache/be/beca0cd95300d05e25023ddbb4706b6f8692dd9ccbde62d9035d13861a114c27-d",
+            "bytes": 3446,
+            "sha256": "beca0cd95300d05e25023ddbb4706b6f8692dd9ccbde62d9035d13861a114c27"
+          },
+          "buildID": "LeZ2PqDEH0TMt_xwlyi9/w1SEMYNaDm5-dYcjimLd",
+          "exportData": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/02-comment/export-p132.stdout",
+            "bytes": 440,
+            "sha256": "2fc51effb656587c705323969e393b34656798f841b6061f9678691467f422b2"
+          }
+        },
+        {
+          "name": "example.invalid/p132/leaf",
+          "archive": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/cache/1a/1a2a2c8437aae1f526b3f4fa0fdf4909ec794751200dc4bd92917290a603c389-d",
+            "bytes": 6788,
+            "sha256": "1a2a2c8437aae1f526b3f4fa0fdf4909ec794751200dc4bd92917290a603c389"
+          },
+          "buildID": "YyIftSoAMpQFDGyNVWzh/O8fVyyp2pJCYxsNwGusj",
+          "exportData": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/02-comment/export-leaf.stdout",
+            "bytes": 879,
+            "sha256": "7bdeb032664c52d96fa1b640e1b19dc8a0899ecc182db68cdccf2d2aa744ee8b"
+          }
+        },
+        {
+          "name": "example.invalid/p132/mid",
+          "archive": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/cache/66/6658e8d2042b3c9d643077237263206396e9b995266b8db3c0ed9261a54a73ff-d",
+            "bytes": 3594,
+            "sha256": "6658e8d2042b3c9d643077237263206396e9b995266b8db3c0ed9261a54a73ff"
+          },
+          "buildID": "d5WptIzvGCCVnz82vWlh/5igrJG1Gp-L_NIkuy0RQ",
+          "exportData": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/02-comment/export-mid.stdout",
+            "bytes": 1259,
+            "sha256": "2c96cedf6c08ac358bc3b704f4847c457c309dc12efbd095717d481b5120333e"
+          }
+        },
+        {
+          "name": "example.invalid/p132/side",
+          "archive": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/cache/2f/2f8f64e78f8d643719f33310f9ac47323f8708e249b68cbd5122d85d3ebc141b-d",
+            "bytes": 2028,
+            "sha256": "2f8f64e78f8d643719f33310f9ac47323f8708e249b68cbd5122d85d3ebc141b"
+          },
+          "buildID": "UykiTBI3SHqwbrnDxTLJ/C1a5VDZcxrXRB8HLHHOi",
+          "exportData": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/02-comment/export-side.stdout",
+            "bytes": 479,
+            "sha256": "2c9c93ab0224f132aaaad0a8f42ca2ebf0d8207aaddc2ba59f1e637384ad4cb5"
+          }
+        }
+      ]
+    },
+    {
+      "name": "03-private-body",
+      "source": [
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/03-private-body/source/go.mod",
+          "bytes": 37,
+          "sha256": "6368e70a2a06834e7bf7f6f1fb9ff016e08e0ab0ca4dc02bfaf3a86b6d3398f6"
+        },
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/03-private-body/source/leaf/leaf.go",
+          "bytes": 226,
+          "sha256": "9d78d12b05935fab0201dee35e4430997a8135e71f943367e0ba3c0c57f11bd4"
+        },
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/03-private-body/source/side/side.go",
+          "bytes": 41,
+          "sha256": "7241bfef9fc60a40c5817b9a0d25a560c23bf15b5fc023b0d2a3491e08dd727c"
+        },
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/03-private-body/source/mid/mid.go",
+          "bytes": 140,
+          "sha256": "3662ca218886e0e680ce8d7cfd991a0badf5d22cbba29fa8fc3d0868766d32e6"
+        },
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/03-private-body/source/main.go",
+          "bytes": 130,
+          "sha256": "c7d9f0255b39bc3442f986a7d50293de76168b8d8eac94d4b185c0a1b262441e"
+        }
+      ],
+      "build": {
+        "command": [
+          "/home/ai/go-install/go/bin/go",
+          "build",
+          "-x",
+          "-p=1",
+          "-trimpath",
+          "-buildvcs=false",
+          "-o",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/work/program",
+          "."
+        ],
+        "wallSeconds": 0.12462833896279335,
+        "exitCode": 0,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/03-private-body/build.stdout",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stderr": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/03-private-body/build.stderr",
+          "bytes": 6184,
+          "sha256": "71e2615ba31850e39e080f8f69e19e7f1cecbcabb2e48e96ca463909a4d2e67d"
+        }
+      },
+      "compilePackages": [
+        "example.invalid/p132/leaf",
+        "example.invalid/p132/mid"
+      ],
+      "linkInvocations": 1,
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/03-private-body/program",
+        "bytes": 1376754,
+        "sha256": "66004d8ac3720c896ae22f23e4d22b5c165a7890c96658b113fcf9e516813328"
+      },
+      "execute": {
+        "command": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/03-private-body/program"
+        ],
+        "wallSeconds": 0.00228132214397192,
+        "exitCode": 0,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/03-private-body/execute.stdout",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stderr": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/03-private-body/execute.stderr",
+          "bytes": 3,
+          "sha256": "917df3320d778ddbaa5c5c7742bc4046bf803c36ed2b050f30844ed206783469"
+        }
+      },
+      "outputExact": true,
+      "list": {
+        "command": [
+          "/home/ai/go-install/go/bin/go",
+          "list",
+          "-export",
+          "-trimpath",
+          "-buildvcs=false",
+          "-f",
+          "{{.ImportPath}}|{{.Export}}|{{.BuildID}}",
+          "./..."
+        ],
+        "wallSeconds": 0.04167852597311139,
+        "exitCode": 0,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/03-private-body/list.stdout",
+          "bytes": 846,
+          "sha256": "eb1f8af2f6bf0149bac64633ca0ec4e67d0d4ff4ca30e5a1489dc44c88f0afb0"
+        },
+        "stderr": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/03-private-body/list.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "packages": [
+        {
+          "name": "example.invalid/p132",
+          "archive": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/cache/be/beca0cd95300d05e25023ddbb4706b6f8692dd9ccbde62d9035d13861a114c27-d",
+            "bytes": 3446,
+            "sha256": "beca0cd95300d05e25023ddbb4706b6f8692dd9ccbde62d9035d13861a114c27"
+          },
+          "buildID": "LeZ2PqDEH0TMt_xwlyi9/w1SEMYNaDm5-dYcjimLd",
+          "exportData": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/03-private-body/export-p132.stdout",
+            "bytes": 440,
+            "sha256": "2fc51effb656587c705323969e393b34656798f841b6061f9678691467f422b2"
+          }
+        },
+        {
+          "name": "example.invalid/p132/leaf",
+          "archive": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/cache/5e/5eff2d2453c7c88ef41d59648722bd99ba2ca2d4acdad42f3599b78afa6037c3-d",
+            "bytes": 6788,
+            "sha256": "5eff2d2453c7c88ef41d59648722bd99ba2ca2d4acdad42f3599b78afa6037c3"
+          },
+          "buildID": "U7ZOdcaXhwvl16foXYXc/hunjiFthHeCJgPHB0CYA",
+          "exportData": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/03-private-body/export-leaf.stdout",
+            "bytes": 879,
+            "sha256": "8a018747ae255115a04269edea7898088865e7b032e612f2a75c37f259fb8e0d"
+          }
+        },
+        {
+          "name": "example.invalid/p132/mid",
+          "archive": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/cache/b1/b1b50df37b254b5a656c69101d255d42d8cd14539b6a2fba73c167d1225a910f-d",
+            "bytes": 3594,
+            "sha256": "b1b50df37b254b5a656c69101d255d42d8cd14539b6a2fba73c167d1225a910f"
+          },
+          "buildID": "H-ABBTc0LtCpmfhzBfRQ/5igrJG1Gp-L_NIkuy0RQ",
+          "exportData": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/03-private-body/export-mid.stdout",
+            "bytes": 1259,
+            "sha256": "2570e5411e3c34a789d28e0bbded05b42bd81780e64b8a7138e82a0998bec608"
+          }
+        },
+        {
+          "name": "example.invalid/p132/side",
+          "archive": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/cache/2f/2f8f64e78f8d643719f33310f9ac47323f8708e249b68cbd5122d85d3ebc141b-d",
+            "bytes": 2028,
+            "sha256": "2f8f64e78f8d643719f33310f9ac47323f8708e249b68cbd5122d85d3ebc141b"
+          },
+          "buildID": "UykiTBI3SHqwbrnDxTLJ/C1a5VDZcxrXRB8HLHHOi",
+          "exportData": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/03-private-body/export-side.stdout",
+            "bytes": 479,
+            "sha256": "2c9c93ab0224f132aaaad0a8f42ca2ebf0d8207aaddc2ba59f1e637384ad4cb5"
+          }
+        }
+      ]
+    },
+    {
+      "name": "04-revert",
+      "source": [
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/04-revert/source/go.mod",
+          "bytes": 37,
+          "sha256": "6368e70a2a06834e7bf7f6f1fb9ff016e08e0ab0ca4dc02bfaf3a86b6d3398f6"
+        },
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/04-revert/source/leaf/leaf.go",
+          "bytes": 226,
+          "sha256": "0440d4a4e7fab13fbc8a71ca23e0b0ba422dfc5d5a3239d0f372d7f601e92556"
+        },
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/04-revert/source/side/side.go",
+          "bytes": 41,
+          "sha256": "7241bfef9fc60a40c5817b9a0d25a560c23bf15b5fc023b0d2a3491e08dd727c"
+        },
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/04-revert/source/mid/mid.go",
+          "bytes": 140,
+          "sha256": "3662ca218886e0e680ce8d7cfd991a0badf5d22cbba29fa8fc3d0868766d32e6"
+        },
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/04-revert/source/main.go",
+          "bytes": 130,
+          "sha256": "c7d9f0255b39bc3442f986a7d50293de76168b8d8eac94d4b185c0a1b262441e"
+        }
+      ],
+      "build": {
+        "command": [
+          "/home/ai/go-install/go/bin/go",
+          "build",
+          "-x",
+          "-p=1",
+          "-trimpath",
+          "-buildvcs=false",
+          "-o",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/work/program",
+          "."
+        ],
+        "wallSeconds": 0.12164428201504052,
+        "exitCode": 0,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/04-revert/build.stdout",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stderr": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/04-revert/build.stderr",
+          "bytes": 4478,
+          "sha256": "372791341b3d52df07eebe9961258ca44709e14f9e9cc05ecb1341eb67094504"
+        }
+      },
+      "compilePackages": [],
+      "linkInvocations": 1,
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/04-revert/program",
+        "bytes": 1376754,
+        "sha256": "b03481ce69c0465d1a4c99c0f8e9cb6df2c9d85787b9a789fb135027228752c6"
+      },
+      "execute": {
+        "command": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/04-revert/program"
+        ],
+        "wallSeconds": 0.0022778459824621677,
+        "exitCode": 0,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/04-revert/execute.stdout",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stderr": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/04-revert/execute.stderr",
+          "bytes": 2,
+          "sha256": "10159baf262b43a92d95db59dae1f72c645127301661e0a3ce4e38b295a97c58"
+        }
+      },
+      "outputExact": true,
+      "list": {
+        "command": [
+          "/home/ai/go-install/go/bin/go",
+          "list",
+          "-export",
+          "-trimpath",
+          "-buildvcs=false",
+          "-f",
+          "{{.ImportPath}}|{{.Export}}|{{.BuildID}}",
+          "./..."
+        ],
+        "wallSeconds": 0.04161956300958991,
+        "exitCode": 0,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/04-revert/list.stdout",
+          "bytes": 846,
+          "sha256": "aa5fdbe0cc3d94ad112956ae7ac417153dd57f4cddc8a11d029eb1f82444f3e4"
+        },
+        "stderr": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/04-revert/list.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "packages": [
+        {
+          "name": "example.invalid/p132",
+          "archive": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/cache/be/beca0cd95300d05e25023ddbb4706b6f8692dd9ccbde62d9035d13861a114c27-d",
+            "bytes": 3446,
+            "sha256": "beca0cd95300d05e25023ddbb4706b6f8692dd9ccbde62d9035d13861a114c27"
+          },
+          "buildID": "LeZ2PqDEH0TMt_xwlyi9/w1SEMYNaDm5-dYcjimLd",
+          "exportData": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/04-revert/export-p132.stdout",
+            "bytes": 440,
+            "sha256": "2fc51effb656587c705323969e393b34656798f841b6061f9678691467f422b2"
+          }
+        },
+        {
+          "name": "example.invalid/p132/leaf",
+          "archive": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/cache/78/78be4a40cb7337a4d9e87ce11213f5080204c948e3e9f2a2f28517c0717d5654-d",
+            "bytes": 6788,
+            "sha256": "78be4a40cb7337a4d9e87ce11213f5080204c948e3e9f2a2f28517c0717d5654"
+          },
+          "buildID": "8fQOCvKk-VFmoLJTOsvK/O8fVyyp2pJCYxsNwGusj",
+          "exportData": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/04-revert/export-leaf.stdout",
+            "bytes": 879,
+            "sha256": "7cb39f026e3541fa6e99e045cf2f284cc6dbe93f2e49afbdfcc2bbe2b1f04213"
+          }
+        },
+        {
+          "name": "example.invalid/p132/mid",
+          "archive": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/cache/66/6658e8d2042b3c9d643077237263206396e9b995266b8db3c0ed9261a54a73ff-d",
+            "bytes": 3594,
+            "sha256": "6658e8d2042b3c9d643077237263206396e9b995266b8db3c0ed9261a54a73ff"
+          },
+          "buildID": "d5WptIzvGCCVnz82vWlh/5igrJG1Gp-L_NIkuy0RQ",
+          "exportData": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/04-revert/export-mid.stdout",
+            "bytes": 1259,
+            "sha256": "2c96cedf6c08ac358bc3b704f4847c457c309dc12efbd095717d481b5120333e"
+          }
+        },
+        {
+          "name": "example.invalid/p132/side",
+          "archive": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/cache/2f/2f8f64e78f8d643719f33310f9ac47323f8708e249b68cbd5122d85d3ebc141b-d",
+            "bytes": 2028,
+            "sha256": "2f8f64e78f8d643719f33310f9ac47323f8708e249b68cbd5122d85d3ebc141b"
+          },
+          "buildID": "UykiTBI3SHqwbrnDxTLJ/C1a5VDZcxrXRB8HLHHOi",
+          "exportData": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/04-revert/export-side.stdout",
+            "bytes": 479,
+            "sha256": "2c9c93ab0224f132aaaad0a8f42ca2ebf0d8207aaddc2ba59f1e637384ad4cb5"
+          }
+        }
+      ]
+    },
+    {
+      "name": "05-inline-body",
+      "source": [
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/05-inline-body/source/go.mod",
+          "bytes": 37,
+          "sha256": "6368e70a2a06834e7bf7f6f1fb9ff016e08e0ab0ca4dc02bfaf3a86b6d3398f6"
+        },
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/05-inline-body/source/leaf/leaf.go",
+          "bytes": 226,
+          "sha256": "eeb5af25207a2828b8c76effb7257aae7d1a86c1a6da47d7c956492feb279c4c"
+        },
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/05-inline-body/source/side/side.go",
+          "bytes": 41,
+          "sha256": "7241bfef9fc60a40c5817b9a0d25a560c23bf15b5fc023b0d2a3491e08dd727c"
+        },
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/05-inline-body/source/mid/mid.go",
+          "bytes": 140,
+          "sha256": "3662ca218886e0e680ce8d7cfd991a0badf5d22cbba29fa8fc3d0868766d32e6"
+        },
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/05-inline-body/source/main.go",
+          "bytes": 130,
+          "sha256": "c7d9f0255b39bc3442f986a7d50293de76168b8d8eac94d4b185c0a1b262441e"
+        }
+      ],
+      "build": {
+        "command": [
+          "/home/ai/go-install/go/bin/go",
+          "build",
+          "-x",
+          "-p=1",
+          "-trimpath",
+          "-buildvcs=false",
+          "-o",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/work/program",
+          "."
+        ],
+        "wallSeconds": 0.17153771198354661,
+        "exitCode": 0,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/05-inline-body/build.stdout",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stderr": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/05-inline-body/build.stderr",
+          "bytes": 7284,
+          "sha256": "71d29dd4ce8499ef8f1de83f6b5f2352333af7cda46c0e52276d4983df6288a1"
+        }
+      },
+      "compilePackages": [
+        "example.invalid/p132/leaf",
+        "example.invalid/p132/mid",
+        "main"
+      ],
+      "linkInvocations": 1,
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/05-inline-body/program",
+        "bytes": 1376754,
+        "sha256": "2d69b499494ebe47a1c73c557229d58bd8f30a11988df38d5f6e4496d1e84536"
+      },
+      "execute": {
+        "command": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/05-inline-body/program"
+        ],
+        "wallSeconds": 0.0023052399046719074,
+        "exitCode": 0,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/05-inline-body/execute.stdout",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stderr": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/05-inline-body/execute.stderr",
+          "bytes": 3,
+          "sha256": "1a252402972f6057fa53cc172b52b9ffca698e18311facd0f3b06ecaaef79e17"
+        }
+      },
+      "outputExact": true,
+      "list": {
+        "command": [
+          "/home/ai/go-install/go/bin/go",
+          "list",
+          "-export",
+          "-trimpath",
+          "-buildvcs=false",
+          "-f",
+          "{{.ImportPath}}|{{.Export}}|{{.BuildID}}",
+          "./..."
+        ],
+        "wallSeconds": 0.03843730594962835,
+        "exitCode": 0,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/05-inline-body/list.stdout",
+          "bytes": 846,
+          "sha256": "79a4ec110427e8a11096bf8492ff8ca2d590610c027a81b7aca42bc2ff133259"
+        },
+        "stderr": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/05-inline-body/list.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "packages": [
+        {
+          "name": "example.invalid/p132",
+          "archive": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/cache/79/796b96f4cd64194b6469fa188c62d8a51c1b1666f2cdbd829adf4be035f2a1ca-d",
+            "bytes": 3446,
+            "sha256": "796b96f4cd64194b6469fa188c62d8a51c1b1666f2cdbd829adf4be035f2a1ca"
+          },
+          "buildID": "oV5KWRtklfqn5DXztrLS/hJsrHZhyrHYNsFsvXJsN",
+          "exportData": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/05-inline-body/export-p132.stdout",
+            "bytes": 440,
+            "sha256": "6b0fb650692576113d25cc002265ff8fc3769f3b0f8765428fd030b8cfc7831f"
+          }
+        },
+        {
+          "name": "example.invalid/p132/leaf",
+          "archive": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/cache/e8/e8d62f476f64aae7c0f171da48f0c640da23c766d3d35659728c77bb5cc941ba-d",
+            "bytes": 6788,
+            "sha256": "e8d62f476f64aae7c0f171da48f0c640da23c766d3d35659728c77bb5cc941ba"
+          },
+          "buildID": "CCPBgFV0REH2GtLlrzr2/Y88RU0pLphAeeV4PFoBc",
+          "exportData": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/05-inline-body/export-leaf.stdout",
+            "bytes": 879,
+            "sha256": "b16dcc3e23850b92059ffd06c1ca34ac705564e265e4c03fe8ba653226c56323"
+          }
+        },
+        {
+          "name": "example.invalid/p132/mid",
+          "archive": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/cache/b3/b374539e82ce0ef5b1ae4888156b5b7cfdb32a373205f9228b4dbf7bb15e2da4-d",
+            "bytes": 3594,
+            "sha256": "b374539e82ce0ef5b1ae4888156b5b7cfdb32a373205f9228b4dbf7bb15e2da4"
+          },
+          "buildID": "MiR3HtuF_rY6Gz0nNRzs/7HxVb_4rB_MbmtaEuGej",
+          "exportData": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/05-inline-body/export-mid.stdout",
+            "bytes": 1259,
+            "sha256": "d67b3da8fa10fc7a329c3177cf9ae7d7db70ae15619222183eb7f7f0159e31bf"
+          }
+        },
+        {
+          "name": "example.invalid/p132/side",
+          "archive": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/cache/2f/2f8f64e78f8d643719f33310f9ac47323f8708e249b68cbd5122d85d3ebc141b-d",
+            "bytes": 2028,
+            "sha256": "2f8f64e78f8d643719f33310f9ac47323f8708e249b68cbd5122d85d3ebc141b"
+          },
+          "buildID": "UykiTBI3SHqwbrnDxTLJ/C1a5VDZcxrXRB8HLHHOi",
+          "exportData": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/05-inline-body/export-side.stdout",
+            "bytes": 479,
+            "sha256": "2c9c93ab0224f132aaaad0a8f42ca2ebf0d8207aaddc2ba59f1e637384ad4cb5"
+          }
+        }
+      ]
+    },
+    {
+      "name": "06-interface-constant",
+      "source": [
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/06-interface-constant/source/go.mod",
+          "bytes": 37,
+          "sha256": "6368e70a2a06834e7bf7f6f1fb9ff016e08e0ab0ca4dc02bfaf3a86b6d3398f6"
+        },
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/06-interface-constant/source/leaf/leaf.go",
+          "bytes": 226,
+          "sha256": "6e1784fe7f49e7947a9580e00db282f4973eb51abf737a34a139dde78ab3518c"
+        },
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/06-interface-constant/source/side/side.go",
+          "bytes": 41,
+          "sha256": "7241bfef9fc60a40c5817b9a0d25a560c23bf15b5fc023b0d2a3491e08dd727c"
+        },
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/06-interface-constant/source/mid/mid.go",
+          "bytes": 140,
+          "sha256": "3662ca218886e0e680ce8d7cfd991a0badf5d22cbba29fa8fc3d0868766d32e6"
+        },
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/06-interface-constant/source/main.go",
+          "bytes": 130,
+          "sha256": "c7d9f0255b39bc3442f986a7d50293de76168b8d8eac94d4b185c0a1b262441e"
+        }
+      ],
+      "build": {
+        "command": [
+          "/home/ai/go-install/go/bin/go",
+          "build",
+          "-x",
+          "-p=1",
+          "-trimpath",
+          "-buildvcs=false",
+          "-o",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/work/program",
+          "."
+        ],
+        "wallSeconds": 0.17224388802424073,
+        "exitCode": 0,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/06-interface-constant/build.stdout",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stderr": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/06-interface-constant/build.stderr",
+          "bytes": 7284,
+          "sha256": "d055d30bb1b0ee7b5c4eaae36557e37c49ef8c226b3f18d84d3084dec7fff7cb"
+        }
+      },
+      "compilePackages": [
+        "example.invalid/p132/leaf",
+        "example.invalid/p132/mid",
+        "main"
+      ],
+      "linkInvocations": 1,
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/06-interface-constant/program",
+        "bytes": 1376754,
+        "sha256": "d76af44220fb4879e45b31218c75d10d5cf8937e32f906d13f4c7403ebda0e1a"
+      },
+      "execute": {
+        "command": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/06-interface-constant/program"
+        ],
+        "wallSeconds": 0.002317484002560377,
+        "exitCode": 0,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/06-interface-constant/execute.stdout",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stderr": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/06-interface-constant/execute.stderr",
+          "bytes": 3,
+          "sha256": "1a252402972f6057fa53cc172b52b9ffca698e18311facd0f3b06ecaaef79e17"
+        }
+      },
+      "outputExact": true,
+      "list": {
+        "command": [
+          "/home/ai/go-install/go/bin/go",
+          "list",
+          "-export",
+          "-trimpath",
+          "-buildvcs=false",
+          "-f",
+          "{{.ImportPath}}|{{.Export}}|{{.BuildID}}",
+          "./..."
+        ],
+        "wallSeconds": 0.05147183686494827,
+        "exitCode": 0,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/06-interface-constant/list.stdout",
+          "bytes": 846,
+          "sha256": "950386c0423175e7ac46853210f40de73f0c385d81c9daae927ff21286f68be4"
+        },
+        "stderr": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/06-interface-constant/list.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "packages": [
+        {
+          "name": "example.invalid/p132",
+          "archive": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/cache/db/db5b6f1cb0b8f18c8d5ff13be578900ec0f918c79ddb3b4da5d72440fcb610fa-d",
+            "bytes": 3446,
+            "sha256": "db5b6f1cb0b8f18c8d5ff13be578900ec0f918c79ddb3b4da5d72440fcb610fa"
+          },
+          "buildID": "8enF-xuFNBQv8uf0qDIQ/C5HVh2uFhlYj1BSvspGb",
+          "exportData": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/06-interface-constant/export-p132.stdout",
+            "bytes": 440,
+            "sha256": "1a82e67cb0b2697aeb2526afd80716cf2b794dcd41ff810fc41c430131e3dea7"
+          }
+        },
+        {
+          "name": "example.invalid/p132/leaf",
+          "archive": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/cache/96/96be3d57f009b22e2abbf8b9d9ad6ff44c22a2457c6362b30f53060a43c00771-d",
+            "bytes": 6788,
+            "sha256": "96be3d57f009b22e2abbf8b9d9ad6ff44c22a2457c6362b30f53060a43c00771"
+          },
+          "buildID": "JHgGAgpzt1Uac3ZIaPC_/1jQp2UyKKT9ywjLrahBa",
+          "exportData": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/06-interface-constant/export-leaf.stdout",
+            "bytes": 879,
+            "sha256": "f88cb91eabe10bcda69b12202570b9eb1eb7b4062aa1eb400f7155f005f85fcb"
+          }
+        },
+        {
+          "name": "example.invalid/p132/mid",
+          "archive": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/cache/6f/6ff28ae9c5d007f1795673a08311dc0ba90417db51f56df831dc79022a09c1fe-d",
+            "bytes": 3594,
+            "sha256": "6ff28ae9c5d007f1795673a08311dc0ba90417db51f56df831dc79022a09c1fe"
+          },
+          "buildID": "q1oB2UmU2PPETOCqHKDX/waEFRVv3hVffpiXe4UjC",
+          "exportData": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/06-interface-constant/export-mid.stdout",
+            "bytes": 1259,
+            "sha256": "418ca2dc17f116efa5de548785eedcc6478ddf29ae4e9e1eaab18eb782df2a21"
+          }
+        },
+        {
+          "name": "example.invalid/p132/side",
+          "archive": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/cache/2f/2f8f64e78f8d643719f33310f9ac47323f8708e249b68cbd5122d85d3ebc141b-d",
+            "bytes": 2028,
+            "sha256": "2f8f64e78f8d643719f33310f9ac47323f8708e249b68cbd5122d85d3ebc141b"
+          },
+          "buildID": "UykiTBI3SHqwbrnDxTLJ/C1a5VDZcxrXRB8HLHHOi",
+          "exportData": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/06-interface-constant/export-side.stdout",
+            "bytes": 479,
+            "sha256": "2c9c93ab0224f132aaaad0a8f42ca2ebf0d8207aaddc2ba59f1e637384ad4cb5"
+          }
+        }
+      ]
+    }
+  ],
+  "environment": {
+    "GOCACHE": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/cache",
+    "GOMODCACHE": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/modcache",
+    "GOTMPDIR": "/home/ai/bend2/build/publish/bend/selfhost/build/phase132/go-cache02/tmp",
+    "GOTOOLCHAIN": "local",
+    "GOPROXY": "off",
+    "GOSUMDB": "off",
+    "GOENV": "off",
+    "GOWORK": "off",
+    "CGO_ENABLED": "0",
+    "GOMAXPROCS": "1"
+  },
+  "scope": "One sequential diagnostic run per edit; no statistical speed claim, no toolchain download, no Bend changes. Go1.22.2 local behavior, released/development source research reported separately.",
+  "cacheBytes": 13955727
+}

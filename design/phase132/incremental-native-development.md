@@ -223,3 +223,13 @@ Likewise, scalar selector fusion became much more effective when composed with
 wider borrowed layouts. That result argues for preserving semantic facts across
 boundaries; simply moving code into another function did little. Keep the
 qualified compiler and these experimental kernels distinct while planning reuse.
+
+## Preliminary investigation completed (2026-10-24)
+
+The user authorized this investigation after Phase131 completed. See the
+[Phase132 report](../../implementation/phase132/README.md), exact real-edit
+experiment, Go primary-source research, memory timeline and census. Production
+selection is unchanged. About2× text reduction and machine-object reuse are
+demonstrated; a10-second complete source edit and1MB whole compiler IR are not.
+The next boundary is reusable named lowering before global numeric/static binding,
+with explicit semantic dependencies and independent final verification.

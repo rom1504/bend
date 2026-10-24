@@ -1,3 +1,35 @@
+# Latest investigation: Phase132 incremental native development
+
+[Report](../implementation/phase132/README.md) ·
+[Go research](../research/phase132/go-build-reuse.md) ·
+[Development guide](../docs/self_hosted/incremental-native-development.md).
+
+Qualified selection remains Phase131 below. A census of its107.06MB QBE finds
+2.29M instructions and63,239functions. Reversible private/local name compaction
+reduces text46.27% while preserving allocated machine computation and exports.
+One machine-build pair saves only~0.65s; direct compact Bend emission is untested.
+
+A real one-declaration emitter edit passes independent source checking, then costs
+368.98s for complete native emission.55/65 object units are reused; machine-build
+wall falls19.85→5.98s against a fresh partitioned reference with exact allocated
+sections/ELF metadata. Nine full-QBE and six ordinary program-output gates pass.
+The~21s host partition scan plus unchanged frontend makes this a reuse experiment,
+not an end-to-end acceleration.476function bodies and two data declarations
+change, exposing nonlocal binding/literal-layout churn.
+
+The measured request gains~1.90GB RSS late, before output appears; the entire
+107MB becomes visible in the final~2s. This supports packed/streamed verified
+emission, not a claim that disk writing or one exclusively measured phase takes
+the several-minute request. Compiler child peak2.90GB; allocated ELF code10.82MB.
+
+Next investigate reusable named lowering units before numeric/static binding,
+with stable owner/literal identities and Go-style separate semantic-interface
+and object content fingerprints. Preserve consumed body/layout/admission and
+negative dependencies, exact producer/runtime/policy identity and independent
+verification.10s is an ambitious warm-edit target, not cold-build evidence.
+No production cache,1MB full IR, new qualification or recursive acceleration is
+claimed. Preserve Phase131; no additional backend is warranted by this work.
+
 # Latest qualified experiment: Phase131 laws and complete borrowed computations
 
 [Report](../implementation/phase131/README.md) ·

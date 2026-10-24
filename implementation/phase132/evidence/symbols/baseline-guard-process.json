@@ -1,0 +1,30 @@
+{
+  "complete": true,
+  "command": [
+    "bash",
+    "-c",
+    "ulimit -f 131072; ulimit -c 0; exec \"$@\"",
+    "phase111",
+    "taskset",
+    "-c",
+    "3",
+    "python3",
+    "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase123/build-aligned.py",
+    "--source",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase130/p131-final-self01/program.ssa",
+    "--runtime",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase128/runtime-borrow01/runtime.o",
+    "--out",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p132-compact-build02-baseline",
+    "--seconds",
+    "60"
+  ],
+  "started": 1792805706.6869376,
+  "rssLimitBytes": 3221225472,
+  "availableFloorBytes": 17179869184,
+  "peakTreeRssBytes": 935239680,
+  "minimumAvailableBytes": 26251366400,
+  "returncode": 0,
+  "wallSeconds": 15.007951793028042,
+  "finished": 1792805721.6948872
+}

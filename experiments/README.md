@@ -12,8 +12,9 @@ native wrapper byte comparisons pass. The installed selection remains unchanged.
 Use the [native development guide](../docs/self_hosted/incremental-native-development.md)
 for explicit compiler and [pipe](../selfhost/tools/performance/phase134/pipe/README.md)
 commands. The pipe, cross-edit optimization units and native two-revision session
-are separate experiments; native session performance is pending, and none
-establishes an incremental frontend or changes the qualified core's results.
+are separate experiments. Native Lexer edit/session time decreases21.3%/9.1%
+against cache reset; Map6.1%/2.6% with more variation. These do not establish an
+incremental frontend or change the qualified core's results.
 
 Earlier architectural investigation: [Phase132 incremental native development](../implementation/phase132/README.md).
 Real-edit object reuse, compact-name machine equivalence, Go cache research and

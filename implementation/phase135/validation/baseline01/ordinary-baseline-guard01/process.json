@@ -1,0 +1,26 @@
+{
+  "complete": true,
+  "command": [
+    "bash",
+    "-c",
+    "ulimit -f 262144; ulimit -c 0; exec \"$@\"",
+    "phase111",
+    "taskset",
+    "-c",
+    "3",
+    "python3",
+    "-B",
+    "selfhost/tools/performance/phase135/validation/ordinary-baseline-v01.py",
+    "--run",
+    "--plan",
+    "selfhost/build/phase135/ordinary-baseline-plan01/plan.json"
+  ],
+  "started": 1792821707.838259,
+  "rssLimitBytes": 4294967296,
+  "availableFloorBytes": 17179869184,
+  "peakTreeRssBytes": 1027354624,
+  "minimumAvailableBytes": 18762899456,
+  "returncode": 0,
+  "wallSeconds": 369.6526363240555,
+  "finished": 1792822077.4908943
+}

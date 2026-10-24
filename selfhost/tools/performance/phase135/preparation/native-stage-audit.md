@@ -54,7 +54,7 @@ matches its frozen oracle and B matches fresh ordinary compilation. Three
 frontend/admission refusal checks preserve the original short circuits. These
 passed in `selfhost/build/phase135/stage-bridge01/report.json`: both real edits,
 exact full returned caches/statistics and all three refusal cases. The root ran
-the checked bridge in 29.44 s guarded (28.50 s inside the harness, 513,548,288 peak
+the checked bridge in 29.44 s guarded (28.50 s inside the harness, 513,007,616 peak
 RSS bytes). The source was the checked machine-source02,
 `391a6f2dde2ef960a2d8b33a3100a0d9ba53ff68848a2279d502f7858019091c`, through
 `selfhost/build/phase111/p135-machine-api02/report.json`. The framed candidate's

@@ -18,6 +18,7 @@ incremental self-hosting.
 |---|---:|---:|---:|
 | A, acquire semantic cache | 362.510 s | 0 | 1,507 |
 | B, actual compiler edit | 374.922 s | 1,387 | 120 |
+| Ordinary B, same executable, no semantic cache | 364.183 s | — | — |
 
 Base/session preparation took 318 ms. The native process took 737.793 s; the
 outer guard took 741.526 s with a 1.105 GB sampled process-tree peak. Both products
@@ -26,9 +27,13 @@ no concurrent target checks.
 
 The 92.0% hit rate does **not** establish faster compiler development. A and B
 have different inputs and preparation boundaries; their times are not a valid
-warm/cold speed comparison. A same-executable ordinary B baseline is being
-measured separately. The current session still checks and prepares the source,
-lowers candidates, verifies the result and renders the complete output.
+warm/cold speed comparison. The separate same-executable ordinary B baseline
+also matches the independent product. Its complete native process takes
+364.183 s; warm B's interval is 2.95% longer despite excluding shared startup and
+Base preparation. These are single observations with different clock boundaries,
+not a stable regression estimate, but they provide no adoption benefit for this
+cache on compiler rebuilds. The current session still checks and prepares the
+source, lowers candidates, verifies the result and renders the complete output.
 
 Evidence: `selfhost/build/phase135/full-session01/report.json` and its frozen
 plan; compact archival receipts will accompany the final report.

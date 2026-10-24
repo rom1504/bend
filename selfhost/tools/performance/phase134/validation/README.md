@@ -143,3 +143,77 @@ The initial batch01 hosted controls failed with a stack overflow before any pack
 row. That negative evidence remains. Version05 uses direct self-tail length and
 fixture loops plus the existing tail-loop equality oracle; its original15 and new10
 controls pass. Native reproduction and performance remain separate gates.
+
+`qualify-no-copy.py` separately binds `no-copy-source01` (`ae76d5eb…65b23cd1`),
+its checked API01 and original15 finite predicates. Relative to the first streaming
+source, only `p134w_step` changes and two writer helpers are added. The binder also
+matches the five writer helper bodies against the native probe after explicit
+renaming, checks the actual qualified native emission/aligned build, and validates
+six independently constructed4MiB outputs plus pipe/append and `/dev/full` failure
+evidence. `no-copy-source-contract01.json` is the completed source-only audit.
+Use the same native-chain arguments as the original qualifier for full qualification.
+
+The no-copy writer sends `text` and the optional newline separately. Either failed
+write returns failure without continuing to the next piece. The retained runtime
+loops over positive short writes and reports a raw write error; zero-progress
+writes would time out rather than succeed. Raw `close` errors remain ignored by
+the inherited runtime. These checks do not establish a universal guarantee about
+delayed filesystem failures. Exact request-product capture remains an independent
+requirement for every published compiler artifact.
+
+## Final capsule
+
+`archive.py` requires completed native qualification, fresh compiler timings for
+the final qualified image, and the actual final-image45-wrapper equality bridge.
+It is parameterized, performs data checks only, and never reruns targets:
+
+```sh
+python3 -B selfhost/tools/performance/phase134/validation/archive.py \
+  --qualification selfhost/build/phase134/FINAL-qualification.json \
+  --timing-report selfhost/build/phase112/FINAL-timing/report.json \
+  --timing-summary selfhost/build/phase134/FINAL-timing-summary.json \
+  --wrapper-equality selfhost/build/phase134/FINAL-wrapper-equality.json \
+  --extra memory.json=MEMORY-REPORT.json \
+  --out implementation/phase134/final
+```
+
+Repeat paired `--timing-report`/`--timing-summary` arguments to preserve separate
+N1 and N2 timing blocks. No speed is inferred for an unmeasured generation. Extra
+metadata may retain negative attempts; it cannot replace the mandatory gates.
+The fresh capsule contains deterministic compressed source, a metadata archive
+verified member by member, and `candidate.json`. Binaries, complete QBE and the
+toolchain remain separate pinned artifacts; this is not a standalone executable
+distribution. Runtime measurements of unchanged Phase131 program products are
+explicitly reused historical evidence, not a new whole-suite timing campaign.
+
+## Selected verifier-reuse extension
+
+`qualify-reuse.py` binds only `verify-selected-source01` (`a0001924…fa19fb57`),
+checked API `p134-verify-selected-api01` and the actual59 predicates in
+`phase134/verify-selected-finite01`. It authenticates the earlier no-copy source
+contract and native writer probe, then verifies six-module replay. Relative to
+no-copy, only `p114s_inline` and `p114s_ranges` change; each solely routes its old
+candidate through `p134v_commit`. Actual `p113e_*`, final verifier, boundary-open,
+original commit and connected proof bodies remain unchanged. All duplicate-range
+memo definitions are explicitly excluded after the mixed profitability screen.
+
+The new result reuse is internal to one immutable boundary: identical ordered
+full headers preserve the exact ready-index context and IDs. Structurally identical
+functions reuse a prior successful judgment; changed/unknown bodies use the original
+function verifier, and header/count changes use the original complete commit.
+This does not authorize forged boundaries, persistent certificates, a semantic
+compiler-equivalence theorem, or cross-producer cache reuse. Twenty-six new reuse,
+18 existing optimizer and15 emission predicates are bound to the actual selected API.
+
+Use the original qualification arguments with `qualify-reuse.py`. Source-only
+audit passed in `selfhost/build/phase134/verify-selected-source-contract01.json`.
+For final packaging use **`archive-v02.py`**: its derivation receipt records only
+the additional qualifier dispatch and authentication of the unchanged original
+archive tool. Every native, timing and45-wrapper requirement remains unchanged.
+
+The actual second-newline error probe is separate additional evidence. Its exact
+five helper definitions are bound in `emission/writer/newline-bridge.json`; the
+first empty write succeeds and the subsequent newline fails with status28 on
+`/dev/full`. Include that bridge and `selfhost/build/phase134/newline-check01/report.json`
+through `--extra` when packaging. The original writer/qualification receipts are
+not modified to retroactively claim this later experiment.

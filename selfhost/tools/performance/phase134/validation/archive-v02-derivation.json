@@ -1,0 +1,25 @@
+{
+  "complete": true,
+  "targetsRun": false,
+  "original": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase134/validation/archive.py",
+    "bytes": 13083,
+    "sha256": "cef5d66099bd3ec0ec0b8ced1f5a96b460c0aab012323b082f7a49ca562795d8"
+  },
+  "derived": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase134/validation/archive-v02.py",
+    "bytes": 13350,
+    "sha256": "5d4005f04a42bf6649d26bfab11b9d776700ed1befa8bdf0e529061277cb6700"
+  },
+  "changes": [
+    {
+      "before": "'no-copy-writer': 'qualify-no-copy.py'",
+      "after": "'no-copy-writer': 'qualify-no-copy.py', 'no-copy-verification-reuse': 'qualify-reuse.py'"
+    },
+    {
+      "before": "sys.dont_write_bytecode = True\n",
+      "after": "sys.dont_write_bytecode = True\nif hashlib.sha256(Path(__file__).with_name('archive.py').read_bytes()).hexdigest() != 'cef5d66099bd3ec0ec0b8ced1f5a96b460c0aab012323b082f7a49ca562795d8':\n    raise ValueError('Frozen original archive method changed')\n"
+    }
+  ],
+  "scope": "Only add the exact selected verifier-reuse qualifier dispatch and authenticate the frozen original method. All evidence joins, timing/oracle requirements and archive mechanics remain unchanged."
+}

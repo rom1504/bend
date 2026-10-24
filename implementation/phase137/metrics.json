@@ -1,0 +1,577 @@
+{
+  "complete": true,
+  "targetsRun": false,
+  "source": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase137/integrated-source03/compiler.bend",
+    "bytes": 2701952,
+    "sha256": "2620d59a3a20fa5d5d27bbf3b12ceb7304439b27093fff1c0f383da03e4ecf38"
+  },
+  "qualification": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase137/native-qualification01.json",
+    "bytes": 469411,
+    "sha256": "54a66fe011d8925ad9feb8b31fdba4e9f06e7429fb32b377352ba643d194ff9e"
+  },
+  "kernelTimeRatios": {
+    "queries": 0.6877113005240187,
+    "record": 0.3511774691387907
+  },
+  "coldPipeline": {
+    "source": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/combined-literals-source01/compiler.bend",
+      "bytes": 2667581,
+      "sha256": "1bc5930edcf80cda6c3572645df3c846fa631a83c2b936f20c83b05e0a6728f9"
+    },
+    "seconds": [
+      373.51089921197854,
+      346.390868708957
+    ],
+    "ratio": 0.9273915953718124,
+    "samplesPerRole": 1,
+    "irBytes": [
+      107059385,
+      105879337
+    ],
+    "irRatio": 0.9889776314332461,
+    "clock": "Complete native source-to-executable pipeline, same fixed source, prepared Base and runtime; no reused semantic/object result. OS page caches were not flushed."
+  },
+  "sameSourceGeneration": {
+    "nativeSeconds": [
+      350.48592490307055,
+      350.1869723200798,
+      325.8796798798721
+    ],
+    "n2OverN1": 0.9305876735528865,
+    "samplesPerRole": 1,
+    "byteExactReproduction": true
+  },
+  "smallRequests": {
+    "n2OverParent": 0.9992267462206863,
+    "n2OverN1": 1.0021535830938044,
+    "rows": 27,
+    "rounds": 3,
+    "sourceAndCodeChangedVersusParent": true
+  },
+  "unmodifiedCompilerProgram": {
+    "perCase": {
+      "coverage-closures-256": 1.0010180012538539,
+      "coverage-map-churn-128": 0.9901640652728086,
+      "lexer": 0.9773906625206611
+    },
+    "geomean": 0.9894770935369765,
+    "rows": 27,
+    "rounds": 3,
+    "sameSource": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/combined-literals-source01/compiler.bend",
+      "bytes": 2667581,
+      "sha256": "1bc5930edcf80cda6c3572645df3c846fa631a83c2b936f20c83b05e0a6728f9"
+    },
+    "scope": "Generated execution of unchanged compiler A on three small compilation requests; not the full language benchmark."
+  },
+  "upstream": {
+    "requestSeconds": {
+      "phase112/phase111": 0.9920034323564374,
+      "phase112/upstream": 1.3957064119232216,
+      "phase111/upstream": 1.4069572406698378
+    },
+    "readyExecutableStageSumSeconds": {
+      "phase112/phase111": 0.9922053947335788,
+      "phase112/upstream": 0.6824267960169831,
+      "phase111/upstream": 0.6877878306640575
+    }
+  },
+  "programCodePreservation": {
+    "exactQbeWrappers": 45,
+    "changed": 0,
+    "freshBroadRuntimeTiming": false
+  },
+  "correctness": {
+    "finiteControls": 50,
+    "nativeQbeFixedPoint": {
+      "left": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase130/p137-self01/program.ssa",
+        "bytes": 106285793,
+        "sha256": "c12af8c87c7e96e15fd18b7e16c2c0cc5ec21f8dae5dbfd9bdc79762d88e54cd"
+      },
+      "right": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase130/p137-reproduce01/program.ssa",
+        "bytes": 106285793,
+        "sha256": "c12af8c87c7e96e15fd18b7e16c2c0cc5ec21f8dae5dbfd9bdc79762d88e54cd"
+      }
+    },
+    "focusedGenerations": [
+      "N2",
+      "N3"
+    ],
+    "focusedCasesEach": 19,
+    "ordinaryPrograms": 45,
+    "installedChanged": false
+  },
+  "complexity": {
+    "parentLines": 58392,
+    "candidateLines": 58569,
+    "addedLines": 177,
+    "addedSourceBytes": 8831,
+    "changedExistingDefinitions": 9,
+    "unchangedProofDeclarations": 11
+  },
+  "targetCost": {
+    "guardCount": 35,
+    "guardSeconds": 2463.8949663480744,
+    "maximumTreeRssBytes": 2187644928,
+    "guards": [
+      {
+        "name": "A-program-speed-guard01",
+        "seconds": 36.153927985113114,
+        "success": true,
+        "peakBytes": 68542464
+      },
+      {
+        "name": "acquire-guard01",
+        "seconds": 351.59350486588664,
+        "success": true,
+        "peakBytes": 1016893440
+      },
+      {
+        "name": "cold-candidate-guard01",
+        "seconds": 346.7783488740679,
+        "success": true,
+        "peakBytes": 1007910912
+      },
+      {
+        "name": "cold-parent-guard01",
+        "seconds": 374.50211733719334,
+        "success": true,
+        "peakBytes": 1019531264
+      },
+      {
+        "name": "generations-fast-guard01",
+        "seconds": 35.86220226390287,
+        "success": true,
+        "peakBytes": 60100608
+      },
+      {
+        "name": "integrated-api-guard01",
+        "seconds": 14.096624481957406,
+        "success": true,
+        "peakBytes": 2165833728
+      },
+      {
+        "name": "integrated-finite-guard01",
+        "seconds": 1.676437899004668,
+        "success": true,
+        "peakBytes": 291094528
+      },
+      {
+        "name": "integrated-screen-guard01",
+        "seconds": 20.02558142086491,
+        "success": true,
+        "peakBytes": 452313088
+      },
+      {
+        "name": "n1-build-guard01",
+        "seconds": 14.971519825048745,
+        "success": true,
+        "peakBytes": 937947136
+      },
+      {
+        "name": "n1-fast-guard01",
+        "seconds": 23.830644423840567,
+        "success": true,
+        "peakBytes": 59920384
+      },
+      {
+        "name": "n2-build-guard01",
+        "seconds": 14.804336812114343,
+        "success": true,
+        "peakBytes": 929558528
+      },
+      {
+        "name": "n2-focused-guard01",
+        "seconds": 20.471120111178607,
+        "success": true,
+        "peakBytes": 89427968
+      },
+      {
+        "name": "n3-build-guard01",
+        "seconds": 14.806128716096282,
+        "success": true,
+        "peakBytes": 929595392
+      },
+      {
+        "name": "n3-focused-guard01",
+        "seconds": 20.85938692605123,
+        "success": true,
+        "peakBytes": 89657344
+      },
+      {
+        "name": "n3-full45-guard01",
+        "seconds": 88.5700011360459,
+        "success": true,
+        "peakBytes": 96530432
+      },
+      {
+        "name": "n3-wrappers-guard01",
+        "seconds": 89.81653981213458,
+        "success": true,
+        "peakBytes": 65077248
+      },
+      {
+        "name": "query-baseline-emit-guard01",
+        "seconds": 56.216874107019976,
+        "success": true,
+        "peakBytes": 760193024
+      },
+      {
+        "name": "query-build-guard01",
+        "seconds": 3.737783318851143,
+        "success": true,
+        "peakBytes": 53751808
+      },
+      {
+        "name": "query-pilot-guard01",
+        "seconds": 1.9614765588194132,
+        "success": true,
+        "peakBytes": 20000768
+      },
+      {
+        "name": "query-timing-guard01",
+        "seconds": 8.901910305954516,
+        "success": true,
+        "peakBytes": 25772032
+      },
+      {
+        "name": "query-timing-guard02",
+        "seconds": 11.166804977925494,
+        "success": true,
+        "peakBytes": 26210304
+      },
+      {
+        "name": "query-timing-guard03",
+        "seconds": 12.558591068023816,
+        "success": true,
+        "peakBytes": 26804224
+      },
+      {
+        "name": "query-v02-build-guard01",
+        "seconds": 1.2401209219824523,
+        "success": true,
+        "peakBytes": 54521856
+      },
+      {
+        "name": "query-v02-emit-guard01",
+        "seconds": 33.146610599942505,
+        "success": true,
+        "peakBytes": 490180608
+      },
+      {
+        "name": "query-wide-emit-guard01",
+        "seconds": 56.83291973313317,
+        "success": true,
+        "peakBytes": 681295872
+      },
+      {
+        "name": "reproduce-guard01",
+        "seconds": 328.2693347069435,
+        "success": true,
+        "peakBytes": 1004560384
+      },
+      {
+        "name": "retain-api-guard01",
+        "seconds": 13.509042093064636,
+        "success": true,
+        "peakBytes": 2174144512
+      },
+      {
+        "name": "retain-finite-guard01",
+        "seconds": 1.6969011120963842,
+        "success": true,
+        "peakBytes": 291074048
+      },
+      {
+        "name": "retain-query-build-guard01",
+        "seconds": 1.0786288590170443,
+        "success": true,
+        "peakBytes": 52572160
+      },
+      {
+        "name": "retain-query-emit-guard01",
+        "seconds": 31.162504906998947,
+        "success": true,
+        "peakBytes": 504254464
+      },
+      {
+        "name": "self-guard01",
+        "seconds": 351.2857028590515,
+        "success": true,
+        "peakBytes": 1002958848
+      },
+      {
+        "name": "upstream-timing-guard01",
+        "seconds": 46.46917533292435,
+        "success": true,
+        "peakBytes": 179421184
+      },
+      {
+        "name": "wide-api-guard01",
+        "seconds": 14.30285653588362,
+        "success": true,
+        "peakBytes": 2187644928
+      },
+      {
+        "name": "wide-finite-guard01",
+        "seconds": 1.674164328025654,
+        "success": true,
+        "peakBytes": 291020800
+      },
+      {
+        "name": "wide-screen-guard01",
+        "seconds": 19.865141131915152,
+        "success": true,
+        "peakBytes": 464216064
+      }
+    ],
+    "scope": "Serial target guards; excludes agent reasoning, read-only metadata work, rejected CLI syntax before target launch and commit/push. This is not billing/token/quota accounting."
+  },
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase137/report/metrics-v01.py",
+      "bytes": 4580,
+      "sha256": "4e33b5ed22f68e89509ffb92d878e267e0eb21867096bb05934e88a812a23863"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase137/native-qualification01.json",
+      "bytes": 469411,
+      "sha256": "54a66fe011d8925ad9feb8b31fdba4e9f06e7429fb32b377352ba643d194ff9e"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase137/query-timing03/report.json",
+      "bytes": 109973,
+      "sha256": "45367e35e7a03cc8adf8f11add09f979dc01c29360a1aa9fd8de5f74c16f2e6b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase137/generations-fast01/report.json",
+      "bytes": 68360,
+      "sha256": "963bca00fa0e55bcc06bd0f78b9a9be36826aae885fc1f29c0f954b8c74ed2d5"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase137/A-program-speed01/report.json",
+      "bytes": 69076,
+      "sha256": "4a04a66e288a29caa42371833a4a4e70008f1853eb0a3fd4fff69d485ad40bd9"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase137/n3-wrappers01/report.json",
+      "bytes": 151771,
+      "sha256": "8479d3a7bf75b6944e6c5a1563598ec6b1b5c130ca738a1a167b042ca3fbc26f"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase112/p137-final-timing01/report.json",
+      "bytes": 229133,
+      "sha256": "ff9ed492eadfb67039f4026fc69149d37d8cceb358b27d490f50e266ad3b062c"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase137/integrated-source03/manifest.json",
+      "bytes": 10813,
+      "sha256": "bb64e9f900398a38c70d106bd2b074609fec7430f54330eb9e3550697befa716"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase134/p137-cold-parent01/report.json",
+      "bytes": 14991,
+      "sha256": "d51253a745d475ae104977e80efc97e2d8641572eea917e49d5f391b3afa1a41"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase134/p137-cold-candidate01/report.json",
+      "bytes": 14571,
+      "sha256": "5fb303f6b8c85727992aa03740a3f11dcc8639ba3071724268d08cd77a02fa25"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase130/p137-acquire01/report.json",
+      "bytes": 9718,
+      "sha256": "0b85a7c788ae5e32a814b0be1ad984d1bf4892d48291abd0ebf050a5f7d8d969"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase130/p137-self01/report.json",
+      "bytes": 9677,
+      "sha256": "edf6fcb6f70b6d063da084c80b3bc3cc99860328b11455800fafbbf600c5f469"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase130/p137-reproduce01/report.json",
+      "bytes": 10132,
+      "sha256": "1d21a066c8097818633eb774e01f5306aa0fd4753439f4eb5b1e69f2c8a6e5f6"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase137/A-program-speed-guard01/process.json",
+      "bytes": 676,
+      "sha256": "e6bab95a715428317f569ef74e4d1cfacf72482e785d0c6e207965c9df8368fa"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase137/acquire-guard01/process.json",
+      "bytes": 838,
+      "sha256": "26a94c4e1acfdf52b978664509904777463e67ca8389eb018e6f291f41b8c192"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase137/cold-candidate-guard01/process.json",
+      "bytes": 916,
+      "sha256": "d386dcc81f583f82c4b66b4f01cf93334edcf0174cca7f1613672ca38878e37d"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase137/cold-parent-guard01/process.json",
+      "bytes": 1008,
+      "sha256": "313f2c3dc242dba4ebde9b31787c738182159752bed73bc54b72442a03beb915"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase137/generations-fast-guard01/process.json",
+      "bytes": 678,
+      "sha256": "1f6b3a2b102adb40478643407ba6a4b9a74111829092f15dad1c658e0014b668"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase137/integrated-api-guard01/process.json",
+      "bytes": 953,
+      "sha256": "755088c498fa5fa2386f3757a92a67fa6e1c29bdb4433b97e73309e94a450fec"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase137/integrated-finite-guard01/process.json",
+      "bytes": 658,
+      "sha256": "3c3aa59d779794a85d530e051a24b013b3502660139755ee782fc817658d3874"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase137/integrated-screen-guard01/process.json",
+      "bytes": 757,
+      "sha256": "5493266873755e29d5fc96f2201d6c91aa7cdc988451c3693c7c7282123f3351"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase137/n1-build-guard01/process.json",
+      "bytes": 742,
+      "sha256": "fb486a237fc1eeec65ca3eeaa6be4f562d64b6e7e2f1e8b42980f1357ec9efbe"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase137/n1-fast-guard01/process.json",
+      "bytes": 661,
+      "sha256": "c420c5527873ea46c8419a0eb270d592892861def30674ee8285dc9f343835c1"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase137/n2-build-guard01/process.json",
+      "bytes": 739,
+      "sha256": "ecf7d97455ec9eef2b7b5e110e533bdb84b88b954784d9e1cb2cd58b7bfa42af"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase137/n2-focused-guard01/process.json",
+      "bytes": 803,
+      "sha256": "b75f047f3d2874c8a00a1bb2d81791d6ce80d2b190b03b321eff2f872e2c8afe"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase137/n3-build-guard01/process.json",
+      "bytes": 744,
+      "sha256": "158342501c4289f4c9b5819804b80b16eacc338ad3e1dc716697fde21d6cffb6"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase137/n3-focused-guard01/process.json",
+      "bytes": 801,
+      "sha256": "85dc74dc00e7d039791e43183ed43124caaeb1b1a81d19a8785b97b4e2647ed9"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase137/n3-full45-guard01/process.json",
+      "bytes": 798,
+      "sha256": "680c42dad3e0f5d2df1ee429111496fe92072dbfcc722a12cb9799d831794979"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase137/n3-wrappers-guard01/process.json",
+      "bytes": 668,
+      "sha256": "35188ce09018d3477836564eecec131195e9ebce8ad600d4b5340b5d3c426eed"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase137/query-baseline-emit-guard01/process.json",
+      "bytes": 788,
+      "sha256": "0a854be96f4e0dfb74fc1c31c3797601b30c606181f8ee9c7cc8ea1f8ec16ff7"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase137/query-build-guard01/process.json",
+      "bytes": 834,
+      "sha256": "d7b8ce846553c8ceac664ea17d879ef659f09aa81853b31e0a48777c785be4c3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase137/query-pilot-guard01/process.json",
+      "bytes": 668,
+      "sha256": "9aae8ffbeed823255f31810fc140b27133699a0608e5de22a763639a49c15b5f"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase137/query-timing-guard01/process.json",
+      "bytes": 669,
+      "sha256": "58ff7658ee9ff4418c95df5c707b0c0a0a2b5b2b9dde596869f5e7d13890ea8a"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase137/query-timing-guard02/process.json",
+      "bytes": 671,
+      "sha256": "73346e0c5d5c78ff80071bc67723621078875a5e94db95917e6ce0fa7b3bf558"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase137/query-timing-guard03/process.json",
+      "bytes": 669,
+      "sha256": "bbbc01513e7bac2357c61b6b3977164eeb65a171f7136775fbb399a0eb9d5c0d"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase137/query-v02-build-guard01/process.json",
+      "bytes": 748,
+      "sha256": "5a6773565162de047f7d76a45164100ce10083a27dd8ecc8a9934277a95b0c42"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase137/query-v02-emit-guard01/process.json",
+      "bytes": 761,
+      "sha256": "9610acb680d7c97537f661c07231c2b2c887e919c1ae44ff9054f3130c44b8ba"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase137/query-wide-emit-guard01/process.json",
+      "bytes": 762,
+      "sha256": "d0b78d60e3ffbd484143ba5e6de74154b7eea242ced4596f835041c5b1b0af5e"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase137/reproduce-guard01/process.json",
+      "bytes": 905,
+      "sha256": "6ba46dbadd528593e0d24d2c86622970ade45b3354116eab535c72d6b83df39d"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase137/retain-api-guard01/process.json",
+      "bytes": 789,
+      "sha256": "662ad4a7f21657bfd6f748871ab06d4bbebabaf3a984dde49ded8da781175998"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase137/retain-finite-guard01/process.json",
+      "bytes": 646,
+      "sha256": "b4f55b5a056770478687d148c0ccd7f2e08d146cc48a5fa0d227faedfbb7ae22"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase137/retain-query-build-guard01/process.json",
+      "bytes": 754,
+      "sha256": "f3147968fc82c06d192890d14f0d417febeb84e76a42be7fa2579cfb2112b737"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase137/retain-query-emit-guard01/process.json",
+      "bytes": 768,
+      "sha256": "03ba18cdba28f98779e78bf8d27b981e4b8cb3120da178aa9c1c4dd5f923374b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase137/self-guard01/process.json",
+      "bytes": 826,
+      "sha256": "2f5822430a39e0151d57aefb112c25d0554b9e2998e99c274379127b68dfdd3f"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase137/upstream-timing-guard01/process.json",
+      "bytes": 697,
+      "sha256": "50907fd16c364f769af7cc7ca0b9f857234aa866bb378dda38a18e271ebb65e1"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase137/wide-api-guard01/process.json",
+      "bytes": 762,
+      "sha256": "8b06b358bb885cb2213a572522333c43395ff7f23cea1dd7a9273da59d9acb36"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase137/wide-finite-guard01/process.json",
+      "bytes": 634,
+      "sha256": "57d8ee99e3923162c6dde2c8d0063ab0d30f1c3333ddd73c5ca71031c60fb7f8"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase137/wide-screen-guard01/process.json",
+      "bytes": 739,
+      "sha256": "7ba7e9aed065b05a76a20ccab74b201652d6cbbd207c677e2f597c0ad927034f"
+    }
+  ]
+}

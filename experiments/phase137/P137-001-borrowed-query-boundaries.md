@@ -1,6 +1,6 @@
 # P137-001 — Preserve complete borrowed query boundaries
 
-Status: positive small experiment; integrated native qualification in progress.
+Status: positive small experiment and qualified native cold-build improvement.
 Parent: `4778aff`; design: [Phase137](../../design/phase137/README.md).
 
 Phase136 found repeated nine-field `KDef` extraction in actual compiler name and
@@ -38,3 +38,12 @@ compiler measurements determine adoption.
 [Source and machine audit](../../implementation/phase137/audit/generated-calls.md)
 · [Raw experiment capsule](../../implementation/phase137/evidence01/receipt.json)
 · [Detailed notes](../../implementation/phase137/query-notes.md).
+
+## Integrated outcome
+
+Same frozen full source-to-executable build373.511→346.391s (7.26% less);
+same-source N1/N2 self-request350.187→325.880s with identical QBE. Small request
+speed remains approximately unchanged. N2/N3 focused19, N3 ordinary45,50 finite
+controls and all45 historical wrapper byte comparisons pass. See the final
+report for one-pair versus repeated-screen limitations and the getter-call
+tradeoff. Installed CLI unchanged.

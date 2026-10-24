@@ -1,0 +1,1916 @@
+{
+  "kind": "phase137-full-static-query-call-census",
+  "complete": true,
+  "targetsRun": false,
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase137/audit/full-calls-v01.py",
+      "bytes": 3333,
+      "sha256": "b34b9993dd90df96109d0c2bc387a2c9401f7ecbf2dcc543aee04380d171f2ce"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/implementation/phase137/audit/full-query01/report.json",
+      "bytes": 241922,
+      "sha256": "b110fb944b485a0ea3d06b82f9f9122ce00e71275ef957b65f7487e83b8c3821"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase130/p137-acquire01/program.ssa",
+      "bytes": 107414725,
+      "sha256": "1ce46d524285968895bfef7aadda75a2d2fcba9fd38d051fb09e047bc3dfca42"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase130/p137-self01/program.ssa",
+      "bytes": 106285793,
+      "sha256": "c12af8c87c7e96e15fd18b7e16c2c0cc5ec21f8dae5dbfd9bdc79762d88e54cd"
+    }
+  ],
+  "cases": [
+    {
+      "label": "q1",
+      "qbe": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase130/p137-acquire01/program.ssa",
+        "bytes": 107414725,
+        "sha256": "1ce46d524285968895bfef7aadda75a2d2fcba9fd38d051fb09e047bc3dfca42"
+      },
+      "queries": [
+        {
+          "target": "$direct.db",
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_100_98_",
+          "staticSites": 4,
+          "callerFamilies": {
+            "private": 2,
+            "segment-or-other": 2
+          },
+          "distinctCallers": 3,
+          "topCallers": [
+            {
+              "name": "$direct.db",
+              "sites": 2
+            },
+            {
+              "name": "$direct.dg_event_output",
+              "sites": 1
+            },
+            {
+              "name": "$direct.j_u32_native_book",
+              "sites": 1
+            }
+          ]
+        },
+        {
+          "target": "$direct.dc",
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_100_99_",
+          "staticSites": 3,
+          "callerFamilies": {
+            "private": 1,
+            "segment-or-other": 2
+          },
+          "distinctCallers": 2,
+          "topCallers": [
+            {
+              "name": "$direct.dc",
+              "sites": 2
+            },
+            {
+              "name": "$direct.dg_event_output",
+              "sites": 1
+            }
+          ]
+        },
+        {
+          "target": "$direct.dn",
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_100_110_",
+          "staticSites": 3,
+          "callerFamilies": {
+            "private": 1,
+            "segment-or-other": 2
+          },
+          "distinctCallers": 2,
+          "topCallers": [
+            {
+              "name": "$direct.dn",
+              "sites": 2
+            },
+            {
+              "name": "$p118.trmc.$direct.p128rf_filter",
+              "sites": 1
+            }
+          ]
+        },
+        {
+          "target": "$direct.da",
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_100_97_",
+          "staticSites": 20,
+          "callerFamilies": {
+            "private": 18,
+            "segment-or-other": 2
+          },
+          "distinctCallers": 13,
+          "topCallers": [
+            {
+              "name": "$direct.p111v_counted_call",
+              "sites": 4
+            },
+            {
+              "name": "$product.p111v_counted_call",
+              "sites": 4
+            },
+            {
+              "name": "$direct.da",
+              "sites": 2
+            },
+            {
+              "name": "$direct.p113n_closed_owner",
+              "sites": 1
+            },
+            {
+              "name": "$direct.p123p_test_origin",
+              "sites": 1
+            },
+            {
+              "name": "$direct.p113k_get",
+              "sites": 1
+            },
+            {
+              "name": "$product.p113k_get",
+              "sites": 1
+            },
+            {
+              "name": "$direct.p111v_value",
+              "sites": 1
+            },
+            {
+              "name": "$product.p111v_value",
+              "sites": 1
+            },
+            {
+              "name": "$direct.p117h_get",
+              "sites": 1
+            },
+            {
+              "name": "$direct.p128bf_known",
+              "sites": 1
+            },
+            {
+              "name": "$product.p128bf_known",
+              "sites": 1
+            }
+          ]
+        },
+        {
+          "target": "$direct.dk",
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_100_107_",
+          "staticSites": 36,
+          "callerFamilies": {
+            "private": 34,
+            "segment-or-other": 2
+          },
+          "distinctCallers": 25,
+          "topCallers": [
+            {
+              "name": "$direct.p111v_counted_call",
+              "sites": 4
+            },
+            {
+              "name": "$product.p111v_counted_call",
+              "sites": 4
+            },
+            {
+              "name": "$direct.p111v_value",
+              "sites": 3
+            },
+            {
+              "name": "$product.p111v_value",
+              "sites": 3
+            },
+            {
+              "name": "$direct.dk",
+              "sites": 2
+            },
+            {
+              "name": "$direct.j_u32_native_book",
+              "sites": 1
+            },
+            {
+              "name": "$direct.p128rf_member",
+              "sites": 1
+            },
+            {
+              "name": "$direct.p113n_closed_owner",
+              "sites": 1
+            },
+            {
+              "name": "$direct.p123p_test_origin",
+              "sites": 1
+            },
+            {
+              "name": "$direct.p113k_get",
+              "sites": 1
+            },
+            {
+              "name": "$product.p113k_get",
+              "sites": 1
+            },
+            {
+              "name": "$direct.p113l_relation",
+              "sites": 1
+            }
+          ]
+        },
+        {
+          "target": "$direct.p137q_key_eq",
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_49_51_55_113_95_107_101_121_95_101_113_",
+          "staticSites": 3,
+          "callerFamilies": {
+            "private": 1,
+            "segment-or-other": 2
+          },
+          "distinctCallers": 2,
+          "topCallers": [
+            {
+              "name": "$direct.p137q_key_eq",
+              "sites": 2
+            },
+            {
+              "name": "$p126scc.1014",
+              "sites": 1
+            }
+          ]
+        },
+        {
+          "target": "$direct.f_find_next",
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_102_95_102_105_110_100_95_110_101_120_116_",
+          "staticSites": 1,
+          "callerFamilies": {
+            "segment-or-other": 1
+          },
+          "distinctCallers": 1,
+          "topCallers": [
+            {
+              "name": "$direct.f_find_next",
+              "sites": 1
+            }
+          ]
+        },
+        {
+          "target": "$direct.f_find",
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_102_95_102_105_110_100_",
+          "staticSites": 1,
+          "callerFamilies": {
+            "segment-or-other": 1
+          },
+          "distinctCallers": 1,
+          "topCallers": [
+            {
+              "name": "$direct.f_find",
+              "sites": 1
+            }
+          ]
+        },
+        {
+          "target": "$direct.p137q_is_ctr",
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_49_51_55_113_95_105_115_95_99_116_114_",
+          "staticSites": 2,
+          "callerFamilies": {
+            "segment-or-other": 2
+          },
+          "distinctCallers": 1,
+          "topCallers": [
+            {
+              "name": "$direct.p137q_is_ctr",
+              "sites": 2
+            }
+          ]
+        },
+        {
+          "target": "$direct.p137q_is_adt",
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_49_51_55_113_95_105_115_95_97_100_116_",
+          "staticSites": 2,
+          "callerFamilies": {
+            "segment-or-other": 2
+          },
+          "distinctCallers": 1,
+          "topCallers": [
+            {
+              "name": "$direct.p137q_is_adt",
+              "sites": 2
+            }
+          ]
+        },
+        {
+          "target": "$direct.p137q_name_eq",
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_49_51_55_113_95_110_97_109_101_95_101_113_",
+          "staticSites": 2,
+          "callerFamilies": {
+            "segment-or-other": 2
+          },
+          "distinctCallers": 1,
+          "topCallers": [
+            {
+              "name": "$direct.p137q_name_eq",
+              "sites": 2
+            }
+          ]
+        },
+        {
+          "target": "$direct.p137q_is_cache",
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_49_51_55_113_95_105_115_95_99_97_99_104_101_",
+          "staticSites": 2,
+          "callerFamilies": {
+            "segment-or-other": 2
+          },
+          "distinctCallers": 1,
+          "topCallers": [
+            {
+              "name": "$direct.p137q_is_cache",
+              "sites": 2
+            }
+          ]
+        },
+        {
+          "target": "$direct.lookup",
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_108_111_111_107_117_112_",
+          "staticSites": 44,
+          "callerFamilies": {
+            "private": 43,
+            "segment-or-other": 1
+          },
+          "distinctCallers": 36,
+          "topCallers": [
+            {
+              "name": "$direct.j_u32_native_book",
+              "sites": 6
+            },
+            {
+              "name": "$p118.trmc.$direct.base_prefix_patch",
+              "sites": 2
+            },
+            {
+              "name": "$direct.dead_type",
+              "sites": 2
+            },
+            {
+              "name": "$direct.j_u32_native_ctor",
+              "sites": 2
+            },
+            {
+              "name": "$direct.base_prefix_closed_terms",
+              "sites": 1
+            },
+            {
+              "name": "$direct.prefix_state_disjoint",
+              "sites": 1
+            },
+            {
+              "name": "$direct.signature_mode",
+              "sites": 1
+            },
+            {
+              "name": "$direct.sp_live_ref",
+              "sites": 1
+            },
+            {
+              "name": "$product.sp_live_ref",
+              "sites": 1
+            },
+            {
+              "name": "$direct.dg_family",
+              "sites": 1
+            },
+            {
+              "name": "$direct.dg_trace_detail",
+              "sites": 1
+            },
+            {
+              "name": "$product.dg_trace_detail",
+              "sites": 1
+            }
+          ]
+        },
+        {
+          "target": "$direct.nc_ctor_owned",
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_110_99_95_99_116_111_114_95_111_119_110_101_100_",
+          "staticSites": 1,
+          "callerFamilies": {
+            "segment-or-other": 1
+          },
+          "distinctCallers": 1,
+          "topCallers": [
+            {
+              "name": "$direct.nc_ctor_owned",
+              "sites": 1
+            }
+          ]
+        },
+        {
+          "target": "$direct.db",
+          "symbol": "p112w_FID_36_100_105_114_101_99_116_46_100_98_",
+          "staticSites": 132,
+          "callerFamilies": {
+            "segment-or-other": 132
+          },
+          "distinctCallers": 129,
+          "topCallers": [
+            {
+              "name": "$p111.k.3113575",
+              "sites": 2
+            },
+            {
+              "name": "$p111.k.27351",
+              "sites": 2
+            },
+            {
+              "name": "$p111.k.43764",
+              "sites": 2
+            },
+            {
+              "name": "$p111.k.19755",
+              "sites": 1
+            },
+            {
+              "name": "$p111.k.27355",
+              "sites": 1
+            },
+            {
+              "name": "$p111.k.43769",
+              "sites": 1
+            },
+            {
+              "name": "$p111.k.218174",
+              "sites": 1
+            },
+            {
+              "name": "$p111.k.604077",
+              "sites": 1
+            },
+            {
+              "name": "$p111.k.690276",
+              "sites": 1
+            },
+            {
+              "name": "$p111.k.702543",
+              "sites": 1
+            },
+            {
+              "name": "$p111.k.702544",
+              "sites": 1
+            },
+            {
+              "name": "$p111.k.702545",
+              "sites": 1
+            }
+          ]
+        },
+        {
+          "target": "$direct.dc",
+          "symbol": "p112w_FID_36_100_105_114_101_99_116_46_100_99_",
+          "staticSites": 202,
+          "callerFamilies": {
+            "segment-or-other": 202
+          },
+          "distinctCallers": 200,
+          "topCallers": [
+            {
+              "name": "$p111.k.3834633",
+              "sites": 2
+            },
+            {
+              "name": "$p111.k.27311",
+              "sites": 2
+            },
+            {
+              "name": "$p111.k.17519",
+              "sites": 1
+            },
+            {
+              "name": "$p111.k.27315",
+              "sites": 1
+            },
+            {
+              "name": "$p111.k.43738",
+              "sites": 1
+            },
+            {
+              "name": "$p111.k.43741",
+              "sites": 1
+            },
+            {
+              "name": "$p111.k.44911",
+              "sites": 1
+            },
+            {
+              "name": "$p111.k.44915",
+              "sites": 1
+            },
+            {
+              "name": "$p111.k.154957",
+              "sites": 1
+            },
+            {
+              "name": "$p111.k.584501",
+              "sites": 1
+            },
+            {
+              "name": "$direct.f_ctor_named",
+              "sites": 1
+            },
+            {
+              "name": "$p111.k.604071",
+              "sites": 1
+            }
+          ]
+        },
+        {
+          "target": "$direct.dn",
+          "symbol": "p112w_FID_36_100_105_114_101_99_116_46_100_110_",
+          "staticSites": 208,
+          "callerFamilies": {
+            "segment-or-other": 208
+          },
+          "distinctCallers": 189,
+          "topCallers": [
+            {
+              "name": "$p111.k.4085201",
+              "sites": 2
+            },
+            {
+              "name": "$direct.prefix_state_exact_def",
+              "sites": 2
+            },
+            {
+              "name": "$direct.f_fresh_prefix_exact_head",
+              "sites": 2
+            },
+            {
+              "name": "$p111.k.702506",
+              "sites": 2
+            },
+            {
+              "name": "$p111.k.710405",
+              "sites": 2
+            },
+            {
+              "name": "$p111.k.848100",
+              "sites": 2
+            },
+            {
+              "name": "$direct.check_ctors",
+              "sites": 2
+            },
+            {
+              "name": "$p111.k.1042327",
+              "sites": 2
+            },
+            {
+              "name": "$direct.check_definition_world",
+              "sites": 2
+            },
+            {
+              "name": "$p111.k.1108620",
+              "sites": 2
+            },
+            {
+              "name": "$p111.k.1324329",
+              "sites": 2
+            },
+            {
+              "name": "$p111.k.1324332",
+              "sites": 2
+            }
+          ]
+        },
+        {
+          "target": "$direct.da",
+          "symbol": "p112w_FID_36_100_105_114_101_99_116_46_100_97_",
+          "staticSites": 282,
+          "callerFamilies": {
+            "segment-or-other": 282
+          },
+          "distinctCallers": 263,
+          "topCallers": [
+            {
+              "name": "$direct.ki_match_bound",
+              "sites": 3
+            },
+            {
+              "name": "$p111.k.959848",
+              "sites": 3
+            },
+            {
+              "name": "$p111.k.4093152",
+              "sites": 2
+            },
+            {
+              "name": "$p111.k.27370",
+              "sites": 2
+            },
+            {
+              "name": "$p111.k.43784",
+              "sites": 2
+            },
+            {
+              "name": "$p111.k.959851",
+              "sites": 2
+            },
+            {
+              "name": "$p111.k.1042329",
+              "sites": 2
+            },
+            {
+              "name": "$p111.k.1042330",
+              "sites": 2
+            },
+            {
+              "name": "$p111.k.1042331",
+              "sites": 2
+            },
+            {
+              "name": "$p111.k.1042332",
+              "sites": 2
+            },
+            {
+              "name": "$p111.k.2648031",
+              "sites": 2
+            },
+            {
+              "name": "$p111.k.2693683",
+              "sites": 2
+            }
+          ]
+        },
+        {
+          "target": "$direct.dk",
+          "symbol": "p112w_FID_36_100_105_114_101_99_116_46_100_107_",
+          "staticSites": 285,
+          "callerFamilies": {
+            "segment-or-other": 285
+          },
+          "distinctCallers": 281,
+          "topCallers": [
+            {
+              "name": "$p111.k.4094200",
+              "sites": 2
+            },
+            {
+              "name": "$p111.k.27379",
+              "sites": 2
+            },
+            {
+              "name": "$p111.k.43793",
+              "sites": 2
+            },
+            {
+              "name": "$p111.k.842291",
+              "sites": 2
+            },
+            {
+              "name": "$p111.k.16389",
+              "sites": 1
+            },
+            {
+              "name": "$direct.count_open",
+              "sites": 1
+            },
+            {
+              "name": "$p111.k.27383",
+              "sites": 1
+            },
+            {
+              "name": "$p111.k.36112",
+              "sites": 1
+            },
+            {
+              "name": "$p111.k.43797",
+              "sites": 1
+            },
+            {
+              "name": "$p111.k.154956",
+              "sites": 1
+            },
+            {
+              "name": "$p111.k.155047",
+              "sites": 1
+            },
+            {
+              "name": "$p111.k.194420",
+              "sites": 1
+            }
+          ]
+        },
+        {
+          "target": "$direct.p137q_key_eq",
+          "symbol": "p112w_FID_36_100_105_114_101_99_116_46_112_49_51_55_113_95_107_101_121_95_101_113_",
+          "staticSites": 2,
+          "callerFamilies": {
+            "segment-or-other": 2
+          },
+          "distinctCallers": 1,
+          "topCallers": [
+            {
+              "name": "$p111.k.698226",
+              "sites": 2
+            }
+          ]
+        },
+        {
+          "target": "$direct.p137q_is_ctr",
+          "symbol": "p112w_FID_36_100_105_114_101_99_116_46_112_49_51_55_113_95_105_115_95_99_116_114_",
+          "staticSites": 3,
+          "callerFamilies": {
+            "segment-or-other": 3
+          },
+          "distinctCallers": 2,
+          "topCallers": [
+            {
+              "name": "$p111.k.2812024",
+              "sites": 2
+            },
+            {
+              "name": "$p111.k.2814275",
+              "sites": 1
+            }
+          ]
+        },
+        {
+          "target": "$direct.p137q_is_adt",
+          "symbol": "p112w_FID_36_100_105_114_101_99_116_46_112_49_51_55_113_95_105_115_95_97_100_116_",
+          "staticSites": 2,
+          "callerFamilies": {
+            "segment-or-other": 2
+          },
+          "distinctCallers": 1,
+          "topCallers": [
+            {
+              "name": "$p111.k.2813074",
+              "sites": 2
+            }
+          ]
+        },
+        {
+          "target": "$direct.p137q_name_eq",
+          "symbol": "p112w_FID_36_100_105_114_101_99_116_46_112_49_51_55_113_95_110_97_109_101_95_101_113_",
+          "staticSites": 3,
+          "callerFamilies": {
+            "segment-or-other": 3
+          },
+          "distinctCallers": 2,
+          "topCallers": [
+            {
+              "name": "$p111.k.3117792",
+              "sites": 2
+            },
+            {
+              "name": "$p111.k.3121013",
+              "sites": 1
+            }
+          ]
+        },
+        {
+          "target": "$direct.p137q_is_cache",
+          "symbol": "p112w_FID_36_100_105_114_101_99_116_46_112_49_51_55_113_95_105_115_95_99_97_99_104_101_",
+          "staticSites": 2,
+          "callerFamilies": {
+            "segment-or-other": 2
+          },
+          "distinctCallers": 1,
+          "topCallers": [
+            {
+              "name": "$p111.k.3119888",
+              "sites": 2
+            }
+          ]
+        },
+        {
+          "target": "$direct.p137q_key_eq",
+          "symbol": "p111_FID_36_100_105_114_101_99_116_46_112_49_51_55_113_95_107_101_121_95_101_113_",
+          "staticSites": 0,
+          "callerFamilies": {},
+          "distinctCallers": 0,
+          "topCallers": []
+        },
+        {
+          "target": "$direct.f_find_next",
+          "symbol": "p111_FID_36_100_105_114_101_99_116_46_102_95_102_105_110_100_95_110_101_120_116_",
+          "staticSites": 0,
+          "callerFamilies": {},
+          "distinctCallers": 0,
+          "topCallers": []
+        },
+        {
+          "target": "$direct.f_find",
+          "symbol": "p111_FID_36_100_105_114_101_99_116_46_102_95_102_105_110_100_",
+          "staticSites": 0,
+          "callerFamilies": {},
+          "distinctCallers": 0,
+          "topCallers": []
+        },
+        {
+          "target": "$direct.p137q_is_ctr",
+          "symbol": "p111_FID_36_100_105_114_101_99_116_46_112_49_51_55_113_95_105_115_95_99_116_114_",
+          "staticSites": 0,
+          "callerFamilies": {},
+          "distinctCallers": 0,
+          "topCallers": []
+        },
+        {
+          "target": "$direct.p137q_is_adt",
+          "symbol": "p111_FID_36_100_105_114_101_99_116_46_112_49_51_55_113_95_105_115_95_97_100_116_",
+          "staticSites": 0,
+          "callerFamilies": {},
+          "distinctCallers": 0,
+          "topCallers": []
+        },
+        {
+          "target": "$direct.nc_ctor_owned",
+          "symbol": "p111_FID_36_100_105_114_101_99_116_46_110_99_95_99_116_111_114_95_111_119_110_101_100_",
+          "staticSites": 0,
+          "callerFamilies": {},
+          "distinctCallers": 0,
+          "topCallers": []
+        },
+        {
+          "target": "$direct.db",
+          "symbol": "p111_FID_36_100_105_114_101_99_116_46_100_98_",
+          "staticSites": 0,
+          "callerFamilies": {},
+          "distinctCallers": 0,
+          "topCallers": []
+        },
+        {
+          "target": "$direct.p137q_name_eq",
+          "symbol": "p111_FID_36_100_105_114_101_99_116_46_112_49_51_55_113_95_110_97_109_101_95_101_113_",
+          "staticSites": 0,
+          "callerFamilies": {},
+          "distinctCallers": 0,
+          "topCallers": []
+        },
+        {
+          "target": "$direct.p137q_is_cache",
+          "symbol": "p111_FID_36_100_105_114_101_99_116_46_112_49_51_55_113_95_105_115_95_99_97_99_104_101_",
+          "staticSites": 0,
+          "callerFamilies": {},
+          "distinctCallers": 0,
+          "topCallers": []
+        },
+        {
+          "target": "$direct.lookup",
+          "symbol": "p111_FID_36_100_105_114_101_99_116_46_108_111_111_107_117_112_",
+          "staticSites": 0,
+          "callerFamilies": {},
+          "distinctCallers": 0,
+          "topCallers": []
+        },
+        {
+          "target": "$direct.dc",
+          "symbol": "p111_FID_36_100_105_114_101_99_116_46_100_99_",
+          "staticSites": 0,
+          "callerFamilies": {},
+          "distinctCallers": 0,
+          "topCallers": []
+        },
+        {
+          "target": "$direct.dn",
+          "symbol": "p111_FID_36_100_105_114_101_99_116_46_100_110_",
+          "staticSites": 0,
+          "callerFamilies": {},
+          "distinctCallers": 0,
+          "topCallers": []
+        },
+        {
+          "target": "$direct.da",
+          "symbol": "p111_FID_36_100_105_114_101_99_116_46_100_97_",
+          "staticSites": 0,
+          "callerFamilies": {},
+          "distinctCallers": 0,
+          "topCallers": []
+        },
+        {
+          "target": "$direct.dk",
+          "symbol": "p111_FID_36_100_105_114_101_99_116_46_100_107_",
+          "staticSites": 0,
+          "callerFamilies": {},
+          "distinctCallers": 0,
+          "topCallers": []
+        }
+      ],
+      "wholeRuntimeStaticSites": {
+        "p111_rt_sink": 53870,
+        "p111_rt_take": 2885,
+        "p111_rt_keep": 18488,
+        "p111_rt_take_count9": 271
+      }
+    },
+    {
+      "label": "q2",
+      "qbe": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase130/p137-self01/program.ssa",
+        "bytes": 106285793,
+        "sha256": "c12af8c87c7e96e15fd18b7e16c2c0cc5ec21f8dae5dbfd9bdc79762d88e54cd"
+      },
+      "queries": [
+        {
+          "target": "$direct.db",
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_100_98_",
+          "staticSites": 31,
+          "callerFamilies": {
+            "private": 29,
+            "segment-or-other": 2
+          },
+          "distinctCallers": 21,
+          "topCallers": [
+            {
+              "name": "$direct.j_u32_native_book",
+              "sites": 9
+            },
+            {
+              "name": "$direct.j_u32_native_ctor",
+              "sites": 2
+            },
+            {
+              "name": "$direct.db",
+              "sites": 2
+            },
+            {
+              "name": "$p128borrow.owned.base_prefix_native",
+              "sites": 1
+            },
+            {
+              "name": "$direct.declared",
+              "sites": 1
+            },
+            {
+              "name": "$p118.trmc.$direct.driver_owned_candidates",
+              "sites": 1
+            },
+            {
+              "name": "$direct.signature_fill_mode",
+              "sites": 1
+            },
+            {
+              "name": "$direct.j_pure_native_ctor",
+              "sites": 1
+            },
+            {
+              "name": "$direct.j_fusion_def",
+              "sites": 1
+            },
+            {
+              "name": "$direct.f_def_fillable",
+              "sites": 1
+            },
+            {
+              "name": "$direct.dg_event_output",
+              "sites": 1
+            },
+            {
+              "name": "$p118.trmc.$direct.prefix_state_headers",
+              "sites": 1
+            }
+          ]
+        },
+        {
+          "target": "$direct.dc",
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_100_99_",
+          "staticSites": 32,
+          "callerFamilies": {
+            "private": 30,
+            "segment-or-other": 2
+          },
+          "distinctCallers": 24,
+          "topCallers": [
+            {
+              "name": "$direct.j_u32_native_book",
+              "sites": 4
+            },
+            {
+              "name": "$direct.p112s_context_nodes",
+              "sites": 2
+            },
+            {
+              "name": "$direct.p112s_context_ctors",
+              "sites": 2
+            },
+            {
+              "name": "$direct.nc_ctor_context",
+              "sites": 2
+            },
+            {
+              "name": "$direct.ns_body",
+              "sites": 2
+            },
+            {
+              "name": "$direct.dc",
+              "sites": 2
+            },
+            {
+              "name": "$direct.declared",
+              "sites": 1
+            },
+            {
+              "name": "$direct.norm_max_defs",
+              "sites": 1
+            },
+            {
+              "name": "$direct.signature_fill_mode",
+              "sites": 1
+            },
+            {
+              "name": "$direct.ns_context",
+              "sites": 1
+            },
+            {
+              "name": "$direct.dg_event_output",
+              "sites": 1
+            },
+            {
+              "name": "$p118.trmc.$direct.prefix_state_headers",
+              "sites": 1
+            }
+          ]
+        },
+        {
+          "target": "$direct.dn",
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_100_110_",
+          "staticSites": 37,
+          "callerFamilies": {
+            "private": 35,
+            "segment-or-other": 2
+          },
+          "distinctCallers": 28,
+          "topCallers": [
+            {
+              "name": "$p118.trmc.$direct.dr_own_names",
+              "sites": 3
+            },
+            {
+              "name": "$direct.book_put_many_cache_valid",
+              "sites": 3
+            },
+            {
+              "name": "$p118.trmc.$direct.book_final_filter",
+              "sites": 2
+            },
+            {
+              "name": "$direct.book_put_many_cache_name",
+              "sites": 2
+            },
+            {
+              "name": "$p118.trmc.$direct.base_prefix_patch",
+              "sites": 2
+            },
+            {
+              "name": "$direct.signature_mode",
+              "sites": 2
+            },
+            {
+              "name": "$direct.dn",
+              "sites": 2
+            },
+            {
+              "name": "$direct.declared",
+              "sites": 1
+            },
+            {
+              "name": "$p128borrow.owned.book_final_names_valid",
+              "sites": 1
+            },
+            {
+              "name": "$direct.signature_fill_mode",
+              "sites": 1
+            },
+            {
+              "name": "$direct.j_pure_native_ctor",
+              "sites": 1
+            },
+            {
+              "name": "$direct.ns_payload",
+              "sites": 1
+            }
+          ]
+        },
+        {
+          "target": "$direct.da",
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_100_97_",
+          "staticSites": 62,
+          "callerFamilies": {
+            "private": 60,
+            "segment-or-other": 2
+          },
+          "distinctCallers": 43,
+          "topCallers": [
+            {
+              "name": "$direct.p111v_counted_call",
+              "sites": 4
+            },
+            {
+              "name": "$product.p111v_counted_call",
+              "sites": 4
+            },
+            {
+              "name": "$direct.dg_adt_error",
+              "sites": 2
+            },
+            {
+              "name": "$direct.p112s_word",
+              "sites": 2
+            },
+            {
+              "name": "$direct.p112s_image_fields",
+              "sites": 2
+            },
+            {
+              "name": "$direct.norm_book_bound",
+              "sites": 2
+            },
+            {
+              "name": "$direct.kw_floor_fresh",
+              "sites": 2
+            },
+            {
+              "name": "$product.kw_floor_fresh",
+              "sites": 2
+            },
+            {
+              "name": "$direct.kw_mint_floor",
+              "sites": 2
+            },
+            {
+              "name": "$product.kw_mint_floor",
+              "sites": 2
+            },
+            {
+              "name": "$direct.kw_temp_fresh",
+              "sites": 2
+            },
+            {
+              "name": "$product.kw_temp_fresh",
+              "sites": 2
+            }
+          ]
+        },
+        {
+          "target": "$direct.dk",
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_100_107_",
+          "staticSites": 121,
+          "callerFamilies": {
+            "private": 119,
+            "segment-or-other": 2
+          },
+          "distinctCallers": 79,
+          "topCallers": [
+            {
+              "name": "$direct.j_u32_native_book",
+              "sites": 9
+            },
+            {
+              "name": "$direct.p111v_counted_call",
+              "sites": 4
+            },
+            {
+              "name": "$product.p111v_counted_call",
+              "sites": 4
+            },
+            {
+              "name": "$direct.nc_ctor_context",
+              "sites": 3
+            },
+            {
+              "name": "$direct.signature_mode",
+              "sites": 3
+            },
+            {
+              "name": "$direct.p111v_value",
+              "sites": 3
+            },
+            {
+              "name": "$product.p111v_value",
+              "sites": 3
+            },
+            {
+              "name": "$direct.signature_fill_mode",
+              "sites": 2
+            },
+            {
+              "name": "$direct.ns_context",
+              "sites": 2
+            },
+            {
+              "name": "$direct.dg_event_output",
+              "sites": 2
+            },
+            {
+              "name": "$direct.p112s_context_nodes",
+              "sites": 2
+            },
+            {
+              "name": "$direct.p112s_context_ctors",
+              "sites": 2
+            }
+          ]
+        },
+        {
+          "target": "$direct.p137q_key_eq",
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_49_51_55_113_95_107_101_121_95_101_113_",
+          "staticSites": 3,
+          "callerFamilies": {
+            "private": 1,
+            "segment-or-other": 2
+          },
+          "distinctCallers": 2,
+          "topCallers": [
+            {
+              "name": "$direct.p137q_key_eq",
+              "sites": 2
+            },
+            {
+              "name": "$p126scc.1014",
+              "sites": 1
+            }
+          ]
+        },
+        {
+          "target": "$direct.f_find_next",
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_102_95_102_105_110_100_95_110_101_120_116_",
+          "staticSites": 1,
+          "callerFamilies": {
+            "segment-or-other": 1
+          },
+          "distinctCallers": 1,
+          "topCallers": [
+            {
+              "name": "$direct.f_find_next",
+              "sites": 1
+            }
+          ]
+        },
+        {
+          "target": "$direct.f_find",
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_102_95_102_105_110_100_",
+          "staticSites": 1,
+          "callerFamilies": {
+            "segment-or-other": 1
+          },
+          "distinctCallers": 1,
+          "topCallers": [
+            {
+              "name": "$direct.f_find",
+              "sites": 1
+            }
+          ]
+        },
+        {
+          "target": "$direct.p137q_is_ctr",
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_49_51_55_113_95_105_115_95_99_116_114_",
+          "staticSites": 3,
+          "callerFamilies": {
+            "private": 1,
+            "segment-or-other": 2
+          },
+          "distinctCallers": 2,
+          "topCallers": [
+            {
+              "name": "$direct.p137q_is_ctr",
+              "sites": 2
+            },
+            {
+              "name": "$direct.nc_ctor_owned",
+              "sites": 1
+            }
+          ]
+        },
+        {
+          "target": "$direct.p137q_is_adt",
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_49_51_55_113_95_105_115_95_97_100_116_",
+          "staticSites": 3,
+          "callerFamilies": {
+            "private": 1,
+            "segment-or-other": 2
+          },
+          "distinctCallers": 2,
+          "topCallers": [
+            {
+              "name": "$direct.p137q_is_adt",
+              "sites": 2
+            },
+            {
+              "name": "$direct.nc_ctor_owned",
+              "sites": 1
+            }
+          ]
+        },
+        {
+          "target": "$direct.p137q_name_eq",
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_49_51_55_113_95_110_97_109_101_95_101_113_",
+          "staticSites": 3,
+          "callerFamilies": {
+            "private": 1,
+            "segment-or-other": 2
+          },
+          "distinctCallers": 2,
+          "topCallers": [
+            {
+              "name": "$direct.p137q_name_eq",
+              "sites": 2
+            },
+            {
+              "name": "$direct.lookup",
+              "sites": 1
+            }
+          ]
+        },
+        {
+          "target": "$direct.p137q_is_cache",
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_49_51_55_113_95_105_115_95_99_97_99_104_101_",
+          "staticSites": 3,
+          "callerFamilies": {
+            "private": 1,
+            "segment-or-other": 2
+          },
+          "distinctCallers": 2,
+          "topCallers": [
+            {
+              "name": "$direct.p137q_is_cache",
+              "sites": 2
+            },
+            {
+              "name": "$direct.lookup",
+              "sites": 1
+            }
+          ]
+        },
+        {
+          "target": "$direct.lookup",
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_108_111_111_107_117_112_",
+          "staticSites": 48,
+          "callerFamilies": {
+            "private": 47,
+            "segment-or-other": 1
+          },
+          "distinctCallers": 36,
+          "topCallers": [
+            {
+              "name": "$direct.j_u32_native_book",
+              "sites": 10
+            },
+            {
+              "name": "$p118.trmc.$direct.base_prefix_patch",
+              "sites": 2
+            },
+            {
+              "name": "$direct.dead_type",
+              "sites": 2
+            },
+            {
+              "name": "$direct.j_u32_native_ctor",
+              "sites": 2
+            },
+            {
+              "name": "$direct.base_prefix_closed_terms",
+              "sites": 1
+            },
+            {
+              "name": "$direct.prefix_state_disjoint",
+              "sites": 1
+            },
+            {
+              "name": "$direct.signature_mode",
+              "sites": 1
+            },
+            {
+              "name": "$direct.sp_live_ref",
+              "sites": 1
+            },
+            {
+              "name": "$product.sp_live_ref",
+              "sites": 1
+            },
+            {
+              "name": "$direct.dg_family",
+              "sites": 1
+            },
+            {
+              "name": "$direct.dg_trace_detail",
+              "sites": 1
+            },
+            {
+              "name": "$product.dg_trace_detail",
+              "sites": 1
+            }
+          ]
+        },
+        {
+          "target": "$direct.nc_ctor_owned",
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_110_99_95_99_116_111_114_95_111_119_110_101_100_",
+          "staticSites": 1,
+          "callerFamilies": {
+            "segment-or-other": 1
+          },
+          "distinctCallers": 1,
+          "topCallers": [
+            {
+              "name": "$direct.nc_ctor_owned",
+              "sites": 1
+            }
+          ]
+        },
+        {
+          "target": "$direct.db",
+          "symbol": "p112w_FID_36_100_105_114_101_99_116_46_100_98_",
+          "staticSites": 132,
+          "callerFamilies": {
+            "segment-or-other": 132
+          },
+          "distinctCallers": 129,
+          "topCallers": [
+            {
+              "name": "$p111.k.3113575",
+              "sites": 2
+            },
+            {
+              "name": "$p111.k.27351",
+              "sites": 2
+            },
+            {
+              "name": "$p111.k.43764",
+              "sites": 2
+            },
+            {
+              "name": "$p111.k.19755",
+              "sites": 1
+            },
+            {
+              "name": "$p111.k.27355",
+              "sites": 1
+            },
+            {
+              "name": "$p111.k.43769",
+              "sites": 1
+            },
+            {
+              "name": "$p111.k.218174",
+              "sites": 1
+            },
+            {
+              "name": "$p111.k.604077",
+              "sites": 1
+            },
+            {
+              "name": "$p111.k.690276",
+              "sites": 1
+            },
+            {
+              "name": "$p111.k.702543",
+              "sites": 1
+            },
+            {
+              "name": "$p111.k.702544",
+              "sites": 1
+            },
+            {
+              "name": "$p111.k.702545",
+              "sites": 1
+            }
+          ]
+        },
+        {
+          "target": "$direct.dc",
+          "symbol": "p112w_FID_36_100_105_114_101_99_116_46_100_99_",
+          "staticSites": 202,
+          "callerFamilies": {
+            "segment-or-other": 202
+          },
+          "distinctCallers": 200,
+          "topCallers": [
+            {
+              "name": "$p111.k.3834633",
+              "sites": 2
+            },
+            {
+              "name": "$p111.k.27311",
+              "sites": 2
+            },
+            {
+              "name": "$p111.k.17519",
+              "sites": 1
+            },
+            {
+              "name": "$p111.k.27315",
+              "sites": 1
+            },
+            {
+              "name": "$p111.k.43738",
+              "sites": 1
+            },
+            {
+              "name": "$p111.k.43741",
+              "sites": 1
+            },
+            {
+              "name": "$p111.k.44911",
+              "sites": 1
+            },
+            {
+              "name": "$p111.k.44915",
+              "sites": 1
+            },
+            {
+              "name": "$p111.k.154957",
+              "sites": 1
+            },
+            {
+              "name": "$p111.k.584501",
+              "sites": 1
+            },
+            {
+              "name": "$direct.f_ctor_named",
+              "sites": 1
+            },
+            {
+              "name": "$p111.k.604071",
+              "sites": 1
+            }
+          ]
+        },
+        {
+          "target": "$direct.dn",
+          "symbol": "p112w_FID_36_100_105_114_101_99_116_46_100_110_",
+          "staticSites": 208,
+          "callerFamilies": {
+            "segment-or-other": 208
+          },
+          "distinctCallers": 189,
+          "topCallers": [
+            {
+              "name": "$p111.k.4085201",
+              "sites": 2
+            },
+            {
+              "name": "$direct.prefix_state_exact_def",
+              "sites": 2
+            },
+            {
+              "name": "$direct.f_fresh_prefix_exact_head",
+              "sites": 2
+            },
+            {
+              "name": "$p111.k.702506",
+              "sites": 2
+            },
+            {
+              "name": "$p111.k.710405",
+              "sites": 2
+            },
+            {
+              "name": "$p111.k.848100",
+              "sites": 2
+            },
+            {
+              "name": "$direct.check_ctors",
+              "sites": 2
+            },
+            {
+              "name": "$p111.k.1042327",
+              "sites": 2
+            },
+            {
+              "name": "$direct.check_definition_world",
+              "sites": 2
+            },
+            {
+              "name": "$p111.k.1108620",
+              "sites": 2
+            },
+            {
+              "name": "$p111.k.1324329",
+              "sites": 2
+            },
+            {
+              "name": "$p111.k.1324332",
+              "sites": 2
+            }
+          ]
+        },
+        {
+          "target": "$direct.da",
+          "symbol": "p112w_FID_36_100_105_114_101_99_116_46_100_97_",
+          "staticSites": 282,
+          "callerFamilies": {
+            "segment-or-other": 282
+          },
+          "distinctCallers": 263,
+          "topCallers": [
+            {
+              "name": "$direct.ki_match_bound",
+              "sites": 3
+            },
+            {
+              "name": "$p111.k.959848",
+              "sites": 3
+            },
+            {
+              "name": "$p111.k.4093152",
+              "sites": 2
+            },
+            {
+              "name": "$p111.k.27370",
+              "sites": 2
+            },
+            {
+              "name": "$p111.k.43784",
+              "sites": 2
+            },
+            {
+              "name": "$p111.k.959851",
+              "sites": 2
+            },
+            {
+              "name": "$p111.k.1042329",
+              "sites": 2
+            },
+            {
+              "name": "$p111.k.1042330",
+              "sites": 2
+            },
+            {
+              "name": "$p111.k.1042331",
+              "sites": 2
+            },
+            {
+              "name": "$p111.k.1042332",
+              "sites": 2
+            },
+            {
+              "name": "$p111.k.2648031",
+              "sites": 2
+            },
+            {
+              "name": "$p111.k.2693683",
+              "sites": 2
+            }
+          ]
+        },
+        {
+          "target": "$direct.dk",
+          "symbol": "p112w_FID_36_100_105_114_101_99_116_46_100_107_",
+          "staticSites": 285,
+          "callerFamilies": {
+            "segment-or-other": 285
+          },
+          "distinctCallers": 281,
+          "topCallers": [
+            {
+              "name": "$p111.k.4094200",
+              "sites": 2
+            },
+            {
+              "name": "$p111.k.27379",
+              "sites": 2
+            },
+            {
+              "name": "$p111.k.43793",
+              "sites": 2
+            },
+            {
+              "name": "$p111.k.842291",
+              "sites": 2
+            },
+            {
+              "name": "$p111.k.16389",
+              "sites": 1
+            },
+            {
+              "name": "$direct.count_open",
+              "sites": 1
+            },
+            {
+              "name": "$p111.k.27383",
+              "sites": 1
+            },
+            {
+              "name": "$p111.k.36112",
+              "sites": 1
+            },
+            {
+              "name": "$p111.k.43797",
+              "sites": 1
+            },
+            {
+              "name": "$p111.k.154956",
+              "sites": 1
+            },
+            {
+              "name": "$p111.k.155047",
+              "sites": 1
+            },
+            {
+              "name": "$p111.k.194420",
+              "sites": 1
+            }
+          ]
+        },
+        {
+          "target": "$direct.p137q_key_eq",
+          "symbol": "p112w_FID_36_100_105_114_101_99_116_46_112_49_51_55_113_95_107_101_121_95_101_113_",
+          "staticSites": 2,
+          "callerFamilies": {
+            "segment-or-other": 2
+          },
+          "distinctCallers": 1,
+          "topCallers": [
+            {
+              "name": "$p111.k.698226",
+              "sites": 2
+            }
+          ]
+        },
+        {
+          "target": "$direct.p137q_is_ctr",
+          "symbol": "p112w_FID_36_100_105_114_101_99_116_46_112_49_51_55_113_95_105_115_95_99_116_114_",
+          "staticSites": 3,
+          "callerFamilies": {
+            "segment-or-other": 3
+          },
+          "distinctCallers": 2,
+          "topCallers": [
+            {
+              "name": "$p111.k.2812024",
+              "sites": 2
+            },
+            {
+              "name": "$p111.k.2814275",
+              "sites": 1
+            }
+          ]
+        },
+        {
+          "target": "$direct.p137q_is_adt",
+          "symbol": "p112w_FID_36_100_105_114_101_99_116_46_112_49_51_55_113_95_105_115_95_97_100_116_",
+          "staticSites": 2,
+          "callerFamilies": {
+            "segment-or-other": 2
+          },
+          "distinctCallers": 1,
+          "topCallers": [
+            {
+              "name": "$p111.k.2813074",
+              "sites": 2
+            }
+          ]
+        },
+        {
+          "target": "$direct.p137q_name_eq",
+          "symbol": "p112w_FID_36_100_105_114_101_99_116_46_112_49_51_55_113_95_110_97_109_101_95_101_113_",
+          "staticSites": 3,
+          "callerFamilies": {
+            "segment-or-other": 3
+          },
+          "distinctCallers": 2,
+          "topCallers": [
+            {
+              "name": "$p111.k.3117792",
+              "sites": 2
+            },
+            {
+              "name": "$p111.k.3121013",
+              "sites": 1
+            }
+          ]
+        },
+        {
+          "target": "$direct.p137q_is_cache",
+          "symbol": "p112w_FID_36_100_105_114_101_99_116_46_112_49_51_55_113_95_105_115_95_99_97_99_104_101_",
+          "staticSites": 2,
+          "callerFamilies": {
+            "segment-or-other": 2
+          },
+          "distinctCallers": 1,
+          "topCallers": [
+            {
+              "name": "$p111.k.3119888",
+              "sites": 2
+            }
+          ]
+        },
+        {
+          "target": "$direct.p137q_key_eq",
+          "symbol": "p111_FID_36_100_105_114_101_99_116_46_112_49_51_55_113_95_107_101_121_95_101_113_",
+          "staticSites": 0,
+          "callerFamilies": {},
+          "distinctCallers": 0,
+          "topCallers": []
+        },
+        {
+          "target": "$direct.f_find_next",
+          "symbol": "p111_FID_36_100_105_114_101_99_116_46_102_95_102_105_110_100_95_110_101_120_116_",
+          "staticSites": 0,
+          "callerFamilies": {},
+          "distinctCallers": 0,
+          "topCallers": []
+        },
+        {
+          "target": "$direct.f_find",
+          "symbol": "p111_FID_36_100_105_114_101_99_116_46_102_95_102_105_110_100_",
+          "staticSites": 0,
+          "callerFamilies": {},
+          "distinctCallers": 0,
+          "topCallers": []
+        },
+        {
+          "target": "$direct.p137q_is_ctr",
+          "symbol": "p111_FID_36_100_105_114_101_99_116_46_112_49_51_55_113_95_105_115_95_99_116_114_",
+          "staticSites": 0,
+          "callerFamilies": {},
+          "distinctCallers": 0,
+          "topCallers": []
+        },
+        {
+          "target": "$direct.p137q_is_adt",
+          "symbol": "p111_FID_36_100_105_114_101_99_116_46_112_49_51_55_113_95_105_115_95_97_100_116_",
+          "staticSites": 0,
+          "callerFamilies": {},
+          "distinctCallers": 0,
+          "topCallers": []
+        },
+        {
+          "target": "$direct.nc_ctor_owned",
+          "symbol": "p111_FID_36_100_105_114_101_99_116_46_110_99_95_99_116_111_114_95_111_119_110_101_100_",
+          "staticSites": 0,
+          "callerFamilies": {},
+          "distinctCallers": 0,
+          "topCallers": []
+        },
+        {
+          "target": "$direct.db",
+          "symbol": "p111_FID_36_100_105_114_101_99_116_46_100_98_",
+          "staticSites": 0,
+          "callerFamilies": {},
+          "distinctCallers": 0,
+          "topCallers": []
+        },
+        {
+          "target": "$direct.p137q_name_eq",
+          "symbol": "p111_FID_36_100_105_114_101_99_116_46_112_49_51_55_113_95_110_97_109_101_95_101_113_",
+          "staticSites": 0,
+          "callerFamilies": {},
+          "distinctCallers": 0,
+          "topCallers": []
+        },
+        {
+          "target": "$direct.p137q_is_cache",
+          "symbol": "p111_FID_36_100_105_114_101_99_116_46_112_49_51_55_113_95_105_115_95_99_97_99_104_101_",
+          "staticSites": 0,
+          "callerFamilies": {},
+          "distinctCallers": 0,
+          "topCallers": []
+        },
+        {
+          "target": "$direct.lookup",
+          "symbol": "p111_FID_36_100_105_114_101_99_116_46_108_111_111_107_117_112_",
+          "staticSites": 0,
+          "callerFamilies": {},
+          "distinctCallers": 0,
+          "topCallers": []
+        },
+        {
+          "target": "$direct.dc",
+          "symbol": "p111_FID_36_100_105_114_101_99_116_46_100_99_",
+          "staticSites": 0,
+          "callerFamilies": {},
+          "distinctCallers": 0,
+          "topCallers": []
+        },
+        {
+          "target": "$direct.dn",
+          "symbol": "p111_FID_36_100_105_114_101_99_116_46_100_110_",
+          "staticSites": 0,
+          "callerFamilies": {},
+          "distinctCallers": 0,
+          "topCallers": []
+        },
+        {
+          "target": "$direct.da",
+          "symbol": "p111_FID_36_100_105_114_101_99_116_46_100_97_",
+          "staticSites": 0,
+          "callerFamilies": {},
+          "distinctCallers": 0,
+          "topCallers": []
+        },
+        {
+          "target": "$direct.dk",
+          "symbol": "p111_FID_36_100_105_114_101_99_116_46_100_107_",
+          "staticSites": 0,
+          "callerFamilies": {},
+          "distinctCallers": 0,
+          "topCallers": []
+        }
+      ],
+      "wholeRuntimeStaticSites": {
+        "p111_rt_sink": 51190,
+        "p111_rt_take": 2633,
+        "p111_rt_keep": 18502,
+        "p111_rt_take_count9": 19
+      }
+    }
+  ],
+  "scope": "Static direct-call sites only. Private and generic fallback bodies coexist, so totals are not dynamic execution or exclusive reachable work; changed inlining changes site count. No whole IR/function map retained."
+}

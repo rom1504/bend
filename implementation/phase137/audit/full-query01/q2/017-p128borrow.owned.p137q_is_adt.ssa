@@ -1,0 +1,106 @@
+function l $p113d_FID_36_112_49_50_56_98_111_114_114_111_119_46_111_119_110_101_100_46_112_49_51_55_113_95_105_115_95_97_100_116_(l %state, l %v_v_4294967295) {
+@entry
+%v_scratch =l alloc8 2048
+jmp @p113_loop
+@p113_loop
+%v_p113p_move_2_0 =l copy %v_v_4294967295
+%v_v_4294967294 =l copy %v_p113p_move_2_0
+%v_tag =l shr %v_v_4294967294, 40
+%v_tag =l and %v_tag, 65535
+%v_match_condition =w ceql %v_tag, 153
+jnz %v_match_condition, @b_0, @b_1
+@b_0
+%v_ignored =l call $p111_rt_take(l %state, l %v_v_4294967294, l %v_scratch, w 9)
+%v_v_4294967292 =l loadl %v_scratch
+%t_3 =l add %v_scratch, 8
+%v_v_4294967291 =l loadl %t_3
+%t_4 =l add %v_scratch, 16
+%v_v_4294967290 =l loadl %t_4
+%t_5 =l add %v_scratch, 24
+%v_v_4294967289 =l loadl %t_5
+%t_6 =l add %v_scratch, 32
+%v_v_4294967288 =l loadl %t_6
+%t_7 =l add %v_scratch, 40
+%v_v_4294967287 =l loadl %t_7
+%t_8 =l add %v_scratch, 48
+%v_v_4294967286 =l loadl %t_8
+%t_9 =l add %v_scratch, 56
+%v_v_4294967285 =l loadl %t_9
+%t_10 =l add %v_scratch, 64
+%v_v_4294967284 =l loadl %t_10
+%v_ignored =l call $p111_rt_sink(l %state, l %v_v_4294967292)
+%v_ignored =l call $p111_rt_sink(l %state, l %v_v_4294967290)
+%v_ignored =l call $p111_rt_sink(l %state, l %v_v_4294967289)
+%v_ignored =l call $p111_rt_sink(l %state, l %v_v_4294967288)
+%v_ignored =l call $p111_rt_sink(l %state, l %v_v_4294967287)
+%v_ignored =l call $p111_rt_sink(l %state, l %v_v_4294967286)
+%v_ignored =l call $p111_rt_sink(l %state, l %v_v_4294967285)
+%v_ignored =l call $p111_rt_sink(l %state, l %v_v_4294967284)
+%v_p113p_move_14_0 =l copy %v_v_4294967291
+%v_v_4294967283 =l copy %v_p113p_move_14_0
+%v_p113p_move_15_0 =l copy 144142675917963913
+%v_v_4294967282 =l copy 144142675917963913
+%v_p113i_0_local_v_4294967295 =l copy %v_v_4294967283
+%v_p113i_0_local_v_4294967294 =l copy 144142675917963913
+%v_p113i_0_local_v_4294967295 =l call $p111_rt_keep(l %state, l %v_p113i_0_local_v_4294967295)
+%v_p113i_0_local_v_4294967294 =l call $p111_rt_keep(l %state, l 144142675917963913)
+%v_p113i_0_local_p113p_move_8_0 =l copy %v_p113i_0_local_v_4294967295
+%v_p113i_0_local_v_4294967290 =l copy %v_p113i_0_local_p113p_move_8_0
+%v_p113i_0_local_p113p_move_9_0 =l copy %v_p113i_0_local_v_4294967294
+%v_p113i_0_local_v_4294967289 =l copy %v_p113i_0_local_p113p_move_9_0
+%v_p113i_0_local_p113p_move_10_0 =l copy 1
+%v_p113i_0_local_v_4294967288 =l copy 1
+%v_p113i_0_local_p113p_call_11_0 =l call $p113d_FID_36_100_105_114_101_99_116_46_112_56_56_95_115_116_114_105_110_103_95_101_113_95_103_111_(l %state, l %v_p113i_0_local_v_4294967290, l %v_p113i_0_local_v_4294967289, l 1)
+%v_p113i_0_local_p113p_move_12_0 =l copy %v_p113i_0_local_p113p_call_11_0
+%v_p113i_0_local_v_4294967293 =l copy %v_p113i_0_local_p113p_move_12_0
+%v_p113i_0_local_p113p_move_13_0 =l copy %v_p113i_0_local_v_4294967295
+%v_p113i_0_local_v_4294967292 =l copy %v_p113i_0_local_p113p_move_13_0
+%v_p113i_0_local_p113p_move_14_0 =l copy %v_p113i_0_local_v_4294967294
+%v_p113i_0_local_v_4294967291 =l copy %v_p113i_0_local_p113p_move_14_0
+%v_p113i_0_local_p113i_0_local_v_4294967295 =l copy %v_p113i_0_local_v_4294967293
+%v_p113i_0_local_p113i_0_local_v_4294967294 =l copy %v_p113i_0_local_v_4294967292
+%v_p113i_0_local_p113i_0_local_v_4294967293 =l copy %v_p113i_0_local_v_4294967291
+%v_p113i_0_local_p113i_0_local_ignored =l call $p111_rt_sink(l %state, l %v_p113i_0_local_p113i_0_local_v_4294967294)
+%v_p113i_0_local_p113i_0_local_ignored =l call $p111_rt_sink(l %state, l %v_p113i_0_local_p113i_0_local_v_4294967293)
+%v_p113i_0_local_p113i_0_result_0 =l copy %v_p113i_0_local_p113i_0_local_v_4294967295
+%v_p113i_0_local_p113p_call_15_0 =l copy %v_p113i_0_local_p113i_0_result_0
+%v_p113i_0_result_0 =l copy %v_p113i_0_local_p113p_call_15_0
+%v_p113p_call_16_0 =l copy %v_p113i_0_result_0
+ret %v_p113p_call_16_0
+@b_1
+%v_p113p_move_18_0 =l copy %v_v_4294967294
+%v_v_4294967278 =l copy %v_p113p_move_18_0
+%v_tag =l shr %v_v_4294967278, 40
+%v_tag =l and %v_tag, 65535
+%v_match_condition =w ceql %v_tag, 154
+jnz %v_match_condition, @b_11, @b_12
+@b_11
+%v_ignored =l call $p125_rt_take2(l %state, l %v_v_4294967278, l %v_scratch)
+%v_v_4294967276 =l loadl %v_scratch
+%t_14 =l add %v_scratch, 8
+%v_v_4294967275 =l loadl %t_14
+%v_ignored =l call $p111_rt_sink(l %state, l %v_v_4294967275)
+ret 0
+@b_12
+%v_p113p_move_22_0 =l copy %v_v_4294967278
+%v_v_4294967274 =l copy %v_p113p_move_22_0
+%v_tag =l shr %v_v_4294967274, 40
+%v_tag =l and %v_tag, 65535
+%v_match_condition =w ceql %v_tag, 155
+jnz %v_match_condition, @b_15, @b_16
+@b_15
+%v_ignored =l call $p125_rt_take4(l %state, l %v_v_4294967274, l %v_scratch)
+%v_v_4294967272 =l loadl %v_scratch
+%t_18 =l add %v_scratch, 8
+%v_v_4294967271 =l loadl %t_18
+%t_19 =l add %v_scratch, 16
+%v_v_4294967270 =l loadl %t_19
+%t_20 =l add %v_scratch, 24
+%v_v_4294967269 =l loadl %t_20
+%v_ignored =l call $p111_rt_sink(l %state, l %v_v_4294967270)
+%v_ignored =l call $p111_rt_sink(l %state, l %v_v_4294967269)
+ret 0
+@b_16
+%v_ignored =l call $p111_rt_fail(l %state, w 4)
+ret 0
+}

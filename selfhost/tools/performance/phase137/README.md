@@ -33,5 +33,13 @@ Use fresh output paths. Ordinary jobs use2–3GiB RSS and16GiB available-memory
 limits, full image acquisition4GiB. Preserve every rejected variant and verify
 that the actual timed caller reaches a borrowed reader before claiming benefit.
 
-The qualified compiler is unchanged until independent native reproduction and
-semantic gates pass. See [native commands](../../../../implementation/phase137/native-plan.md).
+The candidate now passes native reproduction and semantic gates. The installed
+CLI remains unchanged; prefer the explicitly selected N3 research image. See [native commands](../../../../implementation/phase137/native-plan.md).
+
+The native/full-build evidence is in
+[`evidence02`](../../../../implementation/phase137/evidence02/receipt.json).
+`report/metrics-v01.py` derives the reported clocks without executing targets;
+`report/select-v01.py` binds the qualified image and all45 code-identity checks.
+`native/fast-manifest-v01.py` and `wrapper-manifest-v01.py` reuse the general
+profiler for request timing and exact code comparisons. A full cold build uses
+the existing Phase134 pipe, not a sum relabeled as an end-to-end measurement.

@@ -4,6 +4,26 @@ This ledger records decisions and links evidence; it does not replace the report
 Read [workflow](README.md) and [current strategy](STEERING.md) before a new investigation.
 User objective: make the Bend compiler written in Bend and its validation loop much faster while preserving correctness. Historical authorization windows are recorded below; current release status and priorities are in [STEERING.md](STEERING.md).
 
+## Phase137 — Borrowed query composition and cold compiler speed (2026-10-24)
+
+[Design](../design/phase137/README.md) · [Experiment](phase137/P137-001-borrowed-query-boundaries.md) ·
+[Report](../implementation/phase137/README.md) · [Selection](../implementation/phase137/candidate.json).
+
+Preserving complete scalar query boundaries enables existing borrowed readers.
+Width/source-only variants were insufficient; the generic early-inline retention
+policy plus three actual query rewrites reduces extracted query/record time31.23%
+and64.88%. Full code and machine audits confirm transfer. Cold same-input build
+373.511→346.391s (7.26% less); same-source self-request350.187→325.880s. Small request
+latency is approximately unchanged; fresh three-source upstream ratio1.3957×.
+All45 benchmark QBE products unchanged.50 controls, Q2=Q3, focused19 N2/N3 and
+ordinary45 N3 pass. New research checkpoint; installed CLI unchanged.
+
+Source+177 lines, IR−1.10%. Still-owning getter calls increase, so retain the
+profitability caveat and test narrower preservation before extending machinery.
+35 guarded jobs41.06min; no OOM. Exact methods, rejected variants, complete
+receipts and reproduced QBE are archived. No broad runtime rerun or research
+acceleration claim.
+
 ## Phase136 — Cold pipeline and query ownership diagnosis (2026-10-24)
 
 [Design](../design/phase136/README.md) ·

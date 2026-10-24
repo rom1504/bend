@@ -1,4 +1,47 @@
-# Latest investigation: Phase136 cold native compilation
+# Current research checkpoint: Phase137 borrowed query composition
+
+[Report](../implementation/phase137/README.md) ·
+[Selection](../implementation/phase137/candidate.json) ·
+[Metrics](../implementation/phase137/metrics.json) ·
+[Next opportunities](../implementation/phase137/remaining-opportunities.md).
+
+Qualified source `2620d59a…e4ecf38`, preferred actual N3 at
+`selfhost/build/phase111/p137-n3/program`. Keep qualified Phase134 N2 as a fallback;
+installed CLI unchanged. Fifty finite controls pass, Q2/Q3 reproduce106,285,793
+bytes, both N2/N3 pass focused19, N3 passes ordinary45. All45 historical runtime
+wrappers are byte-identical to the previously measured products; no fresh broad
+runtime ratio. Do not silently relabel N3 as N2.
+
+Same frozen Phase131 source, full cold source-to-executable373.511→346.391s
+(7.26% less, one fresh serial pair). Prepared Base/runtime and machine tools are
+identical; semantic/object results are not reused. OS page caches stay warm.
+Separate same-source self-request350.187→325.880s (6.94% less), with identical
+QBE. Small native requests are approximately neutral; fresh upstream screen
+1.4070→1.3957× request time. Request+machine-child sum0.6824× upstream has different
+runtime-build policies and is not request parity. Full-source upstream timing
+is not established by the three-source screen.
+
+The checked compiler widens shallow readers to16 fields and preserves complete
+scalar query boundaries before early inlining. Three actual queries compose
+those observers. Existing runtime/verifier/proof bytes remain intact; no second
+preparation pass. Kernel gains31.23%/64.88% transfer to the large compiler at a
+smaller percentage. Compiler source+177 lines (0.30%); full fixed-source QBE only
+1.10% smaller. No60s build,1MB IR or recursive research acceleration is claimed.
+
+Important tradeoff:148 extra static calls to still-owning getters may offset
+some gains; this is not measured dynamic overhead. Unchanged compiler A built
+by the new generator is approximately neutral/slightly better on three requests.
+Next test narrower consumer preservation against original/unfused sources, and
+capture the actual BookCache-reader refusal before altering helper-depth limits.
+For larger gains, remove early scans with exact reusable ownership/prior facts;
+existing indexes differ in precedence/payload. Retain all failed experiments.
+
+35 serial guarded jobs took41.06min; peak2.04GiB in independent API checking,
+about1GB during full native work. Three bounded audit/source agents ran no target
+campaigns. Keep one root-owned CPU3 measurement lane and the16GiB available floor.
+No PR comments were posted.
+
+# Previous investigation: Phase136 cold native compilation
 
 [Report](../implementation/phase136/README.md) ·
 [Metrics](../implementation/phase136/metrics.json) ·

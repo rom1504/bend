@@ -1,5 +1,10 @@
 # Direct QBE backend for the Bend compiler written in Bend
 
+The [Phase137 query-boundary checkpoint](preserved-query-boundaries.md) is
+native-qualified through a Q2/Q3 byte fixed point. Its report keeps cold compiler
+cost, small request latency and generated-program preservation separate.
+Installed selections remain unchanged.
+
 The [Phase126 representation-composition candidate](representation-composition.md)
 is native-qualified through hosted→N1→N2: exact99,526,466-byte QBE reproduction,
 focused19 on both images and original45 correctness on N2. Its independent final

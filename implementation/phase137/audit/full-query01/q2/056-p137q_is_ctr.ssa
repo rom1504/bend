@@ -1,0 +1,8 @@
+export function l $p111_FID_112_49_51_55_113_95_105_115_95_99_116_114_(l %state) {
+@entry
+%v_scratch =l alloc8 2048
+%v_value =l call $p111_rt_closure(l %state, w 34394, l %v_scratch, w 0)
+storel %v_value, %v_scratch
+%v_reply =l call $p111_rt_return(l %state, l %v_scratch, w 1)
+ret %v_reply
+}

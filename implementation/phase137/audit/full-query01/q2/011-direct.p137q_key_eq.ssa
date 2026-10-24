@@ -1,0 +1,17 @@
+function l $p113d_FID_36_100_105_114_101_99_116_46_112_49_51_55_113_95_107_101_121_95_101_113_(l %state, l %v_v_4294967295, l %v_v_4294967294) {
+@entry
+%v_scratch =l alloc8 2048
+jmp @p113_loop
+@p113_loop
+%v_p128bs_borrow =l call $p118_rt_borrow_scalar_safe(l %state, l %v_v_4294967295, l %v_v_4294967294, w 2)
+%v_p128bs_condition =w cnel %v_p128bs_borrow, 0
+jnz %v_p128bs_condition, @b_0, @b_1
+@b_0
+%v_p128bs_observation =l call $p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_112_49_51_55_113_95_107_101_121_95_101_113_(l %state, l %v_v_4294967295, l %v_v_4294967294)
+%v_p128bs_drop_0 =l call $p111_rt_sink(l %state, l %v_v_4294967295)
+%v_p128bs_drop_1 =l call $p111_rt_sink(l %state, l %v_v_4294967294)
+ret %v_p128bs_observation
+@b_1
+%v_p128bs_fallback =l call $p113d_FID_36_112_49_50_56_98_111_114_114_111_119_46_111_119_110_101_100_46_112_49_51_55_113_95_107_101_121_95_101_113_(l %state, l %v_v_4294967295, l %v_v_4294967294)
+ret %v_p128bs_fallback
+}

@@ -119,6 +119,10 @@ The [borrowed-query compiler work](docs/self_hosted/borrowed-native-queries.md)
 preserves ownership across read-only calls and reuses request preparation.
 See the [Phase128 report](implementation/phase128/README.md) for native compiler
 timings, generated-program results and qualification.
+The [preserved-query-boundary work](docs/self_hosted/preserved-query-boundaries.md)
+composes wider borrowed readers with real compiler queries; its
+[Phase137 report](implementation/phase137/README.md) separates kernel gains,
+complete cold-build cost, native qualification and generated-code preservation.
 The [prepared-Base transport experiment](docs/self_hosted/prepared-base-transport.md)
 removes repeated decimal decoding; the [Phase130 report](implementation/phase130/README.md)
 keeps proxy gains, complete request timings and native qualification separate.

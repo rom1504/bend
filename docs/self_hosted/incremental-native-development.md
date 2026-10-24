@@ -45,3 +45,13 @@ qualification separately from warm edit latency.
 Current experimental tools operate on frozen artifacts outside production.
 They preserve exact identities, failed attempts and cached/fresh machine
 comparisons. None is installed as an alternative compiler or frontend.
+
+## Zig-informed refinement
+
+The [Phase133 research](../../research/phase133/README.md) sharpens this design:
+keep compact checked facts and interned identities persistent, but bound and
+release function lowering/rendering state. Track dependencies on a type, value,
+layout or admission result rather than invalidating every consumer of an entire
+definition. QBE itself already processes functions independently, so this can be
+tested with the current backend. The proposed near-interactive loop is not yet
+implemented; the report separates cold/warm targets and validation costs.

@@ -122,6 +122,10 @@ timings, generated-program results and qualification.
 The [prepared-Base transport experiment](docs/self_hosted/prepared-base-transport.md)
 removes repeated decimal decoding; the [Phase130 report](implementation/phase130/README.md)
 keeps proxy gains, complete request timings and native qualification separate.
+The [Zig-informed compilation research](research/phase133/README.md) examines
+fine-grained semantic reuse, compact identities and bounded IR lifetimes as the
+next route to faster cold builds and interactive edits.
+
 The [incremental native development guide](docs/self_hosted/incremental-native-development.md)
 links the measured QBE size, memory and object-reuse investigation, its Go-inspired
 architecture, and the remaining boundary before fast source-level edits.

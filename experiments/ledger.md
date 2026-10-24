@@ -5675,3 +5675,28 @@ normalized duplicated bodies are overlapping static opportunities, not deletions
 
 Preserve failed Go permission-copy and metadata-parser attempts. No backend
 rewrite, production cache, new compiler theorem or native selection promotion.
+
+
+## Phase133 — Zig-informed compilation architecture research (2026-10-24)
+
+[Report](../research/phase133/README.md) ·
+[Hypothesis](phase133/P133-001-zig-reuse-and-lifetimes.md).
+
+Official Zig0.17.0 source archive is checksum-verified; prior0.15.2 findings are
+updated with persistent request state, fact-specific semantic invalidation,
+reference remapping and bounded AIR/MIR lifetime. Dated seconds/milliseconds
+demonstrations remain scoped to their actual initial/edit/backend settings.
+No Zig binary installation, compiler build, target execution or production change.
+
+Existing Bend census gives max function171,719B and max attributed owner2.13MB;
+whole text107.06MB. QBE's own function callback emits and frees per-function IR.
+This supports a bounded output working set while retaining QBE, not1MB total IR.
+The strongest design is persistent semantic facts plus compact disposable owner
+units before numeric/static binding. Body/type/layout/admission/absence facts
+need distinct dependencies. Existing module provenance is not a checked interface.
+
+First falsify bounded exact-output emission; then intern one real identifier
+scope and reuse actual lowering across controlled edits. Phase101's packing
+regressions and Phase132's~369s unchanged frontend remain explicit. No cold or
+warm speedup has been measured in this research-only phase; qualified Phase131
+and installed selections are preserved.

@@ -1,3 +1,36 @@
+# Latest research: Phase133 Zig-informed compiler architecture
+
+[Research](../research/phase133/README.md) ·
+[Zig incremental evidence](../research/phase133/zig-incremental.md) ·
+[Bend source audit](../research/phase133/bend-opportunities.md).
+
+No compiler or qualification change. Official Zig0.17.0 source shows fact-specific
+semantic dependencies, persistent compilation state, compact indexed storage and
+short-lived per-function AIR/MIR. Source-reported MIR expansion20–50× motivates
+bounded queues; it does not establish tiny total IR or a hard memory ceiling.
+Published millisecond local edits use a warm process and native incremental linking.
+
+Our existing census bounds the largest QBE function at171,719bytes versus107MB
+whole text; the largest attributed owner group is2.13MB. This supports bounded
+rendered output, not1MB whole compiler RSS. QBE1.3 itself emits and frees each
+function, so changing backend is unnecessary to test bounded Bend emission.
+
+Next: a sealed verified owner unit before numeric/static binding, bounded
+rendering, then interned identifiers and semantic-query reuse for that same unit.
+Preserve consumed reducible bodies, ownership/layout/admission and absence facts;
+keep independent final verification. Compact physical storage must be measured,
+not inferred from an Array-of-boxed-records type. Keep Phase101's packed-String
+regressions as a reason to scope representation changes to compiler IR/output.
+
+The selected QBE image also calls C-template lookup merely to classify primitive
+operations; a shared semantic primitive catalogue is a concrete small falsifier.
+Its2.13MB attributed owner is not a guaranteed removable-size or speed gain.
+
+Cold1.5–3× and warm10–100× are ambitious conditional research targets, not measured
+Bend gains. Subsecond edits also require bounding global checking, verification
+and linking. Do not implement a new backend/linker or broad cache before the
+first actual lowering-unit hit proves useful. Phase131 remains qualified below.
+
 # Latest investigation: Phase132 incremental native development
 
 [Report](../implementation/phase132/README.md) ·

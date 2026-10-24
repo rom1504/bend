@@ -1,0 +1,1511 @@
+{
+  "kind": "phase137-query-qbe-call-audit",
+  "complete": true,
+  "targetsRun": false,
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase137/audit/code-v01.py",
+      "bytes": 4134,
+      "sha256": "cbcc5e0fd878e484997f6325feb08c4bebce221b0c8833cbdcfcc8780a62a7ea"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/profiler/owners.py",
+      "bytes": 11888,
+      "sha256": "2322db405e3d662570872700bb0ec9a05873d14dc764cd18d7151998f0132b21"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase137/retain-query-emit01/report.json",
+      "bytes": 11073,
+      "sha256": "ac2ea7bcea03596abf9dce3f471b74f0afef918395a7c6aa2c316aedf31049a1"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase137/retain-query-emit01/queries-fused-v02.ssa",
+      "bytes": 1585208,
+      "sha256": "da486e2916f4f58937e4d9a1b6e4c8c8efb93c23f4c6a68745eaf64c13fdaacb"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase137/queries/queries-fused-v02.bend",
+      "bytes": 22765,
+      "sha256": "57b0b07cdba7ed37edf8ad6532083721fe40d9d22ac39f4c5bbcc885479b5cec"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase137/retain-query-emit01/record-fused-v02.ssa",
+      "bytes": 1541047,
+      "sha256": "aeefc818a789a1e8a66eb7f673c223f73ee7ec72f49e5e5ee90a2aef93c463b6"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase137/queries/record-fused-v02.bend",
+      "bytes": 22845,
+      "sha256": "b76b84e10bd2b02f4b9f79475302ab956e1634c92a0af2e0c50421c9f2d138c7"
+    }
+  ],
+  "cases": [
+    {
+      "producer": "retain",
+      "name": "queries-fused-v02",
+      "qbe": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase137/retain-query-emit01/queries-fused-v02.ssa",
+        "bytes": 1585208,
+        "sha256": "da486e2916f4f58937e4d9a1b6e4c8c8efb93c23f4c6a68745eaf64c13fdaacb"
+      },
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase137/queries/queries-fused-v02.bend",
+        "bytes": 22765,
+        "sha256": "57b0b07cdba7ed37edf8ad6532083721fe40d9d22ac39f4c5bbcc885479b5cec"
+      },
+      "sourceProducer": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase137/retain-source02/compiler.bend",
+        "bytes": 2700607,
+        "sha256": "2bdb9bdff5a7eb04b017f9767cfd0ce359fc41bb620ba09c77afe142959be30d"
+      },
+      "privateFunctions": [
+        {
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_100_110_",
+          "decoded": "$direct.dn",
+          "qbeLine": 3406,
+          "lines": 76,
+          "bodySha256": "8bd7e73cb83e4c9615d33bced8b2ab86acc368eb8a430745604e7c92fca0fffb",
+          "calls": [
+            {
+              "symbol": "p111_rt_take",
+              "decoded": "p111_rt_take",
+              "sites": 1
+            },
+            {
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink",
+              "sites": 11
+            },
+            {
+              "symbol": "p125_rt_take2",
+              "decoded": "p125_rt_take2",
+              "sites": 1
+            },
+            {
+              "symbol": "p125_rt_take4",
+              "decoded": "p125_rt_take4",
+              "sites": 1
+            },
+            {
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail",
+              "sites": 1
+            }
+          ],
+          "staticTake9Sites": 1,
+          "staticSinkSites": 11,
+          "runtimeBorrowReadSites": 0
+        },
+        {
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_100_107_",
+          "decoded": "$direct.dk",
+          "qbeLine": 3483,
+          "lines": 76,
+          "bodySha256": "22c8db8e11461c3db7c9d4668cc817d2001a04cd6c9c01e018ae3ff7e8a95bd7",
+          "calls": [
+            {
+              "symbol": "p111_rt_take",
+              "decoded": "p111_rt_take",
+              "sites": 1
+            },
+            {
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink",
+              "sites": 11
+            },
+            {
+              "symbol": "p125_rt_take2",
+              "decoded": "p125_rt_take2",
+              "sites": 1
+            },
+            {
+              "symbol": "p125_rt_take4",
+              "decoded": "p125_rt_take4",
+              "sites": 1
+            },
+            {
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail",
+              "sites": 1
+            }
+          ],
+          "staticTake9Sites": 1,
+          "staticSinkSites": 11,
+          "runtimeBorrowReadSites": 0
+        },
+        {
+          "symbol": "p113d_FID_36_112_49_50_56_98_111_114_114_111_119_46_111_119_110_101_100_46_112_49_51_55_113_95_114_101_99_111_114_100_95_113_117_101_114_121_",
+          "decoded": "$p128borrow.owned.p137q_record_query",
+          "qbeLine": 4319,
+          "lines": 74,
+          "bodySha256": "768d1f1fd1d20717b8a81d072a18fba072b92a898e77151937c9353d21166c84",
+          "calls": [
+            {
+              "symbol": "p111_rt_take",
+              "decoded": "p111_rt_take",
+              "sites": 1
+            },
+            {
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink",
+              "sites": 11
+            },
+            {
+              "symbol": "p111_rt_keep",
+              "decoded": "p111_rt_keep",
+              "sites": 2
+            },
+            {
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_56_56_95_115_116_114_105_110_103_95_101_113_95_103_111_",
+              "decoded": "$direct.p88_string_eq_go",
+              "sites": 1
+            },
+            {
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail",
+              "sites": 1
+            }
+          ],
+          "staticTake9Sites": 1,
+          "staticSinkSites": 11,
+          "runtimeBorrowReadSites": 0
+        },
+        {
+          "symbol": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_112_49_51_55_113_95_114_101_99_111_114_100_95_113_117_101_114_121_",
+          "decoded": "$p118borrow.read.p137q_record_query",
+          "qbeLine": 4394,
+          "lines": 45,
+          "bodySha256": "1e7f7602cee4b13cb400e598ebdcde26e557776b00c3e7a961dca5934d39134e",
+          "calls": [
+            {
+              "symbol": "p118_rt_borrow_fields",
+              "decoded": "p118_rt_borrow_fields",
+              "sites": 1
+            },
+            {
+              "symbol": "p111_rt_special_ctor",
+              "decoded": "p111_rt_special_ctor",
+              "sites": 1
+            },
+            {
+              "symbol": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_112_56_56_95_115_116_114_105_110_103_95_101_113_95_103_111_",
+              "decoded": "$p118borrow.read.p88_string_eq_go",
+              "sites": 1
+            },
+            {
+              "symbol": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_112_57_56_95_101_113_95_102_105_110_105_115_104_",
+              "decoded": "$p118borrow.read.p98_eq_finish",
+              "sites": 1
+            },
+            {
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail",
+              "sites": 1
+            }
+          ],
+          "staticTake9Sites": 0,
+          "staticSinkSites": 0,
+          "runtimeBorrowReadSites": 1
+        },
+        {
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_49_51_55_113_95_114_101_99_111_114_100_95_113_117_101_114_121_",
+          "decoded": "$direct.p137q_record_query",
+          "qbeLine": 4440,
+          "lines": 17,
+          "bodySha256": "8e5c1935f840eeb40ba9d2bdb261ba0305fb241168657752fbbaa1121f93a5b4",
+          "calls": [
+            {
+              "symbol": "p118_rt_borrow_scalar_safe",
+              "decoded": "p118_rt_borrow_scalar_safe",
+              "sites": 1
+            },
+            {
+              "symbol": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_112_49_51_55_113_95_114_101_99_111_114_100_95_113_117_101_114_121_",
+              "decoded": "$p118borrow.read.p137q_record_query",
+              "sites": 1
+            },
+            {
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink",
+              "sites": 2
+            },
+            {
+              "symbol": "p113d_FID_36_112_49_50_56_98_111_114_114_111_119_46_111_119_110_101_100_46_112_49_51_55_113_95_114_101_99_111_114_100_95_113_117_101_114_121_",
+              "decoded": "$p128borrow.owned.p137q_record_query",
+              "sites": 1
+            }
+          ],
+          "staticTake9Sites": 0,
+          "staticSinkSites": 2,
+          "runtimeBorrowReadSites": 0
+        },
+        {
+          "symbol": "p113d_FID_36_112_49_50_56_98_111_114_114_111_119_46_111_119_110_101_100_46_112_49_51_55_113_95_110_97_109_101_95_101_113_",
+          "decoded": "$p128borrow.owned.p137q_name_eq",
+          "qbeLine": 5716,
+          "lines": 167,
+          "bodySha256": "55bd85a1d8940b0bba66a42f5b4d9adb6822cf97cf6ba1521f4ac29f7da0fc46",
+          "calls": [
+            {
+              "symbol": "p111_rt_take",
+              "decoded": "p111_rt_take",
+              "sites": 1
+            },
+            {
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink",
+              "sites": 18
+            },
+            {
+              "symbol": "p111_rt_keep",
+              "decoded": "p111_rt_keep",
+              "sites": 6
+            },
+            {
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_56_56_95_115_116_114_105_110_103_95_101_113_95_103_111_",
+              "decoded": "$direct.p88_string_eq_go",
+              "sites": 3
+            },
+            {
+              "symbol": "p125_rt_take2",
+              "decoded": "p125_rt_take2",
+              "sites": 1
+            },
+            {
+              "symbol": "p125_rt_take4",
+              "decoded": "p125_rt_take4",
+              "sites": 1
+            },
+            {
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail",
+              "sites": 1
+            }
+          ],
+          "staticTake9Sites": 1,
+          "staticSinkSites": 18,
+          "runtimeBorrowReadSites": 0
+        },
+        {
+          "symbol": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_112_49_51_55_113_95_110_97_109_101_95_101_113_",
+          "decoded": "$p118borrow.read.p137q_name_eq",
+          "qbeLine": 5884,
+          "lines": 289,
+          "bodySha256": "6643f49e3b4e7f3472b1eec45e80e832807b096bc7c09c3fc5a78e6ce56ca38b",
+          "calls": [
+            {
+              "symbol": "p118_rt_borrow_fields",
+              "decoded": "p118_rt_borrow_fields",
+              "sites": 5
+            },
+            {
+              "symbol": "p111_rt_special_ctor",
+              "decoded": "p111_rt_special_ctor",
+              "sites": 5
+            },
+            {
+              "symbol": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_112_56_56_95_115_116_114_105_110_103_95_101_113_95_103_111_",
+              "decoded": "$p118borrow.read.p88_string_eq_go",
+              "sites": 1
+            },
+            {
+              "symbol": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_112_57_56_95_101_113_95_102_105_110_105_115_104_",
+              "decoded": "$p118borrow.read.p98_eq_finish",
+              "sites": 1
+            },
+            {
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail",
+              "sites": 3
+            }
+          ],
+          "staticTake9Sites": 0,
+          "staticSinkSites": 0,
+          "runtimeBorrowReadSites": 5
+        },
+        {
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_49_51_55_113_95_110_97_109_101_95_101_113_",
+          "decoded": "$direct.p137q_name_eq",
+          "qbeLine": 6174,
+          "lines": 17,
+          "bodySha256": "7d5264a1d7cba7011b476514dca7da346891667725739c458f90258399ad453d",
+          "calls": [
+            {
+              "symbol": "p118_rt_borrow_scalar_safe",
+              "decoded": "p118_rt_borrow_scalar_safe",
+              "sites": 1
+            },
+            {
+              "symbol": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_112_49_51_55_113_95_110_97_109_101_95_101_113_",
+              "decoded": "$p118borrow.read.p137q_name_eq",
+              "sites": 1
+            },
+            {
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink",
+              "sites": 2
+            },
+            {
+              "symbol": "p113d_FID_36_112_49_50_56_98_111_114_114_111_119_46_111_119_110_101_100_46_112_49_51_55_113_95_110_97_109_101_95_101_113_",
+              "decoded": "$p128borrow.owned.p137q_name_eq",
+              "sites": 1
+            }
+          ],
+          "staticTake9Sites": 0,
+          "staticSinkSites": 2,
+          "runtimeBorrowReadSites": 0
+        },
+        {
+          "symbol": "p113d_FID_36_112_49_50_56_98_111_114_114_111_119_46_111_119_110_101_100_46_112_49_51_55_113_95_107_101_121_95_101_113_",
+          "decoded": "$p128borrow.owned.p137q_key_eq",
+          "qbeLine": 6421,
+          "lines": 167,
+          "bodySha256": "1775e737d59eef64494696b384d60c9887b4713c593629b452b3cf38ff5417a6",
+          "calls": [
+            {
+              "symbol": "p111_rt_take",
+              "decoded": "p111_rt_take",
+              "sites": 1
+            },
+            {
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink",
+              "sites": 18
+            },
+            {
+              "symbol": "p111_rt_keep",
+              "decoded": "p111_rt_keep",
+              "sites": 6
+            },
+            {
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_56_56_95_115_116_114_105_110_103_95_101_113_95_103_111_",
+              "decoded": "$direct.p88_string_eq_go",
+              "sites": 3
+            },
+            {
+              "symbol": "p125_rt_take2",
+              "decoded": "p125_rt_take2",
+              "sites": 1
+            },
+            {
+              "symbol": "p125_rt_take4",
+              "decoded": "p125_rt_take4",
+              "sites": 1
+            },
+            {
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail",
+              "sites": 1
+            }
+          ],
+          "staticTake9Sites": 1,
+          "staticSinkSites": 18,
+          "runtimeBorrowReadSites": 0
+        },
+        {
+          "symbol": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_112_49_51_55_113_95_107_101_121_95_101_113_",
+          "decoded": "$p118borrow.read.p137q_key_eq",
+          "qbeLine": 6589,
+          "lines": 289,
+          "bodySha256": "9c84b58d20daa6b1a071e9b0dc454fb7ba51bd8870e7ecb8be45fb13b9eb1b21",
+          "calls": [
+            {
+              "symbol": "p118_rt_borrow_fields",
+              "decoded": "p118_rt_borrow_fields",
+              "sites": 5
+            },
+            {
+              "symbol": "p111_rt_special_ctor",
+              "decoded": "p111_rt_special_ctor",
+              "sites": 5
+            },
+            {
+              "symbol": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_112_56_56_95_115_116_114_105_110_103_95_101_113_95_103_111_",
+              "decoded": "$p118borrow.read.p88_string_eq_go",
+              "sites": 1
+            },
+            {
+              "symbol": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_112_57_56_95_101_113_95_102_105_110_105_115_104_",
+              "decoded": "$p118borrow.read.p98_eq_finish",
+              "sites": 1
+            },
+            {
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail",
+              "sites": 3
+            }
+          ],
+          "staticTake9Sites": 0,
+          "staticSinkSites": 0,
+          "runtimeBorrowReadSites": 5
+        },
+        {
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_49_51_55_113_95_107_101_121_95_101_113_",
+          "decoded": "$direct.p137q_key_eq",
+          "qbeLine": 6879,
+          "lines": 17,
+          "bodySha256": "226d2bf849150d1e4d3c3a055e3c206a783e736763655baea150ce08797347be",
+          "calls": [
+            {
+              "symbol": "p118_rt_borrow_scalar_safe",
+              "decoded": "p118_rt_borrow_scalar_safe",
+              "sites": 1
+            },
+            {
+              "symbol": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_112_49_51_55_113_95_107_101_121_95_101_113_",
+              "decoded": "$p118borrow.read.p137q_key_eq",
+              "sites": 1
+            },
+            {
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink",
+              "sites": 2
+            },
+            {
+              "symbol": "p113d_FID_36_112_49_50_56_98_111_114_114_111_119_46_111_119_110_101_100_46_112_49_51_55_113_95_107_101_121_95_101_113_",
+              "decoded": "$p128borrow.owned.p137q_key_eq",
+              "sites": 1
+            }
+          ],
+          "staticTake9Sites": 0,
+          "staticSinkSites": 2,
+          "runtimeBorrowReadSites": 0
+        },
+        {
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_102_95_102_105_110_100_95_110_101_120_116_",
+          "decoded": "$direct.f_find_next",
+          "qbeLine": 7053,
+          "lines": 8,
+          "bodySha256": "205def9aefdd4ad6124addd7e45b662bf5889bd0066e538d3922fcf19b31636f",
+          "calls": [
+            {
+              "symbol": "p113d_FID_36_112_49_50_54_115_99_99_46_53_49_",
+              "decoded": "$p126scc.51",
+              "sites": 1
+            }
+          ],
+          "staticTake9Sites": 0,
+          "staticSinkSites": 0,
+          "runtimeBorrowReadSites": 0
+        },
+        {
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_102_95_102_105_110_100_",
+          "decoded": "$direct.f_find",
+          "qbeLine": 7062,
+          "lines": 8,
+          "bodySha256": "5d99f0badfdf897e74f234e04df44fb3ec2d0f1e17a08652a0c770737ca3bb2c",
+          "calls": [
+            {
+              "symbol": "p113d_FID_36_112_49_50_54_115_99_99_46_53_49_",
+              "decoded": "$p126scc.51",
+              "sites": 1
+            }
+          ],
+          "staticTake9Sites": 0,
+          "staticSinkSites": 0,
+          "runtimeBorrowReadSites": 0
+        },
+        {
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_108_111_111_107_117_112_",
+          "decoded": "$direct.lookup",
+          "qbeLine": 8314,
+          "lines": 203,
+          "bodySha256": "0b7447d99b1b3be869fe876e74f029dd25fadc0ad4e10aac25b51d398335d4e0",
+          "calls": [
+            {
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink",
+              "sites": 15
+            },
+            {
+              "symbol": "p125_rt_take2",
+              "decoded": "p125_rt_take2",
+              "sites": 2
+            },
+            {
+              "symbol": "p111_rt_keep",
+              "decoded": "p111_rt_keep",
+              "sites": 4
+            },
+            {
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_49_51_55_113_95_105_115_95_99_97_99_104_101_",
+              "decoded": "$direct.p137q_is_cache",
+              "sites": 1
+            },
+            {
+              "symbol": "p111_rt_ctor",
+              "decoded": "p111_rt_ctor",
+              "sites": 4
+            },
+            {
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_100_99_",
+              "decoded": "$direct.dc",
+              "sites": 1
+            },
+            {
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail",
+              "sites": 4
+            },
+            {
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_105_110_100_101_120_95_104_97_115_104_",
+              "decoded": "$direct.index_hash",
+              "sites": 1
+            },
+            {
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_105_110_100_101_120_95_102_105_110_100_",
+              "decoded": "$direct.index_find",
+              "sites": 1
+            },
+            {
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_49_51_55_113_95_110_97_109_101_95_101_113_",
+              "decoded": "$direct.p137q_name_eq",
+              "sites": 1
+            }
+          ],
+          "staticTake9Sites": 0,
+          "staticSinkSites": 15,
+          "runtimeBorrowReadSites": 0
+        },
+        {
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_110_99_95_99_116_111_114_95_111_119_110_101_100_",
+          "decoded": "$direct.nc_ctor_owned",
+          "qbeLine": 8900,
+          "lines": 151,
+          "bodySha256": "78b4937f2c3919a75816cc546b0aa6b52c97eadf6d3b0166b3b61658b89b0527",
+          "calls": [
+            {
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink",
+              "sites": 13
+            },
+            {
+              "symbol": "p125_rt_take2",
+              "decoded": "p125_rt_take2",
+              "sites": 1
+            },
+            {
+              "symbol": "p111_rt_keep",
+              "decoded": "p111_rt_keep",
+              "sites": 3
+            },
+            {
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_49_51_55_113_95_105_115_95_97_100_116_",
+              "decoded": "$direct.p137q_is_adt",
+              "sites": 1
+            },
+            {
+              "symbol": "p111_rt_ctor",
+              "decoded": "p111_rt_ctor",
+              "sites": 4
+            },
+            {
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_100_99_",
+              "decoded": "$direct.dc",
+              "sites": 1
+            },
+            {
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_108_111_111_107_117_112_",
+              "decoded": "$direct.lookup",
+              "sites": 1
+            },
+            {
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_49_51_55_113_95_105_115_95_99_116_114_",
+              "decoded": "$direct.p137q_is_ctr",
+              "sites": 1
+            },
+            {
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_100_98_",
+              "decoded": "$direct.db",
+              "sites": 1
+            },
+            {
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail",
+              "sites": 3
+            }
+          ],
+          "staticTake9Sites": 0,
+          "staticSinkSites": 13,
+          "runtimeBorrowReadSites": 0
+        },
+        {
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_49_51_55_113_95_113_117_101_114_105_101_115_",
+          "decoded": "$direct.p137q_queries",
+          "qbeLine": 9052,
+          "lines": 185,
+          "bodySha256": "a6fa1838ce7d7db21d4af28d865624a45646e4a98044c3c26d02191f1348ece9",
+          "calls": [
+            {
+              "symbol": "p111_rt_keep",
+              "decoded": "p111_rt_keep",
+              "sites": 6
+            },
+            {
+              "symbol": "p113d_FID_36_112_49_50_54_115_99_99_46_53_49_",
+              "decoded": "$p126scc.51",
+              "sites": 2
+            },
+            {
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_100_97_",
+              "decoded": "$direct.da",
+              "sites": 4
+            },
+            {
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_108_111_111_107_117_112_",
+              "decoded": "$direct.lookup",
+              "sites": 2
+            },
+            {
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_110_99_95_99_116_111_114_95_111_119_110_101_100_",
+              "decoded": "$direct.nc_ctor_owned",
+              "sites": 2
+            },
+            {
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail",
+              "sites": 2
+            }
+          ],
+          "staticTake9Sites": 0,
+          "staticSinkSites": 0,
+          "runtimeBorrowReadSites": 0
+        },
+        {
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_49_51_55_113_95_111_110_99_101_",
+          "decoded": "$direct.p137q_once",
+          "qbeLine": 9238,
+          "lines": 194,
+          "bodySha256": "60d718d38d824445c52357a8080b42aff0e0c9a2a317b095006ab3adf1a8e81d",
+          "calls": [
+            {
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink",
+              "sites": 1
+            },
+            {
+              "symbol": "p111_rt_keep",
+              "decoded": "p111_rt_keep",
+              "sites": 6
+            },
+            {
+              "symbol": "p113d_FID_36_112_49_50_54_115_99_99_46_53_49_",
+              "decoded": "$p126scc.51",
+              "sites": 2
+            },
+            {
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_100_97_",
+              "decoded": "$direct.da",
+              "sites": 4
+            },
+            {
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_108_111_111_107_117_112_",
+              "decoded": "$direct.lookup",
+              "sites": 2
+            },
+            {
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_110_99_95_99_116_111_114_95_111_119_110_101_100_",
+              "decoded": "$direct.nc_ctor_owned",
+              "sites": 2
+            },
+            {
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail",
+              "sites": 2
+            }
+          ],
+          "staticTake9Sites": 0,
+          "staticSinkSites": 1,
+          "runtimeBorrowReadSites": 0
+        },
+        {
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_49_51_55_113_95_114_101_112_101_97_116_",
+          "decoded": "$direct.p137q_repeat",
+          "qbeLine": 9433,
+          "lines": 272,
+          "bodySha256": "a517045a73bac48afeab10f06c99c69d5d9eec3c96d82d47200e583eae1088d1",
+          "calls": [
+            {
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink",
+              "sites": 4
+            },
+            {
+              "symbol": "p111_rt_keep",
+              "decoded": "p111_rt_keep",
+              "sites": 9
+            },
+            {
+              "symbol": "p113d_FID_36_112_49_50_54_115_99_99_46_53_49_",
+              "decoded": "$p126scc.51",
+              "sites": 2
+            },
+            {
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_100_97_",
+              "decoded": "$direct.da",
+              "sites": 4
+            },
+            {
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_108_111_111_107_117_112_",
+              "decoded": "$direct.lookup",
+              "sites": 2
+            },
+            {
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_110_99_95_99_116_111_114_95_111_119_110_101_100_",
+              "decoded": "$direct.nc_ctor_owned",
+              "sites": 2
+            },
+            {
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail",
+              "sites": 3
+            }
+          ],
+          "staticTake9Sites": 0,
+          "staticSinkSites": 4,
+          "runtimeBorrowReadSites": 0
+        }
+      ],
+      "timedRoot": "p113d_FID_36_100_105_114_101_99_116_46_112_49_51_55_113_95_114_101_112_101_97_116_",
+      "directReachableFunctions": 35,
+      "borrowedReaderDirectPaths": [
+        {
+          "reader": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_112_49_51_55_113_95_107_101_121_95_101_113_",
+          "decoded": "$p118borrow.read.p137q_key_eq",
+          "edges": [
+            {
+              "caller": "p113d_FID_36_100_105_114_101_99_116_46_112_49_51_55_113_95_114_101_112_101_97_116_",
+              "callerDecoded": "$direct.p137q_repeat",
+              "line": 9507,
+              "target": "p113d_FID_36_112_49_50_54_115_99_99_46_53_49_",
+              "targetDecoded": "$p126scc.51"
+            },
+            {
+              "caller": "p113d_FID_36_112_49_50_54_115_99_99_46_53_49_",
+              "callerDecoded": "$p126scc.51",
+              "line": 7033,
+              "target": "p113d_FID_36_100_105_114_101_99_116_46_112_49_51_55_113_95_107_101_121_95_101_113_",
+              "targetDecoded": "$direct.p137q_key_eq"
+            },
+            {
+              "caller": "p113d_FID_36_100_105_114_101_99_116_46_112_49_51_55_113_95_107_101_121_95_101_113_",
+              "callerDecoded": "$direct.p137q_key_eq",
+              "line": 6888,
+              "target": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_112_49_51_55_113_95_107_101_121_95_101_113_",
+              "targetDecoded": "$p118borrow.read.p137q_key_eq"
+            }
+          ]
+        },
+        {
+          "reader": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_112_49_51_55_113_95_110_97_109_101_95_101_113_",
+          "decoded": "$p118borrow.read.p137q_name_eq",
+          "edges": [
+            {
+              "caller": "p113d_FID_36_100_105_114_101_99_116_46_112_49_51_55_113_95_114_101_112_101_97_116_",
+              "callerDecoded": "$direct.p137q_repeat",
+              "line": 9520,
+              "target": "p113d_FID_36_100_105_114_101_99_116_46_108_111_111_107_117_112_",
+              "targetDecoded": "$direct.lookup"
+            },
+            {
+              "caller": "p113d_FID_36_100_105_114_101_99_116_46_108_111_111_107_117_112_",
+              "callerDecoded": "$direct.lookup",
+              "line": 8456,
+              "target": "p113d_FID_36_100_105_114_101_99_116_46_112_49_51_55_113_95_110_97_109_101_95_101_113_",
+              "targetDecoded": "$direct.p137q_name_eq"
+            },
+            {
+              "caller": "p113d_FID_36_100_105_114_101_99_116_46_112_49_51_55_113_95_110_97_109_101_95_101_113_",
+              "callerDecoded": "$direct.p137q_name_eq",
+              "line": 6183,
+              "target": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_112_49_51_55_113_95_110_97_109_101_95_101_113_",
+              "targetDecoded": "$p118borrow.read.p137q_name_eq"
+            }
+          ]
+        }
+      ],
+      "pathCaveat": "Named direct paths only: existence does not establish branch frequency. No inference from missing indirect edges."
+    },
+    {
+      "producer": "retain",
+      "name": "record-fused-v02",
+      "qbe": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase137/retain-query-emit01/record-fused-v02.ssa",
+        "bytes": 1541047,
+        "sha256": "aeefc818a789a1e8a66eb7f673c223f73ee7ec72f49e5e5ee90a2aef93c463b6"
+      },
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase137/queries/record-fused-v02.bend",
+        "bytes": 22845,
+        "sha256": "b76b84e10bd2b02f4b9f79475302ab956e1634c92a0af2e0c50421c9f2d138c7"
+      },
+      "sourceProducer": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase137/retain-source02/compiler.bend",
+        "bytes": 2700607,
+        "sha256": "2bdb9bdff5a7eb04b017f9767cfd0ce359fc41bb620ba09c77afe142959be30d"
+      },
+      "privateFunctions": [
+        {
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_100_110_",
+          "decoded": "$direct.dn",
+          "qbeLine": 3406,
+          "lines": 76,
+          "bodySha256": "8bd7e73cb83e4c9615d33bced8b2ab86acc368eb8a430745604e7c92fca0fffb",
+          "calls": [
+            {
+              "symbol": "p111_rt_take",
+              "decoded": "p111_rt_take",
+              "sites": 1
+            },
+            {
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink",
+              "sites": 11
+            },
+            {
+              "symbol": "p125_rt_take2",
+              "decoded": "p125_rt_take2",
+              "sites": 1
+            },
+            {
+              "symbol": "p125_rt_take4",
+              "decoded": "p125_rt_take4",
+              "sites": 1
+            },
+            {
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail",
+              "sites": 1
+            }
+          ],
+          "staticTake9Sites": 1,
+          "staticSinkSites": 11,
+          "runtimeBorrowReadSites": 0
+        },
+        {
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_100_107_",
+          "decoded": "$direct.dk",
+          "qbeLine": 3483,
+          "lines": 76,
+          "bodySha256": "22c8db8e11461c3db7c9d4668cc817d2001a04cd6c9c01e018ae3ff7e8a95bd7",
+          "calls": [
+            {
+              "symbol": "p111_rt_take",
+              "decoded": "p111_rt_take",
+              "sites": 1
+            },
+            {
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink",
+              "sites": 11
+            },
+            {
+              "symbol": "p125_rt_take2",
+              "decoded": "p125_rt_take2",
+              "sites": 1
+            },
+            {
+              "symbol": "p125_rt_take4",
+              "decoded": "p125_rt_take4",
+              "sites": 1
+            },
+            {
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail",
+              "sites": 1
+            }
+          ],
+          "staticTake9Sites": 1,
+          "staticSinkSites": 11,
+          "runtimeBorrowReadSites": 0
+        },
+        {
+          "symbol": "p113d_FID_36_112_49_50_56_98_111_114_114_111_119_46_111_119_110_101_100_46_112_49_51_55_113_95_114_101_99_111_114_100_95_113_117_101_114_121_",
+          "decoded": "$p128borrow.owned.p137q_record_query",
+          "qbeLine": 4319,
+          "lines": 74,
+          "bodySha256": "768d1f1fd1d20717b8a81d072a18fba072b92a898e77151937c9353d21166c84",
+          "calls": [
+            {
+              "symbol": "p111_rt_take",
+              "decoded": "p111_rt_take",
+              "sites": 1
+            },
+            {
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink",
+              "sites": 11
+            },
+            {
+              "symbol": "p111_rt_keep",
+              "decoded": "p111_rt_keep",
+              "sites": 2
+            },
+            {
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_56_56_95_115_116_114_105_110_103_95_101_113_95_103_111_",
+              "decoded": "$direct.p88_string_eq_go",
+              "sites": 1
+            },
+            {
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail",
+              "sites": 1
+            }
+          ],
+          "staticTake9Sites": 1,
+          "staticSinkSites": 11,
+          "runtimeBorrowReadSites": 0
+        },
+        {
+          "symbol": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_112_49_51_55_113_95_114_101_99_111_114_100_95_113_117_101_114_121_",
+          "decoded": "$p118borrow.read.p137q_record_query",
+          "qbeLine": 4394,
+          "lines": 45,
+          "bodySha256": "1e7f7602cee4b13cb400e598ebdcde26e557776b00c3e7a961dca5934d39134e",
+          "calls": [
+            {
+              "symbol": "p118_rt_borrow_fields",
+              "decoded": "p118_rt_borrow_fields",
+              "sites": 1
+            },
+            {
+              "symbol": "p111_rt_special_ctor",
+              "decoded": "p111_rt_special_ctor",
+              "sites": 1
+            },
+            {
+              "symbol": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_112_56_56_95_115_116_114_105_110_103_95_101_113_95_103_111_",
+              "decoded": "$p118borrow.read.p88_string_eq_go",
+              "sites": 1
+            },
+            {
+              "symbol": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_112_57_56_95_101_113_95_102_105_110_105_115_104_",
+              "decoded": "$p118borrow.read.p98_eq_finish",
+              "sites": 1
+            },
+            {
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail",
+              "sites": 1
+            }
+          ],
+          "staticTake9Sites": 0,
+          "staticSinkSites": 0,
+          "runtimeBorrowReadSites": 1
+        },
+        {
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_49_51_55_113_95_114_101_99_111_114_100_95_113_117_101_114_121_",
+          "decoded": "$direct.p137q_record_query",
+          "qbeLine": 4440,
+          "lines": 17,
+          "bodySha256": "8e5c1935f840eeb40ba9d2bdb261ba0305fb241168657752fbbaa1121f93a5b4",
+          "calls": [
+            {
+              "symbol": "p118_rt_borrow_scalar_safe",
+              "decoded": "p118_rt_borrow_scalar_safe",
+              "sites": 1
+            },
+            {
+              "symbol": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_112_49_51_55_113_95_114_101_99_111_114_100_95_113_117_101_114_121_",
+              "decoded": "$p118borrow.read.p137q_record_query",
+              "sites": 1
+            },
+            {
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink",
+              "sites": 2
+            },
+            {
+              "symbol": "p113d_FID_36_112_49_50_56_98_111_114_114_111_119_46_111_119_110_101_100_46_112_49_51_55_113_95_114_101_99_111_114_100_95_113_117_101_114_121_",
+              "decoded": "$p128borrow.owned.p137q_record_query",
+              "sites": 1
+            }
+          ],
+          "staticTake9Sites": 0,
+          "staticSinkSites": 2,
+          "runtimeBorrowReadSites": 0
+        },
+        {
+          "symbol": "p113d_FID_36_112_49_50_56_98_111_114_114_111_119_46_111_119_110_101_100_46_112_49_51_55_113_95_110_97_109_101_95_101_113_",
+          "decoded": "$p128borrow.owned.p137q_name_eq",
+          "qbeLine": 5716,
+          "lines": 167,
+          "bodySha256": "55bd85a1d8940b0bba66a42f5b4d9adb6822cf97cf6ba1521f4ac29f7da0fc46",
+          "calls": [
+            {
+              "symbol": "p111_rt_take",
+              "decoded": "p111_rt_take",
+              "sites": 1
+            },
+            {
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink",
+              "sites": 18
+            },
+            {
+              "symbol": "p111_rt_keep",
+              "decoded": "p111_rt_keep",
+              "sites": 6
+            },
+            {
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_56_56_95_115_116_114_105_110_103_95_101_113_95_103_111_",
+              "decoded": "$direct.p88_string_eq_go",
+              "sites": 3
+            },
+            {
+              "symbol": "p125_rt_take2",
+              "decoded": "p125_rt_take2",
+              "sites": 1
+            },
+            {
+              "symbol": "p125_rt_take4",
+              "decoded": "p125_rt_take4",
+              "sites": 1
+            },
+            {
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail",
+              "sites": 1
+            }
+          ],
+          "staticTake9Sites": 1,
+          "staticSinkSites": 18,
+          "runtimeBorrowReadSites": 0
+        },
+        {
+          "symbol": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_112_49_51_55_113_95_110_97_109_101_95_101_113_",
+          "decoded": "$p118borrow.read.p137q_name_eq",
+          "qbeLine": 5884,
+          "lines": 289,
+          "bodySha256": "6643f49e3b4e7f3472b1eec45e80e832807b096bc7c09c3fc5a78e6ce56ca38b",
+          "calls": [
+            {
+              "symbol": "p118_rt_borrow_fields",
+              "decoded": "p118_rt_borrow_fields",
+              "sites": 5
+            },
+            {
+              "symbol": "p111_rt_special_ctor",
+              "decoded": "p111_rt_special_ctor",
+              "sites": 5
+            },
+            {
+              "symbol": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_112_56_56_95_115_116_114_105_110_103_95_101_113_95_103_111_",
+              "decoded": "$p118borrow.read.p88_string_eq_go",
+              "sites": 1
+            },
+            {
+              "symbol": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_112_57_56_95_101_113_95_102_105_110_105_115_104_",
+              "decoded": "$p118borrow.read.p98_eq_finish",
+              "sites": 1
+            },
+            {
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail",
+              "sites": 3
+            }
+          ],
+          "staticTake9Sites": 0,
+          "staticSinkSites": 0,
+          "runtimeBorrowReadSites": 5
+        },
+        {
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_49_51_55_113_95_110_97_109_101_95_101_113_",
+          "decoded": "$direct.p137q_name_eq",
+          "qbeLine": 6174,
+          "lines": 17,
+          "bodySha256": "7d5264a1d7cba7011b476514dca7da346891667725739c458f90258399ad453d",
+          "calls": [
+            {
+              "symbol": "p118_rt_borrow_scalar_safe",
+              "decoded": "p118_rt_borrow_scalar_safe",
+              "sites": 1
+            },
+            {
+              "symbol": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_112_49_51_55_113_95_110_97_109_101_95_101_113_",
+              "decoded": "$p118borrow.read.p137q_name_eq",
+              "sites": 1
+            },
+            {
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink",
+              "sites": 2
+            },
+            {
+              "symbol": "p113d_FID_36_112_49_50_56_98_111_114_114_111_119_46_111_119_110_101_100_46_112_49_51_55_113_95_110_97_109_101_95_101_113_",
+              "decoded": "$p128borrow.owned.p137q_name_eq",
+              "sites": 1
+            }
+          ],
+          "staticTake9Sites": 0,
+          "staticSinkSites": 2,
+          "runtimeBorrowReadSites": 0
+        },
+        {
+          "symbol": "p113d_FID_36_112_49_50_56_98_111_114_114_111_119_46_111_119_110_101_100_46_112_49_51_55_113_95_107_101_121_95_101_113_",
+          "decoded": "$p128borrow.owned.p137q_key_eq",
+          "qbeLine": 6421,
+          "lines": 167,
+          "bodySha256": "1775e737d59eef64494696b384d60c9887b4713c593629b452b3cf38ff5417a6",
+          "calls": [
+            {
+              "symbol": "p111_rt_take",
+              "decoded": "p111_rt_take",
+              "sites": 1
+            },
+            {
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink",
+              "sites": 18
+            },
+            {
+              "symbol": "p111_rt_keep",
+              "decoded": "p111_rt_keep",
+              "sites": 6
+            },
+            {
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_56_56_95_115_116_114_105_110_103_95_101_113_95_103_111_",
+              "decoded": "$direct.p88_string_eq_go",
+              "sites": 3
+            },
+            {
+              "symbol": "p125_rt_take2",
+              "decoded": "p125_rt_take2",
+              "sites": 1
+            },
+            {
+              "symbol": "p125_rt_take4",
+              "decoded": "p125_rt_take4",
+              "sites": 1
+            },
+            {
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail",
+              "sites": 1
+            }
+          ],
+          "staticTake9Sites": 1,
+          "staticSinkSites": 18,
+          "runtimeBorrowReadSites": 0
+        },
+        {
+          "symbol": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_112_49_51_55_113_95_107_101_121_95_101_113_",
+          "decoded": "$p118borrow.read.p137q_key_eq",
+          "qbeLine": 6589,
+          "lines": 289,
+          "bodySha256": "9c84b58d20daa6b1a071e9b0dc454fb7ba51bd8870e7ecb8be45fb13b9eb1b21",
+          "calls": [
+            {
+              "symbol": "p118_rt_borrow_fields",
+              "decoded": "p118_rt_borrow_fields",
+              "sites": 5
+            },
+            {
+              "symbol": "p111_rt_special_ctor",
+              "decoded": "p111_rt_special_ctor",
+              "sites": 5
+            },
+            {
+              "symbol": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_112_56_56_95_115_116_114_105_110_103_95_101_113_95_103_111_",
+              "decoded": "$p118borrow.read.p88_string_eq_go",
+              "sites": 1
+            },
+            {
+              "symbol": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_112_57_56_95_101_113_95_102_105_110_105_115_104_",
+              "decoded": "$p118borrow.read.p98_eq_finish",
+              "sites": 1
+            },
+            {
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail",
+              "sites": 3
+            }
+          ],
+          "staticTake9Sites": 0,
+          "staticSinkSites": 0,
+          "runtimeBorrowReadSites": 5
+        },
+        {
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_49_51_55_113_95_107_101_121_95_101_113_",
+          "decoded": "$direct.p137q_key_eq",
+          "qbeLine": 6879,
+          "lines": 17,
+          "bodySha256": "226d2bf849150d1e4d3c3a055e3c206a783e736763655baea150ce08797347be",
+          "calls": [
+            {
+              "symbol": "p118_rt_borrow_scalar_safe",
+              "decoded": "p118_rt_borrow_scalar_safe",
+              "sites": 1
+            },
+            {
+              "symbol": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_112_49_51_55_113_95_107_101_121_95_101_113_",
+              "decoded": "$p118borrow.read.p137q_key_eq",
+              "sites": 1
+            },
+            {
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink",
+              "sites": 2
+            },
+            {
+              "symbol": "p113d_FID_36_112_49_50_56_98_111_114_114_111_119_46_111_119_110_101_100_46_112_49_51_55_113_95_107_101_121_95_101_113_",
+              "decoded": "$p128borrow.owned.p137q_key_eq",
+              "sites": 1
+            }
+          ],
+          "staticTake9Sites": 0,
+          "staticSinkSites": 2,
+          "runtimeBorrowReadSites": 0
+        },
+        {
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_102_95_102_105_110_100_95_110_101_120_116_",
+          "decoded": "$direct.f_find_next",
+          "qbeLine": 7053,
+          "lines": 8,
+          "bodySha256": "82839e70f250d0feeca05b3a1560fa2cf63c96daf1bac890f9283891f51411f4",
+          "calls": [
+            {
+              "symbol": "p113d_FID_36_112_49_50_54_115_99_99_46_53_48_",
+              "decoded": "$p126scc.50",
+              "sites": 1
+            }
+          ],
+          "staticTake9Sites": 0,
+          "staticSinkSites": 0,
+          "runtimeBorrowReadSites": 0
+        },
+        {
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_102_95_102_105_110_100_",
+          "decoded": "$direct.f_find",
+          "qbeLine": 7062,
+          "lines": 8,
+          "bodySha256": "747f72613caf8c04c5d56a8e209ebb5c652bbe09c5ed4576b8eedab305b96e87",
+          "calls": [
+            {
+              "symbol": "p113d_FID_36_112_49_50_54_115_99_99_46_53_48_",
+              "decoded": "$p126scc.50",
+              "sites": 1
+            }
+          ],
+          "staticTake9Sites": 0,
+          "staticSinkSites": 0,
+          "runtimeBorrowReadSites": 0
+        },
+        {
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_49_51_55_113_95_111_110_99_101_",
+          "decoded": "$direct.p137q_once",
+          "qbeLine": 7566,
+          "lines": 105,
+          "bodySha256": "7290d0ba5a6410cda474ef8bd30b9678a4ab41ee5aed66e40b81703256634d3b",
+          "calls": [
+            {
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink",
+              "sites": 1
+            },
+            {
+              "symbol": "p111_rt_keep",
+              "decoded": "p111_rt_keep",
+              "sites": 1
+            },
+            {
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_49_51_55_113_95_114_101_99_111_114_100_95_113_117_101_114_121_",
+              "decoded": "$direct.p137q_record_query",
+              "sites": 2
+            },
+            {
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail",
+              "sites": 2
+            }
+          ],
+          "staticTake9Sites": 0,
+          "staticSinkSites": 1,
+          "runtimeBorrowReadSites": 0
+        },
+        {
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_108_111_111_107_117_112_",
+          "decoded": "$direct.lookup",
+          "qbeLine": 8420,
+          "lines": 203,
+          "bodySha256": "0b7447d99b1b3be869fe876e74f029dd25fadc0ad4e10aac25b51d398335d4e0",
+          "calls": [
+            {
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink",
+              "sites": 15
+            },
+            {
+              "symbol": "p125_rt_take2",
+              "decoded": "p125_rt_take2",
+              "sites": 2
+            },
+            {
+              "symbol": "p111_rt_keep",
+              "decoded": "p111_rt_keep",
+              "sites": 4
+            },
+            {
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_49_51_55_113_95_105_115_95_99_97_99_104_101_",
+              "decoded": "$direct.p137q_is_cache",
+              "sites": 1
+            },
+            {
+              "symbol": "p111_rt_ctor",
+              "decoded": "p111_rt_ctor",
+              "sites": 4
+            },
+            {
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_100_99_",
+              "decoded": "$direct.dc",
+              "sites": 1
+            },
+            {
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail",
+              "sites": 4
+            },
+            {
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_105_110_100_101_120_95_104_97_115_104_",
+              "decoded": "$direct.index_hash",
+              "sites": 1
+            },
+            {
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_105_110_100_101_120_95_102_105_110_100_",
+              "decoded": "$direct.index_find",
+              "sites": 1
+            },
+            {
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_49_51_55_113_95_110_97_109_101_95_101_113_",
+              "decoded": "$direct.p137q_name_eq",
+              "sites": 1
+            }
+          ],
+          "staticTake9Sites": 0,
+          "staticSinkSites": 15,
+          "runtimeBorrowReadSites": 0
+        },
+        {
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_49_51_55_113_95_114_101_112_101_97_116_",
+          "decoded": "$direct.p137q_repeat",
+          "qbeLine": 9006,
+          "lines": 183,
+          "bodySha256": "57c7f1a88fb5f8d3ad16371424fbfb99c51e4f063e9892c83bd946845617175b",
+          "calls": [
+            {
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink",
+              "sites": 4
+            },
+            {
+              "symbol": "p111_rt_keep",
+              "decoded": "p111_rt_keep",
+              "sites": 4
+            },
+            {
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_49_51_55_113_95_114_101_99_111_114_100_95_113_117_101_114_121_",
+              "decoded": "$direct.p137q_record_query",
+              "sites": 2
+            },
+            {
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail",
+              "sites": 3
+            }
+          ],
+          "staticTake9Sites": 0,
+          "staticSinkSites": 4,
+          "runtimeBorrowReadSites": 0
+        },
+        {
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_110_99_95_99_116_111_114_95_111_119_110_101_100_",
+          "decoded": "$direct.nc_ctor_owned",
+          "qbeLine": 9190,
+          "lines": 151,
+          "bodySha256": "78b4937f2c3919a75816cc546b0aa6b52c97eadf6d3b0166b3b61658b89b0527",
+          "calls": [
+            {
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink",
+              "sites": 13
+            },
+            {
+              "symbol": "p125_rt_take2",
+              "decoded": "p125_rt_take2",
+              "sites": 1
+            },
+            {
+              "symbol": "p111_rt_keep",
+              "decoded": "p111_rt_keep",
+              "sites": 3
+            },
+            {
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_49_51_55_113_95_105_115_95_97_100_116_",
+              "decoded": "$direct.p137q_is_adt",
+              "sites": 1
+            },
+            {
+              "symbol": "p111_rt_ctor",
+              "decoded": "p111_rt_ctor",
+              "sites": 4
+            },
+            {
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_100_99_",
+              "decoded": "$direct.dc",
+              "sites": 1
+            },
+            {
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_108_111_111_107_117_112_",
+              "decoded": "$direct.lookup",
+              "sites": 1
+            },
+            {
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_49_51_55_113_95_105_115_95_99_116_114_",
+              "decoded": "$direct.p137q_is_ctr",
+              "sites": 1
+            },
+            {
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_100_98_",
+              "decoded": "$direct.db",
+              "sites": 1
+            },
+            {
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail",
+              "sites": 3
+            }
+          ],
+          "staticTake9Sites": 0,
+          "staticSinkSites": 13,
+          "runtimeBorrowReadSites": 0
+        }
+      ],
+      "timedRoot": "p113d_FID_36_100_105_114_101_99_116_46_112_49_51_55_113_95_114_101_112_101_97_116_",
+      "directReachableFunctions": 8,
+      "borrowedReaderDirectPaths": [
+        {
+          "reader": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_112_49_51_55_113_95_114_101_99_111_114_100_95_113_117_101_114_121_",
+          "decoded": "$p118borrow.read.p137q_record_query",
+          "edges": [
+            {
+              "caller": "p113d_FID_36_100_105_114_101_99_116_46_112_49_51_55_113_95_114_101_112_101_97_116_",
+              "callerDecoded": "$direct.p137q_repeat",
+              "line": 9071,
+              "target": "p113d_FID_36_100_105_114_101_99_116_46_112_49_51_55_113_95_114_101_99_111_114_100_95_113_117_101_114_121_",
+              "targetDecoded": "$direct.p137q_record_query"
+            },
+            {
+              "caller": "p113d_FID_36_100_105_114_101_99_116_46_112_49_51_55_113_95_114_101_99_111_114_100_95_113_117_101_114_121_",
+              "callerDecoded": "$direct.p137q_record_query",
+              "line": 4449,
+              "target": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_112_49_51_55_113_95_114_101_99_111_114_100_95_113_117_101_114_121_",
+              "targetDecoded": "$p118borrow.read.p137q_record_query"
+            }
+          ]
+        }
+      ],
+      "pathCaveat": "Named direct paths only: existence does not establish branch frequency. No inference from missing indirect edges."
+    }
+  ],
+  "scope": "Actual integrated emitted products. Static path/site inventory is not dynamic execution, event counts, machine-code speed or semantic qualification. Follow adapter guard/fallback branches independently."
+}

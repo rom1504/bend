@@ -1,0 +1,85 @@
+{
+  "kind": "phase137-source-only-width-policy-control-inventory",
+  "targetsRun": false,
+  "source": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase134/verify-selected-source01/compiler.bend",
+    "bytes": 2693121,
+    "sha256": "a00019246b5181b288ab4d3e09e616bd41415fe6381e89a96185c05efa19fb57"
+  },
+  "candidate": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase137/wide/controls-policy-v01.bend",
+    "bytes": 1580,
+    "sha256": "b99db43a32b52bb003b6d3ecada3df63e3109a46fc1f999028441469ec10c1c0"
+  },
+  "changedDeclaration": "p131rg_controls",
+  "oldPredicate": "p128bs_control_row(\"region-wide-refused\",Bool.not(p131rg_width(9)))",
+  "newPredicate": "p128bs_control_row(\"region-width-seventeen-refused\",Bool.not(p131rg_width(17)))",
+  "oldControlCount": 13,
+  "newControlCount": 13,
+  "reachableControlEntries": [
+    {
+      "entry": "p118ns_controls",
+      "reachableChangedBounds": [
+        "p118b_project_borrow"
+      ]
+    },
+    {
+      "entry": "p128br_call_controls",
+      "reachableChangedBounds": [
+        "nol_ctor_fields",
+        "nol_fields"
+      ]
+    },
+    {
+      "entry": "p128bl_controls",
+      "reachableChangedBounds": [
+        "nol_ctor_fields",
+        "nol_fields",
+        "p131rg_width"
+      ]
+    },
+    {
+      "entry": "p128raw_controls",
+      "reachableChangedBounds": [
+        "nol_ctor_fields",
+        "nol_fields",
+        "p118b_project_borrow",
+        "p131rg_width"
+      ]
+    },
+    {
+      "entry": "p128raw_br_controls",
+      "reachableChangedBounds": [
+        "nol_ctor_fields",
+        "nol_fields",
+        "p118b_project_borrow",
+        "p131rg_width"
+      ]
+    },
+    {
+      "entry": "p131rg_controls",
+      "reachableChangedBounds": [
+        "nol_ctor_fields",
+        "nol_fields",
+        "p131rg_width"
+      ]
+    },
+    {
+      "entry": "p131rv_controls",
+      "reachableChangedBounds": [
+        "nol_ctor_fields",
+        "nol_fields"
+      ]
+    },
+    {
+      "entry": "p134ec_controls",
+      "reachableChangedBounds": [
+        "nol_ctor_fields",
+        "nol_fields",
+        "p118b_project_borrow",
+        "p131rg_width"
+      ]
+    }
+  ],
+  "method": "Conservative identifier-call closure from selected definitions named controls/tests/test_cases, followed by source inspection; not an execution or exhaustive dynamic claim."
+}

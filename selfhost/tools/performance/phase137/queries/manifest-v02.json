@@ -1,0 +1,164 @@
+{
+  "complete": true,
+  "targetsRun": false,
+  "cases": [
+    {
+      "name": "queries-fused-v02",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase137/queries/queries-fused-v02.bend",
+        "bytes": 22765,
+        "sha256": "57b0b07cdba7ed37edf8ad6532083721fe40d9d22ac39f4c5bbcc885479b5cec"
+      },
+      "expected": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase137/queries/expected-v01.json",
+        "bytes": 119,
+        "sha256": "e02bc8f818fd3818e0dbd0374e71dc85b64a6f888b858d736d435dc73f7b6ac8"
+      },
+      "expectedStdoutEvidence": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase137/queries/expected-v01.json",
+        "bytes": 119,
+        "sha256": "e02bc8f818fd3818e0dbd0374e71dc85b64a6f888b858d736d435dc73f7b6ac8"
+      },
+      "family": "queries",
+      "composition": "fused",
+      "timed": {
+        "argv": [
+          "REPEATS"
+        ],
+        "once": 127,
+        "stdout": [
+          "once",
+          "(once * repeats) modulo 2^32",
+          "elapsed milliseconds"
+        ],
+        "defaultRepeats": 10000
+      },
+      "substitutions": [
+        {
+          "before": "def p137q_name_eq(record: KDef, key: String)",
+          "after": "def p137q_name_eq(key: String, record: KDef)"
+        },
+        {
+          "before": "p137q_name_eq(d, name)",
+          "after": "p137q_name_eq(name, d)"
+        },
+        {
+          "before": "def p137q_record_query(record: P137QRecord, key: String)",
+          "after": "def p137q_record_query(key: String, record: P137QRecord)"
+        },
+        {
+          "before": "p137q_record_query(record,\"\u03bb\ud83c\udf0d\")",
+          "after": "p137q_record_query(\"\u03bb\ud83c\udf0d\",record)"
+        },
+        {
+          "before": "p137q_record_query(record,\"\u03bb\")",
+          "after": "p137q_record_query(\"\u03bb\",record)"
+        },
+        {
+          "before": "p137q_kind_eq(d, \"BookCache\")",
+          "after": "p137q_is_cache(d)"
+        },
+        {
+          "before": "p137q_kind_eq(d, \"ADT\")",
+          "after": "p137q_is_adt(d)"
+        },
+        {
+          "before": "p137q_kind_eq(lookup(dc(d), name), \"Ctr\")",
+          "after": "p137q_is_ctr(lookup(dc(d), name))"
+        }
+      ]
+    },
+    {
+      "name": "record-fused-v02",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase137/queries/record-fused-v02.bend",
+        "bytes": 22845,
+        "sha256": "b76b84e10bd2b02f4b9f79475302ab956e1634c92a0af2e0c50421c9f2d138c7"
+      },
+      "expected": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase137/queries/expected-v01.json",
+        "bytes": 119,
+        "sha256": "e02bc8f818fd3818e0dbd0374e71dc85b64a6f888b858d736d435dc73f7b6ac8"
+      },
+      "expectedStdoutEvidence": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase137/queries/expected-v01.json",
+        "bytes": 119,
+        "sha256": "e02bc8f818fd3818e0dbd0374e71dc85b64a6f888b858d736d435dc73f7b6ac8"
+      },
+      "family": "record",
+      "composition": "fused",
+      "timed": {
+        "argv": [
+          "REPEATS"
+        ],
+        "once": 1,
+        "stdout": [
+          "once",
+          "(once * repeats) modulo 2^32",
+          "elapsed milliseconds"
+        ],
+        "defaultRepeats": 10000
+      },
+      "substitutions": [
+        {
+          "before": "def p137q_name_eq(record: KDef, key: String)",
+          "after": "def p137q_name_eq(key: String, record: KDef)"
+        },
+        {
+          "before": "p137q_name_eq(d, name)",
+          "after": "p137q_name_eq(name, d)"
+        },
+        {
+          "before": "def p137q_record_query(record: P137QRecord, key: String)",
+          "after": "def p137q_record_query(key: String, record: P137QRecord)"
+        },
+        {
+          "before": "p137q_record_query(record,key)",
+          "after": "p137q_record_query(key,record)"
+        },
+        {
+          "before": "p137q_record_query(record,\":absent:\")",
+          "after": "p137q_record_query(\":absent:\",record)"
+        },
+        {
+          "before": "p137q_record_query(record,\"\u03bb\ud83c\udf0d\")",
+          "after": "p137q_record_query(\"\u03bb\ud83c\udf0d\",record)"
+        },
+        {
+          "before": "p137q_record_query(record,\"\u03bb\")",
+          "after": "p137q_record_query(\"\u03bb\",record)"
+        },
+        {
+          "before": "p137q_kind_eq(d, \"BookCache\")",
+          "after": "p137q_is_cache(d)"
+        },
+        {
+          "before": "p137q_kind_eq(d, \"ADT\")",
+          "after": "p137q_is_adt(d)"
+        },
+        {
+          "before": "p137q_kind_eq(lookup(dc(d), name), \"Ctr\")",
+          "after": "p137q_is_ctr(lookup(dc(d), name))"
+        }
+      ]
+    }
+  ],
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase137/queries/prepare-v02.py",
+      "bytes": 3417,
+      "sha256": "c3d9882df83a1e5a0757f8d952f4e3bd679cb4b75f5a4b25338c908c63f259d0"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase137/queries/prepare-v01.py",
+      "bytes": 5841,
+      "sha256": "8eaf5a0cbf36b3749afbaed0110b0f55858242e51782ce5ba15d98b6a62cc70e"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase137/queries/manifest-v01.json",
+      "bytes": 9185,
+      "sha256": "f5637a03188af89d2526aa92b2b07c586adb5bfcbc3fb411b61e557f38a2bb86"
+    }
+  ],
+  "scope": "Additional source-only composition ceiling, not a producer policy. Kind observers preserve exact field-first comparison but constant non-KDef results remove irrelevant IndexLeaf/IndexNode String construction. Name/record observer argument order changes only; comparison operand order remains field-first. Actuals at changed callsites are pure local variables/literals, so no effect order is changed. Original v01 source/oracle remain frozen; no performance claim."
+}

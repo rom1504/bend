@@ -1,0 +1,83 @@
+{
+  "kind": "phase137-independent-retention-policy-audit",
+  "complete": true,
+  "targetsRun": false,
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase137/audit/retain-source-v01.py",
+      "bytes": 3433,
+      "sha256": "4b5bed3dae1a0ebb577d471b9a028ceeb6ad24d4159997b802247e7716771ac2"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/prepare.py",
+      "bytes": 6138,
+      "sha256": "33a4a40ab35ef705cbe99cff20b4b6a2c9792eee4ad8c9597a006d22ae22defa"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase137/retain-source02/manifest.json",
+      "bytes": 5559,
+      "sha256": "87a92f7dd553ca9851bee55f5af20d5a232c903865512a1b71374dd8acbe502d"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase137/wide-source01/compiler.bend",
+      "bytes": 2695713,
+      "sha256": "863e28f8bba8a285332875ce99bf82a20d2ea3052c6f4b6aed3606b0d67485b5"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase137/retain-source02/compiler.bend",
+      "bytes": 2700607,
+      "sha256": "2bdb9bdff5a7eb04b017f9767cfd0ce359fc41bb620ba09c77afe142959be30d"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase137/queries/prepare-retain-v02.py",
+      "bytes": 2631,
+      "sha256": "8265313a6665036deafbc28bb43f14a8e0dbb83e02d25558ca3cb27ad926972a"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase137/queries/prepare-v01.py",
+      "bytes": 5841,
+      "sha256": "8eaf5a0cbf36b3749afbaed0110b0f55858242e51782ce5ba15d98b6a62cc70e"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/prepare.py",
+      "bytes": 6138,
+      "sha256": "33a4a40ab35ef705cbe99cff20b4b6a2c9792eee4ad8c9597a006d22ae22defa"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase137/wide-source01/manifest.json",
+      "bytes": 156838,
+      "sha256": "c464fcfa7a3315b3c53b18806d7b92538e35b818292f5773ca411d35140a530a"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase137/wide-source01/compiler.bend",
+      "bytes": 2695713,
+      "sha256": "863e28f8bba8a285332875ce99bf82a20d2ea3052c6f4b6aed3606b0d67485b5"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase137/queries/retain-wide-v01.bend",
+      "bytes": 2498,
+      "sha256": "102805abfd463d073e57ae33138df7547a7401a9dd2dd9ac77b1b015aa67c072"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase137/queries/retain-controls-v02.bend",
+      "bytes": 3020,
+      "sha256": "5c2d9419bd52f0fda3dc9e4fc79a8c0b80654025e92c0338096390edc3d01553"
+    }
+  ],
+  "exactParentBytePrefixAfterOneCalleeReversal": true,
+  "addedDeclarations": [
+    "p137qi_controls",
+    "p137qi_done",
+    "p137qi_function",
+    "p137qi_malformed_count",
+    "p137qi_plain",
+    "p137qi_returns",
+    "p137qi_scalar",
+    "p137qi_scalars",
+    "p137qi_take",
+    "p137qi_wide_args"
+  ],
+  "controlRows": 20,
+  "identicalShapeWalksExceptScalarConjunction": true,
+  "scope": "Source audit only. Actual p113i_eligible is exercised by five new rows; malformed-IR rows test profitability, not semantic admission. Checked controls, ordinary output, emitted-call reachability and runtime require independent target receipts."
+}

@@ -1,0 +1,56 @@
+{
+  "kind": "phase137-independent-four-line-width-audit",
+  "complete": true,
+  "targetsRun": false,
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase137/audit/width-source-v01.py",
+      "bytes": 3127,
+      "sha256": "8bd3bb400a538da4d4ef22232c0e527f402757786afa5148d4fbb188c9707398"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase134/verify-selected-source01/compiler.bend",
+      "bytes": 2693121,
+      "sha256": "a00019246b5181b288ab4d3e09e616bd41415fe6381e89a96185c05efa19fb57"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase137/wide-source01/compiler.bend",
+      "bytes": 2695713,
+      "sha256": "863e28f8bba8a285332875ce99bf82a20d2ea3052c6f4b6aed3606b0d67485b5"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase137/wide/controls-v01.bend",
+      "bytes": 2741,
+      "sha256": "1e11e64ceb09226c6feac9c503327d00a64b0f3fc11fc95da9c83705073386e1"
+    }
+  ],
+  "changes": [
+    {
+      "declaration": "nol_fields",
+      "parentLine": 36610,
+      "before": "    u => nt_choose(KTerm, p98_tag_eq(head, \"All\") && Bool.not(U32.is_eq(qt(head), 0)) && U32.is_le(left, 8),\n",
+      "after": "    u => nt_choose(KTerm, p98_tag_eq(head, \"All\") && Bool.not(U32.is_eq(qt(head), 0)) && U32.is_le(left, 16),\n"
+    },
+    {
+      "declaration": "nol_ctor_fields",
+      "parentLine": 36628,
+      "before": "  nt_choose(KTerm, nol_owner(book, ty) && p88_string_eq(dk(ctr), \"Ctr\") && U32.is_eq(dx(ctr), 0) && U32.is_le(da(ctr), 8),\n",
+      "after": "  nt_choose(KTerm, nol_owner(book, ty) && p88_string_eq(dk(ctr), \"Ctr\") && U32.is_eq(dx(ctr), 0) && U32.is_le(da(ctr), 16),\n"
+    },
+    {
+      "declaration": "p118b_project_borrow",
+      "parentLine": 51401,
+      "before": "    U32.is_ge(count,2) && U32.is_le(count,8)\n",
+      "after": "    U32.is_ge(count,2) && U32.is_le(count,16)\n"
+    },
+    {
+      "declaration": "p131rg_width",
+      "parentLine": 57641,
+      "before": "  U32.is_eq(width,0) || (U32.is_ge(width,2) && U32.is_le(width,8))\n",
+      "after": "  U32.is_eq(width,0) || (U32.is_ge(width,2) && U32.is_le(width,16))\n"
+    }
+  ],
+  "existingSourcePrefixOtherwiseByteExact": true,
+  "controlAppendixByteExact": true,
+  "scope": "All parent bytes except four exact field-width constants are unchanged; added declarations are isolated controls. This is a source-delta audit, not a semantic proof, source-check result, emitted-reader admission or native qualification."
+}

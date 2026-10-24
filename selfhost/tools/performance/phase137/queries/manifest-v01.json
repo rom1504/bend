@@ -1,0 +1,291 @@
+{
+  "complete": true,
+  "targetsRun": false,
+  "source": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase134/verify-selected-source01/compiler.bend",
+    "bytes": 2693121,
+    "sha256": "a00019246b5181b288ab4d3e09e616bd41415fe6381e89a96185c05efa19fb57"
+  },
+  "prefix": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase137/queries/compiler-prefix-v01.bend",
+    "bytes": 14227,
+    "sha256": "5089da4e402a26b7850eea7655782081678cc598be938747b1d1e67e41d7ce68"
+  },
+  "exactDeclarations": [
+    "KDef",
+    "KTerm",
+    "atom",
+    "book_cached",
+    "da",
+    "db",
+    "dc",
+    "dk",
+    "dn",
+    "dx",
+    "f_eq",
+    "f_find",
+    "f_find_next",
+    "index_bucket",
+    "index_build",
+    "index_child",
+    "index_child_list",
+    "index_find",
+    "index_first",
+    "index_hash",
+    "index_insert",
+    "index_insert_legacy",
+    "index_join",
+    "index_leaf",
+    "index_lookup",
+    "index_node",
+    "index_remove",
+    "index_remove_step",
+    "index_set",
+    "index_split_bit",
+    "index_tip",
+    "kc",
+    "kt",
+    "lookup",
+    "missing",
+    "nc_ctor_owned",
+    "p131i_insert",
+    "p131i_original_set",
+    "p88_string_eq",
+    "p88_string_eq_go",
+    "p98_eq_finish",
+    "qua",
+    "typ"
+  ],
+  "changedDeclarations": [
+    "lookup",
+    "f_find",
+    "nc_ctor_owned",
+    "p137q_record_query"
+  ],
+  "names": [
+    "p88_string_eq_go",
+    "p98_eq_finish",
+    "p88_string_eq",
+    "p88_string_order_go",
+    "p88_string_order",
+    "kc",
+    "name_key",
+    "kt",
+    "atom",
+    "tg",
+    "nm",
+    "ix",
+    "qt",
+    "ks",
+    "rm",
+    "terms_at",
+    "kid",
+    "var",
+    "ref",
+    "qua",
+    "typ",
+    "app",
+    "all",
+    "dn",
+    "dk",
+    "da",
+    "dx",
+    "dt",
+    "dv",
+    "dc",
+    "db",
+    "du",
+    "missing",
+    "lookup",
+    "lookup_cached",
+    "lookup_named",
+    "terms_len",
+    "has_name",
+    "has_name_next",
+    "subst",
+    "core_force",
+    "core_apply_span",
+    "core_beta",
+    "core_subst_stable",
+    "norm_join",
+    "core_nat",
+    "core_nat_make",
+    "core_literal_type",
+    "core_literal_word",
+    "core_literal_step",
+    "core_literal_string",
+    "core_literal_same",
+    "compiler_term_abi",
+    "kb",
+    "ke",
+    "compiler_span_abi",
+    "k_with_children",
+    "k_with_span",
+    "kt_span",
+    "core_literal",
+    "kl_number",
+    "kl_text",
+    "kl_make",
+    "p111_emit_admitted"
+  ],
+  "cases": [
+    {
+      "name": "queries-original",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase137/queries/queries-original-v01.bend",
+        "bytes": 20884,
+        "sha256": "141d0d13990d3cc45a0cda9cd388675802996bd2b0f4f4f2556c028824f4822a"
+      },
+      "expected": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase137/queries/expected-v01.json",
+        "bytes": 119,
+        "sha256": "e02bc8f818fd3818e0dbd0374e71dc85b64a6f888b858d736d435dc73f7b6ac8"
+      },
+      "expectedStdoutEvidence": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase137/queries/expected-v01.json",
+        "bytes": 119,
+        "sha256": "e02bc8f818fd3818e0dbd0374e71dc85b64a6f888b858d736d435dc73f7b6ac8"
+      },
+      "family": "queries",
+      "composition": "original",
+      "timed": {
+        "argv": [
+          "REPEATS"
+        ],
+        "once": 127,
+        "stdout": [
+          "once",
+          "(once * repeats) modulo 2^32",
+          "elapsed milliseconds"
+        ],
+        "defaultRepeats": 10000
+      }
+    },
+    {
+      "name": "queries-fused",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase137/queries/queries-fused-v01.bend",
+        "bytes": 21944,
+        "sha256": "178af4805af76d9db993948577c58173a09dccc2215b4df27efd635166c5970d"
+      },
+      "expected": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase137/queries/expected-v01.json",
+        "bytes": 119,
+        "sha256": "e02bc8f818fd3818e0dbd0374e71dc85b64a6f888b858d736d435dc73f7b6ac8"
+      },
+      "expectedStdoutEvidence": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase137/queries/expected-v01.json",
+        "bytes": 119,
+        "sha256": "e02bc8f818fd3818e0dbd0374e71dc85b64a6f888b858d736d435dc73f7b6ac8"
+      },
+      "family": "queries",
+      "composition": "fused",
+      "timed": {
+        "argv": [
+          "REPEATS"
+        ],
+        "once": 127,
+        "stdout": [
+          "once",
+          "(once * repeats) modulo 2^32",
+          "elapsed milliseconds"
+        ],
+        "defaultRepeats": 10000
+      }
+    },
+    {
+      "name": "record-original",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase137/queries/record-original-v01.bend",
+        "bytes": 20964,
+        "sha256": "569d06f5b9ca8db1634b73634d410c82bf9d6ecffac2a82eeac633e05d4d34f1"
+      },
+      "expected": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase137/queries/expected-v01.json",
+        "bytes": 119,
+        "sha256": "e02bc8f818fd3818e0dbd0374e71dc85b64a6f888b858d736d435dc73f7b6ac8"
+      },
+      "expectedStdoutEvidence": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase137/queries/expected-v01.json",
+        "bytes": 119,
+        "sha256": "e02bc8f818fd3818e0dbd0374e71dc85b64a6f888b858d736d435dc73f7b6ac8"
+      },
+      "family": "record",
+      "composition": "original",
+      "timed": {
+        "argv": [
+          "REPEATS"
+        ],
+        "once": 1,
+        "stdout": [
+          "once",
+          "(once * repeats) modulo 2^32",
+          "elapsed milliseconds"
+        ],
+        "defaultRepeats": 10000
+      }
+    },
+    {
+      "name": "record-fused",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase137/queries/record-fused-v01.bend",
+        "bytes": 22024,
+        "sha256": "caa5a2bd56f7b7deb9aa0d59102fc87e46a9adf029d49d7e226b363ed4ee79ad"
+      },
+      "expected": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase137/queries/expected-v01.json",
+        "bytes": 119,
+        "sha256": "e02bc8f818fd3818e0dbd0374e71dc85b64a6f888b858d736d435dc73f7b6ac8"
+      },
+      "expectedStdoutEvidence": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase137/queries/expected-v01.json",
+        "bytes": 119,
+        "sha256": "e02bc8f818fd3818e0dbd0374e71dc85b64a6f888b858d736d435dc73f7b6ac8"
+      },
+      "family": "record",
+      "composition": "fused",
+      "timed": {
+        "argv": [
+          "REPEATS"
+        ],
+        "once": 1,
+        "stdout": [
+          "once",
+          "(once * repeats) modulo 2^32",
+          "elapsed milliseconds"
+        ],
+        "defaultRepeats": 10000
+      }
+    }
+  ],
+  "expected": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase137/queries/expected-v01.stdout",
+    "bytes": 46,
+    "sha256": "b36a26083dfbd51442287b5e73e9cc3f204ad8b363424af0eff71dccf48b6d98"
+  },
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase137/queries/prepare-v01.py",
+      "bytes": 5841,
+      "sha256": "8eaf5a0cbf36b3749afbaed0110b0f55858242e51782ce5ba15d98b6a62cc70e"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/prepare.py",
+      "bytes": 6138,
+      "sha256": "33a4a40ab35ef705cbe99cff20b4b6a2c9792eee4ad8c9597a006d22ae22defa"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase137/queries/workload-v01.bend",
+      "bytes": 5832,
+      "sha256": "eeb9997ba5de8dfed8a7f2421245451ed7fb100a49355957026910f090b3e583"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase137/queries/predicates-v01.bend",
+      "bytes": 985,
+      "sha256": "e14bf9dbb67b7da843973e1a2c608d7fb98d81190a6c09e6dc8a7926b59cabf2"
+    }
+  ],
+  "sourceBridge": "Original43 declarations equal selected Phase134 after comment/whitespace normalization. Fused source changes only5 named projection+equality expressions in3 actual compiler declarations, plus unrelated observer.",
+  "scope": "Constructed65-row book using64 actual compiler declaration names, not an actual checked compiler book or dynamic distribution. Same raw scans and existing Patricia BookCache implementation. Two source compositions crossed with independently fixed baseline/width16 producer. No runtime/verifier changes and no performance claim until native evidence.",
+  "oracle": "23 independently true predicates: exact missing conventions, first duplicate wins, BookCache before name dispatch, false-owned first ADT, nonCtr child shadow, cached child, ignored nonADT, Unicode, index variants, retained opaque/aliased fields and unrelated9-field record. Timed query result63+63+1=127; missing paths contribute0. Record hit+miss=1. Each iteration repeats identical held immutable inputs; setup/reclamation outside IO.now, whole process separately charged."
+}

@@ -1,0 +1,4430 @@
+{
+  "kind": "phase137-focused-linked-machine-inspection",
+  "complete": true,
+  "targetsRun": false,
+  "inspectionOnlyTools": [
+    "objdump"
+  ],
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase137/audit/machine-v01.py",
+      "bytes": 4549,
+      "sha256": "d7c931121329e03994d14fea425519c8324594c4fdfb6e0a390e8515f19a61c3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/implementation/phase137/audit/code04.json",
+      "bytes": 179192,
+      "sha256": "167341c5cdc24d3b7e800b62af3fcef37e2d6a048f3bb4d4c5e9cca3b2a52595"
+    },
+    {
+      "file": "/usr/bin/x86_64-linux-gnu-objdump",
+      "bytes": 464664,
+      "sha256": "0a5231844dd50b01c5161cd8857c61fc6c56704c8553d61a20264e8227561930"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/profiler/owners.py",
+      "bytes": 11888,
+      "sha256": "2322db405e3d662570872700bb0ec9a05873d14dc764cd18d7151998f0132b21"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p137-query-v02-builds01-wide-queries-fused-v02/report.json",
+      "bytes": 6299,
+      "sha256": "98203f738a184ec22e194ea8ecd1416d3a7975ed33e853645bf2e1b5ce4afb37"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p137-query-v02-builds01-wide-queries-fused-v02/program",
+      "bytes": 422592,
+      "sha256": "a8eca8b1a61bea81f85fa2e1e898dc5bb958722da28808c357d85a4a3cb34315"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase137/query-v02-emit01/queries-fused-v02.ssa",
+      "bytes": 1735925,
+      "sha256": "892d8749b324af42f7e9ccb2f4be4fa3b7703c8c775b44fc50dac369e68217ca"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p137-query-v02-builds01-wide-record-fused-v02/report.json",
+      "bytes": 6280,
+      "sha256": "f716db5736c5e72d2e37d0ba4ac29c515fa78dcd1a0fd806ebf691b31dd5e01b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p137-query-v02-builds01-wide-record-fused-v02/program",
+      "bytes": 413016,
+      "sha256": "d213df39cc78bce4b223ac6fff8a1a511e4324878b4a363c3cce97ed5ebb06e2"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase137/query-v02-emit01/record-fused-v02.ssa",
+      "bytes": 1646717,
+      "sha256": "0ab4b16c3d3fc0224c29d52d861db4c8f54a7b8d84149ca4fbdbb255aefcdb02"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p137-retain-query-builds01-wide-queries-fused-v02/report.json",
+      "bytes": 6355,
+      "sha256": "24a63a05afbacd6be2c53117cea55ed5420bb4d2c58a1e8d1293040788c30e40"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p137-retain-query-builds01-wide-queries-fused-v02/program",
+      "bytes": 410304,
+      "sha256": "d76dfef3ed2b01b17267c0c2ff88c2b83fe0efb64551a2bfce3891032d8e0a35"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase137/retain-query-emit01/queries-fused-v02.ssa",
+      "bytes": 1585208,
+      "sha256": "da486e2916f4f58937e4d9a1b6e4c8c8efb93c23f4c6a68745eaf64c13fdaacb"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p137-retain-query-builds01-wide-record-fused-v02/report.json",
+      "bytes": 6337,
+      "sha256": "000b61f8010afc4bd45053f8aeb7f95630a23f20e25306657eb71c2b5fa9cb5c"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p137-retain-query-builds01-wide-record-fused-v02/program",
+      "bytes": 404824,
+      "sha256": "0cd133c9667b3b193193ddd8aac4e14d2aed20dfa3f07ebe08ae600efc2baf6b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase137/retain-query-emit01/record-fused-v02.ssa",
+      "bytes": 1541047,
+      "sha256": "aeefc818a789a1e8a66eb7f673c223f73ee7ec72f49e5e5ee90a2aef93c463b6"
+    }
+  ],
+  "cases": [
+    {
+      "role": "wide-v02-queries-fused-v02",
+      "qbe": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase137/query-v02-emit01/queries-fused-v02.ssa",
+        "bytes": 1735925,
+        "sha256": "892d8749b324af42f7e9ccb2f4be4fa3b7703c8c775b44fc50dac369e68217ca"
+      },
+      "buildReport": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p137-query-v02-builds01-wide-queries-fused-v02/report.json",
+        "bytes": 6299,
+        "sha256": "98203f738a184ec22e194ea8ecd1416d3a7975ed33e853645bf2e1b5ce4afb37"
+      },
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p137-query-v02-builds01-wide-queries-fused-v02/program",
+        "bytes": 422592,
+        "sha256": "a8eca8b1a61bea81f85fa2e1e898dc5bb958722da28808c357d85a4a3cb34315"
+      },
+      "functions": [
+        {
+          "decoded": "$direct.lookup",
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_108_111_111_107_117_112_",
+          "qbeLine": 8495,
+          "qbeBodySha256": "1cdd0fa68a7613f97933fb4310755b902c93b8271f6de4e5d847886a68c6572b",
+          "assembly": {
+            "file": "/home/ai/bend2/build/publish/bend/implementation/phase137/audit/machine01/wide-v02-queries-fused-v02/direct.lookup.asm",
+            "bytes": 24785,
+            "sha256": "00cfc1d7d5524f858201b2c71b71688a27212e430669334e615ccd96bdaff081"
+          },
+          "instructionLines": 724,
+          "instructionsIncludePadding": true,
+          "calls": [
+            {
+              "address": "40cdd7",
+              "symbol": "p125_rt_take2",
+              "decoded": "p125_rt_take2"
+            },
+            {
+              "address": "40cdf7",
+              "symbol": "p111_rt_keep",
+              "decoded": "p111_rt_keep"
+            },
+            {
+              "address": "40ce54",
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail"
+            },
+            {
+              "address": "40ce7a",
+              "symbol": "p125_rt_take4",
+              "decoded": "p125_rt_take4"
+            },
+            {
+              "address": "40ce97",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40ceac",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40ced8",
+              "symbol": "p125_rt_take2",
+              "decoded": "p125_rt_take2"
+            },
+            {
+              "address": "40cef0",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40cf1e",
+              "symbol": "p111_rt_take",
+              "decoded": "p111_rt_take"
+            },
+            {
+              "address": "40cf80",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40cf92",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40cfa4",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40cfb6",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40cfc8",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40cfda",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40cfec",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40cffa",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40d008",
+              "symbol": "p111_rt_keep",
+              "decoded": "p111_rt_keep"
+            },
+            {
+              "address": "40d023",
+              "symbol": "p111_rt_keep",
+              "decoded": "p111_rt_keep"
+            },
+            {
+              "address": "40d03f",
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_56_56_95_115_116_114_105_110_103_95_101_113_95_103_111_",
+              "decoded": "$direct.p88_string_eq_go"
+            },
+            {
+              "address": "40d055",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40d06a",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40d0cf",
+              "symbol": "p111_rt_ctor",
+              "decoded": "p111_rt_ctor"
+            },
+            {
+              "address": "40d0dd",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40d0f4",
+              "symbol": "p111_rt_keep",
+              "decoded": "p111_rt_keep"
+            },
+            {
+              "address": "40d105",
+              "symbol": "p111_rt_keep",
+              "decoded": "p111_rt_keep"
+            },
+            {
+              "address": "40d151",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40d167",
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail"
+            },
+            {
+              "address": "40d18f",
+              "symbol": "p125_rt_take4",
+              "decoded": "p125_rt_take4"
+            },
+            {
+              "address": "40d1a8",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40d1b6",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40d1cb",
+              "symbol": "p111_rt_keep",
+              "decoded": "p111_rt_keep"
+            },
+            {
+              "address": "40d1df",
+              "symbol": "p111_rt_keep",
+              "decoded": "p111_rt_keep"
+            },
+            {
+              "address": "40d201",
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_56_56_95_115_116_114_105_110_103_95_101_113_95_103_111_",
+              "decoded": "$direct.p88_string_eq_go"
+            },
+            {
+              "address": "40d21a",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40d22c",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40d24f",
+              "symbol": "p125_rt_take2",
+              "decoded": "p125_rt_take2"
+            },
+            {
+              "address": "40d261",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40d276",
+              "symbol": "p111_rt_keep",
+              "decoded": "p111_rt_keep"
+            },
+            {
+              "address": "40d28a",
+              "symbol": "p111_rt_keep",
+              "decoded": "p111_rt_keep"
+            },
+            {
+              "address": "40d2ac",
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_56_56_95_115_116_114_105_110_103_95_101_113_95_103_111_",
+              "decoded": "$direct.p88_string_eq_go"
+            },
+            {
+              "address": "40d2c5",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40d2d7",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40d305",
+              "symbol": "p111_rt_take",
+              "decoded": "p111_rt_take"
+            },
+            {
+              "address": "40d36a",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40d37c",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40d38e",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40d3a0",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40d3b2",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40d3c4",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40d3d9",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40d3e7",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40d3f5",
+              "symbol": "p111_rt_keep",
+              "decoded": "p111_rt_keep"
+            },
+            {
+              "address": "40d409",
+              "symbol": "p111_rt_keep",
+              "decoded": "p111_rt_keep"
+            },
+            {
+              "address": "40d42b",
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_56_56_95_115_116_114_105_110_103_95_101_113_95_103_111_",
+              "decoded": "$direct.p88_string_eq_go"
+            },
+            {
+              "address": "40d447",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40d45c",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40d499",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40d4c8",
+              "symbol": "p111_rt_ctor",
+              "decoded": "p111_rt_ctor"
+            },
+            {
+              "address": "40d4d6",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40d4f2",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40d503",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40d510",
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail"
+            },
+            {
+              "address": "40d52b",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40d53c",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40d558",
+              "symbol": "p111_rt_ctor",
+              "decoded": "p111_rt_ctor"
+            },
+            {
+              "address": "40d563",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40d57f",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40d590",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40d59e",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40d5ab",
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail"
+            },
+            {
+              "address": "40d5c9",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40d5eb",
+              "symbol": "p111_rt_ctor",
+              "decoded": "p111_rt_ctor"
+            },
+            {
+              "address": "40d5f9",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40d637",
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail"
+            },
+            {
+              "address": "40d656",
+              "symbol": "p125_rt_take4",
+              "decoded": "p125_rt_take4"
+            },
+            {
+              "address": "40d699",
+              "symbol": "p125_rt_ctor2",
+              "decoded": "p125_rt_ctor2"
+            },
+            {
+              "address": "40d6c4",
+              "symbol": "p125_rt_ctor2",
+              "decoded": "p125_rt_ctor2"
+            },
+            {
+              "address": "40d6e5",
+              "symbol": "p125_rt_take2",
+              "decoded": "p125_rt_take2"
+            },
+            {
+              "address": "40d717",
+              "symbol": "p111_rt_take",
+              "decoded": "p111_rt_take"
+            },
+            {
+              "address": "40d784",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40d799",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40d7ae",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40d7c3",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40d7d8",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40d7ed",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40d7fb",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40d809",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40d838",
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail"
+            },
+            {
+              "address": "40d85a",
+              "symbol": "p125_rt_take2",
+              "decoded": "p125_rt_take2"
+            },
+            {
+              "address": "40d879",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40d896",
+              "symbol": "p111_rt_keep",
+              "decoded": "p111_rt_keep"
+            },
+            {
+              "address": "40d8b5",
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_105_110_100_101_120_95_104_97_115_104_",
+              "decoded": "$direct.index_hash"
+            },
+            {
+              "address": "40d8cc",
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_105_110_100_101_120_95_102_105_110_100_",
+              "decoded": "$direct.index_find"
+            },
+            {
+              "address": "40d8d8",
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail"
+            },
+            {
+              "address": "40d8e7",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            }
+          ],
+          "command": [
+            "/usr/bin/objdump",
+            "-d",
+            "--no-show-raw-insn",
+            "--disassemble=p113d_FID_36_100_105_114_101_99_116_46_108_111_111_107_117_112_",
+            "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p137-query-v02-builds01-wide-queries-fused-v02/program"
+          ]
+        },
+        {
+          "decoded": "$direct.nc_ctor_owned",
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_110_99_95_99_116_111_114_95_111_119_110_101_100_",
+          "qbeLine": 9809,
+          "qbeBodySha256": "28a397fc43a23e92ba5290cdaa1a036c208271e29f4528615f865781255aaff7",
+          "assembly": {
+            "file": "/home/ai/bend2/build/publish/bend/implementation/phase137/audit/machine01/wide-v02-queries-fused-v02/direct.nc_ctor_owned.asm",
+            "bytes": 26499,
+            "sha256": "4f5418d819c8a910a5cf1f3250e854773abc91a3a681d58f802333a7ba1cf958"
+          },
+          "instructionLines": 753,
+          "instructionsIncludePadding": true,
+          "calls": [
+            {
+              "address": "40e1f7",
+              "symbol": "p125_rt_take2",
+              "decoded": "p125_rt_take2"
+            },
+            {
+              "address": "40e210",
+              "symbol": "p111_rt_keep",
+              "decoded": "p111_rt_keep"
+            },
+            {
+              "address": "40e253",
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail"
+            },
+            {
+              "address": "40e279",
+              "symbol": "p125_rt_take4",
+              "decoded": "p125_rt_take4"
+            },
+            {
+              "address": "40e292",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40e2a0",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40e2c9",
+              "symbol": "p125_rt_take2",
+              "decoded": "p125_rt_take2"
+            },
+            {
+              "address": "40e2e1",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40e31c",
+              "symbol": "p111_rt_take",
+              "decoded": "p111_rt_take"
+            },
+            {
+              "address": "40e382",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40e397",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40e3ac",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40e3c1",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40e3d6",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40e3eb",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40e400",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40e415",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40e423",
+              "symbol": "p111_rt_keep",
+              "decoded": "p111_rt_keep"
+            },
+            {
+              "address": "40e43e",
+              "symbol": "p111_rt_keep",
+              "decoded": "p111_rt_keep"
+            },
+            {
+              "address": "40e464",
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_56_56_95_115_116_114_105_110_103_95_101_113_95_103_111_",
+              "decoded": "$direct.p88_string_eq_go"
+            },
+            {
+              "address": "40e47a",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40e48c",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40e4c9",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40e4f8",
+              "symbol": "p111_rt_ctor",
+              "decoded": "p111_rt_ctor"
+            },
+            {
+              "address": "40e506",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40e522",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40e533",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40e540",
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail"
+            },
+            {
+              "address": "40e56f",
+              "symbol": "p111_rt_ctor",
+              "decoded": "p111_rt_ctor"
+            },
+            {
+              "address": "40e57d",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40e594",
+              "symbol": "p111_rt_keep",
+              "decoded": "p111_rt_keep"
+            },
+            {
+              "address": "40e5a5",
+              "symbol": "p111_rt_keep",
+              "decoded": "p111_rt_keep"
+            },
+            {
+              "address": "40e614",
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail"
+            },
+            {
+              "address": "40e642",
+              "symbol": "p125_rt_take4",
+              "decoded": "p125_rt_take4"
+            },
+            {
+              "address": "40e68f",
+              "symbol": "p125_rt_ctor2",
+              "decoded": "p125_rt_ctor2"
+            },
+            {
+              "address": "40e6c4",
+              "symbol": "p125_rt_ctor2",
+              "decoded": "p125_rt_ctor2"
+            },
+            {
+              "address": "40e6f0",
+              "symbol": "p125_rt_take2",
+              "decoded": "p125_rt_take2"
+            },
+            {
+              "address": "40e72b",
+              "symbol": "p111_rt_take",
+              "decoded": "p111_rt_take"
+            },
+            {
+              "address": "40e79e",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40e7b3",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40e7c8",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40e7dd",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40e7f2",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40e807",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40e81f",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40e837",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40e855",
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_108_111_111_107_117_112_",
+              "decoded": "$direct.lookup"
+            },
+            {
+              "address": "40e8a2",
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail"
+            },
+            {
+              "address": "40e8cb",
+              "symbol": "p125_rt_take4",
+              "decoded": "p125_rt_take4"
+            },
+            {
+              "address": "40e8eb",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40e903",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40e929",
+              "symbol": "p125_rt_take2",
+              "decoded": "p125_rt_take2"
+            },
+            {
+              "address": "40e941",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40e97d",
+              "symbol": "p111_rt_take",
+              "decoded": "p111_rt_take"
+            },
+            {
+              "address": "40e9ff",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40ea11",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40ea23",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40ea35",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40ea47",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40ea59",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40ea6b",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40ea7d",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40ea8f",
+              "symbol": "p111_rt_keep",
+              "decoded": "p111_rt_keep"
+            },
+            {
+              "address": "40eaab",
+              "symbol": "p111_rt_keep",
+              "decoded": "p111_rt_keep"
+            },
+            {
+              "address": "40ead8",
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_56_56_95_115_116_114_105_110_103_95_101_113_95_103_111_",
+              "decoded": "$direct.p88_string_eq_go"
+            },
+            {
+              "address": "40eaf7",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40eb0f",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40eb57",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40eb86",
+              "symbol": "p111_rt_ctor",
+              "decoded": "p111_rt_ctor"
+            },
+            {
+              "address": "40eb94",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40ebb0",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40ebc1",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40ebce",
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail"
+            },
+            {
+              "address": "40ebe9",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40ebf7",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40ec19",
+              "symbol": "p111_rt_ctor",
+              "decoded": "p111_rt_ctor"
+            },
+            {
+              "address": "40ec27",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40ec57",
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail"
+            },
+            {
+              "address": "40ec68",
+              "symbol": "p125_rt_take4",
+              "decoded": "p125_rt_take4"
+            },
+            {
+              "address": "40ec81",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40ec8c",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40ec9d",
+              "symbol": "p125_rt_take2",
+              "decoded": "p125_rt_take2"
+            },
+            {
+              "address": "40ecac",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40eccd",
+              "symbol": "p111_rt_take",
+              "decoded": "p111_rt_take"
+            },
+            {
+              "address": "40ed33",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40ed48",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40ed5d",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40ed72",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40ed87",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40ed95",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40eda3",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40edae",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40edbd",
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail"
+            },
+            {
+              "address": "40edcc",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            }
+          ],
+          "command": [
+            "/usr/bin/objdump",
+            "-d",
+            "--no-show-raw-insn",
+            "--disassemble=p113d_FID_36_100_105_114_101_99_116_46_110_99_95_99_116_111_114_95_111_119_110_101_100_",
+            "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p137-query-v02-builds01-wide-queries-fused-v02/program"
+          ]
+        },
+        {
+          "decoded": "$direct.p137q_repeat",
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_49_51_55_113_95_114_101_112_101_97_116_",
+          "qbeLine": 11423,
+          "qbeBodySha256": "c567db1c5bc6359e8cf3978c4ceafc7e1ed8a4689f6ee4005a4f939bc8092eda",
+          "assembly": {
+            "file": "/home/ai/bend2/build/publish/bend/implementation/phase137/audit/machine01/wide-v02-queries-fused-v02/direct.p137q_repeat.asm",
+            "bytes": 30429,
+            "sha256": "71978b0224217deae241649863fe74ca45634c33d0d09e18a9c71144374813a4"
+          },
+          "instructionLines": 892,
+          "instructionsIncludePadding": true,
+          "calls": [
+            {
+              "address": "4102d5",
+              "symbol": "p111_rt_keep",
+              "decoded": "p111_rt_keep"
+            },
+            {
+              "address": "4102ef",
+              "symbol": "p111_rt_keep",
+              "decoded": "p111_rt_keep"
+            },
+            {
+              "address": "410309",
+              "symbol": "p111_rt_keep",
+              "decoded": "p111_rt_keep"
+            },
+            {
+              "address": "410320",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "410334",
+              "symbol": "p111_rt_keep",
+              "decoded": "p111_rt_keep"
+            },
+            {
+              "address": "41034c",
+              "symbol": "p111_rt_keep",
+              "decoded": "p111_rt_keep"
+            },
+            {
+              "address": "410388",
+              "symbol": "p113d_FID_36_112_49_50_54_115_99_99_46_53_49_",
+              "decoded": "$p126scc.51"
+            },
+            {
+              "address": "4103d6",
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail"
+            },
+            {
+              "address": "410407",
+              "symbol": "p125_rt_take4",
+              "decoded": "p125_rt_take4"
+            },
+            {
+              "address": "41042f",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "410444",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "410475",
+              "symbol": "p125_rt_take2",
+              "decoded": "p125_rt_take2"
+            },
+            {
+              "address": "410498",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "4104ec",
+              "symbol": "p111_rt_take",
+              "decoded": "p111_rt_take"
+            },
+            {
+              "address": "410556",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "41056b",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "410580",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "410595",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "4105aa",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "4105bf",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "4105d4",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "4105e9",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "410609",
+              "symbol": "p111_rt_keep",
+              "decoded": "p111_rt_keep"
+            },
+            {
+              "address": "410628",
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_108_111_111_107_117_112_",
+              "decoded": "$direct.lookup"
+            },
+            {
+              "address": "410676",
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail"
+            },
+            {
+              "address": "4106a9",
+              "symbol": "p125_rt_take4",
+              "decoded": "p125_rt_take4"
+            },
+            {
+              "address": "4106d1",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "4106e6",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "41071a",
+              "symbol": "p125_rt_take2",
+              "decoded": "p125_rt_take2"
+            },
+            {
+              "address": "410740",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "410792",
+              "symbol": "p111_rt_take",
+              "decoded": "p111_rt_take"
+            },
+            {
+              "address": "410814",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "41082c",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "410844",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "41085c",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "410874",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "41088c",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "4108a4",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "4108bc",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "4108e2",
+              "symbol": "p111_rt_keep",
+              "decoded": "p111_rt_keep"
+            },
+            {
+              "address": "41090a",
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_110_99_95_99_116_111_114_95_111_119_110_101_100_",
+              "decoded": "$direct.nc_ctor_owned"
+            },
+            {
+              "address": "410975",
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail"
+            },
+            {
+              "address": "4109c0",
+              "symbol": "p111_rt_keep",
+              "decoded": "p111_rt_keep"
+            },
+            {
+              "address": "410a08",
+              "symbol": "p113d_FID_36_112_49_50_54_115_99_99_46_53_49_",
+              "decoded": "$p126scc.51"
+            },
+            {
+              "address": "410a56",
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail"
+            },
+            {
+              "address": "410a89",
+              "symbol": "p125_rt_take4",
+              "decoded": "p125_rt_take4"
+            },
+            {
+              "address": "410ab7",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "410acf",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "410b08",
+              "symbol": "p125_rt_take2",
+              "decoded": "p125_rt_take2"
+            },
+            {
+              "address": "410b2e",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "410b83",
+              "symbol": "p111_rt_take",
+              "decoded": "p111_rt_take"
+            },
+            {
+              "address": "410c05",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "410c1d",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "410c35",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "410c4d",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "410c65",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "410c7d",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "410c95",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "410cad",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "410cd3",
+              "symbol": "p111_rt_keep",
+              "decoded": "p111_rt_keep"
+            },
+            {
+              "address": "410cf8",
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_108_111_111_107_117_112_",
+              "decoded": "$direct.lookup"
+            },
+            {
+              "address": "410d43",
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail"
+            },
+            {
+              "address": "410d75",
+              "symbol": "p125_rt_take4",
+              "decoded": "p125_rt_take4"
+            },
+            {
+              "address": "410da3",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "410dbb",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "410df2",
+              "symbol": "p125_rt_take2",
+              "decoded": "p125_rt_take2"
+            },
+            {
+              "address": "410e18",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "410e67",
+              "symbol": "p111_rt_take",
+              "decoded": "p111_rt_take"
+            },
+            {
+              "address": "410ee9",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "410f01",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "410f19",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "410f31",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "410f49",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "410f61",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "410f79",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "410f91",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "410fc7",
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_110_99_95_99_116_111_114_95_111_119_110_101_100_",
+              "decoded": "$direct.nc_ctor_owned"
+            },
+            {
+              "address": "41105b",
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail"
+            },
+            {
+              "address": "411119",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "411127",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "411132",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            }
+          ],
+          "command": [
+            "/usr/bin/objdump",
+            "-d",
+            "--no-show-raw-insn",
+            "--disassemble=p113d_FID_36_100_105_114_101_99_116_46_112_49_51_55_113_95_114_101_112_101_97_116_",
+            "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p137-query-v02-builds01-wide-queries-fused-v02/program"
+          ]
+        }
+      ]
+    },
+    {
+      "role": "wide-v02-record-fused-v02",
+      "qbe": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase137/query-v02-emit01/record-fused-v02.ssa",
+        "bytes": 1646717,
+        "sha256": "0ab4b16c3d3fc0224c29d52d861db4c8f54a7b8d84149ca4fbdbb255aefcdb02"
+      },
+      "buildReport": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p137-query-v02-builds01-wide-record-fused-v02/report.json",
+        "bytes": 6280,
+        "sha256": "f716db5736c5e72d2e37d0ba4ac29c515fa78dcd1a0fd806ebf691b31dd5e01b"
+      },
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p137-query-v02-builds01-wide-record-fused-v02/program",
+        "bytes": 413016,
+        "sha256": "d213df39cc78bce4b223ac6fff8a1a511e4324878b4a363c3cce97ed5ebb06e2"
+      },
+      "functions": [
+        {
+          "decoded": "$direct.p137q_repeat",
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_49_51_55_113_95_114_101_112_101_97_116_",
+          "qbeLine": 10065,
+          "qbeBodySha256": "1ca5de87ef359b7dd8abeacdd24866167cb06c3e73b678046f668dbcdd49122e",
+          "assembly": {
+            "file": "/home/ai/bend2/build/publish/bend/implementation/phase137/audit/machine01/wide-v02-record-fused-v02/direct.p137q_repeat.asm",
+            "bytes": 13642,
+            "sha256": "3f23c9a5e17436a3fbfc912b885475f623f7c318ae1bc6735f8cdd4636db67ee"
+          },
+          "instructionLines": 402,
+          "instructionsIncludePadding": true,
+          "calls": [
+            {
+              "address": "40e61b",
+              "symbol": "p111_rt_keep",
+              "decoded": "p111_rt_keep"
+            },
+            {
+              "address": "40e635",
+              "symbol": "p111_rt_keep",
+              "decoded": "p111_rt_keep"
+            },
+            {
+              "address": "40e653",
+              "symbol": "p111_rt_keep",
+              "decoded": "p111_rt_keep"
+            },
+            {
+              "address": "40e66a",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40e681",
+              "symbol": "p111_rt_keep",
+              "decoded": "p111_rt_keep"
+            },
+            {
+              "address": "40e6b1",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40e6c7",
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail"
+            },
+            {
+              "address": "40e706",
+              "symbol": "p111_rt_take",
+              "decoded": "p111_rt_take"
+            },
+            {
+              "address": "40e770",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40e77f",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40e78e",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40e79d",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40e7ac",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40e7bb",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40e7ca",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40e7d9",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40e7e8",
+              "symbol": "p111_rt_keep",
+              "decoded": "p111_rt_keep"
+            },
+            {
+              "address": "40e7fa",
+              "symbol": "p111_rt_keep",
+              "decoded": "p111_rt_keep"
+            },
+            {
+              "address": "40e821",
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_56_56_95_115_116_114_105_110_103_95_101_113_95_103_111_",
+              "decoded": "$direct.p88_string_eq_go"
+            },
+            {
+              "address": "40e83a",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40e84f",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40e8be",
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail"
+            },
+            {
+              "address": "40e908",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40e91e",
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail"
+            },
+            {
+              "address": "40e969",
+              "symbol": "p111_rt_take",
+              "decoded": "p111_rt_take"
+            },
+            {
+              "address": "40e9e5",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40e9f4",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40ea03",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40ea15",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40ea27",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40ea39",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40ea4b",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40ea5d",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40ea6f",
+              "symbol": "p111_rt_keep",
+              "decoded": "p111_rt_keep"
+            },
+            {
+              "address": "40ea8b",
+              "symbol": "p111_rt_keep",
+              "decoded": "p111_rt_keep"
+            },
+            {
+              "address": "40eabe",
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_56_56_95_115_116_114_105_110_103_95_101_113_95_103_111_",
+              "decoded": "$direct.p88_string_eq_go"
+            },
+            {
+              "address": "40eadd",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40eaf5",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40eb71",
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail"
+            },
+            {
+              "address": "40ebe7",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40ebf5",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40ec00",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            }
+          ],
+          "command": [
+            "/usr/bin/objdump",
+            "-d",
+            "--no-show-raw-insn",
+            "--disassemble=p113d_FID_36_100_105_114_101_99_116_46_112_49_51_55_113_95_114_101_112_101_97_116_",
+            "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p137-query-v02-builds01-wide-record-fused-v02/program"
+          ]
+        }
+      ]
+    },
+    {
+      "role": "retain-queries-fused-v02",
+      "qbe": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase137/retain-query-emit01/queries-fused-v02.ssa",
+        "bytes": 1585208,
+        "sha256": "da486e2916f4f58937e4d9a1b6e4c8c8efb93c23f4c6a68745eaf64c13fdaacb"
+      },
+      "buildReport": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p137-retain-query-builds01-wide-queries-fused-v02/report.json",
+        "bytes": 6355,
+        "sha256": "24a63a05afbacd6be2c53117cea55ed5420bb4d2c58a1e8d1293040788c30e40"
+      },
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p137-retain-query-builds01-wide-queries-fused-v02/program",
+        "bytes": 410304,
+        "sha256": "d76dfef3ed2b01b17267c0c2ff88c2b83fe0efb64551a2bfce3891032d8e0a35"
+      },
+      "functions": [
+        {
+          "decoded": "$p128borrow.owned.db",
+          "symbol": "p113d_FID_36_112_49_50_56_98_111_114_114_111_119_46_111_119_110_101_100_46_100_98_",
+          "qbeLine": 2291,
+          "qbeBodySha256": "5f100c638f7c6902bd85ed5113ef29db1f23b4f15740a77e7d26f2713ae6f1d0",
+          "assembly": {
+            "file": "/home/ai/bend2/build/publish/bend/implementation/phase137/audit/machine01/retain-queries-fused-v02/p128borrow.owned.db.asm",
+            "bytes": 4012,
+            "sha256": "8ca35e0d99aa37332f135502245298b72758cafc9359a6a99b1b4a41b1c82db7"
+          },
+          "instructionLines": 105,
+          "instructionsIncludePadding": true,
+          "calls": [
+            {
+              "address": "40715f",
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail"
+            },
+            {
+              "address": "407178",
+              "symbol": "p125_rt_take4",
+              "decoded": "p125_rt_take4"
+            },
+            {
+              "address": "407191",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40719c",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "4071b5",
+              "symbol": "p125_rt_take2",
+              "decoded": "p125_rt_take2"
+            },
+            {
+              "address": "4071c4",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "4071e2",
+              "symbol": "p111_rt_take",
+              "decoded": "p111_rt_take"
+            },
+            {
+              "address": "40723c",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40724e",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "407260",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "407272",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "407284",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "407292",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "4072a0",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "4072ab",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            }
+          ],
+          "command": [
+            "/usr/bin/objdump",
+            "-d",
+            "--no-show-raw-insn",
+            "--disassemble=p113d_FID_36_112_49_50_56_98_111_114_114_111_119_46_111_119_110_101_100_46_100_98_",
+            "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p137-retain-query-builds01-wide-queries-fused-v02/program"
+          ]
+        },
+        {
+          "decoded": "$p118borrow.read.db",
+          "symbol": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_100_98_",
+          "qbeLine": 2368,
+          "qbeBodySha256": "5824295183a2eeafc68ec60eaaa4a2f2a948f74e27228d817aee8946b1735b5b",
+          "assembly": {
+            "file": "/home/ai/bend2/build/publish/bend/implementation/phase137/audit/machine01/retain-queries-fused-v02/p118borrow.read.db.asm",
+            "bytes": 4526,
+            "sha256": "d304e243b07171085341daea9d93f44f4c172568f944ef297335af5554c8749a"
+          },
+          "instructionLines": 106,
+          "instructionsIncludePadding": true,
+          "calls": [
+            {
+              "address": "40734f",
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail"
+            },
+            {
+              "address": "40737a",
+              "symbol": "p118_rt_borrow_fields",
+              "decoded": "p118_rt_borrow_fields"
+            },
+            {
+              "address": "4073e6",
+              "symbol": "p111_rt_special_ctor",
+              "decoded": "p111_rt_special_ctor"
+            },
+            {
+              "address": "40740d",
+              "symbol": "p118_rt_borrow_fields",
+              "decoded": "p118_rt_borrow_fields"
+            },
+            {
+              "address": "407464",
+              "symbol": "p111_rt_special_ctor",
+              "decoded": "p111_rt_special_ctor"
+            },
+            {
+              "address": "40747d",
+              "symbol": "p118_rt_borrow_fields",
+              "decoded": "p118_rt_borrow_fields"
+            }
+          ],
+          "command": [
+            "/usr/bin/objdump",
+            "-d",
+            "--no-show-raw-insn",
+            "--disassemble=p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_100_98_",
+            "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p137-retain-query-builds01-wide-queries-fused-v02/program"
+          ]
+        },
+        {
+          "decoded": "$direct.db",
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_100_98_",
+          "qbeLine": 2523,
+          "qbeBodySha256": "f6bf788213afc937b84daaacc76af34b1173579d7b4193b1ccb17707684b1de3",
+          "assembly": {
+            "file": "/home/ai/bend2/build/publish/bend/implementation/phase137/audit/machine01/retain-queries-fused-v02/direct.db.asm",
+            "bytes": 1343,
+            "sha256": "08866be3c6d89d4642cf2774fcf064737b600322ff9c837d3f93e9f5bc7980ec"
+          },
+          "instructionLines": 28,
+          "instructionsIncludePadding": true,
+          "calls": [
+            {
+              "address": "4074ab",
+              "symbol": "p118_rt_borrow_scalar_safe",
+              "decoded": "p118_rt_borrow_scalar_safe"
+            },
+            {
+              "address": "4074bc",
+              "symbol": "p113d_FID_36_112_49_50_56_98_111_114_114_111_119_46_111_119_110_101_100_46_100_98_",
+              "decoded": "$p128borrow.owned.db"
+            },
+            {
+              "address": "4074c9",
+              "symbol": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_100_98_",
+              "decoded": "$p118borrow.read.db"
+            },
+            {
+              "address": "4074d7",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            }
+          ],
+          "command": [
+            "/usr/bin/objdump",
+            "-d",
+            "--no-show-raw-insn",
+            "--disassemble=p113d_FID_36_100_105_114_101_99_116_46_100_98_",
+            "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p137-retain-query-builds01-wide-queries-fused-v02/program"
+          ]
+        },
+        {
+          "decoded": "$direct.dc",
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_100_99_",
+          "qbeLine": 2726,
+          "qbeBodySha256": "b15a7193a6adceb68634169e981e6ee5acd6bd171f77a24d1a11a1dcca5f5148",
+          "assembly": {
+            "file": "/home/ai/bend2/build/publish/bend/implementation/phase137/audit/machine01/retain-queries-fused-v02/direct.dc.asm",
+            "bytes": 3895,
+            "sha256": "8b0b0e97a329676902cf647d462cd53aa1fceb5ecff241be7becdfb96fb75094"
+          },
+          "instructionLines": 108,
+          "instructionsIncludePadding": true,
+          "calls": [
+            {
+              "address": "407743",
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail"
+            },
+            {
+              "address": "40775c",
+              "symbol": "p125_rt_take4",
+              "decoded": "p125_rt_take4"
+            },
+            {
+              "address": "407799",
+              "symbol": "p125_rt_ctor2",
+              "decoded": "p125_rt_ctor2"
+            },
+            {
+              "address": "4077bb",
+              "symbol": "p125_rt_ctor2",
+              "decoded": "p125_rt_ctor2"
+            },
+            {
+              "address": "4077cc",
+              "symbol": "p125_rt_take2",
+              "decoded": "p125_rt_take2"
+            },
+            {
+              "address": "4077ec",
+              "symbol": "p111_rt_take",
+              "decoded": "p111_rt_take"
+            },
+            {
+              "address": "407846",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "407858",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40786a",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40787c",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40788e",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40789c",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "4078aa",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "4078b5",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            }
+          ],
+          "command": [
+            "/usr/bin/objdump",
+            "-d",
+            "--no-show-raw-insn",
+            "--disassemble=p113d_FID_36_100_105_114_101_99_116_46_100_99_",
+            "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p137-retain-query-builds01-wide-queries-fused-v02/program"
+          ]
+        },
+        {
+          "decoded": "$p128borrow.owned.da",
+          "symbol": "p113d_FID_36_112_49_50_56_98_111_114_114_111_119_46_111_119_110_101_100_46_100_97_",
+          "qbeLine": 2816,
+          "qbeBodySha256": "364416e7e39932dcf84ccfd2fad3135d3da76abc4de2afbe545209ab63bed5b5",
+          "assembly": {
+            "file": "/home/ai/bend2/build/publish/bend/implementation/phase137/audit/machine01/retain-queries-fused-v02/p128borrow.owned.da.asm",
+            "bytes": 4082,
+            "sha256": "701596c0c2812cee46322efa0f8253e4e9e60a5b07c1aec5db737574ec276b37"
+          },
+          "instructionLines": 107,
+          "instructionsIncludePadding": true,
+          "calls": [
+            {
+              "address": "40791f",
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail"
+            },
+            {
+              "address": "407938",
+              "symbol": "p125_rt_take4",
+              "decoded": "p125_rt_take4"
+            },
+            {
+              "address": "407958",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "407963",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40797a",
+              "symbol": "p125_rt_take2",
+              "decoded": "p125_rt_take2"
+            },
+            {
+              "address": "407990",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "4079ac",
+              "symbol": "p111_rt_take",
+              "decoded": "p111_rt_take"
+            },
+            {
+              "address": "407a06",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "407a18",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "407a2a",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "407a3c",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "407a4e",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "407a5c",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "407a6a",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "407a75",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            }
+          ],
+          "command": [
+            "/usr/bin/objdump",
+            "-d",
+            "--no-show-raw-insn",
+            "--disassemble=p113d_FID_36_112_49_50_56_98_111_114_114_111_119_46_111_119_110_101_100_46_100_97_",
+            "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p137-retain-query-builds01-wide-queries-fused-v02/program"
+          ]
+        },
+        {
+          "decoded": "$p118borrow.read.da",
+          "symbol": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_100_97_",
+          "qbeLine": 2893,
+          "qbeBodySha256": "9cff4cd891033887a90c172f32215f4facce1494ae1c998893671da227eb8a30",
+          "assembly": {
+            "file": "/home/ai/bend2/build/publish/bend/implementation/phase137/audit/machine01/retain-queries-fused-v02/p118borrow.read.da.asm",
+            "bytes": 4231,
+            "sha256": "559ed831cc9221e47bd26c1fc859dd4584e4a0d3cbeca175cb6efed366335c35"
+          },
+          "instructionLines": 96,
+          "instructionsIncludePadding": true,
+          "calls": [
+            {
+              "address": "407b2a",
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail"
+            },
+            {
+              "address": "407b50",
+              "symbol": "p118_rt_borrow_fields",
+              "decoded": "p118_rt_borrow_fields"
+            },
+            {
+              "address": "407bd1",
+              "symbol": "p118_rt_borrow_fields",
+              "decoded": "p118_rt_borrow_fields"
+            },
+            {
+              "address": "407c2e",
+              "symbol": "p118_rt_borrow_fields",
+              "decoded": "p118_rt_borrow_fields"
+            }
+          ],
+          "command": [
+            "/usr/bin/objdump",
+            "-d",
+            "--no-show-raw-insn",
+            "--disassemble=p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_100_97_",
+            "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p137-retain-query-builds01-wide-queries-fused-v02/program"
+          ]
+        },
+        {
+          "decoded": "$direct.da",
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_100_97_",
+          "qbeLine": 3046,
+          "qbeBodySha256": "e21ffe0c68df503bf574b1a801d8500924628468cd01b994423aaafae4bdd5ff",
+          "assembly": {
+            "file": "/home/ai/bend2/build/publish/bend/implementation/phase137/audit/machine01/retain-queries-fused-v02/direct.da.asm",
+            "bytes": 1343,
+            "sha256": "ffcee45703dba41fdf1936cdf6a7301ba7410e9531840725e3e59c56be064d2d"
+          },
+          "instructionLines": 28,
+          "instructionsIncludePadding": true,
+          "calls": [
+            {
+              "address": "407c5b",
+              "symbol": "p118_rt_borrow_scalar_safe",
+              "decoded": "p118_rt_borrow_scalar_safe"
+            },
+            {
+              "address": "407c6c",
+              "symbol": "p113d_FID_36_112_49_50_56_98_111_114_114_111_119_46_111_119_110_101_100_46_100_97_",
+              "decoded": "$p128borrow.owned.da"
+            },
+            {
+              "address": "407c79",
+              "symbol": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_100_97_",
+              "decoded": "$p118borrow.read.da"
+            },
+            {
+              "address": "407c87",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            }
+          ],
+          "command": [
+            "/usr/bin/objdump",
+            "-d",
+            "--no-show-raw-insn",
+            "--disassemble=p113d_FID_36_100_105_114_101_99_116_46_100_97_",
+            "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p137-retain-query-builds01-wide-queries-fused-v02/program"
+          ]
+        },
+        {
+          "decoded": "$p128borrow.owned.p137q_is_ctr",
+          "symbol": "p113d_FID_36_112_49_50_56_98_111_114_114_111_119_46_111_119_110_101_100_46_112_49_51_55_113_95_105_115_95_99_116_114_",
+          "qbeLine": 4458,
+          "qbeBodySha256": "02ebed094ed58d33afeb74ea7fe64d44f4677b95699beae937a022438d82a3e7",
+          "assembly": {
+            "file": "/home/ai/bend2/build/publish/bend/implementation/phase137/audit/machine01/retain-queries-fused-v02/p128borrow.owned.p137q_is_ctr.asm",
+            "bytes": 5187,
+            "sha256": "0e9e514a9e68518b8b09277c8443fba0f756194869b3f6c05adfb7081e61b4d0"
+          },
+          "instructionLines": 133,
+          "instructionsIncludePadding": true,
+          "calls": [
+            {
+              "address": "409116",
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail"
+            },
+            {
+              "address": "409132",
+              "symbol": "p125_rt_take4",
+              "decoded": "p125_rt_take4"
+            },
+            {
+              "address": "40914b",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "409156",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40916f",
+              "symbol": "p125_rt_take2",
+              "decoded": "p125_rt_take2"
+            },
+            {
+              "address": "40917e",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40919c",
+              "symbol": "p111_rt_take",
+              "decoded": "p111_rt_take"
+            },
+            {
+              "address": "4091f6",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "409208",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40921a",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40922c",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40923e",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40924c",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40925a",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "409268",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "409276",
+              "symbol": "p111_rt_keep",
+              "decoded": "p111_rt_keep"
+            },
+            {
+              "address": "409291",
+              "symbol": "p111_rt_keep",
+              "decoded": "p111_rt_keep"
+            },
+            {
+              "address": "4092ad",
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_56_56_95_115_116_114_105_110_103_95_101_113_95_103_111_",
+              "decoded": "$direct.p88_string_eq_go"
+            },
+            {
+              "address": "4092be",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "4092c9",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            }
+          ],
+          "command": [
+            "/usr/bin/objdump",
+            "-d",
+            "--no-show-raw-insn",
+            "--disassemble=p113d_FID_36_112_49_50_56_98_111_114_114_111_119_46_111_119_110_101_100_46_112_49_51_55_113_95_105_115_95_99_116_114_",
+            "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p137-retain-query-builds01-wide-queries-fused-v02/program"
+          ]
+        },
+        {
+          "decoded": "$p118borrow.read.p137q_is_ctr",
+          "symbol": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_112_49_51_55_113_95_105_115_95_99_116_114_",
+          "qbeLine": 4565,
+          "qbeBodySha256": "9b5a493419da67048bfe187707d18482805a37d853840784e9344d527a130028",
+          "assembly": {
+            "file": "/home/ai/bend2/build/publish/bend/implementation/phase137/audit/machine01/retain-queries-fused-v02/p118borrow.read.p137q_is_ctr.asm",
+            "bytes": 17543,
+            "sha256": "8f0fb3597dcc2f91013253238f903ba0a0dffa603e444c09daab3455d5e35193"
+          },
+          "instructionLines": 389,
+          "instructionsIncludePadding": true,
+          "calls": [
+            {
+              "address": "409380",
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail"
+            },
+            {
+              "address": "4093a9",
+              "symbol": "p118_rt_borrow_fields",
+              "decoded": "p118_rt_borrow_fields"
+            },
+            {
+              "address": "409415",
+              "symbol": "p111_rt_special_ctor",
+              "decoded": "p111_rt_special_ctor"
+            },
+            {
+              "address": "40943c",
+              "symbol": "p118_rt_borrow_fields",
+              "decoded": "p118_rt_borrow_fields"
+            },
+            {
+              "address": "409490",
+              "symbol": "p111_rt_special_ctor",
+              "decoded": "p111_rt_special_ctor"
+            },
+            {
+              "address": "4094af",
+              "symbol": "p118_rt_borrow_fields",
+              "decoded": "p118_rt_borrow_fields"
+            },
+            {
+              "address": "4094e7",
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail"
+            },
+            {
+              "address": "409524",
+              "symbol": "p118_rt_borrow_fields",
+              "decoded": "p118_rt_borrow_fields"
+            },
+            {
+              "address": "4095bb",
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail"
+            },
+            {
+              "address": "4095f9",
+              "symbol": "p118_rt_borrow_fields",
+              "decoded": "p118_rt_borrow_fields"
+            },
+            {
+              "address": "4096af",
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail"
+            },
+            {
+              "address": "4096e7",
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail"
+            },
+            {
+              "address": "409724",
+              "symbol": "p118_rt_borrow_fields",
+              "decoded": "p118_rt_borrow_fields"
+            },
+            {
+              "address": "4097d6",
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail"
+            },
+            {
+              "address": "409810",
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail"
+            },
+            {
+              "address": "40984d",
+              "symbol": "p118_rt_borrow_fields",
+              "decoded": "p118_rt_borrow_fields"
+            },
+            {
+              "address": "4098bb",
+              "symbol": "p111_rt_special_ctor",
+              "decoded": "p111_rt_special_ctor"
+            },
+            {
+              "address": "4098e9",
+              "symbol": "p111_rt_special_ctor",
+              "decoded": "p111_rt_special_ctor"
+            },
+            {
+              "address": "409901",
+              "symbol": "p111_rt_special_ctor",
+              "decoded": "p111_rt_special_ctor"
+            },
+            {
+              "address": "40991b",
+              "symbol": "p111_rt_special_ctor",
+              "decoded": "p111_rt_special_ctor"
+            },
+            {
+              "address": "409933",
+              "symbol": "p111_rt_special_ctor",
+              "decoded": "p111_rt_special_ctor"
+            },
+            {
+              "address": "40994b",
+              "symbol": "p111_rt_special_ctor",
+              "decoded": "p111_rt_special_ctor"
+            }
+          ],
+          "command": [
+            "/usr/bin/objdump",
+            "-d",
+            "--no-show-raw-insn",
+            "--disassemble=p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_112_49_51_55_113_95_105_115_95_99_116_114_",
+            "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p137-retain-query-builds01-wide-queries-fused-v02/program"
+          ]
+        },
+        {
+          "decoded": "$direct.p137q_is_ctr",
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_49_51_55_113_95_105_115_95_99_116_114_",
+          "qbeLine": 5070,
+          "qbeBodySha256": "dc4594f99da875eb165f7eca3477388a30f48cd03a7b10ad27f8dbf335776879",
+          "assembly": {
+            "file": "/home/ai/bend2/build/publish/bend/implementation/phase137/audit/machine01/retain-queries-fused-v02/direct.p137q_is_ctr.asm",
+            "bytes": 1518,
+            "sha256": "6740f12b4932f3a264f6068a41b3e97d67cc4866776ce1e35da912c9e83edb43"
+          },
+          "instructionLines": 28,
+          "instructionsIncludePadding": true,
+          "calls": [
+            {
+              "address": "40997b",
+              "symbol": "p118_rt_borrow_scalar_safe",
+              "decoded": "p118_rt_borrow_scalar_safe"
+            },
+            {
+              "address": "40998c",
+              "symbol": "p113d_FID_36_112_49_50_56_98_111_114_114_111_119_46_111_119_110_101_100_46_112_49_51_55_113_95_105_115_95_99_116_114_",
+              "decoded": "$p128borrow.owned.p137q_is_ctr"
+            },
+            {
+              "address": "409999",
+              "symbol": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_112_49_51_55_113_95_105_115_95_99_116_114_",
+              "decoded": "$p118borrow.read.p137q_is_ctr"
+            },
+            {
+              "address": "4099a7",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            }
+          ],
+          "command": [
+            "/usr/bin/objdump",
+            "-d",
+            "--no-show-raw-insn",
+            "--disassemble=p113d_FID_36_100_105_114_101_99_116_46_112_49_51_55_113_95_105_115_95_99_116_114_",
+            "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p137-retain-query-builds01-wide-queries-fused-v02/program"
+          ]
+        },
+        {
+          "decoded": "$p128borrow.owned.p137q_is_adt",
+          "symbol": "p113d_FID_36_112_49_50_56_98_111_114_114_111_119_46_111_119_110_101_100_46_112_49_51_55_113_95_105_115_95_97_100_116_",
+          "qbeLine": 5087,
+          "qbeBodySha256": "6f6116d1c019f530804517a4001719417b80c7607539712003b8411682fdabb6",
+          "assembly": {
+            "file": "/home/ai/bend2/build/publish/bend/implementation/phase137/audit/machine01/retain-queries-fused-v02/p128borrow.owned.p137q_is_adt.asm",
+            "bytes": 5187,
+            "sha256": "ed560007a6234d742d73ba588b857194d467db26fb78ddea3a9bab394c71df4b"
+          },
+          "instructionLines": 133,
+          "instructionsIncludePadding": true,
+          "calls": [
+            {
+              "address": "409a16",
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail"
+            },
+            {
+              "address": "409a32",
+              "symbol": "p125_rt_take4",
+              "decoded": "p125_rt_take4"
+            },
+            {
+              "address": "409a4b",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "409a56",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "409a6f",
+              "symbol": "p125_rt_take2",
+              "decoded": "p125_rt_take2"
+            },
+            {
+              "address": "409a7e",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "409a9c",
+              "symbol": "p111_rt_take",
+              "decoded": "p111_rt_take"
+            },
+            {
+              "address": "409af6",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "409b08",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "409b1a",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "409b2c",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "409b3e",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "409b4c",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "409b5a",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "409b68",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "409b76",
+              "symbol": "p111_rt_keep",
+              "decoded": "p111_rt_keep"
+            },
+            {
+              "address": "409b91",
+              "symbol": "p111_rt_keep",
+              "decoded": "p111_rt_keep"
+            },
+            {
+              "address": "409bad",
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_56_56_95_115_116_114_105_110_103_95_101_113_95_103_111_",
+              "decoded": "$direct.p88_string_eq_go"
+            },
+            {
+              "address": "409bbe",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "409bc9",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            }
+          ],
+          "command": [
+            "/usr/bin/objdump",
+            "-d",
+            "--no-show-raw-insn",
+            "--disassemble=p113d_FID_36_112_49_50_56_98_111_114_114_111_119_46_111_119_110_101_100_46_112_49_51_55_113_95_105_115_95_97_100_116_",
+            "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p137-retain-query-builds01-wide-queries-fused-v02/program"
+          ]
+        },
+        {
+          "decoded": "$p118borrow.read.p137q_is_adt",
+          "symbol": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_112_49_51_55_113_95_105_115_95_97_100_116_",
+          "qbeLine": 5194,
+          "qbeBodySha256": "0227247bb34451c71188450a27a0ede63822693fc3a832b4dcdc337e29452592",
+          "assembly": {
+            "file": "/home/ai/bend2/build/publish/bend/implementation/phase137/audit/machine01/retain-queries-fused-v02/p118borrow.read.p137q_is_adt.asm",
+            "bytes": 17543,
+            "sha256": "54b186c7bae01fccecd61eb4c5ef00bc3651af0a1971c0791dfed382deb28f2e"
+          },
+          "instructionLines": 389,
+          "instructionsIncludePadding": true,
+          "calls": [
+            {
+              "address": "409c80",
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail"
+            },
+            {
+              "address": "409ca9",
+              "symbol": "p118_rt_borrow_fields",
+              "decoded": "p118_rt_borrow_fields"
+            },
+            {
+              "address": "409d15",
+              "symbol": "p111_rt_special_ctor",
+              "decoded": "p111_rt_special_ctor"
+            },
+            {
+              "address": "409d3c",
+              "symbol": "p118_rt_borrow_fields",
+              "decoded": "p118_rt_borrow_fields"
+            },
+            {
+              "address": "409d90",
+              "symbol": "p111_rt_special_ctor",
+              "decoded": "p111_rt_special_ctor"
+            },
+            {
+              "address": "409daf",
+              "symbol": "p118_rt_borrow_fields",
+              "decoded": "p118_rt_borrow_fields"
+            },
+            {
+              "address": "409de7",
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail"
+            },
+            {
+              "address": "409e24",
+              "symbol": "p118_rt_borrow_fields",
+              "decoded": "p118_rt_borrow_fields"
+            },
+            {
+              "address": "409ebb",
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail"
+            },
+            {
+              "address": "409ef9",
+              "symbol": "p118_rt_borrow_fields",
+              "decoded": "p118_rt_borrow_fields"
+            },
+            {
+              "address": "409faf",
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail"
+            },
+            {
+              "address": "409fe7",
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail"
+            },
+            {
+              "address": "40a024",
+              "symbol": "p118_rt_borrow_fields",
+              "decoded": "p118_rt_borrow_fields"
+            },
+            {
+              "address": "40a0d6",
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail"
+            },
+            {
+              "address": "40a110",
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail"
+            },
+            {
+              "address": "40a14d",
+              "symbol": "p118_rt_borrow_fields",
+              "decoded": "p118_rt_borrow_fields"
+            },
+            {
+              "address": "40a1bb",
+              "symbol": "p111_rt_special_ctor",
+              "decoded": "p111_rt_special_ctor"
+            },
+            {
+              "address": "40a1e9",
+              "symbol": "p111_rt_special_ctor",
+              "decoded": "p111_rt_special_ctor"
+            },
+            {
+              "address": "40a201",
+              "symbol": "p111_rt_special_ctor",
+              "decoded": "p111_rt_special_ctor"
+            },
+            {
+              "address": "40a21b",
+              "symbol": "p111_rt_special_ctor",
+              "decoded": "p111_rt_special_ctor"
+            },
+            {
+              "address": "40a233",
+              "symbol": "p111_rt_special_ctor",
+              "decoded": "p111_rt_special_ctor"
+            },
+            {
+              "address": "40a24b",
+              "symbol": "p111_rt_special_ctor",
+              "decoded": "p111_rt_special_ctor"
+            }
+          ],
+          "command": [
+            "/usr/bin/objdump",
+            "-d",
+            "--no-show-raw-insn",
+            "--disassemble=p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_112_49_51_55_113_95_105_115_95_97_100_116_",
+            "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p137-retain-query-builds01-wide-queries-fused-v02/program"
+          ]
+        },
+        {
+          "decoded": "$direct.p137q_is_adt",
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_49_51_55_113_95_105_115_95_97_100_116_",
+          "qbeLine": 5699,
+          "qbeBodySha256": "a81782ca8efed442570d1e9c55003ccd5d37348bd2dceed88a2d1f71706be568",
+          "assembly": {
+            "file": "/home/ai/bend2/build/publish/bend/implementation/phase137/audit/machine01/retain-queries-fused-v02/direct.p137q_is_adt.asm",
+            "bytes": 1518,
+            "sha256": "02594294bf00d937318ac7d125ed438abc5dbade39270bdd3854070754a27b11"
+          },
+          "instructionLines": 28,
+          "instructionsIncludePadding": true,
+          "calls": [
+            {
+              "address": "40a27b",
+              "symbol": "p118_rt_borrow_scalar_safe",
+              "decoded": "p118_rt_borrow_scalar_safe"
+            },
+            {
+              "address": "40a28c",
+              "symbol": "p113d_FID_36_112_49_50_56_98_111_114_114_111_119_46_111_119_110_101_100_46_112_49_51_55_113_95_105_115_95_97_100_116_",
+              "decoded": "$p128borrow.owned.p137q_is_adt"
+            },
+            {
+              "address": "40a299",
+              "symbol": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_112_49_51_55_113_95_105_115_95_97_100_116_",
+              "decoded": "$p118borrow.read.p137q_is_adt"
+            },
+            {
+              "address": "40a2a7",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            }
+          ],
+          "command": [
+            "/usr/bin/objdump",
+            "-d",
+            "--no-show-raw-insn",
+            "--disassemble=p113d_FID_36_100_105_114_101_99_116_46_112_49_51_55_113_95_105_115_95_97_100_116_",
+            "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p137-retain-query-builds01-wide-queries-fused-v02/program"
+          ]
+        },
+        {
+          "decoded": "$p128borrow.owned.p137q_name_eq",
+          "symbol": "p113d_FID_36_112_49_50_56_98_111_114_114_111_119_46_111_119_110_101_100_46_112_49_51_55_113_95_110_97_109_101_95_101_113_",
+          "qbeLine": 5716,
+          "qbeBodySha256": "55bd85a1d8940b0bba66a42f5b4d9adb6822cf97cf6ba1521f4ac29f7da0fc46",
+          "assembly": {
+            "file": "/home/ai/bend2/build/publish/bend/implementation/phase137/audit/machine01/retain-queries-fused-v02/p128borrow.owned.p137q_name_eq.asm",
+            "bytes": 7423,
+            "sha256": "78ffbda6835db6a293e30fb92c0c8583e2e795d977b62d0d539ea5e32f79a13d"
+          },
+          "instructionLines": 203,
+          "instructionsIncludePadding": true,
+          "calls": [
+            {
+              "address": "40a31c",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40a329",
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail"
+            },
+            {
+              "address": "40a34d",
+              "symbol": "p125_rt_take4",
+              "decoded": "p125_rt_take4"
+            },
+            {
+              "address": "40a366",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40a374",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40a38f",
+              "symbol": "p111_rt_keep",
+              "decoded": "p111_rt_keep"
+            },
+            {
+              "address": "40a3a0",
+              "symbol": "p111_rt_keep",
+              "decoded": "p111_rt_keep"
+            },
+            {
+              "address": "40a3bc",
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_56_56_95_115_116_114_105_110_103_95_101_113_95_103_111_",
+              "decoded": "$direct.p88_string_eq_go"
+            },
+            {
+              "address": "40a3cd",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40a3d8",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40a3f5",
+              "symbol": "p125_rt_take2",
+              "decoded": "p125_rt_take2"
+            },
+            {
+              "address": "40a40d",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40a428",
+              "symbol": "p111_rt_keep",
+              "decoded": "p111_rt_keep"
+            },
+            {
+              "address": "40a439",
+              "symbol": "p111_rt_keep",
+              "decoded": "p111_rt_keep"
+            },
+            {
+              "address": "40a455",
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_56_56_95_115_116_114_105_110_103_95_101_113_95_103_111_",
+              "decoded": "$direct.p88_string_eq_go"
+            },
+            {
+              "address": "40a466",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40a471",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40a493",
+              "symbol": "p111_rt_take",
+              "decoded": "p111_rt_take"
+            },
+            {
+              "address": "40a4f1",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40a503",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40a515",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40a527",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40a539",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40a54b",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40a559",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40a567",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40a575",
+              "symbol": "p111_rt_keep",
+              "decoded": "p111_rt_keep"
+            },
+            {
+              "address": "40a586",
+              "symbol": "p111_rt_keep",
+              "decoded": "p111_rt_keep"
+            },
+            {
+              "address": "40a5a2",
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_56_56_95_115_116_114_105_110_103_95_101_113_95_103_111_",
+              "decoded": "$direct.p88_string_eq_go"
+            },
+            {
+              "address": "40a5b3",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40a5be",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            }
+          ],
+          "command": [
+            "/usr/bin/objdump",
+            "-d",
+            "--no-show-raw-insn",
+            "--disassemble=p113d_FID_36_112_49_50_56_98_111_114_114_111_119_46_111_119_110_101_100_46_112_49_51_55_113_95_110_97_109_101_95_101_113_",
+            "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p137-retain-query-builds01-wide-queries-fused-v02/program"
+          ]
+        },
+        {
+          "decoded": "$p118borrow.read.p137q_name_eq",
+          "symbol": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_112_49_51_55_113_95_110_97_109_101_95_101_113_",
+          "qbeLine": 5884,
+          "qbeBodySha256": "6643f49e3b4e7f3472b1eec45e80e832807b096bc7c09c3fc5a78e6ce56ca38b",
+          "assembly": {
+            "file": "/home/ai/bend2/build/publish/bend/implementation/phase137/audit/machine01/retain-queries-fused-v02/p118borrow.read.p137q_name_eq.asm",
+            "bytes": 11886,
+            "sha256": "02f7cb5a0fc2e97d30cc02e657f26330716d81773e3205889e3bae9989d2350e"
+          },
+          "instructionLines": 261,
+          "instructionsIncludePadding": true,
+          "calls": [
+            {
+              "address": "40a6dd",
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail"
+            },
+            {
+              "address": "40a709",
+              "symbol": "p118_rt_borrow_fields",
+              "decoded": "p118_rt_borrow_fields"
+            },
+            {
+              "address": "40a796",
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail"
+            },
+            {
+              "address": "40a7c5",
+              "symbol": "p118_rt_borrow_fields",
+              "decoded": "p118_rt_borrow_fields"
+            },
+            {
+              "address": "40a821",
+              "symbol": "p111_rt_special_ctor",
+              "decoded": "p111_rt_special_ctor"
+            },
+            {
+              "address": "40a83c",
+              "symbol": "p111_rt_special_ctor",
+              "decoded": "p111_rt_special_ctor"
+            },
+            {
+              "address": "40a867",
+              "symbol": "p118_rt_borrow_fields",
+              "decoded": "p118_rt_borrow_fields"
+            },
+            {
+              "address": "40a8d6",
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail"
+            },
+            {
+              "address": "40a904",
+              "symbol": "p118_rt_borrow_fields",
+              "decoded": "p118_rt_borrow_fields"
+            },
+            {
+              "address": "40a960",
+              "symbol": "p111_rt_special_ctor",
+              "decoded": "p111_rt_special_ctor"
+            },
+            {
+              "address": "40a97b",
+              "symbol": "p111_rt_special_ctor",
+              "decoded": "p111_rt_special_ctor"
+            },
+            {
+              "address": "40a99a",
+              "symbol": "p118_rt_borrow_fields",
+              "decoded": "p118_rt_borrow_fields"
+            },
+            {
+              "address": "40a9c6",
+              "symbol": "p111_rt_special_ctor",
+              "decoded": "p111_rt_special_ctor"
+            },
+            {
+              "address": "40a9e0",
+              "symbol": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_112_56_56_95_115_116_114_105_110_103_95_101_113_95_103_111_",
+              "decoded": "$p118borrow.read.p88_string_eq_go"
+            },
+            {
+              "address": "40a9f1",
+              "symbol": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_112_57_56_95_101_113_95_102_105_110_105_115_104_",
+              "decoded": "$p118borrow.read.p98_eq_finish"
+            }
+          ],
+          "command": [
+            "/usr/bin/objdump",
+            "-d",
+            "--no-show-raw-insn",
+            "--disassemble=p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_112_49_51_55_113_95_110_97_109_101_95_101_113_",
+            "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p137-retain-query-builds01-wide-queries-fused-v02/program"
+          ]
+        },
+        {
+          "decoded": "$direct.p137q_name_eq",
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_49_51_55_113_95_110_97_109_101_95_101_113_",
+          "qbeLine": 6174,
+          "qbeBodySha256": "7d5264a1d7cba7011b476514dca7da346891667725739c458f90258399ad453d",
+          "assembly": {
+            "file": "/home/ai/bend2/build/publish/bend/implementation/phase137/audit/machine01/retain-queries-fused-v02/direct.p137q_name_eq.asm",
+            "bytes": 1817,
+            "sha256": "617f66bf1ebb1ffa4affd2a8ff4558cfe929788b9b546902710b2bf186dff22f"
+          },
+          "instructionLines": 38,
+          "instructionsIncludePadding": true,
+          "calls": [
+            {
+              "address": "40aa35",
+              "symbol": "p118_rt_borrow_scalar_safe",
+              "decoded": "p118_rt_borrow_scalar_safe"
+            },
+            {
+              "address": "40aa49",
+              "symbol": "p113d_FID_36_112_49_50_56_98_111_114_114_111_119_46_111_119_110_101_100_46_112_49_51_55_113_95_110_97_109_101_95_101_113_",
+              "decoded": "$p128borrow.owned.p137q_name_eq"
+            },
+            {
+              "address": "40aa59",
+              "symbol": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_112_49_51_55_113_95_110_97_109_101_95_101_113_",
+              "decoded": "$p118borrow.read.p137q_name_eq"
+            },
+            {
+              "address": "40aa6a",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40aa75",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            }
+          ],
+          "command": [
+            "/usr/bin/objdump",
+            "-d",
+            "--no-show-raw-insn",
+            "--disassemble=p113d_FID_36_100_105_114_101_99_116_46_112_49_51_55_113_95_110_97_109_101_95_101_113_",
+            "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p137-retain-query-builds01-wide-queries-fused-v02/program"
+          ]
+        },
+        {
+          "decoded": "$direct.p137q_is_cache",
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_49_51_55_113_95_105_115_95_99_97_99_104_101_",
+          "qbeLine": 6314,
+          "qbeBodySha256": "cdee881a7fb119e3a00e49059ca824a3f8967cde71fed6eab4c0d38158318c68",
+          "assembly": {
+            "file": "/home/ai/bend2/build/publish/bend/implementation/phase137/audit/machine01/retain-queries-fused-v02/direct.p137q_is_cache.asm",
+            "bytes": 4936,
+            "sha256": "ecaa1bd402953b6f65c4269ab2f3927cc8ce5ae23d72f31cb8cbdefcb70fa99c"
+          },
+          "instructionLines": 132,
+          "instructionsIncludePadding": true,
+          "calls": [
+            {
+              "address": "40ad1f",
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail"
+            },
+            {
+              "address": "40ad38",
+              "symbol": "p125_rt_take4",
+              "decoded": "p125_rt_take4"
+            },
+            {
+              "address": "40ad51",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40ad5c",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40ad75",
+              "symbol": "p125_rt_take2",
+              "decoded": "p125_rt_take2"
+            },
+            {
+              "address": "40ad84",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40ada2",
+              "symbol": "p111_rt_take",
+              "decoded": "p111_rt_take"
+            },
+            {
+              "address": "40adfc",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40ae0e",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40ae20",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40ae32",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40ae44",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40ae52",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40ae60",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40ae6e",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40ae7c",
+              "symbol": "p111_rt_keep",
+              "decoded": "p111_rt_keep"
+            },
+            {
+              "address": "40ae97",
+              "symbol": "p111_rt_keep",
+              "decoded": "p111_rt_keep"
+            },
+            {
+              "address": "40aeb3",
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_56_56_95_115_116_114_105_110_103_95_101_113_95_103_111_",
+              "decoded": "$direct.p88_string_eq_go"
+            },
+            {
+              "address": "40aec4",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40aecf",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            }
+          ],
+          "command": [
+            "/usr/bin/objdump",
+            "-d",
+            "--no-show-raw-insn",
+            "--disassemble=p113d_FID_36_100_105_114_101_99_116_46_112_49_51_55_113_95_105_115_95_99_97_99_104_101_",
+            "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p137-retain-query-builds01-wide-queries-fused-v02/program"
+          ]
+        },
+        {
+          "decoded": "$p128borrow.owned.p137q_key_eq",
+          "symbol": "p113d_FID_36_112_49_50_56_98_111_114_114_111_119_46_111_119_110_101_100_46_112_49_51_55_113_95_107_101_121_95_101_113_",
+          "qbeLine": 6421,
+          "qbeBodySha256": "1775e737d59eef64494696b384d60c9887b4713c593629b452b3cf38ff5417a6",
+          "assembly": {
+            "file": "/home/ai/bend2/build/publish/bend/implementation/phase137/audit/machine01/retain-queries-fused-v02/p128borrow.owned.p137q_key_eq.asm",
+            "bytes": 7406,
+            "sha256": "47ea2af13a3e431bf300b70a161c55441d6cc489865c9d3a798afbeb36e91fd7"
+          },
+          "instructionLines": 203,
+          "instructionsIncludePadding": true,
+          "calls": [
+            {
+              "address": "40af4f",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40af5c",
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail"
+            },
+            {
+              "address": "40af7b",
+              "symbol": "p125_rt_take4",
+              "decoded": "p125_rt_take4"
+            },
+            {
+              "address": "40af94",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40afa2",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40afb3",
+              "symbol": "p111_rt_keep",
+              "decoded": "p111_rt_keep"
+            },
+            {
+              "address": "40afce",
+              "symbol": "p111_rt_keep",
+              "decoded": "p111_rt_keep"
+            },
+            {
+              "address": "40afea",
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_56_56_95_115_116_114_105_110_103_95_101_113_95_103_111_",
+              "decoded": "$direct.p88_string_eq_go"
+            },
+            {
+              "address": "40affb",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40b006",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40b023",
+              "symbol": "p125_rt_take2",
+              "decoded": "p125_rt_take2"
+            },
+            {
+              "address": "40b03b",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40b04c",
+              "symbol": "p111_rt_keep",
+              "decoded": "p111_rt_keep"
+            },
+            {
+              "address": "40b067",
+              "symbol": "p111_rt_keep",
+              "decoded": "p111_rt_keep"
+            },
+            {
+              "address": "40b083",
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_56_56_95_115_116_114_105_110_103_95_101_113_95_103_111_",
+              "decoded": "$direct.p88_string_eq_go"
+            },
+            {
+              "address": "40b094",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40b09f",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40b0c1",
+              "symbol": "p111_rt_take",
+              "decoded": "p111_rt_take"
+            },
+            {
+              "address": "40b11f",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40b131",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40b143",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40b155",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40b167",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40b179",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40b187",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40b195",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40b1a3",
+              "symbol": "p111_rt_keep",
+              "decoded": "p111_rt_keep"
+            },
+            {
+              "address": "40b1b4",
+              "symbol": "p111_rt_keep",
+              "decoded": "p111_rt_keep"
+            },
+            {
+              "address": "40b1d0",
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_56_56_95_115_116_114_105_110_103_95_101_113_95_103_111_",
+              "decoded": "$direct.p88_string_eq_go"
+            },
+            {
+              "address": "40b1e1",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40b1ec",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            }
+          ],
+          "command": [
+            "/usr/bin/objdump",
+            "-d",
+            "--no-show-raw-insn",
+            "--disassemble=p113d_FID_36_112_49_50_56_98_111_114_114_111_119_46_111_119_110_101_100_46_112_49_51_55_113_95_107_101_121_95_101_113_",
+            "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p137-retain-query-builds01-wide-queries-fused-v02/program"
+          ]
+        },
+        {
+          "decoded": "$p118borrow.read.p137q_key_eq",
+          "symbol": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_112_49_51_55_113_95_107_101_121_95_101_113_",
+          "qbeLine": 6589,
+          "qbeBodySha256": "9c84b58d20daa6b1a071e9b0dc454fb7ba51bd8870e7ecb8be45fb13b9eb1b21",
+          "assembly": {
+            "file": "/home/ai/bend2/build/publish/bend/implementation/phase137/audit/machine01/retain-queries-fused-v02/p118borrow.read.p137q_key_eq.asm",
+            "bytes": 11772,
+            "sha256": "976c2c079db83992f2a2beb07e82f1cba5623590cacc961e09f028b0bd57e9e9"
+          },
+          "instructionLines": 260,
+          "instructionsIncludePadding": true,
+          "calls": [
+            {
+              "address": "40b2fc",
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail"
+            },
+            {
+              "address": "40b328",
+              "symbol": "p118_rt_borrow_fields",
+              "decoded": "p118_rt_borrow_fields"
+            },
+            {
+              "address": "40b3b6",
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail"
+            },
+            {
+              "address": "40b3e5",
+              "symbol": "p118_rt_borrow_fields",
+              "decoded": "p118_rt_borrow_fields"
+            },
+            {
+              "address": "40b441",
+              "symbol": "p111_rt_special_ctor",
+              "decoded": "p111_rt_special_ctor"
+            },
+            {
+              "address": "40b45c",
+              "symbol": "p111_rt_special_ctor",
+              "decoded": "p111_rt_special_ctor"
+            },
+            {
+              "address": "40b487",
+              "symbol": "p118_rt_borrow_fields",
+              "decoded": "p118_rt_borrow_fields"
+            },
+            {
+              "address": "40b4f6",
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail"
+            },
+            {
+              "address": "40b524",
+              "symbol": "p118_rt_borrow_fields",
+              "decoded": "p118_rt_borrow_fields"
+            },
+            {
+              "address": "40b580",
+              "symbol": "p111_rt_special_ctor",
+              "decoded": "p111_rt_special_ctor"
+            },
+            {
+              "address": "40b59b",
+              "symbol": "p111_rt_special_ctor",
+              "decoded": "p111_rt_special_ctor"
+            },
+            {
+              "address": "40b5ba",
+              "symbol": "p118_rt_borrow_fields",
+              "decoded": "p118_rt_borrow_fields"
+            },
+            {
+              "address": "40b5e6",
+              "symbol": "p111_rt_special_ctor",
+              "decoded": "p111_rt_special_ctor"
+            },
+            {
+              "address": "40b600",
+              "symbol": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_112_56_56_95_115_116_114_105_110_103_95_101_113_95_103_111_",
+              "decoded": "$p118borrow.read.p88_string_eq_go"
+            },
+            {
+              "address": "40b611",
+              "symbol": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_112_57_56_95_101_113_95_102_105_110_105_115_104_",
+              "decoded": "$p118borrow.read.p98_eq_finish"
+            }
+          ],
+          "command": [
+            "/usr/bin/objdump",
+            "-d",
+            "--no-show-raw-insn",
+            "--disassemble=p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_112_49_51_55_113_95_107_101_121_95_101_113_",
+            "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p137-retain-query-builds01-wide-queries-fused-v02/program"
+          ]
+        },
+        {
+          "decoded": "$direct.p137q_key_eq",
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_49_51_55_113_95_107_101_121_95_101_113_",
+          "qbeLine": 6879,
+          "qbeBodySha256": "226d2bf849150d1e4d3c3a055e3c206a783e736763655baea150ce08797347be",
+          "assembly": {
+            "file": "/home/ai/bend2/build/publish/bend/implementation/phase137/audit/machine01/retain-queries-fused-v02/direct.p137q_key_eq.asm",
+            "bytes": 1802,
+            "sha256": "0ffedc3602b7e89c3e5bc89af0a9bbffdcfe938ce5eb7c1ef060e48acdeb817a"
+          },
+          "instructionLines": 38,
+          "instructionsIncludePadding": true,
+          "calls": [
+            {
+              "address": "40b655",
+              "symbol": "p118_rt_borrow_scalar_safe",
+              "decoded": "p118_rt_borrow_scalar_safe"
+            },
+            {
+              "address": "40b669",
+              "symbol": "p113d_FID_36_112_49_50_56_98_111_114_114_111_119_46_111_119_110_101_100_46_112_49_51_55_113_95_107_101_121_95_101_113_",
+              "decoded": "$p128borrow.owned.p137q_key_eq"
+            },
+            {
+              "address": "40b679",
+              "symbol": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_112_49_51_55_113_95_107_101_121_95_101_113_",
+              "decoded": "$p118borrow.read.p137q_key_eq"
+            },
+            {
+              "address": "40b68a",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40b695",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            }
+          ],
+          "command": [
+            "/usr/bin/objdump",
+            "-d",
+            "--no-show-raw-insn",
+            "--disassemble=p113d_FID_36_100_105_114_101_99_116_46_112_49_51_55_113_95_107_101_121_95_101_113_",
+            "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p137-retain-query-builds01-wide-queries-fused-v02/program"
+          ]
+        },
+        {
+          "decoded": "$direct.lookup",
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_108_111_111_107_117_112_",
+          "qbeLine": 8314,
+          "qbeBodySha256": "0b7447d99b1b3be869fe876e74f029dd25fadc0ad4e10aac25b51d398335d4e0",
+          "assembly": {
+            "file": "/home/ai/bend2/build/publish/bend/implementation/phase137/audit/machine01/retain-queries-fused-v02/direct.lookup.asm",
+            "bytes": 9187,
+            "sha256": "d91ce596ce786760c411ff6a057660fd776804308a6b0f2b3f85b7521112a0f1"
+          },
+          "instructionLines": 257,
+          "instructionsIncludePadding": true,
+          "calls": [
+            {
+              "address": "40ca37",
+              "symbol": "p125_rt_take2",
+              "decoded": "p125_rt_take2"
+            },
+            {
+              "address": "40ca50",
+              "symbol": "p111_rt_keep",
+              "decoded": "p111_rt_keep"
+            },
+            {
+              "address": "40ca61",
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_49_51_55_113_95_105_115_95_99_97_99_104_101_",
+              "decoded": "$direct.p137q_is_cache"
+            },
+            {
+              "address": "40cac0",
+              "symbol": "p111_rt_ctor",
+              "decoded": "p111_rt_ctor"
+            },
+            {
+              "address": "40cace",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40cae5",
+              "symbol": "p111_rt_keep",
+              "decoded": "p111_rt_keep"
+            },
+            {
+              "address": "40caf6",
+              "symbol": "p111_rt_keep",
+              "decoded": "p111_rt_keep"
+            },
+            {
+              "address": "40cb13",
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_49_51_55_113_95_110_97_109_101_95_101_113_",
+              "decoded": "$direct.p137q_name_eq"
+            },
+            {
+              "address": "40cb50",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40cb84",
+              "symbol": "p111_rt_ctor",
+              "decoded": "p111_rt_ctor"
+            },
+            {
+              "address": "40cb92",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40cbae",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40cbbf",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40cbcc",
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail"
+            },
+            {
+              "address": "40cbe7",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40cbf8",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40cc14",
+              "symbol": "p111_rt_ctor",
+              "decoded": "p111_rt_ctor"
+            },
+            {
+              "address": "40cc1f",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40cc38",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40cc49",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40cc57",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40cc64",
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail"
+            },
+            {
+              "address": "40cc7c",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40cc9e",
+              "symbol": "p111_rt_ctor",
+              "decoded": "p111_rt_ctor"
+            },
+            {
+              "address": "40ccac",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40ccba",
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_100_99_",
+              "decoded": "$direct.dc"
+            },
+            {
+              "address": "40ccea",
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail"
+            },
+            {
+              "address": "40cd09",
+              "symbol": "p125_rt_take2",
+              "decoded": "p125_rt_take2"
+            },
+            {
+              "address": "40cd22",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40cd3f",
+              "symbol": "p111_rt_keep",
+              "decoded": "p111_rt_keep"
+            },
+            {
+              "address": "40cd5e",
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_105_110_100_101_120_95_104_97_115_104_",
+              "decoded": "$direct.index_hash"
+            },
+            {
+              "address": "40cd75",
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_105_110_100_101_120_95_102_105_110_100_",
+              "decoded": "$direct.index_find"
+            },
+            {
+              "address": "40cd81",
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail"
+            },
+            {
+              "address": "40cd90",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            }
+          ],
+          "command": [
+            "/usr/bin/objdump",
+            "-d",
+            "--no-show-raw-insn",
+            "--disassemble=p113d_FID_36_100_105_114_101_99_116_46_108_111_111_107_117_112_",
+            "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p137-retain-query-builds01-wide-queries-fused-v02/program"
+          ]
+        },
+        {
+          "decoded": "$direct.nc_ctor_owned",
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_110_99_95_99_116_111_114_95_111_119_110_101_100_",
+          "qbeLine": 8900,
+          "qbeBodySha256": "78b4937f2c3919a75816cc546b0aa6b52c97eadf6d3b0166b3b61658b89b0527",
+          "assembly": {
+            "file": "/home/ai/bend2/build/publish/bend/implementation/phase137/audit/machine01/retain-queries-fused-v02/direct.nc_ctor_owned.asm",
+            "bytes": 7816,
+            "sha256": "8d9b354bcba5a030039d57a0d71684909747da9f06308b9bae187dc1e1eff727"
+          },
+          "instructionLines": 212,
+          "instructionsIncludePadding": true,
+          "calls": [
+            {
+              "address": "40d277",
+              "symbol": "p125_rt_take2",
+              "decoded": "p125_rt_take2"
+            },
+            {
+              "address": "40d290",
+              "symbol": "p111_rt_keep",
+              "decoded": "p111_rt_keep"
+            },
+            {
+              "address": "40d2a1",
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_49_51_55_113_95_105_115_95_97_100_116_",
+              "decoded": "$direct.p137q_is_adt"
+            },
+            {
+              "address": "40d2de",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40d30d",
+              "symbol": "p111_rt_ctor",
+              "decoded": "p111_rt_ctor"
+            },
+            {
+              "address": "40d31b",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40d338",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40d349",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40d356",
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail"
+            },
+            {
+              "address": "40d383",
+              "symbol": "p111_rt_ctor",
+              "decoded": "p111_rt_ctor"
+            },
+            {
+              "address": "40d391",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40d3a8",
+              "symbol": "p111_rt_keep",
+              "decoded": "p111_rt_keep"
+            },
+            {
+              "address": "40d3b9",
+              "symbol": "p111_rt_keep",
+              "decoded": "p111_rt_keep"
+            },
+            {
+              "address": "40d3ca",
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_100_99_",
+              "decoded": "$direct.dc"
+            },
+            {
+              "address": "40d3de",
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_108_111_111_107_117_112_",
+              "decoded": "$direct.lookup"
+            },
+            {
+              "address": "40d3ec",
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_49_51_55_113_95_105_115_95_99_116_114_",
+              "decoded": "$direct.p137q_is_ctr"
+            },
+            {
+              "address": "40d429",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40d458",
+              "symbol": "p111_rt_ctor",
+              "decoded": "p111_rt_ctor"
+            },
+            {
+              "address": "40d466",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40d482",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40d493",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40d4a0",
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail"
+            },
+            {
+              "address": "40d4b8",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40d4c6",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40d4e8",
+              "symbol": "p111_rt_ctor",
+              "decoded": "p111_rt_ctor"
+            },
+            {
+              "address": "40d4f6",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40d501",
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_100_98_",
+              "decoded": "$direct.db"
+            },
+            {
+              "address": "40d50d",
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail"
+            },
+            {
+              "address": "40d51c",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            }
+          ],
+          "command": [
+            "/usr/bin/objdump",
+            "-d",
+            "--no-show-raw-insn",
+            "--disassemble=p113d_FID_36_100_105_114_101_99_116_46_110_99_95_99_116_111_114_95_111_119_110_101_100_",
+            "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p137-retain-query-builds01-wide-queries-fused-v02/program"
+          ]
+        },
+        {
+          "decoded": "$direct.p137q_repeat",
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_49_51_55_113_95_114_101_112_101_97_116_",
+          "qbeLine": 9433,
+          "qbeBodySha256": "a517045a73bac48afeab10f06c99c69d5d9eec3c96d82d47200e583eae1088d1",
+          "assembly": {
+            "file": "/home/ai/bend2/build/publish/bend/implementation/phase137/audit/machine01/retain-queries-fused-v02/direct.p137q_repeat.asm",
+            "bytes": 10192,
+            "sha256": "8d1f6f7bf204c48781ca7e3ed55aec53da6af869ffe1a2b906b5f8df79d6762f"
+          },
+          "instructionLines": 294,
+          "instructionsIncludePadding": true,
+          "calls": [
+            {
+              "address": "40da23",
+              "symbol": "p111_rt_keep",
+              "decoded": "p111_rt_keep"
+            },
+            {
+              "address": "40da37",
+              "symbol": "p111_rt_keep",
+              "decoded": "p111_rt_keep"
+            },
+            {
+              "address": "40da4b",
+              "symbol": "p111_rt_keep",
+              "decoded": "p111_rt_keep"
+            },
+            {
+              "address": "40da5c",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40da6a",
+              "symbol": "p111_rt_keep",
+              "decoded": "p111_rt_keep"
+            },
+            {
+              "address": "40da7c",
+              "symbol": "p111_rt_keep",
+              "decoded": "p111_rt_keep"
+            },
+            {
+              "address": "40dab2",
+              "symbol": "p113d_FID_36_112_49_50_54_115_99_99_46_53_49_",
+              "decoded": "$p126scc.51"
+            },
+            {
+              "address": "40dac0",
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_100_97_",
+              "decoded": "$direct.da"
+            },
+            {
+              "address": "40dad3",
+              "symbol": "p111_rt_keep",
+              "decoded": "p111_rt_keep"
+            },
+            {
+              "address": "40daef",
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_108_111_111_107_117_112_",
+              "decoded": "$direct.lookup"
+            },
+            {
+              "address": "40dafd",
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_100_97_",
+              "decoded": "$direct.da"
+            },
+            {
+              "address": "40db10",
+              "symbol": "p111_rt_keep",
+              "decoded": "p111_rt_keep"
+            },
+            {
+              "address": "40db35",
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_110_99_95_99_116_111_114_95_111_119_110_101_100_",
+              "decoded": "$direct.nc_ctor_owned"
+            },
+            {
+              "address": "40db9a",
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail"
+            },
+            {
+              "address": "40dbd0",
+              "symbol": "p111_rt_keep",
+              "decoded": "p111_rt_keep"
+            },
+            {
+              "address": "40dc15",
+              "symbol": "p113d_FID_36_112_49_50_54_115_99_99_46_53_49_",
+              "decoded": "$p126scc.51"
+            },
+            {
+              "address": "40dc23",
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_100_97_",
+              "decoded": "$direct.da"
+            },
+            {
+              "address": "40dc3c",
+              "symbol": "p111_rt_keep",
+              "decoded": "p111_rt_keep"
+            },
+            {
+              "address": "40dc5e",
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_108_111_111_107_117_112_",
+              "decoded": "$direct.lookup"
+            },
+            {
+              "address": "40dc6c",
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_100_97_",
+              "decoded": "$direct.da"
+            },
+            {
+              "address": "40dc95",
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_110_99_95_99_116_111_114_95_111_119_110_101_100_",
+              "decoded": "$direct.nc_ctor_owned"
+            },
+            {
+              "address": "40dd12",
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail"
+            },
+            {
+              "address": "40ddb5",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40ddc3",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40ddce",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            }
+          ],
+          "command": [
+            "/usr/bin/objdump",
+            "-d",
+            "--no-show-raw-insn",
+            "--disassemble=p113d_FID_36_100_105_114_101_99_116_46_112_49_51_55_113_95_114_101_112_101_97_116_",
+            "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p137-retain-query-builds01-wide-queries-fused-v02/program"
+          ]
+        }
+      ]
+    },
+    {
+      "role": "retain-record-fused-v02",
+      "qbe": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase137/retain-query-emit01/record-fused-v02.ssa",
+        "bytes": 1541047,
+        "sha256": "aeefc818a789a1e8a66eb7f673c223f73ee7ec72f49e5e5ee90a2aef93c463b6"
+      },
+      "buildReport": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p137-retain-query-builds01-wide-record-fused-v02/report.json",
+        "bytes": 6337,
+        "sha256": "000b61f8010afc4bd45053f8aeb7f95630a23f20e25306657eb71c2b5fa9cb5c"
+      },
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p137-retain-query-builds01-wide-record-fused-v02/program",
+        "bytes": 404824,
+        "sha256": "0cd133c9667b3b193193ddd8aac4e14d2aed20dfa3f07ebe08ae600efc2baf6b"
+      },
+      "functions": [
+        {
+          "decoded": "$p128borrow.owned.p137q_record_query",
+          "symbol": "p113d_FID_36_112_49_50_56_98_111_114_114_111_119_46_111_119_110_101_100_46_112_49_51_55_113_95_114_101_99_111_114_100_95_113_117_101_114_121_",
+          "qbeLine": 4319,
+          "qbeBodySha256": "768d1f1fd1d20717b8a81d072a18fba072b92a898e77151937c9353d21166c84",
+          "assembly": {
+            "file": "/home/ai/bend2/build/publish/bend/implementation/phase137/audit/machine01/retain-record-fused-v02/p128borrow.owned.p137q_record_query.asm",
+            "bytes": 4120,
+            "sha256": "12d1b97fef0628113862e2ff6deba761580ce62004b85d928ed7eb003850b049"
+          },
+          "instructionLines": 112,
+          "instructionsIncludePadding": true,
+          "calls": [
+            {
+              "address": "408e0f",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "408e1c",
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail"
+            },
+            {
+              "address": "408e40",
+              "symbol": "p111_rt_take",
+              "decoded": "p111_rt_take"
+            },
+            {
+              "address": "408e9e",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "408eb0",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "408ec2",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "408ed4",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "408ee6",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "408ef8",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "408f06",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "408f14",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "408f22",
+              "symbol": "p111_rt_keep",
+              "decoded": "p111_rt_keep"
+            },
+            {
+              "address": "408f33",
+              "symbol": "p111_rt_keep",
+              "decoded": "p111_rt_keep"
+            },
+            {
+              "address": "408f4f",
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_56_56_95_115_116_114_105_110_103_95_101_113_95_103_111_",
+              "decoded": "$direct.p88_string_eq_go"
+            },
+            {
+              "address": "408f60",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "408f6b",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            }
+          ],
+          "command": [
+            "/usr/bin/objdump",
+            "-d",
+            "--no-show-raw-insn",
+            "--disassemble=p113d_FID_36_112_49_50_56_98_111_114_114_111_119_46_111_119_110_101_100_46_112_49_51_55_113_95_114_101_99_111_114_100_95_113_117_101_114_121_",
+            "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p137-retain-query-builds01-wide-record-fused-v02/program"
+          ]
+        },
+        {
+          "decoded": "$p118borrow.read.p137q_record_query",
+          "symbol": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_112_49_51_55_113_95_114_101_99_111_114_100_95_113_117_101_114_121_",
+          "qbeLine": 4394,
+          "qbeBodySha256": "1e7f7602cee4b13cb400e598ebdcde26e557776b00c3e7a961dca5934d39134e",
+          "assembly": {
+            "file": "/home/ai/bend2/build/publish/bend/implementation/phase137/audit/machine01/retain-record-fused-v02/p118borrow.read.p137q_record_query.asm",
+            "bytes": 2388,
+            "sha256": "b49e3dca494f5c273f0bdded7dc7dafcbc8365d8bd74b90f5b952bed6b0e0064"
+          },
+          "instructionLines": 52,
+          "instructionsIncludePadding": true,
+          "calls": [
+            {
+              "address": "408fb6",
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail"
+            },
+            {
+              "address": "408fda",
+              "symbol": "p118_rt_borrow_fields",
+              "decoded": "p118_rt_borrow_fields"
+            },
+            {
+              "address": "409006",
+              "symbol": "p111_rt_special_ctor",
+              "decoded": "p111_rt_special_ctor"
+            },
+            {
+              "address": "409020",
+              "symbol": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_112_56_56_95_115_116_114_105_110_103_95_101_113_95_103_111_",
+              "decoded": "$p118borrow.read.p88_string_eq_go"
+            },
+            {
+              "address": "409031",
+              "symbol": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_112_57_56_95_101_113_95_102_105_110_105_115_104_",
+              "decoded": "$p118borrow.read.p98_eq_finish"
+            }
+          ],
+          "command": [
+            "/usr/bin/objdump",
+            "-d",
+            "--no-show-raw-insn",
+            "--disassemble=p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_112_49_51_55_113_95_114_101_99_111_114_100_95_113_117_101_114_121_",
+            "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p137-retain-query-builds01-wide-record-fused-v02/program"
+          ]
+        },
+        {
+          "decoded": "$direct.p137q_record_query",
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_49_51_55_113_95_114_101_99_111_114_100_95_113_117_101_114_121_",
+          "qbeLine": 4440,
+          "qbeBodySha256": "8e5c1935f840eeb40ba9d2bdb261ba0305fb241168657752fbbaa1121f93a5b4",
+          "assembly": {
+            "file": "/home/ai/bend2/build/publish/bend/implementation/phase137/audit/machine01/retain-record-fused-v02/direct.p137q_record_query.asm",
+            "bytes": 1909,
+            "sha256": "6eaffc50e1c7b74717a5adceb49f0978f6bb6d621fe82b0c27a7fc51a9870ffd"
+          },
+          "instructionLines": 38,
+          "instructionsIncludePadding": true,
+          "calls": [
+            {
+              "address": "409062",
+              "symbol": "p118_rt_borrow_scalar_safe",
+              "decoded": "p118_rt_borrow_scalar_safe"
+            },
+            {
+              "address": "409076",
+              "symbol": "p113d_FID_36_112_49_50_56_98_111_114_114_111_119_46_111_119_110_101_100_46_112_49_51_55_113_95_114_101_99_111_114_100_95_113_117_101_114_121_",
+              "decoded": "$p128borrow.owned.p137q_record_query"
+            },
+            {
+              "address": "409086",
+              "symbol": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_112_49_51_55_113_95_114_101_99_111_114_100_95_113_117_101_114_121_",
+              "decoded": "$p118borrow.read.p137q_record_query"
+            },
+            {
+              "address": "409097",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "4090a2",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            }
+          ],
+          "command": [
+            "/usr/bin/objdump",
+            "-d",
+            "--no-show-raw-insn",
+            "--disassemble=p113d_FID_36_100_105_114_101_99_116_46_112_49_51_55_113_95_114_101_99_111_114_100_95_113_117_101_114_121_",
+            "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p137-retain-query-builds01-wide-record-fused-v02/program"
+          ]
+        },
+        {
+          "decoded": "$direct.p137q_repeat",
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_49_51_55_113_95_114_101_112_101_97_116_",
+          "qbeLine": 9006,
+          "qbeBodySha256": "57c7f1a88fb5f8d3ad16371424fbfb99c51e4f063e9892c83bd946845617175b",
+          "assembly": {
+            "file": "/home/ai/bend2/build/publish/bend/implementation/phase137/audit/machine01/retain-record-fused-v02/direct.p137q_repeat.asm",
+            "bytes": 6429,
+            "sha256": "bbf0c3aab98d543409ef33a4e4db93c89b23fc9068950f9346892563c82ad849"
+          },
+          "instructionLines": 182,
+          "instructionsIncludePadding": true,
+          "calls": [
+            {
+              "address": "40d363",
+              "symbol": "p111_rt_keep",
+              "decoded": "p111_rt_keep"
+            },
+            {
+              "address": "40d37d",
+              "symbol": "p111_rt_keep",
+              "decoded": "p111_rt_keep"
+            },
+            {
+              "address": "40d397",
+              "symbol": "p111_rt_keep",
+              "decoded": "p111_rt_keep"
+            },
+            {
+              "address": "40d3ae",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40d3c2",
+              "symbol": "p111_rt_keep",
+              "decoded": "p111_rt_keep"
+            },
+            {
+              "address": "40d3dd",
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_49_51_55_113_95_114_101_99_111_114_100_95_113_117_101_114_121_",
+              "decoded": "$direct.p137q_record_query"
+            },
+            {
+              "address": "40d441",
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail"
+            },
+            {
+              "address": "40d477",
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_49_51_55_113_95_114_101_99_111_114_100_95_113_117_101_114_121_",
+              "decoded": "$direct.p137q_record_query"
+            },
+            {
+              "address": "40d4e6",
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail"
+            },
+            {
+              "address": "40d552",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40d560",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            },
+            {
+              "address": "40d56b",
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink"
+            }
+          ],
+          "command": [
+            "/usr/bin/objdump",
+            "-d",
+            "--no-show-raw-insn",
+            "--disassemble=p113d_FID_36_100_105_114_101_99_116_46_112_49_51_55_113_95_114_101_112_101_97_116_",
+            "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p137-retain-query-builds01-wide-record-fused-v02/program"
+          ]
+        }
+      ]
+    }
+  ],
+  "scope": "Existing linked ELF only. Instruction counts include alignment padding; static call targets establish branches/paths but not dynamic frequency or speed. No whole ELF copied."
+}

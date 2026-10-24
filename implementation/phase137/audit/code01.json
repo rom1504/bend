@@ -1,0 +1,4626 @@
+{
+  "kind": "phase137-query-qbe-call-audit",
+  "complete": true,
+  "targetsRun": false,
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase137/audit/code-v01.py",
+      "bytes": 4134,
+      "sha256": "cbcc5e0fd878e484997f6325feb08c4bebce221b0c8833cbdcfcc8780a62a7ea"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/profiler/owners.py",
+      "bytes": 11888,
+      "sha256": "2322db405e3d662570872700bb0ec9a05873d14dc764cd18d7151998f0132b21"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase137/query-baseline-emit01/report.json",
+      "bytes": 14917,
+      "sha256": "f10c197adb4cebabfa62011d0b52a6c8c13ceec361995fc8cba769129719bdfe"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase137/query-baseline-emit01/queries-original.ssa",
+      "bytes": 1597440,
+      "sha256": "2398f325d01189bb55c7a93dc4d19538a0f146c68eb6dbe4ca14604c80449f21"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase137/queries/queries-original-v01.bend",
+      "bytes": 20884,
+      "sha256": "141d0d13990d3cc45a0cda9cd388675802996bd2b0f4f4f2556c028824f4822a"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase137/query-baseline-emit01/queries-fused.ssa",
+      "bytes": 1654955,
+      "sha256": "de989d8a6640cb01d5a926bb0866b8f103d83fd0af904fed872279ecb39e52f9"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase137/queries/queries-fused-v01.bend",
+      "bytes": 21944,
+      "sha256": "178af4805af76d9db993948577c58173a09dccc2215b4df27efd635166c5970d"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase137/query-baseline-emit01/record-original.ssa",
+      "bytes": 1512596,
+      "sha256": "b5c56e72c8e34c59c7322bf1e773e8dcc35f4f5863a8a66c549892d6e1d9fe52"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase137/queries/record-original-v01.bend",
+      "bytes": 20964,
+      "sha256": "569d06f5b9ca8db1634b73634d410c82bf9d6ecffac2a82eeac633e05d4d34f1"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase137/query-baseline-emit01/record-fused.ssa",
+      "bytes": 1565942,
+      "sha256": "71c9de74f1bc57144124b2d20bf285c9f8cdb0313610a82f9bfd8c701c21d152"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase137/queries/record-fused-v01.bend",
+      "bytes": 22024,
+      "sha256": "caa5a2bd56f7b7deb9aa0d59102fc87e46a9adf029d49d7e226b363ed4ee79ad"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase137/query-wide-emit01/report.json",
+      "bytes": 14590,
+      "sha256": "7f0cbbf7758aca2f9f0e91e665282295e432e983f12f8129551f4381573f320c"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase137/query-wide-emit01/queries-original.ssa",
+      "bytes": 1621143,
+      "sha256": "7a908b45fa4ae5f37877565a01823add55402e332fcf57c20cfa76315b9ff2d3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase137/queries/queries-original-v01.bend",
+      "bytes": 20884,
+      "sha256": "141d0d13990d3cc45a0cda9cd388675802996bd2b0f4f4f2556c028824f4822a"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase137/query-wide-emit01/queries-fused.ssa",
+      "bytes": 1705188,
+      "sha256": "ffb58acf88f691db0284d5a10e5a71047acfef85d00b14da4600b71100ef6022"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase137/queries/queries-fused-v01.bend",
+      "bytes": 21944,
+      "sha256": "178af4805af76d9db993948577c58173a09dccc2215b4df27efd635166c5970d"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase137/query-wide-emit01/record-original.ssa",
+      "bytes": 1536299,
+      "sha256": "94854b43b1e4f424bff09945a31645d0b8060fb263e62ca5838cdfaeb1185d6c"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase137/queries/record-original-v01.bend",
+      "bytes": 20964,
+      "sha256": "569d06f5b9ca8db1634b73634d410c82bf9d6ecffac2a82eeac633e05d4d34f1"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase137/query-wide-emit01/record-fused.ssa",
+      "bytes": 1616175,
+      "sha256": "7282fb02cb637fe8bef12b3ad7fa20d1a705acb712f48ef811023cf062931873"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase137/queries/record-fused-v01.bend",
+      "bytes": 22024,
+      "sha256": "caa5a2bd56f7b7deb9aa0d59102fc87e46a9adf029d49d7e226b363ed4ee79ad"
+    }
+  ],
+  "cases": [
+    {
+      "producer": "baseline",
+      "name": "queries-original",
+      "qbe": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase137/query-baseline-emit01/queries-original.ssa",
+        "bytes": 1597440,
+        "sha256": "2398f325d01189bb55c7a93dc4d19538a0f146c68eb6dbe4ca14604c80449f21"
+      },
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase137/queries/queries-original-v01.bend",
+        "bytes": 20884,
+        "sha256": "141d0d13990d3cc45a0cda9cd388675802996bd2b0f4f4f2556c028824f4822a"
+      },
+      "sourceProducer": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase134/verify-selected-source01/compiler.bend",
+        "bytes": 2693121,
+        "sha256": "a00019246b5181b288ab4d3e09e616bd41415fe6381e89a96185c05efa19fb57"
+      },
+      "privateFunctions": [
+        {
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_100_110_",
+          "decoded": "$direct.dn",
+          "qbeLine": 2938,
+          "lines": 76,
+          "bodySha256": "8bd7e73cb83e4c9615d33bced8b2ab86acc368eb8a430745604e7c92fca0fffb",
+          "calls": [
+            {
+              "symbol": "p111_rt_take",
+              "decoded": "p111_rt_take",
+              "sites": 1
+            },
+            {
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink",
+              "sites": 11
+            },
+            {
+              "symbol": "p125_rt_take2",
+              "decoded": "p125_rt_take2",
+              "sites": 1
+            },
+            {
+              "symbol": "p125_rt_take4",
+              "decoded": "p125_rt_take4",
+              "sites": 1
+            },
+            {
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail",
+              "sites": 1
+            }
+          ],
+          "staticTake9Sites": 1,
+          "staticSinkSites": 11,
+          "runtimeBorrowReadSites": 0
+        },
+        {
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_100_107_",
+          "decoded": "$direct.dk",
+          "qbeLine": 3015,
+          "lines": 76,
+          "bodySha256": "22c8db8e11461c3db7c9d4668cc817d2001a04cd6c9c01e018ae3ff7e8a95bd7",
+          "calls": [
+            {
+              "symbol": "p111_rt_take",
+              "decoded": "p111_rt_take",
+              "sites": 1
+            },
+            {
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink",
+              "sites": 11
+            },
+            {
+              "symbol": "p125_rt_take2",
+              "decoded": "p125_rt_take2",
+              "sites": 1
+            },
+            {
+              "symbol": "p125_rt_take4",
+              "decoded": "p125_rt_take4",
+              "sites": 1
+            },
+            {
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail",
+              "sites": 1
+            }
+          ],
+          "staticTake9Sites": 1,
+          "staticSinkSites": 11,
+          "runtimeBorrowReadSites": 0
+        },
+        {
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_49_51_55_113_95_114_101_99_111_114_100_95_113_117_101_114_121_",
+          "decoded": "$direct.p137q_record_query",
+          "qbeLine": 3851,
+          "lines": 83,
+          "bodySha256": "861a304df8c7ba04f0ee7b79abd5eace35a8249ca60ff5ce648193bc137c74b9",
+          "calls": [
+            {
+              "symbol": "p111_rt_take",
+              "decoded": "p111_rt_take",
+              "sites": 1
+            },
+            {
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink",
+              "sites": 10
+            },
+            {
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail",
+              "sites": 1
+            },
+            {
+              "symbol": "p111_rt_keep",
+              "decoded": "p111_rt_keep",
+              "sites": 2
+            },
+            {
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_56_56_95_115_116_114_105_110_103_95_101_113_95_103_111_",
+              "decoded": "$direct.p88_string_eq_go",
+              "sites": 1
+            }
+          ],
+          "staticTake9Sites": 1,
+          "staticSinkSites": 10,
+          "runtimeBorrowReadSites": 0
+        },
+        {
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_102_95_102_105_110_100_95_110_101_120_116_",
+          "decoded": "$direct.f_find_next",
+          "qbeLine": 4376,
+          "lines": 8,
+          "bodySha256": "324702e9797773383d2cbad419474d83ebbfef99c2f88ab0b9b02a762bc8422a",
+          "calls": [
+            {
+              "symbol": "p113d_FID_36_112_49_50_54_115_99_99_46_52_56_",
+              "decoded": "$p126scc.48",
+              "sites": 1
+            }
+          ],
+          "staticTake9Sites": 0,
+          "staticSinkSites": 0,
+          "runtimeBorrowReadSites": 0
+        },
+        {
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_102_95_102_105_110_100_",
+          "decoded": "$direct.f_find",
+          "qbeLine": 4385,
+          "lines": 8,
+          "bodySha256": "5487030dbdcd092c9587c009ebc53ad7be61e75d8ae21b047a8931b7dd5475fb",
+          "calls": [
+            {
+              "symbol": "p113d_FID_36_112_49_50_54_115_99_99_46_52_56_",
+              "decoded": "$p126scc.48",
+              "sites": 1
+            }
+          ],
+          "staticTake9Sites": 0,
+          "staticSinkSites": 0,
+          "runtimeBorrowReadSites": 0
+        },
+        {
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_108_111_111_107_117_112_",
+          "decoded": "$direct.lookup",
+          "qbeLine": 5734,
+          "lines": 526,
+          "bodySha256": "f6f2ad9960d31512e3ab7536b1ca78b8fcf01c46af9d66607dfbe59a7563b6f6",
+          "calls": [
+            {
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink",
+              "sites": 49
+            },
+            {
+              "symbol": "p125_rt_take2",
+              "decoded": "p125_rt_take2",
+              "sites": 5
+            },
+            {
+              "symbol": "p111_rt_keep",
+              "decoded": "p111_rt_keep",
+              "sites": 8
+            },
+            {
+              "symbol": "p111_rt_take",
+              "decoded": "p111_rt_take",
+              "sites": 3
+            },
+            {
+              "symbol": "p125_rt_take4",
+              "decoded": "p125_rt_take4",
+              "sites": 3
+            },
+            {
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail",
+              "sites": 7
+            },
+            {
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_56_56_95_115_116_114_105_110_103_95_101_113_95_103_111_",
+              "decoded": "$direct.p88_string_eq_go",
+              "sites": 2
+            },
+            {
+              "symbol": "p111_rt_ctor",
+              "decoded": "p111_rt_ctor",
+              "sites": 4
+            },
+            {
+              "symbol": "p125_rt_ctor2",
+              "decoded": "p125_rt_ctor2",
+              "sites": 2
+            },
+            {
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_105_110_100_101_120_95_104_97_115_104_",
+              "decoded": "$direct.index_hash",
+              "sites": 1
+            },
+            {
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_105_110_100_101_120_95_102_105_110_100_",
+              "decoded": "$direct.index_find",
+              "sites": 1
+            }
+          ],
+          "staticTake9Sites": 3,
+          "staticSinkSites": 49,
+          "runtimeBorrowReadSites": 0
+        },
+        {
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_110_99_95_99_116_111_114_95_111_119_110_101_100_",
+          "decoded": "$direct.nc_ctor_owned",
+          "qbeLine": 6984,
+          "lines": 560,
+          "bodySha256": "58e76691e637b2d6ace3bc3794a4f8d18cd31156ae949478edf93b969604f570",
+          "calls": [
+            {
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink",
+              "sites": 58
+            },
+            {
+              "symbol": "p125_rt_take2",
+              "decoded": "p125_rt_take2",
+              "sites": 5
+            },
+            {
+              "symbol": "p111_rt_keep",
+              "decoded": "p111_rt_keep",
+              "sites": 7
+            },
+            {
+              "symbol": "p111_rt_take",
+              "decoded": "p111_rt_take",
+              "sites": 4
+            },
+            {
+              "symbol": "p125_rt_take4",
+              "decoded": "p125_rt_take4",
+              "sites": 4
+            },
+            {
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail",
+              "sites": 7
+            },
+            {
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_56_56_95_115_116_114_105_110_103_95_101_113_95_103_111_",
+              "decoded": "$direct.p88_string_eq_go",
+              "sites": 2
+            },
+            {
+              "symbol": "p111_rt_ctor",
+              "decoded": "p111_rt_ctor",
+              "sites": 4
+            },
+            {
+              "symbol": "p125_rt_ctor2",
+              "decoded": "p125_rt_ctor2",
+              "sites": 2
+            },
+            {
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_108_111_111_107_117_112_",
+              "decoded": "$direct.lookup",
+              "sites": 1
+            }
+          ],
+          "staticTake9Sites": 4,
+          "staticSinkSites": 58,
+          "runtimeBorrowReadSites": 0
+        },
+        {
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_49_51_55_113_95_113_117_101_114_105_101_115_",
+          "decoded": "$direct.p137q_queries",
+          "qbeLine": 7545,
+          "lines": 521,
+          "bodySha256": "c1c71e4c7720ef7a81d01720dd42695a5b0e077fd3ece0720721e1d3ae08e4ba",
+          "calls": [
+            {
+              "symbol": "p111_rt_keep",
+              "decoded": "p111_rt_keep",
+              "sites": 6
+            },
+            {
+              "symbol": "p113d_FID_36_112_49_50_54_115_99_99_46_52_56_",
+              "decoded": "$p126scc.48",
+              "sites": 2
+            },
+            {
+              "symbol": "p111_rt_take",
+              "decoded": "p111_rt_take",
+              "sites": 4
+            },
+            {
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink",
+              "sites": 44
+            },
+            {
+              "symbol": "p125_rt_take2",
+              "decoded": "p125_rt_take2",
+              "sites": 4
+            },
+            {
+              "symbol": "p125_rt_take4",
+              "decoded": "p125_rt_take4",
+              "sites": 4
+            },
+            {
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail",
+              "sites": 6
+            },
+            {
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_108_111_111_107_117_112_",
+              "decoded": "$direct.lookup",
+              "sites": 2
+            },
+            {
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_110_99_95_99_116_111_114_95_111_119_110_101_100_",
+              "decoded": "$direct.nc_ctor_owned",
+              "sites": 2
+            }
+          ],
+          "staticTake9Sites": 4,
+          "staticSinkSites": 44,
+          "runtimeBorrowReadSites": 0
+        },
+        {
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_49_51_55_113_95_111_110_99_101_",
+          "decoded": "$direct.p137q_once",
+          "qbeLine": 8067,
+          "lines": 530,
+          "bodySha256": "099432923c7c02419801adc3c956a22ab29650909abc126d070c45ca625f8455",
+          "calls": [
+            {
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink",
+              "sites": 45
+            },
+            {
+              "symbol": "p111_rt_keep",
+              "decoded": "p111_rt_keep",
+              "sites": 6
+            },
+            {
+              "symbol": "p113d_FID_36_112_49_50_54_115_99_99_46_52_56_",
+              "decoded": "$p126scc.48",
+              "sites": 2
+            },
+            {
+              "symbol": "p111_rt_take",
+              "decoded": "p111_rt_take",
+              "sites": 4
+            },
+            {
+              "symbol": "p125_rt_take2",
+              "decoded": "p125_rt_take2",
+              "sites": 4
+            },
+            {
+              "symbol": "p125_rt_take4",
+              "decoded": "p125_rt_take4",
+              "sites": 4
+            },
+            {
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail",
+              "sites": 6
+            },
+            {
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_108_111_111_107_117_112_",
+              "decoded": "$direct.lookup",
+              "sites": 2
+            },
+            {
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_110_99_95_99_116_111_114_95_111_119_110_101_100_",
+              "decoded": "$direct.nc_ctor_owned",
+              "sites": 2
+            }
+          ],
+          "staticTake9Sites": 4,
+          "staticSinkSites": 45,
+          "runtimeBorrowReadSites": 0
+        },
+        {
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_49_51_55_113_95_114_101_112_101_97_116_",
+          "decoded": "$direct.p137q_repeat",
+          "qbeLine": 8598,
+          "lines": 608,
+          "bodySha256": "bd6b500afd86a2100c2e9c71b1593e496058650f0e208ed24fbb80ffc4c2d017",
+          "calls": [
+            {
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink",
+              "sites": 48
+            },
+            {
+              "symbol": "p111_rt_keep",
+              "decoded": "p111_rt_keep",
+              "sites": 9
+            },
+            {
+              "symbol": "p113d_FID_36_112_49_50_54_115_99_99_46_52_56_",
+              "decoded": "$p126scc.48",
+              "sites": 2
+            },
+            {
+              "symbol": "p111_rt_take",
+              "decoded": "p111_rt_take",
+              "sites": 4
+            },
+            {
+              "symbol": "p125_rt_take2",
+              "decoded": "p125_rt_take2",
+              "sites": 4
+            },
+            {
+              "symbol": "p125_rt_take4",
+              "decoded": "p125_rt_take4",
+              "sites": 4
+            },
+            {
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail",
+              "sites": 7
+            },
+            {
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_108_111_111_107_117_112_",
+              "decoded": "$direct.lookup",
+              "sites": 2
+            },
+            {
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_110_99_95_99_116_111_114_95_111_119_110_101_100_",
+              "decoded": "$direct.nc_ctor_owned",
+              "sites": 2
+            }
+          ],
+          "staticTake9Sites": 4,
+          "staticSinkSites": 48,
+          "runtimeBorrowReadSites": 0
+        }
+      ],
+      "timedRoot": "p113d_FID_36_100_105_114_101_99_116_46_112_49_51_55_113_95_114_101_112_101_97_116_",
+      "directReachableFunctions": 18,
+      "borrowedReaderDirectPaths": [],
+      "pathCaveat": "Named direct paths only: existence does not establish branch frequency. No inference from missing indirect edges."
+    },
+    {
+      "producer": "baseline",
+      "name": "queries-fused",
+      "qbe": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase137/query-baseline-emit01/queries-fused.ssa",
+        "bytes": 1654955,
+        "sha256": "de989d8a6640cb01d5a926bb0866b8f103d83fd0af904fed872279ecb39e52f9"
+      },
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase137/queries/queries-fused-v01.bend",
+        "bytes": 21944,
+        "sha256": "178af4805af76d9db993948577c58173a09dccc2215b4df27efd635166c5970d"
+      },
+      "sourceProducer": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase134/verify-selected-source01/compiler.bend",
+        "bytes": 2693121,
+        "sha256": "a00019246b5181b288ab4d3e09e616bd41415fe6381e89a96185c05efa19fb57"
+      },
+      "privateFunctions": [
+        {
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_100_110_",
+          "decoded": "$direct.dn",
+          "qbeLine": 2894,
+          "lines": 76,
+          "bodySha256": "8bd7e73cb83e4c9615d33bced8b2ab86acc368eb8a430745604e7c92fca0fffb",
+          "calls": [
+            {
+              "symbol": "p111_rt_take",
+              "decoded": "p111_rt_take",
+              "sites": 1
+            },
+            {
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink",
+              "sites": 11
+            },
+            {
+              "symbol": "p125_rt_take2",
+              "decoded": "p125_rt_take2",
+              "sites": 1
+            },
+            {
+              "symbol": "p125_rt_take4",
+              "decoded": "p125_rt_take4",
+              "sites": 1
+            },
+            {
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail",
+              "sites": 1
+            }
+          ],
+          "staticTake9Sites": 1,
+          "staticSinkSites": 11,
+          "runtimeBorrowReadSites": 0
+        },
+        {
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_100_107_",
+          "decoded": "$direct.dk",
+          "qbeLine": 2971,
+          "lines": 76,
+          "bodySha256": "38060d174c72af1f83bea3e63bf09db1bbf90320c4e861876425234fbe81d715",
+          "calls": [
+            {
+              "symbol": "p111_rt_take",
+              "decoded": "p111_rt_take",
+              "sites": 1
+            },
+            {
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink",
+              "sites": 11
+            },
+            {
+              "symbol": "p125_rt_take2",
+              "decoded": "p125_rt_take2",
+              "sites": 1
+            },
+            {
+              "symbol": "p125_rt_take4",
+              "decoded": "p125_rt_take4",
+              "sites": 1
+            },
+            {
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail",
+              "sites": 1
+            }
+          ],
+          "staticTake9Sites": 1,
+          "staticSinkSites": 11,
+          "runtimeBorrowReadSites": 0
+        },
+        {
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_49_51_55_113_95_114_101_99_111_114_100_95_113_117_101_114_121_",
+          "decoded": "$direct.p137q_record_query",
+          "qbeLine": 3807,
+          "lines": 75,
+          "bodySha256": "395d4ac118168523d532d569e262ae99fbc889005854a971993bba3b30cbe946",
+          "calls": [
+            {
+              "symbol": "p111_rt_take",
+              "decoded": "p111_rt_take",
+              "sites": 1
+            },
+            {
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink",
+              "sites": 10
+            },
+            {
+              "symbol": "p111_rt_keep",
+              "decoded": "p111_rt_keep",
+              "sites": 2
+            },
+            {
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_56_56_95_115_116_114_105_110_103_95_101_113_95_103_111_",
+              "decoded": "$direct.p88_string_eq_go",
+              "sites": 1
+            },
+            {
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail",
+              "sites": 1
+            }
+          ],
+          "staticTake9Sites": 1,
+          "staticSinkSites": 10,
+          "runtimeBorrowReadSites": 0
+        },
+        {
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_49_51_55_113_95_110_97_109_101_95_101_113_",
+          "decoded": "$direct.p137q_name_eq",
+          "qbeLine": 3883,
+          "lines": 172,
+          "bodySha256": "c8aab63dc19a5f2233d67d20a0a987a1ba710a6f35055160e5199f19554fb2b6",
+          "calls": [
+            {
+              "symbol": "p111_rt_take",
+              "decoded": "p111_rt_take",
+              "sites": 1
+            },
+            {
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink",
+              "sites": 17
+            },
+            {
+              "symbol": "p111_rt_keep",
+              "decoded": "p111_rt_keep",
+              "sites": 6
+            },
+            {
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_56_56_95_115_116_114_105_110_103_95_101_113_95_103_111_",
+              "decoded": "$direct.p88_string_eq_go",
+              "sites": 3
+            },
+            {
+              "symbol": "p125_rt_take2",
+              "decoded": "p125_rt_take2",
+              "sites": 1
+            },
+            {
+              "symbol": "p125_rt_take4",
+              "decoded": "p125_rt_take4",
+              "sites": 1
+            },
+            {
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail",
+              "sites": 1
+            }
+          ],
+          "staticTake9Sites": 1,
+          "staticSinkSites": 17,
+          "runtimeBorrowReadSites": 0
+        },
+        {
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_49_51_55_113_95_107_105_110_100_95_101_113_",
+          "decoded": "$direct.p137q_kind_eq",
+          "qbeLine": 4262,
+          "lines": 172,
+          "bodySha256": "c2e87aa36ad235fd5a452c89ec9416978fcb7e0e2da7d3f3a1695ddef69f4435",
+          "calls": [
+            {
+              "symbol": "p111_rt_take",
+              "decoded": "p111_rt_take",
+              "sites": 1
+            },
+            {
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink",
+              "sites": 17
+            },
+            {
+              "symbol": "p111_rt_keep",
+              "decoded": "p111_rt_keep",
+              "sites": 6
+            },
+            {
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_56_56_95_115_116_114_105_110_103_95_101_113_95_103_111_",
+              "decoded": "$direct.p88_string_eq_go",
+              "sites": 3
+            },
+            {
+              "symbol": "p125_rt_take2",
+              "decoded": "p125_rt_take2",
+              "sites": 1
+            },
+            {
+              "symbol": "p125_rt_take4",
+              "decoded": "p125_rt_take4",
+              "sites": 1
+            },
+            {
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail",
+              "sites": 1
+            }
+          ],
+          "staticTake9Sites": 1,
+          "staticSinkSites": 17,
+          "runtimeBorrowReadSites": 0
+        },
+        {
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_49_51_55_113_95_107_101_121_95_101_113_",
+          "decoded": "$direct.p137q_key_eq",
+          "qbeLine": 4435,
+          "lines": 167,
+          "bodySha256": "02e4d9928ba03fd1146db2ddf5274abda1c1a2fdd992de080001ef32fbe50dd2",
+          "calls": [
+            {
+              "symbol": "p111_rt_take",
+              "decoded": "p111_rt_take",
+              "sites": 1
+            },
+            {
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink",
+              "sites": 18
+            },
+            {
+              "symbol": "p111_rt_keep",
+              "decoded": "p111_rt_keep",
+              "sites": 6
+            },
+            {
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_56_56_95_115_116_114_105_110_103_95_101_113_95_103_111_",
+              "decoded": "$direct.p88_string_eq_go",
+              "sites": 3
+            },
+            {
+              "symbol": "p125_rt_take2",
+              "decoded": "p125_rt_take2",
+              "sites": 1
+            },
+            {
+              "symbol": "p125_rt_take4",
+              "decoded": "p125_rt_take4",
+              "sites": 1
+            },
+            {
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail",
+              "sites": 1
+            }
+          ],
+          "staticTake9Sites": 1,
+          "staticSinkSites": 18,
+          "runtimeBorrowReadSites": 0
+        },
+        {
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_102_95_102_105_110_100_95_110_101_120_116_",
+          "decoded": "$direct.f_find_next",
+          "qbeLine": 4759,
+          "lines": 8,
+          "bodySha256": "8369d65b598942e7531082dd7dfd77cb6c2879d1e46ebbd9ab391ab8b1ec4ac9",
+          "calls": [
+            {
+              "symbol": "p113d_FID_36_112_49_50_54_115_99_99_46_52_57_",
+              "decoded": "$p126scc.49",
+              "sites": 1
+            }
+          ],
+          "staticTake9Sites": 0,
+          "staticSinkSites": 0,
+          "runtimeBorrowReadSites": 0
+        },
+        {
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_102_95_102_105_110_100_",
+          "decoded": "$direct.f_find",
+          "qbeLine": 4768,
+          "lines": 8,
+          "bodySha256": "65395cda0808bd3feec043127ae89ef7273047b8101e266ed2f4fccdd8e5029f",
+          "calls": [
+            {
+              "symbol": "p113d_FID_36_112_49_50_54_115_99_99_46_52_57_",
+              "decoded": "$p126scc.49",
+              "sites": 1
+            }
+          ],
+          "staticTake9Sites": 0,
+          "staticSinkSites": 0,
+          "runtimeBorrowReadSites": 0
+        },
+        {
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_108_111_111_107_117_112_",
+          "decoded": "$direct.lookup",
+          "qbeLine": 6117,
+          "lines": 664,
+          "bodySha256": "d5d71321a1ce93917c5258f6b57252ef15d3442c37a784a39914775e461691ea",
+          "calls": [
+            {
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink",
+              "sites": 57
+            },
+            {
+              "symbol": "p125_rt_take2",
+              "decoded": "p125_rt_take2",
+              "sites": 5
+            },
+            {
+              "symbol": "p111_rt_keep",
+              "decoded": "p111_rt_keep",
+              "sites": 16
+            },
+            {
+              "symbol": "p111_rt_take",
+              "decoded": "p111_rt_take",
+              "sites": 3
+            },
+            {
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_56_56_95_115_116_114_105_110_103_95_101_113_95_103_111_",
+              "decoded": "$direct.p88_string_eq_go",
+              "sites": 6
+            },
+            {
+              "symbol": "p125_rt_take4",
+              "decoded": "p125_rt_take4",
+              "sites": 3
+            },
+            {
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail",
+              "sites": 7
+            },
+            {
+              "symbol": "p111_rt_ctor",
+              "decoded": "p111_rt_ctor",
+              "sites": 4
+            },
+            {
+              "symbol": "p125_rt_ctor2",
+              "decoded": "p125_rt_ctor2",
+              "sites": 2
+            },
+            {
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_105_110_100_101_120_95_104_97_115_104_",
+              "decoded": "$direct.index_hash",
+              "sites": 1
+            },
+            {
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_105_110_100_101_120_95_102_105_110_100_",
+              "decoded": "$direct.index_find",
+              "sites": 1
+            }
+          ],
+          "staticTake9Sites": 3,
+          "staticSinkSites": 57,
+          "runtimeBorrowReadSites": 0
+        },
+        {
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_110_99_95_99_116_111_114_95_111_119_110_101_100_",
+          "decoded": "$direct.nc_ctor_owned",
+          "qbeLine": 7505,
+          "lines": 698,
+          "bodySha256": "246155e2cbe878401e85fd6b7079d8484c89a44b385151398fd2f2bfda743a8f",
+          "calls": [
+            {
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink",
+              "sites": 66
+            },
+            {
+              "symbol": "p125_rt_take2",
+              "decoded": "p125_rt_take2",
+              "sites": 5
+            },
+            {
+              "symbol": "p111_rt_keep",
+              "decoded": "p111_rt_keep",
+              "sites": 15
+            },
+            {
+              "symbol": "p111_rt_take",
+              "decoded": "p111_rt_take",
+              "sites": 4
+            },
+            {
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_56_56_95_115_116_114_105_110_103_95_101_113_95_103_111_",
+              "decoded": "$direct.p88_string_eq_go",
+              "sites": 6
+            },
+            {
+              "symbol": "p125_rt_take4",
+              "decoded": "p125_rt_take4",
+              "sites": 4
+            },
+            {
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail",
+              "sites": 7
+            },
+            {
+              "symbol": "p111_rt_ctor",
+              "decoded": "p111_rt_ctor",
+              "sites": 4
+            },
+            {
+              "symbol": "p125_rt_ctor2",
+              "decoded": "p125_rt_ctor2",
+              "sites": 2
+            },
+            {
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_108_111_111_107_117_112_",
+              "decoded": "$direct.lookup",
+              "sites": 1
+            }
+          ],
+          "staticTake9Sites": 4,
+          "staticSinkSites": 66,
+          "runtimeBorrowReadSites": 0
+        },
+        {
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_49_51_55_113_95_113_117_101_114_105_101_115_",
+          "decoded": "$direct.p137q_queries",
+          "qbeLine": 8204,
+          "lines": 521,
+          "bodySha256": "9ec8629d1e2b5aebae229f2d2b9256304c106de696f2f82b68772163cb6fd363",
+          "calls": [
+            {
+              "symbol": "p111_rt_keep",
+              "decoded": "p111_rt_keep",
+              "sites": 6
+            },
+            {
+              "symbol": "p113d_FID_36_112_49_50_54_115_99_99_46_52_57_",
+              "decoded": "$p126scc.49",
+              "sites": 2
+            },
+            {
+              "symbol": "p111_rt_take",
+              "decoded": "p111_rt_take",
+              "sites": 4
+            },
+            {
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink",
+              "sites": 44
+            },
+            {
+              "symbol": "p125_rt_take2",
+              "decoded": "p125_rt_take2",
+              "sites": 4
+            },
+            {
+              "symbol": "p125_rt_take4",
+              "decoded": "p125_rt_take4",
+              "sites": 4
+            },
+            {
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail",
+              "sites": 6
+            },
+            {
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_108_111_111_107_117_112_",
+              "decoded": "$direct.lookup",
+              "sites": 2
+            },
+            {
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_110_99_95_99_116_111_114_95_111_119_110_101_100_",
+              "decoded": "$direct.nc_ctor_owned",
+              "sites": 2
+            }
+          ],
+          "staticTake9Sites": 4,
+          "staticSinkSites": 44,
+          "runtimeBorrowReadSites": 0
+        },
+        {
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_49_51_55_113_95_111_110_99_101_",
+          "decoded": "$direct.p137q_once",
+          "qbeLine": 8726,
+          "lines": 530,
+          "bodySha256": "7cd76dbf3f34fac2d6ac1c3cfeb5d6e07439d43472dac91f45723ab9faa9eecd",
+          "calls": [
+            {
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink",
+              "sites": 45
+            },
+            {
+              "symbol": "p111_rt_keep",
+              "decoded": "p111_rt_keep",
+              "sites": 6
+            },
+            {
+              "symbol": "p113d_FID_36_112_49_50_54_115_99_99_46_52_57_",
+              "decoded": "$p126scc.49",
+              "sites": 2
+            },
+            {
+              "symbol": "p111_rt_take",
+              "decoded": "p111_rt_take",
+              "sites": 4
+            },
+            {
+              "symbol": "p125_rt_take2",
+              "decoded": "p125_rt_take2",
+              "sites": 4
+            },
+            {
+              "symbol": "p125_rt_take4",
+              "decoded": "p125_rt_take4",
+              "sites": 4
+            },
+            {
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail",
+              "sites": 6
+            },
+            {
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_108_111_111_107_117_112_",
+              "decoded": "$direct.lookup",
+              "sites": 2
+            },
+            {
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_110_99_95_99_116_111_114_95_111_119_110_101_100_",
+              "decoded": "$direct.nc_ctor_owned",
+              "sites": 2
+            }
+          ],
+          "staticTake9Sites": 4,
+          "staticSinkSites": 45,
+          "runtimeBorrowReadSites": 0
+        },
+        {
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_49_51_55_113_95_114_101_112_101_97_116_",
+          "decoded": "$direct.p137q_repeat",
+          "qbeLine": 9257,
+          "lines": 608,
+          "bodySha256": "878883e5ef891030fe50149e3c5cd9e10bb1510096bf8d7081996c3f68fafb2a",
+          "calls": [
+            {
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink",
+              "sites": 48
+            },
+            {
+              "symbol": "p111_rt_keep",
+              "decoded": "p111_rt_keep",
+              "sites": 9
+            },
+            {
+              "symbol": "p113d_FID_36_112_49_50_54_115_99_99_46_52_57_",
+              "decoded": "$p126scc.49",
+              "sites": 2
+            },
+            {
+              "symbol": "p111_rt_take",
+              "decoded": "p111_rt_take",
+              "sites": 4
+            },
+            {
+              "symbol": "p125_rt_take2",
+              "decoded": "p125_rt_take2",
+              "sites": 4
+            },
+            {
+              "symbol": "p125_rt_take4",
+              "decoded": "p125_rt_take4",
+              "sites": 4
+            },
+            {
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail",
+              "sites": 7
+            },
+            {
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_108_111_111_107_117_112_",
+              "decoded": "$direct.lookup",
+              "sites": 2
+            },
+            {
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_110_99_95_99_116_111_114_95_111_119_110_101_100_",
+              "decoded": "$direct.nc_ctor_owned",
+              "sites": 2
+            }
+          ],
+          "staticTake9Sites": 4,
+          "staticSinkSites": 48,
+          "runtimeBorrowReadSites": 0
+        }
+      ],
+      "timedRoot": "p113d_FID_36_100_105_114_101_99_116_46_112_49_51_55_113_95_114_101_112_101_97_116_",
+      "directReachableFunctions": 14,
+      "borrowedReaderDirectPaths": [],
+      "pathCaveat": "Named direct paths only: existence does not establish branch frequency. No inference from missing indirect edges."
+    },
+    {
+      "producer": "baseline",
+      "name": "record-original",
+      "qbe": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase137/query-baseline-emit01/record-original.ssa",
+        "bytes": 1512596,
+        "sha256": "b5c56e72c8e34c59c7322bf1e773e8dcc35f4f5863a8a66c549892d6e1d9fe52"
+      },
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase137/queries/record-original-v01.bend",
+        "bytes": 20964,
+        "sha256": "569d06f5b9ca8db1634b73634d410c82bf9d6ecffac2a82eeac633e05d4d34f1"
+      },
+      "sourceProducer": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase134/verify-selected-source01/compiler.bend",
+        "bytes": 2693121,
+        "sha256": "a00019246b5181b288ab4d3e09e616bd41415fe6381e89a96185c05efa19fb57"
+      },
+      "privateFunctions": [
+        {
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_100_110_",
+          "decoded": "$direct.dn",
+          "qbeLine": 2938,
+          "lines": 76,
+          "bodySha256": "8bd7e73cb83e4c9615d33bced8b2ab86acc368eb8a430745604e7c92fca0fffb",
+          "calls": [
+            {
+              "symbol": "p111_rt_take",
+              "decoded": "p111_rt_take",
+              "sites": 1
+            },
+            {
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink",
+              "sites": 11
+            },
+            {
+              "symbol": "p125_rt_take2",
+              "decoded": "p125_rt_take2",
+              "sites": 1
+            },
+            {
+              "symbol": "p125_rt_take4",
+              "decoded": "p125_rt_take4",
+              "sites": 1
+            },
+            {
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail",
+              "sites": 1
+            }
+          ],
+          "staticTake9Sites": 1,
+          "staticSinkSites": 11,
+          "runtimeBorrowReadSites": 0
+        },
+        {
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_100_107_",
+          "decoded": "$direct.dk",
+          "qbeLine": 3015,
+          "lines": 76,
+          "bodySha256": "22c8db8e11461c3db7c9d4668cc817d2001a04cd6c9c01e018ae3ff7e8a95bd7",
+          "calls": [
+            {
+              "symbol": "p111_rt_take",
+              "decoded": "p111_rt_take",
+              "sites": 1
+            },
+            {
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink",
+              "sites": 11
+            },
+            {
+              "symbol": "p125_rt_take2",
+              "decoded": "p125_rt_take2",
+              "sites": 1
+            },
+            {
+              "symbol": "p125_rt_take4",
+              "decoded": "p125_rt_take4",
+              "sites": 1
+            },
+            {
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail",
+              "sites": 1
+            }
+          ],
+          "staticTake9Sites": 1,
+          "staticSinkSites": 11,
+          "runtimeBorrowReadSites": 0
+        },
+        {
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_49_51_55_113_95_114_101_99_111_114_100_95_113_117_101_114_121_",
+          "decoded": "$direct.p137q_record_query",
+          "qbeLine": 3851,
+          "lines": 83,
+          "bodySha256": "861a304df8c7ba04f0ee7b79abd5eace35a8249ca60ff5ce648193bc137c74b9",
+          "calls": [
+            {
+              "symbol": "p111_rt_take",
+              "decoded": "p111_rt_take",
+              "sites": 1
+            },
+            {
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink",
+              "sites": 10
+            },
+            {
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail",
+              "sites": 1
+            },
+            {
+              "symbol": "p111_rt_keep",
+              "decoded": "p111_rt_keep",
+              "sites": 2
+            },
+            {
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_56_56_95_115_116_114_105_110_103_95_101_113_95_103_111_",
+              "decoded": "$direct.p88_string_eq_go",
+              "sites": 1
+            }
+          ],
+          "staticTake9Sites": 1,
+          "staticSinkSites": 10,
+          "runtimeBorrowReadSites": 0
+        },
+        {
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_102_95_102_105_110_100_95_110_101_120_116_",
+          "decoded": "$direct.f_find_next",
+          "qbeLine": 4376,
+          "lines": 8,
+          "bodySha256": "bc1177e1249a2890fbb5abb070434f699a0544633363fcb1b00353972a93ee5c",
+          "calls": [
+            {
+              "symbol": "p113d_FID_36_112_49_50_54_115_99_99_46_52_55_",
+              "decoded": "$p126scc.47",
+              "sites": 1
+            }
+          ],
+          "staticTake9Sites": 0,
+          "staticSinkSites": 0,
+          "runtimeBorrowReadSites": 0
+        },
+        {
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_102_95_102_105_110_100_",
+          "decoded": "$direct.f_find",
+          "qbeLine": 4385,
+          "lines": 8,
+          "bodySha256": "a8e6cb638adf8dbcbc7f77ea36e1c9b303d1d1b748b68d40e2fa8f4fe72d672a",
+          "calls": [
+            {
+              "symbol": "p113d_FID_36_112_49_50_54_115_99_99_46_52_55_",
+              "decoded": "$p126scc.47",
+              "sites": 1
+            }
+          ],
+          "staticTake9Sites": 0,
+          "staticSinkSites": 0,
+          "runtimeBorrowReadSites": 0
+        },
+        {
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_49_51_55_113_95_111_110_99_101_",
+          "decoded": "$direct.p137q_once",
+          "qbeLine": 4889,
+          "lines": 263,
+          "bodySha256": "63c3010bcb961ebc2e1409783126f59b9665a837d3f10dadc8d2424cd1585b12",
+          "calls": [
+            {
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink",
+              "sites": 21
+            },
+            {
+              "symbol": "p111_rt_keep",
+              "decoded": "p111_rt_keep",
+              "sites": 5
+            },
+            {
+              "symbol": "p111_rt_take",
+              "decoded": "p111_rt_take",
+              "sites": 2
+            },
+            {
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail",
+              "sites": 4
+            },
+            {
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_56_56_95_115_116_114_105_110_103_95_101_113_95_103_111_",
+              "decoded": "$direct.p88_string_eq_go",
+              "sites": 2
+            }
+          ],
+          "staticTake9Sites": 2,
+          "staticSinkSites": 21,
+          "runtimeBorrowReadSites": 0
+        },
+        {
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_108_111_111_107_117_112_",
+          "decoded": "$direct.lookup",
+          "qbeLine": 5998,
+          "lines": 526,
+          "bodySha256": "f6f2ad9960d31512e3ab7536b1ca78b8fcf01c46af9d66607dfbe59a7563b6f6",
+          "calls": [
+            {
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink",
+              "sites": 49
+            },
+            {
+              "symbol": "p125_rt_take2",
+              "decoded": "p125_rt_take2",
+              "sites": 5
+            },
+            {
+              "symbol": "p111_rt_keep",
+              "decoded": "p111_rt_keep",
+              "sites": 8
+            },
+            {
+              "symbol": "p111_rt_take",
+              "decoded": "p111_rt_take",
+              "sites": 3
+            },
+            {
+              "symbol": "p125_rt_take4",
+              "decoded": "p125_rt_take4",
+              "sites": 3
+            },
+            {
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail",
+              "sites": 7
+            },
+            {
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_56_56_95_115_116_114_105_110_103_95_101_113_95_103_111_",
+              "decoded": "$direct.p88_string_eq_go",
+              "sites": 2
+            },
+            {
+              "symbol": "p111_rt_ctor",
+              "decoded": "p111_rt_ctor",
+              "sites": 4
+            },
+            {
+              "symbol": "p125_rt_ctor2",
+              "decoded": "p125_rt_ctor2",
+              "sites": 2
+            },
+            {
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_105_110_100_101_120_95_104_97_115_104_",
+              "decoded": "$direct.index_hash",
+              "sites": 1
+            },
+            {
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_105_110_100_101_120_95_102_105_110_100_",
+              "decoded": "$direct.index_find",
+              "sites": 1
+            }
+          ],
+          "staticTake9Sites": 3,
+          "staticSinkSites": 49,
+          "runtimeBorrowReadSites": 0
+        },
+        {
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_49_51_55_113_95_114_101_112_101_97_116_",
+          "decoded": "$direct.p137q_repeat",
+          "qbeLine": 7248,
+          "lines": 341,
+          "bodySha256": "efbfff2966dde1f350718cfba3a6a21dffb2397cee9fe891e1237201d5b5d31b",
+          "calls": [
+            {
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink",
+              "sites": 24
+            },
+            {
+              "symbol": "p111_rt_keep",
+              "decoded": "p111_rt_keep",
+              "sites": 8
+            },
+            {
+              "symbol": "p111_rt_take",
+              "decoded": "p111_rt_take",
+              "sites": 2
+            },
+            {
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail",
+              "sites": 5
+            },
+            {
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_56_56_95_115_116_114_105_110_103_95_101_113_95_103_111_",
+              "decoded": "$direct.p88_string_eq_go",
+              "sites": 2
+            }
+          ],
+          "staticTake9Sites": 2,
+          "staticSinkSites": 24,
+          "runtimeBorrowReadSites": 0
+        },
+        {
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_110_99_95_99_116_111_114_95_111_119_110_101_100_",
+          "decoded": "$direct.nc_ctor_owned",
+          "qbeLine": 7590,
+          "lines": 560,
+          "bodySha256": "58e76691e637b2d6ace3bc3794a4f8d18cd31156ae949478edf93b969604f570",
+          "calls": [
+            {
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink",
+              "sites": 58
+            },
+            {
+              "symbol": "p125_rt_take2",
+              "decoded": "p125_rt_take2",
+              "sites": 5
+            },
+            {
+              "symbol": "p111_rt_keep",
+              "decoded": "p111_rt_keep",
+              "sites": 7
+            },
+            {
+              "symbol": "p111_rt_take",
+              "decoded": "p111_rt_take",
+              "sites": 4
+            },
+            {
+              "symbol": "p125_rt_take4",
+              "decoded": "p125_rt_take4",
+              "sites": 4
+            },
+            {
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail",
+              "sites": 7
+            },
+            {
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_56_56_95_115_116_114_105_110_103_95_101_113_95_103_111_",
+              "decoded": "$direct.p88_string_eq_go",
+              "sites": 2
+            },
+            {
+              "symbol": "p111_rt_ctor",
+              "decoded": "p111_rt_ctor",
+              "sites": 4
+            },
+            {
+              "symbol": "p125_rt_ctor2",
+              "decoded": "p125_rt_ctor2",
+              "sites": 2
+            },
+            {
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_108_111_111_107_117_112_",
+              "decoded": "$direct.lookup",
+              "sites": 1
+            }
+          ],
+          "staticTake9Sites": 4,
+          "staticSinkSites": 58,
+          "runtimeBorrowReadSites": 0
+        }
+      ],
+      "timedRoot": "p113d_FID_36_100_105_114_101_99_116_46_112_49_51_55_113_95_114_101_112_101_97_116_",
+      "directReachableFunctions": 4,
+      "borrowedReaderDirectPaths": [],
+      "pathCaveat": "Named direct paths only: existence does not establish branch frequency. No inference from missing indirect edges."
+    },
+    {
+      "producer": "baseline",
+      "name": "record-fused",
+      "qbe": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase137/query-baseline-emit01/record-fused.ssa",
+        "bytes": 1565942,
+        "sha256": "71c9de74f1bc57144124b2d20bf285c9f8cdb0313610a82f9bfd8c701c21d152"
+      },
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase137/queries/record-fused-v01.bend",
+        "bytes": 22024,
+        "sha256": "caa5a2bd56f7b7deb9aa0d59102fc87e46a9adf029d49d7e226b363ed4ee79ad"
+      },
+      "sourceProducer": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase134/verify-selected-source01/compiler.bend",
+        "bytes": 2693121,
+        "sha256": "a00019246b5181b288ab4d3e09e616bd41415fe6381e89a96185c05efa19fb57"
+      },
+      "privateFunctions": [
+        {
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_100_110_",
+          "decoded": "$direct.dn",
+          "qbeLine": 2894,
+          "lines": 76,
+          "bodySha256": "8bd7e73cb83e4c9615d33bced8b2ab86acc368eb8a430745604e7c92fca0fffb",
+          "calls": [
+            {
+              "symbol": "p111_rt_take",
+              "decoded": "p111_rt_take",
+              "sites": 1
+            },
+            {
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink",
+              "sites": 11
+            },
+            {
+              "symbol": "p125_rt_take2",
+              "decoded": "p125_rt_take2",
+              "sites": 1
+            },
+            {
+              "symbol": "p125_rt_take4",
+              "decoded": "p125_rt_take4",
+              "sites": 1
+            },
+            {
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail",
+              "sites": 1
+            }
+          ],
+          "staticTake9Sites": 1,
+          "staticSinkSites": 11,
+          "runtimeBorrowReadSites": 0
+        },
+        {
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_100_107_",
+          "decoded": "$direct.dk",
+          "qbeLine": 2971,
+          "lines": 76,
+          "bodySha256": "38060d174c72af1f83bea3e63bf09db1bbf90320c4e861876425234fbe81d715",
+          "calls": [
+            {
+              "symbol": "p111_rt_take",
+              "decoded": "p111_rt_take",
+              "sites": 1
+            },
+            {
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink",
+              "sites": 11
+            },
+            {
+              "symbol": "p125_rt_take2",
+              "decoded": "p125_rt_take2",
+              "sites": 1
+            },
+            {
+              "symbol": "p125_rt_take4",
+              "decoded": "p125_rt_take4",
+              "sites": 1
+            },
+            {
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail",
+              "sites": 1
+            }
+          ],
+          "staticTake9Sites": 1,
+          "staticSinkSites": 11,
+          "runtimeBorrowReadSites": 0
+        },
+        {
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_49_51_55_113_95_114_101_99_111_114_100_95_113_117_101_114_121_",
+          "decoded": "$direct.p137q_record_query",
+          "qbeLine": 3807,
+          "lines": 75,
+          "bodySha256": "395d4ac118168523d532d569e262ae99fbc889005854a971993bba3b30cbe946",
+          "calls": [
+            {
+              "symbol": "p111_rt_take",
+              "decoded": "p111_rt_take",
+              "sites": 1
+            },
+            {
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink",
+              "sites": 10
+            },
+            {
+              "symbol": "p111_rt_keep",
+              "decoded": "p111_rt_keep",
+              "sites": 2
+            },
+            {
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_56_56_95_115_116_114_105_110_103_95_101_113_95_103_111_",
+              "decoded": "$direct.p88_string_eq_go",
+              "sites": 1
+            },
+            {
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail",
+              "sites": 1
+            }
+          ],
+          "staticTake9Sites": 1,
+          "staticSinkSites": 10,
+          "runtimeBorrowReadSites": 0
+        },
+        {
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_49_51_55_113_95_110_97_109_101_95_101_113_",
+          "decoded": "$direct.p137q_name_eq",
+          "qbeLine": 3883,
+          "lines": 172,
+          "bodySha256": "c8aab63dc19a5f2233d67d20a0a987a1ba710a6f35055160e5199f19554fb2b6",
+          "calls": [
+            {
+              "symbol": "p111_rt_take",
+              "decoded": "p111_rt_take",
+              "sites": 1
+            },
+            {
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink",
+              "sites": 17
+            },
+            {
+              "symbol": "p111_rt_keep",
+              "decoded": "p111_rt_keep",
+              "sites": 6
+            },
+            {
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_56_56_95_115_116_114_105_110_103_95_101_113_95_103_111_",
+              "decoded": "$direct.p88_string_eq_go",
+              "sites": 3
+            },
+            {
+              "symbol": "p125_rt_take2",
+              "decoded": "p125_rt_take2",
+              "sites": 1
+            },
+            {
+              "symbol": "p125_rt_take4",
+              "decoded": "p125_rt_take4",
+              "sites": 1
+            },
+            {
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail",
+              "sites": 1
+            }
+          ],
+          "staticTake9Sites": 1,
+          "staticSinkSites": 17,
+          "runtimeBorrowReadSites": 0
+        },
+        {
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_49_51_55_113_95_107_105_110_100_95_101_113_",
+          "decoded": "$direct.p137q_kind_eq",
+          "qbeLine": 4262,
+          "lines": 172,
+          "bodySha256": "c2e87aa36ad235fd5a452c89ec9416978fcb7e0e2da7d3f3a1695ddef69f4435",
+          "calls": [
+            {
+              "symbol": "p111_rt_take",
+              "decoded": "p111_rt_take",
+              "sites": 1
+            },
+            {
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink",
+              "sites": 17
+            },
+            {
+              "symbol": "p111_rt_keep",
+              "decoded": "p111_rt_keep",
+              "sites": 6
+            },
+            {
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_56_56_95_115_116_114_105_110_103_95_101_113_95_103_111_",
+              "decoded": "$direct.p88_string_eq_go",
+              "sites": 3
+            },
+            {
+              "symbol": "p125_rt_take2",
+              "decoded": "p125_rt_take2",
+              "sites": 1
+            },
+            {
+              "symbol": "p125_rt_take4",
+              "decoded": "p125_rt_take4",
+              "sites": 1
+            },
+            {
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail",
+              "sites": 1
+            }
+          ],
+          "staticTake9Sites": 1,
+          "staticSinkSites": 17,
+          "runtimeBorrowReadSites": 0
+        },
+        {
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_49_51_55_113_95_107_101_121_95_101_113_",
+          "decoded": "$direct.p137q_key_eq",
+          "qbeLine": 4435,
+          "lines": 167,
+          "bodySha256": "02e4d9928ba03fd1146db2ddf5274abda1c1a2fdd992de080001ef32fbe50dd2",
+          "calls": [
+            {
+              "symbol": "p111_rt_take",
+              "decoded": "p111_rt_take",
+              "sites": 1
+            },
+            {
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink",
+              "sites": 18
+            },
+            {
+              "symbol": "p111_rt_keep",
+              "decoded": "p111_rt_keep",
+              "sites": 6
+            },
+            {
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_56_56_95_115_116_114_105_110_103_95_101_113_95_103_111_",
+              "decoded": "$direct.p88_string_eq_go",
+              "sites": 3
+            },
+            {
+              "symbol": "p125_rt_take2",
+              "decoded": "p125_rt_take2",
+              "sites": 1
+            },
+            {
+              "symbol": "p125_rt_take4",
+              "decoded": "p125_rt_take4",
+              "sites": 1
+            },
+            {
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail",
+              "sites": 1
+            }
+          ],
+          "staticTake9Sites": 1,
+          "staticSinkSites": 18,
+          "runtimeBorrowReadSites": 0
+        },
+        {
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_102_95_102_105_110_100_95_110_101_120_116_",
+          "decoded": "$direct.f_find_next",
+          "qbeLine": 4759,
+          "lines": 8,
+          "bodySha256": "324702e9797773383d2cbad419474d83ebbfef99c2f88ab0b9b02a762bc8422a",
+          "calls": [
+            {
+              "symbol": "p113d_FID_36_112_49_50_54_115_99_99_46_52_56_",
+              "decoded": "$p126scc.48",
+              "sites": 1
+            }
+          ],
+          "staticTake9Sites": 0,
+          "staticSinkSites": 0,
+          "runtimeBorrowReadSites": 0
+        },
+        {
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_102_95_102_105_110_100_",
+          "decoded": "$direct.f_find",
+          "qbeLine": 4768,
+          "lines": 8,
+          "bodySha256": "5487030dbdcd092c9587c009ebc53ad7be61e75d8ae21b047a8931b7dd5475fb",
+          "calls": [
+            {
+              "symbol": "p113d_FID_36_112_49_50_54_115_99_99_46_52_56_",
+              "decoded": "$p126scc.48",
+              "sites": 1
+            }
+          ],
+          "staticTake9Sites": 0,
+          "staticSinkSites": 0,
+          "runtimeBorrowReadSites": 0
+        },
+        {
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_49_51_55_113_95_111_110_99_101_",
+          "decoded": "$direct.p137q_once",
+          "qbeLine": 5272,
+          "lines": 257,
+          "bodySha256": "60e6a86f9d80a5e881a6d4e0837466f06fa80c68496ecd58c3151d5d285aeb82",
+          "calls": [
+            {
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink",
+              "sites": 21
+            },
+            {
+              "symbol": "p111_rt_keep",
+              "decoded": "p111_rt_keep",
+              "sites": 5
+            },
+            {
+              "symbol": "p111_rt_take",
+              "decoded": "p111_rt_take",
+              "sites": 2
+            },
+            {
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_56_56_95_115_116_114_105_110_103_95_101_113_95_103_111_",
+              "decoded": "$direct.p88_string_eq_go",
+              "sites": 2
+            },
+            {
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail",
+              "sites": 4
+            }
+          ],
+          "staticTake9Sites": 2,
+          "staticSinkSites": 21,
+          "runtimeBorrowReadSites": 0
+        },
+        {
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_108_111_111_107_117_112_",
+          "decoded": "$direct.lookup",
+          "qbeLine": 6375,
+          "lines": 664,
+          "bodySha256": "d5d71321a1ce93917c5258f6b57252ef15d3442c37a784a39914775e461691ea",
+          "calls": [
+            {
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink",
+              "sites": 57
+            },
+            {
+              "symbol": "p125_rt_take2",
+              "decoded": "p125_rt_take2",
+              "sites": 5
+            },
+            {
+              "symbol": "p111_rt_keep",
+              "decoded": "p111_rt_keep",
+              "sites": 16
+            },
+            {
+              "symbol": "p111_rt_take",
+              "decoded": "p111_rt_take",
+              "sites": 3
+            },
+            {
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_56_56_95_115_116_114_105_110_103_95_101_113_95_103_111_",
+              "decoded": "$direct.p88_string_eq_go",
+              "sites": 6
+            },
+            {
+              "symbol": "p125_rt_take4",
+              "decoded": "p125_rt_take4",
+              "sites": 3
+            },
+            {
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail",
+              "sites": 7
+            },
+            {
+              "symbol": "p111_rt_ctor",
+              "decoded": "p111_rt_ctor",
+              "sites": 4
+            },
+            {
+              "symbol": "p125_rt_ctor2",
+              "decoded": "p125_rt_ctor2",
+              "sites": 2
+            },
+            {
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_105_110_100_101_120_95_104_97_115_104_",
+              "decoded": "$direct.index_hash",
+              "sites": 1
+            },
+            {
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_105_110_100_101_120_95_102_105_110_100_",
+              "decoded": "$direct.index_find",
+              "sites": 1
+            }
+          ],
+          "staticTake9Sites": 3,
+          "staticSinkSites": 57,
+          "runtimeBorrowReadSites": 0
+        },
+        {
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_49_51_55_113_95_114_101_112_101_97_116_",
+          "decoded": "$direct.p137q_repeat",
+          "qbeLine": 7763,
+          "lines": 335,
+          "bodySha256": "999d727dd478869df074f10801ac4733ccb95d01b6bce41ddf774cfa41d9b541",
+          "calls": [
+            {
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink",
+              "sites": 24
+            },
+            {
+              "symbol": "p111_rt_keep",
+              "decoded": "p111_rt_keep",
+              "sites": 8
+            },
+            {
+              "symbol": "p111_rt_take",
+              "decoded": "p111_rt_take",
+              "sites": 2
+            },
+            {
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_56_56_95_115_116_114_105_110_103_95_101_113_95_103_111_",
+              "decoded": "$direct.p88_string_eq_go",
+              "sites": 2
+            },
+            {
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail",
+              "sites": 5
+            }
+          ],
+          "staticTake9Sites": 2,
+          "staticSinkSites": 24,
+          "runtimeBorrowReadSites": 0
+        },
+        {
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_110_99_95_99_116_111_114_95_111_119_110_101_100_",
+          "decoded": "$direct.nc_ctor_owned",
+          "qbeLine": 8099,
+          "lines": 698,
+          "bodySha256": "246155e2cbe878401e85fd6b7079d8484c89a44b385151398fd2f2bfda743a8f",
+          "calls": [
+            {
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink",
+              "sites": 66
+            },
+            {
+              "symbol": "p125_rt_take2",
+              "decoded": "p125_rt_take2",
+              "sites": 5
+            },
+            {
+              "symbol": "p111_rt_keep",
+              "decoded": "p111_rt_keep",
+              "sites": 15
+            },
+            {
+              "symbol": "p111_rt_take",
+              "decoded": "p111_rt_take",
+              "sites": 4
+            },
+            {
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_56_56_95_115_116_114_105_110_103_95_101_113_95_103_111_",
+              "decoded": "$direct.p88_string_eq_go",
+              "sites": 6
+            },
+            {
+              "symbol": "p125_rt_take4",
+              "decoded": "p125_rt_take4",
+              "sites": 4
+            },
+            {
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail",
+              "sites": 7
+            },
+            {
+              "symbol": "p111_rt_ctor",
+              "decoded": "p111_rt_ctor",
+              "sites": 4
+            },
+            {
+              "symbol": "p125_rt_ctor2",
+              "decoded": "p125_rt_ctor2",
+              "sites": 2
+            },
+            {
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_108_111_111_107_117_112_",
+              "decoded": "$direct.lookup",
+              "sites": 1
+            }
+          ],
+          "staticTake9Sites": 4,
+          "staticSinkSites": 66,
+          "runtimeBorrowReadSites": 0
+        }
+      ],
+      "timedRoot": "p113d_FID_36_100_105_114_101_99_116_46_112_49_51_55_113_95_114_101_112_101_97_116_",
+      "directReachableFunctions": 4,
+      "borrowedReaderDirectPaths": [],
+      "pathCaveat": "Named direct paths only: existence does not establish branch frequency. No inference from missing indirect edges."
+    },
+    {
+      "producer": "width16",
+      "name": "queries-original",
+      "qbe": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase137/query-wide-emit01/queries-original.ssa",
+        "bytes": 1621143,
+        "sha256": "7a908b45fa4ae5f37877565a01823add55402e332fcf57c20cfa76315b9ff2d3"
+      },
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase137/queries/queries-original-v01.bend",
+        "bytes": 20884,
+        "sha256": "141d0d13990d3cc45a0cda9cd388675802996bd2b0f4f4f2556c028824f4822a"
+      },
+      "sourceProducer": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase137/wide-source01/compiler.bend",
+        "bytes": 2695713,
+        "sha256": "863e28f8bba8a285332875ce99bf82a20d2ea3052c6f4b6aed3606b0d67485b5"
+      },
+      "privateFunctions": [
+        {
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_100_110_",
+          "decoded": "$direct.dn",
+          "qbeLine": 3450,
+          "lines": 76,
+          "bodySha256": "8bd7e73cb83e4c9615d33bced8b2ab86acc368eb8a430745604e7c92fca0fffb",
+          "calls": [
+            {
+              "symbol": "p111_rt_take",
+              "decoded": "p111_rt_take",
+              "sites": 1
+            },
+            {
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink",
+              "sites": 11
+            },
+            {
+              "symbol": "p125_rt_take2",
+              "decoded": "p125_rt_take2",
+              "sites": 1
+            },
+            {
+              "symbol": "p125_rt_take4",
+              "decoded": "p125_rt_take4",
+              "sites": 1
+            },
+            {
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail",
+              "sites": 1
+            }
+          ],
+          "staticTake9Sites": 1,
+          "staticSinkSites": 11,
+          "runtimeBorrowReadSites": 0
+        },
+        {
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_100_107_",
+          "decoded": "$direct.dk",
+          "qbeLine": 3527,
+          "lines": 76,
+          "bodySha256": "22c8db8e11461c3db7c9d4668cc817d2001a04cd6c9c01e018ae3ff7e8a95bd7",
+          "calls": [
+            {
+              "symbol": "p111_rt_take",
+              "decoded": "p111_rt_take",
+              "sites": 1
+            },
+            {
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink",
+              "sites": 11
+            },
+            {
+              "symbol": "p125_rt_take2",
+              "decoded": "p125_rt_take2",
+              "sites": 1
+            },
+            {
+              "symbol": "p125_rt_take4",
+              "decoded": "p125_rt_take4",
+              "sites": 1
+            },
+            {
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail",
+              "sites": 1
+            }
+          ],
+          "staticTake9Sites": 1,
+          "staticSinkSites": 11,
+          "runtimeBorrowReadSites": 0
+        },
+        {
+          "symbol": "p113d_FID_36_112_49_50_56_98_111_114_114_111_119_46_111_119_110_101_100_46_112_49_51_55_113_95_114_101_99_111_114_100_95_113_117_101_114_121_",
+          "decoded": "$p128borrow.owned.p137q_record_query",
+          "qbeLine": 4363,
+          "lines": 83,
+          "bodySha256": "9da9575266dba5f42eabe513ff50bf80e55c8c60631f8b2b99b6d6fcfcfc33fd",
+          "calls": [
+            {
+              "symbol": "p111_rt_take",
+              "decoded": "p111_rt_take",
+              "sites": 1
+            },
+            {
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink",
+              "sites": 10
+            },
+            {
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail",
+              "sites": 1
+            },
+            {
+              "symbol": "p111_rt_keep",
+              "decoded": "p111_rt_keep",
+              "sites": 2
+            },
+            {
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_56_56_95_115_116_114_105_110_103_95_101_113_95_103_111_",
+              "decoded": "$direct.p88_string_eq_go",
+              "sites": 1
+            }
+          ],
+          "staticTake9Sites": 1,
+          "staticSinkSites": 10,
+          "runtimeBorrowReadSites": 0
+        },
+        {
+          "symbol": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_112_49_51_55_113_95_114_101_99_111_114_100_95_113_117_101_114_121_",
+          "decoded": "$p118borrow.read.p137q_record_query",
+          "qbeLine": 4447,
+          "lines": 45,
+          "bodySha256": "7d2c4635f86e9f2c6851b405c7054d5a41ec7e0093652a6d71f2bc53cc319c31",
+          "calls": [
+            {
+              "symbol": "p118_rt_borrow_fields",
+              "decoded": "p118_rt_borrow_fields",
+              "sites": 1
+            },
+            {
+              "symbol": "p111_rt_special_ctor",
+              "decoded": "p111_rt_special_ctor",
+              "sites": 1
+            },
+            {
+              "symbol": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_112_56_56_95_115_116_114_105_110_103_95_101_113_95_103_111_",
+              "decoded": "$p118borrow.read.p88_string_eq_go",
+              "sites": 1
+            },
+            {
+              "symbol": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_112_57_56_95_101_113_95_102_105_110_105_115_104_",
+              "decoded": "$p118borrow.read.p98_eq_finish",
+              "sites": 1
+            },
+            {
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail",
+              "sites": 1
+            }
+          ],
+          "staticTake9Sites": 0,
+          "staticSinkSites": 0,
+          "runtimeBorrowReadSites": 1
+        },
+        {
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_49_51_55_113_95_114_101_99_111_114_100_95_113_117_101_114_121_",
+          "decoded": "$direct.p137q_record_query",
+          "qbeLine": 4493,
+          "lines": 17,
+          "bodySha256": "8e5c1935f840eeb40ba9d2bdb261ba0305fb241168657752fbbaa1121f93a5b4",
+          "calls": [
+            {
+              "symbol": "p118_rt_borrow_scalar_safe",
+              "decoded": "p118_rt_borrow_scalar_safe",
+              "sites": 1
+            },
+            {
+              "symbol": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_112_49_51_55_113_95_114_101_99_111_114_100_95_113_117_101_114_121_",
+              "decoded": "$p118borrow.read.p137q_record_query",
+              "sites": 1
+            },
+            {
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink",
+              "sites": 2
+            },
+            {
+              "symbol": "p113d_FID_36_112_49_50_56_98_111_114_114_111_119_46_111_119_110_101_100_46_112_49_51_55_113_95_114_101_99_111_114_100_95_113_117_101_114_121_",
+              "decoded": "$p128borrow.owned.p137q_record_query",
+              "sites": 1
+            }
+          ],
+          "staticTake9Sites": 0,
+          "staticSinkSites": 2,
+          "runtimeBorrowReadSites": 0
+        },
+        {
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_102_95_102_105_110_100_95_110_101_120_116_",
+          "decoded": "$direct.f_find_next",
+          "qbeLine": 4952,
+          "lines": 8,
+          "bodySha256": "324702e9797773383d2cbad419474d83ebbfef99c2f88ab0b9b02a762bc8422a",
+          "calls": [
+            {
+              "symbol": "p113d_FID_36_112_49_50_54_115_99_99_46_52_56_",
+              "decoded": "$p126scc.48",
+              "sites": 1
+            }
+          ],
+          "staticTake9Sites": 0,
+          "staticSinkSites": 0,
+          "runtimeBorrowReadSites": 0
+        },
+        {
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_102_95_102_105_110_100_",
+          "decoded": "$direct.f_find",
+          "qbeLine": 4961,
+          "lines": 8,
+          "bodySha256": "5487030dbdcd092c9587c009ebc53ad7be61e75d8ae21b047a8931b7dd5475fb",
+          "calls": [
+            {
+              "symbol": "p113d_FID_36_112_49_50_54_115_99_99_46_52_56_",
+              "decoded": "$p126scc.48",
+              "sites": 1
+            }
+          ],
+          "staticTake9Sites": 0,
+          "staticSinkSites": 0,
+          "runtimeBorrowReadSites": 0
+        },
+        {
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_108_111_111_107_117_112_",
+          "decoded": "$direct.lookup",
+          "qbeLine": 6310,
+          "lines": 526,
+          "bodySha256": "f6f2ad9960d31512e3ab7536b1ca78b8fcf01c46af9d66607dfbe59a7563b6f6",
+          "calls": [
+            {
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink",
+              "sites": 49
+            },
+            {
+              "symbol": "p125_rt_take2",
+              "decoded": "p125_rt_take2",
+              "sites": 5
+            },
+            {
+              "symbol": "p111_rt_keep",
+              "decoded": "p111_rt_keep",
+              "sites": 8
+            },
+            {
+              "symbol": "p111_rt_take",
+              "decoded": "p111_rt_take",
+              "sites": 3
+            },
+            {
+              "symbol": "p125_rt_take4",
+              "decoded": "p125_rt_take4",
+              "sites": 3
+            },
+            {
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail",
+              "sites": 7
+            },
+            {
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_56_56_95_115_116_114_105_110_103_95_101_113_95_103_111_",
+              "decoded": "$direct.p88_string_eq_go",
+              "sites": 2
+            },
+            {
+              "symbol": "p111_rt_ctor",
+              "decoded": "p111_rt_ctor",
+              "sites": 4
+            },
+            {
+              "symbol": "p125_rt_ctor2",
+              "decoded": "p125_rt_ctor2",
+              "sites": 2
+            },
+            {
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_105_110_100_101_120_95_104_97_115_104_",
+              "decoded": "$direct.index_hash",
+              "sites": 1
+            },
+            {
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_105_110_100_101_120_95_102_105_110_100_",
+              "decoded": "$direct.index_find",
+              "sites": 1
+            }
+          ],
+          "staticTake9Sites": 3,
+          "staticSinkSites": 49,
+          "runtimeBorrowReadSites": 0
+        },
+        {
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_110_99_95_99_116_111_114_95_111_119_110_101_100_",
+          "decoded": "$direct.nc_ctor_owned",
+          "qbeLine": 7560,
+          "lines": 560,
+          "bodySha256": "58e76691e637b2d6ace3bc3794a4f8d18cd31156ae949478edf93b969604f570",
+          "calls": [
+            {
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink",
+              "sites": 58
+            },
+            {
+              "symbol": "p125_rt_take2",
+              "decoded": "p125_rt_take2",
+              "sites": 5
+            },
+            {
+              "symbol": "p111_rt_keep",
+              "decoded": "p111_rt_keep",
+              "sites": 7
+            },
+            {
+              "symbol": "p111_rt_take",
+              "decoded": "p111_rt_take",
+              "sites": 4
+            },
+            {
+              "symbol": "p125_rt_take4",
+              "decoded": "p125_rt_take4",
+              "sites": 4
+            },
+            {
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail",
+              "sites": 7
+            },
+            {
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_56_56_95_115_116_114_105_110_103_95_101_113_95_103_111_",
+              "decoded": "$direct.p88_string_eq_go",
+              "sites": 2
+            },
+            {
+              "symbol": "p111_rt_ctor",
+              "decoded": "p111_rt_ctor",
+              "sites": 4
+            },
+            {
+              "symbol": "p125_rt_ctor2",
+              "decoded": "p125_rt_ctor2",
+              "sites": 2
+            },
+            {
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_108_111_111_107_117_112_",
+              "decoded": "$direct.lookup",
+              "sites": 1
+            }
+          ],
+          "staticTake9Sites": 4,
+          "staticSinkSites": 58,
+          "runtimeBorrowReadSites": 0
+        },
+        {
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_49_51_55_113_95_113_117_101_114_105_101_115_",
+          "decoded": "$direct.p137q_queries",
+          "qbeLine": 8121,
+          "lines": 521,
+          "bodySha256": "c1c71e4c7720ef7a81d01720dd42695a5b0e077fd3ece0720721e1d3ae08e4ba",
+          "calls": [
+            {
+              "symbol": "p111_rt_keep",
+              "decoded": "p111_rt_keep",
+              "sites": 6
+            },
+            {
+              "symbol": "p113d_FID_36_112_49_50_54_115_99_99_46_52_56_",
+              "decoded": "$p126scc.48",
+              "sites": 2
+            },
+            {
+              "symbol": "p111_rt_take",
+              "decoded": "p111_rt_take",
+              "sites": 4
+            },
+            {
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink",
+              "sites": 44
+            },
+            {
+              "symbol": "p125_rt_take2",
+              "decoded": "p125_rt_take2",
+              "sites": 4
+            },
+            {
+              "symbol": "p125_rt_take4",
+              "decoded": "p125_rt_take4",
+              "sites": 4
+            },
+            {
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail",
+              "sites": 6
+            },
+            {
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_108_111_111_107_117_112_",
+              "decoded": "$direct.lookup",
+              "sites": 2
+            },
+            {
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_110_99_95_99_116_111_114_95_111_119_110_101_100_",
+              "decoded": "$direct.nc_ctor_owned",
+              "sites": 2
+            }
+          ],
+          "staticTake9Sites": 4,
+          "staticSinkSites": 44,
+          "runtimeBorrowReadSites": 0
+        },
+        {
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_49_51_55_113_95_111_110_99_101_",
+          "decoded": "$direct.p137q_once",
+          "qbeLine": 8643,
+          "lines": 530,
+          "bodySha256": "099432923c7c02419801adc3c956a22ab29650909abc126d070c45ca625f8455",
+          "calls": [
+            {
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink",
+              "sites": 45
+            },
+            {
+              "symbol": "p111_rt_keep",
+              "decoded": "p111_rt_keep",
+              "sites": 6
+            },
+            {
+              "symbol": "p113d_FID_36_112_49_50_54_115_99_99_46_52_56_",
+              "decoded": "$p126scc.48",
+              "sites": 2
+            },
+            {
+              "symbol": "p111_rt_take",
+              "decoded": "p111_rt_take",
+              "sites": 4
+            },
+            {
+              "symbol": "p125_rt_take2",
+              "decoded": "p125_rt_take2",
+              "sites": 4
+            },
+            {
+              "symbol": "p125_rt_take4",
+              "decoded": "p125_rt_take4",
+              "sites": 4
+            },
+            {
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail",
+              "sites": 6
+            },
+            {
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_108_111_111_107_117_112_",
+              "decoded": "$direct.lookup",
+              "sites": 2
+            },
+            {
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_110_99_95_99_116_111_114_95_111_119_110_101_100_",
+              "decoded": "$direct.nc_ctor_owned",
+              "sites": 2
+            }
+          ],
+          "staticTake9Sites": 4,
+          "staticSinkSites": 45,
+          "runtimeBorrowReadSites": 0
+        },
+        {
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_49_51_55_113_95_114_101_112_101_97_116_",
+          "decoded": "$direct.p137q_repeat",
+          "qbeLine": 9174,
+          "lines": 608,
+          "bodySha256": "bd6b500afd86a2100c2e9c71b1593e496058650f0e208ed24fbb80ffc4c2d017",
+          "calls": [
+            {
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink",
+              "sites": 48
+            },
+            {
+              "symbol": "p111_rt_keep",
+              "decoded": "p111_rt_keep",
+              "sites": 9
+            },
+            {
+              "symbol": "p113d_FID_36_112_49_50_54_115_99_99_46_52_56_",
+              "decoded": "$p126scc.48",
+              "sites": 2
+            },
+            {
+              "symbol": "p111_rt_take",
+              "decoded": "p111_rt_take",
+              "sites": 4
+            },
+            {
+              "symbol": "p125_rt_take2",
+              "decoded": "p125_rt_take2",
+              "sites": 4
+            },
+            {
+              "symbol": "p125_rt_take4",
+              "decoded": "p125_rt_take4",
+              "sites": 4
+            },
+            {
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail",
+              "sites": 7
+            },
+            {
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_108_111_111_107_117_112_",
+              "decoded": "$direct.lookup",
+              "sites": 2
+            },
+            {
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_110_99_95_99_116_111_114_95_111_119_110_101_100_",
+              "decoded": "$direct.nc_ctor_owned",
+              "sites": 2
+            }
+          ],
+          "staticTake9Sites": 4,
+          "staticSinkSites": 48,
+          "runtimeBorrowReadSites": 0
+        }
+      ],
+      "timedRoot": "p113d_FID_36_100_105_114_101_99_116_46_112_49_51_55_113_95_114_101_112_101_97_116_",
+      "directReachableFunctions": 18,
+      "borrowedReaderDirectPaths": [],
+      "pathCaveat": "Named direct paths only: existence does not establish branch frequency. No inference from missing indirect edges."
+    },
+    {
+      "producer": "width16",
+      "name": "queries-fused",
+      "qbe": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase137/query-wide-emit01/queries-fused.ssa",
+        "bytes": 1705188,
+        "sha256": "ffb58acf88f691db0284d5a10e5a71047acfef85d00b14da4600b71100ef6022"
+      },
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase137/queries/queries-fused-v01.bend",
+        "bytes": 21944,
+        "sha256": "178af4805af76d9db993948577c58173a09dccc2215b4df27efd635166c5970d"
+      },
+      "sourceProducer": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase137/wide-source01/compiler.bend",
+        "bytes": 2695713,
+        "sha256": "863e28f8bba8a285332875ce99bf82a20d2ea3052c6f4b6aed3606b0d67485b5"
+      },
+      "privateFunctions": [
+        {
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_100_110_",
+          "decoded": "$direct.dn",
+          "qbeLine": 3406,
+          "lines": 76,
+          "bodySha256": "8bd7e73cb83e4c9615d33bced8b2ab86acc368eb8a430745604e7c92fca0fffb",
+          "calls": [
+            {
+              "symbol": "p111_rt_take",
+              "decoded": "p111_rt_take",
+              "sites": 1
+            },
+            {
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink",
+              "sites": 11
+            },
+            {
+              "symbol": "p125_rt_take2",
+              "decoded": "p125_rt_take2",
+              "sites": 1
+            },
+            {
+              "symbol": "p125_rt_take4",
+              "decoded": "p125_rt_take4",
+              "sites": 1
+            },
+            {
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail",
+              "sites": 1
+            }
+          ],
+          "staticTake9Sites": 1,
+          "staticSinkSites": 11,
+          "runtimeBorrowReadSites": 0
+        },
+        {
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_100_107_",
+          "decoded": "$direct.dk",
+          "qbeLine": 3483,
+          "lines": 76,
+          "bodySha256": "38060d174c72af1f83bea3e63bf09db1bbf90320c4e861876425234fbe81d715",
+          "calls": [
+            {
+              "symbol": "p111_rt_take",
+              "decoded": "p111_rt_take",
+              "sites": 1
+            },
+            {
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink",
+              "sites": 11
+            },
+            {
+              "symbol": "p125_rt_take2",
+              "decoded": "p125_rt_take2",
+              "sites": 1
+            },
+            {
+              "symbol": "p125_rt_take4",
+              "decoded": "p125_rt_take4",
+              "sites": 1
+            },
+            {
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail",
+              "sites": 1
+            }
+          ],
+          "staticTake9Sites": 1,
+          "staticSinkSites": 11,
+          "runtimeBorrowReadSites": 0
+        },
+        {
+          "symbol": "p113d_FID_36_112_49_50_56_98_111_114_114_111_119_46_111_119_110_101_100_46_112_49_51_55_113_95_114_101_99_111_114_100_95_113_117_101_114_121_",
+          "decoded": "$p128borrow.owned.p137q_record_query",
+          "qbeLine": 4319,
+          "lines": 75,
+          "bodySha256": "1b801f3c5982f8305cc79480011e6f74cc516e3d3cf10fe157c66b88380e5ab4",
+          "calls": [
+            {
+              "symbol": "p111_rt_take",
+              "decoded": "p111_rt_take",
+              "sites": 1
+            },
+            {
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink",
+              "sites": 10
+            },
+            {
+              "symbol": "p111_rt_keep",
+              "decoded": "p111_rt_keep",
+              "sites": 2
+            },
+            {
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_56_56_95_115_116_114_105_110_103_95_101_113_95_103_111_",
+              "decoded": "$direct.p88_string_eq_go",
+              "sites": 1
+            },
+            {
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail",
+              "sites": 1
+            }
+          ],
+          "staticTake9Sites": 1,
+          "staticSinkSites": 10,
+          "runtimeBorrowReadSites": 0
+        },
+        {
+          "symbol": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_112_49_51_55_113_95_114_101_99_111_114_100_95_113_117_101_114_121_",
+          "decoded": "$p118borrow.read.p137q_record_query",
+          "qbeLine": 4395,
+          "lines": 45,
+          "bodySha256": "7d2c4635f86e9f2c6851b405c7054d5a41ec7e0093652a6d71f2bc53cc319c31",
+          "calls": [
+            {
+              "symbol": "p118_rt_borrow_fields",
+              "decoded": "p118_rt_borrow_fields",
+              "sites": 1
+            },
+            {
+              "symbol": "p111_rt_special_ctor",
+              "decoded": "p111_rt_special_ctor",
+              "sites": 1
+            },
+            {
+              "symbol": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_112_56_56_95_115_116_114_105_110_103_95_101_113_95_103_111_",
+              "decoded": "$p118borrow.read.p88_string_eq_go",
+              "sites": 1
+            },
+            {
+              "symbol": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_112_57_56_95_101_113_95_102_105_110_105_115_104_",
+              "decoded": "$p118borrow.read.p98_eq_finish",
+              "sites": 1
+            },
+            {
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail",
+              "sites": 1
+            }
+          ],
+          "staticTake9Sites": 0,
+          "staticSinkSites": 0,
+          "runtimeBorrowReadSites": 1
+        },
+        {
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_49_51_55_113_95_114_101_99_111_114_100_95_113_117_101_114_121_",
+          "decoded": "$direct.p137q_record_query",
+          "qbeLine": 4441,
+          "lines": 17,
+          "bodySha256": "8e5c1935f840eeb40ba9d2bdb261ba0305fb241168657752fbbaa1121f93a5b4",
+          "calls": [
+            {
+              "symbol": "p118_rt_borrow_scalar_safe",
+              "decoded": "p118_rt_borrow_scalar_safe",
+              "sites": 1
+            },
+            {
+              "symbol": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_112_49_51_55_113_95_114_101_99_111_114_100_95_113_117_101_114_121_",
+              "decoded": "$p118borrow.read.p137q_record_query",
+              "sites": 1
+            },
+            {
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink",
+              "sites": 2
+            },
+            {
+              "symbol": "p113d_FID_36_112_49_50_56_98_111_114_114_111_119_46_111_119_110_101_100_46_112_49_51_55_113_95_114_101_99_111_114_100_95_113_117_101_114_121_",
+              "decoded": "$p128borrow.owned.p137q_record_query",
+              "sites": 1
+            }
+          ],
+          "staticTake9Sites": 0,
+          "staticSinkSites": 2,
+          "runtimeBorrowReadSites": 0
+        },
+        {
+          "symbol": "p113d_FID_36_112_49_50_56_98_111_114_114_111_119_46_111_119_110_101_100_46_112_49_51_55_113_95_110_97_109_101_95_101_113_",
+          "decoded": "$p128borrow.owned.p137q_name_eq",
+          "qbeLine": 4459,
+          "lines": 172,
+          "bodySha256": "51b00790d0348dfd637eb964b66856e5a511297ba6f8719633a3d11251aa1dd9",
+          "calls": [
+            {
+              "symbol": "p111_rt_take",
+              "decoded": "p111_rt_take",
+              "sites": 1
+            },
+            {
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink",
+              "sites": 17
+            },
+            {
+              "symbol": "p111_rt_keep",
+              "decoded": "p111_rt_keep",
+              "sites": 6
+            },
+            {
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_56_56_95_115_116_114_105_110_103_95_101_113_95_103_111_",
+              "decoded": "$direct.p88_string_eq_go",
+              "sites": 3
+            },
+            {
+              "symbol": "p125_rt_take2",
+              "decoded": "p125_rt_take2",
+              "sites": 1
+            },
+            {
+              "symbol": "p125_rt_take4",
+              "decoded": "p125_rt_take4",
+              "sites": 1
+            },
+            {
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail",
+              "sites": 1
+            }
+          ],
+          "staticTake9Sites": 1,
+          "staticSinkSites": 17,
+          "runtimeBorrowReadSites": 0
+        },
+        {
+          "symbol": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_112_49_51_55_113_95_110_97_109_101_95_101_113_",
+          "decoded": "$p118borrow.read.p137q_name_eq",
+          "qbeLine": 4632,
+          "lines": 289,
+          "bodySha256": "6b88df41a52bc98fce020384ee08add6474db7d22bb5c450c141ed24ea9b27c2",
+          "calls": [
+            {
+              "symbol": "p118_rt_borrow_fields",
+              "decoded": "p118_rt_borrow_fields",
+              "sites": 5
+            },
+            {
+              "symbol": "p111_rt_special_ctor",
+              "decoded": "p111_rt_special_ctor",
+              "sites": 5
+            },
+            {
+              "symbol": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_112_56_56_95_115_116_114_105_110_103_95_101_113_95_103_111_",
+              "decoded": "$p118borrow.read.p88_string_eq_go",
+              "sites": 1
+            },
+            {
+              "symbol": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_112_57_56_95_101_113_95_102_105_110_105_115_104_",
+              "decoded": "$p118borrow.read.p98_eq_finish",
+              "sites": 1
+            },
+            {
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail",
+              "sites": 3
+            }
+          ],
+          "staticTake9Sites": 0,
+          "staticSinkSites": 0,
+          "runtimeBorrowReadSites": 5
+        },
+        {
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_49_51_55_113_95_110_97_109_101_95_101_113_",
+          "decoded": "$direct.p137q_name_eq",
+          "qbeLine": 4922,
+          "lines": 17,
+          "bodySha256": "7d5264a1d7cba7011b476514dca7da346891667725739c458f90258399ad453d",
+          "calls": [
+            {
+              "symbol": "p118_rt_borrow_scalar_safe",
+              "decoded": "p118_rt_borrow_scalar_safe",
+              "sites": 1
+            },
+            {
+              "symbol": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_112_49_51_55_113_95_110_97_109_101_95_101_113_",
+              "decoded": "$p118borrow.read.p137q_name_eq",
+              "sites": 1
+            },
+            {
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink",
+              "sites": 2
+            },
+            {
+              "symbol": "p113d_FID_36_112_49_50_56_98_111_114_114_111_119_46_111_119_110_101_100_46_112_49_51_55_113_95_110_97_109_101_95_101_113_",
+              "decoded": "$p128borrow.owned.p137q_name_eq",
+              "sites": 1
+            }
+          ],
+          "staticTake9Sites": 0,
+          "staticSinkSites": 2,
+          "runtimeBorrowReadSites": 0
+        },
+        {
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_49_51_55_113_95_107_105_110_100_95_101_113_",
+          "decoded": "$direct.p137q_kind_eq",
+          "qbeLine": 5146,
+          "lines": 172,
+          "bodySha256": "c2e87aa36ad235fd5a452c89ec9416978fcb7e0e2da7d3f3a1695ddef69f4435",
+          "calls": [
+            {
+              "symbol": "p111_rt_take",
+              "decoded": "p111_rt_take",
+              "sites": 1
+            },
+            {
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink",
+              "sites": 17
+            },
+            {
+              "symbol": "p111_rt_keep",
+              "decoded": "p111_rt_keep",
+              "sites": 6
+            },
+            {
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_56_56_95_115_116_114_105_110_103_95_101_113_95_103_111_",
+              "decoded": "$direct.p88_string_eq_go",
+              "sites": 3
+            },
+            {
+              "symbol": "p125_rt_take2",
+              "decoded": "p125_rt_take2",
+              "sites": 1
+            },
+            {
+              "symbol": "p125_rt_take4",
+              "decoded": "p125_rt_take4",
+              "sites": 1
+            },
+            {
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail",
+              "sites": 1
+            }
+          ],
+          "staticTake9Sites": 1,
+          "staticSinkSites": 17,
+          "runtimeBorrowReadSites": 0
+        },
+        {
+          "symbol": "p113d_FID_36_112_49_50_56_98_111_114_114_111_119_46_111_119_110_101_100_46_112_49_51_55_113_95_107_101_121_95_101_113_",
+          "decoded": "$p128borrow.owned.p137q_key_eq",
+          "qbeLine": 5319,
+          "lines": 167,
+          "bodySha256": "1775e737d59eef64494696b384d60c9887b4713c593629b452b3cf38ff5417a6",
+          "calls": [
+            {
+              "symbol": "p111_rt_take",
+              "decoded": "p111_rt_take",
+              "sites": 1
+            },
+            {
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink",
+              "sites": 18
+            },
+            {
+              "symbol": "p111_rt_keep",
+              "decoded": "p111_rt_keep",
+              "sites": 6
+            },
+            {
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_56_56_95_115_116_114_105_110_103_95_101_113_95_103_111_",
+              "decoded": "$direct.p88_string_eq_go",
+              "sites": 3
+            },
+            {
+              "symbol": "p125_rt_take2",
+              "decoded": "p125_rt_take2",
+              "sites": 1
+            },
+            {
+              "symbol": "p125_rt_take4",
+              "decoded": "p125_rt_take4",
+              "sites": 1
+            },
+            {
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail",
+              "sites": 1
+            }
+          ],
+          "staticTake9Sites": 1,
+          "staticSinkSites": 18,
+          "runtimeBorrowReadSites": 0
+        },
+        {
+          "symbol": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_112_49_51_55_113_95_107_101_121_95_101_113_",
+          "decoded": "$p118borrow.read.p137q_key_eq",
+          "qbeLine": 5487,
+          "lines": 289,
+          "bodySha256": "9c84b58d20daa6b1a071e9b0dc454fb7ba51bd8870e7ecb8be45fb13b9eb1b21",
+          "calls": [
+            {
+              "symbol": "p118_rt_borrow_fields",
+              "decoded": "p118_rt_borrow_fields",
+              "sites": 5
+            },
+            {
+              "symbol": "p111_rt_special_ctor",
+              "decoded": "p111_rt_special_ctor",
+              "sites": 5
+            },
+            {
+              "symbol": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_112_56_56_95_115_116_114_105_110_103_95_101_113_95_103_111_",
+              "decoded": "$p118borrow.read.p88_string_eq_go",
+              "sites": 1
+            },
+            {
+              "symbol": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_112_57_56_95_101_113_95_102_105_110_105_115_104_",
+              "decoded": "$p118borrow.read.p98_eq_finish",
+              "sites": 1
+            },
+            {
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail",
+              "sites": 3
+            }
+          ],
+          "staticTake9Sites": 0,
+          "staticSinkSites": 0,
+          "runtimeBorrowReadSites": 5
+        },
+        {
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_49_51_55_113_95_107_101_121_95_101_113_",
+          "decoded": "$direct.p137q_key_eq",
+          "qbeLine": 5777,
+          "lines": 17,
+          "bodySha256": "226d2bf849150d1e4d3c3a055e3c206a783e736763655baea150ce08797347be",
+          "calls": [
+            {
+              "symbol": "p118_rt_borrow_scalar_safe",
+              "decoded": "p118_rt_borrow_scalar_safe",
+              "sites": 1
+            },
+            {
+              "symbol": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_112_49_51_55_113_95_107_101_121_95_101_113_",
+              "decoded": "$p118borrow.read.p137q_key_eq",
+              "sites": 1
+            },
+            {
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink",
+              "sites": 2
+            },
+            {
+              "symbol": "p113d_FID_36_112_49_50_56_98_111_114_114_111_119_46_111_119_110_101_100_46_112_49_51_55_113_95_107_101_121_95_101_113_",
+              "decoded": "$p128borrow.owned.p137q_key_eq",
+              "sites": 1
+            }
+          ],
+          "staticTake9Sites": 0,
+          "staticSinkSites": 2,
+          "runtimeBorrowReadSites": 0
+        },
+        {
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_102_95_102_105_110_100_95_110_101_120_116_",
+          "decoded": "$direct.f_find_next",
+          "qbeLine": 5951,
+          "lines": 8,
+          "bodySha256": "8369d65b598942e7531082dd7dfd77cb6c2879d1e46ebbd9ab391ab8b1ec4ac9",
+          "calls": [
+            {
+              "symbol": "p113d_FID_36_112_49_50_54_115_99_99_46_52_57_",
+              "decoded": "$p126scc.49",
+              "sites": 1
+            }
+          ],
+          "staticTake9Sites": 0,
+          "staticSinkSites": 0,
+          "runtimeBorrowReadSites": 0
+        },
+        {
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_102_95_102_105_110_100_",
+          "decoded": "$direct.f_find",
+          "qbeLine": 5960,
+          "lines": 8,
+          "bodySha256": "65395cda0808bd3feec043127ae89ef7273047b8101e266ed2f4fccdd8e5029f",
+          "calls": [
+            {
+              "symbol": "p113d_FID_36_112_49_50_54_115_99_99_46_52_57_",
+              "decoded": "$p126scc.49",
+              "sites": 1
+            }
+          ],
+          "staticTake9Sites": 0,
+          "staticSinkSites": 0,
+          "runtimeBorrowReadSites": 0
+        },
+        {
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_108_111_111_107_117_112_",
+          "decoded": "$direct.lookup",
+          "qbeLine": 7309,
+          "lines": 664,
+          "bodySha256": "d5d71321a1ce93917c5258f6b57252ef15d3442c37a784a39914775e461691ea",
+          "calls": [
+            {
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink",
+              "sites": 57
+            },
+            {
+              "symbol": "p125_rt_take2",
+              "decoded": "p125_rt_take2",
+              "sites": 5
+            },
+            {
+              "symbol": "p111_rt_keep",
+              "decoded": "p111_rt_keep",
+              "sites": 16
+            },
+            {
+              "symbol": "p111_rt_take",
+              "decoded": "p111_rt_take",
+              "sites": 3
+            },
+            {
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_56_56_95_115_116_114_105_110_103_95_101_113_95_103_111_",
+              "decoded": "$direct.p88_string_eq_go",
+              "sites": 6
+            },
+            {
+              "symbol": "p125_rt_take4",
+              "decoded": "p125_rt_take4",
+              "sites": 3
+            },
+            {
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail",
+              "sites": 7
+            },
+            {
+              "symbol": "p111_rt_ctor",
+              "decoded": "p111_rt_ctor",
+              "sites": 4
+            },
+            {
+              "symbol": "p125_rt_ctor2",
+              "decoded": "p125_rt_ctor2",
+              "sites": 2
+            },
+            {
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_105_110_100_101_120_95_104_97_115_104_",
+              "decoded": "$direct.index_hash",
+              "sites": 1
+            },
+            {
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_105_110_100_101_120_95_102_105_110_100_",
+              "decoded": "$direct.index_find",
+              "sites": 1
+            }
+          ],
+          "staticTake9Sites": 3,
+          "staticSinkSites": 57,
+          "runtimeBorrowReadSites": 0
+        },
+        {
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_110_99_95_99_116_111_114_95_111_119_110_101_100_",
+          "decoded": "$direct.nc_ctor_owned",
+          "qbeLine": 8697,
+          "lines": 698,
+          "bodySha256": "246155e2cbe878401e85fd6b7079d8484c89a44b385151398fd2f2bfda743a8f",
+          "calls": [
+            {
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink",
+              "sites": 66
+            },
+            {
+              "symbol": "p125_rt_take2",
+              "decoded": "p125_rt_take2",
+              "sites": 5
+            },
+            {
+              "symbol": "p111_rt_keep",
+              "decoded": "p111_rt_keep",
+              "sites": 15
+            },
+            {
+              "symbol": "p111_rt_take",
+              "decoded": "p111_rt_take",
+              "sites": 4
+            },
+            {
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_56_56_95_115_116_114_105_110_103_95_101_113_95_103_111_",
+              "decoded": "$direct.p88_string_eq_go",
+              "sites": 6
+            },
+            {
+              "symbol": "p125_rt_take4",
+              "decoded": "p125_rt_take4",
+              "sites": 4
+            },
+            {
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail",
+              "sites": 7
+            },
+            {
+              "symbol": "p111_rt_ctor",
+              "decoded": "p111_rt_ctor",
+              "sites": 4
+            },
+            {
+              "symbol": "p125_rt_ctor2",
+              "decoded": "p125_rt_ctor2",
+              "sites": 2
+            },
+            {
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_108_111_111_107_117_112_",
+              "decoded": "$direct.lookup",
+              "sites": 1
+            }
+          ],
+          "staticTake9Sites": 4,
+          "staticSinkSites": 66,
+          "runtimeBorrowReadSites": 0
+        },
+        {
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_49_51_55_113_95_113_117_101_114_105_101_115_",
+          "decoded": "$direct.p137q_queries",
+          "qbeLine": 9396,
+          "lines": 521,
+          "bodySha256": "9ec8629d1e2b5aebae229f2d2b9256304c106de696f2f82b68772163cb6fd363",
+          "calls": [
+            {
+              "symbol": "p111_rt_keep",
+              "decoded": "p111_rt_keep",
+              "sites": 6
+            },
+            {
+              "symbol": "p113d_FID_36_112_49_50_54_115_99_99_46_52_57_",
+              "decoded": "$p126scc.49",
+              "sites": 2
+            },
+            {
+              "symbol": "p111_rt_take",
+              "decoded": "p111_rt_take",
+              "sites": 4
+            },
+            {
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink",
+              "sites": 44
+            },
+            {
+              "symbol": "p125_rt_take2",
+              "decoded": "p125_rt_take2",
+              "sites": 4
+            },
+            {
+              "symbol": "p125_rt_take4",
+              "decoded": "p125_rt_take4",
+              "sites": 4
+            },
+            {
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail",
+              "sites": 6
+            },
+            {
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_108_111_111_107_117_112_",
+              "decoded": "$direct.lookup",
+              "sites": 2
+            },
+            {
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_110_99_95_99_116_111_114_95_111_119_110_101_100_",
+              "decoded": "$direct.nc_ctor_owned",
+              "sites": 2
+            }
+          ],
+          "staticTake9Sites": 4,
+          "staticSinkSites": 44,
+          "runtimeBorrowReadSites": 0
+        },
+        {
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_49_51_55_113_95_111_110_99_101_",
+          "decoded": "$direct.p137q_once",
+          "qbeLine": 9918,
+          "lines": 530,
+          "bodySha256": "7cd76dbf3f34fac2d6ac1c3cfeb5d6e07439d43472dac91f45723ab9faa9eecd",
+          "calls": [
+            {
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink",
+              "sites": 45
+            },
+            {
+              "symbol": "p111_rt_keep",
+              "decoded": "p111_rt_keep",
+              "sites": 6
+            },
+            {
+              "symbol": "p113d_FID_36_112_49_50_54_115_99_99_46_52_57_",
+              "decoded": "$p126scc.49",
+              "sites": 2
+            },
+            {
+              "symbol": "p111_rt_take",
+              "decoded": "p111_rt_take",
+              "sites": 4
+            },
+            {
+              "symbol": "p125_rt_take2",
+              "decoded": "p125_rt_take2",
+              "sites": 4
+            },
+            {
+              "symbol": "p125_rt_take4",
+              "decoded": "p125_rt_take4",
+              "sites": 4
+            },
+            {
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail",
+              "sites": 6
+            },
+            {
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_108_111_111_107_117_112_",
+              "decoded": "$direct.lookup",
+              "sites": 2
+            },
+            {
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_110_99_95_99_116_111_114_95_111_119_110_101_100_",
+              "decoded": "$direct.nc_ctor_owned",
+              "sites": 2
+            }
+          ],
+          "staticTake9Sites": 4,
+          "staticSinkSites": 45,
+          "runtimeBorrowReadSites": 0
+        },
+        {
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_49_51_55_113_95_114_101_112_101_97_116_",
+          "decoded": "$direct.p137q_repeat",
+          "qbeLine": 10449,
+          "lines": 608,
+          "bodySha256": "878883e5ef891030fe50149e3c5cd9e10bb1510096bf8d7081996c3f68fafb2a",
+          "calls": [
+            {
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink",
+              "sites": 48
+            },
+            {
+              "symbol": "p111_rt_keep",
+              "decoded": "p111_rt_keep",
+              "sites": 9
+            },
+            {
+              "symbol": "p113d_FID_36_112_49_50_54_115_99_99_46_52_57_",
+              "decoded": "$p126scc.49",
+              "sites": 2
+            },
+            {
+              "symbol": "p111_rt_take",
+              "decoded": "p111_rt_take",
+              "sites": 4
+            },
+            {
+              "symbol": "p125_rt_take2",
+              "decoded": "p125_rt_take2",
+              "sites": 4
+            },
+            {
+              "symbol": "p125_rt_take4",
+              "decoded": "p125_rt_take4",
+              "sites": 4
+            },
+            {
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail",
+              "sites": 7
+            },
+            {
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_108_111_111_107_117_112_",
+              "decoded": "$direct.lookup",
+              "sites": 2
+            },
+            {
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_110_99_95_99_116_111_114_95_111_119_110_101_100_",
+              "decoded": "$direct.nc_ctor_owned",
+              "sites": 2
+            }
+          ],
+          "staticTake9Sites": 4,
+          "staticSinkSites": 48,
+          "runtimeBorrowReadSites": 0
+        }
+      ],
+      "timedRoot": "p113d_FID_36_100_105_114_101_99_116_46_112_49_51_55_113_95_114_101_112_101_97_116_",
+      "directReachableFunctions": 17,
+      "borrowedReaderDirectPaths": [
+        {
+          "reader": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_112_49_51_55_113_95_107_101_121_95_101_113_",
+          "decoded": "$p118borrow.read.p137q_key_eq",
+          "edges": [
+            {
+              "caller": "p113d_FID_36_100_105_114_101_99_116_46_112_49_51_55_113_95_114_101_112_101_97_116_",
+              "callerDecoded": "$direct.p137q_repeat",
+              "line": 10527,
+              "target": "p113d_FID_36_112_49_50_54_115_99_99_46_52_57_",
+              "targetDecoded": "$p126scc.49"
+            },
+            {
+              "caller": "p113d_FID_36_112_49_50_54_115_99_99_46_52_57_",
+              "callerDecoded": "$p126scc.49",
+              "line": 5931,
+              "target": "p113d_FID_36_100_105_114_101_99_116_46_112_49_51_55_113_95_107_101_121_95_101_113_",
+              "targetDecoded": "$direct.p137q_key_eq"
+            },
+            {
+              "caller": "p113d_FID_36_100_105_114_101_99_116_46_112_49_51_55_113_95_107_101_121_95_101_113_",
+              "callerDecoded": "$direct.p137q_key_eq",
+              "line": 5786,
+              "target": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_112_49_51_55_113_95_107_101_121_95_101_113_",
+              "targetDecoded": "$p118borrow.read.p137q_key_eq"
+            }
+          ]
+        }
+      ],
+      "pathCaveat": "Named direct paths only: existence does not establish branch frequency. No inference from missing indirect edges."
+    },
+    {
+      "producer": "width16",
+      "name": "record-original",
+      "qbe": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase137/query-wide-emit01/record-original.ssa",
+        "bytes": 1536299,
+        "sha256": "94854b43b1e4f424bff09945a31645d0b8060fb263e62ca5838cdfaeb1185d6c"
+      },
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase137/queries/record-original-v01.bend",
+        "bytes": 20964,
+        "sha256": "569d06f5b9ca8db1634b73634d410c82bf9d6ecffac2a82eeac633e05d4d34f1"
+      },
+      "sourceProducer": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase137/wide-source01/compiler.bend",
+        "bytes": 2695713,
+        "sha256": "863e28f8bba8a285332875ce99bf82a20d2ea3052c6f4b6aed3606b0d67485b5"
+      },
+      "privateFunctions": [
+        {
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_100_110_",
+          "decoded": "$direct.dn",
+          "qbeLine": 3450,
+          "lines": 76,
+          "bodySha256": "8bd7e73cb83e4c9615d33bced8b2ab86acc368eb8a430745604e7c92fca0fffb",
+          "calls": [
+            {
+              "symbol": "p111_rt_take",
+              "decoded": "p111_rt_take",
+              "sites": 1
+            },
+            {
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink",
+              "sites": 11
+            },
+            {
+              "symbol": "p125_rt_take2",
+              "decoded": "p125_rt_take2",
+              "sites": 1
+            },
+            {
+              "symbol": "p125_rt_take4",
+              "decoded": "p125_rt_take4",
+              "sites": 1
+            },
+            {
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail",
+              "sites": 1
+            }
+          ],
+          "staticTake9Sites": 1,
+          "staticSinkSites": 11,
+          "runtimeBorrowReadSites": 0
+        },
+        {
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_100_107_",
+          "decoded": "$direct.dk",
+          "qbeLine": 3527,
+          "lines": 76,
+          "bodySha256": "22c8db8e11461c3db7c9d4668cc817d2001a04cd6c9c01e018ae3ff7e8a95bd7",
+          "calls": [
+            {
+              "symbol": "p111_rt_take",
+              "decoded": "p111_rt_take",
+              "sites": 1
+            },
+            {
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink",
+              "sites": 11
+            },
+            {
+              "symbol": "p125_rt_take2",
+              "decoded": "p125_rt_take2",
+              "sites": 1
+            },
+            {
+              "symbol": "p125_rt_take4",
+              "decoded": "p125_rt_take4",
+              "sites": 1
+            },
+            {
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail",
+              "sites": 1
+            }
+          ],
+          "staticTake9Sites": 1,
+          "staticSinkSites": 11,
+          "runtimeBorrowReadSites": 0
+        },
+        {
+          "symbol": "p113d_FID_36_112_49_50_56_98_111_114_114_111_119_46_111_119_110_101_100_46_112_49_51_55_113_95_114_101_99_111_114_100_95_113_117_101_114_121_",
+          "decoded": "$p128borrow.owned.p137q_record_query",
+          "qbeLine": 4363,
+          "lines": 83,
+          "bodySha256": "9da9575266dba5f42eabe513ff50bf80e55c8c60631f8b2b99b6d6fcfcfc33fd",
+          "calls": [
+            {
+              "symbol": "p111_rt_take",
+              "decoded": "p111_rt_take",
+              "sites": 1
+            },
+            {
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink",
+              "sites": 10
+            },
+            {
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail",
+              "sites": 1
+            },
+            {
+              "symbol": "p111_rt_keep",
+              "decoded": "p111_rt_keep",
+              "sites": 2
+            },
+            {
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_56_56_95_115_116_114_105_110_103_95_101_113_95_103_111_",
+              "decoded": "$direct.p88_string_eq_go",
+              "sites": 1
+            }
+          ],
+          "staticTake9Sites": 1,
+          "staticSinkSites": 10,
+          "runtimeBorrowReadSites": 0
+        },
+        {
+          "symbol": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_112_49_51_55_113_95_114_101_99_111_114_100_95_113_117_101_114_121_",
+          "decoded": "$p118borrow.read.p137q_record_query",
+          "qbeLine": 4447,
+          "lines": 45,
+          "bodySha256": "7d2c4635f86e9f2c6851b405c7054d5a41ec7e0093652a6d71f2bc53cc319c31",
+          "calls": [
+            {
+              "symbol": "p118_rt_borrow_fields",
+              "decoded": "p118_rt_borrow_fields",
+              "sites": 1
+            },
+            {
+              "symbol": "p111_rt_special_ctor",
+              "decoded": "p111_rt_special_ctor",
+              "sites": 1
+            },
+            {
+              "symbol": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_112_56_56_95_115_116_114_105_110_103_95_101_113_95_103_111_",
+              "decoded": "$p118borrow.read.p88_string_eq_go",
+              "sites": 1
+            },
+            {
+              "symbol": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_112_57_56_95_101_113_95_102_105_110_105_115_104_",
+              "decoded": "$p118borrow.read.p98_eq_finish",
+              "sites": 1
+            },
+            {
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail",
+              "sites": 1
+            }
+          ],
+          "staticTake9Sites": 0,
+          "staticSinkSites": 0,
+          "runtimeBorrowReadSites": 1
+        },
+        {
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_49_51_55_113_95_114_101_99_111_114_100_95_113_117_101_114_121_",
+          "decoded": "$direct.p137q_record_query",
+          "qbeLine": 4493,
+          "lines": 17,
+          "bodySha256": "8e5c1935f840eeb40ba9d2bdb261ba0305fb241168657752fbbaa1121f93a5b4",
+          "calls": [
+            {
+              "symbol": "p118_rt_borrow_scalar_safe",
+              "decoded": "p118_rt_borrow_scalar_safe",
+              "sites": 1
+            },
+            {
+              "symbol": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_112_49_51_55_113_95_114_101_99_111_114_100_95_113_117_101_114_121_",
+              "decoded": "$p118borrow.read.p137q_record_query",
+              "sites": 1
+            },
+            {
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink",
+              "sites": 2
+            },
+            {
+              "symbol": "p113d_FID_36_112_49_50_56_98_111_114_114_111_119_46_111_119_110_101_100_46_112_49_51_55_113_95_114_101_99_111_114_100_95_113_117_101_114_121_",
+              "decoded": "$p128borrow.owned.p137q_record_query",
+              "sites": 1
+            }
+          ],
+          "staticTake9Sites": 0,
+          "staticSinkSites": 2,
+          "runtimeBorrowReadSites": 0
+        },
+        {
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_102_95_102_105_110_100_95_110_101_120_116_",
+          "decoded": "$direct.f_find_next",
+          "qbeLine": 4952,
+          "lines": 8,
+          "bodySha256": "bc1177e1249a2890fbb5abb070434f699a0544633363fcb1b00353972a93ee5c",
+          "calls": [
+            {
+              "symbol": "p113d_FID_36_112_49_50_54_115_99_99_46_52_55_",
+              "decoded": "$p126scc.47",
+              "sites": 1
+            }
+          ],
+          "staticTake9Sites": 0,
+          "staticSinkSites": 0,
+          "runtimeBorrowReadSites": 0
+        },
+        {
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_102_95_102_105_110_100_",
+          "decoded": "$direct.f_find",
+          "qbeLine": 4961,
+          "lines": 8,
+          "bodySha256": "a8e6cb638adf8dbcbc7f77ea36e1c9b303d1d1b748b68d40e2fa8f4fe72d672a",
+          "calls": [
+            {
+              "symbol": "p113d_FID_36_112_49_50_54_115_99_99_46_52_55_",
+              "decoded": "$p126scc.47",
+              "sites": 1
+            }
+          ],
+          "staticTake9Sites": 0,
+          "staticSinkSites": 0,
+          "runtimeBorrowReadSites": 0
+        },
+        {
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_49_51_55_113_95_111_110_99_101_",
+          "decoded": "$direct.p137q_once",
+          "qbeLine": 5465,
+          "lines": 263,
+          "bodySha256": "63c3010bcb961ebc2e1409783126f59b9665a837d3f10dadc8d2424cd1585b12",
+          "calls": [
+            {
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink",
+              "sites": 21
+            },
+            {
+              "symbol": "p111_rt_keep",
+              "decoded": "p111_rt_keep",
+              "sites": 5
+            },
+            {
+              "symbol": "p111_rt_take",
+              "decoded": "p111_rt_take",
+              "sites": 2
+            },
+            {
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail",
+              "sites": 4
+            },
+            {
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_56_56_95_115_116_114_105_110_103_95_101_113_95_103_111_",
+              "decoded": "$direct.p88_string_eq_go",
+              "sites": 2
+            }
+          ],
+          "staticTake9Sites": 2,
+          "staticSinkSites": 21,
+          "runtimeBorrowReadSites": 0
+        },
+        {
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_108_111_111_107_117_112_",
+          "decoded": "$direct.lookup",
+          "qbeLine": 6574,
+          "lines": 526,
+          "bodySha256": "f6f2ad9960d31512e3ab7536b1ca78b8fcf01c46af9d66607dfbe59a7563b6f6",
+          "calls": [
+            {
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink",
+              "sites": 49
+            },
+            {
+              "symbol": "p125_rt_take2",
+              "decoded": "p125_rt_take2",
+              "sites": 5
+            },
+            {
+              "symbol": "p111_rt_keep",
+              "decoded": "p111_rt_keep",
+              "sites": 8
+            },
+            {
+              "symbol": "p111_rt_take",
+              "decoded": "p111_rt_take",
+              "sites": 3
+            },
+            {
+              "symbol": "p125_rt_take4",
+              "decoded": "p125_rt_take4",
+              "sites": 3
+            },
+            {
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail",
+              "sites": 7
+            },
+            {
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_56_56_95_115_116_114_105_110_103_95_101_113_95_103_111_",
+              "decoded": "$direct.p88_string_eq_go",
+              "sites": 2
+            },
+            {
+              "symbol": "p111_rt_ctor",
+              "decoded": "p111_rt_ctor",
+              "sites": 4
+            },
+            {
+              "symbol": "p125_rt_ctor2",
+              "decoded": "p125_rt_ctor2",
+              "sites": 2
+            },
+            {
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_105_110_100_101_120_95_104_97_115_104_",
+              "decoded": "$direct.index_hash",
+              "sites": 1
+            },
+            {
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_105_110_100_101_120_95_102_105_110_100_",
+              "decoded": "$direct.index_find",
+              "sites": 1
+            }
+          ],
+          "staticTake9Sites": 3,
+          "staticSinkSites": 49,
+          "runtimeBorrowReadSites": 0
+        },
+        {
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_49_51_55_113_95_114_101_112_101_97_116_",
+          "decoded": "$direct.p137q_repeat",
+          "qbeLine": 7824,
+          "lines": 341,
+          "bodySha256": "efbfff2966dde1f350718cfba3a6a21dffb2397cee9fe891e1237201d5b5d31b",
+          "calls": [
+            {
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink",
+              "sites": 24
+            },
+            {
+              "symbol": "p111_rt_keep",
+              "decoded": "p111_rt_keep",
+              "sites": 8
+            },
+            {
+              "symbol": "p111_rt_take",
+              "decoded": "p111_rt_take",
+              "sites": 2
+            },
+            {
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail",
+              "sites": 5
+            },
+            {
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_56_56_95_115_116_114_105_110_103_95_101_113_95_103_111_",
+              "decoded": "$direct.p88_string_eq_go",
+              "sites": 2
+            }
+          ],
+          "staticTake9Sites": 2,
+          "staticSinkSites": 24,
+          "runtimeBorrowReadSites": 0
+        },
+        {
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_110_99_95_99_116_111_114_95_111_119_110_101_100_",
+          "decoded": "$direct.nc_ctor_owned",
+          "qbeLine": 8166,
+          "lines": 560,
+          "bodySha256": "58e76691e637b2d6ace3bc3794a4f8d18cd31156ae949478edf93b969604f570",
+          "calls": [
+            {
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink",
+              "sites": 58
+            },
+            {
+              "symbol": "p125_rt_take2",
+              "decoded": "p125_rt_take2",
+              "sites": 5
+            },
+            {
+              "symbol": "p111_rt_keep",
+              "decoded": "p111_rt_keep",
+              "sites": 7
+            },
+            {
+              "symbol": "p111_rt_take",
+              "decoded": "p111_rt_take",
+              "sites": 4
+            },
+            {
+              "symbol": "p125_rt_take4",
+              "decoded": "p125_rt_take4",
+              "sites": 4
+            },
+            {
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail",
+              "sites": 7
+            },
+            {
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_56_56_95_115_116_114_105_110_103_95_101_113_95_103_111_",
+              "decoded": "$direct.p88_string_eq_go",
+              "sites": 2
+            },
+            {
+              "symbol": "p111_rt_ctor",
+              "decoded": "p111_rt_ctor",
+              "sites": 4
+            },
+            {
+              "symbol": "p125_rt_ctor2",
+              "decoded": "p125_rt_ctor2",
+              "sites": 2
+            },
+            {
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_108_111_111_107_117_112_",
+              "decoded": "$direct.lookup",
+              "sites": 1
+            }
+          ],
+          "staticTake9Sites": 4,
+          "staticSinkSites": 58,
+          "runtimeBorrowReadSites": 0
+        }
+      ],
+      "timedRoot": "p113d_FID_36_100_105_114_101_99_116_46_112_49_51_55_113_95_114_101_112_101_97_116_",
+      "directReachableFunctions": 4,
+      "borrowedReaderDirectPaths": [],
+      "pathCaveat": "Named direct paths only: existence does not establish branch frequency. No inference from missing indirect edges."
+    },
+    {
+      "producer": "width16",
+      "name": "record-fused",
+      "qbe": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase137/query-wide-emit01/record-fused.ssa",
+        "bytes": 1616175,
+        "sha256": "7282fb02cb637fe8bef12b3ad7fa20d1a705acb712f48ef811023cf062931873"
+      },
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase137/queries/record-fused-v01.bend",
+        "bytes": 22024,
+        "sha256": "caa5a2bd56f7b7deb9aa0d59102fc87e46a9adf029d49d7e226b363ed4ee79ad"
+      },
+      "sourceProducer": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase137/wide-source01/compiler.bend",
+        "bytes": 2695713,
+        "sha256": "863e28f8bba8a285332875ce99bf82a20d2ea3052c6f4b6aed3606b0d67485b5"
+      },
+      "privateFunctions": [
+        {
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_100_110_",
+          "decoded": "$direct.dn",
+          "qbeLine": 3406,
+          "lines": 76,
+          "bodySha256": "8bd7e73cb83e4c9615d33bced8b2ab86acc368eb8a430745604e7c92fca0fffb",
+          "calls": [
+            {
+              "symbol": "p111_rt_take",
+              "decoded": "p111_rt_take",
+              "sites": 1
+            },
+            {
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink",
+              "sites": 11
+            },
+            {
+              "symbol": "p125_rt_take2",
+              "decoded": "p125_rt_take2",
+              "sites": 1
+            },
+            {
+              "symbol": "p125_rt_take4",
+              "decoded": "p125_rt_take4",
+              "sites": 1
+            },
+            {
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail",
+              "sites": 1
+            }
+          ],
+          "staticTake9Sites": 1,
+          "staticSinkSites": 11,
+          "runtimeBorrowReadSites": 0
+        },
+        {
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_100_107_",
+          "decoded": "$direct.dk",
+          "qbeLine": 3483,
+          "lines": 76,
+          "bodySha256": "38060d174c72af1f83bea3e63bf09db1bbf90320c4e861876425234fbe81d715",
+          "calls": [
+            {
+              "symbol": "p111_rt_take",
+              "decoded": "p111_rt_take",
+              "sites": 1
+            },
+            {
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink",
+              "sites": 11
+            },
+            {
+              "symbol": "p125_rt_take2",
+              "decoded": "p125_rt_take2",
+              "sites": 1
+            },
+            {
+              "symbol": "p125_rt_take4",
+              "decoded": "p125_rt_take4",
+              "sites": 1
+            },
+            {
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail",
+              "sites": 1
+            }
+          ],
+          "staticTake9Sites": 1,
+          "staticSinkSites": 11,
+          "runtimeBorrowReadSites": 0
+        },
+        {
+          "symbol": "p113d_FID_36_112_49_50_56_98_111_114_114_111_119_46_111_119_110_101_100_46_112_49_51_55_113_95_114_101_99_111_114_100_95_113_117_101_114_121_",
+          "decoded": "$p128borrow.owned.p137q_record_query",
+          "qbeLine": 4319,
+          "lines": 75,
+          "bodySha256": "1b801f3c5982f8305cc79480011e6f74cc516e3d3cf10fe157c66b88380e5ab4",
+          "calls": [
+            {
+              "symbol": "p111_rt_take",
+              "decoded": "p111_rt_take",
+              "sites": 1
+            },
+            {
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink",
+              "sites": 10
+            },
+            {
+              "symbol": "p111_rt_keep",
+              "decoded": "p111_rt_keep",
+              "sites": 2
+            },
+            {
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_56_56_95_115_116_114_105_110_103_95_101_113_95_103_111_",
+              "decoded": "$direct.p88_string_eq_go",
+              "sites": 1
+            },
+            {
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail",
+              "sites": 1
+            }
+          ],
+          "staticTake9Sites": 1,
+          "staticSinkSites": 10,
+          "runtimeBorrowReadSites": 0
+        },
+        {
+          "symbol": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_112_49_51_55_113_95_114_101_99_111_114_100_95_113_117_101_114_121_",
+          "decoded": "$p118borrow.read.p137q_record_query",
+          "qbeLine": 4395,
+          "lines": 45,
+          "bodySha256": "7d2c4635f86e9f2c6851b405c7054d5a41ec7e0093652a6d71f2bc53cc319c31",
+          "calls": [
+            {
+              "symbol": "p118_rt_borrow_fields",
+              "decoded": "p118_rt_borrow_fields",
+              "sites": 1
+            },
+            {
+              "symbol": "p111_rt_special_ctor",
+              "decoded": "p111_rt_special_ctor",
+              "sites": 1
+            },
+            {
+              "symbol": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_112_56_56_95_115_116_114_105_110_103_95_101_113_95_103_111_",
+              "decoded": "$p118borrow.read.p88_string_eq_go",
+              "sites": 1
+            },
+            {
+              "symbol": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_112_57_56_95_101_113_95_102_105_110_105_115_104_",
+              "decoded": "$p118borrow.read.p98_eq_finish",
+              "sites": 1
+            },
+            {
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail",
+              "sites": 1
+            }
+          ],
+          "staticTake9Sites": 0,
+          "staticSinkSites": 0,
+          "runtimeBorrowReadSites": 1
+        },
+        {
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_49_51_55_113_95_114_101_99_111_114_100_95_113_117_101_114_121_",
+          "decoded": "$direct.p137q_record_query",
+          "qbeLine": 4441,
+          "lines": 17,
+          "bodySha256": "8e5c1935f840eeb40ba9d2bdb261ba0305fb241168657752fbbaa1121f93a5b4",
+          "calls": [
+            {
+              "symbol": "p118_rt_borrow_scalar_safe",
+              "decoded": "p118_rt_borrow_scalar_safe",
+              "sites": 1
+            },
+            {
+              "symbol": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_112_49_51_55_113_95_114_101_99_111_114_100_95_113_117_101_114_121_",
+              "decoded": "$p118borrow.read.p137q_record_query",
+              "sites": 1
+            },
+            {
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink",
+              "sites": 2
+            },
+            {
+              "symbol": "p113d_FID_36_112_49_50_56_98_111_114_114_111_119_46_111_119_110_101_100_46_112_49_51_55_113_95_114_101_99_111_114_100_95_113_117_101_114_121_",
+              "decoded": "$p128borrow.owned.p137q_record_query",
+              "sites": 1
+            }
+          ],
+          "staticTake9Sites": 0,
+          "staticSinkSites": 2,
+          "runtimeBorrowReadSites": 0
+        },
+        {
+          "symbol": "p113d_FID_36_112_49_50_56_98_111_114_114_111_119_46_111_119_110_101_100_46_112_49_51_55_113_95_110_97_109_101_95_101_113_",
+          "decoded": "$p128borrow.owned.p137q_name_eq",
+          "qbeLine": 4459,
+          "lines": 172,
+          "bodySha256": "51b00790d0348dfd637eb964b66856e5a511297ba6f8719633a3d11251aa1dd9",
+          "calls": [
+            {
+              "symbol": "p111_rt_take",
+              "decoded": "p111_rt_take",
+              "sites": 1
+            },
+            {
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink",
+              "sites": 17
+            },
+            {
+              "symbol": "p111_rt_keep",
+              "decoded": "p111_rt_keep",
+              "sites": 6
+            },
+            {
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_56_56_95_115_116_114_105_110_103_95_101_113_95_103_111_",
+              "decoded": "$direct.p88_string_eq_go",
+              "sites": 3
+            },
+            {
+              "symbol": "p125_rt_take2",
+              "decoded": "p125_rt_take2",
+              "sites": 1
+            },
+            {
+              "symbol": "p125_rt_take4",
+              "decoded": "p125_rt_take4",
+              "sites": 1
+            },
+            {
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail",
+              "sites": 1
+            }
+          ],
+          "staticTake9Sites": 1,
+          "staticSinkSites": 17,
+          "runtimeBorrowReadSites": 0
+        },
+        {
+          "symbol": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_112_49_51_55_113_95_110_97_109_101_95_101_113_",
+          "decoded": "$p118borrow.read.p137q_name_eq",
+          "qbeLine": 4632,
+          "lines": 289,
+          "bodySha256": "6b88df41a52bc98fce020384ee08add6474db7d22bb5c450c141ed24ea9b27c2",
+          "calls": [
+            {
+              "symbol": "p118_rt_borrow_fields",
+              "decoded": "p118_rt_borrow_fields",
+              "sites": 5
+            },
+            {
+              "symbol": "p111_rt_special_ctor",
+              "decoded": "p111_rt_special_ctor",
+              "sites": 5
+            },
+            {
+              "symbol": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_112_56_56_95_115_116_114_105_110_103_95_101_113_95_103_111_",
+              "decoded": "$p118borrow.read.p88_string_eq_go",
+              "sites": 1
+            },
+            {
+              "symbol": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_112_57_56_95_101_113_95_102_105_110_105_115_104_",
+              "decoded": "$p118borrow.read.p98_eq_finish",
+              "sites": 1
+            },
+            {
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail",
+              "sites": 3
+            }
+          ],
+          "staticTake9Sites": 0,
+          "staticSinkSites": 0,
+          "runtimeBorrowReadSites": 5
+        },
+        {
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_49_51_55_113_95_110_97_109_101_95_101_113_",
+          "decoded": "$direct.p137q_name_eq",
+          "qbeLine": 4922,
+          "lines": 17,
+          "bodySha256": "7d5264a1d7cba7011b476514dca7da346891667725739c458f90258399ad453d",
+          "calls": [
+            {
+              "symbol": "p118_rt_borrow_scalar_safe",
+              "decoded": "p118_rt_borrow_scalar_safe",
+              "sites": 1
+            },
+            {
+              "symbol": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_112_49_51_55_113_95_110_97_109_101_95_101_113_",
+              "decoded": "$p118borrow.read.p137q_name_eq",
+              "sites": 1
+            },
+            {
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink",
+              "sites": 2
+            },
+            {
+              "symbol": "p113d_FID_36_112_49_50_56_98_111_114_114_111_119_46_111_119_110_101_100_46_112_49_51_55_113_95_110_97_109_101_95_101_113_",
+              "decoded": "$p128borrow.owned.p137q_name_eq",
+              "sites": 1
+            }
+          ],
+          "staticTake9Sites": 0,
+          "staticSinkSites": 2,
+          "runtimeBorrowReadSites": 0
+        },
+        {
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_49_51_55_113_95_107_105_110_100_95_101_113_",
+          "decoded": "$direct.p137q_kind_eq",
+          "qbeLine": 5146,
+          "lines": 172,
+          "bodySha256": "c2e87aa36ad235fd5a452c89ec9416978fcb7e0e2da7d3f3a1695ddef69f4435",
+          "calls": [
+            {
+              "symbol": "p111_rt_take",
+              "decoded": "p111_rt_take",
+              "sites": 1
+            },
+            {
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink",
+              "sites": 17
+            },
+            {
+              "symbol": "p111_rt_keep",
+              "decoded": "p111_rt_keep",
+              "sites": 6
+            },
+            {
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_56_56_95_115_116_114_105_110_103_95_101_113_95_103_111_",
+              "decoded": "$direct.p88_string_eq_go",
+              "sites": 3
+            },
+            {
+              "symbol": "p125_rt_take2",
+              "decoded": "p125_rt_take2",
+              "sites": 1
+            },
+            {
+              "symbol": "p125_rt_take4",
+              "decoded": "p125_rt_take4",
+              "sites": 1
+            },
+            {
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail",
+              "sites": 1
+            }
+          ],
+          "staticTake9Sites": 1,
+          "staticSinkSites": 17,
+          "runtimeBorrowReadSites": 0
+        },
+        {
+          "symbol": "p113d_FID_36_112_49_50_56_98_111_114_114_111_119_46_111_119_110_101_100_46_112_49_51_55_113_95_107_101_121_95_101_113_",
+          "decoded": "$p128borrow.owned.p137q_key_eq",
+          "qbeLine": 5319,
+          "lines": 167,
+          "bodySha256": "1775e737d59eef64494696b384d60c9887b4713c593629b452b3cf38ff5417a6",
+          "calls": [
+            {
+              "symbol": "p111_rt_take",
+              "decoded": "p111_rt_take",
+              "sites": 1
+            },
+            {
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink",
+              "sites": 18
+            },
+            {
+              "symbol": "p111_rt_keep",
+              "decoded": "p111_rt_keep",
+              "sites": 6
+            },
+            {
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_56_56_95_115_116_114_105_110_103_95_101_113_95_103_111_",
+              "decoded": "$direct.p88_string_eq_go",
+              "sites": 3
+            },
+            {
+              "symbol": "p125_rt_take2",
+              "decoded": "p125_rt_take2",
+              "sites": 1
+            },
+            {
+              "symbol": "p125_rt_take4",
+              "decoded": "p125_rt_take4",
+              "sites": 1
+            },
+            {
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail",
+              "sites": 1
+            }
+          ],
+          "staticTake9Sites": 1,
+          "staticSinkSites": 18,
+          "runtimeBorrowReadSites": 0
+        },
+        {
+          "symbol": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_112_49_51_55_113_95_107_101_121_95_101_113_",
+          "decoded": "$p118borrow.read.p137q_key_eq",
+          "qbeLine": 5487,
+          "lines": 289,
+          "bodySha256": "9c84b58d20daa6b1a071e9b0dc454fb7ba51bd8870e7ecb8be45fb13b9eb1b21",
+          "calls": [
+            {
+              "symbol": "p118_rt_borrow_fields",
+              "decoded": "p118_rt_borrow_fields",
+              "sites": 5
+            },
+            {
+              "symbol": "p111_rt_special_ctor",
+              "decoded": "p111_rt_special_ctor",
+              "sites": 5
+            },
+            {
+              "symbol": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_112_56_56_95_115_116_114_105_110_103_95_101_113_95_103_111_",
+              "decoded": "$p118borrow.read.p88_string_eq_go",
+              "sites": 1
+            },
+            {
+              "symbol": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_112_57_56_95_101_113_95_102_105_110_105_115_104_",
+              "decoded": "$p118borrow.read.p98_eq_finish",
+              "sites": 1
+            },
+            {
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail",
+              "sites": 3
+            }
+          ],
+          "staticTake9Sites": 0,
+          "staticSinkSites": 0,
+          "runtimeBorrowReadSites": 5
+        },
+        {
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_49_51_55_113_95_107_101_121_95_101_113_",
+          "decoded": "$direct.p137q_key_eq",
+          "qbeLine": 5777,
+          "lines": 17,
+          "bodySha256": "226d2bf849150d1e4d3c3a055e3c206a783e736763655baea150ce08797347be",
+          "calls": [
+            {
+              "symbol": "p118_rt_borrow_scalar_safe",
+              "decoded": "p118_rt_borrow_scalar_safe",
+              "sites": 1
+            },
+            {
+              "symbol": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_112_49_51_55_113_95_107_101_121_95_101_113_",
+              "decoded": "$p118borrow.read.p137q_key_eq",
+              "sites": 1
+            },
+            {
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink",
+              "sites": 2
+            },
+            {
+              "symbol": "p113d_FID_36_112_49_50_56_98_111_114_114_111_119_46_111_119_110_101_100_46_112_49_51_55_113_95_107_101_121_95_101_113_",
+              "decoded": "$p128borrow.owned.p137q_key_eq",
+              "sites": 1
+            }
+          ],
+          "staticTake9Sites": 0,
+          "staticSinkSites": 2,
+          "runtimeBorrowReadSites": 0
+        },
+        {
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_102_95_102_105_110_100_95_110_101_120_116_",
+          "decoded": "$direct.f_find_next",
+          "qbeLine": 5951,
+          "lines": 8,
+          "bodySha256": "324702e9797773383d2cbad419474d83ebbfef99c2f88ab0b9b02a762bc8422a",
+          "calls": [
+            {
+              "symbol": "p113d_FID_36_112_49_50_54_115_99_99_46_52_56_",
+              "decoded": "$p126scc.48",
+              "sites": 1
+            }
+          ],
+          "staticTake9Sites": 0,
+          "staticSinkSites": 0,
+          "runtimeBorrowReadSites": 0
+        },
+        {
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_102_95_102_105_110_100_",
+          "decoded": "$direct.f_find",
+          "qbeLine": 5960,
+          "lines": 8,
+          "bodySha256": "5487030dbdcd092c9587c009ebc53ad7be61e75d8ae21b047a8931b7dd5475fb",
+          "calls": [
+            {
+              "symbol": "p113d_FID_36_112_49_50_54_115_99_99_46_52_56_",
+              "decoded": "$p126scc.48",
+              "sites": 1
+            }
+          ],
+          "staticTake9Sites": 0,
+          "staticSinkSites": 0,
+          "runtimeBorrowReadSites": 0
+        },
+        {
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_49_51_55_113_95_111_110_99_101_",
+          "decoded": "$direct.p137q_once",
+          "qbeLine": 6464,
+          "lines": 257,
+          "bodySha256": "60e6a86f9d80a5e881a6d4e0837466f06fa80c68496ecd58c3151d5d285aeb82",
+          "calls": [
+            {
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink",
+              "sites": 21
+            },
+            {
+              "symbol": "p111_rt_keep",
+              "decoded": "p111_rt_keep",
+              "sites": 5
+            },
+            {
+              "symbol": "p111_rt_take",
+              "decoded": "p111_rt_take",
+              "sites": 2
+            },
+            {
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_56_56_95_115_116_114_105_110_103_95_101_113_95_103_111_",
+              "decoded": "$direct.p88_string_eq_go",
+              "sites": 2
+            },
+            {
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail",
+              "sites": 4
+            }
+          ],
+          "staticTake9Sites": 2,
+          "staticSinkSites": 21,
+          "runtimeBorrowReadSites": 0
+        },
+        {
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_108_111_111_107_117_112_",
+          "decoded": "$direct.lookup",
+          "qbeLine": 7567,
+          "lines": 664,
+          "bodySha256": "d5d71321a1ce93917c5258f6b57252ef15d3442c37a784a39914775e461691ea",
+          "calls": [
+            {
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink",
+              "sites": 57
+            },
+            {
+              "symbol": "p125_rt_take2",
+              "decoded": "p125_rt_take2",
+              "sites": 5
+            },
+            {
+              "symbol": "p111_rt_keep",
+              "decoded": "p111_rt_keep",
+              "sites": 16
+            },
+            {
+              "symbol": "p111_rt_take",
+              "decoded": "p111_rt_take",
+              "sites": 3
+            },
+            {
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_56_56_95_115_116_114_105_110_103_95_101_113_95_103_111_",
+              "decoded": "$direct.p88_string_eq_go",
+              "sites": 6
+            },
+            {
+              "symbol": "p125_rt_take4",
+              "decoded": "p125_rt_take4",
+              "sites": 3
+            },
+            {
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail",
+              "sites": 7
+            },
+            {
+              "symbol": "p111_rt_ctor",
+              "decoded": "p111_rt_ctor",
+              "sites": 4
+            },
+            {
+              "symbol": "p125_rt_ctor2",
+              "decoded": "p125_rt_ctor2",
+              "sites": 2
+            },
+            {
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_105_110_100_101_120_95_104_97_115_104_",
+              "decoded": "$direct.index_hash",
+              "sites": 1
+            },
+            {
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_105_110_100_101_120_95_102_105_110_100_",
+              "decoded": "$direct.index_find",
+              "sites": 1
+            }
+          ],
+          "staticTake9Sites": 3,
+          "staticSinkSites": 57,
+          "runtimeBorrowReadSites": 0
+        },
+        {
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_49_51_55_113_95_114_101_112_101_97_116_",
+          "decoded": "$direct.p137q_repeat",
+          "qbeLine": 8955,
+          "lines": 335,
+          "bodySha256": "999d727dd478869df074f10801ac4733ccb95d01b6bce41ddf774cfa41d9b541",
+          "calls": [
+            {
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink",
+              "sites": 24
+            },
+            {
+              "symbol": "p111_rt_keep",
+              "decoded": "p111_rt_keep",
+              "sites": 8
+            },
+            {
+              "symbol": "p111_rt_take",
+              "decoded": "p111_rt_take",
+              "sites": 2
+            },
+            {
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_56_56_95_115_116_114_105_110_103_95_101_113_95_103_111_",
+              "decoded": "$direct.p88_string_eq_go",
+              "sites": 2
+            },
+            {
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail",
+              "sites": 5
+            }
+          ],
+          "staticTake9Sites": 2,
+          "staticSinkSites": 24,
+          "runtimeBorrowReadSites": 0
+        },
+        {
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_110_99_95_99_116_111_114_95_111_119_110_101_100_",
+          "decoded": "$direct.nc_ctor_owned",
+          "qbeLine": 9291,
+          "lines": 698,
+          "bodySha256": "246155e2cbe878401e85fd6b7079d8484c89a44b385151398fd2f2bfda743a8f",
+          "calls": [
+            {
+              "symbol": "p111_rt_sink",
+              "decoded": "p111_rt_sink",
+              "sites": 66
+            },
+            {
+              "symbol": "p125_rt_take2",
+              "decoded": "p125_rt_take2",
+              "sites": 5
+            },
+            {
+              "symbol": "p111_rt_keep",
+              "decoded": "p111_rt_keep",
+              "sites": 15
+            },
+            {
+              "symbol": "p111_rt_take",
+              "decoded": "p111_rt_take",
+              "sites": 4
+            },
+            {
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_56_56_95_115_116_114_105_110_103_95_101_113_95_103_111_",
+              "decoded": "$direct.p88_string_eq_go",
+              "sites": 6
+            },
+            {
+              "symbol": "p125_rt_take4",
+              "decoded": "p125_rt_take4",
+              "sites": 4
+            },
+            {
+              "symbol": "p111_rt_fail",
+              "decoded": "p111_rt_fail",
+              "sites": 7
+            },
+            {
+              "symbol": "p111_rt_ctor",
+              "decoded": "p111_rt_ctor",
+              "sites": 4
+            },
+            {
+              "symbol": "p125_rt_ctor2",
+              "decoded": "p125_rt_ctor2",
+              "sites": 2
+            },
+            {
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_108_111_111_107_117_112_",
+              "decoded": "$direct.lookup",
+              "sites": 1
+            }
+          ],
+          "staticTake9Sites": 4,
+          "staticSinkSites": 66,
+          "runtimeBorrowReadSites": 0
+        }
+      ],
+      "timedRoot": "p113d_FID_36_100_105_114_101_99_116_46_112_49_51_55_113_95_114_101_112_101_97_116_",
+      "directReachableFunctions": 4,
+      "borrowedReaderDirectPaths": [],
+      "pathCaveat": "Named direct paths only: existence does not establish branch frequency. No inference from missing indirect edges."
+    }
+  ],
+  "scope": "Actual integrated emitted products. Static path/site inventory is not dynamic execution, event counts, machine-code speed or semantic qualification. Follow adapter guard/fallback branches independently."
+}

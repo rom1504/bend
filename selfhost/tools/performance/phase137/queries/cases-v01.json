@@ -1,0 +1,133 @@
+{
+  "complete": true,
+  "cases": [
+    {
+      "name": "queries-original",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase137/queries/queries-original-v01.bend",
+        "bytes": 20884,
+        "sha256": "141d0d13990d3cc45a0cda9cd388675802996bd2b0f4f4f2556c028824f4822a"
+      },
+      "expected": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase137/queries/expected-v01.json",
+        "bytes": 119,
+        "sha256": "e02bc8f818fd3818e0dbd0374e71dc85b64a6f888b858d736d435dc73f7b6ac8"
+      },
+      "expectedStdoutEvidence": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase137/queries/expected-v01.json",
+        "bytes": 119,
+        "sha256": "e02bc8f818fd3818e0dbd0374e71dc85b64a6f888b858d736d435dc73f7b6ac8"
+      },
+      "family": "queries",
+      "composition": "original",
+      "timed": {
+        "argv": [
+          "REPEATS"
+        ],
+        "once": 127,
+        "stdout": [
+          "once",
+          "(once * repeats) modulo 2^32",
+          "elapsed milliseconds"
+        ],
+        "defaultRepeats": 10000
+      }
+    },
+    {
+      "name": "queries-fused",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase137/queries/queries-fused-v01.bend",
+        "bytes": 21944,
+        "sha256": "178af4805af76d9db993948577c58173a09dccc2215b4df27efd635166c5970d"
+      },
+      "expected": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase137/queries/expected-v01.json",
+        "bytes": 119,
+        "sha256": "e02bc8f818fd3818e0dbd0374e71dc85b64a6f888b858d736d435dc73f7b6ac8"
+      },
+      "expectedStdoutEvidence": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase137/queries/expected-v01.json",
+        "bytes": 119,
+        "sha256": "e02bc8f818fd3818e0dbd0374e71dc85b64a6f888b858d736d435dc73f7b6ac8"
+      },
+      "family": "queries",
+      "composition": "fused",
+      "timed": {
+        "argv": [
+          "REPEATS"
+        ],
+        "once": 127,
+        "stdout": [
+          "once",
+          "(once * repeats) modulo 2^32",
+          "elapsed milliseconds"
+        ],
+        "defaultRepeats": 10000
+      }
+    },
+    {
+      "name": "record-original",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase137/queries/record-original-v01.bend",
+        "bytes": 20964,
+        "sha256": "569d06f5b9ca8db1634b73634d410c82bf9d6ecffac2a82eeac633e05d4d34f1"
+      },
+      "expected": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase137/queries/expected-v01.json",
+        "bytes": 119,
+        "sha256": "e02bc8f818fd3818e0dbd0374e71dc85b64a6f888b858d736d435dc73f7b6ac8"
+      },
+      "expectedStdoutEvidence": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase137/queries/expected-v01.json",
+        "bytes": 119,
+        "sha256": "e02bc8f818fd3818e0dbd0374e71dc85b64a6f888b858d736d435dc73f7b6ac8"
+      },
+      "family": "record",
+      "composition": "original",
+      "timed": {
+        "argv": [
+          "REPEATS"
+        ],
+        "once": 1,
+        "stdout": [
+          "once",
+          "(once * repeats) modulo 2^32",
+          "elapsed milliseconds"
+        ],
+        "defaultRepeats": 10000
+      }
+    },
+    {
+      "name": "record-fused",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase137/queries/record-fused-v01.bend",
+        "bytes": 22024,
+        "sha256": "caa5a2bd56f7b7deb9aa0d59102fc87e46a9adf029d49d7e226b363ed4ee79ad"
+      },
+      "expected": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase137/queries/expected-v01.json",
+        "bytes": 119,
+        "sha256": "e02bc8f818fd3818e0dbd0374e71dc85b64a6f888b858d736d435dc73f7b6ac8"
+      },
+      "expectedStdoutEvidence": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase137/queries/expected-v01.json",
+        "bytes": 119,
+        "sha256": "e02bc8f818fd3818e0dbd0374e71dc85b64a6f888b858d736d435dc73f7b6ac8"
+      },
+      "family": "record",
+      "composition": "fused",
+      "timed": {
+        "argv": [
+          "REPEATS"
+        ],
+        "once": 1,
+        "stdout": [
+          "once",
+          "(once * repeats) modulo 2^32",
+          "elapsed milliseconds"
+        ],
+        "defaultRepeats": 10000
+      }
+    }
+  ]
+}

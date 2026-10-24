@@ -42,6 +42,11 @@ not bounded total IR or incremental compilation. Largest measured cursor piece
 across the initial three requests is127,386 bytes, with a per-function/name-size
 exception rather than an unconditional fixed byte ceiling.
 
+![Same-source memory and visible-output observations](stream/memory-plot/memory.svg)
+
+The plot is a presentation of the retained one-second observations, not a new
+benchmark or an exclusive compiler-stage attribution.
+
 ## What the first cache experiment taught us
 
 The [owner reuse probe](reuse/README.md) makes a real decision before generic
@@ -52,15 +57,42 @@ are refused. Complete hosted requests were slower in ordered exploratory runs.
 It remains isolated and is not added to the native compiler.
 
 Static-body preparation is also a poor next cache target on this small corpus:
-its measured ceiling is small. The next investigation is a stage breakdown and
-a defensible contextual unit, rather than expanding a low-value hit counter.
+its measured ceiling is small. The [stage breakdown](reuse/stage-ceilings.md)
+finds generic owner lowering is only4.5–10.7% of warmed hosted backend time.
+Lexer spends more on actual inline/range transformations and their repeated
+commit verification; Map has a larger private-candidate preparation share.
+These are hosted diagnostics, not inferred native percentages.
 
 ## Current follow-up
 
 Bound raw writes into packets while retaining the cursor's bounded lifetime.
 The first packet checks caught a JS-hosted stack overflow in long recursive
 test/length helpers before native acquisition; that failed attempt is preserved.
-New timing and qualification are required before choosing this variant.
+The batched native N1 passes three exact requests and focused19. Its27-observation
+screen is1.01291× the same-block Phase131 N2 request time, still1.29% longer.
+We did not spend another full self-build on that version.
+
+The [isolated writer experiment](../../selfhost/tools/performance/phase134/emission/writer/README.md)
+found a simpler choice: write the original text and its LF separately. This
+avoids copying every emitted linked String. Although File.write adds worker
+round trips, the no-copy form was faster in both tested4MiB regimes. All six
+outputs matched independent bytes. Exact candidate helpers also preserve append
+output and fail correctly when the second, newline-only write reaches/dev/full.
+Its native N1 screen still measures1.02031× same-block parent request time
+(2.03% longer), despite the isolated writer gain. The batch and no-copy screens
+used different measurement windows; these small differences do not establish a
+robust ordering between writers. We retain the simpler no-copy form for the next
+combined experiment, but do not claim that its fixture win transfers to the
+complete compiler. Full standalone qualification is deferred to avoid repeating
+the same expensive campaign before integrating the measured verification work.
+
+In parallel, a small verified-boundary experiment reuses successful verification
+for exactly unchanged functions under the same ordered signature context. Changed
+functions still run the original verifier; final verification is unchanged.
+An independent audit and26 controls pass. Repeated edited-source hosted results
+are positive but noisy, so native integration remains conditional. The audit also
+found the inner inliner already invokes range optimization, motivating exact
+input/result reuse before the later range pass rather than assuming idempotence.
 
 The larger owner-identity, dependency-aware invalidation and persistent-process
 parts of the plan are not yet implemented. No10-second edit, subsecond validated

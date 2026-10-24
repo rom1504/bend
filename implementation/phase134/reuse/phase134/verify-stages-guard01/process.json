@@ -1,0 +1,26 @@
+{
+  "complete": true,
+  "command": [
+    "bash",
+    "-c",
+    "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+    "phase86",
+    "taskset",
+    "-c",
+    "6",
+    "selfhost/.bootstrap/bun-1.4.3/bun",
+    "selfhost/tools/performance/phase134/reuse/stages-v04.mjs",
+    "selfhost/build/phase111/p134-verify-api02/report.json",
+    "selfhost/build/phase134/reference03.json",
+    "selfhost/build/phase134/verify-stages01",
+    "2"
+  ],
+  "started": 1792814336.1588833,
+  "rssLimitBytes": 3221225472,
+  "availableFloorBytes": 17179869184,
+  "peakTreeRssBytes": 552484864,
+  "minimumAvailableBytes": 24291192832,
+  "returncode": 0,
+  "wallSeconds": 40.54135737195611,
+  "finished": 1792814376.700237
+}

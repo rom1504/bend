@@ -4,7 +4,14 @@
 [Validation](../design/phase134/validation.md) ·
 [Execution budget](../design/phase134/execution.md).
 
-Planning only; no implementation, benchmark, qualification or selection change.
+Execution in progress: [Phase134 report](../implementation/phase134/README.md).
+The first streaming compiler is native-qualified, with exact self-reproduction
+and focused/ordinary gates,65.4% lower observed peak RSS and a2.49% request-time
+regression in the controlled small screen. Preserve it as a measured ablation;
+test bounded writer batching before choosing a faster development compiler.
+The primitive-only owner-cache experiment did not pay and is not integrated.
+Installed selection remains unchanged; the remaining architecture below is a
+plan, not completed incremental compilation.
 First seal the existing verified emission boundary and render bounded pieces,
 including the currently joined private-function text. Preserve exact bytes and
 measure physical retention. Whole structured IR remains initially; do not call

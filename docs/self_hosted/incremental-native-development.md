@@ -12,6 +12,13 @@ the qualified compiler and distinguishes design targets from measured results.
 [Experimental commands](../../selfhost/tools/performance/phase132/incremental/README.md).
 
 The selected compiler does **not** yet implement an incremental frontend.
+The [Phase134 report](../../implementation/phase134/README.md) now records an
+experimental native-qualified streaming compiler. It preserves complete QBE
+bytes while substantially reducing retained output memory. Its initial small
+request-time regression is being addressed separately; the installed selection
+has not changed. The narrow owner-cache probe was rejected for integration
+because its hits covered cheap primitives and did not improve complete requests.
+
 Phase132 demonstrates exact machine-object reuse after a real one-function
 compiler edit. It still runs the entire native source request and scans all
 emitted QBE. Do not describe its~6s warm object build as a~6s compiler rebuild.

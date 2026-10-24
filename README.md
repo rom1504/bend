@@ -128,6 +128,10 @@ next route to faster cold builds and interactive edits.
 The [bounded-IR and incremental compilation plan](design/phase134/README.md)
 sets out the staged refactor, intermediate performance/correctness gates and
 time budget; it is a design, not an implemented incremental compiler.
+The [Phase134 execution report](implementation/phase134/README.md) records the
+qualified streaming checkpoint, its memory and speed tradeoffs, and measured
+limits of the first lowering-cache experiment. Fine-grained incremental source
+compilation remains experimental work.
 
 The [incremental native development guide](docs/self_hosted/incremental-native-development.md)
 links the measured QBE size, memory and object-reuse investigation, its Go-inspired

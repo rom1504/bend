@@ -1,0 +1,2030 @@
+{
+  "kind": "phase131-final-native-profile-findings",
+  "complete": true,
+  "targetsRun": false,
+  "source": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/combined-literals-source01/compiler.bend",
+    "bytes": 2667581,
+    "sha256": "1bc5930edcf80cda6c3572645df3c846fa631a83c2b936f20c83b05e0a6728f9"
+  },
+  "image": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p131-final-native01-n2/program",
+    "bytes": 17132048,
+    "sha256": "2fae36020081ccc5cbfb847caf0b285b762387327e4bb44e1d62d96d1affd5dc"
+  },
+  "measuredStage": "Final Phase131 N2",
+  "diagnosticRuntime": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/context01/runtime/runtime.o",
+    "bytes": 150304,
+    "sha256": "8c582501c5e5c06ed1503c4cbaa73f82da7c72b8cfdd668023c65122d7dbb3a6"
+  },
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/profile/report-final.py",
+      "bytes": 6326,
+      "sha256": "225b43fab235444709d0927b4b6e6fb9c5c56aa270e669c5fd718e73c442010e"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/final-profile-analysis01/report.json",
+      "bytes": 535810,
+      "sha256": "ce943610218dfc71738e04bd423130b9bae874336565948af0ec7a05c1e27581"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/profile-analysis01/report.json",
+      "bytes": 553072,
+      "sha256": "ec8c8a178cb263d5432a2c9bf83febe90c596c5f76d4c6e29da7a86f8b348c92"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/final-profile01/manifest.json",
+      "bytes": 23188,
+      "sha256": "9397e0938427d17e2076fa2700c3022e34f3fe516985c405810092b5da13a5ed"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/final-context01/runtime/plan.json",
+      "bytes": 8800,
+      "sha256": "ebe10ea92486275477cb410ab9798ef5f1d2773fe98eb51f6645a914f7c16caf"
+    }
+  ],
+  "requests": [
+    {
+      "name": "lexer",
+      "cleanCpuSeconds": 1.56792,
+      "priorCleanCpuSeconds": 1.942137,
+      "physicalSamples": 628,
+      "physicalAdequate": true,
+      "physicalWholeChildCpuCoverage": true,
+      "physicalEstimateAvailable": true,
+      "loss": {
+        "dropped": 0,
+        "overruns": 0
+      },
+      "unknownPhysicalSamples": 31,
+      "physicalAccepted": 4,
+      "physicalRejected": [],
+      "contextSamples": 670,
+      "contextAdequate": true,
+      "contextRejected": [],
+      "contextOnlyWallOverClean": 1.0608123113902423,
+      "countersWallOverClean": 1.6678383870015874,
+      "topPhysicalLeaves": [
+        {
+          "object": "executable",
+          "decoded": "term_drop",
+          "samples": 75,
+          "periodWeightedFraction": 0.11818620356970574,
+          "estimatedCleanCpuSeconds": 0.18530651230101303,
+          "priorEstimatedCleanCpuSeconds": 0.30696540519216087
+        },
+        {
+          "object": "executable",
+          "decoded": "span_fade",
+          "samples": 48,
+          "periodWeightedFraction": 0.07943399260331242,
+          "estimatedCleanCpuSeconds": 0.12454614568258561,
+          "priorEstimatedCleanCpuSeconds": 0.1314859867650802
+        },
+        {
+          "object": "executable",
+          "decoded": "p113d_FID_$p118borrow.read.index_hash",
+          "samples": 39,
+          "periodWeightedFraction": 0.06383662968322881,
+          "estimatedCleanCpuSeconds": 0.10009072841292811,
+          "priorEstimatedCleanCpuSeconds": 0.07884216123695598
+        },
+        {
+          "object": "executable",
+          "decoded": "p125_rt_take2",
+          "samples": 39,
+          "periodWeightedFraction": 0.06222865412445731,
+          "estimatedCleanCpuSeconds": 0.0975695513748191,
+          "priorEstimatedCleanCpuSeconds": 0.0827966270043268
+        },
+        {
+          "object": "/usr/lib/x86_64-linux-gnu/libc-2.31.so",
+          "decoded": "[library_unresolved]",
+          "samples": 30,
+          "periodWeightedFraction": 0.0482392667631452,
+          "estimatedCleanCpuSeconds": 0.07563531114327063,
+          "priorEstimatedCleanCpuSeconds": 0.1183868189106643
+        },
+        {
+          "object": "executable",
+          "decoded": "work_loop",
+          "samples": 24,
+          "periodWeightedFraction": 0.037305032963498956,
+          "estimatedCleanCpuSeconds": 0.05849130728412928,
+          "priorEstimatedCleanCpuSeconds": 0.07933646945787733
+        },
+        {
+          "object": "executable",
+          "decoded": "p113d_FID_$p118borrow.read.p88_string_eq_go",
+          "samples": 19,
+          "periodWeightedFraction": 0.02926515516964142,
+          "estimatedCleanCpuSeconds": 0.04588542209358418,
+          "priorEstimatedCleanCpuSeconds": 0.058081215958259096
+        },
+        {
+          "object": "executable",
+          "decoded": "p111_rt_ctor",
+          "samples": 17,
+          "periodWeightedFraction": 0.02669239427560701,
+          "estimatedCleanCpuSeconds": 0.041851538832609746,
+          "priorEstimatedCleanCpuSeconds": 0.0462178186561466
+        },
+        {
+          "object": "executable",
+          "decoded": "p111_rt_return",
+          "samples": 18,
+          "periodWeightedFraction": 0.02637079916385271,
+          "estimatedCleanCpuSeconds": 0.04134730342498794,
+          "priorEstimatedCleanCpuSeconds": 0.043004815220157804
+        },
+        {
+          "object": "executable",
+          "decoded": "p111_set_regs",
+          "samples": 18,
+          "periodWeightedFraction": 0.02637079916385271,
+          "estimatedCleanCpuSeconds": 0.04134730342498794,
+          "priorEstimatedCleanCpuSeconds": 0.0365788083481802
+        },
+        {
+          "object": "executable",
+          "decoded": "p111_rt_sink",
+          "samples": 15,
+          "periodWeightedFraction": 0.0241196333815726,
+          "estimatedCleanCpuSeconds": 0.037817655571635314,
+          "priorEstimatedCleanCpuSeconds": 0.0462178186561466
+        },
+        {
+          "object": "executable",
+          "decoded": "p118_rt_extend1",
+          "samples": 15,
+          "periodWeightedFraction": 0.0241196333815726,
+          "estimatedCleanCpuSeconds": 0.037817655571635314,
+          "priorEstimatedCleanCpuSeconds": 0.02916418503435989
+        },
+        {
+          "object": "executable",
+          "decoded": "p111_rt_keep",
+          "samples": 12,
+          "periodWeightedFraction": 0.021064479819906737,
+          "estimatedCleanCpuSeconds": 0.03302741919922817,
+          "priorEstimatedCleanCpuSeconds": 0.041769044667854416
+        },
+        {
+          "object": "executable",
+          "decoded": "p111_rt_op",
+          "samples": 12,
+          "periodWeightedFraction": 0.021064479819906737,
+          "estimatedCleanCpuSeconds": 0.03302741919922817,
+          "priorEstimatedCleanCpuSeconds": 0.05041943853397811
+        },
+        {
+          "object": "executable",
+          "decoded": "p118_destination_fill",
+          "samples": 12,
+          "periodWeightedFraction": 0.020260492040520984,
+          "estimatedCleanCpuSeconds": 0.03176683068017366,
+          "priorEstimatedCleanCpuSeconds": 0.02743410626113515
+        },
+        {
+          "object": "executable",
+          "decoded": "p111_rt_take",
+          "samples": 10,
+          "periodWeightedFraction": 0.01688374336710082,
+          "estimatedCleanCpuSeconds": 0.02647235890014472,
+          "priorEstimatedCleanCpuSeconds": 0.04349912344107915
+        },
+        {
+          "object": "executable",
+          "decoded": "p111_rt_jump",
+          "samples": 9,
+          "periodWeightedFraction": 0.013989387361312108,
+          "estimatedCleanCpuSeconds": 0.02193424023154848,
+          "priorEstimatedCleanCpuSeconds": 0.041769044667854416
+        },
+        {
+          "object": "executable",
+          "decoded": "p125_rt_take4",
+          "samples": 10,
+          "periodWeightedFraction": 0.013667792249557806,
+          "estimatedCleanCpuSeconds": 0.021430004823926676,
+          "priorEstimatedCleanCpuSeconds": 0.023479640493764317
+        },
+        {
+          "object": "executable",
+          "decoded": "p113d_FID_$p118borrow.read.String.cmp",
+          "samples": 9,
+          "periodWeightedFraction": 0.013185399581926355,
+          "estimatedCleanCpuSeconds": 0.02067365171249397,
+          "priorEstimatedCleanCpuSeconds": 0.03311865080173072
+        },
+        {
+          "object": "executable",
+          "decoded": "heap_alloc",
+          "samples": 8,
+          "periodWeightedFraction": 0.012703006914294903,
+          "estimatedCleanCpuSeconds": 0.019917298601061263,
+          "priorEstimatedCleanCpuSeconds": 0.0182894041740901
+        }
+      ],
+      "topActiveOwners": [
+        {
+          "owner": "p111v_get",
+          "samples": 65,
+          "periodWeightedFraction": 0.09721175584024115
+        },
+        {
+          "owner": "String.append",
+          "samples": 30,
+          "periodWeightedFraction": 0.045968349660889224
+        },
+        {
+          "owner": "p131i_insert",
+          "samples": 30,
+          "periodWeightedFraction": 0.04370761115297664
+        },
+        {
+          "owner": "p88_number",
+          "samples": 25,
+          "periodWeightedFraction": 0.04069329314242653
+        },
+        {
+          "owner": "[unknown]",
+          "samples": 26,
+          "periodWeightedFraction": 0.038884702336096456
+        },
+        {
+          "owner": "p130m_word",
+          "samples": 26,
+          "periodWeightedFraction": 0.035870384325546345
+        },
+        {
+          "owner": "p111v_name_chars",
+          "samples": 22,
+          "periodWeightedFraction": 0.03330821401657875
+        },
+        {
+          "owner": "p113k_get",
+          "samples": 19,
+          "periodWeightedFraction": 0.029691032403918613
+        },
+        {
+          "owner": "String.eq",
+          "samples": 18,
+          "periodWeightedFraction": 0.026224566691785984
+        },
+        {
+          "owner": "p111v_intersection_bucket",
+          "samples": 17,
+          "periodWeightedFraction": 0.02426525998492841
+        },
+        {
+          "owner": "p111v_value",
+          "samples": 13,
+          "periodWeightedFraction": 0.020195930670685758
+        },
+        {
+          "owner": "constructor_exists",
+          "samples": 9,
+          "periodWeightedFraction": 0.01386586284853052
+        },
+        {
+          "owner": "p113k_replace",
+          "samples": 8,
+          "periodWeightedFraction": 0.012660135644310474
+        },
+        {
+          "owner": "p113l_version",
+          "samples": 8,
+          "periodWeightedFraction": 0.012660135644310474
+        },
+        {
+          "owner": "p88_field",
+          "samples": 9,
+          "periodWeightedFraction": 0.012358703843255464
+        }
+      ],
+      "familyContexts": {
+        "bangAnalysis": {
+          "owners": [
+            "nc_bangs_term"
+          ],
+          "periodWeightedFraction": 0.0012057272042200451,
+          "rule": "^nc_bangs_"
+        },
+        "useQueries": {
+          "owners": [
+            "p131u_build",
+            "p131u_unshared",
+            "p131u_hot"
+          ],
+          "periodWeightedFraction": 0.0036171816126601354,
+          "rule": "^(?:nq_uses(?:_|$)|p131u_)"
+        },
+        "carrierDecoder": {
+          "owners": [
+            "p88_number",
+            "p130m_word",
+            "p88_field",
+            "p88_string_eq",
+            "p88_fields_next",
+            "p88_build",
+            "p88_u32",
+            "p88_record_width",
+            "p88_records",
+            "p88_fields_finish",
+            "p88_fields",
+            "p88_record_tag",
+            "p88_roots_done",
+            "p88_text_chars",
+            "p88_record_put"
+          ],
+          "periodWeightedFraction": 0.14167294649585535,
+          "rule": "^(?:p88_|p130m)"
+        },
+        "strings": {
+          "owners": [
+            "String.append",
+            "String.eq",
+            "String.length"
+          ],
+          "periodWeightedFraction": 0.07339864355689525,
+          "rule": "^String\\."
+        },
+        "qbeAndTextEmission": {
+          "owners": [
+            "p111q_body_text",
+            "p113e_body",
+            "p113e_stmt_emit",
+            "p111q_memory",
+            "p113e_function",
+            "p113e_moves",
+            "p111q_segment_table",
+            "p111q_label",
+            "p111q_args",
+            "p113e_old_private_chunks",
+            "p111q_data_chunks_go",
+            "p113e_schema_stmt",
+            "p113e_old_private"
+          ],
+          "periodWeightedFraction": 0.03014318010550112,
+          "rule": "^(?:p111q_|p113e_|nt_text_)"
+        },
+        "independentVerifier": {
+          "owners": [
+            "p111v_get",
+            "p111v_name_chars",
+            "p111v_intersection_bucket",
+            "p111v_value",
+            "p111v_put",
+            "p111v_decl",
+            "p111v_signature",
+            "p111v_join",
+            "p111v_contract",
+            "p111v_comparison",
+            "p111v_operator",
+            "p111v_intersection",
+            "p111v_step",
+            "p111v_assign",
+            "p111v_args",
+            "p111v_constructors",
+            "p111v_stmt",
+            "p111v_functions",
+            "p111v_schema_stmt"
+          ],
+          "periodWeightedFraction": 0.2381311228334589,
+          "rule": "^p111v_"
+        }
+      },
+      "selectedDirectEntries": {
+        "nc_bangs_names": 138,
+        "nc_bangs_names_loop": 0,
+        "nq_uses": 232,
+        "nq_uses_list": 212,
+        "p112s_prepare": 1,
+        "p113pl_inspect_request": 0,
+        "p113pl_inspect_prepared": 0,
+        "p126bp_close": 0,
+        "p128raw_plan_finish": 1,
+        "String.append": 171111,
+        "String.order": 0,
+        "String.eq": 304530,
+        "p111v_verify": 0,
+        "p111v_get": 97231,
+        "p111v_name_chars": 431138,
+        "p88_number": 324069,
+        "p130m_word": 324956,
+        "p130mc_next": 0
+      },
+      "selectedActiveFractions": {
+        "nc_bangs_names": 0,
+        "nc_bangs_names_loop": 0,
+        "nq_uses": 0,
+        "nq_uses_list": 0,
+        "p112s_prepare": 0,
+        "p113pl_inspect_request": 0,
+        "p113pl_inspect_prepared": 0,
+        "p126bp_close": 0,
+        "p128raw_plan_finish": 0,
+        "String.append": 0.045968349660889224,
+        "String.order": 0,
+        "String.eq": 0.026224566691785984,
+        "p111v_verify": 0,
+        "p111v_get": 0.09721175584024115,
+        "p111v_name_chars": 0.03330821401657875,
+        "p88_number": 0.04069329314242653,
+        "p130m_word": 0.035870384325546345,
+        "p130mc_next": 0
+      },
+      "runtimeCounters": {
+        "dispatches": {
+          "prior": 22105806,
+          "current": 15163927,
+          "ratio": 0.6859703283381751,
+          "delta": -6941879
+        },
+        "heap_alloc_calls": {
+          "prior": 23728232,
+          "current": 19118396,
+          "ratio": 0.8057235785624484,
+          "delta": -4609836
+        },
+        "heap_alloc_requested_words": {
+          "prior": 48280368,
+          "current": 37302484,
+          "ratio": 0.772622197080188,
+          "delta": -10977884
+        },
+        "heap_free_calls": {
+          "prior": 23728232,
+          "current": 19118396,
+          "ratio": 0.8057235785624484,
+          "delta": -4609836
+        },
+        "term_drop_calls": {
+          "prior": 24763815,
+          "current": 21329444,
+          "ratio": 0.8613149468286692,
+          "delta": -3434371
+        },
+        "ctr_take_calls": {
+          "prior": 23090209,
+          "current": 21080257,
+          "ratio": 0.9129521954521936,
+          "delta": -2009952
+        },
+        "frame_push_calls": {
+          "prior": 69769,
+          "current": 73950,
+          "ratio": 1.059926328312001,
+          "delta": 4181
+        },
+        "register_words_copy_requested": {
+          "prior": 42104527,
+          "current": 26899095,
+          "ratio": 0.6388646760002791,
+          "delta": -15205432
+        },
+        "register_words_clear_requested": {
+          "prior": 0,
+          "current": 0,
+          "ratio": null,
+          "delta": 0
+        }
+      },
+      "topAllocationWordOwners": [
+        {
+          "owner": "String.append",
+          "kind": "lowered_owner",
+          "count": 8015180,
+          "fractionOfAllEvents": 0.21486987300899318
+        },
+        {
+          "owner": "p88_number",
+          "kind": "lowered_owner",
+          "count": 4536966,
+          "fractionOfAllEvents": 0.12162637748199288
+        },
+        {
+          "owner": "p111v_put",
+          "kind": "lowered_owner",
+          "count": 2571696,
+          "fractionOfAllEvents": 0.06894168227509996
+        },
+        {
+          "owner": null,
+          "kind": "outside_dispatch",
+          "count": 2238951,
+          "fractionOfAllEvents": 0.06002149883637776
+        },
+        {
+          "owner": "p131i_insert",
+          "kind": "lowered_owner",
+          "count": 2213131,
+          "fractionOfAllEvents": 0.05932931973109351
+        },
+        {
+          "owner": "p88_field",
+          "kind": "lowered_owner",
+          "count": 2066630,
+          "fractionOfAllEvents": 0.0554019405249259
+        },
+        {
+          "owner": "p130m_word",
+          "kind": "lowered_owner",
+          "count": 1624780,
+          "fractionOfAllEvents": 0.043556884844451645
+        },
+        {
+          "owner": "p111q_body_text",
+          "kind": "lowered_owner",
+          "count": 1425646,
+          "fractionOfAllEvents": 0.03821852721657893
+        },
+        {
+          "owner": "p88_fields_finish",
+          "kind": "lowered_owner",
+          "count": 1019855,
+          "fractionOfAllEvents": 0.02734013638341082
+        },
+        {
+          "owner": "p113k_put",
+          "kind": "lowered_owner",
+          "count": 956145,
+          "fractionOfAllEvents": 0.025632207227808207
+        }
+      ],
+      "topReclamationOwners": [
+        {
+          "owner": "p111v_get",
+          "kind": "lowered_owner",
+          "count": 4820994,
+          "fractionOfAllEvents": 0.2260253009876863
+        },
+        {
+          "owner": "p113k_get",
+          "kind": "lowered_owner",
+          "count": 1668448,
+          "fractionOfAllEvents": 0.07822276098711246
+        },
+        {
+          "owner": "p111v_intersection_bucket",
+          "kind": "lowered_owner",
+          "count": 907547,
+          "fractionOfAllEvents": 0.0425490228437272
+        },
+        {
+          "owner": "p111v_value",
+          "kind": "lowered_owner",
+          "count": 816643,
+          "fractionOfAllEvents": 0.03828712084571918
+        },
+        {
+          "owner": "p113l_version",
+          "kind": "lowered_owner",
+          "count": 554226,
+          "fractionOfAllEvents": 0.025984080972762346
+        },
+        {
+          "owner": "nc_ctor_owned",
+          "kind": "lowered_owner",
+          "count": 547732,
+          "fractionOfAllEvents": 0.02567961921557824
+        },
+        {
+          "owner": "lookup",
+          "kind": "lowered_owner",
+          "count": 540270,
+          "fractionOfAllEvents": 0.025329774184456002
+        },
+        {
+          "owner": "p113k_value",
+          "kind": "lowered_owner",
+          "count": 498089,
+          "fractionOfAllEvents": 0.023352179269183013
+        },
+        {
+          "owner": "constructor_exists",
+          "kind": "lowered_owner",
+          "count": 472758,
+          "fractionOfAllEvents": 0.022164572128556187
+        },
+        {
+          "owner": "p113k_replace",
+          "kind": "lowered_owner",
+          "count": 465398,
+          "fractionOfAllEvents": 0.02181950921927454
+        }
+      ],
+      "topRegisterCopyOwners": [
+        {
+          "owner": "p111v_name_chars",
+          "kind": "lowered_owner",
+          "count": 2483053,
+          "fractionOfAllEvents": 0.0923099085675559
+        },
+        {
+          "owner": "p131i_insert",
+          "kind": "lowered_owner",
+          "count": 2376577,
+          "fractionOfAllEvents": 0.08835155978295924
+        },
+        {
+          "owner": "p88_fields",
+          "kind": "lowered_owner",
+          "count": 1791828,
+          "fractionOfAllEvents": 0.0666129473872634
+        },
+        {
+          "owner": "p130m_word",
+          "kind": "lowered_owner",
+          "count": 1299824,
+          "fractionOfAllEvents": 0.04832222050593152
+        },
+        {
+          "owner": "p88_fields_next",
+          "kind": "lowered_owner",
+          "count": 1143700,
+          "fractionOfAllEvents": 0.04251815906817683
+        },
+        {
+          "owner": "p88_number",
+          "kind": "lowered_owner",
+          "count": 648138,
+          "fractionOfAllEvents": 0.024095160078805626
+        },
+        {
+          "owner": "constructor_exists",
+          "kind": "lowered_owner",
+          "count": 564651,
+          "fractionOfAllEvents": 0.020991449712341622
+        },
+        {
+          "owner": "p111v_decl",
+          "kind": "lowered_owner",
+          "count": 518875,
+          "fractionOfAllEvents": 0.0192896824224012
+        },
+        {
+          "owner": "Bool.and",
+          "kind": "lowered_owner",
+          "count": 466002,
+          "fractionOfAllEvents": 0.017324077259848334
+        },
+        {
+          "owner": "p88_field",
+          "kind": "lowered_owner",
+          "count": 457490,
+          "fractionOfAllEvents": 0.017007635386989784
+        }
+      ],
+      "physicalCallerFractions": [
+        {
+          "caller": "[unrecovered]",
+          "periodWeightedFraction": 0.9517607332368548
+        },
+        {
+          "caller": "p111_set_regs",
+          "periodWeightedFraction": 0.0482392667631452
+        }
+      ],
+      "eventReceipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/final-profile-analysis01/contexts/lexer-events.json",
+        "bytes": 2012769,
+        "sha256": "34b3419bebd665e74fb0535de398dad9c4e905c9dcb331376b10812d96381777"
+      }
+    },
+    {
+      "name": "coverage-closures-256",
+      "cleanCpuSeconds": 0.416218,
+      "priorCleanCpuSeconds": 0.520322,
+      "physicalSamples": 659,
+      "physicalAdequate": true,
+      "physicalWholeChildCpuCoverage": true,
+      "physicalEstimateAvailable": true,
+      "loss": {
+        "dropped": 0,
+        "overruns": 0
+      },
+      "unknownPhysicalSamples": 56,
+      "physicalAccepted": 16,
+      "physicalRejected": [],
+      "contextSamples": 731,
+      "contextAdequate": true,
+      "contextRejected": [],
+      "contextOnlyWallOverClean": 1.0832112776118938,
+      "countersWallOverClean": 1.865065210920436,
+      "topPhysicalLeaves": [
+        {
+          "object": "executable",
+          "decoded": "term_drop",
+          "samples": 63,
+          "periodWeightedFraction": 0.09874271695798835,
+          "estimatedCleanCpuSeconds": 0.041098496166819994,
+          "priorEstimatedCleanCpuSeconds": 0.058452379373848985
+        },
+        {
+          "object": "executable",
+          "decoded": "p125_rt_take2",
+          "samples": 58,
+          "periodWeightedFraction": 0.08954308494326893,
+          "estimatedCleanCpuSeconds": 0.0372694437289175,
+          "priorEstimatedCleanCpuSeconds": 0.033196023414890814
+        },
+        {
+          "object": "/usr/lib/x86_64-linux-gnu/libc-2.31.so",
+          "decoded": "[library_unresolved]",
+          "samples": 56,
+          "periodWeightedFraction": 0.08249003373198405,
+          "estimatedCleanCpuSeconds": 0.034333836859858934,
+          "priorEstimatedCleanCpuSeconds": 0.03874010155222309
+        },
+        {
+          "object": "executable",
+          "decoded": "p111_set_regs",
+          "samples": 27,
+          "periodWeightedFraction": 0.041551671266482675,
+          "estimatedCleanCpuSeconds": 0.017294553511192884,
+          "priorEstimatedCleanCpuSeconds": 0.025598583004472507
+        },
+        {
+          "object": "executable",
+          "decoded": "work_loop",
+          "samples": 27,
+          "periodWeightedFraction": 0.041551671266482675,
+          "estimatedCleanCpuSeconds": 0.017294553511192884,
+          "priorEstimatedCleanCpuSeconds": 0.01930160536700868
+        },
+        {
+          "object": "executable",
+          "decoded": "span_fade",
+          "samples": 28,
+          "periodWeightedFraction": 0.041245016865992024,
+          "estimatedCleanCpuSeconds": 0.017166918429929467,
+          "priorEstimatedCleanCpuSeconds": 0.023613666140489344
+        },
+        {
+          "object": "executable",
+          "decoded": "p125_rt_ctor2",
+          "samples": 21,
+          "periodWeightedFraction": 0.031125421649800675,
+          "estimatedCleanCpuSeconds": 0.012954960748236736,
+          "priorEstimatedCleanCpuSeconds": 0.023202993685872135
+        },
+        {
+          "object": "executable",
+          "decoded": "p113d_FID_$p118borrow.read.p88_string_eq_go",
+          "samples": 20,
+          "periodWeightedFraction": 0.029132168046611468,
+          "estimatedCleanCpuSeconds": 0.012125332720024532,
+          "priorEstimatedCleanCpuSeconds": 0.009513911865298603
+        },
+        {
+          "object": "executable",
+          "decoded": "p111_rt_jump",
+          "samples": 17,
+          "periodWeightedFraction": 0.02698558724317694,
+          "estimatedCleanCpuSeconds": 0.011231887151180618,
+          "priorEstimatedCleanCpuSeconds": 0.012251728229413311
+        },
+        {
+          "object": "executable",
+          "decoded": "p111_rt_return",
+          "samples": 17,
+          "periodWeightedFraction": 0.02391904323827047,
+          "estimatedCleanCpuSeconds": 0.009955536338546457,
+          "priorEstimatedCleanCpuSeconds": 0.012251728229413311
+        },
+        {
+          "object": "executable",
+          "decoded": "p111_rt_take",
+          "samples": 13,
+          "periodWeightedFraction": 0.02054584483287335,
+          "estimatedCleanCpuSeconds": 0.00855155044464888,
+          "priorEstimatedCleanCpuSeconds": 0.014852653775322282
+        },
+        {
+          "object": "executable",
+          "decoded": "rfc_wrap",
+          "samples": 13,
+          "periodWeightedFraction": 0.019012572830420117,
+          "estimatedCleanCpuSeconds": 0.0079133750383318,
+          "priorEstimatedCleanCpuSeconds": 0.006296977637463824
+        },
+        {
+          "object": "executable",
+          "decoded": "p118_destination_fill",
+          "samples": 12,
+          "periodWeightedFraction": 0.01778595522845753,
+          "estimatedCleanCpuSeconds": 0.007402834713278136,
+          "priorEstimatedCleanCpuSeconds": 0.006296977637463824
+        },
+        {
+          "object": "executable",
+          "decoded": "heap_alloc",
+          "samples": 11,
+          "periodWeightedFraction": 0.017325973627721557,
+          "estimatedCleanCpuSeconds": 0.00721138209138301,
+          "priorEstimatedCleanCpuSeconds": 0.007049877137595369
+        },
+        {
+          "object": "executable",
+          "decoded": "p111_rt_ctor",
+          "samples": 12,
+          "periodWeightedFraction": 0.016252683226004292,
+          "estimatedCleanCpuSeconds": 0.006764659306961054,
+          "priorEstimatedCleanCpuSeconds": 0.013141518547750591
+        },
+        {
+          "object": "executable",
+          "decoded": "p111_FID_$direct.p88_fields",
+          "samples": 9,
+          "periodWeightedFraction": 0.015639374425023,
+          "estimatedCleanCpuSeconds": 0.006509389144434223,
+          "priorEstimatedCleanCpuSeconds": 0.005064960273612206
+        },
+        {
+          "object": "executable",
+          "decoded": "p111_rt_keep",
+          "samples": 9,
+          "periodWeightedFraction": 0.014872738423796382,
+          "estimatedCleanCpuSeconds": 0.006190301441275682,
+          "priorEstimatedCleanCpuSeconds": 0.006844540910286766
+        },
+        {
+          "object": "executable",
+          "decoded": "p111_FID_$p111.k.82674",
+          "samples": 8,
+          "periodWeightedFraction": 0.01441275682306041,
+          "estimatedCleanCpuSeconds": 0.0059988488193805575,
+          "priorEstimatedCleanCpuSeconds": 0.007049877137595369
+        },
+        {
+          "object": "executable",
+          "decoded": "p113d_FID_$p118borrow.read.index_hash",
+          "samples": 8,
+          "periodWeightedFraction": 0.013646120821833793,
+          "estimatedCleanCpuSeconds": 0.0056797611162220174,
+          "priorEstimatedCleanCpuSeconds": 0.005544078137332281
+        },
+        {
+          "object": "executable",
+          "decoded": "p111_rt_op",
+          "samples": 8,
+          "periodWeightedFraction": 0.012879484820607176,
+          "estimatedCleanCpuSeconds": 0.005360673413063477,
+          "priorEstimatedCleanCpuSeconds": 0.009034794001578531
+        }
+      ],
+      "topActiveOwners": [
+        {
+          "owner": "p130m_word",
+          "samples": 93,
+          "periodWeightedFraction": 0.12661890327914027
+        },
+        {
+          "owner": "p88_number",
+          "samples": 77,
+          "periodWeightedFraction": 0.10553871589969689
+        },
+        {
+          "owner": "[unknown]",
+          "samples": 54,
+          "periodWeightedFraction": 0.07536511435657206
+        },
+        {
+          "owner": "p88_field",
+          "samples": 46,
+          "periodWeightedFraction": 0.06379167814825021
+        },
+        {
+          "owner": "p88_fields",
+          "samples": 26,
+          "periodWeightedFraction": 0.03554698263984569
+        },
+        {
+          "owner": "p88_u32",
+          "samples": 21,
+          "periodWeightedFraction": 0.030035822540644807
+        },
+        {
+          "owner": "p88_fields_next",
+          "samples": 21,
+          "periodWeightedFraction": 0.029346927528244696
+        },
+        {
+          "owner": "constructor_exists",
+          "samples": 17,
+          "periodWeightedFraction": 0.02218241939928355
+        },
+        {
+          "owner": "p88_fields_finish",
+          "samples": 15,
+          "periodWeightedFraction": 0.021355745384403418
+        },
+        {
+          "owner": "p88_build",
+          "samples": 14,
+          "periodWeightedFraction": 0.01887572333976302
+        },
+        {
+          "owner": "String.append",
+          "samples": 13,
+          "periodWeightedFraction": 0.018462386332322955
+        },
+        {
+          "owner": "p131i_insert",
+          "samples": 11,
+          "periodWeightedFraction": 0.016257922292642602
+        },
+        {
+          "owner": "norm_max_book",
+          "samples": 11,
+          "periodWeightedFraction": 0.014880132267842381
+        },
+        {
+          "owner": "p88_string_eq",
+          "samples": 10,
+          "periodWeightedFraction": 0.013777900248002205
+        },
+        {
+          "owner": "nc_native_primitive",
+          "samples": 10,
+          "periodWeightedFraction": 0.012400110223201984
+        }
+      ],
+      "familyContexts": {
+        "bangAnalysis": {
+          "owners": [
+            "nc_bangs_term"
+          ],
+          "periodWeightedFraction": 0.0011022320198401765,
+          "rule": "^nc_bangs_"
+        },
+        "useQueries": {
+          "owners": [],
+          "periodWeightedFraction": 0,
+          "rule": "^(?:nq_uses(?:_|$)|p131u_)"
+        },
+        "carrierDecoder": {
+          "owners": [
+            "p130m_word",
+            "p88_number",
+            "p88_field",
+            "p88_fields",
+            "p88_u32",
+            "p88_fields_next",
+            "p88_fields_finish",
+            "p88_build",
+            "p88_string_eq",
+            "p88_records",
+            "p88_record_width",
+            "p88_text_chars",
+            "p88_cache_prepare",
+            "p88_record_width_gate",
+            "p88_record_tag",
+            "p88_record_put",
+            "p88_roots_done",
+            "p88_text_char",
+            "p130m_strings_read",
+            "p88_record_tag_gate"
+          ],
+          "periodWeightedFraction": 0.48677321576191784,
+          "rule": "^(?:p88_|p130m)"
+        },
+        "strings": {
+          "owners": [
+            "String.append",
+            "String.eq"
+          ],
+          "periodWeightedFraction": 0.0268669054836043,
+          "rule": "^String\\."
+        },
+        "qbeAndTextEmission": {
+          "owners": [
+            "p111q_data_chunks_go",
+            "p111q_memory",
+            "p111q_body_text",
+            "p113e_values",
+            "p113e_body",
+            "p113e_schema",
+            "p111q_args",
+            "p111q_ctor_table"
+          ],
+          "periodWeightedFraction": 0.0174979333149628,
+          "rule": "^(?:p111q_|p113e_|nt_text_)"
+        },
+        "independentVerifier": {
+          "owners": [
+            "p111v_name_chars",
+            "p111v_value",
+            "p111v_put",
+            "p111v_contract",
+            "p111v_get",
+            "p111v_memory",
+            "p111v_step",
+            "p111v_intersection_bucket",
+            "p111v_body",
+            "p111v_schema_stmt",
+            "p111v_comparison",
+            "p111v_decl",
+            "p111v_constructors",
+            "p111v_segments",
+            "p111v_operator",
+            "p111v_raw_name_chars"
+          ],
+          "periodWeightedFraction": 0.054009368972168646,
+          "rule": "^p111v_"
+        }
+      },
+      "selectedDirectEntries": {
+        "nc_bangs_names": 48,
+        "nc_bangs_names_loop": 0,
+        "nq_uses": 30,
+        "nq_uses_list": 12,
+        "p112s_prepare": 1,
+        "p113pl_inspect_request": 0,
+        "p113pl_inspect_prepared": 0,
+        "p126bp_close": 0,
+        "p128raw_plan_finish": 1,
+        "String.append": 26481,
+        "String.order": 0,
+        "String.eq": 27340,
+        "p111v_verify": 0,
+        "p111v_get": 5991,
+        "p111v_name_chars": 25945,
+        "p88_number": 324069,
+        "p130m_word": 324956,
+        "p130mc_next": 0
+      },
+      "selectedActiveFractions": {
+        "nc_bangs_names": 0,
+        "nc_bangs_names_loop": 0,
+        "nq_uses": 0,
+        "nq_uses_list": 0,
+        "p112s_prepare": 0,
+        "p113pl_inspect_request": 0,
+        "p113pl_inspect_prepared": 0,
+        "p126bp_close": 0,
+        "p128raw_plan_finish": 0,
+        "String.append": 0.018462386332322955,
+        "String.order": 0,
+        "String.eq": 0.008404519151281344,
+        "p111v_verify": 0,
+        "p111v_get": 0.003995591071920639,
+        "p111v_name_chars": 0.010884541195921742,
+        "p88_number": 0.10553871589969689,
+        "p130m_word": 0.12661890327914027,
+        "p130mc_next": 0
+      },
+      "runtimeCounters": {
+        "dispatches": {
+          "prior": 6340565,
+          "current": 5582329,
+          "ratio": 0.8804150734201132,
+          "delta": -758236
+        },
+        "heap_alloc_calls": {
+          "prior": 8674374,
+          "current": 8023624,
+          "ratio": 0.9249801772439141,
+          "delta": -650750
+        },
+        "heap_alloc_requested_words": {
+          "prior": 18387792,
+          "current": 16475730,
+          "ratio": 0.8960145949007907,
+          "delta": -1912062
+        },
+        "heap_free_calls": {
+          "prior": 8674374,
+          "current": 8023624,
+          "ratio": 0.9249801772439141,
+          "delta": -650750
+        },
+        "term_drop_calls": {
+          "prior": 3437823,
+          "current": 2913474,
+          "ratio": 0.8474764407591665,
+          "delta": -524349
+        },
+        "ctr_take_calls": {
+          "prior": 6386511,
+          "current": 6161810,
+          "ratio": 0.9648163136335317,
+          "delta": -224701
+        },
+        "frame_push_calls": {
+          "prior": 29210,
+          "current": 29969,
+          "ratio": 1.0259842519685038,
+          "delta": 759
+        },
+        "register_words_copy_requested": {
+          "prior": 11461678,
+          "current": 9920347,
+          "ratio": 0.8655230935644851,
+          "delta": -1541331
+        },
+        "register_words_clear_requested": {
+          "prior": 0,
+          "current": 0,
+          "ratio": null,
+          "delta": 0
+        }
+      },
+      "topAllocationWordOwners": [
+        {
+          "owner": "p88_number",
+          "kind": "lowered_owner",
+          "count": 4536966,
+          "fractionOfAllEvents": 0.27537268454872715
+        },
+        {
+          "owner": null,
+          "kind": "outside_dispatch",
+          "count": 2220912,
+          "fractionOfAllEvents": 0.1347990043536766
+        },
+        {
+          "owner": "p88_field",
+          "kind": "lowered_owner",
+          "count": 2066630,
+          "fractionOfAllEvents": 0.12543480622709888
+        },
+        {
+          "owner": "p130m_word",
+          "kind": "lowered_owner",
+          "count": 1624780,
+          "fractionOfAllEvents": 0.09861657116255243
+        },
+        {
+          "owner": "p88_fields_finish",
+          "kind": "lowered_owner",
+          "count": 1019855,
+          "fractionOfAllEvents": 0.06190044386500629
+        },
+        {
+          "owner": "String.append",
+          "kind": "lowered_owner",
+          "count": 907149,
+          "fractionOfAllEvents": 0.05505971510822282
+        },
+        {
+          "owner": "p88_fields_next",
+          "kind": "lowered_owner",
+          "count": 638559,
+          "fractionOfAllEvents": 0.038757554293497164
+        },
+        {
+          "owner": "p118u_divmod",
+          "kind": "lowered_owner",
+          "count": 507819,
+          "fractionOfAllEvents": 0.030822245812476896
+        },
+        {
+          "owner": "p88_record_put",
+          "kind": "lowered_owner",
+          "count": 428957,
+          "fractionOfAllEvents": 0.02603569007260983
+        },
+        {
+          "owner": "p88_build",
+          "kind": "lowered_owner",
+          "count": 330274,
+          "fractionOfAllEvents": 0.020046092039624343
+        }
+      ],
+      "topReclamationOwners": [
+        {
+          "owner": "j_find_ctor",
+          "kind": "lowered_owner",
+          "count": 164216,
+          "fractionOfAllEvents": 0.05636432657370548
+        },
+        {
+          "owner": "constructor_exists",
+          "kind": "lowered_owner",
+          "count": 157530,
+          "fractionOfAllEvents": 0.05406947170285371
+        },
+        {
+          "owner": "f_prefix_complete_ready_seed",
+          "kind": "lowered_owner",
+          "count": 152310,
+          "fractionOfAllEvents": 0.05227779619794101
+        },
+        {
+          "owner": "lookup",
+          "kind": "lowered_owner",
+          "count": 138737,
+          "fractionOfAllEvents": 0.04761909665231267
+        },
+        {
+          "owner": "norm_max_book",
+          "kind": "lowered_owner",
+          "count": 132649,
+          "fractionOfAllEvents": 0.045529495028958554
+        },
+        {
+          "owner": "p111v_get",
+          "kind": "lowered_owner",
+          "count": 128640,
+          "fractionOfAllEvents": 0.0441534745118714
+        },
+        {
+          "owner": "kr_resolve",
+          "kind": "lowered_owner",
+          "count": 104071,
+          "fractionOfAllEvents": 0.03572058648884459
+        },
+        {
+          "owner": "nc_ctor_owned",
+          "kind": "lowered_owner",
+          "count": 85396,
+          "fractionOfAllEvents": 0.029310712915234526
+        },
+        {
+          "owner": "p111v_value",
+          "kind": "lowered_owner",
+          "count": 75131,
+          "fractionOfAllEvents": 0.025787427655094914
+        },
+        {
+          "owner": "nc_pack_foreign",
+          "kind": "lowered_owner",
+          "count": 74953,
+          "fractionOfAllEvents": 0.025726332206843103
+        }
+      ],
+      "topRegisterCopyOwners": [
+        {
+          "owner": "p88_fields",
+          "kind": "lowered_owner",
+          "count": 1791828,
+          "fractionOfAllEvents": 0.18062150446955133
+        },
+        {
+          "owner": "p130m_word",
+          "kind": "lowered_owner",
+          "count": 1299824,
+          "fractionOfAllEvents": 0.13102606189077862
+        },
+        {
+          "owner": "p88_fields_next",
+          "kind": "lowered_owner",
+          "count": 1143700,
+          "fractionOfAllEvents": 0.11528830594333041
+        },
+        {
+          "owner": "p88_number",
+          "kind": "lowered_owner",
+          "count": 648138,
+          "fractionOfAllEvents": 0.06533420655547634
+        },
+        {
+          "owner": "p88_field",
+          "kind": "lowered_owner",
+          "count": 457490,
+          "fractionOfAllEvents": 0.046116330406587594
+        },
+        {
+          "owner": "p88_fields_finish",
+          "kind": "lowered_owner",
+          "count": 333634,
+          "fractionOfAllEvents": 0.033631283260555304
+        },
+        {
+          "owner": "p88_u32",
+          "kind": "lowered_owner",
+          "count": 324956,
+          "fractionOfAllEvents": 0.032756515472694654
+        },
+        {
+          "owner": "p88_record_width_gate",
+          "kind": "lowered_owner",
+          "count": 238310,
+          "fractionOfAllEvents": 0.02402234518611093
+        },
+        {
+          "owner": "p88_record_width",
+          "kind": "lowered_owner",
+          "count": 238310,
+          "fractionOfAllEvents": 0.02402234518611093
+        },
+        {
+          "owner": "p131i_insert",
+          "kind": "lowered_owner",
+          "count": 212052,
+          "fractionOfAllEvents": 0.021375461967207396
+        }
+      ],
+      "physicalCallerFractions": [
+        {
+          "caller": "[unrecovered]",
+          "periodWeightedFraction": 0.917509966268016
+        },
+        {
+          "caller": "p111_set_regs",
+          "periodWeightedFraction": 0.08249003373198405
+        }
+      ],
+      "eventReceipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/final-profile-analysis01/contexts/coverage-closures-256-events.json",
+        "bytes": 1926223,
+        "sha256": "9de32438f6ad9df3767c6d7b1fc58905e581a8beadc5be83501cbc5778d2bdc5"
+      }
+    },
+    {
+      "name": "coverage-map-churn-128",
+      "cleanCpuSeconds": 1.9118259999999998,
+      "priorCleanCpuSeconds": 2.859453,
+      "physicalSamples": 807,
+      "physicalAdequate": true,
+      "physicalWholeChildCpuCoverage": true,
+      "physicalEstimateAvailable": true,
+      "loss": {
+        "dropped": 0,
+        "overruns": 0
+      },
+      "unknownPhysicalSamples": 55,
+      "physicalAccepted": 4,
+      "physicalRejected": [],
+      "contextSamples": 835,
+      "contextAdequate": true,
+      "contextRejected": [],
+      "contextOnlyWallOverClean": 1.0803975961115464,
+      "countersWallOverClean": 1.6837355547857036,
+      "topPhysicalLeaves": [
+        {
+          "object": "executable",
+          "decoded": "term_drop",
+          "samples": 103,
+          "periodWeightedFraction": 0.12603047714214338,
+          "estimatedCleanCpuSeconds": 0.2409483429927554,
+          "priorEstimatedCleanCpuSeconds": 0.4186124629762117
+        },
+        {
+          "object": "executable",
+          "decoded": "p125_rt_take2",
+          "samples": 61,
+          "periodWeightedFraction": 0.07656757431926055,
+          "estimatedCleanCpuSeconds": 0.1463838793404946,
+          "priorEstimatedCleanCpuSeconds": 0.1293939561795743
+        },
+        {
+          "object": "/usr/lib/x86_64-linux-gnu/libc-2.31.so",
+          "decoded": "[library_unresolved]",
+          "samples": 54,
+          "periodWeightedFraction": 0.06645016237821634,
+          "estimatedCleanCpuSeconds": 0.12704114813889583,
+          "priorEstimatedCleanCpuSeconds": 0.16212602414594884
+        },
+        {
+          "object": "executable",
+          "decoded": "span_fade",
+          "samples": 53,
+          "periodWeightedFraction": 0.06607544341743692,
+          "estimatedCleanCpuSeconds": 0.12632475068698473,
+          "priorEstimatedCleanCpuSeconds": 0.2910085417635485
+        },
+        {
+          "object": "executable",
+          "decoded": "p113d_FID_$p118borrow.read.String.cmp",
+          "samples": 34,
+          "periodWeightedFraction": 0.042093429927554334,
+          "estimatedCleanCpuSeconds": 0.08047531376467648,
+          "priorEstimatedCleanCpuSeconds": 0.04577375129672688
+        },
+        {
+          "object": "executable",
+          "decoded": "p111_rt_ctor",
+          "samples": 27,
+          "periodWeightedFraction": 0.03447414439170622,
+          "estimatedCleanCpuSeconds": 0.06590856557581813,
+          "priorEstimatedCleanCpuSeconds": 0.04781950554462529
+        },
+        {
+          "object": "executable",
+          "decoded": "p113d_FID_$p118borrow.read.p88_string_eq_go",
+          "samples": 28,
+          "periodWeightedFraction": 0.03422433175118661,
+          "estimatedCleanCpuSeconds": 0.06543096727454409,
+          "priorEstimatedCleanCpuSeconds": 0.08950174834555534
+        },
+        {
+          "object": "executable",
+          "decoded": "p111_rt_sink",
+          "samples": 23,
+          "periodWeightedFraction": 0.02860354733949538,
+          "estimatedCleanCpuSeconds": 0.05468500549587809,
+          "priorEstimatedCleanCpuSeconds": 0.09205894115542836
+        },
+        {
+          "object": "executable",
+          "decoded": "p111_rt_op",
+          "samples": 19,
+          "periodWeightedFraction": 0.02523107669248064,
+          "estimatedCleanCpuSeconds": 0.04823742842867849,
+          "priorEstimatedCleanCpuSeconds": 0.04909810194956179
+        },
+        {
+          "object": "executable",
+          "decoded": "p111_rt_take",
+          "samples": 20,
+          "periodWeightedFraction": 0.024356732450662003,
+          "estimatedCleanCpuSeconds": 0.04656583437421933,
+          "priorEstimatedCleanCpuSeconds": 0.07083424083348237
+        },
+        {
+          "object": "executable",
+          "decoded": "p118_rt_extend1",
+          "samples": 19,
+          "periodWeightedFraction": 0.02210841868598551,
+          "estimatedCleanCpuSeconds": 0.04226744966275293,
+          "priorEstimatedCleanCpuSeconds": 0.04040364639599356
+        },
+        {
+          "object": "executable",
+          "decoded": "work_loop",
+          "samples": 19,
+          "periodWeightedFraction": 0.02210841868598551,
+          "estimatedCleanCpuSeconds": 0.04226744966275293,
+          "priorEstimatedCleanCpuSeconds": 0.11942090422106957
+        },
+        {
+          "object": "executable",
+          "decoded": "p111_rt_jump",
+          "samples": 16,
+          "periodWeightedFraction": 0.02160879340494629,
+          "estimatedCleanCpuSeconds": 0.04131225306020484,
+          "priorEstimatedCleanCpuSeconds": 0.06981136370953317
+        },
+        {
+          "object": "executable",
+          "decoded": "p111_rt_keep",
+          "samples": 17,
+          "periodWeightedFraction": 0.02010991756182863,
+          "estimatedCleanCpuSeconds": 0.038446663252560576,
+          "priorEstimatedCleanCpuSeconds": 0.07262427580039349
+        },
+        {
+          "object": "executable",
+          "decoded": "p118_destination_fill",
+          "samples": 13,
+          "periodWeightedFraction": 0.01673744691481389,
+          "estimatedCleanCpuSeconds": 0.03199908618536098,
+          "priorEstimatedCleanCpuSeconds": 0.033754945090323736
+        },
+        {
+          "object": "executable",
+          "decoded": "p111_set_regs",
+          "samples": 14,
+          "periodWeightedFraction": 0.01648763427429428,
+          "estimatedCleanCpuSeconds": 0.03152148788408693,
+          "priorEstimatedCleanCpuSeconds": 0.06648701305669825
+        },
+        {
+          "object": "executable",
+          "decoded": "p111_rt_return",
+          "samples": 10,
+          "periodWeightedFraction": 0.01311516362727954,
+          "estimatedCleanCpuSeconds": 0.02507391081688733,
+          "priorEstimatedCleanCpuSeconds": 0.044239435610803075
+        },
+        {
+          "object": "executable",
+          "decoded": "p118_rt_borrow_scalar_safe",
+          "samples": 11,
+          "periodWeightedFraction": 0.012240819385460905,
+          "estimatedCleanCpuSeconds": 0.023402316762428176,
+          "priorEstimatedCleanCpuSeconds": 0.028896278751565016
+        },
+        {
+          "object": "executable",
+          "decoded": "p113d_FID_$p118borrow.read.index_hash",
+          "samples": 10,
+          "periodWeightedFraction": 0.011866100424681489,
+          "estimatedCleanCpuSeconds": 0.02268591931051711,
+          "priorEstimatedCleanCpuSeconds": 0.025571928098730098
+        },
+        {
+          "object": "executable",
+          "decoded": "io_cbuf",
+          "samples": 9,
+          "periodWeightedFraction": 0.011491381463902073,
+          "estimatedCleanCpuSeconds": 0.021969521858606043,
+          "priorEstimatedCleanCpuSeconds": 0.010740209801466642
+        }
+      ],
+      "topActiveOwners": [
+        {
+          "owner": "String.append",
+          "samples": 50,
+          "periodWeightedFraction": 0.06159420289855073
+        },
+        {
+          "owner": "[unknown]",
+          "samples": 34,
+          "periodWeightedFraction": 0.04070048309178744
+        },
+        {
+          "owner": "String.eq",
+          "samples": 25,
+          "periodWeightedFraction": 0.0320048309178744
+        },
+        {
+          "owner": "p111v_get",
+          "samples": 24,
+          "periodWeightedFraction": 0.028019323671497585
+        },
+        {
+          "owner": "p111v_value",
+          "samples": 20,
+          "periodWeightedFraction": 0.025966183574879228
+        },
+        {
+          "owner": "p131i_insert",
+          "samples": 21,
+          "periodWeightedFraction": 0.024516908212560386
+        },
+        {
+          "owner": "p88_number",
+          "samples": 19,
+          "periodWeightedFraction": 0.02318840579710145
+        },
+        {
+          "owner": "p130m_word",
+          "samples": 18,
+          "periodWeightedFraction": 0.022222222222222223
+        },
+        {
+          "owner": "p88_field",
+          "samples": 18,
+          "periodWeightedFraction": 0.021618357487922707
+        },
+        {
+          "owner": "lookup",
+          "samples": 19,
+          "periodWeightedFraction": 0.02077294685990338
+        },
+        {
+          "owner": "nc_uses_term",
+          "samples": 17,
+          "periodWeightedFraction": 0.020652173913043477
+        },
+        {
+          "owner": "p111v_name_chars",
+          "samples": 17,
+          "periodWeightedFraction": 0.02004830917874396
+        },
+        {
+          "owner": "p111q_memory",
+          "samples": 12,
+          "periodWeightedFraction": 0.015821256038647345
+        },
+        {
+          "owner": "p111v_signature",
+          "samples": 12,
+          "periodWeightedFraction": 0.014009661835748793
+        },
+        {
+          "owner": "p112w_ready",
+          "samples": 11,
+          "periodWeightedFraction": 0.013647342995169082
+        }
+      ],
+      "familyContexts": {
+        "bangAnalysis": {
+          "owners": [
+            "nc_bangs_term",
+            "nc_bangs_terms"
+          ],
+          "periodWeightedFraction": 0.004106280193236715,
+          "rule": "^nc_bangs_"
+        },
+        "useQueries": {
+          "owners": [
+            "nq_uses",
+            "p131u_hot",
+            "p131u_unshared"
+          ],
+          "periodWeightedFraction": 0.006400966183574879,
+          "rule": "^(?:nq_uses(?:_|$)|p131u_)"
+        },
+        "carrierDecoder": {
+          "owners": [
+            "p88_number",
+            "p130m_word",
+            "p88_field",
+            "p88_record_width",
+            "p88_fields_next",
+            "p88_fields_finish",
+            "p88_fields",
+            "p88_u32",
+            "p88_build",
+            "p88_string_eq",
+            "p88_record_put",
+            "p88_record_tag",
+            "p88_text_chars",
+            "p88_record_width_gate",
+            "p130m_strings_read",
+            "p88_roots_done",
+            "p88_text_char"
+          ],
+          "periodWeightedFraction": 0.10591787439613526,
+          "rule": "^(?:p88_|p130m)"
+        },
+        "strings": {
+          "owners": [
+            "String.append",
+            "String.eq",
+            "String.to_lower",
+            "String.ends_with"
+          ],
+          "periodWeightedFraction": 0.09867149758454107,
+          "rule": "^String\\."
+        },
+        "qbeAndTextEmission": {
+          "owners": [
+            "p111q_memory",
+            "p111q_body_text",
+            "p113e_body",
+            "p111q_stmt",
+            "p111q_data_chunks_go",
+            "p113e_originals",
+            "p111q_value",
+            "p111q_alloca",
+            "p111q_args",
+            "p113e_base_scalar_safe",
+            "p111q_segment_table",
+            "p113e_base_stmt",
+            "p113e_buffers",
+            "p111q_strings",
+            "p113e_public",
+            "p113e_public_loads",
+            "p111q_local",
+            "p111q_return"
+          ],
+          "periodWeightedFraction": 0.058454106280193256,
+          "rule": "^(?:p111q_|p113e_|nt_text_)"
+        },
+        "independentVerifier": {
+          "owners": [
+            "p111v_get",
+            "p111v_value",
+            "p111v_name_chars",
+            "p111v_signature",
+            "p111v_decl",
+            "p111v_step",
+            "p111v_contract",
+            "p111v_memory",
+            "p111v_assign",
+            "p111v_args",
+            "p111v_put",
+            "p111v_schema_stmt",
+            "p111v_body",
+            "p111v_schema",
+            "p111v_finish",
+            "p111v_stmt",
+            "p111v_operator",
+            "p111v_join",
+            "p111v_comparison",
+            "p111v_raw_name_chars",
+            "p111v_state_argument"
+          ],
+          "periodWeightedFraction": 0.14975845410628028,
+          "rule": "^p111v_"
+        }
+      },
+      "selectedDirectEntries": {
+        "nc_bangs_names": 219,
+        "nc_bangs_names_loop": 0,
+        "nq_uses": 11989,
+        "nq_uses_list": 15894,
+        "p112s_prepare": 1,
+        "p113pl_inspect_request": 0,
+        "p113pl_inspect_prepared": 0,
+        "p126bp_close": 0,
+        "p128raw_plan_finish": 1,
+        "String.append": 264527,
+        "String.order": 0,
+        "String.eq": 525144,
+        "p111v_verify": 0,
+        "p111v_get": 78948,
+        "p111v_name_chars": 269192,
+        "p88_number": 324069,
+        "p130m_word": 324956,
+        "p130mc_next": 0
+      },
+      "selectedActiveFractions": {
+        "nc_bangs_names": 0,
+        "nc_bangs_names_loop": 0,
+        "nq_uses": 0.002898550724637681,
+        "nq_uses_list": 0,
+        "p112s_prepare": 0,
+        "p113pl_inspect_request": 0,
+        "p113pl_inspect_prepared": 0,
+        "p126bp_close": 0,
+        "p128raw_plan_finish": 0,
+        "String.append": 0.06159420289855073,
+        "String.order": 0,
+        "String.eq": 0.0320048309178744,
+        "p111v_verify": 0,
+        "p111v_get": 0.028019323671497585,
+        "p111v_name_chars": 0.02004830917874396,
+        "p88_number": 0.02318840579710145,
+        "p130m_word": 0.022222222222222223,
+        "p130mc_next": 0
+      },
+      "runtimeCounters": {
+        "dispatches": {
+          "prior": 31543925,
+          "current": 18735969,
+          "ratio": 0.5939644162861787,
+          "delta": -12807956
+        },
+        "heap_alloc_calls": {
+          "prior": 33718906,
+          "current": 26148689,
+          "ratio": 0.7754904325780914,
+          "delta": -7570217
+        },
+        "heap_alloc_requested_words": {
+          "prior": 62497019,
+          "current": 47856290,
+          "ratio": 0.7657371625997074,
+          "delta": -14640729
+        },
+        "heap_free_calls": {
+          "prior": 33718906,
+          "current": 26148689,
+          "ratio": 0.7754904325780914,
+          "delta": -7570217
+        },
+        "term_drop_calls": {
+          "prior": 38356509,
+          "current": 22628449,
+          "ratio": 0.5899506912894498,
+          "delta": -15728060
+        },
+        "ctr_take_calls": {
+          "prior": 30559099,
+          "current": 23746769,
+          "ratio": 0.7770768699692356,
+          "delta": -6812330
+        },
+        "frame_push_calls": {
+          "prior": 192337,
+          "current": 203035,
+          "ratio": 1.0556211233408028,
+          "delta": 10698
+        },
+        "register_words_copy_requested": {
+          "prior": 57311383,
+          "current": 34264203,
+          "ratio": 0.5978603412868261,
+          "delta": -23047180
+        },
+        "register_words_clear_requested": {
+          "prior": 0,
+          "current": 0,
+          "ratio": null,
+          "delta": 0
+        }
+      },
+      "topAllocationWordOwners": [
+        {
+          "owner": "String.append",
+          "kind": "lowered_owner",
+          "count": 11751661,
+          "fractionOfAllEvents": 0.2455614716477186
+        },
+        {
+          "owner": "p88_number",
+          "kind": "lowered_owner",
+          "count": 4536966,
+          "fractionOfAllEvents": 0.09480396411840533
+        },
+        {
+          "owner": "p111q_memory",
+          "kind": "lowered_owner",
+          "count": 3341699,
+          "fractionOfAllEvents": 0.06982779066241868
+        },
+        {
+          "owner": "p111q_body_text",
+          "kind": "lowered_owner",
+          "count": 2535578,
+          "fractionOfAllEvents": 0.05298317107322778
+        },
+        {
+          "owner": null,
+          "kind": "outside_dispatch",
+          "count": 2224306,
+          "fractionOfAllEvents": 0.04647886411587693
+        },
+        {
+          "owner": "p88_field",
+          "kind": "lowered_owner",
+          "count": 2066630,
+          "fractionOfAllEvents": 0.04318408301186741
+        },
+        {
+          "owner": "p111v_put",
+          "kind": "lowered_owner",
+          "count": 1878457,
+          "fractionOfAllEvents": 0.03925203980500787
+        },
+        {
+          "owner": "p130m_word",
+          "kind": "lowered_owner",
+          "count": 1624780,
+          "fractionOfAllEvents": 0.03395123190702831
+        },
+        {
+          "owner": "p131i_insert",
+          "kind": "lowered_owner",
+          "count": 1358086,
+          "fractionOfAllEvents": 0.028378422146806616
+        },
+        {
+          "owner": "p88_fields_finish",
+          "kind": "lowered_owner",
+          "count": 1019855,
+          "fractionOfAllEvents": 0.021310782762307735
+        }
+      ],
+      "topReclamationOwners": [
+        {
+          "owner": "p111v_get",
+          "kind": "lowered_owner",
+          "count": 1774514,
+          "fractionOfAllEvents": 0.0784196035707087
+        },
+        {
+          "owner": "p111v_value",
+          "kind": "lowered_owner",
+          "count": 1320117,
+          "fractionOfAllEvents": 0.0583388194215167
+        },
+        {
+          "owner": "lookup",
+          "kind": "lowered_owner",
+          "count": 1270076,
+          "fractionOfAllEvents": 0.05612739962867097
+        },
+        {
+          "owner": "nc_uses_term",
+          "kind": "lowered_owner",
+          "count": 569231,
+          "fractionOfAllEvents": 0.025155546453935043
+        },
+        {
+          "owner": "p111v_contract",
+          "kind": "lowered_owner",
+          "count": 532426,
+          "fractionOfAllEvents": 0.023529054068177627
+        },
+        {
+          "owner": "p112w_ready",
+          "kind": "lowered_owner",
+          "count": 493864,
+          "fractionOfAllEvents": 0.021824916060309747
+        },
+        {
+          "owner": "nq_layout_subst",
+          "kind": "lowered_owner",
+          "count": 483743,
+          "fractionOfAllEvents": 0.021377647226285813
+        },
+        {
+          "owner": "nc_ctor_owned",
+          "kind": "lowered_owner",
+          "count": 392505,
+          "fractionOfAllEvents": 0.01734564308848565
+        },
+        {
+          "owner": "nc_native_primitive",
+          "kind": "lowered_owner",
+          "count": 383195,
+          "fractionOfAllEvents": 0.016934214094832572
+        },
+        {
+          "owner": "ns_body",
+          "kind": "lowered_owner",
+          "count": 348442,
+          "fractionOfAllEvents": 0.015398404017880323
+        }
+      ],
+      "topRegisterCopyOwners": [
+        {
+          "owner": "p88_fields",
+          "kind": "lowered_owner",
+          "count": 1791828,
+          "fractionOfAllEvents": 0.052294460198008985
+        },
+        {
+          "owner": "p111v_name_chars",
+          "kind": "lowered_owner",
+          "count": 1500267,
+          "fractionOfAllEvents": 0.043785258918761366
+        },
+        {
+          "owner": "p131i_insert",
+          "kind": "lowered_owner",
+          "count": 1451766,
+          "fractionOfAllEvents": 0.04236975831598943
+        },
+        {
+          "owner": "p130m_word",
+          "kind": "lowered_owner",
+          "count": 1299824,
+          "fractionOfAllEvents": 0.03793533443635038
+        },
+        {
+          "owner": "p88_fields_next",
+          "kind": "lowered_owner",
+          "count": 1143700,
+          "fractionOfAllEvents": 0.033378858980026474
+        },
+        {
+          "owner": "nc_uses_list",
+          "kind": "lowered_owner",
+          "count": 847355,
+          "fractionOfAllEvents": 0.02473003676752674
+        },
+        {
+          "owner": "p88_number",
+          "kind": "lowered_owner",
+          "count": 648138,
+          "fractionOfAllEvents": 0.018915893067759374
+        },
+        {
+          "owner": "subst_terms",
+          "kind": "lowered_owner",
+          "count": 605533,
+          "fractionOfAllEvents": 0.01767246709342692
+        },
+        {
+          "owner": "p111v_decl",
+          "kind": "lowered_owner",
+          "count": 574425,
+          "fractionOfAllEvents": 0.01676458080755592
+        },
+        {
+          "owner": "String.eq",
+          "kind": "lowered_owner",
+          "count": 525144,
+          "fractionOfAllEvents": 0.01532631592218853
+        }
+      ],
+      "physicalCallerFractions": [
+        {
+          "caller": "[unrecovered]",
+          "periodWeightedFraction": 0.9335498376217837
+        },
+        {
+          "caller": "p111_set_regs",
+          "periodWeightedFraction": 0.06645016237821634
+        }
+      ],
+      "eventReceipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/final-profile-analysis01/contexts/coverage-map-churn-128-events.json",
+        "bytes": 2134451,
+        "sha256": "fd28ed5fe690e501ea561854d60010877e4b9f6df2add91ee11fc3ec5e163f70"
+      }
+    }
+  ],
+  "sourceDefinitionLines": {
+    "p111v_get": 40131,
+    "p111v_put": 40135,
+    "p111v_name_chars": 40145,
+    "p111q_memory": 40665,
+    "p111q_body_text": 40715,
+    "nt_text_finish": 30959,
+    "p88_number": 37970,
+    "p88_field": 38010,
+    "p130m_word": 56908,
+    "p130m_number_read": 56923,
+    "nc_bangs_names": 35793
+  },
+  "observedFindings": [
+    "All three physical and context sample pools exceed500; zero retained-capture drops/overruns and no rejected captures.",
+    "The authenticated sampled libc copy PCs all recover physical caller p111_set_regs; no other libc cause is inferred.",
+    "nc_bangs_names direct entries are138/48/219; all nc_bangs_* active owner shares are below0.5% in these requests.",
+    "Verifier owners now occupy23.81%/5.40%/14.98% of lexer/closures/Map diagnostic active-owner samples.",
+    "Carrier decoder owners occupy14.17%/48.68%/10.59%; p88_number requests4,536,966 allocation words in every case.",
+    "String.append requests8,015,180/907,149/11,751,661 allocation words in lexer/closures/Map; Map QBE memory/body-text emission adds3,341,699/2,535,578 under their respective active owners.",
+    "Allocation/free counts match within each final request; this is not a general proof against leaks or ownership errors."
+  ],
+  "limitations": [
+    "Historical and final clean timings are different blocks; primary gain claims use the separate controlled timing reports.",
+    "Counter totals are exact instrumented runtime-hook counts; private inlined operations may bypass hooks.",
+    "Context-only adds6.1\u20138.3% wall overhead, counter-enabled adds66.8\u201386.5%; never treat diagnostic wall time as clean performance.",
+    "Active-owner names reflect the current dispatch context, not allocation origin or inclusive ancestry. Physical and owner fractions overlap.",
+    "Unknown physical/context samples remain in denominators; absence of an observed sample does not prove zero cost.",
+    "Three short requests do not establish the dominant costs of a full compiler self-build or broad user-program speed."
+  ]
+}

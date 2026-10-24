@@ -1,6 +1,6 @@
 # Phase131: source-connected usage-summary laws
 
-Forty-two distinct Bend laws were accepted by the retained independent BendTT
+Fifty-five distinct Bend laws were accepted by the retained independent BendTT
 kernel. They cover the actual saturating-count helpers, the actual missing-side
 summary transform, and a source-connected safe replacement for merge and lookup
 on an explicitly restricted domain. Two type-correct wrong algorithms were
@@ -217,7 +217,73 @@ compatibility using actual U32 comparison; then prove lookup combination for
 nonempty different key domains. Only after that does the generic KTerm
 traversal become the main missing theorem. Its Var, exact-arity Mat,
 NWPattern and malformed-fallback cases must match the existing queries exactly.
-The present 42 laws do not constitute a whole-analyzer or compiler theorem.
+The present laws do not constitute a whole-analyzer or compiler theorem.
+
+## A directly useful identity law for borrowed String readers
+
+The exact current safe `p88_string_eq_go`, `p98_eq_finish` and public
+`p88_string_eq` bodies were copied unchanged from `combined-codegen-source01`.
+Historical Phase98 laws already connected consuming equality to a structural
+reference, but that alone was not a proof of character reflexivity. Reusing the
+proved actual Word/U32 comparison law, three new laws now establish:
+
+- `Char.is_eq(c,c) = True` for every Char.
+- `p88_string_eq_go(x,x,same) = same` for every String and Bool.
+- The held-root public wrapper satisfies `p88_string_eq(x,x) = True`.
+
+The five-law dependency closure passed independent BendTT in **0.35s**, with
+zero opaque definitions. Exact proof/source pins are in
+[string-evidence.json](../../selfhost/tools/performance/phase131/laws/string-evidence.json).
+`string-source-bridge.py` authenticates the three actual declarations against
+those accepted snapshots; no historic implementation is silently substituted.
+
+This supports a bounded native experiment: in the exact borrowed String
+reader, full-Term identity with incoming pending flag True may return True.
+Returning True unconditionally is wrong when the pending flag is False. No
+reflexivity is assumed for Float equality, arbitrary callbacks or user-defined
+comparison functions.
+
+The runtime premises are separate: identical native words must denote the same
+valid live immutable String; the reader's Bool encoding must match; outer
+held-root/provenance guards and the normal release epilogue must remain intact.
+A root constructor check alone does not establish preservation of errors in
+malformed native tails, which are outside the source theorem. The experiment
+must also measure alias frequency in actual composable reader calls: a public
+guard can refuse root aliases even while nested readers see identical values.
+No native identity shortcut was implemented or benchmarked by this proof task.
+
+## Universal count preservation through the actual merge
+
+A bounded follow-up proved the missing count-range invariant for the exact
+first-order merge, including differing key domains. For every pair of finite
+input lists whose fields are encoded from Zero/Once/Many, and all three
+admitted modes, `all_counts_bounded(p131u_merge(...)) = True`. The predicate
+inspects the actual raw output list and checks both fields with the real
+`U32.is_le(field,2)` operation. The stronger worker law allows any pending
+`Cmp`, including LT/EQ/GT states with no ordering premise.
+
+This theorem permits arbitrary U32 keys, unsorted input lists and duplicate
+keys. It assumes neither alignment nor a comparator axiom. Its induction
+follows every real merge branch, uses the already-proved actual low/high
+combiners, and proves the missing-side transform preserves bounds. Ten new
+laws were accepted, bringing the total to 55. The complete 24-law dependency
+closure took **2.96s** in independent BendTT with zero opaque definitions and
+about **611MiB** peak RSS. Exact receipts are in
+[merge-range-evidence.json](../../selfhost/tools/performance/phase131/laws/merge-range-evidence.json);
+the reproducible entry is `merge-range-laws.bend`.
+
+This is additional source proof evidence for unchanged production bodies. It
+neither changes nor retroactively expands the frozen native admission or
+qualification receipts. The earlier unbounded-count counterexample remains a
+necessary negative domain control.
+
+The theorem bounds low/high independently: it does not establish `low <= high`,
+sortedness, uniqueness, semantic lookup equivalence or KTerm traversal. Its
+input domain uses a constructive Count witness; chaining arbitrary runtime
+summary results through a complete analyzer proof will require a proved bridge
+from the output range predicate back to that witness, or a version of merge
+correctness that directly constructs an encoded bounded result. That is a
+precise remaining proof obligation, not a property supplied by source checking.
 
 ## Highest-value next steps
 

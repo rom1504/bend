@@ -1,7 +1,7 @@
 # P131-001 — reusable use facts with source-connected laws
 
-Status: implemented in qualified FAST candidate; proved first-order successor
-is in the separately admitted final composition, pending native qualification.
+Status: proved first-order successor is part of the native-qualified final
+composition. FAST remains a separately qualified earlier checkpoint.
 
 Hypothesis: repeated queries over one immutable body can share an exact sparse
 minimum/maximum summary. Preserve saturation, missing entries, alternative and
@@ -17,7 +17,9 @@ A proved first-order rewrite is only1.02643 times its cost. Exact declarations,
 proof closures and mutation rejections are in the [law package](../../selfhost/tools/performance/phase131/laws/README.md).
 Bounded0/1/many counts are a necessary specification premise; unrestricted U32
 entries make the proposed generic merge law false. Complete differing-key merge
-correctness, invariant preservation and KTerm traversal remain unproved.
+lookup correctness, ordering/uniqueness and KTerm traversal remain unproved.
+Later source-connected laws do prove both count fields remain bounded through
+merge on arbitrary differing-key Count lists; frozen admission is unchanged.
 
 Evidence: `selfhost/build/phase131/usage-timing01`, `usage-safe-jobs01`,
 `usage-first-order-jobs01`, `combined-fast-request02`,

@@ -1,0 +1,2327 @@
+{
+  "kind": "phase131-native-results",
+  "complete": true,
+  "targetsRun": false,
+  "nativeQualification": "Independent final N0->N1->N2->N3 binder closed; Q2=Q3, focused19 N2/N3, ordinary45 N3. Timings remain observations of actual N1/N2 binaries.",
+  "selected": false,
+  "installed": false,
+  "finalBlock": {
+    "label": "Phase130 N1 versus final Phase131 N2",
+    "raw": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase112/p131-final-parent-timing01/report.json",
+      "bytes": 235399,
+      "sha256": "163f01d21fb823e4f7659f51cb62468379a54365ca51f6e6b95bf6a4d5b4eb23"
+    },
+    "analysis": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/final-native-timing-analysis01/report.json",
+      "bytes": 12677,
+      "sha256": "45e21fc30b6b2dc8cdefdfc81f8ddbb31750243b14a8c6a3e97649bb83c3e64e"
+    },
+    "manifest": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/final-parent-timing01.json",
+      "bytes": 15029,
+      "sha256": "332a37f895a4c5699e6ab8399480547a4e28606e7550de41cad0e426197ddcba"
+    },
+    "roles": {
+      "phase111": {
+        "binary": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p130-native01-n1/program",
+          "bytes": 16586488,
+          "sha256": "a25e4c7f55a6a48829bf9d148498d6392b98fe1ab66b9664d99ce1987715c2c5"
+        },
+        "source": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase130/mode-source01/compiler.bend",
+          "bytes": 2613588,
+          "sha256": "995d6b4bf14963debb9a810de2ed941c3cd30a71fc34a156d96b1adbd1b06bdd"
+        },
+        "generation": "Qualified Phase130 N1; compact Base",
+        "nativeQualified": true,
+        "carrierReceipt": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase130/base-carrier01/receipt.json",
+          "bytes": 4362,
+          "sha256": "6b170fc62a4a8b4e7588019a1b2cbdcc932ba10477029d966fbfa62cc61c89cf"
+        }
+      },
+      "phase112": {
+        "binary": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p131-final-native01-n2/program",
+          "bytes": 17132048,
+          "sha256": "2fae36020081ccc5cbfb847caf0b285b762387327e4bb44e1d62d96d1affd5dc"
+        },
+        "source": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/combined-literals-source01/compiler.bend",
+          "bytes": 2667581,
+          "sha256": "1bc5930edcf80cda6c3572645df3c846fa631a83c2b936f20c83b05e0a6728f9"
+        },
+        "generation": "Experimental final Phase131 N2; focused19 passed; compact Base",
+        "nativeQualified": false,
+        "carrierReceipt": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase130/base-carrier01/receipt.json",
+          "bytes": 4362,
+          "sha256": "6b170fc62a4a8b4e7588019a1b2cbdcc932ba10477029d966fbfa62cc61c89cf"
+        }
+      },
+      "upstream": {
+        "bun": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/bun-1.4.3/bun",
+          "bytes": 88979072,
+          "sha256": "7ce7d6b654eddeec20afddf2396317fba6dc19ab52788a27e894e1806bf8f24b"
+        },
+        "modules": {
+          "bend": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/bend.ts",
+            "sha256": "1d133151652b597a1a035c77c172475e6de096da37f3b9e3adc23c2f75bdfe49",
+            "bytes": 138101
+          },
+          "compiler": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/comp.ts",
+            "sha256": "2b13224ba09a9e39e37cccf06e449c1bdafe5e03a81641654f7d0e455507629c",
+            "bytes": 185124
+          },
+          "base": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/base.bend",
+            "sha256": "99ac43f2b2bb3e3f39acdcedcecbbd3cb44749ce13969c827d6973fa66f7facf",
+            "bytes": 75064
+          }
+        },
+        "manifest": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase105/screen01/upstream.json",
+          "bytes": 665,
+          "sha256": "f3ea63f22513f7907a4c622376a99556617f9be099ff4c80c64b15a2e2d8ded8"
+        },
+        "worker": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase105/upstream.mjs",
+          "bytes": 1428,
+          "sha256": "746f787e532beb4380d78858012f4ef2f20be0c53cc069bb254a75ae804d3181"
+        }
+      }
+    },
+    "cases": [
+      {
+        "name": "lexer",
+        "roles": {
+          "phase111": {
+            "requestSeconds": {
+              "median": 1.9145817360840738,
+              "minimum": 1.8930999201256782,
+              "maximum": 1.9281627610325813,
+              "samples": [
+                1.9281627610325813,
+                1.9145817360840738,
+                1.8930999201256782
+              ]
+            },
+            "machineBuildSeconds": {
+              "median": 0.08767430484294891,
+              "minimum": 0.08614405710250139,
+              "maximum": 0.08860788703896105,
+              "samples": [
+                0.08614405710250139,
+                0.08860788703896105,
+                0.08767430484294891
+              ]
+            },
+            "readyExecutableStageSumSeconds": {
+              "median": 2.003189623123035,
+              "minimum": 1.980774224968627,
+              "maximum": 2.0143068181350827,
+              "samples": [
+                2.0143068181350827,
+                2.003189623123035,
+                1.980774224968627
+              ]
+            },
+            "readyExecutableHarnessSeconds": {
+              "median": 2.0909661820624024,
+              "minimum": 2.042065499117598,
+              "maximum": 2.1363111711107194,
+              "samples": [
+                2.0909661820624024,
+                2.1363111711107194,
+                2.042065499117598
+              ]
+            },
+            "requestCpuSeconds": {
+              "median": 1.9137,
+              "minimum": 1.892145,
+              "maximum": 1.92671,
+              "samples": [
+                1.92671,
+                1.9137,
+                1.892145
+              ]
+            }
+          },
+          "phase112": {
+            "requestSeconds": {
+              "median": 1.546500715892762,
+              "minimum": 1.5425163959152997,
+              "maximum": 1.5604067000094801,
+              "samples": [
+                1.5425163959152997,
+                1.5604067000094801,
+                1.546500715892762
+              ]
+            },
+            "machineBuildSeconds": {
+              "median": 0.08701930940151215,
+              "minimum": 0.08688514400273561,
+              "maximum": 0.08924601296894252,
+              "samples": [
+                0.08688514400273561,
+                0.08924601296894252,
+                0.08701930940151215
+              ]
+            },
+            "readyExecutableStageSumSeconds": {
+              "median": 1.633520025294274,
+              "minimum": 1.6294015399180353,
+              "maximum": 1.6496527129784226,
+              "samples": [
+                1.6294015399180353,
+                1.6496527129784226,
+                1.633520025294274
+              ]
+            },
+            "readyExecutableHarnessSeconds": {
+              "median": 1.6965528861619532,
+              "minimum": 1.648679526988417,
+              "maximum": 1.7711499540600926,
+              "samples": [
+                1.648679526988417,
+                1.7711499540600926,
+                1.6965528861619532
+              ]
+            },
+            "requestCpuSeconds": {
+              "median": 1.545623,
+              "minimum": 1.5415429999999999,
+              "maximum": 1.5592759999999999,
+              "samples": [
+                1.5415429999999999,
+                1.5592759999999999,
+                1.545623
+              ]
+            }
+          },
+          "upstream": {
+            "requestSeconds": {
+              "median": 0.7153377570211887,
+              "minimum": 0.6933464780449867,
+              "maximum": 0.7244376451708376,
+              "samples": [
+                0.7244376451708376,
+                0.7153377570211887,
+                0.6933464780449867
+              ]
+            },
+            "machineBuildSeconds": {
+              "median": 0.6631636510137469,
+              "minimum": 0.6597508809063584,
+              "maximum": 0.6672173349652439,
+              "samples": [
+                0.6631636510137469,
+                0.6597508809063584,
+                0.6672173349652439
+              ]
+            },
+            "readyExecutableStageSumSeconds": {
+              "median": 1.375088637927547,
+              "minimum": 1.3605638130102307,
+              "maximum": 1.3876012961845845,
+              "samples": [
+                1.3876012961845845,
+                1.375088637927547,
+                1.3605638130102307
+              ]
+            },
+            "readyExecutableHarnessSeconds": {
+              "median": 1.4145960758905858,
+              "minimum": 1.4054788688663393,
+              "maximum": 1.424753615166992,
+              "samples": [
+                1.4145960758905858,
+                1.424753615166992,
+                1.4054788688663393
+              ]
+            },
+            "requestCpuSeconds": {
+              "median": 0.714193,
+              "minimum": 0.692412,
+              "maximum": 0.7233689999999999,
+              "samples": [
+                0.7233689999999999,
+                0.714193,
+                0.692412
+              ]
+            }
+          }
+        },
+        "requestRatios": {
+          "candidateOverParent": 0.8077485994700053,
+          "candidateOverUpstream": 2.1619168018373642,
+          "parentOverUpstream": 2.676472361890668
+        },
+        "candidatePercentChange": -19.225140052999468,
+        "observedRangeHint": "candidate_range_below_parent",
+        "pairedRoundRatios": [
+          0.7999928362319589,
+          0.8150117963628997,
+          0.8169144689362692
+        ],
+        "nativeQbeExact": true
+      },
+      {
+        "name": "coverage-closures-256",
+        "roles": {
+          "phase111": {
+            "requestSeconds": {
+              "median": 0.4716815580613911,
+              "minimum": 0.46768797701224685,
+              "maximum": 0.4729537039529532,
+              "samples": [
+                0.4729537039529532,
+                0.46768797701224685,
+                0.4716815580613911
+              ]
+            },
+            "machineBuildSeconds": {
+              "median": 0.04216759209521115,
+              "minimum": 0.04176380694843829,
+              "maximum": 0.04278388596139848,
+              "samples": [
+                0.04278388596139848,
+                0.04176380694843829,
+                0.04216759209521115
+              ]
+            },
+            "readyExecutableStageSumSeconds": {
+              "median": 0.5138491501566023,
+              "minimum": 0.5094517839606851,
+              "maximum": 0.5157375899143517,
+              "samples": [
+                0.5157375899143517,
+                0.5094517839606851,
+                0.5138491501566023
+              ]
+            },
+            "readyExecutableHarnessSeconds": {
+              "median": 0.5914494669996202,
+              "minimum": 0.571268015075475,
+              "maximum": 0.627772849984467,
+              "samples": [
+                0.627772849984467,
+                0.571268015075475,
+                0.5914494669996202
+              ]
+            },
+            "requestCpuSeconds": {
+              "median": 0.47081399999999995,
+              "minimum": 0.466546,
+              "maximum": 0.47192,
+              "samples": [
+                0.47192,
+                0.466546,
+                0.47081399999999995
+              ]
+            }
+          },
+          "phase112": {
+            "requestSeconds": {
+              "median": 0.41524011199362576,
+              "minimum": 0.41222562408074737,
+              "maximum": 0.4185677559580654,
+              "samples": [
+                0.41524011199362576,
+                0.4185677559580654,
+                0.41222562408074737
+              ]
+            },
+            "machineBuildSeconds": {
+              "median": 0.04213902400806546,
+              "minimum": 0.04143544239923358,
+              "maximum": 0.04380494309589267,
+              "samples": [
+                0.04143544239923358,
+                0.04380494309589267,
+                0.04213902400806546
+              ]
+            },
+            "readyExecutableStageSumSeconds": {
+              "median": 0.45667555439285934,
+              "minimum": 0.45436464808881283,
+              "maximum": 0.46237269905395806,
+              "samples": [
+                0.45667555439285934,
+                0.46237269905395806,
+                0.45436464808881283
+              ]
+            },
+            "readyExecutableHarnessSeconds": {
+              "median": 0.5354041550308466,
+              "minimum": 0.4941605911590159,
+              "maximum": 0.5617895610630512,
+              "samples": [
+                0.4941605911590159,
+                0.5617895610630512,
+                0.5354041550308466
+              ]
+            },
+            "requestCpuSeconds": {
+              "median": 0.414308,
+              "minimum": 0.41135,
+              "maximum": 0.41743499999999994,
+              "samples": [
+                0.414308,
+                0.41743499999999994,
+                0.41135
+              ]
+            }
+          },
+          "upstream": {
+            "requestSeconds": {
+              "median": 0.5105286289472133,
+              "minimum": 0.5077678607776761,
+              "maximum": 0.528143331874162,
+              "samples": [
+                0.5105286289472133,
+                0.5077678607776761,
+                0.528143331874162
+              ]
+            },
+            "machineBuildSeconds": {
+              "median": 0.5543395108543336,
+              "minimum": 0.5492269559763372,
+              "maximum": 0.5663362499326468,
+              "samples": [
+                0.5543395108543336,
+                0.5663362499326468,
+                0.5492269559763372
+              ]
+            },
+            "readyExecutableStageSumSeconds": {
+              "median": 1.0741041107103229,
+              "minimum": 1.064868139801547,
+              "maximum": 1.0773702878504992,
+              "samples": [
+                1.064868139801547,
+                1.0741041107103229,
+                1.0773702878504992
+              ]
+            },
+            "readyExecutableHarnessSeconds": {
+              "median": 1.1051354759838432,
+              "minimum": 1.091617297148332,
+              "maximum": 1.125957922078669,
+              "samples": [
+                1.091617297148332,
+                1.1051354759838432,
+                1.125957922078669
+              ]
+            },
+            "requestCpuSeconds": {
+              "median": 0.509391,
+              "minimum": 0.506576,
+              "maximum": 0.527178,
+              "samples": [
+                0.509391,
+                0.506576,
+                0.527178
+              ]
+            }
+          }
+        },
+        "requestRatios": {
+          "candidateOverParent": 0.8803399346378107,
+          "candidateOverUpstream": 0.8133532351553198,
+          "parentOverUpstream": 0.9239081440624972
+        },
+        "candidatePercentChange": -11.96600653621893,
+        "observedRangeHint": "candidate_range_below_parent",
+        "pairedRoundRatios": [
+          0.8779720055537011,
+          0.8949722390385605,
+          0.8739489959603098
+        ],
+        "nativeQbeExact": true
+      },
+      {
+        "name": "coverage-map-churn-128",
+        "roles": {
+          "phase111": {
+            "requestSeconds": {
+              "median": 2.7713945449795574,
+              "minimum": 2.760813570814207,
+              "maximum": 2.7910923820454627,
+              "samples": [
+                2.760813570814207,
+                2.7713945449795574,
+                2.7910923820454627
+              ]
+            },
+            "machineBuildSeconds": {
+              "median": 0.18363574612885714,
+              "minimum": 0.18204022501595318,
+              "maximum": 0.19726315420120955,
+              "samples": [
+                0.18204022501595318,
+                0.19726315420120955,
+                0.18363574612885714
+              ]
+            },
+            "readyExecutableStageSumSeconds": {
+              "median": 2.968657699180767,
+              "minimum": 2.9428537958301604,
+              "maximum": 2.97472812817432,
+              "samples": [
+                2.9428537958301604,
+                2.968657699180767,
+                2.97472812817432
+              ]
+            },
+            "readyExecutableHarnessSeconds": {
+              "median": 3.015763067174703,
+              "minimum": 2.9765193299390376,
+              "maximum": 3.0348667060025036,
+              "samples": [
+                2.9765193299390376,
+                3.015763067174703,
+                3.0348667060025036
+              ]
+            },
+            "requestCpuSeconds": {
+              "median": 2.77038,
+              "minimum": 2.759744,
+              "maximum": 2.7899939999999996,
+              "samples": [
+                2.759744,
+                2.77038,
+                2.7899939999999996
+              ]
+            }
+          },
+          "phase112": {
+            "requestSeconds": {
+              "median": 1.9273036220110953,
+              "minimum": 1.9157588509842753,
+              "maximum": 2.0742049070540816,
+              "samples": [
+                1.9157588509842753,
+                2.0742049070540816,
+                1.9273036220110953
+              ]
+            },
+            "machineBuildSeconds": {
+              "median": 0.18106930796056986,
+              "minimum": 0.18101644376292825,
+              "maximum": 0.18375073419883847,
+              "samples": [
+                0.18101644376292825,
+                0.18106930796056986,
+                0.18375073419883847
+              ]
+            },
+            "readyExecutableStageSumSeconds": {
+              "median": 2.1110543562099338,
+              "minimum": 2.0967752947472036,
+              "maximum": 2.2552742150146514,
+              "samples": [
+                2.0967752947472036,
+                2.2552742150146514,
+                2.1110543562099338
+              ]
+            },
+            "readyExecutableHarnessSeconds": {
+              "median": 2.2765673988033086,
+              "minimum": 2.1325498349033296,
+              "maximum": 2.3482566331513226,
+              "samples": [
+                2.1325498349033296,
+                2.3482566331513226,
+                2.2765673988033086
+              ]
+            },
+            "requestCpuSeconds": {
+              "median": 1.9264100000000002,
+              "minimum": 1.914564,
+              "maximum": 2.073362,
+              "samples": [
+                1.914564,
+                2.073362,
+                1.9264100000000002
+              ]
+            }
+          },
+          "upstream": {
+            "requestSeconds": {
+              "median": 1.127791070844978,
+              "minimum": 1.0635496489703655,
+              "maximum": 1.18866868596524,
+              "samples": [
+                1.0635496489703655,
+                1.18866868596524,
+                1.127791070844978
+              ]
+            },
+            "machineBuildSeconds": {
+              "median": 1.784507267177105,
+              "minimum": 1.7743744167964906,
+              "maximum": 1.853753280825913,
+              "samples": [
+                1.853753280825913,
+                1.7743744167964906,
+                1.784507267177105
+              ]
+            },
+            "readyExecutableStageSumSeconds": {
+              "median": 2.9173029297962785,
+              "minimum": 2.912298338022083,
+              "maximum": 2.9630431027617306,
+              "samples": [
+                2.9173029297962785,
+                2.9630431027617306,
+                2.912298338022083
+              ]
+            },
+            "readyExecutableHarnessSeconds": {
+              "median": 2.9716730259824544,
+              "minimum": 2.958254544995725,
+              "maximum": 3.010166836902499,
+              "samples": [
+                2.9716730259824544,
+                3.010166836902499,
+                2.958254544995725
+              ]
+            },
+            "requestCpuSeconds": {
+              "median": 1.126563,
+              "minimum": 1.062451,
+              "maximum": 1.187659,
+              "samples": [
+                1.062451,
+                1.187659,
+                1.126563
+              ]
+            }
+          }
+        },
+        "requestRatios": {
+          "candidateOverParent": 0.6954273708528612,
+          "candidateOverUpstream": 1.7089190292729453,
+          "parentOverUpstream": 2.4573652129584054
+        },
+        "candidatePercentChange": -30.45726291471388,
+        "observedRangeHint": "candidate_range_below_parent",
+        "pairedRoundRatios": [
+          0.693910980167809,
+          0.7484336399562992,
+          0.6905194662882006
+        ],
+        "nativeQbeExact": true
+      }
+    ],
+    "geometricRatios": {
+      "requestSeconds": {
+        "candidateOverParent": 0.7907868986241724,
+        "candidateOverUpstream": 1.4430450419554248,
+        "parentOverUpstream": 1.8248216358491332
+      },
+      "machineBuildSeconds": {
+        "candidateOverParent": 0.9926104960191854,
+        "candidateOverUpstream": 0.10040223007509691,
+        "parentOverUpstream": 0.10114967600862071
+      },
+      "readyExecutableStageSumSeconds": {
+        "candidateOverParent": 0.8017480978718798,
+        "candidateOverUpstream": 0.7149752599297978,
+        "parentOverUpstream": 0.891770447385647
+      },
+      "readyExecutableHarnessSeconds": {
+        "candidateOverParent": 0.8215284224304367,
+        "candidateOverUpstream": 0.7635313732129602,
+        "parentOverUpstream": 0.9294034781585572
+      }
+    },
+    "observedRows": 27,
+    "allOutputsCorrect": true,
+    "exactQbeBetweenNativeRoles": true,
+    "cpuAffinity": [
+      3
+    ],
+    "sampleWindowSeconds": 48.87387776374817,
+    "sameRequestedSources": true,
+    "sameCompilerSource": false,
+    "clocks": {
+      "requestSeconds": "Whole compiler child through complete output and exit, native QBE versus upstream C explicitly distinct formats.",
+      "machineBuildSeconds": "Sum of fresh QBE/as/link children or fresh upstream Clang child.",
+      "readyExecutableStageSumSeconds": "Request plus machine-build child sums; excludes Python authentication/reporting and generated-program execution.",
+      "readyExecutableHarnessSeconds": "Elapsed through binary construction including between-stage Python bookkeeping, starting after preflight.",
+      "executionSeconds": "Single full-output correctness observation only, not program-speed benchmark."
+    },
+    "buildPolicy": {
+      "native": "Pinned QBE amd64_sysv, GNU as -mbranches-within-32B-boundaries, gcc -no-pie objects -pthread -lm",
+      "upstream": "pinned Clang -isystem bundled include/clang -O2 emitted C -lm -pthread; no PCH",
+      "acquisitionExcluded": true,
+      "nativeRuntimeCached": true,
+      "upstreamRuntimeRecompiled": true
+    },
+    "qualificationAtTiming": "Actual admitted N0->N1->N2 lineage and focused19 on N1/N2 only. Final Q2=Q3, N3 focused19/full45 and installed selection remain separate."
+  },
+  "fastBlock": {
+    "label": "Phase130 N1 versus FAST Phase131 N1; earlier separate block",
+    "raw": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase112/p131-fast-parent-timing01/report.json",
+      "bytes": 232650,
+      "sha256": "96b4645afa2711c7971b0c01cdc36cf7782d37da33772222252d436680ab920f"
+    },
+    "analysis": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/native-timing-analysis01/report.json",
+      "bytes": 12650,
+      "sha256": "4473b0a8fac8b16f61a1fe300ab8f2d3ac4a16d570b64a88f2a4bb9b091206f5"
+    },
+    "manifest": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/fast-parent-timing01.json",
+      "bytes": 13241,
+      "sha256": "f2ff680faafe3566db4e9d666be7add183784a0384ec52ea4e3e86bef1eda4e8"
+    },
+    "roles": {
+      "phase111": {
+        "binary": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p130-native01-n1/program",
+          "bytes": 16586488,
+          "sha256": "a25e4c7f55a6a48829bf9d148498d6392b98fe1ab66b9664d99ce1987715c2c5"
+        },
+        "source": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase130/mode-source01/compiler.bend",
+          "bytes": 2613588,
+          "sha256": "995d6b4bf14963debb9a810de2ed941c3cd30a71fc34a156d96b1adbd1b06bdd"
+        },
+        "generation": "Qualified Phase130 N1; compact Base",
+        "nativeQualified": true,
+        "carrierReceipt": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase130/base-carrier01/receipt.json",
+          "bytes": 4362,
+          "sha256": "6b170fc62a4a8b4e7588019a1b2cbdcc932ba10477029d966fbfa62cc61c89cf"
+        }
+      },
+      "phase112": {
+        "binary": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p131-fast-native01-n1/program",
+          "bytes": 16771824,
+          "sha256": "78d09ed3b9ce380c2a26837e92b453faa887d837755fdfad32a2b9460c387fe6"
+        },
+        "source": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/combined-fast-source02/compiler.bend",
+          "bytes": 2628217,
+          "sha256": "7f7952989ca1dd4b9c5246ee7f2fdbdee6c9b0e1a603f2bfb2244d76a75d22fd"
+        },
+        "generation": "Experimental Phase131 N1; focused19 passed; compact Base",
+        "nativeQualified": false,
+        "carrierReceipt": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase130/base-carrier01/receipt.json",
+          "bytes": 4362,
+          "sha256": "6b170fc62a4a8b4e7588019a1b2cbdcc932ba10477029d966fbfa62cc61c89cf"
+        }
+      },
+      "upstream": {
+        "bun": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/bun-1.4.3/bun",
+          "bytes": 88979072,
+          "sha256": "7ce7d6b654eddeec20afddf2396317fba6dc19ab52788a27e894e1806bf8f24b"
+        },
+        "modules": {
+          "bend": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/bend.ts",
+            "sha256": "1d133151652b597a1a035c77c172475e6de096da37f3b9e3adc23c2f75bdfe49",
+            "bytes": 138101
+          },
+          "compiler": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/comp.ts",
+            "sha256": "2b13224ba09a9e39e37cccf06e449c1bdafe5e03a81641654f7d0e455507629c",
+            "bytes": 185124
+          },
+          "base": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/base.bend",
+            "sha256": "99ac43f2b2bb3e3f39acdcedcecbbd3cb44749ce13969c827d6973fa66f7facf",
+            "bytes": 75064
+          }
+        },
+        "manifest": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase105/screen01/upstream.json",
+          "bytes": 665,
+          "sha256": "f3ea63f22513f7907a4c622376a99556617f9be099ff4c80c64b15a2e2d8ded8"
+        },
+        "worker": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase105/upstream.mjs",
+          "bytes": 1428,
+          "sha256": "746f787e532beb4380d78858012f4ef2f20be0c53cc069bb254a75ae804d3181"
+        }
+      }
+    },
+    "cases": [
+      {
+        "name": "lexer",
+        "roles": {
+          "phase111": {
+            "requestSeconds": {
+              "median": 1.9932528529316187,
+              "minimum": 1.914314596913755,
+              "maximum": 2.2019777321256697,
+              "samples": [
+                2.2019777321256697,
+                1.914314596913755,
+                1.9932528529316187
+              ]
+            },
+            "machineBuildSeconds": {
+              "median": 0.08989506936632097,
+              "minimum": 0.08963275491259992,
+              "maximum": 0.09875637898221612,
+              "samples": [
+                0.09875637898221612,
+                0.08963275491259992,
+                0.08989506936632097
+              ]
+            },
+            "readyExecutableStageSumSeconds": {
+              "median": 2.0831479222979397,
+              "minimum": 2.003947351826355,
+              "maximum": 2.300734111107886,
+              "samples": [
+                2.300734111107886,
+                2.003947351826355,
+                2.0831479222979397
+              ]
+            },
+            "readyExecutableHarnessSeconds": {
+              "median": 2.4062496228143573,
+              "minimum": 2.1819245908409357,
+              "maximum": 2.4847329151816666,
+              "samples": [
+                2.4062496228143573,
+                2.4847329151816666,
+                2.1819245908409357
+              ]
+            },
+            "requestCpuSeconds": {
+              "median": 1.9922819999999999,
+              "minimum": 1.913419,
+              "maximum": 2.20052,
+              "samples": [
+                2.20052,
+                1.913419,
+                1.9922819999999999
+              ]
+            }
+          },
+          "phase112": {
+            "requestSeconds": {
+              "median": 2.034117800882086,
+              "minimum": 1.753726992988959,
+              "maximum": 2.03987820004113,
+              "samples": [
+                2.03987820004113,
+                1.753726992988959,
+                2.034117800882086
+              ]
+            },
+            "machineBuildSeconds": {
+              "median": 0.10046977992169559,
+              "minimum": 0.08767893607728183,
+              "maximum": 0.10185388708487153,
+              "samples": [
+                0.10185388708487153,
+                0.08767893607728183,
+                0.10046977992169559
+              ]
+            },
+            "readyExecutableStageSumSeconds": {
+              "median": 2.1345875808037817,
+              "minimum": 1.8414059290662408,
+              "maximum": 2.1417320871260017,
+              "samples": [
+                2.1417320871260017,
+                1.8414059290662408,
+                2.1345875808037817
+              ]
+            },
+            "readyExecutableHarnessSeconds": {
+              "median": 2.21414900617674,
+              "minimum": 1.9071958819404244,
+              "maximum": 2.2469185010995716,
+              "samples": [
+                2.21414900617674,
+                1.9071958819404244,
+                2.2469185010995716
+              ]
+            },
+            "requestCpuSeconds": {
+              "median": 2.0328049999999998,
+              "minimum": 1.752705,
+              "maximum": 2.038779,
+              "samples": [
+                2.038779,
+                1.752705,
+                2.0328049999999998
+              ]
+            }
+          },
+          "upstream": {
+            "requestSeconds": {
+              "median": 0.7436049720272422,
+              "minimum": 0.7251701899804175,
+              "maximum": 0.8130882650148124,
+              "samples": [
+                0.7436049720272422,
+                0.7251701899804175,
+                0.8130882650148124
+              ]
+            },
+            "machineBuildSeconds": {
+              "median": 0.7388749569654465,
+              "minimum": 0.6534102070145309,
+              "maximum": 0.7743266448378563,
+              "samples": [
+                0.7388749569654465,
+                0.6534102070145309,
+                0.7743266448378563
+              ]
+            },
+            "readyExecutableStageSumSeconds": {
+              "median": 1.4824799289926887,
+              "minimum": 1.3785803969949484,
+              "maximum": 1.5874149098526686,
+              "samples": [
+                1.4824799289926887,
+                1.3785803969949484,
+                1.5874149098526686
+              ]
+            },
+            "readyExecutableHarnessSeconds": {
+              "median": 1.531555776949972,
+              "minimum": 1.4336652730125934,
+              "maximum": 1.634195651160553,
+              "samples": [
+                1.531555776949972,
+                1.4336652730125934,
+                1.634195651160553
+              ]
+            },
+            "requestCpuSeconds": {
+              "median": 0.742285,
+              "minimum": 0.724046,
+              "maximum": 0.812068,
+              "samples": [
+                0.742285,
+                0.724046,
+                0.812068
+              ]
+            }
+          }
+        },
+        "requestRatios": {
+          "candidateOverParent": 1.020501637757781,
+          "candidateOverUpstream": 2.73548171058701,
+          "parentOverUpstream": 2.680526526735751
+        },
+        "candidatePercentChange": 2.050163775778091,
+        "observedRangeHint": "ranges_overlap",
+        "pairedRoundRatios": [
+          0.9263845725051645,
+          0.9161122188674243,
+          1.020501637757781
+        ],
+        "nativeQbeExact": true
+      },
+      {
+        "name": "coverage-closures-256",
+        "roles": {
+          "phase111": {
+            "requestSeconds": {
+              "median": 0.4780329877976328,
+              "minimum": 0.4737308139447123,
+              "maximum": 0.5049671160522848,
+              "samples": [
+                0.4780329877976328,
+                0.4737308139447123,
+                0.5049671160522848
+              ]
+            },
+            "machineBuildSeconds": {
+              "median": 0.04181297309696674,
+              "minimum": 0.04164735064841807,
+              "maximum": 0.044694470008835196,
+              "samples": [
+                0.04181297309696674,
+                0.04164735064841807,
+                0.044694470008835196
+              ]
+            },
+            "readyExecutableStageSumSeconds": {
+              "median": 0.5198459608945996,
+              "minimum": 0.5153781645931304,
+              "maximum": 0.54966158606112,
+              "samples": [
+                0.5198459608945996,
+                0.5153781645931304,
+                0.54966158606112
+              ]
+            },
+            "readyExecutableHarnessSeconds": {
+              "median": 0.5811633339617401,
+              "minimum": 0.5599315669387579,
+              "maximum": 0.6149681129027158,
+              "samples": [
+                0.5599315669387579,
+                0.5811633339617401,
+                0.6149681129027158
+              ]
+            },
+            "requestCpuSeconds": {
+              "median": 0.47689099999999995,
+              "minimum": 0.472898,
+              "maximum": 0.503983,
+              "samples": [
+                0.47689099999999995,
+                0.472898,
+                0.503983
+              ]
+            }
+          },
+          "phase112": {
+            "requestSeconds": {
+              "median": 0.47041561687365174,
+              "minimum": 0.4479980368632823,
+              "maximum": 0.47266353806480765,
+              "samples": [
+                0.47266353806480765,
+                0.4479980368632823,
+                0.47041561687365174
+              ]
+            },
+            "machineBuildSeconds": {
+              "median": 0.04430606891401112,
+              "minimum": 0.0415991828776896,
+              "maximum": 0.044523542979732156,
+              "samples": [
+                0.04430606891401112,
+                0.0415991828776896,
+                0.044523542979732156
+              ]
+            },
+            "readyExecutableStageSumSeconds": {
+              "median": 0.5149391598533839,
+              "minimum": 0.4895972197409719,
+              "maximum": 0.5169696069788188,
+              "samples": [
+                0.5169696069788188,
+                0.4895972197409719,
+                0.5149391598533839
+              ]
+            },
+            "readyExecutableHarnessSeconds": {
+              "median": 0.5999825799372047,
+              "minimum": 0.5407148851081729,
+              "maximum": 1.1292390341404825,
+              "samples": [
+                1.1292390341404825,
+                0.5407148851081729,
+                0.5999825799372047
+              ]
+            },
+            "requestCpuSeconds": {
+              "median": 0.469483,
+              "minimum": 0.447142,
+              "maximum": 0.471752,
+              "samples": [
+                0.471752,
+                0.447142,
+                0.469483
+              ]
+            }
+          },
+          "upstream": {
+            "requestSeconds": {
+              "median": 0.5352716948837042,
+              "minimum": 0.5140980000142008,
+              "maximum": 0.5660549851600081,
+              "samples": [
+                0.5660549851600081,
+                0.5140980000142008,
+                0.5352716948837042
+              ]
+            },
+            "machineBuildSeconds": {
+              "median": 0.6451525830198079,
+              "minimum": 0.5974676739424467,
+              "maximum": 0.8825196009129286,
+              "samples": [
+                0.5974676739424467,
+                0.8825196009129286,
+                0.6451525830198079
+              ]
+            },
+            "readyExecutableStageSumSeconds": {
+              "median": 1.1804242779035121,
+              "minimum": 1.1635226591024548,
+              "maximum": 1.3966176009271294,
+              "samples": [
+                1.1635226591024548,
+                1.3966176009271294,
+                1.1804242779035121
+              ]
+            },
+            "readyExecutableHarnessSeconds": {
+              "median": 1.2315207470674068,
+              "minimum": 1.2192233509849757,
+              "maximum": 1.4669085799250752,
+              "samples": [
+                1.2192233509849757,
+                1.4669085799250752,
+                1.2315207470674068
+              ]
+            },
+            "requestCpuSeconds": {
+              "median": 0.5343129999999999,
+              "minimum": 0.513003,
+              "maximum": 0.56503,
+              "samples": [
+                0.56503,
+                0.513003,
+                0.5343129999999999
+              ]
+            }
+          }
+        },
+        "requestRatios": {
+          "candidateOverParent": 0.9840651772609347,
+          "candidateOverUpstream": 0.8788352183947568,
+          "parentOverUpstream": 0.89306606788071
+        },
+        "candidatePercentChange": -1.5934822739065324,
+        "observedRangeHint": "candidate_range_below_parent",
+        "pairedRoundRatios": [
+          0.9887676167338095,
+          0.9456805925982404,
+          0.9315767342460859
+        ],
+        "nativeQbeExact": true
+      },
+      {
+        "name": "coverage-map-churn-128",
+        "roles": {
+          "phase111": {
+            "requestSeconds": {
+              "median": 2.7880886720959097,
+              "minimum": 2.765064497012645,
+              "maximum": 2.8750685988925397,
+              "samples": [
+                2.765064497012645,
+                2.7880886720959097,
+                2.8750685988925397
+              ]
+            },
+            "machineBuildSeconds": {
+              "median": 0.18337297113612294,
+              "minimum": 0.1800365240778774,
+              "maximum": 0.20893905102275312,
+              "samples": [
+                0.1800365240778774,
+                0.18337297113612294,
+                0.20893905102275312
+              ]
+            },
+            "readyExecutableStageSumSeconds": {
+              "median": 2.9714616432320327,
+              "minimum": 2.9451010210905224,
+              "maximum": 3.084007649915293,
+              "samples": [
+                2.9451010210905224,
+                2.9714616432320327,
+                3.084007649915293
+              ]
+            },
+            "readyExecutableHarnessSeconds": {
+              "median": 3.0824325350113213,
+              "minimum": 3.0062918420881033,
+              "maximum": 3.144928877009079,
+              "samples": [
+                3.0062918420881033,
+                3.0824325350113213,
+                3.144928877009079
+              ]
+            },
+            "requestCpuSeconds": {
+              "median": 2.787059,
+              "minimum": 2.764248,
+              "maximum": 2.8740639999999997,
+              "samples": [
+                2.764248,
+                2.787059,
+                2.8740639999999997
+              ]
+            }
+          },
+          "phase112": {
+            "requestSeconds": {
+              "median": 2.298064110102132,
+              "minimum": 2.2838047312106937,
+              "maximum": 2.2993691549636424,
+              "samples": [
+                2.2838047312106937,
+                2.298064110102132,
+                2.2993691549636424
+              ]
+            },
+            "machineBuildSeconds": {
+              "median": 0.1825772230513394,
+              "minimum": 0.18015292310155928,
+              "maximum": 0.1826344570145011,
+              "samples": [
+                0.1826344570145011,
+                0.18015292310155928,
+                0.1825772230513394
+              ]
+            },
+            "readyExecutableStageSumSeconds": {
+              "median": 2.4782170332036912,
+              "minimum": 2.466439188225195,
+              "maximum": 2.4819463780149817,
+              "samples": [
+                2.466439188225195,
+                2.4782170332036912,
+                2.4819463780149817
+              ]
+            },
+            "readyExecutableHarnessSeconds": {
+              "median": 2.5448938249610364,
+              "minimum": 2.5437207960058004,
+              "maximum": 2.5634049840737134,
+              "samples": [
+                2.5448938249610364,
+                2.5437207960058004,
+                2.5634049840737134
+              ]
+            },
+            "requestCpuSeconds": {
+              "median": 2.297211,
+              "minimum": 2.282771,
+              "maximum": 2.298536,
+              "samples": [
+                2.282771,
+                2.297211,
+                2.298536
+              ]
+            }
+          },
+          "upstream": {
+            "requestSeconds": {
+              "median": 1.1169009669683874,
+              "minimum": 1.1158877771813422,
+              "maximum": 1.138222326990217,
+              "samples": [
+                1.1158877771813422,
+                1.1169009669683874,
+                1.138222326990217
+              ]
+            },
+            "machineBuildSeconds": {
+              "median": 1.8645453420467675,
+              "minimum": 1.8123504819814116,
+              "maximum": 1.9209718040656298,
+              "samples": [
+                1.8645453420467675,
+                1.8123504819814116,
+                1.9209718040656298
+              ]
+            },
+            "readyExecutableStageSumSeconds": {
+              "median": 2.9804331192281097,
+              "minimum": 2.929251448949799,
+              "maximum": 3.059194131055847,
+              "samples": [
+                2.9804331192281097,
+                2.929251448949799,
+                3.059194131055847
+              ]
+            },
+            "readyExecutableHarnessSeconds": {
+              "median": 3.031193319009617,
+              "minimum": 3.0151238760445267,
+              "maximum": 3.103534471942112,
+              "samples": [
+                3.031193319009617,
+                3.0151238760445267,
+                3.103534471942112
+              ]
+            },
+            "requestCpuSeconds": {
+              "median": 1.116015,
+              "minimum": 1.11487,
+              "maximum": 1.137317,
+              "samples": [
+                1.11487,
+                1.116015,
+                1.137317
+              ]
+            }
+          }
+        },
+        "requestRatios": {
+          "candidateOverParent": 0.82424355190059,
+          "candidateOverUpstream": 2.0575361451604652,
+          "parentOverUpstream": 2.496272055044987
+        },
+        "candidatePercentChange": -17.575644809941004,
+        "observedRangeHint": "candidate_range_below_parent",
+        "pairedRoundRatios": [
+          0.8259498950849425,
+          0.82424355190059,
+          0.7997614929429324
+        ],
+        "nativeQbeExact": true
+      }
+    ],
+    "geometricRatios": {
+      "requestSeconds": {
+        "candidateOverParent": 0.9389253024932417,
+        "candidateOverUpstream": 1.7038430236948916,
+        "parentOverUpstream": 1.814673669109216
+      },
+      "machineBuildSeconds": {
+        "candidateOverParent": 1.0564631212614313,
+        "candidateOverUpstream": 0.09706134611914455,
+        "parentOverUpstream": 0.09187386115594076
+      },
+      "readyExecutableStageSumSeconds": {
+        "candidateOverParent": 0.9459788817663213,
+        "candidateOverUpstream": 0.805318420995834,
+        "parentOverUpstream": 0.8513069757880348
+      },
+      "readyExecutableHarnessSeconds": {
+        "candidateOverParent": 0.9222051914699991,
+        "candidateOverUpstream": 0.8393485077426718,
+        "parentOverUpstream": 0.9101537439891729
+      }
+    },
+    "observedRows": 27,
+    "allOutputsCorrect": true,
+    "exactQbeBetweenNativeRoles": true,
+    "cpuAffinity": [
+      3
+    ],
+    "sampleWindowSeconds": 53.6192352771759,
+    "sameRequestedSources": true,
+    "sameCompilerSource": false,
+    "clocks": {
+      "requestSeconds": "Whole compiler child through complete output and exit, native QBE versus upstream C explicitly distinct formats.",
+      "machineBuildSeconds": "Sum of fresh QBE/as/link children or fresh upstream Clang child.",
+      "readyExecutableStageSumSeconds": "Request plus machine-build child sums; excludes Python authentication/reporting and generated-program execution.",
+      "readyExecutableHarnessSeconds": "Elapsed through binary construction including between-stage Python bookkeeping, starting after preflight.",
+      "executionSeconds": "Single full-output correctness observation only, not program-speed benchmark."
+    },
+    "buildPolicy": {
+      "native": "Pinned QBE amd64_sysv, GNU as -mbranches-within-32B-boundaries, gcc -no-pie objects -pthread -lm",
+      "upstream": "pinned Clang -isystem bundled include/clang -O2 emitted C -lm -pthread; no PCH",
+      "acquisitionExcluded": true,
+      "nativeRuntimeCached": true,
+      "upstreamRuntimeRecompiled": true
+    },
+    "qualificationAtTiming": "Source/runtime-admitted experimental compiler with actual native acquisition and focused19. Full qualification and installed selection are separate."
+  },
+  "samplesPooledAcrossBlocks": false,
+  "finalCompilerComplexity": {
+    "parent": {
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase130/mode-source01/compiler.bend",
+        "bytes": 2613588,
+        "sha256": "995d6b4bf14963debb9a810de2ed941c3cd30a71fc34a156d96b1adbd1b06bdd"
+      },
+      "physicalLines": 57018,
+      "codeLines": 41219,
+      "uniqueDeclarationNames": 6443,
+      "declarationHeads": {
+        "def": 6176,
+        "type": 267,
+        "law": 680
+      }
+    },
+    "final": {
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/combined-literals-source01/compiler.bend",
+        "bytes": 2667581,
+        "sha256": "1bc5930edcf80cda6c3572645df3c846fa631a83c2b936f20c83b05e0a6728f9"
+      },
+      "physicalLines": 57842,
+      "codeLines": 41855,
+      "uniqueDeclarationNames": 6529,
+      "declarationHeads": {
+        "def": 6261,
+        "type": 268,
+        "law": 681
+      }
+    },
+    "physicalLineDelta": 824,
+    "codeLineDelta": 636,
+    "byteDelta": 53993,
+    "addedDeclarationNames": 86,
+    "changedExistingDeclarations": 302,
+    "scope": "Actual selected compiler.bend only; external laws/harness/research files excluded. Selected control/reference helpers remain included. Code lines exclude blank/full-line comments. Declaration counts are syntactic, not concepts/proved laws.",
+    "literalExposure": {
+      "reviewedOriginalCalls": 421,
+      "actualReplacements": 419,
+      "changedDeclarations": 285,
+      "sourceByteGrowth": 17179,
+      "declarationCountChange": 0
+    }
+  },
+  "fullSourceRequestObservations": {
+    "observations": [
+      {
+        "stage": "Qualified Phase130 N1 emits final source to Q1",
+        "receipt": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase130/p131-final-acquire01/report.json",
+          "bytes": 9754,
+          "sha256": "7ed2c88e1dda01885ec2ca5f4aa571cfae8dfbf5ab1c8a6cb78afc6bcb6b0086"
+        },
+        "image": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p130-native01-n1/program",
+          "bytes": 16586488,
+          "sha256": "a25e4c7f55a6a48829bf9d148498d6392b98fe1ab66b9664d99ce1987715c2c5"
+        },
+        "source": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/combined-literals-source01/compiler.bend",
+          "bytes": 2667581,
+          "sha256": "1bc5930edcf80cda6c3572645df3c846fa631a83c2b936f20c83b05e0a6728f9"
+        },
+        "product": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase130/p131-final-acquire01/program.ssa",
+          "bytes": 104373390,
+          "sha256": "d8f27ccf328a1ebd3900d5eb923c7792c1a5fbae0cd2dfedae8fd792d1a25468"
+        },
+        "requestWallSeconds": 489.61878469306976,
+        "requestCpuSeconds": 489.616695,
+        "harnessTotalSeconds": 490.37425474403426,
+        "peakRssKiB": 2777048
+      },
+      {
+        "stage": "Final Phase131 N1 emits same final source to Q2",
+        "receipt": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase130/p131-final-self01/report.json",
+          "bytes": 9779,
+          "sha256": "398bd8d5ea10828380fef81f4ca0ddb9e9cddcfb83e54c56775b4dacf875087f"
+        },
+        "image": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p131-final-native01-n1/program",
+          "bytes": 16878376,
+          "sha256": "57b6f168d2fa1d6f14c368f479f506cec7934c4e2d82a120e82b761e399e7c3a"
+        },
+        "source": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/combined-literals-source01/compiler.bend",
+          "bytes": 2667581,
+          "sha256": "1bc5930edcf80cda6c3572645df3c846fa631a83c2b936f20c83b05e0a6728f9"
+        },
+        "product": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase130/p131-final-self01/program.ssa",
+          "bytes": 107059385,
+          "sha256": "f3ff63b04b58e5a5b92be781d0d1cba8cc574a37765cbf66d817c3d38f4b576e"
+        },
+        "requestWallSeconds": 393.5993043759372,
+        "requestCpuSeconds": 393.59814400000005,
+        "harnessTotalSeconds": 394.33309606509283,
+        "peakRssKiB": 2839344
+      },
+      {
+        "stage": "Final Phase131 N2 emits same final source to Q3",
+        "receipt": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase130/p131-final-reproduce01/report.json",
+          "bytes": 10245,
+          "sha256": "50793e94d2016d9344163a625498a7a5b03a8797b4479d34af213656851b35e5"
+        },
+        "image": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p131-final-native01-n2/program",
+          "bytes": 17132048,
+          "sha256": "2fae36020081ccc5cbfb847caf0b285b762387327e4bb44e1d62d96d1affd5dc"
+        },
+        "source": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/combined-literals-source01/compiler.bend",
+          "bytes": 2667581,
+          "sha256": "1bc5930edcf80cda6c3572645df3c846fa631a83c2b936f20c83b05e0a6728f9"
+        },
+        "product": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase130/p131-final-reproduce01/program.ssa",
+          "bytes": 107059385,
+          "sha256": "f3ff63b04b58e5a5b92be781d0d1cba8cc574a37765cbf66d817c3d38f4b576e"
+        },
+        "requestWallSeconds": 379.228316223016,
+        "requestCpuSeconds": 379.22571100000005,
+        "harnessTotalSeconds": 380.31572490301915,
+        "peakRssKiB": 2837704
+      }
+    ],
+    "requestWallRatio": 0.8038893046611256,
+    "requestCpuRatio": 0.8038903657074031,
+    "sameCompilerSource": true,
+    "generatedQbeEqual": false,
+    "scope": "One observation per native producer, same final compiler source. Acquisition overlapped separate CPU6 work; not randomized or a controlled multi-repeat gain estimate. Cold source-to-QBE child clocks exclude machine builds. N1 outputQ2 and N2 outputQ3 match byte-for-byte; Q1 differs.",
+    "secondThirdQbeByteEqual": true,
+    "n2OverN1RequestWallRatio": 0.9634882785788791,
+    "n2OverN1RequestCpuRatio": 0.9634845000691873
+  },
+  "nativeProducts": [
+    {
+      "stage": "n1",
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p131-final-native01-n1/report.json",
+        "bytes": 4843,
+        "sha256": "bfb56b8af4c475b34aa9e139c1771d419e83ca35b48489a082a44bfb0b5541e7"
+      },
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p131-final-native01-n1/program",
+        "bytes": 16878376,
+        "sha256": "57b6f168d2fa1d6f14c368f479f506cec7934c4e2d82a120e82b761e399e7c3a"
+      },
+      "object": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p131-final-native01-n1/program.o",
+        "bytes": 22577032,
+        "sha256": "0bbfbddb5a8e419a9192c87d8b6ee8fcb61eedd8207e486871c558d9d4c7ffe8"
+      }
+    },
+    {
+      "stage": "n2",
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p131-final-native01-n2/report.json",
+        "bytes": 4836,
+        "sha256": "94273bd10abeed0f1adaf6af54d6bce4921b783d7124a1584278779c46638f22"
+      },
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p131-final-native01-n2/program",
+        "bytes": 17132048,
+        "sha256": "2fae36020081ccc5cbfb847caf0b285b762387327e4bb44e1d62d96d1affd5dc"
+      },
+      "object": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p131-final-native01-n2/program.o",
+        "bytes": 22922224,
+        "sha256": "5a18d84aacca1ed008184304bd7b3151e35d4ef182f60f0f378169162db12597"
+      }
+    }
+  ],
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/native/report-results.py",
+      "bytes": 13335,
+      "sha256": "8344900eef4926f6bc1d05f4c1a46a2f016cfd56304648a975ac0096f0311aca"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/native/source-audit.py",
+      "bytes": 6974,
+      "sha256": "c469ce62dbc1b1d7fbd7d18aa07665f7d62e8496230412596e1ac4d1f7138775"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/combined-literals-admission01.json",
+      "bytes": 306373,
+      "sha256": "ce884200b958bfa2b44d1d373d985bc9dd48d01d9f774a7b3be4c1d6f40da503"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase112/p131-final-parent-timing01/report.json",
+      "bytes": 235399,
+      "sha256": "163f01d21fb823e4f7659f51cb62468379a54365ca51f6e6b95bf6a4d5b4eb23"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/final-native-timing-analysis01/report.json",
+      "bytes": 12677,
+      "sha256": "45e21fc30b6b2dc8cdefdfc81f8ddbb31750243b14a8c6a3e97649bb83c3e64e"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase112/p131-fast-parent-timing01/report.json",
+      "bytes": 232650,
+      "sha256": "96b4645afa2711c7971b0c01cdc36cf7782d37da33772222252d436680ab920f"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/native-timing-analysis01/report.json",
+      "bytes": 12650,
+      "sha256": "4473b0a8fac8b16f61a1fe300ab8f2d3ac4a16d570b64a88f2a4bb9b091206f5"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/native/finalize-results.py",
+      "bytes": 8414,
+      "sha256": "85f085a046cd5a05d6406b2ca65aa6ec606545342a0b6cf891c90312c427acda"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/native/report-results.py",
+      "bytes": 13335,
+      "sha256": "8344900eef4926f6bc1d05f4c1a46a2f016cfd56304648a975ac0096f0311aca"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/native-results-provisional01/report.json",
+      "bytes": 55320,
+      "sha256": "d34916b28ee9a4ee123b57e88fd9992ba5cfb0bcf6a25f11c683bdba18a63af4"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase112/p131-final-stages-timing01/report.json",
+      "bytes": 235333,
+      "sha256": "0cab9a7d71666beca3c0844e80b7f28da836f237313e7ecdad824a4dd67b09b4"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/final-stages-timing-analysis01/report.json",
+      "bytes": 12793,
+      "sha256": "1c3ca6e61c511c66ef82aa8cc1d6ff6e81bb89ff775d9a35559b4dfd3a5964f5"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/final-native-qualification01.json",
+      "bytes": 867201,
+      "sha256": "75aa7552be018fbb2da7ec8315e28d2224e20dc90a2c5529c16f85eb7c327c8d"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase130/p131-final-reproduce01/report.json",
+      "bytes": 10245,
+      "sha256": "50793e94d2016d9344163a625498a7a5b03a8797b4479d34af213656851b35e5"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/combined-literals-source01/manifest.json",
+      "bytes": 204258,
+      "sha256": "b4d02cb2669ba0f2ad28349f0663c3bd0bac2a008d133f63c613011285efc20e"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p130-native01-n1/report.json",
+      "bytes": 4750,
+      "sha256": "f08f050efeb7cd65bbfca7c670fc9c4fc8cd18a94b36ae7392d4fd7fc397e0b7"
+    }
+  ],
+  "limitations": [
+    "Three sources and three repetitions screen compilation latency, not a broad compiler-throughput benchmark.",
+    "Native request output is QBE; upstream request output is C. Both native roles use identical compact Base; upstream reads/checks source Base.",
+    "Native cached-runtime QBE/as/link and upstream full C/Clang runtime construction are different documented workflows.",
+    "No generated-program runtime speed or recursive research acceleration is established.",
+    "FAST and final are different compiler sources and generations observed in separate timing blocks; do not pool or claim a direct controlled final/FAST ratio.",
+    "Per-case min/max are observed ranges from three samples, not confidence intervals.",
+    "QBE fixed point and N3 qualification do not establish identical N2/N3 ELF or transfer a speed measurement to unmeasured N3."
+  ],
+  "productGrowth": {
+    "parentImage": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p130-native01-n1/program",
+      "bytes": 16586488,
+      "sha256": "a25e4c7f55a6a48829bf9d148498d6392b98fe1ab66b9664d99ce1987715c2c5"
+    },
+    "finalN2Image": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p131-final-native01-n2/program",
+      "bytes": 17132048,
+      "sha256": "2fae36020081ccc5cbfb847caf0b285b762387327e4bb44e1d62d96d1affd5dc"
+    },
+    "finalN3Image": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p131-final-native01-n3/program",
+      "bytes": 17132048,
+      "sha256": "c00778cf4f79088b1ed015e763e42958dec92b0866f7de284469b18ce023a27f"
+    },
+    "n2OverParentImageBytes": 1.0328918334007777,
+    "qbeByGeneration": {
+      "q1": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase130/p131-final-acquire01/program.ssa",
+        "bytes": 104373390,
+        "sha256": "d8f27ccf328a1ebd3900d5eb923c7792c1a5fbae0cd2dfedae8fd792d1a25468"
+      },
+      "q2": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase130/p131-final-self01/program.ssa",
+        "bytes": 107059385,
+        "sha256": "f3ff63b04b58e5a5b92be781d0d1cba8cc574a37765cbf66d817c3d38f4b576e"
+      },
+      "q3": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase130/p131-final-reproduce01/program.ssa",
+        "bytes": 107059385,
+        "sha256": "f3ff63b04b58e5a5b92be781d0d1cba8cc574a37765cbf66d817c3d38f4b576e"
+      }
+    },
+    "reproducedQbe": {
+      "left": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase130/p131-final-self01/program.ssa",
+        "bytes": 107059385,
+        "sha256": "f3ff63b04b58e5a5b92be781d0d1cba8cc574a37765cbf66d817c3d38f4b576e"
+      },
+      "right": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase130/p131-final-reproduce01/program.ssa",
+        "bytes": 107059385,
+        "sha256": "f3ff63b04b58e5a5b92be781d0d1cba8cc574a37765cbf66d817c3d38f4b576e"
+      }
+    }
+  },
+  "provisionalSnapshot": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/native-results-provisional01/report.json",
+    "bytes": 55320,
+    "sha256": "d34916b28ee9a4ee123b57e88fd9992ba5cfb0bcf6a25f11c683bdba18a63af4"
+  },
+  "stageBlock": {
+    "label": "Final Phase131 N1 versus N2; fixed compiler source",
+    "raw": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase112/p131-final-stages-timing01/report.json",
+      "bytes": 235333,
+      "sha256": "0cab9a7d71666beca3c0844e80b7f28da836f237313e7ecdad824a4dd67b09b4"
+    },
+    "analysis": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/final-stages-timing-analysis01/report.json",
+      "bytes": 12793,
+      "sha256": "1c3ca6e61c511c66ef82aa8cc1d6ff6e81bb89ff775d9a35559b4dfd3a5964f5"
+    },
+    "manifest": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/final-stages-timing01.json",
+      "bytes": 15098,
+      "sha256": "5dacdaca9001b9b1ebf1b0e9f259b2e9b79ca5d6af2696d8d905b37f0464a25f"
+    },
+    "roles": {
+      "phase111": {
+        "binary": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p131-final-native01-n1/program",
+          "bytes": 16878376,
+          "sha256": "57b6f168d2fa1d6f14c368f479f506cec7934c4e2d82a120e82b761e399e7c3a"
+        },
+        "source": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/combined-literals-source01/compiler.bend",
+          "bytes": 2667581,
+          "sha256": "1bc5930edcf80cda6c3572645df3c846fa631a83c2b936f20c83b05e0a6728f9"
+        },
+        "generation": "Experimental final Phase131 N1; focused19 passed; compact Base",
+        "nativeQualified": false,
+        "carrierReceipt": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase130/base-carrier01/receipt.json",
+          "bytes": 4362,
+          "sha256": "6b170fc62a4a8b4e7588019a1b2cbdcc932ba10477029d966fbfa62cc61c89cf"
+        }
+      },
+      "phase112": {
+        "binary": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p131-final-native01-n2/program",
+          "bytes": 17132048,
+          "sha256": "2fae36020081ccc5cbfb847caf0b285b762387327e4bb44e1d62d96d1affd5dc"
+        },
+        "source": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/combined-literals-source01/compiler.bend",
+          "bytes": 2667581,
+          "sha256": "1bc5930edcf80cda6c3572645df3c846fa631a83c2b936f20c83b05e0a6728f9"
+        },
+        "generation": "Experimental final Phase131 N2; focused19 passed; compact Base",
+        "nativeQualified": false,
+        "carrierReceipt": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase130/base-carrier01/receipt.json",
+          "bytes": 4362,
+          "sha256": "6b170fc62a4a8b4e7588019a1b2cbdcc932ba10477029d966fbfa62cc61c89cf"
+        }
+      },
+      "upstream": {
+        "bun": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/bun-1.4.3/bun",
+          "bytes": 88979072,
+          "sha256": "7ce7d6b654eddeec20afddf2396317fba6dc19ab52788a27e894e1806bf8f24b"
+        },
+        "modules": {
+          "bend": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/bend.ts",
+            "sha256": "1d133151652b597a1a035c77c172475e6de096da37f3b9e3adc23c2f75bdfe49",
+            "bytes": 138101
+          },
+          "compiler": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/comp.ts",
+            "sha256": "2b13224ba09a9e39e37cccf06e449c1bdafe5e03a81641654f7d0e455507629c",
+            "bytes": 185124
+          },
+          "base": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/base.bend",
+            "sha256": "99ac43f2b2bb3e3f39acdcedcecbbd3cb44749ce13969c827d6973fa66f7facf",
+            "bytes": 75064
+          }
+        },
+        "manifest": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase105/screen01/upstream.json",
+          "bytes": 665,
+          "sha256": "f3ea63f22513f7907a4c622376a99556617f9be099ff4c80c64b15a2e2d8ded8"
+        },
+        "worker": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase105/upstream.mjs",
+          "bytes": 1428,
+          "sha256": "746f787e532beb4380d78858012f4ef2f20be0c53cc069bb254a75ae804d3181"
+        }
+      }
+    },
+    "cases": [
+      {
+        "name": "lexer",
+        "roles": {
+          "phase111": {
+            "requestSeconds": {
+              "median": 1.7325726160779595,
+              "minimum": 1.7287328660022467,
+              "maximum": 1.8503964629489928,
+              "samples": [
+                1.8503964629489928,
+                1.7325726160779595,
+                1.7287328660022467
+              ]
+            },
+            "machineBuildSeconds": {
+              "median": 0.08725343877449632,
+              "minimum": 0.0870094068814069,
+              "maximum": 0.08966555795632303,
+              "samples": [
+                0.08966555795632303,
+                0.08725343877449632,
+                0.0870094068814069
+              ]
+            },
+            "readyExecutableStageSumSeconds": {
+              "median": 1.8198260548524559,
+              "minimum": 1.8157422728836536,
+              "maximum": 1.9400620209053159,
+              "samples": [
+                1.9400620209053159,
+                1.8198260548524559,
+                1.8157422728836536
+              ]
+            },
+            "readyExecutableHarnessSeconds": {
+              "median": 1.9106411319226027,
+              "minimum": 1.870505184866488,
+              "maximum": 2.1416285180021077,
+              "samples": [
+                2.1416285180021077,
+                1.870505184866488,
+                1.9106411319226027
+              ]
+            },
+            "requestCpuSeconds": {
+              "median": 1.7316949999999998,
+              "minimum": 1.727832,
+              "maximum": 1.8488799999999999,
+              "samples": [
+                1.8488799999999999,
+                1.7316949999999998,
+                1.727832
+              ]
+            }
+          },
+          "phase112": {
+            "requestSeconds": {
+              "median": 1.5497426469810307,
+              "minimum": 1.5430001569911838,
+              "maximum": 1.568961684126407,
+              "samples": [
+                1.568961684126407,
+                1.5430001569911838,
+                1.5497426469810307
+              ]
+            },
+            "machineBuildSeconds": {
+              "median": 0.08836942887865007,
+              "minimum": 0.08811289700679481,
+              "maximum": 0.0912839868105948,
+              "samples": [
+                0.08811289700679481,
+                0.08836942887865007,
+                0.0912839868105948
+              ]
+            },
+            "readyExecutableStageSumSeconds": {
+              "median": 1.6410266337916255,
+              "minimum": 1.6313695858698338,
+              "maximum": 1.6570745811332017,
+              "samples": [
+                1.6570745811332017,
+                1.6313695858698338,
+                1.6410266337916255
+              ]
+            },
+            "readyExecutableHarnessSeconds": {
+              "median": 1.7494017998687923,
+              "minimum": 1.7469266629777849,
+              "maximum": 1.8140036291442811,
+              "samples": [
+                1.8140036291442811,
+                1.7469266629777849,
+                1.7494017998687923
+              ]
+            },
+            "requestCpuSeconds": {
+              "median": 1.548835,
+              "minimum": 1.542128,
+              "maximum": 1.568053,
+              "samples": [
+                1.568053,
+                1.542128,
+                1.548835
+              ]
+            }
+          },
+          "upstream": {
+            "requestSeconds": {
+              "median": 0.7166903419420123,
+              "minimum": 0.6823604730889201,
+              "maximum": 0.7269208861980587,
+              "samples": [
+                0.7269208861980587,
+                0.6823604730889201,
+                0.7166903419420123
+              ]
+            },
+            "machineBuildSeconds": {
+              "median": 0.6576517359353602,
+              "minimum": 0.657650473061949,
+              "maximum": 0.7074380570556968,
+              "samples": [
+                0.7074380570556968,
+                0.6576517359353602,
+                0.657650473061949
+              ]
+            },
+            "readyExecutableStageSumSeconds": {
+              "median": 1.3743408150039613,
+              "minimum": 1.3400122090242803,
+              "maximum": 1.4343589432537556,
+              "samples": [
+                1.4343589432537556,
+                1.3400122090242803,
+                1.3743408150039613
+              ]
+            },
+            "readyExecutableHarnessSeconds": {
+              "median": 1.4444431378506124,
+              "minimum": 1.4140240950509906,
+              "maximum": 1.4581004758365452,
+              "samples": [
+                1.4444431378506124,
+                1.4140240950509906,
+                1.4581004758365452
+              ]
+            },
+            "requestCpuSeconds": {
+              "median": 0.715729,
+              "minimum": 0.681366,
+              "maximum": 0.72588,
+              "samples": [
+                0.72588,
+                0.681366,
+                0.715729
+              ]
+            }
+          }
+        },
+        "requestRatios": {
+          "candidateOverParent": 0.8944748592928805,
+          "candidateOverUpstream": 2.1623601662912058,
+          "parentOverUpstream": 2.4174633236764653
+        },
+        "candidatePercentChange": -10.552514070711949,
+        "observedRangeHint": "candidate_range_below_parent",
+        "pairedRoundRatios": [
+          0.847905686993121,
+          0.8905832532919096,
+          0.896461609227609
+        ],
+        "nativeQbeExact": true
+      },
+      {
+        "name": "coverage-closures-256",
+        "roles": {
+          "phase111": {
+            "requestSeconds": {
+              "median": 0.4515883610583842,
+              "minimum": 0.4414125490002334,
+              "maximum": 0.46203555702231824,
+              "samples": [
+                0.4515883610583842,
+                0.4414125490002334,
+                0.46203555702231824
+              ]
+            },
+            "machineBuildSeconds": {
+              "median": 0.04245182778686285,
+              "minimum": 0.04171845712698996,
+              "maximum": 0.044397920137271285,
+              "samples": [
+                0.04245182778686285,
+                0.04171845712698996,
+                0.044397920137271285
+              ]
+            },
+            "readyExecutableStageSumSeconds": {
+              "median": 0.49404018884524703,
+              "minimum": 0.4831310061272234,
+              "maximum": 0.5064334771595895,
+              "samples": [
+                0.49404018884524703,
+                0.4831310061272234,
+                0.5064334771595895
+              ]
+            },
+            "readyExecutableHarnessSeconds": {
+              "median": 0.6246047818567604,
+              "minimum": 0.5801720209419727,
+              "maximum": 0.6590842509176582,
+              "samples": [
+                0.6246047818567604,
+                0.5801720209419727,
+                0.6590842509176582
+              ]
+            },
+            "requestCpuSeconds": {
+              "median": 0.45038999999999996,
+              "minimum": 0.440505,
+              "maximum": 0.46116699999999994,
+              "samples": [
+                0.45038999999999996,
+                0.440505,
+                0.46116699999999994
+              ]
+            }
+          },
+          "phase112": {
+            "requestSeconds": {
+              "median": 0.42399373301304877,
+              "minimum": 0.4125318070873618,
+              "maximum": 0.4302095689345151,
+              "samples": [
+                0.42399373301304877,
+                0.4302095689345151,
+                0.4125318070873618
+              ]
+            },
+            "machineBuildSeconds": {
+              "median": 0.0441332058981061,
+              "minimum": 0.04224533890374005,
+              "maximum": 0.09223544714041054,
+              "samples": [
+                0.04224533890374005,
+                0.09223544714041054,
+                0.0441332058981061
+              ]
+            },
+            "readyExecutableStageSumSeconds": {
+              "median": 0.4662390719167888,
+              "minimum": 0.4566650129854679,
+              "maximum": 0.5224450160749257,
+              "samples": [
+                0.4662390719167888,
+                0.5224450160749257,
+                0.4566650129854679
+              ]
+            },
+            "readyExecutableHarnessSeconds": {
+              "median": 0.6418805860448629,
+              "minimum": 0.597715328913182,
+              "maximum": 0.8376060579903424,
+              "samples": [
+                0.6418805860448629,
+                0.8376060579903424,
+                0.597715328913182
+              ]
+            },
+            "requestCpuSeconds": {
+              "median": 0.42302699999999993,
+              "minimum": 0.41163,
+              "maximum": 0.42927699999999996,
+              "samples": [
+                0.42302699999999993,
+                0.42927699999999996,
+                0.41163
+              ]
+            }
+          },
+          "upstream": {
+            "requestSeconds": {
+              "median": 0.5241100611165166,
+              "minimum": 0.5191974029876292,
+              "maximum": 0.5247758529148996,
+              "samples": [
+                0.5241100611165166,
+                0.5191974029876292,
+                0.5247758529148996
+              ]
+            },
+            "machineBuildSeconds": {
+              "median": 0.5678195219952613,
+              "minimum": 0.563353732926771,
+              "maximum": 0.5907763671129942,
+              "samples": [
+                0.5678195219952613,
+                0.563353732926771,
+                0.5907763671129942
+              ]
+            },
+            "readyExecutableStageSumSeconds": {
+              "median": 1.091929583111778,
+              "minimum": 1.0825511359144002,
+              "maximum": 1.1155522200278938,
+              "samples": [
+                1.091929583111778,
+                1.0825511359144002,
+                1.1155522200278938
+              ]
+            },
+            "readyExecutableHarnessSeconds": {
+              "median": 1.2339653850067407,
+              "minimum": 1.195116117130965,
+              "maximum": 1.2661278350278735,
+              "samples": [
+                1.195116117130965,
+                1.2661278350278735,
+                1.2339653850067407
+              ]
+            },
+            "requestCpuSeconds": {
+              "median": 0.5230609999999999,
+              "minimum": 0.517908,
+              "maximum": 0.523574,
+              "samples": [
+                0.5230609999999999,
+                0.517908,
+                0.523574
+              ]
+            }
+          }
+        },
+        "requestRatios": {
+          "candidateOverParent": 0.9388942886378602,
+          "candidateOverUpstream": 0.8089784273742254,
+          "parentOverUpstream": 0.8616288725623035
+        },
+        "candidatePercentChange": -6.1105711362139825,
+        "observedRangeHint": "candidate_range_below_parent",
+        "pairedRoundRatios": [
+          0.9388942886378602,
+          0.9746201595512131,
+          0.8928572721675505
+        ],
+        "nativeQbeExact": true
+      },
+      {
+        "name": "coverage-map-churn-128",
+        "roles": {
+          "phase111": {
+            "requestSeconds": {
+              "median": 2.257159536005929,
+              "minimum": 2.248266741866246,
+              "maximum": 2.2717967219650745,
+              "samples": [
+                2.2717967219650745,
+                2.257159536005929,
+                2.248266741866246
+              ]
+            },
+            "machineBuildSeconds": {
+              "median": 0.18242182489484549,
+              "minimum": 0.18054260592907667,
+              "maximum": 0.1967391730286181,
+              "samples": [
+                0.18054260592907667,
+                0.1967391730286181,
+                0.18242182489484549
+              ]
+            },
+            "readyExecutableStageSumSeconds": {
+              "median": 2.452339327894151,
+              "minimum": 2.4306885667610914,
+              "maximum": 2.453898709034547,
+              "samples": [
+                2.452339327894151,
+                2.453898709034547,
+                2.4306885667610914
+              ]
+            },
+            "readyExecutableHarnessSeconds": {
+              "median": 2.580316547071561,
+              "minimum": 2.5075354110449553,
+              "maximum": 2.811589501099661,
+              "samples": [
+                2.580316547071561,
+                2.811589501099661,
+                2.5075354110449553
+              ]
+            },
+            "requestCpuSeconds": {
+              "median": 2.255673,
+              "minimum": 2.2474529999999997,
+              "maximum": 2.270645,
+              "samples": [
+                2.270645,
+                2.255673,
+                2.2474529999999997
+              ]
+            }
+          },
+          "phase112": {
+            "requestSeconds": {
+              "median": 1.9181187821086496,
+              "minimum": 1.9103856219444424,
+              "maximum": 1.9212556059937924,
+              "samples": [
+                1.9212556059937924,
+                1.9181187821086496,
+                1.9103856219444424
+              ]
+            },
+            "machineBuildSeconds": {
+              "median": 0.1811056707520038,
+              "minimum": 0.18017682316713035,
+              "maximum": 0.1820671281311661,
+              "samples": [
+                0.18017682316713035,
+                0.1811056707520038,
+                0.1820671281311661
+              ]
+            },
+            "readyExecutableStageSumSeconds": {
+              "median": 2.0992244528606534,
+              "minimum": 2.0924527500756085,
+              "maximum": 2.1014324291609228,
+              "samples": [
+                2.1014324291609228,
+                2.0992244528606534,
+                2.0924527500756085
+              ]
+            },
+            "readyExecutableHarnessSeconds": {
+              "median": 2.182476565008983,
+              "minimum": 2.158779334044084,
+              "maximum": 2.3449224510695785,
+              "samples": [
+                2.158779334044084,
+                2.182476565008983,
+                2.3449224510695785
+              ]
+            },
+            "requestCpuSeconds": {
+              "median": 1.9168409999999998,
+              "minimum": 1.909525,
+              "maximum": 1.919939,
+              "samples": [
+                1.919939,
+                1.9168409999999998,
+                1.909525
+              ]
+            }
+          },
+          "upstream": {
+            "requestSeconds": {
+              "median": 1.1551131261512637,
+              "minimum": 1.1452637650072575,
+              "maximum": 1.2093219358939677,
+              "samples": [
+                1.2093219358939677,
+                1.1551131261512637,
+                1.1452637650072575
+              ]
+            },
+            "machineBuildSeconds": {
+              "median": 1.752665715990588,
+              "minimum": 1.7513701049610972,
+              "maximum": 1.9280853669624776,
+              "samples": [
+                1.9280853669624776,
+                1.752665715990588,
+                1.7513701049610972
+              ]
+            },
+            "readyExecutableStageSumSeconds": {
+              "median": 2.907778842141852,
+              "minimum": 2.8966338699683547,
+              "maximum": 3.1374073028564453,
+              "samples": [
+                3.1374073028564453,
+                2.907778842141852,
+                2.8966338699683547
+              ]
+            },
+            "readyExecutableHarnessSeconds": {
+              "median": 2.9728673212230206,
+              "minimum": 2.9620230549480766,
+              "maximum": 3.208425658987835,
+              "samples": [
+                3.208425658987835,
+                2.9728673212230206,
+                2.9620230549480766
+              ]
+            },
+            "requestCpuSeconds": {
+              "median": 1.154072,
+              "minimum": 1.144244,
+              "maximum": 1.208285,
+              "samples": [
+                1.208285,
+                1.154072,
+                1.144244
+              ]
+            }
+          }
+        },
+        "requestRatios": {
+          "candidateOverParent": 0.8497931809918867,
+          "candidateOverUpstream": 1.6605462605205208,
+          "parentOverUpstream": 1.9540592907350884
+        },
+        "candidatePercentChange": -15.020681900811327,
+        "observedRangeHint": "candidate_range_below_parent",
+        "pairedRoundRatios": [
+          0.8456987315009115,
+          0.8497931809918867,
+          0.8497148431589864
+        ],
+        "nativeQbeExact": true
+      }
+    ],
+    "geometricRatios": {
+      "requestSeconds": {
+        "candidateOverParent": 0.8936470495824071,
+        "candidateOverUpstream": 1.4268291850197625,
+        "parentOverUpstream": 1.5966361503532143
+      },
+      "machineBuildSeconds": {
+        "candidateOverParent": 1.0148798049948646,
+        "candidateOverUpstream": 0.10257260781447579,
+        "parentOverUpstream": 0.10106872489692986
+      },
+      "readyExecutableStageSumSeconds": {
+        "candidateOverParent": 0.8997809976010746,
+        "candidateOverUpstream": 0.7166562747255942,
+        "parentOverUpstream": 0.7964785616014196
+      },
+      "readyExecutableHarnessSeconds": {
+        "candidateOverParent": 0.9267131545066658,
+        "candidateOverUpstream": 0.7733417937658964,
+        "parentOverUpstream": 0.8344996399426138
+      }
+    },
+    "observedRows": 27,
+    "allOutputsCorrect": true,
+    "exactQbeBetweenNativeRoles": true,
+    "cpuAffinity": [
+      3
+    ],
+    "sampleWindowSeconds": 49.45721125602722,
+    "sameRequestedSources": true,
+    "sameCompilerSource": true,
+    "clocks": {
+      "requestSeconds": "Whole compiler child through complete output and exit, native QBE versus upstream C explicitly distinct formats.",
+      "machineBuildSeconds": "Sum of fresh QBE/as/link children or fresh upstream Clang child.",
+      "readyExecutableStageSumSeconds": "Request plus machine-build child sums; excludes Python authentication/reporting and generated-program execution.",
+      "readyExecutableHarnessSeconds": "Elapsed through binary construction including between-stage Python bookkeeping, starting after preflight.",
+      "executionSeconds": "Single full-output correctness observation only, not program-speed benchmark."
+    },
+    "buildPolicy": {
+      "native": "Pinned QBE amd64_sysv, GNU as -mbranches-within-32B-boundaries, gcc -no-pie objects -pthread -lm",
+      "upstream": "pinned Clang -isystem bundled include/clang -O2 emitted C -lm -pthread; no PCH",
+      "acquisitionExcluded": true,
+      "nativeRuntimeCached": true,
+      "upstreamRuntimeRecompiled": true
+    },
+    "qualificationAtTiming": "Actual admitted N0->N1->N2 lineage and focused19 on N1/N2 only. Final Q2=Q3, N3 focused19/full45 and installed selection remain separate."
+  },
+  "qualification": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/final-native-qualification01.json",
+    "bytes": 867201,
+    "sha256": "75aa7552be018fbb2da7ec8315e28d2224e20dc90a2c5529c16f85eb7c327c8d"
+  },
+  "measuredStages": [
+    "Phase130 N1",
+    "Phase131 FAST N1",
+    "Phase131 final N1",
+    "Phase131 final N2"
+  ],
+  "qualifiedFinalStage": "Phase131 final N3",
+  "n3PerformanceMeasured": false
+}

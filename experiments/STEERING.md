@@ -1,4 +1,52 @@
-# Latest qualified experiment: Phase130 compact prepared Base
+# Latest qualified experiment: Phase131 laws and complete borrowed computations
+
+[Report](../implementation/phase131/README.md) ·
+[Final capsule](../implementation/phase131/final/README.md) ·
+[Native timings](../implementation/phase131/native-results.md) ·
+[Program timings](../implementation/phase131/program-runtime.md) ·
+[Guide](../docs/self_hosted/analysis-and-proof-boundaries.md).
+
+Final source `1bc5930e…728f9` is native-qualified through Q2=Q3 reproduction
+(107,059,385 bytes), focused19 on N2/N3 and ordinary45 on N3. Q1 was emitted by
+the qualified Phase130 N1 and differs as expected. The unchanged Phase128 runtime,
+explicit compact prepared Base and independent final verifier remain required.
+Installed selection is unchanged; the final capsule is the explicit research
+candidate. FAST is a separately qualified fallback, not the final source.
+
+Final N2 request time falls20.92% versus Phase130 N1: same-block upstream ratio
+1.82482→1.44305×. A separate fixed-source N1/N2 block shows10.64% less request
+time from improved generated compiler code; N2/upstream1.42683×. Do not pool
+blocks. Ready-executable child sums0.71498× upstream use different prepared-Base/
+cached-runtime workflows and do not establish request parity.
+
+The actual N2 reproduces all45 measured wrappers exactly. All405 generated-runtime
+observations pass: fresh baseline/upstream1.66679×, final/upstream1.66268×,
+final/baseline0.99754×. This is approximately flat; positive log deficit0.767276,
+40/44 above1.1× and21 above2×. A five-round follow-up retains a1.56% BST32
+regression. Historical1.65258× is not this block's denominator.
+
+Selected improvements: reused min/max use facts with proved first-order algorithms,
+one-path index insertion and closed reads/catalogues, immutable constructor
+exposure, general selector admission, borrowed shallow records and scalar product
+results composed through actual emitted helper workers. Source+824 physical/
+636 code lines. Fifty-five distinct laws are independently accepted, with exact
+source bridges and mutation controls; full KTerm/native correctness is not proved.
+
+Retain negative evidence: safe closure summary2.564× slower before recovery;
+eligible-but-unused borrowed plans; late closure/preparation duplication; field
+masks removing110 machine instructions without runtime gain. Private string
+identity is inconclusive; owning identity has a20% extracted-query gain and a
+separate whole-image ceiling. Generic closed-factory evaluation is checked only
+as a data prototype; it could simplify419 literal expansions but needs an
+aggregate work/result budget. Neither prototype is in the qualified source.
+
+Use refreshed final-N2 profiles to choose the next complete query boundary.
+Prefer one general, source-justified work-elimination rule over a new backend or
+universal IR. Same-source executable gains demonstrate self-optimization, not
+recursive acceleration of research. Full source emissions take~382–491 guarded
+seconds and~2.9GB RSS; cheap proxies precede another complete qualification.
+
+# Previous qualified experiment: Phase130 compact prepared Base
 
 [Report](../implementation/phase130/README.md) ·
 [Candidate](../implementation/phase130/candidate.json) ·

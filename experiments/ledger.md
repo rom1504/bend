@@ -5595,3 +5595,37 @@ rewrites1.1203×/1.2190× slower, excluded. Source+114 lines including67 control
 Native self-emission399.32s/2.81GB; old historical full-build times are not paired
 controls. Explicitcompact carrier is required for the new fast research route.
 Production selection unchanged; no recursive research acceleration claim.
+
+
+## Phase131 — laws and complete borrowed computations (2026-10-23/24)
+
+[Design](../design/phase131/README.md) ·
+[Report](../implementation/phase131/README.md) ·
+[Final capsule](../implementation/phase131/final/README.md).
+
+Native-qualified final source1bc5930e… reproduces107,059,385-byte Q2/Q3;
+N2/N3 focused19 and N3 ordinary45 pass. The qualified Phase130 native producer
+acquires Q1; new codegen makes Q1 differ from Q2, as declared. All45 actual N2
+benchmark QBE wrappers match the405 independently checked timed products.
+Installed selection and earlier FAST/Phase130 qualified candidates are preserved.
+
+Same-block native request ratio falls1.82482→1.44305× upstream,20.92% less time.
+A separate same-source N1/N2 block establishes10.64% less request time from
+improved compiler code generation; N2/upstream1.42683×. Ready-child sums0.71498×
+use prepared-Base/cached-runtime policy and are not request parity. Broad runtime
+is approximately flat: fresh baseline/upstream1.66679×, candidate1.66268×;
+positive log deficit0.767276,40/44 above1.1× and21 above2×. BST32 follow-up is
+1.56% slower. Historical1.65258× is a different observation block.
+
+Reusable body-use summaries, one-path index operations, static constructors,
+selector admission and complete borrowed helper/product regions compose in the
+selected source. Fifty-five distinct source-connected laws are independently
+accepted, with two semantic mutation controls. The initially proved closure
+summary was2.564× slower; the proved first-order rewrite recovers near-fast cost.
+Full differing-key summary, KTerm and native backend correctness remain open.
+
+Source grows824 physical/636 code lines (1.45%/1.54%). Negative field-mask
+experiment removes110 machine instructions without useful runtime gain; late
+preparation duplication is excluded. Generic factory evaluation and owning
+string-identity ceilings are independent experiments, not selected compiler code.
+Fresh final-N2 profiles guide follow-up. No recursive research acceleration claim.

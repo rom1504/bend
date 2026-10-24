@@ -1,7 +1,7 @@
 # P131-004 — compose verified readers with scalar product consumers
 
-Status: source06 passes independent review, native transfers and timing; final
-composition is admitted but not yet native-qualified.
+Status: source06 passes independent review, native transfers and timing; its
+final composition is now native-qualified through N2/N3 reproduction.
 
 Hypothesis: reuse the existing traversal and borrowed product contract, expose
 its scalar result virtually and retain the original owning fallback. The

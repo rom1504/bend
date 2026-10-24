@@ -1,6 +1,7 @@
 # P131-005 — borrow shallow records through verified virtual helpers
 
-Status: source03 composition admitted; source07 scheduling experiment excluded.
+Status: source03 is in the native-qualified final composition; source07
+scheduling experiment remains excluded.
 
 Hypothesis: admit finite shallow record layouts with opaque unobserved fields,
 and interpret supported virtual constructor arguments through the existing

@@ -1,7 +1,7 @@
 # P131-003 — expose and retain static facts across helper boundaries
 
-Status: missing-value and literal-source exposure admitted in final composition;
-selector V02 also admitted. Prepared-nullary selector V03 remains unqualified.
+Status: missing-value/literal exposure and selector V02 are native-qualified
+in the final composition. Prepared-nullary selector V03 remains unqualified.
 
 Hypothesis: existing static preparation already eliminates constant construction,
 but helper boundaries hide the closed constructor tree or reintroduce literals

@@ -1,0 +1,507 @@
+{
+  "schema": "phase131-merge-count-invariant-v1",
+  "complete": true,
+  "newLaws": [
+    "absence_preserves_bounds",
+    "both_true",
+    "combined_cell_bounded",
+    "combined_high_bounded",
+    "combined_low_bounded",
+    "count_cell_bounded",
+    "encoded_entries_bounded",
+    "merge_loop_preserves_count_bounds",
+    "merge_preserves_count_bounds",
+    "raw_cell_bounded"
+  ],
+  "newLawCount": 10,
+  "totalDistinctAcceptedLaws": 55,
+  "accepted": [
+    {
+      "run": "laws-merge-range-helpers01",
+      "receipt": {
+        "file": "selfhost/build/phase131/laws-merge-range-helpers01/report.json",
+        "bytes": 24428,
+        "sha256": "c71952c1c4ca1ce7fb8ee9a0c76eea4416c348647ccff4017bf823341e3b1ba4"
+      },
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/laws/merge-range-helpers.bend",
+        "bytes": 4460,
+        "sha256": "26c6527e5eba87a3dcfc7759500c732fda07f9f79560c4f7fbbdb646023b6367"
+      },
+      "sourceClosure": [
+        {
+          "origin": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/laws/merge-range-helpers.bend",
+            "bytes": 4460,
+            "sha256": "26c6527e5eba87a3dcfc7759500c732fda07f9f79560c4f7fbbdb646023b6367"
+          },
+          "snapshot": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/laws-merge-range-helpers01/snapshot/selfhost/tools/performance/phase131/laws/merge-range-helpers.bend",
+            "bytes": 4460,
+            "sha256": "26c6527e5eba87a3dcfc7759500c732fda07f9f79560c4f7fbbdb646023b6367"
+          }
+        },
+        {
+          "origin": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/laws/production.bend",
+            "bytes": 579,
+            "sha256": "4c4e7d6b12a30f97e9dc0ec482740e253a47db923716b7d7473c3de1055da047"
+          },
+          "snapshot": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/laws-merge-range-helpers01/snapshot/selfhost/tools/performance/phase131/laws/production.bend",
+            "bytes": 579,
+            "sha256": "4c4e7d6b12a30f97e9dc0ec482740e253a47db923716b7d7473c3de1055da047"
+          }
+        },
+        {
+          "origin": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/laws/reference.bend",
+            "bytes": 1666,
+            "sha256": "2c307630e01b283db9fcea6ee3bf50ad3268e9055c0b8108e95418cbfde4dbe3"
+          },
+          "snapshot": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/laws-merge-range-helpers01/snapshot/selfhost/tools/performance/phase131/laws/reference.bend",
+            "bytes": 1666,
+            "sha256": "2c307630e01b283db9fcea6ee3bf50ad3268e9055c0b8108e95418cbfde4dbe3"
+          }
+        },
+        {
+          "origin": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/laws/absent-production.bend",
+            "bytes": 349,
+            "sha256": "5bcd1dbb1b692b1578f9cb7d70a321f20acb2f0b4ead507990f3618022fcab63"
+          },
+          "snapshot": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/laws-merge-range-helpers01/snapshot/selfhost/tools/performance/phase131/laws/absent-production.bend",
+            "bytes": 349,
+            "sha256": "5bcd1dbb1b692b1578f9cb7d70a321f20acb2f0b4ead507990f3618022fcab63"
+          }
+        },
+        {
+          "origin": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/laws/bounded-domain.bend",
+            "bytes": 1163,
+            "sha256": "deb4a21d43cfae7a0ae8fb224943adba08d8d09110fc9c9dcc9a9308d410a9ff"
+          },
+          "snapshot": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/laws-merge-range-helpers01/snapshot/selfhost/tools/performance/phase131/laws/bounded-domain.bend",
+            "bytes": 1163,
+            "sha256": "deb4a21d43cfae7a0ae8fb224943adba08d8d09110fc9c9dcc9a9308d410a9ff"
+          }
+        },
+        {
+          "origin": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/laws/bounded-lookup-laws.bend",
+            "bytes": 3682,
+            "sha256": "08c8cf23f5ef0859874d6e3e4f38df3df84610de26d82c625dd22b114330829d"
+          },
+          "snapshot": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/laws-merge-range-helpers01/snapshot/selfhost/tools/performance/phase131/laws/bounded-lookup-laws.bend",
+            "bytes": 3682,
+            "sha256": "08c8cf23f5ef0859874d6e3e4f38df3df84610de26d82c625dd22b114330829d"
+          }
+        },
+        {
+          "origin": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/laws/lookup-production-v02.bend",
+            "bytes": 700,
+            "sha256": "a9ef7717bfdc3d57dbee006118a14691aae4383dbd9ec29f2975e6b5e9b1cdfd"
+          },
+          "snapshot": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/laws-merge-range-helpers01/snapshot/selfhost/tools/performance/phase131/laws/lookup-production-v02.bend",
+            "bytes": 700,
+            "sha256": "a9ef7717bfdc3d57dbee006118a14691aae4383dbd9ec29f2975e6b5e9b1cdfd"
+          }
+        },
+        {
+          "origin": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/laws/lookup-first-order-v02.bend",
+            "bytes": 1059,
+            "sha256": "33da18ae174e5eace9aa5ac73a3f7f07138d9ebb7b46f3451f792639b380dec8"
+          },
+          "snapshot": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/laws-merge-range-helpers01/snapshot/selfhost/tools/performance/phase131/laws/lookup-first-order-v02.bend",
+            "bytes": 1059,
+            "sha256": "33da18ae174e5eace9aa5ac73a3f7f07138d9ebb7b46f3451f792639b380dec8"
+          }
+        },
+        {
+          "origin": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/laws/first-order-lookup-laws.bend",
+            "bytes": 1798,
+            "sha256": "13e3bc3d602beddfc40138abb25137eb7ab3d92c748de01c06c566fb4fb7178d"
+          },
+          "snapshot": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/laws-merge-range-helpers01/snapshot/selfhost/tools/performance/phase131/laws/first-order-lookup-laws.bend",
+            "bytes": 1798,
+            "sha256": "13e3bc3d602beddfc40138abb25137eb7ab3d92c748de01c06c566fb4fb7178d"
+          }
+        },
+        {
+          "origin": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/laws/low-only.bend",
+            "bytes": 1917,
+            "sha256": "8478e5af67da8aebd74cd9f0487105764d8568cff05efcc0498adf05f04115a2"
+          },
+          "snapshot": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/laws-merge-range-helpers01/snapshot/selfhost/tools/performance/phase131/laws/low-only.bend",
+            "bytes": 1917,
+            "sha256": "8478e5af67da8aebd74cd9f0487105764d8568cff05efcc0498adf05f04115a2"
+          }
+        },
+        {
+          "origin": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/laws/high-only.bend",
+            "bytes": 1919,
+            "sha256": "490b4455e059901cd6ac2e68f2a8f018ee76560e0f3af59bd9831740a3d7aca1"
+          },
+          "snapshot": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/laws-merge-range-helpers01/snapshot/selfhost/tools/performance/phase131/laws/high-only.bend",
+            "bytes": 1919,
+            "sha256": "490b4455e059901cd6ac2e68f2a8f018ee76560e0f3af59bd9831740a3d7aca1"
+          }
+        },
+        {
+          "origin": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/laws/merge-range-domain.bend",
+            "bytes": 366,
+            "sha256": "181a91b018ddbc412a8fd5f83dbcf5f3c496aa0a095992ca34546edaee208239"
+          },
+          "snapshot": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/laws-merge-range-helpers01/snapshot/selfhost/tools/performance/phase131/laws/merge-range-domain.bend",
+            "bytes": 366,
+            "sha256": "181a91b018ddbc412a8fd5f83dbcf5f3c496aa0a095992ca34546edaee208239"
+          }
+        }
+      ],
+      "elaboration": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/laws-merge-range-helpers01/laws.bendtt",
+        "bytes": 124063,
+        "sha256": "42f1d9d2abd043a40a9e29960bb92d2f6c4d7e7f1efe99102048ccf696bf3551"
+      },
+      "lawNames": [
+        "both_true",
+        "combined_low_bounded",
+        "combined_high_bounded",
+        "raw_cell_bounded",
+        "count_cell_bounded",
+        "combined_cell_bounded",
+        "encoded_entries_bounded",
+        "absence_preserves_bounds",
+        "encode_choice",
+        "maximum_count_exact",
+        "minimum_count_exact",
+        "bounded_count",
+        "first_order_maximum_count",
+        "first_order_minimum_count",
+        "maximum_bounded",
+        "minimum_bounded",
+        "maximum_loop_exact",
+        "maximum_exact",
+        "minimum_loop_exact",
+        "minimum_exact",
+        "lower_combination_exact",
+        "upper_combination_exact"
+      ],
+      "opaqueDefinitions": [],
+      "rows": {
+        "check": {
+          "returncode": 0,
+          "wallSeconds": 0.7395637321751565,
+          "peakTreeRssBytes": 101031936,
+          "stdout": "ALL PROOFS CHECK\nUse --verdict for mathematical validity.\n"
+        },
+        "elaborate": {
+          "returncode": 0,
+          "wallSeconds": 0.9016093439422548,
+          "peakTreeRssBytes": 106856448,
+          "stdout": ""
+        },
+        "kernel": {
+          "returncode": 0,
+          "wallSeconds": 2.797923397971317,
+          "peakTreeRssBytes": 637038592,
+          "stdout": "ALL PROOFS CHECK\n"
+        },
+        "kernel-negative": {
+          "returncode": 1,
+          "wallSeconds": 0.3091331198811531,
+          "peakTreeRssBytes": 626225152,
+          "stdout": "SOME PROOFS FAIL\nIn phase67_false:\nexpected: .left\nobserved: .right\n"
+        }
+      }
+    },
+    {
+      "run": "laws-merge-range01",
+      "receipt": {
+        "file": "selfhost/build/phase131/laws-merge-range01/report.json",
+        "bytes": 26741,
+        "sha256": "a1a77f40136b9db470830fcab8ff0110bd39ada77ec65427952f01c226ff282a"
+      },
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/laws/merge-range-laws.bend",
+        "bytes": 5068,
+        "sha256": "4cbf780a518ec1baae7bc71b0e66d894c9e076d67edadfed69838bc50cb1f035"
+      },
+      "sourceClosure": [
+        {
+          "origin": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/laws/merge-range-laws.bend",
+            "bytes": 5068,
+            "sha256": "4cbf780a518ec1baae7bc71b0e66d894c9e076d67edadfed69838bc50cb1f035"
+          },
+          "snapshot": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/laws-merge-range01/snapshot/selfhost/tools/performance/phase131/laws/merge-range-laws.bend",
+            "bytes": 5068,
+            "sha256": "4cbf780a518ec1baae7bc71b0e66d894c9e076d67edadfed69838bc50cb1f035"
+          }
+        },
+        {
+          "origin": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/laws/reference.bend",
+            "bytes": 1666,
+            "sha256": "2c307630e01b283db9fcea6ee3bf50ad3268e9055c0b8108e95418cbfde4dbe3"
+          },
+          "snapshot": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/laws-merge-range01/snapshot/selfhost/tools/performance/phase131/laws/reference.bend",
+            "bytes": 1666,
+            "sha256": "2c307630e01b283db9fcea6ee3bf50ad3268e9055c0b8108e95418cbfde4dbe3"
+          }
+        },
+        {
+          "origin": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/laws/absent-production.bend",
+            "bytes": 349,
+            "sha256": "5bcd1dbb1b692b1578f9cb7d70a321f20acb2f0b4ead507990f3618022fcab63"
+          },
+          "snapshot": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/laws-merge-range01/snapshot/selfhost/tools/performance/phase131/laws/absent-production.bend",
+            "bytes": 349,
+            "sha256": "5bcd1dbb1b692b1578f9cb7d70a321f20acb2f0b4ead507990f3618022fcab63"
+          }
+        },
+        {
+          "origin": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/laws/bounded-domain.bend",
+            "bytes": 1163,
+            "sha256": "deb4a21d43cfae7a0ae8fb224943adba08d8d09110fc9c9dcc9a9308d410a9ff"
+          },
+          "snapshot": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/laws-merge-range01/snapshot/selfhost/tools/performance/phase131/laws/bounded-domain.bend",
+            "bytes": 1163,
+            "sha256": "deb4a21d43cfae7a0ae8fb224943adba08d8d09110fc9c9dcc9a9308d410a9ff"
+          }
+        },
+        {
+          "origin": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/laws/merge-first-order-v01.bend",
+            "bytes": 2029,
+            "sha256": "cfe6aacdec209f9af3dcb085083c1cce1d1d8be0ce1c7d2ab3d176fb6e78752b"
+          },
+          "snapshot": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/laws-merge-range01/snapshot/selfhost/tools/performance/phase131/laws/merge-first-order-v01.bend",
+            "bytes": 2029,
+            "sha256": "cfe6aacdec209f9af3dcb085083c1cce1d1d8be0ce1c7d2ab3d176fb6e78752b"
+          }
+        },
+        {
+          "origin": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/laws/production.bend",
+            "bytes": 579,
+            "sha256": "4c4e7d6b12a30f97e9dc0ec482740e253a47db923716b7d7473c3de1055da047"
+          },
+          "snapshot": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/laws-merge-range01/snapshot/selfhost/tools/performance/phase131/laws/production.bend",
+            "bytes": 579,
+            "sha256": "4c4e7d6b12a30f97e9dc0ec482740e253a47db923716b7d7473c3de1055da047"
+          }
+        },
+        {
+          "origin": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/laws/merge-range-domain.bend",
+            "bytes": 366,
+            "sha256": "181a91b018ddbc412a8fd5f83dbcf5f3c496aa0a095992ca34546edaee208239"
+          },
+          "snapshot": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/laws-merge-range01/snapshot/selfhost/tools/performance/phase131/laws/merge-range-domain.bend",
+            "bytes": 366,
+            "sha256": "181a91b018ddbc412a8fd5f83dbcf5f3c496aa0a095992ca34546edaee208239"
+          }
+        },
+        {
+          "origin": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/laws/merge-range-helpers.bend",
+            "bytes": 4460,
+            "sha256": "26c6527e5eba87a3dcfc7759500c732fda07f9f79560c4f7fbbdb646023b6367"
+          },
+          "snapshot": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/laws-merge-range01/snapshot/selfhost/tools/performance/phase131/laws/merge-range-helpers.bend",
+            "bytes": 4460,
+            "sha256": "26c6527e5eba87a3dcfc7759500c732fda07f9f79560c4f7fbbdb646023b6367"
+          }
+        },
+        {
+          "origin": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/laws/bounded-lookup-laws.bend",
+            "bytes": 3682,
+            "sha256": "08c8cf23f5ef0859874d6e3e4f38df3df84610de26d82c625dd22b114330829d"
+          },
+          "snapshot": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/laws-merge-range01/snapshot/selfhost/tools/performance/phase131/laws/bounded-lookup-laws.bend",
+            "bytes": 3682,
+            "sha256": "08c8cf23f5ef0859874d6e3e4f38df3df84610de26d82c625dd22b114330829d"
+          }
+        },
+        {
+          "origin": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/laws/lookup-production-v02.bend",
+            "bytes": 700,
+            "sha256": "a9ef7717bfdc3d57dbee006118a14691aae4383dbd9ec29f2975e6b5e9b1cdfd"
+          },
+          "snapshot": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/laws-merge-range01/snapshot/selfhost/tools/performance/phase131/laws/lookup-production-v02.bend",
+            "bytes": 700,
+            "sha256": "a9ef7717bfdc3d57dbee006118a14691aae4383dbd9ec29f2975e6b5e9b1cdfd"
+          }
+        },
+        {
+          "origin": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/laws/lookup-first-order-v02.bend",
+            "bytes": 1059,
+            "sha256": "33da18ae174e5eace9aa5ac73a3f7f07138d9ebb7b46f3451f792639b380dec8"
+          },
+          "snapshot": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/laws-merge-range01/snapshot/selfhost/tools/performance/phase131/laws/lookup-first-order-v02.bend",
+            "bytes": 1059,
+            "sha256": "33da18ae174e5eace9aa5ac73a3f7f07138d9ebb7b46f3451f792639b380dec8"
+          }
+        },
+        {
+          "origin": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/laws/first-order-lookup-laws.bend",
+            "bytes": 1798,
+            "sha256": "13e3bc3d602beddfc40138abb25137eb7ab3d92c748de01c06c566fb4fb7178d"
+          },
+          "snapshot": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/laws-merge-range01/snapshot/selfhost/tools/performance/phase131/laws/first-order-lookup-laws.bend",
+            "bytes": 1798,
+            "sha256": "13e3bc3d602beddfc40138abb25137eb7ab3d92c748de01c06c566fb4fb7178d"
+          }
+        },
+        {
+          "origin": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/laws/low-only.bend",
+            "bytes": 1917,
+            "sha256": "8478e5af67da8aebd74cd9f0487105764d8568cff05efcc0498adf05f04115a2"
+          },
+          "snapshot": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/laws-merge-range01/snapshot/selfhost/tools/performance/phase131/laws/low-only.bend",
+            "bytes": 1917,
+            "sha256": "8478e5af67da8aebd74cd9f0487105764d8568cff05efcc0498adf05f04115a2"
+          }
+        },
+        {
+          "origin": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/laws/high-only.bend",
+            "bytes": 1919,
+            "sha256": "490b4455e059901cd6ac2e68f2a8f018ee76560e0f3af59bd9831740a3d7aca1"
+          },
+          "snapshot": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/laws-merge-range01/snapshot/selfhost/tools/performance/phase131/laws/high-only.bend",
+            "bytes": 1919,
+            "sha256": "490b4455e059901cd6ac2e68f2a8f018ee76560e0f3af59bd9831740a3d7aca1"
+          }
+        }
+      ],
+      "elaboration": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/laws-merge-range01/laws.bendtt",
+        "bytes": 140532,
+        "sha256": "e053b929c0c837164065b3205d12a791036190456eb9479c10e1b7228ffa4203"
+      },
+      "lawNames": [
+        "merge_loop_preserves_count_bounds",
+        "merge_preserves_count_bounds",
+        "both_true",
+        "combined_low_bounded",
+        "combined_high_bounded",
+        "raw_cell_bounded",
+        "count_cell_bounded",
+        "combined_cell_bounded",
+        "encoded_entries_bounded",
+        "absence_preserves_bounds",
+        "encode_choice",
+        "maximum_count_exact",
+        "minimum_count_exact",
+        "bounded_count",
+        "first_order_maximum_count",
+        "first_order_minimum_count",
+        "maximum_bounded",
+        "minimum_bounded",
+        "maximum_loop_exact",
+        "maximum_exact",
+        "minimum_loop_exact",
+        "minimum_exact",
+        "lower_combination_exact",
+        "upper_combination_exact"
+      ],
+      "opaqueDefinitions": [],
+      "rows": {
+        "check": {
+          "returncode": 0,
+          "wallSeconds": 0.861449551070109,
+          "peakTreeRssBytes": 106127360,
+          "stdout": "ALL PROOFS CHECK\nUse --verdict for mathematical validity.\n"
+        },
+        "elaborate": {
+          "returncode": 0,
+          "wallSeconds": 0.9717015877831727,
+          "peakTreeRssBytes": 106635264,
+          "stdout": ""
+        },
+        "kernel": {
+          "returncode": 0,
+          "wallSeconds": 2.9600198280531913,
+          "peakTreeRssBytes": 640548864,
+          "stdout": "ALL PROOFS CHECK\n"
+        },
+        "kernel-negative": {
+          "returncode": 1,
+          "wallSeconds": 0.30892845802009106,
+          "peakTreeRssBytes": 626008064,
+          "stdout": "SOME PROOFS FAIL\nIn phase67_false:\nexpected: .left\nobserved: .right\n"
+        }
+      }
+    }
+  ],
+  "previousEvidence": [
+    {
+      "file": "selfhost/tools/performance/phase131/laws/evidence.json",
+      "bytes": 45994,
+      "sha256": "eda9e16ba1fe1b82ebdfdbc098f2905965adc55ea0e042cb66ecd5779b441041"
+    },
+    {
+      "file": "selfhost/tools/performance/phase131/laws/first-order-evidence.json",
+      "bytes": 25704,
+      "sha256": "c02bf84d8aaf7f2aca7243a4ee58120b6989e20bc8746ba5275c52fd673fa830"
+    },
+    {
+      "file": "selfhost/tools/performance/phase131/laws/consolidation-evidence.json",
+      "bytes": 19211,
+      "sha256": "ce231c9bfb9e137fa7911c3c2f92c7b6fdbcec9a49a8d04d38c482a58feb2204"
+    },
+    {
+      "file": "selfhost/tools/performance/phase131/laws/string-evidence.json",
+      "bytes": 4467,
+      "sha256": "11f4621504565fdba7ff4a85d5b5bc3366dc085634a2354ea29cfe4d49a4128d"
+    }
+  ],
+  "scope": "Exact production first-order merge and worker preserve the0/1/many count range for all pairs of Count-encoded finite input maps and all3 admitted modes. Worker theorem additionally allows any pending Cmp. Different key domains, unsorted keys and duplicates are allowed; no comparison axioms or alignment premise.",
+  "selectedQualification": "This is supplementary source proof evidence for unchanged algorithm bodies. It does not modify, replace or retroactively broaden any frozen native admission or qualification receipt.",
+  "limits": [
+    "The domain witness encodes all fields from Zero/Once/Many; no generic KTerm traversal invariant is proved.",
+    "The output predicate bounds both fields independently; low<=high, sortedness and uniqueness are not established.",
+    "Full differing-key lookup equivalence still needs actual U32 order theory and ordering invariants.",
+    "To instantiate repeated merges from raw runtime summaries in a full analyzer proof, the bounded predicate must be bridged to a reusable domain witness or the theorem restated with a proved raw-input precondition.",
+    "Backend ownership, runtime representation, native codegen and performance are not proved."
+  ]
+}

@@ -1,7 +1,7 @@
 # Phase131 usage-summary laws
 
 See [the report](../../../../../research/phase131/laws.md) and
-[evidence.json](evidence.json). Forty-two distinct laws were independently checked. The first twenty
+[evidence.json](evidence.json). Fifty-five distinct laws were independently checked. The first twenty
 are recorded in evidence.json; the eight later first-order equivalence and
 transport laws are recorded in [first-order-evidence.json](first-order-evidence.json).
 The admitted merge domain is two maps with the same key sequence. Full generic
@@ -97,3 +97,35 @@ python3 -B selfhost/tools/performance/phase131/laws/first-order-source-bridge.py
 
 This checks eleven declarations against pinned accepted proof snapshots; it
 performs no target execution and does not replace native qualification.
+
+## Borrowed String identity experiment
+
+`string-reflexivity-laws.bend` proves exact current `p88_string_eq` reflexivity
+and the stronger `p88_string_eq_go(x,x,same)=same` invariant. It uses actual
+Word/U32/Char equality, not an assumed comparator. See
+[string-evidence.json](string-evidence.json). A native constant-True identity
+shortcut requires incoming same=True and retained typed/liveness/ownership
+contracts; this is not a Float equality rule.
+
+Replay through `check.py` with a fresh Phase131 output, and authenticate an
+actual compiler source through `string-source-bridge.py --source ... --out ...`.
+The original proof receipt is `laws-string-reflexivity01`; no native shortcut
+or performance gain is established by that receipt.
+
+## Universal merge count-range preservation
+
+`merge-range-laws.bend` proves the actual first-order merge preserves the
+0/1/many range for arbitrary differing key domains, including unsorted and
+duplicate keys. `merge-range-evidence.json` records the ten new laws and the
+24-law accepted dependency closure. The theorem inspects both fields of the
+actual output list; it does not prove sortedness, uniqueness, `low <= high`,
+full lookup semantics or generic KTerm traversal.
+
+```sh
+python3 -B selfhost/tools/performance/phase131/laws/check.py \
+  --source selfhost/tools/performance/phase131/laws/merge-range-laws.bend \
+  --out selfhost/build/phase131/laws-merge-range-replay01
+```
+
+These proofs refer to the unchanged production algorithm bodies. They do not
+modify or replace any frozen native qualification or admission receipt.

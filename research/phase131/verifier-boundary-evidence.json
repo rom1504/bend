@@ -1,0 +1,421 @@
+{
+  "source": "selfhost/build/phase130/p131-final-self01/program.ssa",
+  "rows": [
+    {
+      "name": "p113d_FID_$p118borrow.read.index_hash",
+      "qbeLines": 101,
+      "sourceLine": 2220,
+      "qbeFile": "selfhost/build/phase131/verifier-boundary-inspection01/p113d_FID_-p118borrow-read-index_hash.ssa",
+      "sha256": "849b233ee7c684d37f49d9778755b5fc699fea3932f8455125171bd6527f7a06",
+      "calls": {
+        "p118_rt_borrow_fields": 1,
+        "p111_rt_fail": 2
+      }
+    },
+    {
+      "name": "p113d_FID_$direct.index_hash",
+      "qbeLines": 16,
+      "sourceLine": 2322,
+      "qbeFile": "selfhost/build/phase131/verifier-boundary-inspection01/p113d_FID_-direct-index_hash.ssa",
+      "sha256": "62e9857cd7424178ac8f80e6eb520952eaefd6c52c841314df22d5439996213e",
+      "calls": {
+        "p118_rt_borrow_scalar_safe": 1,
+        "p113d_FID_$p118borrow.read.index_hash": 1,
+        "p111_rt_sink": 1,
+        "p113d_FID_$p128borrow.owned.index_hash": 1
+      }
+    },
+    {
+      "name": "p113d_FID_$direct.index_bucket",
+      "qbeLines": 205,
+      "sourceLine": 185029,
+      "qbeFile": "selfhost/build/phase131/verifier-boundary-inspection01/p113d_FID_-direct-index_bucket.ssa",
+      "sha256": "4c515098868c4933dd20be029b951cec7d04369de9a12ae9a008abec18debff0",
+      "calls": {
+        "p111_rt_sink": 21,
+        "p125_rt_take2": 2,
+        "p111_rt_keep": 4,
+        "p111_rt_take": 1,
+        "p125_rt_take4": 1,
+        "p111_rt_fail": 3,
+        "p113d_FID_$direct.p88_string_eq_go": 1,
+        "p111_rt_ctor": 2
+      },
+      "machineFile": "selfhost/build/phase131/verifier-boundary-inspection01/p113d_FID_-direct-index_bucket.asm",
+      "instructions": 273
+    },
+    {
+      "name": "p113d_FID_$direct.index_find",
+      "qbeLines": 681,
+      "sourceLine": 185235,
+      "qbeFile": "selfhost/build/phase131/verifier-boundary-inspection01/p113d_FID_-direct-index_find.ssa",
+      "sha256": "640d67053c10ba198939149eb387e1dcfbdf98617f1047e4e50285a5f8f9fd32",
+      "calls": {
+        "p111_rt_take": 1,
+        "p111_rt_sink": 43,
+        "p111_rt_keep": 3,
+        "p113d_FID_$direct.p88_string_eq_go": 1,
+        "p111_rt_ctor": 14,
+        "p113d_FID_$direct.index_bucket": 3,
+        "p125_rt_take2": 3,
+        "p111_rt_fail": 4,
+        "p125_rt_take4": 1,
+        "p125_rt_ctor2": 2
+      },
+      "instructions": 595
+    },
+    {
+      "name": "p113d_FID_$direct.p111v_get",
+      "qbeLines": 22,
+      "sourceLine": 185917,
+      "qbeFile": "selfhost/build/phase131/verifier-boundary-inspection01/p113d_FID_-direct-p111v_get.ssa",
+      "sha256": "c5d51e03cb0815506e70b6150f74a62d6ff30bc29eb541eee812bef4e00bab7f",
+      "calls": {
+        "p111_rt_keep": 1,
+        "p113d_FID_$direct.index_hash": 1,
+        "p113d_FID_$direct.index_find": 1
+      },
+      "machineFile": "selfhost/build/phase131/verifier-boundary-inspection01/p113d_FID_-direct-p111v_get.asm",
+      "instructions": 31
+    },
+    {
+      "name": "p113d_FID_$direct.p111v_capacity",
+      "qbeLines": 132,
+      "sourceLine": 289364,
+      "qbeFile": "selfhost/build/phase131/verifier-boundary-inspection01/p113d_FID_-direct-p111v_capacity.ssa",
+      "sha256": "4f7848794a071c310532d4dcd16ee25df697eeb109701c0fd96ba7f4d0993a67",
+      "calls": {
+        "p125_rt_take1": 1,
+        "p111_rt_keep": 1,
+        "p113d_FID_$direct.index_hash": 1,
+        "p113d_FID_$direct.index_find": 1,
+        "p111_rt_take": 1,
+        "p111_rt_sink": 13,
+        "p125_rt_take2": 1,
+        "p125_rt_take4": 1,
+        "p111_rt_fail": 1
+      },
+      "machineFile": "selfhost/build/phase131/verifier-boundary-inspection01/p113d_FID_-direct-p111v_capacity.asm",
+      "instructions": 148
+    },
+    {
+      "name": "p113d_FID_$direct.p111v_value",
+      "qbeLines": 380,
+      "sourceLine": 389923,
+      "qbeFile": "selfhost/build/phase131/verifier-boundary-inspection01/p113d_FID_-direct-p111v_value.ssa",
+      "sha256": "54b90d081749ed97738d09f07cfc7fbad2c516a39dd42649841742bbcc203294",
+      "calls": {
+        "p125_rt_take1": 4,
+        "p111_rt_sink": 16,
+        "p113d_FID_$direct.p111v_get": 3,
+        "p111_rt_keep": 1,
+        "p113d_FID_$direct.dk": 3,
+        "p113d_FID_$direct.String.eq": 3,
+        "p113d_FID_$direct.Bool.not": 3,
+        "p113d_FID_$direct.da": 1,
+        "p113d_FID_$direct.Bool.and": 4,
+        "p125_rt_take2": 3,
+        "p111_rt_ctor": 4,
+        "p111_rt_fail": 5
+      },
+      "machineFile": "selfhost/build/phase131/verifier-boundary-inspection01/p113d_FID_-direct-p111v_value.asm",
+      "instructions": 352
+    },
+    {
+      "name": "p112w_FID_p111v_decl",
+      "qbeLines": 11,
+      "sourceLine": 558708,
+      "qbeFile": "selfhost/build/phase131/verifier-boundary-inspection01/p112w_FID_p111v_decl.ssa",
+      "sha256": "a22f21a130ccd3589312b73d696a1249863b7a57abd7e5ba16bc314bce089bb0",
+      "calls": {
+        "p111_rt_closure": 1
+      }
+    },
+    {
+      "name": "p112w_FID_p111v_capacity",
+      "qbeLines": 11,
+      "sourceLine": 561504,
+      "qbeFile": "selfhost/build/phase131/verifier-boundary-inspection01/p112w_FID_p111v_capacity.ssa",
+      "sha256": "7d5771eda782ac33c6752e9d0f7e51438247c929f7ec6e47f81c64f96d8045e7",
+      "calls": {
+        "p111_rt_closure": 1
+      }
+    },
+    {
+      "name": "p112w_FID_p111v_value",
+      "qbeLines": 11,
+      "sourceLine": 561598,
+      "qbeFile": "selfhost/build/phase131/verifier-boundary-inspection01/p112w_FID_p111v_value.ssa",
+      "sha256": "c1a4e11ce356f231c9868df66928c352e61ccd36163cfb79bcf9eb484d39c9ba",
+      "calls": {
+        "p111_rt_closure": 1
+      }
+    },
+    {
+      "name": "p112w_FID_p111v_assign",
+      "qbeLines": 11,
+      "sourceLine": 561824,
+      "qbeFile": "selfhost/build/phase131/verifier-boundary-inspection01/p112w_FID_p111v_assign.ssa",
+      "sha256": "c33c299dfa8546f8af38a91ee8608861b76b1596db1a63639f7a1f0ca8e699cb",
+      "calls": {
+        "p111_rt_closure": 1
+      }
+    },
+    {
+      "name": "p112w_FID_index_bucket",
+      "qbeLines": 11,
+      "sourceLine": 562689,
+      "qbeFile": "selfhost/build/phase131/verifier-boundary-inspection01/p112w_FID_index_bucket.ssa",
+      "sha256": "4179f5cb13321218a54cb3c74e8852e7342afa6030b25c1caa153216bdd1002e",
+      "calls": {
+        "p111_rt_closure": 1
+      }
+    },
+    {
+      "name": "p112w_FID_index_find",
+      "qbeLines": 11,
+      "sourceLine": 562712,
+      "qbeFile": "selfhost/build/phase131/verifier-boundary-inspection01/p112w_FID_index_find.ssa",
+      "sha256": "a21eae51053d99a1a40f933ad8a40d7e598c5a87adc8ffe6fe7c1dd456d38c81",
+      "calls": {
+        "p111_rt_closure": 1
+      }
+    },
+    {
+      "name": "p112w_FID_p111v_get",
+      "qbeLines": 11,
+      "sourceLine": 562765,
+      "qbeFile": "selfhost/build/phase131/verifier-boundary-inspection01/p112w_FID_p111v_get.ssa",
+      "sha256": "57875e453575b1acc0b4f9adf12f45ad0efdf86c6ef2e0dfe1e5d73d96692818",
+      "calls": {
+        "p111_rt_closure": 1
+      }
+    },
+    {
+      "name": "p112w_FID_index_hash",
+      "qbeLines": 11,
+      "sourceLine": 563062,
+      "qbeFile": "selfhost/build/phase131/verifier-boundary-inspection01/p112w_FID_index_hash.ssa",
+      "sha256": "bfa4129fc761900b700ff13d77e2922b212d41325a62c5bf848694052f15a943",
+      "calls": {
+        "p111_rt_closure": 1
+      }
+    },
+    {
+      "name": "p112w_FID_$direct.index_hash",
+      "qbeLines": 5,
+      "sourceLine": 572047,
+      "qbeFile": "selfhost/build/phase131/verifier-boundary-inspection01/p112w_FID_-direct-index_hash.ssa",
+      "sha256": "a6b8f4325e1d626ab068cd47a0716ef13907e3187f13928c6df00372bba8335d",
+      "calls": {
+        "p113d_FID_$direct.index_hash": 1
+      }
+    },
+    {
+      "name": "p111_FID_p111v_decl",
+      "qbeLines": 8,
+      "sourceLine": 2546686,
+      "qbeFile": "selfhost/build/phase131/verifier-boundary-inspection01/p111_FID_p111v_decl.ssa",
+      "sha256": "8d31c08a10dc8fdd93f802cfc95679a81e73e24e2a00b1e25e5b143c7562ba08",
+      "calls": {
+        "p111_rt_closure": 1,
+        "p111_rt_return": 1
+      }
+    },
+    {
+      "name": "p111_FID_$direct.p111v_decl",
+      "qbeLines": 97,
+      "sourceLine": 2546793,
+      "qbeFile": "selfhost/build/phase131/verifier-boundary-inspection01/p111_FID_-direct-p111v_decl.ssa",
+      "sha256": "e01f1174a268d65c58751179cc8901a92e194ff7bf94331e916f25b82ce2c66c",
+      "calls": {
+        "p125_rt_take3": 1,
+        "p111_rt_keep": 2,
+        "p111_rt_jump": 1,
+        "p111_rt_sink": 1,
+        "p111_rt_fail": 1
+      }
+    },
+    {
+      "name": "p111_FID_p111v_capacity",
+      "qbeLines": 8,
+      "sourceLine": 2579181,
+      "qbeFile": "selfhost/build/phase131/verifier-boundary-inspection01/p111_FID_p111v_capacity.ssa",
+      "sha256": "540c89229d6709f1f006b88405044e8c770eecf9b3ee94c0336b9188e0c1aad0",
+      "calls": {
+        "p111_rt_closure": 1,
+        "p111_rt_return": 1
+      }
+    },
+    {
+      "name": "p111_FID_$direct.p111v_capacity",
+      "qbeLines": 10,
+      "sourceLine": 2579216,
+      "qbeFile": "selfhost/build/phase131/verifier-boundary-inspection01/p111_FID_-direct-p111v_capacity.ssa",
+      "sha256": "ff67faa35606a772a6a491974f10da67b6013b6077df431caf473c5841290942",
+      "calls": {
+        "p111_rt_reg_get": 2,
+        "p113d_FID_$direct.p111v_capacity": 1,
+        "p111_rt_return": 1
+      },
+      "instructions": 29
+    },
+    {
+      "name": "p111_FID_p111v_value",
+      "qbeLines": 8,
+      "sourceLine": 2579722,
+      "qbeFile": "selfhost/build/phase131/verifier-boundary-inspection01/p111_FID_p111v_value.ssa",
+      "sha256": "1b9fc5c882f1b6df8b22a72fbecfde9a48b744cbd6b746f54a28080283455ff3",
+      "calls": {
+        "p111_rt_closure": 1,
+        "p111_rt_return": 1
+      }
+    },
+    {
+      "name": "p111_FID_$direct.p111v_value",
+      "qbeLines": 12,
+      "sourceLine": 2579801,
+      "qbeFile": "selfhost/build/phase131/verifier-boundary-inspection01/p111_FID_-direct-p111v_value.ssa",
+      "sha256": "9de21977d0b1d115f39951498762ab063d3385a09e923c9c6c2b0dbd56ff9abc",
+      "calls": {
+        "p111_rt_reg_get": 4,
+        "p113d_FID_$direct.p111v_value": 1,
+        "p111_rt_return": 1
+      },
+      "instructions": 49
+    },
+    {
+      "name": "p111_FID_p111v_assign",
+      "qbeLines": 8,
+      "sourceLine": 2582048,
+      "qbeFile": "selfhost/build/phase131/verifier-boundary-inspection01/p111_FID_p111v_assign.ssa",
+      "sha256": "fd6d5c8244518da3599266fcaeab1a181bb816fabe646e95d46a9cf620271857",
+      "calls": {
+        "p111_rt_closure": 1,
+        "p111_rt_return": 1
+      }
+    },
+    {
+      "name": "p111_FID_$direct.p111v_assign",
+      "qbeLines": 35,
+      "sourceLine": 2582103,
+      "qbeFile": "selfhost/build/phase131/verifier-boundary-inspection01/p111_FID_-direct-p111v_assign.ssa",
+      "sha256": "e3789ecae5a2abc73e6988f64012d4bc3e5d387ec7783a9ba5fbfb6c0e4913e3",
+      "calls": {
+        "p111_rt_keep": 1,
+        "p111_rt_jump": 1
+      }
+    },
+    {
+      "name": "p111_FID_index_bucket",
+      "qbeLines": 8,
+      "sourceLine": 2586806,
+      "qbeFile": "selfhost/build/phase131/verifier-boundary-inspection01/p111_FID_index_bucket.ssa",
+      "sha256": "ad8679f628b94c31c2b997b85155146c9bd8671bb81ac3817b6638ca4bef1b43",
+      "calls": {
+        "p111_rt_closure": 1,
+        "p111_rt_return": 1
+      }
+    },
+    {
+      "name": "p111_FID_$direct.index_bucket",
+      "qbeLines": 10,
+      "sourceLine": 2586841,
+      "qbeFile": "selfhost/build/phase131/verifier-boundary-inspection01/p111_FID_-direct-index_bucket.ssa",
+      "sha256": "99123c50fa3565c92df96ed567109269a158fb9085e4bbd18881ca622e055c60",
+      "calls": {
+        "p111_rt_reg_get": 2,
+        "p113d_FID_$direct.index_bucket": 1,
+        "p111_rt_return": 1
+      }
+    },
+    {
+      "name": "p111_FID_index_find",
+      "qbeLines": 8,
+      "sourceLine": 2587016,
+      "qbeFile": "selfhost/build/phase131/verifier-boundary-inspection01/p111_FID_index_find.ssa",
+      "sha256": "146b6db7e5ab0037fa55c3fed5c72756e43c2cfa80a2ced2ddc53cefac4926f4",
+      "calls": {
+        "p111_rt_closure": 1,
+        "p111_rt_return": 1
+      }
+    },
+    {
+      "name": "p111_FID_$direct.index_find",
+      "qbeLines": 12,
+      "sourceLine": 2587095,
+      "qbeFile": "selfhost/build/phase131/verifier-boundary-inspection01/p111_FID_-direct-index_find.ssa",
+      "sha256": "d81e8d92318b80d6c6a8b916c83b618e0e45b22b7ce682fa89ecb38076fbd357",
+      "calls": {
+        "p111_rt_reg_get": 4,
+        "p113d_FID_$direct.index_find": 1,
+        "p111_rt_return": 1
+      }
+    },
+    {
+      "name": "p111_FID_p111v_get",
+      "qbeLines": 8,
+      "sourceLine": 2587652,
+      "qbeFile": "selfhost/build/phase131/verifier-boundary-inspection01/p111_FID_p111v_get.ssa",
+      "sha256": "17a21a71295dc54874122f937455e3c7d1a779e173d054a5e9d3d920c910aabf",
+      "calls": {
+        "p111_rt_closure": 1,
+        "p111_rt_return": 1
+      }
+    },
+    {
+      "name": "p111_FID_$direct.p111v_get",
+      "qbeLines": 10,
+      "sourceLine": 2587687,
+      "qbeFile": "selfhost/build/phase131/verifier-boundary-inspection01/p111_FID_-direct-p111v_get.ssa",
+      "sha256": "399135fd49786f9453ebac1bb9860e61c005a760b13ba599e72631493358aaad",
+      "calls": {
+        "p111_rt_reg_get": 2,
+        "p113d_FID_$direct.p111v_get": 1,
+        "p111_rt_return": 1
+      },
+      "instructions": 29
+    },
+    {
+      "name": "p111_FID_index_hash",
+      "qbeLines": 8,
+      "sourceLine": 2591366,
+      "qbeFile": "selfhost/build/phase131/verifier-boundary-inspection01/p111_FID_index_hash.ssa",
+      "sha256": "3a86a35b6fb7a2019b36abbf03203d1ea65d2ada003c8d4ca678c72911784c51",
+      "calls": {
+        "p111_rt_closure": 1,
+        "p111_rt_return": 1
+      }
+    },
+    {
+      "name": "p111_FID_$direct.index_hash",
+      "qbeLines": 10,
+      "sourceLine": 2591407,
+      "qbeFile": "selfhost/build/phase131/verifier-boundary-inspection01/p111_FID_-direct-index_hash.ssa",
+      "sha256": "562fb7ebec2fbf4471c75ee95447b3d8e155c77510402fca3b724a5d3c351e4d",
+      "calls": {
+        "p111_rt_reg_get": 2,
+        "p113d_FID_$direct.index_hash": 1,
+        "p111_rt_return": 1
+      }
+    }
+  ],
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/final-profile-analysis01/report.json",
+      "bytes": 535810,
+      "sha256": "ce943610218dfc71738e04bd423130b9bae874336565948af0ec7a05c1e27581"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p131-final-native01-n2/report.json",
+      "bytes": 4836,
+      "sha256": "94273bd10abeed0f1adaf6af54d6bce4921b783d7124a1584278779c46638f22"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/combined-literals-source01/compiler.bend",
+      "bytes": 2667581,
+      "sha256": "1bc5930edcf80cda6c3572645df3c846fa631a83c2b936f20c83b05e0a6728f9"
+    }
+  ],
+  "scope": "Metadata, streamed QBE extraction and host disassembly only; no target execution. Static call sites include mutually exclusive branches and are not dynamic counts."
+}

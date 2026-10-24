@@ -84,3 +84,33 @@ role rotation, argument order and clocks are untouched in timing mode. Changes
 are result/build locations, the explicit Phase128 baseline, authenticated
 reuse of already built products, and the separate correctness-only mode.
 `plan.py` checks that inverse before preparing or classifying a campaign.
+
+## Bind measured outputs to the native successor
+
+After the successor image build is complete, `native-equality.py` can prepare
+45 native source-to-QBE requests with exact byte comparisons to the measured
+hosted products:
+
+```sh
+python3 -B selfhost/tools/performance/phase131/programs/native-equality.py prepare \
+  --image-build N2_BUILD_REPORT --image-request Q2_ACQUISITION_REPORT \
+  --admission selfhost/build/phase131/combined-literals-admission01.json \
+  --hosted-emission selfhost/build/phase118/p131-combined-literals01-wrappers/report.json \
+  --screen selfhost/build/phase131/combined-programs01/runtime/report.json \
+  --carrier-receipt selfhost/build/phase130/base-carrier01/receipt.json \
+  --out selfhost/build/phase131/FRESH_NATIVE_EQUALITY --tag UNIQUE_TAG
+```
+
+It authenticates the image build against the native request that generated its
+QBE, the checked candidate source/admission, the compact carrier lineage and the
+exact binaries in the measured405 block. Every request uses unchanged
+`phase130/native-request.py --expected-qbe`; output must match completely,
+including LF bytes. Root executes the planned serial CPU3 guards. The final
+metadata job binds all45 completed receipts. No generated program is rebuilt
+or executed by this plan.
+
+If all45 outputs match, the same QBE bytes and runtime reproduce the already
+measured products; repeating405 timing observations adds no new code-quality
+evidence. This gate itself makes no native qualification claim. Whole-source
+self-reproduction, focused controls and ordinary native qualification remain
+separate, including the required extra code-generation generation.

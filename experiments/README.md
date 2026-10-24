@@ -1,15 +1,18 @@
 # Compiler experiment workflow
 
-Latest qualified experiment: [Phase128 borrowed queries and shared preparation](../implementation/phase128/README.md).
-Native requests take 21.16% less time than qualified Phase126; generated-program
-runtime improves 4.72%. Exact hosted → N1 → N2 QBE reproduction and independent
-correctness gates pass. Installed selections remain unchanged.
+Latest qualified experiment: [Phase131 laws and borrowed computations](../implementation/phase131/README.md).
+Native requests take20.92% less time than Phase130, reaching1.443× upstream;
+fixed-source N1/N2 shows10.64% less time from improved generated compiler code.
+Broad generated runtime is approximately preserved. Native reproduction and
+ordinary45 pass;55 source-connected laws are independently accepted within their
+stated scope. Installed selections remain unchanged. Use the explicit final
+candidate capsule and compact prepared-Base policy linked from the report.
 
 Profiling foundation: [Phase127 general native profiler](../implementation/phase127/README.md).
 Read the [current frontier](STEERING.md) for qualification, causal compiler-cost
 results and the next measured optimization opportunities.
 
-Latest experiment: [Phase121 construction elimination](../implementation/phase121/README.md).
+Earlier experiment: [Phase121 construction elimination](../implementation/phase121/README.md).
 Two Bend rules reuse existing JS semantic checks to remove private list pipelines
 and immediately applied closure chains before native lowering. The report keeps
 generated-program runtime, hosted compiler cost and native qualification distinct.

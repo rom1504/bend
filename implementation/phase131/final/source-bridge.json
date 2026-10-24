@@ -1,0 +1,80 @@
+{
+  "complete": true,
+  "method": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/laws/first-order-source-bridge.py",
+    "bytes": 2949,
+    "sha256": "70b2db7fec3d9c39c9747d2f833909ff2037a719cfda1e1b1b10a792da1e30bb"
+  },
+  "source": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/combined-literals-source01/compiler.bend",
+    "bytes": 2667581,
+    "sha256": "1bc5930edcf80cda6c3572645df3c846fa631a83c2b936f20c83b05e0a6728f9"
+  },
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/laws/production.bend",
+      "bytes": 579,
+      "sha256": "4c4e7d6b12a30f97e9dc0ec482740e253a47db923716b7d7473c3de1055da047"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/laws/absent-production.bend",
+      "bytes": 349,
+      "sha256": "5bcd1dbb1b692b1578f9cb7d70a321f20acb2f0b4ead507990f3618022fcab63"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/laws/lookup-first-order-v02.bend",
+      "bytes": 1059,
+      "sha256": "33da18ae174e5eace9aa5ac73a3f7f07138d9ebb7b46f3451f792639b380dec8"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/laws/merge-first-order-v01.bend",
+      "bytes": 2029,
+      "sha256": "cfe6aacdec209f9af3dcb085083c1cce1d1d8be0ce1c7d2ab3d176fb6e78752b"
+    }
+  ],
+  "proofReceipts": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/laws-add01/report.json",
+      "bytes": 12360,
+      "sha256": "f28847ecc0988fdb69533989971aa3f6b603f0114457211b73476489adb00112"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/laws-low01/report.json",
+      "bytes": 12362,
+      "sha256": "e50bdf453e7c82c20116670138650bcd00efa6ca6684e8ab5b53687c180b3caf"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/laws-high01/report.json",
+      "bytes": 12382,
+      "sha256": "02e9f02f422c628408b29f90e0c7c5f5af4df381947f89c6631e7ae9e24cacb1"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/laws-absent04/report.json",
+      "bytes": 12389,
+      "sha256": "064372420c01a9032507da5f80b6e83fc7685eba9321a08fdd07bfce5dcf35fc"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/laws-first-order-summary01/report.json",
+      "bytes": 25995,
+      "sha256": "1cf45f192ab86119352be6ad69a2906ca10e0cf21981c23773cd3415550b17cb"
+    }
+  ],
+  "exactDeclarations": [
+    "p131a_add",
+    "p131a_low",
+    "p131a_high",
+    "P131UEntry",
+    "p131u_absent",
+    "p131u_max_loop",
+    "p131u_max",
+    "p131u_min_loop",
+    "p131u_min",
+    "p131u_merge_loop",
+    "p131u_merge"
+  ],
+  "namespaceRemoval": [
+    "A.",
+    "P."
+  ],
+  "coverage": "Exact safe first-order algorithm bodies, all-input equivalence to prior safe algorithms, aligned max/min lookup specification and bounded-count algebra. Generic KTerm traversal, differing-key map specification, callers and backend/runtime are not proved."
+}

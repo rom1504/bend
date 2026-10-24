@@ -105,6 +105,47 @@ Full combined checking, native qualification, self-reproduction and complete
 request timings remain the coordinating lane's separate admission decision.
 The installed compiler is unaffected by these source patches alone.
 
+## Full-image confirmation before complete-request timing
+
+The qualified old backend subsequently emitted both the FAST source and final
+combined source. Their complete receipts are `p131-fast-acquire01` and
+`p131-final-acquire01` under `selfhost/build/phase130/`. The first image uses the
+older backend to compile the new source; this does not yet measure the new
+backend compiling itself.
+
+`full-constants-inspection01/report.json` and
+`full-constants-machine02/report.json` preserve the exact QBE and completed
+native-image identities. Read-only disassembly confirms:
+
+| Function | Machine instructions before / after | Constructor callsites before / after |
+|---|---:|---:|
+| `missing` | 63 / 3 | 3 / 0 |
+| Direct `index_find` | 940 / 595 | 32 / 14 |
+| Direct `index_bucket` | 327 / 273 | 5 / 2 |
+| Protected direct `p113e_signature` | 121 / 121 | 3 / 3 |
+
+The index-find stack reservation also falls from `0xd58` to `0x8a8` bytes.
+The final sentinel consists of a constant load and return, with the ordinary
+entry marker. These are actual physical code changes, although runtime savings
+still depend on the frequency of the corresponding paths.
+
+The whole QBE image changes from 104,618,546 to 104,373,390 bytes, while the
+native file grows from 16,771,824 to 16,878,376 bytes. Other changes in the final
+composition add 574 functions; whole-image size cannot isolate literal
+exposure. Static data grows from 45,444 to 45,977 words, comfortably below the
+65,536-word static-preparation limit. The experiment is not silently falling
+off that admission ceiling.
+
+The insertion v02 implementation still uses generic scheduler transitions
+(425 QBE lines, 392 machine instructions and four jump callsites). Removing its
+mutual helper boundary did not turn this reconstruction algorithm into a direct
+worker; retain the distinction from the demonstrably direct read loop.
+
+The first machine inspector recognized `call` but missed this objdump's
+`callq` spelling. Its instruction counts were valid, but its empty call maps
+were not. The preserved version02 report corrects the parser and agrees with
+the QBE callsites. Use version02 for call counts.
+
 ## Interpretation and limits
 
 This supports exposing immutable construction before a stage that can optimize

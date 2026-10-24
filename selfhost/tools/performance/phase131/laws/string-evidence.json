@@ -1,0 +1,111 @@
+{
+  "schema": "phase131-string-reflexivity-v1",
+  "complete": true,
+  "proofReceipt": {
+    "file": "selfhost/build/phase131/laws-string-reflexivity01/report.json",
+    "bytes": 12859,
+    "sha256": "c71426a92c6595c994027bf08b96acaf13e5d9728633bac8ed577323eda954e0"
+  },
+  "sourceBridge": {
+    "file": "selfhost/build/phase131/laws-string-bridge01/report.json",
+    "bytes": 1333,
+    "sha256": "693e213a72419bdd6dd74cf077cfdbdc626f2f4b4b55aeaddd345ac88b2815d4"
+  },
+  "source": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/combined-codegen-source01/compiler.bend",
+    "bytes": 2640826,
+    "sha256": "e239cf9800db74f187683629769d5639b8792905d935df080e0929af03795a5a"
+  },
+  "exactDeclarations": [
+    "p88_string_eq_go",
+    "p98_eq_finish",
+    "p88_string_eq"
+  ],
+  "lawNames": [
+    "char_equal_reflexive",
+    "string_diagonal_preserves_flag",
+    "string_equal_reflexive",
+    "word_compare_reflexive",
+    "u32_compare_reflexive"
+  ],
+  "opaqueDefinitions": [],
+  "sourceClosure": [
+    {
+      "origin": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/laws/string-reflexivity-laws.bend",
+        "bytes": 1185,
+        "sha256": "2911b7d2e663df47db88ee2f358cf909df2f4e3f22e8737fa7a382c63bdeb532"
+      },
+      "snapshot": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/laws-string-reflexivity01/snapshot/selfhost/tools/performance/phase131/laws/string-reflexivity-laws.bend",
+        "bytes": 1185,
+        "sha256": "2911b7d2e663df47db88ee2f358cf909df2f4e3f22e8737fa7a382c63bdeb532"
+      }
+    },
+    {
+      "origin": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/laws/string-production.bend",
+        "bytes": 547,
+        "sha256": "59ce5b358c7310b65700c209b37fe82411a4ba7c63d1adffdd31f4ea06a95882"
+      },
+      "snapshot": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/laws-string-reflexivity01/snapshot/selfhost/tools/performance/phase131/laws/string-production.bend",
+        "bytes": 547,
+        "sha256": "59ce5b358c7310b65700c209b37fe82411a4ba7c63d1adffdd31f4ea06a95882"
+      }
+    },
+    {
+      "origin": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/laws/compare-laws.bend",
+        "bytes": 842,
+        "sha256": "628aeb9055766b99f97c1950b174e18d220b265bcc9bace20906f3124024c7d9"
+      },
+      "snapshot": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/laws-string-reflexivity01/snapshot/selfhost/tools/performance/phase131/laws/compare-laws.bend",
+        "bytes": 842,
+        "sha256": "628aeb9055766b99f97c1950b174e18d220b265bcc9bace20906f3124024c7d9"
+      }
+    }
+  ],
+  "elaboration": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/laws-string-reflexivity01/laws.bendtt",
+    "bytes": 7401,
+    "sha256": "c5532e02f3145d81fdabf49e7801c428e835e5e1a5e43717a310eeeeeeb14750"
+  },
+  "rows": {
+    "check": {
+      "returncode": 0,
+      "wallSeconds": 0.5158366379328072,
+      "peakTreeRssBytes": 75579392,
+      "stdout": "ALL PROOFS CHECK\nUse --verdict for mathematical validity.\n"
+    },
+    "elaborate": {
+      "returncode": 0,
+      "wallSeconds": 0.5133566309232265,
+      "peakTreeRssBytes": 80949248,
+      "stdout": ""
+    },
+    "kernel": {
+      "returncode": 0,
+      "wallSeconds": 0.34970867400988936,
+      "peakTreeRssBytes": 629469184,
+      "stdout": "ALL PROOFS CHECK\n"
+    },
+    "kernel-negative": {
+      "returncode": 1,
+      "wallSeconds": 0.28973371209576726,
+      "peakTreeRssBytes": 626102272,
+      "stdout": "SOME PROOFS FAIL\nIn phase67_false:\nexpected: .left\nobserved: .right\n"
+    }
+  },
+  "runtimePremises": [
+    "Identical full native Term words denote the same valid live immutable String value.",
+    "The private reader uses the documented Bool scalar ABI and the pending flag is True for a constant-True shortcut.",
+    "Outer held-root/provenance guards and normal ownership release epilogue stay unchanged.",
+    "The helper still has exactly the proved String/Char implementation; no generalized Float or user-comparator reflexivity is assumed."
+  ],
+  "limits": [
+    "No native identity optimization is implemented or benchmarked by this proof task.",
+    "Source type correctness excludes malformed native Terms; adding a root discriminator cannot prove preservation of all malformed-tail errors."
+  ]
+}

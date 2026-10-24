@@ -1,0 +1,60 @@
+{
+  "source": "selfhost/build/phase131/combined-literals-source01/compiler.bend",
+  "source_sha256": "1bc5930edcf80cda6c3572645df3c846fa631a83c2b936f20c83b05e0a6728f9",
+  "overrides": [
+    {
+      "name": "p111_emit_verified",
+      "original_sha256": "95c83abf858f1043f9eb1addd43e97b912d876702e8f8a7bea78a1b66ef5904d",
+      "override_sha256": "988cb6ef3f597dd431d331e0e8ca47968afdc1ae5297e132482d86c317a10936"
+    },
+    {
+      "name": "p112s_emit_verified",
+      "original_sha256": "b8d38c23c4e423441538ab1cacb9bfe726abf71c4cbd2f9cd50cbdf005297632",
+      "override_sha256": "da7ea989fec18312cbc3dd0531104e9baadec054d8085daca47c86486a5e8087"
+    },
+    {
+      "name": "p113d_emit_verified",
+      "original_sha256": "b27b0bd48634e19292c18dfc93501f707eddb8cb2abbed1d7c5941c9044db793",
+      "override_sha256": "da7573e4fa761c00e17cc27af6189c2351613cc1382ce4c398e4a1def86204dd"
+    },
+    {
+      "name": "p113a_emit_verified",
+      "original_sha256": "701fbd68124cd9ddeefc86ba68f892ece0b3e000f471eb0faefed3fe29215dc1",
+      "override_sha256": "0ef6559a779f63c63e6928b4ee7d71cd98ae58cd96e1d68759fa4694c95e3e6e"
+    },
+    {
+      "name": "p118b_compose",
+      "original_sha256": "7011716563de11c94fa9a9aee60ee7448e82aace2a7464beb9f7618a39838383",
+      "override_sha256": "7644c15dea9e416d573c4a212d6cf33877fe0759248ddbb1bc71fb0570e441bf"
+    },
+    {
+      "name": "p118e_emit_functions",
+      "original_sha256": "6e411903c9e18325354bfd36f8da723378f7b4c8c832271ef6de2d0069fc85a1",
+      "override_sha256": "ce1c878f59d110f41c676526c21da9d9df02a1d02369d9f0a6506d7e040c991f"
+    },
+    {
+      "name": "p118i_prepare",
+      "original_sha256": "bf231ac31c5dd9fa4f52b951b2b2c586e7df9d6e6b5192aa3966a6b9483dbf2b",
+      "override_sha256": "9ae0a464d0ffa7887e21c4b58637c3bfa8121abe7ace20f457a296c2d0135c3f"
+    },
+    {
+      "name": "p126bp_complete",
+      "original_sha256": "b9fa0501e46299a0ae0f5c1e433566f71e8aeb59ab8cfdcc474dd51a780970d6",
+      "override_sha256": "c035bfe9659662911d49056632c9a4878074e0972d77d0a426a224dd37fe3c10"
+    },
+    {
+      "name": "p128raw_prepare",
+      "original_sha256": "01653713505023575e5abfdfc5891215f340282c84a3e047764c24deb66e9227",
+      "override_sha256": "dc6defd10da7f9294c41b14ab8d40a41157ea449bd9b8e1f61bb26ebbe182319"
+    }
+  ],
+  "replacements": {
+    "P111Emission{p111q_chunks(program),\"\"}": "P134Planned{P134Raw{program}}",
+    "P111Emission{p112s_chunks(bundle),\"\"}": "P134Planned{P134Static{bundle}}",
+    "P111Emission{p113e_admitted_chunks(program),\"\"}": "P134Planned{P134Direct{program}}",
+    "P111Emission{p113a_admitted_chunks(program),\"\"}": "P134Planned{P134Admitted{program}}",
+    "P111Emission{p113a_admitted_chunks(P113AProgram{P113DProgram{P112StaticProgram{program,nodes},merged},certificate}),\"\"}": "P134Planned{P134Admitted{P113AProgram{P113DProgram{P112StaticProgram{program,nodes},merged},certificate}}}",
+    "P111Emission{p113a_admitted_chunks(original),\"\"}": "P134Planned{P134Admitted{original}}",
+    "P111Emission{p113a_admitted_chunks(assembled),\"\"}": "P134Planned{P134Admitted{assembled}}"
+  }
+}

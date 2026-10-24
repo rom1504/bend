@@ -56,8 +56,11 @@ def prepare(a):
     joined=read(a.producer_join)
     require(joined['complete'] and joined['producerExitCode']==0 and joined['producer']==warm['context']['producer'],'Successful exact framed producer required')
     require(edited['source']in joined['sources'] and pin(a.warm)in joined['machineReports'],'Producer join does not bind current B and machine result')
+    replay=read(a.replay_join)
+    require(replay['kind']=='phase135-supervised-cold-replay' and replay['complete'] and replay['exitCodes']==[0,0],'Successful replay and cold machine processes required')
+    require(replay['currentBuild']==pin(a.warm) and replay['machineReport']==pin(a.cold) and replay['binary']==cold['binary'],'Cold replay join not bound to current warm/cold artifacts')
     carrier_path=ROOT/'selfhost/build/phase130/base-carrier01/receipt.json';carrier,base,carrier_inputs=N.carrier_inputs(carrier_path)
-    inputs=[pin(__file__),pin(METHOD),pin(N.METHOD),pin(BUILDER),pin(RUNNER),pin(sys.executable),pin(old_path),pin(old_run_path),*old['inputs'],pin(edited_path),edited['source'],edited['product'],pin(a.comparison),*comparison['inputs'],pin(a.producer_join),*joined['inputs'],*carrier_inputs]
+    inputs=[pin(__file__),pin(METHOD),pin(N.METHOD),pin(BUILDER),pin(RUNNER),pin(sys.executable),pin(old_path),pin(old_run_path),*old['inputs'],pin(edited_path),edited['source'],edited['product'],pin(a.comparison),*comparison['inputs'],pin(a.producer_join),*joined['inputs'],pin(a.replay_join),*replay['inputs'],*carrier_inputs]
     for role,build in roles.items():inputs.extend([pin(getattr(a,role)),build['binary'],*build['inputs']])
     commands=[];requests=[];ordinary=[]
     for round_index in range(2):
@@ -85,7 +88,7 @@ def prepare(a):
     out.mkdir(parents=True)
     plan=dict(complete=True,preparedOnly=True,targetsRun=False,kind='phase135-small-machine-semantic-gates',inputs=inputs,
         roles={k:v['binary']for k,v in roles.items()},compilerSource=edited['source'],runtime=runtime,oracles=old['oracles'],
-        machineComparison=pin(a.comparison),producerJoin=pin(a.producer_join),commands=commands,requests=requests,ordinary=ordinary,
+        machineComparison=pin(a.comparison),producerJoin=pin(a.producer_join),replayJoin=pin(a.replay_join),commands=commands,requests=requests,ordinary=ordinary,
         schedule='Two rounds, both case and role order reversed. Nine mandatory full-QBE gates plus nine timing repeats; then six ordinary outputs.',
         scope='Bounded experimental compiler qualification only. Request timing compares machine layout for the same edited compiler source. Exact program QBE under fixed downstream tool/runtime/flags preserves generated programs; no fresh program-runtime speed claim, broad conformance or self-host promotion.')
     write(out/'plan.json',plan);print(json.dumps(dict(complete=True,plan=pin(out/'plan.json'),commands=len(commands),targetsRun=False)))
@@ -125,7 +128,7 @@ def run(a):
 if __name__=='__main__':
     ap=argparse.ArgumentParser(description=__doc__);g=ap.add_mutually_exclusive_group(required=True);g.add_argument('--prepare',action='store_true');g.add_argument('--run',action='store_true')
     ap.add_argument('--plan',type=Path);ap.add_argument('--out',type=Path,required=True)
-    for name in ['monolithic','cold','warm','comparison','producer-join']:ap.add_argument('--'+name,type=Path)
+    for name in ['monolithic','cold','warm','comparison','producer-join','replay-join']:ap.add_argument('--'+name,type=Path)
     a=ap.parse_args()
-    if a.prepare:require(all(getattr(a,k)for k in ['monolithic','cold','warm','comparison','producer_join']),'All current machine receipts required');prepare(a)
+    if a.prepare:require(all(getattr(a,k)for k in ['monolithic','cold','warm','comparison','producer_join','replay_join']),'All current machine receipts required');prepare(a)
     else:require(a.plan is not None,'Frozen plan required');sys.exit(run(a))

@@ -19,6 +19,20 @@ is not a semantic cache dependency proof.
 
 ## Framed machine images
 
+`machine-smoke-plan-v01.py` freezes a metadata-only first native FIFO test:
+A and B are the same **original absolute Lexer source path**, and both payload
+oracles are the independent original Lexer QBE. It records the forthcoming
+image path without pretending acquisition has finished. The existing joined
+supervisor authenticates the completed exact image receipt at execution time.
+Only the coordinator runs the emitted resource-guarded command. This smoke
+tests native framing, transport and machine caching; A=B is not an edit result.
+
+```sh
+python3 selfhost/tools/performance/phase135/validation/machine-smoke-plan-v01.py \
+  --out selfhost/build/phase135/machine-native-smoke-plan01
+```
+
+
 `machine-gates-v01.py` adapts the already executed Phase132 gates without changing
 the original tools. Preparation requires:
 
@@ -32,6 +46,8 @@ the original tools. Preparation requires:
    exit code zero and exact machine-report pins. A machine consumer's successful
    EOF alone does not prove the compiler succeeded. The machine reports retain
    their explicit unpublished status until their external producer is joined.
+5. The supervised cold-replay receipt, binding current retained B, the exact cold
+   machine result, and successful exits of both replayer and machine consumer.
 
 The initial expected join fields are `complete`, `producerExitCode`, `producer`,
 `sources`, `machineReports`, and `inputs`. This is a boundary contract for the
@@ -47,6 +63,7 @@ python3 selfhost/tools/performance/phase135/validation/machine-gates-v01.py \
   --warm REUSED_B_BUILD_JSON \
   --comparison COLD_REUSED_ELF_COMPARISON_JSON \
   --producer-join SUCCESSFUL_PRODUCER_JOIN_JSON \
+  --replay-join SUCCESSFUL_COLD_REPLAY_JOIN_JSON \
   --out selfhost/build/phase135/machine-gates-plan01
 
 python3 selfhost/tools/performance/phase111/guard.py \

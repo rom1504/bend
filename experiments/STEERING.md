@@ -1,3 +1,28 @@
+# Latest design: Phase134 bounded IR and incremental compilation
+
+[Plan](../design/phase134/README.md) ·
+[Validation](../design/phase134/validation.md) ·
+[Execution budget](../design/phase134/execution.md).
+
+Planning only; no implementation, benchmark, qualification or selection change.
+First seal the existing verified emission boundary and render bounded pieces,
+including the currently joined private-function text. Preserve exact bytes and
+measure physical retention. Whole structured IR remains initially; do not call
+this a bounded total compiler working set.
+
+Then establish owner-local identities and reusable named units before global
+binding. Demonstrate an actual early lowering-cache hit with consumed semantic
+facts, negative/admission dependencies and independent fresh-reference checks.
+Continue to binding/object locality and transactional persistent preparation only
+when measured avoided work pays for reuse. Keep full checking/verifying visible.
+
+Preserve generated-program quality through exact product identity where possible;
+time changed machine products using existing frozen oracles. Investigate cold
+request, per-case and broad runtime regressions separately. Use one heavy lane,
+small falsifiers, narrow source-connected laws and milestone native qualification.
+First 10–30-second warm-edit target is aspirational; no 1-MB total IR or subsecond
+complete validation claim. Phase131 remains the qualified fallback below.
+
 # Latest research: Phase133 Zig-informed compiler architecture
 
 [Research](../research/phase133/README.md) ·

@@ -125,6 +125,9 @@ keeps proxy gains, complete request timings and native qualification separate.
 The [Zig-informed compilation research](research/phase133/README.md) examines
 fine-grained semantic reuse, compact identities and bounded IR lifetimes as the
 next route to faster cold builds and interactive edits.
+The [bounded-IR and incremental compilation plan](design/phase134/README.md)
+sets out the staged refactor, intermediate performance/correctness gates and
+time budget; it is a design, not an implemented incremental compiler.
 
 The [incremental native development guide](docs/self_hosted/incremental-native-development.md)
 links the measured QBE size, memory and object-reuse investigation, its Go-inspired

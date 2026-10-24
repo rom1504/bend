@@ -1,5 +1,12 @@
 # Incremental native development: current boundary and next experiment
 
+[Phase134 implementation plan](../../design/phase134/README.md) ·
+[Validation gates](../../design/phase134/validation.md) ·
+[Execution budget](../../design/phase134/execution.md).
+The plan starts with exact-output bounded emission, then reusable owner units,
+semantic dependencies, stable binding and persistent preparation. It preserves
+the qualified compiler and distinguishes design targets from measured results.
+
 [Phase132 investigation](../../implementation/phase132/README.md) ·
 [Go source research](../../research/phase132/go-build-reuse.md) ·
 [Experimental commands](../../selfhost/tools/performance/phase132/incremental/README.md).

@@ -5700,3 +5700,24 @@ scope and reuse actual lowering across controlled edits. Phase101's packing
 regressions and Phase132's~369s unchanged frontend remain explicit. No cold or
 warm speedup has been measured in this research-only phase; qualified Phase131
 and installed selections are preserved.
+
+
+## Phase134 — Bounded IR and incremental compilation plan (2026-10-24)
+
+[Design](../design/phase134/README.md) ·
+[Validation](../design/phase134/validation.md) ·
+[Time budget](../design/phase134/execution.md).
+
+Planning only, based on Phase132/133 evidence and current selected source.
+Sequence: freeze identities, stream verified output, establish named owner units,
+reuse actual lowering, preserve reuse through binding/objects, retain checked
+preparation transactionally, then qualify and consolidate. Compiler semantics
+remain in Bend; QBE and the existing optimization policy remain selected.
+
+The design distinguishes bounded rendered text from total IR/RSS, semantic cache
+hits from post-emission object reuse, and cold requests from warm validated edits.
+Exact byte/machine identity avoids redundant program timing; changed code receives
+the frozen runtime gates. Intermediate checks include dependency omissions,
+negative facts, literal admission, producer epochs and failed-update recovery.
+Estimated first emission checkpoint is hours; broader reuse is a staged campaign,
+not an implemented 10-second rebuild. No targets executed or production changed.

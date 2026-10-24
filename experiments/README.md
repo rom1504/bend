@@ -1,11 +1,26 @@
 # Compiler experiment workflow
 
-Latest architectural investigation: [Phase132 incremental native development](../implementation/phase132/README.md).
+Latest qualified experiment: [Phase134 bounded emission and verification reuse](../implementation/phase134/README.md).
+The [final capsule](../implementation/phase134/final/README.md) pins source
+`a0001924…`, native N1/N2 and exact Q1=Q2. Sampled full-emission RSS is65.43%
+lower. Separate small request screens report N1−1.83% and N2+0.26% time versus
+their same-block Phase131 N2 parent; final N2 is1.41377× upstream. The full-source
+observation is4.76% longer with concurrent correctness work, not a clean timing
+claim. All59 controls, focused19 on both generations, N2 ordinary45 and all45
+native wrapper byte comparisons pass. The installed selection remains unchanged.
+
+Use the [native development guide](../docs/self_hosted/incremental-native-development.md)
+for explicit compiler and [pipe](../selfhost/tools/performance/phase134/pipe/README.md)
+commands. The pipe, cross-edit optimization units and native two-revision session
+are separate experiments; native session performance is pending, and none
+establishes an incremental frontend or changes the qualified core's results.
+
+Earlier architectural investigation: [Phase132 incremental native development](../implementation/phase132/README.md).
 Real-edit object reuse, compact-name machine equivalence, Go cache research and
 a full-request memory trace establish the next reusable-unit boundary. This is
 not an incremental frontend or a newly qualified compiler selection.
 
-Latest qualified experiment: [Phase131 laws and borrowed computations](../implementation/phase131/README.md).
+Earlier qualified experiment: [Phase131 laws and borrowed computations](../implementation/phase131/README.md).
 Native requests take20.92% less time than Phase130, reaching1.443× upstream;
 fixed-source N1/N2 shows10.64% less time from improved generated compiler code.
 Broad generated runtime is approximately preserved. Native reproduction and

@@ -1,0 +1,27 @@
+{
+  "complete": true,
+  "command": [
+    "bash",
+    "-c",
+    "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+    "phase86",
+    "taskset",
+    "-c",
+    "6",
+    "selfhost/.bootstrap/bun-1.4.3/bun",
+    "selfhost/tools/performance/phase134/reuse/units-edit-v01.mjs",
+    "selfhost/build/phase111/p134-units-api01/report.json",
+    "selfhost/build/phase134/reference03.json",
+    "selfhost/build/phase134/units-lexer01",
+    "lexer",
+    "2"
+  ],
+  "started": 1792816274.2955275,
+  "rssLimitBytes": 3221225472,
+  "availableFloorBytes": 17179869184,
+  "peakTreeRssBytes": 593408000,
+  "minimumAvailableBytes": 26205814784,
+  "returncode": 0,
+  "wallSeconds": 39.81869719387032,
+  "finished": 1792816314.1142209
+}

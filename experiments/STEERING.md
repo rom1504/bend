@@ -1,34 +1,39 @@
-# Latest design: Phase134 bounded IR and incremental compilation
+# Latest execution: Phase134 bounded emission and incremental experiments
 
+[Report](../implementation/phase134/README.md) ·
+[Qualified capsule](../implementation/phase134/final/README.md) ·
 [Plan](../design/phase134/README.md) ·
-[Validation](../design/phase134/validation.md) ·
-[Execution budget](../design/phase134/execution.md).
+[Guide](../docs/self_hosted/incremental-native-development.md).
 
-Execution in progress: [Phase134 report](../implementation/phase134/README.md).
-The first streaming compiler is native-qualified, with exact self-reproduction
-and focused/ordinary gates,65.4% lower observed peak RSS and a2.49% request-time
-regression in the controlled small screen. Preserve it as a measured ablation;
-test bounded writer batching before choosing a faster development compiler.
-The primitive-only owner-cache experiment did not pay and is not integrated.
-Installed selection remains unchanged; the remaining architecture below is a
-plan, not completed incremental compilation.
-First seal the existing verified emission boundary and render bounded pieces,
-including the currently joined private-function text. Preserve exact bytes and
-measure physical retention. Whole structured IR remains initially; do not call
-this a bounded total compiler working set.
+Final source `a0001924…fa19fb57` has exact Q1=Q2 reproduction, focused19 on both
+native generations, ordinary45 on N2 and all45 native benchmark products exactly
+matching the prior measured products.59 finite controls and source checking pass.
+Output cursors plus no-copy newline writes reduce sampled full-source peak RSS
+2.918→1.009GB (65.43%). Whole structured IR remains live. Same-boundary verifier
+reuse preserves the independent final verifier and existing proof bodies.
 
-Then establish owner-local identities and reusable named units before global
-binding. Demonstrate an actual early lowering-cache hit with consumed semantic
-facts, negative/admission dependencies and independent fresh-reference checks.
-Continue to binding/object locality and transactional persistent preparation only
-when measured avoided work pays for reuse. Keep full checking/verifying visible.
+Controlled small-request screens: N1 0.98166× parent, N2 1.00255× parent;
+N2 remains1.41377× upstream. This is no established compiler speed gain.
+One full-source observation is4.76% longer and overlaps correctness work; retain
+the caveat and per-case regressions. Source grows550lines (0.95%), ELF0.119%.
+Keep Phase131 available; no installed selection or universal speed promotion.
 
-Preserve generated-program quality through exact product identity where possible;
-time changed machine products using existing frozen oracles. Investigate cold
-request, per-case and broad runtime regressions separately. Use one heavy lane,
-small falsifiers, narrow source-connected laws and milestone native qualification.
-First 10–30-second warm-edit target is aspirational; no 1-MB total IR or subsecond
-complete validation claim. Phase131 remains the qualified fallback below.
+A bounded host pipe avoids the full textual QBE file while retaining assembly.
+Private inline/range results are genuinely reused across edits in a separate
+Bend prototype. Hosted Lexer saves26.7% backend time in both orders; Map's
+apparent gain reverses and balances to neutral despite34/34hits. Native session
+Lexer B improves21.32%, completeA+B9.08%; Map6.12%/2.62% in two balanced pairs.
+All16sessionproducts and5refusals pass. Compare warm against cache-reset in the
+same experimental image, not adoption against a cache-free compiler. The image
+is separate from qualified core; its acquisition costs~413guardedseconds.
+No persistent frontend, owner-local binding, integrated incremental objects,
+10-second full edit,1MBtotalIR or recursive-acceleration result is established.
+
+Next prioritize earlier candidate preparation and real compiler edit locality
+using native evidence. Generic-owner caching only reused cheap primitives and
+was rejected. Preserve complete callee/absence/order dependencies, fixed producer
+identity, independent final checks and fresh-output oracles. Keep expensive native
+qualification at integration milestones; do not expand caches by hit counts alone.
 
 # Latest research: Phase133 Zig-informed compiler architecture
 

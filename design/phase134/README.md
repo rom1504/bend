@@ -1,6 +1,9 @@
 # Phase134 — Bounded IR and incremental native compilation
 
-Status: **implementation plan, not implemented or qualified**. Written at
+Status: **partially implemented; bounded-output core native-qualified**. See the
+[Phase134 execution report](../../implementation/phase134/README.md) for metrics,
+experimental unit/session reuse and remaining architecture. The staged plan below
+is retained; it is not a claim that every phase is complete. Written at
 `dd2c910dcd0de2bbcc328922b2fbd5f27c886496`, 2026-10-24, for
 `selfhost/bootstrap`. [Validation contract](validation.md) ·
 [Execution and time budget](execution.md).

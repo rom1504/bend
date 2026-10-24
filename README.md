@@ -129,9 +129,16 @@ The [bounded-IR and incremental compilation plan](design/phase134/README.md)
 sets out the staged refactor, intermediate performance/correctness gates and
 time budget; it is a design, not an implemented incremental compiler.
 The [Phase134 execution report](implementation/phase134/README.md) records the
-qualified streaming checkpoint, its memory and speed tradeoffs, and measured
-limits of the first lowering-cache experiment. Fine-grained incremental source
-compilation remains experimental work.
+[qualified streaming/verification-reuse checkpoint](implementation/phase134/final/README.md)
+(source `a0001924…`): 65.43% lower sampled full-emission RSS, while separate small
+request screens give N1 −1.83% and N2 +0.26% time versus their same-block parent.
+The noisy full-source observation is +4.76%. All 59 controls, both focused19
+gates, N2 ordinary45 and all 45 native wrapper byte comparisons pass. Installed
+selection is unchanged; the [QBE pipe](selfhost/tools/performance/phase134/pipe/README.md)
+and cross-edit unit/session experiments are separate from this qualification.
+The [native edit experiment](implementation/phase134/session/README.md) saves
+21.3% on the lexer edit and9.1% on its complete two-revision session versus
+resetting the cache; general incremental compiler rebuilding remains future work.
 
 The [incremental native development guide](docs/self_hosted/incremental-native-development.md)
 links the measured QBE size, memory and object-reuse investigation, its Go-inspired

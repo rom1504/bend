@@ -1,4 +1,4 @@
-# Incremental native development: current boundary and next experiment
+# Native development: qualified checkpoint and incremental experiments
 
 [Phase134 implementation plan](../../design/phase134/README.md) ·
 [Validation gates](../../design/phase134/validation.md) ·
@@ -11,20 +11,102 @@ the qualified compiler and distinguishes design targets from measured results.
 [Go source research](../../research/phase132/go-build-reuse.md) ·
 [Experimental commands](../../selfhost/tools/performance/phase132/incremental/README.md).
 
-The selected compiler does **not** yet implement an incremental frontend.
-The [Phase134 report](../../implementation/phase134/README.md) now records an
-experimental native-qualified streaming compiler. It preserves complete QBE
-bytes while substantially reducing retained output memory. Its initial small
-request-time regression is being addressed separately; the installed selection
-has not changed. The narrow owner-cache probe was rejected for integration
-because its hits covered cheap primitives and did not improve complete requests.
+The [Phase134 report](../../implementation/phase134/README.md) and
+[final capsule](../../implementation/phase134/final/README.md) preserve a
+native-qualified compiler with streaming output, no-copy writes and reuse of
+successful verification for unchanged functions. Its complete source SHA-256 is
+`a00019246b5181b288ab4d3e09e616bd41415fe6381e89a96185c05efa19fb57`.
+It does **not** implement an incremental frontend, and the installed selection
+has not changed.
+
+| Evidence | Final Phase134 core |
+|---|---|
+| Same-source sampled peak descendant RSS | 2.918 → 1.009 GB, **65.43% lower** |
+| Small request screen, N1 / same-block Phase131 N2 | 0.98166×, **1.83% less time** |
+| Separate small request screen, N2 / same-block Phase131 N2 | 1.00255×, **0.26% more time**, effectively flat |
+| Final N2 request screen / upstream | 1.41377× |
+| Full-source native request observation | 366.836 → 384.281 seconds, **4.76% longer**, noisy concurrent observation |
+| Correctness | 59 finite controls; focused19 on N1 and N2; ordinary45 on N2 |
+| Self-reproduction and generated code | Exact Q1=Q2; all 45 native benchmark wrappers byte-identical to Phase131 |
+
+The small screens each contain three rotated rounds over Lexer, Closures256
+and Map128; their separate windows do not establish a universal speed gain.
+The full-source observations overlapped CPU6 correctness work. Sampled
+descendant RSS can double-count shared pages. The native wrapper identity bridge
+preserves the existing corpus's generated code with the same runtime; historical
+Phase131 runtime measurements are reused, not reported as new Phase134 timings.
+
+## Use the qualified core explicitly
+
+From the repository root, compile a source with the qualified N2 image and the
+authenticated compact Base carrier. The output directory must be fresh:
+
+```sh
+python3 -B selfhost/tools/performance/phase130/native-request.py \
+  --image selfhost/build/phase111/p134-selected-n2/program \
+  --source /absolute/path/to/program.bend \
+  --carrier-receipt selfhost/build/phase130/base-carrier01/receipt.json \
+  --out selfhost/build/phase130/my-phase134-request --seconds 60
+```
+
+This writes complete raw QBE to `program.ssa` and records input/product identities.
+The [capsule guide](../../implementation/phase134/final/README.md) gives the
+aligned machine-build command and source restoration instructions. Native
+images, runtime and toolchain are pinned workspace artifacts; the capsule itself
+archives the checked source and evidence. Use the existing resource guard for
+large requests and retain Phase131 as the installed fallback.
+
+## Separate pipe and reuse experiments
+
+The [supervised pipe tool](../../selfhost/tools/performance/phase134/pipe/README.md)
+can send native compiler stdout directly into QBE without materializing the
+complete textual IR file. For a bounded ordinary request, run:
+
+```sh
+python3 -B selfhost/tools/performance/phase111/guard.py \
+  --out selfhost/build/phase134/my-pipe-guard --seconds 75 \
+  --rss-mib 4096 --available-mib 16384 --file-mib 256 --cpu 3 -- \
+  python3 -B selfhost/tools/performance/phase134/pipe/build-v02.py \
+  --image selfhost/build/phase111/p134-selected-n2/program \
+  --source /absolute/path/to/program.bend \
+  --carrier-receipt selfhost/build/phase130/base-carrier01/receipt.json \
+  --runtime selfhost/build/phase128/runtime-borrow01/runtime.o \
+  --out selfhost/build/phase134/my-pipe-build --seconds 60
+```
+
+Both output directories must be fresh. This produces an executable and a receipt;
+it changes no compiler selection. Add `--expected-qbe PATH` for a strict
+independent byte-digest comparison or `--expected-stdout PATH` for an ordinary
+execution oracle. Without these, successful compilation is not a cross-compiler
+equality claim. The pipe's three strict pilot cases used an earlier no-copy N1;
+the final core's qualification above covers its file-emission path. Its N2 also
+emitted the full experimental session compiler through this pipe: 108.11 MB,
+399.72 s emission/QBE, 1.039 GB guarded peak RSS, no QBE file. The original
+wrapper refused known assembler warnings; a reviewed exact-object continuation
+linked successfully. The warning policy now matches the established builder.
+A controlled pipe-versus-file speed comparison remains unmeasured.
+
+The first [owner cache](../../implementation/phase134/reuse/README.md) was rejected
+because its hits covered cheap primitives without improving complete requests.
+The later [optimization-unit cache](../../implementation/phase134/reuse/cross-edit-units.md)
+and [two-revision session](../../selfhost/tools/performance/phase134/session/README.md)
+are separate experimental sources, not part of the qualified core. The
+[native experiment](../../implementation/phase134/session/README.md) passes
+all16 output comparisons and5 refusal controls. Compared with resetting its
+cache, retaining state cuts Lexer edited-request time21.32% and complete two-edit
+process time9.08%; Map6.12%/2.62%, with more variation. Both modes construct cache
+state, so this is not adoption cost versus a cache-free compiler. No full compiler
+source edit, general incremental frontend or native self-reproduction of the
+experimental session image is established.
+
+## Remaining architecture boundary
 
 Phase132 demonstrates exact machine-object reuse after a real one-function
 compiler edit. It still runs the entire native source request and scans all
 emitted QBE. Do not describe its~6s warm object build as a~6s compiler rebuild.
 
-Use the independently qualified Phase131 final native producer and explicit
-compact Base carrier for ordinary research acquisition. Preserve independent
+Use an explicitly pinned qualified native producer and compact Base carrier
+for ordinary research acquisition. Preserve independent
 source checks, mathematical proof checks when applicable, semantic/ownership
 controls and periodic native reproduction. Full JS-hosted compiler execution is
 an independent bootstrap/differential/recovery path, not an obligatory step for

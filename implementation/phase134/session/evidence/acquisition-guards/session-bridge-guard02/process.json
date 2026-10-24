@@ -1,0 +1,24 @@
+{
+  "complete": true,
+  "command": [
+    "bash",
+    "-c",
+    "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+    "phase86",
+    "taskset",
+    "-c",
+    "6",
+    "selfhost/.bootstrap/bun-1.4.3/bun",
+    "selfhost/tools/performance/phase134/session/bridge-v01.mjs",
+    "selfhost/build/phase111/p134-session-api02/report.json",
+    "selfhost/build/phase134/session-bridge02"
+  ],
+  "started": 1792817770.6211648,
+  "rssLimitBytes": 3221225472,
+  "availableFloorBytes": 17179869184,
+  "peakTreeRssBytes": 291028992,
+  "minimumAvailableBytes": 26813444096,
+  "returncode": 0,
+  "wallSeconds": 4.2478770290035754,
+  "finished": 1792817774.8690405
+}

@@ -1,0 +1,26 @@
+{
+  "complete": true,
+  "command": [
+    "bash",
+    "-c",
+    "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+    "phase86",
+    "taskset",
+    "-c",
+    "6",
+    "selfhost/.bootstrap/bun-1.4.3/bun",
+    "selfhost/tools/performance/phase134/emission/differential.mjs",
+    "selfhost/build/phase111/p134-verify-selected-api01/report.json",
+    "selfhost/build/phase134/reference03.json",
+    "selfhost/build/phase134/verify-selected-differential01",
+    "cases"
+  ],
+  "started": 1792815467.862034,
+  "rssLimitBytes": 3221225472,
+  "availableFloorBytes": 17179869184,
+  "peakTreeRssBytes": 648298496,
+  "minimumAvailableBytes": 26467078144,
+  "returncode": 0,
+  "wallSeconds": 37.314547050977126,
+  "finished": 1792815505.1765795
+}

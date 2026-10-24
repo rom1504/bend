@@ -1,0 +1,26 @@
+{
+  "complete": true,
+  "command": [
+    "bash",
+    "-c",
+    "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+    "phase111",
+    "taskset",
+    "-c",
+    "3",
+    "python3",
+    "-B",
+    "selfhost/tools/performance/phase134/session/native-run-v04.py",
+    "--run",
+    "--plan",
+    "selfhost/build/phase134/session-native-plan04/plan.json"
+  ],
+  "started": 1792818651.2199702,
+  "rssLimitBytes": 3221225472,
+  "availableFloorBytes": 17179869184,
+  "peakTreeRssBytes": 62873600,
+  "minimumAvailableBytes": 27026018304,
+  "returncode": 0,
+  "wallSeconds": 36.935896527953446,
+  "finished": 1792818688.1558661
+}

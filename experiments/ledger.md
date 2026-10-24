@@ -5702,6 +5702,26 @@ warm speedup has been measured in this research-only phase; qualified Phase131
 and installed selections are preserved.
 
 
+## Phase134 execution — bounded emission and measured reuse (2026-10-24)
+
+[Report](../implementation/phase134/README.md) ·
+[Qualified core](../implementation/phase134/final/README.md).
+Native-qualified sealed emission/cursor, no-copy writer and same-boundary
+verification reuse preserve all45 benchmark QBE products, both focused19 gates,
+ordinary45 and full Q1=Q2 reproduction.59 finite controls pass. Sampled full-source
+peak RSS decreases65.43%; controlled small N1/N2 ratios are0.98166/1.00255× parent,
+not a universal speed gain. Single overlapping full-source observation is4.76%
+longer. Source+550lines; ELF+0.119%; installed selections unchanged.
+
+Separate byte-transport and real cross-edit private-unit experiments retain all
+failures. Hosted Lexer backend improves26.7% in both orders; Map balances neutral.
+Native two-revision LexerB saves21.32%, wholeA+B9.08%; Map6.12%/2.62% with
+noisy two-pair scope. All16outputs and5refusals pass. Compare cache retention
+versus reset, not cache-free adoption. Full108.11MB pipe avoids the QBEfile;
+original warning-only supervisor failure and reviewed exact-object finish remain.
+Stable binding, general incremental frontend and integrated machine-object reuse
+remain unimplemented. Do not describe this as the entire historical plan finished.
+
 ## Phase134 — Bounded IR and incremental compilation plan (2026-10-24)
 
 Execution started03:00UTC. First qualified bounded-emission checkpoint and

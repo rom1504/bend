@@ -98,8 +98,16 @@ commit helper. The original `p114s_commit` remains unchanged as fallback; the
 entire final verifier remains unchanged. That module is separate from the
 experimental counter, controls and full-request adapter. The final composed
 candidate must run all 26 controls against its actual integrated definitions;
-passing only the earlier isolated source is insufficient. Native qualification
-and native request timing remain necessary before selection.
+passing only the earlier isolated source is insufficient.
+
+The exact candidate for native acquisition is now frozen as
+`verify-selected-source01/compiler.bend`, SHA-256
+`a00019246b5181b288ab4d3e09e616bd41415fe6381e89a96185c05efa19fb57`.
+It combines the no-copy writer, the 124-line verification core and its separate
+controls, without range memo machinery. Its actual source passes independent
+checking, all **59 controls** (26 reuse, 18 optimizer, 15 emission), and all three
+frozen full-output/cursor comparisons. Native qualification and native request
+timing remain necessary before selection.
 
 The next stronger opportunity is now explicit: `p113i_function_done` already runs
 the range pass internally, then the outer pipeline runs ranges again. An exact
@@ -117,6 +125,9 @@ must run the original pass. It is a separate experiment, not part of these gains
   [four balanced pairs](phase134/verify-edit02/report.json).
 - [Independent source audit](../../../selfhost/tools/performance/phase134/compact/verify-reuse-audit.md).
 - [124-line integration module](../../../selfhost/tools/performance/phase134/reuse/verify-core-v01.bend).
+- [Actual selected-source checking](phase111/p134-verify-selected-api01/report.json),
+  [59 controls](phase134/verify-selected-finite01/report.json), and
+  [three frozen pure/cursor comparisons](phase134/verify-selected-differential01/report.json).
 
 The exact commands, input hashes and resource limits are retained in adjacent
 guard receipts and [archive.json](archive.json). No generated APIs, native

@@ -1,0 +1,29 @@
+{
+  "complete": true,
+  "command": [
+    "bash",
+    "-c",
+    "ulimit -f 262144; ulimit -c 0; exec \"$@\"",
+    "phase111",
+    "taskset",
+    "-c",
+    "3",
+    "python3",
+    "-B",
+    "selfhost/tools/performance/phase134/pipe/finish-v01.py",
+    "--review",
+    "selfhost/build/phase134/session-native-warning01.json",
+    "--out",
+    "selfhost/build/phase134/session-native-finish01",
+    "--seconds",
+    "30"
+  ],
+  "started": 1792818553.2872913,
+  "rssLimitBytes": 3221225472,
+  "availableFloorBytes": 17179869184,
+  "peakTreeRssBytes": 944668672,
+  "minimumAvailableBytes": 26175504384,
+  "returncode": 0,
+  "wallSeconds": 7.2971589111257344,
+  "finished": 1792818560.5844495
+}

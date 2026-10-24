@@ -29,6 +29,19 @@ more important boundary: generic lowering is only 4.5–10.7% of warmed hosted
 backend time on these requests. Expensive private optimization/verification and
 render preparation remain; all six diagnostic products match frozen native QBE.
 
+That led to [within-request verification reuse](verification-reuse.md): unchanged
+functions reuse their successful check under the same exact ordered signature
+context. A balanced real-edit hosted comparison suggests a modest gain; the
+actual integrated candidate passes 59 controls and three frozen output bridges.
+An additional [range memo experiment](range-reuse.md) passed its correctness
+controls but produced mixed complete-request timings and was omitted.
+
+The later [cross-edit optimization-unit prototype](cross-edit-units.md) does
+reuse expensive transformations before executing them. Two balanced lexer edits
+show approximately 26.7% lower hosted backend time. Reversing Map's measurement
+order removes its apparent improvement, so broad transfer is not established.
+This prototype remains separate from the selected native candidate.
+
 No source checker, admission rule, independent final verifier, production
 selection or runtime ABI changed. The harness orchestrates checked Bend exports;
 host JavaScript supplies byte transport, identity checks and timestamps only.

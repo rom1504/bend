@@ -1,0 +1,25 @@
+{
+  "complete": true,
+  "command": [
+    "bash",
+    "-c",
+    "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+    "phase86",
+    "taskset",
+    "-c",
+    "6",
+    "selfhost/.bootstrap/bun-1.4.3/bun",
+    "selfhost/tools/performance/phase134/reuse/range-screen-v01.mjs",
+    "selfhost/build/phase111/p134-range-api03/report.json",
+    "selfhost/build/phase134/reference03.json",
+    "selfhost/build/phase134/range-screen01"
+  ],
+  "started": 1792815301.3605232,
+  "rssLimitBytes": 3221225472,
+  "availableFloorBytes": 17179869184,
+  "peakTreeRssBytes": 546574336,
+  "minimumAvailableBytes": 26371657728,
+  "returncode": 0,
+  "wallSeconds": 39.00391322793439,
+  "finished": 1792815340.3644357
+}

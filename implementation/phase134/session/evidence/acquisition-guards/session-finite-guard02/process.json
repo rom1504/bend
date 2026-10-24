@@ -1,0 +1,25 @@
+{
+  "complete": true,
+  "command": [
+    "bash",
+    "-c",
+    "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+    "phase86",
+    "taskset",
+    "-c",
+    "6",
+    "selfhost/.bootstrap/bun-1.4.3/bun",
+    "selfhost/tools/performance/phase134/reuse/finite-v04.mjs",
+    "selfhost/build/phase111/p134-session-api02/report.json",
+    "selfhost/build/phase134/session-finite02",
+    "{\"p134ns_controls\":10,\"p134u_controls\":20,\"p134rk_controls\":20,\"p134v_controls\":26,\"p114s_control_report\":18,\"p134ec_controls\":15}"
+  ],
+  "started": 1792817757.6046956,
+  "rssLimitBytes": 3221225472,
+  "availableFloorBytes": 17179869184,
+  "peakTreeRssBytes": 171782144,
+  "minimumAvailableBytes": 26949824512,
+  "returncode": 0,
+  "wallSeconds": 2.0822555259801447,
+  "finished": 1792817759.6869483
+}

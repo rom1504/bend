@@ -1,0 +1,28 @@
+{
+  "complete": true,
+  "command": [
+    "bash",
+    "-c",
+    "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+    "phase86",
+    "taskset",
+    "-c",
+    "6",
+    "selfhost/.bootstrap/bun-1.4.3/bun",
+    "selfhost/tools/performance/phase134/reuse/units-edit-v02.mjs",
+    "selfhost/build/phase111/p134-units-api01/report.json",
+    "selfhost/build/phase134/reference03.json",
+    "selfhost/build/phase134/units-map02",
+    "coverage-map-churn-128",
+    "1",
+    "cache-first"
+  ],
+  "started": 1792816587.0590854,
+  "rssLimitBytes": 3221225472,
+  "availableFloorBytes": 17179869184,
+  "peakTreeRssBytes": 643047424,
+  "minimumAvailableBytes": 25497800704,
+  "returncode": 0,
+  "wallSeconds": 36.86407344904728,
+  "finished": 1792816623.9231548
+}

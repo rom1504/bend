@@ -1,4 +1,38 @@
-# Latest execution: Phase134 bounded emission and incremental experiments
+# Latest investigation: Phase135 full compiler incremental rebuild
+
+[Report](../implementation/phase135/README.md) ·
+[Metrics](../implementation/phase135/metrics.json) ·
+[Decision](phase135/P135-001-incremental-rebuild.md).
+
+Actual native compiler A→B now uses compiler-announced complete QBE bundles,
+reuses56/66 machine groups without a whole-text discovery scan, and matches both
+independent107MB products. Cached and independently cold B loaded ELF/headers are
+exact.18 compiler-output and6 ordinary gates pass; three-case request time is
+0.99305× monolithic, essentially flat. This is experimental, not a new qualified
+N1/N2 or installed selection.
+
+Do not overstate the speed result. Same-executable late semantic cache B takes
+374.922s versus ordinary364.183s once despite1387/1507hits. A-only backend replay
+takes15.979s versus cold grouped38.906s, but conventional monolithic construction
+still takes14.699s guarded versus cached replay16.064s. Whole-loop acceleration
+is unproven. Most of the old work remains and new bookkeeping has real cost.
+
+Native B stages: frontend175.080s (46.3%), initial lowering62.179s (16.4%),
+optimization/verification68.360s (18.1%), render/backpressure72.677s (19.2%).
+These are wall intervals with ownership cleanup and shared-CPU machine work, not
+exclusive source self-times.62.7% precedes the existing optimization cache.
+Next split frontend checking/annotation/erasure and test early reusable prepared
+definitions with exact consumed dependencies. Keep independent checking and final
+verification. The isolated ownership summary is correct but has mixed hosted
+results and misses earlier calls; it is unselected.
+
+Full pipeline peak1.248GB; normal temporary unit text is bounded by18.15MB for
+this workload. Qualification deliberately retains all B text for replay. The
+107MB serialization and whole semantic IR are still produced; no1MB total IR,
+ten-second edit or recursive-research speedup is established. Keep Phase134 as
+the qualified tool and retain the framed backend boundary for further work.
+
+# Latest qualified execution: Phase134 bounded emission
 
 [Report](../implementation/phase134/README.md) ·
 [Qualified capsule](../implementation/phase134/final/README.md) ·

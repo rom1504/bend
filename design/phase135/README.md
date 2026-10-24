@@ -1,5 +1,8 @@
 # Phase135 — A validated incremental rebuild of the compiler
 
+Completed investigation: [implementation and limits](../../implementation/phase135/README.md).
+The object boundary works; complete-loop acceleration remains unestablished.
+
 Started 2026-10-24 from `17a9e437b9440f63c26cc6f990627320393356c3`.
 Continue the [Phase134 plan](../phase134/README.md), using its qualified bounded
 emitter and separately checked native session prototype. Installed selections

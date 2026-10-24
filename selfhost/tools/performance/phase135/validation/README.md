@@ -100,3 +100,39 @@ monolithic compiler, so its own request timing must actually be measured.
 No broad 45-program campaign, new compiler acquisition, runtime change or full
 self-hosting qualification is included. Promotion and larger validation remain
 separate decisions after these finite gates and actual end-to-end costs pass.
+
+## Final metrics without target reruns
+
+`analysis-v01.py` reads only bounded JSON receipts, checks their cross-links, and
+produces a fresh `finalmetrics.json`. It does not read generated QBE, assembly or
+executables, invoke targets, or authenticate new compiler semantics. Run it only
+after the coordinator has frozen the final paths and all writers have closed.
+
+```sh
+python3 selfhost/tools/performance/phase135/validation/analysis-v01.py \
+  --ordinary-baseline ORDINARY_B_REPORT \
+  --semantic-session ORIGINAL_UNFRAMED_FULL_SESSION_REPORT \
+  --native-session FINAL_FRAMED_NATIVE_JOIN \
+  --cached-replay MATCHED_A_ONLY_CACHE_REPLAY_REPORT \
+  --cold-replay INDEPENDENT_COLD_REPLAY_REPORT \
+  --cache-snapshot A_ONLY_VIEW_SNAPSHOT_JSON \
+  --cache-membership ACTUAL_A_ONLY_REPLAY_MEMBERSHIP_JSON \
+  --gates-summary MACHINE_GATES_SUMMARY_JSON \
+  --guard acquisition=ACQUISITION_PROCESS_JSON \
+  --guard native_session=SESSION_PROCESS_JSON \
+  --guard machine_gates=GATES_PROCESS_JSON \
+  --out selfhost/build/phase135/finalmetrics.json
+```
+
+Additional `--guard LABEL=PROCESS_JSON` arguments retain acquisition, baseline,
+replay, failed attempts and other closed process-tree costs separately. The
+analysis makes no grand total from overlapping or nested clocks. It reports the
+old same-image cache comparison separately from the newer instrumented native
+image; stage fractions include render backpressure. Matched backend-only replay
+includes preflight, reports A-only snapshot acquisition separately, and verifies
+every B unit hit against both original native B and exact A membership.
+
+The three-case compiler-request summary is recomputed from paired observations
+and retains per-case ratios. It produces no new upstream ratio, full N2 score,
+generated-program runtime claim, or end-to-end edit speedup from isolated machine
+replay savings.

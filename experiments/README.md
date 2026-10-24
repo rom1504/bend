@@ -1,5 +1,12 @@
 # Compiler experiment workflow
 
+Latest investigation: [Phase135 real compiler edit reuse](../implementation/phase135/README.md).
+Native compiler-announced groups reuse56/66 objects and pass exact cold/current
+machine comparisons,18 compiler-output checks and6 ordinary checks. The full
+late semantic cache does not demonstrate a speed win; earlier preparation is
+the measured next target. The qualified core below and installed selection stay
+unchanged. Distinguish backend replay savings from complete edit-loop cost.
+
 Latest qualified experiment: [Phase134 bounded emission and verification reuse](../implementation/phase134/README.md).
 The [final capsule](../implementation/phase134/final/README.md) pins source
 `a0001924…`, native N1/N2 and exact Q1=Q2. Sampled full-emission RSS is65.43%

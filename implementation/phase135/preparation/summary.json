@@ -1,0 +1,159 @@
+{
+  "kind": "phase135-ownership-hosted-screen-summary",
+  "complete": true,
+  "targetsRun": false,
+  "productionAdopted": false,
+  "method": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase135/preparation/summarize-v01.py",
+    "bytes": 4097,
+    "sha256": "2f5b6e357d3e9b7c98aa86d0cff1fb087e2f0ab2e7b2672a80a83d643bbb9761"
+  },
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase135/ownership-compare01/report.json",
+      "bytes": 19377,
+      "sha256": "9a2d57c0b2ec5e76dfe4fbbba429716129aa9788b0496414396f173295c02d53"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase135/ownership-compare-guard01/process.json",
+      "bytes": 774,
+      "sha256": "abb464d69b57b01b28eaaff9c42aef01e1fef11dac3c9ebaf0a5146cdd4428f9"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase135/ownership-finite01/report.json",
+      "bytes": 7080,
+      "sha256": "c80d972cf296ec71937457d9abde903c5bd4da80840d521dddd6dfdf9e018e3b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p135-ownership-api01/report.json",
+      "bytes": 3574,
+      "sha256": "86eabc1673f5eb436df201f3536e7ea2cdb45fc487c3d5726852e76d8530c3be"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase135/machine-session01/report.json",
+      "bytes": 26196,
+      "sha256": "9ec391e2a309f81bc1601b153cccb742e0efca222e6be136a1e5e0deb5f04eb0"
+    }
+  ],
+  "controlsPassed": 29,
+  "exactQbeProducts": 18,
+  "rounds": 2,
+  "cases": [
+    {
+      "name": "lexer",
+      "pairs": [
+        {
+          "round": 0,
+          "name": "lexer",
+          "indexedOverParentBackend": 0.8455822921373273,
+          "indexedOverWrapperBackend": 0.8164067701018787,
+          "wrapperOverParentBackend": 1.035736501832056,
+          "indexedOverParentWhole": 0.818339276519331
+        },
+        {
+          "round": 1,
+          "name": "lexer",
+          "indexedOverParentBackend": 0.8849127942236165,
+          "indexedOverWrapperBackend": 0.9370764145933418,
+          "wrapperOverParentBackend": 0.944333653523483,
+          "indexedOverParentWhole": 0.8898275486002902
+        }
+      ],
+      "geometricRatios": {
+        "indexedOverParentBackend": 0.8650240394817086,
+        "indexedOverWrapperBackend": 0.8746630945551545,
+        "wrapperOverParentBackend": 0.9889796938576125,
+        "indexedOverParentWhole": 0.8533351231190073
+      }
+    },
+    {
+      "name": "coverage-closures-256",
+      "pairs": [
+        {
+          "round": 0,
+          "name": "coverage-closures-256",
+          "indexedOverParentBackend": 1.015425439269132,
+          "indexedOverWrapperBackend": 1.3338234282370154,
+          "wrapperOverParentBackend": 0.7612892514650709,
+          "indexedOverParentWhole": 1.0234768933101244
+        },
+        {
+          "round": 1,
+          "name": "coverage-closures-256",
+          "indexedOverParentBackend": 1.45485521278984,
+          "indexedOverWrapperBackend": 1.6258504710462853,
+          "wrapperOverParentBackend": 0.894827192720617,
+          "indexedOverParentWhole": 1.397346752801817
+        }
+      ],
+      "geometricRatios": {
+        "indexedOverParentBackend": 1.2154410695381779,
+        "indexedOverWrapperBackend": 1.4726158525194961,
+        "wrapperOverParentBackend": 0.8253619349938965,
+        "indexedOverParentWhole": 1.195889674440997
+      }
+    },
+    {
+      "name": "coverage-map-churn-128",
+      "pairs": [
+        {
+          "round": 0,
+          "name": "coverage-map-churn-128",
+          "indexedOverParentBackend": 1.094669660422302,
+          "indexedOverWrapperBackend": 1.0478037051053826,
+          "wrapperOverParentBackend": 1.0447278007212295,
+          "indexedOverParentWhole": 1.0501922476418803
+        },
+        {
+          "round": 1,
+          "name": "coverage-map-churn-128",
+          "indexedOverParentBackend": 0.7881217567957507,
+          "indexedOverWrapperBackend": 1.0821596740694603,
+          "wrapperOverParentBackend": 0.7282860151607938,
+          "indexedOverParentWhole": 0.8071824379390607
+        }
+      ],
+      "geometricRatios": {
+        "indexedOverParentBackend": 0.9288342025803273,
+        "indexedOverWrapperBackend": 1.064843141502829,
+        "wrapperOverParentBackend": 0.8722732639001176,
+        "indexedOverParentWhole": 0.920704479600417
+      }
+    }
+  ],
+  "screenCost": {
+    "guardSeconds": 90.82378322887234,
+    "harnessSeconds": 89.56616306199999,
+    "peakRssBytes": 954867712
+  },
+  "separateNativeStageObservation": {
+    "ownershipIndexIncluded": false,
+    "editedRequestSeconds": 378.296,
+    "stages": {
+      "frontend": {
+        "seconds": 175.08,
+        "fraction": 0.4628121893966629
+      },
+      "lowering": {
+        "seconds": 62.179,
+        "fraction": 0.16436599911180663
+      },
+      "optimize": {
+        "seconds": 68.36,
+        "fraction": 0.18070505635798423
+      },
+      "render": {
+        "seconds": 72.677,
+        "fraction": 0.19211675513354623
+      }
+    }
+  },
+  "limitations": [
+    "Two alternating-order hosted observations, with JIT/GC variance; no native candidate timing.",
+    "Indexed round0 builds the cache; round1 reuses it. Order and acquisition state are confounded.",
+    "Identical source repeated; finite invalidation controls are not a timed actual-edit campaign.",
+    "Whole computation excludes Base seed acquisition and host output transport.",
+    "Separate native stage observations use an unindexed image and include FIFO backpressure.",
+    "No cross-family aggregate or default integration is justified by this screen."
+  ]
+}

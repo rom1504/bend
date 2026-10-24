@@ -25,17 +25,17 @@ def main():
    if p.is_file()and (p.suffix in('.json','.stdout','.stderr','.md','.txt','.log')or p.name in('stdout','stderr')):
     if p.stat().st_size>8*1024**2:raise ValueError('Oversized metadata; select explicitly '+str(p))
     paths.add(p.resolve())
- for folder in [HERE,ROOT/'selfhost/tools/performance/phase135/preparation']:
+ for folder in [HERE,ROOT/'selfhost/tools/performance/phase135/preparation',ROOT/'selfhost/tools/performance/phase135/validation']:
   for p in folder.glob('*'):
    if p.is_file()and p.suffix in('.py','.mjs','.bend','.md','.json'):paths.add(p.resolve())
- for label in ['machine-source01','machine-source02']:
+ for label in ['machine-source01','machine-source02','ownership-source01']:
   p=phase/label/'compiler.bend'
   if not p.is_file():raise ValueError('Frozen checked source missing: '+label)
   paths.add(p.resolve())
  if not paths:raise ValueError('No evidence')
  entries=[dict(name=str(p.relative_to(ROOT)),**pin(p))for p in sorted(paths)]
  if sum(x['bytes']for x in entries)>128*1024**2:raise ValueError('Metadata/source archive exceeds declared bound')
- inventory=dict(kind='phase135-machine-evidence',inputs=[pin(__file__)],members=entries,scope='Exact checked source01/source02, methods, metadata, commands and diagnostics. Excludes full generated IR, assembly, objects, executable images and hosted APIs; their identities remain in receipts. Failed attempts retained without qualification claims.')
+ inventory=dict(kind='phase135-machine-evidence',inputs=[pin(__file__)],members=entries,scope='Exact checked machine source01/source02 and isolated ownership source01, methods, metadata, commands and diagnostics. Excludes full generated IR, assembly, objects, executable images and hosted APIs; their identities remain in receipts. Failed attempts retained without qualification claims.')
  raw=(json.dumps(inventory,indent=2)+'\n').encode();out.mkdir(parents=True);archive=out/'evidence.tar.xz'
  with lzma.open(archive,'wb',format=lzma.FORMAT_XZ,preset=6)as compressed,tarfile.open(fileobj=compressed,mode='w|')as tar:
   for entry in entries:

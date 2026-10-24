@@ -103,3 +103,6 @@ then the historical three request oracles in two interleaved orders and six
 ordinary program outputs. Identical generated QBE under the same downstream
 tool/runtime policy supports code-quality preservation, not a fresh runtime
 speed claim. That machine experiment is not part of the completed result above.
+
+The [machine archive plan](machine-archive-plan.md) lists the bounded external
+Phase130 request and Phase111 build evidence to retain after those gates finish.

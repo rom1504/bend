@@ -1,7 +1,8 @@
 # Constructor ownership as a prepared semantic fact
 
-Status: isolated source prototype; source checking and all 29 finite controls pass.
-No performance result or production selection is claimed here. Parent is frozen Phase134 session source04
+Status: isolated source prototype; source checking, all 29 finite controls and
+18 complete frozen QBE comparisons pass. The hosted performance screen is mixed;
+**no default integration or native speed claim** is justified. Parent is frozen Phase134 session source04
 `1cadf44f…aea7be45`, checked by `p134-session-api02`; this lane does not alter it.
 
 The complete private-candidate cache is not yet a justified small change.
@@ -124,13 +125,33 @@ python3 selfhost/tools/performance/phase131/native/check-guard.py \
   selfhost/build/phase135/ownership-finite01 '{"p135co_controls":29}'
 ```
 
-The next, not-yet-executed comparison covers all three frozen small requests from
+The completed comparison covers all three frozen small requests from
 `selfhost/build/phase134/reference03.json`: unchanged parent API ordinary output,
-overlay ordinary output, and overlay `p135co_emit` with empty/retained cache. Every
-complete QBE product must equal the frozen oracle. Alternate execution order,
-record frontend and backend separately, and do not infer native gains from hosted
-timing. A retained cache across an actual body edit must still match a separately
-compiled fresh edited output. A layout/ownership edit must invalidate its key.
+overlay ordinary output, and overlay `p135co_emit` with empty/retained cache.
+All 18 complete QBE products equal their frozen oracle. The paired geometric
+ratios below use both execution orders; lower is faster:
+
+| Workload | Indexed / parent backend | Indexed / wrapper backend | Indexed / parent frontend+backend |
+|---|---:|---:|---:|
+| Lexer | 0.865× | 0.875× | 0.853× |
+| Closures | 1.215× | 1.473× | 1.196× |
+| Map churn | 0.929× | 1.065× | 0.921× |
+
+Lexer improved against both controls in both observations. Closures and Map
+lost to the same wrapper in both orders. Map's indexed/parent backend ratio
+reversed from 1.095× to 0.788×; its mean alone would give a misleading positive
+signal. These are only two hosted observations with JIT/GC variance, and the
+first indexed round builds the cache while the second reuses it. Execution
+order and cache state therefore cannot be separated. No native improvement,
+cross-family aggregate gain or real-edit acceleration follows from this screen.
+The repeated source is identical; the finite body-edit/invalidation controls
+are separate correctness evidence.
+
+The screen took 90.824 s guarded and 954,867,712 peak RSS bytes. Exact receipts:
+`selfhost/build/phase135/ownership-compare01/report.json` and its adjacent
+`ownership-compare-guard01/process.json`. Reproducible paired derivation and a
+concise result are in `implementation/phase135/preparation/{summary.json,README.md}`;
+`summarize-v01.py` reads completed metadata only. The candidate stays unselected.
 
 For a full compiler-source test, first collect the real checked book's ADT key
 and query answers using this small API; do not run another native acquisition to
@@ -139,7 +160,7 @@ negative result and investigate caller coverage before any earlier adapter or
 full self-hosting campaign. The existing Phase135 native session remains the
 independent real-edit baseline.
 
-## Native stage diagnostic: checked composition, timing still pending
+## Native stage diagnostic: checked composition and full-source observation
 
 The full compiler-source session reused 1,387/1,507 inline and range units, but
 its A and edited B requests took 362.510 s and 374.922 s. Both 107 MB outputs
@@ -175,7 +196,9 @@ frozen QBE; B outputs equal independent fresh compilation; both routes return
 identical complete caches and statistics. Three error/admission short circuits
 also match. The bridge took 28.50 s internally (29.44 s guarded) and used about
 490 MiB peak RSS. The surrounding framed candidate passed all 121 finite
-controls. This does not yet validate native stage durations or FIFO behavior.
+controls. The subsequent native framed experiment also completed; its exact
+current outputs and machine consumers are reported separately in
+`selfhost/build/phase135/machine-session01/report.json`.
 
 - Checked framed source: `selfhost/build/phase135/machine-source02/compiler.bend`,
   SHA256 `391a6f2dde2ef960a2d8b33a3100a0d9ba53ff68848a2279d502f7858019091c`.
@@ -185,8 +208,13 @@ controls. This does not yet validate native stage durations or FIFO behavior.
 - Reproducer: `stage-bridge-v01.mjs`; detailed source audit and measurement limits:
   [native-stage-audit.md](native-stage-audit.md).
 
-The ownership prototype is not included in that framed source. Its full-request
-cost trial remains deferred while the root measures the native baseline and
-framing route. The old 7.48% ownership context share includes 3.97% of all samples
-in destruction/reclamation and 0.73% in borrowed String equality; it is not an
-additional gain on top of those costs, nor a measurement of the new stage split.
+The ownership prototype is not included in that framed source. The separate
+native edited B request took 378.296 s: frontend 175.080 s, lowering 62.179 s,
+optimization 68.360 s, rendering 72.677 s. The late attachment misses the 46.3%
+spent before lowering, as well as some initial constructor preparation. These
+coarse totals do not measure which stage owns the earlier ownership-query
+samples. The old 7.48% ownership context share includes 3.97% of all samples in
+destruction/reclamation and 0.73% in borrowed String equality; it is not an
+additional gain on top of those costs. No native ownership candidate was built
+or adopted, and the hosted screen does not justify one without a better
+coverage and profitability discriminator.

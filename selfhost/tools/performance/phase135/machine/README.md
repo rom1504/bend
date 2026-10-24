@@ -1,5 +1,14 @@
 # Phase135 framed machine-unit experiment
 
+**Completed result:** [Phase135 report](../../../../../implementation/phase135/README.md)
+and [compact evidence](../../../../../implementation/phase135/machine-evidence/README.md).
+Actual native framing and full A→B pass:56/66 groups reused, independent current/
+cold loaded images exact,18 compiler-output and6 ordinary checks. Cached backend
+replay15.979s versus cold grouped38.906s includes preflight; its16.064s guard still
+exceeds conventional monolithic14.699s. No whole-loop gain or promotion. The
+audit/proposed gates below retain historical planning context; the completed
+report is authoritative for status.
+
 Initial audit at `17a9e43` on 2026-10-24. Input identities are in
 `audit.json`. The root-owned experiments below subsequently checked the source
 and small machine products. No production selection or frozen Phase132/134 tool
@@ -240,3 +249,64 @@ The only expected incremental saving at this boundary is machine translation.
 All current semantic preparation, final verification, rendering and payload
 hashing are still paid. A high semantic-cache hit count or a high object-hit
 count does not establish an end-to-end speedup.
+
+
+## Matched backend-only replay control
+
+The full native session overlaps A machine completion with B frontend work.
+Consequently its machine-B subprocess wall time is not comparable to a standalone
+cold replay, and it is not the complete warm edit time. To compare the machine
+boundary fairly, replay the **same retained current B groups** twice using
+`cold-replay-v01.py`: once into a fresh empty cache (default), and once with
+`--reuse-cache` pointing at an authenticated **A-only cache view**. The full
+session's original cache already contains B's newly built units: using it would
+measure an unchanged all-hit B rebuild, not the actual A→B edit. Both replay arms
+must use fresh, disjoint output directories and the exact same expected B QBE.
+
+The default report kind remains `phase135-supervised-cold-replay`, with both
+child statuses required zero and zero cache hits. Cached mode has a distinct
+kind, `phase135-supervised-cached-replay`, omits the child `--cold` option and
+uses the existing object builder's exact context/payload/object admission. A
+missing or corrupt cache cannot be silently accepted. Record actual hits and
+misses rather than assuming every current unit hits.
+
+Compare `totalSeconds` (including input/retained-text authentication), outer
+process wall time, machine subprocess time and QBE/as/link child time separately.
+The older `seconds` field excludes replay preflight; `preflightSeconds` makes
+that boundary explicit. This matched replay includes byte transport, hashing,
+receipt checks and linking, but excludes Bend preparation, optimization and
+rendering. Its speedup is a backend-only result. Both replay controls and current
+B text retention are additional qualification costs; charge them separately
+from the native A→B research loop.
+
+
+Construct the A-only view after the original native producer join is complete:
+
+```sh
+python3 -B selfhost/tools/performance/phase135/machine/snapshot-v01.py \
+  --session selfhost/build/phase135/machine-session01/report.json \
+  --out selfhost/build/phase135/machine-a-only-cache01
+```
+
+The metadata-only tool verifies the exact successful producer, both revision
+identities, A's actual cache keys and every original receipt/object. It exposes
+only those A entries through local symlinks; receipt paths and immutable object
+pins remain unchanged. A new writer lock protects the view. B misses create
+new entries in that view, so a second replay against the mutated view would be
+an all-hit experiment and must not be reported as another first-edit sample.
+Create a fresh A-only view for each matched edit repetition.
+
+Pass this view as `--cache .../machine-a-only-cache01 --reuse-cache` to the
+replay tool. Then run the metadata checker:
+
+```sh
+python3 -B selfhost/tools/performance/phase135/machine/snapshot-v01.py \
+  --snapshot selfhost/build/phase135/machine-a-only-cache01/snapshot.json \
+  --replay selfhost/build/phase135/machine-edit-replay01/report.json \
+  --out selfhost/build/phase135/machine-edit-membership01.json
+```
+
+It compares every current B unit's key and observed hit/miss with exact A
+membership, rather than accepting merely the same aggregate hit count. Snapshot
+construction and verification are additional diagnostic costs. No QBE parsing,
+source dependency inference or compiler work occurs in this cache view.

@@ -1,5 +1,11 @@
 # Native development: qualified checkpoint and incremental experiments
 
+[Phase135 real compiler rebuild](../../implementation/phase135/README.md) adds
+native compiler-announced object groups and independent current/cold validation.
+It is a tested experimental route, **not yet a faster complete edit loop** and
+not the selected compiler. Use its [bounded commands](../../selfhost/tools/performance/phase135/machine/README.md)
+for experiments; the qualified core remains below.
+
 [Phase134 implementation plan](../../design/phase134/README.md) ·
 [Validation gates](../../design/phase134/validation.md) ·
 [Execution budget](../../design/phase134/execution.md).
@@ -95,11 +101,20 @@ are separate experimental sources, not part of the qualified core. The
 all16 output comparisons and5 refusal controls. Compared with resetting its
 cache, retaining state cuts Lexer edited-request time21.32% and complete two-edit
 process time9.08%; Map6.12%/2.62%, with more variation. Both modes construct cache
-state, so this is not adoption cost versus a cache-free compiler. No full compiler
-source edit, general incremental frontend or native self-reproduction of the
-experimental session image is established.
+state, so this is not adoption cost versus a cache-free compiler. Phase135 now
+tests a full compiler source edit:1387/1507hits, but374.922s warm versus364.183s
+through the same image's ordinary entry once. There is no demonstrated adoption
+gain. General incremental frontend and native self-reproduction of the
+experimental session image remain unestablished.
 
 ## Remaining architecture boundary
+
+Phase135 removes the whole-QBE boundary-discovery scan by emitting grouped units
+directly from Bend. A real edit reuses56/66 objects; cached/cold loaded machine
+images and independent outputs agree. Backend-only replay falls38.906→15.979s,
+yet cached replay's full guard16.064s still exceeds monolithic14.699s. Keep the
+new bookkeeping cost visible. All current semantic preparation and rendering
+remain;62.7% of the full B interval precedes the existing optimization cache.
 
 Phase132 demonstrates exact machine-object reuse after a real one-function
 compiler edit. It still runs the entire native source request and scans all

@@ -4,6 +4,22 @@ This ledger records decisions and links evidence; it does not replace the report
 Read [workflow](README.md) and [current strategy](STEERING.md) before a new investigation.
 User objective: make the Bend compiler written in Bend and its validation loop much faster while preserving correctness. Historical authorization windows are recorded below; current release status and priorities are in [STEERING.md](STEERING.md).
 
+## Phase135 — Full compiler edit reuse (2026-10-24)
+
+[Design](../design/phase135/README.md) ·
+[Decision](phase135/P135-001-incremental-rebuild.md) ·
+[Report](../implementation/phase135/README.md).
+
+Both107MB compiler products exact; native units reuse56/66 objects, independently
+cold/current loaded ELF equal;18 request/6 ordinary gates pass. Request screen
+0.99305× monolithic is essentially flat. Matched A-only backend replay15.979s
+versus cold grouped38.906s, but its16.064s guard still exceeds conventional
+monolithic14.699s. No whole-loop win or promotion. Full late semantic-cache edit
+374.922s versus ordinary same-image364.183s once; high hit count is insufficient.
+Native stages place62.7% before that cache. Prioritize earlier preparation reuse;
+keep the correct but mixed ownership-index prototype isolated. Source/API/finite
+checks, failed adapter, guarded refusal and compact evidence are retained.
+
 ## Phase112 direct QBE performance and checked scalar facts — 2026-10-19
 
 [Design](../design/phase112/qbe-parity.md) ·

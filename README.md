@@ -140,6 +140,14 @@ The [native edit experiment](implementation/phase134/session/README.md) saves
 21.3% on the lexer edit and9.1% on its complete two-revision session versus
 resetting the cache; general incremental compiler rebuilding remains future work.
 
+The [Phase135 full compiler edit](implementation/phase135/README.md) now reuses
+56/66 compiler-announced machine groups, with independent cold/current machine
+equality and 18 compiler-output/six ordinary-program checks. Complete rebuild
+acceleration is not yet established: the late semantic cache does not win on
+this workload, and cached machine replay still trails monolithic construction.
+Stage timings place 62.7% of the edit before the existing cache, motivating
+earlier prepared-definition reuse. The qualified core and selection stay unchanged.
+
 The [incremental native development guide](docs/self_hosted/incremental-native-development.md)
 links the measured QBE size, memory and object-reuse investigation, its Go-inspired
 architecture, and the remaining boundary before fast source-level edits.

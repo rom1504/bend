@@ -59,8 +59,9 @@ RSS bytes). The source was the checked machine-source02,
 `391a6f2dde2ef960a2d8b33a3100a0d9ba53ff68848a2279d502f7858019091c`, through
 `selfhost/build/phase111/p135-machine-api02/report.json`. The framed candidate's
 121 finite controls also passed in `selfhost/build/phase135/machine-finite02/`.
-Actual IO timestamp and stream behavior additionally needs native small-case
-gates; this pure bridge does not pretend to execute IO.
+The pure bridge does not pretend to execute IO. Subsequent native framed gates
+and the full-source session completed; the latter receipt is
+`selfhost/build/phase135/machine-session01/report.json`.
 
 ## Strictness and scope audit
 
@@ -95,6 +96,21 @@ therefore stage wall times, not additive source-function self profiles. The
 diagnostic adds small records/closures and clock effects; no claim of zero
 instrumentation overhead is made. The root should use the same instrumented
 image and method when comparing variants.
+
+## Completed full-source observation
+
+The instrumented framed route's edited B request reports 175.080 s frontend,
+62.179 s lowering, 68.360 s optimization and 72.677 s rendering, exactly summing
+to 378.296 s. Its old A request reports 153.539/59.651/77.613/90.517 s, summing to
+381.320 s. Both complete outputs match their independently frozen QBE oracles;
+the machine consumers also complete. These are different inputs and retained
+cache states, so their difference is not a controlled per-stage cache speedup.
+Rendering includes downstream machine backpressure, as designed.
+
+The largest B interval is now concretely the frontend (46.3%). The small late
+ownership-table prototype does not run there and should not be credited with
+headroom from that entire interval. Its separate hosted screen is mixed and
+remains unselected; see `implementation/phase135/preparation/README.md`.
 
 This is intentionally a coarse discriminator. If opening/final verification
 dominates the remaining interval, the next refinement can split existing

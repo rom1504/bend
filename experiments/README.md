@@ -1,6 +1,14 @@
 # Compiler experiment workflow
 
-Latest investigation: [Phase135 real compiler edit reuse](../implementation/phase135/README.md).
+Latest investigation: [Phase136 cold compiler costs](../implementation/phase136/README.md).
+The controlled full build takes375.923s; separate checked diagnostics split
+parsing/checking/annotation/erasure and show ownership transfer across ordinary
+queries. Exact-object profiling and fourteen query controls identify narrower
+opportunities than a wholesale IR rewrite. Reuse the earlier wider-record/scalar
+consumer ceiling on actual hot paths, then remove repeated scans. No selected
+compiler change, new upstream ratio or production qualification is claimed.
+
+Previous investigation: [Phase135 real compiler edit reuse](../implementation/phase135/README.md).
 Native compiler-announced groups reuse56/66 objects and pass exact cold/current
 machine comparisons,18 compiler-output checks and6 ordinary checks. The full
 late semantic cache does not demonstrate a speed win; earlier preparation is

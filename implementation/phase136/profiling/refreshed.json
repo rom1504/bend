@@ -1,0 +1,873 @@
+{
+  "kind": "phase136-qualified-n2-full-profile-analysis",
+  "complete": true,
+  "targetsRun": false,
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase136/profiling/analyze-v01.py",
+      "bytes": 4416,
+      "sha256": "dbb437dd294c30101b0b42417404069925d2a839fde83f4a8144896073fab6ea"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/profile01/capture/report.json",
+      "bytes": 18553,
+      "sha256": "b17e84c8d73cb4e7c4ab64ff19ddba6f28e73472d8cb0963d03b9b613160cadd"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/profile01/manifest.json",
+      "bytes": 15334,
+      "sha256": "421df056a4f9a042eef12326a27ee819f0d3a45f0a0a3239a377de53a5f126da"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/profile01/capture/000-sample-compiler-self-source-phase134-qualified-n2-context/analysis.json",
+      "bytes": 1628366,
+      "sha256": "eef88be467cd061a0420113bb049337268c92b94d7677e87e4ccc931ba01e0f8"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/profile01/capture/000-sample-compiler-self-source-phase134-qualified-n2-context/contexts.txt",
+      "bytes": 69861,
+      "sha256": "48c6845e145201bd444192392d0b002e3530b91a496a23bbf32124328c865662"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/profile01/capture/000-sample-compiler-self-source-phase134-qualified-n2-context/callers.txt",
+      "bytes": 149191,
+      "sha256": "f524eb1f112378d27658dc58ac9c9b1ebff8aa0753066f167bb3368b47805f2f"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/profile01/owners.json",
+      "bytes": 30761258,
+      "sha256": "2bdfed010eafeedb203d2aaeab166e588478fd7b9e82a340fb8a45373ecc86c3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase127/libc-unwind01/table.json",
+      "bytes": 5195,
+      "sha256": "c02516dcbce965e55b259d0dcb71a1b98dc8404f242167c283d8625d6c76541d"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/profiler/attribute.py",
+      "bytes": 31869,
+      "sha256": "ad7390c2957122eb17e587d53ef3aedb0362bc3f280209a7d5a20cb95499aa55"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/profiler/timeline.py",
+      "bytes": 9848,
+      "sha256": "618077f97d3f0277ca237a874cdacaeaac4c01f2e1ee0e8829f3d40d2e88b6e5"
+    }
+  ],
+  "lineage": {
+    "nativeQualified": true,
+    "source": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase134/verify-selected-source01/compiler.bend",
+      "bytes": 2693121,
+      "sha256": "a00019246b5181b288ab4d3e09e616bd41415fe6381e89a96185c05efa19fb57"
+    },
+    "image": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p134-selected-n2/program",
+      "bytes": 17152432,
+      "sha256": "9909f18fb9470e5d2a4f54775e8cb7df2345e6f2e8886037adeee2612a57d21b"
+    },
+    "qbe": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase130/p134-selected-self01/program.ssa",
+      "bytes": 107316480,
+      "sha256": "2c25748d8a0eae711a7dd641d372bbce9f1fb4827dbe95e781b9f1cd11668aec"
+    },
+    "programObject": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p134-selected-n2/program.o",
+      "bytes": 22952968,
+      "sha256": "ad4f223169e3ca61aea9c36e95e5438c048e93ffebb23d7cfb858d31d9a1a77c"
+    },
+    "qualification": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase134/selected-qualification01.json",
+      "bytes": 592942,
+      "sha256": "8508314396712e87c66d8d82f2299ba1fbd29675540c474fb305ee6e782d5b26"
+    }
+  },
+  "diagnosticImage": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/profile01/runtime/program",
+    "bytes": 17165912,
+    "sha256": "d8cdd8af9396a202bd6df3e0e5ec10a16c3c5f3dc2175827e8b88672335fe796"
+  },
+  "observation": {
+    "wallSeconds": 371.77294350299053,
+    "cpuSeconds": 371.554834,
+    "peakRssKiB": 974784,
+    "stdout": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/profile01/capture/000-sample-compiler-self-source-phase134-qualified-n2-context/stdout",
+      "bytes": 107059385,
+      "sha256": "f3ff63b04b58e5a5b92be781d0d1cba8cc574a37765cbf66d817c3d38f4b576e"
+    },
+    "stderr": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/profile01/capture/000-sample-compiler-self-source-phase134-qualified-n2-context/stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "countersEnabled": false,
+  "cleanObservations": 0,
+  "newSpeedRatio": null,
+  "samples": 11569,
+  "qualityReasons": [],
+  "quality": {
+    "scope": "main_thread",
+    "main_thread_cpu_fraction": 0.9967823041858396,
+    "sampled_thread_cpu_fraction": 0.9967823041858396,
+    "minimum_process_cpu_fraction": 0.95,
+    "minimum_samples": 500,
+    "enough_samples": true,
+    "thread_lifecycle_complete": true,
+    "near_complete_process_cpu_coverage": true,
+    "usable_for_process_cpu_attribution": true,
+    "limitations": [],
+    "zero_loss": true,
+    "handler_intact": true,
+    "main_thread_shutdown": true,
+    "expected_clock_periods": 11569.3449395,
+    "delivered_per_expected_period": 0.999970185044892,
+    "delivery_plausible": true
+  },
+  "callerCoverage": {
+    "eligibleLeafSamples": 352,
+    "recoveredCallerSamples": 352,
+    "symbolizedCallerSamples": 352,
+    "inferredCallerSymbolSamples": 0,
+    "knownDispatchSamples": 11216,
+    "allSamples": 11569,
+    "unknownCallerSamples": 11217,
+    "eligibleWithoutCallerSamples": 0
+  },
+  "topActiveOwners": [
+    {
+      "owner": "nc_ctor_owned",
+      "samples": 914,
+      "fractionOfAll": 0.07900423545682426
+    },
+    {
+      "owner": "lookup",
+      "samples": 596,
+      "fractionOfAll": 0.051516985046244274
+    },
+    {
+      "owner": "f_find",
+      "samples": 591,
+      "fractionOfAll": 0.05108479557437981
+    },
+    {
+      "owner": "p111v_get",
+      "samples": 465,
+      "fractionOfAll": 0.04019362088339528
+    },
+    {
+      "owner": "String.append",
+      "samples": 452,
+      "fractionOfAll": 0.03906992825654767
+    },
+    {
+      "owner": "index_remove",
+      "samples": 436,
+      "fractionOfAll": 0.03768692194658138
+    },
+    {
+      "owner": "[unknown]",
+      "samples": 359,
+      "fractionOfAll": 0.031031204079868615
+    },
+    {
+      "owner": "nb_contains",
+      "samples": 346,
+      "fractionOfAll": 0.029907511453021004
+    },
+    {
+      "owner": "has_name",
+      "samples": 335,
+      "fractionOfAll": 0.02895669461491918
+    },
+    {
+      "owner": "p88_string_eq",
+      "samples": 320,
+      "fractionOfAll": 0.027660126199325785
+    },
+    {
+      "owner": "nc_occurs",
+      "samples": 264,
+      "fractionOfAll": 0.02281960411444377
+    },
+    {
+      "owner": "String.eq",
+      "samples": 236,
+      "fractionOfAll": 0.020399343072002765
+    },
+    {
+      "owner": "p131i_insert",
+      "samples": 178,
+      "fractionOfAll": 0.015385945198374967
+    },
+    {
+      "owner": "nc_occurs_list",
+      "samples": 165,
+      "fractionOfAll": 0.014262252571527358
+    },
+    {
+      "owner": "constructor_exists",
+      "samples": 161,
+      "fractionOfAll": 0.013916500994035786
+    },
+    {
+      "owner": "p111v_name_chars",
+      "samples": 149,
+      "fractionOfAll": 0.012879246261561068
+    },
+    {
+      "owner": "p111q_body_text",
+      "samples": 134,
+      "fractionOfAll": 0.011582677845967672
+    },
+    {
+      "owner": "p113k_get",
+      "samples": 126,
+      "fractionOfAll": 0.010891174690984528
+    },
+    {
+      "owner": "p111v_value",
+      "samples": 108,
+      "fractionOfAll": 0.009335292592272452
+    },
+    {
+      "owner": "p111q_memory",
+      "samples": 107,
+      "fractionOfAll": 0.009248854697899558
+    },
+    {
+      "owner": "index_remove_step",
+      "samples": 100,
+      "fractionOfAll": 0.008643789437289308
+    },
+    {
+      "owner": "nc_uses_term",
+      "samples": 98,
+      "fractionOfAll": 0.008470913648543521
+    },
+    {
+      "owner": "dg_event_publish",
+      "samples": 92,
+      "fractionOfAll": 0.007952286282306162
+    },
+    {
+      "owner": "f_eq",
+      "samples": 75,
+      "fractionOfAll": 0.006482842077966981
+    },
+    {
+      "owner": "p111v_intersection_bucket",
+      "samples": 70,
+      "fractionOfAll": 0.0060506526061025155
+    },
+    {
+      "owner": "p111v_contract",
+      "samples": 64,
+      "fractionOfAll": 0.005532025239865157
+    },
+    {
+      "owner": "p111v_put",
+      "samples": 60,
+      "fractionOfAll": 0.005186273662373585
+    },
+    {
+      "owner": "subst_node",
+      "samples": 59,
+      "fractionOfAll": 0.005099835768000691
+    },
+    {
+      "owner": "p111v_decl",
+      "samples": 55,
+      "fractionOfAll": 0.004754084190509119
+    },
+    {
+      "owner": "p112w_ready",
+      "samples": 55,
+      "fractionOfAll": 0.004754084190509119
+    },
+    {
+      "owner": "Bool.and",
+      "samples": 54,
+      "fractionOfAll": 0.004667646296136226
+    },
+    {
+      "owner": "nq_layout_subst",
+      "samples": 52,
+      "fractionOfAll": 0.00449477050739044
+    },
+    {
+      "owner": "index_leaf",
+      "samples": 52,
+      "fractionOfAll": 0.00449477050739044
+    },
+    {
+      "owner": "nc_uses_list",
+      "samples": 49,
+      "fractionOfAll": 0.0042354568242717605
+    },
+    {
+      "owner": "dr_own_names",
+      "samples": 48,
+      "fractionOfAll": 0.004149018929898868
+    },
+    {
+      "owner": "f_pattern_sub",
+      "samples": 46,
+      "fractionOfAll": 0.003976143141153081
+    },
+    {
+      "owner": "p112t_runtime_call",
+      "samples": 44,
+      "fractionOfAll": 0.0038032673524072956
+    },
+    {
+      "owner": "nol_scalar_specs",
+      "samples": 42,
+      "fractionOfAll": 0.003630391563661509
+    },
+    {
+      "owner": "ns_body",
+      "samples": 41,
+      "fractionOfAll": 0.003543953669288616
+    },
+    {
+      "owner": "norm_max_book",
+      "samples": 40,
+      "fractionOfAll": 0.003457515774915723
+    }
+  ],
+  "topPhysicalLeaves": [
+    {
+      "leaf": "term_drop",
+      "samples": 2016,
+      "fractionOfAll": 0.17425879505575245
+    },
+    {
+      "leaf": "span_fade",
+      "samples": 1425,
+      "fractionOfAll": 0.12317399948137263
+    },
+    {
+      "leaf": "p113d_FID_$p118borrow.read.p88_string_eq_go",
+      "samples": 1034,
+      "fractionOfAll": 0.08937678278157143
+    },
+    {
+      "leaf": "p125_rt_take2",
+      "samples": 490,
+      "fractionOfAll": 0.042354568242717605
+    },
+    {
+      "leaf": "p111_rt_sink",
+      "samples": 415,
+      "fractionOfAll": 0.03587172616475063
+    },
+    {
+      "leaf": "[unknown]",
+      "samples": 360,
+      "fractionOfAll": 0.03111764197424151
+    },
+    {
+      "leaf": "p111_rt_keep",
+      "samples": 335,
+      "fractionOfAll": 0.02895669461491918
+    },
+    {
+      "leaf": "ctr_take",
+      "samples": 328,
+      "fractionOfAll": 0.02835162935430893
+    },
+    {
+      "leaf": "work_loop",
+      "samples": 283,
+      "fractionOfAll": 0.024461924107528742
+    },
+    {
+      "leaf": "p111_set_regs",
+      "samples": 232,
+      "fractionOfAll": 0.020053591494511195
+    },
+    {
+      "leaf": "p125_rt_take2.cold",
+      "samples": 219,
+      "fractionOfAll": 0.018929898867663584
+    },
+    {
+      "leaf": "p111_rt_special_ctor",
+      "samples": 210,
+      "fractionOfAll": 0.018151957818307547
+    },
+    {
+      "leaf": "p113d_FID_$p118borrow.read.index_hash",
+      "samples": 197,
+      "fractionOfAll": 0.017028265191459935
+    },
+    {
+      "leaf": "p113d_FID_$p118borrow.read.String.cmp",
+      "samples": 159,
+      "fractionOfAll": 0.01374362520529
+    },
+    {
+      "leaf": "p111_rt_ctor",
+      "samples": 158,
+      "fractionOfAll": 0.013657187310917106
+    },
+    {
+      "leaf": "p118_rt_extend1",
+      "samples": 156,
+      "fractionOfAll": 0.01348431152217132
+    },
+    {
+      "leaf": "p111_rt_op",
+      "samples": 150,
+      "fractionOfAll": 0.012965684155933962
+    },
+    {
+      "leaf": "p111_rt_jump",
+      "samples": 146,
+      "fractionOfAll": 0.01261993257844239
+    },
+    {
+      "leaf": "term_triv",
+      "samples": 138,
+      "fractionOfAll": 0.011928429423459244
+    },
+    {
+      "leaf": "p111_rt_return",
+      "samples": 132,
+      "fractionOfAll": 0.011409802057221885
+    },
+    {
+      "leaf": "p118_rt_borrow_scalar_safe",
+      "samples": 124,
+      "fractionOfAll": 0.010718298902238741
+    },
+    {
+      "leaf": "p118_destination_fill",
+      "samples": 123,
+      "fractionOfAll": 0.010631861007865848
+    },
+    {
+      "leaf": "heap_alloc",
+      "samples": 116,
+      "fractionOfAll": 0.010026795747255597
+    },
+    {
+      "leaf": "p125_rt_take4",
+      "samples": 94,
+      "fractionOfAll": 0.008125162071051949
+    },
+    {
+      "leaf": "p111_rt_take",
+      "samples": 87,
+      "fractionOfAll": 0.007520096810441698
+    },
+    {
+      "leaf": "p125_rt_ctor2",
+      "samples": 84,
+      "fractionOfAll": 0.007260783127323018
+    },
+    {
+      "leaf": "p113d_FID_$p118borrow.read.p98_tag_eq",
+      "samples": 83,
+      "fractionOfAll": 0.007174345232950126
+    },
+    {
+      "leaf": "rfc_wrap",
+      "samples": 80,
+      "fractionOfAll": 0.006915031549831446
+    },
+    {
+      "leaf": "p113d_FID_$p118borrow.read.has_name",
+      "samples": 63,
+      "fractionOfAll": 0.005445587345492264
+    },
+    {
+      "leaf": "p113d_FID_$p118.trmc.$direct.String.append",
+      "samples": 55,
+      "fractionOfAll": 0.004754084190509119
+    },
+    {
+      "leaf": "p111_rt_special_take",
+      "samples": 53,
+      "fractionOfAll": 0.004581208401763333
+    },
+    {
+      "leaf": "p113d_FID_$direct.index_find",
+      "samples": 48,
+      "fractionOfAll": 0.004149018929898868
+    },
+    {
+      "leaf": "p113d_FID_$direct.nc_ctor_owned",
+      "samples": 43,
+      "fractionOfAll": 0.003716829458034402
+    },
+    {
+      "leaf": "p111_FID_$direct.p131i_insert",
+      "samples": 42,
+      "fractionOfAll": 0.003630391563661509
+    },
+    {
+      "leaf": "bend_profile_count",
+      "samples": 40,
+      "fractionOfAll": 0.003457515774915723
+    },
+    {
+      "leaf": "p113d_FID_$direct.p88_string_eq_go",
+      "samples": 30,
+      "fractionOfAll": 0.0025931368311867924
+    },
+    {
+      "leaf": "p111_FID_$direct.p111v_name_chars",
+      "samples": 30,
+      "fractionOfAll": 0.0025931368311867924
+    },
+    {
+      "leaf": "p113d_FID_$direct.Bool.and",
+      "samples": 29,
+      "fractionOfAll": 0.0025066989368138994
+    },
+    {
+      "leaf": "p125_rt_take3",
+      "samples": 27,
+      "fractionOfAll": 0.002333823148068113
+    },
+    {
+      "leaf": "p111_FID_$direct.nc_occurs_list",
+      "samples": 27,
+      "fractionOfAll": 0.002333823148068113
+    }
+  ],
+  "selectedOwnerLeafIntersections": [
+    {
+      "owner": "f_find",
+      "samples": 591,
+      "fractionOfAll": 0.05108479557437981,
+      "dropAndFade": {
+        "samples": 285,
+        "fractionOfAll": 0.024634799896274526,
+        "fractionOfOwner": 0.48223350253807107
+      },
+      "borrowedEquality": {
+        "samples": 99,
+        "fractionOfAll": 0.008557351542916414,
+        "fractionOfOwner": 0.16751269035532995
+      },
+      "topLeaves": [
+        {
+          "leaf": "span_fade",
+          "samples": 161
+        },
+        {
+          "leaf": "term_drop",
+          "samples": 124
+        },
+        {
+          "leaf": "p113d_FID_$p118borrow.read.p88_string_eq_go",
+          "samples": 99
+        },
+        {
+          "leaf": "p111_rt_sink",
+          "samples": 36
+        },
+        {
+          "leaf": "p125_rt_take2.cold",
+          "samples": 31
+        },
+        {
+          "leaf": "p111_rt_keep",
+          "samples": 30
+        },
+        {
+          "leaf": "ctr_take",
+          "samples": 29
+        },
+        {
+          "leaf": "p113d_FID_$p126scc.1013",
+          "samples": 14
+        },
+        {
+          "leaf": "p111_rt_special_ctor",
+          "samples": 10
+        },
+        {
+          "leaf": "p113d_FID_$direct.dn",
+          "samples": 9
+        }
+      ]
+    },
+    {
+      "owner": "lookup",
+      "samples": 596,
+      "fractionOfAll": 0.051516985046244274,
+      "dropAndFade": {
+        "samples": 294,
+        "fractionOfAll": 0.025412740945630563,
+        "fractionOfOwner": 0.49328859060402686
+      },
+      "borrowedEquality": {
+        "samples": 57,
+        "fractionOfAll": 0.004926959979254905,
+        "fractionOfOwner": 0.09563758389261745
+      },
+      "topLeaves": [
+        {
+          "leaf": "term_drop",
+          "samples": 163
+        },
+        {
+          "leaf": "span_fade",
+          "samples": 131
+        },
+        {
+          "leaf": "p113d_FID_$p118borrow.read.p88_string_eq_go",
+          "samples": 57
+        },
+        {
+          "leaf": "p125_rt_take2.cold",
+          "samples": 38
+        },
+        {
+          "leaf": "p111_rt_sink",
+          "samples": 36
+        },
+        {
+          "leaf": "p111_rt_keep",
+          "samples": 32
+        },
+        {
+          "leaf": "ctr_take",
+          "samples": 31
+        },
+        {
+          "leaf": "p113d_FID_$direct.lookup",
+          "samples": 15
+        },
+        {
+          "leaf": "p125_rt_take4",
+          "samples": 13
+        },
+        {
+          "leaf": "p125_rt_take2",
+          "samples": 12
+        }
+      ]
+    },
+    {
+      "owner": "nc_ctor_owned",
+      "samples": 914,
+      "fractionOfAll": 0.07900423545682426,
+      "dropAndFade": {
+        "samples": 486,
+        "fractionOfAll": 0.04200881666522604,
+        "fractionOfOwner": 0.5317286652078774
+      },
+      "borrowedEquality": {
+        "samples": 74,
+        "fractionOfAll": 0.0063964041835940875,
+        "fractionOfOwner": 0.08096280087527352
+      },
+      "topLeaves": [
+        {
+          "leaf": "term_drop",
+          "samples": 248
+        },
+        {
+          "leaf": "span_fade",
+          "samples": 238
+        },
+        {
+          "leaf": "p113d_FID_$p118borrow.read.p88_string_eq_go",
+          "samples": 74
+        },
+        {
+          "leaf": "p111_rt_sink",
+          "samples": 65
+        },
+        {
+          "leaf": "p111_rt_keep",
+          "samples": 57
+        },
+        {
+          "leaf": "ctr_take",
+          "samples": 53
+        },
+        {
+          "leaf": "p113d_FID_$direct.nc_ctor_owned",
+          "samples": 43
+        },
+        {
+          "leaf": "p125_rt_take2.cold",
+          "samples": 36
+        },
+        {
+          "leaf": "p113d_FID_$direct.p88_string_eq_go",
+          "samples": 16
+        },
+        {
+          "leaf": "p125_rt_take2",
+          "samples": 16
+        }
+      ]
+    },
+    {
+      "owner": "has_name",
+      "samples": 335,
+      "fractionOfAll": 0.02895669461491918,
+      "dropAndFade": {
+        "samples": 0,
+        "fractionOfAll": 0.0,
+        "fractionOfOwner": 0.0
+      },
+      "borrowedEquality": {
+        "samples": 251,
+        "fractionOfAll": 0.021695911487596163,
+        "fractionOfOwner": 0.7492537313432835
+      },
+      "topLeaves": [
+        {
+          "leaf": "p113d_FID_$p118borrow.read.p88_string_eq_go",
+          "samples": 251
+        },
+        {
+          "leaf": "p113d_FID_$p118borrow.read.has_name",
+          "samples": 49
+        },
+        {
+          "leaf": "p111_rt_special_ctor",
+          "samples": 33
+        },
+        {
+          "leaf": "p113d_FID_$p118borrow.read.p98_eq_finish",
+          "samples": 2
+        }
+      ]
+    },
+    {
+      "owner": "index_remove",
+      "samples": 436,
+      "fractionOfAll": 0.03768692194658138,
+      "dropAndFade": {
+        "samples": 224,
+        "fractionOfAll": 0.019362088339528048,
+        "fractionOfOwner": 0.5137614678899083
+      },
+      "borrowedEquality": {
+        "samples": 0,
+        "fractionOfAll": 0.0,
+        "fractionOfOwner": 0.0
+      },
+      "topLeaves": [
+        {
+          "leaf": "span_fade",
+          "samples": 162
+        },
+        {
+          "leaf": "term_drop",
+          "samples": 62
+        },
+        {
+          "leaf": "ctr_take",
+          "samples": 52
+        },
+        {
+          "leaf": "p111_FID_$p111.k.3833201",
+          "samples": 26
+        },
+        {
+          "leaf": "p125_rt_take2.cold",
+          "samples": 21
+        },
+        {
+          "leaf": "p111_FID_$direct.index_remove",
+          "samples": 17
+        },
+        {
+          "leaf": "p111_rt_keep",
+          "samples": 17
+        },
+        {
+          "leaf": "p111_rt_sink",
+          "samples": 16
+        },
+        {
+          "leaf": "p125_rt_take2",
+          "samples": 15
+        },
+        {
+          "leaf": "[unknown]",
+          "samples": 10
+        }
+      ]
+    },
+    {
+      "owner": "p111v_get",
+      "samples": 465,
+      "fractionOfAll": 0.04019362088339528,
+      "dropAndFade": {
+        "samples": 223,
+        "fractionOfAll": 0.019275650445155158,
+        "fractionOfOwner": 0.47956989247311826
+      },
+      "borrowedEquality": {
+        "samples": 6,
+        "fractionOfAll": 0.0005186273662373585,
+        "fractionOfOwner": 0.012903225806451613
+      },
+      "topLeaves": [
+        {
+          "leaf": "term_drop",
+          "samples": 129
+        },
+        {
+          "leaf": "span_fade",
+          "samples": 94
+        },
+        {
+          "leaf": "p113d_FID_$p118borrow.read.index_hash",
+          "samples": 73
+        },
+        {
+          "leaf": "p111_rt_special_take",
+          "samples": 25
+        },
+        {
+          "leaf": "p125_rt_take2",
+          "samples": 20
+        },
+        {
+          "leaf": "p111_rt_ctor",
+          "samples": 18
+        },
+        {
+          "leaf": "p113d_FID_$direct.index_find",
+          "samples": 17
+        },
+        {
+          "leaf": "p113d_FID_$p128borrow.owned.p88_string_eq_go",
+          "samples": 15
+        },
+        {
+          "leaf": "term_triv",
+          "samples": 14
+        },
+        {
+          "leaf": "p111_rt_sink",
+          "samples": 13
+        }
+      ]
+    }
+  ],
+  "attribution": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/profile-analysis01/attribution.json",
+    "bytes": 1820150,
+    "sha256": "067337b050ae1d88e0039d0acb65029bd92053cc4e42bbdcd354bda8d71b48dc"
+  },
+  "timeline": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/profile-analysis01/timeline.json",
+    "bytes": 67235,
+    "sha256": "d6828064d0a5cc2efb98c74193c610e2a1bd84a2231d2c52912b6c0fe03fce9d"
+  },
+  "scope": "One sample-only exact-output ordinary request. Active contexts include synchronous private calls; intersections are subsets, never additive phase costs. CPU windows are approximate sample order, not wall stage boundaries. No allocation counts, original allocation sites, cache recurrence, clean speedup or profiler overhead claim."
+}

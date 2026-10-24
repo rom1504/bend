@@ -1,0 +1,214 @@
+{
+  "kind": "phase136-qualified-query-static-inspection",
+  "complete": true,
+  "inputs": [
+    {
+      "path": "selfhost/build/phase130/p134-selected-self01/program.ssa",
+      "sha256": "2c25748d8a0eae711a7dd641d372bbce9f1fb4827dbe95e781b9f1cd11668aec",
+      "bytes": 107316480
+    },
+    {
+      "path": "selfhost/build/phase134/verify-selected-source01/compiler.bend",
+      "sha256": "a00019246b5181b288ab4d3e09e616bd41415fe6381e89a96185c05efa19fb57",
+      "bytes": 2693121
+    },
+    {
+      "path": "selfhost/build/phase128/runtime-borrow01/runtime.c",
+      "sha256": "6eb24c8d4a5d6358a9b8b4107a75af777a8dbdd06fe5fdce18d73b9f85f4824a",
+      "bytes": 149279
+    },
+    {
+      "path": "selfhost/tools/performance/phase136/profiling/inspect-queries-v01.py",
+      "sha256": "9c09cbe5f3a8cd91470960426305be6f39587042bd980303c781412631e8b519",
+      "bytes": 5370
+    }
+  ],
+  "scope": "Static sites include mutually exclusive paths; no dynamic counts, allocation sites or speed estimates.",
+  "functions": [
+    {
+      "name": "dn",
+      "symbol": "p113d_FID_36_100_105_114_101_99_116_46_100_110_",
+      "qbeLine": 43144,
+      "lines": 76,
+      "bodySha256": "8bd7e73cb83e4c9615d33bced8b2ab86acc368eb8a430745604e7c92fca0fffb",
+      "staticCallSites": 15,
+      "calls": {
+        "p111_rt_take": 1,
+        "p111_rt_sink": 11,
+        "p125_rt_take2": 1,
+        "p125_rt_take4": 1,
+        "p111_rt_fail": 1
+      },
+      "take9Sites": [
+        {
+          "qbeLine": 43156,
+          "localLine": 13,
+          "loadsBeforeNextBranch": 9,
+          "sinkCallsBeforeNextBranch": 8
+        }
+      ],
+      "localLoopJumps": [
+        43147
+      ],
+      "schedulerCalls": {}
+    },
+    {
+      "name": "f_eq",
+      "symbol": "p113d_FID_36_100_105_114_101_99_116_46_102_95_101_113_",
+      "qbeLine": 142659,
+      "lines": 17,
+      "bodySha256": "8f2b90e103e72d4ea53fa025536b2e1560f9a3bf0d997927b3deee1d69af92f4",
+      "staticCallSites": 5,
+      "calls": {
+        "p118_rt_borrow_scalar_safe": 1,
+        "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_102_95_101_113_": 1,
+        "p111_rt_sink": 2,
+        "p113d_FID_36_112_49_50_56_98_111_114_114_111_119_46_111_119_110_101_100_46_102_95_101_113_": 1
+      },
+      "take9Sites": [],
+      "localLoopJumps": [
+        142662
+      ],
+      "schedulerCalls": {}
+    },
+    {
+      "name": "f_find",
+      "symbol": "p113d_FID_36_100_105_114_101_99_116_46_102_95_102_105_110_100_",
+      "qbeLine": 229334,
+      "lines": 8,
+      "bodySha256": "5b861c29dbde8de2a7e05ba72c58e1059497091de581bb1992743530320811a6",
+      "staticCallSites": 1,
+      "calls": {
+        "p113d_FID_36_112_49_50_54_115_99_99_46_49_48_49_51_": 1
+      },
+      "take9Sites": [],
+      "localLoopJumps": [
+        229337
+      ],
+      "schedulerCalls": {}
+    },
+    {
+      "name": "lookup",
+      "symbol": "p113d_FID_36_100_105_114_101_99_116_46_108_111_111_107_117_112_",
+      "qbeLine": 277396,
+      "lines": 526,
+      "bodySha256": "e409c5e10712d912b16a61ff37cf1f56b9dc2e2c6ae2c0470bf278b3a58bfeec",
+      "staticCallSites": 85,
+      "calls": {
+        "p111_rt_sink": 49,
+        "p125_rt_take2": 5,
+        "p111_rt_keep": 8,
+        "p111_rt_take": 3,
+        "p125_rt_take4": 3,
+        "p111_rt_fail": 7,
+        "p113d_FID_36_100_105_114_101_99_116_46_112_56_56_95_115_116_114_105_110_103_95_101_113_95_103_111_": 2,
+        "p111_rt_ctor": 4,
+        "p125_rt_ctor2": 2,
+        "p113d_FID_36_100_105_114_101_99_116_46_105_110_100_101_120_95_104_97_115_104_": 1,
+        "p113d_FID_36_100_105_114_101_99_116_46_105_110_100_101_120_95_102_105_110_100_": 1
+      },
+      "take9Sites": [
+        {
+          "qbeLine": 277443,
+          "localLine": 48,
+          "loadsBeforeNextBranch": 9,
+          "sinkCallsBeforeNextBranch": 8
+        },
+        {
+          "qbeLine": 277582,
+          "localLine": 187,
+          "loadsBeforeNextBranch": 9,
+          "sinkCallsBeforeNextBranch": 8
+        },
+        {
+          "qbeLine": 277756,
+          "localLine": 361,
+          "loadsBeforeNextBranch": 9,
+          "sinkCallsBeforeNextBranch": 8
+        }
+      ],
+      "localLoopJumps": [
+        277403,
+        277906
+      ],
+      "schedulerCalls": {}
+    },
+    {
+      "name": "nc_ctor_owned",
+      "symbol": "p113d_FID_36_100_105_114_101_99_116_46_110_99_95_99_116_111_114_95_111_119_110_101_100_",
+      "qbeLine": 336793,
+      "lines": 560,
+      "bodySha256": "c1e89e846e7053e46b2dab72cd4369a012c15553b4755df2a9acda9e10e452d2",
+      "staticCallSites": 94,
+      "calls": {
+        "p111_rt_sink": 58,
+        "p125_rt_take2": 5,
+        "p111_rt_keep": 7,
+        "p111_rt_take": 4,
+        "p125_rt_take4": 4,
+        "p111_rt_fail": 7,
+        "p113d_FID_36_100_105_114_101_99_116_46_112_56_56_95_115_116_114_105_110_103_95_101_113_95_103_111_": 2,
+        "p111_rt_ctor": 4,
+        "p125_rt_ctor2": 2,
+        "p113d_FID_36_100_105_114_101_99_116_46_108_111_111_107_117_112_": 1
+      },
+      "take9Sites": [
+        {
+          "qbeLine": 336838,
+          "localLine": 46,
+          "loadsBeforeNextBranch": 9,
+          "sinkCallsBeforeNextBranch": 8
+        },
+        {
+          "qbeLine": 336972,
+          "localLine": 180,
+          "loadsBeforeNextBranch": 9,
+          "sinkCallsBeforeNextBranch": 8
+        },
+        {
+          "qbeLine": 337076,
+          "localLine": 284,
+          "loadsBeforeNextBranch": 9,
+          "sinkCallsBeforeNextBranch": 8
+        },
+        {
+          "qbeLine": 337210,
+          "localLine": 418,
+          "loadsBeforeNextBranch": 9,
+          "sinkCallsBeforeNextBranch": 8
+        }
+      ],
+      "localLoopJumps": [
+        336800,
+        337312,
+        337343
+      ],
+      "schedulerCalls": {}
+    },
+    {
+      "name": "f_find-scc",
+      "symbol": "p113d_FID_36_112_49_50_54_115_99_99_46_49_48_49_51_",
+      "qbeLine": 229166,
+      "lines": 158,
+      "bodySha256": "010ff794fd78030f40fad4b2ca05998c606ea0e10ec42629ee1c283cbe904f5d",
+      "staticCallSites": 16,
+      "calls": {
+        "p111_rt_sink": 6,
+        "p111_rt_fail": 2,
+        "p113d_FID_36_100_105_114_101_99_116_46_97_116_111_109_": 2,
+        "p111_rt_ctor": 1,
+        "p125_rt_take2": 1,
+        "p111_rt_keep": 2,
+        "p113d_FID_36_100_105_114_101_99_116_46_100_110_": 1,
+        "p113d_FID_36_100_105_114_101_99_116_46_102_95_101_113_": 1
+      },
+      "take9Sites": [],
+      "localLoopJumps": [
+        229170,
+        229219,
+        229318
+      ],
+      "schedulerCalls": {}
+    }
+  ]
+}

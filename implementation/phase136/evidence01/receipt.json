@@ -1,0 +1,48 @@
+{
+  "complete": true,
+  "targetsRun": false,
+  "kind": "phase136-compact-evidence",
+  "method": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase136/evidence/archive-v01.py",
+    "bytes": 7407,
+    "sha256": "2d038f723f1c0d6293a794a7f47bcf4e9f00ae44afbeb49910296180f1ec7f03"
+  },
+  "archive": {
+    "file": "/home/ai/bend2/build/publish/bend/implementation/phase136/evidence01/evidence.tar.xz",
+    "bytes": 2535420,
+    "sha256": "e674e3ac0c6de6cbbe81fa618d1240a3f91ab832517f287f6106dd62d076dc38"
+  },
+  "members": 330,
+  "uncompressedMemberBytes": 41353408,
+  "roundTripExact": true,
+  "roots": [
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase136",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p136-machine-replay01",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p136-query-api01",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p136-query-api02",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p136-stages-api01",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase134/p136-cold-baseline01",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase134/p136-stages-native01",
+    "/home/ai/bend2/build/publish/bend/implementation/phase136"
+  ],
+  "sources": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/stages-source01/compiler.bend",
+      "bytes": 2704531,
+      "sha256": "5a6d187de6272634b259925587aa77e9db5f281e8fd8e1ecd5d46d0ea1e61263"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/query-source01/compiler.bend",
+      "bytes": 2703097,
+      "sha256": "e2ee41b0011a5571bc6bbe82450f14b54e26a5edef62263191fa6b9b331d3c46"
+    }
+  ],
+  "excluded": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/profile01/capture/000-sample-compiler-self-source-phase134-qualified-n2-context/stdout",
+      "bytes": 107059385,
+      "reason": "Large stdout product; identity retained by receipt"
+    }
+  ],
+  "scope": "Exact diagnostic sources, methods, successful/failed receipts, commands, diagnostics and raw sample/context/caller evidence. Excludes full generated QBE, assembly, objects, ELF and hosted APIs. Existing attribution replays additionally require the separately pinned exact executable and shared libraries; this archive is not a self-contained binary symbolization capsule."
+}

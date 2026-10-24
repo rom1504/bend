@@ -1,0 +1,25 @@
+{
+  "complete": true,
+  "command": [
+    "bash",
+    "-c",
+    "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+    "phase111",
+    "taskset",
+    "-c",
+    "3",
+    "selfhost/.bootstrap/bun-1.4.3/bun",
+    "selfhost/tools/performance/phase136/baseline/query-census-v02.mjs",
+    "selfhost/build/phase111/p136-query-api02/report.json",
+    "selfhost/build/phase134/reference03.json",
+    "selfhost/build/phase136/query-census02"
+  ],
+  "started": 1792827045.537992,
+  "rssLimitBytes": 3221225472,
+  "availableFloorBytes": 17179869184,
+  "peakTreeRssBytes": 291745792,
+  "minimumAvailableBytes": 26875940864,
+  "returncode": 0,
+  "wallSeconds": 6.5420628590509295,
+  "finished": 1792827052.0800529
+}

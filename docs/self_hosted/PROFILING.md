@@ -227,3 +227,21 @@ The checked Bend compiler still owns semantic analysis and code generation.
 Python manages manifests, ELF analysis and experimental evidence; C supplies
 signal sampling and runtime hooks. Neither host component becomes another Bend
 compiler.
+
+## Full native compiler requests
+
+[Phase136](../../implementation/phase136/README.md) demonstrates a bounded
+full-source investigation with an ordinary cold build, checked Bend stage clocks
+and exact-object physical sampling. Its [stage recipe](../../selfhost/tools/performance/phase136/stages/README.md)
+separates parsing, checking, ownership, annotation, erasure, lowering,
+verification and rendering while preserving complete independent QBE oracles.
+The overlay is pinned to the qualified Phase134 source; a different source must
+re-establish its stage bridge rather than silently reuse old boundaries.
+
+The [exact-object profile recipe](../../selfhost/tools/performance/phase136/profiling/README.md)
+relinks a retained qualified object with an authenticated diagnostic runtime,
+avoiding a full compiler rebuild. Stage clocks, physical leaves, active contexts,
+ownership events and clean timing are complementary measurements. In particular,
+the ownership-checking stage is not the runtime reference-management cost, and
+rendering can include reclamation and downstream backpressure. Preserve those
+distinctions when interpreting a large interval or adding its apparent costs.

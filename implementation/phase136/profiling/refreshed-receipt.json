@@ -1,0 +1,51 @@
+{
+  "complete": true,
+  "targetsRun": false,
+  "inputs": [
+    {
+      "file": "selfhost/build/phase136/profile-analysis01/report.json",
+      "sha256": "7c899eb51cabd9b3f2dd9169f5b60bd9a7a239010f537fad6a15d20f51881277",
+      "bytes": 22841
+    },
+    {
+      "file": "selfhost/build/phase136/profile-analysis01/attribution.json",
+      "sha256": "067337b050ae1d88e0039d0acb65029bd92053cc4e42bbdcd354bda8d71b48dc",
+      "bytes": 1820150
+    },
+    {
+      "file": "selfhost/build/phase136/profile-analysis01/timeline.json",
+      "sha256": "d6828064d0a5cc2efb98c74193c610e2a1bd84a2231d2c52912b6c0fe03fce9d",
+      "bytes": 67235
+    }
+  ],
+  "published": [
+    {
+      "file": "implementation/phase136/profiling/refreshed.json",
+      "sha256": "7c899eb51cabd9b3f2dd9169f5b60bd9a7a239010f537fad6a15d20f51881277",
+      "bytes": 22841
+    },
+    {
+      "file": "implementation/phase136/profiling/refreshed-timeline.json",
+      "sha256": "d6828064d0a5cc2efb98c74193c610e2a1bd84a2231d2c52912b6c0fe03fce9d",
+      "bytes": 67235
+    },
+    {
+      "file": "implementation/phase136/profiling/refreshed-timeline.md",
+      "sha256": "5b1f650b1f5fb5544d1ac985a6b986d2ec615176a4a9fe54980bb2d5ac1d7fa5",
+      "bytes": 2748
+    }
+  ],
+  "boundedPhysicalCallerEdges": [
+    {
+      "leafObject": "/usr/lib/x86_64-linux-gnu/libc-2.31.so",
+      "leafSymbol": null,
+      "unwindRule": 0,
+      "callerObject": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/profile01/runtime/program",
+      "callerSymbol": "p111_set_regs",
+      "callerLoweredOwner": null,
+      "samples": 352,
+      "fractionOfAllSamples": 0.030426138819258364
+    }
+  ],
+  "scope": "Lossless copies of the authenticated Phase136 offline analysis. One physical caller is separate from active dispatch context. No timing ratio or allocation attribution."
+}

@@ -1,0 +1,2117 @@
+{
+  "schema": "bend-sampled-cpu-timeline-v1",
+  "clock": {
+    "available": true,
+    "reasons": [],
+    "coordinate": "sample ordinal multiplied by period; relative to sampling start",
+    "isWallTime": false,
+    "isMeasuredTimestamp": false,
+    "limitations": [
+      "Delivery jitter and sampling aliasing remain possible without reported loss.",
+      "Sampling-start zero is not process-start zero or a compiler phase boundary.",
+      "Suspension, I/O waits and other-thread execution are not wall-clock gaps here."
+    ]
+  },
+  "periodUs": 32000,
+  "samples": 11569,
+  "windowSamples": 938,
+  "requestedWindowCpuSeconds": 30,
+  "approximateWindowCpuSeconds": 30.016,
+  "activeDispatchAvailable": true,
+  "activeOwnerAvailable": true,
+  "windows": [
+    {
+      "index": 0,
+      "sampleStart": 0,
+      "sampleEndExclusive": 938,
+      "samples": 938,
+      "lowSampleCount": false,
+      "unknownPhysicalLeafSamples": 26,
+      "unknownActiveOwnerSamples": 16,
+      "knownDispatchSamples": 922,
+      "topPhysicalLeaves": [
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/profile01/runtime/program",
+          "symbol": "term_drop",
+          "decoded": "term_drop",
+          "samples": 195,
+          "fractionOfWindow": 0.20788912579957355
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/profile01/runtime/program",
+          "symbol": "span_fade",
+          "decoded": "span_fade",
+          "samples": 118,
+          "fractionOfWindow": 0.1257995735607676
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/profile01/runtime/program",
+          "symbol": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_112_56_56_95_115_116_114_105_110_103_95_101_113_95_103_111_",
+          "decoded": "p113d_FID_$p118borrow.read.p88_string_eq_go",
+          "samples": 83,
+          "fractionOfWindow": 0.08848614072494669
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/profile01/runtime/program",
+          "symbol": "p111_rt_sink",
+          "decoded": "p111_rt_sink",
+          "samples": 52,
+          "fractionOfWindow": 0.05543710021321962
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/profile01/runtime/program",
+          "symbol": "p111_rt_keep",
+          "decoded": "p111_rt_keep",
+          "samples": 47,
+          "fractionOfWindow": 0.050106609808102345
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/profile01/runtime/program",
+          "symbol": "p125_rt_take2",
+          "decoded": "p125_rt_take2",
+          "samples": 30,
+          "fractionOfWindow": 0.031982942430703626
+        },
+        {
+          "object": "/usr/lib/x86_64-linux-gnu/libc-2.31.so",
+          "symbol": null,
+          "decoded": null,
+          "samples": 26,
+          "fractionOfWindow": 0.02771855010660981
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/profile01/runtime/program",
+          "symbol": "ctr_take",
+          "decoded": "ctr_take",
+          "samples": 25,
+          "fractionOfWindow": 0.026652452025586353
+        }
+      ],
+      "topActiveOwners": [
+        {
+          "owner": "f_find",
+          "samples": 342,
+          "fractionOfWindow": 0.3646055437100213
+        },
+        {
+          "owner": "f_eq",
+          "samples": 34,
+          "fractionOfWindow": 0.03624733475479744
+        },
+        {
+          "owner": "f_grow_base",
+          "samples": 23,
+          "fractionOfWindow": 0.024520255863539446
+        },
+        {
+          "owner": "f_lex_cursor",
+          "samples": 22,
+          "fractionOfWindow": 0.023454157782515993
+        },
+        {
+          "owner": "f_pattern_sub",
+          "samples": 22,
+          "fractionOfWindow": 0.023454157782515993
+        },
+        {
+          "owner": "f_atom_existing",
+          "samples": 21,
+          "fractionOfWindow": 0.022388059701492536
+        },
+        {
+          "owner": "f_prec",
+          "samples": 21,
+          "fractionOfWindow": 0.022388059701492536
+        },
+        {
+          "owner": "f_grow_existing",
+          "samples": 20,
+          "fractionOfWindow": 0.021321961620469083
+        }
+      ],
+      "topDispatchFids": [
+        {
+          "fid": 8620,
+          "samples": 342,
+          "fractionOfWindow": 0.3646055437100213
+        },
+        {
+          "fid": 9811,
+          "samples": 34,
+          "fractionOfWindow": 0.03624733475479744
+        },
+        {
+          "fid": 6903,
+          "samples": 21,
+          "fractionOfWindow": 0.022388059701492536
+        },
+        {
+          "fid": 1954,
+          "samples": 18,
+          "fractionOfWindow": 0.019189765458422176
+        },
+        {
+          "fid": 7976,
+          "samples": 18,
+          "fractionOfWindow": 0.019189765458422176
+        },
+        {
+          "fid": 6893,
+          "samples": 17,
+          "fractionOfWindow": 0.01812366737739872
+        },
+        {
+          "fid": null,
+          "samples": 16,
+          "fractionOfWindow": 0.017057569296375266
+        },
+        {
+          "fid": 1867,
+          "samples": 14,
+          "fractionOfWindow": 0.014925373134328358
+        }
+      ],
+      "approximateCpuStartSeconds": 0.0,
+      "approximateCpuEndSeconds": 30.016
+    },
+    {
+      "index": 1,
+      "sampleStart": 938,
+      "sampleEndExclusive": 1876,
+      "samples": 938,
+      "lowSampleCount": false,
+      "unknownPhysicalLeafSamples": 21,
+      "unknownActiveOwnerSamples": 17,
+      "knownDispatchSamples": 921,
+      "topPhysicalLeaves": [
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/profile01/runtime/program",
+          "symbol": "span_fade",
+          "decoded": "span_fade",
+          "samples": 177,
+          "fractionOfWindow": 0.1886993603411514
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/profile01/runtime/program",
+          "symbol": "term_drop",
+          "decoded": "term_drop",
+          "samples": 176,
+          "fractionOfWindow": 0.18763326226012794
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/profile01/runtime/program",
+          "symbol": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_112_56_56_95_115_116_114_105_110_103_95_101_113_95_103_111_",
+          "decoded": "p113d_FID_$p118borrow.read.p88_string_eq_go",
+          "samples": 116,
+          "fractionOfWindow": 0.12366737739872068
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/profile01/runtime/program",
+          "symbol": "ctr_take",
+          "decoded": "ctr_take",
+          "samples": 39,
+          "fractionOfWindow": 0.04157782515991471
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/profile01/runtime/program",
+          "symbol": "p111_rt_sink",
+          "decoded": "p111_rt_sink",
+          "samples": 36,
+          "fractionOfWindow": 0.03837953091684435
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/profile01/runtime/program",
+          "symbol": "p111_rt_keep",
+          "decoded": "p111_rt_keep",
+          "samples": 34,
+          "fractionOfWindow": 0.03624733475479744
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/profile01/runtime/program",
+          "symbol": "p125_rt_take2.cold",
+          "decoded": "p125_rt_take2.cold",
+          "samples": 32,
+          "fractionOfWindow": 0.03411513859275053
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/profile01/runtime/program",
+          "symbol": "p111_set_regs",
+          "decoded": "p111_set_regs",
+          "samples": 24,
+          "fractionOfWindow": 0.0255863539445629
+        }
+      ],
+      "topActiveOwners": [
+        {
+          "owner": "f_find",
+          "samples": 249,
+          "fractionOfWindow": 0.26545842217484006
+        },
+        {
+          "owner": "lookup",
+          "samples": 91,
+          "fractionOfWindow": 0.09701492537313433
+        },
+        {
+          "owner": "constructor_exists",
+          "samples": 67,
+          "fractionOfWindow": 0.07142857142857142
+        },
+        {
+          "owner": "index_remove",
+          "samples": 57,
+          "fractionOfWindow": 0.060767590618336885
+        },
+        {
+          "owner": "p88_string_eq",
+          "samples": 53,
+          "fractionOfWindow": 0.05650319829424307
+        },
+        {
+          "owner": "f_eq",
+          "samples": 41,
+          "fractionOfWindow": 0.04371002132196162
+        },
+        {
+          "owner": "f_pattern_sub",
+          "samples": 24,
+          "fractionOfWindow": 0.0255863539445629
+        },
+        {
+          "owner": null,
+          "samples": 17,
+          "fractionOfWindow": 0.01812366737739872
+        }
+      ],
+      "topDispatchFids": [
+        {
+          "fid": 8620,
+          "samples": 249,
+          "fractionOfWindow": 0.26545842217484006
+        },
+        {
+          "fid": 37560,
+          "samples": 91,
+          "fractionOfWindow": 0.09701492537313433
+        },
+        {
+          "fid": 47933,
+          "samples": 53,
+          "fractionOfWindow": 0.05650319829424307
+        },
+        {
+          "fid": 44768,
+          "samples": 48,
+          "fractionOfWindow": 0.0511727078891258
+        },
+        {
+          "fid": 9811,
+          "samples": 41,
+          "fractionOfWindow": 0.04371002132196162
+        },
+        {
+          "fid": 14793,
+          "samples": 24,
+          "fractionOfWindow": 0.0255863539445629
+        },
+        {
+          "fid": null,
+          "samples": 17,
+          "fractionOfWindow": 0.01812366737739872
+        },
+        {
+          "fid": 6267,
+          "samples": 14,
+          "fractionOfWindow": 0.014925373134328358
+        }
+      ],
+      "approximateCpuStartSeconds": 30.016,
+      "approximateCpuEndSeconds": 60.032
+    },
+    {
+      "index": 2,
+      "sampleStart": 1876,
+      "sampleEndExclusive": 2814,
+      "samples": 938,
+      "lowSampleCount": false,
+      "unknownPhysicalLeafSamples": 19,
+      "unknownActiveOwnerSamples": 13,
+      "knownDispatchSamples": 925,
+      "topPhysicalLeaves": [
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/profile01/runtime/program",
+          "symbol": "term_drop",
+          "decoded": "term_drop",
+          "samples": 218,
+          "fractionOfWindow": 0.232409381663113
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/profile01/runtime/program",
+          "symbol": "span_fade",
+          "decoded": "span_fade",
+          "samples": 177,
+          "fractionOfWindow": 0.1886993603411514
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/profile01/runtime/program",
+          "symbol": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_112_56_56_95_115_116_114_105_110_103_95_101_113_95_103_111_",
+          "decoded": "p113d_FID_$p118borrow.read.p88_string_eq_go",
+          "samples": 107,
+          "fractionOfWindow": 0.1140724946695096
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/profile01/runtime/program",
+          "symbol": "ctr_take",
+          "decoded": "ctr_take",
+          "samples": 54,
+          "fractionOfWindow": 0.057569296375266525
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/profile01/runtime/program",
+          "symbol": "p125_rt_take2.cold",
+          "decoded": "p125_rt_take2.cold",
+          "samples": 41,
+          "fractionOfWindow": 0.04371002132196162
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/profile01/runtime/program",
+          "symbol": "p111_rt_sink",
+          "decoded": "p111_rt_sink",
+          "samples": 34,
+          "fractionOfWindow": 0.03624733475479744
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/profile01/runtime/program",
+          "symbol": "p111_rt_keep",
+          "decoded": "p111_rt_keep",
+          "samples": 32,
+          "fractionOfWindow": 0.03411513859275053
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/profile01/runtime/program",
+          "symbol": "p111_rt_special_ctor",
+          "decoded": "p111_rt_special_ctor",
+          "samples": 19,
+          "fractionOfWindow": 0.02025586353944563
+        }
+      ],
+      "topActiveOwners": [
+        {
+          "owner": "lookup",
+          "samples": 294,
+          "fractionOfWindow": 0.31343283582089554
+        },
+        {
+          "owner": "index_remove",
+          "samples": 245,
+          "fractionOfWindow": 0.26119402985074625
+        },
+        {
+          "owner": "p88_string_eq",
+          "samples": 127,
+          "fractionOfWindow": 0.13539445628997868
+        },
+        {
+          "owner": "index_remove_step",
+          "samples": 55,
+          "fractionOfWindow": 0.05863539445628998
+        },
+        {
+          "owner": "dg_event_publish",
+          "samples": 51,
+          "fractionOfWindow": 0.054371002132196165
+        },
+        {
+          "owner": null,
+          "samples": 13,
+          "fractionOfWindow": 0.013859275053304905
+        },
+        {
+          "owner": "subst_node",
+          "samples": 11,
+          "fractionOfWindow": 0.011727078891257996
+        },
+        {
+          "owner": "constructor_exists",
+          "samples": 11,
+          "fractionOfWindow": 0.011727078891257996
+        }
+      ],
+      "topDispatchFids": [
+        {
+          "fid": 37560,
+          "samples": 294,
+          "fractionOfWindow": 0.31343283582089554
+        },
+        {
+          "fid": 44768,
+          "samples": 225,
+          "fractionOfWindow": 0.23987206823027718
+        },
+        {
+          "fid": 47933,
+          "samples": 127,
+          "fractionOfWindow": 0.13539445628997868
+        },
+        {
+          "fid": 13099,
+          "samples": 51,
+          "fractionOfWindow": 0.054371002132196165
+        },
+        {
+          "fid": 44763,
+          "samples": 33,
+          "fractionOfWindow": 0.035181236673773986
+        },
+        {
+          "fid": 44762,
+          "samples": 22,
+          "fractionOfWindow": 0.023454157782515993
+        },
+        {
+          "fid": 44769,
+          "samples": 20,
+          "fractionOfWindow": 0.021321961620469083
+        },
+        {
+          "fid": null,
+          "samples": 13,
+          "fractionOfWindow": 0.013859275053304905
+        }
+      ],
+      "approximateCpuStartSeconds": 60.032,
+      "approximateCpuEndSeconds": 90.048
+    },
+    {
+      "index": 3,
+      "sampleStart": 2814,
+      "sampleEndExclusive": 3752,
+      "samples": 938,
+      "lowSampleCount": false,
+      "unknownPhysicalLeafSamples": 27,
+      "unknownActiveOwnerSamples": 9,
+      "knownDispatchSamples": 929,
+      "topPhysicalLeaves": [
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/profile01/runtime/program",
+          "symbol": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_112_56_56_95_115_116_114_105_110_103_95_101_113_95_103_111_",
+          "decoded": "p113d_FID_$p118borrow.read.p88_string_eq_go",
+          "samples": 302,
+          "fractionOfWindow": 0.32196162046908317
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/profile01/runtime/program",
+          "symbol": "term_drop",
+          "decoded": "term_drop",
+          "samples": 119,
+          "fractionOfWindow": 0.12686567164179105
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/profile01/runtime/program",
+          "symbol": "span_fade",
+          "decoded": "span_fade",
+          "samples": 102,
+          "fractionOfWindow": 0.10874200426439233
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/profile01/runtime/program",
+          "symbol": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_104_97_115_95_110_97_109_101_",
+          "decoded": "p113d_FID_$p118borrow.read.has_name",
+          "samples": 49,
+          "fractionOfWindow": 0.05223880597014925
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/profile01/runtime/program",
+          "symbol": "p111_rt_special_ctor",
+          "decoded": "p111_rt_special_ctor",
+          "samples": 33,
+          "fractionOfWindow": 0.035181236673773986
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/profile01/runtime/program",
+          "symbol": "p111_rt_sink",
+          "decoded": "p111_rt_sink",
+          "samples": 33,
+          "fractionOfWindow": 0.035181236673773986
+        },
+        {
+          "object": "/usr/lib/x86_64-linux-gnu/libc-2.31.so",
+          "symbol": null,
+          "decoded": null,
+          "samples": 26,
+          "fractionOfWindow": 0.02771855010660981
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/profile01/runtime/program",
+          "symbol": "ctr_take",
+          "decoded": "ctr_take",
+          "samples": 25,
+          "fractionOfWindow": 0.026652452025586353
+        }
+      ],
+      "topActiveOwners": [
+        {
+          "owner": "has_name",
+          "samples": 240,
+          "fractionOfWindow": 0.255863539445629
+        },
+        {
+          "owner": "index_remove",
+          "samples": 123,
+          "fractionOfWindow": 0.13113006396588486
+        },
+        {
+          "owner": "p88_string_eq",
+          "samples": 86,
+          "fractionOfWindow": 0.09168443496801706
+        },
+        {
+          "owner": "constructor_exists",
+          "samples": 83,
+          "fractionOfWindow": 0.08848614072494669
+        },
+        {
+          "owner": "lookup",
+          "samples": 62,
+          "fractionOfWindow": 0.06609808102345416
+        },
+        {
+          "owner": "dr_own_names",
+          "samples": 48,
+          "fractionOfWindow": 0.0511727078891258
+        },
+        {
+          "owner": "index_remove_step",
+          "samples": 33,
+          "fractionOfWindow": 0.035181236673773986
+        },
+        {
+          "owner": "dg_event_publish",
+          "samples": 27,
+          "fractionOfWindow": 0.028784648187633263
+        }
+      ],
+      "topDispatchFids": [
+        {
+          "fid": 26270,
+          "samples": 240,
+          "fractionOfWindow": 0.255863539445629
+        },
+        {
+          "fid": 44768,
+          "samples": 109,
+          "fractionOfWindow": 0.1162046908315565
+        },
+        {
+          "fid": 47933,
+          "samples": 86,
+          "fractionOfWindow": 0.09168443496801706
+        },
+        {
+          "fid": 37560,
+          "samples": 62,
+          "fractionOfWindow": 0.06609808102345416
+        },
+        {
+          "fid": 13507,
+          "samples": 48,
+          "fractionOfWindow": 0.0511727078891258
+        },
+        {
+          "fid": 14793,
+          "samples": 29,
+          "fractionOfWindow": 0.03091684434968017
+        },
+        {
+          "fid": 13099,
+          "samples": 27,
+          "fractionOfWindow": 0.028784648187633263
+        },
+        {
+          "fid": 44763,
+          "samples": 17,
+          "fractionOfWindow": 0.01812366737739872
+        }
+      ],
+      "approximateCpuStartSeconds": 90.048,
+      "approximateCpuEndSeconds": 120.064
+    },
+    {
+      "index": 4,
+      "sampleStart": 3752,
+      "sampleEndExclusive": 4690,
+      "samples": 938,
+      "lowSampleCount": false,
+      "unknownPhysicalLeafSamples": 15,
+      "unknownActiveOwnerSamples": 13,
+      "knownDispatchSamples": 925,
+      "topPhysicalLeaves": [
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/profile01/runtime/program",
+          "symbol": "term_drop",
+          "decoded": "term_drop",
+          "samples": 181,
+          "fractionOfWindow": 0.1929637526652452
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/profile01/runtime/program",
+          "symbol": "span_fade",
+          "decoded": "span_fade",
+          "samples": 167,
+          "fractionOfWindow": 0.17803837953091683
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/profile01/runtime/program",
+          "symbol": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_112_56_56_95_115_116_114_105_110_103_95_101_113_95_103_111_",
+          "decoded": "p113d_FID_$p118borrow.read.p88_string_eq_go",
+          "samples": 162,
+          "fractionOfWindow": 0.17270788912579957
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/profile01/runtime/program",
+          "symbol": "p111_rt_sink",
+          "decoded": "p111_rt_sink",
+          "samples": 54,
+          "fractionOfWindow": 0.057569296375266525
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/profile01/runtime/program",
+          "symbol": "ctr_take",
+          "decoded": "ctr_take",
+          "samples": 43,
+          "fractionOfWindow": 0.04584221748400853
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/profile01/runtime/program",
+          "symbol": "p111_rt_keep",
+          "decoded": "p111_rt_keep",
+          "samples": 41,
+          "fractionOfWindow": 0.04371002132196162
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/profile01/runtime/program",
+          "symbol": "p111_rt_special_ctor",
+          "decoded": "p111_rt_special_ctor",
+          "samples": 28,
+          "fractionOfWindow": 0.029850746268656716
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/profile01/runtime/program",
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_110_99_95_99_116_111_114_95_111_119_110_101_100_",
+          "decoded": "p113d_FID_$direct.nc_ctor_owned",
+          "samples": 28,
+          "fractionOfWindow": 0.029850746268656716
+        }
+      ],
+      "topActiveOwners": [
+        {
+          "owner": "nc_ctor_owned",
+          "samples": 460,
+          "fractionOfWindow": 0.4904051172707889
+        },
+        {
+          "owner": "has_name",
+          "samples": 95,
+          "fractionOfWindow": 0.10127931769722814
+        },
+        {
+          "owner": "nb_contains",
+          "samples": 63,
+          "fractionOfWindow": 0.06716417910447761
+        },
+        {
+          "owner": "lookup",
+          "samples": 49,
+          "fractionOfWindow": 0.05223880597014925
+        },
+        {
+          "owner": "norm_max_book",
+          "samples": 19,
+          "fractionOfWindow": 0.02025586353944563
+        },
+        {
+          "owner": "subst_node",
+          "samples": 18,
+          "fractionOfWindow": 0.019189765458422176
+        },
+        {
+          "owner": null,
+          "samples": 13,
+          "fractionOfWindow": 0.013859275053304905
+        },
+        {
+          "owner": "subst_terms",
+          "samples": 12,
+          "fractionOfWindow": 0.01279317697228145
+        }
+      ],
+      "topDispatchFids": [
+        {
+          "fid": 34363,
+          "samples": 460,
+          "fractionOfWindow": 0.4904051172707889
+        },
+        {
+          "fid": 26270,
+          "samples": 95,
+          "fractionOfWindow": 0.10127931769722814
+        },
+        {
+          "fid": 43778,
+          "samples": 63,
+          "fractionOfWindow": 0.06716417910447761
+        },
+        {
+          "fid": 37560,
+          "samples": 49,
+          "fractionOfWindow": 0.05223880597014925
+        },
+        {
+          "fid": 27708,
+          "samples": 19,
+          "fractionOfWindow": 0.02025586353944563
+        },
+        {
+          "fid": null,
+          "samples": 13,
+          "fractionOfWindow": 0.013859275053304905
+        },
+        {
+          "fid": 35212,
+          "samples": 12,
+          "fractionOfWindow": 0.01279317697228145
+        },
+        {
+          "fid": 35165,
+          "samples": 10,
+          "fractionOfWindow": 0.010660980810234541
+        }
+      ],
+      "approximateCpuStartSeconds": 120.064,
+      "approximateCpuEndSeconds": 150.08
+    },
+    {
+      "index": 5,
+      "sampleStart": 4690,
+      "sampleEndExclusive": 5628,
+      "samples": 938,
+      "lowSampleCount": false,
+      "unknownPhysicalLeafSamples": 31,
+      "unknownActiveOwnerSamples": 20,
+      "knownDispatchSamples": 918,
+      "topPhysicalLeaves": [
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/profile01/runtime/program",
+          "symbol": "term_drop",
+          "decoded": "term_drop",
+          "samples": 151,
+          "fractionOfWindow": 0.16098081023454158
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/profile01/runtime/program",
+          "symbol": "span_fade",
+          "decoded": "span_fade",
+          "samples": 135,
+          "fractionOfWindow": 0.1439232409381663
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/profile01/runtime/program",
+          "symbol": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_112_56_56_95_115_116_114_105_110_103_95_101_113_95_103_111_",
+          "decoded": "p113d_FID_$p118borrow.read.p88_string_eq_go",
+          "samples": 106,
+          "fractionOfWindow": 0.11300639658848614
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/profile01/runtime/program",
+          "symbol": "p111_rt_keep",
+          "decoded": "p111_rt_keep",
+          "samples": 37,
+          "fractionOfWindow": 0.039445628997867806
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/profile01/runtime/program",
+          "symbol": "p111_rt_sink",
+          "decoded": "p111_rt_sink",
+          "samples": 32,
+          "fractionOfWindow": 0.03411513859275053
+        },
+        {
+          "object": "/usr/lib/x86_64-linux-gnu/libc-2.31.so",
+          "symbol": null,
+          "decoded": null,
+          "samples": 31,
+          "fractionOfWindow": 0.03304904051172708
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/profile01/runtime/program",
+          "symbol": "p111_set_regs",
+          "decoded": "p111_set_regs",
+          "samples": 27,
+          "fractionOfWindow": 0.028784648187633263
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/profile01/runtime/program",
+          "symbol": "p111_rt_special_ctor",
+          "decoded": "p111_rt_special_ctor",
+          "samples": 26,
+          "fractionOfWindow": 0.02771855010660981
+        }
+      ],
+      "topActiveOwners": [
+        {
+          "owner": "nb_contains",
+          "samples": 266,
+          "fractionOfWindow": 0.2835820895522388
+        },
+        {
+          "owner": "nc_occurs",
+          "samples": 95,
+          "fractionOfWindow": 0.10127931769722814
+        },
+        {
+          "owner": "nc_ctor_owned",
+          "samples": 73,
+          "fractionOfWindow": 0.07782515991471216
+        },
+        {
+          "owner": "nc_occurs_list",
+          "samples": 57,
+          "fractionOfWindow": 0.060767590618336885
+        },
+        {
+          "owner": "lookup",
+          "samples": 30,
+          "fractionOfWindow": 0.031982942430703626
+        },
+        {
+          "owner": "nc_uses_term",
+          "samples": 29,
+          "fractionOfWindow": 0.03091684434968017
+        },
+        {
+          "owner": "String.eq",
+          "samples": 23,
+          "fractionOfWindow": 0.024520255863539446
+        },
+        {
+          "owner": null,
+          "samples": 20,
+          "fractionOfWindow": 0.021321961620469083
+        }
+      ],
+      "topDispatchFids": [
+        {
+          "fid": 43778,
+          "samples": 266,
+          "fractionOfWindow": 0.2835820895522388
+        },
+        {
+          "fid": 37294,
+          "samples": 95,
+          "fractionOfWindow": 0.10127931769722814
+        },
+        {
+          "fid": 34363,
+          "samples": 73,
+          "fractionOfWindow": 0.07782515991471216
+        },
+        {
+          "fid": 37286,
+          "samples": 39,
+          "fractionOfWindow": 0.04157782515991471
+        },
+        {
+          "fid": 37560,
+          "samples": 30,
+          "fractionOfWindow": 0.031982942430703626
+        },
+        {
+          "fid": 24830,
+          "samples": 29,
+          "fractionOfWindow": 0.03091684434968017
+        },
+        {
+          "fid": 48875,
+          "samples": 23,
+          "fractionOfWindow": 0.024520255863539446
+        },
+        {
+          "fid": null,
+          "samples": 20,
+          "fractionOfWindow": 0.021321961620469083
+        }
+      ],
+      "approximateCpuStartSeconds": 150.08,
+      "approximateCpuEndSeconds": 180.096
+    },
+    {
+      "index": 6,
+      "sampleStart": 5628,
+      "sampleEndExclusive": 6566,
+      "samples": 938,
+      "lowSampleCount": false,
+      "unknownPhysicalLeafSamples": 34,
+      "unknownActiveOwnerSamples": 31,
+      "knownDispatchSamples": 907,
+      "topPhysicalLeaves": [
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/profile01/runtime/program",
+          "symbol": "term_drop",
+          "decoded": "term_drop",
+          "samples": 140,
+          "fractionOfWindow": 0.14925373134328357
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/profile01/runtime/program",
+          "symbol": "span_fade",
+          "decoded": "span_fade",
+          "samples": 96,
+          "fractionOfWindow": 0.1023454157782516
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/profile01/runtime/program",
+          "symbol": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_112_56_56_95_115_116_114_105_110_103_95_101_113_95_103_111_",
+          "decoded": "p113d_FID_$p118borrow.read.p88_string_eq_go",
+          "samples": 62,
+          "fractionOfWindow": 0.06609808102345416
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/profile01/runtime/program",
+          "symbol": "p111_rt_sink",
+          "decoded": "p111_rt_sink",
+          "samples": 45,
+          "fractionOfWindow": 0.04797441364605544
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/profile01/runtime/program",
+          "symbol": "work_loop",
+          "decoded": "work_loop",
+          "samples": 40,
+          "fractionOfWindow": 0.042643923240938165
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/profile01/runtime/program",
+          "symbol": "p111_rt_keep",
+          "decoded": "p111_rt_keep",
+          "samples": 35,
+          "fractionOfWindow": 0.03731343283582089
+        },
+        {
+          "object": "/usr/lib/x86_64-linux-gnu/libc-2.31.so",
+          "symbol": null,
+          "decoded": null,
+          "samples": 34,
+          "fractionOfWindow": 0.03624733475479744
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/profile01/runtime/program",
+          "symbol": "p111_rt_special_ctor",
+          "decoded": "p111_rt_special_ctor",
+          "samples": 32,
+          "fractionOfWindow": 0.03411513859275053
+        }
+      ],
+      "topActiveOwners": [
+        {
+          "owner": "nc_occurs",
+          "samples": 153,
+          "fractionOfWindow": 0.1631130063965885
+        },
+        {
+          "owner": "nc_ctor_owned",
+          "samples": 117,
+          "fractionOfWindow": 0.12473347547974413
+        },
+        {
+          "owner": "nc_occurs_list",
+          "samples": 100,
+          "fractionOfWindow": 0.10660980810234541
+        },
+        {
+          "owner": null,
+          "samples": 31,
+          "fractionOfWindow": 0.03304904051172708
+        },
+        {
+          "owner": "lookup",
+          "samples": 31,
+          "fractionOfWindow": 0.03304904051172708
+        },
+        {
+          "owner": "nc_uses_term",
+          "samples": 30,
+          "fractionOfWindow": 0.031982942430703626
+        },
+        {
+          "owner": "p111_op_id",
+          "samples": 26,
+          "fractionOfWindow": 0.02771855010660981
+        },
+        {
+          "owner": "String.eq",
+          "samples": 24,
+          "fractionOfWindow": 0.0255863539445629
+        }
+      ],
+      "topDispatchFids": [
+        {
+          "fid": 37294,
+          "samples": 153,
+          "fractionOfWindow": 0.1631130063965885
+        },
+        {
+          "fid": 34363,
+          "samples": 117,
+          "fractionOfWindow": 0.12473347547974413
+        },
+        {
+          "fid": 37286,
+          "samples": 56,
+          "fractionOfWindow": 0.05970149253731343
+        },
+        {
+          "fid": null,
+          "samples": 31,
+          "fractionOfWindow": 0.03304904051172708
+        },
+        {
+          "fid": 37560,
+          "samples": 31,
+          "fractionOfWindow": 0.03304904051172708
+        },
+        {
+          "fid": 24830,
+          "samples": 30,
+          "fractionOfWindow": 0.031982942430703626
+        },
+        {
+          "fid": 35672,
+          "samples": 26,
+          "fractionOfWindow": 0.02771855010660981
+        },
+        {
+          "fid": 48875,
+          "samples": 24,
+          "fractionOfWindow": 0.0255863539445629
+        }
+      ],
+      "approximateCpuStartSeconds": 180.096,
+      "approximateCpuEndSeconds": 210.112
+    },
+    {
+      "index": 7,
+      "sampleStart": 6566,
+      "sampleEndExclusive": 7504,
+      "samples": 938,
+      "lowSampleCount": false,
+      "unknownPhysicalLeafSamples": 39,
+      "unknownActiveOwnerSamples": 25,
+      "knownDispatchSamples": 913,
+      "topPhysicalLeaves": [
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/profile01/runtime/program",
+          "symbol": "term_drop",
+          "decoded": "term_drop",
+          "samples": 188,
+          "fractionOfWindow": 0.20042643923240938
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/profile01/runtime/program",
+          "symbol": "span_fade",
+          "decoded": "span_fade",
+          "samples": 98,
+          "fractionOfWindow": 0.1044776119402985
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/profile01/runtime/program",
+          "symbol": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_112_56_56_95_115_116_114_105_110_103_95_101_113_95_103_111_",
+          "decoded": "p113d_FID_$p118borrow.read.p88_string_eq_go",
+          "samples": 38,
+          "fractionOfWindow": 0.04051172707889126
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/profile01/runtime/program",
+          "symbol": "p111_rt_sink",
+          "decoded": "p111_rt_sink",
+          "samples": 38,
+          "fractionOfWindow": 0.04051172707889126
+        },
+        {
+          "object": "/usr/lib/x86_64-linux-gnu/libc-2.31.so",
+          "symbol": null,
+          "decoded": null,
+          "samples": 38,
+          "fractionOfWindow": 0.04051172707889126
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/profile01/runtime/program",
+          "symbol": "p111_rt_keep",
+          "decoded": "p111_rt_keep",
+          "samples": 31,
+          "fractionOfWindow": 0.03304904051172708
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/profile01/runtime/program",
+          "symbol": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_105_110_100_101_120_95_104_97_115_104_",
+          "decoded": "p113d_FID_$p118borrow.read.index_hash",
+          "samples": 31,
+          "fractionOfWindow": 0.03304904051172708
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/profile01/runtime/program",
+          "symbol": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_83_116_114_105_110_103_46_99_109_112_",
+          "decoded": "p113d_FID_$p118borrow.read.String.cmp",
+          "samples": 30,
+          "fractionOfWindow": 0.031982942430703626
+        }
+      ],
+      "topActiveOwners": [
+        {
+          "owner": "nc_ctor_owned",
+          "samples": 145,
+          "fractionOfWindow": 0.15458422174840086
+        },
+        {
+          "owner": "p111v_get",
+          "samples": 54,
+          "fractionOfWindow": 0.057569296375266525
+        },
+        {
+          "owner": "nc_uses_term",
+          "samples": 39,
+          "fractionOfWindow": 0.04157782515991471
+        },
+        {
+          "owner": "p131i_insert",
+          "samples": 38,
+          "fractionOfWindow": 0.04051172707889126
+        },
+        {
+          "owner": "p111v_value",
+          "samples": 35,
+          "fractionOfWindow": 0.03731343283582089
+        },
+        {
+          "owner": "p111v_name_chars",
+          "samples": 28,
+          "fractionOfWindow": 0.029850746268656716
+        },
+        {
+          "owner": null,
+          "samples": 25,
+          "fractionOfWindow": 0.026652452025586353
+        },
+        {
+          "owner": "p111v_contract",
+          "samples": 24,
+          "fractionOfWindow": 0.0255863539445629
+        }
+      ],
+      "topDispatchFids": [
+        {
+          "fid": 34363,
+          "samples": 145,
+          "fractionOfWindow": 0.15458422174840086
+        },
+        {
+          "fid": 45216,
+          "samples": 54,
+          "fractionOfWindow": 0.057569296375266525
+        },
+        {
+          "fid": 24830,
+          "samples": 39,
+          "fractionOfWindow": 0.04157782515991471
+        },
+        {
+          "fid": 39195,
+          "samples": 35,
+          "fractionOfWindow": 0.03731343283582089
+        },
+        {
+          "fid": null,
+          "samples": 25,
+          "fractionOfWindow": 0.026652452025586353
+        },
+        {
+          "fid": 38828,
+          "samples": 24,
+          "fractionOfWindow": 0.0255863539445629
+        },
+        {
+          "fid": 44796,
+          "samples": 23,
+          "fractionOfWindow": 0.024520255863539446
+        },
+        {
+          "fid": 39255,
+          "samples": 18,
+          "fractionOfWindow": 0.019189765458422176
+        }
+      ],
+      "approximateCpuStartSeconds": 210.112,
+      "approximateCpuEndSeconds": 240.128
+    },
+    {
+      "index": 8,
+      "sampleStart": 7504,
+      "sampleEndExclusive": 8442,
+      "samples": 938,
+      "lowSampleCount": false,
+      "unknownPhysicalLeafSamples": 36,
+      "unknownActiveOwnerSamples": 20,
+      "knownDispatchSamples": 919,
+      "topPhysicalLeaves": [
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/profile01/runtime/program",
+          "symbol": "term_drop",
+          "decoded": "term_drop",
+          "samples": 184,
+          "fractionOfWindow": 0.19616204690831557
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/profile01/runtime/program",
+          "symbol": "span_fade",
+          "decoded": "span_fade",
+          "samples": 115,
+          "fractionOfWindow": 0.12260127931769722
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/profile01/runtime/program",
+          "symbol": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_105_110_100_101_120_95_104_97_115_104_",
+          "decoded": "p113d_FID_$p118borrow.read.index_hash",
+          "samples": 78,
+          "fractionOfWindow": 0.08315565031982942
+        },
+        {
+          "object": "/usr/lib/x86_64-linux-gnu/libc-2.31.so",
+          "symbol": null,
+          "decoded": null,
+          "samples": 35,
+          "fractionOfWindow": 0.03731343283582089
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/profile01/runtime/program",
+          "symbol": "p125_rt_take2",
+          "decoded": "p125_rt_take2",
+          "samples": 33,
+          "fractionOfWindow": 0.035181236673773986
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/profile01/runtime/program",
+          "symbol": "p111_rt_sink",
+          "decoded": "p111_rt_sink",
+          "samples": 28,
+          "fractionOfWindow": 0.029850746268656716
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/profile01/runtime/program",
+          "symbol": "work_loop",
+          "decoded": "work_loop",
+          "samples": 26,
+          "fractionOfWindow": 0.02771855010660981
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/profile01/runtime/program",
+          "symbol": "p111_rt_ctor",
+          "decoded": "p111_rt_ctor",
+          "samples": 23,
+          "fractionOfWindow": 0.024520255863539446
+        }
+      ],
+      "topActiveOwners": [
+        {
+          "owner": "p111v_get",
+          "samples": 176,
+          "fractionOfWindow": 0.18763326226012794
+        },
+        {
+          "owner": "p113k_get",
+          "samples": 112,
+          "fractionOfWindow": 0.11940298507462686
+        },
+        {
+          "owner": "p131i_insert",
+          "samples": 53,
+          "fractionOfWindow": 0.05650319829424307
+        },
+        {
+          "owner": "p111v_name_chars",
+          "samples": 38,
+          "fractionOfWindow": 0.04051172707889126
+        },
+        {
+          "owner": "p111v_value",
+          "samples": 33,
+          "fractionOfWindow": 0.035181236673773986
+        },
+        {
+          "owner": "p113k_put",
+          "samples": 32,
+          "fractionOfWindow": 0.03411513859275053
+        },
+        {
+          "owner": "p113k_join_record",
+          "samples": 28,
+          "fractionOfWindow": 0.029850746268656716
+        },
+        {
+          "owner": "index_leaf",
+          "samples": 28,
+          "fractionOfWindow": 0.029850746268656716
+        }
+      ],
+      "topDispatchFids": [
+        {
+          "fid": 45216,
+          "samples": 176,
+          "fractionOfWindow": 0.18763326226012794
+        },
+        {
+          "fid": 29181,
+          "samples": 112,
+          "fractionOfWindow": 0.11940298507462686
+        },
+        {
+          "fid": 44796,
+          "samples": 37,
+          "fractionOfWindow": 0.039445628997867806
+        },
+        {
+          "fid": 39195,
+          "samples": 33,
+          "fractionOfWindow": 0.035181236673773986
+        },
+        {
+          "fid": 29331,
+          "samples": 27,
+          "fractionOfWindow": 0.028784648187633263
+        },
+        {
+          "fid": 29259,
+          "samples": 27,
+          "fractionOfWindow": 0.028784648187633263
+        },
+        {
+          "fid": 29105,
+          "samples": 23,
+          "fractionOfWindow": 0.024520255863539446
+        },
+        {
+          "fid": 40140,
+          "samples": 23,
+          "fractionOfWindow": 0.024520255863539446
+        }
+      ],
+      "approximateCpuStartSeconds": 240.128,
+      "approximateCpuEndSeconds": 270.144
+    },
+    {
+      "index": 9,
+      "sampleStart": 8442,
+      "sampleEndExclusive": 9380,
+      "samples": 938,
+      "lowSampleCount": false,
+      "unknownPhysicalLeafSamples": 33,
+      "unknownActiveOwnerSamples": 22,
+      "knownDispatchSamples": 916,
+      "topPhysicalLeaves": [
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/profile01/runtime/program",
+          "symbol": "term_drop",
+          "decoded": "term_drop",
+          "samples": 210,
+          "fractionOfWindow": 0.22388059701492538
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/profile01/runtime/program",
+          "symbol": "span_fade",
+          "decoded": "span_fade",
+          "samples": 119,
+          "fractionOfWindow": 0.12686567164179105
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/profile01/runtime/program",
+          "symbol": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_105_110_100_101_120_95_104_97_115_104_",
+          "decoded": "p113d_FID_$p118borrow.read.index_hash",
+          "samples": 46,
+          "fractionOfWindow": 0.04904051172707889
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/profile01/runtime/program",
+          "symbol": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_112_56_56_95_115_116_114_105_110_103_95_101_113_95_103_111_",
+          "decoded": "p113d_FID_$p118borrow.read.p88_string_eq_go",
+          "samples": 34,
+          "fractionOfWindow": 0.03624733475479744
+        },
+        {
+          "object": "/usr/lib/x86_64-linux-gnu/libc-2.31.so",
+          "symbol": null,
+          "decoded": null,
+          "samples": 31,
+          "fractionOfWindow": 0.03304904051172708
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/profile01/runtime/program",
+          "symbol": "p111_rt_sink",
+          "decoded": "p111_rt_sink",
+          "samples": 27,
+          "fractionOfWindow": 0.028784648187633263
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/profile01/runtime/program",
+          "symbol": "work_loop",
+          "decoded": "work_loop",
+          "samples": 22,
+          "fractionOfWindow": 0.023454157782515993
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/profile01/runtime/program",
+          "symbol": "p111_rt_ctor",
+          "decoded": "p111_rt_ctor",
+          "samples": 22,
+          "fractionOfWindow": 0.023454157782515993
+        }
+      ],
+      "topActiveOwners": [
+        {
+          "owner": "nc_ctor_owned",
+          "samples": 119,
+          "fractionOfWindow": 0.12686567164179105
+        },
+        {
+          "owner": "p111v_get",
+          "samples": 107,
+          "fractionOfWindow": 0.1140724946695096
+        },
+        {
+          "owner": "p111v_name_chars",
+          "samples": 54,
+          "fractionOfWindow": 0.057569296375266525
+        },
+        {
+          "owner": "p131i_insert",
+          "samples": 48,
+          "fractionOfWindow": 0.0511727078891258
+        },
+        {
+          "owner": "nol_scalar_specs",
+          "samples": 42,
+          "fractionOfWindow": 0.04477611940298507
+        },
+        {
+          "owner": "lookup",
+          "samples": 34,
+          "fractionOfWindow": 0.03624733475479744
+        },
+        {
+          "owner": "p111v_value",
+          "samples": 32,
+          "fractionOfWindow": 0.03411513859275053
+        },
+        {
+          "owner": "no_effect_terms",
+          "samples": 31,
+          "fractionOfWindow": 0.03304904051172708
+        }
+      ],
+      "topDispatchFids": [
+        {
+          "fid": 34363,
+          "samples": 119,
+          "fractionOfWindow": 0.12686567164179105
+        },
+        {
+          "fid": 45216,
+          "samples": 107,
+          "fractionOfWindow": 0.1140724946695096
+        },
+        {
+          "fid": 37560,
+          "samples": 34,
+          "fractionOfWindow": 0.03624733475479744
+        },
+        {
+          "fid": 39195,
+          "samples": 32,
+          "fractionOfWindow": 0.03411513859275053
+        },
+        {
+          "fid": 38549,
+          "samples": 28,
+          "fractionOfWindow": 0.029850746268656716
+        },
+        {
+          "fid": 44796,
+          "samples": 27,
+          "fractionOfWindow": 0.028784648187633263
+        },
+        {
+          "fid": 48875,
+          "samples": 25,
+          "fractionOfWindow": 0.026652452025586353
+        },
+        {
+          "fid": null,
+          "samples": 22,
+          "fractionOfWindow": 0.023454157782515993
+        }
+      ],
+      "approximateCpuStartSeconds": 270.144,
+      "approximateCpuEndSeconds": 300.16
+    },
+    {
+      "index": 10,
+      "sampleStart": 9380,
+      "sampleEndExclusive": 10318,
+      "samples": 938,
+      "lowSampleCount": false,
+      "unknownPhysicalLeafSamples": 48,
+      "unknownActiveOwnerSamples": 43,
+      "knownDispatchSamples": 896,
+      "topPhysicalLeaves": [
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/profile01/runtime/program",
+          "symbol": "term_drop",
+          "decoded": "term_drop",
+          "samples": 140,
+          "fractionOfWindow": 0.14925373134328357
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/profile01/runtime/program",
+          "symbol": "p125_rt_take2",
+          "decoded": "p125_rt_take2",
+          "samples": 85,
+          "fractionOfWindow": 0.0906183368869936
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/profile01/runtime/program",
+          "symbol": "span_fade",
+          "decoded": "span_fade",
+          "samples": 61,
+          "fractionOfWindow": 0.0650319829424307
+        },
+        {
+          "object": "/usr/lib/x86_64-linux-gnu/libc-2.31.so",
+          "symbol": null,
+          "decoded": null,
+          "samples": 47,
+          "fractionOfWindow": 0.050106609808102345
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/profile01/runtime/program",
+          "symbol": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_83_116_114_105_110_103_46_99_109_112_",
+          "decoded": "p113d_FID_$p118borrow.read.String.cmp",
+          "samples": 38,
+          "fractionOfWindow": 0.04051172707889126
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/profile01/runtime/program",
+          "symbol": "p118_destination_fill",
+          "decoded": "p118_destination_fill",
+          "samples": 37,
+          "fractionOfWindow": 0.039445628997867806
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/profile01/runtime/program",
+          "symbol": "p118_rt_extend1",
+          "decoded": "p118_rt_extend1",
+          "samples": 36,
+          "fractionOfWindow": 0.03837953091684435
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/profile01/runtime/program",
+          "symbol": "p111_rt_op",
+          "decoded": "p111_rt_op",
+          "samples": 31,
+          "fractionOfWindow": 0.03304904051172708
+        }
+      ],
+      "topActiveOwners": [
+        {
+          "owner": "String.append",
+          "samples": 150,
+          "fractionOfWindow": 0.15991471215351813
+        },
+        {
+          "owner": "String.eq",
+          "samples": 75,
+          "fractionOfWindow": 0.07995735607675906
+        },
+        {
+          "owner": "p111v_get",
+          "samples": 74,
+          "fractionOfWindow": 0.07889125799573561
+        },
+        {
+          "owner": null,
+          "samples": 43,
+          "fractionOfWindow": 0.04584221748400853
+        },
+        {
+          "owner": "p131i_insert",
+          "samples": 30,
+          "fractionOfWindow": 0.031982942430703626
+        },
+        {
+          "owner": "p111v_name_chars",
+          "samples": 29,
+          "fractionOfWindow": 0.03091684434968017
+        },
+        {
+          "owner": "p111q_body_text",
+          "samples": 26,
+          "fractionOfWindow": 0.02771855010660981
+        },
+        {
+          "owner": "p112r_buffer_sites",
+          "samples": 23,
+          "fractionOfWindow": 0.024520255863539446
+        }
+      ],
+      "topDispatchFids": [
+        {
+          "fid": 48366,
+          "samples": 150,
+          "fractionOfWindow": 0.15991471215351813
+        },
+        {
+          "fid": 48875,
+          "samples": 75,
+          "fractionOfWindow": 0.07995735607675906
+        },
+        {
+          "fid": 45216,
+          "samples": 74,
+          "fractionOfWindow": 0.07889125799573561
+        },
+        {
+          "fid": null,
+          "samples": 42,
+          "fractionOfWindow": 0.04477611940298507
+        },
+        {
+          "fid": 48174,
+          "samples": 26,
+          "fractionOfWindow": 0.02771855010660981
+        },
+        {
+          "fid": 39705,
+          "samples": 22,
+          "fractionOfWindow": 0.023454157782515993
+        },
+        {
+          "fid": 43632,
+          "samples": 22,
+          "fractionOfWindow": 0.023454157782515993
+        },
+        {
+          "fid": 44017,
+          "samples": 20,
+          "fractionOfWindow": 0.021321961620469083
+        }
+      ],
+      "approximateCpuStartSeconds": 300.16,
+      "approximateCpuEndSeconds": 330.176
+    },
+    {
+      "index": 11,
+      "sampleStart": 10318,
+      "sampleEndExclusive": 11256,
+      "samples": 938,
+      "lowSampleCount": false,
+      "unknownPhysicalLeafSamples": 23,
+      "unknownActiveOwnerSamples": 97,
+      "knownDispatchSamples": 843,
+      "topPhysicalLeaves": [
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/profile01/runtime/program",
+          "symbol": "p125_rt_take2",
+          "decoded": "p125_rt_take2",
+          "samples": 164,
+          "fractionOfWindow": 0.17484008528784648
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/profile01/runtime/program",
+          "symbol": "term_drop",
+          "decoded": "term_drop",
+          "samples": 68,
+          "fractionOfWindow": 0.07249466950959488
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/profile01/runtime/program",
+          "symbol": "p118_rt_extend1",
+          "decoded": "p118_rt_extend1",
+          "samples": 66,
+          "fractionOfWindow": 0.07036247334754797
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/profile01/runtime/program",
+          "symbol": "p118_destination_fill",
+          "decoded": "p118_destination_fill",
+          "samples": 54,
+          "fractionOfWindow": 0.057569296375266525
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/profile01/runtime/program",
+          "symbol": "span_fade",
+          "decoded": "span_fade",
+          "samples": 45,
+          "fractionOfWindow": 0.04797441364605544
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/profile01/runtime/program",
+          "symbol": "ctr_take",
+          "decoded": "ctr_take",
+          "samples": 40,
+          "fractionOfWindow": 0.042643923240938165
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/profile01/runtime/program",
+          "symbol": "p113d_FID_36_112_49_49_56_46_116_114_109_99_46_36_100_105_114_101_99_116_46_83_116_114_105_110_103_46_97_112_112_101_110_100_",
+          "decoded": "p113d_FID_$p118.trmc.$direct.String.append",
+          "samples": 34,
+          "fractionOfWindow": 0.03624733475479744
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/profile01/runtime/program",
+          "symbol": "rfc_wrap",
+          "decoded": "rfc_wrap",
+          "samples": 31,
+          "fractionOfWindow": 0.03304904051172708
+        }
+      ],
+      "topActiveOwners": [
+        {
+          "owner": "String.append",
+          "samples": 192,
+          "fractionOfWindow": 0.2046908315565032
+        },
+        {
+          "owner": null,
+          "samples": 97,
+          "fractionOfWindow": 0.10341151385927505
+        },
+        {
+          "owner": "p111q_body_text",
+          "samples": 83,
+          "fractionOfWindow": 0.08848614072494669
+        },
+        {
+          "owner": "p111q_memory",
+          "samples": 78,
+          "fractionOfWindow": 0.08315565031982942
+        },
+        {
+          "owner": "p111v_get",
+          "samples": 44,
+          "fractionOfWindow": 0.046908315565031986
+        },
+        {
+          "owner": "String.eq",
+          "samples": 38,
+          "fractionOfWindow": 0.04051172707889126
+        },
+        {
+          "owner": "p112w_ready",
+          "samples": 24,
+          "fractionOfWindow": 0.0255863539445629
+        },
+        {
+          "owner": "p111q_args",
+          "samples": 21,
+          "fractionOfWindow": 0.022388059701492536
+        }
+      ],
+      "topDispatchFids": [
+        {
+          "fid": 48366,
+          "samples": 192,
+          "fractionOfWindow": 0.2046908315565032
+        },
+        {
+          "fid": null,
+          "samples": 95,
+          "fractionOfWindow": 0.10127931769722814
+        },
+        {
+          "fid": 48174,
+          "samples": 83,
+          "fractionOfWindow": 0.08848614072494669
+        },
+        {
+          "fid": 46773,
+          "samples": 78,
+          "fractionOfWindow": 0.08315565031982942
+        },
+        {
+          "fid": 45216,
+          "samples": 44,
+          "fractionOfWindow": 0.046908315565031986
+        },
+        {
+          "fid": 48875,
+          "samples": 38,
+          "fractionOfWindow": 0.04051172707889126
+        },
+        {
+          "fid": 43632,
+          "samples": 24,
+          "fractionOfWindow": 0.0255863539445629
+        },
+        {
+          "fid": 46886,
+          "samples": 21,
+          "fractionOfWindow": 0.022388059701492536
+        }
+      ],
+      "approximateCpuStartSeconds": 330.176,
+      "approximateCpuEndSeconds": 360.192
+    },
+    {
+      "index": 12,
+      "sampleStart": 11256,
+      "sampleEndExclusive": 11569,
+      "samples": 313,
+      "lowSampleCount": false,
+      "unknownPhysicalLeafSamples": 8,
+      "unknownActiveOwnerSamples": 33,
+      "knownDispatchSamples": 282,
+      "topPhysicalLeaves": [
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/profile01/runtime/program",
+          "symbol": "p125_rt_take2",
+          "decoded": "p125_rt_take2",
+          "samples": 50,
+          "fractionOfWindow": 0.1597444089456869
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/profile01/runtime/program",
+          "symbol": "term_drop",
+          "decoded": "term_drop",
+          "samples": 46,
+          "fractionOfWindow": 0.14696485623003194
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/profile01/runtime/program",
+          "symbol": "p118_rt_extend1",
+          "decoded": "p118_rt_extend1",
+          "samples": 21,
+          "fractionOfWindow": 0.0670926517571885
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/profile01/runtime/program",
+          "symbol": "span_fade",
+          "decoded": "span_fade",
+          "samples": 15,
+          "fractionOfWindow": 0.04792332268370607
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/profile01/runtime/program",
+          "symbol": "heap_alloc",
+          "decoded": "heap_alloc",
+          "samples": 14,
+          "fractionOfWindow": 0.04472843450479233
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/profile01/runtime/program",
+          "symbol": "p118_destination_fill",
+          "decoded": "p118_destination_fill",
+          "samples": 12,
+          "fractionOfWindow": 0.038338658146964855
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/profile01/runtime/program",
+          "symbol": "p111_rt_op",
+          "decoded": "p111_rt_op",
+          "samples": 11,
+          "fractionOfWindow": 0.03514376996805112
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/profile01/runtime/program",
+          "symbol": "ctr_take",
+          "decoded": "ctr_take",
+          "samples": 10,
+          "fractionOfWindow": 0.03194888178913738
+        }
+      ],
+      "topActiveOwners": [
+        {
+          "owner": "String.append",
+          "samples": 50,
+          "fractionOfWindow": 0.1597444089456869
+        },
+        {
+          "owner": null,
+          "samples": 33,
+          "fractionOfWindow": 0.10543130990415335
+        },
+        {
+          "owner": "p111q_body_text",
+          "samples": 25,
+          "fractionOfWindow": 0.07987220447284345
+        },
+        {
+          "owner": "p111q_memory",
+          "samples": 21,
+          "fractionOfWindow": 0.0670926517571885
+        },
+        {
+          "owner": "p134e_next",
+          "samples": 16,
+          "fractionOfWindow": 0.051118210862619806
+        },
+        {
+          "owner": "String.eq",
+          "samples": 13,
+          "fractionOfWindow": 0.04153354632587859
+        },
+        {
+          "owner": "p134e_data_slice",
+          "samples": 11,
+          "fractionOfWindow": 0.03514376996805112
+        },
+        {
+          "owner": "p111v_get",
+          "samples": 10,
+          "fractionOfWindow": 0.03194888178913738
+        }
+      ],
+      "topDispatchFids": [
+        {
+          "fid": 48366,
+          "samples": 50,
+          "fractionOfWindow": 0.1597444089456869
+        },
+        {
+          "fid": null,
+          "samples": 31,
+          "fractionOfWindow": 0.09904153354632587
+        },
+        {
+          "fid": 48174,
+          "samples": 25,
+          "fractionOfWindow": 0.07987220447284345
+        },
+        {
+          "fid": 46773,
+          "samples": 21,
+          "fractionOfWindow": 0.0670926517571885
+        },
+        {
+          "fid": 48514,
+          "samples": 16,
+          "fractionOfWindow": 0.051118210862619806
+        },
+        {
+          "fid": 48875,
+          "samples": 13,
+          "fractionOfWindow": 0.04153354632587859
+        },
+        {
+          "fid": 40886,
+          "samples": 11,
+          "fractionOfWindow": 0.03514376996805112
+        },
+        {
+          "fid": 45216,
+          "samples": 10,
+          "fractionOfWindow": 0.03194888178913738
+        }
+      ],
+      "approximateCpuStartSeconds": 360.192,
+      "approximateCpuEndSeconds": 370.208
+    }
+  ],
+  "limitations": [
+    "Windows preserve capture order, including unknown physical leaves and dispatch contexts.",
+    "Displayed top lists are truncated; every fraction uses all samples in its window.",
+    "Active dispatch ownership is not an inclusive logical stack or allocation-origin record.",
+    "Changing dominant names suggests changing computations; compiler phases are not inferred.",
+    "Short windows are descriptive; no confidence intervals or speedup claims are implied."
+  ],
+  "identities": {
+    "analysis": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/profile01/capture/000-sample-compiler-self-source-phase134-qualified-n2-context/analysis.json",
+      "bytes": 1628366,
+      "sha256": "eef88be467cd061a0420113bb049337268c92b94d7677e87e4ccc931ba01e0f8"
+    },
+    "capture": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/profile01/capture/000-sample-compiler-self-source-phase134-qualified-n2-context/samples.txt",
+      "bytes": 89564,
+      "sha256": "f5e3f0e896b2654ba49bae65688f460a1ec79f875a06c5f4b16e6e34b78df9aa"
+    },
+    "binary": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/profile01/runtime/program",
+      "bytes": 17165912,
+      "sha256": "d8cdd8af9396a202bd6df3e0e5ec10a16c3c5f3dc2175827e8b88672335fe796"
+    },
+    "callers": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/profile01/capture/000-sample-compiler-self-source-phase134-qualified-n2-context/callers.txt",
+      "bytes": 149191,
+      "sha256": "f524eb1f112378d27658dc58ac9c9b1ebff8aa0753066f167bb3368b47805f2f"
+    },
+    "contexts": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/profile01/capture/000-sample-compiler-self-source-phase134-qualified-n2-context/contexts.txt",
+      "bytes": 69861,
+      "sha256": "48c6845e145201bd444192392d0b002e3530b91a496a23bbf32124328c865662"
+    },
+    "tool": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/profiler/attribute.py",
+      "bytes": 31869,
+      "sha256": "ad7390c2957122eb17e587d53ef3aedb0362bc3f280209a7d5a20cb95499aa55"
+    },
+    "dependencies": [
+      {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/profiler/analyze.py",
+        "bytes": 16597,
+        "sha256": "c6e15ec505367631dbf5f08e6c734e03a604323eb2a914180806b5dc5ffa72e0"
+      },
+      {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase68/parity-survey/sample-analysis-v2.py",
+        "bytes": 11982,
+        "sha256": "2000917d241d7ff3c4476353553e6c8249093772c96b7adf5397de94b3acf0e5"
+      }
+    ],
+    "table": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase127/libc-unwind01/table.json",
+      "bytes": 5195,
+      "sha256": "c02516dcbce965e55b259d0dcb71a1b98dc8404f242167c283d8625d6c76541d"
+    },
+    "owners": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/profile01/owners.json",
+      "bytes": 30761258,
+      "sha256": "2bdfed010eafeedb203d2aaeab166e588478fd7b9e82a340fb8a45373ecc86c3"
+    }
+  },
+  "pairing": {
+    "verified": true,
+    "receipt": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/profile01/capture/report.json",
+      "bytes": 18553,
+      "sha256": "b17e84c8d73cb4e7c4ab64ff19ddba6f28e73472d8cb0963d03b9b613160cadd"
+    },
+    "workload": "compiler-self-source",
+    "variant": "phase134-qualified-n2-context",
+    "round": 1,
+    "correct": true
+  },
+  "quality": {
+    "scope": "main_thread",
+    "main_thread_cpu_fraction": 0.9967823041858396,
+    "sampled_thread_cpu_fraction": 0.9967823041858396,
+    "minimum_process_cpu_fraction": 0.95,
+    "minimum_samples": 500,
+    "enough_samples": true,
+    "thread_lifecycle_complete": true,
+    "near_complete_process_cpu_coverage": true,
+    "usable_for_process_cpu_attribution": true,
+    "limitations": [],
+    "zero_loss": true,
+    "handler_intact": true,
+    "main_thread_shutdown": true,
+    "expected_clock_periods": 11569.3449395,
+    "delivered_per_expected_period": 0.999970185044892,
+    "delivery_plausible": true
+  }
+}

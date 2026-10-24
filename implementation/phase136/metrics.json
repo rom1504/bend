@@ -1,0 +1,389 @@
+{
+  "kind": "phase136-cold-investigation-metrics",
+  "complete": true,
+  "inputs": {
+    "coldGuard": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/cold-baseline-guard01/process.json",
+      "bytes": 1009,
+      "sha256": "2a22a80810cab5a837be949c52f619595a2bd3f8b0fa88988c533b62b4d58260"
+    },
+    "coldPipeline": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase134/p136-cold-baseline01/report.json",
+      "bytes": 15032,
+      "sha256": "ec27cc8d074e6d554e3d54916ad622df3c702dedea0a6ccb0c1f27e394ab1873"
+    },
+    "diagnosticAcquisition": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase134/p136-stages-native01/report.json",
+      "bytes": 14552,
+      "sha256": "bc755178733ebc432740929ccd379ac06acc97f9b6387ed37e068e5425f97023"
+    },
+    "stageRequest": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/staged-full01/report.json",
+      "bytes": 6019,
+      "sha256": "58a5f73efa48d55f034bbbcf5fcacbd003bbfe04294b45abba562094c83b566f"
+    },
+    "stageSmallScreen": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/small-screen01/report.json",
+      "bytes": 6490,
+      "sha256": "bafc7a14487f93799175d8f2a8ecc7b54226f0724323843224f15af687315f66"
+    },
+    "queryCensus": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/query-census02/report.json",
+      "bytes": 22820,
+      "sha256": "bee401d3d7652bd38ef16dcbd4b513d4c2ae7323d991e417ec06508f248d6098"
+    },
+    "machineReplay": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p136-machine-replay01/report.json",
+      "bytes": 4821,
+      "sha256": "eff94c297bb0da9162f0b12e39dfaa685ad65fd95dfa9f7948b021044efa11a2"
+    }
+  },
+  "coldSourceToExecutable": {
+    "guardSeconds": 375.92320693307556,
+    "innerPipelineSeconds": 374.93890550988726,
+    "peakTreeRssBytes": 1018036224,
+    "exactQbe": {
+      "bytes": 107059385,
+      "sha256": "f3ff63b04b58e5a5b92be781d0d1cba8cc574a37765cbf66d817c3d38f4b576e"
+    },
+    "observations": 1
+  },
+  "stagedRequest": {
+    "nativeSeconds": 354.3309101299383,
+    "cpuSeconds": 354.30633400000005,
+    "stagesSeconds": 354.248,
+    "peakRssKiB": 971984,
+    "byteExact": true,
+    "rows": [
+      {
+        "stage": "base_prepare",
+        "seconds": 0.205,
+        "shareOfStagedInterval": 0.000578690634809512
+      },
+      {
+        "stage": "parse_import",
+        "seconds": 44.745,
+        "shareOfStagedInterval": 0.12630981685147127
+      },
+      {
+        "stage": "check",
+        "seconds": 53.149,
+        "shareOfStagedInterval": 0.15003330999751585
+      },
+      {
+        "stage": "driver_report",
+        "seconds": 1.812,
+        "shareOfStagedInterval": 0.0051150606354870036
+      },
+      {
+        "stage": "ownership",
+        "seconds": 0.144,
+        "shareOfStagedInterval": 0.0004064948849393645
+      },
+      {
+        "stage": "compile_eligibility",
+        "seconds": 0.006,
+        "shareOfStagedInterval": 1.693728687247352e-05
+      },
+      {
+        "stage": "context",
+        "seconds": 3.273,
+        "shareOfStagedInterval": 0.009239289988934305
+      },
+      {
+        "stage": "annotation",
+        "seconds": 13.546,
+        "shareOfStagedInterval": 0.038238747995754385
+      },
+      {
+        "stage": "annotation_check",
+        "seconds": 5.11,
+        "shareOfStagedInterval": 0.014424922653056615
+      },
+      {
+        "stage": "erasure",
+        "seconds": 30.326,
+        "shareOfStagedInterval": 0.085606693615772
+      },
+      {
+        "stage": "runtime_admission",
+        "seconds": 0.027,
+        "shareOfStagedInterval": 7.621779092613084e-05
+      },
+      {
+        "stage": "raw_lowering",
+        "seconds": 59.411,
+        "shareOfStagedInterval": 0.1677101917300874
+      },
+      {
+        "stage": "open_verify",
+        "seconds": 10.983,
+        "shareOfStagedInterval": 0.03100370362006278
+      },
+      {
+        "stage": "inline_commit",
+        "seconds": 17.073,
+        "shareOfStagedInterval": 0.048195049795623404
+      },
+      {
+        "stage": "ranges_commit",
+        "seconds": 9.013,
+        "shareOfStagedInterval": 0.02544262776360064
+      },
+      {
+        "stage": "final_verify_borrow",
+        "seconds": 40.665,
+        "shareOfStagedInterval": 0.11479246177818929
+      },
+      {
+        "stage": "render",
+        "seconds": 64.76,
+        "shareOfStagedInterval": 0.18280978297689754
+      }
+    ],
+    "scope": "Distinct checked diagnostic executable, ordinary computations; no downstream QBE work. Stage sum excludes initial file reads and final metadata output. Not a clean speed comparison with qualified baseline."
+  },
+  "smallDiagnosticScreen": {
+    "complete": true,
+    "rows": [
+      {
+        "round": 0,
+        "name": "lexer",
+        "mode": "ordinary",
+        "report": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/small-lexer-0-ordinary/report.json",
+        "seconds": 1.4700939620379359,
+        "stages": null
+      },
+      {
+        "round": 0,
+        "name": "lexer",
+        "mode": "stages",
+        "report": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/small-lexer-0-stages/report.json",
+        "seconds": 1.4634581599384546,
+        "stages": {
+          "base_prepare": 207,
+          "parse_import": 53,
+          "check": 41,
+          "driver_report": 9,
+          "ownership": 8,
+          "compile_eligibility": 0,
+          "context": 21,
+          "annotation": 16,
+          "annotation_check": 3,
+          "erasure": 25,
+          "runtime_admission": 0,
+          "raw_lowering": 112,
+          "open_verify": 68,
+          "inline_commit": 273,
+          "ranges_commit": 152,
+          "final_verify_borrow": 181,
+          "render": 276
+        }
+      },
+      {
+        "round": 0,
+        "name": "coverage-closures-256",
+        "mode": "ordinary",
+        "report": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/small-coverage-closures-256-0-ordinary/report.json",
+        "seconds": 0.4326397329568863,
+        "stages": null
+      },
+      {
+        "round": 0,
+        "name": "coverage-closures-256",
+        "mode": "stages",
+        "report": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/small-coverage-closures-256-0-stages/report.json",
+        "seconds": 0.42502677300944924,
+        "stages": {
+          "base_prepare": 207,
+          "parse_import": 16,
+          "check": 14,
+          "driver_report": 8,
+          "ownership": 6,
+          "compile_eligibility": 0,
+          "context": 11,
+          "annotation": 7,
+          "annotation_check": 1,
+          "erasure": 10,
+          "runtime_admission": 1,
+          "raw_lowering": 29,
+          "open_verify": 11,
+          "inline_commit": 4,
+          "ranges_commit": 6,
+          "final_verify_borrow": 20,
+          "render": 56
+        }
+      },
+      {
+        "round": 0,
+        "name": "coverage-map-churn-128",
+        "mode": "ordinary",
+        "report": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/small-coverage-map-churn-128-0-ordinary/report.json",
+        "seconds": 1.9360210259910673,
+        "stages": null
+      },
+      {
+        "round": 0,
+        "name": "coverage-map-churn-128",
+        "mode": "stages",
+        "report": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/small-coverage-map-churn-128-0-stages/report.json",
+        "seconds": 1.9666093930136412,
+        "stages": {
+          "base_prepare": 205,
+          "parse_import": 20,
+          "check": 10,
+          "driver_report": 15,
+          "ownership": 7,
+          "compile_eligibility": 0,
+          "context": 7,
+          "annotation": 55,
+          "annotation_check": 15,
+          "erasure": 60,
+          "runtime_admission": 1,
+          "raw_lowering": 495,
+          "open_verify": 157,
+          "inline_commit": 27,
+          "ranges_commit": 19,
+          "final_verify_borrow": 267,
+          "render": 589
+        }
+      },
+      {
+        "round": 1,
+        "name": "lexer",
+        "mode": "stages",
+        "report": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/small-lexer-1-stages/report.json",
+        "seconds": 1.4516313909552991,
+        "stages": {
+          "base_prepare": 206,
+          "parse_import": 52,
+          "check": 41,
+          "driver_report": 9,
+          "ownership": 7,
+          "compile_eligibility": 1,
+          "context": 20,
+          "annotation": 16,
+          "annotation_check": 4,
+          "erasure": 23,
+          "runtime_admission": 1,
+          "raw_lowering": 109,
+          "open_verify": 67,
+          "inline_commit": 271,
+          "ranges_commit": 152,
+          "final_verify_borrow": 181,
+          "render": 273
+        }
+      },
+      {
+        "round": 1,
+        "name": "lexer",
+        "mode": "ordinary",
+        "report": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/small-lexer-1-ordinary/report.json",
+        "seconds": 1.4885727481450886,
+        "stages": null
+      },
+      {
+        "round": 1,
+        "name": "coverage-closures-256",
+        "mode": "stages",
+        "report": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/small-coverage-closures-256-1-stages/report.json",
+        "seconds": 0.42703667702153325,
+        "stages": {
+          "base_prepare": 211,
+          "parse_import": 16,
+          "check": 14,
+          "driver_report": 8,
+          "ownership": 6,
+          "compile_eligibility": 1,
+          "context": 10,
+          "annotation": 6,
+          "annotation_check": 1,
+          "erasure": 10,
+          "runtime_admission": 0,
+          "raw_lowering": 29,
+          "open_verify": 11,
+          "inline_commit": 4,
+          "ranges_commit": 6,
+          "final_verify_borrow": 20,
+          "render": 56
+        }
+      },
+      {
+        "round": 1,
+        "name": "coverage-closures-256",
+        "mode": "ordinary",
+        "report": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/small-coverage-closures-256-1-ordinary/report.json",
+        "seconds": 0.42266518995165825,
+        "stages": null
+      },
+      {
+        "round": 1,
+        "name": "coverage-map-churn-128",
+        "mode": "stages",
+        "report": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/small-coverage-map-churn-128-1-stages/report.json",
+        "seconds": 1.962151604006067,
+        "stages": {
+          "base_prepare": 206,
+          "parse_import": 20,
+          "check": 11,
+          "driver_report": 15,
+          "ownership": 8,
+          "compile_eligibility": 1,
+          "context": 10,
+          "annotation": 56,
+          "annotation_check": 15,
+          "erasure": 61,
+          "runtime_admission": 1,
+          "raw_lowering": 491,
+          "open_verify": 155,
+          "inline_commit": 26,
+          "ranges_commit": 19,
+          "final_verify_borrow": 258,
+          "render": 591
+        }
+      },
+      {
+        "round": 1,
+        "name": "coverage-map-churn-128",
+        "mode": "ordinary",
+        "report": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/small-coverage-map-churn-128-1-ordinary/report.json",
+        "seconds": 1.9433042160235345,
+        "stages": null
+      }
+    ],
+    "ratios": {
+      "coverage-closures-256": 0.9962101552431861,
+      "coverage-map-churn-128": 1.012743390131278,
+      "lexer": 0.9852713524171923
+    },
+    "scope": "Two counterbalanced pairs per small case, same diagnostic native executable. Exact frozen QBE gates. Sparse diagnostic-overhead screen, not a clean compiler improvement or zero-overhead proof."
+  },
+  "queryCensus": {
+    "finiteControls": 14,
+    "rows": 30,
+    "scope": "Logical list visits on actual source/erased KDef books from three checked requests. Appended Bend wrappers preserve original query outputs. Diagnostic wrappers and equivalence checks add work: elapsed time is diagnostic cost, not candidate performance or measured whole-request call frequency. Delegated index work is opaque and explicitly counted; absence of list visits is not zero cost."
+  },
+  "machineReplay": {
+    "jobs": [
+      {
+        "label": "qbe",
+        "seconds": 8.727200207067654
+      },
+      {
+        "label": "assemble",
+        "seconds": 4.873813763959333
+      },
+      {
+        "label": "link",
+        "seconds": 0.2656990480609238
+      }
+    ],
+    "buildSeconds": 13.86671301908791,
+    "objectMatchesPipedBaseline": true,
+    "completeElfMatchesPipedBaseline": false,
+    "scope": "Same exact QBE/runtime/build recipe, separate replay on retained QBE, not additive to overlapped baseline clock."
+  },
+  "promotion": false,
+  "selectedCompilerChanged": false,
+  "upstreamComparison": "No fresh upstream run; Phase134 three-request ratio1.41377 remains separate from this full-source workload."
+}

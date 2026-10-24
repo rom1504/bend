@@ -1,0 +1,1795 @@
+{
+  "complete": true,
+  "targetsRun": false,
+  "kind": "phase136-historical-profile-reanalysis",
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase136/profiling/history-v01.py",
+      "bytes": 4421,
+      "sha256": "5883da170d89482cd40d220b6a2357f0366a1fed468a14803e1f057ed3c045a8"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/implementation/phase131/full-context-results.json",
+      "bytes": 163025,
+      "sha256": "fec85ba8091f202831ebf79a76d75c0e2c03b541be57ff7d5f4b4518633270f7"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/final-full-context-analysis01/report.json",
+      "bytes": 1691048,
+      "sha256": "9356ce1db8f0d6e29e9c7b1b0585a550f71ff929c5b888048c2e3abe7b32949b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/final-full-context-analysis01/timeline.json",
+      "bytes": 67139,
+      "sha256": "633e2e961f859f18e4270a32fc9679f670c744c4d9a1b2727b14de681cc0c70b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p131-final-native01-n2/program",
+      "bytes": 17132048,
+      "sha256": "2fae36020081ccc5cbfb847caf0b285b762387327e4bb44e1d62d96d1affd5dc"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/final-context01/runtime/program",
+      "bytes": 17145528,
+      "sha256": "7bcd4fea4e839ad65bc58218451bd7d57519c091b8c329a0e2652cb75ab786a0"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/combined-literals-source01/compiler.bend",
+      "bytes": 2667581,
+      "sha256": "1bc5930edcf80cda6c3572645df3c846fa631a83c2b936f20c83b05e0a6728f9"
+    }
+  ],
+  "historicalPhase": 131,
+  "totalSamples": 11852,
+  "quality": {
+    "scope": "main_thread",
+    "main_thread_cpu_fraction": 0.9999950022067149,
+    "sampled_thread_cpu_fraction": 0.9999950022067149,
+    "minimum_process_cpu_fraction": 0.95,
+    "minimum_samples": 500,
+    "enough_samples": true,
+    "thread_lifecycle_complete": true,
+    "near_complete_process_cpu_coverage": true,
+    "usable_for_process_cpu_attribution": true,
+    "limitations": [],
+    "zero_loss": true,
+    "handler_intact": true,
+    "main_thread_shutdown": true,
+    "expected_clock_periods": 11852.4592894375,
+    "delivered_per_expected_period": 0.9999612494397758,
+    "delivery_plausible": true
+  },
+  "rows": [
+    {
+      "owner": "nc_ctor_owned",
+      "samples": 887,
+      "fractionOfAll": 0.0748396895038812,
+      "physicalIntersections": {
+        "dropAndFade": {
+          "samples": 470,
+          "fractionOfAll": 0.03965575430307121,
+          "fractionOfOwner": 0.5298759864712514
+        },
+        "borrowedStringEquality": {
+          "samples": 87,
+          "fractionOfAll": 0.007340533243334458,
+          "fractionOfOwner": 0.09808342728297632
+        },
+        "runtimeTake": {
+          "samples": 58,
+          "fractionOfAll": 0.0048936888288896386,
+          "fractionOfOwner": 0.06538895152198422
+        },
+        "runtimeKeepSink": {
+          "samples": 126,
+          "fractionOfAll": 0.010631117111036112,
+          "fractionOfOwner": 0.14205186020293123
+        }
+      },
+      "topLeaves": [
+        {
+          "leaf": "span_fade",
+          "samples": 238
+        },
+        {
+          "leaf": "term_drop",
+          "samples": 232
+        },
+        {
+          "leaf": "$p118borrow.read.p88_string_eq_go",
+          "samples": 87
+        },
+        {
+          "leaf": "p111_rt_sink",
+          "samples": 76
+        },
+        {
+          "leaf": "p111_rt_keep",
+          "samples": 50
+        },
+        {
+          "leaf": "$direct.nc_ctor_owned",
+          "samples": 45
+        },
+        {
+          "leaf": "ctr_take",
+          "samples": 44
+        },
+        {
+          "leaf": "p125_rt_take2.cold",
+          "samples": 31
+        }
+      ]
+    },
+    {
+      "owner": "lookup",
+      "samples": 644,
+      "fractionOfAll": 0.05433682078974013,
+      "physicalIntersections": {
+        "dropAndFade": {
+          "samples": 314,
+          "fractionOfAll": 0.026493418832264595,
+          "fractionOfOwner": 0.48757763975155277
+        },
+        "borrowedStringEquality": {
+          "samples": 69,
+          "fractionOfAll": 0.005821802227472157,
+          "fractionOfOwner": 0.10714285714285714
+        },
+        "runtimeTake": {
+          "samples": 59,
+          "fractionOfAll": 0.004978062774215322,
+          "fractionOfOwner": 0.09161490683229814
+        },
+        "runtimeKeepSink": {
+          "samples": 76,
+          "fractionOfAll": 0.00641241984475194,
+          "fractionOfOwner": 0.11801242236024845
+        }
+      },
+      "topLeaves": [
+        {
+          "leaf": "span_fade",
+          "samples": 186
+        },
+        {
+          "leaf": "term_drop",
+          "samples": 128
+        },
+        {
+          "leaf": "$p118borrow.read.p88_string_eq_go",
+          "samples": 69
+        },
+        {
+          "leaf": "p111_rt_sink",
+          "samples": 40
+        },
+        {
+          "leaf": "p111_rt_keep",
+          "samples": 36
+        },
+        {
+          "leaf": "p125_rt_take2.cold",
+          "samples": 27
+        },
+        {
+          "leaf": "ctr_take",
+          "samples": 24
+        },
+        {
+          "leaf": "$direct.lookup",
+          "samples": 24
+        }
+      ]
+    },
+    {
+      "owner": "f_find",
+      "samples": 616,
+      "fractionOfAll": 0.05197435032062099,
+      "physicalIntersections": {
+        "dropAndFade": {
+          "samples": 314,
+          "fractionOfAll": 0.026493418832264595,
+          "fractionOfOwner": 0.5097402597402597
+        },
+        "borrowedStringEquality": {
+          "samples": 108,
+          "fractionOfAll": 0.00911238609517381,
+          "fractionOfOwner": 0.17532467532467533
+        },
+        "runtimeTake": {
+          "samples": 40,
+          "fractionOfAll": 0.0033749578130273373,
+          "fractionOfOwner": 0.06493506493506493
+        },
+        "runtimeKeepSink": {
+          "samples": 52,
+          "fractionOfAll": 0.004387445156935539,
+          "fractionOfOwner": 0.08441558441558442
+        }
+      },
+      "topLeaves": [
+        {
+          "leaf": "span_fade",
+          "samples": 184
+        },
+        {
+          "leaf": "term_drop",
+          "samples": 130
+        },
+        {
+          "leaf": "$p118borrow.read.p88_string_eq_go",
+          "samples": 108
+        },
+        {
+          "leaf": "p111_rt_sink",
+          "samples": 30
+        },
+        {
+          "leaf": "p125_rt_take2.cold",
+          "samples": 28
+        },
+        {
+          "leaf": "ctr_take",
+          "samples": 28
+        },
+        {
+          "leaf": "p111_rt_keep",
+          "samples": 22
+        },
+        {
+          "leaf": "$p126scc.1013",
+          "samples": 13
+        }
+      ]
+    },
+    {
+      "owner": "has_name",
+      "samples": 346,
+      "fractionOfAll": 0.029193385082686468,
+      "physicalIntersections": {
+        "dropAndFade": {
+          "samples": 0,
+          "fractionOfAll": 0.0,
+          "fractionOfOwner": 0.0
+        },
+        "borrowedStringEquality": {
+          "samples": 260,
+          "fractionOfAll": 0.021937225784677692,
+          "fractionOfOwner": 0.7514450867052023
+        },
+        "runtimeTake": {
+          "samples": 0,
+          "fractionOfAll": 0.0,
+          "fractionOfOwner": 0.0
+        },
+        "runtimeKeepSink": {
+          "samples": 0,
+          "fractionOfAll": 0.0,
+          "fractionOfOwner": 0.0
+        }
+      },
+      "topLeaves": [
+        {
+          "leaf": "$p118borrow.read.p88_string_eq_go",
+          "samples": 260
+        },
+        {
+          "leaf": "$p118borrow.read.has_name",
+          "samples": 49
+        },
+        {
+          "leaf": "p111_rt_special_ctor",
+          "samples": 36
+        },
+        {
+          "leaf": "$p118borrow.read.p98_eq_finish",
+          "samples": 1
+        }
+      ]
+    },
+    {
+      "owner": "p111v_get",
+      "samples": 525,
+      "fractionOfAll": 0.0442963212959838,
+      "physicalIntersections": {
+        "dropAndFade": {
+          "samples": 220,
+          "fractionOfAll": 0.018562267971650354,
+          "fractionOfOwner": 0.41904761904761906
+        },
+        "borrowedStringEquality": {
+          "samples": 8,
+          "fractionOfAll": 0.0006749915626054674,
+          "fractionOfOwner": 0.015238095238095238
+        },
+        "runtimeTake": {
+          "samples": 86,
+          "fractionOfAll": 0.007256159298008775,
+          "fractionOfOwner": 0.16380952380952382
+        },
+        "runtimeKeepSink": {
+          "samples": 24,
+          "fractionOfAll": 0.0020249746878164025,
+          "fractionOfOwner": 0.045714285714285714
+        }
+      },
+      "topLeaves": [
+        {
+          "leaf": "term_drop",
+          "samples": 111
+        },
+        {
+          "leaf": "span_fade",
+          "samples": 109
+        },
+        {
+          "leaf": "$p118borrow.read.index_hash",
+          "samples": 92
+        },
+        {
+          "leaf": "p125_rt_take2",
+          "samples": 39
+        },
+        {
+          "leaf": "p125_rt_take4",
+          "samples": 31
+        },
+        {
+          "leaf": "$direct.index_find",
+          "samples": 22
+        },
+        {
+          "leaf": "$p128borrow.owned.p88_string_eq_go",
+          "samples": 20
+        },
+        {
+          "leaf": "p111_rt_sink",
+          "samples": 17
+        }
+      ]
+    },
+    {
+      "owner": "index_remove",
+      "samples": 417,
+      "fractionOfAll": 0.03518393520080999,
+      "physicalIntersections": {
+        "dropAndFade": {
+          "samples": 216,
+          "fractionOfAll": 0.01822477219034762,
+          "fractionOfOwner": 0.5179856115107914
+        },
+        "borrowedStringEquality": {
+          "samples": 0,
+          "fractionOfAll": 0.0,
+          "fractionOfOwner": 0.0
+        },
+        "runtimeTake": {
+          "samples": 23,
+          "fractionOfAll": 0.0019406007424907189,
+          "fractionOfOwner": 0.05515587529976019
+        },
+        "runtimeKeepSink": {
+          "samples": 34,
+          "fractionOfAll": 0.0028687141410732365,
+          "fractionOfOwner": 0.0815347721822542
+        }
+      },
+      "topLeaves": [
+        {
+          "leaf": "span_fade",
+          "samples": 149
+        },
+        {
+          "leaf": "term_drop",
+          "samples": 67
+        },
+        {
+          "leaf": "ctr_take",
+          "samples": 49
+        },
+        {
+          "leaf": "$direct.index_remove",
+          "samples": 26
+        },
+        {
+          "leaf": "p111_rt_keep",
+          "samples": 19
+        },
+        {
+          "leaf": "[unknown]",
+          "samples": 16
+        },
+        {
+          "leaf": "p111_rt_sink",
+          "samples": 15
+        },
+        {
+          "leaf": "$direct.dn",
+          "samples": 14
+        }
+      ]
+    }
+  ],
+  "windows": [
+    {
+      "index": 0,
+      "approximateCpuStartSeconds": 0.0,
+      "approximateCpuEndSeconds": 30.016,
+      "samples": 938,
+      "topActiveOwners": [
+        {
+          "owner": "f_find",
+          "samples": 347,
+          "fractionOfWindow": 0.3699360341151386
+        },
+        {
+          "owner": "f_eq",
+          "samples": 36,
+          "fractionOfWindow": 0.03837953091684435
+        },
+        {
+          "owner": "f_grow_base",
+          "samples": 28,
+          "fractionOfWindow": 0.029850746268656716
+        },
+        {
+          "owner": "f_name_chars",
+          "samples": 28,
+          "fractionOfWindow": 0.029850746268656716
+        },
+        {
+          "owner": "f_atom_base",
+          "samples": 25,
+          "fractionOfWindow": 0.026652452025586353
+        },
+        {
+          "owner": "f_lex_symbol",
+          "samples": 23,
+          "fractionOfWindow": 0.024520255863539446
+        },
+        {
+          "owner": null,
+          "samples": 20,
+          "fractionOfWindow": 0.021321961620469083
+        },
+        {
+          "owner": "f_triple_op",
+          "samples": 20,
+          "fractionOfWindow": 0.021321961620469083
+        }
+      ],
+      "topPhysicalLeaves": [
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/final-context01/runtime/program",
+          "symbol": "term_drop",
+          "decoded": "term_drop",
+          "samples": 194,
+          "fractionOfWindow": 0.2068230277185501
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/final-context01/runtime/program",
+          "symbol": "span_fade",
+          "decoded": "span_fade",
+          "samples": 160,
+          "fractionOfWindow": 0.17057569296375266
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/final-context01/runtime/program",
+          "symbol": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_112_56_56_95_115_116_114_105_110_103_95_101_113_95_103_111_",
+          "decoded": "p113d_FID_$p118borrow.read.p88_string_eq_go",
+          "samples": 102,
+          "fractionOfWindow": 0.10874200426439233
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/final-context01/runtime/program",
+          "symbol": "p111_rt_sink",
+          "decoded": "p111_rt_sink",
+          "samples": 43,
+          "fractionOfWindow": 0.04584221748400853
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/final-context01/runtime/program",
+          "symbol": "p111_rt_keep",
+          "decoded": "p111_rt_keep",
+          "samples": 40,
+          "fractionOfWindow": 0.042643923240938165
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/final-context01/runtime/program",
+          "symbol": "p125_rt_take2",
+          "decoded": "p125_rt_take2",
+          "samples": 28,
+          "fractionOfWindow": 0.029850746268656716
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/final-context01/runtime/program",
+          "symbol": "work_loop",
+          "decoded": "work_loop",
+          "samples": 28,
+          "fractionOfWindow": 0.029850746268656716
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/final-context01/runtime/program",
+          "symbol": "ctr_take",
+          "decoded": "ctr_take",
+          "samples": 25,
+          "fractionOfWindow": 0.026652452025586353
+        }
+      ]
+    },
+    {
+      "index": 1,
+      "approximateCpuStartSeconds": 30.016,
+      "approximateCpuEndSeconds": 60.032,
+      "samples": 938,
+      "topActiveOwners": [
+        {
+          "owner": "f_find",
+          "samples": 269,
+          "fractionOfWindow": 0.2867803837953092
+        },
+        {
+          "owner": "lookup",
+          "samples": 94,
+          "fractionOfWindow": 0.10021321961620469
+        },
+        {
+          "owner": "constructor_exists",
+          "samples": 71,
+          "fractionOfWindow": 0.07569296375266525
+        },
+        {
+          "owner": "index_remove",
+          "samples": 62,
+          "fractionOfWindow": 0.06609808102345416
+        },
+        {
+          "owner": "f_eq",
+          "samples": 47,
+          "fractionOfWindow": 0.050106609808102345
+        },
+        {
+          "owner": "p88_string_eq",
+          "samples": 38,
+          "fractionOfWindow": 0.04051172707889126
+        },
+        {
+          "owner": "f_context_material_deferred",
+          "samples": 22,
+          "fractionOfWindow": 0.023454157782515993
+        },
+        {
+          "owner": null,
+          "samples": 22,
+          "fractionOfWindow": 0.023454157782515993
+        }
+      ],
+      "topPhysicalLeaves": [
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/final-context01/runtime/program",
+          "symbol": "span_fade",
+          "decoded": "span_fade",
+          "samples": 182,
+          "fractionOfWindow": 0.19402985074626866
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/final-context01/runtime/program",
+          "symbol": "term_drop",
+          "decoded": "term_drop",
+          "samples": 170,
+          "fractionOfWindow": 0.1812366737739872
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/final-context01/runtime/program",
+          "symbol": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_112_56_56_95_115_116_114_105_110_103_95_101_113_95_103_111_",
+          "decoded": "p113d_FID_$p118borrow.read.p88_string_eq_go",
+          "samples": 105,
+          "fractionOfWindow": 0.11194029850746269
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/final-context01/runtime/program",
+          "symbol": "p111_rt_sink",
+          "decoded": "p111_rt_sink",
+          "samples": 38,
+          "fractionOfWindow": 0.04051172707889126
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/final-context01/runtime/program",
+          "symbol": "p111_rt_keep",
+          "decoded": "p111_rt_keep",
+          "samples": 34,
+          "fractionOfWindow": 0.03624733475479744
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/final-context01/runtime/program",
+          "symbol": "ctr_take",
+          "decoded": "ctr_take",
+          "samples": 33,
+          "fractionOfWindow": 0.035181236673773986
+        },
+        {
+          "object": "/usr/lib/x86_64-linux-gnu/libc-2.31.so",
+          "symbol": null,
+          "decoded": null,
+          "samples": 26,
+          "fractionOfWindow": 0.02771855010660981
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/final-context01/runtime/program",
+          "symbol": "work_loop",
+          "decoded": "work_loop",
+          "samples": 26,
+          "fractionOfWindow": 0.02771855010660981
+        }
+      ]
+    },
+    {
+      "index": 2,
+      "approximateCpuStartSeconds": 60.032,
+      "approximateCpuEndSeconds": 90.048,
+      "samples": 938,
+      "topActiveOwners": [
+        {
+          "owner": "lookup",
+          "samples": 294,
+          "fractionOfWindow": 0.31343283582089554
+        },
+        {
+          "owner": "index_remove",
+          "samples": 219,
+          "fractionOfWindow": 0.23347547974413646
+        },
+        {
+          "owner": "p88_string_eq",
+          "samples": 133,
+          "fractionOfWindow": 0.1417910447761194
+        },
+        {
+          "owner": "index_remove_step",
+          "samples": 64,
+          "fractionOfWindow": 0.06823027718550106
+        },
+        {
+          "owner": "dg_event_publish",
+          "samples": 44,
+          "fractionOfWindow": 0.046908315565031986
+        },
+        {
+          "owner": null,
+          "samples": 19,
+          "fractionOfWindow": 0.02025586353944563
+        },
+        {
+          "owner": "check_node",
+          "samples": 11,
+          "fractionOfWindow": 0.011727078891257996
+        },
+        {
+          "owner": "core_beta",
+          "samples": 11,
+          "fractionOfWindow": 0.011727078891257996
+        }
+      ],
+      "topPhysicalLeaves": [
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/final-context01/runtime/program",
+          "symbol": "span_fade",
+          "decoded": "span_fade",
+          "samples": 193,
+          "fractionOfWindow": 0.20575692963752665
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/final-context01/runtime/program",
+          "symbol": "term_drop",
+          "decoded": "term_drop",
+          "samples": 162,
+          "fractionOfWindow": 0.17270788912579957
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/final-context01/runtime/program",
+          "symbol": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_112_56_56_95_115_116_114_105_110_103_95_101_113_95_103_111_",
+          "decoded": "p113d_FID_$p118borrow.read.p88_string_eq_go",
+          "samples": 122,
+          "fractionOfWindow": 0.1300639658848614
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/final-context01/runtime/program",
+          "symbol": "ctr_take",
+          "decoded": "ctr_take",
+          "samples": 47,
+          "fractionOfWindow": 0.050106609808102345
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/final-context01/runtime/program",
+          "symbol": "p111_rt_keep",
+          "decoded": "p111_rt_keep",
+          "samples": 38,
+          "fractionOfWindow": 0.04051172707889126
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/final-context01/runtime/program",
+          "symbol": "p111_rt_sink",
+          "decoded": "p111_rt_sink",
+          "samples": 35,
+          "fractionOfWindow": 0.03731343283582089
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/final-context01/runtime/program",
+          "symbol": "p125_rt_take2.cold",
+          "decoded": "p125_rt_take2.cold",
+          "samples": 29,
+          "fractionOfWindow": 0.03091684434968017
+        },
+        {
+          "object": "/usr/lib/x86_64-linux-gnu/libc-2.31.so",
+          "symbol": null,
+          "decoded": null,
+          "samples": 24,
+          "fractionOfWindow": 0.0255863539445629
+        }
+      ]
+    },
+    {
+      "index": 3,
+      "approximateCpuStartSeconds": 90.048,
+      "approximateCpuEndSeconds": 120.064,
+      "samples": 938,
+      "topActiveOwners": [
+        {
+          "owner": "has_name",
+          "samples": 195,
+          "fractionOfWindow": 0.20788912579957355
+        },
+        {
+          "owner": "index_remove",
+          "samples": 120,
+          "fractionOfWindow": 0.1279317697228145
+        },
+        {
+          "owner": "p88_string_eq",
+          "samples": 110,
+          "fractionOfWindow": 0.11727078891257996
+        },
+        {
+          "owner": "constructor_exists",
+          "samples": 88,
+          "fractionOfWindow": 0.09381663113006397
+        },
+        {
+          "owner": "lookup",
+          "samples": 84,
+          "fractionOfWindow": 0.08955223880597014
+        },
+        {
+          "owner": "dr_own_names",
+          "samples": 48,
+          "fractionOfWindow": 0.0511727078891258
+        },
+        {
+          "owner": "dg_event_publish",
+          "samples": 33,
+          "fractionOfWindow": 0.035181236673773986
+        },
+        {
+          "owner": "index_remove_step",
+          "samples": 31,
+          "fractionOfWindow": 0.03304904051172708
+        }
+      ],
+      "topPhysicalLeaves": [
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/final-context01/runtime/program",
+          "symbol": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_112_56_56_95_115_116_114_105_110_103_95_101_113_95_103_111_",
+          "decoded": "p113d_FID_$p118borrow.read.p88_string_eq_go",
+          "samples": 278,
+          "fractionOfWindow": 0.29637526652452023
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/final-context01/runtime/program",
+          "symbol": "term_drop",
+          "decoded": "term_drop",
+          "samples": 124,
+          "fractionOfWindow": 0.13219616204690832
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/final-context01/runtime/program",
+          "symbol": "span_fade",
+          "decoded": "span_fade",
+          "samples": 120,
+          "fractionOfWindow": 0.1279317697228145
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/final-context01/runtime/program",
+          "symbol": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_104_97_115_95_110_97_109_101_",
+          "decoded": "p113d_FID_$p118borrow.read.has_name",
+          "samples": 43,
+          "fractionOfWindow": 0.04584221748400853
+        },
+        {
+          "object": "/usr/lib/x86_64-linux-gnu/libc-2.31.so",
+          "symbol": null,
+          "decoded": null,
+          "samples": 35,
+          "fractionOfWindow": 0.03731343283582089
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/final-context01/runtime/program",
+          "symbol": "p111_rt_special_ctor",
+          "decoded": "p111_rt_special_ctor",
+          "samples": 34,
+          "fractionOfWindow": 0.03624733475479744
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/final-context01/runtime/program",
+          "symbol": "p111_rt_sink",
+          "decoded": "p111_rt_sink",
+          "samples": 26,
+          "fractionOfWindow": 0.02771855010660981
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/final-context01/runtime/program",
+          "symbol": "ctr_take",
+          "decoded": "ctr_take",
+          "samples": 23,
+          "fractionOfWindow": 0.024520255863539446
+        }
+      ]
+    },
+    {
+      "index": 4,
+      "approximateCpuStartSeconds": 120.064,
+      "approximateCpuEndSeconds": 150.08,
+      "samples": 938,
+      "topActiveOwners": [
+        {
+          "owner": "nc_ctor_owned",
+          "samples": 433,
+          "fractionOfWindow": 0.4616204690831556
+        },
+        {
+          "owner": "has_name",
+          "samples": 151,
+          "fractionOfWindow": 0.16098081023454158
+        },
+        {
+          "owner": "lookup",
+          "samples": 60,
+          "fractionOfWindow": 0.06396588486140725
+        },
+        {
+          "owner": "nb_contains",
+          "samples": 25,
+          "fractionOfWindow": 0.026652452025586353
+        },
+        {
+          "owner": "subst_node",
+          "samples": 20,
+          "fractionOfWindow": 0.021321961620469083
+        },
+        {
+          "owner": "norm_max_book",
+          "samples": 20,
+          "fractionOfWindow": 0.021321961620469083
+        },
+        {
+          "owner": "core_rebuild",
+          "samples": 11,
+          "fractionOfWindow": 0.011727078891257996
+        },
+        {
+          "owner": "ka_node",
+          "samples": 11,
+          "fractionOfWindow": 0.011727078891257996
+        }
+      ],
+      "topPhysicalLeaves": [
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/final-context01/runtime/program",
+          "symbol": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_112_56_56_95_115_116_114_105_110_103_95_101_113_95_103_111_",
+          "decoded": "p113d_FID_$p118borrow.read.p88_string_eq_go",
+          "samples": 187,
+          "fractionOfWindow": 0.19936034115138593
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/final-context01/runtime/program",
+          "symbol": "term_drop",
+          "decoded": "term_drop",
+          "samples": 184,
+          "fractionOfWindow": 0.19616204690831557
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/final-context01/runtime/program",
+          "symbol": "span_fade",
+          "decoded": "span_fade",
+          "samples": 141,
+          "fractionOfWindow": 0.15031982942430705
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/final-context01/runtime/program",
+          "symbol": "p111_rt_sink",
+          "decoded": "p111_rt_sink",
+          "samples": 56,
+          "fractionOfWindow": 0.05970149253731343
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/final-context01/runtime/program",
+          "symbol": "p111_rt_keep",
+          "decoded": "p111_rt_keep",
+          "samples": 35,
+          "fractionOfWindow": 0.03731343283582089
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/final-context01/runtime/program",
+          "symbol": "p111_rt_special_ctor",
+          "decoded": "p111_rt_special_ctor",
+          "samples": 32,
+          "fractionOfWindow": 0.03411513859275053
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/final-context01/runtime/program",
+          "symbol": "ctr_take",
+          "decoded": "ctr_take",
+          "samples": 31,
+          "fractionOfWindow": 0.03304904051172708
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/final-context01/runtime/program",
+          "symbol": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_104_97_115_95_110_97_109_101_",
+          "decoded": "p113d_FID_$p118borrow.read.has_name",
+          "samples": 25,
+          "fractionOfWindow": 0.026652452025586353
+        }
+      ]
+    },
+    {
+      "index": 5,
+      "approximateCpuStartSeconds": 150.08,
+      "approximateCpuEndSeconds": 180.096,
+      "samples": 938,
+      "topActiveOwners": [
+        {
+          "owner": "nb_contains",
+          "samples": 309,
+          "fractionOfWindow": 0.3294243070362473
+        },
+        {
+          "owner": "nc_ctor_owned",
+          "samples": 81,
+          "fractionOfWindow": 0.08635394456289978
+        },
+        {
+          "owner": "nc_occurs",
+          "samples": 76,
+          "fractionOfWindow": 0.08102345415778252
+        },
+        {
+          "owner": "nc_occurs_list",
+          "samples": 63,
+          "fractionOfWindow": 0.06716417910447761
+        },
+        {
+          "owner": "lookup",
+          "samples": 27,
+          "fractionOfWindow": 0.028784648187633263
+        },
+        {
+          "owner": null,
+          "samples": 24,
+          "fractionOfWindow": 0.0255863539445629
+        },
+        {
+          "owner": "String.eq",
+          "samples": 21,
+          "fractionOfWindow": 0.022388059701492536
+        },
+        {
+          "owner": "String.append",
+          "samples": 17,
+          "fractionOfWindow": 0.01812366737739872
+        }
+      ],
+      "topPhysicalLeaves": [
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/final-context01/runtime/program",
+          "symbol": "term_drop",
+          "decoded": "term_drop",
+          "samples": 159,
+          "fractionOfWindow": 0.1695095948827292
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/final-context01/runtime/program",
+          "symbol": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_112_56_56_95_115_116_114_105_110_103_95_101_113_95_103_111_",
+          "decoded": "p113d_FID_$p118borrow.read.p88_string_eq_go",
+          "samples": 134,
+          "fractionOfWindow": 0.14285714285714285
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/final-context01/runtime/program",
+          "symbol": "span_fade",
+          "decoded": "span_fade",
+          "samples": 113,
+          "fractionOfWindow": 0.12046908315565032
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/final-context01/runtime/program",
+          "symbol": "p111_rt_keep",
+          "decoded": "p111_rt_keep",
+          "samples": 37,
+          "fractionOfWindow": 0.039445628997867806
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/final-context01/runtime/program",
+          "symbol": "p111_rt_sink",
+          "decoded": "p111_rt_sink",
+          "samples": 33,
+          "fractionOfWindow": 0.035181236673773986
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/final-context01/runtime/program",
+          "symbol": "work_loop",
+          "decoded": "work_loop",
+          "samples": 30,
+          "fractionOfWindow": 0.031982942430703626
+        },
+        {
+          "object": "/usr/lib/x86_64-linux-gnu/libc-2.31.so",
+          "symbol": null,
+          "decoded": null,
+          "samples": 28,
+          "fractionOfWindow": 0.029850746268656716
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/final-context01/runtime/program",
+          "symbol": "p111_set_regs",
+          "decoded": "p111_set_regs",
+          "samples": 28,
+          "fractionOfWindow": 0.029850746268656716
+        }
+      ]
+    },
+    {
+      "index": 6,
+      "approximateCpuStartSeconds": 180.096,
+      "approximateCpuEndSeconds": 210.112,
+      "samples": 938,
+      "topActiveOwners": [
+        {
+          "owner": "nc_occurs",
+          "samples": 154,
+          "fractionOfWindow": 0.16417910447761194
+        },
+        {
+          "owner": "nc_occurs_list",
+          "samples": 104,
+          "fractionOfWindow": 0.11087420042643924
+        },
+        {
+          "owner": "nc_ctor_owned",
+          "samples": 81,
+          "fractionOfWindow": 0.08635394456289978
+        },
+        {
+          "owner": "nc_uses_term",
+          "samples": 53,
+          "fractionOfWindow": 0.05650319829424307
+        },
+        {
+          "owner": "lookup",
+          "samples": 35,
+          "fractionOfWindow": 0.03731343283582089
+        },
+        {
+          "owner": "ns_body",
+          "samples": 34,
+          "fractionOfWindow": 0.03624733475479744
+        },
+        {
+          "owner": "String.eq",
+          "samples": 24,
+          "fractionOfWindow": 0.0255863539445629
+        },
+        {
+          "owner": "nq_layout_subst",
+          "samples": 20,
+          "fractionOfWindow": 0.021321961620469083
+        }
+      ],
+      "topPhysicalLeaves": [
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/final-context01/runtime/program",
+          "symbol": "term_drop",
+          "decoded": "term_drop",
+          "samples": 128,
+          "fractionOfWindow": 0.13646055437100213
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/final-context01/runtime/program",
+          "symbol": "span_fade",
+          "decoded": "span_fade",
+          "samples": 102,
+          "fractionOfWindow": 0.10874200426439233
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/final-context01/runtime/program",
+          "symbol": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_112_56_56_95_115_116_114_105_110_103_95_101_113_95_103_111_",
+          "decoded": "p113d_FID_$p118borrow.read.p88_string_eq_go",
+          "samples": 87,
+          "fractionOfWindow": 0.09275053304904052
+        },
+        {
+          "object": "/usr/lib/x86_64-linux-gnu/libc-2.31.so",
+          "symbol": null,
+          "decoded": null,
+          "samples": 45,
+          "fractionOfWindow": 0.04797441364605544
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/final-context01/runtime/program",
+          "symbol": "p111_rt_sink",
+          "decoded": "p111_rt_sink",
+          "samples": 41,
+          "fractionOfWindow": 0.04371002132196162
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/final-context01/runtime/program",
+          "symbol": "p111_rt_keep",
+          "decoded": "p111_rt_keep",
+          "samples": 37,
+          "fractionOfWindow": 0.039445628997867806
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/final-context01/runtime/program",
+          "symbol": "p111_rt_special_ctor",
+          "decoded": "p111_rt_special_ctor",
+          "samples": 34,
+          "fractionOfWindow": 0.03624733475479744
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/final-context01/runtime/program",
+          "symbol": "p111_set_regs",
+          "decoded": "p111_set_regs",
+          "samples": 27,
+          "fractionOfWindow": 0.028784648187633263
+        }
+      ]
+    },
+    {
+      "index": 7,
+      "approximateCpuStartSeconds": 210.112,
+      "approximateCpuEndSeconds": 240.128,
+      "samples": 938,
+      "topActiveOwners": [
+        {
+          "owner": "nc_ctor_owned",
+          "samples": 179,
+          "fractionOfWindow": 0.1908315565031983
+        },
+        {
+          "owner": "p111v_value",
+          "samples": 42,
+          "fractionOfWindow": 0.04477611940298507
+        },
+        {
+          "owner": "p111v_get",
+          "samples": 36,
+          "fractionOfWindow": 0.03837953091684435
+        },
+        {
+          "owner": "nc_uses_term",
+          "samples": 33,
+          "fractionOfWindow": 0.035181236673773986
+        },
+        {
+          "owner": "p131i_insert",
+          "samples": 28,
+          "fractionOfWindow": 0.029850746268656716
+        },
+        {
+          "owner": "nc_occurs",
+          "samples": 26,
+          "fractionOfWindow": 0.02771855010660981
+        },
+        {
+          "owner": "p111v_name_chars",
+          "samples": 26,
+          "fractionOfWindow": 0.02771855010660981
+        },
+        {
+          "owner": "p111v_contract",
+          "samples": 26,
+          "fractionOfWindow": 0.02771855010660981
+        }
+      ],
+      "topPhysicalLeaves": [
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/final-context01/runtime/program",
+          "symbol": "term_drop",
+          "decoded": "term_drop",
+          "samples": 157,
+          "fractionOfWindow": 0.1673773987206823
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/final-context01/runtime/program",
+          "symbol": "span_fade",
+          "decoded": "span_fade",
+          "samples": 120,
+          "fractionOfWindow": 0.1279317697228145
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/final-context01/runtime/program",
+          "symbol": "p111_rt_sink",
+          "decoded": "p111_rt_sink",
+          "samples": 46,
+          "fractionOfWindow": 0.04904051172707889
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/final-context01/runtime/program",
+          "symbol": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_112_56_56_95_115_116_114_105_110_103_95_101_113_95_103_111_",
+          "decoded": "p113d_FID_$p118borrow.read.p88_string_eq_go",
+          "samples": 43,
+          "fractionOfWindow": 0.04584221748400853
+        },
+        {
+          "object": "/usr/lib/x86_64-linux-gnu/libc-2.31.so",
+          "symbol": null,
+          "decoded": null,
+          "samples": 31,
+          "fractionOfWindow": 0.03304904051172708
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/final-context01/runtime/program",
+          "symbol": "p111_set_regs",
+          "decoded": "p111_set_regs",
+          "samples": 27,
+          "fractionOfWindow": 0.028784648187633263
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/final-context01/runtime/program",
+          "symbol": "ctr_take",
+          "decoded": "ctr_take",
+          "samples": 26,
+          "fractionOfWindow": 0.02771855010660981
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/final-context01/runtime/program",
+          "symbol": "p111_rt_keep",
+          "decoded": "p111_rt_keep",
+          "samples": 25,
+          "fractionOfWindow": 0.026652452025586353
+        }
+      ]
+    },
+    {
+      "index": 8,
+      "approximateCpuStartSeconds": 240.128,
+      "approximateCpuEndSeconds": 270.144,
+      "samples": 938,
+      "topActiveOwners": [
+        {
+          "owner": "p111v_get",
+          "samples": 209,
+          "fractionOfWindow": 0.22281449893390193
+        },
+        {
+          "owner": "p113k_get",
+          "samples": 114,
+          "fractionOfWindow": 0.12153518123667377
+        },
+        {
+          "owner": "p131i_insert",
+          "samples": 67,
+          "fractionOfWindow": 0.07142857142857142
+        },
+        {
+          "owner": "p111v_name_chars",
+          "samples": 52,
+          "fractionOfWindow": 0.05543710021321962
+        },
+        {
+          "owner": "p111v_intersection_bucket",
+          "samples": 39,
+          "fractionOfWindow": 0.04157782515991471
+        },
+        {
+          "owner": "p113k_put",
+          "samples": 37,
+          "fractionOfWindow": 0.039445628997867806
+        },
+        {
+          "owner": "p113l_version",
+          "samples": 34,
+          "fractionOfWindow": 0.03624733475479744
+        },
+        {
+          "owner": "p113k_join_record",
+          "samples": 25,
+          "fractionOfWindow": 0.026652452025586353
+        }
+      ],
+      "topPhysicalLeaves": [
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/final-context01/runtime/program",
+          "symbol": "term_drop",
+          "decoded": "term_drop",
+          "samples": 183,
+          "fractionOfWindow": 0.19509594882729211
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/final-context01/runtime/program",
+          "symbol": "span_fade",
+          "decoded": "span_fade",
+          "samples": 126,
+          "fractionOfWindow": 0.13432835820895522
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/final-context01/runtime/program",
+          "symbol": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_105_110_100_101_120_95_104_97_115_104_",
+          "decoded": "p113d_FID_$p118borrow.read.index_hash",
+          "samples": 87,
+          "fractionOfWindow": 0.09275053304904052
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/final-context01/runtime/program",
+          "symbol": "p125_rt_take2",
+          "decoded": "p125_rt_take2",
+          "samples": 32,
+          "fractionOfWindow": 0.03411513859275053
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/final-context01/runtime/program",
+          "symbol": "p111_set_regs",
+          "decoded": "p111_set_regs",
+          "samples": 31,
+          "fractionOfWindow": 0.03304904051172708
+        },
+        {
+          "object": "/usr/lib/x86_64-linux-gnu/libc-2.31.so",
+          "symbol": null,
+          "decoded": null,
+          "samples": 29,
+          "fractionOfWindow": 0.03091684434968017
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/final-context01/runtime/program",
+          "symbol": "p111_rt_sink",
+          "decoded": "p111_rt_sink",
+          "samples": 28,
+          "fractionOfWindow": 0.029850746268656716
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/final-context01/runtime/program",
+          "symbol": "p125_rt_take4",
+          "decoded": "p125_rt_take4",
+          "samples": 24,
+          "fractionOfWindow": 0.0255863539445629
+        }
+      ]
+    },
+    {
+      "index": 9,
+      "approximateCpuStartSeconds": 270.144,
+      "approximateCpuEndSeconds": 300.16,
+      "samples": 938,
+      "topActiveOwners": [
+        {
+          "owner": "p111v_get",
+          "samples": 142,
+          "fractionOfWindow": 0.1513859275053305
+        },
+        {
+          "owner": "p111v_name_chars",
+          "samples": 72,
+          "fractionOfWindow": 0.0767590618336887
+        },
+        {
+          "owner": "p131i_insert",
+          "samples": 65,
+          "fractionOfWindow": 0.06929637526652452
+        },
+        {
+          "owner": "p111v_value",
+          "samples": 49,
+          "fractionOfWindow": 0.05223880597014925
+        },
+        {
+          "owner": "p111v_intersection_bucket",
+          "samples": 47,
+          "fractionOfWindow": 0.050106609808102345
+        },
+        {
+          "owner": "p111v_put",
+          "samples": 45,
+          "fractionOfWindow": 0.04797441364605544
+        },
+        {
+          "owner": "p111v_contract",
+          "samples": 37,
+          "fractionOfWindow": 0.039445628997867806
+        },
+        {
+          "owner": null,
+          "samples": 31,
+          "fractionOfWindow": 0.03304904051172708
+        }
+      ],
+      "topPhysicalLeaves": [
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/final-context01/runtime/program",
+          "symbol": "term_drop",
+          "decoded": "term_drop",
+          "samples": 164,
+          "fractionOfWindow": 0.17484008528784648
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/final-context01/runtime/program",
+          "symbol": "span_fade",
+          "decoded": "span_fade",
+          "samples": 96,
+          "fractionOfWindow": 0.1023454157782516
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/final-context01/runtime/program",
+          "symbol": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_105_110_100_101_120_95_104_97_115_104_",
+          "decoded": "p113d_FID_$p118borrow.read.index_hash",
+          "samples": 72,
+          "fractionOfWindow": 0.0767590618336887
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/final-context01/runtime/program",
+          "symbol": "work_loop",
+          "decoded": "work_loop",
+          "samples": 41,
+          "fractionOfWindow": 0.04371002132196162
+        },
+        {
+          "object": "/usr/lib/x86_64-linux-gnu/libc-2.31.so",
+          "symbol": null,
+          "decoded": null,
+          "samples": 39,
+          "fractionOfWindow": 0.04157782515991471
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/final-context01/runtime/program",
+          "symbol": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_83_116_114_105_110_103_46_99_109_112_",
+          "decoded": "p113d_FID_$p118borrow.read.String.cmp",
+          "samples": 30,
+          "fractionOfWindow": 0.031982942430703626
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/final-context01/runtime/program",
+          "symbol": "p111_rt_keep",
+          "decoded": "p111_rt_keep",
+          "samples": 27,
+          "fractionOfWindow": 0.028784648187633263
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/final-context01/runtime/program",
+          "symbol": "p111_rt_op",
+          "decoded": "p111_rt_op",
+          "samples": 25,
+          "fractionOfWindow": 0.026652452025586353
+        }
+      ]
+    },
+    {
+      "index": 10,
+      "approximateCpuStartSeconds": 300.16,
+      "approximateCpuEndSeconds": 330.176,
+      "samples": 938,
+      "topActiveOwners": [
+        {
+          "owner": "nc_ctor_owned",
+          "samples": 95,
+          "fractionOfWindow": 0.10127931769722814
+        },
+        {
+          "owner": "p111v_get",
+          "samples": 93,
+          "fractionOfWindow": 0.09914712153518124
+        },
+        {
+          "owner": "String.eq",
+          "samples": 53,
+          "fractionOfWindow": 0.05650319829424307
+        },
+        {
+          "owner": "String.append",
+          "samples": 37,
+          "fractionOfWindow": 0.039445628997867806
+        },
+        {
+          "owner": "p111v_name_chars",
+          "samples": 37,
+          "fractionOfWindow": 0.039445628997867806
+        },
+        {
+          "owner": "p131i_insert",
+          "samples": 36,
+          "fractionOfWindow": 0.03837953091684435
+        },
+        {
+          "owner": "nol_scalar_specs",
+          "samples": 31,
+          "fractionOfWindow": 0.03304904051172708
+        },
+        {
+          "owner": "p111v_intersection_bucket",
+          "samples": 31,
+          "fractionOfWindow": 0.03304904051172708
+        }
+      ],
+      "topPhysicalLeaves": [
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/final-context01/runtime/program",
+          "symbol": "term_drop",
+          "decoded": "term_drop",
+          "samples": 171,
+          "fractionOfWindow": 0.18230277185501065
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/final-context01/runtime/program",
+          "symbol": "span_fade",
+          "decoded": "span_fade",
+          "samples": 100,
+          "fractionOfWindow": 0.10660980810234541
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/final-context01/runtime/program",
+          "symbol": "p125_rt_take2",
+          "decoded": "p125_rt_take2",
+          "samples": 38,
+          "fractionOfWindow": 0.04051172707889126
+        },
+        {
+          "object": "/usr/lib/x86_64-linux-gnu/libc-2.31.so",
+          "symbol": null,
+          "decoded": null,
+          "samples": 33,
+          "fractionOfWindow": 0.035181236673773986
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/final-context01/runtime/program",
+          "symbol": "p111_rt_op",
+          "decoded": "p111_rt_op",
+          "samples": 32,
+          "fractionOfWindow": 0.03411513859275053
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/final-context01/runtime/program",
+          "symbol": "p111_set_regs",
+          "decoded": "p111_set_regs",
+          "samples": 32,
+          "fractionOfWindow": 0.03411513859275053
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/final-context01/runtime/program",
+          "symbol": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_83_116_114_105_110_103_46_99_109_112_",
+          "decoded": "p113d_FID_$p118borrow.read.String.cmp",
+          "samples": 31,
+          "fractionOfWindow": 0.03304904051172708
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/final-context01/runtime/program",
+          "symbol": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_105_110_100_101_120_95_104_97_115_104_",
+          "decoded": "p113d_FID_$p118borrow.read.index_hash",
+          "samples": 29,
+          "fractionOfWindow": 0.03091684434968017
+        }
+      ]
+    },
+    {
+      "index": 11,
+      "approximateCpuStartSeconds": 330.176,
+      "approximateCpuEndSeconds": 360.192,
+      "samples": 938,
+      "topActiveOwners": [
+        {
+          "owner": "String.append",
+          "samples": 269,
+          "fractionOfWindow": 0.2867803837953092
+        },
+        {
+          "owner": "p111q_body_text",
+          "samples": 76,
+          "fractionOfWindow": 0.08102345415778252
+        },
+        {
+          "owner": "p111q_memory",
+          "samples": 75,
+          "fractionOfWindow": 0.07995735607675906
+        },
+        {
+          "owner": "String.eq",
+          "samples": 57,
+          "fractionOfWindow": 0.060767590618336885
+        },
+        {
+          "owner": "p112w_ready",
+          "samples": 33,
+          "fractionOfWindow": 0.035181236673773986
+        },
+        {
+          "owner": "p111v_get",
+          "samples": 29,
+          "fractionOfWindow": 0.03091684434968017
+        },
+        {
+          "owner": "p112r_buffer_sites",
+          "samples": 17,
+          "fractionOfWindow": 0.01812366737739872
+        },
+        {
+          "owner": "p112t_runtime_call",
+          "samples": 17,
+          "fractionOfWindow": 0.01812366737739872
+        }
+      ],
+      "topPhysicalLeaves": [
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/final-context01/runtime/program",
+          "symbol": "p125_rt_take2",
+          "decoded": "p125_rt_take2",
+          "samples": 146,
+          "fractionOfWindow": 0.15565031982942432
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/final-context01/runtime/program",
+          "symbol": "p118_destination_fill",
+          "decoded": "p118_destination_fill",
+          "samples": 107,
+          "fractionOfWindow": 0.1140724946695096
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/final-context01/runtime/program",
+          "symbol": "term_drop",
+          "decoded": "term_drop",
+          "samples": 83,
+          "fractionOfWindow": 0.08848614072494669
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/final-context01/runtime/program",
+          "symbol": "p118_rt_extend1",
+          "decoded": "p118_rt_extend1",
+          "samples": 67,
+          "fractionOfWindow": 0.07142857142857142
+        },
+        {
+          "object": "/usr/lib/x86_64-linux-gnu/libc-2.31.so",
+          "symbol": null,
+          "decoded": null,
+          "samples": 43,
+          "fractionOfWindow": 0.04584221748400853
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/final-context01/runtime/program",
+          "symbol": "span_fade",
+          "decoded": "span_fade",
+          "samples": 36,
+          "fractionOfWindow": 0.03837953091684435
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/final-context01/runtime/program",
+          "symbol": "rfc_wrap",
+          "decoded": "rfc_wrap",
+          "samples": 35,
+          "fractionOfWindow": 0.03731343283582089
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/final-context01/runtime/program",
+          "symbol": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_83_116_114_105_110_103_46_99_109_112_",
+          "decoded": "p113d_FID_$p118borrow.read.String.cmp",
+          "samples": 35,
+          "fractionOfWindow": 0.03731343283582089
+        }
+      ]
+    },
+    {
+      "index": 12,
+      "approximateCpuStartSeconds": 360.192,
+      "approximateCpuEndSeconds": 379.264,
+      "samples": 596,
+      "topActiveOwners": [
+        {
+          "owner": "String.append",
+          "samples": 117,
+          "fractionOfWindow": 0.19630872483221476
+        },
+        {
+          "owner": null,
+          "samples": 82,
+          "fractionOfWindow": 0.13758389261744966
+        },
+        {
+          "owner": "p111q_memory",
+          "samples": 53,
+          "fractionOfWindow": 0.08892617449664429
+        },
+        {
+          "owner": "p111q_body_text",
+          "samples": 27,
+          "fractionOfWindow": 0.04530201342281879
+        },
+        {
+          "owner": "p112w_ready",
+          "samples": 16,
+          "fractionOfWindow": 0.026845637583892617
+        },
+        {
+          "owner": "String.eq",
+          "samples": 16,
+          "fractionOfWindow": 0.026845637583892617
+        },
+        {
+          "owner": "p111v_get",
+          "samples": 16,
+          "fractionOfWindow": 0.026845637583892617
+        },
+        {
+          "owner": "p111q_data_chunks_go",
+          "samples": 16,
+          "fractionOfWindow": 0.026845637583892617
+        }
+      ],
+      "topPhysicalLeaves": [
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/final-context01/runtime/program",
+          "symbol": "p125_rt_take2",
+          "decoded": "p125_rt_take2",
+          "samples": 89,
+          "fractionOfWindow": 0.1493288590604027
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/final-context01/runtime/program",
+          "symbol": "ctr_take",
+          "decoded": "ctr_take",
+          "samples": 52,
+          "fractionOfWindow": 0.087248322147651
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/final-context01/runtime/program",
+          "symbol": "term_drop",
+          "decoded": "term_drop",
+          "samples": 49,
+          "fractionOfWindow": 0.08221476510067115
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/final-context01/runtime/program",
+          "symbol": "p118_destination_fill",
+          "decoded": "p118_destination_fill",
+          "samples": 43,
+          "fractionOfWindow": 0.07214765100671142
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/final-context01/runtime/program",
+          "symbol": "p118_rt_extend1",
+          "decoded": "p118_rt_extend1",
+          "samples": 41,
+          "fractionOfWindow": 0.06879194630872483
+        },
+        {
+          "object": "/usr/lib/x86_64-linux-gnu/libc-2.31.so",
+          "symbol": null,
+          "decoded": null,
+          "samples": 22,
+          "fractionOfWindow": 0.03691275167785235
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/final-context01/runtime/program",
+          "symbol": "p113d_FID_36_112_49_49_56_46_116_114_109_99_46_36_100_105_114_101_99_116_46_83_116_114_105_110_103_46_97_112_112_101_110_100_",
+          "decoded": "p113d_FID_$p118.trmc.$direct.String.append",
+          "samples": 21,
+          "fractionOfWindow": 0.03523489932885906
+        },
+        {
+          "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/final-context01/runtime/program",
+          "symbol": "rfc_wrap",
+          "decoded": "rfc_wrap",
+          "samples": 19,
+          "fractionOfWindow": 0.031879194630872486
+        }
+      ]
+    }
+  ],
+  "scope": "Historical source/image only. Physical intersections are subsets of active contexts, never added as separate time. Timeline is approximate sampled-thread CPU order; no exact Phase135/136 frontend wall-stage attribution, allocation counts, causal speedup or recurrence frequency."
+}

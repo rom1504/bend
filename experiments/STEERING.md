@@ -1,4 +1,35 @@
-# Latest investigation: Phase135 full compiler incremental rebuild
+# Latest investigation: Phase136 cold native compilation
+
+[Report](../implementation/phase136/README.md) ·
+[Metrics](../implementation/phase136/metrics.json) ·
+[Stage decision](phase136/P136-001-cold-stages.md) ·
+[Query decision](phase136/P136-002-query-work.md).
+
+Qualified Phase134 N2, fixed full Phase131 source: cold source-to-executable
+375.923s,1.018GB peak, exact107MB independent QBE. Separate diagnostic stage
+request354.331s: parsing44.745s, checking53.149s, erasure30.326s, raw lowering
+59.411s, optimization/verification77.734s, rendering64.760s. Frontend152.111s
+excludes Base and includes more than checking. Dedicated ownership-check0.144s
+is distinct from runtime ownership work throughout. Separate machine replay
+QBE8.727s/assembly4.874s/link0.266s; do not add nested/overlapped clocks.
+
+Fresh exact-object profile:11,569 samples, zero loss,99.68% thread CPU coverage.
+Physical drop/fade29.74%; active nc_ctor_owned/lookup/f_find18.16%, with overlapping
+drop/fade intersections9.21%. Actual kept-row projections transfer nine KDef
+fields then sink eight; loops are already local. Reuse Phase131's unqualified
+wider-record plus scalar-consumer positive ceiling on these actual paths before
+another IR rewrite. Preserve ownership/shape/fallback and final verifier gates.
+Then eliminate raw scans with exact prior/constructor facts; existing scope
+indexes are not automatically equivalent in order or payload.
+
+Fourteen query controls, three complete plan/product bridges and twelve native
+small output gates pass. Diagnostic source/check failures remain visible.
+No production source change, fresh broad45 ratio, upstream comparison or native
+promotion. Phase134 remains qualified. Cold60s needs6.3× from this baseline;
+individual5–15% hypotheses overlap and do not establish that goal. Warm earlier
+semantic-unit reuse remains the second track; do not repeat late-cache hit claims.
+
+# Previous investigation: Phase135 full compiler incremental rebuild
 
 [Report](../implementation/phase135/README.md) ·
 [Metrics](../implementation/phase135/metrics.json) ·

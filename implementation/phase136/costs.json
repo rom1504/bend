@@ -1,0 +1,1457 @@
+{
+  "kind": "phase136-research-cost-receipts",
+  "complete": true,
+  "targetsRun": false,
+  "method": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase136/evidence/costs-v01.py",
+    "bytes": 5499,
+    "sha256": "dfb46302e743dd4fc5047d3321b311aed69515a069b38a0ec863a27621d98246"
+  },
+  "inventoryMethod": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase136/evidence/common-v01.py",
+    "bytes": 1308,
+    "sha256": "c571991777056fedbe0fedd8a0f83c0607dcb1b0182aa6145329c552ecbc9372"
+  },
+  "guards": [
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/cold-baseline-guard01/process.json",
+        "bytes": 1009,
+        "sha256": "2a22a80810cab5a837be949c52f619595a2bd3f8b0fa88988c533b62b4d58260"
+      },
+      "category": "qualified-cold-baseline",
+      "complete": true,
+      "kind": null,
+      "clocks": {
+        "wallSeconds": 375.92320693307556,
+        "peakTreeRssBytes": 1018036224,
+        "returncode": 0
+      },
+      "started": 1792825701.559702,
+      "finished": 1792826077.4829059,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 262144; ulimit -c 0; exec \"$@\"",
+        "phase111",
+        "taskset",
+        "-c",
+        "3",
+        "python3",
+        "-B",
+        "selfhost/tools/performance/phase134/pipe/build-v02.py",
+        "--image",
+        "selfhost/build/phase111/p134-selected-n2/program",
+        "--source",
+        "selfhost/build/phase131/combined-literals-source01/compiler.bend",
+        "--carrier-receipt",
+        "selfhost/build/phase130/base-carrier01/receipt.json",
+        "--runtime",
+        "selfhost/build/phase128/runtime-borrow01/runtime.o",
+        "--expected-qbe",
+        "selfhost/build/phase130/p131-final-self01/program.ssa",
+        "--out",
+        "selfhost/build/phase134/p136-cold-baseline01",
+        "--seconds",
+        "700"
+      ],
+      "timedOut": null
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/full-profile-guard01/process.json",
+        "bytes": 758,
+        "sha256": "f99ab037a5e9b760b28d92290eb01955ab0396857b6565a8f41e5d3fcb8e9366"
+      },
+      "category": "profiling-and-analysis",
+      "complete": true,
+      "kind": null,
+      "clocks": {
+        "wallSeconds": 375.37132319877855,
+        "peakTreeRssBytes": 1014435840,
+        "returncode": 0
+      },
+      "started": 1792827116.5955086,
+      "finished": 1792827491.9668303,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 262144; ulimit -c 0; exec \"$@\"",
+        "phase111",
+        "taskset",
+        "-c",
+        "3",
+        "python3",
+        "-B",
+        "selfhost/tools/profiler/run.py",
+        "--manifest",
+        "selfhost/build/phase136/profile01/manifest.json",
+        "--out",
+        "selfhost/build/phase136/profile01/capture",
+        "--names",
+        "compiler-self-source",
+        "--modes",
+        "sample",
+        "--rounds",
+        "1",
+        "--periods-us",
+        "32000"
+      ],
+      "timedOut": null
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/machine-replay-guard01/process.json",
+        "bytes": 758,
+        "sha256": "5a7f1bac8e2f5e63093ff5c5dbe549f55ec121d0521e338f9b31587780957c6b"
+      },
+      "category": "other-preserved-execution",
+      "complete": true,
+      "kind": null,
+      "clocks": {
+        "wallSeconds": 14.947716505965218,
+        "peakTreeRssBytes": 935170048,
+        "returncode": 0
+      },
+      "started": 1792827075.896917,
+      "finished": 1792827090.8446314,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 262144; ulimit -c 0; exec \"$@\"",
+        "phase111",
+        "taskset",
+        "-c",
+        "3",
+        "python3",
+        "-B",
+        "selfhost/tools/performance/phase123/build-aligned.py",
+        "--source",
+        "selfhost/build/phase130/p131-final-self01/program.ssa",
+        "--runtime",
+        "selfhost/build/phase128/runtime-borrow01/runtime.o",
+        "--out",
+        "selfhost/build/phase111/p136-machine-replay01",
+        "--seconds",
+        "60"
+      ],
+      "timedOut": null
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/query-api-guard01/process.json",
+        "bytes": 902,
+        "sha256": "ff102c69541cb07c5c412a4dafb20278f8131e184c21bf8208788e29d6ab865b"
+      },
+      "category": "source-and-correctness-gates",
+      "complete": false,
+      "kind": null,
+      "clocks": {
+        "wallSeconds": 5.78597860597074,
+        "peakTreeRssBytes": 713793536,
+        "returncode": 1
+      },
+      "started": 1792826602.09316,
+      "finished": 1792826607.879135,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase86",
+        "taskset",
+        "-c",
+        "6",
+        "python3",
+        "-B",
+        "selfhost/tools/performance/phase111/check-api.py",
+        "--source",
+        "selfhost/build/phase136/query-source01/compiler.bend",
+        "--out",
+        "selfhost/build/phase111/p136-query-api01",
+        "p88_cache_prepare",
+        "p86_plan",
+        "p136q_controls",
+        "p136q_prefix",
+        "p136q_queries",
+        "p136q_zero",
+        "p136q_raw",
+        "p136q_ctor_names",
+        "p136q_take_names",
+        "p136q_find",
+        "p136q_lookup",
+        "p136q_owned",
+        "p136q_one"
+      ],
+      "timedOut": null
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/query-api-guard02/process.json",
+        "bytes": 905,
+        "sha256": "d44063665c7e83929c85b76ab1d21087b476b447ed185e5ff9851d30cd3b094e"
+      },
+      "category": "source-and-correctness-gates",
+      "complete": true,
+      "kind": null,
+      "clocks": {
+        "wallSeconds": 9.620138650992885,
+        "peakTreeRssBytes": 1168834560,
+        "returncode": 0
+      },
+      "started": 1792826994.4954216,
+      "finished": 1792827004.115557,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase86",
+        "taskset",
+        "-c",
+        "6",
+        "python3",
+        "-B",
+        "selfhost/tools/performance/phase111/check-api.py",
+        "--source",
+        "selfhost/build/phase136/query-source02/compiler.bend",
+        "--out",
+        "selfhost/build/phase111/p136-query-api02",
+        "p88_cache_prepare",
+        "p86_plan",
+        "p136q_controls",
+        "p136q_prefix",
+        "p136q_queries",
+        "p136q_zero",
+        "p136q_raw",
+        "p136q_ctor_names",
+        "p136q_take_names",
+        "p136q_find",
+        "p136q_lookup",
+        "p136q_owned",
+        "p136q_one"
+      ],
+      "timedOut": null
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/query-census-guard02/process.json",
+        "bytes": 695,
+        "sha256": "a547c583bb3a1c9f7fa93b8a7c15b47a04fcf4221322fe69d6d4e003b3a8011b"
+      },
+      "category": "source-and-correctness-gates",
+      "complete": true,
+      "kind": null,
+      "clocks": {
+        "wallSeconds": 6.5420628590509295,
+        "peakTreeRssBytes": 291745792,
+        "returncode": 0
+      },
+      "started": 1792827045.537992,
+      "finished": 1792827052.0800529,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase111",
+        "taskset",
+        "-c",
+        "3",
+        "selfhost/.bootstrap/bun-1.4.3/bun",
+        "selfhost/tools/performance/phase136/baseline/query-census-v02.mjs",
+        "selfhost/build/phase111/p136-query-api02/report.json",
+        "selfhost/build/phase134/reference03.json",
+        "selfhost/build/phase136/query-census02"
+      ],
+      "timedOut": null
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/small-coverage-closures-256-0-ordinary-guard/process.json",
+        "bytes": 635,
+        "sha256": "da8444babde265a43a428b9f8da3ca001c7334a79f35b1f43cae0d6ed70e8a49"
+      },
+      "category": "native-diagnostic-requests",
+      "complete": true,
+      "kind": null,
+      "clocks": {
+        "wallSeconds": 0.8210026870947331,
+        "peakTreeRssBytes": 53248000,
+        "returncode": 0
+      },
+      "started": 1792826566.672657,
+      "finished": 1792826567.493659,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase111",
+        "taskset",
+        "-c",
+        "3",
+        "/usr/bin/python3",
+        "-B",
+        "selfhost/tools/performance/phase136/stages/native-v01.py",
+        "--run",
+        "--plan",
+        "selfhost/build/phase136/small-coverage-closures-256-0-ordinary-plan/plan.json"
+      ],
+      "timedOut": null
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/small-coverage-closures-256-0-stages-guard/process.json",
+        "bytes": 634,
+        "sha256": "ea0bdc637c6118c71edee926ad175af24ee06f69ecc8a36dfc3d1093a91c58c1"
+      },
+      "category": "other-preserved-execution",
+      "complete": true,
+      "kind": null,
+      "clocks": {
+        "wallSeconds": 0.6767062342260033,
+        "peakTreeRssBytes": 53207040,
+        "returncode": 0
+      },
+      "started": 1792826567.7352707,
+      "finished": 1792826568.411976,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase111",
+        "taskset",
+        "-c",
+        "3",
+        "/usr/bin/python3",
+        "-B",
+        "selfhost/tools/performance/phase136/stages/native-v01.py",
+        "--run",
+        "--plan",
+        "selfhost/build/phase136/small-coverage-closures-256-0-stages-plan/plan.json"
+      ],
+      "timedOut": null
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/small-coverage-closures-256-1-ordinary-guard/process.json",
+        "bytes": 637,
+        "sha256": "e1ea7883401ad3dd9cbde6c254bd43dd1b49c9662e47276df495bb10d8741ed1"
+      },
+      "category": "native-diagnostic-requests",
+      "complete": true,
+      "kind": null,
+      "clocks": {
+        "wallSeconds": 0.6768439810257405,
+        "peakTreeRssBytes": 53428224,
+        "returncode": 0
+      },
+      "started": 1792826578.7557368,
+      "finished": 1792826579.4325793,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase111",
+        "taskset",
+        "-c",
+        "3",
+        "/usr/bin/python3",
+        "-B",
+        "selfhost/tools/performance/phase136/stages/native-v01.py",
+        "--run",
+        "--plan",
+        "selfhost/build/phase136/small-coverage-closures-256-1-ordinary-plan/plan.json"
+      ],
+      "timedOut": null
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/small-coverage-closures-256-1-stages-guard/process.json",
+        "bytes": 634,
+        "sha256": "52921a37f6d0f5c048a1e913d022ef6acacaa26a8002e89f228b37d42d38df43"
+      },
+      "category": "other-preserved-execution",
+      "complete": true,
+      "kind": null,
+      "clocks": {
+        "wallSeconds": 0.676961868070066,
+        "peakTreeRssBytes": 53063680,
+        "returncode": 0
+      },
+      "started": 1792826577.8447032,
+      "finished": 1792826578.5216637,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase111",
+        "taskset",
+        "-c",
+        "3",
+        "/usr/bin/python3",
+        "-B",
+        "selfhost/tools/performance/phase136/stages/native-v01.py",
+        "--run",
+        "--plan",
+        "selfhost/build/phase136/small-coverage-closures-256-1-stages-plan/plan.json"
+      ],
+      "timedOut": null
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/small-coverage-map-churn-128-0-ordinary-guard/process.json",
+        "bytes": 638,
+        "sha256": "579705b27f85e0d72d6c0983dfbcb387da2435648c8dd9259f37b177a75986bb"
+      },
+      "category": "native-diagnostic-requests",
+      "complete": true,
+      "kind": null,
+      "clocks": {
+        "wallSeconds": 2.2493988007772714,
+        "peakTreeRssBytes": 57720832,
+        "returncode": 0
+      },
+      "started": 1792826568.6572878,
+      "finished": 1792826570.9066846,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase111",
+        "taskset",
+        "-c",
+        "3",
+        "/usr/bin/python3",
+        "-B",
+        "selfhost/tools/performance/phase136/stages/native-v01.py",
+        "--run",
+        "--plan",
+        "selfhost/build/phase136/small-coverage-map-churn-128-0-ordinary-plan/plan.json"
+      ],
+      "timedOut": null
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/small-coverage-map-churn-128-0-stages-guard/process.json",
+        "bytes": 635,
+        "sha256": "4eafafcd5bee10a7e895727fb3b1bdd39b751e32d07bbeed1dd2e461c356b02e"
+      },
+      "category": "other-preserved-execution",
+      "complete": true,
+      "kind": null,
+      "clocks": {
+        "wallSeconds": 2.210251661017537,
+        "peakTreeRssBytes": 57548800,
+        "returncode": 0
+      },
+      "started": 1792826571.1517723,
+      "finished": 1792826573.3620222,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase111",
+        "taskset",
+        "-c",
+        "3",
+        "/usr/bin/python3",
+        "-B",
+        "selfhost/tools/performance/phase136/stages/native-v01.py",
+        "--run",
+        "--plan",
+        "selfhost/build/phase136/small-coverage-map-churn-128-0-stages-plan/plan.json"
+      ],
+      "timedOut": null
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/small-coverage-map-churn-128-1-ordinary-guard/process.json",
+        "bytes": 636,
+        "sha256": "e6410a0dc23125656295c27c921b9f599ad455066d5e6fb5c40c3d2338f7fe7e"
+      },
+      "category": "native-diagnostic-requests",
+      "complete": true,
+      "kind": null,
+      "clocks": {
+        "wallSeconds": 2.207211905857548,
+        "peakTreeRssBytes": 57348096,
+        "returncode": 0
+      },
+      "started": 1792826582.1875553,
+      "finished": 1792826584.394765,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase111",
+        "taskset",
+        "-c",
+        "3",
+        "/usr/bin/python3",
+        "-B",
+        "selfhost/tools/performance/phase136/stages/native-v01.py",
+        "--run",
+        "--plan",
+        "selfhost/build/phase136/small-coverage-map-churn-128-1-ordinary-plan/plan.json"
+      ],
+      "timedOut": null
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/small-coverage-map-churn-128-1-stages-guard/process.json",
+        "bytes": 635,
+        "sha256": "48b204236876d7500ba01de054e7d95ad5e92b337d949f01d18205c86b3aca1e"
+      },
+      "category": "other-preserved-execution",
+      "complete": true,
+      "kind": null,
+      "clocks": {
+        "wallSeconds": 2.2687241029925644,
+        "peakTreeRssBytes": 57335808,
+        "returncode": 0
+      },
+      "started": 1792826579.675586,
+      "finished": 1792826581.9443092,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase111",
+        "taskset",
+        "-c",
+        "3",
+        "/usr/bin/python3",
+        "-B",
+        "selfhost/tools/performance/phase136/stages/native-v01.py",
+        "--run",
+        "--plan",
+        "selfhost/build/phase136/small-coverage-map-churn-128-1-stages-plan/plan.json"
+      ],
+      "timedOut": null
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/small-lexer-0-ordinary-guard/process.json",
+        "bytes": 620,
+        "sha256": "f57f9ed295f8a8a82cac03ed07f01599db2136267de6e23d406e6b5067b58e63"
+      },
+      "category": "native-diagnostic-requests",
+      "complete": true,
+      "kind": null,
+      "clocks": {
+        "wallSeconds": 1.7375736238900572,
+        "peakTreeRssBytes": 55451648,
+        "returncode": 0
+      },
+      "started": 1792826562.6599052,
+      "finished": 1792826564.397478,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase111",
+        "taskset",
+        "-c",
+        "3",
+        "/usr/bin/python3",
+        "-B",
+        "selfhost/tools/performance/phase136/stages/native-v01.py",
+        "--run",
+        "--plan",
+        "selfhost/build/phase136/small-lexer-0-ordinary-plan/plan.json"
+      ],
+      "timedOut": null
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/small-lexer-0-stages-guard/process.json",
+        "bytes": 619,
+        "sha256": "68087a8a5fecfc58eb316e249df770e289e74a15565f4ba3050ed65276efab01"
+      },
+      "category": "other-preserved-execution",
+      "complete": true,
+      "kind": null,
+      "clocks": {
+        "wallSeconds": 1.7164170290343463,
+        "peakTreeRssBytes": 55230464,
+        "returncode": 0
+      },
+      "started": 1792826564.6720593,
+      "finished": 1792826566.3884742,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase111",
+        "taskset",
+        "-c",
+        "3",
+        "/usr/bin/python3",
+        "-B",
+        "selfhost/tools/performance/phase136/stages/native-v01.py",
+        "--run",
+        "--plan",
+        "selfhost/build/phase136/small-lexer-0-stages-plan/plan.json"
+      ],
+      "timedOut": null
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/small-lexer-1-ordinary-guard/process.json",
+        "bytes": 621,
+        "sha256": "2b75b598d25b0bef1ed7c06aee34643a831e1e9391c59a566e720e14baf8c419"
+      },
+      "category": "native-diagnostic-requests",
+      "complete": true,
+      "kind": null,
+      "clocks": {
+        "wallSeconds": 1.7795547370333225,
+        "peakTreeRssBytes": 55447552,
+        "returncode": 0
+      },
+      "started": 1792826575.8237526,
+      "finished": 1792826577.6033063,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase111",
+        "taskset",
+        "-c",
+        "3",
+        "/usr/bin/python3",
+        "-B",
+        "selfhost/tools/performance/phase136/stages/native-v01.py",
+        "--run",
+        "--plan",
+        "selfhost/build/phase136/small-lexer-1-ordinary-plan/plan.json"
+      ],
+      "timedOut": null
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/small-lexer-1-stages-guard/process.json",
+        "bytes": 618,
+        "sha256": "973b800688084a8e12e70b1059a3f4584b37714c37e8e39685cec610df5212d0"
+      },
+      "category": "other-preserved-execution",
+      "complete": true,
+      "kind": null,
+      "clocks": {
+        "wallSeconds": 1.7368992750998586,
+        "peakTreeRssBytes": 55173120,
+        "returncode": 0
+      },
+      "started": 1792826573.8516278,
+      "finished": 1792826575.588524,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase111",
+        "taskset",
+        "-c",
+        "3",
+        "/usr/bin/python3",
+        "-B",
+        "selfhost/tools/performance/phase136/stages/native-v01.py",
+        "--run",
+        "--plan",
+        "selfhost/build/phase136/small-lexer-1-stages-plan/plan.json"
+      ],
+      "timedOut": null
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/staged-full-guard01/process.json",
+        "bytes": 606,
+        "sha256": "95484b68efe44e76eb580e9263b0b50a8756409c752cba49e53dab578866d975"
+      },
+      "category": "native-diagnostic-requests",
+      "complete": true,
+      "kind": null,
+      "clocks": {
+        "wallSeconds": 355.83159944205545,
+        "peakTreeRssBytes": 1009446912,
+        "returncode": 0
+      },
+      "started": 1792826630.7939825,
+      "finished": 1792826986.6255817,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 262144; ulimit -c 0; exec \"$@\"",
+        "phase111",
+        "taskset",
+        "-c",
+        "3",
+        "python3",
+        "-B",
+        "selfhost/tools/performance/phase136/stages/native-v01.py",
+        "--run",
+        "--plan",
+        "selfhost/build/phase136/staged-full-plan01/plan.json"
+      ],
+      "timedOut": null
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/stages-api-guard01/process.json",
+        "bytes": 900,
+        "sha256": "c0d4acbe638c601df0703d5d3b0e4b4e5df342354cbaa081529089615dcb2d55"
+      },
+      "category": "source-and-correctness-gates",
+      "complete": true,
+      "kind": null,
+      "clocks": {
+        "wallSeconds": 13.694671388948336,
+        "peakTreeRssBytes": 2173755392,
+        "returncode": 0
+      },
+      "started": 1792826094.386226,
+      "finished": 1792826108.0808935,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase86",
+        "taskset",
+        "-c",
+        "6",
+        "python3",
+        "-B",
+        "selfhost/tools/performance/phase111/check-api.py",
+        "--source",
+        "selfhost/build/phase136/stages-source01/compiler.bend",
+        "--out",
+        "selfhost/build/phase111/p136-stages-api01",
+        "p88_cache_prepare",
+        "p86_plan",
+        "p111_runtime_admission",
+        "p111_emit_admitted",
+        "p111_emit_plan",
+        "p136s_pure_plan",
+        "p136s_pure_backend",
+        "p136s_pure_emit",
+        "p136s_begin",
+        "p136b_admitted",
+        "p134e_collect"
+      ],
+      "timedOut": null
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/stages-bridge-guard01/process.json",
+        "bytes": 662,
+        "sha256": "4d12e4490bc19d6e862e4b98b0cf5616bc958c5847a9ec999f67efa95b2da2c6"
+      },
+      "category": "source-and-correctness-gates",
+      "complete": false,
+      "kind": null,
+      "clocks": {
+        "wallSeconds": 0.023043110966682434,
+        "peakTreeRssBytes": 1040384,
+        "returncode": 127
+      },
+      "started": 1792826121.3808599,
+      "finished": 1792826121.403901,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase111",
+        "taskset",
+        "-c",
+        "3",
+        "bun",
+        "selfhost/tools/performance/phase136/stages/bridge-v01.mjs",
+        "selfhost/build/phase111/p136-stages-api01/report.json",
+        "selfhost/build/phase134/reference03.json",
+        "selfhost/build/phase136/stages-bridge01"
+      ],
+      "timedOut": null
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/stages-bridge-guard02/process.json",
+        "bytes": 688,
+        "sha256": "0c0513c0e2f18970782de3bb93fa08cd41ddfec8a8ca6a3572e7f41d69ba1c94"
+      },
+      "category": "source-and-correctness-gates",
+      "complete": true,
+      "kind": null,
+      "clocks": {
+        "wallSeconds": 37.21504247607663,
+        "peakTreeRssBytes": 562159616,
+        "returncode": 0
+      },
+      "started": 1792826132.410256,
+      "finished": 1792826169.6252966,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+        "phase111",
+        "taskset",
+        "-c",
+        "3",
+        "selfhost/.bootstrap/bun-1.4.3/bun",
+        "selfhost/tools/performance/phase136/stages/bridge-v01.mjs",
+        "selfhost/build/phase111/p136-stages-api01/report.json",
+        "selfhost/build/phase134/reference03.json",
+        "selfhost/build/phase136/stages-bridge01"
+      ],
+      "timedOut": null
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/stages-native-guard01/process.json",
+        "bytes": 914,
+        "sha256": "78603892f5c86937f1bd17ff8a374554a412d179094eba520ddc3d75415bc9e3"
+      },
+      "category": "diagnostic-image-acquisition",
+      "complete": true,
+      "kind": null,
+      "clocks": {
+        "wallSeconds": 380.0750136349816,
+        "peakTreeRssBytes": 1022394368,
+        "returncode": 0
+      },
+      "started": 1792826175.266673,
+      "finished": 1792826555.3416839,
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 262144; ulimit -c 0; exec \"$@\"",
+        "phase111",
+        "taskset",
+        "-c",
+        "3",
+        "python3",
+        "-B",
+        "selfhost/tools/performance/phase134/pipe/build-v02.py",
+        "--image",
+        "selfhost/build/phase111/p134-selected-n2/program",
+        "--source",
+        "selfhost/build/phase136/stages-source01/compiler.bend",
+        "--carrier-receipt",
+        "selfhost/build/phase130/base-carrier01/receipt.json",
+        "--runtime",
+        "selfhost/build/phase128/runtime-borrow01/runtime.o",
+        "--out",
+        "selfhost/build/phase134/p136-stages-native01",
+        "--seconds",
+        "700"
+      ],
+      "timedOut": null
+    }
+  ],
+  "nestedReceipts": [
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p136-machine-replay01/report.json",
+        "bytes": 4821,
+        "sha256": "eff94c297bb0da9162f0b12e39dfaa685ad65fd95dfa9f7948b021044efa11a2"
+      },
+      "category": "other-preserved-execution",
+      "complete": true,
+      "kind": "phase123-branch-aligned-qbe-build",
+      "clocks": {},
+      "nestedClocksNotAdded": [
+        {
+          "field": "jobs",
+          "index": 0,
+          "name": "qbe",
+          "clocks": {
+            "seconds": 8.727200207067654,
+            "exitCode": 0
+          }
+        },
+        {
+          "field": "jobs",
+          "index": 1,
+          "name": "assemble",
+          "clocks": {
+            "seconds": 4.873813763959333,
+            "exitCode": 0
+          }
+        },
+        {
+          "field": "jobs",
+          "index": 2,
+          "name": "link",
+          "clocks": {
+            "seconds": 0.2656990480609238,
+            "exitCode": 0
+          }
+        }
+      ]
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p136-query-api01/report.json",
+        "bytes": 3220,
+        "sha256": "e5108ec9f9bc0819584202c28e091222de9f7626ee36ea226fdddafe9f6f9885"
+      },
+      "category": "source-and-correctness-gates",
+      "complete": false,
+      "kind": "phase111-checked-api",
+      "clocks": {
+        "seconds": 5.15474539808929,
+        "status": 1
+      }
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p136-query-api02/report.json",
+        "bytes": 3434,
+        "sha256": "edd1f265e85e2b0c0076058b93e020eee8753ddd3292b13dbe95bc78005ee98f"
+      },
+      "category": "source-and-correctness-gates",
+      "complete": true,
+      "kind": "phase111-checked-api",
+      "clocks": {
+        "seconds": 8.979416847927496,
+        "status": 0
+      }
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p136-stages-api01/report.json",
+        "bytes": 3427,
+        "sha256": "ee73209c2e635d7e562c5ff0cd11192c91d93fe4d7146dd95bbbd71be8004d5e"
+      },
+      "category": "source-and-correctness-gates",
+      "complete": true,
+      "kind": "phase111-checked-api",
+      "clocks": {
+        "seconds": 13.03861607098952,
+        "status": 0
+      }
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase134/p136-cold-baseline01/report.json",
+        "bytes": 15032,
+        "sha256": "ec27cc8d074e6d554e3d54916ad622df3c702dedea0a6ccb0c1f27e394ab1873"
+      },
+      "category": "qualified-cold-baseline",
+      "complete": true,
+      "kind": "phase134-supervised-qbe-stdin-build",
+      "clocks": {
+        "wallSeconds": 374.93890550988726,
+        "emitAndQbeSeconds": 369.03136684093624
+      },
+      "nestedClocksNotAdded": [
+        {
+          "field": "jobs",
+          "index": 0,
+          "name": "assemble",
+          "clocks": {
+            "seconds": 4.772956450004131,
+            "exitCode": 0
+          }
+        },
+        {
+          "field": "jobs",
+          "index": 1,
+          "name": "link",
+          "clocks": {
+            "seconds": 0.26495308615267277,
+            "exitCode": 0
+          }
+        }
+      ]
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase134/p136-stages-native01/report.json",
+        "bytes": 14552,
+        "sha256": "bc755178733ebc432740929ccd379ac06acc97f9b6387ed37e068e5425f97023"
+      },
+      "category": "diagnostic-image-acquisition",
+      "complete": true,
+      "kind": "phase134-supervised-qbe-stdin-build",
+      "clocks": {
+        "wallSeconds": 379.67305806302465,
+        "emitAndQbeSeconds": 373.9590305769816
+      },
+      "nestedClocksNotAdded": [
+        {
+          "field": "jobs",
+          "index": 0,
+          "name": "assemble",
+          "clocks": {
+            "seconds": 4.8732172378804535,
+            "exitCode": 0
+          }
+        },
+        {
+          "field": "jobs",
+          "index": 1,
+          "name": "link",
+          "clocks": {
+            "seconds": 0.2648906628601253,
+            "exitCode": 0
+          }
+        }
+      ]
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/profile01/build/report.json",
+        "bytes": 2466,
+        "sha256": "a43d2b846ecedad97005400b3003567ddeb5ac933a3b76eec8d98c8738bae271"
+      },
+      "category": "profiling-and-analysis",
+      "complete": true,
+      "kind": null,
+      "clocks": {},
+      "nestedClocksNotAdded": [
+        {
+          "field": "jobs",
+          "index": 0,
+          "name": "link-diagnostic",
+          "clocks": {
+            "wallSeconds": 0.2750478240195662,
+            "cpuSeconds": 0.27375499999999997,
+            "userSeconds": 0.22022699999999998,
+            "systemSeconds": 0.053528,
+            "peakRssKiB": 69076,
+            "returncode": 0
+          }
+        }
+      ]
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/profile01/capture/report.json",
+        "bytes": 18553,
+        "sha256": "b17e84c8d73cb4e7c4ab64ff19ddba6f28e73472d8cb0963d03b9b613160cadd"
+      },
+      "category": "profiling-and-analysis",
+      "complete": true,
+      "kind": null,
+      "clocks": {},
+      "nestedClocksNotAdded": [
+        {
+          "field": "rows",
+          "index": 0,
+          "name": null,
+          "clocks": {
+            "wallSeconds": 371.77294350299053,
+            "cpuSeconds": 371.554834,
+            "userSeconds": 369.734821,
+            "systemSeconds": 1.8200129999999999,
+            "peakRssKiB": 974784,
+            "returncode": 0
+          }
+        }
+      ]
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/query-census02/report.json",
+        "bytes": 22820,
+        "sha256": "bee401d3d7652bd38ef16dcbd4b513d4c2ae7323d991e417ec06508f248d6098"
+      },
+      "category": "source-and-correctness-gates",
+      "complete": true,
+      "kind": "phase136-checked-query-scaling-census",
+      "clocks": {
+        "seconds": 5.616641001,
+        "peakRssBytes": 291745792
+      }
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/small-coverage-closures-256-0-ordinary/report.json",
+        "bytes": 5843,
+        "sha256": "8be0beeaf1e69f4d876c486d256eeccfcd4880731d4e120f8390e793f1d9990c"
+      },
+      "category": "native-diagnostic-requests",
+      "complete": true,
+      "kind": "phase136-native-stage-request",
+      "clocks": {
+        "nativeSeconds": 0.4326397329568863,
+        "cpuSeconds": 0.431069,
+        "userSeconds": 0.419095,
+        "systemSeconds": 0.011974,
+        "peakRssKiB": 39608,
+        "exitCode": 0
+      }
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/small-coverage-closures-256-0-stages/report.json",
+        "bytes": 6326,
+        "sha256": "a706419d0adfbdd6ece1e7bef6ce8b929027ea4a8413c02e627ac32e83f95917"
+      },
+      "category": "other-preserved-execution",
+      "complete": true,
+      "kind": "phase136-native-stage-request",
+      "clocks": {
+        "nativeSeconds": 0.42502677300944924,
+        "cpuSeconds": 0.423404,
+        "userSeconds": 0.411421,
+        "systemSeconds": 0.011982999999999999,
+        "peakRssKiB": 39568,
+        "exitCode": 0
+      }
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/small-coverage-closures-256-1-ordinary/report.json",
+        "bytes": 5839,
+        "sha256": "84da513410dfa14e2c600b58ef0f1fb4b8a5ce6d83f957ad938c7e92fc3053a2"
+      },
+      "category": "native-diagnostic-requests",
+      "complete": true,
+      "kind": "phase136-native-stage-request",
+      "clocks": {
+        "nativeSeconds": 0.42266518995165825,
+        "cpuSeconds": 0.421093,
+        "userSeconds": 0.421093,
+        "systemSeconds": 0.0,
+        "peakRssKiB": 39612,
+        "exitCode": 0
+      }
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/small-coverage-closures-256-1-stages/report.json",
+        "bytes": 6324,
+        "sha256": "c6ac454cde8584656675fe0393ba656593d6fde6579755e56469419fc76f8181"
+      },
+      "category": "other-preserved-execution",
+      "complete": true,
+      "kind": "phase136-native-stage-request",
+      "clocks": {
+        "nativeSeconds": 0.42703667702153325,
+        "cpuSeconds": 0.425452,
+        "userSeconds": 0.4175,
+        "systemSeconds": 0.007951999999999999,
+        "peakRssKiB": 39548,
+        "exitCode": 0
+      }
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/small-coverage-map-churn-128-0-ordinary/report.json",
+        "bytes": 5868,
+        "sha256": "e67b42f8bde787240e127629229cc55b2feeb015f78c30c6edf7c8e87ffcbe32"
+      },
+      "category": "native-diagnostic-requests",
+      "complete": true,
+      "kind": "phase136-native-stage-request",
+      "clocks": {
+        "nativeSeconds": 1.9360210259910673,
+        "cpuSeconds": 1.934516,
+        "userSeconds": 1.9105349999999999,
+        "systemSeconds": 0.023981,
+        "peakRssKiB": 43772,
+        "exitCode": 0
+      }
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/small-coverage-map-churn-128-0-stages/report.json",
+        "bytes": 6336,
+        "sha256": "079bf03cd1cca6db099d0eefcb96f46548a9817bb695186628bd31a3fc81b98e"
+      },
+      "category": "other-preserved-execution",
+      "complete": true,
+      "kind": "phase136-native-stage-request",
+      "clocks": {
+        "nativeSeconds": 1.9666093930136412,
+        "cpuSeconds": 1.964948,
+        "userSeconds": 1.932933,
+        "systemSeconds": 0.032015,
+        "peakRssKiB": 43736,
+        "exitCode": 0
+      }
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/small-coverage-map-churn-128-1-ordinary/report.json",
+        "bytes": 5857,
+        "sha256": "6dc82bd6b99efb10e6138cf7859a76b0e99ba0b8209e6c2762de03bdc5b3a03e"
+      },
+      "category": "native-diagnostic-requests",
+      "complete": true,
+      "kind": "phase136-native-stage-request",
+      "clocks": {
+        "nativeSeconds": 1.9433042160235345,
+        "cpuSeconds": 1.94173,
+        "userSeconds": 1.909768,
+        "systemSeconds": 0.031962,
+        "peakRssKiB": 43640,
+        "exitCode": 0
+      }
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/small-coverage-map-churn-128-1-stages/report.json",
+        "bytes": 6336,
+        "sha256": "41c3e00ae5aa7ea39a2e94f5f699bd4e987aed0680ad044ad4b0fd693811b04e"
+      },
+      "category": "other-preserved-execution",
+      "complete": true,
+      "kind": "phase136-native-stage-request",
+      "clocks": {
+        "nativeSeconds": 1.962151604006067,
+        "cpuSeconds": 1.960613,
+        "userSeconds": 1.926032,
+        "systemSeconds": 0.034581,
+        "peakRssKiB": 43708,
+        "exitCode": 0
+      }
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/small-lexer-0-ordinary/report.json",
+        "bytes": 5714,
+        "sha256": "96da1419d292fc607b9303937438e78a75805013582753606d170e36a7596569"
+      },
+      "category": "native-diagnostic-requests",
+      "complete": true,
+      "kind": "phase136-native-stage-request",
+      "clocks": {
+        "nativeSeconds": 1.4700939620379359,
+        "cpuSeconds": 1.468527,
+        "userSeconds": 1.428906,
+        "systemSeconds": 0.039620999999999996,
+        "peakRssKiB": 41600,
+        "exitCode": 0
+      }
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/small-lexer-0-stages/report.json",
+        "bytes": 6179,
+        "sha256": "87d0b25b945d74e5e067beb9ae8c32485d55c7df71c77e44f0fa4245ae07eb07"
+      },
+      "category": "other-preserved-execution",
+      "complete": true,
+      "kind": "phase136-native-stage-request",
+      "clocks": {
+        "nativeSeconds": 1.4634581599384546,
+        "cpuSeconds": 1.46193,
+        "userSeconds": 1.441959,
+        "systemSeconds": 0.019971,
+        "peakRssKiB": 41452,
+        "exitCode": 0
+      }
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/small-lexer-1-ordinary/report.json",
+        "bytes": 5712,
+        "sha256": "e537cb93d43a3db6eeaa0b2f6967cec1143a2ad184a8f64a98b3acd8754af32c"
+      },
+      "category": "native-diagnostic-requests",
+      "complete": true,
+      "kind": "phase136-native-stage-request",
+      "clocks": {
+        "nativeSeconds": 1.4885727481450886,
+        "cpuSeconds": 1.4870050000000001,
+        "userSeconds": 1.475014,
+        "systemSeconds": 0.011991,
+        "peakRssKiB": 41648,
+        "exitCode": 0
+      }
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/small-lexer-1-stages/report.json",
+        "bytes": 6178,
+        "sha256": "f944b9302aabd1ad1f8de6a408d06b6f19246cc2705d79bcda6d637cbc059d46"
+      },
+      "category": "other-preserved-execution",
+      "complete": true,
+      "kind": "phase136-native-stage-request",
+      "clocks": {
+        "nativeSeconds": 1.4516313909552991,
+        "cpuSeconds": 1.4501,
+        "userSeconds": 1.438083,
+        "systemSeconds": 0.012017,
+        "peakRssKiB": 41528,
+        "exitCode": 0
+      }
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/small-screen01/report.json",
+        "bytes": 6490,
+        "sha256": "bafc7a14487f93799175d8f2a8ecc7b54226f0724323843224f15af687315f66"
+      },
+      "category": "other-preserved-execution",
+      "complete": true,
+      "kind": null,
+      "clocks": {},
+      "nestedClocksNotAdded": [
+        {
+          "field": "rows",
+          "index": 0,
+          "name": "lexer",
+          "clocks": {
+            "seconds": 1.4700939620379359
+          }
+        },
+        {
+          "field": "rows",
+          "index": 1,
+          "name": "lexer",
+          "clocks": {
+            "seconds": 1.4634581599384546
+          }
+        },
+        {
+          "field": "rows",
+          "index": 2,
+          "name": "coverage-closures-256",
+          "clocks": {
+            "seconds": 0.4326397329568863
+          }
+        },
+        {
+          "field": "rows",
+          "index": 3,
+          "name": "coverage-closures-256",
+          "clocks": {
+            "seconds": 0.42502677300944924
+          }
+        },
+        {
+          "field": "rows",
+          "index": 4,
+          "name": "coverage-map-churn-128",
+          "clocks": {
+            "seconds": 1.9360210259910673
+          }
+        },
+        {
+          "field": "rows",
+          "index": 5,
+          "name": "coverage-map-churn-128",
+          "clocks": {
+            "seconds": 1.9666093930136412
+          }
+        },
+        {
+          "field": "rows",
+          "index": 6,
+          "name": "lexer",
+          "clocks": {
+            "seconds": 1.4516313909552991
+          }
+        },
+        {
+          "field": "rows",
+          "index": 7,
+          "name": "lexer",
+          "clocks": {
+            "seconds": 1.4885727481450886
+          }
+        },
+        {
+          "field": "rows",
+          "index": 8,
+          "name": "coverage-closures-256",
+          "clocks": {
+            "seconds": 0.42703667702153325
+          }
+        },
+        {
+          "field": "rows",
+          "index": 9,
+          "name": "coverage-closures-256",
+          "clocks": {
+            "seconds": 0.42266518995165825
+          }
+        },
+        {
+          "field": "rows",
+          "index": 10,
+          "name": "coverage-map-churn-128",
+          "clocks": {
+            "seconds": 1.962151604006067
+          }
+        },
+        {
+          "field": "rows",
+          "index": 11,
+          "name": "coverage-map-churn-128",
+          "clocks": {
+            "seconds": 1.9433042160235345
+          }
+        }
+      ]
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/staged-full01/report.json",
+        "bytes": 6019,
+        "sha256": "58a5f73efa48d55f034bbbcf5fcacbd003bbfe04294b45abba562094c83b566f"
+      },
+      "category": "native-diagnostic-requests",
+      "complete": true,
+      "kind": "phase136-native-stage-request",
+      "clocks": {
+        "nativeSeconds": 354.3309101299383,
+        "cpuSeconds": 354.30633400000005,
+        "userSeconds": 352.330321,
+        "systemSeconds": 1.976013,
+        "peakRssKiB": 971984,
+        "exitCode": 0
+      }
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase136/stages-bridge01/report.json",
+        "bytes": 9254,
+        "sha256": "69d15344bc6d50b44286eb5fa939fb5934463933aa83e5358c3864ba319f48e2"
+      },
+      "category": "source-and-correctness-gates",
+      "complete": true,
+      "kind": "phase136-uncached-stages-pure-bridge",
+      "clocks": {
+        "seconds": 36.268830172,
+        "peakRssBytes": 562429952
+      }
+    }
+  ],
+  "collectionProblems": [],
+  "observedGuardWallSeconds": 1593.7873427129816,
+  "observedGuardIntervalUnionSeconds": 1593.7872982025146,
+  "categories": {
+    "qualified-cold-baseline": {
+      "guardCount": 1,
+      "guardWallSeconds": 375.92320693307556
+    },
+    "profiling-and-analysis": {
+      "guardCount": 1,
+      "guardWallSeconds": 375.37132319877855
+    },
+    "other-preserved-execution": {
+      "guardCount": 7,
+      "guardWallSeconds": 24.233676676405594
+    },
+    "source-and-correctness-gates": {
+      "guardCount": 6,
+      "guardWallSeconds": 72.8809370920062
+    },
+    "native-diagnostic-requests": {
+      "guardCount": 7,
+      "guardWallSeconds": 365.3031851777341
+    },
+    "diagnostic-image-acquisition": {
+      "guardCount": 1,
+      "guardWallSeconds": 380.0750136349816
+    }
+  },
+  "unfinishedGuardCount": 0,
+  "missingCosts": [
+    "Agent tokens/quota/money were not exposed by these execution receipts.",
+    "Source reasoning, unattended time and unguarded metadata work are not measured here."
+  ],
+  "scope": "Finished failed and successful guard receipts both count. Guard wall sum is resource-lane exposure, not researcher elapsed time. Interval union covers observed guarded work only. Nested native/stage/tool clocks are preserved separately and never added to guard totals. No monetary or quota estimate is invented."
+}

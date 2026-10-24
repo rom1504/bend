@@ -4,6 +4,22 @@ This ledger records decisions and links evidence; it does not replace the report
 Read [workflow](README.md) and [current strategy](STEERING.md) before a new investigation.
 User objective: make the Bend compiler written in Bend and its validation loop much faster while preserving correctness. Historical authorization windows are recorded below; current release status and priorities are in [STEERING.md](STEERING.md).
 
+## Phase136 — Cold pipeline and query ownership diagnosis (2026-10-24)
+
+[Design](../design/phase136/README.md) ·
+[Report](../implementation/phase136/README.md) ·
+[Stage decision](phase136/P136-001-cold-stages.md) ·
+[Query decision](phase136/P136-002-query-work.md).
+
+Cold full build375.923s/1.018GB, exact independent107MB QBE. Checked seventeen-stage
+diagnostic isolates152.111s frontend excluding Base; checking53.149s and ownership
+checking0.144s. Separate QBE/as/link replay13.867s tool sum. Exact-object profile
+has11,569 usable samples: drop/fade29.74%, three query contexts18.16% with ownership
+work overlapping. Static kept-row take9/eight-sink paths and checked raw-query
+counts support testing existing wider borrowed scalar consumers before broad IR
+changes. No optimization/promotion claimed.23 guarded jobs26.56min, no overlap;
+two failed diagnostic attempts retained. Qualified Phase134 unchanged.
+
 ## Phase135 — Full compiler edit reuse (2026-10-24)
 
 [Design](../design/phase135/README.md) ·

@@ -1,0 +1,329 @@
+{
+  "complete": true,
+  "targetsRun": false,
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/identity/wide/analyze.py",
+      "bytes": 3531,
+      "sha256": "0e22df5187bb61e2092e4f85a2231ec507ff5ee183d0084926025ce78ac340a3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/wide-timing01/timing/report.json",
+      "bytes": 48857,
+      "sha256": "48587d28e9e07d8765bd64f504f30ca84fdc6b0f8830364927c520bef6e05e75"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/p131-wide-baseline-emit01/compiler-kdef.ssa",
+      "bytes": 567614,
+      "sha256": "b20ac985bea0c5a3bf0cc4da6884ac7df5b09f150030b976014f85dc9227aa58"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/p131-wide-candidate-emit01/compiler-kdef.ssa",
+      "bytes": 593474,
+      "sha256": "00af0cbb2eef4198f0e15187effe61615829e8b53d14333fd31066655e4ff5e4"
+    }
+  ],
+  "cases": [
+    {
+      "name": "compiler-kdef",
+      "medianSeconds": {
+        "baseline": 0.12464000494219363,
+        "candidate": 0.08415725897066295
+      },
+      "rawSeconds": {
+        "baseline": [
+          0.12446959898807108,
+          0.13480283017270267,
+          0.12530865101143718,
+          0.12464000494219363,
+          0.12405750807374716
+        ],
+        "candidate": [
+          0.0830332268960774,
+          0.08331394684500992,
+          0.08454748196527362,
+          0.08415725897066295,
+          0.08426169794984162
+        ]
+      },
+      "internalMilliseconds": {
+        "baseline": [
+          122,
+          132,
+          123,
+          123,
+          123
+        ],
+        "candidate": [
+          82,
+          81,
+          83,
+          82,
+          82
+        ]
+      },
+      "internalMedianMilliseconds": {
+        "baseline": 123,
+        "candidate": 82
+      },
+      "candidateOverBaseline": 0.6752026286399296,
+      "percentTimeReduction": 32.47973713600704,
+      "pairedRatios": [
+        0.6670964442010867,
+        0.6180430094699959,
+        0.6747138468321456,
+        0.6752026286399296,
+        0.6792148194670448
+      ],
+      "internalCandidateOverBaseline": 0.6666666666666666,
+      "allPairsFaster": true,
+      "minimumInternalMilliseconds": 81
+    },
+    {
+      "name": "record-transfer",
+      "medianSeconds": {
+        "baseline": 0.13785688811913133,
+        "candidate": 0.0812939340248704
+      },
+      "rawSeconds": {
+        "baseline": [
+          0.13655172707512975,
+          0.1411577770486474,
+          0.13690022192895412,
+          0.13843378704041243,
+          0.13785688811913133
+        ],
+        "candidate": [
+          0.08206926891580224,
+          0.08099583303555846,
+          0.0812939340248704,
+          0.08131315489299595,
+          0.08103589084930718
+        ]
+      },
+      "internalMilliseconds": {
+        "baseline": [
+          134,
+          139,
+          135,
+          136,
+          136
+        ],
+        "candidate": [
+          80,
+          79,
+          79,
+          79,
+          80
+        ]
+      },
+      "internalMedianMilliseconds": {
+        "baseline": 136,
+        "candidate": 79
+      },
+      "candidateOverBaseline": 0.589698020418239,
+      "percentTimeReduction": 41.030197958176096,
+      "pairedRatios": [
+        0.6010123099406011,
+        0.5737964618672392,
+        0.5938188622298858,
+        0.5873794008774644,
+        0.587826201178128
+      ],
+      "internalCandidateOverBaseline": 0.5808823529411765,
+      "allPairsFaster": true,
+      "minimumInternalMilliseconds": 79
+    }
+  ],
+  "code": [
+    {
+      "role": "baseline",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/p131-wide-baseline-emit01/compiler-kdef.ssa",
+        "bytes": 567614,
+        "sha256": "b20ac985bea0c5a3bf0cc4da6884ac7df5b09f150030b976014f85dc9227aa58"
+      },
+      "functions": [
+        {
+          "name": "$direct.p131w_query",
+          "lines": 15,
+          "sha256": "45f458fa81e5914ba9c1ea95c000753f53028e57e01f5acdd38bf3b95c5e190b",
+          "calls": {
+            "$direct.dn": 1,
+            "$direct.String.eq": 1
+          }
+        },
+        {
+          "name": "$direct.p131w_once",
+          "lines": 35,
+          "sha256": "76246ebe22434462b3824b0195f4953c0c84500a9723a1388f54852e9a8fef22",
+          "calls": {
+            "p111_rt_sink": 1,
+            "p111_rt_keep": 1,
+            "$direct.p131w_query": 2,
+            "$direct.Bool.to_u32": 2
+          }
+        },
+        {
+          "name": "$direct.p131w_query16",
+          "lines": 71,
+          "sha256": "7b9ad83fe1cd687989b6d8ec7069ef958b4fa7e11e3961fb1ef97a35d11d1055",
+          "calls": {
+            "p111_rt_take": 1,
+            "p111_rt_sink": 15,
+            "$direct.String.eq": 1,
+            "p111_rt_fail": 1
+          }
+        },
+        {
+          "name": "$direct.p131w_query9",
+          "lines": 15,
+          "sha256": "6f19e08db2141666451b36a26cd416b4b93d75bce300a3498d5c7c7f8200884e",
+          "calls": {
+            "$direct.p131w_name": 1,
+            "$direct.String.eq": 1
+          }
+        },
+        {
+          "name": "$direct.p131w_repeat",
+          "lines": 82,
+          "sha256": "d7a825551fbf8959f508a03f5ce0c7670e4484988c54f338003d99c8e63ed903",
+          "calls": {
+            "p111_rt_sink": 3,
+            "p111_rt_keep": 3,
+            "$direct.p131w_once": 1,
+            "p111_rt_fail": 1
+          }
+        }
+      ]
+    },
+    {
+      "role": "candidate",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/p131-wide-candidate-emit01/compiler-kdef.ssa",
+        "bytes": 593474,
+        "sha256": "00af0cbb2eef4198f0e15187effe61615829e8b53d14333fd31066655e4ff5e4"
+      },
+      "functions": [
+        {
+          "name": "$p128borrow.owned.p131w_query",
+          "lines": 15,
+          "sha256": "001ad94b0a5f1e188aad8eeabd7fe453dacaa5697c474bc3555d5e1927a75553",
+          "calls": {
+            "$direct.dn": 1,
+            "$direct.String.eq": 1
+          }
+        },
+        {
+          "name": "$p118borrow.read.p131w_query",
+          "lines": 292,
+          "sha256": "474571f8b6e37cef8d420478f754bcabbb93a9632debd73ed7e41424c174acd7",
+          "calls": {
+            "p118_rt_borrow_fields": 5,
+            "$p118borrow.read.String.cmp": 1,
+            "p111_rt_special_ctor": 6,
+            "p111_rt_fail": 3
+          }
+        },
+        {
+          "name": "$direct.p131w_query",
+          "lines": 17,
+          "sha256": "7c7530e8b3c5b3be6d31ef8823f801e9799c4b215d192a36714d2b0b1e15485e",
+          "calls": {
+            "p118_rt_borrow_scalar_safe": 1,
+            "$p118borrow.read.p131w_query": 1,
+            "p111_rt_sink": 2,
+            "$p128borrow.owned.p131w_query": 1
+          }
+        },
+        {
+          "name": "$direct.p131w_once",
+          "lines": 35,
+          "sha256": "76246ebe22434462b3824b0195f4953c0c84500a9723a1388f54852e9a8fef22",
+          "calls": {
+            "p111_rt_sink": 1,
+            "p111_rt_keep": 1,
+            "$direct.p131w_query": 2,
+            "$direct.Bool.to_u32": 2
+          }
+        },
+        {
+          "name": "$p128borrow.owned.p131w_query16",
+          "lines": 71,
+          "sha256": "daba16b8c54db90ca75085d48b2f8062e14e5caa29cd747bc9eefe7072361b30",
+          "calls": {
+            "p111_rt_take": 1,
+            "p111_rt_sink": 15,
+            "$direct.String.eq": 1,
+            "p111_rt_fail": 1
+          }
+        },
+        {
+          "name": "$p118borrow.read.p131w_query16",
+          "lines": 62,
+          "sha256": "48918ea3cd8d6a48a12e4e9853fe63312ef06ce32cc385e1920bef977810dde5",
+          "calls": {
+            "p118_rt_borrow_fields": 1,
+            "$p118borrow.read.String.cmp": 1,
+            "p111_rt_special_ctor": 2,
+            "p111_rt_fail": 1
+          }
+        },
+        {
+          "name": "$direct.p131w_query16",
+          "lines": 17,
+          "sha256": "e49af0ed9cb2953c22aa1736d3816f55f4890b55c113dbc0e5315a2b1b499f91",
+          "calls": {
+            "p118_rt_borrow_scalar_safe": 1,
+            "$p118borrow.read.p131w_query16": 1,
+            "p111_rt_sink": 2,
+            "$p128borrow.owned.p131w_query16": 1
+          }
+        },
+        {
+          "name": "$p128borrow.owned.p131w_query9",
+          "lines": 15,
+          "sha256": "2b3cb0b4b56ebef0c3e647b07e73ad37f241365122d09b0052578b7df07f44ad",
+          "calls": {
+            "$direct.p131w_name": 1,
+            "$direct.String.eq": 1
+          }
+        },
+        {
+          "name": "$p118borrow.read.p131w_query9",
+          "lines": 48,
+          "sha256": "f99ebf836f355c70cddcec38db9d8fd6d43845c9aa8a8d070a748d1e40ce3c34",
+          "calls": {
+            "p118_rt_borrow_fields": 1,
+            "$p118borrow.read.String.cmp": 1,
+            "p111_rt_special_ctor": 2,
+            "p111_rt_fail": 1
+          }
+        },
+        {
+          "name": "$direct.p131w_query9",
+          "lines": 17,
+          "sha256": "f78a5ba1b670dd9ff8e8fe64a6106b6016e3d831e514376efc4ed5f91addbb5d",
+          "calls": {
+            "p118_rt_borrow_scalar_safe": 1,
+            "$p118borrow.read.p131w_query9": 1,
+            "p111_rt_sink": 2,
+            "$p128borrow.owned.p131w_query9": 1
+          }
+        },
+        {
+          "name": "$direct.p131w_repeat",
+          "lines": 82,
+          "sha256": "d7a825551fbf8959f508a03f5ce0c7670e4484988c54f338003d99c8e63ed903",
+          "calls": {
+            "p111_rt_sink": 3,
+            "p111_rt_keep": 3,
+            "$direct.p131w_once": 1,
+            "p111_rt_fail": 1
+          }
+        }
+      ]
+    }
+  ],
+  "scope": "Five paired clean observations of two extracted whole scalar queries, not whole compiler speed. Original and candidate retain identical source inputs/runtime and independent ordinary output oracles. Wider source is checked but not native-self-host-qualified or installed."
+}

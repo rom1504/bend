@@ -1,0 +1,240 @@
+{
+  "complete": true,
+  "targetsRun": false,
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/p131-selector-ceiling03/selector-original.ssa",
+      "bytes": 973359,
+      "sha256": "eb316afd7ce2227781eb3f10002c213540de2b3ef3af9c6c911ca3cb80a1c593"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p131-selector-ceiling03-selector-original-build/program",
+      "bytes": 298288,
+      "sha256": "a7b363c39507377909947bca11b625217218682117f7ed748acfa2e1dd6283be"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/p131-selector-ceiling03/selector-fused.ssa",
+      "bytes": 949672,
+      "sha256": "60a5a1f4642ef8e417335f270672307535bdb4c8eaf3bc49ead1f66a6be0d725"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p131-selector-ceiling03-selector-fused-build/program",
+      "bytes": 298280,
+      "sha256": "69b77cf353524d5c59d4bb2bfd60613edc8b599e37405c8be2b75248eb7f26c0"
+    }
+  ],
+  "rows": [
+    {
+      "role": "original",
+      "name": "p113d_FID_$direct.p131sc_bucket",
+      "bytes": 14381,
+      "sha256": "25535bd3805ed79e36f2d90c5de1a98b86b5ef2156c71cc60fd356ebd2555abc",
+      "callSites": {
+        "p111_rt_sink": 32,
+        "p125_rt_take2": 3,
+        "p111_rt_keep": 4,
+        "p111_rt_take": 2,
+        "p125_rt_take4": 2,
+        "p111_rt_fail": 4,
+        "p113d_FID_$direct.p88_string_eq_go": 1,
+        "p111_rt_ctor": 2
+      },
+      "lines": 290,
+      "machineInstructions": 376
+    },
+    {
+      "role": "original",
+      "name": "p113d_FID_$direct.index_bucket",
+      "bytes": 10091,
+      "sha256": "ce3ae50b28369249dbd1eec99ebc64c09a340b2027668e1b419159b4b7ce9ce9",
+      "callSites": {
+        "p111_rt_sink": 21,
+        "p125_rt_take2": 2,
+        "p111_rt_keep": 4,
+        "p111_rt_take": 1,
+        "p125_rt_take4": 1,
+        "p111_rt_fail": 3,
+        "p113d_FID_$direct.p88_string_eq_go": 1,
+        "p111_rt_ctor": 2
+      },
+      "lines": 205,
+      "machineInstructions": 272
+    },
+    {
+      "role": "original",
+      "name": "p113d_FID_$direct.index_find",
+      "bytes": 28943,
+      "sha256": "936086c9126049e6e6e58c7ca7e9f6bae856a7d44f11ca58365ae0a1ac61511b",
+      "callSites": {
+        "p111_rt_take": 1,
+        "p111_rt_sink": 43,
+        "p111_rt_keep": 3,
+        "p113d_FID_$direct.p88_string_eq_go": 1,
+        "p111_rt_ctor": 14,
+        "p113d_FID_$direct.index_bucket": 3,
+        "p125_rt_take2": 3,
+        "p111_rt_fail": 4,
+        "p125_rt_take4": 1,
+        "p125_rt_ctor2": 2
+      },
+      "lines": 681,
+      "machineInstructions": 595
+    },
+    {
+      "role": "original",
+      "name": "p113d_FID_$direct.p131sc_old",
+      "bytes": 5111,
+      "sha256": "f5f5e0abf077eb947cb7189fb80fbeacdad8cc24c4db36ff657a0f2b54685b37",
+      "callSites": {
+        "p113d_FID_$direct.index_find": 1,
+        "p111_rt_take": 1,
+        "p111_rt_sink": 11,
+        "p125_rt_take2": 1,
+        "p125_rt_take4": 1,
+        "p111_rt_fail": 1
+      },
+      "lines": 103,
+      "machineInstructions": 111
+    },
+    {
+      "role": "original",
+      "name": "p113d_FID_$direct.p131sc_query",
+      "bytes": 7487,
+      "sha256": "7e098ecab46bd8744d2c9769c97e9a015608e63a26d09788bd02ce543a2b8bb4",
+      "callSites": {
+        "p113d_FID_$direct.index_find": 1,
+        "p111_rt_take": 1,
+        "p111_rt_sink": 11,
+        "p125_rt_take2": 1,
+        "p125_rt_take4": 1,
+        "p111_rt_fail": 1
+      },
+      "lines": 114,
+      "machineInstructions": 111
+    },
+    {
+      "role": "original",
+      "name": "p113d_FID_$direct.p131sc_find",
+      "bytes": 28500,
+      "sha256": "e50c641564f2412b0fee365e2ecd87c420b97988040be52ceda93206cf73b2bb",
+      "callSites": {
+        "p111_rt_take": 1,
+        "p111_rt_sink": 43,
+        "p111_rt_keep": 3,
+        "p113d_FID_$direct.p88_string_eq_go": 1,
+        "p111_rt_ctor": 14,
+        "p113d_FID_$direct.p131sc_bucket": 3,
+        "p125_rt_take2": 3,
+        "p111_rt_fail": 4,
+        "p125_rt_take4": 1,
+        "p125_rt_ctor2": 2
+      },
+      "lines": 673,
+      "machineInstructions": 594
+    },
+    {
+      "role": "fused",
+      "name": "p113d_FID_$direct.p131sc_bucket",
+      "bytes": 14381,
+      "sha256": "25535bd3805ed79e36f2d90c5de1a98b86b5ef2156c71cc60fd356ebd2555abc",
+      "callSites": {
+        "p111_rt_sink": 32,
+        "p125_rt_take2": 3,
+        "p111_rt_keep": 4,
+        "p111_rt_take": 2,
+        "p125_rt_take4": 2,
+        "p111_rt_fail": 4,
+        "p113d_FID_$direct.p88_string_eq_go": 1,
+        "p111_rt_ctor": 2
+      },
+      "lines": 290,
+      "machineInstructions": 376
+    },
+    {
+      "role": "fused",
+      "name": "p113d_FID_$direct.index_bucket",
+      "bytes": 10091,
+      "sha256": "ce3ae50b28369249dbd1eec99ebc64c09a340b2027668e1b419159b4b7ce9ce9",
+      "callSites": {
+        "p111_rt_sink": 21,
+        "p125_rt_take2": 2,
+        "p111_rt_keep": 4,
+        "p111_rt_take": 1,
+        "p125_rt_take4": 1,
+        "p111_rt_fail": 3,
+        "p113d_FID_$direct.p88_string_eq_go": 1,
+        "p111_rt_ctor": 2
+      },
+      "lines": 205,
+      "machineInstructions": 272
+    },
+    {
+      "role": "fused",
+      "name": "p113d_FID_$direct.index_find",
+      "bytes": 28943,
+      "sha256": "936086c9126049e6e6e58c7ca7e9f6bae856a7d44f11ca58365ae0a1ac61511b",
+      "callSites": {
+        "p111_rt_take": 1,
+        "p111_rt_sink": 43,
+        "p111_rt_keep": 3,
+        "p113d_FID_$direct.p88_string_eq_go": 1,
+        "p111_rt_ctor": 14,
+        "p113d_FID_$direct.index_bucket": 3,
+        "p125_rt_take2": 3,
+        "p111_rt_fail": 4,
+        "p125_rt_take4": 1,
+        "p125_rt_ctor2": 2
+      },
+      "lines": 681,
+      "machineInstructions": 595
+    },
+    {
+      "role": "fused",
+      "name": "p113d_FID_$direct.p131sc_old",
+      "bytes": 5111,
+      "sha256": "f5f5e0abf077eb947cb7189fb80fbeacdad8cc24c4db36ff657a0f2b54685b37",
+      "callSites": {
+        "p113d_FID_$direct.index_find": 1,
+        "p111_rt_take": 1,
+        "p111_rt_sink": 11,
+        "p125_rt_take2": 1,
+        "p125_rt_take4": 1,
+        "p111_rt_fail": 1
+      },
+      "lines": 103,
+      "machineInstructions": 111
+    },
+    {
+      "role": "fused",
+      "name": "p113d_FID_$direct.p131sc_find",
+      "bytes": 28500,
+      "sha256": "e50c641564f2412b0fee365e2ecd87c420b97988040be52ceda93206cf73b2bb",
+      "callSites": {
+        "p111_rt_take": 1,
+        "p111_rt_sink": 43,
+        "p111_rt_keep": 3,
+        "p113d_FID_$direct.p88_string_eq_go": 1,
+        "p111_rt_ctor": 14,
+        "p113d_FID_$direct.p131sc_bucket": 3,
+        "p125_rt_take2": 3,
+        "p111_rt_fail": 4,
+        "p125_rt_take4": 1,
+        "p125_rt_ctor2": 2
+      },
+      "lines": 673,
+      "machineInstructions": 594
+    },
+    {
+      "role": "fused",
+      "name": "p113d_FID_$direct.p131sc_query",
+      "bytes": 737,
+      "sha256": "7a68616668575b59b746a0b804898eb1641c0a6f428b38d7b898ba47bce97e50",
+      "callSites": {
+        "p113d_FID_$direct.p131sc_find": 1
+      },
+      "lines": 16,
+      "machineInstructions": 7
+    }
+  ],
+  "scope": "Actual checked-emission andhostdisassembly; bothalgorithmdefinitionsliveinbothbinariesforordinarydifferentialcontrols. Staticcallsincludemutuallyexclusivebranches. Timedqueryselectsoriginalvsfused; noautomaticoptimizationclaim."
+}

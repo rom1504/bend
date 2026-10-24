@@ -1,0 +1,99 @@
+{
+  "complete": true,
+  "targetsRun": false,
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/regions/selector-ceiling/repair-v03.py",
+      "bytes": 1735,
+      "sha256": "14932b5fe60f7f5d11f8c4b4b2363aeb26c3cbc6bd776ab3248a44064400b9d2"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/regions/selector-ceiling/cases-v02.json",
+      "bytes": 3476,
+      "sha256": "c96537608977ce264e77a1bb6d5b0af520a1d7097e19e90ed190cd4c0c4ad26d"
+    }
+  ],
+  "replacements": {
+    "def p131sc_bucket(ds: List<&2,KDef>, +name: String)": "def p131sc_bucket(+ds: List<&2,KDef>, +name: String)",
+    "def p131sc_old(tree: KDef, name: String, hash: U32)": "def p131sc_old(+tree: KDef, +name: String, +hash: U32)",
+    "def p131sc_query(tree: KDef, name: String, hash: U32)": "def p131sc_query(+tree: KDef, +name: String, +hash: U32)",
+    "def p131sc_entry(name: String, capacity: U32)": "def p131sc_entry(+name: String, +capacity: U32)",
+    "def p131sc_legacy(kind: String, hash: U32, mask: U32, children: List<&2,KDef>)": "def p131sc_legacy(+kind: String, +hash: U32, +mask: U32, +children: List<&2,KDef>)",
+    "def p131sc_entries(n: Nat)": "def p131sc_entries(+n: Nat)"
+  },
+  "cases": [
+    {
+      "name": "selector-original",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/regions/selector-ceiling/original-v03.bend",
+        "bytes": 9363,
+        "sha256": "5e97cd5e0ea9c6178e8bfd43fa07a519fa08a3c7ea7a71bddccc2b311701c410"
+      },
+      "expected": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/regions/selector-ceiling/expected.json",
+        "bytes": 174,
+        "sha256": "13e07eee520713dd90ee2514c7075643ddfadccd1bd25ae04fef8730d3d99c4f"
+      },
+      "expectedStdoutEvidence": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/regions/selector-ceiling/expected.json",
+        "bytes": 174,
+        "sha256": "13e07eee520713dd90ee2514c7075643ddfadccd1bd25ae04fef8730d3d99c4f"
+      }
+    },
+    {
+      "name": "selector-fused",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/regions/selector-ceiling/fused-v03.bend",
+        "bytes": 9367,
+        "sha256": "9d15d3393f25c075ea2ee35e8cc241dd3f6fa7e3f5033ff30cc8fd58ac3f1f4f"
+      },
+      "expected": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/regions/selector-ceiling/expected.json",
+        "bytes": 174,
+        "sha256": "13e07eee520713dd90ee2514c7075643ddfadccd1bd25ae04fef8730d3d99c4f"
+      },
+      "expectedStdoutEvidence": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/regions/selector-ceiling/expected.json",
+        "bytes": 174,
+        "sha256": "13e07eee520713dd90ee2514c7075643ddfadccd1bd25ae04fef8730d3d99c4f"
+      }
+    },
+    {
+      "name": "selector-original-short",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/regions/selector-ceiling/original-short-v03.bend",
+        "bytes": 9362,
+        "sha256": "ec7381da1ef0a3ebed790f8437b77f48b9bd7e60bb935c6f194f8b95319e8b2a"
+      },
+      "expected": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/regions/selector-ceiling/expected.json",
+        "bytes": 174,
+        "sha256": "13e07eee520713dd90ee2514c7075643ddfadccd1bd25ae04fef8730d3d99c4f"
+      },
+      "expectedStdoutEvidence": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/regions/selector-ceiling/expected.json",
+        "bytes": 174,
+        "sha256": "13e07eee520713dd90ee2514c7075643ddfadccd1bd25ae04fef8730d3d99c4f"
+      }
+    },
+    {
+      "name": "selector-fused-short",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/regions/selector-ceiling/fused-short-v03.bend",
+        "bytes": 9366,
+        "sha256": "2215e24ed10a5917d3b37d34a191e46ff1b789ff27b10341e2c84cf9ee57af0e"
+      },
+      "expected": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/regions/selector-ceiling/expected.json",
+        "bytes": 174,
+        "sha256": "13e07eee520713dd90ee2514c7075643ddfadccd1bd25ae04fef8730d3d99c4f"
+      },
+      "expectedStdoutEvidence": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/regions/selector-ceiling/expected.json",
+        "bytes": 174,
+        "sha256": "13e07eee520713dd90ee2514c7075643ddfadccd1bd25ae04fef8730d3d99c4f"
+      }
+    }
+  ],
+  "scope": "Quantity annotations only in new scaffolding/fused functions; extracted original source bodies, fused algorithm and frozen oracle unchanged. Initial affine refusal retained."
+}

@@ -1,0 +1,289 @@
+{
+  "kind": "phase131-guard-cost-snapshot",
+  "complete": true,
+  "cutoffUnixSeconds": 1792803385.904375,
+  "method": {
+    "file": "selfhost/tools/performance/phase131/native/cost-final.py",
+    "bytes": 3801,
+    "sha256": "c9acc6e36f4fcd1442bdd18a1103695aba8043d6719c7baf91e87bfe6fa2e999"
+  },
+  "methodComponents": [
+    {
+      "file": "selfhost/tools/performance/phase131/native/cost-snapshot.py",
+      "bytes": 10486,
+      "sha256": "c0df8a2402b79f5a02b55de5e719e6dbc13be47768885f4bbb3b8b7c70b8acd1"
+    },
+    {
+      "file": "selfhost/tools/performance/phase131/native/cost-final.py",
+      "bytes": 3801,
+      "sha256": "c9acc6e36f4fcd1442bdd18a1103695aba8043d6719c7baf91e87bfe6fa2e999"
+    }
+  ],
+  "totals": {
+    "receipts": 372,
+    "successful": 319,
+    "nonzeroOrIncomplete": 53,
+    "negativeControlLabel": 23,
+    "failedWithoutNegativeLabel": 32,
+    "guardedWallSumSeconds": 6547.583782285219,
+    "coveredIntervalUnionSeconds": 5340.47797036171,
+    "intervalOverlapSeconds": 1207.10458111763,
+    "maximumTreeRssBytes": 2923991040
+  },
+  "byCpu": {
+    "3": {
+      "receipts": 104,
+      "successful": 96,
+      "nonzeroOrIncomplete": 8,
+      "negativeControlLabel": 0,
+      "failedWithoutNegativeLabel": 8,
+      "guardedWallSumSeconds": 4303.287500099046,
+      "coveredIntervalUnionSeconds": 4303.287187337875,
+      "intervalOverlapSeconds": 0,
+      "maximumTreeRssBytes": 2923991040
+    },
+    "4": {
+      "receipts": 91,
+      "successful": 59,
+      "nonzeroOrIncomplete": 32,
+      "negativeControlLabel": 23,
+      "failedWithoutNegativeLabel": 11,
+      "guardedWallSumSeconds": 150.94565268000588,
+      "coveredIntervalUnionSeconds": 150.94538068771362,
+      "intervalOverlapSeconds": 0,
+      "maximumTreeRssBytes": 642543616
+    },
+    "5": {
+      "receipts": 61,
+      "successful": 52,
+      "nonzeroOrIncomplete": 9,
+      "negativeControlLabel": 0,
+      "failedWithoutNegativeLabel": 9,
+      "guardedWallSumSeconds": 708.7693660857622,
+      "coveredIntervalUnionSeconds": 708.7691912651062,
+      "intervalOverlapSeconds": 0,
+      "maximumTreeRssBytes": 2251493376
+    },
+    "6": {
+      "receipts": 116,
+      "successful": 112,
+      "nonzeroOrIncomplete": 4,
+      "negativeControlLabel": 0,
+      "failedWithoutNegativeLabel": 4,
+      "guardedWallSumSeconds": 1384.5812634204049,
+      "coveredIntervalUnionSeconds": 1384.5807921886444,
+      "intervalOverlapSeconds": 0,
+      "maximumTreeRssBytes": 2293219328
+    }
+  },
+  "byCategory": {
+    "clean-compiler-comparison": {
+      "receipts": 3,
+      "successful": 3,
+      "nonzeroOrIncomplete": 0,
+      "negativeControlLabel": 0,
+      "failedWithoutNegativeLabel": 0,
+      "guardedWallSumSeconds": 155.84291355824098,
+      "coveredIntervalUnionSeconds": 155.8429079055786,
+      "intervalOverlapSeconds": 0,
+      "maximumTreeRssBytes": 178794496
+    },
+    "clean-proxy-timing": {
+      "receipts": 7,
+      "successful": 7,
+      "nonzeroOrIncomplete": 0,
+      "negativeControlLabel": 0,
+      "failedWithoutNegativeLabel": 0,
+      "guardedWallSumSeconds": 41.896251670783386,
+      "coveredIntervalUnionSeconds": 41.89622902870178,
+      "intervalOverlapSeconds": 0,
+      "maximumTreeRssBytes": 121888768
+    },
+    "controls-diagnostics-other": {
+      "receipts": 110,
+      "successful": 107,
+      "nonzeroOrIncomplete": 3,
+      "negativeControlLabel": 0,
+      "failedWithoutNegativeLabel": 3,
+      "guardedWallSumSeconds": 1131.8691151614767,
+      "coveredIntervalUnionSeconds": 1100.5410313606262,
+      "intervalOverlapSeconds": 31.32769203186035,
+      "maximumTreeRssBytes": 952549376
+    },
+    "full-compiler-acquisition": {
+      "receipts": 2,
+      "successful": 2,
+      "nonzeroOrIncomplete": 0,
+      "negativeControlLabel": 0,
+      "failedWithoutNegativeLabel": 0,
+      "guardedWallSumSeconds": 941.1505617757794,
+      "coveredIntervalUnionSeconds": 941.1505556106567,
+      "intervalOverlapSeconds": 0,
+      "maximumTreeRssBytes": 2860138496
+    },
+    "full-compiler-machine-build": {
+      "receipts": 5,
+      "successful": 5,
+      "nonzeroOrIncomplete": 0,
+      "negativeControlLabel": 0,
+      "failedWithoutNegativeLabel": 0,
+      "guardedWallSumSeconds": 74.26429027481936,
+      "coveredIntervalUnionSeconds": 74.2642765045166,
+      "intervalOverlapSeconds": 0,
+      "maximumTreeRssBytes": 935997440
+    },
+    "full-compiler-profiling": {
+      "receipts": 2,
+      "successful": 2,
+      "nonzeroOrIncomplete": 0,
+      "negativeControlLabel": 0,
+      "failedWithoutNegativeLabel": 0,
+      "guardedWallSumSeconds": 746.896314709913,
+      "coveredIntervalUnionSeconds": 746.8963105678558,
+      "intervalOverlapSeconds": 0,
+      "maximumTreeRssBytes": 2920542208
+    },
+    "full-compiler-reproduction": {
+      "receipts": 1,
+      "successful": 1,
+      "nonzeroOrIncomplete": 0,
+      "negativeControlLabel": 0,
+      "failedWithoutNegativeLabel": 0,
+      "guardedWallSumSeconds": 381.5898829270154,
+      "coveredIntervalUnionSeconds": 381.5898804664612,
+      "intervalOverlapSeconds": 0,
+      "maximumTreeRssBytes": 2922270720
+    },
+    "full-compiler-self-emission": {
+      "receipts": 2,
+      "successful": 2,
+      "nonzeroOrIncomplete": 0,
+      "negativeControlLabel": 0,
+      "failedWithoutNegativeLabel": 0,
+      "guardedWallSumSeconds": 832.6638511349447,
+      "coveredIntervalUnionSeconds": 832.6638462543488,
+      "intervalOverlapSeconds": 0,
+      "maximumTreeRssBytes": 2923991040
+    },
+    "independent-source-check": {
+      "receipts": 41,
+      "successful": 28,
+      "nonzeroOrIncomplete": 13,
+      "negativeControlLabel": 0,
+      "failedWithoutNegativeLabel": 13,
+      "guardedWallSumSeconds": 428.0382167128846,
+      "coveredIntervalUnionSeconds": 426.2059860229492,
+      "intervalOverlapSeconds": 1.8320543766021729,
+      "maximumTreeRssBytes": 2293219328
+    },
+    "native-semantic-gates": {
+      "receipts": 7,
+      "successful": 7,
+      "nonzeroOrIncomplete": 0,
+      "negativeControlLabel": 0,
+      "failedWithoutNegativeLabel": 0,
+      "guardedWallSumSeconds": 296.5231648311019,
+      "coveredIntervalUnionSeconds": 296.5231454372406,
+      "intervalOverlapSeconds": 0,
+      "maximumTreeRssBytes": 104296448
+    },
+    "profiling-or-instrumentation": {
+      "receipts": 23,
+      "successful": 23,
+      "nonzeroOrIncomplete": 0,
+      "negativeControlLabel": 0,
+      "failedWithoutNegativeLabel": 0,
+      "guardedWallSumSeconds": 331.11328338691965,
+      "coveredIntervalUnionSeconds": 331.11324644088745,
+      "intervalOverlapSeconds": 0,
+      "maximumTreeRssBytes": 159150080
+    },
+    "proof-and-law-controls": {
+      "receipts": 91,
+      "successful": 59,
+      "nonzeroOrIncomplete": 32,
+      "negativeControlLabel": 23,
+      "failedWithoutNegativeLabel": 11,
+      "guardedWallSumSeconds": 150.94565268000588,
+      "coveredIntervalUnionSeconds": 150.94538068771362,
+      "intervalOverlapSeconds": 0,
+      "maximumTreeRssBytes": 642543616
+    },
+    "proxy-emission-or-build": {
+      "receipts": 78,
+      "successful": 73,
+      "nonzeroOrIncomplete": 5,
+      "negativeControlLabel": 0,
+      "failedWithoutNegativeLabel": 5,
+      "guardedWallSumSeconds": 1034.7902834613342,
+      "coveredIntervalUnionSeconds": 1034.6230421066284,
+      "intervalOverlapSeconds": 0.16696667671203613,
+      "maximumTreeRssBytes": 1217781760
+    }
+  },
+  "campaignWindow": {
+    "coordinatorStartUtc": "2026-10-23T22:00:45Z",
+    "minimumWorkDeadlineUtc": "2026-10-24T01:00:45Z",
+    "requestedMinimumSeconds": 10800.0,
+    "cutoffUtc": "2026-10-24T00:56:25.904375+00:00",
+    "elapsedAtCutoffSeconds": 10540.904375076294,
+    "guardIntervalUnionSeconds": 5340.47797036171,
+    "unrepresentedElapsedSeconds": 5200.426404714584,
+    "scope": "Coordinator-specified campaign window. Unrepresented wall includes unguarded metadata/storage work, planning, agent work, communication and gaps; it is not a measurement of model reasoning or token quota."
+  },
+  "classificationChanges": [
+    "Reproduce guards separated from initial acquisition.",
+    "Late final-profile/final-context names recognized; full-source sampling separated from short profiling.",
+    "Other explicit timing guards labeled by CPU lane. Prior raw totals/intervals remain unchanged.",
+    "Purpose labels remain command/path classifications; raw rows and nonzero exits are retained."
+  ],
+  "scope": "Only completed guard receipts under selfhost/build/phase131 at cutoff. Guard wall sums include wrapper overhead and may overlap; interval unions are reported separately. These are not CPU time, elapsed total research time, agent tokens or monetary cost. CPU3 includes acquisition, clean timings and instrumented profiling; CPU4 is proof/law work, CPU5/6 are separate correctness/investigation lanes. Categories and negative-control intent are transparent command/path classifications, not independent semantic verdicts. Unfinished guards, unguarded metadata/storage/agent work and large target artifacts are excluded.",
+  "fullCostReport": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/native-cost03/report.json",
+    "bytes": 1169667,
+    "sha256": "3b7abc8b90f27ba4c27f5953201e3bf168a52f0f9241f04c39cad88c6e553b3e"
+  },
+  "archiveChain": [
+    {
+      "snapshot": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/native-cost01/report.json",
+        "bytes": 804184,
+        "sha256": "302257b1435a3bae0ee0bed38b8f84bf25ff6cdca495188c695a80b6dfc10a3d"
+      },
+      "archive": {
+        "file": "selfhost/build/phase131/native-cost01/guard-evidence.tar.gz",
+        "bytes": 113945,
+        "sha256": "38399fd6075353408ab69aed353a97ac7982285410fa617ae5bbfb4404b8cef2"
+      }
+    },
+    {
+      "snapshot": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/native-cost02/report.json",
+        "bytes": 603028,
+        "sha256": "494ad5a2c584efebc4c78d2fa8a07178acc13849717273a2dff6fed9542d15b1"
+      },
+      "archive": {
+        "file": "selfhost/build/phase131/native-cost02/guard-evidence.tar.gz",
+        "bytes": 7444,
+        "sha256": "cbe44dfcdf6e9a2585288ddc058265dbc60db0c8e6748367bb293fc3e26fc80c"
+      }
+    },
+    {
+      "snapshot": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/native-cost03/report.json",
+        "bytes": 1169667,
+        "sha256": "3b7abc8b90f27ba4c27f5953201e3bf168a52f0f9241f04c39cad88c6e553b3e"
+      },
+      "archive": {
+        "file": "selfhost/build/phase131/native-cost03/guard-evidence.tar.gz",
+        "bytes": 115704,
+        "sha256": "8b4d711de72ae9eb7916fdf49559e39f50d5a816c60e02cfd0b5dd834e49580e"
+      }
+    }
+  ],
+  "archiveValidation": {
+    "members": 742,
+    "allMemberHashesMatch": true,
+    "allRowSumsMatch": true
+  }
+}

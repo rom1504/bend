@@ -1,0 +1,149 @@
+{
+  "schema": "phase131-bucket-scalar-fusion-v1",
+  "complete": true,
+  "proofReceipt": {
+    "file": "selfhost/build/phase131/laws-bucket-fusion01/report.json",
+    "bytes": 11992,
+    "sha256": "baeabaff474f360a1981c3f49a705d5a9f1312f7a3f8bc74471ed5d0591ffac2"
+  },
+  "sourceBridge": {
+    "file": "selfhost/build/phase131/laws-bucket-bridge01/report.json",
+    "bytes": 2820,
+    "sha256": "6411a2d79fd5826f7ebfe7d405bd31c5a894447d80e220b47f1d9a09ba4ef4ec"
+  },
+  "source": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/combined-codegen-source01/compiler.bend",
+    "bytes": 2640826,
+    "sha256": "e239cf9800db74f187683629769d5639b8792905d935df080e0929af03795a5a"
+  },
+  "candidate": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/regions/selector-ceiling/original-v03.bend",
+    "bytes": 9363,
+    "sha256": "5e97cd5e0ea9c6178e8bfd43fa07a519fa08a3c7ea7a71bddccc2b311701c410"
+  },
+  "lawNames": [
+    "bucket_projection_distributes",
+    "bucket_scalar_fusion"
+  ],
+  "opaqueDefinitions": [],
+  "sourceClosure": [
+    {
+      "origin": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/laws/bucket-fusion-laws.bend",
+        "bytes": 1024,
+        "sha256": "d0d5d7e17de3a5047b3720a015da3a7320d90237629e37160a8c03e2430d59ae"
+      },
+      "snapshot": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/laws-bucket-fusion01/snapshot/selfhost/tools/performance/phase131/laws/bucket-fusion-laws.bend",
+        "bytes": 1024,
+        "sha256": "d0d5d7e17de3a5047b3720a015da3a7320d90237629e37160a8c03e2430d59ae"
+      }
+    },
+    {
+      "origin": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/laws/bucket-production.bend",
+        "bytes": 2441,
+        "sha256": "9260b6e85e7d6216daa96e983cfa96c15a2ae2d9f995d66d8b861b6dd0a931eb"
+      },
+      "snapshot": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/laws-bucket-fusion01/snapshot/selfhost/tools/performance/phase131/laws/bucket-production.bend",
+        "bytes": 2441,
+        "sha256": "9260b6e85e7d6216daa96e983cfa96c15a2ae2d9f995d66d8b861b6dd0a931eb"
+      }
+    }
+  ],
+  "elaboration": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/laws-bucket-fusion01/laws.bendtt",
+    "bytes": 18984,
+    "sha256": "a6f25d64d58cd23a970061bc02e2dab3a01e2e8a0dab2fa7ccba85fc3359ba2b"
+  },
+  "rows": {
+    "check": {
+      "returncode": 0,
+      "wallSeconds": 0.5361086199991405,
+      "peakTreeRssBytes": 76197888,
+      "stdout": "ALL PROOFS CHECK\nUse --verdict for mathematical validity.\n"
+    },
+    "elaborate": {
+      "returncode": 0,
+      "wallSeconds": 0.6154252460692078,
+      "peakTreeRssBytes": 78454784,
+      "stdout": ""
+    },
+    "kernel": {
+      "returncode": 0,
+      "wallSeconds": 0.5136675448156893,
+      "peakTreeRssBytes": 629800960,
+      "stdout": "ALL PROOFS CHECK\n"
+    },
+    "kernel-negative": {
+      "returncode": 1,
+      "wallSeconds": 0.30944098997861147,
+      "peakTreeRssBytes": 625946624,
+      "stdout": "SOME PROOFS FAIL\nIn phase67_false:\nexpected: .left\nobserved: .right\n"
+    }
+  },
+  "scope": "dx(index_bucket(entries,key)) equals exact candidate p131sc_bucket for every finite List<KDef> and every String key. Actual constructors/dn/dx/missing/p88 equality are included, preserving first-match behavior and empty-key KIndexNode masks.",
+  "extraction": [
+    {
+      "name": "KTerm",
+      "removedUnsafe": false,
+      "explicitForwardType": false
+    },
+    {
+      "name": "KDef",
+      "removedUnsafe": false,
+      "explicitForwardType": false
+    },
+    {
+      "name": "p88_string_eq_go",
+      "removedUnsafe": false,
+      "explicitForwardType": false
+    },
+    {
+      "name": "p98_eq_finish",
+      "removedUnsafe": false,
+      "explicitForwardType": false
+    },
+    {
+      "name": "p88_string_eq",
+      "removedUnsafe": false,
+      "explicitForwardType": false
+    },
+    {
+      "name": "kc",
+      "removedUnsafe": true,
+      "explicitForwardType": false
+    },
+    {
+      "name": "dn",
+      "removedUnsafe": true,
+      "explicitForwardType": false
+    },
+    {
+      "name": "dx",
+      "removedUnsafe": true,
+      "explicitForwardType": false
+    },
+    {
+      "name": "missing",
+      "removedUnsafe": true,
+      "explicitForwardType": false
+    },
+    {
+      "name": "index_bucket",
+      "removedUnsafe": true,
+      "explicitForwardType": true
+    },
+    {
+      "name": "p131sc_bucket",
+      "removedUnsafe": true,
+      "explicitForwardType": false
+    }
+  ],
+  "limits": [
+    "Exact source value theorem; no full-tree index_find recursion theorem.",
+    "Removing unsafe annotations and materializing the already-declared producer type does not prove native ownership, stack behavior, runtime representation or code generation.",
+    "No performance benefit or selected compiler change follows from this proof."
+  ]
+}

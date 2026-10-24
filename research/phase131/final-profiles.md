@@ -173,3 +173,62 @@ prove that removing half of those costs is practical. None alone establishes a
 route from 1.44× to parity. The most valuable next action is a cheap source-level
 ceiling on one of the first two, then promote only a transformation that removes
 measured work and preserves the independent verifier and cold-request contract.
+
+## Full-source refresh changes the self-hosting priority
+
+A later, single sample-only full compiler-source execution is now available;
+[its report](../../implementation/phase131/full-profile-results.md) and
+[retained measurements](../../implementation/phase131/full-profile-results.json)
+keep it separate from the three short requests. It has 11,254 zero-loss samples
+at 32ms, exact complete-QBE output, no paired clean baseline and no new gain ratio.
+
+For the full self-build, `term_drop` plus `span_fade` occupy **29.38%** of physical
+samples, the borrowed `p88_string_eq_go` worker **10.02%**, and borrowed
+`index_hash` only **1.73%**. Equality is especially prominent in the approximate
+90–120s CPU window (33.0%), together with borrowed `has_name` (6.3%). Do not mistake
+`p88_string_eq_go` for Base-only work: `has_name` uses it for membership and
+`p98_tag_eq_read` uses it for `KTerm` tags. Without active dispatch contexts this
+capture cannot distinguish their respective contributions.
+
+This adds a second optimization track. Cold-request latency still motivates the
+verifier and decoder experiments above. Full compiler acquisition instead
+motivates a source-grounded membership/comparison experiment, followed by removal
+of a measured intermediate graph or redundant ownership transition. A broad
+interned-tag or graph-layout rewrite is premature until the actual hot callers
+are pinned down. The current physical profile cannot attribute the 29.38%
+reclamation share to a specific producing computation or turn that whole share
+into an achievable gain estimate.
+
+The strongest cheap next experiment is to retain the actual hot comparison
+workload's input cardinalities and outputs, compare a keyed-set/known-tag variant
+with the current computation, and demonstrate removal of comparisons **and**
+intermediate ownership work. Use existing source laws, independent oracles and
+full-source identity gates. If caller attribution cannot be resolved offline, one
+future full-source context-only run is justified before investing in that rewrite;
+the coordinator has scheduled one separate full-source context-only capture,
+with counters disabled, to resolve this uncertainty. Its evidence must remain
+separate from the original physical capture.
+
+## The full-source context follow-up resolves a concrete next target
+
+The subsequently completed [context-only capture](../../implementation/phase131/full-context-results.md)
+has 11,852 zero-loss samples, counters disabled and exact whole-QBE output. The
+largest owner is **`nc_ctor_owned` (7.48%)**, followed by `lookup` (5.43%), `f_find`
+(5.20%) and `p111v_get` (4.43%). Within drop/span physical leaves, `nc_ctor_owned`
+accounts for 13.72%, or 3.97% of all samples. Its source scans all book definitions
+and performs nested constructor lookup for each queried name.
+
+This improves the next-experiment choice: test borrowing and a once-per-immutable-
+checked-book constructor-ownership summary, retaining the original function as
+oracle and preserving first-match, missing, duplicate and raw-book behavior.
+Do not build the summary per query or remove independent validation. Its observed
+context share supplies a bounded ceiling; a half-cost reduction would be about
+3.7% of this diagnostic request, not a demonstrated gain.
+
+The equality matrix also supports investigating repeated membership/lookup:
+`has_name`, `p88_string_eq`, `f_find`, `nb_contains`, `nc_ctor_owned` and `lookup`
+own 23.05%, 14.63%, 9.57%, 8.60%, 7.71% and 6.12% of borrowed equality samples.
+Private callees retain the outer dispatch context, so this is not a complete
+source-call graph. Nevertheless it is stronger evidence for eliminating searches
+than for a speculative global symbolic-tag rewrite. Preserve this distinction in
+the next native-development/incremental-build design.

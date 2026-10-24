@@ -14,7 +14,8 @@ research scope, not measured speedups. Parent commit: `9f7ab43`. Work began at
 hours. Installed CLI selection and the previous qualified images are preserved.
 
 [Qualified final candidate](final/README.md) · [Native measurements](native-results.md) ·
-[Program measurements](program-runtime.md) · [Proofs](../../research/phase131/laws.md) ·
+[Program measurements](program-runtime.md) · [Cost accounting](cost-results.md) ·
+[Diagnostic archive](diagnostics/README.md) · [Proofs](../../research/phase131/laws.md) ·
 [User guide](../../docs/self_hosted/analysis-and-proof-boundaries.md).
 
 ## What changed and why it helps
@@ -104,7 +105,7 @@ in a different block and are not a controlled final-versus-FAST comparison.
 
 ## What the laws contributed
 
-Fifty-five distinct laws were independently accepted by the retained BendTT
+Fifty-seven distinct laws were independently accepted by the retained BendTT
 kernel with actual proof bodies and zero opaque definitions. Exact source bridges
 connect the selected arithmetic, absent-side behavior and first-order algorithms
 to their proof inputs. Two type-correct wrong algorithms pass without laws and
@@ -126,7 +127,10 @@ Ten later laws establish both count-field bounds through the exact merge for
 arbitrary differing-key maps. They do not prove ordering, `low ≤ high` or whole
 analyzer semantics, and do not retroactively change the frozen admission.
 Three new string-reflexivity laws support a later identity-shortcut experiment;
-that experimental shortcut is not part of the qualified source.
+that experimental shortcut is not part of the qualified source. Two further
+laws prove the exact scalar bucket-fusion equation for all finite KDef lists
+and keys, including empty-key index-node matches. Its native experiment remains
+separate from the selected compiler and the full-tree proof remains open.
 
 ## Small experiments that determined the composition
 
@@ -142,6 +146,9 @@ that experimental shortcut is not part of the qualified source.
 | Private string identity shortcut | 0.28% proxy difference | Inconclusive; exclude |
 | Owning string identity shortcut | 20.01% less proxy time; 2.93% less whole-request time | Unqualified two-adapter QBE ceiling; keep separate from selected source |
 | Generic closed constructor factory | 17 controls and exact KTerm graph match | Promising coherence prototype, no production speed claim |
+| Wider borrowed records | 32.48% / 41.03% less time on KDef / unrelated record queries | Four audited bounds; experimental, no whole-compiler gain claim |
+| Proved scalar bucket fusion alone | 6.26% less time on one-entry leaf; collision stress approximately neutral | Mostly moves ownership work |
+| Same fused source + wider borrowed layouts | 50.65% / 61.95% less time on one-entry / 64-collision cases | Existing capabilities compose; unqualified kernel result, QBE +4.40% |
 
 The factory experiment can potentially replace 419 literal expansions with a
 small existing-walk transformation. It needs an aggregate work/result budget:
@@ -172,8 +179,15 @@ prioritizes verifier lookup/representation, transient Base-decoder state and
 instruction-text construction. It rejects a large bang-analysis cache as a
 priority: that family occupies only0.1–0.4% of current active-owner samples.
 The owning-identity ceiling reduces three-request time2.93%, with no Map gain;
-it remains unqualified and is not the missing30.7% needed for request parity. General closed-constructor evaluation is
-the most attractive coherence cleanup. A universal IR, another backend, or a
+it remains unqualified and is not the missing30.7% needed for request parity. A separate [full-source profile](full-profile-results.md) shows a different
+balance: reclamation29.4%, borrowed string equality10.0% and hashing1.73%.
+Its107MB output matches the frozen oracle. The sampled360s is not a new clean
+speed comparison. A separate [full context capture](full-context-results.md)
+identifies repeated constructor-ownership scans: `nc_ctor_owned` occupies7.48%
+of active samples, `lookup`5.43% and `f_find`5.20%. Its book scan plus nested
+lookups is a concrete target for a version-bound ownership summary. These
+contexts and physical fractions overlap; they must not be added.
+General closed-constructor evaluation is the most attractive coherence cleanup. A universal IR, another backend, or a
 large autonomous search framework is not justified by these results.
 
 Research links: [initial profiles](../../research/phase131/profiles.md),
@@ -183,3 +197,32 @@ Research links: [initial profiles](../../research/phase131/profiles.md),
 [identity](../../research/phase131/reader-identity.md),
 [field-mask negative result](../../research/phase131/field-mask.md),
 [rendering audit](../../research/phase131/rendering-audit.md).
+
+
+## Campaign close and next architectural direction
+
+All planned target executions are closed. At the final target cutoff,372 guarded
+jobs account for109.13 summed minutes and89.01 minutes of occupied wall-time
+union across lanes. CPU3 accounts for71.72 minutes; full-source acquisition/
+emission/reproduction costs35.92 minutes and the two full profiles12.45 minutes.
+The snapshot spans175.68 elapsed minutes; later documentation, evidence sealing
+and commits bring the complete campaign past the requested three hours.
+Twenty-one nonzero jobs are explicitly labeled negative controls;32 other
+unsuccessful/incomplete jobs remain visible. These are process-duration accounts,
+not agent token/quota charges or a claim that time outside guards was idle.
+
+The late composition result is especially informative: the proved source fusion
+alone mostly moved ownership operations, while combining that same source with
+wider borrowed layouts removed destructive takes inside the query. All twelve
+paired output observations pass, with50.65% and61.95% less time in the two
+extractions. The64-entry bucket deliberately stresses collisions; the one-entry
+case transfers the mechanism beyond that stress. No whole-compiler gain is
+inferred, and the independently qualified final source remains unchanged.
+
+The user's next direction is saved in
+[Phase132: incremental native development](../../design/phase132/incremental-native-development.md).
+It calls for a precise QBE census, compact-symbol ceiling, native-first workflow
+audit and a small sound incremental-build experiment before a broader architecture.
+This phase did not implement an incremental compiler or a new backend. The new
+full-source profiles and immutable semantic summaries provide concrete starting
+points for that investigation.

@@ -174,3 +174,27 @@ content hashing or repeated equal-key lookup work automatically. Hash reuse and
 lookup/consumer fusion are separate hypotheses, with potentially overlapping
 benefits. Measure the cheap scalar ceiling before estimating implementation
 payoff or extending the optimizer's contracts.
+
+## Bounded source ceiling prepared and checked
+
+The proposed small experiment was implemented in
+`selfhost/tools/performance/phase131/regions/selector-ceiling/`, using exact
+original selector/getter definitions and an explicit scalar-return alternative.
+All four emitted/native fixtures pass 34 independent ordinary output lines.
+One-entry buckets and 64-entry forced-collision stress are kept separate; both
+receive the same supplied hash, so hashing cost is outside this experiment.
+Two cheap preparation failures (missing forward laws, then a scaffold quantity)
+are retained; neither changed the independent expected results.
+
+The actual machine inspection prevents overstating the capability. The query
+wrapper shrinks 111 to 7 instructions, but the owning scalar projection moves
+into the bucket (272 to 376). Selector machine bodies remain 595 versus 594, with
+the same static constructor and sink counts. This is a controlled test of
+consumer placement and scalar result transport, **not yet borrowed selector
+fusion**. The latter needs the held-origin and recursive-region contract above.
+The subsequent clean timing found 6.26% lower wall time for a one-entry
+leaf and 0.52% for 64-entry collision stress. See [the measured ceiling report](selector-ceiling.md)
+for raw ranges and scope; neither result establishes the stronger borrowed
+selector capability. The independent proof agent also proved the exact bucket
+fusion over all List<KDef>/String inputs, preserving the empty-key node case;
+that proof does not extend automatically to the entire recursive tree selector.

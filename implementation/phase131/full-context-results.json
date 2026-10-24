@@ -1,0 +1,4900 @@
+{
+  "kind": "phase131-full-source-context-only-analysis",
+  "complete": true,
+  "targetsRun": false,
+  "originalN2": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p131-final-native01-n2/program",
+    "bytes": 17132048,
+    "sha256": "2fae36020081ccc5cbfb847caf0b285b762387327e4bb44e1d62d96d1affd5dc"
+  },
+  "diagnosticImage": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/final-context01/runtime/program",
+    "bytes": 17145528,
+    "sha256": "7bcd4fea4e839ad65bc58218451bd7d57519c091b8c329a0e2652cb75ab786a0"
+  },
+  "source": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/combined-literals-source01/compiler.bend",
+    "bytes": 2667581,
+    "sha256": "1bc5930edcf80cda6c3572645df3c846fa631a83c2b936f20c83b05e0a6728f9"
+  },
+  "sampledObservation": {
+    "wallSeconds": 379.4616811410524,
+    "cpuSeconds": 379.458596,
+    "peakRssKiB": 2836176,
+    "stdout": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/final-full-context01/capture/000-sample-compiler-self-source-phase131-final-n2-context/stdout",
+      "bytes": 107059385,
+      "sha256": "f3ff63b04b58e5a5b92be781d0d1cba8cc574a37765cbf66d817c3d38f4b576e"
+    },
+    "stderr": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/final-full-context01/capture/000-sample-compiler-self-source-phase131-final-n2-context/stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "cleanObservations": 0,
+  "newSpeedRatio": null,
+  "countersEnabled": false,
+  "samples": 11852,
+  "adequate": true,
+  "qualityReasons": [],
+  "quality": {
+    "scope": "main_thread",
+    "main_thread_cpu_fraction": 0.9999950022067149,
+    "sampled_thread_cpu_fraction": 0.9999950022067149,
+    "minimum_process_cpu_fraction": 0.95,
+    "minimum_samples": 500,
+    "enough_samples": true,
+    "thread_lifecycle_complete": true,
+    "near_complete_process_cpu_coverage": true,
+    "usable_for_process_cpu_attribution": true,
+    "limitations": [],
+    "zero_loss": true,
+    "handler_intact": true,
+    "main_thread_shutdown": true,
+    "expected_clock_periods": 11852.4592894375,
+    "delivered_per_expected_period": 0.9999612494397758,
+    "delivery_plausible": true
+  },
+  "contextHeader": {
+    "context_available": true,
+    "samples": 11852
+  },
+  "topActiveOwners": [
+    {
+      "owner": "nc_ctor_owned",
+      "samples": 887,
+      "fractionOfAllSamples": 0.0748396895038812
+    },
+    {
+      "owner": "lookup",
+      "samples": 644,
+      "fractionOfAllSamples": 0.05433682078974013
+    },
+    {
+      "owner": "f_find",
+      "samples": 616,
+      "fractionOfAllSamples": 0.05197435032062099
+    },
+    {
+      "owner": "p111v_get",
+      "samples": 525,
+      "fractionOfAllSamples": 0.0442963212959838
+    },
+    {
+      "owner": "String.append",
+      "samples": 494,
+      "fractionOfAllSamples": 0.041680728990887615
+    },
+    {
+      "owner": "index_remove",
+      "samples": 417,
+      "fractionOfAllSamples": 0.03518393520080999
+    },
+    {
+      "owner": "nb_contains",
+      "samples": 353,
+      "fractionOfAllSamples": 0.029784002699966252
+    },
+    {
+      "owner": "has_name",
+      "samples": 346,
+      "fractionOfAllSamples": 0.029193385082686468
+    },
+    {
+      "owner": "p88_string_eq",
+      "samples": 322,
+      "fractionOfAllSamples": 0.027168410394870064
+    },
+    {
+      "owner": "[unknown]",
+      "samples": 304,
+      "fractionOfAllSamples": 0.02564967937900776
+    },
+    {
+      "owner": "nc_occurs",
+      "samples": 256,
+      "fractionOfAllSamples": 0.021599730003374958
+    },
+    {
+      "owner": "String.eq",
+      "samples": 240,
+      "fractionOfAllSamples": 0.020249746878164023
+    },
+    {
+      "owner": "p131i_insert",
+      "samples": 204,
+      "fractionOfAllSamples": 0.01721228484643942
+    },
+    {
+      "owner": "nc_occurs_list",
+      "samples": 192,
+      "fractionOfAllSamples": 0.01619979750253122
+    },
+    {
+      "owner": "p111v_name_chars",
+      "samples": 187,
+      "fractionOfAllSamples": 0.0157779277759028
+    },
+    {
+      "owner": "constructor_exists",
+      "samples": 161,
+      "fractionOfAllSamples": 0.013584205197435032
+    },
+    {
+      "owner": "p111q_memory",
+      "samples": 128,
+      "fractionOfAllSamples": 0.010799865001687479
+    },
+    {
+      "owner": "p111v_value",
+      "samples": 125,
+      "fractionOfAllSamples": 0.010546743165710429
+    },
+    {
+      "owner": "p111v_intersection_bucket",
+      "samples": 119,
+      "fractionOfAllSamples": 0.010040499493756329
+    },
+    {
+      "owner": "index_remove_step",
+      "samples": 115,
+      "fractionOfAllSamples": 0.009703003712453594
+    },
+    {
+      "owner": "p113k_get",
+      "samples": 114,
+      "fractionOfAllSamples": 0.009618629767127912
+    },
+    {
+      "owner": "p111q_body_text",
+      "samples": 103,
+      "fractionOfAllSamples": 0.008690516368545393
+    },
+    {
+      "owner": "nc_uses_term",
+      "samples": 100,
+      "fractionOfAllSamples": 0.008437394532568343
+    },
+    {
+      "owner": "dg_event_publish",
+      "samples": 88,
+      "fractionOfAllSamples": 0.007424907188660142
+    },
+    {
+      "owner": "f_eq",
+      "samples": 83,
+      "fractionOfAllSamples": 0.007003037462031725
+    },
+    {
+      "owner": "p111v_put",
+      "samples": 74,
+      "fractionOfAllSamples": 0.006243671954100574
+    },
+    {
+      "owner": "subst_node",
+      "samples": 71,
+      "fractionOfAllSamples": 0.005990550118123524
+    },
+    {
+      "owner": "p111v_contract",
+      "samples": 65,
+      "fractionOfAllSamples": 0.005484306446169423
+    },
+    {
+      "owner": "p112w_ready",
+      "samples": 65,
+      "fractionOfAllSamples": 0.005484306446169423
+    },
+    {
+      "owner": "ns_body",
+      "samples": 60,
+      "fractionOfAllSamples": 0.005062436719541006
+    },
+    {
+      "owner": "p111v_decl",
+      "samples": 58,
+      "fractionOfAllSamples": 0.0048936888288896386
+    },
+    {
+      "owner": "index_leaf",
+      "samples": 56,
+      "fractionOfAllSamples": 0.004724940938238272
+    },
+    {
+      "owner": "p112t_runtime_call",
+      "samples": 54,
+      "fractionOfAllSamples": 0.004556193047586905
+    },
+    {
+      "owner": "dr_own_names",
+      "samples": 48,
+      "fractionOfAllSamples": 0.004049949375632805
+    },
+    {
+      "owner": "nq_layout_subst",
+      "samples": 48,
+      "fractionOfAllSamples": 0.004049949375632805
+    },
+    {
+      "owner": "nc_uses_list",
+      "samples": 44,
+      "fractionOfAllSamples": 0.003712453594330071
+    },
+    {
+      "owner": "f_context_material_deferred",
+      "samples": 41,
+      "fractionOfAllSamples": 0.0034593317583530205
+    },
+    {
+      "owner": "p111v_signature",
+      "samples": 41,
+      "fractionOfAllSamples": 0.0034593317583530205
+    },
+    {
+      "owner": "f_grow_base",
+      "samples": 39,
+      "fractionOfAllSamples": 0.0032905838677016537
+    },
+    {
+      "owner": "norm_max_book",
+      "samples": 39,
+      "fractionOfAllSamples": 0.0032905838677016537
+    },
+    {
+      "owner": "nc_native_primitive",
+      "samples": 39,
+      "fractionOfAllSamples": 0.0032905838677016537
+    },
+    {
+      "owner": "nol_scalar_specs",
+      "samples": 39,
+      "fractionOfAllSamples": 0.0032905838677016537
+    },
+    {
+      "owner": "Bool.and",
+      "samples": 38,
+      "fractionOfAllSamples": 0.00320620992237597
+    },
+    {
+      "owner": "p113k_put",
+      "samples": 37,
+      "fractionOfAllSamples": 0.003121835977050287
+    },
+    {
+      "owner": "f_name_chars",
+      "samples": 36,
+      "fractionOfAllSamples": 0.0030374620317246033
+    },
+    {
+      "owner": "p111v_step",
+      "samples": 34,
+      "fractionOfAllSamples": 0.0028687141410732365
+    },
+    {
+      "owner": "p113l_version",
+      "samples": 34,
+      "fractionOfAllSamples": 0.0028687141410732365
+    },
+    {
+      "owner": "p111v_memory",
+      "samples": 33,
+      "fractionOfAllSamples": 0.0027843401957475533
+    },
+    {
+      "owner": "f_atom_base",
+      "samples": 31,
+      "fractionOfAllSamples": 0.0026155923050961865
+    },
+    {
+      "owner": "f_pattern_sub",
+      "samples": 31,
+      "fractionOfAllSamples": 0.0026155923050961865
+    },
+    {
+      "owner": "U32.show",
+      "samples": 31,
+      "fractionOfAllSamples": 0.0026155923050961865
+    },
+    {
+      "owner": "index_join",
+      "samples": 30,
+      "fractionOfAllSamples": 0.002531218359770503
+    },
+    {
+      "owner": "p112r_buffer_sites",
+      "samples": 29,
+      "fractionOfAllSamples": 0.0024468444144448193
+    },
+    {
+      "owner": "subst_terms",
+      "samples": 28,
+      "fractionOfAllSamples": 0.002362470469119136
+    },
+    {
+      "owner": "nu_add",
+      "samples": 28,
+      "fractionOfAllSamples": 0.002362470469119136
+    },
+    {
+      "owner": "f_grow_existing",
+      "samples": 27,
+      "fractionOfAllSamples": 0.0022780965237934525
+    },
+    {
+      "owner": "f_skip",
+      "samples": 26,
+      "fractionOfAllSamples": 0.0021937225784677693
+    },
+    {
+      "owner": "core_rebuild",
+      "samples": 26,
+      "fractionOfAllSamples": 0.0021937225784677693
+    },
+    {
+      "owner": "no_effect_terms",
+      "samples": 26,
+      "fractionOfAllSamples": 0.0021937225784677693
+    },
+    {
+      "owner": "p113k_join_record",
+      "samples": 25,
+      "fractionOfAllSamples": 0.0021093486331420857
+    }
+  ],
+  "conditionalLeaves": {
+    "takes": {
+      "samples": 899,
+      "fractionOfAllSamples": 0.0758521768477894,
+      "owners": [
+        {
+          "owner": "String.append",
+          "samples": 140,
+          "fractionOfSelectedLeafSamples": 0.1557285873192436,
+          "fractionOfAllSamples": 0.01181235234559568
+        },
+        {
+          "owner": "p111v_get",
+          "samples": 86,
+          "fractionOfSelectedLeafSamples": 0.09566184649610679,
+          "fractionOfAllSamples": 0.007256159298008775
+        },
+        {
+          "owner": "lookup",
+          "samples": 59,
+          "fractionOfSelectedLeafSamples": 0.06562847608453838,
+          "fractionOfAllSamples": 0.004978062774215322
+        },
+        {
+          "owner": "nc_ctor_owned",
+          "samples": 58,
+          "fractionOfSelectedLeafSamples": 0.06451612903225806,
+          "fractionOfAllSamples": 0.0048936888288896386
+        },
+        {
+          "owner": "f_find",
+          "samples": 40,
+          "fractionOfSelectedLeafSamples": 0.04449388209121246,
+          "fractionOfAllSamples": 0.0033749578130273373
+        },
+        {
+          "owner": "p111q_body_text",
+          "samples": 33,
+          "fractionOfSelectedLeafSamples": 0.03670745272525028,
+          "fractionOfAllSamples": 0.0027843401957475533
+        },
+        {
+          "owner": "p111q_memory",
+          "samples": 31,
+          "fractionOfSelectedLeafSamples": 0.034482758620689655,
+          "fractionOfAllSamples": 0.0026155923050961865
+        },
+        {
+          "owner": "nb_contains",
+          "samples": 28,
+          "fractionOfSelectedLeafSamples": 0.03114571746384872,
+          "fractionOfAllSamples": 0.002362470469119136
+        },
+        {
+          "owner": "p131i_insert",
+          "samples": 26,
+          "fractionOfSelectedLeafSamples": 0.028921023359288096,
+          "fractionOfAllSamples": 0.0021937225784677693
+        },
+        {
+          "owner": "index_remove",
+          "samples": 23,
+          "fractionOfSelectedLeafSamples": 0.025583982202447165,
+          "fractionOfAllSamples": 0.0019406007424907189
+        },
+        {
+          "owner": "p111v_value",
+          "samples": 16,
+          "fractionOfSelectedLeafSamples": 0.017797552836484983,
+          "fractionOfAllSamples": 0.0013499831252109348
+        },
+        {
+          "owner": "p112w_ready",
+          "samples": 10,
+          "fractionOfSelectedLeafSamples": 0.011123470522803115,
+          "fractionOfAllSamples": 0.0008437394532568343
+        },
+        {
+          "owner": "p111q_data_chunks_go",
+          "samples": 9,
+          "fractionOfSelectedLeafSamples": 0.010011123470522803,
+          "fractionOfAllSamples": 0.0007593655079311508
+        },
+        {
+          "owner": "p113k_get",
+          "samples": 8,
+          "fractionOfSelectedLeafSamples": 0.008898776418242492,
+          "fractionOfAllSamples": 0.0006749915626054674
+        },
+        {
+          "owner": "p112c_attach",
+          "samples": 8,
+          "fractionOfSelectedLeafSamples": 0.008898776418242492,
+          "fractionOfAllSamples": 0.0006749915626054674
+        },
+        {
+          "owner": "nc_occurs_list",
+          "samples": 7,
+          "fractionOfSelectedLeafSamples": 0.00778642936596218,
+          "fractionOfAllSamples": 0.000590617617279784
+        },
+        {
+          "owner": "nc_uses_list",
+          "samples": 6,
+          "fractionOfSelectedLeafSamples": 0.006674082313681869,
+          "fractionOfAllSamples": 0.0005062436719541006
+        },
+        {
+          "owner": "p111v_intersection_bucket",
+          "samples": 6,
+          "fractionOfSelectedLeafSamples": 0.006674082313681869,
+          "fractionOfAllSamples": 0.0005062436719541006
+        },
+        {
+          "owner": "nt_join",
+          "samples": 6,
+          "fractionOfSelectedLeafSamples": 0.006674082313681869,
+          "fractionOfAllSamples": 0.0005062436719541006
+        },
+        {
+          "owner": "f_implicit_operator",
+          "samples": 5,
+          "fractionOfSelectedLeafSamples": 0.0055617352614015575,
+          "fractionOfAllSamples": 0.00042186972662841717
+        },
+        {
+          "owner": "nc_occurs",
+          "samples": 5,
+          "fractionOfSelectedLeafSamples": 0.0055617352614015575,
+          "fractionOfAllSamples": 0.00042186972662841717
+        },
+        {
+          "owner": "f_tx",
+          "samples": 4,
+          "fractionOfSelectedLeafSamples": 0.004449388209121246,
+          "fractionOfAllSamples": 0.0003374957813027337
+        },
+        {
+          "owner": "p111_partition",
+          "samples": 4,
+          "fractionOfSelectedLeafSamples": 0.004449388209121246,
+          "fractionOfAllSamples": 0.0003374957813027337
+        },
+        {
+          "owner": "ns_body",
+          "samples": 4,
+          "fractionOfSelectedLeafSamples": 0.004449388209121246,
+          "fractionOfAllSamples": 0.0003374957813027337
+        },
+        {
+          "owner": "p112f_name",
+          "samples": 4,
+          "fractionOfSelectedLeafSamples": 0.004449388209121246,
+          "fractionOfAllSamples": 0.0003374957813027337
+        },
+        {
+          "owner": "p111v_name_chars",
+          "samples": 4,
+          "fractionOfSelectedLeafSamples": 0.004449388209121246,
+          "fractionOfAllSamples": 0.0003374957813027337
+        },
+        {
+          "owner": "p111v_intersection",
+          "samples": 4,
+          "fractionOfSelectedLeafSamples": 0.004449388209121246,
+          "fractionOfAllSamples": 0.0003374957813027337
+        },
+        {
+          "owner": "nol_scalar_specs",
+          "samples": 4,
+          "fractionOfSelectedLeafSamples": 0.004449388209121246,
+          "fractionOfAllSamples": 0.0003374957813027337
+        },
+        {
+          "owner": "String.length",
+          "samples": 3,
+          "fractionOfSelectedLeafSamples": 0.0033370411568409346,
+          "fractionOfAllSamples": 0.0002531218359770503
+        },
+        {
+          "owner": "f_atom_existing",
+          "samples": 3,
+          "fractionOfSelectedLeafSamples": 0.0033370411568409346,
+          "fractionOfAllSamples": 0.0002531218359770503
+        },
+        {
+          "owner": "f_atom_base",
+          "samples": 3,
+          "fractionOfSelectedLeafSamples": 0.0033370411568409346,
+          "fractionOfAllSamples": 0.0002531218359770503
+        },
+        {
+          "owner": "f_context_material_deferred",
+          "samples": 3,
+          "fractionOfSelectedLeafSamples": 0.0033370411568409346,
+          "fractionOfAllSamples": 0.0002531218359770503
+        },
+        {
+          "owner": "p88_string_eq",
+          "samples": 3,
+          "fractionOfSelectedLeafSamples": 0.0033370411568409346,
+          "fractionOfAllSamples": 0.0002531218359770503
+        },
+        {
+          "owner": "fpe_terms",
+          "samples": 3,
+          "fractionOfSelectedLeafSamples": 0.0033370411568409346,
+          "fractionOfAllSamples": 0.0002531218359770503
+        },
+        {
+          "owner": "constructor_exists",
+          "samples": 3,
+          "fractionOfSelectedLeafSamples": 0.0033370411568409346,
+          "fractionOfAllSamples": 0.0002531218359770503
+        },
+        {
+          "owner": "kr_resolve",
+          "samples": 3,
+          "fractionOfSelectedLeafSamples": 0.0033370411568409346,
+          "fractionOfAllSamples": 0.0002531218359770503
+        },
+        {
+          "owner": "norm_max_book",
+          "samples": 3,
+          "fractionOfSelectedLeafSamples": 0.0033370411568409346,
+          "fractionOfAllSamples": 0.0002531218359770503
+        },
+        {
+          "owner": "terms_len",
+          "samples": 3,
+          "fractionOfSelectedLeafSamples": 0.0033370411568409346,
+          "fractionOfAllSamples": 0.0002531218359770503
+        },
+        {
+          "owner": "nc_ctor_codes",
+          "samples": 3,
+          "fractionOfSelectedLeafSamples": 0.0033370411568409346,
+          "fractionOfAllSamples": 0.0002531218359770503
+        },
+        {
+          "owner": "nu_insert",
+          "samples": 3,
+          "fractionOfSelectedLeafSamples": 0.0033370411568409346,
+          "fractionOfAllSamples": 0.0002531218359770503
+        },
+        {
+          "owner": "p111v_raw_name_chars",
+          "samples": 3,
+          "fractionOfSelectedLeafSamples": 0.0033370411568409346,
+          "fractionOfAllSamples": 0.0002531218359770503
+        },
+        {
+          "owner": "index_join",
+          "samples": 3,
+          "fractionOfSelectedLeafSamples": 0.0033370411568409346,
+          "fractionOfAllSamples": 0.0002531218359770503
+        },
+        {
+          "owner": "p112f_clean_stmt",
+          "samples": 3,
+          "fractionOfSelectedLeafSamples": 0.0033370411568409346,
+          "fractionOfAllSamples": 0.0002531218359770503
+        },
+        {
+          "owner": "p112a_original_stmt",
+          "samples": 3,
+          "fractionOfSelectedLeafSamples": 0.0033370411568409346,
+          "fractionOfAllSamples": 0.0002531218359770503
+        },
+        {
+          "owner": "p112a_expand",
+          "samples": 3,
+          "fractionOfSelectedLeafSamples": 0.0033370411568409346,
+          "fractionOfAllSamples": 0.0002531218359770503
+        },
+        {
+          "owner": "p118f_original_stmt",
+          "samples": 3,
+          "fractionOfSelectedLeafSamples": 0.0033370411568409346,
+          "fractionOfAllSamples": 0.0002531218359770503
+        },
+        {
+          "owner": "p111q_args",
+          "samples": 3,
+          "fractionOfSelectedLeafSamples": 0.0033370411568409346,
+          "fractionOfAllSamples": 0.0002531218359770503
+        },
+        {
+          "owner": "f_scan_word",
+          "samples": 2,
+          "fractionOfSelectedLeafSamples": 0.002224694104560623,
+          "fractionOfAllSamples": 0.00016874789065136686
+        },
+        {
+          "owner": "f_triple_op",
+          "samples": 2,
+          "fractionOfSelectedLeafSamples": 0.002224694104560623,
+          "fractionOfAllSamples": 0.00016874789065136686
+        },
+        {
+          "owner": "index_find",
+          "samples": 2,
+          "fractionOfSelectedLeafSamples": 0.002224694104560623,
+          "fractionOfAllSamples": 0.00016874789065136686
+        },
+        {
+          "owner": "f_name_chars",
+          "samples": 2,
+          "fractionOfSelectedLeafSamples": 0.002224694104560623,
+          "fractionOfAllSamples": 0.00016874789065136686
+        },
+        {
+          "owner": "f_col",
+          "samples": 2,
+          "fractionOfSelectedLeafSamples": 0.002224694104560623,
+          "fractionOfAllSamples": 0.00016874789065136686
+        },
+        {
+          "owner": "f_skip",
+          "samples": 2,
+          "fractionOfSelectedLeafSamples": 0.002224694104560623,
+          "fractionOfAllSamples": 0.00016874789065136686
+        },
+        {
+          "owner": "f_ctor_lookup",
+          "samples": 2,
+          "fractionOfSelectedLeafSamples": 0.002224694104560623,
+          "fractionOfAllSamples": 0.00016874789065136686
+        },
+        {
+          "owner": "f_pattern_sub",
+          "samples": 2,
+          "fractionOfSelectedLeafSamples": 0.002224694104560623,
+          "fractionOfAllSamples": 0.00016874789065136686
+        },
+        {
+          "owner": "f_grow_base",
+          "samples": 2,
+          "fractionOfSelectedLeafSamples": 0.002224694104560623,
+          "fractionOfAllSamples": 0.00016874789065136686
+        },
+        {
+          "owner": "subst_terms",
+          "samples": 2,
+          "fractionOfSelectedLeafSamples": 0.002224694104560623,
+          "fractionOfAllSamples": 0.00016874789065136686
+        },
+        {
+          "owner": "infer_app_type",
+          "samples": 2,
+          "fractionOfSelectedLeafSamples": 0.002224694104560623,
+          "fractionOfAllSamples": 0.00016874789065136686
+        },
+        {
+          "owner": "subst_node",
+          "samples": 2,
+          "fractionOfSelectedLeafSamples": 0.002224694104560623,
+          "fractionOfAllSamples": 0.00016874789065136686
+        },
+        {
+          "owner": "norm_ref",
+          "samples": 2,
+          "fractionOfSelectedLeafSamples": 0.002224694104560623,
+          "fractionOfAllSamples": 0.00016874789065136686
+        },
+        {
+          "owner": "check_ctr",
+          "samples": 2,
+          "fractionOfSelectedLeafSamples": 0.002224694104560623,
+          "fractionOfAllSamples": 0.00016874789065136686
+        },
+        {
+          "owner": "core_rebuild",
+          "samples": 2,
+          "fractionOfSelectedLeafSamples": 0.002224694104560623,
+          "fractionOfAllSamples": 0.00016874789065136686
+        },
+        {
+          "owner": "nc_erase_annotated",
+          "samples": 2,
+          "fractionOfSelectedLeafSamples": 0.002224694104560623,
+          "fractionOfAllSamples": 0.00016874789065136686
+        },
+        {
+          "owner": "p111_keep",
+          "samples": 2,
+          "fractionOfSelectedLeafSamples": 0.002224694104560623,
+          "fractionOfAllSamples": 0.00016874789065136686
+        },
+        {
+          "owner": "nc_word",
+          "samples": 2,
+          "fractionOfSelectedLeafSamples": 0.002224694104560623,
+          "fractionOfAllSamples": 0.00016874789065136686
+        },
+        {
+          "owner": "String.to_lower",
+          "samples": 2,
+          "fractionOfSelectedLeafSamples": 0.002224694104560623,
+          "fractionOfAllSamples": 0.00016874789065136686
+        },
+        {
+          "owner": "p118t_original_done",
+          "samples": 2,
+          "fractionOfSelectedLeafSamples": 0.002224694104560623,
+          "fractionOfAllSamples": 0.00016874789065136686
+        },
+        {
+          "owner": "p113d_prepend",
+          "samples": 2,
+          "fractionOfSelectedLeafSamples": 0.002224694104560623,
+          "fractionOfAllSamples": 0.00016874789065136686
+        },
+        {
+          "owner": "nd_arity",
+          "samples": 2,
+          "fractionOfSelectedLeafSamples": 0.002224694104560623,
+          "fractionOfAllSamples": 0.00016874789065136686
+        },
+        {
+          "owner": "nc_uses_term",
+          "samples": 2,
+          "fractionOfSelectedLeafSamples": 0.002224694104560623,
+          "fractionOfAllSamples": 0.00016874789065136686
+        },
+        {
+          "owner": "p113d_deps",
+          "samples": 2,
+          "fractionOfSelectedLeafSamples": 0.002224694104560623,
+          "fractionOfAllSamples": 0.00016874789065136686
+        },
+        {
+          "owner": "p111v_args",
+          "samples": 2,
+          "fractionOfSelectedLeafSamples": 0.002224694104560623,
+          "fractionOfAllSamples": 0.00016874789065136686
+        },
+        {
+          "owner": "p111v_schema",
+          "samples": 2,
+          "fractionOfSelectedLeafSamples": 0.002224694104560623,
+          "fractionOfAllSamples": 0.00016874789065136686
+        },
+        {
+          "owner": "p113k_join",
+          "samples": 2,
+          "fractionOfSelectedLeafSamples": 0.002224694104560623,
+          "fractionOfAllSamples": 0.00016874789065136686
+        },
+        {
+          "owner": "p111v_state_argument",
+          "samples": 2,
+          "fractionOfSelectedLeafSamples": 0.002224694104560623,
+          "fractionOfAllSamples": 0.00016874789065136686
+        },
+        {
+          "owner": "p113e_schema_stmt",
+          "samples": 2,
+          "fractionOfSelectedLeafSamples": 0.002224694104560623,
+          "fractionOfAllSamples": 0.00016874789065136686
+        },
+        {
+          "owner": "p113l_version",
+          "samples": 2,
+          "fractionOfSelectedLeafSamples": 0.002224694104560623,
+          "fractionOfAllSamples": 0.00016874789065136686
+        },
+        {
+          "owner": "p113e_body",
+          "samples": 2,
+          "fractionOfSelectedLeafSamples": 0.002224694104560623,
+          "fractionOfAllSamples": 0.00016874789065136686
+        },
+        {
+          "owner": "p111v_contract",
+          "samples": 2,
+          "fractionOfSelectedLeafSamples": 0.002224694104560623,
+          "fractionOfAllSamples": 0.00016874789065136686
+        },
+        {
+          "owner": "p111v_schema_stmt",
+          "samples": 2,
+          "fractionOfSelectedLeafSamples": 0.002224694104560623,
+          "fractionOfAllSamples": 0.00016874789065136686
+        },
+        {
+          "owner": "p113a_body_names",
+          "samples": 2,
+          "fractionOfSelectedLeafSamples": 0.002224694104560623,
+          "fractionOfAllSamples": 0.00016874789065136686
+        },
+        {
+          "owner": "p112c_frame",
+          "samples": 2,
+          "fractionOfSelectedLeafSamples": 0.002224694104560623,
+          "fractionOfAllSamples": 0.00016874789065136686
+        },
+        {
+          "owner": "p112g_finish",
+          "samples": 2,
+          "fractionOfSelectedLeafSamples": 0.002224694104560623,
+          "fractionOfAllSamples": 0.00016874789065136686
+        },
+        {
+          "owner": "p112t_failure_args",
+          "samples": 2,
+          "fractionOfSelectedLeafSamples": 0.002224694104560623,
+          "fractionOfAllSamples": 0.00016874789065136686
+        },
+        {
+          "owner": "p112r_jump",
+          "samples": 2,
+          "fractionOfSelectedLeafSamples": 0.002224694104560623,
+          "fractionOfAllSamples": 0.00016874789065136686
+        },
+        {
+          "owner": "p112r_scan_target",
+          "samples": 2,
+          "fractionOfSelectedLeafSamples": 0.002224694104560623,
+          "fractionOfAllSamples": 0.00016874789065136686
+        },
+        {
+          "owner": "p112t_param_stmt",
+          "samples": 2,
+          "fractionOfSelectedLeafSamples": 0.002224694104560623,
+          "fractionOfAllSamples": 0.00016874789065136686
+        },
+        {
+          "owner": "p112c_scan_next",
+          "samples": 2,
+          "fractionOfSelectedLeafSamples": 0.002224694104560623,
+          "fractionOfAllSamples": 0.00016874789065136686
+        },
+        {
+          "owner": "p126nt_expand",
+          "samples": 2,
+          "fractionOfSelectedLeafSamples": 0.002224694104560623,
+          "fractionOfAllSamples": 0.00016874789065136686
+        },
+        {
+          "owner": "p114t_captures",
+          "samples": 2,
+          "fractionOfSelectedLeafSamples": 0.002224694104560623,
+          "fractionOfAllSamples": 0.00016874789065136686
+        },
+        {
+          "owner": "p112f_transition",
+          "samples": 2,
+          "fractionOfSelectedLeafSamples": 0.002224694104560623,
+          "fractionOfAllSamples": 0.00016874789065136686
+        },
+        {
+          "owner": "p112f_clean",
+          "samples": 2,
+          "fractionOfSelectedLeafSamples": 0.002224694104560623,
+          "fractionOfAllSamples": 0.00016874789065136686
+        },
+        {
+          "owner": "p112w_target",
+          "samples": 2,
+          "fractionOfSelectedLeafSamples": 0.002224694104560623,
+          "fractionOfAllSamples": 0.00016874789065136686
+        },
+        {
+          "owner": "f_unmark",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0011123470522803114,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "f_env",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0011123470522803114,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "f_context_name_resolved",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0011123470522803114,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "f_atom_raw",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0011123470522803114,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "f_literal_value",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0011123470522803114,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "f_grow_existing",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0011123470522803114,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "f_context_material_children",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0011123470522803114,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "f_line",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0011123470522803114,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "f_first_ctor",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0011123470522803114,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "f_hit_row",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0011123470522803114,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "f_pattern_subs",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0011123470522803114,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "f_context_material_done",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0011123470522803114,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "ffw_frame",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0011123470522803114,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "String.contains",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0011123470522803114,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "infer_var",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0011123470522803114,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "check_node",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0011123470522803114,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "mat_rest",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0011123470522803114,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "core_subst_stable_terms",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0011123470522803114,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "kw_temp_floor",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0011123470522803114,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "norm_args",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0011123470522803114,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "ke_world",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0011123470522803114,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "check_lam_done",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0011123470522803114,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "tele_check_done",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0011123470522803114,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "driver_holes_terms",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0011123470522803114,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "j_find_ctor",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0011123470522803114,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "ka_node",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0011123470522803114,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "nc_compact_list",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0011123470522803114,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "nc_nat_literal",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0011123470522803114,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p112s_rebuild",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0011123470522803114,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "nc_definition",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0011123470522803114,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "jd_raise",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0011123470522803114,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p112_liveness_live",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0011123470522803114,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p113_application_kind",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0011123470522803114,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p111_store",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0011123470522803114,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "nc_foreign",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0011123470522803114,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "jd_domains_head",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0011123470522803114,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p112s_liveness_fallback",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0011123470522803114,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p112_liveness_lower_partition",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0011123470522803114,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "nw_same",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0011123470522803114,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "nu_add",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0011123470522803114,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "nc_bangs_terms",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0011123470522803114,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p118t_original_live",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0011123470522803114,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p114p_original_constructor",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0011123470522803114,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "nq_layout_subst",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0011123470522803114,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p111_value",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0011123470522803114,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p113px_let",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0011123470522803114,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p113pl_names",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0011123470522803114,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p113d_join",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0011123470522803114,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "nd_native_call",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0011123470522803114,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "nc_remove_env",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0011123470522803114,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "nq_same",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0011123470522803114,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p113px_boxed",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0011123470522803114,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "j_u32_native_ctor",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0011123470522803114,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p111_values",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0011123470522803114,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "nq_uses_list",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0011123470522803114,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p118t_target",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0011123470522803114,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p126sc_counts",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0011123470522803114,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p111v_body",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0011123470522803114,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p111v_memory",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0011123470522803114,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p112s_word_valid",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0011123470522803114,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p112f_stmt",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0011123470522803114,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p113j_assign",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0011123470522803114,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p113k_body",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0011123470522803114,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p113k_join_record",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0011123470522803114,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p113k_put",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0011123470522803114,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p113l_relation",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0011123470522803114,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p113i_size",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0011123470522803114,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p123p_get",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0011123470522803114,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p111v_stmt",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0011123470522803114,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p111v_decl",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0011123470522803114,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p112s_constructor_ok",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0011123470522803114,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p113e_buffers",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0011123470522803114,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p126dp_original_stmt",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0011123470522803114,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p114ts_body",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0011123470522803114,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "no_effect_terms",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0011123470522803114,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p128br_lookup",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0011123470522803114,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "noa_continue",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0011123470522803114,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "no_literal_native",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0011123470522803114,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "noa_value_type",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0011123470522803114,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "nol_owner",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0011123470522803114,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p113e_originals",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0011123470522803114,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "index_leaf",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0011123470522803114,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p113e_base_scalar_safe",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0011123470522803114,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p114ts_scalar_list",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0011123470522803114,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p118ns_scalars",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0011123470522803114,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p118ns_direct",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0011123470522803114,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p112c_try",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0011123470522803114,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p112f_snapshots",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0011123470522803114,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p112t_params",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0011123470522803114,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p113bq_emit",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0011123470522803114,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p114t_expand",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0011123470522803114,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p114t_stmt",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0011123470522803114,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p114t_local",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0011123470522803114,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p112f_index_get",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0011123470522803114,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p118xs_original",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0011123470522803114,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p111q_value",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0011123470522803114,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p114r_clean_args",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0011123470522803114,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "String.starts_with",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0011123470522803114,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "String.eq",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0011123470522803114,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p114t_get",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0011123470522803114,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p113e_public_loads",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0011123470522803114,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p114t_words",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0011123470522803114,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p112w_result",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0011123470522803114,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p114h_dispatch",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0011123470522803114,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p112fp_expand",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0011123470522803114,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p112f_clean_args",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0011123470522803114,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p114h_clean_args",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0011123470522803114,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p124r_is_view",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0011123470522803114,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p124r_public_chunks",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0011123470522803114,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p114t_fusion_buffer",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0011123470522803114,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p112w_stmt",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0011123470522803114,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p112w_formals",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0011123470522803114,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        }
+      ]
+    },
+    "dropAndSpanFade": {
+      "samples": 3426,
+      "fractionOfAllSamples": 0.2890651366857914,
+      "owners": [
+        {
+          "owner": "nc_ctor_owned",
+          "samples": 470,
+          "fractionOfSelectedLeafSamples": 0.13718622300058378,
+          "fractionOfAllSamples": 0.03965575430307121
+        },
+        {
+          "owner": "f_find",
+          "samples": 314,
+          "fractionOfSelectedLeafSamples": 0.09165207238762405,
+          "fractionOfAllSamples": 0.026493418832264595
+        },
+        {
+          "owner": "lookup",
+          "samples": 314,
+          "fractionOfSelectedLeafSamples": 0.09165207238762405,
+          "fractionOfAllSamples": 0.026493418832264595
+        },
+        {
+          "owner": "p111v_get",
+          "samples": 220,
+          "fractionOfSelectedLeafSamples": 0.0642148277875073,
+          "fractionOfAllSamples": 0.018562267971650354
+        },
+        {
+          "owner": "index_remove",
+          "samples": 216,
+          "fractionOfSelectedLeafSamples": 0.06304728546409807,
+          "fractionOfAllSamples": 0.01822477219034762
+        },
+        {
+          "owner": "nb_contains",
+          "samples": 114,
+          "fractionOfSelectedLeafSamples": 0.03327495621716287,
+          "fractionOfAllSamples": 0.009618629767127912
+        },
+        {
+          "owner": "dg_event_publish",
+          "samples": 87,
+          "fractionOfSelectedLeafSamples": 0.025394045534150613,
+          "fractionOfAllSamples": 0.007340533243334458
+        },
+        {
+          "owner": "p111v_intersection_bucket",
+          "samples": 69,
+          "fractionOfSelectedLeafSamples": 0.020140105078809107,
+          "fractionOfAllSamples": 0.005821802227472157
+        },
+        {
+          "owner": "nc_occurs",
+          "samples": 68,
+          "fractionOfSelectedLeafSamples": 0.0198482194979568,
+          "fractionOfAllSamples": 0.005737428282146473
+        },
+        {
+          "owner": "p113k_get",
+          "samples": 62,
+          "fractionOfSelectedLeafSamples": 0.018096906012842966,
+          "fractionOfAllSamples": 0.005231184610192373
+        },
+        {
+          "owner": "p111v_value",
+          "samples": 52,
+          "fractionOfSelectedLeafSamples": 0.015178050204319907,
+          "fractionOfAllSamples": 0.004387445156935539
+        },
+        {
+          "owner": "constructor_exists",
+          "samples": 49,
+          "fractionOfSelectedLeafSamples": 0.014302393461762989,
+          "fractionOfAllSamples": 0.004134323320958488
+        },
+        {
+          "owner": "String.eq",
+          "samples": 39,
+          "fractionOfSelectedLeafSamples": 0.01138353765323993,
+          "fractionOfAllSamples": 0.0032905838677016537
+        },
+        {
+          "owner": "nc_occurs_list",
+          "samples": 27,
+          "fractionOfSelectedLeafSamples": 0.00788091068301226,
+          "fractionOfAllSamples": 0.0022780965237934525
+        },
+        {
+          "owner": "ns_body",
+          "samples": 26,
+          "fractionOfSelectedLeafSamples": 0.007589025102159953,
+          "fractionOfAllSamples": 0.0021937225784677693
+        },
+        {
+          "owner": "p88_string_eq",
+          "samples": 25,
+          "fractionOfSelectedLeafSamples": 0.0072971395213076475,
+          "fractionOfAllSamples": 0.0021093486331420857
+        },
+        {
+          "owner": "nc_uses_term",
+          "samples": 24,
+          "fractionOfSelectedLeafSamples": 0.0070052539404553416,
+          "fractionOfAllSamples": 0.0020249746878164025
+        },
+        {
+          "owner": "p112w_ready",
+          "samples": 24,
+          "fractionOfSelectedLeafSamples": 0.0070052539404553416,
+          "fractionOfAllSamples": 0.0020249746878164025
+        },
+        {
+          "owner": "p111v_step",
+          "samples": 23,
+          "fractionOfSelectedLeafSamples": 0.006713368359603036,
+          "fractionOfAllSamples": 0.0019406007424907189
+        },
+        {
+          "owner": "p111v_contract",
+          "samples": 21,
+          "fractionOfSelectedLeafSamples": 0.006129597197898424,
+          "fractionOfAllSamples": 0.001771852851839352
+        },
+        {
+          "owner": "nol_scalar_specs",
+          "samples": 21,
+          "fractionOfSelectedLeafSamples": 0.006129597197898424,
+          "fractionOfAllSamples": 0.001771852851839352
+        },
+        {
+          "owner": "f_context_material_deferred",
+          "samples": 20,
+          "fractionOfSelectedLeafSamples": 0.005837711617046118,
+          "fractionOfAllSamples": 0.0016874789065136687
+        },
+        {
+          "owner": "norm_max_book",
+          "samples": 20,
+          "fractionOfSelectedLeafSamples": 0.005837711617046118,
+          "fractionOfAllSamples": 0.0016874789065136687
+        },
+        {
+          "owner": "index_leaf",
+          "samples": 20,
+          "fractionOfSelectedLeafSamples": 0.005837711617046118,
+          "fractionOfAllSamples": 0.0016874789065136687
+        },
+        {
+          "owner": "f_atom_base",
+          "samples": 19,
+          "fractionOfSelectedLeafSamples": 0.005545826036193812,
+          "fractionOfAllSamples": 0.001603104961187985
+        },
+        {
+          "owner": "f_grow_base",
+          "samples": 16,
+          "fractionOfSelectedLeafSamples": 0.004670169293636894,
+          "fractionOfAllSamples": 0.0013499831252109348
+        },
+        {
+          "owner": "p111v_name_chars",
+          "samples": 16,
+          "fractionOfSelectedLeafSamples": 0.004670169293636894,
+          "fractionOfAllSamples": 0.0013499831252109348
+        },
+        {
+          "owner": "p111v_finish",
+          "samples": 14,
+          "fractionOfSelectedLeafSamples": 0.004086398131932283,
+          "fractionOfAllSamples": 0.001181235234559568
+        },
+        {
+          "owner": "f_skip",
+          "samples": 13,
+          "fractionOfSelectedLeafSamples": 0.0037945125510799767,
+          "fractionOfAllSamples": 0.0010968612892338846
+        },
+        {
+          "owner": "f_grow_existing",
+          "samples": 13,
+          "fractionOfSelectedLeafSamples": 0.0037945125510799767,
+          "fractionOfAllSamples": 0.0010968612892338846
+        },
+        {
+          "owner": "nq_layout_subst",
+          "samples": 13,
+          "fractionOfSelectedLeafSamples": 0.0037945125510799767,
+          "fractionOfAllSamples": 0.0010968612892338846
+        },
+        {
+          "owner": "p111v_memory",
+          "samples": 13,
+          "fractionOfSelectedLeafSamples": 0.0037945125510799767,
+          "fractionOfAllSamples": 0.0010968612892338846
+        },
+        {
+          "owner": "p128br_retry_plans",
+          "samples": 13,
+          "fractionOfSelectedLeafSamples": 0.0037945125510799767,
+          "fractionOfAllSamples": 0.0010968612892338846
+        },
+        {
+          "owner": "nu_add",
+          "samples": 12,
+          "fractionOfSelectedLeafSamples": 0.0035026269702276708,
+          "fractionOfAllSamples": 0.0010124873439082012
+        },
+        {
+          "owner": "p111v_assign",
+          "samples": 11,
+          "fractionOfSelectedLeafSamples": 0.003210741389375365,
+          "fractionOfAllSamples": 0.0009281133985825177
+        },
+        {
+          "owner": "p113e_body",
+          "samples": 11,
+          "fractionOfSelectedLeafSamples": 0.003210741389375365,
+          "fractionOfAllSamples": 0.0009281133985825177
+        },
+        {
+          "owner": "p113l_version",
+          "samples": 11,
+          "fractionOfSelectedLeafSamples": 0.003210741389375365,
+          "fractionOfAllSamples": 0.0009281133985825177
+        },
+        {
+          "owner": "p124r_public_chunks",
+          "samples": 11,
+          "fractionOfSelectedLeafSamples": 0.003210741389375365,
+          "fractionOfAllSamples": 0.0009281133985825177
+        },
+        {
+          "owner": "subst_node",
+          "samples": 10,
+          "fractionOfSelectedLeafSamples": 0.002918855808523059,
+          "fractionOfAllSamples": 0.0008437394532568343
+        },
+        {
+          "owner": "p113k_join_bucket",
+          "samples": 10,
+          "fractionOfSelectedLeafSamples": 0.002918855808523059,
+          "fractionOfAllSamples": 0.0008437394532568343
+        },
+        {
+          "owner": "f_triple_op",
+          "samples": 9,
+          "fractionOfSelectedLeafSamples": 0.002626970227670753,
+          "fractionOfAllSamples": 0.0007593655079311508
+        },
+        {
+          "owner": "f_pattern_sub",
+          "samples": 9,
+          "fractionOfSelectedLeafSamples": 0.002626970227670753,
+          "fractionOfAllSamples": 0.0007593655079311508
+        },
+        {
+          "owner": "f_tx",
+          "samples": 9,
+          "fractionOfSelectedLeafSamples": 0.002626970227670753,
+          "fractionOfAllSamples": 0.0007593655079311508
+        },
+        {
+          "owner": "dx",
+          "samples": 9,
+          "fractionOfSelectedLeafSamples": 0.002626970227670753,
+          "fractionOfAllSamples": 0.0007593655079311508
+        },
+        {
+          "owner": "p113l_relation",
+          "samples": 9,
+          "fractionOfSelectedLeafSamples": 0.002626970227670753,
+          "fractionOfAllSamples": 0.0007593655079311508
+        },
+        {
+          "owner": "p113k_join_record",
+          "samples": 9,
+          "fractionOfSelectedLeafSamples": 0.002626970227670753,
+          "fractionOfAllSamples": 0.0007593655079311508
+        },
+        {
+          "owner": "f_context_higher",
+          "samples": 8,
+          "fractionOfSelectedLeafSamples": 0.002335084646818447,
+          "fractionOfAllSamples": 0.0006749915626054674
+        },
+        {
+          "owner": "k_with_children",
+          "samples": 8,
+          "fractionOfSelectedLeafSamples": 0.002335084646818447,
+          "fractionOfAllSamples": 0.0006749915626054674
+        },
+        {
+          "owner": "f_eq",
+          "samples": 8,
+          "fractionOfSelectedLeafSamples": 0.002335084646818447,
+          "fractionOfAllSamples": 0.0006749915626054674
+        },
+        {
+          "owner": "subst_terms",
+          "samples": 8,
+          "fractionOfSelectedLeafSamples": 0.002335084646818447,
+          "fractionOfAllSamples": 0.0006749915626054674
+        },
+        {
+          "owner": "nc_uses_list",
+          "samples": 8,
+          "fractionOfSelectedLeafSamples": 0.002335084646818447,
+          "fractionOfAllSamples": 0.0006749915626054674
+        },
+        {
+          "owner": "p111v_join",
+          "samples": 8,
+          "fractionOfSelectedLeafSamples": 0.002335084646818447,
+          "fractionOfAllSamples": 0.0006749915626054674
+        },
+        {
+          "owner": "p111v_schema_stmt",
+          "samples": 8,
+          "fractionOfSelectedLeafSamples": 0.002335084646818447,
+          "fractionOfAllSamples": 0.0006749915626054674
+        },
+        {
+          "owner": "index_join",
+          "samples": 8,
+          "fractionOfSelectedLeafSamples": 0.002335084646818447,
+          "fractionOfAllSamples": 0.0006749915626054674
+        },
+        {
+          "owner": "no_effect_terms",
+          "samples": 8,
+          "fractionOfSelectedLeafSamples": 0.002335084646818447,
+          "fractionOfAllSamples": 0.0006749915626054674
+        },
+        {
+          "owner": "fpe_term",
+          "samples": 7,
+          "fractionOfSelectedLeafSamples": 0.0020431990659661413,
+          "fractionOfAllSamples": 0.000590617617279784
+        },
+        {
+          "owner": "p112m_fresh_terms",
+          "samples": 7,
+          "fractionOfSelectedLeafSamples": 0.0020431990659661413,
+          "fractionOfAllSamples": 0.000590617617279784
+        },
+        {
+          "owner": "p111v_decl",
+          "samples": 7,
+          "fractionOfSelectedLeafSamples": 0.0020431990659661413,
+          "fractionOfAllSamples": 0.000590617617279784
+        },
+        {
+          "owner": "p113k_replace",
+          "samples": 7,
+          "fractionOfSelectedLeafSamples": 0.0020431990659661413,
+          "fractionOfAllSamples": 0.000590617617279784
+        },
+        {
+          "owner": "p113k_value",
+          "samples": 7,
+          "fractionOfSelectedLeafSamples": 0.0020431990659661413,
+          "fractionOfAllSamples": 0.000590617617279784
+        },
+        {
+          "owner": "String.length",
+          "samples": 6,
+          "fractionOfSelectedLeafSamples": 0.0017513134851138354,
+          "fractionOfAllSamples": 0.0005062436719541006
+        },
+        {
+          "owner": "f_env",
+          "samples": 6,
+          "fractionOfSelectedLeafSamples": 0.0017513134851138354,
+          "fractionOfAllSamples": 0.0005062436719541006
+        },
+        {
+          "owner": "f_mark_rows",
+          "samples": 6,
+          "fractionOfSelectedLeafSamples": 0.0017513134851138354,
+          "fractionOfAllSamples": 0.0005062436719541006
+        },
+        {
+          "owner": "ffw_walk_existing",
+          "samples": 6,
+          "fractionOfSelectedLeafSamples": 0.0017513134851138354,
+          "fractionOfAllSamples": 0.0005062436719541006
+        },
+        {
+          "owner": "terms_len",
+          "samples": 6,
+          "fractionOfSelectedLeafSamples": 0.0017513134851138354,
+          "fractionOfAllSamples": 0.0005062436719541006
+        },
+        {
+          "owner": "kr_resolve",
+          "samples": 6,
+          "fractionOfSelectedLeafSamples": 0.0017513134851138354,
+          "fractionOfAllSamples": 0.0005062436719541006
+        },
+        {
+          "owner": "ka_node",
+          "samples": 6,
+          "fractionOfSelectedLeafSamples": 0.0017513134851138354,
+          "fractionOfAllSamples": 0.0005062436719541006
+        },
+        {
+          "owner": "nc_erase_annotated",
+          "samples": 6,
+          "fractionOfSelectedLeafSamples": 0.0017513134851138354,
+          "fractionOfAllSamples": 0.0005062436719541006
+        },
+        {
+          "owner": "p112s_find",
+          "samples": 6,
+          "fractionOfSelectedLeafSamples": 0.0017513134851138354,
+          "fractionOfAllSamples": 0.0005062436719541006
+        },
+        {
+          "owner": "p113d_pass_next",
+          "samples": 6,
+          "fractionOfSelectedLeafSamples": 0.0017513134851138354,
+          "fractionOfAllSamples": 0.0005062436719541006
+        },
+        {
+          "owner": "p113e_functions",
+          "samples": 6,
+          "fractionOfSelectedLeafSamples": 0.0017513134851138354,
+          "fractionOfAllSamples": 0.0005062436719541006
+        },
+        {
+          "owner": "p111q_memory",
+          "samples": 6,
+          "fractionOfSelectedLeafSamples": 0.0017513134851138354,
+          "fractionOfAllSamples": 0.0005062436719541006
+        },
+        {
+          "owner": "f_lex_symbol",
+          "samples": 5,
+          "fractionOfSelectedLeafSamples": 0.0014594279042615295,
+          "fractionOfAllSamples": 0.00042186972662841717
+        },
+        {
+          "owner": "f_pair_op",
+          "samples": 5,
+          "fractionOfSelectedLeafSamples": 0.0014594279042615295,
+          "fractionOfAllSamples": 0.00042186972662841717
+        },
+        {
+          "owner": "String.ends_with",
+          "samples": 5,
+          "fractionOfSelectedLeafSamples": 0.0014594279042615295,
+          "fractionOfAllSamples": 0.00042186972662841717
+        },
+        {
+          "owner": "f_atom_existing",
+          "samples": 5,
+          "fractionOfSelectedLeafSamples": 0.0014594279042615295,
+          "fractionOfAllSamples": 0.00042186972662841717
+        },
+        {
+          "owner": "f_rename_var",
+          "samples": 5,
+          "fractionOfSelectedLeafSamples": 0.0014594279042615295,
+          "fractionOfAllSamples": 0.00042186972662841717
+        },
+        {
+          "owner": "norm_exact_head",
+          "samples": 5,
+          "fractionOfSelectedLeafSamples": 0.0014594279042615295,
+          "fractionOfAllSamples": 0.00042186972662841717
+        },
+        {
+          "owner": "norm_match",
+          "samples": 5,
+          "fractionOfSelectedLeafSamples": 0.0014594279042615295,
+          "fractionOfAllSamples": 0.00042186972662841717
+        },
+        {
+          "owner": "nbc_closed",
+          "samples": 5,
+          "fractionOfSelectedLeafSamples": 0.0014594279042615295,
+          "fractionOfAllSamples": 0.00042186972662841717
+        },
+        {
+          "owner": "k_rebuild",
+          "samples": 5,
+          "fractionOfSelectedLeafSamples": 0.0014594279042615295,
+          "fractionOfAllSamples": 0.00042186972662841717
+        },
+        {
+          "owner": "p111v_body",
+          "samples": 5,
+          "fractionOfSelectedLeafSamples": 0.0014594279042615295,
+          "fractionOfAllSamples": 0.00042186972662841717
+        },
+        {
+          "owner": "p111v_operator",
+          "samples": 5,
+          "fractionOfSelectedLeafSamples": 0.0014594279042615295,
+          "fractionOfAllSamples": 0.00042186972662841717
+        },
+        {
+          "owner": "p112f_value",
+          "samples": 5,
+          "fractionOfSelectedLeafSamples": 0.0014594279042615295,
+          "fractionOfAllSamples": 0.00042186972662841717
+        },
+        {
+          "owner": "p112c_freeze",
+          "samples": 5,
+          "fractionOfSelectedLeafSamples": 0.0014594279042615295,
+          "fractionOfAllSamples": 0.00042186972662841717
+        },
+        {
+          "owner": "p112c_frame",
+          "samples": 5,
+          "fractionOfSelectedLeafSamples": 0.0014594279042615295,
+          "fractionOfAllSamples": 0.00042186972662841717
+        },
+        {
+          "owner": "String.append",
+          "samples": 5,
+          "fractionOfSelectedLeafSamples": 0.0014594279042615295,
+          "fractionOfAllSamples": 0.00042186972662841717
+        },
+        {
+          "owner": "p114t_fusion_buffer",
+          "samples": 5,
+          "fractionOfSelectedLeafSamples": 0.0014594279042615295,
+          "fractionOfAllSamples": 0.00042186972662841717
+        },
+        {
+          "owner": "f_ctor_lookup",
+          "samples": 4,
+          "fractionOfSelectedLeafSamples": 0.0011675423234092236,
+          "fractionOfAllSamples": 0.0003374957813027337
+        },
+        {
+          "owner": "f_prec",
+          "samples": 4,
+          "fractionOfSelectedLeafSamples": 0.0011675423234092236,
+          "fractionOfAllSamples": 0.0003374957813027337
+        },
+        {
+          "owner": "f_atom_name",
+          "samples": 4,
+          "fractionOfSelectedLeafSamples": 0.0011675423234092236,
+          "fractionOfAllSamples": 0.0003374957813027337
+        },
+        {
+          "owner": "index_find",
+          "samples": 4,
+          "fractionOfSelectedLeafSamples": 0.0011675423234092236,
+          "fractionOfAllSamples": 0.0003374957813027337
+        },
+        {
+          "owner": "fpe_rejected",
+          "samples": 4,
+          "fractionOfSelectedLeafSamples": 0.0011675423234092236,
+          "fractionOfAllSamples": 0.0003374957813027337
+        },
+        {
+          "owner": "signature_mode",
+          "samples": 4,
+          "fractionOfSelectedLeafSamples": 0.0011675423234092236,
+          "fractionOfAllSamples": 0.0003374957813027337
+        },
+        {
+          "owner": "ki_pair",
+          "samples": 4,
+          "fractionOfSelectedLeafSamples": 0.0011675423234092236,
+          "fractionOfAllSamples": 0.0003374957813027337
+        },
+        {
+          "owner": "mat_rest",
+          "samples": 4,
+          "fractionOfSelectedLeafSamples": 0.0011675423234092236,
+          "fractionOfAllSamples": 0.0003374957813027337
+        },
+        {
+          "owner": "nc_foreign",
+          "samples": 4,
+          "fractionOfSelectedLeafSamples": 0.0011675423234092236,
+          "fractionOfAllSamples": 0.0003374957813027337
+        },
+        {
+          "owner": "nc_compact_plain",
+          "samples": 4,
+          "fractionOfSelectedLeafSamples": 0.0011675423234092236,
+          "fractionOfAllSamples": 0.0003374957813027337
+        },
+        {
+          "owner": "nc_bangs_terms",
+          "samples": 4,
+          "fractionOfSelectedLeafSamples": 0.0011675423234092236,
+          "fractionOfAllSamples": 0.0003374957813027337
+        },
+        {
+          "owner": "nd_native_call",
+          "samples": 4,
+          "fractionOfSelectedLeafSamples": 0.0011675423234092236,
+          "fractionOfAllSamples": 0.0003374957813027337
+        },
+        {
+          "owner": "nq_layout_subst_list",
+          "samples": 4,
+          "fractionOfSelectedLeafSamples": 0.0011675423234092236,
+          "fractionOfAllSamples": 0.0003374957813027337
+        },
+        {
+          "owner": "nc_native_primitive",
+          "samples": 4,
+          "fractionOfSelectedLeafSamples": 0.0011675423234092236,
+          "fractionOfAllSamples": 0.0003374957813027337
+        },
+        {
+          "owner": "index_remove_step",
+          "samples": 4,
+          "fractionOfSelectedLeafSamples": 0.0011675423234092236,
+          "fractionOfAllSamples": 0.0003374957813027337
+        },
+        {
+          "owner": "p111v_segments",
+          "samples": 4,
+          "fractionOfSelectedLeafSamples": 0.0011675423234092236,
+          "fractionOfAllSamples": 0.0003374957813027337
+        },
+        {
+          "owner": "p111v_put",
+          "samples": 4,
+          "fractionOfSelectedLeafSamples": 0.0011675423234092236,
+          "fractionOfAllSamples": 0.0003374957813027337
+        },
+        {
+          "owner": "p112t_runtime_call",
+          "samples": 4,
+          "fractionOfSelectedLeafSamples": 0.0011675423234092236,
+          "fractionOfAllSamples": 0.0003374957813027337
+        },
+        {
+          "owner": "p113d_pass_function",
+          "samples": 4,
+          "fractionOfSelectedLeafSamples": 0.0011675423234092236,
+          "fractionOfAllSamples": 0.0003374957813027337
+        },
+        {
+          "owner": "p112f_index_add",
+          "samples": 4,
+          "fractionOfSelectedLeafSamples": 0.0011675423234092236,
+          "fractionOfAllSamples": 0.0003374957813027337
+        },
+        {
+          "owner": "p112r_target",
+          "samples": 4,
+          "fractionOfSelectedLeafSamples": 0.0011675423234092236,
+          "fractionOfAllSamples": 0.0003374957813027337
+        },
+        {
+          "owner": "p112f_clean_stmt",
+          "samples": 4,
+          "fractionOfSelectedLeafSamples": 0.0011675423234092236,
+          "fractionOfAllSamples": 0.0003374957813027337
+        },
+        {
+          "owner": "p112c_try",
+          "samples": 4,
+          "fractionOfSelectedLeafSamples": 0.0011675423234092236,
+          "fractionOfAllSamples": 0.0003374957813027337
+        },
+        {
+          "owner": "p111q_args",
+          "samples": 4,
+          "fractionOfSelectedLeafSamples": 0.0011675423234092236,
+          "fractionOfAllSamples": 0.0003374957813027337
+        },
+        {
+          "owner": "p112w_target",
+          "samples": 4,
+          "fractionOfSelectedLeafSamples": 0.0011675423234092236,
+          "fractionOfAllSamples": 0.0003374957813027337
+        },
+        {
+          "owner": "p112t_tail_store",
+          "samples": 4,
+          "fractionOfSelectedLeafSamples": 0.0011675423234092236,
+          "fractionOfAllSamples": 0.0003374957813027337
+        },
+        {
+          "owner": "f_context_material_children",
+          "samples": 3,
+          "fractionOfSelectedLeafSamples": 0.0008756567425569177,
+          "fractionOfAllSamples": 0.0002531218359770503
+        },
+        {
+          "owner": "f_body_at",
+          "samples": 3,
+          "fractionOfSelectedLeafSamples": 0.0008756567425569177,
+          "fractionOfAllSamples": 0.0002531218359770503
+        },
+        {
+          "owner": "f_implicit_operator",
+          "samples": 3,
+          "fractionOfSelectedLeafSamples": 0.0008756567425569177,
+          "fractionOfAllSamples": 0.0002531218359770503
+        },
+        {
+          "owner": "f_ctor_named",
+          "samples": 3,
+          "fractionOfSelectedLeafSamples": 0.0008756567425569177,
+          "fractionOfAllSamples": 0.0002531218359770503
+        },
+        {
+          "owner": "f_miss_rows",
+          "samples": 3,
+          "fractionOfSelectedLeafSamples": 0.0008756567425569177,
+          "fractionOfAllSamples": 0.0002531218359770503
+        },
+        {
+          "owner": "norm_ref",
+          "samples": 3,
+          "fractionOfSelectedLeafSamples": 0.0008756567425569177,
+          "fractionOfAllSamples": 0.0002531218359770503
+        },
+        {
+          "owner": "infer_node",
+          "samples": 3,
+          "fractionOfSelectedLeafSamples": 0.0008756567425569177,
+          "fractionOfAllSamples": 0.0002531218359770503
+        },
+        {
+          "owner": "tele_check_done",
+          "samples": 3,
+          "fractionOfSelectedLeafSamples": 0.0008756567425569177,
+          "fractionOfAllSamples": 0.0002531218359770503
+        },
+        {
+          "owner": "core_beta",
+          "samples": 3,
+          "fractionOfSelectedLeafSamples": 0.0008756567425569177,
+          "fractionOfAllSamples": 0.0002531218359770503
+        },
+        {
+          "owner": "check_fits",
+          "samples": 3,
+          "fractionOfSelectedLeafSamples": 0.0008756567425569177,
+          "fractionOfAllSamples": 0.0002531218359770503
+        },
+        {
+          "owner": "core_literal_type",
+          "samples": 3,
+          "fractionOfSelectedLeafSamples": 0.0008756567425569177,
+          "fractionOfAllSamples": 0.0002531218359770503
+        },
+        {
+          "owner": "check_lam_done",
+          "samples": 3,
+          "fractionOfSelectedLeafSamples": 0.0008756567425569177,
+          "fractionOfAllSamples": 0.0002531218359770503
+        },
+        {
+          "owner": "ki_args",
+          "samples": 3,
+          "fractionOfSelectedLeafSamples": 0.0008756567425569177,
+          "fractionOfAllSamples": 0.0002531218359770503
+        },
+        {
+          "owner": "core_rebuild",
+          "samples": 3,
+          "fractionOfSelectedLeafSamples": 0.0008756567425569177,
+          "fractionOfAllSamples": 0.0002531218359770503
+        },
+        {
+          "owner": "dg_trace",
+          "samples": 3,
+          "fractionOfSelectedLeafSamples": 0.0008756567425569177,
+          "fractionOfAllSamples": 0.0002531218359770503
+        },
+        {
+          "owner": "norm_node_min",
+          "samples": 3,
+          "fractionOfSelectedLeafSamples": 0.0008756567425569177,
+          "fractionOfAllSamples": 0.0002531218359770503
+        },
+        {
+          "owner": "base_prefix_world_hash_disjoint",
+          "samples": 3,
+          "fractionOfSelectedLeafSamples": 0.0008756567425569177,
+          "fractionOfAllSamples": 0.0002531218359770503
+        },
+        {
+          "owner": "nc_context_defs",
+          "samples": 3,
+          "fractionOfSelectedLeafSamples": 0.0008756567425569177,
+          "fractionOfAllSamples": 0.0002531218359770503
+        },
+        {
+          "owner": "nc_erase",
+          "samples": 3,
+          "fractionOfSelectedLeafSamples": 0.0008756567425569177,
+          "fractionOfAllSamples": 0.0002531218359770503
+        },
+        {
+          "owner": "jd_raise",
+          "samples": 3,
+          "fractionOfSelectedLeafSamples": 0.0008756567425569177,
+          "fractionOfAllSamples": 0.0002531218359770503
+        },
+        {
+          "owner": "p112s_intern",
+          "samples": 3,
+          "fractionOfSelectedLeafSamples": 0.0008756567425569177,
+          "fractionOfAllSamples": 0.0002531218359770503
+        },
+        {
+          "owner": "p112s_term",
+          "samples": 3,
+          "fractionOfSelectedLeafSamples": 0.0008756567425569177,
+          "fractionOfAllSamples": 0.0002531218359770503
+        },
+        {
+          "owner": "nc_bangs_term",
+          "samples": 3,
+          "fractionOfSelectedLeafSamples": 0.0008756567425569177,
+          "fractionOfAllSamples": 0.0002531218359770503
+        },
+        {
+          "owner": "p113_application_kind",
+          "samples": 3,
+          "fractionOfSelectedLeafSamples": 0.0008756567425569177,
+          "fractionOfAllSamples": 0.0002531218359770503
+        },
+        {
+          "owner": "nc_word",
+          "samples": 3,
+          "fractionOfSelectedLeafSamples": 0.0008756567425569177,
+          "fractionOfAllSamples": 0.0002531218359770503
+        },
+        {
+          "owner": "p118t_original_done",
+          "samples": 3,
+          "fractionOfSelectedLeafSamples": 0.0008756567425569177,
+          "fractionOfAllSamples": 0.0002531218359770503
+        },
+        {
+          "owner": "p113pl_app",
+          "samples": 3,
+          "fractionOfSelectedLeafSamples": 0.0008756567425569177,
+          "fractionOfAllSamples": 0.0002531218359770503
+        },
+        {
+          "owner": "p113nm_take",
+          "samples": 3,
+          "fractionOfSelectedLeafSamples": 0.0008756567425569177,
+          "fractionOfAllSamples": 0.0002531218359770503
+        },
+        {
+          "owner": "nq_uses",
+          "samples": 3,
+          "fractionOfSelectedLeafSamples": 0.0008756567425569177,
+          "fractionOfAllSamples": 0.0002531218359770503
+        },
+        {
+          "owner": "p113pl_candidates",
+          "samples": 3,
+          "fractionOfSelectedLeafSamples": 0.0008756567425569177,
+          "fractionOfAllSamples": 0.0002531218359770503
+        },
+        {
+          "owner": "p113i_get",
+          "samples": 3,
+          "fractionOfSelectedLeafSamples": 0.0008756567425569177,
+          "fractionOfAllSamples": 0.0002531218359770503
+        },
+        {
+          "owner": "p113d_ready",
+          "samples": 3,
+          "fractionOfSelectedLeafSamples": 0.0008756567425569177,
+          "fractionOfAllSamples": 0.0002531218359770503
+        },
+        {
+          "owner": "p113d_deps",
+          "samples": 3,
+          "fractionOfSelectedLeafSamples": 0.0008756567425569177,
+          "fractionOfAllSamples": 0.0002531218359770503
+        },
+        {
+          "owner": "p111v_stmt",
+          "samples": 3,
+          "fractionOfSelectedLeafSamples": 0.0008756567425569177,
+          "fractionOfAllSamples": 0.0002531218359770503
+        },
+        {
+          "owner": "p111v_schema",
+          "samples": 3,
+          "fractionOfSelectedLeafSamples": 0.0008756567425569177,
+          "fractionOfAllSamples": 0.0002531218359770503
+        },
+        {
+          "owner": "p111v_state_argument",
+          "samples": 3,
+          "fractionOfSelectedLeafSamples": 0.0008756567425569177,
+          "fractionOfAllSamples": 0.0002531218359770503
+        },
+        {
+          "owner": "p123p_record",
+          "samples": 3,
+          "fractionOfSelectedLeafSamples": 0.0008756567425569177,
+          "fractionOfAllSamples": 0.0002531218359770503
+        },
+        {
+          "owner": "p113k_args",
+          "samples": 3,
+          "fractionOfSelectedLeafSamples": 0.0008756567425569177,
+          "fractionOfAllSamples": 0.0002531218359770503
+        },
+        {
+          "owner": "p123p_get",
+          "samples": 3,
+          "fractionOfSelectedLeafSamples": 0.0008756567425569177,
+          "fractionOfAllSamples": 0.0002531218359770503
+        },
+        {
+          "owner": "p131i_insert",
+          "samples": 3,
+          "fractionOfSelectedLeafSamples": 0.0008756567425569177,
+          "fractionOfAllSamples": 0.0002531218359770503
+        },
+        {
+          "owner": "p113e_schema_stmt",
+          "samples": 3,
+          "fractionOfSelectedLeafSamples": 0.0008756567425569177,
+          "fractionOfAllSamples": 0.0002531218359770503
+        },
+        {
+          "owner": "p114ts_scalar_list",
+          "samples": 3,
+          "fractionOfSelectedLeafSamples": 0.0008756567425569177,
+          "fractionOfAllSamples": 0.0002531218359770503
+        },
+        {
+          "owner": "p114t_scalar_names",
+          "samples": 3,
+          "fractionOfSelectedLeafSamples": 0.0008756567425569177,
+          "fractionOfAllSamples": 0.0002531218359770503
+        },
+        {
+          "owner": "noa_value_type",
+          "samples": 3,
+          "fractionOfSelectedLeafSamples": 0.0008756567425569177,
+          "fractionOfAllSamples": 0.0002531218359770503
+        },
+        {
+          "owner": "nol_owner",
+          "samples": 3,
+          "fractionOfSelectedLeafSamples": 0.0008756567425569177,
+          "fractionOfAllSamples": 0.0002531218359770503
+        },
+        {
+          "owner": "p118ns_scalars",
+          "samples": 3,
+          "fractionOfSelectedLeafSamples": 0.0008756567425569177,
+          "fractionOfAllSamples": 0.0002531218359770503
+        },
+        {
+          "owner": "p118z_scalar",
+          "samples": 3,
+          "fractionOfSelectedLeafSamples": 0.0008756567425569177,
+          "fractionOfAllSamples": 0.0002531218359770503
+        },
+        {
+          "owner": "p112t_param_stmt",
+          "samples": 3,
+          "fractionOfSelectedLeafSamples": 0.0008756567425569177,
+          "fractionOfAllSamples": 0.0002531218359770503
+        },
+        {
+          "owner": "p112t_scalar_safe",
+          "samples": 3,
+          "fractionOfSelectedLeafSamples": 0.0008756567425569177,
+          "fractionOfAllSamples": 0.0002531218359770503
+        },
+        {
+          "owner": "p112f_clean_args",
+          "samples": 3,
+          "fractionOfSelectedLeafSamples": 0.0008756567425569177,
+          "fractionOfAllSamples": 0.0002531218359770503
+        },
+        {
+          "owner": "p113e_registered",
+          "samples": 3,
+          "fractionOfSelectedLeafSamples": 0.0008756567425569177,
+          "fractionOfAllSamples": 0.0002531218359770503
+        },
+        {
+          "owner": "p118q_sized",
+          "samples": 3,
+          "fractionOfSelectedLeafSamples": 0.0008756567425569177,
+          "fractionOfAllSamples": 0.0002531218359770503
+        },
+        {
+          "owner": "p112f_size",
+          "samples": 3,
+          "fractionOfSelectedLeafSamples": 0.0008756567425569177,
+          "fractionOfAllSamples": 0.0002531218359770503
+        },
+        {
+          "owner": "p126nt_emit",
+          "samples": 3,
+          "fractionOfSelectedLeafSamples": 0.0008756567425569177,
+          "fractionOfAllSamples": 0.0002531218359770503
+        },
+        {
+          "owner": "p113e_old_private_chunks",
+          "samples": 3,
+          "fractionOfSelectedLeafSamples": 0.0008756567425569177,
+          "fractionOfAllSamples": 0.0002531218359770503
+        },
+        {
+          "owner": "f_lex_cursor",
+          "samples": 2,
+          "fractionOfSelectedLeafSamples": 0.0005837711617046118,
+          "fractionOfAllSamples": 0.00016874789065136686
+        },
+        {
+          "owner": "f_body_context_existing",
+          "samples": 2,
+          "fractionOfSelectedLeafSamples": 0.0005837711617046118,
+          "fractionOfAllSamples": 0.00016874789065136686
+        },
+        {
+          "owner": "f_name_chars",
+          "samples": 2,
+          "fractionOfSelectedLeafSamples": 0.0005837711617046118,
+          "fractionOfAllSamples": 0.00016874789065136686
+        },
+        {
+          "owner": "f_def_fillable",
+          "samples": 2,
+          "fractionOfSelectedLeafSamples": 0.0005837711617046118,
+          "fractionOfAllSamples": 0.00016874789065136686
+        },
+        {
+          "owner": "f_context_material_done",
+          "samples": 2,
+          "fractionOfSelectedLeafSamples": 0.0005837711617046118,
+          "fractionOfAllSamples": 0.00016874789065136686
+        },
+        {
+          "owner": "f_var_rows",
+          "samples": 2,
+          "fractionOfSelectedLeafSamples": 0.0005837711617046118,
+          "fractionOfAllSamples": 0.00016874789065136686
+        },
+        {
+          "owner": "f_reserved",
+          "samples": 2,
+          "fractionOfSelectedLeafSamples": 0.0005837711617046118,
+          "fractionOfAllSamples": 0.00016874789065136686
+        },
+        {
+          "owner": "f_lbind",
+          "samples": 2,
+          "fractionOfSelectedLeafSamples": 0.0005837711617046118,
+          "fractionOfAllSamples": 0.00016874789065136686
+        },
+        {
+          "owner": "fpe_terms",
+          "samples": 2,
+          "fractionOfSelectedLeafSamples": 0.0005837711617046118,
+          "fractionOfAllSamples": 0.00016874789065136686
+        },
+        {
+          "owner": "check_ctr",
+          "samples": 2,
+          "fractionOfSelectedLeafSamples": 0.0005837711617046118,
+          "fractionOfAllSamples": 0.00016874789065136686
+        },
+        {
+          "owner": "mat_goal_head",
+          "samples": 2,
+          "fractionOfSelectedLeafSamples": 0.0005837711617046118,
+          "fractionOfAllSamples": 0.00016874789065136686
+        },
+        {
+          "owner": "subst",
+          "samples": 2,
+          "fractionOfSelectedLeafSamples": 0.0005837711617046118,
+          "fractionOfAllSamples": 0.00016874789065136686
+        },
+        {
+          "owner": "infer_template",
+          "samples": 2,
+          "fractionOfSelectedLeafSamples": 0.0005837711617046118,
+          "fractionOfAllSamples": 0.00016874789065136686
+        },
+        {
+          "owner": "infer_ref",
+          "samples": 2,
+          "fractionOfSelectedLeafSamples": 0.0005837711617046118,
+          "fractionOfAllSamples": 0.00016874789065136686
+        },
+        {
+          "owner": "ke_world",
+          "samples": 2,
+          "fractionOfSelectedLeafSamples": 0.0005837711617046118,
+          "fractionOfAllSamples": 0.00016874789065136686
+        },
+        {
+          "owner": "check_node",
+          "samples": 2,
+          "fractionOfSelectedLeafSamples": 0.0005837711617046118,
+          "fractionOfAllSamples": 0.00016874789065136686
+        },
+        {
+          "owner": "dead_type",
+          "samples": 2,
+          "fractionOfSelectedLeafSamples": 0.0005837711617046118,
+          "fractionOfAllSamples": 0.00016874789065136686
+        },
+        {
+          "owner": "core_literal_step",
+          "samples": 2,
+          "fractionOfSelectedLeafSamples": 0.0005837711617046118,
+          "fractionOfAllSamples": 0.00016874789065136686
+        },
+        {
+          "owner": "norm_node_let",
+          "samples": 2,
+          "fractionOfSelectedLeafSamples": 0.0005837711617046118,
+          "fractionOfAllSamples": 0.00016874789065136686
+        },
+        {
+          "owner": "book_context_world",
+          "samples": 2,
+          "fractionOfSelectedLeafSamples": 0.0005837711617046118,
+          "fractionOfAllSamples": 0.00016874789065136686
+        },
+        {
+          "owner": "kid",
+          "samples": 2,
+          "fractionOfSelectedLeafSamples": 0.0005837711617046118,
+          "fractionOfAllSamples": 0.00016874789065136686
+        },
+        {
+          "owner": "norm_eval",
+          "samples": 2,
+          "fractionOfSelectedLeafSamples": 0.0005837711617046118,
+          "fractionOfAllSamples": 0.00016874789065136686
+        },
+        {
+          "owner": "jl_node",
+          "samples": 2,
+          "fractionOfSelectedLeafSamples": 0.0005837711617046118,
+          "fractionOfAllSamples": 0.00016874789065136686
+        },
+        {
+          "owner": "j_literal_ctor",
+          "samples": 2,
+          "fractionOfSelectedLeafSamples": 0.0005837711617046118,
+          "fractionOfAllSamples": 0.00016874789065136686
+        },
+        {
+          "owner": "nc_refs",
+          "samples": 2,
+          "fractionOfSelectedLeafSamples": 0.0005837711617046118,
+          "fractionOfAllSamples": 0.00016874789065136686
+        },
+        {
+          "owner": "nc_erase_args",
+          "samples": 2,
+          "fractionOfSelectedLeafSamples": 0.0005837711617046118,
+          "fractionOfAllSamples": 0.00016874789065136686
+        },
+        {
+          "owner": "nc_ctor_index",
+          "samples": 2,
+          "fractionOfSelectedLeafSamples": 0.0005837711617046118,
+          "fractionOfAllSamples": 0.00016874789065136686
+        },
+        {
+          "owner": "nc_word_literal",
+          "samples": 2,
+          "fractionOfSelectedLeafSamples": 0.0005837711617046118,
+          "fractionOfAllSamples": 0.00016874789065136686
+        },
+        {
+          "owner": "p112s_attach",
+          "samples": 2,
+          "fractionOfSelectedLeafSamples": 0.0005837711617046118,
+          "fractionOfAllSamples": 0.00016874789065136686
+        },
+        {
+          "owner": "nq_layout_remaining",
+          "samples": 2,
+          "fractionOfSelectedLeafSamples": 0.0005837711617046118,
+          "fractionOfAllSamples": 0.00016874789065136686
+        },
+        {
+          "owner": "nc_native_def",
+          "samples": 2,
+          "fractionOfSelectedLeafSamples": 0.0005837711617046118,
+          "fractionOfAllSamples": 0.00016874789065136686
+        },
+        {
+          "owner": "nw_same",
+          "samples": 2,
+          "fractionOfSelectedLeafSamples": 0.0005837711617046118,
+          "fractionOfAllSamples": 0.00016874789065136686
+        },
+        {
+          "owner": "nc_live_uses",
+          "samples": 2,
+          "fractionOfSelectedLeafSamples": 0.0005837711617046118,
+          "fractionOfAllSamples": 0.00016874789065136686
+        },
+        {
+          "owner": "p111_app",
+          "samples": 2,
+          "fractionOfSelectedLeafSamples": 0.0005837711617046118,
+          "fractionOfAllSamples": 0.00016874789065136686
+        },
+        {
+          "owner": "p113pl_names",
+          "samples": 2,
+          "fractionOfSelectedLeafSamples": 0.0005837711617046118,
+          "fractionOfAllSamples": 0.00016874789065136686
+        },
+        {
+          "owner": "p118t_ready",
+          "samples": 2,
+          "fractionOfSelectedLeafSamples": 0.0005837711617046118,
+          "fractionOfAllSamples": 0.00016874789065136686
+        },
+        {
+          "owner": "qt",
+          "samples": 2,
+          "fractionOfSelectedLeafSamples": 0.0005837711617046118,
+          "fractionOfAllSamples": 0.00016874789065136686
+        },
+        {
+          "owner": "nq_info",
+          "samples": 2,
+          "fractionOfSelectedLeafSamples": 0.0005837711617046118,
+          "fractionOfAllSamples": 0.00016874789065136686
+        },
+        {
+          "owner": "nd_arity",
+          "samples": 2,
+          "fractionOfSelectedLeafSamples": 0.0005837711617046118,
+          "fractionOfAllSamples": 0.00016874789065136686
+        },
+        {
+          "owner": "nc_primitive_arity",
+          "samples": 2,
+          "fractionOfSelectedLeafSamples": 0.0005837711617046118,
+          "fractionOfAllSamples": 0.00016874789065136686
+        },
+        {
+          "owner": "p113d_join",
+          "samples": 2,
+          "fractionOfSelectedLeafSamples": 0.0005837711617046118,
+          "fractionOfAllSamples": 0.00016874789065136686
+        },
+        {
+          "owner": "nc_unann",
+          "samples": 2,
+          "fractionOfSelectedLeafSamples": 0.0005837711617046118,
+          "fractionOfAllSamples": 0.00016874789065136686
+        },
+        {
+          "owner": "nq_uses_list",
+          "samples": 2,
+          "fractionOfSelectedLeafSamples": 0.0005837711617046118,
+          "fractionOfAllSamples": 0.00016874789065136686
+        },
+        {
+          "owner": "p111v_signature",
+          "samples": 2,
+          "fractionOfSelectedLeafSamples": 0.0005837711617046118,
+          "fractionOfAllSamples": 0.00016874789065136686
+        },
+        {
+          "owner": "p112s_nodes_error",
+          "samples": 2,
+          "fractionOfSelectedLeafSamples": 0.0005837711617046118,
+          "fractionOfAllSamples": 0.00016874789065136686
+        },
+        {
+          "owner": "p113i_size",
+          "samples": 2,
+          "fractionOfSelectedLeafSamples": 0.0005837711617046118,
+          "fractionOfAllSamples": 0.00016874789065136686
+        },
+        {
+          "owner": "p113j_scratch_count",
+          "samples": 2,
+          "fractionOfSelectedLeafSamples": 0.0005837711617046118,
+          "fractionOfAllSamples": 0.00016874789065136686
+        },
+        {
+          "owner": "p111v_comparison",
+          "samples": 2,
+          "fractionOfSelectedLeafSamples": 0.0005837711617046118,
+          "fractionOfAllSamples": 0.00016874789065136686
+        },
+        {
+          "owner": "p113k_function",
+          "samples": 2,
+          "fractionOfSelectedLeafSamples": 0.0005837711617046118,
+          "fractionOfAllSamples": 0.00016874789065136686
+        },
+        {
+          "owner": "p114s_commit",
+          "samples": 2,
+          "fractionOfSelectedLeafSamples": 0.0005837711617046118,
+          "fractionOfAllSamples": 0.00016874789065136686
+        },
+        {
+          "owner": "p128raw_session_finish",
+          "samples": 2,
+          "fractionOfSelectedLeafSamples": 0.0005837711617046118,
+          "fractionOfAllSamples": 0.00016874789065136686
+        },
+        {
+          "owner": "nol_scalar",
+          "samples": 2,
+          "fractionOfSelectedLeafSamples": 0.0005837711617046118,
+          "fractionOfAllSamples": 0.00016874789065136686
+        },
+        {
+          "owner": "p128br_project_residual",
+          "samples": 2,
+          "fractionOfSelectedLeafSamples": 0.0005837711617046118,
+          "fractionOfAllSamples": 0.00016874789065136686
+        },
+        {
+          "owner": "p118ns_project",
+          "samples": 2,
+          "fractionOfSelectedLeafSamples": 0.0005837711617046118,
+          "fractionOfAllSamples": 0.00016874789065136686
+        },
+        {
+          "owner": "p113e_schema",
+          "samples": 2,
+          "fractionOfSelectedLeafSamples": 0.0005837711617046118,
+          "fractionOfAllSamples": 0.00016874789065136686
+        },
+        {
+          "owner": "p111q_segment_table",
+          "samples": 2,
+          "fractionOfSelectedLeafSamples": 0.0005837711617046118,
+          "fractionOfAllSamples": 0.00016874789065136686
+        },
+        {
+          "owner": "p112r_normal",
+          "samples": 2,
+          "fractionOfSelectedLeafSamples": 0.0005837711617046118,
+          "fractionOfAllSamples": 0.00016874789065136686
+        },
+        {
+          "owner": "p112c_scan_next",
+          "samples": 2,
+          "fractionOfSelectedLeafSamples": 0.0005837711617046118,
+          "fractionOfAllSamples": 0.00016874789065136686
+        },
+        {
+          "owner": "p112r_private_call",
+          "samples": 2,
+          "fractionOfSelectedLeafSamples": 0.0005837711617046118,
+          "fractionOfAllSamples": 0.00016874789065136686
+        },
+        {
+          "owner": "p112r_jump",
+          "samples": 2,
+          "fractionOfSelectedLeafSamples": 0.0005837711617046118,
+          "fractionOfAllSamples": 0.00016874789065136686
+        },
+        {
+          "owner": "p112r_tail_store",
+          "samples": 2,
+          "fractionOfSelectedLeafSamples": 0.0005837711617046118,
+          "fractionOfAllSamples": 0.00016874789065136686
+        },
+        {
+          "owner": "p112f_clean_value",
+          "samples": 2,
+          "fractionOfSelectedLeafSamples": 0.0005837711617046118,
+          "fractionOfAllSamples": 0.00016874789065136686
+        },
+        {
+          "owner": "p114t_stmt",
+          "samples": 2,
+          "fractionOfSelectedLeafSamples": 0.0005837711617046118,
+          "fractionOfAllSamples": 0.00016874789065136686
+        },
+        {
+          "owner": "p114r_clean_args",
+          "samples": 2,
+          "fractionOfSelectedLeafSamples": 0.0005837711617046118,
+          "fractionOfAllSamples": 0.00016874789065136686
+        },
+        {
+          "owner": "p112t_buffer_args",
+          "samples": 2,
+          "fractionOfSelectedLeafSamples": 0.0005837711617046118,
+          "fractionOfAllSamples": 0.00016874789065136686
+        },
+        {
+          "owner": "p114r_prelude",
+          "samples": 2,
+          "fractionOfSelectedLeafSamples": 0.0005837711617046118,
+          "fractionOfAllSamples": 0.00016874789065136686
+        },
+        {
+          "owner": "f_lex_comment",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "f_symbol_text",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "f_scan_word",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "f_lex_scanned",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "f_atom_raw",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "f_context_write_more",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "f_alias",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "f_alias_named",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "f_col",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "f_context_mark_known",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "ff_miss_done",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "f_locate",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "f_context_open",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "f_statement_existing",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "f_head",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "f_leading_quants",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "f_space",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "f_context_lower",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "f_context_atom_name",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "f_context_header",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "f_context_tele",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "f_context_syntax",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "f_hit_rows",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "f_line",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "f_pattern_subs",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "f_decode_char",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "f_context_call",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "f_context_defs",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "ffw_frame",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "g_eval",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "infer_app_type",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "ki_tele_static",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "tele_check_after_head",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "dg_kind_result",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "infer_adt_done",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "infer_app",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "checked",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "norm_eval_node",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "infer_var",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "core_subst_stable",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "check_ctr_found",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "ki_match_bound",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "kw_temp_floor",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "tele_check_static",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "env_tele_fill_eager_head",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "env_subst_terms",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "driver_holes",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "driver_count_todos",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "book_final_seen",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "driver_owned_name",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "j_find_ctor",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "kr_refs_list",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "kr_push",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "kr_refs",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "ka_mat_ctr",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "norm_node_ref",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "ka_args_after_head",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "ka_lam",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "env_tele_safe",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "norm_node_app",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "j_constructor_count",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "j_word",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "j_literal_typed",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "j_layout_array_intrinsic",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "jl_term",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "j_layout_open_head",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "nc_erase_mat",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "j_layout_ctor",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "nc_erase_app",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "nc_erase_list",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p111_emit_plan",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "ns_term",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "nc_pack_foreign",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "nc_compact_ctor",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "nc_compact",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "nc_nat_literal",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "nc_literal",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "ns_ctor_known",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "ns_static_scalar",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p112s_rebuild",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p112s_node_index",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p112s_liveness_fallback",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "jd_raise_match",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p113n_canonical",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p112_liveness_lower",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "j_u32_native_ctor",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p112b_selected",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p112m_planned",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p112s_live_fallback",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "jd_arity",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "nu_insert",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p112m_original_match_apply",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "nq_layout_head",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "nq_layout_single",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "jd_live_arity_head",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p113pl_operation",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p113pl_lower",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "nbc_expand",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p113p_words",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p111_partition",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "nq_layout_apply",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "ntr_tail_eligible",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p113px_lower",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "nc_find_ctor",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p113n_original_value_kind",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "nq_value_shape",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "nq_pair_primitive",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "nc_ctor_context",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "nc_ctor_display",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p113px_live",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "nq_same",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p113pm_join",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p111_op_id",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p113n_ctor_end_head",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "nc_ctor_decode",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p126sc_partner_try",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p112s_fields_valid",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p113i_function_done",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p113j_scratch_args",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p113j_expand",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "ix",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p113k_body_if",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p113k_join",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p113k_bin_stmt",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p123p_copy",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p113l_copy_relation",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p113l_comparison",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p113k_body_join",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p123p_diamond",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p111v_args",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p131i_original_set",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p113a_body_names",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "noa_env",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "noa_apply_step",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p113e_originals",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p128br_residual_error",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p128br_lookup",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "nol_root_specs",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "nol_fields",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p111_special",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p131rv_value",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p113e_values",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p111v_intersection",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p114ts_segments",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p114ts_body",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p113e_buffers",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p118z_runtime",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p118z_transition",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "nc_ctor_codes",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p112f_index_get",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p112f_rename",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p112c_target",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p112r_no",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p112r_next",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p112c_scan_try",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p112r_failure",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p112r_failure_frame",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p114t_expand",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p111q_value",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p112t_failure_args",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p112t_transition",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p112w_public_next",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p112f_bind_captures",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p114r_clean_stmt",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p114t_known_fid",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p112w_result",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p128bf_match",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p114h_clean_stmt",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p111q_alloca",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p112f_args",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p112f_clean",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p111q_binop",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p114r_clean_value",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p114h_clean_value",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p114h_clean",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p112fp_expand",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p112f_public",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p112t_jump",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p112f_frame",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p112t_failure_frame",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p118c_has_cold",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0002918855808523059,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        }
+      ]
+    },
+    "borrowedStringEquality": {
+      "samples": 1128,
+      "fractionOfAllSamples": 0.0951738103273709,
+      "owners": [
+        {
+          "owner": "has_name",
+          "samples": 260,
+          "fractionOfSelectedLeafSamples": 0.23049645390070922,
+          "fractionOfAllSamples": 0.021937225784677692
+        },
+        {
+          "owner": "p88_string_eq",
+          "samples": 165,
+          "fractionOfSelectedLeafSamples": 0.14627659574468085,
+          "fractionOfAllSamples": 0.013921700978737767
+        },
+        {
+          "owner": "f_find",
+          "samples": 108,
+          "fractionOfSelectedLeafSamples": 0.09574468085106383,
+          "fractionOfAllSamples": 0.00911238609517381
+        },
+        {
+          "owner": "nb_contains",
+          "samples": 97,
+          "fractionOfSelectedLeafSamples": 0.08599290780141844,
+          "fractionOfAllSamples": 0.008184272696591293
+        },
+        {
+          "owner": "nc_ctor_owned",
+          "samples": 87,
+          "fractionOfSelectedLeafSamples": 0.07712765957446809,
+          "fractionOfAllSamples": 0.007340533243334458
+        },
+        {
+          "owner": "lookup",
+          "samples": 69,
+          "fractionOfSelectedLeafSamples": 0.061170212765957445,
+          "fractionOfAllSamples": 0.005821802227472157
+        },
+        {
+          "owner": "nc_occurs",
+          "samples": 41,
+          "fractionOfSelectedLeafSamples": 0.03634751773049645,
+          "fractionOfAllSamples": 0.0034593317583530205
+        },
+        {
+          "owner": "dr_own_names",
+          "samples": 28,
+          "fractionOfSelectedLeafSamples": 0.024822695035460994,
+          "fractionOfAllSamples": 0.002362470469119136
+        },
+        {
+          "owner": "f_eq",
+          "samples": 27,
+          "fractionOfSelectedLeafSamples": 0.023936170212765957,
+          "fractionOfAllSamples": 0.0022780965237934525
+        },
+        {
+          "owner": "nc_native_primitive",
+          "samples": 16,
+          "fractionOfSelectedLeafSamples": 0.014184397163120567,
+          "fractionOfAllSamples": 0.0013499831252109348
+        },
+        {
+          "owner": "nc_uses_term",
+          "samples": 13,
+          "fractionOfSelectedLeafSamples": 0.01152482269503546,
+          "fractionOfAllSamples": 0.0010968612892338846
+        },
+        {
+          "owner": "constructor_exists",
+          "samples": 12,
+          "fractionOfSelectedLeafSamples": 0.010638297872340425,
+          "fractionOfAllSamples": 0.0010124873439082012
+        },
+        {
+          "owner": "ns_body",
+          "samples": 12,
+          "fractionOfSelectedLeafSamples": 0.010638297872340425,
+          "fractionOfAllSamples": 0.0010124873439082012
+        },
+        {
+          "owner": "subst_node",
+          "samples": 9,
+          "fractionOfSelectedLeafSamples": 0.007978723404255319,
+          "fractionOfAllSamples": 0.0007593655079311508
+        },
+        {
+          "owner": "p111v_value",
+          "samples": 9,
+          "fractionOfSelectedLeafSamples": 0.007978723404255319,
+          "fractionOfAllSamples": 0.0007593655079311508
+        },
+        {
+          "owner": "subst",
+          "samples": 8,
+          "fractionOfSelectedLeafSamples": 0.0070921985815602835,
+          "fractionOfAllSamples": 0.0006749915626054674
+        },
+        {
+          "owner": "p111v_get",
+          "samples": 8,
+          "fractionOfSelectedLeafSamples": 0.0070921985815602835,
+          "fractionOfAllSamples": 0.0006749915626054674
+        },
+        {
+          "owner": "nc_bangs_term",
+          "samples": 7,
+          "fractionOfSelectedLeafSamples": 0.0062056737588652485,
+          "fractionOfAllSamples": 0.000590617617279784
+        },
+        {
+          "owner": "f_pair_op",
+          "samples": 6,
+          "fractionOfSelectedLeafSamples": 0.005319148936170213,
+          "fractionOfAllSamples": 0.0005062436719541006
+        },
+        {
+          "owner": "index_find",
+          "samples": 5,
+          "fractionOfSelectedLeafSamples": 0.004432624113475178,
+          "fractionOfAllSamples": 0.00042186972662841717
+        },
+        {
+          "owner": "norm_eval_node",
+          "samples": 5,
+          "fractionOfSelectedLeafSamples": 0.004432624113475178,
+          "fractionOfAllSamples": 0.00042186972662841717
+        },
+        {
+          "owner": "nq_layout_subst",
+          "samples": 5,
+          "fractionOfSelectedLeafSamples": 0.004432624113475178,
+          "fractionOfAllSamples": 0.00042186972662841717
+        },
+        {
+          "owner": "signature_mode",
+          "samples": 4,
+          "fractionOfSelectedLeafSamples": 0.0035460992907801418,
+          "fractionOfAllSamples": 0.0003374957813027337
+        },
+        {
+          "owner": "core_rebuild",
+          "samples": 4,
+          "fractionOfSelectedLeafSamples": 0.0035460992907801418,
+          "fractionOfAllSamples": 0.0003374957813027337
+        },
+        {
+          "owner": "nq_min_uses",
+          "samples": 4,
+          "fractionOfSelectedLeafSamples": 0.0035460992907801418,
+          "fractionOfAllSamples": 0.0003374957813027337
+        },
+        {
+          "owner": "p111v_memory",
+          "samples": 4,
+          "fractionOfSelectedLeafSamples": 0.0035460992907801418,
+          "fractionOfAllSamples": 0.0003374957813027337
+        },
+        {
+          "owner": "f_grow_base",
+          "samples": 3,
+          "fractionOfSelectedLeafSamples": 0.0026595744680851063,
+          "fractionOfAllSamples": 0.0002531218359770503
+        },
+        {
+          "owner": "f_skip",
+          "samples": 3,
+          "fractionOfSelectedLeafSamples": 0.0026595744680851063,
+          "fractionOfAllSamples": 0.0002531218359770503
+        },
+        {
+          "owner": "f_atom_existing",
+          "samples": 3,
+          "fractionOfSelectedLeafSamples": 0.0026595744680851063,
+          "fractionOfAllSamples": 0.0002531218359770503
+        },
+        {
+          "owner": "p98_tag_eq",
+          "samples": 3,
+          "fractionOfSelectedLeafSamples": 0.0026595744680851063,
+          "fractionOfAllSamples": 0.0002531218359770503
+        },
+        {
+          "owner": "infer_node",
+          "samples": 3,
+          "fractionOfSelectedLeafSamples": 0.0026595744680851063,
+          "fractionOfAllSamples": 0.0002531218359770503
+        },
+        {
+          "owner": "core_beta",
+          "samples": 3,
+          "fractionOfSelectedLeafSamples": 0.0026595744680851063,
+          "fractionOfAllSamples": 0.0002531218359770503
+        },
+        {
+          "owner": "norm_node_app",
+          "samples": 3,
+          "fractionOfSelectedLeafSamples": 0.0026595744680851063,
+          "fractionOfAllSamples": 0.0002531218359770503
+        },
+        {
+          "owner": "nd_comb_fresh",
+          "samples": 3,
+          "fractionOfSelectedLeafSamples": 0.0026595744680851063,
+          "fractionOfAllSamples": 0.0002531218359770503
+        },
+        {
+          "owner": "p113k_value",
+          "samples": 3,
+          "fractionOfSelectedLeafSamples": 0.0026595744680851063,
+          "fractionOfAllSamples": 0.0002531218359770503
+        },
+        {
+          "owner": "f_context_material_deferred",
+          "samples": 2,
+          "fractionOfSelectedLeafSamples": 0.0017730496453900709,
+          "fractionOfAllSamples": 0.00016874789065136686
+        },
+        {
+          "owner": "f_grow_existing",
+          "samples": 2,
+          "fractionOfSelectedLeafSamples": 0.0017730496453900709,
+          "fractionOfAllSamples": 0.00016874789065136686
+        },
+        {
+          "owner": "f_prec",
+          "samples": 2,
+          "fractionOfSelectedLeafSamples": 0.0017730496453900709,
+          "fractionOfAllSamples": 0.00016874789065136686
+        },
+        {
+          "owner": "f_reserved",
+          "samples": 2,
+          "fractionOfSelectedLeafSamples": 0.0017730496453900709,
+          "fractionOfAllSamples": 0.00016874789065136686
+        },
+        {
+          "owner": "f_unmark",
+          "samples": 2,
+          "fractionOfSelectedLeafSamples": 0.0017730496453900709,
+          "fractionOfAllSamples": 0.00016874789065136686
+        },
+        {
+          "owner": "f_env",
+          "samples": 2,
+          "fractionOfSelectedLeafSamples": 0.0017730496453900709,
+          "fractionOfAllSamples": 0.00016874789065136686
+        },
+        {
+          "owner": "ffw_walk_existing",
+          "samples": 2,
+          "fractionOfSelectedLeafSamples": 0.0017730496453900709,
+          "fractionOfAllSamples": 0.00016874789065136686
+        },
+        {
+          "owner": "norm_node_let",
+          "samples": 2,
+          "fractionOfSelectedLeafSamples": 0.0017730496453900709,
+          "fractionOfAllSamples": 0.00016874789065136686
+        },
+        {
+          "owner": "core_apply_span",
+          "samples": 2,
+          "fractionOfSelectedLeafSamples": 0.0017730496453900709,
+          "fractionOfAllSamples": 0.00016874789065136686
+        },
+        {
+          "owner": "core_subst_stable",
+          "samples": 2,
+          "fractionOfSelectedLeafSamples": 0.0017730496453900709,
+          "fractionOfAllSamples": 0.00016874789065136686
+        },
+        {
+          "owner": "env_tele_safe",
+          "samples": 2,
+          "fractionOfSelectedLeafSamples": 0.0017730496453900709,
+          "fractionOfAllSamples": 0.00016874789065136686
+        },
+        {
+          "owner": "norm_match",
+          "samples": 2,
+          "fractionOfSelectedLeafSamples": 0.0017730496453900709,
+          "fractionOfAllSamples": 0.00016874789065136686
+        },
+        {
+          "owner": "norm_node_min",
+          "samples": 2,
+          "fractionOfSelectedLeafSamples": 0.0017730496453900709,
+          "fractionOfAllSamples": 0.00016874789065136686
+        },
+        {
+          "owner": "nc_compact_plain",
+          "samples": 2,
+          "fractionOfSelectedLeafSamples": 0.0017730496453900709,
+          "fractionOfAllSamples": 0.00016874789065136686
+        },
+        {
+          "owner": "p112_liveness_term",
+          "samples": 2,
+          "fractionOfSelectedLeafSamples": 0.0017730496453900709,
+          "fractionOfAllSamples": 0.00016874789065136686
+        },
+        {
+          "owner": "p112s_context_ctors",
+          "samples": 2,
+          "fractionOfSelectedLeafSamples": 0.0017730496453900709,
+          "fractionOfAllSamples": 0.00016874789065136686
+        },
+        {
+          "owner": "p113k_get",
+          "samples": 2,
+          "fractionOfSelectedLeafSamples": 0.0017730496453900709,
+          "fractionOfAllSamples": 0.00016874789065136686
+        },
+        {
+          "owner": "p113l_relation",
+          "samples": 2,
+          "fractionOfSelectedLeafSamples": 0.0017730496453900709,
+          "fractionOfAllSamples": 0.00016874789065136686
+        },
+        {
+          "owner": "p113k_replace",
+          "samples": 2,
+          "fractionOfSelectedLeafSamples": 0.0017730496453900709,
+          "fractionOfAllSamples": 0.00016874789065136686
+        },
+        {
+          "owner": "nol_owner",
+          "samples": 2,
+          "fractionOfSelectedLeafSamples": 0.0017730496453900709,
+          "fractionOfAllSamples": 0.00016874789065136686
+        },
+        {
+          "owner": "f_def_signature",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0008865248226950354,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "f_def_fillable",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0008865248226950354,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "f_context_open",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0008865248226950354,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "f_context_name",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0008865248226950354,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "f_context_name_resolved",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0008865248226950354,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "f_context_less",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0008865248226950354,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "ffw_walk",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0008865248226950354,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "tele_check_done",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0008865248226950354,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "norm_cmp_heads",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0008865248226950354,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "ki_args",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0008865248226950354,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "check_node",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0008865248226950354,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "book_final_seen",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0008865248226950354,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "driver_holes",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0008865248226950354,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "kr_refs",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0008865248226950354,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "kr_push",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0008865248226950354,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "norm_eval",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0008865248226950354,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "norm_node_ann",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0008865248226950354,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "j_word",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0008865248226950354,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "j_layout_array_intrinsic",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0008865248226950354,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "jl_node",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0008865248226950354,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "norm_node_ref",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0008865248226950354,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "nc_erase",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0008865248226950354,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "ns_ctor_known",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0008865248226950354,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "nc_nat_literal",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0008865248226950354,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "nc_word_literal",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0008865248226950354,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "nd_native_call",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0008865248226950354,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "nq_layout_reduce",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0008865248226950354,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "nq_pair_primitive",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0008865248226950354,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "nc_native_marked",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0008865248226950354,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "jd_raise",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0008865248226950354,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p118t_original_done",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0008865248226950354,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p113_value_kind",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0008865248226950354,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "nq_value_shape",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0008865248226950354,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "jd_raise_typed",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0008865248226950354,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p113p_transfer",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0008865248226950354,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "nq_info",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0008865248226950354,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "nq_uses",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0008865248226950354,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p113k_args",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0008865248226950354,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p123p_get",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0008865248226950354,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p111v_contract",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0008865248226950354,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p113l_version",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0008865248226950354,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p113e_values",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0008865248226950354,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "ni_template",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0008865248226950354,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "noa_literal",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0008865248226950354,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p131rv_value",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0008865248226950354,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "noa_apply_step",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0008865248226950354,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "nd_scalar_known",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0008865248226950354,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p112w_ready",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.0008865248226950354,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        }
+      ]
+    },
+    "indexHash": {
+      "samples": 234,
+      "fractionOfAllSamples": 0.019743503206209923,
+      "owners": [
+        {
+          "owner": "p111v_get",
+          "samples": 92,
+          "fractionOfSelectedLeafSamples": 0.39316239316239315,
+          "fractionOfAllSamples": 0.0077624029699628755
+        },
+        {
+          "owner": "p111v_put",
+          "samples": 36,
+          "fractionOfSelectedLeafSamples": 0.15384615384615385,
+          "fractionOfAllSamples": 0.0030374620317246033
+        },
+        {
+          "owner": "p113k_put",
+          "samples": 18,
+          "fractionOfSelectedLeafSamples": 0.07692307692307693,
+          "fractionOfAllSamples": 0.0015187310158623017
+        },
+        {
+          "owner": "p111v_value",
+          "samples": 13,
+          "fractionOfSelectedLeafSamples": 0.05555555555555555,
+          "fractionOfAllSamples": 0.0010968612892338846
+        },
+        {
+          "owner": "p113d_deps",
+          "samples": 12,
+          "fractionOfSelectedLeafSamples": 0.05128205128205128,
+          "fractionOfAllSamples": 0.0010124873439082012
+        },
+        {
+          "owner": "lookup",
+          "samples": 11,
+          "fractionOfSelectedLeafSamples": 0.04700854700854701,
+          "fractionOfAllSamples": 0.0009281133985825177
+        },
+        {
+          "owner": "p113l_version",
+          "samples": 10,
+          "fractionOfSelectedLeafSamples": 0.042735042735042736,
+          "fractionOfAllSamples": 0.0008437394532568343
+        },
+        {
+          "owner": "p113k_get",
+          "samples": 9,
+          "fractionOfSelectedLeafSamples": 0.038461538461538464,
+          "fractionOfAllSamples": 0.0007593655079311508
+        },
+        {
+          "owner": "p113k_replace",
+          "samples": 5,
+          "fractionOfSelectedLeafSamples": 0.021367521367521368,
+          "fractionOfAllSamples": 0.00042186972662841717
+        },
+        {
+          "owner": "p123p_get",
+          "samples": 5,
+          "fractionOfSelectedLeafSamples": 0.021367521367521368,
+          "fractionOfAllSamples": 0.00042186972662841717
+        },
+        {
+          "owner": "index_hash",
+          "samples": 4,
+          "fractionOfSelectedLeafSamples": 0.017094017094017096,
+          "fractionOfAllSamples": 0.0003374957813027337
+        },
+        {
+          "owner": "p113l_relation",
+          "samples": 4,
+          "fractionOfSelectedLeafSamples": 0.017094017094017096,
+          "fractionOfAllSamples": 0.0003374957813027337
+        },
+        {
+          "owner": "p112w_ready",
+          "samples": 4,
+          "fractionOfSelectedLeafSamples": 0.017094017094017096,
+          "fractionOfAllSamples": 0.0003374957813027337
+        },
+        {
+          "owner": "p111v_memory",
+          "samples": 3,
+          "fractionOfSelectedLeafSamples": 0.01282051282051282,
+          "fractionOfAllSamples": 0.0002531218359770503
+        },
+        {
+          "owner": "p114t_known_fid",
+          "samples": 3,
+          "fractionOfSelectedLeafSamples": 0.01282051282051282,
+          "fractionOfAllSamples": 0.0002531218359770503
+        },
+        {
+          "owner": "base_prefix_world_names_disjoint",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.004273504273504274,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "ns_body",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.004273504273504274,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p113k_args",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.004273504273504274,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p111v_contract",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.004273504273504274,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        },
+        {
+          "owner": "p111q_insert",
+          "samples": 1,
+          "fractionOfSelectedLeafSamples": 0.004273504273504274,
+          "fractionOfAllSamples": 8.437394532568343e-05
+        }
+      ]
+    }
+  },
+  "timeline": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/final-full-context-analysis01/timeline.json",
+    "bytes": 67139,
+    "sha256": "633e2e961f859f18e4270a32fc9679f670c744c4d9a1b2727b14de681cc0c70b"
+  },
+  "scope": "Single context-only sampled full-source final-N2 diagnostic relink, exact complete-QBE output. Current active owner of selected physical leaves; not source-call ancestry, allocation-creation origin, or independent clean timing.",
+  "limitations": [
+    "Private synchronous calls retain the outer dispatcher context; leaf ownership and active ownership can differ.",
+    "Counter hooks are disabled. No allocation volume or term-creation site is inferred from these samples.",
+    "Sample-only capture has no paired clean baseline or overhead estimate; earlier physical capture remains separate.",
+    "One32ms period may alias repeated computation. Unknown samples stay in all denominators.",
+    "Timeline coordinates are approximate sampled-thread CPU time, not wall timestamps or verified phase boundaries."
+  ],
+  "fullAnalysis": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/final-full-context-analysis01/report.json",
+    "bytes": 1691048,
+    "sha256": "9356ce1db8f0d6e29e9c7b1b0585a550f71ff929c5b888048c2e3abe7b32949b"
+  },
+  "sourceFindings": [
+    {
+      "name": "nc_ctor_owned",
+      "line": 31097,
+      "observation": "Whole-book ADT scan and nested constructor lookup; unannotated book parameter; returns Bool."
+    },
+    {
+      "name": "f_find",
+      "line": 12879,
+      "observation": "Linear definition-name search with first-match and Missing result semantics."
+    },
+    {
+      "name": "lookup",
+      "line": 5954,
+      "observation": "Uses index only for BookCache-headed book; otherwise linear name search."
+    },
+    {
+      "name": "has_name",
+      "line": 5999,
+      "observation": "Linear membership with p88_string_eq at each candidate."
+    },
+    {
+      "name": "nb_contains",
+      "line": 31450,
+      "observation": "Linear string membership with recursive remainder."
+    }
+  ]
+}

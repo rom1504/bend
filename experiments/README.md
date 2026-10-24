@@ -4,7 +4,7 @@ Latest qualified experiment: [Phase131 laws and borrowed computations](../implem
 Native requests take20.92% less time than Phase130, reaching1.443× upstream;
 fixed-source N1/N2 shows10.64% less time from improved generated compiler code.
 Broad generated runtime is approximately preserved. Native reproduction and
-ordinary45 pass;55 source-connected laws are independently accepted within their
+ordinary45 pass;57 source-connected laws are independently accepted within their
 stated scope. Installed selections remain unchanged. Use the explicit final
 candidate capsule and compact prepared-Base policy linked from the report.
 

@@ -1,0 +1,61 @@
+{
+  "complete": true,
+  "targetsRun": false,
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/regions/selector-ceiling/cases.json",
+      "bytes": 1738,
+      "sha256": "fbc974ec275943e76f7abb3a7521a7563ba73ded7e78864b4f23614d1a52b637"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/regions/selector-ceiling/oracle.json",
+      "bytes": 4677,
+      "sha256": "5a4c7b334abfd10b7fdd86ad606888dbc1474dbb7c1eb3fdee020993f570c10d"
+    }
+  ],
+  "cases": [
+    {
+      "name": "selector-original-short",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/regions/selector-ceiling/original-short.bend",
+        "bytes": 9150,
+        "sha256": "7d4db4de074890f545c4d61496bf88bfdbd3eee3e72debf1db40c8d69e798712"
+      },
+      "expected": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/regions/selector-ceiling/expected.json",
+        "bytes": 174,
+        "sha256": "13e07eee520713dd90ee2514c7075643ddfadccd1bd25ae04fef8730d3d99c4f"
+      },
+      "expectedStdoutEvidence": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/regions/selector-ceiling/expected.json",
+        "bytes": 174,
+        "sha256": "13e07eee520713dd90ee2514c7075643ddfadccd1bd25ae04fef8730d3d99c4f"
+      }
+    },
+    {
+      "name": "selector-fused-short",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/regions/selector-ceiling/fused-short.bend",
+        "bytes": 9154,
+        "sha256": "14889e0d5ec41e62a2de473f819639cd23a92e0ca16540657bbac4e2158adfe4"
+      },
+      "expected": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/regions/selector-ceiling/expected.json",
+        "bytes": 174,
+        "sha256": "13e07eee520713dd90ee2514c7075643ddfadccd1bd25ae04fef8730d3d99c4f"
+      },
+      "expectedStdoutEvidence": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/regions/selector-ceiling/expected.json",
+        "bytes": 174,
+        "sha256": "13e07eee520713dd90ee2514c7075643ddfadccd1bd25ae04fef8730d3d99c4f"
+      }
+    }
+  ],
+  "ordinaryUnchanged": true,
+  "timed": {
+    "entries": 1,
+    "eachRepeat": 1,
+    "stdoutPrefix": "1\nREPETITIONS\n"
+  },
+  "scope": "Single-entry bucket separates common leaf cost from64-entry forced-collision stress. Same sourcealgorithm andprovidedhash; hashing time excluded inboth."
+}

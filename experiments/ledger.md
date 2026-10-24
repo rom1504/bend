@@ -5619,7 +5619,7 @@ positive log deficit0.767276,40/44 above1.1× and21 above2×. BST32 follow-up is
 
 Reusable body-use summaries, one-path index operations, static constructors,
 selector admission and complete borrowed helper/product regions compose in the
-selected source. Fifty-five distinct source-connected laws are independently
+selected source. Fifty-seven distinct source-connected laws are independently
 accepted, with two semantic mutation controls. The initially proved closure
 summary was2.564× slower; the proved first-order rewrite recovers near-fast cost.
 Full differing-key summary, KTerm and native backend correctness remain open.
@@ -5629,3 +5629,19 @@ experiment removes110 machine instructions without useful runtime gain; late
 preparation duplication is excluded. Generic factory evaluation and owning
 string-identity ceilings are independent experiments, not selected compiler code.
 Fresh final-N2 profiles guide follow-up. No recursive research acceleration claim.
+
+Final full-source physical/context captures pass with11,254/11,852 samples and
+exact107MB QBE. Reclamation occupies29.4% of physical samples; borrowed equality
+10.0%. Active `nc_ctor_owned`7.48% exposes repeated book/constructor queries.
+The late, separately experimental composition of proved scalar bucket fusion and
+wider layouts cuts query time50.65%/61.95% in one-entry/collision-stress cases;
+all12 observations pass, but no whole-compiler gain is inferred. Final source
+laws total57; later proofs do not alter the frozen qualification receipt.
+
+All372 guarded jobs are accounted for:109.13 summed minutes,89.01 occupied union,
+71.72 CPU3-lane minutes;35.92 full-source compilation and12.45 full profiling.
+The final target snapshot spans175.68 minutes; reporting/sealing/push completes
+the requested three-hour campaign. Source/diagnostic/cost capsules and rejected
+attempts are retained. The next native-first/compact/incremental direction is
+saved in [Phase132](../design/phase132/incremental-native-development.md), not
+silently implemented as a new cache or backend.

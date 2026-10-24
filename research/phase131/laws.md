@@ -1,6 +1,6 @@
 # Phase131: source-connected usage-summary laws
 
-Fifty-five distinct Bend laws were accepted by the retained independent BendTT
+Fifty-seven distinct Bend laws were accepted by the retained independent BendTT
 kernel. They cover the actual saturating-count helpers, the actual missing-side
 summary transform, and a source-connected safe replacement for merge and lookup
 on an explicitly restricted domain. Two type-correct wrong algorithms were
@@ -284,6 +284,33 @@ summary results through a complete analyzer proof will require a proved bridge
 from the output range predicate back to that witness, or a version of merge
 correctness that directly constructs an encoded bounded result. That is a
 precise remaining proof obligation, not a property supplied by source checking.
+
+## Exact bucket producer/consumer fusion
+
+Two further laws prove the concrete experimental scalar consumer:
+`dx(index_bucket(entries,key)) = p131sc_bucket(entries,key)` for every finite
+`List<KDef>` and every String key. This includes first-match shadowing, empty
+lists, Unicode keys, `KIndexLeaf`, and an empty key matching `KIndexNode` whose
+`dx` is its mask. No canonical index or ordinary-KDef-only assumption is made.
+
+The proof uses the actual KDef/KTerm declarations, `dn`, `dx`, `missing`, String
+comparison and conditional helper. It needs only a Boolean-dispatch projection
+lemma and list induction; the matching predicate is unchanged, so no new
+assumption about string equality is required. Its two-law closure passed
+independent BendTT in **0.51s**, with zero opaque definitions.
+
+`bucket-source-bridge.py` authenticated the frozen selector-ceiling
+`original-v03.bend` against the actual `combined-codegen-source01` producer and
+the proof extraction. Bodies are unchanged; leading unsafe annotations are
+removed for checking, and the producer's existing forward-declared type is
+written explicitly in its definition header. The fused candidate's required
+`+ds` quantity matches the frozen v03 source. Exact evidence is in
+[bucket-evidence.json](../../selfhost/tools/performance/phase131/laws/bucket-evidence.json).
+
+This justifies source-level fusion of the list bucket's result with its scalar
+consumer. It is not a theorem about full `index_find` tree recursion, native
+ownership, stack behavior, generated instructions or performance. The original
+and fused native paths still need their independent runtime/output gates.
 
 ## Highest-value next steps
 

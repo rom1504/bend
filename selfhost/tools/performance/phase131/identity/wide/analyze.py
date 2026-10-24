@@ -17,7 +17,7 @@ out=a.out.resolve();assert not out.exists() and out.is_relative_to(ROOT/'selfhos
 r=json.loads(a.report.read_text());assert r['complete'] and r['passed'] and not r['changedInputs']
 assert r['modes']==['clean'] and r['cleanRounds']==5 and len(r['rows'])==20
 assert all(x['correct'] and not x['diagnosticRuntime'] for x in r['rows'])
-result=dict(complete=True,targetsRun=False,inputs=[pin(__file__),pin(a.report)],cases=[],code=[],
+result=dict(complete=True,targetsRun=False,inputs=[pin(Path(__file__)),pin(a.report)],cases=[],code=[],
     scope='Five paired clean observations of two extracted whole scalar queries, not whole compiler speed. '
           'Original and candidate retain identical source inputs/runtime and independent ordinary output oracles. '
           'Wider source is checked but not native-self-host-qualified or installed.')

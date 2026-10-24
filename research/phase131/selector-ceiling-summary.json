@@ -1,0 +1,477 @@
+{
+  "schema": "phase131-selector-ceiling-summary-v1",
+  "complete": true,
+  "targetsRun": false,
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/regions/selector-ceiling/analyze.py",
+      "bytes": 4229,
+      "sha256": "027e4bd47d0d3022a929647320203dd1442bc513c60f99887a22b1b94a08a26d"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/selector-ceiling-timed02/report.json",
+      "bytes": 31556,
+      "sha256": "252b276af9781e4d0c25ff7fbcf735b1d9166a2d26d33456468d5a0167efd925"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/selector-ceiling-timing02/manifest.json",
+      "bytes": 14274,
+      "sha256": "c642e638cef47577e6cca706aa504f125edb90221b7425d11156ee2440b397f4"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/regions/selector-ceiling/oracle.json",
+      "bytes": 4677,
+      "sha256": "5a4c7b334abfd10b7fdd86ad606888dbc1474dbb7c1eb3fdee020993f570c10d"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/regions/selector-ceiling/short-oracle.json",
+      "bytes": 2576,
+      "sha256": "e7059e4ed83d418d681ae5e8803a3f1bde11a87710898693324c240687f0136f"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/regions/selector-ceiling/qualification.json",
+      "bytes": 3596,
+      "sha256": "922ac6b630eed5f87c45ce01abce2629a57f3bcef33566e1c256d893611a2ec8"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/regions/selector-ceiling/static.json",
+      "bytes": 7375,
+      "sha256": "b8ca02abc469c846d8709f35f4d0caecdccff8fc02cbcf43060e93575694f585"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/laws/bucket-evidence.json",
+      "bytes": 4988,
+      "sha256": "8699d551e535bb30b46b247b1bd541f666d78b62678024d13c2030d5022120e7"
+    }
+  ],
+  "cpuAffinity": [
+    3
+  ],
+  "rounds": 3,
+  "groups": [
+    {
+      "workload": "selector-bucket1",
+      "repetitions": 183921,
+      "metrics": {
+        "original": {
+          "wallMilliseconds": {
+            "median": 113.09537407942116,
+            "minimum": 113.07627893984318,
+            "maximum": 117.41298390552402,
+            "samples": [
+              113.09537407942116,
+              117.41298390552402,
+              113.07627893984318
+            ]
+          },
+          "cpuMilliseconds": {
+            "median": 112.19,
+            "minimum": 111.454,
+            "maximum": 116.453,
+            "samples": [
+              111.454,
+              116.453,
+              112.19
+            ]
+          },
+          "internalMilliseconds": {
+            "median": 111,
+            "minimum": 110,
+            "maximum": 115,
+            "samples": [
+              110,
+              115,
+              111
+            ]
+          },
+          "peakRssKiB": {
+            "median": 9800,
+            "minimum": 9576,
+            "maximum": 9816,
+            "samples": [
+              9576,
+              9800,
+              9816
+            ]
+          }
+        },
+        "fused": {
+          "wallMilliseconds": {
+            "median": 106.0143280774355,
+            "minimum": 105.7552620768547,
+            "maximum": 107.38443885929883,
+            "samples": [
+              106.0143280774355,
+              107.38443885929883,
+              105.7552620768547
+            ]
+          },
+          "cpuMilliseconds": {
+            "median": 105.12799999999999,
+            "minimum": 104.859,
+            "maximum": 106.47099999999999,
+            "samples": [
+              105.12799999999999,
+              106.47099999999999,
+              104.859
+            ]
+          },
+          "internalMilliseconds": {
+            "median": 104,
+            "minimum": 104,
+            "maximum": 105,
+            "samples": [
+              104,
+              105,
+              104
+            ]
+          },
+          "peakRssKiB": {
+            "median": 9804,
+            "minimum": 9692,
+            "maximum": 9836,
+            "samples": [
+              9692,
+              9804,
+              9836
+            ]
+          }
+        }
+      },
+      "wallMedianRatio": 0.9373887211601333,
+      "cpuMedianRatio": 0.9370532132988679,
+      "paired": [
+        {
+          "round": 1,
+          "wallRatio": 0.9373887211601333,
+          "internalRatio": 0.9454545454545454
+        },
+        {
+          "round": 2,
+          "wallRatio": 0.9145874271086184,
+          "internalRatio": 0.9130434782608695
+        },
+        {
+          "round": 3,
+          "wallRatio": 0.9352559446452667,
+          "internalRatio": 0.9369369369369369
+        }
+      ],
+      "anyInternalUnder100ms": false,
+      "pilotTarget500msAchieved": false
+    },
+    {
+      "workload": "selector-bucket64",
+      "repetitions": 17050,
+      "metrics": {
+        "original": {
+          "wallMilliseconds": {
+            "median": 471.03249304927886,
+            "minimum": 469.916322035715,
+            "maximum": 471.47985408082604,
+            "samples": [
+              471.03249304927886,
+              471.47985408082604,
+              469.916322035715
+            ]
+          },
+          "cpuMilliseconds": {
+            "median": 470.121,
+            "minimum": 469.03799999999995,
+            "maximum": 470.57099999999997,
+            "samples": [
+              470.121,
+              470.57099999999997,
+              469.03799999999995
+            ]
+          },
+          "internalMilliseconds": {
+            "median": 469,
+            "minimum": 468,
+            "maximum": 470,
+            "samples": [
+              469,
+              470,
+              468
+            ]
+          },
+          "peakRssKiB": {
+            "median": 9788,
+            "minimum": 9744,
+            "maximum": 9868,
+            "samples": [
+              9744,
+              9788,
+              9868
+            ]
+          }
+        },
+        "fused": {
+          "wallMilliseconds": {
+            "median": 468.5949580743909,
+            "minimum": 467.7169001661241,
+            "maximum": 470.0172320008278,
+            "samples": [
+              468.5949580743909,
+              470.0172320008278,
+              467.7169001661241
+            ]
+          },
+          "cpuMilliseconds": {
+            "median": 467.707,
+            "minimum": 466.817,
+            "maximum": 469.12299999999993,
+            "samples": [
+              467.707,
+              469.12299999999993,
+              466.817
+            ]
+          },
+          "internalMilliseconds": {
+            "median": 467,
+            "minimum": 465,
+            "maximum": 468,
+            "samples": [
+              467,
+              468,
+              465
+            ]
+          },
+          "peakRssKiB": {
+            "median": 9768,
+            "minimum": 9712,
+            "maximum": 9852,
+            "samples": [
+              9712,
+              9768,
+              9852
+            ]
+          }
+        }
+      },
+      "wallMedianRatio": 0.9948251235087662,
+      "cpuMedianRatio": 0.9948651517375314,
+      "paired": [
+        {
+          "round": 1,
+          "wallRatio": 0.9948251235087662,
+          "internalRatio": 0.9957356076759062
+        },
+        {
+          "round": 2,
+          "wallRatio": 0.996897805776135,
+          "internalRatio": 0.9957446808510638
+        },
+        {
+          "round": 3,
+          "wallRatio": 0.9953195457011095,
+          "internalRatio": 0.9935897435897436
+        }
+      ],
+      "anyInternalUnder100ms": false,
+      "pilotTarget500msAchieved": false
+    }
+  ],
+  "rows": [
+    {
+      "workload": "selector-bucket1",
+      "variant": "original",
+      "round": 1,
+      "repetitions": 183921,
+      "wallMilliseconds": 113.09537407942116,
+      "cpuMilliseconds": 111.454,
+      "internalMilliseconds": 110,
+      "peakRssKiB": 9576,
+      "correct": true,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/selector-ceiling-timed02/000-clean-selector-bucket1-original/stdout",
+        "bytes": 13,
+        "sha256": "9c0e8eb709c1ef8a1f90f0564cf73ff943bec7a5309a59fe66922e353c9949e7"
+      }
+    },
+    {
+      "workload": "selector-bucket1",
+      "variant": "fused",
+      "round": 1,
+      "repetitions": 183921,
+      "wallMilliseconds": 106.0143280774355,
+      "cpuMilliseconds": 105.12799999999999,
+      "internalMilliseconds": 104,
+      "peakRssKiB": 9692,
+      "correct": true,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/selector-ceiling-timed02/001-clean-selector-bucket1-fused/stdout",
+        "bytes": 13,
+        "sha256": "157ad2bbafd6ddca37cd9ad8f1f3e486008ec8146e269ffba7554362fbe69cbe"
+      }
+    },
+    {
+      "workload": "selector-bucket64",
+      "variant": "fused",
+      "round": 1,
+      "repetitions": 17050,
+      "wallMilliseconds": 468.5949580743909,
+      "cpuMilliseconds": 467.707,
+      "internalMilliseconds": 467,
+      "peakRssKiB": 9712,
+      "correct": true,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/selector-ceiling-timed02/002-clean-selector-bucket64-fused/stdout",
+        "bytes": 12,
+        "sha256": "20d9ff1a9d7dcdfecdc87f7deb02201f4ddbc612e07a50ea302f6b207284d40b"
+      }
+    },
+    {
+      "workload": "selector-bucket64",
+      "variant": "original",
+      "round": 1,
+      "repetitions": 17050,
+      "wallMilliseconds": 471.03249304927886,
+      "cpuMilliseconds": 470.121,
+      "internalMilliseconds": 469,
+      "peakRssKiB": 9744,
+      "correct": true,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/selector-ceiling-timed02/003-clean-selector-bucket64-original/stdout",
+        "bytes": 12,
+        "sha256": "116c5819088727ff7799362fab0b30432291efd09992d40d1b0051b443a02006"
+      }
+    },
+    {
+      "workload": "selector-bucket64",
+      "variant": "fused",
+      "round": 2,
+      "repetitions": 17050,
+      "wallMilliseconds": 470.0172320008278,
+      "cpuMilliseconds": 469.12299999999993,
+      "internalMilliseconds": 468,
+      "peakRssKiB": 9768,
+      "correct": true,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/selector-ceiling-timed02/004-clean-selector-bucket64-fused/stdout",
+        "bytes": 12,
+        "sha256": "4735ae88bd935d20c5fc1c1959bd02f9ed978a29acb117fc637777537f027187"
+      }
+    },
+    {
+      "workload": "selector-bucket64",
+      "variant": "original",
+      "round": 2,
+      "repetitions": 17050,
+      "wallMilliseconds": 471.47985408082604,
+      "cpuMilliseconds": 470.57099999999997,
+      "internalMilliseconds": 470,
+      "peakRssKiB": 9788,
+      "correct": true,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/selector-ceiling-timed02/005-clean-selector-bucket64-original/stdout",
+        "bytes": 12,
+        "sha256": "46ff27a73ee2c35299bcc1797e4e60d0b4bcd5c4695347dbf6cda6f2512fc324"
+      }
+    },
+    {
+      "workload": "selector-bucket1",
+      "variant": "original",
+      "round": 2,
+      "repetitions": 183921,
+      "wallMilliseconds": 117.41298390552402,
+      "cpuMilliseconds": 116.453,
+      "internalMilliseconds": 115,
+      "peakRssKiB": 9800,
+      "correct": true,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/selector-ceiling-timed02/006-clean-selector-bucket1-original/stdout",
+        "bytes": 13,
+        "sha256": "7243a6d5c22207c5a50910a8c1086b9e0f1dc8dbfd667f386689c29080bd9831"
+      }
+    },
+    {
+      "workload": "selector-bucket1",
+      "variant": "fused",
+      "round": 2,
+      "repetitions": 183921,
+      "wallMilliseconds": 107.38443885929883,
+      "cpuMilliseconds": 106.47099999999999,
+      "internalMilliseconds": 105,
+      "peakRssKiB": 9804,
+      "correct": true,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/selector-ceiling-timed02/007-clean-selector-bucket1-fused/stdout",
+        "bytes": 13,
+        "sha256": "3ad4b3b5279e2c7dfebb393e3117bb662764e14a8d4b016d33923dd59a496684"
+      }
+    },
+    {
+      "workload": "selector-bucket1",
+      "variant": "original",
+      "round": 3,
+      "repetitions": 183921,
+      "wallMilliseconds": 113.07627893984318,
+      "cpuMilliseconds": 112.19,
+      "internalMilliseconds": 111,
+      "peakRssKiB": 9816,
+      "correct": true,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/selector-ceiling-timed02/008-clean-selector-bucket1-original/stdout",
+        "bytes": 13,
+        "sha256": "caa6b75236e53a69a2261f6675ea3eee1eae78d98111c94411f4a3d0d42a392c"
+      }
+    },
+    {
+      "workload": "selector-bucket1",
+      "variant": "fused",
+      "round": 3,
+      "repetitions": 183921,
+      "wallMilliseconds": 105.7552620768547,
+      "cpuMilliseconds": 104.859,
+      "internalMilliseconds": 104,
+      "peakRssKiB": 9836,
+      "correct": true,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/selector-ceiling-timed02/009-clean-selector-bucket1-fused/stdout",
+        "bytes": 13,
+        "sha256": "157ad2bbafd6ddca37cd9ad8f1f3e486008ec8146e269ffba7554362fbe69cbe"
+      }
+    },
+    {
+      "workload": "selector-bucket64",
+      "variant": "fused",
+      "round": 3,
+      "repetitions": 17050,
+      "wallMilliseconds": 467.7169001661241,
+      "cpuMilliseconds": 466.817,
+      "internalMilliseconds": 465,
+      "peakRssKiB": 9852,
+      "correct": true,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/selector-ceiling-timed02/010-clean-selector-bucket64-fused/stdout",
+        "bytes": 12,
+        "sha256": "5693fc74816c5a184ae599de33dd4e552c430ec4e62e1c62ea2432ae32c80afd"
+      }
+    },
+    {
+      "workload": "selector-bucket64",
+      "variant": "original",
+      "round": 3,
+      "repetitions": 17050,
+      "wallMilliseconds": 469.916322035715,
+      "cpuMilliseconds": 469.03799999999995,
+      "internalMilliseconds": 468,
+      "peakRssKiB": 9868,
+      "correct": true,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/selector-ceiling-timed02/011-clean-selector-bucket64-original/stdout",
+        "bytes": 12,
+        "sha256": "4735ae88bd935d20c5fc1c1959bd02f9ed978a29acb117fc637777537f027187"
+      }
+    }
+  ],
+  "interpretation": {
+    "singleEntry": "Small consistent improvement in this source kernel; all internal loops 104 ms or longer, near minimum useful timing window. Not full compiler or population estimate.",
+    "collision64": "Approximately 0.52% median wall improvement; too small for a meaningful broad performance claim. Traversal/ownership still dominate.",
+    "nativeWork": "Wrapper 111\u21927instructions while scalar bucket 272\u2192376 and selector 595\u2192594: projection mostly moves. No borrowed descendant or broad allocation elimination established.",
+    "calibration": "Pilot included process/setup cost, so linear scaling undershot 500 ms target, especially single-entry. Report actual times; no repeat requested solely to increase apparent precision.",
+    "correctness": "All 4 binaries pass 34-line independent ordinary outputs. Exact bucket fusion law proved over all List<KDef>/String; complete tree selector proof not claimed.",
+    "selection": "Experimental source ceiling only; production compiler and qualification unchanged."
+  }
+}

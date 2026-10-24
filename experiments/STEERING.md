@@ -29,7 +29,7 @@ Selected improvements: reused min/max use facts with proved first-order algorith
 one-path index insertion and closed reads/catalogues, immutable constructor
 exposure, general selector admission, borrowed shallow records and scalar product
 results composed through actual emitted helper workers. Source+824 physical/
-636 code lines. Fifty-five distinct laws are independently accepted, with exact
+636 code lines. Fifty-seven distinct laws are independently accepted, with exact
 source bridges and mutation controls; full KTerm/native correctness is not proved.
 
 Retain negative evidence: safe closure summary2.564× slower before recovery;
@@ -41,10 +41,20 @@ as a data prototype; it could simplify419 literal expansions but needs an
 aggregate work/result budget. Neither prototype is in the qualified source.
 
 Use refreshed final-N2 profiles to choose the next complete query boundary.
+The full self-build context now identifies `nc_ctor_owned`7.48%, `lookup`5.43%
+and `f_find`5.20%; a checked-book ownership summary is a concrete next hypothesis.
+Proved scalar bucket fusion plus wider borrowed layouts removes50.65%/61.95%
+of time on one-entry/collision-stress extractions, but remains unqualified and
+is not a whole-compiler gain. Preserve that composition for follow-up.
 Prefer one general, source-justified work-elimination rule over a new backend or
 universal IR. Same-source executable gains demonstrate self-optimization, not
 recursive acceleration of research. Full source emissions take~382–491 guarded
 seconds and~2.9GB RSS; cheap proxies precede another complete qualification.
+
+The user's subsequent [native-first and incremental-development proposal](../design/phase132/incremental-native-development.md)
+is saved for the next investigation: census actual QBE, test compact internal
+symbols and stable artifacts, then one correctly invalidated reuse experiment.
+No incremental compiler or backend migration was implemented in Phase131.
 
 # Previous qualified experiment: Phase130 compact prepared Base
 

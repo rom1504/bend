@@ -1,0 +1,182 @@
+{
+  "complete": true,
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/identity/wide/selector-summary.py",
+      "bytes": 3154,
+      "sha256": "4a93e45b1ae57ad45737be8256f58657d5903a23f7a912c39d0e57703332389a"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/wide-selector-timing01/timing/report.json",
+      "bytes": 50946,
+      "sha256": "b7ade62fde465a7ebfa81db27a742b15c5276d3aaeea434652c44a21eb48f263"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/p131-selector-ceiling03/selector-fused.ssa",
+      "bytes": 949672,
+      "sha256": "60a5a1f4642ef8e417335f270672307535bdb4c8eaf3bc49ead1f66a6be0d725"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/p131-wide-selector-emit01/selector-fused.ssa",
+      "bytes": 991504,
+      "sha256": "6ffdf1ec9efb54eb5f10f1271635d3642f4cb441d676d271038f20c130b7efa7"
+    }
+  ],
+  "cases": [
+    {
+      "name": "selector-bucket1",
+      "medianSeconds": {
+        "baseline": 0.10708877886645496,
+        "candidate": 0.05284378002397716
+      },
+      "rawSeconds": {
+        "baseline": [
+          0.10608590696938336,
+          0.10708877886645496,
+          0.10779156186617911
+        ],
+        "candidate": [
+          0.05233139009214938,
+          0.05284378002397716,
+          0.053705264115706086
+        ]
+      },
+      "internalMilliseconds": {
+        "baseline": [
+          104,
+          105,
+          105
+        ],
+        "candidate": [
+          50,
+          51,
+          52
+        ]
+      },
+      "pairedRatios": [
+        0.493292573793542,
+        0.49345767673638324,
+        0.4982325442355127
+      ],
+      "candidateOverBaseline": 0.49345767673638324,
+      "percentTimeReduction": 50.65423232636168
+    },
+    {
+      "name": "selector-bucket64",
+      "medianSeconds": {
+        "baseline": 0.46581111708655953,
+        "candidate": 0.17724677501246333
+      },
+      "rawSeconds": {
+        "baseline": [
+          0.4660730578470975,
+          0.46581111708655953,
+          0.46579321497119963
+        ],
+        "candidate": [
+          0.17724677501246333,
+          0.1771076200529933,
+          0.17762951599434018
+        ]
+      },
+      "internalMilliseconds": {
+        "baseline": [
+          464,
+          464,
+          464
+        ],
+        "candidate": [
+          175,
+          175,
+          176
+        ]
+      },
+      "pairedRatios": [
+        0.3802982644635337,
+        0.3802133816829498,
+        0.38134844022003017
+      ],
+      "candidateOverBaseline": 0.38051211856226774,
+      "percentTimeReduction": 61.94878814377323
+    }
+  ],
+  "code": [
+    {
+      "role": "baseline",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/p131-selector-ceiling03/selector-fused.ssa",
+        "bytes": 949672,
+        "sha256": "60a5a1f4642ef8e417335f270672307535bdb4c8eaf3bc49ead1f66a6be0d725"
+      },
+      "functions": [
+        {
+          "name": "$direct.p131sc_bucket",
+          "lines": 290,
+          "sha256": "25535bd3805ed79e36f2d90c5de1a98b86b5ef2156c71cc60fd356ebd2555abc",
+          "takes": 2,
+          "sinks": 32,
+          "borrowReads": 0
+        }
+      ],
+      "publicBucketCallers": [
+        {
+          "name": "$direct.p131sc_find",
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_49_51_49_115_99_95_102_105_110_100_",
+          "sites": 3
+        },
+        {
+          "name": "$direct.p131sc_bucket",
+          "symbol": "p111_FID_36_100_105_114_101_99_116_46_112_49_51_49_115_99_95_98_117_99_107_101_116_",
+          "sites": 1
+        }
+      ]
+    },
+    {
+      "role": "candidate",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/p131-wide-selector-emit01/selector-fused.ssa",
+        "bytes": 991504,
+        "sha256": "6ffdf1ec9efb54eb5f10f1271635d3642f4cb441d676d271038f20c130b7efa7"
+      },
+      "functions": [
+        {
+          "name": "$p128borrow.owned.p131sc_bucket",
+          "lines": 290,
+          "sha256": "9000c7be131ce602d9bc889cdccdd515f4da9b71cd5f8692bce9ce9be88dd72f",
+          "takes": 2,
+          "sinks": 32,
+          "borrowReads": 0
+        },
+        {
+          "name": "$p118borrow.read.p131sc_bucket",
+          "lines": 816,
+          "sha256": "4de185e3668901d47505fd2fbc6c06e0eb586986889e02950c39e246e91b96d4",
+          "takes": 0,
+          "sinks": 0,
+          "borrowReads": 15
+        },
+        {
+          "name": "$direct.p131sc_bucket",
+          "lines": 17,
+          "sha256": "420476b81f4591214184338b36616e2773b6329d798426ef747fcb13c80a2a22",
+          "takes": 0,
+          "sinks": 2,
+          "borrowReads": 0
+        }
+      ],
+      "publicBucketCallers": [
+        {
+          "name": "$direct.p131sc_find",
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_49_51_49_115_99_95_102_105_110_100_",
+          "sites": 3
+        },
+        {
+          "name": "$direct.p131sc_bucket",
+          "symbol": "p111_FID_36_100_105_114_101_99_116_46_112_49_51_49_115_99_95_98_117_99_107_101_116_",
+          "sites": 1
+        }
+      ]
+    }
+  ],
+  "scope": "Same exact fused selector source under frozen-final vs wider checked producer; one-entry leaf and forced64collision stress kept separate. No whole compiler, upstream or new native qualification claim."
+}

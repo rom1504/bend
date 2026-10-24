@@ -1,7 +1,7 @@
 # Phase131 usage-summary laws
 
 See [the report](../../../../../research/phase131/laws.md) and
-[evidence.json](evidence.json). Fifty-five distinct laws were independently checked. The first twenty
+[evidence.json](evidence.json). Fifty-seven distinct laws were independently checked. The first twenty
 are recorded in evidence.json; the eight later first-order equivalence and
 transport laws are recorded in [first-order-evidence.json](first-order-evidence.json).
 The admitted merge domain is two maps with the same key sequence. Full generic
@@ -129,3 +129,14 @@ python3 -B selfhost/tools/performance/phase131/laws/check.py \
 
 These proofs refer to the unchanged production algorithm bodies. They do not
 modify or replace any frozen native qualification or admission receipt.
+
+## Exact bucket scalar fusion
+
+`bucket-fusion-laws.bend` proves `dx(index_bucket(xs,key)) = p131sc_bucket(xs,key)`
+for every List<KDef> and key, including empty-key IndexNode matches. It uses
+actual concrete producer/helper bodies. `bucket-evidence.json` records the
+two accepted laws and source bridge. Replay via `check.py` into a fresh output.
+
+`bucket-source-bridge.py --source <compiler.bend> --candidate <frozen-v03.bend>
+--out <fresh-directory>` authenticates the precise extraction and actual
+candidate. No full-tree or runtime ownership/performance claim is made.

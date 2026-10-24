@@ -1,0 +1,77 @@
+{
+  "complete": true,
+  "targetsRun": false,
+  "originalSource": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/regions/selector-ceiling/original-v02.bend",
+    "bytes": 9349,
+    "sha256": "ea0e2fb35c22db528bd9686c5d951ff8dd5769d6c6e761f5ca4d6eddceca44a0"
+  },
+  "candidateSource": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/regions/selector-ceiling/fused-v02.bend",
+    "bytes": 9353,
+    "sha256": "37d171db3032523b6830a96d969ad4a00cdfa4cdecce477e3f96bee1dd48d1ff"
+  },
+  "output": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/laws/bucket-production.bend",
+    "bytes": 2441,
+    "sha256": "9260b6e85e7d6216daa96e983cfa96c15a2ae2d9f995d66d8b861b6dd0a931eb"
+  },
+  "declarations": [
+    {
+      "name": "KTerm",
+      "original": "type KTerm is Data:\n  KTerm{+tag: String, +name: String, +id: U32, +quant: U32, +kids: List<&2, KTerm>, +removed: List<&2, String>, +originBegin: U32, +originEnd: U32}\n  KLambda{+name: String, +id: U32, +quant: U32, +kids: List<&2,KTerm>, +removed: List<&2,String>, +originBegin: U32, +originEnd: U32, +quantityPresent: Bool}\n  KLiteral{+kind: String, +number: U32, +text: String, +originBegin: U32, +originEnd: U32}",
+      "extracted": "type KTerm is Data:\n  KTerm{+tag: String, +name: String, +id: U32, +quant: U32, +kids: List<&2, KTerm>, +removed: List<&2, String>, +originBegin: U32, +originEnd: U32}\n  KLambda{+name: String, +id: U32, +quant: U32, +kids: List<&2,KTerm>, +removed: List<&2,String>, +originBegin: U32, +originEnd: U32, +quantityPresent: Bool}\n  KLiteral{+kind: String, +number: U32, +text: String, +originBegin: U32, +originEnd: U32}"
+    },
+    {
+      "name": "KDef",
+      "original": "type KDef is Data:\n  KDef{+name: String, +kind: String, +arity: U32, +templates: U32, +typ: KTerm, +value: KTerm, +ctors: List<&2, KDef>, +native: Bool, +unsafe: Bool}\n  KIndexLeaf{+hash: U32, +bucket: List<&2,KDef>}\n  KIndexNode{+hash: U32, +mask: U32, +left: KDef, +right: KDef}",
+      "extracted": "type KDef is Data:\n  KDef{+name: String, +kind: String, +arity: U32, +templates: U32, +typ: KTerm, +value: KTerm, +ctors: List<&2, KDef>, +native: Bool, +unsafe: Bool}\n  KIndexLeaf{+hash: U32, +bucket: List<&2,KDef>}\n  KIndexNode{+hash: U32, +mask: U32, +left: KDef, +right: KDef}"
+    },
+    {
+      "name": "p88_string_eq_go",
+      "original": "def p88_string_eq_go(a: String, b: String, same: Bool) -> Bool:\n  match a b same:\n    case SNil{} SNil{} result: result\n    case SNil{} SCon{h, t} result: False{}\n    case SCon{h, t} SNil{} result: False{}\n    case SCon{h1, t1} SCon{h2, t2} False{}: False{}\n    case SCon{h1, t1} SCon{h2, t2} True{}:\n      p88_string_eq_go(t1, t2, Char.is_eq(h1, h2))",
+      "extracted": "def p88_string_eq_go(a: String, b: String, same: Bool) -> Bool:\n  match a b same:\n    case SNil{} SNil{} result: result\n    case SNil{} SCon{h, t} result: False{}\n    case SCon{h, t} SNil{} result: False{}\n    case SCon{h1, t1} SCon{h2, t2} False{}: False{}\n    case SCon{h1, t1} SCon{h2, t2} True{}:\n      p88_string_eq_go(t1, t2, Char.is_eq(h1, h2))"
+    },
+    {
+      "name": "p98_eq_finish",
+      "original": "def p98_eq_finish(same: Bool, left: String, right: String) -> Bool:\n  same",
+      "extracted": "def p98_eq_finish(same: Bool, left: String, right: String) -> Bool:\n  same"
+    },
+    {
+      "name": "p88_string_eq",
+      "original": "def p88_string_eq(+a: String, +b: String) -> Bool:\n  p98_eq_finish(p88_string_eq_go(a, b, True{}), a, b)",
+      "extracted": "def p88_string_eq(+a: String, +b: String) -> Bool:\n  p98_eq_finish(p88_string_eq_go(a, b, True{}), a, b)"
+    },
+    {
+      "name": "kc",
+      "original": "@unsafe\ndef kc(\n  -A: Type,\n  +b: Bool,\n  yes: Unit -> A,\n  no: Unit -> A,\n) -> A:\n  match b:\n    case True{}:\n      yes(Unit{})\n    case False{}:\n      no(Unit{})",
+      "extracted": "def kc(\n  -A: Type,\n  +b: Bool,\n  yes: Unit -> A,\n  no: Unit -> A,\n) -> A:\n  match b:\n    case True{}:\n      yes(Unit{})\n    case False{}:\n      no(Unit{})"
+    },
+    {
+      "name": "dn",
+      "original": "@unsafe\ndef dn(\n  +d: KDef,\n) -> String:\n  match d:\n    case KDef{name, kind, arity, templates, typ, value, ctors, native, unsafe}:\n      name\n    case KIndexLeaf{hash, bucket}: \"\"\n    case KIndexNode{hash, mask, left, right}: \"\"",
+      "extracted": "def dn(\n  +d: KDef,\n) -> String:\n  match d:\n    case KDef{name, kind, arity, templates, typ, value, ctors, native, unsafe}:\n      name\n    case KIndexLeaf{hash, bucket}: \"\"\n    case KIndexNode{hash, mask, left, right}: \"\""
+    },
+    {
+      "name": "dx",
+      "original": "@unsafe\ndef dx(\n  +d: KDef,\n) -> U32:\n  match d:\n    case KDef{name, kind, arity, templates, typ, value, ctors, native, unsafe}:\n      templates\n    case KIndexLeaf{hash, bucket}: 0\n    case KIndexNode{hash, mask, left, right}: mask",
+      "extracted": "def dx(\n  +d: KDef,\n) -> U32:\n  match d:\n    case KDef{name, kind, arity, templates, typ, value, ctors, native, unsafe}:\n      templates\n    case KIndexLeaf{hash, bucket}: 0\n    case KIndexNode{hash, mask, left, right}: mask"
+    },
+    {
+      "name": "missing",
+      "original": "@unsafe\ndef missing() -> KDef:\n  KDef{\"\", \"Absent\", 0, 0,\n    KTerm{\"Absent\", \"\", 0, 0, Nil{}, Nil{}, 0, 0},\n    KTerm{\"Absent\", \"\", 0, 0, Nil{}, Nil{}, 0, 0},\n    Nil{}, False{}, False{}}",
+      "extracted": "def missing() -> KDef:\n  KDef{\"\", \"Absent\", 0, 0,\n    KTerm{\"Absent\", \"\", 0, 0, Nil{}, Nil{}, 0, 0},\n    KTerm{\"Absent\", \"\", 0, 0, Nil{}, Nil{}, 0, 0},\n    Nil{}, False{}, False{}}"
+    },
+    {
+      "name": "index_bucket",
+      "original": "@unsafe\ndef index_bucket(ds, name):\n  match ds:\n    case Nil{}:\n      missing()\n    case Con{h, rest}:\n      kc(KDef, p88_string_eq(dn(h), name), u => h, u => index_bucket(rest, name))",
+      "extracted": "def index_bucket(+ds: List<&2,KDef>, +name: String) -> KDef:\n  match ds:\n    case Nil{}:\n      missing()\n    case Con{h, rest}:\n      kc(KDef, p88_string_eq(dn(h), name), u => h, u => index_bucket(rest, name))"
+    },
+    {
+      "name": "p131sc_bucket",
+      "original": "@unsafe\ndef p131sc_bucket(ds: List<&2,KDef>, +name: String) -> U32:\n  match ds:\n    case Nil{}: 0\n    case Con{h,rest}:\n      kc(U32,p88_string_eq(dn(h),name),u => dx(h),u => p131sc_bucket(rest,name))",
+      "extracted": "def p131sc_bucket(+ds: List<&2,KDef>, +name: String) -> U32:\n  match ds:\n    case Nil{}: 0\n    case Con{h,rest}:\n      kc(U32,p88_string_eq(dn(h),name),u => dx(h),u => p131sc_bucket(rest,name))"
+    }
+  ],
+  "scope": "Actual bodies unchanged. Leading unsafe annotations removed; index_bucket explicit type/quantities copied from existing forward declaration; candidate ds quantity strengthened to +ds per safe checker. Fused v03 must authenticate that header before claiming exact candidate connection."
+}

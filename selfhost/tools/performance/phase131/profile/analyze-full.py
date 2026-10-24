@@ -26,7 +26,9 @@ def main():
     report_path=a.capture/'report.json';report=read(report_path)
     assert report['complete'] and report['passed'] and len(report['rows'])==1
     row=report['rows'][0];assert row['mode']=='sample' and row['periodUs']==32000 and row['correct']
-    manifest_path=verify(report['manifest']);manifest=read(manifest_path)
+    manifest_path=a.capture/'manifest.json';manifest=read(manifest_path)
+    snapshot=pin(manifest_path)
+    assert any(x.get('sha256')==snapshot['sha256'] and x.get('bytes')==snapshot['bytes'] for x in report['inputs'])
     assert len(manifest['workloads'])==1 and manifest['workloads'][0]['name']=='compiler-self-source'
     summary=summarize_reports([report_path]);view=summary['workloads']['compiler-self-source']['phase131-final-n2']
     assert view['clean']['wallSeconds']['count']==0 and not view['profile']['estimateAvailable']

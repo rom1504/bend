@@ -1,0 +1,115 @@
+{
+  "complete": true,
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/identity/owning-full-summary-v02.py",
+      "bytes": 7261,
+      "sha256": "8cb1c4fa81aa3c017f74532ded012ace4e7bf7c37ceaa1ccdc6e83e274143f19"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/owning-full-timing01/timing/report.json",
+      "bytes": 60965,
+      "sha256": "df0de853ad434e2464fcfdfd1b1548e3cc0b90f6c8733cea5f6f8e2253692971"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/owning-full-timing01/manifest.json",
+      "bytes": 34740,
+      "sha256": "960541628b22115ac7ac4b787c4c576393c5303ac479d78063685e85796f4125"
+    }
+  ],
+  "cases": [
+    {
+      "name": "coverage-closures-256",
+      "medianSeconds": {
+        "baseline": 0.4349420489743352,
+        "candidate": 0.42533434904180467
+      },
+      "cpuMedianSeconds": {
+        "baseline": 0.433999,
+        "candidate": 0.42439899999999997
+      },
+      "candidateOverBaseline": 0.9779103906941463,
+      "pairedRatios": [
+        0.9750418971456328,
+        0.9714163366927754,
+        0.9779103906941463
+      ],
+      "rawSeconds": {
+        "baseline": [
+          0.4297515698708594,
+          0.469122895039618,
+          0.4349420489743352
+        ],
+        "candidate": [
+          0.41902578598819673,
+          0.4557136441580951,
+          0.42533434904180467
+        ]
+      },
+      "exactQbeSha256": "c5b9d940e875610ccb93b9ebbc8105964f16c98169ed8ead1edbcc08b0becbd7"
+    },
+    {
+      "name": "coverage-map-churn-128",
+      "medianSeconds": {
+        "baseline": 2.003201928921044,
+        "candidate": 2.005559311946854
+      },
+      "cpuMedianSeconds": {
+        "baseline": 2.002221,
+        "candidate": 2.0045770000000003
+      },
+      "candidateOverBaseline": 1.0011768074859433,
+      "pairedRatios": [
+        1.0011768074859433,
+        0.9249214783139641,
+        0.986861930544751
+      ],
+      "rawSeconds": {
+        "baseline": [
+          2.003201928921044,
+          2.1732663800939918,
+          1.9907466650474817
+        ],
+        "candidate": [
+          2.005559311946854,
+          2.010100753046572,
+          1.9645920970942825
+        ]
+      },
+      "exactQbeSha256": "37fd22e781e93290c2ab661c06f1991d57542f58e90d983890cebff6f7ef24e5"
+    },
+    {
+      "name": "lexer",
+      "medianSeconds": {
+        "baseline": 1.6114937809761614,
+        "candidate": 1.5053931570146233
+      },
+      "cpuMedianSeconds": {
+        "baseline": 1.610503,
+        "candidate": 1.493803
+      },
+      "candidateOverBaseline": 0.9341600785469568,
+      "pairedRatios": [
+        0.9291618654118556,
+        0.9341600785469568,
+        0.9226904719394828
+      ],
+      "rawSeconds": {
+        "baseline": [
+          1.5915598240680993,
+          1.6114937809761614,
+          1.6477127999532968
+        ],
+        "candidate": [
+          1.4788166950456798,
+          1.5053931570146233,
+          1.5203289010096341
+        ]
+      },
+      "exactQbeSha256": "d7f319ddfe98e211951e305d692fa0190f4c2ade7cf0beb998a5e88ae7f13559"
+    }
+  ],
+  "geometricCandidateOverBaseline": 0.9706821609786398,
+  "percentTimeReduction": 2.9317839021360204,
+  "scope": "Three-case compiler execution screen, exact complete QBE outputs, same final N2 source/runtime. Unqualified machine-code ceiling; no new upstream or generated-program-speed claim."
+}

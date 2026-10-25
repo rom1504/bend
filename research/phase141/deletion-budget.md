@@ -36,7 +36,7 @@ control lines and 217 other lines under this conservative inventory. Calling all
 5,839 lines production complexity would overstate the increase. Calling all
 non-native code dead would be a much larger error.
 
-The current maintained `selfhost/src/compiler.json` lists 135 modules containing
+The current maintained `selfhost/src/compiler.json` lists 132 modules containing
 32,702 physical/26,702 code lines. That manifest is **not the whole qualified QBE
 compiler**: the qualified image also incorporates later experimental modules and
 source transformations. The inventory also examines 921 bounded Bend source files

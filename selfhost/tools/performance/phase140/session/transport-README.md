@@ -5,6 +5,14 @@ QBE, choose reusable units, compile source, or modify runtime/optimization rules
 Use the versioned Bend writer `../render/native-v02.bend`; v01's newline marker
 is ambiguous when the same marker occurs inside a payload and is not accepted.
 
+The compatible experimental `transport-v02.py` now has the same protocol/API
+with bounded whole-header reading and per-epoch pin deduplication. All 31 original
+plus six boundary/mutation controls pass. One full retained B replay improved
+7.986s→4.809s with exact payload/wire equality; see
+[the bounded transport report](../../../../../implementation/phase140/audit/transport-overhead.md).
+The original remains frozen for comparison. New experimental session runners
+may import v02; producer-status qualification requirements remain unchanged.
+
 The v2 wire format is:
 
 ```text

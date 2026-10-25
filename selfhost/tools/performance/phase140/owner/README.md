@@ -52,3 +52,33 @@ The script orchestrates checked Bend exports and independent exact comparisons; 
 ## Cost opportunities, not measured gains
 
 The current conservative analysis scans headers, owner bodies and derived facts, then repeats comparisons during dependency refresh and scans edges to a fixed point. Avoiding repeated equality work and skipping propagation on zero dirty owners are cheap follow-ups. A reverse dependency index or stable symbols could reduce larger costs but should follow actual integrated native profiles. Global static-image/key mismatches deliberately fall back; this experiment does not solve relocatable literals or promise broad 5–10 times warm rebuild speed.
+
+## Pending one-pass delta prototype
+
+`core-v04.bend` is a separate, initially unchecked candidate; v03 above remains
+the checked baseline. Only `p140o_admitted` changes, and three new declarations
+add `P140ODelta`, its ordered walk and finalization. The delta walk compares each
+owner exactly once to choose both its initial dirty membership and its next
+edge record. It preserves comparison order, dirty insertion order, refreshed
+edge order, old-graph fixed-point propagation, and the original fuel bound.
+The old `p140o_changed`/`p140o_refresh` implementations remain available for the
+independent reference and exceptional helper fallback.
+
+`delta-controls-v01.bend` mirrors the exact v03 admission algorithm under new
+test-only names and compares every resulting `P140OAnalysis` field, including
+Patricia node shape/hashes and ordered reference strings. Thirteen differential
+cases cover no-op, transitive and independent edits, multiple changes, cycles,
+changed references, a subsequent revision, and conservative admission failures.
+`finite-v02.mjs` runs these plus the original18 controls; it expects31 passes.
+
+The standalone composed source04 is SHA256
+`0d34d66425dd9401771b2eb96052dba3fb6f6dd70e72838e4bba7699303e0915`.
+Its module list is `delta-modules-v01.json`. Source composition is not an
+independent source check. No target/API run or performance result is asserted
+for this version here. Acquire the existing full native warm baseline before
+adopting this candidate, then require checked source, all31 controls and exact
+real-request products before a cost comparison. The evidence-v01 index remains
+the immutable v03 baseline receipt.
+
+
+The one-pass delta is now independently source checked together with the retained reverse queue in source06/API06. All46 finite controls and both real raw/final-QBE edit comparisons pass. See `reverse-README.md` and `evidence-v02.json`; full native/session qualification remains pending.

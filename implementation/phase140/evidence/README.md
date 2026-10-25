@@ -24,3 +24,11 @@ Later native results should be a fresh additive archive, using the script's
 33 successful runner/framing/source-cut controls. It deliberately excludes the
 still-running native acquisition. Its three API guards are additional to the
 components02 ledger; none are added twice there.
+# Latest component checkpoint
+
+[components03](components03/index.json) is the cumulative component snapshot
+through checked native API15,167 finite controls and hosted session-screen03.
+See the [scope and cost addendum](../components03-addendum.md). It includes
+the earlier component/native preflight evidence; do not sum overlapping cost
+ledgers. It excludes the second native acquisition and is not a promotion.
+

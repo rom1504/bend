@@ -1,0 +1,100 @@
+{
+  "kind": "phase140-byte-transport-replay",
+  "complete": true,
+  "compilerTargetsRun": false,
+  "scope": "Same retained frames/prior map; byte equivalence, not independent source semantics or native compilation",
+  "order": [
+    "old",
+    "new"
+  ],
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase140/session/transport-replay.py",
+      "bytes": 4159,
+      "sha256": "f3861c0e5a74fc24c239e23aa6c436788ac5a007c5237aaa71eae9681b3502fc"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase140/session/transport.py",
+      "bytes": 11834,
+      "sha256": "02153e24f435d9ca731bfc559845be25ec656e2ae731cc89c5d7387899550c46"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase140/session/transport-v02.py",
+      "bytes": 12484,
+      "sha256": "bfb97c300a4923efbe11378b01084fe30d3b4771c1feae48afcf887bf185cd7e"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase140/full-product01/report.json",
+      "bytes": 12130,
+      "sha256": "da1b90cdf39790300456ed3bd10796ab430556fe21c5d429c257ba898b4eb2d4"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase140/full-product01/b-transport/report.json",
+      "bytes": 14563131,
+      "sha256": "0a8488c5185d41a8a1c194748606847d167c463e767a9278fe81eab263336a19"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase140/full-product01/b-transport/payload.bin",
+      "bytes": 106285793,
+      "sha256": "a5149b2410d70546b7a28ff907aa312b6431cf8c5348107e7b675b9e9f54702e"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase140/full-product01/b.frames",
+      "bytes": 3813447,
+      "sha256": "386602530c398196015944a7fb99d3e065f1e6eebbceaa853a74b59930aff165"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase140/full-product01/b-context.json",
+      "bytes": 7431,
+      "sha256": "72db0d1afb53f3b5dba1f981b8696b4c3dcff2d4bc343ce4745baa44bf3305c0"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase140/full-product01/a-transport/report.json",
+      "bytes": 14506754,
+      "sha256": "920eaddcf43255ee36543c33abc7207b3749c73766457457906f44eb2151665e"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase140/full-product01/a-transport/payload.bin",
+      "bytes": 106285793,
+      "sha256": "c12af8c87c7e96e15fd18b7e16c2c0cc5ec21f8dae5dbfd9bdc79762d88e54cd"
+    }
+  ],
+  "rows": [
+    {
+      "label": "b",
+      "version": "old",
+      "seconds": 7.985610302072018,
+      "cpuSeconds": 7.951970999999999,
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase140/transport-replay02/b-0-old/report.json",
+        "bytes": 14563131,
+        "sha256": "cbee13214f2c9249a6e5fa63c73069b38c1e7daaccb972a265d1be8275002b07"
+      },
+      "payload": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase140/transport-replay02/b-0-old/payload.bin",
+        "bytes": 106285793,
+        "sha256": "a5149b2410d70546b7a28ff907aa312b6431cf8c5348107e7b675b9e9f54702e"
+      },
+      "pieces": 66974,
+      "reusedPieces": 66802
+    },
+    {
+      "label": "b",
+      "version": "new",
+      "seconds": 4.809443997219205,
+      "cpuSeconds": 4.750321,
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase140/transport-replay02/b-1-new/report.json",
+        "bytes": 14563135,
+        "sha256": "c1bfa4aa73741eb7bd230110ec2563932e29a76339a8a7374ac207ef241338e0"
+      },
+      "payload": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase140/transport-replay02/b-1-new/payload.bin",
+        "bytes": 106285793,
+        "sha256": "a5149b2410d70546b7a28ff907aa312b6431cf8c5348107e7b675b9e9f54702e"
+      },
+      "pieces": 66974,
+      "reusedPieces": 66802
+    }
+  ]
+}

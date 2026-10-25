@@ -1,0 +1,48 @@
+{
+  "kind": "phase140-transport-v02-edge-controls",
+  "complete": true,
+  "compilerTargetsRun": false,
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase140/session/transport-v02-edge-controls.py",
+      "bytes": 3719,
+      "sha256": "c106c0dacfe1477e5cb522bf75eea78003b9c06c1864a86c7797acd7d0889539"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase140/session/transport.py",
+      "bytes": 11834,
+      "sha256": "02153e24f435d9ca731bfc559845be25ec656e2ae731cc89c5d7387899550c46"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase140/session/transport-v02.py",
+      "bytes": 12484,
+      "sha256": "bfb97c300a4923efbe11378b01084fe30d3b4771c1feae48afcf887bf185cd7e"
+    }
+  ],
+  "rows": [
+    {
+      "name": "header-newline-at-256",
+      "passed": true
+    },
+    {
+      "name": "header-no-newline-at-256",
+      "passed": true
+    },
+    {
+      "name": "header-newline-at-257",
+      "passed": true
+    },
+    {
+      "name": "header-truncated-below-bound",
+      "passed": true
+    },
+    {
+      "name": "different-pin-same-path-is-not-skipped",
+      "passed": true
+    },
+    {
+      "name": "postflight-rechecks-despite-preflight-memo",
+      "passed": true
+    }
+  ]
+}

@@ -68,3 +68,28 @@ Keep one heavy CPU lane, 4GiB process-tree bound, 16GiB available-memory floor,
 bounded current/pending state, and explicit storage accounting. Initial disk
 headroom is approximately 11GB; do not retain unnecessary full image copies.
 No new backend, runtime ABI, proof claim or benchmark definition is needed.
+
+## 19:43 UTC experiment decision
+
+The second composed hosted screen passes exact products and error recovery, but
+its ordered cold-B observations add about20–22% versus the original request.
+Therefore it has **not passed the5% cold-cost criterion**, and acquiring the next
+native prototype is an explicit bounded research exception, not G2 acceptance or
+permission to promote it. The user's objective is warm edited builds; first-cache
+acquisition must nevertheless be priced and amortized rather than hidden.
+
+Reasons to measure one native prototype: the initial full compiler experiment
+already eliminated about180s of emission work with exact independent output;
+small hosted costs did not predict native costs; and the next changes remove
+whole scans (indexed closure visitation, retained reverse dependencies, static
+preparation prefixes, observer plans and dispatch metadata). A native request
+will decide whether those savings justify the retention overhead. Preserve the
+ordinary compiler and installed selection. If cold overhead remains excessive,
+keep reuse opt-in and report the failed criterion; do not silently relax it.
+
+The new static-preparation capability preserves complete actual prefix state,
+including accumulated facts, image allocation cursor, intern index and error.
+Exact current constructor/effect inputs and erased facts establish prefix
+agreement; the first difference disables all remaining prefix reuse. It never
+rebases old static addresses. Independent source audit and16 differential
+controls precede the native experiment. Memory cost remains a measured risk.

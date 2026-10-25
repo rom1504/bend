@@ -20,6 +20,13 @@ reuse from stable machine artifacts; preserve global verification and fallback.
 Two bounded source audits and offline census; no target/compiler execution,
 performance gain, proof or promotion. Concrete staged falsifiers documented.
 
+Follow-up: [intermediate validation gates](../design/phase139/validation-gates.md)
+now define short contract/performance screens, same-revision 2× then 5× warm-build
+milestones and integration-only native qualification. Default runtime limits are
+2% overall/per family and 5% per case, with selective confirmation and exact
+artifact evidence reuse. Candidate acquisition and complete campaign costs remain
+explicit. Documentation update only; no additional target executions.
+
 ## Phase138 — Fresh profile and the sub20s build boundary (2026-10-25)
 
 [Design](../design/phase138/README.md) · [Experiment](phase138/P138-001-twenty-second-loop.md) ·

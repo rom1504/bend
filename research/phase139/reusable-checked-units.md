@@ -287,6 +287,45 @@ Do not infer retained-cache size from the current approximately1GB cold peak.
 Cache updates publish only after all required work succeeds; failed edits keep
 the previous successful state usable. Bind disk budgets as well as RAM.
 
+## Intermediate gates: prove progress without repeated full campaigns
+
+The [validation contract](../../design/phase139/validation-gates.md) specifies
+comparators, edit controls, noise handling and evidence reuse. Use this ladder:
+
+| Gate | Pass condition | Typical validation budget with ready artifacts |
+|---|---|---|
+| G1: each changed boundary | Exact fresh/reused state, diagnostics and required outputs; stale-hit rejection and recovery; actual producer skipped | 20–60s |
+| G2: combined small implementation | Affected stage at least 2× faster after overhead; complete small edited requests at least 10% faster on two distinct cases; cold screen within 5% | 60–180s |
+| G3: real compiler milestone | Edited compiler actually runs independent requests; complete warm build at least 2× faster than incumbent on the same revision | About 6min per necessary full request; price acquisition/seeding/comparisons separately |
+| G4: target | At least 5× complete warm-build improvement on each of three frozen substantive supported edits; report smoke-inclusive readiness and fallbacks | Once the G3 mechanism scales; 20s readiness remains the stronger target |
+| G5: adoption | Required native reproduction, focused19/ordinary45, source/proof checks and output identity or runtime quality evidence | One declared integration campaign, not every edit |
+
+G0 freezes the baseline and suite once per contract/epoch. Keep three clocks for
+the exact same edited revision B: incumbent ordinary B, candidate cold B and
+candidate warm B. Acquisition of A and seeding are separate costs. A→B timing
+ratios and an artificially slow candidate miss path cannot establish a 5× gain.
+An experimental foundation can be retained before later gates pass, but is not
+an end-to-end speed result. No-op/spelling edits alone cannot meet G4.
+
+Default generated-program promotion tolerances are **2% overall, 2% per family,
+and 5% per workload**, against the incumbent under the same conditions; target
+zero regression. Cold compilation overhead must stay within 5% unless an explicit
+tradeoff is separately justified. Confirm only flagged cases with five additional
+paired rounds. Preserve all observations; noisy borderline results remain
+inconclusive. A confirmed breach blocks promotion rather than being averaged away.
+
+When generated products/runtime/build inputs are established identical, reuse
+their authenticated runtime evidence. Changed code gets affected-family plus
+unrelated-control checks; broad layout/ABI changes or widespread changed products
+get the complete corpus at an integration point. A subset does not establish
+the broad score. Keep full independent correctness and native qualification.
+
+The 20–180s tiers assume ready fixtures/harnesses. A first full milestone can cost
+25–40min if acquisition, seed and fresh references are all absent: schedule it
+once when small evidence predicts a substantial win. Never hide that cost or run
+the whole sequence after each edit. Record actual validation time and use budget
+overruns to reconsider the experiment, not to weaken its acceptance criteria.
+
 ## Correctness and generated-program performance
 
 Reuse preserves decisions; this plan does not achieve speed by disabling

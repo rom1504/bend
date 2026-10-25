@@ -4,6 +4,8 @@
 not measured gains. The selected Phase137 native compiler remains unchanged.
 The [Phase138 investigation](../../implementation/phase138/README.md) supplies
 the current profile and346.391s complete cold-build reference.
+The [intermediate validation gates](validation-gates.md) define the fast loop,
+2×/5× milestones, generated-program tolerances and expensive integration triggers.
 
 Fivefold improvement means less than69.3s. A20s complete cold build needs17.3×.
 Keep cold compilation, local-edit rebuilding, policy experiments and full native

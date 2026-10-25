@@ -5,6 +5,16 @@ Status: source investigation complete,2026-10-25, at `df803e9`.
 [Dedicated investigation](../../research/phase139/reusable-checked-units.md) ·
 [Offline inventory](../../research/phase139/inventory.json).
 
+Validation plan added at the user's request after `b392fb5`:
+[intermediate gates](../../design/phase139/validation-gates.md). Start with
+20–60s contract controls and a 60–180s complete small-request screen; escalate to
+real 2× and then 5× warm-build milestones on substantive edits. Compare incumbent
+ordinary, candidate cold and candidate warm builds of the same edited revision.
+Default program-runtime regression limits are 2% overall, 2% per family and 5%
+per case, with focused confirmation of flagged results. Charge acquisition and
+qualification explicitly; reuse runtime evidence only through established exact
+artifact identities. These are prospective gates, not newly executed results.
+
 Hypothesis: early semantic reuse plus stable named owner output offers the most
 credible5× local-edit rebuild path. Existing source modules and object groups
 may not have the semantics required for independent compilation.

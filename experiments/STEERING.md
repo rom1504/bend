@@ -1,7 +1,16 @@
 # Latest design: Phase139 reusable checked units
 
 [Fivefold options](../design/phase139/compilation-speed-options.md) ·
-[Detailed source investigation](../research/phase139/reusable-checked-units.md).
+[Detailed source investigation](../research/phase139/reusable-checked-units.md) ·
+[Intermediate gates](../design/phase139/validation-gates.md).
+
+Validate incrementally: 20–60s correctness controls, 60–180s useful-work screen,
+then same-revision 2×/5× complete warm-build milestones. Program-runtime limits:
+2% overall and per family, 5% per case; cold compilation overhead within 5%.
+Confirm flagged cases only, reuse authenticated unchanged-product evidence, and
+reserve full native qualification for adoption. Budgets exclude neither total
+acquisition cost nor failures: price those separately before escalating. Gate
+design only; no new measurements or implemented reuse.
 
 Choose early checked/prepared owner reuse for the first5× local-edit target.
 New audit tightens the checker contract: source-level header equality and the

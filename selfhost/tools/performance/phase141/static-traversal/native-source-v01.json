@@ -1,0 +1,211 @@
+{
+  "schema": "phase141-static-traversal-native-v1",
+  "status": "source-only-unchecked",
+  "source": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase141/static-traversal/native-v01.bend",
+    "bytes": 6322,
+    "sha256": "9d8335b995064cec7204f269190bfd80f7a86d41a6ef738cf9a916dfb1c0edca"
+  },
+  "extracted": [
+    {
+      "file": "selfhost/build/phase137/integrated-source03/compiler.bend",
+      "inputSha256": "2620d59a3a20fa5d5d27bbf3b12ceb7304439b27093fff1c0f383da03e4ecf38",
+      "name": "N111Type",
+      "firstLine": 39332,
+      "lastLine": 39335,
+      "sha256": "19fdf2e902813ae4a4c55b7fe0137085d2d113af80d9c0012742dc3d922e50b4"
+    },
+    {
+      "file": "selfhost/build/phase137/integrated-source03/compiler.bend",
+      "inputSha256": "2620d59a3a20fa5d5d27bbf3b12ceb7304439b27093fff1c0f383da03e4ecf38",
+      "name": "N111Value",
+      "firstLine": 39337,
+      "lastLine": 39342,
+      "sha256": "2d435454dd38e75d772450eeb2a7a2e95f3694bc27fbfe28bd34fb40db0d8960"
+    },
+    {
+      "file": "selfhost/build/phase137/integrated-source03/compiler.bend",
+      "inputSha256": "2620d59a3a20fa5d5d27bbf3b12ceb7304439b27093fff1c0f383da03e4ecf38",
+      "name": "N111Arg",
+      "firstLine": 39344,
+      "lastLine": 39345,
+      "sha256": "a1643bdf6f09b24b1ddbb997ed8a9fc2efd7db807bb95b2bc378ea907644e7a1"
+    },
+    {
+      "file": "selfhost/tools/performance/phase140/compare/typed-v01.bend",
+      "inputSha256": "9b4dea15bd883cd2833227d4dea45c5dba14407942d12d2fc790d54cfe275407",
+      "name": "p140e_type",
+      "firstLine": 9,
+      "lastLine": 14,
+      "sha256": "21a1b3ae9c895c5381ee7e54f3b1a97e27654be73adc71657c48a3cd9d03b7df"
+    },
+    {
+      "file": "selfhost/tools/performance/phase140/compare/typed-v01.bend",
+      "inputSha256": "9b4dea15bd883cd2833227d4dea45c5dba14407942d12d2fc790d54cfe275407",
+      "name": "p140e_value",
+      "firstLine": 26,
+      "lastLine": 33,
+      "sha256": "de1ec2041183c0e31551f7026a935ae50cb95504621d65e6156fbbc3e90e68da"
+    },
+    {
+      "file": "selfhost/tools/performance/phase140/compare/typed-v01.bend",
+      "inputSha256": "9b4dea15bd883cd2833227d4dea45c5dba14407942d12d2fc790d54cfe275407",
+      "name": "p140e_arg",
+      "firstLine": 36,
+      "lastLine": 38,
+      "sha256": "36688422efdb7352bcebf23182203584cc4ed6fc661a91d23505480e0d5c6ab4"
+    },
+    {
+      "file": "selfhost/tools/performance/phase140/compare/typed-v01.bend",
+      "inputSha256": "9b4dea15bd883cd2833227d4dea45c5dba14407942d12d2fc790d54cfe275407",
+      "name": "p140e_args",
+      "firstLine": 118,
+      "lastLine": 123,
+      "sha256": "cf0a12ebf29d7d9c5b4f160dc1f5bed79bd666a658247d4250e4c411f753cd8e"
+    },
+    {
+      "file": "selfhost/build/phase137/integrated-source03/compiler.bend",
+      "inputSha256": "2620d59a3a20fa5d5d27bbf3b12ceb7304439b27093fff1c0f383da03e4ecf38",
+      "name": "p134v_list",
+      "firstLine": 58228,
+      "lastLine": 58233,
+      "sha256": "8e7c1100588c11927db0c4ebf5c90fb913a862d161b861fc4bc71a18a50b6524"
+    },
+    {
+      "file": "selfhost/tools/performance/phase141/static-traversal/core-v01.bend",
+      "inputSha256": "99c2ba625fc261484ae43198d474a824f09bb059f7728306bd7c38bfed2f1f3d",
+      "name": "p141st_list",
+      "firstLine": 4,
+      "lastLine": 9,
+      "sha256": "6ada070b0f707a761921d4a233b428303356e1622c0adafa0460061c687c5962"
+    }
+  ],
+  "workload": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase141/static-traversal/workload-v01.bend",
+    "bytes": 4557,
+    "sha256": "536db9457be0885fbbc50a5d7701a2a6c9f68cd3e07f0abe3efddf128f0b94a7"
+  },
+  "ordinaryOracle": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase141/static-traversal/expected-native-v01.json",
+    "bytes": 74,
+    "sha256": "bc488da4693c022032c8b66e668b9533d4a827cfbe38c5f483c449989b569547"
+  },
+  "independentOracle": {
+    "method": "Python tuple/list equality, modulo-U32 arithmetic; 1/2/4/8/16 flags for independently built equal/tail mismatch/short/empty/alias",
+    "observations": [
+      {
+        "size": 0,
+        "flags": [
+          true,
+          false,
+          false,
+          true,
+          true
+        ],
+        "digest": 25
+      },
+      {
+        "size": 1,
+        "flags": [
+          true,
+          false,
+          false,
+          true,
+          true
+        ],
+        "digest": 25
+      },
+      {
+        "size": 17,
+        "flags": [
+          true,
+          false,
+          false,
+          true,
+          true
+        ],
+        "digest": 25
+      },
+      {
+        "size": 256,
+        "flags": [
+          true,
+          false,
+          false,
+          true,
+          true
+        ],
+        "digest": 25
+      },
+      {
+        "size": 1024,
+        "flags": [
+          true,
+          false,
+          false,
+          true,
+          true
+        ],
+        "digest": 25
+      }
+    ]
+  },
+  "arguments": [
+    "repetitions",
+    "warmups",
+    "list_size",
+    "mode"
+  ],
+  "modes": {
+    "0": "runtime callback",
+    "1": "handwritten typed",
+    "2": "closed template callback"
+  },
+  "timedPrefixFormula": [
+    "25",
+    "(25*warmups) mod 2^32",
+    "(25*repetitions) mod 2^32"
+  ],
+  "timer": "Fourth output line IO.now delta; includes one timed result formatting/write; construction and warmups excluded.",
+  "presets": [
+    {
+      "args": [
+        "64",
+        "2",
+        "256",
+        "0"
+      ],
+      "expectedPrefix": [
+        "25",
+        "50",
+        "1600"
+      ]
+    },
+    {
+      "args": [
+        "64",
+        "2",
+        "256",
+        "1"
+      ],
+      "expectedPrefix": [
+        "25",
+        "50",
+        "1600"
+      ]
+    },
+    {
+      "args": [
+        "64",
+        "2",
+        "256",
+        "2"
+      ],
+      "expectedPrefix": [
+        "25",
+        "50",
+        "1600"
+      ]
+    }
+  ]
+}

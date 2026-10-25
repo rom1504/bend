@@ -1,0 +1,106 @@
+{
+  "schema": "phase141-static-traversal-candidate-v1",
+  "status": "source-only-not-checked-or-timed",
+  "selectedSource": {
+    "file": "selfhost/build/phase137/integrated-source03/compiler.bend",
+    "sha256": "2620d59a3a20fa5d5d27bbf3b12ceb7304439b27093fff1c0f383da03e4ecf38"
+  },
+  "appendModules": [
+    {
+      "file": "selfhost/tools/performance/phase140/compare/typed-v01.bend",
+      "sha256": "9b4dea15bd883cd2833227d4dea45c5dba14407942d12d2fc790d54cfe275407"
+    },
+    {
+      "file": "selfhost/tools/performance/phase141/static-traversal/core-v01.bend",
+      "sha256": "99c2ba625fc261484ae43198d474a824f09bb059f7728306bd7c38bfed2f1f3d"
+    },
+    {
+      "file": "selfhost/tools/performance/phase141/static-traversal/wrappers-v01.bend",
+      "sha256": "384021c46cc5c3e22f8412b45190b31558055c5d431c6d09a78dbaae396b8fea"
+    },
+    {
+      "file": "selfhost/tools/performance/phase141/static-traversal/fixtures-v01.bend",
+      "sha256": "80ef1e27fda3845253cc080981302a6eaa42b4d24ab4478b95a473ebe0bf53d5"
+    },
+    {
+      "file": "selfhost/tools/performance/phase141/static-traversal/controls-v01.bend",
+      "sha256": "5e6c43e2009c90e22d34aaceeb14a2ca40783d54ec59edaa697a2c561b9f6f1b"
+    }
+  ],
+  "overrides": [],
+  "exports": [
+    "p141st_controls",
+    "p141st_strings",
+    "p141st_u32s",
+    "p141st_args",
+    "p141st_scalars",
+    "p141st_stmts",
+    "p141st_values",
+    "p141st_bindings",
+    "p141st_headers",
+    "p141st_raw_headers",
+    "p141st_ctors"
+  ],
+  "controlRows": 15,
+  "listPairObservations": 50,
+  "statePairObservations": 5,
+  "fixtureSource": {
+    "file": "selfhost/tools/performance/phase140/compare/typed-controls-v02.bend",
+    "sha256": "ca3486aa6065909acfaa0630dd60623601ac06c1b846f5431f830941070427e6"
+  },
+  "fixtureDefinitions": [
+    {
+      "name": "p140tc_values",
+      "source": "selfhost/tools/performance/phase140/compare/typed-controls-v02.bend",
+      "line": 5,
+      "sha256": "ad0e644590ca260261157071ae27555b5660603a7e0661bacb9c2eeb4a8cafdc"
+    },
+    {
+      "name": "p140tc_args",
+      "source": "selfhost/tools/performance/phase140/compare/typed-controls-v02.bend",
+      "line": 8,
+      "sha256": "c73538c1bdd1d6ea36a9144cc2bec917586f7647d6a2661c3b7ec232a514515e"
+    },
+    {
+      "name": "p140tc_bindings",
+      "source": "selfhost/tools/performance/phase140/compare/typed-controls-v02.bend",
+      "line": 11,
+      "sha256": "ada7bab020f86eacc0354e034b7c0075e8b0517f3ffb0f47e6c71f50126e65a9"
+    },
+    {
+      "name": "p140tc_scalars",
+      "source": "selfhost/tools/performance/phase140/compare/typed-controls-v02.bend",
+      "line": 14,
+      "sha256": "4b176dda428a8bad09cc4f311bf63a2b8d7d3dc1f338d484e1570bd8b4c37ef5"
+    },
+    {
+      "name": "p140tc_stmts",
+      "source": "selfhost/tools/performance/phase140/compare/typed-controls-v02.bend",
+      "line": 25,
+      "sha256": "2ea51263f40e1d9c85ef7045570c238961170bb2fa3b5d7507dd39739611f60a"
+    },
+    {
+      "name": "p140tc_functions",
+      "source": "selfhost/tools/performance/phase140/compare/typed-controls-v02.bend",
+      "line": 33,
+      "sha256": "6f412bff7c1909e51a321fa6c098d4be599a5d7756ba342be63f52cb9a83760f"
+    },
+    {
+      "name": "p140tc_raw_headers",
+      "source": "selfhost/tools/performance/phase140/compare/typed-controls-v02.bend",
+      "line": 40,
+      "sha256": "9f39a99c4e884be8198cbc77f94cfcf713701fa76d1c12e206935fc93ae2528c"
+    },
+    {
+      "name": "p140tc_ctors",
+      "source": "selfhost/tools/performance/phase140/compare/typed-controls-v02.bend",
+      "line": 46,
+      "sha256": "79483e443bba6cf2940107f9ed8c4e2ded3bd9061fefacc0c79d42f15b27bfd0"
+    }
+  ],
+  "notes": [
+    "Append only; preserve p134v_* and p140e_* as independent references.",
+    "No performance or acceptance claim follows from source preparation.",
+    "Runtime state is not a template parameter."
+  ]
+}

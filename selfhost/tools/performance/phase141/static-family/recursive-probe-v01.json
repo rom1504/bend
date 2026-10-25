@@ -1,0 +1,40 @@
+{
+  "kind": "phase141-recursive-template-source-slice",
+  "source": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase141/static-family/recursive-probe-v01.bend",
+    "bytes": 4768,
+    "sha256": "b5c0463a4b1d0f66ab3bdbf4f7b708475979af8d6d5615394a83c5a0b068f855"
+  },
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase140/native-source18/compiler.bend",
+      "bytes": 2978442,
+      "sha256": "c9ded5523c4d4c3ca9b700c4aff12cd77e02043684f0472ed2f8ec8c412b6313"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase141/static-family/core-v01.bend",
+      "bytes": 19775,
+      "sha256": "dbf6b15de3b07e3b9760c0377337c0c608c17577e56d83da597911eefd395b89"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/prepare.py",
+      "bytes": 6138,
+      "sha256": "33a4a40ab35ef705cbe99cff20b4b6a2c9792eee4ad8c9597a006d22ae22defa"
+    }
+  ],
+  "declarations": [
+    "N111Type",
+    "N111Value",
+    "N111Arg",
+    "N111Stmt",
+    "P113DStmt",
+    "p134v_type",
+    "p134v_value",
+    "p134v_arg",
+    "p134v_list",
+    "p134v_scalar",
+    "p134v_stmt"
+  ],
+  "expectedStdout": "3\n",
+  "scope": "Exact selected types and canonical comparisons; only probe main is new. Native checker must materialize recursive template instances even for this small input."
+}

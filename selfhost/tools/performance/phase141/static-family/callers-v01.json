@@ -1,0 +1,690 @@
+{
+  "source": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase140/native-source18/compiler.bend",
+    "bytes": 2978442,
+    "sha256": "c9ded5523c4d4c3ca9b700c4aff12cd77e02043684f0472ed2f8ec8c412b6313"
+  },
+  "method": "lexical function references excluding strings/comments; all first-class retired references separately refused",
+  "callers": [
+    {
+      "caller": "p134v_list",
+      "control": false,
+      "calls": [
+        {
+          "callee": "p134v_list",
+          "line": 58241,
+          "followingSource": "A,eq,xs,ys)"
+        }
+      ]
+    },
+    {
+      "caller": "p134v_scalar",
+      "control": false,
+      "calls": [
+        {
+          "callee": "p134v_list",
+          "line": 58293,
+          "followingSource": "N111Arg,p134v_arg,aa,ba)"
+        },
+        {
+          "callee": "p134v_list",
+          "line": 58295,
+          "followingSource": "N111Stmt,p134v_scalar,ay,by) && p134v_list(N111Stmt,p134v_scalar,an,bn)"
+        },
+        {
+          "callee": "p134v_list",
+          "line": 58295,
+          "followingSource": "N111Stmt,p134v_scalar,an,bn)"
+        }
+      ]
+    },
+    {
+      "caller": "p134v_stmt",
+      "control": false,
+      "calls": [
+        {
+          "callee": "p134v_list",
+          "line": 58312,
+          "followingSource": "P113DStmt,p134v_stmt,ay,by) && p134v_list(P113DStmt,p134v_stmt,an,bn)"
+        },
+        {
+          "callee": "p134v_list",
+          "line": 58312,
+          "followingSource": "P113DStmt,p134v_stmt,an,bn)"
+        },
+        {
+          "callee": "p134v_list",
+          "line": 58314,
+          "followingSource": "String,String.eq,ad,bd) && String.eq(at,bt) && p134v_list(N111Value,p134v_value,aa,ba)"
+        },
+        {
+          "callee": "p134v_list",
+          "line": 58314,
+          "followingSource": "N111Value,p134v_value,aa,ba)"
+        },
+        {
+          "callee": "p134v_list",
+          "line": 58315,
+          "followingSource": "N111Value,p134v_value,av,bv)"
+        },
+        {
+          "callee": "p134v_list",
+          "line": 58316,
+          "followingSource": "N111Value,p134v_value,av,bv)"
+        }
+      ]
+    },
+    {
+      "caller": "p134v_header",
+      "control": false,
+      "calls": [
+        {
+          "callee": "p134v_list",
+          "line": 58324,
+          "followingSource": "NC_Binding,p134v_binding,ap,bp) && U32.is_eq(ar,br) && p134v_bool(au,bu)"
+        }
+      ]
+    },
+    {
+      "caller": "p134v_function",
+      "control": false,
+      "calls": [
+        {
+          "callee": "p134v_list",
+          "line": 58331,
+          "followingSource": "NC_Binding,p134v_binding,ap,bp) && U32.is_eq(ar,br) && p134v_bool(au,bu) && p134v_list(P113DStmt,p134v_stmt,ab,bb)"
+        },
+        {
+          "callee": "p134v_list",
+          "line": 58331,
+          "followingSource": "P113DStmt,p134v_stmt,ab,bb)"
+        }
+      ]
+    },
+    {
+      "caller": "p134v_commit",
+      "control": false,
+      "calls": [
+        {
+          "callee": "p134v_list",
+          "line": 58349,
+          "followingSource": "P113DFunction,p134v_header,functions,candidate),"
+        }
+      ]
+    },
+    {
+      "caller": "p134v_boundary_same",
+      "control": false,
+      "calls": [
+        {
+          "callee": "p134v_list",
+          "line": 58361,
+          "followingSource": "P113DFunction,p134v_function,af,bf)"
+        }
+      ]
+    },
+    {
+      "caller": "p140sp_context",
+      "control": false,
+      "calls": [
+        {
+          "callee": "p134v_list",
+          "line": 60511,
+          "followingSource": "N_Constructor,p140v_ctor,old,constructors) && p140eq_def(old_blocked,blocked)),"
+        }
+      ]
+    },
+    {
+      "caller": "p140v_segment",
+      "control": false,
+      "calls": [
+        {
+          "callee": "p140e_scalars",
+          "line": 61397,
+          "followingSource": "ab,bb)"
+        }
+      ]
+    },
+    {
+      "caller": "p140v_context",
+      "control": false,
+      "calls": [
+        {
+          "callee": "p140e_raw_headers",
+          "line": 61407,
+          "followingSource": "os,ns) && p140e_ctors(oc,nc)"
+        },
+        {
+          "callee": "p140e_ctors",
+          "line": 61407,
+          "followingSource": "oc,nc)"
+        }
+      ]
+    },
+    {
+      "caller": "p140v_reuse_context",
+      "control": false,
+      "calls": [
+        {
+          "callee": "p140e_headers",
+          "line": 61422,
+          "followingSource": "of,nf),nt_choose(Maybe<&2,P140VMetadata>,same,u => Some{metadata},u => None{})}"
+        }
+      ]
+    },
+    {
+      "caller": "p140v_direct_walk",
+      "control": false,
+      "calls": [
+        {
+          "callee": "p140e_function",
+          "line": 61471,
+          "followingSource": "prior,head))"
+        }
+      ]
+    },
+    {
+      "caller": "p140r_segment",
+      "control": false,
+      "calls": [
+        {
+          "callee": "p140e_scalars",
+          "line": 61687,
+          "followingSource": "ab,bb)"
+        }
+      ]
+    },
+    {
+      "caller": "p140r_worker",
+      "control": false,
+      "calls": [
+        {
+          "callee": "p140e_scalar",
+          "line": 61757,
+          "followingSource": "x,y)"
+        },
+        {
+          "callee": "p140e_value",
+          "line": 61759,
+          "followingSource": "ac,bc) && p140er_workers(ay,by) && p140er_workers(an,bn)"
+        }
+      ]
+    },
+    {
+      "caller": "p140r_legacy",
+      "control": false,
+      "calls": [
+        {
+          "callee": "p140e_strings",
+          "line": 61771,
+          "followingSource": "ap,bp) && p140er_workers(ab,bb) &&"
+        }
+      ]
+    },
+    {
+      "caller": "p140r_hit",
+      "control": false,
+      "calls": [
+        {
+          "callee": "p140e_function",
+          "line": 61822,
+          "followingSource": "head,old)"
+        }
+      ]
+    },
+    {
+      "caller": "p140gm_headers",
+      "control": false,
+      "calls": [
+        {
+          "callee": "p140e_raw_headers",
+          "line": 62150,
+          "followingSource": "aseg,bs) && p140e_ctors(ac,bc) &&"
+        },
+        {
+          "callee": "p140e_ctors",
+          "line": 62150,
+          "followingSource": "ac,bc) &&"
+        },
+        {
+          "callee": "p140e_u32s",
+          "line": 62151,
+          "followingSource": "aw,bw) && p140o_strings(an,bn) && p140o_strings(ae,be) && p134v_bool(ap,bp)"
+        }
+      ]
+    },
+    {
+      "caller": "p140l_scan",
+      "control": false,
+      "calls": [
+        {
+          "callee": "p134v_list",
+          "line": 62431,
+          "followingSource": "NO_Spec,p140l_spec,old_specs,specs),items)"
+        }
+      ]
+    },
+    {
+      "caller": "p140l_hit",
+      "control": false,
+      "calls": [
+        {
+          "callee": "p134v_list",
+          "line": 62486,
+          "followingSource": "P113DFunction,p134v_function,fallback,p140l_fallback(original,p113d_public(book,name))),u => True{})"
+        }
+      ]
+    },
+    {
+      "caller": "p140lc_counts",
+      "control": true,
+      "calls": [
+        {
+          "callee": "p134v_list",
+          "line": 62542,
+          "followingSource": "U32,U32.is_eq,p140lc_pair(stats),[hits,misses])"
+        }
+      ]
+    },
+    {
+      "caller": "p140lc_controls",
+      "control": true,
+      "calls": [
+        {
+          "callee": "p134v_list",
+          "line": 62612,
+          "followingSource": "NO_Spec,p140l_spec,nol_scalar_specs(global_a,global_a),nol_scalar_specs(global_b,global_b)))),"
+        }
+      ]
+    },
+    {
+      "caller": "p140gmc_index",
+      "control": true,
+      "calls": [
+        {
+          "callee": "p134v_list",
+          "line": 63344,
+          "followingSource": "N111Segment,p140r_segment,ab,bb)"
+        }
+      ]
+    },
+    {
+      "caller": "p140cat_programs",
+      "control": true,
+      "calls": [
+        {
+          "callee": "p134v_list",
+          "line": 63583,
+          "followingSource": "N111Segment,p140r_segment,aseg,bseg)"
+        }
+      ]
+    },
+    {
+      "caller": "p140spc_checked",
+      "control": true,
+      "calls": [
+        {
+          "callee": "p134v_list",
+          "line": 63883,
+          "followingSource": "U32,U32.is_eq,stats,counts)"
+        }
+      ]
+    },
+    {
+      "caller": "p140vt_count_equal",
+      "control": true,
+      "calls": [
+        {
+          "callee": "p134v_list",
+          "line": 64079,
+          "followingSource": "U32,U32.is_eq,counts,p140vt_counts(p140v_check(now,p140vt_cache(p140v_check(old,P140VEmpty{})))))"
+        }
+      ]
+    },
+    {
+      "caller": "p140tc_values_row",
+      "control": true,
+      "calls": [
+        {
+          "callee": "p140e_value",
+          "line": 64266,
+          "followingSource": "a,b)) && p140tc_values_row(a,rest)"
+        }
+      ]
+    },
+    {
+      "caller": "p140tc_args_row",
+      "control": true,
+      "calls": [
+        {
+          "callee": "p140e_arg",
+          "line": 64280,
+          "followingSource": "a,b)) && p140tc_args_row(a,rest)"
+        }
+      ]
+    },
+    {
+      "caller": "p140tc_bindings_row",
+      "control": true,
+      "calls": [
+        {
+          "callee": "p140e_binding",
+          "line": 64294,
+          "followingSource": "a,b)) && p140tc_bindings_row(a,rest)"
+        }
+      ]
+    },
+    {
+      "caller": "p140tc_scalars_row",
+      "control": true,
+      "calls": [
+        {
+          "callee": "p140e_scalar",
+          "line": 64308,
+          "followingSource": "a,b)) && p140tc_scalars_row(a,rest)"
+        }
+      ]
+    },
+    {
+      "caller": "p140tc_stmts_row",
+      "control": true,
+      "calls": [
+        {
+          "callee": "p140e_stmt",
+          "line": 64322,
+          "followingSource": "a,b)) && p140tc_stmts_row(a,rest)"
+        }
+      ]
+    },
+    {
+      "caller": "p140tc_functions_row",
+      "control": true,
+      "calls": [
+        {
+          "callee": "p140e_function",
+          "line": 64336,
+          "followingSource": "a,b)) && p140tc_functions_row(a,rest)"
+        }
+      ]
+    },
+    {
+      "caller": "p140tc_headers_row",
+      "control": true,
+      "calls": [
+        {
+          "callee": "p140e_header",
+          "line": 64350,
+          "followingSource": "a,b)) && p140tc_headers_row(a,rest)"
+        }
+      ]
+    },
+    {
+      "caller": "p140tc_raw_headers_row",
+      "control": true,
+      "calls": [
+        {
+          "callee": "p140e_raw_header",
+          "line": 64364,
+          "followingSource": "a,b)) && p140tc_raw_headers_row(a,rest)"
+        }
+      ]
+    },
+    {
+      "caller": "p140tc_ctors_row",
+      "control": true,
+      "calls": [
+        {
+          "callee": "p140e_ctor",
+          "line": 64378,
+          "followingSource": "a,b)) && p140tc_ctors_row(a,rest)"
+        }
+      ]
+    },
+    {
+      "caller": "p140tc_controls",
+      "control": true,
+      "calls": [
+        {
+          "callee": "p134v_list",
+          "line": 64399,
+          "followingSource": "N111Value,p134v_value,p140tc_values(),p140tc_values()),p140e_values(p140tc_values(),p140tc_values())) && Bool.not(p140e_values([],p140tc_values())) && Bool.not(p140e_values(p140tc_"
+        },
+        {
+          "callee": "p140e_values",
+          "line": 64399,
+          "followingSource": "p140tc_values(),p140tc_values())) && Bool.not(p140e_values([],p140tc_values())) && Bool.not(p140e_values(p140tc_values(),[])) && p140e_values([],[])),"
+        },
+        {
+          "callee": "p140e_values",
+          "line": 64399,
+          "followingSource": "[],p140tc_values())) && Bool.not(p140e_values(p140tc_values(),[])) && p140e_values([],[])),"
+        },
+        {
+          "callee": "p140e_values",
+          "line": 64399,
+          "followingSource": "p140tc_values(),[])) && p140e_values([],[])),"
+        },
+        {
+          "callee": "p140e_values",
+          "line": 64399,
+          "followingSource": "[],[])),"
+        },
+        {
+          "callee": "p134v_list",
+          "line": 64400,
+          "followingSource": "N111Arg,p134v_arg,p140tc_args(),p140tc_args()),p140e_args(p140tc_args(),p140tc_args())) && Bool.not(p140e_args([],p140tc_args())) && Bool.not(p140e_args(p140tc_args(),[])) && p140e"
+        },
+        {
+          "callee": "p140e_args",
+          "line": 64400,
+          "followingSource": "p140tc_args(),p140tc_args())) && Bool.not(p140e_args([],p140tc_args())) && Bool.not(p140e_args(p140tc_args(),[])) && p140e_args([],[])),"
+        },
+        {
+          "callee": "p140e_args",
+          "line": 64400,
+          "followingSource": "[],p140tc_args())) && Bool.not(p140e_args(p140tc_args(),[])) && p140e_args([],[])),"
+        },
+        {
+          "callee": "p140e_args",
+          "line": 64400,
+          "followingSource": "p140tc_args(),[])) && p140e_args([],[])),"
+        },
+        {
+          "callee": "p140e_args",
+          "line": 64400,
+          "followingSource": "[],[])),"
+        },
+        {
+          "callee": "p134v_list",
+          "line": 64401,
+          "followingSource": "NC_Binding,p134v_binding,p140tc_bindings(),p140tc_bindings()),p140e_bindings(p140tc_bindings(),p140tc_bindings())) && Bool.not(p140e_bindings([],p140tc_bindings())) && Bool.not(p14"
+        },
+        {
+          "callee": "p140e_bindings",
+          "line": 64401,
+          "followingSource": "p140tc_bindings(),p140tc_bindings())) && Bool.not(p140e_bindings([],p140tc_bindings())) && Bool.not(p140e_bindings(p140tc_bindings(),[])) && p140e_bindings([],[])),"
+        },
+        {
+          "callee": "p140e_bindings",
+          "line": 64401,
+          "followingSource": "[],p140tc_bindings())) && Bool.not(p140e_bindings(p140tc_bindings(),[])) && p140e_bindings([],[])),"
+        },
+        {
+          "callee": "p140e_bindings",
+          "line": 64401,
+          "followingSource": "p140tc_bindings(),[])) && p140e_bindings([],[])),"
+        },
+        {
+          "callee": "p140e_bindings",
+          "line": 64401,
+          "followingSource": "[],[])),"
+        },
+        {
+          "callee": "p134v_list",
+          "line": 64402,
+          "followingSource": "N111Stmt,p134v_scalar,p140tc_scalars(),p140tc_scalars()),p140e_scalars(p140tc_scalars(),p140tc_scalars())) && Bool.not(p140e_scalars([],p140tc_scalars())) && Bool.not(p140e_scalars"
+        },
+        {
+          "callee": "p140e_scalars",
+          "line": 64402,
+          "followingSource": "p140tc_scalars(),p140tc_scalars())) && Bool.not(p140e_scalars([],p140tc_scalars())) && Bool.not(p140e_scalars(p140tc_scalars(),[])) && p140e_scalars([],[])),"
+        },
+        {
+          "callee": "p140e_scalars",
+          "line": 64402,
+          "followingSource": "[],p140tc_scalars())) && Bool.not(p140e_scalars(p140tc_scalars(),[])) && p140e_scalars([],[])),"
+        },
+        {
+          "callee": "p140e_scalars",
+          "line": 64402,
+          "followingSource": "p140tc_scalars(),[])) && p140e_scalars([],[])),"
+        },
+        {
+          "callee": "p140e_scalars",
+          "line": 64402,
+          "followingSource": "[],[])),"
+        },
+        {
+          "callee": "p134v_list",
+          "line": 64403,
+          "followingSource": "P113DStmt,p134v_stmt,p140tc_stmts(),p140tc_stmts()),p140e_stmts(p140tc_stmts(),p140tc_stmts())) && Bool.not(p140e_stmts([],p140tc_stmts())) && Bool.not(p140e_stmts(p140tc_stmts(),["
+        },
+        {
+          "callee": "p140e_stmts",
+          "line": 64403,
+          "followingSource": "p140tc_stmts(),p140tc_stmts())) && Bool.not(p140e_stmts([],p140tc_stmts())) && Bool.not(p140e_stmts(p140tc_stmts(),[])) && p140e_stmts([],[])),"
+        },
+        {
+          "callee": "p140e_stmts",
+          "line": 64403,
+          "followingSource": "[],p140tc_stmts())) && Bool.not(p140e_stmts(p140tc_stmts(),[])) && p140e_stmts([],[])),"
+        },
+        {
+          "callee": "p140e_stmts",
+          "line": 64403,
+          "followingSource": "p140tc_stmts(),[])) && p140e_stmts([],[])),"
+        },
+        {
+          "callee": "p140e_stmts",
+          "line": 64403,
+          "followingSource": "[],[])),"
+        },
+        {
+          "callee": "p134v_list",
+          "line": 64404,
+          "followingSource": "P113DFunction,p134v_header,p140tc_functions(),p140tc_functions()),p140e_headers(p140tc_functions(),p140tc_functions())) && Bool.not(p140e_headers([],p140tc_functions())) && Bool.no"
+        },
+        {
+          "callee": "p140e_headers",
+          "line": 64404,
+          "followingSource": "p140tc_functions(),p140tc_functions())) && Bool.not(p140e_headers([],p140tc_functions())) && Bool.not(p140e_headers(p140tc_functions(),[])) && p140e_headers([],[])),"
+        },
+        {
+          "callee": "p140e_headers",
+          "line": 64404,
+          "followingSource": "[],p140tc_functions())) && Bool.not(p140e_headers(p140tc_functions(),[])) && p140e_headers([],[])),"
+        },
+        {
+          "callee": "p140e_headers",
+          "line": 64404,
+          "followingSource": "p140tc_functions(),[])) && p140e_headers([],[])),"
+        },
+        {
+          "callee": "p140e_headers",
+          "line": 64404,
+          "followingSource": "[],[])),"
+        },
+        {
+          "callee": "p134v_list",
+          "line": 64405,
+          "followingSource": "N111Segment,p140v_header,p140tc_raw_headers(),p140tc_raw_headers()),p140e_raw_headers(p140tc_raw_headers(),p140tc_raw_headers())) && Bool.not(p140e_raw_headers([],p140tc_raw_header"
+        },
+        {
+          "callee": "p140e_raw_headers",
+          "line": 64405,
+          "followingSource": "p140tc_raw_headers(),p140tc_raw_headers())) && Bool.not(p140e_raw_headers([],p140tc_raw_headers())) && Bool.not(p140e_raw_headers(p140tc_raw_headers(),[])) && p140e_raw_headers([],"
+        },
+        {
+          "callee": "p140e_raw_headers",
+          "line": 64405,
+          "followingSource": "[],p140tc_raw_headers())) && Bool.not(p140e_raw_headers(p140tc_raw_headers(),[])) && p140e_raw_headers([],[])),"
+        },
+        {
+          "callee": "p140e_raw_headers",
+          "line": 64405,
+          "followingSource": "p140tc_raw_headers(),[])) && p140e_raw_headers([],[])),"
+        },
+        {
+          "callee": "p140e_raw_headers",
+          "line": 64405,
+          "followingSource": "[],[])),"
+        },
+        {
+          "callee": "p134v_list",
+          "line": 64406,
+          "followingSource": "N_Constructor,p140v_ctor,p140tc_ctors(),p140tc_ctors()),p140e_ctors(p140tc_ctors(),p140tc_ctors())) && Bool.not(p140e_ctors([],p140tc_ctors())) && Bool.not(p140e_ctors(p140tc_ctors"
+        },
+        {
+          "callee": "p140e_ctors",
+          "line": 64406,
+          "followingSource": "p140tc_ctors(),p140tc_ctors())) && Bool.not(p140e_ctors([],p140tc_ctors())) && Bool.not(p140e_ctors(p140tc_ctors(),[])) && p140e_ctors([],[])),"
+        },
+        {
+          "callee": "p140e_ctors",
+          "line": 64406,
+          "followingSource": "[],p140tc_ctors())) && Bool.not(p140e_ctors(p140tc_ctors(),[])) && p140e_ctors([],[])),"
+        },
+        {
+          "callee": "p140e_ctors",
+          "line": 64406,
+          "followingSource": "p140tc_ctors(),[])) && p140e_ctors([],[])),"
+        },
+        {
+          "callee": "p140e_ctors",
+          "line": 64406,
+          "followingSource": "[],[])),"
+        },
+        {
+          "callee": "p140e_strings",
+          "line": 64407,
+          "followingSource": "[\"a\",\"b\"],[\"a\",\"b\"]) && Bool.not(p140e_strings([\"a\",\"b\"],[\"a\",\"c\"])) && Bool.not(p140e_strings([\"a\"],[])) && p140e_strings([],[])),"
+        },
+        {
+          "callee": "p140e_strings",
+          "line": 64407,
+          "followingSource": "[\"a\",\"b\"],[\"a\",\"c\"])) && Bool.not(p140e_strings([\"a\"],[])) && p140e_strings([],[])),"
+        },
+        {
+          "callee": "p140e_strings",
+          "line": 64407,
+          "followingSource": "[\"a\"],[])) && p140e_strings([],[])),"
+        },
+        {
+          "callee": "p140e_strings",
+          "line": 64407,
+          "followingSource": "[],[])),"
+        },
+        {
+          "callee": "p140e_u32s",
+          "line": 64408,
+          "followingSource": "[0,1,4294967295],[0,1,4294967295]) && Bool.not(p140e_u32s([0,1],[0,2])) && Bool.not(p140e_u32s([],[0])) && p140e_u32s([],[]))]"
+        },
+        {
+          "callee": "p140e_u32s",
+          "line": 64408,
+          "followingSource": "[0,1],[0,2])) && Bool.not(p140e_u32s([],[0])) && p140e_u32s([],[]))]"
+        },
+        {
+          "callee": "p140e_u32s",
+          "line": 64408,
+          "followingSource": "[],[0])) && p140e_u32s([],[]))]"
+        },
+        {
+          "callee": "p140e_u32s",
+          "line": 64408,
+          "followingSource": "[],[]))]"
+        }
+      ]
+    }
+  ]
+}

@@ -113,3 +113,18 @@ screen still exceeds the5% criterion; qualification/promotion remain withheld.
 An optional separate sampling run may identify residual warm work. Instrumented
 times must remain separate from clean scores. Stop adding speculative caches;
 measure the integrated candidate and preserve the remaining floor explicitly.
+# Final bounded experiment checkpoint,20:35 UTC
+
+Candidate17 passes the independently referenced full product-policy pair with
+105.228s native warm time. The available-executable subtotal is124.337s; charging
+all shared session/runner overhead to the edit gives128.610s, versus346.960s
+fresh with the same measured machine build. The cold seed remains8.93% slower
+than the initial prototype. This is progress on warm reuse, not a cold-gate pass.
+
+One final candidate replaces private higher-order equality callbacks with exact
+typed Bend comparisons. Source checking,255 finite controls, two-family complete
+output/plan equality and error recovery pass before native acquisition. It is
+motivated by actual generated callback/continuation machinery, not hit counts.
+Its outcome will decide whether to generalize comparison specialization or
+prioritize cross-stage change evidence. Do not add another independent cache
+layer after this experiment in the current campaign.

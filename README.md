@@ -152,6 +152,11 @@ this workload, and cached machine replay still trails monolithic construction.
 Stage timings place 62.7% of the edit before the existing cache, motivating
 earlier prepared-definition reuse. The qualified core and selection stay unchanged.
 
+The [Phase140 early-reuse experiment](implementation/phase140/README.md) measures
+real native compiler edits with parser/checker and prepared-owner reuse, keeping
+independent fresh-output checks. It remains experimental: cold overhead and the
+remaining whole-program work prevent the10× warm-build objective and promotion.
+
 The [incremental native development guide](docs/self_hosted/incremental-native-development.md)
 links the measured QBE size, memory and object-reuse investigation, its Go-inspired
 architecture, and the remaining boundary before fast source-level edits.

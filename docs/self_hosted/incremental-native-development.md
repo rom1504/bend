@@ -1,5 +1,18 @@
 # Native development: qualified checkpoint and incremental experiments
 
+The current qualified research compiler is [Phase137 N3](../../implementation/phase137/README.md).
+The commands below preserve the historical Phase134 checkpoint; they do not
+silently select a newer executable.
+
+[Phase140 early incremental sessions](../../implementation/phase140/README.md)
+now reuse parser/checker checkpoints, owner preparation, lowered products and
+verified/rendered results across real compiler source edits. This is a checked,
+experimentally measured native batch path, with exact independent output checks,
+not the installed default or a general interactive build service. Its cold
+overhead fails the promotion target. See the report for final timings and scope,
+and the [batch interface](../../selfhost/tools/performance/phase140/session/batch-README.md)
+for bounded reproduction. The10× warm-build objective remains unmet.
+
 [Phase135 real compiler rebuild](../../implementation/phase135/README.md) adds
 native compiler-announced object groups and independent current/cold validation.
 It is a tested experimental route, **not yet a faster complete edit loop** and

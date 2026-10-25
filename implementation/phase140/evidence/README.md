@@ -1,5 +1,25 @@
 # Phase140 compact evidence
 
+The final [index](final01/index.json) and [archive](final01/metadata.tar.gz)
+preserve990 files:9,589,604 raw bytes in1,396,906 compressed bytes. Every member
+passed byte-exact roundtrip verification; all recorded identities checked against
+the current workspace matched. This includes the final source-module snapshots,
+checked API receipts,255 controls, full native comparisons, independent rebuilt
+compiler requests, the raw23,157-sample capture and offline analyses.
+
+Its [cost ledger](final01/costs.json) includes all101 campaign guards. It overlaps
+earlier capsules; do not add the ledgers. [cost-final.md](../cost-final.md) gives
+the interval-union and category breakdown. Earlier failed source/test attempts
+and independent first-product evidence are preserved in `components03` and
+`native-initial01`; `final01` is additive, not a replacement that erases them.
+
+Inspect or restore archive members into a fresh directory, using the index's
+relative member paths and SHA-256 values. Do not overwrite current workspace
+artifacts. Full compiler source, generated API, QBE, executable and toolchain
+payloads remain excluded and explicitly listed. Restore the qualified Phase137
+parent and use the pinned module composition/build commands to regenerate them;
+these capsules are not a standalone native bootstrap distribution.
+
 Use [components02/index.json](components02/index.json) and its
 [metadata archive](components02/metadata.tar.gz) for the initial completed
 component and integrated hosted screen. The index preserves original absolute

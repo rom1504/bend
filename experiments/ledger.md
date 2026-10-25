@@ -5850,3 +5850,16 @@ Native adapter independently source checked;33 preflight controls pass. Full
 native acquisition underway. Qualified Phase137 N3 and installed selection stay
 unchanged; no10× result or whole-compiler proof claimed. Negative parser
 lookahead, specialization memo and small-request overhead findings retained.
+
+
+## 2026-10-25 — Phase140 final early incremental checkpoint
+
+[Report](../implementation/phase140/README.md), [identities](../implementation/phase140/candidate.json), [costs](../implementation/phase140/cost-final.md), [evidence](../implementation/phase140/evidence/README.md).
+
+Final checked source18 native producer processes the frozen full compiler product-policy edit in101.030s warm stages. Available-executable subtotal120.368s vs346.960s fresh; charge all shared session/runner overhead and it is124.679s,2.783×. Both106MB products match independent qualified references.10× remains unmet. Cache-seeding cold363.377s vs334.286s initial (+8.70%); no installed promotion or broad runtime/self-reproduction claim.
+
+255 controls, two-family exact products/plans/error recovery, four native alternating Lexer revisions and three independent requests by rebuilt B pass. Earlier inline/continuation full-edit rows lack independent references and remain exploratory. Existing proof declarations preserved, no new theorem. Source+5,839physical lines incl adapters/tests. Bounded native batch is not an interactive development service.
+
+Fresh diagnostic profile:23,157samples, zero loss,99.4% main-thread coverage. Approximate warm window:24.33% reclamation,13.03% ownership/products,11.27% string equality,4.81% ordering; physical observations, not additive savings. Typed comparator callback work really disappeared but scheduler work remains and whole-request gain against source17 was only3.99% once.
+
+101 completed guards,29 failures;92.49min summed workflows/91.40min union. Final capsule990files has byte-exact roundtrip and zero current identity mismatches. Preserve qualified Phase137 N3. Next test exact producer-issued unchanged evidence across raw lowering→verifier admission, retaining context checks and final independent verifier, before another cache layer or broad qualification campaign.

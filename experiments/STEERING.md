@@ -1,4 +1,29 @@
-# Latest design: Phase139 reusable checked units
+# Latest experiment: Phase140 early native incremental sessions
+
+[Report](../implementation/phase140/README.md) ·
+[Exact identities](../implementation/phase140/candidate.json) ·
+[Next boundary](../research/phase140/next-reuse-boundary.md).
+
+Final source18 is checked, experimentally native-tested, and unselected. Actual
+late product-policy A→B edit:101.030s warm native;120.368s available-executable
+subtotal versus346.960s fresh. Charging all shared session overhead gives124.679s,
+2.783× faster. Both full QBE products match qualified independent references.
+This is not10×, a generic interactive service or a new upstream comparison.
+
+255 finite controls, two-family complete-product/plan/error-recovery checks,
+four native Lexer revisions and three requests by the rebuilt B compiler pass.
+No new broad45 runtime campaign or N1/N2 qualification; Phase137 N3 remains
+qualified and installed selection is unchanged. Cache-seeding cold request is
+8.70% slower than initial prototype. Source+5,839physical lines incl controls;
+peak about2.31GB. Retain the cold-gate failure and unqualified earlier edit rows.
+
+Prefer carrying producer-owned exact change evidence across stages over adding
+another independent deep cache comparison. First test raw unchanged-segment
+evidence→verifier body admission against the old comparator, preserving context
+checks and final independent verification. Frontend book/index rebuilding and
+full output/machine construction are separate floors; one helper cannot meet10×.
+
+# Previous design: Phase139 reusable checked units
 
 [Fivefold options](../design/phase139/compilation-speed-options.md) ·
 [Detailed source investigation](../research/phase139/reusable-checked-units.md) ·

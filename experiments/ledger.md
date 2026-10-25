@@ -4,6 +4,24 @@ This ledger records decisions and links evidence; it does not replace the report
 Read [workflow](README.md) and [current strategy](STEERING.md) before a new investigation.
 User objective: make the Bend compiler written in Bend and its validation loop much faster while preserving correctness. Historical authorization windows are recorded below; current release status and priorities are in [STEERING.md](STEERING.md).
 
+## Phase141 — Static sharing and one parser (2026-10-25)
+
+[Design](../design/phase141/README.md) · [Experiment](phase141/P141-001-architectural-replacement.md) ·
+[Report](../implementation/phase141/README.md).
+
+Two complete duplicated mechanisms retired. Static comparator family220→83 code
+lines; integrated experimental source−828physical/−606code, including76 control
+lines. Exact parser results1,739 plus48 checkpoint controls; five shared hosted
+stack failures remain untested. Native static specialization matches handwritten
+proxy medians; generic callback takes1.81–1.88×. This is not a whole-compiler gain.
+Ordinary N1/N2 chain and frozen focused19/ordinary45 gates pass, final45 QBE exact.
+Incremental service remains experimental and installed Phase137 stays selected.
+Full edit cold+2.23%, warm+0.18%; ordinary same-source request+8.60%, then+2.91%
+on flagged repeat. No general5% throughput bound or speed promotion. Failed
+attempts and research costs are in the report.
+The source census does not justify a10k rewrite; maintain supported public APIs,
+proof/final-verifier boundaries and distinguish active implementation from history.
+
 ## Phase139 — Reusable checked units: detailed source investigation (2026-10-25)
 
 [Options](../design/phase139/compilation-speed-options.md) ·

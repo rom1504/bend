@@ -1,4 +1,32 @@
-# Latest experiment: Phase140 early native incremental sessions
+# Latest experiment: Phase141 bounded compiler simplification
+
+[Report](../implementation/phase141/README.md) ·
+[Candidate](../implementation/phase141/candidate.json) ·
+[Measurements](../implementation/phase141/metrics.json) ·
+[10k decision](../research/phase141/ten-k-decision.md).
+
+Retired the duplicated normal/incremental top grammar and handwritten comparator
+specialization family. Static Bend templates retain native proxy speed while the
+family shrinks220→83 code lines. Full experimental source64,408→63,580 physical,
+46,808→46,202 code, including76 removed test-helper lines;68 fewer definitions.
+This is1.3% of the experimental compiler, not a10k compiler or repository shrink.
+
+Exact source independently checked; actual qualified137N3→N1→N2 chain reproduces
+complete QBE. Both focused19 and final ordinary45 gates pass; all45 products match
+frozen QBE. No new runtime-speed campaign, proof or JS/C-specific qualification.
+Ordinary native route qualified; Phase140 incremental sessions remain experimental.
+Installed/default Phase137 selection remains unchanged. Whole-request and full-edit
+costs are reported separately; do not extrapolate the1.8× callback proxy gap.
+Matched full edit: cold+2.23%, warm+0.18%, guarded session+1.70%. Ordinary same-
+source request+8.60% initially,+2.91% on repeat; retain both. No general5%
+throughput bound or speed promotion is established.
+
+Current source audits identify no coherent thousand-line replacement with a
+preserved full contract. Further static sharing may help; a universal IR rewrite
+or10k promise is not justified by this evidence. Prefer measured development-loop
+gains unless a larger replacement first establishes an exact retirement budget.
+
+# Previous experiment: Phase140 early native incremental sessions
 
 [Report](../implementation/phase140/README.md) ·
 [Exact identities](../implementation/phase140/candidate.json) ·

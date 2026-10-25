@@ -1,0 +1,1205 @@
+{
+  "kind": "phase141-completed-evidence-summary",
+  "complete": true,
+  "source": {
+    "before": {
+      "bytes": 2978442,
+      "physical": 64408,
+      "nonblank": 53161,
+      "code": 46808,
+      "definitions": 6955,
+      "laws": 700,
+      "types": 357
+    },
+    "after": {
+      "bytes": 2942924,
+      "physical": 63580,
+      "nonblank": 52493,
+      "code": 46202,
+      "definitions": 6887,
+      "laws": 683,
+      "types": 357
+    },
+    "productionCodeDelta": -530,
+    "controlCodeDelta": -76,
+    "conceptsRetired": [
+      "independent normal top-declaration grammar",
+      "handwritten list/comparator specialization family"
+    ]
+  },
+  "ordinaryNativeQualified": true,
+  "incrementalQualified": false,
+  "selected": false,
+  "smallRequests": [
+    {
+      "name": "lexer",
+      "medians": {
+        "baseline": 1.4966296383645386,
+        "candidate": 1.4700744992587715
+      },
+      "candidateOverBaseline": 0.9822567063854318
+    },
+    {
+      "name": "coverage-closures-256",
+      "medians": {
+        "baseline": 0.4713061407674104,
+        "candidate": 0.42355837440118194
+      },
+      "candidateOverBaseline": 0.8986905490166487
+    },
+    {
+      "name": "coverage-map-churn-128",
+      "medians": {
+        "baseline": 1.9728440071921796,
+        "candidate": 1.976611073128879
+      },
+      "candidateOverBaseline": 1.0019094596039861
+    }
+  ],
+  "sameSourceFullRequest": {
+    "source": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase141/integrated-source02/compiler.bend",
+      "bytes": 2942924,
+      "sha256": "f5bfca6d1fe9b378955d6c89ba5ec2428ec1627d7d008eb0c15eac1b51c8a06a"
+    },
+    "qualified137Seconds": 369.6970595358871,
+    "directParent140Seconds": 366.33117568073794,
+    "candidate141Seconds": 397.8395769246854,
+    "candidate141RepeatSeconds": 376.98242293763906,
+    "candidateOverParent": 1.08601070106959,
+    "candidateRepeatOverParent": 1.0290754594858282,
+    "candidateOverQualified137": 1.0761231842745194,
+    "candidateLoadSectionsExact": true,
+    "qbeExact": true,
+    "scope": "One observation for qualified137 and direct parent140; initial candidate N1 observation plus a flagged-case N2 repeat on identical source02 and authenticated Base. All allocated file-backed ELF sections of N1/N2 match. Whole native process including reads and QBE writes; excludes machine construction. Both candidate observations retained; no confidence interval."
+  },
+  "incrementalSessions": {
+    "values": {
+      "baseline": {
+        "nativeSeconds": 458.41802559699863,
+        "totalSeconds": 469.1227869889699,
+        "guardWallSeconds": 470.7587181888521,
+        "peakTreeRssBytes": 2305253376,
+        "prepareMs": 221,
+        "jobs": [
+          {
+            "name": "seed",
+            "source": "/home/ai/bend2/build/publish/bend/selfhost/build/phase137/integrated-source03/compiler.bend",
+            "stages": {
+              "frontendMs": 128242,
+              "rawMs": 70099,
+              "backendMs": 90177,
+              "registryMs": 15210,
+              "renderCloseMs": 49908,
+              "totalMs": 353636
+            },
+            "ioMs": 57,
+            "transportSeconds": 4.795432968996465,
+            "product": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase140/p141-full-edit-baseline01/000-transport/payload.bin",
+              "bytes": 106285793,
+              "sha256": "c12af8c87c7e96e15fd18b7e16c2c0cc5ec21f8dae5dbfd9bdc79762d88e54cd"
+            },
+            "exactOracle": true,
+            "reusedBytes": 0,
+            "freshBytes": 106285793
+          },
+          {
+            "name": "product-policy",
+            "source": "/home/ai/bend2/build/publish/bend/selfhost/build/phase140/edits01/product-policy.bend",
+            "stages": {
+              "frontendMs": 31033,
+              "rawMs": 13385,
+              "backendMs": 40042,
+              "registryMs": 9879,
+              "renderCloseMs": 6726,
+              "totalMs": 101065
+            },
+            "ioMs": 71,
+            "transportSeconds": 5.321163539774716,
+            "product": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase140/p141-full-edit-baseline01/001-transport/payload.bin",
+              "bytes": 106285793,
+              "sha256": "a5149b2410d70546b7a28ff907aa312b6431cf8c5348107e7b675b9e9f54702e"
+            },
+            "exactOracle": true,
+            "reusedBytes": 104262099,
+            "freshBytes": 2023694
+          }
+        ]
+      },
+      "candidate": {
+        "nativeSeconds": 466.5315048689954,
+        "totalSeconds": 477.1819129511714,
+        "guardWallSeconds": 478.7502499539405,
+        "peakTreeRssBytes": 2304675840,
+        "prepareMs": 223,
+        "jobs": [
+          {
+            "name": "seed",
+            "source": "/home/ai/bend2/build/publish/bend/selfhost/build/phase137/integrated-source03/compiler.bend",
+            "stages": {
+              "frontendMs": 129357,
+              "rawMs": 71490,
+              "backendMs": 95730,
+              "registryMs": 15333,
+              "renderCloseMs": 49601,
+              "totalMs": 361511
+            },
+            "ioMs": 57,
+            "transportSeconds": 4.811099897138774,
+            "product": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase140/p141-full-edit-candidate01/000-transport/payload.bin",
+              "bytes": 106285793,
+              "sha256": "c12af8c87c7e96e15fd18b7e16c2c0cc5ec21f8dae5dbfd9bdc79762d88e54cd"
+            },
+            "exactOracle": true,
+            "reusedBytes": 0,
+            "freshBytes": 106285793
+          },
+          {
+            "name": "product-policy",
+            "source": "/home/ai/bend2/build/publish/bend/selfhost/build/phase140/edits01/product-policy.bend",
+            "stages": {
+              "frontendMs": 31490,
+              "rawMs": 13290,
+              "backendMs": 39640,
+              "registryMs": 10027,
+              "renderCloseMs": 6802,
+              "totalMs": 101249
+            },
+            "ioMs": 72,
+            "transportSeconds": 5.295196684543043,
+            "product": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase140/p141-full-edit-candidate01/001-transport/payload.bin",
+              "bytes": 106285793,
+              "sha256": "a5149b2410d70546b7a28ff907aa312b6431cf8c5348107e7b675b9e9f54702e"
+            },
+            "exactOracle": true,
+            "reusedBytes": 104262099,
+            "freshBytes": 2023694
+          }
+        ]
+      }
+    },
+    "candidateOverBaseline": {
+      "nativeSeconds": 1.0176988661417286,
+      "totalSeconds": 1.0171791398450891,
+      "guardWallSeconds": 1.016975855053379,
+      "jobs": [
+        {
+          "name": "seed",
+          "nativeCompileRatio": 1.0222686604304991,
+          "measuredRequestSubtotalRatio": 1.0220109387150706
+        },
+        {
+          "name": "product-policy",
+          "nativeCompileRatio": 1.0018206104981942,
+          "measuredRequestSubtotalRatio": 1.0014938698297078
+        }
+      ]
+    },
+    "fourRevisionSmokeExact": true,
+    "scope": "Same qualified compiler source and actual product-policy edit; one two-revision session per version. Native stages, measured transport and outer guard wall reported separately; no new machine build or upstream ratio."
+  },
+  "gates": {
+    "p141-integrated-focused19": {
+      "positiveCompiled": 16,
+      "positiveBuilt": 16,
+      "positiveExecuted": 16,
+      "semanticPasses": 16,
+      "expectedRefusals": 3,
+      "expectedSourceRefusals": 2,
+      "expectedBackendRefusals": 1,
+      "pending": 0
+    },
+    "p141-n2-focused19": {
+      "positiveCompiled": 16,
+      "positiveBuilt": 16,
+      "positiveExecuted": 16,
+      "semanticPasses": 16,
+      "expectedRefusals": 3,
+      "expectedSourceRefusals": 2,
+      "expectedBackendRefusals": 1,
+      "pending": 0
+    },
+    "p141-n2-full45": {
+      "positiveCompiled": 45,
+      "positiveBuilt": 45,
+      "positiveExecuted": 45,
+      "semanticPasses": 45,
+      "expectedRefusals": 0,
+      "expectedSourceRefusals": 0,
+      "expectedBackendRefusals": 0,
+      "pending": 0
+    }
+  },
+  "generatedCodeQuality": {
+    "full45QbeExact": true,
+    "newRuntimeCampaign": false
+  },
+  "cost": {
+    "recordedAt": "2026-10-25T23:31:30.691758+00:00",
+    "campaignSeconds": 6128.691757678986,
+    "guardSeconds": 4179.875919106416,
+    "guardCoveredWallSeconds": 4179.875760316849,
+    "guardSecondsByCategory": {
+      "independent source checking": 71.96894051181152,
+      "native source requests": 2654.2129524904303,
+      "other controls/probes/measurement": 201.79546689009294,
+      "incremental sessions": 955.5308843855746,
+      "native machine construction": 49.32535429159179,
+      "native semantic gates": 247.0423205369152
+    },
+    "guardCount": 40,
+    "failedGuards": [
+      {
+        "file": "selfhost/build/phase111/p141-integrated-api-guard01/process.json",
+        "category": "independent source checking",
+        "seconds": 3.2416942780837417,
+        "started": 1792967403.2089465,
+        "finished": 1792967406.4506347,
+        "exitCode": 1,
+        "complete": false,
+        "peakRssBytes": 302653440
+      },
+      {
+        "file": "selfhost/build/phase111/p141-integrated-full45-guard/process.json",
+        "category": "native semantic gates",
+        "seconds": 0.1464228117838502,
+        "started": 1792968494.6308582,
+        "finished": 1792968494.7772772,
+        "exitCode": 1,
+        "complete": false,
+        "peakRssBytes": 31031296
+      },
+      {
+        "file": "selfhost/build/phase111/p141-parser-corpus-guard01/process.json",
+        "category": "other controls/probes/measurement",
+        "seconds": 19.76082587474957,
+        "started": 1792965628.1101198,
+        "finished": 1792965647.870945,
+        "exitCode": -11,
+        "complete": false,
+        "peakRssBytes": 335593472
+      }
+    ],
+    "peakRecordedTreeRssBytes": 2323963904,
+    "guards": [
+      {
+        "file": "selfhost/build/phase111/p141-baseline-api-guard01/process.json",
+        "category": "independent source checking",
+        "seconds": 15.41069169389084,
+        "started": 1792965467.2164621,
+        "finished": 1792965482.6271484,
+        "exitCode": 0,
+        "complete": true,
+        "peakRssBytes": 2323963904
+      },
+      {
+        "file": "selfhost/build/phase111/p141-baseline-full-guard01/process.json",
+        "category": "native source requests",
+        "seconds": 387.48407119791955,
+        "started": 1792966951.1861277,
+        "finished": 1792967338.6701944,
+        "exitCode": 0,
+        "complete": true,
+        "peakRssBytes": 1090605056
+      },
+      {
+        "file": "selfhost/build/phase111/p141-exact-api-guard/process.json",
+        "category": "independent source checking",
+        "seconds": 15.70470098592341,
+        "started": 1792968646.3865743,
+        "finished": 1792968662.091267,
+        "exitCode": 0,
+        "complete": true,
+        "peakRssBytes": 2225926144
+      },
+      {
+        "file": "selfhost/build/phase111/p141-exact-finite-guard/process.json",
+        "category": "other controls/probes/measurement",
+        "seconds": 0.7591359061188996,
+        "started": 1792968662.1763816,
+        "finished": 1792968662.935512,
+        "exitCode": 0,
+        "complete": true,
+        "peakRssBytes": 154456064
+      },
+      {
+        "file": "selfhost/build/phase111/p141-family-finite-guard01/process.json",
+        "category": "other controls/probes/measurement",
+        "seconds": 0.8597578066401184,
+        "started": 1792967699.0988595,
+        "finished": 1792967699.9586167,
+        "exitCode": 0,
+        "complete": true,
+        "peakRssBytes": 160530432
+      },
+      {
+        "file": "selfhost/build/phase111/p141-final-same-source-guard02/process.json",
+        "category": "native source requests",
+        "seconds": 379.5150164999068,
+        "started": 1792970644.6693265,
+        "finished": 1792971024.1843407,
+        "exitCode": 0,
+        "complete": true,
+        "peakRssBytes": 1088446464
+      },
+      {
+        "file": "selfhost/build/phase111/p141-full-edit-baseline-guard01/process.json",
+        "category": "incremental sessions",
+        "seconds": 470.7587181888521,
+        "started": 1792969265.975109,
+        "finished": 1792969736.7338243,
+        "exitCode": 0,
+        "complete": true,
+        "peakRssBytes": 2305253376
+      },
+      {
+        "file": "selfhost/build/phase111/p141-full-edit-candidate-guard01/process.json",
+        "category": "incremental sessions",
+        "seconds": 478.7502499539405,
+        "started": 1792969737.4760385,
+        "finished": 1792970216.2262733,
+        "exitCode": 0,
+        "complete": true,
+        "peakRssBytes": 2304675840
+      },
+      {
+        "file": "selfhost/build/phase111/p141-incremental-smoke-guard01/process.json",
+        "category": "incremental sessions",
+        "seconds": 6.0219162427820265,
+        "started": 1792969259.8154879,
+        "finished": 1792969265.837402,
+        "exitCode": 0,
+        "complete": true,
+        "peakRssBytes": 68526080
+      },
+      {
+        "file": "selfhost/build/phase111/p141-integrated-api-guard01/process.json",
+        "category": "independent source checking",
+        "seconds": 3.2416942780837417,
+        "started": 1792967403.2089465,
+        "finished": 1792967406.4506347,
+        "exitCode": 1,
+        "complete": false,
+        "peakRssBytes": 302653440
+      },
+      {
+        "file": "selfhost/build/phase111/p141-integrated-api-guard02/process.json",
+        "category": "independent source checking",
+        "seconds": 15.211206736043096,
+        "started": 1792967629.9034777,
+        "finished": 1792967645.1146789,
+        "exitCode": 0,
+        "complete": true,
+        "peakRssBytes": 2281377792
+      },
+      {
+        "file": "selfhost/build/phase111/p141-integrated-build-guard01/process.json",
+        "category": "native machine construction",
+        "seconds": 16.244573306757957,
+        "started": 1792968244.2961695,
+        "finished": 1792968260.5407405,
+        "exitCode": 0,
+        "complete": true,
+        "peakRssBytes": 1018347520
+      },
+      {
+        "file": "selfhost/build/phase111/p141-integrated-emit-guard01/process.json",
+        "category": "native source requests",
+        "seconds": 370.85872125066817,
+        "started": 1792967799.9366553,
+        "finished": 1792968170.795374,
+        "exitCode": 0,
+        "complete": true,
+        "peakRssBytes": 1085198336
+      },
+      {
+        "file": "selfhost/build/phase111/p141-integrated-focused19-guard/process.json",
+        "category": "native semantic gates",
+        "seconds": 21.234455132856965,
+        "started": 1792968663.0716493,
+        "finished": 1792968684.3061008,
+        "exitCode": 0,
+        "complete": true,
+        "peakRssBytes": 104570880
+      },
+      {
+        "file": "selfhost/build/phase111/p141-integrated-full45-guard/process.json",
+        "category": "native semantic gates",
+        "seconds": 0.1464228117838502,
+        "started": 1792968494.6308582,
+        "finished": 1792968494.7772772,
+        "exitCode": 1,
+        "complete": false,
+        "peakRssBytes": 31031296
+      },
+      {
+        "file": "selfhost/build/phase111/p141-integrated-full45-guard02/process.json",
+        "category": "native semantic gates",
+        "seconds": 95.69593056989834,
+        "started": 1792968516.64518,
+        "finished": 1792968612.3411057,
+        "exitCode": 0,
+        "complete": true,
+        "peakRssBytes": 112132096
+      },
+      {
+        "file": "selfhost/build/phase111/p141-integrated-n2-guard/process.json",
+        "category": "native machine construction",
+        "seconds": 16.1534517230466,
+        "started": 1792969085.6162117,
+        "finished": 1792969101.7696602,
+        "exitCode": 0,
+        "complete": true,
+        "peakRssBytes": 1018531840
+      },
+      {
+        "file": "selfhost/build/phase111/p141-integrated-pairs-guard01/process.json",
+        "category": "other controls/probes/measurement",
+        "seconds": 32.34633852401748,
+        "started": 1792968299.935738,
+        "finished": 1792968332.2820747,
+        "exitCode": 0,
+        "complete": true,
+        "peakRssBytes": 62525440
+      },
+      {
+        "file": "selfhost/build/phase111/p141-integrated-self-guard/process.json",
+        "category": "native source requests",
+        "seconds": 400.40164148714393,
+        "started": 1792968684.771842,
+        "finished": 1792969085.1734793,
+        "exitCode": 0,
+        "complete": true,
+        "peakRssBytes": 1086300160
+      },
+      {
+        "file": "selfhost/build/phase111/p141-n1-build-guard/process.json",
+        "category": "native machine construction",
+        "seconds": 16.325645530130714,
+        "started": 1792966240.8146868,
+        "finished": 1792966257.14033,
+        "exitCode": 0,
+        "complete": true,
+        "peakRssBytes": 1020538880
+      },
+      {
+        "file": "selfhost/build/phase111/p141-n2-focused19-guard/process.json",
+        "category": "native semantic gates",
+        "seconds": 21.091302486136556,
+        "started": 1792969101.9476151,
+        "finished": 1792969123.0389156,
+        "exitCode": 0,
+        "complete": true,
+        "peakRssBytes": 104722432
+      },
+      {
+        "file": "selfhost/build/phase111/p141-n2-full45-guard/process.json",
+        "category": "native semantic gates",
+        "seconds": 95.50364197138697,
+        "started": 1792969123.1813068,
+        "finished": 1792969218.684947,
+        "exitCode": 0,
+        "complete": true,
+        "peakRssBytes": 112050176
+      },
+      {
+        "file": "selfhost/build/phase111/p141-native-emit-guard01/process.json",
+        "category": "native source requests",
+        "seconds": 369.9476394439116,
+        "started": 1792965814.1557455,
+        "finished": 1792966184.1033826,
+        "exitCode": 0,
+        "complete": true,
+        "peakRssBytes": 1087143936
+      },
+      {
+        "file": "selfhost/build/phase111/p141-native-full45-guard01/process.json",
+        "category": "native semantic gates",
+        "seconds": 13.370567564852536,
+        "started": 1792967491.036273,
+        "finished": 1792967504.4068365,
+        "exitCode": 0,
+        "complete": true,
+        "peakRssBytes": 95440896
+      },
+      {
+        "file": "selfhost/build/phase111/p141-native-pairs-guard01/process.json",
+        "category": "other controls/probes/measurement",
+        "seconds": 32.25022043893114,
+        "started": 1792966265.110205,
+        "finished": 1792966297.360423,
+        "exitCode": 0,
+        "complete": true,
+        "peakRssBytes": 62758912
+      },
+      {
+        "file": "selfhost/build/phase111/p141-native-self-guard01/process.json",
+        "category": "native source requests",
+        "seconds": 372.9408169379458,
+        "started": 1792966323.0488112,
+        "finished": 1792966695.989623,
+        "exitCode": 0,
+        "complete": true,
+        "peakRssBytes": 1088237568
+      },
+      {
+        "file": "selfhost/build/phase111/p141-parent-integrated-source-guard01/process.json",
+        "category": "native source requests",
+        "seconds": 368.99737529084086,
+        "started": 1792970220.8486578,
+        "finished": 1792970589.846029,
+        "exitCode": 0,
+        "complete": true,
+        "peakRssBytes": 1086136320
+      },
+      {
+        "file": "selfhost/build/phase111/p141-parser-api-guard01/process.json",
+        "category": "independent source checking",
+        "seconds": 16.018844855949283,
+        "started": 1792965573.400423,
+        "finished": 1792965589.4192667,
+        "exitCode": 0,
+        "complete": true,
+        "peakRssBytes": 2303963136
+      },
+      {
+        "file": "selfhost/build/phase111/p141-parser-checkpoint-guard01/process.json",
+        "category": "other controls/probes/measurement",
+        "seconds": 2.0847238800488412,
+        "started": 1792965733.5338228,
+        "finished": 1792965735.6185448,
+        "exitCode": 0,
+        "complete": true,
+        "peakRssBytes": 192040960
+      },
+      {
+        "file": "selfhost/build/phase111/p141-parser-corpus-guard01/process.json",
+        "category": "other controls/probes/measurement",
+        "seconds": 19.76082587474957,
+        "started": 1792965628.1101198,
+        "finished": 1792965647.870945,
+        "exitCode": -11,
+        "complete": false,
+        "peakRssBytes": 335593472
+      },
+      {
+        "file": "selfhost/build/phase111/p141-parser-corpus-guard02/process.json",
+        "category": "other controls/probes/measurement",
+        "seconds": 26.017020654398948,
+        "started": 1792965678.4329624,
+        "finished": 1792965704.4499826,
+        "exitCode": 0,
+        "complete": true,
+        "peakRssBytes": 557772800
+      },
+      {
+        "file": "selfhost/build/phase111/p141-recursive-machine-guard01/process.json",
+        "category": "native machine construction",
+        "seconds": 0.27116982685402036,
+        "started": 1792967705.7668817,
+        "finished": 1792967706.038049,
+        "exitCode": 0,
+        "complete": true,
+        "peakRssBytes": 26230784
+      },
+      {
+        "file": "selfhost/build/phase111/p141-recursive-probe-guard01/process.json",
+        "category": "native source requests",
+        "seconds": 1.3504204670898616,
+        "started": 1792967688.3647883,
+        "finished": 1792967689.715206,
+        "exitCode": 0,
+        "complete": true,
+        "peakRssBytes": 54652928
+      },
+      {
+        "file": "selfhost/build/phase111/p141-session-screen-guard01/process.json",
+        "category": "other controls/probes/measurement",
+        "seconds": 38.98830733355135,
+        "started": 1792965756.265027,
+        "finished": 1792965795.2533338,
+        "exitCode": 0,
+        "complete": true,
+        "peakRssBytes": 836403200
+      },
+      {
+        "file": "selfhost/build/phase111/p141-session-screen-guard02/process.json",
+        "category": "other controls/probes/measurement",
+        "seconds": 38.92294859327376,
+        "started": 1792967706.159738,
+        "finished": 1792967745.0826862,
+        "exitCode": 0,
+        "complete": true,
+        "peakRssBytes": 785018880
+      },
+      {
+        "file": "selfhost/build/phase111/p141-static-api-guard01/process.json",
+        "category": "independent source checking",
+        "seconds": 6.3818019619211555,
+        "started": 1792966726.8452716,
+        "finished": 1792966733.2270682,
+        "exitCode": 0,
+        "complete": true,
+        "peakRssBytes": 750604288
+      },
+      {
+        "file": "selfhost/build/phase111/p141-static-finite-guard01/process.json",
+        "category": "other controls/probes/measurement",
+        "seconds": 1.1232182271778584,
+        "started": 1792966825.0090086,
+        "finished": 1792966826.1322222,
+        "exitCode": 0,
+        "complete": true,
+        "peakRssBytes": 148525056
+      },
+      {
+        "file": "selfhost/build/phase111/p141-static-machine-guard01/process.json",
+        "category": "native machine construction",
+        "seconds": 0.3305139048025012,
+        "started": 1792966863.2039707,
+        "finished": 1792966863.534482,
+        "exitCode": 0,
+        "complete": true,
+        "peakRssBytes": 28782592
+      },
+      {
+        "file": "selfhost/build/phase111/p141-static-measure-guard01/process.json",
+        "category": "other controls/probes/measurement",
+        "seconds": 8.682969651184976,
+        "started": 1792966881.4905155,
+        "finished": 1792966890.1734607,
+        "exitCode": 0,
+        "complete": true,
+        "peakRssBytes": 20733952
+      },
+      {
+        "file": "selfhost/build/phase111/p141-static-native-guard01/process.json",
+        "category": "native source requests",
+        "seconds": 2.7172499150037766,
+        "started": 1792966832.639129,
+        "finished": 1792966835.3563762,
+        "exitCode": 0,
+        "complete": true,
+        "peakRssBytes": 58724352
+      }
+    ],
+    "agentQuota": "Not available; not inferred from target wall time.",
+    "scope": "Guarded acquisition, checking, testing and measurement, including failures. Root/subagent reasoning, source-only tools, documentation and Git operations are not CPU-metered."
+  },
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase141/summarize.py",
+      "bytes": 7943,
+      "sha256": "9257dd2993fcbe9326a3d0893965067665d2cd2b189165d307c4d8b29a5f4491"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase141/qualification01.json",
+      "bytes": 491569,
+      "sha256": "f8093e740c1f1488325b71a620a9a579ba95be26c9a6bdf04a36be70d80fa5dd"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase141/integrated-source02/manifest.json",
+      "bytes": 7568,
+      "sha256": "eaf1d76e54381ed096e4ea4210baa21133cf87cfad7c0b0d89d31046aaedb408"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase141/integrated-pairs01/report.json",
+      "bytes": 40685,
+      "sha256": "6abe1c80098a739f29cb60729ce51a51667ba6f1aba5e721173451660a3ab275"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase130/p141-integrated-emit01/report.json",
+      "bytes": 9707,
+      "sha256": "d903f041aa7df0588cf0281cb41ef567d356da165e9bc667052848e1ead24a13"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase130/p141-integrated-self01/report.json",
+      "bytes": 10228,
+      "sha256": "4ca6621f68751389db08e2773baf6e7ffd8b7e2f966779f95bf6d31c29a50bc5"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase130/p141-parent-integrated-source01/report.json",
+      "bytes": 10189,
+      "sha256": "384b8025e93ee7d6b5239d5bee6ea4cc55a8c011a44373ecf031811b54e586ff"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase130/p141-final-same-source02/report.json",
+      "bytes": 10223,
+      "sha256": "52d92ab9f127abb5dc521cf3a189567fd1939d13ac7d9db53a3f1f37a2655faa"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase141/native-load-sections01.json",
+      "bytes": 9378,
+      "sha256": "5df8856ea9fe86c8c3708efbf5f9f784f5c1facbcedebf518d0a8b127b93100f"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase140/p141-full-edit-baseline01/report.json",
+      "bytes": 13529,
+      "sha256": "022a52f7966bed19af3353d9aaa550ea73a76f8cc119bd10a8c2385e96003dc4"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p141-full-edit-baseline-guard01/process.json",
+      "bytes": 756,
+      "sha256": "3769742a7ac1c5c4fa48cf7d02e4baaaa8378131a8479df848126af2184396c7"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase140/p141-full-edit-candidate01/report.json",
+      "bytes": 13561,
+      "sha256": "6c91326ac1eed6eaaef3d38d2b2b917e21c5a6ff4be3d677bdc1e4672da5d43f"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p141-full-edit-candidate-guard01/process.json",
+      "bytes": 768,
+      "sha256": "397d66b9083e3a72a7be78e4334652ab04eff7cd712706d000a1b7bfaaccea23"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase140/p141-incremental-smoke01/report.json",
+      "bytes": 18582,
+      "sha256": "69478946217591fc2d6b5fb5611ba104bfd83007e747cd8f78e720270994bc19"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p141-integrated-focused19/report.json",
+      "bytes": 80222,
+      "sha256": "7d42b3bb7f28783616fbd6ece83bae6d738f8b922bd433aacc9520f9542bf3b1"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p141-n2-focused19/report.json",
+      "bytes": 79094,
+      "sha256": "f1294020e3a446174fc2f9cd68cfad065375a2717a529f5d4a328b1b62f087a0"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p141-n2-full45/report.json",
+      "bytes": 229326,
+      "sha256": "88d7fb630f4bbf002f6d8e6a4cd20ef9be68f4362bb7c069fa03b5ad8093971d"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p141-n2-full45/0-native/report.json",
+      "bytes": 9307,
+      "sha256": "01dcea62a07dd6c569eea2689943dc0190bcb82f9264e02a052596233c21e491"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p141-n2-full45/1-native/report.json",
+      "bytes": 9296,
+      "sha256": "8a7682f64a72290c04dd87c7870c5fba3c9b26ef65d735cf64eb7e1b1b8de0c8"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p141-n2-full45/2-native/report.json",
+      "bytes": 9316,
+      "sha256": "e520db514e6124f69f91db20b318df19daa75cab16b2807978bc56300f67464f"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p141-n2-full45/3-native/report.json",
+      "bytes": 9285,
+      "sha256": "ca57714ef14f9239e97e3f536c1fdb625f6be5ea5c748e5dcc8fe55c455a8c59"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p141-n2-full45/4-native/report.json",
+      "bytes": 9291,
+      "sha256": "bb900ee067ea2a1af5918a1da1cf88e2fbff31300a4cf58e7fb299e12121dfc8"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p141-n2-full45/5-native/report.json",
+      "bytes": 9351,
+      "sha256": "43d199755cec9b19bef0c611ca29277cebc513efc4b07d26fd77ed7165060daf"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p141-n2-full45/6-native/report.json",
+      "bytes": 9351,
+      "sha256": "4d982ba4cd5a5215e7de9e7fac8f1eac908a3789905fd8f043b893be8111c2ca"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p141-n2-full45/7-native/report.json",
+      "bytes": 9341,
+      "sha256": "54233dc1e477e7aa01e098d9898ccd8de2138576599edabbca28caf0d8167929"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p141-n2-full45/8-native/report.json",
+      "bytes": 9334,
+      "sha256": "267d3bc268b5a858c78acbff3bf5f66cb31c59618ea9a4f4ef435c3ab1e28523"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p141-n2-full45/9-native/report.json",
+      "bytes": 9302,
+      "sha256": "e7fec563395d505c100048797f6cb5bd9392432eb558fa1931cdfd50ddf56de4"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p141-n2-full45/10-native/report.json",
+      "bytes": 9321,
+      "sha256": "1952d4fad1d8c331a7dc275bf065222c462661811a75e633ae0f44c96a3e87aa"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p141-n2-full45/11-native/report.json",
+      "bytes": 9321,
+      "sha256": "7d65081375e9ed9b3dc7d9e0f83dbf9d24e2d7f46216f1abdf09e6304242b53c"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p141-n2-full45/12-native/report.json",
+      "bytes": 9340,
+      "sha256": "36f2405ee6e09c65604ad79ab6f3ba566cdd901de3f9438aafada22334bb5e01"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p141-n2-full45/13-native/report.json",
+      "bytes": 9352,
+      "sha256": "3c492ff2264d0f74a690991c9d54c4ca938d3a460b4eed3f362482e8426f4494"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p141-n2-full45/14-native/report.json",
+      "bytes": 9371,
+      "sha256": "b36f64d5400908fa15ffd25022529cf2c3d734a2c114375d20257bbd4d702653"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p141-n2-full45/15-native/report.json",
+      "bytes": 9370,
+      "sha256": "fc075d70659bc3d421ad24edd520186ba7cc5933518c4066136d0b103591d70c"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p141-n2-full45/16-native/report.json",
+      "bytes": 9378,
+      "sha256": "685db5fa2ebb7674f7f1d96f6b30e273b6a9bdc8cf5d35136aa330ea93f0c5ee"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p141-n2-full45/17-native/report.json",
+      "bytes": 9361,
+      "sha256": "35c42c2994f12209d161f06d3f68342743035e5273ccef8b57950fd1f578af77"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p141-n2-full45/18-native/report.json",
+      "bytes": 9370,
+      "sha256": "a0d1ffc07a9cdb62ba9fe3c5d515365c04aabf71efdd0ec58aebd00f4d6a867b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p141-n2-full45/19-native/report.json",
+      "bytes": 9391,
+      "sha256": "e37b4ad3208eda2f2c5db03d6b35d5619b23d11a3806fc869f9332a45c552d74"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p141-n2-full45/20-native/report.json",
+      "bytes": 9395,
+      "sha256": "0656d35ca42aa184fb8bef53ea9662f3b68f2a54d3590a9bd43d9cd01b9664e7"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p141-n2-full45/21-native/report.json",
+      "bytes": 9365,
+      "sha256": "567f821485839a52dc14b0341b04f4b067d5481410502af7c50836708207bd19"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p141-n2-full45/22-native/report.json",
+      "bytes": 9368,
+      "sha256": "3ba12917ddea3a7109cb9632936a899e6723c9a0fec90fd0a0f0ad61f3d0e791"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p141-n2-full45/23-native/report.json",
+      "bytes": 9382,
+      "sha256": "b3cf9264565c57dea27c0b3302f8ea0c105eb9bd8c8042451cf170f1263356d1"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p141-n2-full45/24-native/report.json",
+      "bytes": 9398,
+      "sha256": "ec54348e575c38053b4560e004f7268146a079a28b38fa86c183e7bad38f4a20"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p141-n2-full45/25-native/report.json",
+      "bytes": 9397,
+      "sha256": "e2f4294164d8c061bb0d8bd818fa41658be91d281d48ac904c5d20e411a6d050"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p141-n2-full45/26-native/report.json",
+      "bytes": 9402,
+      "sha256": "160ee121cb0e9ab3d3441aaf441cb7677385bc3d2ec52ac68a7c7462db0ac19b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p141-n2-full45/27-native/report.json",
+      "bytes": 9397,
+      "sha256": "05af2eafa704da3d1dbbd76de07d926dbb0f41346a329c04d9b93712a7e59b2a"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p141-n2-full45/28-native/report.json",
+      "bytes": 9400,
+      "sha256": "2647447ffc2a70f2178d0e50d81ce784968aaab80b8c7bd4d81f1f4f7bb829a7"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p141-n2-full45/29-native/report.json",
+      "bytes": 9358,
+      "sha256": "4eaf8a891af9629db3b7795f077bd1d12214fda24b08105640b3685e041beb7b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p141-n2-full45/30-native/report.json",
+      "bytes": 9361,
+      "sha256": "a342ca08147f4d653c1bfded9b265a11c6467b14cb4c6bcffd55060092d01d33"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p141-n2-full45/31-native/report.json",
+      "bytes": 9386,
+      "sha256": "17dca815f20d7014c823711f047a2b63547e1e7eda27fe42fd516f1ecb448853"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p141-n2-full45/32-native/report.json",
+      "bytes": 9385,
+      "sha256": "c3d8b12f692c023a2910e516482b440d879e964fc3a11b2646de914793210b78"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p141-n2-full45/33-native/report.json",
+      "bytes": 9342,
+      "sha256": "202e169fa382a5a65791224b82b48fb4ff8536da850272691df3c6e6d644b00b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p141-n2-full45/34-native/report.json",
+      "bytes": 9342,
+      "sha256": "ded7bedb4af59a8df550695ef54b2d2665a93ae73ae9aa67d487b28a0e2b9288"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p141-n2-full45/35-native/report.json",
+      "bytes": 9379,
+      "sha256": "586c472fb0440ed24723974f1ec27df5f32f25d27ae467eb627355ced6be1797"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p141-n2-full45/36-native/report.json",
+      "bytes": 9379,
+      "sha256": "0bcb7bc1145395444bffce97da12ad85209b28e1a6cb14e0caaef689f6be61d5"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p141-n2-full45/37-native/report.json",
+      "bytes": 9367,
+      "sha256": "eb82391907db74ce31e7d86e0d9f530ca1b2b5873300842aded4c72a1a5d09e8"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p141-n2-full45/38-native/report.json",
+      "bytes": 9372,
+      "sha256": "4ee843b0657eff1fae7ae7c80fc536686d7ab3452ac028bdb21f13e3cf8e2b9d"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p141-n2-full45/39-native/report.json",
+      "bytes": 9367,
+      "sha256": "b780d587e08e1f9ae2215378115d25dee72c922b2bbd61643980907860f34bad"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p141-n2-full45/40-native/report.json",
+      "bytes": 9370,
+      "sha256": "ab4470233afc1e777aebedb9010e23bcb0d9654c6fc3fa64e3aed3f8df16c863"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p141-n2-full45/41-native/report.json",
+      "bytes": 9405,
+      "sha256": "2b648ac647c7aed30001a991b0b42d8d8a87efc24b08c3b3044e0a413f97a7c3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p141-n2-full45/42-native/report.json",
+      "bytes": 9410,
+      "sha256": "6e9fa651f4434787e63954540ac4680ac35a36621df5aa8d67f5945548506471"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p141-n2-full45/43-native/report.json",
+      "bytes": 9405,
+      "sha256": "991db5e2c1607e77228f176d9bfa1c402e7c485f74b8dd1d0cf11c1cd43df468"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p141-n2-full45/44-native/report.json",
+      "bytes": 9409,
+      "sha256": "2d961074639e5f1e6c5fe07bc0eb2d050532727f2d1b9ad8d2d2b489d1e13b15"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p141-baseline-api-guard01/process.json",
+      "bytes": 1148,
+      "sha256": "8d83dd4343a4fdabaf4aa7fe366a951338a7135f4857d5d0c5df257af1fb71fb"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p141-baseline-full-guard01/process.json",
+      "bytes": 917,
+      "sha256": "60723e657d5e370f9824a60a31df04fa9a28a496a69823a41f1d8742c6468495"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p141-exact-api-guard/process.json",
+      "bytes": 978,
+      "sha256": "c52603a572f71f1aa3f79396a34205f285983be6ea06fb4728d9917161dc723c"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p141-exact-finite-guard/process.json",
+      "bytes": 689,
+      "sha256": "1e739740f2c2186e44af678e7d09a0b33de51af7d899a124e02dd75a151863a1"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p141-family-finite-guard01/process.json",
+      "bytes": 698,
+      "sha256": "69bee583c19a3946fd5efaab4be943ac12d4d7e177f623199f34a365fc8e777d"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p141-final-same-source-guard02/process.json",
+      "bytes": 938,
+      "sha256": "8dfd3bcacab66d997934ceea1cfcf0c475f78ffef546478d48adb1a75fd5fb09"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p141-full-edit-baseline-guard01/process.json",
+      "bytes": 756,
+      "sha256": "3769742a7ac1c5c4fa48cf7d02e4baaaa8378131a8479df848126af2184396c7"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p141-full-edit-candidate-guard01/process.json",
+      "bytes": 768,
+      "sha256": "397d66b9083e3a72a7be78e4334652ab04eff7cd712706d000a1b7bfaaccea23"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p141-incremental-smoke-guard01/process.json",
+      "bytes": 768,
+      "sha256": "7544886e68f53b03a5397eb08ce651500a63cf32a3888c87828ab0e8476fd1bd"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p141-integrated-api-guard01/process.json",
+      "bytes": 1488,
+      "sha256": "315a230bd97146b699a9b8680ff3111a214dbaf7e2cd7b568b09ba634d2fd298"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p141-integrated-api-guard02/process.json",
+      "bytes": 1488,
+      "sha256": "7b914fb6d773e94e9b456fcb319ce925492e87d0bda1f07fca123684ae8c4075"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p141-integrated-build-guard01/process.json",
+      "bytes": 762,
+      "sha256": "c6518d722a330cb1d4394ea4cac06e9c31f74b3931cf3cd3c83472b581503092"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p141-integrated-emit-guard01/process.json",
+      "bytes": 837,
+      "sha256": "df1d91d5f30a38b0176296d2517f2c0cc5a395a7945dffd5eb878e8d37ffaa52"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p141-integrated-focused19-guard/process.json",
+      "bytes": 694,
+      "sha256": "d194226f39d88f82aabc3a65b6b0c78b33c5af1d37da1fa84e443e24b6a0a6d1"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p141-integrated-full45-guard/process.json",
+      "bytes": 679,
+      "sha256": "2904dd72671be59ec8eb3eb1accf23da7611884ecea16737163a144fa56a7ad4"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p141-integrated-full45-guard02/process.json",
+      "bytes": 679,
+      "sha256": "1ac2002e9da3e3daab9a40190f745d6fa824c0db1366250df9462c694d1073dd"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p141-integrated-n2-guard/process.json",
+      "bytes": 769,
+      "sha256": "3d06ef63c934f51753310dfa9b1296e664741904ee7123a2e94923cb77a2bffe"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p141-integrated-pairs-guard01/process.json",
+      "bytes": 682,
+      "sha256": "8b5e800976a5fb5d8e6e104a78254d4c9e2faddf165222120d4d289354c5f062"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p141-integrated-self-guard/process.json",
+      "bytes": 945,
+      "sha256": "797f353d8cdced4531feb8d83566edeb51285f51b8dc725596ca8b93733b9c7e"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p141-n1-build-guard/process.json",
+      "bytes": 745,
+      "sha256": "83c98fb7652c7449b93891c8f7657ee0c8e32d069b812893b79375510d88ea7c"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p141-n2-focused19-guard/process.json",
+      "bytes": 686,
+      "sha256": "9f9efe94eb5fcb50946ff0a957607c396c53ec16a5893558308477610022a5ba"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p141-n2-full45-guard/process.json",
+      "bytes": 678,
+      "sha256": "49a1744790acd8c71c1a922d1fb9ced3f71270cf2a1869883c18bbc107929705"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p141-native-emit-guard01/process.json",
+      "bytes": 829,
+      "sha256": "71bd02bdfbcb70b384ed824266ed08bdee7ed7ef34e01ae180e6e89e2fff64c9"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p141-native-full45-guard01/process.json",
+      "bytes": 879,
+      "sha256": "aee3c8cc72ddd3b6936b563799bbc49f12e9d9f960124c9858f91ebd23a17375"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p141-native-pairs-guard01/process.json",
+      "bytes": 666,
+      "sha256": "290c527546a4af5762f620f58c0dd1c10ceb89db789bbe1e3044e0822894d287"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p141-native-self-guard01/process.json",
+      "bytes": 912,
+      "sha256": "1b92f8e6823790da0f741fbeb7bc9821461b6a81d6e175b3815d94c5aca46ac7"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p141-parent-integrated-source-guard01/process.json",
+      "bytes": 935,
+      "sha256": "cbd6bdbcf9e50274c9899913609a331638028b482e1d031f1d1003307556d63a"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p141-parser-api-guard01/process.json",
+      "bytes": 1144,
+      "sha256": "13fc16807b7422f20a0271ab653fef89b8f74c8f46e740e5a2c211d5fe63e4bc"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p141-parser-checkpoint-guard01/process.json",
+      "bytes": 758,
+      "sha256": "b48f8e20666a7ddfbaf4ace370c8e14f63ef65c32d6ae6cfa186dec8e1ce1f03"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p141-parser-corpus-guard01/process.json",
+      "bytes": 747,
+      "sha256": "59d7661fb3eeb545336fecb6281cd44da22c1839a6e65d07d199a17986cf6aba"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p141-parser-corpus-guard02/process.json",
+      "bytes": 750,
+      "sha256": "4bb84e6ab1b9ecb786f032bcff7ce6011b8728f87880d01da4a28115fdc204eb"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p141-recursive-machine-guard01/process.json",
+      "bytes": 836,
+      "sha256": "679cd34161e44171f4d50361c1bc2493dedf75fe8ba0dcf1db149f8b7b65f9a6"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p141-recursive-probe-guard01/process.json",
+      "bytes": 851,
+      "sha256": "6aaf63dee07feb2a7f08011d462706e49e9706fc7b46bb6d2b56a9dc3fe16669"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p141-session-screen-guard01/process.json",
+      "bytes": 713,
+      "sha256": "95a39683c140105e3fa2cfa085c9174a09f02b39d479132151534856180fecc9"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p141-session-screen-guard02/process.json",
+      "bytes": 717,
+      "sha256": "e476d02e4f53c898ce564306e406ebea42e57784d4cd4a1bd8fc19cc93438672"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p141-static-api-guard01/process.json",
+      "bytes": 982,
+      "sha256": "a43d57ff0cd901df3940c1035493237abbf0a89d73318d432e47a4f8d3bcb23f"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p141-static-finite-guard01/process.json",
+      "bytes": 694,
+      "sha256": "65fec53e9d69c1e74787024013f4054e55bc23120cbf851c7e531844007ff050"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p141-static-machine-guard01/process.json",
+      "bytes": 834,
+      "sha256": "bcb33071c2e013760955b7bea4b0091eccedcd5373c69777f4e14542df8fd4a7"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p141-static-measure-guard01/process.json",
+      "bytes": 659,
+      "sha256": "28fad1e76fdca342a7a6558305df6335a97d80ad1ec354f9a5724ba9363ed6d4"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p141-static-native-guard01/process.json",
+      "bytes": 843,
+      "sha256": "f1caf494e7592cc940b91a4c4081db9ab158512c8840bae5c9ce3cc88b4e2926"
+    }
+  ]
+}

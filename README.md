@@ -157,6 +157,14 @@ real native compiler edits with parser/checker and prepared-owner reuse, keeping
 independent fresh-output checks. It remains experimental: cold overhead and the
 remaining whole-program work prevent the10× warm-build objective and promotion.
 
+The [Phase141 simplification](implementation/phase141/README.md) shares the
+ordinary/incremental parser and uses static Bend templates to replace duplicated
+comparator implementations. The experimental source drops from 64,408 to 63,580
+physical lines; its ordinary native route has passed self-reproduction and the
+frozen correctness gates. See the [usage guide](docs/self_hosted/compiler-simplification.md)
+for exact identities and the distinction between native qualification and the
+still-experimental incremental service.
+
 The [incremental native development guide](docs/self_hosted/incremental-native-development.md)
 links the measured QBE size, memory and object-reuse investigation, its Go-inspired
 architecture, and the remaining boundary before fast source-level edits.

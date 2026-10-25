@@ -5836,3 +5836,17 @@ the frozen runtime gates. Intermediate checks include dependency omissions,
 negative facts, literal admission, producer epochs and failed-update recovery.
 Estimated first emission checkpoint is hours; broader reuse is a staged campaign,
 not an implemented 10-second rebuild. No targets executed or production changed.
+
+
+## Phase140 initial execution — early incremental reuse (2026-10-25)
+
+[Design](../design/phase140/README.md) · [component results](../implementation/phase140/component-results.md).
+Actual parser/checker checkpoints, dependency-aware owner products, successful
+verifier judgments and renderer/registry reuse compose in checked Bend. First
+hosted complete real-edit screen: Lexer1.91× and Map2.60× faster than original
+fresh requests, exact current QBE; same-candidate cold/warm1.83×/2.34×.
+Errors and recovery agree. Ordered screening, not calibrated native gains.
+Native adapter independently source checked;33 preflight controls pass. Full
+native acquisition underway. Qualified Phase137 N3 and installed selection stay
+unchanged; no10× result or whole-compiler proof claimed. Negative parser
+lookahead, specialization memo and small-request overhead findings retained.

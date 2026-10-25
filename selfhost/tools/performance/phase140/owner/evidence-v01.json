@@ -1,0 +1,75 @@
+{
+  "kind": "phase140-owner-evidence",
+  "scope": "Experimental internal same-process state; no installed compiler or policy changed. Ordered hosted stage timings are diagnostics, not a native or full-request performance result.",
+  "sourceSha256": "a2cf9b106da319a507cab448cd7b1eab58a0783d3d04d0554b493a8bb664e50f",
+  "activeModules": [
+    "core-v03.bend",
+    "products-v01.bend",
+    "raw-v01.bend",
+    "controls-v01.bend",
+    "bridge-v01.bend"
+  ],
+  "inputs": [
+    {
+      "file": "selfhost/build/phase140/owner-source03/manifest.json",
+      "bytes": 8124,
+      "sha256": "2b64cf34ec70f44cace8efaa35fa00bb2c8c743c265916d0699e3d152b61023d"
+    },
+    {
+      "file": "selfhost/build/phase140/owner-source03/compiler.bend",
+      "bytes": 2733176,
+      "sha256": "a2cf9b106da319a507cab448cd7b1eab58a0783d3d04d0554b493a8bb664e50f"
+    },
+    {
+      "file": "selfhost/build/phase111/p140-owner-api03/report.json",
+      "bytes": 3357,
+      "sha256": "825c10923f11473b90da4308ce6f7f35fb5f56e1e0ae6aef5424cd3fe0b9913c"
+    },
+    {
+      "file": "selfhost/build/phase111/p140-owner-api04/report.json",
+      "bytes": 3640,
+      "sha256": "bd8a0531695f9ee0c99d870a7ea3500a6acde1dcaa76c80e61e71cdbfbcc4230"
+    },
+    {
+      "file": "selfhost/build/phase140/owner-api03-guard/process.json",
+      "bytes": 869,
+      "sha256": "653a7cc6f04fdd6a09964ff122832d3bcf91e4310c87b13ab7db001748cf5879"
+    },
+    {
+      "file": "selfhost/build/phase140/owner-api04-guard/process.json",
+      "bytes": 1007,
+      "sha256": "b908d129f90d5469fb6a6776a43f048367792eb4dff986a1e8f795a59f2fe075"
+    },
+    {
+      "file": "selfhost/build/phase140/owner-finite01/report.json",
+      "bytes": 3262,
+      "sha256": "46c4db7d1dc2d190823e0c36d0b39bb5fe19061ecd26a8055c22493339b5496c"
+    },
+    {
+      "file": "selfhost/build/phase140/owner-finite02-guard/process.json",
+      "bytes": 639,
+      "sha256": "4e108d8977ddb5324698342fb7d3dd9af88cb0b10ca638561214b24bafc4a4c4"
+    },
+    {
+      "file": "selfhost/build/phase140/owner-screen01/report.json",
+      "bytes": 7361,
+      "sha256": "73b4c5aafc246e1294752c4ba41f77cc50c866841d7e9aa0887bff3ac85d97a4"
+    },
+    {
+      "file": "selfhost/build/phase140/owner-screen01-guard/process.json",
+      "bytes": 637,
+      "sha256": "a71381919ab653c3636ef7e94f2f4dc30118e0adef0dc2ea47bd59a7f720857c"
+    }
+  ],
+  "results": {
+    "finiteControls": 18,
+    "realEditCases": 2,
+    "exactComparisons": [
+      "fresh versus cold P128RawLowering",
+      "fresh B versus warm B P128RawLowering",
+      "fresh A versus unchanged warm A P128RawLowering",
+      "fresh B versus warm B final QBE",
+      "frozen native A versus original final QBE"
+    ]
+  }
+}

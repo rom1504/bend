@@ -1,0 +1,106 @@
+# Compose existing verified optimizer machinery with actual prior successes.
+# The final ownership/array projection verifier remains the original function.
+type P140BCache is Data:
+  P140BCache{+opened: P140VCache, +optimized: P134UCache, +array: P140VCache}
+
+type P140BResult is Data:
+  P140BResult{+emission: P111Emission, +cache: P140BCache, +stats: List<&2,U32>}
+
+def p140b_empty() -> P140BCache:
+  P140BCache{P140VEmpty{},P134UCache{[],[]},P140VEmpty{}}
+
+@unsafe
+def p140b_session(+request: NR_Request, +previous: P140BCache, +lowering: P128RawLowering) -> P140BResult:
+  match lowering:
+    case P128RawLowering{P113DLowered{+program,+error},+raw}:
+      nt_choose(P140BResult,String.is_empty(error),
+        u => p140b_open(request,previous,program,raw),
+        u => P140BResult{p128raw_session_finish(request,p113a_certificate(request),lowering),previous,[]})
+
+@unsafe
+def p140b_open(+request: NR_Request, +previous: P140BCache, program: P113DProgram, raw: List<&2,P113DCandidate>) -> P140BResult:
+  match previous:
+    case P140BCache{opened,optimized,array}:
+      p140b_opened(request,previous,raw,p140v_open(program,opened))
+
+@unsafe
+def p140b_opened(+request: NR_Request, previous: P140BCache, raw: List<&2,P113DCandidate>, opened: P140VOpened) -> P140BResult:
+  match previous opened:
+    case P140BCache{old_open,optimized,array} P140VOpened{boundary,cache,counts}:
+      p140b_optimized(request,raw,cache,array,counts,p134u_optimize(boundary,optimized))
+
+@unsafe
+def p140b_optimized(+request: NR_Request, raw: List<&2,P113DCandidate>, opened: P140VCache, array: P140VCache,
+    counts: List<&2,U32>, optimized: P134UOptimized) -> P140BResult:
+  match optimized:
+    case P134UOptimized{boundary,cache,stats}:
+      p140b_lowered(request,raw,opened,cache,array,nt_append(U32,counts,stats),
+        p113a_finish(p113a_certificate(request),P113DLowered{p114s_close(boundary),""}))
+
+@unsafe
+def p140b_lowered(+request: NR_Request, +raw: List<&2,P113DCandidate>, +opened: P140VCache,
+    +optimized: P134UCache, +array: P140VCache, +stats: List<&2,U32>, lowered: P113ALowering) -> P140BResult:
+  match lowered:
+    case P113ALowered{+program,+error}:
+      nt_choose(P140BResult,String.is_empty(error),
+        u => p140b_array(request,raw,program,opened,optimized,stats,p140v_array(program,array)),
+        u => P140BResult{P111Emission{[],"array native lowering: " ++ error},P140BCache{opened,optimized,array},stats})
+
+@unsafe
+def p140b_array(request: NR_Request, raw: List<&2,P113DCandidate>, program: P113AProgram,
+    opened: P140VCache, optimized: P134UCache, stats: List<&2,U32>, checked: P140VArrayChecked) -> P140BResult:
+  match checked:
+    case P140VArrayChecked{cache,error,counts}:
+      P140BResult{p128raw_verified(request,raw,program,error),P140BCache{opened,optimized,cache},nt_append(U32,stats,counts)}
+
+type P140SCache is Data:
+  P140SCache{+front: P140FCache, +raw: P140ORCache, +back: P140BCache}
+
+type P140SResult is Data:
+  P140SResult{+emission: P111Emission, +cache: P140SCache, +stats: List<&2,U32>}
+
+def p140s_empty() -> P140SCache:
+  P140SCache{p140f_empty(),p140or_empty(),p140b_empty()}
+
+@unsafe
+def p140s_plan(seed: P86Seed, path: String, text: String, +previous: P140SCache, hint: U32, cut: U32) -> P140SResult:
+  match previous:
+    case P140SCache{front,raw,back}: p140s_front(previous,p140f_plan(seed,path,text,front,hint,cut))
+
+@unsafe
+def p140s_front(+previous: P140SCache, front: P140FResult) -> P140SResult:
+  match front:
+    case P140FResult{plan,cache,stats}:
+      match plan:
+        case P86PlanError{error}: P140SResult{P111Emission{[],error},previous,stats}
+        case P86PlanReady{+request,verdict}: p140s_admitted(previous,cache,stats,request,p111_runtime_admission(request))
+
+@unsafe
+def p140s_admitted(+previous: P140SCache, +front: P140FCache, +stats: List<&2,U32>, +request: NR_Request, +error: String) -> P140SResult:
+  match previous:
+    case P140SCache{old,raw,back}:
+      nt_choose(P140SResult,String.is_empty(error),
+        u => p140s_raw(previous,front,stats,request,p140or_lower(request,raw)),
+        u => P140SResult{P111Emission{[],"compile: " ++ error},previous,stats})
+
+@unsafe
+def p140s_raw(+previous: P140SCache, front: P140FCache, stats: List<&2,U32>, request: NR_Request, raw: P140ORResult) -> P140SResult:
+  match previous raw:
+    case P140SCache{old_front,old_raw,back} P140ORResult{lowering,cache,counts}:
+      p140s_finished(previous,front,cache,nt_append(U32,stats,counts),p140b_session(request,back,lowering))
+
+@unsafe
+def p140s_finished(+previous: P140SCache, +front: P140FCache, +raw: P140ORCache, +stats: List<&2,U32>, back: P140BResult) -> P140SResult:
+  match back:
+    case P140BResult{+emission,+cache,+counts}:
+      match emission:
+        case P111Emission{chunks,error}:
+          nt_choose(P140SResult,String.is_empty(error),
+            u => P140SResult{emission,P140SCache{front,raw,cache},nt_append(U32,stats,counts)},
+            u => P140SResult{emission,previous,nt_append(U32,stats,counts)})
+        case P134Planned{plan}: P140SResult{emission,P140SCache{front,raw,cache},nt_append(U32,stats,counts)}
+
+@unsafe
+def p140s_named(seed: P86Seed, path: String, text: String, +previous: P140SCache, hint: U32, owner: String) -> P140SResult:
+  match previous:
+    case P140SCache{front,raw,back}: p140s_front(previous,p140f_named(seed,path,text,front,hint,owner))

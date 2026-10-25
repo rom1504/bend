@@ -1,0 +1,3879 @@
+{
+  "schema": "phase141-checked-output-inventory-v1",
+  "source": "selfhost/build/phase137/integrated-source03/compiler.bend",
+  "sha256": "2620d59a3a20fa5d5d27bbf3b12ceb7304439b27093fff1c0f383da03e4ecf38",
+  "bytes": 2701952,
+  "physicalLines": 58569,
+  "counting": "Selected snapshot declarations only; include preceding @unsafe, exclude trailing separators/comments and module provenance. Identifier references ignore string literals/comments; this is static source-reference inventory, not dynamic call counts.",
+  "modules": {
+    "src/check/annotate.bend": {
+      "declarations": 61,
+      "kinds": {
+        "def": 34,
+        "law": 26,
+        "type": 1
+      },
+      "physicalDeclarationLines": 328,
+      "nonblankDeclarationLines": 328,
+      "items": [
+        {
+          "name": "KAnnotatedSpine",
+          "kind": "type",
+          "module": "src/check/annotate.bend",
+          "line": 153,
+          "start": 153,
+          "end": 154,
+          "nonblank": 2,
+          "physical": 2
+        },
+        {
+          "name": "annotate_selected",
+          "kind": "law",
+          "module": "src/check/annotate.bend",
+          "line": 2394,
+          "start": 2394,
+          "end": 2398,
+          "nonblank": 5,
+          "physical": 5
+        },
+        {
+          "name": "ka_defs_except",
+          "kind": "law",
+          "module": "src/check/annotate.bend",
+          "line": 2401,
+          "start": 2401,
+          "end": 2405,
+          "nonblank": 5,
+          "physical": 5
+        },
+        {
+          "name": "ka_defs",
+          "kind": "law",
+          "module": "src/check/annotate.bend",
+          "line": 2408,
+          "start": 2408,
+          "end": 2411,
+          "nonblank": 4,
+          "physical": 4
+        },
+        {
+          "name": "ka_def",
+          "kind": "law",
+          "module": "src/check/annotate.bend",
+          "line": 2414,
+          "start": 2414,
+          "end": 2417,
+          "nonblank": 4,
+          "physical": 4
+        },
+        {
+          "name": "annotate",
+          "kind": "law",
+          "module": "src/check/annotate.bend",
+          "line": 2420,
+          "start": 2420,
+          "end": 2425,
+          "nonblank": 6,
+          "physical": 6
+        },
+        {
+          "name": "ka_node",
+          "kind": "law",
+          "module": "src/check/annotate.bend",
+          "line": 2428,
+          "start": 2428,
+          "end": 2433,
+          "nonblank": 6,
+          "physical": 6
+        },
+        {
+          "name": "ka_type",
+          "kind": "law",
+          "module": "src/check/annotate.bend",
+          "line": 2436,
+          "start": 2436,
+          "end": 2440,
+          "nonblank": 5,
+          "physical": 5
+        },
+        {
+          "name": "ka_type_node",
+          "kind": "law",
+          "module": "src/check/annotate.bend",
+          "line": 2443,
+          "start": 2443,
+          "end": 2447,
+          "nonblank": 5,
+          "physical": 5
+        },
+        {
+          "name": "ka_type_app",
+          "kind": "law",
+          "module": "src/check/annotate.bend",
+          "line": 2450,
+          "start": 2450,
+          "end": 2454,
+          "nonblank": 5,
+          "physical": 5
+        },
+        {
+          "name": "ka_lam",
+          "kind": "law",
+          "module": "src/check/annotate.bend",
+          "line": 2457,
+          "start": 2457,
+          "end": 2462,
+          "nonblank": 6,
+          "physical": 6
+        },
+        {
+          "name": "ka_app",
+          "kind": "law",
+          "module": "src/check/annotate.bend",
+          "line": 2465,
+          "start": 2465,
+          "end": 2470,
+          "nonblank": 6,
+          "physical": 6
+        },
+        {
+          "name": "ka_args_head",
+          "kind": "law",
+          "module": "src/check/annotate.bend",
+          "line": 2473,
+          "start": 2473,
+          "end": 2479,
+          "nonblank": 7,
+          "physical": 7
+        },
+        {
+          "name": "ka_mat",
+          "kind": "law",
+          "module": "src/check/annotate.bend",
+          "line": 2482,
+          "start": 2482,
+          "end": 2488,
+          "nonblank": 7,
+          "physical": 7
+        },
+        {
+          "name": "ka_mat_ctr",
+          "kind": "law",
+          "module": "src/check/annotate.bend",
+          "line": 2491,
+          "start": 2491,
+          "end": 2498,
+          "nonblank": 8,
+          "physical": 8
+        },
+        {
+          "name": "ka_let",
+          "kind": "law",
+          "module": "src/check/annotate.bend",
+          "line": 2501,
+          "start": 2501,
+          "end": 2507,
+          "nonblank": 7,
+          "physical": 7
+        },
+        {
+          "name": "ka_let_head",
+          "kind": "law",
+          "module": "src/check/annotate.bend",
+          "line": 2510,
+          "start": 2510,
+          "end": 2518,
+          "nonblank": 9,
+          "physical": 9
+        },
+        {
+          "name": "ka_rwt",
+          "kind": "law",
+          "module": "src/check/annotate.bend",
+          "line": 2521,
+          "start": 2521,
+          "end": 2526,
+          "nonblank": 6,
+          "physical": 6
+        },
+        {
+          "name": "ka_spine_eligible",
+          "kind": "law",
+          "module": "src/check/annotate.bend",
+          "line": 2529,
+          "start": 2529,
+          "end": 2531,
+          "nonblank": 3,
+          "physical": 3
+        },
+        {
+          "name": "ka_spine_finish",
+          "kind": "law",
+          "module": "src/check/annotate.bend",
+          "line": 2534,
+          "start": 2534,
+          "end": 2539,
+          "nonblank": 6,
+          "physical": 6
+        },
+        {
+          "name": "ka_spine_step",
+          "kind": "law",
+          "module": "src/check/annotate.bend",
+          "line": 2542,
+          "start": 2542,
+          "end": 2548,
+          "nonblank": 7,
+          "physical": 7
+        },
+        {
+          "name": "ka_app_spine",
+          "kind": "law",
+          "module": "src/check/annotate.bend",
+          "line": 2551,
+          "start": 2551,
+          "end": 2555,
+          "nonblank": 5,
+          "physical": 5
+        },
+        {
+          "name": "ka_app_spine_root",
+          "kind": "law",
+          "module": "src/check/annotate.bend",
+          "line": 2558,
+          "start": 2558,
+          "end": 2564,
+          "nonblank": 7,
+          "physical": 7
+        },
+        {
+          "name": "ka_app_spine_finish",
+          "kind": "law",
+          "module": "src/check/annotate.bend",
+          "line": 2567,
+          "start": 2567,
+          "end": 2572,
+          "nonblank": 6,
+          "physical": 6
+        },
+        {
+          "name": "ka_args_cached",
+          "kind": "law",
+          "module": "src/check/annotate.bend",
+          "line": 2575,
+          "start": 2575,
+          "end": 2580,
+          "nonblank": 6,
+          "physical": 6
+        },
+        {
+          "name": "ka_args_cached_head",
+          "kind": "law",
+          "module": "src/check/annotate.bend",
+          "line": 2583,
+          "start": 2583,
+          "end": 2589,
+          "nonblank": 7,
+          "physical": 7
+        },
+        {
+          "name": "ka_args_after_head",
+          "kind": "law",
+          "module": "src/check/annotate.bend",
+          "line": 2592,
+          "start": 2592,
+          "end": 2599,
+          "nonblank": 8,
+          "physical": 8
+        },
+        {
+          "name": "ka_wrap",
+          "kind": "def",
+          "module": "src/check/annotate.bend",
+          "line": 10782,
+          "start": 10781,
+          "end": 10786,
+          "nonblank": 6,
+          "physical": 6,
+          "externalDefReferences": [],
+          "internalDefReferences": [
+            "ka_annotated",
+            "ka_app_spine_root"
+          ]
+        },
+        {
+          "name": "annotate_book",
+          "kind": "def",
+          "module": "src/check/annotate.bend",
+          "line": 10790,
+          "start": 10789,
+          "end": 10793,
+          "nonblank": 5,
+          "physical": 5,
+          "externalDefReferences": [],
+          "internalDefReferences": []
+        },
+        {
+          "name": "annotate_except",
+          "kind": "def",
+          "module": "src/check/annotate.bend",
+          "line": 10797,
+          "start": 10796,
+          "end": 10801,
+          "nonblank": 6,
+          "physical": 6,
+          "externalDefReferences": [],
+          "internalDefReferences": []
+        },
+        {
+          "name": "annotate_selected",
+          "kind": "def",
+          "module": "src/check/annotate.bend",
+          "line": 10805,
+          "start": 10804,
+          "end": 10806,
+          "nonblank": 3,
+          "physical": 3,
+          "externalDefReferences": [
+            {
+              "name": "p86_plan_context",
+              "line": 38453,
+              "module": "/home/ai/bend2/build/publish/bend/selfhost/build/phase88/cache-js01/entry.bend"
+            }
+          ],
+          "internalDefReferences": []
+        },
+        {
+          "name": "ka_defs_except",
+          "kind": "def",
+          "module": "src/check/annotate.bend",
+          "line": 10810,
+          "start": 10809,
+          "end": 10815,
+          "nonblank": 7,
+          "physical": 7,
+          "externalDefReferences": [],
+          "internalDefReferences": [
+            "annotate_except",
+            "annotate_selected",
+            "ka_defs_except"
+          ]
+        },
+        {
+          "name": "ka_defs",
+          "kind": "def",
+          "module": "src/check/annotate.bend",
+          "line": 10819,
+          "start": 10818,
+          "end": 10824,
+          "nonblank": 7,
+          "physical": 7,
+          "externalDefReferences": [],
+          "internalDefReferences": [
+            "annotate_book",
+            "ka_defs"
+          ]
+        },
+        {
+          "name": "ka_def",
+          "kind": "def",
+          "module": "src/check/annotate.bend",
+          "line": 10828,
+          "start": 10827,
+          "end": 10829,
+          "nonblank": 3,
+          "physical": 3,
+          "externalDefReferences": [
+            {
+              "name": "base_annotation_collect",
+              "line": 11098,
+              "module": "src/check/base-products.bend"
+            },
+            {
+              "name": "base_annotation_def",
+              "line": 11138,
+              "module": "src/check/base-products.bend"
+            }
+          ],
+          "internalDefReferences": [
+            "ka_defs_except",
+            "ka_defs"
+          ]
+        },
+        {
+          "name": "annotate",
+          "kind": "def",
+          "module": "src/check/annotate.bend",
+          "line": 10833,
+          "start": 10832,
+          "end": 10834,
+          "nonblank": 3,
+          "physical": 3,
+          "externalDefReferences": [],
+          "internalDefReferences": [
+            "ka_def",
+            "ka_lam",
+            "ka_app",
+            "ka_args_head",
+            "ka_mat_ctr",
+            "ka_let",
+            "ka_let_head",
+            "ka_rwt",
+            "ka_app_spine_root",
+            "ka_args_cached_head",
+            "ka_args_static"
+          ]
+        },
+        {
+          "name": "ka_annotated",
+          "kind": "def",
+          "module": "src/check/annotate.bend",
+          "line": 10841,
+          "start": 10840,
+          "end": 10842,
+          "nonblank": 3,
+          "physical": 3,
+          "externalDefReferences": [],
+          "internalDefReferences": [
+            "annotate"
+          ]
+        },
+        {
+          "name": "ka_node",
+          "kind": "def",
+          "module": "src/check/annotate.bend",
+          "line": 10846,
+          "start": 10845,
+          "end": 10855,
+          "nonblank": 11,
+          "physical": 11,
+          "externalDefReferences": [],
+          "internalDefReferences": [
+            "ka_annotated",
+            "ka_node"
+          ]
+        },
+        {
+          "name": "ka_type",
+          "kind": "def",
+          "module": "src/check/annotate.bend",
+          "line": 10859,
+          "start": 10858,
+          "end": 10860,
+          "nonblank": 3,
+          "physical": 3,
+          "externalDefReferences": [],
+          "internalDefReferences": [
+            "ka_node",
+            "ka_type_node",
+            "ka_let",
+            "ka_spine"
+          ]
+        },
+        {
+          "name": "ka_type_node",
+          "kind": "def",
+          "module": "src/check/annotate.bend",
+          "line": 10864,
+          "start": 10863,
+          "end": 10873,
+          "nonblank": 11,
+          "physical": 11,
+          "externalDefReferences": [],
+          "internalDefReferences": [
+            "ka_type"
+          ]
+        },
+        {
+          "name": "ka_type_app",
+          "kind": "def",
+          "module": "src/check/annotate.bend",
+          "line": 10877,
+          "start": 10876,
+          "end": 10878,
+          "nonblank": 3,
+          "physical": 3,
+          "externalDefReferences": [],
+          "internalDefReferences": [
+            "ka_type_node"
+          ]
+        },
+        {
+          "name": "ka_lam",
+          "kind": "def",
+          "module": "src/check/annotate.bend",
+          "line": 10882,
+          "start": 10881,
+          "end": 10883,
+          "nonblank": 3,
+          "physical": 3,
+          "externalDefReferences": [],
+          "internalDefReferences": [
+            "ka_node"
+          ]
+        },
+        {
+          "name": "ka_app",
+          "kind": "def",
+          "module": "src/check/annotate.bend",
+          "line": 10887,
+          "start": 10886,
+          "end": 10888,
+          "nonblank": 3,
+          "physical": 3,
+          "externalDefReferences": [],
+          "internalDefReferences": [
+            "ka_node"
+          ]
+        },
+        {
+          "name": "ka_args",
+          "kind": "def",
+          "module": "src/check/annotate.bend",
+          "line": 10892,
+          "start": 10891,
+          "end": 10902,
+          "nonblank": 12,
+          "physical": 12,
+          "externalDefReferences": [],
+          "internalDefReferences": [
+            "ka_args_head",
+            "ka_args_after_head"
+          ]
+        },
+        {
+          "name": "ka_args_head",
+          "kind": "def",
+          "module": "src/check/annotate.bend",
+          "line": 10906,
+          "start": 10905,
+          "end": 10907,
+          "nonblank": 3,
+          "physical": 3,
+          "externalDefReferences": [],
+          "internalDefReferences": [
+            "ka_args",
+            "ka_args_cached_head"
+          ]
+        },
+        {
+          "name": "ka_mat",
+          "kind": "def",
+          "module": "src/check/annotate.bend",
+          "line": 10911,
+          "start": 10910,
+          "end": 10912,
+          "nonblank": 3,
+          "physical": 3,
+          "externalDefReferences": [],
+          "internalDefReferences": [
+            "ka_node"
+          ]
+        },
+        {
+          "name": "ka_mat_ctr",
+          "kind": "def",
+          "module": "src/check/annotate.bend",
+          "line": 10916,
+          "start": 10915,
+          "end": 10917,
+          "nonblank": 3,
+          "physical": 3,
+          "externalDefReferences": [],
+          "internalDefReferences": [
+            "ka_mat"
+          ]
+        },
+        {
+          "name": "ka_let",
+          "kind": "def",
+          "module": "src/check/annotate.bend",
+          "line": 10921,
+          "start": 10920,
+          "end": 10926,
+          "nonblank": 7,
+          "physical": 7,
+          "externalDefReferences": [],
+          "internalDefReferences": [
+            "ka_node",
+            "ka_let_head"
+          ]
+        },
+        {
+          "name": "ka_let_head",
+          "kind": "def",
+          "module": "src/check/annotate.bend",
+          "line": 10930,
+          "start": 10929,
+          "end": 10931,
+          "nonblank": 3,
+          "physical": 3,
+          "externalDefReferences": [],
+          "internalDefReferences": [
+            "ka_let"
+          ]
+        },
+        {
+          "name": "ka_rwt",
+          "kind": "def",
+          "module": "src/check/annotate.bend",
+          "line": 10935,
+          "start": 10934,
+          "end": 10936,
+          "nonblank": 3,
+          "physical": 3,
+          "externalDefReferences": [],
+          "internalDefReferences": [
+            "ka_node"
+          ]
+        },
+        {
+          "name": "ka_spine_eligible",
+          "kind": "def",
+          "module": "src/check/annotate.bend",
+          "line": 10944,
+          "start": 10943,
+          "end": 10945,
+          "nonblank": 3,
+          "physical": 3,
+          "externalDefReferences": [],
+          "internalDefReferences": [
+            "ka_node",
+            "ka_spine_eligible"
+          ]
+        },
+        {
+          "name": "ka_spine",
+          "kind": "def",
+          "module": "src/check/annotate.bend",
+          "line": 10949,
+          "start": 10948,
+          "end": 10954,
+          "nonblank": 7,
+          "physical": 7,
+          "externalDefReferences": [],
+          "internalDefReferences": [
+            "ka_spine",
+            "ka_app_spine"
+          ]
+        },
+        {
+          "name": "ka_spine_finish",
+          "kind": "def",
+          "module": "src/check/annotate.bend",
+          "line": 10958,
+          "start": 10957,
+          "end": 10960,
+          "nonblank": 4,
+          "physical": 4,
+          "externalDefReferences": [],
+          "internalDefReferences": [
+            "ka_spine"
+          ]
+        },
+        {
+          "name": "ka_spine_step",
+          "kind": "def",
+          "module": "src/check/annotate.bend",
+          "line": 10964,
+          "start": 10963,
+          "end": 10965,
+          "nonblank": 3,
+          "physical": 3,
+          "externalDefReferences": [],
+          "internalDefReferences": [
+            "ka_spine_finish"
+          ]
+        },
+        {
+          "name": "ka_app_spine",
+          "kind": "def",
+          "module": "src/check/annotate.bend",
+          "line": 10969,
+          "start": 10968,
+          "end": 10970,
+          "nonblank": 3,
+          "physical": 3,
+          "externalDefReferences": [],
+          "internalDefReferences": [
+            "ka_node"
+          ]
+        },
+        {
+          "name": "ka_app_spine_finish",
+          "kind": "def",
+          "module": "src/check/annotate.bend",
+          "line": 10974,
+          "start": 10973,
+          "end": 10976,
+          "nonblank": 4,
+          "physical": 4,
+          "externalDefReferences": [],
+          "internalDefReferences": [
+            "ka_app_spine"
+          ]
+        },
+        {
+          "name": "ka_app_spine_root",
+          "kind": "def",
+          "module": "src/check/annotate.bend",
+          "line": 10980,
+          "start": 10979,
+          "end": 10981,
+          "nonblank": 3,
+          "physical": 3,
+          "externalDefReferences": [],
+          "internalDefReferences": [
+            "ka_spine_step",
+            "ka_app_spine_finish"
+          ]
+        },
+        {
+          "name": "ka_args_cached",
+          "kind": "def",
+          "module": "src/check/annotate.bend",
+          "line": 10988,
+          "start": 10987,
+          "end": 10992,
+          "nonblank": 6,
+          "physical": 6,
+          "externalDefReferences": [],
+          "internalDefReferences": [
+            "ka_node",
+            "ka_args_static"
+          ]
+        },
+        {
+          "name": "ka_args_cached_head",
+          "kind": "def",
+          "module": "src/check/annotate.bend",
+          "line": 10996,
+          "start": 10995,
+          "end": 10999,
+          "nonblank": 5,
+          "physical": 5,
+          "externalDefReferences": [],
+          "internalDefReferences": [
+            "ka_args_cached"
+          ]
+        },
+        {
+          "name": "ka_args_static",
+          "kind": "def",
+          "module": "src/check/annotate.bend",
+          "line": 11003,
+          "start": 11002,
+          "end": 11014,
+          "nonblank": 13,
+          "physical": 13,
+          "externalDefReferences": [],
+          "internalDefReferences": [
+            "ka_args_static",
+            "ka_args_after_head"
+          ]
+        },
+        {
+          "name": "ka_args_after_head",
+          "kind": "def",
+          "module": "src/check/annotate.bend",
+          "line": 11018,
+          "start": 11017,
+          "end": 11021,
+          "nonblank": 5,
+          "physical": 5,
+          "externalDefReferences": [],
+          "internalDefReferences": [
+            "ka_args_cached_head"
+          ]
+        },
+        {
+          "name": "ka_field",
+          "kind": "def",
+          "module": "src/check/annotate.bend",
+          "line": 11028,
+          "start": 11027,
+          "end": 11029,
+          "nonblank": 3,
+          "physical": 3,
+          "externalDefReferences": [],
+          "internalDefReferences": [
+            "ka_args_head",
+            "ka_args_static",
+            "ka_args_after_head"
+          ]
+        }
+      ]
+    },
+    "src/back/native/erase.bend": {
+      "declarations": 12,
+      "kinds": {
+        "def": 9,
+        "law": 3,
+        "type": 0
+      },
+      "physicalDeclarationLines": 69,
+      "nonblankDeclarationLines": 69,
+      "items": [
+        {
+          "name": "nc_live_count_head",
+          "kind": "law",
+          "module": "src/back/native/erase.bend",
+          "line": 5231,
+          "start": 5231,
+          "end": 5235,
+          "nonblank": 5,
+          "physical": 5
+        },
+        {
+          "name": "nc_erase",
+          "kind": "law",
+          "module": "src/back/native/erase.bend",
+          "line": 5241,
+          "start": 5241,
+          "end": 5244,
+          "nonblank": 4,
+          "physical": 4
+        },
+        {
+          "name": "nc_erase_list",
+          "kind": "law",
+          "module": "src/back/native/erase.bend",
+          "line": 5247,
+          "start": 5247,
+          "end": 5250,
+          "nonblank": 4,
+          "physical": 4
+        },
+        {
+          "name": "nc_tele_fill",
+          "kind": "def",
+          "module": "src/back/native/erase.bend",
+          "line": 31909,
+          "start": 31908,
+          "end": 31914,
+          "nonblank": 7,
+          "physical": 7,
+          "externalDefReferences": [
+            {
+              "name": "nc_show_arms",
+              "line": 34766,
+              "module": "src/back/native/show.bend"
+            },
+            {
+              "name": "p111_show_arms",
+              "line": 39470,
+              "module": "/home/ai/bend2/build/publish/bend/selfhost/build/phase88/cache-js01/entry.bend"
+            }
+          ],
+          "internalDefReferences": [
+            "nc_tele_fill",
+            "nc_erase_mat",
+            "nc_erase_annotated"
+          ]
+        },
+        {
+          "name": "nc_live_count",
+          "kind": "def",
+          "module": "src/back/native/erase.bend",
+          "line": 31918,
+          "start": 31917,
+          "end": 31919,
+          "nonblank": 3,
+          "physical": 3,
+          "externalDefReferences": [
+            {
+              "name": "nc_ctor_specs",
+              "line": 35690,
+              "module": "src/back/native/book.bend"
+            },
+            {
+              "name": "p113n_field_kinds",
+              "line": 46430,
+              "module": "/home/ai/bend2/build/publish/bend/selfhost/build/phase88/cache-js01/entry.bend"
+            }
+          ],
+          "internalDefReferences": [
+            "nc_live_count_head",
+            "nc_erase_mat"
+          ]
+        },
+        {
+          "name": "nc_live_count_head",
+          "kind": "def",
+          "module": "src/back/native/erase.bend",
+          "line": 31923,
+          "start": 31922,
+          "end": 31924,
+          "nonblank": 3,
+          "physical": 3,
+          "externalDefReferences": [],
+          "internalDefReferences": [
+            "nc_live_count"
+          ]
+        },
+        {
+          "name": "nc_erase_args",
+          "kind": "def",
+          "module": "src/back/native/erase.bend",
+          "line": 31928,
+          "start": 31927,
+          "end": 31939,
+          "nonblank": 13,
+          "physical": 13,
+          "externalDefReferences": [],
+          "internalDefReferences": [
+            "nc_erase_args",
+            "nc_erase_annotated"
+          ]
+        },
+        {
+          "name": "nc_erase_mat",
+          "kind": "def",
+          "module": "src/back/native/erase.bend",
+          "line": 31943,
+          "start": 31942,
+          "end": 31946,
+          "nonblank": 5,
+          "physical": 5,
+          "externalDefReferences": [],
+          "internalDefReferences": [
+            "nc_erase_annotated"
+          ]
+        },
+        {
+          "name": "nc_erase_annotated",
+          "kind": "def",
+          "module": "src/back/native/erase.bend",
+          "line": 31950,
+          "start": 31949,
+          "end": 31956,
+          "nonblank": 8,
+          "physical": 8,
+          "externalDefReferences": [],
+          "internalDefReferences": [
+            "nc_erase"
+          ]
+        },
+        {
+          "name": "nc_erase_list",
+          "kind": "def",
+          "module": "src/back/native/erase.bend",
+          "line": 31960,
+          "start": 31959,
+          "end": 31963,
+          "nonblank": 5,
+          "physical": 5,
+          "externalDefReferences": [],
+          "internalDefReferences": [
+            "nc_erase_mat",
+            "nc_erase_list",
+            "nc_erase_app",
+            "nc_erase"
+          ]
+        },
+        {
+          "name": "nc_erase_app",
+          "kind": "def",
+          "module": "src/back/native/erase.bend",
+          "line": 31967,
+          "start": 31966,
+          "end": 31970,
+          "nonblank": 5,
+          "physical": 5,
+          "externalDefReferences": [],
+          "internalDefReferences": [
+            "nc_erase"
+          ]
+        },
+        {
+          "name": "nc_erase",
+          "kind": "def",
+          "module": "src/back/native/erase.bend",
+          "line": 31974,
+          "start": 31973,
+          "end": 31979,
+          "nonblank": 7,
+          "physical": 7,
+          "externalDefReferences": [
+            {
+              "name": "nd_partial_selected",
+              "line": 33061,
+              "module": "src/back/native/direct.bend"
+            },
+            {
+              "name": "ns_unshared_definitions",
+              "line": 35131,
+              "module": "src/back/native/scalar-array.bend"
+            },
+            {
+              "name": "nc_definition_plain",
+              "line": 35602,
+              "module": "src/back/native/book.bend"
+            },
+            {
+              "name": "p113dc_definition",
+              "line": 47349,
+              "module": "/home/ai/bend2/build/publish/bend/selfhost/build/phase88/cache-js01/entry.bend"
+            },
+            {
+              "name": "p121f_expr",
+              "line": 52426,
+              "module": "/home/ai/bend2/build/publish/bend/selfhost/build/phase88/cache-js01/entry.bend"
+            }
+          ],
+          "internalDefReferences": [
+            "nc_erase_args",
+            "nc_erase_annotated",
+            "nc_erase_list",
+            "nc_erase_app",
+            "nc_erase"
+          ]
+        }
+      ]
+    },
+    "src/check/specialize.bend": {
+      "declarations": 61,
+      "kinds": {
+        "def": 53,
+        "law": 5,
+        "type": 3
+      },
+      "physicalDeclarationLines": 320,
+      "nonblankDeclarationLines": 320,
+      "items": [
+        {
+          "name": "KChecked",
+          "kind": "type",
+          "module": "src/check/specialize.bend",
+          "line": 129,
+          "start": 129,
+          "end": 130,
+          "nonblank": 2,
+          "physical": 2
+        },
+        {
+          "name": "KSpecialized",
+          "kind": "type",
+          "module": "src/check/specialize.bend",
+          "line": 133,
+          "start": 133,
+          "end": 134,
+          "nonblank": 2,
+          "physical": 2
+        },
+        {
+          "name": "KSpecMemo",
+          "kind": "type",
+          "module": "src/check/specialize.bend",
+          "line": 137,
+          "start": 137,
+          "end": 138,
+          "nonblank": 2,
+          "physical": 2
+        },
+        {
+          "name": "sp_keys",
+          "kind": "law",
+          "module": "src/check/specialize.bend",
+          "line": 2296,
+          "start": 2296,
+          "end": 2298,
+          "nonblank": 3,
+          "physical": 3
+        },
+        {
+          "name": "sp_take_next",
+          "kind": "law",
+          "module": "src/check/specialize.bend",
+          "line": 2301,
+          "start": 2301,
+          "end": 2304,
+          "nonblank": 4,
+          "physical": 4
+        },
+        {
+          "name": "sp_drop_next",
+          "kind": "law",
+          "module": "src/check/specialize.bend",
+          "line": 2307,
+          "start": 2307,
+          "end": 2310,
+          "nonblank": 4,
+          "physical": 4
+        },
+        {
+          "name": "sp_shifts",
+          "kind": "law",
+          "module": "src/check/specialize.bend",
+          "line": 2313,
+          "start": 2313,
+          "end": 2316,
+          "nonblank": 4,
+          "physical": 4
+        },
+        {
+          "name": "sp_apply_template",
+          "kind": "law",
+          "module": "src/check/specialize.bend",
+          "line": 2319,
+          "start": 2319,
+          "end": 2322,
+          "nonblank": 4,
+          "physical": 4
+        },
+        {
+          "name": "specialized_book",
+          "kind": "def",
+          "module": "src/check/specialize.bend",
+          "line": 9772,
+          "start": 9771,
+          "end": 9777,
+          "nonblank": 7,
+          "physical": 7
+        },
+        {
+          "name": "specialized_error",
+          "kind": "def",
+          "module": "src/check/specialize.bend",
+          "line": 9781,
+          "start": 9780,
+          "end": 9786,
+          "nonblank": 7,
+          "physical": 7
+        },
+        {
+          "name": "specialized_diagnostic",
+          "kind": "def",
+          "module": "src/check/specialize.bend",
+          "line": 9790,
+          "start": 9789,
+          "end": 9794,
+          "nonblank": 6,
+          "physical": 6
+        },
+        {
+          "name": "sp_mtemplate",
+          "kind": "def",
+          "module": "src/check/specialize.bend",
+          "line": 9798,
+          "start": 9797,
+          "end": 9803,
+          "nonblank": 7,
+          "physical": 7
+        },
+        {
+          "name": "sp_mkey",
+          "kind": "def",
+          "module": "src/check/specialize.bend",
+          "line": 9807,
+          "start": 9806,
+          "end": 9812,
+          "nonblank": 7,
+          "physical": 7
+        },
+        {
+          "name": "sp_mname",
+          "kind": "def",
+          "module": "src/check/specialize.bend",
+          "line": 9816,
+          "start": 9815,
+          "end": 9821,
+          "nonblank": 7,
+          "physical": 7
+        },
+        {
+          "name": "sp_active",
+          "kind": "def",
+          "module": "src/check/specialize.bend",
+          "line": 9825,
+          "start": 9824,
+          "end": 9830,
+          "nonblank": 7,
+          "physical": 7
+        },
+        {
+          "name": "sp_len",
+          "kind": "def",
+          "module": "src/check/specialize.bend",
+          "line": 9834,
+          "start": 9833,
+          "end": 9835,
+          "nonblank": 3,
+          "physical": 3
+        },
+        {
+          "name": "sk_width",
+          "kind": "def",
+          "module": "src/check/specialize.bend",
+          "line": 9839,
+          "start": 9838,
+          "end": 9842,
+          "nonblank": 5,
+          "physical": 5
+        },
+        {
+          "name": "sk_quote",
+          "kind": "def",
+          "module": "src/check/specialize.bend",
+          "line": 9846,
+          "start": 9845,
+          "end": 9847,
+          "nonblank": 3,
+          "physical": 3
+        },
+        {
+          "name": "sk_escape",
+          "kind": "def",
+          "module": "src/check/specialize.bend",
+          "line": 9851,
+          "start": 9850,
+          "end": 9854,
+          "nonblank": 5,
+          "physical": 5
+        },
+        {
+          "name": "sk_char",
+          "kind": "def",
+          "module": "src/check/specialize.bend",
+          "line": 9858,
+          "start": 9857,
+          "end": 9869,
+          "nonblank": 13,
+          "physical": 13
+        },
+        {
+          "name": "sk_quant",
+          "kind": "def",
+          "module": "src/check/specialize.bend",
+          "line": 9873,
+          "start": 9872,
+          "end": 9874,
+          "nonblank": 3,
+          "physical": 3
+        },
+        {
+          "name": "term_key",
+          "kind": "def",
+          "module": "src/check/specialize.bend",
+          "line": 9878,
+          "start": 9877,
+          "end": 9879,
+          "nonblank": 3,
+          "physical": 3
+        },
+        {
+          "name": "sp_keys",
+          "kind": "def",
+          "module": "src/check/specialize.bend",
+          "line": 9883,
+          "start": 9882,
+          "end": 9886,
+          "nonblank": 5,
+          "physical": 5
+        },
+        {
+          "name": "sk_names",
+          "kind": "def",
+          "module": "src/check/specialize.bend",
+          "line": 9890,
+          "start": 9889,
+          "end": 9893,
+          "nonblank": 5,
+          "physical": 5
+        },
+        {
+          "name": "sk_terms",
+          "kind": "def",
+          "module": "src/check/specialize.bend",
+          "line": 9897,
+          "start": 9896,
+          "end": 9900,
+          "nonblank": 5,
+          "physical": 5
+        },
+        {
+          "name": "sk_var",
+          "kind": "def",
+          "module": "src/check/specialize.bend",
+          "line": 9904,
+          "start": 9903,
+          "end": 9909,
+          "nonblank": 7,
+          "physical": 7
+        },
+        {
+          "name": "sk_variable",
+          "kind": "def",
+          "module": "src/check/specialize.bend",
+          "line": 9913,
+          "start": 9912,
+          "end": 9914,
+          "nonblank": 3,
+          "physical": 3
+        },
+        {
+          "name": "sk_term",
+          "kind": "def",
+          "module": "src/check/specialize.bend",
+          "line": 9918,
+          "start": 9917,
+          "end": 9921,
+          "nonblank": 5,
+          "physical": 5
+        },
+        {
+          "name": "sk_node",
+          "kind": "def",
+          "module": "src/check/specialize.bend",
+          "line": 9925,
+          "start": 9924,
+          "end": 9932,
+          "nonblank": 9,
+          "physical": 9
+        },
+        {
+          "name": "sk_other",
+          "kind": "def",
+          "module": "src/check/specialize.bend",
+          "line": 9936,
+          "start": 9935,
+          "end": 9947,
+          "nonblank": 13,
+          "physical": 13
+        },
+        {
+          "name": "sk_internal",
+          "kind": "def",
+          "module": "src/check/specialize.bend",
+          "line": 9951,
+          "start": 9950,
+          "end": 9952,
+          "nonblank": 3,
+          "physical": 3
+        },
+        {
+          "name": "sk_pair",
+          "kind": "def",
+          "module": "src/check/specialize.bend",
+          "line": 9956,
+          "start": 9955,
+          "end": 9957,
+          "nonblank": 3,
+          "physical": 3
+        },
+        {
+          "name": "sk_triple",
+          "kind": "def",
+          "module": "src/check/specialize.bend",
+          "line": 9961,
+          "start": 9960,
+          "end": 9962,
+          "nonblank": 3,
+          "physical": 3
+        },
+        {
+          "name": "sk_let",
+          "kind": "def",
+          "module": "src/check/specialize.bend",
+          "line": 9966,
+          "start": 9965,
+          "end": 9967,
+          "nonblank": 3,
+          "physical": 3
+        },
+        {
+          "name": "sk_let_field",
+          "kind": "def",
+          "module": "src/check/specialize.bend",
+          "line": 9971,
+          "start": 9970,
+          "end": 9980,
+          "nonblank": 11,
+          "physical": 11
+        },
+        {
+          "name": "sk_let_body",
+          "kind": "def",
+          "module": "src/check/specialize.bend",
+          "line": 9984,
+          "start": 9983,
+          "end": 9988,
+          "nonblank": 6,
+          "physical": 6
+        },
+        {
+          "name": "sp_find",
+          "kind": "def",
+          "module": "src/check/specialize.bend",
+          "line": 9992,
+          "start": 9991,
+          "end": 10001,
+          "nonblank": 11,
+          "physical": 11
+        },
+        {
+          "name": "sp_ordinal",
+          "kind": "def",
+          "module": "src/check/specialize.bend",
+          "line": 10005,
+          "start": 10004,
+          "end": 10011,
+          "nonblank": 8,
+          "physical": 8
+        },
+        {
+          "name": "sp_done_memo",
+          "kind": "def",
+          "module": "src/check/specialize.bend",
+          "line": 10015,
+          "start": 10014,
+          "end": 10023,
+          "nonblank": 10,
+          "physical": 10
+        },
+        {
+          "name": "sp_take",
+          "kind": "def",
+          "module": "src/check/specialize.bend",
+          "line": 10027,
+          "start": 10026,
+          "end": 10031,
+          "nonblank": 6,
+          "physical": 6
+        },
+        {
+          "name": "sp_take_next",
+          "kind": "def",
+          "module": "src/check/specialize.bend",
+          "line": 10035,
+          "start": 10034,
+          "end": 10040,
+          "nonblank": 7,
+          "physical": 7
+        },
+        {
+          "name": "sp_drop",
+          "kind": "def",
+          "module": "src/check/specialize.bend",
+          "line": 10044,
+          "start": 10043,
+          "end": 10048,
+          "nonblank": 6,
+          "physical": 6
+        },
+        {
+          "name": "sp_drop_next",
+          "kind": "def",
+          "module": "src/check/specialize.bend",
+          "line": 10052,
+          "start": 10051,
+          "end": 10057,
+          "nonblank": 7,
+          "physical": 7
+        },
+        {
+          "name": "sp_shift",
+          "kind": "def",
+          "module": "src/check/specialize.bend",
+          "line": 10061,
+          "start": 10060,
+          "end": 10066,
+          "nonblank": 7,
+          "physical": 7
+        },
+        {
+          "name": "sp_shifts",
+          "kind": "def",
+          "module": "src/check/specialize.bend",
+          "line": 10070,
+          "start": 10069,
+          "end": 10075,
+          "nonblank": 7,
+          "physical": 7
+        },
+        {
+          "name": "sp_apply_template",
+          "kind": "def",
+          "module": "src/check/specialize.bend",
+          "line": 10079,
+          "start": 10078,
+          "end": 10084,
+          "nonblank": 7,
+          "physical": 7
+        },
+        {
+          "name": "sp_payload_error",
+          "kind": "def",
+          "module": "src/check/specialize.bend",
+          "line": 10088,
+          "start": 10087,
+          "end": 10090,
+          "nonblank": 4,
+          "physical": 4
+        },
+        {
+          "name": "sp_payload_term",
+          "kind": "def",
+          "module": "src/check/specialize.bend",
+          "line": 10094,
+          "start": 10093,
+          "end": 10096,
+          "nonblank": 4,
+          "physical": 4
+        },
+        {
+          "name": "sp_assembled",
+          "kind": "def",
+          "module": "src/check/specialize.bend",
+          "line": 10100,
+          "start": 10099,
+          "end": 10101,
+          "nonblank": 3,
+          "physical": 3
+        },
+        {
+          "name": "specialize_book",
+          "kind": "def",
+          "module": "src/check/specialize.bend",
+          "line": 10105,
+          "start": 10104,
+          "end": 10106,
+          "nonblank": 3,
+          "physical": 3
+        },
+        {
+          "name": "sp_public",
+          "kind": "def",
+          "module": "src/check/specialize.bend",
+          "line": 10110,
+          "start": 10109,
+          "end": 10111,
+          "nonblank": 3,
+          "physical": 3
+        },
+        {
+          "name": "sp_source_book",
+          "kind": "def",
+          "module": "src/check/specialize.bend",
+          "line": 10115,
+          "start": 10114,
+          "end": 10118,
+          "nonblank": 5,
+          "physical": 5
+        },
+        {
+          "name": "sp_live_checked",
+          "kind": "def",
+          "module": "src/check/specialize.bend",
+          "line": 10122,
+          "start": 10121,
+          "end": 10123,
+          "nonblank": 3,
+          "physical": 3
+        },
+        {
+          "name": "sp_live_key",
+          "kind": "def",
+          "module": "src/check/specialize.bend",
+          "line": 10127,
+          "start": 10126,
+          "end": 10128,
+          "nonblank": 3,
+          "physical": 3
+        },
+        {
+          "name": "sp_live_error",
+          "kind": "def",
+          "module": "src/check/specialize.bend",
+          "line": 10132,
+          "start": 10131,
+          "end": 10133,
+          "nonblank": 3,
+          "physical": 3
+        },
+        {
+          "name": "sp_live_memo",
+          "kind": "def",
+          "module": "src/check/specialize.bend",
+          "line": 10137,
+          "start": 10136,
+          "end": 10140,
+          "nonblank": 5,
+          "physical": 5
+        },
+        {
+          "name": "sp_live_ref",
+          "kind": "def",
+          "module": "src/check/specialize.bend",
+          "line": 10144,
+          "start": 10143,
+          "end": 10145,
+          "nonblank": 3,
+          "physical": 3
+        },
+        {
+          "name": "sp_live_fresh",
+          "kind": "def",
+          "module": "src/check/specialize.bend",
+          "line": 10149,
+          "start": 10148,
+          "end": 10152,
+          "nonblank": 5,
+          "physical": 5
+        },
+        {
+          "name": "sp_live_body",
+          "kind": "def",
+          "module": "src/check/specialize.bend",
+          "line": 10156,
+          "start": 10155,
+          "end": 10159,
+          "nonblank": 5,
+          "physical": 5
+        },
+        {
+          "name": "sp_live_done",
+          "kind": "def",
+          "module": "src/check/specialize.bend",
+          "line": 10163,
+          "start": 10162,
+          "end": 10164,
+          "nonblank": 3,
+          "physical": 3
+        },
+        {
+          "name": "sp_live_args",
+          "kind": "def",
+          "module": "src/check/specialize.bend",
+          "line": 10168,
+          "start": 10167,
+          "end": 10169,
+          "nonblank": 3,
+          "physical": 3
+        }
+      ]
+    },
+    "src/check/kernel.bend": {
+      "declarations": 221,
+      "kinds": {
+        "def": 157,
+        "law": 60,
+        "type": 4
+      },
+      "physicalDeclarationLines": 1195,
+      "nonblankDeclarationLines": 1195,
+      "items": [
+        {
+          "name": "KChecking",
+          "kind": "type",
+          "module": "src/check/kernel.bend",
+          "line": 108,
+          "start": 108,
+          "end": 109,
+          "nonblank": 2,
+          "physical": 2
+        },
+        {
+          "name": "KEnv",
+          "kind": "type",
+          "module": "src/check/kernel.bend",
+          "line": 112,
+          "start": 112,
+          "end": 113,
+          "nonblank": 2,
+          "physical": 2
+        },
+        {
+          "name": "KWorldFresh",
+          "kind": "type",
+          "module": "src/check/kernel.bend",
+          "line": 116,
+          "start": 116,
+          "end": 118,
+          "nonblank": 3,
+          "physical": 3
+        },
+        {
+          "name": "KWorld",
+          "kind": "type",
+          "module": "src/check/kernel.bend",
+          "line": 121,
+          "start": 121,
+          "end": 122,
+          "nonblank": 2,
+          "physical": 2
+        },
+        {
+          "name": "infer_node",
+          "kind": "law",
+          "module": "src/check/kernel.bend",
+          "line": 1696,
+          "start": 1696,
+          "end": 1702,
+          "nonblank": 7,
+          "physical": 7
+        },
+        {
+          "name": "infer_var",
+          "kind": "law",
+          "module": "src/check/kernel.bend",
+          "line": 1705,
+          "start": 1705,
+          "end": 1710,
+          "nonblank": 6,
+          "physical": 6
+        },
+        {
+          "name": "infer_ref",
+          "kind": "law",
+          "module": "src/check/kernel.bend",
+          "line": 1713,
+          "start": 1713,
+          "end": 1720,
+          "nonblank": 8,
+          "physical": 8
+        },
+        {
+          "name": "infer_app",
+          "kind": "law",
+          "module": "src/check/kernel.bend",
+          "line": 1723,
+          "start": 1723,
+          "end": 1729,
+          "nonblank": 7,
+          "physical": 7
+        },
+        {
+          "name": "infer_app_type",
+          "kind": "law",
+          "module": "src/check/kernel.bend",
+          "line": 1732,
+          "start": 1732,
+          "end": 1739,
+          "nonblank": 8,
+          "physical": 8
+        },
+        {
+          "name": "infer_adt",
+          "kind": "law",
+          "module": "src/check/kernel.bend",
+          "line": 1742,
+          "start": 1742,
+          "end": 1748,
+          "nonblank": 7,
+          "physical": 7
+        },
+        {
+          "name": "infer_adt_done",
+          "kind": "law",
+          "module": "src/check/kernel.bend",
+          "line": 1751,
+          "start": 1751,
+          "end": 1754,
+          "nonblank": 4,
+          "physical": 4
+        },
+        {
+          "name": "tele_check",
+          "kind": "law",
+          "module": "src/check/kernel.bend",
+          "line": 1757,
+          "start": 1757,
+          "end": 1763,
+          "nonblank": 7,
+          "physical": 7
+        },
+        {
+          "name": "tele_check_done",
+          "kind": "law",
+          "module": "src/check/kernel.bend",
+          "line": 1766,
+          "start": 1766,
+          "end": 1769,
+          "nonblank": 4,
+          "physical": 4
+        },
+        {
+          "name": "tele_fill_head",
+          "kind": "law",
+          "module": "src/check/kernel.bend",
+          "line": 1772,
+          "start": 1772,
+          "end": 1777,
+          "nonblank": 6,
+          "physical": 6
+        },
+        {
+          "name": "check",
+          "kind": "law",
+          "module": "src/check/kernel.bend",
+          "line": 1780,
+          "start": 1780,
+          "end": 1786,
+          "nonblank": 7,
+          "physical": 7
+        },
+        {
+          "name": "check_node",
+          "kind": "law",
+          "module": "src/check/kernel.bend",
+          "line": 1789,
+          "start": 1789,
+          "end": 1795,
+          "nonblank": 7,
+          "physical": 7
+        },
+        {
+          "name": "check_fits",
+          "kind": "law",
+          "module": "src/check/kernel.bend",
+          "line": 1798,
+          "start": 1798,
+          "end": 1802,
+          "nonblank": 5,
+          "physical": 5
+        },
+        {
+          "name": "check_lam",
+          "kind": "law",
+          "module": "src/check/kernel.bend",
+          "line": 1805,
+          "start": 1805,
+          "end": 1811,
+          "nonblank": 7,
+          "physical": 7
+        },
+        {
+          "name": "check_lam_q",
+          "kind": "law",
+          "module": "src/check/kernel.bend",
+          "line": 1814,
+          "start": 1814,
+          "end": 1821,
+          "nonblank": 8,
+          "physical": 8
+        },
+        {
+          "name": "check_lam_done",
+          "kind": "law",
+          "module": "src/check/kernel.bend",
+          "line": 1824,
+          "start": 1824,
+          "end": 1829,
+          "nonblank": 6,
+          "physical": 6
+        },
+        {
+          "name": "check_ctr",
+          "kind": "law",
+          "module": "src/check/kernel.bend",
+          "line": 1832,
+          "start": 1832,
+          "end": 1838,
+          "nonblank": 7,
+          "physical": 7
+        },
+        {
+          "name": "check_ctr_found",
+          "kind": "law",
+          "module": "src/check/kernel.bend",
+          "line": 1841,
+          "start": 1841,
+          "end": 1848,
+          "nonblank": 8,
+          "physical": 8
+        },
+        {
+          "name": "check_rfl",
+          "kind": "law",
+          "module": "src/check/kernel.bend",
+          "line": 1851,
+          "start": 1851,
+          "end": 1855,
+          "nonblank": 5,
+          "physical": 5
+        },
+        {
+          "name": "check_let",
+          "kind": "law",
+          "module": "src/check/kernel.bend",
+          "line": 1858,
+          "start": 1858,
+          "end": 1869,
+          "nonblank": 12,
+          "physical": 12
+        },
+        {
+          "name": "check_let_value",
+          "kind": "law",
+          "module": "src/check/kernel.bend",
+          "line": 1872,
+          "start": 1872,
+          "end": 1885,
+          "nonblank": 14,
+          "physical": 14
+        },
+        {
+          "name": "check_let_kind",
+          "kind": "law",
+          "module": "src/check/kernel.bend",
+          "line": 1888,
+          "start": 1888,
+          "end": 1902,
+          "nonblank": 15,
+          "physical": 15
+        },
+        {
+          "name": "let_cells",
+          "kind": "law",
+          "module": "src/check/kernel.bend",
+          "line": 1905,
+          "start": 1905,
+          "end": 1908,
+          "nonblank": 4,
+          "physical": 4
+        },
+        {
+          "name": "check_let_done",
+          "kind": "law",
+          "module": "src/check/kernel.bend",
+          "line": 1911,
+          "start": 1911,
+          "end": 1918,
+          "nonblank": 8,
+          "physical": 8
+        },
+        {
+          "name": "dead_type",
+          "kind": "law",
+          "module": "src/check/kernel.bend",
+          "line": 1921,
+          "start": 1921,
+          "end": 1924,
+          "nonblank": 4,
+          "physical": 4
+        },
+        {
+          "name": "check_mat",
+          "kind": "law",
+          "module": "src/check/kernel.bend",
+          "line": 1927,
+          "start": 1927,
+          "end": 1933,
+          "nonblank": 7,
+          "physical": 7
+        },
+        {
+          "name": "check_mat_type",
+          "kind": "law",
+          "module": "src/check/kernel.bend",
+          "line": 1936,
+          "start": 1936,
+          "end": 1943,
+          "nonblank": 8,
+          "physical": 8
+        },
+        {
+          "name": "check_mat_ctr",
+          "kind": "law",
+          "module": "src/check/kernel.bend",
+          "line": 1946,
+          "start": 1946,
+          "end": 1954,
+          "nonblank": 9,
+          "physical": 9
+        },
+        {
+          "name": "mat_goal",
+          "kind": "law",
+          "module": "src/check/kernel.bend",
+          "line": 1957,
+          "start": 1957,
+          "end": 1964,
+          "nonblank": 8,
+          "physical": 8
+        },
+        {
+          "name": "mat_goal_head",
+          "kind": "law",
+          "module": "src/check/kernel.bend",
+          "line": 1967,
+          "start": 1967,
+          "end": 1974,
+          "nonblank": 8,
+          "physical": 8
+        },
+        {
+          "name": "mat_lhs",
+          "kind": "law",
+          "module": "src/check/kernel.bend",
+          "line": 1977,
+          "start": 1977,
+          "end": 1983,
+          "nonblank": 7,
+          "physical": 7
+        },
+        {
+          "name": "check_rwt",
+          "kind": "law",
+          "module": "src/check/kernel.bend",
+          "line": 1986,
+          "start": 1986,
+          "end": 1993,
+          "nonblank": 8,
+          "physical": 8
+        },
+        {
+          "name": "check_rwt_type",
+          "kind": "law",
+          "module": "src/check/kernel.bend",
+          "line": 1996,
+          "start": 1996,
+          "end": 2004,
+          "nonblank": 9,
+          "physical": 9
+        },
+        {
+          "name": "check_rwt_goal",
+          "kind": "law",
+          "module": "src/check/kernel.bend",
+          "line": 2007,
+          "start": 2007,
+          "end": 2016,
+          "nonblank": 10,
+          "physical": 10
+        },
+        {
+          "name": "tele_quantities_head",
+          "kind": "law",
+          "module": "src/check/kernel.bend",
+          "line": 2019,
+          "start": 2019,
+          "end": 2023,
+          "nonblank": 5,
+          "physical": 5
+        },
+        {
+          "name": "count_open",
+          "kind": "law",
+          "module": "src/check/kernel.bend",
+          "line": 2026,
+          "start": 2026,
+          "end": 2028,
+          "nonblank": 3,
+          "physical": 3
+        },
+        {
+          "name": "check_open_message",
+          "kind": "law",
+          "module": "src/check/kernel.bend",
+          "line": 2031,
+          "start": 2031,
+          "end": 2033,
+          "nonblank": 3,
+          "physical": 3
+        },
+        {
+          "name": "signature_fill_mode",
+          "kind": "law",
+          "module": "src/check/kernel.bend",
+          "line": 2036,
+          "start": 2036,
+          "end": 2039,
+          "nonblank": 4,
+          "physical": 4
+        },
+        {
+          "name": "constructor_names",
+          "kind": "law",
+          "module": "src/check/kernel.bend",
+          "line": 2042,
+          "start": 2042,
+          "end": 2046,
+          "nonblank": 5,
+          "physical": 5
+        },
+        {
+          "name": "check_definition_type",
+          "kind": "law",
+          "module": "src/check/kernel.bend",
+          "line": 2049,
+          "start": 2049,
+          "end": 2054,
+          "nonblank": 6,
+          "physical": 6
+        },
+        {
+          "name": "check_foreign",
+          "kind": "law",
+          "module": "src/check/kernel.bend",
+          "line": 2057,
+          "start": 2057,
+          "end": 2061,
+          "nonblank": 5,
+          "physical": 5
+        },
+        {
+          "name": "tele_tip_head",
+          "kind": "law",
+          "module": "src/check/kernel.bend",
+          "line": 2064,
+          "start": 2064,
+          "end": 2067,
+          "nonblank": 4,
+          "physical": 4
+        },
+        {
+          "name": "check_adt_declaration",
+          "kind": "law",
+          "module": "src/check/kernel.bend",
+          "line": 2070,
+          "start": 2070,
+          "end": 2073,
+          "nonblank": 4,
+          "physical": 4
+        },
+        {
+          "name": "check_ctors",
+          "kind": "law",
+          "module": "src/check/kernel.bend",
+          "line": 2076,
+          "start": 2076,
+          "end": 2081,
+          "nonblank": 6,
+          "physical": 6
+        },
+        {
+          "name": "check_ctors_next",
+          "kind": "law",
+          "module": "src/check/kernel.bend",
+          "line": 2084,
+          "start": 2084,
+          "end": 2090,
+          "nonblank": 7,
+          "physical": 7
+        },
+        {
+          "name": "check_ctor_tel",
+          "kind": "law",
+          "module": "src/check/kernel.bend",
+          "line": 2093,
+          "start": 2093,
+          "end": 2102,
+          "nonblank": 10,
+          "physical": 10
+        },
+        {
+          "name": "check_ctor_head",
+          "kind": "law",
+          "module": "src/check/kernel.bend",
+          "line": 2105,
+          "start": 2105,
+          "end": 2114,
+          "nonblank": 10,
+          "physical": 10
+        },
+        {
+          "name": "check_ctor_domain",
+          "kind": "law",
+          "module": "src/check/kernel.bend",
+          "line": 2117,
+          "start": 2117,
+          "end": 2127,
+          "nonblank": 11,
+          "physical": 11
+        },
+        {
+          "name": "infer_template",
+          "kind": "law",
+          "module": "src/check/kernel.bend",
+          "line": 2130,
+          "start": 2130,
+          "end": 2137,
+          "nonblank": 8,
+          "physical": 8
+        },
+        {
+          "name": "template_args",
+          "kind": "law",
+          "module": "src/check/kernel.bend",
+          "line": 2140,
+          "start": 2140,
+          "end": 2145,
+          "nonblank": 6,
+          "physical": 6
+        },
+        {
+          "name": "template_arg_head",
+          "kind": "law",
+          "module": "src/check/kernel.bend",
+          "line": 2148,
+          "start": 2148,
+          "end": 2153,
+          "nonblank": 6,
+          "physical": 6
+        },
+        {
+          "name": "template_arg_done",
+          "kind": "law",
+          "module": "src/check/kernel.bend",
+          "line": 2156,
+          "start": 2156,
+          "end": 2163,
+          "nonblank": 8,
+          "physical": 8
+        },
+        {
+          "name": "contains_self",
+          "kind": "law",
+          "module": "src/check/kernel.bend",
+          "line": 2166,
+          "start": 2166,
+          "end": 2169,
+          "nonblank": 4,
+          "physical": 4
+        },
+        {
+          "name": "check_template_definition",
+          "kind": "law",
+          "module": "src/check/kernel.bend",
+          "line": 2172,
+          "start": 2172,
+          "end": 2180,
+          "nonblank": 9,
+          "physical": 9
+        },
+        {
+          "name": "check_template_binder",
+          "kind": "law",
+          "module": "src/check/kernel.bend",
+          "line": 2183,
+          "start": 2183,
+          "end": 2191,
+          "nonblank": 9,
+          "physical": 9
+        },
+        {
+          "name": "check_template_open",
+          "kind": "law",
+          "module": "src/check/kernel.bend",
+          "line": 2194,
+          "start": 2194,
+          "end": 2203,
+          "nonblank": 10,
+          "physical": 10
+        },
+        {
+          "name": "check_definition_result",
+          "kind": "law",
+          "module": "src/check/kernel.bend",
+          "line": 2206,
+          "start": 2206,
+          "end": 2209,
+          "nonblank": 4,
+          "physical": 4
+        },
+        {
+          "name": "tele_check_cached_head",
+          "kind": "law",
+          "module": "src/check/kernel.bend",
+          "line": 2212,
+          "start": 2212,
+          "end": 2219,
+          "nonblank": 8,
+          "physical": 8
+        },
+        {
+          "name": "tele_check_legacy_head",
+          "kind": "law",
+          "module": "src/check/kernel.bend",
+          "line": 2225,
+          "start": 2225,
+          "end": 2232,
+          "nonblank": 8,
+          "physical": 8
+        },
+        {
+          "name": "tele_check_after_head",
+          "kind": "law",
+          "module": "src/check/kernel.bend",
+          "line": 2235,
+          "start": 2235,
+          "end": 2243,
+          "nonblank": 9,
+          "physical": 9
+        },
+        {
+          "name": "cb",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 8525,
+          "start": 8524,
+          "end": 8530,
+          "nonblank": 7,
+          "physical": 7
+        },
+        {
+          "name": "cn",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 8534,
+          "start": 8533,
+          "end": 8539,
+          "nonblank": 7,
+          "physical": 7
+        },
+        {
+          "name": "cl",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 8543,
+          "start": 8542,
+          "end": 8548,
+          "nonblank": 7,
+          "physical": 7
+        },
+        {
+          "name": "cp",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 8552,
+          "start": 8551,
+          "end": 8557,
+          "nonblank": 7,
+          "physical": 7
+        },
+        {
+          "name": "cq",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 8561,
+          "start": 8560,
+          "end": 8566,
+          "nonblank": 7,
+          "physical": 7
+        },
+        {
+          "name": "cu",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 8570,
+          "start": 8569,
+          "end": 8575,
+          "nonblank": 7,
+          "physical": 7
+        },
+        {
+          "name": "ct",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 8579,
+          "start": 8578,
+          "end": 8584,
+          "nonblank": 7,
+          "physical": 7
+        },
+        {
+          "name": "cy",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 8588,
+          "start": 8587,
+          "end": 8593,
+          "nonblank": 7,
+          "physical": 7
+        },
+        {
+          "name": "cs",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 8597,
+          "start": 8596,
+          "end": 8602,
+          "nonblank": 7,
+          "physical": 7
+        },
+        {
+          "name": "ce",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 8606,
+          "start": 8605,
+          "end": 8611,
+          "nonblank": 7,
+          "physical": 7
+        },
+        {
+          "name": "ok",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 8615,
+          "start": 8614,
+          "end": 8621,
+          "nonblank": 8,
+          "physical": 8
+        },
+        {
+          "name": "bad",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 8625,
+          "start": 8624,
+          "end": 8629,
+          "nonblank": 6,
+          "physical": 6
+        },
+        {
+          "name": "good",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 8633,
+          "start": 8632,
+          "end": 8636,
+          "nonblank": 5,
+          "physical": 5
+        },
+        {
+          "name": "checked",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 8640,
+          "start": 8639,
+          "end": 8645,
+          "nonblank": 7,
+          "physical": 7
+        },
+        {
+          "name": "both",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 8649,
+          "start": 8648,
+          "end": 8656,
+          "nonblank": 9,
+          "physical": 9
+        },
+        {
+          "name": "ctx_get",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 8660,
+          "start": 8659,
+          "end": 8668,
+          "nonblank": 10,
+          "physical": 10
+        },
+        {
+          "name": "ctx_bind",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 8672,
+          "start": 8671,
+          "end": 8679,
+          "nonblank": 9,
+          "physical": 9
+        },
+        {
+          "name": "kindq",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 8683,
+          "start": 8682,
+          "end": 8687,
+          "nonblank": 6,
+          "physical": 6
+        },
+        {
+          "name": "kapply",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 8691,
+          "start": 8690,
+          "end": 8695,
+          "nonblank": 6,
+          "physical": 6
+        },
+        {
+          "name": "lhs_step",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 8699,
+          "start": 8698,
+          "end": 8703,
+          "nonblank": 6,
+          "physical": 6
+        },
+        {
+          "name": "unargs",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 8707,
+          "start": 8706,
+          "end": 8711,
+          "nonblank": 6,
+          "physical": 6
+        },
+        {
+          "name": "infer",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 8715,
+          "start": 8714,
+          "end": 8722,
+          "nonblank": 9,
+          "physical": 9
+        },
+        {
+          "name": "infer_node",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 8726,
+          "start": 8725,
+          "end": 8738,
+          "nonblank": 14,
+          "physical": 14
+        },
+        {
+          "name": "infer_var",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 8742,
+          "start": 8741,
+          "end": 8744,
+          "nonblank": 4,
+          "physical": 4
+        },
+        {
+          "name": "infer_ref",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 8748,
+          "start": 8747,
+          "end": 8753,
+          "nonblank": 7,
+          "physical": 7
+        },
+        {
+          "name": "infer_app",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 8757,
+          "start": 8756,
+          "end": 8758,
+          "nonblank": 3,
+          "physical": 3
+        },
+        {
+          "name": "infer_app_type",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 8762,
+          "start": 8761,
+          "end": 8763,
+          "nonblank": 3,
+          "physical": 3
+        },
+        {
+          "name": "infer_adt",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 8767,
+          "start": 8766,
+          "end": 8768,
+          "nonblank": 3,
+          "physical": 3
+        },
+        {
+          "name": "infer_adt_done",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 8772,
+          "start": 8771,
+          "end": 8773,
+          "nonblank": 3,
+          "physical": 3
+        },
+        {
+          "name": "tele_check",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 8777,
+          "start": 8776,
+          "end": 8780,
+          "nonblank": 5,
+          "physical": 5
+        },
+        {
+          "name": "tele_check_head",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 8784,
+          "start": 8783,
+          "end": 8785,
+          "nonblank": 3,
+          "physical": 3
+        },
+        {
+          "name": "tele_check_done",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 8789,
+          "start": 8788,
+          "end": 8790,
+          "nonblank": 3,
+          "physical": 3
+        },
+        {
+          "name": "tele_fill",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 8794,
+          "start": 8793,
+          "end": 8799,
+          "nonblank": 7,
+          "physical": 7
+        },
+        {
+          "name": "tele_fill_head",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 8803,
+          "start": 8802,
+          "end": 8804,
+          "nonblank": 3,
+          "physical": 3
+        },
+        {
+          "name": "check",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 8808,
+          "start": 8807,
+          "end": 8809,
+          "nonblank": 3,
+          "physical": 3
+        },
+        {
+          "name": "check_node",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 8813,
+          "start": 8812,
+          "end": 8822,
+          "nonblank": 11,
+          "physical": 11
+        },
+        {
+          "name": "check_fits",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 8826,
+          "start": 8825,
+          "end": 8827,
+          "nonblank": 3,
+          "physical": 3
+        },
+        {
+          "name": "check_lam",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 8831,
+          "start": 8830,
+          "end": 8832,
+          "nonblank": 3,
+          "physical": 3
+        },
+        {
+          "name": "check_lam_q",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 8836,
+          "start": 8835,
+          "end": 8837,
+          "nonblank": 3,
+          "physical": 3
+        },
+        {
+          "name": "check_lam_done",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 8841,
+          "start": 8840,
+          "end": 8842,
+          "nonblank": 3,
+          "physical": 3
+        },
+        {
+          "name": "check_ctr",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 8846,
+          "start": 8845,
+          "end": 8847,
+          "nonblank": 3,
+          "physical": 3
+        },
+        {
+          "name": "check_ctr_found",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 8851,
+          "start": 8850,
+          "end": 8852,
+          "nonblank": 3,
+          "physical": 3
+        },
+        {
+          "name": "check_rfl",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 8856,
+          "start": 8855,
+          "end": 8857,
+          "nonblank": 3,
+          "physical": 3
+        },
+        {
+          "name": "check_let",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 8861,
+          "start": 8860,
+          "end": 8865,
+          "nonblank": 6,
+          "physical": 6
+        },
+        {
+          "name": "check_let_value",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 8869,
+          "start": 8868,
+          "end": 8870,
+          "nonblank": 3,
+          "physical": 3
+        },
+        {
+          "name": "check_let_kind",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 8874,
+          "start": 8873,
+          "end": 8875,
+          "nonblank": 3,
+          "physical": 3
+        },
+        {
+          "name": "let_cells",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 8879,
+          "start": 8878,
+          "end": 8884,
+          "nonblank": 7,
+          "physical": 7
+        },
+        {
+          "name": "check_let_done",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 8888,
+          "start": 8887,
+          "end": 8893,
+          "nonblank": 7,
+          "physical": 7
+        },
+        {
+          "name": "remaining",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 8897,
+          "start": 8896,
+          "end": 8905,
+          "nonblank": 10,
+          "physical": 10
+        },
+        {
+          "name": "defs_empty",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 8909,
+          "start": 8908,
+          "end": 8916,
+          "nonblank": 9,
+          "physical": 9
+        },
+        {
+          "name": "ctx_dead",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 8920,
+          "start": 8919,
+          "end": 8928,
+          "nonblank": 10,
+          "physical": 10
+        },
+        {
+          "name": "dead_type",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 8932,
+          "start": 8931,
+          "end": 8933,
+          "nonblank": 3,
+          "physical": 3
+        },
+        {
+          "name": "check_mat",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 8937,
+          "start": 8936,
+          "end": 8941,
+          "nonblank": 6,
+          "physical": 6
+        },
+        {
+          "name": "check_mat_type",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 8945,
+          "start": 8944,
+          "end": 8950,
+          "nonblank": 7,
+          "physical": 7
+        },
+        {
+          "name": "check_mat_ctr",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 8954,
+          "start": 8953,
+          "end": 8956,
+          "nonblank": 4,
+          "physical": 4
+        },
+        {
+          "name": "mat_rest",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 8963,
+          "start": 8962,
+          "end": 8968,
+          "nonblank": 7,
+          "physical": 7
+        },
+        {
+          "name": "mat_goal",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 8972,
+          "start": 8971,
+          "end": 8973,
+          "nonblank": 3,
+          "physical": 3
+        },
+        {
+          "name": "mat_goal_head",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 8977,
+          "start": 8976,
+          "end": 8978,
+          "nonblank": 3,
+          "physical": 3
+        },
+        {
+          "name": "lhs_ext",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 8982,
+          "start": 8981,
+          "end": 8990,
+          "nonblank": 10,
+          "physical": 10
+        },
+        {
+          "name": "mat_lhs",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 8994,
+          "start": 8993,
+          "end": 8995,
+          "nonblank": 3,
+          "physical": 3
+        },
+        {
+          "name": "check_rwt",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 8999,
+          "start": 8998,
+          "end": 9000,
+          "nonblank": 3,
+          "physical": 3
+        },
+        {
+          "name": "check_rwt_type",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 9004,
+          "start": 9003,
+          "end": 9005,
+          "nonblank": 3,
+          "physical": 3
+        },
+        {
+          "name": "check_rwt_goal",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 9009,
+          "start": 9008,
+          "end": 9012,
+          "nonblank": 5,
+          "physical": 5
+        },
+        {
+          "name": "tele_quantities",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 9016,
+          "start": 9015,
+          "end": 9021,
+          "nonblank": 7,
+          "physical": 7
+        },
+        {
+          "name": "tele_quantities_head",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 9025,
+          "start": 9024,
+          "end": 9026,
+          "nonblank": 3,
+          "physical": 3
+        },
+        {
+          "name": "declared",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 9030,
+          "start": 9029,
+          "end": 9033,
+          "nonblank": 5,
+          "physical": 5
+        },
+        {
+          "name": "check_book",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 9037,
+          "start": 9036,
+          "end": 9040,
+          "nonblank": 5,
+          "physical": 5
+        },
+        {
+          "name": "check_open",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 9044,
+          "start": 9043,
+          "end": 9047,
+          "nonblank": 5,
+          "physical": 5
+        },
+        {
+          "name": "count_open",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 9051,
+          "start": 9050,
+          "end": 9056,
+          "nonblank": 7,
+          "physical": 7
+        },
+        {
+          "name": "check_open_message",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 9060,
+          "start": 9059,
+          "end": 9061,
+          "nonblank": 3,
+          "physical": 3
+        },
+        {
+          "name": "signature_mode",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 9065,
+          "start": 9064,
+          "end": 9069,
+          "nonblank": 6,
+          "physical": 6
+        },
+        {
+          "name": "signature_fill_mode",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 9073,
+          "start": 9072,
+          "end": 9074,
+          "nonblank": 3,
+          "physical": 3
+        },
+        {
+          "name": "check_declarations",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 9081,
+          "start": 9080,
+          "end": 9088,
+          "nonblank": 9,
+          "physical": 9
+        },
+        {
+          "name": "check_event_install",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 9092,
+          "start": 9091,
+          "end": 9097,
+          "nonblank": 7,
+          "physical": 7
+        },
+        {
+          "name": "event_error",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 9101,
+          "start": 9100,
+          "end": 9106,
+          "nonblank": 7,
+          "physical": 7
+        },
+        {
+          "name": "constructor_exists",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 9110,
+          "start": 9109,
+          "end": 9118,
+          "nonblank": 10,
+          "physical": 10
+        },
+        {
+          "name": "constructor_names",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 9122,
+          "start": 9121,
+          "end": 9127,
+          "nonblank": 7,
+          "physical": 7
+        },
+        {
+          "name": "check_definition",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 9131,
+          "start": 9130,
+          "end": 9135,
+          "nonblank": 6,
+          "physical": 6
+        },
+        {
+          "name": "check_definition_result",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 9139,
+          "start": 9138,
+          "end": 9140,
+          "nonblank": 3,
+          "physical": 3
+        },
+        {
+          "name": "check_definition_type",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 9144,
+          "start": 9143,
+          "end": 9146,
+          "nonblank": 4,
+          "physical": 4
+        },
+        {
+          "name": "foreign_tip",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 9150,
+          "start": 9149,
+          "end": 9153,
+          "nonblank": 5,
+          "physical": 5
+        },
+        {
+          "name": "foreign_head",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 9157,
+          "start": 9156,
+          "end": 9160,
+          "nonblank": 5,
+          "physical": 5
+        },
+        {
+          "name": "check_foreign",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 9164,
+          "start": 9163,
+          "end": 9166,
+          "nonblank": 4,
+          "physical": 4
+        },
+        {
+          "name": "tele_tip",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 9170,
+          "start": 9169,
+          "end": 9174,
+          "nonblank": 6,
+          "physical": 6
+        },
+        {
+          "name": "tele_tip_head",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 9178,
+          "start": 9177,
+          "end": 9179,
+          "nonblank": 3,
+          "physical": 3
+        },
+        {
+          "name": "check_adt_declaration",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 9183,
+          "start": 9182,
+          "end": 9184,
+          "nonblank": 3,
+          "physical": 3
+        },
+        {
+          "name": "check_adt_kind",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 9188,
+          "start": 9187,
+          "end": 9189,
+          "nonblank": 3,
+          "physical": 3
+        },
+        {
+          "name": "check_adt_kind_head",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 9193,
+          "start": 9192,
+          "end": 9194,
+          "nonblank": 3,
+          "physical": 3
+        },
+        {
+          "name": "check_ctors",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 9198,
+          "start": 9197,
+          "end": 9203,
+          "nonblank": 7,
+          "physical": 7
+        },
+        {
+          "name": "check_ctors_next",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 9207,
+          "start": 9206,
+          "end": 9208,
+          "nonblank": 3,
+          "physical": 3
+        },
+        {
+          "name": "check_ctor_tel",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 9212,
+          "start": 9211,
+          "end": 9213,
+          "nonblank": 3,
+          "physical": 3
+        },
+        {
+          "name": "check_ctor_head",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 9217,
+          "start": 9216,
+          "end": 9218,
+          "nonblank": 3,
+          "physical": 3
+        },
+        {
+          "name": "check_ctor_domain",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 9222,
+          "start": 9221,
+          "end": 9223,
+          "nonblank": 3,
+          "physical": 3
+        },
+        {
+          "name": "infer_template",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 9227,
+          "start": 9226,
+          "end": 9228,
+          "nonblank": 3,
+          "physical": 3
+        },
+        {
+          "name": "template_args",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 9232,
+          "start": 9231,
+          "end": 9233,
+          "nonblank": 3,
+          "physical": 3
+        },
+        {
+          "name": "template_arg_head",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 9237,
+          "start": 9236,
+          "end": 9242,
+          "nonblank": 7,
+          "physical": 7
+        },
+        {
+          "name": "template_arg_done",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 9246,
+          "start": 9245,
+          "end": 9247,
+          "nonblank": 3,
+          "physical": 3
+        },
+        {
+          "name": "self_pending",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 9251,
+          "start": 9250,
+          "end": 9255,
+          "nonblank": 6,
+          "physical": 6
+        },
+        {
+          "name": "contains_self",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 9259,
+          "start": 9258,
+          "end": 9264,
+          "nonblank": 7,
+          "physical": 7
+        },
+        {
+          "name": "check_template_definition",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 9268,
+          "start": 9267,
+          "end": 9270,
+          "nonblank": 4,
+          "physical": 4
+        },
+        {
+          "name": "check_template_binder",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 9274,
+          "start": 9273,
+          "end": 9276,
+          "nonblank": 4,
+          "physical": 4
+        },
+        {
+          "name": "check_template_open",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 9280,
+          "start": 9279,
+          "end": 9282,
+          "nonblank": 4,
+          "physical": 4
+        },
+        {
+          "name": "tele_check_cached_head",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 9286,
+          "start": 9285,
+          "end": 9289,
+          "nonblank": 5,
+          "physical": 5
+        },
+        {
+          "name": "tele_check_static",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 9293,
+          "start": 9292,
+          "end": 9297,
+          "nonblank": 6,
+          "physical": 6
+        },
+        {
+          "name": "tele_check_legacy",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 9301,
+          "start": 9300,
+          "end": 9311,
+          "nonblank": 12,
+          "physical": 12
+        },
+        {
+          "name": "tele_check_legacy_head",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 9315,
+          "start": 9314,
+          "end": 9316,
+          "nonblank": 3,
+          "physical": 3
+        },
+        {
+          "name": "tele_check_after_head",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 9320,
+          "start": 9319,
+          "end": 9323,
+          "nonblank": 5,
+          "physical": 5
+        },
+        {
+          "name": "check_mat_filled",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 9327,
+          "start": 9326,
+          "end": 9328,
+          "nonblank": 3,
+          "physical": 3
+        },
+        {
+          "name": "kw_initial",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 9332,
+          "start": 9331,
+          "end": 9333,
+          "nonblank": 3,
+          "physical": 3
+        },
+        {
+          "name": "kw_book",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 9337,
+          "start": 9336,
+          "end": 9339,
+          "nonblank": 4,
+          "physical": 4
+        },
+        {
+          "name": "kw_memo",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 9343,
+          "start": 9342,
+          "end": 9345,
+          "nonblank": 4,
+          "physical": 4
+        },
+        {
+          "name": "kw_fresh",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 9349,
+          "start": 9348,
+          "end": 9351,
+          "nonblank": 4,
+          "physical": 4
+        },
+        {
+          "name": "kw_with_book",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 9355,
+          "start": 9354,
+          "end": 9356,
+          "nonblank": 3,
+          "physical": 3
+        },
+        {
+          "name": "cw",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 9360,
+          "start": 9359,
+          "end": 9362,
+          "nonblank": 4,
+          "physical": 4
+        },
+        {
+          "name": "cd",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 9366,
+          "start": 9365,
+          "end": 9368,
+          "nonblank": 4,
+          "physical": 4
+        },
+        {
+          "name": "rw",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 9372,
+          "start": 9371,
+          "end": 9374,
+          "nonblank": 4,
+          "physical": 4
+        },
+        {
+          "name": "rx",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 9378,
+          "start": 9377,
+          "end": 9380,
+          "nonblank": 4,
+          "physical": 4
+        },
+        {
+          "name": "kw_restore_definition",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 9384,
+          "start": 9383,
+          "end": 9385,
+          "nonblank": 3,
+          "physical": 3
+        },
+        {
+          "name": "check_definition_world",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 9389,
+          "start": 9388,
+          "end": 9391,
+          "nonblank": 4,
+          "physical": 4
+        },
+        {
+          "name": "kr_from",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 9397,
+          "start": 9396,
+          "end": 9398,
+          "nonblank": 3,
+          "physical": 3
+        },
+        {
+          "name": "kw_checked",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 9402,
+          "start": 9401,
+          "end": 9404,
+          "nonblank": 4,
+          "physical": 4
+        },
+        {
+          "name": "kw_seed",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 9408,
+          "start": 9407,
+          "end": 9409,
+          "nonblank": 3,
+          "physical": 3
+        },
+        {
+          "name": "kw_with_checked",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 9413,
+          "start": 9412,
+          "end": 9414,
+          "nonblank": 3,
+          "physical": 3
+        },
+        {
+          "name": "kw_put_checked",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 9418,
+          "start": 9417,
+          "end": 9419,
+          "nonblank": 3,
+          "physical": 3
+        },
+        {
+          "name": "ke_world",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 9423,
+          "start": 9422,
+          "end": 9424,
+          "nonblank": 3,
+          "physical": 3
+        },
+        {
+          "name": "kw_owner",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 9428,
+          "start": 9427,
+          "end": 9429,
+          "nonblank": 3,
+          "physical": 3
+        },
+        {
+          "name": "kw_owner_fresh",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 9433,
+          "start": 9432,
+          "end": 9436,
+          "nonblank": 5,
+          "physical": 5
+        },
+        {
+          "name": "check_definition_body",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 9440,
+          "start": 9439,
+          "end": 9441,
+          "nonblank": 3,
+          "physical": 3
+        },
+        {
+          "name": "ki_one",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 9445,
+          "start": 9444,
+          "end": 9446,
+          "nonblank": 3,
+          "physical": 3
+        },
+        {
+          "name": "ki_pair",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 9450,
+          "start": 9449,
+          "end": 9451,
+          "nonblank": 3,
+          "physical": 3
+        },
+        {
+          "name": "ki_args",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 9455,
+          "start": 9454,
+          "end": 9456,
+          "nonblank": 3,
+          "physical": 3
+        },
+        {
+          "name": "ki_min",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 9460,
+          "start": 9459,
+          "end": 9461,
+          "nonblank": 3,
+          "physical": 3
+        },
+        {
+          "name": "ki_all",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 9465,
+          "start": 9464,
+          "end": 9466,
+          "nonblank": 3,
+          "physical": 3
+        },
+        {
+          "name": "ki_eql_type",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 9470,
+          "start": 9469,
+          "end": 9471,
+          "nonblank": 3,
+          "physical": 3
+        },
+        {
+          "name": "ki_eql_left",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 9475,
+          "start": 9474,
+          "end": 9476,
+          "nonblank": 3,
+          "physical": 3
+        },
+        {
+          "name": "ki_eql_done",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 9480,
+          "start": 9479,
+          "end": 9481,
+          "nonblank": 3,
+          "physical": 3
+        },
+        {
+          "name": "ki_ann",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 9485,
+          "start": 9484,
+          "end": 9486,
+          "nonblank": 3,
+          "physical": 3
+        },
+        {
+          "name": "ki_ann_done",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 9490,
+          "start": 9489,
+          "end": 9491,
+          "nonblank": 3,
+          "physical": 3
+        },
+        {
+          "name": "ki_lam_kind",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 9495,
+          "start": 9494,
+          "end": 9496,
+          "nonblank": 3,
+          "physical": 3
+        },
+        {
+          "name": "ki_reverse_terms",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 9500,
+          "start": 9499,
+          "end": 9503,
+          "nonblank": 5,
+          "physical": 5
+        },
+        {
+          "name": "ki_let_finish",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 9507,
+          "start": 9506,
+          "end": 9508,
+          "nonblank": 3,
+          "physical": 3
+        },
+        {
+          "name": "ki_tele_static",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 9512,
+          "start": 9511,
+          "end": 9513,
+          "nonblank": 3,
+          "physical": 3
+        },
+        {
+          "name": "ki_tele_legacy",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 9517,
+          "start": 9516,
+          "end": 9518,
+          "nonblank": 3,
+          "physical": 3
+        },
+        {
+          "name": "ki_match_arm",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 9522,
+          "start": 9521,
+          "end": 9523,
+          "nonblank": 3,
+          "physical": 3
+        },
+        {
+          "name": "ki_rwt_motive",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 9527,
+          "start": 9526,
+          "end": 9530,
+          "nonblank": 5,
+          "physical": 5
+        },
+        {
+          "name": "ki_rwt_done",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 9534,
+          "start": 9533,
+          "end": 9535,
+          "nonblank": 3,
+          "physical": 3
+        },
+        {
+          "name": "ki_ref_result",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 9539,
+          "start": 9538,
+          "end": 9540,
+          "nonblank": 3,
+          "physical": 3
+        },
+        {
+          "name": "kw_floor_fresh",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 9544,
+          "start": 9543,
+          "end": 9547,
+          "nonblank": 5,
+          "physical": 5
+        },
+        {
+          "name": "kw_mint_floor",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 9551,
+          "start": 9550,
+          "end": 9552,
+          "nonblank": 3,
+          "physical": 3
+        },
+        {
+          "name": "kw_temp_floor",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 9556,
+          "start": 9555,
+          "end": 9557,
+          "nonblank": 3,
+          "physical": 3
+        },
+        {
+          "name": "kw_temp_fresh",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 9561,
+          "start": 9560,
+          "end": 9564,
+          "nonblank": 5,
+          "physical": 5
+        },
+        {
+          "name": "kw_bound_book",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 9568,
+          "start": 9567,
+          "end": 9572,
+          "nonblank": 6,
+          "physical": 6
+        },
+        {
+          "name": "kw_temporary",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 9576,
+          "start": 9575,
+          "end": 9577,
+          "nonblank": 3,
+          "physical": 3
+        },
+        {
+          "name": "kw_temporary_fresh",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 9581,
+          "start": 9580,
+          "end": 9584,
+          "nonblank": 5,
+          "physical": 5
+        },
+        {
+          "name": "ki_rwt_bound",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 9588,
+          "start": 9587,
+          "end": 9589,
+          "nonblank": 3,
+          "physical": 3
+        },
+        {
+          "name": "ki_lhs",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 9593,
+          "start": 9592,
+          "end": 9595,
+          "nonblank": 4,
+          "physical": 4
+        },
+        {
+          "name": "ki_match_bound",
+          "kind": "def",
+          "module": "src/check/kernel.bend",
+          "line": 9599,
+          "start": 9598,
+          "end": 9602,
+          "nonblank": 5,
+          "physical": 5
+        }
+      ]
+    }
+  }
+}

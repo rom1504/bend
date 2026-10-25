@@ -1,0 +1,894 @@
+{
+  "kind": "phase138-qualified-n3-full-profile",
+  "complete": true,
+  "targetsRun": false,
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase138/analyze-profile.py",
+      "bytes": 4360,
+      "sha256": "4bdcce60adc556e6c4664b812d7b29a85e6164bce7afcd6b7d1ea7aca4ec919f"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase138/profile01/capture/report.json",
+      "bytes": 22249,
+      "sha256": "45d768a568a4fa7f11ec8b82f79a5d260fc08bc0fdbfa55db14f00cc082a3d6b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase138/profile01/manifest.json",
+      "bytes": 18314,
+      "sha256": "bb2095ef6067b53cc5fd0f45bbc74d5140da8a5e3560d381d7007b434663710a"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase138/profile01/capture/000-sample-compiler-self-source-phase137-qualified-n3-context/analysis.json",
+      "bytes": 1642688,
+      "sha256": "9b439d94d3ca1b5b39ba2b4a0056333e7eb85359b327761aae784622e6517931"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase138/profile01/capture/000-sample-compiler-self-source-phase137-qualified-n3-context/contexts.txt",
+      "bytes": 65147,
+      "sha256": "4202311d85d3ee57d84995e8119231f1b9fb18389d8cc95c050e6c9a9168c010"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase138/profile01/capture/000-sample-compiler-self-source-phase137-qualified-n3-context/callers.txt",
+      "bytes": 138923,
+      "sha256": "835cfe5ef5ac3a333defdda7f5544c91dbb3ceda94e8838ee2dcadd2da4f2b3b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase138/profile01/owners.json",
+      "bytes": 30802996,
+      "sha256": "9170a2314c0ff3a9a4b3184ccd68d8db90cc17e436918c4460f16a0f94d93823"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase127/libc-unwind01/table.json",
+      "bytes": 5195,
+      "sha256": "c02516dcbce965e55b259d0dcb71a1b98dc8404f242167c283d8625d6c76541d"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/profiler/attribute.py",
+      "bytes": 31869,
+      "sha256": "ad7390c2957122eb17e587d53ef3aedb0362bc3f280209a7d5a20cb95499aa55"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/profiler/timeline.py",
+      "bytes": 9848,
+      "sha256": "618077f97d3f0277ca237a874cdacaeaac4c01f2e1ee0e8829f3d40d2e88b6e5"
+    }
+  ],
+  "lineage": {
+    "nativeQualified": true,
+    "source": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase137/integrated-source03/compiler.bend",
+      "bytes": 2701952,
+      "sha256": "2620d59a3a20fa5d5d27bbf3b12ceb7304439b27093fff1c0f383da03e4ecf38"
+    },
+    "image": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p137-n3/program",
+      "bytes": 17056624,
+      "sha256": "ba2000be0b584395a8e8f7bd9846bbfa39cf0ff7f78f9e1d55666e21ef97b6e4"
+    },
+    "qbe": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase130/p137-reproduce01/program.ssa",
+      "bytes": 106285793,
+      "sha256": "c12af8c87c7e96e15fd18b7e16c2c0cc5ec21f8dae5dbfd9bdc79762d88e54cd"
+    },
+    "programObject": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p137-n3/program.o",
+      "bytes": 22776280,
+      "sha256": "c413778d76729f9dcaf387d7aee876686851b4140be983d63513749ce5a79517"
+    },
+    "qualification": {
+      "file": "/home/ai/bend2/build/publish/bend/implementation/phase137/native-qualification.json",
+      "bytes": 469411,
+      "sha256": "54a66fe011d8925ad9feb8b31fdba4e9f06e7429fb32b377352ba643d194ff9e"
+    }
+  },
+  "diagnosticImage": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase138/profile01/runtime/program",
+    "bytes": 17066008,
+    "sha256": "8f6cf332ce054748c00b8a3c7dfba6b59ee48eabca5615f6a210c7a27a1e6976"
+  },
+  "observation": {
+    "wallSeconds": 346.5349619751796,
+    "cpuSeconds": 346.42615099999995,
+    "peakRssKiB": 964120,
+    "stdout": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase138/profile01/capture/000-sample-compiler-self-source-phase137-qualified-n3-context/stdout",
+      "bytes": 105879337,
+      "sha256": "2ffa1179cad36016d718c8e5c16c64a4daf003ba0f526e995f0e645cc3ec76c2"
+    },
+    "stderr": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase138/profile01/capture/000-sample-compiler-self-source-phase137-qualified-n3-context/stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "samples": 10785,
+  "qualityReasons": [],
+  "quality": {
+    "scope": "main_thread",
+    "main_thread_cpu_fraction": 0.9966190017645441,
+    "sampled_thread_cpu_fraction": 0.9966190017645441,
+    "minimum_process_cpu_fraction": 0.95,
+    "minimum_samples": 500,
+    "enough_samples": true,
+    "thread_lifecycle_complete": true,
+    "near_complete_process_cpu_coverage": true,
+    "usable_for_process_cpu_attribution": true,
+    "limitations": [],
+    "zero_loss": true,
+    "handler_intact": true,
+    "main_thread_shutdown": true,
+    "expected_clock_periods": 10785.8982501875,
+    "delivered_per_expected_period": 0.9999167199461125,
+    "delivery_plausible": true
+  },
+  "callerCoverage": {
+    "eligibleLeafSamples": 371,
+    "recoveredCallerSamples": 371,
+    "symbolizedCallerSamples": 371,
+    "inferredCallerSymbolSamples": 0,
+    "knownDispatchSamples": 10481,
+    "allSamples": 10785,
+    "unknownCallerSamples": 10414,
+    "eligibleWithoutCallerSamples": 0
+  },
+  "topActiveOwners": [
+    {
+      "owner": "lookup",
+      "samples": 608,
+      "fractionOfAll": 0.05637459434399629
+    },
+    {
+      "owner": "nc_ctor_owned",
+      "samples": 531,
+      "fractionOfAll": 0.049235048678720444
+    },
+    {
+      "owner": "String.append",
+      "samples": 455,
+      "fractionOfAll": 0.04218822438572091
+    },
+    {
+      "owner": "index_remove",
+      "samples": 429,
+      "fractionOfAll": 0.03977746870653686
+    },
+    {
+      "owner": "p111v_get",
+      "samples": 419,
+      "fractionOfAll": 0.03885025498377376
+    },
+    {
+      "owner": "f_find",
+      "samples": 347,
+      "fractionOfAll": 0.03217431617987946
+    },
+    {
+      "owner": "has_name",
+      "samples": 347,
+      "fractionOfAll": 0.03217431617987946
+    },
+    {
+      "owner": "p88_string_eq",
+      "samples": 338,
+      "fractionOfAll": 0.031339823829392675
+    },
+    {
+      "owner": "nb_contains",
+      "samples": 332,
+      "fractionOfAll": 0.030783495595734817
+    },
+    {
+      "owner": "[unknown]",
+      "samples": 305,
+      "fractionOfAll": 0.028280018544274456
+    },
+    {
+      "owner": "nc_occurs",
+      "samples": 265,
+      "fractionOfAll": 0.024571163653222067
+    },
+    {
+      "owner": "String.eq",
+      "samples": 224,
+      "fractionOfAll": 0.02076958738989337
+    },
+    {
+      "owner": "p131i_insert",
+      "samples": 191,
+      "fractionOfAll": 0.01770978210477515
+    },
+    {
+      "owner": "constructor_exists",
+      "samples": 160,
+      "fractionOfAll": 0.01483541956420955
+    },
+    {
+      "owner": "nc_occurs_list",
+      "samples": 160,
+      "fractionOfAll": 0.01483541956420955
+    },
+    {
+      "owner": "p111v_name_chars",
+      "samples": 151,
+      "fractionOfAll": 0.014000927213722763
+    },
+    {
+      "owner": "nc_uses_term",
+      "samples": 110,
+      "fractionOfAll": 0.010199350950394067
+    },
+    {
+      "owner": "p111q_memory",
+      "samples": 105,
+      "fractionOfAll": 0.009735744089012517
+    },
+    {
+      "owner": "p113k_get",
+      "samples": 103,
+      "fractionOfAll": 0.009550301344459899
+    },
+    {
+      "owner": "p111q_body_text",
+      "samples": 103,
+      "fractionOfAll": 0.009550301344459899
+    },
+    {
+      "owner": "index_remove_step",
+      "samples": 102,
+      "fractionOfAll": 0.009457579972183588
+    },
+    {
+      "owner": "p111v_value",
+      "samples": 102,
+      "fractionOfAll": 0.009457579972183588
+    },
+    {
+      "owner": "p111v_contract",
+      "samples": 90,
+      "fractionOfAll": 0.008344923504867872
+    },
+    {
+      "owner": "f_eq",
+      "samples": 88,
+      "fractionOfAll": 0.008159480760315252
+    },
+    {
+      "owner": "dg_event_publish",
+      "samples": 80,
+      "fractionOfAll": 0.007417709782104775
+    },
+    {
+      "owner": "p112w_ready",
+      "samples": 78,
+      "fractionOfAll": 0.0072322670375521555
+    },
+    {
+      "owner": "nol_scalar_specs",
+      "samples": 73,
+      "fractionOfAll": 0.006768660176170608
+    },
+    {
+      "owner": "p111v_intersection_bucket",
+      "samples": 66,
+      "fractionOfAll": 0.00611961057023644
+    },
+    {
+      "owner": "subst_node",
+      "samples": 61,
+      "fractionOfAll": 0.005656003708854891
+    },
+    {
+      "owner": "index_leaf",
+      "samples": 57,
+      "fractionOfAll": 0.005285118219749653
+    },
+    {
+      "owner": "dr_own_names",
+      "samples": 51,
+      "fractionOfAll": 0.004728789986091794
+    },
+    {
+      "owner": "p111v_put",
+      "samples": 51,
+      "fractionOfAll": 0.004728789986091794
+    },
+    {
+      "owner": "ns_body",
+      "samples": 50,
+      "fractionOfAll": 0.004636068613815485
+    },
+    {
+      "owner": "Bool.and",
+      "samples": 48,
+      "fractionOfAll": 0.004450625869262865
+    },
+    {
+      "owner": "nc_uses_list",
+      "samples": 47,
+      "fractionOfAll": 0.004357904496986555
+    },
+    {
+      "owner": "p112t_runtime_call",
+      "samples": 46,
+      "fractionOfAll": 0.004265183124710246
+    },
+    {
+      "owner": "p112r_buffer_sites",
+      "samples": 45,
+      "fractionOfAll": 0.004172461752433936
+    },
+    {
+      "owner": "nq_layout_subst",
+      "samples": 42,
+      "fractionOfAll": 0.003894297635605007
+    },
+    {
+      "owner": "p111v_decl",
+      "samples": 42,
+      "fractionOfAll": 0.003894297635605007
+    },
+    {
+      "owner": "norm_max_book",
+      "samples": 41,
+      "fractionOfAll": 0.0038015762633286975
+    }
+  ],
+  "topPhysicalLeaves": [
+    {
+      "leaf": "term_drop",
+      "samples": 1681,
+      "fractionOfAll": 0.15586462679647659
+    },
+    {
+      "leaf": "span_fade",
+      "samples": 1087,
+      "fractionOfAll": 0.10078813166434863
+    },
+    {
+      "leaf": "p113d_FID_$p118borrow.read.p88_string_eq_go",
+      "samples": 1006,
+      "fractionOfAll": 0.09327770050996755
+    },
+    {
+      "leaf": "p125_rt_take2",
+      "samples": 475,
+      "fractionOfAll": 0.0440426518312471
+    },
+    {
+      "leaf": "[unknown]",
+      "samples": 382,
+      "fractionOfAll": 0.0354195642095503
+    },
+    {
+      "leaf": "p111_rt_sink",
+      "samples": 339,
+      "fractionOfAll": 0.031432545201668986
+    },
+    {
+      "leaf": "p111_rt_keep",
+      "samples": 292,
+      "fractionOfAll": 0.02707464070468243
+    },
+    {
+      "leaf": "work_loop",
+      "samples": 252,
+      "fractionOfAll": 0.023365785813630042
+    },
+    {
+      "leaf": "p111_rt_special_ctor",
+      "samples": 236,
+      "fractionOfAll": 0.021882243857209088
+    },
+    {
+      "leaf": "p111_set_regs",
+      "samples": 232,
+      "fractionOfAll": 0.021511358368103847
+    },
+    {
+      "leaf": "p125_rt_take2.cold",
+      "samples": 231,
+      "fractionOfAll": 0.02141863699582754
+    },
+    {
+      "leaf": "ctr_take",
+      "samples": 227,
+      "fractionOfAll": 0.0210477515067223
+    },
+    {
+      "leaf": "p113d_FID_$p118borrow.read.String.cmp",
+      "samples": 194,
+      "fractionOfAll": 0.01798794622160408
+    },
+    {
+      "leaf": "p113d_FID_$p118borrow.read.index_hash",
+      "samples": 192,
+      "fractionOfAll": 0.01780250347705146
+    },
+    {
+      "leaf": "p111_rt_ctor",
+      "samples": 167,
+      "fractionOfAll": 0.015484469170143718
+    },
+    {
+      "leaf": "p118_rt_borrow_scalar_safe",
+      "samples": 163,
+      "fractionOfAll": 0.015113583681038479
+    },
+    {
+      "leaf": "p111_rt_jump",
+      "samples": 155,
+      "fractionOfAll": 0.014371812702828002
+    },
+    {
+      "leaf": "p118_rt_extend1",
+      "samples": 150,
+      "fractionOfAll": 0.013908205841446454
+    },
+    {
+      "leaf": "p111_rt_op",
+      "samples": 144,
+      "fractionOfAll": 0.013351877607788595
+    },
+    {
+      "leaf": "heap_alloc",
+      "samples": 116,
+      "fractionOfAll": 0.010755679184051924
+    },
+    {
+      "leaf": "p118_destination_fill",
+      "samples": 111,
+      "fractionOfAll": 0.010292072322670376
+    },
+    {
+      "leaf": "p111_rt_return",
+      "samples": 108,
+      "fractionOfAll": 0.010013908205841447
+    },
+    {
+      "leaf": "p125_rt_take4",
+      "samples": 103,
+      "fractionOfAll": 0.009550301344459899
+    },
+    {
+      "leaf": "p118_rt_borrow_fields",
+      "samples": 100,
+      "fractionOfAll": 0.00927213722763097
+    },
+    {
+      "leaf": "term_triv",
+      "samples": 98,
+      "fractionOfAll": 0.00908669448307835
+    },
+    {
+      "leaf": "p125_rt_ctor2",
+      "samples": 82,
+      "fractionOfAll": 0.007603152526657395
+    },
+    {
+      "leaf": "rfc_wrap",
+      "samples": 80,
+      "fractionOfAll": 0.007417709782104775
+    },
+    {
+      "leaf": "p113d_FID_$p118.trmc.$direct.String.append",
+      "samples": 72,
+      "fractionOfAll": 0.006675938803894298
+    },
+    {
+      "leaf": "p113d_FID_$p118borrow.read.p137q_is_adt",
+      "samples": 71,
+      "fractionOfAll": 0.006583217431617988
+    },
+    {
+      "leaf": "p113d_FID_$p118borrow.read.p98_tag_eq",
+      "samples": 67,
+      "fractionOfAll": 0.006212331942512749
+    },
+    {
+      "leaf": "p111_rt_take",
+      "samples": 65,
+      "fractionOfAll": 0.00602688919796013
+    },
+    {
+      "leaf": "p113d_FID_$p118borrow.read.has_name",
+      "samples": 61,
+      "fractionOfAll": 0.005656003708854891
+    },
+    {
+      "leaf": "p111_rt_special_take",
+      "samples": 38,
+      "fractionOfAll": 0.003523412146499768
+    },
+    {
+      "leaf": "p111_FID_$p111.k.3845135",
+      "samples": 38,
+      "fractionOfAll": 0.003523412146499768
+    },
+    {
+      "leaf": "p113d_FID_$p128borrow.owned.p88_string_eq_go",
+      "samples": 37,
+      "fractionOfAll": 0.0034306907742234585
+    },
+    {
+      "leaf": "bend_profile_count",
+      "samples": 34,
+      "fractionOfAll": 0.0031525266573945296
+    },
+    {
+      "leaf": "p111_FID_$direct.p111v_name_chars",
+      "samples": 33,
+      "fractionOfAll": 0.00305980528511822
+    },
+    {
+      "leaf": "p113d_FID_$p118borrow.read.p88_string_eq",
+      "samples": 32,
+      "fractionOfAll": 0.0029670839128419103
+    },
+    {
+      "leaf": "p113d_FID_$direct.index_find",
+      "samples": 32,
+      "fractionOfAll": 0.0029670839128419103
+    },
+    {
+      "leaf": "p125_rt_take3",
+      "samples": 29,
+      "fractionOfAll": 0.002688919796012981
+    }
+  ],
+  "selectedOwnerLeafIntersections": [
+    {
+      "owner": "f_find",
+      "samples": 347,
+      "fractionOfAll": 0.03217431617987946,
+      "dropAndFade": {
+        "samples": 115,
+        "fractionOfAll": 0.010662957811775614,
+        "fractionOfOwner": 0.3314121037463977
+      },
+      "topLeaves": [
+        {
+          "leaf": "p113d_FID_$p118borrow.read.p88_string_eq_go",
+          "samples": 105,
+          "fractionOfAll": 0.009735744089012517
+        },
+        {
+          "leaf": "term_drop",
+          "samples": 74,
+          "fractionOfAll": 0.006861381548446917
+        },
+        {
+          "leaf": "span_fade",
+          "samples": 41,
+          "fractionOfAll": 0.0038015762633286975
+        },
+        {
+          "leaf": "p111_rt_keep",
+          "samples": 21,
+          "fractionOfAll": 0.0019471488178025036
+        },
+        {
+          "leaf": "p111_rt_special_ctor",
+          "samples": 21,
+          "fractionOfAll": 0.0019471488178025036
+        },
+        {
+          "leaf": "p118_rt_borrow_fields",
+          "samples": 20,
+          "fractionOfAll": 0.0018544274455261937
+        },
+        {
+          "leaf": "p125_rt_take2.cold",
+          "samples": 18,
+          "fractionOfAll": 0.0016689847009735744
+        },
+        {
+          "leaf": "p118_rt_borrow_scalar_safe",
+          "samples": 11,
+          "fractionOfAll": 0.0010199350950394065
+        },
+        {
+          "leaf": "p113d_FID_$p118borrow.read.p137q_key_eq",
+          "samples": 10,
+          "fractionOfAll": 0.0009272137227630969
+        },
+        {
+          "leaf": "p111_rt_sink",
+          "samples": 8,
+          "fractionOfAll": 0.0007417709782104776
+        }
+      ]
+    },
+    {
+      "owner": "lookup",
+      "samples": 608,
+      "fractionOfAll": 0.05637459434399629,
+      "dropAndFade": {
+        "samples": 250,
+        "fractionOfAll": 0.023180343069077423,
+        "fractionOfOwner": 0.41118421052631576
+      },
+      "topLeaves": [
+        {
+          "leaf": "term_drop",
+          "samples": 126,
+          "fractionOfAll": 0.011682892906815021
+        },
+        {
+          "leaf": "span_fade",
+          "samples": 124,
+          "fractionOfAll": 0.0114974501622624
+        },
+        {
+          "leaf": "p113d_FID_$p118borrow.read.p88_string_eq_go",
+          "samples": 81,
+          "fractionOfAll": 0.007510431154381085
+        },
+        {
+          "leaf": "p125_rt_take2.cold",
+          "samples": 40,
+          "fractionOfAll": 0.0037088548910523874
+        },
+        {
+          "leaf": "p111_rt_sink",
+          "samples": 35,
+          "fractionOfAll": 0.003245248029670839
+        },
+        {
+          "leaf": "p111_rt_keep",
+          "samples": 26,
+          "fractionOfAll": 0.002410755679184052
+        },
+        {
+          "leaf": "p125_rt_take4",
+          "samples": 23,
+          "fractionOfAll": 0.002132591562355123
+        },
+        {
+          "leaf": "ctr_take",
+          "samples": 20,
+          "fractionOfAll": 0.0018544274455261937
+        },
+        {
+          "leaf": "p113d_FID_$p118borrow.read.index_hash",
+          "samples": 16,
+          "fractionOfAll": 0.0014835419564209551
+        },
+        {
+          "leaf": "p113d_FID_$direct.lookup",
+          "samples": 12,
+          "fractionOfAll": 0.0011126564673157164
+        }
+      ]
+    },
+    {
+      "owner": "nc_ctor_owned",
+      "samples": 531,
+      "fractionOfAll": 0.049235048678720444,
+      "dropAndFade": {
+        "samples": 216,
+        "fractionOfAll": 0.020027816411682893,
+        "fractionOfOwner": 0.4067796610169492
+      },
+      "topLeaves": [
+        {
+          "leaf": "term_drop",
+          "samples": 126,
+          "fractionOfAll": 0.011682892906815021
+        },
+        {
+          "leaf": "span_fade",
+          "samples": 90,
+          "fractionOfAll": 0.008344923504867872
+        },
+        {
+          "leaf": "p113d_FID_$p118borrow.read.p137q_is_adt",
+          "samples": 71,
+          "fractionOfAll": 0.006583217431617988
+        },
+        {
+          "leaf": "p118_rt_borrow_fields",
+          "samples": 62,
+          "fractionOfAll": 0.0057487250811312
+        },
+        {
+          "leaf": "p125_rt_take2.cold",
+          "samples": 34,
+          "fractionOfAll": 0.0031525266573945296
+        },
+        {
+          "leaf": "p111_rt_keep",
+          "samples": 28,
+          "fractionOfAll": 0.0025961984237366713
+        },
+        {
+          "leaf": "p111_rt_sink",
+          "samples": 19,
+          "fractionOfAll": 0.001761706073249884
+        },
+        {
+          "leaf": "p125_rt_take2",
+          "samples": 17,
+          "fractionOfAll": 0.0015762633286972648
+        },
+        {
+          "leaf": "p113d_FID_$p118borrow.read.p88_string_eq_go",
+          "samples": 16,
+          "fractionOfAll": 0.0014835419564209551
+        },
+        {
+          "leaf": "p113d_FID_$direct.nc_ctor_owned",
+          "samples": 15,
+          "fractionOfAll": 0.0013908205841446453
+        }
+      ]
+    },
+    {
+      "owner": "has_name",
+      "samples": 347,
+      "fractionOfAll": 0.03217431617987946,
+      "dropAndFade": {
+        "samples": 0,
+        "fractionOfAll": 0.0,
+        "fractionOfOwner": 0.0
+      },
+      "topLeaves": [
+        {
+          "leaf": "p113d_FID_$p118borrow.read.p88_string_eq_go",
+          "samples": 263,
+          "fractionOfAll": 0.02438572090866945
+        },
+        {
+          "leaf": "p113d_FID_$p118borrow.read.has_name",
+          "samples": 51,
+          "fractionOfAll": 0.004728789986091794
+        },
+        {
+          "leaf": "p111_rt_special_ctor",
+          "samples": 31,
+          "fractionOfAll": 0.0028743625405656
+        },
+        {
+          "leaf": "p113d_FID_$p118borrow.read.p98_eq_finish",
+          "samples": 2,
+          "fractionOfAll": 0.0001854427445526194
+        }
+      ]
+    },
+    {
+      "owner": "index_remove",
+      "samples": 429,
+      "fractionOfAll": 0.03977746870653686,
+      "dropAndFade": {
+        "samples": 215,
+        "fractionOfAll": 0.019935095039406582,
+        "fractionOfOwner": 0.5011655011655012
+      },
+      "topLeaves": [
+        {
+          "leaf": "span_fade",
+          "samples": 161,
+          "fractionOfAll": 0.01492814093648586
+        },
+        {
+          "leaf": "term_drop",
+          "samples": 54,
+          "fractionOfAll": 0.005006954102920723
+        },
+        {
+          "leaf": "ctr_take",
+          "samples": 50,
+          "fractionOfAll": 0.004636068613815485
+        },
+        {
+          "leaf": "p125_rt_take2.cold",
+          "samples": 28,
+          "fractionOfAll": 0.0025961984237366713
+        },
+        {
+          "leaf": "p111_rt_keep",
+          "samples": 22,
+          "fractionOfAll": 0.002039870190078813
+        },
+        {
+          "leaf": "p111_FID_$direct.index_remove",
+          "samples": 17,
+          "fractionOfAll": 0.0015762633286972648
+        },
+        {
+          "leaf": "p125_rt_take2",
+          "samples": 16,
+          "fractionOfAll": 0.0014835419564209551
+        },
+        {
+          "leaf": "[unknown]",
+          "samples": 14,
+          "fractionOfAll": 0.0012980992118683356
+        },
+        {
+          "leaf": "p111_FID_$p111.k.3841660",
+          "samples": 14,
+          "fractionOfAll": 0.0012980992118683356
+        },
+        {
+          "leaf": "p111_rt_sink",
+          "samples": 13,
+          "fractionOfAll": 0.001205377839592026
+        }
+      ]
+    },
+    {
+      "owner": "p111v_get",
+      "samples": 419,
+      "fractionOfAll": 0.03885025498377376,
+      "dropAndFade": {
+        "samples": 168,
+        "fractionOfAll": 0.015577190542420028,
+        "fractionOfOwner": 0.4009546539379475
+      },
+      "topLeaves": [
+        {
+          "leaf": "term_drop",
+          "samples": 84,
+          "fractionOfAll": 0.007788595271210014
+        },
+        {
+          "leaf": "span_fade",
+          "samples": 84,
+          "fractionOfAll": 0.007788595271210014
+        },
+        {
+          "leaf": "p113d_FID_$p118borrow.read.index_hash",
+          "samples": 74,
+          "fractionOfAll": 0.006861381548446917
+        },
+        {
+          "leaf": "p113d_FID_$p128borrow.owned.p88_string_eq_go",
+          "samples": 27,
+          "fractionOfAll": 0.0025034770514603616
+        },
+        {
+          "leaf": "p125_rt_take2",
+          "samples": 26,
+          "fractionOfAll": 0.002410755679184052
+        },
+        {
+          "leaf": "p111_rt_sink",
+          "samples": 22,
+          "fractionOfAll": 0.002039870190078813
+        },
+        {
+          "leaf": "p111_rt_special_take",
+          "samples": 19,
+          "fractionOfAll": 0.001761706073249884
+        },
+        {
+          "leaf": "p125_rt_take4",
+          "samples": 15,
+          "fractionOfAll": 0.0013908205841446453
+        },
+        {
+          "leaf": "p125_rt_take2.cold",
+          "samples": 14,
+          "fractionOfAll": 0.0012980992118683356
+        },
+        {
+          "leaf": "p111_rt_ctor",
+          "samples": 13,
+          "fractionOfAll": 0.001205377839592026
+        }
+      ]
+    }
+  ],
+  "attribution": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase138/analysis01/attribution.json",
+    "bytes": 1824026,
+    "sha256": "36bea7921036b5b1276ce7c4124f2163aff220f033e05dcf6c3f82170e991b94"
+  },
+  "timeline": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase138/analysis01/timeline.json",
+    "bytes": 62601,
+    "sha256": "b12eae820885c0a899c6557cf02b41831b6dcbe17fa7cbab9f85271122fb6cf7"
+  },
+  "scope": "Diagnostic exact-clean-digest request; not a clean speed comparison. Contexts include synchronous private calls; intersections overlap. No allocation counts or fresh stage clocks."
+}

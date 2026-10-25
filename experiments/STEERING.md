@@ -1,3 +1,23 @@
+# Latest investigation: Phase138 sub20s development-loop feasibility
+
+[Report](../implementation/phase138/README.md) ·
+[Reuse boundary](../research/phase138/reuse-boundaries.md) ·
+[Proof research](../research/phase138/proofs-and-fast-compilation.md).
+
+Fresh exact-object Phase137 N3 profile:10,785 samples,zero loss,99.66% main-thread
+coverage, complete105.9MB output matching retained clean digest. Drop/fade25.67%,
+borrowed equality9.33%; original three query contexts13.78%. These overlapping
+views are not additive savings or a new clean speed comparison. Compiler unchanged.
+
+Sub20s cold compilation needs17.3× from346.4s. Prioritize a real early incremental
+source edit: exact checker-world checkpoint before an unchanged-header body edit,
+then retained NativeErasedBody and named owner lowering. Existing Base-prefix
+admission is narrower; do not relabel it incremental checking. Global identities,
+literal placement, helper readiness, final verification and full rendering remain
+barriers. Keep a qualified builder fixed across candidate revisions; adoption and
+full qualification are separate costs. Prototype a source-connected replay law;
+do not begin a whole-compiler proof or new backend. Two guarded jobs5.88min; no OOM.
+
 # Current research checkpoint: Phase137 borrowed query composition
 
 [Report](../implementation/phase137/README.md) ·

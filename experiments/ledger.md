@@ -4,6 +4,21 @@ This ledger records decisions and links evidence; it does not replace the report
 Read [workflow](README.md) and [current strategy](STEERING.md) before a new investigation.
 User objective: make the Bend compiler written in Bend and its validation loop much faster while preserving correctness. Historical authorization windows are recorded below; current release status and priorities are in [STEERING.md](STEERING.md).
 
+## Phase138 — Fresh profile and the sub20s build boundary (2026-10-25)
+
+[Design](../design/phase138/README.md) · [Experiment](phase138/P138-001-twenty-second-loop.md) ·
+[Report](../implementation/phase138/README.md).
+
+Relinked qualified N3 without rebuilding the compiler;10,785 zero-loss samples,
+99.66% CPU coverage,105.9MB output matches clean retained digest. Drop/fade25.67%,
+borrowed equality9.33%, original three query contexts13.78%. No clean speed ratio.
+Source audit identifies exact event/checker-state and NativeErasedBody reuse
+boundaries, plus current Base-prefix/global-binding limitations. Recommend early
+incremental rebuilding and a narrow replay law; cold20s needs17.3× and remains
+unproven. Primary-source software-proof review records scoped claims/costs and
+the unverified OpenAI-announcement identity. Two guarded jobs5.88min, no OOM;
+no compiler, installed selection, proof guarantees or program-speed changes.
+
 ## Phase137 — Borrowed query composition and cold compiler speed (2026-10-24)
 
 [Design](../design/phase137/README.md) · [Experiment](phase137/P137-001-borrowed-query-boundaries.md) ·

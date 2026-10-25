@@ -4,9 +4,10 @@ Work in progress, 2026-10-25. The [three-hour design](../../design/phase140/READ
 targets10× complete **warm rebuilds after compiler source edits**. It does not
 claim10× cold compilation. Phase137 N3 remains the qualified installed compiler.
 
-The first full compiler edit is independently byte-exact and approximately2×
-faster through an available native executable. The next candidate composes
-stronger reuse before lowering and is undergoing native measurement. **The
+The full compiler edit is independently byte-exact. The latest completed
+candidate17 reduces native warm compilation to105.228s, with a124.337s
+available-binary subtotal versus346.960s fresh (2.79× before shared session
+overhead). A final typed-comparison candidate is undergoing native measurement. **The
 10× target and native promotion are not established.**
 
 ## What actually changed
@@ -82,7 +83,47 @@ new binders, global declarations, import changes and changed literal/static
 layout do not inherit their performance claim. Exact admission/fallback, not a
 user-supplied changed-owner label, controls correctness.
 
-Active composition and commands will be consolidated after native measurements.
+## Native checkpoint at20:34 UTC
+
+Candidate17 (`session/modules-native-v17.json`, source SHA`fcef9aa6…6282de`)
+passes236 finite controls, complete two-family hosted product/plan checks, and
+four alternating native Lexer revisions. The matched full compiler A→B run is
+`selfhost/build/phase140/full-product02/report.json`; both complete products
+match independent qualified references. Compared with the initial product pair:
+
+| Warm native stage | Initial | Candidate17 |
+| --- | ---: | ---: |
+| Frontend |51.394s|31.319s|
+| Raw lowering |44.820s|14.161s|
+| Optimization and verification |35.266s|40.652s|
+| Registry |12.805s|11.389s|
+| Rendering and close |9.266s|7.707s|
+| Total |153.551s|105.228s|
+
+The backend regresses even while the total improves. This is not a clean ablation
+of any individual added cache. Native cold seed time is364.129s versus334.286s
+initially (+8.93%), so the cold5% gate still fails. Peak process-tree RSS is2.305GB.
+Transport costs5.293s; the exact unchanged machine build costs13.816s.
+The native process also has3.407s outside revision, source-IO and preparation
+clocks. Acquisition, initial seed and shared overhead are not part of the warm
+subtotal and must not disappear from adoption/research-cost accounting.
+
+The three-edit candidate15 batch (`full-batch01`) measured133.647/136.411/139.365s
+native warm times for inline/continuation/product changes. It seeded before the
+earliest edit, unlike the product-only pairs. Inline/continuation products do not
+have independent full references and remain exploratory; spending another12min
+on those reference builds was deferred because the5× gate was not approached.
+
+The independently rebuilt product-policy compiler itself passed exact Lexer,
+Map and closure compilation requests in5.815s (`product-compiler-smoke01`). This
+is focused executable evidence, not complete N1/N2 qualification.
+
+The [cost review](cost-review.md) records work, failures and source growth. The
+[next reuse boundary](../../research/phase140/next-reuse-boundary.md) explains why
+retained change evidence is more promising than another independent deep cache
+comparison at each stage.
+
+Active composition and final commands will be consolidated after native measurements.
 This prototype is a bounded ordered batch/session, not a general persistent
 incremental build service. Qualified native reproduction, broader independent
 correctness and adoption gates remain separate.

@@ -1,8 +1,8 @@
 # Optional bounded native batch
 
-Source-only, not yet checked or measured: compose `native-v03.bend` in place of
-`native-v02.bend`, then add `native-batch-v01.bend` and optionally
-`native-batch-controls-v01.bend` (14 predicates). Deleting the new seven-token
+Checked and natively exercised by Phase140: compose `native-v03.bend` in place of
+`native-v02.bend`, then add `native-batch-v02.bend` and
+`native-batch-controls-v02.bend` (14 predicates). Deleting the new seven-token
 CLI case from native-v03 reproduces the complete native-v02 file byte-for-byte.
 The ordinary and two-revision entry paths are unchanged.
 
@@ -51,3 +51,28 @@ must be recorded; fresh comparison oracles must use the same logical path.
 
 No framework, serialized compiler state, host-side compiler decisions, production
 selection change or new runtime effect is introduced.
+
+## Current evidence and limits
+
+The [Phase140 report](../../../../../implementation/phase140/README.md) identifies
+the exact active composition and measurements. `modules-native-v17.json` is the
+composition behind `p140-n1c`; `full-product02` compares an actual full-compiler
+product-policy edit against separate qualified fresh A and B products. The earlier
+`full-batch01` contains three edits, but only A and product-policy B have independent
+full-output references. Inline/continuation timings remain exploratory.
+
+Use `run-batch-v01.py --image IMAGE --plan PLAN --out FRESH --seconds LIMIT`
+under the existing resource guard. The JSON plan supplies `logical` and ordered
+`jobs`, each with `name`, `source`, relative UTF16 `hint`, `owner`, `mode`, and an
+optional independent `expected` QBE path. Missing `expected` means unqualified
+output, not an implicit pass. The runner pins inputs and reconstructs each output
+using authenticated previous-output ordinals; it makes no semantic cache choice.
+
+This interface accepts a predeclared batch, not live edits from an interactive
+development server. The pure API preserves successful state after a rejected
+edit; the native CLI currently exits on an error and loses its process cache.
+Native source checking, focused output equivalence, full self-reproduction and
+installed adoption remain separate gates.
+
+`run-batch-v02.py` additionally accepts an explicit generic sampler receipt for
+diagnostic runs. Sampling times must not be substituted into clean speed ratios.

@@ -93,3 +93,23 @@ Exact current constructor/effect inputs and erased facts establish prefix
 agreement; the first difference disables all remaining prefix reuse. It never
 rebases old static addresses. Independent source audit and16 differential
 controls precede the native experiment. Memory cost remains a measured risk.
+
+## 20:16 UTC scope decision
+
+The native three-edit batch completes at134–139s per warm emission. Its final
+product-policy B matches the independent qualified reference exactly; the two
+other outputs have not yet received their own independent full-build references.
+This is below the5× escalation criterion. Do not spend another two full reference
+builds solely to certify that missed target. Preserve those rows as exploratory,
+not G4 evidence.
+
+The next candidate is measured on the original A→product-policy B pair, with a
+checkpoint before that late owner and existing independent A/B references. It
+adds bounded exact static-image convergence, indexed report-name deduplication,
+and retained successful verifier metadata under the original exact context gate.
+All236 finite controls and the complete small request screen pass. The cold
+screen still exceeds the5% criterion; qualification/promotion remain withheld.
+
+An optional separate sampling run may identify residual warm work. Instrumented
+times must remain separate from clean scores. Stop adding speculative caches;
+measure the integrated candidate and preserve the remaining floor explicitly.

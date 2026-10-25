@@ -1,0 +1,64 @@
+{
+  "kind": "phase140-private-typed-comparison-candidate",
+  "experimental": true,
+  "checked": false,
+  "baseSource": {
+    "file": "selfhost/build/phase140/native-source17/compiler.bend",
+    "sha256": "fcef9aa66f8f468f9a07641e8e67a4b74ecbbdb62a04a3d295f4cced676282de",
+    "bytes": 2961899
+  },
+  "addModules": [
+    {
+      "file": "selfhost/tools/performance/phase140/compare/typed-v01.bend",
+      "sha256": "9b4dea15bd883cd2833227d4dea45c5dba14407942d12d2fc790d54cfe275407",
+      "bytes": 6261
+    },
+    {
+      "file": "selfhost/tools/performance/phase140/compare/typed-controls-v01.bend",
+      "sha256": "49268d2cb55c2ef26986cdb56782618cd763a3e2b916fd955caaf3bacdedcafc",
+      "bytes": 10299
+    }
+  ],
+  "replaceModules": [
+    {
+      "old": {
+        "file": "selfhost/tools/performance/phase140/verify/core-v03.bend",
+        "sha256": "494afbe50aa756b7ac08adfcce8f00bd5aa3f2347ff1b73a9fd958a6c5381f36",
+        "bytes": 11654
+      },
+      "new": {
+        "file": "selfhost/tools/performance/phase140/verify/core-v04.bend",
+        "sha256": "58f4cf95d3be331b26177a1fb57629c3cb3a06eb89db79bdd3b29fe57150cc58",
+        "bytes": 11569
+      }
+    },
+    {
+      "old": {
+        "file": "selfhost/tools/performance/phase140/render/reuse-v03.bend",
+        "sha256": "91c7c558c2c95b687ab35a7cb9b72d2b05de3996f492c10718fbaaf2d698d85c",
+        "bytes": 12467
+      },
+      "new": {
+        "file": "selfhost/tools/performance/phase140/render/reuse-v04.bend",
+        "sha256": "82673ee13c75403954b33009e9d48ead97aa2c50f592a0a05baaed69dbae91e3",
+        "bytes": 12984
+      }
+    },
+    {
+      "old": {
+        "file": "selfhost/tools/performance/phase140/render/registry-v04.bend",
+        "sha256": "8316c94f99152968f4861e7a67d149f4bf48315a7692ed135c38a10833caf6c2",
+        "bytes": 17550
+      },
+      "new": {
+        "file": "selfhost/tools/performance/phase140/render/registry-v05.bend",
+        "sha256": "5430353008124b7a54c61569a19d7939ed07c6736f5a6de34c7acb25311db831",
+        "bytes": 17494
+      }
+    }
+  ],
+  "export": "p140ec_controls",
+  "controlRows": 19,
+  "scope": "Private first-order comparators and Phase140 cache adapters only. Original p134v comparisons and all final verifiers unchanged. Root must check, compare complete products and measure.",
+  "preserved": "Original constructor/field/Boolean order; no physical identity, hash-based equality, runtime or native recursion admission change."
+}

@@ -4,6 +4,22 @@ This ledger records decisions and links evidence; it does not replace the report
 Read [workflow](README.md) and [current strategy](STEERING.md) before a new investigation.
 User objective: make the Bend compiler written in Bend and its validation loop much faster while preserving correctness. Historical authorization windows are recorded below; current release status and priorities are in [STEERING.md](STEERING.md).
 
+## Phase139 — Reusable checked units: detailed source investigation (2026-10-25)
+
+[Options](../design/phase139/compilation-speed-options.md) ·
+[Investigation](../research/phase139/reusable-checked-units.md) ·
+[Experiment](phase139/P139-001-reusable-checked-units.md).
+
+Saved four conditional5× architectural options; selected early checked/prepared
+owner reuse for localized edits. Freshening and ordered future declarations
+falsify textual-header/max-bound-only admission. Tightened exact checker-state
+contract remains unproved/unimplemented. Static inventory confirms63,377 QBE
+functions and46,071words in the65,536-word literal budget. Tagged static values
+require explicit binding, not ordinary pointer relocation. Separate semantic
+reuse from stable machine artifacts; preserve global verification and fallback.
+Two bounded source audits and offline census; no target/compiler execution,
+performance gain, proof or promotion. Concrete staged falsifiers documented.
+
 ## Phase138 — Fresh profile and the sub20s build boundary (2026-10-25)
 
 [Design](../design/phase138/README.md) · [Experiment](phase138/P138-001-twenty-second-loop.md) ·

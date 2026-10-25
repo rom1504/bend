@@ -1,4 +1,23 @@
-# Latest investigation: Phase138 sub20s development-loop feasibility
+# Latest design: Phase139 reusable checked units
+
+[Fivefold options](../design/phase139/compilation-speed-options.md) ·
+[Detailed source investigation](../research/phase139/reusable-checked-units.md).
+
+Choose early checked/prepared owner reuse for the first5× local-edit target.
+New audit tightens the checker contract: source-level header equality and the
+final bound are insufficient because global freshening renumbers later types.
+Require exact ordered post-freshening declaration projections, complete KWorld
+and seen-state, then finalize with the current revision. This remains an unproved
+candidate rule, not independent module checking or implemented incrementality.
+
+Separate semantic units, machine objects and transport batches. Current63,377
+QBE functions include49,013 dispatch entries; static image46,071/65,536words.
+Tagged heap-relative literal integers cannot use ordinary ELF relocations alone.
+Reuse named units before binding; preserve object bytes only under a separately
+validated stable-binding policy. Source/code inventory only; no new target runs,
+proofs, speed result or selected compiler change. Phase137 N3 remains qualified.
+
+# Previous investigation: Phase138 sub20s development-loop feasibility
 
 [Report](../implementation/phase138/README.md) ·
 [Reuse boundary](../research/phase138/reuse-boundaries.md) ·

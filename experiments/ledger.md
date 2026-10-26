@@ -5942,3 +5942,40 @@ N1/N2/full45 qualification or promotion; selected Phase137 N3 stays unchanged.
 on audits/controls/observation; root owned one serial target lane. Costs exclude
 unavailable quota billing. Next isolate the earlier producer-identity boundary
 inside40.1s optimization/verification; do not add caches from static hit counts.
+
+
+## 2026-10-26 — Phase143 cold compiler traversal reduction
+
+[Report](../implementation/phase143/README.md) ·
+[metrics](../implementation/phase143/metrics.json) ·
+[qualified candidate](../implementation/phase143/candidate.json).
+
+Pivoted to full cold source-to-executable cost. A fresh ordinary native profile
+found repeated source comparisons, ordered-book removal, ownership and syntax
+traversals;12,017samples, zero loss. Private checker scheduling/deferred
+publication, indexed ordinary erasure and a modular fresh-ID query remove work
+without changing compiler products. Source+324physical lines/41declarations;
+three overrides. Original proofs and final verifiers remain byte-exact.
+
+Controlled same-source compiler374.677→296.541s; QBE/as/link included
+390.347→311.758s; complete supervised operations393.979→315.310s (−19.97%).
+Full115,909,112-byte QBE and machine object equality. One pair, not a confidence
+interval. Three small native pairs per family show no material regression.
+No claim of150s, a new upstream ratio or new broad generated-program timings.
+
+Always-enabled prepared checking regressed small requests; rejected in favor of
+a measured256-definition gate. Set-based occurrence admission was not selected.
+Full JS-hosted comparison stopped at3GiB; C acquisition deferred after explicit
+route/resource audit. Preserve these negatives, invalid fixtures and observer
+failures. No demonstrated production semantic mismatch in the setup failures.
+
+89 finite controls, real-body occurrence queries, complete integrated products,
+independent source check,137→N1→N2 reproduction, both focused19 and N2 full45
+gates pass. Ordinary native qualification only; incremental/JS/C qualification
+and installed/default selection unchanged. Phase137 remains available.
+
+57 guarded jobs40.91min,8 failures4.56min; one root-owned CPU3 lane and bounded
+agent audits. Acquisition8.12min, controls1.35min, measurement17.53min,
+profiling6.66min, qualification7.25min. Quota billing unavailable. Next refresh
+the candidate's residual profile before choosing the next structural change;
+do not subtract overlapping baseline owner/physical percentages as savings.

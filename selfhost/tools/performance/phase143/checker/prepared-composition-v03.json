@@ -1,0 +1,51 @@
+{
+  "kind": "phase143-prepared-base-checker-append",
+  "sourceChecked": false,
+  "targetsRun": false,
+  "productionOverrides": [],
+  "parentCore": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase143/checker/schedule-v01.bend",
+      "bytes": 1305,
+      "sha256": "8543fbea64c12b90ff4204e6955dcdd2cc384998cdf18bc46854d44d23ef08ad"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase143/checker/publication-v01.bend",
+      "bytes": 5216,
+      "sha256": "a7f5daa2e6d16884a027cee0c256c6d74d3ae399e90d97ef3d7934152c928026"
+    }
+  ],
+  "appendModules": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase143/checker/prepared-v02.bend",
+      "bytes": 4659,
+      "sha256": "4b7b8f4f4d5ea1034921016f19906577742167f32bb1156d6c7c7c530b9c6b69"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase143/checker/prepared-controls-v03.bend",
+      "bytes": 5290,
+      "sha256": "8396028f5c5ad53e6c6cde5e6e617802517ecf4179b9e3a9b9a41aa57ec3b4ef"
+    }
+  ],
+  "exports": [
+    "p143cb_check_load",
+    "p143cb_program",
+    "p143cb_plan_loaded",
+    "p143cbc_controls",
+    "base_prefix_check_world_load",
+    "check_program_diagnostic_world",
+    "p86_plan_loaded",
+    "p140pl_load",
+    "p143cbc_route"
+  ],
+  "finiteRows": 10,
+  "authority": "The original authenticated P86Seed and its actual paired FPrefixLoad, not arbitrary supplied saved-world fields.",
+  "proposedOnlyHook": "p86_plan_loaded(seed,load) -> p143cb_plan_loaded(seed,load,True{})",
+  "controlGuarantees": [
+    "Actual prepared-world admission route asserted",
+    "Original DChecking success status asserted",
+    "Original finalized DResult success status asserted",
+    "Complete checker and finalized result equality",
+    "Independent Unit hash collision requires original replay fallback"
+  ]
+}

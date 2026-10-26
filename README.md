@@ -170,6 +170,13 @@ incremental reuse and profiles an actual native compiler edit. Indexed graph
 traversal lowers its complete rebuild estimate by8.2%, with identical output;
 the candidate remains experimental and the10× target remains open.
 
+The [Phase143 cold-build work](implementation/phase143/README.md) removes repeated
+checker-table and syntax traversals. On the same compiler source, the complete
+supervised cold build falls394→315s (20% less time), with identical QBE and machine
+objects. N1/N2 self-reproduction, both focused19 gates and the frozen45 programs
+pass. See the [cold native guide](docs/self_hosted/cold-native-development.md)
+for the explicitly qualified checkpoint, profiling tools and unchanged defaults.
+
 The [incremental native development guide](docs/self_hosted/incremental-native-development.md)
 links the measured QBE size, memory and object-reuse investigation, its Go-inspired
 architecture, and the remaining boundary before fast source-level edits.

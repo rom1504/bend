@@ -1,4 +1,38 @@
-# Current experiment: Phase142 measured incremental cost reduction
+# Current experiment: Phase143 cold compiler cost reduction
+
+[Report](../implementation/phase143/README.md) ·
+[candidate](../implementation/phase143/candidate.json) ·
+[metrics](../implementation/phase143/metrics.json) ·
+[qualification](../implementation/phase143/qualification.json).
+
+Same-source fresh native compiler execution374.677→296.541s (−20.85%).
+QBE/as/link included390.347→311.758s; complete supervision/verification
+393.979→315.310s (−19.97%). Full115,909,112-byte QBE and machine objects match.
+One controlled pair, same prepared Base/runtime/CPU3, no previous-source reuse;
+OS caches are not flushed. No new upstream ratio or broad runtime-speed claim.
+
+The private checker schedules later definitions once and defers ordered-book
+publication cleanup. A measured256-definition gate retains the original checker
+on small inputs. Ordinary erasure indexes visited names; fresh-ID admission uses
+one modular-range syntax traversal. Source+324physical lines/41 declarations,
+three overrides. Original proof/final-verifier declarations remain byte-exact.
+89 finite controls, actual-body queries and exact integrated products pass.
+
+Independent source check; qualified137→N1→N2 complete QBE reproduction; both
+focused19 and N2 full45 gates pass, with all positive frozen products exact.
+Small native request pairs remain effectively flat. This is an explicitly usable
+ordinary-native checkpoint; incremental qualification and installed/default
+selection are unchanged. Keep qualified Phase137 N3 and the existing incremental
+experiments. No new theorem or recursive acceleration is claimed.
+
+57 guarded jobs40.91min,8 failures4.56min, one root-owned CPU3 lane. Full JS-hosted
+comparison reached the3GiB guard limit; no successful full JS/C ratio. Retain
+failed controls/observer attempts and the unchanged-object diagnostic profile.
+Next refresh residual attribution, then test exact parser-prior indexing,
+shared constructor-ownership facts or compact verifier identities. The baseline
+profile is not a post-optimization profile;150s/75s/50s remain unmet milestones.
+
+# Previous experiment: Phase142 measured incremental cost reduction
 
 [Report](../implementation/phase142/README.md) · [candidate](../implementation/phase142/candidate.json) ·
 [build metrics](../implementation/phase142/build-metrics.json) · [plan](../design/phase142/README.md).

@@ -1,0 +1,98 @@
+{
+  "kind": "phase143-same-source-cold-build",
+  "complete": true,
+  "clocks": {
+    "baseline": {
+      "compilerSeconds": 374.67731673596427,
+      "machineSeconds": 15.669392905663699,
+      "targetBuildSeconds": 390.34670964162797,
+      "supervisedBuildSeconds": 393.97910532401875,
+      "peakCompilerRssBytes": 1071353856
+    },
+    "candidate": {
+      "compilerSeconds": 296.540648939088,
+      "machineSeconds": 15.217614179011434,
+      "targetBuildSeconds": 311.7582631180994,
+      "supervisedBuildSeconds": 315.31039302935824,
+      "peakCompilerRssBytes": 1071468544
+    }
+  },
+  "ratios": {
+    "compilerSeconds": 0.7914561028738782,
+    "targetBuildSeconds": 0.7986701448164388,
+    "supervisedBuildSeconds": 0.8003226282014085
+  },
+  "source": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase142/indexed-source02/compiler.bend",
+    "bytes": 2946225,
+    "sha256": "15f5cada2710119cce19a0cfe961c21f61edc5f0b048f90359090a0c1817dac1"
+  },
+  "baselineImage": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p142-indexed-n1/program",
+    "bytes": 18878296,
+    "sha256": "f23c1c05db96f3f7ad5a5a41b110e9c1d39b422c0166fc773eb79ccc82f671c5"
+  },
+  "candidateImage": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p143-integrated-n1/program",
+    "bytes": 18984160,
+    "sha256": "c4671cef51637a76d506ae3c2df2fa27020d0516414e747faa71cbe4e2498550"
+  },
+  "exactQbe": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase130/p143-candidate-current-cold01/program.ssa",
+    "bytes": 115909112,
+    "sha256": "1dca2d0ea568b2e28db87066ed10dbef01a385f4e38dd4d18c99e1074d128643"
+  },
+  "exactMachineObject": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p143-candidate-current-built/program.o",
+    "bytes": 25139864,
+    "sha256": "1a53300a155f27aafdf866a2ad30c6dd3f9f009073dc66b15a3b3f44cdcc91d8"
+  },
+  "scope": "One controlled fresh-process comparison on the same full Phase142 source, prepared Base/runtime, CPU3 and complete independent QBE. No source-specific reuse. Target sum includes source/file I/O and machine construction; supervised sum additionally includes launch, receipt/authentication and byte comparison. Not a confidence interval or a fresh upstream/JS/C comparison. OS page caches were not flushed.",
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase130/p143-current-native-cold01/report.json",
+      "bytes": 10193,
+      "sha256": "6a1e9d7ee5d1a721249e0a6b02a0bd5364d91b04c4d170c1e60454daa2de2d0d"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase130/p143-candidate-current-cold01/report.json",
+      "bytes": 10209,
+      "sha256": "e73627b3562968e0139dda622c91ab06be948ceab88a1b6dc8c28fd4f34f3caa"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p143-current-n2/report.json",
+      "bytes": 4753,
+      "sha256": "39d7ee238a3e677b0f20bcfe8990bea8daea368b892ef4647ec6c7f132623119"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p143-candidate-current-built/report.json",
+      "bytes": 4945,
+      "sha256": "76d9b4f185d22add2663929e0766d6e5092deabd3cb2777d14c9cbb2a7e33c69"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase143/current-native-cold01-guard/process.json",
+      "bytes": 931,
+      "sha256": "1d84577ab6dbad9220c03f4e7dfe3206850cfd7fcecf0a04d566c37f9e3e0689"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase143/current-native-machine01-guard/process.json",
+      "bytes": 761,
+      "sha256": "67bf3cabf2bba4d27558e8c75111ff57482df67bd7cc780daa37e243027e3e89"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase143/candidate-current-cold01-guard/process.json",
+      "bytes": 938,
+      "sha256": "deed1e15b9707c68b953ae2646a25c05f619882b5c22dc17e8092e433b98ea15"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase143/candidate-current-machine01-guard/process.json",
+      "bytes": 778,
+      "sha256": "14908bc2435bf12e4db48bc109bf8ebbb5292683e66791981002165104dd045f"
+    }
+  ],
+  "method": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase143/summarize-v01.py",
+    "bytes": 8080,
+    "sha256": "02d01ed0df62e84f7c48b4b7f1c3438810f3a10dfa609a0da4a211f3886bd32d"
+  }
+}

@@ -1,0 +1,272 @@
+{
+  "kind": "phase143-ordinary-cold-profile-summary",
+  "complete": true,
+  "targetsRun": false,
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase143/profile01/attribution02/report.json",
+      "bytes": 1936076,
+      "sha256": "4c244691e4379b1521d31f2f35ba10f59466d75343ad35c8e063743fdcc75918"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase143/profile01/capture02/report.json",
+      "bytes": 26203,
+      "sha256": "a532597ccc624c1b3802836961871f6e91f026f8777487b57f89803acc3d6c10"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase143/profile01/timeline02/timeline.json",
+      "bytes": 67817,
+      "sha256": "4e192c7a0d5a8e86c3fc8a18c9c59f7d49430ad446ebe933a4d7324a4d945b24"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase130/p143-current-native-cold01/report.json",
+      "bytes": 10193,
+      "sha256": "6a1e9d7ee5d1a721249e0a6b02a0bd5364d91b04c4d170c1e60454daa2de2d0d"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase143/profile01/manifest-v02.json",
+      "bytes": 22460,
+      "sha256": "9737e2fdeb6006c26fd328846c2b1af2d63414c69b0e6c7b589dda3aa19b7921"
+    }
+  ],
+  "samples": 12017,
+  "quality": {
+    "scope": "main_thread",
+    "main_thread_cpu_fraction": 0.9963670615726854,
+    "sampled_thread_cpu_fraction": 0.9963670615726854,
+    "minimum_process_cpu_fraction": 0.95,
+    "minimum_samples": 500,
+    "enough_samples": true,
+    "thread_lifecycle_complete": true,
+    "near_complete_process_cpu_coverage": true,
+    "usable_for_process_cpu_attribution": true,
+    "limitations": [],
+    "zero_loss": true,
+    "handler_intact": true,
+    "main_thread_shutdown": true,
+    "expected_clock_periods": 12017.93750634375,
+    "delivered_per_expected_period": 0.9999219910784812,
+    "delivery_plausible": true
+  },
+  "coverage": {
+    "eligibleLeafSamples": 435,
+    "recoveredCallerSamples": 435,
+    "symbolizedCallerSamples": 435,
+    "inferredCallerSymbolSamples": 0,
+    "knownDispatchSamples": 11620,
+    "allSamples": 12017,
+    "unknownCallerSamples": 11582,
+    "eligibleWithoutCallerSamples": 0
+  },
+  "clean": {
+    "nativeSeconds": 374.67731673596427,
+    "cpuSeconds": 374.540339,
+    "peakRssKiB": 1046244
+  },
+  "diagnostic": {
+    "wallSeconds": 386.46622306108475,
+    "cpuSeconds": 386.136862,
+    "peakRssKiB": 1048720
+  },
+  "singleDiagnosticOverCleanWallRatio": 1.0314641580862718,
+  "topActiveOwners": [
+    {
+      "owner": "lookup",
+      "samples": 753,
+      "fractionOfAll": 0.06266122992427395
+    },
+    {
+      "owner": "index_remove",
+      "samples": 559,
+      "fractionOfAll": 0.04651743363568278
+    },
+    {
+      "owner": "nc_ctor_owned",
+      "samples": 556,
+      "fractionOfAll": 0.046267787301323124
+    },
+    {
+      "owner": "String.append",
+      "samples": 552,
+      "fractionOfAll": 0.045934925522176914
+    },
+    {
+      "owner": "p111v_get",
+      "samples": 490,
+      "fractionOfAll": 0.040775567945410665
+    },
+    {
+      "owner": "f_find",
+      "samples": 464,
+      "fractionOfAll": 0.03861196638096031
+    },
+    {
+      "owner": "nb_contains",
+      "samples": 413,
+      "fractionOfAll": 0.03436797869684614
+    },
+    {
+      "owner": "p88_string_eq",
+      "samples": 405,
+      "fractionOfAll": 0.03370225513855372
+    },
+    {
+      "owner": "[unknown]",
+      "samples": 400,
+      "fractionOfAll": 0.033286177914620955
+    },
+    {
+      "owner": "String.eq",
+      "samples": 249,
+      "fractionOfAll": 0.020720645751851542
+    },
+    {
+      "owner": "nc_occurs",
+      "samples": 216,
+      "fractionOfAll": 0.017974536073895316
+    },
+    {
+      "owner": "p131i_insert",
+      "samples": 204,
+      "fractionOfAll": 0.016975950736456687
+    },
+    {
+      "owner": "nc_occurs_list",
+      "samples": 186,
+      "fractionOfAll": 0.015478072730298744
+    },
+    {
+      "owner": "constructor_exists",
+      "samples": 182,
+      "fractionOfAll": 0.015145210951152534
+    },
+    {
+      "owner": "p111q_body_text",
+      "samples": 155,
+      "fractionOfAll": 0.01289839394191562
+    },
+    {
+      "owner": "p111q_memory",
+      "samples": 148,
+      "fractionOfAll": 0.012315885828409753
+    },
+    {
+      "owner": "p111v_name_chars",
+      "samples": 140,
+      "fractionOfAll": 0.011650162270117333
+    },
+    {
+      "owner": "p111v_value",
+      "samples": 129,
+      "fractionOfAll": 0.010734792377465257
+    },
+    {
+      "owner": "dg_event_publish",
+      "samples": 115,
+      "fractionOfAll": 0.009569776150453525
+    },
+    {
+      "owner": "f_eq",
+      "samples": 112,
+      "fractionOfAll": 0.009320129816093868
+    },
+    {
+      "owner": "p113k_get",
+      "samples": 107,
+      "fractionOfAll": 0.008904052592161106
+    },
+    {
+      "owner": "index_remove_step",
+      "samples": 105,
+      "fractionOfAll": 0.008737621702588001
+    },
+    {
+      "owner": "p112w_ready",
+      "samples": 97,
+      "fractionOfAll": 0.008071898144295582
+    },
+    {
+      "owner": "nc_uses_term",
+      "samples": 93,
+      "fractionOfAll": 0.007739036365149372
+    },
+    {
+      "owner": "nol_scalar_specs",
+      "samples": 87,
+      "fractionOfAll": 0.007239743696430058
+    },
+    {
+      "owner": "p111v_contract",
+      "samples": 81,
+      "fractionOfAll": 0.006740451027710743
+    },
+    {
+      "owner": "subst_node",
+      "samples": 71,
+      "fractionOfAll": 0.005908296579845219
+    },
+    {
+      "owner": "ns_body",
+      "samples": 64,
+      "fractionOfAll": 0.005325788466339352
+    },
+    {
+      "owner": "p111v_intersection_bucket",
+      "samples": 62,
+      "fractionOfAll": 0.0051593575767662474
+    },
+    {
+      "owner": "dr_own_names",
+      "samples": 60,
+      "fractionOfAll": 0.004992926687193143
+    }
+  ],
+  "selectedActiveGroups": {
+    "publicationFacingButNotCallerAttributed": {
+      "owners": [
+        "lookup",
+        "index_remove",
+        "index_remove_step",
+        "dg_event_publish"
+      ],
+      "samples": 1532,
+      "fractionOfAll": 0.12748606141299826
+    },
+    "occurrence": {
+      "owners": [
+        "nc_occurs",
+        "nc_occurs_list"
+      ],
+      "samples": 402,
+      "fractionOfAll": 0.03345260880419406
+    },
+    "constructorOwnership": {
+      "owners": [
+        "nc_ctor_owned"
+      ],
+      "samples": 556,
+      "fractionOfAll": 0.046267787301323124
+    },
+    "knownStringConcatenation": {
+      "owners": [
+        "String.append"
+      ],
+      "samples": 552,
+      "fractionOfAll": 0.045934925522176914
+    }
+  },
+  "physicalReclamation": {
+    "samples": 3302,
+    "fractionOfAll": 0.27477739868519596
+  },
+  "registerTransportObserved": {
+    "samples": 704,
+    "fractionOfAll": 0.05858367312973288
+  },
+  "limits": [
+    "Active owner fractions are disjoint execution contexts, not inclusive parent-call fractions.",
+    "Physical reclamation/string/runtime costs overlap owner groups; do not add their percentages.",
+    "CPU-order windows do not establish exact phase boundaries.",
+    "Single sampled/clean pair is descriptive, not a precise instrumentation-overhead estimate."
+  ]
+}

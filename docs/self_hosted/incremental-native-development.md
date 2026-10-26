@@ -4,6 +4,12 @@ The current qualified research compiler is [Phase137 N3](../../implementation/ph
 The commands below preserve the historical Phase134 checkpoint; they do not
 silently select a newer executable.
 
+The active optimization effort has returned to cold builds. The
+[Phase143 ordinary-native checkpoint](cold-native-development.md) is separately
+qualified and reduces a matched complete cold build by20%; installed/selected
+defaults remain unchanged. Incremental work below is preserved, with no new
+incremental-session qualification claimed by Phase143.
+
 [Phase142 plan: retained units and10×/100× warm-build ambitions](../../design/phase142/README.md)
 sets out the next experiment: exact producer change evidence into verifier reuse,
 then persistent frontend products and direct unit-to-object construction. It

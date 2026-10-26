@@ -1,0 +1,434 @@
+{
+  "kind": "phase143-paired-native-small-requests",
+  "complete": true,
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase143/compare-requests-v01.py",
+      "bytes": 4758,
+      "sha256": "a754595c2d6a037708253a93dc4f65ec62fbe62e0950a2b0fc8ba36e16103ba6"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase134/reference03.json",
+      "bytes": 47922,
+      "sha256": "06c856e8cb1bca236ba3cacb90c12861a0ddf14bee5d4cf1f0223bb960a36a2a"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p142-indexed-n1/program",
+      "bytes": 18878296,
+      "sha256": "f23c1c05db96f3f7ad5a5a41b110e9c1d39b422c0166fc773eb79ccc82f671c5"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p143-integrated-n2/program",
+      "bytes": 18984160,
+      "sha256": "023ccf1acf52e71cb9578c4ed878ccb4a50a61c28375e3f8b0a54c885736c83b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase88/broad-fixtures03/lexer.bend",
+      "bytes": 7257,
+      "sha256": "f1d8e7e7e68f5c79053fadc35ba2f6e95f0115a40a5e6ce792e34d9f1faafdae"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase112/p131-final-parent-timing01/001-lexer-cache-phase112/program.ssa",
+      "bytes": 577297,
+      "sha256": "d7f319ddfe98e211951e305d692fa0190f4c2ade7cf0beb998a5e88ae7f13559"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase88/broad-fixtures03/coverage-map-churn-128.bend",
+      "bytes": 1817,
+      "sha256": "99892f1c473588fcc814f17594b9d173343ef195bda6378113dbf088bea01120"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase112/p131-final-parent-timing01/008-coverage-map-churn-128-cache-phase112/program.ssa",
+      "bytes": 1028294,
+      "sha256": "37fd22e781e93290c2ab661c06f1991d57542f58e90d983890cebff6f7ef24e5"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase88/broad-fixtures03/coverage-closures-256.bend",
+      "bytes": 1532,
+      "sha256": "08b5d1183fe1d6238fe76c51f24b964ad2171c01073e2353e84b4b1f5870724c"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase112/p131-final-parent-timing01/003-coverage-closures-256-cache-phase112/program.ssa",
+      "bytes": 99537,
+      "sha256": "c5b9d940e875610ccb93b9ebbc8105964f16c98169ed8ead1edbcc08b0becbd7"
+    }
+  ],
+  "rounds": 3,
+  "rows": [
+    {
+      "name": "lexer",
+      "round": 0,
+      "order": [
+        "baseline",
+        "candidate"
+      ],
+      "runs": {
+        "baseline": {
+          "seconds": 1.567217974923551,
+          "receipt": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase130/p143-native-small01-0-0-baseline/report.json",
+            "bytes": 10234,
+            "sha256": "52cd383833613d4b81c77e7f47cad4e4f95bb56c71b6093f995aaf8767f1053e"
+          },
+          "guard": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase143/native-small01/p143-native-small01-0-0-baseline-guard/process.json",
+            "bytes": 1173,
+            "sha256": "dc9e7d285c50c877b18b691501fe3b338ec71acbc1c51a06b06ad6a3ca844c5a"
+          }
+        },
+        "candidate": {
+          "seconds": 1.5184946679510176,
+          "receipt": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase130/p143-native-small01-0-0-candidate/report.json",
+            "bytes": 10271,
+            "sha256": "2a619685cb46a1953e2a69af93bfea0fef2e92c6097851e06da368e53a6db5d0"
+          },
+          "guard": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase143/native-small01/p143-native-small01-0-0-candidate-guard/process.json",
+            "bytes": 1176,
+            "sha256": "ef5f0f3d97a89d0712b3af64d68a0ed1e7b64692db7ea5d42e0c0c8cd764e179"
+          }
+        }
+      },
+      "ratio": 0.9689109570256746
+    },
+    {
+      "name": "coverage-map-churn-128",
+      "round": 0,
+      "order": [
+        "candidate",
+        "baseline"
+      ],
+      "runs": {
+        "candidate": {
+          "seconds": 2.0199746070429683,
+          "receipt": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase130/p143-native-small01-0-1-candidate/report.json",
+            "bytes": 10369,
+            "sha256": "fb8d8df3e44ea1082344dd01847d9a62f801930ddbd9c7fae2af1c21a232ccc5"
+          },
+          "guard": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase143/native-small01/p143-native-small01-0-1-candidate-guard/process.json",
+            "bytes": 1212,
+            "sha256": "f073f9a17e47540ee3b6df21462ad6fc3cdb689e500e77075e50772fb1e9f6d6"
+          }
+        },
+        "baseline": {
+          "seconds": 2.0588848111219704,
+          "receipt": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase130/p143-native-small01-0-1-baseline/report.json",
+            "bytes": 10335,
+            "sha256": "4f2acd20269aa163d3a10c845e8ba47329e9a60cef1f625f22f9f59edfffc1fc"
+          },
+          "guard": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase143/native-small01/p143-native-small01-0-1-baseline-guard/process.json",
+            "bytes": 1207,
+            "sha256": "f57e16107b67fda414e06d98b718e879552bf5adb0008e8d020313db9e8a43f9"
+          }
+        }
+      },
+      "ratio": 0.9811013205455635
+    },
+    {
+      "name": "coverage-closures-256",
+      "round": 0,
+      "order": [
+        "baseline",
+        "candidate"
+      ],
+      "runs": {
+        "baseline": {
+          "seconds": 0.4772758693434298,
+          "receipt": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase130/p143-native-small01-0-2-baseline/report.json",
+            "bytes": 10335,
+            "sha256": "b19c0dda69dfafd487deff66944ce2691f01c28ec5bffcf21085d5faa0bb4a9d"
+          },
+          "guard": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase143/native-small01/p143-native-small01-0-2-baseline-guard/process.json",
+            "bytes": 1205,
+            "sha256": "765ee3ba6b83854aa5886b57448f494d8269c22795a5a6c5714e0dc9f78a8f42"
+          }
+        },
+        "candidate": {
+          "seconds": 0.4389571980573237,
+          "receipt": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase130/p143-native-small01-0-2-candidate/report.json",
+            "bytes": 10325,
+            "sha256": "4e722333d1a867278205a3598902587f289ba1499c5eb1ea98750c30f9e9b8e6"
+          },
+          "guard": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase143/native-small01/p143-native-small01-0-2-candidate-guard/process.json",
+            "bytes": 1211,
+            "sha256": "a5fe8ace08053206b7dcb974598f2eb607190327fc66582b2fd95c8ead83adbc"
+          }
+        }
+      },
+      "ratio": 0.9197137887175825
+    },
+    {
+      "name": "lexer",
+      "round": 1,
+      "order": [
+        "candidate",
+        "baseline"
+      ],
+      "runs": {
+        "candidate": {
+          "seconds": 1.4962607929483056,
+          "receipt": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase130/p143-native-small01-1-0-candidate/report.json",
+            "bytes": 10248,
+            "sha256": "77260a9c4e200734515cba6efcb0e76d577dc3e21d26b0aa7f7c3f9b3b968a31"
+          },
+          "guard": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase143/native-small01/p143-native-small01-1-0-candidate-guard/process.json",
+            "bytes": 1178,
+            "sha256": "f152ca7b21917bf4d9a524a0ab2939cb9f0b3bef1fcb294bfef0af8b7220587d"
+          }
+        },
+        "baseline": {
+          "seconds": 1.5258024618960917,
+          "receipt": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase130/p143-native-small01-1-0-baseline/report.json",
+            "bytes": 10257,
+            "sha256": "7669706e9eab6074fc3f76fdca17a385cb301dd1a2925baaa50fb1a29c0affb5"
+          },
+          "guard": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase143/native-small01/p143-native-small01-1-0-baseline-guard/process.json",
+            "bytes": 1173,
+            "sha256": "5de67a4e3d1c13dae4c9112986ad716015817c5ac8e3681ec9e44ff21ea93372"
+          }
+        }
+      },
+      "ratio": 0.9806386018599845
+    },
+    {
+      "name": "coverage-map-churn-128",
+      "round": 1,
+      "order": [
+        "baseline",
+        "candidate"
+      ],
+      "runs": {
+        "baseline": {
+          "seconds": 1.996491112280637,
+          "receipt": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase130/p143-native-small01-1-1-baseline/report.json",
+            "bytes": 10322,
+            "sha256": "b632ee182cf4abdaf2cddbc78e6b925656e84796d93517a39aee012877a98e7d"
+          },
+          "guard": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase143/native-small01/p143-native-small01-1-1-baseline-guard/process.json",
+            "bytes": 1206,
+            "sha256": "4e432aa84f440e6ce8b1a5065bba473bf9ee9c472593b2d5135e026129b836ed"
+          }
+        },
+        "candidate": {
+          "seconds": 1.9828317798674107,
+          "receipt": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase130/p143-native-small01-1-1-candidate/report.json",
+            "bytes": 10349,
+            "sha256": "3633730bff1b086baa9100267d42a04c53e186a23a4b8b087485214920526d18"
+          },
+          "guard": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase143/native-small01/p143-native-small01-1-1-candidate-guard/process.json",
+            "bytes": 1212,
+            "sha256": "f10ebf262055e89f65377938e6306308c457351a5b06b45e5f9761303f953aaf"
+          }
+        }
+      },
+      "ratio": 0.9931583304682869
+    },
+    {
+      "name": "coverage-closures-256",
+      "round": 1,
+      "order": [
+        "candidate",
+        "baseline"
+      ],
+      "runs": {
+        "candidate": {
+          "seconds": 0.4278026781976223,
+          "receipt": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase130/p143-native-small01-1-2-candidate/report.json",
+            "bytes": 10338,
+            "sha256": "bf61d4d570c8ceb183c40525b81bdcd6fb8878684773119cf8489440bd4e3e5c"
+          },
+          "guard": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase143/native-small01/p143-native-small01-1-2-candidate-guard/process.json",
+            "bytes": 1211,
+            "sha256": "f7d14732813b772ebfb1d7867466fa502f8660f202a3eac8dc362d8a347538a0"
+          }
+        },
+        "baseline": {
+          "seconds": 0.4283253522589803,
+          "receipt": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase130/p143-native-small01-1-2-baseline/report.json",
+            "bytes": 10323,
+            "sha256": "7cf487221b9a3559f96c1ac0ee9580e844192c8e07e572cb849ec2583b7db411"
+          },
+          "guard": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase143/native-small01/p143-native-small01-1-2-baseline-guard/process.json",
+            "bytes": 1206,
+            "sha256": "d37faa8e5daa19e62963bbb566df1e71b95d0174f59fab2087ecc398b5b2e249"
+          }
+        }
+      },
+      "ratio": 0.9987797265359115
+    },
+    {
+      "name": "lexer",
+      "round": 2,
+      "order": [
+        "baseline",
+        "candidate"
+      ],
+      "runs": {
+        "baseline": {
+          "seconds": 1.476029311772436,
+          "receipt": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase130/p143-native-small01-2-0-baseline/report.json",
+            "bytes": 10256,
+            "sha256": "55b5dd260caf62cb6542f6ddac504bf506ccb56e76c19b765a85d1c1f61021e1"
+          },
+          "guard": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase143/native-small01/p143-native-small01-2-0-baseline-guard/process.json",
+            "bytes": 1175,
+            "sha256": "4db58e180ee72abcddac3616495afce435979eaf586c8d805404650d55e77d3e"
+          }
+        },
+        "candidate": {
+          "seconds": 1.4780228859744966,
+          "receipt": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase130/p143-native-small01-2-0-candidate/report.json",
+            "bytes": 10261,
+            "sha256": "eb66131318f413e35d9175319f5a157fd69d0370c5ac26ca131fcc6599f52129"
+          },
+          "guard": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase143/native-small01/p143-native-small01-2-0-candidate-guard/process.json",
+            "bytes": 1179,
+            "sha256": "773c45d7e0c5951d01112ce35d8cf0838a3a71b83b7d6ba8413640f1268e0394"
+          }
+        }
+      },
+      "ratio": 1.0013506332063737
+    },
+    {
+      "name": "coverage-map-churn-128",
+      "round": 2,
+      "order": [
+        "candidate",
+        "baseline"
+      ],
+      "runs": {
+        "candidate": {
+          "seconds": 1.9770360379479825,
+          "receipt": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase130/p143-native-small01-2-1-candidate/report.json",
+            "bytes": 10347,
+            "sha256": "1445cca24d5f1c9c119253831fbff70b7f40cc53ec305b143c40262a036bbbac"
+          },
+          "guard": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase143/native-small01/p143-native-small01-2-1-candidate-guard/process.json",
+            "bytes": 1213,
+            "sha256": "4445b792d6130d06717fc21a55ada06db9a31a924c076c6fc9f984bad192bda4"
+          }
+        },
+        "baseline": {
+          "seconds": 1.974121570121497,
+          "receipt": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase130/p143-native-small01-2-1-baseline/report.json",
+            "bytes": 10321,
+            "sha256": "9065f0f68d7fb8e8f43bf5ee073f1d4fc71ada5caa09bc3a960986ec2df65ddc"
+          },
+          "guard": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase143/native-small01/p143-native-small01-2-1-baseline-guard/process.json",
+            "bytes": 1208,
+            "sha256": "e1e2159ae4199adb6a8771a9a30829b39c240289040330a0e56e3fe421b3e0ab"
+          }
+        }
+      },
+      "ratio": 1.0014763365491752
+    },
+    {
+      "name": "coverage-closures-256",
+      "round": 2,
+      "order": [
+        "baseline",
+        "candidate"
+      ],
+      "runs": {
+        "baseline": {
+          "seconds": 0.42866563191637397,
+          "receipt": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase130/p143-native-small01-2-2-baseline/report.json",
+            "bytes": 10313,
+            "sha256": "16cc16dfffe7ce0f5fb9b89cc9dea4b5863a6089e07dc3cce4a3870312c4d8f2"
+          },
+          "guard": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase143/native-small01/p143-native-small01-2-2-baseline-guard/process.json",
+            "bytes": 1205,
+            "sha256": "961ec0aad13675cc1073ec2c99fb361a8280145fa34f64feeaed37ef1f784e82"
+          }
+        },
+        "candidate": {
+          "seconds": 0.4321888373233378,
+          "receipt": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase130/p143-native-small01-2-2-candidate/report.json",
+            "bytes": 10360,
+            "sha256": "7a1c9c23a829c972715435c45cd0f74cb59a6863cd9ffd622be4ffe2db2d9b8c"
+          },
+          "guard": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase143/native-small01/p143-native-small01-2-2-candidate-guard/process.json",
+            "bytes": 1210,
+            "sha256": "68ef95c0c25690c9c1b644976dd491e586e45a99bb2bc51de10b68fcbee0135d"
+          }
+        }
+      },
+      "ratio": 1.0082190060145786
+    }
+  ],
+  "summary": {
+    "lexer": {
+      "medians": {
+        "baseline": 1.5258024618960917,
+        "candidate": 1.4962607929483056
+      },
+      "medianPairedRatio": 0.9806386018599845,
+      "ratioOfMedians": 0.9806386018599845,
+      "pairs": [
+        0.9689109570256746,
+        0.9806386018599845,
+        1.0013506332063737
+      ]
+    },
+    "coverage-map-churn-128": {
+      "medians": {
+        "baseline": 1.996491112280637,
+        "candidate": 1.9828317798674107
+      },
+      "medianPairedRatio": 0.9931583304682869,
+      "ratioOfMedians": 0.9931583304682869,
+      "pairs": [
+        0.9811013205455635,
+        0.9931583304682869,
+        1.0014763365491752
+      ]
+    },
+    "coverage-closures-256": {
+      "medians": {
+        "baseline": 0.42866563191637397,
+        "candidate": 0.4321888373233378
+      },
+      "medianPairedRatio": 0.9987797265359115,
+      "ratioOfMedians": 1.0082190060145786,
+      "pairs": [
+        0.9197137887175825,
+        0.9987797265359115,
+        1.0082190060145786
+      ]
+    }
+  },
+  "scope": "Fresh native processes, same inputs/Base/CPU3 and exact frozen QBE; alternating order. Compiler request latency, not generated-program runtime. Three pairs are an exploratory comparison, not a confidence interval."
+}

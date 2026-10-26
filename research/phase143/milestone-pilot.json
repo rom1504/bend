@@ -1,0 +1,148 @@
+{
+  "kind": "phase143-milestone-small-pilot",
+  "complete": true,
+  "targetsRunBySummarizer": false,
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase143/milestones01/manifest.json",
+      "bytes": 9656,
+      "sha256": "1022ddf1511ec31362891857b09d883eda438418c6148505a0424479261642f2"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase143/milestones01/build/report.json",
+      "bytes": 4224,
+      "sha256": "8a77be770ba3d66a4da085f9bcc5da7bb82aef8abae67903043da9cd5fc836e2"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase143/milestone-lexer01-guard/process.json",
+      "bytes": 1112,
+      "sha256": "e7de4bb78c433d6f9da3aa7c7b9c1644e48e68fd865a549415eed5a337f85bb1"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase143/milestone-lexer01-guard/stderr.log",
+      "bytes": 753,
+      "sha256": "bf7ea8a3c227392c8df338c794bd7f5106721551e0a24f1ec45fd4aa14ae2ef5"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase143/milestone-lexer02-guard/process.json",
+      "bytes": 1078,
+      "sha256": "76fee5066371be879b629fa55caa99acb1f2ee9169f9b60e3b87c6819cb19a78"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase143/milestone-lexer02-guard/inputs.json",
+      "bytes": 1097,
+      "sha256": "74183e3f3fc86eb1b99fbb9ad0aa0a6a813fb52d3fd867b89d90a44cc8a8c6b0"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase130/p143-milestone-lexer02/report.json",
+      "bytes": 10032,
+      "sha256": "281b125a4e7d2e7e66211af6a3dd15f444b1c7acfd3ce6e3fa009be651e4c8b0"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase143/milestones01/lexer02.json",
+      "bytes": 1820,
+      "sha256": "a496a05c511fbf068a98f20ebf34d7bb09890001127b75484a7302030b7d99d9"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase143/milestones01/lexer02-verification.json",
+      "bytes": 1579,
+      "sha256": "3a2cd64149d296d3918baae14ddc3f0f692bc144f6b72c4d302237b8c948bf53"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase143/milestones01/lexer02-verification-v02.json",
+      "bytes": 6690,
+      "sha256": "b4c28ae51dae54c4987cb25fb1b9a52706c4970a96523cb3a7aaa44deb4523ea"
+    }
+  ],
+  "requestSeconds": 1.5575933367945254,
+  "intervals": [
+    {
+      "label": "Base preparation",
+      "begin": "p88_cache_prepare",
+      "end": "p86_plan",
+      "wallSeconds": 0.230349189,
+      "cpuSeconds": 0.230348377
+    },
+    {
+      "label": "parse/load",
+      "begin": "p86_plan",
+      "end": "p86_plan_loaded",
+      "wallSeconds": 0.056184609,
+      "cpuSeconds": 0.056185763
+    },
+    {
+      "label": "checking plus publication",
+      "begin": "p86_plan_loaded",
+      "end": "p86_plan_checked",
+      "wallSeconds": 0.043752671,
+      "cpuSeconds": 0.043754051
+    },
+    {
+      "label": "proof dependence report",
+      "begin": "p86_plan_checked",
+      "end": "p86_plan_reported",
+      "wallSeconds": 0.00979523,
+      "cpuSeconds": 0.009795342
+    },
+    {
+      "label": "owned/foreign eligibility",
+      "begin": "p86_plan_reported",
+      "end": "p86_plan_owned",
+      "wallSeconds": 0.007829597,
+      "cpuSeconds": 0.007829711
+    },
+    {
+      "label": "main eligibility",
+      "begin": "p86_plan_owned",
+      "end": "p86_plan_entry",
+      "wallSeconds": 0.000418618,
+      "cpuSeconds": 0.000418418
+    },
+    {
+      "label": "checked context reconstruction",
+      "begin": "p86_plan_entry",
+      "end": "p86_plan_context",
+      "wallSeconds": 0.022090549,
+      "cpuSeconds": 0.022084761
+    },
+    {
+      "label": "annotation/reach preparation",
+      "begin": "p86_plan_context",
+      "end": "p86_plan_annotated",
+      "wallSeconds": 0.016630676,
+      "cpuSeconds": 0.016630905
+    },
+    {
+      "label": "annotation layout check",
+      "begin": "p86_plan_annotated",
+      "end": "nr_prepare_annotated",
+      "wallSeconds": 0.003764426,
+      "cpuSeconds": 0.003764375
+    },
+    {
+      "label": "erasure/request finalization",
+      "begin": "nr_prepare_annotated",
+      "end": "p134e_plan",
+      "wallSeconds": 0.02277012,
+      "cpuSeconds": 0.022771683
+    }
+  ],
+  "negativeEvidence": [
+    {
+      "kind": "launcher-refusal",
+      "beforeTarget": true,
+      "reason": "Explicit BEND_PROFILE_COUNTERS=0 is rejected by the unchanged ordinary native request launcher; second request used only BEND_MILESTONES_OUT."
+    },
+    {
+      "kind": "offline-observer-refusal",
+      "beforeTarget": false,
+      "reason": "v01 verifier required absolute paths in guard argv; actual guard input snapshots pin repo-relative option values. v02 verifies option positions plus original exact input snapshots."
+    }
+  ],
+  "limitations": [
+    "One small request, no clean paired overhead measurement.",
+    "Intervals include scheduler and ownership work between direct entries.",
+    "Small Lexer proportions cannot be extrapolated to full compiler input.",
+    "Backend/render/teardown interval is not subdivided."
+  ]
+}

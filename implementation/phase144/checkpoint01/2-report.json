@@ -1,0 +1,159 @@
+{
+  "kind": "phase143-finite-controls",
+  "complete": true,
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase143/controls-v01.mjs",
+      "bytes": 2081,
+      "sha256": "86d2892f668293928ce5d9b831dcf7f047a3355892d0e93ea754571d6457b78e"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/bun-1.4.3/bun",
+      "bytes": 88979072,
+      "sha256": "7ce7d6b654eddeec20afddf2396317fba6dc19ab52788a27e894e1806bf8f24b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p144-integrated-api01/report.json",
+      "bytes": 3447,
+      "sha256": "2ceaaa756d1816ac7c85a5a7f805f38843f6d7ea472ee5a1c51fd134ab267a22"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p144-integrated-api01/api.mjs",
+      "bytes": 2494894,
+      "sha256": "bb0a79ddf0747885e6eed7b93bbb3ff3e53565f054d7ae144e3ebb475e6054f3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p144-integrated-api01/method.py",
+      "bytes": 2711,
+      "sha256": "f30b66931589f2c30037418a08a622eb543b0c5052332095223c01d115b2084b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase111/prepare.py",
+      "bytes": 5771,
+      "sha256": "efbd89d752e682295a76107ae4a8935a5f033ba3039288d12c06ea553cecad88"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p144-integrated-api01/stage0-library.mjs",
+      "bytes": 4172,
+      "sha256": "ec3506de1558fa1e56cef54345053ffaf7bfcc92b8632eaf96e217c15b8a59c1"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/bun-1.4.3/bun",
+      "bytes": 88979072,
+      "sha256": "7ce7d6b654eddeec20afddf2396317fba6dc19ab52788a27e894e1806bf8f24b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase144/integrated-source01/compiler.bend",
+      "bytes": 2985553,
+      "sha256": "992893e6cf6a5bf7d6d092812b3a5da20852feca882005f32a91e607cef0483b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/bend.ts",
+      "bytes": 138101,
+      "sha256": "1d133151652b597a1a035c77c172475e6de096da37f3b9e3adc23c2f75bdfe49"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/comp.ts",
+      "bytes": 185124,
+      "sha256": "2b13224ba09a9e39e37cccf06e449c1bdafe5e03a81641654f7d0e455507629c"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/base.bend",
+      "bytes": 75064,
+      "sha256": "99ac43f2b2bb3e3f39acdcedcecbbd3cb44749ce13969c827d6973fa66f7facf"
+    }
+  ],
+  "groups": [
+    {
+      "root": "p144o_controls",
+      "rows": [
+        "PASS ownership-empty",
+        "PASS ownership-missing",
+        "PASS ownership-true",
+        "PASS ownership-false",
+        "PASS ownership-false-first",
+        "PASS ownership-true-first",
+        "PASS ownership-non-ADT",
+        "PASS ownership-child-shadow",
+        "PASS ownership-later-ADT-after-shadow",
+        "PASS ownership-first-child-wins",
+        "PASS ownership-empty-name",
+        "PASS ownership-nested-ignored",
+        "PASS ownership-child-cache-fallback",
+        "PASS ownership-child-cache-after-visible-fallback",
+        "PASS ownership-full-hash-collision",
+        "PASS ownership-collision-false",
+        "PASS ownership-collision-true",
+        "PASS ownership-unicode-BMP",
+        "PASS ownership-unicode-boundary",
+        "PASS ownership-index-record-top-ignored",
+        "PASS ownership-index-leaf-shadows-empty-child",
+        "PASS ownership-index-node-shadows-empty-child",
+        "PASS ownership-local-shadow-set-resets",
+        "PASS ownership-carrier-positive-survives",
+        "PASS ownership-carrier-false-survives",
+        "PASS ownership-carrier-miss-survives",
+        "PASS ownership-raw-view-fallback",
+        "PASS ownership-metadata-wrong-version",
+        "PASS ownership-metadata-wrong-tag",
+        "PASS ownership-metadata-wrong-origin",
+        "PASS ownership-metadata-wrong-kind",
+        "PASS ownership-catalogue-empty",
+        "PASS ownership-catalogue-first-false",
+        "PASS ownership-catalogue-shadow",
+        "PASS ownership-catalogue-collision"
+      ],
+      "seconds": 0.021696123000000057
+    },
+    {
+      "root": "p144e_controls",
+      "rows": [
+        "PASS body-tail-empty-body",
+        "PASS body-tail-empty-suffix",
+        "PASS body-tail-reversed-instruction-order",
+        "PASS body-tail-empty-fragments",
+        "PASS body-tail-partial-line-boundaries",
+        "PASS body-tail-no-terminal-preserves-marker",
+        "PASS body-tail-error-before-terminal",
+        "PASS body-tail-error-before-fallthrough",
+        "PASS body-tail-error-empty-suffix",
+        "PASS body-tail-unicode-and-embedded-newlines"
+      ],
+      "seconds": 0.0006719430000000557
+    },
+    {
+      "root": "p144pc_controls",
+      "rows": [
+        "prior-empty:pass",
+        "prior-first-duplicate:pass",
+        "prior-reversed-duplicate:pass",
+        "existing-reversed-index-is-not-oracle:pass",
+        "prior-missing-name:pass",
+        "prior-empty-name-miss:pass",
+        "prior-empty-name-hit-fallback:pass",
+        "prior-real-absent-kind:pass",
+        "prior-real-missing-kind:pass",
+        "prior-actual-hash-collision:pass",
+        "prior-collision-left:pass",
+        "prior-collision-right:pass",
+        "prior-does-not-descend-children:pass",
+        "prior-flat-child-entry:pass",
+        "prior-unicode:pass",
+        "prior-book-cache-is-ordinary-row:pass",
+        "prior-past-book-cache-flat:pass",
+        "prior-index-leaf-empty-name:pass",
+        "prior-index-node-empty-name:pass",
+        "prior-index-value-not-child-search:pass",
+        "prior-prepared-scope:pass",
+        "prior-update-new-header-wins:pass",
+        "prior-two-updates:pass",
+        "prior-qualified-header:pass",
+        "prior-unprepared-scope-fallback:pass",
+        "prior-view-none-equality:pass",
+        "prior-view-readiness-distinct:pass"
+      ],
+      "seconds": 0.022611482999999908
+    }
+  ],
+  "peakRssBytes": 146505728
+}

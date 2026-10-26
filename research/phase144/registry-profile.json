@@ -1,0 +1,1086 @@
+{
+  "kind": "phase144-registry-stage-attribution",
+  "complete": true,
+  "targetsRun": false,
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase144/stages02/stage-profile.json",
+      "bytes": 79239,
+      "sha256": "eab4157cf008f8b480f9bde0229f4104b39c7ce98791c2e124961f811ef2d384"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase144/stages02/capture/000-sample-fixed-phase142-source-phase143-n2-stages/analysis.json",
+      "bytes": 1691598,
+      "sha256": "e523890207d7167ea3a159e5b1a3b567b7d52f2b73c32307c69146c76cc6fd96"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase143/integrated-source03/compiler.bend",
+      "bytes": 2959385,
+      "sha256": "a51a4a6d0a32e118ca75eac96fb4e64bae0fcf951b09ee859c2632f65550bd4e"
+    }
+  ],
+  "stage": {
+    "label": "registry preparation",
+    "begin": "p134e_begin",
+    "end": "p134e_registered",
+    "wallSeconds": 18.183570093,
+    "processCpuSeconds": 18.18356093,
+    "threadCpuSeconds": 18.183561801,
+    "sampleStartInclusive": 8143,
+    "sampleEndExclusive": 8709,
+    "samples": 566,
+    "boundarySamplesExcluded": 2,
+    "quantitativeProfileAdmitted": true,
+    "topActiveOwners": [
+      {
+        "name": "String.eq",
+        "samples": 74,
+        "fractionOfAllIntervalSamples": 0.13074204946996468
+      },
+      {
+        "name": "String.append",
+        "samples": 66,
+        "fractionOfAllIntervalSamples": 0.1166077738515901
+      },
+      {
+        "name": "p112r_buffer_sites",
+        "samples": 37,
+        "fractionOfAllIntervalSamples": 0.06537102473498234
+      },
+      {
+        "name": "p118z_runtime",
+        "samples": 33,
+        "fractionOfAllIntervalSamples": 0.05830388692579505
+      },
+      {
+        "name": "p112w_ready",
+        "samples": 33,
+        "fractionOfAllIntervalSamples": 0.05830388692579505
+      },
+      {
+        "name": "p111v_get",
+        "samples": 32,
+        "fractionOfAllIntervalSamples": 0.05653710247349823
+      },
+      {
+        "name": "p112t_runtime_call",
+        "samples": 19,
+        "fractionOfAllIntervalSamples": 0.03356890459363958
+      },
+      {
+        "name": "p112c_frame",
+        "samples": 15,
+        "fractionOfAllIntervalSamples": 0.026501766784452298
+      },
+      {
+        "name": null,
+        "samples": 14,
+        "fractionOfAllIntervalSamples": 0.024734982332155476
+      },
+      {
+        "name": "p112r_buffer",
+        "samples": 14,
+        "fractionOfAllIntervalSamples": 0.024734982332155476
+      },
+      {
+        "name": "p112c_try",
+        "samples": 14,
+        "fractionOfAllIntervalSamples": 0.024734982332155476
+      },
+      {
+        "name": "p118z_transition",
+        "samples": 13,
+        "fractionOfAllIntervalSamples": 0.022968197879858657
+      }
+    ],
+    "topPhysicalLeaves": [
+      {
+        "name": "term_drop",
+        "samples": 78,
+        "fractionOfAllIntervalSamples": 0.13780918727915195
+      },
+      {
+        "name": "p113d_FID_$p118borrow.read.String.cmp",
+        "samples": 48,
+        "fractionOfAllIntervalSamples": 0.08480565371024736
+      },
+      {
+        "name": "span_fade",
+        "samples": 46,
+        "fractionOfAllIntervalSamples": 0.0812720848056537
+      },
+      {
+        "name": "p111_rt_op",
+        "samples": 33,
+        "fractionOfAllIntervalSamples": 0.05830388692579505
+      },
+      {
+        "name": null,
+        "samples": 29,
+        "fractionOfAllIntervalSamples": 0.05123674911660778
+      },
+      {
+        "name": "p125_rt_take2",
+        "samples": 25,
+        "fractionOfAllIntervalSamples": 0.044169611307420496
+      },
+      {
+        "name": "work_loop",
+        "samples": 24,
+        "fractionOfAllIntervalSamples": 0.04240282685512368
+      },
+      {
+        "name": "p111_set_regs",
+        "samples": 17,
+        "fractionOfAllIntervalSamples": 0.030035335689045935
+      },
+      {
+        "name": "p125_rt_take4",
+        "samples": 17,
+        "fractionOfAllIntervalSamples": 0.030035335689045935
+      },
+      {
+        "name": "p118_destination_fill",
+        "samples": 12,
+        "fractionOfAllIntervalSamples": 0.02120141342756184
+      },
+      {
+        "name": "p118_rt_extend1",
+        "samples": 11,
+        "fractionOfAllIntervalSamples": 0.019434628975265017
+      },
+      {
+        "name": "p111_rt_sink",
+        "samples": 10,
+        "fractionOfAllIntervalSamples": 0.0176678445229682
+      }
+    ]
+  },
+  "allInteriorSamples": 566,
+  "groups": [
+    {
+      "name": "string_equality_append_numeric_names",
+      "samples": 148,
+      "fractionOfAllSamples": 0.26148409893992935
+    },
+    {
+      "name": "ready_lookup_named_helpers",
+      "samples": 70,
+      "fractionOfAllSamples": 0.12367491166077739
+    },
+    {
+      "name": "region_body_helpers_p112r_prefix",
+      "samples": 122,
+      "fractionOfAllSamples": 0.21554770318021202
+    },
+    {
+      "name": "region_registry_helpers_p112c_prefix",
+      "samples": 62,
+      "fractionOfAllSamples": 0.10954063604240283
+    }
+  ],
+  "activeOwners": [
+    {
+      "owner": "String.eq",
+      "samples": 74,
+      "fractionOfAllSamples": 0.13074204946996468
+    },
+    {
+      "owner": "String.append",
+      "samples": 66,
+      "fractionOfAllSamples": 0.1166077738515901
+    },
+    {
+      "owner": "p112r_buffer_sites",
+      "samples": 37,
+      "fractionOfAllSamples": 0.06537102473498234
+    },
+    {
+      "owner": "p118z_runtime",
+      "samples": 33,
+      "fractionOfAllSamples": 0.05830388692579505
+    },
+    {
+      "owner": "p112w_ready",
+      "samples": 33,
+      "fractionOfAllSamples": 0.05830388692579505
+    },
+    {
+      "owner": "p111v_get",
+      "samples": 32,
+      "fractionOfAllSamples": 0.05653710247349823
+    },
+    {
+      "owner": "p112t_runtime_call",
+      "samples": 19,
+      "fractionOfAllSamples": 0.03356890459363958
+    },
+    {
+      "owner": "p112c_frame",
+      "samples": 15,
+      "fractionOfAllSamples": 0.026501766784452298
+    },
+    {
+      "owner": null,
+      "samples": 14,
+      "fractionOfAllSamples": 0.024734982332155476
+    },
+    {
+      "owner": "p112r_buffer",
+      "samples": 14,
+      "fractionOfAllSamples": 0.024734982332155476
+    },
+    {
+      "owner": "p112c_try",
+      "samples": 14,
+      "fractionOfAllSamples": 0.024734982332155476
+    },
+    {
+      "owner": "p118z_transition",
+      "samples": 13,
+      "fractionOfAllSamples": 0.022968197879858657
+    },
+    {
+      "owner": "p112r_target",
+      "samples": 10,
+      "fractionOfAllSamples": 0.0176678445229682
+    },
+    {
+      "owner": "p112r_jump",
+      "samples": 9,
+      "fractionOfAllSamples": 0.015901060070671377
+    },
+    {
+      "owner": "U32.show",
+      "samples": 8,
+      "fractionOfAllSamples": 0.014134275618374558
+    },
+    {
+      "owner": "p112r_tail_store",
+      "samples": 8,
+      "fractionOfAllSamples": 0.014134275618374558
+    },
+    {
+      "owner": "p112c_scan",
+      "samples": 8,
+      "fractionOfAllSamples": 0.014134275618374558
+    },
+    {
+      "owner": "p112f_value",
+      "samples": 8,
+      "fractionOfAllSamples": 0.014134275618374558
+    },
+    {
+      "owner": "p112r_normal",
+      "samples": 7,
+      "fractionOfAllSamples": 0.012367491166077738
+    },
+    {
+      "owner": "p118z_scalar",
+      "samples": 6,
+      "fractionOfAllSamples": 0.01060070671378092
+    },
+    {
+      "owner": "p112c_scan_next",
+      "samples": 6,
+      "fractionOfAllSamples": 0.01060070671378092
+    },
+    {
+      "owner": "p112c_freeze",
+      "samples": 6,
+      "fractionOfAllSamples": 0.01060070671378092
+    },
+    {
+      "owner": "p118ns_scalars",
+      "samples": 5,
+      "fractionOfAllSamples": 0.0088339222614841
+    },
+    {
+      "owner": "p131i_insert",
+      "samples": 5,
+      "fractionOfAllSamples": 0.0088339222614841
+    },
+    {
+      "owner": "p112f_clean_stmt",
+      "samples": 5,
+      "fractionOfAllSamples": 0.0088339222614841
+    },
+    {
+      "owner": "p112r_scan_target",
+      "samples": 5,
+      "fractionOfAllSamples": 0.0088339222614841
+    },
+    {
+      "owner": "p112r_scalar",
+      "samples": 5,
+      "fractionOfAllSamples": 0.0088339222614841
+    },
+    {
+      "owner": "p112f_args",
+      "samples": 5,
+      "fractionOfAllSamples": 0.0088339222614841
+    },
+    {
+      "owner": "nc_ctor_codes",
+      "samples": 4,
+      "fractionOfAllSamples": 0.007067137809187279
+    },
+    {
+      "owner": "p112r_failure",
+      "samples": 4,
+      "fractionOfAllSamples": 0.007067137809187279
+    },
+    {
+      "owner": "p112r_prelude",
+      "samples": 4,
+      "fractionOfAllSamples": 0.007067137809187279
+    },
+    {
+      "owner": "p112f_index_insert",
+      "samples": 3,
+      "fractionOfAllSamples": 0.00530035335689046
+    },
+    {
+      "owner": "p112f_clean_args",
+      "samples": 3,
+      "fractionOfAllSamples": 0.00530035335689046
+    },
+    {
+      "owner": "p112r_runtime_args",
+      "samples": 3,
+      "fractionOfAllSamples": 0.00530035335689046
+    },
+    {
+      "owner": "p112r_next",
+      "samples": 3,
+      "fractionOfAllSamples": 0.00530035335689046
+    },
+    {
+      "owner": "p112t_param_stmt",
+      "samples": 3,
+      "fractionOfAllSamples": 0.00530035335689046
+    },
+    {
+      "owner": "p112c_add",
+      "samples": 3,
+      "fractionOfAllSamples": 0.00530035335689046
+    },
+    {
+      "owner": "p112c_try_frame",
+      "samples": 3,
+      "fractionOfAllSamples": 0.00530035335689046
+    },
+    {
+      "owner": "p112f_name",
+      "samples": 3,
+      "fractionOfAllSamples": 0.00530035335689046
+    },
+    {
+      "owner": "p113e_runtime_args",
+      "samples": 2,
+      "fractionOfAllSamples": 0.0035335689045936395
+    },
+    {
+      "owner": "p111q_segment_table",
+      "samples": 2,
+      "fractionOfAllSamples": 0.0035335689045936395
+    },
+    {
+      "owner": "p112c_target",
+      "samples": 2,
+      "fractionOfAllSamples": 0.0035335689045936395
+    },
+    {
+      "owner": "p112r_failure_frame",
+      "samples": 2,
+      "fractionOfAllSamples": 0.0035335689045936395
+    },
+    {
+      "owner": "p112r_tail",
+      "samples": 2,
+      "fractionOfAllSamples": 0.0035335689045936395
+    },
+    {
+      "owner": "p112t_param",
+      "samples": 2,
+      "fractionOfAllSamples": 0.0035335689045936395
+    },
+    {
+      "owner": "p112r_exit_stores",
+      "samples": 2,
+      "fractionOfAllSamples": 0.0035335689045936395
+    },
+    {
+      "owner": "p112r_buffers",
+      "samples": 2,
+      "fractionOfAllSamples": 0.0035335689045936395
+    },
+    {
+      "owner": "nb_contains",
+      "samples": 2,
+      "fractionOfAllSamples": 0.0035335689045936395
+    },
+    {
+      "owner": "p112r_words",
+      "samples": 2,
+      "fractionOfAllSamples": 0.0035335689045936395
+    },
+    {
+      "owner": "p112f_fused",
+      "samples": 2,
+      "fractionOfAllSamples": 0.0035335689045936395
+    },
+    {
+      "owner": "p112f_size",
+      "samples": 2,
+      "fractionOfAllSamples": 0.0035335689045936395
+    },
+    {
+      "owner": "p112c_pass",
+      "samples": 2,
+      "fractionOfAllSamples": 0.0035335689045936395
+    },
+    {
+      "owner": "p113e_buffers",
+      "samples": 1,
+      "fractionOfAllSamples": 0.0017667844522968198
+    },
+    {
+      "owner": "p113e_nonstate_pointer",
+      "samples": 1,
+      "fractionOfAllSamples": 0.0017667844522968198
+    },
+    {
+      "owner": "p118ns_direct",
+      "samples": 1,
+      "fractionOfAllSamples": 0.0017667844522968198
+    },
+    {
+      "owner": "p111q_function_ids",
+      "samples": 1,
+      "fractionOfAllSamples": 0.0017667844522968198
+    },
+    {
+      "owner": "index_leaf",
+      "samples": 1,
+      "fractionOfAllSamples": 0.0017667844522968198
+    },
+    {
+      "owner": "p112f_index_add",
+      "samples": 1,
+      "fractionOfAllSamples": 0.0017667844522968198
+    },
+    {
+      "owner": "p111q_descriptor",
+      "samples": 1,
+      "fractionOfAllSamples": 0.0017667844522968198
+    },
+    {
+      "owner": "p112s_image_items",
+      "samples": 1,
+      "fractionOfAllSamples": 0.0017667844522968198
+    },
+    {
+      "owner": "p134e_prepare",
+      "samples": 1,
+      "fractionOfAllSamples": 0.0017667844522968198
+    },
+    {
+      "owner": "p112f_clean_value",
+      "samples": 1,
+      "fractionOfAllSamples": 0.0017667844522968198
+    },
+    {
+      "owner": "p112f_clean",
+      "samples": 1,
+      "fractionOfAllSamples": 0.0017667844522968198
+    },
+    {
+      "owner": "p112f_snapshots",
+      "samples": 1,
+      "fractionOfAllSamples": 0.0017667844522968198
+    },
+    {
+      "owner": "p111v_put",
+      "samples": 1,
+      "fractionOfAllSamples": 0.0017667844522968198
+    },
+    {
+      "owner": "p112c_insert",
+      "samples": 1,
+      "fractionOfAllSamples": 0.0017667844522968198
+    },
+    {
+      "owner": "p112f_values",
+      "samples": 1,
+      "fractionOfAllSamples": 0.0017667844522968198
+    },
+    {
+      "owner": "p112f_index_get",
+      "samples": 1,
+      "fractionOfAllSamples": 0.0017667844522968198
+    },
+    {
+      "owner": "p112r_result",
+      "samples": 1,
+      "fractionOfAllSamples": 0.0017667844522968198
+    },
+    {
+      "owner": "p112h_candidate",
+      "samples": 1,
+      "fractionOfAllSamples": 0.0017667844522968198
+    },
+    {
+      "owner": "p112h_stmt_room",
+      "samples": 1,
+      "fractionOfAllSamples": 0.0017667844522968198
+    },
+    {
+      "owner": "p112f_inline",
+      "samples": 1,
+      "fractionOfAllSamples": 0.0017667844522968198
+    },
+    {
+      "owner": "p112c_fused",
+      "samples": 1,
+      "fractionOfAllSamples": 0.0017667844522968198
+    },
+    {
+      "owner": "p112f_cont",
+      "samples": 1,
+      "fractionOfAllSamples": 0.0017667844522968198
+    },
+    {
+      "owner": "p112t_params",
+      "samples": 1,
+      "fractionOfAllSamples": 0.0017667844522968198
+    },
+    {
+      "owner": "p112r_private_call",
+      "samples": 1,
+      "fractionOfAllSamples": 0.0017667844522968198
+    },
+    {
+      "owner": "p112g_name",
+      "samples": 1,
+      "fractionOfAllSamples": 0.0017667844522968198
+    },
+    {
+      "owner": "p112f_rename",
+      "samples": 1,
+      "fractionOfAllSamples": 0.0017667844522968198
+    },
+    {
+      "owner": "p112c_scan_try",
+      "samples": 1,
+      "fractionOfAllSamples": 0.0017667844522968198
+    },
+    {
+      "owner": "p112f_clean_name",
+      "samples": 1,
+      "fractionOfAllSamples": 0.0017667844522968198
+    },
+    {
+      "owner": "p112f_safe_next",
+      "samples": 1,
+      "fractionOfAllSamples": 0.0017667844522968198
+    },
+    {
+      "owner": "p112r_no",
+      "samples": 1,
+      "fractionOfAllSamples": 0.0017667844522968198
+    },
+    {
+      "owner": "p112t_scalar_safe",
+      "samples": 1,
+      "fractionOfAllSamples": 0.0017667844522968198
+    },
+    {
+      "owner": "p112t_runtime_args",
+      "samples": 1,
+      "fractionOfAllSamples": 0.0017667844522968198
+    },
+    {
+      "owner": "p112h_split",
+      "samples": 1,
+      "fractionOfAllSamples": 0.0017667844522968198
+    },
+    {
+      "owner": "p112g_finish",
+      "samples": 1,
+      "fractionOfAllSamples": 0.0017667844522968198
+    }
+  ],
+  "physicalLeaves": [
+    {
+      "symbol": "term_drop",
+      "samples": 78,
+      "fractionOfAllSamples": 0.13780918727915195
+    },
+    {
+      "symbol": "p113d_FID_$p118borrow.read.String.cmp",
+      "samples": 48,
+      "fractionOfAllSamples": 0.08480565371024736
+    },
+    {
+      "symbol": "span_fade",
+      "samples": 46,
+      "fractionOfAllSamples": 0.0812720848056537
+    },
+    {
+      "symbol": "p111_rt_op",
+      "samples": 33,
+      "fractionOfAllSamples": 0.05830388692579505
+    },
+    {
+      "symbol": null,
+      "samples": 29,
+      "fractionOfAllSamples": 0.05123674911660778
+    },
+    {
+      "symbol": "p125_rt_take2",
+      "samples": 25,
+      "fractionOfAllSamples": 0.044169611307420496
+    },
+    {
+      "symbol": "work_loop",
+      "samples": 24,
+      "fractionOfAllSamples": 0.04240282685512368
+    },
+    {
+      "symbol": "p111_set_regs",
+      "samples": 17,
+      "fractionOfAllSamples": 0.030035335689045935
+    },
+    {
+      "symbol": "p125_rt_take4",
+      "samples": 17,
+      "fractionOfAllSamples": 0.030035335689045935
+    },
+    {
+      "symbol": "p118_destination_fill",
+      "samples": 12,
+      "fractionOfAllSamples": 0.02120141342756184
+    },
+    {
+      "symbol": "p118_rt_extend1",
+      "samples": 11,
+      "fractionOfAllSamples": 0.019434628975265017
+    },
+    {
+      "symbol": "p111_rt_sink",
+      "samples": 10,
+      "fractionOfAllSamples": 0.0176678445229682
+    },
+    {
+      "symbol": "p111_rt_jump",
+      "samples": 10,
+      "fractionOfAllSamples": 0.0176678445229682
+    },
+    {
+      "symbol": "heap_alloc",
+      "samples": 10,
+      "fractionOfAllSamples": 0.0176678445229682
+    },
+    {
+      "symbol": "p111_rt_return",
+      "samples": 10,
+      "fractionOfAllSamples": 0.0176678445229682
+    },
+    {
+      "symbol": "p111_FID_$direct.p112r_buffer_sites",
+      "samples": 10,
+      "fractionOfAllSamples": 0.0176678445229682
+    },
+    {
+      "symbol": "p111_rt_ctor",
+      "samples": 8,
+      "fractionOfAllSamples": 0.014134275618374558
+    },
+    {
+      "symbol": "bend_profile_count",
+      "samples": 8,
+      "fractionOfAllSamples": 0.014134275618374558
+    },
+    {
+      "symbol": "p125_rt_take2.cold",
+      "samples": 8,
+      "fractionOfAllSamples": 0.014134275618374558
+    },
+    {
+      "symbol": "rfc_wrap",
+      "samples": 8,
+      "fractionOfAllSamples": 0.014134275618374558
+    },
+    {
+      "symbol": "p113d_FID_$p118borrow.read.index_hash",
+      "samples": 8,
+      "fractionOfAllSamples": 0.014134275618374558
+    },
+    {
+      "symbol": "p113d_FID_$p118.trmc.$direct.String.append",
+      "samples": 7,
+      "fractionOfAllSamples": 0.012367491166077738
+    },
+    {
+      "symbol": "p111_FID_$direct.String.append",
+      "samples": 7,
+      "fractionOfAllSamples": 0.012367491166077738
+    },
+    {
+      "symbol": "p125_rt_ctor2",
+      "samples": 6,
+      "fractionOfAllSamples": 0.01060070671378092
+    },
+    {
+      "symbol": "p118_rt_borrow_scalar_safe",
+      "samples": 6,
+      "fractionOfAllSamples": 0.01060070671378092
+    },
+    {
+      "symbol": "p113d_FID_$p118borrow.read.p88_string_eq_go",
+      "samples": 6,
+      "fractionOfAllSamples": 0.01060070671378092
+    },
+    {
+      "symbol": "p111_rt_keep",
+      "samples": 6,
+      "fractionOfAllSamples": 0.01060070671378092
+    },
+    {
+      "symbol": "p113d_FID_$direct.String.eq",
+      "samples": 5,
+      "fractionOfAllSamples": 0.0088339222614841
+    },
+    {
+      "symbol": "p111_rt_special_ctor",
+      "samples": 5,
+      "fractionOfAllSamples": 0.0088339222614841
+    },
+    {
+      "symbol": "p111_FID_$p111.k.4127231",
+      "samples": 5,
+      "fractionOfAllSamples": 0.0088339222614841
+    },
+    {
+      "symbol": "p111_FID_$direct.String.eq",
+      "samples": 4,
+      "fractionOfAllSamples": 0.007067137809187279
+    },
+    {
+      "symbol": "p113d_FID_$p118borrow.read.String.eq",
+      "samples": 3,
+      "fractionOfAllSamples": 0.00530035335689046
+    },
+    {
+      "symbol": "p111_FID_$p111.k.4126183",
+      "samples": 3,
+      "fractionOfAllSamples": 0.00530035335689046
+    },
+    {
+      "symbol": "p113d_FID_$direct.index_find",
+      "samples": 3,
+      "fractionOfAllSamples": 0.00530035335689046
+    },
+    {
+      "symbol": "p113d_FID_$direct.Bool.and",
+      "samples": 2,
+      "fractionOfAllSamples": 0.0035335689045936395
+    },
+    {
+      "symbol": "term_triv",
+      "samples": 2,
+      "fractionOfAllSamples": 0.0035335689045936395
+    },
+    {
+      "symbol": "p111_FID_$p111.k.4268402",
+      "samples": 2,
+      "fractionOfAllSamples": 0.0035335689045936395
+    },
+    {
+      "symbol": "p125_rt_take3",
+      "samples": 2,
+      "fractionOfAllSamples": 0.0035335689045936395
+    },
+    {
+      "symbol": "p111_FID_$p111.k.3712810",
+      "samples": 2,
+      "fractionOfAllSamples": 0.0035335689045936395
+    },
+    {
+      "symbol": "p111_FID_$direct.p112c_scan",
+      "samples": 2,
+      "fractionOfAllSamples": 0.0035335689045936395
+    },
+    {
+      "symbol": "p111_FID_$direct.p112r_target",
+      "samples": 2,
+      "fractionOfAllSamples": 0.0035335689045936395
+    },
+    {
+      "symbol": "p113d_FID_$direct.String.cmp",
+      "samples": 2,
+      "fractionOfAllSamples": 0.0035335689045936395
+    },
+    {
+      "symbol": "p113d_FID_$direct.p112r_jump",
+      "samples": 2,
+      "fractionOfAllSamples": 0.0035335689045936395
+    },
+    {
+      "symbol": "p111_rt_reg_get",
+      "samples": 2,
+      "fractionOfAllSamples": 0.0035335689045936395
+    },
+    {
+      "symbol": "p111_FID_$p111.k.4126175",
+      "samples": 2,
+      "fractionOfAllSamples": 0.0035335689045936395
+    },
+    {
+      "symbol": "p111_FID_$p111.k.3659873",
+      "samples": 1,
+      "fractionOfAllSamples": 0.0017667844522968198
+    },
+    {
+      "symbol": "p111_FID_$p111.k.3662256",
+      "samples": 1,
+      "fractionOfAllSamples": 0.0017667844522968198
+    },
+    {
+      "symbol": "p111_FID_$p111.k.3659867",
+      "samples": 1,
+      "fractionOfAllSamples": 0.0017667844522968198
+    },
+    {
+      "symbol": "p113d_FID_$direct.Bool.not",
+      "samples": 1,
+      "fractionOfAllSamples": 0.0017667844522968198
+    },
+    {
+      "symbol": "p112w_FID_$direct.Bool.not",
+      "samples": 1,
+      "fractionOfAllSamples": 0.0017667844522968198
+    },
+    {
+      "symbol": "p111_FID_$direct.p112f_index_insert",
+      "samples": 1,
+      "fractionOfAllSamples": 0.0017667844522968198
+    },
+    {
+      "symbol": "p111_FID_$p111.k.4544924",
+      "samples": 1,
+      "fractionOfAllSamples": 0.0017667844522968198
+    },
+    {
+      "symbol": "ctr_take",
+      "samples": 1,
+      "fractionOfAllSamples": 0.0017667844522968198
+    },
+    {
+      "symbol": "p113d_FID_$p118borrow.read.p111q_width",
+      "samples": 1,
+      "fractionOfAllSamples": 0.0017667844522968198
+    },
+    {
+      "symbol": "p111_FID_$direct.p112f_clean",
+      "samples": 1,
+      "fractionOfAllSamples": 0.0017667844522968198
+    },
+    {
+      "symbol": "p111_rt_frame",
+      "samples": 1,
+      "fractionOfAllSamples": 0.0017667844522968198
+    },
+    {
+      "symbol": "p111_FID_$p111.k.4114994",
+      "samples": 1,
+      "fractionOfAllSamples": 0.0017667844522968198
+    },
+    {
+      "symbol": "p111_FID_$p111.k.3718599",
+      "samples": 1,
+      "fractionOfAllSamples": 0.0017667844522968198
+    },
+    {
+      "symbol": "p112w_FID_$direct.Bool.and",
+      "samples": 1,
+      "fractionOfAllSamples": 0.0017667844522968198
+    },
+    {
+      "symbol": "p111_FID_$direct.p112r_tail",
+      "samples": 1,
+      "fractionOfAllSamples": 0.0017667844522968198
+    },
+    {
+      "symbol": "p111_FID_$p111.k.4137897",
+      "samples": 1,
+      "fractionOfAllSamples": 0.0017667844522968198
+    },
+    {
+      "symbol": "p113d_FID_$direct.Cmp.is_eq",
+      "samples": 1,
+      "fractionOfAllSamples": 0.0017667844522968198
+    },
+    {
+      "symbol": "p111_FID_$direct.p112t_param_stmt",
+      "samples": 1,
+      "fractionOfAllSamples": 0.0017667844522968198
+    },
+    {
+      "symbol": "p111_FID_$direct.p112c_add",
+      "samples": 1,
+      "fractionOfAllSamples": 0.0017667844522968198
+    },
+    {
+      "symbol": "p111_FID_$p111.k.3713991",
+      "samples": 1,
+      "fractionOfAllSamples": 0.0017667844522968198
+    },
+    {
+      "symbol": "p111_FID_$direct.p112t_param",
+      "samples": 1,
+      "fractionOfAllSamples": 0.0017667844522968198
+    },
+    {
+      "symbol": "p111_FID_$p111.k.3714006",
+      "samples": 1,
+      "fractionOfAllSamples": 0.0017667844522968198
+    },
+    {
+      "symbol": "p111_FID_$direct.p112r_scalar",
+      "samples": 1,
+      "fractionOfAllSamples": 0.0017667844522968198
+    },
+    {
+      "symbol": "p113d_FID_$p128borrow.owned.String.eq",
+      "samples": 1,
+      "fractionOfAllSamples": 0.0017667844522968198
+    },
+    {
+      "symbol": "p111_FID_$p111.k.4111754",
+      "samples": 1,
+      "fractionOfAllSamples": 0.0017667844522968198
+    },
+    {
+      "symbol": "p118_rt_finish",
+      "samples": 1,
+      "fractionOfAllSamples": 0.0017667844522968198
+    },
+    {
+      "symbol": "p111_FID_$p111.k.3724094",
+      "samples": 1,
+      "fractionOfAllSamples": 0.0017667844522968198
+    },
+    {
+      "symbol": "p111_FID_$p111.k.3724093",
+      "samples": 1,
+      "fractionOfAllSamples": 0.0017667844522968198
+    },
+    {
+      "symbol": "p111_FID_$p111.k.4126189",
+      "samples": 1,
+      "fractionOfAllSamples": 0.0017667844522968198
+    },
+    {
+      "symbol": "p111_FID_$direct.p112c_fused",
+      "samples": 1,
+      "fractionOfAllSamples": 0.0017667844522968198
+    },
+    {
+      "symbol": "p111_FID_$direct.p112t_params",
+      "samples": 1,
+      "fractionOfAllSamples": 0.0017667844522968198
+    },
+    {
+      "symbol": "p111_FID_$direct.p112r_tail_store",
+      "samples": 1,
+      "fractionOfAllSamples": 0.0017667844522968198
+    },
+    {
+      "symbol": "p113d_FID_$direct.p112f_prepend",
+      "samples": 1,
+      "fractionOfAllSamples": 0.0017667844522968198
+    },
+    {
+      "symbol": "p111_FID_$direct.p112c_try",
+      "samples": 1,
+      "fractionOfAllSamples": 0.0017667844522968198
+    },
+    {
+      "symbol": "p111_FID_$p111.k.4078196",
+      "samples": 1,
+      "fractionOfAllSamples": 0.0017667844522968198
+    },
+    {
+      "symbol": "p111_FID_$p111.k.4104063",
+      "samples": 1,
+      "fractionOfAllSamples": 0.0017667844522968198
+    },
+    {
+      "symbol": "p111_FID_$direct.p112c_scan_try",
+      "samples": 1,
+      "fractionOfAllSamples": 0.0017667844522968198
+    },
+    {
+      "symbol": "p111_FID_$direct.p112f_clean_name",
+      "samples": 1,
+      "fractionOfAllSamples": 0.0017667844522968198
+    },
+    {
+      "symbol": "p111_native_bool",
+      "samples": 1,
+      "fractionOfAllSamples": 0.0017667844522968198
+    },
+    {
+      "symbol": "p111_FID_$direct.p112f_clean_stmt",
+      "samples": 1,
+      "fractionOfAllSamples": 0.0017667844522968198
+    },
+    {
+      "symbol": "p118_destination_fill.cold",
+      "samples": 1,
+      "fractionOfAllSamples": 0.0017667844522968198
+    },
+    {
+      "symbol": "p111_FID_$p111.k.4127230",
+      "samples": 1,
+      "fractionOfAllSamples": 0.0017667844522968198
+    },
+    {
+      "symbol": "heap_free",
+      "samples": 1,
+      "fractionOfAllSamples": 0.0017667844522968198
+    },
+    {
+      "symbol": "p113d_FID_$direct.Pair.snd",
+      "samples": 1,
+      "fractionOfAllSamples": 0.0017667844522968198
+    },
+    {
+      "symbol": "p113d_FID_$p126scc.6119",
+      "samples": 1,
+      "fractionOfAllSamples": 0.0017667844522968198
+    },
+    {
+      "symbol": "p111_FID_$direct.U32.show",
+      "samples": 1,
+      "fractionOfAllSamples": 0.0017667844522968198
+    },
+    {
+      "symbol": "p111_rt_take",
+      "samples": 1,
+      "fractionOfAllSamples": 0.0017667844522968198
+    },
+    {
+      "symbol": "p111_FID_$p111.k.4123941",
+      "samples": 1,
+      "fractionOfAllSamples": 0.0017667844522968198
+    }
+  ],
+  "limits": [
+    "Prefix groups describe active helper names, not inclusive causal stage subtrees.",
+    "Physical reclamation overlaps all active helper groups.",
+    "Only one capture; per-site String helper attribution is unavailable."
+  ]
+}

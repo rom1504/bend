@@ -17,3 +17,8 @@ disk. Counter timings, context-only timings and clean timings remain separate.
 
 All target execution belongs in a resource guard. The offline tools never run
 the target. Installed compiler selections and historical evidence are untouched.
+
+Versioned [exact stage observations](STAGES.md) add data-defined FID/order/
+multiplicity plans and delivered-sample ordinal association. Preparation and
+observation are offline; generic runtime packaging still needs a small native
+output gate before deployment. Historical collectors and captures stay intact.

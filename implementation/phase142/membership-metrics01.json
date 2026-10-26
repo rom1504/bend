@@ -1,0 +1,128 @@
+{
+  "kind": "phase142-membership-component-summary",
+  "complete": true,
+  "input": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase142/membership-component01/report.json",
+    "sha256": "ed223843effbb7a15439199690b576c0345014aa541793ec8a0c75c142225058",
+    "bytes": 39685
+  },
+  "rows": [
+    {
+      "name": "lexer",
+      "kind": "actual-held-warm-annotation-products",
+      "cardinality": {
+        "definitions": 61,
+        "roots": 1,
+        "stops": 85
+      },
+      "reachCardinality": {
+        "seenEntries": 160,
+        "distinctSeenNames": 80,
+        "reachedDefinitions": 61,
+        "scope": "Actual original returned outputs; seen entries preserve duplicates and resolved names. These are not counts of popped todo queries."
+      },
+      "layout": {
+        "pairs": 5,
+        "medianPairedRatio": 0.9483531261681247,
+        "medianOriginalSeconds": 0.030154060000000753,
+        "medianIndexedSeconds": 0.02922472199999993,
+        "ratioOfMedianLatencies": 0.9691803359149381
+      },
+      "reach": {
+        "pairs": 5,
+        "medianPairedRatio": 0.6576566112772436,
+        "medianOriginalSeconds": 0.032486509000000295,
+        "medianIndexedSeconds": 0.028707446999999775,
+        "ratioOfMedianLatencies": 0.8836728809488121
+      }
+    },
+    {
+      "name": "coverage-map-churn-128",
+      "kind": "actual-held-warm-annotation-products",
+      "cardinality": {
+        "definitions": 89,
+        "roots": 1,
+        "stops": 85
+      },
+      "reachCardinality": {
+        "seenEntries": 214,
+        "distinctSeenNames": 107,
+        "reachedDefinitions": 89,
+        "scope": "Actual original returned outputs; seen entries preserve duplicates and resolved names. These are not counts of popped todo queries."
+      },
+      "layout": {
+        "pairs": 5,
+        "medianPairedRatio": 1.0141986282055313,
+        "medianOriginalSeconds": 0.07773334599999998,
+        "medianIndexedSeconds": 0.08864479399999982,
+        "ratioOfMedianLatencies": 1.140370234416512
+      },
+      "reach": {
+        "pairs": 5,
+        "medianPairedRatio": 0.9915514723347315,
+        "medianOriginalSeconds": 0.02265043700000024,
+        "medianIndexedSeconds": 0.024158055999998398,
+        "ratioOfMedianLatencies": 1.0665602610668459
+      }
+    },
+    {
+      "name": "double-reference-chain-128",
+      "kind": "synthetic-annotated-AST-scaling",
+      "cardinality": {
+        "definitions": 128,
+        "roots": 1,
+        "stops": 0
+      },
+      "reachCardinality": {
+        "seenEntries": 258,
+        "distinctSeenNames": 130,
+        "reachedDefinitions": 128,
+        "scope": "Actual original returned outputs; seen entries preserve duplicates and resolved names. These are not counts of popped todo queries."
+      },
+      "layout": {
+        "pairs": 5,
+        "medianPairedRatio": 0.24105740377578463,
+        "medianOriginalSeconds": 0.04156342399999994,
+        "medianIndexedSeconds": 0.009960874000000331,
+        "ratioOfMedianLatencies": 0.2396547984112268
+      },
+      "reach": {
+        "pairs": 5,
+        "medianPairedRatio": 0.22909001818995547,
+        "medianOriginalSeconds": 0.03973754000000008,
+        "medianIndexedSeconds": 0.0091954769999993,
+        "ratioOfMedianLatencies": 0.23140529081566905
+      }
+    },
+    {
+      "name": "double-reference-chain-512",
+      "kind": "synthetic-annotated-AST-scaling",
+      "cardinality": {
+        "definitions": 512,
+        "roots": 1,
+        "stops": 0
+      },
+      "reachCardinality": {
+        "seenEntries": 1026,
+        "distinctSeenNames": 514,
+        "reachedDefinitions": 512,
+        "scope": "Actual original returned outputs; seen entries preserve duplicates and resolved names. These are not counts of popped todo queries."
+      },
+      "layout": {
+        "pairs": 5,
+        "medianPairedRatio": 0.11637429084733299,
+        "medianOriginalSeconds": 0.597660133999998,
+        "medianIndexedSeconds": 0.06871731200000067,
+        "ratioOfMedianLatencies": 0.11497723888674312
+      },
+      "reach": {
+        "pairs": 5,
+        "medianPairedRatio": 0.08035192604974281,
+        "medianOriginalSeconds": 0.585708279999999,
+        "medianIndexedSeconds": 0.046242597000000385,
+        "ratioOfMedianLatencies": 0.07895158490844703
+      }
+    }
+  ],
+  "scope": "Hosted component observations only. Original and candidate execute in same checked API; synthetic ASTs are scaling probes, not complete compiler or program speed."
+}

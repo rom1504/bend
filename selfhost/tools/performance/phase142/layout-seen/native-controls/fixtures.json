@@ -1,0 +1,112 @@
+{
+  "kind": "phase142-retained-layout-control-fixtures",
+  "complete": true,
+  "targetsRun": false,
+  "priorReceipt": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase142/layout-seen/native-controls/prior-layout-report.json",
+    "bytes": 4586,
+    "sha256": "da82d8c6347dc9eebe496763665c70da4316e39cd89e64fe78fb615996cfde6a"
+  },
+  "originReceipt": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/js-layout/report.json",
+    "bytes": 4586,
+    "sha256": "da82d8c6347dc9eebe496763665c70da4316e39cd89e64fe78fb615996cfde6a"
+  },
+  "generator": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/src/back/js/test-layout.mjs",
+    "bytes": 2976,
+    "sha256": "da8581e621afa20a5562686646236d0b1d82afcf2462661fd01af163e79f7067"
+  },
+  "cases": [
+    {
+      "name": "constructor",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase142/layout-seen/native-controls/constructor.bend",
+        "bytes": 104,
+        "sha256": "913b1fed990a34b869a1068a15c8735e3118d54d92c57d1c4cd3f9d64addfb8e"
+      },
+      "origin": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/js-layout/constructor.bend",
+        "bytes": 104,
+        "sha256": "913b1fed990a34b869a1068a15c8735e3118d54d92c57d1c4cd3f9d64addfb8e"
+      },
+      "priorObservation": {
+        "name": "constructor",
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/js-layout/constructor.bend",
+        "error": true,
+        "checked": "ok",
+        "emitted": {
+          "status": "error",
+          "phase": "compile",
+          "diagnostic": "Error: an open Array element type",
+          "exitCode": 1,
+          "checked": true
+        }
+      },
+      "expect": "refusal"
+    },
+    {
+      "name": "dead",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase142/layout-seen/native-controls/dead.bend",
+        "bytes": 86,
+        "sha256": "7b09dc9f5beb9a0d8f0a8f21032a797b0698b0f162b5a6f674cd7eb613a78f23"
+      },
+      "origin": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/js-layout/dead.bend",
+        "bytes": 86,
+        "sha256": "7b09dc9f5beb9a0d8f0a8f21032a797b0698b0f162b5a6f674cd7eb613a78f23"
+      },
+      "priorObservation": {
+        "name": "dead",
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/js-layout/dead.bend",
+        "error": false,
+        "checked": "ok",
+        "emitted": {
+          "status": "ok",
+          "phase": "compile",
+          "verdict": "All terms check.\n",
+          "exitCode": 0,
+          "checked": true,
+          "files": [
+            "/home/ai/bend2/build/publish/bend/selfhost/build/js-layout/dead.bend",
+            "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend"
+          ]
+        }
+      },
+      "expect": "acceptance"
+    },
+    {
+      "name": "erased",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase142/layout-seen/native-controls/erased.bend",
+        "bytes": 141,
+        "sha256": "720f54be24774dcf565b1f7033685bb5164e75cd3447181fbd7a3d8ed62c00bd"
+      },
+      "origin": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/js-layout/erased.bend",
+        "bytes": 141,
+        "sha256": "720f54be24774dcf565b1f7033685bb5164e75cd3447181fbd7a3d8ed62c00bd"
+      },
+      "priorObservation": {
+        "name": "erased",
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/js-layout/erased.bend",
+        "error": false,
+        "checked": "ok",
+        "emitted": {
+          "status": "ok",
+          "phase": "compile",
+          "verdict": "All terms check.\n",
+          "exitCode": 0,
+          "checked": true,
+          "files": [
+            "/home/ai/bend2/build/publish/bend/selfhost/build/js-layout/erased.bend",
+            "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend"
+          ]
+        }
+      },
+      "expect": "acceptance"
+    }
+  ],
+  "scope": "Exact copies of retained previously observed layout gate sources. Prior receipt lacks source hashes; snapshots frozen now and parent native N2 must independently re-establish native observations before candidate comparison. No invented generated-program stdout; positives check acceptance and complete QBE only."
+}

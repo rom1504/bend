@@ -1,19 +1,31 @@
-# Current experiment: Phase142 retained-product reuse
+# Current experiment: Phase142 measured incremental cost reduction
 
-[Report](../implementation/phase142/README.md) · [plan](../design/phase142/README.md).
-Initial checkpoint: raw-owner witness and same-request judgment reuse preserve
-complete edited products and failure recovery, but have no demonstrated broad
-whole-request gain. Shared-API timing retains noisy/mixed results; do not promote
-from hit counts. A conservative completed-prefix freshening prototype passes
-source checking and61 controls; complete request evaluation is ongoing.
+[Report](../implementation/phase142/README.md) · [candidate](../implementation/phase142/candidate.json) ·
+[build metrics](../implementation/phase142/build-metrics.json) · [plan](../design/phase142/README.md).
 
-The component freshening discriminator matches complete loader products/counters
-and shows guarded ratios about0.68/0.49/0.34 on128/512/1024 literal compiler
-prefixes. These are hosted component observations, not executable compiler builds.
-The next stronger opportunity is avoiding completed-prefix materialization under
-actual parser/completion provenance, retaining global acceptance/checker gates.
-No new native image, selected/default change,10× result or qualification.
-Qualified Phase137 N3 remains the fallback; historical full-edit2.783× unchanged.
+Indexed visited-name sets in layout/reachability reduce matched warm native
+stages101.672→91.434s (−10.07%), frontend31.330→20.798s. Cold seed357.428→346.870s.
+Complete edited-executable estimate125.227→114.916s (−8.23%), including output,
+one shared identical-product machine build and all session overhead. Both full
+A/B QBE products match independent references; rebuilt B passes three requests.
+Single matched pair, not a confidence interval. Historical fresh346.960s gives
+3.019×;10×/100× remain unmet and no new upstream/runtime-speed ratio is claimed.
+
+Production overlay+79lines/two entry changes;54 independent finite controls,
+integrated Lexer/Map recovery, native open-array refusal/dead-erased acceptance
+pass. No new N1/N2/full45 qualification or selected/default change. Qualified
+Phase137 N3 remains available; Phase141's ordinary qualification remains intact.
+
+Raw-owner witness, same-request judgment and prefix-freshening prototypes remain
+experimental: complete products agree but no broad request gain was established.
+Native profile identifies earlier source comparisons and distributed backend
+costs. Next target: remaining40.1s optimizer/verifier preparation with exact
+producer identity before repeated materialization; smaller falsifier is active
+`dr_walk` local membership. Do not broaden from hit counts alone.
+
+47 guarded jobs48.17min,8 failures1.72min, peak2.33GB; one native acquisition and
+one controlled CPU3 lane. Evidence preserves failures/profile executable/owner map.
+No token/quota or recursive acceleration claim. See report for exact scope.
 
 # Latest experiment: Phase141 bounded compiler simplification
 

@@ -165,6 +165,11 @@ frozen correctness gates. See the [usage guide](docs/self_hosted/compiler-simpli
 for exact identities and the distinction between native qualification and the
 still-experimental incremental service.
 
+The [Phase142 investigation](implementation/phase142/README.md) tests further
+incremental reuse and profiles an actual native compiler edit. Indexed graph
+traversal lowers its complete rebuild estimate by8.2%, with identical output;
+the candidate remains experimental and the10× target remains open.
+
 The [incremental native development guide](docs/self_hosted/incremental-native-development.md)
 links the measured QBE size, memory and object-reuse investigation, its Go-inspired
 architecture, and the remaining boundary before fast source-level edits.

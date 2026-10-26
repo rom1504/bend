@@ -8,7 +8,10 @@ silently select a newer executable.
 sets out the next experiment: exact producer change evidence into verifier reuse,
 then persistent frontend products and direct unit-to-object construction. It
 defines complete-build targets, validation gates, execution priorities and traps.
-This is a plan, not a new implementation or performance result.
+The [Phase142 execution report](../../implementation/phase142/README.md) records
+the reuse prototypes, native warm-edit profile and indexed traversal experiment.
+Use its exact artifacts and [reproduction methods](../../selfhost/tools/performance/phase142/README.md);
+the installed compiler and qualification boundary remain unchanged.
 
 [Phase140 early incremental sessions](../../implementation/phase140/README.md)
 now reuse parser/checker checkpoints, owner preparation, lowered products and

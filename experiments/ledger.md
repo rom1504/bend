@@ -5917,3 +5917,28 @@ result. Conservative integrated Bend source02 is checked and61 controls pass;
 full edited-request evaluation remains ongoing. Fixed seed/cache provenance,
 exact completed-prefix guard, all original global validation and transactional
 failure behavior are retained. No new theorem or installed change.
+
+
+## 2026-10-26 — Phase142 native indexed traversal and complete edit result
+
+[Report](../implementation/phase142/README.md) · [candidate](../implementation/phase142/candidate.json) ·
+[comparison](../implementation/phase142/native-comparison.json) · [build join](../implementation/phase142/build-metrics.json).
+
+Three reuse prototypes preserved complete products without a broad demonstrated
+request gain. Retained-object native profiling (24,594 samples, zero loss) found
+warm frontend growing-list membership; active ownership is not a caller stack.
+Two small entry changes use the existing collision-safe index, retaining ordered
+reachability lists, validation, ownership and final verifiers. Source+79lines;
+54 independent controls, two-family QBE/recovery and native layout boundaries pass.
+
+Matched real A→B compiler edit: frontend31.330→20.798s, warm native101.672→91.434s,
+cold357.428→346.870s. Exact full products; complete estimate125.227→114.916s,
+8.23% less time. One identical B machine build and all shared overhead are charged
+explicitly; rebuilt B passes three independent requests. Historical fresh346.960s
+implies3.019×, not a newly measured fresh comparison or10×. No broad runtime rerun,
+N1/N2/full45 qualification or promotion; selected Phase137 N3 stays unchanged.
+
+47 guarded jobs48.17min,8 failures1.72min, peak2.33GB. Three bounded agents worked
+on audits/controls/observation; root owned one serial target lane. Costs exclude
+unavailable quota billing. Next isolate the earlier producer-identity boundary
+inside40.1s optimization/verification; do not add caches from static hit counts.

@@ -72,3 +72,61 @@ runtime are unchanged. Exact error17 output, preserved original file bytes,
 absence of temporary leftovers and subsequent readback remain mandatory. This
 is a justified oracle correction, not acceptance of arbitrary exit behavior.
 The reviewer performed no new target execution.
+
+## Final04 binding successor
+
+The later final04 protocol retains qualified final03 and all its evidence.
+Bounded source review found no new blocker in these exact successors:
+
+| Source | SHA256 |
+| --- | --- |
+| `workflow-v04.py` | `69bf4b23f46776ee26de1ab47fb947cd958ad08658f73ffc4589b1d4ed65553e` |
+| `host-smokes-v04.py` | `2857f1edf79b9704f06bfd33d48bfeda1b943d3fc57b2ecb54a24d39d2f31bce` |
+| `seal-v03.py` | `3c88424dc41ddf15d9f0eca94a429a3b0b4a5c3bb30eb62013c67461bb74e4c3` |
+| `hosted-smoke-oracle-v02.mjs` | `c067f0bd38681bf8e485b9a6cf641b87586af5bf4f1f46fee106a83195f459c7` |
+
+The two host/sealer derivations replay exactly. The B-oracle successor is
+exactly one replacement of the prior-A receipt path, binding final04's actual
+checked API and current-policy products. The provider fixture, corrected
+process statuses, output/no-overwrite/cleanup checks, batch/session observations,
+runtime prerequisites and uncached final rehash are unchanged.
+
+The workflow now binds the immutable sealed final03 parent, independently
+replays the exact final04 three-override source composition, and requires its
+198 finite controls. Native Q2=Q3 and independent coverage requirements remain.
+This review does not turn the prepared protocol into completed final04
+qualification; that still requires the corresponding actual receipts. No
+targets were executed during review.
+
+## Final04 mode-specific closure and metrics
+
+The first actual final04 batch gate exposed a pass-policy difference that the
+binding-only review above did not anticipate. Ordinary mode skips the outer
+range pass; session mode retains its cached implementation. The complete
+diagnosis, independent ordinary-three equality gate, hosted cold/warm oracle,
+preserved failure and closed mode-specific native smokes are recorded in
+[the mode-divergence audit](final04-mode-divergence.md). They do not restore the
+historical ordinary/session byte identity or qualify broad incremental use.
+
+Independent review caught stale variables in unconsumed `seal-v04.py`;
+`seal-v05.py` (`0711bd85…ebca71`) repairs the source join using the authenticated
+mode report. The final raw receipt `a5c48ec9…338168` closes the native chain and
+finite gates while keeping both incremental and cross-mode claims false.
+
+The final04 timing metadata successor `fixed-comparison-v03.py`
+(`60f9fb1e…56e4ae`) was reviewed separately. It correctly distinguishes the
+qualified Phase143 timing baseline from final03, which built final04. Both
+roles compile the same frozen Phase142 input. Actual runtime links, machine
+flags, resource guards, child-request clocks, separate machine-stage clocks
+and peak process-tree RSS are joined. Supervised totals sum separately observed
+stages; they are not a measurement of one pipelined build. Each role has only
+one cold observation in a different time window. Its stale append-specific
+scope wording was flagged for correction; final04's relevant code-generation
+difference is its ordinary optimization policy.
+
+`publish-final04-v01.py` (`4795e553…54b42f0`) was reviewed as an exact projection
+of the sealed raw qualification. It writes fresh files under
+`implementation/phase144/final04/`, preserves final03, and retains the mode,
+runtime and finite-test limits. Its metrics attachment does not turn those
+limited timing observations into a general speedup claim. These reviews ran
+no compiler or generated-program targets.

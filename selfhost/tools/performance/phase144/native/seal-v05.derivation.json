@@ -1,0 +1,28 @@
+{
+  "kind": "phase144-mode-sealer-source-binding-successor",
+  "complete": true,
+  "targetsRun": false,
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase144/native/seal-v04.py",
+    "bytes": 10930,
+    "sha256": "6a6e1edb0dd5f4df645adf016b5dfa87cb6605952b4b6fffb29f0672536b90d6"
+  },
+  "derived": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase144/native/seal-v05.py",
+    "bytes": 10947,
+    "sha256": "0711bd85e4201a77741c274d750cb7c24fb8ac91588972ee4fe5c07892ebca71"
+  },
+  "edits": [
+    {
+      "before": "    bp=bound(smoke['batchPlan']);old=read(ROOT/'selfhost/build/phase140/batch-smoke-plan01.json')",
+      "after": "    mode_sources=bound(oracle['modeOracle'])['sources']\n    bp=bound(smoke['batchPlan']);old=read(ROOT/'selfhost/build/phase140/batch-smoke-plan01.json')",
+      "count": 1
+    },
+    {
+      "before": "(aa[0]['source'] if i%2==0 else br['request']['source'])",
+      "after": "mode_sources[i%2]",
+      "count": 1
+    }
+  ],
+  "reason": "Source review caught stale deleted ordinary-oracle variables before first consume. Bind each physical revision to the already authenticated same-mode oracle source pair. All source/complete-product checks retained."
+}

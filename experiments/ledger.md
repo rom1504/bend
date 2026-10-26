@@ -5979,3 +5979,62 @@ agent audits. Acquisition8.12min, controls1.35min, measurement17.53min,
 profiling6.66min, qualification7.25min. Quota billing unavailable. Next refresh
 the candidate's residual profile before choosing the next structural change;
 do not subtract overlapping baseline owner/physical percentages as savings.
+
+
+## 2026-10-26 — Phase144 profiler-led cold compiler reduction
+
+[Report](../implementation/phase144/README.md) ·
+[Final candidate](../implementation/phase144/final04/candidate.json) ·
+[Program quality](../implementation/phase144/programs/final04-quality.md) ·
+[Remaining opportunities](../research/phase144/final-opportunities.md).
+
+Fresh frozen-source compiler304.534→231.682s; QBE/assembly/link included
+319.652→247.000s (22.73% less target time). Single controlled observations,
+unchanged prepared Base/CPU3, no previous-source or machine-object reuse;
+OS caches are not flushed.50s remains unmet and no new upstream ratio is claimed.
+
+Exact stage profiling identifies repeated parser lookup and ownership scans.
+Request-local indices/facts, rendering fusion, positive predicates, a guarded
+single-mutator runtime and omission of redundant outer range work remove those
+costs. Final source+768 physical lines/+81 definitions,683 laws unchanged.
+Protected independent final verifiers and proof bodies remain exact.
+
+Profiler now binds exact native milestones, ELF symbol roles and source/runtime
+identities; optional concat counters distinguish success and refusal. The final03
+capture has8,681samples, no loss and99.497% CPU-window coverage. It is not a
+final04 profile. Parent/current physical, owner and stage costs overlap.
+
+A broad append optimization regressed row32 by8.79% and was rolled back.
+Final04 row32 is509→505ms versus original143; morning/Unicode give back2.6–5.0%
+relative to the interim candidate. All45 final wrapper outputs pass;44 machine
+objects equaloriginal143, RLE keeps its improvement.35 exact loaded serial
+products inherit evidence;10 cases get160 fresh paired observations. No fresh
+final04 corpus geometric mean or universal nonregression claim.
+
+Final04 source check/198 controls, N1/N2 reproduction, both focused19 and N2
+ordinary45 pass. Ordinary hosted/native three-case byte equality passes.
+The original batch smoke exposed an optimization-policy difference: ordinary
+skips outer range, session keeps it. Preserve failed cross-route byte equality;
+validate exact products with separately checked same-mode oracles. Broad
+incremental qualification, installed/default selection and recovery paths remain
+unchanged. Finite laws and self-reproduction are not a compiler-correctness theorem.
+
+Rejected or unintegrated: per-event constructor index rebuilding, captured
+renderer constant, compact-verifier/direct-worker variants, tiny register copies,
+native-only source packaging and both memory-bounded Clang acquisitions. The
+400s runtime-campaign timeout retains704 complete rows; a14s resume completes
+only the missing case. Report-write reduction1,442→47 is observer-work evidence,
+not a measured end-to-end saving. Final cost ledger counts failures and overlap.
+
+Next: compact identities across producer, verification and one optimization
+consumer; then typed fragments into a bounded generic byte sink. Require actual
+net native gains including conversion/destruction and unrelated transfer before
+another large integration.50s with the current machine tail needs another6.68×
+compiler-execution improvement, not the sum of local optimistic estimates.
+
+Final accounting:199 closed guarded jobs,162.77min with no overlap;22 failed
+attempts15.34min, one expected-negative0.31s. Acquisition64.79min, measurement
+48.16min, native qualification22.58min, profiling22.34min, other checks4.91min.
+Unobserved wall time outside guards is not assigned to reasoning, waiting or
+quota. Final ordinary native qualification and mode-matched host/session smokes
+pass; historical cross-route byte equality remains explicitly unclaimed.

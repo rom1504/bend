@@ -101,3 +101,43 @@ continuations; this audit does not establish a cheap universal transformation.
 
 The candidate is prepared, unqualified and unselected until the root-owned
 execution receipts and independent source review establish otherwise.
+
+## Executed controls and first real request
+
+Root completed both modes with8,614 full-state comparisons each, exact guard-page
+extent checks and all four refusals. Independent libc/source review found no
+blocker under the existing x86-64 ABI; the byte-offset cases are an empirical
+extension beyond compiler-admitted aligned buffers, not a portable C alignment
+proof. Mode0's runtime object **and complete compiler binary** reproduce the
+existing final03 serial products byte-for-byte.
+
+[Actual machine audit](../../selfhost/tools/performance/phase144/emission/transport/copy-machine-v01.json)
+shows count1 as one8-byte load/store, count2 as two8-byte loads **before either
+store**, and all larger counts retaining memmove. Neither small path overreads or
+calls libc. The helper keeps its starting address, but subsequent runtime
+jump/return/apply symbols move48bytes; layout effects remain a measurement caveat.
+
+Three real Lexer pairs all produced exact independently checked QBE. Baseline
+seconds were1.33334,1.45749,1.45729; candidate1.41540,1.39579,1.39559. Median ratio
+is0.95780, but paired ratios are1.06155,0.95767,0.95766. The first pair contradicts
+a uniform gain; the three-pair geometric ratio is approximately0.9911. This is a
+reason to measure the larger real request, not to claim an established4% gain.
+The low-level controls and machine evidence establish correctness/mechanism;
+request timings establish profitability separately.
+
+The prepared full-source plan is
+`selfhost/build/phase144/small-transfer-full-plan01/plan.json`. It uses the same
+final03 N2 object, frozen Phase142 input and exact115,966,145-byte final03 reference
+`ac29be09…abd36`, against the retained251.861s serial baseline. The baseline
+established that new output and did not itself carry a byte-equality flag; the
+candidate must byte-match it completely. V01 plan preparation incorrectly
+required such a baseline flag and stopped before creating an output; v02 models
+that reference-establishment boundary explicitly. No new compiler image
+acquisition is needed. A single later candidate is not a paired statistical
+campaign; a2% threshold only selects whether further qualification is worthwhile.
+
+[Independent source review](small-register-copy-review.md) pins the actual
+candidate and control fixture, with no reviewer target executions. Its requested
+machine-extent and baseline-identity checks are separately recorded in the
+later machine/build receipts above; the review is not substituted for those
+execution gates.

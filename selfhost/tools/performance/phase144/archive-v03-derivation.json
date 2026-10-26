@@ -1,0 +1,28 @@
+{
+  "kind": "phase144-archive-python39-successor",
+  "complete": true,
+  "targetsRun": false,
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase144/archive-v02.py",
+    "bytes": 11578,
+    "sha256": "f950b73d84b859b19a674ee43824ee83290eb4332e199ffb3ba105e700a50536"
+  },
+  "successor": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase144/archive-v03.py",
+    "bytes": 11761,
+    "sha256": "e1b2f7c6a7643b02acb8e5029ee965fd17fa8da80ce8e3a7537c846b8404c2be"
+  },
+  "edits": [
+    {
+      "before": "for expected,member in zip(rows,tar,strict=True):",
+      "after": "members = iter(tar)\n        for expected in rows:\n            member = next(members, None)\n            assert member is not None, 'Missing archive member'",
+      "count": 1
+    },
+    {
+      "before": "            assert count==expected['bytes'] and digest.hexdigest()==expected['sha256']\n    for p,row in zip(files,rows):",
+      "after": "            assert count==expected['bytes'] and digest.hexdigest()==expected['sha256']\n        assert next(members, None) is None, 'Unexpected extra archive member'\n    for p,row in zip(files,rows):",
+      "count": 1
+    }
+  ],
+  "scope": "Python3.9-compatible exact member iteration, explicitly rejects missing and extra members; all hashes/order/modes and prior selection remain unchanged. No archive created."
+}

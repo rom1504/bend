@@ -1,6 +1,7 @@
 # Phase144 cost ledger
 
-`selfhost/tools/performance/phase144/costs-v01.py` reads metadata only. It finds
+`selfhost/tools/performance/phase144/costs-v03.py` reads metadata only. The v01
+method and its interim receipts remain intact. It finds
 every `process.json` below `selfhost/build/phase144`, including `guard01`, nested
 guards and arbitrarily named receipt directories. It also searches all immediate
 `p144`-tagged directories below `phase111` and `phase131`; this includes all four
@@ -10,9 +11,9 @@ chooser-law guards. It does not add the same process embedded in a parent
 For the final snapshot, after all root jobs close:
 
 ```sh
-python3 selfhost/tools/performance/phase144/costs-v01.py \
-  --out implementation/phase144/costs-final.json \
-  --markdown implementation/phase144/costs-final.md --require-closed
+python3 selfhost/tools/performance/phase144/costs-v03.py \
+  --out implementation/phase144/costs-final02.json \
+  --markdown implementation/phase144/costs-final02.md --require-closed
 ```
 
 Both destinations must be fresh. If a receipt is still open or unreadable, the
@@ -50,3 +51,44 @@ The process receipts do not provide agent token/compute usage, and summed guarde
 wall is not summed CPU time. Failures may be harness defects, refused candidates,
 deadlines or resource stops; their costs remain visible without claiming every
 nonzero command is a compiler semantic failure.
+
+## Final-campaign classification update
+
+Version02 preserves discovery, timing denominators, failed-work accounting and
+all six original controls. Four additional controls classify native host/IO
+smokes as native qualification and generated-program measurement, resumption
+and rechecks as measurement; program acquisition remains acquisition. All ten
+metadata-only tests pass. The ledger pins both method versions.
+
+The original version already **counted** these new receipts, but classified
+several as unknown. In particular, the400.076-second deadline-stopped program
+campaign is failed measurement work, and its13.778-second successful resume
+is additional measurement work. Reusing its completed observations does not
+erase the earlier cost. A failed host smoke is retained whether its eventual
+explanation is a harness defect or a compiler error. The final snapshot must
+still wait for every scoped guard to close; this update did not run it.
+
+## Closed final snapshot
+
+Version03 explicitly classifies the remaining11 unknown actions: two full Q3
+self-reproductions, two range-policy latency experiments, constructor-existence
+consumer timing, a transport timing experiment, concat diagnostic observation,
+three packaged-native exact-output checks and small-product acquisition. These
+are explicit command/path rules, not a blanket default for unknown work. All14
+synthetic tests pass. The v02 method and first final snapshot remain untouched.
+
+The [second final snapshot](../../implementation/phase144/costs-final02.json)
+contains the same199 receipt identities, durations and statuses as the first:
+9,766.158 seconds of guarded work,22 failed guards totaling920.403 seconds,
+one expected negative check of0.310 seconds, and no overlapping guard intervals.
+Only category labels/bases differ. Before collection, all scoped receipts were
+closed and no live repository target or native check guard was found. This
+verification and the ledger itself ran metadata only.
+
+The [human-readable totals](../../implementation/phase144/costs-final02.md)
+separate acquisition64.79 min, measurement48.16 min, native qualification22.58
+min, profiling22.34 min and checks4.91 min. Categories remain inclusive actions,
+not exclusive inner stages; failed work is included in these totals. The
+172.07 min outside the guarded interval union is unobserved by this mechanism
+and cannot be labeled reasoning, waiting or quota consumption. Both final
+output paths now exist; reproduction must choose fresh destinations.

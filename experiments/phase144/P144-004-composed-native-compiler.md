@@ -1,5 +1,12 @@
 # P144-004 — compose the measured cold-build changes
 
+This entry records the immutable **final03 intermediate checkpoint**. The later
+[final04 composition](../../design/phase144/final04-composition.md) removes broad
+append admission, omits the ordinary outer range pass and shares the prefix
+disjointness query. Its measured cold target sum is247.000s. Consult the
+[current report](../../implementation/phase144/README.md) for the completed phase;
+the observations below remain evidence for their original source and runtime.
+
 The experiment combines the parser-prior index, request-local constructor
 ownership facts, suffix-aware rendering, guarded single-mutator runtime,
 source-backed String append admission and positive predicate branching.

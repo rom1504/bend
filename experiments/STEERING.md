@@ -1,4 +1,41 @@
-# Current experiment: Phase143 cold compiler cost reduction
+# Current experiment: Phase144 profiler-led cold compilation
+
+[Report](../implementation/phase144/README.md) ·
+[Final candidate](../implementation/phase144/final04/candidate.json) ·
+[Program quality](../implementation/phase144/programs/final04-quality.md) ·
+[Profile](../research/phase144/final-profile.md).
+
+Fresh same-source compiler304.534→231.682s; QBE/as/link included319.652→247.000s
+(22.73% less target time). Single controlled observations, same frozen Phase142
+source and prepared Base, one CPU3 lane; no source-specific semantic/object reuse,
+OS caches not flushed.50s is not achieved; no fresh upstream speed ratio.
+
+Exact parser-prior indexing, request-local ownership facts, fused rendering,
+positive predicates, guarded single-mutator reference counts, removal of redundant
+outer-range work and indexed prefix-disjoint checking remove measured work.
+Independent final verifier/proof declarations remain exact. Broad String.append
+admission was removed after a confirmed8.79% serialization regression.
+
+Final04 source is checked with198 controls; native N1/N2 reproduce complete QBE,
+both focused19 and N2 ordinary45 pass. Ordinary hosted/native three-case byte
+comparison passes. Batch/session retains the outer range pass omitted by ordinary
+mode, so the historical cross-route byte equality fails; retain that negative
+and use separately checked same-mode cold/warm oracles. Broad incremental
+qualification and installed/default selection remain unchanged.
+
+All45 final wrappers pass.44 objects equal original Phase143; RLE preserves its
+known improvement.35 exact loaded serial products inherit prior evidence, while
+ten changed cases get eight fresh alternating pairs. Row32 is509→505ms versus
+original143. Compared with intermediate final03, morning/Unicode give back2.6–5.0%;
+there is no fresh final04 full-corpus geometric mean.
+
+Profiler adds exact native stages, ELF-role validation and optional concat
+attempt/refusal counters. Final03 capture has8,681samples, no loss and99.497%
+coverage. This is not a final04 profile. Parser/ownership scan removal is visible;
+verification, rendering and representation transitions remain. Prefer whole
+computation/fragment-boundary experiments over more isolated helper tweaks.
+
+# Previous experiment: Phase143 cold compiler cost reduction
 
 [Report](../implementation/phase143/README.md) ·
 [candidate](../implementation/phase143/candidate.json) ·

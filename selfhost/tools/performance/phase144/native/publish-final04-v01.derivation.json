@@ -1,0 +1,88 @@
+{
+  "kind": "phase144-final04-publication-successor",
+  "complete": true,
+  "targetsRun": false,
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase144/native/publish-v01.py",
+    "bytes": 6740,
+    "sha256": "14ea5c00a0094b0287ad4c8ff77625afb3c82fcb2ec164e51670773bf6e4f804"
+  },
+  "derived": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase144/native/publish-final04-v01.py",
+    "bytes": 7499,
+    "sha256": "4795e553957dcfbfaa0abac293d5a436a9faab4e7c20046b7aefd25e454b42f0"
+  },
+  "edits": [
+    {
+      "before": "Publish compact final03 identities",
+      "after": "Publish compact final04 identities",
+      "count": 1
+    },
+    {
+      "before": "selfhost/build/phase144/final03-qualification.json",
+      "after": "selfhost/build/phase144/final04-qualification.json",
+      "count": 1
+    },
+    {
+      "before": "6b9d48b9b2c9a560b9d878f21646d9f3d9c5246f9c20c8bcab720c65fbbb85d5",
+      "after": "a5c48ec98d18a23b91d676ce4052cc7fa5c82bb5169e85d92873411a3d338168",
+      "count": 1
+    },
+    {
+      "before": "a['controls']==127",
+      "after": "a['controls']==198",
+      "count": 1
+    },
+    {
+      "before": "with_name('seal-v02.py')",
+      "after": "with_name('seal-v05.py')",
+      "count": 1
+    },
+    {
+      "before": "qualified Phase143 N2 -> N1 -> N2",
+      "after": "qualified final03 N2 -> N1 -> N2",
+      "count": 1
+    },
+    {
+      "before": "not broad incremental qualification. No compiler theorem",
+      "after": "not broad incremental qualification. Ordinary/session QBE differs because their optional outer-range policies differ; historical cross-mode identity is not restored. No compiler theorem",
+      "count": 1
+    },
+    {
+      "before": "    out = ROOT/'implementation/phase144'",
+      "after": "    out = ROOT/'implementation/phase144/final04'\n    out.mkdir(parents=True,exist_ok=True)",
+      "count": 1
+    },
+    {
+      "before": "finiteControlCount=127",
+      "after": "finiteControlCount=198",
+      "count": 1
+    },
+    {
+      "before": "hostSmokes=q['hostSmokes'],incrementalQualified=False,",
+      "after": "hostSmokes=q['hostSmokes'],incrementalQualified=False,crossModeByteIdentityClaimed=False,\n        sessionModeOracle=q['sessionModeOracle'],ordinaryModeEquality=q['ordinaryModeEquality'],\n        preservedCrossModeFailure=q['preservedCrossModeFailure'],",
+      "count": 1
+    },
+    {
+      "before": "    a = q['sourceAdmission']; plan = read(q['plan'])",
+      "after": "    assert q['incrementalQualified'] is False and q['crossModeByteIdentityClaimed'] is False\n    for key in ['sessionModeOracle','ordinaryModeEquality','preservedCrossModeFailure']: verify(q[key])\n    a = q['sourceAdmission']; plan = read(q['plan'])",
+      "count": 1
+    },
+    {
+      "before": "incrementalQualified=False,selected=False,installed=False",
+      "after": "incrementalQualified=False,crossModeByteIdentityClaimed=False,selected=False,installed=False",
+      "count": 1
+    },
+    {
+      "before": "qualifiedFallback=pin(ROOT/'implementation/phase143/candidate.json'),",
+      "after": "qualifiedFallback=pin(ROOT/'implementation/phase144/candidate.json'),metrics=pin(out/'metrics.json'),",
+      "count": 1
+    },
+    {
+      "before": "incrementalScope='Only the separately pinned frozen A/B session and four-job batch smoke passed; broad incremental qualification is not claimed.'",
+      "after": "incrementalScope='Only independent hosted cold-session A/B plus warm A/B/A/B and matching native session/batch passed. Ordinary mode has a different outer-range policy; the preserved cross-mode byte failure remains. Broad incremental qualification is not claimed.'",
+      "count": 1
+    }
+  ],
+  "scope": "Compact projection of exact closed final04 raw seal,198controls, actualsame-policy mode evidence and preserved cross-mode failure. Separate final04 outputdirectory leaves pinned03 bytes intact; no broad incremental/default promotion."
+}

@@ -1,0 +1,17 @@
+# Final04: bounded composition after the final03 measurements
+
+Final03 remains the qualified fallback. Prepare one isolated successor with three explicit declaration overrides; do not start another native generation campaign until the outstanding program-quality comparisons settle these choices.
+
+| Declaration | Proposed source | Reason and boundary |
+| --- | --- | --- |
+| `p125p_admitted` | Exact qualified Phase143 declaration | Remove the new `String.append` admission implicated in the row32 regression. Retain final03's separate heap-transport whitelist and its measured RLE benefit. The final03 append helper and its controls remain intact. |
+| `p114s_ranges` | Frozen `verifier/range-skip-v01.bend` | Skip only the outer optional range pass. Preserve the range work performed during inlining and all final verification. Its approximately 4.74% compiler-request improvement does not establish emitted-code quality; require the pending quality comparison before adoption. |
+| `base_prefix_ctor_disjoint` | Frozen `existence/disjoint-override-v01.bend` plus its exact helper/control modules | Build immutable constructor-existence facts once for this consumer. Keep `constructor_exists`, constructor-name checks and event checks unchanged. Retain malformed-input fallback and the independently renamed original traversal used by the controls. |
+
+Compose directly onto the full final03 source, not a reduced source profile. The preparation must authenticate final03's checked and qualified identities, restore the exact Phase143 admission body, replay the frozen modules, require exactly these three changed original declarations, and retain every protected verifier and all 11 inherited proof declarations. The manifest records every added helper and the exact before/after source bytes. No runtime change is included: links still use serial object `2d078323…e493a3` with the single-Bend-heap-mutator policy.
+
+Check the complete composed source once. Run the unchanged 127 final03 controls, the 27 disjoint controls, and the existing 26 verification-reuse plus 18 optimizer controls: **198 observations**. No control body, expected value, group or refusal is removed. The append controls test the retained helper; reverting its production admission does not justify weakening those tests. This finite control set does not prove the optional pass is redundant or the whole compiler correct.
+
+Use the resulting checked API to emit the same three small ordinary sources once: lexer, Map churn128 and closures256. Preserve complete emitted products; code changes may legitimately alter QBE, so require final verification and the independent complete stdout oracle after actual serial-runtime linking, rather than requiring old QBE. The existing emitter's old-runtime field is historical build context; the new build receipt supplies the actual runtime authority. These three programs are a cheap preflight, not a replacement for native qualification or broad program-quality measurements.
+
+If the measurements support this composition, derive the final native workflow minimally from final03. Bind the new source/API/control receipts explicitly, acquire N1 and N2 through the declared qualified native producer, reproduce complete Q2 as Q3, and repeat focused19 on both images plus N2 ordinary45. Reacquire current-policy A/B host-smoke QBE if code generation changes it. Keep final03 and every failed or rejected candidate intact. No installed/default promotion follows automatically from preparing or qualifying final04.

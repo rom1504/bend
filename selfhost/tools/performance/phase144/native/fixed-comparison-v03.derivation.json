@@ -1,0 +1,68 @@
+{
+  "kind": "phase144-final04-fixed-comparison-successor",
+  "complete": true,
+  "targetsRun": false,
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase144/native/fixed-comparison-v02.py",
+    "bytes": 6656,
+    "sha256": "dad7807a0847368cf3e07ac6f06e5fa3b0b20ff784815c05aa82ccdfef296002"
+  },
+  "derived": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase144/native/fixed-comparison-v03.py",
+    "bytes": 7279,
+    "sha256": "297437885301f4acd1505e21fb2f86bdcfb8f1108a7880497c5a2dcd1e4c232d"
+  },
+  "edits": [
+    {
+      "before": "HERE/'workflow-v03.py'",
+      "after": "HERE/'workflow-v04.py'",
+      "count": 1
+    },
+    {
+      "before": "final03",
+      "after": "final04",
+      "count": 2
+    },
+    {
+      "before": "parent = read(W.PARENT)",
+      "after": "parent_path = ROOT/'implementation/phase143/qualification.json'\n    require(pin(parent_path)['sha256']=='ac3bcab3c016679df1c2ffdcb7da1a48f9afa996c119cd2b8957db5c788b7c89', 'Frozen timing baseline authority differs')\n    parent = read(parent_path)",
+      "count": 1
+    },
+    {
+      "before": "parent['nativeQualified'] and parent['n2']==plan['producer']",
+      "after": "parent['nativeQualified'] and parent['n2']==pin(ROOT/'selfhost/build/phase111/p143-integrated-n2/program')",
+      "count": 1
+    },
+    {
+      "before": "        guards = {}",
+      "after": "        guards = {}; supervised = {}; peak_rss = {}",
+      "count": 1
+    },
+    {
+      "before": "            guards[stage] = pin(gp)",
+      "after": "            guards[stage] = pin(gp)\n            supervised[stage] = guard['wallSeconds']; peak_rss[stage] = guard['peakTreeRssBytes']",
+      "count": 1
+    },
+    {
+      "before": "            guards=guards,",
+      "after": "            guards=guards,supervisedSeconds=supervised,supervisedStageSumSeconds=sum(supervised.values()),\n            guardPeakTreeRssBytes=peak_rss,requestWrapperSeconds=request['totalSeconds'],",
+      "count": 1
+    },
+    {
+      "before": "['requestSeconds','machineSeconds','requestPlusMachineSeconds']",
+      "after": "['requestSeconds','machineSeconds','requestPlusMachineSeconds','supervisedStageSumSeconds']",
+      "count": 1
+    },
+    {
+      "before": "Request-plus-machine is the sum of these stage observations, not a single timed pipeline.",
+      "after": "Request-plus-machine and supervised stage totals are sums of separate observations, not a single timed pipeline.",
+      "count": 1
+    },
+    {
+      "before": "Changed append code generation permits different QBE/objects.",
+      "after": "Different ordinary optimization policies may change QBE/objects.",
+      "count": 1
+    }
+  ],
+  "scope": "Actual final04 image/plan as candidate, independently qualified143 remains same frozen142 timing baseline; retain all source/tool/runtime/guard joins and add explicit supervised stage clocks. No target or statistical claim."
+}

@@ -1,0 +1,101 @@
+{
+  "kind": "phase144-same-producer-source-packaging-result",
+  "complete": true,
+  "selected": false,
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase144/native-profile-summary01/report.json",
+      "bytes": 5149,
+      "sha256": "99416bc0baebfad2a6edc3a60ddeac46f87543bcb66b264d1ee2b663b15c073c"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase130/p144-native-profile03-emit01/report.json",
+      "bytes": 9757,
+      "sha256": "20589c47e162064c14636f3302e03609dbdb2e2d5b18beec5bd13ce5fab6d2ac"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p144-native-profile03-n1/report.json",
+      "bytes": 4886,
+      "sha256": "aa5bcb1ca9273e1f5c07ef87f5766d3313da18513ae84b025ff8f6893e309abd"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase144/native-profile-plan02/profile-emit-guard/process.json",
+      "bytes": 1035,
+      "sha256": "b3f32246318a9ff8ef1d96517797d48405acb183d24962464fe687ef32d6c17c"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase144/native-profile-plan02/profile-machine-guard/process.json",
+      "bytes": 917,
+      "sha256": "6b5181247077ce07d560d16e70eb81b079aea1cdeaaffdc21887fa7027c329ae"
+    }
+  ],
+  "profile": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase144/native-profile-source03/compiler.bend",
+    "bytes": 1650634,
+    "sha256": "a92f96349d475f2cc69b31cb5f734bb217122fd7726a1d0c901d87bfcb2d3ed0"
+  },
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase144/predicate-canonical-source01/compiler.bend",
+    "bytes": 2990803,
+    "sha256": "31e1b13a8584130c6a6be67ef6e1f2a6a373433c9c5cac9e880fa3fe403e3ea2"
+  },
+  "producer": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase134/p144-final03-n2/program",
+    "bytes": 19092400,
+    "sha256": "22380e6ab9a2d565e89aa742d4082ad74493f293c3ccbcfb39b311c15647898e"
+  },
+  "runtime": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase144/serial-rfc01/serial-rfc.o",
+    "bytes": 119096,
+    "sha256": "2d07832382a11d7e993124ecc70452e4e1a3b7f753cf429343e1183cd8e493a3"
+  },
+  "nativeSeconds": {
+    "full": 250.29560652421787,
+    "profile": 221.20639100670815,
+    "ratio": 0.8837805588301642,
+    "reduction": 0.11621944116983585
+  },
+  "sourceBytesRatio": 0.5519032848368816,
+  "qbeBytes": {
+    "full": 117151119,
+    "profile": 117105243
+  },
+  "profileMachineSeconds": 16.770927138160914,
+  "smokes": [
+    {
+      "name": "lexer",
+      "currentApiProductExact": true,
+      "nativeProductExact": true
+    },
+    {
+      "name": "coverage-closures-256",
+      "currentApiProductExact": true,
+      "nativeProductExact": true
+    },
+    {
+      "name": "coverage-map-churn-128",
+      "currentApiProductExact": true,
+      "nativeProductExact": true
+    }
+  ],
+  "measurementScope": "One retained full-source request and one later reduced-source request, same exact compiler executable/Base/carrier/CPU affinity. Different compiler-source input measures packaging/workflow cost, not same-source algorithm speed. OS caches unflushed; not randomized pairs.",
+  "qualificationScope": "Independent source check and3complete ordinary hosted/native products. All native CLI source entries retained; no profile bootstrap fixed point, incremental/provider rerun, full conformance or default promotion.",
+  "sequentialWorkflowEstimate": null,
+  "nativeSecondsSaved": 29.08921551750973,
+  "profileAcquisition": {
+    "compilerChildSeconds": 221.20639100670815,
+    "machineBuildSeconds": 16.770927138160914,
+    "sequentialCompilerAndMachineSeconds": 237.97731814486906,
+    "supervisorEmitPlusMachineSeconds": 238.862175561022,
+    "summedOuterGuardSeconds": 240.32875345926732,
+    "scope": "Separate serial jobs; includes file materialization; no overlap. Does not include prior source checking, hosted products or subsequent native smokes."
+  },
+  "profileImage": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p144-native-profile03-n1/program",
+    "bytes": 19082032,
+    "sha256": "e6dadc2c9bf95cd795d7dbd598d789cdb346afce47f923385cc0574aee010fb9"
+  },
+  "stageAttribution": "Frontend/global-book savings are plausible from omitted input declarations; not isolated by this timing pair.",
+  "maintainedSourceChanged": false,
+  "shippingQualified": false
+}

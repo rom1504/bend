@@ -23,8 +23,8 @@ not a whole-compiler semantic theorem.
 The three-family census shows the main quality risk concretely: the omitted
 pass changed one SCC function in each request that had never run the inner
 pass. Other, unmeasured inputs could also improve on a second analysis. No
-unchanged-output flag is introduced, and no compiler-native benefit is yet
-measured. Source order, helper eligibility and inlining tables are exactly the
+unchanged-output flag is introduced. The later native measurement below tests
+the compiler-native benefit. Source order, helper eligibility and inlining tables are exactly the
 old policy until the omitted outer boundary.
 
 An alternative was to move range analysis into both inliner fallback branches.
@@ -96,11 +96,11 @@ small optimizer equivalence fixtures passed. These171 finite controls are
 separate from native qualification and arbitrary-input semantic equivalence.
 No default or installed compiler has been changed by this work.
 
-The next decisive gate is native cold compilation of a fixed full compiler
+The decisive next gate was native cold compilation of a fixed full compiler
 source, using the newly qualified final03 compiler as the acquisition tool.
-Measure compilation cost and emitted-program quality separately. Broader45-case
-runtime evidence or an explicit fast-development policy is required before
-changing the maximum-optimization default.
+Compilation cost and emitted-program quality are measured separately below.
+Broader45-case runtime evidence or an explicit fast-development policy is
+required before changing the maximum-optimization default.
 
 The metadata-only acquisition/measurement plan is now
 `selfhost/build/phase144/range-fast-native-plan01/jobs.json`. It reuses the root's
@@ -112,8 +112,90 @@ All source, checked-API,171-control, producer-Q3, machine-tool and actual serial
 runtime identities are pinned. The two pipe builds omit duplicate textual IR
 but retain its digest and machine artifacts; they do not constitute a new
 qualification campaign. The final static result separates acquisition cost,
-native request latency and produced-code identity. This plan has not been
-executed by the investigating subagent and supplies no new speed result yet.
+native request latency and produced-code identity. The root executed this plan;
+the investigating subagent performed only the static audit and job preparation.
+
+## Executed native cost and full-compiler machine audit
+
+`selfhost/build/phase144/range-fast-native-result01.json` records a fresh
+same-input pair on the frozen Phase142 compiler source (`15f5cada…7dac1`):
+
+| Compiler policy | Native request wall time | CPU time | Peak RSS KiB |
+| --- | ---: | ---: | ---: |
+| Final03 ordinary policy |251.861s|251.575s|1,046,956|
+| Final03 skipping the outer range pass |239.924s|239.591s|1,023,524|
+
+The experimental policy takes0.952605× the baseline time, a **4.74% reduction**.
+This is one matched pair, not a repeated confidence interval. Both use the
+same linked serial-RFC runtime (`2d078323…93a3`). This measures compiler request
+cost, not the speed of the programs that request produces. Its QBE output is
+allowed to differ because this is an explicit optimization-policy experiment.
+
+The separate machine-quality experiment compiled the **same unchanged final03
+compiler source** (`31e1b13a…e3ea2`) with the two policies. Both resulting
+executables implement the ordinary full-range policy; only the policy used to
+build them differs. The original is `phase134/p144-final03-n2/program`; the
+comparison is `phase134/p144-range-fast-final03-product01/program`.
+
+Unlike the three small benchmark wrappers, the complete compiler's assembly
+and object files differ. A bounded static inspection in
+`verifier/range-fast-workers-v01.py` compares all71,722 function symbols and
+retains snippets only for changed functions. Its receipt is
+`selfhost/build/phase144/range-fast-worker-audit01/report.json`:
+
+- The function symbol sets are identical.
+- 2,474 raw object function hashes differ.
+- Only **three functions have different instruction sequences** after
+  normalizing function-local `.Lbb` label numbers. Registers, immediates,
+  external symbols, data references and instructions remain exact.
+- The other2,471 raw changes have identical normalized assembly, so these
+  are address/relocation/alignment effects rather than different operations.
+
+| Changed worker | Source computation | Function bytes, ordinary→skip |
+| --- | --- | ---: |
+| `$p126scc.1634` |`sp_drop` / `sp_drop_next`: drop a prefix of specialization terms |265→356|
+| `$p126scc.5186` |`p140r_drop` / `p140r_drop_next` / `p140r_skip`: skip data in an emission-reuse cursor |265→356|
+| `$p126scc.2572` |`j_u32_node` / `j_word` / `j_word_bit`: compact or legacy word-literal readback |1,727→1,793|
+
+The first two loops normally branch directly on `n == 0`. Without the outer
+range information, their machine code materializes that Boolean, validates
+its raw-or-packed Boolean representation, and retains an unreachable error
+branch with sink/fail calls. The third retains a similar check for `at == 32`
+and a different32-bit OR spelling. These are actual generated-code changes,
+not merely layout. QBE does **not** remove all of this redundant work itself.
+Static presence does not establish runtime importance: for example, the
+emission-reuse skip worker need not execute during a cold compilation.
+
+This narrows the quality question sharply. The whole compiler does not suffer
+a broad instruction-quality change from this policy, but three affected
+workers can still matter dynamically. No arbitrary-input equivalence or
+performance bound follows from the static inspection.
+
+## Executed exact-output test of the resulting compiler
+
+`selfhost/build/phase144/range-produced-latency-plan01/jobs.json` contains one
+guarded native request for the unchanged-source compiler built by the fast
+policy. It compiles the same frozen Phase142 input and **requires exact QBE**
+against the fresh ordinary-policy baseline, SHA-256
+`ac29be094a56cb5e5125b7982a083a15b8e2d5f8c3505b7c1e484c65675abd36`.
+The source, producer receipts, actual linked runtime, tool identities and
+oracle are pinned. The request output is
+`selfhost/build/phase130/p144-range-produced-final03-fixed142-01`.
+
+The root executed this job successfully. The receipt
+`selfhost/build/phase130/p144-range-produced-final03-fixed142-01/report.json`
+records248.612644s native request time versus the baseline251.861219s: ratio
+**0.987102**. Both produced the exact115,966,145-byte QBE oracle; stderr is empty
+and exit status is zero. This is **no observed regression in one pair**, not a
+statistically established1.29% speedup. The new outer guard time251.209s is not
+the native child clock and must not be compared directly with251.861s.
+
+This isolates the speed of the generated compiler: both images implement the
+same full-range policy on the same input, unlike the preceding4.74% policy-cost
+comparison. The preparer and investigator did not execute targets; the root
+owns the measured run. These original fast-policy artifacts remain separate
+from subsequent final04 composition and qualification. Neither artifact alone
+establishes arbitrary-input semantic equivalence or broad45-program speed.
 
 ## Why not remove the inner range pass now?
 

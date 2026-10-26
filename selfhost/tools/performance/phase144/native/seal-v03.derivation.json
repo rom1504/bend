@@ -1,0 +1,48 @@
+{
+  "kind": "phase144-final04-host-successor",
+  "complete": true,
+  "targetsRun": false,
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase144/native/seal-v02.py",
+    "bytes": 11136,
+    "sha256": "3d43afe9da5a389b4506568719189a1d1deb24d5d66785c5f0cdcb0c7be6a5a8"
+  },
+  "derived": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase144/native/seal-v03.py",
+    "bytes": 11131,
+    "sha256": "3c88424dc41ddf15d9f0eca94a429a3b0b4a5c3bb30eb62013c67461bb74e4c3"
+  },
+  "edits": [
+    {
+      "before": "uses the consumed v03 plan",
+      "after": "uses the final04 plan",
+      "count": 1
+    },
+    {
+      "before": "HERE/'workflow-v03.py'",
+      "after": "HERE/'workflow-v04.py'",
+      "count": 1
+    },
+    {
+      "before": "74a6e953c4a9951b7a1d34479cbd2872f337d5cb62bf65fca68c6a26e145a373",
+      "after": "69bf4b23f46776ee26de1ab47fb947cd958ad08658f73ffc4589b1d4ed65553e",
+      "count": 1
+    },
+    {
+      "before": "'Frozen v03 changed'",
+      "after": "'Frozen v04 changed'",
+      "count": 1
+    },
+    {
+      "before": "HERE/'host-smokes-v03.py'",
+      "after": "HERE/'host-smokes-v04.py'",
+      "count": 1
+    },
+    {
+      "before": "hosted-smoke-oracle-v01.mjs",
+      "after": "hosted-smoke-oracle-v02.mjs",
+      "count": 1
+    }
+  ],
+  "scope": "Bind final04 workflow/source/API and independently checked current-policy A/B oracles. Identical provider fixture, exit/refusal/readback, batch/session, runtime prerequisites, six native gates and uncached final rehash."
+}

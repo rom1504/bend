@@ -1,0 +1,40 @@
+{
+  "kind": "phase144-archive-qualified-fallback-successor",
+  "complete": true,
+  "targetsRun": false,
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase144/archive-v04.py",
+    "bytes": 12209,
+    "sha256": "d8d469a7384a5bd8e9e77b14c352330ff44ab727227f0ae386f8cc1f74d9332c"
+  },
+  "successor": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase144/archive-v05.py",
+    "bytes": 13398,
+    "sha256": "02f8cf804212b4e640cd75b0e5f503864c2228990ea4c6674e878fb623909379"
+  },
+  "edits": [
+    {
+      "before": "    for row in principal:\n        verify(row)\n",
+      "after": "    fallback_path = ROOT/'selfhost/build/phase144/final03-qualification.json'\n    fallback_pin = pin(fallback_path)\n    assert fallback_pin['sha256'] == '6b9d48b9b2c9a560b9d878f21646d9f3d9c5246f9c20c8bcab720c65fbbb85d5'\n    fallback = read(fallback_path)\n    assert fallback['complete'] and fallback['nativeQualified'] and fallback['q2EqualsQ3']\n    fallback_build_path = Path(fallback['n2']['file']).parent/'report.json'\n    assert pin(fallback_build_path) in fallback['actualRuntimeAuthority']\n    fallback_build = read(fallback_build_path)\n    assert fallback_build['complete'] and fallback_build['binary'] == fallback['n2']\n    assert fallback_build['source'] == fallback['source'] and fallback_build['runtime'] == fallback['runtime']\n    assert fallback['runtime'] == plan['runtime']\n    principal.extend([fallback['source'], fallback['n2'], fallback_build['object']])\n    for row in principal:\n        verify(row)\n",
+      "count": 1
+    },
+    {
+      "before": "    for row in plan['inputs']:\n",
+      "after": "    dependencies.extend([fallback_pin, pin(fallback_build_path), fallback['plan'],\n                         fallback['sourceAdmission']['sourceManifest']])\n    for row in plan['inputs']:\n",
+      "count": 1
+    },
+    {
+      "before": "        principalPins=principal, explicitRecoveryAndProfileArtifacts=",
+      "after": "        principalPins=principal, qualifiedFinal03Fallback=fallback_pin, fallbackScope='Immutable qualified final03 source, ordinary N2 ELF/object retained independently of the primary plan.', explicitRecoveryAndProfileArtifacts=",
+      "count": 1
+    },
+    {
+      "before": "assert total <= 256*MIB, ('raw archive budget', total)",
+      "after": "assert total <= 384*MIB, ('raw archive budget', total)",
+      "count": 1
+    }
+  ],
+  "rawCapMiB": 384,
+  "compressedCapMiB": 64,
+  "scope": "Primary source/N2 follows the provided completed plan/qualification; immutable qualified final03 source, N2 binary and object also retained. Preserves original/final03 profiles. Raw budget explicitly increases for both checkpoints; compressed cap unchanged. No archive or refreshed inventory created."
+}

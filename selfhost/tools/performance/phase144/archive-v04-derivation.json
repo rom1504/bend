@@ -1,0 +1,23 @@
+{
+  "kind": "phase144-archive-profiler-method-successor",
+  "complete": true,
+  "targetsRun": false,
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase144/archive-v03.py",
+    "bytes": 11761,
+    "sha256": "e1b2f7c6a7643b02acb8e5029ee965fd17fa8da80ce8e3a7537c846b8404c2be"
+  },
+  "successor": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase144/archive-v04.py",
+    "bytes": 12209,
+    "sha256": "d8d469a7384a5bd8e9e77b14c352330ff44ab727227f0ae386f8cc1f74d9332c"
+  },
+  "edits": [
+    {
+      "before": "    for row in plan['inputs']:\n",
+      "after": "    repair_path = ROOT/'selfhost/build/phase144/final03-stages01/elf-binding-repair01/report.json'\n    repair = read(repair_path)\n    assert repair['complete']\n    dependencies.append(pin(repair_path))\n    dependencies.append(repair['fixedPolicy']['method'])\n    for row in repair['inputs']:\n        dep = Path(row['file'])\n        if dep.is_relative_to(ROOT/'selfhost/tools/profiler') and dep.suffix == '.py':\n            dependencies.append(row)\n    for row in plan['inputs']:\n",
+      "count": 1
+    }
+  ],
+  "scope": "Retain exact repaired generic profiler source/tests authenticated by completed final03 ELF-binding repair receipt, which live outside phase144 roots. Selection, qualification bindings, Python3.9 roundtrip checks and caps otherwise unchanged. No archive created."
+}

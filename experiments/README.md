@@ -1,6 +1,12 @@
 # Compiler experiment workflow
 
-Latest investigation: [Phase136 cold compiler costs](../implementation/phase136/README.md).
+Latest campaign: [Phase144 profiler-led cold compilation](../implementation/phase144/README.md).
+Same-source cold target time319.7→247.0s; improved native profiler, exact native
+reproduction and independent program-quality checks. The50s goal remains open.
+Read the [current frontier](STEERING.md) and explicit runtime/qualification scope
+before choosing an image. Installed/default selection is unchanged.
+
+Historical investigation: [Phase136 cold compiler costs](../implementation/phase136/README.md).
 The controlled full build takes375.923s; separate checked diagnostics split
 parsing/checking/annotation/erasure and show ownership transfer across ordinary
 queries. Exact-object profiling and fourteen query controls identify narrower
@@ -15,7 +21,7 @@ late semantic cache does not demonstrate a speed win; earlier preparation is
 the measured next target. The qualified core below and installed selection stay
 unchanged. Distinguish backend replay savings from complete edit-loop cost.
 
-Latest qualified experiment: [Phase134 bounded emission and verification reuse](../implementation/phase134/README.md).
+Earlier qualified experiment: [Phase134 bounded emission and verification reuse](../implementation/phase134/README.md).
 The [final capsule](../implementation/phase134/final/README.md) pins source
 `a0001924…`, native N1/N2 and exact Q1=Q2. Sampled full-emission RSS is65.43%
 lower. Separate small request screens report N1−1.83% and N2+0.26% time versus

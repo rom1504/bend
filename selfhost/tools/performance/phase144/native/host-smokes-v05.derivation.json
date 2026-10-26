@@ -1,0 +1,28 @@
+{
+  "kind": "phase144-mode-specific-smoke-successor",
+  "complete": true,
+  "targetsRun": false,
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase144/native/host-smokes-v04.py",
+    "bytes": 9596,
+    "sha256": "2857f1edf79b9704f06bfd33d48bfeda1b943d3fc57b2ecb54a24d39d2f31bce"
+  },
+  "derived": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase144/native/host-smokes-v05.py",
+    "bytes": 8477,
+    "sha256": "458b341716d03bcf2761a8190418ba67a66b28ee056067372717bc7aab71f134"
+  },
+  "contract": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase144/native/session-oracle-contract-v01.py",
+    "bytes": 5601,
+    "sha256": "d66a9274761296a0205922699ebe966d642e25b0a5bc0ffe1c7887f8876510b9"
+  },
+  "edits": [
+    {
+      "before": "    ap=ROOT/'selfhost/build/phase144/final04-small-products01/report.json'\n    ar=read(ap);br=read(a.revision_oracle);ad=plan['sourceAdmission']\n    require(ar['complete'] and ad['checkedApi'] in ar['inputs'] and ad['api'] in ar['inputs'] and\n            ad['source'] in ar['inputs'],'A oracle does not bind selected source/API')\n    aa=[x for x in ar['cases'] if x['name']=='lexer'];require(len(aa)==1 and aa[0]['verified'],'Exact A row missing')\n    aa=aa[0];require(aa['source']==pin(old['logical']) and aa['qbe']['bytes']>0,'A source/product differs')\n    bm=HERE/'hosted-smoke-oracle-v02.mjs';retain(pin(bm))\n    require(pin(bm)['sha256']=='c067f0bd38681bf8e485b9a6cf641b87586af5bf4f1f46fee106a83195f459c7', 'Frozen B oracle method differs')\n    require(br['kind']=='phase144-hosted-revision-oracle' and br['complete'] and br['verified'] and\n            br['compilerSource']==ad['source'] and br['checkedApi']==ad['checkedApi'] and br['api']==ad['api'] and\n            br['request']==dict(logicalPath=old['logical'],logicalSource=aa['source'],source=pin(old['jobs'][1]['source'])) and\n            br['priorEmission']==pin(ap) and pin(bm) in br['inputs'] and br['qbe']['bytes']>0,\n            'Fresh B bytes/logical path/API/oracle binding differs')\n    oracle_binding=dict(aEmission=pin(ap),bEmission=pin(a.revision_oracle),compilerSource=ad['source'],\n        checkedApi=ad['checkedApi'],api=ad['api'],logicalPath=old['logical'],a=aa['qbe'],b=br['qbe'])\n",
+      "after": "    contract_path=HERE/'session-oracle-contract-v01.py'\n    require(pin(contract_path)['sha256']=='d66a9274761296a0205922699ebe966d642e25b0a5bc0ffe1c7887f8876510b9','Frozen mode contract differs')\n    contract=W.module('p144_session_oracle_contract',contract_path)\n    oracle_binding=contract.verify_session_oracle(W,a.revision_oracle,plan)\n",
+      "count": 1
+    }
+  ],
+  "scope": "Require independent checked cold-session A/B and hosted warm equality, complete native byte equality withinthatmode, and separately mandatory ordinary3/QBE/stdout. Preserve cross-mode failure; no compiler change, no broad incremental claim, no default change."
+}

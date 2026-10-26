@@ -1,0 +1,28 @@
+{
+  "kind": "phase144-mode-oracle-snapshot-location-successor",
+  "complete": true,
+  "targetsRun": false,
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase144/native/session-mode-oracle-v01.mjs",
+    "bytes": 6177,
+    "sha256": "c2af420d3a80bb7725c43a54ec9ff3710f5bcba7558b08f8f882514003866a33"
+  },
+  "derived": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase144/native/session-mode-oracle-v02.mjs",
+    "bytes": 6542,
+    "sha256": "15b33bc0abc45af66c4e1f166a7ecb04f4867aaa26749b52c2e48a7cb9de1355"
+  },
+  "edits": [
+    {
+      "before": "for(const p of original.inputs)assert(ar.inputs.some(q=>q.file===p.file&&q.bytes===p.bytes&&q.sha256===p.sha256));",
+      "after": "const originalDir=path.dirname(ad.checkedApi.file),newDir=path.dirname(path.resolve(apiArg));\nconst snapshots=new Set(['method.py','stage0-library.mjs']);\nassert.equal(ar.inputs.length,original.inputs.length);\nfor(const p of original.inputs){\n const file=path.dirname(p.file)===originalDir&&snapshots.has(path.basename(p.file))?path.join(newDir,path.basename(p.file)):p.file;\n assert(ar.inputs.some(q=>q.file===file&&q.bytes===p.bytes&&q.sha256===p.sha256));\n}",
+      "count": 1
+    },
+    {
+      "before": "pin(apiArg),ar.api,...ar.inputs,pin(planArg)",
+      "after": "pin(apiArg),ar.api,...ar.inputs,...original.inputs,pin(planArg)",
+      "count": 1
+    }
+  ],
+  "reason": "Only method.py and stage0-library.mjs copies relocate under the fresh checked API directory; require identical bytes/hashes for those two exact basenames, exact paths for all other checker/source inputs, equal input cardinality, and verify both original and successor copies. Initial preflight failure preserved."
+}

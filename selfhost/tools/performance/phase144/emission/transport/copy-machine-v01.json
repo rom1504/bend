@@ -1,0 +1,73 @@
+{
+  "kind": "phase144-small-transfer-machine-audit",
+  "complete": true,
+  "targetsRun": false,
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase144/small-transfer02/build.json",
+      "bytes": 22554,
+      "sha256": "18f6e999e1058bde210384cdf04db9508982ad554adf82d7c9479043e68e9e12"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase144/small-transfer-fast02/report.json",
+      "bytes": 27885,
+      "sha256": "32f9d270167635df5545fe54316d93523832ceeb0b35399850cc26cc357b8267"
+    },
+    {
+      "file": "/usr/bin/x86_64-linux-gnu-objdump",
+      "bytes": 464664,
+      "sha256": "0a5231844dd50b01c5161cd8857c61fc6c56704c8553d61a20264e8227561930"
+    },
+    {
+      "file": "/usr/bin/x86_64-linux-gnu-nm",
+      "bytes": 44872,
+      "sha256": "87b64b1602fce14d565fb381703cdccfeac6c9e2dc262058b639357d86af56e3"
+    }
+  ],
+  "products": [
+    {
+      "label": "baseline",
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase144/small-transfer02/baseline-compiler",
+        "bytes": 19092400,
+        "sha256": "22380e6ab9a2d565e89aa742d4082ad74493f293c3ccbcfb39b311c15647898e"
+      },
+      "assembly": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase144/emission/transport/baseline-copy.asm",
+        "bytes": 1533,
+        "sha256": "38d1681e5019d6afb73d7089fd4f60818cf48723ae696590a2bf80bbe4254b15"
+      },
+      "symbols": {
+        "p111_set_regs": 16134768,
+        "p111_rt_jump": 16147808,
+        "p111_rt_return": 16147904,
+        "p111_rt_apply": 16147984
+      }
+    },
+    {
+      "label": "candidate",
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase144/small-transfer02/candidate-compiler",
+        "bytes": 19092400,
+        "sha256": "7cf118c5ab55559b0c168cb4f02c7d9292740ded70de2ed50f879c6fa0c8017b"
+      },
+      "assembly": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase144/emission/transport/candidate-copy.asm",
+        "bytes": 2059,
+        "sha256": "5e21aa5226de9e5bd6e7a9b61ee113c769bb8d1f743ef1dbea62309af12262a8"
+      },
+      "symbols": {
+        "p111_set_regs": 16134768,
+        "p111_rt_jump": 16147856,
+        "p111_rt_return": 16147952,
+        "p111_rt_apply": 16148032
+      }
+    }
+  ],
+  "oneWordPath": "Exactly one64-bit MOV load followed byone64-bit MOV store;only count1 reaches it.",
+  "twoWordPath": "Both64-bit MOV loads complete before either64-bit store;exact16Bextent;overlap safe and x86-64 unaligned-safe.",
+  "fallback": "Othernonzero counts retain memmove;NULL/countbounds andcapability tailclear preserved.",
+  "baselineExact": "Mode0 runtimeobject andcompletebinary match parentfinal03 bytes.",
+  "layout": "Runtime following helper shifts e.gjump/return/apply +48bytes; generated object is exact but relocation/layout effects cannot be ruled out as contributing to measurements.",
+  "limits": "Static source/machine audit plus independent byte/extent controls. Not a portable C alignment theorem, new timing run or qualification."
+}

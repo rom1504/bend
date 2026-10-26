@@ -1,0 +1,43 @@
+{
+  "kind": "phase144-mode-specific-smoke-successor",
+  "complete": true,
+  "targetsRun": false,
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase144/native/seal-v03.py",
+    "bytes": 11131,
+    "sha256": "3c88424dc41ddf15d9f0eca94a429a3b0b4a5c3bb30eb62013c67461bb74e4c3"
+  },
+  "derived": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase144/native/seal-v04.py",
+    "bytes": 10930,
+    "sha256": "6a6e1edb0dd5f4df645adf016b5dfa87cb6605952b4b6fffb29f0672536b90d6"
+  },
+  "contract": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase144/native/session-oracle-contract-v01.py",
+    "bytes": 5601,
+    "sha256": "d66a9274761296a0205922699ebe966d642e25b0a5bc0ffe1c7887f8876510b9"
+  },
+  "edits": [
+    {
+      "before": "HERE/'host-smokes-v04.py'",
+      "after": "HERE/'host-smokes-v05.py'",
+      "count": 1
+    },
+    {
+      "before": "    oracle=smoke['oracleBinding'];ad=plan['sourceAdmission']\n    require(oracle['compilerSource']==ad['source'] and oracle['checkedApi']==ad['checkedApi'] and oracle['api']==ad['api'],\n            'Hosted oracle source/API differs')\n    ar=bound(oracle['aEmission']);br=bound(oracle['bEmission'])\n    require(ar['complete'] and ad['checkedApi'] in ar['inputs'] and ad['api'] in ar['inputs'] and ad['source'] in ar['inputs'],\n            'Independent hosted A binding failed')\n    aa=[c for c in ar['cases'] if c['name']=='lexer'];require(len(aa)==1 and aa[0]['verified'] and aa[0]['qbe']==oracle['a'], 'A oracle differs')\n    require(br['kind']=='phase144-hosted-revision-oracle' and br['complete'] and br['verified'] and br['qbe']==oracle['b'] and\n            br['checkedApi']==ad['checkedApi'] and br['api']==ad['api'] and br['compilerSource']==ad['source'] and\n            br['request']['logicalPath']==oracle['logicalPath']==aa[0]['source']['file'] and\n            br['request']['logicalSource']==aa[0]['source'] and br['priorEmission']==oracle['aEmission'] and\n            pin(HERE/'hosted-smoke-oracle-v02.mjs') in br['inputs'],'Independent hosted B binding failed')\n",
+      "after": "    oracle=smoke['oracleBinding']\n    contract_path=HERE/'session-oracle-contract-v01.py'\n    require(pin(contract_path)['sha256']=='d66a9274761296a0205922699ebe966d642e25b0a5bc0ffe1c7887f8876510b9','Frozen mode contract differs')\n    contract=W.module('p144_session_oracle_contract',contract_path)\n    require(contract.verify_session_oracle(W,oracle['modeOracle']['file'],plan)==oracle,\n            'Exact selected-mode oracle binding differs')\n\n",
+      "count": 1
+    },
+    {
+      "before": "q1EqualsQ2=V.exact(b1['retainedIR'],b2['retainedIR']),suites=suites,hostSmokes=pin(a.host_smokes),",
+      "after": "q1EqualsQ2=V.exact(b1['retainedIR'],b2['retainedIR']),suites=suites,hostSmokes=pin(a.host_smokes),\n        incrementalQualified=False,crossModeByteIdentityClaimed=False,\n        sessionModeOracle=smoke['oracleBinding']['modeOracle'],\n        ordinaryModeEquality=smoke['oracleBinding']['ordinaryModeEquality'],\n        preservedCrossModeFailure=smoke['oracleBinding']['crossModeFailure'],",
+      "count": 1
+    },
+    {
+      "before": "plus NativeHost smoke. Pinned single-mutator runtime only.",
+      "after": "plus NativeHost smoke against an independent same-policy session-mode oracle. Ordinary/session raw QBE differs because their optional outer-range policies differ; historical cross-mode identity is not restored. Broad incremental qualification remains false. Pinned single-mutator runtime only.",
+      "count": 1
+    }
+  ],
+  "scope": "Require independent checked cold-session A/B and hosted warm equality, complete native byte equality withinthatmode, and separately mandatory ordinary3/QBE/stdout. Preserve cross-mode failure; no compiler change, no broad incremental claim, no default change."
+}

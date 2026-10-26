@@ -177,6 +177,12 @@ objects. N1/N2 self-reproduction, both focused19 gates and the frozen45 programs
 pass. See the [cold native guide](docs/self_hosted/cold-native-development.md)
 for the explicitly qualified checkpoint, profiling tools and unchanged defaults.
 
+The [Phase144 profiler-led cold-build campaign](implementation/phase144/README.md)
+adds native stage attribution and optimization-outcome counters, then removes
+repeated parser and ownership scans. The final measured cold build takes247s
+versus a fresh320s baseline. See the report for qualification, runtime contract,
+program-performance checks and the still-unmet50s goal.
+
 The [incremental native development guide](docs/self_hosted/incremental-native-development.md)
 links the measured QBE size, memory and object-reuse investigation, its Go-inspired
 architecture, and the remaining boundary before fast source-level edits.

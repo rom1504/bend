@@ -1,0 +1,38 @@
+{
+  "kind": "phase144-final04-host-successor",
+  "complete": true,
+  "targetsRun": false,
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase144/native/host-smokes-v03.py",
+    "bytes": 9598,
+    "sha256": "a404364ca7587942df6411f310f2dc4df29858e2853e43717e0c6a5fc9aac4f5"
+  },
+  "derived": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase144/native/host-smokes-v04.py",
+    "bytes": 9596,
+    "sha256": "2857f1edf79b9704f06bfd33d48bfeda1b943d3fc57b2ecb54a24d39d2f31bce"
+  },
+  "edits": [
+    {
+      "before": "HERE/'workflow-v03.py'",
+      "after": "HERE/'workflow-v04.py'",
+      "count": 1
+    },
+    {
+      "before": "selfhost/build/phase144/predicate-byte-candidate01/report.json",
+      "after": "selfhost/build/phase144/final04-small-products01/report.json",
+      "count": 1
+    },
+    {
+      "before": "hosted-smoke-oracle-v01.mjs",
+      "after": "hosted-smoke-oracle-v02.mjs",
+      "count": 1
+    },
+    {
+      "before": "50055fa2a7668756b8cc0398baecf9908b7458a623827d3441b79645a1494c3b",
+      "after": "c067f0bd38681bf8e485b9a6cf641b87586af5bf4f1f46fee106a83195f459c7",
+      "count": 1
+    }
+  ],
+  "scope": "Bind final04 workflow/source/API and independently checked current-policy A/B oracles. Identical provider fixture, exit/refusal/readback, batch/session, runtime prerequisites, six native gates and uncached final rehash."
+}

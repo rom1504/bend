@@ -4,6 +4,12 @@ The current qualified research compiler is [Phase137 N3](../../implementation/ph
 The commands below preserve the historical Phase134 checkpoint; they do not
 silently select a newer executable.
 
+[Phase142 plan: retained units and10×/100× warm-build ambitions](../../design/phase142/README.md)
+sets out the next experiment: exact producer change evidence into verifier reuse,
+then persistent frontend products and direct unit-to-object construction. It
+defines complete-build targets, validation gates, execution priorities and traps.
+This is a plan, not a new implementation or performance result.
+
 [Phase140 early incremental sessions](../../implementation/phase140/README.md)
 now reuse parser/checker checkpoints, owner preparation, lowered products and
 verified/rendered results across real compiler source edits. This is a checked,

@@ -1,3 +1,13 @@
+# Next design: Phase142 incremental work proportional to the edit
+
+[Plan](../design/phase142/README.md). Planning only; no new target runs or selection.
+First test raw-producer unchanged-product evidence into verifier body admission,
+retaining exact context gates and the independent final verifier. Then compose
+reuse, retain frontend indexes/views and connect units directly to machine objects.
+Targets34.696s/3.4696s are10×/100× warm-build ambitions against the historical
+346.960s fresh build, not cold-build predictions. Price seeding, qualification,
+fallback edits and actual development-service costs separately.
+
 # Latest experiment: Phase141 bounded compiler simplification
 
 [Report](../implementation/phase141/README.md) ·

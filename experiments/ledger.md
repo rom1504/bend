@@ -5881,3 +5881,21 @@ Final checked source18 native producer processes the frozen full compiler produc
 Fresh diagnostic profile:23,157samples, zero loss,99.4% main-thread coverage. Approximate warm window:24.33% reclamation,13.03% ownership/products,11.27% string equality,4.81% ordering; physical observations, not additive savings. Typed comparator callback work really disappeared but scheduler work remains and whole-request gain against source17 was only3.99% once.
 
 101 completed guards,29 failures;92.49min summed workflows/91.40min union. Final capsule990files has byte-exact roundtrip and zero current identity mismatches. Preserve qualified Phase137 N3. Next test exact producer-issued unchanged evidence across raw lowering→verifier admission, retaining context checks and final independent verifier, before another cache layer or broad qualification campaign.
+
+
+## 2026-10-26 — Phase142 incremental development plan
+
+[Design](../design/phase142/README.md), based on878ac52. Documentation only: no
+compiler changes, new target measurements or selection. Retain Phase141's useful
+simplification; stop the broad line-count campaign. Plan producer-owned exact
+change evidence, persistent frontend products, direct retained units→objects,
+a transactional request service and fact-specific invalidation. Begin with one
+raw→verifier admission seam, differential old/new decisions and the unchanged
+independent final gate. Zig/OCaml/Dune evidence informs the contracts.
+
+Historical346.960s fresh /124.679s inclusive warm establishes2.783× for one late
+same-width edit.10× requires≤34.696s;100×≤3.4696s, with unknown verification and
+binding floors explicitly unresolved. Freeze diverse edit families, preserve
+generated-code quality, count complete build/readiness and campaign costs, and
+reserve full native qualification for justified milestones. First execution block
+is separately proposed, not run by writing this design.

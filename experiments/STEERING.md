@@ -1,12 +1,19 @@
-# Next design: Phase142 incremental work proportional to the edit
+# Current experiment: Phase142 retained-product reuse
 
-[Plan](../design/phase142/README.md). Planning only; no new target runs or selection.
-First test raw-producer unchanged-product evidence into verifier body admission,
-retaining exact context gates and the independent final verifier. Then compose
-reuse, retain frontend indexes/views and connect units directly to machine objects.
-Targets34.696s/3.4696s are10×/100× warm-build ambitions against the historical
-346.960s fresh build, not cold-build predictions. Price seeding, qualification,
-fallback edits and actual development-service costs separately.
+[Report](../implementation/phase142/README.md) · [plan](../design/phase142/README.md).
+Initial checkpoint: raw-owner witness and same-request judgment reuse preserve
+complete edited products and failure recovery, but have no demonstrated broad
+whole-request gain. Shared-API timing retains noisy/mixed results; do not promote
+from hit counts. A conservative completed-prefix freshening prototype passes
+source checking and61 controls; complete request evaluation is ongoing.
+
+The component freshening discriminator matches complete loader products/counters
+and shows guarded ratios about0.68/0.49/0.34 on128/512/1024 literal compiler
+prefixes. These are hosted component observations, not executable compiler builds.
+The next stronger opportunity is avoiding completed-prefix materialization under
+actual parser/completion provenance, retaining global acceptance/checker gates.
+No new native image, selected/default change,10× result or qualification.
+Qualified Phase137 N3 remains the fallback; historical full-edit2.783× unchanged.
 
 # Latest experiment: Phase141 bounded compiler simplification
 

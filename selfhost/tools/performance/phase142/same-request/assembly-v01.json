@@ -1,0 +1,85 @@
+{
+  "kind": "phase142-same-request-assembly-v1",
+  "complete": true,
+  "sourceChecked": false,
+  "targetsRun": false,
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase141/integrated-source02/compiler.bend",
+    "bytes": 2942924,
+    "sha256": "f5bfca6d1fe9b378955d6c89ba5ec2428ec1627d7d008eb0c15eac1b51c8a06a"
+  },
+  "modules": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase142/same-request/core-v01.bend",
+      "bytes": 3820,
+      "sha256": "eff8284ed65b27c3af7f34d05839cac5231bfbafb5007f5e5633226ccd54133b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase142/same-request/diagnostic-v01.bend",
+      "bytes": 2621,
+      "sha256": "f8143839e6ac62af684fbc1e658420fc355b8970f771dedd0a33ff8ac2fecf5d"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase142/same-request/controls-v01.bend",
+      "bytes": 10136,
+      "sha256": "ac5dec1d00211e8001ce0787fd2c2deaa188f5058f5e5e8529aced847c2d74d7"
+    }
+  ],
+  "overrides": [
+    "p140b_lowered"
+  ],
+  "added": [
+    "p142sr_array",
+    "p142sr_held",
+    "p142sr_current",
+    "p142sr_reuse",
+    "p142sr_successor",
+    "p142sr_attach",
+    "p142sr_closed",
+    "P142SRDiagnostic",
+    "p142sr_original",
+    "p142sr_diagnose",
+    "p142sr_diagnostic_original",
+    "p142sr_optimize_diagnostic",
+    "p142sr_diagnostic_opened",
+    "p142sr_diagnostic_optimized",
+    "p142srt_original",
+    "p142srt_array",
+    "p142srt_array_cache",
+    "p142srt_cache_same",
+    "p142srt_checked_same",
+    "p142srt_equivalent",
+    "p142srt_rejected",
+    "p142srt_changed",
+    "p142srt_preserved",
+    "p142srt_optimized",
+    "p142srt_optimize",
+    "p142srt_units",
+    "p142srt_rollback",
+    "p142srt_reserved",
+    "p142srt_controls"
+  ],
+  "exports": [
+    "p140s_empty",
+    "p140s_named",
+    "p142srt_controls",
+    "p142sr_original",
+    "p142sr_diagnose",
+    "p142sr_optimize_diagnostic"
+  ],
+  "privateNotAuthorityExports": [
+    "p142sr_array",
+    "p142sr_held",
+    "p142sr_current",
+    "p142sr_reuse",
+    "p142sr_successor",
+    "p142sr_attach",
+    "p142sr_closed"
+  ],
+  "originalFirstVerifierUnchanged": true,
+  "originalDirectVerifierUnchanged": true,
+  "originalFinalVerifierUnchanged": true,
+  "witnessComposition": false,
+  "physicalLines": 252,
+  "scope": "Same-request held successful raw/static judgment only. Previous-array direct reuse retains original ordered context and header checks. Diagnostic tests compare full originals including effects; no production deep equality."
+}

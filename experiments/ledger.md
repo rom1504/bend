@@ -5899,3 +5899,21 @@ binding floors explicitly unresolved. Freeze diverse edit families, preserve
 generated-code quality, count complete build/readiness and campaign costs, and
 reserve full native qualification for justified milestones. First execution block
 is separately proposed, not run by writing this design.
+
+
+## 2026-10-26 — Phase142 first retained-product experiments
+
+[Checkpoint](../implementation/phase142/README.md). Checked raw-owner evidence
+removes183/265 and641/666 first-boundary comparisons, but no complete-request win.
+Two-API timings are confounded: an unchanged-path A/A control appears5.56% slower.
+A separate same-request raw/static-judgment prototype preserves original first,
+direct, namespace and final gates; shared-API complete paired ratios1.0363/0.9743
+are mixed and order-sensitive. Preserve every pair; no native acquisition/promotion.
+
+Freshening probe compares actual pre-fresh completed user products, complete
+loader results and exact final counters. Guarded reuse takes about0.68/0.49/0.34×
+component time on128/512/1024 literal compiler prefixes; this is not a whole-build
+result. Conservative integrated Bend source02 is checked and61 controls pass;
+full edited-request evaluation remains ongoing. Fixed seed/cache provenance,
+exact completed-prefix guard, all original global validation and transactional
+failure behavior are retained. No new theorem or installed change.

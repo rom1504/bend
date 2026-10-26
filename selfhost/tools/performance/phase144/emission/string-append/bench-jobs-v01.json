@@ -1,0 +1,164 @@
+{
+  "kind": "phase144-append-four-case-frozen-root-plan",
+  "complete": true,
+  "executed": false,
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p143-integrated-api03/report.json",
+      "bytes": 3231,
+      "sha256": "29102c8e35630d3109ae4cbc9c29c4c23949cda30e61c96d15ea5213b0fe21fc"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p144-append-api01/report.json",
+      "bytes": 3294,
+      "sha256": "a032c5b32bfcc9dced5b7096dcd01092df499bfdd94e5f4b44960e17e6119ec9"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase144/emission/string-append/emit-v01.mjs",
+      "bytes": 3348,
+      "sha256": "b92cc8f917e1f28885ae75e13caba36a4faf13109be935f92644cb538a328544"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase144/emission/string-append/bench-cases-v01.json",
+      "bytes": 11391,
+      "sha256": "ec2fca5318956a8f98de5ba1b4a8edfaf4e6a995dda033e0a3e48c06cba26abc"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase144/emission/string-append/bench-build-v01.py",
+      "bytes": 5612,
+      "sha256": "99db8bf03c79d0f0e8c00a916393966560ef23acc5dea974422e1a7a8c6d0c9f"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase144/emission/string-append/bench-time-v01.py",
+      "bytes": 3191,
+      "sha256": "c1e45a8041f574fe68cff1563cd57ec3ca68e5969866a9ca543d3bc639b582a5"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase123/build-aligned.py",
+      "bytes": 3923,
+      "sha256": "67fffc05bdbedf2fcf13eace395fd203f45a981b3a1d7de000d465fcc2693701"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase112/benchmark45/run.py",
+      "bytes": 23323,
+      "sha256": "d1b3ea82c6411626a3cdeb24c3ef6a36bf8a9d860ccc265d72a55c266e70998c"
+    }
+  ],
+  "jobs": [
+    {
+      "name": "append-bench-baseline-emit01",
+      "command": [
+        "python3",
+        "-B",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase111/guard.py",
+        "--out",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase144/append-bench-baseline-emit01-guard",
+        "--seconds",
+        "180",
+        "--cpu",
+        "3",
+        "--rss-mib",
+        "3072",
+        "--available-mib",
+        "16384",
+        "--file-mib",
+        "64",
+        "--",
+        "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/bun-1.4.3/bun",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase144/emission/string-append/emit-v01.mjs",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p143-integrated-api03/report.json",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase144/emission/string-append/bench-cases-v01.json",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase144/append-bench-baseline-emit01"
+      ],
+      "resources": "Root CPU3 serial lane only; no overlapping clean timings; 3GiB tree RSS,16GiB available floor."
+    },
+    {
+      "name": "append-bench-candidate-emit01",
+      "command": [
+        "python3",
+        "-B",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase111/guard.py",
+        "--out",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase144/append-bench-candidate-emit01-guard",
+        "--seconds",
+        "180",
+        "--cpu",
+        "3",
+        "--rss-mib",
+        "3072",
+        "--available-mib",
+        "16384",
+        "--file-mib",
+        "64",
+        "--",
+        "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/bun-1.4.3/bun",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase144/emission/string-append/emit-v01.mjs",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p144-append-api01/report.json",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase144/emission/string-append/bench-cases-v01.json",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase144/append-bench-candidate-emit01"
+      ],
+      "resources": "Root CPU3 serial lane only; no overlapping clean timings; 3GiB tree RSS,16GiB available floor."
+    },
+    {
+      "name": "append-bench-builds01",
+      "command": [
+        "python3",
+        "-B",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase111/guard.py",
+        "--out",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase144/append-bench-builds01-guard",
+        "--seconds",
+        "180",
+        "--cpu",
+        "3",
+        "--rss-mib",
+        "3072",
+        "--available-mib",
+        "16384",
+        "--file-mib",
+        "64",
+        "--",
+        "python3",
+        "-B",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase144/emission/string-append/bench-build-v01.py",
+        "--baseline",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase144/append-bench-baseline-emit01/report.json",
+        "--candidate",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase144/append-bench-candidate-emit01/report.json",
+        "--out",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase144/append-bench-builds01"
+      ],
+      "resources": "Root CPU3 serial lane only; no overlapping clean timings; 3GiB tree RSS,16GiB available floor."
+    },
+    {
+      "name": "append-bench-timing01",
+      "command": [
+        "python3",
+        "-B",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase111/guard.py",
+        "--out",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase144/append-bench-timing01-guard",
+        "--seconds",
+        "120",
+        "--cpu",
+        "3",
+        "--rss-mib",
+        "3072",
+        "--available-mib",
+        "16384",
+        "--file-mib",
+        "64",
+        "--",
+        "python3",
+        "-B",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase144/emission/string-append/bench-time-v01.py",
+        "--builds",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase144/append-bench-builds01/report.json",
+        "--out",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase144/append-bench-timing01"
+      ],
+      "resources": "Root CPU3 serial lane only; no overlapping clean timings; 3GiB tree RSS,16GiB available floor."
+    }
+  ],
+  "scope": "Current isolated append candidate versus exact Phase143 parent. Uses four unchanged Phase131 sources/counts. Retained objects reused only on complete byte/runtime/tool/method identity. Four balanced pairs =32 timed observations; no full-corpus or upstream score claim."
+}

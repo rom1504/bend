@@ -1,0 +1,55 @@
+[
+  {
+    "line": 49248,
+    "header": "function l $p113d_$p118.trmc.$direct.String.append(l %state, l %v_v_4294967295, l %v_v_4294967294, l %v_p118_root, l %v_p118_parent) {",
+    "lines": 61,
+    "calls": [
+      "%v_p118_finished_6 =l call $p118_rt_finish(l %state, l %v_p118_root, l %v_p118_parent, l %v_v_4294967292)",
+      "%v_ignored =l call $p125_rt_take2(l %state, l %v_v_4294967288, l %v_scratch)",
+      "%v_p118_node_19 =l call $p118_rt_extend1(l %state, l %v_p118_parent, w 25, l %v_scratch)",
+      "%v_ignored =l call $p111_rt_fail(l %state, w 4)",
+      "%v_p118_finished_20 =l call $p118_rt_finish(l %state, l %v_p118_root, l %v_p118_parent, l 0)"
+    ],
+    "path": "selfhost/tools/performance/phase144/emission/string-append/worker-49248.ssa"
+  },
+  {
+    "line": 49310,
+    "header": "function l $p113d_$direct.String.append(l %state, l %v_v_4294967295, l %v_v_4294967294) {",
+    "lines": 8,
+    "calls": [
+      "%v_p118_public_result =l call $p113d_$p118.trmc.$direct.String.append(l %state, l %v_v_4294967295, l %v_v_4294967294, l 0, l 0)"
+    ],
+    "path": "selfhost/tools/performance/phase144/emission/string-append/worker-49310.ssa"
+  },
+  {
+    "line": 606122,
+    "header": "function l $p112w_String.append(l %state) {",
+    "lines": 11,
+    "calls": [
+      "%v_value =l call $p111_rt_closure(l %state, w 54313, l %v_scratch, w 0)"
+    ],
+    "path": "selfhost/tools/performance/phase144/emission/string-append/worker-606122.ssa"
+  },
+  {
+    "line": 2871007,
+    "header": "export function l $p111_String.append(l %state) {",
+    "lines": 8,
+    "calls": [
+      "%v_value =l call $p111_rt_closure(l %state, w 54313, l %v_scratch, w 0)",
+      "%v_reply =l call $p111_rt_return(l %state, l %v_scratch, w 1)"
+    ],
+    "path": "selfhost/tools/performance/phase144/emission/string-append/worker-2871007.ssa"
+  },
+  {
+    "line": 2871042,
+    "header": "export function l $p111_$direct.String.append(l %state) {",
+    "lines": 10,
+    "calls": [
+      "%p113_arg_0 =l call $p111_rt_reg_get(l %state, w 0)",
+      "%p113_arg_1 =l call $p111_rt_reg_get(l %state, w 1)",
+      "%p113_public_value =l call $p113d_$direct.String.append(l %state, l %p113_arg_0, l %p113_arg_1)",
+      "%p113_public_reply =l call $p111_rt_return(l %state, l %p113_public_out, w 1)"
+    ],
+    "path": "selfhost/tools/performance/phase144/emission/string-append/worker-2871042.ssa"
+  }
+]

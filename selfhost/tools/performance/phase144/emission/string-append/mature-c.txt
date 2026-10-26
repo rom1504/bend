@@ -1,0 +1,132 @@
+1645: INLINE void p102_trmc_keep_cell(Env e, Term* state, Cls cls, Loc cell) {
+1646:   if (cell < HEAP_OFF) return;
+1647:   if (state[2]) spare_free(e, (Cls)state[3], (Loc)state[2]);
+1648:   state[2] = cell;
+1649:   state[3] = cls;
+1650: }
+1651: 
+1652: INLINE Loc p102_trmc_take_cell(Env e, Term* state, Cls cls) {
+1653:   if (state[2] && state[3] == cls) {
+1654:     Loc cell = (Loc)state[2];
+1655:     state[2] = 0;
+1656:     return cell;
+1657:   }
+1658:   return heap_alloc(e, cls);
+1659: }
+1660: NF_INLINE Term NF_FID_36_111_98_115_101_114_118_101_114_46_83_116_114_105_110_103_46_99_109_112_(Env e, bool seq, Term* nf_out, Term v_4294967295, Term v_4294967294);
+
+3226: NF_INLINE Term NF_FID_83_116_114_105_110_103_46_97_112_112_101_110_100__trmc(Env e, bool seq, Term* nf_out, Term v_4294967295, Term v_4294967294) {
+3227: u32 nf_poll = 0;
+3228: nf_again:;
+3229: if (err_spun(e.mem, &nf_poll)) { return 0; }
+3230: {
+3231: Term v_4294967293;
+3232: {
+3233: v_4294967293 = v_4294967295;
+3234: goto nf_join_4;
+3235: }
+3236: nf_join_4:;
+3237: if (!seq && err_seen(e.mem)) { return 0; }
+3238: Term v_4294967292;
+3239: {
+3240: v_4294967292 = v_4294967294;
+3241: goto nf_join_5;
+3242: }
+3243: nf_join_5:;
+3244: if (!seq && err_seen(e.mem)) { return 0; }
+3245: if ((term_aux(v_4294967293) == CID_SNIL)) {
+3246: if (nf_out[1] != 0) { e.mem[nf_out[1]] = nf_out[4] ? rfc_seal(e, v_4294967292) : v_4294967292; } else { nf_out[0] = v_4294967292; }
+3247: return 1;
+3248: } else {
+3249: Term v_4294967289;
+3250: {
+3251: v_4294967289 = v_4294967293;
+3252: goto nf_join_8;
+3253: }
+3254: nf_join_8:;
+3255: if (!seq && err_seen(e.mem)) { return 0; }
+3256: Term v_4294967288;
+3257: {
+3258: v_4294967288 = v_4294967292;
+3259: goto nf_join_9;
+3260: }
+3261: nf_join_9:;
+3262: if (!seq && err_seen(e.mem)) { return 0; }
+3263: if ((term_aux(v_4294967289) == CID_SCON)) {
+3264: Term fields[2];
+3265: p102_trmc_keep_cell(e, nf_out, cls_fit(2), ctr_take(e, v_4294967289, 2, fields));
+3266: #if !DEVICE && NATIVE_FIELD32_CID_SCON_0
+3267: u32
+3268: #else
+3269: Term
+3270: #endif
+3271: v_4294967285 = fields[0];
+3272: #if !DEVICE && NATIVE_FIELD32_CID_SCON_1
+3273: u32
+3274: #else
+3275: Term
+3276: #endif
+3277: v_4294967284 = fields[1];
+3278: Term v_4294967283;
+3279: {
+3280: v_4294967283 = v_4294967285;
+3281: goto nf_join_15;
+3282: }
+3283: nf_join_15:;
+3284: if (!seq && err_seen(e.mem)) { return 0; }
+3285: Term v_4294967282;
+3286: {
+3287: v_4294967282 = v_4294967284;
+3288: goto nf_join_16;
+3289: }
+3290: nf_join_16:;
+3291: if (!seq && err_seen(e.mem)) { return 0; }
+3292: Term v_4294967281;
+3293: {
+3294: v_4294967281 = v_4294967288;
+3295: goto nf_join_17;
+3296: }
+3297: nf_join_17:;
+3298: if (!seq && err_seen(e.mem)) { return 0; }
+3299: u64 nd_18 = p102_trmc_take_cell(e, nf_out, cls_fit(2));
+3300: #if !DEVICE && NATIVE_COLD_CTORS && !NATIVE_HOT_CID_SCON
+3301: e.mem[nd_18 + 0] = v_4294967283;
+3302: e.mem[nd_18 + 1] = TERM_HOLE;
+3303: #else
+3304: e.mem[nd_18 + 0] = rfc_seal(e, v_4294967283);
+3305: e.mem[nd_18 + 1] = rfc_seal(e, TERM_HOLE);
+3306: #endif
+3307: Term ntr_node_19 = term_ctr(CID_SCON, nd_18);
+3308: if (nf_out[1] != 0) { e.mem[nf_out[1]] = nf_out[4] ? rfc_seal(e, ntr_node_19) : ntr_node_19; } else { nf_out[0] = ntr_node_19; }
+3309: nf_out[1] = term_loc(ntr_node_19) + 1;
+3310: #if !DEVICE && NATIVE_COLD_CTORS && !NATIVE_HOT_CID_SCON
+3311: nf_out[4] = 0;
+3312: #else
+3313: nf_out[4] = 1;
+3314: #endif
+3315: {
+3316: Term nf_arg_0 = v_4294967282;
+3317: Term nf_arg_1 = v_4294967281;
+3318: v_4294967295 = nf_arg_0;
+3319: v_4294967294 = nf_arg_1;
+3320: goto nf_again;
+3321: }
+3322: } else {
+3323: term_sink(e, v_4294967289);
+3324: term_sink(e, v_4294967288);
+3325: err_post(e.mem, ERR_FIDS); return 0;
+3326: }
+3327: }
+3328: }
+3329: return 0;
+3330: }
+3331: NF_INLINE Term NF_FID_83_116_114_105_110_103_46_97_112_112_101_110_100_(Env e, bool seq, Term* nf_out, Term v_4294967295, Term v_4294967294) {
+3332: Term ntr_state[5] = { TERM_HOLE, 0, 0, 0, 0 };
+3333: Term ntr_ok = NF_FID_83_116_114_105_110_103_46_97_112_112_101_110_100__trmc(e, seq, ntr_state, v_4294967295, v_4294967294);
+3334: if (ntr_state[2]) spare_free(e, (Cls)ntr_state[3], (Loc)ntr_state[2]);
+3335: if (!ntr_ok) { term_sink(e, ntr_state[0]); return 0; }
+3336: nf_out[0] = ntr_state[0];
+3337: return 1;
+3338: }
+3339: NF_INLINE Term NF_FID_36_112_114_111_100_117_99_116_46_78_97_116_46_115_104_111_119_46_112_117_116_(Env e, bool seq, Term* nf_out, Term v_4294967294, Term v_4294967293) {
+3340: u32 nf_poll = 0;

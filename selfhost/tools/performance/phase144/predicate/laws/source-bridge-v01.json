@@ -1,0 +1,51 @@
+{
+  "kind": "phase144-chooser-law-source-bridge",
+  "complete": true,
+  "checked": false,
+  "independentlyChecked": false,
+  "targetsRun": false,
+  "source": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase144/integrated-source01/compiler.bend",
+    "bytes": 2985553,
+    "sha256": "992893e6cf6a5bf7d6d092812b3a5da20852feca882005f32a91e607cef0483b"
+  },
+  "sourceDeclarations": [
+    "kc",
+    "nt_choose",
+    "f_choose"
+  ],
+  "proofProduction": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase144/predicate/laws/production-v01.bend",
+    "bytes": 786,
+    "sha256": "216decdb6abc715593fa7e793caa3ed058204d6f8a6046be2a3d16deb19a10e0"
+  },
+  "laws": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase144/predicate/laws/laws-v01.bend",
+    "bytes": 1001,
+    "sha256": "555fe8a22f753de021dbfe5ffe4e408d47ce11bf39f5d724414194fd4208f42f"
+  },
+  "negative": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase144/predicate/laws/reject-unswapped-v01.bend",
+    "bytes": 306,
+    "sha256": "f3340141cd032f370c348699590a8d91bf3169f8065677bc1a9886aff4179d54"
+  },
+  "change": "Exact full declarations copied, removing only the leading @unsafe annotation; no algorithm, type, binder or branch changes. Safe checking must succeed before a theorem is claimed.",
+  "scope": "Returned value equality for an arbitrary result type and supplied Unit->A thunk values, for each Bool constructor. Does not prove arbitrary argument evaluation reordering, foreign effects, allocation/lifetime behavior, code generation or all 87 census sites.",
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase144/integrated-source01/compiler.bend",
+      "bytes": 2985553,
+      "sha256": "992893e6cf6a5bf7d6d092812b3a5da20852feca882005f32a91e607cef0483b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/prepare.py",
+      "bytes": 6138,
+      "sha256": "33a4a40ab35ef705cbe99cff20b4b6a2c9792eee4ad8c9597a006d22ae22defa"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/bend2/base.bend",
+      "bytes": 75064,
+      "sha256": "99ac43f2b2bb3e3f39acdcedcecbbd3cb44749ce13969c827d6973fa66f7facf"
+    }
+  ]
+}

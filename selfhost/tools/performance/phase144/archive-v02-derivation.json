@@ -1,0 +1,28 @@
+{
+  "kind": "phase144-archive-successor",
+  "complete": true,
+  "targetsRun": false,
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase144/archive-v01.py",
+    "bytes": 11325,
+    "sha256": "054322c53b48baaf110ec30533eacaef204109120f4d08c3503cdb18f584848c"
+  },
+  "successor": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase144/archive-v02.py",
+    "bytes": 11578,
+    "sha256": "f950b73d84b859b19a674ee43824ee83290eb4332e199ffb3ba105e700a50536"
+  },
+  "edits": [
+    {
+      "before": "'stages02/runtime/sampler.so'):",
+      "after": "'stages02/runtime/sampler.so',\n                 'final03-stages01/owners.json', 'final03-stages01/runtime/program',\n                 'final03-stages01/runtime/runtime.o',\n                 'generic-stages01/runtime03/sampler.so'):",
+      "count": 1
+    },
+    {
+      "before": "assert now['bytes']==row['bytes'] and now['sha256']==row['sha256']",
+      "after": "assert now['bytes']==row['bytes'] and now['sha256']==row['sha256']\n        assert p.stat().st_mode & 0o777 == row['mode']",
+      "count": 1
+    }
+  ],
+  "scope": "Retains exact final03 diagnostic owner map/image/runtime and reused sampler in addition to reviewed v01 evidence. Adds final mode recheck. No archive created; final profile products must exist before inventory/archive."
+}

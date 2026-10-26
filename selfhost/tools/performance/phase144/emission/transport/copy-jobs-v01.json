@@ -1,0 +1,83 @@
+{
+  "complete": true,
+  "targetsRun": false,
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase144/small-transfer02/manifest.json",
+      "bytes": 12517,
+      "sha256": "a30478eeaef632abca465291384c7bca11fd9a95ad0de109291ac2022cbf5606"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase144/emission/transport/build-copy-v01.py",
+      "bytes": 2456,
+      "sha256": "db35f594b7da1e962686b2a8f9bc51e4dd8d84e554bc7ddbace73d7608612bda"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase144/emission/transport/fast-request-v01.py",
+      "bytes": 3790,
+      "sha256": "499ff9899672f7182181ba030c7a9e01dd62e405247645ca0ca0bdcb7acac22e"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase144/emission/transport/copy-controls-v01.c",
+      "bytes": 3782,
+      "sha256": "980886a901fcd7ab22dcb66cbb019ccb09b63226b214716c30f82f383398a55f"
+    }
+  ],
+  "jobs": [
+    {
+      "name": "small-transfer-build02",
+      "command": [
+        "python3",
+        "-B",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase111/guard.py",
+        "--out",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase144/small-transfer-build02-guard",
+        "--seconds",
+        "120",
+        "--cpu",
+        "3",
+        "--rss-mib",
+        "3072",
+        "--available-mib",
+        "16384",
+        "--file-mib",
+        "64",
+        "--",
+        "python3",
+        "-B",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase144/emission/transport/build-copy-v01.py",
+        "--plan",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase144/small-transfer02/manifest.json"
+      ]
+    },
+    {
+      "name": "small-transfer-fast02",
+      "command": [
+        "python3",
+        "-B",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase111/guard.py",
+        "--out",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase144/small-transfer-fast02-guard",
+        "--seconds",
+        "180",
+        "--cpu",
+        "3",
+        "--rss-mib",
+        "3072",
+        "--available-mib",
+        "16384",
+        "--file-mib",
+        "64",
+        "--",
+        "python3",
+        "-B",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase144/emission/transport/fast-request-v01.py",
+        "--build",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase144/small-transfer02/build.json",
+        "--out",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase144/small-transfer-fast02"
+      ]
+    }
+  ],
+  "scope": "Root-only controls\u2192same final03 object relink\u2192real Lexer screen. Full-source run only if root separately authorizes after inspecting results."
+}

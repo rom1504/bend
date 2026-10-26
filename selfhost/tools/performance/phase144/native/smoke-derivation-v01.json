@@ -1,0 +1,96 @@
+{
+  "kind": "phase144-explicit-runtime-smoke-derivation",
+  "complete": true,
+  "targetsRun": false,
+  "rows": [
+    {
+      "parent": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase140/session/run-native-v01.py",
+        "bytes": 6611,
+        "sha256": "ce51c42240ad6c6fcd04cb1475e51baee457e956c064b479c34d50022d1dce05"
+      },
+      "derived": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase144/native/session-v01.py",
+        "bytes": 6920,
+        "sha256": "208c1a6d2086638427900cc59717497e34337d1e9a0af466945019fb0d54f23f"
+      },
+      "edits": [
+        {
+          "before": "for x in ['image','a','b','out']",
+          "after": "for x in ['image','a','b','out','runtime']",
+          "count": 1
+        },
+        {
+          "before": "out.is_relative_to(ROOT/'selfhost/build/phase140')",
+          "after": "out.is_relative_to(ROOT/'selfhost/build/phase144')",
+          "count": 1
+        },
+        {
+          "before": "Fresh Phase140 output required",
+          "after": "Fresh Phase144 output required",
+          "count": 1
+        },
+        {
+          "before": "inputs=[pin(__file__),pin(selection),pin(args.image),pin(args.a),pin(args.b),sel['runtime'],*pins]",
+          "after": "image_receipt=args.image.resolve().parent/'report.json';linked=json.loads(image_receipt.read_text())\n require(linked['complete'] and linked['binary']==pin(args.image) and linked['runtime']==pin(args.runtime),'Actual image/runtime link required')\n inputs=[pin(__file__),pin(selection),pin(args.image),pin(image_receipt),pin(args.a),pin(args.b),pin(args.runtime),*pins]",
+          "count": 1
+        },
+        {
+          "before": "transport_path=Path(__file__).parent/'transport.py'",
+          "after": "transport_path=ROOT/'selfhost/tools/performance/phase140/session/transport.py'",
+          "count": 1
+        },
+        {
+          "before": "runtime=sel['runtime']",
+          "after": "runtime=pin(args.runtime)",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "parent": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase140/session/run-batch-v02.py",
+        "bytes": 7078,
+        "sha256": "d3a0730fafb65425fe5530e5f324848752387b4f710da5b47089d76a4822b184"
+      },
+      "derived": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase144/native/batch-v01.py",
+        "bytes": 7418,
+        "sha256": "a2ffcd3ef7fe06ff5d9b8dcc7b68fc7bce482e5d3eca62c1c60f33d8163e3ca0"
+      },
+      "edits": [
+        {
+          "before": "HERE=Path(__file__).resolve().parent",
+          "after": "ROOT=Path(__file__).resolve().parents[5]\nHERE=ROOT/'selfhost/tools/performance/phase140/session'",
+          "count": 1
+        },
+        {
+          "before": "for x in ['image','plan','out']",
+          "after": "for x in ['image','plan','out','runtime']",
+          "count": 1
+        },
+        {
+          "before": "out.is_relative_to(ROOT/'selfhost/build/phase140')",
+          "after": "out.is_relative_to(ROOT/'selfhost/build/phase144')",
+          "count": 1
+        },
+        {
+          "before": "Fresh output required",
+          "after": "Fresh Phase144 output required",
+          "count": 1
+        },
+        {
+          "before": "inputs=[pin(__file__),pin(HERE/'run-native-v01.py'),pin(HERE/'transport-v02.py'),pin(a.plan),pin(a.image),pin(selected_path),s['runtime'],*oldpins]",
+          "after": "image_receipt=a.image.resolve().parent/'report.json';linked=json.loads(image_receipt.read_text())\n require(linked['complete'] and linked['binary']==pin(a.image) and linked['runtime']==pin(a.runtime),'Actual image/runtime link required')\n inputs=[pin(__file__),pin(HERE/'run-native-v01.py'),pin(HERE/'transport-v02.py'),pin(a.plan),pin(a.image),pin(image_receipt),pin(selected_path),pin(a.runtime),*oldpins]",
+          "count": 1
+        },
+        {
+          "before": "runtime=s['runtime']",
+          "after": "runtime=pin(a.runtime)",
+          "count": 1
+        }
+      ]
+    }
+  ],
+  "scope": "Only exact linked-runtime identity and fresh output namespace; same compiler commands, framed decoders and old frozen oracle checks."
+}

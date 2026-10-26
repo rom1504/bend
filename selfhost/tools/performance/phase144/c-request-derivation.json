@@ -1,0 +1,14 @@
+{
+  "parent": "selfhost/tools/performance/phase130/native-request.py",
+  "parentSha256": "e32e5e99502a9b6485e54ce6669200ee48eaba0c289d7bfb2809a1dc6ef0bf2f",
+  "output": "selfhost/tools/performance/phase144/c-request-v01.py",
+  "outputSha256": "b3ede623f0350bb4279bd3cd3b6f381f0c8351d6ec747ee22b50372f84ddf340",
+  "changes": {
+    "Capture an experimental native source-to-QBE request; outer guard owns CPU/RSS.": "Capture the same Bend compiler through upstream C; outer guard owns CPU/RSS.",
+    "ROOT/'selfhost/build/phase130'": "ROOT/'selfhost/build/phase144'",
+    "'Fresh Phase130 output required'": "'Fresh Phase144 output required'",
+    "'--','phase111',str(source)": "'--',str(source)",
+    "kind='phase130-native-source-qbe-request'": "kind='phase144-upstream-c-source-qbe-request'"
+  },
+  "additionalGuard": "Require exact Phase143 source and upstream-C build receipt; launch omits QBE sentinel."
+}

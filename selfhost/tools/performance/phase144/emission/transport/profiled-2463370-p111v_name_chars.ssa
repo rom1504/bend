@@ -1,0 +1,26 @@
+export function l $p111_FID_36_112_49_49_49_46_107_46_51_53_56_53_49_53_53_(l %state) {
+@entry
+%v_scratch =l alloc8 2048
+%t_1 =l add %state, 16
+%v_p114t_0_sp =l loadl %t_1
+%v_p114t_0_next_sp =l add %v_p114t_0_sp, 18446744073709551608
+%t_2 =l add %state, 16
+storel %v_p114t_0_next_sp, %t_2
+%v_ignored =l copy 0
+%t_4 =l add %state, 16
+%v_p114t_3_sp =l loadl %t_4
+%v_v_4291382143 =l loadl %v_p114t_3_sp
+%t_5 =l add %state, 40
+%v_v_4291382142 =l loadl %t_5
+storel %v_v_4291382143, %v_scratch
+%t_6 =l add %v_scratch, 8
+storel %v_v_4291382142, %t_6
+%p112_at_0 =l add %v_scratch, 0
+%p112_arg_0 =l loadl %p112_at_0
+%p112_at_1 =l add %v_scratch, 8
+%p112_arg_1 =l loadl %p112_at_1
+%p112_result =l call $p112w_FID_36_100_105_114_101_99_116_46_66_111_111_108_46_97_110_100_(l %state, l %p112_arg_0, l %p112_arg_1)
+storel %p112_result, %v_scratch
+%p112_reply =l call $p111_rt_return(l %state, l %v_scratch, w 1)
+ret %p112_reply
+}

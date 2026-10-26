@@ -1,0 +1,84 @@
+{
+  "kind": "phase144-native-workflow-preparation-review",
+  "complete": true,
+  "targetsRun": false,
+  "nativeQualified": false,
+  "methods": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase144/native/workflow-v03.py",
+      "bytes": 18523,
+      "sha256": "74a6e953c4a9951b7a1d34479cbd2872f337d5cb62bf65fca68c6a26e145a373"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase144/native/host-smokes-v02.py",
+      "bytes": 9598,
+      "sha256": "15063dfd5522c753587fceb688da7f1484a7b054ca069acafd6b14ef64d31d89"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase144/native/seal-v01.py",
+      "bytes": 11186,
+      "sha256": "d38633209662f941e7c20d6a7d4544b08118c035b8cec5bc2c4c2ecaa0b95585"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase144/native/host-effects-v01.bend",
+      "bytes": 1762,
+      "sha256": "90975ac3e61bd3f49c2aec4cabf378702131f6685d378a0b777818a6c3317ad6"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase144/native/session-v01.py",
+      "bytes": 6920,
+      "sha256": "208c1a6d2086638427900cc59717497e34337d1e9a0af466945019fb0d54f23f"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase144/native/batch-v01.py",
+      "bytes": 7418,
+      "sha256": "a2ffcd3ef7fe06ff5d9b8dcc7b68fc7bce482e5d3eca62c1c60f33d8163e3ca0"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase144/native/smoke-derivation-v01.json",
+      "bytes": 4228,
+      "sha256": "8dbd1ff735551e49665b2de294df0479617bab72f6e1f1ef44238d6e08049e5b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase144/native/hosted-smoke-oracle-v01.mjs",
+      "bytes": 4528,
+      "sha256": "50055fa2a7668756b8cc0398baecf9908b7458a623827d3441b79645a1494c3b"
+    }
+  ],
+  "sourcePreflight": {
+    "sourceSha256": "31e1b13a8584130c6a6be67ef6e1f2a6a373433c9c5cac9e880fa3fe403e3ea2",
+    "checkedApi": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p144-integrated-api03/report.json",
+      "bytes": 3613,
+      "sha256": "804802783e454ab3aa8c9df18ff26a481e3f1f2d715e7cf373fadfc63da4971d"
+    },
+    "finiteControls": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase144/predicate-integrated-controls01/report.json",
+      "bytes": 9153,
+      "sha256": "5966eccd412b975a6da3127b93f0a75d4ce3ebbe7e838d13b6b55a5c3a88e365"
+    },
+    "count": 127,
+    "completeSourceReplay": true,
+    "runtimeSha256": "2d07832382a11d7e993124ecc70452e4e1a3b7f753cf429343e1183cd8e493a3"
+  },
+  "reviews": [
+    {
+      "reviewer": "/root/p127_libc_review",
+      "scope": "Source-only acquisition/sealing/provider-smoke review",
+      "verdict": "PASS",
+      "finding": "Actual source/runtime/pipe/fixed-point/coverage joins preserved. Stronger final sealer authenticates provider observations, fresh hosted A/B bindings, session/batch link identities, prior61/122/3+word/source evidence, then uncached final rehash."
+    },
+    {
+      "reviewer": "/root/broad_applications",
+      "scope": "Source-only hosted B oracle review",
+      "verdict": "PASS",
+      "finding": "Unchanged checked Bend prepare/plan/sealed cursor, physical B bytes at logical A path, exact final checked API/source and complete input rehash."
+    }
+  ],
+  "limitations": [
+    "No new native qualification result is created by this preparation receipt.",
+    "Root alone executes guarded targets; actual N2/fixed-point/semantic/smoke receipts are still required.",
+    "Finite provider behavior is not a race-freedom proof or coverage of every provider failure.",
+    "Smoke supervisor end-of-run verifier caches pins; final acceptance requires the sealer uncached rehash."
+  ]
+}

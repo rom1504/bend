@@ -1,0 +1,151 @@
+{
+  "complete": true,
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase112/benchmark45/manifest01.json",
+      "bytes": 229972,
+      "sha256": "80b07bdc76528bf58ae322ffed470eaa8ccdc8fa3d5cea73aa6d652d66cc6adc"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/combined-programs01/selected-emission.json",
+      "bytes": 83035,
+      "sha256": "c373e08ff169d46abb854d943513fb62bf6160054f555153ac84d0aa87ed5dec"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase131/combined-programs01/runtime/report.json",
+      "bytes": 595180,
+      "sha256": "192683c22f4a915ff05f9c86daea4555df4303d95b318728c7e58c70647abfdc"
+    }
+  ],
+  "cases": [
+    {
+      "name": "lexer",
+      "family": "lexer",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/fixtures01/lexer.bend",
+        "bytes": 9095,
+        "sha256": "bfb62870600b63fd6ec6088471a2d805fabb819a7f2e9d47c9b0ef3c368d169a"
+      },
+      "expectedStdout": "1822208108\n",
+      "expectedStdoutEvidence": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase111/coverage/full45/expected/lexer.stdout",
+        "bytes": 11,
+        "sha256": "ce7ae380f780c64e26dc0b2fd2f547364c4e837bdecd61714cf04150768acf0a"
+      },
+      "runtimeArgs": [
+        8,
+        0
+      ],
+      "repetitions": 685,
+      "warmups": 32,
+      "stdoutEvidence": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase111/coverage/full45/expected/lexer.stdout",
+        "bytes": 11,
+        "sha256": "ce7ae380f780c64e26dc0b2fd2f547364c4e837bdecd61714cf04150768acf0a"
+      },
+      "retainedQbe": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/p131-combined-literals01-wrappers/lexer.ssa",
+        "bytes": 934634,
+        "sha256": "35e301b60145b1e056ef59528fcef48b7ec535b0d03898e6a8ad077dde09e6d2"
+      },
+      "retainedBuild": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p131-p131-combined-literals01-smoke-lexer-build/report.json",
+        "bytes": 5211,
+        "sha256": "b02ba40b63a455648bd77ec3f20b0a6804a4e87f4d4bf64d7e6a90322d691e5f"
+      },
+      "historicalArgumentVector": [
+        "685",
+        "32",
+        "8",
+        "0"
+      ],
+      "scope": "Exact frozen benchmark45 manifest01 source and counts; compare current binaries only."
+    },
+    {
+      "name": "coverage-map-churn-128",
+      "family": "map-churn",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/fixtures01/coverage-map-churn-128.bend",
+        "bytes": 3659,
+        "sha256": "cd22c831c180c0de12d84aeb80debf4881d08cbd18fcf8f6d634153fba2feb03"
+      },
+      "expectedStdout": "3714872484\n",
+      "expectedStdoutEvidence": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase111/coverage/full45/expected/coverage-map-churn-128.stdout",
+        "bytes": 11,
+        "sha256": "f10e5e29d4f448b0f6aeef222b95d6790cf410196cd6d64d27156e08c7ecafb8"
+      },
+      "runtimeArgs": [
+        128,
+        123
+      ],
+      "repetitions": 1050,
+      "warmups": 32,
+      "stdoutEvidence": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase111/coverage/full45/expected/coverage-map-churn-128.stdout",
+        "bytes": 11,
+        "sha256": "f10e5e29d4f448b0f6aeef222b95d6790cf410196cd6d64d27156e08c7ecafb8"
+      },
+      "retainedQbe": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/p131-combined-literals01-wrappers/coverage-map-churn-128.ssa",
+        "bytes": 1329238,
+        "sha256": "74dfa4c8281e0d0d1db434bee669c97401ee47f58910dffc3191a0cf828ace12"
+      },
+      "retainedBuild": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p131-p131-combined-literals01-smoke-coverage-map-churn-128-build/report.json",
+        "bytes": 5485,
+        "sha256": "803b546295638c3899049b3fcfaa636e16dad76f734b5890ce1cd2792e889be8"
+      },
+      "historicalArgumentVector": [
+        "1050",
+        "32",
+        "128",
+        "123"
+      ],
+      "scope": "Exact frozen benchmark45 manifest01 source and counts; compare current binaries only."
+    },
+    {
+      "name": "coverage-closures-256",
+      "family": "closures",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/fixtures01/coverage-closures-256.bend",
+        "bytes": 3369,
+        "sha256": "d0e35c8343fcbe86b45211f7738d293a27a0a5184060e0136b0275fc9556cef4"
+      },
+      "expectedStdout": "33019\n",
+      "expectedStdoutEvidence": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase111/coverage/full45/expected/coverage-closures-256.stdout",
+        "bytes": 6,
+        "sha256": "8cf0773ed5fb75c07a06d48185cd73ff8f1921c588db76a3df3731a557c40b15"
+      },
+      "runtimeArgs": [
+        256,
+        123
+      ],
+      "repetitions": 81920,
+      "warmups": 32,
+      "stdoutEvidence": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase111/coverage/full45/expected/coverage-closures-256.stdout",
+        "bytes": 6,
+        "sha256": "8cf0773ed5fb75c07a06d48185cd73ff8f1921c588db76a3df3731a557c40b15"
+      },
+      "retainedQbe": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase118/p131-combined-literals01-wrappers/coverage-closures-256.ssa",
+        "bytes": 475625,
+        "sha256": "2c9019cb75e258cb047e5e26b89d35d294c98cc5fc94b82abf5716af4891cbe0"
+      },
+      "retainedBuild": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p131-p131-combined-literals01-smoke-coverage-closures-256-build/report.json",
+        "bytes": 5467,
+        "sha256": "d783a38aaac3a2b793bce90091d86bfa6a4fc1dbc88d8113d99cb68889bbd559"
+      },
+      "historicalArgumentVector": [
+        "81920",
+        "32",
+        "256",
+        "123"
+      ],
+      "scope": "Exact frozen benchmark45 manifest01 source and counts; compare current binaries only."
+    }
+  ]
+}

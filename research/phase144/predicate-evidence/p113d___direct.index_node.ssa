@@ -1,0 +1,23 @@
+function l $p113d_FID_36_100_105_114_101_99_116_46_105_110_100_101_120_95_110_111_100_101_(l %state, l %v_v_4294967295, l %v_v_4294967294, l %v_v_4294967293, l %v_v_4294967292) {
+@entry
+%v_scratch =l alloc8 2048
+jmp @p113_loop
+@p113_loop
+%v_p113p_move_8_0 =l copy %v_v_4294967295
+%v_v_4294967291 =l copy %v_p113p_move_8_0
+%v_p113p_move_9_0 =l copy %v_v_4294967294
+%v_v_4294967290 =l copy %v_p113p_move_9_0
+%v_p113p_move_10_0 =l copy %v_v_4294967293
+%v_v_4294967289 =l copy %v_p113p_move_10_0
+%v_p113p_move_11_0 =l copy %v_v_4294967292
+%v_v_4294967288 =l copy %v_p113p_move_11_0
+storel %v_v_4294967291, %v_scratch
+%t_0 =l add %v_scratch, 8
+storel %v_v_4294967290, %t_0
+%t_1 =l add %v_scratch, 16
+storel %v_v_4294967289, %t_1
+%t_2 =l add %v_scratch, 24
+storel %v_v_4294967288, %t_2
+%v_value =l call $p125_rt_ctor4(l %state, w 155, l %v_scratch)
+ret %v_value
+}

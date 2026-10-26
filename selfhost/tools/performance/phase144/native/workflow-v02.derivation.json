@@ -1,0 +1,23 @@
+{
+  "kind": "phase144-workflow-successor",
+  "complete": true,
+  "targetsRun": false,
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase144/native/workflow-v01.py",
+    "bytes": 17850,
+    "sha256": "bb67b98bb018fe9cb1514d8a2bfbcaaa2fdd2203fd692e9ce26a0a768236e0ac"
+  },
+  "derived": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase144/native/workflow-v02.py",
+    "bytes": 17898,
+    "sha256": "474472cc5384da1498873b8c199f0c03ff0a928d72d3f04ef36d83476cc5a2ab"
+  },
+  "edits": [
+    {
+      "before": "accepted==sm['accepted']\n                and rejected==sm['rejected']",
+      "after": "json.loads(json.dumps(accepted))==sm['accepted']\n                and json.loads(json.dumps(rejected))==sm['rejected']",
+      "count": 1
+    }
+  ],
+  "reason": "JSON serializes transform tuples as lists. Normalize only accepted/rejected metadata through exact JSON; complete source byte equality remains mandatory."
+}

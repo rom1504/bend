@@ -1,0 +1,112 @@
+{
+  "complete": true,
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase112/benchmark45/manifest01.json",
+      "bytes": 229972,
+      "sha256": "80b07bdc76528bf58ae322ffed470eaa8ccdc8fa3d5cea73aa6d652d66cc6adc"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/implementation/phase143/candidate.json",
+      "bytes": 4487,
+      "sha256": "a2383fa35f80a76cebcf24d2878c7b1535a285f9e2977a284d6a3b6133f23edf"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase144/integrated-source02/manifest.json",
+      "bytes": 10824,
+      "sha256": "594edc898f550f12bb2b9b8982b538fe316f2328b05805ddcc821d039c0a8578"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase144/integrated-source02/compiler.bend",
+      "bytes": 2991493,
+      "sha256": "6319c70fa89f03c1e3564aa1a2d1643a3be8e060290e5587c6afdf4b209a6378"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase128/runtime-borrow01/runtime.o",
+      "bytes": 121816,
+      "sha256": "9b3f57afb46b4db8c63f6f3c5f1af1194e0854a7329de28f25d2e11aef887749"
+    }
+  ],
+  "cases": [
+    {
+      "name": "symreg",
+      "family": "symreg",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase88/broad-fixtures03/symreg.bend",
+        "bytes": 5530,
+        "sha256": "110281edb46376f825439d098c92821fbe27b04976c60afc274bc0750a426e21"
+      },
+      "expectedStdoutEvidence": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase111/coverage/full45/expected/symreg.stdout",
+        "bytes": 11,
+        "sha256": "f05c8aaefce9db36f5dba04e256b126cfb0a89ae25f972c7471b1c0208dd6611"
+      },
+      "stdoutEvidence": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase111/coverage/full45/expected/symreg.stdout",
+        "bytes": 11,
+        "sha256": "f05c8aaefce9db36f5dba04e256b126cfb0a89ae25f972c7471b1c0208dd6611"
+      },
+      "expectedStdout": "2490246820\n"
+    },
+    {
+      "name": "test-morning-program",
+      "family": "test-morning-program",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase88/broad-fixtures03/test-morning-program.bend",
+        "bytes": 3202,
+        "sha256": "a7be6340e8ff5a1c3301600a72fae35d6e2d02be664b04f750ce6ca04c4c6546"
+      },
+      "expectedStdoutEvidence": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase111/coverage/full45/expected/test-morning-program.stdout",
+        "bytes": 30,
+        "sha256": "9e5fd72ad28164f5db0a3ed002f64f949589ec8fdd6edab70c75b470c2e8f106"
+      },
+      "stdoutEvidence": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase111/coverage/full45/expected/test-morning-program.stdout",
+        "bytes": 30,
+        "sha256": "9e5fd72ad28164f5db0a3ed002f64f949589ec8fdd6edab70c75b470c2e8f106"
+      },
+      "expectedStdout": "a-bb-ccc 8 1877 42 lo hello 3\n"
+    },
+    {
+      "name": "test-evening-program",
+      "family": "test-evening-program",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase88/broad-fixtures03/test-evening-program.bend",
+        "bytes": 2287,
+        "sha256": "e8a1ebdac1314b5a9ee0df8b81f078ff8ee69573114b78f5dab8bb6550181120"
+      },
+      "expectedStdoutEvidence": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase111/coverage/full45/expected/test-evening-program.stdout",
+        "bytes": 6,
+        "sha256": "cf851cececb82500a8e12ff58941a08d2b8f3c22a142ed09052a9b43e43658c4"
+      },
+      "stdoutEvidence": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase111/coverage/full45/expected/test-evening-program.stdout",
+        "bytes": 6,
+        "sha256": "cf851cececb82500a8e12ff58941a08d2b8f3c22a142ed09052a9b43e43658c4"
+      },
+      "expectedStdout": "81111\n"
+    },
+    {
+      "name": "test-rle-roundtrip",
+      "family": "test-rle-roundtrip",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase88/broad-fixtures03/test-rle-roundtrip.bend",
+        "bytes": 2878,
+        "sha256": "20187aee760181fb99e5ef7bb5a99657a8ddc280209b64bb81199f7f72f5ff45"
+      },
+      "expectedStdoutEvidence": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase111/coverage/full45/expected/test-rle-roundtrip.stdout",
+        "bytes": 3,
+        "sha256": "25d4f2a86deb5e2574bb3210b67bb24fcc4afb19f93a7b65a057daa874a9d18e"
+      },
+      "stdoutEvidence": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase111/coverage/full45/expected/test-rle-roundtrip.stdout",
+        "bytes": 3,
+        "sha256": "25d4f2a86deb5e2574bb3210b67bb24fcc4afb19f93a7b65a057daa874a9d18e"
+      },
+      "expectedStdout": "11\n"
+    }
+  ]
+}

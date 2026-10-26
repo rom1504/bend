@@ -1,0 +1,48 @@
+{
+  "kind": "phase144-smoke-successor",
+  "complete": true,
+  "targetsRun": false,
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase144/native/host-smokes-v01.py",
+    "bytes": 7778,
+    "sha256": "ca870c7f70079698fcdc9d73de00e15f7688c5f51498caaf498b5b5351ee2442"
+  },
+  "derived": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase144/native/host-smokes-v02.py",
+    "bytes": 9598,
+    "sha256": "15063dfd5522c753587fceb688da7f1484a7b054ca069acafd6b14ef64d31d89"
+  },
+  "edits": [
+    {
+      "before": "HERE/'workflow-v02.py'",
+      "after": "HERE/'workflow-v03.py'",
+      "count": 1
+    },
+    {
+      "before": "for k in ['plan','out']",
+      "after": "for k in ['plan','revision-oracle','out']",
+      "count": 1
+    },
+    {
+      "before": "    for j in old['jobs']:\n        retain(pin(j['source']));retain(pin(j['expected']))",
+      "after": "    for j in old['jobs']: retain(pin(j['source']))\n    ap=ROOT/'selfhost/build/phase144/predicate-byte-candidate01/report.json'\n    ar=read(ap);br=read(a.revision_oracle);ad=plan['sourceAdmission']\n    require(ar['complete'] and ad['checkedApi'] in ar['inputs'] and ad['api'] in ar['inputs'] and\n            ad['source'] in ar['inputs'],'A oracle does not bind selected source/API')\n    aa=[x for x in ar['cases'] if x['name']=='lexer'];require(len(aa)==1 and aa[0]['verified'],'Exact A row missing')\n    aa=aa[0];require(aa['source']==pin(old['logical']) and aa['qbe']['bytes']>0,'A source/product differs')\n    bm=HERE/'hosted-smoke-oracle-v01.mjs';retain(pin(bm))\n    require(pin(bm)['sha256']=='50055fa2a7668756b8cc0398baecf9908b7458a623827d3441b79645a1494c3b', 'Frozen B oracle method differs')\n    require(br['kind']=='phase144-hosted-revision-oracle' and br['complete'] and br['verified'] and\n            br['compilerSource']==ad['source'] and br['checkedApi']==ad['checkedApi'] and br['api']==ad['api'] and\n            br['request']==dict(logicalPath=old['logical'],logicalSource=aa['source'],source=pin(old['jobs'][1]['source'])) and\n            br['priorEmission']==pin(ap) and pin(bm) in br['inputs'] and br['qbe']['bytes']>0,\n            'Fresh B bytes/logical path/API/oracle binding differs')\n    oracle_binding=dict(aEmission=pin(ap),bEmission=pin(a.revision_oracle),compilerSource=ad['source'],\n        checkedApi=ad['checkedApi'],api=ad['api'],logicalPath=old['logical'],a=aa['qbe'],b=br['qbe'])\n    for i,j in enumerate(old['jobs']):\n        require(j['source']==old['jobs'][i%2]['source'],'Frozen alternating A/B fixture changed')\n        j['expected']=oracle_binding['a' if i%2==0 else 'b']['file']",
+      "count": 1
+    },
+    {
+      "before": "    out.mkdir(parents=True)",
+      "after": "    out.mkdir(parents=True)\n    batch_plan=out/'batch-plan.json';batch_plan.write_text(json.dumps(old,indent=2)+'\\n');retain(pin(batch_plan))",
+      "count": 1
+    },
+    {
+      "before": "imageBuild=pin(build_path),plan=pin(a.plan),jobs=[]",
+      "after": "imageBuild=pin(build_path),plan=pin(a.plan),oracleBinding=oracle_binding,batchPlan=pin(batch_plan),jobs=[]",
+      "count": 1
+    },
+    {
+      "before": "'--plan',historical,'--out',batch",
+      "after": "'--plan',batch_plan,'--out',batch",
+      "count": 1
+    }
+  ],
+  "reason": "Fresh selected API03 A/B QBE oracles at the same logical A path; retain original request fixtures. Bind actual serial runtime independently from historical hosted native-link context."
+}

@@ -1,0 +1,180 @@
+{
+  "complete": true,
+  "targetsRun": false,
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase144/predicate-proxy-source01/negation-census.json",
+      "bytes": 66261,
+      "sha256": "2c5f168aa497158818f57d1567ce029afbf766b598989e505eca2bc32970536e"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase144/profile01/attribution/report.json",
+      "bytes": 1942170,
+      "sha256": "f321ea991d8c6f27e3a512d3306f22d0f97a1fc418c66c1155af7b51215dd580"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase134/p144-integrated-n1-01/program",
+      "bytes": 19070288,
+      "sha256": "516bf6d3ffeb1d86b2a26a173530ec758b9fe372aad22c38f61417450180aa50"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase134/p144-integrated-n1-01/program.ssa",
+      "bytes": 117055961,
+      "sha256": "4b913b26a9f007aa9296cb99be189f636d9ff32b49a6150c634219859764394a"
+    }
+  ],
+  "sourceSimpleNegatedConditions": 87,
+  "profileCoveredOwners": [
+    {
+      "owner": "p131i_insert",
+      "samples": 376
+    },
+    {
+      "owner": "p111q_body_text",
+      "samples": 100
+    },
+    {
+      "owner": "p111v_decl",
+      "samples": 50
+    },
+    {
+      "owner": "p111v_body",
+      "samples": 25
+    },
+    {
+      "owner": "f_atom_name",
+      "samples": 12
+    },
+    {
+      "owner": "p111v_finish",
+      "samples": 11
+    },
+    {
+      "owner": "p111_app",
+      "samples": 8
+    },
+    {
+      "owner": "p112w_stmts_head",
+      "samples": 8
+    },
+    {
+      "owner": "p113e_body",
+      "samples": 7
+    },
+    {
+      "owner": "p113pl_app",
+      "samples": 7
+    },
+    {
+      "owner": "p111v_join",
+      "samples": 5
+    },
+    {
+      "owner": "f_alias_named",
+      "samples": 3
+    },
+    {
+      "owner": "p111v_functions",
+      "samples": 2
+    },
+    {
+      "owner": "noa_literal",
+      "samples": 2
+    },
+    {
+      "owner": "p113w_stmts",
+      "samples": 2
+    },
+    {
+      "owner": "f_validate_param",
+      "samples": 1
+    },
+    {
+      "owner": "p140p_def_context_header",
+      "samples": 1
+    },
+    {
+      "owner": "p112s_liveness_fallback",
+      "samples": 1
+    },
+    {
+      "owner": "p112s_node_error",
+      "samples": 1
+    }
+  ],
+  "profileCoveredOwnerSamples": 622,
+  "profileSamples": 10083,
+  "profileCoveredOwnerFraction": 0.06168798968560944,
+  "p131iNativeEntry": {
+    "symbol": "p111_FID_36_100_105_114_101_99_116_46_112_49_51_49_105_95_105_110_115_101_114_116_",
+    "qbeLines": 425,
+    "machineInstructionRows": 393,
+    "machineCalls": {
+      "p111_rt_fail": 3,
+      "p125_rt_take4": 1,
+      "p111_rt_keep": 4,
+      "p111_rt_sink": 13,
+      "p111_rt_ctor": 5,
+      "p112w_FID_36_100_105_114_101_99_116_46_66_111_111_108_46_110_111_116_": 1,
+      "p111_rt_return": 1,
+      "p125_rt_ctor4": 1,
+      "p111_rt_jump": 4,
+      "p125_rt_take2": 1,
+      "p112w_FID_36_100_105_114_101_99_116_46_105_110_100_101_120_95_115_112_108_105_116_95_98_105_116_": 1,
+      "p125_rt_ctor2": 1,
+      "p111_rt_take": 1
+    },
+    "assembly": {
+      "file": "/home/ai/bend2/build/publish/bend/research/phase144/predicate-evidence/p131i_insert.asm",
+      "bytes": 13733,
+      "sha256": "ec37224f7c2d731023e4b52ee20f7360b6aae160f0636498b8ea516a2a065a35"
+    },
+    "command": [
+      "objdump",
+      "-d",
+      "--no-show-raw-insn",
+      "--disassemble=p111_FID_36_100_105_114_101_99_116_46_112_49_51_49_105_95_105_110_115_101_114_116_",
+      "/home/ai/bend2/build/publish/bend/selfhost/build/phase134/p144-integrated-n1-01/program"
+    ]
+  },
+  "limits": [
+    "Profile is qualified Phase143 residual diagnostic, not newly measured integrated N1.",
+    "Covered-owner samples include all work while that owner is active, not time in Bool.not or predicate continuation.",
+    "Static callsite counts are not dynamic call counts.",
+    "Native instruction rows include alignment/disassembly presentation and are not runtime cost."
+  ],
+  "metadataNegative": {
+    "cause": "First objdump invocation placed -d after --disassemble=SYMBOL, resetting the symbol filter; whole-image output was rejected and its task-owned temporary deleted. Corrected invocation puts symbol selector last.",
+    "discardedTemporaryBytes": 95479585,
+    "notUsedForClaims": true
+  },
+  "extracts": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/research/phase144/predicate-evidence/p131i_insert.asm",
+      "bytes": 13733,
+      "sha256": "ec37224f7c2d731023e4b52ee20f7360b6aae160f0636498b8ea516a2a065a35"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/research/phase144/predicate-evidence/p111___direct.p131i_insert.ssa",
+      "bytes": 16645,
+      "sha256": "7404958c4b37527c86226041a01f6207e4f0a000f2a8436f5f00810d6993420c"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/research/phase144/predicate-evidence/p111___direct.p111v_put.ssa",
+      "bytes": 5158,
+      "sha256": "5a21184ef33e2fc1cced02ef74ab8ef07670087e5e109e78596a2ba95b224f03"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/research/phase144/predicate-evidence/p111___direct.index_leaf.ssa",
+      "bytes": 1713,
+      "sha256": "38ba5ffb3e758bcade1a3adc7513e1aed318ed715aaf97e073547f5395a348f9"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/research/phase144/predicate-evidence/p113d___direct.index_node.ssa",
+      "bytes": 858,
+      "sha256": "1a2b0a0902e824c998c359e2ffc7d1f31e20f2d49b66edc85f6b13754fd9a996"
+    }
+  ],
+  "nativeProfileSimpleNegatedConditions": 60,
+  "nativeProfileSimpleConditionOwners": 53
+}

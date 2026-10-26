@@ -1,0 +1,44 @@
+{
+  "kind": "phase144-final-sealer-successor",
+  "complete": true,
+  "targetsRun": false,
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase144/native/workflow-v03.py",
+    "bytes": 18523,
+    "sha256": "74a6e953c4a9951b7a1d34479cbd2872f337d5cb62bf65fca68c6a26e145a373"
+  },
+  "derived": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase144/native/seal-v01.py",
+    "bytes": 11186,
+    "sha256": "d38633209662f941e7c20d6a7d4544b08118c035b8cec5bc2c4c2ecaa0b95585"
+  },
+  "function": "seal",
+  "edits": [
+    {
+      "before": "    plan=read(a.plan);",
+      "after": "    retain(pin(__file__))\n    plan=read(a.plan);",
+      "count": 1
+    },
+    {
+      "before": "pin(__file__) in plan['inputs']",
+      "after": "pin(W.__file__) in plan['inputs']",
+      "count": 1
+    },
+    {
+      "before": "    s=plan['sourceAdmission'];",
+      "after": "    runtime_prerequisites(plan)\n    s=plan['sourceAdmission'];",
+      "count": 1
+    },
+    {
+      "before": "    smoke=read(a.host_smokes); require(smoke['complete'] and smoke['passed'] and\n        smoke['runtime']==plan['runtime'] and smoke['image']==b2['binary'], 'Chosen N2 NativeHost smokes required')\n    require(set(smoke['gates'])=={'path','publish','batch','session'} and all(smoke['gates'].values()),\n            'Four NativeHost gates required')",
+      "after": "    smoke=smoke_contract(a.host_smokes,plan,b2['binary'],paths['n2'])",
+      "count": 1
+    },
+    {
+      "before": "    a.out.parent.mkdir",
+      "after": "    for row in V.INPUTS.values():\n        require(Q.pin(row['file'])==row,'Input changed during final seal: '+row['file'])\n    a.out.parent.mkdir",
+      "count": 1
+    }
+  ],
+  "scope": "Exact consumed v03 seal function with explicit runtime prerequisite joins, full smoke provenance/oracle checks, and uncached final input rehash; other chain and coverage gates unchanged."
+}

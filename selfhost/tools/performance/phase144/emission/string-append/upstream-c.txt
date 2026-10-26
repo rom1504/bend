@@ -1,0 +1,57 @@
+2099:   WL_CASE(FID_STRING_APPEND)
+2100:   {
+2101:     Term _a_0 = r0;
+2102:     Term _b_0 = r1;
+2103:     WL_OPEN
+2104:     WL_SPIN
+2105:     if (term_aux(_a_0) == CID_SNIL) {
+2106:       r0 = _b_0;
+2107:       WL_RETN(1);
+2108:     } else {
+2109:       Term _fb_0[2];
+2110:       u64 _sp_0 = ctr_take(e, _a_0, 2, _fb_0);
+2111:       u32 _f_0 = _fb_0[0];
+2112:       Term _f_1 = _fb_0[1];
+2113:       spare_free(e, cls_fit(2), _sp_0);
+2114:       if (seq) {
+2115:         WL_ROOM(2);
+2116:         STK(0) = _f_0;
+2117:         STK(1) = FID_STRING_APPEND_K32;
+2118:         WL_PUSHN(2);
+2119:       } else {
+2120:         u64 _t_0 = task_node(e, FID_STRING_APPEND_K32, WL_CONT, WL_IDX, 1);
+2121:         e.mem[_t_0 + 0] = _f_0;
+2122:         WL_CONT = term_tsk(FID_STRING_APPEND_K32, _t_0);
+2123:         WL_IDX = 1;
+2124:       }
+2125:       r0 = _f_1;
+2126:       r1 = _b_0;
+2127:       _a_0 = r0;
+2128:       _b_0 = r1;
+2129:       WL_AGAIN(FID_STRING_APPEND);
+2130:     }
+2131:     WL_SPUN
+2132:   }}
+2133: #endif
+2134: 
+2135: #if !DEVICE
+2136:   WL_CASE(FID_STRING_APPEND_K32)
+2137:   {
+2138:     WL_POPN(1);
+2139:     u32 _f_2 = STK(0);
+2140:     Term _h_0 = r0;
+2141:     WL_OPEN
+2142:     u64 _nd_0 = heap_alloc(e, cls_fit(2));
+2143:     e.mem[_nd_0 + 0] = rfc_seal(e, _f_2);
+2144:     e.mem[_nd_0 + 1] = rfc_seal(e, _h_0);
+2145:     r0 = term_ctr(CID_SCON, _nd_0);
+2146:     WL_RETN(1);
+2147:   }}
+2148: #endif
+2149: 
+2150: #if !DEVICE
+2151:   WL_CASE(FID_P37_TEXT_REPEAT)
+2152:   {
+2153:     Term _n_0 = r0;
+2154:     Term _block_0 = r1;
+2155:     WL_OPEN

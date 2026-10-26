@@ -1,0 +1,37 @@
+{
+  "kind": "phase144-smoke-exit-oracle-review",
+  "complete": true,
+  "targetsRun": false,
+  "independentReviewer": "/root/p127_libc_review",
+  "methods": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase144/native/host-smokes-v03.py",
+      "bytes": 9598,
+      "sha256": "a404364ca7587942df6411f310f2dc4df29858e2853e43717e0c6a5fc9aac4f5"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase144/native/seal-v02.py",
+      "bytes": 11136,
+      "sha256": "3d43afe9da5a389b4506568719189a1d1deb24d5d66785c5f0cdcb0c7be6a5a8"
+    }
+  ],
+  "derivations": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase144/native/host-smokes-v03.derivation.json",
+      "bytes": 2144,
+      "sha256": "55a25dd28fbe0f3ffd906833b7f8fd8ba699e2820442630b63a2724be8432d7b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase144/native/seal-v02.derivation.json",
+      "bytes": 2354,
+      "sha256": "f84a1a83732600b982bc3619c92132a0daed7a6cddaaba4c7327d488aa18aa7f"
+    }
+  ],
+  "failedAttempt": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase144/final03-host-smokes01/report.json",
+    "bytes": 139592,
+    "sha256": "bb1f732cbb78cceebea6a7fa038164b1f521fed6089c8f7ed0a0629d77c700ac"
+  },
+  "sourceReason": "IO.pure invokes final continuation; io_spawn installs FID_IO_EMIT which constructs CID_EMIT; io_step consumes the emitted value and decrements io_live; io_loop returns0 when no live activations remain. Only Halt returns requested processcode.",
+  "scope": "Correct one process-exit oracle from the unchanged source contract; retains full EEXIST output, no overwrite, no temporary leftovers, readback and later batch/session obligations. No new semantic qualification claimed."
+}

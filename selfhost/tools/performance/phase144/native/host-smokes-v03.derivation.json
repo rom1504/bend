@@ -1,0 +1,45 @@
+{
+  "kind": "phase144-smoke-io-exit-successor",
+  "complete": true,
+  "targetsRun": false,
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase144/native/host-smokes-v02.py",
+    "bytes": 9598,
+    "sha256": "15063dfd5522c753587fceb688da7f1484a7b054ca069acafd6b14ef64d31d89"
+  },
+  "derived": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase144/native/host-smokes-v03.py",
+    "bytes": 9598,
+    "sha256": "a404364ca7587942df6411f310f2dc4df29858e2853e43717e0c6a5fc9aac4f5"
+  },
+  "edits": [
+    {
+      "before": "first=pin(published);run('publish-existing-refusal',base+['publish',str(published),'wrong'],b'17\\n',code=1)",
+      "after": "first=pin(published);run('publish-existing-refusal',base+['publish',str(published),'wrong'],b'17\\n',code=0)",
+      "count": 1
+    }
+  ],
+  "reason": "Correct the process oracle from the unchanged IO contract: IO.pure(U32,1) supplies the final value to FID_IO_EMIT; CID_EMIT completes an activation and io_loop returns0 when all activations complete. Only CID_HALT/IO.die changes process exit. EEXIST17 stdout, unchanged published bytes and no temporary leftovers remain mandatory; retain failed smoke01.",
+  "evidence": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase144/native/host-effects-v01.bend",
+      "bytes": 1762,
+      "sha256": "90975ac3e61bd3f49c2aec4cabf378702131f6685d378a0b777818a6c3317ad6"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase144/serial-rfc01/runtime.c",
+      "bytes": 150560,
+      "sha256": "aa95d2c0426c05bcc4d34244dd8b22b79ebcaf6d30634569201961f60b57f333"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/base.bend",
+      "bytes": 75064,
+      "sha256": "99ac43f2b2bb3e3f39acdcedcecbbd3cb44749ce13969c827d6973fa66f7facf"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase144/final03-host-smokes01/report.json",
+      "bytes": 139592,
+      "sha256": "bb1f732cbb78cceebea6a7fa038164b1f521fed6089c8f7ed0a0629d77c700ac"
+    }
+  ]
+}

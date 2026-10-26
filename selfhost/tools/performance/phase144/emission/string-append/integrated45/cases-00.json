@@ -1,0 +1,112 @@
+{
+  "complete": true,
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase112/benchmark45/manifest01.json",
+      "bytes": 229972,
+      "sha256": "80b07bdc76528bf58ae322ffed470eaa8ccdc8fa3d5cea73aa6d652d66cc6adc"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/implementation/phase143/candidate.json",
+      "bytes": 4487,
+      "sha256": "a2383fa35f80a76cebcf24d2878c7b1535a285f9e2977a284d6a3b6133f23edf"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase144/integrated-source02/manifest.json",
+      "bytes": 10824,
+      "sha256": "594edc898f550f12bb2b9b8982b538fe316f2328b05805ddcc821d039c0a8578"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase144/integrated-source02/compiler.bend",
+      "bytes": 2991493,
+      "sha256": "6319c70fa89f03c1e3564aa1a2d1643a3be8e060290e5587c6afdf4b209a6378"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase128/runtime-borrow01/runtime.o",
+      "bytes": 121816,
+      "sha256": "9b3f57afb46b4db8c63f6f3c5f1af1194e0854a7329de28f25d2e11aef887749"
+    }
+  ],
+  "cases": [
+    {
+      "name": "mandelbrot",
+      "family": "mandelbrot",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase88/broad-fixtures03/mandelbrot.bend",
+        "bytes": 6699,
+        "sha256": "c11d6bb0e81b5fa415166dc7cdc8c31759c4e9dda70fbdb0697cfa2d0aa025fb"
+      },
+      "expectedStdoutEvidence": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase111/coverage/full45/expected/mandelbrot.stdout",
+        "bytes": 10,
+        "sha256": "1529134f8bd7e9d3989167e1dca0726ea4b01b5dba6e8e3407e966f8f37c7758"
+      },
+      "stdoutEvidence": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase111/coverage/full45/expected/mandelbrot.stdout",
+        "bytes": 10,
+        "sha256": "1529134f8bd7e9d3989167e1dca0726ea4b01b5dba6e8e3407e966f8f37c7758"
+      },
+      "expectedStdout": "887240761\n"
+    },
+    {
+      "name": "editdist",
+      "family": "editdist",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase88/broad-fixtures03/editdist.bend",
+        "bytes": 5997,
+        "sha256": "114864a8db3c61d2e76bee986d636bf17b9bf022a286689fd1fbfb691d251f47"
+      },
+      "expectedStdoutEvidence": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase111/coverage/full45/expected/editdist.stdout",
+        "bytes": 11,
+        "sha256": "cc6e43baccd95c4f6e49e8df91d27c77ab7d18524070d83af32977422f0b1280"
+      },
+      "stdoutEvidence": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase111/coverage/full45/expected/editdist.stdout",
+        "bytes": 11,
+        "sha256": "cc6e43baccd95c4f6e49e8df91d27c77ab7d18524070d83af32977422f0b1280"
+      },
+      "expectedStdout": "2065873279\n"
+    },
+    {
+      "name": "tree-bitonic",
+      "family": "tree-bitonic",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase88/broad-fixtures03/tree-bitonic.bend",
+        "bytes": 4756,
+        "sha256": "97be00441287e3983f24b9c0f96a98f6f4bf27293a80a93bec50f21939401d60"
+      },
+      "expectedStdoutEvidence": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase111/coverage/full45/expected/tree-bitonic.stdout",
+        "bytes": 10,
+        "sha256": "4d9faad3bd6736bd6b3be55577bba89ff3064588775afe8959dd2f709ca6aa21"
+      },
+      "stdoutEvidence": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase111/coverage/full45/expected/tree-bitonic.stdout",
+        "bytes": 10,
+        "sha256": "4d9faad3bd6736bd6b3be55577bba89ff3064588775afe8959dd2f709ca6aa21"
+      },
+      "expectedStdout": "971629740\n"
+    },
+    {
+      "name": "lexer",
+      "family": "lexer",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase88/broad-fixtures03/lexer.bend",
+        "bytes": 7257,
+        "sha256": "f1d8e7e7e68f5c79053fadc35ba2f6e95f0115a40a5e6ce792e34d9f1faafdae"
+      },
+      "expectedStdoutEvidence": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase111/coverage/full45/expected/lexer.stdout",
+        "bytes": 11,
+        "sha256": "ce7ae380f780c64e26dc0b2fd2f547364c4e837bdecd61714cf04150768acf0a"
+      },
+      "stdoutEvidence": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase111/coverage/full45/expected/lexer.stdout",
+        "bytes": 11,
+        "sha256": "ce7ae380f780c64e26dc0b2fd2f547364c4e837bdecd61714cf04150768acf0a"
+      },
+      "expectedStdout": "1822208108\n"
+    }
+  ]
+}

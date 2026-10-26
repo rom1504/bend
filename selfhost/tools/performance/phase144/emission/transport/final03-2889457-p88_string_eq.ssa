@@ -1,0 +1,10 @@
+export function l $p111_FID_36_100_105_114_101_99_116_46_112_56_56_95_115_116_114_105_110_103_95_101_113_(l %state) {
+@entry
+%p113_public_out =l alloc8 8
+%p113_arg_0 =l call $p111_rt_reg_get(l %state, w 0)
+%p113_arg_1 =l call $p111_rt_reg_get(l %state, w 1)
+%p113_public_value =l call $p113d_FID_36_100_105_114_101_99_116_46_112_56_56_95_115_116_114_105_110_103_95_101_113_(l %state, l %p113_arg_0, l %p113_arg_1)
+storel %p113_public_value, %p113_public_out
+%p113_public_reply =l call $p111_rt_return(l %state, l %p113_public_out, w 1)
+ret %p113_public_reply
+}

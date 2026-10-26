@@ -1,0 +1,93 @@
+4640: /* Exact constant-prefix copies of allocation-only p118_rt_extend. Count is
+4641:  * encoded in the helper symbol. No ownership/sealing/parent protocol changes. */
+4642: #define P118_EXTEND(N) \
+4643: uint64_t p118_rt_extend##N(P111State *state, uint64_t parent, uint32_t cid, const uint64_t *prefix) { \
+4644:   p111_require(cid < p111_program_active->constructor_count && N >= 1 && \
+4645:     N <= 7 && N + 1 == cid_arity(cid) && prefix, \
+4646:     "phase118: invalid constructor-tail prefix"); \
+4647:   Env e = state->e; Loc at = heap_alloc(e, cls_fit(N + 1)); \
+4648:   if ((p111_program_active->capabilities & UINT64_C(8)) && !cid_hot(cid)) { \
+4649:     for (u32 i = 0; i < N; ++i) e.mem[at + i] = prefix[i]; \
+4650:   } else { \
+4651:     for (u32 i = 0; i < N; ++i) e.mem[at + i] = rfc_seal(e, prefix[i]); \
+4652:   } \
+4653:   e.mem[at + N] = TERM_HOLE; \
+4654:   Term node = term_ctr(cid, at); \
+4655:   if (parent) p118_destination_fill(state, parent, node); \
+4656:   return node; \
+4657: }
+4658: P118_EXTEND(1)
+4659: P118_EXTEND(2)
+4660: P118_EXTEND(3)
+4661: P118_EXTEND(4)
+4662: P118_EXTEND(5)
+4663: P118_EXTEND(6)
+4664: P118_EXTEND(7)
+4665: #undef P118_EXTEND
+4666: 
+4667: 
+4668: /* Typed variant: exact checked append equations and closed constructor layout
+4669:  * are authenticated by p125p_admitted. Dynamic ownership checks remain here.
+4670:  * Only that source factory may issue this distinct import. */
+4671: /* Additive, sequential owned-append operation. Invoked only for the checked
+4672:  * structural append identity. Failure is observationally read-only; the caller
+4673:  * still owns both original operands and uses its original complete worker.
+4674:  * Success returns the owning nonzero List Term; zero means refusal. Heads are never copied or dropped.
+4675:  * V2 also accepts RFC cells with an acquired exact count of one, along an
+4676:  * already uniquely owned path. Wrappers and heads remain untouched. */
+4677: uint64_t p125_rt_concat_typed(P111State *state, uint64_t left, uint64_t right,
+4678:                        uint32_t empty_cid, uint32_t link_cid) {
+4679:   Term nil = term_pak(empty_cid, 0), node = left;
+4680:   Loc last = 0;
+4681:   Env e = state->e;
+4682:   while (node != nil) {
+4683:     if (term_loc(node) < HEAP_OFF) return 0;
+4684:     if (term_rfc(node)) {
+4685:       u64 cell = rfc_view(e, term_loc(node));
+4686:       if ((cell & RFC_CNT) != 1) return 0;
+4687:       last = cell >> 24;
+4688:       /* A heap wrapper can refer to a static constructor. */
+4689:       if (last < HEAP_OFF) return 0;
+4690:     } else {
+4691:       last = term_loc(node);
+4692:     }
+4693:     node = e.mem[last + 1];
+4694:   }
+4695:   if (!last) {
+4696:     return right;
+4697:   }
+4698:   /* No mutation/ownership change before the entire spine was authenticated.
+4699:    * Match the ordinary constructor's publication/sealing rule exactly. */
+4700:   e.mem[last + 1] = ((p111_program_active->capabilities & UINT64_C(8)) &&
+4701:                     !cid_hot(link_cid)) ? right : rfc_seal(e, right);
+4702:   return left;
+4703: }
+4704: 
+
+4709: #define P125_VERIFIED(N) \
+4710: uint64_t p125_rt_ctor##N(P111State *state, uint32_t cid, const uint64_t *fields) { \
+4711:   Env e = state->e; Loc at = heap_alloc(e, cls_fit(N)); \
+4712:   if ((p111_program_active->capabilities & UINT64_C(8)) && !cid_hot(cid)) { \
+4713:     for (u32 i = 0; i < N; ++i) e.mem[at + i] = fields[i]; \
+4714:   } else { \
+4715:     for (u32 i = 0; i < N; ++i) e.mem[at + i] = rfc_seal(e, fields[i]); \
+4716:   } \
+4717:   return term_ctr(cid, at); \
+4718: } \
+4719: uint64_t p125_rt_take##N(P111State *state, uint64_t term, uint64_t *out) { \
+4720:   u32 cid = (u32)term_aux(term); \
+4721:   p111_require(cid < p111_program_active->constructor_count && N == cid_arity(cid), "phase118: take arity mismatch"); \
+4722:   if (N == 1 && term_tag(term) == TAG_PAK) out[0] = term_loc(term); \
+4723:   else { \
+4724:     p111_require(term_tag(term) == TAG_CTR, "phase118: expected constructor owner"); \
+4725:     spare_free(state->e, cls_fit(N), ctr_take(state->e, term, N, out)); \
+4726:   } \
+4727:   return N; \
+4728: }
+4729: P125_VERIFIED(1)
+4730: P125_VERIFIED(2)
+4731: P125_VERIFIED(3)
+4732: P125_VERIFIED(4)
+4733: #undef P125_VERIFIED
+4734: 
+4735: /* Additive helper for a source-certified Nat.divmod product. Exact arithmetic

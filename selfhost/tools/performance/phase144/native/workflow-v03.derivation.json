@@ -1,0 +1,23 @@
+{
+  "kind": "phase144-workflow-successor",
+  "complete": true,
+  "targetsRun": false,
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase144/native/workflow-v02.py",
+    "bytes": 17898,
+    "sha256": "474472cc5384da1498873b8c199f0c03ff0a928d72d3f04ef36d83476cc5a2ab"
+  },
+  "derived": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase144/native/workflow-v03.py",
+    "bytes": 18523,
+    "sha256": "74a6e953c4a9951b7a1d34479cbd2872f337d5cb62bf65fca68c6a26e145a373"
+  },
+  "edits": [
+    {
+      "before": "pin, read, bound, require, retain = Q.pin, V.read, V.bound, V.require, V.retain",
+      "after": "pin, read, bound, require = Q.pin, V.read, V.bound, V.require\n\ndef retain(value):\n    # Older and newer receipts differ only in whether a canonicalPath is explicit.\n    for row in Q.pins(value):\n        path=Path(row['file'])\n        path=(ROOT/path).resolve() if not path.is_absolute() else path.resolve()\n        if 'canonicalPath' in row:\n            require(row['canonicalPath']==str(path), 'Canonical path differs')\n        normalized=dict(file=str(path),bytes=row['bytes'],sha256=row['sha256'])\n        previous=V.INPUTS.get(str(path))\n        require(previous is None or previous==normalized, 'Conflicting file identity')\n        Q.verify(normalized);V.INPUTS[str(path)]=normalized\nV.retain=retain",
+      "count": 1
+    }
+  ],
+  "reason": "Validate explicit canonicalPath and retain common file/bytes/SHA identity; older receipt verifier rejected otherwise identical newer pins with an extra metadata key."
+}

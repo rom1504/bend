@@ -1,0 +1,170 @@
+{
+  "kind": "phase144-exact-body-tail-source-rewrite",
+  "complete": true,
+  "checked": false,
+  "targetsRun": false,
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase143/integrated-source03/compiler.bend",
+    "bytes": 2959385,
+    "sha256": "a51a4a6d0a32e118ca75eac96fb4e64bae0fcf951b09ee859c2632f65550bd4e"
+  },
+  "helper": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase144/emission/body-tail-v01.bend",
+    "bytes": 566,
+    "sha256": "63b6917d11713a139251762f65c035e1eccdc97331d47daa39e86b21dae6c272"
+  },
+  "module": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase144/emission/wrappers-v02.bend",
+    "bytes": 10448,
+    "sha256": "65a34edfb60d9382eca9b639b9e92fe1173beaac0ab65ced7a03b49f30d8e6c6"
+  },
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase144/emission/prepare-wrappers-v02.py",
+      "bytes": 4192,
+      "sha256": "3389654fde2f08661d6cab8f9dfacfb6a1e6db1e7c72bc2076ce274e94057905"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase131/prepare.py",
+      "bytes": 6138,
+      "sha256": "33a4a40ab35ef705cbe99cff20b4b6a2c9792eee4ad8c9597a006d22ae22defa"
+    }
+  ],
+  "overrides": [
+    "p111q_segment",
+    "p112q_planned",
+    "p112w_private",
+    "p112w_public_segment",
+    "p113e_private",
+    "p113ah_private",
+    "p114r_private",
+    "p114g_resume",
+    "p114g_private",
+    "p114h_private",
+    "p117h_private",
+    "p117v_fallback_ready",
+    "p117v_private",
+    "p114so_private",
+    "p126l_private",
+    "p126i_private"
+  ],
+  "sites": [
+    {
+      "owner": "p111q_segment",
+      "line": 40210,
+      "old": "p111q_body_text(p111q_stmts(body,ids,P111QCode{p111q_allocas(body,[]),0,False{},\"\"})) ++ \"}\\n\"",
+      "new": "p144e_body_tail(p111q_stmts(body,ids,P111QCode{p111q_allocas(body,[]),0,False{},\"\"}),\"}\\n\")"
+    },
+    {
+      "owner": "p112q_planned",
+      "line": 41022,
+      "old": "p111q_body_text(p112q_loop_body(body,params,ids,\n            p111q_stmts(prefix,ids,P111QCode{p111q_allocas(original,[]),0,False{},\"\"}))) ++ \"}\\n\"",
+      "new": "p144e_body_tail(p112q_loop_body(body,params,ids,\n            p111q_stmts(prefix,ids,P111QCode{p111q_allocas(original,[]),0,False{},\"\"})),\"}\\n\")"
+    },
+    {
+      "owner": "p112w_private",
+      "line": 41493,
+      "old": "p111q_body_text(p112w_stmts(body,params,False{},ids,\n          P111QCode{Con{\"@p112_again\\n\",Con{\"jmp @p112_again\\n\",p111q_allocas(original,[])}},0,False{},\"\"})) ++ \"}\\n\"",
+      "new": "p144e_body_tail(p112w_stmts(body,params,False{},ids,\n          P111QCode{Con{\"@p112_again\\n\",Con{\"jmp @p112_again\\n\",p111q_allocas(original,[])}},0,False{},\"\"}),\"}\\n\")"
+    },
+    {
+      "owner": "p112w_public_segment",
+      "line": 41505,
+      "old": "p111q_body_text(p112w_stmts(p112w_public(body,name,ready),[],True{},ids,\n              P111QCode{p111q_allocas(body,[]),0,False{},\"\"})) ++ \"}\\n\"",
+      "new": "p144e_body_tail(p112w_stmts(p112w_public(body,name,ready),[],True{},ids,\n              P111QCode{p111q_allocas(body,[]),0,False{},\"\"}),\"}\\n\")"
+    },
+    {
+      "owner": "p113e_private",
+      "line": 44708,
+      "old": "p111q_body_text(p113e_stmts(body,params,ids,P111QCode{Con{\"@p113_loop\\n\",Con{\"jmp @p113_loop\\n\",allocas}},0,False{},\"\"})) ++ \"}\\n\"",
+      "new": "p144e_body_tail(p113e_stmts(body,params,ids,P111QCode{Con{\"@p113_loop\\n\",Con{\"jmp @p113_loop\\n\",allocas}},0,False{},\"\"}),\"}\\n\")"
+    },
+    {
+      "owner": "p113ah_private",
+      "line": 47776,
+      "old": "p111q_body_text(p113ah_loop(body,params,ids,\n          p111q_stmt(N111Load{\"p113a_heap_base\",N111Ptr{},N111Local{\"state\"},0},ids,P111QCode{allocas,0,False{},\"\"}))) ++ \"}\\n\"",
+      "new": "p144e_body_tail(p113ah_loop(body,params,ids,\n          p111q_stmt(N111Load{\"p113a_heap_base\",N111Ptr{},N111Local{\"state\"},0},ids,P111QCode{allocas,0,False{},\"\"})),\"}\\n\")"
+    },
+    {
+      "owner": "p114r_private",
+      "line": 48881,
+      "old": "p111q_body_text(p114r_unwind(head,result,unwind,ids,p114r_stmts(body,params,ids,\n        P111QCode{[\"%v_scratch =l alloc8 2048\\n%v_p114r_resume_local_scratch =l alloc8 2048\\n%p114r_depth =l copy 0\\njmp @p114r_descend\\n@p114r_descend\\n\"],0,False{},\"\"}))) ++ \"}\\n\"",
+      "new": "p144e_body_tail(p114r_unwind(head,result,unwind,ids,p114r_stmts(body,params,ids,\n        P111QCode{[\"%v_scratch =l alloc8 2048\\n%v_p114r_resume_local_scratch =l alloc8 2048\\n%p114r_depth =l copy 0\\njmp @p114r_descend\\n@p114r_descend\\n\"],0,False{},\"\"})),\"}\\n\")"
+    },
+    {
+      "owner": "p114g_resume",
+      "line": 49122,
+      "old": "p111q_body_text(p114g_stmts(body,ids,\n      p111q_line(p111q_local(result) ++ \" =l copy %p114g_input\\n\",\n        p114g_restore(captures,0,p114g_pop(pop,P111QCode{[\"%v_scratch =l alloc8 2048\\n\"],0,False{},\"\"}))))) ++ \"}\\n\"",
+      "new": "p144e_body_tail(p114g_stmts(body,ids,\n      p111q_line(p111q_local(result) ++ \" =l copy %p114g_input\\n\",\n        p114g_restore(captures,0,p114g_pop(pop,P111QCode{[\"%v_scratch =l alloc8 2048\\n\"],0,False{},\"\"})))),\"}\\n\")"
+    },
+    {
+      "owner": "p114g_private",
+      "line": 49153,
+      "old": "p111q_body_text(p114g_unwind(name,nt_count(String,captures),p114r_stmts(body,params,ids,\n          P111QCode{[\"%v_scratch =l alloc8 2048\\n%p114r_depth =l copy 0\\njmp @p114r_descend\\n@p114r_descend\\n\"],0,False{},\"\"}))) ++ \"}\\n\"",
+      "new": "p144e_body_tail(p114g_unwind(name,nt_count(String,captures),p114r_stmts(body,params,ids,\n          P111QCode{[\"%v_scratch =l alloc8 2048\\n%p114r_depth =l copy 0\\njmp @p114r_descend\\n@p114r_descend\\n\"],0,False{},\"\"})),\"}\\n\")"
+    },
+    {
+      "owner": "p114h_private",
+      "line": 49619,
+      "old": "p111q_body_text(p114h_unwind(cases,params,ids,p114h_terminal(p114h_stmts(body,params,\"scratch\",ids,\n          P111QCode{[\"%v_scratch =l alloc8 2048\\n\" ++ p114h_buffers(nt_count(P114HCase,cases),0,\"\") ++\n            \"%p114r_depth =l copy 0\\njmp @p114r_descend\\n@p114r_descend\\n\"],0,False{},\"\"})))) ++ \"}\\n\"",
+      "new": "p144e_body_tail(p114h_unwind(cases,params,ids,p114h_terminal(p114h_stmts(body,params,\"scratch\",ids,\n          P111QCode{[\"%v_scratch =l alloc8 2048\\n\" ++ p114h_buffers(nt_count(P114HCase,cases),0,\"\") ++\n            \"%p114r_depth =l copy 0\\njmp @p114r_descend\\n@p114r_descend\\n\"],0,False{},\"\"}))),\"}\\n\")"
+    },
+    {
+      "owner": "p117h_private",
+      "line": 50340,
+      "old": "p111q_body_text(p113ah_loop(body,params,ids,p111q_stmts(\n          Con{N111Load{\"p113a_heap_base\",N111Ptr{},N111Local{\"state\"},0},prelude},ids,P111QCode{allocas,0,False{},\"\"}))) ++ \"}\\n\"",
+      "new": "p144e_body_tail(p113ah_loop(body,params,ids,p111q_stmts(\n          Con{N111Load{\"p113a_heap_base\",N111Ptr{},N111Local{\"state\"},0},prelude},ids,P111QCode{allocas,0,False{},\"\"})),\"}\\n\")"
+    },
+    {
+      "owner": "p117v_fallback_ready",
+      "line": 50433,
+      "old": "p111q_body_text(p113ah_loop(body,params,ids,p111q_stmt(\n          N111Load{\"p113a_heap_base\",N111Ptr{},N111Local{\"state\"},0},ids,P111QCode{p117v_allocas(body),0,False{},\"\"}))) ++ \"}\\n\"",
+      "new": "p144e_body_tail(p113ah_loop(body,params,ids,p111q_stmt(\n          N111Load{\"p113a_heap_base\",N111Ptr{},N111Local{\"state\"},0},ids,P111QCode{p117v_allocas(body),0,False{},\"\"})),\"}\\n\")"
+    },
+    {
+      "owner": "p117v_private",
+      "line": 50445,
+      "old": "p111q_body_text(p113ah_loop(body,params,ids,p111q_line(dispatch,p111q_stmts(setup,ids,P111QCode{p117v_allocas(body),0,False{},\"\"})))) ++ \"}\\n\"",
+      "new": "p144e_body_tail(p113ah_loop(body,params,ids,p111q_line(dispatch,p111q_stmts(setup,ids,P111QCode{p117v_allocas(body),0,False{},\"\"}))),\"}\\n\")"
+    },
+    {
+      "owner": "p114so_private",
+      "line": 52860,
+      "old": "p111q_body_text(p114so_stmts(body,buffers,params,ids,P111QCode{Con{\"@p113_loop\\n\",Con{\"jmp @p113_loop\\n\",allocas}},0,False{},\"\"})) ++ \"}\\n\"",
+      "new": "p144e_body_tail(p114so_stmts(body,buffers,params,ids,P111QCode{Con{\"@p113_loop\\n\",Con{\"jmp @p113_loop\\n\",allocas}},0,False{},\"\"}),\"}\\n\")"
+    },
+    {
+      "owner": "p126l_private",
+      "line": 53206,
+      "old": "p111q_body_text(p126l_stmts(body,P126LCtx{params,buffers,ids},[],\n          P111QCode{Con{\"\",Con{\"@p113_loop\\n\",Con{\"jmp @p113_loop\\n\",allocas}}},0,False{},\"\"})) ++ \"}\\n\"",
+      "new": "p144e_body_tail(p126l_stmts(body,P126LCtx{params,buffers,ids},[],\n          P111QCode{Con{\"\",Con{\"@p113_loop\\n\",Con{\"jmp @p113_loop\\n\",allocas}}},0,False{},\"\"}),\"}\\n\")"
+    },
+    {
+      "owner": "p126i_private",
+      "line": 53980,
+      "old": "p111q_body_text(p126i_stmts(body,P126ICtx{params,buffers,ids,tables},[],\n          P111QCode{Con{\"\",Con{\"@p113_loop\\n\",Con{\"jmp @p113_loop\\n\",allocas}}},0,False{},\"\"})) ++ \"}\\n\"",
+      "new": "p144e_body_tail(p126i_stmts(body,P126ICtx{params,buffers,ids,tables},[],\n          P111QCode{Con{\"\",Con{\"@p113_loop\\n\",Con{\"jmp @p113_loop\\n\",allocas}}},0,False{},\"\"}),\"}\\n\")"
+    }
+  ],
+  "unmatched": [
+    {
+      "owner": "p113wt_text",
+      "offset": 64,
+      "reason": "No immediate literal suffix"
+    },
+    {
+      "owner": "p128bf_test_text",
+      "offset": 152,
+      "reason": "No immediate literal suffix"
+    }
+  ],
+  "preserved": [
+    {
+      "owner": "p128bf_oracle_function",
+      "reason": "Independent existing oracle retained unchanged",
+      "sites": 1
+    }
+  ],
+  "reverseExact": true,
+  "scope": "Only original p111q_body_text(argument) ++ literal-footer call sites; no host QBE rendering."
+}

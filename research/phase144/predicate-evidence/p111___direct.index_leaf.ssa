@@ -1,0 +1,45 @@
+export function l $p111_FID_36_100_105_114_101_99_116_46_105_110_100_101_120_95_108_101_97_102_(l %state) {
+@entry
+%v_scratch =l alloc8 2048
+%v_p112f_0_local_scratch =l alloc8 2048
+%t_0 =l add %state, 40
+%v_v_4290672791 =l loadl %t_0
+%t_1 =l add %state, 48
+%v_v_4290672790 =l loadl %t_1
+%t_2 =l add %state, 56
+%v_v_4290672789 =l loadl %t_2
+%v_v_4290672788 =l copy %v_v_4290672790
+%v_v_4290672791 =l call $p111_rt_keep(l %state, l %v_v_4290672791)
+%v_v_4290672786 =l copy %v_v_4290672791
+storel %v_v_4290672788, %v_scratch
+%t_3 =l add %v_scratch, 8
+storel %v_v_4290672786, %t_3
+%t_5 =l add %state, 16
+%v_p114t_4_sp =l loadl %t_5
+%v_p114t_4_capture =l loadl %v_scratch
+storel %v_p114t_4_capture, %v_p114t_4_sp
+%t_6 =l add %v_scratch, 8
+%v_p114t_4_capture =l loadl %t_6
+%t_7 =l add %v_p114t_4_sp, 8
+storel %v_p114t_4_capture, %t_7
+%t_8 =l add %v_p114t_4_sp, 16
+storel 50370, %t_8
+%v_p114t_4_next_sp =l add %v_p114t_4_sp, 24
+%t_9 =l add %state, 16
+storel %v_p114t_4_next_sp, %t_9
+%v_ignored =l copy 0
+%v_v_4290672783 =l copy %v_v_4290672789
+%v_p112f_0_capture_0 =l copy %v_v_4290672783
+%v_ignored =l copy 0
+%v_v_4290672780 =l copy %v_v_4290672791
+%v_p112f_0_arg_0 =l copy %v_v_4290672780
+%v_p112f_0_result =l call $p112w_FID_36_100_105_114_101_99_116_46_100_110_(l %state, l %v_p112f_0_arg_0)
+%v_p112f_0_local_ignored =l copy 0
+%v_p112f_0_local_v_4290672783 =l copy %v_p112f_0_capture_0
+%v_p112f_0_local_v_4290672782 =l copy %v_p112f_0_result
+storel %v_p112f_0_local_v_4290672783, %v_p112f_0_local_scratch
+%t_10 =l add %v_p112f_0_local_scratch, 8
+storel %v_p112f_0_local_v_4290672782, %t_10
+%v_p112f_0_local_reply =l call $p111_rt_jump(l %state, w 50360, l %v_p112f_0_local_scratch, w 2)
+ret %v_p112f_0_local_reply
+}

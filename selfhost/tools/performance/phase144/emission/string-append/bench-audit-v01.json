@@ -1,0 +1,266 @@
+{
+  "kind": "phase144-isolated-append-result-audit",
+  "complete": true,
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase144/append-bench-builds01/report.json",
+      "bytes": 34276,
+      "sha256": "9f6d88ee6fdeee3d565329621a0d5cf387e46066005f2aa20a9fb2ba427e078c"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase144/append-bench-timing01/report.json",
+      "bytes": 70495,
+      "sha256": "0e854cf2d257b1dd38318280b6cb80301836e5e500a2df4f589f6e3691c24c36"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase144/emission/string-append/bench-cases-v01.json",
+      "bytes": 11391,
+      "sha256": "ec2fca5318956a8f98de5ba1b4a8edfaf4e6a995dda033e0a3e48c06cba26abc"
+    }
+  ],
+  "rows": [
+    {
+      "name": "coverage-unicode-text-16",
+      "baselineMs": [
+        282,
+        279,
+        282,
+        280
+      ],
+      "candidateMs": [
+        282,
+        272,
+        277,
+        273
+      ],
+      "medianRatio": 0.9786476868327402,
+      "pairedRatios": [
+        1.0,
+        0.974910394265233,
+        0.9822695035460993,
+        0.975
+      ],
+      "shortInterval": false,
+      "baselineQbe": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase144/append-bench-baseline-emit01/coverage-unicode-text-16.ssa",
+        "bytes": 534128,
+        "sha256": "feb19df35184cbe0c5b4a6f6d217c95c733241de477d5e598b514caef7aa8836"
+      },
+      "candidateQbe": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase144/append-bench-candidate-emit01/coverage-unicode-text-16.ssa",
+        "bytes": 534363,
+        "sha256": "586deae4a58506e2e014a50056623ddf89b757243c04c31f24b20873a3d5984f"
+      },
+      "baselineBinary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p131-p131-combined-literals01-smoke-coverage-unicode-text-16-build/program",
+        "bytes": 235200,
+        "sha256": "42018ddf8178f212568c6a60b89867745659ee4007daea0cc91d3f09bdf4d4d2"
+      },
+      "candidateBinary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p144-append-bench-candidate-coverage-unicode-text-16-build01/program",
+        "bytes": 235200,
+        "sha256": "13661957a01252bb426f9baf305f73079ab6e62ff9e3ba0381bf4801d9f10f61"
+      },
+      "sameBinaryPin": false,
+      "baselineCapabilities": 15,
+      "candidateCapabilities": 15,
+      "baselineConcatCalls": 0,
+      "candidateConcatCalls": 1,
+      "descriptorOnlyChange": false,
+      "edits": [
+        {
+          "kind": "insert",
+          "oldLine": 2192,
+          "newLine": 2192,
+          "old": [],
+          "new": [
+            "%v_p125_concat_result =l call $p125_rt_concat_typed(l %state, l %v_v_4294967295, l %v_v_4294967294, w 24, w 25)",
+            "%v_p125_concat_yes =w cnel %v_p125_concat_result, 0",
+            "jnz %v_p125_concat_yes, @b_0, @b_1",
+            "@b_0",
+            "ret %v_p125_concat_result",
+            "@b_1"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "coverage-unicode-text-64",
+      "baselineMs": [
+        286,
+        287,
+        288,
+        292
+      ],
+      "candidateMs": [
+        277,
+        275,
+        276,
+        278
+      ],
+      "medianRatio": 0.9617391304347827,
+      "pairedRatios": [
+        0.9685314685314685,
+        0.9581881533101045,
+        0.9583333333333334,
+        0.952054794520548
+      ],
+      "shortInterval": false,
+      "baselineQbe": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase144/append-bench-baseline-emit01/coverage-unicode-text-64.ssa",
+        "bytes": 551379,
+        "sha256": "727feb25c7b7725fa51b2e0b4dbe07ab2ebafcdf95e6bfc3335cfae7a477b66d"
+      },
+      "candidateQbe": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase144/append-bench-candidate-emit01/coverage-unicode-text-64.ssa",
+        "bytes": 551614,
+        "sha256": "00313fc24558612a5854f24d04ed7f6d05af7ede242fd44a223b7a332bf590b9"
+      },
+      "baselineBinary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p131-p131-combined-literals01-smoke-coverage-unicode-text-64-build/program",
+        "bytes": 244672,
+        "sha256": "1e513bb765bdc1a9d261ce6ac044da23b29b7a30b5dc133f669d6f3e13c05669"
+      },
+      "candidateBinary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p144-append-bench-candidate-coverage-unicode-text-64-build01/program",
+        "bytes": 244672,
+        "sha256": "fe5807d6119b613e69c01ef4a374d41260ff40066a5e0698e0733dd7eeda08fb"
+      },
+      "sameBinaryPin": false,
+      "baselineCapabilities": 15,
+      "candidateCapabilities": 15,
+      "baselineConcatCalls": 0,
+      "candidateConcatCalls": 1,
+      "descriptorOnlyChange": false,
+      "edits": [
+        {
+          "kind": "insert",
+          "oldLine": 2192,
+          "newLine": 2192,
+          "old": [],
+          "new": [
+            "%v_p125_concat_result =l call $p125_rt_concat_typed(l %state, l %v_v_4294967295, l %v_v_4294967294, w 24, w 25)",
+            "%v_p125_concat_yes =w cnel %v_p125_concat_result, 0",
+            "jnz %v_p125_concat_yes, @b_0, @b_1",
+            "@b_0",
+            "ret %v_p125_concat_result",
+            "@b_1"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "test-rle-roundtrip",
+      "baselineMs": [
+        1137,
+        1141,
+        1132,
+        1130
+      ],
+      "candidateMs": [
+        1040,
+        1032,
+        1035,
+        1030
+      ],
+      "medianRatio": 0.9109739973556633,
+      "pairedRatios": [
+        0.9146877748460862,
+        0.9044697633654689,
+        0.9143109540636042,
+        0.911504424778761
+      ],
+      "shortInterval": false,
+      "baselineQbe": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase144/append-bench-baseline-emit01/test-rle-roundtrip.ssa",
+        "bytes": 556555,
+        "sha256": "d59032077dc5d5aa20970c792cc0f2129651845d504daa326b9696772e0939aa"
+      },
+      "candidateQbe": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase144/append-bench-candidate-emit01/test-rle-roundtrip.ssa",
+        "bytes": 556555,
+        "sha256": "a387bbdd264edcbb46f3eace594282d527ae5831c10632f9a5cb82a8ec8edcee"
+      },
+      "baselineBinary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p131-p131-combined-literals01-smoke-test-rle-roundtrip-build/program",
+        "bytes": 238624,
+        "sha256": "035035b4f77ef0b664c65f1a414eb0d8f4e29fc808938360288dcf04b147409f"
+      },
+      "candidateBinary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p144-append-bench-candidate-test-rle-roundtrip-build01/program",
+        "bytes": 238624,
+        "sha256": "8acb6a7ba0e53a8a1bbb74028ef1db1f55bc6256b8df2cb2d96a3e3785dde3e7"
+      },
+      "sameBinaryPin": false,
+      "baselineCapabilities": 11,
+      "candidateCapabilities": 15,
+      "baselineConcatCalls": 1,
+      "candidateConcatCalls": 1,
+      "descriptorOnlyChange": true,
+      "edits": [
+        {
+          "kind": "replace",
+          "oldLine": 14336,
+          "newLine": 14336,
+          "old": [
+            "export data $p111_program = align 8 { l 11101, l 192, l 446, l 150, l 439, l 0, l 5, l 1, l 56, l 1, l 0, l 11, l $p111_segments, l $p111_fid_arity, l $p111_fid_flags, l $p111_fid_results, l $p111_cid_arity, l $p111_cid_hot, l $p111_cid_names, l $p111_static_image, l $p111_show_desc, l $p111_show_names, l 3, l $p111_effects }"
+          ],
+          "new": [
+            "export data $p111_program = align 8 { l 11101, l 192, l 446, l 150, l 439, l 0, l 5, l 1, l 56, l 1, l 0, l 15, l $p111_segments, l $p111_fid_arity, l $p111_fid_flags, l $p111_fid_results, l $p111_cid_arity, l $p111_cid_hot, l $p111_cid_names, l $p111_static_image, l $p111_show_desc, l $p111_show_names, l 3, l $p111_effects }"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "coverage-list-pipeline-128",
+      "baselineMs": [
+        31,
+        33,
+        36,
+        32
+      ],
+      "candidateMs": [
+        31,
+        38,
+        32,
+        37
+      ],
+      "medianRatio": 1.0615384615384615,
+      "pairedRatios": [
+        1.0,
+        1.1515151515151516,
+        0.8888888888888888,
+        1.15625
+      ],
+      "shortInterval": true,
+      "baselineQbe": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase144/append-bench-baseline-emit01/coverage-list-pipeline-128.ssa",
+        "bytes": 509772,
+        "sha256": "55aaecf54342a79a967c5e19441bb5898b988107239187eed4073de87eca067a"
+      },
+      "candidateQbe": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase144/append-bench-candidate-emit01/coverage-list-pipeline-128.ssa",
+        "bytes": 509772,
+        "sha256": "55aaecf54342a79a967c5e19441bb5898b988107239187eed4073de87eca067a"
+      },
+      "baselineBinary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p131-p131-combined-literals01-smoke-coverage-list-pipeline-128-build/program",
+        "bytes": 230112,
+        "sha256": "310b137e19511b668fd1ea3bf8d4f56bcf5c2a5ba5e178307b10d4d5ef230daa"
+      },
+      "candidateBinary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p131-p131-combined-literals01-smoke-coverage-list-pipeline-128-build/program",
+        "bytes": 230112,
+        "sha256": "310b137e19511b668fd1ea3bf8d4f56bcf5c2a5ba5e178307b10d4d5ef230daa"
+      },
+      "sameBinaryPin": true,
+      "baselineCapabilities": 15,
+      "candidateCapabilities": 15,
+      "baselineConcatCalls": 0,
+      "candidateConcatCalls": 0,
+      "descriptorOnlyChange": false,
+      "edits": []
+    }
+  ],
+  "conclusion": "List128 is an unchanged-binary negative control: apparent6.15% is measurement variability, not code regression. Unicode change is only verified guarded concat addition; RLE QBE change is only live-bank descriptor11\u219215. Four small paired samples are exploratory, not whole-corpus qualification."
+}

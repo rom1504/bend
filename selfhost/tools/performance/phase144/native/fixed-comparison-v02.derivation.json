@@ -1,0 +1,23 @@
+{
+  "kind": "phase144-comparison-python39-successor",
+  "complete": true,
+  "targetsRun": false,
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase144/native/fixed-comparison-v01.py",
+    "bytes": 6576,
+    "sha256": "1657d005c88699b2f4e09a4282521bbcf8a93647d646af49af2fc492a0772677"
+  },
+  "derived": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase144/native/fixed-comparison-v02.py",
+    "bytes": 6656,
+    "sha256": "dad7807a0847368cf3e07ac6f06e5fa3b0b20ff784815c05aa82ccdfef296002"
+  },
+  "edits": [
+    {
+      "before": "            flags = dict(zip(command[10::2],command[11::2],strict=True))",
+      "after": "            require(len(command)>=10 and (len(command)-10)%2==0, 'Guard flag pairs differ')\n            flags = dict(zip(command[10::2],command[11::2]))",
+      "count": 1
+    }
+  ],
+  "reason": "Python3.9 lacks zip(strict=True); retain exact pair-length obligation explicitly."
+}

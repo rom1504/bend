@@ -1,0 +1,55 @@
+{
+  "kind": "phase144-smoke-io-exit-successor",
+  "complete": true,
+  "targetsRun": false,
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase144/native/seal-v01.py",
+    "bytes": 11186,
+    "sha256": "d38633209662f941e7c20d6a7d4544b08118c035b8cec5bc2c4c2ecaa0b95585"
+  },
+  "derived": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase144/native/seal-v02.py",
+    "bytes": 11136,
+    "sha256": "3d43afe9da5a389b4506568719189a1d1deb24d5d66785c5f0cdcb0c7be6a5a8"
+  },
+  "edits": [
+    {
+      "before": "HERE/'host-smokes-v02.py'",
+      "after": "HERE/'host-smokes-v03.py'",
+      "count": 1
+    },
+    {
+      "before": "('publish-existing-refusal',['publish',str(out/'published.txt'),'wrong'],b'17\\n',1)",
+      "after": "('publish-existing-refusal',['publish',str(out/'published.txt'),'wrong'],b'17\\n',0)",
+      "count": 1
+    },
+    {
+      "before": "j['exitCode']==(1 if j['name']=='publish-existing-refusal' else 0)",
+      "after": "j['exitCode']==0",
+      "count": 1
+    }
+  ],
+  "reason": "Correct the process oracle from the unchanged IO contract: IO.pure(U32,1) supplies the final value to FID_IO_EMIT; CID_EMIT completes an activation and io_loop returns0 when all activations complete. Only CID_HALT/IO.die changes process exit. EEXIST17 stdout, unchanged published bytes and no temporary leftovers remain mandatory; retain failed smoke01.",
+  "evidence": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase144/native/host-effects-v01.bend",
+      "bytes": 1762,
+      "sha256": "90975ac3e61bd3f49c2aec4cabf378702131f6685d378a0b777818a6c3317ad6"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase144/serial-rfc01/runtime.c",
+      "bytes": 150560,
+      "sha256": "aa95d2c0426c05bcc4d34244dd8b22b79ebcaf6d30634569201961f60b57f333"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/base.bend",
+      "bytes": 75064,
+      "sha256": "99ac43f2b2bb3e3f39acdcedcecbbd3cb44749ce13969c827d6973fa66f7facf"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase144/final03-host-smokes01/report.json",
+      "bytes": 139592,
+      "sha256": "bb1f732cbb78cceebea6a7fa038164b1f521fed6089c8f7ed0a0629d77c700ac"
+    }
+  ]
+}

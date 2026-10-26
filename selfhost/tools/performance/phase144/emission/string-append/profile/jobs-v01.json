@@ -1,0 +1,122 @@
+{
+  "kind": "phase144-concat-diagnostic-root-jobs",
+  "complete": true,
+  "targetsRun": false,
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase144/concat-profile01/plan.json",
+      "bytes": 16719,
+      "sha256": "c9f2183f75ee5690083cdee96a72f2727cef25d0133c2bbf5ed4269fae8b1ffb"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase144/emission/string-append/profile/observe-v01.py",
+      "bytes": 4112,
+      "sha256": "87d1e6da23bd8bbffd74408d6651bd6dffd5baccd050c770ee5fbb9db082ba13"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/profiler/build-runtime.py",
+      "bytes": 1901,
+      "sha256": "c6aadc9b48b038d33f1b8d52edebff34c0f31f706558e95896ac4d0449549c13"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/profiler/check-runtime.py",
+      "bytes": 10072,
+      "sha256": "92d66e63d12c61f23074e7f7dfdc22d0400eabe6e383a25d3f22b17679a8481e"
+    }
+  ],
+  "jobs": [
+    {
+      "name": "concat-profile-build01",
+      "command": [
+        "python3",
+        "-B",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase111/guard.py",
+        "--out",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase144/concat-profile-build01-guard",
+        "--seconds",
+        "60",
+        "--cpu",
+        "3",
+        "--rss-mib",
+        "3072",
+        "--available-mib",
+        "16384",
+        "--file-mib",
+        "64",
+        "--",
+        "python3",
+        "-B",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/profiler/build-runtime.py",
+        "--plan",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase144/concat-profile01/plan.json",
+        "--out",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase144/concat-profile-build01"
+      ]
+    },
+    {
+      "name": "concat-profile-control01",
+      "command": [
+        "python3",
+        "-B",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase111/guard.py",
+        "--out",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase144/concat-profile-control01-guard",
+        "--seconds",
+        "60",
+        "--cpu",
+        "3",
+        "--rss-mib",
+        "3072",
+        "--available-mib",
+        "16384",
+        "--file-mib",
+        "64",
+        "--",
+        "python3",
+        "-B",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/profiler/check-runtime.py",
+        "--runtime-plan",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase144/concat-profile01/plan.json",
+        "--build-report",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase144/concat-profile-build01/report.json",
+        "--expected",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase144/concat-profile01/expected-control.json",
+        "--out",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase144/concat-profile-control01"
+      ]
+    },
+    {
+      "name": "concat-profile-observe01",
+      "command": [
+        "python3",
+        "-B",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase111/guard.py",
+        "--out",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase144/concat-profile-observe01-guard",
+        "--seconds",
+        "60",
+        "--cpu",
+        "3",
+        "--rss-mib",
+        "3072",
+        "--available-mib",
+        "16384",
+        "--file-mib",
+        "64",
+        "--",
+        "python3",
+        "-B",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase144/emission/string-append/profile/observe-v01.py",
+        "--plan",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase144/concat-profile01/plan.json",
+        "--build",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase144/concat-profile-build01/report.json",
+        "--control",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase144/concat-profile-control01/report.json",
+        "--out",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase144/concat-profile-observe01"
+      ]
+    }
+  ],
+  "scope": "Root-only diagnostic same-object runtime relink, original16 counter control plus seven source-derived zero columns, then two ordinary exact outputs with counters off/on. No timings used as performance evidence;no production/runtime selector changes."
+}

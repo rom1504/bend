@@ -1,0 +1,17 @@
+--- /home/ai/bend2/build/publish/bend/selfhost/build/phase130/p144-programs04-baseline-complete-generic-row32/program.ssa
++++ /home/ai/bend2/build/publish/bend/selfhost/build/phase130/p144-programs04-codegen-complete-generic-row32/program.ssa
+@@ -8988,8 +8988,14 @@
+ @entry
+ %v_scratch =l alloc8 2048
+ jmp @p113_loop
+ @p113_loop
++%v_p125_concat_result =l call $p125_rt_concat_typed(l %state, l %v_v_4294967295, l %v_v_4294967294, w 24, w 25)
++%v_p125_concat_yes =w cnel %v_p125_concat_result, 0
++jnz %v_p125_concat_yes, @b_0, @b_1
++@b_0
++ret %v_p125_concat_result
++@b_1
+ %v_p118_public_result =l call $p113d_FID_36_112_49_49_56_46_116_114_109_99_46_36_100_105_114_101_99_116_46_83_116_114_105_110_103_46_97_112_112_101_110_100_(l %state, l %v_v_4294967295, l %v_v_4294967294, l 0, l 0)
+ ret %v_p118_public_result
+ }
+ 

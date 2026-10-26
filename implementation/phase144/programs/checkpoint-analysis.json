@@ -1,0 +1,52 @@
+{
+  "kind": "phase144-observer-checkpoint-source-accounting",
+  "complete": true,
+  "targetsRun": false,
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase144/programs-plan04-measure/report.json",
+      "bytes": 1779011,
+      "sha256": "31d530ad5e5badba7838935ef7072f37b146ef2badbb8738558621035a35c6b8"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase144/programs-last-resume01/report.json",
+      "bytes": 1650266,
+      "sha256": "99b7e21921d12c4e5260339c38b098f6d82d0b8b500227068b20095da5ea1363"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase144/programs/runtime-v04.py",
+      "bytes": 18082,
+      "sha256": "ab4e7a9c985866b2df1b4571f8607c7be7a90550d50851345d7332599820fee8"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase144/programs/runtime-v05.py",
+      "bytes": 18207,
+      "sha256": "151b7d7f9ab1892e74ea7c8cc692a7edadbc5c5fd014cb3efb090843034eedc1"
+    }
+  ],
+  "retainedMeasuredRows": 704,
+  "resumedMeasuredRows": 16,
+  "completedCorpus": {
+    "cases": 45,
+    "observations": 720,
+    "observationsPerCase": 16
+  },
+  "sameSuccessful720RunCounterfactual": {
+    "oldReportWrites": 1442,
+    "newReportWrites": 47,
+    "reportWriteReductionFraction": 0.9674063800277393,
+    "oldJobsPlusRowsEntrySerializations": 1038960,
+    "newJobsPlusRowsEntrySerializations": 34560,
+    "entrySerializationReductionFraction": 0.9667359667359667,
+    "oldFormula": "1 initial + 2*N observation checkpoints + 1 final",
+    "newFormula": "1 initial + C complete-case checkpoints + 1 final",
+    "entryFormula": "Old: sum(4*i-1,i=1..N)+2*N. New: sum(2*16*i,i=1..C)+2*N. Does not count static input pins, summary, or nested record fields."
+  },
+  "observedInterruptedRun": {
+    "reportSeconds": 399.1806527241133,
+    "completedJobIntervalSeconds": 332.13005373906344,
+    "remainingObserverSeconds": 67.05059898504987,
+    "scope": "Job intervals include child execution and immediate stdout/stderr persistence before row creation; residual contains JSON/pinning/control overhead, not a separately profiled write-only timer."
+  },
+  "scope": "Source-derived operation counts over the actual720-row corpus, not a new timing run or measured wall-speedup. Stdout/stderr, oracle, count profile, role rotation and acquisition checkpoint policy unchanged. On a hard kill, last durable report ends at previous complete case; finally persists ordinary exceptions."
+}

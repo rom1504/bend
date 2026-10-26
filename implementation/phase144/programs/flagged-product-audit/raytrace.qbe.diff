@@ -1,0 +1,313 @@
+--- /home/ai/bend2/build/publish/bend/selfhost/build/phase130/p144-programs04-codegen-raytrace/program.ssa
++++ /home/ai/bend2/build/publish/bend/selfhost/build/phase130/p144-programs04-fast-raytrace/program.ssa
+@@ -364,31 +364,35 @@
+ %v_p113i_15_local_v_4294967275 =l loadl %v_p113i_15_local_scratch
+ %v_p113i_15_local_p113p_move_25_0 =l copy %v_p113i_15_local_v_4294967279
+ %v_p113i_15_local_v_4294967272 =l copy %v_p113i_15_local_p113p_move_25_0
+ %v_p113i_15_local_p113p_move_26_0 =l copy 10
+-%v_p113i_15_local_v_4294967271 =l copy 10
++%v_p113i_15_local_v_4294967271 =l copy %v_p113i_15_local_p113p_move_26_0
+ %p113_width_19 =w copy %v_p113i_15_local_v_4294967272
+ %v_p113i_15_local_p112_s_a =l extuw %p113_width_19
+-%v_p113i_15_local_p112_s_b =l copy 10
+-%p113_width_20 =w mul %v_p113i_15_local_p112_s_a, 10
+-%v_p113i_15_local_value =l extuw %p113_width_20
++%p113_width_20 =w copy %v_p113i_15_local_v_4294967271
++%v_p113i_15_local_p112_s_b =l extuw %p113_width_20
++%p113_width_21 =w mul %v_p113i_15_local_p112_s_a, %v_p113i_15_local_p112_s_b
++%v_p113i_15_local_value =l extuw %p113_width_21
+ %v_p113i_15_local_p113p_move_28_0 =l copy %v_p113i_15_local_value
+ %v_p113i_15_local_v_4294967274 =l copy %v_p113i_15_local_p113p_move_28_0
+ %v_p113i_15_local_p113p_move_31_0 =l copy %v_p113i_15_local_v_4294967275
+ %v_p113i_15_local_v_4294967266 =l copy %v_p113i_15_local_p113p_move_31_0
+ %v_p113i_15_local_p113p_move_32_0 =l copy 48
+-%v_p113i_15_local_v_4294967265 =l copy 48
+-%p113_width_21 =w copy %v_p113i_15_local_v_4294967266
+-%v_p113i_15_local_p112_s_a =l extuw %p113_width_21
+-%v_p113i_15_local_p112_s_b =l copy 48
+-%p113_width_22 =w sub %v_p113i_15_local_p112_s_a, 48
+-%v_p113i_15_local_value =l extuw %p113_width_22
++%v_p113i_15_local_v_4294967265 =l copy %v_p113i_15_local_p113p_move_32_0
++%p113_width_22 =w copy %v_p113i_15_local_v_4294967266
++%v_p113i_15_local_p112_s_a =l extuw %p113_width_22
++%p113_width_23 =w copy %v_p113i_15_local_v_4294967265
++%v_p113i_15_local_p112_s_b =l extuw %p113_width_23
++%p113_width_24 =w sub %v_p113i_15_local_p112_s_a, %v_p113i_15_local_p112_s_b
++%v_p113i_15_local_value =l extuw %p113_width_24
+ %v_p113i_15_local_p113p_move_34_0 =l copy %v_p113i_15_local_value
+ %v_p113i_15_local_v_4294967273 =l copy %v_p113i_15_local_p113p_move_34_0
+-%v_p113i_15_local_p112_s_a =l copy %v_p113i_15_local_v_4294967274
+-%v_p113i_15_local_p112_s_b =l copy %v_p113i_15_local_v_4294967273
+-%p113_width_23 =w add %v_p113i_15_local_p112_s_a, %v_p113i_15_local_p112_s_b
+-%v_p113i_15_local_value =l extuw %p113_width_23
++%p113_width_25 =w copy %v_p113i_15_local_v_4294967274
++%v_p113i_15_local_p112_s_a =l extuw %p113_width_25
++%p113_width_26 =w copy %v_p113i_15_local_v_4294967273
++%v_p113i_15_local_p112_s_b =l extuw %p113_width_26
++%p113_width_27 =w add %v_p113i_15_local_p112_s_a, %v_p113i_15_local_p112_s_b
++%v_p113i_15_local_value =l extuw %p113_width_27
+ %v_p113i_15_local_p113p_move_36_0 =l copy %v_p113i_15_local_value
+ %v_p113i_15_local_v_1974 =l copy %v_p113i_15_local_p113p_move_36_0
+ %v_p113i_15_local_p113p_move_40_0 =l copy %v_p113i_15_local_v_4294967280
+ %v_p113i_15_local_v_4294967258 =l copy %v_p113i_15_local_p113p_move_40_0
+@@ -396,38 +400,38 @@
+ %v_p113i_15_local_v_4294967257 =l copy %v_p113i_15_local_p113p_move_41_0
+ %v_p113i_15_local_p113p_move_46_0 =l copy %v_p113i_15_local_v_1974
+ %v_p113i_15_local_v_4294967251 =l copy %v_p113i_15_local_p113p_move_46_0
+ %v_p113i_15_local_p113p_move_47_0 =l copy 10
+-%v_p113i_15_local_v_4294967250 =l copy 10
++%v_p113i_15_local_v_4294967250 =l copy %v_p113i_15_local_p113p_move_47_0
+ storel %v_p113i_15_local_v_4294967251, %v_p113i_15_local_scratch
+-%t_24 =l add %v_p113i_15_local_scratch, 8
+-storel 10, %t_24
+-%v_p114t_25_u_raw =l loadl %v_p113i_15_local_scratch
+-%v_p114t_25_u_left =w copy %v_p114t_25_u_raw
+-%v_p114t_25_u_ptr =l add %v_p113i_15_local_scratch, 8
+-%v_p114t_25_u_right_word =l loadl %v_p114t_25_u_ptr
+-%v_p114t_25_u_right =w copy %v_p114t_25_u_right_word
+-%v_p114t_25_u_nonzero =w cnew %v_p114t_25_u_right, 0
+-jnz %v_p114t_25_u_nonzero, @b_25, @b_26
+-@b_25
+-%v_p114t_25_u_answer =w udiv %v_p114t_25_u_left, %v_p114t_25_u_right
+-%v_p113i_15_local_value =l extuw %v_p114t_25_u_answer
+-jmp @b_27
+-@b_26
++%t_28 =l add %v_p113i_15_local_scratch, 8
++storel %v_p113i_15_local_v_4294967250, %t_28
++%v_p114t_29_u_raw =l loadl %v_p113i_15_local_scratch
++%v_p114t_29_u_left =w copy %v_p114t_29_u_raw
++%v_p114t_29_u_ptr =l add %v_p113i_15_local_scratch, 8
++%v_p114t_29_u_right_word =l loadl %v_p114t_29_u_ptr
++%v_p114t_29_u_right =w copy %v_p114t_29_u_right_word
++%v_p114t_29_u_nonzero =w cnew %v_p114t_29_u_right, 0
++jnz %v_p114t_29_u_nonzero, @b_29, @b_30
++@b_29
++%v_p114t_29_u_answer =w udiv %v_p114t_29_u_left, %v_p114t_29_u_right
++%v_p113i_15_local_value =l extuw %v_p114t_29_u_answer
++jmp @b_31
++@b_30
+ %v_p113i_15_local_value =l copy 0
+-jmp @b_27
+-@b_27
++jmp @b_31
++@b_31
+ %v_p113i_15_local_p113p_move_49_0 =l copy %v_p113i_15_local_value
+ %v_p113i_15_local_v_4294967253 =l copy %v_p113i_15_local_p113p_move_49_0
+ %v_p113i_15_local_p113p_move_50_0 =l copy %v_p113i_15_local_v_4294967279
+ %v_p113i_15_local_v_4294967252 =l copy %v_p113i_15_local_p113p_move_50_0
+-%p113_width_28 =w copy %v_p113i_15_local_v_4294967253
+-%v_p113i_15_local_p112_s_a =l extuw %p113_width_28
+-%p113_width_29 =w copy %v_p113i_15_local_v_4294967252
+-%v_p113i_15_local_p112_s_b =l extuw %p113_width_29
++%p113_width_32 =w copy %v_p113i_15_local_v_4294967253
++%v_p113i_15_local_p112_s_a =l extuw %p113_width_32
++%p113_width_33 =w copy %v_p113i_15_local_v_4294967252
++%v_p113i_15_local_p112_s_b =l extuw %p113_width_33
+ %v_p113i_15_local_p112_s_test =w ceql %v_p113i_15_local_p112_s_a, %v_p113i_15_local_p112_s_b
+-%p113_bool_30 =w cnew %v_p113i_15_local_p112_s_test, 0
+-%v_p113i_15_local_value =l extuw %p113_bool_30
++%p113_bool_34 =w cnew %v_p113i_15_local_p112_s_test, 0
++%v_p113i_15_local_value =l extuw %p113_bool_34
+ %v_p113i_15_local_p113p_move_52_0 =l copy %v_p113i_15_local_value
+ %v_p113i_15_local_v_4294967256 =l copy %v_p113i_15_local_p113p_move_52_0
+ %p113_again_0 =l copy 0
+ %p113_again_1 =l copy %v_p113i_15_local_v_4294967258
+@@ -962,12 +966,12 @@
+ %v_p113i_14_local_v_4294967289 =l copy %v_p113i_14_local_p113p_move_8_0
+ %v_p113i_14_local_p113p_move_13_0 =l copy %v_p113i_14_local_v_4294967294
+ %v_p113i_14_local_v_4294967284 =l copy %v_p113i_14_local_p113p_move_13_0
+ %v_p113i_14_local_p113p_move_14_0 =l copy 10
+-%v_p113i_14_local_v_4294967283 =l copy 10
++%v_p113i_14_local_v_4294967283 =l copy %v_p113i_14_local_p113p_move_14_0
+ storel %v_p113i_14_local_v_4294967284, %v_p113i_14_local_scratch
+ %t_6 =l add %v_p113i_14_local_scratch, 8
+-storel 10, %t_6
++storel %v_p113i_14_local_v_4294967283, %t_6
+ %v_p113i_14_local_value =l call $p111_rt_op(l %state, w 64, l %v_p113i_14_local_scratch, w 2)
+ %v_p113i_14_local_p113p_move_16_0 =l copy %v_p113i_14_local_value
+ %v_p113i_14_local_v_4294967286 =l copy %v_p113i_14_local_p113p_move_16_0
+ %v_p113i_14_local_p113p_move_18_0 =l copy %v_p113i_14_local_v_4294967293
+@@ -1053,14 +1057,15 @@
+ %v_p113i_15_local_v_4294967275 =l loadl %v_p113i_15_local_scratch
+ %v_p113i_15_local_p113p_move_23_0 =l copy %v_p113i_15_local_v_4294967275
+ %v_p113i_15_local_v_4294967274 =l copy %v_p113i_15_local_p113p_move_23_0
+ %v_p113i_15_local_p113p_move_24_0 =l copy 48
+-%v_p113i_15_local_v_4294967273 =l copy 48
++%v_p113i_15_local_v_4294967273 =l copy %v_p113i_15_local_p113p_move_24_0
+ %p113_width_21 =w copy %v_p113i_15_local_v_4294967274
+ %v_p113i_15_local_p112_s_a =l extuw %p113_width_21
+-%v_p113i_15_local_p112_s_b =l copy 48
+-%p113_width_22 =w sub %v_p113i_15_local_p112_s_a, 48
+-%v_p113i_15_local_value =l extuw %p113_width_22
++%p113_width_22 =w copy %v_p113i_15_local_v_4294967273
++%v_p113i_15_local_p112_s_b =l extuw %p113_width_22
++%p113_width_23 =w sub %v_p113i_15_local_p112_s_a, %v_p113i_15_local_p112_s_b
++%v_p113i_15_local_value =l extuw %p113_width_23
+ %v_p113i_15_local_p113p_move_26_0 =l copy %v_p113i_15_local_value
+ %v_p113i_15_local_v_1757 =l copy %v_p113i_15_local_p113p_move_26_0
+ %v_p113i_15_local_p113p_move_31_0 =l copy %v_p113i_15_local_v_4294967280
+ %v_p113i_15_local_v_4294967268 =l copy %v_p113i_15_local_p113p_move_31_0
+@@ -1070,14 +1075,16 @@
+ %v_p113i_15_local_v_4294967266 =l copy %v_p113i_15_local_p113p_move_33_0
+ %v_p113i_15_local_p113p_move_36_0 =l copy %v_p113i_15_local_v_1757
+ %v_p113i_15_local_v_4294967261 =l copy %v_p113i_15_local_p113p_move_36_0
+ %v_p113i_15_local_p113p_move_37_0 =l copy 10
+-%v_p113i_15_local_v_4294967260 =l copy 10
+-%v_p113i_15_local_p112_s_a =l copy %v_p113i_15_local_v_4294967261
+-%v_p113i_15_local_p112_s_b =l copy 10
+-%v_p113i_15_local_p112_s_test =w cultl %v_p113i_15_local_p112_s_a, 10
+-%p113_bool_23 =w cnew %v_p113i_15_local_p112_s_test, 0
+-%v_p113i_15_local_value =l extuw %p113_bool_23
++%v_p113i_15_local_v_4294967260 =l copy %v_p113i_15_local_p113p_move_37_0
++%p113_width_24 =w copy %v_p113i_15_local_v_4294967261
++%v_p113i_15_local_p112_s_a =l extuw %p113_width_24
++%p113_width_25 =w copy %v_p113i_15_local_v_4294967260
++%v_p113i_15_local_p112_s_b =l extuw %p113_width_25
++%v_p113i_15_local_p112_s_test =w cultl %v_p113i_15_local_p112_s_a, %v_p113i_15_local_p112_s_b
++%p113_bool_26 =w cnew %v_p113i_15_local_p112_s_test, 0
++%v_p113i_15_local_value =l extuw %p113_bool_26
+ %v_p113i_15_local_p113p_move_39_0 =l copy %v_p113i_15_local_value
+ %v_p113i_15_local_v_4294967265 =l copy %v_p113i_15_local_p113p_move_39_0
+ %p113_again_0 =l copy 0
+ %p113_again_1 =l copy %v_p113i_15_local_v_4294967268
+@@ -1380,10 +1387,10 @@
+ %v_p113i_14_local_v_4294967278 =l copy %v_p113i_14_local_p113p_move_20_0
+ %v_p113i_14_local_p113p_move_26_0 =l copy %v_p113i_14_local_v_4294967285
+ %v_p113i_14_local_v_4294967271 =l copy %v_p113i_14_local_p113p_move_26_0
+ %v_p113i_14_local_p113p_move_27_0 =l copy 10
+-%v_p113i_14_local_v_4294967270 =l copy 10
+-%v_p113i_14_local_p126dp_status_28 =l call $p126_rt_nat_divmod(l %state, l %v_p113i_14_local_v_4294967271, l 10, l %v_p113i_14_local_p126dp_out_28)
++%v_p113i_14_local_v_4294967270 =l copy %v_p113i_14_local_p113p_move_27_0
++%v_p113i_14_local_p126dp_status_28 =l call $p126_rt_nat_divmod(l %state, l %v_p113i_14_local_v_4294967271, l %v_p113i_14_local_v_4294967270, l %v_p113i_14_local_p126dp_out_28)
+ %v_p113i_14_local_p126dp_first_28 =l loadl %v_p113i_14_local_p126dp_out_28
+ %t_9 =l add %v_p113i_14_local_p126dp_out_28, 8
+ %v_p113i_14_local_p126dp_second_28 =l loadl %t_9
+ %v_p113i_14_local_p113p_move_29_0 =l copy %v_p113i_14_local_p126dp_first_28
+@@ -4294,12 +4301,12 @@
+ %v_p113i_14_local_v_4294967287 =l copy %v_p113i_14_local_p113p_move_11_0
+ %v_p113i_14_local_p113p_move_14_0 =l copy %v_p113i_14_local_v_4294967293
+ %v_p113i_14_local_v_4294967283 =l copy %v_p113i_14_local_p113p_move_14_0
+ %v_p113i_14_local_p113p_move_15_0 =l copy 10
+-%v_p113i_14_local_v_4294967282 =l copy 10
++%v_p113i_14_local_v_4294967282 =l copy %v_p113i_14_local_p113p_move_15_0
+ storel %v_p113i_14_local_v_4294967283, %v_p113i_14_local_scratch
+ %t_9 =l add %v_p113i_14_local_scratch, 8
+-storel 10, %t_9
++storel %v_p113i_14_local_v_4294967282, %t_9
+ %v_p114t_10_u_raw =l loadl %v_p113i_14_local_scratch
+ %v_p114t_10_u_left =w copy %v_p114t_10_u_raw
+ %v_p114t_10_u_ptr =l add %v_p113i_14_local_scratch, 8
+ %v_p114t_10_u_right_word =l loadl %v_p114t_10_u_ptr
+@@ -4316,16 +4323,16 @@
+ @b_12
+ %v_p113i_14_local_p113p_move_17_0 =l copy %v_p113i_14_local_value
+ %v_p113i_14_local_v_4294967286 =l copy %v_p113i_14_local_p113p_move_17_0
+ %v_p113i_14_local_p113p_move_23_0 =l copy 48
+-%v_p113i_14_local_v_4294967274 =l copy 48
++%v_p113i_14_local_v_4294967274 =l copy %v_p113i_14_local_p113p_move_23_0
+ %v_p113i_14_local_p113p_move_26_0 =l copy %v_p113i_14_local_v_4294967293
+ %v_p113i_14_local_v_4294967271 =l copy %v_p113i_14_local_p113p_move_26_0
+ %v_p113i_14_local_p113p_move_27_0 =l copy 10
+-%v_p113i_14_local_v_4294967270 =l copy 10
++%v_p113i_14_local_v_4294967270 =l copy %v_p113i_14_local_p113p_move_27_0
+ storel %v_p113i_14_local_v_4294967271, %v_p113i_14_local_scratch
+ %t_13 =l add %v_p113i_14_local_scratch, 8
+-storel 10, %t_13
++storel %v_p113i_14_local_v_4294967270, %t_13
+ %v_p114t_14_u_raw =l loadl %v_p113i_14_local_scratch
+ %v_p114t_14_u_left =w copy %v_p114t_14_u_raw
+ %v_p114t_14_u_ptr =l add %v_p113i_14_local_scratch, 8
+ %v_p114t_14_u_right_word =l loadl %v_p114t_14_u_ptr
+@@ -4341,13 +4348,14 @@
+ jmp @b_16
+ @b_16
+ %v_p113i_14_local_p113p_move_29_0 =l copy %v_p113i_14_local_value
+ %v_p113i_14_local_v_4294967273 =l copy %v_p113i_14_local_p113p_move_29_0
+-%v_p113i_14_local_p112_s_a =l copy 48
+-%p113_width_17 =w copy %v_p113i_14_local_v_4294967273
+-%v_p113i_14_local_p112_s_b =l extuw %p113_width_17
+-%p113_width_18 =w add 48, %v_p113i_14_local_p112_s_b
+-%v_p113i_14_local_value =l extuw %p113_width_18
++%p113_width_17 =w copy %v_p113i_14_local_v_4294967274
++%v_p113i_14_local_p112_s_a =l extuw %p113_width_17
++%p113_width_18 =w copy %v_p113i_14_local_v_4294967273
++%v_p113i_14_local_p112_s_b =l extuw %p113_width_18
++%p113_width_19 =w add %v_p113i_14_local_p112_s_a, %v_p113i_14_local_p112_s_b
++%v_p113i_14_local_value =l extuw %p113_width_19
+ %v_p113i_14_local_p113p_move_31_0 =l copy %v_p113i_14_local_value
+ %v_p113i_14_local_v_4294967275 =l copy %v_p113i_14_local_p113p_move_31_0
+ storel %v_p113i_14_local_v_4294967275, %v_p113i_14_local_scratch
+ %v_p113i_14_local_value =l call $p111_rt_special_ctor(l %state, w 5, l %v_p113i_14_local_scratch, w 1)
+@@ -4355,10 +4363,10 @@
+ %v_p113i_14_local_v_4294967277 =l copy %v_p113i_14_local_p113p_move_32_0
+ %v_p113i_14_local_p113p_move_33_0 =l copy %v_p113i_14_local_v_4294967294
+ %v_p113i_14_local_v_4294967276 =l copy %v_p113i_14_local_p113p_move_33_0
+ storel %v_p113i_14_local_v_4294967277, %v_p113i_14_local_scratch
+-%t_19 =l add %v_p113i_14_local_scratch, 8
+-storel %v_p113i_14_local_v_4294967276, %t_19
++%t_20 =l add %v_p113i_14_local_scratch, 8
++storel %v_p113i_14_local_v_4294967276, %t_20
+ %v_p113i_14_local_value =l call $p125_rt_ctor2(l %state, w 25, l %v_p113i_14_local_scratch)
+ %v_p113i_14_local_p113p_move_34_0 =l copy %v_p113i_14_local_value
+ %v_p113i_14_local_v_4294967285 =l copy %v_p113i_14_local_p113p_move_34_0
+ %p113_again_0 =l copy 1
+@@ -4386,21 +4394,21 @@
+ %v_p113i_15_local_v_4294967291 =l copy %v_p113i_15_local_p113p_move_7_0
+ %v_p113i_15_local_p113p_move_8_0 =l copy %v_p113i_15_local_v_4294967293
+ %v_p113i_15_local_v_4294967290 =l copy %v_p113i_15_local_p113p_move_8_0
+ %v_p113i_15_local_match_condition =w ceql %v_p113i_15_local_v_4294967292, 0
+-jnz %v_p113i_15_local_match_condition, @b_20, @b_21
+-@b_20
++jnz %v_p113i_15_local_match_condition, @b_21, @b_22
++@b_21
+ ret %v_p113i_15_local_v_4294967290
+-@b_21
++@b_22
+ %v_p113i_15_local_p113p_move_12_0 =l copy %v_p113i_15_local_v_4294967292
+ %v_p113i_15_local_v_4294967286 =l copy %v_p113i_15_local_p113p_move_12_0
+ %v_p113i_15_local_p113p_move_13_0 =l copy %v_p113i_15_local_v_4294967291
+ %v_p113i_15_local_v_4294967285 =l copy %v_p113i_15_local_p113p_move_13_0
+ %v_p113i_15_local_p113p_move_14_0 =l copy %v_p113i_15_local_v_4294967290
+ %v_p113i_15_local_v_4294967284 =l copy %v_p113i_15_local_p113p_move_14_0
+ %v_p113i_15_local_match_condition =w cnel %v_p113i_15_local_v_4294967286, 0
+-jnz %v_p113i_15_local_match_condition, @b_23, @b_24
+-@b_23
++jnz %v_p113i_15_local_match_condition, @b_24, @b_25
++@b_24
+ %v_p113i_15_local_v_4294967280 =l sub %v_p113i_15_local_v_4294967286, 1
+ %v_p113i_15_local_p113p_move_20_0 =l copy %v_p113i_15_local_v_4294967280
+ %v_p113i_15_local_v_4294967279 =l copy %v_p113i_15_local_p113p_move_20_0
+ %v_p113i_15_local_p113p_move_21_0 =l copy %v_p113i_15_local_v_4294967284
+@@ -4408,14 +4416,15 @@
+ %v_p113i_15_local_p113p_move_22_0 =l copy %v_p113i_15_local_v_4294967285
+ %v_p113i_15_local_v_4294967277 =l copy %v_p113i_15_local_p113p_move_22_0
+ %v_p113i_15_local_p113p_move_24_0 =l copy %v_p113i_15_local_v_4294967285
+ %v_p113i_15_local_v_4294967272 =l copy %v_p113i_15_local_p113p_move_24_0
+-%p113_width_26 =w copy %v_p113i_15_local_v_4294967272
+-%v_p113i_15_local_p112_s_a =l extuw %p113_width_26
+-%v_p113i_15_local_p112_s_b =l copy 0
+-%v_p113i_15_local_p112_s_test =w ceql %v_p113i_15_local_p112_s_a, 0
+-%p113_bool_27 =w cnew %v_p113i_15_local_p112_s_test, 0
+-%v_p113i_15_local_value =l extuw %p113_bool_27
++%p113_width_27 =w copy %v_p113i_15_local_v_4294967272
++%v_p113i_15_local_p112_s_a =l extuw %p113_width_27
++%p113_width_28 =w copy 0
++%v_p113i_15_local_p112_s_b =l extuw %p113_width_28
++%v_p113i_15_local_p112_s_test =w ceql %v_p113i_15_local_p112_s_a, %v_p113i_15_local_p112_s_b
++%p113_bool_29 =w cnew %v_p113i_15_local_p112_s_test, 0
++%v_p113i_15_local_value =l extuw %p113_bool_29
+ %v_p113i_15_local_p113p_move_26_0 =l copy %v_p113i_15_local_value
+ %v_p113i_15_local_v_4294967276 =l copy %v_p113i_15_local_p113p_move_26_0
+ %p113_again_0 =l copy 0
+ %p113_again_1 =l copy %v_p113i_15_local_v_4294967279
+@@ -4427,9 +4436,9 @@
+ %v_p126scc_arg_1 =l copy %p113_again_2
+ %v_p126scc_arg_2 =l copy %p113_again_3
+ %v_p126scc_arg_3 =l copy %p113_again_4
+ jmp @p113_loop
+-@b_24
++@b_25
+ %v_p113i_15_local_ignored =l call $p111_rt_fail(l %state, w 4)
+ ret 0
+ }
+ 

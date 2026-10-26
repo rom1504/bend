@@ -171,3 +171,21 @@ unchanged-binary difference. See
 [the detailed screen](../../selfhost/tools/performance/phase144/emission/string-append/BENCHMARK.md)
 and its pinned audit for raw arrays and exact QBE edits. Full compiler benefit
 and broad qualification are still separate obligations.
+
+## Broad profitability counterexample and admission reversal
+
+The broader ordinary benchmark exposed a missing transfer test: row32 slows from
+median512ms to557ms under new append admission. Eight post-hoc alternating pairs
+all regress, ratio1.08789. Unlike the unchanged List128 negative control, the
+actual String.append wrapper grows from8 to26 machine instructions to attempt
+the helper before its original fallback. Root therefore reverts expanded String
+admission in source04 and retains the separate live-register whitelist repair.
+The isolated Unicode gains do not establish broad profitability.
+
+A small optional counter extension is prepared under
+`emission/string-append/profile/`: same retained row32/Unicode64 objects and
+atomic Phase128 runtime, existing generic counter storage plus seven appended
+attempt/node/success/refusal channels. It is reversible, not production-selected,
+and does not claim positive branch-counter qualification from the old fixture.
+The repeated clean slowdown already justifies the revert; instrumentation is
+only explanatory evidence for future admission/profitability design.

@@ -55,3 +55,76 @@ No compiler source, installed selection, runtime source or benchmark definition
 is changed. The initial preparer attempt encountered a missing `runtime` field
 in the qualification receipt before any output or target execution; the fixed
 preparer binds the runtime through the joined candidate and actual N2 build.
+
+## Bounded completion after the timing deadline
+
+Acquisition completed all45 cases. The400s measurement guard then stopped after
+707 complete observations: all704 rows of the first44 cases and three rows of
+the last case. Its original incomplete report and deadline receipt remain
+unchanged. Recorded completed target executions took332.13s; another67.05s was
+observer, authentication and receipt-persistence overhead. The original timing
+cap underestimated complete supervisor cost.
+
+`resume-last-v01.py` authenticates the plan, acquisition, exact original method,
+deadline and all707 complete outputs through the unchanged oracle. It retains
+the704 complete-case rows and excludes the three last-case rows solely because
+that case is incomplete. The root job in`programs-resume-plan01/jobs.json` runs
+all16 observations of that final case again, using the same products, counts and
+role ordering, then joins720 observations. It neither emits nor rebuilds anything.
+The excluded observations remain in the joined report. The last case is measured
+in a separate time block; this limitation is explicit rather than hidden by
+mixing its partial and resumed pairs.
+
+## Observer cost recovery, prepared only
+
+`runtime-v05.py` is a small source-only successor, not a rerun of the campaign.
+During measurement it writes the growing JSON receipt once per complete case,
+instead of once after recording the child job and again after recording each
+observation. Each child's stdout/stderr files remain written immediately; the
+same full-output oracle runs before admitting the observation. Initial and final
+receipts, including ordinary exception persistence, remain. A hard kill loses
+only the uncheckpointed partial case from the JSON; its raw output files remain.
+Acquisition checkpoint behavior is unchanged.
+
+For the actual completed720-observation corpus, source-derived accounting gives
+**1,442→47 receipt writes** and **1,038,960→34,560 serialized job/row entries**,
+about96.7% less repeated receipt work. This is an operation-count result, not a
+measured wall-time speedup. The earlier67.05s residual includes authentication,
+serialization and other observer work; no dedicated profile attributes it all
+to writes. No target or heavy write benchmark was run to support this change.
+The [offline accounting](../../../../../implementation/phase144/programs/checkpoint-analysis.json)
+pins both source versions, the interrupted report and the completed720-row join.
+
+## Final04 promotion check without another full timing campaign
+
+`final-gate-v01.py` prepares `programs-final04-plan01/jobs.json`. Execution first
+requires the actual final04 N2 build, exact Q3 reproduction and N2 focused gates;
+the preparer does not assume future receipts already passed.
+
+The gate emits all45 original timed wrappers through N2. It may reuse an old
+object only after complete QBE byte equality. Otherwise it builds the new QBE
+with the same branch-aligned policy. Each selected serial-runtime product then
+executes once against the original full output/count oracle.
+
+Existing four-round timing is labeled **inherited**, and only if the final
+product has the same runtime and exact bytes, addresses and sizes for all loaded
+ELF sections (except GNU build ID) as the prior candidate or fast product.
+Candidate precedes fast in a fixed priority independent of timings. The gate
+does not publish a fresh aggregate by relabeling these historical observations.
+
+Only genuinely changed timed products and the previously regressing row32 case
+receive a new eight-pair timing block. Row32 compares the original143 atomic
+product with the new selected serial product, so it checks the complete product
+regression; other changed cases compare against final03 with the same serial
+runtime. More than eight changed cases stops for coordinator review instead of
+silently starting another broad campaign. No compiler source or benchmark count
+is changed by this observer.
+
+The actual gate passed all45 executions and inherited35 machine-identical cases.
+Ten products changed relative to the prior serial-runtime images; every one of
+those ten restores the exact original143 program object. The coordinator
+explicitly reviewed this outcome and authorized a ten-case bound. The original
+eight-case observer remains unchanged. `final-timing-v01.py` freezes precisely
+these ten cases in`programs-final04-ten-plan01/jobs.json`, with a160s guard,
+eight alternating pairs, and once-per-case checkpoints. This is160 new
+observations, not another720-observation campaign.

@@ -22,3 +22,13 @@ Versioned [exact stage observations](STAGES.md) add data-defined FID/order/
 multiplicity plans and delivered-sample ordinal association. Preparation and
 observation are offline; generic runtime packaging still needs a small native
 output gate before deployment. Historical collectors and captures stay intact.
+
+A versioned [opt-in concat event extension](../performance/phase144/emission/string-append/profile/README.md)
+reuses `runtime.py` materialization, counter storage, the build driver and frozen
+ABI control without changing their source files. Its seven additional counters
+separate speculative append attempts, inspected spine positions, successful
+splices and refusal reasons. Reuse requires exact source/header/object identities,
+reversible hooks, a fresh guarded build and independent ordinary output checks;
+its positive new counter branches are source-audited, not fully fixture-qualified.
+See the [measured Phase144 findings](../../../research/phase144/concat-profile.md).
+Diagnostic event counts must not be reported as time saved or clean performance.

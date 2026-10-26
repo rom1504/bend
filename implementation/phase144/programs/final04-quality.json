@@ -1,0 +1,1211 @@
+{
+  "kind": "phase144-final04-program-quality-summary",
+  "complete": true,
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase144/programs-final04-acquire01/report.json",
+      "bytes": 678173,
+      "sha256": "668f1d7f364606ecc2ae86632f70072b137b52f31062cb236670cad8915e10f3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase144/programs-final04-timing02/report.json",
+      "bytes": 250029,
+      "sha256": "abd12a846e2a4edc7a4a9a22a644106a1dd23c7256bbc25fa246d608c30a6aac"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase144/programs-plan04-acquire/report.json",
+      "bytes": 1303664,
+      "sha256": "c75dfe8f6e9b49ec5f59fb8973717970a9cd856cc8addae03e129d9c1b10c76a"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase144/programs-last-resume01/report.json",
+      "bytes": 1650266,
+      "sha256": "99b7e21921d12c4e5260339c38b098f6d82d0b8b500227068b20095da5ea1363"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase144/programs-final04-acquire01-guard/process.json",
+      "bytes": 799,
+      "sha256": "265eb5c80d27e2426a791cba16440a5223fe47c2b8a7639c9a4bbb92b9a853ca"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase144/programs-final04-timing02-guard/process.json",
+      "bytes": 798,
+      "sha256": "e4abee9c3128af0bfa4a56ed0124065ca49d62baa0c13c1885fe8b0ccbce7c22"
+    }
+  ],
+  "freshWrapperEmissions": 45,
+  "freshCorrectnessExecutions": 45,
+  "original143ObjectExactCases": 44,
+  "original143DifferentObjectCases": [
+    "test-rle-roundtrip"
+  ],
+  "inheritedMachineCases": 35,
+  "inheritedObservations": 140,
+  "changedCases": [
+    "test-morning-program",
+    "test-evening-program",
+    "test-map-set-ops",
+    "complete-generic-row32",
+    "coverage-unicode-text-16",
+    "coverage-unicode-text-64",
+    "coverage-map-churn-32",
+    "coverage-map-churn-128",
+    "coverage-record-aggregation-64",
+    "coverage-record-aggregation-256"
+  ],
+  "freshChangedObservations": 160,
+  "identities": [
+    {
+      "name": "mandelbrot",
+      "original143ObjectExact": true,
+      "finalObject": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p144-programs04-fast-mandelbrot/program.o",
+        "bytes": 244296,
+        "sha256": "61f654fa314878fbd1691f2d3194b607ae89e964d21759dff0234ad310fa12b7"
+      },
+      "originalObject": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p131-p131-combined-literals01-smoke-mandelbrot-build/program.o",
+        "bytes": 244296,
+        "sha256": "61f654fa314878fbd1691f2d3194b607ae89e964d21759dff0234ad310fa12b7"
+      },
+      "loadedMachineMatchingRoles": [
+        "candidate",
+        "fast"
+      ],
+      "timingLabel": "inherited-exact-machine",
+      "inheritedObservations": 4,
+      "wholeQbeMatchRole": "fast"
+    },
+    {
+      "name": "editdist",
+      "original143ObjectExact": true,
+      "finalObject": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p144-programs04-fast-editdist/program.o",
+        "bytes": 237496,
+        "sha256": "8cb7853c91b42440d039cbf3a89df4df0fe4596ed960dd0c7e269c3986b6c59c"
+      },
+      "originalObject": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p131-p131-combined-literals01-smoke-editdist-build/program.o",
+        "bytes": 237496,
+        "sha256": "8cb7853c91b42440d039cbf3a89df4df0fe4596ed960dd0c7e269c3986b6c59c"
+      },
+      "loadedMachineMatchingRoles": [
+        "candidate",
+        "fast"
+      ],
+      "timingLabel": "inherited-exact-machine",
+      "inheritedObservations": 4,
+      "wholeQbeMatchRole": "fast"
+    },
+    {
+      "name": "tree-bitonic",
+      "original143ObjectExact": true,
+      "finalObject": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p144-programs04-fast-tree-bitonic/program.o",
+        "bytes": 204928,
+        "sha256": "3bbdff46e2f81c80593d4a1e15a662539046c6413dc1757e84816096768ac471"
+      },
+      "originalObject": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p131-p131-combined-literals01-smoke-tree-bitonic-build/program.o",
+        "bytes": 204928,
+        "sha256": "3bbdff46e2f81c80593d4a1e15a662539046c6413dc1757e84816096768ac471"
+      },
+      "loadedMachineMatchingRoles": [
+        "candidate",
+        "fast"
+      ],
+      "timingLabel": "inherited-exact-machine",
+      "inheritedObservations": 4,
+      "wholeQbeMatchRole": "fast"
+    },
+    {
+      "name": "lexer",
+      "original143ObjectExact": true,
+      "finalObject": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p144-programs04-fast-lexer/program.o",
+        "bytes": 224504,
+        "sha256": "e2c7de9429a8f36973c6e900e4945b29a8cdb1e2f825995bc96d6b0f6ea8913c"
+      },
+      "originalObject": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p131-p131-combined-literals01-smoke-lexer-build/program.o",
+        "bytes": 224504,
+        "sha256": "e2c7de9429a8f36973c6e900e4945b29a8cdb1e2f825995bc96d6b0f6ea8913c"
+      },
+      "loadedMachineMatchingRoles": [
+        "candidate",
+        "fast"
+      ],
+      "timingLabel": "inherited-exact-machine",
+      "inheritedObservations": 4,
+      "wholeQbeMatchRole": "fast"
+    },
+    {
+      "name": "symreg",
+      "original143ObjectExact": true,
+      "finalObject": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p144-programs04-fast-symreg/program.o",
+        "bytes": 213832,
+        "sha256": "3ce39adfcda64d714908f7265461af2a16b490ed1c46b85c1842f37405f7e975"
+      },
+      "originalObject": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p131-p131-combined-literals01-smoke-symreg-build/program.o",
+        "bytes": 213832,
+        "sha256": "3ce39adfcda64d714908f7265461af2a16b490ed1c46b85c1842f37405f7e975"
+      },
+      "loadedMachineMatchingRoles": [
+        "candidate",
+        "fast"
+      ],
+      "timingLabel": "inherited-exact-machine",
+      "inheritedObservations": 4,
+      "wholeQbeMatchRole": "fast"
+    },
+    {
+      "name": "test-morning-program",
+      "original143ObjectExact": true,
+      "finalObject": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p144-final04-wrapper-test-morning-program/program.o",
+        "bytes": 395464,
+        "sha256": "032af5605051b4af99b9220e71301515e64112157ee7ca7c98dad78e58964bac"
+      },
+      "originalObject": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p131-p131-combined-literals01-smoke-test-morning-program-build/program.o",
+        "bytes": 395464,
+        "sha256": "032af5605051b4af99b9220e71301515e64112157ee7ca7c98dad78e58964bac"
+      },
+      "loadedMachineMatchingRoles": [],
+      "timingLabel": "new-measurement-required",
+      "inheritedObservations": 0,
+      "wholeQbeMatchRole": null
+    },
+    {
+      "name": "test-evening-program",
+      "original143ObjectExact": true,
+      "finalObject": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p144-final04-wrapper-test-evening-program/program.o",
+        "bytes": 428616,
+        "sha256": "4b7df373605befece79b7cc8feb39c88a8050ccbf75559671d99d67fc7e9fcda"
+      },
+      "originalObject": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p131-p131-combined-literals01-smoke-test-evening-program-build/program.o",
+        "bytes": 428616,
+        "sha256": "4b7df373605befece79b7cc8feb39c88a8050ccbf75559671d99d67fc7e9fcda"
+      },
+      "loadedMachineMatchingRoles": [],
+      "timingLabel": "new-measurement-required",
+      "inheritedObservations": 0,
+      "wholeQbeMatchRole": null
+    },
+    {
+      "name": "test-rle-roundtrip",
+      "original143ObjectExact": false,
+      "finalObject": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p144-programs04-fast-test-rle-roundtrip/program.o",
+        "bytes": 178712,
+        "sha256": "cecb017a467479b2d32a4bfe7d0a25b3c931a04261709270b8f21b06cae19e6c"
+      },
+      "originalObject": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p131-p131-combined-literals01-smoke-test-rle-roundtrip-build/program.o",
+        "bytes": 178712,
+        "sha256": "518a2181ded9168bbe6c3850a83ab92d8d1a8c064606e8cae5d2234cd117799a"
+      },
+      "loadedMachineMatchingRoles": [
+        "candidate",
+        "fast"
+      ],
+      "timingLabel": "inherited-exact-machine",
+      "inheritedObservations": 4,
+      "wholeQbeMatchRole": "fast"
+    },
+    {
+      "name": "test-map-set-ops",
+      "original143ObjectExact": true,
+      "finalObject": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p144-final04-wrapper-test-map-set-ops/program.o",
+        "bytes": 518232,
+        "sha256": "07607df4e744e1c49bd9ee470e54f143e920d882100664eb81c6581713887992"
+      },
+      "originalObject": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p131-p131-combined-literals01-smoke-test-map-set-ops-build/program.o",
+        "bytes": 518232,
+        "sha256": "07607df4e744e1c49bd9ee470e54f143e920d882100664eb81c6581713887992"
+      },
+      "loadedMachineMatchingRoles": [],
+      "timingLabel": "new-measurement-required",
+      "inheritedObservations": 0,
+      "wholeQbeMatchRole": null
+    },
+    {
+      "name": "raytrace",
+      "original143ObjectExact": true,
+      "finalObject": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p144-programs04-fast-raytrace/program.o",
+        "bytes": 326672,
+        "sha256": "5b45944c7240aef4a5956d5f0254e8978109f178e1353e2886bfa6035fff80f8"
+      },
+      "originalObject": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p131-p131-combined-literals01-smoke-raytrace-build/program.o",
+        "bytes": 326672,
+        "sha256": "5b45944c7240aef4a5956d5f0254e8978109f178e1353e2886bfa6035fff80f8"
+      },
+      "loadedMachineMatchingRoles": [
+        "candidate",
+        "fast"
+      ],
+      "timingLabel": "inherited-exact-machine",
+      "inheritedObservations": 4,
+      "wholeQbeMatchRole": "fast"
+    },
+    {
+      "name": "local-pair",
+      "original143ObjectExact": true,
+      "finalObject": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p144-programs04-fast-local-pair/program.o",
+        "bytes": 235704,
+        "sha256": "0895cb2d5c92c25086213d9fa7b99c31b52fb8c02e0be50597916474f5d81648"
+      },
+      "originalObject": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p131-p131-combined-literals01-smoke-local-pair-build/program.o",
+        "bytes": 235704,
+        "sha256": "0895cb2d5c92c25086213d9fa7b99c31b52fb8c02e0be50597916474f5d81648"
+      },
+      "loadedMachineMatchingRoles": [
+        "candidate",
+        "fast"
+      ],
+      "timingLabel": "inherited-exact-machine",
+      "inheritedObservations": 4,
+      "wholeQbeMatchRole": "fast"
+    },
+    {
+      "name": "local-fold",
+      "original143ObjectExact": true,
+      "finalObject": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p144-programs04-fast-local-fold/program.o",
+        "bytes": 172880,
+        "sha256": "7d55a8978826d59844b040fb360d51e761decb14dd1aeaafd1d5c09f3a8de1c4"
+      },
+      "originalObject": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p131-p131-combined-literals01-smoke-local-fold-build/program.o",
+        "bytes": 172880,
+        "sha256": "7d55a8978826d59844b040fb360d51e761decb14dd1aeaafd1d5c09f3a8de1c4"
+      },
+      "loadedMachineMatchingRoles": [
+        "candidate",
+        "fast"
+      ],
+      "timingLabel": "inherited-exact-machine",
+      "inheritedObservations": 4,
+      "wholeQbeMatchRole": "fast"
+    },
+    {
+      "name": "scalar-region-0",
+      "original143ObjectExact": true,
+      "finalObject": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p144-programs04-fast-scalar-region-0/program.o",
+        "bytes": 175296,
+        "sha256": "b2b20ae21ebc27ac1e502f705573a973cd84f26e9296f8bbb3c77c5946b7835a"
+      },
+      "originalObject": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p131-p131-combined-literals01-smoke-scalar-region-0-build/program.o",
+        "bytes": 175296,
+        "sha256": "b2b20ae21ebc27ac1e502f705573a973cd84f26e9296f8bbb3c77c5946b7835a"
+      },
+      "loadedMachineMatchingRoles": [
+        "candidate",
+        "fast"
+      ],
+      "timingLabel": "inherited-exact-machine",
+      "inheritedObservations": 4,
+      "wholeQbeMatchRole": "fast"
+    },
+    {
+      "name": "scalar-region-8192",
+      "original143ObjectExact": true,
+      "finalObject": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p144-programs04-fast-scalar-region-8192/program.o",
+        "bytes": 175296,
+        "sha256": "4880bc66c8cbba58c69dc802008d45d1662d7fad8ccda0d06804a0051d71f816"
+      },
+      "originalObject": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p131-p131-combined-literals01-smoke-scalar-region-8192-build/program.o",
+        "bytes": 175296,
+        "sha256": "4880bc66c8cbba58c69dc802008d45d1662d7fad8ccda0d06804a0051d71f816"
+      },
+      "loadedMachineMatchingRoles": [
+        "candidate",
+        "fast"
+      ],
+      "timingLabel": "inherited-exact-machine",
+      "inheritedObservations": 4,
+      "wholeQbeMatchRole": "fast"
+    },
+    {
+      "name": "complete-generic-row32",
+      "original143ObjectExact": true,
+      "finalObject": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p144-final04-wrapper-complete-generic-row32/program.o",
+        "bytes": 253168,
+        "sha256": "aaf3ba27e71b1007c4744ee408d8443176b9facf09ce110ba8cdaecdb0ea3f32"
+      },
+      "originalObject": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p131-p131-combined-literals01-smoke-complete-generic-row32-build/program.o",
+        "bytes": 253168,
+        "sha256": "aaf3ba27e71b1007c4744ee408d8443176b9facf09ce110ba8cdaecdb0ea3f32"
+      },
+      "loadedMachineMatchingRoles": [],
+      "timingLabel": "new-measurement-required",
+      "inheritedObservations": 0,
+      "wholeQbeMatchRole": null
+    },
+    {
+      "name": "variation-editdist-0-17",
+      "original143ObjectExact": true,
+      "finalObject": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p144-programs04-fast-variation-editdist-0-17/program.o",
+        "bytes": 237496,
+        "sha256": "934e0456fd6b028aea093b200e1401a6b7cfb05dd2d2b6c45bf697c36512b656"
+      },
+      "originalObject": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p131-p131-combined-literals01-smoke-variation-editdist-0-17-build/program.o",
+        "bytes": 237496,
+        "sha256": "934e0456fd6b028aea093b200e1401a6b7cfb05dd2d2b6c45bf697c36512b656"
+      },
+      "loadedMachineMatchingRoles": [
+        "candidate",
+        "fast"
+      ],
+      "timingLabel": "inherited-exact-machine",
+      "inheritedObservations": 4,
+      "wholeQbeMatchRole": "fast"
+    },
+    {
+      "name": "variation-editdist-3-123",
+      "original143ObjectExact": true,
+      "finalObject": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p144-programs04-fast-variation-editdist-3-123/program.o",
+        "bytes": 237496,
+        "sha256": "233ef2d88c95c070e49630e7c4572a5c121274338f91600e98c6fd8181274649"
+      },
+      "originalObject": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p131-p131-combined-literals01-smoke-variation-editdist-3-123-build/program.o",
+        "bytes": 237496,
+        "sha256": "233ef2d88c95c070e49630e7c4572a5c121274338f91600e98c6fd8181274649"
+      },
+      "loadedMachineMatchingRoles": [
+        "candidate",
+        "fast"
+      ],
+      "timingLabel": "inherited-exact-machine",
+      "inheritedObservations": 4,
+      "wholeQbeMatchRole": "fast"
+    },
+    {
+      "name": "variation-lexer-6-17",
+      "original143ObjectExact": true,
+      "finalObject": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p144-programs04-fast-variation-lexer-6-17/program.o",
+        "bytes": 224504,
+        "sha256": "8e20c1c233bcb38d410358877e8375d45c716b962fe011b62dff5d176423c1af"
+      },
+      "originalObject": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p131-p131-combined-literals01-smoke-variation-lexer-6-17-build/program.o",
+        "bytes": 224504,
+        "sha256": "8e20c1c233bcb38d410358877e8375d45c716b962fe011b62dff5d176423c1af"
+      },
+      "loadedMachineMatchingRoles": [
+        "candidate",
+        "fast"
+      ],
+      "timingLabel": "inherited-exact-machine",
+      "inheritedObservations": 4,
+      "wholeQbeMatchRole": "fast"
+    },
+    {
+      "name": "variation-lexer-10-123",
+      "original143ObjectExact": true,
+      "finalObject": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p144-programs04-fast-variation-lexer-10-123/program.o",
+        "bytes": 224504,
+        "sha256": "376991f7342c5253967628be0c223fb398c55f527f418544d2ab59d6b5dea73d"
+      },
+      "originalObject": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p131-p131-combined-literals01-smoke-variation-lexer-10-123-build/program.o",
+        "bytes": 224504,
+        "sha256": "376991f7342c5253967628be0c223fb398c55f527f418544d2ab59d6b5dea73d"
+      },
+      "loadedMachineMatchingRoles": [
+        "candidate",
+        "fast"
+      ],
+      "timingLabel": "inherited-exact-machine",
+      "inheritedObservations": 4,
+      "wholeQbeMatchRole": "fast"
+    },
+    {
+      "name": "variation-tree-bitonic-6-17",
+      "original143ObjectExact": true,
+      "finalObject": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p144-programs04-fast-variation-tree-bitonic-6-17/program.o",
+        "bytes": 204928,
+        "sha256": "6251191065b1ef6e97b5dc9eda493b7609534cfdfb63356a979835d58945a9a1"
+      },
+      "originalObject": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p131-p131-combined-literals01-smoke-variation-tree-bitonic-6-17-build/program.o",
+        "bytes": 204928,
+        "sha256": "6251191065b1ef6e97b5dc9eda493b7609534cfdfb63356a979835d58945a9a1"
+      },
+      "loadedMachineMatchingRoles": [
+        "candidate",
+        "fast"
+      ],
+      "timingLabel": "inherited-exact-machine",
+      "inheritedObservations": 4,
+      "wholeQbeMatchRole": "fast"
+    },
+    {
+      "name": "variation-tree-bitonic-9-123",
+      "original143ObjectExact": true,
+      "finalObject": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p144-programs04-fast-variation-tree-bitonic-9-123/program.o",
+        "bytes": 204928,
+        "sha256": "441d458504169f9839d21b10d4066357792a52378e068d12ed42ed4534ff936b"
+      },
+      "originalObject": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p131-p131-combined-literals01-smoke-variation-tree-bitonic-9-123-build/program.o",
+        "bytes": 204928,
+        "sha256": "441d458504169f9839d21b10d4066357792a52378e068d12ed42ed4534ff936b"
+      },
+      "loadedMachineMatchingRoles": [
+        "candidate",
+        "fast"
+      ],
+      "timingLabel": "inherited-exact-machine",
+      "inheritedObservations": 4,
+      "wholeQbeMatchRole": "fast"
+    },
+    {
+      "name": "variation-symreg-4-17",
+      "original143ObjectExact": true,
+      "finalObject": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p144-programs04-fast-variation-symreg-4-17/program.o",
+        "bytes": 213832,
+        "sha256": "b9dabe38a913114016bfd68e08102e72f5c93d0dda61255acb5ab61ffdee76f8"
+      },
+      "originalObject": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p131-p131-combined-literals01-smoke-variation-symreg-4-17-build/program.o",
+        "bytes": 213832,
+        "sha256": "b9dabe38a913114016bfd68e08102e72f5c93d0dda61255acb5ab61ffdee76f8"
+      },
+      "loadedMachineMatchingRoles": [
+        "candidate",
+        "fast"
+      ],
+      "timingLabel": "inherited-exact-machine",
+      "inheritedObservations": 4,
+      "wholeQbeMatchRole": "fast"
+    },
+    {
+      "name": "variation-symreg-7-123",
+      "original143ObjectExact": true,
+      "finalObject": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p144-programs04-fast-variation-symreg-7-123/program.o",
+        "bytes": 213832,
+        "sha256": "0363b75cd8f0f6502e669da6c6752e935d64c15e378ce77f72582f97a179e438"
+      },
+      "originalObject": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p131-p131-combined-literals01-smoke-variation-symreg-7-123-build/program.o",
+        "bytes": 213832,
+        "sha256": "0363b75cd8f0f6502e669da6c6752e935d64c15e378ce77f72582f97a179e438"
+      },
+      "loadedMachineMatchingRoles": [
+        "candidate",
+        "fast"
+      ],
+      "timingLabel": "inherited-exact-machine",
+      "inheritedObservations": 4,
+      "wholeQbeMatchRole": "fast"
+    },
+    {
+      "name": "variation-local-fold-128-0",
+      "original143ObjectExact": true,
+      "finalObject": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p144-programs04-fast-variation-local-fold-128-0/program.o",
+        "bytes": 172880,
+        "sha256": "7cb2332c074c34a08e8a1694ba5ef392a4aa3201a45c1eb58d3d182586042d0b"
+      },
+      "originalObject": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p131-p131-combined-literals01-smoke-variation-local-fold-128-0-build/program.o",
+        "bytes": 172880,
+        "sha256": "7cb2332c074c34a08e8a1694ba5ef392a4aa3201a45c1eb58d3d182586042d0b"
+      },
+      "loadedMachineMatchingRoles": [
+        "candidate",
+        "fast"
+      ],
+      "timingLabel": "inherited-exact-machine",
+      "inheritedObservations": 4,
+      "wholeQbeMatchRole": "fast"
+    },
+    {
+      "name": "variation-local-fold-8192-123",
+      "original143ObjectExact": true,
+      "finalObject": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p144-programs04-fast-variation-local-fold-8192-123/program.o",
+        "bytes": 172880,
+        "sha256": "c7eabbe1f355bd86f4c2f24e3771a1336f286e7d9e6f925cda0119335e6f78c2"
+      },
+      "originalObject": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p131-p131-combined-literals01-smoke-variation-local-fold-8192-123-build/program.o",
+        "bytes": 172880,
+        "sha256": "c7eabbe1f355bd86f4c2f24e3771a1336f286e7d9e6f925cda0119335e6f78c2"
+      },
+      "loadedMachineMatchingRoles": [
+        "candidate",
+        "fast"
+      ],
+      "timingLabel": "inherited-exact-machine",
+      "inheritedObservations": 4,
+      "wholeQbeMatchRole": "fast"
+    },
+    {
+      "name": "variation-mandelbrot-grid-4-7",
+      "original143ObjectExact": true,
+      "finalObject": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p144-programs04-fast-variation-mandelbrot-grid-4-7/program.o",
+        "bytes": 186536,
+        "sha256": "936c8d712992354b4adb1e4fb8476d1c9da33fabac8ec653991b0cc9b09c2eac"
+      },
+      "originalObject": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p131-p131-combined-literals01-smoke-variation-mandelbrot-grid-4-7-build/program.o",
+        "bytes": 186536,
+        "sha256": "936c8d712992354b4adb1e4fb8476d1c9da33fabac8ec653991b0cc9b09c2eac"
+      },
+      "loadedMachineMatchingRoles": [
+        "candidate",
+        "fast"
+      ],
+      "timingLabel": "inherited-exact-machine",
+      "inheritedObservations": 4,
+      "wholeQbeMatchRole": "fast"
+    },
+    {
+      "name": "variation-mandelbrot-grid-5-31",
+      "original143ObjectExact": true,
+      "finalObject": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p144-programs04-fast-variation-mandelbrot-grid-5-31/program.o",
+        "bytes": 186536,
+        "sha256": "86d82bb8523538d7220bf02c23820322304a27ba48f15f1bc625d5b3040efdb7"
+      },
+      "originalObject": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p131-p131-combined-literals01-smoke-variation-mandelbrot-grid-5-31-build/program.o",
+        "bytes": 186536,
+        "sha256": "86d82bb8523538d7220bf02c23820322304a27ba48f15f1bc625d5b3040efdb7"
+      },
+      "loadedMachineMatchingRoles": [
+        "candidate",
+        "fast"
+      ],
+      "timingLabel": "inherited-exact-machine",
+      "inheritedObservations": 4,
+      "wholeQbeMatchRole": "fast"
+    },
+    {
+      "name": "variation-ray-active-64-2440",
+      "original143ObjectExact": true,
+      "finalObject": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p144-programs04-fast-variation-ray-active-64-2440/program.o",
+        "bytes": 310008,
+        "sha256": "eba24dd288aac24b064566ad515b739ab1d89f875dffc0d99924486b2d99aa11"
+      },
+      "originalObject": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p131-p131-combined-literals01-smoke-variation-ray-active-64-2440-build/program.o",
+        "bytes": 310008,
+        "sha256": "eba24dd288aac24b064566ad515b739ab1d89f875dffc0d99924486b2d99aa11"
+      },
+      "loadedMachineMatchingRoles": [
+        "candidate",
+        "fast"
+      ],
+      "timingLabel": "inherited-exact-machine",
+      "inheritedObservations": 4,
+      "wholeQbeMatchRole": "fast"
+    },
+    {
+      "name": "variation-ray-active-256-2240",
+      "original143ObjectExact": true,
+      "finalObject": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p144-programs04-fast-variation-ray-active-256-2240/program.o",
+        "bytes": 310008,
+        "sha256": "a527844dfff949debe9d84997161eaf32ce2526ceb8ac7d72c3c924643077e5b"
+      },
+      "originalObject": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p131-p131-combined-literals01-smoke-variation-ray-active-256-2240-build/program.o",
+        "bytes": 310008,
+        "sha256": "a527844dfff949debe9d84997161eaf32ce2526ceb8ac7d72c3c924643077e5b"
+      },
+      "loadedMachineMatchingRoles": [
+        "candidate",
+        "fast"
+      ],
+      "timingLabel": "inherited-exact-machine",
+      "inheritedObservations": 4,
+      "wholeQbeMatchRole": "fast"
+    },
+    {
+      "name": "coverage-closures-64",
+      "original143ObjectExact": true,
+      "finalObject": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p144-programs04-fast-coverage-closures-64/program.o",
+        "bytes": 156208,
+        "sha256": "700ced57f0e52f5115e41e7981aa2f4f9fd8b4574394b4d775142885abba9be0"
+      },
+      "originalObject": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p131-p131-combined-literals01-smoke-coverage-closures-64-build/program.o",
+        "bytes": 156208,
+        "sha256": "700ced57f0e52f5115e41e7981aa2f4f9fd8b4574394b4d775142885abba9be0"
+      },
+      "loadedMachineMatchingRoles": [
+        "candidate",
+        "fast"
+      ],
+      "timingLabel": "inherited-exact-machine",
+      "inheritedObservations": 4,
+      "wholeQbeMatchRole": "fast"
+    },
+    {
+      "name": "coverage-closures-256",
+      "original143ObjectExact": true,
+      "finalObject": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p144-programs04-fast-coverage-closures-256/program.o",
+        "bytes": 156208,
+        "sha256": "aef3975fc4b62200847dbe21afb997b600c8d4d47aed5abacfc8b79cd9045b4a"
+      },
+      "originalObject": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p131-p131-combined-literals01-smoke-coverage-closures-256-build/program.o",
+        "bytes": 156208,
+        "sha256": "aef3975fc4b62200847dbe21afb997b600c8d4d47aed5abacfc8b79cd9045b4a"
+      },
+      "loadedMachineMatchingRoles": [
+        "candidate",
+        "fast"
+      ],
+      "timingLabel": "inherited-exact-machine",
+      "inheritedObservations": 4,
+      "wholeQbeMatchRole": "fast"
+    },
+    {
+      "name": "coverage-list-pipeline-128",
+      "original143ObjectExact": true,
+      "finalObject": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p144-programs04-fast-coverage-list-pipeline-128/program.o",
+        "bytes": 165512,
+        "sha256": "1765463a454786225b76b6b362b80057c177819e7ce057e298d2ed44179c0db3"
+      },
+      "originalObject": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p131-p131-combined-literals01-smoke-coverage-list-pipeline-128-build/program.o",
+        "bytes": 165512,
+        "sha256": "1765463a454786225b76b6b362b80057c177819e7ce057e298d2ed44179c0db3"
+      },
+      "loadedMachineMatchingRoles": [
+        "candidate",
+        "fast"
+      ],
+      "timingLabel": "inherited-exact-machine",
+      "inheritedObservations": 4,
+      "wholeQbeMatchRole": "fast"
+    },
+    {
+      "name": "coverage-list-pipeline-512",
+      "original143ObjectExact": true,
+      "finalObject": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p144-programs04-fast-coverage-list-pipeline-512/program.o",
+        "bytes": 165512,
+        "sha256": "cf056e86cd70c194c211fea680b3aba98b1c687012687ca8da5be3358510497f"
+      },
+      "originalObject": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p131-p131-combined-literals01-smoke-coverage-list-pipeline-512-build/program.o",
+        "bytes": 165512,
+        "sha256": "cf056e86cd70c194c211fea680b3aba98b1c687012687ca8da5be3358510497f"
+      },
+      "loadedMachineMatchingRoles": [
+        "candidate",
+        "fast"
+      ],
+      "timingLabel": "inherited-exact-machine",
+      "inheritedObservations": 4,
+      "wholeQbeMatchRole": "fast"
+    },
+    {
+      "name": "coverage-bst-32",
+      "original143ObjectExact": true,
+      "finalObject": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p144-programs04-fast-coverage-bst-32/program.o",
+        "bytes": 180824,
+        "sha256": "4c5a16b438ef5767eaa7175b8d8c94a08c9c6a64f2673a4def5fd63c82604f75"
+      },
+      "originalObject": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p131-p131-combined-literals01-smoke-coverage-bst-32-build/program.o",
+        "bytes": 180824,
+        "sha256": "4c5a16b438ef5767eaa7175b8d8c94a08c9c6a64f2673a4def5fd63c82604f75"
+      },
+      "loadedMachineMatchingRoles": [
+        "candidate",
+        "fast"
+      ],
+      "timingLabel": "inherited-exact-machine",
+      "inheritedObservations": 4,
+      "wholeQbeMatchRole": "fast"
+    },
+    {
+      "name": "coverage-bst-64",
+      "original143ObjectExact": true,
+      "finalObject": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p144-programs04-fast-coverage-bst-64/program.o",
+        "bytes": 180824,
+        "sha256": "701406d19dc8818955b77f48b9a858fbc7812c236fdbc0bbaa0b59718fb93a7f"
+      },
+      "originalObject": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p131-p131-combined-literals01-smoke-coverage-bst-64-build/program.o",
+        "bytes": 180824,
+        "sha256": "701406d19dc8818955b77f48b9a858fbc7812c236fdbc0bbaa0b59718fb93a7f"
+      },
+      "loadedMachineMatchingRoles": [
+        "candidate",
+        "fast"
+      ],
+      "timingLabel": "inherited-exact-machine",
+      "inheritedObservations": 4,
+      "wholeQbeMatchRole": "fast"
+    },
+    {
+      "name": "coverage-unicode-text-16",
+      "original143ObjectExact": true,
+      "finalObject": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p144-final04-wrapper-coverage-unicode-text-16/program.o",
+        "bytes": 175184,
+        "sha256": "e6fa42afbc0ea1f1add691891cb40ffe3a17180e81971cde6825d2ecfc93bc57"
+      },
+      "originalObject": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p131-p131-combined-literals01-smoke-coverage-unicode-text-16-build/program.o",
+        "bytes": 175184,
+        "sha256": "e6fa42afbc0ea1f1add691891cb40ffe3a17180e81971cde6825d2ecfc93bc57"
+      },
+      "loadedMachineMatchingRoles": [],
+      "timingLabel": "new-measurement-required",
+      "inheritedObservations": 0,
+      "wholeQbeMatchRole": null
+    },
+    {
+      "name": "coverage-unicode-text-64",
+      "original143ObjectExact": true,
+      "finalObject": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p144-final04-wrapper-coverage-unicode-text-64/program.o",
+        "bytes": 184656,
+        "sha256": "caa2d655cfd4a8f4de5570ba19fe7d02603b7a9f0775d041ca5731d22a64957e"
+      },
+      "originalObject": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p131-p131-combined-literals01-smoke-coverage-unicode-text-64-build/program.o",
+        "bytes": 184656,
+        "sha256": "caa2d655cfd4a8f4de5570ba19fe7d02603b7a9f0775d041ca5731d22a64957e"
+      },
+      "loadedMachineMatchingRoles": [],
+      "timingLabel": "new-measurement-required",
+      "inheritedObservations": 0,
+      "wholeQbeMatchRole": null
+    },
+    {
+      "name": "coverage-expression-32",
+      "original143ObjectExact": true,
+      "finalObject": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p144-programs04-fast-coverage-expression-32/program.o",
+        "bytes": 161568,
+        "sha256": "5aab0a63849a6ca3a6c60906d33b93274d3dab6629da37932d484d2ec8770b43"
+      },
+      "originalObject": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p131-p131-combined-literals01-smoke-coverage-expression-32-build/program.o",
+        "bytes": 161568,
+        "sha256": "5aab0a63849a6ca3a6c60906d33b93274d3dab6629da37932d484d2ec8770b43"
+      },
+      "loadedMachineMatchingRoles": [
+        "candidate",
+        "fast"
+      ],
+      "timingLabel": "inherited-exact-machine",
+      "inheritedObservations": 4,
+      "wholeQbeMatchRole": "fast"
+    },
+    {
+      "name": "coverage-expression-128",
+      "original143ObjectExact": true,
+      "finalObject": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p144-programs04-fast-coverage-expression-128/program.o",
+        "bytes": 161568,
+        "sha256": "c1247c58704a16bf3b85bdb4eaa27a60ae99666717a6d59bc93e29369d1f632d"
+      },
+      "originalObject": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p131-p131-combined-literals01-smoke-coverage-expression-128-build/program.o",
+        "bytes": 161568,
+        "sha256": "c1247c58704a16bf3b85bdb4eaa27a60ae99666717a6d59bc93e29369d1f632d"
+      },
+      "loadedMachineMatchingRoles": [
+        "candidate",
+        "fast"
+      ],
+      "timingLabel": "inherited-exact-machine",
+      "inheritedObservations": 4,
+      "wholeQbeMatchRole": "fast"
+    },
+    {
+      "name": "coverage-map-churn-32",
+      "original143ObjectExact": true,
+      "finalObject": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p144-final04-wrapper-coverage-map-churn-32/program.o",
+        "bytes": 389016,
+        "sha256": "4fb1cc94a31df9ac60961d97b1882ed53ebb3a190fc62c0db2c9e32d9bc30f93"
+      },
+      "originalObject": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p131-p131-combined-literals01-smoke-coverage-map-churn-32-build/program.o",
+        "bytes": 389016,
+        "sha256": "4fb1cc94a31df9ac60961d97b1882ed53ebb3a190fc62c0db2c9e32d9bc30f93"
+      },
+      "loadedMachineMatchingRoles": [],
+      "timingLabel": "new-measurement-required",
+      "inheritedObservations": 0,
+      "wholeQbeMatchRole": null
+    },
+    {
+      "name": "coverage-map-churn-128",
+      "original143ObjectExact": true,
+      "finalObject": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p144-final04-wrapper-coverage-map-churn-128/program.o",
+        "bytes": 389016,
+        "sha256": "44cc4f3ee9940cb4d3f1ee4efd031b56484b2121e65d94b287f90203cbf304d8"
+      },
+      "originalObject": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p131-p131-combined-literals01-smoke-coverage-map-churn-128-build/program.o",
+        "bytes": 389016,
+        "sha256": "44cc4f3ee9940cb4d3f1ee4efd031b56484b2121e65d94b287f90203cbf304d8"
+      },
+      "loadedMachineMatchingRoles": [],
+      "timingLabel": "new-measurement-required",
+      "inheritedObservations": 0,
+      "wholeQbeMatchRole": null
+    },
+    {
+      "name": "coverage-numeric-recurrence-256",
+      "original143ObjectExact": true,
+      "finalObject": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p144-programs04-fast-coverage-numeric-recurrence-256/program.o",
+        "bytes": 164800,
+        "sha256": "a5683de016ff42baa0f9a39a6bca4be18331fb069addfb29f80ea7e3c55263c1"
+      },
+      "originalObject": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p131-p131-combined-literals01-smoke-coverage-numeric-recurrence-256-build/program.o",
+        "bytes": 164800,
+        "sha256": "a5683de016ff42baa0f9a39a6bca4be18331fb069addfb29f80ea7e3c55263c1"
+      },
+      "loadedMachineMatchingRoles": [
+        "candidate",
+        "fast"
+      ],
+      "timingLabel": "inherited-exact-machine",
+      "inheritedObservations": 4,
+      "wholeQbeMatchRole": "fast"
+    },
+    {
+      "name": "coverage-numeric-recurrence-1024",
+      "original143ObjectExact": true,
+      "finalObject": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p144-programs04-fast-coverage-numeric-recurrence-1024/program.o",
+        "bytes": 164800,
+        "sha256": "25a16eb6895a78778d0b5a983b5e8e1d0d72292fe3975ef12f2cdef46d598ade"
+      },
+      "originalObject": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p131-p131-combined-literals01-smoke-coverage-numeric-recurrence-1024-build/program.o",
+        "bytes": 164800,
+        "sha256": "25a16eb6895a78778d0b5a983b5e8e1d0d72292fe3975ef12f2cdef46d598ade"
+      },
+      "loadedMachineMatchingRoles": [
+        "candidate",
+        "fast"
+      ],
+      "timingLabel": "inherited-exact-machine",
+      "inheritedObservations": 4,
+      "wholeQbeMatchRole": "fast"
+    },
+    {
+      "name": "coverage-record-aggregation-64",
+      "original143ObjectExact": true,
+      "finalObject": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p144-final04-wrapper-coverage-record-aggregation-64/program.o",
+        "bytes": 385320,
+        "sha256": "b491e52ec37ec2e91bb05798b1cb23bd9067f242f6965b1334747ddb17e2f3bb"
+      },
+      "originalObject": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p131-p131-combined-literals01-smoke-coverage-record-aggregation-64-build/program.o",
+        "bytes": 385320,
+        "sha256": "b491e52ec37ec2e91bb05798b1cb23bd9067f242f6965b1334747ddb17e2f3bb"
+      },
+      "loadedMachineMatchingRoles": [],
+      "timingLabel": "new-measurement-required",
+      "inheritedObservations": 0,
+      "wholeQbeMatchRole": null
+    },
+    {
+      "name": "coverage-record-aggregation-256",
+      "original143ObjectExact": true,
+      "finalObject": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p144-final04-wrapper-coverage-record-aggregation-256/program.o",
+        "bytes": 385320,
+        "sha256": "c2277aad54c5bd623f5673c047de28d36a32dfe9bce4905fede034019a55afec"
+      },
+      "originalObject": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p131-p131-combined-literals01-smoke-coverage-record-aggregation-256-build/program.o",
+        "bytes": 385320,
+        "sha256": "c2277aad54c5bd623f5673c047de28d36a32dfe9bce4905fede034019a55afec"
+      },
+      "loadedMachineMatchingRoles": [],
+      "timingLabel": "new-measurement-required",
+      "inheritedObservations": 0,
+      "wholeQbeMatchRole": null
+    }
+  ],
+  "timing": [
+    {
+      "name": "test-morning-program",
+      "referenceRole": "candidate",
+      "scope": "Final03 serial versus final04 serial",
+      "mediansMs": {
+        "reference": 575.5,
+        "final04": 590.5
+      },
+      "ratioOfMedians": 1.0260642919200695,
+      "pairedRatios": [
+        1.0466321243523315,
+        1.0243055555555556,
+        1.0297202797202798,
+        1.0226086956521738,
+        1.0295652173913044,
+        1.005084745762712,
+        1.0261780104712042,
+        0.9949494949494949
+      ],
+      "slowerPairs": 7,
+      "equalPairs": 0
+    },
+    {
+      "name": "test-evening-program",
+      "referenceRole": "candidate",
+      "scope": "Final03 serial versus final04 serial",
+      "mediansMs": {
+        "reference": 1084.5,
+        "final04": 1078.5
+      },
+      "ratioOfMedians": 0.9944674965421854,
+      "pairedRatios": [
+        0.9926131117266851,
+        0.9953831948291783,
+        1.0092250922509225,
+        0.990791896869245,
+        0.9685816876122083,
+        0.9972451790633609,
+        1.0009216589861751,
+        0.9962962962962963
+      ],
+      "slowerPairs": 2,
+      "equalPairs": 0
+    },
+    {
+      "name": "test-map-set-ops",
+      "referenceRole": "candidate",
+      "scope": "Final03 serial versus final04 serial",
+      "mediansMs": {
+        "reference": 803.0,
+        "final04": 800.0
+      },
+      "ratioOfMedians": 0.9962640099626401,
+      "pairedRatios": [
+        0.9912718204488778,
+        1.0250312891113893,
+        0.9975093399750934,
+        1.005,
+        0.9900621118012423,
+        0.9950310559006211,
+        0.9950186799501868,
+        0.9613992762364294
+      ],
+      "slowerPairs": 2,
+      "equalPairs": 0
+    },
+    {
+      "name": "complete-generic-row32",
+      "referenceRole": "baseline",
+      "scope": "Original143 atomic versus final04 serial total product",
+      "mediansMs": {
+        "reference": 509.0,
+        "final04": 505.0
+      },
+      "ratioOfMedians": 0.9921414538310412,
+      "pairedRatios": [
+        0.9921414538310412,
+        0.9960629921259843,
+        0.972972972972973,
+        0.9960552268244576,
+        0.9901768172888016,
+        0.9768339768339769,
+        1.0019762845849802,
+        0.9882121807465619
+      ],
+      "slowerPairs": 1,
+      "equalPairs": 0
+    },
+    {
+      "name": "coverage-unicode-text-16",
+      "referenceRole": "candidate",
+      "scope": "Final03 serial versus final04 serial",
+      "mediansMs": {
+        "reference": 260.0,
+        "final04": 270.0
+      },
+      "ratioOfMedians": 1.0384615384615385,
+      "pairedRatios": [
+        1.0463320463320462,
+        0.9713261648745519,
+        0.9823943661971831,
+        1.018939393939394,
+        1.0306513409961686,
+        1.0465116279069768,
+        1.0426356589147288,
+        1.0465116279069768
+      ],
+      "slowerPairs": 6,
+      "equalPairs": 0
+    },
+    {
+      "name": "coverage-unicode-text-64",
+      "referenceRole": "candidate",
+      "scope": "Final03 serial versus final04 serial",
+      "mediansMs": {
+        "reference": 262.0,
+        "final04": 275.0
+      },
+      "ratioOfMedians": 1.049618320610687,
+      "pairedRatios": [
+        1.018450184501845,
+        1.0458015267175573,
+        1.0574712643678161,
+        1.0456273764258555,
+        1.053639846743295,
+        1.049618320610687,
+        1.049618320610687,
+        1.0415094339622641
+      ],
+      "slowerPairs": 8,
+      "equalPairs": 0
+    },
+    {
+      "name": "coverage-map-churn-32",
+      "referenceRole": "candidate",
+      "scope": "Final03 serial versus final04 serial",
+      "mediansMs": {
+        "reference": 567.5,
+        "final04": 565.0
+      },
+      "ratioOfMedians": 0.9955947136563876,
+      "pairedRatios": [
+        1.0017761989342806,
+        0.9656946826758147,
+        0.9877622377622378,
+        1.0,
+        0.99822695035461,
+        0.9982425307557118,
+        0.9982363315696648,
+        0.9947183098591549
+      ],
+      "slowerPairs": 1,
+      "equalPairs": 1
+    },
+    {
+      "name": "coverage-map-churn-128",
+      "referenceRole": "candidate",
+      "scope": "Final03 serial versus final04 serial",
+      "mediansMs": {
+        "reference": 547.0,
+        "final04": 546.5
+      },
+      "ratioOfMedians": 0.9990859232175503,
+      "pairedRatios": [
+        0.9963369963369964,
+        1.036697247706422,
+        1.0053763440860215,
+        1.0036764705882353,
+        1.0256880733944953,
+        0.9945255474452555,
+        0.9908925318761385,
+        0.9981751824817519
+      ],
+      "slowerPairs": 4,
+      "equalPairs": 0
+    },
+    {
+      "name": "coverage-record-aggregation-64",
+      "referenceRole": "candidate",
+      "scope": "Final03 serial versus final04 serial",
+      "mediansMs": {
+        "reference": 490.0,
+        "final04": 489.5
+      },
+      "ratioOfMedians": 0.9989795918367347,
+      "pairedRatios": [
+        1.0020408163265306,
+        0.9979591836734694,
+        1.0,
+        0.9684418145956607,
+        0.9979591836734694,
+        0.9959183673469387,
+        1.0,
+        1.0
+      ],
+      "slowerPairs": 1,
+      "equalPairs": 3
+    },
+    {
+      "name": "coverage-record-aggregation-256",
+      "referenceRole": "candidate",
+      "scope": "Final03 serial versus final04 serial",
+      "mediansMs": {
+        "reference": 488.5,
+        "final04": 484.0
+      },
+      "ratioOfMedians": 0.9907881269191402,
+      "pairedRatios": [
+        0.9796747967479674,
+        0.9877049180327869,
+        0.9979338842975206,
+        1.0,
+        1.0122699386503067,
+        0.9979550102249489,
+        0.9917864476386037,
+        0.8738738738738738
+      ],
+      "slowerPairs": 1,
+      "equalPairs": 1
+    }
+  ],
+  "newFullCorpusGeometricMean": null,
+  "scopes": {
+    "inherited": "Exact selected serial runtime and loaded ELF sections/addresses except GNU build ID; fixed candidate-then-fast priority, prior four-round measurements explicitly inherited.",
+    "row32": "Fresh original143 atomic vs final04 serial total-product comparison; eight alternating pairs, not isolated codegen.",
+    "otherChanged": "Fresh final03 serial vs final04 serial; eight alternating pairs.",
+    "aggregate": "No fresh final04 whole-corpus geometric mean or upstream comparison. Do not pool inherited and new subset timings into a claimed contemporaneous score."
+  },
+  "cost": {
+    "acquisitionObserverSeconds": 108.5202047158964,
+    "acquisitionGuardSeconds": 109.38892658893019,
+    "changedTimingObserverSeconds": 91.44408161891624,
+    "changedTimingGuardSeconds": 91.7288331896998,
+    "totalAdditionalGuardSeconds": 201.11775977863,
+    "scope": "After final04 compiler acquisition/qualification; earlier broad campaign and all compiler-image work excluded."
+  }
+}

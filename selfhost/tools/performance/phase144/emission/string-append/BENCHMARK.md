@@ -80,3 +80,22 @@ Root's authoritative execution receipts are
 `selfhost/build/phase144/`. The complete guarded sequence took 15.52 s for the
 32 measured program invocations plus per-observation handling, excluding emission
 and builds.
+
+## Broad transfer rejected the new String admission
+
+The later broad campaign found a real regression that this four-case screen did
+not cover. Eight alternating row32 pairs gave baseline median512ms versus
+codegen557ms (1.08789×), with candidate slower in all eight pairs. Its append
+wrapper gained a speculative helper call and branch before the unchanged
+fallback. This differs fundamentally from the List128 same-binary control:
+row32 actually has changed code and a repeatable slowdown. See the retained
+`selfhost/build/phase144/programs-recheck01/report.json`.
+
+The coordinating agent consequently reverted the expanded String admission in
+source04 while retaining the independently useful live-bank whitelist repair.
+The earlier Unicode wins remain real observations from a small screen, not a
+justification for enabling a policy with this broader regression. The optional
+[concat counters](profile/README.md) investigate success/refusal frequency using
+the retained earlier objects; they do not block the revert. Legality and
+profitability are separate: an eligible unique-spine optimization can lose when
+runtime tests often fail and the original worker must execute afterward.

@@ -7,7 +7,8 @@ import tempfile
 import unittest
 from unittest.mock import patch
 import analyze
-from attribute import (UNKNOWN, aggregate_events, attribute, attribute_events, bind_owners, parse_callers, parse_contexts,
+from attribute import (UNKNOWN, aggregate_events, attribute, attribute_events, bind_owners, binding_sections,
+                       binding_symbols, binding_symbol, parse_callers, parse_contexts,
                        receipt_binding, validate_applied_rule, validate_table)
 
 
@@ -23,6 +24,33 @@ def callers(rows="0\t4001\n4294967295\t0\n", count=2):
     t = table()
     return ("BEND_PHYSICAL_CALLERS_V1\nunwind_id\t%s\nobject_sha256\t%s\nsamples\t%d\nROWS\n%sEND\n" %
             (t["id"], t["object"]["sha256"], count, rows))
+
+
+def owner_fixture(directory):
+    binary, qbe = Path(directory) / 'program', Path(directory) / 'program.ssa'
+    qbe.write_text('synthetic QBE identity')
+    blob = bytearray(2048)
+    blob[:6] = b'\x7fELF\x02\x01'
+    struct.pack_into('<HH', blob, 16, 2, 62)
+    struct.pack_into('<Q', blob, 40, 0x400)
+    struct.pack_into('<HH', blob, 58, 64, 4)
+    # Real section-header bytes distinguish executable functions and data labels.
+    for number, flags, address, size in [(1, 6, 0x300, 0x80), (3, 3, 0x100, 0x180)]:
+        struct.pack_into('<IIQQQQIIQQ', blob, 0x400+64*number,
+                         0, 1, flags, address, address, size, 0, 0, 8, 0)
+    for offset, value in {0:11101, 8:192, 16:2, 32:1, 48:24, 56:8, 88:5, 96:0x200}.items():
+        struct.pack_into('<Q', blob, 0x100+offset, value)
+    struct.pack_into('<QQ', blob, 0x200, 0x300, 0x310)
+    binary.write_bytes(blob)
+    symbols = ('1: 00000100 192 OBJECT GLOBAL DEFAULT 3 p111_program\n'
+               '2: 00000200 16 NOTYPE LOCAL DEFAULT 3 p111_segments\n'
+               '3: 00000300 16 FUNC GLOBAL DEFAULT 1 function0\n'
+               '4: 00000310 0 NOTYPE LOCAL DEFAULT 1 function1\n')
+    owners = {'schema':'bend-qbe-lowered-owners-v1', 'identities':{'qbe':analyze.pin(qbe)},
+              'descriptor':{'segment_count':2,'main_fid':1},
+              'fids':[{'fid':0,'symbol':'function0'},{'fid':1,'symbol':'function1'}],
+              'functions':[{'symbol':'function0'},{'symbol':'function1'}]}
+    return binary, blob, owners, symbols
 
 
 class AttributeTests(unittest.TestCase):
@@ -85,24 +113,8 @@ class AttributeTests(unittest.TestCase):
 
     def test_linked_owner_binding_checks_actual_pointer_order(self):
         with tempfile.TemporaryDirectory() as directory:
-            binary, qbe = Path(directory) / "program", Path(directory) / "program.ssa"
-            qbe.write_text("synthetic QBE identity")
-            blob = bytearray(1024)
-            blob[:6] = b"\x7fELF\x02\x01"
-            struct.pack_into("<HH", blob, 16, 2, 62)
-            for offset, value in {0: 11101, 8: 192, 16: 2, 32: 1, 48: 24, 56: 8, 88: 5, 96: 0x200}.items():
-                struct.pack_into("<Q", blob, 0x100 + offset, value)
-            struct.pack_into("<QQ", blob, 0x200, 0x300, 0x310)
-            binary.write_bytes(blob)
-            symbols = ("1: 00000100 192 OBJECT GLOBAL DEFAULT 3 p111_program\n"
-                       "2: 00000200 16 OBJECT GLOBAL DEFAULT 3 p111_segments\n"
-                       "3: 00000300 16 FUNC GLOBAL DEFAULT 1 function0\n"
-                       "4: 00000310 16 FUNC GLOBAL DEFAULT 1 function1\n")
-            owners = {"schema": "bend-qbe-lowered-owners-v1", "identities": {"qbe": analyze.pin(qbe)},
-                      "descriptor": {"segment_count": 2, "main_fid": 1},
-                      "fids": [{"fid": 0, "symbol": "function0"}, {"fid": 1, "symbol": "function1"}],
-                      "functions": [{"symbol": "function0"}, {"symbol": "function1"}]}
-            with patch("attribute.analyze.ELF.load_segments", return_value=[(0, 0, 1024)]), \
+            binary, blob, owners, symbols = owner_fixture(directory)
+            with patch("attribute.analyze.ELF.load_segments", return_value=[(0, 0, len(blob))]), \
                  patch("attribute.subprocess.check_output", side_effect=lambda args, **_: symbols if "-s" in args else ""):
                 binding = bind_owners(owners, binary)[2]
                 self.assertEqual(binding["checkedFids"], 2)
@@ -112,6 +124,65 @@ class AttributeTests(unittest.TestCase):
                 binary.write_bytes(blob)
                 with self.assertRaisesRegex(ValueError, "mismatch at FID"):
                     bind_owners(owners, binary)
+
+    def test_cross_role_duplicates_bind_actual_required_addresses(self):
+        with tempfile.TemporaryDirectory() as directory:
+            binary, blob, owners, symbols = owner_fixture(directory)
+            symbols += ('5: 00000320 16 FUNC LOCAL DEFAULT 1 p111_program\n'
+                        '6: 00000240 0 NOTYPE LOCAL DEFAULT 3 function0\n'
+                        '7: 00000330 16 FUNC LOCAL DEFAULT 1 p111_fid_arity\n'
+                        '8: 00000260 0 NOTYPE LOCAL DEFAULT 3 p111_fid_arity\n')
+            with patch('attribute.analyze.ELF.load_segments', return_value=[(0,0,len(blob))]), \
+                 patch('attribute.subprocess.check_output', side_effect=lambda args,**_:symbols if '-s' in args else ''):
+                functions, fids, binding = bind_owners(owners,binary)
+                self.assertEqual([r['elfAddress'] for r in fids],[0x300,0x310])
+                self.assertEqual(set(functions),{'function0','function1'})
+                self.assertEqual(binding['symbolLookup']['policy'],'required-role-and-allocated-section-v1')
+
+    def test_queried_same_role_ambiguity_is_rejected(self):
+        for extra,role in [('5: 00000320 16 FUNC LOCAL DEFAULT 1 function0\n','function'),
+                           ('5: 00000240 0 NOTYPE LOCAL DEFAULT 3 p111_program\n','data')]:
+            with self.subTest(role=role), tempfile.TemporaryDirectory() as directory:
+                binary,blob,owners,symbols=owner_fixture(directory)
+                with patch('attribute.analyze.ELF.load_segments',return_value=[(0,0,len(blob))]), \
+                     patch('attribute.subprocess.check_output',side_effect=lambda args,**_:symbols+extra if '-s' in args else ''):
+                    with self.assertRaisesRegex(ValueError,'Ambiguous ELF '+role+' symbol'):
+                        bind_owners(owners,binary)
+
+    def test_repeated_symbol_tables_and_unqueried_ambiguity(self):
+        with tempfile.TemporaryDirectory() as directory:
+            binary,blob,owners,symbols=owner_fixture(directory)
+            symbols += ('5: 00000300 16 FUNC GLOBAL DEFAULT 1 function0\n'
+                        '6: 00000330 16 FUNC LOCAL DEFAULT 1 unqueried\n'
+                        '7: 00000340 16 FUNC LOCAL DEFAULT 1 unqueried\n')
+            with patch('attribute.analyze.ELF.load_segments',return_value=[(0,0,len(blob))]), \
+                 patch('attribute.subprocess.check_output',side_effect=lambda args,**_:symbols if '-s' in args else ''):
+                self.assertEqual(bind_owners(owners,binary)[2]['checkedFids'],2)
+            candidates=binding_symbols(symbols,binding_sections(binary))
+            with self.assertRaisesRegex(ValueError,'Ambiguous ELF function symbol: unqueried'):
+                binding_symbol(candidates,'unqueried','function')
+
+    def test_wrong_section_roles_and_unsupported_symbol_kinds_refuse(self):
+        with tempfile.TemporaryDirectory() as directory:
+            binary,_,_,_=owner_fixture(directory);sections=binding_sections(binary)
+            for line in ['1: 00000200 16 FUNC LOCAL DEFAULT 3 target\n',
+                         '1: 00000300 16 OBJECT LOCAL DEFAULT 1 target\n',
+                         '1: 00000300 16 IFUNC LOCAL DEFAULT 1 target\n',
+                         '1: 00000400 16 NOTYPE LOCAL DEFAULT 1 target\n',
+                         '1: 00000300 16 FUNC GLOBAL DEFAULT UND target\n']:
+                for role in ['data','function']:
+                    with self.subTest(line=line,role=role),self.assertRaisesRegex(ValueError,'Missing ELF'):
+                        binding_symbol(binding_symbols(line,sections),'target',role)
+            for flags,kind in [(0,1),(0x402,1),(3,8)]:
+                altered={**sections,3:{**sections[3],'flags':flags,'type':kind}}
+                with self.assertRaisesRegex(ValueError,'Missing ELF data'):
+                    binding_symbol(binding_symbols('1: 00000200 16 OBJECT LOCAL DEFAULT 3 target\n',altered),'target','data')
+
+    def test_truncated_section_headers_refused(self):
+        with tempfile.TemporaryDirectory() as directory:
+            binary,blob,_,_=owner_fixture(directory);binary.write_bytes(blob[:0x480])
+            with self.assertRaisesRegex(ValueError,'Truncated ELF section headers'):
+                binding_sections(binary)
 
     def test_receipt_pins_capture_and_sidecars(self):
         with tempfile.TemporaryDirectory() as directory:

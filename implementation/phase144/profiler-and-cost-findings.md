@@ -111,6 +111,17 @@ build guard took approximately 2.54 seconds; the full sampled request remained
 the expensive part. That reuse is a demonstrated workflow improvement, not a
 compiler execution speedup.
 
+The later final03 pilot revealed a generic ELF-binding bug: a local C function
+and QBE data table both use `p111_fid_arity`. The old observer rejected every
+duplicate spelling before asking which symbol it needed. The repaired binder
+uses symbol kind plus allocated executable/data section role, and still rejects
+multiple addresses within a required role. The same preserved pilot now passes
+with 179 samples and unchanged exact output; no target was rerun. Nineteen
+attribution tests and ten stage tests pass, including synthetic ELF duplicates
+and wrong-role cases. The [repair receipt](../../selfhost/build/phase144/final03-stages01/elf-binding-repair01/report.json)
+preserves the original failure and method snapshot. This is observer repair,
+not a compiler speedup or relaxation of an ambiguous required target.
+
 ## Final03 reproduction is separate evidence
 
 Final source `31e1b13a…e3ea2` includes the later append/predicate changes and uses

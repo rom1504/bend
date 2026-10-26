@@ -33,3 +33,14 @@ time/file limits. The profile does not promote the compiler, establish broad
 conformance, or turn diagnostic clocks into clean timings. It can identify the
 remaining stage costs after append, predicate and serial-runtime composition;
 the earlier source01 profile cannot substitute for this execution.
+
+## Completed results, 2026-10-26
+
+The root executed the plan. The pilot's ELF name collision required the
+[role-aware observer repair](elf-binding-repair.md), after which its preserved
+capture passed without a target rerun. The full final03 serial-runtime capture
+then passed with8,681 samples, zero loss, the exact115,966,145-byte replay output
+and valid required/optional stage observations. Diagnostic child wall is279.524s;
+the separate clean same-input request is251.861s. See the
+[actual residual analysis](final-profile.md) and [pinned data](final-profile.json).
+These results apply to final03, not proposed later compiler variants.

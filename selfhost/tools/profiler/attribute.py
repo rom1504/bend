@@ -164,20 +164,74 @@ class Resolver:
         return result
 
 
+def binding_sections(binary):
+    """ELF64 allocated section roles; NOTYPE QBE labels need their section."""
+    with Path(binary).open('rb') as stream:
+        header = stream.read(64)
+        if len(header) != 64 or header[:6] != b'\x7fELF\x02\x01':
+            raise ValueError('Owner binding requires little-endian ELF64 sections')
+        offset = struct.unpack_from('<Q', header, 40)[0]
+        width, count = struct.unpack_from('<HH', header, 58)
+        if not offset or width < 64 or not count:
+            raise ValueError('Owner binding requires ordinary ELF section headers')
+        result = {}
+        for number in range(count):
+            stream.seek(offset + number * width)
+            row = stream.read(64)
+            if len(row) != 64:
+                raise ValueError('Truncated ELF section headers')
+            kind = struct.unpack_from('<I', row, 4)[0]
+            flags, address = struct.unpack_from('<QQ', row, 8)
+            size = struct.unpack_from('<Q', row, 32)[0]
+            result[number] = dict(type=kind, flags=flags, address=address, size=size)
+        return result
+
+
+def binding_symbols(text, sections):
+    """Keep role-specific candidates; ambiguity is checked only when queried.
+
+    FUNC/NOTYPE executable labels bind functions. OBJECT/NOTYPE allocated,
+    non-executable, non-TLS, file-backed labels bind data. Same-address entries
+    repeated in .dynsym/.symtab agree; different addresses in one role do not.
+    """
+    result = {'function': collections.defaultdict(set), 'data': collections.defaultdict(set)}
+    for line in text.splitlines():
+        fields = line.split()
+        if len(fields) < 8 or not fields[0].rstrip(':').isdigit() or not fields[6].isdigit():
+            continue
+        section = sections.get(int(fields[6]))
+        if section is None:
+            raise ValueError('ELF symbol refers to a missing section')
+        name, address, typ = fields[7], int(fields[1], 16), fields[3]
+        flags = section['flags']
+        if not flags & 2 or flags & 0x400 or not section['address'] <= address < section['address'] + section['size']:
+            continue
+        if flags & 4 and typ in ('FUNC', 'NOTYPE'):
+            result['function'][name].add(address)
+        elif not flags & 4 and section['type'] != 8 and typ in ('OBJECT', 'NOTYPE'):
+            result['data'][name].add(address)
+    return result
+
+
+def binding_symbol(symbols, name, role, required=True):
+    addresses = symbols[role].get(name, set())
+    if len(addresses) > 1:
+        raise ValueError('Ambiguous ELF %s symbol: %s' % (role, name))
+    if not addresses:
+        if required:
+            raise ValueError('Missing ELF %s symbol: %s' % (role, name))
+        return None
+    return next(iter(addresses))  # The unique address, never a first-match choice.
+
+
 def bind_owners(owner_map, binary):
     """Validate exact dispatch order against linked ELF pointers, not ELF order."""
     if owner_map.get("schema") != "bend-qbe-lowered-owners-v1":
         raise ValueError("Unknown owner map schema")
     checked_pin(owner_map["identities"]["qbe"])
     segments = analyze.ELF.load_segments(binary)
-    symbols = {}
-    for line in subprocess.check_output(["readelf", "-W", "-s", str(binary)], text=True).splitlines():
-        fields = line.split()
-        if len(fields) >= 8 and fields[0].rstrip(":").isdigit() and fields[6].isdigit():
-            name, value = fields[7], int(fields[1], 16)
-            if name in symbols and symbols[name] != value:
-                raise ValueError("Ambiguous ELF symbol: " + name)
-            symbols[name] = value
+    symbols = binding_symbols(subprocess.check_output(
+        ["readelf", "-W", "-s", str(binary)], text=True), binding_sections(binary))
     relocs = {}
     relocation_text = subprocess.check_output(["readelf", "-W", "-r", str(binary)], text=True)
     if ".relr" in relocation_text:
@@ -206,8 +260,8 @@ def bind_owners(owner_map, binary):
                     stream.seek(offset + address - virtual)
                     return struct.unpack("<Q", stream.read(8))[0]
             raise ValueError("Descriptor/table extends outside ELF file data")
-        desc = symbols["p111_program"]
-        table = symbols["p111_segments"]
+        desc = binding_symbol(symbols, "p111_program", "data")
+        table = binding_symbol(symbols, "p111_segments", "data")
         abi = owner_map["descriptor"]
         expected = {0: 11101, 8: 192, 16: abi["segment_count"], 32: abi["main_fid"], 96: table}
         if any(word(desc + offset) != value for offset, value in expected.items()):
@@ -218,17 +272,24 @@ def bind_owners(owner_map, binary):
         if len(fids) != abi["segment_count"] or any(row["fid"] != i for i, row in enumerate(fids)):
             raise ValueError("Owner FIDs are not the exact descriptor sequence")
         for i, row in enumerate(fids):
-            if row["symbol"] not in symbols or word(table + 8 * i) != symbols[row["symbol"]]:
+            if word(table + 8 * i) != binding_symbol(symbols, row["symbol"], "function"):
                 raise ValueError("ELF segment-table owner binding mismatch at FID %d" % i)
-    functions = {row["symbol"]: row for row in owner_map["functions"] if row["symbol"] in symbols}
-    if len(functions) != sum(row["symbol"] in symbols for row in owner_map["functions"]):
+    present = [row for row in owner_map["functions"]
+               if binding_symbol(symbols, row["symbol"], "function", required=False) is not None]
+    functions = {row["symbol"]: row for row in present}
+    if len(functions) != len(present):
         raise ValueError("Duplicate owner-map function")
-    linked_fids = [{**row, "elfAddress": symbols[row["symbol"]]} for row in fids]
+    linked_fids = [{**row, "elfAddress": binding_symbol(symbols, row["symbol"], "function")} for row in fids]
     return functions, linked_fids, {"kind": "exact-ELF-segment-table-pointers", "checkedFids": len(fids),
                               "checkedFunctionSymbols": len(functions),
                               "runtimeDescriptor": runtime_descriptor,
                               "liveRegisterBank": bool(runtime_descriptor["capabilities"] & 4),
                               "ownerMapCapabilities": abi.get("capabilities"),
+                              "symbolLookup": {"policy": "required-role-and-allocated-section-v1",
+                                               "method": analyze.pin(__file__),
+                                               "dataRole": "OBJECT/NOTYPE, allocated file-backed non-executable non-TLS section",
+                                               "functionRole": "FUNC/NOTYPE, allocated executable non-TLS section",
+                                               "ambiguity": "distinct addresses in the queried role are rejected"},
                               "elfType": struct.unpack_from("<H", elf, 16)[0],
                               "producerProvenanceVerified": False,
                               "lexicalOwnerConditionalOnEmitterContract": True}

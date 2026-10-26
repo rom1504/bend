@@ -153,3 +153,20 @@ Retained offline transfer evidence is under
 exact-clock comparison, failed metadata attempt and method snapshot. The failure
 came from an older binary-framed cache file with a `.json` extension; manifest
 discovery now admits valid JSON documents by content, not extension alone.
+
+ELF owner binding resolves only the role required by each queried name. QBE
+tables may be zero-size `NOTYPE` labels in allocated non-executable data, while
+functions may be `FUNC` or `NOTYPE` labels in allocated executable sections.
+An unrelated C function can legally share a local spelling with a data table.
+The binder uses actual ELF section flags and bounds to distinguish these roles;
+it does not choose the first symbol or discard all ambiguity checks. Distinct
+addresses for the same queried name and role still fail. Duplicate entries at
+the same address across symbol tables agree. TLS, nonallocated data, non-file-
+backed descriptor data and unsupported function kinds are not admitted.
+
+The final03 native pilot exposed this distinction with `p111_fid_arity`. Its
+successful target output and failed original observer remain preserved. The
+repaired observer reuses that capture, passes exact marker/table binding and
+records the actual binding-method hash. Synthetic ELF controls cover cross-role
+duplicates, queried ambiguity, unqueried ambiguity, wrong sections and repeated
+symbol-table entries; no new compiler execution is needed for that repair.

@@ -1,0 +1,147 @@
+{
+  "kind": "phase144-rfc-word-controls-v01",
+  "preparedOnly": true,
+  "targetsRun": false,
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase144/serial-rfc/word-controls-v01.c",
+      "bytes": 2472,
+      "sha256": "df2c6daa1b1293de4f018f0494c60e7698c5ad4bf416460c2e3b01b2381b572a"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase144/serial-rfc01/manifest.json",
+      "bytes": 4567,
+      "sha256": "1d0a879f30915d263c798e6ef99092ba499fd0f0487222f4c590e0275f9753b0"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase144/serial-rfc01/runtime.c",
+      "bytes": 150560,
+      "sha256": "aa95d2c0426c05bcc4d34244dd8b22b79ebcaf6d30634569201961f60b57f333"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase144/serial-rfc01/runtime.h",
+      "bytes": 4518,
+      "sha256": "9b19b8d6ae1c8f07759041201c2692c20d9612393819e2bbc597deba44679d12"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase144/serial-rfc01/primitives.h",
+      "bytes": 3067,
+      "sha256": "ecbdfe62b875fc20e5805840b83c3779ed8fb8fb1de83c543ba1ce1217165d20"
+    },
+    {
+      "file": "/usr/bin/x86_64-linux-gnu-gcc-10",
+      "bytes": 817704,
+      "sha256": "693abcb42e67fb871673f258a3644257ca69a209691ec4d8137a42442834bd19"
+    }
+  ],
+  "commands": [
+    {
+      "label": "compile-mode0",
+      "argv": [
+        "/usr/bin/x86_64-linux-gnu-gcc-10",
+        "-O2",
+        "-std=gnu11",
+        "-ffp-contract=off",
+        "-DP144_SINGLE_MUTATOR_RFC=0",
+        "-I",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase144/serial-rfc01",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase144/serial-rfc/word-controls-v01.c",
+        "-pthread",
+        "-lm",
+        "-o",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase144/serial-rfc01/word-controls-v01-mode0"
+      ],
+      "exit": 0
+    },
+    {
+      "label": "mode0-words",
+      "argv": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase144/serial-rfc01/word-controls-v01-mode0",
+        "words"
+      ],
+      "exit": 0,
+      "stdout": "p144 RFC words: 384 PASS\n",
+      "stderr": ""
+    },
+    {
+      "label": "mode0-bump-safe",
+      "argv": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase144/serial-rfc01/word-controls-v01-mode0",
+        "bump-safe"
+      ],
+      "exit": 0,
+      "stdout": "p144 RFC safe boundary: PASS\n",
+      "stderr": ""
+    },
+    {
+      "label": "mode0-overflow",
+      "argv": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase144/serial-rfc01/word-controls-v01-mode0",
+        "overflow"
+      ],
+      "exit": 1,
+      "stdout": "",
+      "stderr": "bend: runtime fail-stop\n"
+    },
+    {
+      "label": "compile-mode1",
+      "argv": [
+        "/usr/bin/x86_64-linux-gnu-gcc-10",
+        "-O2",
+        "-std=gnu11",
+        "-ffp-contract=off",
+        "-DP144_SINGLE_MUTATOR_RFC=1",
+        "-I",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase144/serial-rfc01",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase144/serial-rfc/word-controls-v01.c",
+        "-pthread",
+        "-lm",
+        "-o",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase144/serial-rfc01/word-controls-v01-mode1"
+      ],
+      "exit": 0
+    },
+    {
+      "label": "mode1-words",
+      "argv": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase144/serial-rfc01/word-controls-v01-mode1",
+        "words"
+      ],
+      "exit": 0,
+      "stdout": "p144 RFC words: 384 PASS\n",
+      "stderr": ""
+    },
+    {
+      "label": "mode1-bump-safe",
+      "argv": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase144/serial-rfc01/word-controls-v01-mode1",
+        "bump-safe"
+      ],
+      "exit": 0,
+      "stdout": "p144 RFC safe boundary: PASS\n",
+      "stderr": ""
+    },
+    {
+      "label": "mode1-overflow",
+      "argv": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase144/serial-rfc01/word-controls-v01-mode1",
+        "overflow"
+      ],
+      "exit": 1,
+      "stdout": "",
+      "stderr": "bend: runtime fail-stop\n"
+    },
+    {
+      "label": "mode1-pool",
+      "argv": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase144/serial-rfc01/word-controls-v01-mode1",
+        "pool"
+      ],
+      "exit": 1,
+      "stdout": "",
+      "stderr": "bend: phase144 serial RFC runtime refuses compute workers\n"
+    }
+  ],
+  "observationsPerMode": 384,
+  "scope": "Two actual helper functions versus original atomic operations; old values/full64-bit cells, unsigned wrapping, original overflow and pool refusal. No runtime lifetime or concurrency claim."
+}

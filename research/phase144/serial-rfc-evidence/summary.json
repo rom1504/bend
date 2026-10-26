@@ -1,0 +1,289 @@
+{
+  "kind": "phase144-serial-rfc-offline-evidence-v01",
+  "scope": "No target execution or new performance measurement. Exact machine inspection and existing diagnostic samples.",
+  "inputs": [
+    {
+      "file": "selfhost/build/phase144/profile01/capture/000-sample-fixed-phase142-source-phase143-n2-context/analysis.json",
+      "bytes": 1655558,
+      "sha256": "686d77390cc1f74de4784679dcf406ec306ae2330fba53ec8d7403d35b7a28cb"
+    },
+    {
+      "file": "selfhost/build/phase144/profile01/attribution/report.json",
+      "bytes": 1942170,
+      "sha256": "f321ea991d8c6f27e3a512d3306f22d0f97a1fc418c66c1155af7b51215dd580"
+    },
+    {
+      "file": "selfhost/build/phase144/profile01/runtime/program",
+      "bytes": 18993544,
+      "sha256": "67ba83524f351f5eaa4a2f7c6ebcc2b1d119f9e400286cc2223d40457db4e563"
+    },
+    {
+      "file": "selfhost/build/phase111/p143-integrated-n2/program",
+      "bytes": 18984160,
+      "sha256": "023ccf1acf52e71cb9578c4ed878ccb4a50a61c28375e3f8b0a54c885736c83b"
+    },
+    {
+      "file": "selfhost/build/phase128/runtime-borrow01/runtime.c",
+      "bytes": 149279,
+      "sha256": "6eb24c8d4a5d6358a9b8b4107a75af777a8dbdd06fe5fdce18d73b9f85f4824a"
+    }
+  ],
+  "allSamples": 10083,
+  "analysisQuality": {
+    "scope": "main_thread",
+    "main_thread_cpu_fraction": 0.995851568489258,
+    "sampled_thread_cpu_fraction": 0.995851568489258,
+    "minimum_process_cpu_fraction": 0.95,
+    "minimum_samples": 500,
+    "enough_samples": true,
+    "thread_lifecycle_complete": true,
+    "near_complete_process_cpu_coverage": true,
+    "usable_for_process_cpu_attribution": true,
+    "limitations": [],
+    "zero_loss": true,
+    "handler_intact": true,
+    "main_thread_shutdown": true,
+    "expected_clock_periods": 10083.72840978125,
+    "delivered_per_expected_period": 0.9999277638437244,
+    "delivery_plausible": true,
+    "resolved_sample_fraction": 0.9616185659030051,
+    "unknown_samples": 387,
+    "inferred_symbol_range_samples": 0,
+    "resolved_symbol_coverage_is_not_logical_attribution": true
+  },
+  "analysisCoverage": {
+    "scope": "main_thread",
+    "main_thread_cpu_fraction": 0.995851568489258,
+    "sampled_thread_cpu_fraction": 0.995851568489258,
+    "minimum_process_cpu_fraction": 0.95,
+    "minimum_samples": 500,
+    "enough_samples": true,
+    "thread_lifecycle_complete": true,
+    "near_complete_process_cpu_coverage": true,
+    "usable_for_process_cpu_attribution": true,
+    "limitations": [],
+    "zero_loss": true,
+    "handler_intact": true,
+    "main_thread_shutdown": true,
+    "expected_clock_periods": 10083.72840978125,
+    "delivered_per_expected_period": 0.9999277638437244,
+    "delivery_plausible": true,
+    "resolved_sample_fraction": 0.9616185659030051,
+    "unknown_samples": 387,
+    "inferred_symbol_range_samples": 0,
+    "resolved_symbol_coverage_is_not_logical_attribution": true
+  },
+  "points": [
+    {
+      "function": "span_fade",
+      "atomicPc": "0x40307f",
+      "followingPc": "0x403085",
+      "followingPcSamples": 795,
+      "functionSamples": 978,
+      "topActiveOwners": [
+        {
+          "owner": "nc_ctor_owned",
+          "samples": 115
+        },
+        {
+          "owner": "p111v_get",
+          "samples": 88
+        },
+        {
+          "owner": "f_find",
+          "samples": 75
+        },
+        {
+          "owner": "lookup",
+          "samples": 50
+        },
+        {
+          "owner": "constructor_exists",
+          "samples": 32
+        },
+        {
+          "owner": "p113k_get",
+          "samples": 30
+        },
+        {
+          "owner": "nol_scalar_specs",
+          "samples": 24
+        },
+        {
+          "owner": "p112w_ready",
+          "samples": 22
+        },
+        {
+          "owner": "book_final_seen",
+          "samples": 21
+        },
+        {
+          "owner": "p111v_value",
+          "samples": 21
+        },
+        {
+          "owner": "index_remove",
+          "samples": 15
+        },
+        {
+          "owner": "norm_max_book",
+          "samples": 13
+        }
+      ]
+    },
+    {
+      "function": "term_drop",
+      "atomicPc": "0xf5354a",
+      "followingPc": "0xf5354e",
+      "followingPcSamples": 824,
+      "functionSamples": 1616,
+      "topActiveOwners": [
+        {
+          "owner": "nc_ctor_owned",
+          "samples": 131
+        },
+        {
+          "owner": "p111v_get",
+          "samples": 112
+        },
+        {
+          "owner": "f_find",
+          "samples": 83
+        },
+        {
+          "owner": "lookup",
+          "samples": 70
+        },
+        {
+          "owner": "String.eq",
+          "samples": 56
+        },
+        {
+          "owner": "p111v_step",
+          "samples": 40
+        },
+        {
+          "owner": "book_final_filter",
+          "samples": 30
+        },
+        {
+          "owner": "p111v_value",
+          "samples": 28
+        },
+        {
+          "owner": "p111v_intersection_bucket",
+          "samples": 28
+        },
+        {
+          "owner": "constructor_exists",
+          "samples": 27
+        },
+        {
+          "owner": "nol_scalar_specs",
+          "samples": 27
+        },
+        {
+          "owner": "p113k_get",
+          "samples": 24
+        }
+      ]
+    },
+    {
+      "function": "p111_rt_keep",
+      "atomicPc": "0xf544ca",
+      "followingPc": "0xf544cf",
+      "followingPcSamples": 215,
+      "functionSamples": 293,
+      "topActiveOwners": [
+        {
+          "owner": "nc_ctor_owned",
+          "samples": 36
+        },
+        {
+          "owner": "f_find",
+          "samples": 22
+        },
+        {
+          "owner": "p131i_insert",
+          "samples": 8
+        },
+        {
+          "owner": "f_reserved",
+          "samples": 7
+        },
+        {
+          "owner": "index_remove",
+          "samples": 7
+        },
+        {
+          "owner": "constructor_exists",
+          "samples": 6
+        },
+        {
+          "owner": "nq_layout_subst",
+          "samples": 6
+        },
+        {
+          "owner": "f_prec",
+          "samples": 5
+        },
+        {
+          "owner": "lookup",
+          "samples": 4
+        },
+        {
+          "owner": "p111v_contract",
+          "samples": 4
+        },
+        {
+          "owner": "nol_scalar_specs",
+          "samples": 4
+        },
+        {
+          "owner": "f_lex_cursor",
+          "samples": 4
+        }
+      ]
+    }
+  ],
+  "followingPcSamplesTotal": 1834,
+  "followingPcFraction": 0.18189031042348508,
+  "disassembly": [
+    {
+      "file": "research/phase144/serial-rfc-evidence/diagnostic-span_fade.asm",
+      "bytes": 1947,
+      "sha256": "406ebab708e52402532dbd54ceda86f75dcee0810a1739cd8a36e38eb1d78105"
+    },
+    {
+      "file": "research/phase144/serial-rfc-evidence/clean-span_fade.asm",
+      "bytes": 2531,
+      "sha256": "fff377a75b6e111d79558428ece26b84dddf5e98e0a47e5f0bfd8d02435d086e"
+    },
+    {
+      "file": "research/phase144/serial-rfc-evidence/diagnostic-term_drop.asm",
+      "bytes": 19862,
+      "sha256": "d8ca1a24e693977c2f695c17500417ef3f773bd44bc7d77f662c56b958c1e394"
+    },
+    {
+      "file": "research/phase144/serial-rfc-evidence/clean-term_drop.asm",
+      "bytes": 16188,
+      "sha256": "1b86bf68e9798ff1e33af8f1dace286340e6b8a75eb16d2a9184555eb317c045"
+    },
+    {
+      "file": "research/phase144/serial-rfc-evidence/diagnostic-p111_rt_keep.asm",
+      "bytes": 3653,
+      "sha256": "aac5f0180c0fca108f70ade16a9b9c31527cb2ecbda97f30c37691f2343a3890"
+    },
+    {
+      "file": "research/phase144/serial-rfc-evidence/clean-p111_rt_keep.asm",
+      "bytes": 2019,
+      "sha256": "9d462a47b9b9bea6ef66652294ac9f5f067dd13657601ebadb9a87d11e69b959"
+    }
+  ],
+  "limitations": [
+    "Instruction-retirement position and interrupt skid prevent assigning all following-PC samples exclusively to lock cost.",
+    "Physical leaf counts overlap active-owner and stage counts.",
+    "Diagnostic runtime timing is not clean compiler speed.",
+    "No speedup or production qualification is claimed."
+  ]
+}

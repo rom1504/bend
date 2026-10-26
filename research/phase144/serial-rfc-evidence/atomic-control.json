@@ -1,0 +1,603 @@
+{
+  "kind": "phase144-atomic-control-elf-audit-v01",
+  "method": {
+    "file": "selfhost/tools/performance/phase144/serial-rfc/audit-control-v01.py",
+    "bytes": 3804,
+    "sha256": "1b76a5bb04f13726f8e5c03d22dcdf5e09e1bfe657af4981d4e3d12c307b046f"
+  },
+  "pairs": {
+    "object": {
+      "original": {
+        "file": "selfhost/build/phase128/runtime-borrow01/runtime.o",
+        "bytes": 121816,
+        "sha256": "9b3f57afb46b4db8c63f6f3c5f1af1194e0854a7329de28f25d2e11aef887749"
+      },
+      "control": {
+        "file": "selfhost/build/phase144/serial-rfc01/atomic-control.o",
+        "bytes": 121816,
+        "sha256": "71c9f76984ec2f3863e1cf98633fbd65b393a2189aefd66e930ae25ecb89f3ed"
+      },
+      "differentFileBytes": 2,
+      "sectionMetadataEqual": true,
+      "executableSectionsEqual": true,
+      "allocatedSectionsExceptBuildIdEqual": true,
+      "sections": [
+        {
+          "name": "",
+          "metadataEqual": true,
+          "contentsEqual": true,
+          "allocated": false,
+          "executable": false,
+          "bytes": 0,
+          "originalSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "controlSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "name": ".text",
+          "metadataEqual": true,
+          "contentsEqual": true,
+          "allocated": true,
+          "executable": true,
+          "bytes": 43288,
+          "originalSha256": "9df4697ce12063aa24e7ed54add5479dd59e9365ffb3845423890a3b1e062c1a",
+          "controlSha256": "9df4697ce12063aa24e7ed54add5479dd59e9365ffb3845423890a3b1e062c1a"
+        },
+        {
+          "name": ".rela.text",
+          "metadataEqual": true,
+          "contentsEqual": true,
+          "allocated": false,
+          "executable": false,
+          "bytes": 18864,
+          "originalSha256": "2c60117c7c8ff67a7be7377574048db8719abd3483df708586c8a78c7f1368a4",
+          "controlSha256": "2c60117c7c8ff67a7be7377574048db8719abd3483df708586c8a78c7f1368a4"
+        },
+        {
+          "name": ".data",
+          "metadataEqual": true,
+          "contentsEqual": true,
+          "allocated": true,
+          "executable": false,
+          "bytes": 0,
+          "originalSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "controlSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "name": ".bss",
+          "metadataEqual": true,
+          "contentsEqual": true,
+          "allocated": true,
+          "executable": false,
+          "bytes": 1148296,
+          "originalSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "controlSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "name": ".text.unlikely",
+          "metadataEqual": true,
+          "contentsEqual": true,
+          "allocated": true,
+          "executable": true,
+          "bytes": 10591,
+          "originalSha256": "68f63c716444cc558e3b06fb093dfad3fd34a1a1c6d91d65fd1af5f7a1e7bc79",
+          "controlSha256": "68f63c716444cc558e3b06fb093dfad3fd34a1a1c6d91d65fd1af5f7a1e7bc79"
+        },
+        {
+          "name": ".rela.text.unlikely",
+          "metadataEqual": true,
+          "contentsEqual": true,
+          "allocated": false,
+          "executable": false,
+          "bytes": 8880,
+          "originalSha256": "45ed001109c4fec24d97d4e4c3d937dc5b2040631025809e9b79bb3a40b94ea7",
+          "controlSha256": "45ed001109c4fec24d97d4e4c3d937dc5b2040631025809e9b79bb3a40b94ea7"
+        },
+        {
+          "name": ".rodata.str1.1",
+          "metadataEqual": true,
+          "contentsEqual": true,
+          "allocated": true,
+          "executable": false,
+          "bytes": 828,
+          "originalSha256": "8f3effd2be00c3fa47573e8a9da1440a2b43839db4e1d96fd5235c3e664d53ef",
+          "controlSha256": "8f3effd2be00c3fa47573e8a9da1440a2b43839db4e1d96fd5235c3e664d53ef"
+        },
+        {
+          "name": ".rodata.str1.8",
+          "metadataEqual": true,
+          "contentsEqual": true,
+          "allocated": true,
+          "executable": false,
+          "bytes": 3143,
+          "originalSha256": "0d07157e41b281b5ddddaffe39ef894f4648ed5317aab20c69cafbf7e1861124",
+          "controlSha256": "0d07157e41b281b5ddddaffe39ef894f4648ed5317aab20c69cafbf7e1861124"
+        },
+        {
+          "name": ".rodata",
+          "metadataEqual": true,
+          "contentsEqual": true,
+          "allocated": true,
+          "executable": false,
+          "bytes": 945,
+          "originalSha256": "db2d6e253921e1e5eab63aff8f3a4f70393c4b249b942d1ff08073b4ce08a045",
+          "controlSha256": "db2d6e253921e1e5eab63aff8f3a4f70393c4b249b942d1ff08073b4ce08a045"
+        },
+        {
+          "name": ".rela.rodata",
+          "metadataEqual": true,
+          "contentsEqual": true,
+          "allocated": false,
+          "executable": false,
+          "bytes": 3096,
+          "originalSha256": "5823677621aa82a4464a0e3b7c3b10d9447b69408f8582494c268c490adba4dc",
+          "controlSha256": "5823677621aa82a4464a0e3b7c3b10d9447b69408f8582494c268c490adba4dc"
+        },
+        {
+          "name": ".data.rel.ro.local",
+          "metadataEqual": true,
+          "contentsEqual": true,
+          "allocated": true,
+          "executable": false,
+          "bytes": 240,
+          "originalSha256": "2dfba633817046c7f559ed4b93076048435f7e1a90f14eb8035c04b9ebae2537",
+          "controlSha256": "2dfba633817046c7f559ed4b93076048435f7e1a90f14eb8035c04b9ebae2537"
+        },
+        {
+          "name": ".rela.data.rel.ro.local",
+          "metadataEqual": true,
+          "contentsEqual": true,
+          "allocated": false,
+          "executable": false,
+          "bytes": 648,
+          "originalSha256": "70e00d3c7d9a4da8e60cee53ae8e447a45d97e4e6ba4191dbc81f0406e7733f2",
+          "controlSha256": "70e00d3c7d9a4da8e60cee53ae8e447a45d97e4e6ba4191dbc81f0406e7733f2"
+        },
+        {
+          "name": ".rodata.cst4",
+          "metadataEqual": true,
+          "contentsEqual": true,
+          "allocated": true,
+          "executable": false,
+          "bytes": 16,
+          "originalSha256": "d5a94ebe8d15ef9e019019bc2ae87e01b9427b2becae68b011b3cb39d41ea20b",
+          "controlSha256": "d5a94ebe8d15ef9e019019bc2ae87e01b9427b2becae68b011b3cb39d41ea20b"
+        },
+        {
+          "name": ".rodata.cst16",
+          "metadataEqual": true,
+          "contentsEqual": true,
+          "allocated": true,
+          "executable": false,
+          "bytes": 32,
+          "originalSha256": "18febac17570119e4485e25db6bab1b25858265a3b0056114f1aa4b39df3e399",
+          "controlSha256": "18febac17570119e4485e25db6bab1b25858265a3b0056114f1aa4b39df3e399"
+        },
+        {
+          "name": ".rodata.cst8",
+          "metadataEqual": true,
+          "contentsEqual": true,
+          "allocated": true,
+          "executable": false,
+          "bytes": 8,
+          "originalSha256": "af5570f5a1810b7af78caf4bc70a660f0df51e42baf91d4de5b2328de0e83dfc",
+          "controlSha256": "af5570f5a1810b7af78caf4bc70a660f0df51e42baf91d4de5b2328de0e83dfc"
+        },
+        {
+          "name": ".comment",
+          "metadataEqual": true,
+          "contentsEqual": true,
+          "allocated": false,
+          "executable": false,
+          "bytes": 40,
+          "originalSha256": "099952dd328c7d7bc9b5140e977e2d99b9485a202f3b5e6487cf9d607cc1e4b8",
+          "controlSha256": "099952dd328c7d7bc9b5140e977e2d99b9485a202f3b5e6487cf9d607cc1e4b8"
+        },
+        {
+          "name": ".note.GNU-stack",
+          "metadataEqual": true,
+          "contentsEqual": true,
+          "allocated": false,
+          "executable": false,
+          "bytes": 0,
+          "originalSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "controlSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "name": ".eh_frame",
+          "metadataEqual": true,
+          "contentsEqual": true,
+          "allocated": true,
+          "executable": false,
+          "bytes": 9176,
+          "originalSha256": "9b308a8cc263539030a627d67a8f7077fb2225e7545251538def730636ae4bbf",
+          "controlSha256": "9b308a8cc263539030a627d67a8f7077fb2225e7545251538def730636ae4bbf"
+        },
+        {
+          "name": ".rela.eh_frame",
+          "metadataEqual": true,
+          "contentsEqual": true,
+          "allocated": false,
+          "executable": false,
+          "bytes": 4464,
+          "originalSha256": "68f6a181e4305dd04f7e608f9db3c792c39d96458f72458c998fe2a5947a1f7e",
+          "controlSha256": "68f6a181e4305dd04f7e608f9db3c792c39d96458f72458c998fe2a5947a1f7e"
+        },
+        {
+          "name": ".symtab",
+          "metadataEqual": true,
+          "contentsEqual": true,
+          "allocated": false,
+          "executable": false,
+          "bytes": 10944,
+          "originalSha256": "5239bf33a0885ec9337b6ff0208a5e5a54ec0f7ca30cf859a9d70ef4d86d3f15",
+          "controlSha256": "5239bf33a0885ec9337b6ff0208a5e5a54ec0f7ca30cf859a9d70ef4d86d3f15"
+        },
+        {
+          "name": ".strtab",
+          "metadataEqual": true,
+          "contentsEqual": false,
+          "allocated": false,
+          "executable": false,
+          "bytes": 4776,
+          "originalSha256": "fbb4078e00c317e04828d8ee0ddfb3566b102a14261959d5b5ce827146451274",
+          "controlSha256": "39a3039aee695977f47ae9292751daadcac236f0c167145ab3053e5faf8ffc5a",
+          "differentBytes": 2,
+          "firstDifferences": [
+            {
+              "sectionOffset": 1606,
+              "original": "4353575443482e36313800703131315f72745f73",
+              "control": "4353575443482e36323000703131315f72745f73"
+            },
+            {
+              "sectionOffset": 1607,
+              "original": "53575443482e36313800703131315f72745f7370",
+              "control": "53575443482e36323000703131315f72745f7370"
+            }
+          ]
+        },
+        {
+          "name": ".shstrtab",
+          "metadataEqual": true,
+          "contentsEqual": true,
+          "allocated": false,
+          "executable": false,
+          "bytes": 216,
+          "originalSha256": "7545790178130fea38167cf717a01ff15468be8aee32efdcd9204656d46a1c73",
+          "controlSha256": "7545790178130fea38167cf717a01ff15468be8aee32efdcd9204656d46a1c73"
+        }
+      ]
+    },
+    "executable": {
+      "original": {
+        "file": "selfhost/build/phase111/p143-integrated-n2/program",
+        "bytes": 18984160,
+        "sha256": "023ccf1acf52e71cb9578c4ed878ccb4a50a61c28375e3f8b0a54c885736c83b"
+      },
+      "control": {
+        "file": "selfhost/build/phase144/serial-rfc01/atomic-control-compiler",
+        "bytes": 18984160,
+        "sha256": "b4f47c2822305cf4ab042e1f4fce1838f194dbe0455b321a7844f59c7afe5b2c"
+      },
+      "differentFileBytes": 2,
+      "sectionMetadataEqual": true,
+      "executableSectionsEqual": true,
+      "allocatedSectionsExceptBuildIdEqual": true,
+      "sections": [
+        {
+          "name": "",
+          "metadataEqual": true,
+          "contentsEqual": true,
+          "allocated": false,
+          "executable": false,
+          "bytes": 0,
+          "originalSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "controlSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "name": ".interp",
+          "metadataEqual": true,
+          "contentsEqual": true,
+          "allocated": true,
+          "executable": false,
+          "bytes": 28,
+          "originalSha256": "9097c98ea70f6f3b01d50145eb72bf55ad1f4e9713bccf27bd6405d6254eed00",
+          "controlSha256": "9097c98ea70f6f3b01d50145eb72bf55ad1f4e9713bccf27bd6405d6254eed00"
+        },
+        {
+          "name": ".note.gnu.build-id",
+          "metadataEqual": true,
+          "contentsEqual": true,
+          "allocated": true,
+          "executable": false,
+          "bytes": 36,
+          "originalSha256": "a58285f09df8824ca822ac5f058e986aaaaa7e39e6b46f7ad35be3d44c6abed1",
+          "controlSha256": "a58285f09df8824ca822ac5f058e986aaaaa7e39e6b46f7ad35be3d44c6abed1"
+        },
+        {
+          "name": ".note.ABI-tag",
+          "metadataEqual": true,
+          "contentsEqual": true,
+          "allocated": true,
+          "executable": false,
+          "bytes": 32,
+          "originalSha256": "6e48317ad93a8ac2dc04321465ede06d1274543fc8ab172e68171a9d684bb313",
+          "controlSha256": "6e48317ad93a8ac2dc04321465ede06d1274543fc8ab172e68171a9d684bb313"
+        },
+        {
+          "name": ".gnu.hash",
+          "metadataEqual": true,
+          "contentsEqual": true,
+          "allocated": true,
+          "executable": false,
+          "bytes": 40,
+          "originalSha256": "1e07266d7e63a099c6812a5d765df520996751dae9de863b37c26ff799d9e244",
+          "controlSha256": "1e07266d7e63a099c6812a5d765df520996751dae9de863b37c26ff799d9e244"
+        },
+        {
+          "name": ".dynsym",
+          "metadataEqual": true,
+          "contentsEqual": true,
+          "allocated": true,
+          "executable": false,
+          "bytes": 1968,
+          "originalSha256": "5f436fb8fdb4291161c428f5d10b5b9ff7bce6a5698bbb2485c2d3438cd038da",
+          "controlSha256": "5f436fb8fdb4291161c428f5d10b5b9ff7bce6a5698bbb2485c2d3438cd038da"
+        },
+        {
+          "name": ".dynstr",
+          "metadataEqual": true,
+          "contentsEqual": true,
+          "allocated": true,
+          "executable": false,
+          "bytes": 736,
+          "originalSha256": "26f261d9ac5f55ef2015a92e7bc5aa06697258fb9517b0dea8360f12102d1374",
+          "controlSha256": "26f261d9ac5f55ef2015a92e7bc5aa06697258fb9517b0dea8360f12102d1374"
+        },
+        {
+          "name": ".gnu.version",
+          "metadataEqual": true,
+          "contentsEqual": true,
+          "allocated": true,
+          "executable": false,
+          "bytes": 164,
+          "originalSha256": "bdb6ccceada494c98d58bd9113814d9709b546fcd4411f2d0e73ce6624bb0aed",
+          "controlSha256": "bdb6ccceada494c98d58bd9113814d9709b546fcd4411f2d0e73ce6624bb0aed"
+        },
+        {
+          "name": ".gnu.version_r",
+          "metadataEqual": true,
+          "contentsEqual": true,
+          "allocated": true,
+          "executable": false,
+          "bytes": 208,
+          "originalSha256": "ccf40c553239a1956a7d0b1782c03225a2e87bce609f750a9d413415d9e78358",
+          "controlSha256": "ccf40c553239a1956a7d0b1782c03225a2e87bce609f750a9d413415d9e78358"
+        },
+        {
+          "name": ".rela.dyn",
+          "metadataEqual": true,
+          "contentsEqual": true,
+          "allocated": true,
+          "executable": false,
+          "bytes": 96,
+          "originalSha256": "69424775791bf84705c1c6f9a003412cab24fc115944be73d6eabe96b7b611f6",
+          "controlSha256": "69424775791bf84705c1c6f9a003412cab24fc115944be73d6eabe96b7b611f6"
+        },
+        {
+          "name": ".rela.plt",
+          "metadataEqual": true,
+          "contentsEqual": true,
+          "allocated": true,
+          "executable": false,
+          "bytes": 1848,
+          "originalSha256": "243a450a6cf9eb61f1293c654430fb6b63eb5d8f7d0e4c43a60ac97f78905fe3",
+          "controlSha256": "243a450a6cf9eb61f1293c654430fb6b63eb5d8f7d0e4c43a60ac97f78905fe3"
+        },
+        {
+          "name": ".init",
+          "metadataEqual": true,
+          "contentsEqual": true,
+          "allocated": true,
+          "executable": true,
+          "bytes": 23,
+          "originalSha256": "29e2c29f782cb1eb9bdd8f6975f75c6341a5df3821b370db8634202e5f578cba",
+          "controlSha256": "29e2c29f782cb1eb9bdd8f6975f75c6341a5df3821b370db8634202e5f578cba"
+        },
+        {
+          "name": ".plt",
+          "metadataEqual": true,
+          "contentsEqual": true,
+          "allocated": true,
+          "executable": true,
+          "bytes": 1248,
+          "originalSha256": "cec63feb7b8a07ec41987cad32e2c795363b08d218e494ca79d3bfe59fabcc2d",
+          "controlSha256": "cec63feb7b8a07ec41987cad32e2c795363b08d218e494ca79d3bfe59fabcc2d"
+        },
+        {
+          "name": ".text",
+          "metadataEqual": true,
+          "contentsEqual": true,
+          "allocated": true,
+          "executable": true,
+          "bytes": 11890641,
+          "originalSha256": "bd99b73e9ca0a162a168bbb7a47dd538e18ce30479aced821c23b70bf5bedb06",
+          "controlSha256": "bd99b73e9ca0a162a168bbb7a47dd538e18ce30479aced821c23b70bf5bedb06"
+        },
+        {
+          "name": ".fini",
+          "metadataEqual": true,
+          "contentsEqual": true,
+          "allocated": true,
+          "executable": true,
+          "bytes": 9,
+          "originalSha256": "66e6f54550612182b4ad78f30b140dd08318b968db3878de2db65fef87dc04d7",
+          "controlSha256": "66e6f54550612182b4ad78f30b140dd08318b968db3878de2db65fef87dc04d7"
+        },
+        {
+          "name": ".rodata",
+          "metadataEqual": true,
+          "contentsEqual": true,
+          "allocated": true,
+          "executable": false,
+          "bytes": 4984,
+          "originalSha256": "1c292d39cdd1dab0aabac33f40081954044dfb41501fe509449e804e6063c8f6",
+          "controlSha256": "1c292d39cdd1dab0aabac33f40081954044dfb41501fe509449e804e6063c8f6"
+        },
+        {
+          "name": ".eh_frame_hdr",
+          "metadataEqual": true,
+          "contentsEqual": true,
+          "allocated": true,
+          "executable": false,
+          "bytes": 1540,
+          "originalSha256": "84e69d5d0fb3a8ba1af5775c7f439d94e3228c44a3875010d1cefa18f8fc2028",
+          "controlSha256": "84e69d5d0fb3a8ba1af5775c7f439d94e3228c44a3875010d1cefa18f8fc2028"
+        },
+        {
+          "name": ".eh_frame",
+          "metadataEqual": true,
+          "contentsEqual": true,
+          "allocated": true,
+          "executable": false,
+          "bytes": 9376,
+          "originalSha256": "34906f804795164f033352f516643874e234fe13cf0655979a909a33d2ffe822",
+          "controlSha256": "34906f804795164f033352f516643874e234fe13cf0655979a909a33d2ffe822"
+        },
+        {
+          "name": ".init_array",
+          "metadataEqual": true,
+          "contentsEqual": true,
+          "allocated": true,
+          "executable": false,
+          "bytes": 8,
+          "originalSha256": "8a6bde3359d958a8e5940d1a1e7db84402960c2471af3cd18f06a529dfec308d",
+          "controlSha256": "8a6bde3359d958a8e5940d1a1e7db84402960c2471af3cd18f06a529dfec308d"
+        },
+        {
+          "name": ".fini_array",
+          "metadataEqual": true,
+          "contentsEqual": true,
+          "allocated": true,
+          "executable": false,
+          "bytes": 8,
+          "originalSha256": "3277370807f5906e01e9ba5fc66bc10269fc7c7389579d48483271a4a0f8bba2",
+          "controlSha256": "3277370807f5906e01e9ba5fc66bc10269fc7c7389579d48483271a4a0f8bba2"
+        },
+        {
+          "name": ".data.rel.ro",
+          "metadataEqual": true,
+          "contentsEqual": true,
+          "allocated": true,
+          "executable": false,
+          "bytes": 240,
+          "originalSha256": "b1c70a8c7f2a436f0af4a223553d8f936d4cc063740a607049e25105eb5d092d",
+          "controlSha256": "b1c70a8c7f2a436f0af4a223553d8f936d4cc063740a607049e25105eb5d092d"
+        },
+        {
+          "name": ".dynamic",
+          "metadataEqual": true,
+          "contentsEqual": true,
+          "allocated": true,
+          "executable": false,
+          "bytes": 496,
+          "originalSha256": "106676554e26c71ead7d4880cd7095f98db8ee8d4d31f4073c2ea87995548c85",
+          "controlSha256": "106676554e26c71ead7d4880cd7095f98db8ee8d4d31f4073c2ea87995548c85"
+        },
+        {
+          "name": ".got",
+          "metadataEqual": true,
+          "contentsEqual": true,
+          "allocated": true,
+          "executable": false,
+          "bytes": 16,
+          "originalSha256": "374708fff7719dd5979ec875d56cd2286f6d3cf7ec317a3b25632aab28ec37bb",
+          "controlSha256": "374708fff7719dd5979ec875d56cd2286f6d3cf7ec317a3b25632aab28ec37bb"
+        },
+        {
+          "name": ".got.plt",
+          "metadataEqual": true,
+          "contentsEqual": true,
+          "allocated": true,
+          "executable": false,
+          "bytes": 640,
+          "originalSha256": "aea8e6ebed31d006fc9463f441b42f318c5e0e952f0c7ec21b7027d4e8dcf194",
+          "controlSha256": "aea8e6ebed31d006fc9463f441b42f318c5e0e952f0c7ec21b7027d4e8dcf194"
+        },
+        {
+          "name": ".data",
+          "metadataEqual": true,
+          "contentsEqual": true,
+          "allocated": true,
+          "executable": false,
+          "bytes": 1015424,
+          "originalSha256": "1153c7aaf49bb9e7300244ec30a1d546ec76d7aec255d788c647ac4a1067b235",
+          "controlSha256": "1153c7aaf49bb9e7300244ec30a1d546ec76d7aec255d788c647ac4a1067b235"
+        },
+        {
+          "name": ".bss",
+          "metadataEqual": true,
+          "contentsEqual": true,
+          "allocated": true,
+          "executable": false,
+          "bytes": 1148424,
+          "originalSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "controlSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "name": ".comment",
+          "metadataEqual": true,
+          "contentsEqual": true,
+          "allocated": false,
+          "executable": false,
+          "bytes": 39,
+          "originalSha256": "b0b5eb242adf04205862f7138af0b804dae204bde28316e127beb1b56c0f44d3",
+          "controlSha256": "b0b5eb242adf04205862f7138af0b804dae204bde28316e127beb1b56c0f44d3"
+        },
+        {
+          "name": ".symtab",
+          "metadataEqual": true,
+          "contentsEqual": true,
+          "allocated": false,
+          "executable": false,
+          "bytes": 1739208,
+          "originalSha256": "775d4628944ac6e08be03a36ca89335d7d64ca26a6972f8f1d1600f95648e188",
+          "controlSha256": "775d4628944ac6e08be03a36ca89335d7d64ca26a6972f8f1d1600f95648e188"
+        },
+        {
+          "name": ".strtab",
+          "metadataEqual": true,
+          "contentsEqual": false,
+          "allocated": false,
+          "executable": false,
+          "bytes": 4303193,
+          "originalSha256": "32d9e69b159e5094745e87158fa4da5ebcfb8e4b8a47348292b3dca7cb5985e5",
+          "controlSha256": "184beaf209df88ba54ba07711a22505a44618e6c04b0e45409833f6662cb1a6f",
+          "differentBytes": 2,
+          "firstDifferences": [
+            {
+              "sectionOffset": 1606,
+              "original": "4353575443482e36313800703131315f72745f73",
+              "control": "4353575443482e36323000703131315f72745f73"
+            },
+            {
+              "sectionOffset": 1607,
+              "original": "53575443482e36313800703131315f72745f7370",
+              "control": "53575443482e36323000703131315f72745f7370"
+            }
+          ]
+        },
+        {
+          "name": ".shstrtab",
+          "metadataEqual": true,
+          "contentsEqual": true,
+          "allocated": false,
+          "executable": false,
+          "bytes": 272,
+          "originalSha256": "ec7a4c125326423fbb9e0214be8027ea7700e0af344a5608b95417c9ed39fa87",
+          "controlSha256": "ec7a4c125326423fbb9e0214be8027ea7700e0af344a5608b95417c9ed39fa87"
+        }
+      ]
+    }
+  },
+  "scope": "Offline metadata and bytes only; no target execution."
+}

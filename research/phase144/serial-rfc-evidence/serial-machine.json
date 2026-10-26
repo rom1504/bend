@@ -1,0 +1,202 @@
+{
+  "kind": "phase144-serial-rfc-machine-inspection",
+  "binary": {
+    "file": "selfhost/build/phase144/serial-rfc01/serial-rfc-compiler",
+    "bytes": 18979912,
+    "sha256": "ca63032849efb78ac93c166887e148e59141e2c372ac1fed123a292c1df456b5"
+  },
+  "objects": [
+    {
+      "mode": "atomic-control",
+      "object": {
+        "file": "selfhost/build/phase144/serial-rfc01/atomic-control.o",
+        "bytes": 121816,
+        "sha256": "71c9f76984ec2f3863e1cf98633fbd65b393a2189aefd66e930ae25ecb89f3ed"
+      },
+      "lockInstructionCount": 27,
+      "lockInstructions": [
+        {
+          "function": "task_deal",
+          "instruction": "1ed2:\tf0 42 0f c1 14 27    \tlock xadd %edx,(%rdi,%r12,1)"
+        },
+        {
+          "function": "task_deal",
+          "instruction": "1f3d:\tf0 41 0f c1 08       \tlock xadd %ecx,(%r8)"
+        },
+        {
+          "function": "task_deal",
+          "instruction": "1f74:\tf0 0f c1 9f 80 00 00 \tlock xadd %ebx,0x80(%rdi)"
+        },
+        {
+          "function": "WL_FID_EXIT",
+          "instruction": "287f:\tf0 83 28 01          \tlock subl $0x1,(%rax)"
+        },
+        {
+          "function": "blk_new.constprop.0",
+          "instruction": "2a07:\tf0 0f c1 04 d7       \tlock xadd %eax,(%rdi,%rdx,8)"
+        },
+        {
+          "function": "term_drop",
+          "instruction": "2d91:\tf0 0f c1 10          \tlock xadd %edx,(%rax)"
+        },
+        {
+          "function": "blk_half",
+          "instruction": "31a2:\tf0 0f c1 04 d7       \tlock xadd %eax,(%rdi,%rdx,8)"
+        },
+        {
+          "function": "monk_step",
+          "instruction": "44ac:\tf0 0f c1 03          \tlock xadd %eax,(%rbx)"
+        },
+        {
+          "function": "monk_step",
+          "instruction": "44cc:\tf0 0f c1 44 15 00    \tlock xadd %eax,0x0(%rbp,%rdx,1)"
+        },
+        {
+          "function": "pool_work",
+          "instruction": "4765:\tf0 0f c1 0d 00 00 00 \tlock xadd %ecx,0x0(%rip)        # 476d <pool_work+0x9d>"
+        },
+        {
+          "function": "pool_work",
+          "instruction": "482d:\tf0 0f c1 05 00 00 00 \tlock xadd %eax,0x0(%rip)        # 4835 <pool_work+0x165>"
+        },
+        {
+          "function": "p111_rt_keep",
+          "instruction": "48da:\tf0 0f c1 0c d7       \tlock xadd %ecx,(%rdi,%rdx,8)"
+        },
+        {
+          "function": "p111_rt_op",
+          "instruction": "5f22:\tf0 44 0f b1 1a       \tlock cmpxchg %r11d,(%rdx)"
+        },
+        {
+          "function": "p111_rt_op",
+          "instruction": "61d2:\tf0 0f c1 54 c5 00    \tlock xadd %edx,0x0(%rbp,%rax,8)"
+        },
+        {
+          "function": "p111_rt_special_ctor",
+          "instruction": "6881:\tf0 0f c1 04 cf       \tlock xadd %eax,(%rdi,%rcx,8)"
+        },
+        {
+          "function": "p111_rt_special_ctor",
+          "instruction": "68b2:\tf0 0f c1 04 d7       \tlock xadd %eax,(%rdi,%rdx,8)"
+        },
+        {
+          "function": "p111_rt_special_take",
+          "instruction": "6cf3:\tf0 0f c1 14 c7       \tlock xadd %edx,(%rdi,%rax,8)"
+        },
+        {
+          "function": "p113_rt_array_pair",
+          "instruction": "8632:\tf0 0f c1 14 c7       \tlock xadd %edx,(%rdi,%rax,8)"
+        },
+        {
+          "function": "heap_hand",
+          "instruction": "3a:\tf0 0f c1 48 0c       \tlock xadd %ecx,0xc(%rax)"
+        },
+        {
+          "function": "heap_alloc_miss",
+          "instruction": "fe:\tf0 0f c1 16          \tlock xadd %edx,(%rsi)"
+        },
+        {
+          "function": "heap_alloc_miss",
+          "instruction": "112:\tf0 ff 06             \tlock incl (%rsi)"
+        },
+        {
+          "function": "heap_alloc_miss",
+          "instruction": "17d:\tf0 45 0f c1 27       \tlock xadd %r12d,(%r15)"
+        },
+        {
+          "function": "pool_turn",
+          "instruction": "506:\tf0 48 ff 05 00 00 00 \tlock incq 0x0(%rip)        # 50e <pool_turn+0x30>"
+        },
+        {
+          "function": "blk_copy",
+          "instruction": "714:\tf0 41 0f c1 04 d4    \tlock xadd %eax,(%r12,%rdx,8)"
+        },
+        {
+          "function": "span_fade",
+          "instruction": "aeb:\tf0 0f c1 14 c7       \tlock xadd %edx,(%rdi,%rax,8)"
+        },
+        {
+          "function": "corpus_eval",
+          "instruction": "157b:\tf0 0f c1 85 00 10 82 \tlock xadd %eax,0x8821000(%rbp)"
+        },
+        {
+          "function": "corpus_eval",
+          "instruction": "1684:\tf0 ff 08             \tlock decl (%rax)"
+        }
+      ]
+    },
+    {
+      "mode": "serial-rfc",
+      "object": {
+        "file": "selfhost/build/phase144/serial-rfc01/serial-rfc.o",
+        "bytes": 119096,
+        "sha256": "2d07832382a11d7e993124ecc70452e4e1a3b7f753cf429343e1183cd8e493a3"
+      },
+      "lockInstructionCount": 11,
+      "lockInstructions": [
+        {
+          "function": "WL_FID_EXIT",
+          "instruction": "256f:\tf0 83 28 01          \tlock subl $0x1,(%rax)"
+        },
+        {
+          "function": "p111_rt_op",
+          "instruction": "56f2:\tf0 44 0f b1 1a       \tlock cmpxchg %r11d,(%rdx)"
+        },
+        {
+          "function": "heap_hand",
+          "instruction": "3a:\tf0 0f c1 48 0c       \tlock xadd %ecx,0xc(%rax)"
+        },
+        {
+          "function": "heap_alloc_miss",
+          "instruction": "fe:\tf0 0f c1 16          \tlock xadd %edx,(%rsi)"
+        },
+        {
+          "function": "heap_alloc_miss",
+          "instruction": "112:\tf0 ff 06             \tlock incl (%rsi)"
+        },
+        {
+          "function": "heap_alloc_miss",
+          "instruction": "17d:\tf0 45 0f c1 27       \tlock xadd %r12d,(%r15)"
+        },
+        {
+          "function": "pool_turn",
+          "instruction": "4b8:\tf0 48 ff 05 00 00 00 \tlock incq 0x0(%rip)        # 4c0 <pool_turn+0x29>"
+        },
+        {
+          "function": "ring_push",
+          "instruction": "50e:\tf0 0f c1 04 0f       \tlock xadd %eax,(%rdi,%rcx,1)"
+        },
+        {
+          "function": "task_deal.constprop.0",
+          "instruction": "725:\tf0 45 0f c1 b5 80 00 \tlock xadd %r14d,0x80(%r13)"
+        },
+        {
+          "function": "task_deal.constprop.0",
+          "instruction": "763:\tf0 0f c1 75 00       \tlock xadd %esi,0x0(%rbp)"
+        },
+        {
+          "function": "corpus_eval",
+          "instruction": "a06:\tf0 0f c1 10          \tlock xadd %edx,(%rax)"
+        }
+      ]
+    }
+  ],
+  "hotDisassembly": [
+    {
+      "file": "research/phase144/serial-rfc-evidence/serial-span_fade.asm",
+      "bytes": 2579,
+      "sha256": "58bff5bf527d48376fea997949d8063fab44d1bac823a3f94609824c1b06ae70"
+    },
+    {
+      "file": "research/phase144/serial-rfc-evidence/serial-term_drop.asm",
+      "bytes": 16127,
+      "sha256": "ee571829e56490d02a97405ef10e97528a98fef72fe493ac12421b28222fd335"
+    },
+    {
+      "file": "research/phase144/serial-rfc-evidence/serial-p111_rt_keep.asm",
+      "bytes": 2095,
+      "sha256": "11ba1b003e2fac69ca1d9a1027156d27c1c052239349ca3b7430e95922c1d91f"
+    }
+  ],
+  "scope": "Static instruction counts only; not dynamic counts, timing, or qualification."
+}

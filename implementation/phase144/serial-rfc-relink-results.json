@@ -1,0 +1,174 @@
+{
+  "kind": "phase144-relink-runtime-observations-v01",
+  "complete": true,
+  "targetsRun": false,
+  "method": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase144/serial-rfc/summarize-relink-v01.py",
+    "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase144/serial-rfc/summarize-relink-v01.py",
+    "bytes": 5978,
+    "sha256": "010157c7a5a149136982a1cf3617ae70c0c39e8bc21bcbe5cfb72c5e9a0fdb92"
+  },
+  "reports": {
+    "safety": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase144/relink-safety01/report.json",
+      "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase144/relink-safety01/report.json",
+      "bytes": 262907,
+      "sha256": "170f4c8c0695682fa0d1c08e848e852d08039b747479823066fb8a2b2f59f84a"
+    },
+    "full": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase144/relink-full01/report.json",
+      "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase144/relink-full01/report.json",
+      "bytes": 616097,
+      "sha256": "a86c6d30b667f07221698711a1d24acf7b654e9256ad279a53183cd544b82c5a"
+    },
+    "batches": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase144/batch-relink01/report.json",
+      "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase144/batch-relink01/report.json",
+      "bytes": 338799,
+      "sha256": "a760ff366643f3263a6ed5bde12809030dc50c5bd6158955b64366f90b41384e"
+    }
+  },
+  "semanticPlan": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase144/relink-plan01/plan.json",
+    "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase144/relink-plan01/plan.json",
+    "bytes": 369922,
+    "sha256": "23dfaba9e661f21dcc20af2cf65e5222351ecad72e0213eb3f9faf34dceae345"
+  },
+  "batchPlan": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase144/batch-relink-plan01/plan.json",
+    "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase144/batch-relink-plan01/plan.json",
+    "bytes": 248576,
+    "sha256": "acec156603ca11b67376e2df76d8548a730a55e28be5c4d7cb8af9fbb3034868"
+  },
+  "semanticCases": 61,
+  "ordinaryExecutions": 122,
+  "runtimeCliRefusals": 3,
+  "historicalCompilerRefusalsNotRerun": 3,
+  "batchCases": 4,
+  "batchObservations": 48,
+  "batchSummary": [
+    {
+      "name": "coverage-map-churn-128",
+      "samplesMs": {
+        "atomic": [
+          556,
+          545,
+          554,
+          545,
+          546,
+          601
+        ],
+        "serial": [
+          549,
+          543,
+          598,
+          542,
+          553,
+          614
+        ]
+      },
+      "mediansMs": {
+        "atomic": 550.0,
+        "serial": 551.0
+      },
+      "serialOverAtomic": 1.0018181818181817,
+      "serialFasterPairs": 3,
+      "pairs": 6,
+      "allSamplesAtLeast20ms": true
+    },
+    {
+      "name": "coverage-record-aggregation-256",
+      "samplesMs": {
+        "atomic": [
+          489,
+          493,
+          520,
+          487,
+          489,
+          536
+        ],
+        "serial": [
+          490,
+          487,
+          485,
+          482,
+          547,
+          541
+        ]
+      },
+      "mediansMs": {
+        "atomic": 491.0,
+        "serial": 488.5
+      },
+      "serialOverAtomic": 0.994908350305499,
+      "serialFasterPairs": 3,
+      "pairs": 6,
+      "allSamplesAtLeast20ms": true
+    },
+    {
+      "name": "coverage-bst-64",
+      "samplesMs": {
+        "atomic": [
+          611,
+          613,
+          624,
+          611,
+          671,
+          686
+        ],
+        "serial": [
+          601,
+          602,
+          599,
+          608,
+          677,
+          670
+        ]
+      },
+      "mediansMs": {
+        "atomic": 618.5,
+        "serial": 605.0
+      },
+      "serialOverAtomic": 0.9781729991915926,
+      "serialFasterPairs": 5,
+      "pairs": 6,
+      "allSamplesAtLeast20ms": true
+    },
+    {
+      "name": "coverage-unicode-text-64",
+      "samplesMs": {
+        "atomic": [
+          288,
+          295,
+          288,
+          288,
+          318,
+          321
+        ],
+        "serial": [
+          275,
+          277,
+          284,
+          276,
+          313,
+          305
+        ]
+      },
+      "mediansMs": {
+        "atomic": 291.5,
+        "serial": 280.5
+      },
+      "serialOverAtomic": 0.9622641509433962,
+      "serialFasterPairs": 6,
+      "pairs": 6,
+      "allSamplesAtLeast20ms": true
+    }
+  ],
+  "semanticsSeconds": {
+    "safety": 0.9607084468007088,
+    "remaining": 7.292248221114278
+  },
+  "batchCampaignSeconds": 26.636806093156338,
+  "scope": "Fresh runtime-only relinks. Phase14361 program objects pass complete original oracles. Four Phase131 fixed-work objects isolate runtime performance. Helper/lifetime/source proof/real-file IO and compiler throughput are separate evidence; no installed/default promotion.",
+  "interpretation": "Map and record results are approximately flat; BST and Unicode show modest lower medians. Later rounds slow in both roles. No general generated-program or compiler-throughput speedup is established by these four selected workloads."
+}

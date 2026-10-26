@@ -1,0 +1,225 @@
+{
+  "kind": "phase144-serial-rfc-full-results-v01",
+  "complete": true,
+  "method": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase144/serial-rfc/full-results-v01.py",
+    "bytes": 5322,
+    "sha256": "ee6d8b58696b5809b0662d3ab6a159215aff79d7f60de5c51b872262a4111f92"
+  },
+  "fixedSource": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase142/indexed-source02/compiler.bend",
+    "bytes": 2946225,
+    "sha256": "15f5cada2710119cce19a0cfe961c21f61edc5f0b048f90359090a0c1817dac1"
+  },
+  "expectedQbe": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase130/p142-indexed-emit01/program.ssa",
+    "bytes": 115909112,
+    "sha256": "1dca2d0ea568b2e28db87066ed10dbef01a385f4e38dd4d18c99e1074d128643"
+  },
+  "compilerSource": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase144/integrated-source01/compiler.bend",
+    "bytes": 2985553,
+    "sha256": "992893e6cf6a5bf7d6d092812b3a5da20852feca882005f32a91e607cef0483b"
+  },
+  "compilerObject": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase134/p144-integrated-n1-01/program.o",
+    "bytes": 25397120,
+    "sha256": "f08bda546c00a7671634d66eb19ac4778b132701fe49589c66da3030218f3269"
+  },
+  "serialRuntime": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase144/serial-rfc01/serial-rfc.o",
+    "bytes": 119096,
+    "sha256": "2d07832382a11d7e993124ecc70452e4e1a3b7f753cf429343e1183cd8e493a3"
+  },
+  "actualRuntimeAuthority": "Integrated relink receipt. The native-request runtime field is future-build context only.",
+  "observations": {
+    "parent": {
+      "image": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p143-integrated-n2/program",
+        "bytes": 18984160,
+        "sha256": "023ccf1acf52e71cb9578c4ed878ccb4a50a61c28375e3f8b0a54c885736c83b"
+      },
+      "nativeSeconds": 304.5341260670684,
+      "cpuSeconds": 304.385094,
+      "childPeakRssKiB": 1046268,
+      "guardWallSeconds": 307.20770537201315,
+      "guardPeakTreeRssBytes": 1086918656,
+      "exactOutput": true,
+      "sourceReceipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase130/p144-parent-fixed-cold01/report.json",
+        "bytes": 10199,
+        "sha256": "742b2cf94240cecfbe8a3815f6839de1443402a71a3165177836c9daa3c8026f"
+      }
+    },
+    "integrated": {
+      "image": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase134/p144-integrated-n1-01/program",
+        "bytes": 19070288,
+        "sha256": "516bf6d3ffeb1d86b2a26a173530ec758b9fe372aad22c38f61417450180aa50"
+      },
+      "nativeSeconds": 266.8624038468115,
+      "cpuSeconds": 266.718862,
+      "childPeakRssKiB": 1046380,
+      "guardWallSeconds": 269.4461663882248,
+      "guardPeakTreeRssBytes": 1087234048,
+      "exactOutput": true,
+      "sourceReceipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase130/p144-integrated-fixed-cold01/report.json",
+        "bytes": 10220,
+        "sha256": "879f7ced5c57566c4fdd068f1e01795f5b683ae1e54a7e91be2e4519cd8af2a7"
+      }
+    },
+    "integrated-serial": {
+      "image": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase144/integrated-serial-n1-01/program",
+        "bytes": 19070144,
+        "sha256": "de2958d951c523a50c8af21f927ea3f4cd77be63aa875450ba4ec2a972f0bf75"
+      },
+      "nativeSeconds": 249.6785048879683,
+      "cpuSeconds": 249.446495,
+      "childPeakRssKiB": 1046256,
+      "guardWallSeconds": 252.26829099701717,
+      "guardPeakTreeRssBytes": 1087094784,
+      "exactOutput": true,
+      "sourceReceipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase130/p144-integrated-serial-fixed-cold01/report.json",
+        "bytes": 10243,
+        "sha256": "b014d3f69a249a1bc00112ef73f6de9fc9c45afab23d716469303061d2f6a848"
+      }
+    }
+  },
+  "ratios": {
+    "serialOverSameObjectAtomic": 0.9356076438226669,
+    "runtimeReductionFraction": 0.06439235617733308,
+    "integratedAtomicOverParent": 0.8762972061398453,
+    "sourceReductionFraction": 0.1237027938601547,
+    "combinedOverParent": 0.8198703643248865,
+    "combinedReductionFraction": 0.18012963567511353
+  },
+  "qualification": {
+    "fullSourceRequestPass": true,
+    "n2Reproduction": false,
+    "selected": false,
+    "runtimeProgramRelinks": 61,
+    "runtimeCliRefusals": 3,
+    "fixedBatchPrograms": 4,
+    "fixedBatchPairsPerProgram": 6,
+    "heldOutParallelOrArbitraryForeignAbi": false
+  },
+  "limitations": [
+    "One clean full-source observation per role, no confidence interval or statistically bounded regression claim.",
+    "Fresh processes and fixed CPU3, but OS caches are not flushed.",
+    "Full compiler request exercises current compiler effects including NativeHost.read; not every provider/failure path.",
+    "No N2 qualification, installation or claim of large general generated-program speedup."
+  ],
+  "evidence": [
+    {
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase130/p144-parent-fixed-cold01/report.json",
+        "bytes": 10199,
+        "sha256": "742b2cf94240cecfbe8a3815f6839de1443402a71a3165177836c9daa3c8026f"
+      },
+      "published": {
+        "file": "/home/ai/bend2/build/publish/bend/implementation/phase144/serial-rfc-full-evidence/parent-request.json",
+        "bytes": 10199,
+        "sha256": "742b2cf94240cecfbe8a3815f6839de1443402a71a3165177836c9daa3c8026f"
+      }
+    },
+    {
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase144/parent-fixed-cold01-guard/process.json",
+        "bytes": 933,
+        "sha256": "14f95e104c35ad0a07f5bc2d95cdc3470b15d80187adf19ae3ccbd3867ddf11e"
+      },
+      "published": {
+        "file": "/home/ai/bend2/build/publish/bend/implementation/phase144/serial-rfc-full-evidence/parent-guard.json",
+        "bytes": 933,
+        "sha256": "14f95e104c35ad0a07f5bc2d95cdc3470b15d80187adf19ae3ccbd3867ddf11e"
+      }
+    },
+    {
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase130/p144-integrated-fixed-cold01/report.json",
+        "bytes": 10220,
+        "sha256": "879f7ced5c57566c4fdd068f1e01795f5b683ae1e54a7e91be2e4519cd8af2a7"
+      },
+      "published": {
+        "file": "/home/ai/bend2/build/publish/bend/implementation/phase144/serial-rfc-full-evidence/integrated-request.json",
+        "bytes": 10220,
+        "sha256": "879f7ced5c57566c4fdd068f1e01795f5b683ae1e54a7e91be2e4519cd8af2a7"
+      }
+    },
+    {
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase144/integrated-fixed-cold01-guard/process.json",
+        "bytes": 938,
+        "sha256": "cd615a51db7ca7448b43a2520afa883de4b4f0c3439f12a2fb93a06a24ac4be6"
+      },
+      "published": {
+        "file": "/home/ai/bend2/build/publish/bend/implementation/phase144/serial-rfc-full-evidence/integrated-guard.json",
+        "bytes": 938,
+        "sha256": "cd615a51db7ca7448b43a2520afa883de4b4f0c3439f12a2fb93a06a24ac4be6"
+      }
+    },
+    {
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase130/p144-integrated-serial-fixed-cold01/report.json",
+        "bytes": 10243,
+        "sha256": "b014d3f69a249a1bc00112ef73f6de9fc9c45afab23d716469303061d2f6a848"
+      },
+      "published": {
+        "file": "/home/ai/bend2/build/publish/bend/implementation/phase144/serial-rfc-full-evidence/integrated-serial-request.json",
+        "bytes": 10243,
+        "sha256": "b014d3f69a249a1bc00112ef73f6de9fc9c45afab23d716469303061d2f6a848"
+      }
+    },
+    {
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase144/integrated-serial-fixed-cold01-guard/process.json",
+        "bytes": 1143,
+        "sha256": "7d9e9e62026b80847dc98480ca0e3f81b467cf792d759baae29cc4b529a1159c"
+      },
+      "published": {
+        "file": "/home/ai/bend2/build/publish/bend/implementation/phase144/serial-rfc-full-evidence/integrated-serial-guard.json",
+        "bytes": 1143,
+        "sha256": "7d9e9e62026b80847dc98480ca0e3f81b467cf792d759baae29cc4b529a1159c"
+      }
+    },
+    {
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase144/integrated-serial-n1-01/report.json",
+        "bytes": 17134,
+        "sha256": "68a3bbf6cc21f1ea66115e713aed02aa23e0c1c048901c44c12978d95f830bca"
+      },
+      "published": {
+        "file": "/home/ai/bend2/build/publish/bend/implementation/phase144/serial-rfc-full-evidence/integrated-relink.json",
+        "bytes": 17134,
+        "sha256": "68a3bbf6cc21f1ea66115e713aed02aa23e0c1c048901c44c12978d95f830bca"
+      }
+    },
+    {
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase144/integrated-serial-plan02/plan.json",
+        "bytes": 19182,
+        "sha256": "e84c0b42e1a1575808bd4caf35ae01faf1a886dd2a521d7045a1712029fb540a"
+      },
+      "published": {
+        "file": "/home/ai/bend2/build/publish/bend/implementation/phase144/serial-rfc-full-evidence/integrated-relink-plan.json",
+        "bytes": 19182,
+        "sha256": "e84c0b42e1a1575808bd4caf35ae01faf1a886dd2a521d7045a1712029fb540a"
+      }
+    },
+    {
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase134/p144-integrated-n1-01/report.json",
+        "bytes": 14828,
+        "sha256": "1cb41d89c0c40d7e3ee6086a3f147cfad10b7cae85eff885082536605d520885"
+      },
+      "published": {
+        "file": "/home/ai/bend2/build/publish/bend/implementation/phase144/serial-rfc-full-evidence/integrated-acquisition.json",
+        "bytes": 14828,
+        "sha256": "1cb41d89c0c40d7e3ee6086a3f147cfad10b7cae85eff885082536605d520885"
+      }
+    }
+  ]
+}

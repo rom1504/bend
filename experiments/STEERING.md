@@ -1,4 +1,35 @@
-# Current experiment: Phase144 profiler-led cold compilation
+# Current investigation: Phase145 comparative compiler work
+
+[Report](../implementation/phase145/README.md) ·
+[Architecture decision](../research/phase145/architecture-decision.md) ·
+[Parser boundary](../research/phase145/parser-boundary.md) ·
+[Metrics/cost](../implementation/phase145/metrics.json).
+
+Information campaign only; qualified Phase144 final04 remains unchanged. Thirty
+exact-QBE clean observations on four requests show native execution of our Bend
+compiler about 6.2–7.1× faster than its checked generated-JS form. Warm engine
+reduces but does not close the Lexer gap. This is not upstream TypeScript parity.
+
+Strict Lexer observation proves the same raw/static object is verified twice.
+Dynamic/source evidence identifies reconstructed schemas, string identities and
+flow environments. Upstream preserves checked runtime bodies and useful facts
+despite two to five emission rounds: pass count alone is the wrong objective.
+Its full frozen-input load/parse takes 2.583s; the historical native parser is
+31.175s with additional work and an older runtime. No 12× drop-in gain is claimed.
+
+Next test one private accepted raw context, then a complete numeric-ID verifier
+environment or a compact parser boundary. Include conversion, errors, ownership
+and teardown; retain independent final checking. No universal IR rewrite or
+backend switch is justified yet. The fixed ~0.23s Base preparation is not a
+route to 50s full builds. No production speedup or fresh full-build ratio.
+
+32 serial guarded jobs, 5.11 minutes including failures, peak 500.09 MB, no OOM.
+Reversible internal hooks, native counters and exact stage markers are separate
+observations. Preserve failed warm observer/preparation and omitted-dependency
+scope in the compact evidence archive. The previous full capture is final03,
+while the newly observed small native requests are exact final04.
+
+# Qualified compiler: Phase144 profiler-led cold compilation
 
 [Report](../implementation/phase144/README.md) ·
 [Final candidate](../implementation/phase144/final04/candidate.json) ·

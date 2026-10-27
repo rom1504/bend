@@ -183,6 +183,11 @@ repeated parser and ownership scans. The final measured cold build takes247s
 versus a fresh320s baseline. See the report for qualification, runtime contract,
 program-performance checks and the still-unmet50s goal.
 
+The [Phase145 comparative investigation](implementation/phase145/README.md)
+separates same-source native/JS execution from upstream implementation costs.
+It identifies repeated verification and representation boundaries worth testing;
+the qualified compiler and its performance remain unchanged.
+
 The [incremental native development guide](docs/self_hosted/incremental-native-development.md)
 links the measured QBE size, memory and object-reuse investigation, its Go-inspired
 architecture, and the remaining boundary before fast source-level edits.

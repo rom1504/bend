@@ -1,0 +1,64 @@
+{
+  "prepared": true,
+  "executed": false,
+  "jobs": [
+    {
+      "label": "native-stages-build01",
+      "command": [
+        "python3",
+        "-B",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase111/guard.py",
+        "--out",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase145/native-stages-build01-guard",
+        "--seconds",
+        "90",
+        "--cpu",
+        "3",
+        "--rss-mib",
+        "3072",
+        "--available-mib",
+        "16384",
+        "--file-mib",
+        "64",
+        "--",
+        "python3",
+        "-B",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/profiler/build-runtime.py",
+        "--plan",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase145/native-stages01/plan.json",
+        "--out",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase145/native-stages-build01"
+      ]
+    },
+    {
+      "label": "native-stages-observe01",
+      "command": [
+        "python3",
+        "-B",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase111/guard.py",
+        "--out",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase145/native-stages-observe01-guard",
+        "--seconds",
+        "120",
+        "--cpu",
+        "3",
+        "--rss-mib",
+        "3072",
+        "--available-mib",
+        "16384",
+        "--file-mib",
+        "64",
+        "--",
+        "python3",
+        "-B",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase145/native/stages-observe-v01.py",
+        "--plan",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase145/native-stages01/plan.json",
+        "--build",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase145/native-stages-build01/report.json",
+        "--out",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase145/native-stages-observe01"
+      ]
+    }
+  ]
+}

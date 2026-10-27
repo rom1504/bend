@@ -1,0 +1,1138 @@
+{
+  "kind": "phase145-initial-hosted-native-evidence",
+  "complete": true,
+  "pilot": [
+    {
+      "name": "lexer",
+      "medians": {
+        "js": 7.4419616386294365,
+        "native": 1.1874279887415469
+      },
+      "nativeOverJsGeometric": 0.15955959133723327,
+      "pairedRatios": [
+        0.15941223827817091,
+        0.1597070806024254
+      ]
+    }
+  ],
+  "counterCases": [
+    {
+      "name": "lexer",
+      "p112sVerifyCalls": 2,
+      "rawStatementVisits": 17696,
+      "rawDistinctStatementObjects": 9908,
+      "directStatementVisits": 11427,
+      "directDistinctStatementObjects": 6754,
+      "backendIndexFindEntries": 931026,
+      "backendStringCharacterComparisons": 3033872,
+      "frontendStringCharacterComparisons": 757070,
+      "backendVerifierGetEntries": 129519,
+      "backendVerifierPutEntries": 51717,
+      "backendOriginalMetadataBuildEntries": 2,
+      "backendConstructorIndexEntries": 3,
+      "allSelectedCounters": {
+        "base": {
+          "String$eq": {
+            "entry": 477,
+            "firstArgumentUTF16Units": 1666
+          }
+        },
+        "frontend": {
+          "p88_string_eq_go": {
+            "entry": 413318,
+            "firstArgumentUTF16Units": 1834836,
+            "loop": 1170388,
+            "characterComparison": 757070
+          },
+          "String$eq": {
+            "entry": 1019,
+            "firstArgumentUTF16Units": 7066
+          },
+          "index_hash": {
+            "entry": 12240,
+            "firstArgumentUTF16Units": 79446,
+            "loop": 91686
+          },
+          "index_find": {
+            "entry": 70918
+          },
+          "f_find": {
+            "entry": 289,
+            "firstArgumentUTF16Units": 1284,
+            "loop": 304
+          },
+          "index_bucket": {
+            "entry": 3858
+          },
+          "lookup": {
+            "entry": 24648
+          },
+          "check_node": {
+            "entry": 664,
+            "term": 664,
+            "firstObject": 660,
+            "revisitedObject": 4
+          },
+          "infer_node": {
+            "entry": 587,
+            "term": 587,
+            "firstObject": 583,
+            "revisitedObject": 4
+          }
+        },
+        "backend": {
+          "lookup": {
+            "entry": 7052
+          },
+          "p88_string_eq_go": {
+            "entry": 410336,
+            "firstArgumentUTF16Units": 3869346,
+            "loop": 3444208,
+            "characterComparison": 3033872
+          },
+          "index_hash": {
+            "entry": 204984,
+            "firstArgumentUTF16Units": 4368135,
+            "loop": 4573119
+          },
+          "index_find": {
+            "entry": 931026
+          },
+          "index_bucket": {
+            "entry": 104101
+          },
+          "String$eq": {
+            "entry": 464007,
+            "firstArgumentUTF16Units": 2825011
+          },
+          "ns_ctor_index": {
+            "entry": 3
+          },
+          "nc_compact": {
+            "entry": 1975,
+            "term": 1975,
+            "firstObject": 1180,
+            "revisitedObject": 795
+          },
+          "p111v_get": {
+            "entry": 129519
+          },
+          "p111v_put": {
+            "entry": 51717
+          },
+          "p114s_open": {
+            "entry": 1
+          },
+          "p112s_verify": {
+            "entry": 2
+          },
+          "p111v_schema": {
+            "entry": 8165
+          },
+          "p111v_schema_stmt": {
+            "entry": 17714
+          },
+          "p111v_decl": {
+            "entry": 15694,
+            "firstArgumentUTF16Units": 290084
+          },
+          "p111v_body": {
+            "entry": 8165
+          },
+          "p111v_stmt": {
+            "entry": 17696,
+            "term": 17696,
+            "firstObject": 9908,
+            "revisitedObject": 7788
+          },
+          "p111v_assign": {
+            "entry": 15476,
+            "firstArgumentUTF16Units": 287486
+          },
+          "p111v_value": {
+            "entry": 27057
+          },
+          "p111v_join": {
+            "entry": 671
+          },
+          "p111v_intersection": {
+            "entry": 19576
+          },
+          "p111v_intersection_bucket": {
+            "entry": 19576
+          },
+          "p113e_originals": {
+            "entry": 2
+          },
+          "p113e_seed": {
+            "entry": 83
+          },
+          "p113e_seed_params": {
+            "entry": 301
+          },
+          "p113e_schema": {
+            "entry": 813,
+            "loop": 12240
+          },
+          "p113e_schema_stmt": {
+            "entry": 11427
+          },
+          "p113e_body": {
+            "entry": 12240
+          },
+          "p113e_stmt": {
+            "entry": 11427,
+            "term": 11427,
+            "firstObject": 6754,
+            "revisitedObject": 4673
+          },
+          "p113e_signature": {
+            "entry": 93
+          },
+          "p113i_function": {
+            "entry": 31
+          },
+          "p113k_function": {
+            "entry": 30
+          },
+          "p134v_commit": {
+            "entry": 1
+          },
+          "p134v_header": {
+            "entry": 31
+          },
+          "p134v_check": {
+            "entry": 32
+          },
+          "p134v_function": {
+            "entry": 31
+          },
+          "p134v_stmt": {
+            "entry": 1924
+          },
+          "p134v_scalar": {
+            "entry": 1701
+          },
+          "p113a_verify": {
+            "entry": 1
+          },
+          "p113e_verify": {
+            "entry": 1
+          },
+          "p128br_scan": {
+            "entry": 31
+          },
+          "no_observer_plan": {
+            "entry": 30
+          }
+        },
+        "registry": {
+          "String$eq": {
+            "entry": 116685,
+            "firstArgumentUTF16Units": 1146896
+          },
+          "p111q_function_ids": {
+            "entry": 1
+          },
+          "index_hash": {
+            "entry": 9700,
+            "firstArgumentUTF16Units": 58923,
+            "loop": 68623
+          },
+          "p88_string_eq_go": {
+            "entry": 3986,
+            "firstArgumentUTF16Units": 34528,
+            "loop": 38334,
+            "characterComparison": 34348
+          },
+          "p111q_constructor_ids": {
+            "entry": 1
+          },
+          "index_find": {
+            "entry": 48249
+          },
+          "index_bucket": {
+            "entry": 688
+          },
+          "p111v_get": {
+            "entry": 8428
+          },
+          "p111v_put": {
+            "entry": 300
+          },
+          "p113e_signatures": {
+            "entry": 1
+          },
+          "p113e_signature": {
+            "entry": 31
+          }
+        },
+        "render": {
+          "p134e_next": {
+            "entry": 981,
+            "loop": 985
+          },
+          "p144e_body_tail": {
+            "entry": 407
+          },
+          "String$eq": {
+            "entry": 96017,
+            "firstArgumentUTF16Units": 1023446
+          },
+          "index_hash": {
+            "entry": 7951,
+            "firstArgumentUTF16Units": 35228,
+            "loop": 43179
+          },
+          "index_find": {
+            "entry": 59083
+          },
+          "index_bucket": {
+            "entry": 1352
+          },
+          "p88_string_eq_go": {
+            "entry": 1718,
+            "firstArgumentUTF16Units": 20875,
+            "loop": 22529,
+            "characterComparison": 20811
+          },
+          "p111v_get": {
+            "entry": 6753
+          }
+        }
+      }
+    },
+    {
+      "name": "coverage-map-churn-128",
+      "p112sVerifyCalls": 2,
+      "rawStatementVisits": 28312,
+      "rawDistinctStatementObjects": 14650,
+      "directStatementVisits": 5005,
+      "directDistinctStatementObjects": 4224,
+      "backendIndexFindEntries": 856606,
+      "backendStringCharacterComparisons": 3566756,
+      "frontendStringCharacterComparisons": 1218245,
+      "backendVerifierGetEntries": 107792,
+      "backendVerifierPutEntries": 46802,
+      "backendOriginalMetadataBuildEntries": 4,
+      "backendConstructorIndexEntries": 5,
+      "allSelectedCounters": {
+        "base": {
+          "String$eq": {
+            "entry": 477,
+            "firstArgumentUTF16Units": 1666
+          }
+        },
+        "frontend": {
+          "p88_string_eq_go": {
+            "entry": 670000,
+            "firstArgumentUTF16Units": 2936142,
+            "loop": 1888245,
+            "characterComparison": 1218245
+          },
+          "String$eq": {
+            "entry": 969,
+            "firstArgumentUTF16Units": 7261
+          },
+          "index_hash": {
+            "entry": 16049,
+            "firstArgumentUTF16Units": 103817,
+            "loop": 119866
+          },
+          "index_find": {
+            "entry": 111584
+          },
+          "f_find": {
+            "entry": 59,
+            "firstArgumentUTF16Units": 539,
+            "loop": 59
+          },
+          "index_bucket": {
+            "entry": 7948
+          },
+          "lookup": {
+            "entry": 21614
+          },
+          "check_node": {
+            "entry": 231,
+            "term": 231,
+            "firstObject": 231
+          },
+          "infer_node": {
+            "entry": 255,
+            "term": 255,
+            "firstObject": 255
+          }
+        },
+        "backend": {
+          "lookup": {
+            "entry": 23235
+          },
+          "p88_string_eq_go": {
+            "entry": 1458761,
+            "firstArgumentUTF16Units": 8103646,
+            "loop": 5025517,
+            "characterComparison": 3566756
+          },
+          "index_hash": {
+            "entry": 185533,
+            "firstArgumentUTF16Units": 1797034,
+            "loop": 1982567
+          },
+          "index_find": {
+            "entry": 856606
+          },
+          "index_bucket": {
+            "entry": 104718
+          },
+          "String$eq": {
+            "entry": 987450,
+            "firstArgumentUTF16Units": 5277532
+          },
+          "ns_ctor_index": {
+            "entry": 5
+          },
+          "nc_compact": {
+            "entry": 5776,
+            "term": 5776,
+            "firstObject": 2943,
+            "revisitedObject": 2833
+          },
+          "p111v_get": {
+            "entry": 107792
+          },
+          "p111v_put": {
+            "entry": 46802
+          },
+          "p114s_open": {
+            "entry": 1
+          },
+          "p112s_verify": {
+            "entry": 2
+          },
+          "p111v_schema": {
+            "entry": 26556
+          },
+          "p111v_schema_stmt": {
+            "entry": 28323
+          },
+          "p111v_decl": {
+            "entry": 21177,
+            "firstArgumentUTF16Units": 219799
+          },
+          "p111v_body": {
+            "entry": 26556
+          },
+          "p111v_stmt": {
+            "entry": 28312,
+            "term": 28312,
+            "firstObject": 14650,
+            "revisitedObject": 13662
+          },
+          "p111v_assign": {
+            "entry": 20834,
+            "firstArgumentUTF16Units": 215686
+          },
+          "p111v_value": {
+            "entry": 51691
+          },
+          "p111v_join": {
+            "entry": 865
+          },
+          "p111v_intersection": {
+            "entry": 1519
+          },
+          "p111v_intersection_bucket": {
+            "entry": 1519
+          },
+          "p113e_originals": {
+            "entry": 4
+          },
+          "p113e_seed": {
+            "entry": 133
+          },
+          "p113e_seed_params": {
+            "entry": 476
+          },
+          "p113e_schema": {
+            "entry": 573,
+            "loop": 5578
+          },
+          "p113e_schema_stmt": {
+            "entry": 5005
+          },
+          "p113e_body": {
+            "entry": 5578
+          },
+          "p113e_stmt": {
+            "entry": 5005,
+            "term": 5005,
+            "firstObject": 4224,
+            "revisitedObject": 781
+          },
+          "p113e_signature": {
+            "entry": 206
+          },
+          "p113i_function": {
+            "entry": 34
+          },
+          "p113k_function": {
+            "entry": 33
+          },
+          "p134v_commit": {
+            "entry": 1
+          },
+          "p134v_header": {
+            "entry": 34
+          },
+          "p134v_check": {
+            "entry": 35
+          },
+          "p134v_function": {
+            "entry": 34
+          },
+          "p134v_stmt": {
+            "entry": 1149
+          },
+          "p134v_scalar": {
+            "entry": 1022
+          },
+          "p113a_verify": {
+            "entry": 1
+          },
+          "p113e_verify": {
+            "entry": 1
+          },
+          "p128br_scan": {
+            "entry": 55
+          },
+          "no_observer_plan": {
+            "entry": 54
+          },
+          "p113e_signatures": {
+            "entry": 2
+          }
+        },
+        "registry": {
+          "String$eq": {
+            "entry": 288991,
+            "firstArgumentUTF16Units": 2916486
+          },
+          "p111q_function_ids": {
+            "entry": 1
+          },
+          "index_hash": {
+            "entry": 23457,
+            "firstArgumentUTF16Units": 130756,
+            "loop": 154213
+          },
+          "p88_string_eq_go": {
+            "entry": 8859,
+            "firstArgumentUTF16Units": 65776,
+            "loop": 74385,
+            "characterComparison": 65526
+          },
+          "p111q_constructor_ids": {
+            "entry": 1
+          },
+          "index_find": {
+            "entry": 142768
+          },
+          "index_bucket": {
+            "entry": 754
+          },
+          "p111v_get": {
+            "entry": 21294
+          },
+          "p111v_put": {
+            "entry": 462
+          },
+          "p113e_signatures": {
+            "entry": 1
+          },
+          "p113e_signature": {
+            "entry": 47
+          }
+        },
+        "render": {
+          "p134e_next": {
+            "entry": 1458,
+            "loop": 1462
+          },
+          "String$eq": {
+            "entry": 305165,
+            "firstArgumentUTF16Units": 2661583
+          },
+          "index_hash": {
+            "entry": 35107,
+            "firstArgumentUTF16Units": 119372,
+            "loop": 154479
+          },
+          "index_find": {
+            "entry": 324710
+          },
+          "index_bucket": {
+            "entry": 3225
+          },
+          "p88_string_eq_go": {
+            "entry": 4330,
+            "firstArgumentUTF16Units": 52846,
+            "loop": 56916,
+            "characterComparison": 52586
+          },
+          "p144e_body_tail": {
+            "entry": 901
+          },
+          "p111v_get": {
+            "entry": 31623
+          }
+        }
+      }
+    },
+    {
+      "name": "coverage-closures-256",
+      "p112sVerifyCalls": 2,
+      "rawStatementVisits": 1798,
+      "rawDistinctStatementObjects": 936,
+      "directStatementVisits": 501,
+      "directDistinctStatementObjects": 290,
+      "backendIndexFindEntries": 51174,
+      "backendStringCharacterComparisons": 286228,
+      "frontendStringCharacterComparisons": 341014,
+      "backendVerifierGetEntries": 7434,
+      "backendVerifierPutEntries": 3613,
+      "backendOriginalMetadataBuildEntries": 2,
+      "backendConstructorIndexEntries": 3,
+      "allSelectedCounters": {
+        "base": {
+          "String$eq": {
+            "entry": 477,
+            "firstArgumentUTF16Units": 1666
+          }
+        },
+        "frontend": {
+          "p88_string_eq_go": {
+            "entry": 155885,
+            "firstArgumentUTF16Units": 973107,
+            "loop": 496899,
+            "characterComparison": 341014
+          },
+          "String$eq": {
+            "entry": 971,
+            "firstArgumentUTF16Units": 6193
+          },
+          "index_hash": {
+            "entry": 7900,
+            "firstArgumentUTF16Units": 61179,
+            "loop": 69079
+          },
+          "index_find": {
+            "entry": 33949
+          },
+          "f_find": {
+            "entry": 88,
+            "firstArgumentUTF16Units": 535,
+            "loop": 88
+          },
+          "index_bucket": {
+            "entry": 1077
+          },
+          "lookup": {
+            "entry": 9182
+          },
+          "check_node": {
+            "entry": 174,
+            "term": 174,
+            "firstObject": 139,
+            "revisitedObject": 35
+          },
+          "infer_node": {
+            "entry": 196,
+            "term": 196,
+            "firstObject": 160,
+            "revisitedObject": 36
+          }
+        },
+        "backend": {
+          "lookup": {
+            "entry": 2052
+          },
+          "p88_string_eq_go": {
+            "entry": 107667,
+            "firstArgumentUTF16Units": 628554,
+            "loop": 393895,
+            "characterComparison": 286228
+          },
+          "index_hash": {
+            "entry": 14287,
+            "firstArgumentUTF16Units": 156168,
+            "loop": 170455
+          },
+          "index_find": {
+            "entry": 51174
+          },
+          "index_bucket": {
+            "entry": 7152
+          },
+          "String$eq": {
+            "entry": 41802,
+            "firstArgumentUTF16Units": 290134
+          },
+          "ns_ctor_index": {
+            "entry": 3
+          },
+          "nc_compact": {
+            "entry": 297,
+            "term": 297,
+            "firstObject": 168,
+            "revisitedObject": 129
+          },
+          "p111v_get": {
+            "entry": 7434
+          },
+          "p111v_put": {
+            "entry": 3613
+          },
+          "p114s_open": {
+            "entry": 1
+          },
+          "p112s_verify": {
+            "entry": 2
+          },
+          "p111v_schema": {
+            "entry": 1566
+          },
+          "p111v_schema_stmt": {
+            "entry": 1798
+          },
+          "p111v_decl": {
+            "entry": 1384,
+            "firstArgumentUTF16Units": 17195
+          },
+          "p111v_body": {
+            "entry": 1566
+          },
+          "p111v_stmt": {
+            "entry": 1798,
+            "term": 1798,
+            "firstObject": 936,
+            "revisitedObject": 862
+          },
+          "p111v_assign": {
+            "entry": 1341,
+            "firstArgumentUTF16Units": 16709
+          },
+          "p111v_value": {
+            "entry": 3254
+          },
+          "p111v_join": {
+            "entry": 50
+          },
+          "p111v_intersection": {
+            "entry": 259
+          },
+          "p111v_intersection_bucket": {
+            "entry": 259
+          },
+          "p113e_originals": {
+            "entry": 2
+          },
+          "p113e_seed": {
+            "entry": 17
+          },
+          "p113e_seed_params": {
+            "entry": 60
+          },
+          "p113e_schema": {
+            "entry": 59,
+            "loop": 560
+          },
+          "p113e_schema_stmt": {
+            "entry": 501
+          },
+          "p113e_body": {
+            "entry": 560
+          },
+          "p113e_stmt": {
+            "entry": 501,
+            "term": 501,
+            "firstObject": 290,
+            "revisitedObject": 211
+          },
+          "p113e_signature": {
+            "entry": 21
+          },
+          "p113i_function": {
+            "entry": 7
+          },
+          "p113k_function": {
+            "entry": 6
+          },
+          "p134v_commit": {
+            "entry": 1
+          },
+          "p134v_header": {
+            "entry": 7
+          },
+          "p134v_check": {
+            "entry": 8
+          },
+          "p134v_function": {
+            "entry": 7
+          },
+          "p134v_stmt": {
+            "entry": 179
+          },
+          "p134v_scalar": {
+            "entry": 155
+          },
+          "p113a_verify": {
+            "entry": 1
+          },
+          "p113e_verify": {
+            "entry": 1
+          },
+          "p128br_scan": {
+            "entry": 9
+          },
+          "no_observer_plan": {
+            "entry": 8
+          }
+        },
+        "registry": {
+          "String$eq": {
+            "entry": 16392,
+            "firstArgumentUTF16Units": 180743
+          },
+          "p111q_function_ids": {
+            "entry": 1
+          },
+          "index_hash": {
+            "entry": 1733,
+            "firstArgumentUTF16Units": 14467,
+            "loop": 16200
+          },
+          "p88_string_eq_go": {
+            "entry": 847,
+            "firstArgumentUTF16Units": 5923,
+            "loop": 6749,
+            "characterComparison": 5902
+          },
+          "p111q_constructor_ids": {
+            "entry": 1
+          },
+          "index_find": {
+            "entry": 3646
+          },
+          "index_bucket": {
+            "entry": 48
+          },
+          "p111v_get": {
+            "entry": 1195
+          },
+          "p111v_put": {
+            "entry": 84
+          },
+          "p113e_signatures": {
+            "entry": 1
+          },
+          "p113e_signature": {
+            "entry": 7
+          }
+        },
+        "render": {
+          "p134e_next": {
+            "entry": 617,
+            "loop": 621
+          },
+          "String$eq": {
+            "entry": 16880,
+            "firstArgumentUTF16Units": 158036
+          },
+          "p144e_body_tail": {
+            "entry": 115
+          },
+          "index_hash": {
+            "entry": 2042,
+            "firstArgumentUTF16Units": 10144,
+            "loop": 12186
+          },
+          "index_find": {
+            "entry": 11364
+          },
+          "index_bucket": {
+            "entry": 342
+          },
+          "p88_string_eq_go": {
+            "entry": 471,
+            "firstArgumentUTF16Units": 6054,
+            "loop": 6485,
+            "characterComparison": 6014
+          },
+          "p111v_get": {
+            "entry": 1748
+          }
+        }
+      }
+    }
+  ],
+  "strictWitnesses": [
+    {
+      "name": "lexer",
+      "records": [
+        {
+          "name": "p112s_verify",
+          "callers": [
+            "p114s_open"
+          ],
+          "arguments": [
+            {
+              "identity": 1,
+              "before": {
+                "sha256": "56e41a1fc0620c83b54a65dec3ab9afb93e4f59428f9b68dc3ca42a8c80e1ebe",
+                "nodes": 27479,
+                "primitiveBytes": 330920
+              },
+              "after": {
+                "sha256": "56e41a1fc0620c83b54a65dec3ab9afb93e4f59428f9b68dc3ca42a8c80e1ebe",
+                "nodes": 27479,
+                "primitiveBytes": 330920
+              },
+              "sameIdentity": true,
+              "unchanged": true
+            }
+          ],
+          "completed": true
+        },
+        {
+          "name": "p112s_verify",
+          "callers": [
+            "p113a_verify",
+            "p113e_verify"
+          ],
+          "arguments": [
+            {
+              "identity": 1,
+              "before": {
+                "sha256": "56e41a1fc0620c83b54a65dec3ab9afb93e4f59428f9b68dc3ca42a8c80e1ebe",
+                "nodes": 27479,
+                "primitiveBytes": 330920
+              },
+              "after": {
+                "sha256": "56e41a1fc0620c83b54a65dec3ab9afb93e4f59428f9b68dc3ca42a8c80e1ebe",
+                "nodes": 27479,
+                "primitiveBytes": 330920
+              },
+              "sameIdentity": true,
+              "unchanged": true
+            }
+          ],
+          "completed": true
+        }
+      ],
+      "completeQbeExact": true
+    }
+  ],
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase145/execution-pilot01/report.json",
+      "bytes": 20463,
+      "sha256": "69b0ec72f1eb08cad066a104705a4de1b354bd5a6b8260fc67c3bb0fb53cb651"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase145/execution-counts01/report.json",
+      "bytes": 19173,
+      "sha256": "6a7b754b90f7ece1d906927676fb459725292c3b0189719eaa9ec049d6c07b39"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase145/execution-verified01/report.json",
+      "bytes": 15964,
+      "sha256": "6d8f2dcbfe9c65fa6ea0923f8ef77d8431623620b01835eb2b0f0de38f986911"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase145/execution-counts01/lexer-00-js-counts/observation.json",
+      "bytes": 6459,
+      "sha256": "1cb3ebb3739625d9d00b80fb47e75b7c659b6a61e6dd7939f1ee5a0c1aefc771"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase145/execution-counts01/coverage-map-churn-128-00-js-counts/observation.json",
+      "bytes": 6470,
+      "sha256": "052be6834336f6bdf40a34e9754099f345a7dada303da71da44773828b59b16d"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase145/execution-counts01/coverage-closures-256-00-js-counts/observation.json",
+      "bytes": 6406,
+      "sha256": "180c1aba0af738b5c425710d578b739f756d650b9abe65b911e4f746f4907a53"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase145/execution-verified01/lexer-00-js-counts/observation.json.verified-inputs.json",
+      "bytes": 1356,
+      "sha256": "f57225f6a081d64ba50b14885346ab3294f01bbdd810716ccb872f681402e315"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase145/execution-warm02/report.json",
+      "bytes": 19392,
+      "sha256": "dc469696271db3a888871353da96328e207d177cae83a33b6805f2d6127e391d"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase145/execution-clean01/report.json",
+      "bytes": 62569,
+      "sha256": "db665e46962520a06f36a054d729017a3670d2f3cb5ed8306dc2d944c84a0785"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase145/execution-index01/report.json",
+      "bytes": 32959,
+      "sha256": "a3042494619971359ce655dde5e9ae70352ae60ff047a9579c9976a0bae9e3a6"
+    }
+  ],
+  "scope": "Four small-request workloads: three with4alternatingpairs and retainedQBE, compiler-indexslice3pairs withfreshnativeoracle+exacthostedQBE.30cleanobservations. Separatewarmengine and internalcounts. No fullcompiler/upstream ratio.",
+  "pilotHostedStageMedians": {
+    "importSeconds": 0.20577446700000002,
+    "inputReadSeconds": 0.003443070500000006,
+    "basePreparationSeconds": 0.764882208,
+    "frontendSeconds": 1.2946131834999999,
+    "backendInclusiveSeconds": 3.9417394879999996,
+    "registrySeconds": 0.44449960499999985,
+    "cursorSeconds": 0.7307623920000137,
+    "encodeSeconds": 0.006603910000018587,
+    "writeSeconds": 0.023777572499997568,
+    "renderInclusiveSeconds": 0.7655681530000003
+  },
+  "engineWarm": {
+    "complete": true,
+    "warmMedianSeconds": 5.60069894,
+    "observations": [
+      {
+        "warmup": true,
+        "seconds": 7.292707149,
+        "byteExact": true
+      },
+      {
+        "warmup": false,
+        "seconds": 5.60069894,
+        "byteExact": true
+      },
+      {
+        "warmup": false,
+        "seconds": 5.607120536,
+        "byteExact": true
+      },
+      {
+        "warmup": false,
+        "seconds": 5.195896809999998,
+        "byteExact": true
+      }
+    ],
+    "scope": "One warmup plus three observations; exact API module and engine/JIT retained, but fresh Base decoding, source reads, checking, optimization and complete output each iteration. Natural GC; no semantic request cache. Not a cold-process speed comparison.",
+    "peakRssBytes": 483622912,
+    "stageMedians": {
+      "importSeconds": 5.6109999995612725e-05,
+      "inputReadSeconds": 0.004121493999999615,
+      "basePreparationSeconds": 0.6867592190000007,
+      "frontendSeconds": 0.7690204889999999,
+      "backendInclusiveSeconds": 3.1778904600000004,
+      "registrySeconds": 0.34900783999999874,
+      "cursorSeconds": 0.43467332199992725,
+      "encodeSeconds": 0.005204638999959599,
+      "writeSeconds": 0.0309570499999694,
+      "renderInclusiveSeconds": 0.5008221430000006
+    }
+  },
+  "cleanComparison": [
+    {
+      "name": "lexer",
+      "medians": {
+        "js": 7.395908558741212,
+        "native": 1.1676212863530964
+      },
+      "nativeOverJsGeometric": 0.16041782693344828,
+      "pairedRatios": [
+        0.15778011272718084,
+        0.1562968413008778,
+        0.16722778066573982,
+        0.16058302196829022
+      ]
+    },
+    {
+      "name": "coverage-map-churn-128",
+      "medians": {
+        "js": 11.805411604931578,
+        "native": 1.8014998065773398
+      },
+      "nativeOverJsGeometric": 0.15280716299680278,
+      "pairedRatios": [
+        0.15709064727636096,
+        0.15291296509372018,
+        0.14857234411500156,
+        0.15277146261658014
+      ]
+    },
+    {
+      "name": "coverage-closures-256",
+      "medians": {
+        "js": 2.7721698195673525,
+        "native": 0.38889320893213153
+      },
+      "nativeOverJsGeometric": 0.1407364688415383,
+      "pairedRatios": [
+        0.14282166133717797,
+        0.1395749806388352,
+        0.13995681476076863,
+        0.14061475474771368
+      ]
+    }
+  ],
+  "cleanObservations": 24,
+  "cleanStageMedians": {
+    "lexer": {
+      "importSeconds": 0.204968185,
+      "inputReadSeconds": 0.0034008909999999892,
+      "basePreparationSeconds": 0.7394316705,
+      "frontendSeconds": 1.2629855665000003,
+      "backendInclusiveSeconds": 3.944327392,
+      "registrySeconds": 0.44206232150000035,
+      "cursorSeconds": 0.7493364469999926,
+      "encodeSeconds": 0.007615654999989729,
+      "writeSeconds": 0.011963006000012655,
+      "renderInclusiveSeconds": 0.7728609094999999
+    },
+    "coverage-map-churn-128": {
+      "importSeconds": 0.20648185149999998,
+      "inputReadSeconds": 0.003419321000000003,
+      "basePreparationSeconds": 0.756059117,
+      "frontendSeconds": 1.653132415,
+      "backendInclusiveSeconds": 6.2205859425,
+      "registrySeconds": 0.9841774365000004,
+      "cursorSeconds": 1.9041520299999881,
+      "encodeSeconds": 0.0118592765000054,
+      "writeSeconds": 0.01697642899999341,
+      "renderInclusiveSeconds": 1.943845969499999
+    },
+    "coverage-closures-256": {
+      "importSeconds": 0.2064396575,
+      "inputReadSeconds": 0.003461950499999991,
+      "basePreparationSeconds": 0.7399884945000001,
+      "frontendSeconds": 0.6989535704999998,
+      "backendInclusiveSeconds": 0.6987474270000001,
+      "registrySeconds": 0.14344632550000047,
+      "cursorSeconds": 0.24446891800000325,
+      "encodeSeconds": 0.002570037500003508,
+      "writeSeconds": 0.0065347160000073234,
+      "renderInclusiveSeconds": 0.2576408334999998
+    }
+  },
+  "compilerIndexComparison": {
+    "name": "compiler-index-slice",
+    "medians": {
+      "js": 13.784537598025054,
+      "native": 2.1409914917312562
+    },
+    "nativeOverJsGeometric": 0.15528246613266045,
+    "pairedRatios": [
+      0.15599738384426687,
+      0.1553183395892802,
+      0.15453512399991334
+    ]
+  },
+  "compilerIndexObservations": 6
+}

@@ -1,5 +1,13 @@
 # Cold native compiler development
 
+The [Phase145 comparison](../../implementation/phase145/README.md) adds bounded
+same-source JS/native timings, internal operation counts, current small-request
+stages and pinned upstream observations. Use the
+[reproduction guide](../../selfhost/tools/performance/phase145/README.md) to
+distinguish clean timing, diagnostic counters and parse-only results. This is
+information collection; it does not replace the qualified compiler below or
+establish a new full-build/upstream speed ratio.
+
 [Phase144](../../implementation/phase144/README.md) contains the latest measured
 ordinary-native compiler work. Use its separately recorded qualification and
 [candidate](../../implementation/phase144/final04/candidate.json), not a similarly

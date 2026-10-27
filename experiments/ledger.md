@@ -4,6 +4,24 @@ This ledger records decisions and links evidence; it does not replace the report
 Read [workflow](README.md) and [current strategy](STEERING.md) before a new investigation.
 User objective: make the Bend compiler written in Bend and its validation loop much faster while preserving correctness. Historical authorization windows are recorded below; current release status and priorities are in [STEERING.md](STEERING.md).
 
+## Phase145 — Comparative compiler work (2026-10-27)
+
+[Design](../design/phase145/README.md) ·
+[Experiment](phase145/P145-001-comparative-work.md) ·
+[Report](../implementation/phase145/README.md).
+
+Information-only campaign: same-source native/JS comparison, internal operation
+counts, native stages and pinned upstream source/execution comparison. Thirty
+clean exact-QBE observations show native roughly 6.2–7.1× faster than the same
+compiler hosted in JS on four requests; no upstream/full-build ratio. Strict
+Lexer witness identifies repeated checking of the same immutable raw input.
+Upstream retains useful checked products despite multiple emission rounds.
+Full upstream load/parse 2.583s versus retained native parser 31.175s exposes
+scope-qualified architectural headroom, not a demonstrated replacement gain.
+Recommend private accepted-context reuse and complete compact identity/parser
+experiments, keeping independent final checking. 32 guarded jobs 306.58s, two
+failures 8.17s, peak 500.09 MB. No compiler/runtime/default or qualification change.
+
 ## Phase141 — Static sharing and one parser (2026-10-25)
 
 [Design](../design/phase141/README.md) · [Experiment](phase141/P141-001-architectural-replacement.md) ·

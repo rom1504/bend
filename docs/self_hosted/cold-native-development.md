@@ -1,5 +1,17 @@
 # Cold native compiler development
 
+The latest qualified ordinary-native checkpoint is
+[Phase146](../../implementation/phase146/README.md):
+`selfhost/build/phase134/p146-context01-n2/program`, source
+`selfhost/build/phase146/source03/compiler.bend`. Its
+[candidate receipt](../../implementation/phase146/candidate.json) binds the
+source, runtime, prepared Base and actual N1/N2/Q3 qualification. Matched
+full-source compiler requests improve247.353→237.491s (3.99%), excluding machine
+construction; all45 ordinary products equal final04 QBE. The input and timing
+scope differ from the historical247s full build below. Use the
+[methods guide](../../selfhost/tools/performance/phase146/README.md) for reuse.
+Final04 remains the qualified fallback; installed defaults are unchanged.
+
 The [Phase145 comparison](../../implementation/phase145/README.md) adds bounded
 same-source JS/native timings, internal operation counts, current small-request
 stages and pinned upstream observations. Use the
@@ -8,8 +20,8 @@ distinguish clean timing, diagnostic counters and parse-only results. This is
 information collection; it does not replace the qualified compiler below or
 establish a new full-build/upstream speed ratio.
 
-[Phase144](../../implementation/phase144/README.md) contains the latest measured
-ordinary-native compiler work. Use its separately recorded qualification and
+[Phase144](../../implementation/phase144/README.md) contains the preceding
+profiler-led work and historical cold-build baseline. Use its separately recorded qualification and
 [candidate](../../implementation/phase144/final04/candidate.json), not a similarly
 named experimental image. The immutable
 [final03 fallback](../../implementation/phase144/candidate.json), Phase143 and

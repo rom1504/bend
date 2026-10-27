@@ -1,4 +1,33 @@
-# Current investigation: Phase145 comparative compiler work
+# Latest qualified optimization: Phase146 retained accepted context
+
+[Report](../implementation/phase146/README.md) ·
+[Candidate](../implementation/phase146/candidate.json) ·
+[Qualification](../implementation/phase146/qualification.json) ·
+[Metrics](../implementation/phase146/metrics.json).
+
+One checked Bend override retains the existing immutable raw/static context and
+its bound IDs through final checking. Raw/static checks2→1; one metadata rebuild
+disappears while all actual transformed-function checks remain. Public verifiers,
+proof declarations, runtime and code-generation choices are unchanged.
+
+Four alternating native pairs on each of four requests improve2–7%; matched
+full-source compiler request247.353→237.491s (3.99%). This new source03 timing
+excludes machine construction and is not the old247s full-build metric. No new
+upstream ratio, confidence interval or corpus-runtime score.
+
+Source check/76 controls, actual parent→N1→N2 and observed Q3 pass. Complete QBE
+matches; N1/N2 objects equal but complete ELFs differ, so no early shortcut was
+taken. Both focused19 and N2 ordinary45 pass, all77 positive suite products equal
+parent QBE. Explicit ordinary-native candidate is qualified; incremental/parallel
+scope and installed/default selection remain unchanged. Final04 stays available.
+
+52-line module, one override, source+207 physical lines including controls. No
+new IR/cache/type.14 guarded jobs22.58min, one6.41s failed source check, no OOM.
+Next test complete numeric-ID verifier facts/flow with conversion and teardown,
+then an unrelated consumer; retain independent final checking. Do not claim the
+entire historical verifier interval as savings from duplicate raw-check removal.
+
+# Previous investigation: Phase145 comparative compiler work
 
 [Report](../implementation/phase145/README.md) ·
 [Architecture decision](../research/phase145/architecture-decision.md) ·

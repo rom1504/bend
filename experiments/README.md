@@ -1,6 +1,13 @@
 # Compiler experiment workflow
 
-Latest campaign: [Phase144 profiler-led cold compilation](../implementation/phase144/README.md).
+Latest optimization: [Phase146 retained accepted context](../implementation/phase146/README.md).
+The Phase145 witness leads to one checked Bend override: duplicate raw checking
+and metadata reconstruction disappear, while transformed bodies remain checked.
+Matched full-source compiler requests fall247.35→237.49s; native reproduction,
+both focused19 and ordinary45 pass with exact parent QBE. See its explicit
+candidate and unchanged runtime/default scope before selecting an image.
+
+Previous campaign: [Phase144 profiler-led cold compilation](../implementation/phase144/README.md).
 Same-source cold target time319.7→247.0s; improved native profiler, exact native
 reproduction and independent program-quality checks. The50s goal remains open.
 Read the [current frontier](STEERING.md) and explicit runtime/qualification scope

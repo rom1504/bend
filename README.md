@@ -188,6 +188,13 @@ separates same-source native/JS execution from upstream implementation costs.
 It identifies repeated verification and representation boundaries worth testing;
 the qualified compiler and its performance remain unchanged.
 
+The [Phase146 context-retention optimization](implementation/phase146/README.md)
+uses that finding to remove duplicate raw/static checking while still checking
+every transformed function. Matched full-source compiler time falls247.35→237.49s
+(4%; machine construction excluded), with identical QBE. Native reproduction,
+both focused suites and all45 ordinary programs pass. Use the explicit
+[qualified candidate](implementation/phase146/candidate.json); defaults stay unchanged.
+
 The [incremental native development guide](docs/self_hosted/incremental-native-development.md)
 links the measured QBE size, memory and object-reuse investigation, its Go-inspired
 architecture, and the remaining boundary before fast source-level edits.

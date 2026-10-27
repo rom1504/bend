@@ -6056,3 +6056,46 @@ attempts15.34min, one expected-negative0.31s. Acquisition64.79min, measurement
 Unobserved wall time outside guards is not assigned to reasoning, waiting or
 quota. Final ordinary native qualification and mode-matched host/session smokes
 pass; historical cross-route byte equality remains explicitly unclaimed.
+
+
+## 2026-10-27 — Phase146 retained accepted context
+
+[Report](../implementation/phase146/README.md) ·
+[Candidate](../implementation/phase146/candidate.json) ·
+[Qualification](../implementation/phase146/qualification.json) ·
+[Metrics/cost](../implementation/phase146/metrics.json).
+
+Apply Phase145's strict duplicate-input witness: retain the existing immutable
+P114SBoundary through open/inline/ranges, reusing accepted raw/static input and
+its bound IDs. Freshly check every actual transformed function and both namespace
+rules. The old rejected-opening/lowering-error path, public verifiers, proof
+declarations and runtime remain unchanged. No cache, new IR type or theorem.
+
+Reversible probes confirm raw/static checks2→1, one fewer metadata reconstruction,
+unchanged direct-function check counts and exact QBE. Four alternating native
+pairs each on Lexer/Map/closures/compiler-index give0.9695/0.9343/0.9772/0.9510×.
+A matched full-source request pair gives247.353→237.491s (3.99% less compiler
+execution), one CPU3 lane, same source03/prepared Base/literal-stream consumer,
+no source-specific reuse, OS caches not flushed. Machine construction excluded;
+not comparable to the old247s full-build metric and no fresh upstream ratio.
+
+Actual qualified final04→N1→N2 passes full QBE digest equality; N2's observedQ3
+is literally equal to Q1. N1/N2 machine objects match; complete ELFs differ, so
+strict early-identity shortcut rejected. Source check/76 controls, both focused19
+and N2 ordinary45 pass, all77 positive products equal parent QBE and independent
+oracles. No fresh runtime benchmark or broader incremental/parallel qualification.
+Explicit candidate qualified; default/installed selection unchanged.
+
+Preserve failed fixture annotations, review-discovered fallback-test weakness
+and8 added actual-factory controls, and mixed one-pair hosted timing. Acquisition
+275.327/268.311s used different IR retention; do not present that as clean gain.
+Module52lines, one original override; final source+207lines including controls.
+14 nonoverlapping guarded jobs22.58min including one6.41s failure, peak2.36GB,
+no OOM. Archived diagnostics and identical new artifacts reclaim343.59MiB of
+logical duplicate/recoverable storage without losing qualified images/oracles.
+
+Next: complete numeric-ID verifier environment including schema, flow joins,
+errors, conversion, worker admission and teardown, then unrelated transfer.
+The modest gain supports reusable semantic products but does not establish5–10×
+headroom or recursive research acceleration. Avoid another full campaign until
+that complete-region proxy shows a substantially larger work reduction.

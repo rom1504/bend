@@ -1,5 +1,11 @@
 # Cold native compiler development
 
+Before a large campaign, consult the proposed
+[build-retention policy](build-retention.md) and its
+[current disk audit](../../research/build-storage/2026-10-28-review.md).
+The historical guard's per-file cap is not a total campaign disk budget;
+the policy is documented but not yet enforced by a successor guard.
+
 The latest qualified ordinary-native checkpoint is
 [Phase146](../../implementation/phase146/README.md):
 `selfhost/build/phase134/p146-context01-n2/program`, source

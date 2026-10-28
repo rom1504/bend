@@ -1,0 +1,158 @@
+DELETION PROPOSAL: old phase build outputs in selfhost/build/
+=============================================================
+Written 2026-10-28 by a Claude Code session working on disk cleanup (the disk
+is at 100%, ~3 GB free). Nothing has been deleted. This is a recommendation
+for the main bend agent to review and decide on.
+
+SUMMARY
+-------
+selfhost/build/ is 65 GB of git-ignored build output across 156 folders.
+Proposed for deletion: 94 phase folders, 32.6 GB total, that no file in the
+current phases (130-146) references.
+
+  Proposed delete:  94 folders   32.6 GB   (list below)
+  Keep:             32 folders   20.8 GB   older phases still referenced by current work
+  Keep:             15 folders   14.6 GB   current phases 130-146
+  Keep:             15 folders    0.8 GB   non-phase folders (native, typed, rapid, ...)
+
+HOW CANDIDATES WERE CHOSEN
+--------------------------
+Modification dates are useless here: 88 folders were all touched on
+2026-10-23 (a mass rebuild), so everything looks recent. Instead:
+
+1. Collected every "build/phaseN" path referenced in tracked files belonging to
+   current work:
+     implementation/phase13x-14x/**, selfhost/tools/performance/phase13x-14x/**,
+     selfhost/tools/*.mjs, selfhost/tools/*.sh, selfhost/*.mjs
+   (git grep with :(glob) pathspecs, so * does not cross directories)
+2. Phases < 130 referenced there are KEPT:
+     2 66 82 83 86 88 89 90 91 92 93 94 97 98 99 100 101 102 105 108
+     111 112 113 114 117 118 124 125 126 127 128 129
+   (phase111 alone has ~48k references and is 9.5 GB; it stays.)
+3. Every other selfhost/build/phaseN with N < 130 is a candidate.
+
+CAVEATS - PLEASE CHECK BEFORE DELETING
+--------------------------------------
+- Each old phase's OWN scripts/evidence (implementation/phaseN/,
+  selfhost/tools/performance/phaseN/) still read its build folder.
+  Re-running those historical scripts would fail after deletion.
+- Several tools import modules directly from build folders and assert exact
+  SHA-256 hashes (e.g. selfhost/tools/performance/phase12/
+  call-broad-noseed-prepare.mjs). A rebuild may not reproduce byte-identical
+  artifacts, so treat deletion as NOT reliably reversible for those checks.
+- The reference scan only covered tracked files. Untracked notes, the
+  bend2/ parent checkout, or agent memory might reference these paths.
+- Dynamic paths (e.g. `build/phase${n}`) would not be caught by the scan.
+- If recorded evidence in git (results, RESULTS.md, evidence/) is all you need
+  from old phases, deletion should be safe.
+
+CANDIDATES (size, path relative to this repo root)
+--------------------------------------------------
+   0.40 GB  selfhost/build/phase1
+   0.40 GB  selfhost/build/phase3
+   1.05 GB  selfhost/build/phase4
+   2.81 GB  selfhost/build/phase5
+   1.05 GB  selfhost/build/phase6
+   0.38 GB  selfhost/build/phase7
+   0.40 GB  selfhost/build/phase8
+   0.51 GB  selfhost/build/phase9
+   0.21 GB  selfhost/build/phase10
+   0.27 GB  selfhost/build/phase11
+   0.61 GB  selfhost/build/phase12
+   0.22 GB  selfhost/build/phase13
+   0.36 GB  selfhost/build/phase14
+   0.30 GB  selfhost/build/phase15
+   2.73 GB  selfhost/build/phase16
+   0.15 GB  selfhost/build/phase17
+   0.15 GB  selfhost/build/phase18
+   0.48 GB  selfhost/build/phase19
+   0.12 GB  selfhost/build/phase20
+   0.17 GB  selfhost/build/phase21
+   1.02 GB  selfhost/build/phase22
+   0.51 GB  selfhost/build/phase23
+   0.37 GB  selfhost/build/phase24
+   0.03 GB  selfhost/build/phase25
+   0.05 GB  selfhost/build/phase26
+   0.08 GB  selfhost/build/phase27
+   0.01 GB  selfhost/build/phase28
+   0.09 GB  selfhost/build/phase29
+   0.51 GB  selfhost/build/phase30
+   0.29 GB  selfhost/build/phase31
+   0.23 GB  selfhost/build/phase32
+   0.38 GB  selfhost/build/phase35
+   0.29 GB  selfhost/build/phase36
+   0.33 GB  selfhost/build/phase37
+   0.41 GB  selfhost/build/phase39
+   0.36 GB  selfhost/build/phase40
+   0.20 GB  selfhost/build/phase41
+   0.67 GB  selfhost/build/phase42
+   0.64 GB  selfhost/build/phase43
+   0.30 GB  selfhost/build/phase44
+   1.18 GB  selfhost/build/phase45
+   0.05 GB  selfhost/build/phase46
+   0.32 GB  selfhost/build/phase47
+   0.46 GB  selfhost/build/phase48
+   0.04 GB  selfhost/build/phase49
+   0.04 GB  selfhost/build/phase50
+   0.13 GB  selfhost/build/phase51
+   0.27 GB  selfhost/build/phase52
+   0.12 GB  selfhost/build/phase53
+   0.15 GB  selfhost/build/phase54
+   0.13 GB  selfhost/build/phase55
+   0.17 GB  selfhost/build/phase56
+   0.10 GB  selfhost/build/phase57
+   0.92 GB  selfhost/build/phase58
+   0.08 GB  selfhost/build/phase59
+   0.46 GB  selfhost/build/phase60
+   0.75 GB  selfhost/build/phase61
+   0.34 GB  selfhost/build/phase62
+   0.37 GB  selfhost/build/phase63
+   0.40 GB  selfhost/build/phase64
+   0.43 GB  selfhost/build/phase65
+   0.16 GB  selfhost/build/phase67
+   1.32 GB  selfhost/build/phase68
+   0.28 GB  selfhost/build/phase69
+   0.71 GB  selfhost/build/phase70
+   0.00 GB  selfhost/build/phase71
+   0.18 GB  selfhost/build/phase72
+   0.59 GB  selfhost/build/phase73
+   0.02 GB  selfhost/build/phase74
+   0.43 GB  selfhost/build/phase75
+   0.31 GB  selfhost/build/phase76
+   0.24 GB  selfhost/build/phase77
+   0.48 GB  selfhost/build/phase78
+   0.11 GB  selfhost/build/phase79
+   0.20 GB  selfhost/build/phase80
+   0.03 GB  selfhost/build/phase81
+   0.03 GB  selfhost/build/phase84
+   0.01 GB  selfhost/build/phase85
+   0.00 GB  selfhost/build/phase87
+   0.10 GB  selfhost/build/phase95
+   0.02 GB  selfhost/build/phase96
+   0.12 GB  selfhost/build/phase103
+   0.00 GB  selfhost/build/phase104
+   0.31 GB  selfhost/build/phase106
+   0.18 GB  selfhost/build/phase107
+   0.02 GB  selfhost/build/phase109
+   0.13 GB  selfhost/build/phase110
+   0.03 GB  selfhost/build/phase115
+   0.01 GB  selfhost/build/phase116
+   0.01 GB  selfhost/build/phase119
+   0.08 GB  selfhost/build/phase120
+   0.02 GB  selfhost/build/phase121
+   0.00 GB  selfhost/build/phase122
+   0.02 GB  selfhost/build/phase123
+
+TO DELETE (after review), from this directory:
+  cd selfhost/build && rm -rf \
+    phase1 phase3 phase4 phase5 phase6 phase7 phase8 phase9 phase10 phase11  \
+    phase12 phase13 phase14 phase15 phase16 phase17 phase18 phase19 phase20  \
+    phase21 phase22 phase23 phase24 phase25 phase26 phase27 phase28 phase29  \
+    phase30 phase31 phase32 phase35 phase36 phase37 phase39 phase40 phase41  \
+    phase42 phase43 phase44 phase45 phase46 phase47 phase48 phase49 phase50  \
+    phase51 phase52 phase53 phase54 phase55 phase56 phase57 phase58 phase59  \
+    phase60 phase61 phase62 phase63 phase64 phase65 phase67 phase68 phase69  \
+    phase70 phase71 phase72 phase73 phase74 phase75 phase76 phase77 phase78  \
+    phase79 phase80 phase81 phase84 phase85 phase87 phase95 phase96 phase103  \
+    phase104 phase106 phase107 phase109 phase110 phase115 phase116 phase119  \
+    phase120 phase121 phase122 phase123

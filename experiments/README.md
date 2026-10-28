@@ -1,5 +1,10 @@
 # Compiler experiment workflow
 
+For new runs, follow the [build-retention workflow](../docs/self_hosted/build-retention.md):
+declare the complete disk budget and output roots, keep the 5 GiB reserve, then
+close the run into verified evidence or a protected qualified checkpoint.
+The historical per-file guard does not prevent cumulative disk exhaustion.
+
 Latest optimization: [Phase146 retained accepted context](../implementation/phase146/README.md).
 The Phase145 witness leads to one checked Bend override: duplicate raw checking
 and metadata reconstruction disappear, while transformed bodies remain checked.
@@ -502,7 +507,8 @@ and verified as checked B1 at that checkpoint.** The daemon-interrupted release 
 incomplete; complete child receipts and the fresh two-step resume bind the
 release. Phase58 remains the frozen comparison baseline.
 
-The [final qualification index](../selfhost/build/phase61/final-state08/qualification.json)
+The final qualification index (`final-state08/qualification.json`, preserved
+in the [Phase61 archive](../selfhost/tools/performance/phase61/artifacts/raw/archive.json))
 binds all selected correctness/release receipts and preserves the failed and
 interrupted predecessors. The [timing account](../implementation/phase61/timing-account.md)
 separates supervised occupancy from clean request clocks and uncovered wall time.

@@ -1,8 +1,13 @@
 # Build artifact retention
 
-Proposed policy, 2026-10-28. This document enables no deletion, scheduler or
-new disk guard. Start with the [proposal review](../../research/build-storage/2026-10-28-review.md)
-and measured inventory. Existing frozen evidence tools keep their current hashes.
+Initial implementation, 2026-10-28. The user authorized the reviewed cleanup and
+policy rollout. New jobs have disk admission/monitoring and an explicit close
+workflow; the first cleanup uses authenticated existing archives. See the
+[implementation report](../../implementation/build-retention/README.md),
+[proposal review](../../research/build-storage/2026-10-28-review.md), and
+[tool instructions](../../selfhost/tools/build-retention/README.md).
+Existing frozen evidence tools keep their current hashes. No scheduled garbage
+collector or whole-phase deletion rule is enabled.
 
 The retention unit should be an **artifact within a closed experiment**, not a
 phase number. A recent phase can contain disposable duplicates; an old phase can
@@ -45,18 +50,21 @@ bounded operational/rebuild dependency set separately from historical evidence.
 
 ## Lifecycle and simple metadata
 
-Use `active → qualified/rejected/failed → sealed`. At close, one small manifest
-records owner/purpose, source commit, lifecycle status, operational and rebuild
-dependencies, exact artifacts to keep, archived members, disposable artifacts and
-the next review trigger. A status of `failed` does not mean its evidence is trash.
+Use `active → finished → sealed`, with an explicit close classification of
+`completed`, `qualified`, `rejected` or `failed`. The tools record the command,
+artifact roots, method/input identities, lifecycle status, classification,
+retained roots and exact archived/pruned members. Record owner/purpose, source
+commit, operational/rebuild dependencies and next review trigger in the campaign
+report: those policy fields are not automatically inferred by the current tools.
+A status of `failed` does not mean its evidence is trash.
 Record whether recovery is byte-exact, a rebuild recipe only, or deliberately
 retired. Keeping a source recipe does not promise historical binary identity.
 Unregistered/orphaned runs go to review after seven days, using recorded lifecycle
 events rather than filesystem mtime; uncertainty is not automatic permission to
 delete. Uncommitted files flag unfinished ownership, not proof of a running job.
 
-The first implementation should be a read-only inventory and a file-level
-retention plan with a human-readable reason per item. It does not need a general
+The implementation uses an inventory and a file-level retention plan with
+explicit protection rules and reasons for retained members. It does not need a general
 compiler cache, service or new IR. New runs use fresh directories. A benchmark
 round should store its measurements and product identity, not another copy of the
 same compiler/program. Compare before removing duplicates and retain an exact
@@ -86,9 +94,13 @@ Suggested initial settings, subject to the protected-set inventory:
 
 The current Phase111 guard checks only `(160 + 2 * file_mib) MiB` before acquiring
 the lock: 416 MiB at the default. Its per-file limit cannot bound a multi-file
-campaign. Introduce a **versioned successor guard** with whole-run admission and
-monitoring; do not edit the historical guard consumed by pinned receipts. Update
-current workflows to opt into the successor after bounded failure-path tests.
+campaign. The successor is `selfhost/tools/build-retention/guard.py`, with whole-run
+admission and monitoring; the historical guard consumed by pinned receipts stays
+unchanged. Current workflow instructions require the successor for new jobs.
+The 30/40 GiB project levels remain review targets during migration: grandfathered
+storage still exceeds them. They are not a new automatic eviction threshold or
+a currently enforced global quota. The 5 GiB mount reserve and explicit per-run
+budgets are enforced for new guarded jobs.
 
 ## Safe reclamation
 
@@ -121,14 +133,14 @@ artifacts locally and be clear about the limits of historical reproducibility.
 
 ## First rollout
 
-First exclude active Phase6/68 work, Phase32 coordination state and Phase107
-toolchain acquisition from the broad proposal. Inventory the latest installed,
-qualified and fallback roots. Then prepare a first 5–10 GiB **file-level** cleanup
-batch in closed old runs, preserving unique source/evidence before bulk removal.
-That is a recovery target, not a presently audited deletion entitlement.
+The [completed first cleanup](../../implementation/build-retention/README.md)
+reclaimed approximately 7 GiB through file-level plans in 23 closed phases with
+existing full archives, leaving approximately 9.8 GiB free before evidence
+packaging. This is slightly below the 10 GiB headroom target; the reviewed tranche
+was exhausted rather than expanding deletion merely to reach a round number.
 
-Phase5 and Phase16 together occupy about5.3 GiB and are useful first inspection
-targets; their large old benchmark/build trees are not automatically disposable.
-After the first cleanup, migrate new run closure and disk admission to the small
-manifest/successor-guard workflow. Review storage at campaign close, rather than
-waiting for the filesystem to fill again.
+Active Phase6/68 work, Phase32 coordination state, Phase107 acquisition, installed
+and qualified compiler roots remain available. Phase4/5 also remain: unfinished
+Phase6 work reads their files. Phase16 was not pruned in this campaign. No phase
+directory was deleted. New jobs now use disk admission and explicit closure;
+review storage at campaign close rather than waiting for the disk to fill again.

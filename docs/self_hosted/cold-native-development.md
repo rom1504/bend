@@ -1,10 +1,11 @@
 # Cold native compiler development
 
-Before a large campaign, consult the proposed
+Before a large campaign, consult the
 [build-retention policy](build-retention.md) and its
 [current disk audit](../../research/build-storage/2026-10-28-review.md).
 The historical guard's per-file cap is not a total campaign disk budget;
-the policy is documented but not yet enforced by a successor guard.
+new jobs use `selfhost/tools/build-retention/guard.py` with declared output roots
+and a whole-run disk budget. Historical pinned methods remain unchanged.
 
 The latest qualified ordinary-native checkpoint is
 [Phase146](../../implementation/phase146/README.md):
@@ -44,8 +45,9 @@ Concurrent arbitrary foreign embedding is outside this runtime contract.
 native argv and complete-output protocol. For example, with fresh output paths:
 
 ```sh
-python3 -B selfhost/tools/performance/phase111/guard.py \
+python3 -B selfhost/tools/build-retention/guard.py \
   --out selfhost/build/phase144/my-request-guard \
+  --run-root selfhost/build/phase130/my-request --disk-mib 1024 \
   --seconds 630 --rss-mib 3072 --available-mib 16384 --file-mib 128 --cpu 3 -- \
   python3 -B selfhost/tools/performance/phase130/native-request.py \
   --image selfhost/build/phase134/p144-final04-n2/program \

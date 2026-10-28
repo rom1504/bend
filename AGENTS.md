@@ -60,3 +60,12 @@ self-reproduction and broad conformance for justified integration gates. Histori
 upstream migration may merge a new upstream commit and update the active pin;
 never hand-edit the human-written `bend2/bend.ts`. Preserve the old baseline and
 validate the new source/ABI/fixture boundaries separately.
+
+For new compiler/benchmark jobs, use `selfhost/tools/build-retention/guard.py`
+with an explicit whole-run `--disk-mib` budget and every fresh artifact
+`--run-root`. Keep the default 5 GiB reserve; never nest guards. Historical pinned
+guards remain unchanged for exact reproductions, but new job plans use the disk
+guard. At campaign close, classify the run with `selfhost/tools/build-retention/close.py`:
+qualified outputs remain hot; archive/verify cold completed, rejected or failed
+outputs before optional pruning. Follow `docs/self_hosted/build-retention.md`.
+Never delete phase directories by age or remove the shared Phase32 lock inode.

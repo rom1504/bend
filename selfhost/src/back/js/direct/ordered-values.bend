@@ -1,78 +1,90 @@
-# Ordered constructor/Let expressions. This module depends on JDOrdered and
-# jd_ordered_expr from ordered.bend; no public/runtime representation changes.
+
+# Module: src/back/js/direct/ordered-values.bend:3
 type JDOrderedFields is Data:
   JDOrderedFields{+prefix: String, +values: List<&2,String>, +named: String, +next: U32}
 
+# Module: src/back/js/direct/ordered-values.bend:6
 type JDOrderedBindings is Data:
   JDOrderedBindings{+prefix: String, +bindings: String, +next: U32}
 
+# Module: src/back/js/direct/ordered-values.bend:10
 @unsafe
 def jd_ordered_ctor(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: KTerm, +tail: Bool, +next: U32) -> JDOrdered:
   kc(JDOrdered, core_literal(t), u => JDOrdered{"", jd_ctor_literal(book, t), next},
     u => jd_ordered_ctor_type(book, env, t, wnf(book, ty), next))
 
+# Module: src/back/js/direct/ordered-values.bend:15
 @unsafe
 def jd_ordered_ctor_type(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: KTerm, +next: U32) -> JDOrdered:
-  kc(JDOrdered, String.eq(tg(ty), "ADT"),
+  kc(JDOrdered, p98_tag_eq(ty, "ADT"),
     u => jd_ordered_ctor_checked(book, env, t, ty, next, j_layout_ctor(book, ty, nm(t))),
     u => JDOrdered{"", jd_fail("ordered constructor needs checked datatype"), next})
 
+# Module: src/back/js/direct/ordered-values.bend:21
 @unsafe
 def jd_ordered_ctor_checked(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: KTerm, +next: U32, +ctor: KDef) -> JDOrdered:
-  kc(JDOrdered, String.eq(dk(ctor), "Ctr"),
+  kc(JDOrdered, p88_string_eq(dk(ctor), "Ctr"),
     u => jd_ordered_ctor_native_check(book, env, t, ty, j_specialize(book, dt(ctor), ks(ty)), next),
     u => JDOrdered{"", jd_fail("ordered constructor missing telescope"), next})
 
+# Module: src/back/js/direct/ordered-values.bend:27
 @unsafe
 def jd_ordered_ctor_native_check(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: KTerm, +tel: KTerm, +next: U32) -> JDOrdered:
   kc(JDOrdered, jd_native_layout(book, ty),
     u => jd_ordered_ctor_inverse(book, env, t, ty, tel, next, jd_ctor_inverse(env, t, ty)),
     u => jd_ordered_ctor_done(ty, t, False{}, jd_ordered_fields(book, env, ks(t), tel, next)))
 
+# Module: src/back/js/direct/ordered-values.bend:33
 @unsafe
 def jd_ordered_ctor_inverse(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: KTerm, +tel: KTerm, +next: U32, +inverse: String) -> JDOrdered:
-  kc(JDOrdered, Bool.not(String.eq(inverse, "")), u => JDOrdered{"", inverse, next}, u =>
-    kc(JDOrdered, String.eq(nm(ty), "U32") || String.eq(nm(ty), "F32"),
+  kc(JDOrdered, p88_string_eq(inverse, ""), u =>
+    kc(JDOrdered, p88_string_eq(nm(ty), "U32") || p88_string_eq(nm(ty), "F32"),
       v => jd_ordered_ctor_word(book, env, t, ty, tel, next, j_word(j_strip(kid(t, 0)), 0, 0)),
-      v => kc(JDOrdered, String.eq(nm(ty), "Char"),
+      v => kc(JDOrdered, p88_string_eq(nm(ty), "Char"),
         w => jd_ordered_ctor_char(book, env, t, ty, tel, next, j_u32(kid(t, 0))),
-        w => jd_ordered_ctor_done(ty, t, True{}, jd_ordered_fields(book, env, ks(t), tel, next)))))
+        w => jd_ordered_ctor_done(ty, t, True{}, jd_ordered_fields(book, env, ks(t), tel, next)))), u => JDOrdered{"", inverse, next})
 
+# Module: src/back/js/direct/ordered-values.bend:42
 @unsafe
 def jd_ordered_ctor_word(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: KTerm, +tel: KTerm, +next: U32, +value: Maybe<&2,U32>) -> JDOrdered:
   match value:
     case None{}: jd_ordered_ctor_done(ty, t, True{}, jd_ordered_fields(book, env, ks(t), tel, next))
     case Some{bits}: JDOrdered{"", jd_ctor_word(book, env, t, ty, tel, value), next}
 
+# Module: src/back/js/direct/ordered-values.bend:48
 @unsafe
 def jd_ordered_ctor_char(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: KTerm, +tel: KTerm, +next: U32, +value: Maybe<&2,U32>) -> JDOrdered:
   match value:
     case None{}: jd_ordered_ctor_done(ty, t, True{}, jd_ordered_fields(book, env, ks(t), tel, next))
     case Some{code}: JDOrdered{"", jd_ctor_char(book, env, t, ty, tel, value), next}
 
+# Module: src/back/js/direct/ordered-values.bend:54
 @unsafe
 def jd_ordered_fields(+book: List<&2,KDef>, +env: List<&2,KTerm>, +fields: List<&2,KTerm>, +tel: KTerm, +next: U32) -> JDOrderedFields:
   match fields:
-    case Nil{}: kc(JDOrderedFields, String.eq(tg(tel), "All"),
+    case Nil{}: kc(JDOrderedFields, p98_tag_eq(tel, "All"),
       u => JDOrderedFields{"", [jd_fail("ordered missing constructor field")], ",[\"$error\"]:" ++ jd_fail("ordered missing constructor field"), next},
       u => JDOrderedFields{"", Nil{}, "", next})
-    case Con{field, rest}: kc(JDOrderedFields, String.eq(tg(tel), "All"),
+    case Con{field, rest}: kc(JDOrderedFields, p98_tag_eq(tel, "All"),
       u => kc(JDOrderedFields, U32.is_eq(qt(tel), 0),
         v => jd_ordered_fields(book, env, rest, j_app_type(tel, field), next),
         v => jd_ordered_field_head(book, env, rest, j_app_type(tel, field), nm(tel),
           jd_ordered_expr(book, env, field, kid(tel, 0), False{}, next))),
       u => JDOrderedFields{"", [jd_fail("ordered extra constructor field")], ",[\"$error\"]:" ++ jd_fail("ordered extra constructor field"), next})
 
+# Module: src/back/js/direct/ordered-values.bend:67
 @unsafe
 def jd_ordered_field_head(+book: List<&2,KDef>, +env: List<&2,KTerm>, +rest: List<&2,KTerm>, +tel: KTerm, +name: String, +head: JDOrdered) -> JDOrderedFields:
   match head:
     case JDOrdered{prefix, value, next}: jd_ordered_field_join(prefix, value, name, jd_ordered_fields(book, env, rest, tel, next))
 
+# Module: src/back/js/direct/ordered-values.bend:72
 @unsafe
 def jd_ordered_field_join(+prefix: String, +value: String, +name: String, +rest: JDOrderedFields) -> JDOrderedFields:
   match rest:
     case JDOrderedFields{more, values, named, next}: JDOrderedFields{prefix ++ more, Con{value, values}, jd_ctor_field_join(name, value, named), next}
 
+# Module: src/back/js/direct/ordered-values.bend:77
 @unsafe
 def jd_ordered_ctor_done(+ty: KTerm, +t: KTerm, +native: Bool, +fields: JDOrderedFields) -> JDOrdered:
   match fields:
@@ -82,12 +94,15 @@ def jd_ordered_ctor_done(+ty: KTerm, +t: KTerm, +native: Bool, +fields: JDOrdere
 # Pinned js_open holds demanded parallel RHSs, but leaves the final body value
 # pending. Binder-ID aliases retain lexical captures without an IIFE or
 # eagerly assigning the body result before later siblings' prefixes.
+
+# Module: src/back/js/direct/ordered-values.bend:86
 @unsafe
 def jd_ordered_let(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: KTerm, +tail: Bool, +next: U32) -> JDOrdered:
   jd_ordered_let_body(book, env, ks(t), next,
     jd_ordered_expr(book, jd_ordered_aliases(book, env, ks(t), next), j_body(ks(t)), ty, tail,
       jd_ordered_alias_end(ks(t), next)))
 
+# Module: src/back/js/direct/ordered-values.bend:92
 @unsafe
 def jd_ordered_alias_end(+xs: List<&2,KTerm>, +next: U32) -> U32:
   match xs:
@@ -98,15 +113,18 @@ def jd_ordered_alias_end(+xs: List<&2,KTerm>, +next: U32) -> U32:
 # $heldX<source binder ID>_<reserved ordinal> cannot collide with transient $ordN in closures.
 # JD.View's value is an inert held local; Absent metadata prevents constructor
 # inverse folding from treating the alias as a native Word/Char projection.
+
+# Module: src/back/js/direct/ordered-values.bend:102
 @unsafe
 def jd_ordered_aliases(+book: List<&2,KDef>, +env: List<&2,KTerm>, +xs: List<&2,KTerm>, +slot: U32) -> List<&2,KTerm>:
   match xs:
     case Nil{}: env
     case Con{x, Nil{}}: env
     case Con{x, rest}: Con{kt("$JD.View", "$heldX" ++ U32.show(ix(x)) ++ "_" ++ U32.show(slot), ix(x), 0,
-      [j_type(book, env, kid(x, 0)), atom("Absent")]),
+      [j_type(book, env, kid(x, 0)), {KTerm{"Absent", "", 0, 0, Nil{}, Nil{}, 0, 0} : KTerm}]),
       jd_ordered_aliases(book, env, rest, U32.inc(slot))}
 
+# Module: src/back/js/direct/ordered-values.bend:111
 @unsafe
 def jd_ordered_let_body(+book: List<&2,KDef>, +env: List<&2,KTerm>, +xs: List<&2,KTerm>, +slot: U32, +body: JDOrdered) -> JDOrdered:
   match body:
@@ -114,6 +132,7 @@ def jd_ordered_let_body(+book: List<&2,KDef>, +env: List<&2,KTerm>, +xs: List<&2
       jd_ordered_let_render(prefix, value,
         jd_ordered_bindings(book, env, xs, prefix ++ value, slot, next))
 
+# Module: src/back/js/direct/ordered-values.bend:118
 @unsafe
 def jd_ordered_bindings(+book: List<&2,KDef>, +env: List<&2,KTerm>, +xs: List<&2,KTerm>, +body: String, +slot: U32, +next: U32) -> JDOrderedBindings:
   match xs:
@@ -126,6 +145,7 @@ def jd_ordered_bindings(+book: List<&2,KDef>, +env: List<&2,KTerm>, +xs: List<&2
           v => jd_ordered_expr(book, env, kid(x, 0), j_type(book, env, kid(x, 0)), False{}, next))),
       u => jd_ordered_bindings(book, env, rest, body, U32.inc(slot), next))
 
+# Module: src/back/js/direct/ordered-values.bend:130
 @unsafe
 def jd_ordered_binding_head(+book: List<&2,KDef>, +env: List<&2,KTerm>, +rest: List<&2,KTerm>, +body: String, +id: U32, +slot: U32, +head: JDOrdered) -> JDOrderedBindings:
   match head:
@@ -133,12 +153,14 @@ def jd_ordered_binding_head(+book: List<&2,KDef>, +env: List<&2,KTerm>, +rest: L
       jd_ordered_binding_join(prefix, value, id, slot,
         jd_ordered_bindings(book, env, rest, body, U32.inc(slot), next))
 
+# Module: src/back/js/direct/ordered-values.bend:137
 @unsafe
 def jd_ordered_binding_join(+prefix: String, +value: String, +id: U32, +slot: U32, +rest: JDOrderedBindings) -> JDOrderedBindings:
   match rest:
     case JDOrderedBindings{more, bindings, next}:
       JDOrderedBindings{prefix ++ "const $heldX" ++ U32.show(id) ++ "_" ++ U32.show(slot) ++ "=" ++ value ++ ";" ++ more, "", next}
 
+# Module: src/back/js/direct/ordered-values.bend:143
 @unsafe
 def jd_ordered_let_render(+prefix: String, +value: String, +rhs: JDOrderedBindings) -> JDOrdered:
   match rhs:

@@ -1,36 +1,58 @@
-# Pure module graph loader. The host supplies file bytes as FSource values;
-# dependency traversal, cycle checks, alias resolution and qualification are Bend.
+
+# Module: src/load/modules.bend:3
 type FSource is Data:
   FSource{+name: String, +path: String, +text: String}
   FCompletedSource{+name: String, +path: String, +text: String, +parsed: FResult}
   FLocatedSource{+source: FSource, begin: U32, end: U32}
 
 # The load trace is part of the loader API, also usable without diagnostics.
+
+# Module: src/load/modules.bend:9
 type FLoadTrace is Data:
   FLoadTrace{+result: FResult, +done: List<&2,KTerm>, +sources: List<&2,FSource>}
 
+# Module: src/load/modules.bend:143
+type FHeader is Data:
+  FHeader{+imports: List<&2,KTerm>, +error: String, +body: String, line: U32, offset: U32}
+
+# Module: src/load/modules.bend:146
+type FCompletion is Data:
+  FCompletion{+graph: FGraph, +parsed: FResult}
+
+# The private ready loader retains the fragment it has just completed.
+
+# Module: src/load/modules.bend:150
+type FIndexedCompletion is Data:
+  FIndexedCompletion{+graph: FGraph, +parsed: FResult, +fragment: List<&2,KDef>}
+
+# Module: src/load/modules.bend:12
 law f_alias:
   for +name: String
   for +imports: List<&2, KTerm>
   String
 
+# Module: src/load/modules.bend:17
 law f_source:
   for +name: String
   for +sources: List<&2, FSource>
   FSource
 
+# Module: src/load/modules.bend:22
 law f_source_name:
   for +source: FSource
   String
 
+# Module: src/load/modules.bend:26
 law f_source_text:
   for +source: FSource
   String
 
+# Module: src/load/modules.bend:30
 law f_source_path:
   for +source: FSource
   String
 
+# Module: src/load/modules.bend:35
 @unsafe
 def f_qual_name(
   +name: String,
@@ -38,6 +60,7 @@ def f_qual_name(
 ) -> String:
   f_choose(String, String.is_empty(ns), u => name, u => ns ++ ":" ++ name)
 
+# Module: src/load/modules.bend:42
 @unsafe
 def f_prefix(
   +s: String,
@@ -45,6 +68,7 @@ def f_prefix(
 ) -> Bool:
   f_choose(Bool, String.is_empty(prefix), u => True{}, u => f_choose(Bool, String.is_empty(s), u => False{}, u => Char.is_eq(f_head(s), f_head(prefix)) && f_prefix(f_tail(s), f_tail(prefix))))
 
+# Module: src/load/modules.bend:49
 @unsafe
 def f_drop_prefix(
   +s: String,
@@ -52,6 +76,7 @@ def f_drop_prefix(
 ) -> String:
   f_choose(String, String.is_empty(prefix), u => s, u => f_drop_prefix(f_tail(s), f_tail(prefix)))
 
+# Module: src/load/modules.bend:56
 @unsafe
 def f_alias(name, imports):
   match imports:
@@ -60,6 +85,7 @@ def f_alias(name, imports):
     case Con{+im, rest}:
       f_choose(String, U32.is_gt(terms_len(ks(im)), 0) && f_prefix(name, nm(kid(im, 0)) ++ "."), u => nm(im) ++ ":" ++ f_drop_prefix(name, nm(kid(im, 0)) ++ "."), u => f_alias(name, rest))
 
+# Module: src/load/modules.bend:64
 @unsafe
 def f_declared(
   +name: String,
@@ -71,6 +97,7 @@ def f_declared(
     case Con{+d, ds}:
       f_choose(Bool, f_eq(name, dn(d)) && Bool.not(f_eq(dk(d), "ImportFill")), u => True{}, u => f_choose(Bool, f_declared(name, dc(d)), u => True{}, u => f_declared(name, ds)))
 
+# Module: src/load/modules.bend:75
 @unsafe
 def f_source(name, sources):
   match sources:
@@ -79,6 +106,7 @@ def f_source(name, sources):
     case Con{+source, rest}:
       f_choose(FSource, f_eq(name, f_source_name(source)), u => source, u => f_source(name, rest))
 
+# Module: src/load/modules.bend:83
 @unsafe
 def f_source_name(source):
   match source:
@@ -89,6 +117,7 @@ def f_source_name(source):
     case FLocatedSource{source, begin, end}:
       f_source_name(source)
 
+# Module: src/load/modules.bend:93
 @unsafe
 def f_source_text(source):
   match source:
@@ -99,6 +128,7 @@ def f_source_text(source):
     case FLocatedSource{source, begin, end}:
       f_source_text(source)
 
+# Module: src/load/modules.bend:103
 @unsafe
 def f_source_path(source):
   match source:
@@ -111,6 +141,8 @@ def f_source_path(source):
 
 # Invocation-local completion handoff. Only the exact result produced by this
 # compiler's contextual completion is accepted; raw parsed trees are not.
+
+# Module: src/load/modules.bend:115
 @unsafe
 def f_source_completed(
   +name: String,
@@ -121,10 +153,13 @@ def f_source_completed(
   FCompletedSource{name, path, text, parsed}
 
 # Location ownership is separate from text/completed source delivery.
+
+# Module: src/load/modules.bend:125
 @unsafe
 def f_source_located(+source: FSource, +begin: U32, +end: U32) -> FSource:
   FLocatedSource{source, begin, end}
 
+# Module: src/load/modules.bend:129
 @unsafe
 def f_source_begin(+source: FSource) -> U32:
   match source:
@@ -132,6 +167,7 @@ def f_source_begin(+source: FSource) -> U32:
     case FCompletedSource{name, path, text, parsed}: 0
     case FLocatedSource{source, begin, end}: begin
 
+# Module: src/load/modules.bend:136
 @unsafe
 def f_source_end(+source: FSource) -> U32:
   match source:
@@ -140,20 +176,13 @@ def f_source_end(+source: FSource) -> U32:
     case FLocatedSource{source, begin, end}: end
 
 # Only the leading header is inspected before dependencies finish.
-type FHeader is Data:
-  FHeader{+imports: List<&2,KTerm>, +error: String, +body: String, line: U32, offset: U32}
 
-type FCompletion is Data:
-  FCompletion{+graph: FGraph, +parsed: FResult}
-
-# The private ready loader retains the fragment it has just completed.
-type FIndexedCompletion is Data:
-  FIndexedCompletion{+graph: FGraph, +parsed: FResult, +fragment: List<&2,KDef>}
-
+# Module: src/load/modules.bend:154
 @unsafe
 def compiler_load_abi() -> U32:
   2
 
+# Module: src/load/modules.bend:158
 @unsafe
 def f_header_line(+source: String, +acc: String, +size: U32) -> FScanned:
   match source:
@@ -161,19 +190,23 @@ def f_header_line(+source: String, +acc: String, +size: U32) -> FScanned:
     case SCon{c, rest}:
       f_choose(FScanned, Char.is_eq(c, '\n'), u => FScanned{String.reverse(SCon{c, acc}), rest, U32.add(size, 1)}, u => f_header_line(rest, SCon{c, acc}, U32.add(size, dg_units(c))))
 
+# Module: src/load/modules.bend:165
 @unsafe
 def f_header_space(+source: String) -> String:
   f_choose(String, Bool.not(String.is_empty(source)) && f_ascii_space(f_head(source)), u => f_header_space(f_tail(source)), u => source)
 
+# Module: src/load/modules.bend:169
 @unsafe
 def f_header_prefix(+line: String) -> Bool:
   +text = f_header_space(line)
   String.is_empty(text) || Char.is_eq(f_head(text), '#') || Char.is_eq(f_head(text), '\n') || (String.starts_with(text, "import") && (String.is_empty(f_drop_chars(text, 6)) || f_ascii_space(f_head(f_drop_chars(text, 6))) || Char.is_eq(f_head(f_drop_chars(text, 6)), '\n')))
 
+# Module: src/load/modules.bend:174
 @unsafe
 def f_header_scan(+source: String, +full: String, +start: U32, +line: U32, +offset: U32, +prefix: String) -> FHeader:
   f_header_next(f_header_line(source, "", 0), source, full, start, line, offset, prefix)
 
+# Module: src/load/modules.bend:178
 @unsafe
 def f_header_next(+scanned: FScanned, +source: String, +full: String, +start: U32, +line: U32, +offset: U32, +prefix: String) -> FHeader:
   match scanned:
@@ -182,11 +215,13 @@ def f_header_next(+scanned: FScanned, +source: String, +full: String, +start: U3
         u => f_header_scan(rest, full, start, U32.add(line, 1), U32.add(offset, size), prefix ++ word),
         u => f_header_result(fpe_finish_indexed(start, full, f_tops(f_input(f_lex_cursor(prefix, 1, 0, 0, Nil{}, start, start)), Nil{}, Nil{}, False{}, f_parse_scope_empty())), source, line, offset))
 
+# Module: src/load/modules.bend:186
 @unsafe
 def f_header_result(+parsed: FResult, +body: String, +line: U32, +offset: U32) -> FHeader:
   match parsed:
     case FResult{book, error, imports}: FHeader{imports, error, body, line, offset}
 
+# Module: src/load/modules.bend:191
 @unsafe
 def f_source_header(+source: FSource) -> FHeader:
   match source:
@@ -194,6 +229,7 @@ def f_source_header(+source: FSource) -> FHeader:
     case FCompletedSource{name, path, text, parsed}: f_header_supplied(parsed)
     case FLocatedSource{inner, begin, end}: f_source_header_at(inner, begin)
 
+# Module: src/load/modules.bend:198
 @unsafe
 def f_source_header_at(+source: FSource, +start: U32) -> FHeader:
   match source:
@@ -201,30 +237,37 @@ def f_source_header_at(+source: FSource, +start: U32) -> FHeader:
     case FCompletedSource{name, path, text, parsed}: f_header_supplied(parsed)
     case FLocatedSource{inner, begin, end}: FHeader{Nil{}, "nested source interval", "", 1, 0}
 
+# Module: src/load/modules.bend:205
 @unsafe
 def f_header_supplied(+parsed: FResult) -> FHeader:
   match parsed:
     case FResult{book, error, imports}: FHeader{imports, "", "", 1, 0}
 
+# Module: src/load/modules.bend:210
 @unsafe
 def f_header_imports(+header: FHeader) -> List<&2,KTerm>:
   match header:
     case FHeader{imports, error, body, line, offset}: imports
 
+# Module: src/load/modules.bend:215
 @unsafe
 def f_source_body(+source: FSource, +header: FHeader, +prior: List<&2,KDef>, +ns: String, +aliases: List<&2,KTerm>, +start: U32) -> FResult:
   match source:
-    case FSource{name, path, text}: f_body_header(text, header, FParseScope{prior, index_build(List.reverse(&2,KDef,prior)), f_ctor_index(prior, missing()), ns, aliases}, start)
+    case FSource{name, path, text}: f_body_header(text, header, FParseScope{prior, index_build(List.reverse(&2,KDef,prior)), f_ctor_index(prior, missing()), ns, aliases, None{}}, start)
     case FCompletedSource{name, path, text, parsed}: parsed
     case FLocatedSource{inner, begin, end}: f_source_body(inner, header, prior, ns, aliases, begin)
+
+# Module: src/load/modules.bend:222
 
 @unsafe
 def f_body_header(+source: String, +header: FHeader, +scope: FParseScope, +start: U32) -> FResult:
   match header:
     case FHeader{imports, error, body, line, offset}:
       f_choose(FResult, String.is_empty(error),
-        u => f_context_result(fpe_finish_indexed(start, source, f_tops(f_input(f_lex_cursor(body, line, 0, 0, Nil{}, f_cursor_add(start, offset), f_cursor_add(start, offset))), Nil{}, List.reverse(&2,KTerm,imports), False{}, scope))),
+        u => f_context_result(fpe_finish_indexed(start, source, f_tops(f_input(f_lex_cursor(body, line, 0, 0, Nil{}, f_cursor_add(start, offset), f_cursor_add(start, offset))), Nil{}, List.reverse(&2,KTerm,imports), False{}, p144p_ready_scope(scope)))),
         u => FResult{Nil{}, error, imports})
+
+# Module: src/load/modules.bend:230
 
 @unsafe
 def f_complete_source(+source: FSource, +ns: String, +header: FHeader, +sources: List<&2,FSource>, +graph: FGraph, +root: String) -> FCompletion:
@@ -234,10 +277,12 @@ def f_complete_source(+source: FSource, +ns: String, +header: FHeader, +sources:
         u => f_complete_aliases(source, ns, header, graph, f_graph_aliases(f_header_imports(header), source, sources, root), book, sources),
         u => FCompletion{graph, FResult{Nil{}, error, Nil{}}})
 
+# Module: src/load/modules.bend:238
 @unsafe
 def f_complete_aliases(+source: FSource, +ns: String, +header: FHeader, +graph: FGraph, +aliases: List<&2,KTerm>, +prior: List<&2,KDef>, +sources: List<&2,FSource>) -> FCompletion:
   f_complete_parsed(source, ns, aliases, graph, f_source_body(source, header, prior, ns, aliases, 0), sources)
 
+# Module: src/load/modules.bend:242
 @unsafe
 def f_complete_parsed(+source: FSource, +ns: String, +aliases: List<&2,KTerm>, +graph: FGraph, +parsed: FResult, +sources: List<&2,FSource>) -> FCompletion:
   match parsed:
@@ -246,6 +291,8 @@ def f_complete_parsed(+source: FSource, +ns: String, +aliases: List<&2,KTerm>, +
 
 # Private admitted-prefix path: the scope indexes describe the exact prior
 # graph book. Contextual parsing and completion of the new source are unchanged.
+
+# Module: src/load/modules.bend:250
 @unsafe
 def f_complete_source_indexed(+source: FSource, +ns: String, +header: FHeader, +sources: List<&2,FSource>, +graph: FGraph, +root: String, +names: KDef, +ctors: KDef) -> FIndexedCompletion:
   match graph:
@@ -254,9 +301,12 @@ def f_complete_source_indexed(+source: FSource, +ns: String, +header: FHeader, +
         u => f_complete_aliases_indexed(source, ns, header, graph, f_graph_aliases(f_header_imports(header), source, sources, root), book, sources, names, ctors),
         u => FIndexedCompletion{graph, FResult{Nil{}, error, Nil{}}, Nil{}})
 
+# Module: src/load/modules.bend:258
 @unsafe
 def f_complete_aliases_indexed(+source: FSource, +ns: String, +header: FHeader, +graph: FGraph, +aliases: List<&2,KTerm>, +prior: List<&2,KDef>, +sources: List<&2,FSource>, +names: KDef, +ctors: KDef) -> FIndexedCompletion:
-  f_graph_finish_indexed(source, ns, aliases, graph, sources, names, f_source_body_indexed(source, header, FParseScope{prior, names, ctors, ns, aliases}, 0))
+  f_graph_finish_indexed(source, ns, aliases, graph, sources, names, f_source_body_indexed(source, header, FParseScope{prior, names, ctors, ns, aliases, None{}}, 0))
+
+# Module: src/load/modules.bend:262
 
 @unsafe
 def f_source_body_indexed(+source: FSource, +header: FHeader, +scope: FParseScope, +start: U32) -> FResult:
@@ -265,6 +315,7 @@ def f_source_body_indexed(+source: FSource, +header: FHeader, +scope: FParseScop
     case FCompletedSource{name, path, text, parsed}: parsed
     case FLocatedSource{inner, begin, end}: f_source_body_indexed(inner, header, scope, begin)
 
+# Module: src/load/modules.bend:269
 @unsafe
 def f_completion_graph(+completion: FCompletion) -> FGraph:
   match completion:
@@ -272,6 +323,8 @@ def f_completion_graph(+completion: FCompletion) -> FGraph:
 
 # The host has already checked the immutable cache identity. Bind the supplied
 # source again here; a seed cannot inject definitions for a different file.
+
+# Module: src/load/modules.bend:276
 @unsafe
 def f_complete_seed(+source: FSource, +graph: FGraph, +path: String, +text: String, +book: List<&2,KDef>) -> FCompletion:
   match graph:

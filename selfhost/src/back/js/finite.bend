@@ -1,20 +1,21 @@
-# Acyclic private selectors reuse the original typed Lam/Mat prefix. Values
-# originate in a wholly guarded scalar graph and are already fully forced.
-# No helper calls, recursive workers, native constructors or new IR are added.
+
+# Module: src/back/js/finite.bend:5
 @unsafe
 def j_finite_match(+t: KTerm) -> Bool:
   +body = j_strip(t)
-  kc(Bool, String.eq(tg(body), "Mat"), u => True{}, u => j_finite_matches(ks(body)))
+  kc(Bool, p98_tag_eq(body, "Mat"), u => True{}, u => j_finite_matches(ks(body)))
 
+# Module: src/back/js/finite.bend:10
 @unsafe
 def j_finite_matches(+xs: List<&2,KTerm>) -> Bool:
   match xs:
     case Nil{}: False{}
     case Con{h, rest}: kc(Bool, j_finite_match(h), u => True{}, u => j_finite_matches(rest))
 
+# Module: src/back/js/finite.bend:16
 @unsafe
 def j_finite_ready(+book: List<&2,KDef>, +d: KDef) -> Bool:
-  kc(Bool, String.eq(dk(d), "Def") && Bool.not(db(d)) && U32.is_gt(da(d), 0) && U32.is_le(da(d), 8) && U32.is_eq(dx(d), 0), u =>
+  kc(Bool, p88_string_eq(dk(d), "Def") && Bool.not(db(d)) && U32.is_gt(da(d), 0) && U32.is_le(da(d), 8) && U32.is_eq(dx(d), 0), u =>
     kc(Bool, j_u32_bounded([dv(d)], 256), u =>
     kc(Bool, j_finite_match(dv(d)), u =>
     kc(Bool, j_region_capture_eligible(book, d) && j_pure_signature(book, dt(d), da(d)), u =>
@@ -22,27 +23,29 @@ def j_finite_ready(+book: List<&2,KDef>, +d: KDef) -> Bool:
       j_pure_valid(j_pure_prefix(book, Nil{}, dv(d), dt(d), 0, JPure{Nil{}, 1024, True{}})),
       u => False{}), u => False{}), u => False{}), u => False{}), u => False{})
 
+# Module: src/back/js/finite.bend:26
 @unsafe
 def j_finite_prefix(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: KTerm, +depth: U32) -> Bool:
   +body = j_strip(t)
   +head = wnf(book, ty)
   kc(Bool, U32.is_lt(depth, 32), u =>
-    kc(Bool, String.eq(tg(body), "Lam"), u =>
-      String.eq(tg(head), "All") && Bool.not(U32.is_eq(qt(head), 0)) && String.eq(j_l_name(body), "") &&
+    kc(Bool, p98_tag_eq(body, "Lam"), u =>
+      p98_tag_eq(head, "All") && Bool.not(U32.is_eq(qt(head), 0)) && p88_string_eq(j_l_name(body), "") &&
         j_finite_prefix(book, Con{kt("Env", "", ix(body), 0, [kid(head, 0)]), env}, kid(body, 0),
           subst(kid(head, 1), ix(head), var(nm(body), ix(body))), U32.inc(depth)), u =>
-    kc(Bool, String.eq(tg(body), "Mat"), u =>
+    kc(Bool, p98_tag_eq(body, "Mat"), u =>
       j_finite_arm(book, env, body, head, depth), u =>
-    kc(Bool, String.eq(tg(body), "Efq"), u => True{}, u =>
-      Bool.not(String.eq(tg(head), "All")) && j_finite_expr(book, env, body, head, depth)))), u => False{})
+    kc(Bool, p98_tag_eq(body, "Efq"), u => True{}, u =>
+      Bool.not(p98_tag_eq(head, "All")) && j_finite_expr(book, env, body, head, depth)))), u => False{})
 
+# Module: src/back/js/finite.bend:40
 @unsafe
 def j_finite_arm(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: KTerm, +depth: U32) -> Bool:
   +arg = wnf(book, kid(ty, 0))
   +owner = lookup(book, nm(arg))
   +c = lookup(dc(owner), nm(t))
-  String.eq(tg(ty), "All") && Bool.not(U32.is_eq(qt(ty), 0)) && String.eq(j_l_name(t), "") &&
-    U32.is_eq(terms_len(ks(t)), 2) && String.eq(dk(c), "Ctr") &&
+  p98_tag_eq(ty, "All") && Bool.not(U32.is_eq(qt(ty), 0)) && p88_string_eq(j_l_name(t), "") &&
+    U32.is_eq(terms_len(ks(t)), 2) && p88_string_eq(dk(c), "Ctr") &&
     (j_primitive_type(book, arg, "Bool") || j_list_ground_type(book, arg) ||
       j_pure_closed_list(book, arg) || j_pure_closed_sigma(book, arg) || j_pure_closed_map(book, arg) || j_map_closed_maybe(book, arg) || j_map_cmp_type(book, arg) || j_string_string(book, arg) || j_string_char_type(book, arg) || (Bool.not(db(owner)) && Bool.not(db(c)) && j_pure_type(book, arg))) &&
     j_finite_prefix(book, env, kid(t, 0), j_arm_type(book, ty, nm(t)), U32.inc(depth)) &&
@@ -50,45 +53,53 @@ def j_finite_arm(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: KTe
 
 # The independent typed prefix proof validates variables, annotations and
 # complete branch coverage. This additional test admits only total leaf work.
+
+# Module: src/back/js/finite.bend:54
 @unsafe
 def j_finite_expr(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: KTerm, +depth: U32) -> Bool:
   +body = j_strip(t)
   +head = wnf(book, ty)
   kc(Bool, U32.is_lt(depth, 32), u =>
-    kc(Bool, String.eq(tg(body), "Var") || String.eq(tg(body), "Lit"), u => True{}, u =>
-    kc(Bool, String.eq(tg(body), "Ctr"), u =>
+    kc(Bool, p98_tag_eq(body, "Var") || p98_tag_eq(body, "Lit"), u => True{}, u =>
+    kc(Bool, p98_tag_eq(body, "Ctr"), u =>
       j_finite_ctor(book, env, body, head, depth), u =>
-    kc(Bool, String.eq(tg(body), "App"), u =>
+    kc(Bool, p98_tag_eq(body, "App"), u =>
       j_finite_primitive(book, env, j_call_spine(body, Nil{}), depth), u => False{}))), u => False{})
 
+# Module: src/back/js/finite.bend:65
 @unsafe
 def j_finite_ctor(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: KTerm, +depth: U32) -> Bool:
   +owner = lookup(book, nm(ty))
   +c = lookup(dc(owner), nm(t))
-  String.eq(dk(c), "Ctr") && U32.is_eq(terms_len(ks(t)), da(c)) &&
+  p88_string_eq(dk(c), "Ctr") && U32.is_eq(terms_len(ks(t)), da(c)) &&
     (j_primitive_type(book, ty, "Bool") || j_list_ground_type(book, ty) || (Bool.not(db(owner)) && Bool.not(db(c)))) &&
     j_finite_values(book, env, ks(t), j_specialize(book, dt(c), ks(ty)), U32.inc(depth))
 
+# Module: src/back/js/finite.bend:73
 @unsafe
 def j_finite_primitive(+book: List<&2,KDef>, +env: List<&2,KTerm>, +spine: KTerm, +depth: U32) -> Bool:
   j_primitive_call(book, spine) && j_finite_values(book, env, ks(spine), dt(lookup(book, nm(spine))), U32.inc(depth))
 
+# Module: src/back/js/finite.bend:77
 @unsafe
 def j_finite_values(+book: List<&2,KDef>, +env: List<&2,KTerm>, +xs: List<&2,KTerm>, +ty: KTerm, +depth: U32) -> Bool:
   match xs:
     case Nil{}: True{}
     case Con{h, rest}:
       +head = wnf(book, ty)
-      String.eq(tg(head), "All") && j_finite_expr(book, env, h, kid(head, 0), depth) &&
+      p98_tag_eq(head, "All") && j_finite_expr(book, env, h, kid(head, 0), depth) &&
         j_finite_values(book, env, rest, j_app_type(head, h), depth)
 
 # Capture all actual arguments before introducing the callee's fresh binders.
 # A complete private prefix can inspect only inert owned fields before later
 # parameters; its matches cannot throw or call a host hook in an active proof.
+
+# Module: src/back/js/finite.bend:89
 @unsafe
 def j_finite_call(+book: List<&2,KDef>, +env: List<&2,KTerm>, +spine: KTerm, +generic: String) -> String:
-  kc(String, String.eq(tg(spine), "Call"), u => j_finite_named(book, env, spine, generic), u => generic)
+  kc(String, p98_tag_eq(spine, "Call"), u => j_finite_named(book, env, spine, generic), u => generic)
 
+# Module: src/back/js/finite.bend:93
 @unsafe
 def j_finite_named(+book: List<&2,KDef>, +env: List<&2,KTerm>, +spine: KTerm, +generic: String) -> String:
   +d = lookup(book, nm(spine))
@@ -97,16 +108,19 @@ def j_finite_named(+book: List<&2,KDef>, +env: List<&2,KTerm>, +spine: KTerm, +g
       j_finite_emit(book, Nil{}, dv(d), dt(d), j_finite_slots(0, da(d))) ++ "})(" ++
       j_apply_args(book, env, ks(spine), dt(d)) ++ "):" ++ generic ++ ")", u => j_direct_named(book, env, spine, generic)), u => generic)
 
+# Module: src/back/js/finite.bend:101
 @unsafe
 def j_finite_slots(+at: U32, +total: U32) -> List<&2,String>:
   kc(List<&2,String>, U32.is_eq(at, total), u => Nil{}, u =>
     Con{"$p" ++ U32.show(at), j_finite_slots(U32.inc(at), total)})
 
+# Module: src/back/js/finite.bend:106
 @unsafe
 def j_finite_fields(+value: String, +at: U32, +total: U32, +rest: List<&2,String>) -> List<&2,String>:
   kc(List<&2,String>, U32.is_eq(at, total), u => rest, u =>
     Con{"(" ++ value ++ ").a[" ++ U32.show(at) ++ "]", j_finite_fields(value, U32.inc(at), total, rest)})
 
+# Module: src/back/js/finite.bend:111
 @unsafe
 def j_finite_emit(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: KTerm, +args: List<&2,String>) -> String:
   match args:
@@ -114,21 +128,24 @@ def j_finite_emit(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: KT
     case Con{arg, rest}:
       +body = j_strip(t)
       +head = wnf(book, ty)
-      kc(String, String.eq(tg(body), "Lam"), u =>
+      kc(String, p98_tag_eq(body, "Lam"), u =>
         "const " ++ j_local(ix(body)) ++ "=" ++ arg ++ ";" ++
         j_finite_emit(book, Con{kt("Env", "", ix(body), 0, [kid(head, 0)]), env}, kid(body, 0),
           subst(kid(head, 1), ix(head), var(nm(body), ix(body))), rest), u =>
-      kc(String, String.eq(tg(body), "Mat"), u =>
+      kc(String, p98_tag_eq(body, "Mat"), u =>
         j_finite_emit_match(book, env, body, head, arg, rest), u => "return bad('private finite sum invariant');"))
 
 # Full original JPure coverage plus exact closed native Sigma identity proves
 # the sole Tuple arm. Its owned pair fields are dense slots, not tagged .a.
+
+# Module: src/back/js/finite.bend:127
 @unsafe
 def j_finite_emit_match(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: KTerm, +arg: String, +rest: List<&2,String>) -> String:
-  kc(String, j_pure_closed_sigma(book, wnf(book, kid(ty, 0))) && String.eq(nm(t), "Tuple"),
+  kc(String, j_pure_closed_sigma(book, wnf(book, kid(ty, 0))) && p88_string_eq(nm(t), "Tuple"),
     u => "{" ++ j_finite_emit(book, env, kid(t, 0), j_arm_type(book, ty, "Tuple"), j_native_tuple_fields(arg, 0, rest)) ++ "}",
     u => j_finite_emit_match_tagged(book, env, t, ty, arg, rest))
 
+# Module: src/back/js/finite.bend:133
 @unsafe
 def j_finite_emit_match_tagged(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: KTerm, +arg: String, +rest: List<&2,String>) -> String:
   +input = wnf(book, kid(ty, 0))
@@ -136,17 +153,19 @@ def j_finite_emit_match_tagged(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: K
   +projection = jir_projection_plan(book, input, nm(t))
   +native = jir_projection_condition(projection, arg)
   +slot = "$native" ++ nm(t) ++ U32.show(terms_len(env))
-  "if(" ++ kc(String, Bool.not(String.eq(native, "")), u => native, u => kc(String, j_primitive_type(book, input, "Bool"),
-    u => "(" ++ arg ++ ")===" ++ kc(String, String.eq(nm(t), "True"), u => "true", u => "false"),
-    u => "(" ++ arg ++ ").$===" ++ j_quote(nm(t)))) ++ "){" ++
+  "if(" ++ kc(String, p88_string_eq(native, ""), u => kc(String, j_primitive_type(book, input, "Bool"),
+    u => "(" ++ arg ++ ")===" ++ kc(String, p88_string_eq(nm(t), "True"), u => "true", u => "false"),
+    u => "(" ++ arg ++ ").$===" ++ j_quote(nm(t))), u => native) ++ "){" ++
     jir_projection_bindings(projection, arg, slot) ++
-    j_finite_emit(book, env, kid(t, 0), j_arm_type(book, ty, nm(t)), kc(List<&2,String>, String.eq(native, ""), u => j_flat_fields(book, input, arg, 0, da(c), rest),
+    j_finite_emit(book, env, kid(t, 0), j_arm_type(book, ty, nm(t)), kc(List<&2,String>, p88_string_eq(native, ""), u => j_flat_fields(book, input, arg, 0, da(c), rest),
       u => jir_projection_fields(projection, slot, rest))) ++ "}else{" ++
     j_finite_emit(book, env, kid(t, 1), ty, Con{arg, rest}) ++ "}"
 
 # Generic residual functions can use these selectors without a new recursive
 # worker: open a proof only for a complete scalar root with useful selectors.
 # Scalar-only selectors do not justify another full host/dependency boundary.
+
+# Module: src/back/js/finite.bend:151
 @unsafe
 def j_finite_useful(+book: List<&2,KDef>, +ds: List<&2,KDef>) -> Bool:
   match ds:
@@ -158,20 +177,24 @@ def j_finite_useful(+book: List<&2,KDef>, +ds: List<&2,KDef>) -> Bool:
 # Policy gate only: the enclosing root still proves its COMPLETE original graph
 # and exact scalar boundary. A recursive admitted non-scalar component makes
 # guarded generic residual calls useful without widening local layout selectors.
+
+# Module: src/back/js/finite.bend:162
 @unsafe
 def j_finite_component_work(+book: List<&2,KDef>, +d: KDef) -> Bool:
   kc(Bool, U32.is_gt(j_component_refs([dv(d)], dn(d), 8192, 0), 0),
     u => j_pure_valid(j_component_cached(book, dn(d))), u => False{})
 
+# Module: src/back/js/finite.bend:167
 @unsafe
 def j_finite_root(+book: List<&2,KDef>, +d: KDef) -> String:
-  kc(String, String.eq(dk(d), "Def") && Bool.not(db(d)) && U32.is_gt(da(d), 0) && U32.is_le(da(d), 8) && U32.is_eq(dx(d), 0), u =>
+  kc(String, p88_string_eq(dk(d), "Def") && Bool.not(db(d)) && U32.is_gt(da(d), 0) && U32.is_le(da(d), 8) && U32.is_eq(dx(d), 0), u =>
     kc(String, j_u32_bounded([dv(d)], 512), u =>
     kc(String, j_region_capture_eligible(book, d) && j_region_signature(book, dt(d), da(d)) &&
     U32.is_eq(j_nat_loop_count(dv(d), 0), da(d)) && j_nat_loop_distinct(dv(d), Nil{}) &&
     Bool.not(j_l_deep(dv(d), 0)), u =>
     j_finite_root_done(book, d, j_pure_graph(book, d, JPure{Nil{}, 32768, True{}})), u => ""), u => ""), u => "")
 
+# Module: src/back/js/finite.bend:176
 @unsafe
 def j_finite_root_done(+book: List<&2,KDef>, +d: KDef, +pure: JPure) -> String:
   kc(String, j_pure_valid(pure), u => kc(String, j_finite_useful(book, j_pure_defs(pure)), u =>
@@ -181,14 +204,17 @@ def j_finite_root_done(+book: List<&2,KDef>, +d: KDef, +pure: JPure) -> String:
     "const $previousProof=regionProofOpen($guards);try{return force((()=>{" ++ j_nat_loop_generic(book, Nil{}, dv(d), dt(d), 0) ++
     "})());}finally{regionProofClose($previousProof);}}" ++ j_nat_loop_generic(book, Nil{}, dv(d), dt(d), 0) ++ "}));})()", u => ""), u => "")
 
+# Module: src/back/js/finite.bend:185
 @unsafe
 def j_finite_global(+book: List<&2,KDef>, +d: KDef, +worker: String) -> String:
-  kc(String, String.eq(worker, ""), u =>
+  kc(String, p88_string_eq(worker, ""), u =>
     kc(String, j_l_deep(dv(d), 0), u => j_l_definition(book, d, j_l_mark(dv(d), "r", 0)), u => j_l_global(book, d, dv(d))),
     u => j_l_global_worker(book, d, dv(d), worker))
 
 # Bounded acyclic helpers reuse the complete original typed graph. They are
 # callable only behind its full runtime guard or inside an inherited graph.
+
+# Module: src/back/js/finite.bend:193
 @unsafe
 def j_direct_plan(+book: List<&2,KDef>, +d: KDef) -> JPure:
   kc(JPure, j_pure_eligible(book, d) &&
@@ -197,6 +223,7 @@ def j_direct_plan(+book: List<&2,KDef>, +d: KDef) -> JPure:
     j_direct_checked(book, d, j_pure_graph(book, d, JPure{Nil{}, 8192, True{}})),
     u => JPure{Nil{}, 0, False{}})
 
+# Module: src/back/js/finite.bend:201
 @unsafe
 def j_direct_checked(+book: List<&2,KDef>, +d: KDef, +pure: JPure) -> JPure:
   kc(JPure, j_pure_valid(pure), u =>
@@ -206,6 +233,8 @@ def j_direct_checked(+book: List<&2,KDef>, +d: KDef, +pure: JPure) -> JPure:
 
 # Every path is bounded and refuses a repeated active definition. Completed
 # siblings may share callees; there is no recursive native helper stack.
+
+# Module: src/back/js/finite.bend:210
 @unsafe
 def j_direct_visit(+book: List<&2,KDef>, +graph: List<&2,KDef>, +d: KDef, +active: List<&2,String>, +depth: U32) -> Bool:
   kc(Bool, U32.is_lt(depth, 16) && Bool.not(has_name(active, dn(d))), u =>
@@ -214,6 +243,7 @@ def j_direct_visit(+book: List<&2,KDef>, +graph: List<&2,KDef>, +d: KDef, +activ
         j_direct_prefix(book, dv(d), dt(d), 0), u =>
         j_direct_edges(book, graph, graph, d, Con{dn(d), active}, U32.inc(depth)), u => False{})), u => False{})
 
+# Module: src/back/js/finite.bend:218
 @unsafe
 def j_direct_edges(+book: List<&2,KDef>, +graph: List<&2,KDef>, +rest: List<&2,KDef>, +d: KDef, +active: List<&2,String>, +depth: U32) -> Bool:
   match rest:
@@ -227,34 +257,39 @@ def j_direct_edges(+book: List<&2,KDef>, +graph: List<&2,KDef>, +rest: List<&2,K
 # JPure independently validates all expressions, argument/result types and
 # complete match coverage. This test limits the emitter to its original finite
 # prefix layouts; native Nat matchers keep their existing structural workers.
+
+# Module: src/back/js/finite.bend:231
 @unsafe
 def j_direct_prefix(+book: List<&2,KDef>, +t: KTerm, +ty: KTerm, +depth: U32) -> Bool:
   +body = j_strip(t)
   +head = wnf(book, ty)
   kc(Bool, U32.is_lt(depth, 32), u =>
-    kc(Bool, String.eq(tg(body), "Lam"), u =>
-      String.eq(tg(head), "All") && j_direct_prefix(book, kid(body, 0),
+    kc(Bool, p98_tag_eq(body, "Lam"), u =>
+      p98_tag_eq(head, "All") && j_direct_prefix(book, kid(body, 0),
         subst(kid(head, 1), ix(head), var(nm(body), ix(body))), U32.inc(depth)), u =>
-    kc(Bool, String.eq(tg(body), "Mat"), u =>
+    kc(Bool, p98_tag_eq(body, "Mat"), u =>
       j_direct_match(book, body, head, U32.inc(depth)), u =>
-    kc(Bool, String.eq(tg(body), "Efq"), u => True{},
-      u => Bool.not(String.eq(tg(head), "All"))))), u => False{})
+    kc(Bool, p98_tag_eq(body, "Efq"), u => True{},
+      u => Bool.not(p98_tag_eq(head, "All"))))), u => False{})
 
+# Module: src/back/js/finite.bend:244
 @unsafe
 def j_direct_match(+book: List<&2,KDef>, +t: KTerm, +ty: KTerm, +depth: U32) -> Bool:
   +arg = wnf(book, kid(ty, 0))
   +owner = lookup(book, nm(arg))
-  String.eq(tg(ty), "All") &&
+  p98_tag_eq(ty, "All") &&
     (j_primitive_type(book, arg, "Bool") || j_list_ground_type(book, arg) ||
       j_pure_closed_list(book, arg) || j_pure_closed_sigma(book, arg) || j_pure_closed_map(book, arg) || j_map_closed_maybe(book, arg) || j_map_cmp_type(book, arg) || j_string_string(book, arg) || j_string_char_type(book, arg) ||
       (Bool.not(db(owner)) && j_pure_type(book, arg))) &&
     j_direct_prefix(book, kid(t, 0), j_arm_type(book, ty, nm(t)), depth) &&
     j_direct_prefix(book, kid(t, 1), ty, depth)
 
+# Module: src/back/js/finite.bend:255
 @unsafe
 def j_direct_named(+book: List<&2,KDef>, +env: List<&2,KTerm>, +spine: KTerm, +generic: String) -> String:
   j_direct_guarded(book, env, spine, generic, j_direct_cached(book, nm(spine)))
 
+# Module: src/back/js/finite.bend:259
 @unsafe
 def j_direct_guarded(+book: List<&2,KDef>, +env: List<&2,KTerm>, +spine: KTerm, +generic: String, +pure: JPure) -> String:
   kc(String, j_pure_valid(pure), u =>
@@ -264,51 +299,59 @@ def j_direct_guarded(+book: List<&2,KDef>, +env: List<&2,KTerm>, +spine: KTerm, 
 
 # Rewritten nodes are private emitter plans. A typed annotation preserves
 # result inference when an original parallel let binds a direct helper call.
+
+# Module: src/back/js/finite.bend:268
 @unsafe
 def j_direct_result(+book: List<&2,KDef>, +ty: KTerm, +args: List<&2,KTerm>) -> KTerm:
   match args:
     case Nil{}: wnf(book, ty)
     case Con{arg, rest}: j_direct_result(book, j_app_type(wnf(book, ty), arg), rest)
 
+# Module: src/back/js/finite.bend:274
 @unsafe
 def j_direct_term(+book: List<&2,KDef>, +t: KTerm) -> KTerm:
   +spine = j_call_spine(t, Nil{})
-  kc(KTerm, String.eq(tg(t), "Ann"), u =>
+  kc(KTerm, p98_tag_eq(t, "Ann"), u =>
     k_with_children(t, [j_direct_term(book, kid(t, 0)), kid(t, 1)]), u =>
-  kc(KTerm, String.eq(tg(t), "App") && String.eq(tg(spine), "Call") &&
-    String.eq(dk(lookup(book, nm(spine))), "Def") &&
+  kc(KTerm, p98_tag_eq(t, "App") && p98_tag_eq(spine, "Call") &&
+    p88_string_eq(dk(lookup(book, nm(spine))), "Def") &&
     U32.is_gt(da(lookup(book, nm(spine))), 0) && Bool.not(j_primitive_call(book, spine)) &&
     U32.is_eq(terms_len(ks(spine)), da(lookup(book, nm(spine)))), u =>
     j_region_annotate(kt("JDirectCall", nm(spine), 0, 0, j_direct_terms(book, ks(spine))),
       j_direct_result(book, dt(lookup(book, nm(spine))), ks(spine))), u =>
     k_with_children(t, j_direct_terms(book, ks(t)))))
 
+# Module: src/back/js/finite.bend:287
 @unsafe
 def j_direct_terms(+book: List<&2,KDef>, +ts: List<&2,KTerm>) -> List<&2,KTerm>:
   match ts:
     case Nil{}: Nil{}
     case Con{t, rest}: Con{j_direct_term(book, t), j_direct_terms(book, rest)}
 
+# Module: src/back/js/finite.bend:293
 @unsafe
 def j_direct_emit_call(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm) -> String:
   +d = lookup(book, nm(t))
   kc(String, db(d), u =>
-    "(($p0,$p1)=>" ++ kc(String, String.eq(dn(d), "Bool.and"), u => "$p0&&$p1", u => "$p0!==$p1") ++ ")(" ++ j_apply_args(book, env, ks(t), dt(d)) ++ ")", u =>
+    "(($p0,$p1)=>" ++ kc(String, p88_string_eq(dn(d), "Bool.and"), u => "$p0&&$p1", u => "$p0!==$p1") ++ ")(" ++ j_apply_args(book, env, ks(t), dt(d)) ++ ")", u =>
     "((" ++ j_region_parameters(0, da(d)) ++ ")=>{/* private acyclic helper */" ++
       j_finite_emit(book, Nil{}, j_owned_term(j_direct_term(book, dv(d))), dt(d), j_finite_slots(0, da(d))) ++
       "})(" ++ j_apply_args(book, env, ks(t), dt(d)) ++ ")")
 
 # The worker-context owner has independently established this exact source
 # closure. A helper can omit only its own redundant boundary, never a root's.
+
+# Module: src/back/js/finite.bend:304
 @unsafe
 def j_direct_call_term(+book: List<&2,KDef>, +context: List<&2,KDef>, +t: KTerm) -> KTerm:
   +spine = j_call_spine(t, Nil{})
-  kc(KTerm, String.eq(tg(t), "App") && String.eq(tg(spine), "Call") &&
-    String.eq(dk(lookup(context, nm(spine))), "Def") &&
+  kc(KTerm, p98_tag_eq(t, "App") && p98_tag_eq(spine, "Call") &&
+    p88_string_eq(dk(lookup(context, nm(spine))), "Def") &&
     exact_def(lookup(context, nm(spine)), lookup(book, nm(spine))) &&
     U32.is_eq(terms_len(ks(spine)), da(lookup(book, nm(spine)))), u =>
     j_direct_covered_term(book, context, t, spine, j_direct_cached(book, nm(spine))), u => t)
 
+# Module: src/back/js/finite.bend:313
 @unsafe
 def j_direct_covered_term(+book: List<&2,KDef>, +context: List<&2,KDef>, +t: KTerm, +spine: KTerm, +pure: JPure) -> KTerm:
   kc(KTerm, j_pure_valid(pure), u =>
@@ -318,36 +361,42 @@ def j_direct_covered_term(+book: List<&2,KDef>, +context: List<&2,KDef>, +t: KTe
 
 # Count every copied callee body at every call occurrence, rather than unique
 # graph nodes. Fuel bounds total inline expansion and refuses before emission.
+
+# Module: src/back/js/finite.bend:322
 @unsafe
 def j_direct_expand_def(+book: List<&2,KDef>, +d: KDef, +active: List<&2,String>, +fuel: U32) -> Maybe<&2,U32>:
   kc(Maybe<&2,U32>, U32.is_gt(fuel, 0) && Bool.not(has_name(active, dn(d))), u =>
     kc(Maybe<&2,U32>, db(d), u => Some{U32.sub(fuel, 1)},
       u => j_direct_expand_term(book, dv(d), Con{dn(d), active}, U32.sub(fuel, 1))), u => None{})
 
+# Module: src/back/js/finite.bend:328
 @unsafe
 def j_direct_expand_term(+book: List<&2,KDef>, +t: KTerm, +active: List<&2,String>, +fuel: U32) -> Maybe<&2,U32>:
   +spine = j_call_spine(t, Nil{})
   +d = lookup(book, nm(spine))
   kc(Maybe<&2,U32>, U32.is_gt(fuel, 0), u =>
-    kc(Maybe<&2,U32>, String.eq(tg(t), "App") && String.eq(tg(spine), "Call") &&
-      String.eq(dk(d), "Def") && U32.is_gt(da(d), 0) &&
+    kc(Maybe<&2,U32>, p98_tag_eq(t, "App") && p98_tag_eq(spine, "Call") &&
+      p88_string_eq(dk(d), "Def") && U32.is_gt(da(d), 0) &&
       Bool.not(j_primitive_call(book, spine)) && U32.is_eq(terms_len(ks(spine)), da(d)), u =>
       j_direct_expand_after(book, d, active,
         j_direct_expand_terms(book, ks(spine), active, U32.sub(fuel, 1))),
       u => j_direct_expand_terms(book, ks(t), active, U32.sub(fuel, 1))), u => None{})
 
+# Module: src/back/js/finite.bend:340
 @unsafe
 def j_direct_expand_terms(+book: List<&2,KDef>, +ts: List<&2,KTerm>, +active: List<&2,String>, +fuel: U32) -> Maybe<&2,U32>:
   match ts:
     case Nil{}: Some{fuel}
     case Con{t, rest}: j_direct_expand_more(book, rest, active, j_direct_expand_term(book, t, active, fuel))
 
+# Module: src/back/js/finite.bend:346
 @unsafe
 def j_direct_expand_more(+book: List<&2,KDef>, +ts: List<&2,KTerm>, +active: List<&2,String>, +result: Maybe<&2,U32>) -> Maybe<&2,U32>:
   match result:
     case None{}: None{}
     case Some{fuel}: j_direct_expand_terms(book, ts, active, fuel)
 
+# Module: src/back/js/finite.bend:352
 @unsafe
 def j_direct_expand_after(+book: List<&2,KDef>, +d: KDef, +active: List<&2,String>, +result: Maybe<&2,U32>) -> Maybe<&2,U32>:
   match result:

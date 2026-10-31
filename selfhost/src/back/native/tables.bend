@@ -1,85 +1,103 @@
+
+# Module: src/back/native/tables.bend:162
+law nb_fork_next:
+  for +ss: List<&2, N_Segment>
+  for +roots: List<&2, String>
+  for +next: List<&2, String>
+  for +fuel: U32
+  List<&2, String>
+
+# Module: src/back/native/tables.bend:2
 @unsafe
 def nb_max(+a: U32, +b: U32) -> U32:
   nt_choose(U32, U32.is_gt(a, b), u => a, u => b)
 
+# Module: src/back/native/tables.bend:6
 @unsafe
 def nb_width_go(ss: List<&2, N_Segment>, +acc: U32) -> U32:
   match ss:
     case Nil{}: acc
     case Con{N_Segment{+k, +ps, +r, +f, +b, +refs, +h, +s, +fork, +bang}, t}: nb_width_go(t, nb_max(acc, nb_max(nt_count(N_Param, ps), r)))
 
+# Module: src/back/native/tables.bend:12
 @unsafe
 def nb_width(ss: List<&2, N_Segment>) -> U32:
   nb_width_go(ss, 2)
 
+# Module: src/back/native/tables.bend:16
 @unsafe
 def nb_returns_go(ss: List<&2, N_Segment>, +acc: U32) -> U32:
   match ss:
     case Nil{}: acc
     case Con{N_Segment{+k, +ps, +r, +f, +b, +refs, +h, +s, +fork, +bang}, t}: nb_returns_go(t, nb_max(acc, r))
 
+# Module: src/back/native/tables.bend:22
 @unsafe
 def nb_returns(ss: List<&2, N_Segment>) -> U32:
   nb_returns_go(ss, 1)
 
+# Module: src/back/native/tables.bend:26
 @unsafe
 def nb_bangs_go(ss: List<&2, N_Segment>, +acc: U32) -> U32:
   match ss:
     case Nil{}: acc
     case Con{N_Segment{+k, +ps, +r, +f, +b, +refs, +h, +s, +fork, +bang}, t}: nb_bangs_go(t, U32.add(acc, nt_bool(bang)))
 
+# Module: src/back/native/tables.bend:32
 @unsafe
 def nb_bangs(ss: List<&2, N_Segment>) -> U32:
   nb_bangs_go(ss, 0)
 
+# Module: src/back/native/tables.bend:36
 @unsafe
 def nb_regs(+n: U32, +i: U32) -> List<&2, String>:
   match n:
     case 0: Nil{}
     case _: Con{"r" ++ U32.show(i), nb_regs(U32.sub(n, 1), U32.inc(i))}
 
+# Module: src/back/native/tables.bend:42
 @unsafe
 def nb_pad(+rs: List<&2, String>, +i: U32) -> List<&2, String>:
   match rs:
     case Nil{}: Nil{}
     case Con{+h, +t}: nt_choose(List<&2, String>, U32.is_eq(i, 6), u => Con{"rp", Con{h, t}}, u => Con{h, nb_pad(t, U32.inc(i))})
 
+# Module: src/back/native/tables.bend:48
 @unsafe
 def nb_typed(+rs: List<&2, String>) -> List<&2, String>:
   match rs:
     case Nil{}: Nil{}
     case Con{+h, +t}: Con{"Term " ++ h, nb_typed(t)}
 
+# Module: src/back/native/tables.bend:54
 @unsafe
 def nb_load(+rs: List<&2, String>, +i: U32) -> String:
   match rs:
     case Nil{}: ""
     case Con{+h, +t}: "    if ((N) <= " ++ U32.show(i) ++ ") break; " ++ h ++ " = e.mem[(A) + " ++ U32.show(i) ++ "]; \\\n" ++ nb_load(t, U32.inc(i))
 
+# Module: src/back/native/tables.bend:60
 @unsafe
 def nb_last(+rs: List<&2, String>, +i: U32) -> String:
   match rs:
     case Nil{}: ""
     case Con{+h, +t}: "    case " ++ U32.show(i) ++ ": " ++ h ++ " = (X); break; \\\n" ++ nb_last(t, U32.inc(i))
 
+# Module: src/back/native/tables.bend:66
 @unsafe
 def nb_save(+rs: List<&2, String>, +i: U32) -> String:
   match rs:
     case Nil{}: ""
     case Con{+h, +t}: "(V)[" ++ U32.show(i) ++ "] = " ++ h ++ "; " ++ nb_save(t, U32.inc(i))
 
+# Module: src/back/native/tables.bend:72
 @unsafe
 def nb_take(+rs: List<&2, String>, +i: U32) -> String:
   match rs:
     case Nil{}: ""
     case Con{+h, +t}: h ++ " = (V)[" ++ U32.show(i) ++ "]; " ++ nb_take(t, U32.inc(i))
 
-@unsafe
-def nb_zero(+rs: List<&2, String>) -> String:
-  match rs:
-    case Nil{}: ""
-    case Con{+h, +t}: h ++ " = 0; " ++ nb_zero(t)
-
+# Module: src/back/native/tables.bend:78
 @unsafe
 def nb_bank(+ss: List<&2, N_Segment>) -> String:
   +n = nb_width(ss)
@@ -91,13 +109,10 @@ def nb_bank(+ss: List<&2, N_Segment>) -> String:
     ++ "#define WL_LAST(X) \\\n  switch (war) { \\\n" ++ nb_last(rs, 0) ++ "  }\n"
     ++ "#define WL_SAVE(V) " ++ nb_save(nb_regs(r, 0), 0) ++ "\n"
     ++ "#define WL_TAKE(V) " ++ nb_take(nb_regs(r, 0), 0) ++ "\n"
-    ++ "#define WL_WIDTH " ++ U32.show(n) ++ "\n"
-    ++ "#define WL_INIT_BANK " ++ nb_zero(ws) ++ "\n"
-    ++ "#define WL_WRITE_STATE(V) " ++ nb_save(rs, 0) ++ "\n"
-    ++ "#define WL_READ_STATE(V) " ++ nb_take(rs, 0) ++ nt_choose(String, U32.is_gt(n, 6), u => "rp = 0; ", u => "") ++ "\n"
     ++ "#define WL_SIG Env e, Stk sp, u32 seq, u32 rn, " ++ nt_join(nb_typed(ws), ", ") ++ "\n"
     ++ "#define WL_ALL e, sp, seq, rn, " ++ nt_join(ws, ", ") ++ "\n"
 
+# Module: src/back/native/tables.bend:92
 @unsafe
 def nb_seg_ids_chunks(ss: List<&2, N_Segment>, +i: U32, acc: List<&2, String>) -> String:
   match ss:
@@ -108,22 +123,26 @@ def nb_seg_ids_chunks(ss: List<&2, N_Segment>, +i: U32, acc: List<&2, String>) -
 def nb_seg_ids_go(ss: List<&2, N_Segment>, +i: U32, +acc: String) -> String:
   nb_seg_ids_chunks(ss, i, Con{acc, Nil{}})
 
+# Module: src/back/native/tables.bend:98
 @unsafe
 def nb_seg_ids(ss: List<&2, N_Segment>, i: U32) -> String:
   nb_seg_ids_go(ss, i, "")
 
+# Module: src/back/native/tables.bend:102
 @unsafe
 def nb_ctr_ids(+cs: List<&2, N_Constructor>, +i: U32) -> String:
   match cs:
     case Nil{}: ""
     case Con{N_Constructor{+k, +a, +h}, +t}: "#define " ++ nt_cid(k) ++ " " ++ U32.show(i) ++ "\n" ++ nb_ctr_ids(t, U32.inc(i))
 
+# Module: src/back/native/tables.bend:108
 @unsafe
 def nb_frame_results(+f: N_Frame, +n: U32) -> U32:
   match f:
     case N_Direct{}: 0
     case N_Frame{+pop, +at}: U32.sub(n, nt_count(String, at))
 
+# Module: src/back/native/tables.bend:114
 @unsafe
 def nb_arities_chunks(ss: List<&2, N_Segment>, acc: List<&2, String>) -> String:
   match ss:
@@ -134,10 +153,12 @@ def nb_arities_chunks(ss: List<&2, N_Segment>, acc: List<&2, String>) -> String:
 def nb_arities_go(ss: List<&2, N_Segment>, +acc: String) -> String:
   nb_arities_chunks(ss, Con{acc, Nil{}})
 
+# Module: src/back/native/tables.bend:120
 @unsafe
 def nb_arities(ss: List<&2, N_Segment>) -> String:
   nb_arities_go(ss, "")
 
+# Module: src/back/native/tables.bend:124
 @unsafe
 def nb_result_words_chunks(ss: List<&2, N_Segment>, acc: List<&2, String>) -> String:
   match ss:
@@ -148,32 +169,38 @@ def nb_result_words_chunks(ss: List<&2, N_Segment>, acc: List<&2, String>) -> St
 def nb_result_words_go(ss: List<&2, N_Segment>, +acc: String) -> String:
   nb_result_words_chunks(ss, Con{acc, Nil{}})
 
+# Module: src/back/native/tables.bend:130
 @unsafe
 def nb_result_words(ss: List<&2, N_Segment>) -> String:
   nb_result_words_go(ss, "")
 
+# Module: src/back/native/tables.bend:134
 @unsafe
 def nb_contains(+xs: List<&2, String>, +k: String) -> Bool:
   match xs:
     case Nil{}: False{}
-    case Con{+h, +t}: String.eq(h, k) || nb_contains(t, k)
+    case Con{+h, +t}: p88_string_eq(h, k) || nb_contains(t, k)
 
+# Module: src/back/native/tables.bend:140
 @unsafe
 def nb_fork_roots_go(ss: List<&2, N_Segment>, +acc: List<&2, String>) -> List<&2, String>:
   match ss:
     case Nil{}: acc
     case Con{N_Segment{+k, +ps, +r, +f, +b, +refs, +h, +s, +fork, +bang}, t}: nb_fork_roots_go(t, nt_choose(List<&2, String>, fork, u => Con{k, acc}, u => acc))
 
+# Module: src/back/native/tables.bend:146
 @unsafe
 def nb_fork_roots(ss: List<&2, N_Segment>) -> List<&2, String>:
   nb_fork_roots_go(ss, Nil{})
 
+# Module: src/back/native/tables.bend:150
 @unsafe
 def nb_reaches(+xs: List<&2, String>, +roots: List<&2, String>) -> Bool:
   match xs:
     case Nil{}: False{}
     case Con{+h, +t}: nb_contains(roots, h) || nb_reaches(t, roots)
 
+# Module: src/back/native/tables.bend:156
 @unsafe
 def nb_fork_step(+ss: List<&2, N_Segment>, +roots: List<&2, String>) -> List<&2, String>:
   match ss:
@@ -181,111 +208,44 @@ def nb_fork_step(+ss: List<&2, N_Segment>, +roots: List<&2, String>) -> List<&2,
     case Con{N_Segment{+k, +ps, +r, +f, +b, +refs, +h, +s, +fork, +bang}, +t}:
       nb_fork_step(t, nt_choose(List<&2, String>, fork, u => roots, u => nt_choose(List<&2, String>, Bool.not(nb_contains(roots, k)) && nb_reaches(refs, roots), u => Con{k, roots}, u => roots)))
 
-law nb_fork_next:
-  for +ss: List<&2, N_Segment>
-  for +roots: List<&2, String>
-  for +next: List<&2, String>
-  for +fuel: U32
-  List<&2, String>
-
-# Carry exact membership beside the ordered roots. Within-pass growth,
-# duplicates in the initial roots, finite fuel and count convergence remain.
-@unsafe
-def nb_fork_member(+seen: KDef, +name: String) -> Bool:
-  String.eq(dk(index_find(seen, name, index_hash(name, 2166136261), 32)), "NativeFork")
-
-@unsafe
-def nb_fork_mark(+seen: KDef, +name: String) -> KDef:
-  index_set(seen, KDef{name, "NativeFork", 0, 0, atom("Absent"), atom("Absent"), Nil{}, False{}, False{}}, index_hash(name, 2166136261), 32)
-
-@unsafe
-def nb_fork_index(roots: List<&2, String>, seen: KDef) -> KDef:
-  match roots:
-    case Nil{}: seen
-    case Con{name, rest}: nb_fork_index(rest, nb_fork_mark(seen, name))
-
-@unsafe
-def nb_fork_reaches_indexed(refs: List<&2, String>, +seen: KDef) -> Bool:
-  match refs:
-    case Nil{}: False{}
-    case Con{name, rest}: nb_fork_member(seen, name) || nb_fork_reaches_indexed(rest, seen)
-
-law nb_fork_close_indexed:
-  for +ss: List<&2, N_Segment>
-  for +roots: List<&2, String>
-  for +seen: KDef
-  for +fuel: U32
-  List<&2, String>
-
-law nb_fork_scan_indexed:
-  for +whole: List<&2, N_Segment>
-  for ss: List<&2, N_Segment>
-  for +roots: List<&2, String>
-  for +seen: KDef
-  for +before: U32
-  for +fuel: U32
-  List<&2, String>
-
-@unsafe
-def nb_fork_close_indexed(ss, roots, seen, fuel):
-  match fuel:
-    case 0: roots
-    case _: nb_fork_scan_indexed(ss, ss, roots, seen, nt_count(String, roots), U32.sub(fuel, 1))
-
-@unsafe
-def nb_fork_scan_indexed(whole, ss, roots, seen, before, fuel):
-  match ss:
-    case Nil{}:
-      nt_choose(List<&2, String>, U32.is_eq(before, nt_count(String, roots)),
-        u => roots, u => nb_fork_close_indexed(whole, roots, seen, fuel))
-    case Con{N_Segment{+k, ps, r, f, b, +refs, h, s, +fork, bang}, +rest}:
-      nt_choose(List<&2, String>, Bool.not(fork) && Bool.not(nb_fork_member(seen, k)) && nb_fork_reaches_indexed(refs, seen),
-        u => nb_fork_scan_indexed(whole, rest, Con{k, roots}, nb_fork_mark(seen, k), before, fuel),
-        u => nb_fork_scan_indexed(whole, rest, roots, seen, before, fuel))
-
-
-@unsafe
-def nb_flags_indexed(ss: List<&2, N_Segment>, +seen: KDef, acc: List<&2, String>) -> String:
-  match ss:
-    case Nil{}: nt_text_finish(acc, "2, 0")
-    case Con{N_Segment{+k, ps, r, f, b, refs, h, s, +fork, +bang}, rest}:
-      nb_flags_indexed(rest, seen, Con{U32.show(U32.add(nt_bool(bang), U32.mul(2, nt_bool(nt_choose(Bool, fork, u => False{}, u => Bool.not(nb_fork_member(seen, k))))))) ++ ", ", acc})
-
-# Preserve zero-fuel and empty-segment returns without constructing any index.
 @unsafe
 def nb_fork_close(+ss: List<&2, N_Segment>, +roots: List<&2, String>, +fuel: U32) -> List<&2, String>:
   nt_choose(List<&2, String>, U32.is_eq(fuel, 0) || List.is_empty(&2, N_Segment, ss),
-    u => roots, u => nb_fork_close_indexed(ss, roots, nb_fork_index(roots, missing()), fuel))
-
+    u => roots, u => p90_fork_round(ss, roots, p90_fork_index(roots, missing()), fuel))
 @unsafe
 def nb_fork_next(ss, roots, next, fuel):
   nt_choose(List<&2, String>, U32.is_eq(nt_count(String, roots), nt_count(String, next)), u => next, u => nb_fork_close(ss, next, fuel))
 
+# Module: src/back/native/tables.bend:180
 @unsafe
 def nb_flags_chunks(+ss: List<&2, N_Segment>, +forks: List<&2, String>, +acc: List<&2, String>) -> String:
   nt_choose(String, List.is_empty(&2, N_Segment, ss),
-    u => nt_text_finish(acc, "2, 0"), u => nb_flags_indexed(ss, nb_fork_index(forks, missing()), acc))
+    u => nt_text_finish(acc, "2, 0"), u => p90_flags_indexed(ss, p90_fork_index(forks, missing()), acc))
 
 @unsafe
 def nb_flags_go(ss: List<&2, N_Segment>, +forks: List<&2, String>, +acc: String) -> String:
   nb_flags_chunks(ss, forks, Con{acc, Nil{}})
 
+# Module: src/back/native/tables.bend:187
 @unsafe
 def nb_flags(ss: List<&2, N_Segment>, forks: List<&2, String>) -> String:
   nb_flags_go(ss, forks, "")
 
+# Module: src/back/native/tables.bend:191
 @unsafe
 def nb_ctr_arity(+cs: List<&2, N_Constructor>) -> String:
   match cs:
     case Nil{}: "0"
     case Con{N_Constructor{+k, +a, +h}, +t}: U32.show(a) ++ ", " ++ nb_ctr_arity(t)
 
+# Module: src/back/native/tables.bend:197
 @unsafe
 def nb_ctr_hot(+cs: List<&2, N_Constructor>) -> String:
   match cs:
     case Nil{}: "0"
     case Con{N_Constructor{+k, +a, +h}, +t}: U32.show(nt_bool(h)) ++ ", " ++ nb_ctr_hot(t)
 
+# Module: src/back/native/tables.bend:203
 @unsafe
 def nb_dispatch_chunks(ss: List<&2, N_Segment>, acc: List<&2, String>) -> String:
   match ss:
@@ -296,10 +256,12 @@ def nb_dispatch_chunks(ss: List<&2, N_Segment>, acc: List<&2, String>) -> String
 def nb_dispatch_go(ss: List<&2, N_Segment>, +acc: String) -> String:
   nb_dispatch_chunks(ss, Con{acc, Nil{}})
 
+# Module: src/back/native/tables.bend:209
 @unsafe
 def nb_dispatch(ss: List<&2, N_Segment>) -> String:
   nb_dispatch_go(ss, "")
 
+# Module: src/back/native/tables.bend:213
 @unsafe
 def nb_emit(+ss: List<&2, N_Segment>, +cs: List<&2, N_Constructor>, +image_size: U32, +pure: Bool) -> String:
   nb_seg_ids(ss, 0) ++ nb_ctr_ids(cs, 0) ++ nb_bank(ss)

@@ -1,8 +1,9 @@
-# Emit straight-line basic blocks. Only branches and suspended private calls
-# change the PC; arithmetic and construction do not dispatch through an evaluator.
+
+# Module: src/back/js/ir/worker-emit.bend:3
 type JWEmission is Data:
   JWEmission{+code: String, +numberNat: Bool, +recursive: Bool}
 
+# Module: src/back/js/ir/worker-emit.bend:7
 @unsafe
 def jw_emit_value(+v: JWValue, +direct: Bool) -> String:
   match v:
@@ -19,91 +20,105 @@ def jw_emit_value(+v: JWValue, +direct: Bool) -> String:
 
 # Exact native layouts remove constructor dispatch and its temporary vector.
 # The typed IR already evaluated nontrivial fields; inline literals keep order.
+
+# Module: src/back/js/ir/worker-emit.bend:23
 @unsafe
 def jw_emit_construct(+layout: String, +name: String, +fields: List<&2,JWValue>, +direct: Bool) -> String:
-  kc(String, String.eq(layout, "tagged"), u =>
+  kc(String, p88_string_eq(layout, "tagged"), u =>
     "({$:" ++ j_quote(name) ++ "," ++ jw_emit_fields(fields, direct, 0) ++ "})", u =>
     jw_emit_construct_done(name, fields, direct, jw_emit_construct_native(layout, name, fields, direct)))
 
+# Module: src/back/js/ir/worker-emit.bend:29
 @unsafe
 def jw_emit_construct_done(+name: String, +fields: List<&2,JWValue>, +direct: Bool, +native: String) -> String:
-  kc(String, String.eq(native, ""), u =>
+  kc(String, p88_string_eq(native, ""), u =>
     "ctor(" ++ j_quote(name) ++ ",[" ++ jw_emit_values(fields, direct) ++ "])", u => native)
 
 # Layout proves the canonical native owner. Names and arities are still exact;
 # unsupported combinations retain ctor. SCon repeats only a typed Char leaf/slot.
+
+# Module: src/back/js/ir/worker-emit.bend:36
 @unsafe
 def jw_emit_construct_native(+layout: String, +name: String, +fields: List<&2,JWValue>, +direct: Bool) -> String:
   match fields:
     case Nil{}:
-      kc(String, String.eq(layout, "bool") && String.eq(name, "True"), u => "true", u =>
-      kc(String, String.eq(layout, "bool") && String.eq(name, "False"), u => "false", u =>
-      kc(String, String.eq(layout, "string") && String.eq(name, "SNil"), u => "''", u => "")))
+      kc(String, p88_string_eq(layout, "bool") && p88_string_eq(name, "True"), u => "true", u =>
+      kc(String, p88_string_eq(layout, "bool") && p88_string_eq(name, "False"), u => "false", u =>
+      kc(String, p88_string_eq(layout, "string") && p88_string_eq(name, "SNil"), u => "''", u => "")))
     case Con{one, Nil{}}:
-      kc(String, String.eq(layout, "char") && String.eq(name, "Chr"),
+      kc(String, p88_string_eq(layout, "char") && p88_string_eq(name, "Chr"),
         u => "checkedChar(" ++ jw_emit_value(one, direct) ++ ")", u => "")
     case Con{left, Con{right, Nil{}}}:
-      kc(String, String.eq(layout, "tuple") && String.eq(name, "Tuple"),
+      kc(String, p88_string_eq(layout, "tuple") && p88_string_eq(name, "Tuple"),
         u => "[" ++ jw_emit_value(left, direct) ++ "," ++ jw_emit_value(right, direct) ++ "]", u =>
-      kc(String, String.eq(layout, "string") && String.eq(name, "SCon"), u =>
+      kc(String, p88_string_eq(layout, "string") && p88_string_eq(name, "SCon"), u =>
         "((typeof " ++ jw_emit_value(left, direct) ++ "==='string'?" ++ jw_emit_value(left, direct) ++
         ":String.fromCodePoint(" ++ jw_emit_value(left, direct) ++ "))+" ++ jw_emit_value(right, direct) ++ ")", u => ""))
     case other: ""
 
+# Module: src/back/js/ir/worker-emit.bend:54
 @unsafe
 def jw_emit_fields(+fields: List<&2,JWValue>, +direct: Bool, +at: U32) -> String:
   match fields:
     case Nil{}: ""
     case Con{value, rest}: "_" ++ U32.show(at) ++ ":" ++ jw_emit_value(value, direct) ++ "," ++ jw_emit_fields(rest, direct, U32.inc(at))
 
+# Module: src/back/js/ir/worker-emit.bend:60
 @unsafe
 def jw_emit_slot(+slot: U32, +direct: Bool) -> String:
   kc(String, direct, u => "$v" ++ U32.show(slot), u => "$r[" ++ U32.show(slot) ++ "]")
 
+# Module: src/back/js/ir/worker-emit.bend:64
 @unsafe
 def jw_emit_values(+values: List<&2,JWValue>, +direct: Bool) -> String:
   match values:
     case Nil{}: ""
     case Con{value, rest}: jw_emit_value(value, direct) ++ "," ++ jw_emit_values(rest, direct)
 
+# Module: src/back/js/ir/worker-emit.bend:70
 @unsafe
 def jw_emit_at(+values: List<&2,JWValue>, +at: U32, +direct: Bool) -> String:
   match values:
     case Nil{}: ""
     case Con{value, rest}: kc(String, U32.is_eq(at, 0), u => jw_emit_value(value, direct), u => jw_emit_at(rest, U32.sub(at, 1), direct))
 
+# Module: src/back/js/ir/worker-emit.bend:76
 @unsafe
 def jw_emit_project(+layout: String, +input: String, +index: U32) -> String:
-  kc(String, String.eq(layout, "nat") || String.eq(layout, "nat-number"),
-    u => "(" ++ input ++ kc(String, String.eq(layout, "nat"), u => "-1n)", u => "-1)"), u =>
-  kc(String, String.eq(layout, "tuple"), u => "(" ++ input ++ ")[" ++ U32.show(index) ++ "]", u =>
-  kc(String, String.eq(layout, "char"), u => "(typeof " ++ input ++ "==='string'?" ++ input ++ ".codePointAt(0):" ++ input ++ ")", u =>
-  kc(String, String.eq(layout, "string"), u => kc(String, U32.is_eq(index, 0),
+  kc(String, p88_string_eq(layout, "nat") || p88_string_eq(layout, "nat-number"),
+    u => "(" ++ input ++ kc(String, p88_string_eq(layout, "nat"), u => "-1n)", u => "-1)"), u =>
+  kc(String, p88_string_eq(layout, "tuple"), u => "(" ++ input ++ ")[" ++ U32.show(index) ++ "]", u =>
+  kc(String, p88_string_eq(layout, "char"), u => "(typeof " ++ input ++ "==='string'?" ++ input ++ ".codePointAt(0):" ++ input ++ ")", u =>
+  kc(String, p88_string_eq(layout, "string"), u => kc(String, U32.is_eq(index, 0),
     u => input ++ ".codePointAt(0)", u => input ++ ".slice(" ++ input ++ ".codePointAt(0)>65535?2:1)"),
-     u => kc(String, String.eq(layout, "tagged"), u => "(" ++ input ++ ")._" ++ U32.show(index),
+     u => kc(String, p88_string_eq(layout, "tagged"), u => "(" ++ input ++ ")._" ++ U32.show(index),
        u => "(" ++ input ++ ").a[" ++ U32.show(index) ++ "]")))))
 
+# Module: src/back/js/ir/worker-emit.bend:87
 @unsafe
 def jw_emit_condition(+layout: String, +name: String, +input: JWValue, +direct: Bool) -> String:
   +value = jw_emit_value(input, direct)
-  kc(String, String.eq(layout, "bool"), u => value ++ "===" ++ kc(String, String.eq(name, "True"), u => "true", u => "false"), u =>
-  kc(String, String.eq(layout, "nat") || String.eq(layout, "nat-number"),
-    u => value ++ kc(String, String.eq(name, "Zero"), u => "===0", u => "!==0") ++
-      kc(String, String.eq(layout, "nat"), u => "n", u => ""), u =>
-  kc(String, String.eq(layout, "string"), u => value ++ kc(String, String.eq(name, "SNil"), u => "===''", u => "!==''"), u =>
-  kc(String, String.eq(layout, "char") || String.eq(layout, "tuple"), u => "true",
+  kc(String, p88_string_eq(layout, "bool"), u => value ++ "===" ++ kc(String, p88_string_eq(name, "True"), u => "true", u => "false"), u =>
+  kc(String, p88_string_eq(layout, "nat") || p88_string_eq(layout, "nat-number"),
+    u => value ++ kc(String, p88_string_eq(name, "Zero"), u => "===0", u => "!==0") ++
+      kc(String, p88_string_eq(layout, "nat"), u => "n", u => ""), u =>
+  kc(String, p88_string_eq(layout, "string"), u => value ++ kc(String, p88_string_eq(name, "SNil"), u => "===''", u => "!==''"), u =>
+  kc(String, p88_string_eq(layout, "char") || p88_string_eq(layout, "tuple"), u => "true",
     u => "(" ++ value ++ ").$===" ++ j_quote(name)))))
 
+# Module: src/back/js/ir/worker-emit.bend:98
 @unsafe
 def jw_tail_result(+code: List<&2,JWInstruction>, +slot: U32) -> Bool:
   match code:
     case Con{JWReturn{JWSlot{at}}, Nil{}}: U32.is_eq(slot, at)
     case other: False{}
 
+# Module: src/back/js/ir/worker-emit.bend:104
 @unsafe
 def jw_emit_tail_transfer(+args: List<&2,JWValue>, +target: U32) -> String:
   "$r=[" ++ jw_emit_values(args, False{}) ++ "];$pc=" ++ U32.show(target) ++ ";continue;}"
 
+# Module: src/back/js/ir/worker-emit.bend:108
 @unsafe
 def jw_entry_name(+functions: List<&2,JWFunction>, +at: U32) -> String:
   match functions:
@@ -111,16 +126,19 @@ def jw_entry_name(+functions: List<&2,JWFunction>, +at: U32) -> String:
     case Con{JWFunction{name, arity, code, valid}, rest}:
       kc(String, U32.is_eq(at, 0), u => j_region_name(name) ++ "$tree", u => jw_entry_name(rest, U32.sub(at, 1)))
 
+# Module: src/back/js/ir/worker-emit.bend:115
 @unsafe
 def jw_context_name(+ctx: JWEmitContext, +target: U32) -> String:
   match ctx:
     case JWEmitContext{functions, components, group}: jw_entry_name(functions, target)
 
+# Module: src/back/js/ir/worker-emit.bend:120
 @unsafe
 def jw_context_same(+ctx: JWEmitContext, +target: U32) -> Bool:
   match ctx:
     case JWEmitContext{functions, components, group}: U32.is_eq(jw_component_at(components, target), group)
 
+# Module: src/back/js/ir/worker-emit.bend:125
 @unsafe
 def jw_emit_block(+ctx: JWEmitContext, +code: List<&2,JWInstruction>, +label: U32, +next: U32, +prefix: String) -> JWPrinted:
   match code:
@@ -144,6 +162,7 @@ def jw_emit_block(+ctx: JWEmitContext, +code: List<&2,JWInstruction>, +label: U3
         case JWImpossible{}:
           JWPrinted{"case " ++ U32.show(label) ++ ":{" ++ prefix ++ "return bad('private worker impossible branch');}", next}
 
+# Module: src/back/js/ir/worker-emit.bend:148
 @unsafe
 def jw_emit_call_block(+ctx: JWEmitContext, +rest: List<&2,JWInstruction>, +label: U32, +next: U32, +prefix: String,
   +slot: U32, +target: U32, +args: List<&2,JWValue>) -> JWPrinted:
@@ -152,6 +171,7 @@ def jw_emit_call_block(+ctx: JWEmitContext, +rest: List<&2,JWInstruction>, +labe
     ";$registers[$top++]=$r;$r=[" ++ jw_emit_values(args, False{}) ++ "];$pc=" ++ U32.show(target) ++ ";continue;}" ++
     jw_printed_code(after), jw_printed_next(after)}
 
+# Module: src/back/js/ir/worker-emit.bend:156
 @unsafe
 def jw_emit_case_block(+ctx: JWEmitContext, +label: U32, +next: U32, +prefix: String, +condition: String,
   +yes: List<&2,JWInstruction>, +no: List<&2,JWInstruction>) -> JWPrinted:
@@ -160,6 +180,7 @@ def jw_emit_case_block(+ctx: JWEmitContext, +label: U32, +next: U32, +prefix: St
   JWPrinted{"case " ++ U32.show(label) ++ ":{" ++ prefix ++ "$pc=(" ++ condition ++ ")?" ++ U32.show(next) ++ ":" ++
     U32.show(U32.inc(next)) ++ ";continue;}" ++ jw_printed_code(left) ++ jw_printed_code(right), jw_printed_next(right)}
 
+# Module: src/back/js/ir/worker-emit.bend:164
 @unsafe
 def jw_emit_functions(+ctx: JWEmitContext, +functions: List<&2,JWFunction>, +at: U32, +next: U32) -> JWPrinted:
   match functions:
@@ -169,12 +190,14 @@ def jw_emit_functions(+ctx: JWEmitContext, +functions: List<&2,JWFunction>, +at:
       +more = jw_emit_functions(ctx, rest, U32.inc(at), jw_printed_next(body))
       JWPrinted{jw_printed_code(body) ++ jw_printed_code(more), jw_printed_next(more)}
 
+# Module: src/back/js/ir/worker-emit.bend:173
 @unsafe
 def jw_all_valid(+functions: List<&2,JWFunction>) -> Bool:
   match functions:
     case Nil{}: True{}
     case Con{JWFunction{name, arity, code, valid}, rest}: valid && jw_all_valid(rest)
 
+# Module: src/back/js/ir/worker-emit.bend:179
 @unsafe
 def jw_wrappers(+ctx: JWEmitContext, +functions: List<&2,JWFunction>, +at: U32, +group: U32, +tailOnly: Bool) -> String:
   match functions:
@@ -191,24 +214,30 @@ def jw_wrappers(+ctx: JWEmitContext, +functions: List<&2,JWFunction>, +at: U32, 
 
 # Native recursion uses the same scalar frame for exact tail transfers. Every
 # argument is captured before any slot is overwritten, including permutations.
+
+# Module: src/back/js/ir/worker-emit.bend:195
 @unsafe
 def jw_native_capture(+args: List<&2,JWValue>, +at: U32) -> String:
   match args:
     case Nil{}: ""
     case Con{value, rest}: "const $next" ++ U32.show(at) ++ "=" ++ jw_emit_value(value, True{}) ++ ";" ++ jw_native_capture(rest, U32.inc(at))
 
+# Module: src/back/js/ir/worker-emit.bend:201
 @unsafe
 def jw_native_store(+args: List<&2,JWValue>, +at: U32) -> String:
   match args:
     case Nil{}: ""
     case Con{value, rest}: "$v" ++ U32.show(at) ++ "=$next" ++ U32.show(at) ++ ";" ++ jw_native_store(rest, U32.inc(at))
 
+# Module: src/back/js/ir/worker-emit.bend:207
 @unsafe
 def jw_native_tail(+args: List<&2,JWValue>, +target: U32) -> String:
   jw_native_capture(args, 0) ++ jw_native_store(args, 0) ++ "$pc=" ++ U32.show(target) ++ ";continue;"
 
 # The native function shares only scalar storage between entries of one SCC.
 # Each invocation owns a new frame; non-tail calls still use budgeted wrappers.
+
+# Module: src/back/js/ir/worker-emit.bend:213
 @unsafe
 def jw_component_bound(+ctx: JWEmitContext, +functions: List<&2,JWFunction>, +at: U32, +registers: Bool) -> U32:
   match functions:
@@ -217,6 +246,7 @@ def jw_component_bound(+ctx: JWEmitContext, +functions: List<&2,JWFunction>, +at
       U32.max(kc(U32, jw_context_same(ctx, at), u => kc(U32, registers, u => jw_register_bound(code, arity), u => arity), u => 0),
         jw_component_bound(ctx, rest, U32.inc(at), registers))
 
+# Module: src/back/js/ir/worker-emit.bend:221
 @unsafe
 def jw_native_entries(+ctx: JWEmitContext, +functions: List<&2,JWFunction>, +at: U32) -> String:
   match functions:
@@ -225,6 +255,7 @@ def jw_native_entries(+ctx: JWEmitContext, +functions: List<&2,JWFunction>, +at:
       kc(String, jw_context_same(ctx, at), u => "case " ++ U32.show(at) ++ ":{" ++ jw_emit_direct(ctx, code) ++ "}", u => "") ++
         jw_native_entries(ctx, rest, U32.inc(at))
 
+# Module: src/back/js/ir/worker-emit.bend:229
 @unsafe
 def jw_native_component(+ctx: JWEmitContext, +functions: List<&2,JWFunction>, +group: U32, +arity: U32, +bound: U32) -> String:
   "function $native" ++ U32.show(group) ++ "($pc," ++ j_region_vector_names("$v", 0, arity) ++ "){/* private first-order native component */" ++
@@ -234,6 +265,8 @@ def jw_native_component(+ctx: JWEmitContext, +functions: List<&2,JWFunction>, +g
 # Direct edges between different SCCs cannot grow with recursive input: their
 # condensation graph is a DAG. Acyclic singleton functions need neither register
 # vectors nor a dispatcher; the shared value printer emits scalar JS locals.
+
+# Module: src/back/js/ir/worker-emit.bend:238
 @unsafe
 def jw_calls_target(+code: List<&2,JWInstruction>, +target: U32) -> Bool:
   match code:
@@ -241,6 +274,7 @@ def jw_calls_target(+code: List<&2,JWInstruction>, +target: U32) -> Bool:
     case Con{instruction, rest}:
       kc(Bool, jw_instruction_target(instruction, target), u => True{}, u => jw_calls_target(rest, target))
 
+# Module: src/back/js/ir/worker-emit.bend:245
 @unsafe
 def jw_instruction_target(+instruction: JWInstruction, +target: U32) -> Bool:
   match instruction:
@@ -248,18 +282,21 @@ def jw_instruction_target(+instruction: JWInstruction, +target: U32) -> Bool:
     case JWCase{layout, name, input, yes, no}: jw_calls_target(yes, target) || jw_calls_target(no, target)
     case other: False{}
 
+# Module: src/back/js/ir/worker-emit.bend:252
 @unsafe
 def jw_component_members(+components: List<&2,U32>, +group: U32) -> U32:
   match components:
     case Nil{}: 0
     case Con{member, rest}: U32.add(kc(U32, U32.is_eq(member, group), u => 1, u => 0), jw_component_members(rest, group))
 
+# Module: src/back/js/ir/worker-emit.bend:258
 @unsafe
 def jw_register_bound(+code: List<&2,JWInstruction>, +bound: U32) -> U32:
   match code:
     case Nil{}: bound
     case Con{instruction, rest}: jw_register_bound(rest, jw_instruction_bound(instruction, bound))
 
+# Module: src/back/js/ir/worker-emit.bend:264
 @unsafe
 def jw_instruction_bound(+instruction: JWInstruction, +bound: U32) -> U32:
   match instruction:
@@ -268,12 +305,14 @@ def jw_instruction_bound(+instruction: JWInstruction, +bound: U32) -> U32:
     case JWCase{layout, name, input, yes, no}: U32.max(jw_register_bound(yes, bound), jw_register_bound(no, bound))
     case other: bound
 
+# Module: src/back/js/ir/worker-emit.bend:272
 @unsafe
 def jw_direct_locals(+at: U32, +arity: U32, +bound: U32) -> String:
   kc(String, U32.is_eq(at, bound), u => "", u =>
     "let $v" ++ U32.show(at) ++ kc(String, U32.is_lt(at, arity), u => "=$p" ++ U32.show(at), u => "") ++ ";" ++
       jw_direct_locals(U32.inc(at), arity, bound))
 
+# Module: src/back/js/ir/worker-emit.bend:278
 @unsafe
 def jw_emit_direct(+ctx: JWEmitContext, +code: List<&2,JWInstruction>) -> String:
   match code:
@@ -290,6 +329,7 @@ def jw_emit_direct(+ctx: JWEmitContext, +code: List<&2,JWInstruction>) -> String
         case JWReturn{value}: "return " ++ jw_emit_value(value, True{}) ++ ";"
         case JWImpossible{}: "return bad('private worker impossible branch');"
 
+# Module: src/back/js/ir/worker-emit.bend:294
 @unsafe
 def jw_emit_components(+functions: List<&2,JWFunction>, +components: List<&2,U32>, +todo: List<&2,JWFunction>, +at: U32, +total: U32) -> String:
   match todo:
@@ -302,6 +342,8 @@ def jw_emit_components(+functions: List<&2,JWFunction>, +components: List<&2,U32
 
 # Every recursive edge uses exactly the same tail predicate as the native
 # printer. Cross-component calls follow the proved DAG and cannot recurse here.
+
+# Module: src/back/js/ir/worker-emit.bend:306
 @unsafe
 def jw_tail_component(+ctx: JWEmitContext, +functions: List<&2,JWFunction>, +at: U32) -> Bool:
   match functions:
@@ -310,6 +352,7 @@ def jw_tail_component(+ctx: JWEmitContext, +functions: List<&2,JWFunction>, +at:
       (Bool.not(jw_context_same(ctx, at)) || (valid && jw_tail_code(ctx, code))) &&
         jw_tail_component(ctx, rest, U32.inc(at))
 
+# Module: src/back/js/ir/worker-emit.bend:314
 @unsafe
 def jw_tail_code(+ctx: JWEmitContext, +code: List<&2,JWInstruction>) -> Bool:
   match code:
@@ -320,6 +363,7 @@ def jw_tail_code(+ctx: JWEmitContext, +code: List<&2,JWInstruction>) -> Bool:
       jw_tail_code(ctx, yes) && jw_tail_code(ctx, no) && jw_tail_code(ctx, rest)
     case Con{other, rest}: jw_tail_code(ctx, rest)
 
+# Module: src/back/js/ir/worker-emit.bend:324
 @unsafe
 def jw_emit_recursive(+ctx: JWEmitContext, +functions: List<&2,JWFunction>, +group: U32, +total: U32, +tailOnly: Bool) -> String:
   kc(String, tailOnly, u => "", u =>
@@ -328,6 +372,7 @@ def jw_emit_recursive(+ctx: JWEmitContext, +functions: List<&2,JWFunction>, +gro
     jw_native_component(ctx, functions, group, jw_component_bound(ctx, functions, 0, False{}), jw_component_bound(ctx, functions, 0, True{})) ++
     jw_wrappers(ctx, functions, 0, group, tailOnly)
 
+# Module: src/back/js/ir/worker-emit.bend:332
 @unsafe
 def jw_emit_component(+ctx: JWEmitContext, +functions: List<&2,JWFunction>, +name: String, +arity: U32,
   +code: List<&2,JWInstruction>, +group: U32, +total: U32, +recursive: Bool) -> String:
@@ -336,15 +381,18 @@ def jw_emit_component(+ctx: JWEmitContext, +functions: List<&2,JWFunction>, +nam
     "function " ++ j_region_name(name) ++ "$tree(" ++ j_region_parameters(0, arity) ++ "){/* private first-order acyclic function */" ++
       jw_direct_locals(0, arity, jw_register_bound(code, arity)) ++ jw_emit_direct(ctx, code) ++ "}")
 
+# Module: src/back/js/ir/worker-emit.bend:340
 @unsafe
 def j_worker_emission(+book: List<&2,KDef>, +defs: List<&2,KDef>) -> JWEmission:
   j_worker_emission_done(defs, jw_simplify_functions(jw_functions(book, defs, defs)))
 
+# Module: src/back/js/ir/worker-emit.bend:344
 @unsafe
 def j_worker_emission_done(+defs: List<&2,KDef>, +functions: List<&2,JWFunction>) -> JWEmission:
   kc(JWEmission, Bool.not(List.is_empty(&2,KDef, defs)) && jw_all_valid(functions), u =>
     jw_emission_mode(functions, j_region_def_count(defs), jw_nat_functions_valid(functions)), u => JWEmission{"", False{}, False{}})
 
+# Module: src/back/js/ir/worker-emit.bend:349
 @unsafe
 def jw_emission_mode(+functions: List<&2,JWFunction>, +total: U32, +numberNat: Bool) -> JWEmission:
   jw_declarations_components(kc(List<&2,JWFunction>, numberNat, u => jw_nat_functions(functions), u => functions),
@@ -353,6 +401,8 @@ def jw_emission_mode(+functions: List<&2,JWFunction>, +total: U32, +numberNat: B
 # The successful SCC labels already prove all private edges. A non-canonical
 # member proves a mutual cycle; singleton recursion is an explicit self-call.
 # This bounded fact ranks public entries, never excludes private acyclic helpers.
+
+# Module: src/back/js/ir/worker-emit.bend:357
 @unsafe
 def jw_graph_recursive(+functions: List<&2,JWFunction>, +components: List<&2,U32>, +at: U32) -> Bool:
   match functions:
@@ -364,6 +414,7 @@ def jw_graph_recursive(+functions: List<&2,JWFunction>, +components: List<&2,U32
           Bool.not(U32.is_eq(group, at)) || jw_calls_target(code, at) ||
             jw_graph_recursive(rest, remaining, U32.inc(at))
 
+# Module: src/back/js/ir/worker-emit.bend:368
 @unsafe
 def jw_declarations_components(+functions: List<&2,JWFunction>, +total: U32, +plan: Maybe<&2,List<&2,U32>>, +numberNat: Bool) -> JWEmission:
   match plan:

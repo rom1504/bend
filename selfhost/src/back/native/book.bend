@@ -1,31 +1,40 @@
+
+# Module: src/back/native/book.bend:10
+type NC_Result is Data:
+  NC_Result{+source: String, +error: String}
+
+# Module: src/back/native/book.bend:13
+type NC_Book is Data:
+  NC_Book{+segments: List<&2, N_Segment>, +fresh: U32, +error: String}
+
+# Module: src/back/native/book.bend:1
 law nc_context_index:
   for annotated: List<&2, KDef>
   List<&2, KDef>
 
+# Module: src/back/native/book.bend:5
 law nc_context_pick:
   for +original: KDef
   for +annotated: KDef
   KDef
 
-type NC_Result is Data:
-  NC_Result{+source: String, +error: String}
-
-type NC_Book is Data:
-  NC_Book{+segments: List<&2, N_Segment>, +fresh: U32, +error: String}
-
+# Module: src/back/native/book.bend:16
 law nc_unann:
   for +t: KTerm
   KTerm
 
+# Module: src/back/native/book.bend:20
 law nc_constructors:
   for +book: List<&2, KDef>
   for +ds: List<&2, KDef>
   List<&2, N_Constructor>
 
+# Module: src/back/native/book.bend:25
 law nc_refs:
   for +t: KTerm
   List<&2, String>
 
+# Module: src/back/native/book.bend:29
 law nc_compile_defs:
   for +book: List<&2, KDef>
   for +todo: List<&2, String>
@@ -34,49 +43,69 @@ law nc_compile_defs:
   for +bangs: List<&2, String>
   NC_Book
 
+# Module: src/back/native/book.bend:37
 law nc_term_fork:
   for +t: KTerm
   Bool
 
+# Module: src/back/native/book.bend:233
+law nc_bangs_term:
+  for +t: KTerm
+  List<&2, String>
+
+# Module: src/back/native/book.bend:351
+law nc_context_has_cache:
+  for annotated: List<&2, KDef>
+  Bool
+
+# Module: src/back/native/book.bend:42
 @unsafe
 def nc_refs_go(todo: List<&2, KTerm>, +acc: List<&2, String>) -> List<&2, String>:
   match todo:
     case Nil{}: nt_reverse(String, acc, Nil{})
     case Con{+h, +rest}:
-      nc_refs_go(nt_append(KTerm, ks(h), rest), nt_choose(List<&2, String>, String.eq(tg(h), "Ref"), u => Con{nm(h), acc}, u => acc))
+      nc_refs_go(nt_append(KTerm, ks(h), rest), nt_choose(List<&2, String>, p98_tag_eq(h, "Ref"), u => Con{nm(h), acc}, u => acc))
 
+# Module: src/back/native/book.bend:49
 @unsafe
 def nc_refs(t):
   nc_refs_go([t], Nil{})
 
+# Module: src/back/native/book.bend:53
 @unsafe
 def nc_foreign_tel(+book: List<&2, KDef>, +ty: KTerm, +name: String, +args: List<&2, KTerm>, +n: U32) -> KTerm:
   +tel = wnf(book, ty)
-  nt_choose(KTerm, String.eq(tg(tel), "All"),
+  nt_choose(KTerm, p98_tag_eq(tel, "All"),
     u => nt_choose(KTerm, U32.is_eq(qt(tel), 0),
-      u => nc_foreign_tel(book, subst(kid(tel, 1), ix(tel), atom("Typ")), name, args, U32.inc(n)),
+      u => nc_foreign_tel(book, subst(kid(tel, 1), ix(tel), {KTerm{"Typ", "", 0, 0, Nil{}, Nil{}, 0, 0} : KTerm}), name, args, U32.inc(n)),
       u => k_lam("", nc_id(n), 1, [nc_foreign_tel(book, subst(kid(tel, 1), ix(tel), var("", nc_id(n))), name, List.append(&2, KTerm, args, [var("", nc_id(n))]), U32.inc(n))], 0, 0, False{})),
     u => kt("NCtr", name, 0, 0, args))
 
+# Module: src/back/native/book.bend:62
 @unsafe
 def nc_unann(t):
-  nt_choose(KTerm, String.eq(tg(t), "Ann"), u => nc_unann(kid(t, 0)), u => t)
+  nt_choose(KTerm, p98_tag_eq(t, "Ann"), u => nc_unann(kid(t, 0)), u => t)
 
+# Module: src/back/native/book.bend:66
 @unsafe
 def nc_foreign(+d: KDef) -> Bool:
-  String.eq(tg(nc_unann(dv(d))), "Foreign") || String.eq(tg(nc_unann(dv(d))), "Absent")
+  p98_tag_eq(nc_unann(dv(d)), "Foreign") || p98_tag_eq(nc_unann(dv(d)), "Absent")
 
+# Module: src/back/native/book.bend:70
 @unsafe
 def nc_definition(+book: List<&2, KDef>, +d: KDef, +n: U32) -> KTerm:
   +fact = ns_body(book, dn(d))
-  nt_choose(KTerm, (String.eq(dk(fact), "NativeStaticBody") || String.eq(dk(fact), "NativeErasedBody")), u => dv(fact), u => nc_definition_plain(book, d, n))
+  nt_choose(KTerm, (p88_string_eq(dk(fact), "NativeStaticBody") || p88_string_eq(dk(fact), "NativeErasedBody")), u => dv(fact), u => nc_definition_plain(book, d, n))
 
 # Prepared static bodies already passed literal compaction in this request.
+
+# Module: src/back/native/book.bend:76
 @unsafe
 def nc_compact_definition(+book: List<&2, KDef>, +d: KDef, +n: U32) -> KTerm:
   +fact = ns_body(book, dn(d))
-  nt_choose(KTerm, String.eq(dk(fact), "NativeStaticBody"), u => dv(fact), u => nc_compact(nc_definition(book, d, n)))
+  nt_choose(KTerm, p88_string_eq(dk(fact), "NativeStaticBody"), u => dv(fact), u => nc_compact(nc_definition(book, d, n)))
 
+# Module: src/back/native/book.bend:81
 @unsafe
 def nc_definition_plain(+book: List<&2, KDef>, +d: KDef, +n: U32) -> KTerm:
   +prim = nc_primitive_name(dn(d))
@@ -86,10 +115,12 @@ def nc_definition_plain(+book: List<&2, KDef>, +d: KDef, +n: U32) -> KTerm:
       u => nc_foreign_tel(book, dt(d), dn(d), Nil{}, n),
       u => nc_erase(book, dv(d))))
 
+# Module: src/back/native/book.bend:90
 @unsafe
 def nc_call_head(+t: KTerm) -> KTerm:
-  nt_choose(KTerm, String.eq(tg(t), "App"), u => nc_call_head(kid(t, 0)), u => t)
+  nt_choose(KTerm, p98_tag_eq(t, "App"), u => nc_call_head(kid(t, 0)), u => t)
 
+# Module: src/back/native/book.bend:94
 @unsafe
 def nc_terms_fork(
   +ts: List<&2, KTerm>,
@@ -97,19 +128,22 @@ def nc_terms_fork(
   match ts:
     case Nil{}: False{}
     case Con{+h, +rest}:
-      nt_choose(Bool, (String.eq(tg(h), "Let") && U32.is_gt(terms_len(ks(h)), 2)) || (String.eq(tg(h), "App") && String.eq(tg(nc_call_head(h)), "Var")),
+      nt_choose(Bool, (p98_tag_eq(h, "Let") && U32.is_gt(terms_len(ks(h)), 2)) || (p98_tag_eq(h, "App") && p98_tag_eq(nc_call_head(h), "Var")),
         u => True{}, u => nc_terms_fork(nt_append(KTerm, ks(h), rest)))
 
+# Module: src/back/native/book.bend:104
 @unsafe
 def nc_term_fork(t):
   nc_terms_fork([t])
 
+# Module: src/back/native/book.bend:108
 @unsafe
 def nc_mapped_refs(+book: List<&2, KDef>, refs: List<&2, String>) -> List<&2, String>:
   match refs:
     case Nil{}: Nil{}
     case Con{h, rest}: Con{nc_ref_name(book, h), nc_mapped_refs(book, rest)}
 
+# Module: src/back/native/book.bend:114
 @unsafe
 def nc_mark_segments_go(ss: List<&2, N_Segment>, +bang: Bool, +forked: Bool, +calls: List<&2, String>, acc: List<&2, N_Segment>) -> List<&2, N_Segment>:
   match ss:
@@ -117,21 +151,25 @@ def nc_mark_segments_go(ss: List<&2, N_Segment>, +bang: Bool, +forked: Bool, +ca
     case Con{N_Segment{k, ps, r, f, b, +refs, host, spin, fork, old}, rest}:
       nc_mark_segments_go(rest, bang, forked, calls, Con{N_Segment{k, ps, r, f, b, nt_choose(List<&2, String>, nb_contains(refs, "$local"), u => refs, u => calls), host, spin, nt_choose(Bool, nb_contains(refs, "$local"), u => fork, u => forked), bang}, acc})
 
+# Module: src/back/native/book.bend:121
 @unsafe
 def nc_mark_segments(ss: List<&2, N_Segment>, +bang: Bool, +forked: Bool, +calls: List<&2, String>) -> List<&2, N_Segment>:
   nc_mark_segments_go(ss, bang, forked, calls, Nil{})
 
+# Module: src/back/native/book.bend:125
 @unsafe
 def nc_mark_code(c: NC_Code, bang: Bool, forked: Bool, calls: List<&2, String>) -> NC_Code:
   match c:
     case NC_Code{body, ss, n, err, edges}: NC_Code{body, nc_mark_segments(ss, bang, forked, calls), n, err, edges}
 
+# Module: src/back/native/book.bend:130
 @unsafe
 def nc_append_book(+code: NC_Code, name: String, calls: List<&2, String>, forked: Bool, omit: Bool, rest: NC_Book) -> NC_Book:
   match rest:
     case NC_Book{segs, fresh, +err}:
-      NC_Book{nt_choose(List<&2, N_Segment>, omit, u => nt_append(N_Segment, nc_segs(code), segs), u => Con{N_Segment{name, Nil{}, 1, N_Direct{}, nc_body(code), calls, False{}, False{}, forked, False{}}, nt_append(N_Segment, nc_segs(code), segs)}), fresh, nt_choose(String, String.eq(nc_error(code), ""), u => err, u => nc_error(code))}
+      NC_Book{nt_choose(List<&2, N_Segment>, omit, u => nt_append(N_Segment, nc_segs(code), segs), u => Con{N_Segment{name, Nil{}, 1, N_Direct{}, nc_body(code), calls, False{}, False{}, forked, False{}}, nt_append(N_Segment, nc_segs(code), segs)}), fresh, nt_choose(String, p88_string_eq(nc_error(code), ""), u => err, u => nc_error(code))}
 
+# Module: src/back/native/book.bend:136
 @unsafe
 def nc_compile_def(+book: List<&2, KDef>, +name: String, +todo: List<&2, String>, +done: List<&2, String>, +n: U32, +bangs: List<&2, String>) -> NC_Book:
   +d = lookup(book, name)
@@ -142,6 +180,7 @@ def nc_compile_def(+book: List<&2, KDef>, +name: String, +todo: List<&2, String>
     u => nc_compile_defs(book, List.append(&2, String, refs, todo), Con{name, done}, n, bangs),
     u => nc_compile_kept(book, name, todo, done, n, bangs, d, body, refs, calls))
 
+# Module: src/back/native/book.bend:146
 @unsafe
 def nc_compile_defs(book, todo, done, n, bangs):
   match todo:
@@ -149,76 +188,88 @@ def nc_compile_defs(book, todo, done, n, bangs):
     case Con{name, rest}:
       nt_choose(NC_Book, nb_contains(done, name), u => nc_compile_defs(book, rest, done, n, bangs), u => nc_compile_def(book, name, rest, done, n, bangs))
 
+# Module: src/back/native/book.bend:153
 @unsafe
 def nc_skip_tel(+book: List<&2, KDef>, +tel: KTerm, +n: U32) -> KTerm:
   nt_choose(KTerm, U32.is_eq(n, 0), u => tel, u => nc_skip_tel(book, kid(wnf(book, tel), 1), U32.sub(n, 1)))
 
+# Module: src/back/native/book.bend:157
 @unsafe
 def nc_ctor_specs(+book: List<&2, KDef>, cs: List<&2, KDef>, +params: U32) -> List<&2, N_Constructor>:
   match cs:
     case Nil{}: Nil{}
     case Con{+c, rest}: Con{N_Constructor{nc_ctor_identity(book, dn(c)), nc_live_count(book, nc_skip_tel(book, dt(c), params), da(c)), True{}}, nc_ctor_specs(book, rest, params)}
 
+# Module: src/back/native/book.bend:163
 @unsafe
 def nc_all_args(+book: List<&2, KDef>, +ty: KTerm) -> U32:
   +tel = wnf(book, ty)
-  nt_choose(U32, String.eq(tg(tel), "All"), u => U32.add(nt_bool(Bool.not(U32.is_eq(qt(tel), 0))), nc_all_args(book, kid(tel, 1))), u => 0)
+  nt_choose(U32, p98_tag_eq(tel, "All"), u => U32.add(nt_bool(Bool.not(U32.is_eq(qt(tel), 0))), nc_all_args(book, kid(tel, 1))), u => 0)
 
+# Module: src/back/native/book.bend:168
 @unsafe
 def nc_constructors(book, ds):
   match ds:
     case Nil{}: Nil{}
     case Con{+d, +rest}:
-      nt_choose(List<&2, N_Constructor>, String.eq(dk(d), "ADT"),
+      nt_choose(List<&2, N_Constructor>, p88_string_eq(dk(d), "ADT"),
         u => List.append(&2, N_Constructor, nc_ctor_specs(book, dc(d), da(d)), nc_constructors(book, rest)),
-        u => nt_choose(List<&2, N_Constructor>, String.eq(dk(d), "Def") && nc_foreign(d),
+        u => nt_choose(List<&2, N_Constructor>, p88_string_eq(dk(d), "Def") && nc_foreign(d),
           u => Con{N_Constructor{dn(d), nc_all_args(book, dt(d)), True{}}, nc_constructors(book, rest)},
           u => nc_constructors(book, rest)))
 
+# Module: src/back/native/book.bend:179
 @unsafe
 def nc_default_ctors() -> List<&2, N_Constructor>:
   [N_Constructor{"Tuple", 2, True{}}, N_Constructor{"SNil", 0, True{}}, N_Constructor{"SCon", 2, True{}}, N_Constructor{"WCon", 2, True{}}, N_Constructor{"WNil", 0, True{}}, N_Constructor{"Emit", 1, True{}}, N_Constructor{"Halt", 2, True{}}, N_Constructor{"Done", 1, True{}}, N_Constructor{"Fail", 1, True{}}, N_Constructor{"Some", 1, True{}}, N_Constructor{"None", 0, True{}}, N_Constructor{"True", 0, True{}}, N_Constructor{"False", 0, True{}}, N_Constructor{"Unit", 0, True{}}, N_Constructor{"LT", 0, True{}}, N_Constructor{"EQ", 0, True{}}, N_Constructor{"GT", 0, True{}}]
 
+# Module: src/back/native/book.bend:183
 @unsafe
 def nc_has_ctor(cs: List<&2, N_Constructor>, +key: String) -> Bool:
   match cs:
     case Nil{}: False{}
-    case Con{N_Constructor{k, a, h}, rest}: String.eq(k, key) || nc_has_ctor(rest, key)
+    case Con{N_Constructor{k, a, h}, rest}: p88_string_eq(k, key) || nc_has_ctor(rest, key)
 
+# Module: src/back/native/book.bend:189
 @unsafe
 def nc_add_ctors(cs: List<&2, N_Constructor>, +acc: List<&2, N_Constructor>) -> List<&2, N_Constructor>:
   match cs:
     case Nil{}: acc
     case Con{N_Constructor{+k, +a, +h}, rest}: nc_add_ctors(rest, nt_choose(List<&2, N_Constructor>, nc_has_ctor(acc, k), u => acc, u => List.append(&2, N_Constructor, acc, [N_Constructor{k, a, h}])))
 
+# Module: src/back/native/book.bend:195
 @unsafe
 def nc_show(+cells: String) -> String:
   "#if !DEVICE\nstatic const u32 SHOW_DESC[] = { " ++ cells ++ " };\nstatic const char* SHOW_NAMES[] = {\"False\", \"True\", \"Unit\"};\n#endif\n"
 
+# Module: src/back/native/book.bend:199
 @unsafe
 def nc_is_io(+book: List<&2, KDef>, +ty: KTerm) -> Bool:
   +io = lookup(book, "IO")
-  +shadow = book_put(book, KDef{dn(io), dk(io), da(io), dx(io), dt(io), atom("Absent"), dc(io), db(io), du(io)})
+  +shadow = book_put(book, KDef{dn(io), dk(io), da(io), dx(io), dt(io), {KTerm{"Absent", "", 0, 0, Nil{}, Nil{}, 0, 0} : KTerm}, dc(io), db(io), du(io)})
   +head = wnf(shadow, ty)
-  String.eq(dk(io), "Def") && db(io) && String.eq(tg(head), "App") && String.eq(tg(kid(head, 0)), "Ref") && String.eq(nm(kid(head, 0)), "IO")
+  p88_string_eq(dk(io), "Def") && db(io) && p98_tag_eq(head, "App") && p98_tag_eq(kid(head, 0), "Ref") && p88_string_eq(nm(kid(head, 0)), "IO")
 
+# Module: src/back/native/book.bend:206
 @unsafe
 def nc_helpers() -> String:
   "INLINE bool native_bool(Term t) { return t == 1 || (term_tag(t) == TAG_PAK && term_aux(t) == CID_TRUE); }\nINLINE Term native_word(Env e, u32 x) {\n  Term w = term_pak(CID_WNIL, 0);\n  for (u32 i = 32; i > 0; i--) {\n    Loc p = heap_alloc(e, 1);\n    e.mem[p] = (x >> (i - 1)) & 1;\n    e.mem[p + 1] = rfc_seal(e, w);\n    w = term_ctr(CID_WCON, p);\n  }\n  return w;\n}\n"
 
+# Module: src/back/native/book.bend:210
 @unsafe
 def nc_with_show(+ss: List<&2, N_Segment>, +cs: List<&2, N_Constructor>, runtime: NE_Runtime, requests: String, pure: Bool, d: NC_Show, workers: String, +image: List<&2, String>) -> NC_Result:
   match d:
-    case NC_Show{+src, +err}: nt_choose(NC_Result, String.eq(nv_first(err, nv_program(ss, cs)), ""), u => NC_Result{ne_program_runtime(runtime, N_Program{ss, cs, image, requests, nc_helpers() ++ workers, src, pure}), ""}, u => NC_Result{"", nv_first(err, nv_program(ss, cs))})
+    case NC_Show{+src, +err}: nt_choose(NC_Result, p88_string_eq(nv_first(err, nv_program(ss, cs)), ""), u => NC_Result{ne_program_runtime(runtime, N_Program{ss, cs, image, requests, nc_helpers() ++ workers, src, pure}), ""}, u => NC_Result{"", nv_first(err, nv_program(ss, cs))})
 
 # Include index/constructor children: raw cached books may carry definitions there.
 # A foreign program retains its previous ordinary-constructor representation.
+
+# Module: src/back/native/book.bend:217
 @unsafe
-def nc_pack_foreign(ds: List<&2, KDef>) -> Bool:
-  match ds:
-    case Nil{}: False{}
-    case Con{+d, rest}:
-      (Bool.not(db(d)) && (String.eq(tg(nc_unann(dv(d))), "Foreign") || (String.eq(dk(d), "Def") && nc_foreign(d)))) || nc_pack_foreign(dc(d)) || nc_pack_foreign(rest)
+def nc_pack_foreign(ds: List<&2,KDef>) -> Bool:
+  p118np_walk([ds],False{})
+
+# Small frozen-reference semantics for finite analysis controls only.
 
 @unsafe
 def nc_finish(+book: List<&2, KDef>, +runtime: NE_Runtime, +requests: String, compiled: NC_Book, +observers: Bool, +plan: NF_Plan) -> NC_Result:
@@ -227,13 +278,10 @@ def nc_finish(+book: List<&2, KDef>, +runtime: NE_Runtime, +requests: String, co
       +ty = dt(lookup(book, "main"))
       +pure = Bool.not(nc_is_io(book, ty))
       +cs = nc_add_ctors(nc_default_ctors(), nc_constructors(book, book))
-      nt_choose(NC_Result, Bool.not(String.eq(error, "")), u => NC_Result{"", error}, u =>
-        nf_finish_plan(book, ss, cs, ne_runtime_prepend(runtime, "#define NATIVE_READONLY_OBSERVERS " ++ nt_choose(String, observers, v => "1", v => "0") ++ "\n#define NATIVE_PACK_CTORS " ++ nt_choose(String, nc_pack_foreign(book), u => "0", u => "1") ++ "\n"), requests, pure, nt_choose(NC_Show, pure, u => nc_show_program(book, ty, cs), u => NC_Show{nc_show("0"), ""}), observers, plan))
+      nt_choose(NC_Result, p88_string_eq(error, ""), u =>
+        nf_finish_plan(book, nf_scheduler_segments(book, ss), cs, ne_runtime_prepend(runtime, "#define NATIVE_READONLY_OBSERVERS " ++ nt_choose(String, observers, v => "1", v => "0") ++ "\n#define NATIVE_PACK_CTORS " ++ nt_choose(String, nc_pack_foreign(book), u => "0", u => "1") ++ "\n"), requests, pure, nt_choose(NC_Show, pure, u => nc_show_program(book, ty, cs), u => NC_Show{nc_show("0"), ""}), observers, plan), u => NC_Result{"", error})
 
-law nc_bangs_term:
-  for +t: KTerm
-  List<&2, String>
-
+# Module: src/back/native/book.bend:238
 @unsafe
 def nc_bangs_terms(
   +ts: List<&2, KTerm>,
@@ -242,50 +290,60 @@ def nc_bangs_terms(
     case Nil{}: Nil{}
     case Con{h, rest}: List.append(&2, String, nc_bangs_term(h), nc_bangs_terms(rest))
 
+# Module: src/back/native/book.bend:246
 @unsafe
 def nc_bangs_term(t):
-  nt_choose(List<&2, String>, String.eq(tg(t), "Var"), u => Nil{}, u => nt_choose(List<&2, String>, String.eq(tg(t), "Ref") && U32.is_eq(qt(t), 3), u => [nm(t)], u => nt_choose(List<&2, String>, String.eq(tg(t), "Ann"), u => nc_bangs_term(kid(t, 0)), u => nc_bangs_terms(ks(t)))))
+  nt_choose(List<&2, String>, p98_tag_eq(t, "Var"), u => Nil{}, u => nt_choose(List<&2, String>, p98_tag_eq(t, "Ref") && U32.is_eq(qt(t), 3), u => [nm(t)], u => nt_choose(List<&2, String>, p98_tag_eq(t, "Ann"), u => nc_bangs_term(kid(t, 0)), u => nc_bangs_terms(ks(t)))))
 
 # Bang metadata follows the same erased runtime closure as native emission.
 # Dead imported definitions must not change scheduling or worker admission.
+
+# Module: src/back/native/book.bend:252
 @unsafe
 def nc_bangs_names(+book: List<&2, KDef>, names: List<&2, String>) -> List<&2, String>:
   match names:
     case Nil{}: Nil{}
     case Con{name, rest}: List.append(&2, String, nc_bangs_term(nc_definition(book, lookup(book, name), 0)), nc_bangs_names(book, rest))
 
+# Module: src/back/native/book.bend:258
 @unsafe
 def nc_bangs_book(+book: List<&2, KDef>) -> List<&2, String>:
   nc_bangs_names(book, nc_live_names(book, ["main"], Nil{}))
 
+# Module: src/back/native/book.bend:262
 @unsafe
 def nc_compile(+book: List<&2, KDef>, runtime: String, requests: String) -> NC_Result:
   nc_compile_mode(book, runtime, requests, False{})
 
+# Module: src/back/native/book.bend:266
 @unsafe
 def nc_compile_error(book: List<&2, KDef>) -> String:
   nc_compile_error_known(book, None{})
 
+# Module: src/back/native/book.bend:270
 @unsafe
 def nc_source_bound(+book: List<&2, KDef>, bound: Maybe<&2, U32>) -> U32:
   match bound:
     case None{}: norm_max_book(book)
     case Some{value}: value
 
+# Module: src/back/native/book.bend:276
 @unsafe
 def nc_compile_error_known(+book: List<&2, KDef>, +bound: Maybe<&2, U32>) -> String:
   +main = lookup(book, "main")
   +owned = nv_owned(book)
-  nt_choose(String, Bool.not(String.eq(owned, "")), u => owned, u =>
-  nt_choose(String, Bool.not(String.eq(dk(main), "Def")) || String.eq(tg(nc_unann(dv(main))), "Absent"), u => "no main to run", u =>
-  nt_choose(String, nc_is_io(book, dt(main)) && String.eq(tg(nc_unann(dv(main))), "Foreign"), u => "main must be a filled def: a foreign main cannot anchor IO", u =>
-  nt_choose(String, U32.is_ge(nc_source_bound(book, bound), 4000000000), u => "native source binder IDs overlap the compiler temporary range", u => ""))))
+  nt_choose(String, p88_string_eq(owned, ""), u =>
+  nt_choose(String, Bool.not(p88_string_eq(dk(main), "Def")) || p98_tag_eq(nc_unann(dv(main)), "Absent"), u => "no main to run", u =>
+  nt_choose(String, nc_is_io(book, dt(main)) && p98_tag_eq(nc_unann(dv(main)), "Foreign"), u => "main must be a filled def: a foreign main cannot anchor IO", u =>
+  nt_choose(String, U32.is_ge(nc_source_bound(book, bound), 4000000000), u => "native source binder IDs overlap the compiler temporary range", u => ""))), u => owned)
 
+# Module: src/back/native/book.bend:285
 @unsafe
 def nc_compile_mode(+book: List<&2, KDef>, runtime: String, requests: String, +observers: Bool) -> NC_Result:
   +error = nc_compile_error(book)
-  nt_choose(NC_Result, String.eq(error, ""), u => ns_compile(book, NE_Text{runtime}, requests, observers), u => NC_Result{"", error})
+  nt_choose(NC_Result, p88_string_eq(error, ""), u => ns_compile(book, NE_Text{runtime}, requests, observers), u => NC_Result{"", error})
 
+# Module: src/back/native/book.bend:290
 @unsafe
 def nc_live_names(+book: List<&2, KDef>, todo: List<&2, String>, +done: List<&2, String>) -> List<&2, String>:
   match todo:
@@ -293,18 +351,21 @@ def nc_live_names(+book: List<&2, KDef>, todo: List<&2, String>, +done: List<&2,
     case Con{+name, +rest}:
       nt_choose(List<&2, String>, nb_contains(done, name), u => nc_live_names(book, rest, done), u => nc_live_names(book, List.append(&2, String, nc_refs(nc_definition(book, lookup(book, name), 0)), rest), Con{name, done}))
 
+# Module: src/back/native/book.bend:297
 @unsafe
 def nc_c_paths(paths: List<&2, KTerm>) -> List<&2, String>:
   match paths:
     case Nil{}: Nil{}
     case Con{+h, +rest}: nt_choose(List<&2, String>, String.ends_with(nm(h), ".c"), u => Con{nm(h), nc_c_paths(rest)}, u => nc_c_paths(rest))
 
+# Module: src/back/native/book.bend:303
 @unsafe
 def nc_paths_of(+book: List<&2, KDef>, names: List<&2, String>) -> List<&2, String>:
   match names:
     case Nil{}: Nil{}
     case Con{name, rest}: List.append(&2, String, nc_c_paths(ks(nc_unann(dv(lookup(book, name))))), nc_paths_of(book, rest))
 
+# Module: src/back/native/book.bend:309
 @unsafe
 def nc_foreign_paths(+book: List<&2, KDef>) -> List<&2, String>:
   nc_paths_of(book, nc_live_names(book, ["main"], Nil{}))
@@ -312,6 +373,8 @@ def nc_foreign_paths(+book: List<&2, KDef>) -> List<&2, String>:
 # Selective annotation keeps all original type-level definitions in scope.
 # The host asks reach_book for main's closure, annotates it in the original
 # context, and replaces only those entries before native emission.
+
+# Module: src/back/native/book.bend:316
 @unsafe
 def nc_annotation_stops(book: List<&2, KDef>) -> List<&2, String>:
   match book:
@@ -321,15 +384,17 @@ def nc_annotation_stops(book: List<&2, KDef>) -> List<&2, String>:
         u => Con{dn(d), nc_annotation_stops(rest)},
         u => nc_annotation_stops(rest))
 
+# Module: src/back/native/book.bend:325
 @unsafe
 def nc_context_defs(book: List<&2, KDef>, +annotated: List<&2, KDef>) -> List<&2, KDef>:
   match book:
     case Nil{}: Nil{}
     case Con{+d, +rest}:
-      nt_choose(List<&2, KDef>, String.eq(dk(d), "BookCache"),
+      nt_choose(List<&2, KDef>, p88_string_eq(dk(d), "BookCache"),
         u => nc_context_defs(rest, annotated),
         u => Con{nc_context_pick(d, lookup(annotated, dn(d))), nc_context_defs(rest, annotated)})
 
+# Module: src/back/native/book.bend:334
 @unsafe
 def nc_annotated_context(+book: List<&2, KDef>, +annotated: List<&2, KDef>) -> List<&2, KDef>:
   +merged = nc_context_defs(book, nc_context_index(annotated))
@@ -337,6 +402,8 @@ def nc_annotated_context(+book: List<&2, KDef>, +annotated: List<&2, KDef>) -> L
 
 # Build an immutable first-match index once for plain annotation lists.
 # A cache sentinel anywhere changes lookup semantics, so retain that input.
+
+# Module: src/back/native/book.bend:341
 @unsafe
 def nc_context_index(annotated):
   match annotated:
@@ -344,34 +411,35 @@ def nc_context_index(annotated):
     case Con{+head, +rest}:
       nt_choose(List<&2, KDef>, nc_context_has_cache(Con{head, rest}), u => Con{head, rest}, u => book_cached(Con{head, rest}, 0))
 
+# Module: src/back/native/book.bend:348
 @unsafe
 def nc_context_pick(original, annotated):
-  nt_choose(KDef, String.eq(dk(annotated), "Absent"), u => original, u => annotated)
+  nt_choose(KDef, p88_string_eq(dk(annotated), "Absent"), u => original, u => annotated)
 
-law nc_context_has_cache:
-  for annotated: List<&2, KDef>
-  Bool
-
+# Module: src/back/native/book.bend:356
 @unsafe
 def nc_context_has_cache(annotated):
   match annotated:
     case Nil{}: False{}
     case Con{head, rest}:
-      nt_choose(Bool, String.eq(dk(head), "BookCache"), u => True{}, u => nc_context_has_cache(rest))
+      nt_choose(Bool, p88_string_eq(dk(head), "BookCache"), u => True{}, u => nc_context_has_cache(rest))
 
+# Module: src/back/native/book.bend:363
 @unsafe
 def nc_compile_kept(+book: List<&2, KDef>, +name: String, +todo: List<&2, String>, +done: List<&2, String>, +n: U32, +bangs: List<&2, String>, +d: KDef, +body: KTerm, +refs: List<&2, String>, +calls: List<&2, String>) -> NC_Book:
   +forked = nc_term_fork(body)
   +code = nc_mark_code(nd_compile_entry(book, body, name, U32.add(n, 1024), nb_contains(bangs, name)), nb_contains(bangs, name), forked, calls)
-  nt_choose(NC_Book, String.eq(dk(d), "Absent"), u => NC_Book{Nil{}, n, "native definition not found: " ++ name_key(name)}, u =>
-    nc_append_book(code, nc_ref_name(book, name), calls, forked, nf_host_no_factory(book, name, nd_arity(book, name)) && String.eq(nc_body(code), ""), nc_compile_defs(book, List.append(&2, String, refs, todo), Con{name, done}, nc_fresh(code), bangs)))
+  nt_choose(NC_Book, p88_string_eq(dk(d), "Absent"), u => NC_Book{Nil{}, n, "native definition not found: " ++ name_key(name)}, u =>
+    nc_append_book(code, nc_ref_name(book, name), calls, forked, nf_host_no_factory(book, name, nd_arity(book, name)) && nct_empty(nc_text(code)), nc_compile_defs(book, List.append(&2, String, refs, todo), Con{name, done}, nc_fresh(code), bangs)))
 
 
 # Observers require the pre-compaction source form, including typed literals.
 # Retain that exact erased body through static preparation instead of erasing
 # every expanded helper again. No fact means the original raw path is used.
+
+# Module: src/back/native/book.bend:374
 @unsafe
 def nc_source_body(+book: List<&2, KDef>, +d: KDef, +n: U32) -> KTerm:
   +fact = ns_body(book, dn(d))
-  +original = nt_choose(KDef, String.eq(dk(fact), "NativeStaticBody"), u => index_first(dc(fact)), u => fact)
-  nt_choose(KTerm, String.eq(dk(original), "NativeErasedBody") && String.eq(dn(original), dn(d)), u => dv(original), u => nc_definition_plain(book, d, n))
+  +original = nt_choose(KDef, p88_string_eq(dk(fact), "NativeStaticBody"), u => index_first(dc(fact)), u => fact)
+  nt_choose(KTerm, p88_string_eq(dk(original), "NativeErasedBody") && p88_string_eq(dn(original), dn(d)), u => dv(original), u => nc_definition_plain(book, d, n))

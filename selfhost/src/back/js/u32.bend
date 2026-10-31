@@ -1,92 +1,99 @@
-# Native U32 -> U32 decision workers for checked, closed literal patterns.
-# Only U32/Word/Bool matcher trees and ignored default binders are accepted.
-# Calls, captured values, residual Words and nonliteral results keep the generic
-# emitter. Native owner/constructor identity is required, not just spelling.
-# The executable tree has an 8192-node budget; ignored bit binders are skipped
-# once, rather than exploring both Boolean values and duplicating their suffix.
 
+# Module: src/back/js/u32.bend:9
 @unsafe
 def j_u32_native_type(+ty: KTerm) -> Bool:
-  String.eq(tg(ty), "ADT") && String.eq(nm(ty), "U32") &&
+  p98_tag_eq(ty, "ADT") && p88_string_eq(nm(ty), "U32") &&
   U32.is_eq(terms_len(ks(ty)), 0) && Bool.not(has_name(rm(ty), "U32"))
 
+# Module: src/back/js/u32.bend:14
 @unsafe
 def j_u32_bounded(+todo: List<&2,KTerm>, +fuel: U32) -> Bool:
   match todo:
     case Nil{}: True{}
     case Con{t, rest}:
       kc(Bool, U32.is_eq(fuel, 0), u => False{}, u =>
-        j_u32_bounded(kc(List<&2,KTerm>, String.eq(tg(t), "Ann"),
+        j_u32_bounded(kc(List<&2,KTerm>, p98_tag_eq(t, "Ann"),
           u => Con{kid(t, 0), rest}, u => List.append(&2, KTerm, ks(t), rest)), U32.sub(fuel, 1)))
 
+# Module: src/back/js/u32.bend:23
 @unsafe
 def j_u32_result(+value: Maybe<&2,U32>) -> Maybe<&2,String>:
   match value:
     case None{}: None{}
     case Some{n}: Some{U32.show(n)}
 
+# Module: src/back/js/u32.bend:29
 @unsafe
 def j_u32_word(+t: KTerm, +depth: U32) -> Maybe<&2,String>:
   j_u32_word_node(j_strip(t), depth)
 
+# Module: src/back/js/u32.bend:33
 @unsafe
 def j_u32_word_node(+t: KTerm, +depth: U32) -> Maybe<&2,String>:
-  kc(Maybe<&2,String>, String.eq(tg(t), "Lam"), u => j_u32_result(j_u32(kid(t, 0))), u =>
-  kc(Maybe<&2,String>, String.eq(tg(t), "Mat") && String.eq(nm(t), "WCon"), u =>
+  kc(Maybe<&2,String>, p98_tag_eq(t, "Lam"), u => j_u32_result(j_u32(kid(t, 0))), u =>
+  kc(Maybe<&2,String>, p98_tag_eq(t, "Mat") && p88_string_eq(nm(t), "WCon"), u =>
     kc(Maybe<&2,String>, U32.is_lt(depth, 32),
       u => j_u32_word_arm(j_strip(kid(t, 0)), depth),
       u => j_u32_word(kid(t, 1), depth)), u =>
-  kc(Maybe<&2,String>, String.eq(tg(t), "Mat") && String.eq(nm(t), "WNil"), u =>
+  kc(Maybe<&2,String>, p98_tag_eq(t, "Mat") && p88_string_eq(nm(t), "WNil"), u =>
     kc(Maybe<&2,String>, U32.is_eq(depth, 32),
       u => j_u32_result(j_u32(kid(t, 0))),
       u => j_u32_word(kid(t, 1), depth)), u => None{})))
 
+# Module: src/back/js/u32.bend:45
 @unsafe
 def j_u32_word_arm(+t: KTerm, +depth: U32) -> Maybe<&2,String>:
-  kc(Maybe<&2,String>, String.eq(tg(t), "Lam"),
+  kc(Maybe<&2,String>, p98_tag_eq(t, "Lam"),
     u => j_u32_word(kid(t, 0), U32.inc(depth)),
     u => j_u32_branches(depth, j_u32_bit(t, depth, False{}), j_u32_bit(t, depth, True{})))
 
+# Module: src/back/js/u32.bend:51
 @unsafe
 def j_u32_bit(+t: KTerm, +depth: U32, +bit: Bool) -> Maybe<&2,String>:
   j_u32_bit_node(j_strip(t), depth, bit)
 
+# Module: src/back/js/u32.bend:55
 @unsafe
 def j_u32_bit_node(+t: KTerm, +depth: U32, +bit: Bool) -> Maybe<&2,String>:
-  kc(Maybe<&2,String>, String.eq(tg(t), "Lam"),
+  kc(Maybe<&2,String>, p98_tag_eq(t, "Lam"),
     u => j_u32_word(kid(t, 0), U32.inc(depth)), u =>
-  kc(Maybe<&2,String>, String.eq(tg(t), "Mat") && (String.eq(nm(t), "True") || String.eq(nm(t), "False")),
-    u => kc(Maybe<&2,String>, kc(Bool, bit, u => String.eq(nm(t), "True"), u => String.eq(nm(t), "False")),
+  kc(Maybe<&2,String>, p98_tag_eq(t, "Mat") && (p88_string_eq(nm(t), "True") || p88_string_eq(nm(t), "False")),
+    u => kc(Maybe<&2,String>, kc(Bool, bit, u => p88_string_eq(nm(t), "True"), u => p88_string_eq(nm(t), "False")),
       u => j_u32_word(kid(t, 0), U32.inc(depth)),
       u => j_u32_bit(kid(t, 1), depth, bit)), u => None{}))
 
+# Module: src/back/js/u32.bend:64
 @unsafe
 def j_u32_branches(+depth: U32, +zero: Maybe<&2,String>, +one: Maybe<&2,String>) -> Maybe<&2,String>:
   match zero one:
     case Some{x} Some{y}:
-      Some{kc(String, String.eq(x, y), u => x, u => "(((u>>>" ++ U32.show(depth) ++ ")&1)?" ++ y ++ ":" ++ x ++ ")")}
+      Some{kc(String, p88_string_eq(x, y), u => x, u => "(((u>>>" ++ U32.show(depth) ++ ")&1)?" ++ y ++ ":" ++ x ++ ")")}
     case None{} other: None{}
     case Some{x} None{}: None{}
 
+# Module: src/back/js/u32.bend:72
 @unsafe
 def j_u32_worker_type(+book: List<&2,KDef>, +t: KTerm, +ty: KTerm) -> Maybe<&2,String>:
-  kc(Maybe<&2,String>, String.eq(tg(ty), "All") && Bool.not(U32.is_eq(qt(ty), 0)), u =>
+  kc(Maybe<&2,String>, p98_tag_eq(ty, "All") && Bool.not(U32.is_eq(qt(ty), 0)), u =>
     kc(Maybe<&2,String>, j_u32_native_type(wnf(book, kid(ty, 0))) && j_u32_native_type(wnf(book, kid(ty, 1))) && j_u32_native_book(book),
       u => kc(Maybe<&2,String>, j_u32_bounded([t], 8192),
         u => j_u32_worker_code(j_u32_word(kid(t, 0), 0)), u => None{}), u => None{}), u => None{})
 
+# Module: src/back/js/u32.bend:79
 @unsafe
 def j_u32_worker_code(+body: Maybe<&2,String>) -> Maybe<&2,String>:
   match body:
     case None{}: None{}
     case Some{code}: Some{"fn(1,function(a){const u=a[0]>>>0;return " ++ code ++ ";})"}
 
+# Module: src/back/js/u32.bend:85
 @unsafe
 def j_u32_worker(+book: List<&2,KDef>, +d: KDef) -> Maybe<&2,String>:
   +t = j_strip(dv(d))
-  kc(Maybe<&2,String>, String.eq(tg(t), "Mat") && String.eq(nm(t), "U32"),
+  kc(Maybe<&2,String>, p98_tag_eq(t, "Mat") && p88_string_eq(nm(t), "U32"),
     u => j_u32_worker_type(book, t, wnf(book, dt(d))), u => None{})
 
+# Module: src/back/js/u32.bend:91
 @unsafe
 def j_u32_global(+book: List<&2,KDef>, +d: KDef, +worker: Maybe<&2,String>) -> String:
   match worker:

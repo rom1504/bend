@@ -1,8 +1,21 @@
-import Base
 
-# Shared JavaScript text utilities for direct and compatibility emission.
-# Quoting, numeric expression spelling and JavaScript foreign-path selection are target-specific.
+# Module: src/back/js/shared-text.bend:16
+law j_escape_char:
+  for +c: Char
+  String
 
+# Module: src/back/js/shared-text.bend:24
+law j_escape_char_on:
+  for +c: Char
+  for +key: U32
+  String
+
+# Module: src/back/js/shared-text.bend:47
+law j_quote:
+  for +s: String
+  String
+
+# Module: src/back/js/shared-text.bend:7
 @unsafe
 def j_escape(
   +s: String,
@@ -13,19 +26,12 @@ def j_escape(
     case SCon{c, t}:
       j_escape_char(c) ++ j_escape(t)
 
-law j_escape_char:
-  for +c: Char
-  String
-
+# Module: src/back/js/shared-text.bend:21
 @unsafe
 def j_escape_char(c):
   j_escape_char_on(c, Char.to_u32(c))
 
-law j_escape_char_on:
-  for +c: Char
-  for +key: U32
-  String
-
+# Module: src/back/js/shared-text.bend:30
 @unsafe
 def j_escape_char_on(c, key):
   match key:
@@ -44,14 +50,12 @@ def j_escape_char_on(c, key):
     case n:
       Char.show(Char.from_u32(n))
 
-law j_quote:
-  for +s: String
-  String
-
+# Module: src/back/js/shared-text.bend:52
 @unsafe
 def j_quote(s):
   "\"" ++ j_escape(s) ++ "\""
 
+# Module: src/back/js/shared-text.bend:56
 @unsafe
 def j_private_float_magnitude(+bits: U32) -> String:
   +exponent = U32.and(U32.shrn(bits, 23n), 255)
@@ -60,10 +64,13 @@ def j_private_float_magnitude(+bits: U32) -> String:
     u => kc(String, U32.is_eq(fraction, 0), u => "0", u => "(" ++ U32.show(fraction) ++ "*2**(-149))"),
     u => "(" ++ U32.show(U32.add(fraction, 8388608)) ++ "*2**(" ++ j_private_float_power(exponent) ++ "))")
 
+# Module: src/back/js/shared-text.bend:64
 @unsafe
 def j_private_float_power(+exponent: U32) -> String:
   kc(String, U32.is_ge(exponent, 150), u => U32.show(U32.sub(exponent, 150)),
     u => "-" ++ U32.show(U32.sub(150, exponent)))
+
+# Module: src/back/js/shared-text.bend:68
 @unsafe
 def j_foreign_path(
   +paths: List<&2, KTerm>,

@@ -1,16 +1,39 @@
-# Private prepared alpha-renaming certificate. The driver binds this compact
-# state to one exact cached book/API/Base/path/interval; it is not a public proof.
+
+# Module: src/load/prefix.bend:3
 type FFreshPrefixState is Data:
   FFreshPrefixState{+next: U32, +ready: Bool}
 
+# Module: src/load/prefix.bend:6
 type FFreshPrefixTail is Data:
   FFreshPrefixTail{+suffix: List<&2,KDef>, +matched: Bool}
 
+# Module: src/load/prefix.bend:101
+type FPrefixGraph is Data:
+  FPrefixGraph{+graph: FGraph, +prefix: List<&2,KDef>, +suffix: List<&2,KDef>, +count: U32, +ready: Bool}
+  FReadyPrefixGraph{+graph: FGraph, +prefix: List<&2,KDef>, +suffix: List<&2,KDef>, +count: U32, +ready: Bool, +names: KDef, +ctors: KDef, +baseNames: KDef}
+
+# Private immutable parser scope, prepared only for the exact admitted Base.
+# Names retain the latest declaration event; constructors retain the first DFS.
+
+# Module: src/load/prefix.bend:107
+type FReadyPrefixState is Data:
+  FReadyPrefixState{+names: KDef, +ctors: KDef, +count: U32, +ready: Bool}
+
+# Module: src/load/prefix.bend:114
+type FPrefixCompletion is Data:
+  FPrefixCompletion{+carrier: FPrefixGraph, +parsed: FResult}
+
+# Module: src/load/prefix.bend:117
+type FPrefixLoad is Data:
+  FPrefixLoad{+trace: FLoadTrace, +prefix: List<&2,KDef>, +suffix: List<&2,KDef>, +ready: Bool}
+
+# Module: src/load/prefix.bend:9
 law f_fresh_prefix_exact_defs:
   for +left: List<&2,KDef>
   for +right: List<&2,KDef>
   Bool
 
+# Module: src/load/prefix.bend:15
 @unsafe
 def f_fresh_prefix_variant(+t: KTerm) -> U32:
   match t:
@@ -20,6 +43,8 @@ def f_fresh_prefix_variant(+t: KTerm) -> U32:
 
 # Unlike conversion equality, a loader snapshot retains variant, source spans
 # and explicit Lambda quantity presence. Worklists avoid nested tree recursion.
+
+# Module: src/load/prefix.bend:24
 @unsafe
 def f_fresh_prefix_exact_terms(+left: List<&2,KTerm>, +right: List<&2,KTerm>) -> Bool:
   match left right:
@@ -29,10 +54,12 @@ def f_fresh_prefix_exact_terms(+left: List<&2,KTerm>, +right: List<&2,KTerm>) ->
         u => f_fresh_prefix_exact_terms(norm_join(ks(a), ar), norm_join(ks(b), br)), u => False{})
     case other_left other_right: False{}
 
+# Module: src/load/prefix.bend:33
 @unsafe
 def f_fresh_prefix_exact_head(+a: KDef, +b: KDef) -> Bool:
-  String.eq(dn(a), dn(b)) && String.eq(dk(a), dk(b)) && U32.is_eq(da(a), da(b)) && U32.is_eq(dx(a), dx(b)) && Bool.not(Bool.xor(db(a), db(b))) && Bool.not(Bool.xor(du(a), du(b))) && U32.is_eq(f_graph_count_defs(dc(a), 0), f_graph_count_defs(dc(b), 0)) && f_fresh_prefix_exact_terms([dt(a), dv(a)], [dt(b), dv(b)])
+  p88_string_eq(dn(a), dn(b)) && p88_string_eq(dk(a), dk(b)) && U32.is_eq(da(a), da(b)) && U32.is_eq(dx(a), dx(b)) && Bool.not(Bool.xor(db(a), db(b))) && Bool.not(Bool.xor(du(a), du(b))) && U32.is_eq(f_graph_count_defs(dc(a), 0), f_graph_count_defs(dc(b), 0)) && f_fresh_prefix_exact_terms([dt(a), dv(a)], [dt(b), dv(b)])
 
+# Module: src/load/prefix.bend:37
 @unsafe
 def f_fresh_prefix_exact_defs(left, right):
   match left right:
@@ -44,16 +71,20 @@ def f_fresh_prefix_exact_defs(left, right):
 
 # Preparation executes the actual freshener once. Only an already canonical
 # prefix admits reuse; next is its returned counter, never a guessed max ID.
+
+# Module: src/load/prefix.bend:48
 @unsafe
 def f_fresh_prefix_prepare(+prefix: List<&2,KDef>) -> FFreshPrefixState:
   f_fresh_prefix_prepared(prefix, f_fresh_defs(prefix, 1))
 
+# Module: src/load/prefix.bend:52
 @unsafe
 def f_fresh_prefix_prepared(+prefix: List<&2,KDef>, +result: FFreshDefs) -> FFreshPrefixState:
   match result:
     case FFreshDefs{fresh, next}:
       FFreshPrefixState{next, f_fresh_prefix_exact_defs(prefix, fresh)}
 
+# Module: src/load/prefix.bend:58
 @unsafe
 def f_fresh_prefix_tail(+whole: List<&2,KDef>, +prefix: List<&2,KDef>) -> FFreshPrefixTail:
   match whole prefix:
@@ -63,12 +94,14 @@ def f_fresh_prefix_tail(+whole: List<&2,KDef>, +prefix: List<&2,KDef>) -> FFresh
         u => f_fresh_prefix_tail(ar, br), u => FFreshPrefixTail{Nil{}, False{}})
     case other_whole other_prefix: FFreshPrefixTail{Nil{}, False{}}
 
+# Module: src/load/prefix.bend:67
 @unsafe
 def f_fresh_prefix_finish(+prefix: List<&2,KDef>, +result: FFreshDefs, +imports: List<&2,KTerm>) -> FResult:
   match result:
     case FFreshDefs{suffix, next}:
       FResult{norm_defs_join(prefix, suffix), "", imports}
 
+# Module: src/load/prefix.bend:73
 @unsafe
 def f_fresh_prefix_selected(+original: FResult, +prefix: List<&2,KDef>, +next: U32, +imports: List<&2,KTerm>, +tail: FFreshPrefixTail) -> FResult:
   match tail:
@@ -77,6 +110,7 @@ def f_fresh_prefix_selected(+original: FResult, +prefix: List<&2,KDef>, +next: U
         u => f_fresh_prefix_finish(prefix, f_fresh_defs(suffix, next), imports),
         u => f_fresh_result(original))
 
+# Module: src/load/prefix.bend:81
 @unsafe
 def f_fresh_prefix_result(+original: FResult, +prefix: List<&2,KDef>, +state: FFreshPrefixState) -> FResult:
   match original state:
@@ -87,6 +121,8 @@ def f_fresh_prefix_result(+original: FResult, +prefix: List<&2,KDef>, +state: FF
 
 # This optional private entry preserves graph validation, freshness diagnostics
 # and origin refinement. Failed/error/nonleading certificates take the old path.
+
+# Module: src/load/prefix.bend:91
 @unsafe
 def f_graph_trace_from_prefix(+graph: FGraph, +sources: List<&2,FSource>, +prefix: List<&2,KDef>, +state: FFreshPrefixState) -> FLoadTrace:
   match graph:
@@ -98,29 +134,18 @@ def f_graph_trace_from_prefix(+graph: FGraph, +sources: List<&2,FSource>, +prefi
 # actual leading Base injection and advanced only by native completion below.
 # The driver never accepts a caller-created carrier or grants this path to raw
 # public seed/API objects. Existing graph/prefix APIs keep structural checks.
-type FPrefixGraph is Data:
-  FPrefixGraph{+graph: FGraph, +prefix: List<&2,KDef>, +suffix: List<&2,KDef>, +count: U32, +ready: Bool}
-  FReadyPrefixGraph{+graph: FGraph, +prefix: List<&2,KDef>, +suffix: List<&2,KDef>, +count: U32, +ready: Bool, +names: KDef, +ctors: KDef, +baseNames: KDef}
 
-# Private immutable parser scope, prepared only for the exact admitted Base.
-# Names retain the latest declaration event; constructors retain the first DFS.
-type FReadyPrefixState is Data:
-  FReadyPrefixState{+names: KDef, +ctors: KDef, +count: U32, +ready: Bool}
-
+# Module: src/load/prefix.bend:111
 @unsafe
 def f_ready_prefix_prepare(+prefix: List<&2,KDef>) -> FReadyPrefixState:
   FReadyPrefixState{index_build(List.reverse(&2,KDef,prefix)), f_ctor_index(prefix, missing()), f_graph_count_defs(prefix, 0), String.is_empty(f_error_defs(prefix)) && String.is_empty(f_graph_fresh_names(prefix, missing()))}
 
-type FPrefixCompletion is Data:
-  FPrefixCompletion{+carrier: FPrefixGraph, +parsed: FResult}
-
-type FPrefixLoad is Data:
-  FPrefixLoad{+trace: FLoadTrace, +prefix: List<&2,KDef>, +suffix: List<&2,KDef>, +ready: Bool}
-
+# Module: src/load/prefix.bend:121
 @unsafe
 def f_prefix_graph_empty() -> FPrefixGraph:
   FPrefixGraph{FGraph{Nil{}, "", Nil{}}, Nil{}, Nil{}, 0, False{}}
 
+# Module: src/load/prefix.bend:125
 @unsafe
 def f_prefix_complete_seed(+source: FSource, +ns: String, +carrier: FPrefixGraph, +path: String, +text: String, +book: List<&2,KDef>) -> FPrefixCompletion:
   match carrier:
@@ -129,10 +154,12 @@ def f_prefix_complete_seed(+source: FSource, +ns: String, +carrier: FPrefixGraph
     case FReadyPrefixGraph{graph, prefix, suffix, count, ready, names, ctors, baseNames}:
       f_prefix_seed_completed(graph, ns, ready, book, f_complete_seed(source, graph, path, text, book))
 
+# Module: src/load/prefix.bend:133
 @unsafe
 def f_prefix_complete_ready_seed(+source: FSource, +ns: String, +carrier: FPrefixGraph, +path: String, +text: String, +book: List<&2,KDef>, +state: FReadyPrefixState) -> FPrefixCompletion:
   f_prefix_ready_seed_completed(state, f_prefix_complete_seed(source, ns, carrier, path, text, book))
 
+# Module: src/load/prefix.bend:137
 @unsafe
 def f_prefix_ready_seed_completed(+state: FReadyPrefixState, +completed: FPrefixCompletion) -> FPrefixCompletion:
   match state completed:
@@ -144,12 +171,14 @@ def f_prefix_ready_seed_completed(+state: FReadyPrefixState, +completed: FPrefix
             u => completed)
         case FReadyPrefixGraph{graph, prefix, suffix, actual, eligible, oldNames, oldCtors, baseNames}: completed
 
+# Module: src/load/prefix.bend:148
 @unsafe
 def f_prefix_seed_completed(+prior: FGraph, +ns: String, +prior_ready: Bool, +prefix: List<&2,KDef>, +completion: FCompletion) -> FPrefixCompletion:
   match prior completion:
     case FGraph{book, error, done} FCompletion{graph, parsed}:
       f_prefix_seed_graph(graph, parsed, prefix, Bool.not(prior_ready) && List.is_empty(&2, KDef, book) && List.is_empty(&2, KTerm, done) && String.is_empty(error) && String.is_empty(ns))
 
+# Module: src/load/prefix.bend:154
 @unsafe
 def f_prefix_seed_graph(+graph: FGraph, +parsed: FResult, +prefix: List<&2,KDef>, +eligible: Bool) -> FPrefixCompletion:
   match graph parsed:
@@ -159,16 +188,20 @@ def f_prefix_seed_graph(+graph: FGraph, +parsed: FResult, +prefix: List<&2,KDef>
 # Native completion qualifies/fills/paths only its new fragment; prior KDefs
 # remain untouched in norm_defs_join(prior,new). Drop only the certified number
 # of top-level event cells to retain the actual suffix, without inspecting terms.
+
+# Module: src/load/prefix.bend:163
 @unsafe
 def f_prefix_drop(+book: List<&2,KDef>, +count: U32) -> FFreshPrefixTail:
   kc(FFreshPrefixTail, U32.is_eq(count, 0), u => FFreshPrefixTail{book, True{}}, u => f_prefix_drop_next(book, count))
 
+# Module: src/load/prefix.bend:167
 @unsafe
 def f_prefix_drop_next(+book: List<&2,KDef>, +count: U32) -> FFreshPrefixTail:
   match book:
     case Nil{}: FFreshPrefixTail{Nil{}, False{}}
     case Con{d, rest}: f_prefix_drop(rest, U32.sub(count, 1))
 
+# Module: src/load/prefix.bend:173
 @unsafe
 def f_prefix_complete_source(+source: FSource, +ns: String, +header: FHeader, +sources: List<&2,FSource>, +carrier: FPrefixGraph, +root: String) -> FPrefixCompletion:
   match carrier:
@@ -181,6 +214,8 @@ def f_prefix_complete_source(+source: FSource, +ns: String, +header: FHeader, +s
 
 # Carry the actual completed fragment instead of walking the Base spine twice
 # to rediscover it. Prior suffix cells and all prior term trees stay unchanged.
+
+# Module: src/load/prefix.bend:185
 @unsafe
 def f_prefix_ready_source_completed(+prefix: List<&2,KDef>, +suffix: List<&2,KDef>, +count: U32, +baseNames: KDef, +names: KDef, +ctors: KDef, +completion: FIndexedCompletion) -> FPrefixCompletion:
   match completion:
@@ -191,21 +226,24 @@ def f_prefix_ready_source_completed(+prefix: List<&2,KDef>, +suffix: List<&2,KDe
             u => FPrefixCompletion{FReadyPrefixGraph{graph, prefix, norm_defs_join(suffix, fragment), count, True{}, f_prefix_names_extend(fragment, names), f_prefix_ctors_extend(fragment, ctors), baseNames}, parsed},
             u => FPrefixCompletion{FPrefixGraph{graph, prefix, Nil{}, count, False{}}, parsed})
 
+# Module: src/load/prefix.bend:195
 @unsafe
 def f_prefix_names_extend(+defs: List<&2,KDef>, +names: KDef) -> KDef:
   match defs:
     case Nil{}: names
     case Con{d, rest}: f_prefix_names_extend(rest, index_set(names, d, index_hash(dn(d), 2166136261), 32))
 
+# Module: src/load/prefix.bend:201
 @unsafe
 def f_prefix_ctors_extend(+defs: List<&2,KDef>, +ctors: KDef) -> KDef:
   match defs:
     case Nil{}: ctors
     case Con{d, rest}:
       +hash = index_hash(dn(d), 2166136261)
-      +next = kc(KDef, String.eq(dk(d), "Ctr") && String.eq(dk(index_find(ctors, dn(d), hash, 32)), "Absent"), u => index_set(ctors, d, hash, 32), u => ctors)
+      +next = kc(KDef, p88_string_eq(dk(d), "Ctr") && p88_string_eq(dk(index_find(ctors, dn(d), hash, 32)), "Absent"), u => index_set(ctors, d, hash, 32), u => ctors)
       f_prefix_ctors_extend(rest, f_prefix_ctors_extend(dc(d), next))
 
+# Module: src/load/prefix.bend:210
 @unsafe
 def f_prefix_source_completed(+prefix: List<&2,KDef>, +count: U32, +ready: Bool, +completion: FCompletion) -> FPrefixCompletion:
   match completion:
@@ -216,11 +254,13 @@ def f_prefix_source_completed(+prefix: List<&2,KDef>, +count: U32, +ready: Bool,
             u => f_prefix_source_tail(graph, parsed, prefix, count, f_prefix_drop(book, count)),
             u => FPrefixCompletion{FPrefixGraph{graph, prefix, Nil{}, count, False{}}, parsed})
 
+# Module: src/load/prefix.bend:220
 @unsafe
 def f_prefix_source_tail(+graph: FGraph, +parsed: FResult, +prefix: List<&2,KDef>, +count: U32, +tail: FFreshPrefixTail) -> FPrefixCompletion:
   match tail:
     case FFreshPrefixTail{suffix, matched}: FPrefixCompletion{FPrefixGraph{graph, prefix, suffix, count, matched}, parsed}
 
+# Module: src/load/prefix.bend:225
 @unsafe
 def f_prefix_graph_trace(+carrier: FPrefixGraph, +sources: List<&2,FSource>, +state: FFreshPrefixState) -> FPrefixLoad:
   match carrier:
@@ -236,16 +276,19 @@ def f_prefix_graph_trace(+carrier: FPrefixGraph, +sources: List<&2,FSource>, +st
             u => f_prefix_trace_validated(graph, sources, prefix, suffix, next, True{}, f_prefix_ready_validate(book, suffix, error, baseNames)),
             u => f_prefix_graph_trace(FPrefixGraph{graph, prefix, suffix, count, ready}, sources, state))
 
+# Module: src/load/prefix.bend:240
 @unsafe
 def f_prefix_ready_validate(+whole: List<&2,KDef>, +suffix: List<&2,KDef>, +error: String, +baseNames: KDef) -> FResult:
   f_prefix_ready_validated(whole, baseNames, f_validate_result(FResult{suffix, error, Nil{}}))
 
+# Module: src/load/prefix.bend:244
 @unsafe
 def f_prefix_ready_validated(+whole: List<&2,KDef>, +baseNames: KDef, +validated: FResult) -> FResult:
   match validated:
     case FResult{book, checked, imports}:
       FResult{whole, kc(String, String.is_empty(checked), u => f_graph_fresh_names(book, baseNames), u => checked), imports}
 
+# Module: src/load/prefix.bend:250
 @unsafe
 def f_prefix_trace_validated(+graph: FGraph, +sources: List<&2,FSource>, +prefix: List<&2,KDef>, +suffix: List<&2,KDef>, +next: U32, +ready: Bool, +validated: FResult) -> FPrefixLoad:
   match validated:
@@ -254,12 +297,14 @@ def f_prefix_trace_validated(+graph: FGraph, +sources: List<&2,FSource>, +prefix
         u => f_prefix_trace_fresh(graph, sources, prefix, imports, f_fresh_defs(suffix, next)),
         u => f_prefix_trace_fallback(graph, sources, validated))
 
+# Module: src/load/prefix.bend:258
 @unsafe
 def f_prefix_trace_fresh(+graph: FGraph, +sources: List<&2,FSource>, +prefix: List<&2,KDef>, +imports: List<&2,KTerm>, +fresh: FFreshDefs) -> FPrefixLoad:
   match graph fresh:
     case FGraph{book, error, done} FFreshDefs{suffix, next}:
       FPrefixLoad{FLoadTrace{fpe_graph_result(graph, sources, FResult{norm_defs_join(prefix, suffix), "", imports}), done, sources}, prefix, suffix, True{}}
 
+# Module: src/load/prefix.bend:264
 @unsafe
 def f_prefix_trace_fallback(+graph: FGraph, +sources: List<&2,FSource>, +validated: FResult) -> FPrefixLoad:
   match graph:

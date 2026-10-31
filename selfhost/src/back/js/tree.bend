@@ -1,33 +1,36 @@
-# Two pure scalar children use a private depth-first continuation stack. Public
-# matcher entry and every refused shape keep the original generic evaluation.
 
+# Module: src/back/js/tree.bend:5
 @unsafe
 def j_tree_worker(+book: List<&2,KDef>, +d: KDef) -> String:
   kc(String, j_nat_scalar_shape(book, d), u =>
     kc(String, j_region_signature(book, dt(d), da(d)), u =>
       j_tree_checked(book, d, kid(j_strip(dv(d)), 0), j_strip(kid(j_strip(kid(j_strip(dv(d)), 1)), 0))), u => ""), u => "")
 
+# Module: src/back/js/tree.bend:11
 @unsafe
 def j_tree_checked(+book: List<&2,KDef>, +d: KDef, +zero: KTerm, +succ: KTerm) -> String:
   kc(String, j_tree_shape(j_nat_loop_unwrap(succ), dn(d), ix(succ), da(d)), u =>
     kc(String, j_tree_distinct(succ, j_nat_loop_unwrap(succ)), u => j_tree_zero(book, d, zero, succ,
       j_region_prefix(book, Nil{}, zero, j_arm_type(book, wnf(book, dt(d)), "Zero"), 0, U32.sub(da(d), 1), True{}, "", [dn(d)], 0,
-        JRegionBuild{atom("Absent"), Nil{}, 32768, True{}})), u => ""), u => "")
+        JRegionBuild{{KTerm{"Absent", "", 0, 0, Nil{}, Nil{}, 0, 0} : KTerm}, Nil{}, 32768, True{}})), u => ""), u => "")
 
+# Module: src/back/js/tree.bend:18
 @unsafe
 def j_tree_shape(+t: KTerm, +name: String, +pred: U32, +total: U32) -> Bool:
-  kc(Bool, String.eq(tg(t), "Let") && U32.is_eq(terms_len(ks(t)), 3), u =>
+  kc(Bool, p98_tag_eq(t, "Let") && U32.is_eq(terms_len(ks(t)), 3), u =>
     kc(Bool, j_nat_loop_bindings(ks(t), pred, Nil{}) && Bool.not(U32.is_eq(qt(kid(t, 0)), 0)) && Bool.not(U32.is_eq(qt(kid(t, 1)), 0)), u =>
       j_nat_loop_call(j_call_spine(kid(kid(t, 0), 0), Nil{}), name, pred, total) &&
       j_nat_loop_call(j_call_spine(kid(kid(t, 1), 0), Nil{}), name, pred, total), u => False{}), u => False{})
 
+# Module: src/back/js/tree.bend:25
 @unsafe
 def j_tree_distinct(+t: KTerm, +body: KTerm) -> Bool:
   +head = j_strip(t)
-  kc(Bool, String.eq(tg(head), "Lam"), u =>
+  kc(Bool, p98_tag_eq(head, "Lam"), u =>
     kc(Bool, Bool.not(U32.is_eq(ix(head), ix(kid(body, 0)))) && Bool.not(U32.is_eq(ix(head), ix(kid(body, 1)))),
       u => j_tree_distinct(kid(head, 0), body), u => False{}), u => True{})
 
+# Module: src/back/js/tree.bend:32
 @unsafe
 def j_tree_zero(+book: List<&2,KDef>, +d: KDef, +zero: KTerm, +succ: KTerm, +s: JRegionBuild) -> String:
   kc(String, j_region_valid(s), u =>
@@ -36,6 +39,8 @@ def j_tree_zero(+book: List<&2,KDef>, +d: KDef, +zero: KTerm, +succ: KTerm, +s: 
 
 # Both child RHSs see only the original parent environment. The combination
 # sees only the two new results, so no parent capture survives an unwind.
+
+# Module: src/back/js/tree.bend:40
 @unsafe
 def j_tree_prefix(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: KTerm, +left: U32, +name: String, +s: JRegionBuild) -> JRegionBuild:
   +body = j_strip(t)
@@ -48,12 +53,14 @@ def j_tree_prefix(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: KT
         Con{kt("Env", "", ix(body), 0, [kid(head, 0)]), env}, kid(body, 0),
         subst(kid(head, 1), ix(head), var(nm(body), ix(body))), U32.sub(left, 1), name, j_region_tick(s)))), u => j_region_fail(s))
 
+# Module: src/back/js/tree.bend:52
 @unsafe
 def j_tree_left(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: KTerm, +name: String, +s: JRegionBuild) -> JRegionBuild:
   kc(JRegionBuild, j_region_valid(s), u =>
     j_tree_right(book, t, ty, name, k_with_children(kid(t, 0), [j_region_term(s)]),
       j_region_expr(book, env, kid(kid(t, 1), 0), ty, name, [name], 0, 0, s)), u => s)
 
+# Module: src/back/js/tree.bend:58
 @unsafe
 def j_tree_right(+book: List<&2,KDef>, +t: KTerm, +ty: KTerm, +name: String, +left: KTerm, +s: JRegionBuild) -> JRegionBuild:
   kc(JRegionBuild, j_region_valid(s), u =>
@@ -61,10 +68,12 @@ def j_tree_right(+book: List<&2,KDef>, +t: KTerm, +ty: KTerm, +name: String, +le
       j_region_expr(book, [kt("Env", "", ix(kid(t, 0)), 0, [ty]), kt("Env", "", ix(kid(t, 1)), 0, [ty])],
         kid(t, 2), ty, "", [name], 0, 0, s)), u => s)
 
+# Module: src/back/js/tree.bend:65
 @unsafe
 def j_tree_combine(+t: KTerm, +ty: KTerm, +left: KTerm, +right: KTerm, +s: JRegionBuild) -> JRegionBuild:
   j_region_result(s, j_region_annotate(k_with_children(t, [left, right, j_region_term(s)]), ty))
 
+# Module: src/back/js/tree.bend:69
 @unsafe
 def j_tree_done(+book: List<&2,KDef>, +d: KDef, +zero: KTerm, +succ: KTerm, +fastZero: KTerm, +s: JRegionBuild) -> String:
   kc(String, j_region_valid(s), u =>
@@ -72,6 +81,7 @@ def j_tree_done(+book: List<&2,KDef>, +d: KDef, +zero: KTerm, +succ: KTerm, +fas
       kc(List<&2,KDef>, j_array_view_plan_terms(book, d, s, [fastZero, j_region_term(s)], True{}),
         u => j_array_view_book(book), u => book)), u => "")
 
+# Module: src/back/js/tree.bend:76
 @unsafe
 def j_tree_done_array(+book: List<&2,KDef>, +d: KDef, +zero: KTerm, +succ: KTerm, +fastZero: KTerm, +s: JRegionBuild, +private: List<&2,KDef>) -> String:
   "scalarCapture(" ++ j_quote(dn(d)) ++ ",(()=>{" ++ j_region_declarations(book, j_region_helpers(s)) ++
@@ -85,12 +95,15 @@ def j_tree_done_array(+book: List<&2,KDef>, +d: KDef, +zero: KTerm, +succ: KTerm
 
 # Share a complete checked entry only inside a scalar-input, independently pure
 # residual graph. Delayed results and exceptions leave the proof in finally.
+
+# Module: src/back/js/tree.bend:89
 @unsafe
 def j_tree_scope(+book: List<&2,KDef>, +d: KDef, +helpers: List<&2,KDef>, +body: String) -> String:
   kc(String, j_fold_root_signature(book, dt(d), da(d)) && j_region_has_residual(helpers), u =>
     kc(String, j_pure_valid(j_pure_graph(book, d, JPure{Nil{}, 32768, True{}})), u =>
       "const $previousProof=regionProofOpen($guards);try{" ++ body ++ "}finally{regionProofClose($previousProof);}", u => body), u => body)
 
+# Module: src/back/js/tree.bend:95
 @unsafe
 def j_tree_body(+book: List<&2,KDef>, +d: KDef, +zero: KTerm, +succ: KTerm) -> String:
   "$s0=$s0+1n;const $frames=[];let $top=0,$value;$visit:for(;;){if($s0!==0n){" ++
@@ -100,11 +113,12 @@ def j_tree_body(+book: List<&2,KDef>, +d: KDef, +zero: KTerm, +succ: KTerm) -> S
   j_tree_enter(book, Nil{}, succ, j_arm_type(book, wnf(book, dt(d)), "Succ"), d, succ, 0, True{}) ++ "}" ++
   j_tree_unwind(book, j_nat_loop_unwrap(succ)) ++ "--$top;}return $value;}"
 
+# Module: src/back/js/tree.bend:104
 @unsafe
 def j_tree_enter(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: KTerm, +d: KDef, +succ: KTerm, +at: U32, +right: Bool) -> String:
   +body = j_strip(t)
   +head = wnf(book, ty)
-  kc(String, String.eq(tg(body), "Lam"), u =>
+  kc(String, p98_tag_eq(body, "Lam"), u =>
     "const " ++ j_local(ix(body)) ++ "=" ++ kc(String, right,
       u => "$frame.args[" ++ U32.show(at) ++ "]",
       u => "$s" ++ U32.show(at) ++ kc(String, U32.is_eq(at, 0), u => "-1n", u => "")) ++ ";" ++
@@ -114,37 +128,43 @@ def j_tree_enter(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: KTe
     kc(String, right, u => "", u => j_tree_push(succ)) ++
     j_nat_loop_assign(da(d), 0) ++ "continue $visit;")
 
+# Module: src/back/js/tree.bend:118
 @unsafe
 def j_tree_push(+succ: KTerm) -> String:
   "const $saved=$frames[$top++];if($saved){" ++ j_tree_save(succ, 0) ++
   "$saved.phase=0;$saved.left=null;}else $frames[$top-1]={args:[" ++
   j_tree_aliases(succ) ++ "],phase:0,left:null};"
 
+# Module: src/back/js/tree.bend:124
 @unsafe
 def j_tree_save(+t: KTerm, +at: U32) -> String:
   +body = j_strip(t)
-  kc(String, String.eq(tg(body), "Lam"), u =>
+  kc(String, p98_tag_eq(body, "Lam"), u =>
     "$saved.args[" ++ U32.show(at) ++ "]=" ++ j_local(ix(body)) ++ ";" ++
     j_tree_save(kid(body, 0), U32.inc(at)), u => "")
 
+# Module: src/back/js/tree.bend:131
 @unsafe
 def j_tree_aliases(+t: KTerm) -> String:
   +body = j_strip(t)
-  kc(String, String.eq(tg(body), "Lam"), u => j_local(ix(body)) ++ "," ++ j_tree_aliases(kid(body, 0)), u => "")
+  kc(String, p98_tag_eq(body, "Lam"), u => j_local(ix(body)) ++ "," ++ j_tree_aliases(kid(body, 0)), u => "")
 
+# Module: src/back/js/tree.bend:136
 @unsafe
 def j_tree_unwind(+book: List<&2,KDef>, +body: KTerm) -> String:
   "const " ++ j_local(ix(kid(body, 0))) ++ "=$frame.left;const " ++ j_local(ix(kid(body, 1))) ++ "=$value;" ++
-  "$value=" ++ j_expr(book, j_context(book, Nil{}, ks(body)), kid(body, 2), atom("Absent"), False{}) ++ ";"
+  "$value=" ++ j_expr(book, j_context(book, Nil{}, ks(body)), kid(body, 2), {KTerm{"Absent", "", 0, 0, Nil{}, Nil{}, 0, 0} : KTerm}, False{}) ++ ";"
 
 # Closed two-result structural components share the existing scalar proof.
 # Original typed prefixes and tagged values remain; only self calls use frames.
+
+# Module: src/back/js/tree.bend:143
 @unsafe
 def j_component_plan(+book: List<&2,KDef>, +d: KDef) -> JPure:
   +head = wnf(book, dt(d))
-  kc(JPure, String.eq(dk(d), "Def") && Bool.not(db(d)) && U32.is_eq(dx(d), 0) &&
-    U32.is_gt(da(d), 0) && U32.is_le(da(d), 8) && String.eq(tg(head), "All"), u =>
-    kc(JPure, (String.eq(tg(wnf(book, kid(head, 0))), "ADT") && Bool.not(db(lookup(book, nm(wnf(book, kid(head, 0))))))) ||
+  kc(JPure, p88_string_eq(dk(d), "Def") && Bool.not(db(d)) && U32.is_eq(dx(d), 0) &&
+    U32.is_gt(da(d), 0) && U32.is_le(da(d), 8) && p98_tag_eq(head, "All"), u =>
+    kc(JPure, (p98_tag_eq(wnf(book, kid(head, 0)), "ADT") && Bool.not(db(lookup(book, nm(wnf(book, kid(head, 0))))))) ||
       j_list_ground_type(book, kid(head, 0)) || j_pure_closed_list(book, kid(head, 0)) || j_pure_closed_map(book, kid(head, 0)) ||
       j_string_string(book, wnf(book, kid(head, 0))) ||
       # Nat-to-scalar workers retain the existing scalar island selection.
@@ -165,6 +185,8 @@ def j_component_plan(+book: List<&2,KDef>, +d: KDef) -> JPure:
 # Preserve recursive admission. Acyclic ADT-first wrappers need a direct
 # reference to an independently admitted recursive component; scalar-first,
 # Nat-first and List wrappers retain their previous selection.
+
+# Module: src/back/js/tree.bend:169
 @unsafe
 def j_component_admit(+book: List<&2,KDef>, +d: KDef) -> Bool:
   kc(Bool, U32.is_gt(j_component_refs([dv(d)], dn(d), 1024, 0), 0), u => True{}, u =>
@@ -174,15 +196,20 @@ def j_component_admit(+book: List<&2,KDef>, +d: KDef) -> Bool:
 
 # Acyclic data wrappers only: recursive scalar-first loops and scalar results
 # retain their existing scalar island selection. Nat keeps its stronger ABI gate.
+
+# Module: src/back/js/tree.bend:178
 @unsafe
 def j_component_scalar_wrapper_arg(+book: List<&2,KDef>, +arg: KTerm) -> Bool:
   j_primitive_type(book, arg, "U32") || j_primitive_type(book, arg, "Bool") || j_primitive_type(book, arg, "F32")
 
+# Module: src/back/js/tree.bend:182
 @unsafe
 def j_component_wrapper_arg(+book: List<&2,KDef>, +arg: KTerm) -> Bool:
-  String.eq(tg(arg), "ADT") && (Bool.not(db(lookup(book, nm(arg)))) || j_pure_closed_map(book, arg))
+  p98_tag_eq(arg, "ADT") && (Bool.not(db(lookup(book, nm(arg)))) || j_pure_closed_map(book, arg))
 
 # Reuse the already computed complete graph, rather than proving it twice.
+
+# Module: src/back/js/tree.bend:187
 @unsafe
 def j_component_select(+book: List<&2,KDef>, +d: KDef, +pure: JPure) -> JPure:
   kc(JPure, j_pure_valid(pure), u =>
@@ -190,6 +217,7 @@ def j_component_select(+book: List<&2,KDef>, +d: KDef, +pure: JPure) -> JPure:
       kc(JPure, j_component_wrapper_calls(book, d, j_pure_defs(pure)), u => pure,
         u => JPure{Nil{}, 0, False{}})), u => pure)
 
+# Module: src/back/js/tree.bend:194
 @unsafe
 def j_component_wrapper_calls(+book: List<&2,KDef>, +d: KDef, +ds: List<&2,KDef>) -> Bool:
   match ds:
@@ -205,19 +233,23 @@ def j_component_wrapper_calls(+book: List<&2,KDef>, +d: KDef, +ds: List<&2,KDef>
 
 # Reject mutual backedges into this worker: forcing such a leaf could otherwise
 # nest native worker calls instead of remaining in the runtime tail trampoline.
+
+# Module: src/back/js/tree.bend:209
 @unsafe
 def j_component_closed(+d: KDef, +pure: JPure) -> JPure:
   kc(JPure, j_pure_valid(pure) && j_component_backedges(j_pure_defs(pure), dn(d)), u => pure,
     u => JPure{Nil{}, 0, False{}})
 
+# Module: src/back/js/tree.bend:214
 @unsafe
 def j_component_backedges(+ds: List<&2,KDef>, +name: String) -> Bool:
   match ds:
     case Nil{}: True{}
     case Con{d, rest}:
-      kc(Bool, String.eq(dn(d), name) || U32.is_eq(j_component_refs([dv(d)], name, 8192, 0), 0),
+      kc(Bool, p88_string_eq(dn(d), name) || U32.is_eq(j_component_refs([dv(d)], name, 8192, 0), 0),
         u => j_component_backedges(rest, name), u => False{})
 
+# Module: src/back/js/tree.bend:222
 @unsafe
 def j_component_refs(+todo: List<&2,KTerm>, +name: String, +fuel: U32, +count: U32) -> U32:
   match todo:
@@ -225,22 +257,26 @@ def j_component_refs(+todo: List<&2,KTerm>, +name: String, +fuel: U32, +count: U
     case Con{t, rest}:
       kc(U32, U32.is_eq(fuel, 0) || U32.is_ge(count, 3), u => 3, u =>
         j_component_refs(List.append(&2, KTerm, ks(t), rest), name, U32.sub(fuel, 1),
-          U32.add(count, kc(U32, String.eq(tg(t), "Ref") && String.eq(nm(t), name), u => 1, u => 0))))
+          U32.add(count, kc(U32, p98_tag_eq(t, "Ref") && p88_string_eq(nm(t), name), u => 1, u => 0))))
 
+# Module: src/back/js/tree.bend:231
 @unsafe
 def j_component_slots(+at: U32, +total: U32) -> List<&2,String>:
   kc(List<&2,String>, U32.is_eq(at, total), u => Nil{}, u =>
     Con{kc(String, U32.is_eq(at, 0), u => "@root", u => ""), j_component_slots(U32.inc(at), total)})
 
+# Module: src/back/js/tree.bend:236
 @unsafe
 def j_component_fields(+origin: String, +left: U32, +rest: List<&2,String>) -> List<&2,String>:
   kc(List<&2,String>, U32.is_eq(left, 0), u => rest, u =>
-    Con{kc(String, String.eq(origin, ""), u => "", u => "@child"), j_component_fields(origin, U32.sub(left, 1), rest)})
+    Con{kc(String, p88_string_eq(origin, ""), u => "", u => "@child"), j_component_fields(origin, U32.sub(left, 1), rest)})
 
 # Every recursive first argument is a proper field descendant of the first
 # original ADT, or the primitive predecessor extracted by a guarded Nat match.
 # Reconstructed/equal Nat expressions are refused by the unchanged Var-origin
 # check. No caller-provided value is admitted by this compile-time test.
+
+# Module: src/back/js/tree.bend:245
 @unsafe
 def j_component_prefix(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: KTerm, +slots: List<&2,String>, +d: KDef, +depth: U32) -> Bool:
   match slots:
@@ -248,13 +284,14 @@ def j_component_prefix(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +t
     case Con{origin, rest}:
       +body = j_strip(t)
       +head = wnf(book, ty)
-      kc(Bool, U32.is_lt(depth, 32) && String.eq(tg(head), "All") && Bool.not(U32.is_eq(qt(head), 0)), u =>
-        kc(Bool, String.eq(tg(body), "Lam") && String.eq(j_l_name(body), ""), u =>
+      kc(Bool, U32.is_lt(depth, 32) && p98_tag_eq(head, "All") && Bool.not(U32.is_eq(qt(head), 0)), u =>
+        kc(Bool, p98_tag_eq(body, "Lam") && p88_string_eq(j_l_name(body), ""), u =>
           j_component_prefix(book, Con{kt("Env", origin, ix(body), 0, [kid(head, 0)]), env}, kid(body, 0),
             subst(kid(head, 1), ix(head), var(nm(body), ix(body))), rest, d, U32.inc(depth)), u =>
-        kc(Bool, String.eq(tg(body), "Efq"), u => True{}, u =>
+        kc(Bool, p98_tag_eq(body, "Efq"), u => True{}, u =>
           j_component_match(book, env, body, head, slots, d, depth))), u => False{})
 
+# Module: src/back/js/tree.bend:259
 @unsafe
 def j_component_match(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: KTerm, +slots: List<&2,String>, +d: KDef, +depth: U32) -> Bool:
   match slots:
@@ -263,54 +300,62 @@ def j_component_match(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty
       +arg = wnf(book, kid(ty, 0))
       +owner = lookup(book, nm(arg))
       +c = lookup(dc(owner), nm(t))
-      kc(Bool, String.eq(tg(t), "Mat") && String.eq(j_l_name(t), "") && U32.is_eq(terms_len(ks(t)), 2) &&
-        String.eq(dk(c), "Ctr") && (j_primitive_type(book, arg, "Bool") || j_list_ground_type(book, arg) ||
+      kc(Bool, p98_tag_eq(t, "Mat") && p88_string_eq(j_l_name(t), "") && U32.is_eq(terms_len(ks(t)), 2) &&
+        p88_string_eq(dk(c), "Ctr") && (j_primitive_type(book, arg, "Bool") || j_list_ground_type(book, arg) ||
           j_pure_closed_list(book, arg) || j_pure_closed_sigma(book, arg) || j_pure_closed_map(book, arg) || j_map_closed_maybe(book, arg) || j_map_cmp_type(book, arg) || j_string_string(book, arg) || j_string_char_type(book, arg) || (j_primitive_type(book, arg, "Nat") && j_nat_loop_native(book)) || (Bool.not(db(owner)) && Bool.not(db(c)))), u =>
         j_component_prefix(book, env, kid(t, 0), j_arm_type(book, ty, nm(t)), j_component_fields(origin, da(c), rest), d, U32.inc(depth)) &&
         j_component_prefix(book, env, kid(t, 1), ty, slots, d, U32.inc(depth)), u => False{})
 
+# Module: src/back/js/tree.bend:273
 @unsafe
 def j_component_origin(+env: List<&2,KTerm>, +id: U32) -> String:
   match env:
     case Nil{}: ""
     case Con{h, rest}: kc(String, U32.is_eq(ix(h), id), u => nm(h), u => j_component_origin(rest, id))
 
+# Module: src/back/js/tree.bend:279
 @unsafe
 def j_component_self(+env: List<&2,KTerm>, +t: KTerm, +d: KDef) -> Bool:
   +spine = j_call_spine(j_strip(t), Nil{})
   +first = j_strip(kid(spine, 0))
-  String.eq(tg(spine), "Call") && String.eq(nm(spine), dn(d)) && U32.is_eq(terms_len(ks(spine)), da(d)) &&
-    ((String.eq(tg(first), "Var") && String.eq(j_component_origin(env, ix(first)), "@child")) ||
-      (String.eq(dk(index_first(dc(d))), "JErasedInstance") && String.eq(tg(first), "Ctr") && j_instance_child_fields(env, ks(first))))
+  p98_tag_eq(spine, "Call") && p88_string_eq(nm(spine), dn(d)) && U32.is_eq(terms_len(ks(spine)), da(d)) &&
+    ((p98_tag_eq(first, "Var") && p88_string_eq(j_component_origin(env, ix(first)), "@child")) ||
+      (p88_string_eq(dk(index_first(dc(d))), "JErasedInstance") && p98_tag_eq(first, "Ctr") && j_instance_child_fields(env, ks(first))))
 
+# Module: src/back/js/tree.bend:287
 @unsafe
 def j_component_leaf(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +d: KDef) -> Bool:
   +calls = j_component_refs([t], dn(d), 1024, 0)
   kc(Bool, U32.is_eq(calls, 0), u => True{}, u =>
-    kc(Bool, U32.is_eq(calls, 2) && String.eq(tg(t), "Let") && U32.is_eq(terms_len(ks(t)), 3), u =>
+    kc(Bool, U32.is_eq(calls, 2) && p98_tag_eq(t, "Let") && U32.is_eq(terms_len(ks(t)), 3), u =>
       j_nat_loop_bindings(ks(t), 0, Nil{}) && j_component_independent(env, t) &&
       Bool.not(U32.is_eq(qt(kid(t, 0)), 0)) && Bool.not(U32.is_eq(qt(kid(t, 1)), 0)) &&
       j_component_self(env, kid(kid(t, 0), 0), d) && j_component_self(env, kid(kid(t, 1), 0), d), u => kc(Bool, U32.is_eq(calls, 2), u => j_sequence_leaf(book, env, t, d), u => j_linear_leaf(book, env, t, d))))
 
 # Calls keep the existing generic fallback and require the COMPLETE graph,
 # rather than just the immediate function's descriptor, in the active proof.
+
+# Module: src/back/js/tree.bend:298
 @unsafe
 def j_component_named(+book: List<&2,KDef>, +env: List<&2,KTerm>, +spine: KTerm, +generic: String) -> String:
   +d = lookup(book, nm(spine))
   kc(String, U32.is_eq(terms_len(ks(spine)), da(d)), u =>
     j_component_call(book, env, spine, generic, j_component_cached(book, dn(d))), u => generic)
 
+# Module: src/back/js/tree.bend:304
 @unsafe
 def j_component_call(+book: List<&2,KDef>, +env: List<&2,KTerm>, +spine: KTerm, +generic: String, +pure: JPure) -> String:
   kc(String, j_pure_valid(pure), u =>
     "(regionProof!==null&&regionProofCovers([" ++ j_region_names(j_pure_defs(pure)) ++ "])?" ++
       j_region_name(nm(spine)) ++ "$tree(" ++ j_apply_args(book, env, ks(spine), dt(lookup(book, nm(spine)))) ++ "):" ++ generic ++ ")", u => generic)
 
+# Module: src/back/js/tree.bend:310
 @unsafe
 def j_component_declaration(+book: List<&2,KDef>, +d: KDef, +pure: JPure) -> String:
   kc(String, j_pure_valid(pure), u =>
     j_component_covered_declaration(book, d, j_owned_term(j_covered_term(book, j_pure_remove(j_pure_defs(pure), dn(d)), dn(d), dv(d)))), u => "")
 
+# Module: src/back/js/tree.bend:315
 @unsafe
 def j_component_covered_declaration(+book: List<&2,KDef>, +d: KDef, +body: KTerm) -> String:
   kc(String, kc(Bool, j_flat_active(book), u => False{}, u => j_pair_loop_shape(book, d)), u => j_pair_loop_declaration(book, d), u =>
@@ -321,6 +366,8 @@ def j_component_covered_declaration(+book: List<&2,KDef>, +d: KDef, +body: KTerm
 
 # The normal and exhausted-budget declarations use the original iterative body.
 # Only their private names differ; generic/public declarations stay unchanged.
+
+# Module: src/back/js/tree.bend:325
 @unsafe
 def j_component_stack_declaration(+book: List<&2,KDef>, +d: KDef, +body: KTerm, +suffix: String) -> String:
   "function " ++ j_region_name(dn(d)) ++ suffix ++ "(" ++ j_region_parameters(0, da(d)) ++ "){/* private structural component */" ++
@@ -332,20 +379,26 @@ def j_component_stack_declaration(+book: List<&2,KDef>, +d: KDef, +body: KTerm, 
     "if($frame.phase===2){" ++ j_component_emit(book, Nil{}, body, dt(d), j_component_values(0, da(d)), d, 3) ++ "--$top;}else if($frame.phase===0){$frame.left=$value;$frame.phase=1;" ++
     j_component_emit(book, Nil{}, body, dt(d), j_component_values(0, da(d)), d, 1) ++ "}else{" ++
     j_component_emit(book, Nil{}, body, dt(d), j_component_values(0, da(d)), d, 2) ++ "--$top;}}return $value;}}\n")
+
+# Module: src/back/js/tree.bend:336
 @unsafe
 def j_component_values(+at: U32, +total: U32) -> List<&2,String>:
   kc(List<&2,String>, U32.is_eq(at, total), u => Nil{}, u => Con{"$s" ++ U32.show(at), j_component_values(U32.inc(at), total)})
 
+# Module: src/back/js/tree.bend:340
 @unsafe
 def j_component_restore(+at: U32, +total: U32) -> String:
   kc(String, U32.is_eq(at, total), u => "", u => "$s" ++ U32.show(at) ++ "=$frame.args[" ++ U32.show(at) ++ "];" ++ j_component_restore(U32.inc(at), total))
 
+# Module: src/back/js/tree.bend:344
 @unsafe
 def j_component_save(+at: U32, +total: U32) -> String:
   kc(String, U32.is_eq(at, total), u => "", u => "$s" ++ U32.show(at) ++ "," ++ j_component_save(U32.inc(at), total))
 
 # Prefix emission repeats only inert private reads on resume. Leaf work occurs
 # once; each child argument vector is evaluated at its original source phase.
+
+# Module: src/back/js/tree.bend:350
 @unsafe
 def j_component_emit(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: KTerm, +args: List<&2,String>, +d: KDef, +phase: U32) -> String:
   match args:
@@ -353,21 +406,24 @@ def j_component_emit(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty:
     case Con{arg, rest}:
       +body = j_strip(t)
       +head = wnf(book, ty)
-      kc(String, String.eq(tg(body), "Lam"), u =>
+      kc(String, p98_tag_eq(body, "Lam"), u =>
         "const " ++ j_local(ix(body)) ++ "=" ++ arg ++ ";" ++
         j_component_emit(book, Con{kt("Env", "", ix(body), 0, [kid(head, 0)]), env}, kid(body, 0),
           subst(kid(head, 1), ix(head), var(nm(body), ix(body))), rest, d, phase), u =>
-      kc(String, String.eq(tg(body), "Mat"), u => j_component_emit_match(book, env, body, head, arg, rest, d, phase),
+      kc(String, p98_tag_eq(body, "Mat"), u => j_component_emit_match(book, env, body, head, arg, rest, d, phase),
         u => "return bad('private component prefix invariant');"))
 
 # Full original JPure coverage plus exact closed native Sigma identity proves
 # the sole Tuple arm. Its owned pair fields are dense slots, not tagged .a.
+
+# Module: src/back/js/tree.bend:366
 @unsafe
 def j_component_emit_match(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: KTerm, +arg: String, +rest: List<&2,String>, +d: KDef, +phase: U32) -> String:
-  kc(String, j_pure_closed_sigma(book, wnf(book, kid(ty, 0))) && String.eq(nm(t), "Tuple"),
+  kc(String, j_pure_closed_sigma(book, wnf(book, kid(ty, 0))) && p88_string_eq(nm(t), "Tuple"),
     u => "{" ++ j_component_emit(book, env, kid(t, 0), j_arm_type(book, ty, "Tuple"), j_native_tuple_fields(arg, 0, rest), d, phase) ++ "}",
     u => j_component_emit_match_tagged(book, env, t, ty, arg, rest, d, phase))
 
+# Module: src/back/js/tree.bend:372
 @unsafe
 def j_component_emit_match_tagged(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: KTerm, +arg: String, +rest: List<&2,String>, +d: KDef, +phase: U32) -> String:
   +input = wnf(book, kid(ty, 0))
@@ -375,19 +431,20 @@ def j_component_emit_match_tagged(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t
   +projection = jir_projection_plan(book, input, nm(t))
   +native = jir_projection_condition(projection, arg)
   +slot = "$native" ++ nm(t) ++ U32.show(terms_len(env))
-  "if(" ++ kc(String, Bool.not(String.eq(native, "")), u => native, u => kc(String, j_primitive_type(book, input, "Bool"),
-    u => "(" ++ arg ++ ")===" ++ kc(String, String.eq(nm(t), "True"), u => "true", u => "false"),
+  "if(" ++ kc(String, p88_string_eq(native, ""), u => kc(String, j_primitive_type(book, input, "Bool"),
+    u => "(" ++ arg ++ ")===" ++ kc(String, p88_string_eq(nm(t), "True"), u => "true", u => "false"),
     u => kc(String, j_primitive_type(book, input, "Nat"),
-      u => "(" ++ arg ++ ")" ++ kc(String, String.eq(nm(t), "Zero"), u => "===0n", u => "!==0n"),
-      u => "(" ++ arg ++ ").$===" ++ j_quote(nm(t))))) ++ "){" ++
+      u => "(" ++ arg ++ ")" ++ kc(String, p88_string_eq(nm(t), "Zero"), u => "===0n", u => "!==0n"),
+      u => "(" ++ arg ++ ").$===" ++ j_quote(nm(t)))), u => native) ++ "){" ++
     jir_projection_bindings(projection, arg, slot) ++
     j_component_emit(book, env, kid(t, 0), j_arm_type(book, ty, nm(t)),
       kc(List<&2,String>, j_primitive_type(book, input, "Nat"),
-        u => kc(List<&2,String>, String.eq(nm(t), "Zero"), u => rest, u => Con{"(" ++ arg ++ "-1n)", rest}),
-        u => kc(List<&2,String>, String.eq(native, ""), u => j_flat_fields(book, input, arg, 0, da(c), rest),
+        u => kc(List<&2,String>, p88_string_eq(nm(t), "Zero"), u => rest, u => Con{"(" ++ arg ++ "-1n)", rest}),
+        u => kc(List<&2,String>, p88_string_eq(native, ""), u => j_flat_fields(book, input, arg, 0, da(c), rest),
           u => jir_projection_fields(projection, slot, rest))), d, phase) ++ "}else{" ++
     j_component_emit(book, env, kid(t, 1), ty, Con{arg, rest}, d, phase) ++ "}"
 
+# Module: src/back/js/tree.bend:392
 @unsafe
 def j_component_finish(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: KTerm, +d: KDef, +phase: U32) -> String:
   kc(String, U32.is_eq(phase, 4), u => j_hybrid_finish(book, env, t, ty, d), u =>
@@ -401,6 +458,7 @@ def j_component_finish(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +t
       "$value=" ++ j_expr(book, j_context(book, env, ks(t)), kid(t, 2), ty, False{}) ++ ";", u =>
       j_component_enter(book, env, j_call_spine(kid(kid(t, phase), 0), Nil{}), d, phase))))))
 
+# Module: src/back/js/tree.bend:405
 @unsafe
 def j_component_enter(+book: List<&2,KDef>, +env: List<&2,KTerm>, +spine: KTerm, +d: KDef, +phase: U32) -> String:
   "const $next=[" ++ j_apply_args(book, env, ks(spine), dt(d)) ++ "];" ++
@@ -409,69 +467,81 @@ def j_component_enter(+book: List<&2,KDef>, +env: List<&2,KTerm>, +spine: KTerm,
       "$saved.args=[" ++ j_component_save(0, da(d)) ++ "];$saved.left=null;$saved.phase=0;++$top;", u => "") ++
     j_component_assign(0, da(d)) ++ "continue $visit;"
 
+# Module: src/back/js/tree.bend:413
 @unsafe
 def j_component_assign(+at: U32, +total: U32) -> String:
   kc(String, U32.is_eq(at, total), u => "", u => "$s" ++ U32.show(at) ++ "=$next[" ++ U32.show(at) ++ "];" ++ j_component_assign(U32.inc(at), total))
 
 # Parallel RHSs see only the original prefix environment. JPure checks this
 # independently; explicit freshness/use tests also justify emitted JS scopes.
+
+# Module: src/back/js/tree.bend:419
 @unsafe
 def j_component_independent(+env: List<&2,KTerm>, +t: KTerm) -> Bool:
-  String.eq(tg(j_env(env, ix(kid(t, 0)))), "Absent") && String.eq(tg(j_env(env, ix(kid(t, 1)))), "Absent") &&
+  p98_tag_eq(j_env(env, ix(kid(t, 0))), "Absent") && p98_tag_eq(j_env(env, ix(kid(t, 1))), "Absent") &&
     U32.is_eq(j_region_counter_uses([kid(kid(t, 0), 0), kid(kid(t, 1), 0)], ix(kid(t, 0)), 0), 0) &&
     U32.is_eq(j_region_counter_uses([kid(kid(t, 0), 0), kid(kid(t, 1), 0)], ix(kid(t, 1)), 0), 0)
 # One structural child: direct tail transfer, or reconstruction through a tagged
 # constructor / saturated known combiner. An inert sequential alias may precede
 # the call; effectful or allocating lets remain generic.
+
+# Module: src/back/js/tree.bend:427
 @unsafe
 def j_linear_alias(+t: KTerm, +name: String) -> Bool:
-  String.eq(tg(t), "Let") && U32.is_eq(terms_len(ks(t)), 2) &&
+  p98_tag_eq(t, "Let") && U32.is_eq(terms_len(ks(t)), 2) &&
     Bool.not(U32.is_eq(qt(kid(t, 0)), 0)) && j_region_field_atom(j_strip(kid(kid(t, 0), 0))) &&
     U32.is_eq(j_component_refs([kid(t, 0)], name, 1024, 0), 0)
 
 # A computed scalar prefix is evaluated once, at the same original let site.
 # This gate belongs only to complete-JPure structural workers; keep the legacy
 # field-atom rule for flat audits and demand-sensitive scalar islands.
+
+# Module: src/back/js/tree.bend:436
 @unsafe
 def j_linear_prefix_alias(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +name: String) -> Bool:
   kc(Bool, j_linear_alias(t, name), u => True{}, u =>
-    kc(Bool, String.eq(tg(t), "Let") && U32.is_eq(terms_len(ks(t)), 2) &&
-      String.eq(tg(kid(t, 0)), "Bind") && U32.is_eq(terms_len(ks(kid(t, 0))), 1) &&
+    kc(Bool, p98_tag_eq(t, "Let") && U32.is_eq(terms_len(ks(t)), 2) &&
+      p98_tag_eq(kid(t, 0), "Bind") && U32.is_eq(terms_len(ks(kid(t, 0))), 1) &&
       Bool.not(U32.is_eq(qt(kid(t, 0)), 0)) &&
       U32.is_eq(j_component_refs([kid(t, 0)], name, 1024, 0), 0),
       u => kc(Bool, j_linear_u32_prefix(book, env, kid(kid(t, 0), 0), 128), u => True{},
         u => j_string_u32_call_prefix(book, env, kid(kid(t, 0), 0))), u => False{}))
 
+# Module: src/back/js/tree.bend:446
 @unsafe
 def j_linear_u32_prefix(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +fuel: U32) -> Bool:
   +h = j_strip(t)
   +s = j_call_spine(h, Nil{})
   kc(Bool, U32.is_gt(fuel, 0), u =>
-    kc(Bool, String.eq(tg(h), "Var"), u => j_primitive_type(book, wnf(book, j_env(env, ix(h))), "U32"), u =>
-      kc(Bool, String.eq(tg(h), "Lit"), u => String.eq(nm(h), "U32"), u =>
-        kc(Bool, String.eq(tg(s), "Call") && j_primitive_call(book, s) && U32.is_eq(terms_len(ks(s)), 2) &&
-        (String.eq(nm(s), "U32.add") || String.eq(nm(s), "U32.sub") ||
-         String.eq(nm(s), "U32.mul") || String.eq(nm(s), "U32.mod")), u =>
+    kc(Bool, p98_tag_eq(h, "Var"), u => j_primitive_type(book, wnf(book, j_env(env, ix(h))), "U32"), u =>
+      kc(Bool, p98_tag_eq(h, "Lit"), u => p88_string_eq(nm(h), "U32"), u =>
+        kc(Bool, p98_tag_eq(s, "Call") && j_primitive_call(book, s) && U32.is_eq(terms_len(ks(s)), 2) &&
+        (p88_string_eq(nm(s), "U32.add") || p88_string_eq(nm(s), "U32.sub") ||
+         p88_string_eq(nm(s), "U32.mul") || p88_string_eq(nm(s), "U32.mod")), u =>
           kc(Bool, j_linear_u32_prefix(book, env, terms_at(ks(s), 0), U32.sub(fuel, 1)),
             u => j_linear_u32_prefix(book, env, terms_at(ks(s), 1), U32.sub(fuel, 1)), u => False{}),
           u => False{}))), u => False{})
 
+# Module: src/back/js/tree.bend:460
 @unsafe
 def j_linear_spine(+t: KTerm) -> KTerm:
-  kc(KTerm, String.eq(tg(t), "Ctr"), u => kt("Call", nm(t), 0, 0, ks(t)), u => j_call_spine(t, Nil{}))
+  kc(KTerm, p98_tag_eq(t, "Ctr"), u => kt("Call", nm(t), 0, 0, ks(t)), u => j_call_spine(t, Nil{}))
 
+# Module: src/back/js/tree.bend:464
 @unsafe
 def j_linear_tel(+book: List<&2,KDef>, +t: KTerm, +ty: KTerm) -> KTerm:
-  kc(KTerm, String.eq(tg(t), "Ctr"),
+  kc(KTerm, p98_tag_eq(t, "Ctr"),
     u => j_specialize(book, dt(j_layout_ctor(book, wnf(book, ty), nm(t))), ks(wnf(book, ty))),
     u => dt(lookup(book, nm(j_linear_spine(t)))))
 
+# Module: src/back/js/tree.bend:470
 @unsafe
 def j_linear_child(+env: List<&2,KTerm>, +args: List<&2,KTerm>, +d: KDef, +at: U32) -> U32:
   match args:
     case Nil{}: 32
     case Con{h, rest}: kc(U32, j_component_self(env, h, d), u => at, u => j_linear_child(env, rest, d, U32.inc(at)))
 
+# Module: src/back/js/tree.bend:476
 @unsafe
 def j_linear_leaf(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +d: KDef) -> Bool:
   kc(Bool, U32.is_eq(j_component_refs([t], dn(d), 1024, 0), 1), u =>
@@ -479,13 +549,15 @@ def j_linear_leaf(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +d: KDe
     kc(Bool, j_component_self(env, t, d), u => True{}, u =>
       j_linear_combine(book, env, t, d, j_linear_spine(t)))), u => False{})
 
+# Module: src/back/js/tree.bend:483
 @unsafe
 def j_linear_combine(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +d: KDef, +spine: KTerm) -> Bool:
   +target = lookup(book, nm(spine))
-  (String.eq(tg(t), "Ctr") || (String.eq(tg(spine), "Call") && Bool.not(String.eq(nm(spine), dn(d))) &&
+  (p98_tag_eq(t, "Ctr") || (p98_tag_eq(spine, "Call") && Bool.not(p88_string_eq(nm(spine), dn(d))) &&
     Bool.not(j_primitive_call(book, spine)) && U32.is_eq(terms_len(ks(spine)), da(target)))) &&
     U32.is_lt(j_linear_child(env, ks(spine), d, 0), terms_len(ks(spine)))
 
+# Module: src/back/js/tree.bend:490
 @unsafe
 def j_linear_finish(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: KTerm, +d: KDef, +phase: U32) -> String:
   kc(String, j_linear_prefix_alias(book, env, t, dn(d)), u =>
@@ -496,12 +568,13 @@ def j_linear_finish(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: 
       j_component_assign(0, da(d)) ++ "continue $visit;", u =>
       j_linear_split(book, env, t, ty, d, phase, j_linear_spine(t))))
 
+# Module: src/back/js/tree.bend:500
 @unsafe
 def j_linear_split(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: KTerm, +d: KDef, +phase: U32, +spine: KTerm) -> String:
   +child = j_linear_emit_child(ks(spine), d, 0)
   +tel = j_linear_tel(book, t, ty)
   kc(String, U32.is_eq(phase, 3), u =>
-    "$value=" ++ kc(String, String.eq(tg(t), "Ctr"),
+    "$value=" ++ kc(String, p98_tag_eq(t, "Ctr"),
       u => kc(String, j_owned_ctor(book, t, ty), u => kc(String, j_flat_data(book, ty), u => "({$:" ++ j_quote(nm(t)) ++ "," ++ j_flat_linear_args(book, env, ks(spine), tel, child, 0) ++ "})", u => "({$:" ++ j_quote(nm(t)) ++ ",a:[" ++ j_producer_unary_resume(book, env, ks(spine), tel, child, 0) ++ "]})"), u => "ctor(" ++ j_quote(nm(t)) ++ ",[" ++ j_producer_unary_resume(book, env, ks(spine), tel, child, 0) ++ "])" ),
       u => j_linear_combiner_emit(book, nm(spine), j_producer_unary_resume(book, env, ks(spine), tel, child, 0))) ++ ";", u =>
     j_producer_unary_before(book, env, ks(spine), tel, child, 0) ++
@@ -510,11 +583,12 @@ def j_linear_split(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: K
     "$saved.args=[" ++ j_component_save(0, da(d)) ++ "];$saved.before=[" ++ j_region_vector_names("$u", 0, child) ++
     "];$saved.phase=2;++$top;" ++ j_component_assign(0, da(d)) ++ "continue $visit;")
 
+# Module: src/back/js/tree.bend:514
 @unsafe
 def j_linear_combiner_emit(+book: List<&2,KDef>, +name: String, +args: String) -> String:
   +d = lookup(book, name)
   kc(String, String.starts_with(name, "$instance."), u =>
-    kc(String, String.eq(dk(d), "Def") && String.eq(dk(index_first(dc(d))), "JErasedInstance") && j_instance_emit_ready(book, d),
+    kc(String, p88_string_eq(dk(d), "Def") && p88_string_eq(dk(index_first(dc(d))), "JErasedInstance") && j_instance_emit_ready(book, d),
       u => j_region_name(name) ++ "$tree(" ++ args ++ ")", u => "bad('private contextual combiner invariant')"), u =>
   kc(String, j_finite_ready(book, d), u =>
     "((" ++ j_region_parameters(0, da(d)) ++ ")=>{" ++
@@ -524,11 +598,14 @@ def j_linear_combiner_emit(+book: List<&2,KDef>, +name: String, +args: String) -
 # The preceding analysis proved descendant ownership. Emission's lexical Env
 # carries types and names, not @child provenance, so it uses only the already
 # proved saturated self-call shape to recover the continuation position.
+
+# Module: src/back/js/tree.bend:528
 @unsafe
 def j_linear_emit_self(+t: KTerm, +d: KDef) -> Bool:
   +spine = j_call_spine(j_strip(t), Nil{})
-  String.eq(tg(spine), "Call") && String.eq(nm(spine), dn(d)) && U32.is_eq(terms_len(ks(spine)), da(d))
+  p98_tag_eq(spine, "Call") && p88_string_eq(nm(spine), dn(d)) && U32.is_eq(terms_len(ks(spine)), da(d))
 
+# Module: src/back/js/tree.bend:533
 @unsafe
 def j_linear_emit_child(+args: List<&2,KTerm>, +d: KDef, +at: U32) -> U32:
   match args:
@@ -539,17 +616,21 @@ def j_linear_emit_child(+args: List<&2,KTerm>, +d: KDef, +at: U32) -> U32:
 # Inherited proof context is used only for the body of an independently admitted
 # private worker. Its public and generic call boundaries retain the complete
 # graph guard. Exact definitions prevent same-name or stale graph substitution.
+
+# Module: src/back/js/tree.bend:543
 @unsafe
 def j_covered_defs(+book: List<&2,KDef>, +context: List<&2,KDef>, +needed: List<&2,KDef>) -> Bool:
   match needed:
     case Nil{}: True{}
     case Con{d, rest}:
       +found = lookup(context, dn(d))
-      kc(Bool, String.eq(dk(found), "Def") && exact_def(d, found) && exact_def(d, lookup(book, dn(d))),
+      kc(Bool, p88_string_eq(dk(found), "Def") && exact_def(d, found) && exact_def(d, lookup(book, dn(d))),
         u => j_covered_defs(book, context, rest), u => False{})
 
 # Annotation preserves original call-result typing for the ordinary shared
 # binder/argument emitter. Lowering plans are never sent back to the checker.
+
+# Module: src/back/js/tree.bend:554
 @unsafe
 def j_covered_result(+ty: KTerm, +args: List<&2,KTerm>) -> KTerm:
   match args:
@@ -559,39 +640,44 @@ def j_covered_result(+ty: KTerm, +args: List<&2,KTerm>) -> KTerm:
 # Preserve the original saturated App/Call shell around a structural self call.
 # Unary classification needs that shell to discover its continuation child;
 # inherited proof lowering may still transform independent argument expressions.
+
+# Module: src/back/js/tree.bend:563
 @unsafe
 def j_covered_term(+book: List<&2,KDef>, +context: List<&2,KDef>, +owner: String, +t: KTerm) -> KTerm:
-  kc(KTerm, String.eq(tg(t), "Ann"), u =>
+  kc(KTerm, p98_tag_eq(t, "Ann"), u =>
     k_with_children(t, [j_covered_term(book, context, owner, kid(t, 0)), kid(t, 1)]), u =>
-  kc(KTerm, String.eq(tg(t), "Ref") && j_string_literal(book, lookup(book, nm(t))) &&
-    String.eq(dk(lookup(context, nm(t))), "Def") && exact_def(lookup(book, nm(t)), lookup(context, nm(t))),
+  kc(KTerm, p98_tag_eq(t, "Ref") && j_string_literal(book, lookup(book, nm(t))) &&
+    p88_string_eq(dk(lookup(context, nm(t))), "Def") && exact_def(lookup(book, nm(t)), lookup(context, nm(t))),
     u => dv(lookup(book, nm(t))), u =>
-  kc(KTerm, String.eq(tg(t), "Var") || String.eq(tg(t), "Ref") || String.eq(tg(t), "Lit"), u => t, u =>
-  kc(KTerm, String.eq(tg(t), "App"), u =>
+  kc(KTerm, p98_tag_eq(t, "Var") || p98_tag_eq(t, "Ref") || p98_tag_eq(t, "Lit"), u => t, u =>
+  kc(KTerm, p98_tag_eq(t, "App"), u =>
     j_covered_shape_app(book, context, owner, t, k_with_children(t, j_covered_terms(book, context, owner, ks(t)))), u =>
     k_with_children(t, j_covered_terms(book, context, owner, ks(t)))))))
 
+# Module: src/back/js/tree.bend:575
 @unsafe
 def j_covered_terms(+book: List<&2,KDef>, +context: List<&2,KDef>, +owner: String, +ts: List<&2,KTerm>) -> List<&2,KTerm>:
   match ts:
     case Nil{}: Nil{}
     case Con{h, rest}: Con{j_covered_term(book, context, owner, h), j_covered_terms(book, context, owner, rest)}
 
-
+# Module: src/back/js/tree.bend:582
 @unsafe
 def j_covered_shape_app(+book: List<&2,KDef>, +context: List<&2,KDef>, +owner: String, +original: KTerm, +rebuilt: KTerm) -> KTerm:
-  kc(KTerm, String.eq(owner, "") || U32.is_eq(j_component_refs([original], owner, 8192, 0), 0),
+  kc(KTerm, p88_string_eq(owner, "") || U32.is_eq(j_component_refs([original], owner, 8192, 0), 0),
     u => j_covered_app(book, context, original, rebuilt), u => rebuilt)
 
+# Module: src/back/js/tree.bend:587
 @unsafe
 def j_covered_app(+book: List<&2,KDef>, +context: List<&2,KDef>, +original: KTerm, +rebuilt: KTerm) -> KTerm:
   +spine = j_call_spine(original, Nil{})
   +d = lookup(book, nm(spine))
-  kc(KTerm, String.eq(tg(spine), "Call") && U32.is_eq(terms_len(ks(spine)), da(d)) &&
-    String.eq(dk(lookup(context, dn(d))), "Def") && exact_def(d, lookup(context, dn(d))), u =>
+  kc(KTerm, p98_tag_eq(spine, "Call") && U32.is_eq(terms_len(ks(spine)), da(d)) &&
+    p88_string_eq(dk(lookup(context, dn(d))), "Def") && exact_def(d, lookup(context, dn(d))), u =>
       j_covered_component(book, context, original, rebuilt, d, j_component_cached(book, dn(d))),
     u => j_direct_call_term(book, context, rebuilt))
 
+# Module: src/back/js/tree.bend:596
 @unsafe
 def j_covered_component(+book: List<&2,KDef>, +context: List<&2,KDef>, +original: KTerm, +rebuilt: KTerm, +d: KDef, +pure: JPure) -> KTerm:
   kc(KTerm, j_pure_valid(pure) && j_covered_defs(book, context, j_pure_defs(pure)), u =>
@@ -604,14 +690,17 @@ def j_covered_component(+book: List<&2,KDef>, +context: List<&2,KDef>, +original
 # original Ctr shape and identity so structural linear reconstruction and shared
 # binder typing still see their original source nodes. No public expression is
 # marked, and no native representation is changed.
+
+# Module: src/back/js/tree.bend:608
 @unsafe
 def j_owned_term(+t: KTerm) -> KTerm:
-  kc(KTerm, String.eq(tg(t), "Ann"), u =>
+  kc(KTerm, p98_tag_eq(t, "Ann"), u =>
     k_with_children(t, [j_owned_term(kid(t, 0)), kid(t, 1)]), u =>
-  kc(KTerm, String.eq(tg(t), "Ctr"), u =>
+  kc(KTerm, p98_tag_eq(t, "Ctr"), u =>
     k_rebuild(t, nm(t), ix(t), qt(t), j_owned_terms(ks(t)), Con{"$private.owned.ctor", rm(t)}, kb(t), ke(t)),
     u => k_with_children(t, j_owned_terms(ks(t)))))
 
+# Module: src/back/js/tree.bend:616
 @unsafe
 def j_owned_terms(+ts: List<&2,KTerm>) -> List<&2,KTerm>:
   match ts:
@@ -621,86 +710,103 @@ def j_owned_terms(+ts: List<&2,KTerm>) -> List<&2,KTerm>:
 # The runtime ctor's nonnative branch is exactly {$:name,a:fields}; it has no
 # registration or ownership side effect. Preserve its tag, field array, field
 # order, fresh root allocation, and shared child references literally.
+
+# Module: src/back/js/tree.bend:625
 @unsafe
 def j_owned_ctor(+book: List<&2,KDef>, +t: KTerm, +ty: KTerm) -> Bool:
   kc(Bool, has_name(rm(t), "$private.owned.ctor"),
     u => j_owned_ctor_type(book, t, wnf(book, ty)), u => False{})
 
+# Module: src/back/js/tree.bend:630
 @unsafe
 def j_owned_ctor_type(+book: List<&2,KDef>, +t: KTerm, +head: KTerm) -> Bool:
   +owner = lookup(book, nm(head))
   +c = j_layout_ctor(book, head, nm(t))
-  String.eq(tg(head), "ADT") &&
-    String.eq(dk(owner), "ADT") && Bool.not(db(owner)) && j_pure_type(book, head) &&
-    String.eq(dk(c), "Ctr") && String.eq(dn(c), nm(t)) && Bool.not(db(c)) &&
+  p98_tag_eq(head, "ADT") &&
+    p88_string_eq(dk(owner), "ADT") && Bool.not(db(owner)) && j_pure_type(book, head) &&
+    p88_string_eq(dk(c), "Ctr") && p88_string_eq(dn(c), nm(t)) && Bool.not(db(c)) &&
     U32.is_eq(terms_len(ks(t)), da(c))
 
 # Request-local layout context. BookCache source and planner payload stay exact.
+
+# Module: src/back/js/tree.bend:640
 @unsafe
 def j_flat_active(+book: List<&2,KDef>) -> Bool:
   match book:
-    case Con{c, rest}: String.eq(dk(c), "BookCache") && j_flat_children(book, dc(c))
+    case Con{c, rest}: p88_string_eq(dk(c), "BookCache") && j_flat_children(book, dc(c))
     case other: False{}
 
+# Module: src/back/js/tree.bend:646
 @unsafe
 def j_flat_children(+book: List<&2,KDef>, +ds: List<&2,KDef>) -> Bool:
   match ds:
     case Con{source, Con{plans, Con{flat, Nil{}}}}:
-      String.eq(dk(plans), "JSPlanContext") && String.eq(dk(flat), "JSFlatContext") && String.eq(dn(flat), "$js.flat") && db(flat) && Bool.not(List.is_empty(&2, KDef, dc(flat))) && j_covered_defs(book, dc(flat), dc(flat))
+      p88_string_eq(dk(plans), "JSPlanContext") && p88_string_eq(dk(flat), "JSFlatContext") && p88_string_eq(dn(flat), "$js.flat") && db(flat) && Bool.not(List.is_empty(&2, KDef, dc(flat))) && j_covered_defs(book, dc(flat), dc(flat))
     case other: False{}
 
+# Module: src/back/js/tree.bend:653
 @unsafe
 def j_flat_book(+book: List<&2,KDef>, +graph: List<&2,KDef>) -> List<&2,KDef>:
   match book:
     case Con{c, rest}: j_flat_book_children(c, rest, dc(c), graph)
     case other: book
 
+# Module: src/back/js/tree.bend:659
 @unsafe
 def j_flat_book_children(+c: KDef, +rest: List<&2,KDef>, +children: List<&2,KDef>, +graph: List<&2,KDef>) -> List<&2,KDef>:
   match children:
     case Con{source, Con{plans, tail}}:
-      kc(List<&2,KDef>, String.eq(dk(c), "BookCache") && String.eq(dk(plans), "JSPlanContext"), u =>
-        Con{KDef{dn(c), dk(c), da(c), dx(c), dt(c), dv(c), [source, plans, KDef{"$js.flat", "JSFlatContext", 0, 0, atom("Absent"), atom("Absent"), graph, True{}, False{}}], db(c), du(c)}, rest}, u => Con{c, rest})
+      kc(List<&2,KDef>, p88_string_eq(dk(c), "BookCache") && p88_string_eq(dk(plans), "JSPlanContext"), u =>
+        Con{KDef{dn(c), dk(c), da(c), dx(c), dt(c), dv(c), [source, plans, KDef{"$js.flat", "JSFlatContext", 0, 0, {KTerm{"Absent", "", 0, 0, Nil{}, Nil{}, 0, 0} : KTerm}, {KTerm{"Absent", "", 0, 0, Nil{}, Nil{}, 0, 0} : KTerm}, graph, True{}, False{}}], db(c), du(c)}, rest}, u => Con{c, rest})
     case other: Con{c, rest}
 
+# Module: src/back/js/tree.bend:667
 @unsafe
 def j_flat_data(+book: List<&2,KDef>, +ty: KTerm) -> Bool:
-  j_flat_active(book) && Bool.not(j_region_scalar(book, ty)) && String.eq(tg(wnf(book, ty)), "ADT")
+  j_flat_active(book) && Bool.not(j_region_scalar(book, ty)) && p98_tag_eq(wnf(book, ty), "ADT")
 
 # Reject even nested native containers/observers, not only top-level argument types.
+
+# Module: src/back/js/tree.bend:672
 @unsafe
 def j_flat_type(+book: List<&2,KDef>, +ty: KTerm, +seen: List<&2,String>, +fuel: U32) -> Bool:
   +head = wnf(book, ty)
   kc(Bool, U32.is_gt(fuel, 0), u => kc(Bool, j_region_scalar(book, head), u => True{}, u =>
-    kc(Bool, j_pure_type(book, head) && Bool.not(j_list_ground_type(book, head)) && String.eq(tg(head), "ADT") && U32.is_eq(terms_len(ks(head)), 0), u =>
+    kc(Bool, j_pure_type(book, head) && Bool.not(j_list_ground_type(book, head)) && p98_tag_eq(head, "ADT") && U32.is_eq(terms_len(ks(head)), 0), u =>
       kc(Bool, has_name(seen, nm(head)), u => True{}, u => j_flat_types(book, dc(lookup(book, nm(head))), Con{nm(head), seen}, U32.sub(fuel, 1))), u => False{})), u => False{})
 
+# Module: src/back/js/tree.bend:679
 @unsafe
 def j_flat_types(+book: List<&2,KDef>, +cs: List<&2,KDef>, +seen: List<&2,String>, +fuel: U32) -> Bool:
   match cs:
     case Nil{}: True{}
     case Con{c, rest}: j_flat_signature(book, dt(c), da(c), seen, fuel) && j_flat_types(book, rest, seen, fuel)
 
+# Module: src/back/js/tree.bend:685
 @unsafe
 def j_flat_signature(+book: List<&2,KDef>, +ty: KTerm, +left: U32, +seen: List<&2,String>, +fuel: U32) -> Bool:
   +head = wnf(book, ty)
   kc(Bool, U32.is_gt(fuel, 0), u => kc(Bool, U32.is_eq(left, 0), u => j_flat_type(book, head, seen, fuel), u =>
-    String.eq(tg(head), "All") && Bool.not(U32.is_eq(qt(head), 0)) && j_flat_type(book, kid(head, 0), seen, fuel) &&
+    p98_tag_eq(head, "All") && Bool.not(U32.is_eq(qt(head), 0)) && j_flat_type(book, kid(head, 0), seen, fuel) &&
     j_flat_signature(book, kid(head, 1), U32.sub(left, 1), seen, U32.sub(fuel, 1))), u => False{})
 
 # Normalize only region residual nodes. Structural self-call source nodes remain
 # untouched: the existing continuation emitter, never native recursion, owns them.
+
+# Module: src/back/js/tree.bend:694
 @unsafe
 def j_flat_term(+book: List<&2,KDef>, +graph: List<&2,KDef>, +t: KTerm) -> KTerm:
-  kc(KTerm, String.eq(tg(t), "Ann"), u => k_with_children(t, [j_flat_term(book, graph, kid(t, 0)), kid(t, 1)]), u =>
-  kc(KTerm, String.eq(tg(t), "JGeneric"), u => j_flat_generic(book, graph, t), u => k_with_children(t, j_flat_terms(book, graph, ks(t)))))
+  kc(KTerm, p98_tag_eq(t, "Ann"), u => k_with_children(t, [j_flat_term(book, graph, kid(t, 0)), kid(t, 1)]), u =>
+  kc(KTerm, p98_tag_eq(t, "JGeneric"), u => j_flat_generic(book, graph, t), u => k_with_children(t, j_flat_terms(book, graph, ks(t)))))
 
+# Module: src/back/js/tree.bend:699
 @unsafe
 def j_flat_terms(+book: List<&2,KDef>, +graph: List<&2,KDef>, +ts: List<&2,KTerm>) -> List<&2,KTerm>:
   match ts:
     case Nil{}: Nil{}
     case Con{t, rest}: Con{j_flat_term(book, graph, t), j_flat_terms(book, graph, rest)}
 
+# Module: src/back/js/tree.bend:705
 @unsafe
 def j_flat_generic(+book: List<&2,KDef>, +graph: List<&2,KDef>, +t: KTerm) -> KTerm:
   +app = j_region_app(ref(nm(t)), j_flat_terms(book, graph, ks(t)))
@@ -708,67 +814,78 @@ def j_flat_generic(+book: List<&2,KDef>, +graph: List<&2,KDef>, +t: KTerm) -> KT
 
 # Negative audit of actual normalized emission frontiers. No generic observer or
 # unsupported lowering node can reach flat data merely because its source is pure.
+
+# Module: src/back/js/tree.bend:712
 @unsafe
 def j_flat_audit(+book: List<&2,KDef>, +graph: List<&2,KDef>, +locals: List<&2,KDef>, +self: String, +t: KTerm, +fuel: U32) -> Bool:
-  kc(Bool, U32.is_gt(fuel, 0), u => kc(Bool, String.eq(tg(t), "Ann"), u => j_flat_audit(book, graph, locals, self, kid(t, 0), U32.sub(fuel, 1)), u =>
-  kc(Bool, String.eq(tg(t), "App"), u => j_flat_app_audit(book, graph, locals, self, j_call_spine(t, Nil{}), U32.sub(fuel, 1)), u =>
-  kc(Bool, String.eq(tg(t), "JCall"), u => j_flat_call_audit(book, graph, locals, t) && j_flat_audits(book, graph, locals, self, ks(t), U32.sub(fuel, 1)), u =>
-  kc(Bool, String.eq(tg(t), "JDirectCall"), u => U32.is_eq(terms_len(ks(t)), da(lookup(book, nm(t)))) && exact_def(lookup(graph, nm(t)), lookup(book, nm(t))) && j_pure_valid(j_direct_cached(book, nm(t))) && j_covered_defs(book, graph, j_pure_defs(j_direct_cached(book, nm(t)))) &&
+  kc(Bool, U32.is_gt(fuel, 0), u => kc(Bool, p98_tag_eq(t, "Ann"), u => j_flat_audit(book, graph, locals, self, kid(t, 0), U32.sub(fuel, 1)), u =>
+  kc(Bool, p98_tag_eq(t, "App"), u => j_flat_app_audit(book, graph, locals, self, j_call_spine(t, Nil{}), U32.sub(fuel, 1)), u =>
+  kc(Bool, p98_tag_eq(t, "JCall"), u => j_flat_call_audit(book, graph, locals, t) && j_flat_audits(book, graph, locals, self, ks(t), U32.sub(fuel, 1)), u =>
+  kc(Bool, p98_tag_eq(t, "JDirectCall"), u => U32.is_eq(terms_len(ks(t)), da(lookup(book, nm(t)))) && exact_def(lookup(graph, nm(t)), lookup(book, nm(t))) && j_pure_valid(j_direct_cached(book, nm(t))) && j_covered_defs(book, graph, j_pure_defs(j_direct_cached(book, nm(t)))) &&
     j_flat_audits(book, graph, locals, self, ks(t), U32.sub(fuel, 1)), u =>
     String.contains("|Lam|Mat|Ctr|Let|Bind|Var|Lit|JF32|JUnpack|JSlot|JLoopSlot|JNatRest|JNatCase|JIf|Efq|", "|" ++ tg(t) ++ "|") &&
-    j_flat_audits(book, graph, locals, self, kc(List<&2,KTerm>, String.eq(tg(t), "JUnpack"), u => [kid(t, 0)], u => ks(t)), U32.sub(fuel, 1)))))), u => False{})
+    j_flat_audits(book, graph, locals, self, kc(List<&2,KTerm>, p98_tag_eq(t, "JUnpack"), u => [kid(t, 0)], u => ks(t)), U32.sub(fuel, 1)))))), u => False{})
 
+# Module: src/back/js/tree.bend:722
 @unsafe
 def j_flat_audits(+book: List<&2,KDef>, +graph: List<&2,KDef>, +locals: List<&2,KDef>, +self: String, +ts: List<&2,KTerm>, +fuel: U32) -> Bool:
   match ts:
     case Nil{}: True{}
     case Con{t, rest}: j_flat_audit(book, graph, locals, self, t, fuel) && j_flat_audits(book, graph, locals, self, rest, U32.sub(fuel, 1))
 
+# Module: src/back/js/tree.bend:728
 @unsafe
 def j_flat_app_audit(+book: List<&2,KDef>, +graph: List<&2,KDef>, +locals: List<&2,KDef>, +self: String, +spine: KTerm, +fuel: U32) -> Bool:
-  String.eq(tg(spine), "Call") && (j_primitive_call(book, spine) ||
-    (Bool.not(String.eq(self, "")) && String.eq(nm(spine), self) && U32.is_eq(terms_len(ks(spine)), da(lookup(book, self))))) &&
+  p98_tag_eq(spine, "Call") && (j_primitive_call(book, spine) ||
+    (Bool.not(p88_string_eq(self, "")) && p88_string_eq(nm(spine), self) && U32.is_eq(terms_len(ks(spine)), da(lookup(book, self))))) &&
     j_flat_audits(book, graph, locals, self, ks(spine), fuel)
 
+# Module: src/back/js/tree.bend:734
 @unsafe
 def j_flat_call_audit(+book: List<&2,KDef>, +graph: List<&2,KDef>, +locals: List<&2,KDef>, +t: KTerm) -> Bool:
   kc(Bool, U32.is_eq(qt(t), 1), u => j_pure_valid(j_component_cached(book, nm(t))) &&
-    j_covered_defs(book, graph, j_pure_defs(j_component_cached(book, nm(t)))), u => String.eq(dk(lookup(locals, nm(t))), "Def") && Bool.not(db(lookup(locals, nm(t)))) && Bool.not(String.eq(tg(dv(lookup(locals, nm(t)))), "JResidual"))) &&
+    j_covered_defs(book, graph, j_pure_defs(j_component_cached(book, nm(t)))), u => p88_string_eq(dk(lookup(locals, nm(t))), "Def") && Bool.not(db(lookup(locals, nm(t)))) && Bool.not(p98_tag_eq(dv(lookup(locals, nm(t))), "JResidual"))) &&
     U32.is_eq(terms_len(ks(t)), da(lookup(book, nm(t))))
 
+# Module: src/back/js/tree.bend:740
 @unsafe
 def j_flat_graph_audit(+book: List<&2,KDef>, +graph: List<&2,KDef>, +locals: List<&2,KDef>, +root: String, +ds: List<&2,KDef>) -> Bool:
   match ds:
     case Nil{}: True{}
     case Con{d, rest}: j_flat_signature(book, dt(d), da(d), Nil{}, 128) &&
-      kc(Bool, String.eq(dn(d), root), u => True{}, u => kc(Bool, db(d), u => j_pure_bool_native(book, d), u => j_flat_def_audit(book, graph, locals, d, j_component_cached(book, dn(d))))) &&
+      kc(Bool, p88_string_eq(dn(d), root), u => True{}, u => kc(Bool, db(d), u => j_pure_bool_native(book, d), u => j_flat_def_audit(book, graph, locals, d, j_component_cached(book, dn(d))))) &&
       j_flat_graph_audit(book, graph, locals, root, rest)
 
+# Module: src/back/js/tree.bend:748
 @unsafe
 def j_flat_def_audit(+book: List<&2,KDef>, +graph: List<&2,KDef>, +locals: List<&2,KDef>, +d: KDef, +pure: JPure) -> Bool:
   kc(Bool, j_pure_valid(pure), u => j_flat_linear_safe(dv(d), dn(d)) && j_flat_audit(book, graph, locals, dn(d), j_covered_term(book, j_pure_remove(j_pure_defs(pure), dn(d)), dn(d), dv(d)), 8192), u =>
     kc(Bool, j_pure_valid(j_direct_cached(book, dn(d))), u => j_flat_audit(book, graph, locals, "", j_direct_term(book, dv(d)), 8192), u =>
-      String.eq(dk(lookup(locals, dn(d))), "Def")))
+      p88_string_eq(dk(lookup(locals, dn(d))), "Def")))
 
+# Module: src/back/js/tree.bend:754
 @unsafe
 def j_flat_locals(+book: List<&2,KDef>, +graph: List<&2,KDef>, +ds: List<&2,KDef>) -> List<&2,KDef>:
   match ds:
     case Nil{}: Nil{}
     case Con{d, rest}: Con{KDef{dn(d), dk(d), da(d), dx(d), dt(d), j_owned_term(j_flat_term(book, graph, dv(d))), dc(d), db(d), du(d)}, j_flat_locals(book, graph, rest)}
 
+# Module: src/back/js/tree.bend:760
 @unsafe
 def j_flat_local_audit(+book: List<&2,KDef>, +graph: List<&2,KDef>, +locals: List<&2,KDef>, +ds: List<&2,KDef>) -> Bool:
   match ds:
     case Nil{}: True{}
-    case Con{d, rest}: kc(Bool, String.eq(tg(dv(d)), "JResidual"), u => True{}, u =>
-      kc(Bool, db(d), u => j_pure_bool_native(book, d), u => String.eq(tg(dv(d)), "Ann") && j_flat_audit(book, graph, locals, "", dv(d), 8192))) && j_flat_local_audit(book, graph, locals, rest)
+    case Con{d, rest}: kc(Bool, p98_tag_eq(dv(d), "JResidual"), u => True{}, u =>
+      kc(Bool, db(d), u => j_pure_bool_native(book, d), u => p98_tag_eq(dv(d), "Ann") && j_flat_audit(book, graph, locals, "", dv(d), 8192))) && j_flat_local_audit(book, graph, locals, rest)
 
+# Module: src/back/js/tree.bend:767
 @unsafe
 def j_flat_clones(+book: List<&2,KDef>, +ds: List<&2,KDef>) -> String:
   match ds:
     case Nil{}: ""
     case Con{d, rest}: kc(String, j_pure_valid(j_component_cached(book, dn(d))), u => j_component_declaration(book, d, j_component_cached(book, dn(d))), u => "") ++ j_flat_clones(book, rest)
 
+# Module: src/back/js/tree.bend:773
 @unsafe
 def j_flat_root_scope(+book: List<&2,KDef>, +d: KDef, +s: JRegionBuild) -> JRootPlan:
   # The only caller already tried and refused full root fusion.
@@ -777,58 +894,70 @@ def j_flat_root_scope(+book: List<&2,KDef>, +d: KDef, +s: JRegionBuild) -> JRoot
   kc(JRootPlan, j_fold_root_signature(book, dt(d), da(d)) && residual, u =>
     j_flat_root_proof(book, d, s, normal, j_pure_graph(book, d, JPure{Nil{}, 32768, True{}})), u => normal)
 
+# Module: src/back/js/tree.bend:781
 @unsafe
 def j_flat_root_proof(+book: List<&2,KDef>, +d: KDef, +s: JRegionBuild, +normal: JRootPlan, +pure: JPure) -> JRootPlan:
   kc(JRootPlan, j_pure_valid(pure), u => j_root_plan_wrap("const $previousProof=regionProofOpen($guards);try{",
     j_flat_root_select(book, d, s, normal, j_pure_defs(pure), j_flat_locals(book, j_pure_defs(pure), j_region_helpers(s))),
     "}finally{regionProofClose($previousProof);}"), u => normal)
 
+# Module: src/back/js/tree.bend:787
 @unsafe
 def j_flat_root_select(+book: List<&2,KDef>, +d: KDef, +s: JRegionBuild, +normal: JRootPlan, +graph: List<&2,KDef>, +locals: List<&2,KDef>) -> JRootPlan:
   kc(JRootPlan, j_region_signature(book, dt(d), da(d)) && j_flat_local_audit(book, graph, locals, locals) &&
     j_flat_guarded(graph, dn(d), j_region_helpers(s)) && j_flat_graph_audit(book, graph, locals, dn(d), graph) && j_flat_audit(book, graph, locals, "", j_flat_term(book, graph, j_region_term(s)), 8192), u =>
     j_flat_root_emit(j_flat_book(book, j_flat_source_root(book, graph, dn(d))), d, graph, locals, normal, j_owned_term(j_flat_term(book, graph, j_region_term(s)))), u => normal)
 
+# Module: src/back/js/tree.bend:793
 @unsafe
 def j_flat_root_emit(+book: List<&2,KDef>, +d: KDef, +graph: List<&2,KDef>, +locals: List<&2,KDef>, +normal: JRootPlan, +body: KTerm) -> JRootPlan:
   kc(JRootPlan, j_flat_active(book), u => JRootPlan{"{/* private flat closed graph */" ++ j_flat_clones(book, graph) ++ j_region_definitions(book, locals) ++ j_nat_loop_generic(book, Nil{}, body, dt(d), 0) ++ "}", True{}}, u => normal)
 
+# Module: src/back/js/tree.bend:797
 @unsafe
 def j_flat_fields(+book: List<&2,KDef>, +ty: KTerm, +value: String, +at: U32, +total: U32, +rest: List<&2,String>) -> List<&2,String>:
   kc(List<&2,String>, j_flat_data(book, ty), u => kc(List<&2,String>, U32.is_eq(at, total), u => rest, u => Con{"(" ++ value ++ ")._" ++ U32.show(at), j_flat_fields(book, ty, value, U32.inc(at), total, rest)}), u => j_finite_fields(value, at, total, rest))
 
+# Module: src/back/js/tree.bend:801
 @unsafe
 def j_flat_ctor_args(+book: List<&2,KDef>, +env: List<&2,KTerm>, +xs: List<&2,KTerm>, +tel: KTerm, +at: U32) -> String:
   match xs:
     case Nil{}: ""
     case Con{h, rest}: "_" ++ U32.show(at) ++ ":" ++ kc(String, U32.is_eq(qt(tel), 0), u => "null", u => j_expr(book, env, h, kid(tel, 0), False{})) ++ "," ++ j_flat_ctor_args(book, env, rest, j_app_type(tel, h), U32.inc(at))
 
+# Module: src/back/js/tree.bend:807
 @unsafe
 def j_flat_unpack(+book: List<&2,KDef>, +ty: KTerm, +value: String) -> String:
   value ++ kc(String, j_flat_data(book, ty) || j_region_local_vector(book, ty), u => "", u => ".a")
 
+# Module: src/back/js/tree.bend:811
 @unsafe
 def j_flat_bindings(+book: List<&2,KDef>, +ty: KTerm, +slot: U32, +at: U32, +total: U32) -> String:
   kc(String, j_flat_data(book, ty), u => kc(String, U32.is_eq(at, total), u => "", u => "const $p" ++ U32.show(U32.add(U32.inc(slot), at)) ++ "=$unpack._" ++ U32.show(at) ++ ";" ++ j_flat_bindings(book, ty, slot, U32.inc(at), total)), u => j_region_field_bindings(slot, at, total))
 
+# Module: src/back/js/tree.bend:815
 @unsafe
 def j_flat_reads(+book: List<&2,KDef>, +ty: KTerm, +value: String, +at: U32, +total: U32) -> String:
   kc(String, j_flat_data(book, ty), u => kc(String, U32.is_eq(at, total), u => "", u => value ++ "._" ++ U32.show(at) ++ "," ++ j_flat_reads(book, ty, value, U32.inc(at), total)), u => j_region_field_reads(j_flat_unpack(book, ty, value), at, total))
 
 # Unary constructor/tail continuations stay stack-safe. Other unary combiners
 # may fall back to generic dispatch or emit unmarked constructors and refuse.
+
+# Module: src/back/js/tree.bend:821
 @unsafe
 def j_flat_linear_safe(+t: KTerm, +name: String) -> Bool:
-  kc(Bool, String.eq(tg(t), "Ann") || String.eq(tg(t), "Lam"), u => j_flat_linear_safe(kid(t, 0), name), u =>
-    kc(Bool, String.eq(tg(t), "Mat"), u => j_flat_linear_safe(kid(t, 0), name) && j_flat_linear_safe(kid(t, 1), name), u => kc(Bool, U32.is_eq(j_component_refs([t], name, 8192, 0), 1), u =>
-      kc(Bool, j_linear_alias(t, name), u => j_flat_linear_safe(kid(t, 1), name), u => String.eq(tg(t), "Ctr") || (String.eq(tg(j_call_spine(t, Nil{})), "Call") && String.eq(nm(j_call_spine(t, Nil{})), name))), u => True{})))
+  kc(Bool, p98_tag_eq(t, "Ann") || p98_tag_eq(t, "Lam"), u => j_flat_linear_safe(kid(t, 0), name), u =>
+    kc(Bool, p98_tag_eq(t, "Mat"), u => j_flat_linear_safe(kid(t, 0), name) && j_flat_linear_safe(kid(t, 1), name), u => kc(Bool, U32.is_eq(j_component_refs([t], name, 8192, 0), 1), u =>
+      kc(Bool, j_linear_alias(t, name), u => j_flat_linear_safe(kid(t, 1), name), u => p98_tag_eq(t, "Ctr") || (p98_tag_eq(j_call_spine(t, Nil{}), "Call") && p88_string_eq(nm(j_call_spine(t, Nil{})), name))), u => True{})))
 
+# Module: src/back/js/tree.bend:827
 @unsafe
 def j_flat_guarded(+ds: List<&2,KDef>, +root: String, +helpers: List<&2,KDef>) -> Bool:
   match ds:
     case Nil{}: True{}
-    case Con{d, rest}: (String.eq(dn(d), root) || String.eq(dk(lookup(helpers, dn(d))), "Def")) && j_flat_guarded(rest, root, helpers)
+    case Con{d, rest}: (p88_string_eq(dn(d), root) || p88_string_eq(dk(lookup(helpers, dn(d))), "Def")) && j_flat_guarded(rest, root, helpers)
 
+# Module: src/back/js/tree.bend:833
 @unsafe
 def j_flat_linear_args(+book: List<&2,KDef>, +env: List<&2,KTerm>, +xs: List<&2,KTerm>, +tel: KTerm, +child: U32, +at: U32) -> String:
   match xs:
@@ -837,23 +966,28 @@ def j_flat_linear_args(+book: List<&2,KDef>, +env: List<&2,KTerm>, +xs: List<&2,
 
 # A sequential structural tail call contains one descendant result in an inert
 # scalar context. Both calls have independently proved proper-child origins.
+
+# Module: src/back/js/tree.bend:841
 @unsafe
 def j_sequence_leaf(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +d: KDef) -> Bool:
   j_component_self(env, t, d) &&
     j_sequence_args(book, env, ks(j_call_spine(j_strip(t), Nil{})), d, 32)
 
+# Module: src/back/js/tree.bend:846
 @unsafe
 def j_sequence_args(+book: List<&2,KDef>, +env: List<&2,KTerm>, +xs: List<&2,KTerm>, +d: KDef, +fuel: U32) -> Bool:
   match xs:
     case Nil{}: True{}
     case Con{h, rest}: j_sequence_context(book, env, j_strip(h), d, fuel) && j_sequence_args(book, env, rest, d, fuel)
 
+# Module: src/back/js/tree.bend:852
 @unsafe
 def j_sequence_atoms(+xs: List<&2,KTerm>) -> Bool:
   match xs:
     case Nil{}: True{}
     case Con{h, rest}: j_region_field_atom(j_strip(h)) && j_sequence_atoms(rest)
 
+# Module: src/back/js/tree.bend:858
 @unsafe
 def j_sequence_context(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +d: KDef, +fuel: U32) -> Bool:
   +spine = j_call_spine(t, Nil{})
@@ -867,25 +1001,30 @@ def j_sequence_context(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +d
 
 # The original source proof establishes the unique descendant hole. The
 # annotated existing slot preserves typing for the unchanged argument emitter.
+
+# Module: src/back/js/tree.bend:871
 @unsafe
 def j_sequence_hole(+book: List<&2,KDef>, +t: KTerm, +d: KDef) -> KTerm:
   kc(KTerm, j_linear_emit_self(t, d), u =>
     j_region_annotate(kt("JSlot", "", 0, 0, Nil{}), j_fold_root_result(book, dt(d), da(d))), u =>
     k_with_children(t, j_sequence_holes(book, ks(t), d)))
 
+# Module: src/back/js/tree.bend:877
 @unsafe
 def j_sequence_holes(+book: List<&2,KDef>, +xs: List<&2,KTerm>, +d: KDef) -> List<&2,KTerm>:
   match xs:
     case Nil{}: Nil{}
     case Con{h, rest}: Con{j_sequence_hole(book, h, d), j_sequence_holes(book, rest, d)}
 
+# Module: src/back/js/tree.bend:883
 @unsafe
 def j_sequence_find(+todo: List<&2,KTerm>, +d: KDef) -> KTerm:
   match todo:
-    case Nil{}: atom("Absent")
+    case Nil{}: {KTerm{"Absent", "", 0, 0, Nil{}, Nil{}, 0, 0} : KTerm}
     case Con{h, rest}: kc(KTerm, j_linear_emit_self(h, d), u => j_strip(h),
       u => j_sequence_find(List.append(&2, KTerm, ks(h), rest), d))
 
+# Module: src/back/js/tree.bend:890
 @unsafe
 def j_sequence_finish(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +d: KDef, +phase: U32) -> String:
   +args = ks(j_call_spine(t, Nil{}))
@@ -900,6 +1039,8 @@ def j_sequence_finish(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +d:
 
 # This helper is used only after a complete typed native Tuple arm is proved.
 # Preserve binder order and aliases; no shape check or field vector is emitted.
+
+# Module: src/back/js/tree.bend:904
 @unsafe
 def j_native_tuple_fields(+arg: String, +at: U32, +rest: List<&2,String>) -> List<&2,String>:
   kc(List<&2,String>, U32.is_eq(at, 2), u => rest, u =>
@@ -908,11 +1049,13 @@ def j_native_tuple_fields(+arg: String, +at: U32, +rest: List<&2,String>) -> Lis
 # The selected root carries checked annotations; the source index keeps its
 # canonical definition. After the complete normalized audit, record that exact
 # source root in the identity-only context; every other graph object stays exact.
+
+# Module: src/back/js/tree.bend:912
 @unsafe
 def j_flat_source_root(+book: List<&2,KDef>, +graph: List<&2,KDef>, +root: String) -> List<&2,KDef>:
   match graph:
     case Nil{}: Nil{}
-    case Con{d, rest}: Con{kc(KDef, String.eq(dn(d), root), u => lookup(book, root), u => d), j_flat_source_root(book, rest, root)}
+    case Con{d, rest}: Con{kc(KDef, p88_string_eq(dn(d), root), u => lookup(book, root), u => d), j_flat_source_root(book, rest, root)}
 
 
 # A cycle containing a budget-reset component is already refused by its exact
@@ -921,23 +1064,27 @@ def j_flat_source_root(+book: List<&2,KDef>, +graph: List<&2,KDef>, +root: Strin
 # Hence native depth is bounded by source graph depth, not input tree depth.
 # This initial clone accepts only the existing two-child Let leaves; unary,
 # sequential and tail continuations keep the original iterative emitter.
+
+# Module: src/back/js/tree.bend:925
 @unsafe
 def j_hybrid_binary_shape(+t: KTerm, +owner: String, +fuel: U32) -> Bool:
   +body = j_strip(t)
   kc(Bool, U32.is_gt(fuel, 0), u =>
-    kc(Bool, String.eq(tg(body), "Lam"),
+    kc(Bool, p98_tag_eq(body, "Lam"),
       u => j_hybrid_binary_shape(kid(body, 0), owner, U32.sub(fuel, 1)), u =>
-    kc(Bool, String.eq(tg(body), "Mat"),
+    kc(Bool, p98_tag_eq(body, "Mat"),
       u => j_hybrid_binary_shape(kid(body, 0), owner, U32.sub(fuel, 1)) &&
         j_hybrid_binary_shape(kid(body, 1), owner, U32.sub(fuel, 1)), u =>
     kc(Bool, U32.is_eq(j_component_refs([body], owner, 1024, 0), 0), u => True{}, u =>
-      String.eq(tg(body), "Let") && U32.is_eq(terms_len(ks(body)), 3) &&
+      p98_tag_eq(body, "Let") && U32.is_eq(terms_len(ks(body)), 3) &&
       U32.is_eq(j_component_refs([body], owner, 1024, 0), 2) &&
-      String.eq(nm(j_call_spine(kid(kid(body, 0), 0), Nil{})), owner) &&
-      String.eq(nm(j_call_spine(kid(kid(body, 1), 0), Nil{})), owner)))), u => False{})
+      p88_string_eq(nm(j_call_spine(kid(kid(body, 0), 0), Nil{})), owner) &&
+      p88_string_eq(nm(j_call_spine(kid(kid(body, 1), 0), Nil{})), owner)))), u => False{})
 
 # Check the budget before any source prefix or field demand. The fallback gets
 # the captured current parameters once, without a new guard or proof extent.
+
+# Module: src/back/js/tree.bend:942
 @unsafe
 def j_hybrid_declaration(+book: List<&2,KDef>, +d: KDef, +body: KTerm) -> String:
   +name = j_region_name(dn(d)) ++ "$tree"
@@ -950,6 +1097,8 @@ def j_hybrid_declaration(+book: List<&2,KDef>, +d: KDef, +body: KTerm) -> String
 
 # Reuse original typed child arguments and binders. Phase0 child work finishes
 # before phase1 arguments; the combiner sees exactly those two completed values.
+
+# Module: src/back/js/tree.bend:954
 @unsafe
 def j_hybrid_finish(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: KTerm, +d: KDef) -> String:
   kc(String, U32.is_eq(j_component_refs([t], dn(d), 1024, 0), 0),
@@ -962,13 +1111,16 @@ def j_hybrid_finish(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: 
 
 # Complete-JPure continuation prefix: a total arithmetic helper is evaluated at
 # its original Let site. No allocation/effect/container helper is admitted here.
+
+# Module: src/back/js/tree.bend:966
 @unsafe
 def j_string_u32_telescope(+book: List<&2,KDef>, +ty: KTerm, +left: U32) -> Bool:
   +head = wnf(book, ty)
   kc(Bool, U32.is_eq(left, 0), u => j_primitive_type(book, head, "U32"), u =>
-    kc(Bool, String.eq(tg(head), "All") && Bool.not(U32.is_eq(qt(head), 0)) && j_primitive_type(book, wnf(book, kid(head, 0)), "U32"),
+    kc(Bool, p98_tag_eq(head, "All") && Bool.not(U32.is_eq(qt(head), 0)) && j_primitive_type(book, wnf(book, kid(head, 0)), "U32"),
       u => j_string_u32_telescope(book, kid(head, 1), U32.sub(left, 1)), u => False{}))
 
+# Module: src/back/js/tree.bend:973
 @unsafe
 def j_string_total_u32(+book: List<&2,KDef>, +todo: List<&2,KTerm>, +fuel: U32) -> Bool:
   match todo:
@@ -977,24 +1129,26 @@ def j_string_total_u32(+book: List<&2,KDef>, +todo: List<&2,KTerm>, +fuel: U32) 
       +t = j_strip(term)
       +spine = j_call_spine(t, Nil{})
       kc(Bool, U32.is_gt(fuel, 0), u =>
-        kc(Bool, String.eq(tg(t), "Var") || (String.eq(tg(t), "Lit") && (String.eq(nm(t), "U32") || String.eq(nm(t), "Nat"))),
+        kc(Bool, p98_tag_eq(t, "Var") || (p98_tag_eq(t, "Lit") && (p88_string_eq(nm(t), "U32") || p88_string_eq(nm(t), "Nat"))),
           u => j_string_total_u32(book, rest, U32.sub(fuel, 1)), u =>
-        kc(Bool, String.eq(tg(t), "App") && j_primitive_call(book, spine) && String.starts_with(nm(spine), "U32.") && Bool.not(String.eq(j_primitive_result(nm(spine)), "F32")),
+        kc(Bool, p98_tag_eq(t, "App") && j_primitive_call(book, spine) && String.starts_with(nm(spine), "U32.") && Bool.not(p88_string_eq(j_primitive_result(nm(spine)), "F32")),
           u => j_string_total_u32(book, List.append(&2, KTerm, ks(spine), rest), U32.sub(fuel, 1)), u =>
-        kc(Bool, String.eq(tg(t), "Lam") || String.eq(tg(t), "Let") || String.eq(tg(t), "Bind"),
+        kc(Bool, p98_tag_eq(t, "Lam") || p98_tag_eq(t, "Let") || p98_tag_eq(t, "Bind"),
           u => j_string_total_u32(book, List.append(&2, KTerm, ks(t), rest), U32.sub(fuel, 1)), u => False{}))), u => False{})
 
+# Module: src/back/js/tree.bend:988
 @unsafe
 def j_string_u32_call_prefix(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm) -> Bool:
   +head = j_strip(t)
-  +spine = kc(KTerm, String.eq(tg(head), "JDirectCall"),
+  +spine = kc(KTerm, p98_tag_eq(head, "JDirectCall"),
     u => kt("Call", nm(head), 0, 0, ks(head)), u => j_call_spine(head, Nil{}))
   +d = lookup(book, nm(spine))
-  kc(Bool, String.eq(tg(spine), "Call") && String.eq(dk(d), "Def") && Bool.not(db(d)) && U32.is_gt(da(d), 0) && U32.is_le(da(d), 8) &&
+  kc(Bool, p98_tag_eq(spine, "Call") && p88_string_eq(dk(d), "Def") && Bool.not(db(d)) && U32.is_gt(da(d), 0) && U32.is_le(da(d), 8) &&
     U32.is_eq(terms_len(ks(spine)), da(d)) && j_string_u32_telescope(book, dt(d), da(d)), u =>
       kc(Bool, j_string_total_u32(book, [dv(d)], 512) && j_pure_valid(j_direct_cached(book, dn(d))),
         u => j_string_u32_call_args(book, env, ks(spine)), u => False{}), u => False{})
 
+# Module: src/back/js/tree.bend:999
 @unsafe
 def j_string_u32_call_args(+book: List<&2,KDef>, +env: List<&2,KTerm>, +args: List<&2,KTerm>) -> Bool:
   match args:
@@ -1003,6 +1157,8 @@ def j_string_u32_call_args(+book: List<&2,KDef>, +env: List<&2,KTerm>, +args: Li
 
 # Candidate general private pair-state lowering. No public descriptor or type proof changes.
 # Called only from an already admitted complete-JPure component declaration.
+
+# Module: src/back/js/tree.bend:1007
 @unsafe
 def j_pair_loop_shape(+book: List<&2,KDef>, +d: KDef) -> Bool:
   +body = j_strip(dv(d))
@@ -1012,58 +1168,65 @@ def j_pair_loop_shape(+book: List<&2,KDef>, +d: KDef) -> Bool:
   +succ = j_strip(kid(alt, 0))
   +result = j_fold_root_result(book, dt(d), da(d))
   kc(Bool, U32.is_ge(da(d), 2) && U32.is_le(da(d), 8) && j_u32_bounded([dv(d)], 512) &&
-    String.eq(tg(body), "Mat") && String.eq(nm(body), "Zero") && String.eq(tg(alt), "Mat") && String.eq(nm(alt), "Succ") &&
-    String.eq(tg(j_strip(kid(alt, 1))), "Efq") && j_primitive_type(book, wnf(book, kid(ty, 0)), "Nat") &&
+    p98_tag_eq(body, "Mat") && p88_string_eq(nm(body), "Zero") && p98_tag_eq(alt, "Mat") && p88_string_eq(nm(alt), "Succ") &&
+    p98_tag_eq(j_strip(kid(alt, 1)), "Efq") && j_primitive_type(book, wnf(book, kid(ty, 0)), "Nat") &&
     j_pure_closed_sigma(book, result), u =>
     kc(Bool, j_pair_loop_signature(book, dt(d), da(d), result, 0) &&
     U32.is_eq(j_nat_loop_count(zero, 0), U32.sub(da(d), 1)) && U32.is_eq(j_nat_loop_count(succ, 0), da(d)) &&
-    String.eq(tg(j_nat_loop_unwrap(zero)), "Var") &&
+    p98_tag_eq(j_nat_loop_unwrap(zero), "Var") &&
     U32.is_eq(ix(j_nat_loop_unwrap(zero)), ix(j_fusion_binder(zero, U32.sub(da(d), 2)))), u => j_pair_loop_tail(book, d, succ, j_call_spine(j_nat_loop_unwrap(succ), Nil{}), result), u => False{}), u => False{})
 
+# Module: src/back/js/tree.bend:1024
 @unsafe
 def j_pair_loop_signature(+book: List<&2,KDef>, +ty: KTerm, +left: U32, +result: KTerm, +at: U32) -> Bool:
   +h = wnf(book, ty)
   kc(Bool, U32.is_eq(left, 0), u => j_pure_same_closed(book, h, result, 64), u =>
-    kc(Bool, String.eq(tg(h), "All") && Bool.not(U32.is_eq(qt(h), 0)), u =>
+    kc(Bool, p98_tag_eq(h, "All") && Bool.not(U32.is_eq(qt(h), 0)), u =>
     kc(Bool, kc(Bool, U32.is_eq(left, 1), u => j_pure_same_closed(book, kid(h, 0), result, 64),
       u => j_nat_loop_scalar(book, kid(h, 0))), u =>
     j_pair_loop_signature(book, kid(h, 1), U32.sub(left, 1), result, U32.inc(at)), u => False{}), u => False{}))
 
+# Module: src/back/js/tree.bend:1033
 @unsafe
 def j_pair_loop_tail(+book: List<&2,KDef>, +d: KDef, +succ: KTerm, +spine: KTerm, +result: KTerm) -> Bool:
   +update = j_call_spine(j_strip(terms_at(ks(spine), U32.sub(da(d), 1))), Nil{})
   +helper = lookup(book, nm(update))
-  kc(Bool, String.eq(tg(spine), "Call") && String.eq(nm(spine), dn(d)) && U32.is_eq(terms_len(ks(spine)), da(d)), u =>
+  kc(Bool, p98_tag_eq(spine, "Call") && p88_string_eq(nm(spine), dn(d)) && U32.is_eq(terms_len(ks(spine)), da(d)), u =>
     kc(Bool, j_pair_loop_same_args(succ, ks(spine), 0, U32.sub(da(d), 1)) &&
-    String.eq(tg(update), "Call") && U32.is_eq(terms_len(ks(update)), da(helper)) &&
+    p98_tag_eq(update, "Call") && U32.is_eq(terms_len(ks(update)), da(helper)) &&
     U32.is_gt(da(helper), 0) && U32.is_le(da(helper), 8), u =>
     kc(Bool, j_pair_loop_update_args(book, dt(helper), ks(update), succ, da(helper), U32.sub(da(d), 1), result), u =>
     j_pair_helper_safe(book, helper, result, 128), u => False{}), u => False{}), u => False{})
 
 # Scalar loop arguments are invariant, and the countdown is its proper predecessor.
+
+# Module: src/back/js/tree.bend:1045
 @unsafe
 def j_pair_loop_same_args(+succ: KTerm, +args: List<&2,KTerm>, +at: U32, +stop: U32) -> Bool:
   kc(Bool, U32.is_eq(at, stop), u => True{}, u =>
-    kc(Bool, String.eq(tg(j_strip(terms_at(args, at))), "Var") &&
+    kc(Bool, p98_tag_eq(j_strip(terms_at(args, at)), "Var") &&
     U32.is_eq(ix(j_strip(terms_at(args, at))), ix(j_fusion_binder(succ, at))), u =>
     j_pair_loop_same_args(succ, args, U32.inc(at), stop), u => False{}))
 
 # The sole whole-buffer use is the final, immediately destructured helper input.
+
+# Module: src/back/js/tree.bend:1053
 @unsafe
 def j_pair_loop_update_args(+book: List<&2,KDef>, +ty: KTerm, +args: List<&2,KTerm>, +succ: KTerm, +left: U32, +slot: U32, +result: KTerm) -> Bool:
   +h = wnf(book, ty)
   kc(Bool, U32.is_eq(left, 0), u => List.is_empty(&2, KTerm, args) && j_pure_same_closed(book, h, result, 64), u =>
-    kc(Bool, String.eq(tg(h), "All") && Bool.not(U32.is_eq(qt(h), 0)), u => kc(Bool, kc(Bool, U32.is_eq(left, 1), u =>
+    kc(Bool, p98_tag_eq(h, "All") && Bool.not(U32.is_eq(qt(h), 0)), u => kc(Bool, kc(Bool, U32.is_eq(left, 1), u =>
       j_pure_same_closed(book, kid(h, 0), result, 64) &&
-      String.eq(tg(j_strip(terms_at(args, 0))), "Var") &&
+      p98_tag_eq(j_strip(terms_at(args, 0)), "Var") &&
       U32.is_eq(ix(j_strip(terms_at(args, 0))), ix(j_fusion_binder(succ, slot))), u =>
       j_nat_loop_scalar(book, kid(h, 0)) && j_region_field_atom(j_strip(terms_at(args, 0))) &&
       U32.is_eq(j_region_counter_uses([terms_at(args, 0)], ix(j_fusion_binder(succ, slot)), 0), 0)), u =>
     j_pair_loop_update_args(book, kid(h, 1), List.tail(&2, KTerm, args), succ, U32.sub(left, 1), slot, result), u => False{}), u => False{}))
 
+# Module: src/back/js/tree.bend:1065
 @unsafe
 def j_pair_helper_safe(+book: List<&2,KDef>, +d: KDef, +result: KTerm, +fuel: U32) -> Bool:
-  kc(Bool, String.eq(dk(d), "Def") && Bool.not(db(d)) && U32.is_eq(dx(d), 0) &&
+  kc(Bool, p88_string_eq(dk(d), "Def") && Bool.not(db(d)) && U32.is_eq(dx(d), 0) &&
     U32.is_gt(da(d), 0) && U32.is_le(da(d), 8) && U32.is_gt(fuel, 0), u =>
     kc(Bool, j_pure_valid(j_direct_cached(book, dn(d))) &&
       j_pure_same_closed(book, j_fold_root_result(book, dt(d), da(d)), result, 64), u =>
@@ -1071,44 +1234,49 @@ def j_pair_helper_safe(+book: List<&2,KDef>, +d: KDef, +result: KTerm, +fuel: U3
 
 # A pair parameter may only enter the sole Tuple match. No whole-shell Var is
 # introduced, so the fresh destination cannot become a field or saved alias.
+
+# Module: src/back/js/tree.bend:1075
 @unsafe
 def j_pair_prefix_safe(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: KTerm, +result: KTerm, +fuel: U32) -> Bool:
   +body = j_strip(t)
   +h = wnf(book, ty)
   kc(Bool, U32.is_gt(fuel, 0), u =>
-    kc(Bool, String.eq(tg(body), "Lam"), u =>
-      kc(Bool, String.eq(tg(h), "All") && Bool.not(j_pure_closed_sigma(book, wnf(book, kid(h, 0)))), u =>
+    kc(Bool, p98_tag_eq(body, "Lam"), u =>
+      kc(Bool, p98_tag_eq(h, "All") && Bool.not(j_pure_closed_sigma(book, wnf(book, kid(h, 0)))), u =>
       j_pair_prefix_safe(book, Con{kt("Env", "", ix(body), 0, [kid(h, 0)]), env}, kid(body, 0),
         subst(kid(h, 1), ix(h), var(nm(body), ix(body))), result, U32.sub(fuel, 1)), u => False{}), u =>
-    kc(Bool, String.eq(tg(body), "Mat"), u =>
+    kc(Bool, p98_tag_eq(body, "Mat"), u =>
       kc(Bool, j_pair_arm_header(book, body, h), u =>
       kc(Bool, j_pair_prefix_safe(book, env, kid(body, 0), j_arm_type(book, h, nm(body)), result, U32.sub(fuel, 1)), u =>
-      kc(Bool, j_pure_closed_sigma(book, wnf(book, kid(h, 0))), u => String.eq(nm(body), "Tuple"),
+      kc(Bool, j_pure_closed_sigma(book, wnf(book, kid(h, 0))), u => p88_string_eq(nm(body), "Tuple"),
         u => j_pair_prefix_safe(book, env, kid(body, 1), h, result, U32.sub(fuel, 1))), u => False{}), u => False{}), u =>
-    kc(Bool, String.eq(tg(body), "Efq"), u => True{}, u =>
-      kc(Bool, Bool.not(String.eq(tg(h), "All")), u => j_pair_leaf_safe(book, env, body, result, U32.sub(fuel, 1)), u => False{})))), u => False{})
+    kc(Bool, p98_tag_eq(body, "Efq"), u => True{}, u =>
+      kc(Bool, p98_tag_eq(h, "All"), u => False{}, u => j_pair_leaf_safe(book, env, body, result, U32.sub(fuel, 1)))))), u => False{})
 
+# Module: src/back/js/tree.bend:1092
 @unsafe
 def j_pair_arm_header(+book: List<&2,KDef>, +t: KTerm, +ty: KTerm) -> Bool:
   +arg = wnf(book, kid(ty, 0))
   +owner = lookup(book, nm(arg))
   +c = lookup(dc(owner), nm(t))
-  String.eq(tg(ty), "All") && Bool.not(U32.is_eq(qt(ty), 0)) && String.eq(j_l_name(t), "") &&
-    U32.is_eq(terms_len(ks(t)), 2) && String.eq(dk(c), "Ctr") &&
+  p98_tag_eq(ty, "All") && Bool.not(U32.is_eq(qt(ty), 0)) && p88_string_eq(j_l_name(t), "") &&
+    U32.is_eq(terms_len(ks(t)), 2) && p88_string_eq(dk(c), "Ctr") &&
     (j_primitive_type(book, arg, "Bool") || j_pure_closed_list(book, arg) || j_pure_closed_sigma(book, arg) || j_pure_closed_map(book, arg) || j_map_closed_maybe(book, arg) || j_map_cmp_type(book, arg) ||
       (Bool.not(db(owner)) && Bool.not(db(c)) && j_pure_type(book, arg)))
 
+# Module: src/back/js/tree.bend:1102
 @unsafe
 def j_pair_leaf_safe(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +result: KTerm, +fuel: U32) -> Bool:
   +body = j_strip(t)
   +spine = j_call_spine(body, Nil{})
   kc(Bool, U32.is_gt(fuel, 0), u =>
-    kc(Bool, String.eq(tg(body), "Ctr"), u => String.eq(nm(body), "Tuple") && U32.is_eq(terms_len(ks(body)), 2), u =>
+    kc(Bool, p98_tag_eq(body, "Ctr"), u => p88_string_eq(nm(body), "Tuple") && U32.is_eq(terms_len(ks(body)), 2), u =>
     kc(Bool, j_linear_prefix_alias(book, env, body, ""), u =>
       j_pair_leaf_safe(book, j_context(book, env, ks(body)), kid(body, 1), result, U32.sub(fuel, 1)), u =>
-      kc(Bool, String.eq(tg(spine), "Call") && U32.is_gt(terms_len(ks(spine)), 0) && U32.is_eq(terms_len(ks(spine)), da(lookup(book, nm(spine)))), u =>
+      kc(Bool, p98_tag_eq(spine, "Call") && U32.is_gt(terms_len(ks(spine)), 0) && U32.is_eq(terms_len(ks(spine)), da(lookup(book, nm(spine)))), u =>
       j_pair_helper_safe(book, lookup(book, nm(spine)), result, U32.sub(fuel, 1)), u => False{}))), u => False{})
 
+# Module: src/back/js/tree.bend:1113
 @unsafe
 def j_pair_loop_declaration(+book: List<&2,KDef>, +d: KDef) -> String:
   +last = U32.sub(da(d), 1)
@@ -1118,6 +1286,7 @@ def j_pair_loop_declaration(+book: List<&2,KDef>, +d: KDef) -> String:
     "while($pairFuel!==0n){" ++ j_pair_loop_emit(book, Nil{}, body, j_arm_type(book, wnf(book, dt(d)), "Succ"), d, 0) ++
     "$pairFuel-=1n;}return $pairState;}\n"
 
+# Module: src/back/js/tree.bend:1122
 @unsafe
 def j_pair_loop_emit(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: KTerm, +d: KDef, +at: U32) -> String:
   +body = j_strip(t)
@@ -1129,6 +1298,7 @@ def j_pair_loop_emit(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty:
     j_pair_loop_emit(book, Con{kt("Env", "", ix(body), 0, [kid(h, 0)]), env}, kid(body, 0),
       subst(kid(h, 1), ix(h), var(nm(body), ix(body))), d, U32.inc(at)))
 
+# Module: src/back/js/tree.bend:1133
 @unsafe
 def j_pair_call_emit(+book: List<&2,KDef>, +env: List<&2,KTerm>, +spine: KTerm) -> String:
   +d = lookup(book, nm(spine))
@@ -1136,6 +1306,7 @@ def j_pair_call_emit(+book: List<&2,KDef>, +env: List<&2,KTerm>, +spine: KTerm) 
     j_pair_prefix_emit(book, Nil{}, j_owned_term(dv(d)), dt(d), j_finite_slots(0, da(d))) ++ "})(" ++
     j_apply_args(book, env, ks(spine), dt(d)) ++ ")"
 
+# Module: src/back/js/tree.bend:1140
 @unsafe
 def j_pair_prefix_emit(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: KTerm, +args: List<&2,String>) -> String:
   match args:
@@ -1143,12 +1314,13 @@ def j_pair_prefix_emit(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +t
     case Con{arg, rest}:
       +body = j_strip(t)
       +h = wnf(book, ty)
-      kc(String, String.eq(tg(body), "Lam"), u => "const " ++ j_local(ix(body)) ++ "=" ++ arg ++ ";" ++
+      kc(String, p98_tag_eq(body, "Lam"), u => "const " ++ j_local(ix(body)) ++ "=" ++ arg ++ ";" ++
         j_pair_prefix_emit(book, Con{kt("Env", "", ix(body), 0, [kid(h, 0)]), env}, kid(body, 0),
           subst(kid(h, 1), ix(h), var(nm(body), ix(body))), rest), u =>
-        kc(String, String.eq(tg(body), "Mat"), u => j_pair_match_emit(book, env, body, h, arg, rest),
+        kc(String, p98_tag_eq(body, "Mat"), u => j_pair_match_emit(book, env, body, h, arg, rest),
           u => "return bad('private pair prefix invariant');"))
 
+# Module: src/back/js/tree.bend:1153
 @unsafe
 def j_pair_match_emit(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: KTerm, +arg: String, +rest: List<&2,String>) -> String:
   +input = wnf(book, kid(ty, 0))
@@ -1156,17 +1328,18 @@ def j_pair_match_emit(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty
   kc(String, j_pure_closed_sigma(book, input), u => "{" ++
     j_pair_prefix_emit(book, env, kid(t, 0), j_arm_type(book, ty, "Tuple"), j_native_tuple_fields(arg, 0, rest)) ++ "}", u =>
     "if(" ++ kc(String, j_primitive_type(book, input, "Bool"), u => "(" ++ arg ++ ")===" ++
-      kc(String, String.eq(nm(t), "True"), u => "true", u => "false"), u => "(" ++ arg ++ ").$===" ++ j_quote(nm(t))) ++ "){" ++
+      kc(String, p88_string_eq(nm(t), "True"), u => "true", u => "false"), u => "(" ++ arg ++ ").$===" ++ j_quote(nm(t))) ++ "){" ++
       j_pair_prefix_emit(book, env, kid(t, 0), j_arm_type(book, ty, nm(t)), j_flat_fields(book, input, arg, 0, da(c), rest)) ++ "}else{" ++
       j_pair_prefix_emit(book, env, kid(t, 1), ty, Con{arg, rest}) ++ "}")
 
+# Module: src/back/js/tree.bend:1164
 @unsafe
 def j_pair_leaf_emit(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: KTerm) -> String:
-  kc(String, String.eq(tg(t), "Efq"), u => "return bad('private pair prefix invariant');", u =>
-  kc(String, String.eq(tg(t), "Ctr"), u =>
+  kc(String, p98_tag_eq(t, "Efq"), u => "return bad('private pair prefix invariant');", u =>
+  kc(String, p98_tag_eq(t, "Ctr"), u =>
     "const $pairLeft=" ++ j_expr(book, env, terms_at(ks(t), 0), kid(wnf(book, ty), 2), False{}) ++ ";" ++
     "const $pairRight=" ++ j_expr(book, env, terms_at(ks(t), 1), kid(wnf(book, kid(wnf(book, ty), 3)), 0), False{}) ++ ";" ++
     "$pairState[0]=$pairLeft;$pairState[1]=$pairRight;return $pairState;", u =>
-    kc(String, String.eq(tg(t), "Let"), u => "{" ++ j_nat_loop_values(book, env, ks(t), 0) ++ "{" ++
+    kc(String, p98_tag_eq(t, "Let"), u => "{" ++ j_nat_loop_values(book, env, ks(t), 0) ++ "{" ++
       j_nat_loop_names(ks(t), 0) ++ j_pair_leaf_emit(book, j_context(book, env, ks(t)), j_strip(kid(t, 1)), ty) ++ "}}", u =>
       "return " ++ j_pair_call_emit(book, env, j_call_spine(t, Nil{})) ++ ";")))

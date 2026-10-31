@@ -1,26 +1,29 @@
-# PRIVATE optional prepared-Base annotation product. Host identity admission
-# couples this producer, the checked Base and the same successful owned request.
-# Public annotate_selected retains its original arbitrary-book behavior.
+
+# Module: src/check/base-products.bend:4
 type KBaseAnnotationState is Data:
   KBaseAnnotationState{+keys: List<&2,String>, +book: List<&2,KDef>}
 
+# Module: src/check/base-products.bend:8
 @unsafe
 def base_annotation_implicit(+book: List<&2,KDef>, +names: List<&2,String>) -> Bool:
   match names:
     case Nil{}: True{}
-    case Con{name, rest}: Bool.not(String.eq(dk(lookup(book, name)), "Absent")) && base_annotation_implicit(book, rest)
+    case Con{name, rest}: Bool.not(p88_string_eq(dk(lookup(book, name)), "Absent")) && base_annotation_implicit(book, rest)
 
 # The producer receives the actual prepared world and reverses its exact checked
 # output in Bend, never deriving products from final raw declaration events.
 # Annotation can consult literal implementation types in addition to Ref/ADT.
 # This private optional preparation is allowed to evaluate the pinned Base;
 # it does not extend preparation permission to arbitrary unselected unsafe books.
+
+# Module: src/check/base-products.bend:19
 @unsafe
 def base_annotation_prepare(+prepared: KBasePreparedWorld, +minimumWork: U32) -> KBaseAnnotationState:
   match prepared:
     case KBasePreparedWorld{state, original, final, saved, checked, seen, todos, checkedBound}:
       base_annotation_prepare_state(state, checked, minimumWork)
 
+# Module: src/check/base-products.bend:25
 @unsafe
 def base_annotation_prepare_state(+state: KBasePrefixState, +checked: List<&2,KDef>, +minimumWork: U32) -> KBaseAnnotationState:
   match state:
@@ -29,6 +32,7 @@ def base_annotation_prepare_state(+state: KBasePrefixState, +checked: List<&2,KD
         u => base_annotation_prepare_closed(book_final_reverse(checked, Nil{}), minimumWork),
         u => KBaseAnnotationState{Nil{}, Nil{}})
 
+# Module: src/check/base-products.bend:33
 @unsafe
 def base_annotation_prepare_closed(+checked: List<&2,KDef>, +minimumWork: U32) -> KBaseAnnotationState:
   +context = book_context(checked)
@@ -37,10 +41,12 @@ def base_annotation_prepare_closed(+checked: List<&2,KDef>, +minimumWork: U32) -
     u => base_annotation_state(base_annotation_collect(context, checked, jd_stops(context), minimumWork)),
     u => KBaseAnnotationState{Nil{}, Nil{}})
 
+# Module: src/check/base-products.bend:41
 @unsafe
 def base_annotation_state(+defs: List<&2,KDef>) -> KBaseAnnotationState:
   KBaseAnnotationState{base_annotation_keys(defs), book_cached(defs, 0)}
 
+# Module: src/check/base-products.bend:45
 @unsafe
 def base_annotation_keys(+defs: List<&2,KDef>) -> List<&2,String>:
   match defs:
@@ -49,29 +55,35 @@ def base_annotation_keys(+defs: List<&2,KDef>) -> List<&2,String>:
 
 # Bounded syntactic work is a generic policy for the optional artifact. It is
 # computed once from Base bodies; no source/program names select the threshold.
+
+# Module: src/check/base-products.bend:53
 @unsafe
 def base_annotation_large(+terms: List<&2,KTerm>, +left: U32) -> Bool:
   kc(Bool, U32.is_eq(left, 0), u => True{}, u => base_annotation_large_more(terms, left))
 
+# Module: src/check/base-products.bend:57
 @unsafe
 def base_annotation_large_more(+terms: List<&2,KTerm>, +left: U32) -> Bool:
   match terms:
     case Nil{}: False{}
     case Con{term, rest}: base_annotation_large(norm_join(ks(term), rest), U32.sub(left, 1))
 
+# Module: src/check/base-products.bend:63
 @unsafe
 def base_annotation_collect(+book: List<&2,KDef>, +defs: List<&2,KDef>, +stops: List<&2,String>, +minimumWork: U32) -> List<&2,KDef>:
   match defs:
     case Nil{}: Nil{}
     case Con{d, rest}:
-      kc(List<&2,KDef>, String.eq(dk(d), "Def") && U32.is_eq(dx(d), 0) &&
-        Bool.not(has_name(stops, dn(d))) && Bool.not(String.eq(tg(dv(d)), "Absent") || String.eq(tg(dv(d)), "Foreign")) &&
+      kc(List<&2,KDef>, p88_string_eq(dk(d), "Def") && U32.is_eq(dx(d), 0) &&
+        Bool.not(has_name(stops, dn(d))) && Bool.not(p98_tag_eq(dv(d), "Absent") || p98_tag_eq(dv(d), "Foreign")) &&
         base_annotation_large([dv(d)], minimumWork),
         u => Con{ka_def(book, d), base_annotation_collect(book, rest, stops, minimumWork)},
         u => base_annotation_collect(book, rest, stops, minimumWork))
 
 # Host requests a separate product decode only when this Bend-owned decision
 # finds work in the actual selected definitions. Current stops always win.
+
+# Module: src/check/base-products.bend:76
 @unsafe
 def base_annotation_wanted(+selected: List<&2,KDef>, +stops: List<&2,String>, +keys: List<&2,String>) -> Bool:
   match selected:
@@ -82,10 +94,13 @@ def base_annotation_wanted(+selected: List<&2,KDef>, +stops: List<&2,String>, +k
 # Same immutable context and selected list as ordinary annotate_selected. The
 # caller may invoke this only after base_annotation_allowed and optional artifact
 # identity/version admission, before either captured request value can change.
+
+# Module: src/check/base-products.bend:86
 @unsafe
 def annotate_selected_base(+book: List<&2,KDef>, +selected: List<&2,KDef>, +stops: List<&2,String>, +products: List<&2,KDef>) -> List<&2,KDef>:
   base_annotation_defs(book_context(book), selected, stops, products)
 
+# Module: src/check/base-products.bend:90
 @unsafe
 def base_annotation_defs(+book: List<&2,KDef>, +selected: List<&2,KDef>, +stops: List<&2,String>, +products: List<&2,KDef>) -> List<&2,KDef>:
   match selected:
@@ -93,12 +108,15 @@ def base_annotation_defs(+book: List<&2,KDef>, +selected: List<&2,KDef>, +stops:
     case Con{d, rest}: Con{kc(KDef, has_name(stops, dn(d)), u => d,
       u => base_annotation_def(book, d, lookup(products, dn(d)))), base_annotation_defs(book, rest, stops, products)}
 
+# Module: src/check/base-products.bend:97
 @unsafe
 def base_annotation_def(+book: List<&2,KDef>, +d: KDef, +product: KDef) -> KDef:
-  kc(KDef, String.eq(dk(product), "Absent"), u => ka_def(book, d), u => product)
+  kc(KDef, p88_string_eq(dk(product), "Absent"), u => ka_def(book, d), u => product)
 
 # This bridge retains the selected world-version-three shape. It does not modify
 # that world or admit a product solely because a cached world exists.
+
+# Module: src/check/base-products.bend:103
 @unsafe
 def base_annotation_allowed(+load: FPrefixLoad, +prepared: KBasePreparedWorld) -> Bool:
   match load:
@@ -108,6 +126,7 @@ def base_annotation_allowed(+load: FPrefixLoad, +prepared: KBasePreparedWorld) -
           match result:
             case FResult{book, error, imports}: base_annotation_allowed_world(suffix, ready && String.is_empty(error), prepared)
 
+# Module: src/check/base-products.bend:112
 @unsafe
 def base_annotation_allowed_world(+suffix: List<&2,KDef>, +ready: Bool, +prepared: KBasePreparedWorld) -> Bool:
   match prepared:

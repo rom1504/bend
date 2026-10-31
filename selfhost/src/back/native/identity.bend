@@ -1,21 +1,21 @@
-import Base
 
-# C identifiers fold case and punctuation. Encode every non-Base constructor
-# with decimal Unicode scalars so distinct source names remain distinct after
-# that transformation. Only the enclosing ADT's provenance grants Base ABI.
+# Module: src/back/native/identity.bend:6
 law nc_ctor_owned:
   for +book: List<&2, KDef>
   for +name: String
   Bool
 
+# Module: src/back/native/identity.bend:11
 law nc_ctor_encode:
   for +name: String
   String
 
+# Module: src/back/native/identity.bend:15
 law nc_ctor_codes:
   for +name: String
   String
 
+# Module: src/back/native/identity.bend:19
 law nc_ctor_decode:
   for +rest: String
   for +acc: U32
@@ -24,6 +24,7 @@ law nc_ctor_decode:
   for +original: String
   String
 
+# Module: src/back/native/identity.bend:27
 law nc_ctor_decode_step:
   for +h: Char
   for +rest: String
@@ -33,6 +34,7 @@ law nc_ctor_decode_step:
   for +original: String
   String
 
+# Module: src/back/native/identity.bend:37
 @unsafe
 def nc_ctor_identity(
   +book: List<&2, KDef>,
@@ -40,20 +42,16 @@ def nc_ctor_identity(
 ) -> String:
   kc(String, nc_ctor_owned(book, name), u => name, u => nc_ctor_encode(name))
 
+# Module: src/back/native/identity.bend:44
 @unsafe
 def nc_ctor_owned(book, name):
-  match book:
-    case Nil{}:
-      False{}
-    case Con{d, rest}:
-      kc(Bool, String.eq(dk(d), "ADT"),
-        u => kc(Bool, String.eq(dk(lookup(dc(d), name)), "Ctr"), u => db(d), u => nc_ctor_owned(rest, name)),
-        u => nc_ctor_owned(rest, name))
+  p144o_owned(book,name)
 
 @unsafe
 def nc_ctor_encode(name):
   "$ctor." ++ nc_ctor_codes(name)
 
+# Module: src/back/native/identity.bend:58
 @unsafe
 def nc_ctor_codes(name):
   match name:
@@ -62,6 +60,7 @@ def nc_ctor_codes(name):
     case SCon{h, rest}:
       U32.show(Char.to_u32(h)) ++ "_" ++ nc_ctor_codes(rest)
 
+# Module: src/back/native/identity.bend:66
 @unsafe
 def nc_ctor_display(
   +name: String,
@@ -70,14 +69,16 @@ def nc_ctor_display(
     u => nc_ctor_decode(String.drop(name, String.length("$ctor.")), 0, 0, "", name),
     u => name)
 
+# Module: src/back/native/identity.bend:74
 @unsafe
 def nc_ctor_decode(rest, acc, digits, out, original):
   match rest:
     case SNil{}:
-      kc(String, U32.is_eq(digits, 0) && String.eq(nc_ctor_encode(out), original), u => out, u => original)
+      kc(String, U32.is_eq(digits, 0) && p88_string_eq(nc_ctor_encode(out), original), u => out, u => original)
     case SCon{h, tail}:
       nc_ctor_decode_step(h, tail, acc, digits, out, original)
 
+# Module: src/back/native/identity.bend:82
 @unsafe
 def nc_ctor_decode_step(h, rest, acc, digits, out, original):
   kc(String, Char.is_eq(h, '_'),

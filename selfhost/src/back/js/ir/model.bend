@@ -1,6 +1,5 @@
-# Runtime expression IR, separate from the checked dependent KTerm core.
-# Lowering resolves source typing, erasure and application boundaries once.
-# Optimization transforms these nodes; emission prints their runtime behavior.
+
+# Module: src/back/js/ir/model.bend:4
 type JIRParam is Data:
   JIRParam{+id: U32, +erased: Bool}
 
@@ -13,6 +12,8 @@ type JIRParam is Data:
 # in tail mode. Match constructs a matcher value: arm and fallback expressions
 # execute only on demand; arm constructs its function rather than invoking it.
 # A single-constructor Match has JIRNull fallback, which is never emitted.
+
+# Module: src/back/js/ir/model.bend:16
 type JIRExpr is Data:
   JIRLocal{+id: U32}
   JIRGlobal{+name: String}
@@ -31,26 +32,13 @@ type JIRExpr is Data:
   JIRCallPlan{+env: List<&2, KTerm>, +spine: KTerm, +fallback: JIRExpr}
   JIRLegacy{+env: List<&2, KTerm>, +term: KTerm, +typ: KTerm, +tail: Bool}
 
-# Global loads may recompute an initializer, throw or observe public mutation.
-# Word float=true invokes the runtime bit reinterpretation helper; unlike an
-# integer token it is not a movable constant under arbitrary host mutation.
-# Construct retains ordinary public layout. Tail fields are delayed trampoline
-# computations, while other fields are eagerly evaluated in source order.
-# Primitive and Shift retain exact source admission but contain only runtime
-# operands. Choice evaluates its condition once and only the selected branch.
-# Legacy is an explicit migration boundary for private constructor layouts,
-# recursively compressed constructor literals, deep closures and private plans.
-# It is opaque to optimization;
-# effects, demand and binder uses must not be inferred from its outer tag.
-# CallPlan preserves the existing guarded call selection around a structured
-# generic fallback. It also retains source binder uses and is an effect barrier.
-# Neither adapter authorizes a new proof or changes a public representation.
-
+# Module: src/back/js/ir/model.bend:50
 @unsafe
 def jir_param_id(+p: JIRParam) -> U32:
   match p:
     case JIRParam{id, erased}: id
 
+# Module: src/back/js/ir/model.bend:55
 @unsafe
 def jir_param_erased(+p: JIRParam) -> Bool:
   match p:

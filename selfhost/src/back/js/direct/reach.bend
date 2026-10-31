@@ -1,36 +1,42 @@
-# Direct reachability follows emitter-owned JD_REF metadata, like JD_USE for
-# local demand. The initial checked/type closure remains available to emission;
-# only runtime definitions and their foreign initializers are pruned here.
-# This deliberately reuses numeric row pruning, erased arguments, constructor
-# folding and dead-let demand rather than maintaining a second expression walk.
+
+# Module: src/back/js/direct/reach.bend:6
 type JDReach is Data:
   JDReach{+defs: List<&2,KDef>, +error: String}
 
+# Module: src/back/js/direct/reach.bend:121
+type JDPlan is Data:
+  JDPlan{+book: List<&2,KDef>, +defs: List<&2,KDef>, +texts: KDef, +error: String}
+
+# Module: src/back/js/direct/reach.bend:10
 @unsafe
 def jd_reach_defs(+r: JDReach) -> List<&2,KDef>:
   match r:
     case JDReach{defs, error}: defs
 
+# Module: src/back/js/direct/reach.bend:15
 @unsafe
 def jd_reach_error(+r: JDReach) -> String:
   match r:
     case JDReach{defs, error}: error
 
+# Module: src/back/js/direct/reach.bend:20
 @unsafe
 def jd_reach_selected(+book: List<&2,KDef>, +defs: List<&2,KDef>, +roots: List<&2,String>) -> JDReach:
   jd_reach_context(defs, roots, jd_calls_context(jd_selected_context(book, defs), defs))
 
+# Module: src/back/js/direct/reach.bend:24
 @unsafe
 def jd_reach_context(+defs: List<&2,KDef>, +roots: List<&2,String>, +book: List<&2,KDef>) -> JDReach:
   kc(JDReach, jd_calls_valid(book), u =>
     jd_reach_visit(book, book_cached(jd_reach_names(defs), 0), defs, roots, missing(), jd_definition_budget(), 65536),
     u => JDReach{Nil{}, "direct reachability tail-call analysis refused"})
 
+# Module: src/back/js/direct/reach.bend:30
 @unsafe
 def jd_reach_names(+defs: List<&2,KDef>) -> List<&2,KDef>:
   match defs:
     case Nil{}: Nil{}
-    case Con{d, rest}: Con{KDef{jd_name(dn(d)), "JDReachName", 0, 0, atom("Absent"),
+    case Con{d, rest}: Con{KDef{jd_name(dn(d)), "JDReachName", 0, 0, {KTerm{"Absent", "", 0, 0, Nil{}, Nil{}, 0, 0} : KTerm},
       ref(dn(d)), Nil{}, False{}, False{}}, jd_reach_names(rest)}
 
 # Scan only physical-line metadata emitted by jd_ref. Quoted source strings
@@ -40,11 +46,14 @@ def jd_reach_names(+defs: List<&2,KDef>) -> List<&2,KDef>:
 # when its source or an emitted SCC switch repeats the same JD_REF marker.
 # Still parse/validate every occurrence and charge every scanned character.
 # Preserve a supplied out list; only this scan's new markers are deduplicated.
+
+# Module: src/back/js/direct/reach.bend:44
 @unsafe
 def jd_reach_refs(+names: List<&2,KDef>, +text: String, +line: Bool, +fuel: U32,
   +out: List<&2,String>) -> Maybe<&2,List<&2,String>>:
   jd_reach_refs_unique(names, text, line, fuel, out, missing())
 
+# Module: src/back/js/direct/reach.bend:49
 @unsafe
 def jd_reach_refs_unique(+names: List<&2,KDef>, +text: String, +line: Bool, +fuel: U32,
   +out: List<&2,String>, +seen: KDef) -> Maybe<&2,List<&2,String>>:
@@ -56,6 +65,7 @@ def jd_reach_refs_unique(+names: List<&2,KDef>, +text: String, +line: Bool, +fue
           jd_reach_marker(names, String.drop(text, 9n), "", U32.sub(fuel, 9), out, seen), w => None{}),
         v => jd_reach_refs_unique(names, rest, Char.is_eq(h, '\n'), U32.sub(fuel, 1), out, seen)), u => None{})
 
+# Module: src/back/js/direct/reach.bend:60
 @unsafe
 def jd_reach_marker(+names: List<&2,KDef>, +text: String, +rev: String, +fuel: U32,
   +out: List<&2,String>, +seen: KDef) -> Maybe<&2,List<&2,String>>:
@@ -68,36 +78,40 @@ def jd_reach_marker(+names: List<&2,KDef>, +text: String, +rev: String, +fuel: U
             lookup(names, String.reverse(rev)), seen), w => None{}),
         v => jd_reach_marker(names, rest, SCon{h, rev}, U32.sub(fuel, 1), out, seen)), u => None{})
 
+# Module: src/back/js/direct/reach.bend:72
 @unsafe
 def jd_reach_marker_done(+names: List<&2,KDef>, +rest: String, +fuel: U32,
   +out: List<&2,String>, +d: KDef, +seen: KDef) -> Maybe<&2,List<&2,String>>:
-  kc(Maybe<&2,List<&2,String>>, String.eq(dk(d), "JDReachName"), u =>
-    kc(Maybe<&2,List<&2,String>>, String.eq(dk(index_find(seen, dn(d), index_hash(dn(d), 2166136261), 32)), "Absent"),
+  kc(Maybe<&2,List<&2,String>>, p88_string_eq(dk(d), "JDReachName"), u =>
+    kc(Maybe<&2,List<&2,String>>, p88_string_eq(dk(index_find(seen, dn(d), index_hash(dn(d), 2166136261), 32)), "Absent"),
       v => jd_reach_refs_unique(names, rest, False{}, fuel, Con{nm(dv(d)), out},
         index_set(seen, d, index_hash(dn(d), 2166136261), 32)),
       v => jd_reach_refs_unique(names, rest, False{}, fuel, out, seen)), u => None{})
 
+# Module: src/back/js/direct/reach.bend:81
 @unsafe
 def jd_reach_visit(+book: List<&2,KDef>, +names: List<&2,KDef>, +defs: List<&2,KDef>,
   +todo: List<&2,String>, +seen: KDef, +left: U32, +fuel: U32) -> JDReach:
   match todo:
     case Nil{}: JDReach{jd_reach_filter(defs, seen), ""}
     case Con{name, rest}: kc(JDReach, U32.is_gt(fuel, 0), u =>
-      kc(JDReach, String.eq(dk(index_find(seen, name, index_hash(name, 2166136261), 32)), "Absent"), v =>
+      kc(JDReach, p88_string_eq(dk(index_find(seen, name, index_hash(name, 2166136261), 32)), "Absent"), v =>
         kc(JDReach, U32.is_gt(left, 0), w =>
           jd_reach_definition(book, names, defs, rest, seen, U32.sub(left, 1), U32.sub(fuel, 1), lookup(book, name)),
           w => JDReach{Nil{}, "direct reachability definition budget"}),
         v => jd_reach_visit(book, names, defs, rest, seen, left, U32.sub(fuel, 1))),
         u => JDReach{Nil{}, "direct reachability edge budget"})
 
+# Module: src/back/js/direct/reach.bend:94
 @unsafe
 def jd_reach_definition(+book: List<&2,KDef>, +names: List<&2,KDef>, +defs: List<&2,KDef>,
   +rest: List<&2,String>, +seen: KDef, +left: U32, +fuel: U32, +d: KDef) -> JDReach:
-  kc(JDReach, String.eq(dk(d), "Def") && U32.is_eq(dx(d), 0), u =>
+  kc(JDReach, p88_string_eq(dk(d), "Def") && U32.is_eq(dx(d), 0), u =>
     jd_reach_follow(book, names, defs, rest, index_set(seen, d, index_hash(dn(d), 2166136261), 32), left, fuel,
       jd_text_refs(names, jd_doc_definition(book, d))),
     u => JDReach{Nil{}, "direct reachability missing emitted definition"})
 
+# Module: src/back/js/direct/reach.bend:102
 @unsafe
 def jd_reach_follow(+book: List<&2,KDef>, +names: List<&2,KDef>, +defs: List<&2,KDef>,
   +rest: List<&2,String>, +seen: KDef, +left: U32, +fuel: U32, +refs: Maybe<&2,List<&2,String>>) -> JDReach:
@@ -105,12 +119,13 @@ def jd_reach_follow(+book: List<&2,KDef>, +names: List<&2,KDef>, +defs: List<&2,
     case None{}: JDReach{Nil{}, "direct reachability metadata refused"}
     case Some{edges}: jd_reach_visit(book, names, defs, List.append(&2,String, edges, rest), seen, left, fuel)
 
+# Module: src/back/js/direct/reach.bend:109
 @unsafe
 def jd_reach_filter(+defs: List<&2,KDef>, +seen: KDef) -> List<&2,KDef>:
   match defs:
     case Nil{}: Nil{}
-    case Con{d, rest}: kc(List<&2,KDef>, Bool.not(String.eq(dk(d), "Def")) ||
-      Bool.not(String.eq(dk(index_find(seen, dn(d), index_hash(dn(d), 2166136261), 32)), "Absent")),
+    case Con{d, rest}: kc(List<&2,KDef>, Bool.not(p88_string_eq(dk(d), "Def")) ||
+      Bool.not(p88_string_eq(dk(index_find(seen, dn(d), index_hash(dn(d), 2166136261), 32)), "Absent")),
       u => Con{d, jd_reach_filter(rest, seen)}, u => jd_reach_filter(rest, seen))
 
 # One lowering plan owns one immutable annotated lookup context and its call
@@ -118,27 +133,30 @@ def jd_reach_filter(+defs: List<&2,KDef>, +seen: KDef) -> List<&2,KDef>:
 # to produce their code. It must never be replayed against another book.
 # The exact-name index doubles as reach's visited set and stores final code;
 # JDText metadata is consumed before rendering, with the original scan cap.
-type JDPlan is Data:
-  JDPlan{+book: List<&2,KDef>, +defs: List<&2,KDef>, +texts: KDef, +error: String}
 
+# Module: src/back/js/direct/reach.bend:125
 @unsafe
 def jd_plan_defs(+plan: JDPlan) -> List<&2,KDef>:
   match plan:
     case JDPlan{book, defs, texts, error}: defs
 
+# Module: src/back/js/direct/reach.bend:130
 @unsafe
 def jd_plan_error(+plan: JDPlan) -> String:
   match plan:
     case JDPlan{book, defs, texts, error}: error
 
+# Module: src/back/js/direct/reach.bend:135
 @unsafe
 def jd_plan_bad(+error: String) -> JDPlan:
   JDPlan{Nil{}, Nil{}, missing(), error}
 
+# Module: src/back/js/direct/reach.bend:139
 @unsafe
 def jd_plan_selected(+book: List<&2,KDef>, +defs: List<&2,KDef>, +roots: List<&2,String>) -> JDPlan:
   jd_plan_context(defs, roots, jd_calls_context(jd_selected_context(book, defs), defs))
 
+# Module: src/back/js/direct/reach.bend:143
 @unsafe
 def jd_plan_context(+defs: List<&2,KDef>, +roots: List<&2,String>, +book: List<&2,KDef>) -> JDPlan:
   kc(JDPlan, jd_calls_valid(book), u =>
@@ -146,13 +164,14 @@ def jd_plan_context(+defs: List<&2,KDef>, +roots: List<&2,String>, +book: List<&
       missing(), jd_definition_budget(), 65536),
     u => jd_plan_bad("direct reachability tail-call analysis refused"))
 
+# Module: src/back/js/direct/reach.bend:150
 @unsafe
 def jd_plan_visit(+book: List<&2,KDef>, +names: List<&2,KDef>, +defs: List<&2,KDef>,
   +todo: List<&2,String>, +texts: KDef, +left: U32, +fuel: U32) -> JDPlan:
   match todo:
     case Nil{}: JDPlan{book, jd_reach_filter(defs, texts), texts, ""}
     case Con{name, rest}: kc(JDPlan, U32.is_gt(fuel, 0), u =>
-      kc(JDPlan, String.eq(dk(index_find(texts, name, index_hash(name, 2166136261), 32)), "Absent"), v =>
+      kc(JDPlan, p88_string_eq(dk(index_find(texts, name, index_hash(name, 2166136261), 32)), "Absent"), v =>
         kc(JDPlan, U32.is_gt(left, 0), w =>
           jd_plan_definition(book, names, defs, rest, texts, U32.sub(left, 1),
             U32.sub(fuel, 1), lookup(book, name)),
@@ -160,19 +179,22 @@ def jd_plan_visit(+book: List<&2,KDef>, +names: List<&2,KDef>, +defs: List<&2,KD
         v => jd_plan_visit(book, names, defs, rest, texts, left, U32.sub(fuel, 1))),
       u => jd_plan_bad("direct reachability edge budget"))
 
+# Module: src/back/js/direct/reach.bend:164
 @unsafe
 def jd_plan_definition(+book: List<&2,KDef>, +names: List<&2,KDef>, +defs: List<&2,KDef>,
   +rest: List<&2,String>, +texts: KDef, +left: U32, +fuel: U32, +d: KDef) -> JDPlan:
-  kc(JDPlan, String.eq(dk(d), "Def") && U32.is_eq(dx(d), 0), u =>
+  kc(JDPlan, p88_string_eq(dk(d), "Def") && U32.is_eq(dx(d), 0), u =>
     jd_plan_document(book, names, defs, rest, texts, left, fuel, dn(d), jd_doc_definition(book, d)),
     u => jd_plan_bad("direct reachability missing emitted definition"))
 
+# Module: src/back/js/direct/reach.bend:171
 @unsafe
 def jd_plan_document(+book: List<&2,KDef>, +names: List<&2,KDef>, +defs: List<&2,KDef>,
   +rest: List<&2,String>, +texts: KDef, +left: U32, +fuel: U32,
   +name: String, +text: JDText) -> JDPlan:
   jd_plan_follow(book, names, defs, rest, texts, left, fuel, name, text, jd_text_refs(names, text))
 
+# Module: src/back/js/direct/reach.bend:177
 @unsafe
 def jd_plan_follow(+book: List<&2,KDef>, +names: List<&2,KDef>, +defs: List<&2,KDef>,
   +rest: List<&2,String>, +texts: KDef, +left: U32, +fuel: U32,
@@ -180,27 +202,30 @@ def jd_plan_follow(+book: List<&2,KDef>, +names: List<&2,KDef>, +defs: List<&2,K
   match refs:
     case None{}: jd_plan_bad("direct reachability metadata refused")
     case Some{edges}: jd_plan_visit(book, names, defs, List.append(&2,String, edges, rest),
-      index_set(texts, KDef{name, "JDPlanText", 0, 0, atom("Absent"),
+      index_set(texts, KDef{name, "JDPlanText", 0, 0, {KTerm{"Absent", "", 0, 0, Nil{}, Nil{}, 0, 0} : KTerm},
         kt("JDPlanText", jd_text_render(text), 0, 0, Nil{}), Nil{}, False{}, False{}},
         index_hash(name, 2166136261), 32), left, fuel)
 
+# Module: src/back/js/direct/reach.bend:188
 @unsafe
 def jd_plan_definitions(+defs: List<&2,KDef>, +texts: KDef) -> String:
   match defs:
     case Nil{}: ""
-    case Con{d, rest}: kc(String, String.eq(dk(d), "Def"),
+    case Con{d, rest}: kc(String, p88_string_eq(dk(d), "Def"),
       u => jd_plan_text(index_find(texts, dn(d), index_hash(dn(d), 2166136261), 32)),
       u => "") ++ jd_plan_definitions(rest, texts)
 
+# Module: src/back/js/direct/reach.bend:196
 @unsafe
 def jd_plan_text(+row: KDef) -> String:
-  kc(String, String.eq(dk(row), "JDPlanText"), u => nm(dv(row)),
+  kc(String, p88_string_eq(dk(row), "JDPlanText"), u => nm(dv(row)),
     u => jd_fail("direct lowering plan missing emitted definition"))
 
+# Module: src/back/js/direct/reach.bend:201
 @unsafe
 def jd_plan_library(+plan: JDPlan) -> String:
   match plan:
-    case JDPlan{book, defs, texts, error}: kc(String, String.eq(error, ""),
+    case JDPlan{book, defs, texts, error}: kc(String, p88_string_eq(error, ""),
       u => "// Direct JavaScript prototype: native functions and live arguments.\n" ++
         jd_plan_definitions(defs, texts) ++ jd_exports(book, defs),
       u => jd_fail(error))

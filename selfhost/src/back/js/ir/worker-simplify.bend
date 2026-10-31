@@ -1,7 +1,5 @@
-# Simplify established worker layout facts, not source-language admission.
-# A proved native tuple or Char has one constructor, and the emitter's case
-# condition is already true. Its input was evaluated by preceding instructions;
-# retaining the selected branch retains every field read and its order.
+
+# Module: src/back/js/ir/worker-simplify.bend:6
 @unsafe
 def jw_simplify_functions(+functions: List<&2,JWFunction>) -> List<&2,JWFunction>:
   match functions:
@@ -12,12 +10,14 @@ def jw_simplify_functions(+functions: List<&2,JWFunction>) -> List<&2,JWFunction
 # Cases produced by lowering terminate their instruction list. Only flatten
 # that form: a malformed case with following instructions retains its original
 # shape and cannot accidentally make previously unreachable work executable.
+
+# Module: src/back/js/ir/worker-simplify.bend:16
 @unsafe
 def jw_simplify_code(+code: List<&2,JWInstruction>) -> List<&2,JWInstruction>:
   match code:
     case Nil{}: Nil{}
     case Con{JWCase{layout, name, input, yes, no}, Nil{}}:
-      kc(List<&2,JWInstruction>, String.eq(layout, "tuple") || String.eq(layout, "char"),
+      kc(List<&2,JWInstruction>, p88_string_eq(layout, "tuple") || p88_string_eq(layout, "char"),
         u => jw_simplify_code(yes),
         u => [JWCase{layout, name, input, jw_simplify_code(yes), jw_simplify_code(no)}])
     case Con{JWCase{layout, name, input, yes, no}, rest}:

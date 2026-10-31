@@ -1,16 +1,44 @@
-# Lower fixed-width scalar patterns as rows of known low bits. Coverage compares
-# the flattener's reconstructed defaults modulo bound-variable names. No source
-# names are special: U32/F32 wrappers supply the same 32-bit Word representation.
+
+# Module: src/back/native/word-pattern.bend:4
 type NW_Rows is Data:
   NW_Rows{+valid: Bool, +rows: List<&2, KTerm>}
 
+# Module: src/back/native/word-pattern.bend:7
 type NW_Arms is Data:
   NW_Arms{+zero: KTerm, +one: KTerm, +end: KTerm, +hasZero: Bool, +hasOne: Bool, +valid: Bool}
 
+# Module: src/back/native/word-pattern.bend:10
 type NW_Cover is Data:
   NW_None{}
   NW_Cover{+body: KTerm, +bits: List<&2, KTerm>, +fields: U32}
 
+# Module: src/back/native/word-pattern.bend:22
+law nw_same:
+  for +a: KTerm
+  for +b: KTerm
+  for +pairs: List<&2, KTerm>
+  Bool
+
+# Module: src/back/native/word-pattern.bend:95
+law nw_walk:
+  for +t: KTerm
+  for +depth: U32
+  for +value: U32
+  for +cover: NW_Cover
+  NW_Rows
+
+# Module: src/back/native/word-pattern.bend:205
+law nw_emit:
+  for +book: List<&2, KDef>
+  for rows: List<&2, KTerm>
+  for +word: String
+  for +rest: List<&2, KTerm>
+  for +env: List<&2, NC_Binding>
+  for +n: U32
+  for +target: NC_Target
+  NC_Code
+
+# Module: src/back/native/word-pattern.bend:15
 @unsafe
 def nw_var_same(+a: U32, +b: U32, pairs: List<&2, KTerm>) -> Bool:
   match pairs:
@@ -19,12 +47,7 @@ def nw_var_same(+a: U32, +b: U32, pairs: List<&2, KTerm>) -> Bool:
       nt_choose(Bool, U32.is_eq(ix(p), a), u => U32.is_eq(qt(p), b),
         u => nt_choose(Bool, U32.is_eq(qt(p), b), v => False{}, v => nw_var_same(a, b, rest)))
 
-law nw_same:
-  for +a: KTerm
-  for +b: KTerm
-  for +pairs: List<&2, KTerm>
-  Bool
-
+# Module: src/back/native/word-pattern.bend:29
 @unsafe
 def nw_same_list(as: List<&2, KTerm>, bs: List<&2, KTerm>, +pairs: List<&2, KTerm>) -> Bool:
   match as, bs:
@@ -32,79 +55,83 @@ def nw_same_list(as: List<&2, KTerm>, bs: List<&2, KTerm>, +pairs: List<&2, KTer
     case Con{a, ar}, Con{b, br}: nt_choose(Bool, nw_same(a, b, pairs), u => nw_same_list(ar, br, pairs), u => False{})
     case _, _: False{}
 
+# Module: src/back/native/word-pattern.bend:36
 @unsafe
 def nw_same(a, b, pairs):
-  nt_choose(Bool, String.eq(tg(a), tg(b)) && U32.is_eq(qt(a), qt(b)),
-    u => nt_choose(Bool, String.eq(tg(a), "Var"),
+  nt_choose(Bool, p98_tag_eq(a, tg(b)) && U32.is_eq(qt(a), qt(b)),
+    u => nt_choose(Bool, p98_tag_eq(a, "Var"),
       v => nw_var_same(ix(a), ix(b), pairs) && List.is_empty(&2, KTerm, ks(a)) && List.is_empty(&2, KTerm, ks(b)),
-      v => nt_choose(Bool, String.eq(tg(a), "Lam") && U32.is_eq(terms_len(ks(a)), 1) && U32.is_eq(terms_len(ks(b)), 1),
+      v => nt_choose(Bool, p98_tag_eq(a, "Lam") && U32.is_eq(terms_len(ks(a)), 1) && U32.is_eq(terms_len(ks(b)), 1),
         w => nw_same(kid(a, 0), kid(b, 0), Con{kt("NWPair", "", ix(a), ix(b), Nil{}), pairs}),
         w => norm_exact_head(a, b) && nw_same_list(ks(a), ks(b), pairs))), u => False{})
 
+# Module: src/back/native/word-pattern.bend:45
 @unsafe
 def nw_arms(+t: KTerm, +zero: KTerm, +one: KTerm, +hasZero: Bool, +hasOne: Bool) -> NW_Arms:
-  nt_choose(NW_Arms, String.eq(tg(t), "Mat"),
+  nt_choose(NW_Arms, p98_tag_eq(t, "Mat"),
     u => nt_choose(NW_Arms, U32.is_eq(ix(t), 1) && U32.is_eq(terms_len(ks(t)), 2),
-      v => nt_choose(NW_Arms, String.eq(nm(t), "False") && Bool.not(hasZero),
+      v => nt_choose(NW_Arms, p88_string_eq(nm(t), "False") && Bool.not(hasZero),
         w => nw_arms(kid(t, 1), kid(t, 0), one, True{}, hasOne),
-        w => nt_choose(NW_Arms, String.eq(nm(t), "True") && Bool.not(hasOne),
+        w => nt_choose(NW_Arms, p88_string_eq(nm(t), "True") && Bool.not(hasOne),
           x => nw_arms(kid(t, 1), zero, kid(t, 0), hasZero, True{}),
           x => NW_Arms{zero, one, t, hasZero, hasOne, False{}})),
       v => NW_Arms{zero, one, t, hasZero, hasOne, False{}}),
     u => NW_Arms{zero, one, t, hasZero, hasOne, True{}})
 
+# Module: src/back/native/word-pattern.bend:57
 @unsafe
 def nw_word(+bit: KTerm, +tail: KTerm) -> KTerm:
   kt("Ctr", "WCon", 0, 1, [bit, tail])
 
+# Module: src/back/native/word-pattern.bend:61
 @unsafe
 def nw_rebuild(bits: List<&2, KTerm>, +word: KTerm) -> KTerm:
   match bits:
     case Nil{}: word
     case Con{h, rest}: nw_rebuild(rest, nw_word(h, word))
 
+# Module: src/back/native/word-pattern.bend:67
 @unsafe
 def nw_apply(+body: KTerm, +word: KTerm, +fields: U32) -> KTerm:
   nt_choose(KTerm, U32.is_eq(fields, 2),
     u => core_apply(core_apply(body, kid(word, 0)), kid(word, 1)),
     u => core_apply(body, word))
 
+# Module: src/back/native/word-pattern.bend:73
 @unsafe
 def nw_covered(+body: KTerm, +fields: U32, cover: NW_Cover) -> Bool:
   match cover:
     case NW_None{}: False{}
     case NW_Cover{prior, bits, priorFields}:
-      +word = nw_word(atom("NWBitProbe"), atom("NWTailProbe"))
+      +word = nw_word({KTerm{"NWBitProbe", "", 0, 0, Nil{}, Nil{}, 0, 0} : KTerm}, {KTerm{"NWTailProbe", "", 0, 0, Nil{}, Nil{}, 0, 0} : KTerm})
       nw_same(nw_apply(body, word, fields), nw_apply(prior, nw_rebuild(bits, word), priorFields), Nil{})
 
+# Module: src/back/native/word-pattern.bend:81
 @unsafe
 def nw_descend(cover: NW_Cover, +bit: U32) -> NW_Cover:
   match cover:
     case NW_None{}: NW_None{}
     case NW_Cover{body, bits, fields}: NW_Cover{body, Con{kt("NWord", U32.show(bit), 0, 0, Nil{}), bits}, fields}
 
+# Module: src/back/native/word-pattern.bend:87
 @unsafe
 def nw_join(a: NW_Rows, b: NW_Rows) -> NW_Rows:
   match a, b:
     case NW_Rows{av, ar}, NW_Rows{bv, br}: NW_Rows{av && bv, List.append(&2, KTerm, ar, br)}
 
+# Module: src/back/native/word-pattern.bend:92
 @unsafe
 def nw_row(+body: KTerm, +depth: U32, +value: U32, +fields: U32) -> KTerm:
   kt("NWRow", U32.show(value), depth, fields, [body])
 
-law nw_walk:
-  for +t: KTerm
-  for +depth: U32
-  for +value: U32
-  for +cover: NW_Cover
-  NW_Rows
-
+# Module: src/back/native/word-pattern.bend:103
 @unsafe
 def nw_branch(+t: KTerm, +depth: U32, +value: U32, +cover: NW_Cover, +bit: U32, +present: Bool) -> NW_Rows:
   nt_choose(NW_Rows, present,
     u => nw_walk(t, U32.inc(depth), U32.or(value, U32.shln(bit, U32.to_nat(depth))), nw_descend(cover, bit)),
     u => NW_Rows{True{}, Nil{}})
 
+# Module: src/back/native/word-pattern.bend:109
 @unsafe
 def nw_bits(+depth: U32, +value: U32, +cover: NW_Cover, arms: NW_Arms) -> NW_Rows:
   match arms:
@@ -113,34 +140,39 @@ def nw_bits(+depth: U32, +value: U32, +cover: NW_Cover, arms: NW_Arms) -> NW_Row
         u => nw_bits_ready(zero, one, end, hasZero, hasOne, depth, value, cover, Bool.not(hasZero && hasOne) && Bool.not(nw_covered(end, 2, cover))),
         u => NW_Rows{False{}, Nil{}})
 
+# Module: src/back/native/word-pattern.bend:117
 @unsafe
 def nw_bits_ready(+zero: KTerm, +one: KTerm, +end: KTerm, +hasZero: Bool, +hasOne: Bool, +depth: U32, +value: U32, +cover: NW_Cover, +own: Bool) -> NW_Rows:
   +next = nt_choose(NW_Cover, own, u => NW_Cover{end, Nil{}, 2}, u => cover)
   nw_join(nw_join(nw_branch(zero, depth, value, next, 0, hasZero), nw_branch(one, depth, value, next, 1, hasOne)),
     NW_Rows{True{}, nt_choose(List<&2, KTerm>, own, u => [nw_row(end, depth, value, 2)], u => Nil{})})
 
+# Module: src/back/native/word-pattern.bend:123
 @unsafe
 def nw_walk(t, depth, value, cover):
   nt_choose(NW_Rows, U32.is_eq(depth, 32),
-    u => nt_choose(NW_Rows, String.eq(tg(t), "Mat") && String.eq(nm(t), "WNil") && U32.is_eq(ix(t), 1) && U32.is_eq(terms_len(ks(t)), 2),
+    u => nt_choose(NW_Rows, p98_tag_eq(t, "Mat") && p88_string_eq(nm(t), "WNil") && U32.is_eq(ix(t), 1) && U32.is_eq(terms_len(ks(t)), 2),
       v => NW_Rows{True{}, [nw_row(kid(t, 0), depth, value, 0)]}, v => NW_Rows{False{}, Nil{}}),
-    u => nt_choose(NW_Rows, String.eq(tg(t), "Mat") && String.eq(nm(t), "WCon") && U32.is_eq(ix(t), 3) && U32.is_eq(terms_len(ks(t)), 2),
-      v => nw_bits(depth, value, cover, nw_arms(kid(t, 0), atom("Absent"), atom("Absent"), False{}, False{})),
-      v => nt_choose(NW_Rows, String.eq(tg(t), "Lam"),
+    u => nt_choose(NW_Rows, p98_tag_eq(t, "Mat") && p88_string_eq(nm(t), "WCon") && U32.is_eq(ix(t), 3) && U32.is_eq(terms_len(ks(t)), 2),
+      v => nw_bits(depth, value, cover, nw_arms(kid(t, 0), {KTerm{"Absent", "", 0, 0, Nil{}, Nil{}, 0, 0} : KTerm}, {KTerm{"Absent", "", 0, 0, Nil{}, Nil{}, 0, 0} : KTerm}, False{}, False{})),
+      v => nt_choose(NW_Rows, p98_tag_eq(t, "Lam"),
         w => NW_Rows{True{}, nt_choose(List<&2, KTerm>, nw_covered(t, 1, cover), x => Nil{}, x => [nw_row(t, depth, value, 1)])},
         w => NW_Rows{False{}, Nil{}})))
 
+# Module: src/back/native/word-pattern.bend:134
 @unsafe
 def nw_applicable(+mat: KTerm) -> Bool:
-  nt_choose(Bool, String.eq(tg(mat), "Mat"),
-    u => nt_choose(Bool, String.eq(nm(mat), "U32") || String.eq(nm(mat), "F32"),
-      v => U32.is_eq(ix(mat), 2) && U32.is_eq(terms_len(ks(mat)), 2) && String.eq(tg(kid(mat, 1)), "Efq"), v => False{}), u => False{})
+  nt_choose(Bool, p98_tag_eq(mat, "Mat"),
+    u => nt_choose(Bool, p88_string_eq(nm(mat), "U32") || p88_string_eq(nm(mat), "F32"),
+      v => U32.is_eq(ix(mat), 2) && U32.is_eq(terms_len(ks(mat)), 2) && p98_tag_eq(kid(mat, 1), "Efq"), v => False{}), u => False{})
 
+# Module: src/back/native/word-pattern.bend:140
 @unsafe
 def nw_condition(+word: String, +row: KTerm) -> String:
   nt_choose(String, U32.is_eq(ix(row), 32), u => "((u32)" ++ word ++ " == " ++ nm(row) ++ "u)",
     u => "(((u32)" ++ word ++ " & " ++ U32.show(U32.sub(U32.shln(1, U32.to_nat(ix(row))), 1)) ++ "u) == " ++ nm(row) ++ "u)")
 
+# Module: src/back/native/word-pattern.bend:145
 @unsafe
 def nw_tail(+word: String, +depth: U32, +id: U32) -> String:
   "Term v_" ++ U32.show(id) ++ " = term_pak(CID_WNIL, 0);\nfor (u32 wi = 32; wi > " ++ U32.show(depth) ++ "; wi--) {\nLoc wp = heap_alloc(e, 1);\ne.mem[wp] = ((u32)" ++ word ++ " >> (wi - 1)) & 1;\ne.mem[wp + 1] = rfc_seal(e, v_" ++ U32.show(id) ++ ");\nv_" ++ U32.show(id) ++ " = term_ctr(CID_WCON, wp);\n}\n"
@@ -148,37 +180,45 @@ def nw_tail(+word: String, +depth: U32, +id: U32) -> String:
 # Under a row's bit constraints, reconstructing its original scalar wrapper is
 # the original low 32-bit value. Keep the value; materialize an escaping Word
 # tail only if it remains used after beta substitution and this local rewrite.
+
+# Module: src/back/native/word-pattern.bend:152
 @unsafe
 def nw_prefix(+depth: U32, +value: U32, +tail: KTerm) -> KTerm:
   nt_choose(KTerm, U32.is_eq(depth, 0), u => tail,
     u => nw_prefix(U32.sub(depth, 1), value, nw_word(kt("NWord", U32.show(U32.and(U32.shrn(value, U32.to_nat(U32.sub(depth, 1))), 1)), 0, 0, Nil{}), tail)))
 
+# Module: src/back/native/word-pattern.bend:157
 @unsafe
 def nw_value(row: KTerm) -> U32:
   nw_value_result(U32.read(nm(row)))
 
+# Module: src/back/native/word-pattern.bend:161
 @unsafe
 def nw_value_result(parsed: Maybe<&2, U32>) -> U32:
   match parsed:
     case None{}: 0
     case Some{value}: value
 
+# Module: src/back/native/word-pattern.bend:167
 @unsafe
 def nw_restore(+t: KTerm, +word: KTerm, +id: U32) -> KTerm:
-  nt_choose(KTerm, String.eq(tg(t), "Ctr") && (String.eq(nm(t), "U32") || String.eq(nm(t), "F32")) && U32.is_eq(terms_len(ks(t)), 1),
+  nt_choose(KTerm, p98_tag_eq(t, "Ctr") && (p88_string_eq(nm(t), "U32") || p88_string_eq(nm(t), "F32")) && U32.is_eq(terms_len(ks(t)), 1),
     u => nt_choose(KTerm, nw_same(kid(t, 0), word, Nil{}), v => var("", id), v => nw_restore_children(t, word, id)),
     u => nw_restore_children(t, word, id))
 
+# Module: src/back/native/word-pattern.bend:173
 @unsafe
 def nw_restore_children(+t: KTerm, +word: KTerm, +id: U32) -> KTerm:
   k_rebuild(t, nm(t), ix(t), qt(t), nw_restore_list(ks(t), word, id), rm(t), kb(t), ke(t))
 
+# Module: src/back/native/word-pattern.bend:177
 @unsafe
 def nw_restore_list(ts: List<&2, KTerm>, +word: KTerm, +id: U32) -> List<&2, KTerm>:
   match ts:
     case Nil{}: Nil{}
     case Con{t, rest}: Con{nw_restore(t, word, id), nw_restore_list(rest, word, id)}
 
+# Module: src/back/native/word-pattern.bend:183
 @unsafe
 def nw_code(+book: List<&2, KDef>, +row: KTerm, +word: String, +rest: List<&2, KTerm>, +env: List<&2, NC_Binding>, +n: U32, +target: NC_Target) -> NC_Code:
   nt_choose(NC_Code, U32.is_eq(qt(row), 0), u => nc_lower_to(book, nd_reapply(kid(row, 0), rest), env, n, target),
@@ -188,6 +228,7 @@ def nw_code(+book: List<&2, KDef>, +row: KTerm, +word: String, +rest: List<&2, K
         nw_prefix(ix(row), nw_value(row), nt_choose(KTerm, U32.is_eq(qt(row), 1),
           v => var("", nc_id(U32.add(n, 2))), v => nw_word(var("", nc_id(U32.inc(n))), var("", nc_id(U32.add(n, 2)))))), nc_id(n)), rest)))
 
+# Module: src/back/native/word-pattern.bend:192
 @unsafe
 def nw_code_body(+book: List<&2, KDef>, +row: KTerm, +word: String, +env: List<&2, NC_Binding>, +n: U32, +target: NC_Target, +body: KTerm) -> NC_Code:
   +uses = nc_uses(body)
@@ -202,30 +243,24 @@ def nw_code_body(+book: List<&2, KDef>, +row: KTerm, +word: String, +env: List<&
     nt_choose(String, hasTail, u => nw_tail(word, U32.add(ix(row), nt_bool(U32.is_eq(qt(row), 2))), tail), u => ""),
     nc_lower_to(book, body, Con{NC_Binding{nc_id(n), "v_" ++ U32.show(nc_id(n)), N_W32{}}, bindings}, U32.add(n, 3), target))
 
-law nw_emit:
-  for +book: List<&2, KDef>
-  for rows: List<&2, KTerm>
-  for +word: String
-  for +rest: List<&2, KTerm>
-  for +env: List<&2, NC_Binding>
-  for +n: U32
-  for +target: NC_Target
-  NC_Code
-
+# Module: src/back/native/word-pattern.bend:216
 @unsafe
 def nw_emit_more(+book: List<&2, KDef>, +row: KTerm, +rows: List<&2, KTerm>, +word: String, +rest: List<&2, KTerm>, +env: List<&2, NC_Binding>, +target: NC_Target, +code: NC_Code) -> NC_Code:
   nw_emit_join(nw_condition(word, row), code, nw_emit(book, rows, word, rest, env, nc_fresh(code), target))
 
+# Module: src/back/native/word-pattern.bend:220
 @unsafe
 def nw_emit_join(+condition: String, +code: NC_Code, +tail: NC_Code) -> NC_Code:
-  NC_Code{"if (" ++ condition ++ ") {\n" ++ nc_body(code) ++ "} else {\n" ++ nc_body(tail) ++ "}\n", nt_append(N_Segment, nc_segs(code), nc_segs(tail)), nc_fresh(tail), nc_first_error(code, tail), List.append(&2, String, nc_calls(code), nc_calls(tail))}
+  NC_Code{nct_cat(nct_leaf("if (" ++ condition ++ ") {\n"), nct_cat(nc_text(code), nct_cat(nct_leaf("} else {\n"), nct_cat(nc_text(tail), nct_leaf("}\n"))))), nt_append(N_Segment, nc_segs(code), nc_segs(tail)), nc_fresh(tail), nc_first_error(code, tail), List.append(&2, String, nc_calls(code), nc_calls(tail))}
 
+# Module: src/back/native/word-pattern.bend:224
 @unsafe
 def nw_emit(book, rows, word, rest, env, n, target):
   match rows:
-    case Nil{}: NC_Code{"err_post(e.mem, ERR_FIDS); return 0;\n", Nil{}, n, "", Nil{}}
+    case Nil{}: NC_Code{nct_leaf("err_post(e.mem, ERR_FIDS); return 0;\n"), Nil{}, n, "", Nil{}}
     case Con{+row, +more}: nw_emit_more(book, row, more, word, rest, env, target, nw_code(book, row, word, rest, env, n, target))
 
+# Module: src/back/native/word-pattern.bend:230
 @unsafe
 def nw_match(+book: List<&2, KDef>, +t: KTerm, +env: List<&2, NC_Binding>, +n: U32, +target: NC_Target, rows: NW_Rows) -> NC_Code:
   match rows:
@@ -237,11 +272,14 @@ def nw_match(+book: List<&2, KDef>, +t: KTerm, +env: List<&2, NC_Binding>, +n: U
 # Store reduced rows once in the private native tree, after typed erasure and
 # static preparation. Source/ABI terms never carry this marker; static input
 # rejects it. Analyses now see retained row bodies instead of expanded defaults.
+
+# Module: src/back/native/word-pattern.bend:241
 @unsafe
 def nw_prepare(+t: KTerm) -> KTerm:
   nt_choose(KTerm, nw_applicable(t),
     u => nw_prepared(t, nw_walk(kid(t, 0), 0, 0, NW_None{})), u => t)
 
+# Module: src/back/native/word-pattern.bend:246
 @unsafe
 def nw_prepared(+t: KTerm, rows: NW_Rows) -> KTerm:
   match rows:
@@ -249,6 +287,7 @@ def nw_prepared(+t: KTerm, rows: NW_Rows) -> KTerm:
       nt_choose(KTerm, valid && Bool.not(List.is_empty(&2, KTerm, rs)),
         u => kt("NWPattern", nm(t), 2, 0, rs), u => t)
 
+# Module: src/back/native/word-pattern.bend:253
 @unsafe
 def nw_uses(rows: List<&2, KTerm>, +id: U32) -> U32:
   match rows:

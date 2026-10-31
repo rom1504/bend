@@ -1,14 +1,15 @@
-# Conservative whole-program dependency closure. Run only after checking and
-# specialization have produced a canonical book (one final entry per name).
-# Types, constructor telescopes, and constructor parents are retained as well
-# as value references. Stopped primitives retain their types and declarations;
-# the backend supplies the exact intrinsic set whose bodies it replaces.
 
+# Module: src/core/reach.bend:133
+type KF_Source is Data:
+  KF_Source{+parts: List<&2, KTerm>, +error: String}
+
+# Module: src/core/reach.bend:7
 law kr_filter:
   for book: List<&2, KDef>
   for +live: List<&2, String>
   List<&2, KDef>
 
+# Module: src/core/reach.bend:12
 law kr_visit:
   for +book: List<&2, KDef>
   for todo: List<&2, String>
@@ -16,6 +17,7 @@ law kr_visit:
   for +stops: List<&2, String>
   List<&2, String>
 
+# Module: src/core/reach.bend:19
 law kr_visit_def:
   for +book: List<&2, KDef>
   for +todo: List<&2, String>
@@ -24,115 +26,57 @@ law kr_visit_def:
   for +d: KDef
   List<&2, String>
 
+# Module: src/core/reach.bend:27
 law kr_resolve:
   for +book: List<&2, KDef>
   for +name: String
   KDef
 
+# Module: src/core/reach.bend:32
 law kr_resolve_head:
   for +book: List<&2, KDef>
   for +name: String
   for +d: KDef
   KDef
 
+# Module: src/core/reach.bend:38
 law kr_parent:
   for book: List<&2, KDef>
   for +name: String
   KDef
 
+# Module: src/core/reach.bend:43
 law kr_dependencies:
   for +d: KDef
   for +stops: List<&2, String>
   for +todo: List<&2, String>
   List<&2, String>
 
+# Module: src/core/reach.bend:49
 law kr_ctor_refs:
   for ctors: List<&2, KDef>
   for +todo: List<&2, String>
   List<&2, String>
 
+# Module: src/core/reach.bend:54
 law kr_refs:
   for +t: KTerm
   for +todo: List<&2, String>
   List<&2, String>
 
+# Module: src/core/reach.bend:59
 law kr_refs_list:
   for terms: List<&2, KTerm>
   for +todo: List<&2, String>
   List<&2, String>
 
+# Module: src/core/reach.bend:64
 law kr_push:
   for +name: String
   for +names: List<&2, String>
   List<&2, String>
 
-@unsafe
-def reach_book(
-  +book: List<&2, KDef>,
-  +roots: List<&2, String>,
-  +stops: List<&2, String>,
-) -> List<&2, KDef>:
-  kr_filter(book, kr_visit(book, roots, Nil{}, stops))
-
-@unsafe
-def kr_filter(book, live):
-  match book:
-    case Nil{}: Nil{}
-    case Con{+d, +rest}: kc(List<&2, KDef>, has_name(live, dn(d)), u => Con{d, kr_filter(rest, live)}, u => kr_filter(rest, live))
-
-@unsafe
-def kr_visit(book, todo, seen, stops):
-  match todo:
-    case Nil{}: seen
-    case Con{+name, +rest}: kc(List<&2, String>, has_name(seen, name), u => kr_visit(book, rest, seen, stops), u => kr_visit_def(book, rest, Con{name, seen}, stops, kr_resolve(book, name)))
-
-@unsafe
-def kr_visit_def(book, todo, seen, stops, d):
-  kc(List<&2, String>, String.eq(dk(d), "Absent"), u => kr_visit(book, todo, seen, stops), u => kr_visit(book, kr_dependencies(d, stops, todo), Con{dn(d), seen}, stops))
-
-@unsafe
-def kr_resolve(book, name):
-  kr_resolve_head(book, name, lookup(book, name))
-
-@unsafe
-def kr_resolve_head(book, name, d):
-  kc(KDef, String.eq(dk(d), "Absent"), u => kr_parent(book, name), u => d)
-
-@unsafe
-def kr_parent(book, name):
-  match book:
-    case Nil{}: missing()
-    case Con{+d, +rest}: kc(KDef, String.eq(dk(d), "ADT") && Bool.not(String.eq(dk(lookup(dc(d), name)), "Absent")), u => d, u => kr_parent(rest, name))
-
-@unsafe
-def kr_dependencies(d, stops, todo):
-  List.append(&2, String, kr_refs(dt(d), kr_ctor_refs(dc(d), kc(List<&2, String>, has_name(stops, dn(d)), u => Nil{}, u => kr_refs(dv(d), Nil{})))), todo)
-
-@unsafe
-def kr_ctor_refs(ctors, todo):
-  match ctors:
-    case Nil{}: todo
-    case Con{d, rest}: kr_refs(dt(d), kr_ctor_refs(rest, todo))
-
-@unsafe
-def kr_refs(t, todo):
-  kr_refs_list(ks(t), kc(List<&2, String>, String.eq(tg(t), "Ref") || String.eq(tg(t), "ADT") || String.eq(tg(t), "Ctr") || String.eq(tg(t), "Mat"), u => kr_push(nm(t), todo), u => todo))
-
-@unsafe
-def kr_refs_list(terms, todo):
-  match terms:
-    case Nil{}: todo
-    case Con{h, rest}: kr_refs(h, kr_refs_list(rest, todo))
-
-@unsafe
-def kr_push(name, names):
-  kc(List<&2, String>, has_name(names, name), u => names, u => Con{name, names})
-# Foreign sources use CID(name)/FID(name) in their importing namespace, then
-# globally, just as the pinned upstream emitter does. Keep spelling resolution
-# shared by both backends; each backend renders the resolved names itself.
-type KF_Source is Data:
-  KF_Source{+parts: List<&2, KTerm>, +error: String}
-
+# Module: src/core/reach.bend:136
 law kf_scan:
   for +book: List<&2, KDef>
   for +ns: String
@@ -142,16 +86,7 @@ law kf_scan:
   for +parts: List<&2, KTerm>
   KF_Source
 
-@unsafe
-def kf_unann(+t: KTerm) -> KTerm:
-  kc(KTerm, String.eq(tg(t), "Ann"), u => kf_unann(kid(t, 0)), u => t)
-
-@unsafe
-def kf_has_path(paths: List<&2, KTerm>, +path: String) -> Bool:
-  match paths:
-    case Nil{}: False{}
-    case Con{h, rest}: String.eq(nm(h), path) || kf_has_path(rest, path)
-
+# Module: src/core/reach.bend:155
 law kf_namespace_step:
   for rest: List<&2, KDef>
   for +path: String
@@ -160,29 +95,117 @@ law kf_namespace_step:
   for +prefix: String
   KTerm
 
+# Module: src/core/reach.bend:70
+@unsafe
+def reach_book(
+  +book: List<&2, KDef>,
+  +roots: List<&2, String>,
+  +stops: List<&2, String>,
+) -> List<&2, KDef>:
+  kr_filter(book, kr_visit(book, roots, Nil{}, stops))
+
+# Module: src/core/reach.bend:78
+@unsafe
+def kr_filter(book, live):
+  p128rf_filter(book,p128rf_members(live,missing()))
+
+@unsafe
+def kr_visit(book, todo, seen, stops):
+  p142r_kr_visit(book,todo,seen,stops)
+
+@unsafe
+def kr_visit_def(book, todo, seen, stops, d):
+  kc(List<&2, String>, p88_string_eq(dk(d), "Absent"), u => kr_visit(book, todo, seen, stops), u => kr_visit(book, kr_dependencies(d, stops, todo), Con{dn(d), seen}, stops))
+
+# Module: src/core/reach.bend:94
+@unsafe
+def kr_resolve(book, name):
+  kr_resolve_head(book, name, lookup(book, name))
+
+# Module: src/core/reach.bend:98
+@unsafe
+def kr_resolve_head(book, name, d):
+  kc(KDef, p88_string_eq(dk(d), "Absent"), u => kr_parent(book, name), u => d)
+
+# Module: src/core/reach.bend:102
+@unsafe
+def kr_parent(book, name):
+  match book:
+    case Nil{}: missing()
+    case Con{+d, +rest}: kc(KDef, p88_string_eq(dk(d), "ADT") && Bool.not(p88_string_eq(dk(lookup(dc(d), name)), "Absent")), u => d, u => kr_parent(rest, name))
+
+# Module: src/core/reach.bend:108
+@unsafe
+def kr_dependencies(d, stops, todo):
+  List.append(&2, String, kr_refs(dt(d), kr_ctor_refs(dc(d), kc(List<&2, String>, has_name(stops, dn(d)), u => Nil{}, u => kr_refs(dv(d), Nil{})))), todo)
+
+# Module: src/core/reach.bend:112
+@unsafe
+def kr_ctor_refs(ctors, todo):
+  match ctors:
+    case Nil{}: todo
+    case Con{d, rest}: kr_refs(dt(d), kr_ctor_refs(rest, todo))
+
+# Module: src/core/reach.bend:118
+@unsafe
+def kr_refs(t, todo):
+  kr_refs_list(ks(t), kc(List<&2, String>, p98_tag_eq(t, "Ref") || p98_tag_eq(t, "ADT") || p98_tag_eq(t, "Ctr") || p98_tag_eq(t, "Mat"), u => kr_push(nm(t), todo), u => todo))
+
+# Module: src/core/reach.bend:122
+@unsafe
+def kr_refs_list(terms, todo):
+  match terms:
+    case Nil{}: todo
+    case Con{h, rest}: kr_refs(h, kr_refs_list(rest, todo))
+
+# Module: src/core/reach.bend:128
+@unsafe
+def kr_push(name, names):
+  kc(List<&2, String>, has_name(names, name), u => names, u => Con{name, names})
+# Foreign sources use CID(name)/FID(name) in their importing namespace, then
+# globally, just as the pinned upstream emitter does. Keep spelling resolution
+# shared by both backends; each backend renders the resolved names itself.
+
+# Module: src/core/reach.bend:146
+@unsafe
+def kf_unann(+t: KTerm) -> KTerm:
+  kc(KTerm, p98_tag_eq(t, "Ann"), u => kf_unann(kid(t, 0)), u => t)
+
+# Module: src/core/reach.bend:150
+@unsafe
+def kf_has_path(paths: List<&2, KTerm>, +path: String) -> Bool:
+  match paths:
+    case Nil{}: False{}
+    case Con{h, rest}: p88_string_eq(nm(h), path) || kf_has_path(rest, path)
+
+# Module: src/core/reach.bend:164
 @unsafe
 def kf_namespaces(ds: List<&2, KDef>, +path: String, +ns: String, +seen: Bool) -> KTerm:
   match ds:
     case Nil{}: kt("Namespace", ns, 0, 0, Nil{})
     case Con{+d, +rest}:
       +value = kf_unann(dv(d))
-      kc(KTerm, String.eq(tg(value), "Foreign") && kf_has_path(ks(value), path),
-        u => kf_namespace_step(rest, path, ns, seen, kc(String, db(d) || String.eq(nm(value), ""), u => "", u => String.take(dn(d), Nat.sub(String.length(dn(d)), String.length(nm(value)))))),
+      kc(KTerm, p98_tag_eq(value, "Foreign") && kf_has_path(ks(value), path),
+        u => kf_namespace_step(rest, path, ns, seen, kc(String, db(d) || p88_string_eq(nm(value), ""), u => "", u => String.take(dn(d), Nat.sub(String.length(dn(d)), String.length(nm(value)))))),
         u => kf_namespaces(rest, path, ns, seen))
 
+# Module: src/core/reach.bend:174
 @unsafe
 def kf_namespace_step(rest, path, ns, seen, prefix):
-  kc(KTerm, seen && Bool.not(String.eq(ns, prefix)), u => kt("Error", path ++ " is imported from two namespaces", 0, 0, Nil{}), u => kf_namespaces(rest, path, prefix, True{}))
+  kc(KTerm, seen && Bool.not(p88_string_eq(ns, prefix)), u => kt("Error", path ++ " is imported from two namespaces", 0, 0, Nil{}), u => kf_namespaces(rest, path, prefix, True{}))
 
+# Module: src/core/reach.bend:178
 @unsafe
 def kf_namespace(book: List<&2, KDef>, path: String) -> KTerm:
   kf_namespaces(book, path, "", False{})
 
+# Module: src/core/reach.bend:182
 @unsafe
 def kf_word(+c: Char) -> Bool:
   +n = Char.to_u32(c)
   (U32.is_ge(n, 48) && U32.is_le(n, 57)) || (U32.is_ge(n, 65) && U32.is_le(n, 90)) || (U32.is_ge(n, 97) && U32.is_le(n, 122)) || Char.is_eq(c, '_')
 
+# Module: src/core/reach.bend:187
 @unsafe
 def kf_name(source: String, +acc: String) -> String:
   match source:
@@ -190,28 +213,32 @@ def kf_name(source: String, +acc: String) -> String:
     case SCon{+h, rest}:
       kc(String, kf_word(h) || Char.is_eq(h, '.') || Char.is_eq(h, '/') || Char.is_eq(h, '~') || Char.is_eq(h, '-'), u => kf_name(rest, SCon{h, acc}), u => String.reverse(acc))
 
+# Module: src/core/reach.bend:194
 @unsafe
 def kf_known(+book: List<&2, KDef>, +prefix: String, +name: String) -> Bool:
-  Bool.not(String.eq(dk(kr_resolve(book, name)), "Absent")) || (String.eq(prefix, "FID") && (String.eq(name, "EXIT") || String.eq(name, "ENTER") || String.eq(name, "Clo~apply")))
+  Bool.not(p88_string_eq(dk(kr_resolve(book, name)), "Absent")) || (p88_string_eq(prefix, "FID") && (p88_string_eq(name, "EXIT") || p88_string_eq(name, "ENTER") || p88_string_eq(name, "Clo~apply")))
 
+# Module: src/core/reach.bend:198
 @unsafe
 def kf_resolve(+book: List<&2, KDef>, +ns: String, +prefix: String, +name: String) -> String:
   kc(String, kf_known(book, prefix, ns ++ name), u => ns ++ name, u => kc(String, kf_known(book, prefix, name), u => name, u => ""))
 
+# Module: src/core/reach.bend:202
 @unsafe
 def kf_char(+book: List<&2, KDef>, +ns: String, source: String, +text: String, +parts: List<&2, KTerm>) -> KF_Source:
   match source:
     case SNil{}: KF_Source{List.reverse(&2, KTerm, Con{kt("Text", String.reverse(text), 0, 0, Nil{}), parts}), ""}
     case SCon{+h, rest}: kf_scan(book, ns, rest, kf_word(h), SCon{h, text}, parts)
 
+# Module: src/core/reach.bend:208
 @unsafe
 def kf_token(+book: List<&2, KDef>, +ns: String, +source: String, +text: String, +parts: List<&2, KTerm>) -> KF_Source:
   +prefix = String.take(source, 3n)
   +name = kf_name(String.drop(source, 4n), "")
   +rest = String.drop(source, Nat.add(4n, String.length(name)))
   +resolved = kf_resolve(book, ns, prefix, name)
-  kc(KF_Source, Bool.not(String.eq(name, "")) && String.starts_with(rest, ")"),
-    u => kc(KF_Source, String.eq(resolved, ""),
+  kc(KF_Source, Bool.not(p88_string_eq(name, "")) && String.starts_with(rest, ")"),
+    u => kc(KF_Source, p88_string_eq(resolved, ""),
       u => KF_Source{Nil{}, prefix ++ "(" ++ name ++ ") names no constructor or def"},
       u => kf_scan(book, ns, String.drop(rest, 1n), False{}, "", Con{kt(prefix, resolved, 0, 0, Nil{}), Con{kt("Text", String.reverse(text), 0, 0, Nil{}), parts}})),
     u => kf_char(book, ns, source, text, parts))
@@ -219,6 +246,8 @@ def kf_token(+book: List<&2, KDef>, +ns: String, +source: String, +text: String,
 # Match upstream's lexical shields, including its unterminated-region behavior.
 # mode: 0 quoted string, 1 line comment, 2 block comment. A zero span means
 # no complete shield; the ordinary scanner then sees the original bytes.
+
+# Module: src/core/reach.bend:223
 @unsafe
 def kf_region(source: String, +quote: Char, +mode: U32, +n: Nat) -> Nat:
   match source:
@@ -232,6 +261,7 @@ def kf_region(source: String, +quote: Char, +mode: U32, +n: Nat) -> Nat:
             u => kf_region(String.drop(rest, 1n), quote, mode, Nat.add(n, 2n)),
             u => kf_region(rest, quote, mode, 1n+n))))
 
+# Module: src/core/reach.bend:236
 @unsafe
 def kf_shield(+source: String) -> Nat:
   match source:
@@ -241,6 +271,7 @@ def kf_shield(+source: String) -> Nat:
       kc(Nat, String.starts_with(source, "/*"), u => kf_region(String.drop(rest, 1n), h, 2, 2n), u =>
       kc(Nat, Char.is_eq(h, '"') || U32.is_eq(Char.to_u32(h), 39) || Char.is_eq(h, '`'), u => kf_region(rest, h, 0, 1n), u => 0n)))
 
+# Module: src/core/reach.bend:245
 @unsafe
 def kf_scan(book, ns, source, word, text, parts):
   +n = kf_shield(source)
@@ -248,7 +279,8 @@ def kf_scan(book, ns, source, word, text, parts):
     u => kc(KF_Source, Bool.not(word) && (String.starts_with(source, "CID(") || String.starts_with(source, "FID(")), u => kf_token(book, ns, source, text, parts), u => kf_char(book, ns, source, text, parts)),
     u => kf_scan(book, ns, String.drop(source, n), False{}, String.reverse(String.take(source, n)) ++ text, parts))
 
+# Module: src/core/reach.bend:252
 @unsafe
 def kf_source(+book: List<&2, KDef>, scope: List<&2, KDef>, path: String, source: String) -> KF_Source:
   +ns = kf_namespace(scope, path)
-  kc(KF_Source, String.eq(tg(ns), "Error"), u => KF_Source{Nil{}, nm(ns)}, u => kf_scan(book, nm(ns), source, False{}, "", Nil{}))
+  kc(KF_Source, p98_tag_eq(ns, "Error"), u => KF_Source{Nil{}, nm(ns)}, u => kf_scan(book, nm(ns), source, False{}, "", Nil{}))

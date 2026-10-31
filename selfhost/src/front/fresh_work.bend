@@ -1,5 +1,5 @@
-# Explicit continuations keep alpha-renaming independent of host stack depth.
-# Allocation order and lexical scope match the original recursive traversal.
+
+# Module: src/front/fresh_work.bend:3
 type FFFrame is Data:
   FFAllA{+term: KTerm, +env: List<&2,KTerm>, +id: U32}
   FFAllB{+term: KTerm, +id: U32, +typ: KTerm}
@@ -9,23 +9,34 @@ type FFFrame is Data:
   FFLetBody{+built: List<&2,KTerm>}
   FFOrigin{begin: U32, end: U32}
 
+# Module: src/front/fresh_work.bend:138
+type FFDefFrame is Data:
+  FFDefFrame{+definition: KDef, +pending: List<&2,KDef>, +built: List<&2,KDef>, +typ: KTerm, +value: KTerm}
+
+# Module: src/front/fresh_work.bend:12
 law ffw_walk:
   for +term: KTerm
   for +env: List<&2,KTerm>
   for +next: U32
   for +stack: List<&2,FFFrame>
   FFresh
+
+# Module: src/front/fresh_work.bend:18
 law ffw_done:
   for +term: KTerm
   for +next: U32
   for +stack: List<&2,FFFrame>
   FFresh
+
+# Module: src/front/fresh_work.bend:23
 law ffw_frame:
   for +frame: FFFrame
   for +value: KTerm
   for +next: U32
   for +stack: List<&2,FFFrame>
   FFresh
+
+# Module: src/front/fresh_work.bend:29
 law ffw_kids:
   for +term: KTerm
   for +env: List<&2,KTerm>
@@ -34,6 +45,8 @@ law ffw_kids:
   for +next: U32
   for +stack: List<&2,FFFrame>
   FFresh
+
+# Module: src/front/fresh_work.bend:37
 law ffw_let:
   for +env: List<&2,KTerm>
   for +bodyenv: List<&2,KTerm>
@@ -42,6 +55,8 @@ law ffw_let:
   for +next: U32
   for +stack: List<&2,FFFrame>
   FFresh
+
+# Module: src/front/fresh_work.bend:45
 law ffw_let_tail:
   for +env: List<&2,KTerm>
   for +bodyenv: List<&2,KTerm>
@@ -52,6 +67,55 @@ law ffw_let_tail:
   for +stack: List<&2,FFFrame>
   FFresh
 
+# Module: src/front/fresh_work.bend:120
+law ffw_reverse_onto:
+  for +items: List<&2,KTerm>
+  for +onto: List<&2,KTerm>
+  List<&2,KTerm>
+
+# Module: src/front/fresh_work.bend:141
+law ffd_walk:
+  for +book: List<&2,KDef>
+  for +next: U32
+  for +built: List<&2,KDef>
+  for +stack: List<&2,FFDefFrame>
+  FFreshDefs
+
+# Module: src/front/fresh_work.bend:147
+law ffd_type:
+  for +definition: KDef
+  for +pending: List<&2,KDef>
+  for +built: List<&2,KDef>
+  for +stack: List<&2,FFDefFrame>
+  for +result: FFresh
+  FFreshDefs
+
+# Module: src/front/fresh_work.bend:154
+law ffd_value:
+  for +definition: KDef
+  for +pending: List<&2,KDef>
+  for +built: List<&2,KDef>
+  for +stack: List<&2,FFDefFrame>
+  for +typ: KTerm
+  for +result: FFresh
+  FFreshDefs
+
+# Module: src/front/fresh_work.bend:162
+law ffd_done:
+  for +book: List<&2,KDef>
+  for +next: U32
+  for +stack: List<&2,FFDefFrame>
+  FFreshDefs
+
+# Module: src/front/fresh_work.bend:167
+law ffd_frame:
+  for +frame: FFDefFrame
+  for +ctors: List<&2,KDef>
+  for +next: U32
+  for +stack: List<&2,FFDefFrame>
+  FFreshDefs
+
+# Module: src/front/fresh_work.bend:56
 @unsafe
 def f_fresh_stack(
   +term: KTerm,
@@ -59,18 +123,24 @@ def f_fresh_stack(
   +next: U32,
 ) -> FFresh:
   ffw_walk(term, env, next, Nil{})
+
+# Module: src/front/fresh_work.bend:63
 @unsafe
 def ffw_walk(term, env, next, stack):
-  f_choose(FFresh, String.eq(tg(term), "FName"), u => ffw_walk(k_with_span(kid(term, 1), kb(term), ke(term)), env, next, stack), u => ffw_walk_existing(term, env, next, stack))
+  f_choose(FFresh, p98_tag_eq(term, "FName"), u => ffw_walk(k_with_span(kid(term, 1), kb(term), ke(term)), env, next, stack), u => ffw_walk_existing(term, env, next, stack))
+
+# Module: src/front/fresh_work.bend:66
 @unsafe
 def ffw_walk_existing(+term: KTerm, +env: List<&2,KTerm>, +next: U32, +stack: List<&2,FFFrame>) -> FFresh:
-  f_choose(FFresh, String.eq(tg(term), "FGlobal"), u => ffw_done(kt_span("Ref", nm(term), 0, 1, Nil{}, kb(term), ke(term)), next, stack),
-    u => f_choose(FFresh, String.eq(tg(term), "FUnboundVar"), u => ffw_done(term, next, stack),
-    u => f_choose(FFresh, String.eq(tg(term), "Var"), u => ffw_done(f_rename_var(term, env), next, stack),
-    u => f_choose(FFresh, String.eq(tg(term), "All"), u => ffw_walk(kid(term, 0), env, U32.add(next, 1), Con{FFAllA{term, env, next}, stack}),
-    u => f_choose(FFresh, String.eq(tg(term), "Lam"), u => ffw_walk(kid(term, 0), Con{kt("Map", "", ix(term), 0, [var(nm(term), next)]), env}, U32.add(next, 1), Con{FFLambda{term, next}, stack}),
-    u => f_choose(FFresh, String.eq(tg(term), "Let"), u => ffw_let(env, env, ks(term), Nil{}, next, Con{FFOrigin{kb(term), ke(term)}, stack}),
+  f_choose(FFresh, p98_tag_eq(term, "FGlobal"), u => ffw_done(kt_span("Ref", nm(term), 0, 1, Nil{}, kb(term), ke(term)), next, stack),
+    u => f_choose(FFresh, p98_tag_eq(term, "FUnboundVar"), u => ffw_done(term, next, stack),
+    u => f_choose(FFresh, p98_tag_eq(term, "Var"), u => ffw_done(f_rename_var(term, env), next, stack),
+    u => f_choose(FFresh, p98_tag_eq(term, "All"), u => ffw_walk(kid(term, 0), env, U32.add(next, 1), Con{FFAllA{term, env, next}, stack}),
+    u => f_choose(FFresh, p98_tag_eq(term, "Lam"), u => ffw_walk(kid(term, 0), Con{kt("Map", "", ix(term), 0, [var(nm(term), next)]), env}, U32.add(next, 1), Con{FFLambda{term, next}, stack}),
+    u => f_choose(FFresh, p98_tag_eq(term, "Let"), u => ffw_let(env, env, ks(term), Nil{}, next, Con{FFOrigin{kb(term), ke(term)}, stack}),
     u => ffw_kids(term, env, ks(term), Nil{}, next, stack)))))))
+
+# Module: src/front/fresh_work.bend:75
 @unsafe
 def ffw_done(term, next, stack):
   match stack:
@@ -78,6 +148,8 @@ def ffw_done(term, next, stack):
       FFresh{term, next}
     case Con{frame, rest}:
       ffw_frame(frame, term, next, rest)
+
+# Module: src/front/fresh_work.bend:82
 @unsafe
 def ffw_frame(frame, value, next, stack):
   match frame:
@@ -95,6 +167,8 @@ def ffw_frame(frame, value, next, stack):
       ffw_done(k_with_span(value, begin, end), next, stack)
     case FFLetBody{built}:
       ffw_done(kt("Let", "", 0, 1, ffw_reverse_onto(built, [value])), next, stack)
+
+# Module: src/front/fresh_work.bend:99
 @unsafe
 def ffw_kids(term, env, pending, built, next, stack):
   match pending:
@@ -102,6 +176,8 @@ def ffw_kids(term, env, pending, built, next, stack):
       ffw_done(k_with_children(term, List.reverse(&2,KTerm,built)), next, stack)
     case Con{head, rest}:
       ffw_walk(head, env, next, Con{FFKids{term, env, rest, built}, stack})
+
+# Module: src/front/fresh_work.bend:106
 @unsafe
 def ffw_let(env, bodyenv, items, built, next, stack):
   match items:
@@ -109,6 +185,8 @@ def ffw_let(env, bodyenv, items, built, next, stack):
       ffw_done(kt("Error", "empty core let", 0, 0, Nil{}), next, stack)
     case Con{term, tail}:
       ffw_let_tail(env, bodyenv, term, tail, built, next, stack)
+
+# Module: src/front/fresh_work.bend:113
 @unsafe
 def ffw_let_tail(env, bodyenv, term, tail, built, next, stack):
   match tail:
@@ -117,11 +195,7 @@ def ffw_let_tail(env, bodyenv, term, tail, built, next, stack):
     case Con{head, rest}:
       ffw_walk(kid(term, 0), env, U32.add(next, 1), Con{FFLetValue{env, bodyenv, next, term, tail, built}, stack})
 
-law ffw_reverse_onto:
-  for +items: List<&2,KTerm>
-  for +onto: List<&2,KTerm>
-  List<&2,KTerm>
-
+# Module: src/front/fresh_work.bend:126
 @unsafe
 def ffw_reverse_onto(items, onto):
   match items:
@@ -135,48 +209,16 @@ def ffw_reverse_onto(items, onto):
 # even when each individual term is shallow. Constructor-definition lists share
 # this worklist, so both declaration breadth and nested list depth are bounded
 # by heap storage rather than JavaScript's call stack.
-type FFDefFrame is Data:
-  FFDefFrame{+definition: KDef, +pending: List<&2,KDef>, +built: List<&2,KDef>, +typ: KTerm, +value: KTerm}
 
-law ffd_walk:
-  for +book: List<&2,KDef>
-  for +next: U32
-  for +built: List<&2,KDef>
-  for +stack: List<&2,FFDefFrame>
-  FFreshDefs
-law ffd_type:
-  for +definition: KDef
-  for +pending: List<&2,KDef>
-  for +built: List<&2,KDef>
-  for +stack: List<&2,FFDefFrame>
-  for +result: FFresh
-  FFreshDefs
-law ffd_value:
-  for +definition: KDef
-  for +pending: List<&2,KDef>
-  for +built: List<&2,KDef>
-  for +stack: List<&2,FFDefFrame>
-  for +typ: KTerm
-  for +result: FFresh
-  FFreshDefs
-law ffd_done:
-  for +book: List<&2,KDef>
-  for +next: U32
-  for +stack: List<&2,FFDefFrame>
-  FFreshDefs
-law ffd_frame:
-  for +frame: FFDefFrame
-  for +ctors: List<&2,KDef>
-  for +next: U32
-  for +stack: List<&2,FFDefFrame>
-  FFreshDefs
-
+# Module: src/front/fresh_work.bend:175
 @unsafe
 def f_fresh_book_stack(
   +book: List<&2,KDef>,
   +next: U32,
 ) -> FFreshDefs:
   ffd_walk(book, next, Nil{}, Nil{})
+
+# Module: src/front/fresh_work.bend:181
 @unsafe
 def ffd_walk(book, next, built, stack):
   match book:
@@ -184,16 +226,22 @@ def ffd_walk(book, next, built, stack):
       ffd_done(List.reverse(&2,KDef,built), next, stack)
     case Con{+definition, pending}:
       ffd_type(definition, pending, built, stack, f_fresh_term(dt(definition), Nil{}, next))
+
+# Module: src/front/fresh_work.bend:188
 @unsafe
 def ffd_type(definition, pending, built, stack, result):
   match result:
     case FFresh{typ, next}:
       ffd_value(definition, pending, built, stack, typ, f_fresh_term(dv(definition), Nil{}, next))
+
+# Module: src/front/fresh_work.bend:193
 @unsafe
 def ffd_value(definition, pending, built, stack, typ, result):
   match result:
     case FFresh{value, next}:
       ffd_walk(dc(definition), next, Nil{}, Con{FFDefFrame{definition, pending, built, typ, value}, stack})
+
+# Module: src/front/fresh_work.bend:198
 @unsafe
 def ffd_done(book, next, stack):
   match stack:
@@ -201,6 +249,8 @@ def ffd_done(book, next, stack):
       FFreshDefs{book, next}
     case Con{frame, rest}:
       ffd_frame(frame, book, next, rest)
+
+# Module: src/front/fresh_work.bend:205
 @unsafe
 def ffd_frame(frame, ctors, next, stack):
   match frame:

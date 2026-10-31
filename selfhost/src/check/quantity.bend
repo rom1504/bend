@@ -1,14 +1,15 @@
-import Base
 
-# A failed corresponding field must not be searched again as a proper subterm.
+# Module: src/check/quantity.bend:4
 type KDescent is Data:
   KDescent{order: U32, bad: U32}
 
+# Module: src/check/quantity.bend:7
 law descend_go:
   for +a: KTerm
   for +p: KTerm
   U32
 
+# Module: src/check/quantity.bend:12
 law descend_fields:
   for +a: List<&2, KTerm>
   for +p: List<&2, KTerm>
@@ -16,6 +17,7 @@ law descend_fields:
   for +index: U32
   KDescent
 
+# Module: src/check/quantity.bend:19
 law descend_field:
   for +a: List<&2, KTerm>
   for +p: List<&2, KTerm>
@@ -24,16 +26,19 @@ law descend_field:
   for +field: U32
   KDescent
 
+# Module: src/check/quantity.bend:27
 law terms_tail:
   for +ts: List<&2, KTerm>
   List<&2, KTerm>
 
+# Module: src/check/quantity.bend:31
 law descend_ctr:
   for +a: KTerm
   for +p: KTerm
   for +result: KDescent
   U32
 
+# Module: src/check/quantity.bend:37
 law descend_sub:
   for +a: KTerm
   for +ps: List<&2, KTerm>
@@ -41,6 +46,7 @@ law descend_sub:
   for +index: U32
   U32
 
+# Module: src/check/quantity.bend:44
 law descend_step:
   for +ord: U32
   for +qs: List<&2, KTerm>
@@ -48,6 +54,7 @@ law descend_step:
   for +cols: List<&2, KTerm>
   Bool
 
+# Module: src/check/quantity.bend:52
 @unsafe
 def qadd(
   +a: U32,
@@ -55,6 +62,7 @@ def qadd(
 ) -> U32:
   kc(U32, U32.is_eq(a, 0), u => b, u => kc(U32, U32.is_eq(b, 0), u => a, u => 2))
 
+# Module: src/check/quantity.bend:59
 @unsafe
 def qjoin(
   +a: U32,
@@ -62,6 +70,7 @@ def qjoin(
 ) -> U32:
   kc(U32, U32.is_gt(a, b), u => a, u => b)
 
+# Module: src/check/quantity.bend:66
 @unsafe
 def qdem(
   +q: U32,
@@ -69,6 +78,7 @@ def qdem(
 ) -> U32:
   kc(U32, U32.is_eq(q, 0), u => 0, u => d)
 
+# Module: src/check/quantity.bend:73
 @unsafe
 def uses_get(
   +xs: List<&2, KTerm>,
@@ -80,6 +90,7 @@ def uses_get(
     case Con{h, t}:
       kc(U32, U32.is_eq(ix(h), id), u => qt(h), u => uses_get(t, id))
 
+# Module: src/check/quantity.bend:84
 @unsafe
 def uses_del(
   +xs: List<&2, KTerm>,
@@ -91,6 +102,7 @@ def uses_del(
     case Con{h, t}:
       kc(List<&2, KTerm>, U32.is_eq(ix(h), id), u => uses_del(t, id), u => Con{h, uses_del(t, id)})
 
+# Module: src/check/quantity.bend:95
 @unsafe
 def uses_merge(
   +a: List<&2, KTerm>,
@@ -103,12 +115,14 @@ def uses_merge(
     case Con{h, t}:
       Con{kt("Use", "", ix(h), kc(U32, join, u => qjoin(qt(h), uses_get(b, ix(h))), u => qadd(qt(h), uses_get(b, ix(h)))), Nil{}), uses_merge(t, uses_del(b, ix(h)), join)}
 
+# Module: src/check/quantity.bend:107
 @unsafe
 def strip(
   +t: KTerm,
 ) -> KTerm:
   core_force(t)
 
+# Module: src/check/quantity.bend:113
 @unsafe
 def descend(
   +q: U32,
@@ -117,15 +131,17 @@ def descend(
 ) -> U32:
   kc(U32, U32.is_eq(q, 0), u => 1, u => descend_go(strip(a), strip(p)))
 
+# Module: src/check/quantity.bend:121
 @unsafe
 def descend_go(a, p):
-  kc(U32, core_literal(a) && String.eq(tg(p), "Ctr"), u => descend_go(core_literal_step(a), p), u =>
-  kc(U32, String.eq(tg(p), "Var"),
-    u => kc(U32, String.eq(tg(a), "Var") && U32.is_eq(ix(a), ix(p)), u => 1, u => 2),
-    u => kc(U32, String.eq(tg(p), "Ctr"),
-      u => descend_ctr(a, p, kc(KDescent, String.eq(tg(a), "Ctr") && String.eq(nm(a), nm(p)) && U32.is_eq(terms_len(ks(a)), terms_len(ks(p))), u => descend_fields(ks(a), ks(p), 1, 0), u => KDescent{2, 4294967295})),
+  kc(U32, core_literal(a) && p98_tag_eq(p, "Ctr"), u => descend_go(core_literal_step(a), p), u =>
+  kc(U32, p98_tag_eq(p, "Var"),
+    u => kc(U32, p98_tag_eq(a, "Var") && U32.is_eq(ix(a), ix(p)), u => 1, u => 2),
+    u => kc(U32, p98_tag_eq(p, "Ctr"),
+      u => descend_ctr(a, p, kc(KDescent, p98_tag_eq(a, "Ctr") && p88_string_eq(nm(a), nm(p)) && U32.is_eq(terms_len(ks(a)), terms_len(ks(p))), u => descend_fields(ks(a), ks(p), 1, 0), u => KDescent{2, 4294967295})),
       u => 2)))
 
+# Module: src/check/quantity.bend:130
 @unsafe
 def descend_fields(a, p, ord, index):
   match a:
@@ -134,10 +150,12 @@ def descend_fields(a, p, ord, index):
     case Con{h, t}:
       descend_field(t, terms_tail(p), ord, index, descend(1, h, terms_at(p, 0)))
 
+# Module: src/check/quantity.bend:138
 @unsafe
 def descend_field(a, p, ord, index, field):
   kc(KDescent, U32.is_eq(field, 2), u => KDescent{2, index}, u => descend_fields(a, p, kc(U32, U32.is_eq(field, 1), u => ord, u => field), U32.inc(index)))
 
+# Module: src/check/quantity.bend:142
 @unsafe
 def terms_tail(ts):
   match ts:
@@ -146,12 +164,14 @@ def terms_tail(ts):
     case Con{h, t}:
       t
 
+# Module: src/check/quantity.bend:150
 @unsafe
 def descend_ctr(a, p, result):
   match result:
     case KDescent{ord, bad}:
       kc(U32, U32.is_eq(ord, 2), u => descend_sub(a, ks(p), bad, 0), u => ord)
 
+# Module: src/check/quantity.bend:156
 @unsafe
 def descend_sub(a, ps, bad, index):
   match ps:
@@ -160,6 +180,7 @@ def descend_sub(a, ps, bad, index):
     case Con{h, t}:
       kc(U32, U32.is_eq(index, bad), u => descend_sub(a, t, bad, U32.inc(index)), u => kc(U32, U32.is_eq(descend(1, a, h), 2), u => descend_sub(a, t, bad, U32.inc(index)), u => 0))
 
+# Module: src/check/quantity.bend:164
 @unsafe
 def descend_spine(
   +qs: List<&2, KTerm>,
@@ -172,6 +193,7 @@ def descend_spine(
     case Con{h, t}:
       descend_step(descend(qt(terms_at(qs, 0)), terms_at(args, 0), h), terms_tail(qs), terms_tail(args), t)
 
+# Module: src/check/quantity.bend:176
 @unsafe
 def descend_step(ord, qs, args, cols):
   kc(Bool, U32.is_eq(ord, 0), u => True{}, u => kc(Bool, U32.is_eq(ord, 1), u => descend_spine(qs, args, cols), u => False{}))

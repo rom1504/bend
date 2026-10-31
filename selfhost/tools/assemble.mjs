@@ -3,8 +3,42 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
+import {spawnSync} from 'node:child_process';
 
-export function assemble(files, output, {root=path.resolve(import.meta.dirname,'..')}={}) {
+const project=path.resolve(import.meta.dirname,'..');
+
+// Current compiler builds have one assembler. The explicit-file legacy path is
+// retained only while historical callers are migrated; it does not select an old
+// frontend when the current maintained module inventory matches.
+export function assemble(files, output, {root=project,manifest,profile}={}) {
+  const candidates=manifest?[path.resolve(manifest)]:[
+    path.join(root,'src/compiler.json'),path.join(project,'src/compiler.json')];
+  for(const candidate of [...new Set(candidates)]){
+    if(!fs.existsSync(candidate))continue;
+    const recipe=JSON.parse(fs.readFileSync(candidate,'utf8'));
+    if(recipe.kind!=='bend-maintained-source-v1')continue;
+    const same=files.length===recipe.modules.length&&files.every((file,i)=>file===recipe.modules[i]);
+    if(!same){
+      if(manifest)throw Error('Explicit maintained manifest does not match requested modules');
+      continue;
+    }
+    const args=['-B',path.join(project,'tools/build/source.py'),'assemble',
+      '--manifest',candidate,'--root',path.resolve(root),'--out',path.resolve(output),
+      '--map',path.resolve(output+'.map.json'),'--reuse-identical'];
+    if(profile)args.push('--profile',profile);
+    const result=spawnSync(process.env.BEND_PYTHON||'python3',args,
+      {encoding:'utf8',maxBuffer:4*1024*1024,timeout:30000});
+    if(result.error||result.status!==0)
+      throw Error('Maintained source assembly failed: '+(result.error?.message||result.stderr||result.stdout));
+    const report=JSON.parse(result.stdout);
+    return {output,files:files.length,declarations:report.declarations,bytes:report.bytes,
+      sourceSha256:report.sha256,manifest:candidate,profile:profile||recipe.defaultProfile};
+  }
+  if(manifest)throw Error('Explicit manifest is not a maintained source recipe');
+  return assembleLegacy(files,output,{root});
+}
+
+function assembleLegacy(files, output, {root=project}={}) {
   const buckets={type:[],law:[],def:[]},seen={type:new Set(),law:new Set(),def:new Set()};
   for(const relative of files){
     const file=path.isAbsolute(relative)?relative:path.join(root,relative);

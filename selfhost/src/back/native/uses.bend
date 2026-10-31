@@ -1,10 +1,11 @@
-# A native occurrence set holds U32 binder IDs, not named definitions. The
-# compressed low-bit trie retains exact keys and allocates nothing on a hit.
+
+# Module: src/back/native/uses.bend:3
 type NU_Set is Data:
   NU_Empty{}
   NU_Leaf{key: U32}
   NU_Node{mask: U32, +left: NU_Set, +right: NU_Set}
 
+# Module: src/back/native/uses.bend:9
 @unsafe
 def nu_tip(s: NU_Set, +key: U32) -> U32:
   match s:
@@ -13,11 +14,13 @@ def nu_tip(s: NU_Set, +key: U32) -> U32:
     case NU_Node{+mask, +left, +right}:
       nt_choose(U32, U32.is_eq(U32.and(key, mask), 0), u => nu_tip(left, key), u => nu_tip(right, key))
 
+# Module: src/back/native/uses.bend:17
 @unsafe
 def nu_join(+s: NU_Set, +key: U32, +mask: U32) -> NU_Set:
   nt_choose(NU_Set, U32.is_eq(U32.and(key, mask), 0),
     u => NU_Node{mask, NU_Leaf{key}, s}, u => NU_Node{mask, s, NU_Leaf{key}})
 
+# Module: src/back/native/uses.bend:22
 @unsafe
 def nu_insert(+s: NU_Set, +key: U32, +split: U32) -> NU_Set:
   match s:
@@ -29,6 +32,7 @@ def nu_insert(+s: NU_Set, +key: U32, +split: U32) -> NU_Set:
           v => NU_Node{mask, nu_insert(left, key, split), right},
           v => NU_Node{mask, left, nu_insert(right, key, split)}))
 
+# Module: src/back/native/uses.bend:33
 @unsafe
 def nu_add(+s: NU_Set, +key: U32) -> NU_Set:
   match s:
@@ -37,6 +41,7 @@ def nu_add(+s: NU_Set, +key: U32) -> NU_Set:
       +split = index_split_bit(U32.xor(key, nu_tip(s, key)))
       nt_choose(NU_Set, U32.is_eq(split, 0), u => s, u => nu_insert(s, key, split))
 
+# Module: src/back/native/uses.bend:41
 @unsafe
 def nu_has(s: NU_Set, +key: U32) -> Bool:
   match s:

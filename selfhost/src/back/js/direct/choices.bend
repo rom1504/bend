@@ -1,101 +1,118 @@
-# Literal continuations of a structurally proved Boolean selector. Names never
-# identify the operation. Ordinary calls reject before any type normalization.
-# This uses the direct backend's ordinary source-value/standard-builtin domain;
-# private closure wrappers, tail packets and their reflective identity are not ABI.
+
+# Module: src/back/js/direct/choices.bend:6
 @unsafe
 def jd_choice_call(+book: List<&2,KDef>, +spine: KTerm) -> Bool:
-  kc(Bool, String.eq(tg(spine), "Call") && U32.is_eq(terms_len(ks(spine)), 4),
+  kc(Bool, p98_tag_eq(spine, "Call") && U32.is_eq(terms_len(ks(spine)), 4),
     u => jd_choice_named(book, lookup(book, nm(spine)), ks(spine)), u => False{})
 
+# Module: src/back/js/direct/choices.bend:11
 @unsafe
 def jd_choice_named(+book: List<&2,KDef>, +d: KDef, +xs: List<&2,KTerm>) -> Bool:
   kc(Bool, U32.is_eq(terms_len(xs), 4), u =>
-    kc(Bool, String.eq(tg(j_strip(terms_at(xs, 2))), "Lam") &&
-      String.eq(tg(j_strip(terms_at(xs, 3))), "Lam") &&
+    kc(Bool, p98_tag_eq(j_strip(terms_at(xs, 2)), "Lam") &&
+      p98_tag_eq(j_strip(terms_at(xs, 3)), "Lam") &&
       Bool.not(U32.is_eq(qt(j_strip(terms_at(xs, 2))), 0)) &&
       Bool.not(U32.is_eq(qt(j_strip(terms_at(xs, 3))), 0)), v =>
-      kc(Bool, String.eq(dk(d), "Def") && U32.is_eq(dx(d), 0) && U32.is_eq(da(d), 4),
+      kc(Bool, p88_string_eq(dk(d), "Def") && U32.is_eq(dx(d), 0) && U32.is_eq(da(d), 4),
         w => kc(Bool, j_choice_definition(book, d),
           z => jd_choice_signature(book, dt(d), 0), z => False{}), w => False{}),
       v => False{}), u => False{})
 
+# Module: src/back/js/direct/choices.bend:23
 @unsafe
 def jd_choice_signature(+book: List<&2,KDef>, +ty: KTerm, +at: U32) -> Bool:
   kc(Bool, U32.is_eq(at, 4), u => True{},
     u => jd_choice_domain(book, wnf(book, ty), at))
 
+# Module: src/back/js/direct/choices.bend:28
 @unsafe
 def jd_choice_domain(+book: List<&2,KDef>, +ty: KTerm, +at: U32) -> Bool:
-  kc(Bool, String.eq(tg(ty), "All"), u =>
+  kc(Bool, p98_tag_eq(ty, "All"), u =>
     kc(Bool, kc(Bool, U32.is_eq(at, 0),
-      v => U32.is_eq(qt(ty), 0) && String.eq(tg(wnf(book, kid(ty, 0))), "Typ"),
+      v => U32.is_eq(qt(ty), 0) && p98_tag_eq(wnf(book, kid(ty, 0)), "Typ"),
       v => Bool.not(U32.is_eq(qt(ty), 0)) &&
         kc(Bool, U32.is_eq(at, 1),
           w => jd_choice_owner(book, kid(ty, 0), "Bool"),
           w => jd_choice_callback(book, wnf(book, kid(ty, 0))))),
       v => jd_choice_signature(book, kid(ty, 1), U32.inc(at)), v => False{}), u => False{})
 
+# Module: src/back/js/direct/choices.bend:39
 @unsafe
 def jd_choice_owner(+book: List<&2,KDef>, +ty: KTerm, +name: String) -> Bool:
   jd_choice_owner_head(book, wnf(book, ty), name)
 
+# Module: src/back/js/direct/choices.bend:43
 @unsafe
 def jd_choice_owner_head(+book: List<&2,KDef>, +ty: KTerm, +name: String) -> Bool:
-  String.eq(tg(ty), "ADT") && String.eq(nm(ty), name) &&
+  p98_tag_eq(ty, "ADT") && p88_string_eq(nm(ty), name) &&
     List.is_empty(&2,KTerm, ks(ty)) && db(lookup(book, name))
 
+# Module: src/back/js/direct/choices.bend:48
 @unsafe
 def jd_choice_callback(+book: List<&2,KDef>, +ty: KTerm) -> Bool:
-  kc(Bool, String.eq(tg(ty), "All") && Bool.not(U32.is_eq(qt(ty), 0)),
+  kc(Bool, p98_tag_eq(ty, "All") && Bool.not(U32.is_eq(qt(ty), 0)),
     u => jd_choice_owner(book, kid(ty, 0), "Unit"), u => False{})
 
 # Non-tail expression sites keep one local expression scope. A tail site uses
 # the surrounding return continuation, so selected recursive edges can transfer
 # through the existing SCC loop. Conditions/prefixes are demanded exactly once.
+
+# Module: src/back/js/direct/choices.bend:56
 @unsafe
 def jd_choice_expr(+book: List<&2,KDef>, +env: List<&2,KTerm>, +xs: List<&2,KTerm>) -> String:
   "(()=>{" ++ jd_choice_body(book, jd_expression_env(env), xs) ++ "})()"
 
+# Module: src/back/js/direct/choices.bend:60
 @unsafe
 def jd_choice_body(+book: List<&2,KDef>, +env: List<&2,KTerm>, +xs: List<&2,KTerm>) -> String:
   jd_text_render(jd_doc_choice_body(book, env, xs))
 
+# Module: src/back/js/direct/choices.bend:64
 @unsafe
 def jd_doc_choice_body(+book: List<&2,KDef>, +env: List<&2,KTerm>, +xs: List<&2,KTerm>) -> JDText:
   jd_doc_choice_done(book, env, xs, jd_ordered_expr(book, env, terms_at(xs, 1),
     j_type(book, env, terms_at(xs, 1)), False{}, 0))
 
+# Module: src/back/js/direct/choices.bend:69
 @unsafe
 def jd_doc_choice_done(+book: List<&2,KDef>, +env: List<&2,KTerm>, +xs: List<&2,KTerm>, +condition: JDOrdered) -> JDText:
   match condition:
     case JDOrdered{prefix, value, next}: jd_text_many([jd_text_raw("{" ++ prefix), jd_doc_choice_branches(book, env, xs, value), jd_text_literal("}", 1)])
 # A surrounding ordered expression owns the condition's prefixes. Keep them
 # outside the pending choice value, before the prefixes of later siblings.
+
+# Module: src/back/js/direct/choices.bend:75
 @unsafe
 def jd_choice_ordered(+book: List<&2,KDef>, +env: List<&2,KTerm>, +xs: List<&2,KTerm>, +next: U32) -> JDOrdered:
   jd_choice_ordered_done(book, env, xs, jd_ordered_expr(book, env, terms_at(xs, 1),
     j_type(book, env, terms_at(xs, 1)), False{}, next))
 
+# Module: src/back/js/direct/choices.bend:80
 @unsafe
 def jd_choice_ordered_done(+book: List<&2,KDef>, +env: List<&2,KTerm>, +xs: List<&2,KTerm>, +condition: JDOrdered) -> JDOrdered:
   match condition:
     case JDOrdered{prefix, value, next}:
       JDOrdered{prefix, "(()=>{" ++ jd_choice_branches(book, jd_expression_env(env), xs, value) ++ "})()", next}
 
+# Module: src/back/js/direct/choices.bend:86
 @unsafe
 def jd_choice_branches(+book: List<&2,KDef>, +env: List<&2,KTerm>, +xs: List<&2,KTerm>, +value: String) -> String:
   jd_text_render(jd_doc_choice_branches(book, env, xs, value))
 
+# Module: src/back/js/direct/choices.bend:90
 @unsafe
 def jd_doc_choice_branches(+book: List<&2,KDef>, +env: List<&2,KTerm>, +xs: List<&2,KTerm>, +value: String) -> JDText:
   jd_text_many([jd_text_raw("/* direct literal choice */if(" ++ value ++ "){"), jd_doc_choice_arm(book, env, terms_at(xs, 2)), jd_text_literal("}else{", 6), jd_doc_choice_arm(book, env, terms_at(xs, 3)), jd_text_literal("}", 1)])
 
+# Module: src/back/js/direct/choices.bend:94
 @unsafe
 def jd_doc_choice_arm(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm) -> JDText:
   jd_doc_body(book, env, t, j_type(book, env, t), ["({$:\"Unit\"})"])
 # The scanner uses the identical admission decision. Both possible selected
 # bodies are tails of the caller; the condition remains an ordinary non-tail
 # computation. These scans consume the existing per-body fuel.
+
+# Module: src/back/js/direct/choices.bend:100
 @unsafe
 def jd_choice_calls(+book: List<&2,KDef>, +env: List<&2,KTerm>, +xs: List<&2,KTerm>, +s: JDCallScan) -> JDCallScan:
   jd_calls_body(book, env, terms_at(xs, 3), j_type(book, env, terms_at(xs, 3)), 1,

@@ -1,10 +1,13 @@
-# The production pass schedule is explicit and shared by compatibility entries.
+
+# Module: src/back/js/ir/emit.bend:3
 @unsafe
 def jir_compile(+book: List<&2,KDef>, +node: JIRExpr) -> String:
   jir_emit(book, jir_simplify(node))
 
 # Print explicit operations. This layer makes no type, arity or purity guesses;
 # inherited specialized plans are isolated behind the two compatibility nodes.
+
+# Module: src/back/js/ir/emit.bend:9
 @unsafe
 def jir_emit(+book: List<&2,KDef>, +node: JIRExpr) -> String:
   match node:
@@ -38,24 +41,28 @@ def jir_emit(+book: List<&2,KDef>, +node: JIRExpr) -> String:
     case JIRCallPlan{env, spine, fallback}: j_finite_call(book, env, spine, jir_emit(book, fallback))
     case JIRLegacy{env, term, typ, tail}: j_expr_legacy(book, env, term, typ, tail)
 
+# Module: src/back/js/ir/emit.bend:42
 @unsafe
 def jir_emit_arity(+params: List<&2,JIRParam>) -> U32:
   match params:
     case Nil{}: 0
     case Con{param, rest}: U32.inc(jir_emit_arity(rest))
 
+# Module: src/back/js/ir/emit.bend:48
 @unsafe
 def jir_emit_params(+params: List<&2,JIRParam>) -> String:
   match params:
     case Nil{}: ""
     case Con{param, rest}: j_local(jir_param_id(param)) ++ "," ++ jir_emit_params(rest)
 
+# Module: src/back/js/ir/emit.bend:54
 @unsafe
 def jir_emit_values(+book: List<&2,KDef>, +values: List<&2,JIRExpr>) -> String:
   match values:
     case Nil{}: ""
     case Con{value, rest}: jir_emit(book, value) ++ "," ++ jir_emit_values(book, rest)
 
+# Module: src/back/js/ir/emit.bend:60
 @unsafe
 def jir_emit_thunks(+book: List<&2,KDef>, +values: List<&2,JIRExpr>) -> String:
   match values:
@@ -64,6 +71,8 @@ def jir_emit_thunks(+book: List<&2,KDef>, +values: List<&2,JIRExpr>) -> String:
 
 # Preserve the historical output spelling while exposing a uniform IR list:
 # a one-step application has no trailing comma; a grouped prefix has one.
+
+# Module: src/back/js/ir/emit.bend:68
 @unsafe
 def jir_emit_apply_args(+book: List<&2,KDef>, +args: List<&2,JIRExpr>) -> String:
   match args:
@@ -71,6 +80,7 @@ def jir_emit_apply_args(+book: List<&2,KDef>, +args: List<&2,JIRExpr>) -> String
     case Con{arg, Nil{}}: jir_emit(book, arg)
     case Con{arg, rest}: jir_emit_values(book, args)
 
+# Module: src/back/js/ir/emit.bend:75
 @unsafe
 def jir_emit_lambda_bindings(+params: List<&2,JIRParam>, +at: U32) -> String:
   match params:

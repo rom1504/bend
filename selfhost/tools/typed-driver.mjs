@@ -77,6 +77,12 @@ function bootstrapUpstream(upstream,expectedRevision) {
 }
 const bootstrapInput=(file,role)=>({role,file:path.resolve(file),canonicalPath:fs.realpathSync(file),sha256:hash(file)});
 export function captureBootstrapProvenance(upstream,{expectedRevision=bootstrapPin,tools=[driverPath,path.join(project,'tools/stage0-library.mjs'),...['assemble.mjs','compiler-abi.mjs','base-cache-graph.mjs','node-resource-args.mjs','native-build.mjs'].map(name=>path.join(path.dirname(driverPath),name))]}={}) {
+  // The maintained source recipe delegates assembly to this shared byte linker.
+  // Include it even when a development workflow provides an explicit tool list.
+  if(compilerTarget.kind==='bend-maintained-source-v1'){
+    const sourceTool=path.join(project,'tools/build/source.py');
+    if(!tools.some(file=>path.resolve(file)===sourceTool))tools=[...tools,sourceTool];
+  }
   upstream=path.resolve(upstream);
   const revision=bootstrapUpstream(upstream,expectedRevision);
   return {version:1,upstream:{file:upstream,canonicalPath:fs.realpathSync(upstream),revision,trackedSourcesClean:true},

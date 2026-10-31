@@ -1,53 +1,65 @@
-# Native arrays default to the uniform word ABI. A checked whole-program
-# certificate can select scalar slots; access helpers are shared by both paths.
+
+# Module: src/back/native/bridge.bend:505
+law nc_array_known:
+  for +k: String
+  Bool
+
+# Module: src/back/native/array.bend:3
 law nc_array:
   for +k: String
   for +ws: List<&2, String>
   for +n: U32
   NC_Code
 
+# Module: src/back/native/array.bend:9
 law nc_atomic:
   for +k: String
   U32
 
+# Module: src/back/native/array.bend:14
 @unsafe
 def nc_atomic(k):
-  nt_choose(U32, String.eq(k, "array_atomic_add"), u => 1, u =>
-  nt_choose(U32, String.eq(k, "array_atomic_min"), u => 2, u =>
-  nt_choose(U32, String.eq(k, "array_atomic_max"), u => 3, u =>
-  nt_choose(U32, String.eq(k, "array_atomic_and"), u => 4, u =>
-  nt_choose(U32, String.eq(k, "array_atomic_or"), u => 5, u =>
-  nt_choose(U32, String.eq(k, "array_atomic_xor"), u => 6, u =>
-  nt_choose(U32, String.eq(k, "array_atomic_exch"), u => 7, u =>
-  nt_choose(U32, String.eq(k, "array_atomic_cas"), u => 8, u =>
-  nt_choose(U32, String.eq(k, "array_atomic_fadd"), u => 9, u => 0)))))))))
+  nt_choose(U32, p88_string_eq(k, "array_atomic_add"), u => 1, u =>
+  nt_choose(U32, p88_string_eq(k, "array_atomic_min"), u => 2, u =>
+  nt_choose(U32, p88_string_eq(k, "array_atomic_max"), u => 3, u =>
+  nt_choose(U32, p88_string_eq(k, "array_atomic_and"), u => 4, u =>
+  nt_choose(U32, p88_string_eq(k, "array_atomic_or"), u => 5, u =>
+  nt_choose(U32, p88_string_eq(k, "array_atomic_xor"), u => 6, u =>
+  nt_choose(U32, p88_string_eq(k, "array_atomic_exch"), u => 7, u =>
+  nt_choose(U32, p88_string_eq(k, "array_atomic_cas"), u => 8, u =>
+  nt_choose(U32, p88_string_eq(k, "array_atomic_fadd"), u => 9, u => 0)))))))))
 
+# Module: src/back/native/array.bend:26
 @unsafe
 def nc_array_known(k):
-  U32.is_ne(nc_atomic(k), 0) || String.eq(k, "array_new") || String.eq(k, "array_get") || String.eq(k, "array_set") || String.eq(k, "array_swap") || String.eq(k, "array_size") || String.eq(k, "array_clone")
+  U32.is_ne(nc_atomic(k), 0) || p88_string_eq(k, "array_new") || p88_string_eq(k, "array_get") || p88_string_eq(k, "array_set") || p88_string_eq(k, "array_swap") || p88_string_eq(k, "array_size") || p88_string_eq(k, "array_clone")
 
+# Module: src/back/native/array.bend:30
 @unsafe
 def nc_array_pair(code: String, a: String, b: String, n: U32) -> N_Emitted:
   nc_array_prefix(code, ne_constructor("Tuple", [a, b], False{}, n, True{}))
 
+# Module: src/back/native/array.bend:34
 @unsafe
 def nc_array_prefix(prefix: String, emitted: N_Emitted) -> N_Emitted:
   match emitted:
     case N_Emitted{code, word, n}: N_Emitted{prefix ++ code, word, n}
 
+# Module: src/back/native/array.bend:39
 @unsafe
 def nc_array(k, ws, n):
   nc_ctor_result(nc_array_value(k, ws, n))
 
+# Module: src/back/native/array.bend:43
 @unsafe
 def nc_array_value(+k: String, +ws: List<&2, String>, +n: U32) -> N_Emitted:
   +a = nc_head(ws)
   +i = nc_head(nc_tail(ws))
   +v = nc_head(nc_tail(nc_tail(ws)))
-  nt_choose(N_Emitted, U32.is_ne(nc_atomic(k), 0), u => nc_array_pair("", a, "array_atomic(e, " ++ a ++ ", " ++ i ++ ", " ++ v ++ ", " ++ nt_choose(String, String.eq(k, "array_atomic_cas"), u => nc_head(nc_tail(nc_tail(nc_tail(ws)))), u => "0") ++ ", " ++ U32.show(nc_atomic(k)) ++ ")", n), u =>
-  nt_choose(N_Emitted, String.eq(k, "array_new"), u => N_Emitted{"Term init[1] = { " ++ i ++ " };\n", "blk_new(e, !NATIVE_SCALAR_ARRAYS, " ++ a ++ ", 0, 1, init)", n}, u =>
-  nt_choose(N_Emitted, String.eq(k, "array_size"), u => nc_array_pair("", a, "(1ull << blk_cls(" ++ a ++ "))", n), u =>
-  nt_choose(N_Emitted, String.eq(k, "array_clone"), u => nc_array_pair("", a, "blk_copy(e, " ++ a ++ ")", n), u =>
-  nt_choose(N_Emitted, String.eq(k, "array_get"), u => nc_array_pair("", a, "native_array_get(e, " ++ a ++ ", " ++ i ++ ")", n), u =>
-  nt_choose(N_Emitted, String.eq(k, "array_swap"), u => nc_array_pair("Term old = native_array_swap(e, " ++ a ++ ", " ++ i ++ ", " ++ v ++ ");\n", a, "old", n), u =>
+  nt_choose(N_Emitted, U32.is_ne(nc_atomic(k), 0), u => nc_array_pair("", a, "array_atomic(e, " ++ a ++ ", " ++ i ++ ", " ++ v ++ ", " ++ nt_choose(String, p88_string_eq(k, "array_atomic_cas"), u => nc_head(nc_tail(nc_tail(nc_tail(ws)))), u => "0") ++ ", " ++ U32.show(nc_atomic(k)) ++ ")", n), u =>
+  nt_choose(N_Emitted, p88_string_eq(k, "array_new"), u => N_Emitted{"Term init[1] = { " ++ i ++ " };\n", "blk_new(e, !NATIVE_SCALAR_ARRAYS, " ++ a ++ ", 0, 1, init)", n}, u =>
+  nt_choose(N_Emitted, p88_string_eq(k, "array_size"), u => nc_array_pair("", a, "(1ull << blk_cls(" ++ a ++ "))", n), u =>
+  nt_choose(N_Emitted, p88_string_eq(k, "array_clone"), u => nc_array_pair("", a, "blk_copy(e, " ++ a ++ ")", n), u =>
+  nt_choose(N_Emitted, p88_string_eq(k, "array_get"), u => nc_array_pair("", a, "native_array_get(e, " ++ a ++ ", " ++ i ++ ")", n), u =>
+  nt_choose(N_Emitted, p88_string_eq(k, "array_swap"), u => nc_array_pair("Term old = native_array_swap(e, " ++ a ++ ", " ++ i ++ ", " ++ v ++ ");\n", a, "old", n), u =>
     N_Emitted{"native_array_set(e, " ++ a ++ ", " ++ i ++ ", " ++ v ++ ");\n", a, n}))))))

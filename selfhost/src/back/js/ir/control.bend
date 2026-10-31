@@ -1,7 +1,5 @@
-# Structural control lowering after j_choice_call proves the original choice
-# definition and both literal thunks. This does not introduce a new recognizer.
-# The condition runs once; only the selected branch evaluates its Unit argument
-# and body. Branch Let nodes make that ordinary scope available to shared passes.
+
+# Module: src/back/js/ir/control.bend:6
 @unsafe
 def jir_lower_choice(+book: List<&2,KDef>, +env: List<&2,KTerm>, +spine: KTerm, +tail: Bool) -> JIRExpr:
   +args = ks(spine)
@@ -13,6 +11,7 @@ def jir_lower_choice(+book: List<&2,KDef>, +env: List<&2,KTerm>, +spine: KTerm, 
     jir_lower_choice_branch(book, env, j_strip(terms_at(args, 3)),
       wnf(book, kid(wnf(book, j_app_type(branchType, terms_at(args, 2))), 0)), tail)}
 
+# Module: src/back/js/ir/control.bend:17
 @unsafe
 def jir_lower_choice_branch(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: KTerm, +tail: Bool) -> JIRExpr:
   +erased = U32.is_eq(qt(ty), 0)

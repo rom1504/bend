@@ -1,29 +1,10 @@
-# Module header paths are token sequences, including slash and dot tokens.
 
-law f_import_path:
-  for +ts: FInput
-  for +start: FInput
-  for +path: String
-  for +book: List<&2,KDef>
-  for +imports: List<&2, KTerm>
-  for +header: FInput
-  FRawResult
-
-@unsafe
-def f_import_path(ts, start, path, book, imports, header):
-  f_choose(FRawResult, f_eq(f_tx(ts), "as"),
-    u => f_import_alias(ts, start, path, book, imports, header),
-    u => f_choose(FRawResult, f_eq(f_tx(ts), "\n") || f_eq(f_tx(ts), "<eof>"),
-      u => f_choose(FRawResult, f_eq(path, "Base"), u => f_tops(ts, book, Con{kt("Import", path, f_line(start), f_col(start), Nil{}), imports}, False{}, f_parse_scope_empty()),
-        u => f_result(book, f_import_header_error(f_choose(FInput, String.is_empty(path), u => header, u => start)), imports)),
-      u => f_choose(FRawResult, String.is_empty(path) || U32.is_eq(f_col(ts), U32.add(f_col(start), U32.from_nat(String.length(path)))),
-        u => f_import_path(f_tl(ts), start, path ++ f_import_token_text(ts), book, imports, header),
-        u => f_result(book, f_import_header_error(header), imports))))
-
+# Module: src/load/imports.bend:13
 @unsafe
 def f_import_header_error(+ts: FInput) -> KTerm:
   fpe_line(ts, "a module import requires as followed by an alias", "an import ('import Base', or 'import <path> as <Name>')")
 
+# Module: src/load/imports.bend:28
 @unsafe
 def f_import_alias_head(+name: String) -> String:
   match name:
@@ -34,18 +15,23 @@ def f_import_alias_head(+name: String) -> String:
 
 # Local imports use the pinned plain-segment grammar before path resolution.
 # Hub/package resolution is unchanged and remains outside this host's scope.
+
+# Module: src/load/imports.bend:38
 @unsafe
 def f_import_valid(+path: String) -> Bool:
   f_choose(Bool, Bool.not(String.starts_with(path, "./") || String.starts_with(path, "../") || String.starts_with(path, "/")) && (String.starts_with(path, "0x") || String.contains(path, "@")), u => True{}, u => f_import_local(f_strip_bend(f_choose(String, String.starts_with(path, "./"), u => f_drop_chars(path, 2), u => path))))
 
+# Module: src/load/imports.bend:42
 @unsafe
 def f_import_local(+path: String) -> Bool:
   f_choose(Bool, String.starts_with(path, "/"), u => f_import_segments(f_tail(path), True{}), u => f_import_parents(path))
 
+# Module: src/load/imports.bend:46
 @unsafe
 def f_import_parents(+path: String) -> Bool:
   f_choose(Bool, String.starts_with(path, "../"), u => f_import_parents(f_drop_chars(path, 3)), u => f_import_segments(path, True{}))
 
+# Module: src/load/imports.bend:50
 @unsafe
 def f_import_segments(+path: String, +head: Bool) -> Bool:
   match path:
@@ -55,6 +41,8 @@ def f_import_segments(+path: String, +head: Bool) -> Bool:
 
 # Import nodes carry the original path token's line and code-point column.
 # Convert this location to UTF-16 only when presenting an IO failure.
+
+# Module: src/load/imports.bend:59
 @unsafe
 def f_import_offset(+source: String, +line: U32, +column: U32, +offset: U32) -> U32:
   match source:
@@ -62,18 +50,22 @@ def f_import_offset(+source: String, +line: U32, +column: U32, +offset: U32) -> 
     case SCon{c, rest}:
       f_choose(U32, U32.is_gt(line, 1), u => f_import_offset(rest, f_choose(U32, Char.is_eq(c, '\n'), u => U32.sub(line, 1), u => line), column, U32.add(offset, dg_units(c))), u => f_choose(U32, U32.is_eq(column, 0), u => offset, u => f_import_offset(rest, line, U32.sub(column, 1), U32.add(offset, dg_units(c)))))
 
+# Module: src/load/imports.bend:66
 @unsafe
 def f_import_failure(+source: String, +im: KTerm, +path: String, +cycle: Bool) -> String:
   +offset = f_import_offset(source, ix(im), qt(im), 0)
   "Error:\n- message  : " ++ f_choose(String, cycle, u => "an import cycle through ", u => "no such file: ") ++ path ++ "\nLocation:" ++ dg_snippet(DSpan{source, offset, offset})
 
 # These spellings are the explicit normalized symbol variants of f_lex_symbol.
+
+# Module: src/load/imports.bend:72
 @unsafe
 def f_import_token_text(+ts: FInput) -> String:
   f_choose(String, f_eq(f_tx(ts), "+bind"), u => "+",
     u => f_choose(String, f_eq(f_tx(ts), ">op"), u => ">",
       u => f_choose(String, f_eq(f_tx(ts), ">>op"), u => ">>", u => f_tx(ts))))
 
+# Module: src/load/imports.bend:78
 @unsafe
 def f_import_raw(+error: KTerm) -> KTerm:
-  k_with_children(error, [kid(error, 0), kid(error, 1), kid(error, 2), atom("ParseRaw")])
+  k_with_children(error, [kid(error, 0), kid(error, 1), kid(error, 2), {KTerm{"ParseRaw", "", 0, 0, Nil{}, Nil{}, 0, 0} : KTerm}])

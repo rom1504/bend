@@ -1,13 +1,12 @@
-# Bounded local copy propagation. This pass neither consults the checked book
-# nor emits JavaScript. It preserves all evaluations and opaque nodes. Bindings
-# remain unless the entire body is exactly the single introduced local; opaque
-# Legacy and CallPlan source uses therefore never lose their binding scope.
+
+# Module: src/back/js/ir/simplify.bend:6
 @unsafe
 def jir_simplify_many(+terms: List<&2, JIRExpr>, +copies: List<&2, JIRCopy>) -> List<&2, JIRExpr>:
   match terms:
     case Nil{}: Nil{}
     case Con{term, rest}: Con{jir_simplify_with(term, copies), jir_simplify_many(rest, copies)}
 
+# Module: src/back/js/ir/simplify.bend:12
 @unsafe
 def jir_simplify_let(+params: List<&2, JIRParam>, +values: List<&2, JIRExpr>, +body: JIRExpr, +copies: List<&2, JIRCopy>) -> JIRExpr:
   +rewritten = jir_simplify_many(values, copies)
@@ -18,6 +17,8 @@ def jir_simplify_let(+params: List<&2, JIRParam>, +values: List<&2, JIRExpr>, +b
 # Reuse the RHS node unchanged: in particular a non-tail application stays
 # demanded, and an eager constructor never becomes a deferred tail constructor.
 # The RHS already has the outer scope, including when its ID shadows this Let.
+
+# Module: src/back/js/ir/simplify.bend:22
 @unsafe
 def jir_simplify_let_select(+params: List<&2, JIRParam>, +values: List<&2, JIRExpr>, +body: JIRExpr, +copies: List<&2, JIRCopy>) -> JIRExpr:
   match params:
@@ -32,11 +33,13 @@ def jir_simplify_let_select(+params: List<&2, JIRParam>, +values: List<&2, JIREx
         case other: jir_simplify_let_body(params, values, body, copies)
     case other: jir_simplify_let_body(params, values, body, copies)
 
+# Module: src/back/js/ir/simplify.bend:36
 @unsafe
 def jir_simplify_let_body(+params: List<&2, JIRParam>, +rewritten: List<&2, JIRExpr>, +body: JIRExpr, +copies: List<&2, JIRCopy>) -> JIRExpr:
   +inner = jir_copy_bind(params, rewritten, params, jir_copy_scope(copies, params), 64)
   JIRLet{params, rewritten, jir_simplify_with(body, inner)}
 
+# Module: src/back/js/ir/simplify.bend:41
 @unsafe
 def jir_simplify_with(+t: JIRExpr, +copies: List<&2, JIRCopy>) -> JIRExpr:
   match t:
@@ -60,6 +63,7 @@ def jir_simplify_with(+t: JIRExpr, +copies: List<&2, JIRCopy>) -> JIRExpr:
       JIRCallPlan{env, spine, jir_simplify_with(fallback, copies)}
     case other: t
 
+# Module: src/back/js/ir/simplify.bend:64
 @unsafe
 def jir_simplify(+t: JIRExpr) -> JIRExpr:
   jir_simplify_with(t, Nil{})

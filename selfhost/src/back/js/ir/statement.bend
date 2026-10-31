@@ -1,11 +1,5 @@
-# Statement emission is independent of source types and private proof plans.
-# A Let in return position needs lexical bindings, not an immediately invoked
-# function. Evaluate all RHSs before opening the block that binds source names:
-# putting temporary declarations beside those names would introduce a temporal
-# dead zone and break parallel shadowing. Each nested Let owns its temporary
-# scope; source binder names use x<id>, never the reserved $jir<index> names.
-# Const bindings preserve snapshots captured by escaping closures. Other nodes
-# retain the expression printer's demand, tail-message and public ABI behavior.
+
+# Module: src/back/js/ir/statement.bend:10
 @unsafe
 def jir_emit_return(+book: List<&2,KDef>, +node: JIRExpr) -> String:
   match node:
@@ -17,6 +11,7 @@ def jir_emit_return(+book: List<&2,KDef>, +node: JIRExpr) -> String:
         "}else{" ++ jir_emit_return(book, no) ++ "}"
     case other: "return " ++ jir_emit(book, other) ++ ";"
 
+# Module: src/back/js/ir/statement.bend:21
 @unsafe
 def jir_statement_values(+book: List<&2,KDef>, +values: List<&2,JIRExpr>, +at: U32) -> String:
   match values:
@@ -25,6 +20,7 @@ def jir_statement_values(+book: List<&2,KDef>, +values: List<&2,JIRExpr>, +at: U
       "const $jir" ++ U32.show(at) ++ "=" ++ jir_emit(book, value) ++ ";" ++
         jir_statement_values(book, rest, U32.inc(at))
 
+# Module: src/back/js/ir/statement.bend:29
 @unsafe
 def jir_statement_bindings(+params: List<&2,JIRParam>, +at: U32) -> String:
   match params:

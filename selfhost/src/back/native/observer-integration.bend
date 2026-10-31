@@ -1,35 +1,42 @@
-# Late checked observer routing; raw books cannot grant permission.
-# Existing ordinary/product workers finish retry and admission before this lane.
+
+# Module: src/back/native/observer-integration.bend:3
 type NO_Route is Data:
   NO_Route{+workers: List<&2, NF_Worker>, +ready: List<&2, String>, +entries: List<&2, KDef>}
 
+# Module: src/back/native/observer-integration.bend:7
 @unsafe
 def no_route_workers(route: NO_Route) -> List<&2, NF_Worker>:
   match route:
     case NO_Route{workers, ready, entries}: workers
 
+# Module: src/back/native/observer-integration.bend:12
 @unsafe
 def no_route_ready(route: NO_Route) -> List<&2, String>:
   match route:
     case NO_Route{workers, ready, entries}: ready
 
+# Module: src/back/native/observer-integration.bend:17
 @unsafe
 def no_route_entries(route: NO_Route) -> List<&2, KDef>:
   match route:
     case NO_Route{workers, ready, entries}: entries
 
 # Called inside the checked-permission branch, using the existing live/bang lists.
+
+# Module: src/back/native/observer-integration.bend:23
 @unsafe
 def no_candidate_names(+book: List<&2, KDef>, names: List<&2, String>, +bangs: List<&2, String>) -> List<&2, String>:
   match names:
     case Nil{}: Nil{}
     case Con{+name, +rest}:
       +d = lookup(book, name)
-      nt_choose(List<&2, String>, String.eq(dk(d), "Def") && Bool.not(nc_native_def(d) || nc_foreign(d) || nb_contains(bangs, name)),
+      nt_choose(List<&2, String>, p88_string_eq(dk(d), "Def") && Bool.not(nc_native_def(d) || nc_foreign(d) || nb_contains(bangs, name)),
         u => Con{name, no_candidate_names(book, rest, bangs)}, u => no_candidate_names(book, rest, bangs))
 
 # Only public direct entries can be selected. Continuations and bang entries
 # remain untouched; index once rather than rescanning segments per candidate.
+
+# Module: src/back/native/observer-integration.bend:34
 @unsafe
 def no_entry_defs(segments: List<&2, N_Segment>) -> List<&2, KDef>:
   no_entry_defs_rev(segments, Nil{})
@@ -41,18 +48,21 @@ def no_entry_defs_rev(segments: List<&2, N_Segment>, +entries: List<&2, KDef>) -
     case Con{N_Segment{+name, params, result, +frame, body, refs, host, spin, fork, +bang}, +rest}:
       +arity = nt_count(N_Param, params)
       nt_choose(List<&2, KDef>, no_direct_frame(frame) && Bool.not(bang) && U32.is_ge(arity, 1) && U32.is_le(arity, 4),
-        u => no_entry_defs_rev(rest, Con{KDef{name, "NOEligibleEntry", arity, 0, atom("Absent"), atom("Absent"), Nil{}, False{}, False{}}, entries}), u => no_entry_defs_rev(rest, entries))
+        u => no_entry_defs_rev(rest, Con{KDef{name, "NOEligibleEntry", arity, 0, {KTerm{"Absent", "", 0, 0, Nil{}, Nil{}, 0, 0} : KTerm}, {KTerm{"Absent", "", 0, 0, Nil{}, Nil{}, 0, 0} : KTerm}, Nil{}, False{}, False{}}, entries}), u => no_entry_defs_rev(rest, entries))
 
+# Module: src/back/native/observer-integration.bend:43
 @unsafe
 def no_worker_taken(+name: String, workers: List<&2, NF_Worker>) -> Bool:
   match workers:
     case Nil{}: False{}
-    case Con{NF_Worker{current, params, code, deps, shape}, rest}: String.eq(name, current) || no_worker_taken(name, rest)
+    case Con{NF_Worker{current, params, code, deps, shape}, rest}: p88_string_eq(name, current) || no_worker_taken(name, rest)
 
+# Module: src/back/native/observer-integration.bend:49
 @unsafe
 def no_private_free(+book: List<&2, KDef>, +workers: List<&2, NF_Worker>, +name: String) -> Bool:
-  String.eq(dk(lookup(book, name)), "Absent") && Bool.not(no_worker_taken(name, workers))
+  p88_string_eq(dk(lookup(book, name)), "Absent") && Bool.not(no_worker_taken(name, workers))
 
+# Module: src/back/native/observer-integration.bend:53
 @unsafe
 def no_route_pair(+book: List<&2, KDef>, +owner: String, +arity: U32, +pair: List<&2, NF_Worker>, +old: NO_Route, +scalar: Bool, +roots: List<&2, U32>, +types: List<&2, KTerm>) -> NO_Route:
   +ready = nf_admit(book, pair, no_route_ready(old), 2)
@@ -60,33 +70,38 @@ def no_route_pair(+book: List<&2, KDef>, +owner: String, +arity: U32, +pair: Lis
     u => NO_Route{List.append(&2, NF_Worker, pair, nt_choose(List<&2, NF_Worker>, scalar, v => no_scalar_redirect(no_route_workers(old), owner, roots), v => no_route_workers(old))), ready, Con{KDef{nd_name(owner), nt_choose(String, scalar, v => "NOScalarObserver", v => "NOObserverEntry"), arity, 0, kt("NORootTypes", "", 0, 0, types), kt("NOOwner", owner, 0, 0, Nil{}), Nil{}, False{}, False{}}, no_route_entries(old)}},
     u => old)
 
+# Module: src/back/native/observer-integration.bend:60
 @unsafe
 def no_route_plan(+book: List<&2, KDef>, +entry: KDef, +old: NO_Route, +plan: NO_Plan) -> NO_Route:
   +schema = no_plan_schema(plan)
   +analysis = no_plan_analysis(plan)
   +owner = no_plan_owner(plan)
   +params = no_plan_params(no_schema_params(schema))
-  +scalar = String.eq(tg(no_schema_wrapper(schema)), "Var")
-  nt_choose(NO_Route, (Bool.not(scalar) || nb_contains(no_route_ready(old), owner)) && String.eq(no_plan_error(plan), "") && String.eq(no_schema_error(schema), "") && String.eq(noa_error(analysis), "") && U32.is_eq(nt_count(NC_Binding, params), da(entry)),
+  +scalar = p98_tag_eq(no_schema_wrapper(schema), "Var")
+  nt_choose(NO_Route, (Bool.not(scalar) || nb_contains(no_route_ready(old), owner)) && p88_string_eq(no_plan_error(plan), "") && p88_string_eq(no_schema_error(schema), "") && p88_string_eq(noa_error(analysis), "") && U32.is_eq(nt_count(NC_Binding, params), da(entry)),
     u => nt_choose(NO_Route, no_private_free(book, no_route_workers(old), no_worker_name(owner)) && no_private_free(book, no_route_workers(old), no_adapter_name(owner)),
       v => no_route_pair(book, owner, da(entry), [no_worker(owner, params, no_schema_specs_layouts(no_schema_specs(schema)), noa_body(analysis)), no_adapter(book, owner, params, no_schema_roots(schema), no_schema_result(schema), no_schema_wrapper(schema), noa_fresh(analysis))], old, scalar, no_schema_roots(schema), no_root_types(no_schema_params(schema), no_schema_roots(schema), 0)), v => old), u => old)
 
+# Module: src/back/native/observer-integration.bend:71
 @unsafe
 def no_route_one(+book: List<&2, KDef>, +name: String, +entry: KDef, +old: NO_Route) -> NO_Route:
-  nt_choose(NO_Route, String.eq(dk(entry), "NOEligibleEntry"),
+  nt_choose(NO_Route, p88_string_eq(dk(entry), "NOEligibleEntry"),
     u => no_route_schema(book, name, entry, old, no_schema(book, lookup(book, name), 0)), u => old)
 
+# Module: src/back/native/observer-integration.bend:76
 @unsafe
 def no_route_names(+book: List<&2, KDef>, names: List<&2, String>, +index: List<&2, KDef>, +old: NO_Route) -> NO_Route:
   match names:
     case Nil{}: old
     case Con{+name, rest}: no_route_names(book, rest, index, no_route_one(book, name, lookup(index, nd_name(name)), old))
 
+# Module: src/back/native/observer-integration.bend:82
 @unsafe
 def no_route(+book: List<&2, KDef>, +segments: List<&2, N_Segment>, +names: List<&2, String>, +workers: List<&2, NF_Worker>, +ready: List<&2, String>, +permission: Bool) -> NO_Route:
   +old : NO_Route = NO_Route{workers, ready, Nil{}}
   nt_choose(NO_Route, permission, u => no_route_names(book, names, book_cached(no_entry_defs(segments), 0), old), u => old)
 
+# Module: src/back/native/observer-integration.bend:87
 @unsafe
 def no_wrap_registered(segments: List<&2, N_Segment>, +index: List<&2, KDef>, +ready: List<&2, String>) -> List<&2, N_Segment>:
   no_wrap_registered_rev(segments, index, ready, Nil{})
@@ -99,14 +114,17 @@ def no_wrap_registered_rev(segments: List<&2, N_Segment>, +index: List<&2, KDef>
       match segment:
         case N_Segment{name, params, result, frame, body, refs, host, spin, fork, bang}:
           +d = lookup(index, name)
-          no_wrap_registered_rev(rest, index, ready, Con{nt_choose(N_Segment, String.eq(dk(d), "NOObserverEntry"), u => no_wrap_adapter(nm(dv(d)), da(d), ready, segment), u => segment), wrapped})
+          no_wrap_registered_rev(rest, index, ready, Con{nt_choose(N_Segment, p88_string_eq(dk(d), "NOObserverEntry"), u => no_wrap_adapter(nm(dv(d)), da(d), ready, segment), u => segment), wrapped})
 
+# Module: src/back/native/observer-integration.bend:97
 @unsafe
 def no_wrap_routes(+segments: List<&2, N_Segment>, +entries: List<&2, KDef>, +ready: List<&2, String>) -> List<&2, N_Segment>:
   nt_choose(List<&2, N_Segment>, List.is_empty(&2, KDef, entries), u => segments, u => no_wrap_registered(segments, book_cached(entries, 0), ready))
 
 # Scalar observers borrow only shared roots. Keep the existing owned worker
 # for unique inputs, including its tail loop, ownership and error checks.
+
+# Module: src/back/native/observer-integration.bend:103
 @unsafe
 def no_shared_roots(params: List<&2, N_Param>, +roots: List<&2, U32>, +i: U32) -> String:
   match params:
@@ -114,14 +132,16 @@ def no_shared_roots(params: List<&2, N_Param>, +roots: List<&2, U32>, +i: U32) -
     case Con{N_Param{+word, kind}, rest}:
       nt_choose(String, no_root_index(roots, i), u => "(term_rfc(" ++ word ++ ") && (rfc_view(e, term_loc(" ++ word ++ ")) & RFC_CNT) > 1) || ", u => "") ++ no_shared_roots(rest, roots, U32.inc(i))
 
+# Module: src/back/native/observer-integration.bend:110
 @unsafe
 def no_scalar_redirect(workers: List<&2, NF_Worker>, +owner: String, +roots: List<&2, U32>) -> List<&2, NF_Worker>:
   match workers:
     case Nil{}: Nil{}
     case Con{NF_Worker{+name, +params, +code, +deps, +shape}, rest}:
       +redirect = "if (" ++ no_shared_roots(params, roots, 0) ++ ") { return " ++ nf_name(no_adapter_name(owner)) ++ "(e, seq, nf_out" ++ nf_arg_c(nf_segment_args(params)) ++ "); }\n"
-      Con{NF_Worker{name, params, nt_choose(NC_Code, String.eq(name, owner), u => nc_prepend(redirect, code), u => code), nt_choose(List<&2, String>, String.eq(name, owner), u => Con{no_adapter_name(owner), deps}, u => deps), shape}, no_scalar_redirect(rest, owner, roots)}
+      Con{NF_Worker{name, params, nt_choose(NC_Code, p88_string_eq(name, owner), u => nc_prepend(redirect, code), u => code), nt_choose(List<&2, String>, p88_string_eq(name, owner), u => Con{no_adapter_name(owner), deps}, u => deps), shape}, no_scalar_redirect(rest, owner, roots)}
 
+# Module: src/back/native/observer-integration.bend:118
 @unsafe
 def no_root_types(params: List<&2, KTerm>, +roots: List<&2, U32>, +i: U32) -> List<&2, KTerm>:
   match params:
@@ -129,7 +149,9 @@ def no_root_types(params: List<&2, KTerm>, +roots: List<&2, U32>, +i: U32) -> Li
     case Con{p, +rest}: nt_choose(List<&2, KTerm>, no_root_index(roots, i), u => Con{ref(nm(p)), no_root_types(rest, roots, U32.inc(i))}, u => no_root_types(rest, roots, U32.inc(i)))
 
 # Scalar-only routes require an ordinary fallback before symbolic evaluation.
+
+# Module: src/back/native/observer-integration.bend:125
 @unsafe
 def no_route_schema(+book: List<&2, KDef>, +name: String, +entry: KDef, +old: NO_Route, +schema: NO_Schema) -> NO_Route:
-  nt_choose(NO_Route, String.eq(no_schema_error(schema), "") && (Bool.not(String.eq(tg(no_schema_wrapper(schema)), "Var")) || nb_contains(no_route_ready(old), name)),
+  nt_choose(NO_Route, p88_string_eq(no_schema_error(schema), "") && (Bool.not(p98_tag_eq(no_schema_wrapper(schema), "Var")) || nb_contains(no_route_ready(old), name)),
     u => no_route_plan(book, entry, old, no_plan_schema_ready(book, name, schema)), u => old)

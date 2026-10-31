@@ -1,5 +1,10 @@
 # Cold native compiler development
 
+The [repository consolidation plan](../../design/repository-consolidation/README.md)
+proposes one maintained JS/C/QBE compiler and shared research tools, with staged
+identity, correctness and performance gates. It is a plan, not a new compiler
+selection. Cold source-to-executable speed remains the next optimization objective.
+
 Before a large campaign, consult the
 [build-retention policy](build-retention.md) and its
 [current disk audit](../../research/build-storage/2026-10-28-review.md).

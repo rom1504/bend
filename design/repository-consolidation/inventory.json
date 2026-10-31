@@ -1,0 +1,52 @@
+{
+  "kind": "repository-consolidation-planning-inventory",
+  "date": "2026-10-31",
+  "head": "a5f7a6a5352e9d94072dfb4df5795f0d4403674a",
+  "method": "Enumerate git ls-files -z selfhost design implementation experiments research docs. Bucket phase performance code by listed suffixes, then selfhost/src, other selfhost, or top-level directory. Sum current stat logical sizes.",
+  "phaseToolSuffixes": [
+    ".py",
+    ".mjs",
+    ".js",
+    ".bend",
+    ".c",
+    ".ts",
+    ".sh"
+  ],
+  "scope": "Tracked paths only. Logical bytes, not allocated blocks or inode-deduplicated storage. Source-like phase files include distinct tests/experiments, not established duplicate implementations. Untracked/user work excluded and must be protected separately.",
+  "buckets": {
+    "design": {
+      "files": 583,
+      "logicalBytes": 3221031
+    },
+    "docs": {
+      "files": 64,
+      "logicalBytes": 702677
+    },
+    "experiments": {
+      "files": 643,
+      "logicalBytes": 2691473
+    },
+    "implementation": {
+      "files": 53267,
+      "logicalBytes": 3179028972
+    },
+    "maintained src": {
+      "files": 270,
+      "logicalBytes": 2255936
+    },
+    "other selfhost": {
+      "files": 20231,
+      "logicalBytes": 3755689379
+    },
+    "phase-tool code": {
+      "files": 8726,
+      "logicalBytes": 57205076
+    },
+    "research": {
+      "files": 218,
+      "logicalBytes": 4467696
+    }
+  },
+  "missingTrackedPaths": [],
+  "targetsExecuted": false
+}

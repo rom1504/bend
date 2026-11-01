@@ -80,7 +80,7 @@ installation/release parity, or verification of the Lean development.
 
 ## Reproduce and extend
 
-Run \`node tools/conformance/run.mjs\` with \`BEND_UPSTREAM\` pointing to the
+Run \`node tools/conformance/run.mjs --adapter tools/conformance/adapters/typed.mjs\` with \`BEND_UPSTREAM\` pointing to the
 pinned checkout. It intentionally exits nonzero for this incomplete baseline.
 See \`tools/conformance/README.md\` for adapter contracts, separate frontend/core/
 backend adapters, timeouts, hardware gating and selected development runs.

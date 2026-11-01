@@ -1,0 +1,9 @@
+{
+  "kind": "bend-native-public-cli-oracles",
+  "version": 1,
+  "help": "Usage: bend INPUT.bend -o OUTPUT.c [--live]\n\nCompile one Base-importing Bend source to C. Existing outputs are refused.\nOptions: -o, --output PATH; --live (prepare Base without its cache);\n         --help; --version; -- (remaining arguments are input paths).\nSupported effects: IO.args/print/print_err/now and File.open/read/size/write/close.\nCompiler execution uses one CPU worker. Build emitted C separately.\n",
+  "versionPrefix": "bend-native / shared-source ",
+  "ordinaryStdout": "42\n",
+  "typeRefusal": "check: main: constructor does not belong to goal or field count differs\n",
+  "origin": "Literal complete public-help/type/stdout contracts retained independently of the candidate. Version suffix is the canonical source SHA prefix, not the candidate profile versionText."
+}

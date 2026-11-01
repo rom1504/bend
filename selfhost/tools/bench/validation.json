@@ -1,0 +1,99 @@
+{
+  "schema": "bend-bench-consolidation-validation-v1",
+  "targetsRun": false,
+  "productionBenchmarksRun": false,
+  "offlinePythonControls": {
+    "passed": 13,
+    "failed": 0,
+    "command": [
+      "python3",
+      "-B",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "selfhost/tools/bench",
+      "-p",
+      "test_*.py"
+    ]
+  },
+  "catalogs": {
+    "original45": 45,
+    "native45": 45,
+    "nativeTimingEligible": 44,
+    "originalSources": 23,
+    "historical15": 15,
+    "allFixtureAndOraclePinsPass": true
+  },
+  "recipeFreeze": {
+    "c": "pass",
+    "qbe": "pass",
+    "compiler": "pass",
+    "targetsRun": false
+  },
+  "jsStaticFixtureControls": {
+    "status": "pass",
+    "node": "/home/ai/.nvm/versions/node/v24.18.0/bin/node"
+  },
+  "jsExecutionAndProfileFixtureControls": {
+    "status": "pass",
+    "node": "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+    "executionCases": 9,
+    "retainedReceipt": true,
+    "profileControls": "Existing CPU/allocation synthetic worker suite passed",
+    "initialFailure": {
+      "status": "blocked-by-sandbox",
+      "reason": "spawnSync Node EPERM; retained as the initial attempt, then rerun with approved subprocess permission."
+    },
+    "scope": "Synthetic JavaScript modules only; no Bend compiler/program benchmark."
+  },
+  "pending": [
+    "Root real prepared-JS benchmark smoke",
+    "Root real C benchmark smoke",
+    "Root real QBE benchmark smoke",
+    "Root fresh native N1/N2 compiler-request smoke",
+    "Independent review of new orchestration",
+    "Full clean-worktree tool integration",
+    "Root current-assets acquisition (upstream C/N2 QBE) and emitted manifest smoke",
+    "Root hosted JS library acquisition smoke",
+    "Root native-C telemetry cold-request replay smoke"
+  ],
+  "sourceInputs": {
+    "bench.py": {
+      "bytes": 26039,
+      "sha256": "08a1fa199185f5a9cb4a623450313bd10b27103e369d789dcaf42bfb335a4e12"
+    },
+    "diagnostics.py": {
+      "bytes": 7460,
+      "sha256": "a9c182b65b7f0ec2f2bf8ff6bf23580b145abaa552660d72ecd2fe25004b08dc"
+    },
+    "inspect.py": {
+      "bytes": 2906,
+      "sha256": "ba0158ba702808b9888a798f69c4edf92959dd6358bd8f31e8ca7857267f3489"
+    },
+    "test_bench.py": {
+      "bytes": 5174,
+      "sha256": "7e22e68c46305bdcb63192580c6540945ff076393bd674a794bb9464d1aadf4a"
+    },
+    "acquire.py": {
+      "bytes": 17789,
+      "sha256": "ad6c0a29b8017454bcae29b7dfe979ccf9725c51f4e709546507a37f62635a0d"
+    },
+    "test_acquire.py": {
+      "bytes": 3447,
+      "sha256": "15a1ec004a50afcd35a828fc0fe8cc61b4a07ab4f916e9e48901a1165fb0a8a9"
+    },
+    "upstream.mjs": {
+      "bytes": 2085,
+      "sha256": "8e91d416fca72242c0d95d06d4d23324516f40db3a7629f6eeb72a5975aead55"
+    }
+  },
+  "acquisitionPlans": {
+    "currentAssetsNative": "pass",
+    "currentAssetsCompilerQbe": "pass",
+    "targetsRun": false,
+    "case": "mandelbrot",
+    "nodeSyntax": "pass",
+    "scope": "Authenticated plans and protocol fixture controls only; root live acquisition gates remain pending."
+  }
+}

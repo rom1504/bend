@@ -1,0 +1,70 @@
+{
+  "kind": "programs",
+  "cwd": "/home/ai/bend2/build/publish/bend",
+  "catalog": "../catalogs/native45/catalog.json",
+  "reference": "upstream",
+  "scope": "Tool migration smoke only: explicit retained historical compiler products. Not a new compiler version comparison.",
+  "roles": {
+    "upstream": {
+      "host": "typescript-bun",
+      "stage": "upstream",
+      "target": "c",
+      "preparation": "prepared-artifact",
+      "policy": "ordinary",
+      "status": "historical-reference",
+      "inputs": [
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/broad01/report.json",
+          "sha256": "8e24a1539c5723923bbb52e7ffc4a087bbca8a8b4d0d452cd65a5fe8dc0d2277",
+          "bytes": 1191564
+        }
+      ]
+    },
+    "candidate": {
+      "host": "native",
+      "stage": "B2",
+      "target": "c",
+      "preparation": "prepared-artifact",
+      "policy": "ordinary",
+      "status": "historical-qualified-product",
+      "inputs": [
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/broad01/report.json",
+          "sha256": "8e24a1539c5723923bbb52e7ffc4a087bbca8a8b4d0d452cd65a5fe8dc0d2277",
+          "bytes": 1191564
+        }
+      ]
+    }
+  },
+  "cases": [
+    {
+      "id": "mandelbrot",
+      "products": {
+        "upstream": {
+          "artifact": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/broad01/mandelbrot/upstream.program",
+            "sha256": "3ab38f8b020bc620d1fad0fa711204fbc4be4e0ac6d99c34df03aa989aa450a7",
+            "bytes": 65520
+          },
+          "generatedSource": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/broad01/mandelbrot/upstream.1.c",
+            "sha256": "3284630bdba8d4185bb4d280ac76b52aba0646000a826b1e368681f8bc6a55a4",
+            "bytes": 154049
+          }
+        },
+        "candidate": {
+          "artifact": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/broad01/mandelbrot/own.program",
+            "sha256": "a30eb174eecd452edcc85bbf78dafb6eccbb75e3472d85af27892d898b60bbc4",
+            "bytes": 110456
+          },
+          "generatedSource": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/broad01/mandelbrot/b2.1.c",
+            "sha256": "810532950fd6d10ef49506f547b8b6a0a3a003c0be69e1ab7438c69e35120ff8",
+            "bytes": 446984
+          }
+        }
+      }
+    }
+  ]
+}

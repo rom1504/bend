@@ -19,7 +19,7 @@ import time
 
 sys.dont_write_bytecode = True
 ROOT = Path(__file__).resolve().parents[3]
-SUPPORT = ROOT/'selfhost/tools/performance/programs/support.py'
+SUPPORT = ROOT/'selfhost/tools/execution.py'
 spec = importlib.util.spec_from_file_location('retention_guard_support', SUPPORT)
 S = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(S)

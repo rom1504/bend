@@ -1,0 +1,88 @@
+{
+  "id": "bad08-historical-fid-collision",
+  "label": "Restore the actual historical C identifier collision",
+  "classification": "historical-semantic-regression",
+  "rationale": "This exact previous helper expression conflates source names after case folding and punctuation cleanup, so distinct function segments can share a C macro.",
+  "witness": {
+    "expression": "[nt_fid(\"foo\"), nt_fid(\"Foo\"), nt_fid(\"a.b\"), nt_fid(\"a_b\")]",
+    "baselineExpected": [
+      "FID_102_111_111_",
+      "FID_70_111_111_",
+      "FID_97_46_98_",
+      "FID_97_95_98_"
+    ],
+    "challengeExpected": [
+      "FID_FOO",
+      "FID_FOO",
+      "FID_A_B",
+      "FID_A_B"
+    ],
+    "returnType": "List<&2,String>",
+    "baselineValueBend": "[\"FID_102_111_111_\", \"FID_70_111_111_\", \"FID_97_46_98_\", \"FID_97_95_98_\"]",
+    "challengeValueBend": "[\"FID_FOO\", \"FID_FOO\", \"FID_A_B\", \"FID_A_B\"]",
+    "source": {
+      "path": "selfhost/tools/laws/phase97/challenge/bad08-historical-fid-collision.witness.bend",
+      "bytes": 550,
+      "sha256": "990cd50374f55d295de4e7f731a9adcf9ddec89d312788052fa1e46431ee8ce3"
+    }
+  },
+  "domain": "Finite well-typed helper data.",
+  "expectedDisposition": "reject-semantic-change",
+  "executed": false,
+  "schema": "phase97-independent-challenge-recipe-v1",
+  "kind": "historical",
+  "file": "selfhost/src/back/native/text.bend",
+  "function": "nt_fid",
+  "before": "  \"FID_\" ++ nc_ctor_codes(k)",
+  "after": "  \"FID_\" ++ String.to_upper(nt_clean(k))",
+  "expectedBehavior": "This exact previous helper expression conflates source names after case folding and punctuation cleanup, so distinct function segments can share a C macro.",
+  "edits": [
+    {
+      "source": {
+        "path": "selfhost/src/back/native/text.bend",
+        "bytes": 3305,
+        "sha256": "acc430c939a7dd6b404ba7a13f762019b717a62313ae3066234f78bb62df04c0"
+      },
+      "before": "  \"FID_\" ++ nc_ctor_codes(k)",
+      "after": "  \"FID_\" ++ String.to_upper(nt_clean(k))",
+      "expectedOccurrences": 1,
+      "line": 58,
+      "changedSourceSha256": "3b6fc7116d43e20dd50152c0ef24044fb1c855fd6cca8350385b59e0aab640d1",
+      "changedSourceBytes": 3317
+    }
+  ],
+  "historicalProvenance": {
+    "fixCommit": "5350b2fec8f6f8484c7a689e915b359d7ce86847",
+    "parentCommit": "dcae30ca0a3ea940dfc3edd1cb93c26db0f02696",
+    "title": "selfhost: reduce lookup overhead and fix emission name collisions",
+    "date": "2026-09-29",
+    "patch": {
+      "path": "selfhost/tools/laws/phase97/challenge/historical-fid-fix.patch",
+      "bytes": 1152,
+      "sha256": "1d969983df1fda1adf851af521ad1e125fcb468bb17f2388f0a445a5b6fc12d5"
+    },
+    "beforeTextBlob": "187331222f7b66bd23e058dd6423caaa7c6ffd34",
+    "afterTextBlob": "285559c4920c0e51a6d815e85240ca0b5f4c7e0b",
+    "beforeTablesBlob": "aa3ddd6f678d17ad63dff8f9b3ec058ad1a659cb",
+    "afterTablesBlob": "9829088608b67d44d2f76a11d3150898e13d7245",
+    "applicability": "Exact old nt_fid expression remains a one-line semantic regression on current helpers. Current MAIN_FID already delegates to nt_fid; no table edit is needed to reproduce collisions.",
+    "witnessProvenance": "Witness names are newly derived from helper behavior, not claimed to be the original historical test cases."
+  },
+  "provenance": {
+    "fixCommit": "5350b2fec8f6f8484c7a689e915b359d7ce86847",
+    "parentCommit": "dcae30ca0a3ea940dfc3edd1cb93c26db0f02696",
+    "title": "selfhost: reduce lookup overhead and fix emission name collisions",
+    "date": "2026-09-29",
+    "patch": {
+      "path": "selfhost/tools/laws/phase97/challenge/historical-fid-fix.patch",
+      "bytes": 1152,
+      "sha256": "1d969983df1fda1adf851af521ad1e125fcb468bb17f2388f0a445a5b6fc12d5"
+    },
+    "beforeTextBlob": "187331222f7b66bd23e058dd6423caaa7c6ffd34",
+    "afterTextBlob": "285559c4920c0e51a6d815e85240ca0b5f4c7e0b",
+    "beforeTablesBlob": "aa3ddd6f678d17ad63dff8f9b3ec058ad1a659cb",
+    "afterTablesBlob": "9829088608b67d44d2f76a11d3150898e13d7245",
+    "applicability": "Exact old nt_fid expression remains a one-line semantic regression on current helpers. Current MAIN_FID already delegates to nt_fid; no table edit is needed to reproduce collisions.",
+    "witnessProvenance": "Witness names are newly derived from helper behavior, not claimed to be the original historical test cases."
+  }
+}

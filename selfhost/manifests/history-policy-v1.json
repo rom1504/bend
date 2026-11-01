@@ -1,0 +1,53 @@
+{
+  "schema": "bend-history-policy-v1",
+  "baselineCommit": "2a4f9f8383cbc66fadaedd9b4b27f83b93a13511",
+  "scopePrefixes": [
+    "selfhost/tools/performance/",
+    "selfhost/tools/native/profiles/",
+    "selfhost/tools/native/releases/",
+    "selfhost/tools/laws/phase",
+    "implementation/",
+    "selfhost/dist/release-history/",
+    "selfhost/dist/phase1/",
+    "selfhost/dist/selfhost/",
+    "selfhost/tests/conformance/",
+    "selfhost/proofs/phase",
+    "selfhost/tools/private-compiler/",
+    "selfhost/src/compiler.bend",
+    "selfhost/compiler.bend",
+    "selfhost/tools/native/",
+    "selfhost/tools/conformance/adapters/prototype.mjs",
+    "selfhost/tools/conformance/bootstrap-variant.mjs",
+    "selfhost/tools/bootstrap.mjs",
+    "selfhost/tools/test.mjs",
+    "selfhost/tools/survey.mjs"
+  ],
+  "preserveWorkspacePrefixes": [
+    "selfhost/tools/performance/phase6/",
+    "selfhost/tools/performance/phase68/",
+    "implementation/phase6/",
+    "implementation/phase68/"
+  ],
+  "keepPaths": [
+    "selfhost/tools/performance/programs/support.py",
+    "selfhost/tools/performance/phase86/guard.py",
+    "selfhost/tools/performance/phase66/archive-prerequisites.json",
+    "selfhost/tools/conformance/bootstrap-variant.mjs",
+    "selfhost/tools/stage0.mjs",
+    "selfhost/tools/selfcheck.mjs",
+    "selfhost/tools/stage0-library.mjs"
+  ],
+  "pendingMigrationPaths": [],
+  "pendingMigrationPrefixes": [
+    "selfhost/tools/native/"
+  ],
+  "note": "Inventory is a read-only retirement proposal. retire.py apply requires a root-reviewed plan hash. Preserve dirty working bytes and independent tests; current native public surface stays blocked until its replacement is qualified.",
+  "migrationEvidence": [
+    "selfhost/tools/bench/migration-map.json",
+    "selfhost/tools/profiler/controls/migration.json",
+    "selfhost/tools/laws/fixtures-migration.json",
+    "selfhost/tools/conformance/consolidation-lineage.json",
+    "selfhost/tools/build/README.md",
+    "selfhost/manifests/assets-native.json"
+  ]
+}

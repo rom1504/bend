@@ -12,278 +12,39 @@ That's Bend - and nothing else.
 
 ## Compiler written in Bend
 
-This fork ships the Bend2 compiler in [`selfhost/`](selfhost/README.md), targeting
-upstream **`0592662` (Bend 2.0.36)**. Ordinary compilation runs Bend algorithms
-without a TypeScript fallback.
+This fork maintains the Bend2 compiler in [`selfhost/src/`](selfhost/src), with
+one [source manifest](selfhost/src/compiler.json) and explicit JS, C and direct
+QBE interfaces. Compiler algorithms remain written in Bend. The pinned upstream
+language is `059266225b77c8ca256ac6b25ee5c21449bab151` (Bend2.0.36).
 
-Try the [standalone Bend applications](selfhost/apps/README.md): a source index,
-image renderer and dependency planner. Their [application measurement loop](selfhost/tools/performance/phase100/README.md)
-checks complete outputs and records build time, execution, memory and CPU scaling.
+Start with the [maintained workflow](docs/self_hosted/workflow.md). It covers
+source assembly, authenticated compiler assets, bootstrap generations and cold
+builds. Source profiles choose an entry/API; they do not silently select an
+installed release or qualify every host/target combination. Existing public
+entry points remain `node selfhost/cli.mjs FILE --run` and
+`selfhost/bend FILE -o OUTPUT.c`; their installed selections have not been
+promoted by the source/tool consolidation.
 
-Our [ambitious speed agenda](design/phase101/ambitious-native-agenda.md) starts
-with native text representation. Its [first experimental results](implementation/phase101/README.md)
-make complete rendering faster than upstream; other workload regressions still
-prevent global deployment.
+| Task | Maintained entry |
+| --- | --- |
+| Assemble, request, build and bootstrap | [`selfhost/tools/build/`](selfhost/tools/build/) and [workflow](docs/self_hosted/workflow.md) |
+| Compiler latency and JS/C/QBE program speed | [`selfhost/tools/bench/`](selfhost/tools/bench/README.md), with explicit host/stage/target and20/60/300/600-second budgets |
+| CPU, allocation, generated code and native stage analysis | [Profiling guide](docs/self_hosted/PROFILING.md), [`tools/profiler/`](selfhost/tools/profiler/README.md) and [benchmark diagnostics](selfhost/tools/bench/README.md#profiles-and-generated-code-inspection) |
+| Correctness and laws | [Conformance](selfhost/CONFORMANCE.md), [compiler law boundaries](docs/self_hosted/COMPILER_LAWS.md), and [maintained workflow](docs/self_hosted/workflow.md#correctness-and-proof-boundaries) |
+| Evidence retention and historical replay | [Retention policy](docs/self_hosted/build-retention.md) and [history tools](selfhost/tools/history/README.md) |
 
-**Corrected Phase102 candidate04 is the default native compiler.** It composes
-direct calls, constructor loops and owning observers on the existing data
-representation, with the corrected forced-inline policy. Both native stages,
-the public CLI and actual default request pass qualification. See the
-[promotion report](implementation/phase102/default-promotion.md) for the measured
-tradeoffs and the [native guide](docs/self_hosted/NATIVE_PHASE102.md) for usage,
-restoration and exact source replay. The [original campaign](implementation/phase102/README.md)
-preserves candidate03 and earlier measurements as history.
+The original program benchmark retains45 fixed input points from23 source
+programs. Native timing covers44 points plus an explicit zero-work correctness
+control. Compiler request time, complete source-to-executable time and execution
+speed of the generated program are different metrics; the tools preserve their
+separate clocks and independent outputs. Profiles and instrumented counts do
+not become clean timing results.
 
-The public native CLI is now [written in Bend](docs/self_hosted/NATIVE_CLI.md).
-From this repository root, run `selfhost/bend input.bend -o output.c` after the
-guide's package extraction step. It calls the compiler directly in the native
-executable; ordinary requests need no Python, Node, Bun or TypeScript host.
-The old `python3 -B selfhost/native.py ...` interface remains for supervised
-benchmarks and explicit candidate04 B1/B2 selection.
-
-The [recursive-improvement research plan](design/phase104/recursive-improvement.md)
-asks whether a faster compiler can accelerate further validated research.
-Its [initial baseline](implementation/phase104/README.md) audits bootstrap
-stability and measures both native stages; recursive acceleration remains a
-hypothesis, not an established result.
-
-The [fast native backend proposal](design/phase105/fast-native-backend.md)
-records how a shared native IR, a Cranelift development backend and later
-incremental compilation could shorten that loop while retaining C/Clang for
-optimized releases. The [native B1/B2 versus upstream protocol](docs/self_hosted/NATIVE_COMPILER_COMPARISON.md)
-defines comparable timings, preparation modes and a staged benchmark. The
-[completed native compilation comparison](implementation/phase105/README.md)
-measures current B1/B2 against upstream on six sources,45 closed points and the
-full compiler source. Prepared Base changes the result substantially; the report
-keeps both preparation modes and Clang costs explicit.
-
-The [native Bend → QBE experiment](docs/self_hosted/NATIVE_IR.md) now compiles
-an admitted scalar subset without Bun or Clang on ordinary requests. Its
-[Phase107 report](implementation/phase107/README.md) separates complete compilation
-latency, generated-program speed, object reuse and the remaining self-hosting boundary.
-
-The [full compiler QBE compatibility path](docs/self_hosted/QBE_COMPILER.md)
-reuses Bend’s mature semantic backend through cproc and a portable native
-trampoline. Its [Phase108 report](implementation/phase108/README.md) records
-full-image, output-equivalence and bootstrap gates separately from performance.
-
-The [direct ownership IR experiment](docs/self_hosted/OWNED_NATIVE_IR.md) now
-lowers real list/string compiler code to QBE while reusing production reference
-counting. Its [Phase110 report](implementation/phase110/README.md) covers ownership-preserving
-runtime IR, typed entry/call admission and law-guided policy experiments; the
-[Phase109 report](implementation/phase109/README.md) separates
-the qualified slice, interface optimizations and remaining full-language work.
-
-The [direct QBE compiler](docs/self_hosted/direct-qbe.md) builds the complete
-compiler through structured Bend IR, QBE and a cached runtime object, without
-per-program C generation or cproc. The [Phase118 report](implementation/phase118/README.md)
-records qualified N1/N2 self-reproduction and45-program correctness. Its separate
-runtime benchmark improves4.32→3.01× upstream; the three-source native build
-workflow reaches about1.02× upstream ready-executable time. See the report for
-compiler-cost and source-size tradeoffs. It remains experimental; the installed
-compiler is unchanged.
-
-The [native construction-elimination experiment](docs/self_hosted/native-fusion.md)
-reuses checked semantic patterns from the JS backend to remove private list
-pipelines and immediately applied closure chains before native lowering. Its
-[Phase121 report](implementation/phase121/README.md) separates local gains,
-the original45 comparison, compiler cost and native qualification limits.
-
-The [native predicate/address experiment](docs/self_hosted/native-predicates.md)
-retains comparison origins and exposes scaled array addresses to QBE. Its
-[Phase123 report](implementation/phase123/README.md) records the focused gain,
-broad qualification and remaining ownership/control-flow opportunities.
-
-The [local helper/resume experiment](docs/self_hosted/local-ready-resume.md)
-lets verified helpers compose with explicit recursive continuation tables while
-preserving ownership and bounded native stack use. See the
-[Phase124 report](implementation/phase124/README.md) for measured transfer,
-remaining slowdown, and the separate native-qualification boundary.
-
-The [owned-composition experiment](docs/self_hosted/owned-native-composition.md)
-reuses exclusive list prefixes and consumes verified facts in smaller runtime
-calls. The [Phase125 report](implementation/phase125/README.md) distinguishes
-work eliminated, broad performance, compiler cost and native self-hosting.
-
-The [representation-composition experiment](docs/self_hosted/representation-composition.md)
-keeps float values, verified product results and tail-recursive control flow
-across optimization boundaries. Its [Phase126 report](implementation/phase126/README.md)
-records the selected compiler, measured gains, rejected experiments and qualification.
-
-The [native Bend profiler](docs/self_hosted/PROFILING.md) separates clean timing,
-CPU samples, physical callers, active Bend dispatch and runtime event counts.
-It supports compiler requests and ordinary native programs with frozen output
-oracles; see the [Phase127 investigation](implementation/phase127/README.md).
-
-The [borrowed-query compiler work](docs/self_hosted/borrowed-native-queries.md)
-preserves ownership across read-only calls and reuses request preparation.
-See the [Phase128 report](implementation/phase128/README.md) for native compiler
-timings, generated-program results and qualification.
-The [preserved-query-boundary work](docs/self_hosted/preserved-query-boundaries.md)
-composes wider borrowed readers with real compiler queries; its
-[Phase137 report](implementation/phase137/README.md) separates kernel gains,
-complete cold-build cost, native qualification and generated-code preservation.
-The [prepared-Base transport experiment](docs/self_hosted/prepared-base-transport.md)
-removes repeated decimal decoding; the [Phase130 report](implementation/phase130/README.md)
-keeps proxy gains, complete request timings and native qualification separate.
-The [Zig-informed compilation research](research/phase133/README.md) examines
-fine-grained semantic reuse, compact identities and bounded IR lifetimes as the
-next route to faster cold builds and interactive edits.
-The [bounded-IR and incremental compilation plan](design/phase134/README.md)
-sets out the staged refactor, intermediate performance/correctness gates and
-time budget; it is a design, not an implemented incremental compiler.
-The [Phase134 execution report](implementation/phase134/README.md) records the
-[qualified streaming/verification-reuse checkpoint](implementation/phase134/final/README.md)
-(source `a0001924…`): 65.43% lower sampled full-emission RSS, while separate small
-request screens give N1 −1.83% and N2 +0.26% time versus their same-block parent.
-The noisy full-source observation is +4.76%. All 59 controls, both focused19
-gates, N2 ordinary45 and all 45 native wrapper byte comparisons pass. Installed
-selection is unchanged; the [QBE pipe](selfhost/tools/performance/phase134/pipe/README.md)
-and cross-edit unit/session experiments are separate from this qualification.
-The [native edit experiment](implementation/phase134/session/README.md) saves
-21.3% on the lexer edit and9.1% on its complete two-revision session versus
-resetting the cache; general incremental compiler rebuilding remains future work.
-
-The [Phase135 full compiler edit](implementation/phase135/README.md) now reuses
-56/66 compiler-announced machine groups, with independent cold/current machine
-equality and 18 compiler-output/six ordinary-program checks. Complete rebuild
-acceleration is not yet established: the late semantic cache does not win on
-this workload, and cached machine replay still trails monolithic construction.
-Stage timings place 62.7% of the edit before the existing cache, motivating
-earlier prepared-definition reuse. The qualified core and selection stay unchanged.
-
-The [Phase140 early-reuse experiment](implementation/phase140/README.md) measures
-real native compiler edits with parser/checker and prepared-owner reuse, keeping
-independent fresh-output checks. It remains experimental: cold overhead and the
-remaining whole-program work prevent the10× warm-build objective and promotion.
-
-The [Phase141 simplification](implementation/phase141/README.md) shares the
-ordinary/incremental parser and uses static Bend templates to replace duplicated
-comparator implementations. The experimental source drops from 64,408 to 63,580
-physical lines; its ordinary native route has passed self-reproduction and the
-frozen correctness gates. See the [usage guide](docs/self_hosted/compiler-simplification.md)
-for exact identities and the distinction between native qualification and the
-still-experimental incremental service.
-
-The [Phase142 investigation](implementation/phase142/README.md) tests further
-incremental reuse and profiles an actual native compiler edit. Indexed graph
-traversal lowers its complete rebuild estimate by8.2%, with identical output;
-the candidate remains experimental and the10× target remains open.
-
-The [Phase143 cold-build work](implementation/phase143/README.md) removes repeated
-checker-table and syntax traversals. On the same compiler source, the complete
-supervised cold build falls394→315s (20% less time), with identical QBE and machine
-objects. N1/N2 self-reproduction, both focused19 gates and the frozen45 programs
-pass. See the [cold native guide](docs/self_hosted/cold-native-development.md)
-for the explicitly qualified checkpoint, profiling tools and unchanged defaults.
-
-The [Phase144 profiler-led cold-build campaign](implementation/phase144/README.md)
-adds native stage attribution and optimization-outcome counters, then removes
-repeated parser and ownership scans. The final measured cold build takes247s
-versus a fresh320s baseline. See the report for qualification, runtime contract,
-program-performance checks and the still-unmet50s goal.
-
-The [Phase145 comparative investigation](implementation/phase145/README.md)
-separates same-source native/JS execution from upstream implementation costs.
-It identifies repeated verification and representation boundaries worth testing;
-the qualified compiler and its performance remain unchanged.
-
-The [Phase146 context-retention optimization](implementation/phase146/README.md)
-uses that finding to remove duplicate raw/static checking while still checking
-every transformed function. Matched full-source compiler time falls247.35→237.49s
-(4%; machine construction excluded), with identical QBE. Native reproduction,
-both focused suites and all45 ordinary programs pass. Use the explicit
-[qualified candidate](implementation/phase146/candidate.json); defaults stay unchanged.
-
-The [incremental native development guide](docs/self_hosted/incremental-native-development.md)
-links the measured QBE size, memory and object-reuse investigation, its Go-inspired
-architecture, and the remaining boundary before fast source-level edits.
-
-The [analysis and proof guide](docs/self_hosted/analysis-and-proof-boundaries.md)
-explains reusable usage facts, borrowed results, static values and the exact
-scope of the [Phase131 laws and optimizations](implementation/phase131/README.md).
-
-The [Bend capability audit](research/phase129/README.md) examines how the selected
-compiler uses proofs, types, ownership and parallelism. Its
-[QBE roadmap](research/phase129/qbe-opportunities.md) ranks the next opportunities
-using fresh compiler profiles and explicit gain/cost estimates.
-
-The [native IR research prototype](docs/self_hosted/NATIVE_IR_RESEARCH.md) now
-implements a small Bend IR with C and Cranelift consumers, checked folding laws,
-and a reproducible policy experiment. Its [report and diagrams](implementation/phase106/README.md)
-show roughly half the target cost for short build/check cycles, with important
-runtime tradeoffs. Full production backend replacement remains future work.
-
-For the underlying candidate04 algorithms, the repeated six-source
-B2 screen uses 27.6% less request time than Phase98; B1 is 2.6% slower. Separately,
-44 generated-program points use 6.3% less runtime than Phase98 and 4.3% more than
-upstream with equal-point weighting. These are finite, distinct measurements.
-
-**Phase98 was the preceding native default.** Its smaller retained-root
-comparison and scoped observer changes reduced full self-compilation from
-135.5 to **104.8 seconds for B1**, and from 150.5 to **141.0 seconds for B2**.
-Both stages passed 69 native conformance cases and the 45-program behavior checks;
-all 45 runtime-benchmark C products remained byte-identical. That native profile
-added 79 lines, and its actual-source law closures had 13 distinct accepted
-statements. See the [report](implementation/phase98/README.md) and
-[historical native guide](docs/self_hosted/NATIVE_PHASE98.md).
-
-[Phase99 optimization experiments](implementation/phase99/README.md) extend
-borrowed reads and eliminate branch closures. The [candidate guide](docs/self_hosted/NATIVE_PHASE99.md)
-explains the changes and fast probes; these experiments do not replace the installed release.
-
-**Historical Phase90 established the native chain and current JS-hosted B2.**
-Its native executable reproduces all **38,614,882 bytes of its own C exactly** in
-**164 seconds**; the previous native version timed out after 600 seconds without
-output. It is built from unpatched C emitted by our Bend compiler. The optimized
-Clang build takes 308 seconds with 3.89 GiB peak RSS after repairing a large-table
-LLVM scaling problem.
-
-The installed JS B2 is `284f6e9b…`, with a checked B1 parent, fresh own-source
-acceptance and exact B3 reproduction. Release verification and all 42 legacy /
-24 default installed and relocated checks pass. From `selfhost/`, use
-`node cli.mjs FILE --run`. Direct JavaScript remains the default output backend.
-
-The [historical native07 guide](docs/self_hosted/NATIVE_HOST.md) remains available.
-Its scope
-is one Base-importing source and nine audited effects. Eight live/cache controls,
-two invalid-input refusals, four generated-program executions and six public CLI
-controls pass. All 45 selected C preprocessing comparisons preserve program
-behavior. Full-language, GPU and parallel-native-host qualification remain open.
-The current canonical source inventory remains **34,231 physical Bend lines in
-134 modules**. The separately assembled current native profile has **39,372
-physical lines**, 582 above the historical Phase98 profile.
-
-See the [native-chain scoreboard](implementation/phase92/README.md) for the
-same-source native B1/B2 comparison and the [current JS-hosted five-metric scoreboard](implementation/phase91/README.md) and [metric definitions](docs/self_hosted/METRICS.md)
-for the refreshed B1/B2 measurements, program-output continuity and conformance scope.
-Historical [native generated-program benchmarks](implementation/phase93/README.md)
-cover the original 45 points: 44 measurable runtime ratios average **1.115×**
-upstream C with equal-point weighting; both backends optimize away the remaining
-zero-work control. Native B1/B2 emit identical C for all 45 batch programs.
-
-The [law-backed optimization guide](docs/self_hosted/law-backed-optimization.md)
-documents an independently checked helper proof connected to a native compiler
-candidate. Its local speedup did not improve overall compilation enough to
-promote; the [Phase94 report](implementation/phase94/README.md) records the
-proof boundary, measurements and reusable fast loop.
-The [Phase95 follow-up](implementation/phase95/README.md) attributes native
-cleanup to shared-string comparison, projections and discarded closures;
-an early-exit membership candidate remains unpromoted after a small timing difference.
-
-The [compiler law suite](docs/self_hosted/COMPILER_LAWS.md) adds 31 public laws
-independently checked by BendTT, 226 finite production contracts and deliberate
-bad-implementation controls. Its fast and audit commands constrain future
-optimization; see the [Phase96 report](implementation/phase96/README.md).
-The [Phase97 usefulness experiments](implementation/phase97/README.md) challenge
-that suite independently, close two finite-contract gaps, and prove a small
-ownership transformation while exposing its missing connection to native memory.
-
-Read the [Phase90 results and speed boundaries](implementation/phase90/README.md),
-[compiler guide](docs/BEND-IN-BEND.md),
-[conformance record](selfhost/CONFORMANCE.md),
-[architecture](selfhost/docs/ARCHITECTURE.md) and
-[experiment frontier](experiments/STEERING.md).
+Read the [current experiment frontier](experiments/STEERING.md) for qualified
+results and remaining gaps. Earlier findings remain in
+[`implementation/`](implementation/), [`research/`](research/) and the
+[authenticated history index](selfhost/tools/history/README.md); old phase
+scripts are not the current development interface.
 
 ## Bend runs FAST
 
@@ -551,4 +312,4 @@ can add it here.
 Thanks to [Ayush Somani](https://ayushsomani.me/) for reserving the
 `bend-lang` name for us.
 
-Native self-hosted compilation: [request architecture and validation](docs/self_hosted/NATIVE_COMPILATION.md) · [Phase76 experiments and measurements](implementation/phase76/README.md).
+Native self-hosted compilation: [maintained workflow](docs/self_hosted/workflow.md) · [compiler and program benchmarks](selfhost/tools/bench/README.md).

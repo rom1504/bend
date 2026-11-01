@@ -1,0 +1,37 @@
+{
+  "id": "bad05-equality-truncates-characters",
+  "kind": "bad",
+  "file": "selfhost/tools/performance/phase88/strings/helpers.bend",
+  "function": "p88_string_eq_go",
+  "before": "      p88_string_eq_go(t1, t2, Char.is_eq(h1, h2))",
+  "after": "      p88_string_eq_go(t1, t2, U32.is_eq(U32.and(Char.to_u32(h1), 255), U32.and(Char.to_u32(h2), 255)))",
+  "expectedBehavior": "A byte-width comparison shortcut aliases full-width Bend characters. U+0141 and U+0041 share their low byte but are distinct characters; no Unicode normalization premise is involved.",
+  "witness": {
+    "expression": "p88_string_eq(\"Ł\", \"A\")",
+    "returnType": "Bool",
+    "baselineValueBend": "False{}",
+    "challengeValueBend": "True{}",
+    "source": {
+      "path": "selfhost/tools/laws/phase98/challenge/bad05-equality-truncates-characters.witness.bend",
+      "bytes": 354,
+      "sha256": "2165e0f67b1ec167a672a654e00c03580e2d56ad8250a8d3e50699d295bef2e9"
+    }
+  },
+  "provenance": {
+    "classification": "synthetic-semantic-fault",
+    "selection": "Maintained/helper source reasoning before Phase98 law bodies, finite cases, or outcomes."
+  },
+  "schema": "phase98-independent-challenge-v1",
+  "source": {
+    "path": "selfhost/tools/performance/phase88/strings/helpers.bend",
+    "bytes": 1232,
+    "sha256": "a00e6f8d8a593f154cf1fe02981a6929355270a662e94a765c3db02528049e31"
+  },
+  "expectedOccurrences": 1,
+  "line": 10,
+  "changedSourceSha256": "31c3693b9190a2a4f3b07fc8e253832e80c0d10d458801a8436e901b00740f3f",
+  "changedSourceBytes": 1285,
+  "admission": "predicted well-typed; root must check",
+  "domain": "Finite typed helper values; pure extensional behavior only.",
+  "targetsRun": false
+}

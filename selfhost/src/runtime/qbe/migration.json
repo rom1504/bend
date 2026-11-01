@@ -1,0 +1,81 @@
+{
+  "schema": "bend-qbe-runtime-migration-v1",
+  "targetsRun": false,
+  "files": [
+    {
+      "origin": {
+        "file": "selfhost/build/phase144/serial-rfc01/runtime.c",
+        "bytes": 150560,
+        "sha256": "aa95d2c0426c05bcc4d34244dd8b22b79ebcaf6d30634569201961f60b57f333"
+      },
+      "current": {
+        "file": "selfhost/src/runtime/qbe/runtime.c",
+        "bytes": 150560,
+        "sha256": "aa95d2c0426c05bcc4d34244dd8b22b79ebcaf6d30634569201961f60b57f333"
+      },
+      "exact": true
+    },
+    {
+      "origin": {
+        "file": "selfhost/build/phase144/serial-rfc01/runtime.h",
+        "bytes": 4518,
+        "sha256": "9b19b8d6ae1c8f07759041201c2692c20d9612393819e2bbc597deba44679d12"
+      },
+      "current": {
+        "file": "selfhost/src/runtime/qbe/runtime.h",
+        "bytes": 4518,
+        "sha256": "9b19b8d6ae1c8f07759041201c2692c20d9612393819e2bbc597deba44679d12"
+      },
+      "exact": true
+    },
+    {
+      "origin": {
+        "file": "selfhost/build/phase144/serial-rfc01/primitives.h",
+        "bytes": 3067,
+        "sha256": "ecbdfe62b875fc20e5805840b83c3779ed8fb8fb1de83c543ba1ce1217165d20"
+      },
+      "current": {
+        "file": "selfhost/src/runtime/qbe/primitives.h",
+        "bytes": 3067,
+        "sha256": "ecbdfe62b875fc20e5805840b83c3779ed8fb8fb1de83c543ba1ce1217165d20"
+      },
+      "exact": true
+    }
+  ],
+  "provenance": [
+    {
+      "file": "selfhost/build/phase144/serial-rfc01/manifest.json",
+      "bytes": 4567,
+      "sha256": "1d0a879f30915d263c798e6ef99092ba499fd0f0487222f4c590e0275f9753b0"
+    },
+    {
+      "file": "selfhost/build/phase144/serial-rfc01/build.json",
+      "bytes": 5680,
+      "sha256": "5b320a225c0be552ff3c52e3a3b2a2c9eb4f27a70a0b854614c21637cb3c19ac"
+    }
+  ],
+  "qualifiedObject": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase144/serial-rfc01/serial-rfc.o",
+    "bytes": 119096,
+    "sha256": "2d07832382a11d7e993124ecc70452e4e1a3b7f753cf429343e1183cd8e493a3"
+  },
+  "compileFlags": [
+    "-O2",
+    "-std=gnu11",
+    "-ffp-contract=off",
+    "-DP144_SINGLE_MUTATOR_RFC=1"
+  ],
+  "atomicControlFlags": [
+    "-O2",
+    "-std=gnu11",
+    "-ffp-contract=off",
+    "-DP144_SINGLE_MUTATOR_RFC=0"
+  ],
+  "quotedHeaders": [
+    "runtime.h",
+    "primitives.h"
+  ],
+  "providerScope": "Provider code is embedded in runtime.c. Historical paths occur only in provenance comments; no effect implementation is read from those paths at build/run time.",
+  "policy": "Exactly one Bend heap mutator, --threads 1 --gpu off. Host IO workers do not mutate Bend heap. Serial RFC is not permission for multiworker/GPU/foreign embedding.",
+  "objectRebuilt": false
+}

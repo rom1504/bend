@@ -1,0 +1,37 @@
+{
+  "id": "good02-character-equality-by-codepoint",
+  "kind": "good",
+  "file": "selfhost/tools/performance/phase88/strings/helpers.bend",
+  "function": "p88_string_eq_go",
+  "before": "      p88_string_eq_go(t1, t2, Char.is_eq(h1, h2))",
+  "after": "      p88_string_eq_go(t1, t2, U32.is_eq(Char.to_u32(h1), Char.to_u32(h2)))",
+  "expectedBehavior": "Base defines Char.is_eq by comparing the exact U32 fields extracted by Char.to_u32. This keeps the entire character domain, unlike the low-byte fault.",
+  "witness": {
+    "expression": "[p88_string_eq(\"Ł\", \"A\"), p88_string_eq(\"Ł\", \"Ł\"), p88_string_eq(\"ax\", \"ay\")]",
+    "returnType": "List<&2, Bool>",
+    "baselineValueBend": "[False{}, True{}, False{}]",
+    "challengeValueBend": "[False{}, True{}, False{}]",
+    "source": {
+      "path": "selfhost/tools/laws/phase98/challenge/good02-character-equality-by-codepoint.witness.bend",
+      "bytes": 488,
+      "sha256": "ea9323bd441faa201fbe3e521e01bf44d9d7d4032fe9b0bfabb71e38c27e7a18"
+    }
+  },
+  "provenance": {
+    "classification": "equivalent-control",
+    "selection": "Maintained/helper source reasoning before Phase98 law bodies, finite cases, or outcomes."
+  },
+  "schema": "phase98-independent-challenge-v1",
+  "source": {
+    "path": "selfhost/tools/performance/phase88/strings/helpers.bend",
+    "bytes": 1232,
+    "sha256": "a00e6f8d8a593f154cf1fe02981a6929355270a662e94a765c3db02528049e31"
+  },
+  "expectedOccurrences": 1,
+  "line": 10,
+  "changedSourceSha256": "0226f0182de3f3078afa641ad0457279480236b5e630017cff65b7a3e4f8ca62",
+  "changedSourceBytes": 1257,
+  "admission": "predicted well-typed; root must check",
+  "domain": "Finite typed helper values; pure extensional behavior only.",
+  "targetsRun": false
+}

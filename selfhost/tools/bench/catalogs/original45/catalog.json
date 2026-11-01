@@ -1,0 +1,2051 @@
+{
+  "kind": "bend-program-catalog",
+  "schemaVersion": 1,
+  "upstreamCommit": "018751270e800bc222a93dad7f257083ee53a5f7",
+  "scope": "Sequential generated JavaScript; additive coverage45points, not full language/application coverage. Historical15plus14algorithm/input variants plus16points over8new families. Three new families/six points held out from optimization tuning.",
+  "status": "frozen",
+  "selection": {
+    "historicalCatalog": {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/programs/catalog.json",
+      "sha256": "32833e4c2372983361b2c9f34a0967cfe38ce0e1052ac9abaab41def3179cfde",
+      "bytes": 20417
+    },
+    "producer": {
+      "sha256": "8d645939ce6541f43fa542f04efacb5b2eb2c4ee1832f60d08bc0e5d6b1030af",
+      "bytes": 12286
+    },
+    "integerOracle": {
+      "sha256": "94c85f803475a1352465374e7c295dc1ff26f583d101e3fdc2e0ff58bcbb6a27",
+      "bytes": 6565
+    },
+    "historicalOracleChecks": {
+      "editdist": 2065873279,
+      "lexer": 1822208108,
+      "tree-bitonic": 971629740,
+      "symreg": 2490246820
+    },
+    "applicationProposal": {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase37/fixtures-new/points-v1.json",
+      "sha256": "131abf46a15f87e92b3d519667395468ee1c6ad7861dffa2c21ad37c29432fcd",
+      "bytes": 34111
+    },
+    "rayOracleReceipt": {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase37/ray-oracles01.json",
+      "sha256": "2cb84cc7621251d333de7a12a22f17d3683e8ec98aca9cd10442d4fdb935eaee",
+      "bytes": 4296
+    },
+    "heldoutPolicy": "BST,expression,record-aggregation families withheld from profiles/tuning until final candidate freeze."
+  },
+  "sets": {
+    "fast": [
+      "local-pair",
+      "local-fold",
+      "scalar-region-0",
+      "scalar-region-8192",
+      "complete-generic-row32"
+    ],
+    "core": [
+      "local-pair",
+      "local-fold",
+      "scalar-region-0",
+      "scalar-region-8192",
+      "complete-generic-row32",
+      "mandelbrot",
+      "editdist",
+      "test-rle-roundtrip"
+    ],
+    "broad": [
+      "coverage-closures-64",
+      "coverage-closures-256",
+      "coverage-list-pipeline-128",
+      "coverage-list-pipeline-512",
+      "coverage-unicode-text-16",
+      "coverage-unicode-text-64",
+      "coverage-map-churn-32",
+      "coverage-map-churn-128",
+      "coverage-numeric-recurrence-256",
+      "coverage-numeric-recurrence-1024"
+    ],
+    "full": [
+      "local-pair",
+      "local-fold",
+      "scalar-region-0",
+      "scalar-region-8192",
+      "complete-generic-row32",
+      "mandelbrot",
+      "editdist",
+      "tree-bitonic",
+      "lexer",
+      "symreg",
+      "test-morning-program",
+      "test-evening-program",
+      "test-rle-roundtrip",
+      "test-map-set-ops",
+      "raytrace",
+      "variation-editdist-0-17",
+      "variation-editdist-3-123",
+      "variation-lexer-6-17",
+      "variation-lexer-10-123",
+      "variation-tree-bitonic-6-17",
+      "variation-tree-bitonic-9-123",
+      "variation-symreg-4-17",
+      "variation-symreg-7-123",
+      "variation-local-fold-128-0",
+      "variation-local-fold-8192-123",
+      "variation-mandelbrot-grid-4-7",
+      "variation-mandelbrot-grid-5-31",
+      "variation-ray-active-64-2440",
+      "variation-ray-active-256-2240",
+      "coverage-closures-64",
+      "coverage-closures-256",
+      "coverage-list-pipeline-128",
+      "coverage-list-pipeline-512",
+      "coverage-unicode-text-16",
+      "coverage-unicode-text-64",
+      "coverage-map-churn-32",
+      "coverage-map-churn-128",
+      "coverage-numeric-recurrence-256",
+      "coverage-numeric-recurrence-1024",
+      "coverage-bst-32",
+      "coverage-bst-64",
+      "coverage-expression-32",
+      "coverage-expression-128",
+      "coverage-record-aggregation-64",
+      "coverage-record-aggregation-256"
+    ],
+    "historical": [
+      "local-pair",
+      "local-fold",
+      "scalar-region-0",
+      "scalar-region-8192",
+      "complete-generic-row32",
+      "mandelbrot",
+      "editdist",
+      "tree-bitonic",
+      "lexer",
+      "symreg",
+      "test-morning-program",
+      "test-evening-program",
+      "test-rle-roundtrip",
+      "test-map-set-ops",
+      "raytrace"
+    ],
+    "coverage-variation": [
+      "variation-editdist-0-17",
+      "variation-editdist-3-123",
+      "variation-lexer-6-17",
+      "variation-lexer-10-123",
+      "variation-tree-bitonic-6-17",
+      "variation-tree-bitonic-9-123",
+      "variation-symreg-4-17",
+      "variation-symreg-7-123",
+      "variation-local-fold-128-0",
+      "variation-local-fold-8192-123",
+      "variation-mandelbrot-grid-4-7",
+      "variation-mandelbrot-grid-5-31",
+      "variation-ray-active-64-2440",
+      "variation-ray-active-256-2240"
+    ],
+    "coverage-development": [
+      "coverage-closures-64",
+      "coverage-closures-256",
+      "coverage-list-pipeline-128",
+      "coverage-list-pipeline-512",
+      "coverage-unicode-text-16",
+      "coverage-unicode-text-64",
+      "coverage-map-churn-32",
+      "coverage-map-churn-128",
+      "coverage-numeric-recurrence-256",
+      "coverage-numeric-recurrence-1024"
+    ],
+    "coverage-holdout": [
+      "coverage-bst-32",
+      "coverage-bst-64",
+      "coverage-expression-32",
+      "coverage-expression-128",
+      "coverage-record-aggregation-64",
+      "coverage-record-aggregation-256"
+    ],
+    "coverage": [
+      "variation-editdist-0-17",
+      "variation-editdist-3-123",
+      "variation-lexer-6-17",
+      "variation-lexer-10-123",
+      "variation-tree-bitonic-6-17",
+      "variation-tree-bitonic-9-123",
+      "variation-symreg-4-17",
+      "variation-symreg-7-123",
+      "variation-local-fold-128-0",
+      "variation-local-fold-8192-123",
+      "variation-mandelbrot-grid-4-7",
+      "variation-mandelbrot-grid-5-31",
+      "variation-ray-active-64-2440",
+      "variation-ray-active-256-2240",
+      "coverage-closures-64",
+      "coverage-closures-256",
+      "coverage-list-pipeline-128",
+      "coverage-list-pipeline-512",
+      "coverage-unicode-text-16",
+      "coverage-unicode-text-64",
+      "coverage-map-churn-32",
+      "coverage-map-churn-128",
+      "coverage-numeric-recurrence-256",
+      "coverage-numeric-recurrence-1024",
+      "coverage-bst-32",
+      "coverage-bst-64",
+      "coverage-expression-32",
+      "coverage-expression-128",
+      "coverage-record-aggregation-64",
+      "coverage-record-aggregation-256"
+    ]
+  },
+  "cases": [
+    {
+      "id": "mandelbrot",
+      "category": "original",
+      "description": "Integer render, histogram, recolor",
+      "scope": "hd=size; iters=7; seed unused",
+      "source": {
+        "path": "fixtures-historical/mandelbrot.bend",
+        "sha256": "cb2b9c30aceeb0f8ed0da1f999658aa8d7fb346851877da6902d1ded4cfc0656",
+        "bytes": 6576,
+        "provenance": {
+          "kind": "pinned-upstream-with-wrapper",
+          "original": {
+            "commit": "018751270e800bc222a93dad7f257083ee53a5f7",
+            "path": "bench/runtime/mandelbrot/main.bend",
+            "gitBlob": "8effae68e308c8ae63c3ec8af66f0e4a4e59f282",
+            "sha256": "400b94705df43c5f6506ecba640db11ae91b24f74d58e39a5e5f7f56dcbabcfa",
+            "bytes": 6427
+          },
+          "wrapper": "\n# Phase28: original source above is unchanged; dynamic documented-small input.\ndef bench(size: U32, seed: U32) -> U32:\n  rend(U32.to_nat(size), 7n)\n",
+          "record": "selfhost/tools/performance/phase28/six-cases.json"
+        }
+      },
+      "point": {
+        "args": [
+          2,
+          0
+        ],
+        "expected": 887240761,
+        "exportName": "bench"
+      },
+      "oracle": "Documented small checksum in pinned original Bend source, itself documented as verified against C.",
+      "sets": [
+        "core",
+        "broad",
+        "full"
+      ],
+      "partition": "historical",
+      "family": "mandelbrot"
+    },
+    {
+      "id": "editdist",
+      "category": "original",
+      "description": "Mutable-array Levenshtein dynamic programming",
+      "scope": "batch depth=size (2^size pairs); first index=seed; length=256",
+      "source": {
+        "path": "fixtures-historical/editdist.bend",
+        "sha256": "f9cc44d93829d8ea48148c26b8ed7e2c1785611ad0c19a3770f86227a3142e6f",
+        "bytes": 5874,
+        "provenance": {
+          "kind": "pinned-upstream-with-wrapper",
+          "original": {
+            "commit": "018751270e800bc222a93dad7f257083ee53a5f7",
+            "path": "bench/runtime/editdist/main.bend",
+            "gitBlob": "b3bcc627dde4eccd3f1b96e659a8e1df33ef231c",
+            "sha256": "466891a27b87119b5593209eb98aa0d687ff88b6ff28cc2ca339e248907a3959",
+            "bytes": 5722
+          },
+          "wrapper": "\n# Phase28: original source above is unchanged; dynamic documented-small input.\ndef bench(size: U32, seed: U32) -> U32:\n  batch(U32.to_nat(size), seed)\n",
+          "record": "selfhost/tools/performance/phase28/six-cases.json"
+        }
+      },
+      "point": {
+        "args": [
+          2,
+          0
+        ],
+        "expected": 2065873279,
+        "exportName": "bench"
+      },
+      "oracle": "Documented small checksum in pinned original Bend source, itself documented as verified against C.",
+      "sets": [
+        "core",
+        "broad",
+        "full"
+      ],
+      "partition": "historical",
+      "family": "editdist"
+    },
+    {
+      "id": "tree-bitonic",
+      "category": "original",
+      "description": "Tree bitonic sort and sortedness verification",
+      "scope": "tree depth=size (2^size leaves); first index=seed",
+      "source": {
+        "path": "fixtures-historical/tree-bitonic.bend",
+        "sha256": "ace0242c329b1628cb9d0a0142386380e0ca4e56fa741916974938eb079b2c0d",
+        "bytes": 4633,
+        "provenance": {
+          "kind": "pinned-upstream-with-wrapper",
+          "original": {
+            "commit": "018751270e800bc222a93dad7f257083ee53a5f7",
+            "path": "bench/runtime/tree-bitonic/main.bend",
+            "gitBlob": "00be9f2845778f113d6e00da7926ec33150686dd",
+            "sha256": "1d79c448bae41dff127ff05b6c6a13d010a9a0ebc5c4dcf19da7d6d4641a7d2c",
+            "bytes": 4456
+          },
+          "wrapper": "\n# Phase28: original source above is unchanged; dynamic documented-small input.\ndef bench(size: U32, seed: U32) -> U32:\n  stat_out(scan(bsort(U32.to_nat(size), False{}, seed)))\n",
+          "record": "selfhost/tools/performance/phase28/six-cases.json"
+        }
+      },
+      "point": {
+        "args": [
+          8,
+          0
+        ],
+        "expected": 971629740,
+        "exportName": "bench"
+      },
+      "oracle": "Documented small checksum in pinned original Bend source, itself documented as verified against C.",
+      "sets": [
+        "broad",
+        "full"
+      ],
+      "partition": "historical",
+      "family": "tree-bitonic"
+    },
+    {
+      "id": "lexer",
+      "category": "original",
+      "description": "Generated-string tokenizer",
+      "scope": "batch depth=size (2^size lines); first index=seed",
+      "source": {
+        "path": "fixtures-historical/lexer.bend",
+        "sha256": "6014af6bf7e97c8feaafa918e79f28a22d2c9c92bea836203fcd89b6d70a4fbb",
+        "bytes": 7134,
+        "provenance": {
+          "kind": "pinned-upstream-with-wrapper",
+          "original": {
+            "commit": "018751270e800bc222a93dad7f257083ee53a5f7",
+            "path": "bench/runtime/lexer/main.bend",
+            "gitBlob": "a789f9eee9944492da022e6146c75920769a32d9",
+            "sha256": "5187685d61672de9434f3902e06c427af4f2fa5648723fd869a8c26ab311fcf6",
+            "bytes": 6982
+          },
+          "wrapper": "\n# Phase28: original source above is unchanged; dynamic documented-small input.\ndef bench(size: U32, seed: U32) -> U32:\n  batch(U32.to_nat(size), seed)\n",
+          "record": "selfhost/tools/performance/phase28/six-cases.json"
+        }
+      },
+      "point": {
+        "args": [
+          8,
+          0
+        ],
+        "expected": 1822208108,
+        "exportName": "bench"
+      },
+      "oracle": "Documented small checksum in pinned original Bend source, itself documented as verified against C.",
+      "sets": [
+        "broad",
+        "full"
+      ],
+      "partition": "historical",
+      "family": "lexer"
+    },
+    {
+      "id": "symreg",
+      "category": "original",
+      "description": "Expression-tree symbolic regression",
+      "scope": "population depth=size (2^size programs); initial seed=seed; rounds=32; points=16",
+      "source": {
+        "path": "fixtures-historical/symreg.bend",
+        "sha256": "c25c8fb869eaf5ac90cbf45feb30c0e8169207ed0b74cd655343048fcc82778b",
+        "bytes": 5406,
+        "provenance": {
+          "kind": "pinned-upstream-with-wrapper",
+          "original": {
+            "commit": "018751270e800bc222a93dad7f257083ee53a5f7",
+            "path": "bench/runtime/symreg/main.bend",
+            "gitBlob": "8da2a12b5d970226826e9b894559ff570e55bead",
+            "sha256": "5aafee4856cde2259dd2efac84ed02fe1d999e68ab026d975d1a3593b430fbf0",
+            "bytes": 5246
+          },
+          "wrapper": "\n# Phase28: original source above is unchanged; dynamic documented-small input.\ndef bench(size: U32, seed: U32) -> U32:\n  run(U32.to_nat(size), seed, 32n, 16n)\n",
+          "record": "selfhost/tools/performance/phase28/six-cases.json"
+        }
+      },
+      "point": {
+        "args": [
+          6,
+          42
+        ],
+        "expected": 2490246820,
+        "exportName": "bench"
+      },
+      "oracle": "Documented small checksum in pinned original Bend source, itself documented as verified against C.",
+      "sets": [
+        "broad",
+        "full"
+      ],
+      "partition": "historical",
+      "family": "symreg"
+    },
+    {
+      "id": "test-morning-program",
+      "category": "original",
+      "description": "mixed strings, Map, arithmetic and formatting",
+      "scope": "original smoke-size test; repeated unchanged complete computation, no scaling claim",
+      "source": {
+        "path": "fixtures-historical/test-morning-program.bend",
+        "sha256": "9033897714291ea49c25046426457ff2753276466092ba71a4e40c1e2b48a04a",
+        "bytes": 3077,
+        "provenance": {
+          "kind": "unchanged-pinned-upstream",
+          "original": {
+            "commit": "018751270e800bc222a93dad7f257083ee53a5f7",
+            "path": "tests/run/morning_program.bend",
+            "sha256": "9033897714291ea49c25046426457ff2753276466092ba71a4e40c1e2b48a04a"
+          },
+          "record": "selfhost/tools/performance/phase28/application-cases.json"
+        }
+      },
+      "point": {
+        "args": [],
+        "expected": "a-bb-ccc 8 1877 42 lo hello 3",
+        "exportName": "main.out"
+      },
+      "oracle": "upstream #| golden, full main.out value",
+      "sets": [
+        "broad",
+        "full"
+      ],
+      "partition": "historical",
+      "family": "test-morning-program"
+    },
+    {
+      "id": "test-evening-program",
+      "category": "original",
+      "description": "mixed float array, Map/Set, number parsing and tuple reuse",
+      "scope": "original smoke-size test; repeated unchanged complete computation, no scaling claim",
+      "source": {
+        "path": "fixtures-historical/test-evening-program.bend",
+        "sha256": "b254a68ad0208b8a5f388d72095633cd8fc119adf40d45f5621e93f37e7b4f71",
+        "bytes": 2152,
+        "provenance": {
+          "kind": "unchanged-pinned-upstream",
+          "original": {
+            "commit": "018751270e800bc222a93dad7f257083ee53a5f7",
+            "path": "tests/run/evening_program.bend",
+            "sha256": "b254a68ad0208b8a5f388d72095633cd8fc119adf40d45f5621e93f37e7b4f71"
+          },
+          "record": "selfhost/tools/performance/phase28/application-cases.json"
+        }
+      },
+      "point": {
+        "args": [],
+        "expected": 81111,
+        "exportName": "main.out"
+      },
+      "oracle": "upstream #| golden, full main.out value",
+      "sets": [
+        "broad",
+        "full"
+      ],
+      "partition": "historical",
+      "family": "test-evening-program"
+    },
+    {
+      "id": "test-rle-roundtrip",
+      "category": "original",
+      "description": "original six-element compression and decompression test",
+      "scope": "original smoke-size test; repeated unchanged complete computation, no scaling claim",
+      "source": {
+        "path": "fixtures-historical/test-rle-roundtrip.bend",
+        "sha256": "ce4083dab9a8022b2c8867a30802113735917229341cecb8ce18ff9ac2e33989",
+        "bytes": 2743,
+        "provenance": {
+          "kind": "unchanged-pinned-upstream",
+          "original": {
+            "commit": "018751270e800bc222a93dad7f257083ee53a5f7",
+            "path": "tests/run/rle_roundtrip.bend",
+            "sha256": "ce4083dab9a8022b2c8867a30802113735917229341cecb8ce18ff9ac2e33989"
+          },
+          "record": "selfhost/tools/performance/phase28/application-cases.json"
+        }
+      },
+      "point": {
+        "args": [],
+        "expected": 11,
+        "exportName": "main.out"
+      },
+      "oracle": "upstream #| golden, full main.out value",
+      "sets": [
+        "core",
+        "broad",
+        "full"
+      ],
+      "partition": "historical",
+      "family": "test-rle-roundtrip"
+    },
+    {
+      "id": "test-map-set-ops",
+      "category": "original",
+      "description": "original Map/Set feature composition checks",
+      "scope": "original smoke-size test; repeated unchanged complete computation, no scaling claim",
+      "source": {
+        "path": "fixtures-historical/test-map-set-ops.bend",
+        "sha256": "60966d2aa182c2aabf20eb63270f57c7d8c5f2dc56872e7fed54dab34940c8c6",
+        "bytes": 5266,
+        "provenance": {
+          "kind": "unchanged-pinned-upstream",
+          "original": {
+            "commit": "018751270e800bc222a93dad7f257083ee53a5f7",
+            "path": "tests/run/map_set_ops.bend",
+            "sha256": "60966d2aa182c2aabf20eb63270f57c7d8c5f2dc56872e7fed54dab34940c8c6"
+          },
+          "record": "selfhost/tools/performance/phase28/application-cases.json"
+        }
+      },
+      "point": {
+        "args": [],
+        "expected": 11111,
+        "exportName": "main.out"
+      },
+      "oracle": "upstream #| golden, full main.out value",
+      "sets": [
+        "broad",
+        "full"
+      ],
+      "partition": "historical",
+      "family": "test-map-set-ops"
+    },
+    {
+      "id": "raytrace",
+      "category": "original",
+      "description": "F32 recursive sphere ray tracing",
+      "scope": "rows=6; width=size; seed unused",
+      "source": {
+        "path": "fixtures-historical/raytrace.bend",
+        "sha256": "4674b2580aceb5f5fe6771ce16c987b97f791b52a9e1305794c435beeebf5837",
+        "bytes": 14223,
+        "provenance": {
+          "kind": "pinned-upstream-with-wrapper",
+          "original": {
+            "commit": "018751270e800bc222a93dad7f257083ee53a5f7",
+            "path": "bench/runtime/raytrace/main.bend",
+            "gitBlob": "9f42fcc64fe86dabd21d4e94c69a90224f6ae0f4",
+            "sha256": "6c4918b2012696146144c2c7ccc1daad042dbb87df444ca1334cf8d51bebee5f",
+            "bytes": 13929
+          },
+          "wrapper": "\n# Phase28: original source above is unchanged; documented small raytrace input.\ndef bench(+size: U32, seed: U32) -> U32:\n  +rr = U32.to_nat(6)\n  hw = U32.to_f32(U32.div(size, 2))\n  hh = U32.to_f32(U32.div(U32.shln(1, rr), 2))\n  hm = U32.sub(U32.shln(1, rr), 1)\n  rowf(rr, 0, hm, size, hw, hh)\n",
+          "record": "selfhost/tools/performance/phase28/raytrace-typed-retry.json"
+        }
+      },
+      "point": {
+        "args": [
+          80,
+          0
+        ],
+        "expected": 402971,
+        "exportName": "bench"
+      },
+      "oracle": "Documented small checksum in pinned original Bend source, itself documented as verified against C.",
+      "sets": [
+        "full"
+      ],
+      "partition": "historical",
+      "family": "raytrace"
+    },
+    {
+      "id": "local-pair",
+      "category": "diagnostic",
+      "description": "Complete one-pair edit distance",
+      "scope": "256 by 256 grid, input generation, rows and checksum; same point as Phase32",
+      "source": {
+        "path": "fixtures-historical/local-row.bend",
+        "sha256": "3987479425f7bf0d5c9e7655bb22bae29ed0d44635fdbf50eff2bb3cd869dfb4",
+        "bytes": 6245,
+        "provenance": {
+          "kind": "maintained-diagnostic",
+          "originalPath": "selfhost/build/phase31/local-data-source-01/row.bend",
+          "description": "Original edit-distance fixture plus row.probe; preserves complete pair and exposes a complete generic row.",
+          "record": "selfhost/tools/performance/phase31/local-data-derive.py"
+        }
+      },
+      "point": {
+        "exportName": "pair",
+        "args": [
+          0
+        ],
+        "expected": 1866542166
+      },
+      "oracle": "Maintained independent pair controls, implementation/phase32/review-local-gates.json; not a universal semantic proof.",
+      "sets": [
+        "fast",
+        "core",
+        "broad",
+        "full"
+      ],
+      "partition": "historical",
+      "family": "local-pair"
+    },
+    {
+      "id": "local-fold",
+      "category": "diagnostic",
+      "description": "Array read/write and accumulator fold",
+      "scope": "4096 elements, seed17; generation, loop and final scalar checksum",
+      "source": {
+        "path": "fixtures-historical/local-fold.bend",
+        "sha256": "d13b49747fbe6308aa35451ca6f1e1059f0a01bac8fce671dc7a195424b5cc3a",
+        "bytes": 768,
+        "provenance": {
+          "kind": "maintained-diagnostic",
+          "originalPath": "selfhost/tools/performance/phase31/local-data-fold.bend",
+          "record": "selfhost/tools/performance/phase31/local-data-fold-controls.mjs"
+        }
+      },
+      "point": {
+        "exportName": "bench",
+        "args": [
+          4096,
+          17
+        ],
+        "expected": 2339999928
+      },
+      "oracle": "Independent fold oracle in maintained Phase31/32 controls.",
+      "sets": [
+        "fast",
+        "core",
+        "broad",
+        "full"
+      ],
+      "partition": "historical",
+      "family": "local-fold"
+    },
+    {
+      "id": "scalar-region-0",
+      "category": "canary",
+      "description": "Scalar closed-region guard and loop",
+      "scope": "Initial-zero guard cost",
+      "source": {
+        "path": "fixtures-historical/scalar-region.bend",
+        "sha256": "5c1b7031be03394ea7bfc64358b6db167711765e187e32d06f65a9f06bba3c7d",
+        "bytes": 1496,
+        "provenance": {
+          "kind": "maintained-diagnostic",
+          "originalPath": "selfhost/tools/performance/phase29/fixture-mandelbrot.bend",
+          "description": "Copied pinned Mandelbrot scalar helpers with bounded scalar bench entry."
+        }
+      },
+      "point": {
+        "exportName": "bench",
+        "args": [
+          0,
+          524800
+        ],
+        "expected": 0
+      },
+      "oracle": "Unchanged maintained scalar point; checked both compilers in Phase32.",
+      "sets": [
+        "fast",
+        "core",
+        "broad",
+        "full"
+      ],
+      "partition": "historical",
+      "family": "scalar-region-0"
+    },
+    {
+      "id": "scalar-region-8192",
+      "category": "canary",
+      "description": "Scalar closed-region guard and loop",
+      "scope": "8192 scalar iterations; boundary guards included",
+      "source": {
+        "path": "fixtures-historical/scalar-region.bend",
+        "sha256": "5c1b7031be03394ea7bfc64358b6db167711765e187e32d06f65a9f06bba3c7d",
+        "bytes": 1496,
+        "provenance": {
+          "kind": "maintained-diagnostic",
+          "originalPath": "selfhost/tools/performance/phase29/fixture-mandelbrot.bend",
+          "description": "Copied pinned Mandelbrot scalar helpers with bounded scalar bench entry."
+        }
+      },
+      "point": {
+        "exportName": "bench",
+        "args": [
+          8192,
+          524800
+        ],
+        "expected": 8192
+      },
+      "oracle": "Unchanged maintained scalar point; checked both compilers in Phase32.",
+      "sets": [
+        "fast",
+        "core",
+        "broad",
+        "full"
+      ],
+      "partition": "historical",
+      "family": "scalar-region-8192"
+    },
+    {
+      "id": "complete-generic-row32",
+      "category": "canary",
+      "description": "Complete generic edit-distance row and serialized state",
+      "scope": "n32 seed17, setup, one row and all four128-slot arrays; JSON serialization included",
+      "source": {
+        "path": "fixtures-historical/local-row.bend",
+        "sha256": "3987479425f7bf0d5c9e7655bb22bae29ed0d44635fdbf50eff2bb3cd869dfb4",
+        "bytes": 6245,
+        "provenance": {
+          "kind": "maintained-diagnostic",
+          "originalPath": "selfhost/build/phase31/local-data-source-01/row.bend",
+          "description": "Original edit-distance fixture plus row.probe; preserves complete pair and exposes a complete generic row.",
+          "record": "selfhost/tools/performance/phase31/local-data-derive.py"
+        }
+      },
+      "point": {
+        "exportName": "bench",
+        "args": [
+          32,
+          17
+        ],
+        "expected": "[[0,2,1,1,0,0,0,1,1,0,0,2,3,1,3,1,0,1,0,0,2,1,0,0,0,2,0,2,1,0,2,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,1,2,0,1,0,1,2,0,0,0,0,2,0,0,3,0,1,2,0,1,2,0,0,1,3,3,0,0,3,0,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,1,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]]"
+      },
+      "adapter": "generic-row",
+      "oracle": "Independent complete-array oracle; selfhost and TypeScript representation adapters observe all four arrays.",
+      "sets": [
+        "fast",
+        "core",
+        "broad",
+        "full"
+      ],
+      "partition": "historical",
+      "family": "complete-generic-row32"
+    },
+    {
+      "id": "variation-editdist-0-17",
+      "category": "coverage",
+      "description": "Mutable-array Levenshtein dynamic programming; additional fixed input",
+      "scope": "2^depth complete 256×256 pairs, starting at the selected index; input generation and checksum included",
+      "source": {
+        "path": "fixtures-historical/editdist.bend",
+        "sha256": "f9cc44d93829d8ea48148c26b8ed7e2c1785611ad0c19a3770f86227a3142e6f",
+        "bytes": 5874,
+        "provenance": {
+          "kind": "pinned-upstream-with-wrapper",
+          "original": {
+            "commit": "018751270e800bc222a93dad7f257083ee53a5f7",
+            "path": "bench/runtime/editdist/main.bend",
+            "gitBlob": "b3bcc627dde4eccd3f1b96e659a8e1df33ef231c",
+            "sha256": "466891a27b87119b5593209eb98aa0d687ff88b6ff28cc2ca339e248907a3959",
+            "bytes": 5722
+          },
+          "wrapper": "\n# Phase28: original source above is unchanged; dynamic documented-small input.\ndef bench(size: U32, seed: U32) -> U32:\n  batch(U32.to_nat(size), seed)\n",
+          "record": "selfhost/tools/performance/phase28/six-cases.json"
+        }
+      },
+      "point": {
+        "exportName": "bench",
+        "args": [
+          0,
+          17
+        ],
+        "expected": 226010650
+      },
+      "oracle": "Independent Python reference, cross-checked against the historical pinned upstream golden.",
+      "sets": [
+        "coverage-variation"
+      ],
+      "partition": "variation",
+      "family": "editdist",
+      "coverage": [
+        "Array",
+        "dynamic-programming",
+        "changed-seed",
+        "batch-scaling"
+      ]
+    },
+    {
+      "id": "variation-editdist-3-123",
+      "category": "coverage",
+      "description": "Mutable-array Levenshtein dynamic programming; additional fixed input",
+      "scope": "2^depth complete 256×256 pairs, starting at the selected index; input generation and checksum included",
+      "source": {
+        "path": "fixtures-historical/editdist.bend",
+        "sha256": "f9cc44d93829d8ea48148c26b8ed7e2c1785611ad0c19a3770f86227a3142e6f",
+        "bytes": 5874,
+        "provenance": {
+          "kind": "pinned-upstream-with-wrapper",
+          "original": {
+            "commit": "018751270e800bc222a93dad7f257083ee53a5f7",
+            "path": "bench/runtime/editdist/main.bend",
+            "gitBlob": "b3bcc627dde4eccd3f1b96e659a8e1df33ef231c",
+            "sha256": "466891a27b87119b5593209eb98aa0d687ff88b6ff28cc2ca339e248907a3959",
+            "bytes": 5722
+          },
+          "wrapper": "\n# Phase28: original source above is unchanged; dynamic documented-small input.\ndef bench(size: U32, seed: U32) -> U32:\n  batch(U32.to_nat(size), seed)\n",
+          "record": "selfhost/tools/performance/phase28/six-cases.json"
+        }
+      },
+      "point": {
+        "exportName": "bench",
+        "args": [
+          3,
+          123
+        ],
+        "expected": 4131746436
+      },
+      "oracle": "Independent Python reference, cross-checked against the historical pinned upstream golden.",
+      "sets": [
+        "coverage-variation"
+      ],
+      "partition": "variation",
+      "family": "editdist",
+      "coverage": [
+        "Array",
+        "dynamic-programming",
+        "changed-seed",
+        "batch-scaling"
+      ]
+    },
+    {
+      "id": "variation-lexer-6-17",
+      "category": "coverage",
+      "description": "Generated-string tokenizer; additional fixed input",
+      "scope": "2^depth generated lines with changed first index; original short ASCII template remains",
+      "source": {
+        "path": "fixtures-historical/lexer.bend",
+        "sha256": "6014af6bf7e97c8feaafa918e79f28a22d2c9c92bea836203fcd89b6d70a4fbb",
+        "bytes": 7134,
+        "provenance": {
+          "kind": "pinned-upstream-with-wrapper",
+          "original": {
+            "commit": "018751270e800bc222a93dad7f257083ee53a5f7",
+            "path": "bench/runtime/lexer/main.bend",
+            "gitBlob": "a789f9eee9944492da022e6146c75920769a32d9",
+            "sha256": "5187685d61672de9434f3902e06c427af4f2fa5648723fd869a8c26ab311fcf6",
+            "bytes": 6982
+          },
+          "wrapper": "\n# Phase28: original source above is unchanged; dynamic documented-small input.\ndef bench(size: U32, seed: U32) -> U32:\n  batch(U32.to_nat(size), seed)\n",
+          "record": "selfhost/tools/performance/phase28/six-cases.json"
+        }
+      },
+      "point": {
+        "exportName": "bench",
+        "args": [
+          6,
+          17
+        ],
+        "expected": 3462121268
+      },
+      "oracle": "Independent Python reference, cross-checked against the historical pinned upstream golden.",
+      "sets": [
+        "coverage-variation"
+      ],
+      "partition": "variation",
+      "family": "lexer",
+      "coverage": [
+        "String",
+        "sum-types",
+        "state-machine",
+        "changed-seed",
+        "batch-scaling"
+      ]
+    },
+    {
+      "id": "variation-lexer-10-123",
+      "category": "coverage",
+      "description": "Generated-string tokenizer; additional fixed input",
+      "scope": "2^depth generated lines with changed first index; original short ASCII template remains",
+      "source": {
+        "path": "fixtures-historical/lexer.bend",
+        "sha256": "6014af6bf7e97c8feaafa918e79f28a22d2c9c92bea836203fcd89b6d70a4fbb",
+        "bytes": 7134,
+        "provenance": {
+          "kind": "pinned-upstream-with-wrapper",
+          "original": {
+            "commit": "018751270e800bc222a93dad7f257083ee53a5f7",
+            "path": "bench/runtime/lexer/main.bend",
+            "gitBlob": "a789f9eee9944492da022e6146c75920769a32d9",
+            "sha256": "5187685d61672de9434f3902e06c427af4f2fa5648723fd869a8c26ab311fcf6",
+            "bytes": 6982
+          },
+          "wrapper": "\n# Phase28: original source above is unchanged; dynamic documented-small input.\ndef bench(size: U32, seed: U32) -> U32:\n  batch(U32.to_nat(size), seed)\n",
+          "record": "selfhost/tools/performance/phase28/six-cases.json"
+        }
+      },
+      "point": {
+        "exportName": "bench",
+        "args": [
+          10,
+          123
+        ],
+        "expected": 3601667849
+      },
+      "oracle": "Independent Python reference, cross-checked against the historical pinned upstream golden.",
+      "sets": [
+        "coverage-variation"
+      ],
+      "partition": "variation",
+      "family": "lexer",
+      "coverage": [
+        "String",
+        "sum-types",
+        "state-machine",
+        "changed-seed",
+        "batch-scaling"
+      ]
+    },
+    {
+      "id": "variation-tree-bitonic-6-17",
+      "category": "coverage",
+      "description": "Tree bitonic sort and sortedness verification; additional fixed input",
+      "scope": "2^depth leaves over a seed-dependent key interval; full sort and order-sensitive verification",
+      "source": {
+        "path": "fixtures-historical/tree-bitonic.bend",
+        "sha256": "ace0242c329b1628cb9d0a0142386380e0ca4e56fa741916974938eb079b2c0d",
+        "bytes": 4633,
+        "provenance": {
+          "kind": "pinned-upstream-with-wrapper",
+          "original": {
+            "commit": "018751270e800bc222a93dad7f257083ee53a5f7",
+            "path": "bench/runtime/tree-bitonic/main.bend",
+            "gitBlob": "00be9f2845778f113d6e00da7926ec33150686dd",
+            "sha256": "1d79c448bae41dff127ff05b6c6a13d010a9a0ebc5c4dcf19da7d6d4641a7d2c",
+            "bytes": 4456
+          },
+          "wrapper": "\n# Phase28: original source above is unchanged; dynamic documented-small input.\ndef bench(size: U32, seed: U32) -> U32:\n  stat_out(scan(bsort(U32.to_nat(size), False{}, seed)))\n",
+          "record": "selfhost/tools/performance/phase28/six-cases.json"
+        }
+      },
+      "point": {
+        "exportName": "bench",
+        "args": [
+          6,
+          17
+        ],
+        "expected": 2700561448
+      },
+      "oracle": "Independent Python reference, cross-checked against the historical pinned upstream golden.",
+      "sets": [
+        "coverage-variation"
+      ],
+      "partition": "variation",
+      "family": "tree-bitonic",
+      "coverage": [
+        "balanced-tree",
+        "tree-to-tree",
+        "sorting",
+        "changed-seed",
+        "depth-scaling"
+      ]
+    },
+    {
+      "id": "variation-tree-bitonic-9-123",
+      "category": "coverage",
+      "description": "Tree bitonic sort and sortedness verification; additional fixed input",
+      "scope": "2^depth leaves over a seed-dependent key interval; full sort and order-sensitive verification",
+      "source": {
+        "path": "fixtures-historical/tree-bitonic.bend",
+        "sha256": "ace0242c329b1628cb9d0a0142386380e0ca4e56fa741916974938eb079b2c0d",
+        "bytes": 4633,
+        "provenance": {
+          "kind": "pinned-upstream-with-wrapper",
+          "original": {
+            "commit": "018751270e800bc222a93dad7f257083ee53a5f7",
+            "path": "bench/runtime/tree-bitonic/main.bend",
+            "gitBlob": "00be9f2845778f113d6e00da7926ec33150686dd",
+            "sha256": "1d79c448bae41dff127ff05b6c6a13d010a9a0ebc5c4dcf19da7d6d4641a7d2c",
+            "bytes": 4456
+          },
+          "wrapper": "\n# Phase28: original source above is unchanged; dynamic documented-small input.\ndef bench(size: U32, seed: U32) -> U32:\n  stat_out(scan(bsort(U32.to_nat(size), False{}, seed)))\n",
+          "record": "selfhost/tools/performance/phase28/six-cases.json"
+        }
+      },
+      "point": {
+        "exportName": "bench",
+        "args": [
+          9,
+          123
+        ],
+        "expected": 2950706516
+      },
+      "oracle": "Independent Python reference, cross-checked against the historical pinned upstream golden.",
+      "sets": [
+        "coverage-variation"
+      ],
+      "partition": "variation",
+      "family": "tree-bitonic",
+      "coverage": [
+        "balanced-tree",
+        "tree-to-tree",
+        "sorting",
+        "changed-seed",
+        "depth-scaling"
+      ]
+    },
+    {
+      "id": "variation-symreg-4-17",
+      "category": "coverage",
+      "description": "Expression-tree symbolic regression; additional fixed input",
+      "scope": "2^depth population with changed initial seed; AST depth5,32 mutation rounds and16 data points remain fixed",
+      "source": {
+        "path": "fixtures-historical/symreg.bend",
+        "sha256": "c25c8fb869eaf5ac90cbf45feb30c0e8169207ed0b74cd655343048fcc82778b",
+        "bytes": 5406,
+        "provenance": {
+          "kind": "pinned-upstream-with-wrapper",
+          "original": {
+            "commit": "018751270e800bc222a93dad7f257083ee53a5f7",
+            "path": "bench/runtime/symreg/main.bend",
+            "gitBlob": "8da2a12b5d970226826e9b894559ff570e55bead",
+            "sha256": "5aafee4856cde2259dd2efac84ed02fe1d999e68ab026d975d1a3593b430fbf0",
+            "bytes": 5246
+          },
+          "wrapper": "\n# Phase28: original source above is unchanged; dynamic documented-small input.\ndef bench(size: U32, seed: U32) -> U32:\n  run(U32.to_nat(size), seed, 32n, 16n)\n",
+          "record": "selfhost/tools/performance/phase28/six-cases.json"
+        }
+      },
+      "point": {
+        "exportName": "bench",
+        "args": [
+          4,
+          17
+        ],
+        "expected": 2759212979
+      },
+      "oracle": "Independent Python reference, cross-checked against the historical pinned upstream golden.",
+      "sets": [
+        "coverage-variation"
+      ],
+      "partition": "variation",
+      "family": "symreg",
+      "coverage": [
+        "AST",
+        "producer-consumer",
+        "shared-tree",
+        "changed-seed",
+        "population-scaling"
+      ]
+    },
+    {
+      "id": "variation-symreg-7-123",
+      "category": "coverage",
+      "description": "Expression-tree symbolic regression; additional fixed input",
+      "scope": "2^depth population with changed initial seed; AST depth5,32 mutation rounds and16 data points remain fixed",
+      "source": {
+        "path": "fixtures-historical/symreg.bend",
+        "sha256": "c25c8fb869eaf5ac90cbf45feb30c0e8169207ed0b74cd655343048fcc82778b",
+        "bytes": 5406,
+        "provenance": {
+          "kind": "pinned-upstream-with-wrapper",
+          "original": {
+            "commit": "018751270e800bc222a93dad7f257083ee53a5f7",
+            "path": "bench/runtime/symreg/main.bend",
+            "gitBlob": "8da2a12b5d970226826e9b894559ff570e55bead",
+            "sha256": "5aafee4856cde2259dd2efac84ed02fe1d999e68ab026d975d1a3593b430fbf0",
+            "bytes": 5246
+          },
+          "wrapper": "\n# Phase28: original source above is unchanged; dynamic documented-small input.\ndef bench(size: U32, seed: U32) -> U32:\n  run(U32.to_nat(size), seed, 32n, 16n)\n",
+          "record": "selfhost/tools/performance/phase28/six-cases.json"
+        }
+      },
+      "point": {
+        "exportName": "bench",
+        "args": [
+          7,
+          123
+        ],
+        "expected": 3769601746
+      },
+      "oracle": "Independent Python reference, cross-checked against the historical pinned upstream golden.",
+      "sets": [
+        "coverage-variation"
+      ],
+      "partition": "variation",
+      "family": "symreg",
+      "coverage": [
+        "AST",
+        "producer-consumer",
+        "shared-tree",
+        "changed-seed",
+        "population-scaling"
+      ]
+    },
+    {
+      "id": "variation-local-fold-128-0",
+      "category": "coverage",
+      "description": "Array read/write and accumulator fold; additional fixed input",
+      "scope": "128-slot array; size read/accumulate/write steps, cyclic indexing and final scalar checksum",
+      "source": {
+        "path": "fixtures-historical/local-fold.bend",
+        "sha256": "d13b49747fbe6308aa35451ca6f1e1059f0a01bac8fce671dc7a195424b5cc3a",
+        "bytes": 768,
+        "provenance": {
+          "kind": "maintained-diagnostic",
+          "originalPath": "selfhost/tools/performance/phase31/local-data-fold.bend",
+          "record": "selfhost/tools/performance/phase31/local-data-fold-controls.mjs"
+        }
+      },
+      "point": {
+        "exportName": "bench",
+        "args": [
+          128,
+          0
+        ],
+        "expected": 0
+      },
+      "oracle": "Independent Python128-slot cyclic-array reference; historical4096/17 golden cross-check.",
+      "sets": [
+        "coverage-variation"
+      ],
+      "partition": "variation",
+      "family": "local-fold",
+      "coverage": [
+        "Array",
+        "mutable-state",
+        "wrapping-index",
+        "changed-seed",
+        "loop-scaling"
+      ]
+    },
+    {
+      "id": "variation-local-fold-8192-123",
+      "category": "coverage",
+      "description": "Array read/write and accumulator fold; additional fixed input",
+      "scope": "128-slot array; size read/accumulate/write steps, cyclic indexing and final scalar checksum",
+      "source": {
+        "path": "fixtures-historical/local-fold.bend",
+        "sha256": "d13b49747fbe6308aa35451ca6f1e1059f0a01bac8fce671dc7a195424b5cc3a",
+        "bytes": 768,
+        "provenance": {
+          "kind": "maintained-diagnostic",
+          "originalPath": "selfhost/tools/performance/phase31/local-data-fold.bend",
+          "record": "selfhost/tools/performance/phase31/local-data-fold-controls.mjs"
+        }
+      },
+      "point": {
+        "exportName": "bench",
+        "args": [
+          8192,
+          123
+        ],
+        "expected": 805701512
+      },
+      "oracle": "Independent Python128-slot cyclic-array reference; historical4096/17 golden cross-check.",
+      "sets": [
+        "coverage-variation"
+      ],
+      "partition": "variation",
+      "family": "local-fold",
+      "coverage": [
+        "Array",
+        "mutable-state",
+        "wrapping-index",
+        "changed-seed",
+        "loop-scaling"
+      ]
+    },
+    {
+      "id": "variation-mandelbrot-grid-4-7",
+      "category": "coverage",
+      "description": "Integer render, histogram, recolor; additional fixed input",
+      "scope": "16×16 center samples spread across the complete4096×4096 viewport; original pix function and wrapping position-weighted sum; no histogram/recolor passes",
+      "source": {
+        "path": "fixtures-variants/mandelbrot-grid.bend",
+        "sha256": "f908b2daf26ab7c61e2876a91a101009b6e80ad61fbd906a34a2eb03deb80377",
+        "bytes": 7395,
+        "provenance": {
+          "kind": "unchanged-historical-fixture-with-coverage-wrapper",
+          "parent": {
+            "path": "fixtures-historical/mandelbrot.bend",
+            "sha256": "cb2b9c30aceeb0f8ed0da1f999658aa8d7fb346851877da6902d1ded4cfc0656",
+            "bytes": 6576,
+            "provenance": {
+              "kind": "pinned-upstream-with-wrapper",
+              "original": {
+                "commit": "018751270e800bc222a93dad7f257083ee53a5f7",
+                "path": "bench/runtime/mandelbrot/main.bend",
+                "gitBlob": "8effae68e308c8ae63c3ec8af66f0e4a4e59f282",
+                "sha256": "400b94705df43c5f6506ecba640db11ae91b24f74d58e39a5e5f7f56dcbabcfa",
+                "bytes": 6427
+              },
+              "wrapper": "\n# Phase28: original source above is unchanged; dynamic documented-small input.\ndef bench(size: U32, seed: U32) -> U32:\n  rend(U32.to_nat(size), 7n)\n",
+              "record": "selfhost/tools/performance/phase28/six-cases.json"
+            }
+          },
+          "wrapper": "\n# Phase37: original source above unchanged; centers across the complete viewport.\ndef coverage.grid.loop(n: Nat, +i: U32, +mask: U32, +step: U32, +d: Nat,\n                       +tn: Nat, acc: U32) -> U32:\n  match n:\n    case 0n:\n      acc\n    case 1n+p:\n      x = U32.add(U32.mul(U32.and(i, mask), step), U32.div(step, 2))\n      y = U32.add(U32.mul(U32.shrn(i, d), step), U32.div(step, 2))\n      +at = U32.add(U32.mul(y, 4096), x)\n      v = pix(at, tn)\n      coverage.grid.loop(p, U32.inc(i), mask, step, d, tn,\n        U32.add(acc, U32.mul(v, U32.inc(U32.mul(at, 2654435761)))))\n\ndef coverage.grid(+depth: U32, iterations: U32) -> U32:\n  +d = U32.to_nat(depth)\n  +side = U32.shln(1, d)\n  coverage.grid.loop(U32.to_nat(U32.mul(side, side)), 0, U32.sub(side, 1),\n    U32.div(4096, side), d, U32.to_nat(iterations), 0)\n",
+          "record": "design/phase37/coverage.md"
+        }
+      },
+      "point": {
+        "exportName": "coverage.grid",
+        "args": [
+          4,
+          7
+        ],
+        "expected": 3135859970
+      },
+      "oracle": "Independent Python two’s-complement fixed-point pixel calculation and viewport grid; exact wrapping checksum.",
+      "sets": [
+        "coverage-variation"
+      ],
+      "partition": "variation",
+      "family": "mandelbrot",
+      "coverage": [
+        "U32",
+        "fixed-point",
+        "viewport-distribution",
+        "iteration-scaling"
+      ]
+    },
+    {
+      "id": "variation-mandelbrot-grid-5-31",
+      "category": "coverage",
+      "description": "Integer render, histogram, recolor; additional fixed input",
+      "scope": "32×32 center samples spread across the complete4096×4096 viewport; original pix function and wrapping position-weighted sum; no histogram/recolor passes",
+      "source": {
+        "path": "fixtures-variants/mandelbrot-grid.bend",
+        "sha256": "f908b2daf26ab7c61e2876a91a101009b6e80ad61fbd906a34a2eb03deb80377",
+        "bytes": 7395,
+        "provenance": {
+          "kind": "unchanged-historical-fixture-with-coverage-wrapper",
+          "parent": {
+            "path": "fixtures-historical/mandelbrot.bend",
+            "sha256": "cb2b9c30aceeb0f8ed0da1f999658aa8d7fb346851877da6902d1ded4cfc0656",
+            "bytes": 6576,
+            "provenance": {
+              "kind": "pinned-upstream-with-wrapper",
+              "original": {
+                "commit": "018751270e800bc222a93dad7f257083ee53a5f7",
+                "path": "bench/runtime/mandelbrot/main.bend",
+                "gitBlob": "8effae68e308c8ae63c3ec8af66f0e4a4e59f282",
+                "sha256": "400b94705df43c5f6506ecba640db11ae91b24f74d58e39a5e5f7f56dcbabcfa",
+                "bytes": 6427
+              },
+              "wrapper": "\n# Phase28: original source above is unchanged; dynamic documented-small input.\ndef bench(size: U32, seed: U32) -> U32:\n  rend(U32.to_nat(size), 7n)\n",
+              "record": "selfhost/tools/performance/phase28/six-cases.json"
+            }
+          },
+          "wrapper": "\n# Phase37: original source above unchanged; centers across the complete viewport.\ndef coverage.grid.loop(n: Nat, +i: U32, +mask: U32, +step: U32, +d: Nat,\n                       +tn: Nat, acc: U32) -> U32:\n  match n:\n    case 0n:\n      acc\n    case 1n+p:\n      x = U32.add(U32.mul(U32.and(i, mask), step), U32.div(step, 2))\n      y = U32.add(U32.mul(U32.shrn(i, d), step), U32.div(step, 2))\n      +at = U32.add(U32.mul(y, 4096), x)\n      v = pix(at, tn)\n      coverage.grid.loop(p, U32.inc(i), mask, step, d, tn,\n        U32.add(acc, U32.mul(v, U32.inc(U32.mul(at, 2654435761)))))\n\ndef coverage.grid(+depth: U32, iterations: U32) -> U32:\n  +d = U32.to_nat(depth)\n  +side = U32.shln(1, d)\n  coverage.grid.loop(U32.to_nat(U32.mul(side, side)), 0, U32.sub(side, 1),\n    U32.div(4096, side), d, U32.to_nat(iterations), 0)\n",
+          "record": "design/phase37/coverage.md"
+        }
+      },
+      "point": {
+        "exportName": "coverage.grid",
+        "args": [
+          5,
+          31
+        ],
+        "expected": 2471659814
+      },
+      "oracle": "Independent Python two’s-complement fixed-point pixel calculation and viewport grid; exact wrapping checksum.",
+      "sets": [
+        "coverage-variation"
+      ],
+      "partition": "variation",
+      "family": "mandelbrot",
+      "coverage": [
+        "U32",
+        "fixed-point",
+        "viewport-distribution",
+        "iteration-scaling"
+      ]
+    },
+    {
+      "id": "variation-ray-active-64-2440",
+      "category": "coverage",
+      "description": "F32 recursive sphere ray tracing; additional fixed input",
+      "scope": "64 consecutive active pixels in the original80×64 small viewport, starting at linear index2440; four subrays each, original geometry/shadow/bounce code, ordered output digest, no inactive probes",
+      "source": {
+        "path": "fixtures-variants/raytrace-active.bend",
+        "sha256": "5ba03ffff01fc0825ecf7ec0d9fb5f5030fcc07c3d83582ad790394cbcf55955",
+        "bytes": 14680,
+        "provenance": {
+          "kind": "unchanged-historical-fixture-with-coverage-wrapper",
+          "parent": {
+            "path": "fixtures-historical/raytrace.bend",
+            "sha256": "4674b2580aceb5f5fe6771ce16c987b97f791b52a9e1305794c435beeebf5837",
+            "bytes": 14223,
+            "provenance": {
+              "kind": "pinned-upstream-with-wrapper",
+              "original": {
+                "commit": "018751270e800bc222a93dad7f257083ee53a5f7",
+                "path": "bench/runtime/raytrace/main.bend",
+                "gitBlob": "9f42fcc64fe86dabd21d4e94c69a90224f6ae0f4",
+                "sha256": "6c4918b2012696146144c2c7ccc1daad042dbb87df444ca1334cf8d51bebee5f",
+                "bytes": 13929
+              },
+              "wrapper": "\n# Phase28: original source above is unchanged; documented small raytrace input.\ndef bench(+size: U32, seed: U32) -> U32:\n  +rr = U32.to_nat(6)\n  hw = U32.to_f32(U32.div(size, 2))\n  hh = U32.to_f32(U32.div(U32.shln(1, rr), 2))\n  hm = U32.sub(U32.shln(1, rr), 1)\n  rowf(rr, 0, hm, size, hw, hh)\n",
+              "record": "selfhost/tools/performance/phase28/raytrace-typed-retry.json"
+            }
+          },
+          "wrapper": "\n# Phase37: original source above unchanged; every sampled position traces rays.\ndef coverage.active.loop(n: Nat, +at: U32, acc: U32) -> U32:\n  match n:\n    case 0n:\n      acc\n    case 1n+p:\n      v = pixel(U32.mod(at, 80), U32.div(at, 80), U32.to_f32(40), U32.to_f32(32))\n      coverage.active.loop(p, U32.inc(at), U32.add(U32.mul(acc, 16777619), v))\n\ndef coverage.active(count: U32, first: U32) -> U32:\n  coverage.active.loop(U32.to_nat(count), first, 0)\n",
+          "record": "design/phase37/coverage.md"
+        }
+      },
+      "point": {
+        "exportName": "coverage.active",
+        "args": [
+          64,
+          2440
+        ],
+        "expected": 1457676559
+      },
+      "oracle": "Frozen checked pinned-TypeScript differential output; not an independent F32 reference.",
+      "sets": [
+        "coverage-variation"
+      ],
+      "partition": "variation",
+      "family": "raytrace",
+      "coverage": [
+        "F32",
+        "geometry",
+        "tagged-result",
+        "active-rays",
+        "position-distribution"
+      ],
+      "oracleStatus": "frozen-pinned-reference",
+      "oracleReceipt": {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase37/ray-oracles01.json",
+        "sha256": "2cb84cc7621251d333de7a12a22f17d3683e8ec98aca9cd10442d4fdb935eaee",
+        "bytes": 4296
+      }
+    },
+    {
+      "id": "variation-ray-active-256-2240",
+      "category": "coverage",
+      "description": "F32 recursive sphere ray tracing; additional fixed input",
+      "scope": "256 consecutive active pixels in the original80×64 small viewport, starting at linear index2240; four subrays each, original geometry/shadow/bounce code, ordered output digest, no inactive probes",
+      "source": {
+        "path": "fixtures-variants/raytrace-active.bend",
+        "sha256": "5ba03ffff01fc0825ecf7ec0d9fb5f5030fcc07c3d83582ad790394cbcf55955",
+        "bytes": 14680,
+        "provenance": {
+          "kind": "unchanged-historical-fixture-with-coverage-wrapper",
+          "parent": {
+            "path": "fixtures-historical/raytrace.bend",
+            "sha256": "4674b2580aceb5f5fe6771ce16c987b97f791b52a9e1305794c435beeebf5837",
+            "bytes": 14223,
+            "provenance": {
+              "kind": "pinned-upstream-with-wrapper",
+              "original": {
+                "commit": "018751270e800bc222a93dad7f257083ee53a5f7",
+                "path": "bench/runtime/raytrace/main.bend",
+                "gitBlob": "9f42fcc64fe86dabd21d4e94c69a90224f6ae0f4",
+                "sha256": "6c4918b2012696146144c2c7ccc1daad042dbb87df444ca1334cf8d51bebee5f",
+                "bytes": 13929
+              },
+              "wrapper": "\n# Phase28: original source above is unchanged; documented small raytrace input.\ndef bench(+size: U32, seed: U32) -> U32:\n  +rr = U32.to_nat(6)\n  hw = U32.to_f32(U32.div(size, 2))\n  hh = U32.to_f32(U32.div(U32.shln(1, rr), 2))\n  hm = U32.sub(U32.shln(1, rr), 1)\n  rowf(rr, 0, hm, size, hw, hh)\n",
+              "record": "selfhost/tools/performance/phase28/raytrace-typed-retry.json"
+            }
+          },
+          "wrapper": "\n# Phase37: original source above unchanged; every sampled position traces rays.\ndef coverage.active.loop(n: Nat, +at: U32, acc: U32) -> U32:\n  match n:\n    case 0n:\n      acc\n    case 1n+p:\n      v = pixel(U32.mod(at, 80), U32.div(at, 80), U32.to_f32(40), U32.to_f32(32))\n      coverage.active.loop(p, U32.inc(at), U32.add(U32.mul(acc, 16777619), v))\n\ndef coverage.active(count: U32, first: U32) -> U32:\n  coverage.active.loop(U32.to_nat(count), first, 0)\n",
+          "record": "design/phase37/coverage.md"
+        }
+      },
+      "point": {
+        "exportName": "coverage.active",
+        "args": [
+          256,
+          2240
+        ],
+        "expected": 2166930202
+      },
+      "oracle": "Frozen checked pinned-TypeScript differential output; not an independent F32 reference.",
+      "sets": [
+        "coverage-variation"
+      ],
+      "partition": "variation",
+      "family": "raytrace",
+      "coverage": [
+        "F32",
+        "geometry",
+        "tagged-result",
+        "active-rays",
+        "position-distribution"
+      ],
+      "oracleStatus": "frozen-pinned-reference",
+      "oracleReceipt": {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase37/ray-oracles01.json",
+        "sha256": "2cb84cc7621251d333de7a12a22f17d3683e8ec98aca9cd10442d4fdb935eaee",
+        "bytes": 4296
+      }
+    },
+    {
+      "id": "coverage-closures-64",
+      "family": "closures",
+      "category": "coverage",
+      "partition": "development",
+      "description": "Build and apply captured closure composition chains",
+      "scope": "size captured affine closures; generated chain and invocation both timed",
+      "source": {
+        "path": "fixtures-new/closures.bend",
+        "sha256": "bc5fb44cba7971ae593dd642554dc468a9cbc51ce54567467a4d8bf84bb70943",
+        "bytes": 1392,
+        "provenance": {
+          "kind": "pinned-upstream-with-wrapper",
+          "original": {
+            "commit": "018751270e800bc222a93dad7f257083ee53a5f7",
+            "path": "tests/run/closures_hof.bend",
+            "gitBlob": "015235618ee5d528d4301d56d4a7d5c5571ba932",
+            "sha256": "995334f3b7925f6d12a19cc84d1353db05736d9ebde158accdf9c9621991f059",
+            "bytes": 1202
+          },
+          "wrapper": "\n# Phase37 wrapper: upstream body above is unchanged.\n# Build and execute a dynamically sized captured closure chain.\ndef bench(size: U32, seed: U32) -> U32:\n  chain(U32.to_nat(size))(seed)\n"
+        }
+      },
+      "point": {
+        "exportName": "bench",
+        "args": [
+          64,
+          17
+        ],
+        "expected": 2097
+      },
+      "oracle": "Closed-form seed + n(n+1)/2 modulo 2^32; no generated code or recursive closure interpreter.",
+      "coverage": [
+        "higher-order",
+        "captured-values",
+        "function-construction",
+        "Nat-recursion"
+      ],
+      "sets": [
+        "coverage",
+        "coverage-development"
+      ]
+    },
+    {
+      "id": "coverage-closures-256",
+      "family": "closures",
+      "category": "coverage",
+      "partition": "development",
+      "description": "Build and apply captured closure composition chains",
+      "scope": "size captured affine closures; generated chain and invocation both timed",
+      "source": {
+        "path": "fixtures-new/closures.bend",
+        "sha256": "bc5fb44cba7971ae593dd642554dc468a9cbc51ce54567467a4d8bf84bb70943",
+        "bytes": 1392,
+        "provenance": {
+          "kind": "pinned-upstream-with-wrapper",
+          "original": {
+            "commit": "018751270e800bc222a93dad7f257083ee53a5f7",
+            "path": "tests/run/closures_hof.bend",
+            "gitBlob": "015235618ee5d528d4301d56d4a7d5c5571ba932",
+            "sha256": "995334f3b7925f6d12a19cc84d1353db05736d9ebde158accdf9c9621991f059",
+            "bytes": 1202
+          },
+          "wrapper": "\n# Phase37 wrapper: upstream body above is unchanged.\n# Build and execute a dynamically sized captured closure chain.\ndef bench(size: U32, seed: U32) -> U32:\n  chain(U32.to_nat(size))(seed)\n"
+        }
+      },
+      "point": {
+        "exportName": "bench",
+        "args": [
+          256,
+          123
+        ],
+        "expected": 33019
+      },
+      "oracle": "Closed-form seed + n(n+1)/2 modulo 2^32; no generated code or recursive closure interpreter.",
+      "coverage": [
+        "higher-order",
+        "captured-values",
+        "function-construction",
+        "Nat-recursion"
+      ],
+      "sets": [
+        "coverage",
+        "coverage-development"
+      ]
+    },
+    {
+      "id": "coverage-list-pipeline-128",
+      "family": "list-pipeline",
+      "category": "coverage",
+      "partition": "development",
+      "description": "Generate, filter, map and fold a word list",
+      "scope": "size LCG words; remove 0/1, double remaining words, sum all retained elements",
+      "source": {
+        "path": "fixtures-new/list-pipeline.bend",
+        "sha256": "b4819808f26a6d5fe8ef0295c69b447121320c3e748a7fbc937bf8a88e3d48d0",
+        "bytes": 3249,
+        "provenance": {
+          "kind": "pinned-upstream-with-wrapper",
+          "original": {
+            "commit": "018751270e800bc222a93dad7f257083ee53a5f7",
+            "path": "tests/run/list_map_fold_ops.bend",
+            "gitBlob": "61b1b6d606beb1af0a483fdbd233edebda47c942",
+            "sha256": "ddd1d5eb538c5fd8ca5b91c27af5625d86dc39dbb640845077a0656064a60eda",
+            "bytes": 2909
+          },
+          "wrapper": "\n# Phase37 wrapper: upstream body above is unchanged.\ndef p37.list(n: Nat, +seed: U32) -> List<&2, U32>:\n  match n:\n    case 0n:\n      Nil{}\n    case 1n+p:\n      U32.mod(seed, 16) <> p37.list(p, U32.add(U32.mul(seed, 1664525), 1013904223))\n\ndef bench(size: U32, seed: U32) -> U32:\n  suma(dbl(keep_gt1(p37.list(U32.to_nat(size), seed))), 0)\n"
+        }
+      },
+      "point": {
+        "exportName": "bench",
+        "args": [
+          128,
+          17
+        ],
+        "expected": 1904
+      },
+      "oracle": "Python list comprehension over an integer LCG and mathematical sum modulo 2^32.",
+      "coverage": [
+        "linear-list",
+        "constructor-churn",
+        "filter",
+        "composed-traversals",
+        "U32-wrapping"
+      ],
+      "sets": [
+        "coverage",
+        "coverage-development"
+      ]
+    },
+    {
+      "id": "coverage-list-pipeline-512",
+      "family": "list-pipeline",
+      "category": "coverage",
+      "partition": "development",
+      "description": "Generate, filter, map and fold a word list",
+      "scope": "size LCG words; remove 0/1, double remaining words, sum all retained elements",
+      "source": {
+        "path": "fixtures-new/list-pipeline.bend",
+        "sha256": "b4819808f26a6d5fe8ef0295c69b447121320c3e748a7fbc937bf8a88e3d48d0",
+        "bytes": 3249,
+        "provenance": {
+          "kind": "pinned-upstream-with-wrapper",
+          "original": {
+            "commit": "018751270e800bc222a93dad7f257083ee53a5f7",
+            "path": "tests/run/list_map_fold_ops.bend",
+            "gitBlob": "61b1b6d606beb1af0a483fdbd233edebda47c942",
+            "sha256": "ddd1d5eb538c5fd8ca5b91c27af5625d86dc39dbb640845077a0656064a60eda",
+            "bytes": 2909
+          },
+          "wrapper": "\n# Phase37 wrapper: upstream body above is unchanged.\ndef p37.list(n: Nat, +seed: U32) -> List<&2, U32>:\n  match n:\n    case 0n:\n      Nil{}\n    case 1n+p:\n      U32.mod(seed, 16) <> p37.list(p, U32.add(U32.mul(seed, 1664525), 1013904223))\n\ndef bench(size: U32, seed: U32) -> U32:\n  suma(dbl(keep_gt1(p37.list(U32.to_nat(size), seed))), 0)\n"
+        }
+      },
+      "point": {
+        "exportName": "bench",
+        "args": [
+          512,
+          123
+        ],
+        "expected": 7616
+      },
+      "oracle": "Python list comprehension over an integer LCG and mathematical sum modulo 2^32.",
+      "coverage": [
+        "linear-list",
+        "constructor-churn",
+        "filter",
+        "composed-traversals",
+        "U32-wrapping"
+      ],
+      "sets": [
+        "coverage",
+        "coverage-development"
+      ]
+    },
+    {
+      "id": "coverage-bst-32",
+      "family": "bst",
+      "category": "coverage",
+      "partition": "holdout",
+      "description": "Zipper insertion and traversal of skewed or irregular BSTs",
+      "scope": "size insertion values modulo257; seed0 is ascending/skewed, seed17 is irregular; fuel=size+1",
+      "source": {
+        "path": "fixtures-new/bst.bend",
+        "sha256": "db75d09ea4ee8cf8e46aad8955c3f8042df221e879657a20f6ab02e8ca8eca3f",
+        "bytes": 3051,
+        "provenance": {
+          "kind": "pinned-upstream-with-wrapper",
+          "original": {
+            "commit": "018751270e800bc222a93dad7f257083ee53a5f7",
+            "path": "tests/run/bst_insert.bend",
+            "gitBlob": "7cfc1b00ced39a243668db5abe90a51fdab8865a",
+            "sha256": "88a0f65526e35c53e5b806f15dfdf700d5b91a78fd30fb22b67167f09a693cc1",
+            "bytes": 2383
+          },
+          "wrapper": "\n# Phase37 wrapper: upstream body above is unchanged.\n# Dynamic fuel is sufficient for either a skewed or irregular insertion tree.\ndef p37.bst.insert(+fuel: Nat, +x: U32, tree: BST) -> BST:\n  insert.fin(x, bst.down(fuel, x, (tree, Nil{})))\n\ndef p37.bst.build(n: Nat, +fuel: Nat, +i: U32, +seed: U32, tree: BST) -> BST:\n  match n:\n    case 0n:\n      tree\n    case 1n+p:\n      x = U32.mod(U32.add(U32.mul(i, U32.add(U32.mul(seed, 2), 1)), seed), 257)\n      p37.bst.build(p, fuel, U32.add(i, 1), seed, p37.bst.insert(fuel, x, tree))\n\ndef bench(+size: U32, seed: U32) -> U32:\n  inorder(p37.bst.build(U32.to_nat(size), Nat.add(U32.to_nat(size), 1n), 0, seed, BLeaf{}), 0)\n"
+        }
+      },
+      "point": {
+        "exportName": "bench",
+        "args": [
+          32,
+          0
+        ],
+        "expected": 1802825775
+      },
+      "oracle": "Independently sort generated values, then fold decimal positional digest modulo 2^32.",
+      "coverage": [
+        "irregular-tree",
+        "skewed-tree",
+        "zipper",
+        "tuple-state",
+        "insertion",
+        "ordered-fold"
+      ],
+      "sets": [
+        "coverage",
+        "coverage-holdout"
+      ]
+    },
+    {
+      "id": "coverage-bst-64",
+      "family": "bst",
+      "category": "coverage",
+      "partition": "holdout",
+      "description": "Zipper insertion and traversal of skewed or irregular BSTs",
+      "scope": "size insertion values modulo257; seed0 is ascending/skewed, seed17 is irregular; fuel=size+1",
+      "source": {
+        "path": "fixtures-new/bst.bend",
+        "sha256": "db75d09ea4ee8cf8e46aad8955c3f8042df221e879657a20f6ab02e8ca8eca3f",
+        "bytes": 3051,
+        "provenance": {
+          "kind": "pinned-upstream-with-wrapper",
+          "original": {
+            "commit": "018751270e800bc222a93dad7f257083ee53a5f7",
+            "path": "tests/run/bst_insert.bend",
+            "gitBlob": "7cfc1b00ced39a243668db5abe90a51fdab8865a",
+            "sha256": "88a0f65526e35c53e5b806f15dfdf700d5b91a78fd30fb22b67167f09a693cc1",
+            "bytes": 2383
+          },
+          "wrapper": "\n# Phase37 wrapper: upstream body above is unchanged.\n# Dynamic fuel is sufficient for either a skewed or irregular insertion tree.\ndef p37.bst.insert(+fuel: Nat, +x: U32, tree: BST) -> BST:\n  insert.fin(x, bst.down(fuel, x, (tree, Nil{})))\n\ndef p37.bst.build(n: Nat, +fuel: Nat, +i: U32, +seed: U32, tree: BST) -> BST:\n  match n:\n    case 0n:\n      tree\n    case 1n+p:\n      x = U32.mod(U32.add(U32.mul(i, U32.add(U32.mul(seed, 2), 1)), seed), 257)\n      p37.bst.build(p, fuel, U32.add(i, 1), seed, p37.bst.insert(fuel, x, tree))\n\ndef bench(+size: U32, seed: U32) -> U32:\n  inorder(p37.bst.build(U32.to_nat(size), Nat.add(U32.to_nat(size), 1n), 0, seed, BLeaf{}), 0)\n"
+        }
+      },
+      "point": {
+        "exportName": "bench",
+        "args": [
+          64,
+          17
+        ],
+        "expected": 861157620
+      },
+      "oracle": "Independently sort generated values, then fold decimal positional digest modulo 2^32.",
+      "coverage": [
+        "irregular-tree",
+        "skewed-tree",
+        "zipper",
+        "tuple-state",
+        "insertion",
+        "ordered-fold"
+      ],
+      "sets": [
+        "coverage",
+        "coverage-holdout"
+      ]
+    },
+    {
+      "id": "coverage-unicode-text-16",
+      "family": "unicode-text",
+      "category": "coverage",
+      "partition": "development",
+      "description": "Build, split and join mixed-script Unicode text",
+      "scope": "size blocks containing Greek, supplementary-plane emoji, CJK, decimal seed and separators; complete string observed",
+      "source": {
+        "path": "fixtures-new/unicode-text.bend",
+        "sha256": "e0dd8066deac347ee4d88afa5ef5db0e338c5f09b3e2cc6a7bf5ec553f52d550",
+        "bytes": 5277,
+        "provenance": {
+          "kind": "pinned-upstream-with-wrapper",
+          "original": {
+            "commit": "018751270e800bc222a93dad7f257083ee53a5f7",
+            "path": "tests/run/string_algorithms.bend",
+            "gitBlob": "f7a5f10a532aacf998ef2ba37ed2f1a66e6ad109",
+            "sha256": "b20ca36f67f1eba88ee4890ba9eb659b0b5f963da644b83e9c3f8c33224ea418",
+            "bytes": 4874
+          },
+          "wrapper": "\n# Phase37 wrapper: upstream body above is unchanged.\ndef p37.text.repeat(n: Nat, +block: String) -> String:\n  match n:\n    case 0n:\n      SNil{}\n    case 1n+p:\n      String.append(block, p37.text.repeat(p, block))\n\ndef bench(size: U32, seed: U32) -> String:\n  text = p37.text.repeat(U32.to_nat(size), String.append(\"α,β,🍎,中,\", String.append(U32.show(seed), \",\")))\n  sjoin(\"|\", ssplit(44, text))\n"
+        }
+      },
+      "point": {
+        "exportName": "bench",
+        "args": [
+          16,
+          17
+        ],
+        "expected": "α|β|🍎|中|17|α|β|🍎|中|17|α|β|🍎|中|17|α|β|🍎|中|17|α|β|🍎|中|17|α|β|🍎|中|17|α|β|🍎|中|17|α|β|🍎|中|17|α|β|🍎|中|17|α|β|🍎|中|17|α|β|🍎|中|17|α|β|🍎|中|17|α|β|🍎|中|17|α|β|🍎|中|17|α|β|🍎|中|17|α|β|🍎|中|17|"
+      },
+      "oracle": "Python code-point string repetition and delimiter replacement; complete output equality.",
+      "coverage": [
+        "Unicode",
+        "supplementary-plane",
+        "String",
+        "list-of-strings",
+        "split-join"
+      ],
+      "sets": [
+        "coverage",
+        "coverage-development"
+      ]
+    },
+    {
+      "id": "coverage-unicode-text-64",
+      "family": "unicode-text",
+      "category": "coverage",
+      "partition": "development",
+      "description": "Build, split and join mixed-script Unicode text",
+      "scope": "size blocks containing Greek, supplementary-plane emoji, CJK, decimal seed and separators; complete string observed",
+      "source": {
+        "path": "fixtures-new/unicode-text.bend",
+        "sha256": "e0dd8066deac347ee4d88afa5ef5db0e338c5f09b3e2cc6a7bf5ec553f52d550",
+        "bytes": 5277,
+        "provenance": {
+          "kind": "pinned-upstream-with-wrapper",
+          "original": {
+            "commit": "018751270e800bc222a93dad7f257083ee53a5f7",
+            "path": "tests/run/string_algorithms.bend",
+            "gitBlob": "f7a5f10a532aacf998ef2ba37ed2f1a66e6ad109",
+            "sha256": "b20ca36f67f1eba88ee4890ba9eb659b0b5f963da644b83e9c3f8c33224ea418",
+            "bytes": 4874
+          },
+          "wrapper": "\n# Phase37 wrapper: upstream body above is unchanged.\ndef p37.text.repeat(n: Nat, +block: String) -> String:\n  match n:\n    case 0n:\n      SNil{}\n    case 1n+p:\n      String.append(block, p37.text.repeat(p, block))\n\ndef bench(size: U32, seed: U32) -> String:\n  text = p37.text.repeat(U32.to_nat(size), String.append(\"α,β,🍎,中,\", String.append(U32.show(seed), \",\")))\n  sjoin(\"|\", ssplit(44, text))\n"
+        }
+      },
+      "point": {
+        "exportName": "bench",
+        "args": [
+          64,
+          123
+        ],
+        "expected": "α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|"
+      },
+      "oracle": "Python code-point string repetition and delimiter replacement; complete output equality.",
+      "coverage": [
+        "Unicode",
+        "supplementary-plane",
+        "String",
+        "list-of-strings",
+        "split-join"
+      ],
+      "sets": [
+        "coverage",
+        "coverage-development"
+      ]
+    },
+    {
+      "id": "coverage-expression-32",
+      "family": "expression",
+      "category": "coverage",
+      "partition": "holdout",
+      "description": "Construct and interpret an unbalanced arithmetic expression AST",
+      "scope": "size nested expression layers; variable Add/Mul/Sub dispatch and small side trees; U32 wrapping",
+      "source": {
+        "path": "fixtures-new/expression.bend",
+        "sha256": "62f40333fa5e7dacd2fadbd622d22033a3434de004df93a6870e4cd33df9d4a5",
+        "bytes": 1522,
+        "provenance": {
+          "kind": "pinned-upstream-with-wrapper",
+          "original": {
+            "commit": "018751270e800bc222a93dad7f257083ee53a5f7",
+            "path": "tests/run/expr_interpreter.bend",
+            "gitBlob": "0a7b6a511c26f42d0732347d932e0524b50d0e80",
+            "sha256": "74bdcbabe870bff14d0e9247a44a5687671e7d26ba17543198ccb222d9217d4e",
+            "bytes": 881
+          },
+          "wrapper": "\n# Phase37 wrapper: upstream body above is unchanged.\n# Non-balanced expression tree: one recursive child and one varying shallow arm.\ndef p37.expr.pick(op: Nat, e: Expr, +seed: U32) -> Expr:\n  match op:\n    case 0n:\n      Add{e, Mul{Lit{seed}, Lit{3}}}\n    case 1n+0n:\n      Mul{e, Add{Lit{U32.mod(seed, 5)}, Lit{1}}}\n    case 1n+1n+p:\n      Sub{e, Add{Lit{seed}, Lit{7}}}\n\ndef p37.expr(n: Nat, +seed: U32) -> Expr:\n  match n:\n    case 0n:\n      Lit{seed}\n    case 1n+p:\n      p37.expr.pick(U32.to_nat(U32.mod(seed, 3)), p37.expr(p, U32.add(seed, 1)), seed)\n\ndef bench(size: U32, seed: U32) -> U32:\n  eval(p37.expr(U32.to_nat(size), seed))\n"
+        }
+      },
+      "point": {
+        "exportName": "bench",
+        "args": [
+          32,
+          17
+        ],
+        "expected": 2928000
+      },
+      "oracle": "Independent bottom-up scalar recurrence; no AST allocation or recursive evaluator.",
+      "coverage": [
+        "AST",
+        "unbalanced-tree",
+        "sum-types",
+        "producer-consumer",
+        "U32-wrapping"
+      ],
+      "sets": [
+        "coverage",
+        "coverage-holdout"
+      ]
+    },
+    {
+      "id": "coverage-expression-128",
+      "family": "expression",
+      "category": "coverage",
+      "partition": "holdout",
+      "description": "Construct and interpret an unbalanced arithmetic expression AST",
+      "scope": "size nested expression layers; variable Add/Mul/Sub dispatch and small side trees; U32 wrapping",
+      "source": {
+        "path": "fixtures-new/expression.bend",
+        "sha256": "62f40333fa5e7dacd2fadbd622d22033a3434de004df93a6870e4cd33df9d4a5",
+        "bytes": 1522,
+        "provenance": {
+          "kind": "pinned-upstream-with-wrapper",
+          "original": {
+            "commit": "018751270e800bc222a93dad7f257083ee53a5f7",
+            "path": "tests/run/expr_interpreter.bend",
+            "gitBlob": "0a7b6a511c26f42d0732347d932e0524b50d0e80",
+            "sha256": "74bdcbabe870bff14d0e9247a44a5687671e7d26ba17543198ccb222d9217d4e",
+            "bytes": 881
+          },
+          "wrapper": "\n# Phase37 wrapper: upstream body above is unchanged.\n# Non-balanced expression tree: one recursive child and one varying shallow arm.\ndef p37.expr.pick(op: Nat, e: Expr, +seed: U32) -> Expr:\n  match op:\n    case 0n:\n      Add{e, Mul{Lit{seed}, Lit{3}}}\n    case 1n+0n:\n      Mul{e, Add{Lit{U32.mod(seed, 5)}, Lit{1}}}\n    case 1n+1n+p:\n      Sub{e, Add{Lit{seed}, Lit{7}}}\n\ndef p37.expr(n: Nat, +seed: U32) -> Expr:\n  match n:\n    case 0n:\n      Lit{seed}\n    case 1n+p:\n      p37.expr.pick(U32.to_nat(U32.mod(seed, 3)), p37.expr(p, U32.add(seed, 1)), seed)\n\ndef bench(size: U32, seed: U32) -> U32:\n  eval(p37.expr(U32.to_nat(size), seed))\n"
+        }
+      },
+      "point": {
+        "exportName": "bench",
+        "args": [
+          128,
+          123
+        ],
+        "expected": 3393903617
+      },
+      "oracle": "Independent bottom-up scalar recurrence; no AST allocation or recursive evaluator.",
+      "coverage": [
+        "AST",
+        "unbalanced-tree",
+        "sum-types",
+        "producer-consumer",
+        "U32-wrapping"
+      ],
+      "sets": [
+        "coverage",
+        "coverage-holdout"
+      ]
+    },
+    {
+      "id": "coverage-map-churn-32",
+      "family": "map-churn",
+      "category": "coverage",
+      "partition": "development",
+      "description": "Build, replace, delete and traverse a larger string-key map",
+      "scope": "size distinct keys; replace every third key; delete every fourth; digest every remaining ordered key and value",
+      "source": {
+        "path": "fixtures-new/map-churn.bend",
+        "sha256": "180fc1c2c96620613fb44e9f051a208121b65c499349dc08a10de08725c7f30e",
+        "bytes": 1703,
+        "provenance": {
+          "kind": "phase37-authored-application",
+          "description": "Independent program authored before candidate optimization; pinned Base imported unchanged.",
+          "record": "design/phase37/applications.md"
+        }
+      },
+      "point": {
+        "exportName": "bench",
+        "args": [
+          32,
+          17
+        ],
+        "expected": 2930913555
+      },
+      "oracle": "Python dictionary, lexical ordering and independent wrapping content digest.",
+      "coverage": [
+        "Map",
+        "many-keys",
+        "replacement",
+        "deletion",
+        "ordered-traversal",
+        "String-formatting"
+      ],
+      "sets": [
+        "coverage",
+        "coverage-development"
+      ]
+    },
+    {
+      "id": "coverage-map-churn-128",
+      "family": "map-churn",
+      "category": "coverage",
+      "partition": "development",
+      "description": "Build, replace, delete and traverse a larger string-key map",
+      "scope": "size distinct keys; replace every third key; delete every fourth; digest every remaining ordered key and value",
+      "source": {
+        "path": "fixtures-new/map-churn.bend",
+        "sha256": "180fc1c2c96620613fb44e9f051a208121b65c499349dc08a10de08725c7f30e",
+        "bytes": 1703,
+        "provenance": {
+          "kind": "phase37-authored-application",
+          "description": "Independent program authored before candidate optimization; pinned Base imported unchanged.",
+          "record": "design/phase37/applications.md"
+        }
+      },
+      "point": {
+        "exportName": "bench",
+        "args": [
+          128,
+          123
+        ],
+        "expected": 3714872484
+      },
+      "oracle": "Python dictionary, lexical ordering and independent wrapping content digest.",
+      "coverage": [
+        "Map",
+        "many-keys",
+        "replacement",
+        "deletion",
+        "ordered-traversal",
+        "String-formatting"
+      ],
+      "sets": [
+        "coverage",
+        "coverage-development"
+      ]
+    },
+    {
+      "id": "coverage-numeric-recurrence-256",
+      "family": "numeric-recurrence",
+      "category": "coverage",
+      "partition": "development",
+      "description": "F32 nonlinear recurrence with wrapping word observation",
+      "scope": "size logistic recurrence steps; round each operation to binary32; incorporate every intermediate value into U32 digest",
+      "source": {
+        "path": "fixtures-new/numeric-recurrence.bend",
+        "sha256": "36f803ed8d88bf20c5878092a572d4ae2ef48d71fd6710024f05a57349f4b0f3",
+        "bytes": 556,
+        "provenance": {
+          "kind": "phase37-authored-application",
+          "description": "Independent program authored before candidate optimization; pinned Base imported unchanged.",
+          "record": "design/phase37/applications.md"
+        }
+      },
+      "point": {
+        "exportName": "bench",
+        "args": [
+          256,
+          17
+        ],
+        "expected": 2747714257
+      },
+      "oracle": "Python struct binary32 rounding after each primitive, Python integer U32 wrapping; exact scalar equality.",
+      "coverage": [
+        "F32-rounding",
+        "F32-U32-conversion",
+        "numeric-loop",
+        "Nat-counter",
+        "U32-wrapping"
+      ],
+      "sets": [
+        "coverage",
+        "coverage-development"
+      ]
+    },
+    {
+      "id": "coverage-numeric-recurrence-1024",
+      "family": "numeric-recurrence",
+      "category": "coverage",
+      "partition": "development",
+      "description": "F32 nonlinear recurrence with wrapping word observation",
+      "scope": "size logistic recurrence steps; round each operation to binary32; incorporate every intermediate value into U32 digest",
+      "source": {
+        "path": "fixtures-new/numeric-recurrence.bend",
+        "sha256": "36f803ed8d88bf20c5878092a572d4ae2ef48d71fd6710024f05a57349f4b0f3",
+        "bytes": 556,
+        "provenance": {
+          "kind": "phase37-authored-application",
+          "description": "Independent program authored before candidate optimization; pinned Base imported unchanged.",
+          "record": "design/phase37/applications.md"
+        }
+      },
+      "point": {
+        "exportName": "bench",
+        "args": [
+          1024,
+          123
+        ],
+        "expected": 1376326140
+      },
+      "oracle": "Python struct binary32 rounding after each primitive, Python integer U32 wrapping; exact scalar equality.",
+      "coverage": [
+        "F32-rounding",
+        "F32-U32-conversion",
+        "numeric-loop",
+        "Nat-counter",
+        "U32-wrapping"
+      ],
+      "sets": [
+        "coverage",
+        "coverage-development"
+      ]
+    },
+    {
+      "id": "coverage-record-aggregation-64",
+      "family": "record-aggregation",
+      "category": "coverage",
+      "partition": "holdout",
+      "description": "Generate textual records, parse amounts, aggregate and render a report",
+      "scope": "size records;16 Unicode department keys; decimal parsing; whole ordered report observed; in-memory, not CSV or IO throughput",
+      "source": {
+        "path": "fixtures-new/record-aggregation.bend",
+        "sha256": "6b31a2cfc58fbb33376fee6bf55d2a6aa05210be40a36342a82da87364080937",
+        "bytes": 1651,
+        "provenance": {
+          "kind": "phase37-authored-application",
+          "description": "Independent program authored before candidate optimization; pinned Base imported unchanged.",
+          "record": "design/phase37/applications.md"
+        }
+      },
+      "point": {
+        "exportName": "bench",
+        "args": [
+          64,
+          17
+        ],
+        "expected": "部門0=1840;部門1=1620;部門10=1952;部門11=2100;部門12=1248;部門13=1396;部門14=1544;部門15=1692;部門2=1768;部門3=1916;部門4=2064;部門5=2212;部門6=2360;部門7=1508;部門8=1656;部門9=1804;"
+      },
+      "oracle": "Independent Python integer/dictionary aggregation and full ordered report string.",
+      "coverage": [
+        "composed-application",
+        "text-number-parsing",
+        "Map",
+        "Unicode",
+        "list-of-records",
+        "report-formatting"
+      ],
+      "sets": [
+        "coverage",
+        "coverage-holdout"
+      ]
+    },
+    {
+      "id": "coverage-record-aggregation-256",
+      "family": "record-aggregation",
+      "category": "coverage",
+      "partition": "holdout",
+      "description": "Generate textual records, parse amounts, aggregate and render a report",
+      "scope": "size records;16 Unicode department keys; decimal parsing; whole ordered report observed; in-memory, not CSV or IO throughput",
+      "source": {
+        "path": "fixtures-new/record-aggregation.bend",
+        "sha256": "6b31a2cfc58fbb33376fee6bf55d2a6aa05210be40a36342a82da87364080937",
+        "bytes": 1651,
+        "provenance": {
+          "kind": "phase37-authored-application",
+          "description": "Independent program authored before candidate optimization; pinned Base imported unchanged.",
+          "record": "design/phase37/applications.md"
+        }
+      },
+      "point": {
+        "exportName": "bench",
+        "args": [
+          256,
+          123
+        ],
+        "expected": "部門0=6968;部門1=7560;部門10=7888;部門11=7008;部門12=7600;部門13=8192;部門14=7784;部門15=7376;部門2=8152;部門3=7744;部門4=7336;部門5=6928;部門6=7520;部門7=8112;部門8=8704;部門9=8296;"
+      },
+      "oracle": "Independent Python integer/dictionary aggregation and full ordered report string.",
+      "coverage": [
+        "composed-application",
+        "text-number-parsing",
+        "Map",
+        "Unicode",
+        "list-of-records",
+        "report-formatting"
+      ],
+      "sets": [
+        "coverage",
+        "coverage-holdout"
+      ]
+    }
+  ]
+}

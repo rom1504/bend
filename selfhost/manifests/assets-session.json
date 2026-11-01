@@ -1,0 +1,507 @@
+{
+  "kind": "bend-build-assets",
+  "version": 1,
+  "complete": true,
+  "upstream": "059266225b77c8ca256ac6b25ee5c21449bab151",
+  "assets": {
+    "qbe-n2": {
+      "file": "selfhost/.assets/native/qbe-n2",
+      "bytes": 19100528,
+      "sha256": "367b639915c0bbc8906fc5827b002ca2c7fc07acc238034e54be994f8833d251",
+      "executable": true
+    },
+    "qbe-api": {
+      "file": "selfhost/.assets/native/qbe-api.mjs",
+      "bytes": 2580282,
+      "sha256": "f482b8d9c8d7668439666bb34b23b8960468edcf4b5d238db2028011a75b26fc"
+    },
+    "qbe-runtime": {
+      "file": "selfhost/.assets/native/qbe-runtime.o",
+      "bytes": 119096,
+      "sha256": "2d07832382a11d7e993124ecc70452e4e1a3b7f753cf429343e1183cd8e493a3"
+    },
+    "prepared-base": {
+      "file": "selfhost/.assets/base/base.p130",
+      "bytes": 2612691,
+      "sha256": "984fad041a0ba855ea0aaedd384485afa2153da644655c00882eb50ace33817f"
+    },
+    "qbe": {
+      "file": "selfhost/.assets/bin/qbe",
+      "bytes": 262024,
+      "sha256": "1eca24288f9574ad57032ac88f11c3f74ced605838749226d77a9acd4443e5f4",
+      "executable": true
+    },
+    "bun": {
+      "file": "selfhost/.assets/bin/bun",
+      "bytes": 88979072,
+      "sha256": "7ce7d6b654eddeec20afddf2396317fba6dc19ab52788a27e894e1806bf8f24b",
+      "executable": true
+    },
+    "base": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/base.bend",
+      "bytes": 75064,
+      "sha256": "99ac43f2b2bb3e3f39acdcedcecbbd3cb44749ce13969c827d6973fa66f7facf"
+    },
+    "assembler": {
+      "file": "/usr/bin/x86_64-linux-gnu-as",
+      "bytes": 472248,
+      "sha256": "fac4e966afe9223dbab23aa15d27d144af81de4a44c8cad97c1dde290adb9493",
+      "executable": true
+    },
+    "linker": {
+      "file": "/usr/bin/x86_64-linux-gnu-gcc-10",
+      "bytes": 817704,
+      "sha256": "693abcb42e67fb871673f258a3644257ca69a209691ec4d8137a42442834bd19",
+      "executable": true
+    },
+    "clang": {
+      "file": "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+      "bytes": 119320,
+      "sha256": "9fcd5fc4baeea9c449bcc9ca4b9db7714465107669498b0056a853f22f5f4def",
+      "executable": true
+    },
+    "js-runtime": {
+      "file": "selfhost/src/runtime/js/direct.mjs",
+      "bytes": 13862,
+      "sha256": "7fe4fbb3ddfdd3c7ea9ccd8d71cecb8f3ce51cd678a8fb7d95fd02cc70aba575"
+    },
+    "c-runtime": {
+      "file": "selfhost/src/runtime/native/runtime.c",
+      "bytes": 83683,
+      "sha256": "9e1c59078878be94052cb4d2d63a713e19e29b41ed3f94b034f2175a50efd0a9"
+    },
+    "c-effect-args": {
+      "file": "selfhost/src/runtime/native/effs/args.c",
+      "bytes": 351,
+      "sha256": "7209a5fa11396fa8b0667a6738c913c40f554797e442c847a25e13a5f69676e0"
+    },
+    "c-effect-audio": {
+      "file": "selfhost/src/runtime/native/effs/audio.c",
+      "bytes": 6832,
+      "sha256": "049ac826d50def604c18cd4211d67573c4e27f4bc2600ce6c22e0dbe60c3783f"
+    },
+    "c-effect-audio_close": {
+      "file": "selfhost/src/runtime/native/effs/audio_close.c",
+      "bytes": 5368,
+      "sha256": "c67f807f7400065f20045392d87ef7e73af209f1aa0ee34a1eb35d568d94feb5"
+    },
+    "c-effect-audio_open": {
+      "file": "selfhost/src/runtime/native/effs/audio_open.c",
+      "bytes": 5606,
+      "sha256": "65df9665a396a7976b4fdfa556a73ec187e3b5e669e47888615cb0c63a42ce41"
+    },
+    "c-effect-audio_write": {
+      "file": "selfhost/src/runtime/native/effs/audio_write.c",
+      "bytes": 5898,
+      "sha256": "0eaaef9f111e40224f4adc4c8978b9e35f08613996381ac9b72641e2aeb608c4"
+    },
+    "c-effect-chan": {
+      "file": "selfhost/src/runtime/native/effs/chan.c",
+      "bytes": 2108,
+      "sha256": "31257d7f71c560863d66b96ee9296cea07dd997f147a1ccd1433cc0130993696"
+    },
+    "c-effect-chan_close": {
+      "file": "selfhost/src/runtime/native/effs/chan_close.c",
+      "bytes": 306,
+      "sha256": "d88e91ca179bfcdbf8580e75f1dbea4c5f240d3fbdb980a2ee24d1e662ff478a"
+    },
+    "c-effect-chan_new": {
+      "file": "selfhost/src/runtime/native/effs/chan_new.c",
+      "bytes": 203,
+      "sha256": "41d722added898f3a9eae186be969a7ca7f01bc3235331663b13319d14fb7ff2"
+    },
+    "c-effect-chan_recv": {
+      "file": "selfhost/src/runtime/native/effs/chan_recv.c",
+      "bytes": 743,
+      "sha256": "d0de18c78d78d5a3f4890cd2423a332d3d03a7b2f85e82202561fa67b4d57b3c"
+    },
+    "c-effect-chan_send": {
+      "file": "selfhost/src/runtime/native/effs/chan_send.c",
+      "bytes": 673,
+      "sha256": "1fc9e4857c440771e66ff83b61e6012727af51e62416ad818f5122e237784afc"
+    },
+    "c-effect-file_close": {
+      "file": "selfhost/src/runtime/native/effs/file_close.c",
+      "bytes": 243,
+      "sha256": "befd465a31b88936d772222d26b1019ea7330e59e6327d8ba90584c85e8b2fb3"
+    },
+    "c-effect-file_open": {
+      "file": "selfhost/src/runtime/native/effs/file_open.c",
+      "bytes": 1113,
+      "sha256": "f42a8bcc142b9003c7f6ca99287ca09c14f9efcbe15dea929c90c2fa062746e7"
+    },
+    "c-effect-file_read": {
+      "file": "selfhost/src/runtime/native/effs/file_read.c",
+      "bytes": 2130,
+      "sha256": "6af44266ca83ab55b2dd3bf20c17eea6bfb7a7a678908cfbf3579adef31fb678"
+    },
+    "c-effect-file_read_at": {
+      "file": "selfhost/src/runtime/native/effs/file_read_at.c",
+      "bytes": 1009,
+      "sha256": "689499b396a634a3ebb21ad2cc3846f1979b8f2747c07c15a38ee2f07c904b1c"
+    },
+    "c-effect-file_read_bytes": {
+      "file": "selfhost/src/runtime/native/effs/file_read_bytes.c",
+      "bytes": 987,
+      "sha256": "810e08bfe4439e71dc4bae03eeae680689af8092e144b53faacd75df198ef93d"
+    },
+    "c-effect-file_size": {
+      "file": "selfhost/src/runtime/native/effs/file_size.c",
+      "bytes": 771,
+      "sha256": "09906f3839f0f0fba1eea944c948e35f8e03627dc2b78e8debb43e0556f5d5d8"
+    },
+    "c-effect-file_write": {
+      "file": "selfhost/src/runtime/native/effs/file_write.c",
+      "bytes": 1423,
+      "sha256": "565dff20204e1e535e188b983cda6d6001d0e5dc37cfdf981960c07a9e154ee2"
+    },
+    "c-effect-file_write_bytes": {
+      "file": "selfhost/src/runtime/native/effs/file_write_bytes.c",
+      "bytes": 1320,
+      "sha256": "80784b7308c00f74ffae50ec0d8278227250edb8edd71a9e33c701482438f097"
+    },
+    "c-effect-get_env": {
+      "file": "selfhost/src/runtime/native/effs/get_env.c",
+      "bytes": 646,
+      "sha256": "62255e46c7e0c43baea62366830c4a5badb11cba517c0aa17f952f432f46d4a3"
+    },
+    "c-effect-listener_close": {
+      "file": "selfhost/src/runtime/native/effs/listener_close.c",
+      "bytes": 267,
+      "sha256": "11247352a8311b066fff27ed85958598214ece80f23a7ac59ee981ea569351ec"
+    },
+    "c-effect-now": {
+      "file": "selfhost/src/runtime/native/effs/now.c",
+      "bytes": 198,
+      "sha256": "da5fde65701c4fadc7560625c9615b4d60b2eefbd7b6bbe1aedda61887b825b9"
+    },
+    "c-effect-print": {
+      "file": "selfhost/src/runtime/native/effs/print.c",
+      "bytes": 397,
+      "sha256": "709500d2ace6e2eaeec0f5f1e4373d4ec5e402b3c1e289bd70dfef7e2a635b26"
+    },
+    "c-effect-print_err": {
+      "file": "selfhost/src/runtime/native/effs/print_err.c",
+      "bytes": 236,
+      "sha256": "72781d2adc88a4791d5530c9deff20824c38d5aa1ba43fb05aaa6a697e19f4b6"
+    },
+    "c-effect-process_run": {
+      "file": "selfhost/src/runtime/native/effs/process_run.c",
+      "bytes": 9149,
+      "sha256": "c12e5a182de9fdc5ef83d65f9f7c2c5746865d1049e5f3700438f8ac317b17c3"
+    },
+    "c-effect-random_u32": {
+      "file": "selfhost/src/runtime/native/effs/random_u32.c",
+      "bytes": 741,
+      "sha256": "10ef9045dcd539bc0ff609e61c77d585fb998ceb48656944d62727716263ee2d"
+    },
+    "c-effect-sleep": {
+      "file": "selfhost/src/runtime/native/effs/sleep.c",
+      "bytes": 206,
+      "sha256": "77e212d3baeec0b3dc0a9c7f630b43094986e433c049049d354a9681719e2ecd"
+    },
+    "c-effect-socket_close": {
+      "file": "selfhost/src/runtime/native/effs/socket_close.c",
+      "bytes": 255,
+      "sha256": "6e2fd1717a2fab133813af88fc0f5b5a8ce44c23bf411f269e71aac38671562e"
+    },
+    "c-effect-spawn": {
+      "file": "selfhost/src/runtime/native/effs/spawn.c",
+      "bytes": 218,
+      "sha256": "fb3dac6efa993c51f9d7a668cf8da2cac1148380b72cc18a558cba9ba70c01f3"
+    },
+    "c-effect-tcp_accept": {
+      "file": "selfhost/src/runtime/native/effs/tcp_accept.c",
+      "bytes": 909,
+      "sha256": "e0f0cf4199c278aec722e3c9b81ff879fcec31ec96ebaf66a954db673cf535f8"
+    },
+    "c-effect-tcp_connect": {
+      "file": "selfhost/src/runtime/native/effs/tcp_connect.c",
+      "bytes": 1294,
+      "sha256": "ae1515d0ff57215b03888e76cfe4ee485750ec226c28eed05d56e417f0f84f58"
+    },
+    "c-effect-tcp_listen": {
+      "file": "selfhost/src/runtime/native/effs/tcp_listen.c",
+      "bytes": 1013,
+      "sha256": "6212a0bc400e960e8b486f85a091cd4964f92b0546475481271c0f369a234d8c"
+    },
+    "c-effect-tcp_poll": {
+      "file": "selfhost/src/runtime/native/effs/tcp_poll.c",
+      "bytes": 1386,
+      "sha256": "feb6fa3f7c04b3143c71593e2c17088394d11474bd87ca791fb71fbf9f9a8f82"
+    },
+    "c-effect-tcp_recv": {
+      "file": "selfhost/src/runtime/native/effs/tcp_recv.c",
+      "bytes": 1979,
+      "sha256": "8378e28f0723dbeb2635b9909b01f8dc63dcac30161f79b8b743bd8037e45b40"
+    },
+    "c-effect-tcp_send": {
+      "file": "selfhost/src/runtime/native/effs/tcp_send.c",
+      "bytes": 2216,
+      "sha256": "85c1c9ff20d28c33968299c738b19ff752c768c72a53e071533a6960c0329a5a"
+    },
+    "c-effect-thread_count": {
+      "file": "selfhost/src/runtime/native/effs/thread_count.c",
+      "bytes": 481,
+      "sha256": "39515c611a2b42687fb670179f3d9032af1878727356754959061125d40fa7e7"
+    },
+    "c-effect-udp_bind": {
+      "file": "selfhost/src/runtime/native/effs/udp_bind.c",
+      "bytes": 882,
+      "sha256": "b30150927ffde3162d62012b67d43d95c79754f9539279628d2ad5bc9c040408"
+    },
+    "c-effect-udp_poll": {
+      "file": "selfhost/src/runtime/native/effs/udp_poll.c",
+      "bytes": 913,
+      "sha256": "66504dbbc09ab346e04cca7a22c60aacc8866555ac143088603cb4b568a64f71"
+    },
+    "c-effect-udp_recv_from": {
+      "file": "selfhost/src/runtime/native/effs/udp_recv_from.c",
+      "bytes": 1324,
+      "sha256": "4fc0f4e4ddeaef51bc4434b64e9cfcf3888b1470e534fe6ba27f80e48d2b8aef"
+    },
+    "c-effect-udp_send_to": {
+      "file": "selfhost/src/runtime/native/effs/udp_send_to.c",
+      "bytes": 1440,
+      "sha256": "71f92e41fb4cadee6714a0e066c22225d015f9e708cb58393b539cc6ee011721"
+    },
+    "c-effect-window": {
+      "file": "selfhost/src/runtime/native/effs/window.c",
+      "bytes": 23879,
+      "sha256": "7bda00a55917f11ff1fa532b1406ec5c1a8a7eef6f6ba2a933dd958256e0a409"
+    },
+    "c-effect-window_close": {
+      "file": "selfhost/src/runtime/native/effs/window_close.c",
+      "bytes": 916,
+      "sha256": "655afbdf8a5f7fa80963bad64b43c8dfe7ec1f80896db381792d0d6933f3be2d"
+    },
+    "c-effect-window_frame": {
+      "file": "selfhost/src/runtime/native/effs/window_frame.c",
+      "bytes": 11055,
+      "sha256": "01dc840b2145efb8c91b4ffe7360e3520753f59c42e122703c3a6190c50e1aa4"
+    },
+    "c-effect-window_open": {
+      "file": "selfhost/src/runtime/native/effs/window_open.c",
+      "bytes": 6927,
+      "sha256": "1be9c669b47a44716b9cef1aafaafa1ed2a2268730fab475efa762cf368fc21d"
+    },
+    "c-effect-window_set_title": {
+      "file": "selfhost/src/runtime/native/effs/window_set_title.c",
+      "bytes": 1141,
+      "sha256": "cd60a39ca4084794f3e7aef939de8c7e02ef0ae2158bf52a69f93c21a59ebba5"
+    },
+    "c-effect-write": {
+      "file": "selfhost/src/runtime/native/effs/write.c",
+      "bytes": 370,
+      "sha256": "c1bcd80d50c4901027c801cdd8d7464ea3029361115ac47044c992ce2235a8ac"
+    },
+    "upstream-bend": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/bend.ts",
+      "bytes": 138101,
+      "sha256": "1d133151652b597a1a035c77c172475e6de096da37f3b9e3adc23c2f75bdfe49"
+    },
+    "upstream-comp": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/comp.ts",
+      "bytes": 185124,
+      "sha256": "2b13224ba09a9e39e37cccf06e449c1bdafe5e03a81641654f7d0e455507629c"
+    },
+    "upstream-main": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/main.ts",
+      "bytes": 35211,
+      "sha256": "407c0196a47e464640c6557cb06d230016270a40f28ea4250f00936ab79c2f8e"
+    },
+    "upstream-safe": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/safe.ts",
+      "bytes": 65468,
+      "sha256": "bf495d64c03caa7a2558aaae5e172cd7743b9aa5470c4d33ad86634e23d81ffc"
+    },
+    "objcopy": {
+      "file": "/usr/bin/x86_64-linux-gnu-objcopy",
+      "bytes": 282008,
+      "sha256": "85fb52114d8d29d4eae51dfd641231e88b37d6ff5b2e26da02a9c1db0a992b71",
+      "executable": true
+    }
+  },
+  "images": {
+    "qbe-n2": {
+      "host": "native",
+      "stage": "N2",
+      "targets": [
+        "qbe"
+      ],
+      "protocol": "qbe-source-v1",
+      "sourceIdentity": {
+        "bytes": 3010912,
+        "sha256": "96c40c9dd273e2fae5fabfe68093aa7fb8f25f075e2317bed06ff46d4feaab80"
+      },
+      "linkedRuntime": {
+        "bytes": 119096,
+        "sha256": "2d07832382a11d7e993124ecc70452e4e1a3b7f753cf429343e1183cd8e493a3"
+      },
+      "preparationModes": [
+        "cache",
+        "live"
+      ],
+      "qualification": "Qualified ordinary native compiler; not installed/incremental-qualified."
+    },
+    "qbe-api": {
+      "host": "js",
+      "stage": "B1",
+      "targets": [
+        "qbe"
+      ],
+      "protocol": "qbe-api-v1",
+      "checked": true,
+      "sourceIdentity": {
+        "bytes": 3010912,
+        "sha256": "96c40c9dd273e2fae5fabfe68093aa7fb8f25f075e2317bed06ff46d4feaab80"
+      },
+      "exports": [
+        "p88_cache_prepare",
+        "p86_plan",
+        "p134e_plan",
+        "p134e_begin",
+        "p134e_next",
+        "p144o_controls",
+        "p144e_controls",
+        "p144pc_controls",
+        "p140n_controls",
+        "p144ap_controls",
+        "p125pc_controls",
+        "p127lb_controls",
+        "p131ic_case",
+        "p131ic_legacy_case",
+        "p131ic_queries",
+        "p144ce_controls",
+        "p114s_ranges",
+        "p134v_controls",
+        "p114s_control_report",
+        "p146ct_controls",
+        "p146ct_case",
+        "p146ct_optimization",
+        "p146cf_controls"
+      ],
+      "preparationModes": [
+        "cache"
+      ],
+      "qualification": "Upstream checked API; original roots omit p86_prepare, so cache only."
+    }
+  },
+  "preparedBase": {
+    "format": "p130-word-pair-v1",
+    "stamp": "p130-word-pair-v1:p88-private-base-text-1:8dec5b64d3900d61a208e51d92113194b91364c4f4d35d1903edb481d678ed03",
+    "sourceIdentity": {
+      "format": "p88-private-base-text-1",
+      "cache": "97368c6813bad695800b1404af84ab13e5e34b1d5f575828f8fcb681aa2b5627",
+      "api": "098320e8f3e40894156790d740ad205e386f375195b3c6741d67cca96e94e092",
+      "base": "99ac43f2b2bb3e3f39acdcedcecbbd3cb44749ce13969c827d6973fa66f7facf",
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/base.bend",
+      "begin": 1,
+      "end": 75066,
+      "termAbi": 1,
+      "spanAbi": 3,
+      "worldVersion": 3
+    },
+    "sourceBegin": 1,
+    "sourceEnd": 75066,
+    "base": "base",
+    "carrier": "prepared-base"
+  },
+  "providers": {
+    "js": {
+      "runtime": "js-runtime"
+    },
+    "c": {
+      "runtime": "c-runtime",
+      "effects": [
+        "c-effect-args",
+        "c-effect-audio",
+        "c-effect-audio_close",
+        "c-effect-audio_open",
+        "c-effect-audio_write",
+        "c-effect-chan",
+        "c-effect-chan_close",
+        "c-effect-chan_new",
+        "c-effect-chan_recv",
+        "c-effect-chan_send",
+        "c-effect-file_close",
+        "c-effect-file_open",
+        "c-effect-file_read",
+        "c-effect-file_read_at",
+        "c-effect-file_read_bytes",
+        "c-effect-file_size",
+        "c-effect-file_write",
+        "c-effect-file_write_bytes",
+        "c-effect-get_env",
+        "c-effect-listener_close",
+        "c-effect-now",
+        "c-effect-print",
+        "c-effect-print_err",
+        "c-effect-process_run",
+        "c-effect-random_u32",
+        "c-effect-sleep",
+        "c-effect-socket_close",
+        "c-effect-spawn",
+        "c-effect-tcp_accept",
+        "c-effect-tcp_connect",
+        "c-effect-tcp_listen",
+        "c-effect-tcp_poll",
+        "c-effect-tcp_recv",
+        "c-effect-tcp_send",
+        "c-effect-thread_count",
+        "c-effect-udp_bind",
+        "c-effect-udp_poll",
+        "c-effect-udp_recv_from",
+        "c-effect-udp_send_to",
+        "c-effect-window",
+        "c-effect-window_close",
+        "c-effect-window_frame",
+        "c-effect-window_open",
+        "c-effect-window_set_title",
+        "c-effect-write"
+      ]
+    }
+  },
+  "runtimePolicies": {
+    "qbe-runtime": {
+      "threads": 1,
+      "gpu": "off",
+      "bendHeapMutators": 1,
+      "hostIoWorkersAllowed": true,
+      "providerScope": "Pinned direct-QBE foreign provider table; no arbitrary C embedding or foreign callbacks."
+    }
+  },
+  "toolchains": {
+    "qbe": {
+      "target": "amd64_sysv",
+      "assemblerFlags": [
+        "-mbranches-within-32B-boundaries"
+      ],
+      "linkerFlags": [
+        "-no-pie"
+      ],
+      "libraries": [
+        "-pthread",
+        "-lm"
+      ]
+    },
+    "c": {
+      "compiler": "clang",
+      "includeFlags": [
+        "-isystem",
+        "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/include/clang"
+      ],
+      "flags": [
+        "-std=c11",
+        "-O3"
+      ],
+      "libraries": [
+        "-lpthread",
+        "-lm"
+      ],
+      "qualification": "Pinned incumbent construction policy; each product still requires independent qualification."
+    }
+  },
+  "scope": "Operational pins only. Historical derivation is data in assets-native-provenance.json; no tool reads it during a build.",
+  "sessionScope": "Experimental session/object-reuse tools share the maintained core. No incremental qualification or extra native image capabilities are inferred."
+}

@@ -1,0 +1,48 @@
+{
+  "id": "bad06-environment-remove-all",
+  "label": "Environment removal accidentally removes every duplicate ID",
+  "classification": "synthetic-semantic-fault",
+  "rationale": "A generic filtering rewrite changes this ordered environment operation from remove-first to remove-all, unlike index_remove. Full binding words and kinds after the first match must survive.",
+  "witness": {
+    "expression": "nc_remove_env([NC_Binding{7, \"first\", N_Box{}}, NC_Binding{8, \"middle\", N_W32{}}, NC_Binding{7, \"second\", N_W64{}}], 7)",
+    "baselineExpected": "[NC_Binding{8, \"middle\", N_W32{}}, NC_Binding{7, \"second\", N_W64{}}]",
+    "challengeExpected": "[NC_Binding{8, \"middle\", N_W32{}}]",
+    "returnType": "List<&2,NC_Binding>",
+    "baselineValueBend": "[NC_Binding{8, \"middle\", N_W32{}}, NC_Binding{7, \"second\", N_W64{}}]",
+    "challengeValueBend": "[NC_Binding{8, \"middle\", N_W32{}}]",
+    "source": {
+      "path": "selfhost/tools/laws/phase97/challenge/bad06-environment-remove-all.witness.bend",
+      "bytes": 600,
+      "sha256": "81f97cb447de4d3c5343d061eab553bec66cbf43514f26b2f6746e5b0a578f8a"
+    }
+  },
+  "domain": "Finite typed helper environments including repeated IDs. No claim that every checked source lowering produces duplicates.",
+  "expectedDisposition": "reject-semantic-change",
+  "executed": false,
+  "schema": "phase97-independent-challenge-recipe-v1",
+  "kind": "bad",
+  "file": "selfhost/src/back/native/bridge.bend",
+  "function": "nc_remove_env",
+  "before": "      nt_choose(List<&2, NC_Binding>, U32.is_eq(at, id), u => rest, u => Con{NC_Binding{at, word, kind}, nc_remove_env(rest, id)})",
+  "after": "      nt_choose(List<&2, NC_Binding>, U32.is_eq(at, id), u => nc_remove_env(rest, id), u => Con{NC_Binding{at, word, kind}, nc_remove_env(rest, id)})",
+  "expectedBehavior": "A generic filtering rewrite changes this ordered environment operation from remove-first to remove-all, unlike index_remove. Full binding words and kinds after the first match must survive.",
+  "edits": [
+    {
+      "source": {
+        "path": "selfhost/src/back/native/bridge.bend",
+        "bytes": 34875,
+        "sha256": "d2165a184703a0e2c9355f6cf1081b5582c9f34dd0cb22757495e8bc8fd30358"
+      },
+      "before": "      nt_choose(List<&2, NC_Binding>, U32.is_eq(at, id), u => rest, u => Con{NC_Binding{at, word, kind}, nc_remove_env(rest, id)})",
+      "after": "      nt_choose(List<&2, NC_Binding>, U32.is_eq(at, id), u => nc_remove_env(rest, id), u => Con{NC_Binding{at, word, kind}, nc_remove_env(rest, id)})",
+      "expectedOccurrences": 1,
+      "line": 182,
+      "changedSourceSha256": "f5ac31ef30deb082ab8eab0bf69be4e066a450027fbe12b0a5f84f7921ea43e7",
+      "changedSourceBytes": 34894
+    }
+  ],
+  "provenance": {
+    "classification": "synthetic-semantic-fault",
+    "selection": "Independent maintained-source reasoning before suite results."
+  }
+}

@@ -1,0 +1,279 @@
+{
+  "schema": "bend-profiler-law-tool-migration-v1",
+  "status": "implemented-offline-verified; live gates owned by root",
+  "targetsRunByThisLane": false,
+  "migrations": [
+    {
+      "origin": {
+        "file": "selfhost/tools/performance/phase68/parity-survey/sample-analysis-v2.py",
+        "bytes": 11982,
+        "sha256": "2000917d241d7ff3c4476353553e6c8249093772c96b7adf5397de94b3acf0e5"
+      },
+      "current": [
+        {
+          "file": "selfhost/tools/profiler/elf.py",
+          "bytes": 3141,
+          "sha256": "a18cee1be520527d98b86910d2c9d075a864ccf34675d8bdfac3cb157346485a"
+        }
+      ],
+      "changes": "Four functions copied exactly; generic analyzer imports local helper."
+    },
+    {
+      "origin": {
+        "file": "selfhost/tools/performance/phase112/profile/control-freeze.json",
+        "bytes": 919,
+        "sha256": "d5a52fe6c0816b81048af8c66b495fd7cfac23d6ae69257f99596bf5e169f80c"
+      },
+      "current": [
+        {
+          "file": "selfhost/tools/profiler/controls/migration.json",
+          "bytes": 1560,
+          "sha256": "53e4cd5b0578217bc37a5f75ebb55084928521c72504e11a8bbb6cdd77681c3a"
+        },
+        {
+          "file": "selfhost/tools/profiler/check-runtime.py",
+          "bytes": 10153,
+          "sha256": "8779acef51b009fc23d717030a0e9c48efd13d02754a7b999441ed36d75f789a"
+        }
+      ],
+      "changes": "Original fixture/expected hashes unchanged; historical path is provenance only."
+    },
+    {
+      "origin": {
+        "file": "selfhost/tools/performance/phase144/emission/string-append/profile/prepare-v01.py",
+        "bytes": 7032,
+        "sha256": "f98c840793e0958c931e19071448514860ee6314d05072333db76983e3820b14"
+      },
+      "current": [
+        {
+          "file": "selfhost/tools/profiler/concat_v1.py",
+          "bytes": 7902,
+          "sha256": "1e8b3a2dd041361106fda6cbe6ae3b7761d0b7e6384a68f6d8b8b929f4b6403f"
+        },
+        {
+          "file": "selfhost/tools/profiler/runtime.py",
+          "bytes": 9469,
+          "sha256": "3dbc144ec75822690c5d099d8d440fb8d82d8f1ceea9ca5c236f3f0c77b0bb9b"
+        }
+      ],
+      "changes": "Exact counter/hook literals; configurable input/runtime plan replaces fixed campaign source/workloads."
+    },
+    {
+      "origin": {
+        "file": "selfhost/proofs/phase98/prepare-current.py",
+        "bytes": 5929,
+        "sha256": "66760eefb521a7a879701a7befbea4ce9afff40fbcb3fc4cc69d9cad14f167f4"
+      },
+      "current": [
+        {
+          "file": "selfhost/tools/laws/prepare.py",
+          "bytes": 6343,
+          "sha256": "749837273219217de911d629cef0ea5998221a063537ca577c2a2776a4999a92"
+        },
+        {
+          "file": "selfhost/tools/laws/bindings.py",
+          "bytes": 6705,
+          "sha256": "65f89a3a1e393e0c138654c69248241d2eac60eed3807f6a554b54cb5f5f6e98"
+        }
+      ],
+      "changes": "Actual-source extraction retained; explicit candidate and small frozen reference; adds original representation package; exact verifier."
+    },
+    {
+      "origin": {
+        "file": "selfhost/tools/laws/phase98/check.py",
+        "bytes": 7142,
+        "sha256": "c11c5801eca36a2a36febf2b50d41dfe5053ab37286417e75953633eb3cac1dd"
+      },
+      "current": [
+        {
+          "file": "selfhost/tools/laws/check.py",
+          "bytes": 8813,
+          "sha256": "76794fae003256a61fc12a41dac90736aaa48f625d914a8ae018e71834cd1c71"
+        }
+      ],
+      "changes": "Explicit operational assets; no previous report or nested guard; snapshots source closure, authenticates binding, checks nonopaque laws and independent false kernel control."
+    },
+    {
+      "origin": {
+        "file": "selfhost/proofs/phase96/production/prepare.py",
+        "bytes": 8847,
+        "sha256": "a23c3cb5921d30e75379ef54b061d74e515ec2e9c43938392af45ab65f03b9a3"
+      },
+      "current": [
+        {
+          "file": "selfhost/tools/laws/prepare-finite.py",
+          "bytes": 11280,
+          "sha256": "a6eae7c116e053648197ee4f46ffff8dfaa582768a6ee1cf46491c7ae2250bb1"
+        }
+      ],
+      "changes": "Exact current assembled-source transitive helper extraction, unchanged oracle/serializer/cases; linear UTF8 offset accounting, explicit assets, separately optional2witnesses.",
+      "previousMaintainedPins": [
+        {
+          "file": "selfhost/tools/laws/prepare-finite.py",
+          "bytes": 9562,
+          "sha256": "a22158cf68db804909828cacf31c487ea9b6f8ce1e5f24edacc93c861583ef26"
+        }
+      ]
+    },
+    {
+      "origin": {
+        "file": "selfhost/proofs/phase96/production/run.mjs",
+        "bytes": 2810,
+        "sha256": "708b6f0a00b0878ce9a934e0275bb22a4013c11116ebae1d6262654f34d01129"
+      },
+      "current": [
+        {
+          "file": "selfhost/tools/laws/finite-run.mjs",
+          "bytes": 3482,
+          "sha256": "47641733f9a2dc4793fba4f74d3a9fd7cf48e59e24cf029dd10f61ab8fab803c"
+        }
+      ],
+      "changes": "Full-value cases retained; actual driver-resolved API/runtime/Base identities verified. Explicitly disable shared Base-cache reads/writes before loading the driver; retain old frozen workers.",
+      "previousMaintainedPin": {
+        "file": "selfhost/tools/laws/finite-run.mjs",
+        "bytes": 3126,
+        "sha256": "2fc76d5a15dab0f610d0f11635974b05de8a08e62f68d02a134e0b0fc900c7e1"
+      },
+      "previousMaintainedPins": [
+        {
+          "file": "selfhost/tools/laws/finite-run.mjs",
+          "bytes": 3195,
+          "sha256": "9344d9737ef595a30a549de1b1541dd73be6a21205d392c850f85f3293e6fe72"
+        }
+      ]
+    },
+    {
+      "origin": {
+        "file": "selfhost/tools/laws/phase96/production.py",
+        "bytes": 5263,
+        "sha256": "dfb5ab048653f55575a67a1af58fe726c6fc67b31dfce6f66af5917a1c484914"
+      },
+      "current": [
+        {
+          "file": "selfhost/tools/laws/finite.py",
+          "bytes": 5561,
+          "sha256": "e4e89f13ba17d7c3073c30a84089dd6bcfd891cfd35771965b255bc837448f15"
+        }
+      ],
+      "changes": "Explicit Node/Clang assets; common bounded child runner under single outer guard; semantic rejection requires complete wrong value, not admission failure."
+    },
+    {
+      "origin": {
+        "file": "selfhost/build/phase144/serial-rfc01/runtime.c",
+        "bytes": 150560,
+        "sha256": "aa95d2c0426c05bcc4d34244dd8b22b79ebcaf6d30634569201961f60b57f333"
+      },
+      "current": [
+        {
+          "file": "selfhost/src/runtime/qbe/runtime.c",
+          "bytes": 150560,
+          "sha256": "aa95d2c0426c05bcc4d34244dd8b22b79ebcaf6d30634569201961f60b57f333"
+        }
+      ],
+      "changes": "Exact qualified serial-RFC runtime source; existing embedded providers preserved."
+    },
+    {
+      "origin": {
+        "file": "selfhost/build/phase144/serial-rfc01/runtime.h",
+        "bytes": 4518,
+        "sha256": "9b19b8d6ae1c8f07759041201c2692c20d9612393819e2bbc597deba44679d12"
+      },
+      "current": [
+        {
+          "file": "selfhost/src/runtime/qbe/runtime.h",
+          "bytes": 4518,
+          "sha256": "9b19b8d6ae1c8f07759041201c2692c20d9612393819e2bbc597deba44679d12"
+        }
+      ],
+      "changes": "Exact ABI header."
+    },
+    {
+      "origin": {
+        "file": "selfhost/build/phase144/serial-rfc01/primitives.h",
+        "bytes": 3067,
+        "sha256": "ecbdfe62b875fc20e5805840b83c3779ed8fb8fb1de83c543ba1ce1217165d20"
+      },
+      "current": [
+        {
+          "file": "selfhost/src/runtime/qbe/primitives.h",
+          "bytes": 3067,
+          "sha256": "ecbdfe62b875fc20e5805840b83c3779ed8fb8fb1de83c543ba1ce1217165d20"
+        }
+      ],
+      "changes": "Exact primitive adapter header."
+    }
+  ],
+  "fixtureMap": {
+    "file": "selfhost/tools/laws/fixtures-migration.json",
+    "bytes": 27043,
+    "sha256": "9c7ce4f637cb30b55e77f2dbed590019d3fd9062fedb1ea115156d3be9274a1c"
+  },
+  "offlineEvidence": {
+    "file": "selfhost/build/consolidation/profiler-law-offline02/report.json",
+    "bytes": 6826,
+    "sha256": "7bb8d6de5ab8ec3422c6b0395ac57c339c53cf9db2865ae3780bd2eede3e7b19"
+  },
+  "supportedLawCommands": [
+    "prepare.py",
+    "bindings.py (checker-internal)",
+    "check.py",
+    "prepare-finite.py",
+    "finite.py",
+    "finite-run.mjs (frozen worker)"
+  ],
+  "supportedProfilerCommands": [
+    "freeze.py",
+    "run.py",
+    "analyze.py",
+    "compare.py",
+    "render.py",
+    "owners.py",
+    "attribute.py",
+    "unwind.py",
+    "timeline.py",
+    "deduplicate.py",
+    "build-sampler.py",
+    "runtime.py",
+    "build-runtime.py",
+    "check-runtime.py",
+    "stages_v1.py",
+    "stages-build-v1.py",
+    "concat_v1.py"
+  ],
+  "liveHistoricalImplementationDependencies": [],
+  "remainingDependencies": [
+    "Explicit upstream frontend/Base, checked hosted API, Node/Bun/Clang, Lean4.34 installation and current BendTT module/runner assets.",
+    "Existing qualified QBE runtime object is operational asset; exact copied source rebuild/ABI execution pending root.",
+    "Generic ELF tools use system readelf/nm/objdump; sampler needs supported Linux timer/ELF facilities."
+  ],
+  "unavailableCurrentBindings": [
+    {
+      "package": "scalars",
+      "reason": "Current96c source has no p98_term_scalar_finish; refusal is preserved rather than replaying an old compiler."
+    }
+  ],
+  "historicalOnly": [
+    "Phase96/97/98 aggregate campaign/audit/challenge executors bind old source/images/receipts and require restoration for exact reproduction.",
+    "Independent challenge fixtures are retained; changed current declarations need explicit exact-source recipe/admission before a new detection claim."
+  ],
+  "invariants": [
+    "stages_v1 protocol and runtime-support sources unchanged.",
+    "Frozen profiler ABI C and expected JSON unchanged.",
+    "Original226 finite cases and oracle unchanged; optional2witnesses separately labeled.",
+    "Safe proof contracts, ownership model, source admission, finite tests, native execution and timings remain distinct.",
+    "No whole-compiler or native ownership proof inferred from helper checks."
+  ],
+  "rootGateResults": {
+    "tagProof": "selfhost/build/consolidation/law-tag01/report.json",
+    "runtimeObject": "selfhost/build/consolidation/runtime01/report.json",
+    "finiteInitial": "Refused stale driver pin before target; fresh finite-source02 and assets-laws-finite.json prepared.",
+    "profilerSmoke": "Pipeline/output/ABI PASS; capture unusable due timer overruns. See implementation/repository-consolidation/evidence/profiler-quality.json."
+  },
+  "freshRootSmoke": "selfhost/tests/consolidation/profiler-smoke.py",
+  "finiteObserverMaintenance": {
+    "specification": "selfhost/tests/laws/production/serializer-current.json",
+    "bridge": "selfhost/build/consolidation/law-finite-method03/bridge.json",
+    "productionOrExpectedValuesChanged": false,
+    "lawOfflineTests": 8
+  }
+}

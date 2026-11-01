@@ -1,0 +1,27 @@
+{
+  "kind": "bend-benchmark-acquisition-v1",
+  "catalog": "../catalogs/native45/catalog.json",
+  "reference": "upstream",
+  "roles": {
+    "upstream": {
+      "provider": "upstream",
+      "assets": "../../../manifests/assets-native.json",
+      "host": "typescript-bun",
+      "stage": "upstream",
+      "target": "c",
+      "policy": "ordinary",
+      "status": "checked-reference"
+    },
+    "candidate": {
+      "provider": "build",
+      "assets": "../../../manifests/assets-native.json",
+      "host": "native",
+      "stage": "N2",
+      "target": "qbe",
+      "imageKey": "qbe-n2",
+      "mode": "cache",
+      "policy": "ordinary-serial",
+      "status": "explicit-image-binding-no-promotion"
+    }
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "schema": "bend-history-retirement-controls-v1",
+  "complete": true,
+  "realRepositoryApplied": false,
+  "compilerTargetsRun": false,
+  "tests": 16,
+  "result": "pass",
+  "scope": "Only disposable temporary Git repositories were modified. Full working-tree/index retirement remains root approval gated.",
+  "inputs": [
+    {
+      "path": "selfhost/tools/history/retire.py",
+      "sha256": "2b770a22c6ba13c50886efde74afa9c29e5b78e54c00836ef6a7c19dea1c6b86",
+      "bytes": 19859
+    },
+    {
+      "path": "selfhost/tools/history/test_retire.py",
+      "sha256": "ca619ffc6cf91a01591b652892a7725d06e76a99768f9c3c87b4ea6a05a93a98",
+      "bytes": 12480
+    },
+    {
+      "path": "selfhost/tools/history/history_data.py",
+      "sha256": "3a308f6b5b7ba1c317f0210a0fc5bfbcee0195b530e11d714ed986755673157f",
+      "bytes": 793
+    },
+    {
+      "path": "selfhost/tools/history/inventory.py",
+      "sha256": "98f498671fc111467c858e070962b768c6cd065295a0da156bfc4bd683aff883",
+      "bytes": 8088
+    },
+    {
+      "path": "selfhost/tools/history/restore.py",
+      "sha256": "319c10e32286329e810abdf69e71a9dfb20a4f7310972a4185349b05ebf5a27c",
+      "bytes": 6960
+    },
+    {
+      "path": "selfhost/manifests/history-inventory-v2.json.gz",
+      "sha256": "c8b063c707b10aa981ca11af505c4b3c8f4f9eff6390c0ee7de3df323418e839",
+      "bytes": 4240257
+    },
+    {
+      "path": "selfhost/manifests/history-dependency-review-v1.json",
+      "sha256": "6bbf360bbe9c8bc845f7838c7d9f4fe248967b70451af7245d175c63df1f00e4",
+      "bytes": 1131
+    }
+  ],
+  "coverage": [
+    "clean delete",
+    "dirty index-only preservation",
+    "staged-edit exclusion",
+    "changed bytes refusal",
+    "direct/transitive dependency exclusion",
+    "canonical module protection",
+    "wrong baseline/hash refusal",
+    "clean protected-path preservation",
+    "historical traversal pruning",
+    "generic distribution prefix does not imply reading every historical compiler",
+    "deterministic gzip metadata and compressed receipt roundtrip",
+    "reviewed incidental-copy exception is bound to exact consumer SHA",
+    "numeric split archive variants and protected native prefixes",
+    "complete ordered archive groups and refusal of omitted/duplicate parts",
+    "group metadata rejects mismatched blob identities",
+    "exact Git split-part restoration without joining or repacking"
+  ]
+}

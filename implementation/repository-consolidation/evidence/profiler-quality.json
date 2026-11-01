@@ -1,0 +1,42 @@
+{
+  "schema": "bend-consolidation-profiler-observation-v1",
+  "pipelineComplete": true,
+  "exactOutputs": true,
+  "profileUsable": false,
+  "compiledProgramSpeedMeasured": false,
+  "role": "Actual native N2 compiler, whole live-Base lexer-to-QBE request; emitted lexer runtime not measured.",
+  "samples": 608,
+  "timerOverruns": 9072,
+  "bufferDrops": 0,
+  "requestedPeriodUs": 250,
+  "mainThreadCpuFraction": 0.995121077572699,
+  "deliveredPerExpectedPeriod": 0.06276454605807161,
+  "qualityReasons": [
+    "Lost samples or timer overruns",
+    "Delivered sample count differs materially from sampled-clock periods"
+  ],
+  "counterControlComplete": true,
+  "concatPositiveBranchesQualified": false,
+  "inputs": [
+    {
+      "file": "selfhost/build/consolidation/profiler-smoke01/report.json",
+      "bytes": 21344,
+      "sha256": "4e0fc7abfb9c3d6196ced3e544585decbc98120692e4c7896df72d96dcd8b097"
+    },
+    {
+      "file": "selfhost/build/consolidation/profiler-smoke01/capture/report.json",
+      "bytes": 21146,
+      "sha256": "d8c45c079bcf6071245f246bd3a0dbacb2b984e23c06516de02b6d8f7219e9b7"
+    },
+    {
+      "file": "selfhost/build/consolidation/profiler-smoke01/capture/001-sample-lexer-compile-qbe-n2/analysis.json",
+      "bytes": 282116,
+      "sha256": "b6aa3e1cf508420f9b32d4ee7ac3c51f2de660e8ca2a8ca51a92e4828ae335ef"
+    },
+    {
+      "file": "selfhost/build/consolidation/profiler-smoke01/runtime-control/report.json",
+      "bytes": 13159,
+      "sha256": "33dc3876698f28070ec0c5e08b6270aafce7ff59cf6b0a219b2ffa59a826f895"
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "kind": "consolidation-hosted-fixture-provenance",
+  "version": 1,
+  "scope": "Source-only exact-copy audit; no target execution. Origins are provenance, not runtime dependencies.",
+  "fixtures": [
+    {
+      "name": "numeric",
+      "fixture": "selfhost/tests/consolidation/hosted/fixtures/numeric.bend",
+      "origin": "selfhost/tools/performance/phase77/fixtures/small.bend",
+      "bytes": 94,
+      "sha256": "4ba893a14bc4c71c2f12250e0e3d084c7dce4abe958bf243fdcb45e224751be3",
+      "byteExactCopy": true
+    },
+    {
+      "name": "body-redex",
+      "fixture": "selfhost/tests/consolidation/hosted/fixtures/body-redex.bend",
+      "origin": "selfhost/.bootstrap/upstream-phase66/tests/run/beta_nested_redex.bend",
+      "bytes": 502,
+      "sha256": "39088493bd84e25a07e26e035fcea37fd439a8ce49799cea6fc02b2aa4632ef8",
+      "byteExactCopy": true
+    },
+    {
+      "name": "io-tree",
+      "fixture": "selfhost/tests/consolidation/hosted/fixtures/io-tree.bend",
+      "origin": "selfhost/tests/fixtures/tree.bend",
+      "bytes": 344,
+      "sha256": "ee47602e212650f57d33510b02aef711ba86f4d75b99058b3914f55e2704f4e4",
+      "byteExactCopy": true
+    },
+    {
+      "name": "type-error",
+      "fixture": "selfhost/tests/consolidation/hosted/fixtures/type-error.bend",
+      "bytes": 46,
+      "sha256": "61d9a33baea676dea9e5d852b9f0b63f44e765b4ddd86e2adbf66c74e1db0b30",
+      "oracle": "String literal cannot inhabit declared U32 return type; crash/timeout not admitted."
+    }
+  ]
+}

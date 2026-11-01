@@ -1,0 +1,60 @@
+{
+  "id": "good02-lowest-bit-algebra",
+  "label": "Isolate the lowest set bit with xor after clearing it",
+  "classification": "equivalent-control",
+  "rationale": "For nonzero unsigned x, x & (x-1) clears exactly its lowest set bit; xor with x restores exactly that bit. Both expressions give zero at x=0 under U32 wraparound.",
+  "witness": {
+    "expression": "[index_split_bit(0), index_split_bit(1), index_split_bit(12), index_split_bit(2147483648), index_split_bit(4294967295)]",
+    "baselineExpected": [
+      0,
+      1,
+      4,
+      2147483648,
+      1
+    ],
+    "challengeExpected": [
+      0,
+      1,
+      4,
+      2147483648,
+      1
+    ],
+    "returnType": "List<&2,U32>",
+    "baselineValueBend": "[0, 1, 4, 2147483648, 1]",
+    "challengeValueBend": "[0, 1, 4, 2147483648, 1]",
+    "source": {
+      "path": "selfhost/tools/laws/phase97/challenge/good02-lowest-bit-algebra.witness.bend",
+      "bytes": 516,
+      "sha256": "2c949b590041810b00de16492f7e5fcefae896d228e0a6d22b6b804e68ef3bfd"
+    }
+  },
+  "domain": "All 2^32 U32 values; arithmetic wraps modulo 2^32.",
+  "expectedDisposition": "accept-equivalent",
+  "executed": false,
+  "schema": "phase97-independent-challenge-recipe-v1",
+  "kind": "good",
+  "file": "selfhost/src/core/index.bend",
+  "function": "index_split_bit",
+  "before": "  U32.and(diff, U32.sub(0, diff))",
+  "after": "  U32.xor(diff, U32.and(diff, U32.sub(diff, 1)))",
+  "expectedBehavior": "For nonzero unsigned x, x & (x-1) clears exactly its lowest set bit; xor with x restores exactly that bit. Both expressions give zero at x=0 under U32 wraparound.",
+  "edits": [
+    {
+      "source": {
+        "path": "selfhost/src/core/index.bend",
+        "bytes": 14879,
+        "sha256": "51ce95941f955ed1c65f01ee88af31e35180c94d30ada97f359c6aa71dd47edb"
+      },
+      "before": "  U32.and(diff, U32.sub(0, diff))",
+      "after": "  U32.xor(diff, U32.and(diff, U32.sub(diff, 1)))",
+      "expectedOccurrences": 1,
+      "line": 172,
+      "changedSourceSha256": "80360f9b8f091361bc3634e61c44b29fe87551edca15e43037202eed57d23058",
+      "changedSourceBytes": 14894
+    }
+  ],
+  "provenance": {
+    "classification": "equivalent-control",
+    "selection": "Independent maintained-source reasoning before suite results."
+  }
+}

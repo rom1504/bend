@@ -12,17 +12,6 @@ from pathlib import Path
 import re
 
 ROOT = Path(__file__).resolve().parents[3]
-CONTRACT_FILES = [
-    "selfhost/tools/performance/phase111/segment/lower-book.bend",
-    "selfhost/tools/performance/phase111/segment/lower-control.bend",
-    "selfhost/tools/performance/phase111/segment/lower-helpers.bend",
-    "selfhost/tools/performance/phase111/qbe/program.bend",
-    "selfhost/tools/performance/phase111/qbe/emit.bend",
-    "selfhost/tools/performance/phase113/direct-emit/program.bend",
-    "selfhost/src/back/native/bridge.bend",
-    "selfhost/src/back/native/direct.bend",
-    "selfhost/src/back/native/text.bend",
-]
 TABLE_NAME = "p111_segments"
 DESCRIPTOR_NAME = "p111_program"
 SYMBOL = r"[A-Za-z_.$][A-Za-z0-9_.$]*"
@@ -156,7 +145,7 @@ def group_fids(fids):
     return groups
 
 
-def parse_qbe_owners(qbe_path):
+def parse_qbe_owners(qbe_path, emitter_sources=()):
     qbe_path = Path(qbe_path).resolve()
     functions, blocks = read_qbe(qbe_path)
     abi = descriptor(blocks[DESCRIPTOR_NAME])
@@ -198,7 +187,7 @@ def parse_qbe_owners(qbe_path):
     return {
         "schema": "bend-qbe-lowered-owners-v1", "descriptor": abi,
         "identities": {"qbe": pin(qbe_path), "analyzer": pin(__file__),
-                       "emitter_contract_sources": [pin(ROOT / path) for path in CONTRACT_FILES]},
+                       "emitter_contract_sources": [pin(path) for path in emitter_sources]},
         "functions": rows, "fids": fids, "groups": groups,
         "coverage": dict(functions=len(rows), owned_functions=sum(r["lowered_owner"] is not None for r in rows),
                          fids=len(fids), owned_fids=sum(r["lowered_owner"] is not None for r in fids),
@@ -216,7 +205,7 @@ def parse_qbe_owners(qbe_path):
         ],
         "limitations": [
             "QBE identity and structural checks are exact; lexical ownership additionally assumes the recorded emitter contract and separately verified producer lineage.",
-            "Current repository module hashes document the contract; they do not prove that these modules produced an arbitrary input QBE file.",
+            "Explicit emitter-source pins document the assumed contract; an empty list leaves it unbound. Neither proves production of arbitrary QBE.",
             "This is lowered-definition ownership, not dynamic logical ancestry, original inline origin, allocation origin, or source-line provenance.",
             "Inlining can place another source definition's work inside this owner; private product/observer/region functions may have composite origins and remain unknown.",
             "Runtime FIDs outside the descriptor segment count are not program definitions and must be interpreted from the separately pinned runtime ABI.",
@@ -228,10 +217,12 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--qbe", required=True, type=Path)
     parser.add_argument("--output", required=True, type=Path)
+    parser.add_argument("--emitter-source", action="append", default=[], type=Path,
+                        help="Explicit maintained source implementing this owner-order contract; repeatable. No historical fallback.")
     args = parser.parse_args()
     if args.output.exists():
         parser.error("Refusing to overwrite owner map")
-    report = parse_qbe_owners(args.qbe)
+    report = parse_qbe_owners(args.qbe, args.emitter_source)
     with args.output.open("x") as stream:
         json.dump(report, stream, indent=2)
         stream.write("\n")

@@ -1,0 +1,138 @@
+{
+  "kind": "bend-public-cli-controls",
+  "version": 1,
+  "upstream": "059266225b77c8ca256ac6b25ee5c21449bab151",
+  "scope": "Seven finite public hosted CLI controls. Literal full outputs originate in CLI contract and pre-existing independent CLI tests. C emission has a structural check only; generated C semantics use qualification.py.",
+  "cases": [
+    {
+      "id": "interpret",
+      "source": {
+        "file": "selfhost/tests/consolidation/cli/bool.bend",
+        "bytes": 67,
+        "sha256": "bba09be7622dd764f93050f53846435ee1f2aec22f27e363a702a32226f0a060"
+      },
+      "args": [
+        "{source}"
+      ],
+      "expected": {
+        "exitCode": 0,
+        "stdout": "On{}\n",
+        "stderr": ""
+      }
+    },
+    {
+      "id": "check",
+      "source": {
+        "file": "selfhost/tests/consolidation/cli/bool.bend",
+        "bytes": 67,
+        "sha256": "bba09be7622dd764f93050f53846435ee1f2aec22f27e363a702a32226f0a060"
+      },
+      "args": [
+        "--check-only",
+        "{source}"
+      ],
+      "expected": {
+        "exitCode": 0,
+        "stdout": "ALL PROOFS CHECK\nUse --verdict for mathematical validity.\n",
+        "stderr": ""
+      }
+    },
+    {
+      "id": "emit-js",
+      "source": {
+        "file": "selfhost/tests/consolidation/cli/base-u32.bend",
+        "bytes": 42,
+        "sha256": "5a2d51d91c8bf26594d03f438de453e8ad8dc9f9ddcdfd3f28d8e3f1651bcb22"
+      },
+      "args": [
+        "{source}",
+        "-o",
+        "{out}/program.mjs"
+      ],
+      "expected": {
+        "exitCode": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "product": "program.mjs",
+      "executeExpected": {
+        "exitCode": 0,
+        "stdout": "42\n",
+        "stderr": ""
+      }
+    },
+    {
+      "id": "emit-c",
+      "source": {
+        "file": "selfhost/tests/consolidation/cli/base-u32.bend",
+        "bytes": 42,
+        "sha256": "5a2d51d91c8bf26594d03f438de453e8ad8dc9f9ddcdfd3f28d8e3f1651bcb22"
+      },
+      "args": [
+        "{source}",
+        "-o",
+        "{out}/program.c"
+      ],
+      "expected": {
+        "exitCode": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "product": "program.c",
+      "contains": "#include"
+    },
+    {
+      "id": "flags-refusal",
+      "source": {
+        "file": "selfhost/tests/consolidation/cli/bool.bend",
+        "bytes": 67,
+        "sha256": "bba09be7622dd764f93050f53846435ee1f2aec22f27e363a702a32226f0a060"
+      },
+      "args": [
+        "{source}",
+        "--check-only",
+        "--run"
+      ],
+      "expected": {
+        "exitCode": 1,
+        "stdout": "",
+        "stderr": "--check-only takes no other option\n"
+      }
+    },
+    {
+      "id": "overwrite-refusal",
+      "source": {
+        "file": "selfhost/tests/consolidation/cli/base-u32.bend",
+        "bytes": 42,
+        "sha256": "5a2d51d91c8bf26594d03f438de453e8ad8dc9f9ddcdfd3f28d8e3f1651bcb22"
+      },
+      "args": [
+        "{source}",
+        "-o",
+        "{source}"
+      ],
+      "expected": {
+        "exitCode": 1,
+        "stdout": "",
+        "stderr": "Output would overwrite a compiler or program input\n"
+      }
+    },
+    {
+      "id": "kernel-refusal",
+      "source": {
+        "file": "selfhost/tests/consolidation/cli/bool.bend",
+        "bytes": 67,
+        "sha256": "bba09be7622dd764f93050f53846435ee1f2aec22f27e363a702a32226f0a060"
+      },
+      "args": [
+        "{source}",
+        "--verdict"
+      ],
+      "expected": {
+        "exitCode": 1,
+        "stdout": "",
+        "stderr": "--verdict requires the independent BendTT kernel; this self-hosted compiler does not implement kernel validation\n"
+      }
+    }
+  ]
+}

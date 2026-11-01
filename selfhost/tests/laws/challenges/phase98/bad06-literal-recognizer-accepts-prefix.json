@@ -1,0 +1,37 @@
+{
+  "schema": "phase98-independent-challenge-v1",
+  "id": "bad06-literal-recognizer-accepts-prefix",
+  "kind": "bad",
+  "file": "selfhost/tools/performance/phase98/comparison/literal-helpers01.bend",
+  "function": "p98_eq_var",
+  "before": "    case SCon{Chr{86}, SCon{Chr{97}, SCon{Chr{114}, SNil{}}}}: True{}",
+  "after": "    case SCon{Chr{86}, SCon{Chr{97}, SCon{Chr{114}, rest}}}: True{}",
+  "source": {
+    "path": "selfhost/tools/performance/phase98/comparison/literal-helpers01.bend",
+    "bytes": 476,
+    "sha256": "403fa95650a124d84c6b6e2c546c5e44fb5a4eecd524542f4a49f263253ac601"
+  },
+  "expectedOccurrences": 1,
+  "line": 4,
+  "changedSourceBytes": 474,
+  "changedSourceSha256": "c02045be12465139503e9a926deb76c25d5c44f6a6c94a02af73a0df01700fae",
+  "expectedBehavior": "An exact literal recognizer must reject a strict extension. Replacing the terminal empty string by an ignored tail turns equality into prefix matching.",
+  "witness": {
+    "expression": "p98_eq_var(\"Varx\")",
+    "returnType": "Bool",
+    "baselineValueBend": "False{}",
+    "challengeValueBend": "True{}",
+    "source": {
+      "path": "selfhost/tools/laws/phase98/challenge/bad06-literal-recognizer-accepts-prefix.witness.bend",
+      "bytes": 212,
+      "sha256": "64c96dad5e521968fa1f8ce71dbe8c2ed21ab7e46d05f1d519c68801c2a6bb47"
+    }
+  },
+  "provenance": {
+    "classification": "synthetic-semantic-fault",
+    "selection": "Candidate helper source inspected after the first maintained-source freeze, but before its tests, laws, oracle, admission or outcomes."
+  },
+  "admission": "predicted well-typed; root must check",
+  "domain": "All finite String values.",
+  "targetsRun": false
+}

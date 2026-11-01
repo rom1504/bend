@@ -1,0 +1,59 @@
+{
+  "kind": "bend-build-assets",
+  "version": 1,
+  "complete": true,
+  "upstream": "059266225b77c8ca256ac6b25ee5c21449bab151",
+  "assets": {
+    "linker": {
+      "file": "/usr/bin/x86_64-linux-gnu-gcc-10",
+      "bytes": 817704,
+      "sha256": "693abcb42e67fb871673f258a3644257ca69a209691ec4d8137a42442834bd19",
+      "executable": true
+    },
+    "qbe-runtime": {
+      "file": "selfhost/.assets/native/qbe-runtime.o",
+      "bytes": 119096,
+      "sha256": "2d07832382a11d7e993124ecc70452e4e1a3b7f753cf429343e1183cd8e493a3"
+    },
+    "qbe-runtime.c": {
+      "file": "selfhost/src/runtime/qbe/runtime.c",
+      "bytes": 150560,
+      "sha256": "aa95d2c0426c05bcc4d34244dd8b22b79ebcaf6d30634569201961f60b57f333"
+    },
+    "qbe-runtime.h": {
+      "file": "selfhost/src/runtime/qbe/runtime.h",
+      "bytes": 4518,
+      "sha256": "9b19b8d6ae1c8f07759041201c2692c20d9612393819e2bbc597deba44679d12"
+    },
+    "qbe-primitives.h": {
+      "file": "selfhost/src/runtime/qbe/primitives.h",
+      "bytes": 3067,
+      "sha256": "ecbdfe62b875fc20e5805840b83c3779ed8fb8fb1de83c543ba1ce1217165d20"
+    }
+  },
+  "runtimeRecipes": {
+    "serial-rfc": {
+      "compiler": "linker",
+      "source": "qbe-runtime.c",
+      "headers": [
+        "qbe-runtime.h",
+        "qbe-primitives.h"
+      ],
+      "expectedObject": "qbe-runtime",
+      "flags": [
+        "-O2",
+        "-std=gnu11",
+        "-ffp-contract=off",
+        "-DP144_SINGLE_MUTATOR_RFC=1"
+      ],
+      "policy": {
+        "threads": 1,
+        "gpu": "off",
+        "bendHeapMutators": 1,
+        "hostIoWorkersAllowed": true,
+        "providerScope": "Pinned direct-QBE foreign provider table; no arbitrary C embedding or foreign callbacks."
+      }
+    }
+  },
+  "scope": "Maintained QBE serial-RFC source construction; provenance is src/runtime/qbe/migration.json and is not read by this tool."
+}

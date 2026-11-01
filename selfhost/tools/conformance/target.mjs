@@ -65,7 +65,7 @@ harnessSources.push({file:'src/compiler.json',sourceSha256:sha256(pinSource),con
 for(const file of ['native-build.mjs','node-resource-args.mjs'])fs.copyFileSync(path.join(project,'tools',file),path.join(harness,'tools',file));
 if(adapter===path.join(import.meta.dirname,'adapters/native-graph.mjs')){
   const destination=path.join(harness,'tools/conformance/adapters/native-graph.mjs');fs.copyFileSync(adapter,destination);adapter=destination;
-  const launcher=path.join(harness,'tools/performance/rapid/native-graph-run.mjs');fs.mkdirSync(path.dirname(launcher),{recursive:true});fs.copyFileSync(path.join(project,'tools/performance/rapid/native-graph-run.mjs'),launcher);
+  const launcher=path.join(harness,'tools/conformance/selected-graph.mjs');fs.copyFileSync(path.join(project,'tools/conformance/selected-graph.mjs'),launcher);
 }
 fs.copyFileSync(import.meta.filename,path.join(output,'target.mjs.source'));
 const runner=path.join(harness,'tools/conformance/run.mjs'),common=['--upstream',upstream,'--timeout',String(config.timeoutMs??30000),'--jobs',String(config.jobs??1),'--worker-mode',config.workerMode??'isolated','--recycle-after',String(config.recycleAfter??64),'--rss-limit-mb',String(config.rssLimitMb??1024),'--stack-kb',String(config.stackKb??4096),'--heap-mb',String(config.heapMb??4096),'--retain',config.retain??'all','--selected-exit','1'];

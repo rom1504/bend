@@ -99,6 +99,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--manifest', type=Path, required=True)
     parser.add_argument('--out', type=Path, required=True)
+    parser.add_argument('--concat-v1', action='store_true', help='Add the opt-in seven-counter typed-concat extension')
     args = parser.parse_args()
     manifest_path = args.manifest.resolve()
     manifest = json.loads(manifest_path.read_text())
@@ -113,6 +114,15 @@ def main():
     if includes != {name.encode() for name in header_names}:
         raise ValueError('Manifest must pin exactly the runtime quoted headers')
     support = HERE / 'runtime-support.inc.c'
+    support_bytes = support.read_bytes()
+    extension_inputs, extension_outputs, extension = [], [], None
+    if args.concat_v1:
+        import concat_v1
+        diagnostic, support_bytes, concat_edits = concat_v1.materialize(diagnostic, support_bytes)
+        edits.extend(concat_edits)
+        extension_inputs = [pin(HERE / 'concat_v1.py'), pin(HERE / 'controls/runtime-control.expected.json')]
+        extension = dict(protocol='concat_v1', addedCounters=[name for _, name in concat_v1.COUNTERS],
+                         positiveBranches='source-audited, not independently fixture-qualified')
     compiler = Path(shutil.which(manifest.get('compiler', 'gcc')) or '').resolve()
     if not compiler.is_file():
         raise ValueError('C compiler is unavailable')
@@ -126,7 +136,11 @@ def main():
     out = args.out.resolve()
     out.mkdir(parents=True, exist_ok=False)
     (out / 'runtime.c').write_bytes(diagnostic)
-    (out / support.name).write_bytes(support.read_bytes())
+    (out / support.name).write_bytes(support_bytes)
+    if args.concat_v1:
+        expected = concat_v1.extend_expectation(json.loads((HERE / 'controls/runtime-control.expected.json').read_text()))
+        (out / 'expected-control.json').write_text(json.dumps(expected, indent=2) + '\n')
+        extension_outputs.append(pin(out / 'expected-control.json'))
     for header in headers:
         (out / header.name).write_bytes(header.read_bytes())
     (out / 'method.py').write_bytes(Path(__file__).read_bytes())
@@ -143,9 +157,10 @@ def main():
         compiled=False, executed=False, reverseExact=True,
         inputs=[pin(manifest_path), pin(runtime), *[pin(x) for x in headers],
                 pin(support), pin(__file__), pin(compiler), pin(linker),
-                *([pin(program)] if program else [])],
+                *([pin(program)] if program else []), *extension_inputs],
         outputs=[pin(out / name) for name in ['runtime.c', support.name,
-                 'method.py', 'edits.json', *header_names]], jobs=jobs,
+                 'method.py', 'edits.json', *header_names]] + extension_outputs, jobs=jobs,
+        extension=extension,
         context=dict(getter='bend_profile_dispatch_get', getterResult='uint32_t',
             unknown=4294967295, storage='initial-exec TLS lock-free atomic uint32',
             globalSymbol='bend_profile_dispatch_id', globalScope='one active dispatch thread only',

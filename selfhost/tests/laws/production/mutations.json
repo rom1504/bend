@@ -1,0 +1,59 @@
+[
+  {
+    "id":"lose-lambda-presence","function":"k_with_children",
+    "before":"KLambda{name, id, quant, newKids, removed, begin, end, present}",
+    "after":"KLambda{name, id, quant, newKids, removed, begin, end, True{}}",
+    "detectingFamilies":["children-update"],"case":"children-update-007"
+  },
+  {
+    "id":"lose-literal-end","function":"k_with_span",
+    "before":"KLiteral{kind, number, text, newBegin, newEnd}",
+    "after":"KLiteral{kind, number, text, newBegin, literalEnd}",
+    "detectingFamilies":["span-update"],"case":"span-update-017"
+  },
+  {
+    "id":"off-by-one-substitution","function":"subst",
+    "before":"U32.is_eq(ix(t), id)",
+    "after":"U32.is_eq(ix(t), U32.add(id, 1))",
+    "detectingFamilies":["substitution-beta"],"case":"substitution-beta-000"
+  },
+  {
+    "id":"collision-selects-first-bucket-row","function":"index_find",
+    "before":"u => index_bucket(bucket, name)",
+    "after":"u => index_first(bucket)",
+    "detectingFamilies":["cached-lookup","book-update"],"case":"cached-lookup-022"
+  },
+  {
+    "id":"membership-discards-hit","function":"has_name_next",
+    "before":"case True{}: True{}","after":"case True{}: False{}",
+    "detectingFamilies":["membership"],"case":"membership-019"
+  },
+  {
+    "id":"reverse-drop-order","function":"nc_partition_step",
+    "before":"\"term_sink(e, \" ++ word ++ \");\\n\" ++ drop",
+    "after":"drop ++ \"term_sink(e, \" ++ word ++ \");\\n\"",
+    "detectingFamilies":["environment-partition"],"case":"environment-partition-005"
+  },
+  {
+    "id":"remove-all-environment-duplicates","function":"nc_remove_env",
+    "before":"u => rest, u => Con{NC_Binding{at, word, kind}, nc_remove_env(rest, id)}",
+    "after":"u => nc_remove_env(rest, id), u => Con{NC_Binding{at, word, kind}, nc_remove_env(rest, id)}",
+    "detectingFamilies":["environment-selection"],"case":"environment-selection-004"
+  },
+  {
+    "id":"drop-join-separators","function":"nt_join",
+    "before":"nt_join_go(xs, sep, \"\", True{})",
+    "after":"nt_join_go(xs, \"\", \"\", True{})",
+    "detectingFamilies":["text-assembly"],"case":"text-assembly-002"
+  },
+  {
+    "id":"lookup-skips-first-shadow","function":"lookup_named",
+    "before":"case True{}: d","after":"case True{}: lookup(rest, name)",
+    "detectingFamilies":["lookup-shadowing"],"case":"lookup-shadowing-012"
+  },
+  {
+    "id":"encoding-loses-prefix","function":"nc_ctor_encode",
+    "before":"\"$ctor.\" ++ nc_ctor_codes(name)","after":"nc_ctor_codes(name)",
+    "detectingFamilies":["constructor-encoding"],"case":"constructor-encoding-008"
+  }
+]

@@ -1,5 +1,32 @@
 # Compiler validation
 
+The maintained source targets upstream
+`059266225b77c8ca256ac6b25ee5c21449bab151`. Start with the
+[current workflow](../docs/self_hosted/workflow.md) and the
+[finite qualification guide](tools/conformance/qualification.md).
+`tools/build/qualification.py` selects 19 focused or 45 broad program controls
+with independent full-output oracles across explicit JS/C/QBE host/target
+bindings. `tools/conformance/public-cli.py` checks seven hosted public CLI
+contracts. Both retain failed/unsupported outcomes and declare
+`fullConformance:false`; a source/image binding does not itself qualify a target.
+
+The paired upstream frontend/golden harness requires an explicit adapter and
+the exact reference checkout. Checked adapters preserve source checking,
+execution and refusal phases separately. A crash or timeout cannot pass a
+negative case. Source checks and generated-code tests do not establish
+independent BendTT kernel validation; GPU/parallel/native-provider coverage
+requires separate evidence. The current regression inventory is 1,587 fixtures
+with original upstream `#|` oracles plus 11 support files, not a count of passing
+current compiler observations.
+
+The sections below are preserved phase records. Words such as “current” and
+“installed” within them refer to that phase's recorded source and release, not
+automatically to the maintained checkout or a newly built image. Fresh gates
+and their actual source/image/runtime identities determine current support;
+the [experiment frontier](../experiments/STEERING.md) links those receipts.
+
+## Historical qualification records
+
 ## Phase92 native-host qualification
 
 [Report](../implementation/phase92/README.md) ·

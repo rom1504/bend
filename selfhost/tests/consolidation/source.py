@@ -25,6 +25,8 @@ def main():
     parser.add_argument('--workspace', type=Path, default=Path(__file__).resolve().parents[3])
     parser.add_argument('--stage', type=Path, required=True)
     parser.add_argument('--receipt', type=Path, required=True)
+    parser.add_argument('--frozen', action='store_true',
+                        help='Additionally require the original extraction identity; ordinary edits use normal assembly')
     args = parser.parse_args()
     root, stage = args.workspace.resolve(), args.stage.resolve()
     if args.receipt.exists():
@@ -52,9 +54,13 @@ console.log(JSON.stringify(assemble(files,out,{root})));
                 str(stage / 'src/compiler.json'), str(output)]
         first = run(argv, root)
         data = output.read_bytes()
-        assert sha(data) == recipe['frozenSource']['sha256']
+        frozen_equal = sha(data) == recipe['frozenSource']['sha256']
+        if args.frozen:
+            assert frozen_equal, 'Source intentionally differs from the original extraction'
         assert first['sourceSha256'] == sha(data)
-        checks.append('maintained-js-interface-exact-source')
+        checks.append('maintained-js-interface-current-source')
+        if args.frozen:
+            checks.append('original-extraction-identity')
         stamp = output.stat().st_mtime_ns
         run(argv, root)
         assert output.stat().st_mtime_ns == stamp
@@ -88,6 +94,7 @@ console.log(JSON.stringify(assemble(['small.bend'],out,{root})));
         map_sha = sha(Path(str(output) + '.map.json').read_bytes())
     report = {'kind': 'bend-source-interface-controls-v1', 'complete': True,
         'compilerExecuted': False, 'checks': checks, 'sourceSha256': sha(data),
+        'frozenIdentityRequired': args.frozen, 'equalsOriginalExtraction': frozen_equal,
         'mapSha256': map_sha, 'mappedDeclarations': len(source_map),
         'methods': {str(path.relative_to(root)): sha(path.read_bytes()) for path in [
             root / 'selfhost/tools/build/source.py', assembler, Path(__file__).resolve()]}}

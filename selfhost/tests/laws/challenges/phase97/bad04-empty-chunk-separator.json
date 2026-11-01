@@ -1,0 +1,48 @@
+{
+  "id": "bad04-empty-chunk-separator",
+  "label": "Empty join elements suppress their separator",
+  "classification": "synthetic-semantic-fault",
+  "rationale": "An empty payload is still an element. Skipping its separator during chunk optimization changes emitted text and list position.",
+  "witness": {
+    "expression": "nt_join([\"a\", \"\", \"b\"], \",\")",
+    "baselineExpected": "a,,b",
+    "challengeExpected": "a,b",
+    "returnType": "String",
+    "baselineValueBend": "\"a,,b\"",
+    "challengeValueBend": "\"a,b\"",
+    "source": {
+      "path": "selfhost/tools/laws/phase97/challenge/bad04-empty-chunk-separator.witness.bend",
+      "bytes": 376,
+      "sha256": "899caea26b94b00326427884798356f83837808605f511d9441869fe6f560540"
+    }
+  },
+  "domain": "Finite well-typed helper data.",
+  "expectedDisposition": "reject-semantic-change",
+  "executed": false,
+  "schema": "phase97-independent-challenge-recipe-v1",
+  "kind": "bad",
+  "file": "selfhost/src/back/native/text.bend",
+  "function": "nt_join_chunks",
+  "before": "    case Con{h, t}: nt_join_chunks(t, sep, False{}, Con{h, Con{nt_choose(String, first, u => \"\", u => sep), acc}})",
+  "after": "    case Con{h, t}: nt_join_chunks(t, sep, False{}, Con{h, Con{nt_choose(String, first || String.eq(h, \"\"), u => \"\", u => sep), acc}})",
+  "expectedBehavior": "An empty payload is still an element. Skipping its separator during chunk optimization changes emitted text and list position.",
+  "edits": [
+    {
+      "source": {
+        "path": "selfhost/src/back/native/text.bend",
+        "bytes": 3305,
+        "sha256": "acc430c939a7dd6b404ba7a13f762019b717a62313ae3066234f78bb62df04c0"
+      },
+      "before": "    case Con{h, t}: nt_join_chunks(t, sep, False{}, Con{h, Con{nt_choose(String, first, u => \"\", u => sep), acc}})",
+      "after": "    case Con{h, t}: nt_join_chunks(t, sep, False{}, Con{h, Con{nt_choose(String, first || String.eq(h, \"\"), u => \"\", u => sep), acc}})",
+      "expectedOccurrences": 1,
+      "line": 19,
+      "changedSourceSha256": "f23563f0bb362e0badd968f9be7193ad94a2f9a1ffee391bf8b09e0c55f6ec09",
+      "changedSourceBytes": 3325
+    }
+  ],
+  "provenance": {
+    "classification": "synthetic-semantic-fault",
+    "selection": "Independent maintained-source reasoning before suite results."
+  }
+}

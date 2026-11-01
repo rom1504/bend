@@ -17,7 +17,7 @@ import re
 import subprocess
 
 ROOT = Path(__file__).resolve().parents[3]
-DEPENDENCY = ROOT / "selfhost/tools/performance/phase68/parity-survey/sample-analysis-v2.py"
+DEPENDENCY = Path(__file__).with_name("elf.py")
 _spec = importlib.util.spec_from_file_location("bend_cpu_elf_helpers", DEPENDENCY)
 ELF = importlib.util.module_from_spec(_spec)
 _spec.loader.exec_module(ELF)

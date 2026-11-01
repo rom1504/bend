@@ -1,0 +1,90 @@
+{
+  "kind": "programs",
+  "cwd": "/home/ai/bend2/build/publish/bend",
+  "catalog": "../catalogs/native45/catalog.json",
+  "reference": "upstream",
+  "scope": "Tool migration smoke only: explicit retained historical compiler products. Not a new compiler version comparison.",
+  "roles": {
+    "upstream": {
+      "host": "typescript-bun",
+      "stage": "upstream",
+      "target": "c",
+      "preparation": "prepared-artifact",
+      "policy": "ordinary",
+      "status": "historical-reference",
+      "inputs": [
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/broad01/report.json",
+          "sha256": "8e24a1539c5723923bbb52e7ffc4a087bbca8a8b4d0d452cd65a5fe8dc0d2277",
+          "bytes": 1191564
+        }
+      ]
+    },
+    "candidate": {
+      "host": "native",
+      "stage": "N2",
+      "target": "qbe",
+      "preparation": "prepared-artifact",
+      "policy": "ordinary-serial",
+      "status": "qualified-final04-product",
+      "runtime": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase144/serial-rfc01/serial-rfc.o",
+        "bytes": 119096,
+        "sha256": "2d07832382a11d7e993124ecc70452e4e1a3b7f753cf429343e1183cd8e493a3"
+      },
+      "compiler": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase134/p144-final04-n2/program",
+        "bytes": 19087864,
+        "sha256": "e2f6317bd078fcca0d0bb0e94d861a5b77f3b36650cf274f63dab0f5c28e5d13"
+      },
+      "inputs": [
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase144/programs-final04-acquire01/report.json",
+          "sha256": "668f1d7f364606ecc2ae86632f70072b137b52f31062cb236670cad8915e10f3",
+          "bytes": 678173
+        },
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase111/p144-programs04-fast-mandelbrot/report.json",
+          "bytes": 4989,
+          "sha256": "c1d4c1d51a6e23bb546db598ef52ca36e647b04703da1090cbde4010b08580fd"
+        },
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase130/p144-final04-wrapper-mandelbrot/report.json",
+          "bytes": 9721,
+          "sha256": "ab67c558d9e9f8c1e2531ce785e7c8bba544ff57fbd8818f2260787143d6c1c7"
+        }
+      ]
+    }
+  },
+  "cases": [
+    {
+      "id": "mandelbrot",
+      "products": {
+        "upstream": {
+          "artifact": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/broad01/mandelbrot/upstream.program",
+            "sha256": "3ab38f8b020bc620d1fad0fa711204fbc4be4e0ac6d99c34df03aa989aa450a7",
+            "bytes": 65520
+          },
+          "generatedSource": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase93/broad01/mandelbrot/upstream.1.c",
+            "sha256": "3284630bdba8d4185bb4d280ac76b52aba0646000a826b1e368681f8bc6a55a4",
+            "bytes": 154049
+          }
+        },
+        "candidate": {
+          "artifact": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase144/programs-plan04-acquire/mandelbrot-candidate-serial",
+            "bytes": 294688,
+            "sha256": "202307f654c0556eded884f5a61fd70d449e66bceec2bb486333dab1c00a3d4f"
+          },
+          "generatedSource": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase130/p144-final04-wrapper-mandelbrot/program.ssa",
+            "bytes": 1256237,
+            "sha256": "f080b8c342cce21c456ebaf5487ff3162b647786e2e2e513b8f6f0d3b1f0b187"
+          }
+        }
+      }
+    }
+  ]
+}

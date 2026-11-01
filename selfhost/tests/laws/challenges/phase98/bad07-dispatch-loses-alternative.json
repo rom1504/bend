@@ -1,0 +1,36 @@
+{
+  "id": "bad07-dispatch-loses-alternative",
+  "file": "selfhost/build/phase98/dispatch-frozen02/selectors.canonical.bend",
+  "function": "p98_check_node_stage1",
+  "before": "    case False{}: p98_check_node_stage2(String.eq(tag, \"Mat\") || String.eq(tag, \"Efq\"), tag)",
+  "after": "    case False{}: p98_check_node_stage2(String.eq(tag, \"Mat\"), tag)",
+  "expectedBehavior": "Collapsing a grouped dispatch predicate drops the Efq alternative. The selected result must still be branch 2 for this valid tag.",
+  "witness": {
+    "expression": "p98_check_node_select(\"Efq\")",
+    "returnType": "P98CheckNode",
+    "baselineValueBend": "P98CheckNode2{}",
+    "challengeValueBend": "P98CheckNodeDefault{}",
+    "source": {
+      "path": "selfhost/tools/laws/phase98/challenge/bad07-dispatch-loses-alternative.witness.bend",
+      "bytes": 324,
+      "sha256": "df3c6b97b5f56a7e47a3897467f75531c434a67f3c4030a8d51e247971f1f227"
+    }
+  },
+  "schema": "phase98-independent-challenge-v1",
+  "kind": "bad",
+  "source": {
+    "path": "selfhost/build/phase98/dispatch-frozen02/selectors.canonical.bend",
+    "bytes": 7247,
+    "sha256": "751e091af61c01c7d76478202428c0093b52ec7d2a93b3cb819b4c86c88467ef"
+  },
+  "expectedOccurrences": 1,
+  "line": 111,
+  "changedSourceBytes": 7222,
+  "changedSourceSha256": "b7dfcd59e0e69c5e1c3d963f52f075b90705f0b83dcc49edd981b96c9b26aeaf",
+  "admission": "predicted well-typed; root must check",
+  "targetsRun": false,
+  "provenance": {
+    "classification": "synthetic-semantic-fault",
+    "selection": "Candidate helper source and intended interface only; Phase98 law bodies, finite cases, oracles and results not inspected before freeze."
+  }
+}

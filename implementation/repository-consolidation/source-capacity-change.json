@@ -1,0 +1,66 @@
+{
+  "kind": "bend-source-capacity-change",
+  "version": 1,
+  "complete": true,
+  "compilerExecuted": false,
+  "baseline": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/consolidation/source-stage/reassembled.bend",
+    "bytes": 3010912,
+    "sha256": "96c40c9dd273e2fae5fabfe68093aa7fb8f25f075e2317bed06ff46d4feaab80"
+  },
+  "candidate": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/consolidation/current-source02/compiler.bend",
+    "bytes": 3010912,
+    "sha256": "00940ed508e7d1456dd19bee01b0d2e16ac227fdf13ac306e805a1e4c982fb5e"
+  },
+  "sourceMap": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/consolidation/current-source02/compiler.bend.map.json",
+    "bytes": 2628722,
+    "sha256": "ae27b91a380aa5ded2e20bc8daa8ce3f0b735b940adf57c7d7c833a0b8c5f3e9"
+  },
+  "recipe": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/src/compiler.json",
+    "bytes": 510942,
+    "sha256": "9b97073f98b4e592b5328d32363fa88f8285bd777b2a2a23ed832a16ba8270de"
+  },
+  "assembler": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/build/source.py",
+    "bytes": 28941,
+    "sha256": "bb657cc05776c22f29244ae68606eb757c676b522a7052b2b32999fbc00599c7"
+  },
+  "changedDeclarations": [
+    {
+      "kind": "def",
+      "name": "jd_definition_budget",
+      "beforeSha256": "6e4a4ddb393d64f4e4514cd556c75aa8e8a134937327e59198b49da4be803728",
+      "afterSha256": "3fc6c5667a6ba24eb264a59c1eb7b663af14c21331ccc122d463fcd39633720d"
+    }
+  ],
+  "declarations": 8085,
+  "sameDeclarationOrder": true,
+  "sameSourceLength": true,
+  "exactChange": "def jd_definition_budget() -> U32 body4096\u21924352; all remaining source bytes identical",
+  "protectedDeclarationChecks": 112,
+  "frozenExtractionReferenceUnchanged": true,
+  "qbeMainLexicalCensus": {
+    "reachableDefinitions": 4063,
+    "budgetReached": false,
+    "method": "Definition-name token closure after removing quoted literals and comments; diagnostic only, not semantic proof"
+  },
+  "requiredIndependentGates": [
+    "checked B1 acquisition for exact candidate source",
+    "literal-definition public API boundary controls",
+    "genuine JS B2/B3 source self-check and byte equality",
+    "full QBE compiler output equality against qualified reference before native image reuse",
+    "target behavioral qualification"
+  ],
+  "capacityControls": {
+    "method": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/js-capacity.mjs",
+      "bytes": 8143,
+      "sha256": "d838dc5a5623e5ad0efbecb06b3eb9d9d13bc0a6a8c8190a64c86720769523f5"
+    },
+    "status": "pending"
+  },
+  "qualificationClaim": false
+}

@@ -1,0 +1,20 @@
+{
+  "schema": "bend-history-dependency-review-v1",
+  "reviewedBy": "Root agent, explicit consolidation instruction; conformance owner inspected current source",
+  "exceptions": [
+    {
+      "target": "selfhost/tools/conformance/adapters/prototype.mjs",
+      "consumer": "selfhost/tools/development/workflow.mjs",
+      "consumerSha256": "4249a59916fcd36ef411d4864a5050489df2fc78deee7ebe0d98684ff80f46f1",
+      "classification": "incidental-directory-copy",
+      "reason": "Snapshot copies only the .mjs files currently present; no prototype import/default remains, so removing the obsolete adapter does not break the walk."
+    },
+    {
+      "target": "selfhost/tools/conformance/adapters/prototype.mjs",
+      "consumer": "selfhost/tools/conformance/target.mjs",
+      "consumerSha256": "1dcf1318f2095301ddea6852dccd6d2b58f346870449637af12a69f7347fd09b",
+      "classification": "incidental-directory-copy",
+      "reason": "The explicit harnessFiles list contains checked/upstream support and excludes prototype.mjs. The generic conformance output-directory literal is not a dependency on the obsolete adapter."
+    }
+  ]
+}

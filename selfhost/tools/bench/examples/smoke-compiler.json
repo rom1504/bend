@@ -1,0 +1,157 @@
+{
+  "kind": "compiler",
+  "cwd": "/home/ai/bend2/build/publish/bend",
+  "reference": "n1",
+  "scope": "Migration smoke of fresh qualified N1/N2 requests against independent final04 complete QBE. This is a new finite check, not inherited success.",
+  "roles": {
+    "n1": {
+      "host": "native",
+      "stage": "N1",
+      "target": "qbe",
+      "preparation": "prepared-Base",
+      "policy": "ordinary-serial",
+      "status": "qualified",
+      "compiler": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase134/p146-context01-n1/program",
+        "bytes": 19100528,
+        "sha256": "5070701ca8a403f0094531ecebe8e9fde4cce7301a6320f4fbec2ab29a034ff5"
+      },
+      "runtime": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase144/serial-rfc01/serial-rfc.o",
+        "bytes": 119096,
+        "sha256": "2d07832382a11d7e993124ecc70452e4e1a3b7f753cf429343e1183cd8e493a3"
+      },
+      "qualification": {
+        "file": "/home/ai/bend2/build/publish/bend/implementation/phase146/qualification.json",
+        "bytes": 5314,
+        "sha256": "4476af53ccaa403fb1d7f9dd25d94b8125a9ef516bc02ba6d95a76fdb5d2f0e8"
+      },
+      "inputs": [
+        {
+          "file": "/home/ai/bend2/build/publish/bend/implementation/phase146/candidate.json",
+          "sha256": "54d9b861f255673d5b3583191b9e877fb5780a02e2ee5e13ae5971d4d72e03df",
+          "bytes": 4575
+        }
+      ]
+    },
+    "n2": {
+      "host": "native",
+      "stage": "N2",
+      "target": "qbe",
+      "preparation": "prepared-Base",
+      "policy": "ordinary-serial",
+      "status": "qualified",
+      "compiler": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase134/p146-context01-n2/program",
+        "bytes": 19100528,
+        "sha256": "367b639915c0bbc8906fc5827b002ca2c7fc07acc238034e54be994f8833d251"
+      },
+      "runtime": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase144/serial-rfc01/serial-rfc.o",
+        "bytes": 119096,
+        "sha256": "2d07832382a11d7e993124ecc70452e4e1a3b7f753cf429343e1183cd8e493a3"
+      },
+      "qualification": {
+        "file": "/home/ai/bend2/build/publish/bend/implementation/phase146/qualification.json",
+        "bytes": 5314,
+        "sha256": "4476af53ccaa403fb1d7f9dd25d94b8125a9ef516bc02ba6d95a76fdb5d2f0e8"
+      },
+      "inputs": [
+        {
+          "file": "/home/ai/bend2/build/publish/bend/implementation/phase146/candidate.json",
+          "sha256": "54d9b861f255673d5b3583191b9e877fb5780a02e2ee5e13ae5971d4d72e03df",
+          "bytes": 4575
+        }
+      ]
+    }
+  },
+  "cases": [
+    {
+      "id": "mandelbrot-request",
+      "family": "mandelbrot",
+      "source": "../catalogs/native45/fixtures/mandelbrot.bend",
+      "requests": {
+        "n1": {
+          "scope": "request",
+          "command": [
+            "/home/ai/bend2/build/publish/bend/selfhost/build/phase134/p146-context01-n1/program",
+            "--threads",
+            "1",
+            "--gpu",
+            "off",
+            "--",
+            "phase111",
+            "{source}",
+            "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/base.bend",
+            "cache",
+            "/home/ai/bend2/build/publish/bend/selfhost/build/phase130/base-carrier01/base.p130",
+            "p130-word-pair-v1:p88-private-base-text-1:8dec5b64d3900d61a208e51d92113194b91364c4f4d35d1903edb481d678ed03"
+          ],
+          "stdout": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase130/p144-final04-wrapper-mandelbrot/program.ssa",
+            "bytes": 1256237,
+            "sha256": "f080b8c342cce21c456ebaf5487ff3162b647786e2e2e513b8f6f0d3b1f0b187"
+          },
+          "stderr": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/examples/expected-empty.stderr",
+          "inputs": [
+            {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/base.bend",
+              "sha256": "99ac43f2b2bb3e3f39acdcedcecbbd3cb44749ce13969c827d6973fa66f7facf",
+              "bytes": 75064
+            },
+            {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase130/base-carrier01/base.p130",
+              "bytes": 2612691,
+              "sha256": "984fad041a0ba855ea0aaedd384485afa2153da644655c00882eb50ace33817f"
+            },
+            {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase130/base-carrier01/receipt.json",
+              "bytes": 4362,
+              "sha256": "6b170fc62a4a8b4e7588019a1b2cbdcc932ba10477029d966fbfa62cc61c89cf"
+            }
+          ]
+        },
+        "n2": {
+          "scope": "request",
+          "command": [
+            "/home/ai/bend2/build/publish/bend/selfhost/build/phase134/p146-context01-n2/program",
+            "--threads",
+            "1",
+            "--gpu",
+            "off",
+            "--",
+            "phase111",
+            "{source}",
+            "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/base.bend",
+            "cache",
+            "/home/ai/bend2/build/publish/bend/selfhost/build/phase130/base-carrier01/base.p130",
+            "p130-word-pair-v1:p88-private-base-text-1:8dec5b64d3900d61a208e51d92113194b91364c4f4d35d1903edb481d678ed03"
+          ],
+          "stdout": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase130/p144-final04-wrapper-mandelbrot/program.ssa",
+            "bytes": 1256237,
+            "sha256": "f080b8c342cce21c456ebaf5487ff3162b647786e2e2e513b8f6f0d3b1f0b187"
+          },
+          "stderr": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/examples/expected-empty.stderr",
+          "inputs": [
+            {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/base.bend",
+              "sha256": "99ac43f2b2bb3e3f39acdcedcecbbd3cb44749ce13969c827d6973fa66f7facf",
+              "bytes": 75064
+            },
+            {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase130/base-carrier01/base.p130",
+              "bytes": 2612691,
+              "sha256": "984fad041a0ba855ea0aaedd384485afa2153da644655c00882eb50ace33817f"
+            },
+            {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase130/base-carrier01/receipt.json",
+              "bytes": 4362,
+              "sha256": "6b170fc62a4a8b4e7588019a1b2cbdcc932ba10477029d966fbfa62cc61c89cf"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

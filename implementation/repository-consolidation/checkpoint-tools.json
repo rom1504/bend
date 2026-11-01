@@ -1,0 +1,943 @@
+{
+  "kind": "repository-consolidation-checkpoint",
+  "complete": false,
+  "scope": "Finished gates only; release/publication remains pending. Counts and performance scopes remain in exact reports.",
+  "runs": [
+    {
+      "name": "qbe-focused01",
+      "guardComplete": true,
+      "guardSeconds": null,
+      "guard": "selfhost/build/consolidation/guards/qbe-focused01/process.json",
+      "result": {
+        "kind": "bend-finite-qualification",
+        "complete": true,
+        "passed": true,
+        "seconds": 15.018510125111789
+      },
+      "report": {
+        "file": "selfhost/build/consolidation/qbe-focused01/report.json",
+        "bytes": 32493,
+        "sha256": "a18a197df673e86496e04301dbdc27f66921b6bc89f8ebb05b5438c38a35dd29"
+      }
+    },
+    {
+      "name": "qbe-source-match01",
+      "guardComplete": true,
+      "guardSeconds": null,
+      "guard": "selfhost/build/consolidation/guards/qbe-source-match01/process.json",
+      "result": {
+        "kind": "bend-build-request",
+        "complete": true
+      },
+      "report": {
+        "file": "selfhost/build/consolidation/qbe-source-match01/report.json",
+        "bytes": 10289,
+        "sha256": "7994e3d01da5983b3ad8da8f7e03da560cd5f1c06d00dd75f868830edccd92a6"
+      }
+    },
+    {
+      "name": "runtime01",
+      "guardComplete": true,
+      "guardSeconds": null,
+      "guard": "selfhost/build/consolidation/guards/runtime01/process.json",
+      "result": {
+        "kind": "bend-runtime-build",
+        "complete": true
+      },
+      "report": {
+        "file": "selfhost/build/consolidation/runtime01/report.json",
+        "bytes": 5221,
+        "sha256": "0dfc91b92fe844f5f5b0fdf6c546939841423858f2c098482ad8281a758369bc"
+      }
+    },
+    {
+      "name": "bench-acquire01",
+      "guardComplete": true,
+      "guardSeconds": null,
+      "guard": "selfhost/build/consolidation/guards/bench-acquire01/process.json",
+      "result": {
+        "kind": "bend-benchmark-acquisition",
+        "complete": true
+      },
+      "report": {
+        "file": "selfhost/build/consolidation/bench-acquire01/report.json",
+        "bytes": 21918,
+        "sha256": "0ff9280abec5fb86a08200b8240d28989981723482bb182b0f025f9ae3d29444"
+      }
+    },
+    {
+      "name": "bench-programs01",
+      "guardComplete": true,
+      "guardSeconds": null,
+      "guard": "selfhost/build/consolidation/guards/bench-programs01/process.json",
+      "result": {
+        "complete": true,
+        "cases": [
+          {
+            "id": "mandelbrot",
+            "family": "mandelbrot",
+            "rounds": 2,
+            "samples": [
+              {
+                "role": "upstream",
+                "round": 0,
+                "correct": true,
+                "process": {
+                  "command": [
+                    "/home/ai/bend2/build/publish/bend/selfhost/build/consolidation/bench-acquire01/mandelbrot/upstream/program",
+                    "--threads",
+                    "1",
+                    "--gpu",
+                    "off",
+                    "--",
+                    "9036",
+                    "4",
+                    "2",
+                    "0"
+                  ],
+                  "seconds": 0.20137050235643983,
+                  "cpuSeconds": 0.199991,
+                  "peakRssBytes": 11501568,
+                  "exitCode": 0,
+                  "timedOut": false,
+                  "stdout": {
+                    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/consolidation/bench-programs01/samples/mandelbrot/0-upstream/process/stdout",
+                    "bytes": 21,
+                    "sha256": "db6f87cbfedc16299772808d12003bf83b7dcc88516018e927d139964804281d"
+                  },
+                  "stderr": {
+                    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/consolidation/bench-programs01/samples/mandelbrot/0-upstream/process/stderr",
+                    "bytes": 0,
+                    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+                  }
+                },
+                "metricMs": 0.022023019034971225,
+                "elapsedMs": 199,
+                "repetitions": 9036,
+                "warmups": 4,
+                "lowResolution": false
+              },
+              {
+                "role": "candidate",
+                "round": 0,
+                "correct": true,
+                "process": {
+                  "command": [
+                    "/home/ai/bend2/build/publish/bend/selfhost/build/consolidation/bench-acquire01/mandelbrot/candidate/machine/program",
+                    "--threads",
+                    "1",
+                    "--gpu",
+                    "off",
+                    "--",
+                    "9036",
+                    "4",
+                    "2",
+                    "0"
+                  ],
+                  "seconds": 0.7304451940581203,
+                  "cpuSeconds": 0.7292139999999999,
+                  "peakRssBytes": 11534336,
+                  "exitCode": 0,
+                  "timedOut": false,
+                  "stdout": {
+                    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/consolidation/bench-programs01/samples/mandelbrot/0-candidate/process/stdout",
+                    "bytes": 21,
+                    "sha256": "916d893ace2b9ba194395806e4bd602885913529181d1163771cb5ce7af90ab3"
+                  },
+                  "stderr": {
+                    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/consolidation/bench-programs01/samples/mandelbrot/0-candidate/process/stderr",
+                    "bytes": 0,
+                    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+                  }
+                },
+                "metricMs": 0.08056662239929172,
+                "elapsedMs": 728,
+                "repetitions": 9036,
+                "warmups": 4,
+                "lowResolution": false
+              },
+              {
+                "role": "candidate",
+                "round": 1,
+                "correct": true,
+                "process": {
+                  "command": [
+                    "/home/ai/bend2/build/publish/bend/selfhost/build/consolidation/bench-acquire01/mandelbrot/candidate/machine/program",
+                    "--threads",
+                    "1",
+                    "--gpu",
+                    "off",
+                    "--",
+                    "9036",
+                    "4",
+                    "2",
+                    "0"
+                  ],
+                  "seconds": 0.7243902799673378,
+                  "cpuSeconds": 0.723208,
+                  "peakRssBytes": 11620352,
+                  "exitCode": 0,
+                  "timedOut": false,
+                  "stdout": {
+                    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/consolidation/bench-programs01/samples/mandelbrot/1-candidate/process/stdout",
+                    "bytes": 21,
+                    "sha256": "38616af13155e6daf3d3bb4b4302526f689afc56f2402578c0e33f88f4149a3c"
+                  },
+                  "stderr": {
+                    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/consolidation/bench-programs01/samples/mandelbrot/1-candidate/process/stderr",
+                    "bytes": 0,
+                    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+                  }
+                },
+                "metricMs": 0.07990261177512173,
+                "elapsedMs": 722,
+                "repetitions": 9036,
+                "warmups": 4,
+                "lowResolution": false
+              },
+              {
+                "role": "upstream",
+                "round": 1,
+                "correct": true,
+                "process": {
+                  "command": [
+                    "/home/ai/bend2/build/publish/bend/selfhost/build/consolidation/bench-acquire01/mandelbrot/upstream/program",
+                    "--threads",
+                    "1",
+                    "--gpu",
+                    "off",
+                    "--",
+                    "9036",
+                    "4",
+                    "2",
+                    "0"
+                  ],
+                  "seconds": 0.23726364178583026,
+                  "cpuSeconds": 0.235945,
+                  "peakRssBytes": 11620352,
+                  "exitCode": 0,
+                  "timedOut": false,
+                  "stdout": {
+                    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/consolidation/bench-programs01/samples/mandelbrot/1-upstream/process/stdout",
+                    "bytes": 21,
+                    "sha256": "474f723de0ef4534dd4e925b1d4afbee1af65d654bf20a3257b44e38398cb0bc"
+                  },
+                  "stderr": {
+                    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/consolidation/bench-programs01/samples/mandelbrot/1-upstream/process/stderr",
+                    "bytes": 0,
+                    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+                  }
+                },
+                "metricMs": 0.026007082779991145,
+                "elapsedMs": 235,
+                "repetitions": 9036,
+                "warmups": 4,
+                "lowResolution": false
+              }
+            ],
+            "sourceGroup": "cb2b9c30aceeb0f8ed0da1f999658aa8d7fb346851877da6902d1ded4cfc0656",
+            "summary": {
+              "complete": true,
+              "pairedRounds": [
+                0,
+                1
+              ],
+              "stats": {
+                "upstream": {
+                  "medianMs": 0.024015050907481184,
+                  "samplesMs": [
+                    0.022023019034971225,
+                    0.026007082779991145
+                  ],
+                  "minimumMs": 0.022023019034971225,
+                  "maximumMs": 0.026007082779991145,
+                  "lowResolution": false
+                },
+                "candidate": {
+                  "medianMs": 0.08023461708720672,
+                  "samplesMs": [
+                    0.08056662239929172,
+                    0.07990261177512173
+                  ],
+                  "minimumMs": 0.07990261177512173,
+                  "maximumMs": 0.08056662239929172,
+                  "lowResolution": false
+                }
+              },
+              "ratios": {
+                "candidate": 3.3410138248847927
+              },
+              "ratioEligible": true
+            }
+          },
+          {
+            "id": "tree-bitonic",
+            "family": "tree-bitonic",
+            "rounds": 2,
+            "samples": [
+              {
+                "role": "upstream",
+                "round": 0,
+                "correct": true,
+                "process": {
+                  "command": [
+                    "/home/ai/bend2/build/publish/bend/selfhost/build/consolidation/bench-acquire01/tree-bitonic/upstream/program",
+                    "--threads",
+                    "1",
+                    "--gpu",
+                    "off",
+                    "--",
+                    "1636",
+                    "4",
+                    "8",
+                    "0"
+                  ],
+                  "seconds": 0.2183094979263842,
+                  "cpuSeconds": 0.217419,
+                  "peakRssBytes": 11599872,
+                  "exitCode": 0,
+                  "timedOut": false,
+                  "stdout": {
+                    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/consolidation/bench-programs01/samples/tree-bitonic/0-upstream/process/stdout",
+                    "bytes": 21,
+                    "sha256": "f44e2a35a1df5f32d9c30052b73f603e46367ec75e2aafb6f2f53efcbe0ec7f4"
+                  },
+                  "stderr": {
+                    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/consolidation/bench-programs01/samples/tree-bitonic/0-upstream/process/stderr",
+                    "bytes": 0,
+                    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+                  }
+                },
+                "metricMs": 0.13202933985330073,
+                "elapsedMs": 216,
+                "repetitions": 1636,
+                "warmups": 4,
+                "lowResolution": false
+              },
+              {
+                "role": "candidate",
+                "round": 0,
+                "correct": true,
+                "process": {
+                  "command": [
+                    "/home/ai/bend2/build/publish/bend/selfhost/build/consolidation/bench-acquire01/tree-bitonic/candidate/machine/program",
+                    "--threads",
+                    "1",
+                    "--gpu",
+                    "off",
+                    "--",
+                    "1636",
+                    "4",
+                    "8",
+                    "0"
+                  ],
+                  "seconds": 0.9965332867577672,
+                  "cpuSeconds": 0.9954729999999999,
+                  "peakRssBytes": 11603968,
+                  "exitCode": 0,
+                  "timedOut": false,
+                  "stdout": {
+                    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/consolidation/bench-programs01/samples/tree-bitonic/0-candidate/process/stdout",
+                    "bytes": 21,
+                    "sha256": "740e4e9a31d2fa97592b58e75d1bf5784dce3ab417f53b5f44b2bcc929a12b06"
+                  },
+                  "stderr": {
+                    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/consolidation/bench-programs01/samples/tree-bitonic/0-candidate/process/stderr",
+                    "bytes": 0,
+                    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+                  }
+                },
+                "metricMs": 0.6057457212713936,
+                "elapsedMs": 991,
+                "repetitions": 1636,
+                "warmups": 4,
+                "lowResolution": false
+              },
+              {
+                "role": "candidate",
+                "round": 1,
+                "correct": true,
+                "process": {
+                  "command": [
+                    "/home/ai/bend2/build/publish/bend/selfhost/build/consolidation/bench-acquire01/tree-bitonic/candidate/machine/program",
+                    "--threads",
+                    "1",
+                    "--gpu",
+                    "off",
+                    "--",
+                    "1636",
+                    "4",
+                    "8",
+                    "0"
+                  ],
+                  "seconds": 0.9172697230242193,
+                  "cpuSeconds": 0.916342,
+                  "peakRssBytes": 11636736,
+                  "exitCode": 0,
+                  "timedOut": false,
+                  "stdout": {
+                    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/consolidation/bench-programs01/samples/tree-bitonic/1-candidate/process/stdout",
+                    "bytes": 21,
+                    "sha256": "8f27e5d6930509dc17fc426b804cc20a1a0070a9191c051a86159bac65d72958"
+                  },
+                  "stderr": {
+                    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/consolidation/bench-programs01/samples/tree-bitonic/1-candidate/process/stderr",
+                    "bytes": 0,
+                    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+                  }
+                },
+                "metricMs": 0.5574572127139364,
+                "elapsedMs": 912,
+                "repetitions": 1636,
+                "warmups": 4,
+                "lowResolution": false
+              },
+              {
+                "role": "upstream",
+                "round": 1,
+                "correct": true,
+                "process": {
+                  "command": [
+                    "/home/ai/bend2/build/publish/bend/selfhost/build/consolidation/bench-acquire01/tree-bitonic/upstream/program",
+                    "--threads",
+                    "1",
+                    "--gpu",
+                    "off",
+                    "--",
+                    "1636",
+                    "4",
+                    "8",
+                    "0"
+                  ],
+                  "seconds": 0.20349860610440373,
+                  "cpuSeconds": 0.202429,
+                  "peakRssBytes": 11640832,
+                  "exitCode": 0,
+                  "timedOut": false,
+                  "stdout": {
+                    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/consolidation/bench-programs01/samples/tree-bitonic/1-upstream/process/stdout",
+                    "bytes": 21,
+                    "sha256": "70a74bbb34131479a61e60ae17fa5189c63b49028e8c3064005e7ff028345181"
+                  },
+                  "stderr": {
+                    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/consolidation/bench-programs01/samples/tree-bitonic/1-upstream/process/stderr",
+                    "bytes": 0,
+                    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+                  }
+                },
+                "metricMs": 0.12286063569682151,
+                "elapsedMs": 201,
+                "repetitions": 1636,
+                "warmups": 4,
+                "lowResolution": false
+              }
+            ],
+            "sourceGroup": "ace0242c329b1628cb9d0a0142386380e0ca4e56fa741916974938eb079b2c0d",
+            "summary": {
+              "complete": true,
+              "pairedRounds": [
+                0,
+                1
+              ],
+              "stats": {
+                "upstream": {
+                  "medianMs": 0.12744498777506114,
+                  "samplesMs": [
+                    0.13202933985330073,
+                    0.12286063569682151
+                  ],
+                  "minimumMs": 0.12286063569682151,
+                  "maximumMs": 0.13202933985330073,
+                  "lowResolution": false
+                },
+                "candidate": {
+                  "medianMs": 0.581601466992665,
+                  "samplesMs": [
+                    0.6057457212713936,
+                    0.5574572127139364
+                  ],
+                  "minimumMs": 0.5574572127139364,
+                  "maximumMs": 0.6057457212713936,
+                  "lowResolution": false
+                }
+              },
+              "ratios": {
+                "candidate": 4.563549160671462
+              },
+              "ratioEligible": true
+            }
+          }
+        ]
+      },
+      "report": {
+        "file": "selfhost/build/consolidation/bench-programs01/report.json",
+        "bytes": 37331,
+        "sha256": "b8933e6252dd62e6096239b350eb7565aced614e247f11497d5f979dd9ac5618"
+      }
+    },
+    {
+      "name": "bench-compiler01",
+      "guardComplete": true,
+      "guardSeconds": null,
+      "guard": "selfhost/build/consolidation/guards/bench-compiler01/process.json",
+      "result": {
+        "complete": true,
+        "cases": [
+          {
+            "id": "mandelbrot",
+            "family": "mandelbrot",
+            "rounds": 2,
+            "samples": [
+              {
+                "role": "upstream",
+                "round": 0,
+                "correct": true,
+                "process": {
+                  "command": [
+                    "/home/ai/bend2/build/publish/bend/selfhost/.assets/bin/bun",
+                    "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/upstream.mjs",
+                    "/home/ai/bend2/build/publish/bend/selfhost/build/consolidation/bench-acquire01/mandelbrot/upstream/request.json",
+                    "/home/ai/bend2/build/publish/bend/selfhost/build/consolidation/bench-compiler01/samples/mandelbrot/0-upstream/product"
+                  ],
+                  "seconds": 2.2027471512556076,
+                  "cpuSeconds": 2.20118,
+                  "peakRssBytes": 216154112,
+                  "exitCode": 0,
+                  "timedOut": false,
+                  "stdout": {
+                    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/consolidation/bench-compiler01/samples/mandelbrot/0-upstream/process/stdout",
+                    "bytes": 154049,
+                    "sha256": "3284630bdba8d4185bb4d280ac76b52aba0646000a826b1e368681f8bc6a55a4"
+                  },
+                  "stderr": {
+                    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/consolidation/bench-compiler01/samples/mandelbrot/0-upstream/process/stderr",
+                    "bytes": 0,
+                    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+                  }
+                },
+                "metricMs": 2202.7471512556076,
+                "scope": "request"
+              },
+              {
+                "role": "candidate",
+                "round": 0,
+                "correct": true,
+                "process": {
+                  "command": [
+                    "/home/ai/bend2/build/publish/bend/selfhost/.assets/native/qbe-n2",
+                    "--threads",
+                    "1",
+                    "--gpu",
+                    "off",
+                    "--",
+                    "phase111",
+                    "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/mandelbrot.bend",
+                    "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/base.bend",
+                    "cache",
+                    "/home/ai/bend2/build/publish/bend/selfhost/.assets/base/base.p130",
+                    "p130-word-pair-v1:p88-private-base-text-1:8dec5b64d3900d61a208e51d92113194b91364c4f4d35d1903edb481d678ed03"
+                  ],
+                  "seconds": 2.301895711570978,
+                  "cpuSeconds": 2.300589,
+                  "peakRssBytes": 45887488,
+                  "exitCode": 0,
+                  "timedOut": false,
+                  "stdout": {
+                    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/consolidation/bench-compiler01/samples/mandelbrot/0-candidate/process/stdout",
+                    "bytes": 1256237,
+                    "sha256": "f080b8c342cce21c456ebaf5487ff3162b647786e2e2e513b8f6f0d3b1f0b187"
+                  },
+                  "stderr": {
+                    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/consolidation/bench-compiler01/samples/mandelbrot/0-candidate/process/stderr",
+                    "bytes": 0,
+                    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+                  }
+                },
+                "metricMs": 2301.895711570978,
+                "scope": "request"
+              },
+              {
+                "role": "candidate",
+                "round": 1,
+                "correct": true,
+                "process": {
+                  "command": [
+                    "/home/ai/bend2/build/publish/bend/selfhost/.assets/native/qbe-n2",
+                    "--threads",
+                    "1",
+                    "--gpu",
+                    "off",
+                    "--",
+                    "phase111",
+                    "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/mandelbrot.bend",
+                    "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/base.bend",
+                    "cache",
+                    "/home/ai/bend2/build/publish/bend/selfhost/.assets/base/base.p130",
+                    "p130-word-pair-v1:p88-private-base-text-1:8dec5b64d3900d61a208e51d92113194b91364c4f4d35d1903edb481d678ed03"
+                  ],
+                  "seconds": 2.289001070894301,
+                  "cpuSeconds": 2.287481,
+                  "peakRssBytes": 43360256,
+                  "exitCode": 0,
+                  "timedOut": false,
+                  "stdout": {
+                    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/consolidation/bench-compiler01/samples/mandelbrot/1-candidate/process/stdout",
+                    "bytes": 1256237,
+                    "sha256": "f080b8c342cce21c456ebaf5487ff3162b647786e2e2e513b8f6f0d3b1f0b187"
+                  },
+                  "stderr": {
+                    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/consolidation/bench-compiler01/samples/mandelbrot/1-candidate/process/stderr",
+                    "bytes": 0,
+                    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+                  }
+                },
+                "metricMs": 2289.001070894301,
+                "scope": "request"
+              },
+              {
+                "role": "upstream",
+                "round": 1,
+                "correct": true,
+                "process": {
+                  "command": [
+                    "/home/ai/bend2/build/publish/bend/selfhost/.assets/bin/bun",
+                    "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/upstream.mjs",
+                    "/home/ai/bend2/build/publish/bend/selfhost/build/consolidation/bench-acquire01/mandelbrot/upstream/request.json",
+                    "/home/ai/bend2/build/publish/bend/selfhost/build/consolidation/bench-compiler01/samples/mandelbrot/1-upstream/product"
+                  ],
+                  "seconds": 2.2163413488306105,
+                  "cpuSeconds": 2.215115,
+                  "peakRssBytes": 215089152,
+                  "exitCode": 0,
+                  "timedOut": false,
+                  "stdout": {
+                    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/consolidation/bench-compiler01/samples/mandelbrot/1-upstream/process/stdout",
+                    "bytes": 154049,
+                    "sha256": "3284630bdba8d4185bb4d280ac76b52aba0646000a826b1e368681f8bc6a55a4"
+                  },
+                  "stderr": {
+                    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/consolidation/bench-compiler01/samples/mandelbrot/1-upstream/process/stderr",
+                    "bytes": 0,
+                    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+                  }
+                },
+                "metricMs": 2216.3413488306105,
+                "scope": "request"
+              }
+            ],
+            "sourceGroup": "7d47d183cf02b3e943e0e35532eb8ba12c683eafd9b2031bbc25983181174897",
+            "summary": {
+              "complete": true,
+              "pairedRounds": [
+                0,
+                1
+              ],
+              "stats": {
+                "upstream": {
+                  "medianMs": 2209.544250043109,
+                  "samplesMs": [
+                    2202.7471512556076,
+                    2216.3413488306105
+                  ],
+                  "minimumMs": 2202.7471512556076,
+                  "maximumMs": 2216.3413488306105,
+                  "lowResolution": false
+                },
+                "candidate": {
+                  "medianMs": 2295.4483912326396,
+                  "samplesMs": [
+                    2301.895711570978,
+                    2289.001070894301
+                  ],
+                  "minimumMs": 2289.001070894301,
+                  "maximumMs": 2301.895711570978,
+                  "lowResolution": false
+                }
+              },
+              "ratios": {
+                "candidate": 1.0388786697473267
+              },
+              "ratioEligible": true
+            }
+          },
+          {
+            "id": "tree-bitonic",
+            "family": "tree-bitonic",
+            "rounds": 2,
+            "samples": [
+              {
+                "role": "upstream",
+                "round": 0,
+                "correct": true,
+                "process": {
+                  "command": [
+                    "/home/ai/bend2/build/publish/bend/selfhost/.assets/bin/bun",
+                    "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/upstream.mjs",
+                    "/home/ai/bend2/build/publish/bend/selfhost/build/consolidation/bench-acquire01/tree-bitonic/upstream/request.json",
+                    "/home/ai/bend2/build/publish/bend/selfhost/build/consolidation/bench-compiler01/samples/tree-bitonic/0-upstream/product"
+                  ],
+                  "seconds": 2.093669403810054,
+                  "cpuSeconds": 2.092449,
+                  "peakRssBytes": 203587584,
+                  "exitCode": 0,
+                  "timedOut": false,
+                  "stdout": {
+                    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/consolidation/bench-compiler01/samples/tree-bitonic/0-upstream/process/stdout",
+                    "bytes": 151635,
+                    "sha256": "39eb05d988e1074234c8a7ff72112b2df3f61de3d2cdea3bc8d6881420c0331d"
+                  },
+                  "stderr": {
+                    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/consolidation/bench-compiler01/samples/tree-bitonic/0-upstream/process/stderr",
+                    "bytes": 0,
+                    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+                  }
+                },
+                "metricMs": 2093.669403810054,
+                "scope": "request"
+              },
+              {
+                "role": "candidate",
+                "round": 0,
+                "correct": true,
+                "process": {
+                  "command": [
+                    "/home/ai/bend2/build/publish/bend/selfhost/.assets/native/qbe-n2",
+                    "--threads",
+                    "1",
+                    "--gpu",
+                    "off",
+                    "--",
+                    "phase111",
+                    "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/tree-bitonic.bend",
+                    "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/base.bend",
+                    "cache",
+                    "/home/ai/bend2/build/publish/bend/selfhost/.assets/base/base.p130",
+                    "p130-word-pair-v1:p88-private-base-text-1:8dec5b64d3900d61a208e51d92113194b91364c4f4d35d1903edb481d678ed03"
+                  ],
+                  "seconds": 1.1966446293517947,
+                  "cpuSeconds": 1.1955580000000001,
+                  "peakRssBytes": 43659264,
+                  "exitCode": 0,
+                  "timedOut": false,
+                  "stdout": {
+                    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/consolidation/bench-compiler01/samples/tree-bitonic/0-candidate/process/stdout",
+                    "bytes": 669474,
+                    "sha256": "bffd730b58d208196d337c71740a0ed0490c3bd0d86f3e09267c8d698f17a8fe"
+                  },
+                  "stderr": {
+                    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/consolidation/bench-compiler01/samples/tree-bitonic/0-candidate/process/stderr",
+                    "bytes": 0,
+                    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+                  }
+                },
+                "metricMs": 1196.6446293517947,
+                "scope": "request"
+              },
+              {
+                "role": "candidate",
+                "round": 1,
+                "correct": true,
+                "process": {
+                  "command": [
+                    "/home/ai/bend2/build/publish/bend/selfhost/.assets/native/qbe-n2",
+                    "--threads",
+                    "1",
+                    "--gpu",
+                    "off",
+                    "--",
+                    "phase111",
+                    "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/tree-bitonic.bend",
+                    "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/base.bend",
+                    "cache",
+                    "/home/ai/bend2/build/publish/bend/selfhost/.assets/base/base.p130",
+                    "p130-word-pair-v1:p88-private-base-text-1:8dec5b64d3900d61a208e51d92113194b91364c4f4d35d1903edb481d678ed03"
+                  ],
+                  "seconds": 1.2014028602279723,
+                  "cpuSeconds": 1.2004519999999999,
+                  "peakRssBytes": 43790336,
+                  "exitCode": 0,
+                  "timedOut": false,
+                  "stdout": {
+                    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/consolidation/bench-compiler01/samples/tree-bitonic/1-candidate/process/stdout",
+                    "bytes": 669474,
+                    "sha256": "bffd730b58d208196d337c71740a0ed0490c3bd0d86f3e09267c8d698f17a8fe"
+                  },
+                  "stderr": {
+                    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/consolidation/bench-compiler01/samples/tree-bitonic/1-candidate/process/stderr",
+                    "bytes": 0,
+                    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+                  }
+                },
+                "metricMs": 1201.4028602279723,
+                "scope": "request"
+              },
+              {
+                "role": "upstream",
+                "round": 1,
+                "correct": true,
+                "process": {
+                  "command": [
+                    "/home/ai/bend2/build/publish/bend/selfhost/.assets/bin/bun",
+                    "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/upstream.mjs",
+                    "/home/ai/bend2/build/publish/bend/selfhost/build/consolidation/bench-acquire01/tree-bitonic/upstream/request.json",
+                    "/home/ai/bend2/build/publish/bend/selfhost/build/consolidation/bench-compiler01/samples/tree-bitonic/1-upstream/product"
+                  ],
+                  "seconds": 2.0860565500333905,
+                  "cpuSeconds": 2.084793,
+                  "peakRssBytes": 202149888,
+                  "exitCode": 0,
+                  "timedOut": false,
+                  "stdout": {
+                    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/consolidation/bench-compiler01/samples/tree-bitonic/1-upstream/process/stdout",
+                    "bytes": 151635,
+                    "sha256": "39eb05d988e1074234c8a7ff72112b2df3f61de3d2cdea3bc8d6881420c0331d"
+                  },
+                  "stderr": {
+                    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/consolidation/bench-compiler01/samples/tree-bitonic/1-upstream/process/stderr",
+                    "bytes": 0,
+                    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+                  }
+                },
+                "metricMs": 2086.0565500333905,
+                "scope": "request"
+              }
+            ],
+            "sourceGroup": "405f8d8fb2066e6fedd8baa45943bcdf92b59cb40e23ce2ad3ea4bd3eeb53ae0",
+            "summary": {
+              "complete": true,
+              "pairedRounds": [
+                0,
+                1
+              ],
+              "stats": {
+                "upstream": {
+                  "medianMs": 2089.8629769217223,
+                  "samplesMs": [
+                    2093.669403810054,
+                    2086.0565500333905
+                  ],
+                  "minimumMs": 2086.0565500333905,
+                  "maximumMs": 2093.669403810054,
+                  "lowResolution": false
+                },
+                "candidate": {
+                  "medianMs": 1199.0237447898835,
+                  "samplesMs": [
+                    1196.6446293517947,
+                    1201.4028602279723
+                  ],
+                  "minimumMs": 1196.6446293517947,
+                  "maximumMs": 1201.4028602279723,
+                  "lowResolution": false
+                }
+              },
+              "ratios": {
+                "candidate": 0.5737331863527213
+              },
+              "ratioEligible": true
+            }
+          }
+        ]
+      },
+      "report": {
+        "file": "selfhost/build/consolidation/bench-compiler01/report.json",
+        "bytes": 38445,
+        "sha256": "ebe29dde80350262a7e3c0043379bdf7c67790b29dfe0848dbe02dc4823c4404"
+      }
+    },
+    {
+      "name": "law-tag01",
+      "guardComplete": true,
+      "guardSeconds": null,
+      "guard": "selfhost/build/consolidation/guards/law-tag01/process.json",
+      "result": {
+        "complete": true
+      },
+      "report": {
+        "file": "selfhost/build/consolidation/law-tag01/report.json",
+        "bytes": 20576,
+        "sha256": "f5c6220b0748c944b9d1c3d9430492590cec211f7ffdf4a52f23399b1ef2c365"
+      }
+    },
+    {
+      "name": "session-semantic01",
+      "guardComplete": true,
+      "guardSeconds": null,
+      "guard": "selfhost/build/consolidation/guards/session-semantic01/process.json",
+      "result": {
+        "kind": "bend-experimental-session",
+        "complete": true,
+        "seconds": 13.672058786731213
+      },
+      "report": {
+        "file": "selfhost/build/consolidation/session-semantic01/report.json",
+        "bytes": 13551,
+        "sha256": "34435c215542df9e4944e93abf50019765b04062cfd3d8b78d9fa356803c4ae5"
+      }
+    },
+    {
+      "name": "session-objects01",
+      "guardComplete": true,
+      "guardSeconds": null,
+      "guard": "selfhost/build/consolidation/guards/session-objects01/process.json",
+      "result": {
+        "kind": "bend-session-object-controls",
+        "complete": true
+      },
+      "report": {
+        "file": "selfhost/build/consolidation/session-objects01/report.json",
+        "bytes": 5372,
+        "sha256": "e8318f6810174accccae0b7786208dca2e8c1f02a0d879933fb441b42c9081ae"
+      }
+    },
+    {
+      "name": "profiler-smoke01",
+      "guardComplete": true,
+      "guardSeconds": null,
+      "guard": "selfhost/build/consolidation/guards/profiler-smoke01/process.json",
+      "result": {
+        "kind": "all",
+        "complete": true
+      },
+      "report": {
+        "file": "selfhost/build/consolidation/profiler-smoke01/report.json",
+        "bytes": 21344,
+        "sha256": "4e0fc7abfb9c3d6196ced3e544585decbc98120692e4c7896df72d96dcd8b097"
+      }
+    },
+    {
+      "name": "hosted-current04",
+      "guardComplete": true,
+      "guardSeconds": null,
+      "guard": "selfhost/build/consolidation/guards/hosted-current04/process.json",
+      "result": {
+        "kind": "bend-checked-hosted-api",
+        "complete": true,
+        "seconds": 17.200528391,
+        "error": null
+      },
+      "report": {
+        "file": "selfhost/build/consolidation/hosted-current04/report.json",
+        "bytes": 13209,
+        "sha256": "9431cac4f6665504d3bf632b05a63cc670273cc380aa9eead7c2c3dff8e4c69e"
+      }
+    },
+    {
+      "name": "js-capacity01",
+      "guardComplete": false,
+      "guardSeconds": null,
+      "guard": "selfhost/build/consolidation/guards/js-capacity01/process.json",
+      "result": {
+        "kind": "bend-js-definition-capacity-controls",
+        "complete": false,
+        "seconds": 87.239527686,
+        "error": "RangeError: Maximum call stack size exceeded.\n    at $index_remove$ (/home/ai/bend2/build/publish/bend/selfhost/build/consolidation/hosted-current04/api.mjs:7790:50)\n    at $index_remove$ (/home/ai/bend2/build/publish/bend/selfhost/build/consolidation/hosted-current04/api.mjs:7790:50)\n    at $index_remove$ (/home/ai/bend2/build/publish/bend/selfhost/build/consolidation/hosted-current04/api.mjs:7790:50)\n    at $index_remove$ (/home/ai/bend2/build/publish/bend/selfhost/build/consolidation/hosted-current04/api.mjs:7790:50)\n    at $index_remove$ (/home/ai/bend2/build/publish/bend/selfhost/build/consolidation/hosted-current04/api.mjs:7790:50)\n    at $index_remove$ (/home/ai/bend2/build/publish/bend/selfhost/build/consolidation/hosted-current04/api.mjs:7790:50)\n    at $index_remove$ (/home/ai/bend2/build/publish/bend/selfhost/build/consolidation/hosted-current04/api.mjs:7790:50)\n    at $index_remove$ (/home/ai/bend2/build/publish/bend/selfhost/build/consolidation/hosted-current04/api.mjs:7790:50)\n    at $index_remove$ (/home/ai/bend2/build/publish/bend/selfhost/build/consolidation/hosted-current04/api.mjs:7790:50)\n    at $index_remove$ (/home/ai/bend2/build/publish/bend/selfhost/build/consolidation/hosted-current04/api.mjs:7790:50)"
+      },
+      "report": {
+        "file": "selfhost/build/consolidation/js-capacity01/report.json",
+        "bytes": 9275,
+        "sha256": "844c4126a0d5ab258e2c518abfbd5e08df8de4a8ad40f75a4583c38294207ef0"
+      }
+    }
+  ]
+}

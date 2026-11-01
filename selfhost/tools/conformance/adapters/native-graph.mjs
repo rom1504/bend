@@ -3,14 +3,14 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import {spawnSync} from 'node:child_process';
-import {runNativeGraph,loadNativeGraphManifest} from '../../performance/rapid/native-graph-run.mjs';
+import {runNativeGraph,loadNativeGraphManifest} from '../selected-graph.mjs';
 import {walk} from '../inventory.mjs';
 import {nodeResourceArgs} from '../../node-resource-args.mjs';
 const required=key=>{if(!process.env[key])throw Error('Set '+key);return fs.realpathSync(process.env[key])};
 const binary=required('BEND_NATIVE_BINARY'),runtime=required('BEND_NATIVE_RUNTIME'),directory=required('BEND_NATIVE_MANIFEST_DIRECTORY');
 export const name='bend-native-graph-host';
 export const capabilities={parse:false,check:false,interpreter:false,js:true,native:false,metal:false,cuda:false,modules:true,foreign:true,dependentTypes:true,affine:true,termination:true,proofs:true};
-export const artifacts={binary,runtime,launcher:path.resolve(import.meta.dirname,'../../performance/rapid/native-graph-run.mjs'),nodeResources:path.resolve(import.meta.dirname,'../../node-resource-args.mjs')};
+export const artifacts={binary,runtime,launcher:path.resolve(import.meta.dirname,'../selected-graph.mjs'),nodeResources:path.resolve(import.meta.dirname,'../../node-resource-args.mjs')};
 for(const file of walk(directory))if(file.endsWith('.json'))artifacts['manifest/'+path.relative(directory,file)]=file;
 for(const file of [binary+'.build.json',path.join(path.dirname(binary),'native-build-report.json')])if(fs.existsSync(file))artifacts['build/'+path.basename(file)]=file;
 export function inputFiles({tests}) {

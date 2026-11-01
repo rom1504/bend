@@ -794,7 +794,7 @@ export function javascriptBackendForMode(mode='check',backend) {
   return backend??(['compile','library','interpreter'].includes(mode)?'direct':'js');
 }
 
-async function inspectWithMemo(input,{mode='check',backend,api,args=[],timeoutMs=5000,combinedOutput=false,withReport=false,proofOnly=false,captureCheckedGraph=false,captureNativeFacts=false}={},memo=null) {
+async function inspectWithMemo(input,{mode='check',backend,api,args=[],timeoutMs=5000,combinedOutput=false,withReport=false,proofOnly=false,captureCheckedGraph=false,captureNativeFacts=false,useBaseCache=process.env.BEND_TYPED_BASE_CACHE!=='off'}={},memo=null) {
   const ownedApi=api===undefined||memo!==null;
   backend=javascriptBackendForMode(mode,backend);
   api??=await loadApi();
@@ -811,7 +811,8 @@ async function inspectWithMemo(input,{mode='check',backend,api,args=[],timeoutMs
     if(!['js','direct'].includes(backend))throw Error('Unknown JavaScript backend: '+backend);
     trace('discover '+input);
     requireLoaderApi(api);
-    const info=baseCacheInfo(api);
+    if(typeof useBaseCache!=='boolean')throw Error('useBaseCache must be boolean');
+    const info=useBaseCache?baseCacheInfo(api):null;
     if(memo&&(fs.realpathSync(apiPath)!==memo.identity.canonicalPath||(info?.compilerSha256??hash(apiPath))!==memo.identity.sha256)) {
       memo.entry=null;
       throw Error('Compiler API changed during persistent inspection');
@@ -826,7 +827,7 @@ async function inspectWithMemo(input,{mode='check',backend,api,args=[],timeoutMs
     if(mode==='parse') return {status:'ok',phase,exitCode:0,checked:false,files:graph.files};
     phase='check';
     trace('check book');
-    const cached=graph.hasBase&&api.check_from_exact_prefix?(seed||await prepareBase(api,{backendProducts:false})):null;
+    const cached=useBaseCache&&graph.hasBase&&api.check_from_exact_prefix?(seed||await prepareBase(api,{backendProducts:false})):null;
     const checkAbi=typeof api.compiler_check_result_abi==='function'?api.compiler_check_result_abi():0;
     if(![0,1,2].includes(checkAbi))throw Error(`Unsupported compiler checker-result ABI: ${checkAbi}`);
     if(checkAbi===2&&typeof api.check_program_diagnostic!=='function')throw Error('Compiler checker-result ABI 2 requires check_program_diagnostic');

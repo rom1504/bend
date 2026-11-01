@@ -1,0 +1,37 @@
+{
+  "id": "bad03-equality-forgets-last-mismatch",
+  "kind": "bad",
+  "file": "selfhost/tools/performance/phase88/strings/helpers.bend",
+  "function": "p88_string_eq_go",
+  "before": "def p88_string_eq_go(a: String, b: String, same: Bool) -> Bool:\n  match a b same:\n    case SNil{} SNil{} result: result",
+  "after": "def p88_string_eq_go(a: String, b: String, same: Bool) -> Bool:\n  match a b same:\n    case SNil{} SNil{} result: True{}",
+  "expectedBehavior": "Simultaneous end of input does not erase the carried comparison result; a mismatch on the last character must remain false.",
+  "witness": {
+    "expression": "p88_string_eq(\"ax\", \"ay\")",
+    "returnType": "Bool",
+    "baselineValueBend": "False{}",
+    "challengeValueBend": "True{}",
+    "source": {
+      "path": "selfhost/tools/laws/phase98/challenge/bad03-equality-forgets-last-mismatch.witness.bend",
+      "bytes": 358,
+      "sha256": "643d33131023b56b818f226f73d4fb012da10e98342bc6e3a33db9a47d5ad54c"
+    }
+  },
+  "provenance": {
+    "classification": "synthetic-semantic-fault",
+    "selection": "Maintained/helper source reasoning before Phase98 law bodies, finite cases, or outcomes."
+  },
+  "schema": "phase98-independent-challenge-v1",
+  "source": {
+    "path": "selfhost/tools/performance/phase88/strings/helpers.bend",
+    "bytes": 1232,
+    "sha256": "a00e6f8d8a593f154cf1fe02981a6929355270a662e94a765c3db02528049e31"
+  },
+  "expectedOccurrences": 1,
+  "line": 3,
+  "changedSourceSha256": "9400f477934843f87a16fed36b1f274a6c48856e6c39c026ef4458b46adf8806",
+  "changedSourceBytes": 1232,
+  "admission": "predicted well-typed; root must check",
+  "domain": "Finite typed helper values; pure extensional behavior only.",
+  "targetsRun": false
+}

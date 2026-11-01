@@ -1,0 +1,88 @@
+{
+  "schema": "bend-history-minimal-replay-v1",
+  "complete": true,
+  "targetsRun": false,
+  "baselineCommit": "2a4f9f8383cbc66fadaedd9b4b27f83b93a13511",
+  "restored": [
+    {
+      "path": "selfhost/tools/performance/phase68/parity-survey/sample-analysis-v2.py",
+      "gitBlob": "8c77398d6bba723b0d027675f14c2237da34838f",
+      "bytes": 11982,
+      "sha256": "2000917d241d7ff3c4476353553e6c8249093772c96b7adf5397de94b3acf0e5"
+    }
+  ],
+  "positive": {
+    "scope": "main_thread",
+    "main_thread_cpu_fraction": 0.97,
+    "sampled_thread_cpu_fraction": 0.97,
+    "minimum_process_cpu_fraction": 0.95,
+    "minimum_samples": 500,
+    "enough_samples": true,
+    "thread_lifecycle_complete": true,
+    "near_complete_process_cpu_coverage": true,
+    "usable_for_process_cpu_attribution": true,
+    "limitations": []
+  },
+  "negative": {
+    "scope": "main_thread",
+    "main_thread_cpu_fraction": 0.3,
+    "sampled_thread_cpu_fraction": 0.3,
+    "minimum_process_cpu_fraction": 0.95,
+    "minimum_samples": 500,
+    "enough_samples": false,
+    "thread_lifecycle_complete": true,
+    "near_complete_process_cpu_coverage": false,
+    "usable_for_process_cpu_attribution": false,
+    "limitations": [
+      "Fewer than 500 delivered samples",
+      "Sampled thread clocks cover less than 95% of process CPU"
+    ]
+  },
+  "refusals": [
+    {
+      "case": "existing-output",
+      "rejected": true
+    },
+    {
+      "case": "traversal",
+      "rejected": true
+    },
+    {
+      "case": "wrong-blob",
+      "rejected": true
+    }
+  ],
+  "scope": "12KB historical pure analysis helper recovered from Git, coverage decisions replayed; not a benchmark or full compiler reproduction. Tool pins describe the tested revision before the inventory size-cache improvement; restore.py is unchanged.",
+  "tools": [
+    {
+      "path": "selfhost/tools/history/inventory.py",
+      "sha256": "d63c55d1794c9db420b8ccaa91c04634f435af1b51aa628023d9ac30b0cb4284"
+    },
+    {
+      "path": "selfhost/tools/history/restore.py",
+      "sha256": "ea5d1b1d7cb0df19297dc9ab7511fb4658178817df3f10a9203909205da2d7e8"
+    }
+  ],
+  "inventoryCrossCheck": {
+    "records": 80607,
+    "allGitObjectSizesMatchFastWorkingTreeSizes": true,
+    "baselineCommit": "2a4f9f8383cbc66fadaedd9b4b27f83b93a13511",
+    "inventorySha256": "0b12dbf1a00c6c722da13e28fc23db05107181c0e80f78e3ffd62384c72725fc",
+    "scope": "Initial complete git cat-file --batch-check size scan independently agrees with the faster catalog for all paths; proposed actions differ because current native asset blockers were subsequently added."
+  },
+  "gzipReplay": {
+    "complete": true,
+    "targetsRun": false,
+    "restored": [
+      {
+        "path": "selfhost/tools/performance/phase68/parity-survey/sample-analysis-v2.py",
+        "gitBlob": "8c77398d6bba723b0d027675f14c2237da34838f",
+        "bytes": 11982,
+        "sha256": "2000917d241d7ff3c4476353553e6c8249093772c96b7adf5397de94b3acf0e5"
+      }
+    ],
+    "positiveCoverageAccepted": true,
+    "negativeCoverageRejected": true,
+    "indexSha256": "a888c8550aca7d9fc73a9b56aeffcf4d8857536bc2c9f4c84a118e116e357b22"
+  }
+}

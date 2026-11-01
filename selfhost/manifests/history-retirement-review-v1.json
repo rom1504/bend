@@ -1,0 +1,55 @@
+{
+  "schema": "bend-history-retirement-review-v1",
+  "realRepositoryApplied": true,
+  "plan": {
+    "file": "selfhost/build/consolidation/history-retirement/plan-v9-split-archives.json",
+    "sha256": "455b43b12427a8b227f230f72ca84ec088a4a4e40ec67800509ff7923e2ee28b"
+  },
+  "recoveryIndex": {
+    "file": "selfhost/manifests/history-inventory-v2.json.gz",
+    "sha256": "c8b063c707b10aa981ca11af505c4b3c8f4f9eff6390c0ee7de3df323418e839",
+    "bytes": 4240257
+  },
+  "baselineCommit": "2a4f9f8383cbc66fadaedd9b4b27f83b93a13511",
+  "summary": {
+    "index-and-worktree": {
+      "files": 56800,
+      "bytes": 5368084111
+    },
+    "index-only": {
+      "files": 826,
+      "bytes": 132652769
+    }
+  },
+  "exclusions": [],
+  "pendingNativeSurfaceFiles": 52,
+  "controls": 16,
+  "controlsFile": "selfhost/manifests/history-retirement-controls-v1.json",
+  "dependencyReview": "selfhost/manifests/history-dependency-review-v1.json",
+  "scope": "First tranche applied exactly; native52 remains blocked until current public CLI release. Protected working bytes remain on disk.",
+  "efficiencyFindings": [
+    "Prune historical directories before traversal.",
+    "Treat generic dist/ prefix as a formatting/base path, not a dependency on every old compiler.",
+    "Use clean Git metadata for dry run; hash all selected bytes at destructive apply.",
+    "Keep one deterministic gzip JSON recovery index at HEAD; do not duplicate the full plan there."
+  ],
+  "splitArchiveReview": {
+    "groups": 28,
+    "parts": 65,
+    "logicalBytes": 2167966899,
+    "protectedWorkingParts": 2,
+    "protectedWorkingBytes": 55290380,
+    "recovery": "Ordered exact Git blob parts in archiveGroups; no payload decompression, copying, concatenation or recompression."
+  },
+  "remainingKept": {
+    "files": 23610,
+    "logicalBytes": 1391731609,
+    "jsonMetadataBytes": 1349059827,
+    "scope": "Scientific reports, catalog/provenance metadata, independent fixtures and explicitly retained helpers. Split archives are retirement candidates; currently installed native surface is counted separately as blocked."
+  },
+  "planningInputsVerifiedUnchanged": true,
+  "actualReceipt": {
+    "file": "implementation/repository-consolidation/history-retirement-receipt.json.gz",
+    "sha256": "11f926971ce913341f0ab6ead24eadbd89889ba6ae0c6b291d675a145f047b9f"
+  }
+}

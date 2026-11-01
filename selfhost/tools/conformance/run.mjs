@@ -12,7 +12,7 @@ import {judge} from './judge.mjs';
 
 const project=path.resolve(import.meta.dirname,'../..');
 const options={upstream:process.env.BEND_UPSTREAM||path.join(project,'.bootstrap/upstream-phase66'),
-  adapter:path.join(import.meta.dirname,'adapters/prototype.mjs'),output:path.join(project,'tests/conformance/latest.json'),
+  adapter:'',output:path.join(project,'tests/conformance/latest.json'),
   jobs:8,timeout:5000,'worker-mode':'isolated','recycle-after':'64','rss-limit-mb':'1024',lanes:'parse,check,interpreter,js,native,metal,cuda',filter:'',gpu:'','stack-kb':0,'heap-mb':0,selection:'',rerun:'',retain:'none','selected-exit':'0'};
 for(let i=2;i<process.argv.length;i++) {
   const arg=process.argv[i];
@@ -24,6 +24,7 @@ for(let i=2;i<process.argv.length;i++) {
   if(!arg.startsWith('--')||!(key in options)||process.argv[i+1]===undefined) throw Error('Unknown/incomplete option '+arg);
   options[key]=process.argv[++i];
 }
+if(!options.adapter)throw Error('Explicit --adapter is required; choose the checked implementation or an intentional historical adapter');
 for(const key of ['upstream','adapter','output']) options[key]=path.resolve(options[key]);
 for(const key of ['jobs','timeout']) {
   options[key]=Number(options[key]);
@@ -133,10 +134,6 @@ const changedInputs=Object.entries(inputHashes).filter(([file,hash])=>(fs.exists
 const workerHealthy=!persistent||workerReports.length===Math.min(options.jobs,jobs.length)&&workerReports.every(report=>report&&!report.errors.length);
 const selectedComplete=!identity.adapterChangedDuringRun&&!identity.changedArtifacts.length&&!changedInputs.length&&workerHealthy&&results.length===jobs.length&&results.every(successful);
 const complete=workerHealthy&&!options.selection&&!options.rerun&&!selected.external.length&&!changedInputs.length&&!identity.adapterChangedDuringRun&&!identity.changedArtifacts.length&&tests.length===manifest.total&&results.length===allRequired&&results.every(r=>r.status==='pass'||r.status==='not-applicable'||(r.lane==='parse'&&r.status==='observed'));
-if(identity.adapter==='unchecked-prototype') {
-  identity.compilerSha256=sha256(fs.readFileSync(process.env.BEND_CONFORMANCE_COMPILER||path.join(project,'dist/bend2c.mjs')));
-  identity.runtimeSha256=sha256(fs.readFileSync(process.env.BEND_CONFORMANCE_RUNTIME||path.join(project,'src/runtime.mjs')));
-}
 const report={schemaVersion:1,started,finished:new Date().toISOString(),host:{platform:process.platform,arch:process.arch,node:process.version,workerNodeArgs,workerMode:options['worker-mode']},workers:persistent?workerReports:null,
   options,identity,complete,selectedComplete,selection:{requested:jobs.map(({test,lane})=>({id:test.id,lane})),previous:selected.previous??null,external:selected.external.map(test=>test.id)},inputHashes,inputPaths,changedInputs,summary,inventory:manifest,results};
 fs.mkdirSync(path.dirname(options.output),{recursive:true});fs.writeFileSync(options.output,JSON.stringify(report,null,2)+'\n');

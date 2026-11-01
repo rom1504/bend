@@ -2,22 +2,28 @@
 
 This directory is testing infrastructure, not a compiler. The upstream checkout
 is read only, and must match the active manifest pin,
-`b2111cf43244e65f76ddc278ee695e669f720cbf`.
+`059266225b77c8ca256ac6b25ee5c21449bab151`.
 Every `.bend` file under upstream `tests/` is discovered recursively, including
 imports, foreign effects, proofs, malformed syntax and declaration-only tests.
 `#|` lines are the oracle. Namespace names do not determine error phases.
 
+For maintained finite JS/C/QBE program and public CLI qualification, start with
+[the qualification guide](qualification.md). It retains independent fixed
+oracles and explicit host/stage bindings; it does not claim full conformance.
+
 ```sh
 node --test tests/conformance/judge.test.mjs
-BEND_UPSTREAM=/path/to/upstream node tools/conformance/run.mjs
+BEND_UPSTREAM=/path/to/upstream node tools/conformance/run.mjs --adapter tools/conformance/adapters/typed.mjs
 node tools/conformance/run.mjs --adapter /path/to/port-adapter.mjs --output tests/conformance/full-port.json
 ```
 
 The command returns nonzero unless **every applicable lane** passes on the full
 suite. Unsupported capabilities, hardware gates, timeouts, crashes and filters
-cannot make an incomplete compiler look complete. The default is the explicitly
-unchecked prototype adapter. Its successful JS executions are output evidence,
-never evidence of dependent, affine, termination or proof checking.
+cannot make an incomplete compiler look complete. `--adapter` is required; the
+runner does not silently select a compiler. Historical unchecked prototype
+observations are output evidence, never evidence of dependent, affine,
+termination or proof checking; replay those with their preserved historical
+tools instead of treating them as a maintained compiler route.
 
 `--jobs 8` controls concurrency, `--timeout 5000` bounds each entire probe,
 `--filter REGEX` selects test IDs, and `--lanes parse,check,interpreter,js,native`
@@ -361,6 +367,6 @@ the bytes happen to match. Standalone graph compilation supports such remaps,
 but a paired comparison must use the reference filesystem identities.
 Missing manifests are unsupported. The manifest lists all available modules and
 foreign assets explicitly; the adapter never discovers imports in JavaScript.
-See [the native graph host guide](../performance/rapid/native-graph.md) for the
+See [the native graph host guide](selected-graph.md) for the
 manifest/build boundary. The adapter records native compilation provenance and
 Node execution separately.

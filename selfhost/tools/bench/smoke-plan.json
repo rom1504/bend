@@ -1,0 +1,133 @@
+{
+  "schema": "bend-bench-smoke-plan-v1",
+  "targetsRun": false,
+  "workspaceExamples": "Explicit retained artifacts, not current compiler selection or fresh-clone defaults. Restore declared pins if absent.",
+  "offline": [
+    {
+      "kind": "c",
+      "command": [
+        "python3",
+        "-B",
+        "selfhost/tools/bench/bench.py",
+        "freeze",
+        "--recipe",
+        "selfhost/tools/bench/examples/smoke-c.json",
+        "--out",
+        "FRESH-c-manifest.json"
+      ]
+    },
+    {
+      "kind": "qbe",
+      "command": [
+        "python3",
+        "-B",
+        "selfhost/tools/bench/bench.py",
+        "freeze",
+        "--recipe",
+        "selfhost/tools/bench/examples/smoke-qbe.json",
+        "--out",
+        "FRESH-qbe-manifest.json"
+      ]
+    },
+    {
+      "kind": "compiler",
+      "command": [
+        "python3",
+        "-B",
+        "selfhost/tools/bench/bench.py",
+        "freeze",
+        "--recipe",
+        "selfhost/tools/bench/examples/smoke-compiler.json",
+        "--out",
+        "FRESH-compiler-manifest.json"
+      ]
+    }
+  ],
+  "guarded": [
+    {
+      "kind": "c",
+      "innerCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/bench/bench.py",
+        "run",
+        "--manifest",
+        "FRESH-c-manifest.json",
+        "--cases",
+        "mandelbrot",
+        "--budget",
+        "20",
+        "--rounds",
+        "2",
+        "--guarded",
+        "--out",
+        "FRESH-c-run"
+      ],
+      "guardPolicy": {
+        "cpu": 3,
+        "seconds": 30,
+        "rssMiB": 2048,
+        "availableMiB": 16384,
+        "diskMiB": 256
+      },
+      "expected": "Full oracle agreement; every role once in each position; finite tool smoke only."
+    },
+    {
+      "kind": "qbe",
+      "innerCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/bench/bench.py",
+        "run",
+        "--manifest",
+        "FRESH-qbe-manifest.json",
+        "--cases",
+        "mandelbrot",
+        "--budget",
+        "20",
+        "--rounds",
+        "2",
+        "--guarded",
+        "--out",
+        "FRESH-qbe-run"
+      ],
+      "guardPolicy": {
+        "cpu": 3,
+        "seconds": 30,
+        "rssMiB": 2048,
+        "availableMiB": 16384,
+        "diskMiB": 256
+      },
+      "expected": "Full oracle agreement; every role once in each position; finite tool smoke only."
+    },
+    {
+      "kind": "compiler",
+      "innerCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/bench/bench.py",
+        "run",
+        "--manifest",
+        "FRESH-compiler-manifest.json",
+        "--cases",
+        "mandelbrot-request",
+        "--budget",
+        "20",
+        "--rounds",
+        "2",
+        "--guarded",
+        "--out",
+        "FRESH-compiler-run"
+      ],
+      "guardPolicy": {
+        "cpu": 3,
+        "seconds": 30,
+        "rssMiB": 2048,
+        "availableMiB": 16384,
+        "diskMiB": 256
+      },
+      "expected": "Full oracle agreement; every role once in each position; finite tool smoke only."
+    }
+  ],
+  "js": "Run existing synthetic fixture controls first, then freeze a JS recipe against the retained original45 catalog and explicit prepared modules from the build lane. No historical bundle is implicitly selected."
+}

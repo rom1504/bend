@@ -55,8 +55,16 @@ For this fork's compiler written in Bend under `selfhost/`, read
 `experiments/STEERING.md` before a new optimization investigation. Keep a
 file per hypothesis, link exact run evidence, preserve rejected attempts and
 separate correctness, measurement and promotion decisions. Use the checked B1
-workflow in `docs/PHASE5_DEVELOPMENT.md` for routine edits; reserve full
-self-reproduction and broad conformance for justified integration gates. Historical pinned reference checkouts stay unchanged. An explicitly authorized
+workflow in `docs/self_hosted/workflow.md` for maintained source assembly,
+explicit image/assets, requests and bootstrap stages. Use
+`selfhost/tools/build/qualification.py` and its
+`selfhost/tools/conformance/qualification.md` guide for finite JS/C/QBE gates;
+use the checked paired conformance adapters for upstream frontend/golden lanes.
+The old phase workflows remain provenance. Reserve full self-reproduction and
+broad conformance for justified integration gates. Keep source checking,
+generated-program execution and independent BendTT kernel proof distinct;
+unsupported lanes never count as passes. Historical pinned reference checkouts
+stay unchanged. An explicitly authorized
 upstream migration may merge a new upstream commit and update the active pin;
 never hand-edit the human-written `bend2/bend.ts`. Preserve the old baseline and
 validate the new source/ABI/fixture boundaries separately.

@@ -1,0 +1,37 @@
+{
+  "id": "bad01-logical-literal-is-constructor",
+  "kind": "bad",
+  "file": "selfhost/src/core/term.bend",
+  "function": "core_literal",
+  "before": "def core_literal(+t: KTerm) -> Bool:\n  match t:\n    case KTerm{tag, name, id, quant, kids, removed, begin, end}: False{}\n    case KLambda{name, id, quant, kids, removed, begin, end, present}:\n      False{}\n    case KLiteral{kind, number, text, begin, end}: True{}",
+  "after": "def core_literal(+t: KTerm) -> Bool:\n  String.eq(tg(t), \"Lit\")",
+  "expectedBehavior": "Replacing a representation discriminator by its logical tag admits a generic KTerm tagged Lit as an actual literal. Arbitrary typed KTerm tags are part of this helper domain; no parser-reachability claim is made.",
+  "witness": {
+    "expression": "core_literal(KTerm{\"Lit\", \"U32\", 7, 2, [KLiteral{\"U32\", 37, \"retained\", 13, 29}], [\"kept\"], 13, 29})",
+    "returnType": "Bool",
+    "baselineValueBend": "False{}",
+    "challengeValueBend": "True{}",
+    "source": {
+      "path": "selfhost/tools/laws/phase98/challenge/bad01-logical-literal-is-constructor.witness.bend",
+      "bytes": 433,
+      "sha256": "e6ab3126fc4c28926d5a698e52023dfed1bcdfd9d7f11d214ba8a7970d52efb1"
+    }
+  },
+  "provenance": {
+    "classification": "synthetic-semantic-fault",
+    "selection": "Maintained/helper source reasoning before Phase98 law bodies, finite cases, or outcomes."
+  },
+  "schema": "phase98-independent-challenge-v1",
+  "source": {
+    "path": "selfhost/src/core/term.bend",
+    "bytes": 19671,
+    "sha256": "d75234683496e33fcb59cd3598979245700733236d9326025d298f9c33ef33d3"
+  },
+  "expectedOccurrences": 1,
+  "line": 610,
+  "changedSourceSha256": "de90dad3c27d7144e4ad18e14b0ab267fefdf8479ac6034b9a8f1129e4424d16",
+  "changedSourceBytes": 19470,
+  "admission": "predicted well-typed; root must check",
+  "domain": "Finite typed helper values; pure extensional behavior only.",
+  "targetsRun": false
+}

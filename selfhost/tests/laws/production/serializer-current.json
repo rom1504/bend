@@ -1,0 +1,32 @@
+{
+  "schema": "bend-finite-observer-extension-v1",
+  "profile": "word-kind-v2",
+  "original": {
+    "file": "selfhost/tests/laws/production/serialize.bend",
+    "bytes": 4666,
+    "sha256": "3baf634b803b945e95104ae925e4cf22f8b548596f4f921d71a0664b41bda109"
+  },
+  "current": {
+    "file": "selfhost/tests/laws/production/serialize-current.bend",
+    "bytes": 4690,
+    "sha256": "7ffaa25cdc512306cd8fcf497f0014b0183c54119033ecb871e671745beed3c2"
+  },
+  "before": "    case N_Box{}: \"2\"\n",
+  "after": "    case N_Box{}: \"2\"\n    case N_Imm64{}: \"3\"\n",
+  "occurrences": 1,
+  "oldDomainEncoding": {
+    "N_W32": 0,
+    "N_W64": 1,
+    "N_Box": 2
+  },
+  "addedConstructorEncoding": {
+    "N_Imm64": 3
+  },
+  "expectedCurrentConstructors": [
+    "N_W32",
+    "N_W64",
+    "N_Box",
+    "N_Imm64"
+  ],
+  "scope": "Exhaustive test-only full-value observation for current N_WordKind. Existing226 cases and their expected values are unchanged. New variant is separately tagged, never collapsed into an old kind. No new production semantics or coverage claim."
+}

@@ -1,2 +1,0 @@
-def main() -> String:
-  "hello"

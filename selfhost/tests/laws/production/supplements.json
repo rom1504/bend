@@ -1,0 +1,80 @@
+[
+  {
+    "id": "p97-bad05-frame-pop-is-slots",
+    "family": "phase97-gap-witness",
+    "expression": "U32.show(nb_frame_results(N_Frame{1, [\"saved0\", \"saved1\"]}, 5))",
+    "expectedWire": 3
+  },
+  {
+    "id": "p97-bad08-historical-fid-collision",
+    "family": "phase97-gap-witness",
+    "expression": "p96.strings([nt_fid(\"foo\"), nt_fid(\"Foo\"), nt_fid(\"a.b\"), nt_fid(\"a_b\")])",
+    "expectedWire": [
+      [
+        70,
+        73,
+        68,
+        95,
+        49,
+        48,
+        50,
+        95,
+        49,
+        49,
+        49,
+        95,
+        49,
+        49,
+        49,
+        95
+      ],
+      [
+        70,
+        73,
+        68,
+        95,
+        55,
+        48,
+        95,
+        49,
+        49,
+        49,
+        95,
+        49,
+        49,
+        49,
+        95
+      ],
+      [
+        70,
+        73,
+        68,
+        95,
+        57,
+        55,
+        95,
+        52,
+        54,
+        95,
+        57,
+        56,
+        95
+      ],
+      [
+        70,
+        73,
+        68,
+        95,
+        57,
+        55,
+        95,
+        57,
+        53,
+        95,
+        57,
+        56,
+        95
+      ]
+    ]
+  }
+]

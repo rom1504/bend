@@ -1,0 +1,1353 @@
+{
+  "schema": "bend-benchmark-native-catalog-v1",
+  "upstreamCommit": "018751270e800bc222a93dad7f257083ee53a5f7",
+  "sets": {
+    "fast": [
+      "local-pair",
+      "local-fold",
+      "scalar-region-0",
+      "scalar-region-8192",
+      "complete-generic-row32"
+    ],
+    "core": [
+      "local-pair",
+      "local-fold",
+      "scalar-region-0",
+      "scalar-region-8192",
+      "complete-generic-row32",
+      "mandelbrot",
+      "editdist",
+      "test-rle-roundtrip"
+    ],
+    "broad": [
+      "coverage-closures-64",
+      "coverage-closures-256",
+      "coverage-list-pipeline-128",
+      "coverage-list-pipeline-512",
+      "coverage-unicode-text-16",
+      "coverage-unicode-text-64",
+      "coverage-map-churn-32",
+      "coverage-map-churn-128",
+      "coverage-numeric-recurrence-256",
+      "coverage-numeric-recurrence-1024"
+    ],
+    "full": [
+      "local-pair",
+      "local-fold",
+      "scalar-region-0",
+      "scalar-region-8192",
+      "complete-generic-row32",
+      "mandelbrot",
+      "editdist",
+      "tree-bitonic",
+      "lexer",
+      "symreg",
+      "test-morning-program",
+      "test-evening-program",
+      "test-rle-roundtrip",
+      "test-map-set-ops",
+      "raytrace",
+      "variation-editdist-0-17",
+      "variation-editdist-3-123",
+      "variation-lexer-6-17",
+      "variation-lexer-10-123",
+      "variation-tree-bitonic-6-17",
+      "variation-tree-bitonic-9-123",
+      "variation-symreg-4-17",
+      "variation-symreg-7-123",
+      "variation-local-fold-128-0",
+      "variation-local-fold-8192-123",
+      "variation-mandelbrot-grid-4-7",
+      "variation-mandelbrot-grid-5-31",
+      "variation-ray-active-64-2440",
+      "variation-ray-active-256-2240",
+      "coverage-closures-64",
+      "coverage-closures-256",
+      "coverage-list-pipeline-128",
+      "coverage-list-pipeline-512",
+      "coverage-unicode-text-16",
+      "coverage-unicode-text-64",
+      "coverage-map-churn-32",
+      "coverage-map-churn-128",
+      "coverage-numeric-recurrence-256",
+      "coverage-numeric-recurrence-1024",
+      "coverage-bst-32",
+      "coverage-bst-64",
+      "coverage-expression-32",
+      "coverage-expression-128",
+      "coverage-record-aggregation-64",
+      "coverage-record-aggregation-256"
+    ],
+    "historical": [
+      "local-pair",
+      "local-fold",
+      "scalar-region-0",
+      "scalar-region-8192",
+      "complete-generic-row32",
+      "mandelbrot",
+      "editdist",
+      "tree-bitonic",
+      "lexer",
+      "symreg",
+      "test-morning-program",
+      "test-evening-program",
+      "test-rle-roundtrip",
+      "test-map-set-ops",
+      "raytrace"
+    ],
+    "coverage-variation": [
+      "variation-editdist-0-17",
+      "variation-editdist-3-123",
+      "variation-lexer-6-17",
+      "variation-lexer-10-123",
+      "variation-tree-bitonic-6-17",
+      "variation-tree-bitonic-9-123",
+      "variation-symreg-4-17",
+      "variation-symreg-7-123",
+      "variation-local-fold-128-0",
+      "variation-local-fold-8192-123",
+      "variation-mandelbrot-grid-4-7",
+      "variation-mandelbrot-grid-5-31",
+      "variation-ray-active-64-2440",
+      "variation-ray-active-256-2240"
+    ],
+    "coverage-development": [
+      "coverage-closures-64",
+      "coverage-closures-256",
+      "coverage-list-pipeline-128",
+      "coverage-list-pipeline-512",
+      "coverage-unicode-text-16",
+      "coverage-unicode-text-64",
+      "coverage-map-churn-32",
+      "coverage-map-churn-128",
+      "coverage-numeric-recurrence-256",
+      "coverage-numeric-recurrence-1024"
+    ],
+    "coverage-holdout": [
+      "coverage-bst-32",
+      "coverage-bst-64",
+      "coverage-expression-32",
+      "coverage-expression-128",
+      "coverage-record-aggregation-64",
+      "coverage-record-aggregation-256"
+    ],
+    "coverage": [
+      "variation-editdist-0-17",
+      "variation-editdist-3-123",
+      "variation-lexer-6-17",
+      "variation-lexer-10-123",
+      "variation-tree-bitonic-6-17",
+      "variation-tree-bitonic-9-123",
+      "variation-symreg-4-17",
+      "variation-symreg-7-123",
+      "variation-local-fold-128-0",
+      "variation-local-fold-8192-123",
+      "variation-mandelbrot-grid-4-7",
+      "variation-mandelbrot-grid-5-31",
+      "variation-ray-active-64-2440",
+      "variation-ray-active-256-2240",
+      "coverage-closures-64",
+      "coverage-closures-256",
+      "coverage-list-pipeline-128",
+      "coverage-list-pipeline-512",
+      "coverage-unicode-text-16",
+      "coverage-unicode-text-64",
+      "coverage-map-churn-32",
+      "coverage-map-churn-128",
+      "coverage-numeric-recurrence-256",
+      "coverage-numeric-recurrence-1024",
+      "coverage-bst-32",
+      "coverage-bst-64",
+      "coverage-expression-32",
+      "coverage-expression-128",
+      "coverage-record-aggregation-64",
+      "coverage-record-aggregation-256"
+    ]
+  },
+  "cases": [
+    {
+      "id": "mandelbrot",
+      "family": "mandelbrot",
+      "source": {
+        "file": "catalogs/native45/fixtures/mandelbrot.bend",
+        "sha256": "7d47d183cf02b3e943e0e35532eb8ba12c683eafd9b2031bbc25983181174897",
+        "bytes": 8536
+      },
+      "expectedFile": {
+        "file": "catalogs/native45/expected/mandelbrot.stdout",
+        "sha256": "1529134f8bd7e9d3989167e1dca0726ea4b01b5dba6e8e3407e966f8f37c7758",
+        "bytes": 10
+      },
+      "point": {
+        "expectedStdout": "887240761\n",
+        "runtimeArgs": [
+          2,
+          0
+        ],
+        "repetitions": 9036,
+        "warmups": 4,
+        "ratioEligible": true
+      },
+      "oracleProvenance": "Exact Phase93 complete expected output, authenticated against preserved independent Phase92/105 evidence in Phase111 full45; reused historical regression oracle.",
+      "sourceGroup": "cb2b9c30aceeb0f8ed0da1f999658aa8d7fb346851877da6902d1ded4cfc0656"
+    },
+    {
+      "id": "editdist",
+      "family": "editdist",
+      "source": {
+        "file": "catalogs/native45/fixtures/editdist.bend",
+        "sha256": "759d82e26789e55187d175cb8416d6ebe4266a53f73a53ca6d32b69d4f71e988",
+        "bytes": 7835
+      },
+      "expectedFile": {
+        "file": "catalogs/native45/expected/editdist.stdout",
+        "sha256": "cc6e43baccd95c4f6e49e8df91d27c77ab7d18524070d83af32977422f0b1280",
+        "bytes": 11
+      },
+      "point": {
+        "expectedStdout": "2065873279\n",
+        "runtimeArgs": [
+          2,
+          0
+        ],
+        "repetitions": 240,
+        "warmups": 4,
+        "ratioEligible": true
+      },
+      "oracleProvenance": "Exact Phase93 complete expected output, authenticated against preserved independent Phase92/105 evidence in Phase111 full45; reused historical regression oracle.",
+      "sourceGroup": "f9cc44d93829d8ea48148c26b8ed7e2c1785611ad0c19a3770f86227a3142e6f"
+    },
+    {
+      "id": "tree-bitonic",
+      "family": "tree-bitonic",
+      "source": {
+        "file": "catalogs/native45/fixtures/tree-bitonic.bend",
+        "sha256": "405f8d8fb2066e6fedd8baa45943bcdf92b59cb40e23ce2ad3ea4bd3eeb53ae0",
+        "bytes": 6593
+      },
+      "expectedFile": {
+        "file": "catalogs/native45/expected/tree-bitonic.stdout",
+        "sha256": "4d9faad3bd6736bd6b3be55577bba89ff3064588775afe8959dd2f709ca6aa21",
+        "bytes": 10
+      },
+      "point": {
+        "expectedStdout": "971629740\n",
+        "runtimeArgs": [
+          8,
+          0
+        ],
+        "repetitions": 1636,
+        "warmups": 4,
+        "ratioEligible": true
+      },
+      "oracleProvenance": "Exact Phase93 complete expected output, authenticated against preserved independent Phase92/105 evidence in Phase111 full45; reused historical regression oracle.",
+      "sourceGroup": "ace0242c329b1628cb9d0a0142386380e0ca4e56fa741916974938eb079b2c0d"
+    },
+    {
+      "id": "lexer",
+      "family": "lexer",
+      "source": {
+        "file": "catalogs/native45/fixtures/lexer.bend",
+        "sha256": "bfb62870600b63fd6ec6088471a2d805fabb819a7f2e9d47c9b0ef3c368d169a",
+        "bytes": 9095
+      },
+      "expectedFile": {
+        "file": "catalogs/native45/expected/lexer.stdout",
+        "sha256": "ce7ae380f780c64e26dc0b2fd2f547364c4e837bdecd61714cf04150768acf0a",
+        "bytes": 11
+      },
+      "point": {
+        "expectedStdout": "1822208108\n",
+        "runtimeArgs": [
+          8,
+          0
+        ],
+        "repetitions": 512,
+        "warmups": 4,
+        "ratioEligible": true
+      },
+      "oracleProvenance": "Exact Phase93 complete expected output, authenticated against preserved independent Phase92/105 evidence in Phase111 full45; reused historical regression oracle.",
+      "sourceGroup": "6014af6bf7e97c8feaafa918e79f28a22d2c9c92bea836203fcd89b6d70a4fbb"
+    },
+    {
+      "id": "symreg",
+      "family": "symreg",
+      "source": {
+        "file": "catalogs/native45/fixtures/symreg.bend",
+        "sha256": "3c8afa94641531b0e88a51e228cc5e5479db3e36ea244362fcaea5b7705b56a2",
+        "bytes": 7369
+      },
+      "expectedFile": {
+        "file": "catalogs/native45/expected/symreg.stdout",
+        "sha256": "f05c8aaefce9db36f5dba04e256b126cfb0a89ae25f972c7471b1c0208dd6611",
+        "bytes": 11
+      },
+      "point": {
+        "expectedStdout": "2490246820\n",
+        "runtimeArgs": [
+          6,
+          42
+        ],
+        "repetitions": 144,
+        "warmups": 4,
+        "ratioEligible": true
+      },
+      "oracleProvenance": "Exact Phase93 complete expected output, authenticated against preserved independent Phase92/105 evidence in Phase111 full45; reused historical regression oracle.",
+      "sourceGroup": "c25c8fb869eaf5ac90cbf45feb30c0e8169207ed0b74cd655343048fcc82778b"
+    },
+    {
+      "id": "test-morning-program",
+      "family": "test-morning-program",
+      "source": {
+        "file": "catalogs/native45/fixtures/test-morning-program.bend",
+        "sha256": "740992084d3171460f394dfdd2574a3def860de3260d818b2a99fb9c8e945746",
+        "bytes": 5064
+      },
+      "expectedFile": {
+        "file": "catalogs/native45/expected/test-morning-program.stdout",
+        "sha256": "9e5fd72ad28164f5db0a3ed002f64f949589ec8fdd6edab70c75b470c2e8f106",
+        "bytes": 30
+      },
+      "point": {
+        "expectedStdout": "a-bb-ccc 8 1877 42 lo hello 3\n",
+        "runtimeArgs": [
+          0,
+          0
+        ],
+        "repetitions": 55676,
+        "warmups": 4,
+        "ratioEligible": true
+      },
+      "oracleProvenance": "Exact Phase93 complete expected output, authenticated against preserved independent Phase92/105 evidence in Phase111 full45; reused historical regression oracle.",
+      "sourceGroup": "9033897714291ea49c25046426457ff2753276466092ba71a4e40c1e2b48a04a"
+    },
+    {
+      "id": "test-evening-program",
+      "family": "test-evening-program",
+      "source": {
+        "file": "catalogs/native45/fixtures/test-evening-program.bend",
+        "sha256": "4d568aa3230e4383a930c7008e9b64c51fcc9326a61edd9532716114f1c2ae9c",
+        "bytes": 4120
+      },
+      "expectedFile": {
+        "file": "catalogs/native45/expected/test-evening-program.stdout",
+        "sha256": "cf851cececb82500a8e12ff58941a08d2b8f3c22a142ed09052a9b43e43658c4",
+        "bytes": 6
+      },
+      "point": {
+        "expectedStdout": "81111\n",
+        "runtimeArgs": [
+          0,
+          0
+        ],
+        "repetitions": 259540,
+        "warmups": 4,
+        "ratioEligible": true
+      },
+      "oracleProvenance": "Exact Phase93 complete expected output, authenticated against preserved independent Phase92/105 evidence in Phase111 full45; reused historical regression oracle.",
+      "sourceGroup": "b254a68ad0208b8a5f388d72095633cd8fc119adf40d45f5621e93f37e7b4f71"
+    },
+    {
+      "id": "test-rle-roundtrip",
+      "family": "test-rle-roundtrip",
+      "source": {
+        "file": "catalogs/native45/fixtures/test-rle-roundtrip.bend",
+        "sha256": "b46580acb1656502d0e37a0115d172529e648719acb75eadb3b9ad45db5b078d",
+        "bytes": 4708
+      },
+      "expectedFile": {
+        "file": "catalogs/native45/expected/test-rle-roundtrip.stdout",
+        "sha256": "25d4f2a86deb5e2574bb3210b67bb24fcc4afb19f93a7b65a057daa874a9d18e",
+        "bytes": 3
+      },
+      "point": {
+        "expectedStdout": "11\n",
+        "runtimeArgs": [
+          0,
+          0
+        ],
+        "repetitions": 970904,
+        "warmups": 4,
+        "ratioEligible": true
+      },
+      "oracleProvenance": "Exact Phase93 complete expected output, authenticated against preserved independent Phase92/105 evidence in Phase111 full45; reused historical regression oracle.",
+      "sourceGroup": "ce4083dab9a8022b2c8867a30802113735917229341cecb8ce18ff9ac2e33989"
+    },
+    {
+      "id": "test-map-set-ops",
+      "family": "test-map-set-ops",
+      "source": {
+        "file": "catalogs/native45/fixtures/test-map-set-ops.bend",
+        "sha256": "e93dc56e4c91670bb831c329e9ced90a0e17126bc02f4d7709131a516f0eb0ca",
+        "bytes": 7234
+      },
+      "expectedFile": {
+        "file": "catalogs/native45/expected/test-map-set-ops.stdout",
+        "sha256": "32c66107f0f4f2053128e519681fc8e88806d0d2b17607ce9f2362aff66ad6c7",
+        "bytes": 6
+      },
+      "point": {
+        "expectedStdout": "11111\n",
+        "runtimeArgs": [
+          0,
+          0
+        ],
+        "repetitions": 22056,
+        "warmups": 4,
+        "ratioEligible": true
+      },
+      "oracleProvenance": "Exact Phase93 complete expected output, authenticated against preserved independent Phase92/105 evidence in Phase111 full45; reused historical regression oracle.",
+      "sourceGroup": "60966d2aa182c2aabf20eb63270f57c7d8c5f2dc56872e7fed54dab34940c8c6"
+    },
+    {
+      "id": "raytrace",
+      "family": "raytrace",
+      "source": {
+        "file": "catalogs/native45/fixtures/raytrace.bend",
+        "sha256": "17e96389638b1a6a12bf9a4f7cabaf00184f1974e75d8363d699aef6b318fd34",
+        "bytes": 16182
+      },
+      "expectedFile": {
+        "file": "catalogs/native45/expected/raytrace.stdout",
+        "sha256": "51919f34152cd418fdf625a4841ebf64375948e001d5699d7702a206e17ac834",
+        "bytes": 7
+      },
+      "point": {
+        "expectedStdout": "402971\n",
+        "runtimeArgs": [
+          80,
+          0
+        ],
+        "repetitions": 12,
+        "warmups": 4,
+        "ratioEligible": true
+      },
+      "oracleProvenance": "Exact Phase93 complete expected output, authenticated against preserved independent Phase92/105 evidence in Phase111 full45; reused historical regression oracle.",
+      "sourceGroup": "4674b2580aceb5f5fe6771ce16c987b97f791b52a9e1305794c435beeebf5837"
+    },
+    {
+      "id": "local-pair",
+      "family": "local-pair",
+      "source": {
+        "file": "catalogs/native45/fixtures/local-pair.bend",
+        "sha256": "acb8a8bc1d8ed6fd5c3a57e08c154042e0524a8d4f3f12ddcec9da75a327e78c",
+        "bytes": 8202
+      },
+      "expectedFile": {
+        "file": "catalogs/native45/expected/local-pair.stdout",
+        "sha256": "4a736bfb1ff7d70ef494f46a67ca008db9fb990a30e28898d56d21583bf734fe",
+        "bytes": 11
+      },
+      "point": {
+        "expectedStdout": "1866542166\n",
+        "runtimeArgs": [
+          0,
+          0
+        ],
+        "repetitions": 956,
+        "warmups": 4,
+        "ratioEligible": true
+      },
+      "oracleProvenance": "Exact Phase93 complete expected output, authenticated against preserved independent Phase92/105 evidence in Phase111 full45; reused historical regression oracle.",
+      "sourceGroup": "3987479425f7bf0d5c9e7655bb22bae29ed0d44635fdbf50eff2bb3cd869dfb4"
+    },
+    {
+      "id": "local-fold",
+      "family": "local-fold",
+      "source": {
+        "file": "catalogs/native45/fixtures/local-fold.bend",
+        "sha256": "2252256562cc415348f3aa53c960b318f87c4a8b5fd118a0a2f115d446723125",
+        "bytes": 2737
+      },
+      "expectedFile": {
+        "file": "catalogs/native45/expected/local-fold.stdout",
+        "sha256": "c07893fbab1330de5e1c73495d24da59ca965c977e89fa9ea508b2f316ab3e20",
+        "bytes": 11
+      },
+      "point": {
+        "expectedStdout": "2339999928\n",
+        "runtimeArgs": [
+          4096,
+          17
+        ],
+        "repetitions": 60684,
+        "warmups": 4,
+        "ratioEligible": true
+      },
+      "oracleProvenance": "Exact Phase93 complete expected output, authenticated against preserved independent Phase92/105 evidence in Phase111 full45; reused historical regression oracle.",
+      "sourceGroup": "d13b49747fbe6308aa35451ca6f1e1059f0a01bac8fce671dc7a195424b5cc3a"
+    },
+    {
+      "id": "scalar-region-0",
+      "family": "scalar-region-0",
+      "source": {
+        "file": "catalogs/native45/fixtures/scalar-region-0.bend",
+        "sha256": "4f20060ec4dce1625914d1bca3a6e07390e3b6bffe001a09bae4ac92a386dc2e",
+        "bytes": 3445
+      },
+      "expectedFile": {
+        "file": "catalogs/native45/expected/scalar-region-0.stdout",
+        "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "bytes": 2
+      },
+      "point": {
+        "expectedStdout": "0\n",
+        "runtimeArgs": [
+          0,
+          524800
+        ],
+        "repetitions": 4,
+        "warmups": 4,
+        "ratioEligible": false
+      },
+      "oracleProvenance": "Exact Phase93 complete expected output, authenticated against preserved independent Phase92/105 evidence in Phase111 full45; reused historical regression oracle.",
+      "sourceGroup": "5c1b7031be03394ea7bfc64358b6db167711765e187e32d06f65a9f06bba3c7d"
+    },
+    {
+      "id": "scalar-region-8192",
+      "family": "scalar-region-8192",
+      "source": {
+        "file": "catalogs/native45/fixtures/scalar-region-8192.bend",
+        "sha256": "ee300ddfdeda2e89e2f52550ec10d9f22842276cef737fbd19578bed095133f7",
+        "bytes": 3454
+      },
+      "expectedFile": {
+        "file": "catalogs/native45/expected/scalar-region-8192.stdout",
+        "sha256": "131e490ede5d344e5a8539d4a5335ccc70db7eacb397b876cffc72578b1331bf",
+        "bytes": 5
+      },
+      "point": {
+        "expectedStdout": "8192\n",
+        "runtimeArgs": [
+          8192,
+          524800
+        ],
+        "repetitions": 5576,
+        "warmups": 4,
+        "ratioEligible": true
+      },
+      "oracleProvenance": "Exact Phase93 complete expected output, authenticated against preserved independent Phase92/105 evidence in Phase111 full45; reused historical regression oracle.",
+      "sourceGroup": "5c1b7031be03394ea7bfc64358b6db167711765e187e32d06f65a9f06bba3c7d"
+    },
+    {
+      "id": "complete-generic-row32",
+      "family": "complete-generic-row32",
+      "source": {
+        "file": "catalogs/native45/fixtures/complete-generic-row32.bend",
+        "sha256": "10e093925d81b26d82fc5071ef22c4b76dc9e55b3dbb9b47cbbb03110d29aba1",
+        "bytes": 9874
+      },
+      "expectedFile": {
+        "file": "catalogs/native45/expected/complete-generic-row32.stdout",
+        "sha256": "4a46fa4ae7c3a221cb96234de88bbcb734def182978a6bb808c59f97607615bd",
+        "bytes": 1079
+      },
+      "point": {
+        "expectedStdout": "[[0,2,1,1,0,0,0,1,1,0,0,2,3,1,3,1,0,1,0,0,2,1,0,0,0,2,0,2,1,0,2,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,1,2,0,1,0,1,2,0,0,0,0,2,0,0,3,0,1,2,0,1,2,0,0,1,3,3,0,0,3,0,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,1,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]]\n",
+        "runtimeArgs": [
+          32,
+          17
+        ],
+        "repetitions": 1460,
+        "warmups": 4,
+        "ratioEligible": true
+      },
+      "oracleProvenance": "Exact Phase93 complete expected output, authenticated against preserved independent Phase92/105 evidence in Phase111 full45; reused historical regression oracle.",
+      "sourceGroup": "3987479425f7bf0d5c9e7655bb22bae29ed0d44635fdbf50eff2bb3cd869dfb4"
+    },
+    {
+      "id": "variation-editdist-0-17",
+      "family": "editdist",
+      "source": {
+        "file": "catalogs/native45/fixtures/variation-editdist-0-17.bend",
+        "sha256": "04626f081fd3ef709c7d5d7daf4b5ead6262b7b2c792e6fb347c68e4dda3a582",
+        "bytes": 7836
+      },
+      "expectedFile": {
+        "file": "catalogs/native45/expected/variation-editdist-0-17.stdout",
+        "sha256": "21b9be437c896d87aa31e79362f67bd1be2412475608c78db32faf94276acf78",
+        "bytes": 10
+      },
+      "point": {
+        "expectedStdout": "226010650\n",
+        "runtimeArgs": [
+          0,
+          17
+        ],
+        "repetitions": 956,
+        "warmups": 4,
+        "ratioEligible": true
+      },
+      "oracleProvenance": "Exact Phase93 complete expected output, authenticated against preserved independent Phase92/105 evidence in Phase111 full45; reused historical regression oracle.",
+      "sourceGroup": "f9cc44d93829d8ea48148c26b8ed7e2c1785611ad0c19a3770f86227a3142e6f"
+    },
+    {
+      "id": "variation-editdist-3-123",
+      "family": "editdist",
+      "source": {
+        "file": "catalogs/native45/fixtures/variation-editdist-3-123.bend",
+        "sha256": "a4e09e8b7c9a23cf0eb7ab4604993438f97184b5f30c98d693042461349272fd",
+        "bytes": 7839
+      },
+      "expectedFile": {
+        "file": "catalogs/native45/expected/variation-editdist-3-123.stdout",
+        "sha256": "ac6d1585d80481772f899f026dd6916441268f40ac62652bfb2b9e31cb35f151",
+        "bytes": 11
+      },
+      "point": {
+        "expectedStdout": "4131746436\n",
+        "runtimeArgs": [
+          3,
+          123
+        ],
+        "repetitions": 120,
+        "warmups": 4,
+        "ratioEligible": true
+      },
+      "oracleProvenance": "Exact Phase93 complete expected output, authenticated against preserved independent Phase92/105 evidence in Phase111 full45; reused historical regression oracle.",
+      "sourceGroup": "f9cc44d93829d8ea48148c26b8ed7e2c1785611ad0c19a3770f86227a3142e6f"
+    },
+    {
+      "id": "variation-lexer-6-17",
+      "family": "lexer",
+      "source": {
+        "file": "catalogs/native45/fixtures/variation-lexer-6-17.bend",
+        "sha256": "2e3de72111f28e34b22bef4f0433506da55edaaa888d4df0d665d08b41a70887",
+        "bytes": 9097
+      },
+      "expectedFile": {
+        "file": "catalogs/native45/expected/variation-lexer-6-17.stdout",
+        "sha256": "277e42c734c5a92d99527e42cc5d3bb80d51f5f72f5e454855397c2f70d9e9e3",
+        "bytes": 11
+      },
+      "point": {
+        "expectedStdout": "3462121268\n",
+        "runtimeArgs": [
+          6,
+          17
+        ],
+        "repetitions": 2212,
+        "warmups": 4,
+        "ratioEligible": true
+      },
+      "oracleProvenance": "Exact Phase93 complete expected output, authenticated against preserved independent Phase92/105 evidence in Phase111 full45; reused historical regression oracle.",
+      "sourceGroup": "6014af6bf7e97c8feaafa918e79f28a22d2c9c92bea836203fcd89b6d70a4fbb"
+    },
+    {
+      "id": "variation-lexer-10-123",
+      "family": "lexer",
+      "source": {
+        "file": "catalogs/native45/fixtures/variation-lexer-10-123.bend",
+        "sha256": "513ae3729efd7f312c610e9136b7e8f3f2767cbcafe3bd9da2d2f04c92d59139",
+        "bytes": 9101
+      },
+      "expectedFile": {
+        "file": "catalogs/native45/expected/variation-lexer-10-123.stdout",
+        "sha256": "5d310e186595597765446008b87ca55c4ecd369896021c968b942a1ff31060d0",
+        "bytes": 11
+      },
+      "point": {
+        "expectedStdout": "3601667849\n",
+        "runtimeArgs": [
+          10,
+          123
+        ],
+        "repetitions": 128,
+        "warmups": 4,
+        "ratioEligible": true
+      },
+      "oracleProvenance": "Exact Phase93 complete expected output, authenticated against preserved independent Phase92/105 evidence in Phase111 full45; reused historical regression oracle.",
+      "sourceGroup": "6014af6bf7e97c8feaafa918e79f28a22d2c9c92bea836203fcd89b6d70a4fbb"
+    },
+    {
+      "id": "variation-tree-bitonic-6-17",
+      "family": "tree-bitonic",
+      "source": {
+        "file": "catalogs/native45/fixtures/variation-tree-bitonic-6-17.bend",
+        "sha256": "da4d24d043f90bc7dec87cde76de317e88db22e27d315172eb08567aac8fb3af",
+        "bytes": 6596
+      },
+      "expectedFile": {
+        "file": "catalogs/native45/expected/variation-tree-bitonic-6-17.stdout",
+        "sha256": "7db94831fc6984f4a54b78a6f704e45531675ca0ac60999021cdbed1153de90e",
+        "bytes": 11
+      },
+      "point": {
+        "expectedStdout": "2700561448\n",
+        "runtimeArgs": [
+          6,
+          17
+        ],
+        "repetitions": 11108,
+        "warmups": 4,
+        "ratioEligible": true
+      },
+      "oracleProvenance": "Exact Phase93 complete expected output, authenticated against preserved independent Phase92/105 evidence in Phase111 full45; reused historical regression oracle.",
+      "sourceGroup": "ace0242c329b1628cb9d0a0142386380e0ca4e56fa741916974938eb079b2c0d"
+    },
+    {
+      "id": "variation-tree-bitonic-9-123",
+      "family": "tree-bitonic",
+      "source": {
+        "file": "catalogs/native45/fixtures/variation-tree-bitonic-9-123.bend",
+        "sha256": "a641ba273024691024829018b0f494935e2e8c038ae6e8708ed58b410f0171b6",
+        "bytes": 6598
+      },
+      "expectedFile": {
+        "file": "catalogs/native45/expected/variation-tree-bitonic-9-123.stdout",
+        "sha256": "dcaa9bb22003955b251b474fb7bb9c5f0db22c8591442bc3179841fc4dc677b9",
+        "bytes": 11
+      },
+      "point": {
+        "expectedStdout": "2950706516\n",
+        "runtimeArgs": [
+          9,
+          123
+        ],
+        "repetitions": 636,
+        "warmups": 4,
+        "ratioEligible": true
+      },
+      "oracleProvenance": "Exact Phase93 complete expected output, authenticated against preserved independent Phase92/105 evidence in Phase111 full45; reused historical regression oracle.",
+      "sourceGroup": "ace0242c329b1628cb9d0a0142386380e0ca4e56fa741916974938eb079b2c0d"
+    },
+    {
+      "id": "variation-symreg-4-17",
+      "family": "symreg",
+      "source": {
+        "file": "catalogs/native45/fixtures/variation-symreg-4-17.bend",
+        "sha256": "6e2e51bf436713ead1b06822a97d03dc853d1849aaa7749c018ff6db2b8a6400",
+        "bytes": 7369
+      },
+      "expectedFile": {
+        "file": "catalogs/native45/expected/variation-symreg-4-17.stdout",
+        "sha256": "143d53cf55a4bb7e2c520fccada27265408f3569de6e180e61d1cb6ee7238095",
+        "bytes": 11
+      },
+      "point": {
+        "expectedStdout": "2759212979\n",
+        "runtimeArgs": [
+          4,
+          17
+        ],
+        "repetitions": 288,
+        "warmups": 4,
+        "ratioEligible": true
+      },
+      "oracleProvenance": "Exact Phase93 complete expected output, authenticated against preserved independent Phase92/105 evidence in Phase111 full45; reused historical regression oracle.",
+      "sourceGroup": "c25c8fb869eaf5ac90cbf45feb30c0e8169207ed0b74cd655343048fcc82778b"
+    },
+    {
+      "id": "variation-symreg-7-123",
+      "family": "symreg",
+      "source": {
+        "file": "catalogs/native45/fixtures/variation-symreg-7-123.bend",
+        "sha256": "fb8dee79917f21fc6f621cdc8201d33a662ba4505b22d54895e39fd62c363546",
+        "bytes": 7371
+      },
+      "expectedFile": {
+        "file": "catalogs/native45/expected/variation-symreg-7-123.stdout",
+        "sha256": "553d5d7a53135c492d7e7bacd94b3251b65415f3f329d2fcdb6f4fd96d27e6a2",
+        "bytes": 11
+      },
+      "point": {
+        "expectedStdout": "3769601746\n",
+        "runtimeArgs": [
+          7,
+          123
+        ],
+        "repetitions": 88,
+        "warmups": 4,
+        "ratioEligible": true
+      },
+      "oracleProvenance": "Exact Phase93 complete expected output, authenticated against preserved independent Phase92/105 evidence in Phase111 full45; reused historical regression oracle.",
+      "sourceGroup": "c25c8fb869eaf5ac90cbf45feb30c0e8169207ed0b74cd655343048fcc82778b"
+    },
+    {
+      "id": "variation-local-fold-128-0",
+      "family": "local-fold",
+      "source": {
+        "file": "catalogs/native45/fixtures/variation-local-fold-128-0.bend",
+        "sha256": "73ce97cc78fd63446fe943dc3b8cc5604d8a95a49ac9b1b6d51853adee583bea",
+        "bytes": 2724
+      },
+      "expectedFile": {
+        "file": "catalogs/native45/expected/variation-local-fold-128-0.stdout",
+        "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "bytes": 2
+      },
+      "point": {
+        "expectedStdout": "0\n",
+        "runtimeArgs": [
+          128,
+          0
+        ],
+        "repetitions": 1895020,
+        "warmups": 4,
+        "ratioEligible": true
+      },
+      "oracleProvenance": "Exact Phase93 complete expected output, authenticated against preserved independent Phase92/105 evidence in Phase111 full45; reused historical regression oracle.",
+      "sourceGroup": "d13b49747fbe6308aa35451ca6f1e1059f0a01bac8fce671dc7a195424b5cc3a"
+    },
+    {
+      "id": "variation-local-fold-8192-123",
+      "family": "local-fold",
+      "source": {
+        "file": "catalogs/native45/fixtures/variation-local-fold-8192-123.bend",
+        "sha256": "40cd23bfd2931023132a077a33ba1e638ad8870e344ff9310945dc357b5abae5",
+        "bytes": 2738
+      },
+      "expectedFile": {
+        "file": "catalogs/native45/expected/variation-local-fold-8192-123.stdout",
+        "sha256": "f775b02cdd5c72ac32b98b6762df5e8044b2e2762d343117e9dfc0619ae47a90",
+        "bytes": 10
+      },
+      "point": {
+        "expectedStdout": "805701512\n",
+        "runtimeArgs": [
+          8192,
+          123
+        ],
+        "repetitions": 30516,
+        "warmups": 4,
+        "ratioEligible": true
+      },
+      "oracleProvenance": "Exact Phase93 complete expected output, authenticated against preserved independent Phase92/105 evidence in Phase111 full45; reused historical regression oracle.",
+      "sourceGroup": "d13b49747fbe6308aa35451ca6f1e1059f0a01bac8fce671dc7a195424b5cc3a"
+    },
+    {
+      "id": "variation-mandelbrot-grid-4-7",
+      "family": "mandelbrot",
+      "source": {
+        "file": "catalogs/native45/fixtures/variation-mandelbrot-grid-4-7.bend",
+        "sha256": "793feefdc1dec5425bddfc1cd50ca0746569b7fc5c327a41edb313125c545846",
+        "bytes": 9364
+      },
+      "expectedFile": {
+        "file": "catalogs/native45/expected/variation-mandelbrot-grid-4-7.stdout",
+        "sha256": "cafe8262db90e367b89b3f2c255c8744aff6b347dc1670030ac7c1593bfe706e",
+        "bytes": 11
+      },
+      "point": {
+        "expectedStdout": "3135859970\n",
+        "runtimeArgs": [
+          4,
+          7
+        ],
+        "repetitions": 24488,
+        "warmups": 4,
+        "ratioEligible": true
+      },
+      "oracleProvenance": "Exact Phase93 complete expected output, authenticated against preserved independent Phase92/105 evidence in Phase111 full45; reused historical regression oracle.",
+      "sourceGroup": "f908b2daf26ab7c61e2876a91a101009b6e80ad61fbd906a34a2eb03deb80377"
+    },
+    {
+      "id": "variation-mandelbrot-grid-5-31",
+      "family": "mandelbrot",
+      "source": {
+        "file": "catalogs/native45/fixtures/variation-mandelbrot-grid-5-31.bend",
+        "sha256": "898cb66cad62cd20615d3e100ee2638f695efd071ee8290b5e0da03b89f702c4",
+        "bytes": 9366
+      },
+      "expectedFile": {
+        "file": "catalogs/native45/expected/variation-mandelbrot-grid-5-31.stdout",
+        "sha256": "89edfcb7ef2677c2dfd4f1fdd6ef159952e6e075f23428b7b1d5274731b55b32",
+        "bytes": 11
+      },
+      "point": {
+        "expectedStdout": "2471659814\n",
+        "runtimeArgs": [
+          5,
+          31
+        ],
+        "repetitions": 1416,
+        "warmups": 4,
+        "ratioEligible": true
+      },
+      "oracleProvenance": "Exact Phase93 complete expected output, authenticated against preserved independent Phase92/105 evidence in Phase111 full45; reused historical regression oracle.",
+      "sourceGroup": "f908b2daf26ab7c61e2876a91a101009b6e80ad61fbd906a34a2eb03deb80377"
+    },
+    {
+      "id": "variation-ray-active-64-2440",
+      "family": "raytrace",
+      "source": {
+        "file": "catalogs/native45/fixtures/variation-ray-active-64-2440.bend",
+        "sha256": "2e01d6027b6b046e38d8c34b4397f5df45f2d912d2f86f273aaa4e3a336f4296",
+        "bytes": 16659
+      },
+      "expectedFile": {
+        "file": "catalogs/native45/expected/variation-ray-active-64-2440.stdout",
+        "sha256": "6bbe11f3e34f9de410ad15166630aac90dc832b59a96cd7afa70dda0b76b3b57",
+        "bytes": 11
+      },
+      "point": {
+        "expectedStdout": "1457676559\n",
+        "runtimeArgs": [
+          64,
+          2440
+        ],
+        "repetitions": 6324,
+        "warmups": 4,
+        "ratioEligible": true
+      },
+      "oracleProvenance": "Exact Phase93 complete expected output, authenticated against preserved independent Phase92/105 evidence in Phase111 full45; reused historical regression oracle.",
+      "sourceGroup": "5ba03ffff01fc0825ecf7ec0d9fb5f5030fcc07c3d83582ad790394cbcf55955"
+    },
+    {
+      "id": "variation-ray-active-256-2240",
+      "family": "raytrace",
+      "source": {
+        "file": "catalogs/native45/fixtures/variation-ray-active-256-2240.bend",
+        "sha256": "7099448e301e2cab7cb5ab47e2a4892dbf44ac246676b4f950282c7a57007669",
+        "bytes": 16661
+      },
+      "expectedFile": {
+        "file": "catalogs/native45/expected/variation-ray-active-256-2240.stdout",
+        "sha256": "15adde12f874e278a5e96d86c4ee20d18706611252e5cfc76a3ba63d29170dcf",
+        "bytes": 11
+      },
+      "point": {
+        "expectedStdout": "2166930202\n",
+        "runtimeArgs": [
+          256,
+          2240
+        ],
+        "repetitions": 1516,
+        "warmups": 4,
+        "ratioEligible": true
+      },
+      "oracleProvenance": "Exact Phase93 complete expected output, authenticated against preserved independent Phase92/105 evidence in Phase111 full45; reused historical regression oracle.",
+      "sourceGroup": "5ba03ffff01fc0825ecf7ec0d9fb5f5030fcc07c3d83582ad790394cbcf55955"
+    },
+    {
+      "id": "coverage-closures-64",
+      "family": "closures",
+      "source": {
+        "file": "catalogs/native45/fixtures/coverage-closures-64.bend",
+        "sha256": "d5a0e144805beec3aafdfa5a5bf0ae1579659caff90d42fc178f0ac17b9db60a",
+        "bytes": 3364
+      },
+      "expectedFile": {
+        "file": "catalogs/native45/expected/coverage-closures-64.stdout",
+        "sha256": "802ecf9f67ccf8fda5913f286bd0b3236043f5f4b0c2ae7e7bf3d05f1758f865",
+        "bytes": 5
+      },
+      "point": {
+        "expectedStdout": "2097\n",
+        "runtimeArgs": [
+          64,
+          17
+        ],
+        "repetitions": 76440,
+        "warmups": 4,
+        "ratioEligible": true
+      },
+      "oracleProvenance": "Exact Phase93 complete expected output, authenticated against preserved independent Phase92/105 evidence in Phase111 full45; reused historical regression oracle.",
+      "sourceGroup": "bc5fb44cba7971ae593dd642554dc468a9cbc51ce54567467a4d8bf84bb70943"
+    },
+    {
+      "id": "coverage-closures-256",
+      "family": "closures",
+      "source": {
+        "file": "catalogs/native45/fixtures/coverage-closures-256.bend",
+        "sha256": "d0e35c8343fcbe86b45211f7738d293a27a0a5184060e0136b0275fc9556cef4",
+        "bytes": 3369
+      },
+      "expectedFile": {
+        "file": "catalogs/native45/expected/coverage-closures-256.stdout",
+        "sha256": "8cf0773ed5fb75c07a06d48185cd73ff8f1921c588db76a3df3731a557c40b15",
+        "bytes": 6
+      },
+      "point": {
+        "expectedStdout": "33019\n",
+        "runtimeArgs": [
+          256,
+          123
+        ],
+        "repetitions": 19600,
+        "warmups": 4,
+        "ratioEligible": true
+      },
+      "oracleProvenance": "Exact Phase93 complete expected output, authenticated against preserved independent Phase92/105 evidence in Phase111 full45; reused historical regression oracle.",
+      "sourceGroup": "bc5fb44cba7971ae593dd642554dc468a9cbc51ce54567467a4d8bf84bb70943"
+    },
+    {
+      "id": "coverage-list-pipeline-128",
+      "family": "list-pipeline",
+      "source": {
+        "file": "catalogs/native45/fixtures/coverage-list-pipeline-128.bend",
+        "sha256": "5a6bb5b6e3e4549ceae238b40485aa6d00facdab6bb8382790a486b165a1cd97",
+        "bytes": 5223
+      },
+      "expectedFile": {
+        "file": "catalogs/native45/expected/coverage-list-pipeline-128.stdout",
+        "sha256": "809ab2f049b9783d5e9adfb1bf8d82e182bf71399bc90f29aaee87b629a2872d",
+        "bytes": 5
+      },
+      "point": {
+        "expectedStdout": "1904\n",
+        "runtimeArgs": [
+          128,
+          17
+        ],
+        "repetitions": 99496,
+        "warmups": 4,
+        "ratioEligible": true
+      },
+      "oracleProvenance": "Exact Phase93 complete expected output, authenticated against preserved independent Phase92/105 evidence in Phase111 full45; reused historical regression oracle.",
+      "sourceGroup": "b4819808f26a6d5fe8ef0295c69b447121320c3e748a7fbc937bf8a88e3d48d0"
+    },
+    {
+      "id": "coverage-list-pipeline-512",
+      "family": "list-pipeline",
+      "source": {
+        "file": "catalogs/native45/fixtures/coverage-list-pipeline-512.bend",
+        "sha256": "c4eba973b7176ba8a0bc7c07aa69f32c7f8ed8b09fd32d8d3b92fa2a343e0fe9",
+        "bytes": 5225
+      },
+      "expectedFile": {
+        "file": "catalogs/native45/expected/coverage-list-pipeline-512.stdout",
+        "sha256": "44ab14762588da84f4ab2c7bf98c05ce405b5c4aaeb400a2744aece356e3de1b",
+        "bytes": 5
+      },
+      "point": {
+        "expectedStdout": "7616\n",
+        "runtimeArgs": [
+          512,
+          123
+        ],
+        "repetitions": 25008,
+        "warmups": 4,
+        "ratioEligible": true
+      },
+      "oracleProvenance": "Exact Phase93 complete expected output, authenticated against preserved independent Phase92/105 evidence in Phase111 full45; reused historical regression oracle.",
+      "sourceGroup": "b4819808f26a6d5fe8ef0295c69b447121320c3e748a7fbc937bf8a88e3d48d0"
+    },
+    {
+      "id": "coverage-bst-32",
+      "family": "bst",
+      "source": {
+        "file": "catalogs/native45/fixtures/coverage-bst-32.bend",
+        "sha256": "5b2e60b5e1435882bcdd25329194073c64df8d88d21f98ba2c3290384738c1c2",
+        "bytes": 5027
+      },
+      "expectedFile": {
+        "file": "catalogs/native45/expected/coverage-bst-32.stdout",
+        "sha256": "b7a494ce750469a6fed69c06230045f5c1caba8de5ecd9436e2d103730a5f531",
+        "bytes": 11
+      },
+      "point": {
+        "expectedStdout": "1802825775\n",
+        "runtimeArgs": [
+          32,
+          0
+        ],
+        "repetitions": 35620,
+        "warmups": 4,
+        "ratioEligible": true
+      },
+      "oracleProvenance": "Exact Phase93 complete expected output, authenticated against preserved independent Phase92/105 evidence in Phase111 full45; reused historical regression oracle.",
+      "sourceGroup": "db75d09ea4ee8cf8e46aad8955c3f8042df221e879657a20f6ab02e8ca8eca3f"
+    },
+    {
+      "id": "coverage-bst-64",
+      "family": "bst",
+      "source": {
+        "file": "catalogs/native45/fixtures/coverage-bst-64.bend",
+        "sha256": "474ffc3a68c1fcd4947cfe49fe117c15aae0a66dab99ed50d6c17bfcf6563d65",
+        "bytes": 5028
+      },
+      "expectedFile": {
+        "file": "catalogs/native45/expected/coverage-bst-64.stdout",
+        "sha256": "baf85e5e8a3c69ee0b60c4f2fc3c7d95c8f8c5c0f3bc833a0b7e08a91911e714",
+        "bytes": 10
+      },
+      "point": {
+        "expectedStdout": "861157620\n",
+        "runtimeArgs": [
+          64,
+          17
+        ],
+        "repetitions": 27184,
+        "warmups": 4,
+        "ratioEligible": true
+      },
+      "oracleProvenance": "Exact Phase93 complete expected output, authenticated against preserved independent Phase92/105 evidence in Phase111 full45; reused historical regression oracle.",
+      "sourceGroup": "db75d09ea4ee8cf8e46aad8955c3f8042df221e879657a20f6ab02e8ca8eca3f"
+    },
+    {
+      "id": "coverage-unicode-text-16",
+      "family": "unicode-text",
+      "source": {
+        "file": "catalogs/native45/fixtures/coverage-unicode-text-16.bend",
+        "sha256": "1e44705513750680563a8939e46120e4fbb5e9ffbfabe1f3d22b773a6eada3c5",
+        "bytes": 7528
+      },
+      "expectedFile": {
+        "file": "catalogs/native45/expected/coverage-unicode-text-16.stdout",
+        "sha256": "835a668452e7da17c4390ebeca7cc5422056349b74011e53130159d123360eaf",
+        "bytes": 289
+      },
+      "point": {
+        "expectedStdout": "\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|17|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|17|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|17|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|17|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|17|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|17|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|17|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|17|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|17|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|17|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|17|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|17|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|17|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|17|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|17|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|17|\n",
+        "runtimeArgs": [
+          16,
+          17
+        ],
+        "repetitions": 8272,
+        "warmups": 4,
+        "ratioEligible": true
+      },
+      "oracleProvenance": "Exact Phase93 complete expected output, authenticated against preserved independent Phase92/105 evidence in Phase111 full45; reused historical regression oracle.",
+      "sourceGroup": "e0dd8066deac347ee4d88afa5ef5db0e338c5f09b3e2cc6a7bf5ec553f52d550"
+    },
+    {
+      "id": "coverage-unicode-text-64",
+      "family": "unicode-text",
+      "source": {
+        "file": "catalogs/native45/fixtures/coverage-unicode-text-64.bend",
+        "sha256": "49a53fc745be33a8237b1b48f3175dbba4e20c76549374253520ae39f6b894bf",
+        "bytes": 8458
+      },
+      "expectedFile": {
+        "file": "catalogs/native45/expected/coverage-unicode-text-64.stdout",
+        "sha256": "aeda13750dee71bdab8ccf55cde8b155af956f8c029a34c14e0d1c8579b8bb2a",
+        "bytes": 1217
+      },
+      "point": {
+        "expectedStdout": "\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\n",
+        "runtimeArgs": [
+          64,
+          123
+        ],
+        "repetitions": 2024,
+        "warmups": 4,
+        "ratioEligible": true
+      },
+      "oracleProvenance": "Exact Phase93 complete expected output, authenticated against preserved independent Phase92/105 evidence in Phase111 full45; reused historical regression oracle.",
+      "sourceGroup": "e0dd8066deac347ee4d88afa5ef5db0e338c5f09b3e2cc6a7bf5ec553f52d550"
+    },
+    {
+      "id": "coverage-expression-32",
+      "family": "expression",
+      "source": {
+        "file": "catalogs/native45/fixtures/coverage-expression-32.bend",
+        "sha256": "e1667f5fb6802cda5d062bf0bb97c3f5057fc3ab02d4cd5778e9198cd1439998",
+        "bytes": 3497
+      },
+      "expectedFile": {
+        "file": "catalogs/native45/expected/coverage-expression-32.stdout",
+        "sha256": "9df4cdfc83c2d0716ba30f59863b300d8417818fda1d7e456bb3c83c1929a7c7",
+        "bytes": 8
+      },
+      "point": {
+        "expectedStdout": "2928000\n",
+        "runtimeArgs": [
+          32,
+          17
+        ],
+        "repetitions": 148540,
+        "warmups": 4,
+        "ratioEligible": true
+      },
+      "oracleProvenance": "Exact Phase93 complete expected output, authenticated against preserved independent Phase92/105 evidence in Phase111 full45; reused historical regression oracle.",
+      "sourceGroup": "62f40333fa5e7dacd2fadbd622d22033a3434de004df93a6870e4cd33df9d4a5"
+    },
+    {
+      "id": "coverage-expression-128",
+      "family": "expression",
+      "source": {
+        "file": "catalogs/native45/fixtures/coverage-expression-128.bend",
+        "sha256": "32ae9cc5bdaeff023b08403b357b7e8a3f03e06d37c461feb4a8930ad51c5a2c",
+        "bytes": 3504
+      },
+      "expectedFile": {
+        "file": "catalogs/native45/expected/coverage-expression-128.stdout",
+        "sha256": "17c0949f352d912dbd3adbf58715df4efca36ad86aac5f7935cde269d7db89d3",
+        "bytes": 11
+      },
+      "point": {
+        "expectedStdout": "3393903617\n",
+        "runtimeArgs": [
+          128,
+          123
+        ],
+        "repetitions": 37732,
+        "warmups": 4,
+        "ratioEligible": true
+      },
+      "oracleProvenance": "Exact Phase93 complete expected output, authenticated against preserved independent Phase92/105 evidence in Phase111 full45; reused historical regression oracle.",
+      "sourceGroup": "62f40333fa5e7dacd2fadbd622d22033a3434de004df93a6870e4cd33df9d4a5"
+    },
+    {
+      "id": "coverage-map-churn-32",
+      "family": "map-churn",
+      "source": {
+        "file": "catalogs/native45/fixtures/coverage-map-churn-32.bend",
+        "sha256": "ada0bc78c19c9ed252c779190144fa1155d2ff44fa12602166429140238870d9",
+        "bytes": 3655
+      },
+      "expectedFile": {
+        "file": "catalogs/native45/expected/coverage-map-churn-32.stdout",
+        "sha256": "780a7cb6c7cd5f82e073caecb1b0f05fbcbad90380586829e3afc26683c7b474",
+        "bytes": 11
+      },
+      "point": {
+        "expectedStdout": "2930913555\n",
+        "runtimeArgs": [
+          32,
+          17
+        ],
+        "repetitions": 2820,
+        "warmups": 4,
+        "ratioEligible": true
+      },
+      "oracleProvenance": "Exact Phase93 complete expected output, authenticated against preserved independent Phase92/105 evidence in Phase111 full45; reused historical regression oracle.",
+      "sourceGroup": "180fc1c2c96620613fb44e9f051a208121b65c499349dc08a10de08725c7f30e"
+    },
+    {
+      "id": "coverage-map-churn-128",
+      "family": "map-churn",
+      "source": {
+        "file": "catalogs/native45/fixtures/coverage-map-churn-128.bend",
+        "sha256": "cd22c831c180c0de12d84aeb80debf4881d08cbd18fcf8f6d634153fba2feb03",
+        "bytes": 3659
+      },
+      "expectedFile": {
+        "file": "catalogs/native45/expected/coverage-map-churn-128.stdout",
+        "sha256": "f10e5e29d4f448b0f6aeef222b95d6790cf410196cd6d64d27156e08c7ecafb8",
+        "bytes": 11
+      },
+      "point": {
+        "expectedStdout": "3714872484\n",
+        "runtimeArgs": [
+          128,
+          123
+        ],
+        "repetitions": 544,
+        "warmups": 4,
+        "ratioEligible": true
+      },
+      "oracleProvenance": "Exact Phase93 complete expected output, authenticated against preserved independent Phase92/105 evidence in Phase111 full45; reused historical regression oracle.",
+      "sourceGroup": "180fc1c2c96620613fb44e9f051a208121b65c499349dc08a10de08725c7f30e"
+    },
+    {
+      "id": "coverage-numeric-recurrence-256",
+      "family": "numeric-recurrence",
+      "source": {
+        "file": "catalogs/native45/fixtures/coverage-numeric-recurrence-256.bend",
+        "sha256": "4b9a0ee2ab80c844b74e44e5ce94d17669e70ed5d8f6da3cebe7354e1db9f293",
+        "bytes": 2510
+      },
+      "expectedFile": {
+        "file": "catalogs/native45/expected/coverage-numeric-recurrence-256.stdout",
+        "sha256": "2b264d0566bf2985927030a3bcc6d1220830caef66eb39571c2e1545aa48f27e",
+        "bytes": 11
+      },
+      "point": {
+        "expectedStdout": "2747714257\n",
+        "runtimeArgs": [
+          256,
+          17
+        ],
+        "repetitions": 247876,
+        "warmups": 4,
+        "ratioEligible": true
+      },
+      "oracleProvenance": "Exact Phase93 complete expected output, authenticated against preserved independent Phase92/105 evidence in Phase111 full45; reused historical regression oracle.",
+      "sourceGroup": "36f803ed8d88bf20c5878092a572d4ae2ef48d71fd6710024f05a57349f4b0f3"
+    },
+    {
+      "id": "coverage-numeric-recurrence-1024",
+      "family": "numeric-recurrence",
+      "source": {
+        "file": "catalogs/native45/fixtures/coverage-numeric-recurrence-1024.bend",
+        "sha256": "39c7c7be54d5a47b6042b0d8f70b124610ea5a2fee28866d85599b7f0f5bbb46",
+        "bytes": 2514
+      },
+      "expectedFile": {
+        "file": "catalogs/native45/expected/coverage-numeric-recurrence-1024.stdout",
+        "sha256": "f608ef31e8a3c58b641dd85ce36b9f759bcd685e138466186e32ae709ce1a086",
+        "bytes": 11
+      },
+      "point": {
+        "expectedStdout": "1376326140\n",
+        "runtimeArgs": [
+          1024,
+          123
+        ],
+        "repetitions": 61936,
+        "warmups": 4,
+        "ratioEligible": true
+      },
+      "oracleProvenance": "Exact Phase93 complete expected output, authenticated against preserved independent Phase92/105 evidence in Phase111 full45; reused historical regression oracle.",
+      "sourceGroup": "36f803ed8d88bf20c5878092a572d4ae2ef48d71fd6710024f05a57349f4b0f3"
+    },
+    {
+      "id": "coverage-record-aggregation-64",
+      "family": "record-aggregation",
+      "source": {
+        "file": "catalogs/native45/fixtures/coverage-record-aggregation-64.bend",
+        "sha256": "36ad15032712bd62a88a3fae13105880db1a0ecde3fc98e43791c4f21876c2c9",
+        "bytes": 3802
+      },
+      "expectedFile": {
+        "file": "catalogs/native45/expected/coverage-record-aggregation-64.stdout",
+        "sha256": "d83688ded4a47d7a93d617a687fb1e804b178378530dbcfc633910793e62270a",
+        "bytes": 215
+      },
+      "point": {
+        "expectedStdout": "\u90e8\u95800=1840;\u90e8\u95801=1620;\u90e8\u958010=1952;\u90e8\u958011=2100;\u90e8\u958012=1248;\u90e8\u958013=1396;\u90e8\u958014=1544;\u90e8\u958015=1692;\u90e8\u95802=1768;\u90e8\u95803=1916;\u90e8\u95804=2064;\u90e8\u95805=2212;\u90e8\u95806=2360;\u90e8\u95807=1508;\u90e8\u95808=1656;\u90e8\u95809=1804;\n",
+        "runtimeArgs": [
+          64,
+          17
+        ],
+        "repetitions": 1540,
+        "warmups": 4,
+        "ratioEligible": true
+      },
+      "oracleProvenance": "Exact Phase93 complete expected output, authenticated against preserved independent Phase92/105 evidence in Phase111 full45; reused historical regression oracle.",
+      "sourceGroup": "6b31a2cfc58fbb33376fee6bf55d2a6aa05210be40a36342a82da87364080937"
+    },
+    {
+      "id": "coverage-record-aggregation-256",
+      "family": "record-aggregation",
+      "source": {
+        "file": "catalogs/native45/fixtures/coverage-record-aggregation-256.bend",
+        "sha256": "eb5841e7f516d2f87ef8028f83a902390c4aab439875207448ffa4c4d5c28bc1",
+        "bytes": 3806
+      },
+      "expectedFile": {
+        "file": "catalogs/native45/expected/coverage-record-aggregation-256.stdout",
+        "sha256": "01cbdc92897ea7a07ec1c00311b88060caad9df5716b069898a0027a3fd07bc2",
+        "bytes": 215
+      },
+      "point": {
+        "expectedStdout": "\u90e8\u95800=6968;\u90e8\u95801=7560;\u90e8\u958010=7888;\u90e8\u958011=7008;\u90e8\u958012=7600;\u90e8\u958013=8192;\u90e8\u958014=7784;\u90e8\u958015=7376;\u90e8\u95802=8152;\u90e8\u95803=7744;\u90e8\u95804=7336;\u90e8\u95805=6928;\u90e8\u95806=7520;\u90e8\u95807=8112;\u90e8\u95808=8704;\u90e8\u95809=8296;\n",
+        "runtimeArgs": [
+          256,
+          123
+        ],
+        "repetitions": 392,
+        "warmups": 4,
+        "ratioEligible": true
+      },
+      "oracleProvenance": "Exact Phase93 complete expected output, authenticated against preserved independent Phase92/105 evidence in Phase111 full45; reused historical regression oracle.",
+      "sourceGroup": "6b31a2cfc58fbb33376fee6bf55d2a6aa05210be40a36342a82da87364080937"
+    }
+  ],
+  "scope": "Unchanged original45 timed native wrappers;44timed points pluszero-work correctness control. Frozen50ms upstream repetition profile multipliedby4, matching maintained QBE regression campaign. Acquisition is separate.",
+  "provenance": [
+    {
+      "file": "selfhost/tools/performance/phase112/benchmark45/manifest01.json",
+      "sha256": "80b07bdc76528bf58ae322ffed470eaa8ccdc8fa3d5cea73aa6d652d66cc6adc",
+      "bytes": 229972
+    },
+    {
+      "file": "selfhost/tools/performance/phase112/benchmark45/upstream-50ms-profile01.json",
+      "sha256": "d32fa6cae73dee3932ff28a2257e4979c01dbe7612e30ffba9fdd929713b501e",
+      "bytes": 17183
+    }
+  ],
+  "assetRoot": "../.."
+}

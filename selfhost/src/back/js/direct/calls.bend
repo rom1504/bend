@@ -419,7 +419,7 @@ def jd_calls_status(+book: List<&2,KDef>, +valid: Bool) -> List<&2,KDef>:
 # Module: src/back/js/direct/calls.bend:364
 @unsafe
 def jd_definition_budget() -> U32:
-  4096
+  4352
 
 # Module: src/back/js/direct/calls.bend:368
 @unsafe

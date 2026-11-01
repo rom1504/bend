@@ -1,6 +1,6 @@
 # Recovering historical experiments
 
-The current compiler and tools should have one maintained implementation.
+The current compiler and tools have one maintained implementation.
 Historical methods, generated source copies, and compressed evidence bodies can
 remain recoverable from Git without occupying the current checkout. Reports,
 result summaries, provenance manifests, independent fixtures and proof statements
@@ -11,6 +11,13 @@ The immutable recovery baseline is
 publishing consolidation commits. Inventory and recovery do not rewrite history,
 repack archives, execute a compiler, change the index, or delete files. The
 separate retirement tool has an explicit apply command; planning is read-only.
+
+Both consolidation tranches are complete. The [first receipt](../../../implementation/repository-consolidation/history-retirement-receipt.json.gz)
+and [final receipt](../../../implementation/repository-consolidation/final-retirement-receipt.json.gz)
+record 56,884 working files deleted and 826 index-only removals that preserved
+working bytes, with no conflicts. The qualified installed release is selected by
+[`current.json`](../../manifests/current.json); the old native surface and its
+52 baseline files are retired.
 
 ## Inventory and review
 
@@ -23,7 +30,7 @@ separate retirement tool has an explicit apply command; planning is read-only.
 | `history-replay-v1.json`, `history-retirement-controls-v1.json` | Recovery and safety-control outcomes | Compact validation records |
 
 ```sh
-python3 selfhost/tools/history/inventory.py
+python3 selfhost/tools/history/inventory.py --refresh-policy-only
 ```
 
 The policy is `selfhost/manifests/history-policy-v1.json`; the generated exact
@@ -101,19 +108,19 @@ those exact files from the same catalog and follow the experiment manifest;
 do not silently substitute today's compiler, flags, inputs or runtime. Any
 target execution still belongs in the current disk/resource guard.
 
-## Active dependency audit before retirement
+## Current dependencies and completed migrations
 
-| Current surface | Historical dependency | Disposition |
+| Current surface | Maintained dependency | Completed migration |
 |---|---|---|
-| Build retention | `performance/programs/support.py` | Explicitly retained shared supervisor; the Phase32 lock inode remains unchanged. |
-| Native launcher guard | `performance/phase86/guard.py` | Explicitly retained while the old public launcher remains selected. |
-| JS/native-graph conformance | Historical graph runner and unchecked prototype adapter | Maintained selected-graph transport and explicit checked adapters replace these routes. The prototype's incidental directory copying is an exact reviewed exception. |
-| General profiler and concat extension | Phase68 ELF helper, Phase112 control metadata, Phase144 extension | Selected helpers and fixtures now live under `tools/profiler/`; migration maps retain provenance. |
-| Independent law tooling | Historical law runners and source helpers | Current source binding and selected independent fixtures live under `tools/laws/` and `proofs/compiler-laws/`; historical runners remain recoverable from Git. |
-| Build tools | Phase130/125 request chain and Phase134/123 machine chain | Maintained build modules and named asset manifests replace runtime imports. Historical asset provenance is data, not a runtime source dependency. |
-| Benchmark corpus | Phase37 original45, legacy15, Phase112 timed wrappers/counts | Selected sources/oracles and general execution tools now live under `tools/bench/`, with exact migration provenance. |
-| Older JS development | `development/`, `typed-driver.mjs`, compiler ABI/runtime files | Maintained routes remain; unused `private-compiler/` and obsolete unchecked bootstrap implementations are reviewed retirement candidates. `stage0.mjs`, `stage0-library.mjs` and explicit `selfcheck.mjs` remain. |
-| Installed native package | `native/selection.json`, profiles/releases and existing asset receipts | All 52 baseline native-surface files remain blocked until the root qualifies and selects the replacement public CLI. Preserve the selected package and required assets. |
+| Build retention and execution | [`tools/execution.py`](../execution.py) and [`build-retention/guard.py`](../build-retention/guard.py) | Historical `performance/programs/support.py` and `phase86/guard.py` were retired in the final tranche. The shared Phase32 lock inode was preserved. |
+| Public JS/native launchers | [`current.json`](../../manifests/current.json), [`cli.mjs`](../../cli.mjs) and [`native.py`](../../native.py) | Both launchers select the qualified maintained release. The old native launcher, selection file, profiles and package records were retired. |
+| JS/native-graph conformance | Maintained selected-graph transport and explicit checked adapters | Historical graph runner and unchecked prototype adapter were retired; independent conformance fixtures remain. |
+| General profiler and concat extension | `tools/profiler/` | Selected ELF helpers, control fixtures and concat extension were migrated; historical implementation bodies remain recoverable from Git. |
+| Independent law tooling | `tools/laws/` and `proofs/compiler-laws/` | Current source binding and selected independent fixtures replace historical runners and source helpers. |
+| Build tools | `tools/build/` and named asset manifests | Maintained build modules replace the historical request/machine chains. Historical asset provenance is data, not a runtime source dependency. |
+| Benchmark corpus | `tools/bench/` | Selected sources/oracles and general execution tools were migrated with exact provenance. |
+| JS development | Maintained build/acquisition tools, `typed-driver.mjs`, compiler ABI/runtime files | The reviewed old development/release framework, unchecked CLI/compiler image and private compiler copies were retired. Usage tooling, independent stage0 gates, `stage0-library.mjs` and explicit `selfcheck.mjs` remain. |
+| Selected release provenance | Current installed manifest and audit | Old `dist/release-lineage/` records and four obsolete selfcheck images were retired. Current `typed-api.mjs`, `base.bend` and the shared runtime remain. |
 
 Paths in historical JSON provenance are not automatically live runtime imports.
 Conversely, an import that is only executed during packaging or proof preparation
@@ -149,10 +156,11 @@ computed paths or dependencies described in external recipes. A successful dry
 run is not a claim that migration qualification has passed.
 
 `history-dependency-review-v1.json` records exact reviewed exceptions to the
-conservative literal-reference scan. Currently it covers the obsolete prototype
-adapter incidentally included in a directory snapshot: no maintained import or
-default selects it, and the directory walk works when it is absent. Each exception
-binds the consumer's complete SHA256; a changed consumer requires another review.
+conservative literal-reference scan. The completed review covered the obsolete
+prototype adapter's incidental directory copying and the portability test's
+assertion that the historical performance directory is absent. These were not
+runtime reads of the retired implementations. Each exception binds the
+consumer's complete SHA256; a changed consumer requires another review.
 It does not waive canonical-module, dirty-file, index or blob checks.
 
 Only after that review, the root may invoke:
@@ -196,41 +204,26 @@ size, split-archive group and original working-file pin, and only refreshes poli
 classification. It records the previous compressed index hash. Earlier receipts
 remain bound to that exact earlier index, recoverable from their published commit.
 
-For the final old native surface, keep `pendingMigrationPrefixes` unchanged until
-`selfhost/manifests/current.json` and both public launchers select the qualified
-maintained package. The replacement must not require any retired package byte.
-Only then remove `selfhost/tools/native/` from pending prefixes and explicitly add
-it to `retirePrefixes`. Pending migration always takes precedence over retirement.
-This retires the old surface's implementation and selection/provenance records;
-the original records remain exactly recoverable from Git.
-
-```sh
-python3 selfhost/tools/history/inventory.py --refresh-policy-only
-python3 selfhost/tools/history/retire.py plan \
-  --prefix selfhost/tools/native/ \
-  --out selfhost/build/consolidation/history-retirement/native-final.json
-```
-
-The explicit prefix excludes every first-tranche path. Review zero exclusions,
-the exact 52 expected baseline identities, replacement qualification, and the new
-plan digest before a separate explicit apply. Never reuse the first plan or its
-digest. Changed launchers may invalidate a plan; regenerate after their edits are
-finished. Untracked workspace research remains outside all retirement selections.
-
-The combined final tranche is recorded in
-`selfhost/manifests/history-final-selection-v1.json`: 84 exact paths covering the
-old native surface, reviewed development/prototype methods, four obsolete
-selfcheck images, old selected release-lineage records and two replaced guards.
+The completed final tranche is recorded in
+[`history-final-selection-v1.json`](../../manifests/history-final-selection-v1.json):
+84 exact paths covering the old native surface, reviewed development/prototype
+methods, four obsolete selfcheck images, old selected release-lineage records and
+two replaced guards. It was activated only after the qualified selector and
+public launchers switched. Its exact path set had no dependency exclusions or
+pending blockers; application completed with 84 deletions and no conflicts.
 The catalog gained 29 exact baseline identities and retains all 81,288 original
-identities. All 84 are deliberately migration-blocked during preparation.
-`typed-api.mjs`, `base.bend`, the shared source runtime and the new selector are
-excluded from that selection.
+identities. Current `typed-api.mjs`, `base.bend`, the shared source runtime and the
+new selector were excluded from that selection.
 
-After the root confirms the recorded release gates, use the selection's
-`policyActivation` lists to remove only those pending entries, refresh policy,
-and execute its `planCommand` argument array. This command supplies the explicit
-84-path union as repeated prefixes; verify the plan's path set equals
-`selectionPaths` exactly and has no exclusions. Do not activate the whole recovery
-catalog or reuse the completed first-tranche plan. The superseded selected
-release metadata in this list is distinct from historical scientific evidence,
-which remains retained.
+For any future tranche, qualify replacements before removing their policy
+migration blocks. Use an explicit path/prefix union, verify the plan's path set
+against the reviewed selection and inspect every exclusion. Do not reuse either
+completed plan or digest: their index entries have already been retired.
+Changed launchers or other planning inputs require a new plan. Pending migration
+continues to take precedence over explicit retirement in policy classification.
+Untracked workspace research remains outside all retirement selections.
+
+The superseded selected-release metadata removed by the final tranche is
+distinct from the historical scientific evidence retained in the checkout.
+Published receipts and the complete Git recovery index preserve the exact
+historical identities for both tranches.

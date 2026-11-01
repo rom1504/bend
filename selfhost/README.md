@@ -9,6 +9,8 @@ transport, runtime support, measurement and independent validation.
 Start with the [maintained workflow](../docs/self_hosted/workflow.md). It explains
 source assembly, image/asset admission, native requests/builds, actual bootstrap
 generations and the distinction between current source and installed artifacts.
+The [completed consolidation report](../implementation/repository-consolidation/README.md)
+records the selected artifacts, qualification and historical recovery.
 The pinned upstream language is `059266225b77c8ca256ac6b25ee5c21449bab151`
 (Bend2.0.36).
 
@@ -23,9 +25,9 @@ The pinned upstream language is `059266225b77c8ca256ac6b25ee5c21449bab151`
 | Finite JS/C/QBE and public CLI gates | [Qualification guide](tools/conformance/qualification.md) · [copied independent fixtures](tests/consolidation/README.md) |
 | Disk/process lifecycle and historical recovery | [`tools/build-retention/`](tools/build-retention/README.md) · [`tools/history/`](tools/history/README.md) |
 
-Program execution preserves the original45 points from23 source programs and
-independent outputs; native timing has44 eligible points plus a zero-work control.
-Use20/60/300/600-second ceilings and explicit cases/rounds. Compilation/acquisition,
+Program execution preserves the original 45 points from 23 source programs and
+independent outputs; native timing has 44 eligible points plus a zero-work control.
+Use 20/60/300/600-second ceilings and explicit cases/rounds. Compilation/acquisition,
 clean execution and profiling have separate budgets. A compiler request is not
 execution of the program it emits, and a warm session edit is not a cold build.
 

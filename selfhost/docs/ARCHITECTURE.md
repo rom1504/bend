@@ -1,5 +1,7 @@
 # Compiler architecture
 
+> Historical architecture record. For the maintained compiler, current release, and runnable build/profile/benchmark commands, see [the current workflow](../../docs/self_hosted/workflow.md). Historical phase implementations are recoverable through the Git-backed history index.
+
 ## Phase88 native hosting
 
 The [native host guide](../../docs/self_hosted/NATIVE_HOST.md) describes a

@@ -6,9 +6,11 @@ Normal verification reads the maintained source recipe, installed/provider pins,
 and the bytes of its small audit receipt. It does not follow that receipt's
 historical build methods, source snapshots or bootstrap acquisition chain.
 
-The installer has not selected a release merely because this tool exists. A
-candidate must pass the audit below, including genuine B2/B3 evidence and the
-independent public native CLI gate.
+The release selected by [`current.json`](../../manifests/current.json) is
+installed: the qualified QBE N2, genuine JS B2, and public C-emitting native N1.
+The selector records their exact source/artifact identities and completed gates;
+the [installation audit](../../dist/current-audit.json) records the promotion
+decision. Future candidates must pass the same audit below.
 
 ## Operational document
 
@@ -69,8 +71,8 @@ relationships, not behavioral qualification.
 `claims` maps dotted report field names to exact scalar/structured values; JSON
 types must also match. `bindings` maps dotted report field names to expected
 `bytes`/`sha256` identities. For example, the qualified unchanged QBE image can
-bind a preserved report's `n2` and `source` fields to the selected image and
-canonical source. Old paths inside a report do not need to exist: the independently
+bind a preserved report's `n2` and `source` fields to the selected image and its
+actual compiled source. Old paths inside a report do not need to exist: the independently
 pinned report bytes and current acquired artifact identities are compared,
 without reopening its historical input graph.
 
@@ -109,13 +111,17 @@ original workspace's historical compiler implementations. The initial QBE
 qualification can be inherited only through an explicit exact image/source
 identity bridge; a newer filename does not establish that relationship.
 
-[`promotion-pending.json`](../../manifests/promotion-pending.json) is a concrete
-proposal using the currently completed source/profile/QBE evidence. Its null
-artifact/report pins and `complete: false` flags are deliberate. The audit refuses
-it until actual B2/B3, selected-B2 regression, final public CLI construction,
-public CLI integrity/behavior, and the public image's 45-program gates are supplied.
-The already successful build-only C pilot is supporting evidence, not a substitute
-for running those cases through the final public image.
+The incomplete staging proposal was retired after successful promotion.
+Actual B2/B3 self-emission, selected-B2 and final public-C 45-program gates,
+public CLI integrity/behavior, and installed launcher controls passed. The
+[completed evidence index](../../../implementation/repository-consolidation/qualification-evidence.json)
+identifies the exact retained audit, qualification and installed-verification
+reports in the
+[receipt archive](../../../implementation/repository-consolidation/qualification-evidence.tar.gz).
+The [fresh-worktree report](../../../implementation/repository-consolidation/fresh-worktree.json)
+records verification with explicitly supplied qualified assets. Historical
+failures remain retained; the build-only C pilot does not replace qualification
+of the installed public image.
 
 ## Commands and transaction behavior
 

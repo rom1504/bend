@@ -6099,3 +6099,36 @@ errors, conversion, worker admission and teardown, then unrelated transfer.
 The modest gain supports reusable semantic products but does not establish5–10×
 headroom or recursive research acceleration. Avoid another full campaign until
 that complete-region proxy shows a substantially larger work reduction.
+
+
+## 2026-11-01 — Repository consolidation complete
+
+[Report](../implementation/repository-consolidation/README.md) ·
+[Current selector](../selfhost/manifests/current.json) ·
+[Workflow](../docs/self_hosted/workflow.md) ·
+[Evidence](../implementation/repository-consolidation/qualification-evidence.json).
+
+One maintained compiler recipe supplies JS/C/QBE: 206 modules, 7,402 named
+Bend declarations, 64,958 assembled lines. Current installed artifacts are JS B2,
+public native C N1 and qualified QBE N2. Actual JS B2/B3 reproduce exactly;
+final JS and public C each pass 45 ordinary outputs. Full canonical-source QBE
+and runtime object match the qualified products, with original N2 image/source
+identity retained through an explicit equivalence bridge. The sole production
+integration change raises the JS definition budget from 4096 to 4352; admission
+rules and other bounds remain. Seventeen component groups, finite laws and
+independent tag-kernel controls pass. Actual fresh Git worktree at bbf81e8 runs
+JS/C/QBE with explicit pinned assets and no historical implementation directories.
+
+Tracked bytes fall 7.086 GB → 1.526 GB (78.47%) and files 85,978 → 28,849.
+Historical implementations recover through exact Git identities; no history
+rewrite. Existing unrelated edits survive, including 826 index-only retirements
+whose local bytes are retained. Profiler/benchmark/build/law/conformance/session
+workflows now use maintained tools. Experimental session status is unchanged.
+
+All 54 guarded jobs closed: 28 retained hot, 26 archive-verified before pruning.
+Guarded work 63.50 minutes includes 18.34 minutes across 17 failed attempts;
+two guarded RSS aborts, no system OOM or disk-reserve breach. This excludes
+agent and Git/metadata effort. Failed acquisitions, obsolete test expectations
+and low-quality sampling are preserved in the report, not counted as gains.
+No new geometric runtime score, full cold-build speedup or upstream ratio.
+Next work remains measured complete cold-compilation optimization on this source.

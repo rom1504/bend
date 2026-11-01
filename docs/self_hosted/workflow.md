@@ -7,7 +7,8 @@ prepared Base images, compiler executables and benchmark artifacts are explicit
 inputs or outputs, not editable alternative compiler sources.
 
 The [consolidation design](../../design/repository-consolidation/README.md)
-records migration boundaries. Current tools live under
+records migration boundaries; the [completed report](../../implementation/repository-consolidation/README.md)
+records current qualification. Current tools live under
 [`tools/build/`](../../selfhost/tools/build/),
 [`tools/bench/`](../../selfhost/tools/bench/README.md),
 [`tools/profiler/`](../../selfhost/tools/profiler/README.md),
@@ -26,11 +27,11 @@ node selfhost/cli.mjs input.bend --run
 selfhost/bend input.bend -o output.c
 ```
 
-Their installed image selections are separate from source consolidation. A new
-assembly, a successful small differential run or a moved tool does not install
-another release. Package availability, supported imports/effects and exact
-image identities remain those of the selected public package until an explicit
-qualified promotion updates it.
+The installed [current selector](../../selfhost/manifests/current.json) binds
+JS B2, public native C N1 and qualified QBE N2 to their recorded source and
+qualification evidence. A new assembly, successful small differential run or
+moved tool does not install another release. Package availability, supported
+imports/effects and image identities change only through qualified promotion.
 
 Generated program targets remain available through explicit interfaces:
 
@@ -40,8 +41,8 @@ Generated program targets remain available through explicit interfaces:
 | C | `selfhost/bend input.bend -o output.c`; maintained `request.py --host native --target c` accepts the matching native-C or public-CLI binding and `assets-c-request.json`. The pinned C toolchain builds emitted C separately. |
 | QBE/native | Maintained `request.py --target qbe` emits IR; `native.py` constructs its executable using the explicit QBE/runtime/assembler/linker assets. The public CLI is not a QBE selector. |
 
-Host and stage must match the selected image. The original45 benchmark catalog
-uses JS callable libraries; its native45 catalog uses the corresponding C/QBE
+Host and stage must match the selected image. The original 45 benchmark catalog
+uses JS callable libraries; its native 45 catalog uses the corresponding C/QBE
 repetition wrappers. The same benchmark entry can execute all three targets, but
 the current two-case migration smoke covers upstream C and N2 QBE only.
 

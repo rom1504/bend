@@ -3,6 +3,10 @@
 This is an experiment protocol, not a public compiler ABI. All implementations
 are Bend. Root owns interface changes and target execution.
 
+The [native ownership correction](ownership-successor.md) supersedes the initial
+borrowed-wrapper signatures below. The tape encoding remains unchanged; wrappers
+are affine and internal consumers pass raw buffers explicitly.
+
 ```
 P148Tape { words: Array<U32>, values: Array<U32>, names: Array<String>,
            used: U32, valueUsed: U32, nameUsed: U32 }
@@ -14,7 +18,7 @@ P148Unit = P148Good { name: String, params: List<NC_Binding>, result: U32,
 The name dictionary is cold ordinary String storage, intentionally not claimed
 as four-byte packed storage. Words/values are contiguous scalar slots. Names
 are exact interned spellings, shared across local/symbol/opcode namespaces but
-interpreted by distinct tags. Reserve ID0=`state`, ID1=`scratch`. Unknown local
+interpreted by distinct tags. Reserve ID0=`state`, ID1=`scratch`, ID2=`xor`. Unknown local
 references may receive dictionary IDs but are NOT thereby declared or assigned.
 
 Every instruction starts at a word offset, eight words:
@@ -77,6 +81,14 @@ Functions shared by implementations (core.bend):
 Scalar consumer: `p148o_function(unit: P148Unit) -> P148Unit`.
 Admission consumer: `p148v_function(+unit: P148Unit,+ids: N111Ids,+ready: KDef)
 -> String`.
+
+The scalar consumer **destructively consumes** its input unit. No prior alias is
+valid afterward: instruction/value storage has changed and only the returned
+unit carries the matching updated lengths. Repack from the original structured
+function for each independent experiment. Branch cloning copies scalar facts,
+not the instruction tape. A future snapshot API would have to clone both mutable
+arrays and their metadata explicitly; unrestricted field syntax is not such an
+API. The dictionary is read-only after packing.
 
 Independent original consumers remain `p113k_function` and `p147d_function` /
 `p113e_function`. Do not decode between compact consumers. Keep mutable state

@@ -1,0 +1,562 @@
+{
+  "kind": "phase150-component-and-workflow-results",
+  "complete": true,
+  "preferredModule": {
+    "file": "selfhost/tests/phase150/lexer-candidate.bend",
+    "bytes": 12276,
+    "sha256": "c5b1e71ff4f0d42c69b8c764fb83c42fa755b3f9a38d9d3611f3fff92981ed85"
+  },
+  "variantSelection": {
+    "file": "selfhost/build/phase150/variants01/selection.json",
+    "bytes": 1036,
+    "sha256": "a757abe2fcb7f7fb67b28a65c4344d0c0316702d9053f2f6d3a4eaf4bf837b89"
+  },
+  "compilerInput": {
+    "file": "selfhost/build/phase150/source-baseline01/compiler.bend",
+    "bytes": 3068721,
+    "sha256": "21657b5844c3168ad16acbe0de8096c7a3e7623ff3efbe8c710a09a97d091074"
+  },
+  "scope": "Component parser/lexer and finite two-process correctness throughput only. No new full compiler qualification, whole cold-build ratio or generated-user-program runtime result.",
+  "preferredLexerMs": {
+    "reference": 4237.5,
+    "candidate": 957,
+    "candidateOverReference": 0.22584070796460176,
+    "reductionPercent": 77.41592920353982,
+    "speedup": 4.427899686520377
+  },
+  "preferredLexerProcessSeconds": {
+    "reference": 4.377142199547961,
+    "candidate": 1.1023316711653024,
+    "candidateOverReference": 0.25183821336193807,
+    "reductionPercent": 74.81617866380618,
+    "speedup": 3.9708032655187844
+  },
+  "preferredParseMs": {
+    "reference": 30535,
+    "candidate": 27597,
+    "candidateOverReference": 0.9037825446209268,
+    "reductionPercent": 9.621745537907323,
+    "speedup": 1.1064608471935355
+  },
+  "preferredParseProcessSeconds": {
+    "reference": 31.497320095077157,
+    "candidate": 28.552356395637617,
+    "candidateOverReference": 0.9065011343647671,
+    "reductionPercent": 9.349886563523292,
+    "speedup": 1.103142579849889
+  },
+  "literalParserAcquisitionSeconds": {
+    "reference": 46.52466338616796,
+    "candidate": 66.9343014259357,
+    "candidateOverReference": 1.4386842709717624,
+    "reductionPercent": -43.868427097176244,
+    "speedup": 0.6950795391156587
+  },
+  "scalarParserAcquisitionSeconds": {
+    "referenceTwoBuildMean": 46.52466338616796,
+    "candidateOneBuild": 45.59065302880481,
+    "claim": "Penalty removed in this screen; no significant acquisition speedup claimed from one candidate build."
+  },
+  "lexicalRows": [
+    {
+      "guard": "selfhost/build/phase150/lexer-scalar-timing01-guard/process.json",
+      "complete": true,
+      "wallSeconds": 1.1020400561392307,
+      "stdout": {
+        "file": "selfhost/build/phase150/lexer-scalar-timing01-guard/stdout.log",
+        "bytes": 139,
+        "sha256": "6407420c2f7cf4ec5d27872b51679ae6244a4999ab9bb04021c6b51f0a95c38d"
+      },
+      "lex_ms": 958,
+      "observe_ms": 61,
+      "region_ms": 1019,
+      "hash": 3795131990,
+      "tokens": 850068,
+      "mode": "candidate"
+    },
+    {
+      "guard": "selfhost/build/phase150/lexer-scalar-timing02-guard/process.json",
+      "complete": true,
+      "wallSeconds": 4.377247536089271,
+      "stdout": {
+        "file": "selfhost/build/phase150/lexer-scalar-timing02-guard/stdout.log",
+        "bytes": 140,
+        "sha256": "801169e441c8ec3cbed6fcb1b56dd1f96950e7125f231802d8496f10260af6d3"
+      },
+      "lex_ms": 4233,
+      "observe_ms": 63,
+      "region_ms": 4296,
+      "hash": 3795131990,
+      "tokens": 850068,
+      "mode": "reference"
+    },
+    {
+      "guard": "selfhost/build/phase150/lexer-scalar-timing03-guard/process.json",
+      "complete": true,
+      "wallSeconds": 4.377036863006651,
+      "stdout": {
+        "file": "selfhost/build/phase150/lexer-scalar-timing03-guard/stdout.log",
+        "bytes": 140,
+        "sha256": "4142298962141e3716acb3d25332868325167899a178ee3e217585a16479eb3c"
+      },
+      "lex_ms": 4242,
+      "observe_ms": 62,
+      "region_ms": 4304,
+      "hash": 3795131990,
+      "tokens": 850068,
+      "mode": "reference"
+    },
+    {
+      "guard": "selfhost/build/phase150/lexer-scalar-timing04-guard/process.json",
+      "complete": true,
+      "wallSeconds": 1.102623286191374,
+      "stdout": {
+        "file": "selfhost/build/phase150/lexer-scalar-timing04-guard/stdout.log",
+        "bytes": 139,
+        "sha256": "4d8ee0c181c462945ddd109c0af6d43f09751877ff6e77403106450477b4874a"
+      },
+      "lex_ms": 956,
+      "observe_ms": 61,
+      "region_ms": 1017,
+      "hash": 3795131990,
+      "tokens": 850068,
+      "mode": "candidate"
+    }
+  ],
+  "parserRows": [
+    {
+      "guard": "selfhost/build/phase150/parser-scalar-timing01-guard/process.json",
+      "complete": true,
+      "wallSeconds": 28.09950633533299,
+      "stdout": {
+        "file": "selfhost/build/phase150/parser-scalar-timing01-guard/stdout.log",
+        "bytes": 96,
+        "sha256": "7e81de96d3c9af4dca292d702d307146d7a21f23d7860d08cf2052b14f92368d"
+      },
+      "observe_ms": 643,
+      "prepare_ms": 208,
+      "parse_ms": 27145,
+      "hash": 738730876,
+      "variant": "scalar"
+    },
+    {
+      "guard": "selfhost/build/phase150/parser-scalar-timing02-guard/process.json",
+      "complete": true,
+      "wallSeconds": 31.64834042591974,
+      "stdout": {
+        "file": "selfhost/build/phase150/parser-scalar-timing02-guard/stdout.log",
+        "bytes": 96,
+        "sha256": "9dceeb43c9c3ebb13ff475bcc0ab3e680d3c066bbde3bf7c4a99ae526046adfc"
+      },
+      "observe_ms": 651,
+      "prepare_ms": 211,
+      "parse_ms": 30680,
+      "hash": 738730876,
+      "variant": "reference"
+    },
+    {
+      "guard": "selfhost/build/phase150/parser-scalar-timing03-guard/process.json",
+      "complete": true,
+      "wallSeconds": 31.346299764234573,
+      "stdout": {
+        "file": "selfhost/build/phase150/parser-scalar-timing03-guard/stdout.log",
+        "bytes": 96,
+        "sha256": "4a5479f54cd142073364dbc0e54ddd7274d71bb6b4d86546626d45d3100f5377"
+      },
+      "observe_ms": 637,
+      "prepare_ms": 208,
+      "parse_ms": 30390,
+      "hash": 738730876,
+      "variant": "reference"
+    },
+    {
+      "guard": "selfhost/build/phase150/parser-scalar-timing04-guard/process.json",
+      "complete": true,
+      "wallSeconds": 29.005206455942243,
+      "stdout": {
+        "file": "selfhost/build/phase150/parser-scalar-timing04-guard/stdout.log",
+        "bytes": 96,
+        "sha256": "2364255406cbb565029d332740df5c31fc106c053a67a0cb3b3507229385ff23"
+      },
+      "observe_ms": 644,
+      "prepare_ms": 208,
+      "parse_ms": 28049,
+      "hash": 738730876,
+      "variant": "scalar"
+    }
+  ],
+  "initialLiteralLexicalRows": [
+    {
+      "guard": "selfhost/build/phase150/lexer-timing01-guard/process.json",
+      "complete": true,
+      "wallSeconds": 4.697461649775505,
+      "stdout": {
+        "file": "selfhost/build/phase150/lexer-timing01-guard/stdout.log",
+        "bytes": 140,
+        "sha256": "a81f3d4507f0c079e4f2965f1bb6acf75d2a8ad7ffdb5925e39288233a437551"
+      },
+      "lex_ms": 4554,
+      "observe_ms": 65,
+      "region_ms": 4619,
+      "hash": 3795131990,
+      "tokens": 850068,
+      "mode": "reference"
+    },
+    {
+      "guard": "selfhost/build/phase150/lexer-timing02-guard/process.json",
+      "complete": true,
+      "wallSeconds": 0.9420751901343465,
+      "stdout": {
+        "file": "selfhost/build/phase150/lexer-timing02-guard/stdout.log",
+        "bytes": 138,
+        "sha256": "c825b63a8e4af7ec15aac067c7017f5def3be8742c24bbfe45e90df4bff82318"
+      },
+      "lex_ms": 796,
+      "observe_ms": 63,
+      "region_ms": 859,
+      "hash": 3795131990,
+      "tokens": 850068,
+      "mode": "candidate"
+    },
+    {
+      "guard": "selfhost/build/phase150/lexer-timing03-guard/process.json",
+      "complete": true,
+      "wallSeconds": 0.9199242265895009,
+      "stdout": {
+        "file": "selfhost/build/phase150/lexer-timing03-guard/stdout.log",
+        "bytes": 138,
+        "sha256": "fe3df8d2482d4a92a1e31173094c5eb2c3977656e416ad75e6a5b7de3f83ece9"
+      },
+      "lex_ms": 778,
+      "observe_ms": 61,
+      "region_ms": 839,
+      "hash": 3795131990,
+      "tokens": 850068,
+      "mode": "candidate"
+    },
+    {
+      "guard": "selfhost/build/phase150/lexer-timing04-guard/process.json",
+      "complete": true,
+      "wallSeconds": 4.433856605086476,
+      "stdout": {
+        "file": "selfhost/build/phase150/lexer-timing04-guard/stdout.log",
+        "bytes": 140,
+        "sha256": "bd28c829d29957306ee0750a327e682ffad65e829ef54adae14c3126656911de"
+      },
+      "lex_ms": 4285,
+      "observe_ms": 61,
+      "region_ms": 4346,
+      "hash": 3795131990,
+      "tokens": 850068,
+      "mode": "reference"
+    }
+  ],
+  "initialLiteralParserRows": [
+    {
+      "guard": "selfhost/build/phase150/parser-timing01-guard/process.json",
+      "complete": true,
+      "wallSeconds": 31.35582092264667,
+      "stdout": {
+        "file": "selfhost/build/phase150/parser-timing01-guard/stdout.log",
+        "bytes": 96,
+        "sha256": "03f05423864574bdf7e526478d53b54a7edc0d5b2137620fe12f3b82b08f1931"
+      },
+      "observe_ms": 653,
+      "prepare_ms": 210,
+      "parse_ms": 30381,
+      "hash": 738730876,
+      "variant": "reference"
+    },
+    {
+      "guard": "selfhost/build/phase150/parser-timing02-guard/process.json",
+      "complete": true,
+      "wallSeconds": 28.652952977921814,
+      "stdout": {
+        "file": "selfhost/build/phase150/parser-timing02-guard/stdout.log",
+        "bytes": 96,
+        "sha256": "66ed4110e3e21f202e105652008d7b5e32314fc9e7e4cc62be4be6e5145f8a81"
+      },
+      "observe_ms": 669,
+      "prepare_ms": 208,
+      "parse_ms": 27668,
+      "hash": 738730876,
+      "variant": "literal"
+    },
+    {
+      "guard": "selfhost/build/phase150/parser-timing03-guard/process.json",
+      "complete": true,
+      "wallSeconds": 28.450091156642884,
+      "stdout": {
+        "file": "selfhost/build/phase150/parser-timing03-guard/stdout.log",
+        "bytes": 96,
+        "sha256": "a743a1686323576d9a3cb08f8a82dce874ec8988b107eb540145b6636189ca7d"
+      },
+      "observe_ms": 648,
+      "prepare_ms": 210,
+      "parse_ms": 27486,
+      "hash": 738730876,
+      "variant": "literal"
+    },
+    {
+      "guard": "selfhost/build/phase150/parser-timing04-guard/process.json",
+      "complete": true,
+      "wallSeconds": 31.413775864988565,
+      "stdout": {
+        "file": "selfhost/build/phase150/parser-timing04-guard/stdout.log",
+        "bytes": 96,
+        "sha256": "6be5d5c4c06d601f1e3851b801c6cb2e0c538b2ae08e41c9e4acf2b009d973a5"
+      },
+      "observe_ms": 639,
+      "prepare_ms": 208,
+      "parse_ms": 30457,
+      "hash": 738730876,
+      "variant": "reference"
+    }
+  ],
+  "acquisitions": [
+    {
+      "name": "parser-reference-native01",
+      "report": {
+        "file": "selfhost/build/phase150/parser-reference-native01/report.json",
+        "bytes": 17261,
+        "sha256": "f2c07b482483ee75d4ff6f08f428e02e2ad9461557e5e0c2d6e7f5941021b981"
+      },
+      "complete": true,
+      "seconds": 46.506362858228385,
+      "emitAndQbeSeconds": 45.03784215217456,
+      "ssa": {
+        "file": "selfhost/build/phase150/parser-reference-native01/program.ssa",
+        "bytes": 28241468,
+        "sha256": "75b26e47d35d203a7887e50f1fedaa25892860083019b691f42df2b5c2ba52f3"
+      },
+      "binary": {
+        "file": "selfhost/build/phase150/parser-reference-native01/program",
+        "bytes": 4295480,
+        "sha256": "4b19c9ac9abdc1521f1fc9130850b2d6a1ab27861ce9af998a5f16a57b43c7ff"
+      },
+      "changedInputs": []
+    },
+    {
+      "name": "parser-candidate-native01",
+      "report": {
+        "file": "selfhost/build/phase150/parser-candidate-native01/report.json",
+        "bytes": 17277,
+        "sha256": "2bceef6844967471681d941ec6503f3f239bc89709db5e6130d65d5368767b91"
+      },
+      "complete": true,
+      "seconds": 66.66527742799371,
+      "emitAndQbeSeconds": 65.19257435994223,
+      "ssa": {
+        "file": "selfhost/build/phase150/parser-candidate-native01/program.ssa",
+        "bytes": 28436000,
+        "sha256": "b38bd77dcc96f42cab72a3947a5529432b65294c6350fc32f6a1e17e66f6206b"
+      },
+      "binary": {
+        "file": "selfhost/build/phase150/parser-candidate-native01/program",
+        "bytes": 4356968,
+        "sha256": "249fb70f8f0d3d5044b06c844bb0acb224ce17be61a499538ff140d0dbcdc014"
+      },
+      "changedInputs": []
+    },
+    {
+      "name": "parser-candidate-native02",
+      "report": {
+        "file": "selfhost/build/phase150/parser-candidate-native02/report.json",
+        "bytes": 18423,
+        "sha256": "8cd61dc667ce1b5a6f8cd81e319e774c1580300150d1bf04307baadce63f12e2"
+      },
+      "complete": true,
+      "seconds": 67.20332542387769,
+      "emitAndQbeSeconds": 65.5497143920511,
+      "ssa": {
+        "file": "selfhost/build/phase150/parser-candidate-native02/program.ssa",
+        "bytes": 28436000,
+        "sha256": "b38bd77dcc96f42cab72a3947a5529432b65294c6350fc32f6a1e17e66f6206b"
+      },
+      "binary": {
+        "file": "selfhost/build/phase150/parser-candidate-native02/program",
+        "bytes": 4356968,
+        "sha256": "5ed4c1d1870e5ebe71d131e669af2708bece0f133725896fb025752adcfd7237"
+      },
+      "changedInputs": []
+    },
+    {
+      "name": "parser-reference-native02",
+      "report": {
+        "file": "selfhost/build/phase150/parser-reference-native02/report.json",
+        "bytes": 18426,
+        "sha256": "8a0cf831bf7b4a6a8c4e34b1cb89d6bd70e7c64907b6b54f199e0e75fae9f584"
+      },
+      "complete": true,
+      "seconds": 46.54296391410753,
+      "emitAndQbeSeconds": 44.87841648282483,
+      "ssa": {
+        "file": "selfhost/build/phase150/parser-reference-native02/program.ssa",
+        "bytes": 28241468,
+        "sha256": "75b26e47d35d203a7887e50f1fedaa25892860083019b691f42df2b5c2ba52f3"
+      },
+      "binary": {
+        "file": "selfhost/build/phase150/parser-reference-native02/program",
+        "bytes": 4295480,
+        "sha256": "b7d4b2628a8d732d4d571a29559fb832c9ea34c2861f456db75fb671764eb067"
+      },
+      "changedInputs": []
+    },
+    {
+      "name": "parser-scalar-native01",
+      "report": {
+        "file": "selfhost/build/phase150/parser-scalar-native01/report.json",
+        "bytes": 17216,
+        "sha256": "1a27429ae4ee432d4cd1be2d54675a753006045dce76c5260e29026ee22eecb4"
+      },
+      "complete": true,
+      "seconds": 45.59065302880481,
+      "emitAndQbeSeconds": 44.1097262869589,
+      "ssa": {
+        "file": "selfhost/build/phase150/parser-scalar-native01/program.ssa",
+        "bytes": 28379597,
+        "sha256": "a20d9a5e1eb8d8d0ff20eac20a086f8ea7900d93e06d81d10b0888f7d766fa55"
+      },
+      "binary": {
+        "file": "selfhost/build/phase150/parser-scalar-native01/program",
+        "bytes": 4344536,
+        "sha256": "669d797e43b9c0ef2b8fc030ae190be49021f98c951345c440fc29151dc79640"
+      },
+      "changedInputs": []
+    },
+    {
+      "name": "lexer-native01",
+      "report": {
+        "file": "selfhost/build/phase150/lexer-native01/report.json",
+        "bytes": 17052,
+        "sha256": "c79d846eeee31e27c3e0509037a526abaee507d7400f8093f2217ed79e7a47a9"
+      },
+      "complete": true,
+      "seconds": 30.76569452881813,
+      "emitAndQbeSeconds": 30.460912538692355,
+      "ssa": {
+        "file": "selfhost/build/phase150/lexer-native01/program.ssa",
+        "bytes": 3421007,
+        "sha256": "b4041239ff079f5dee8b2a9a34b755077f06a78445906c5280c449f9a92ed98e"
+      },
+      "binary": {
+        "file": "selfhost/build/phase150/lexer-native01/program",
+        "bytes": 680416,
+        "sha256": "653c16a5494247f722be3c98a61cb7bb36146f3fdb9622d4deb8759ef3acb3bc"
+      },
+      "changedInputs": []
+    },
+    {
+      "name": "lexer-grouped-native01",
+      "report": {
+        "file": "selfhost/build/phase150/lexer-grouped-native01/report.json",
+        "bytes": 17199,
+        "sha256": "94250c1bcb59b2badf7803bb5d7c9de17d8789c6eb641746f7b05b74cecaa7b7"
+      },
+      "complete": true,
+      "seconds": 24.18562924535945,
+      "emitAndQbeSeconds": 23.85553253116086,
+      "ssa": {
+        "file": "selfhost/build/phase150/lexer-grouped-native01/program.ssa",
+        "bytes": 3310304,
+        "sha256": "bbfab372dd5978d044f33e13d7223144050dc15c2414e5702af4335604f84eed"
+      },
+      "binary": {
+        "file": "selfhost/build/phase150/lexer-grouped-native01/program",
+        "bytes": 669656,
+        "sha256": "bea06421322118e365da1f1e09efd4485e99707da11f54f8120bf1a1846d1f14"
+      },
+      "changedInputs": []
+    },
+    {
+      "name": "lexer-scalar-native01",
+      "report": {
+        "file": "selfhost/build/phase150/lexer-scalar-native01/report.json",
+        "bytes": 17160,
+        "sha256": "9cb346a037e1c7c2379aca2c9c1219ed77a16492998de7500afdeae8897024f3"
+      },
+      "complete": true,
+      "seconds": 8.599040682893246,
+      "emitAndQbeSeconds": 8.273725249804556,
+      "ssa": {
+        "file": "selfhost/build/phase150/lexer-scalar-native01/program.ssa",
+        "bytes": 3356259,
+        "sha256": "b4c6601dbcb730a85dcda74c9fb584994e4d0f6038f0ffe1dde280fe473a960d"
+      },
+      "binary": {
+        "file": "selfhost/build/phase150/lexer-scalar-native01/program",
+        "bytes": 671240,
+        "sha256": "4952069d6b15da6f906f99307909f3a19da4d70ebc124331e62de38bdcb4562b"
+      },
+      "changedInputs": []
+    }
+  ],
+  "parallel": {
+    "pairs": [
+      {
+        "serial": "serial01",
+        "parallel": "parallel01",
+        "serialSeconds": 3.550699499901384,
+        "parallelSeconds": 1.96369712613523,
+        "parallelOverSerial": 0.5530451467914334,
+        "reductionPercent": 44.69548532085666,
+        "speedup": 1.808170645383358
+      },
+      {
+        "serial": "serial02",
+        "parallel": "parallel02",
+        "serialSeconds": 2.9879078110679984,
+        "parallelSeconds": 1.90835638390854,
+        "parallelOverSerial": 0.6386931942275744,
+        "reductionPercent": 36.13068057724256,
+        "speedup": 1.5656969716256086
+      }
+    ],
+    "serialMeanAndTwoSampleMedianSeconds": 3.2693036554846913,
+    "parallelMeanAndTwoSampleMedianSeconds": 1.936026755021885,
+    "parallelOverSerial": 0.5921832166840614,
+    "reductionPercent": 40.78167833159386,
+    "speedup": 1.6886665677550179,
+    "serialPeakTreeRssBytes": 112562176,
+    "parallelPeakTreeRssBytes": 163713024,
+    "minimumAvailableBytes": 25555628032,
+    "guardedTrialSeconds": 10.410660821013153
+  },
+  "profileSummary": {
+    "diagnosticWallDeltaSeconds": 21.971771805081517,
+    "diagnosticCpuDeltaSeconds": 22.01340799999999,
+    "sevenHotStagesWallDeltaSeconds": 21.429761927,
+    "sevenHotStagesCpuDeltaSeconds": 21.429679038,
+    "beforeInitialOptimizerWallDeltaSeconds": 21.608633391,
+    "nonoverlappingStageWallDeltaSeconds": 21.958215118000005,
+    "nonoverlappingStageCpuDeltaSeconds": 21.999754197,
+    "peakRssKiBDelta": 141820,
+    "individualQuantitativeIntervals": 0
+  },
+  "evidenceCounts": {
+    "perVariantFiniteTokenPairs": 315,
+    "perVariantComparatorControls": 10,
+    "exactCurrentCompilerTokenCount": 850068,
+    "hostedCompleteGraphCases": 15,
+    "hostedExpectedSuccesses": 8,
+    "hostedExpectedErrors": 7,
+    "parallelIndependentQualificationReports": 8
+  },
+  "promotion": {
+    "productionEdited": false,
+    "installedSelectionChanged": false,
+    "qualifiedNativePhase": 147,
+    "nativeSelfReproductionRun": false,
+    "whole45Run": false,
+    "preferredCandidate": "scalar",
+    "next": "Bounded compact literal-pattern investigation and p88_roles acquisition/execution counterfactual; no generic rewrite from text counts alone."
+  },
+  "limits": [
+    "Two alternating timing pairs; no confidence intervals.",
+    "Source checking and finite exact equality are not a kernel equivalence theorem.",
+    "Whole native compiler not rebuilt; lexer and parser executables are component workloads built by qualified Phase147 N2.",
+    "Profiles compare compiler-only emission with exact SSA, not overlapping emission/QBE construction.",
+    "All individual profile stages below500samples; use stage clocks, not quantitative per-stage owner percentages.",
+    "Parallel child CPU time was not collected; elapsed throughput only, with no machine-efficiency claim."
+  ]
+}

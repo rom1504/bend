@@ -1,3 +1,43 @@
+# Latest investigation: Phase150 parser and literal-pattern expansion
+
+[Report](../implementation/phase150/README.md) ·
+[Metrics](../implementation/phase150/metrics.json) ·
+[Profile](../research/phase150/parser-acquisition-profile-results.md) ·
+[Next targets](../research/phase150/literal-pattern-audit.md).
+
+Preferred217-line Bend lexer remains a component experiment. Native lexical
+time4.2375→0.957s (4.43×); complete parser30.535→27.597s (9.62% less), process
+31.497→28.552s. Exact315token controls,10comparator controls,850068-token compiler
+comparison, Base/Hashmap token transfer and15complete hosted graphs pass.
+No full cold build, native self-reproduction, original45 or user-runtime claim;
+production source/installed selection unchanged, Phase147 remains qualified.
+
+Initial literal-pattern version made parser acquisition46.525→66.934s (+43.87%).
+Reversed repeat confirms; final QBE grew only0.69%. Existing authenticated
+profiler locates21.430s of21.972s extra diagnostic wall time in frontend/lowering
+walks. Character patterns expand into32-bit constructor trees. All stage clocks
+admitted, but per-stage owner samples remain descriptive below500 samples.
+Grouped then scalar source counterfactuals reduce proxy acquisition30.766→24.186
+→8.599s; final complete-parser acquisition45.591s removes the penalty.
+
+Next test p88_roles then p112fp_binary with both acquisition and execution gates.
+The77 numeric-leading rows in17ordinary functions are inventory, not hotness or
+a whole-build gain projection. Keep protected proof helpers intact. Existing
+fast runtime-name classifiers cannot be scalarized blindly. A compact literal-
+pattern representation is a narrow research hypothesis, not permission to
+discard dependent refinements or rewrite the whole compiler.
+
+Separate-process validation pilot:3.269→1.936s,40.78% less elapsed,8independent
+reports and exact QBE/assembly/object/output checks pass. Bend coordinator uses
+existing async legacy-JS provider under pinnedNode after Bun pipe controls fail.
+Only two fixed jobs/two pairs; no multi-mutator runtime or general scheduler
+qualification. No compiler/program measurements overlap the parallel windows.
+
+Upstream0592662..e9d269b assessment is separate; migration needs runtime flags,
+JS representation and checker-contract gates. No pin/runtime migration here.
+66guarded jobs821.21s, no OOM; failures and alternatives retained, all closed,
+no pruning. No new host compiler/tool algorithm or profiler gate relaxation.
+
 # Latest investigation: Phase149 Bend optimization policies
 
 [Report](../implementation/phase149/README.md) ·

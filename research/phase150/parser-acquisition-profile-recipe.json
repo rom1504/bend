@@ -1,0 +1,89 @@
+{
+  "cwd": "/home/ai/bend2/build/publish/bend",
+  "sampler": "/home/ai/bend2/build/publish/bend/selfhost/build/phase147/profile-final-build01/runtime/sampler.so",
+  "unwindTable": "/home/ai/bend2/build/publish/bend/selfhost/build/phase147/profile-final-prep01/unwind/table.json",
+  "inputs": [
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase147/profile-final-prep01/spec.json",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase147/profile-final-prep01/owners.json",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase147/profile-final-prep01/ready.json",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase147/profile-final-build01/report.json",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase147/profile-final-build01/runtime/plan.json",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase147/profile-final-prep01/inputs/program.o",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase147/integrated-sequel02/n2/report.json",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase147/integrated-plan05/image/report.json",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase147/integrated-source03/compiler.bend",
+    "/home/ai/bend2/build/publish/bend/selfhost/tools/profiler/freeze.py",
+    "/home/ai/bend2/build/publish/bend/selfhost/tools/profiler/run.py",
+    "/home/ai/bend2/build/publish/bend/selfhost/tools/profiler/stages_v1.py",
+    "/home/ai/bend2/build/publish/bend/selfhost/tools/profiler/analyze.py",
+    "/home/ai/bend2/build/publish/bend/selfhost/tools/profiler/attribute.py",
+    "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/base.bend",
+    "/home/ai/bend2/build/publish/bend/selfhost/.assets/base/base.p130",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase147/integrated-sequel02/n2/program",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase147/integrated-sequel02/n2/program.o",
+    "/home/ai/bend2/build/publish/bend/research/phase150/parser-acquisition-profile-plan.json"
+  ],
+  "scope": "Phase150 compiler-acquisition localization: one sequential sampled emission per parser source, using the retained Phase147 N1-origin diagnostic relink whose generated object is identical to current N2. Counters disabled. Entire stdout must match the corresponding independently retained N2 native01 QBE artifact; stderr must be empty. Compiler process only; no QBE machine construction, standalone parser execution, clean overhead estimate, or promotion claim.",
+  "workloads": [
+    {
+      "name": "parser-reference-source",
+      "timeoutSeconds": 150,
+      "variants": [
+        {
+          "name": "phase147-same-object-diagnostic",
+          "command": [
+            "/home/ai/bend2/build/publish/bend/selfhost/build/phase147/profile-final-build01/runtime/program",
+            "--threads",
+            "1",
+            "--gpu",
+            "off",
+            "--",
+            "phase111",
+            "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parser-source01/reference.bend",
+            "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/base.bend",
+            "cache",
+            "/home/ai/bend2/build/publish/bend/selfhost/.assets/base/base.p130",
+            "p130-word-pair-v1:p88-private-base-text-1:8dec5b64d3900d61a208e51d92113194b91364c4f4d35d1903edb481d678ed03"
+          ],
+          "stdout": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parser-reference-native01/program.ssa",
+          "stderr": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parser-reference-native01/compiler.stderr",
+          "dispatchInstrumentation": true,
+          "inputs": [
+            "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parser-source01/reference.bend",
+            "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parser-reference-native01/report.json"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "parser-candidate-source",
+      "timeoutSeconds": 150,
+      "variants": [
+        {
+          "name": "phase147-same-object-diagnostic",
+          "command": [
+            "/home/ai/bend2/build/publish/bend/selfhost/build/phase147/profile-final-build01/runtime/program",
+            "--threads",
+            "1",
+            "--gpu",
+            "off",
+            "--",
+            "phase111",
+            "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parser-source01/candidate.bend",
+            "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/base.bend",
+            "cache",
+            "/home/ai/bend2/build/publish/bend/selfhost/.assets/base/base.p130",
+            "p130-word-pair-v1:p88-private-base-text-1:8dec5b64d3900d61a208e51d92113194b91364c4f4d35d1903edb481d678ed03"
+          ],
+          "stdout": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parser-candidate-native01/program.ssa",
+          "stderr": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parser-candidate-native01/compiler.stderr",
+          "dispatchInstrumentation": true,
+          "inputs": [
+            "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parser-source01/candidate.bend",
+            "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parser-candidate-native01/report.json"
+          ]
+        }
+      ]
+    }
+  ]
+}

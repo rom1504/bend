@@ -78,3 +78,17 @@ or failed runs. Preserve the installed and qualified images.
 Commit design, validated implementation milestones and the final report/evidence.
 Report prediction versus outcome, native complete cost, generated-code identity,
 source/complexity growth, failures and acquisition/validation cost separately.
+
+## Evidence-driven extension and closure
+
+The first lexer passed semantic gates and ran faster, but repeated acquisitions
+cost44% more. That justified one existing-profiler pair and two source-shape
+counterfactuals before considering integration. Literal-pattern expansion proved
+expensive across the frontend. Scalar comparisons retained a4.43× lexical and
+9.62% complete-parser gain without the acquisition penalty.
+
+The2× complete-region ambition was not reached. Retain the217-line preferred
+component and do not force a full-image qualification or claim a whole cold-build
+speedup. Separate-process validation showed40.78% less elapsed on its two fixed
+jobs, with explicit controls and matching independent products. The report and
+P150-003 retain the adaptive experiment and its rejected alternatives.

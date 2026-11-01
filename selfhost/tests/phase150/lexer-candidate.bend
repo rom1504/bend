@@ -12,16 +12,17 @@ def p150l_cursor(+s: String, +l: U32, +c: U32, +d: U32, +acc: List<&2,FToken>, +
     case SNil{}:
       List.reverse(&2,FToken,f_choose(List<&2,FToken>,U32.is_eq(offset,0),
         u => acc,u => Con{FToken{"<eof>",0,0,0,offset,offset,previous},acc}))
-    case SCon{'\n',rest}: p150l_newline(rest,l,c,d,acc,offset,previous)
-    case SCon{'#',rest}: p150l_comment(rest,l,c,d,acc,f_cursor_add(offset,1),previous)
-    case SCon{'"',rest}: p150l_quoted(p150l_quote(rest,'"',"\"",1,1,l,U32.add(c,1)),l,c,d,acc,offset,previous)
-    case SCon{'\'',rest}: p150l_quoted(p150l_quote(rest,'\'',"'",1,1,l,U32.add(c,1)),l,c,d,acc,offset,previous)
     case SCon{+head,+rest}:
-      f_choose(List<&2,FToken>,f_ascii_space(head),
+      +code = Char.to_u32(head)
+      f_choose(List<&2,FToken>,U32.is_eq(code,10),u => p150l_newline(rest,l,c,d,acc,offset,previous),
+      u => f_choose(List<&2,FToken>,f_ascii_space_code(code),
         u => p150l_cursor(rest,l,U32.add(c,1),d,acc,f_cursor_add(offset,dg_units(head)),previous),
+      u => f_choose(List<&2,FToken>,U32.is_eq(code,35),u => p150l_comment(rest,l,c,d,acc,f_cursor_add(offset,1),previous),
+      u => f_choose(List<&2,FToken>,U32.is_eq(code,34) || U32.is_eq(code,39),
+        u => p150l_quoted(p150l_quote(rest,head,SCon{head,""},1,1,l,U32.add(c,1)),l,c,d,acc,offset,previous),
         u => f_choose(List<&2,FToken>,f_ident(head) && Bool.not(Char.is_eq(head,'.')),
           u => p150l_word_done(p150l_word(rest,SCon{head,""},1,head),l,c,d,acc,offset,previous),
-          u => p150l_other(head,rest,l,c,d,acc,offset,previous)))
+          u => p150l_other(head,rest,l,c,d,acc,offset,previous))))))
 
 @unsafe
 def p150l_newline(rest: String, +l: U32, +c: U32, +d: U32, +acc: List<&2,FToken>, +offset: U32, +previous: U32) -> List<&2,FToken>:
@@ -34,8 +35,10 @@ def p150l_newline(rest: String, +l: U32, +c: U32, +d: U32, +acc: List<&2,FToken>
 def p150l_comment(s: String, +l: U32, +c: U32, +d: U32, +acc: List<&2,FToken>, +offset: U32, +previous: U32) -> List<&2,FToken>:
   match s:
     case SNil{}: p150l_cursor("",l,c,d,acc,offset,previous)
-    case SCon{'\n',rest}: p150l_newline(rest,l,c,d,acc,offset,previous)
-    case SCon{head,rest}: p150l_comment(rest,l,c,d,acc,f_cursor_add(offset,dg_units(head)),previous)
+    case SCon{+head,+rest}:
+      f_choose(List<&2,FToken>,f_ascii_char_eq(head,'\n'),
+        u => p150l_newline(rest,l,c,d,acc,offset,previous),
+        u => p150l_comment(rest,l,c,d,acc,f_cursor_add(offset,dg_units(head)),previous))
 
 @unsafe
 def p150l_digit(s: String) -> Bool:
@@ -74,19 +77,22 @@ def p150l_word_end(+word: String, rest: String, +l: U32, +c: U32, d: U32, acc: L
 def p150l_quote(s: String, +quote: Char, +acc: String, +n: U32, +width: U32, +l: U32, +c: U32) -> P150LQuoted:
   match s:
     case SNil{}: P150LQuoted{"","",0,0,0,0}
-    case SCon{'\\',rest}: p150l_escape(rest,quote,acc,n,width,l,c)
-    case SCon{'\n',rest}: p150l_quote(rest,quote,SCon{'\n',acc},U32.add(n,1),U32.add(width,1),U32.add(l,1),0)
     case SCon{+head,+rest}:
-      f_choose(P150LQuoted,Char.is_eq(head,quote),
+      f_choose(P150LQuoted,f_ascii_char_eq(head,'\\'),u => p150l_escape(rest,quote,acc,n,width,l,c),
+      u => f_choose(P150LQuoted,f_ascii_char_eq(head,'\n'),
+        u => p150l_quote(rest,quote,SCon{head,acc},U32.add(n,1),U32.add(width,1),U32.add(l,1),0),
+      u => f_choose(P150LQuoted,Char.is_eq(head,quote),
         u => P150LQuoted{String.reverse(SCon{head,acc}),rest,U32.add(n,1),U32.add(width,1),l,U32.add(c,1)},
-        u => p150l_quote(rest,quote,SCon{head,acc},U32.add(n,1),U32.add(width,dg_units(head)),l,U32.add(c,1)))
+        u => p150l_quote(rest,quote,SCon{head,acc},U32.add(n,1),U32.add(width,dg_units(head)),l,U32.add(c,1)))))
 
 @unsafe
 def p150l_escape(s: String, +quote: Char, +acc: String, +n: U32, +width: U32, +l: U32, +c: U32) -> P150LQuoted:
   match s:
     case SNil{}: P150LQuoted{"","",0,0,0,0}
-    case SCon{'\n',rest}: p150l_quote(rest,quote,SCon{'\n',SCon{'\\',acc}},U32.add(n,2),U32.add(width,2),U32.add(l,1),0)
-    case SCon{+head,rest}: p150l_quote(rest,quote,SCon{head,SCon{'\\',acc}},U32.add(n,2),U32.add(width,U32.add(1,dg_units(head))),l,U32.add(c,2))
+    case SCon{+head,+rest}:
+      f_choose(P150LQuoted,f_ascii_char_eq(head,'\n'),
+        u => p150l_quote(rest,quote,SCon{head,SCon{'\\',acc}},U32.add(n,2),U32.add(width,2),U32.add(l,1),0),
+        u => p150l_quote(rest,quote,SCon{head,SCon{'\\',acc}},U32.add(n,2),U32.add(width,U32.add(1,dg_units(head))),l,U32.add(c,2)))
 
 @unsafe
 def p150l_quoted(sc: P150LQuoted, +l: U32, +c: U32, +d: U32, +acc: List<&2,FToken>, +offset: U32, +previous: U32) -> List<&2,FToken>:
@@ -104,19 +110,29 @@ def p150l_quote_end(word: String, rest: String, l: U32, c: U32, d: U32, acc: Lis
 def p150l_unterminated(l: U32, c: U32, acc: List<&2,FToken>, +offset: U32, previous: U32) -> List<&2,FToken>:
   List.reverse(&2,FToken,Con{FToken{"unterminated string",l,c,3,offset,offset,previous},acc})
 
-# Exact three-character dispatch precedes dot-word scanning. Literal outputs
-# avoid constructing temporary lookahead Strings solely for comparison.
+# Exact three-character dispatch precedes dot-word scanning. Only accepted
+# operators construct token text; lookahead compares scalar character values.
 @unsafe
 def p150l_other(+head: Char, +rest: String, +l: U32, +c: U32, +d: U32, +acc: List<&2,FToken>, +offset: U32, +previous: U32) -> List<&2,FToken>:
-  match head rest:
-    case '.' SCon{'&',SCon{'.',tail}}: p150l_emit(".&.",tail,l,c,d,acc,offset,previous,3,3)
-    case '.' SCon{'|',SCon{'.',tail}}: p150l_emit(".|.",tail,l,c,d,acc,offset,previous,3,3)
-    case '.' SCon{'^',SCon{'.',tail}}: p150l_emit(".^.",tail,l,c,d,acc,offset,previous,3,3)
-    case '<' SCon{'&',SCon{'>',tail}}: p150l_emit("<&>",tail,l,c,d,acc,offset,previous,3,3)
-    case '.' tail: p150l_word_done(p150l_word(tail,".",1,'.'),l,c,d,acc,offset,previous)
-    case '+' tail: p150l_plus(tail,l,c,d,acc,offset,previous,p150l_edge(acc))
-    case '>' tail: p150l_greater(tail,l,c,d,acc,offset,previous,p150l_edge(acc))
-    case ch tail: p150l_symbol(ch,tail,l,c,d,acc,offset,previous)
+  match rest:
+    case SCon{+second,SCon{+third,tail}}:
+      f_choose(List<&2,FToken>,p150l_triple(head,second,third),
+        u => p150l_emit(SCon{head,SCon{second,SCon{third,""}}},tail,l,c,d,acc,offset,previous,3,3),
+        u => p150l_other_plain(head,rest,l,c,d,acc,offset,previous))
+    case _: p150l_other_plain(head,rest,l,c,d,acc,offset,previous)
+
+@unsafe
+def p150l_triple(+a: Char, +b: Char, +c: Char) -> Bool:
+  f_choose(Bool,f_ascii_char_eq(a,'.'),
+    u => f_ascii_char_eq(c,'.') && (f_ascii_char_eq(b,'&') || f_ascii_char_eq(b,'|') || f_ascii_char_eq(b,'^')),
+    u => f_ascii_char_eq(a,'<') && f_ascii_char_eq(b,'&') && f_ascii_char_eq(c,'>'))
+
+@unsafe
+def p150l_other_plain(+head: Char, +rest: String, +l: U32, +c: U32, +d: U32, +acc: List<&2,FToken>, +offset: U32, +previous: U32) -> List<&2,FToken>:
+  f_choose(List<&2,FToken>,f_ascii_char_eq(head,'.'),u => p150l_word_done(p150l_word(rest,".",1,'.'),l,c,d,acc,offset,previous),
+  u => f_choose(List<&2,FToken>,f_ascii_char_eq(head,'+'),u => p150l_plus(rest,l,c,d,acc,offset,previous,p150l_edge(acc)),
+  u => f_choose(List<&2,FToken>,f_ascii_char_eq(head,'>'),u => p150l_greater(rest,l,c,d,acc,offset,previous,p150l_edge(acc)),
+    u => p150l_symbol(head,rest,l,c,d,acc,offset,previous))))
 
 # The old adjacency rule uses the stored token text, including >op/+bind,
 # and no line check. One scan obtains length and the final character together.
@@ -141,12 +157,12 @@ def p150l_plus(+rest: String, +l: U32, +c: U32, +d: U32, +acc: List<&2,FToken>, 
 def p150l_plus_at(+rest: String, +l: U32, +c: U32, +d: U32, +acc: List<&2,FToken>, +offset: U32, +previous: U32, +contiguous: Bool) -> List<&2,FToken>:
   match rest:
     case SNil{}: p150l_emit("+","",l,c,d,acc,offset,previous,1,1)
-    case SCon{'+',tail}:
-      f_choose(List<&2,FToken>,contiguous,
-        u => p150l_emit("+",rest,l,c,d,acc,offset,previous,1,1),
-        u => p150l_emit("++",tail,l,c,d,acc,offset,previous,2,2))
-    case SCon{head,tail}:
-      p150l_emit(f_choose(String,f_ascii_alpha(head) && Bool.not(contiguous),u => "+bind",u => "+"),rest,l,c,d,acc,offset,previous,1,1)
+    case SCon{+head,tail}:
+      f_choose(List<&2,FToken>,f_ascii_char_eq(head,'+'),
+        u => f_choose(List<&2,FToken>,contiguous,
+          v => p150l_emit("+",rest,l,c,d,acc,offset,previous,1,1),
+          v => p150l_emit("++",tail,l,c,d,acc,offset,previous,2,2)),
+        u => p150l_emit(f_choose(String,f_ascii_alpha(head) && Bool.not(contiguous),v => "+bind",v => "+"),rest,l,c,d,acc,offset,previous,1,1))
 
 @unsafe
 def p150l_greater(+rest: String, +l: U32, +c: U32, +d: U32, +acc: List<&2,FToken>, +offset: U32, +previous: U32, edge: P150LEdge) -> List<&2,FToken>:
@@ -156,35 +172,41 @@ def p150l_greater(+rest: String, +l: U32, +c: U32, +d: U32, +acc: List<&2,FToken
 @unsafe
 def p150l_greater_at(+rest: String, +l: U32, +c: U32, +d: U32, +acc: List<&2,FToken>, +offset: U32, +previous: U32, +gap: Bool) -> List<&2,FToken>:
   match rest:
-    case SCon{'>',tail}: p150l_emit(f_choose(String,gap,u => ">>op",u => ">>"),tail,l,c,d,acc,offset,previous,2,2)
-    case SCon{'=',tail}: p150l_emit(">=",tail,l,c,d,acc,offset,previous,2,2)
-    case tail: p150l_emit(f_choose(String,gap,u => ">op",u => ">"),tail,l,c,d,acc,offset,previous,1,1)
+    case SNil{}: p150l_emit(f_choose(String,gap,u => ">op",u => ">"),"",l,c,d,acc,offset,previous,1,1)
+    case SCon{+head,+tail}:
+      f_choose(List<&2,FToken>,f_ascii_char_eq(head,'>'),
+        u => p150l_emit(f_choose(String,gap,v => ">>op",v => ">>"),tail,l,c,d,acc,offset,previous,2,2),
+      u => f_choose(List<&2,FToken>,f_ascii_char_eq(head,'='),u => p150l_emit(">=",tail,l,c,d,acc,offset,previous,2,2),
+        u => p150l_emit(f_choose(String,gap,v => ">op",v => ">"),rest,l,c,d,acc,offset,previous,1,1)))
 
 @unsafe
 def p150l_symbol(+head: Char, +rest: String, +l: U32, +c: U32, +d: U32, +acc: List<&2,FToken>, +offset: U32, +previous: U32) -> List<&2,FToken>:
-  match head rest:
-    case '-' SCon{'>',tail}: p150l_emit("->",tail,l,c,d,acc,offset,previous,2,2)
-    case '=' SCon{'>',tail}: p150l_emit("=>",tail,l,c,d,acc,offset,previous,2,2)
-    case '<' SCon{'-',tail}: p150l_emit("<-",tail,l,c,d,acc,offset,previous,2,2)
-    case '<' SCon{'>',tail}: p150l_emit("<>",tail,l,c,d,acc,offset,previous,2,2)
-    case '=' SCon{'=',tail}: p150l_emit("==",tail,l,c,d,acc,offset,previous,2,2)
-    case '!' SCon{'=',tail}: p150l_emit("!=",tail,l,c,d,acc,offset,previous,2,2)
-    case '<' SCon{'=',tail}: p150l_emit("<=",tail,l,c,d,acc,offset,previous,2,2)
-    case '&' SCon{'&',tail}: p150l_emit("&&",tail,l,c,d,acc,offset,previous,2,2)
-    case '|' SCon{'|',tail}: p150l_emit("||",tail,l,c,d,acc,offset,previous,2,2)
-    case '<' SCon{'<',tail}: p150l_emit("<<",tail,l,c,d,acc,offset,previous,2,2)
-    case _ _: p150l_emit(SCon{head,""},rest,l,c,p150l_depth(head,d),acc,offset,previous,1,dg_units(head))
+  match rest:
+    case SNil{}: p150l_single(head,"",l,c,d,acc,offset,previous)
+    case SCon{+second,tail}:
+      f_choose(List<&2,FToken>,p150l_pair(head,second),
+        u => p150l_emit(SCon{head,SCon{second,""}},tail,l,c,d,acc,offset,previous,2,2),
+        u => p150l_single(head,rest,l,c,d,acc,offset,previous))
+
+# Scalar predicates avoid expanding Char literal patterns into bit patterns.
+@unsafe
+def p150l_pair(a: Char, b: Char) -> Bool:
+  +x = Char.to_u32(a)
+  +y = Char.to_u32(b)
+  f_choose(Bool,U32.is_eq(y,62),u => U32.is_eq(x,45) || U32.is_eq(x,61) || U32.is_eq(x,60),
+  u => f_choose(Bool,U32.is_eq(y,61),u => U32.is_eq(x,61) || U32.is_eq(x,33) || U32.is_eq(x,60),
+  u => f_choose(Bool,U32.is_eq(x,60),u => U32.is_eq(y,45) || U32.is_eq(y,60),
+    u => U32.is_eq(x,y) && (U32.is_eq(x,38) || U32.is_eq(x,124)))))
+
+@unsafe
+def p150l_single(+head: Char, rest: String, l: U32, c: U32, d: U32, acc: List<&2,FToken>, offset: U32, previous: U32) -> List<&2,FToken>:
+  p150l_emit(SCon{head,""},rest,l,c,p150l_depth(head,d),acc,offset,previous,1,dg_units(head))
 
 @unsafe
 def p150l_depth(head: Char, +depth: U32) -> U32:
-  match head:
-    case '(': U32.add(depth,1)
-    case '[': U32.add(depth,1)
-    case '{': U32.add(depth,1)
-    case ')': U32.sub(depth,1)
-    case ']': U32.sub(depth,1)
-    case '}': U32.sub(depth,1)
-    case _: depth
+  +code = Char.to_u32(head)
+  f_choose(U32,U32.is_eq(code,40) || U32.is_eq(code,91) || U32.is_eq(code,123),u => U32.add(depth,1),
+  u => f_choose(U32,U32.is_eq(code,41) || U32.is_eq(code,93) || U32.is_eq(code,125),u => U32.sub(depth,1),u => depth))
 
 @unsafe
 def p150l_emit(text: String, rest: String, +l: U32, +c: U32, d: U32, acc: List<&2,FToken>, +offset: U32, previous: U32, columns: U32, width: U32) -> List<&2,FToken>:

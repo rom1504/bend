@@ -1,0 +1,1988 @@
+{
+  "schema": "phase150-parser-acquisition-profile-results-v1",
+  "targetsRunByThisAnalysis": false,
+  "decision": "Retain the validated scalar C3 candidate. It removes the observed parser acquisition penalty while preserving a roughly 9.6% complete-parser runtime gain. Do not promote a new whole compiler or claim the 2x parse gate passed. Follow up on bounded nondependent compact literal dispatch, with typing/affinity and runtime obligations explicit.",
+  "evidence": {
+    "pins": [
+      {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parser-acquisition-profile01/capture/report.json",
+        "bytes": 20271,
+        "sha256": "6b52846601c58f10f1321a8ece6ce2e3caa3f7a60367f9757724e88a7d13ad4a"
+      },
+      {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parser-acquisition-profile01/reference-stages.json",
+        "bytes": 71883,
+        "sha256": "003044a2840ac5df7d321baf69a3a8635985d9942a7830874887bb80b25cb8ac"
+      },
+      {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parser-acquisition-profile01/candidate-stages.json",
+        "bytes": 75952,
+        "sha256": "dc0bd46d76c2f58337a33a830899fac863859289fbff3b4292b910e36cd6a7ff"
+      },
+      {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase147/integrated-source03/compiler.bend",
+        "bytes": 3045282,
+        "sha256": "0f3bd8a0f29944a317d6de14db05e6e34ba36daa22b350c25236d07519227eaf"
+      },
+      {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/variants01/literal.bend",
+        "bytes": 10994,
+        "sha256": "17d069235aea4c48909cc8d4ec62aec546988c1d9f527245c5b9ec2f34a8b98c"
+      },
+      {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/variants01/grouped.bend",
+        "bytes": 11688,
+        "sha256": "abdaebbb16be9c4b32ef7183b8fccbc7ee4c3e4bec6a16c42d3a8f361a282e3b"
+      }
+    ],
+    "rows": [
+      {
+        "workload": "parser-reference-source",
+        "wallSeconds": 42.774818676989526,
+        "cpuSeconds": 42.706830000000004,
+        "peakRssKiB": 225836,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parser-acquisition-profile01/capture/000-sample-parser-reference-source-phase147-same-object-diagnostic/stdout",
+          "bytes": 28241468,
+          "sha256": "75b26e47d35d203a7887e50f1fedaa25892860083019b691f42df2b5c2ba52f3"
+        },
+        "stderr": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parser-acquisition-profile01/capture/000-sample-parser-reference-source-phase147-same-object-diagnostic/stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "correct": true,
+        "profileUsable": true
+      },
+      {
+        "workload": "parser-candidate-source",
+        "wallSeconds": 64.74659048207104,
+        "cpuSeconds": 64.720238,
+        "peakRssKiB": 367656,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parser-acquisition-profile01/capture/001-sample-parser-candidate-source-phase147-same-object-diagnostic/stdout",
+          "bytes": 28436000,
+          "sha256": "b38bd77dcc96f42cab72a3947a5529432b65294c6350fc32f6a1e17e66f6206b"
+        },
+        "stderr": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parser-acquisition-profile01/capture/001-sample-parser-candidate-source-phase147-same-object-diagnostic/stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "correct": true,
+        "profileUsable": true
+      }
+    ],
+    "cpuAffinity": [
+      3
+    ],
+    "captureAdmission": {
+      "complete": true,
+      "passed": true,
+      "profilesUsable": true,
+      "changedInputs": []
+    },
+    "stageAdmission": [
+      {
+        "complete": true,
+        "requestExact": true,
+        "stageAttributionValid": true,
+        "samples": 1324
+      },
+      {
+        "complete": true,
+        "requestExact": true,
+        "stageAttributionValid": true,
+        "samples": 2011
+      }
+    ],
+    "ordinary": [
+      {
+        "pair": "01",
+        "rows": [
+          {
+            "variant": "reference",
+            "report": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parser-reference-native01/report.json",
+              "bytes": 17261,
+              "sha256": "f2c07b482483ee75d4ff6f08f428e02e2ad9461557e5e0c2d6e7f5941021b981"
+            },
+            "wallSeconds": 46.506362858228385,
+            "emitAndQbeSeconds": 45.03784215217456,
+            "complete": true
+          },
+          {
+            "variant": "candidate",
+            "report": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parser-candidate-native01/report.json",
+              "bytes": 17277,
+              "sha256": "2bceef6844967471681d941ec6503f3f239bc89709db5e6130d65d5368767b91"
+            },
+            "wallSeconds": 66.66527742799371,
+            "emitAndQbeSeconds": 65.19257435994223,
+            "complete": true
+          }
+        ]
+      },
+      {
+        "pair": "02",
+        "rows": [
+          {
+            "variant": "reference",
+            "report": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parser-reference-native02/report.json",
+              "bytes": 18426,
+              "sha256": "8a0cf831bf7b4a6a8c4e34b1cb89d6bd70e7c64907b6b54f199e0e75fae9f584"
+            },
+            "wallSeconds": 46.54296391410753,
+            "emitAndQbeSeconds": 44.87841648282483,
+            "complete": true
+          },
+          {
+            "variant": "candidate",
+            "report": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parser-candidate-native02/report.json",
+              "bytes": 18423,
+              "sha256": "8cd61dc667ce1b5a6f8cd81e319e774c1580300150d1bf04307baadce63f12e2"
+            },
+            "wallSeconds": 67.20332542387769,
+            "emitAndQbeSeconds": 65.5497143920511,
+            "complete": true
+          }
+        ]
+      }
+    ]
+  },
+  "quality": [
+    {
+      "scope": "main_thread",
+      "main_thread_cpu_fraction": 0.9931234287799838,
+      "sampled_thread_cpu_fraction": 0.9931234287799838,
+      "minimum_process_cpu_fraction": 0.95,
+      "minimum_samples": 500,
+      "enough_samples": true,
+      "thread_lifecycle_complete": true,
+      "near_complete_process_cpu_coverage": true,
+      "usable_for_process_cpu_attribution": true,
+      "limitations": [],
+      "zero_loss": true,
+      "handler_intact": true,
+      "main_thread_shutdown": true,
+      "expected_clock_periods": 1324.70816425,
+      "delivered_per_expected_period": 0.9994654186717412,
+      "delivery_plausible": true
+    },
+    {
+      "scope": "main_thread",
+      "main_thread_cpu_fraction": 0.9953434706231948,
+      "sampled_thread_cpu_fraction": 0.9953434706231948,
+      "minimum_process_cpu_fraction": 0.95,
+      "minimum_samples": 500,
+      "enough_samples": true,
+      "thread_lifecycle_complete": true,
+      "near_complete_process_cpu_coverage": true,
+      "usable_for_process_cpu_attribution": true,
+      "limitations": [],
+      "zero_loss": true,
+      "handler_intact": true,
+      "main_thread_shutdown": true,
+      "expected_clock_periods": 2011.98483715625,
+      "delivered_per_expected_period": 0.999510514623141,
+      "delivery_plausible": true
+    }
+  ],
+  "summary": {
+    "diagnosticWallDeltaSeconds": 21.971771805081517,
+    "diagnosticCpuDeltaSeconds": 22.01340799999999,
+    "sevenHotStagesWallDeltaSeconds": 21.429761927,
+    "sevenHotStagesCpuDeltaSeconds": 21.429679038,
+    "beforeInitialOptimizerWallDeltaSeconds": 21.608633391,
+    "nonoverlappingStageWallDeltaSeconds": 21.958215118000005,
+    "nonoverlappingStageCpuDeltaSeconds": 21.999754197,
+    "peakRssKiBDelta": 141820,
+    "individualQuantitativeIntervals": 0
+  },
+  "stageDeltas": [
+    {
+      "label": "Base preparation",
+      "referenceWall": 0.2427597,
+      "candidateWall": 0.23208141,
+      "deltaWall": -0.010678290000000007,
+      "referenceCpu": 0.242764262,
+      "candidateCpu": 0.23208597,
+      "deltaCpu": -0.010678292000000006,
+      "referenceSamples": 6,
+      "candidateSamples": 5,
+      "referenceAdmitted": false,
+      "candidateAdmitted": false,
+      "nested": false
+    },
+    {
+      "label": "parse/load",
+      "referenceWall": 3.321268623,
+      "candidateWall": 8.244022649,
+      "deltaWall": 4.922754026,
+      "referenceCpu": 3.321256355,
+      "candidateCpu": 8.243997084,
+      "deltaCpu": 4.922740729,
+      "referenceSamples": 101,
+      "candidateSamples": 256,
+      "referenceAdmitted": false,
+      "candidateAdmitted": false,
+      "nested": false
+    },
+    {
+      "label": "checking/publication",
+      "referenceWall": 1.708619175,
+      "candidateWall": 6.349058922,
+      "deltaWall": 4.640439747,
+      "referenceCpu": 1.708639129,
+      "candidateCpu": 6.349081942,
+      "deltaCpu": 4.640442813,
+      "referenceSamples": 52,
+      "candidateSamples": 196,
+      "referenceAdmitted": false,
+      "candidateAdmitted": false,
+      "nested": false
+    },
+    {
+      "label": "proof report",
+      "referenceWall": 0.061666149,
+      "candidateWall": 0.067876534,
+      "deltaWall": 0.006210384999999999,
+      "referenceCpu": 0.061667945,
+      "candidateCpu": 0.067878309,
+      "deltaCpu": 0.006210363999999996,
+      "referenceSamples": 0,
+      "candidateSamples": 1,
+      "referenceAdmitted": false,
+      "candidateAdmitted": false,
+      "nested": false
+    },
+    {
+      "label": "owned/foreign eligibility",
+      "referenceWall": 0.023568869,
+      "candidateWall": 0.024576224,
+      "deltaWall": 0.0010073550000000014,
+      "referenceCpu": 0.023563454,
+      "candidateCpu": 0.024570855,
+      "deltaCpu": 0.001007400999999998,
+      "referenceSamples": 0,
+      "candidateSamples": 0,
+      "referenceAdmitted": false,
+      "candidateAdmitted": false,
+      "nested": false
+    },
+    {
+      "label": "main eligibility",
+      "referenceWall": 0.000979573,
+      "candidateWall": 0.000991033,
+      "deltaWall": 0.00001146000000000003,
+      "referenceCpu": 0.000979608,
+      "candidateCpu": 0.000991049,
+      "deltaCpu": 0.000011440999999999838,
+      "referenceSamples": 0,
+      "candidateSamples": 0,
+      "referenceAdmitted": false,
+      "candidateAdmitted": false,
+      "nested": false
+    },
+    {
+      "label": "checked context",
+      "referenceWall": 0.073316296,
+      "candidateWall": 0.258140005,
+      "deltaWall": 0.184823709,
+      "referenceCpu": 0.073319034,
+      "candidateCpu": 0.258117207,
+      "deltaCpu": 0.184798173,
+      "referenceSamples": 0,
+      "candidateSamples": 6,
+      "referenceAdmitted": false,
+      "candidateAdmitted": false,
+      "nested": false
+    },
+    {
+      "label": "annotation/reach",
+      "referenceWall": 0.689191664,
+      "candidateWall": 4.270090403,
+      "deltaWall": 3.580898739,
+      "referenceCpu": 0.689196583,
+      "candidateCpu": 4.270087084,
+      "deltaCpu": 3.580890501,
+      "referenceSamples": 19,
+      "candidateSamples": 132,
+      "referenceAdmitted": false,
+      "candidateAdmitted": false,
+      "nested": false
+    },
+    {
+      "label": "layout check",
+      "referenceWall": 0.356356926,
+      "candidateWall": 1.614413664,
+      "deltaWall": 1.258056738,
+      "referenceCpu": 0.356362463,
+      "candidateCpu": 1.614424723,
+      "deltaCpu": 1.25806226,
+      "referenceSamples": 9,
+      "candidateSamples": 48,
+      "referenceAdmitted": false,
+      "candidateAdmitted": false,
+      "nested": false
+    },
+    {
+      "label": "erasure/finalization",
+      "referenceWall": 0.7164651,
+      "candidateWall": 3.586426331,
+      "deltaWall": 2.8699612310000004,
+      "referenceCpu": 0.716456385,
+      "candidateCpu": 3.586372012,
+      "deltaCpu": 2.869915627,
+      "referenceSamples": 21,
+      "candidateSamples": 110,
+      "referenceAdmitted": false,
+      "candidateAdmitted": false,
+      "nested": false
+    },
+    {
+      "label": "runtime admission/certificate",
+      "referenceWall": 0.018366001,
+      "candidateWall": 0.019094629,
+      "deltaWall": 0.0007286279999999985,
+      "referenceCpu": 0.018366457,
+      "candidateCpu": 0.019080774,
+      "deltaCpu": 0.0007143170000000025,
+      "referenceSamples": 0,
+      "candidateSamples": 0,
+      "referenceAdmitted": false,
+      "candidateAdmitted": false,
+      "nested": false
+    },
+    {
+      "label": "static preparation",
+      "referenceWall": 0.695141204,
+      "candidateWall": 1.720756437,
+      "deltaWall": 1.025615233,
+      "referenceCpu": 0.695150774,
+      "candidateCpu": 1.720766428,
+      "deltaCpu": 1.0256156539999999,
+      "referenceSamples": 20,
+      "candidateSamples": 52,
+      "referenceAdmitted": false,
+      "candidateAdmitted": false,
+      "nested": false
+    },
+    {
+      "label": "raw generic/private lowering",
+      "referenceWall": 6.617808891,
+      "candidateWall": 9.749845104,
+      "deltaWall": 3.132036213,
+      "referenceCpu": 6.617834719,
+      "candidateCpu": 9.749846173,
+      "deltaCpu": 3.1320114539999997,
+      "referenceSamples": 205,
+      "candidateSamples": 302,
+      "referenceAdmitted": false,
+      "candidateAdmitted": false,
+      "nested": false
+    },
+    {
+      "label": "initial private admission",
+      "referenceWall": 0.154491195,
+      "candidateWall": 0.151259412,
+      "deltaWall": -0.003231782999999988,
+      "referenceCpu": 0.154488499,
+      "candidateCpu": 0.151263873,
+      "deltaCpu": -0.003224626000000008,
+      "referenceSamples": 3,
+      "candidateSamples": 3,
+      "referenceAdmitted": false,
+      "candidateAdmitted": false,
+      "nested": false
+    },
+    {
+      "label": "initial optimizer",
+      "referenceWall": 7.780021815,
+      "candidateWall": 7.553630723,
+      "deltaWall": -0.22639109199999918,
+      "referenceCpu": 7.780018501,
+      "candidateCpu": 7.553648543,
+      "deltaCpu": -0.22636995799999937,
+      "referenceSamples": 241,
+      "candidateSamples": 234,
+      "referenceAdmitted": false,
+      "candidateAdmitted": false,
+      "nested": false
+    },
+    {
+      "label": "first independent verifier",
+      "referenceWall": 3.221417313,
+      "candidateWall": 3.062346749,
+      "deltaWall": -0.15907056399999986,
+      "referenceCpu": 3.221421097,
+      "candidateCpu": 3.06237807,
+      "deltaCpu": -0.15904302700000006,
+      "referenceSamples": 99,
+      "candidateSamples": 94,
+      "referenceAdmitted": false,
+      "candidateAdmitted": false,
+      "nested": false
+    },
+    {
+      "label": "observer permission",
+      "referenceWall": 0.215416235,
+      "candidateWall": 0.763091636,
+      "deltaWall": 0.547675401,
+      "referenceCpu": 0.215422868,
+      "candidateCpu": 0.763093483,
+      "deltaCpu": 0.547670615,
+      "referenceSamples": 4,
+      "candidateSamples": 22,
+      "referenceAdmitted": false,
+      "candidateAdmitted": false,
+      "nested": false
+    },
+    {
+      "label": "observer discovery",
+      "referenceWall": 0.365092593,
+      "candidateWall": 0.491227321,
+      "deltaWall": 0.12613472799999997,
+      "referenceCpu": 0.365088633,
+      "candidateCpu": 0.49120502,
+      "deltaCpu": 0.126116387,
+      "referenceSamples": 10,
+      "candidateSamples": 13,
+      "referenceAdmitted": false,
+      "candidateAdmitted": false,
+      "nested": false
+    },
+    {
+      "label": "observer composition and selected final admission",
+      "referenceWall": 4.501464491,
+      "candidateWall": 4.372941048,
+      "deltaWall": -0.12852344299999974,
+      "referenceCpu": 4.501478558,
+      "candidateCpu": 4.372967815,
+      "deltaCpu": -0.12851074299999965,
+      "referenceSamples": 138,
+      "candidateSamples": 135,
+      "referenceAdmitted": false,
+      "candidateAdmitted": false,
+      "nested": false
+    },
+    {
+      "label": "output opening",
+      "referenceWall": 0.000055238,
+      "candidateWall": 0.000064599,
+      "deltaWall": 0.000009360999999999994,
+      "referenceCpu": 0.000054653,
+      "candidateCpu": 0.000063869,
+      "deltaCpu": 0.000009215999999999994,
+      "referenceSamples": 0,
+      "candidateSamples": 0,
+      "referenceAdmitted": false,
+      "candidateAdmitted": false,
+      "nested": false
+    },
+    {
+      "label": "registry preparation",
+      "referenceWall": 3.295090697,
+      "candidateWall": 3.39499181,
+      "deltaWall": 0.09990111300000004,
+      "referenceCpu": 3.295088779,
+      "candidateCpu": 3.394990534,
+      "deltaCpu": 0.09990175500000031,
+      "referenceSamples": 101,
+      "candidateSamples": 104,
+      "referenceAdmitted": false,
+      "candidateAdmitted": false,
+      "nested": false
+    },
+    {
+      "label": "registry finalization",
+      "referenceWall": 0.016303488,
+      "candidateWall": 0.015474431,
+      "deltaWall": -0.0008290570000000011,
+      "referenceCpu": 0.016304107,
+      "candidateCpu": 0.01547525,
+      "deltaCpu": -0.0008288570000000023,
+      "referenceSamples": 0,
+      "candidateSamples": 0,
+      "referenceAdmitted": false,
+      "candidateAdmitted": false,
+      "nested": false
+    },
+    {
+      "label": "render/output and teardown until milestone exit",
+      "referenceWall": 8.653004196,
+      "candidateWall": 8.743679476,
+      "deltaWall": 0.09067528000000102,
+      "referenceCpu": 8.586533066,
+      "candidateCpu": 8.718824059,
+      "deltaCpu": 0.1322909929999998,
+      "referenceSamples": 257,
+      "candidateSamples": 261,
+      "referenceAdmitted": false,
+      "candidateAdmitted": false,
+      "nested": false
+    },
+    {
+      "label": "conditional final verification (nested)",
+      "referenceWall": 3.427818829,
+      "candidateWall": 3.251537544,
+      "deltaWall": -0.17628128499999995,
+      "referenceCpu": 3.427851357,
+      "candidateCpu": 3.251579993,
+      "deltaCpu": -0.1762713640000002,
+      "referenceSamples": 105,
+      "candidateSamples": 100,
+      "referenceAdmitted": false,
+      "candidateAdmitted": false,
+      "nested": true
+    }
+  ],
+  "descriptiveStageSamples": [
+    {
+      "label": "parse/load",
+      "referenceSamples": 101,
+      "candidateSamples": 256,
+      "quantitativeProfileAdmitted": false,
+      "referenceOwners": [
+        {
+          "name": "f_eq",
+          "samples": 11
+        },
+        {
+          "name": "f_atom_base",
+          "samples": 5
+        },
+        {
+          "name": "f_prec",
+          "samples": 5
+        },
+        {
+          "name": "f_find",
+          "samples": 5
+        },
+        {
+          "name": "f_reserved",
+          "samples": 4
+        },
+        {
+          "name": "f_pattern_sub",
+          "samples": 4
+        },
+        {
+          "name": "f_ascii_char_eq",
+          "samples": 3
+        },
+        {
+          "name": "f_pair_op",
+          "samples": 3
+        },
+        {
+          "name": "f_mark_rows",
+          "samples": 3
+        },
+        {
+          "name": "f_grow_base",
+          "samples": 3
+        },
+        {
+          "name": "f_context_higher",
+          "samples": 3
+        },
+        {
+          "name": "f_context_material_deferred",
+          "samples": 3
+        }
+      ],
+      "candidateOwners": [
+        {
+          "name": "f_pattern_sub",
+          "samples": 27
+        },
+        {
+          "name": "f_eq",
+          "samples": 25
+        },
+        {
+          "name": "f_context_material_deferred",
+          "samples": 15
+        },
+        {
+          "name": "f_pattern_subs",
+          "samples": 15
+        },
+        {
+          "name": "f_context_higher",
+          "samples": 13
+        },
+        {
+          "name": "ffw_walk_existing",
+          "samples": 13
+        },
+        {
+          "name": null,
+          "samples": 11
+        },
+        {
+          "name": "fpe_term",
+          "samples": 10
+        },
+        {
+          "name": "f_context_material_done",
+          "samples": 9
+        },
+        {
+          "name": "f_context_material_children",
+          "samples": 8
+        },
+        {
+          "name": "k_with_children",
+          "samples": 6
+        },
+        {
+          "name": "f_find",
+          "samples": 5
+        }
+      ],
+      "referenceLeaves": [
+        {
+          "name": "p113d_FID_$p118borrow.read.p88_string_eq_go",
+          "samples": 14
+        },
+        {
+          "name": "term_drop",
+          "samples": 11
+        },
+        {
+          "name": null,
+          "samples": 8
+        },
+        {
+          "name": "work_loop.constprop.0",
+          "samples": 7
+        },
+        {
+          "name": "span_fade",
+          "samples": 7
+        },
+        {
+          "name": "p125_rt_take2",
+          "samples": 5
+        }
+      ],
+      "candidateLeaves": [
+        {
+          "name": "term_drop",
+          "samples": 32
+        },
+        {
+          "name": null,
+          "samples": 17
+        },
+        {
+          "name": "ctr_take",
+          "samples": 17
+        },
+        {
+          "name": "p111_rt_sink",
+          "samples": 16
+        },
+        {
+          "name": "span_fade",
+          "samples": 16
+        },
+        {
+          "name": "work_loop.constprop.0",
+          "samples": 15
+        }
+      ],
+      "limits": "Top lists are truncated. Absence from a list does not mean zero samples. Counts describe observations, not precise cost allocations."
+    },
+    {
+      "label": "checking/publication",
+      "referenceSamples": 52,
+      "candidateSamples": 196,
+      "quantitativeProfileAdmitted": false,
+      "referenceOwners": [
+        {
+          "name": "index_remove",
+          "samples": 5
+        },
+        {
+          "name": "lookup",
+          "samples": 4
+        },
+        {
+          "name": "norm_exact_head",
+          "samples": 3
+        },
+        {
+          "name": "p88_string_eq",
+          "samples": 2
+        },
+        {
+          "name": "p131i_insert",
+          "samples": 2
+        },
+        {
+          "name": "check_node",
+          "samples": 2
+        },
+        {
+          "name": "ki_pair",
+          "samples": 2
+        },
+        {
+          "name": null,
+          "samples": 2
+        },
+        {
+          "name": "subst_node",
+          "samples": 2
+        },
+        {
+          "name": "subst_terms",
+          "samples": 2
+        },
+        {
+          "name": "constructor_exists",
+          "samples": 1
+        },
+        {
+          "name": "index_hash",
+          "samples": 1
+        }
+      ],
+      "candidateOwners": [
+        {
+          "name": "lookup",
+          "samples": 25
+        },
+        {
+          "name": "subst_node",
+          "samples": 14
+        },
+        {
+          "name": "tele_check_done",
+          "samples": 8
+        },
+        {
+          "name": "subst_terms",
+          "samples": 7
+        },
+        {
+          "name": "norm_match",
+          "samples": 7
+        },
+        {
+          "name": "check_ctr_found",
+          "samples": 7
+        },
+        {
+          "name": null,
+          "samples": 6
+        },
+        {
+          "name": "ki_args",
+          "samples": 6
+        },
+        {
+          "name": "check_node",
+          "samples": 6
+        },
+        {
+          "name": "infer_app_type",
+          "samples": 5
+        },
+        {
+          "name": "norm_ref",
+          "samples": 5
+        },
+        {
+          "name": "check_ctr",
+          "samples": 5
+        }
+      ],
+      "referenceLeaves": [
+        {
+          "name": "term_drop",
+          "samples": 8
+        },
+        {
+          "name": "span_fade",
+          "samples": 6
+        },
+        {
+          "name": "p113d_FID_$p118borrow.read.p88_string_eq_go",
+          "samples": 4
+        },
+        {
+          "name": null,
+          "samples": 3
+        },
+        {
+          "name": "p111_rt_sink",
+          "samples": 3
+        },
+        {
+          "name": "heap_alloc",
+          "samples": 2
+        }
+      ],
+      "candidateLeaves": [
+        {
+          "name": "term_drop",
+          "samples": 19
+        },
+        {
+          "name": "span_fade",
+          "samples": 17
+        },
+        {
+          "name": "p113d_FID_$p118borrow.read.p88_string_eq_go",
+          "samples": 15
+        },
+        {
+          "name": "p111_rt_ctor",
+          "samples": 10
+        },
+        {
+          "name": "work_loop.constprop.0",
+          "samples": 9
+        },
+        {
+          "name": "p111_rt_special_ctor",
+          "samples": 9
+        }
+      ],
+      "limits": "Top lists are truncated. Absence from a list does not mean zero samples. Counts describe observations, not precise cost allocations."
+    },
+    {
+      "label": "annotation/reach",
+      "referenceSamples": 19,
+      "candidateSamples": 132,
+      "quantitativeProfileAdmitted": false,
+      "referenceOwners": [
+        {
+          "name": "lookup",
+          "samples": 3
+        },
+        {
+          "name": "subst",
+          "samples": 2
+        },
+        {
+          "name": "subst_node",
+          "samples": 2
+        },
+        {
+          "name": "kr_refs",
+          "samples": 1
+        },
+        {
+          "name": "kr_push",
+          "samples": 1
+        },
+        {
+          "name": "ka_app_spine_root",
+          "samples": 1
+        },
+        {
+          "name": "ka_app_spine_finish",
+          "samples": 1
+        },
+        {
+          "name": "core_beta",
+          "samples": 1
+        },
+        {
+          "name": "wnf",
+          "samples": 1
+        },
+        {
+          "name": "norm_node_ref",
+          "samples": 1
+        },
+        {
+          "name": "norm_node_let",
+          "samples": 1
+        },
+        {
+          "name": "ka_annotated",
+          "samples": 1
+        }
+      ],
+      "candidateOwners": [
+        {
+          "name": "lookup",
+          "samples": 20
+        },
+        {
+          "name": "subst_node",
+          "samples": 12
+        },
+        {
+          "name": "norm_node_app",
+          "samples": 7
+        },
+        {
+          "name": "ka_node",
+          "samples": 7
+        },
+        {
+          "name": "kr_refs",
+          "samples": 6
+        },
+        {
+          "name": "norm_match",
+          "samples": 6
+        },
+        {
+          "name": "norm_node_let",
+          "samples": 5
+        },
+        {
+          "name": "subst",
+          "samples": 5
+        },
+        {
+          "name": "core_subst_stable",
+          "samples": 5
+        },
+        {
+          "name": "norm_ref",
+          "samples": 4
+        },
+        {
+          "name": "norm_node_ann",
+          "samples": 4
+        },
+        {
+          "name": "norm_eval_node",
+          "samples": 4
+        }
+      ],
+      "referenceLeaves": [
+        {
+          "name": "p113d_FID_$p118borrow.read.p88_string_eq_go",
+          "samples": 3
+        },
+        {
+          "name": "p111_rt_sink",
+          "samples": 3
+        },
+        {
+          "name": "term_drop",
+          "samples": 2
+        },
+        {
+          "name": "ctr_take",
+          "samples": 1
+        },
+        {
+          "name": "heap_alloc",
+          "samples": 1
+        },
+        {
+          "name": "p111_rt_take",
+          "samples": 1
+        }
+      ],
+      "candidateLeaves": [
+        {
+          "name": "p113d_FID_$p118borrow.read.p88_string_eq_go",
+          "samples": 26
+        },
+        {
+          "name": "term_drop",
+          "samples": 13
+        },
+        {
+          "name": "span_fade",
+          "samples": 12
+        },
+        {
+          "name": null,
+          "samples": 9
+        },
+        {
+          "name": "p111_rt_special_ctor",
+          "samples": 8
+        },
+        {
+          "name": "p111_rt_sink",
+          "samples": 6
+        }
+      ],
+      "limits": "Top lists are truncated. Absence from a list does not mean zero samples. Counts describe observations, not precise cost allocations."
+    },
+    {
+      "label": "layout check",
+      "referenceSamples": 9,
+      "candidateSamples": 48,
+      "quantitativeProfileAdmitted": false,
+      "referenceOwners": [
+        {
+          "name": "jl_node",
+          "samples": 3
+        },
+        {
+          "name": "p142j_visit",
+          "samples": 1
+        },
+        {
+          "name": "jl_term",
+          "samples": 1
+        },
+        {
+          "name": "j_layout_array_intrinsic",
+          "samples": 1
+        },
+        {
+          "name": "j_word",
+          "samples": 1
+        },
+        {
+          "name": "p88_string_eq",
+          "samples": 1
+        },
+        {
+          "name": "lookup",
+          "samples": 1
+        }
+      ],
+      "candidateOwners": [
+        {
+          "name": "p88_string_eq",
+          "samples": 7
+        },
+        {
+          "name": "lookup",
+          "samples": 6
+        },
+        {
+          "name": "j_literal_ctor",
+          "samples": 5
+        },
+        {
+          "name": "jl_node",
+          "samples": 4
+        },
+        {
+          "name": "j_layout_array_intrinsic",
+          "samples": 3
+        },
+        {
+          "name": "norm_node_ref",
+          "samples": 3
+        },
+        {
+          "name": "jl_term",
+          "samples": 3
+        },
+        {
+          "name": "j_u32",
+          "samples": 3
+        },
+        {
+          "name": "j_word",
+          "samples": 2
+        },
+        {
+          "name": "norm_ref",
+          "samples": 2
+        },
+        {
+          "name": "jl_app",
+          "samples": 1
+        },
+        {
+          "name": "has_name",
+          "samples": 1
+        }
+      ],
+      "referenceLeaves": [
+        {
+          "name": "p113d_FID_$p118borrow.read.p88_string_eq_go",
+          "samples": 3
+        },
+        {
+          "name": "span_fade",
+          "samples": 2
+        },
+        {
+          "name": "term_drop",
+          "samples": 2
+        },
+        {
+          "name": "p111_rt_jump",
+          "samples": 1
+        },
+        {
+          "name": "p111_FID_$p111.k.1626619",
+          "samples": 1
+        }
+      ],
+      "candidateLeaves": [
+        {
+          "name": "p113d_FID_$p118borrow.read.p88_string_eq_go",
+          "samples": 7
+        },
+        {
+          "name": "span_fade",
+          "samples": 5
+        },
+        {
+          "name": "term_drop",
+          "samples": 5
+        },
+        {
+          "name": "ctr_take",
+          "samples": 3
+        },
+        {
+          "name": "p111_rt_sink",
+          "samples": 3
+        },
+        {
+          "name": "p118_rt_borrow_scalar_safe",
+          "samples": 2
+        }
+      ],
+      "limits": "Top lists are truncated. Absence from a list does not mean zero samples. Counts describe observations, not precise cost allocations."
+    },
+    {
+      "label": "erasure/finalization",
+      "referenceSamples": 21,
+      "candidateSamples": 110,
+      "quantitativeProfileAdmitted": false,
+      "referenceOwners": [
+        {
+          "name": "nc_erase",
+          "samples": 4
+        },
+        {
+          "name": "norm_max_book",
+          "samples": 3
+        },
+        {
+          "name": "norm_eval",
+          "samples": 2
+        },
+        {
+          "name": "norm_node_ann",
+          "samples": 2
+        },
+        {
+          "name": "norm_eval_node",
+          "samples": 2
+        },
+        {
+          "name": "norm_node_ref",
+          "samples": 2
+        },
+        {
+          "name": null,
+          "samples": 2
+        },
+        {
+          "name": "lookup",
+          "samples": 1
+        },
+        {
+          "name": "nq_layout_eval",
+          "samples": 1
+        },
+        {
+          "name": "nc_erase_annotated",
+          "samples": 1
+        },
+        {
+          "name": "nb_contains",
+          "samples": 1
+        }
+      ],
+      "candidateOwners": [
+        {
+          "name": "lookup",
+          "samples": 22
+        },
+        {
+          "name": "nc_erase",
+          "samples": 14
+        },
+        {
+          "name": "norm_max_book",
+          "samples": 10
+        },
+        {
+          "name": "subst_node",
+          "samples": 6
+        },
+        {
+          "name": "subst",
+          "samples": 5
+        },
+        {
+          "name": "nc_erase_annotated",
+          "samples": 5
+        },
+        {
+          "name": "nc_erase_args",
+          "samples": 5
+        },
+        {
+          "name": "norm_node_let",
+          "samples": 4
+        },
+        {
+          "name": "subst_terms",
+          "samples": 4
+        },
+        {
+          "name": "norm_eval_node",
+          "samples": 4
+        },
+        {
+          "name": null,
+          "samples": 4
+        },
+        {
+          "name": "norm_node_app",
+          "samples": 3
+        }
+      ],
+      "referenceLeaves": [
+        {
+          "name": "term_drop",
+          "samples": 3
+        },
+        {
+          "name": "p113d_FID_$p118borrow.read.p88_string_eq_go",
+          "samples": 3
+        },
+        {
+          "name": "p113d_FID_$p118borrow.read.p98_tag_eq",
+          "samples": 2
+        },
+        {
+          "name": "p111_FID_$direct.norm_node_ann",
+          "samples": 2
+        },
+        {
+          "name": "work_loop.constprop.0",
+          "samples": 2
+        },
+        {
+          "name": "p113d_FID_$p118.trmc.$direct.norm_join",
+          "samples": 1
+        }
+      ],
+      "candidateLeaves": [
+        {
+          "name": "term_drop",
+          "samples": 20
+        },
+        {
+          "name": "span_fade",
+          "samples": 12
+        },
+        {
+          "name": "p113d_FID_$p118borrow.read.p88_string_eq_go",
+          "samples": 8
+        },
+        {
+          "name": "p118_rt_borrow_scalar_safe",
+          "samples": 6
+        },
+        {
+          "name": "p111_rt_sink",
+          "samples": 6
+        },
+        {
+          "name": "work_loop.constprop.0",
+          "samples": 6
+        }
+      ],
+      "limits": "Top lists are truncated. Absence from a list does not mean zero samples. Counts describe observations, not precise cost allocations."
+    },
+    {
+      "label": "static preparation",
+      "referenceSamples": 20,
+      "candidateSamples": 52,
+      "quantitativeProfileAdmitted": false,
+      "referenceOwners": [
+        {
+          "name": "String.eq",
+          "samples": 6
+        },
+        {
+          "name": "String.append",
+          "samples": 3
+        },
+        {
+          "name": "p112s_intern",
+          "samples": 2
+        },
+        {
+          "name": "nc_compact_plain",
+          "samples": 1
+        },
+        {
+          "name": "p112s_term",
+          "samples": 1
+        },
+        {
+          "name": "nb_contains",
+          "samples": 1
+        },
+        {
+          "name": "ns_static_scalar",
+          "samples": 1
+        },
+        {
+          "name": null,
+          "samples": 1
+        },
+        {
+          "name": "ns_body",
+          "samples": 1
+        },
+        {
+          "name": "p112s_constructor",
+          "samples": 1
+        },
+        {
+          "name": "nc_compact",
+          "samples": 1
+        },
+        {
+          "name": "nc_compact_list",
+          "samples": 1
+        }
+      ],
+      "candidateOwners": [
+        {
+          "name": "String.eq",
+          "samples": 7
+        },
+        {
+          "name": "p112s_term",
+          "samples": 5
+        },
+        {
+          "name": "nb_contains",
+          "samples": 5
+        },
+        {
+          "name": "p112s_constructor",
+          "samples": 3
+        },
+        {
+          "name": null,
+          "samples": 3
+        },
+        {
+          "name": "ns_ctor_known",
+          "samples": 3
+        },
+        {
+          "name": "nc_compact_ctor",
+          "samples": 3
+        },
+        {
+          "name": "k_rebuild",
+          "samples": 3
+        },
+        {
+          "name": "ns_static_scalar",
+          "samples": 2
+        },
+        {
+          "name": "nc_compact_list",
+          "samples": 2
+        },
+        {
+          "name": "nc_compact",
+          "samples": 2
+        },
+        {
+          "name": "nc_word_literal",
+          "samples": 2
+        }
+      ],
+      "referenceLeaves": [
+        {
+          "name": "p113d_FID_$p118borrow.read.p88_string_eq_go",
+          "samples": 3
+        },
+        {
+          "name": "term_drop",
+          "samples": 2
+        },
+        {
+          "name": "p113d_FID_$direct.String.eq",
+          "samples": 2
+        },
+        {
+          "name": null,
+          "samples": 2
+        },
+        {
+          "name": "span_fade",
+          "samples": 1
+        },
+        {
+          "name": "p114r_FID_$direct.nb_contains",
+          "samples": 1
+        }
+      ],
+      "candidateLeaves": [
+        {
+          "name": "work_loop.constprop.0",
+          "samples": 5
+        },
+        {
+          "name": "p113d_FID_$p118borrow.read.p88_string_eq_go",
+          "samples": 5
+        },
+        {
+          "name": "term_drop",
+          "samples": 5
+        },
+        {
+          "name": "p111_set_regs",
+          "samples": 3
+        },
+        {
+          "name": "p111_rt_jump",
+          "samples": 3
+        },
+        {
+          "name": "p125_rt_take2",
+          "samples": 3
+        }
+      ],
+      "limits": "Top lists are truncated. Absence from a list does not mean zero samples. Counts describe observations, not precise cost allocations."
+    },
+    {
+      "label": "raw generic/private lowering",
+      "referenceSamples": 205,
+      "candidateSamples": 302,
+      "quantitativeProfileAdmitted": false,
+      "referenceOwners": [
+        {
+          "name": "nc_uses_term",
+          "samples": 13
+        },
+        {
+          "name": "String.eq",
+          "samples": 11
+        },
+        {
+          "name": "p111_op_id",
+          "samples": 10
+        },
+        {
+          "name": "lookup",
+          "samples": 8
+        },
+        {
+          "name": "p143o_range_env",
+          "samples": 6
+        },
+        {
+          "name": "nq_layout_subst",
+          "samples": 6
+        },
+        {
+          "name": null,
+          "samples": 6
+        },
+        {
+          "name": "nc_uses_list",
+          "samples": 5
+        },
+        {
+          "name": "ns_body",
+          "samples": 5
+        },
+        {
+          "name": "nu_add",
+          "samples": 4
+        },
+        {
+          "name": "nc_native_primitive",
+          "samples": 4
+        },
+        {
+          "name": "p113n_canonical",
+          "samples": 4
+        }
+      ],
+      "candidateOwners": [
+        {
+          "name": "nc_uses_term",
+          "samples": 27
+        },
+        {
+          "name": "lookup",
+          "samples": 14
+        },
+        {
+          "name": null,
+          "samples": 13
+        },
+        {
+          "name": "nc_uses_list",
+          "samples": 11
+        },
+        {
+          "name": "p112m_fresh_terms",
+          "samples": 11
+        },
+        {
+          "name": "nq_layout_subst",
+          "samples": 10
+        },
+        {
+          "name": "String.eq",
+          "samples": 10
+        },
+        {
+          "name": "nw_same",
+          "samples": 10
+        },
+        {
+          "name": "ns_body",
+          "samples": 9
+        },
+        {
+          "name": "norm_exact_head",
+          "samples": 9
+        },
+        {
+          "name": "subst_node",
+          "samples": 9
+        },
+        {
+          "name": "String.append",
+          "samples": 7
+        }
+      ],
+      "referenceLeaves": [
+        {
+          "name": "p113d_FID_$p118borrow.read.p88_string_eq_go",
+          "samples": 19
+        },
+        {
+          "name": "span_fade",
+          "samples": 16
+        },
+        {
+          "name": null,
+          "samples": 15
+        },
+        {
+          "name": "term_drop",
+          "samples": 14
+        },
+        {
+          "name": "work_loop.constprop.0",
+          "samples": 10
+        },
+        {
+          "name": "p111_rt_sink",
+          "samples": 9
+        }
+      ],
+      "candidateLeaves": [
+        {
+          "name": "term_drop",
+          "samples": 29
+        },
+        {
+          "name": "p113d_FID_$p118borrow.read.p88_string_eq_go",
+          "samples": 18
+        },
+        {
+          "name": "p111_rt_sink",
+          "samples": 18
+        },
+        {
+          "name": "span_fade",
+          "samples": 18
+        },
+        {
+          "name": null,
+          "samples": 13
+        },
+        {
+          "name": "work_loop.constprop.0",
+          "samples": 13
+        }
+      ],
+      "limits": "Top lists are truncated. Absence from a list does not mean zero samples. Counts describe observations, not precise cost allocations."
+    }
+  ],
+  "sourceTrace": [
+    {
+      "file": "selfhost/build/phase147/integrated-source03/compiler.bend",
+      "line": 13630,
+      "symbol": "f_char_decoded",
+      "observed": "Character syntax becomes Chr containing a U32 literal."
+    },
+    {
+      "file": "selfhost/build/phase147/integrated-source03/compiler.bend",
+      "line": 11477,
+      "symbol": "f_context_pattern",
+      "observed": "Pattern processing forces core literals through core_literal_step and recursively processes constructor children."
+    },
+    {
+      "file": "selfhost/build/phase147/integrated-source03/compiler.bend",
+      "line": 5998,
+      "symbol": "core_literal_word / core_literal_step",
+      "observed": "A non-Nat/non-String word literal expands to 32 WCon bit constructors ending WNil."
+    },
+    {
+      "file": "selfhost/build/phase147/integrated-source03/compiler.bend",
+      "line": 13003,
+      "symbol": "ff_match",
+      "observed": "Match compilation dispatches a column, creates constructor-hit rows and separately recurses over missed rows."
+    },
+    {
+      "file": "selfhost/build/phase147/integrated-source03/compiler.bend",
+      "line": 13049,
+      "symbol": "ff_fields_done / ff_hit_done",
+      "observed": "Hit and miss subtrees are generated by recursive ff_match calls."
+    },
+    {
+      "file": "selfhost/build/phase147/integrated-source03/compiler.bend",
+      "line": 13172,
+      "symbol": "f_hit_row",
+      "observed": "Constructs rewritten row bodies with f_pattern_sub; variable-hit rows can involve nested substitutions."
+    },
+    {
+      "file": "selfhost/build/phase147/integrated-source03/compiler.bend",
+      "line": 13225,
+      "symbol": "f_pattern_sub / f_pattern_subs",
+      "observed": "Recursively rebuilds children while substituting pattern binders; candidate parse has 27 / 15 observed active-owner samples."
+    },
+    {
+      "file": "selfhost/build/phase147/integrated-source03/compiler.bend",
+      "line": 11712,
+      "symbol": "f_context_definition_done",
+      "observed": "The flattened definition is passed through f_context_materialize."
+    },
+    {
+      "file": "selfhost/build/phase147/integrated-source03/compiler.bend",
+      "line": 13880,
+      "symbol": "f_context_higher / material_children",
+      "observed": "Traverses/rebuilds eager and deferred term children and handles applied lambda materialization."
+    },
+    {
+      "file": "selfhost/build/phase147/integrated-source03/compiler.bend",
+      "line": 14008,
+      "symbol": "ffw_walk_existing",
+      "observed": "Freshens variables and reconstructs term children using an explicit continuation stack."
+    },
+    {
+      "file": "selfhost/build/phase147/integrated-source03/compiler.bend",
+      "line": 14793,
+      "symbol": "fpe_term",
+      "observed": "Scans completed terms recursively for errors/import-law refusal."
+    },
+    {
+      "file": "selfhost/build/phase147/integrated-source03/compiler.bend",
+      "line": 5773,
+      "symbol": "lookup",
+      "observed": "Queries cached indexes or declaration lists; active-owner samples rise in checking/annotation/erasure."
+    },
+    {
+      "file": "selfhost/build/phase147/integrated-source03/compiler.bend",
+      "line": 5846,
+      "symbol": "subst_node",
+      "observed": "Rebuilds recursively substituted term children."
+    },
+    {
+      "file": "selfhost/build/phase147/integrated-source03/compiler.bend",
+      "line": 31706,
+      "symbol": "nc_uses_term",
+      "observed": "Collects variable IDs by visiting term children; 27 candidate lowering samples versus 13 reference."
+    },
+    {
+      "file": "selfhost/build/phase147/integrated-source03/compiler.bend",
+      "line": 42905,
+      "symbol": "p112m_fresh_terms",
+      "observed": "Recursively checks identifier freshness in term trees; appears among candidate lowering owners."
+    }
+  ],
+  "interpretation": {
+    "supported": "Seven frontend/preparation/lowering stages explain 21.4298s of the 21.9718s diagnostic wall increase. Initial optimization, independent verification, registry preparation and output have essentially no corresponding positive increase.",
+    "hypothesis": "Literal/multi-column pattern expansion amplifies intermediate term processing, causing repeated substitution, materialization, freshening, checking, normalization, erasure and lowering traversals. Small final QBE growth does not bound transient term work.",
+    "notYetEstablished": "No per-input-definition timing or intermediate-node counts were collected. The capture does not prove that p150l_other and p150l_symbol alone account for the penalty, or establish asymptotic behavior.",
+    "physicalLeaves": "Extra stages repeatedly sample term_drop, span_fade, ctr_take, runtime transport and borrowed string/tag comparison. These support traversal/ownership costs, not one exclusive function bottleneck; active owners are not logical caller stacks.",
+    "comparisonBoundary": "Sample pair uses the same old compiler object for both inputs and regular-file stdout, without downstream QBE machine construction. Ordinary native acquisition overlaps emission with QBE. Their deltas are directionally consistent, but subtracting the clock totals does not measure QBE cost or instrumentation overhead.",
+    "clockLimits": "Stage values are diagnostic dispatch-entry clocks. Include continuation and ownership work; final interval stops at the observer exit hook. Exclude optional nested verification from sums. No confidence interval or clean stage-time claim.",
+    "samplingLimits": "Both whole captures pass the maintained quality thresholds, but all individual intervals have fewer than 500 samples. Every interval quantitativeProfileAdmitted is false. Owner/leaf counts remain descriptive; no interval percentages are promoted to quantitative evidence.",
+    "parserBoundary": "These are acquisition costs of compiling the lexer code. They are separate from runtime execution of the improved lexer and the standalone complete-parser gain."
+  },
+  "nextSmallestFalsifier": {
+    "completed": {
+      "completed": {
+        "existingCandidate": "selfhost/build/phase150/variants01/grouped.bend",
+        "changedDeclarations": [
+          "p150l_other",
+          "p150l_symbol"
+        ],
+        "operation": "Use the root-owned grouped lexer native probe with the same parent compiler, assets and timing scope, then exact token controls. Compare acquisition against the original candidate probe; do not demand equal generated SSA because the source changes.",
+        "predictedResult": "If the two multi-column pattern matrices dominate transient expansion, explicit first-character factoring should materially reduce acquisition while preserving exact lexer results.",
+        "rejection": "If acquisition remains high, reject the narrow two-matrix explanation; broader character-literal expansion and other new helpers remain possible. Do not infer a compiler optimizer regression from this profile or escalate immediately to a full compiler build.",
+        "nextBoundaryIfPositive": "Only after the probe succeeds, use the same complete parser source assembly with the grouped module to measure the acquisition/runtime tradeoff directly."
+      },
+      "pending": {
+        "candidate": "Scalar Char-test variant requested from parser agent; no result at this analysis update.",
+        "operation": "Retain direct String unpacking and fused metadata, replace literal Char-pattern dispatch with scalar equality tests throughout the experimental lexer. Start with the same small native probe acquisition and exact token/graph controls.",
+        "prediction": "If constructor-literal expansion is a broader cause than the two multi-column matrices, this should reduce the remaining probe acquisition cost while preserving lexer outputs.",
+        "nextBoundary": "Only a successful cheap probe justifies the corresponding complete-parser acquisition/runtime comparison. If that tradeoff remains unresolved, retain the best candidate without promotion."
+      }
+    },
+    "future": "Start with a small fixed-result numeric dispatch such as p88_roles, preserving exact outputs/fallback and measuring acquisition plus resulting runtime. General frontend compact literal guards require nondependent eligibility and preservation of constructor refinement, typing refusals and affine consumption; no full frontend rewrite or whole-build projection follows from the present results."
+  },
+  "groupedProbeFollowup": {
+    "acquisitions": [
+      {
+        "variant": "lexer-native01",
+        "report": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/lexer-native01/report.json",
+          "bytes": 17052,
+          "sha256": "c79d846eeee31e27c3e0509037a526abaee507d7400f8093f2217ed79e7a47a9"
+        },
+        "complete": true,
+        "wallSeconds": 30.76569452881813,
+        "emitAndQbeSeconds": 30.460912538692355,
+        "source": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/lexer-source01/probe.bend",
+          "bytes": 34444,
+          "sha256": "e58e258772faa41d334f5e6b7d050d7e7ae4e910e6686d03a7c1c49ac69bedcf"
+        },
+        "retainedIR": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/lexer-native01/program.ssa",
+          "bytes": 3421007,
+          "sha256": "b4041239ff079f5dee8b2a9a34b755077f06a78445906c5280c449f9a92ed98e"
+        }
+      },
+      {
+        "variant": "lexer-grouped-native01",
+        "report": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/lexer-grouped-native01/report.json",
+          "bytes": 17199,
+          "sha256": "94250c1bcb59b2badf7803bb5d7c9de17d8789c6eb641746f7b05b74cecaa7b7"
+        },
+        "complete": true,
+        "wallSeconds": 24.18562924535945,
+        "emitAndQbeSeconds": 23.85553253116086,
+        "source": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/source-grouped01/probe.bend",
+          "bytes": 35138,
+          "sha256": "7ee45b4c62a0543c6b57ede4b3754098d534ab6df77d1319c662bd08ec6b2c86"
+        },
+        "retainedIR": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/lexer-grouped-native01/program.ssa",
+          "bytes": 3310304,
+          "sha256": "bbfab372dd5978d044f33e13d7223144050dc15c2414e5702af4335604f84eed"
+        }
+      }
+    ],
+    "wallSavingSeconds": 6.58006528345868,
+    "wallSavingFraction": 0.21387670209411824,
+    "scope": "One acquisition each of the same lexer probe with only p150l_other and p150l_symbol factored. Not a grouped full-parser acquisition or runtime result.",
+    "semanticEvidence": "Coordinator reports 15 complete graph JSON oracles pass; native control execution was still in progress at this analysis update.",
+    "interpretation": "Partial support for source-shape cost: first-character factoring reduces observed acquisition by 6.580s (21.4%). It does not fully explain the original full-parser acquisition penalty."
+  },
+  "generalOpportunity": {
+    "status": "Hypothesis, not an implementation proposal or qualification result.",
+    "idea": "Preserve compact scalar literals longer through eligible frontend pattern compilation to avoid 32-bit constructor expansion and repeated generic-term traversal.",
+    "obligations": [
+      "Dependent matches require the same constructor refinement, branch substitutions and accepted/rejected typing behavior; scalar comparisons cannot universally replace constructor evidence.",
+      "Preserve coverage and first-match priority, affine quantities and ownership, variable freshness, source spans and error precedence.",
+      "Representation and proof/kernel interfaces must remain coherent. A legal optimization needs a stated eligibility rule and independent semantic evidence, not only smaller terms or matching generated output on positive examples."
+    ],
+    "scope": "No claim that QBE construction caused the measured penalty, and no reason here to weaken final verification."
+  },
+  "scalarProbeFollowup": {
+    "acquisition": {
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/lexer-scalar-native01/report.json",
+        "bytes": 17160,
+        "sha256": "9cb346a037e1c7c2379aca2c9c1219ed77a16492998de7500afdeae8897024f3"
+      },
+      "complete": true,
+      "wallSeconds": 8.599040682893246,
+      "emitAndQbeSeconds": 8.273725249804556,
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/source-scalar01/probe.bend",
+        "bytes": 35726,
+        "sha256": "1cf48726837d3faf5d0787e6874a8b87bcfa5c0075f46f38f26acef25fe3462c"
+      },
+      "retainedIR": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/lexer-scalar-native01/program.ssa",
+        "bytes": 3356259,
+        "sha256": "b4c6601dbcb730a85dcda74c9fb584994e4d0f6038f0ffe1dde280fe473a960d"
+      }
+    },
+    "comparisonWallSeconds": {
+      "literal": 30.76569452881813,
+      "grouped": 24.18562924535945,
+      "scalar": 8.599040682893246
+    },
+    "versusLiteralSavingFraction": 0.7204990553735573,
+    "versusGroupedSavingFraction": 0.6444566070348092,
+    "acquisitionLimits": "One native build per proxy variant; no confidence interval or general cost-per-pattern inference.",
+    "lexicalRuntime": {
+      "candidateMs": [
+        958,
+        956
+      ],
+      "referenceMs": [
+        4233,
+        4242
+      ],
+      "candidateMeanMs": 957,
+      "referenceMeanMs": 4237.5,
+      "speedup": 4.427899686520377
+    },
+    "exactEvidence": {
+      "controlPairs": 315,
+      "independentOracleChecks": 10,
+      "compilerTokens": 850068,
+      "compilerTokenHash": 3795131990,
+      "baseTokens": 27180,
+      "hashmapTokens": 1230,
+      "graphs": 15,
+      "logs": [
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/lexer-scalar-controls01-guard/stdout.log",
+          "bytes": 69,
+          "sha256": "62775954a79ae18e817a7a45a9277c98ab15706fcf5b7d60071b312bde0604e3",
+          "stdout": "phase150 controls exact_pairs 315\nphase150 controls oracle_checks 10\n"
+        },
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/lexer-scalar-compare01-guard/stdout.log",
+          "bytes": 164,
+          "sha256": "40939872034b6217650f606b8b3ee6568b5a9636d358d0a5cbb837d53447ad6a",
+          "stdout": "phase150 compare exact_equal true\nphase150 both_lex_ms 5202\nphase150 compare_observe_ms 190\nphase150 region_ms 5392\nphase150 tokens 850068\nphase150 hash 3795131990\n"
+        },
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/lexer-scalar-base01-guard/stdout.log",
+          "bytes": 158,
+          "sha256": "6663c7fbbae7ad1a302652909983f27f7b7d759b91c8b6d1e1cf9734bb801ca2",
+          "stdout": "phase150 compare exact_equal true\nphase150 both_lex_ms 148\nphase150 compare_observe_ms 5\nphase150 region_ms 153\nphase150 tokens 27180\nphase150 hash 834726947\n"
+        },
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/lexer-scalar-hashmap01-guard/stdout.log",
+          "bytes": 153,
+          "sha256": "053c188b9ba1c7b20246469474e7ae31f5f1600745b19a413a49cde31215cca6",
+          "stdout": "phase150 compare exact_equal true\nphase150 both_lex_ms 8\nphase150 compare_observe_ms 0\nphase150 region_ms 8\nphase150 tokens 1230\nphase150 hash 876239781\n"
+        },
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/lexer-scalar-timing01-guard/stdout.log",
+          "bytes": 139,
+          "sha256": "6407420c2f7cf4ec5d27872b51679ae6244a4999ab9bb04021c6b51f0a95c38d",
+          "stdout": "phase150 mode candidate\nphase150 lex_ms 958\nphase150 observe_ms 61\nphase150 region_ms 1019\nphase150 tokens 850068\nphase150 hash 3795131990\n"
+        },
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/lexer-scalar-timing02-guard/stdout.log",
+          "bytes": 140,
+          "sha256": "801169e441c8ec3cbed6fcb1b56dd1f96950e7125f231802d8496f10260af6d3",
+          "stdout": "phase150 mode reference\nphase150 lex_ms 4233\nphase150 observe_ms 63\nphase150 region_ms 4296\nphase150 tokens 850068\nphase150 hash 3795131990\n"
+        },
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/lexer-scalar-timing03-guard/stdout.log",
+          "bytes": 140,
+          "sha256": "4142298962141e3716acb3d25332868325167899a178ee3e217585a16479eb3c",
+          "stdout": "phase150 mode reference\nphase150 lex_ms 4242\nphase150 observe_ms 62\nphase150 region_ms 4304\nphase150 tokens 850068\nphase150 hash 3795131990\n"
+        },
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/lexer-scalar-timing04-guard/stdout.log",
+          "bytes": 139,
+          "sha256": "4d8ee0c181c462945ddd109c0af6d43f09751877ff6e77403106450477b4874a",
+          "stdout": "phase150 mode candidate\nphase150 lex_ms 956\nphase150 observe_ms 61\nphase150 region_ms 1017\nphase150 tokens 850068\nphase150 hash 3795131990\n"
+        }
+      ]
+    },
+    "mechanism": "Retains direct String unpacking and fused metadata, replacing literal Char-pattern dispatch with scalar tests. This broader falsifier reduces observed acquisition much more than grouping two matrices, strengthening the literal-constructor expansion explanation.",
+    "caveat": "This does not measure each intermediate pass for the scalar variant. Faster small-probe acquisition does not alone prove general frontend legality or full compiler speed."
+  },
+  "completeParserScalarFollowup": {
+    "status": "Coordinator-completed validated C3 candidate; no full compiler promotion.",
+    "evidencePaths": [
+      "selfhost/build/phase150/parser-scalar-native01/report.json",
+      "selfhost/build/phase150/parser-scalar-acquisition01.json",
+      "selfhost/build/phase150/parser-scalar-timing01.json"
+    ],
+    "acquisitionWallSeconds": {
+      "scalar": 45.591,
+      "referenceTwoBuildMean": 46.525,
+      "literalTwoBuildMean": 66.934
+    },
+    "acquisitionInterpretation": "The scalar complete-parser build no longer shows the original 20s acquisition penalty in this observation. Only one scalar build; the small difference from reference is not a claimed acquisition speedup.",
+    "parserRuntime": {
+      "referenceMs": [
+        30680,
+        30390
+      ],
+      "scalarMs": [
+        27145,
+        28049
+      ],
+      "referenceMeanMs": 30535,
+      "scalarMeanMs": 27597,
+      "reductionFraction": 0.09621745537907322
+    },
+    "processRuntime": {
+      "referenceMeanSeconds": 31.4973,
+      "scalarMeanSeconds": 28.5524,
+      "reductionFraction": 0.09349690290913826
+    },
+    "semantics": "Both complete-source parser timing pairs have the same result hash. This checksum agreement is separate from exact full token equality and the 15 exact complete graph fixture oracles.",
+    "limits": "Two runtime observations per variant; no confidence interval. About 9.62% less complete parsing does not meet a 2x complete-parse gate. No whole-compiler speed measurement, independent kernel-proof upgrade or broad compiler qualification."
+  },
+  "maintainedLiteralAudit": {
+    "markdown": "research/phase150/literal-pattern-audit.md",
+    "data": "research/phase150/literal-pattern-audit.json",
+    "summary": "96 numeric-leading rows in 27 fixed-result U32 functions; 17 ordinary functions/77 rows after excluding 8 control helpers/16 rows and 2 protected proof helpers/3 rows. No Nat scrutinees in that audited inventory. Counts are source candidates, not hot-cost measurements.",
+    "caution": "25 actual String-pattern rows belong to qualified runtime-name classifiers; acquisition simplification might harm their runtime. Nested numeric patterns extend beyond the 96-row leading-position screen."
+  },
+  "finalSourceSelection": {
+    "preferred": "scalar",
+    "canonicalModule": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase150/lexer-candidate.bend",
+      "bytes": 12276,
+      "sha256": "c5b1e71ff4f0d42c69b8c764fb83c42fa755b3f9a38d9d3611f3fff92981ed85"
+    },
+    "immutableVariants": [
+      {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/variants01/literal.bend",
+        "bytes": 10994,
+        "sha256": "17d069235aea4c48909cc8d4ec62aec546988c1d9f527245c5b9ec2f34a8b98c"
+      },
+      {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/variants01/grouped.bend",
+        "bytes": 11688,
+        "sha256": "abdaebbb16be9c4b32ef7183b8fccbc7ee4c3e4bec6a16c42d3a8f361a282e3b"
+      },
+      {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/variants01/scalar.bend",
+        "bytes": 12276,
+        "sha256": "c5b1e71ff4f0d42c69b8c764fb83c42fa755b3f9a38d9d3611f3fff92981ed85"
+      }
+    ],
+    "selectionReceipt": "selfhost/build/phase150/variants01/selection.json",
+    "originalLiteralCommit": "6e88473",
+    "productionEdited": false,
+    "note": "Historical module evidence pins now reference verified immutable copies; the preferred scalar module occupies the canonical experimental lexer-candidate.bend path. Frozen assembled source paths retain their original meaning."
+  }
+}

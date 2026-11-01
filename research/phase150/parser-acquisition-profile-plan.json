@@ -1,0 +1,397 @@
+{
+  "schema": "phase150-parser-acquisition-profile-plan-v1",
+  "preparedOnly": true,
+  "targetsRun": false,
+  "cwd": "/home/ai/bend2/build/publish/bend",
+  "recipe": "/home/ai/bend2/build/publish/bend/research/phase150/parser-acquisition-profile-recipe.json",
+  "freshPrefix": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parser-acquisition-profile01",
+  "decision": "First repeat ordinary acquisitions serially in reversed candidate/reference order. Run this bounded sampled pair only if the additional acquisition cost persists or still needs localization.",
+  "executionGuard": {
+    "owner": "root",
+    "required": true,
+    "nestingForbidden": true,
+    "runRoots": [
+      "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parser-acquisition-profile01"
+    ],
+    "reserveMiB": 5120,
+    "note": "Root supplies one maintained build-retention guard with an explicit whole-run disk budget, matched CPU affinity and suitable time/RSS limits. No target execution was performed while preparing these data files."
+  },
+  "expectedPins": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase147/profile-final-build01/runtime/program",
+      "bytes": 19562608,
+      "sha256": "0d99d3b3a8dd79c2d68a448a9a32d626d2527642666997e1f4b5a945c63192b5"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase147/profile-final-build01/runtime/sampler.so",
+      "bytes": 22840,
+      "sha256": "2703a8060a5b5b3b46979e334fd2542c73a57fa409e0e045c96deaa337c683f9"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase147/profile-final-prep01/spec.json",
+      "bytes": 9611,
+      "sha256": "ba216e9876da65ed010375a879fbb4bf3a589860fc614b8f79285f128c5c1507"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase147/profile-final-prep01/owners.json",
+      "bytes": 35576610,
+      "sha256": "61dd00f1068fe810f547609634b7e72411474b715f04f8acbd5a244c1045a60e"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase147/profile-final-prep01/unwind/table.json",
+      "bytes": 4721,
+      "sha256": "3173c8bd213ae5f16ccaea379c97eab380d1da0af210c549f10fd38b90e4df23"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase147/profile-final-prep01/ready.json",
+      "bytes": 5410,
+      "sha256": "21dd3f0db1affb345f2e3cef6d8d5a0695f1ac21776891b0d38878249e201b96"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase147/profile-final-build01/report.json",
+      "bytes": 2057,
+      "sha256": "2fd413dfd6432cae1e1ef9e3504d783cbf4917f144b4c0fce2acf11338126ef9"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase147/profile-final-build01/runtime/plan.json",
+      "bytes": 11755,
+      "sha256": "c8def6c8396d2ffa4a6190c4129971b642a80b2fb949eec54ae2d3f3f86e8314"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase147/profile-final-prep01/inputs/program.o",
+      "bytes": 25983392,
+      "sha256": "d4d55e9a4ba1a3a4d82b3b4c6adb019ceae91db5a3c623bb0ec4ae982fccc918"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase147/integrated-sequel02/n2/report.json",
+      "bytes": 19458,
+      "sha256": "7eeb7e2b017b984dfbf7d591f8453132aaffbe08bf338a040bd190cf52c94fc2"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase147/integrated-plan05/image/report.json",
+      "bytes": 17099,
+      "sha256": "44704112b3e94fab254802667a9435065940c8fa9873b2930951e0c5645071e0"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase147/integrated-source03/compiler.bend",
+      "bytes": 3045282,
+      "sha256": "0f3bd8a0f29944a317d6de14db05e6e34ba36daa22b350c25236d07519227eaf"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parser-reference-native01/report.json",
+      "bytes": 17261,
+      "sha256": "f2c07b482483ee75d4ff6f08f428e02e2ad9461557e5e0c2d6e7f5941021b981"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parser-candidate-native01/report.json",
+      "bytes": 17277,
+      "sha256": "2bceef6844967471681d941ec6503f3f239bc89709db5e6130d65d5368767b91"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/profiler/freeze.py",
+      "bytes": 3147,
+      "sha256": "3e0c25cf5a929b3bcc6d7d2a7c00ae00de4a389cb1e31260cd2fba4bee9f4ba8"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/profiler/run.py",
+      "bytes": 15290,
+      "sha256": "1382cd7d3a66f800a18f2bf3d15c4b7c88b20cd9e27dc654d62a592600de3279"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/profiler/stages_v1.py",
+      "bytes": 13152,
+      "sha256": "768cde4664bbd1442139ab5fde702b7d51d7e4709330392a8947905d17b553c7"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/profiler/analyze.py",
+      "bytes": 16552,
+      "sha256": "16e92d883263577177d50ae3cc1f381ea6cb97b77be50a4157999102047a6fdc"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/profiler/attribute.py",
+      "bytes": 35029,
+      "sha256": "4728b9a8175087ff0159c4bc59a0575ffa37838b00be0fc83bbac356610916da"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parser-source01/reference.bend",
+      "bytes": 345187,
+      "sha256": "9174372bee83a1b566fc86339182f004cde6a7aa258097636135693c051af826"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parser-reference-native01/program.ssa",
+      "bytes": 28241468,
+      "sha256": "75b26e47d35d203a7887e50f1fedaa25892860083019b691f42df2b5c2ba52f3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parser-reference-native01/compiler.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/base.bend",
+      "bytes": 75064,
+      "sha256": "99ac43f2b2bb3e3f39acdcedcecbbd3cb44749ce13969c827d6973fa66f7facf"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.assets/base/base.p130",
+      "bytes": 2612691,
+      "sha256": "984fad041a0ba855ea0aaedd384485afa2153da644655c00882eb50ace33817f"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase147/integrated-sequel02/n2/program",
+      "bytes": 19499168,
+      "sha256": "ab5662a17690f6814834074442905fec2f061a67203e66c3008d51d48727ca32"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parser-source01/candidate.bend",
+      "bytes": 354413,
+      "sha256": "fac4de0448a70dd6bd70a25f68917a3af67828ab7c958a9502087f6c3c1a187d"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parser-candidate-native01/program.ssa",
+      "bytes": 28436000,
+      "sha256": "b38bd77dcc96f42cab72a3947a5529432b65294c6350fc32f6a1e17e66f6206b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parser-candidate-native01/compiler.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase147/integrated-sequel02/n2/program.o",
+      "bytes": 25983392,
+      "sha256": "d4d55e9a4ba1a3a4d82b3b4c6adb019ceae91db5a3c623bb0ec4ae982fccc918"
+    }
+  ],
+  "preflight": {
+    "mustMatch": "All expectedPins were read and SHA-256 checked during preparation. Verify them again before freeze: freeze snapshots current bytes rather than enforcing this independent expected-pin list.",
+    "freshness": "The freshPrefix did not exist during preparation. mkdir must fail if it exists; do not reuse or overwrite a completed capture.",
+    "ambientInstrumentationMustBeUnset": [
+      "LD_PRELOAD",
+      "BEND_SAMPLE_OUT",
+      "BEND_SAMPLE_PERIOD_US",
+      "BEND_SAMPLE_CONTEXT_OUT",
+      "BEND_SAMPLE_CALLERS_OUT",
+      "BEND_PROFILE_EVENTS_OUT",
+      "BEND_PROFILE_COUNTERS"
+    ]
+  },
+  "commands": [
+    {
+      "label": "verify-prepared-input-identities",
+      "targetRuns": 0,
+      "argv": [
+        "sha256sum",
+        "--check",
+        "--strict"
+      ],
+      "stdin": "0d99d3b3a8dd79c2d68a448a9a32d626d2527642666997e1f4b5a945c63192b5  /home/ai/bend2/build/publish/bend/selfhost/build/phase147/profile-final-build01/runtime/program\n2703a8060a5b5b3b46979e334fd2542c73a57fa409e0e045c96deaa337c683f9  /home/ai/bend2/build/publish/bend/selfhost/build/phase147/profile-final-build01/runtime/sampler.so\nba216e9876da65ed010375a879fbb4bf3a589860fc614b8f79285f128c5c1507  /home/ai/bend2/build/publish/bend/selfhost/build/phase147/profile-final-prep01/spec.json\n61dd00f1068fe810f547609634b7e72411474b715f04f8acbd5a244c1045a60e  /home/ai/bend2/build/publish/bend/selfhost/build/phase147/profile-final-prep01/owners.json\n3173c8bd213ae5f16ccaea379c97eab380d1da0af210c549f10fd38b90e4df23  /home/ai/bend2/build/publish/bend/selfhost/build/phase147/profile-final-prep01/unwind/table.json\n21dd3f0db1affb345f2e3cef6d8d5a0695f1ac21776891b0d38878249e201b96  /home/ai/bend2/build/publish/bend/selfhost/build/phase147/profile-final-prep01/ready.json\n2fd413dfd6432cae1e1ef9e3504d783cbf4917f144b4c0fce2acf11338126ef9  /home/ai/bend2/build/publish/bend/selfhost/build/phase147/profile-final-build01/report.json\nc8def6c8396d2ffa4a6190c4129971b642a80b2fb949eec54ae2d3f3f86e8314  /home/ai/bend2/build/publish/bend/selfhost/build/phase147/profile-final-build01/runtime/plan.json\nd4d55e9a4ba1a3a4d82b3b4c6adb019ceae91db5a3c623bb0ec4ae982fccc918  /home/ai/bend2/build/publish/bend/selfhost/build/phase147/profile-final-prep01/inputs/program.o\n7eeb7e2b017b984dfbf7d591f8453132aaffbe08bf338a040bd190cf52c94fc2  /home/ai/bend2/build/publish/bend/selfhost/build/phase147/integrated-sequel02/n2/report.json\n44704112b3e94fab254802667a9435065940c8fa9873b2930951e0c5645071e0  /home/ai/bend2/build/publish/bend/selfhost/build/phase147/integrated-plan05/image/report.json\n0f3bd8a0f29944a317d6de14db05e6e34ba36daa22b350c25236d07519227eaf  /home/ai/bend2/build/publish/bend/selfhost/build/phase147/integrated-source03/compiler.bend\nf2c07b482483ee75d4ff6f08f428e02e2ad9461557e5e0c2d6e7f5941021b981  /home/ai/bend2/build/publish/bend/selfhost/build/phase150/parser-reference-native01/report.json\n2bceef6844967471681d941ec6503f3f239bc89709db5e6130d65d5368767b91  /home/ai/bend2/build/publish/bend/selfhost/build/phase150/parser-candidate-native01/report.json\n3e0c25cf5a929b3bcc6d7d2a7c00ae00de4a389cb1e31260cd2fba4bee9f4ba8  /home/ai/bend2/build/publish/bend/selfhost/tools/profiler/freeze.py\n1382cd7d3a66f800a18f2bf3d15c4b7c88b20cd9e27dc654d62a592600de3279  /home/ai/bend2/build/publish/bend/selfhost/tools/profiler/run.py\n768cde4664bbd1442139ab5fde702b7d51d7e4709330392a8947905d17b553c7  /home/ai/bend2/build/publish/bend/selfhost/tools/profiler/stages_v1.py\n16e92d883263577177d50ae3cc1f381ea6cb97b77be50a4157999102047a6fdc  /home/ai/bend2/build/publish/bend/selfhost/tools/profiler/analyze.py\n4728b9a8175087ff0159c4bc59a0575ffa37838b00be0fc83bbac356610916da  /home/ai/bend2/build/publish/bend/selfhost/tools/profiler/attribute.py\n9174372bee83a1b566fc86339182f004cde6a7aa258097636135693c051af826  /home/ai/bend2/build/publish/bend/selfhost/build/phase150/parser-source01/reference.bend\n75b26e47d35d203a7887e50f1fedaa25892860083019b691f42df2b5c2ba52f3  /home/ai/bend2/build/publish/bend/selfhost/build/phase150/parser-reference-native01/program.ssa\ne3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855  /home/ai/bend2/build/publish/bend/selfhost/build/phase150/parser-reference-native01/compiler.stderr\n99ac43f2b2bb3e3f39acdcedcecbbd3cb44749ce13969c827d6973fa66f7facf  /home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/base.bend\n984fad041a0ba855ea0aaedd384485afa2153da644655c00882eb50ace33817f  /home/ai/bend2/build/publish/bend/selfhost/.assets/base/base.p130\nab5662a17690f6814834074442905fec2f061a67203e66c3008d51d48727ca32  /home/ai/bend2/build/publish/bend/selfhost/build/phase147/integrated-sequel02/n2/program\nfac4de0448a70dd6bd70a25f68917a3af67828ab7c958a9502087f6c3c1a187d  /home/ai/bend2/build/publish/bend/selfhost/build/phase150/parser-source01/candidate.bend\nb38bd77dcc96f42cab72a3947a5529432b65294c6350fc32f6a1e17e66f6206b  /home/ai/bend2/build/publish/bend/selfhost/build/phase150/parser-candidate-native01/program.ssa\ne3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855  /home/ai/bend2/build/publish/bend/selfhost/build/phase150/parser-candidate-native01/compiler.stderr\nd4d55e9a4ba1a3a4d82b3b4c6adb019ceae91db5a3c623bb0ec4ae982fccc918  /home/ai/bend2/build/publish/bend/selfhost/build/phase147/integrated-sequel02/n2/program.o\n"
+    },
+    {
+      "label": "create-fresh-parent",
+      "targetRuns": 0,
+      "argv": [
+        "mkdir",
+        "--",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parser-acquisition-profile01"
+      ]
+    },
+    {
+      "label": "freeze-two-workloads",
+      "targetRuns": 0,
+      "argv": [
+        "/usr/bin/python3",
+        "-B",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/profiler/freeze.py",
+        "--recipe",
+        "/home/ai/bend2/build/publish/bend/research/phase150/parser-acquisition-profile-recipe.json",
+        "--out",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parser-acquisition-profile01/manifest.json"
+      ]
+    },
+    {
+      "label": "maintained-preflight",
+      "targetRuns": 0,
+      "argv": [
+        "/usr/bin/python3",
+        "-B",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/profiler/run.py",
+        "--manifest",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parser-acquisition-profile01/manifest.json",
+        "--out",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parser-acquisition-profile01/capture",
+        "--modes",
+        "sample",
+        "--periods-us",
+        "32000",
+        "--rounds",
+        "1",
+        "--check-only"
+      ]
+    },
+    {
+      "label": "sample-pair-root-must-wrap-this-command-in-the-outer-guard",
+      "targetRuns": 2,
+      "argv": [
+        "/usr/bin/python3",
+        "-B",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/profiler/run.py",
+        "--manifest",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parser-acquisition-profile01/manifest.json",
+        "--out",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parser-acquisition-profile01/capture",
+        "--modes",
+        "sample",
+        "--periods-us",
+        "32000",
+        "--rounds",
+        "1"
+      ]
+    },
+    {
+      "label": "observe-reference",
+      "targetRuns": 0,
+      "argv": [
+        "/usr/bin/python3",
+        "-B",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/profiler/stages_v1.py",
+        "observe",
+        "--spec",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase147/profile-final-prep01/spec.json",
+        "--run",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parser-acquisition-profile01/capture/report.json",
+        "--row",
+        "0",
+        "--out",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parser-acquisition-profile01/reference-stages.json"
+      ]
+    },
+    {
+      "label": "observe-candidate",
+      "targetRuns": 0,
+      "argv": [
+        "/usr/bin/python3",
+        "-B",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/profiler/stages_v1.py",
+        "observe",
+        "--spec",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase147/profile-final-prep01/spec.json",
+        "--run",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parser-acquisition-profile01/capture/report.json",
+        "--row",
+        "1",
+        "--out",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parser-acquisition-profile01/candidate-stages.json"
+      ]
+    }
+  ],
+  "commandSemantics": {
+    "order": [
+      "parser-reference-source",
+      "parser-candidate-source"
+    ],
+    "targetProcessCount": 2,
+    "samplePeriodUs": 32000,
+    "roundsNote": "run.py iterates sample mode once per --periods-us entry; --rounds governs clean/events. One period plus two workloads produces exactly two compiler requests.",
+    "cleanRuns": 0,
+    "counterMode": "dispatchInstrumentation=true causes run.py sample mode to set BEND_PROFILE_COUNTERS=0; no events collection.",
+    "unwindRequired": "Retained unwindTable causes callers.txt capture. stages_v1 observe requires callers and exact pairing even when stage clocks are the primary result.",
+    "stdoutContract": "Exact complete-file byte length and SHA-256 against retained native01 program.ssa, with no filtering or normalization.",
+    "stderrContract": "Exact zero-byte compiler.stderr oracle.",
+    "stageRows": "With one period, workload list order is unchanged; row 0 reference, row 1 candidate. Confirm row workload names in capture/report.json before interpreting."
+  },
+  "bridge": {
+    "currentCleanCompiler": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase147/integrated-sequel02/n2/program",
+      "bytes": 19499168,
+      "sha256": "ab5662a17690f6814834074442905fec2f061a67203e66c3008d51d48727ca32"
+    },
+    "currentCleanCompilerReport": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase147/integrated-sequel02/n2/report.json",
+      "bytes": 19458,
+      "sha256": "7eeb7e2b017b984dfbf7d591f8453132aaffbe08bf338a040bd190cf52c94fc2"
+    },
+    "diagnosticCompiler": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase147/profile-final-build01/runtime/program",
+      "bytes": 19562608,
+      "sha256": "0d99d3b3a8dd79c2d68a448a9a32d626d2527642666997e1f4b5a945c63192b5"
+    },
+    "diagnosticOriginStage": "N1",
+    "diagnosticOriginImage": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase147/integrated-plan05/image/program",
+      "bytes": 19499168,
+      "sha256": "a37593134399a2011198b933be4acc35837c9c2a3bad16315cff32d238452796"
+    },
+    "sourceIdentity": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase147/integrated-source03/compiler.bend",
+      "bytes": 3045282,
+      "sha256": "0f3bd8a0f29944a317d6de14db05e6e34ba36daa22b350c25236d07519227eaf"
+    },
+    "generatedObject": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase147/profile-final-prep01/inputs/program.o",
+      "bytes": 25983392,
+      "sha256": "d4d55e9a4ba1a3a4d82b3b4c6adb019ceae91db5a3c623bb0ec4ae982fccc918"
+    },
+    "currentN2GeneratedObject": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase147/integrated-sequel02/n2/program.o",
+      "bytes": 25983392,
+      "sha256": "d4d55e9a4ba1a3a4d82b3b4c6adb019ceae91db5a3c623bb0ec4ae982fccc918"
+    },
+    "assertion": "Both generated objects were read during preparation and match bytes=25983392 and SHA-256=d4d55e9a4ba1a3a4d82b3b4c6adb019ceae91db5a3c623bb0ec4ae982fccc918. Complete clean N1 and N2 ELFs differ; the diagnostic remains the authenticated N1-origin relink and is not relabeled as N2.",
+    "diagnosticBinding": {
+      "checkedFids": 56355,
+      "checkedFunctionSymbols": 73444,
+      "capabilities": 5,
+      "registerWidth": 26,
+      "resultWidth": 1,
+      "producerProvenanceVerified": false,
+      "lexicalOwnerConditionalOnEmitterContract": true
+    },
+    "identityLimit": "Exact-object and exact-output correspondence permits bounded compiler-stage diagnosis. It is not independent kernel proof, a new producer-provenance proof, or a qualification upgrade."
+  },
+  "interpretation": {
+    "task": "Attribute the persistent extra cost of compiling the new lexer helpers in otherwise matched parser source files. Both requests execute the same old parent compiler and its old lexer; the new lexer is input code here.",
+    "stageClockScope": "CLOCK_MONOTONIC, CLOCK_PROCESS_CPUTIME_ID and CLOCK_THREAD_CPUTIME_ID at selected diagnostic dispatch entries, plus the observer exit hook. First-entry intervals include continuation/ownership work. The final render/output interval includes teardown until that hook, not necessarily every process-exit destructor.",
+    "stageIntervalBoundaries": "23 ordered required milestones plus the optional nested final-verification interval. Keep the required disjoint intervals separate from the nested interval; do not sum overlapping intervals. Initialization before the first marker is outside the listed intervals.",
+    "profileScope": "Main-thread sample stream with physical leaves and authenticated active owners; not concurrent attribution, a logical call stack, or per-function self-time.",
+    "comparison": "Compare candidate-minus-reference diagnostic wall/process/thread clock intervals and total compiler-process rows. Check whether the excess lies in checking/publication, annotation/reach, lowering, optimizer, verification, or rendering before hypothesizing cause.",
+    "acquisitionBoundary": "native01 wallSeconds and emitAndQbeSeconds cover the overlapping compiler/QBE construction pipeline. This profile sends QBE to a regular captured stdout file and runs no QBE assembler/compiler/linker; its wall delta is a compiler-emission diagnostic, not a replacement full acquisition delta.",
+    "overhead": "No independent clean compiler-only rows exist in this two-sample plan, so instrumentation overhead is unmeasured. Do not divide diagnostic times by 46.506/66.665s acquisition totals or 45.038/65.193s overlapped emit+QBE values. A future overhead measurement requires independently captured uninstrumented N2 emission requests with the same argv and stdout sink.",
+    "samplingLimits": "A single 32ms pair is a localization screen, not aliasing-controlled final performance evidence. Short stages may have useful diagnostic clocks but fewer than 500 samples and only descriptive owner distributions.",
+    "parserBoundary": "Do not subtract the standalone lexer gain from the historical Phase147 32.025s parse/load profile. Different source/input/process/clock scopes apply; direct standalone parser measurements are the comparable runtime evidence."
+  },
+  "requiredGates": {
+    "capture": "complete=true, passed=true, changedInputs empty, both exact output contracts and successful exit codes.",
+    "wholeProfile": "Require profilesUsable=true for quantitative whole-process attribution. Preserve zero dropped samples and timer overruns, intact handler, main-thread shutdown, complete thread lifecycle, at least 95% sampled-thread/process CPU coverage, at least 500 samples, and delivery ratio 0.8..1.2 when at least ten periods are expected.",
+    "stages": "Both stage reports must have complete=true, requestExact=true, stageAttributionValid=true, exact current spec/ELF binding, correct order/multiplicity, no clock errors, and authenticated sample/context/caller pairing.",
+    "intervals": "Only intervals with quantitativeProfileAdmitted=true support quantitative sample fractions. Unknown contexts remain in denominators; one sample at each interval edge is excluded by the maintained observer.",
+    "failures": "Preserve failed captures; do not relax loss/coverage/order/output gates, filter stdout, bypass attribution, or rebuild profiler instrumentation in this phase.",
+    "retention": "Root closes the completed guarded job using maintained build-retention workflow; no pruning or archive deletion is part of this preparation."
+  },
+  "methodSources": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/profiler/freeze.py",
+      "scope": "recipe paths, exact output contracts, pin snapshot"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/profiler/run.py",
+      "scope": "mode iteration, capture, expected output, immutable inputs, diagnostic timing kind"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/profiler/stages_v1.py",
+      "scope": "spec/ELF/capture pairing and stage admission"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/profiler/stages-runtime-v1.inc.c",
+      "scope": "dispatch clock and exit-hook scope"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/profiler/analyze.py",
+      "scope": "loss, coverage, delivery gates"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/profiler/elf.py",
+      "scope": "95% CPU coverage and 500-sample admission"
+    }
+  ]
+}

@@ -4,6 +4,27 @@ This ledger records decisions and links evidence; it does not replace the report
 Read [workflow](README.md) and [current strategy](STEERING.md) before a new investigation.
 User objective: make the Bend compiler written in Bend and its validation loop much faster while preserving correctness. Historical authorization windows are recorded below; current release status and priorities are in [STEERING.md](STEERING.md).
 
+## Phase150 — Parser, literal expansion and independent validation (2026-11-01)
+
+[Design](../design/phase150/README.md) · [Report](../implementation/phase150/README.md) ·
+[Hypotheses](phase150/P150-001-parser-producer.md).
+
+Selected scalar lexer:4.43× lexical improvement,9.62% complete-parser time
+reduction on a frozen3.07MB compiler input. Component qualification only; one
+preferred217-line module at HEAD. Initial literal-pattern variant's43.87%
+acquisition penalty triggered repeat measurements, reused profiler captures and
+grouped/scalar counterfactuals. Frontend bit-pattern expansion and repeated
+traversals explain almost all extra diagnostic time; scalar version removes
+the acquisition penalty. No whole cold-build/user-runtime or new native compiler
+qualification claim. Production and installed choices remain unchanged.
+
+Two-process correctness pilot reduces elapsed40.78% on two cases/two pairs,
+with all8independent reports and required product comparisons passing. Full ELF
+path/build-ID differences and Bun provider failures are retained. Upstream
+migration boundaries assessed separately.66guarded jobs821.21s, no OOM, all
+archived/closed, no pruning. Next: measured literal-pattern counterfactual on
+p88_roles, preserving execution cost, dependent/affine semantics and proofs.
+
 ## Phase148 — Compact multi-consumer units (2026-11-01)
 
 [Design](../design/phase148/README.md) ·

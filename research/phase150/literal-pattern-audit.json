@@ -1,0 +1,1330 @@
+{
+  "schema": "phase150-literal-pattern-source-audit-v1",
+  "targetsRun": false,
+  "productionEdits": false,
+  "source": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/source-baseline01/compiler.bend",
+    "bytes": 3068721,
+    "sha256": "21657b5844c3168ad16acbe0de8096c7a3e7623ff3efbe8c710a09a97d091074"
+  },
+  "method": "Read-only maintained source.py declaration boundaries and canonical manifest owner mapping. Numeric-leading case rows were inspected in full declaration context; quotes were recognized when locating a case-head colon so RHS literals were excluded. This is source inspection, not a new Bend parse/typecheck.",
+  "counts": {
+    "numericLeadingCaseRows": 96,
+    "numericOwningFunctions": 27,
+    "explicitU32SignatureFunctions": 25,
+    "U32LawFunctions": 2,
+    "NatScrutineesInThisInventory": 0,
+    "fixedResultPotentiallyNondependentFunctions": 27,
+    "byRole": {
+      "ordinary-source": {
+        "functions": 17,
+        "caseRows": 77
+      },
+      "control-helper": {
+        "functions": 8,
+        "caseRows": 16
+      },
+      "protected-proof-helper": {
+        "functions": 2,
+        "caseRows": 3
+      }
+    },
+    "quotedCharPatternHeads": 2,
+    "quotedStringPatternHeads": 25
+  },
+  "numericFunctions": [
+    {
+      "name": "sk_char",
+      "owner": {
+        "module": "selfhost/src/check/specialize.bend",
+        "line": 130
+      },
+      "baselineDeclarationLine": 9673,
+      "numericCaseRowCount": 7,
+      "patterns": [
+        "case 34: \"\\\\\\\"\"",
+        "case 92: \"\\\\\\\\\"",
+        "case 8: \"\\\\b\"",
+        "case 9: \"\\\\t\"",
+        "case 10: \"\\\\n\"",
+        "case 12: \"\\\\f\"",
+        "case 13: \"\\\\r\""
+      ],
+      "scrutinee": {
+        "name": "n",
+        "type": "U32",
+        "typeEvidence": "explicit definition signature"
+      },
+      "resultType": "String",
+      "potentiallyNondependent": true,
+      "classification": "ordinary-source",
+      "sourceNormalizedEqualToFrozen": true,
+      "caution": "Fixed result type is a promising source rewrite condition, not a proof that scalarization preserves all typing/resource behavior."
+    },
+    {
+      "name": "j_escape_char_on",
+      "owner": {
+        "module": "selfhost/src/back/js/shared-text.bend",
+        "line": 35
+      },
+      "baselineDeclarationLine": 16630,
+      "numericCaseRowCount": 6,
+      "patterns": [
+        "case 34:",
+        "case 92:",
+        "case 10:",
+        "case 13:",
+        "case 9:",
+        "case 0:"
+      ],
+      "scrutinee": {
+        "name": "key",
+        "type": "U32",
+        "typeEvidence": "separate law in the same owning module"
+      },
+      "resultType": "String",
+      "potentiallyNondependent": true,
+      "classification": "ordinary-source",
+      "sourceNormalizedEqualToFrozen": true,
+      "caution": "Fixed result type is a promising source rewrite condition, not a proof that scalarization preserves all typing/resource behavior."
+    },
+    {
+      "name": "nb_regs",
+      "owner": {
+        "module": "selfhost/src/back/native/tables.bend",
+        "line": 52
+      },
+      "baselineDeclarationLine": 30823,
+      "numericCaseRowCount": 1,
+      "patterns": [
+        "case 0: Nil{}"
+      ],
+      "scrutinee": {
+        "name": "n",
+        "type": "U32",
+        "typeEvidence": "explicit definition signature"
+      },
+      "resultType": "List<&2,String>",
+      "potentiallyNondependent": true,
+      "classification": "ordinary-source",
+      "sourceNormalizedEqualToFrozen": true,
+      "caution": "Fixed result type is a promising source rewrite condition, not a proof that scalarization preserves all typing/resource behavior."
+    },
+    {
+      "name": "p90_fork_round",
+      "owner": {
+        "module": "selfhost/src/back/native/fork-index.bend",
+        "line": 39
+      },
+      "baselineDeclarationLine": 31019,
+      "numericCaseRowCount": 1,
+      "patterns": [
+        "case 0: roots"
+      ],
+      "scrutinee": {
+        "name": "fuel",
+        "type": "U32",
+        "typeEvidence": "separate law in the same owning module"
+      },
+      "resultType": "List<&2,String>",
+      "potentiallyNondependent": true,
+      "classification": "ordinary-source",
+      "sourceNormalizedEqualToFrozen": true,
+      "caution": "Fixed result type is a promising source rewrite condition, not a proof that scalarization preserves all typing/resource behavior."
+    },
+    {
+      "name": "nct_within_work",
+      "owner": {
+        "module": "selfhost/src/back/native/text-tree.bend",
+        "line": 52
+      },
+      "baselineDeclarationLine": 31597,
+      "numericCaseRowCount": 1,
+      "patterns": [
+        "case 0: False{}"
+      ],
+      "scrutinee": {
+        "name": "remaining",
+        "type": "U32",
+        "typeEvidence": "explicit definition signature"
+      },
+      "resultType": "Bool",
+      "potentiallyNondependent": true,
+      "classification": "ordinary-source",
+      "sourceNormalizedEqualToFrozen": true,
+      "caution": "Fixed result type is a promising source rewrite condition, not a proof that scalarization preserves all typing/resource behavior."
+    },
+    {
+      "name": "p88_text_chars",
+      "owner": {
+        "module": "selfhost/src/host/prepared-base.bend",
+        "line": 87
+      },
+      "baselineDeclarationLine": 37436,
+      "numericCaseRowCount": 2,
+      "patterns": [
+        "case 0 SCon{'\\n',tail}: P88TextRead{P88Cursor{tail,mode},String.reverse(acc)}",
+        "case 0 other: P88TextRead{P88Cursor{\"\",0},\"\"}"
+      ],
+      "scrutinee": {
+        "name": "size",
+        "type": "U32",
+        "typeEvidence": "explicit definition signature"
+      },
+      "resultType": "P88TextRead",
+      "potentiallyNondependent": true,
+      "classification": "ordinary-source",
+      "sourceNormalizedEqualToFrozen": true,
+      "caution": "Numeric dispatch is combined with constructor patterns; preserve arm order, constructor validation, fallback and affine consumption."
+    },
+    {
+      "name": "p88_roles",
+      "owner": {
+        "module": "selfhost/src/host/prepared-base.bend",
+        "line": 121
+      },
+      "baselineDeclarationLine": 37470,
+      "numericCaseRowCount": 12,
+      "patterns": [
+        "case 0: []",
+        "case 1: [13,14]",
+        "case 2: [3,3,1,1,6,8,1,1]",
+        "case 3: [3,1,1,6,8,1,1,2]",
+        "case 4: [3,1,3,1,1]",
+        "case 5: [3,3,1,1,4,4,7,2,2]",
+        "case 6: [1,7]",
+        "case 7: [1,1,5,5]",
+        "case 8: [1,1,1,7,2]",
+        "case 9: [1,2]",
+        "case 10: [9,7,7,7,7,7,1,1]",
+        "case 11: [5,5,1,2]"
+      ],
+      "scrutinee": {
+        "name": "tag",
+        "type": "U32",
+        "typeEvidence": "explicit definition signature"
+      },
+      "resultType": "List<&2,U32>",
+      "potentiallyNondependent": true,
+      "classification": "ordinary-source",
+      "sourceNormalizedEqualToFrozen": true,
+      "caution": "Fixed result type is a promising source rewrite condition, not a proof that scalarization preserves all typing/resource behavior."
+    },
+    {
+      "name": "p88_role_empty",
+      "owner": {
+        "module": "selfhost/src/host/prepared-base.bend",
+        "line": 139
+      },
+      "baselineDeclarationLine": 37488,
+      "numericCaseRowCount": 3,
+      "patterns": [
+        "case 6 P88Empty{}: P88Terms{Nil{}}",
+        "case 7 P88Empty{}: P88Defs{Nil{}}",
+        "case 8 P88Empty{}: P88Strings{Nil{}}"
+      ],
+      "scrutinee": {
+        "name": "role",
+        "type": "U32",
+        "typeEvidence": "explicit definition signature"
+      },
+      "resultType": "P88Node",
+      "potentiallyNondependent": true,
+      "classification": "ordinary-source",
+      "sourceNormalizedEqualToFrozen": true,
+      "caution": "Numeric dispatch is combined with constructor patterns; preserve arm order, constructor validation, fallback and affine consumption."
+    },
+    {
+      "name": "p88_field_number",
+      "owner": {
+        "module": "selfhost/src/host/prepared-base.bend",
+        "line": 153
+      },
+      "baselineDeclarationLine": 37502,
+      "numericCaseRowCount": 4,
+      "patterns": [
+        "case 1: P88Step{state, P88Word{n}}",
+        "case 2: p88_bool_value(state,n)",
+        "case 3: p88_string_at(state, n)",
+        "case 13: p88_head_at(state, n, U32.is_ge(n, 2147483648))"
+      ],
+      "scrutinee": {
+        "name": "role",
+        "type": "U32",
+        "typeEvidence": "explicit definition signature"
+      },
+      "resultType": "P88Step",
+      "potentiallyNondependent": true,
+      "classification": "ordinary-source",
+      "sourceNormalizedEqualToFrozen": true,
+      "caution": "Fixed result type is a promising source rewrite condition, not a proof that scalarization preserves all typing/resource behavior."
+    },
+    {
+      "name": "p88_bool_value",
+      "owner": {
+        "module": "selfhost/src/host/prepared-base.bend",
+        "line": 166
+      },
+      "baselineDeclarationLine": 37515,
+      "numericCaseRowCount": 2,
+      "patterns": [
+        "case 0: P88Step{state,P88Bool{False{}}}",
+        "case 1: P88Step{state,P88Bool{True{}}}"
+      ],
+      "scrutinee": {
+        "name": "n",
+        "type": "U32",
+        "typeEvidence": "explicit definition signature"
+      },
+      "resultType": "P88Step",
+      "potentiallyNondependent": true,
+      "classification": "ordinary-source",
+      "sourceNormalizedEqualToFrozen": true,
+      "caution": "Fixed result type is a promising source rewrite condition, not a proof that scalarization preserves all typing/resource behavior."
+    },
+    {
+      "name": "p88_build",
+      "owner": {
+        "module": "selfhost/src/host/prepared-base.bend",
+        "line": 212
+      },
+      "baselineDeclarationLine": 37580,
+      "numericCaseRowCount": 17,
+      "patterns": [
+        "case 0 Nil{}: P88Empty{}",
+        "case 1 Con{P88Term{h}, Con{P88Empty{}, Nil{}}}: P88Terms{[h]}",
+        "case 1 Con{P88Def{h}, Con{P88Empty{}, Nil{}}}: P88Defs{[h]}",
+        "case 1 Con{P88String{h}, Con{P88Empty{}, Nil{}}}: P88Strings{[h]}",
+        "case 1 Con{P88Term{h}, Con{P88Terms{t}, Nil{}}}: P88Terms{Con{h, t}}",
+        "case 1 Con{P88Def{h}, Con{P88Defs{t}, Nil{}}}: P88Defs{Con{h, t}}",
+        "case 1 Con{P88String{h}, Con{P88Strings{t}, Nil{}}}: P88Strings{Con{h, t}}",
+        "case 2 Con{P88String{a}, Con{P88String{b}, Con{P88Word{c}, Con{P88Word{d}, Con{P88Terms{e}, Con{P88Strings{f}, Con{P88Word{+g}, Con{P88Word{+h}, Nil{}}}}}}}}}:",
+        "case 3 Con{P88String{a}, Con{P88Word{b}, Con{P88Word{c}, Con{P88Terms{d}, Con{P88Strings{e}, Con{P88Word{+f}, Con{P88Word{+g}, Con{P88Bool{h}, Nil{}}}}}}}}}:",
+        "case 4 Con{P88String{+a}, Con{P88Word{+b}, Con{P88String{+c}, Con{P88Word{+d}, Con{P88Word{+e}, Nil{}}}}}}:",
+        "case 5 Con{P88String{a}, Con{P88String{b}, Con{P88Word{c}, Con{P88Word{d}, Con{P88Term{e}, Con{P88Term{f}, Con{P88Defs{g}, Con{P88Bool{h}, Con{P88Bool{i}, Nil{}}}}}}}}}}:",
+        "case 6 Con{P88Word{a}, Con{P88Defs{b}, Nil{}}}: P88Def{KIndexLeaf{a,b}}",
+        "case 7 Con{P88Word{a}, Con{P88Word{b}, Con{P88Def{c}, Con{P88Def{d}, Nil{}}}}}: P88Def{KIndexNode{a,b,c,d}}",
+        "case 8 Con{P88Word{a}, Con{P88Word{b}, Con{P88Word{c}, Con{P88Defs{d}, Con{P88Bool{e}, Nil{}}}}}}: P88Checked{KBasePrefixState{a,b,c,d,e}}",
+        "case 9 Con{P88Word{a}, Con{P88Bool{b}, Nil{}}}: P88Fresh{FFreshPrefixState{a,b}}",
+        "case 10 Con{P88Checked{a}, Con{P88Defs{b}, Con{P88Defs{c}, Con{P88Defs{d}, Con{P88Defs{e}, Con{P88Defs{f}, Con{P88Word{g}, Con{P88Word{h}, Nil{}}}}}}}}}: P88World{KBasePreparedWorld{a,b,c,d,e,f,g,h}}",
+        "case 11 Con{P88Def{a}, Con{P88Def{b}, Con{P88Word{c}, Con{P88Bool{d}, Nil{}}}}}: P88Frontend{FReadyPrefixState{a,b,c,d}}"
+      ],
+      "scrutinee": {
+        "name": "tag",
+        "type": "U32",
+        "typeEvidence": "explicit definition signature"
+      },
+      "resultType": "P88Node",
+      "potentiallyNondependent": true,
+      "classification": "ordinary-source",
+      "sourceNormalizedEqualToFrozen": true,
+      "caution": "Numeric dispatch is combined with constructor patterns; preserve arm order, constructor validation, fallback and affine consumption."
+    },
+    {
+      "name": "p88_records",
+      "owner": {
+        "module": "selfhost/src/host/prepared-base.bend",
+        "line": 268
+      },
+      "baselineDeclarationLine": 37636,
+      "numericCaseRowCount": 1,
+      "patterns": [
+        "case 0: p88_roots(state,[7,9,10,11,12],Nil{})"
+      ],
+      "scrutinee": {
+        "name": "left",
+        "type": "U32",
+        "typeEvidence": "explicit definition signature"
+      },
+      "resultType": "P88Decoded",
+      "potentiallyNondependent": true,
+      "classification": "ordinary-source",
+      "sourceNormalizedEqualToFrozen": true,
+      "caution": "Fixed result type is a promising source rewrite condition, not a proof that scalarization preserves all typing/resource behavior."
+    },
+    {
+      "name": "p111q_segment_datum",
+      "owner": {
+        "module": "selfhost/src/back/qbe/emit.bend",
+        "line": 255
+      },
+      "baselineDeclarationLine": 40261,
+      "numericCaseRowCount": 3,
+      "patterns": [
+        "case 0: P111QReloc{p111q_symbol(name),0}",
+        "case 1: P111QByte{arity}",
+        "case 2: P111QByte{flags}"
+      ],
+      "scrutinee": {
+        "name": "kind",
+        "type": "U32",
+        "typeEvidence": "explicit definition signature"
+      },
+      "resultType": "P111QDatum",
+      "potentiallyNondependent": true,
+      "classification": "ordinary-source",
+      "sourceNormalizedEqualToFrozen": true,
+      "caution": "Fixed result type is a promising source rewrite condition, not a proof that scalarization preserves all typing/resource behavior."
+    },
+    {
+      "name": "p112s_descriptor_item",
+      "owner": {
+        "module": "selfhost/src/back/qbe/static-data.bend",
+        "line": 390
+      },
+      "baselineDeclarationLine": 41966,
+      "numericCaseRowCount": 2,
+      "patterns": [
+        "case 8: P111QLong{size,0}",
+        "case 19: P111QReloc{\"p111_static_image\",0}"
+      ],
+      "scrutinee": {
+        "name": "index",
+        "type": "U32",
+        "typeEvidence": "explicit definition signature"
+      },
+      "resultType": "P111QDatum",
+      "potentiallyNondependent": true,
+      "classification": "ordinary-source",
+      "sourceNormalizedEqualToFrozen": true,
+      "caution": "Fixed result type is a promising source rewrite condition, not a proof that scalarization preserves all typing/resource behavior."
+    },
+    {
+      "name": "p112fp_binary",
+      "owner": {
+        "module": "selfhost/src/back/qbe/fused-regions.bend",
+        "line": 3
+      },
+      "baselineDeclarationLine": 42228,
+      "numericCaseRowCount": 10,
+      "patterns": [
+        "case 26: \"add\"",
+        "case 27: \"sub\"",
+        "case 28: \"mul\"",
+        "case 29: \"div\"",
+        "case 30: \"ceqs\"",
+        "case 31: \"cnes\"",
+        "case 32: \"clts\"",
+        "case 33: \"cles\"",
+        "case 34: \"cgts\"",
+        "case 35: \"cges\""
+      ],
+      "scrutinee": {
+        "name": "id",
+        "type": "U32",
+        "typeEvidence": "explicit definition signature"
+      },
+      "resultType": "String",
+      "potentiallyNondependent": true,
+      "classification": "ordinary-source",
+      "sourceNormalizedEqualToFrozen": true,
+      "caution": "Fixed result type is a promising source rewrite condition, not a proof that scalarization preserves all typing/resource behavior."
+    },
+    {
+      "name": "p113p_array_arity",
+      "owner": {
+        "module": "selfhost/src/back/qbe/flat-products.bend",
+        "line": 71
+      },
+      "baselineDeclarationLine": 45128,
+      "numericCaseRowCount": 4,
+      "patterns": [
+        "case 72: 2",
+        "case 74: 3",
+        "case 75: 1",
+        "case 76: 1"
+      ],
+      "scrutinee": {
+        "name": "id",
+        "type": "U32",
+        "typeEvidence": "explicit definition signature"
+      },
+      "resultType": "U32",
+      "potentiallyNondependent": true,
+      "classification": "ordinary-source",
+      "sourceNormalizedEqualToFrozen": true,
+      "caution": "Fixed result type is a promising source rewrite condition, not a proof that scalarization preserves all typing/resource behavior."
+    },
+    {
+      "name": "p113wt_op",
+      "owner": {
+        "module": "selfhost/tests/compiler/native-controls.bend",
+        "line": 193
+      },
+      "baselineDeclarationLine": 47992,
+      "numericCaseRowCount": 5,
+      "patterns": [
+        "case 0: \"add\"",
+        "case 1: \"sub\"",
+        "case 2: \"mul\"",
+        "case 3: \"and\"",
+        "case 4: \"or\""
+      ],
+      "scrutinee": {
+        "name": "which",
+        "type": "U32",
+        "typeEvidence": "explicit definition signature"
+      },
+      "resultType": "String",
+      "potentiallyNondependent": true,
+      "classification": "control-helper",
+      "sourceNormalizedEqualToFrozen": true,
+      "caution": "Fixed result type is a promising source rewrite condition, not a proof that scalarization preserves all typing/resource behavior."
+    },
+    {
+      "name": "p114st_functions",
+      "owner": {
+        "module": "selfhost/tests/compiler/native-controls.bend",
+        "line": 282
+      },
+      "baselineDeclarationLine": 48396,
+      "numericCaseRowCount": 5,
+      "patterns": [
+        "case 0: []",
+        "case 1: [p114st_identity()]",
+        "case 2: [p114st_scalar(),p114st_pair(),p114st_caller()]",
+        "case 3: [p114st_scalar(),p114st_branch()]",
+        "case 4: [p114st_loop()]"
+      ],
+      "scrutinee": {
+        "name": "which",
+        "type": "U32",
+        "typeEvidence": "explicit definition signature"
+      },
+      "resultType": "List<&2,P113DFunction>",
+      "potentiallyNondependent": true,
+      "classification": "control-helper",
+      "sourceNormalizedEqualToFrozen": true,
+      "caution": "Fixed result type is a promising source rewrite condition, not a proof that scalarization preserves all typing/resource behavior."
+    },
+    {
+      "name": "p118nsc_segments",
+      "owner": {
+        "module": "selfhost/tests/compiler/native-controls.bend",
+        "line": 370
+      },
+      "baselineDeclarationLine": 51675,
+      "numericCaseRowCount": 1,
+      "patterns": [
+        "case 0: reversed"
+      ],
+      "scrutinee": {
+        "name": "n",
+        "type": "U32",
+        "typeEvidence": "explicit definition signature"
+      },
+      "resultType": "List<&2,N111Segment>",
+      "potentiallyNondependent": true,
+      "classification": "control-helper",
+      "sourceNormalizedEqualToFrozen": true,
+      "caution": "Fixed result type is a promising source rewrite condition, not a proof that scalarization preserves all typing/resource behavior."
+    },
+    {
+      "name": "p118nsc_functions",
+      "owner": {
+        "module": "selfhost/tests/compiler/native-controls.bend",
+        "line": 377
+      },
+      "baselineDeclarationLine": 51682,
+      "numericCaseRowCount": 1,
+      "patterns": [
+        "case 0: reversed"
+      ],
+      "scrutinee": {
+        "name": "n",
+        "type": "U32",
+        "typeEvidence": "explicit definition signature"
+      },
+      "resultType": "List<&2,P113DFunction>",
+      "potentiallyNondependent": true,
+      "classification": "control-helper",
+      "sourceNormalizedEqualToFrozen": true,
+      "caution": "Fixed result type is a promising source rewrite condition, not a proof that scalarization preserves all typing/resource behavior."
+    },
+    {
+      "name": "p118nsc_names",
+      "owner": {
+        "module": "selfhost/tests/compiler/native-controls.bend",
+        "line": 384
+      },
+      "baselineDeclarationLine": 51689,
+      "numericCaseRowCount": 1,
+      "patterns": [
+        "case 0: reversed"
+      ],
+      "scrutinee": {
+        "name": "n",
+        "type": "U32",
+        "typeEvidence": "explicit definition signature"
+      },
+      "resultType": "List<&2,String>",
+      "potentiallyNondependent": true,
+      "classification": "control-helper",
+      "sourceNormalizedEqualToFrozen": true,
+      "caution": "Fixed result type is a promising source rewrite condition, not a proof that scalarization preserves all typing/resource behavior."
+    },
+    {
+      "name": "p118nsc_scalars",
+      "owner": {
+        "module": "selfhost/tests/compiler/native-controls.bend",
+        "line": 391
+      },
+      "baselineDeclarationLine": 51696,
+      "numericCaseRowCount": 1,
+      "patterns": [
+        "case 0: reversed"
+      ],
+      "scrutinee": {
+        "name": "n",
+        "type": "U32",
+        "typeEvidence": "explicit definition signature"
+      },
+      "resultType": "List<&2,N111Stmt>",
+      "potentiallyNondependent": true,
+      "classification": "control-helper",
+      "sourceNormalizedEqualToFrozen": true,
+      "caution": "Fixed result type is a promising source rewrite condition, not a proof that scalarization preserves all typing/resource behavior."
+    },
+    {
+      "name": "p118np_flat",
+      "owner": {
+        "module": "selfhost/src/back/qbe/native-transport.bend",
+        "line": 408
+      },
+      "baselineDeclarationLine": 51830,
+      "numericCaseRowCount": 1,
+      "patterns": [
+        "case 0: tail"
+      ],
+      "scrutinee": {
+        "name": "n",
+        "type": "U32",
+        "typeEvidence": "explicit definition signature"
+      },
+      "resultType": "List<&2,KDef>",
+      "potentiallyNondependent": true,
+      "classification": "control-helper",
+      "sourceNormalizedEqualToFrozen": true,
+      "caution": "Fixed result type is a promising source rewrite condition, not a proof that scalarization preserves all typing/resource behavior."
+    },
+    {
+      "name": "p118np_nested",
+      "owner": {
+        "module": "selfhost/src/back/qbe/native-transport.bend",
+        "line": 415
+      },
+      "baselineDeclarationLine": 51837,
+      "numericCaseRowCount": 1,
+      "patterns": [
+        "case 0: children"
+      ],
+      "scrutinee": {
+        "name": "n",
+        "type": "U32",
+        "typeEvidence": "explicit definition signature"
+      },
+      "resultType": "List<&2,KDef>",
+      "potentiallyNondependent": true,
+      "classification": "control-helper",
+      "sourceNormalizedEqualToFrozen": true,
+      "caution": "Fixed result type is a promising source rewrite condition, not a proof that scalarization preserves all typing/resource behavior."
+    },
+    {
+      "name": "p126sc_zeros",
+      "owner": {
+        "module": "selfhost/src/back/qbe/product-composition.bend",
+        "line": 585
+      },
+      "baselineDeclarationLine": 54480,
+      "numericCaseRowCount": 1,
+      "patterns": [
+        "case 0: []"
+      ],
+      "scrutinee": {
+        "name": "count",
+        "type": "U32",
+        "typeEvidence": "explicit definition signature"
+      },
+      "resultType": "List<&2,N111Value>",
+      "potentiallyNondependent": true,
+      "classification": "ordinary-source",
+      "sourceNormalizedEqualToFrozen": true,
+      "caution": "Fixed result type is a promising source rewrite condition, not a proof that scalarization preserves all typing/resource behavior."
+    },
+    {
+      "name": "p131a_low",
+      "owner": {
+        "module": "selfhost/src/core/index-laws.bend",
+        "line": 6
+      },
+      "baselineDeclarationLine": 56525,
+      "numericCaseRowCount": 2,
+      "patterns": [
+        "case 0: p131a_add(a,b)",
+        "case 1: U32.min(a,b)"
+      ],
+      "scrutinee": {
+        "name": "mode",
+        "type": "U32",
+        "typeEvidence": "explicit definition signature"
+      },
+      "resultType": "U32",
+      "potentiallyNondependent": true,
+      "classification": "protected-proof-helper",
+      "sourceNormalizedEqualToFrozen": true,
+      "caution": "Fixed result type is a promising source rewrite condition, not a proof that scalarization preserves all typing/resource behavior."
+    },
+    {
+      "name": "p131a_high",
+      "owner": {
+        "module": "selfhost/src/core/index-laws.bend",
+        "line": 13
+      },
+      "baselineDeclarationLine": 56532,
+      "numericCaseRowCount": 1,
+      "patterns": [
+        "case 0: p131a_add(a,b)"
+      ],
+      "scrutinee": {
+        "name": "mode",
+        "type": "U32",
+        "typeEvidence": "explicit definition signature"
+      },
+      "resultType": "U32",
+      "potentiallyNondependent": true,
+      "classification": "protected-proof-helper",
+      "sourceNormalizedEqualToFrozen": true,
+      "caution": "Fixed result type is a promising source rewrite condition, not a proof that scalarization preserves all typing/resource behavior."
+    }
+  ],
+  "protectedProofHelpers": {
+    "p131a_high": {
+      "normalizedSha256": "9cd037cbcf4d195d1b77ce3e8577610088c4e5124c5694020dfbd6f9862111e8",
+      "verifier": false,
+      "proof": true
+    },
+    "p131a_low": {
+      "normalizedSha256": "ee5b753e8adde09f7d9969c02d4e36c9e0f27d301bfee9f9af525676b7018064",
+      "verifier": false,
+      "proof": true
+    }
+  },
+  "actualQuotedPatternHeads": [
+    {
+      "line": 37407,
+      "name": "p88_digits",
+      "pattern": "SCon{'\\n',tail}"
+    },
+    {
+      "line": 37439,
+      "name": "p88_text_chars",
+      "pattern": "0 SCon{'\\n',tail}"
+    },
+    {
+      "line": 51229,
+      "name": "p147z_runtime_111",
+      "pattern": "\"keep\""
+    },
+    {
+      "line": 51230,
+      "name": "p147z_runtime_111",
+      "pattern": "\"sink\""
+    },
+    {
+      "line": 51231,
+      "name": "p147z_runtime_111",
+      "pattern": "\"ctor\""
+    },
+    {
+      "line": 51232,
+      "name": "p147z_runtime_111",
+      "pattern": "\"take\""
+    },
+    {
+      "line": 51233,
+      "name": "p147z_runtime_111",
+      "pattern": "\"closure\""
+    },
+    {
+      "line": 51234,
+      "name": "p147z_runtime_111",
+      "pattern": "\"tag\""
+    },
+    {
+      "line": 51235,
+      "name": "p147z_runtime_111",
+      "pattern": "\"frame\""
+    },
+    {
+      "line": 51236,
+      "name": "p147z_runtime_111",
+      "pattern": "\"jump\""
+    },
+    {
+      "line": 51237,
+      "name": "p147z_runtime_111",
+      "pattern": "\"return\""
+    },
+    {
+      "line": 51238,
+      "name": "p147z_runtime_111",
+      "pattern": "\"apply\""
+    },
+    {
+      "line": 51239,
+      "name": "p147z_runtime_111",
+      "pattern": "\"stack_pop\""
+    },
+    {
+      "line": 51240,
+      "name": "p147z_runtime_111",
+      "pattern": "\"stack_get\""
+    },
+    {
+      "line": 51241,
+      "name": "p147z_runtime_111",
+      "pattern": "\"reg_get\""
+    },
+    {
+      "line": 51242,
+      "name": "p147z_runtime_111",
+      "pattern": "\"fail\""
+    },
+    {
+      "line": 51243,
+      "name": "p147z_runtime_111",
+      "pattern": "\"op\""
+    },
+    {
+      "line": 51244,
+      "name": "p147z_runtime_111",
+      "pattern": "\"special_ctor\""
+    },
+    {
+      "line": 51245,
+      "name": "p147z_runtime_111",
+      "pattern": "\"special_test\""
+    },
+    {
+      "line": 51246,
+      "name": "p147z_runtime_111",
+      "pattern": "\"special_take\""
+    },
+    {
+      "line": 51250,
+      "name": "p147z_runtime_118",
+      "pattern": "\"extend\""
+    },
+    {
+      "line": 51251,
+      "name": "p147z_runtime_118",
+      "pattern": "\"finish\""
+    },
+    {
+      "line": 51252,
+      "name": "p147z_runtime_118",
+      "pattern": "\"borrow_fields\""
+    },
+    {
+      "line": 51253,
+      "name": "p147z_runtime_118",
+      "pattern": "\"borrow_scalar_safe\""
+    },
+    {
+      "line": 51261,
+      "name": "p118z_runtime",
+      "pattern": "\"p113_rt_array_pair\""
+    },
+    {
+      "line": 51262,
+      "name": "p118z_runtime",
+      "pattern": "\"p126_rt_nat_divmod\""
+    },
+    {
+      "line": 51263,
+      "name": "p118z_runtime",
+      "pattern": "\"p125_rt_concat_typed\""
+    }
+  ],
+  "quotedPatternOwners": [
+    {
+      "name": "p147z_runtime_111",
+      "module": "selfhost/src/back/qbe/ownership.bend",
+      "line": 486,
+      "signature": "def p147z_runtime_111(symbol: String) -> Bool:"
+    },
+    {
+      "name": "p147z_runtime_118",
+      "module": "selfhost/src/back/qbe/ownership.bend",
+      "line": 507,
+      "signature": "def p147z_runtime_118(symbol: String) -> Bool:"
+    },
+    {
+      "name": "p118z_runtime",
+      "module": "selfhost/src/back/qbe/ownership.bend",
+      "line": 515,
+      "signature": "def p118z_runtime(+symbol: String) -> Bool:"
+    },
+    {
+      "name": "p88_digits",
+      "module": "selfhost/src/host/prepared-base.bend",
+      "line": 55,
+      "signature": "def p88_digits(text: String, +acc: U32, +digits: U32) -> P88Number:"
+    }
+  ],
+  "additionalNestedNumericHeads": {
+    "count": 44,
+    "functions": 40,
+    "initialLineNumericTokens": 84,
+    "rows": [
+      {
+        "line": 37400,
+        "name": "p88_u32",
+        "pattern": "P88Cursor{text,1}",
+        "numbers": [
+          "1"
+        ]
+      },
+      {
+        "line": 37401,
+        "name": "p88_u32",
+        "pattern": "P88Cursor{text,2}",
+        "numbers": [
+          "2"
+        ]
+      },
+      {
+        "line": 40824,
+        "name": "p112t_tail_nodes",
+        "pattern": "_ 0",
+        "numbers": [
+          "0"
+        ]
+      },
+      {
+        "line": 41052,
+        "name": "p112t_failure_args",
+        "pattern": "Con{N111Arg{N111Ptr{},N111Local{state}},Con{N111Arg{N111U32{},N111Const{code,0}},Nil{}}}",
+        "numbers": [
+          "0"
+        ]
+      },
+      {
+        "line": 41060,
+        "name": "p112t_failure_frame",
+        "pattern": "N111Call{name,N111U64{},symbol,Con{N111Arg{N111Ptr{},N111Local{state}},Con{N111Arg{N111U32{},N111FuncId{target}},Con{N111Arg{N111Ptr{},N111Local{scratch}},Con{N111Arg{N111U32{},N111Const{count,0}},Nil{}}}}}}",
+        "numbers": [
+          "0"
+        ]
+      },
+      {
+        "line": 41226,
+        "name": "p112w_result_args",
+        "pattern": "Con{N111Arg{N111Ptr{},N111Local{state}},Con{N111Arg{N111Ptr{},N111Local{scratch}},Con{N111Arg{N111U32{},N111Const{1,0}},Nil{}}}}",
+        "numbers": [
+          "1",
+          "0"
+        ]
+      },
+      {
+        "line": 41234,
+        "name": "p112w_result",
+        "pattern": "Con{N111Store{N111U64{},N111Local{scratch},0,value},Con{N111Call{dest,N111U64{},symbol,args},Con{N111Return{N111Local{word}},Nil{}}}}",
+        "numbers": [
+          "0"
+        ]
+      },
+      {
+        "line": 41255,
+        "name": "p112w_nodes",
+        "pattern": "_ 0",
+        "numbers": [
+          "0"
+        ]
+      },
+      {
+        "line": 42559,
+        "name": "p112f_frame",
+        "pattern": "Con{N111Call{+dest,N111U64{},+symbol,Con{N111Arg{N111Ptr{},N111Local{+state}},Con{N111Arg{N111U32{},N111FuncId{+name}},Con{N111Arg{N111Ptr{},N111Local{+scratch}},Con{N111Arg{N111U32{},N111Const{+count,0}},Nil{}}}}}},+rest}",
+        "numbers": [
+          "0"
+        ]
+      },
+      {
+        "line": 42601,
+        "name": "p112f_cont_result",
+        "pattern": "Con{N111Call{+word,N111U64{},+symbol,Con{N111Arg{N111Ptr{},N111Local{+state}},Con{N111Arg{N111U32{},N111Const{0,0}},Nil{}}}},+rest}",
+        "numbers": [
+          "0",
+          "0"
+        ]
+      },
+      {
+        "line": 42616,
+        "name": "p112f_cont_get",
+        "pattern": "Con{N111Call{+word,N111U64{},+symbol,Con{N111Arg{N111Ptr{},N111Local{+state}},Con{N111Arg{N111U32{},N111Const{+slot,0}},Nil{}}}},+rest}",
+        "numbers": [
+          "0"
+        ]
+      },
+      {
+        "line": 42625,
+        "name": "p112f_cont_pop",
+        "pattern": "Con{N111Call{+word,N111U64{},+symbol,Con{N111Arg{N111Ptr{},N111Local{+state}},Con{N111Arg{N111U32{},N111Const{+held,0}},Nil{}}}},+rest}",
+        "numbers": [
+          "0"
+        ]
+      },
+      {
+        "line": 42634,
+        "name": "p112f_cont_body",
+        "pattern": "Con{N111Alloca{+name,2048,8},+rest}",
+        "numbers": [
+          "2048",
+          "8"
+        ]
+      },
+      {
+        "line": 42651,
+        "name": "p112f_values",
+        "pattern": "_ 0",
+        "numbers": [
+          "0"
+        ]
+      },
+      {
+        "line": 43078,
+        "name": "p112r_scalar",
+        "pattern": "N111Alloca{+name,2048,8}",
+        "numbers": [
+          "2048",
+          "8"
+        ]
+      },
+      {
+        "line": 43085,
+        "name": "p112r_failure_frame",
+        "pattern": "N111Call{+name,N111U64{},+symbol,Con{N111Arg{N111Ptr{},N111Local{+state}},Con{N111Arg{N111U32{},N111FuncId{+target}},Con{N111Arg{N111Ptr{},N111Local{+scratch}},Con{N111Arg{N111U32{},N111Const{+count,0}},Nil{}}}}}}",
+        "numbers": [
+          "0"
+        ]
+      },
+      {
+        "line": 43112,
+        "name": "p112r_jump",
+        "pattern": "Con{N111Call{+dest,N111U64{},+symbol,Con{N111Arg{N111Ptr{},N111Local{+state}},Con{N111Arg{N111U32{},N111FuncId{+name}},Con{N111Arg{N111Ptr{},N111Local{+scratch}},Con{N111Arg{N111U32{},N111Const{+count,0}},Nil{}}}}}},Con{N111Return{N111Local{+word}},Nil{}}}",
+        "numbers": [
+          "0"
+        ]
+      },
+      {
+        "line": 43133,
+        "name": "p112r_result",
+        "pattern": "Con{N111Store{N111U64{},N111Local{+base},0,+value},Con{N111Call{+dest,N111U64{},+symbol,Con{N111Arg{N111Ptr{},N111Local{+state}},Con{N111Arg{N111Ptr{},N111Local{+scratch}},Con{N111Arg{N111U32{},N111Const{1,0}},Nil{}}}}},Con{N111Return{N111Local{+word}},Nil{}}}}",
+        "numbers": [
+          "0",
+          "1",
+          "0"
+        ]
+      },
+      {
+        "line": 43354,
+        "name": "p112c_frame",
+        "pattern": "Con{N111Call{+dest,N111U64{},+symbol,Con{N111Arg{N111Ptr{},N111Local{+state}},Con{N111Arg{N111U32{},N111FuncId{+name}},Con{N111Arg{N111Ptr{},N111Local{+scratch}},Con{N111Arg{N111U32{},N111Const{+count,0}},Nil{}}}}}},+rest}",
+        "numbers": [
+          "0"
+        ]
+      },
+      {
+        "line": 46036,
+        "name": "p113nt_return_shape",
+        "pattern": "P111Code{Con{N111Store{N111U64{},N111Local{base},0,N111Const{a,b}},rest},segments,fresh,error}",
+        "numbers": [
+          "0"
+        ]
+      },
+      {
+        "line": 46531,
+        "name": "p113j_scratch_literal",
+        "pattern": "N111Const{+count,0}",
+        "numbers": [
+          "0"
+        ]
+      },
+      {
+        "line": 46796,
+        "name": "p113nmt_shape",
+        "pattern": "Con{N111Bin{name,N111U64{},op,N111Const{a,b},N111Const{1,0}},Nil{}}",
+        "numbers": [
+          "1",
+          "0"
+        ]
+      },
+      {
+        "line": 46809,
+        "name": "p113nmt_local",
+        "pattern": "Con{N111Bin{name,N111U64{},op,N111Local{word},N111Const{1,0}},Nil{}}",
+        "numbers": [
+          "1",
+          "0"
+        ]
+      },
+      {
+        "line": 47859,
+        "name": "p113w_mask_of",
+        "pattern": "P113DScalar{N111Bin{destination,N111U64{},op,N111Local{word},N111Const{4294967295,0}}}",
+        "numbers": [
+          "4294967295",
+          "0"
+        ]
+      },
+      {
+        "line": 47874,
+        "name": "p113w_mask",
+        "pattern": "P113DScalar{N111Bin{name,N111U64{},op,left,N111Const{4294967295,0}}}",
+        "numbers": [
+          "4294967295",
+          "0"
+        ]
+      },
+      {
+        "line": 48056,
+        "name": "p113bq_scalar",
+        "pattern": "Con{N111Set{+a,N111U64{},N111Const{1,0}},Nil{}} Con{N111Set{b,N111U64{},N111Const{0,0}},Nil{}}",
+        "numbers": [
+          "1",
+          "0",
+          "0",
+          "0"
+        ]
+      },
+      {
+        "line": 48058,
+        "name": "p113bq_scalar",
+        "pattern": "Con{N111Set{+a,N111U64{},N111Const{0,0}},Nil{}} Con{N111Set{b,N111U64{},N111Const{1,0}},Nil{}}",
+        "numbers": [
+          "0",
+          "0",
+          "1",
+          "0"
+        ]
+      },
+      {
+        "line": 48525,
+        "name": "p114r_prefix",
+        "pattern": "_ 0",
+        "numbers": [
+          "0"
+        ]
+      },
+      {
+        "line": 48623,
+        "name": "p114r_constructor",
+        "pattern": "Con{N111Store{N111U64{},N111Local{a},0,N111Local{h}},",
+        "numbers": [
+          "0"
+        ]
+      },
+      {
+        "line": 48849,
+        "name": "p114r_drop",
+        "pattern": "_ 0",
+        "numbers": [
+          "0"
+        ]
+      },
+      {
+        "line": 50169,
+        "name": "p117h_walk",
+        "pattern": "_ P117HScan{facts,slots,mask,used,again,0,next,sites}",
+        "numbers": [
+          "0"
+        ]
+      },
+      {
+        "line": 50532,
+        "name": "p118t_prefix",
+        "pattern": "_ 0",
+        "numbers": [
+          "0"
+        ]
+      },
+      {
+        "line": 50540,
+        "name": "p118t_rest",
+        "pattern": "_ 0",
+        "numbers": [
+          "0"
+        ]
+      },
+      {
+        "line": 51259,
+        "name": "p118z_runtime",
+        "pattern": "SCon{Chr{112},SCon{Chr{49},SCon{Chr{49},SCon{Chr{49},SCon{Chr{95},SCon{Chr{114},SCon{Chr{116},SCon{Chr{95},rest}}}}}}}}",
+        "numbers": [
+          "112",
+          "49",
+          "49",
+          "49",
+          "95",
+          "114",
+          "116",
+          "95"
+        ]
+      },
+      {
+        "line": 51260,
+        "name": "p118z_runtime",
+        "pattern": "SCon{Chr{112},SCon{Chr{49},SCon{Chr{49},SCon{Chr{56},SCon{Chr{95},SCon{Chr{114},SCon{Chr{116},SCon{Chr{95},rest}}}}}}}}",
+        "numbers": [
+          "112",
+          "49",
+          "49",
+          "56",
+          "95",
+          "114",
+          "116",
+          "95"
+        ]
+      },
+      {
+        "line": 52467,
+        "name": "p125p_wrap",
+        "pattern": "P113DCandidate{P113DFunction{+name,+params,1,True{},+body},+error,+calls}",
+        "numbers": [
+          "1"
+        ]
+      },
+      {
+        "line": 52722,
+        "name": "p114so_group_call",
+        "pattern": "N111Call{+name,N111U64{},symbol,[N111Arg{N111Ptr{},N111Local{state}},N111Arg{N111U32{},N111Const{+id,0}},N111Arg{N111Ptr{},N111Local{input}},N111Arg{N111U32{},N111Const{argc,0}}]}",
+        "numbers": [
+          "0",
+          "0"
+        ]
+      },
+      {
+        "line": 52735,
+        "name": "p114so_group",
+        "pattern": "Con{P113DScalar{N111Store{N111U64{},N111Local{+buffer},0,left}},Con{P113DScalar{N111Store{N111U64{},N111Local{other},8,right}},Con{P113DScalar{call},rest}}}",
+        "numbers": [
+          "0",
+          "8"
+        ]
+      },
+      {
+        "line": 52737,
+        "name": "p114so_group",
+        "pattern": "Con{P113DScalar{N111Store{N111U64{},N111Local{+buffer},0,left}},Con{P113DScalar{call},rest}}",
+        "numbers": [
+          "0"
+        ]
+      },
+      {
+        "line": 53759,
+        "name": "p126ntc_order",
+        "pattern": "P114TExpansion{Con{N111Bin{temp,N111U64{},op,N111Const{a,b},N111Const{1,0}},",
+        "numbers": [
+          "1",
+          "0"
+        ]
+      },
+      {
+        "line": 54702,
+        "name": "p126sc_full_word",
+        "pattern": "Con{N111Const{1,0},Con{N111Const{4294967295,4294967295},Con{N111Const{0,256},Con{N111Const{0,0},Nil{}}}}}",
+        "numbers": [
+          "1",
+          "0",
+          "4294967295",
+          "4294967295",
+          "0",
+          "256",
+          "0",
+          "0"
+        ]
+      },
+      {
+        "line": 56544,
+        "name": "p131u_absent",
+        "pattern": "values 0",
+        "numbers": [
+          "0"
+        ]
+      },
+      {
+        "line": 57947,
+        "name": "p137qi_wide_args",
+        "pattern": "Con{N111Arg{N111Ptr{},state},Con{N111Arg{N111U64{},term},Con{N111Arg{N111Ptr{},buffer},Con{N111Arg{N111U32{},N111Const{+count,0}},Nil{}}}}}",
+        "numbers": [
+          "0"
+        ]
+      },
+      {
+        "line": 63938,
+        "name": "p143cg_enough",
+        "pattern": "_ 0",
+        "numbers": [
+          "0"
+        ]
+      }
+    ],
+    "limits": "Secondary screen only. These are case-start lines with a numeric field after the first pattern position. Multiline continuations are not fully counted, and their field types/refinement obligations were not audited here. Do not treat the 96 numeric-leading rows as all numeric patterns."
+  },
+  "recommendedSmallTargets": [
+    {
+      "rank": 1,
+      "functions": [
+        "p88_roles"
+      ],
+      "caseRows": 12,
+      "reason": "Largest isolated U32-to-fixed-list table; no numeric-dependent result or constructor refinement. Freeze exact tag outputs and fallback before a small scalar-equality source rewrite.",
+      "limits": "Prepared-carrier decoder layout is externally meaningful. Preserve exact roles and unknown-tag result; do not weaken width, span, invalid-node or malformed-input checks."
+    },
+    {
+      "rank": 2,
+      "functions": [
+        "p112fp_binary"
+      ],
+      "caseRows": 10,
+      "reason": "Isolated U32-to-operation-name table with explicit INVALID fallback; clean acquisition/runtime proxy.",
+      "limits": "Preserve all operation strings and fallback; generated-program performance still needs measurement."
+    },
+    {
+      "rank": 3,
+      "functions": [
+        "sk_char",
+        "j_escape_char_on"
+      ],
+      "caseRows": 13,
+      "reason": "Fixed String escaping dispatch on U32 code points. Input conversion and fallback are explicit.",
+      "limits": "Preserve distinct JSON/JS escape spellings, zero/control characters, surrogate handling and each function's own fallback."
+    },
+    {
+      "rank": 4,
+      "functions": [
+        "p88_build"
+      ],
+      "caseRows": 17,
+      "reason": "Highest mixed numeric/constructor matrix count; a separate tag-first scalar dispatch is a stronger follow-up if isolated tables pay.",
+      "limits": "Higher correctness burden: retain exact P88Node field shape checking, spans, literal validity, tag1 overloads, ordering and P88Bad fallback. Not the first unrestricted mechanical rewrite."
+    }
+  ],
+  "runtimeNameClassifierNote": {
+    "functions": [
+      "p147z_runtime_111",
+      "p147z_runtime_118",
+      "p118z_runtime"
+    ],
+    "source": "selfhost/src/back/qbe/ownership.bend",
+    "observed": "25 real String patterns plus two constructor-prefix patterns carrying 16 numeric Chr fields. These are deliberate Phase147 closed-name classifiers.",
+    "conclusion": "Potential acquisition relevance deserves a separate bounded test, but source scalarization could undo measured classifier runtime gains. Reuse exact closed-name/suffix refusal controls and compare classifier runtime as well as acquisition. No rewrite is recommended from row count alone."
+  },
+  "interpretation": {
+    "relevance": "Scalar lexer source experiment strongly supports a source-shape acquisition effect. The maintained compiler has real fixed-result numeric dispatch opportunities, but their complete acquisition contribution is unmeasured.",
+    "nextExperiment": "Start with p88_roles only, same parent/assets and exact table/fallback outputs; measure both source acquisition and resulting function runtime. A win is a bounded transfer result, not a whole-compiler speed claim.",
+    "proofBoundary": "No protected helper changes. For general frontend literal-pattern optimization, preserve dependent constructor refinement, branch substitution, typing refusals, affine quantities, ownership, fresh IDs, origins/error order, and proof/kernel contracts.",
+    "noProjection": "No 100s saving, per-row cost or whole-compiler ratio can be inferred from 96 rows, the lexer-probe result, or the original candidate's diagnostic stage delta."
+  }
+}

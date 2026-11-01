@@ -1,5 +1,11 @@
 # Phase150: direct lexer production
 
+This records the initial literal-pattern variant at commit `6e88473`. The
+preferred module at HEAD is now the scalar variant; see the
+[final report](../../implementation/phase150/README.md) for its4.43× lexical and
+9.62% complete-parser result and the recovered acquisition cost. Frozen initial,
+grouped and scalar sources remain in the evidence capsule.
+
 The standalone native lexer experiment passes exact token controls and improves
 the measured lexer-plus-observer region from roughly 4.48s to 0.85s on the same
 current compiler source. The graph differential also passes, **hosted**: fifteen

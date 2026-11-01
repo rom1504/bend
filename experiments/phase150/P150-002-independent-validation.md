@@ -1,6 +1,13 @@
 # P150-002 — separate-process validation wall time
 
-Status: planned.
+Status: finite two-process pilot passed; general scheduler not qualified.
+
+Outcome: two pairs reduce whole guarded elapsed3.269→1.936s (40.78%). All8
+independent qualification reports and required exact product comparisons pass.
+The Bend coordinator uses the existing async legacy-JS provider under pinnedNode;
+same-artifact Bun pipe failures remain negative evidence. No parallel native
+heap, compiler-request speedup or CPU-efficiency claim. See
+[results](../../research/phase150/parallel-validation.md).
 
 Hypothesis: running identical independent correctness cases in separate heaps
 reduces validation wall time without changing generated code. A small Bend

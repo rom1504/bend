@@ -1,5 +1,11 @@
 # Phase150 profiler admission audit
 
+Scope note after the investigation: this audit concerns **execution of the
+standalone parser timing driver**. The later
+[acquisition profiles](parser-acquisition-profile-results.md) instead execute the
+existing compiler with deterministic complete-QBE output. Those profiles reused
+the authenticated machinery without changing its output or quality gates.
+
 Read-only workflow/source/receipt review, 2026-11-01. No profiler capture,
 instrumented build or target execution was performed for this audit.
 

@@ -1,0 +1,112 @@
+{
+  "kind": "phase150-component-qualification",
+  "complete": true,
+  "productionCompilerQualified": false,
+  "preferredModule": {
+    "file": "selfhost/tests/phase150/lexer-candidate.bend",
+    "bytes": 12276,
+    "sha256": "c5b1e71ff4f0d42c69b8c764fb83c42fa755b3f9a38d9d3611f3fff92981ed85"
+  },
+  "sourceCheck": {
+    "receipt": {
+      "file": "selfhost/build/phase150/scalar-graph-api01/report.json",
+      "bytes": 4749,
+      "sha256": "a49f11721fe3618df1465b58dcfcda27351fa092ac69d5ce9150769c683757cd"
+    },
+    "complete": true,
+    "checked": true,
+    "scope": "Whole assembled component book checked by pinned upstream; exported component roots are not a compiler API."
+  },
+  "nativeTokenGates": [
+    {
+      "name": "lexer-scalar-controls01",
+      "guard": {
+        "file": "selfhost/build/phase150/lexer-scalar-controls01-guard/process.json",
+        "bytes": 2024,
+        "sha256": "8874f78e0192c90c42872534cd348f64e29a86a772eeeb3b447ae8f98f23a1ce"
+      },
+      "stdout": {
+        "file": "selfhost/build/phase150/lexer-scalar-controls01-guard/stdout.log",
+        "bytes": 69,
+        "sha256": "62775954a79ae18e817a7a45a9277c98ab15706fcf5b7d60071b312bde0604e3"
+      }
+    },
+    {
+      "name": "lexer-scalar-compare01",
+      "guard": {
+        "file": "selfhost/build/phase150/lexer-scalar-compare01-guard/process.json",
+        "bytes": 2307,
+        "sha256": "12f53f3ca106a14ce2daa322e19607bc8becdc99971675c3697cd23899cfe8d8"
+      },
+      "stdout": {
+        "file": "selfhost/build/phase150/lexer-scalar-compare01-guard/stdout.log",
+        "bytes": 164,
+        "sha256": "40939872034b6217650f606b8b3ee6568b5a9636d358d0a5cbb837d53447ad6a"
+      }
+    },
+    {
+      "name": "lexer-scalar-base01",
+      "guard": {
+        "file": "selfhost/build/phase150/lexer-scalar-base01-guard/process.json",
+        "bytes": 2296,
+        "sha256": "363961c300dab1194a2847803ceb933bb6b498fad1cc1ac2062496a30bd98e2f"
+      },
+      "stdout": {
+        "file": "selfhost/build/phase150/lexer-scalar-base01-guard/stdout.log",
+        "bytes": 158,
+        "sha256": "6663c7fbbae7ad1a302652909983f27f7b7d759b91c8b6d1e1cf9734bb801ca2"
+      }
+    },
+    {
+      "name": "lexer-scalar-hashmap01",
+      "guard": {
+        "file": "selfhost/build/phase150/lexer-scalar-hashmap01-guard/process.json",
+        "bytes": 2253,
+        "sha256": "47ad48b08058646e632b4dbc627ab6f037d315c96d3dc550554edc17e0a2f130"
+      },
+      "stdout": {
+        "file": "selfhost/build/phase150/lexer-scalar-hashmap01-guard/stdout.log",
+        "bytes": 153,
+        "sha256": "053c188b9ba1c7b20246469474e7ae31f5f1600745b19a413a49cde31215cca6"
+      }
+    }
+  ],
+  "hostedGraphGates": {
+    "graphs": 15,
+    "independentExpectedVerdictPassed": true,
+    "completeBytesEqual": true,
+    "outputs": [
+      {
+        "file": "selfhost/build/phase150/parser-graphs-reference01-guard/stdout.log",
+        "bytes": 34193,
+        "sha256": "d93530512f1a6da75b759f7be224175e76b0a0ec72aed3a90ee35a3e795b0552"
+      },
+      {
+        "file": "selfhost/build/phase150/parser-graphs-candidate01-guard/stdout.log",
+        "bytes": 34193,
+        "sha256": "d93530512f1a6da75b759f7be224175e76b0a0ec72aed3a90ee35a3e795b0552"
+      },
+      {
+        "file": "selfhost/build/phase150/grouped-graphs01-guard/stdout.log",
+        "bytes": 34193,
+        "sha256": "d93530512f1a6da75b759f7be224175e76b0a0ec72aed3a90ee35a3e795b0552"
+      },
+      {
+        "file": "selfhost/build/phase150/scalar-graphs01-guard/stdout.log",
+        "bytes": 34193,
+        "sha256": "d93530512f1a6da75b759f7be224175e76b0a0ec72aed3a90ee35a3e795b0552"
+      }
+    ]
+  },
+  "parallelQualification": {
+    "file": "research/phase150/parallel-results.json",
+    "bytes": 57620,
+    "sha256": "5b7fe56ad3c03dd41d259e4230104144190bfeb99cbd4a08aa4abe12d719ada8"
+  },
+  "productionSourceChanged": false,
+  "installedSelectionChanged": false,
+  "fullSelfReproduction": false,
+  "whole45": false,
+  "newBendTTProof": false,
+  "scope": "Finite lexer/parser/component and two-process correctness gates only; not whole compiler semantic equivalence or native production qualification."
+}

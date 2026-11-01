@@ -1,0 +1,447 @@
+{
+  "kind": "phase150-experiment-cost",
+  "complete": true,
+  "guardCount": 66,
+  "guardedSeconds": 821.2119653332047,
+  "successfulGuards": 56,
+  "nonzeroOrStoppedGuards": 10,
+  "expectedCancellationGuards": 1,
+  "unexpectedSetupFailures": 9,
+  "preExecutionRefusals": [
+    {
+      "reason": "Unsupported16MiB file ceiling; corrected to64MiB",
+      "targetExecuted": false
+    },
+    {
+      "reason": "Guard Path.is_file on long inline script raised ENAMETOOLONG; used a shorter command",
+      "targetExecuted": false
+    }
+  ],
+  "peakTreeRssBytes": 984645632,
+  "minimumAvailableBytes": 24682405888,
+  "minimumDiskFreeBytesDuringTargets": 9082339328,
+  "firstGuardStarted": 1793567788.7997048,
+  "lastGuardFinished": 1793570456.4290826,
+  "guardWindowSeconds": 2667.6293778419495,
+  "categories": {
+    "acquisition": {
+      "guards": 25,
+      "seconds": 404.1647815974429
+    },
+    "execution-controls-and-measurements": {
+      "guards": 40,
+      "seconds": 294.5493129407987
+    },
+    "profiling": {
+      "guards": 1,
+      "seconds": 122.49787079496309
+    }
+  },
+  "closureSeconds": 38.36653438396752,
+  "allGuardsClosed": true,
+  "allColdArchivesRoundTripVerified": true,
+  "prunedFiles": 0,
+  "fullCompilerAcquisitions": 0,
+  "fullSelfHostingCampaigns": 0,
+  "agents": "Three bounded workers for parser implementation/audit, upstream/profiler research, and separate-process coordinator/audit. Root owned every target run.",
+  "billing": "Token/quota/billing counters unavailable. Guard wall time is not agent effort or total research cost.",
+  "cpuAccounting": "No aggregate child CPU accounting for the parallel pilot; profiler rows separately retain their compiler CPU clocks.",
+  "guards": [
+    {
+      "path": "selfhost/build/phase150/grouped-graph-api01-guard/process.json",
+      "complete": true,
+      "seconds": 6.477097856812179,
+      "stoppedFor": null
+    },
+    {
+      "path": "selfhost/build/phase150/grouped-graphs01-guard/process.json",
+      "complete": true,
+      "seconds": 0.1878508939407766,
+      "stoppedFor": null
+    },
+    {
+      "path": "selfhost/build/phase150/lexer-check01-guard/process.json",
+      "complete": true,
+      "seconds": 2.9390509240329266,
+      "stoppedFor": null
+    },
+    {
+      "path": "selfhost/build/phase150/lexer-compare01-guard/process.json",
+      "complete": true,
+      "seconds": 5.7344130566343665,
+      "stoppedFor": null
+    },
+    {
+      "path": "selfhost/build/phase150/lexer-controls01-guard/process.json",
+      "complete": true,
+      "seconds": 0.024604931939393282,
+      "stoppedFor": null
+    },
+    {
+      "path": "selfhost/build/phase150/lexer-grouped-base01-guard/process.json",
+      "complete": true,
+      "seconds": 0.18705998081713915,
+      "stoppedFor": null
+    },
+    {
+      "path": "selfhost/build/phase150/lexer-grouped-compare01-guard/process.json",
+      "complete": true,
+      "seconds": 5.266528158914298,
+      "stoppedFor": null
+    },
+    {
+      "path": "selfhost/build/phase150/lexer-grouped-controls01-guard/process.json",
+      "complete": true,
+      "seconds": 0.024048218969255686,
+      "stoppedFor": null
+    },
+    {
+      "path": "selfhost/build/phase150/lexer-grouped-hashmap01-guard/process.json",
+      "complete": true,
+      "seconds": 0.024080223869532347,
+      "stoppedFor": null
+    },
+    {
+      "path": "selfhost/build/phase150/lexer-grouped-native01-guard/process.json",
+      "complete": true,
+      "seconds": 24.588157172314823,
+      "stoppedFor": null
+    },
+    {
+      "path": "selfhost/build/phase150/lexer-grouped-timing01-guard/process.json",
+      "complete": true,
+      "seconds": 0.9212283222004771,
+      "stoppedFor": null
+    },
+    {
+      "path": "selfhost/build/phase150/lexer-grouped-timing02-guard/process.json",
+      "complete": true,
+      "seconds": 0.9420475321821868,
+      "stoppedFor": null
+    },
+    {
+      "path": "selfhost/build/phase150/lexer-native01-guard/process.json",
+      "complete": true,
+      "seconds": 31.16759734461084,
+      "stoppedFor": null
+    },
+    {
+      "path": "selfhost/build/phase150/lexer-scalar-base01-guard/process.json",
+      "complete": true,
+      "seconds": 0.16675034491345286,
+      "stoppedFor": null
+    },
+    {
+      "path": "selfhost/build/phase150/lexer-scalar-compare01-guard/process.json",
+      "complete": true,
+      "seconds": 5.4693260178901255,
+      "stoppedFor": null
+    },
+    {
+      "path": "selfhost/build/phase150/lexer-scalar-controls01-guard/process.json",
+      "complete": true,
+      "seconds": 0.023982087150216103,
+      "stoppedFor": null
+    },
+    {
+      "path": "selfhost/build/phase150/lexer-scalar-hashmap01-guard/process.json",
+      "complete": true,
+      "seconds": 0.024076483212411404,
+      "stoppedFor": null
+    },
+    {
+      "path": "selfhost/build/phase150/lexer-scalar-native01-guard/process.json",
+      "complete": true,
+      "seconds": 8.988402608316392,
+      "stoppedFor": null
+    },
+    {
+      "path": "selfhost/build/phase150/lexer-scalar-timing01-guard/process.json",
+      "complete": true,
+      "seconds": 1.1020400561392307,
+      "stoppedFor": null
+    },
+    {
+      "path": "selfhost/build/phase150/lexer-scalar-timing02-guard/process.json",
+      "complete": true,
+      "seconds": 4.377247536089271,
+      "stoppedFor": null
+    },
+    {
+      "path": "selfhost/build/phase150/lexer-scalar-timing03-guard/process.json",
+      "complete": true,
+      "seconds": 4.377036863006651,
+      "stoppedFor": null
+    },
+    {
+      "path": "selfhost/build/phase150/lexer-scalar-timing04-guard/process.json",
+      "complete": true,
+      "seconds": 1.102623286191374,
+      "stoppedFor": null
+    },
+    {
+      "path": "selfhost/build/phase150/lexer-timing01-guard/process.json",
+      "complete": true,
+      "seconds": 4.697461649775505,
+      "stoppedFor": null
+    },
+    {
+      "path": "selfhost/build/phase150/lexer-timing02-guard/process.json",
+      "complete": true,
+      "seconds": 0.9420751901343465,
+      "stoppedFor": null
+    },
+    {
+      "path": "selfhost/build/phase150/lexer-timing03-guard/process.json",
+      "complete": true,
+      "seconds": 0.9199242265895009,
+      "stoppedFor": null
+    },
+    {
+      "path": "selfhost/build/phase150/lexer-timing04-guard/process.json",
+      "complete": true,
+      "seconds": 4.433856605086476,
+      "stoppedFor": null
+    },
+    {
+      "path": "selfhost/build/phase150/parallel-acquire01-guard/process.json",
+      "complete": true,
+      "seconds": 12.232077069114894,
+      "stoppedFor": null
+    },
+    {
+      "path": "selfhost/build/phase150/parallel-acquire02-guard/process.json",
+      "complete": true,
+      "seconds": 12.41691725840792,
+      "stoppedFor": null
+    },
+    {
+      "path": "selfhost/build/phase150/parallel-cancel01-guard/process.json",
+      "complete": false,
+      "seconds": 2.008152157999575,
+      "stoppedFor": "deadline"
+    },
+    {
+      "path": "selfhost/build/phase150/parallel-control01-guard/process.json",
+      "complete": false,
+      "seconds": 0.22970062494277954,
+      "stoppedFor": null
+    },
+    {
+      "path": "selfhost/build/phase150/parallel-control02-guard/process.json",
+      "complete": false,
+      "seconds": 0.22944772383198142,
+      "stoppedFor": null
+    },
+    {
+      "path": "selfhost/build/phase150/parallel-node-control01-guard/process.json",
+      "complete": true,
+      "seconds": 0.16710967011749744,
+      "stoppedFor": null
+    },
+    {
+      "path": "selfhost/build/phase150/parallel-parallel01-guard/process.json",
+      "complete": true,
+      "seconds": 1.96369712613523,
+      "stoppedFor": null
+    },
+    {
+      "path": "selfhost/build/phase150/parallel-parallel02-guard/process.json",
+      "complete": true,
+      "seconds": 1.90835638390854,
+      "stoppedFor": null
+    },
+    {
+      "path": "selfhost/build/phase150/parallel-serial01-guard/process.json",
+      "complete": true,
+      "seconds": 3.550699499901384,
+      "stoppedFor": null
+    },
+    {
+      "path": "selfhost/build/phase150/parallel-serial02-guard/process.json",
+      "complete": true,
+      "seconds": 2.9879078110679984,
+      "stoppedFor": null
+    },
+    {
+      "path": "selfhost/build/phase150/parallel-source-check01-guard/process.json",
+      "complete": false,
+      "seconds": 0.8448189040645957,
+      "stoppedFor": null
+    },
+    {
+      "path": "selfhost/build/phase150/parallel-source-check02-guard/process.json",
+      "complete": false,
+      "seconds": 1.0712674567475915,
+      "stoppedFor": null
+    },
+    {
+      "path": "selfhost/build/phase150/parallel-source-check03-guard/process.json",
+      "complete": true,
+      "seconds": 1.4996188879013062,
+      "stoppedFor": null
+    },
+    {
+      "path": "selfhost/build/phase150/parallel-source-check04-guard/process.json",
+      "complete": true,
+      "seconds": 1.4786974610760808,
+      "stoppedFor": null
+    },
+    {
+      "path": "selfhost/build/phase150/parser-acquisition-profile01-guard/process.json",
+      "complete": true,
+      "seconds": 122.49787079496309,
+      "stoppedFor": null
+    },
+    {
+      "path": "selfhost/build/phase150/parser-candidate-native01-guard/process.json",
+      "complete": true,
+      "seconds": 67.0731792729348,
+      "stoppedFor": null
+    },
+    {
+      "path": "selfhost/build/phase150/parser-candidate-native02-guard/process.json",
+      "complete": true,
+      "seconds": 67.99391152802855,
+      "stoppedFor": null
+    },
+    {
+      "path": "selfhost/build/phase150/parser-check01-guard/process.json",
+      "complete": true,
+      "seconds": 2.898856222163886,
+      "stoppedFor": null
+    },
+    {
+      "path": "selfhost/build/phase150/parser-graph-candidate-api06-guard/process.json",
+      "complete": true,
+      "seconds": 7.152825285680592,
+      "stoppedFor": null
+    },
+    {
+      "path": "selfhost/build/phase150/parser-graph-reference-api01-guard/process.json",
+      "complete": false,
+      "seconds": 1.5848333570174873,
+      "stoppedFor": null
+    },
+    {
+      "path": "selfhost/build/phase150/parser-graph-reference-api02-guard/process.json",
+      "complete": false,
+      "seconds": 1.729159187991172,
+      "stoppedFor": null
+    },
+    {
+      "path": "selfhost/build/phase150/parser-graph-reference-api03-guard/process.json",
+      "complete": false,
+      "seconds": 1.543301539029926,
+      "stoppedFor": null
+    },
+    {
+      "path": "selfhost/build/phase150/parser-graph-reference-api04-guard/process.json",
+      "complete": false,
+      "seconds": 1.5431915479712188,
+      "stoppedFor": null
+    },
+    {
+      "path": "selfhost/build/phase150/parser-graph-reference-api05-guard/process.json",
+      "complete": false,
+      "seconds": 1.564309747889638,
+      "stoppedFor": null
+    },
+    {
+      "path": "selfhost/build/phase150/parser-graph-reference-api06-guard/process.json",
+      "complete": true,
+      "seconds": 3.7419474069029093,
+      "stoppedFor": null
+    },
+    {
+      "path": "selfhost/build/phase150/parser-graphs-candidate01-guard/process.json",
+      "complete": true,
+      "seconds": 0.20839359099045396,
+      "stoppedFor": null
+    },
+    {
+      "path": "selfhost/build/phase150/parser-graphs-reference01-guard/process.json",
+      "complete": true,
+      "seconds": 0.18776007601991296,
+      "stoppedFor": null
+    },
+    {
+      "path": "selfhost/build/phase150/parser-reference-native01-guard/process.json",
+      "complete": true,
+      "seconds": 46.922041395213455,
+      "stoppedFor": null
+    },
+    {
+      "path": "selfhost/build/phase150/parser-reference-native02-guard/process.json",
+      "complete": true,
+      "seconds": 47.34175946004689,
+      "stoppedFor": null
+    },
+    {
+      "path": "selfhost/build/phase150/parser-scalar-native01-guard/process.json",
+      "complete": true,
+      "seconds": 46.001493064220995,
+      "stoppedFor": null
+    },
+    {
+      "path": "selfhost/build/phase150/parser-scalar-timing01-guard/process.json",
+      "complete": true,
+      "seconds": 28.09950633533299,
+      "stoppedFor": null
+    },
+    {
+      "path": "selfhost/build/phase150/parser-scalar-timing02-guard/process.json",
+      "complete": true,
+      "seconds": 31.64834042591974,
+      "stoppedFor": null
+    },
+    {
+      "path": "selfhost/build/phase150/parser-scalar-timing03-guard/process.json",
+      "complete": true,
+      "seconds": 31.346299764234573,
+      "stoppedFor": null
+    },
+    {
+      "path": "selfhost/build/phase150/parser-scalar-timing04-guard/process.json",
+      "complete": true,
+      "seconds": 29.005206455942243,
+      "stoppedFor": null
+    },
+    {
+      "path": "selfhost/build/phase150/parser-timing01-guard/process.json",
+      "complete": true,
+      "seconds": 31.35582092264667,
+      "stoppedFor": null
+    },
+    {
+      "path": "selfhost/build/phase150/parser-timing02-guard/process.json",
+      "complete": true,
+      "seconds": 28.652952977921814,
+      "stoppedFor": null
+    },
+    {
+      "path": "selfhost/build/phase150/parser-timing03-guard/process.json",
+      "complete": true,
+      "seconds": 28.450091156642884,
+      "stoppedFor": null
+    },
+    {
+      "path": "selfhost/build/phase150/parser-timing04-guard/process.json",
+      "complete": true,
+      "seconds": 31.413775864988565,
+      "stoppedFor": null
+    },
+    {
+      "path": "selfhost/build/phase150/scalar-graph-api01-guard/process.json",
+      "complete": true,
+      "seconds": 3.370269638951868,
+      "stoppedFor": null
+    },
+    {
+      "path": "selfhost/build/phase150/scalar-graphs01-guard/process.json",
+      "complete": true,
+      "seconds": 0.1878327066078782,
+      "stoppedFor": null
+    }
+  ]
+}

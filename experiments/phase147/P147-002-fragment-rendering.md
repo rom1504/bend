@@ -1,6 +1,7 @@
 # P147-002: avoid materializing intermediate instruction strings
 
-Status: native component experiments passed; whole-compiler integration pending.
+Status: integrated and ordinary serial native-qualified;
+[final report](../../implementation/phase147/README.md).
 
 The current full native profile assigns 47.469 seconds of thread CPU to rendering,
 output and teardown (19.0%). String.append accounts for 16.3% of active owners
@@ -25,10 +26,11 @@ bodies establish a mechanism, not a representative whole-compiler speedup.
 
 Canonical integration replaces three existing definitions: p111q_args,
 p111q_memory and p112a_original_stmt. No new emitter family is needed. Preserve
-specialized dispatch and nested branch selection. The next gates are checked
-canonical component equivalence, native complete requests and the exact full
-117,232,528-byte frozen-source QBE product. Measure cold source-to-executable
-time before judging the complexity/performance tradeoff.
+specialized dispatch and nested branch selection. All18 complete selected-body
+comparisons, native requests and the exact117,232,528-byte frozen-source product
+pass. The combined compact-admission/rendering cold build is246.745s; final
+integration246.173s. Final render/output/teardown profile is38.864s. These
+combined results do not isolate renderer-only end-to-end savings.
 
 Evidence: `selfhost/build/phase147/render-fragments01/`,
 `render-fragment-native-plan01-{original,calls}-pairs/report.json`, and

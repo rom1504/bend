@@ -1,5 +1,9 @@
 # P147-003: answer the Boolean question directly
 
+Status: integrated and ordinary serial native-qualified; isolated gain transfers
+modestly to the registry stage, with inconclusive additional whole-build effect.
+[Final report](../../implementation/phase147/README.md).
+
 The fresh native profile leaves registry preparation at about 16.8 seconds.
 Its transport admission predicate calls `p111v_signature`, constructs a list of
 argument types, and asks whether that list is nonempty. It additionally performs
@@ -27,7 +31,10 @@ Using ordinary string literals for complete patterns reduces the prototype from
 1,188,233-byte QBE product for the explicit-constructor and literal versions. The
 two prefix patterns retain their explicit tail bindings. Canonical integration
 changes one existing definition and adds two helpers; final whole-build timing
-and qualification decide adoption.
+and qualification decide adoption. The final registry stage falls16.834→15.944s;
+clean full build246.745→246.173s is an inconclusive0.23% additional difference.
+Native qualification passes. The small predicate is retained, without claiming
+the microbenchmark's10.85× as a whole-compiler speedup.
 
 Rejected before implementation: stop transport admission after its first
 failure. The frozen full compiler's descriptor capability value is 5, proving

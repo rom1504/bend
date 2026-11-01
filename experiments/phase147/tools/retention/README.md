@@ -69,3 +69,13 @@ an internal member index. Its external `index.json` records the archive identity
 and verification; `summary.json` remains directly readable. Restore into separate
 scratch when needed. At final close, choose fresh `checkpoint02` names and repeat
 this sequence after the root owner declares the appropriate evidence boundary.
+
+Phase147 final closure used `close-plan-v2.py` with the explicit final
+qualification receipt, then the root-authorized `close-approved.py` archive-only
+batch. The selected plan keeps all current metrics dependencies, final compiler
+roots, corpus references, and complete profiler bundles hot. The earlier planner
+and draft plan are preserved in checkpoint02's capsule. No raw pruning was
+performed. Final checkpoint discovery also includes the small Phase147
+implementation and close receipts; archived payloads themselves remain external
+and are identified by those receipts. Missing or unfinished lifecycle records do
+not count as a sealed campaign.

@@ -100,3 +100,54 @@ consumed source/method, failed attempt and accepted native/API result. Its
 standalone verifier reopens and hashes every member without resolving old
 paths. Original raw run directories remain intact. Historical method pins now
 resolve through the capsule, never through replacement current test files.
+
+## Integration audit after the nearly neutral cold result
+
+The additional classifier integration changes the observed full cold build from
+246.745s to246.173s: a0.23% difference from one observation per variant. This
+establishes no reliable whole-request improvement. Both builds compile the same
+frozen baseline source with the same Base and runtime; the candidate compiler
+images differ. The10.85× helper result must not be used as a whole-build claim.
+
+Two plausible explanations were falsified offline, without another target run:
+
+- **Header/admission mismatch:** the safe prototype has a consuming parameter,
+  whereas production retains the old `@unsafe` and `+symbol` header. Nevertheless,
+  the two suffix direct workers are byte-identical QBE, and the classifier entry
+  is byte-identical after only renaming its own entry symbol. Generated assembly
+  is also identical after full-token entry-symbol and assembler-local-label
+  normalization. Direct-worker admission and worker code therefore survived
+  integration. All three are consuming pattern workers, not newly borrowed
+  observers. Static counts are2,125 instructions for the entry and1,037/2,622
+  for the two helpers; these counts include mutually exclusive paths.
+- **Fresh-string benchmark mismatch:** the already measured harness constructs
+  the salted name list once before its repeated loop, retains `+rows` across
+  iterations and retains each `+symbol` across its local count. There is no
+  append or fresh-name construction inside the classifier loop. A second
+  experiment implementing those same conditions would be redundant.
+
+A concrete contextual difference remains: the prototype's ordinary
+`p147z_new_one` worker calls the classifier's direct worker directly. In the
+integrated compiler, that direct worker has only its forwarding wrapper and
+scheduler-entry wrapper as static direct callers; there is no ordinary direct
+caller. The surrounding `p118z_scalar`/`p118z_scalars` functions are not emitted
+as direct workers. The compiler therefore retains surrounding dispatch and
+continuation work that the isolated direct loop does not measure. This is a
+plausible dilution mechanism, **not a measured attribution**. Grouping repeated
+same-symbol queries also differs from the interleaved full IR traversal.
+
+The worker's constant signature allocations and seven eager string comparisons
+were removed as intended. However, the entire measured registry interval was
+only6.8% of the request and the classifier is a subset. The final stage profile
+must establish whether this subset improved; if that evidence is also neutral,
+keeping the simpler previously qualified variant is preferable. Adoption remains
+a separate root decision; this audit makes no canonical edit.
+
+Exact inputs, worker counts, normalized identity hashes, static callsites and
+benchmark protocol binding are in
+[`runtime-classifier-integration.json`](evidence/runtime-classifier-integration.json).
+Extracted QBE/assembly bodies remain in
+`selfhost/build/phase147/classifier-admission-review01/`. A first assembly
+normalizer incorrectly replaced a symbol prefix inside helper names; its false
+difference is preserved separately, and full-token normalization fixes the
+analysis without changing any generated code or execution evidence.

@@ -1,7 +1,8 @@
 # P147-001 — Compact identities across a complete verifier computation
 
-Status: complete-region gains demonstrated; integrated native qualification in
-progress. See [design](../../design/phase147/README.md).
+Status: integrated and ordinary serial native-qualified. See
+[design](../../design/phase147/README.md) and
+[final report](../../implementation/phase147/README.md).
 
 Prediction: compact identities and dedicated schema/live-state records can remove
 repeated string lookup and generic record reconstruction. The useful result is
@@ -27,4 +28,6 @@ Combined with fragment rendering, the first matched frozen-source cold build is
 assembly and machine object are identical. Three smaller complete requests
 improve about 5–8%. These combined measurements do not isolate the verifier's
 whole-request contribution. Native self-reproduction and broader independent
-gates remain separate from the region results.
+gates remain separate from the region results. The final integration passes
+N1/N2/Q3, both focused19 and N2ordinary45. With the separate membership change,
+final cold time is246.173s; this does not isolate verifier-only savings.

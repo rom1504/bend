@@ -80,6 +80,13 @@ def pins(value, pointer=''):
             yield from pins(child, pointer + '/' + str(index))
 
 
+def guards_sealed(closed, pending):
+    return bool(closed) and not pending and all(
+        (ROOT/record['file']).with_name('retention.json').is_file() and
+        json.loads((ROOT/record['file']).with_name('retention.json').read_text()).get('state')=='sealed'
+        for record in closed)
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--out', type=Path, required=True)
@@ -135,7 +142,8 @@ def main():
                 add(child, 'finished-outer-guard')
         if files[path]['sha256'] != record['identity']['sha256']:
             raise ValueError('Finished guard changed during checkpoint')
-    scan_roots = [RAW, ROOT/'experiments/phase147', ROOT/'selfhost/tests/phase147']
+    scan_roots = [RAW, ROOT/'experiments/phase147', ROOT/'selfhost/tests/phase147',
+                  ROOT/'implementation/phase147', ROOT/'selfhost/build-retention/phase147']
     for base in scan_roots:
         for path in sorted(base.rglob('*')):
             if not path.is_file() or path.is_symlink() or '__pycache__' in path.parts:
@@ -231,6 +239,7 @@ def main():
     total = union_seconds(intervals)
     report = dict(kind='phase147-retention-checkpoint-v1', complete=True, dataOnly=True,
                   targetExecuted=False, archiveExecuted=False, pruningExecuted=False,
+                  campaignGuardsSealed=guards_sealed(closed, pending),
                   cutoff=cutoff, created=time.time(), method=files[Path(__file__).resolve()],
                   guardCount=len(rows), guardOutcomes=dict(Counter(r['proposedClassification'] for r in rows)),
                   pendingGuards=[dict(file=r['file'], identity=r['identity'], status='unfinished-or-after-cutoff') for r in pending],

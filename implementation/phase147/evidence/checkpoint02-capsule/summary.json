@@ -1,0 +1,318 @@
+{
+  "kind": "phase147-retention-checkpoint-summary-v1",
+  "cutoff": 1793518714.5954301,
+  "guardCount": 76,
+  "guardOutcomes": {
+    "completed": 70,
+    "failed": 6
+  },
+  "cost": {
+    "outerGuardElapsedSumSeconds": 3216.355377674103,
+    "outerGuardIntervalUnionSeconds": 3216.355377674103,
+    "nestedChildSecondsAdded": 0,
+    "firstStartToLastFinishSeconds": 5266.869736909866,
+    "uncoveredSpanSeconds": 2050.5143592357635,
+    "categories": {
+      "full-baseline": {
+        "guards": 1,
+        "intervalUnionSeconds": 262.90722823143005
+      },
+      "checked-api-acquisition": {
+        "guards": 12,
+        "intervalUnionSeconds": 51.93240523338318
+      },
+      "focused-controls-or-capture": {
+        "guards": 21,
+        "intervalUnionSeconds": 1657.768065214157
+      },
+      "focused-measurement": {
+        "guards": 19,
+        "intervalUnionSeconds": 190.59438014030457
+      },
+      "profiler-build-capture-analysis": {
+        "guards": 12,
+        "intervalUnionSeconds": 841.1075270175934
+      },
+      "focused-native-build": {
+        "guards": 11,
+        "intervalUnionSeconds": 212.0457718372345
+      }
+    },
+    "scope": "Only finished outer disk guards; includes harness/build/check work. No CPU billing, performance ratio, or full campaign wall claim. Category unions can overlap."
+  },
+  "pendingGuards": [],
+  "protectedPolicy": {
+    "allRawRootsRemainHot": true,
+    "selectedManifest": "selfhost/manifests/current.json",
+    "selectedN1N2": true,
+    "fullBaseline": true,
+    "allProfilerImagesMapsSamples": true,
+    "sharedLock": "selfhost/build/phase32/execution.lock",
+    "promotion": "No qualified/rejected decision inferred from successful command."
+  },
+  "complete": true,
+  "failedGuards": [
+    {
+      "guard": "selfhost/build/phase147/integrated-plan03/source-check-guard",
+      "elapsedSeconds": 6.015969276428223,
+      "returncode": 1,
+      "stoppedFor": null
+    },
+    {
+      "guard": "selfhost/build/phase147/profile-pilot01-guard",
+      "elapsedSeconds": 8.775253534317017,
+      "returncode": 1,
+      "stoppedFor": null
+    },
+    {
+      "guard": "selfhost/build/phase147/runtime-classifier-plan04/api-guard",
+      "elapsedSeconds": 1.7533667087554932,
+      "returncode": 1,
+      "stoppedFor": null
+    },
+    {
+      "guard": "selfhost/build/phase147/verifier-baseline01/api-guard",
+      "elapsedSeconds": 3.290510416030884,
+      "returncode": 1,
+      "stoppedFor": null
+    },
+    {
+      "guard": "selfhost/build/phase147/verifier-candidate01/api-guard",
+      "elapsedSeconds": 0.782301664352417,
+      "returncode": 1,
+      "stoppedFor": null
+    },
+    {
+      "guard": "selfhost/build/phase147/verifier-real01-guard",
+      "elapsedSeconds": 0.20807862281799316,
+      "returncode": 1,
+      "stoppedFor": null
+    }
+  ],
+  "smallMethodSupplement": {
+    "exactObjects": 58,
+    "bytes": 554088,
+    "unresolved": [
+      {
+        "declared": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase134/pipe/build-v02.py",
+          "bytes": 8565,
+          "sha256": "49aa67b6d136ef075bbb3ed31d8be389640b59627710833290aa21dc5b17aa85"
+        },
+        "firstReceipt": "implementation/phase147/evidence/checkpoint01-capsule/summary.json",
+        "firstPointer": "/smallMethodSupplement/unresolved/0/declared",
+        "status": "missing-or-symlink; retained as unresolved historical prerequisite"
+      },
+      {
+        "declared": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase130/native-request.py",
+          "bytes": 9884,
+          "sha256": "e32e5e99502a9b6485e54ce6669200ee48eaba0c289d7bfb2809a1dc6ef0bf2f"
+        },
+        "firstReceipt": "implementation/phase147/evidence/checkpoint01-capsule/summary.json",
+        "firstPointer": "/smallMethodSupplement/unresolved/1/declared",
+        "status": "missing-or-symlink; retained as unresolved historical prerequisite"
+      },
+      {
+        "declared": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase123/build-aligned.py",
+          "bytes": 3923,
+          "sha256": "67fffc05bdbedf2fcf13eace395fd203f45a981b3a1d7de000d465fcc2693701"
+        },
+        "firstReceipt": "implementation/phase147/evidence/checkpoint01-capsule/summary.json",
+        "firstPointer": "/smallMethodSupplement/unresolved/2/declared",
+        "status": "missing-or-symlink; retained as unresolved historical prerequisite"
+      },
+      {
+        "declared": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase88/base/carrier.mjs",
+          "sha256": "e3c4c4bb414941bc50cf09d105d38a6c140c80dbeeddf71184e4086df77a4e43",
+          "bytes": 6633
+        },
+        "firstReceipt": "implementation/phase147/evidence/checkpoint01-capsule/summary.json",
+        "firstPointer": "/smallMethodSupplement/unresolved/3/declared",
+        "status": "missing-or-symlink; retained as unresolved historical prerequisite"
+      },
+      {
+        "declared": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase130/base/carrier.mjs",
+          "bytes": 3983,
+          "sha256": "797219d309cc200bec4a654919c9f8befc31e0d0521dabf6a26c7396cb0a53fb"
+        },
+        "firstReceipt": "implementation/phase147/evidence/checkpoint01-capsule/summary.json",
+        "firstPointer": "/smallMethodSupplement/unresolved/4/declared",
+        "status": "missing-or-symlink; retained as unresolved historical prerequisite"
+      },
+      {
+        "declared": {
+          "file": "selfhost/tests/phase147/runtime-classifier-check.mjs",
+          "bytes": 2047,
+          "sha256": "dba6fb676c6f56a12b1393e55893d404ed3d8dbb395daf4e8fe1eb8142721906",
+          "mode": 420
+        },
+        "firstReceipt": "implementation/phase147/evidence/runtime-classifier-history01/manifest.json",
+        "firstPointer": "/members/199",
+        "currentIdentity": {
+          "bytes": 2186,
+          "sha256": "30d6990b5db5d08b4e1ba02db18a955fb9d799afb078c28d74d77e3051433225"
+        },
+        "status": "current bytes differ; historical identity not substituted"
+      },
+      {
+        "declared": {
+          "file": "selfhost/tests/phase147/runtime-classifier-pairs.py",
+          "bytes": 4709,
+          "sha256": "21750ee9f4cfcff3fccf1a5b27a9cdde687c8952c0e66de84c1a1aa7d388f120",
+          "mode": 420
+        },
+        "firstReceipt": "implementation/phase147/evidence/runtime-classifier-history01/manifest.json",
+        "firstPointer": "/members/200",
+        "status": "missing-or-symlink; retained as unresolved historical prerequisite"
+      },
+      {
+        "declared": {
+          "file": "selfhost/tests/phase147/runtime-classifier-prepare-v2.py",
+          "bytes": 9722,
+          "sha256": "b80485104a21436ed67c42638d7ccf2063a4283f43ce73a64ab8611035a12b04",
+          "mode": 420
+        },
+        "firstReceipt": "implementation/phase147/evidence/runtime-classifier-history01/manifest.json",
+        "firstPointer": "/members/201",
+        "status": "missing-or-symlink; retained as unresolved historical prerequisite"
+      },
+      {
+        "declared": {
+          "file": "selfhost/tests/phase147/runtime-classifier-prepare-v3.py",
+          "bytes": 10630,
+          "sha256": "a3289421b336c2c9a37789e4f0c195c51aa52639f3ee39a35bc7373489e5a4a9",
+          "mode": 420
+        },
+        "firstReceipt": "implementation/phase147/evidence/runtime-classifier-history01/manifest.json",
+        "firstPointer": "/members/202",
+        "status": "missing-or-symlink; retained as unresolved historical prerequisite"
+      },
+      {
+        "declared": {
+          "file": "selfhost/tests/phase147/runtime-classifier-prepare-v4.py",
+          "bytes": 10631,
+          "sha256": "f1db63963c767056eaaab7702ef125f666650fc3c203d8f92fadee910b1478c2",
+          "mode": 420
+        },
+        "firstReceipt": "implementation/phase147/evidence/runtime-classifier-history01/manifest.json",
+        "firstPointer": "/members/203",
+        "status": "missing-or-symlink; retained as unresolved historical prerequisite"
+      },
+      {
+        "declared": {
+          "file": "selfhost/tests/phase147/runtime-classifier-prepare-v5.py",
+          "bytes": 10653,
+          "sha256": "221868869b76107a018451bbfacf507d9ca09a3b0fbcdbfaf033b54bbfab90e6",
+          "mode": 420
+        },
+        "firstReceipt": "implementation/phase147/evidence/runtime-classifier-history01/manifest.json",
+        "firstPointer": "/members/204",
+        "status": "missing-or-symlink; retained as unresolved historical prerequisite"
+      },
+      {
+        "declared": {
+          "file": "selfhost/tests/phase147/runtime-classifier-prepare.py",
+          "bytes": 9721,
+          "sha256": "ebecda81b0d2a0c9e57ee250a22fed71f4dc7747b5adcff01cbce8a87b444f65",
+          "mode": 420
+        },
+        "firstReceipt": "implementation/phase147/evidence/runtime-classifier-history01/manifest.json",
+        "firstPointer": "/members/205",
+        "currentIdentity": {
+          "bytes": 3501,
+          "sha256": "b9dc33390be2025ddc1dc55c076f2cb676c0cea54b760bc49dd4cc22e52f701a"
+        },
+        "status": "current bytes differ; historical identity not substituted"
+      },
+      {
+        "declared": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase147/runtime-classifier-check.mjs",
+          "bytes": 2047,
+          "sha256": "dba6fb676c6f56a12b1393e55893d404ed3d8dbb395daf4e8fe1eb8142721906"
+        },
+        "firstReceipt": "selfhost/build/phase147/runtime-classifier-controls02/report.json",
+        "firstPointer": "/inputs/0",
+        "currentIdentity": {
+          "bytes": 2186,
+          "sha256": "30d6990b5db5d08b4e1ba02db18a955fb9d799afb078c28d74d77e3051433225"
+        },
+        "status": "current bytes differ; historical identity not substituted"
+      },
+      {
+        "declared": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase147/runtime-classifier-pairs.py",
+          "bytes": 4709,
+          "sha256": "21750ee9f4cfcff3fccf1a5b27a9cdde687c8952c0e66de84c1a1aa7d388f120"
+        },
+        "firstReceipt": "selfhost/build/phase147/runtime-classifier-pairs02/report.json",
+        "firstPointer": "/inputs/0",
+        "status": "missing-or-symlink; retained as unresolved historical prerequisite"
+      },
+      {
+        "declared": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase147/runtime-classifier-prepare.py",
+          "bytes": 9721,
+          "sha256": "ebecda81b0d2a0c9e57ee250a22fed71f4dc7747b5adcff01cbce8a87b444f65"
+        },
+        "firstReceipt": "selfhost/build/phase147/runtime-classifier-plan01/manifest.json",
+        "firstPointer": "/inputs/0",
+        "currentIdentity": {
+          "bytes": 3501,
+          "sha256": "b9dc33390be2025ddc1dc55c076f2cb676c0cea54b760bc49dd4cc22e52f701a"
+        },
+        "status": "current bytes differ; historical identity not substituted"
+      },
+      {
+        "declared": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase147/runtime-classifier-prepare-v2.py",
+          "bytes": 9722,
+          "sha256": "b80485104a21436ed67c42638d7ccf2063a4283f43ce73a64ab8611035a12b04"
+        },
+        "firstReceipt": "selfhost/build/phase147/runtime-classifier-plan02/manifest.json",
+        "firstPointer": "/inputs/0",
+        "status": "missing-or-symlink; retained as unresolved historical prerequisite"
+      },
+      {
+        "declared": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase147/runtime-classifier-prepare-v3.py",
+          "bytes": 10630,
+          "sha256": "a3289421b336c2c9a37789e4f0c195c51aa52639f3ee39a35bc7373489e5a4a9"
+        },
+        "firstReceipt": "selfhost/build/phase147/runtime-classifier-plan03/manifest.json",
+        "firstPointer": "/inputs/0",
+        "status": "missing-or-symlink; retained as unresolved historical prerequisite"
+      },
+      {
+        "declared": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase147/runtime-classifier-prepare-v4.py",
+          "bytes": 10631,
+          "sha256": "f1db63963c767056eaaab7702ef125f666650fc3c203d8f92fadee910b1478c2"
+        },
+        "firstReceipt": "selfhost/build/phase147/runtime-classifier-plan04/manifest.json",
+        "firstPointer": "/inputs/0",
+        "status": "missing-or-symlink; retained as unresolved historical prerequisite"
+      },
+      {
+        "declared": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase147/runtime-classifier-prepare-v5.py",
+          "bytes": 10653,
+          "sha256": "221868869b76107a018451bbfacf507d9ca09a3b0fbcdbfaf033b54bbfab90e6"
+        },
+        "firstReceipt": "selfhost/build/phase147/runtime-classifier-plan05/manifest.json",
+        "firstPointer": "/inputs/0",
+        "status": "missing-or-symlink; retained as unresolved historical prerequisite"
+      }
+    ]
+  },
+  "sourceReport": {
+    "member": "checkpoint02/report.json",
+    "bytes": 1463021,
+    "sha256": "98b8264a5ab94fd4f91f5d2c5b3df45ace0b6122e02ddb800eceecb7455549e9"
+  },
+  "campaignGuardsSealed": true,
+  "scope": "Final data checkpoint of sealed guards and retained receipts; compiler qualification remains separate."
+}

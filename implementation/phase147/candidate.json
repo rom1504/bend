@@ -1,0 +1,90 @@
+{
+  "kind": "phase147-qualified-native-candidate",
+  "version": 1,
+  "complete": true,
+  "installed": false,
+  "ordinaryNativeQualified": true,
+  "source": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase147/integrated-source03/compiler.bend",
+    "bytes": 3045282,
+    "sha256": "0f3bd8a0f29944a317d6de14db05e6e34ba36daa22b350c25236d07519227eaf"
+  },
+  "imageBinding": {
+    "kind": "bend-build-image-binding",
+    "version": 1,
+    "complete": true,
+    "image": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase147/integrated-sequel02/n2/program",
+      "bytes": 19499168,
+      "sha256": "ab5662a17690f6814834074442905fec2f061a67203e66c3008d51d48727ca32"
+    },
+    "sourceIdentity": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase147/integrated-source03/compiler.bend",
+      "bytes": 3045282,
+      "sha256": "0f3bd8a0f29944a317d6de14db05e6e34ba36daa22b350c25236d07519227eaf"
+    },
+    "host": "native",
+    "stage": "N2",
+    "protocol": "qbe-source-v1",
+    "targets": [
+      "qbe"
+    ],
+    "linkedRuntime": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.assets/native/qbe-runtime.o",
+      "bytes": 119096,
+      "sha256": "2d07832382a11d7e993124ecc70452e4e1a3b7f753cf429343e1183cd8e493a3"
+    },
+    "producer": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase147/integrated-plan05/image/program",
+      "bytes": 19499168,
+      "sha256": "a37593134399a2011198b933be4acc35837c9c2a3bad16315cff32d238452796"
+    },
+    "producerHost": "native",
+    "producerStage": "N1",
+    "qualification": "Built; semantic/self-host qualification is separate."
+  },
+  "nativeBuild": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase147/integrated-sequel02/n2/report.json",
+    "bytes": 19458,
+    "sha256": "7eeb7e2b017b984dfbf7d591f8453132aaffbe08bf338a040bd190cf52c94fc2"
+  },
+  "qualification": {
+    "file": "/home/ai/bend2/build/publish/bend/implementation/phase147/qualification.json",
+    "bytes": 18955,
+    "sha256": "578863eb91c7deb6a2c7b96a292b59dbbbc5a9fd43f15a8f377e6ca12f9c06d1"
+  },
+  "metrics": {
+    "file": "/home/ai/bend2/build/publish/bend/implementation/phase147/metrics.json",
+    "bytes": 30194,
+    "sha256": "22cfeffc4488d106ad3b5dee963c7bd03513fb99a59cf0164d31470bcf3a8a38"
+  },
+  "selectedManifestUnchanged": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/manifests/current.json",
+    "bytes": 16793,
+    "sha256": "66683aed839e72fe3a45a080896bdfec5f5254a4cfd3752cb830ac27053e0606"
+  },
+  "scope": "Explicit native N2 candidate for ordinary serial QBE requests. Qualification is current cache-mode focused/broad and self-host byte identity; not installed, no new JS/C default, no GPU/multi-mutator/incremental qualification.",
+  "command": [
+    "python3",
+    "-B",
+    "selfhost/tools/build/request.py",
+    "--assets",
+    "selfhost/manifests/assets-native.json",
+    "--host",
+    "native",
+    "--target",
+    "qbe",
+    "--stage",
+    "N2",
+    "--image",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase147/integrated-sequel02/n2/program",
+    "--image-receipt",
+    "/home/ai/bend2/build/publish/bend/implementation/phase147/candidate.json",
+    "--mode",
+    "cache",
+    "--source",
+    "INPUT.bend",
+    "--out",
+    "FRESH_BUILD_DIRECTORY"
+  ]
+}

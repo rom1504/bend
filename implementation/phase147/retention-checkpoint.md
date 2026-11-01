@@ -1,59 +1,63 @@
-# Phase147 interim evidence retention
+# Phase147 evidence closure
 
-The [compact checkpoint summary](evidence/checkpoint01-capsule/summary.json)
-records **50 finished guarded commands: 45 succeeded and 5 failed**. Their
-non-overlapping outer intervals total **929.415 seconds (15.49 minutes)**.
-The original 45-command frontier requested for this audit accounted for
-907.513 seconds and four failures; five further commands had finished before the
-checkpoint cutoff. Nested child process times are retained as evidence and are
-not added to the elapsed total. The span between the first and last recorded
-finished commands was 2,148.530 seconds; the remaining 1,219.116 seconds is
-unclassified wall time, not an estimate of agent work or CPU billing.
+All **76 guarded commands are sealed**: 68 completed, six failed, and two
+qualified compiler-image builds. Qualification uses the separate
+[native qualification receipt](qualification.json); it does not change the
+installed compiler or establish a universal semantic proof.
 
-| Guard category | Finished commands | Interval union |
-| --- | ---: | ---: |
-| Full baseline | 1 | 262.907 s |
-| Profiler build/capture/analysis | 6 | 317.356 s |
-| Focused native builds | 11 | 212.046 s |
-| Focused measurements | 9 | 54.353 s |
-| Checked API acquisition | 11 | 44.635 s |
-| Focused controls/capture | 12 | 38.117 s |
+The [final checkpoint summary](evidence/checkpoint02-capsule/summary.json)
+records **3,216.355 seconds (53.61 minutes)** of finished outer-guard intervals.
+No intervals overlap, and nested child times are not added. The guards span
+5,266.870 seconds; the remaining 2,050.514 seconds is unclassified wall time,
+not an estimate of agent work or CPU billing. The subsequent archive-only close
+batch took 33.962 seconds, outside this guarded-target total.
 
-The five failed attempts remain evidence:
+The [closure summary](evidence/closure-summary.json) records **50 verified raw
+archives: 891 files, 13,505,100 compressed bytes**. Each archive's complete
+members were verified by the maintained close tool, and all compressed streams
+were independently rehashed afterward. Twenty-five declared roots remain hot;
+one failed run had an absent/empty output root. **No raw files were pruned.**
+
+The final [compact evidence capsule](evidence/checkpoint02-capsule/index.json)
+is **4,876,163 bytes with 1,588 verified members**. It contains exact small
+JSON/log/method bytes, original-path mappings, declared reference identities,
+the final metrics/qualification/candidate/corpus receipts, closure receipts,
+and the input/source method versions needed to interpret the failures. Every
+member was reopened and hashed before removing only the newly exported loose
+copies. The earlier [checkpoint01](evidence/checkpoint01-capsule/index.json)
+remains a distinct interim record.
+
+The six failed attempts remain accessible:
 
 - `profile-pilot01`: the stage observer rejected order/count/clocks after capture.
 - `verifier-baseline01/api`: source extraction omitted `f_lex_scanned`.
 - `verifier-candidate01/api`: a computed match scrutinee failed Bend grammar.
 - `verifier-real01`: screen input handling passed a non-path to `readFileSync`.
 - `integrated-plan03/source-check`: the requested output directory was absent.
+- `runtime-classifier-plan04/api`: rejected checked-API acquisition, preserved
+  with its exact diagnostics in the classifier history and final capsule.
 
-These are recorded diagnostics, not five compiler semantic failures. The
-then-active `integrated-plan04/image-guard` was excluded. This is an **interim
-checkpoint**, not the final Phase147 outcome, a qualified compiler, or a sealed
-campaign.
+These are failed attempts, not six established compiler semantic gaps. The
+capsule preserves historical consumed methods rather than substituting changed
+current files. Fourteen classifier-method path misses correspond to seven exact
+versions in the existing classifier capsule; the supplemental resolution receipt
+rehashed those members. Five earlier historical method dependencies remain
+explicitly external to these Phase147 compact exports.
 
-The [capsule index](evidence/checkpoint01-capsule/index.json) authenticates a
-2,637,374-byte compressed capsule with **605 verified members**. It preserves
-1,316 original-path mappings to exact small JSON/log/method bytes, the full
-reference index, and a supplement containing 59 unique exact method/provider
-objects. Shared byte content appears once. Every member was reopened and hashed;
-only the newly exported loose copies were removed afterward. The existing
-[renderer method capsule](evidence/method-history/inventory.json) was also reopened
-and its five exact member identities were resolved without restoring duplicate
-methods at HEAD.
+Final source03, N1 plan05, N2 sequel02, the full baseline, all current cold-build
+and corpus comparison inputs, and the complete profiler images/maps/samples stay
+hot. Unguarded preparation roots, toolchains, installed selections, unrelated
+working changes, and the shared execution lock are untouched. The compact
+checkpoint is not a full restorable compiler/profiler bundle: required large
+artifacts remain available at their recorded paths, while the additional cold
+archives provide exact recovery for their declared roots.
 
-Selected N1/N2 images, the full baseline, all profiler images/maps/samples, full
-compiler source snapshots, generated products, and all raw Phase147 roots remain
-hot and unchanged. The shared execution lock is untouched. Large bytes are not
-silently represented as archived by hashes: the capsule is **not a complete
-restorable compiler or profiler bundle**. Five small historical method references
-still depend on the repository's earlier retained history; their exact paths and
-pins remain explicitly unresolved in the summary. All direct small method pins
-for the five failures, including the profiler child methods, were retained.
-
-The [data-only method](../../experiments/phase147/tools/retention/README.md)
-provides a fresh-checkpoint and compact-package recipe for final close. Its
-`close.py` argument lists are unexecuted proposals that retain every declared
-root. No raw artifact was archived, pruned, or reclassified by this work. Root
-review must decide qualified/completed/rejected/failed status and any cold roots
-after all dependent work finishes.
+The [retention method](../../experiments/phase147/tools/retention/README.md)
+now includes final implementation and closure receipts in checkpoint discovery,
+and the packer distinguishes sealed final guards from interim checkpoints.
+Both previously consumed methods were preserved by exact hash before these
+changes. A final reporting-only guard makes absent/unfinished retention records
+yield `false`; missing, finished, sealed, pending, and empty fixture cases passed.
+No compiler or benchmark was rerun for retention. The superseded planner and
+draft plan were removed from HEAD only after exact capsule-byte verification;
+the selected planner remains `close-plan-v2.py`.

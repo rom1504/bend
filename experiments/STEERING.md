@@ -1,4 +1,33 @@
-# Current maintained compiler: repository consolidation
+# Latest qualified optimization: Phase147 cold representation work
+
+[Report](../implementation/phase147/README.md) ·
+[Candidate](../implementation/phase147/candidate.json) ·
+[Qualification](../implementation/phase147/qualification.json) ·
+[Metrics](../implementation/phase147/metrics.json) ·
+[Final profile](../research/phase147/final-profile.md).
+
+Canonical source contains compact private direct-admission facts, fragment
+rendering and exact runtime-name membership. Matched frozen-source cold native
+build262.496→246.173s (6.22%); complete QBE/assembly/object unchanged. Three
+alternating request pairs show roughly4–8% less time on Lexer, Map and a compiler
+slice. One full observation per variant; no confidence interval or upstream ratio.
+Classifier kernel10.85× is not a whole-build gain; its additional0.23% is inconclusive.
+
+Independent source check, unchanged112protected declarations/683law bodies,
+actual parent→N1→N2→Q3, both focused19 and N2ordinary45 pass. All61unique positive
+N2 programs match earlier qualified QBE and objects and independent outputs;
+three refusals pass. Explicit ordinary serial native candidate is qualified.
+Installed JS/C/QBE release remains the consolidated selection below; no new
+JS/C, incremental, GPU or parallel qualification is implied.
+
+Final diagnostic hotspots: rendering38.9s, lowering37.6s, parse32.0s,
+checking31.3s, initial optimizer24.3s. Profiles use fresh image/FID/source maps,
+32ms sampling and unchanged strict loss/coverage/stage gates. No100s claim.
+Next investigate complete compact lowering/frontend regions with conversion,
+errors and destruction charged; keep independent final verification. Source
+grows648lines/6types, so require substantial transfer before extending the checker.
+
+# Current installed compiler: repository consolidation
 
 [Report](../implementation/repository-consolidation/README.md) · [Current bindings](../selfhost/manifests/current.json) · [Workflow](../docs/self_hosted/workflow.md).
 

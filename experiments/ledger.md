@@ -4,6 +4,31 @@ This ledger records decisions and links evidence; it does not replace the report
 Read [workflow](README.md) and [current strategy](STEERING.md) before a new investigation.
 User objective: make the Bend compiler written in Bend and its validation loop much faster while preserving correctness. Historical authorization windows are recorded below; current release status and priorities are in [STEERING.md](STEERING.md).
 
+## Phase147 — Cold compiler representation work (2026-11-01)
+
+[Design](../design/phase147/README.md) ·
+[Report](../implementation/phase147/README.md) ·
+[Metrics](../implementation/phase147/metrics.json) ·
+[Profile](../research/phase147/final-profile.md).
+
+Compact numeric schema/flow for private admission and fragment rendering reduce
+matched full cold build262.496→246.173s (6.22%), including QBE/assembly/link.
+Shared Base, frozen request and runtime/toolchain; no source-specific reuse.
+One observation per version. Exact QBE, assembly and object; full ELF identity
+not claimed. The additional25-name Boolean classifier is10.85× on its isolated
+native workload,5.28% on the registry stage, but only0.23% in the clean full
+build: that last incremental change is inconclusive.
+
+Independent full-book check, actual N1/N2/Q3 reproduction, both focused19 and
+N2ordinary45 pass.61unique positive N2 QBE/object products remain exact, with
+independent executions/refusals.112protected declarations and683law bodies exact.
+Qualified explicit native candidate; installed/default assets remain unchanged.
+No fresh corpus runtime score, upstream comparison, theorem, or broader session
+qualification. Source+648lines,+73definitions,+6types; independent final checks
+remain. Three complete profiler captures preserve loss/coverage gates and explain
+the observed savings. Cold100s remains unachieved; next test a complete lowering
+or frontend representation boundary rather than another isolated classifier.
+
 ## Phase145 — Comparative compiler work (2026-10-27)
 
 [Design](../design/phase145/README.md) ·

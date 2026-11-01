@@ -2,8 +2,11 @@
 
 These campaign tools import maintained source/build helpers. They do not import
 historical implementation scripts or implement compiler judgments in Python/JS.
-The additive candidate stays outside `selfhost/src/compiler.json` until an
-explicit integration decision. Original verifier declarations remain exact.
+The accepted candidate is now integrated in `selfhost/src/compiler.json` and
+ordinary serial native-qualified. Original verifier declarations remain exact.
+The [final report](../../../implementation/phase147/README.md) records the actual
+integration and qualification boundary; earlier recipes below remain experiments
+against their frozen inputs, not alternate current compiler implementations.
 
 The prepared baseline02/candidate03/candidate04 sequence below belongs to the
 frozen pre-integration source boundary. After integration, the candidate module

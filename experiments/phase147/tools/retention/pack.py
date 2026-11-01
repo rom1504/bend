@@ -72,7 +72,10 @@ def main():
                    smallMethodSupplement=dict(exactObjects=supplement['exactObjects'],bytes=supplement['exportedUniqueBytes'],
                      unresolved=[r for r in supplement['files']if r['status']!='exact bytes exported']),
                    sourceReport=dict(member=sources[0].name+'/report.json',**digest((sources[0]/'report.json').read_bytes())),
-                   scope='Interim data-only checkpoint; active target lane was open. No qualification or campaign closure claim.')
+                   campaignGuardsSealed=report.get('campaignGuardsSealed',False),
+                   scope=('Final data checkpoint of sealed guards and retained receipts; compiler qualification remains separate.'
+                          if report.get('campaignGuardsSealed',False) else
+                          'Interim data-only checkpoint; active target lane was open. No qualification or campaign closure claim.'))
     receipt=dict(kind='phase147-checkpoint-capsule-v1',complete=True,created=time.time(),
                  archive=dict(file=str(archive.relative_to(ROOT)),**digest(archive.read_bytes())),
                  memberIndex=dict(member='member-index.json',**digest(index)),members=len(expected),

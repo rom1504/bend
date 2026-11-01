@@ -1,0 +1,260 @@
+{
+  "kind": "phase147-classifier-integration-static-review",
+  "complete": true,
+  "targetsRun": false,
+  "inputs": {
+    "final": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase147/integrated-plan05/image/program.ssa",
+      "bytes": 119544406,
+      "sha256": "76eb1a7c500b19c86cbeaa523f4e0066cafa2588b02f729e1909ef35902c2a2f"
+    },
+    "prototype": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase147/runtime-classifier-literal-emit01/program.ssa",
+      "bytes": 1188233,
+      "sha256": "144a2b11fc38a24297267dd4e43b54b62a987f20cdf90b30498dce85870e010a"
+    },
+    "intermediate": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase147/integrated-plan04/image/program.ssa",
+      "bytes": 119081603,
+      "sha256": "2c468b86fbcbdbddef86bf8705ffe6dfb90fb610c5e40e2adad257185d17c162"
+    }
+  },
+  "qbeWorkerIdentities": [
+    {
+      "final": "$direct.p147z_runtime_118",
+      "prototype": "$direct.p147z_runtime_118",
+      "onlyEntrySymbolRenamed": false,
+      "byteExactAfterRename": true,
+      "normalizedSha256": "8cd0cfc1bb2726e36b8c7687a28fe68324fe1e44e36458cbfdac376d63b27369"
+    },
+    {
+      "final": "$direct.p147z_runtime_111",
+      "prototype": "$direct.p147z_runtime_111",
+      "onlyEntrySymbolRenamed": false,
+      "byteExactAfterRename": true,
+      "normalizedSha256": "c79896a4d60acb67ae773993b2756b67b2434aac713ab8dd93c2966b5b20ba47"
+    },
+    {
+      "final": "$direct.p118z_runtime",
+      "prototype": "$direct.p147z_runtime",
+      "onlyEntrySymbolRenamed": true,
+      "byteExactAfterRename": true,
+      "normalizedSha256": "4530e60eb0f792bce992c212775a90fd1920035384012748b8c836717602a57e"
+    }
+  ],
+  "assemblyWorkerIdentities": [
+    {
+      "final": "$direct.p147z_runtime_118",
+      "prototype": "$direct.p147z_runtime_118",
+      "normalizedAssemblyExact": true,
+      "instructions": 1037,
+      "normalization": "Only fulltoken ownentrysymbol and assembler-local labels byfirstencounter",
+      "sha256": "5f3b34f0446e899933b3bbce1f849364db8fef011fdf47efaed93078dbf7df6c"
+    },
+    {
+      "final": "$direct.p147z_runtime_111",
+      "prototype": "$direct.p147z_runtime_111",
+      "normalizedAssemblyExact": true,
+      "instructions": 2622,
+      "normalization": "Only fulltoken ownentrysymbol and assembler-local labels byfirstencounter",
+      "sha256": "1bc018c8846aef3d271de85a0c6d3d0a87b1f1dfef6dfd45eb1c39fc9a88ef7b"
+    },
+    {
+      "final": "$direct.p118z_runtime",
+      "prototype": "$direct.p147z_runtime",
+      "normalizedAssemblyExact": true,
+      "instructions": 2125,
+      "normalization": "Only fulltoken ownentrysymbol and assembler-local labels byfirstencounter",
+      "sha256": "35785843d43b258dffeac3ae5aeab3d3cbb5ee629ebd029ac2cc98a0f9c8e9b5"
+    }
+  ],
+  "directCallers": {
+    "final": [
+      {
+        "line": 634984,
+        "caller": "p112w_FID_36_100_105_114_101_99_116_46_112_49_49_56_122_95_114_117_110_116_105_109_101_",
+        "decoded": "$direct.p118z_runtime",
+        "call": "%p113_forward =l call $p113d_FID_36_100_105_114_101_99_116_46_112_49_49_56_122_95_114_117_110_116_105_109_101_(l %state, l %v_v_4291183842)"
+      },
+      {
+        "line": 2577273,
+        "caller": "p111_FID_36_100_105_114_101_99_116_46_112_49_49_56_122_95_114_117_110_116_105_109_101_",
+        "decoded": "$direct.p118z_runtime",
+        "call": "%p113_public_value =l call $p113d_FID_36_100_105_114_101_99_116_46_112_49_49_56_122_95_114_117_110_116_105_109_101_(l %state, l %p113_arg_0)"
+      }
+    ],
+    "prototype": [
+      {
+        "line": 9085,
+        "caller": "p113d_FID_36_100_105_114_101_99_116_46_112_49_52_55_122_95_110_101_119_95_111_110_101_",
+        "decoded": "$direct.p147z_new_one",
+        "call": "%v_p113p_call_26_0 =l call $p113d_FID_36_100_105_114_101_99_116_46_112_49_52_55_122_95_114_117_110_116_105_109_101_(l %state, l %v_v_4294967271)"
+      },
+      {
+        "line": 10493,
+        "caller": "p113d_FID_36_112_49_49_56_46_116_114_109_99_46_36_100_105_114_101_99_116_46_112_49_52_55_122_95_102_117_108_108_",
+        "decoded": "$p118.trmc.$direct.p147z_full",
+        "call": "%v_p113p_call_84_0 =l call $p113d_FID_36_100_105_114_101_99_116_46_112_49_52_55_122_95_114_117_110_116_105_109_101_(l %state, l %v_v_4294967213)"
+      },
+      {
+        "line": 12592,
+        "caller": "p112w_FID_36_100_105_114_101_99_116_46_112_49_52_55_122_95_114_117_110_116_105_109_101_",
+        "decoded": "$direct.p147z_runtime",
+        "call": "%p113_forward =l call $p113d_FID_36_100_105_114_101_99_116_46_112_49_52_55_122_95_114_117_110_116_105_109_101_(l %state, l %v_v_4294925686)"
+      },
+      {
+        "line": 22031,
+        "caller": "p111_FID_36_100_105_114_101_99_116_46_112_49_52_55_122_95_114_117_110_116_105_109_101_",
+        "decoded": "$direct.p147z_runtime",
+        "call": "%p113_public_value =l call $p113d_FID_36_100_105_114_101_99_116_46_112_49_52_55_122_95_114_117_110_116_105_109_101_(l %state, l %p113_arg_0)"
+      }
+    ],
+    "intermediate": [
+      {
+        "line": 2565846,
+        "caller": "p111_FID_36_100_105_114_101_99_116_46_112_49_49_56_122_95_114_117_110_116_105_109_101_",
+        "decoded": "$direct.p118z_runtime",
+        "call": "%p113_public_value =l call $p113d_FID_36_100_105_114_101_99_116_46_112_49_49_56_122_95_114_117_110_116_105_109_101_(l %state, l %p113_arg_0)"
+      }
+    ]
+  },
+  "benchmarkProtocol": {
+    "source": {
+      "file": "selfhost/build/phase147/runtime-classifier-plan05/harness.bend",
+      "bytes": 2827,
+      "sha256": "3f0543229523a24326e4a4a63439fd8b5a5151c3011fbf3a3cc054ab5b4cdca5"
+    },
+    "saltComputedOnceBeforeLoop": true,
+    "listRetainedAcrossIterations": true,
+    "symbolRetainedAcrossLocalCount": true,
+    "stringAppendInClassifierLoop": false
+  },
+  "scope": "Static worker/callsite identities, not dynamic counts or a measured explanation of whole-request timing.",
+  "failedAnalysis": "assembly-identities.json used substring entry-name replacement, which also renamed helper prefixes and falsely reported one difference; preserved raw. assembly-identities02.json uses full symbol tokens and all three comparisons pass.",
+  "finalWorkers": [
+    {
+      "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_49_52_55_122_95_114_117_110_116_105_109_101_95_49_49_56_",
+      "decoded": "$direct.p147z_runtime_118",
+      "line": 35871,
+      "lines": 1442,
+      "bytes": 51006,
+      "calls": {
+        "p125_rt_take2": 33,
+        "p111_rt_special_take": 33,
+        "p111_rt_sink": 72,
+        "p111_rt_fail": 35
+      },
+      "branches": 110
+    },
+    {
+      "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_49_52_55_122_95_114_117_110_116_105_109_101_95_49_49_49_",
+      "decoded": "$direct.p147z_runtime_111",
+      "line": 37314,
+      "lines": 3452,
+      "bytes": 119310,
+      "calls": {
+        "p125_rt_take2": 65,
+        "p111_rt_special_take": 65,
+        "p111_rt_sink": 161,
+        "p111_rt_fail": 130
+      },
+      "branches": 308
+    },
+    {
+      "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_49_49_56_122_95_114_117_110_116_105_109_101_",
+      "decoded": "$direct.p118z_runtime",
+      "line": 40767,
+      "lines": 2778,
+      "bytes": 97364,
+      "calls": {
+        "p125_rt_take2": 57,
+        "p111_rt_special_take": 57,
+        "p111_rt_sink": 121,
+        "p111_rt_fail": 114,
+        "$direct.p147z_runtime_118": 1,
+        "$direct.p147z_runtime_111": 1
+      },
+      "branches": 239
+    }
+  ],
+  "prototypeWorkers": [
+    {
+      "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_49_52_55_122_95_114_117_110_116_105_109_101_95_49_49_56_",
+      "decoded": "$direct.p147z_runtime_118",
+      "line": 1179,
+      "lines": 1442,
+      "bytes": 51006,
+      "calls": {
+        "p125_rt_take2": 33,
+        "p111_rt_special_take": 33,
+        "p111_rt_sink": 72,
+        "p111_rt_fail": 35
+      },
+      "branches": 110
+    },
+    {
+      "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_49_52_55_122_95_114_117_110_116_105_109_101_95_49_49_49_",
+      "decoded": "$direct.p147z_runtime_111",
+      "line": 2622,
+      "lines": 3452,
+      "bytes": 119310,
+      "calls": {
+        "p125_rt_take2": 65,
+        "p111_rt_special_take": 65,
+        "p111_rt_sink": 161,
+        "p111_rt_fail": 130
+      },
+      "branches": 308
+    },
+    {
+      "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_49_52_55_122_95_114_117_110_116_105_109_101_",
+      "decoded": "$direct.p147z_runtime",
+      "line": 6075,
+      "lines": 2778,
+      "bytes": 97364,
+      "calls": {
+        "p125_rt_take2": 57,
+        "p111_rt_special_take": 57,
+        "p111_rt_sink": 121,
+        "p111_rt_fail": 114,
+        "$direct.p147z_runtime_118": 1,
+        "$direct.p147z_runtime_111": 1
+      },
+      "branches": 239
+    },
+    {
+      "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_49_49_56_122_95_114_117_110_116_105_109_101_",
+      "decoded": "$direct.p118z_runtime",
+      "line": 10327,
+      "lines": 114,
+      "bytes": 5902,
+      "calls": {
+        "p111_rt_keep": 7,
+        "$direct.p111v_signature": 1,
+        "$direct.List.is_empty": 1,
+        "$direct.Bool.not": 1,
+        "$direct.String.eq": 7,
+        "p111_rt_op": 7
+      },
+      "branches": 0
+    }
+  ],
+  "intermediateWorkers": [
+    {
+      "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_49_49_56_122_95_114_117_110_116_105_109_101_",
+      "decoded": "$direct.p118z_runtime",
+      "line": 381598,
+      "lines": 114,
+      "bytes": 5902,
+      "calls": {
+        "p111_rt_keep": 7,
+        "$direct.p111v_signature": 1,
+        "$direct.List.is_empty": 1,
+        "$direct.Bool.not": 1,
+        "$direct.String.eq": 7,
+        "p111_rt_op": 7
+      },
+      "branches": 0
+    }
+  ]
+}

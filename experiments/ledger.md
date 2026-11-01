@@ -4,6 +4,28 @@ This ledger records decisions and links evidence; it does not replace the report
 Read [workflow](README.md) and [current strategy](STEERING.md) before a new investigation.
 User objective: make the Bend compiler written in Bend and its validation loop much faster while preserving correctness. Historical authorization windows are recorded below; current release status and priorities are in [STEERING.md](STEERING.md).
 
+## Phase148 — Compact multi-consumer units (2026-11-01)
+
+[Design](../design/phase148/README.md) ·
+[Report](../implementation/phase148/README.md) ·
+[Experiment](phase148/P148-001-compact-unit.md).
+
+One scalar instruction/value tape across optimization and admission is checked
+and measured, with encode/decode, final verification, rendering and destruction
+charged. Compiler-family new/old0.9936; Map1.0279. No-render ablation0.9905
+rejects rendering dilution; pack/unpack+old1.1623 identifies material transfer
+cost without an additive attribution. Reject production adoption: no useful win
+or2× region gain. Existing Phase147 qualification and installed selections remain.
+
+Initial unsafe wrapper sharing failed native despite81 hosted controls; affine
+successor passes81 repeated controls, ten supplementary optimizer comparisons,
+two conservative refusals and native exact-output gates. Profiler01 rejected,
+profiler02 passes strict zero-loss/lifecycle/coverage gates.8-byte scalar cells
+still require runtime transport.1,918 experimental Bend lines stay outside the
+canonical source.56 guards427.42s,18 failed attempts, peak987.59MiB; all closed.
+Next require cheap native storage then a producer-to-consumer compact boundary,
+or explore shared parsing/checking identities.10×/100× scopes are not speed claims.
+
 ## Phase147 — Cold compiler representation work (2026-11-01)
 
 [Design](../design/phase147/README.md) ·

@@ -1,3 +1,22 @@
+# Latest investigation: Phase148 compact units
+
+[Report](../implementation/phase148/README.md) ·
+[Metrics](../implementation/phase148/metrics.json) ·
+[Next boundary](../research/phase148/conclusions.md).
+
+Do not integrate the current late compact-IR adapter. Its corrected affine
+implementation passes exact controls and native output oracles, but complete
+unit ratios are0.9936 compiler/1.0279 Map. Removing rendering still gives0.9905;
+adding pack/unpack before the old pipeline gives1.1623. Conversion and native
+array/ownership transport consume the expected benefit. The2× region gate fails.
+
+Phase147 remains the qualified cold compiler. No fresh whole-build or upstream
+ratio.56 guarded jobs cost427.42s; all closed, failures retained, no pruning.
+The most promising larger boundary is direct production of stable-ID compact
+units through several consumers, conditional on cheap native reads and a real
+complete-region win. Shared frontend semantic identities are the alternative.
+Avoid another isolated numeric verifier or a speculative universal IR rewrite.
+
 # Latest qualified optimization: Phase147 cold representation work
 
 [Report](../implementation/phase147/README.md) ·

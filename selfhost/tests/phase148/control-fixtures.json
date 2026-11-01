@@ -1,0 +1,1105 @@
+{
+  "kind": "phase148-independent-unit-controls",
+  "version": 1,
+  "complete": true,
+  "targetsRun": false,
+  "oracleValidated": false,
+  "cases": [
+    {
+      "name": "constant-wide-result",
+      "function": {
+        "$": "P113DFunction",
+        "name": "f",
+        "params": {
+          "$": "Nil"
+        },
+        "result": 1,
+        "public": false,
+        "body": {
+          "$": "Con",
+          "head": {
+            "$": "P113DResult",
+            "values": {
+              "$": "Con",
+              "head": {
+                "$": "N111Const",
+                "lo": 1,
+                "hi": 1
+              },
+              "tail": {
+                "$": "Nil"
+              }
+            }
+          },
+          "tail": {
+            "$": "Nil"
+          }
+        }
+      },
+      "expectedOptimized": {
+        "$": "P113DFunction",
+        "name": "f",
+        "params": {
+          "$": "Nil"
+        },
+        "result": 1,
+        "public": false,
+        "body": {
+          "$": "Con",
+          "head": {
+            "$": "P113DResult",
+            "values": {
+              "$": "Con",
+              "head": {
+                "$": "N111Const",
+                "lo": 1,
+                "hi": 1
+              },
+              "tail": {
+                "$": "Nil"
+              }
+            }
+          },
+          "tail": {
+            "$": "Nil"
+          }
+        }
+      },
+      "expectedError": ""
+    },
+    {
+      "name": "set-propagates-result",
+      "function": {
+        "$": "P113DFunction",
+        "name": "f",
+        "params": {
+          "$": "Nil"
+        },
+        "result": 1,
+        "public": false,
+        "body": {
+          "$": "Con",
+          "head": {
+            "$": "P113DScalar",
+            "stmt": {
+              "$": "N111Set",
+              "name": "x",
+              "typ": {
+                "$": "N111U64"
+              },
+              "value": {
+                "$": "N111Const",
+                "lo": 7,
+                "hi": 0
+              }
+            }
+          },
+          "tail": {
+            "$": "Con",
+            "head": {
+              "$": "P113DResult",
+              "values": {
+                "$": "Con",
+                "head": {
+                  "$": "N111Local",
+                  "name": "x"
+                },
+                "tail": {
+                  "$": "Nil"
+                }
+              }
+            },
+            "tail": {
+              "$": "Nil"
+            }
+          }
+        }
+      },
+      "expectedOptimized": {
+        "$": "P113DFunction",
+        "name": "f",
+        "params": {
+          "$": "Nil"
+        },
+        "result": 1,
+        "public": false,
+        "body": {
+          "$": "Con",
+          "head": {
+            "$": "P113DScalar",
+            "stmt": {
+              "$": "N111Set",
+              "name": "x",
+              "typ": {
+                "$": "N111U64"
+              },
+              "value": {
+                "$": "N111Const",
+                "lo": 7,
+                "hi": 0
+              }
+            }
+          },
+          "tail": {
+            "$": "Con",
+            "head": {
+              "$": "P113DResult",
+              "values": {
+                "$": "Con",
+                "head": {
+                  "$": "N111Const",
+                  "lo": 7,
+                  "hi": 0
+                },
+                "tail": {
+                  "$": "Nil"
+                }
+              }
+            },
+            "tail": {
+              "$": "Nil"
+            }
+          }
+        }
+      },
+      "expectedError": ""
+    },
+    {
+      "name": "known-true-branch",
+      "function": {
+        "$": "P113DFunction",
+        "name": "f",
+        "params": {
+          "$": "Nil"
+        },
+        "result": 1,
+        "public": false,
+        "body": {
+          "$": "Con",
+          "head": {
+            "$": "P113DIf",
+            "condition": {
+              "$": "N111Const",
+              "lo": 1,
+              "hi": 0
+            },
+            "yes": {
+              "$": "Con",
+              "head": {
+                "$": "P113DResult",
+                "values": {
+                  "$": "Con",
+                  "head": {
+                    "$": "N111Const",
+                    "lo": 7,
+                    "hi": 0
+                  },
+                  "tail": {
+                    "$": "Nil"
+                  }
+                }
+              },
+              "tail": {
+                "$": "Nil"
+              }
+            },
+            "no": {
+              "$": "Con",
+              "head": {
+                "$": "P113DResult",
+                "values": {
+                  "$": "Con",
+                  "head": {
+                    "$": "N111Const",
+                    "lo": 9,
+                    "hi": 0
+                  },
+                  "tail": {
+                    "$": "Nil"
+                  }
+                }
+              },
+              "tail": {
+                "$": "Nil"
+              }
+            }
+          },
+          "tail": {
+            "$": "Nil"
+          }
+        }
+      },
+      "expectedOptimized": {
+        "$": "P113DFunction",
+        "name": "f",
+        "params": {
+          "$": "Nil"
+        },
+        "result": 1,
+        "public": false,
+        "body": {
+          "$": "Con",
+          "head": {
+            "$": "P113DResult",
+            "values": {
+              "$": "Con",
+              "head": {
+                "$": "N111Const",
+                "lo": 7,
+                "hi": 0
+              },
+              "tail": {
+                "$": "Nil"
+              }
+            }
+          },
+          "tail": {
+            "$": "Nil"
+          }
+        }
+      },
+      "expectedError": ""
+    },
+    {
+      "name": "known-false-branch",
+      "function": {
+        "$": "P113DFunction",
+        "name": "f",
+        "params": {
+          "$": "Nil"
+        },
+        "result": 1,
+        "public": false,
+        "body": {
+          "$": "Con",
+          "head": {
+            "$": "P113DIf",
+            "condition": {
+              "$": "N111Const",
+              "lo": 0,
+              "hi": 0
+            },
+            "yes": {
+              "$": "Con",
+              "head": {
+                "$": "P113DResult",
+                "values": {
+                  "$": "Con",
+                  "head": {
+                    "$": "N111Const",
+                    "lo": 7,
+                    "hi": 0
+                  },
+                  "tail": {
+                    "$": "Nil"
+                  }
+                }
+              },
+              "tail": {
+                "$": "Nil"
+              }
+            },
+            "no": {
+              "$": "Con",
+              "head": {
+                "$": "P113DResult",
+                "values": {
+                  "$": "Con",
+                  "head": {
+                    "$": "N111Const",
+                    "lo": 9,
+                    "hi": 0
+                  },
+                  "tail": {
+                    "$": "Nil"
+                  }
+                }
+              },
+              "tail": {
+                "$": "Nil"
+              }
+            }
+          },
+          "tail": {
+            "$": "Nil"
+          }
+        }
+      },
+      "expectedOptimized": {
+        "$": "P113DFunction",
+        "name": "f",
+        "params": {
+          "$": "Nil"
+        },
+        "result": 1,
+        "public": false,
+        "body": {
+          "$": "Con",
+          "head": {
+            "$": "P113DResult",
+            "values": {
+              "$": "Con",
+              "head": {
+                "$": "N111Const",
+                "lo": 9,
+                "hi": 0
+              },
+              "tail": {
+                "$": "Nil"
+              }
+            }
+          },
+          "tail": {
+            "$": "Nil"
+          }
+        }
+      },
+      "expectedError": ""
+    },
+    {
+      "name": "branch-join-equal",
+      "function": {
+        "$": "P113DFunction",
+        "name": "f",
+        "params": {
+          "$": "Con",
+          "head": {
+            "$": "NC_Binding",
+            "id": 0,
+            "word": "p",
+            "kind": {
+              "$": "N_W64"
+            }
+          },
+          "tail": {
+            "$": "Nil"
+          }
+        },
+        "result": 1,
+        "public": false,
+        "body": {
+          "$": "Con",
+          "head": {
+            "$": "P113DScalar",
+            "stmt": {
+              "$": "N111Bin",
+              "name": "c",
+              "typ": {
+                "$": "N111U64"
+              },
+              "op": "eq",
+              "left": {
+                "$": "N111Local",
+                "name": "p"
+              },
+              "right": {
+                "$": "N111Const",
+                "lo": 1,
+                "hi": 0
+              }
+            }
+          },
+          "tail": {
+            "$": "Con",
+            "head": {
+              "$": "P113DIf",
+              "condition": {
+                "$": "N111Local",
+                "name": "c"
+              },
+              "yes": {
+                "$": "Con",
+                "head": {
+                  "$": "P113DScalar",
+                  "stmt": {
+                    "$": "N111Set",
+                    "name": "x",
+                    "typ": {
+                      "$": "N111U64"
+                    },
+                    "value": {
+                      "$": "N111Const",
+                      "lo": 7,
+                      "hi": 0
+                    }
+                  }
+                },
+                "tail": {
+                  "$": "Nil"
+                }
+              },
+              "no": {
+                "$": "Con",
+                "head": {
+                  "$": "P113DScalar",
+                  "stmt": {
+                    "$": "N111Set",
+                    "name": "x",
+                    "typ": {
+                      "$": "N111U64"
+                    },
+                    "value": {
+                      "$": "N111Const",
+                      "lo": 7,
+                      "hi": 0
+                    }
+                  }
+                },
+                "tail": {
+                  "$": "Nil"
+                }
+              }
+            },
+            "tail": {
+              "$": "Con",
+              "head": {
+                "$": "P113DResult",
+                "values": {
+                  "$": "Con",
+                  "head": {
+                    "$": "N111Local",
+                    "name": "x"
+                  },
+                  "tail": {
+                    "$": "Nil"
+                  }
+                }
+              },
+              "tail": {
+                "$": "Nil"
+              }
+            }
+          }
+        }
+      },
+      "expectedOptimized": {
+        "$": "P113DFunction",
+        "name": "f",
+        "params": {
+          "$": "Con",
+          "head": {
+            "$": "NC_Binding",
+            "id": 0,
+            "word": "p",
+            "kind": {
+              "$": "N_W64"
+            }
+          },
+          "tail": {
+            "$": "Nil"
+          }
+        },
+        "result": 1,
+        "public": false,
+        "body": {
+          "$": "Con",
+          "head": {
+            "$": "P113DScalar",
+            "stmt": {
+              "$": "N111Bin",
+              "name": "c",
+              "typ": {
+                "$": "N111U64"
+              },
+              "op": "eq",
+              "left": {
+                "$": "N111Local",
+                "name": "p"
+              },
+              "right": {
+                "$": "N111Const",
+                "lo": 1,
+                "hi": 0
+              }
+            }
+          },
+          "tail": {
+            "$": "Con",
+            "head": {
+              "$": "P113DIf",
+              "condition": {
+                "$": "N111Local",
+                "name": "c"
+              },
+              "yes": {
+                "$": "Con",
+                "head": {
+                  "$": "P113DScalar",
+                  "stmt": {
+                    "$": "N111Set",
+                    "name": "x",
+                    "typ": {
+                      "$": "N111U64"
+                    },
+                    "value": {
+                      "$": "N111Const",
+                      "lo": 7,
+                      "hi": 0
+                    }
+                  }
+                },
+                "tail": {
+                  "$": "Nil"
+                }
+              },
+              "no": {
+                "$": "Con",
+                "head": {
+                  "$": "P113DScalar",
+                  "stmt": {
+                    "$": "N111Set",
+                    "name": "x",
+                    "typ": {
+                      "$": "N111U64"
+                    },
+                    "value": {
+                      "$": "N111Const",
+                      "lo": 7,
+                      "hi": 0
+                    }
+                  }
+                },
+                "tail": {
+                  "$": "Nil"
+                }
+              }
+            },
+            "tail": {
+              "$": "Con",
+              "head": {
+                "$": "P113DResult",
+                "values": {
+                  "$": "Con",
+                  "head": {
+                    "$": "N111Const",
+                    "lo": 7,
+                    "hi": 0
+                  },
+                  "tail": {
+                    "$": "Nil"
+                  }
+                }
+              },
+              "tail": {
+                "$": "Nil"
+              }
+            }
+          }
+        }
+      },
+      "expectedError": ""
+    },
+    {
+      "name": "branch-join-unequal",
+      "function": {
+        "$": "P113DFunction",
+        "name": "f",
+        "params": {
+          "$": "Con",
+          "head": {
+            "$": "NC_Binding",
+            "id": 0,
+            "word": "p",
+            "kind": {
+              "$": "N_W64"
+            }
+          },
+          "tail": {
+            "$": "Nil"
+          }
+        },
+        "result": 1,
+        "public": false,
+        "body": {
+          "$": "Con",
+          "head": {
+            "$": "P113DScalar",
+            "stmt": {
+              "$": "N111Bin",
+              "name": "c",
+              "typ": {
+                "$": "N111U64"
+              },
+              "op": "eq",
+              "left": {
+                "$": "N111Local",
+                "name": "p"
+              },
+              "right": {
+                "$": "N111Const",
+                "lo": 1,
+                "hi": 0
+              }
+            }
+          },
+          "tail": {
+            "$": "Con",
+            "head": {
+              "$": "P113DIf",
+              "condition": {
+                "$": "N111Local",
+                "name": "c"
+              },
+              "yes": {
+                "$": "Con",
+                "head": {
+                  "$": "P113DScalar",
+                  "stmt": {
+                    "$": "N111Set",
+                    "name": "x",
+                    "typ": {
+                      "$": "N111U64"
+                    },
+                    "value": {
+                      "$": "N111Const",
+                      "lo": 7,
+                      "hi": 0
+                    }
+                  }
+                },
+                "tail": {
+                  "$": "Nil"
+                }
+              },
+              "no": {
+                "$": "Con",
+                "head": {
+                  "$": "P113DScalar",
+                  "stmt": {
+                    "$": "N111Set",
+                    "name": "x",
+                    "typ": {
+                      "$": "N111U64"
+                    },
+                    "value": {
+                      "$": "N111Const",
+                      "lo": 9,
+                      "hi": 0
+                    }
+                  }
+                },
+                "tail": {
+                  "$": "Nil"
+                }
+              }
+            },
+            "tail": {
+              "$": "Con",
+              "head": {
+                "$": "P113DResult",
+                "values": {
+                  "$": "Con",
+                  "head": {
+                    "$": "N111Local",
+                    "name": "x"
+                  },
+                  "tail": {
+                    "$": "Nil"
+                  }
+                }
+              },
+              "tail": {
+                "$": "Nil"
+              }
+            }
+          }
+        }
+      },
+      "expectedOptimized": {
+        "$": "P113DFunction",
+        "name": "f",
+        "params": {
+          "$": "Con",
+          "head": {
+            "$": "NC_Binding",
+            "id": 0,
+            "word": "p",
+            "kind": {
+              "$": "N_W64"
+            }
+          },
+          "tail": {
+            "$": "Nil"
+          }
+        },
+        "result": 1,
+        "public": false,
+        "body": {
+          "$": "Con",
+          "head": {
+            "$": "P113DScalar",
+            "stmt": {
+              "$": "N111Bin",
+              "name": "c",
+              "typ": {
+                "$": "N111U64"
+              },
+              "op": "eq",
+              "left": {
+                "$": "N111Local",
+                "name": "p"
+              },
+              "right": {
+                "$": "N111Const",
+                "lo": 1,
+                "hi": 0
+              }
+            }
+          },
+          "tail": {
+            "$": "Con",
+            "head": {
+              "$": "P113DIf",
+              "condition": {
+                "$": "N111Local",
+                "name": "c"
+              },
+              "yes": {
+                "$": "Con",
+                "head": {
+                  "$": "P113DScalar",
+                  "stmt": {
+                    "$": "N111Set",
+                    "name": "x",
+                    "typ": {
+                      "$": "N111U64"
+                    },
+                    "value": {
+                      "$": "N111Const",
+                      "lo": 7,
+                      "hi": 0
+                    }
+                  }
+                },
+                "tail": {
+                  "$": "Nil"
+                }
+              },
+              "no": {
+                "$": "Con",
+                "head": {
+                  "$": "P113DScalar",
+                  "stmt": {
+                    "$": "N111Set",
+                    "name": "x",
+                    "typ": {
+                      "$": "N111U64"
+                    },
+                    "value": {
+                      "$": "N111Const",
+                      "lo": 9,
+                      "hi": 0
+                    }
+                  }
+                },
+                "tail": {
+                  "$": "Nil"
+                }
+              }
+            },
+            "tail": {
+              "$": "Con",
+              "head": {
+                "$": "P113DResult",
+                "values": {
+                  "$": "Con",
+                  "head": {
+                    "$": "N111Local",
+                    "name": "x"
+                  },
+                  "tail": {
+                    "$": "Nil"
+                  }
+                }
+              },
+              "tail": {
+                "$": "Nil"
+              }
+            }
+          }
+        }
+      },
+      "expectedError": ""
+    },
+    {
+      "name": "reassignment-updates-fact",
+      "function": {
+        "$": "P113DFunction",
+        "name": "f",
+        "params": {
+          "$": "Nil"
+        },
+        "result": 1,
+        "public": false,
+        "body": {
+          "$": "Con",
+          "head": {
+            "$": "P113DScalar",
+            "stmt": {
+              "$": "N111Set",
+              "name": "x",
+              "typ": {
+                "$": "N111U64"
+              },
+              "value": {
+                "$": "N111Const",
+                "lo": 7,
+                "hi": 0
+              }
+            }
+          },
+          "tail": {
+            "$": "Con",
+            "head": {
+              "$": "P113DScalar",
+              "stmt": {
+                "$": "N111Set",
+                "name": "x",
+                "typ": {
+                  "$": "N111U64"
+                },
+                "value": {
+                  "$": "N111Const",
+                  "lo": 9,
+                  "hi": 0
+                }
+              }
+            },
+            "tail": {
+              "$": "Con",
+              "head": {
+                "$": "P113DResult",
+                "values": {
+                  "$": "Con",
+                  "head": {
+                    "$": "N111Local",
+                    "name": "x"
+                  },
+                  "tail": {
+                    "$": "Nil"
+                  }
+                }
+              },
+              "tail": {
+                "$": "Nil"
+              }
+            }
+          }
+        }
+      },
+      "expectedOptimized": {
+        "$": "P113DFunction",
+        "name": "f",
+        "params": {
+          "$": "Nil"
+        },
+        "result": 1,
+        "public": false,
+        "body": {
+          "$": "Con",
+          "head": {
+            "$": "P113DScalar",
+            "stmt": {
+              "$": "N111Set",
+              "name": "x",
+              "typ": {
+                "$": "N111U64"
+              },
+              "value": {
+                "$": "N111Const",
+                "lo": 7,
+                "hi": 0
+              }
+            }
+          },
+          "tail": {
+            "$": "Con",
+            "head": {
+              "$": "P113DScalar",
+              "stmt": {
+                "$": "N111Set",
+                "name": "x",
+                "typ": {
+                  "$": "N111U64"
+                },
+                "value": {
+                  "$": "N111Const",
+                  "lo": 9,
+                  "hi": 0
+                }
+              }
+            },
+            "tail": {
+              "$": "Con",
+              "head": {
+                "$": "P113DResult",
+                "values": {
+                  "$": "Con",
+                  "head": {
+                    "$": "N111Const",
+                    "lo": 9,
+                    "hi": 0
+                  },
+                  "tail": {
+                    "$": "Nil"
+                  }
+                }
+              },
+              "tail": {
+                "$": "Nil"
+              }
+            }
+          }
+        }
+      },
+      "expectedError": ""
+    },
+    {
+      "name": "alias-value-propagation",
+      "function": {
+        "$": "P113DFunction",
+        "name": "f",
+        "params": {
+          "$": "Nil"
+        },
+        "result": 1,
+        "public": false,
+        "body": {
+          "$": "Con",
+          "head": {
+            "$": "P113DScalar",
+            "stmt": {
+              "$": "N111Set",
+              "name": "x",
+              "typ": {
+                "$": "N111U64"
+              },
+              "value": {
+                "$": "N111Const",
+                "lo": 7,
+                "hi": 0
+              }
+            }
+          },
+          "tail": {
+            "$": "Con",
+            "head": {
+              "$": "P113DScalar",
+              "stmt": {
+                "$": "N111Set",
+                "name": "y",
+                "typ": {
+                  "$": "N111U64"
+                },
+                "value": {
+                  "$": "N111Local",
+                  "name": "x"
+                }
+              }
+            },
+            "tail": {
+              "$": "Con",
+              "head": {
+                "$": "P113DResult",
+                "values": {
+                  "$": "Con",
+                  "head": {
+                    "$": "N111Local",
+                    "name": "y"
+                  },
+                  "tail": {
+                    "$": "Nil"
+                  }
+                }
+              },
+              "tail": {
+                "$": "Nil"
+              }
+            }
+          }
+        }
+      },
+      "expectedOptimized": {
+        "$": "P113DFunction",
+        "name": "f",
+        "params": {
+          "$": "Nil"
+        },
+        "result": 1,
+        "public": false,
+        "body": {
+          "$": "Con",
+          "head": {
+            "$": "P113DScalar",
+            "stmt": {
+              "$": "N111Set",
+              "name": "x",
+              "typ": {
+                "$": "N111U64"
+              },
+              "value": {
+                "$": "N111Const",
+                "lo": 7,
+                "hi": 0
+              }
+            }
+          },
+          "tail": {
+            "$": "Con",
+            "head": {
+              "$": "P113DScalar",
+              "stmt": {
+                "$": "N111Set",
+                "name": "y",
+                "typ": {
+                  "$": "N111U64"
+                },
+                "value": {
+                  "$": "N111Const",
+                  "lo": 7,
+                  "hi": 0
+                }
+              }
+            },
+            "tail": {
+              "$": "Con",
+              "head": {
+                "$": "P113DResult",
+                "values": {
+                  "$": "Con",
+                  "head": {
+                    "$": "N111Const",
+                    "lo": 7,
+                    "hi": 0
+                  },
+                  "tail": {
+                    "$": "Nil"
+                  }
+                }
+              },
+              "tail": {
+                "$": "Nil"
+              }
+            }
+          }
+        }
+      },
+      "expectedError": ""
+    }
+  ],
+  "admissionSources": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase147/verifier-cases.json",
+      "bytes": 143829,
+      "sha256": "a9fc8631366704978ebee79b9f772d868b790c3f46e9de4d2f19807a653bd2e4",
+      "selectKind": "direct"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase147/verifier-cases-extra.json",
+      "bytes": 80835,
+      "sha256": "d9a747f9a9a690d2770745f6f4b3406b88118e04e374d2ce811f69b9a949fa78",
+      "selectKind": "direct"
+    }
+  ],
+  "scope": "Eight literal full-structure scalar expectations plus37 retained independent exact admission cases. No malformed generated code is executed; source checking and original-oracle execution pending."
+}

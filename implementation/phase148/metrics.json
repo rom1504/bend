@@ -1,0 +1,1948 @@
+{
+  "kind": "phase148-compact-unit-conclusions",
+  "complete": true,
+  "decision": "Do not integrate current adapter for performance; retain Phase147 qualification.",
+  "productionChanged": false,
+  "wholeColdMeasured": false,
+  "fullNativeQualificationRun": false,
+  "baselineCandidate": {
+    "file": "implementation/phase147/candidate.json",
+    "bytes": 3330,
+    "sha256": "747864ff6fd56a83c2e8e0e8dd1ff6e69763eb2764d9c33b668e1d8efb4ccaf7"
+  },
+  "full": [
+    {
+      "receipt": {
+        "file": "selfhost/build/phase148/compiler-native03/timing/report.json",
+        "bytes": 35306,
+        "sha256": "0a43cad6d0bb35172b63e03abb3ef2ed31a1fa7cd559be5f1de92e3f0b947b3f"
+      },
+      "family": "compiler-verifier-slice",
+      "functions": 6,
+      "repeats": 4,
+      "medianSeconds": {
+        "old": 0.14992226148024201,
+        "new": 0.14896655781194568
+      },
+      "ratio": 0.9936253384996978,
+      "pairs": [
+        {
+          "index": 0,
+          "order": [
+            "old",
+            "new"
+          ],
+          "calls": {
+            "old": 8,
+            "new": 9
+          },
+          "ratio": 0.9760910041052102
+        },
+        {
+          "index": 1,
+          "order": [
+            "new",
+            "old"
+          ],
+          "calls": {
+            "new": 10,
+            "old": 11
+          },
+          "ratio": 0.9995707391143634
+        },
+        {
+          "index": 2,
+          "order": [
+            "old",
+            "new"
+          ],
+          "calls": {
+            "old": 12,
+            "new": 13
+          },
+          "ratio": 0.9960907866710674
+        },
+        {
+          "index": 3,
+          "order": [
+            "new",
+            "old"
+          ],
+          "calls": {
+            "new": 14,
+            "old": 15
+          },
+          "ratio": 0.9867521520457051
+        }
+      ],
+      "scope": "Whole child wall and CPU include fixed preparation, complete per-unit work, writing and final cleanup. Zero-repeat costs reported without subtraction; no whole-compiler or upstream speed claim."
+    },
+    {
+      "receipt": {
+        "file": "selfhost/build/phase148/map-native01/timing/report.json",
+        "bytes": 37527,
+        "sha256": "ba0b830819d9cc7643be5ebba3838c09bc097d25677e381ef273bfa0ce382dff"
+      },
+      "family": "coverage-map-churn-128",
+      "functions": 6,
+      "repeats": 16,
+      "medianSeconds": {
+        "old": 0.21251801191829145,
+        "new": 0.2184484174940735
+      },
+      "ratio": 1.0279054256260507,
+      "pairs": [
+        {
+          "index": 0,
+          "order": [
+            "old",
+            "new"
+          ],
+          "calls": {
+            "old": 10,
+            "new": 11
+          },
+          "ratio": 1.022402069166364
+        },
+        {
+          "index": 1,
+          "order": [
+            "new",
+            "old"
+          ],
+          "calls": {
+            "new": 12,
+            "old": 13
+          },
+          "ratio": 1.0255254182232745
+        },
+        {
+          "index": 2,
+          "order": [
+            "old",
+            "new"
+          ],
+          "calls": {
+            "old": 14,
+            "new": 15
+          },
+          "ratio": 1.02993300290144
+        },
+        {
+          "index": 3,
+          "order": [
+            "new",
+            "old"
+          ],
+          "calls": {
+            "new": 16,
+            "old": 17
+          },
+          "ratio": 1.036033266289756
+        }
+      ],
+      "scope": "Whole child wall and CPU include fixed preparation, complete per-unit work, writing and final cleanup. Zero-repeat costs reported without subtraction; no whole-compiler or upstream speed claim."
+    }
+  ],
+  "ablation": {
+    "receipt": {
+      "file": "selfhost/build/phase148/compiler-ablation01/report.json",
+      "bytes": 72084,
+      "sha256": "6e3d9f3b2cacc5e921e8fdcdbfe683c89ca5584739297586672609c39fd97198"
+    },
+    "categories": {
+      "full": {
+        "reference": "old",
+        "candidate": "new",
+        "medianSeconds": {
+          "old": 0.14908517431467772,
+          "new": 0.1476984811015427
+        },
+        "ratio": 0.990698651160255
+      },
+      "analysis": {
+        "reference": "old-analysis",
+        "candidate": "new-analysis",
+        "medianSeconds": {
+          "old-analysis": 0.12651365995407104,
+          "new-analysis": 0.12531420355662704
+        },
+        "ratio": 0.9905191550234224
+      },
+      "transport": {
+        "reference": "old",
+        "candidate": "transport",
+        "medianSeconds": {
+          "old": 0.14795722952112556,
+          "transport": 0.17196991527453065
+        },
+        "ratio": 1.162294778235061
+      }
+    },
+    "scope": "Diagnostic ablation only, separate from the frozen full-pipeline result. Analysis modes skip rendering only and still optimize, admit, independently verify, write an empty string and clean up. Transport adds fresh pack/unpack before the entire old pipeline. Whole-child costs include fixed preparation and final cleanup. No subtracted stage attribution or whole-compiler speed claim."
+  },
+  "profiles": [
+    {
+      "receipt": {
+        "file": "selfhost/build/phase148/compiler-profile01/capture/report.json",
+        "bytes": 11335,
+        "sha256": "61db0e19e192f8a485d252c149ff414028b34c5c6f8ec2736a20d1906119638f"
+      },
+      "usable": false,
+      "samples": [
+        {
+          "variant": "old",
+          "receipt": {
+            "file": "selfhost/build/phase148/compiler-profile01/capture/000-sample-compiler-verifier-slice-old/analysis.json",
+            "bytes": 528507,
+            "sha256": "9594eef6519c289ef2d2763d2acafeb639c784497314349f69b0d351acfd44d5"
+          },
+          "header": {
+            "exe": "/home/ai/bend2/build/publish/bend/selfhost/build/phase148/compiler-native03/native/program",
+            "pid": 6,
+            "tid": 6,
+            "period_us": 4000,
+            "capacity": 100000,
+            "signal": 40,
+            "final_tid": 6,
+            "main_thread_cpu_ns": 5759039725,
+            "process_cpu_ns": 5767524952,
+            "wall_ns": 5767561270,
+            "samples": 1438,
+            "dropped": 0,
+            "overruns": 1,
+            "handler_intact": 1
+          },
+          "quality": {
+            "scope": "main_thread",
+            "main_thread_cpu_fraction": 0.998528792320689,
+            "sampled_thread_cpu_fraction": 0.998528792320689,
+            "minimum_process_cpu_fraction": 0.95,
+            "minimum_samples": 500,
+            "enough_samples": true,
+            "thread_lifecycle_complete": true,
+            "near_complete_process_cpu_coverage": true,
+            "usable_for_process_cpu_attribution": false,
+            "limitations": [
+              "Lost samples or timer overruns"
+            ],
+            "zero_loss": false,
+            "handler_intact": true,
+            "main_thread_shutdown": true,
+            "expected_clock_periods": 1439.75993125,
+            "delivered_per_expected_period": 0.9987776217327621,
+            "delivery_plausible": true,
+            "resolved_sample_fraction": 0.9520166898470097,
+            "unknown_samples": 69,
+            "inferred_symbol_range_samples": 0,
+            "resolved_symbol_coverage_is_not_logical_attribution": true
+          },
+          "topFunctions": [
+            {
+              "name": "term_drop",
+              "decoded": "term_drop",
+              "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase148/compiler-native03/native/program",
+              "samples": 137,
+              "fraction": 0.0952712100139082,
+              "percent": 9.527121001390821
+            },
+            {
+              "name": "[library_unresolved]",
+              "decoded": "[library_unresolved]",
+              "object": "/usr/lib/x86_64-linux-gnu/libc-2.31.so",
+              "samples": 66,
+              "fraction": 0.0458970792767733,
+              "percent": 4.58970792767733
+            },
+            {
+              "name": "p111_rt_sink",
+              "decoded": "p111_rt_sink",
+              "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase148/compiler-native03/native/program",
+              "samples": 57,
+              "fraction": 0.039638386648122394,
+              "percent": 3.9638386648122395
+            },
+            {
+              "name": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_83_116_114_105_110_103_46_99_109_112_",
+              "decoded": "p113d_FID_$p118borrow.read.String.cmp",
+              "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase148/compiler-native03/native/program",
+              "samples": 56,
+              "fraction": 0.03894297635605007,
+              "percent": 3.8942976356050067
+            },
+            {
+              "name": "span_fade",
+              "decoded": "span_fade",
+              "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase148/compiler-native03/native/program",
+              "samples": 52,
+              "fraction": 0.03616133518776078,
+              "percent": 3.616133518776078
+            },
+            {
+              "name": "p125_rt_take4",
+              "decoded": "p125_rt_take4",
+              "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase148/compiler-native03/native/program",
+              "samples": 52,
+              "fraction": 0.03616133518776078,
+              "percent": 3.616133518776078
+            },
+            {
+              "name": "p111_rt_ctor",
+              "decoded": "p111_rt_ctor",
+              "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase148/compiler-native03/native/program",
+              "samples": 51,
+              "fraction": 0.03546592489568846,
+              "percent": 3.546592489568846
+            },
+            {
+              "name": "p125_rt_take2",
+              "decoded": "p125_rt_take2",
+              "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase148/compiler-native03/native/program",
+              "samples": 51,
+              "fraction": 0.03546592489568846,
+              "percent": 3.546592489568846
+            },
+            {
+              "name": "work_loop.constprop.0",
+              "decoded": "work_loop.constprop.0",
+              "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase148/compiler-native03/native/program",
+              "samples": 50,
+              "fraction": 0.03477051460361613,
+              "percent": 3.477051460361613
+            },
+            {
+              "name": "p111_rt_op",
+              "decoded": "p111_rt_op",
+              "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase148/compiler-native03/native/program",
+              "samples": 50,
+              "fraction": 0.03477051460361613,
+              "percent": 3.477051460361613
+            },
+            {
+              "name": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_105_110_100_101_120_95_104_97_115_104_",
+              "decoded": "p113d_FID_$p118borrow.read.index_hash",
+              "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase148/compiler-native03/native/program",
+              "samples": 48,
+              "fraction": 0.03337969401947149,
+              "percent": 3.3379694019471486
+            },
+            {
+              "name": "p111_set_regs",
+              "decoded": "p111_set_regs",
+              "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase148/compiler-native03/native/program",
+              "samples": 41,
+              "fraction": 0.02851182197496523,
+              "percent": 2.851182197496523
+            },
+            {
+              "name": "p111_rt_jump",
+              "decoded": "p111_rt_jump",
+              "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase148/compiler-native03/native/program",
+              "samples": 25,
+              "fraction": 0.017385257301808066,
+              "percent": 1.7385257301808066
+            },
+            {
+              "name": "io_cbuf",
+              "decoded": "io_cbuf",
+              "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase148/compiler-native03/native/program",
+              "samples": 24,
+              "fraction": 0.016689847009735744,
+              "percent": 1.6689847009735743
+            },
+            {
+              "name": "p111_FID_36_100_105_114_101_99_116_46_112_49_49_49_118_95_110_97_109_101_95_99_104_97_114_115_",
+              "decoded": "p111_FID_$direct.p111v_name_chars",
+              "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase148/compiler-native03/native/program",
+              "samples": 22,
+              "fraction": 0.015299026425591099,
+              "percent": 1.52990264255911
+            },
+            {
+              "name": "p118_rt_borrow_scalar_safe",
+              "decoded": "p118_rt_borrow_scalar_safe",
+              "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase148/compiler-native03/native/program",
+              "samples": 22,
+              "fraction": 0.015299026425591099,
+              "percent": 1.52990264255911
+            },
+            {
+              "name": "p113d_FID_36_100_105_114_101_99_116_46_105_110_100_101_120_95_102_105_110_100_",
+              "decoded": "p113d_FID_$direct.index_find",
+              "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase148/compiler-native03/native/program",
+              "samples": 21,
+              "fraction": 0.014603616133518776,
+              "percent": 1.4603616133518775
+            },
+            {
+              "name": "p111_rt_return",
+              "decoded": "p111_rt_return",
+              "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase148/compiler-native03/native/program",
+              "samples": 21,
+              "fraction": 0.014603616133518776,
+              "percent": 1.4603616133518775
+            },
+            {
+              "name": "p118_rt_extend1",
+              "decoded": "p118_rt_extend1",
+              "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase148/compiler-native03/native/program",
+              "samples": 21,
+              "fraction": 0.014603616133518776,
+              "percent": 1.4603616133518775
+            },
+            {
+              "name": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_112_56_56_95_115_116_114_105_110_103_95_101_113_95_103_111_",
+              "decoded": "p113d_FID_$p118borrow.read.p88_string_eq_go",
+              "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase148/compiler-native03/native/program",
+              "samples": 20,
+              "fraction": 0.013908205841446454,
+              "percent": 1.3908205841446455
+            }
+          ]
+        },
+        {
+          "variant": "new",
+          "receipt": {
+            "file": "selfhost/build/phase148/compiler-profile01/capture/001-sample-compiler-verifier-slice-new/analysis.json",
+            "bytes": 570397,
+            "sha256": "2a660f0082698de72c998bdb7d8bdc3ad42ca4e416fdbf7100a3a5383178417c"
+          },
+          "header": {
+            "exe": "/home/ai/bend2/build/publish/bend/selfhost/build/phase148/compiler-native03/native/program",
+            "pid": 18,
+            "tid": 18,
+            "period_us": 4000,
+            "capacity": 100000,
+            "signal": 40,
+            "final_tid": 18,
+            "main_thread_cpu_ns": 5973228815,
+            "process_cpu_ns": 5982218775,
+            "wall_ns": 5982245009,
+            "samples": 1490,
+            "dropped": 0,
+            "overruns": 2,
+            "handler_intact": 1
+          },
+          "quality": {
+            "scope": "main_thread",
+            "main_thread_cpu_fraction": 0.9984972197878202,
+            "sampled_thread_cpu_fraction": 0.9984972197878202,
+            "minimum_process_cpu_fraction": 0.95,
+            "minimum_samples": 500,
+            "enough_samples": true,
+            "thread_lifecycle_complete": true,
+            "near_complete_process_cpu_coverage": true,
+            "usable_for_process_cpu_attribution": false,
+            "limitations": [
+              "Lost samples or timer overruns"
+            ],
+            "zero_loss": false,
+            "handler_intact": true,
+            "main_thread_shutdown": true,
+            "expected_clock_periods": 1493.30720375,
+            "delivered_per_expected_period": 0.9977853158802857,
+            "delivery_plausible": true,
+            "resolved_sample_fraction": 0.9449664429530201,
+            "unknown_samples": 82,
+            "inferred_symbol_range_samples": 0,
+            "resolved_symbol_coverage_is_not_logical_attribution": true
+          },
+          "topFunctions": [
+            {
+              "name": "term_drop",
+              "decoded": "term_drop",
+              "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase148/compiler-native03/native/program",
+              "samples": 146,
+              "fraction": 0.09798657718120805,
+              "percent": 9.798657718120806
+            },
+            {
+              "name": "[library_unresolved]",
+              "decoded": "[library_unresolved]",
+              "object": "/usr/lib/x86_64-linux-gnu/libc-2.31.so",
+              "samples": 82,
+              "fraction": 0.05503355704697987,
+              "percent": 5.503355704697987
+            },
+            {
+              "name": "p125_rt_take2",
+              "decoded": "p125_rt_take2",
+              "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase148/compiler-native03/native/program",
+              "samples": 78,
+              "fraction": 0.052348993288590606,
+              "percent": 5.23489932885906
+            },
+            {
+              "name": "p111_rt_ctor",
+              "decoded": "p111_rt_ctor",
+              "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase148/compiler-native03/native/program",
+              "samples": 54,
+              "fraction": 0.036241610738255034,
+              "percent": 3.6241610738255035
+            },
+            {
+              "name": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_83_116_114_105_110_103_46_99_109_112_",
+              "decoded": "p113d_FID_$p118borrow.read.String.cmp",
+              "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase148/compiler-native03/native/program",
+              "samples": 51,
+              "fraction": 0.03422818791946309,
+              "percent": 3.422818791946309
+            },
+            {
+              "name": "p111_rt_op",
+              "decoded": "p111_rt_op",
+              "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase148/compiler-native03/native/program",
+              "samples": 50,
+              "fraction": 0.03355704697986577,
+              "percent": 3.3557046979865772
+            },
+            {
+              "name": "p113_rt_array_pair",
+              "decoded": "p113_rt_array_pair",
+              "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase148/compiler-native03/native/program",
+              "samples": 47,
+              "fraction": 0.03154362416107383,
+              "percent": 3.1543624161073827
+            },
+            {
+              "name": "work_loop.constprop.0",
+              "decoded": "work_loop.constprop.0",
+              "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase148/compiler-native03/native/program",
+              "samples": 45,
+              "fraction": 0.030201342281879196,
+              "percent": 3.0201342281879198
+            },
+            {
+              "name": "p111_set_regs",
+              "decoded": "p111_set_regs",
+              "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase148/compiler-native03/native/program",
+              "samples": 43,
+              "fraction": 0.028859060402684565,
+              "percent": 2.8859060402684564
+            },
+            {
+              "name": "p111_rt_sink",
+              "decoded": "p111_rt_sink",
+              "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase148/compiler-native03/native/program",
+              "samples": 42,
+              "fraction": 0.028187919463087248,
+              "percent": 2.8187919463087248
+            },
+            {
+              "name": "span_fade",
+              "decoded": "span_fade",
+              "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase148/compiler-native03/native/program",
+              "samples": 35,
+              "fraction": 0.02348993288590604,
+              "percent": 2.348993288590604
+            },
+            {
+              "name": "p111_rt_jump",
+              "decoded": "p111_rt_jump",
+              "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase148/compiler-native03/native/program",
+              "samples": 33,
+              "fraction": 0.02214765100671141,
+              "percent": 2.214765100671141
+            },
+            {
+              "name": "p118_rt_extend1",
+              "decoded": "p118_rt_extend1",
+              "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase148/compiler-native03/native/program",
+              "samples": 31,
+              "fraction": 0.02080536912751678,
+              "percent": 2.0805369127516777
+            },
+            {
+              "name": "io_cbuf",
+              "decoded": "io_cbuf",
+              "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase148/compiler-native03/native/program",
+              "samples": 28,
+              "fraction": 0.01879194630872483,
+              "percent": 1.8791946308724832
+            },
+            {
+              "name": "p118_destination_fill",
+              "decoded": "p118_destination_fill",
+              "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase148/compiler-native03/native/program",
+              "samples": 28,
+              "fraction": 0.01879194630872483,
+              "percent": 1.8791946308724832
+            },
+            {
+              "name": "p111_rt_keep",
+              "decoded": "p111_rt_keep",
+              "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase148/compiler-native03/native/program",
+              "samples": 28,
+              "fraction": 0.01879194630872483,
+              "percent": 1.8791946308724832
+            },
+            {
+              "name": "p125_rt_take4",
+              "decoded": "p125_rt_take4",
+              "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase148/compiler-native03/native/program",
+              "samples": 27,
+              "fraction": 0.018120805369127517,
+              "percent": 1.8120805369127517
+            },
+            {
+              "name": "p111_FID_36_100_105_114_101_99_116_46_112_49_49_49_118_95_110_97_109_101_95_99_104_97_114_115_",
+              "decoded": "p111_FID_$direct.p111v_name_chars",
+              "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase148/compiler-native03/native/program",
+              "samples": 24,
+              "fraction": 0.016107382550335572,
+              "percent": 1.6107382550335572
+            },
+            {
+              "name": "p111_rt_return",
+              "decoded": "p111_rt_return",
+              "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase148/compiler-native03/native/program",
+              "samples": 24,
+              "fraction": 0.016107382550335572,
+              "percent": 1.6107382550335572
+            },
+            {
+              "name": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_105_110_100_101_120_95_104_97_115_104_",
+              "decoded": "p113d_FID_$p118borrow.read.index_hash",
+              "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase148/compiler-native03/native/program",
+              "samples": 21,
+              "fraction": 0.014093959731543624,
+              "percent": 1.4093959731543624
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "receipt": {
+        "file": "selfhost/build/phase148/compiler-profile02/capture/report.json",
+        "bytes": 11340,
+        "sha256": "d48627869cbe95675c5e3319a255d0ea00a8123fdba0f58587a806f7397b2462"
+      },
+      "usable": true,
+      "samples": [
+        {
+          "variant": "old",
+          "receipt": {
+            "file": "selfhost/build/phase148/compiler-profile02/capture/000-sample-compiler-verifier-slice-old/analysis.json",
+            "bytes": 316106,
+            "sha256": "48af8733e8f437ebe9e938a33b2ee7eeef06df1e49c796b621dbbd3351fa857e"
+          },
+          "header": {
+            "exe": "/home/ai/bend2/build/publish/bend/selfhost/build/phase148/compiler-native03/native/program",
+            "pid": 6,
+            "tid": 6,
+            "period_us": 16000,
+            "capacity": 100000,
+            "signal": 40,
+            "final_tid": 6,
+            "main_thread_cpu_ns": 11519876840,
+            "process_cpu_ns": 11536971692,
+            "wall_ns": 11536980533,
+            "samples": 719,
+            "dropped": 0,
+            "overruns": 0,
+            "handler_intact": 1
+          },
+          "quality": {
+            "scope": "main_thread",
+            "main_thread_cpu_fraction": 0.998518254837025,
+            "sampled_thread_cpu_fraction": 0.998518254837025,
+            "minimum_process_cpu_fraction": 0.95,
+            "minimum_samples": 500,
+            "enough_samples": true,
+            "thread_lifecycle_complete": true,
+            "near_complete_process_cpu_coverage": true,
+            "usable_for_process_cpu_attribution": true,
+            "limitations": [],
+            "zero_loss": true,
+            "handler_intact": true,
+            "main_thread_shutdown": true,
+            "expected_clock_periods": 719.9923025,
+            "delivered_per_expected_period": 0.9986217873489001,
+            "delivery_plausible": true,
+            "resolved_sample_fraction": 0.9471488178025035,
+            "unknown_samples": 38,
+            "inferred_symbol_range_samples": 0,
+            "resolved_symbol_coverage_is_not_logical_attribution": true
+          },
+          "topFunctions": [
+            {
+              "name": "term_drop",
+              "decoded": "term_drop",
+              "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase148/compiler-native03/native/program",
+              "samples": 64,
+              "fraction": 0.0890125173852573,
+              "percent": 8.90125173852573
+            },
+            {
+              "name": "p111_rt_ctor",
+              "decoded": "p111_rt_ctor",
+              "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase148/compiler-native03/native/program",
+              "samples": 50,
+              "fraction": 0.06954102920723226,
+              "percent": 6.954102920723226
+            },
+            {
+              "name": "[library_unresolved]",
+              "decoded": "[library_unresolved]",
+              "object": "/usr/lib/x86_64-linux-gnu/libc-2.31.so",
+              "samples": 38,
+              "fraction": 0.05285118219749652,
+              "percent": 5.285118219749652
+            },
+            {
+              "name": "p111_rt_sink",
+              "decoded": "p111_rt_sink",
+              "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase148/compiler-native03/native/program",
+              "samples": 32,
+              "fraction": 0.04450625869262865,
+              "percent": 4.450625869262865
+            },
+            {
+              "name": "work_loop.constprop.0",
+              "decoded": "work_loop.constprop.0",
+              "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase148/compiler-native03/native/program",
+              "samples": 29,
+              "fraction": 0.04033379694019471,
+              "percent": 4.033379694019471
+            },
+            {
+              "name": "p125_rt_take2",
+              "decoded": "p125_rt_take2",
+              "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase148/compiler-native03/native/program",
+              "samples": 27,
+              "fraction": 0.037552155771905425,
+              "percent": 3.7552155771905427
+            },
+            {
+              "name": "p125_rt_take4",
+              "decoded": "p125_rt_take4",
+              "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase148/compiler-native03/native/program",
+              "samples": 26,
+              "fraction": 0.03616133518776078,
+              "percent": 3.616133518776078
+            },
+            {
+              "name": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_83_116_114_105_110_103_46_99_109_112_",
+              "decoded": "p113d_FID_$p118borrow.read.String.cmp",
+              "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase148/compiler-native03/native/program",
+              "samples": 25,
+              "fraction": 0.03477051460361613,
+              "percent": 3.477051460361613
+            },
+            {
+              "name": "p111_rt_op",
+              "decoded": "p111_rt_op",
+              "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase148/compiler-native03/native/program",
+              "samples": 24,
+              "fraction": 0.03337969401947149,
+              "percent": 3.3379694019471486
+            },
+            {
+              "name": "span_fade",
+              "decoded": "span_fade",
+              "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase148/compiler-native03/native/program",
+              "samples": 23,
+              "fraction": 0.031988873435326845,
+              "percent": 3.1988873435326846
+            },
+            {
+              "name": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_105_110_100_101_120_95_104_97_115_104_",
+              "decoded": "p113d_FID_$p118borrow.read.index_hash",
+              "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase148/compiler-native03/native/program",
+              "samples": 23,
+              "fraction": 0.031988873435326845,
+              "percent": 3.1988873435326846
+            },
+            {
+              "name": "heap_alloc",
+              "decoded": "heap_alloc",
+              "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase148/compiler-native03/native/program",
+              "samples": 15,
+              "fraction": 0.02086230876216968,
+              "percent": 2.086230876216968
+            },
+            {
+              "name": "p111_set_regs",
+              "decoded": "p111_set_regs",
+              "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase148/compiler-native03/native/program",
+              "samples": 15,
+              "fraction": 0.02086230876216968,
+              "percent": 2.086230876216968
+            },
+            {
+              "name": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_112_56_56_95_115_116_114_105_110_103_95_101_113_95_103_111_",
+              "decoded": "p113d_FID_$p118borrow.read.p88_string_eq_go",
+              "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase148/compiler-native03/native/program",
+              "samples": 14,
+              "fraction": 0.019471488178025034,
+              "percent": 1.9471488178025034
+            },
+            {
+              "name": "p111_FID_36_100_105_114_101_99_116_46_112_49_51_49_105_95_105_110_115_101_114_116_",
+              "decoded": "p111_FID_$direct.p131i_insert",
+              "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase148/compiler-native03/native/program",
+              "samples": 13,
+              "fraction": 0.01808066759388039,
+              "percent": 1.808066759388039
+            },
+            {
+              "name": "p111_rt_jump",
+              "decoded": "p111_rt_jump",
+              "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase148/compiler-native03/native/program",
+              "samples": 13,
+              "fraction": 0.01808066759388039,
+              "percent": 1.808066759388039
+            },
+            {
+              "name": "p111_FID_36_100_105_114_101_99_116_46_112_49_49_49_118_95_110_97_109_101_95_99_104_97_114_115_",
+              "decoded": "p111_FID_$direct.p111v_name_chars",
+              "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase148/compiler-native03/native/program",
+              "samples": 12,
+              "fraction": 0.016689847009735744,
+              "percent": 1.6689847009735743
+            },
+            {
+              "name": "p111_rt_take",
+              "decoded": "p111_rt_take",
+              "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase148/compiler-native03/native/program",
+              "samples": 12,
+              "fraction": 0.016689847009735744,
+              "percent": 1.6689847009735743
+            },
+            {
+              "name": "io_cbuf",
+              "decoded": "io_cbuf",
+              "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase148/compiler-native03/native/program",
+              "samples": 10,
+              "fraction": 0.013908205841446454,
+              "percent": 1.3908205841446455
+            },
+            {
+              "name": "p118_rt_extend1",
+              "decoded": "p118_rt_extend1",
+              "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase148/compiler-native03/native/program",
+              "samples": 10,
+              "fraction": 0.013908205841446454,
+              "percent": 1.3908205841446455
+            }
+          ]
+        },
+        {
+          "variant": "new",
+          "receipt": {
+            "file": "selfhost/build/phase148/compiler-profile02/capture/001-sample-compiler-verifier-slice-new/analysis.json",
+            "bytes": 328274,
+            "sha256": "dad59a78d3285bfc92a5ad364228823f6875894c41e31ee7c19c6517299a0e2c"
+          },
+          "header": {
+            "exe": "/home/ai/bend2/build/publish/bend/selfhost/build/phase148/compiler-native03/native/program",
+            "pid": 18,
+            "tid": 18,
+            "period_us": 16000,
+            "capacity": 100000,
+            "signal": 40,
+            "final_tid": 18,
+            "main_thread_cpu_ns": 11555862616,
+            "process_cpu_ns": 11573630702,
+            "wall_ns": 11573669924,
+            "samples": 722,
+            "dropped": 0,
+            "overruns": 0,
+            "handler_intact": 1
+          },
+          "quality": {
+            "scope": "main_thread",
+            "main_thread_cpu_fraction": 0.9984647785593392,
+            "sampled_thread_cpu_fraction": 0.9984647785593392,
+            "minimum_process_cpu_fraction": 0.95,
+            "minimum_samples": 500,
+            "enough_samples": true,
+            "thread_lifecycle_complete": true,
+            "near_complete_process_cpu_coverage": true,
+            "usable_for_process_cpu_attribution": true,
+            "limitations": [],
+            "zero_loss": true,
+            "handler_intact": true,
+            "main_thread_shutdown": true,
+            "expected_clock_periods": 722.2414135,
+            "delivered_per_expected_period": 0.9996657440358756,
+            "delivery_plausible": true,
+            "resolved_sample_fraction": 0.9293628808864266,
+            "unknown_samples": 51,
+            "inferred_symbol_range_samples": 0,
+            "resolved_symbol_coverage_is_not_logical_attribution": true
+          },
+          "topFunctions": [
+            {
+              "name": "term_drop",
+              "decoded": "term_drop",
+              "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase148/compiler-native03/native/program",
+              "samples": 57,
+              "fraction": 0.07894736842105263,
+              "percent": 7.894736842105263
+            },
+            {
+              "name": "[library_unresolved]",
+              "decoded": "[library_unresolved]",
+              "object": "/usr/lib/x86_64-linux-gnu/libc-2.31.so",
+              "samples": 47,
+              "fraction": 0.06509695290858726,
+              "percent": 6.509695290858726
+            },
+            {
+              "name": "p111_rt_ctor",
+              "decoded": "p111_rt_ctor",
+              "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase148/compiler-native03/native/program",
+              "samples": 39,
+              "fraction": 0.054016620498614956,
+              "percent": 5.401662049861495
+            },
+            {
+              "name": "p111_rt_sink",
+              "decoded": "p111_rt_sink",
+              "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase148/compiler-native03/native/program",
+              "samples": 34,
+              "fraction": 0.04709141274238227,
+              "percent": 4.7091412742382275
+            },
+            {
+              "name": "p125_rt_take2",
+              "decoded": "p125_rt_take2",
+              "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase148/compiler-native03/native/program",
+              "samples": 33,
+              "fraction": 0.045706371191135735,
+              "percent": 4.570637119113574
+            },
+            {
+              "name": "work_loop.constprop.0",
+              "decoded": "work_loop.constprop.0",
+              "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase148/compiler-native03/native/program",
+              "samples": 26,
+              "fraction": 0.036011080332409975,
+              "percent": 3.6011080332409975
+            },
+            {
+              "name": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_83_116_114_105_110_103_46_99_109_112_",
+              "decoded": "p113d_FID_$p118borrow.read.String.cmp",
+              "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase148/compiler-native03/native/program",
+              "samples": 23,
+              "fraction": 0.03185595567867036,
+              "percent": 3.1855955678670362
+            },
+            {
+              "name": "p118_destination_fill",
+              "decoded": "p118_destination_fill",
+              "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase148/compiler-native03/native/program",
+              "samples": 21,
+              "fraction": 0.029085872576177285,
+              "percent": 2.9085872576177287
+            },
+            {
+              "name": "p111_rt_op",
+              "decoded": "p111_rt_op",
+              "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase148/compiler-native03/native/program",
+              "samples": 19,
+              "fraction": 0.02631578947368421,
+              "percent": 2.631578947368421
+            },
+            {
+              "name": "p118_rt_extend1",
+              "decoded": "p118_rt_extend1",
+              "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase148/compiler-native03/native/program",
+              "samples": 19,
+              "fraction": 0.02631578947368421,
+              "percent": 2.631578947368421
+            },
+            {
+              "name": "p111_set_regs",
+              "decoded": "p111_set_regs",
+              "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase148/compiler-native03/native/program",
+              "samples": 18,
+              "fraction": 0.024930747922437674,
+              "percent": 2.4930747922437675
+            },
+            {
+              "name": "p111_rt_keep",
+              "decoded": "p111_rt_keep",
+              "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase148/compiler-native03/native/program",
+              "samples": 18,
+              "fraction": 0.024930747922437674,
+              "percent": 2.4930747922437675
+            },
+            {
+              "name": "p113_rt_array_pair",
+              "decoded": "p113_rt_array_pair",
+              "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase148/compiler-native03/native/program",
+              "samples": 17,
+              "fraction": 0.023545706371191136,
+              "percent": 2.3545706371191137
+            },
+            {
+              "name": "span_fade",
+              "decoded": "span_fade",
+              "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase148/compiler-native03/native/program",
+              "samples": 16,
+              "fraction": 0.0221606648199446,
+              "percent": 2.21606648199446
+            },
+            {
+              "name": "io_cbuf",
+              "decoded": "io_cbuf",
+              "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase148/compiler-native03/native/program",
+              "samples": 16,
+              "fraction": 0.0221606648199446,
+              "percent": 2.21606648199446
+            },
+            {
+              "name": "p111_rt_jump",
+              "decoded": "p111_rt_jump",
+              "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase148/compiler-native03/native/program",
+              "samples": 15,
+              "fraction": 0.02077562326869806,
+              "percent": 2.0775623268698062
+            },
+            {
+              "name": "p111_rt_take",
+              "decoded": "p111_rt_take",
+              "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase148/compiler-native03/native/program",
+              "samples": 11,
+              "fraction": 0.015235457063711912,
+              "percent": 1.5235457063711912
+            },
+            {
+              "name": "rfc_wrap",
+              "decoded": "rfc_wrap",
+              "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase148/compiler-native03/native/program",
+              "samples": 10,
+              "fraction": 0.013850415512465374,
+              "percent": 1.3850415512465373
+            },
+            {
+              "name": "heap_alloc",
+              "decoded": "heap_alloc",
+              "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase148/compiler-native03/native/program",
+              "samples": 9,
+              "fraction": 0.012465373961218837,
+              "percent": 1.2465373961218837
+            },
+            {
+              "name": "p111_rt_return",
+              "decoded": "p111_rt_return",
+              "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase148/compiler-native03/native/program",
+              "samples": 9,
+              "fraction": 0.012465373961218837,
+              "percent": 1.2465373961218837
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "controls": [
+    {
+      "receipt": {
+        "file": "selfhost/build/phase148/unit-controls02/report.json",
+        "bytes": 48773,
+        "sha256": "b83c0059b61bfed51aa4c11841f948357663e4c5bd46489573f1d3d604ac7729"
+      },
+      "rows": 81,
+      "passed": true,
+      "scope": "Full structured scalar equality, exact independent admission diagnostics, complete optimized direct rendering; no malformed code executed."
+    },
+    {
+      "receipt": {
+        "file": "selfhost/build/phase148/supplement01/report.json",
+        "bytes": 8261,
+        "sha256": "16d3abdfe3b60be437b01cc26b2feaba09b7087ee65943e421baef610120fbb5"
+      },
+      "rows": 12,
+      "passed": true,
+      "scope": "Literal whole original optimizer results and consuming compact-unit observations. Some inputs are intentionally inadmissible. No program execution, admission parity or mathematical proof claimed. Refusals are counted separately."
+    }
+  ],
+  "cost": {
+    "guards": 56,
+    "failed": 18,
+    "seconds": 427.4194784234278,
+    "firstStartToLastFinishSeconds": 3281.4028227329254,
+    "peakTreeRssBytes": 1035563008,
+    "lanes": {
+      "controls-check-timing": 93.20075287902728,
+      "native-build": 297.98231882508844,
+      "profile": 36.23640671931207
+    },
+    "scope": "Executed outer guards only; no nested sum, agent billing, token quota or total session duration claim."
+  },
+  "guards": [
+    {
+      "receipt": {
+        "file": "selfhost/build/phase148/compiler-ablation01-guard/process.json",
+        "bytes": 2328,
+        "sha256": "49ba8b254f6a656499d198883536ae7cff2471e5cd86262beb3898ee7ff66753"
+      },
+      "wallSeconds": 6.3024116600863636,
+      "returncode": 0,
+      "peakTreeRssBytes": 25858048,
+      "started": 1793554852.9444697,
+      "finished": 1793554859.246788,
+      "stoppedFor": null,
+      "classification": "completed",
+      "lane": "controls-check-timing"
+    },
+    {
+      "receipt": {
+        "file": "selfhost/build/phase148/compiler-native01/native-guard/process.json",
+        "bytes": 3499,
+        "sha256": "9a90dfd45e38ae031a149f201985b2e506716268fd7ce2702cf7f0484edc365c"
+      },
+      "wallSeconds": 10.574308377224952,
+      "returncode": 1,
+      "peakTreeRssBytes": 126488576,
+      "started": 1793552821.6288588,
+      "finished": 1793552832.2030723,
+      "stoppedFor": null,
+      "classification": "failed",
+      "lane": "native-build"
+    },
+    {
+      "receipt": {
+        "file": "selfhost/build/phase148/compiler-native02/checked-api-guard/process.json",
+        "bytes": 3388,
+        "sha256": "412320a2798b7f2bf33372b05210fa61a71ae9c079b35c39b7fb49955082e95f"
+      },
+      "wallSeconds": 6.414374439045787,
+      "returncode": 0,
+      "peakTreeRssBytes": 848543744,
+      "started": 1793552964.3946247,
+      "finished": 1793552970.8088927,
+      "stoppedFor": null,
+      "classification": "completed",
+      "lane": "controls-check-timing"
+    },
+    {
+      "receipt": {
+        "file": "selfhost/build/phase148/compiler-native02/native-guard/process.json",
+        "bytes": 3522,
+        "sha256": "86a30fcd2a1c4292ae96a9ee64276a0d3eb5c5edb57f6e9a619dabbc6b6d32f1"
+      },
+      "wallSeconds": 56.816252374090254,
+      "returncode": 0,
+      "peakTreeRssBytes": 358662144,
+      "started": 1793552970.9548798,
+      "finished": 1793553027.7710268,
+      "stoppedFor": null,
+      "classification": "completed",
+      "lane": "native-build"
+    },
+    {
+      "receipt": {
+        "file": "selfhost/build/phase148/compiler-native02/timing-guard/process.json",
+        "bytes": 2437,
+        "sha256": "17d54fff6a75bd5540a48ebb7df9b579da75470447faa42030f7ffdb881e3e4a"
+      },
+      "wallSeconds": 0.5554609196260571,
+      "returncode": 1,
+      "peakTreeRssBytes": 22986752,
+      "started": 1793553052.697812,
+      "finished": 1793553053.2531755,
+      "stoppedFor": null,
+      "classification": "failed",
+      "lane": "controls-check-timing"
+    },
+    {
+      "receipt": {
+        "file": "selfhost/build/phase148/compiler-native03/checked-api-guard/process.json",
+        "bytes": 3389,
+        "sha256": "483b843b2b80d4d23240dac0c8b2a42cae9de1f9e9d88b74d5607a2c55a7b759"
+      },
+      "wallSeconds": 7.338460920844227,
+      "returncode": 0,
+      "peakTreeRssBytes": 1009467392,
+      "started": 1793554236.3598664,
+      "finished": 1793554243.6982179,
+      "stoppedFor": null,
+      "classification": "completed",
+      "lane": "controls-check-timing"
+    },
+    {
+      "receipt": {
+        "file": "selfhost/build/phase148/compiler-native03/native-guard/process.json",
+        "bytes": 3521,
+        "sha256": "c02ff42451a816695127781cca45645cf237fa0a973a57dc646c7bb11a67242f"
+      },
+      "wallSeconds": 63.62256422871724,
+      "returncode": 0,
+      "peakTreeRssBytes": 421662720,
+      "started": 1793554243.8698208,
+      "finished": 1793554307.4922726,
+      "stoppedFor": null,
+      "classification": "completed",
+      "lane": "native-build"
+    },
+    {
+      "receipt": {
+        "file": "selfhost/build/phase148/compiler-native03/timing-guard/process.json",
+        "bytes": 2437,
+        "sha256": "8f170d7ca2912561290f95380cf90dd97629d3bcc6547f0741a9643efeb57284"
+      },
+      "wallSeconds": 2.871264897286892,
+      "returncode": 0,
+      "peakTreeRssBytes": 25649152,
+      "started": 1793554360.387526,
+      "finished": 1793554363.2586887,
+      "stoppedFor": null,
+      "classification": "completed",
+      "lane": "controls-check-timing"
+    },
+    {
+      "receipt": {
+        "file": "selfhost/build/phase148/compiler-native04/checked-api-guard/process.json",
+        "bytes": 3388,
+        "sha256": "2df731ce20215512aa365bee3996b760b144849d465e11013798b7bce19d19d4"
+      },
+      "wallSeconds": 7.728129637893289,
+      "returncode": 0,
+      "peakTreeRssBytes": 1035563008,
+      "started": 1793554762.082777,
+      "finished": 1793554769.8108156,
+      "stoppedFor": null,
+      "classification": "completed",
+      "lane": "controls-check-timing"
+    },
+    {
+      "receipt": {
+        "file": "selfhost/build/phase148/compiler-native04/native-guard/process.json",
+        "bytes": 3521,
+        "sha256": "af647cf1806bec18d40303ef75b7fa9e27973e4ce1aeab963417e930f58b5962"
+      },
+      "wallSeconds": 63.45932190492749,
+      "returncode": 0,
+      "peakTreeRssBytes": 422428672,
+      "started": 1793554769.9561355,
+      "finished": 1793554833.4153585,
+      "stoppedFor": null,
+      "classification": "completed",
+      "lane": "native-build"
+    },
+    {
+      "receipt": {
+        "file": "selfhost/build/phase148/compiler-profile01/capture-guard/process.json",
+        "bytes": 2477,
+        "sha256": "5c4e9f4ff73c166982fa13ea6f157dcc5fe9d21def610e449f6842b7f11971c1"
+      },
+      "wallSeconds": 12.446228884160519,
+      "returncode": 0,
+      "peakTreeRssBytes": 54685696,
+      "started": 1793554395.8619556,
+      "finished": 1793554408.3080816,
+      "stoppedFor": null,
+      "classification": "rejected",
+      "lane": "profile"
+    },
+    {
+      "receipt": {
+        "file": "selfhost/build/phase148/compiler-profile02/capture-guard/process.json",
+        "bytes": 2477,
+        "sha256": "e7cc0606c596fcff93ece958ec265b65839ec5ebd5886cd6428c99bbabba8b9d"
+      },
+      "wallSeconds": 23.790177835151553,
+      "returncode": 0,
+      "peakTreeRssBytes": 54411264,
+      "started": 1793554476.4831083,
+      "finished": 1793554500.2731845,
+      "stoppedFor": null,
+      "classification": "completed",
+      "lane": "profile"
+    },
+    {
+      "receipt": {
+        "file": "selfhost/build/phase148/layout01/api-guard/process.json",
+        "bytes": 3312,
+        "sha256": "9523cb68cfbc26a9b275c7f8c993353cf0879cb6013bd8d86948bd4354763034"
+      },
+      "wallSeconds": 0.6192003921605647,
+      "returncode": 1,
+      "peakTreeRssBytes": 230572032,
+      "started": 1793551577.8439653,
+      "finished": 1793551578.46309,
+      "stoppedFor": null,
+      "classification": "failed",
+      "lane": "controls-check-timing"
+    },
+    {
+      "receipt": {
+        "file": "selfhost/build/phase148/layout02/api-guard/process.json",
+        "bytes": 3313,
+        "sha256": "c6c35cbfeccea0cabb2ee866bd47e24141b2b01a6d54c50ba233a85369c6eade"
+      },
+      "wallSeconds": 0.6182539407163858,
+      "returncode": 1,
+      "peakTreeRssBytes": 230547456,
+      "started": 1793551715.085306,
+      "finished": 1793551715.7034807,
+      "stoppedFor": null,
+      "classification": "failed",
+      "lane": "controls-check-timing"
+    },
+    {
+      "receipt": {
+        "file": "selfhost/build/phase148/layout03/api-guard/process.json",
+        "bytes": 3313,
+        "sha256": "47af07777df2bf3981fedbd69b2f6ffd77ea4f01667864f35a210d972f731092"
+      },
+      "wallSeconds": 0.6185450018383563,
+      "returncode": 1,
+      "peakTreeRssBytes": 230408192,
+      "started": 1793551755.3035207,
+      "finished": 1793551755.921977,
+      "stoppedFor": null,
+      "classification": "failed",
+      "lane": "controls-check-timing"
+    },
+    {
+      "receipt": {
+        "file": "selfhost/build/phase148/layout04/api-guard/process.json",
+        "bytes": 3314,
+        "sha256": "1b9536243e08f5eed7091692587f9f58d3d6e498cbf77253c0d33d2fb56f7bef"
+      },
+      "wallSeconds": 0.8656369149684906,
+      "returncode": 1,
+      "peakTreeRssBytes": 230416384,
+      "started": 1793551938.5954568,
+      "finished": 1793551939.4610164,
+      "stoppedFor": null,
+      "classification": "failed",
+      "lane": "controls-check-timing"
+    },
+    {
+      "receipt": {
+        "file": "selfhost/build/phase148/layout05/api-guard/process.json",
+        "bytes": 3314,
+        "sha256": "8bb9f166a3fd3c5c6fff841f75308fc3e08a2a4c98e9c2d9dc423e565fc85821"
+      },
+      "wallSeconds": 0.6760211489163339,
+      "returncode": 1,
+      "peakTreeRssBytes": 230563840,
+      "started": 1793551971.3423371,
+      "finished": 1793551972.0182765,
+      "stoppedFor": null,
+      "classification": "failed",
+      "lane": "controls-check-timing"
+    },
+    {
+      "receipt": {
+        "file": "selfhost/build/phase148/layout06/api-guard/process.json",
+        "bytes": 3313,
+        "sha256": "c6190d1c386174da7c72cf48da7bafda2d2b95b9e299bde233df8a34a88c886a"
+      },
+      "wallSeconds": 0.8444376229308546,
+      "returncode": 1,
+      "peakTreeRssBytes": 230531072,
+      "started": 1793552034.793644,
+      "finished": 1793552035.6379948,
+      "stoppedFor": null,
+      "classification": "failed",
+      "lane": "controls-check-timing"
+    },
+    {
+      "receipt": {
+        "file": "selfhost/build/phase148/layout07/api-guard/process.json",
+        "bytes": 3313,
+        "sha256": "f41d48004d9c930204f614e55ada2d206956960de30d407ac9351cf4b8120254"
+      },
+      "wallSeconds": 1.2335332361981273,
+      "returncode": 0,
+      "peakTreeRssBytes": 230678528,
+      "started": 1793552064.7381258,
+      "finished": 1793552065.9715714,
+      "stoppedFor": null,
+      "classification": "completed",
+      "lane": "controls-check-timing"
+    },
+    {
+      "receipt": {
+        "file": "selfhost/build/phase148/layout07/native-guard/process.json",
+        "bytes": 3478,
+        "sha256": "009f1bcf8f5c72539f4cb46cec49a703afd2a03522aa05314e95164a723be544"
+      },
+      "wallSeconds": 1.6320562460459769,
+      "returncode": 0,
+      "peakTreeRssBytes": 60112896,
+      "started": 1793552066.1295402,
+      "finished": 1793552067.7615077,
+      "stoppedFor": null,
+      "classification": "completed",
+      "lane": "native-build"
+    },
+    {
+      "receipt": {
+        "file": "selfhost/build/phase148/layout07/run-guard/process.json",
+        "bytes": 2540,
+        "sha256": "a1c5c277933c2d22c45f16a6f12e48ab5ac2748ad4eec95bea6b88016acb01ce"
+      },
+      "wallSeconds": 0.10582351684570312,
+      "returncode": 0,
+      "peakTreeRssBytes": 17367040,
+      "started": 1793552149.143447,
+      "finished": 1793552149.2491767,
+      "stoppedFor": null,
+      "classification": "completed",
+      "lane": "controls-check-timing"
+    },
+    {
+      "receipt": {
+        "file": "selfhost/build/phase148/map-native01/checked-api-guard/process.json",
+        "bytes": 3359,
+        "sha256": "de72c13c9b24947d5f95ebd6645b10d69796fdf31a4b99dbcb4a44c8212a3114"
+      },
+      "wallSeconds": 7.322177515830845,
+      "returncode": 0,
+      "peakTreeRssBytes": 1019420672,
+      "started": 1793554508.4140015,
+      "finished": 1793554515.7360666,
+      "stoppedFor": null,
+      "classification": "completed",
+      "lane": "controls-check-timing"
+    },
+    {
+      "receipt": {
+        "file": "selfhost/build/phase148/map-native01/native-guard/process.json",
+        "bytes": 3502,
+        "sha256": "44f2e722045a9d786e440c5054de01f991eb005cf82e84644baeb4e64dfa5607"
+      },
+      "wallSeconds": 61.217191345989704,
+      "returncode": 0,
+      "peakTreeRssBytes": 410517504,
+      "started": 1793554515.8808756,
+      "finished": 1793554577.0979571,
+      "stoppedFor": null,
+      "classification": "completed",
+      "lane": "native-build"
+    },
+    {
+      "receipt": {
+        "file": "selfhost/build/phase148/map-native01/timing-guard/process.json",
+        "bytes": 2419,
+        "sha256": "a49d222aaef4d1843f1f064d41ef9e76c1d9106068aceb2774f7515eb4524ea7"
+      },
+      "wallSeconds": 3.4875211231410503,
+      "returncode": 0,
+      "peakTreeRssBytes": 23572480,
+      "started": 1793554622.2071614,
+      "finished": 1793554625.6945758,
+      "stoppedFor": null,
+      "classification": "completed",
+      "lane": "controls-check-timing"
+    },
+    {
+      "receipt": {
+        "file": "selfhost/build/phase148/pack-probe01/checked-guard/process.json",
+        "bytes": 3346,
+        "sha256": "2ec30a7ac739f926d8b395146f782c56feab7c6ec7f8860313195e1f9cca366c"
+      },
+      "wallSeconds": 1.1715218047611415,
+      "returncode": 0,
+      "peakTreeRssBytes": 230662144,
+      "started": 1793553191.4361103,
+      "finished": 1793553192.6075315,
+      "stoppedFor": null,
+      "classification": "completed",
+      "lane": "controls-check-timing"
+    },
+    {
+      "receipt": {
+        "file": "selfhost/build/phase148/pack-probe01/native-guard/process.json",
+        "bytes": 3494,
+        "sha256": "e5b560ab4b2ce304902350fee482ead000d914372c537e76cd573cdceac3e0c9"
+      },
+      "wallSeconds": 3.764132126700133,
+      "returncode": 0,
+      "peakTreeRssBytes": 64745472,
+      "started": 1793553192.8340428,
+      "finished": 1793553196.5980694,
+      "stoppedFor": null,
+      "classification": "completed",
+      "lane": "native-build"
+    },
+    {
+      "receipt": {
+        "file": "selfhost/build/phase148/pack-probe01/run-guard/process.json",
+        "bytes": 1953,
+        "sha256": "c0f61dca099ede016d681ed5f7d84fe18fc4ff5dc70981114703d39b1ae2fb7f"
+      },
+      "wallSeconds": 0.02393296593800187,
+      "returncode": 1,
+      "peakTreeRssBytes": 1101824,
+      "started": 1793553236.7198932,
+      "finished": 1793553236.7437186,
+      "stoppedFor": null,
+      "classification": "failed",
+      "lane": "controls-check-timing"
+    },
+    {
+      "receipt": {
+        "file": "selfhost/build/phase148/pack-probe02/checked-guard/process.json",
+        "bytes": 3343,
+        "sha256": "5709a5c0572e21faf437e3ae1f0cb71884e7e926e068adb88f84177718c5d60c"
+      },
+      "wallSeconds": 1.44003603188321,
+      "returncode": 0,
+      "peakTreeRssBytes": 230490112,
+      "started": 1793553844.018933,
+      "finished": 1793553845.4588664,
+      "stoppedFor": null,
+      "classification": "completed",
+      "lane": "controls-check-timing"
+    },
+    {
+      "receipt": {
+        "file": "selfhost/build/phase148/pack-probe02/native-guard/process.json",
+        "bytes": 3494,
+        "sha256": "8b6cbe19b25d1d70710aaccd9aaeb6d4c831280d29505871b243bd5db44c3164"
+      },
+      "wallSeconds": 4.093846554867923,
+      "returncode": 0,
+      "peakTreeRssBytes": 68747264,
+      "started": 1793553845.6114726,
+      "finished": 1793553849.7052176,
+      "stoppedFor": null,
+      "classification": "completed",
+      "lane": "native-build"
+    },
+    {
+      "receipt": {
+        "file": "selfhost/build/phase148/pack-probe02/run-guard/process.json",
+        "bytes": 1952,
+        "sha256": "b0dfe11c2d240cb061053269bbf95e1f26f80f7c9fba195d9a934b2dde82ab05"
+      },
+      "wallSeconds": 0.023873204831033945,
+      "returncode": 0,
+      "peakTreeRssBytes": 1101824,
+      "started": 1793553863.7115033,
+      "finished": 1793553863.735268,
+      "stoppedFor": null,
+      "classification": "completed",
+      "lane": "controls-check-timing"
+    },
+    {
+      "receipt": {
+        "file": "selfhost/build/phase148/roundtrip-probe01/checked-guard/process.json",
+        "bytes": 3376,
+        "sha256": "4632b5ec8b0bde507b8243486f824f5013c3504fe920acb0e84ad234c1276025"
+      },
+      "wallSeconds": 2.322797820903361,
+      "returncode": 0,
+      "peakTreeRssBytes": 231063552,
+      "started": 1793553879.5853026,
+      "finished": 1793553881.9079943,
+      "stoppedFor": null,
+      "classification": "completed",
+      "lane": "controls-check-timing"
+    },
+    {
+      "receipt": {
+        "file": "selfhost/build/phase148/roundtrip-probe01/native-guard/process.json",
+        "bytes": 3514,
+        "sha256": "74dfaf893bda2ee85f0c3b07c2d38cbac1a7e458c0f4c3445ec1b2669eaa7530"
+      },
+      "wallSeconds": 8.391359719913453,
+      "returncode": 0,
+      "peakTreeRssBytes": 97148928,
+      "started": 1793553882.0716803,
+      "finished": 1793553890.4629266,
+      "stoppedFor": null,
+      "classification": "completed",
+      "lane": "native-build"
+    },
+    {
+      "receipt": {
+        "file": "selfhost/build/phase148/roundtrip-probe01/run-guard/process.json",
+        "bytes": 1968,
+        "sha256": "25d01c534e5f4d26d816f96ac256a768607a09208c3b5132e5949119cfb6881a"
+      },
+      "wallSeconds": 0.023999712895601988,
+      "returncode": 0,
+      "peakTreeRssBytes": 1101824,
+      "started": 1793553936.2709742,
+      "finished": 1793553936.2948644,
+      "stoppedFor": null,
+      "classification": "completed",
+      "lane": "controls-check-timing"
+    },
+    {
+      "receipt": {
+        "file": "selfhost/build/phase148/seed-probe01/checked-guard/process.json",
+        "bytes": 3344,
+        "sha256": "9fdd6992e7465b055c26a513ada52f2a1b6de516e19476a846f43179e3af5b1b"
+      },
+      "wallSeconds": 1.335144274868071,
+      "returncode": 0,
+      "peakTreeRssBytes": 230424576,
+      "started": 1793553418.7531364,
+      "finished": 1793553420.0881765,
+      "stoppedFor": null,
+      "classification": "completed",
+      "lane": "controls-check-timing"
+    },
+    {
+      "receipt": {
+        "file": "selfhost/build/phase148/seed-probe01/native-guard/process.json",
+        "bytes": 3493,
+        "sha256": "e9e2414ab15affdd4fe9367870a263acf419c7261e9478dfe323d945812b1e55"
+      },
+      "wallSeconds": 1.6453261859714985,
+      "returncode": 0,
+      "peakTreeRssBytes": 60600320,
+      "started": 1793553420.252106,
+      "finished": 1793553421.8973255,
+      "stoppedFor": null,
+      "classification": "completed",
+      "lane": "native-build"
+    },
+    {
+      "receipt": {
+        "file": "selfhost/build/phase148/seed-probe01/run-guard/process.json",
+        "bytes": 1950,
+        "sha256": "dd139c04e22ea83473673d7eaf3062fbab30ded6b81f188977c2ff6adb3fc506"
+      },
+      "wallSeconds": 0.024131168145686388,
+      "returncode": 0,
+      "peakTreeRssBytes": 1105920,
+      "started": 1793553453.14279,
+      "finished": 1793553453.166813,
+      "stoppedFor": null,
+      "classification": "completed",
+      "lane": "controls-check-timing"
+    },
+    {
+      "receipt": {
+        "file": "selfhost/build/phase148/storage-probe01/checked-guard/process.json",
+        "bytes": 3364,
+        "sha256": "86e7b5ac4ccc84aa62445e1bc141210de00401292ab6f5dd28b081f1e144122e"
+      },
+      "wallSeconds": 0.3095655217766762,
+      "returncode": 1,
+      "peakTreeRssBytes": 111378432,
+      "started": 1793553317.3350055,
+      "finished": 1793553317.6444635,
+      "stoppedFor": null,
+      "classification": "failed",
+      "lane": "controls-check-timing"
+    },
+    {
+      "receipt": {
+        "file": "selfhost/build/phase148/storage-probe02/checked-guard/process.json",
+        "bytes": 3363,
+        "sha256": "db547dffaa1bade13e269fc6372326571fbab9abd620af59da427dfd015aa4e2"
+      },
+      "wallSeconds": 1.1712676021270454,
+      "returncode": 0,
+      "peakTreeRssBytes": 230572032,
+      "started": 1793553331.5843494,
+      "finished": 1793553332.7555115,
+      "stoppedFor": null,
+      "classification": "completed",
+      "lane": "controls-check-timing"
+    },
+    {
+      "receipt": {
+        "file": "selfhost/build/phase148/storage-probe02/native-guard/process.json",
+        "bytes": 3504,
+        "sha256": "555af09539092b33ca41db08d04c437c4ba5d0877692c40eeccf913277c84d05"
+      },
+      "wallSeconds": 1.1325294566340744,
+      "returncode": 0,
+      "peakTreeRssBytes": 58068992,
+      "started": 1793553332.9168134,
+      "finished": 1793553334.0492408,
+      "stoppedFor": null,
+      "classification": "completed",
+      "lane": "native-build"
+    },
+    {
+      "receipt": {
+        "file": "selfhost/build/phase148/storage-probe02/run-guard/process.json",
+        "bytes": 1962,
+        "sha256": "607579df3784d970034187bf0470efad528e0d920de8917b848e87667661e32a"
+      },
+      "wallSeconds": 0.023816479835659266,
+      "returncode": 0,
+      "peakTreeRssBytes": 1040384,
+      "started": 1793553383.1920843,
+      "finished": 1793553383.2157948,
+      "stoppedFor": null,
+      "classification": "completed",
+      "lane": "controls-check-timing"
+    },
+    {
+      "receipt": {
+        "file": "selfhost/build/phase148/supplement01-guard/process.json",
+        "bytes": 2855,
+        "sha256": "ea098b181728e739170ba6e9f9c7b2638d7e48dfa0b77d0d40d3e9fdc9bf9054"
+      },
+      "wallSeconds": 0.16875661071389914,
+      "returncode": 0,
+      "peakTreeRssBytes": 52469760,
+      "started": 1793554226.7404342,
+      "finished": 1793554226.9090261,
+      "stoppedFor": null,
+      "classification": "completed",
+      "lane": "controls-check-timing"
+    },
+    {
+      "receipt": {
+        "file": "selfhost/build/phase148/unit-api01/api-guard/process.json",
+        "bytes": 3330,
+        "sha256": "9f08871fe4f15060d12f43dd5345a2102faee6260534c64d9c59e77cf20ca5df"
+      },
+      "wallSeconds": 1.0499406540766358,
+      "returncode": 1,
+      "peakTreeRssBytes": 232136704,
+      "started": 1793552088.0221257,
+      "finished": 1793552089.0719695,
+      "stoppedFor": null,
+      "classification": "failed",
+      "lane": "controls-check-timing"
+    },
+    {
+      "receipt": {
+        "file": "selfhost/build/phase148/unit-api02/api-guard/process.json",
+        "bytes": 3329,
+        "sha256": "fdda0783b9e3e1ddf2ac47591c9b64d0eff94a81284c19bb145a1f45c9275982"
+      },
+      "wallSeconds": 1.1336906189098954,
+      "returncode": 1,
+      "peakTreeRssBytes": 230588416,
+      "started": 1793552327.8196452,
+      "finished": 1793552328.953249,
+      "stoppedFor": null,
+      "classification": "failed",
+      "lane": "controls-check-timing"
+    },
+    {
+      "receipt": {
+        "file": "selfhost/build/phase148/unit-api03/api-guard/process.json",
+        "bytes": 3329,
+        "sha256": "62a226804643723213377a8d371db10818c3edb3d401acf3c6c11b4a53fc4051"
+      },
+      "wallSeconds": 1.152680132072419,
+      "returncode": 1,
+      "peakTreeRssBytes": 231882752,
+      "started": 1793552389.0474832,
+      "finished": 1793552390.2000756,
+      "stoppedFor": null,
+      "classification": "failed",
+      "lane": "controls-check-timing"
+    },
+    {
+      "receipt": {
+        "file": "selfhost/build/phase148/unit-api04/api-guard/process.json",
+        "bytes": 3330,
+        "sha256": "cb2cac70aeab836d5040b0f50a9c1dcb7780c3de56d1db1e4ec2d4cdf3ca2c03"
+      },
+      "wallSeconds": 1.2147081107832491,
+      "returncode": 1,
+      "peakTreeRssBytes": 231907328,
+      "started": 1793552445.6420372,
+      "finished": 1793552446.8566463,
+      "stoppedFor": null,
+      "classification": "failed",
+      "lane": "controls-check-timing"
+    },
+    {
+      "receipt": {
+        "file": "selfhost/build/phase148/unit-api05/api-guard/process.json",
+        "bytes": 3329,
+        "sha256": "0b9c2cae974a7e5796cec49e2fc71151fab5216f87ddd9d7788eda9da2a805f7"
+      },
+      "wallSeconds": 2.063617203384638,
+      "returncode": 1,
+      "peakTreeRssBytes": 234921984,
+      "started": 1793552505.8969495,
+      "finished": 1793552507.9604702,
+      "stoppedFor": null,
+      "classification": "failed",
+      "lane": "controls-check-timing"
+    },
+    {
+      "receipt": {
+        "file": "selfhost/build/phase148/unit-api06/api-guard/process.json",
+        "bytes": 3330,
+        "sha256": "a7a0d83beaa4cf03e23335606643a0b0b937098a8f243244e9a56a306c03ad83"
+      },
+      "wallSeconds": 1.9958609249442816,
+      "returncode": 1,
+      "peakTreeRssBytes": 243130368,
+      "started": 1793552565.2896173,
+      "finished": 1793552567.2853794,
+      "stoppedFor": null,
+      "classification": "failed",
+      "lane": "controls-check-timing"
+    },
+    {
+      "receipt": {
+        "file": "selfhost/build/phase148/unit-api07/api-guard/process.json",
+        "bytes": 3331,
+        "sha256": "5db7b3951676c7ea4f8c7ad0b1ab36eda4b1f572e36a8263e0eb63669766d485"
+      },
+      "wallSeconds": 2.0176527411676943,
+      "returncode": 1,
+      "peakTreeRssBytes": 241831936,
+      "started": 1793552617.2343602,
+      "finished": 1793552619.2519183,
+      "stoppedFor": null,
+      "classification": "failed",
+      "lane": "controls-check-timing"
+    },
+    {
+      "receipt": {
+        "file": "selfhost/build/phase148/unit-api08/api-guard/process.json",
+        "bytes": 3328,
+        "sha256": "42cf0fd3b0810fbf2edc8f3eabe0275d5fc2aab564678fbcfc9a55aeb802c3db"
+      },
+      "wallSeconds": 2.2236969927325845,
+      "returncode": 1,
+      "peakTreeRssBytes": 265981952,
+      "started": 1793552696.55159,
+      "finished": 1793552698.7751904,
+      "stoppedFor": null,
+      "classification": "failed",
+      "lane": "controls-check-timing"
+    },
+    {
+      "receipt": {
+        "file": "selfhost/build/phase148/unit-api09/api-guard/process.json",
+        "bytes": 3330,
+        "sha256": "a28242fb88e0060a950781627d946b7d7dd185264cd7ea2ef9a16b9990c0f75b"
+      },
+      "wallSeconds": 6.270699185319245,
+      "returncode": 0,
+      "peakTreeRssBytes": 820260864,
+      "started": 1793552779.9807482,
+      "finished": 1793552786.2513528,
+      "stoppedFor": null,
+      "classification": "completed",
+      "lane": "controls-check-timing"
+    },
+    {
+      "receipt": {
+        "file": "selfhost/build/phase148/unit-api10/api-guard/process.json",
+        "bytes": 3330,
+        "sha256": "2108c8d032eac06845def5126fae809ac7ef43c57e568919b8d5bed1ef44e4ec"
+      },
+      "wallSeconds": 7.192626553121954,
+      "returncode": 0,
+      "peakTreeRssBytes": 1030144000,
+      "started": 1793554187.5320315,
+      "finished": 1793554194.724547,
+      "stoppedFor": null,
+      "classification": "completed",
+      "lane": "controls-check-timing"
+    },
+    {
+      "receipt": {
+        "file": "selfhost/build/phase148/unit-controls01-guard/process.json",
+        "bytes": 3088,
+        "sha256": "3fc4439d99926bdd488488c860e088c264c8ecbab605142a1403d9371d0cc790"
+      },
+      "wallSeconds": 2.6837794445455074,
+      "returncode": 0,
+      "peakTreeRssBytes": 138555392,
+      "started": 1793552797.2922988,
+      "finished": 1793552799.975986,
+      "stoppedFor": null,
+      "classification": "completed",
+      "lane": "controls-check-timing"
+    },
+    {
+      "receipt": {
+        "file": "selfhost/build/phase148/unit-controls02-guard/process.json",
+        "bytes": 3087,
+        "sha256": "f7d1b85923800d4cce95b21a9df4c64499023eec66bc63e759cbe12e4d38a4de"
+      },
+      "wallSeconds": 4.155449798796326,
+      "returncode": 0,
+      "peakTreeRssBytes": 149831680,
+      "started": 1793554214.207564,
+      "finished": 1793554218.3629074,
+      "stoppedFor": null,
+      "classification": "completed",
+      "lane": "controls-check-timing"
+    },
+    {
+      "receipt": {
+        "file": "selfhost/build/phase148/verify-probe01/checked-guard/process.json",
+        "bytes": 3359,
+        "sha256": "def99f6e878ef2dc661cc4379b6f6d9595e803cb0ea4eb6553365034c45673d0"
+      },
+      "wallSeconds": 4.382113242056221,
+      "returncode": 0,
+      "peakTreeRssBytes": 415084544,
+      "started": 1793554013.998966,
+      "finished": 1793554018.3809736,
+      "stoppedFor": null,
+      "classification": "completed",
+      "lane": "controls-check-timing"
+    },
+    {
+      "receipt": {
+        "file": "selfhost/build/phase148/verify-probe01/native-guard/process.json",
+        "bytes": 3507,
+        "sha256": "83ef17ebbb1025a601c9f2190decc85d5b83ed6f6b29114a82dd45df8ff5ec70"
+      },
+      "wallSeconds": 21.633430304005742,
+      "returncode": 0,
+      "peakTreeRssBytes": 185425920,
+      "started": 1793554018.5098932,
+      "finished": 1793554040.1432173,
+      "stoppedFor": null,
+      "classification": "completed",
+      "lane": "native-build"
+    },
+    {
+      "receipt": {
+        "file": "selfhost/build/phase148/verify-probe01/run-guard/process.json",
+        "bytes": 1960,
+        "sha256": "c483fb3e6c1564c8b219de4d22b44405517f6ee6449094b0d901efb27dc90570"
+      },
+      "wallSeconds": 0.024141190107911825,
+      "returncode": 0,
+      "peakTreeRssBytes": 1032192,
+      "started": 1793554048.1784801,
+      "finished": 1793554048.2025077,
+      "stoppedFor": null,
+      "classification": "completed",
+      "lane": "controls-check-timing"
+    }
+  ],
+  "method": {
+    "file": "selfhost/build/phase148/summarize-method.py",
+    "bytes": 3480,
+    "sha256": "e37077167810bd3c152a684ad1fa74e277531e415776e635ed8e74e3d2cb2888"
+  },
+  "source": [
+    {
+      "file": "selfhost/tests/phase148/core.bend",
+      "bytes": 39151,
+      "sha256": "8461e80bc23636914872a23ba5d25a3841e83d610285f728cb2065ffbab3bb3e"
+    },
+    {
+      "file": "selfhost/tests/phase148/scalar.bend",
+      "bytes": 35884,
+      "sha256": "25411f0e6a1bd42120595b865328bc175bf11e353bbc10390da622df1f3aa16b"
+    },
+    {
+      "file": "selfhost/tests/phase148/verify.bend",
+      "bytes": 56579,
+      "sha256": "546131cf94d4172352e25ab457712e809054e814541ddd73b01b2a27a3b380ba"
+    }
+  ],
+  "limitations": [
+    "Selected complete function pipelines, not whole compiler requests.",
+    "Finite tests and exact code equality, not a proof.",
+    "No confidence interval or current upstream ratio.",
+    "Transport comparison includes ownership of decoded input; do not treat its delta as additive.",
+    "Physical-leaf profile counts do not establish inclusive stage costs."
+  ]
+}

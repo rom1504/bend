@@ -6179,3 +6179,29 @@ agent and Git/metadata effort. Failed acquisitions, obsolete test expectations
 and low-quality sampling are preserved in the report, not counted as gains.
 No new geometric runtime score, full cold-build speedup or upstream ratio.
 Next work remains measured complete cold-compilation optimization on this source.
+
+
+## 2026-11-01 — Phase149 optional optimization cost
+
+[Report](../implementation/phase149/README.md) ·
+[Metrics](../implementation/phase149/metrics.json) ·
+[Usage](../docs/self_hosted/optimization-policies.md).
+
+New experimental Bend policy parser, pipeline switches, stream driver and60 finite
+controls. Default entry/installed selection unchanged; Phase147 stays qualified.
+Four small requests: reduced code11 costs0.7939× compiler time, but its three user
+programs cost3.018× runtime. Full frozen-source request239.089→188.443s; staged
+serial request+machine construction258.413→204.819s. One full pair, separate
+(nonoverlapped) clock, no new upstream ratio or broad45 qualification.
+
+The same compiler source built by reduced11 subsequently runs1.831× slower on
+two ordinary requests;21–31 requests consume its53.59s acquisition saving.
+Code4's roughly2% request saving is not free universally: RLE runtime1.327×.
+Keep flags for ablation; do not install a blanket reduced-optimization compiler.
+Next eliminate measured failed candidate preparation with cheap exact admission
+prerequisites and full default-QBE identity. Larger shared representation costs
+remain; no5–10× gain follows merely from disabling these groups.
+
+All new compiler/control logic is Bend; no new host tool source. Existing process,
+independent check and measurement infrastructure remains.78 guarded jobs18.71min,
+all closed, negatives retained, no pruning. See evidence/qualification scope.

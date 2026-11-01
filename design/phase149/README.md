@@ -79,3 +79,15 @@ Commit design and meaningful implementation/evidence milestones. Report measured
 request/build/runtime effects, correctness scope, complexity, cost and rejected
 policies honestly. No new bootstrap theorem, whole-corpus score or installed
 promotion follows from small policy controls.
+
+## Executed clarification and outcome
+
+Bit0 gates the existing inline **and scalar-cleanup group**, not call expansion
+alone. Bit1 removes late optional helper preparation; initial direct/SCC/array
+admission and shared region context still execute. The implementation adds no
+new unchecked admission path. These boundaries limit causal attribution.
+
+The [report](../../implementation/phase149/README.md) records a20.74% smaller
+staged full-build clock but1.831× slower execution by the resulting compiler.
+Keep the experimental switches; reject default promotion. RLE also rejects the
+small-screen interpretation that reduced region search is universally free.

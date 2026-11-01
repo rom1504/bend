@@ -1,0 +1,9 @@
+{
+  "checkedSource": "selfhost/build/phase149/source03/compiler.bend",
+  "checkedSha256": "9ddf4e0072b8114ca29961d980e75a4b3fd6f20fb76c6df13d790d3fbf114a06",
+  "committedSource": "selfhost/build/phase149/source04/compiler.bend",
+  "committedSha256": "00315b9c4b9bc66b61848d7c6d74d4d88d64282037b17774cdc94c3ca7cf5fb3",
+  "onlyRemovedBlankLine": true,
+  "exactDiff": "--- checked-source03\n+++ committed-source04\n@@ -65853,7 +65853,6 @@\n def p149rw_plan(+regions: U32, +plan: P134EmissionPlan) -> IO(U32):\n   nt_choose(IO(U32),p149r_limited(regions),\n     u => p149rw_selected(regions,plan),u => p134w_plan(plan))\n-\n # Experimental request policy lives in Bend. The caller authenticates the same\n # source, Base, carrier and executing image as the ordinary request contract.\n # MASK is canonical decimal: bit 0 disables inlining, bit 1 disables helper\n",
+  "manifestStatusChange": "Metadata only; default entry unchanged"
+}

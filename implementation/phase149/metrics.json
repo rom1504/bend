@@ -1,0 +1,1154 @@
+{
+  "schema": "phase149-policy-cost-v1",
+  "scope": "Experimental QBE entry; qualified Phase147 and installed selection unchanged",
+  "implementationCommit": "326d42e",
+  "comparison": "Same Phase149 experimental compiler binary across policies; policy0 versus independent Phase147 products",
+  "compiler": {
+    "aggregate": {
+      "complete": true,
+      "timedCases": 4,
+      "correctnessOnlyCases": 0,
+      "roles": {
+        "p1": {
+          "geomean": 0.9190792281887865,
+          "equalSourceGeomean": 0.9190792281887865,
+          "sourceCount": 4,
+          "meanPositiveLogSlowdown": 0,
+          "casesOver105": 0,
+          "families": {
+            "compiler-verifier-slice": 0.9632617552326121,
+            "coverage-map-churn-128": 0.97035766769613,
+            "coverage-expression-128": 0.9719351185600156,
+            "mandelbrot": 0.7854135133824859
+          }
+        },
+        "p2": {
+          "geomean": 0.905338848831688,
+          "equalSourceGeomean": 0.905338848831688,
+          "sourceCount": 4,
+          "meanPositiveLogSlowdown": 0,
+          "casesOver105": 0,
+          "families": {
+            "compiler-verifier-slice": 0.8733022522303806,
+            "coverage-map-churn-128": 0.9412017748183973,
+            "coverage-expression-128": 0.9330626931672141,
+            "mandelbrot": 0.8759644554064995
+          }
+        },
+        "p4": {
+          "geomean": 0.9793225819804912,
+          "equalSourceGeomean": 0.9793225819804912,
+          "sourceCount": 4,
+          "meanPositiveLogSlowdown": 0,
+          "casesOver105": 0,
+          "families": {
+            "compiler-verifier-slice": 0.9793213991778601,
+            "coverage-map-churn-128": 0.9628572859356918,
+            "coverage-expression-128": 0.9800568833790166,
+            "mandelbrot": 0.9953243454739585
+          }
+        },
+        "p8": {
+          "geomean": 0.9669418153884991,
+          "equalSourceGeomean": 0.9669418153884991,
+          "sourceCount": 4,
+          "meanPositiveLogSlowdown": 0,
+          "casesOver105": 0,
+          "families": {
+            "compiler-verifier-slice": 0.9728846827462716,
+            "coverage-map-churn-128": 0.9485541625926982,
+            "coverage-expression-128": 0.969285330751438,
+            "mandelbrot": 0.9772962370873136
+          }
+        },
+        "p3": {
+          "geomean": 0.8291522383457239,
+          "equalSourceGeomean": 0.8291522383457239,
+          "sourceCount": 4,
+          "meanPositiveLogSlowdown": 0,
+          "casesOver105": 0,
+          "families": {
+            "compiler-verifier-slice": 0.8361423577295026,
+            "coverage-map-churn-128": 0.9074408737670993,
+            "coverage-expression-128": 0.9080639118533901,
+            "mandelbrot": 0.6859968659768225
+          }
+        },
+        "p11": {
+          "geomean": 0.79385338023991,
+          "equalSourceGeomean": 0.79385338023991,
+          "sourceCount": 4,
+          "meanPositiveLogSlowdown": 0,
+          "casesOver105": 0,
+          "families": {
+            "compiler-verifier-slice": 0.7976910856421239,
+            "coverage-map-churn-128": 0.8560597611148865,
+            "coverage-expression-128": 0.873870972769372,
+            "mandelbrot": 0.6655413715206301
+          }
+        }
+      }
+    },
+    "wallSeconds": 163.4720501708798,
+    "cases": [
+      {
+        "id": "compiler-verifier-slice",
+        "summary": {
+          "complete": true,
+          "pairedRounds": [
+            0,
+            1,
+            2
+          ],
+          "stats": {
+            "p0": {
+              "medianMs": 3309.850516729057,
+              "samplesMs": [
+                3309.850516729057,
+                3324.69631312415,
+                3303.3314486965537
+              ],
+              "minimumMs": 3303.3314486965537,
+              "maximumMs": 3324.69631312415,
+              "lowResolution": false
+            },
+            "p1": {
+              "medianMs": 3188.2524183019996,
+              "samplesMs": [
+                3188.2524183019996,
+                3213.2605370134115,
+                3168.546698987484
+              ],
+              "minimumMs": 3168.546698987484,
+              "maximumMs": 3213.2605370134115,
+              "lowResolution": false
+            },
+            "p2": {
+              "medianMs": 2890.4999108053744,
+              "samplesMs": [
+                2911.541549023241,
+                2890.4999108053744,
+                2880.2814087830484
+              ],
+              "minimumMs": 2880.2814087830484,
+              "maximumMs": 2911.541549023241,
+              "lowResolution": false
+            },
+            "p4": {
+              "medianMs": 3241.4074391126633,
+              "samplesMs": [
+                3244.0231796354055,
+                3241.4074391126633,
+                3239.9459509178996
+              ],
+              "minimumMs": 3239.9459509178996,
+              "maximumMs": 3244.0231796354055,
+              "lowResolution": false
+            },
+            "p8": {
+              "medianMs": 3220.1028699055314,
+              "samplesMs": [
+                3202.8932441025972,
+                3234.8473761230707,
+                3220.1028699055314
+              ],
+              "minimumMs": 3202.8932441025972,
+              "maximumMs": 3234.8473761230707,
+              "lowResolution": false
+            },
+            "p3": {
+              "medianMs": 2767.506214790046,
+              "samplesMs": [
+                2765.2225829660892,
+                2772.8156610392034,
+                2767.506214790046
+              ],
+              "minimumMs": 2765.2225829660892,
+              "maximumMs": 2772.8156610392034,
+              "lowResolution": false
+            },
+            "p11": {
+              "medianMs": 2640.238252002746,
+              "samplesMs": [
+                2640.238252002746,
+                2653.2743209972978,
+                2634.878476150334
+              ],
+              "minimumMs": 2634.878476150334,
+              "maximumMs": 2653.2743209972978,
+              "lowResolution": false
+            }
+          },
+          "ratios": {
+            "p1": 0.9632617552326121,
+            "p2": 0.8733022522303806,
+            "p4": 0.9793213991778601,
+            "p8": 0.9728846827462716,
+            "p3": 0.8361423577295026,
+            "p11": 0.7976910856421239
+          },
+          "ratioEligible": true
+        }
+      },
+      {
+        "id": "coverage-map-churn-128",
+        "summary": {
+          "complete": true,
+          "pairedRounds": [
+            0,
+            1,
+            2
+          ],
+          "stats": {
+            "p0": {
+              "medianMs": 2074.6305068023503,
+              "samplesMs": [
+                2191.3648708723485,
+                2074.6305068023503,
+                2062.402975279838
+              ],
+              "minimumMs": 2062.402975279838,
+              "maximumMs": 2191.3648708723485,
+              "lowResolution": false
+            },
+            "p1": {
+              "medianMs": 2013.1336199119687,
+              "samplesMs": [
+                2013.1336199119687,
+                2026.9640549086034,
+                2010.0118350237608
+              ],
+              "minimumMs": 2010.0118350237608,
+              "maximumMs": 2026.9640549086034,
+              "lowResolution": false
+            },
+            "p2": {
+              "medianMs": 1952.645915094763,
+              "samplesMs": [
+                1946.1320168338716,
+                1952.645915094763,
+                1957.9091458581388
+              ],
+              "minimumMs": 1946.1320168338716,
+              "maximumMs": 1957.9091458581388,
+              "lowResolution": false
+            },
+            "p4": {
+              "medianMs": 1997.5730990990996,
+              "samplesMs": [
+                1997.6045852527022,
+                1997.5730990990996,
+                1974.946292117238
+              ],
+              "minimumMs": 1974.946292117238,
+              "maximumMs": 1997.6045852527022,
+              "lowResolution": false
+            },
+            "p8": {
+              "medianMs": 1967.8994030691683,
+              "samplesMs": [
+                1955.2500080317259,
+                1967.8994030691683,
+                1976.8495550379157
+              ],
+              "minimumMs": 1955.2500080317259,
+              "maximumMs": 1976.8495550379157,
+              "lowResolution": false
+            },
+            "p3": {
+              "medianMs": 1882.6045198366046,
+              "samplesMs": [
+                1882.6045198366046,
+                2083.2308372482657,
+                1878.698118031025
+              ],
+              "minimumMs": 1878.698118031025,
+              "maximumMs": 2083.2308372482657,
+              "lowResolution": false
+            },
+            "p11": {
+              "medianMs": 1776.0076960548759,
+              "samplesMs": [
+                1791.8166341260076,
+                1776.0076960548759,
+                1767.17888424173
+              ],
+              "minimumMs": 1767.17888424173,
+              "maximumMs": 1791.8166341260076,
+              "lowResolution": false
+            }
+          },
+          "ratios": {
+            "p1": 0.97035766769613,
+            "p2": 0.9412017748183973,
+            "p4": 0.9628572859356918,
+            "p8": 0.9485541625926982,
+            "p3": 0.9074408737670993,
+            "p11": 0.8560597611148865
+          },
+          "ratioEligible": true
+        }
+      },
+      {
+        "id": "coverage-expression-128",
+        "summary": {
+          "complete": true,
+          "pairedRounds": [
+            0,
+            1,
+            2
+          ],
+          "stats": {
+            "p0": {
+              "medianMs": 951.7564410343766,
+              "samplesMs": [
+                951.7564410343766,
+                951.1308763176203,
+                973.7452622503042
+              ],
+              "minimumMs": 951.1308763176203,
+              "maximumMs": 973.7452622503042,
+              "lowResolution": false
+            },
+            "p1": {
+              "medianMs": 925.0455093570054,
+              "samplesMs": [
+                924.7284303419292,
+                925.0455093570054,
+                946.7434580437839
+              ],
+              "minimumMs": 924.7284303419292,
+              "maximumMs": 946.7434580437839,
+              "lowResolution": false
+            },
+            "p2": {
+              "medianMs": 888.0484281107783,
+              "samplesMs": [
+                888.0484281107783,
+                890.5010079033673,
+                884.2533454298973
+              ],
+              "minimumMs": 884.2533454298973,
+              "maximumMs": 890.5010079033673,
+              "lowResolution": false
+            },
+            "p4": {
+              "medianMs": 932.775451336056,
+              "samplesMs": [
+                933.611772954464,
+                932.775451336056,
+                930.581346154213
+              ],
+              "minimumMs": 930.581346154213,
+              "maximumMs": 933.611772954464,
+              "lowResolution": false
+            },
+            "p8": {
+              "medianMs": 922.5235567428172,
+              "samplesMs": [
+                962.8415750339627,
+                920.4980400390923,
+                922.5235567428172
+              ],
+              "minimumMs": 920.4980400390923,
+              "maximumMs": 962.8415750339627,
+              "lowResolution": false
+            },
+            "p3": {
+              "medianMs": 864.2556769773364,
+              "samplesMs": [
+                867.9491886869073,
+                864.2556769773364,
+                860.8127781189978
+              ],
+              "minimumMs": 860.8127781189978,
+              "maximumMs": 867.9491886869073,
+              "lowResolution": false
+            },
+            "p11": {
+              "medianMs": 831.7123269662261,
+              "samplesMs": [
+                831.7123269662261,
+                822.7590220049024,
+                842.6988190039992
+              ],
+              "minimumMs": 822.7590220049024,
+              "maximumMs": 842.6988190039992,
+              "lowResolution": false
+            }
+          },
+          "ratios": {
+            "p1": 0.9719351185600156,
+            "p2": 0.9330626931672141,
+            "p4": 0.9800568833790166,
+            "p8": 0.969285330751438,
+            "p3": 0.9080639118533901,
+            "p11": 0.873870972769372
+          },
+          "ratioEligible": true
+        }
+      },
+      {
+        "id": "mandelbrot",
+        "summary": {
+          "complete": true,
+          "pairedRounds": [
+            0,
+            1,
+            2
+          ],
+          "stats": {
+            "p0": {
+              "medianMs": 2104.849824216217,
+              "samplesMs": [
+                2104.849824216217,
+                2127.725741825998,
+                2102.8871750459075
+              ],
+              "minimumMs": 2102.8871750459075,
+              "maximumMs": 2127.725741825998,
+              "lowResolution": false
+            },
+            "p1": {
+              "medianMs": 1653.1774955801666,
+              "samplesMs": [
+                1653.1774955801666,
+                1644.3909890949726,
+                1806.6187012009323
+              ],
+              "minimumMs": 1644.3909890949726,
+              "maximumMs": 1806.6187012009323,
+              "lowResolution": false
+            },
+            "p2": {
+              "medianMs": 1843.7736299820244,
+              "samplesMs": [
+                1878.4184996038675,
+                1808.742665220052,
+                1843.7736299820244
+              ],
+              "minimumMs": 1808.742665220052,
+              "maximumMs": 1878.4184996038675,
+              "lowResolution": false
+            },
+            "p4": {
+              "medianMs": 2095.0082736089826,
+              "samplesMs": [
+                2114.351409021765,
+                2069.4302967749536,
+                2095.0082736089826
+              ],
+              "minimumMs": 2069.4302967749536,
+              "maximumMs": 2114.351409021765,
+              "lowResolution": false
+            },
+            "p8": {
+              "medianMs": 2057.061812840402,
+              "samplesMs": [
+                2074.372440110892,
+                2050.5367796868086,
+                2057.061812840402
+              ],
+              "minimumMs": 2050.5367796868086,
+              "maximumMs": 2074.372440110892,
+              "lowResolution": false
+            },
+            "p3": {
+              "medianMs": 1443.9203827641904,
+              "samplesMs": [
+                1444.8158210143447,
+                1443.9203827641904,
+                1443.7071299180388
+              ],
+              "minimumMs": 1443.7071299180388,
+              "maximumMs": 1444.8158210143447,
+              "lowResolution": false
+            },
+            "p11": {
+              "medianMs": 1400.8646388538182,
+              "samplesMs": [
+                1400.8646388538182,
+                1394.066721200943,
+                1425.4268589429557
+              ],
+              "minimumMs": 1394.066721200943,
+              "maximumMs": 1425.4268589429557,
+              "lowResolution": false
+            }
+          },
+          "ratios": {
+            "p1": 0.7854135133824859,
+            "p2": 0.8759644554064995,
+            "p4": 0.9953243454739585,
+            "p8": 0.9772962370873136,
+            "p3": 0.6859968659768225,
+            "p11": 0.6655413715206301
+          },
+          "ratioEligible": true
+        }
+      }
+    ],
+    "report": "selfhost/build/phase149/compiler-bench01/report.json"
+  },
+  "programs": {
+    "aggregate": {
+      "complete": true,
+      "timedCases": 3,
+      "correctnessOnlyCases": 0,
+      "roles": {
+        "p1": {
+          "geomean": 1.3834790090967606,
+          "equalSourceGeomean": 1.3834790090967606,
+          "sourceCount": 3,
+          "meanPositiveLogSlowdown": 0.32809178109991133,
+          "casesOver105": 1,
+          "families": {
+            "map-churn": 1.0,
+            "expression": 0.9895833333333334,
+            "mandelbrot": 2.6758720930232553
+          }
+        },
+        "p2": {
+          "geomean": 1.3033063892455665,
+          "equalSourceGeomean": 1.3033063892455665,
+          "sourceCount": 3,
+          "meanPositiveLogSlowdown": 0.26490441190235053,
+          "casesOver105": 2,
+          "families": {
+            "map-churn": 1.8697247706422016,
+            "expression": 1.184027777777778,
+            "mandelbrot": 1.0
+          }
+        },
+        "p4": {
+          "geomean": 0.9936478400087889,
+          "equalSourceGeomean": 0.9936478400087889,
+          "sourceCount": 3,
+          "meanPositiveLogSlowdown": 0,
+          "casesOver105": 0,
+          "families": {
+            "map-churn": 0.9963302752293577,
+            "expression": 0.9861111111111112,
+            "mandelbrot": 0.9985465116279069
+          }
+        },
+        "p8": {
+          "geomean": 1.598795826042911,
+          "equalSourceGeomean": 1.598795826042911,
+          "sourceCount": 3,
+          "meanPositiveLogSlowdown": 0.4721704638670593,
+          "casesOver105": 1,
+          "families": {
+            "map-churn": 1.003669724770642,
+            "expression": 4.107638888888888,
+            "mandelbrot": 0.9912790697674417
+          }
+        },
+        "p3": {
+          "geomean": 1.8097203324519684,
+          "equalSourceGeomean": 1.8097203324519684,
+          "sourceCount": 3,
+          "meanPositiveLogSlowdown": 0.5931723208819788,
+          "casesOver105": 3,
+          "families": {
+            "map-churn": 1.8844036697247706,
+            "expression": 1.1805555555555556,
+            "mandelbrot": 2.664244186046511
+          }
+        },
+        "p11": {
+          "geomean": 3.0181377112761036,
+          "equalSourceGeomean": 3.0181377112761036,
+          "sourceCount": 3,
+          "meanPositiveLogSlowdown": 1.1046399892834695,
+          "casesOver105": 3,
+          "families": {
+            "map-churn": 2.3706422018348623,
+            "expression": 4.357638888888889,
+            "mandelbrot": 2.6613372093023253
+          }
+        }
+      }
+    },
+    "wallSeconds": 54.62650660984218,
+    "cases": [
+      {
+        "id": "coverage-map-churn-128",
+        "summary": {
+          "complete": true,
+          "pairedRounds": [
+            0,
+            1,
+            2
+          ],
+          "stats": {
+            "p0": {
+              "medianMs": 1.0018382352941178,
+              "samplesMs": [
+                1.0018382352941178,
+                1.0018382352941178,
+                0.9963235294117647
+              ],
+              "minimumMs": 0.9963235294117647,
+              "maximumMs": 1.0018382352941178,
+              "lowResolution": false
+            },
+            "p1": {
+              "medianMs": 1.0018382352941178,
+              "samplesMs": [
+                1.0018382352941178,
+                1.0091911764705883,
+                1.0018382352941178
+              ],
+              "minimumMs": 1.0018382352941178,
+              "maximumMs": 1.0091911764705883,
+              "lowResolution": false
+            },
+            "p2": {
+              "medianMs": 1.8731617647058822,
+              "samplesMs": [
+                1.8731617647058822,
+                1.8713235294117647,
+                1.8768382352941178
+              ],
+              "minimumMs": 1.8713235294117647,
+              "maximumMs": 1.8768382352941178,
+              "lowResolution": false
+            },
+            "p4": {
+              "medianMs": 0.9981617647058824,
+              "samplesMs": [
+                0.9981617647058824,
+                0.9963235294117647,
+                1.0018382352941178
+              ],
+              "minimumMs": 0.9963235294117647,
+              "maximumMs": 1.0018382352941178,
+              "lowResolution": false
+            },
+            "p8": {
+              "medianMs": 1.005514705882353,
+              "samplesMs": [
+                1.005514705882353,
+                0.9981617647058824,
+                1.005514705882353
+              ],
+              "minimumMs": 0.9981617647058824,
+              "maximumMs": 1.005514705882353,
+              "lowResolution": false
+            },
+            "p3": {
+              "medianMs": 1.8878676470588236,
+              "samplesMs": [
+                1.8841911764705883,
+                1.8878676470588236,
+                1.8933823529411764
+              ],
+              "minimumMs": 1.8841911764705883,
+              "maximumMs": 1.8933823529411764,
+              "lowResolution": false
+            },
+            "p11": {
+              "medianMs": 2.375,
+              "samplesMs": [
+                2.3713235294117645,
+                2.3768382352941178,
+                2.375
+              ],
+              "minimumMs": 2.3713235294117645,
+              "maximumMs": 2.3768382352941178,
+              "lowResolution": false
+            }
+          },
+          "ratios": {
+            "p1": 1.0,
+            "p2": 1.8697247706422016,
+            "p4": 0.9963302752293577,
+            "p8": 1.003669724770642,
+            "p3": 1.8844036697247706,
+            "p11": 2.3706422018348623
+          },
+          "ratioEligible": true
+        }
+      },
+      {
+        "id": "coverage-expression-128",
+        "summary": {
+          "complete": true,
+          "pairedRounds": [
+            0,
+            1,
+            2
+          ],
+          "stats": {
+            "p0": {
+              "medianMs": 0.007632778543411428,
+              "samplesMs": [
+                0.007632778543411428,
+                0.008401356938407718,
+                0.007500265027032757
+              ],
+              "minimumMs": 0.007500265027032757,
+              "maximumMs": 0.008401356938407718,
+              "lowResolution": false
+            },
+            "p1": {
+              "medianMs": 0.007553270433584226,
+              "samplesMs": [
+                0.00757977313685996,
+                0.007553270433584226,
+                0.007526767730308492
+              ],
+              "minimumMs": 0.007526767730308492,
+              "maximumMs": 0.00757977313685996,
+              "lowResolution": false
+            },
+            "p2": {
+              "medianMs": 0.009037421817025337,
+              "samplesMs": [
+                0.00906392452030107,
+                0.009037421817025337,
+                0.009010919113749603
+              ],
+              "minimumMs": 0.009010919113749603,
+              "maximumMs": 0.00906392452030107,
+              "lowResolution": false
+            },
+            "p4": {
+              "medianMs": 0.007526767730308492,
+              "samplesMs": [
+                0.007473762323757023,
+                0.007526767730308492,
+                0.007526767730308492
+              ],
+              "minimumMs": 0.007473762323757023,
+              "maximumMs": 0.007526767730308492,
+              "lowResolution": false
+            },
+            "p8": {
+              "medianMs": 0.031352697975193466,
+              "samplesMs": [
+                0.031352697975193466,
+                0.03140570338174494,
+                0.031087670942436127
+              ],
+              "minimumMs": 0.031087670942436127,
+              "maximumMs": 0.03140570338174494,
+              "lowResolution": false
+            },
+            "p3": {
+              "medianMs": 0.009010919113749603,
+              "samplesMs": [
+                0.009010919113749603,
+                0.010071027244778968,
+                0.008984416410473869
+              ],
+              "minimumMs": 0.008984416410473869,
+              "maximumMs": 0.010071027244778968,
+              "lowResolution": false
+            },
+            "p11": {
+              "medianMs": 0.033260892611046325,
+              "samplesMs": [
+                0.032916357468461784,
+                0.03519558995017492,
+                0.033260892611046325
+              ],
+              "minimumMs": 0.032916357468461784,
+              "maximumMs": 0.03519558995017492,
+              "lowResolution": false
+            }
+          },
+          "ratios": {
+            "p1": 0.9895833333333334,
+            "p2": 1.184027777777778,
+            "p4": 0.9861111111111112,
+            "p8": 4.107638888888888,
+            "p3": 1.1805555555555556,
+            "p11": 4.357638888888889
+          },
+          "ratioEligible": true
+        }
+      },
+      {
+        "id": "mandelbrot",
+        "summary": {
+          "complete": true,
+          "pairedRounds": [
+            0,
+            1,
+            2
+          ],
+          "stats": {
+            "p0": {
+              "medianMs": 0.07613988490482515,
+              "samplesMs": [
+                0.07613988490482515,
+                0.07591854803010181,
+                0.07613988490482515
+              ],
+              "minimumMs": 0.07591854803010181,
+              "maximumMs": 0.07613988490482515,
+              "lowResolution": false
+            },
+            "p1": {
+              "medianMs": 0.20374059318282425,
+              "samplesMs": [
+                0.20307658255865427,
+                0.2179061531651173,
+                0.20374059318282425
+              ],
+              "minimumMs": 0.20307658255865427,
+              "maximumMs": 0.2179061531651173,
+              "lowResolution": false
+            },
+            "p2": {
+              "medianMs": 0.07613988490482515,
+              "samplesMs": [
+                0.07669322709163347,
+                0.07602921646746348,
+                0.07613988490482515
+              ],
+              "minimumMs": 0.07602921646746348,
+              "maximumMs": 0.07669322709163347,
+              "lowResolution": false
+            },
+            "p4": {
+              "medianMs": 0.07602921646746348,
+              "samplesMs": [
+                0.07602921646746348,
+                0.07591854803010181,
+                0.0762505533421868
+              ],
+              "minimumMs": 0.07591854803010181,
+              "maximumMs": 0.0762505533421868,
+              "lowResolution": false
+            },
+            "p8": {
+              "medianMs": 0.07547587428065515,
+              "samplesMs": [
+                0.07547587428065515,
+                0.07580787959274016,
+                0.0753652058432935
+              ],
+              "minimumMs": 0.0753652058432935,
+              "maximumMs": 0.07580787959274016,
+              "lowResolution": false
+            },
+            "p3": {
+              "medianMs": 0.20285524568393093,
+              "samplesMs": [
+                0.20285524568393093,
+                0.20252324037184594,
+                0.22089420097388224
+              ],
+              "minimumMs": 0.20252324037184594,
+              "maximumMs": 0.22089420097388224,
+              "lowResolution": false
+            },
+            "p11": {
+              "medianMs": 0.20263390880920762,
+              "samplesMs": [
+                0.20263390880920762,
+                0.20263390880920762,
+                0.2029659141212926
+              ],
+              "minimumMs": 0.20263390880920762,
+              "maximumMs": 0.2029659141212926,
+              "lowResolution": false
+            }
+          },
+          "ratios": {
+            "p1": 2.6758720930232553,
+            "p2": 1.0,
+            "p4": 0.9985465116279069,
+            "p8": 0.9912790697674417,
+            "p3": 2.664244186046511,
+            "p11": 2.6613372093023253
+          },
+          "ratioEligible": true
+        }
+      }
+    ],
+    "report": "selfhost/build/phase149/program-bench02/report.json"
+  },
+  "transfer": {
+    "aggregate": {
+      "complete": true,
+      "timedCases": 2,
+      "correctnessOnlyCases": 0,
+      "roles": {
+        "p4": {
+          "geomean": 1.1620453955717214,
+          "equalSourceGeomean": 1.1620453955717214,
+          "sourceCount": 2,
+          "meanPositiveLogSlowdown": 0.15018172442370878,
+          "casesOver105": 1,
+          "families": {
+            "test-rle-roundtrip": 1.3269794721407622,
+            "tree-bitonic": 1.0176114474408366
+          }
+        }
+      }
+    },
+    "wallSeconds": 17.604508432094008,
+    "cases": [
+      {
+        "id": "test-rle-roundtrip",
+        "summary": {
+          "complete": true,
+          "pairedRounds": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "stats": {
+            "p0": {
+              "medianMs": 0.001053657210187619,
+              "samplesMs": [
+                0.0010567471140298114,
+                0.0010505673063454265,
+                0.0010464474345558367,
+                0.0010588070499246063
+              ],
+              "minimumMs": 0.0010464474345558367,
+              "maximumMs": 0.0010588070499246063,
+              "lowResolution": false
+            },
+            "p4": {
+              "medianMs": 0.0013981814885920749,
+              "samplesMs": [
+                0.0013956065687235812,
+                0.0014007564084605687,
+                0.0013945766007761838,
+                0.0014028163443553638
+              ],
+              "minimumMs": 0.0013945766007761838,
+              "maximumMs": 0.0014028163443553638,
+              "lowResolution": false
+            }
+          },
+          "ratios": {
+            "p4": 1.3269794721407622
+          },
+          "ratioEligible": true
+        }
+      },
+      {
+        "id": "tree-bitonic",
+        "summary": {
+          "complete": true,
+          "pairedRounds": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "stats": {
+            "p0": {
+              "medianMs": 0.5553178484107579,
+              "samplesMs": [
+                0.5623471882640587,
+                0.5550122249388753,
+                0.5556234718826406,
+                0.5537897310513448
+              ],
+              "minimumMs": 0.5537897310513448,
+              "maximumMs": 0.5623471882640587,
+              "lowResolution": false
+            },
+            "p4": {
+              "medianMs": 0.5650977995110025,
+              "samplesMs": [
+                0.5806845965770171,
+                0.5550122249388753,
+                0.5684596577017115,
+                0.5617359413202934
+              ],
+              "minimumMs": 0.5550122249388753,
+              "maximumMs": 0.5806845965770171,
+              "lowResolution": false
+            }
+          },
+          "ratios": {
+            "p4": 1.0176114474408366
+          },
+          "ratioEligible": true
+        }
+      }
+    ],
+    "report": "selfhost/build/phase149/transfer-bench01/report.json"
+  },
+  "generatedCompiler": {
+    "aggregate": {
+      "complete": true,
+      "timedCases": 2,
+      "correctnessOnlyCases": 0,
+      "roles": {
+        "p11": {
+          "geomean": 1.8306930242458996,
+          "equalSourceGeomean": 1.8306930242458996,
+          "sourceCount": 2,
+          "meanPositiveLogSlowdown": 0.6046945969376272,
+          "casesOver105": 2,
+          "families": {
+            "compiler-verifier-slice": 1.7928358281284769,
+            "coverage-map-churn-128": 1.8693496060490542
+          }
+        }
+      }
+    },
+    "wallSeconds": 60.22603103565052,
+    "cases": [
+      {
+        "id": "compiler-verifier-slice",
+        "summary": {
+          "complete": true,
+          "pairedRounds": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "stats": {
+            "p0": {
+              "medianMs": 3242.125552147627,
+              "samplesMs": [
+                3232.13044507429,
+                3247.918519191444,
+                3271.886371076107,
+                3236.33258510381
+              ],
+              "minimumMs": 3232.13044507429,
+              "maximumMs": 3271.886371076107,
+              "lowResolution": false
+            },
+            "p11": {
+              "medianMs": 5812.598849181086,
+              "samplesMs": [
+                5800.196512136608,
+                5841.77247621119,
+                5808.7102910503745,
+                5816.487407311797
+              ],
+              "minimumMs": 5800.196512136608,
+              "maximumMs": 5841.77247621119,
+              "lowResolution": false
+            }
+          },
+          "ratios": {
+            "p11": 1.7928358281284769
+          },
+          "ratioEligible": true
+        }
+      },
+      {
+        "id": "coverage-map-churn-128",
+        "summary": {
+          "complete": true,
+          "pairedRounds": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "stats": {
+            "p0": {
+              "medianMs": 2026.1403522454202,
+              "samplesMs": [
+                2071.949790697545,
+                2025.6492882035673,
+                2023.6968230456114,
+                2026.6314162872732
+              ],
+              "minimumMs": 2023.6968230456114,
+              "maximumMs": 2071.949790697545,
+              "lowResolution": false
+            },
+            "p11": {
+              "medianMs": 3787.5646692700684,
+              "samplesMs": [
+                3781.883564312011,
+                3789.069312158972,
+                3786.060026381165,
+                3797.5700688548386
+              ],
+              "minimumMs": 3781.883564312011,
+              "maximumMs": 3797.5700688548386,
+              "lowResolution": false
+            }
+          },
+          "ratios": {
+            "p11": 1.8693496060490542
+          },
+          "ratioEligible": true
+        }
+      }
+    ],
+    "report": "selfhost/build/phase149/compiler-products-bench01/report.json"
+  },
+  "fullSource": {
+    "p0": {
+      "compilerGuardSeconds": 239.08905371790752,
+      "machineGuardSeconds": 19.32372484076768,
+      "machineInternalSeconds": 18.40458529582247,
+      "serialGuardSumSeconds": 258.4127785586752,
+      "qbe": {
+        "bytes": 119544406,
+        "sha256": "76eb1a7c500b19c86cbeaa523f4e0066cafa2588b02f729e1909ef35902c2a2f"
+      },
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase149/full-products01/p0/program",
+        "bytes": 19499168,
+        "sha256": "1f4baa72f3d626b841265449e914ba33fe70fad16c80d19fe7b2713a68bc4ea5"
+      },
+      "requestPeakRssBytes": 1108369408
+    },
+    "p11": {
+      "compilerGuardSeconds": 188.4427229980938,
+      "machineGuardSeconds": 16.37638789601624,
+      "machineInternalSeconds": 15.582879088819027,
+      "serialGuardSumSeconds": 204.81911089411005,
+      "qbe": {
+        "bytes": 102773136,
+        "sha256": "b69ef5bd084fe952a61705c018923458c6eaa914eafb7f1a9ff6ae60f03f74df"
+      },
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase149/full-products01/p11/program",
+        "bytes": 18493360,
+        "sha256": "70b70db56f842eeb0b8b5d29104438c72bb5426b02a234d8e5af9b29ea49b8b8"
+      },
+      "requestPeakRssBytes": 1003773952
+    },
+    "serialTimeSavedSeconds": 53.593667664565146,
+    "serialRatio": 0.7926044216408742
+  },
+  "breakEven": {
+    "compiler-verifier-slice": 20.849727451522924,
+    "coverage-map-churn-128": 30.426324393598794
+  },
+  "cliControls": [
+    {
+      "name": "timing-cli01",
+      "expectedExit": 0,
+      "exit": 0,
+      "pass": true,
+      "exactQbe": true
+    },
+    {
+      "name": "invalid-cli01",
+      "expectedExit": 2,
+      "exit": 2,
+      "pass": true
+    },
+    {
+      "name": "ordinary-cli01",
+      "expectedExit": 0,
+      "exit": 0,
+      "pass": true,
+      "exactQbe": true
+    }
+  ],
+  "cliTimingText": "phase149_policy=0\nreads_ms=15\ncompile_emit_ms=1014\nrequest_ms=1029\n"
+}

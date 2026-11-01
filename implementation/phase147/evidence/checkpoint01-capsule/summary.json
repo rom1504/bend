@@ -1,0 +1,157 @@
+{
+  "kind": "phase147-retention-checkpoint-summary-v1",
+  "cutoff": 1793515494.778948,
+  "guardCount": 50,
+  "guardOutcomes": {
+    "completed": 45,
+    "failed": 5
+  },
+  "cost": {
+    "outerGuardElapsedSumSeconds": 929.4145398139954,
+    "outerGuardIntervalUnionSeconds": 929.4145398139954,
+    "nestedChildSecondsAdded": 0,
+    "firstStartToLastFinishSeconds": 2148.5304260253906,
+    "uncoveredSpanSeconds": 1219.1158862113953,
+    "categories": {
+      "full-baseline": {
+        "guards": 1,
+        "intervalUnionSeconds": 262.90722823143005
+      },
+      "checked-api-acquisition": {
+        "guards": 11,
+        "intervalUnionSeconds": 44.63538575172424
+      },
+      "focused-controls-or-capture": {
+        "guards": 12,
+        "intervalUnionSeconds": 38.11705279350281
+      },
+      "profiler-build-capture-analysis": {
+        "guards": 6,
+        "intervalUnionSeconds": 317.3564043045044
+      },
+      "focused-native-build": {
+        "guards": 11,
+        "intervalUnionSeconds": 212.0457718372345
+      },
+      "focused-measurement": {
+        "guards": 9,
+        "intervalUnionSeconds": 54.352696895599365
+      }
+    },
+    "scope": "Only finished outer disk guards; includes harness/build/check work. No CPU billing, performance ratio, or full campaign wall claim. Category unions can overlap."
+  },
+  "pendingGuards": [
+    {
+      "file": "selfhost/build/phase147/integrated-plan04/image-guard/process.json",
+      "identity": {
+        "bytes": 2834,
+        "sha256": "dba60ebe9484e5dad05b71fe4bf6fe531dbeca8f2ab0272b15588f27ba0f9850"
+      },
+      "status": "unfinished-or-after-cutoff"
+    }
+  ],
+  "protectedPolicy": {
+    "allRawRootsRemainHot": true,
+    "selectedManifest": "selfhost/manifests/current.json",
+    "selectedN1N2": true,
+    "fullBaseline": true,
+    "allProfilerImagesMapsSamples": true,
+    "sharedLock": "selfhost/build/phase32/execution.lock",
+    "promotion": "No qualified/rejected decision inferred from successful command."
+  },
+  "complete": true,
+  "failedGuards": [
+    {
+      "guard": "selfhost/build/phase147/integrated-plan03/source-check-guard",
+      "elapsedSeconds": 6.015969276428223,
+      "returncode": 1,
+      "stoppedFor": null
+    },
+    {
+      "guard": "selfhost/build/phase147/profile-pilot01-guard",
+      "elapsedSeconds": 8.775253534317017,
+      "returncode": 1,
+      "stoppedFor": null
+    },
+    {
+      "guard": "selfhost/build/phase147/verifier-baseline01/api-guard",
+      "elapsedSeconds": 3.290510416030884,
+      "returncode": 1,
+      "stoppedFor": null
+    },
+    {
+      "guard": "selfhost/build/phase147/verifier-candidate01/api-guard",
+      "elapsedSeconds": 0.782301664352417,
+      "returncode": 1,
+      "stoppedFor": null
+    },
+    {
+      "guard": "selfhost/build/phase147/verifier-real01-guard",
+      "elapsedSeconds": 0.20807862281799316,
+      "returncode": 1,
+      "stoppedFor": null
+    }
+  ],
+  "smallMethodSupplement": {
+    "exactObjects": 59,
+    "bytes": 567204,
+    "unresolved": [
+      {
+        "declared": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase134/pipe/build-v02.py",
+          "bytes": 8565,
+          "sha256": "49aa67b6d136ef075bbb3ed31d8be389640b59627710833290aa21dc5b17aa85"
+        },
+        "firstReceipt": "selfhost/build/phase147/profile-prep01/inputs/image-build.json",
+        "firstPointer": "/inputs/0",
+        "status": "missing-or-symlink; retained as unresolved historical prerequisite"
+      },
+      {
+        "declared": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase130/native-request.py",
+          "bytes": 9884,
+          "sha256": "e32e5e99502a9b6485e54ce6669200ee48eaba0c289d7bfb2809a1dc6ef0bf2f"
+        },
+        "firstReceipt": "selfhost/build/phase147/profile-prep01/inputs/image-build.json",
+        "firstPointer": "/inputs/1",
+        "status": "missing-or-symlink; retained as unresolved historical prerequisite"
+      },
+      {
+        "declared": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase123/build-aligned.py",
+          "bytes": 3923,
+          "sha256": "67fffc05bdbedf2fcf13eace395fd203f45a981b3a1d7de000d465fcc2693701"
+        },
+        "firstReceipt": "selfhost/build/phase147/profile-prep01/inputs/image-build.json",
+        "firstPointer": "/inputs/2",
+        "status": "missing-or-symlink; retained as unresolved historical prerequisite"
+      },
+      {
+        "declared": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase88/base/carrier.mjs",
+          "sha256": "e3c4c4bb414941bc50cf09d105d38a6c140c80dbeeddf71184e4086df77a4e43",
+          "bytes": 6633
+        },
+        "firstReceipt": "selfhost/build/phase147/profile-prep01/inputs/image-build.json",
+        "firstPointer": "/inputs/16",
+        "status": "missing-or-symlink; retained as unresolved historical prerequisite"
+      },
+      {
+        "declared": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase130/base/carrier.mjs",
+          "bytes": 3983,
+          "sha256": "797219d309cc200bec4a654919c9f8befc31e0d0521dabf6a26c7396cb0a53fb"
+        },
+        "firstReceipt": "selfhost/build/phase147/profile-prep01/inputs/image-build.json",
+        "firstPointer": "/inputs/19",
+        "status": "missing-or-symlink; retained as unresolved historical prerequisite"
+      }
+    ]
+  },
+  "sourceReport": {
+    "member": "checkpoint01/report.json",
+    "bytes": 558159,
+    "sha256": "22f097f574b65203f72a0e7fd281ab8cf2e4c05e67738b333e0476da4fd3cb4b"
+  },
+  "scope": "Interim data-only checkpoint; active target lane was open. No qualification or campaign closure claim."
+}

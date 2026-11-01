@@ -1,0 +1,1623 @@
+{
+  "kind": "phase147-verifier-fast-loop-evidence",
+  "version": 1,
+  "revision": "candidate03",
+  "sourceScope": "Six complete raw and six complete direct functions per family; current Lexer and Map programs, plus dependency-closed compiler-verifier workload. All global metadata and ordered direct context rebuilt each iteration. Not whole-compiler speed or upstream parity.",
+  "controlReports": [
+    {
+      "file": "selfhost/build/phase147/verifier-controls01/report.json",
+      "bytes": 21535,
+      "sha256": "738b7317b578e8d6b3efa0b41fe4930398ef2c3d3dcc5cb5b842fc1dfeba781e"
+    },
+    {
+      "file": "selfhost/build/phase147/verifier-extra01/report.json",
+      "bytes": 7853,
+      "sha256": "8c041fc6b644d59120b8748306c95b6ea476ad198fe5827f7eea3abbce5d9d87"
+    },
+    {
+      "file": "selfhost/build/phase147/verifier-real02/report.json",
+      "bytes": 11297,
+      "sha256": "ccdbd014984d74a8c501f32ba9f8daf96170e438474fbebdb50a72158c6a2548"
+    }
+  ],
+  "timings": [
+    {
+      "family": "lexer",
+      "timing": {
+        "file": "selfhost/build/phase147/verifier-time-lexer01/report.json",
+        "bytes": 22562,
+        "sha256": "d9c50f8e01d7bb4e8146cff56bb79598f55e5707a4d99c5016cd8087c8017019"
+      },
+      "nativeBuild": {
+        "file": "selfhost/build/phase147/verifier-native-lexer01/native/report.json",
+        "bytes": 15717,
+        "sha256": "27bc483b3ee36e4cae4cb70c562f8d66d9d5e73d422e2b6ea3b77a7ef4d7c754"
+      },
+      "nativeBuildSeconds": 15.104997912887484,
+      "complete": true,
+      "passed": true,
+      "performanceQualified": true,
+      "repeats": 16,
+      "checksPerIteration": 12,
+      "medianSeconds": {
+        "old": 0.2915650245267898,
+        "new": 0.227124507073313
+      },
+      "ratio": 0.7789840617609612,
+      "pairRatios": [
+        0.7682849595957212,
+        0.7825766637030359,
+        0.779139369470579,
+        0.7795844085852046
+      ],
+      "timingCampaignSeconds": 2.9557621320709586
+    },
+    {
+      "family": "coverage-map-churn-128",
+      "timing": {
+        "file": "selfhost/build/phase147/verifier-time-map01/report.json",
+        "bytes": 20042,
+        "sha256": "907f445e13ca6c0e896de9f2bc767a764a5e6b33d140d585ec8d073392f1717f"
+      },
+      "nativeBuild": {
+        "file": "selfhost/build/phase147/verifier-native-map01/native/report.json",
+        "bytes": 15671,
+        "sha256": "aef1de3bd13eb25fe1ae5a23806a68cdd9cdf6eabd07ed9d737dd844ac131fe4"
+      },
+      "nativeBuildSeconds": 23.70868139481172,
+      "complete": true,
+      "passed": true,
+      "performanceQualified": true,
+      "repeats": 4,
+      "checksPerIteration": 12,
+      "medianSeconds": {
+        "old": 0.1543263962958008,
+        "new": 0.13737444952130318
+      },
+      "ratio": 0.8901552347402355,
+      "pairRatios": [
+        0.879285944986422,
+        0.9038677985013158,
+        0.892888814218623,
+        0.8861571419510949
+      ],
+      "timingCampaignSeconds": 1.6249856213107705
+    },
+    {
+      "family": "compiler-verifier-slice",
+      "timing": {
+        "file": "selfhost/build/phase147/verifier-time-compiler01/report.json",
+        "bytes": 22733,
+        "sha256": "0d4943637e172ca51fa3cf0eb07782663afff5f480de4370775c8320ad9b8e2a"
+      },
+      "nativeBuild": {
+        "file": "selfhost/build/phase147/verifier-native-compiler01/native/report.json",
+        "bytes": 15792,
+        "sha256": "d3d8378b731990c965e70462d47303359a6fea5c0ac881ba3c7c2f6532d64d55"
+      },
+      "nativeBuildSeconds": 17.32301752595231,
+      "complete": true,
+      "passed": true,
+      "performanceQualified": true,
+      "repeats": 16,
+      "checksPerIteration": 12,
+      "medianSeconds": {
+        "old": 0.42855407460592687,
+        "new": 0.35232706647366285
+      },
+      "ratio": 0.82212977859945,
+      "pairRatios": [
+        0.8233577740125255,
+        0.8184852411667278,
+        0.82770856012485,
+        0.8209012940926596
+      ],
+      "timingCampaignSeconds": 4.364237672649324
+    }
+  ],
+  "profileReport": {
+    "file": "selfhost/build/phase147/verifier-profile-lexer01/capture/report.json",
+    "bytes": 11806,
+    "sha256": "0c247586c760b506541979bd3e3887fbb5bc6df10515ec00dd358407d4308d73"
+  },
+  "profiles": [
+    {
+      "mode": "old",
+      "analysis": {
+        "file": "selfhost/build/phase147/verifier-profile-lexer01/capture/000-sample-verifier-lexer-complete-region-old/analysis.json",
+        "bytes": 355878,
+        "sha256": "540063bc58ec97730f4c8fc92b71ae982a1f34cb2caa955a0da6a7168d25f730"
+      },
+      "quality": {
+        "scope": "main_thread",
+        "main_thread_cpu_fraction": 1.0000000050954803,
+        "sampled_thread_cpu_fraction": 1.0000000050954803,
+        "minimum_process_cpu_fraction": 0.95,
+        "minimum_samples": 500,
+        "enough_samples": true,
+        "thread_lifecycle_complete": true,
+        "near_complete_process_cpu_coverage": true,
+        "usable_for_process_cpu_attribution": true,
+        "limitations": [],
+        "zero_loss": true,
+        "handler_intact": true,
+        "main_thread_shutdown": true,
+        "expected_clock_periods": 919.9329098125,
+        "delivered_per_expected_period": 0.9989858936422982,
+        "delivery_plausible": true,
+        "resolved_sample_fraction": 0.9085963003264418,
+        "unknown_samples": 84,
+        "inferred_symbol_range_samples": 0,
+        "resolved_symbol_coverage_is_not_logical_attribution": true
+      },
+      "samples": 919,
+      "periodUs": 16000,
+      "diagnosticWallSeconds": 14.724576451350003,
+      "groups": [
+        {
+          "name": "generated_bend",
+          "samples": 338,
+          "fraction": 0.367791077257889,
+          "percent": 36.779107725788904
+        },
+        {
+          "name": "other",
+          "samples": 161,
+          "fraction": 0.17519042437431992,
+          "percent": 17.51904243743199
+        },
+        {
+          "name": "ownership_and_products",
+          "samples": 157,
+          "fraction": 0.1708378672470076,
+          "percent": 17.08378672470076
+        },
+        {
+          "name": "reclamation",
+          "samples": 127,
+          "fraction": 0.1381936887921654,
+          "percent": 13.81936887921654
+        },
+        {
+          "name": "unresolved",
+          "samples": 84,
+          "fraction": 0.09140369967355821,
+          "percent": 9.140369967355822
+        },
+        {
+          "name": "scheduler",
+          "samples": 40,
+          "fraction": 0.04352557127312296,
+          "percent": 4.352557127312296
+        },
+        {
+          "name": "allocation",
+          "samples": 12,
+          "fraction": 0.013057671381936888,
+          "percent": 1.3057671381936888
+        }
+      ],
+      "leaves": [
+        {
+          "name": "term_drop",
+          "samples": 89,
+          "fraction": 0.09684439608269858
+        },
+        {
+          "name": "[library_unresolved]",
+          "samples": 82,
+          "fraction": 0.08922742110990206
+        },
+        {
+          "name": "p111_rt_ctor",
+          "samples": 57,
+          "fraction": 0.062023939064200215
+        },
+        {
+          "name": "work_loop.constprop.0",
+          "samples": 40,
+          "fraction": 0.04352557127312296
+        },
+        {
+          "name": "span_fade",
+          "samples": 38,
+          "fraction": 0.041349292709466814
+        },
+        {
+          "name": "p111_set_regs",
+          "samples": 35,
+          "fraction": 0.03808487486398259
+        },
+        {
+          "name": "p113d_FID_$p118borrow.read.String.cmp",
+          "samples": 33,
+          "fraction": 0.035908596300326445
+        },
+        {
+          "name": "p111_rt_sink",
+          "samples": 33,
+          "fraction": 0.035908596300326445
+        },
+        {
+          "name": "p125_rt_take4",
+          "samples": 30,
+          "fraction": 0.03264417845484222
+        },
+        {
+          "name": "p113d_FID_$p118borrow.read.index_hash",
+          "samples": 29,
+          "fraction": 0.031556039173014146
+        },
+        {
+          "name": "p113d_FID_$p118borrow.read.p88_string_eq_go",
+          "samples": 28,
+          "fraction": 0.030467899891186073
+        },
+        {
+          "name": "p111_rt_return",
+          "samples": 25,
+          "fraction": 0.02720348204570185
+        },
+        {
+          "name": "p111_rt_op",
+          "samples": 23,
+          "fraction": 0.025027203482045703
+        },
+        {
+          "name": "p111_rt_jump",
+          "samples": 20,
+          "fraction": 0.02176278563656148
+        },
+        {
+          "name": "p111_FID_$direct.p131i_insert",
+          "samples": 18,
+          "fraction": 0.01958650707290533
+        },
+        {
+          "name": "p113d_FID_$direct.index_find",
+          "samples": 16,
+          "fraction": 0.017410228509249184
+        },
+        {
+          "name": "p125_rt_take2",
+          "samples": 14,
+          "fraction": 0.015233949945593036
+        },
+        {
+          "name": "p111_FID_$direct.p111v_name_chars",
+          "samples": 13,
+          "fraction": 0.014145810663764961
+        },
+        {
+          "name": "heap_alloc",
+          "samples": 12,
+          "fraction": 0.013057671381936888
+        },
+        {
+          "name": "p125_rt_ctor4",
+          "samples": 12,
+          "fraction": 0.013057671381936888
+        },
+        {
+          "name": "p111_rt_take",
+          "samples": 10,
+          "fraction": 0.01088139281828074
+        },
+        {
+          "name": "p113d_FID_$direct.dn",
+          "samples": 9,
+          "fraction": 0.009793253536452665
+        },
+        {
+          "name": "p111_FID_$p111.k.151805",
+          "samples": 9,
+          "fraction": 0.009793253536452665
+        },
+        {
+          "name": "p111_FID_$p111.k.151824",
+          "samples": 9,
+          "fraction": 0.009793253536452665
+        },
+        {
+          "name": "p113d_FID_$direct.Bool.and",
+          "samples": 8,
+          "fraction": 0.008705114254624592
+        },
+        {
+          "name": "p111_FID_$direct.index_join",
+          "samples": 8,
+          "fraction": 0.008705114254624592
+        },
+        {
+          "name": "p111_FID_$direct.Bool.not",
+          "samples": 8,
+          "fraction": 0.008705114254624592
+        },
+        {
+          "name": "p111_rt_special_take",
+          "samples": 8,
+          "fraction": 0.008705114254624592
+        },
+        {
+          "name": "p111_FID_$direct.p111v_put",
+          "samples": 7,
+          "fraction": 0.007616974972796518
+        },
+        {
+          "name": "p111_rt_keep",
+          "samples": 7,
+          "fraction": 0.007616974972796518
+        },
+        {
+          "name": "p111_FID_$p111.k.139970",
+          "samples": 6,
+          "fraction": 0.006528835690968444
+        },
+        {
+          "name": "p118_rt_borrow_scalar_safe",
+          "samples": 6,
+          "fraction": 0.006528835690968444
+        },
+        {
+          "name": "rfc_wrap",
+          "samples": 5,
+          "fraction": 0.00544069640914037
+        },
+        {
+          "name": "p113d_FID_$p118.trmc.$direct.String.append",
+          "samples": 5,
+          "fraction": 0.00544069640914037
+        },
+        {
+          "name": "p111_FID_$p111.k.143159",
+          "samples": 5,
+          "fraction": 0.00544069640914037
+        },
+        {
+          "name": "p111_FID_$direct.Bool.and",
+          "samples": 5,
+          "fraction": 0.00544069640914037
+        },
+        {
+          "name": "p118_rt_borrow_fields",
+          "samples": 5,
+          "fraction": 0.00544069640914037
+        },
+        {
+          "name": "p113d_FID_$direct.String.eq",
+          "samples": 4,
+          "fraction": 0.004352557127312296
+        },
+        {
+          "name": "p112w_FID_$direct.index_node",
+          "samples": 4,
+          "fraction": 0.004352557127312296
+        },
+        {
+          "name": "p111_FID_$direct.p111v_raw_name_chars",
+          "samples": 4,
+          "fraction": 0.004352557127312296
+        },
+        {
+          "name": "p111_rt_special_ctor",
+          "samples": 4,
+          "fraction": 0.004352557127312296
+        },
+        {
+          "name": "p125_rt_take1",
+          "samples": 4,
+          "fraction": 0.004352557127312296
+        },
+        {
+          "name": "p125_rt_ctor2",
+          "samples": 4,
+          "fraction": 0.004352557127312296
+        },
+        {
+          "name": "p113d_FID_$direct.index_node",
+          "samples": 3,
+          "fraction": 0.003264417845484222
+        },
+        {
+          "name": "p113d_FID_$direct.da",
+          "samples": 3,
+          "fraction": 0.003264417845484222
+        },
+        {
+          "name": "p113d_FID_$direct.dk",
+          "samples": 3,
+          "fraction": 0.003264417845484222
+        },
+        {
+          "name": "p113d_FID_$p118borrow.read.String.eq",
+          "samples": 3,
+          "fraction": 0.003264417845484222
+        },
+        {
+          "name": "p112w_FID_$direct.Bool.and",
+          "samples": 3,
+          "fraction": 0.003264417845484222
+        },
+        {
+          "name": "p111_FID_$direct.p125p_previous_stmt",
+          "samples": 3,
+          "fraction": 0.003264417845484222
+        },
+        {
+          "name": "p111_FID_$direct.p111v_body",
+          "samples": 3,
+          "fraction": 0.003264417845484222
+        },
+        {
+          "name": "p111_FID_$direct.index_set",
+          "samples": 3,
+          "fraction": 0.003264417845484222
+        },
+        {
+          "name": "p111_FID_$p111.k.143150",
+          "samples": 3,
+          "fraction": 0.003264417845484222
+        },
+        {
+          "name": "p125_rt_take3",
+          "samples": 3,
+          "fraction": 0.003264417845484222
+        },
+        {
+          "name": "[executable_unresolved]",
+          "samples": 2,
+          "fraction": 0.002176278563656148
+        },
+        {
+          "name": "p125_rt_take2.cold",
+          "samples": 2,
+          "fraction": 0.002176278563656148
+        },
+        {
+          "name": "p113d_FID_$p128borrow.owned.p88_string_eq_go",
+          "samples": 2,
+          "fraction": 0.002176278563656148
+        },
+        {
+          "name": "p113d_FID_$p118borrow.read.String.is_empty",
+          "samples": 2,
+          "fraction": 0.002176278563656148
+        },
+        {
+          "name": "p113d_FID_$p118borrow.read.da",
+          "samples": 2,
+          "fraction": 0.002176278563656148
+        },
+        {
+          "name": "p113d_FID_$direct.Bool.not",
+          "samples": 2,
+          "fraction": 0.002176278563656148
+        },
+        {
+          "name": "p111_FID_$direct.p113e_schema_stmt",
+          "samples": 2,
+          "fraction": 0.002176278563656148
+        },
+        {
+          "name": "p111_FID_$direct.p113e_base_stmt",
+          "samples": 2,
+          "fraction": 0.002176278563656148
+        },
+        {
+          "name": "p111_FID_$direct.p113e_body",
+          "samples": 2,
+          "fraction": 0.002176278563656148
+        },
+        {
+          "name": "p111_FID_$direct.p111v_decl",
+          "samples": 2,
+          "fraction": 0.002176278563656148
+        },
+        {
+          "name": "p111_FID_$direct.p111v_schema_stmt",
+          "samples": 2,
+          "fraction": 0.002176278563656148
+        },
+        {
+          "name": "p111_FID_$direct.p111v_intersection",
+          "samples": 2,
+          "fraction": 0.002176278563656148
+        },
+        {
+          "name": "p111_FID_$direct.p111v_value",
+          "samples": 2,
+          "fraction": 0.002176278563656148
+        },
+        {
+          "name": "p111_FID_$direct.index_remove",
+          "samples": 2,
+          "fraction": 0.002176278563656148
+        },
+        {
+          "name": "p111_FID_$direct.p111v_get",
+          "samples": 2,
+          "fraction": 0.002176278563656148
+        },
+        {
+          "name": "p111_FID_$direct.String.eq",
+          "samples": 2,
+          "fraction": 0.002176278563656148
+        },
+        {
+          "name": "p111_rt_reg_get",
+          "samples": 2,
+          "fraction": 0.002176278563656148
+        },
+        {
+          "name": "p118_rt_extend1",
+          "samples": 2,
+          "fraction": 0.002176278563656148
+        },
+        {
+          "name": "p125_rt_ctor3",
+          "samples": 2,
+          "fraction": 0.002176278563656148
+        },
+        {
+          "name": "p111_rt_keep.cold",
+          "samples": 1,
+          "fraction": 0.001088139281828074
+        },
+        {
+          "name": "p111_rt_take.cold",
+          "samples": 1,
+          "fraction": 0.001088139281828074
+        },
+        {
+          "name": "p125_rt_ctor4.cold",
+          "samples": 1,
+          "fraction": 0.001088139281828074
+        },
+        {
+          "name": "p125_rt_take4.cold",
+          "samples": 1,
+          "fraction": 0.001088139281828074
+        },
+        {
+          "name": "p113d_FID_$direct.p88_string_eq_go",
+          "samples": 1,
+          "fraction": 0.001088139281828074
+        },
+        {
+          "name": "p113d_FID_$direct.index_hash",
+          "samples": 1,
+          "fraction": 0.001088139281828074
+        },
+        {
+          "name": "p113d_FID_$direct.atom",
+          "samples": 1,
+          "fraction": 0.001088139281828074
+        },
+        {
+          "name": "p113d_FID_$p118borrow.read.p88_string_eq",
+          "samples": 1,
+          "fraction": 0.001088139281828074
+        },
+        {
+          "name": "p113d_FID_$direct.p111v_get",
+          "samples": 1,
+          "fraction": 0.001088139281828074
+        },
+        {
+          "name": "p113d_FID_$p128borrow.owned.String.eq",
+          "samples": 1,
+          "fraction": 0.001088139281828074
+        },
+        {
+          "name": "p113d_FID_$direct.p111v_contract",
+          "samples": 1,
+          "fraction": 0.001088139281828074
+        },
+        {
+          "name": "p113d_FID_$direct.p111v_signature",
+          "samples": 1,
+          "fraction": 0.001088139281828074
+        },
+        {
+          "name": "p113d_FID_$direct.p111v_comparison",
+          "samples": 1,
+          "fraction": 0.001088139281828074
+        },
+        {
+          "name": "p113d_FID_$direct.p111v_operator",
+          "samples": 1,
+          "fraction": 0.001088139281828074
+        },
+        {
+          "name": "p113d_FID_$direct.p111v_memory",
+          "samples": 1,
+          "fraction": 0.001088139281828074
+        },
+        {
+          "name": "p112w_FID_$direct.da",
+          "samples": 1,
+          "fraction": 0.001088139281828074
+        },
+        {
+          "name": "p112w_FID_$direct.p111v_type",
+          "samples": 1,
+          "fraction": 0.001088139281828074
+        },
+        {
+          "name": "p112w_FID_$direct.dk",
+          "samples": 1,
+          "fraction": 0.001088139281828074
+        },
+        {
+          "name": "p112w_FID_$direct.String.is_empty",
+          "samples": 1,
+          "fraction": 0.001088139281828074
+        },
+        {
+          "name": "p112w_FID_$direct.atom",
+          "samples": 1,
+          "fraction": 0.001088139281828074
+        },
+        {
+          "name": "p111_FID_$p111.k.15058",
+          "samples": 1,
+          "fraction": 0.001088139281828074
+        },
+        {
+          "name": "p111_FID_$direct.p126dp_original_stmt",
+          "samples": 1,
+          "fraction": 0.001088139281828074
+        },
+        {
+          "name": "p111_FID_$direct.p113e_stmt",
+          "samples": 1,
+          "fraction": 0.001088139281828074
+        },
+        {
+          "name": "p111_FID_$p111.k.26542",
+          "samples": 1,
+          "fraction": 0.001088139281828074
+        },
+        {
+          "name": "p111_FID_$p111.k.26624",
+          "samples": 1,
+          "fraction": 0.001088139281828074
+        },
+        {
+          "name": "p111_FID_$p111.k.32593",
+          "samples": 1,
+          "fraction": 0.001088139281828074
+        },
+        {
+          "name": "p111_FID_$p111.k.32658",
+          "samples": 1,
+          "fraction": 0.001088139281828074
+        },
+        {
+          "name": "p111_FID_$p111.k.32731",
+          "samples": 1,
+          "fraction": 0.001088139281828074
+        },
+        {
+          "name": "p111_FID_$p111.k.32804",
+          "samples": 1,
+          "fraction": 0.001088139281828074
+        },
+        {
+          "name": "p111_FID_$p111.k.32817",
+          "samples": 1,
+          "fraction": 0.001088139281828074
+        },
+        {
+          "name": "p111_FID_$p111.k.32882",
+          "samples": 1,
+          "fraction": 0.001088139281828074
+        },
+        {
+          "name": "p111_FID_$p111.k.32979",
+          "samples": 1,
+          "fraction": 0.001088139281828074
+        },
+        {
+          "name": "p111_FID_$p111.k.35302",
+          "samples": 1,
+          "fraction": 0.001088139281828074
+        },
+        {
+          "name": "p111_FID_$direct.p111v_intersection_bucket",
+          "samples": 1,
+          "fraction": 0.001088139281828074
+        },
+        {
+          "name": "p111_FID_$p111.k.38798",
+          "samples": 1,
+          "fraction": 0.001088139281828074
+        },
+        {
+          "name": "p111_FID_$p111.k.47934",
+          "samples": 1,
+          "fraction": 0.001088139281828074
+        },
+        {
+          "name": "p111_FID_$p111.k.51378",
+          "samples": 1,
+          "fraction": 0.001088139281828074
+        },
+        {
+          "name": "p111_FID_$direct.p111v_stmt",
+          "samples": 1,
+          "fraction": 0.001088139281828074
+        },
+        {
+          "name": "p111_FID_$p111.k.53707",
+          "samples": 1,
+          "fraction": 0.001088139281828074
+        },
+        {
+          "name": "p111_FID_$p111.k.55261",
+          "samples": 1,
+          "fraction": 0.001088139281828074
+        },
+        {
+          "name": "p111_FID_$p111.k.58693",
+          "samples": 1,
+          "fraction": 0.001088139281828074
+        },
+        {
+          "name": "p111_FID_$direct.p113e_originals",
+          "samples": 1,
+          "fraction": 0.001088139281828074
+        },
+        {
+          "name": "p111_FID_$p111.k.65135",
+          "samples": 1,
+          "fraction": 0.001088139281828074
+        },
+        {
+          "name": "p111_FID_$direct.p113e_scalar_safe",
+          "samples": 1,
+          "fraction": 0.001088139281828074
+        },
+        {
+          "name": "p111_FID_$p111.k.105543",
+          "samples": 1,
+          "fraction": 0.001088139281828074
+        },
+        {
+          "name": "p111_FID_$p111.k.122744",
+          "samples": 1,
+          "fraction": 0.001088139281828074
+        },
+        {
+          "name": "p111_FID_$p111.k.122852",
+          "samples": 1,
+          "fraction": 0.001088139281828074
+        },
+        {
+          "name": "p111_FID_$p111.k.131578",
+          "samples": 1,
+          "fraction": 0.001088139281828074
+        },
+        {
+          "name": "p111_FID_$direct.index_remove_step",
+          "samples": 1,
+          "fraction": 0.001088139281828074
+        },
+        {
+          "name": "p111_FID_$direct.index_leaf",
+          "samples": 1,
+          "fraction": 0.001088139281828074
+        },
+        {
+          "name": "p111_FID_$p111.k.137463",
+          "samples": 1,
+          "fraction": 0.001088139281828074
+        },
+        {
+          "name": "p111_FID_$p111.k.139979",
+          "samples": 1,
+          "fraction": 0.001088139281828074
+        },
+        {
+          "name": "p111_FID_$p111.k.143151",
+          "samples": 1,
+          "fraction": 0.001088139281828074
+        },
+        {
+          "name": "p111_FID_$p111.k.145574",
+          "samples": 1,
+          "fraction": 0.001088139281828074
+        },
+        {
+          "name": "p111_FID_$p111.k.145576",
+          "samples": 1,
+          "fraction": 0.001088139281828074
+        },
+        {
+          "name": "p111_FID_$p111.k.151806",
+          "samples": 1,
+          "fraction": 0.001088139281828074
+        },
+        {
+          "name": "p111_FID_$direct.String.append",
+          "samples": 1,
+          "fraction": 0.001088139281828074
+        },
+        {
+          "name": "p111_FID_$direct.p111v_comparison",
+          "samples": 1,
+          "fraction": 0.001088139281828074
+        },
+        {
+          "name": "p111_FID_$direct.p88_string_eq",
+          "samples": 1,
+          "fraction": 0.001088139281828074
+        },
+        {
+          "name": "p125_rt_ctor1",
+          "samples": 1,
+          "fraction": 0.001088139281828074
+        }
+      ],
+      "limits": [
+        "Physical instruction leaves, not inclusive stacks, logical callers, or allocation counts.",
+        "Decoded generated names are symbol identities, not verified source-file/line mappings.",
+        "Zero-sized symbols infer extent only up to the next symbol in the same executable section; padding may be attributed. Last unsized symbols resolve only at entry.",
+        "Library symbols can be absent or hidden; unresolved samples remain in every denominator.",
+        "Mapped device/inode is checked and current files are hashed; in-place mutation since capture is not ruled out without runner identity pins.",
+        "Fixed-period sampling can alias; compare periods and repeats. Instrumented clocks are diagnostic, never clean performance.",
+        "Runtime groups classify physical helper names only and do not identify which source computation caused their work.",
+        "Raw sample order remains in the hashed capture file; pcs is a lossless address histogram, not a timeline."
+      ]
+    },
+    {
+      "mode": "new",
+      "analysis": {
+        "file": "selfhost/build/phase147/verifier-profile-lexer01/capture/001-sample-verifier-lexer-complete-region-new/analysis.json",
+        "bytes": 285081,
+        "sha256": "6e0997332b8dd3f7c83d53159666b9f5615a7a1fa156dad53b25d83fe827c29b"
+      },
+      "quality": {
+        "scope": "main_thread",
+        "main_thread_cpu_fraction": 1.000000023579779,
+        "sampled_thread_cpu_fraction": 1.000000023579779,
+        "minimum_process_cpu_fraction": 0.95,
+        "minimum_samples": 500,
+        "enough_samples": true,
+        "thread_lifecycle_complete": true,
+        "near_complete_process_cpu_coverage": true,
+        "usable_for_process_cpu_attribution": true,
+        "limitations": [],
+        "zero_loss": true,
+        "handler_intact": true,
+        "main_thread_shutdown": true,
+        "expected_clock_periods": 667.9452095,
+        "delivered_per_expected_period": 0.998584899649617,
+        "delivery_plausible": true,
+        "resolved_sample_fraction": 0.9235382308845578,
+        "unknown_samples": 51,
+        "inferred_symbol_range_samples": 0,
+        "resolved_symbol_coverage_is_not_logical_attribution": true
+      },
+      "samples": 667,
+      "periodUs": 16000,
+      "diagnosticWallSeconds": 10.69188855914399,
+      "groups": [
+        {
+          "name": "generated_bend",
+          "samples": 278,
+          "fraction": 0.41679160419790107,
+          "percent": 41.67916041979011
+        },
+        {
+          "name": "other",
+          "samples": 126,
+          "fraction": 0.1889055472263868,
+          "percent": 18.89055472263868
+        },
+        {
+          "name": "ownership_and_products",
+          "samples": 117,
+          "fraction": 0.17541229385307347,
+          "percent": 17.541229385307346
+        },
+        {
+          "name": "reclamation",
+          "samples": 66,
+          "fraction": 0.09895052473763119,
+          "percent": 9.89505247376312
+        },
+        {
+          "name": "unresolved",
+          "samples": 51,
+          "fraction": 0.07646176911544228,
+          "percent": 7.646176911544228
+        },
+        {
+          "name": "scheduler",
+          "samples": 26,
+          "fraction": 0.038980509745127435,
+          "percent": 3.8980509745127434
+        },
+        {
+          "name": "allocation",
+          "samples": 3,
+          "fraction": 0.004497751124437781,
+          "percent": 0.4497751124437781
+        }
+      ],
+      "leaves": [
+        {
+          "name": "[library_unresolved]",
+          "samples": 50,
+          "fraction": 0.07496251874062969
+        },
+        {
+          "name": "term_drop",
+          "samples": 46,
+          "fraction": 0.06896551724137931
+        },
+        {
+          "name": "p113d_FID_$p118borrow.read.String.cmp",
+          "samples": 39,
+          "fraction": 0.05847076461769116
+        },
+        {
+          "name": "p111_rt_ctor",
+          "samples": 34,
+          "fraction": 0.050974512743628186
+        },
+        {
+          "name": "p111_rt_sink",
+          "samples": 32,
+          "fraction": 0.047976011994003
+        },
+        {
+          "name": "work_loop.constprop.0",
+          "samples": 26,
+          "fraction": 0.038980509745127435
+        },
+        {
+          "name": "p125_rt_take4",
+          "samples": 26,
+          "fraction": 0.038980509745127435
+        },
+        {
+          "name": "p113d_FID_$direct.p147v_lookup",
+          "samples": 24,
+          "fraction": 0.035982008995502246
+        },
+        {
+          "name": "p111_set_regs",
+          "samples": 24,
+          "fraction": 0.035982008995502246
+        },
+        {
+          "name": "p113d_FID_$p118borrow.read.index_hash",
+          "samples": 23,
+          "fraction": 0.034482758620689655
+        },
+        {
+          "name": "p111_rt_jump",
+          "samples": 21,
+          "fraction": 0.031484257871064465
+        },
+        {
+          "name": "p111_rt_op",
+          "samples": 21,
+          "fraction": 0.031484257871064465
+        },
+        {
+          "name": "span_fade",
+          "samples": 20,
+          "fraction": 0.029985007496251874
+        },
+        {
+          "name": "p111_FID_$direct.p111v_name_chars",
+          "samples": 20,
+          "fraction": 0.029985007496251874
+        },
+        {
+          "name": "p114r_FID_$direct.p147v_insert",
+          "samples": 14,
+          "fraction": 0.020989505247376312
+        },
+        {
+          "name": "p125_rt_take2",
+          "samples": 14,
+          "fraction": 0.020989505247376312
+        },
+        {
+          "name": "p111_rt_return",
+          "samples": 11,
+          "fraction": 0.01649175412293853
+        },
+        {
+          "name": "p111_FID_$p111.k.151824",
+          "samples": 10,
+          "fraction": 0.014992503748125937
+        },
+        {
+          "name": "p114r_FID_$direct.p147n_put",
+          "samples": 10,
+          "fraction": 0.014992503748125937
+        },
+        {
+          "name": "p111_rt_keep",
+          "samples": 10,
+          "fraction": 0.014992503748125937
+        },
+        {
+          "name": "p113d_FID_$direct.Bool.and",
+          "samples": 9,
+          "fraction": 0.013493253373313344
+        },
+        {
+          "name": "p112w_FID_$direct.Bool.and",
+          "samples": 9,
+          "fraction": 0.013493253373313344
+        },
+        {
+          "name": "p111_FID_$direct.p131i_insert",
+          "samples": 8,
+          "fraction": 0.01199400299850075
+        },
+        {
+          "name": "p111_FID_$direct.Bool.and",
+          "samples": 7,
+          "fraction": 0.010494752623688156
+        },
+        {
+          "name": "p111_rt_special_ctor",
+          "samples": 7,
+          "fraction": 0.010494752623688156
+        },
+        {
+          "name": "p125_rt_ctor4",
+          "samples": 7,
+          "fraction": 0.010494752623688156
+        },
+        {
+          "name": "p111_rt_take",
+          "samples": 6,
+          "fraction": 0.008995502248875561
+        },
+        {
+          "name": "p125_rt_ctor2",
+          "samples": 6,
+          "fraction": 0.008995502248875561
+        },
+        {
+          "name": "rfc_wrap",
+          "samples": 5,
+          "fraction": 0.0074962518740629685
+        },
+        {
+          "name": "p111_FID_$direct.p111v_raw_name_chars",
+          "samples": 5,
+          "fraction": 0.0074962518740629685
+        },
+        {
+          "name": "p111_FID_$p111.k.151805",
+          "samples": 5,
+          "fraction": 0.0074962518740629685
+        },
+        {
+          "name": "p111_FID_$direct.Bool.not",
+          "samples": 5,
+          "fraction": 0.0074962518740629685
+        },
+        {
+          "name": "p111_FID_$direct.p147d_schema",
+          "samples": 4,
+          "fraction": 0.005997001499250375
+        },
+        {
+          "name": "p111_FID_$direct.p147v_step",
+          "samples": 4,
+          "fraction": 0.005997001499250375
+        },
+        {
+          "name": "p118_rt_extend1",
+          "samples": 4,
+          "fraction": 0.005997001499250375
+        },
+        {
+          "name": "p118_rt_borrow_scalar_safe",
+          "samples": 4,
+          "fraction": 0.005997001499250375
+        },
+        {
+          "name": "p111_FID_$p111.k.143150",
+          "samples": 3,
+          "fraction": 0.004497751124437781
+        },
+        {
+          "name": "p111_FID_$p111.k.143159",
+          "samples": 3,
+          "fraction": 0.004497751124437781
+        },
+        {
+          "name": "p111_FID_$p111.k.152963",
+          "samples": 3,
+          "fraction": 0.004497751124437781
+        },
+        {
+          "name": "p111_FID_$direct.p147v_assign_fact",
+          "samples": 3,
+          "fraction": 0.004497751124437781
+        },
+        {
+          "name": "heap_alloc",
+          "samples": 3,
+          "fraction": 0.004497751124437781
+        },
+        {
+          "name": "p113d_FID_$p118borrow.read.p88_string_eq_go",
+          "samples": 2,
+          "fraction": 0.0029985007496251873
+        },
+        {
+          "name": "p113d_FID_$p118.trmc.$direct.String.append",
+          "samples": 2,
+          "fraction": 0.0029985007496251873
+        },
+        {
+          "name": "p113d_FID_$direct.p147n_get",
+          "samples": 2,
+          "fraction": 0.0029985007496251873
+        },
+        {
+          "name": "p113d_FID_$direct.p111v_state_argument",
+          "samples": 2,
+          "fraction": 0.0029985007496251873
+        },
+        {
+          "name": "p113d_FID_$direct.p147v_bucket",
+          "samples": 2,
+          "fraction": 0.0029985007496251873
+        },
+        {
+          "name": "p112w_FID_$direct.p147v_present",
+          "samples": 2,
+          "fraction": 0.0029985007496251873
+        },
+        {
+          "name": "p112w_FID_$direct.p111v_type",
+          "samples": 2,
+          "fraction": 0.0029985007496251873
+        },
+        {
+          "name": "p112w_FID_$direct.Char.to_u32",
+          "samples": 2,
+          "fraction": 0.0029985007496251873
+        },
+        {
+          "name": "p111_FID_$direct.p147d_schema_stmt",
+          "samples": 2,
+          "fraction": 0.0029985007496251873
+        },
+        {
+          "name": "p111_FID_$direct.index_set",
+          "samples": 2,
+          "fraction": 0.0029985007496251873
+        },
+        {
+          "name": "p111_FID_$p111.k.151806",
+          "samples": 2,
+          "fraction": 0.0029985007496251873
+        },
+        {
+          "name": "p111_FID_$direct.p147v_schema_stmt",
+          "samples": 2,
+          "fraction": 0.0029985007496251873
+        },
+        {
+          "name": "p111_FID_$p111.k.228590",
+          "samples": 2,
+          "fraction": 0.0029985007496251873
+        },
+        {
+          "name": "p111_FID_$p111.k.230748",
+          "samples": 2,
+          "fraction": 0.0029985007496251873
+        },
+        {
+          "name": "p118_destination_fill",
+          "samples": 2,
+          "fraction": 0.0029985007496251873
+        },
+        {
+          "name": "p111_rt_reg_get",
+          "samples": 2,
+          "fraction": 0.0029985007496251873
+        },
+        {
+          "name": "p111_rt_special_take",
+          "samples": 2,
+          "fraction": 0.0029985007496251873
+        },
+        {
+          "name": "p125_rt_take1",
+          "samples": 2,
+          "fraction": 0.0029985007496251873
+        },
+        {
+          "name": "p125_rt_ctor3",
+          "samples": 2,
+          "fraction": 0.0029985007496251873
+        },
+        {
+          "name": "[executable_unresolved]",
+          "samples": 1,
+          "fraction": 0.0014992503748125937
+        },
+        {
+          "name": "p125_rt_take4.cold",
+          "samples": 1,
+          "fraction": 0.0014992503748125937
+        },
+        {
+          "name": "p113d_FID_$direct.index_hash",
+          "samples": 1,
+          "fraction": 0.0014992503748125937
+        },
+        {
+          "name": "p113d_FID_$p118borrow.read.p147v_width",
+          "samples": 1,
+          "fraction": 0.0014992503748125937
+        },
+        {
+          "name": "p113d_FID_$direct.dx",
+          "samples": 1,
+          "fraction": 0.0014992503748125937
+        },
+        {
+          "name": "p113d_FID_$direct.p111v_arg",
+          "samples": 1,
+          "fraction": 0.0014992503748125937
+        },
+        {
+          "name": "p113d_FID_$direct.dk",
+          "samples": 1,
+          "fraction": 0.0014992503748125937
+        },
+        {
+          "name": "p113d_FID_$p118borrow.read.String.eq",
+          "samples": 1,
+          "fraction": 0.0014992503748125937
+        },
+        {
+          "name": "p113d_FID_$direct.String.eq",
+          "samples": 1,
+          "fraction": 0.0014992503748125937
+        },
+        {
+          "name": "p113d_FID_$direct.p111v_comparison",
+          "samples": 1,
+          "fraction": 0.0014992503748125937
+        },
+        {
+          "name": "p113d_FID_$direct.p147v_capacity",
+          "samples": 1,
+          "fraction": 0.0014992503748125937
+        },
+        {
+          "name": "p113d_FID_$direct.p147v_buffer",
+          "samples": 1,
+          "fraction": 0.0014992503748125937
+        },
+        {
+          "name": "p113d_FID_$direct.p147v_value",
+          "samples": 1,
+          "fraction": 0.0014992503748125937
+        },
+        {
+          "name": "p112w_FID_$direct.p147v_width",
+          "samples": 1,
+          "fraction": 0.0014992503748125937
+        },
+        {
+          "name": "p114r_FID_$direct.p147d_values",
+          "samples": 1,
+          "fraction": 0.0014992503748125937
+        },
+        {
+          "name": "p111_FID_$direct.p113e_base_scalar_safe",
+          "samples": 1,
+          "fraction": 0.0014992503748125937
+        },
+        {
+          "name": "p111_FID_$p111.k.82236",
+          "samples": 1,
+          "fraction": 0.0014992503748125937
+        },
+        {
+          "name": "p111_FID_$direct.p113e_scalar_safe",
+          "samples": 1,
+          "fraction": 0.0014992503748125937
+        },
+        {
+          "name": "p111_FID_$p111.k.86828",
+          "samples": 1,
+          "fraction": 0.0014992503748125937
+        },
+        {
+          "name": "p111_FID_$direct.p147d_body",
+          "samples": 1,
+          "fraction": 0.0014992503748125937
+        },
+        {
+          "name": "p111_FID_$p111.k.110414",
+          "samples": 1,
+          "fraction": 0.0014992503748125937
+        },
+        {
+          "name": "p111_FID_$p111.k.131567",
+          "samples": 1,
+          "fraction": 0.0014992503748125937
+        },
+        {
+          "name": "p111_FID_$direct.index_remove",
+          "samples": 1,
+          "fraction": 0.0014992503748125937
+        },
+        {
+          "name": "p111_FID_$p111.k.139970",
+          "samples": 1,
+          "fraction": 0.0014992503748125937
+        },
+        {
+          "name": "p111_FID_$direct.p111v_raw_name",
+          "samples": 1,
+          "fraction": 0.0014992503748125937
+        },
+        {
+          "name": "p111_FID_$p111.k.145313",
+          "samples": 1,
+          "fraction": 0.0014992503748125937
+        },
+        {
+          "name": "p111_FID_$p111.k.152898",
+          "samples": 1,
+          "fraction": 0.0014992503748125937
+        },
+        {
+          "name": "p111_FID_$p111.k.153035",
+          "samples": 1,
+          "fraction": 0.0014992503748125937
+        },
+        {
+          "name": "p111_FID_$p111.k.153036",
+          "samples": 1,
+          "fraction": 0.0014992503748125937
+        },
+        {
+          "name": "p111_FID_$p111.k.153109",
+          "samples": 1,
+          "fraction": 0.0014992503748125937
+        },
+        {
+          "name": "p111_FID_$p111.k.153121",
+          "samples": 1,
+          "fraction": 0.0014992503748125937
+        },
+        {
+          "name": "p111_FID_$p111.k.153122",
+          "samples": 1,
+          "fraction": 0.0014992503748125937
+        },
+        {
+          "name": "p111_FID_$p111.k.153287",
+          "samples": 1,
+          "fraction": 0.0014992503748125937
+        },
+        {
+          "name": "p111_FID_$p111.k.155602",
+          "samples": 1,
+          "fraction": 0.0014992503748125937
+        },
+        {
+          "name": "p111_FID_$direct.p147n_intersection",
+          "samples": 1,
+          "fraction": 0.0014992503748125937
+        },
+        {
+          "name": "p111_FID_$p111.k.165419",
+          "samples": 1,
+          "fraction": 0.0014992503748125937
+        },
+        {
+          "name": "p111_FID_$direct.p111v_state_argument",
+          "samples": 1,
+          "fraction": 0.0014992503748125937
+        },
+        {
+          "name": "p111_FID_$p111.k.198623",
+          "samples": 1,
+          "fraction": 0.0014992503748125937
+        },
+        {
+          "name": "p111_FID_$direct.p111v_operator",
+          "samples": 1,
+          "fraction": 0.0014992503748125937
+        },
+        {
+          "name": "p111_FID_$direct.p147v_value",
+          "samples": 1,
+          "fraction": 0.0014992503748125937
+        },
+        {
+          "name": "p111_FID_$direct.p147v_get",
+          "samples": 1,
+          "fraction": 0.0014992503748125937
+        },
+        {
+          "name": "p111_FID_$direct.p147v_assign",
+          "samples": 1,
+          "fraction": 0.0014992503748125937
+        },
+        {
+          "name": "p111_FID_$direct.p147v_stmt",
+          "samples": 1,
+          "fraction": 0.0014992503748125937
+        },
+        {
+          "name": "p111_FID_$p111.k.232041",
+          "samples": 1,
+          "fraction": 0.0014992503748125937
+        }
+      ],
+      "limits": [
+        "Physical instruction leaves, not inclusive stacks, logical callers, or allocation counts.",
+        "Decoded generated names are symbol identities, not verified source-file/line mappings.",
+        "Zero-sized symbols infer extent only up to the next symbol in the same executable section; padding may be attributed. Last unsized symbols resolve only at entry.",
+        "Library symbols can be absent or hidden; unresolved samples remain in every denominator.",
+        "Mapped device/inode is checked and current files are hashed; in-place mutation since capture is not ruled out without runner identity pins.",
+        "Fixed-period sampling can alias; compare periods and repeats. Instrumented clocks are diagnostic, never clean performance.",
+        "Runtime groups classify physical helper names only and do not identify which source computation caused their work.",
+        "Raw sample order remains in the hashed capture file; pcs is a lossless address histogram, not a timeline."
+      ]
+    }
+  ],
+  "profileScope": "One fixed16ms observation per mode, descriptive physical leaves, not owner attribution/allocation counts or clean speed. No compiler-owner/unwind map reused.",
+  "successor04": {
+    "timings": [
+      {
+        "family": "lexer",
+        "timing": {
+          "file": "selfhost/build/phase147/verifier-time-lexer02/report.json",
+          "bytes": 22534,
+          "sha256": "cee8b019c02f502e2810fbe0ea8ff463bb6b1579c32f2d0eceb8cc13196970dd"
+        },
+        "nativeBuild": {
+          "file": "selfhost/build/phase147/verifier-native-lexer02/native/report.json",
+          "bytes": 15690,
+          "sha256": "2cf14a7702697416f426251b4d2b682c020ac27d9bfedd6f59ccb718ceb6e48e"
+        },
+        "nativeBuildSeconds": 15.177573412191123,
+        "complete": true,
+        "passed": true,
+        "performanceQualified": true,
+        "repeats": 16,
+        "medianSeconds": {
+          "old": 0.294424245133996,
+          "new": 0.22807958745397627
+        },
+        "ratio": 0.7746630626502057,
+        "pairRatios": [
+          0.7834667382714886,
+          0.777255012083349,
+          0.7705966648136634,
+          0.7709444286590925
+        ]
+      },
+      {
+        "family": "coverage-map-churn-128",
+        "timing": {
+          "file": "selfhost/build/phase147/verifier-time-map02/report.json",
+          "bytes": 19991,
+          "sha256": "b6802d3b08ab1c0e26ac24491747b786c759724d67d22625bc165380a5e585af"
+        },
+        "nativeBuild": {
+          "file": "selfhost/build/phase147/verifier-native-map02/native/report.json",
+          "bytes": 15671,
+          "sha256": "9c3a2f1db5b7f909a4ec56b89da6884af049594102e84058ba10a306ab5ef15e"
+        },
+        "nativeBuildSeconds": 22.34426529193297,
+        "complete": true,
+        "passed": true,
+        "performanceQualified": true,
+        "repeats": 4,
+        "medianSeconds": {
+          "old": 0.15504548442550004,
+          "new": 0.1365955346263945
+        },
+        "ratio": 0.8810029852370787,
+        "pairRatios": [
+          0.8858974227227762,
+          0.8761357961370249,
+          0.8698007434823014,
+          0.8903881508805566
+        ]
+      },
+      {
+        "family": "compiler-verifier-slice",
+        "timing": {
+          "file": "selfhost/build/phase147/verifier-time-compiler02/report.json",
+          "bytes": 22755,
+          "sha256": "6c1e58f9a79fa3becae694fe180d211432cb401574bc79c15163d47b0c35096e"
+        },
+        "nativeBuild": {
+          "file": "selfhost/build/phase147/verifier-native-compiler02/native/report.json",
+          "bytes": 15760,
+          "sha256": "cf3365fa360d2f8b5f576087e1166128835cc756281f8b5d89372251b87bd4bd"
+        },
+        "nativeBuildSeconds": 17.36526516219601,
+        "complete": true,
+        "passed": true,
+        "performanceQualified": true,
+        "repeats": 16,
+        "medianSeconds": {
+          "old": 0.43233486264944077,
+          "new": 0.35146766109392047
+        },
+        "ratio": 0.8129523928282149,
+        "pairRatios": [
+          0.8134486043516893,
+          0.8179770208349644,
+          0.8237602683963746,
+          0.8112328172705576
+        ]
+      }
+    ],
+    "controls": [
+      {
+        "file": "selfhost/build/phase147/verifier-controls02/report.json",
+        "bytes": 21535,
+        "sha256": "051cd09a0509cca0702ac59ed71418e0267dcffd3e11ea63027e62b19d45b1f4"
+      },
+      {
+        "file": "selfhost/build/phase147/verifier-extra02/report.json",
+        "bytes": 7853,
+        "sha256": "431e14eaf5c2adaf3b5f91ed2a619c5b3a44a650204175649d9b27076e376479"
+      },
+      {
+        "file": "selfhost/build/phase147/verifier-real03/report.json",
+        "bytes": 11297,
+        "sha256": "2970541a3573a96186923f96372957316c499e6ea9a2a74c6ee3ee8b7766dfa2"
+      }
+    ],
+    "scope": "Small normalized within-binary improvement across separate builds; not a precise causal estimate for the scalar-only delta."
+  },
+  "assemblyInspection": {
+    "inputs": [
+      {
+        "file": "selfhost/build/phase147/verifier-native-lexer01/native/program.s",
+        "bytes": 4908924,
+        "sha256": "47cc3a8b9aa76e1d2e7a9a59a46e90ae3c850c8dffd091f580ee40fe32cc080c"
+      },
+      {
+        "file": "selfhost/build/phase147/verifier-native-lexer02/native/program.s",
+        "bytes": 4937319,
+        "sha256": "5e8c51165cafeebd29b8c514bc7f65de9c238cba1d05a067442bd5bfd8ef48ae"
+      }
+    ],
+    "method": "Static assembly labels decoded from decimal FID bytes. Instruction count means tab-indented mnemonic with operand, not machine bytes or dynamic execution count.",
+    "observations": [
+      "p147n_get direct worker116 instructions, retains p125_rt_ctor2",
+      "p147n_has direct worker89 instructions, no p125_rt_ctor2",
+      "p147n_capacity_at direct worker110 instructions, no p125_rt_ctor2",
+      "p147v_local_fact77\u219258 instructions and get\u2192has call",
+      "p147v_memory calls one p147v_get plus p147v_memory_fact in04, replacing capacity and value queries; memory_fact directly calls p147n_memory_at"
+    ]
+  },
+  "numericHelperControls": {
+    "file": "selfhost/build/phase147/numeric-controls01/report.json",
+    "bytes": 26756,
+    "sha256": "2d7aa2ac05fff289a58c3296f0250a5fef398934fe2bf33e986263d0090fae10",
+    "flowCases": 19,
+    "countBoundaryCases": 2,
+    "scope": "Supplemental complete flow projections over coherent explicit-ID schemas. Numeric IDs are deliberately non-dense U32 helper inputs, including values beyond production local-count bounds. Count tests isolate the schema helper guard with a synthetic initial count; neither these nor projected host values establish complete-entry exhaustion or native ownership safety."
+  }
+}

@@ -1130,7 +1130,7 @@ def p134v_check(original: List<&2,P113DFunction>, candidate: List<&2,P113DFuncti
   match original candidate:
     case Nil{} Nil{}: ""
     case Con{old,olds} Con{+new,news}:
-      +error = nt_choose(String,p134v_function(old,new),u => "",u => p113e_function(new,ids,ready))
+      +error = nt_choose(String,p134v_function(old,new),u => "",u => p147d_function(new,ids,ready))
       nt_choose(String,String.is_empty(error),u => p134v_check(olds,news,ids,p113e_insert(ready,p113e_signature(new))),u => error)
     case _ _: "verification reuse: mismatched function count"
 

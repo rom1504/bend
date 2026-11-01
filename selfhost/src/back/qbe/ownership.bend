@@ -477,13 +477,51 @@ def p118z_transition(+symbol: String) -> Bool:
   String.eq(symbol,"p111_rt_jump") || String.eq(symbol,"p111_rt_return") || String.eq(symbol,"p111_rt_apply")
 
 
+# Exact closed runtime-name membership: the 18 nonempty p111v_signature
+# names plus seven extensions. Complete String patterns preserve suffix and
+# unknown-name rejection without allocating an unused signature list.
+# Persistent independent controls: tests/phase147/runtime-classifier-cases.json.
+# Exact closed-name Boolean recognizer. No prefix-only acceptance or hashing.
+
+def p147z_runtime_111(symbol: String) -> Bool:
+  match symbol:
+    case "keep": True{}
+    case "sink": True{}
+    case "ctor": True{}
+    case "take": True{}
+    case "closure": True{}
+    case "tag": True{}
+    case "frame": True{}
+    case "jump": True{}
+    case "return": True{}
+    case "apply": True{}
+    case "stack_pop": True{}
+    case "stack_get": True{}
+    case "reg_get": True{}
+    case "fail": True{}
+    case "op": True{}
+    case "special_ctor": True{}
+    case "special_test": True{}
+    case "special_take": True{}
+    case _: False{}
+def p147z_runtime_118(symbol: String) -> Bool:
+  match symbol:
+    case "extend": True{}
+    case "finish": True{}
+    case "borrow_fields": True{}
+    case "borrow_scalar_safe": True{}
+    case _: False{}
+
 @unsafe
 def p118z_runtime(+symbol: String) -> Bool:
-  Bool.not(List.is_empty(&2,U32,p111v_signature(symbol))) ||
-    String.eq(symbol,"p113_rt_array_pair") || String.eq(symbol,"p118_rt_extend") ||
-    String.eq(symbol,"p118_rt_finish") || String.eq(symbol,"p118_rt_borrow_fields") ||
-    String.eq(symbol,"p126_rt_nat_divmod") || String.eq(symbol,"p118_rt_borrow_scalar_safe") ||
-    String.eq(symbol,"p125_rt_concat_typed")
+  match symbol:
+    case SCon{Chr{112},SCon{Chr{49},SCon{Chr{49},SCon{Chr{49},SCon{Chr{95},SCon{Chr{114},SCon{Chr{116},SCon{Chr{95},rest}}}}}}}}: p147z_runtime_111(rest)
+    case SCon{Chr{112},SCon{Chr{49},SCon{Chr{49},SCon{Chr{56},SCon{Chr{95},SCon{Chr{114},SCon{Chr{116},SCon{Chr{95},rest}}}}}}}}: p147z_runtime_118(rest)
+    case "p113_rt_array_pair": True{}
+    case "p126_rt_nat_divmod": True{}
+    case "p125_rt_concat_typed": True{}
+    case _: False{}
+
 
 @unsafe
 def p118z_nonpointer(typ: N111Type) -> Bool:

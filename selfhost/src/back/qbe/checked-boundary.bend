@@ -16,7 +16,7 @@ def p114s_unchecked(program: P113DProgram) -> P114SBoundary:
 
 @unsafe
 def p114s_open_functions(original: P112StaticProgram, +functions: List<&2,P113DFunction>, +ids: N111Ids) -> P114SBoundary:
-  P114SBoundary{original,ids,functions,String.is_empty(p113e_functions(functions,ids,missing()))}
+  P114SBoundary{original,ids,functions,String.is_empty(p147d_functions(functions,ids,missing()))}
 
 
 @unsafe
@@ -45,7 +45,7 @@ def p114s_commit(boundary: P114SBoundary, +candidate: List<&2,P113DFunction>) ->
   match boundary:
     case P114SBoundary{+original,+ids,+functions,+valid}:
       nt_choose(P114SBoundary,valid,
-        u => nt_choose(P114SBoundary,String.is_empty(p113e_functions(candidate,ids,missing())),
+        u => nt_choose(P114SBoundary,String.is_empty(p147d_functions(candidate,ids,missing())),
           v => P114SBoundary{original,ids,candidate,True{}},
           v => P114SBoundary{original,ids,functions,True{}}),
         u => P114SBoundary{original,ids,functions,False{}})

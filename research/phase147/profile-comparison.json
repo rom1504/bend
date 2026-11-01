@@ -1,0 +1,1751 @@
+{
+  "kind": "phase147-native-profile-comparison",
+  "version": 1,
+  "complete": true,
+  "targetsRunByThisAnalysis": false,
+  "inputs": [
+    {
+      "file": "selfhost/build/phase147/profile-full02-analysis/summary.json",
+      "bytes": 74533,
+      "sha256": "58513ccf93891b30fa9b15f65bd36d7524c30c2e13953d003283971e2f7563c3"
+    },
+    {
+      "file": "selfhost/build/phase147/profile-candidate-analysis01/summary.json",
+      "bytes": 73483,
+      "sha256": "9e88d4d1e6621e719d6e949f7436c8bceae91987c4dfe03cdbeab9c64b5bddde"
+    },
+    {
+      "file": "selfhost/build/phase147/profile-full02/capture/report.json",
+      "bytes": 10317,
+      "sha256": "97f58c5f41625041f4466d6771788d195c6efdeab1b55685d590c3ab1a93b9ff"
+    },
+    {
+      "file": "selfhost/build/phase147/profile-candidate-full01/capture/report.json",
+      "bytes": 10532,
+      "sha256": "0d470d0a6d38aac8acbcbe39cdfb12be813e0ff8ae055094f277d0071b89bbe4"
+    },
+    {
+      "file": "selfhost/build/phase147/profile-prep02/ready.json",
+      "bytes": 3404,
+      "sha256": "611dbb29a5915acf45e1e7c5fc8925beab37392ad82aebd3651f572688430d77"
+    },
+    {
+      "file": "selfhost/build/phase147/profile-candidate-prep01/ready.json",
+      "bytes": 5470,
+      "sha256": "c1560168af096b289e2ef3204fe5652f2e943132d41ccb1e68f6b1c246c72949"
+    },
+    {
+      "file": "selfhost/build/phase147/cold-baseline01/report.json",
+      "bytes": 16899,
+      "sha256": "35bf49219fff66dcb829910fcd08cbbcfefdd1f4919f798b00891a75f9c6e1c8"
+    },
+    {
+      "file": "selfhost/build/phase147/integrated-plan04/cold/report.json",
+      "bytes": 18133,
+      "sha256": "75f7028da051ba033d512cba8785f293d59968e98742c06ebc199537d39ad17f"
+    }
+  ],
+  "requestSource": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase147/baseline-source/compiler.bend",
+    "bytes": 3010912,
+    "sha256": "00940ed508e7d1456dd19bee01b0d2e16ac227fdf13ac306e805a1e4c982fb5e"
+  },
+  "identicalQbeOutput": {
+    "bytes": 117232528,
+    "sha256": "dceae94a7659ad1ff58395ed34914971422ff9e5841668e910cd95e6b0914010"
+  },
+  "sampling": {
+    "periodUs": 32000,
+    "cpuAffinity": {
+      "baseline": [
+        3
+      ],
+      "candidate": [
+        3
+      ]
+    },
+    "baselineQuality": {
+      "scope": "main_thread",
+      "main_thread_cpu_fraction": 0.994595891015353,
+      "sampled_thread_cpu_fraction": 0.994595891015353,
+      "minimum_process_cpu_fraction": 0.95,
+      "minimum_samples": 500,
+      "enough_samples": true,
+      "thread_lifecycle_complete": true,
+      "near_complete_process_cpu_coverage": true,
+      "usable_for_process_cpu_attribution": true,
+      "limitations": [],
+      "zero_loss": true,
+      "handler_intact": true,
+      "main_thread_shutdown": true,
+      "expected_clock_periods": 7794.48808859375,
+      "delivered_per_expected_period": 0.9999373802887114,
+      "delivery_plausible": true
+    },
+    "candidateQuality": {
+      "scope": "main_thread",
+      "main_thread_cpu_fraction": 0.994336731207177,
+      "sampled_thread_cpu_fraction": 0.994336731207177,
+      "minimum_process_cpu_fraction": 0.95,
+      "minimum_samples": 500,
+      "enough_samples": true,
+      "thread_lifecycle_complete": true,
+      "near_complete_process_cpu_coverage": true,
+      "usable_for_process_cpu_attribution": true,
+      "limitations": [],
+      "zero_loss": true,
+      "handler_intact": true,
+      "main_thread_shutdown": true,
+      "expected_clock_periods": 7405.4663849375,
+      "delivered_per_expected_period": 0.9999370215306832,
+      "delivery_plausible": true
+    },
+    "totalSamples": {
+      "baseline": 7794,
+      "candidate": 7405,
+      "delta": -389,
+      "reductionFraction": 0.04991018732358221
+    },
+    "exclusiveSamples": {
+      "baseline": 7750,
+      "candidate": 7362,
+      "delta": -388,
+      "reductionFraction": 0.05006451612903229
+    },
+    "boundaryAndOutsideSamples": {
+      "baseline": 44,
+      "candidate": 43
+    },
+    "minimumSamplesForQuantitativeStageAttribution": 500
+  },
+  "diagnostic": {
+    "baselineVariant": "selected-n2-diagnostic",
+    "candidateVariant": "candidate-n1-diagnostic",
+    "wallSeconds": {
+      "baseline": 251.35777194565162,
+      "candidate": 238.69670041790232,
+      "delta": -12.6610715277493,
+      "reductionFraction": 0.05037071831813844
+    },
+    "processCpuSeconds": {
+      "baseline": 250.888685,
+      "candidate": 238.435878,
+      "delta": -12.452807000000007,
+      "reductionFraction": 0.04963478922933495
+    },
+    "stagedThreadCpuSeconds": {
+      "baseline": 249.36481555899996,
+      "candidate": 236.91457380900002,
+      "delta": -12.450241749999947,
+      "reductionFraction": 0.049927820499015896
+    },
+    "peakRssKiB": {
+      "baseline": 1036708,
+      "candidate": 1037020,
+      "delta": 312,
+      "reductionFraction": -0.00030095263082752233
+    }
+  },
+  "separateCleanFullBuild": {
+    "scope": "Whole emission/machine pipeline after preflight, under one outer disk/process guard.",
+    "baselineStage": "N2",
+    "candidateStage": "N1",
+    "baselineImage": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.assets/native/qbe-n2",
+      "bytes": 19100528,
+      "sha256": "367b639915c0bbc8906fc5827b002ca2c7fc07acc238034e54be994f8833d251"
+    },
+    "candidateImage": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase147/integrated-plan04/image/program",
+      "bytes": 19428912,
+      "sha256": "4a925b352c8d747600bd62aa5691e7b0b52dfd372b2a9f796dcc6344382c3042"
+    },
+    "wallSeconds": {
+      "baseline": 262.49557675793767,
+      "candidate": 246.74522102205083,
+      "delta": -15.750355735886842,
+      "reductionFraction": 0.06000236625096034
+    },
+    "overlappedEmissionAndQbeSeconds": {
+      "baseline": 256.0535484147258,
+      "candidate": 239.7019105963409,
+      "delta": -16.351637818384916,
+      "reductionFraction": 0.06386022736111596
+    },
+    "baselineRetainedIR": true,
+    "candidateRetainedIR": false,
+    "candidateComparedToReference": true,
+    "note": "One full build per compiler; emission and QBE run as a pipeline, not additive isolated timings. Baseline retained IR; candidate compared output without retention."
+  },
+  "exclusiveStages": [
+    {
+      "label": "render/output and teardown until milestone exit",
+      "begin": "p134w_drain",
+      "end": "@exit",
+      "threadCpuSeconds": {
+        "baseline": 47.468587395,
+        "candidate": 39.24377085,
+        "delta": -8.224816545000003,
+        "reductionFraction": 0.17326861818235495
+      },
+      "wallSeconds": {
+        "baseline": 49.168788658,
+        "candidate": 40.73414835,
+        "delta": -8.434640307999999,
+        "reductionFraction": 0.17154460254590065
+      },
+      "samples": {
+        "baseline": 1481,
+        "candidate": 1224
+      },
+      "quantitativeProfileAdmitted": {
+        "baseline": true,
+        "candidate": true
+      },
+      "candidateStagedCpuShare": 0.16564523751771487
+    },
+    {
+      "label": "raw generic/private lowering",
+      "begin": "p144o_prepared",
+      "end": "p128raw_plan_finish",
+      "threadCpuSeconds": {
+        "baseline": 36.936568039,
+        "candidate": 36.395284928,
+        "delta": -0.5412831109999985,
+        "reductionFraction": 0.014654396435220485
+      },
+      "wallSeconds": {
+        "baseline": 36.958513432,
+        "candidate": 36.415133937,
+        "delta": -0.5433794949999964,
+        "reductionFraction": 0.0147024175092908
+      },
+      "samples": {
+        "baseline": 1152,
+        "candidate": 1135
+      },
+      "quantitativeProfileAdmitted": {
+        "baseline": true,
+        "candidate": true
+      },
+      "candidateStagedCpuShare": 0.15362197581539158
+    },
+    {
+      "label": "parse/load",
+      "begin": "p86_plan",
+      "end": "p86_plan_loaded",
+      "threadCpuSeconds": {
+        "baseline": 32.292135227,
+        "candidate": 33.06174226,
+        "delta": 0.7696070329999998,
+        "reductionFraction": -0.023832646171892513
+      },
+      "wallSeconds": {
+        "baseline": 32.309210423,
+        "candidate": 33.080314693,
+        "delta": 0.771104269999995,
+        "reductionFraction": -0.02386639165440796
+      },
+      "samples": {
+        "baseline": 1007,
+        "candidate": 1031
+      },
+      "quantitativeProfileAdmitted": {
+        "baseline": true,
+        "candidate": true
+      },
+      "candidateStagedCpuShare": 0.13955132319826935
+    },
+    {
+      "label": "checking/publication",
+      "begin": "p86_plan_loaded",
+      "end": "p86_plan_checked",
+      "threadCpuSeconds": {
+        "baseline": 31.546136148,
+        "candidate": 31.561159465,
+        "delta": 0.015023317000000702,
+        "reductionFraction": -0.00047623318841716333
+      },
+      "wallSeconds": {
+        "baseline": 31.567169479,
+        "candidate": 31.582008318,
+        "delta": 0.014838838999999382,
+        "reductionFraction": -0.0004700718893999589
+      },
+      "samples": {
+        "baseline": 984,
+        "candidate": 984
+      },
+      "quantitativeProfileAdmitted": {
+        "baseline": true,
+        "candidate": true
+      },
+      "candidateStagedCpuShare": 0.13321746719745714
+    },
+    {
+      "label": "initial optimizer",
+      "begin": "p128raw_session_finish",
+      "end": "p146c_closed",
+      "threadCpuSeconds": {
+        "baseline": 28.860882896,
+        "candidate": 25.326902438,
+        "delta": -3.5339804579999985,
+        "reductionFraction": 0.12244879932241415
+      },
+      "wallSeconds": {
+        "baseline": 28.876821964,
+        "candidate": 25.340832539,
+        "delta": -3.5359894250000004,
+        "reductionFraction": 0.12245078178645241
+      },
+      "samples": {
+        "baseline": 900,
+        "candidate": 789
+      },
+      "quantitativeProfileAdmitted": {
+        "baseline": true,
+        "candidate": true
+      },
+      "candidateStagedCpuShare": 0.10690310026439527
+    },
+    {
+      "label": "observer composition and selected final admission",
+      "begin": "p128raw_br_scanned",
+      "end": "p134w_plan",
+      "threadCpuSeconds": {
+        "baseline": 20.063510999,
+        "candidate": 19.840794456,
+        "delta": -0.2227165429999971,
+        "reductionFraction": 0.011100576714170196
+      },
+      "wallSeconds": {
+        "baseline": 20.076261598,
+        "candidate": 19.853326287,
+        "delta": -0.22293531099999697,
+        "reductionFraction": 0.011104423495966298
+      },
+      "samples": {
+        "baseline": 625,
+        "candidate": 618
+      },
+      "quantitativeProfileAdmitted": {
+        "baseline": true,
+        "candidate": true
+      },
+      "candidateStagedCpuShare": 0.08374661861028272
+    },
+    {
+      "label": "registry preparation",
+      "begin": "p134e_begin",
+      "end": "p134e_registered",
+      "threadCpuSeconds": {
+        "baseline": 16.878699926,
+        "candidate": 16.833768613,
+        "delta": -0.04493131299999931,
+        "reductionFraction": 0.002662012666673874
+      },
+      "wallSeconds": {
+        "baseline": 16.889019169,
+        "candidate": 16.843449951,
+        "delta": -0.04556921800000069,
+        "reductionFraction": 0.0026981565681234443
+      },
+      "samples": {
+        "baseline": 525,
+        "candidate": 524
+      },
+      "quantitativeProfileAdmitted": {
+        "baseline": true,
+        "candidate": true
+      },
+      "candidateStagedCpuShare": 0.07105417088680811
+    },
+    {
+      "label": "first independent verifier",
+      "begin": "p146c_closed",
+      "end": "p128raw_verified",
+      "threadCpuSeconds": {
+        "baseline": 8.323368031,
+        "candidate": 8.234184254,
+        "delta": -0.0891837769999988,
+        "reductionFraction": 0.01071486646605535
+      },
+      "wallSeconds": {
+        "baseline": 8.328392268,
+        "candidate": 8.239219824,
+        "delta": -0.0891724440000008,
+        "reductionFraction": 0.0107070417831574
+      },
+      "samples": {
+        "baseline": 258,
+        "candidate": 256
+      },
+      "quantitativeProfileAdmitted": {
+        "baseline": false,
+        "candidate": false
+      },
+      "candidateStagedCpuShare": 0.03475592118127094
+    },
+    {
+      "label": "annotation/reach",
+      "begin": "p86_plan_context",
+      "end": "p86_plan_annotated",
+      "threadCpuSeconds": {
+        "baseline": 6.199728727,
+        "candidate": 5.955555777,
+        "delta": -0.24417295000000028,
+        "reductionFraction": 0.03938445708706895
+      },
+      "wallSeconds": {
+        "baseline": 6.203238099,
+        "candidate": 5.958946978,
+        "delta": -0.24429112099999983,
+        "reductionFraction": 0.039381225918021956
+      },
+      "samples": {
+        "baseline": 191,
+        "candidate": 185
+      },
+      "quantitativeProfileAdmitted": {
+        "baseline": false,
+        "candidate": false
+      },
+      "candidateStagedCpuShare": 0.025137988268300264
+    },
+    {
+      "label": "erasure/finalization",
+      "begin": "p144o_prepare_annotated",
+      "end": "p134e_plan",
+      "threadCpuSeconds": {
+        "baseline": 5.430389647,
+        "candidate": 5.42925138,
+        "delta": -0.0011382669999999706,
+        "reductionFraction": 0.0002096105572514384
+      },
+      "wallSeconds": {
+        "baseline": 5.433347911,
+        "candidate": 5.432363319,
+        "delta": -0.0009845920000000064,
+        "reductionFraction": 0.0001812127653387785
+      },
+      "samples": {
+        "baseline": 168,
+        "candidate": 168
+      },
+      "quantitativeProfileAdmitted": {
+        "baseline": false,
+        "candidate": false
+      },
+      "candidateStagedCpuShare": 0.022916493876721362
+    },
+    {
+      "label": "static preparation",
+      "begin": "p144o_lower_request",
+      "end": "p144o_prepared",
+      "threadCpuSeconds": {
+        "baseline": 4.614598168,
+        "candidate": 4.487099584,
+        "delta": -0.12749858399999958,
+        "reductionFraction": 0.027629401165228273
+      },
+      "wallSeconds": {
+        "baseline": 4.617510074,
+        "candidate": 4.48961933,
+        "delta": -0.1278907440000001,
+        "reductionFraction": 0.0276969063305611
+      },
+      "samples": {
+        "baseline": 142,
+        "candidate": 139
+      },
+      "quantitativeProfileAdmitted": {
+        "baseline": false,
+        "candidate": false
+      },
+      "candidateStagedCpuShare": 0.018939736428445677
+    },
+    {
+      "label": "layout check",
+      "begin": "p86_plan_annotated",
+      "end": "p144o_prepare_annotated",
+      "threadCpuSeconds": {
+        "baseline": 2.516386587,
+        "candidate": 2.38058532,
+        "delta": -0.13580126700000017,
+        "reductionFraction": 0.053966774303109144
+      },
+      "wallSeconds": {
+        "baseline": 2.517935733,
+        "candidate": 2.381872625,
+        "delta": -0.13606310799999966,
+        "reductionFraction": 0.054037561887207874
+      },
+      "samples": {
+        "baseline": 77,
+        "candidate": 72
+      },
+      "quantitativeProfileAdmitted": {
+        "baseline": false,
+        "candidate": false
+      },
+      "candidateStagedCpuShare": 0.010048285682582035
+    },
+    {
+      "label": "proof report",
+      "begin": "p86_plan_checked",
+      "end": "p86_plan_reported",
+      "threadCpuSeconds": {
+        "baseline": 2.30661006,
+        "candidate": 2.311522805,
+        "delta": 0.004912744999999941,
+        "reductionFraction": -0.0021298550132915484
+      },
+      "wallSeconds": {
+        "baseline": 2.30754764,
+        "candidate": 2.312522764,
+        "delta": 0.0049751239999999974,
+        "reductionFraction": -0.002156022226262655
+      },
+      "samples": {
+        "baseline": 70,
+        "candidate": 70
+      },
+      "quantitativeProfileAdmitted": {
+        "baseline": false,
+        "candidate": false
+      },
+      "candidateStagedCpuShare": 0.00975677759217778
+    },
+    {
+      "label": "observer discovery",
+      "begin": "p128raw_br_prepare",
+      "end": "p128raw_br_scanned",
+      "threadCpuSeconds": {
+        "baseline": 2.297937589,
+        "candidate": 2.253225366,
+        "delta": -0.044712222999999884,
+        "reductionFraction": 0.01945754454517512
+      },
+      "wallSeconds": {
+        "baseline": 2.299526978,
+        "candidate": 2.254843852,
+        "delta": -0.044683125999999795,
+        "reductionFraction": 0.019431442391192433
+      },
+      "samples": {
+        "baseline": 70,
+        "candidate": 68
+      },
+      "quantitativeProfileAdmitted": {
+        "baseline": false,
+        "candidate": false
+      },
+      "candidateStagedCpuShare": 0.009510708141646639
+    },
+    {
+      "label": "observer permission",
+      "begin": "p128raw_verified",
+      "end": "p128raw_br_prepare",
+      "threadCpuSeconds": {
+        "baseline": 1.370377192,
+        "candidate": 1.35251115,
+        "delta": -0.017866042000000082,
+        "reductionFraction": 0.013037317100940249
+      },
+      "wallSeconds": {
+        "baseline": 1.371302404,
+        "candidate": 1.353410024,
+        "delta": -0.01789237999999993,
+        "reductionFraction": 0.013047727436201528
+      },
+      "samples": {
+        "baseline": 41,
+        "candidate": 40
+      },
+      "quantitativeProfileAdmitted": {
+        "baseline": false,
+        "candidate": false
+      },
+      "candidateStagedCpuShare": 0.0057088558472995895
+    },
+    {
+      "label": "initial private admission",
+      "begin": "p128raw_plan_finish",
+      "end": "p128raw_session_finish",
+      "threadCpuSeconds": {
+        "baseline": 0.966498122,
+        "candidate": 0.959451963,
+        "delta": -0.007046158999999941,
+        "reductionFraction": 0.00729040112920154
+      },
+      "wallSeconds": {
+        "baseline": 0.967155902,
+        "candidate": 0.960159738,
+        "delta": -0.006996164000000027,
+        "reductionFraction": 0.007233749993700633
+      },
+      "samples": {
+        "baseline": 28,
+        "candidate": 28
+      },
+      "quantitativeProfileAdmitted": {
+        "baseline": false,
+        "candidate": false
+      },
+      "candidateStagedCpuShare": 0.004049780254436808
+    },
+    {
+      "label": "checked context",
+      "begin": "p86_plan_entry",
+      "end": "p86_plan_context",
+      "threadCpuSeconds": {
+        "baseline": 0.674791598,
+        "candidate": 0.680802197,
+        "delta": 0.006010599000000005,
+        "reductionFraction": -0.008907341196622287
+      },
+      "wallSeconds": {
+        "baseline": 0.675220455,
+        "candidate": 0.681312733,
+        "delta": 0.0060922779999998955,
+        "reductionFraction": -0.009022650239468577
+      },
+      "samples": {
+        "baseline": 19,
+        "candidate": 19
+      },
+      "quantitativeProfileAdmitted": {
+        "baseline": false,
+        "candidate": false
+      },
+      "candidateStagedCpuShare": 0.002873618900071809
+    },
+    {
+      "label": "Base preparation",
+      "begin": "p88_cache_prepare",
+      "end": "p86_plan",
+      "threadCpuSeconds": {
+        "baseline": 0.23812329,
+        "candidate": 0.234309786,
+        "delta": -0.0038135039999999953,
+        "reductionFraction": 0.016014829964763222
+      },
+      "wallSeconds": {
+        "baseline": 0.238264689,
+        "candidate": 0.234412443,
+        "delta": -0.0038522460000000036,
+        "reductionFraction": 0.01616792658688926
+      },
+      "samples": {
+        "baseline": 6,
+        "candidate": 6
+      },
+      "quantitativeProfileAdmitted": {
+        "baseline": false,
+        "candidate": false
+      },
+      "candidateStagedCpuShare": 0.0009890053711465636
+    },
+    {
+      "label": "owned/foreign eligibility",
+      "begin": "p86_plan_reported",
+      "end": "p86_plan_owned",
+      "threadCpuSeconds": {
+        "baseline": 0.18171959,
+        "candidate": 0.179110654,
+        "delta": -0.0026089359999999784,
+        "reductionFraction": 0.014356933118768178
+      },
+      "wallSeconds": {
+        "baseline": 0.181840854,
+        "candidate": 0.179217607,
+        "delta": -0.0026232469999999952,
+        "reductionFraction": 0.014426059613644293
+      },
+      "samples": {
+        "baseline": 3,
+        "candidate": 4
+      },
+      "quantitativeProfileAdmitted": {
+        "baseline": false,
+        "candidate": false
+      },
+      "candidateStagedCpuShare": 0.000756013659777632
+    },
+    {
+      "label": "registry finalization",
+      "begin": "p134e_registered",
+      "end": "p134w_drain",
+      "threadCpuSeconds": {
+        "baseline": 0.10206928,
+        "candidate": 0.098638753,
+        "delta": -0.0034305270000000027,
+        "reductionFraction": 0.033609789350919295
+      },
+      "wallSeconds": {
+        "baseline": 0.102170219,
+        "candidate": 0.098742302,
+        "delta": -0.0034279170000000025,
+        "reductionFraction": 0.03355103897741474
+      },
+      "samples": {
+        "baseline": 2,
+        "candidate": 2
+      },
+      "quantitativeProfileAdmitted": {
+        "baseline": false,
+        "candidate": false
+      },
+      "candidateStagedCpuShare": 0.0004163473416351428
+    },
+    {
+      "label": "runtime admission/certificate",
+      "begin": "p134e_plan",
+      "end": "p144o_lower_request",
+      "threadCpuSeconds": {
+        "baseline": 0.08905955,
+        "candidate": 0.088574649,
+        "delta": -0.0004849009999999959,
+        "reductionFraction": 0.005444682799317979
+      },
+      "wallSeconds": {
+        "baseline": 0.089121491,
+        "candidate": 0.088633145,
+        "delta": -0.0004883460000000006,
+        "reductionFraction": 0.00547955374759157
+      },
+      "samples": {
+        "baseline": 1,
+        "candidate": 0
+      },
+      "quantitativeProfileAdmitted": {
+        "baseline": false,
+        "candidate": false
+      },
+      "candidateStagedCpuShare": 0.0003738674560029755
+    },
+    {
+      "label": "main eligibility",
+      "begin": "p86_plan_owned",
+      "end": "p86_plan_entry",
+      "threadCpuSeconds": {
+        "baseline": 0.006612862,
+        "candidate": 0.006303259,
+        "delta": -0.00030960299999999944,
+        "reductionFraction": 0.04681830650632046
+      },
+      "wallSeconds": {
+        "baseline": 0.006613118,
+        "candidate": 0.006303627,
+        "delta": -0.0003094910000000003,
+        "reductionFraction": 0.04679955809045
+      },
+      "samples": {
+        "baseline": 0,
+        "candidate": 0
+      },
+      "quantitativeProfileAdmitted": {
+        "baseline": false,
+        "candidate": false
+      },
+      "candidateStagedCpuShare": 2.660561947987916e-05
+    },
+    {
+      "label": "output opening",
+      "begin": "p134w_plan",
+      "end": "p134e_begin",
+      "threadCpuSeconds": {
+        "baseline": 2.4636e-05,
+        "candidate": 2.3902e-05,
+        "delta": -7.340000000000001e-07,
+        "reductionFraction": 0.029793797694430912
+      },
+      "wallSeconds": {
+        "baseline": 5.452e-05,
+        "candidate": 5.391e-05,
+        "delta": -6.100000000000026e-07,
+        "reductionFraction": 0.011188554658840832
+      },
+      "samples": {
+        "baseline": 0,
+        "candidate": 0
+      },
+      "quantitativeProfileAdmitted": {
+        "baseline": false,
+        "candidate": false
+      },
+      "candidateStagedCpuShare": 1.0088868580651242e-07
+    }
+  ],
+  "optionalNestedIntervals": [
+    {
+      "label": "conditional final verification (nested)",
+      "includedInExclusiveSum": false,
+      "threadCpuSeconds": {
+        "baseline": 9.323859633,
+        "candidate": 9.219705946,
+        "delta": -0.10415368700000016,
+        "reductionFraction": 0.011170662268591869
+      },
+      "samples": {
+        "baseline": 289,
+        "candidate": 286
+      },
+      "quantitativeProfileAdmitted": {
+        "baseline": false,
+        "candidate": false
+      }
+    }
+  ],
+  "topRemainingStageSamples": [
+    {
+      "label": "render/output and teardown until milestone exit",
+      "threadCpuSeconds": 39.24377085,
+      "samples": 1224,
+      "quantitativeProfileAdmitted": true,
+      "topActiveOwners": [
+        {
+          "name": null,
+          "samples": 193,
+          "fractionOfAllSamples": 0.1576797385620915
+        },
+        {
+          "name": "p144e_body_tail",
+          "samples": 149,
+          "fractionOfAllSamples": 0.12173202614379085
+        },
+        {
+          "name": "String.append",
+          "samples": 95,
+          "fractionOfAllSamples": 0.07761437908496732
+        },
+        {
+          "name": "p111v_get",
+          "samples": 43,
+          "fractionOfAllSamples": 0.035130718954248366
+        },
+        {
+          "name": "String.eq",
+          "samples": 42,
+          "fractionOfAllSamples": 0.03431372549019608
+        },
+        {
+          "name": "p111q_memory",
+          "samples": 40,
+          "fractionOfAllSamples": 0.032679738562091505
+        },
+        {
+          "name": "p112w_ready",
+          "samples": 40,
+          "fractionOfAllSamples": 0.032679738562091505
+        },
+        {
+          "name": "p112a_original_stmt",
+          "samples": 20,
+          "fractionOfAllSamples": 0.016339869281045753
+        },
+        {
+          "name": "p112t_runtime_call",
+          "samples": 20,
+          "fractionOfAllSamples": 0.016339869281045753
+        },
+        {
+          "name": "p114t_fusion_buffer",
+          "samples": 19,
+          "fractionOfAllSamples": 0.015522875816993464
+        },
+        {
+          "name": "p134e_next",
+          "samples": 19,
+          "fractionOfAllSamples": 0.015522875816993464
+        },
+        {
+          "name": "p111q_args",
+          "samples": 17,
+          "fractionOfAllSamples": 0.013888888888888888
+        }
+      ],
+      "topPhysicalLeaves": [
+        {
+          "name": "p125_rt_take2",
+          "samples": 128,
+          "fractionOfAllSamples": 0.10457516339869281
+        },
+        {
+          "name": "ctr_take",
+          "samples": 96,
+          "fractionOfAllSamples": 0.0784313725490196
+        },
+        {
+          "name": "term_drop",
+          "samples": 85,
+          "fractionOfAllSamples": 0.06944444444444445
+        },
+        {
+          "name": "p118_rt_extend1",
+          "samples": 65,
+          "fractionOfAllSamples": 0.05310457516339869
+        },
+        {
+          "name": null,
+          "samples": 57,
+          "fractionOfAllSamples": 0.04656862745098039
+        },
+        {
+          "name": "heap_alloc",
+          "samples": 50,
+          "fractionOfAllSamples": 0.04084967320261438
+        },
+        {
+          "name": "work_loop.constprop.0",
+          "samples": 47,
+          "fractionOfAllSamples": 0.03839869281045752
+        },
+        {
+          "name": "span_fade",
+          "samples": 41,
+          "fractionOfAllSamples": 0.03349673202614379
+        },
+        {
+          "name": "p118_destination_fill",
+          "samples": 41,
+          "fractionOfAllSamples": 0.03349673202614379
+        },
+        {
+          "name": "p111_set_regs",
+          "samples": 36,
+          "fractionOfAllSamples": 0.029411764705882353
+        },
+        {
+          "name": "p113d_FID_$p118borrow.read.String.cmp",
+          "samples": 34,
+          "fractionOfAllSamples": 0.027777777777777776
+        },
+        {
+          "name": "p125_rt_take4",
+          "samples": 30,
+          "fractionOfAllSamples": 0.024509803921568627
+        }
+      ]
+    },
+    {
+      "label": "raw generic/private lowering",
+      "threadCpuSeconds": 36.395284928,
+      "samples": 1135,
+      "quantitativeProfileAdmitted": true,
+      "topActiveOwners": [
+        {
+          "name": "nc_uses_term",
+          "samples": 80,
+          "fractionOfAllSamples": 0.07048458149779736
+        },
+        {
+          "name": "lookup",
+          "samples": 69,
+          "fractionOfAllSamples": 0.06079295154185022
+        },
+        {
+          "name": "nc_uses_list",
+          "samples": 62,
+          "fractionOfAllSamples": 0.05462555066079295
+        },
+        {
+          "name": null,
+          "samples": 49,
+          "fractionOfAllSamples": 0.04317180616740088
+        },
+        {
+          "name": "nq_layout_subst",
+          "samples": 38,
+          "fractionOfAllSamples": 0.033480176211453744
+        },
+        {
+          "name": "String.eq",
+          "samples": 33,
+          "fractionOfAllSamples": 0.02907488986784141
+        },
+        {
+          "name": "ns_body",
+          "samples": 28,
+          "fractionOfAllSamples": 0.024669603524229075
+        },
+        {
+          "name": "nu_add",
+          "samples": 28,
+          "fractionOfAllSamples": 0.024669603524229075
+        },
+        {
+          "name": "p111_op_id",
+          "samples": 26,
+          "fractionOfAllSamples": 0.02290748898678414
+        },
+        {
+          "name": "k_rebuild",
+          "samples": 23,
+          "fractionOfAllSamples": 0.02026431718061674
+        },
+        {
+          "name": "nc_native_primitive",
+          "samples": 23,
+          "fractionOfAllSamples": 0.02026431718061674
+        },
+        {
+          "name": "String.append",
+          "samples": 21,
+          "fractionOfAllSamples": 0.018502202643171806
+        }
+      ],
+      "topPhysicalLeaves": [
+        {
+          "name": "term_drop",
+          "samples": 112,
+          "fractionOfAllSamples": 0.0986784140969163
+        },
+        {
+          "name": "p113d_FID_$p118borrow.read.p88_string_eq_go",
+          "samples": 84,
+          "fractionOfAllSamples": 0.07400881057268723
+        },
+        {
+          "name": "span_fade",
+          "samples": 78,
+          "fractionOfAllSamples": 0.06872246696035242
+        },
+        {
+          "name": "work_loop.constprop.0",
+          "samples": 62,
+          "fractionOfAllSamples": 0.05462555066079295
+        },
+        {
+          "name": "p111_rt_sink",
+          "samples": 56,
+          "fractionOfAllSamples": 0.04933920704845815
+        },
+        {
+          "name": null,
+          "samples": 55,
+          "fractionOfAllSamples": 0.048458149779735685
+        },
+        {
+          "name": "p111_rt_ctor",
+          "samples": 38,
+          "fractionOfAllSamples": 0.033480176211453744
+        },
+        {
+          "name": "p125_rt_take2",
+          "samples": 32,
+          "fractionOfAllSamples": 0.028193832599118944
+        },
+        {
+          "name": "p111_rt_special_ctor",
+          "samples": 30,
+          "fractionOfAllSamples": 0.02643171806167401
+        },
+        {
+          "name": "p111_rt_jump",
+          "samples": 28,
+          "fractionOfAllSamples": 0.024669603524229075
+        },
+        {
+          "name": "p111_rt_keep",
+          "samples": 28,
+          "fractionOfAllSamples": 0.024669603524229075
+        },
+        {
+          "name": "p111_set_regs",
+          "samples": 24,
+          "fractionOfAllSamples": 0.021145374449339206
+        }
+      ]
+    },
+    {
+      "label": "parse/load",
+      "threadCpuSeconds": 33.06174226,
+      "samples": 1031,
+      "quantitativeProfileAdmitted": true,
+      "topActiveOwners": [
+        {
+          "name": "f_eq",
+          "samples": 84,
+          "fractionOfAllSamples": 0.08147429679922405
+        },
+        {
+          "name": "f_grow_base",
+          "samples": 49,
+          "fractionOfAllSamples": 0.0475266731328807
+        },
+        {
+          "name": "f_pattern_sub",
+          "samples": 44,
+          "fractionOfAllSamples": 0.04267701260911736
+        },
+        {
+          "name": null,
+          "samples": 43,
+          "fractionOfAllSamples": 0.041707080504364696
+        },
+        {
+          "name": "f_prec",
+          "samples": 38,
+          "fractionOfAllSamples": 0.03685741998060136
+        },
+        {
+          "name": "f_context_material_deferred",
+          "samples": 37,
+          "fractionOfAllSamples": 0.03588748787584869
+        },
+        {
+          "name": "f_atom_base",
+          "samples": 34,
+          "fractionOfAllSamples": 0.03297769156159069
+        },
+        {
+          "name": "f_lex_symbol",
+          "samples": 28,
+          "fractionOfAllSamples": 0.027158098933074686
+        },
+        {
+          "name": "f_triple_op",
+          "samples": 25,
+          "fractionOfAllSamples": 0.02424830261881668
+        },
+        {
+          "name": "f_name_chars",
+          "samples": 25,
+          "fractionOfAllSamples": 0.02424830261881668
+        },
+        {
+          "name": "f_skip",
+          "samples": 25,
+          "fractionOfAllSamples": 0.02424830261881668
+        },
+        {
+          "name": "f_ctor_lookup",
+          "samples": 25,
+          "fractionOfAllSamples": 0.02424830261881668
+        }
+      ],
+      "topPhysicalLeaves": [
+        {
+          "name": "term_drop",
+          "samples": 114,
+          "fractionOfAllSamples": 0.11057225994180407
+        },
+        {
+          "name": "span_fade",
+          "samples": 93,
+          "fractionOfAllSamples": 0.09020368574199807
+        },
+        {
+          "name": "p113d_FID_$p118borrow.read.p88_string_eq_go",
+          "samples": 64,
+          "fractionOfAllSamples": 0.06207565470417071
+        },
+        {
+          "name": "p111_rt_sink",
+          "samples": 56,
+          "fractionOfAllSamples": 0.05431619786614937
+        },
+        {
+          "name": "work_loop.constprop.0",
+          "samples": 48,
+          "fractionOfAllSamples": 0.04655674102812803
+        },
+        {
+          "name": null,
+          "samples": 46,
+          "fractionOfAllSamples": 0.0446168768186227
+        },
+        {
+          "name": "p125_rt_take2",
+          "samples": 43,
+          "fractionOfAllSamples": 0.041707080504364696
+        },
+        {
+          "name": "p111_rt_keep",
+          "samples": 32,
+          "fractionOfAllSamples": 0.031037827352085354
+        },
+        {
+          "name": "p111_rt_jump",
+          "samples": 28,
+          "fractionOfAllSamples": 0.027158098933074686
+        },
+        {
+          "name": "term_triv",
+          "samples": 28,
+          "fractionOfAllSamples": 0.027158098933074686
+        },
+        {
+          "name": "p111_set_regs",
+          "samples": 27,
+          "fractionOfAllSamples": 0.026188166828322017
+        },
+        {
+          "name": "p111_rt_special_ctor",
+          "samples": 26,
+          "fractionOfAllSamples": 0.02521823472356935
+        }
+      ]
+    },
+    {
+      "label": "checking/publication",
+      "threadCpuSeconds": 31.561159465,
+      "samples": 984,
+      "quantitativeProfileAdmitted": true,
+      "topActiveOwners": [
+        {
+          "name": "p131i_insert",
+          "samples": 109,
+          "fractionOfAllSamples": 0.11077235772357724
+        },
+        {
+          "name": "book_final_seen",
+          "samples": 57,
+          "fractionOfAllSamples": 0.057926829268292686
+        },
+        {
+          "name": "lookup",
+          "samples": 55,
+          "fractionOfAllSamples": 0.05589430894308943
+        },
+        {
+          "name": "index_remove",
+          "samples": 49,
+          "fractionOfAllSamples": 0.049796747967479675
+        },
+        {
+          "name": "book_final_names_valid",
+          "samples": 47,
+          "fractionOfAllSamples": 0.047764227642276426
+        },
+        {
+          "name": "book_final_filter",
+          "samples": 46,
+          "fractionOfAllSamples": 0.046747967479674794
+        },
+        {
+          "name": "p88_string_eq",
+          "samples": 41,
+          "fractionOfAllSamples": 0.041666666666666664
+        },
+        {
+          "name": "book_final_step",
+          "samples": 39,
+          "fractionOfAllSamples": 0.039634146341463415
+        },
+        {
+          "name": "book_final_scan",
+          "samples": 37,
+          "fractionOfAllSamples": 0.037601626016260166
+        },
+        {
+          "name": "index_hash",
+          "samples": 36,
+          "fractionOfAllSamples": 0.036585365853658534
+        },
+        {
+          "name": "constructor_exists",
+          "samples": 36,
+          "fractionOfAllSamples": 0.036585365853658534
+        },
+        {
+          "name": null,
+          "samples": 29,
+          "fractionOfAllSamples": 0.029471544715447155
+        }
+      ],
+      "topPhysicalLeaves": [
+        {
+          "name": "term_drop",
+          "samples": 119,
+          "fractionOfAllSamples": 0.1209349593495935
+        },
+        {
+          "name": "span_fade",
+          "samples": 83,
+          "fractionOfAllSamples": 0.08434959349593496
+        },
+        {
+          "name": null,
+          "samples": 50,
+          "fractionOfAllSamples": 0.0508130081300813
+        },
+        {
+          "name": "p113d_FID_$p118borrow.read.p88_string_eq_go",
+          "samples": 46,
+          "fractionOfAllSamples": 0.046747967479674794
+        },
+        {
+          "name": "p111_rt_sink",
+          "samples": 45,
+          "fractionOfAllSamples": 0.04573170731707317
+        },
+        {
+          "name": "work_loop.constprop.0",
+          "samples": 40,
+          "fractionOfAllSamples": 0.04065040650406504
+        },
+        {
+          "name": "p113d_FID_$p118borrow.read.index_hash",
+          "samples": 37,
+          "fractionOfAllSamples": 0.037601626016260166
+        },
+        {
+          "name": "p113d_FID_$p118borrow.read.book_final_name_valid",
+          "samples": 36,
+          "fractionOfAllSamples": 0.036585365853658534
+        },
+        {
+          "name": "ctr_take",
+          "samples": 30,
+          "fractionOfAllSamples": 0.03048780487804878
+        },
+        {
+          "name": "heap_alloc",
+          "samples": 29,
+          "fractionOfAllSamples": 0.029471544715447155
+        },
+        {
+          "name": "p111_set_regs",
+          "samples": 27,
+          "fractionOfAllSamples": 0.027439024390243903
+        },
+        {
+          "name": "p111_FID_$direct.p131i_insert",
+          "samples": 24,
+          "fractionOfAllSamples": 0.024390243902439025
+        }
+      ]
+    },
+    {
+      "label": "initial optimizer",
+      "threadCpuSeconds": 25.326902438,
+      "samples": 789,
+      "quantitativeProfileAdmitted": true,
+      "topActiveOwners": [
+        {
+          "name": "p111v_get",
+          "samples": 81,
+          "fractionOfAllSamples": 0.10266159695817491
+        },
+        {
+          "name": "p111v_name_chars",
+          "samples": 56,
+          "fractionOfAllSamples": 0.07097591888466413
+        },
+        {
+          "name": "p113k_get",
+          "samples": 43,
+          "fractionOfAllSamples": 0.05449936628643853
+        },
+        {
+          "name": "p131i_insert",
+          "samples": 41,
+          "fractionOfAllSamples": 0.051964512040557666
+        },
+        {
+          "name": null,
+          "samples": 36,
+          "fractionOfAllSamples": 0.045627376425855515
+        },
+        {
+          "name": "p111v_contract",
+          "samples": 34,
+          "fractionOfAllSamples": 0.043092522179974654
+        },
+        {
+          "name": "p111v_value",
+          "samples": 31,
+          "fractionOfAllSamples": 0.03929024081115336
+        },
+        {
+          "name": "String.eq",
+          "samples": 24,
+          "fractionOfAllSamples": 0.030418250950570342
+        },
+        {
+          "name": "p147v_value",
+          "samples": 23,
+          "fractionOfAllSamples": 0.029150823827629912
+        },
+        {
+          "name": "p111v_signature",
+          "samples": 21,
+          "fractionOfAllSamples": 0.026615969581749048
+        },
+        {
+          "name": "p111v_decl",
+          "samples": 17,
+          "fractionOfAllSamples": 0.021546261089987327
+        },
+        {
+          "name": "Bool.and",
+          "samples": 16,
+          "fractionOfAllSamples": 0.020278833967046894
+        }
+      ],
+      "topPhysicalLeaves": [
+        {
+          "name": "term_drop",
+          "samples": 95,
+          "fractionOfAllSamples": 0.12040557667934093
+        },
+        {
+          "name": "span_fade",
+          "samples": 56,
+          "fractionOfAllSamples": 0.07097591888466413
+        },
+        {
+          "name": "p113d_FID_$p118borrow.read.index_hash",
+          "samples": 44,
+          "fractionOfAllSamples": 0.05576679340937896
+        },
+        {
+          "name": "work_loop.constprop.0",
+          "samples": 42,
+          "fractionOfAllSamples": 0.053231939163498096
+        },
+        {
+          "name": "p113d_FID_$p118borrow.read.String.cmp",
+          "samples": 40,
+          "fractionOfAllSamples": 0.050697084917617236
+        },
+        {
+          "name": "p125_rt_take2",
+          "samples": 32,
+          "fractionOfAllSamples": 0.04055766793409379
+        },
+        {
+          "name": "p111_rt_sink",
+          "samples": 30,
+          "fractionOfAllSamples": 0.03802281368821293
+        },
+        {
+          "name": null,
+          "samples": 24,
+          "fractionOfAllSamples": 0.030418250950570342
+        },
+        {
+          "name": "p111_rt_ctor",
+          "samples": 21,
+          "fractionOfAllSamples": 0.026615969581749048
+        },
+        {
+          "name": "p111_rt_op",
+          "samples": 21,
+          "fractionOfAllSamples": 0.026615969581749048
+        },
+        {
+          "name": "p125_rt_take4",
+          "samples": 18,
+          "fractionOfAllSamples": 0.022813688212927757
+        },
+        {
+          "name": "p113d_FID_$p118borrow.read.p88_string_eq_go",
+          "samples": 16,
+          "fractionOfAllSamples": 0.020278833967046894
+        }
+      ]
+    },
+    {
+      "label": "observer composition and selected final admission",
+      "threadCpuSeconds": 19.840794456,
+      "samples": 618,
+      "quantitativeProfileAdmitted": true,
+      "topActiveOwners": [
+        {
+          "name": "nol_scalar_specs",
+          "samples": 73,
+          "fractionOfAllSamples": 0.11812297734627832
+        },
+        {
+          "name": "p111v_get",
+          "samples": 64,
+          "fractionOfAllSamples": 0.10355987055016182
+        },
+        {
+          "name": "lookup",
+          "samples": 45,
+          "fractionOfAllSamples": 0.07281553398058252
+        },
+        {
+          "name": "p131i_insert",
+          "samples": 32,
+          "fractionOfAllSamples": 0.05177993527508091
+        },
+        {
+          "name": "p111v_name_chars",
+          "samples": 27,
+          "fractionOfAllSamples": 0.043689320388349516
+        },
+        {
+          "name": "p111v_intersection_bucket",
+          "samples": 22,
+          "fractionOfAllSamples": 0.03559870550161812
+        },
+        {
+          "name": "p88_string_eq",
+          "samples": 20,
+          "fractionOfAllSamples": 0.032362459546925564
+        },
+        {
+          "name": null,
+          "samples": 19,
+          "fractionOfAllSamples": 0.030744336569579287
+        },
+        {
+          "name": "p111v_put",
+          "samples": 19,
+          "fractionOfAllSamples": 0.030744336569579287
+        },
+        {
+          "name": "Bool.and",
+          "samples": 15,
+          "fractionOfAllSamples": 0.024271844660194174
+        },
+        {
+          "name": "ns_body",
+          "samples": 14,
+          "fractionOfAllSamples": 0.022653721682847898
+        },
+        {
+          "name": "p128br_retry_plans",
+          "samples": 14,
+          "fractionOfAllSamples": 0.022653721682847898
+        }
+      ],
+      "topPhysicalLeaves": [
+        {
+          "name": "term_drop",
+          "samples": 95,
+          "fractionOfAllSamples": 0.15372168284789645
+        },
+        {
+          "name": "span_fade",
+          "samples": 55,
+          "fractionOfAllSamples": 0.0889967637540453
+        },
+        {
+          "name": "p113d_FID_$p118borrow.read.index_hash",
+          "samples": 40,
+          "fractionOfAllSamples": 0.06472491909385113
+        },
+        {
+          "name": "work_loop.constprop.0",
+          "samples": 29,
+          "fractionOfAllSamples": 0.04692556634304207
+        },
+        {
+          "name": "p125_rt_take2",
+          "samples": 25,
+          "fractionOfAllSamples": 0.040453074433656956
+        },
+        {
+          "name": null,
+          "samples": 24,
+          "fractionOfAllSamples": 0.038834951456310676
+        },
+        {
+          "name": "p111_rt_sink",
+          "samples": 24,
+          "fractionOfAllSamples": 0.038834951456310676
+        },
+        {
+          "name": "p113d_FID_$p118borrow.read.p88_string_eq_go",
+          "samples": 19,
+          "fractionOfAllSamples": 0.030744336569579287
+        },
+        {
+          "name": "p111_set_regs",
+          "samples": 18,
+          "fractionOfAllSamples": 0.02912621359223301
+        },
+        {
+          "name": "p111_rt_ctor",
+          "samples": 15,
+          "fractionOfAllSamples": 0.024271844660194174
+        },
+        {
+          "name": "p125_rt_take4",
+          "samples": 14,
+          "fractionOfAllSamples": 0.022653721682847898
+        },
+        {
+          "name": "p125_rt_take2.cold",
+          "samples": 14,
+          "fractionOfAllSamples": 0.022653721682847898
+        }
+      ]
+    },
+    {
+      "label": "registry preparation",
+      "threadCpuSeconds": 16.833768613,
+      "samples": 524,
+      "quantitativeProfileAdmitted": true,
+      "topActiveOwners": [
+        {
+          "name": "String.eq",
+          "samples": 71,
+          "fractionOfAllSamples": 0.13549618320610687
+        },
+        {
+          "name": "String.append",
+          "samples": 66,
+          "fractionOfAllSamples": 0.12595419847328243
+        },
+        {
+          "name": "p118z_runtime",
+          "samples": 32,
+          "fractionOfAllSamples": 0.061068702290076333
+        },
+        {
+          "name": "p112w_ready",
+          "samples": 27,
+          "fractionOfAllSamples": 0.05152671755725191
+        },
+        {
+          "name": "p112r_buffer_sites",
+          "samples": 25,
+          "fractionOfAllSamples": 0.04770992366412214
+        },
+        {
+          "name": null,
+          "samples": 23,
+          "fractionOfAllSamples": 0.04389312977099236
+        },
+        {
+          "name": "p112t_runtime_call",
+          "samples": 21,
+          "fractionOfAllSamples": 0.04007633587786259
+        },
+        {
+          "name": "p111v_get",
+          "samples": 20,
+          "fractionOfAllSamples": 0.03816793893129771
+        },
+        {
+          "name": "p112r_buffer",
+          "samples": 16,
+          "fractionOfAllSamples": 0.030534351145038167
+        },
+        {
+          "name": "p112c_frame",
+          "samples": 15,
+          "fractionOfAllSamples": 0.02862595419847328
+        },
+        {
+          "name": "p112c_try",
+          "samples": 13,
+          "fractionOfAllSamples": 0.02480916030534351
+        },
+        {
+          "name": "p112r_scan_target",
+          "samples": 11,
+          "fractionOfAllSamples": 0.02099236641221374
+        }
+      ],
+      "topPhysicalLeaves": [
+        {
+          "name": "term_drop",
+          "samples": 52,
+          "fractionOfAllSamples": 0.09923664122137404
+        },
+        {
+          "name": "p113d_FID_$p118borrow.read.String.cmp",
+          "samples": 49,
+          "fractionOfAllSamples": 0.09351145038167939
+        },
+        {
+          "name": "work_loop.constprop.0",
+          "samples": 32,
+          "fractionOfAllSamples": 0.061068702290076333
+        },
+        {
+          "name": "p125_rt_take2",
+          "samples": 32,
+          "fractionOfAllSamples": 0.061068702290076333
+        },
+        {
+          "name": "p111_rt_op",
+          "samples": 29,
+          "fractionOfAllSamples": 0.05534351145038168
+        },
+        {
+          "name": null,
+          "samples": 22,
+          "fractionOfAllSamples": 0.04198473282442748
+        },
+        {
+          "name": "span_fade",
+          "samples": 21,
+          "fractionOfAllSamples": 0.04007633587786259
+        },
+        {
+          "name": "p111_set_regs",
+          "samples": 18,
+          "fractionOfAllSamples": 0.03435114503816794
+        },
+        {
+          "name": "p118_rt_extend1",
+          "samples": 17,
+          "fractionOfAllSamples": 0.03244274809160305
+        },
+        {
+          "name": "p118_destination_fill",
+          "samples": 14,
+          "fractionOfAllSamples": 0.026717557251908396
+        },
+        {
+          "name": "p111_rt_jump",
+          "samples": 12,
+          "fractionOfAllSamples": 0.022900763358778626
+        },
+        {
+          "name": "p111_rt_ctor",
+          "samples": 11,
+          "fractionOfAllSamples": 0.02099236641221374
+        }
+      ]
+    }
+  ],
+  "summaryMethod": {
+    "baselinePreserved": {
+      "file": "selfhost/build/phase147/method-history/809e78ff4a47755597558c4c879b93e41c897a5885a97ae2fa619faab24ddc5f/profile-summary.py",
+      "bytes": 4500,
+      "sha256": "809e78ff4a47755597558c4c879b93e41c897a5885a97ae2fa619faab24ddc5f"
+    },
+    "generationNeutral": {
+      "file": "experiments/phase147/tools/profile-summary.py",
+      "bytes": 4505,
+      "sha256": "1e7df7727bd6d68167d313788198b7ba380d36c62c99fc9eac92b305afd31a6f"
+    },
+    "onlyChange": "Markdown title changed from Current N2 to Native compiler; analysis code is byte-identical otherwise."
+  },
+  "mechanism": {
+    "optimizedDirectAdmissionEntries": [
+      "p114s_open_functions",
+      "p114s_commit",
+      "p134v_check"
+    ],
+    "newVerifierEntry": "p147d_functions / p147d_function",
+    "originalRawVerificationPreserved": true,
+    "originalFinalVerificationPreserved": true,
+    "sessionVerificationPreserved": true,
+    "rendererReplacements": [
+      "p111q_args",
+      "p111q_memory",
+      "p112a_original_stmt"
+    ],
+    "attribution": "Joint integration. Stage localization plus regional controls supports the mechanism; this full comparison does not isolate each edited declaration."
+  },
+  "limitations": [
+    "One diagnostic capture per version; no confidence intervals or repeatability claim.",
+    "Diagnostic runtime is instrumented; its wall time is not the clean source-to-executable clock.",
+    "Stage CPU comes from milestone clocks; leaf/owner attribution comes from sampling. Stages below 500 samples have descriptive sample distributions only.",
+    "Active-owner and physical-leaf views describe the same samples; do not add them or infer dynamic event counts. Unmapped samples remain in denominators.",
+    "Conditional final verification is nested inside observer composition and is excluded from exclusive totals.",
+    "Source/checking/book preparation, compiler execution, generated user-program speed and machine-build cost are separate metrics.",
+    "The retained complete-output oracle covers this request, not all-language correctness or full native self-host qualification."
+  ]
+}

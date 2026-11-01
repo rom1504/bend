@@ -49,8 +49,9 @@ The guard checks free disk, bounds process-tree memory/time and preserves logs.
 Build the reusable sampler once:
 
 ```sh
-python3 -B selfhost/tools/performance/phase111/guard.py \
-  --out selfhost/build/profile-sampler-guard --seconds 30 \
+python3 -B selfhost/tools/build-retention/guard.py \
+  --out selfhost/build/profile-sampler-guard \
+  --run-root selfhost/build/profile-sampler --seconds 30 --disk-mib 64 \
   --rss-mib 2048 --available-mib 16384 --file-mib 64 --cpu 3 -- \
   python3 -B selfhost/tools/profiler/build-sampler.py \
   --out selfhost/build/profile-sampler
@@ -85,8 +86,9 @@ Freeze the recipe, then run alternating clean and sampled captures:
 ```sh
 python3 -B selfhost/tools/profiler/freeze.py \
   --recipe profile-recipe.json --out profile-manifest.json
-python3 -B selfhost/tools/performance/phase111/guard.py \
-  --out selfhost/build/profile-run-guard --seconds 300 \
+python3 -B selfhost/tools/build-retention/guard.py \
+  --out selfhost/build/profile-run-guard \
+  --run-root selfhost/build/profile-run --seconds 300 --disk-mib 512 \
   --rss-mib 2048 --available-mib 16384 --file-mib 64 --cpu 3 -- \
   python3 -B selfhost/tools/profiler/run.py \
   --manifest profile-manifest.json --out selfhost/build/profile-run \

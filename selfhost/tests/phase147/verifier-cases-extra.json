@@ -1,0 +1,3077 @@
+{
+  "kind": "phase147-verifier-cases",
+  "version": 1,
+  "complete": true,
+  "targetsRun": false,
+  "originalValidated": false,
+  "scope": "Independent supplemental source-reviewed diagnostic/state cases; no targets executed during preparation; original60 inputs unchanged.",
+  "originalEntries": {
+    "raw": "p111v_segment",
+    "direct": "p113e_function"
+  },
+  "candidateEntries": {
+    "raw": "p147v_segment",
+    "direct": "p147v_function"
+  },
+  "contextConstruction": {
+    "raw": "N111Ids from successful p111v_functions and p111v_constructors scans",
+    "direct": "N111Ids{p113e_originals(segments,missing()),ns_ctor_index(constructors,missing())}",
+    "ready": "p113e_signatures(ready,missing()); fixture preceding functions have valid signatures"
+  },
+  "sourceReview": [
+    {
+      "file": "selfhost/src/back/qbe/model.bend",
+      "bytes": 27564,
+      "sha256": "ad91dc9862aca6c2132ddce4e0147a097aef09869aedf58f14bf7564bd54d509"
+    },
+    {
+      "file": "selfhost/src/back/qbe/verify-segments.bend",
+      "bytes": 20674,
+      "sha256": "1f23d3fcd7376395d26f228b3a1a813b6ee5ea21ce7e004e4ebdea5bdebdf690"
+    },
+    {
+      "file": "selfhost/src/back/qbe/verify-direct.bend",
+      "bytes": 22284,
+      "sha256": "a8a7e350cda88aaa3785183d02ac60dda0a0815a54b2efb09a9154cc1a2a027c"
+    },
+    {
+      "file": "selfhost/src/back/qbe/product-composition.bend",
+      "bytes": 44914,
+      "sha256": "0c603f302006b11686ebdbc320333eebf7c44dc9501da1bd99726b466834f271"
+    },
+    {
+      "file": "selfhost/src/back/qbe/owned-composition.bend",
+      "bytes": 8382,
+      "sha256": "ebd56e36a7eb3bbd71b2f9e7d95bbdc0459373638f38fdc6a3a58c23bee7c0c8"
+    },
+    {
+      "file": "selfhost/src/back/native/bridge.bend",
+      "bytes": 34938,
+      "sha256": "a9dd5e8aa84d816d23094316f61a7c4cd336bc11e1f63e7b9ad98971d58b9230"
+    },
+    {
+      "file": "selfhost/src/back/native/ir.bend",
+      "bytes": 1013,
+      "sha256": "8aba852696a529e1a1b1481adf717dce4c8d80aec75977db9be1d81742396284"
+    },
+    {
+      "file": "selfhost/src/back/qbe/native-transport.bend",
+      "bytes": 21970,
+      "sha256": "136df8b4efbc76ad681e7633c2c1f1db00d65f242d6e0e1b5f215ccbe3acf7c7"
+    },
+    {
+      "file": "selfhost/src/back/qbe/inline.bend",
+      "bytes": 27550,
+      "sha256": "3095d1f2f37560a0d87bbf78223832f97b5c0aeafb347401f558a80d434f979a"
+    },
+    {
+      "file": "selfhost/src/back/qbe/flat-products.bend",
+      "bytes": 32013,
+      "sha256": "89988c5ae679698385503704da9923f008b010df4ae81253914a266c0ce6cdfe"
+    }
+  ],
+  "baseFixture": {
+    "file": "selfhost/tests/phase147/verifier-cases.json",
+    "sha256": "a9fc8631366704978ebee79b9f772d868b790c3f46e9de4d2f19807a653bd2e4"
+  },
+  "counts": {
+    "cases": 16,
+    "raw": 7,
+    "direct": 9,
+    "accept": 10
+  },
+  "cases": [
+    {
+      "name": "raw-collision-overwrite-retains-other-width",
+      "kind": "raw",
+      "segments": {
+        "$": "Con",
+        "head": {
+          "$": "N111Segment",
+          "name": "main",
+          "arity": 0,
+          "result": 1,
+          "incoming": 0,
+          "flags": 0,
+          "body": {
+            "$": "Con",
+            "head": {
+              "$": "N111Set",
+              "name": "Unit",
+              "typ": {
+                "$": "N111U64"
+              },
+              "value": {
+                "$": "N111Const",
+                "lo": 7,
+                "hi": 0
+              }
+            },
+            "tail": {
+              "$": "Con",
+              "head": {
+                "$": "N111Set",
+                "name": "p143CollisionlrXlHP",
+                "typ": {
+                  "$": "N111U32"
+                },
+                "value": {
+                  "$": "N111Const",
+                  "lo": 1,
+                  "hi": 0
+                }
+              },
+              "tail": {
+                "$": "Con",
+                "head": {
+                  "$": "N111Set",
+                  "name": "Unit",
+                  "typ": {
+                    "$": "N111U64"
+                  },
+                  "value": {
+                    "$": "N111Const",
+                    "lo": 9,
+                    "hi": 0
+                  }
+                },
+                "tail": {
+                  "$": "Con",
+                  "head": {
+                    "$": "N111If",
+                    "condition": {
+                      "$": "N111Const",
+                      "lo": 1,
+                      "hi": 0
+                    },
+                    "yes": {
+                      "$": "Con",
+                      "head": {
+                        "$": "N111Set",
+                        "name": "x",
+                        "typ": {
+                          "$": "N111U64"
+                        },
+                        "value": {
+                          "$": "N111Const",
+                          "lo": 7,
+                          "hi": 0
+                        }
+                      },
+                      "tail": {
+                        "$": "Nil"
+                      }
+                    },
+                    "no": {
+                      "$": "Con",
+                      "head": {
+                        "$": "N111Set",
+                        "name": "x",
+                        "typ": {
+                          "$": "N111U64"
+                        },
+                        "value": {
+                          "$": "N111Const",
+                          "lo": 7,
+                          "hi": 0
+                        }
+                      },
+                      "tail": {
+                        "$": "Nil"
+                      }
+                    }
+                  },
+                  "tail": {
+                    "$": "Con",
+                    "head": {
+                      "$": "N111Return",
+                      "value": {
+                        "$": "N111Local",
+                        "name": "Unit"
+                      }
+                    },
+                    "tail": {
+                      "$": "Nil"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tail": {
+          "$": "Nil"
+        }
+      },
+      "constructors": {
+        "$": "Nil"
+      },
+      "function": {
+        "$": "N111Segment",
+        "name": "main",
+        "arity": 0,
+        "result": 1,
+        "incoming": 0,
+        "flags": 0,
+        "body": {
+          "$": "Con",
+          "head": {
+            "$": "N111Set",
+            "name": "Unit",
+            "typ": {
+              "$": "N111U64"
+            },
+            "value": {
+              "$": "N111Const",
+              "lo": 7,
+              "hi": 0
+            }
+          },
+          "tail": {
+            "$": "Con",
+            "head": {
+              "$": "N111Set",
+              "name": "p143CollisionlrXlHP",
+              "typ": {
+                "$": "N111U32"
+              },
+              "value": {
+                "$": "N111Const",
+                "lo": 1,
+                "hi": 0
+              }
+            },
+            "tail": {
+              "$": "Con",
+              "head": {
+                "$": "N111Set",
+                "name": "Unit",
+                "typ": {
+                  "$": "N111U64"
+                },
+                "value": {
+                  "$": "N111Const",
+                  "lo": 9,
+                  "hi": 0
+                }
+              },
+              "tail": {
+                "$": "Con",
+                "head": {
+                  "$": "N111If",
+                  "condition": {
+                    "$": "N111Const",
+                    "lo": 1,
+                    "hi": 0
+                  },
+                  "yes": {
+                    "$": "Con",
+                    "head": {
+                      "$": "N111Set",
+                      "name": "x",
+                      "typ": {
+                        "$": "N111U64"
+                      },
+                      "value": {
+                        "$": "N111Const",
+                        "lo": 7,
+                        "hi": 0
+                      }
+                    },
+                    "tail": {
+                      "$": "Nil"
+                    }
+                  },
+                  "no": {
+                    "$": "Con",
+                    "head": {
+                      "$": "N111Set",
+                      "name": "x",
+                      "typ": {
+                        "$": "N111U64"
+                      },
+                      "value": {
+                        "$": "N111Const",
+                        "lo": 7,
+                        "hi": 0
+                      }
+                    },
+                    "tail": {
+                      "$": "Nil"
+                    }
+                  }
+                },
+                "tail": {
+                  "$": "Con",
+                  "head": {
+                    "$": "N111Return",
+                    "value": {
+                      "$": "N111Local",
+                      "name": "Unit"
+                    }
+                  },
+                  "tail": {
+                    "$": "Nil"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "ready": {
+        "$": "Nil"
+      },
+      "expectedError": ""
+    },
+    {
+      "name": "raw-collision-opposite-branches-remain-distinct",
+      "kind": "raw",
+      "segments": {
+        "$": "Con",
+        "head": {
+          "$": "N111Segment",
+          "name": "main",
+          "arity": 0,
+          "result": 1,
+          "incoming": 0,
+          "flags": 0,
+          "body": {
+            "$": "Con",
+            "head": {
+              "$": "N111If",
+              "condition": {
+                "$": "N111Const",
+                "lo": 1,
+                "hi": 0
+              },
+              "yes": {
+                "$": "Con",
+                "head": {
+                  "$": "N111Set",
+                  "name": "Unit",
+                  "typ": {
+                    "$": "N111U64"
+                  },
+                  "value": {
+                    "$": "N111Const",
+                    "lo": 7,
+                    "hi": 0
+                  }
+                },
+                "tail": {
+                  "$": "Nil"
+                }
+              },
+              "no": {
+                "$": "Con",
+                "head": {
+                  "$": "N111Set",
+                  "name": "p143CollisionlrXlHP",
+                  "typ": {
+                    "$": "N111U64"
+                  },
+                  "value": {
+                    "$": "N111Const",
+                    "lo": 7,
+                    "hi": 0
+                  }
+                },
+                "tail": {
+                  "$": "Nil"
+                }
+              }
+            },
+            "tail": {
+              "$": "Con",
+              "head": {
+                "$": "N111Return",
+                "value": {
+                  "$": "N111Local",
+                  "name": "Unit"
+                }
+              },
+              "tail": {
+                "$": "Nil"
+              }
+            }
+          }
+        },
+        "tail": {
+          "$": "Nil"
+        }
+      },
+      "constructors": {
+        "$": "Nil"
+      },
+      "function": {
+        "$": "N111Segment",
+        "name": "main",
+        "arity": 0,
+        "result": 1,
+        "incoming": 0,
+        "flags": 0,
+        "body": {
+          "$": "Con",
+          "head": {
+            "$": "N111If",
+            "condition": {
+              "$": "N111Const",
+              "lo": 1,
+              "hi": 0
+            },
+            "yes": {
+              "$": "Con",
+              "head": {
+                "$": "N111Set",
+                "name": "Unit",
+                "typ": {
+                  "$": "N111U64"
+                },
+                "value": {
+                  "$": "N111Const",
+                  "lo": 7,
+                  "hi": 0
+                }
+              },
+              "tail": {
+                "$": "Nil"
+              }
+            },
+            "no": {
+              "$": "Con",
+              "head": {
+                "$": "N111Set",
+                "name": "p143CollisionlrXlHP",
+                "typ": {
+                  "$": "N111U64"
+                },
+                "value": {
+                  "$": "N111Const",
+                  "lo": 7,
+                  "hi": 0
+                }
+              },
+              "tail": {
+                "$": "Nil"
+              }
+            }
+          },
+          "tail": {
+            "$": "Con",
+            "head": {
+              "$": "N111Return",
+              "value": {
+                "$": "N111Local",
+                "name": "Unit"
+              }
+            },
+            "tail": {
+              "$": "Nil"
+            }
+          }
+        }
+      },
+      "ready": {
+        "$": "Nil"
+      },
+      "expectedError": "segment return must be U64"
+    },
+    {
+      "name": "raw-nested-terminal-preserves-other-live",
+      "kind": "raw",
+      "segments": {
+        "$": "Con",
+        "head": {
+          "$": "N111Segment",
+          "name": "main",
+          "arity": 0,
+          "result": 1,
+          "incoming": 0,
+          "flags": 0,
+          "body": {
+            "$": "Con",
+            "head": {
+              "$": "N111If",
+              "condition": {
+                "$": "N111Const",
+                "lo": 1,
+                "hi": 0
+              },
+              "yes": {
+                "$": "Con",
+                "head": {
+                  "$": "N111If",
+                  "condition": {
+                    "$": "N111Const",
+                    "lo": 1,
+                    "hi": 0
+                  },
+                  "yes": {
+                    "$": "Con",
+                    "head": {
+                      "$": "N111Set",
+                      "name": "y",
+                      "typ": {
+                        "$": "N111U64"
+                      },
+                      "value": {
+                        "$": "N111Const",
+                        "lo": 7,
+                        "hi": 0
+                      }
+                    },
+                    "tail": {
+                      "$": "Con",
+                      "head": {
+                        "$": "N111Return",
+                        "value": {
+                          "$": "N111Local",
+                          "name": "y"
+                        }
+                      },
+                      "tail": {
+                        "$": "Nil"
+                      }
+                    }
+                  },
+                  "no": {
+                    "$": "Con",
+                    "head": {
+                      "$": "N111Set",
+                      "name": "z",
+                      "typ": {
+                        "$": "N111U64"
+                      },
+                      "value": {
+                        "$": "N111Const",
+                        "lo": 7,
+                        "hi": 0
+                      }
+                    },
+                    "tail": {
+                      "$": "Con",
+                      "head": {
+                        "$": "N111Return",
+                        "value": {
+                          "$": "N111Local",
+                          "name": "z"
+                        }
+                      },
+                      "tail": {
+                        "$": "Nil"
+                      }
+                    }
+                  }
+                },
+                "tail": {
+                  "$": "Nil"
+                }
+              },
+              "no": {
+                "$": "Con",
+                "head": {
+                  "$": "N111Set",
+                  "name": "x",
+                  "typ": {
+                    "$": "N111U64"
+                  },
+                  "value": {
+                    "$": "N111Const",
+                    "lo": 7,
+                    "hi": 0
+                  }
+                },
+                "tail": {
+                  "$": "Nil"
+                }
+              }
+            },
+            "tail": {
+              "$": "Con",
+              "head": {
+                "$": "N111Return",
+                "value": {
+                  "$": "N111Local",
+                  "name": "x"
+                }
+              },
+              "tail": {
+                "$": "Nil"
+              }
+            }
+          }
+        },
+        "tail": {
+          "$": "Nil"
+        }
+      },
+      "constructors": {
+        "$": "Nil"
+      },
+      "function": {
+        "$": "N111Segment",
+        "name": "main",
+        "arity": 0,
+        "result": 1,
+        "incoming": 0,
+        "flags": 0,
+        "body": {
+          "$": "Con",
+          "head": {
+            "$": "N111If",
+            "condition": {
+              "$": "N111Const",
+              "lo": 1,
+              "hi": 0
+            },
+            "yes": {
+              "$": "Con",
+              "head": {
+                "$": "N111If",
+                "condition": {
+                  "$": "N111Const",
+                  "lo": 1,
+                  "hi": 0
+                },
+                "yes": {
+                  "$": "Con",
+                  "head": {
+                    "$": "N111Set",
+                    "name": "y",
+                    "typ": {
+                      "$": "N111U64"
+                    },
+                    "value": {
+                      "$": "N111Const",
+                      "lo": 7,
+                      "hi": 0
+                    }
+                  },
+                  "tail": {
+                    "$": "Con",
+                    "head": {
+                      "$": "N111Return",
+                      "value": {
+                        "$": "N111Local",
+                        "name": "y"
+                      }
+                    },
+                    "tail": {
+                      "$": "Nil"
+                    }
+                  }
+                },
+                "no": {
+                  "$": "Con",
+                  "head": {
+                    "$": "N111Set",
+                    "name": "z",
+                    "typ": {
+                      "$": "N111U64"
+                    },
+                    "value": {
+                      "$": "N111Const",
+                      "lo": 7,
+                      "hi": 0
+                    }
+                  },
+                  "tail": {
+                    "$": "Con",
+                    "head": {
+                      "$": "N111Return",
+                      "value": {
+                        "$": "N111Local",
+                        "name": "z"
+                      }
+                    },
+                    "tail": {
+                      "$": "Nil"
+                    }
+                  }
+                }
+              },
+              "tail": {
+                "$": "Nil"
+              }
+            },
+            "no": {
+              "$": "Con",
+              "head": {
+                "$": "N111Set",
+                "name": "x",
+                "typ": {
+                  "$": "N111U64"
+                },
+                "value": {
+                  "$": "N111Const",
+                  "lo": 7,
+                  "hi": 0
+                }
+              },
+              "tail": {
+                "$": "Nil"
+              }
+            }
+          },
+          "tail": {
+            "$": "Con",
+            "head": {
+              "$": "N111Return",
+              "value": {
+                "$": "N111Local",
+                "name": "x"
+              }
+            },
+            "tail": {
+              "$": "Nil"
+            }
+          }
+        }
+      },
+      "ready": {
+        "$": "Nil"
+      },
+      "expectedError": ""
+    },
+    {
+      "name": "raw-nested-all-terminal-rejects-continuation",
+      "kind": "raw",
+      "segments": {
+        "$": "Con",
+        "head": {
+          "$": "N111Segment",
+          "name": "main",
+          "arity": 0,
+          "result": 1,
+          "incoming": 0,
+          "flags": 0,
+          "body": {
+            "$": "Con",
+            "head": {
+              "$": "N111If",
+              "condition": {
+                "$": "N111Const",
+                "lo": 1,
+                "hi": 0
+              },
+              "yes": {
+                "$": "Con",
+                "head": {
+                  "$": "N111If",
+                  "condition": {
+                    "$": "N111Const",
+                    "lo": 1,
+                    "hi": 0
+                  },
+                  "yes": {
+                    "$": "Con",
+                    "head": {
+                      "$": "N111Return",
+                      "value": {
+                        "$": "N111Const",
+                        "lo": 0,
+                        "hi": 0
+                      }
+                    },
+                    "tail": {
+                      "$": "Nil"
+                    }
+                  },
+                  "no": {
+                    "$": "Con",
+                    "head": {
+                      "$": "N111Return",
+                      "value": {
+                        "$": "N111Const",
+                        "lo": 0,
+                        "hi": 0
+                      }
+                    },
+                    "tail": {
+                      "$": "Nil"
+                    }
+                  }
+                },
+                "tail": {
+                  "$": "Nil"
+                }
+              },
+              "no": {
+                "$": "Con",
+                "head": {
+                  "$": "N111Return",
+                  "value": {
+                    "$": "N111Const",
+                    "lo": 0,
+                    "hi": 0
+                  }
+                },
+                "tail": {
+                  "$": "Nil"
+                }
+              }
+            },
+            "tail": {
+              "$": "Con",
+              "head": {
+                "$": "N111Set",
+                "name": "x",
+                "typ": {
+                  "$": "N111U64"
+                },
+                "value": {
+                  "$": "N111Const",
+                  "lo": 7,
+                  "hi": 0
+                }
+              },
+              "tail": {
+                "$": "Nil"
+              }
+            }
+          }
+        },
+        "tail": {
+          "$": "Nil"
+        }
+      },
+      "constructors": {
+        "$": "Nil"
+      },
+      "function": {
+        "$": "N111Segment",
+        "name": "main",
+        "arity": 0,
+        "result": 1,
+        "incoming": 0,
+        "flags": 0,
+        "body": {
+          "$": "Con",
+          "head": {
+            "$": "N111If",
+            "condition": {
+              "$": "N111Const",
+              "lo": 1,
+              "hi": 0
+            },
+            "yes": {
+              "$": "Con",
+              "head": {
+                "$": "N111If",
+                "condition": {
+                  "$": "N111Const",
+                  "lo": 1,
+                  "hi": 0
+                },
+                "yes": {
+                  "$": "Con",
+                  "head": {
+                    "$": "N111Return",
+                    "value": {
+                      "$": "N111Const",
+                      "lo": 0,
+                      "hi": 0
+                    }
+                  },
+                  "tail": {
+                    "$": "Nil"
+                  }
+                },
+                "no": {
+                  "$": "Con",
+                  "head": {
+                    "$": "N111Return",
+                    "value": {
+                      "$": "N111Const",
+                      "lo": 0,
+                      "hi": 0
+                    }
+                  },
+                  "tail": {
+                    "$": "Nil"
+                  }
+                }
+              },
+              "tail": {
+                "$": "Nil"
+              }
+            },
+            "no": {
+              "$": "Con",
+              "head": {
+                "$": "N111Return",
+                "value": {
+                  "$": "N111Const",
+                  "lo": 0,
+                  "hi": 0
+                }
+              },
+              "tail": {
+                "$": "Nil"
+              }
+            }
+          },
+          "tail": {
+            "$": "Con",
+            "head": {
+              "$": "N111Set",
+              "name": "x",
+              "typ": {
+                "$": "N111U64"
+              },
+              "value": {
+                "$": "N111Const",
+                "lo": 7,
+                "hi": 0
+              }
+            },
+            "tail": {
+              "$": "Nil"
+            }
+          }
+        }
+      },
+      "ready": {
+        "$": "Nil"
+      },
+      "expectedError": "statement follows terminal path"
+    },
+    {
+      "name": "raw-nested-intersection-keeps-only-common",
+      "kind": "raw",
+      "segments": {
+        "$": "Con",
+        "head": {
+          "$": "N111Segment",
+          "name": "main",
+          "arity": 0,
+          "result": 1,
+          "incoming": 0,
+          "flags": 0,
+          "body": {
+            "$": "Con",
+            "head": {
+              "$": "N111Set",
+              "name": "outer",
+              "typ": {
+                "$": "N111U64"
+              },
+              "value": {
+                "$": "N111Const",
+                "lo": 7,
+                "hi": 0
+              }
+            },
+            "tail": {
+              "$": "Con",
+              "head": {
+                "$": "N111If",
+                "condition": {
+                  "$": "N111Const",
+                  "lo": 1,
+                  "hi": 0
+                },
+                "yes": {
+                  "$": "Con",
+                  "head": {
+                    "$": "N111Set",
+                    "name": "a",
+                    "typ": {
+                      "$": "N111U64"
+                    },
+                    "value": {
+                      "$": "N111Const",
+                      "lo": 7,
+                      "hi": 0
+                    }
+                  },
+                  "tail": {
+                    "$": "Con",
+                    "head": {
+                      "$": "N111If",
+                      "condition": {
+                        "$": "N111Const",
+                        "lo": 1,
+                        "hi": 0
+                      },
+                      "yes": {
+                        "$": "Con",
+                        "head": {
+                          "$": "N111Set",
+                          "name": "x",
+                          "typ": {
+                            "$": "N111U64"
+                          },
+                          "value": {
+                            "$": "N111Const",
+                            "lo": 7,
+                            "hi": 0
+                          }
+                        },
+                        "tail": {
+                          "$": "Con",
+                          "head": {
+                            "$": "N111Set",
+                            "name": "b",
+                            "typ": {
+                              "$": "N111U64"
+                            },
+                            "value": {
+                              "$": "N111Const",
+                              "lo": 7,
+                              "hi": 0
+                            }
+                          },
+                          "tail": {
+                            "$": "Nil"
+                          }
+                        }
+                      },
+                      "no": {
+                        "$": "Con",
+                        "head": {
+                          "$": "N111Set",
+                          "name": "x",
+                          "typ": {
+                            "$": "N111U64"
+                          },
+                          "value": {
+                            "$": "N111Const",
+                            "lo": 7,
+                            "hi": 0
+                          }
+                        },
+                        "tail": {
+                          "$": "Con",
+                          "head": {
+                            "$": "N111Set",
+                            "name": "c",
+                            "typ": {
+                              "$": "N111U64"
+                            },
+                            "value": {
+                              "$": "N111Const",
+                              "lo": 7,
+                              "hi": 0
+                            }
+                          },
+                          "tail": {
+                            "$": "Nil"
+                          }
+                        }
+                      }
+                    },
+                    "tail": {
+                      "$": "Nil"
+                    }
+                  }
+                },
+                "no": {
+                  "$": "Con",
+                  "head": {
+                    "$": "N111Set",
+                    "name": "d",
+                    "typ": {
+                      "$": "N111U64"
+                    },
+                    "value": {
+                      "$": "N111Const",
+                      "lo": 7,
+                      "hi": 0
+                    }
+                  },
+                  "tail": {
+                    "$": "Con",
+                    "head": {
+                      "$": "N111Set",
+                      "name": "x",
+                      "typ": {
+                        "$": "N111U64"
+                      },
+                      "value": {
+                        "$": "N111Const",
+                        "lo": 7,
+                        "hi": 0
+                      }
+                    },
+                    "tail": {
+                      "$": "Nil"
+                    }
+                  }
+                }
+              },
+              "tail": {
+                "$": "Con",
+                "head": {
+                  "$": "N111Return",
+                  "value": {
+                    "$": "N111Local",
+                    "name": "x"
+                  }
+                },
+                "tail": {
+                  "$": "Nil"
+                }
+              }
+            }
+          }
+        },
+        "tail": {
+          "$": "Nil"
+        }
+      },
+      "constructors": {
+        "$": "Nil"
+      },
+      "function": {
+        "$": "N111Segment",
+        "name": "main",
+        "arity": 0,
+        "result": 1,
+        "incoming": 0,
+        "flags": 0,
+        "body": {
+          "$": "Con",
+          "head": {
+            "$": "N111Set",
+            "name": "outer",
+            "typ": {
+              "$": "N111U64"
+            },
+            "value": {
+              "$": "N111Const",
+              "lo": 7,
+              "hi": 0
+            }
+          },
+          "tail": {
+            "$": "Con",
+            "head": {
+              "$": "N111If",
+              "condition": {
+                "$": "N111Const",
+                "lo": 1,
+                "hi": 0
+              },
+              "yes": {
+                "$": "Con",
+                "head": {
+                  "$": "N111Set",
+                  "name": "a",
+                  "typ": {
+                    "$": "N111U64"
+                  },
+                  "value": {
+                    "$": "N111Const",
+                    "lo": 7,
+                    "hi": 0
+                  }
+                },
+                "tail": {
+                  "$": "Con",
+                  "head": {
+                    "$": "N111If",
+                    "condition": {
+                      "$": "N111Const",
+                      "lo": 1,
+                      "hi": 0
+                    },
+                    "yes": {
+                      "$": "Con",
+                      "head": {
+                        "$": "N111Set",
+                        "name": "x",
+                        "typ": {
+                          "$": "N111U64"
+                        },
+                        "value": {
+                          "$": "N111Const",
+                          "lo": 7,
+                          "hi": 0
+                        }
+                      },
+                      "tail": {
+                        "$": "Con",
+                        "head": {
+                          "$": "N111Set",
+                          "name": "b",
+                          "typ": {
+                            "$": "N111U64"
+                          },
+                          "value": {
+                            "$": "N111Const",
+                            "lo": 7,
+                            "hi": 0
+                          }
+                        },
+                        "tail": {
+                          "$": "Nil"
+                        }
+                      }
+                    },
+                    "no": {
+                      "$": "Con",
+                      "head": {
+                        "$": "N111Set",
+                        "name": "x",
+                        "typ": {
+                          "$": "N111U64"
+                        },
+                        "value": {
+                          "$": "N111Const",
+                          "lo": 7,
+                          "hi": 0
+                        }
+                      },
+                      "tail": {
+                        "$": "Con",
+                        "head": {
+                          "$": "N111Set",
+                          "name": "c",
+                          "typ": {
+                            "$": "N111U64"
+                          },
+                          "value": {
+                            "$": "N111Const",
+                            "lo": 7,
+                            "hi": 0
+                          }
+                        },
+                        "tail": {
+                          "$": "Nil"
+                        }
+                      }
+                    }
+                  },
+                  "tail": {
+                    "$": "Nil"
+                  }
+                }
+              },
+              "no": {
+                "$": "Con",
+                "head": {
+                  "$": "N111Set",
+                  "name": "d",
+                  "typ": {
+                    "$": "N111U64"
+                  },
+                  "value": {
+                    "$": "N111Const",
+                    "lo": 7,
+                    "hi": 0
+                  }
+                },
+                "tail": {
+                  "$": "Con",
+                  "head": {
+                    "$": "N111Set",
+                    "name": "x",
+                    "typ": {
+                      "$": "N111U64"
+                    },
+                    "value": {
+                      "$": "N111Const",
+                      "lo": 7,
+                      "hi": 0
+                    }
+                  },
+                  "tail": {
+                    "$": "Nil"
+                  }
+                }
+              }
+            },
+            "tail": {
+              "$": "Con",
+              "head": {
+                "$": "N111Return",
+                "value": {
+                  "$": "N111Local",
+                  "name": "x"
+                }
+              },
+              "tail": {
+                "$": "Nil"
+              }
+            }
+          }
+        }
+      },
+      "ready": {
+        "$": "Nil"
+      },
+      "expectedError": ""
+    },
+    {
+      "name": "raw-equal-capacity-join-retains-bound",
+      "kind": "raw",
+      "segments": {
+        "$": "Con",
+        "head": {
+          "$": "N111Segment",
+          "name": "main",
+          "arity": 0,
+          "result": 1,
+          "incoming": 0,
+          "flags": 0,
+          "body": {
+            "$": "Con",
+            "head": {
+              "$": "N111Alloca",
+              "name": "buf",
+              "bytes": 16,
+              "align": 8
+            },
+            "tail": {
+              "$": "Con",
+              "head": {
+                "$": "N111If",
+                "condition": {
+                  "$": "N111Const",
+                  "lo": 1,
+                  "hi": 0
+                },
+                "yes": {
+                  "$": "Con",
+                  "head": {
+                    "$": "N111Offset",
+                    "name": "p",
+                    "base": {
+                      "$": "N111Local",
+                      "name": "buf"
+                    },
+                    "bytes": {
+                      "$": "N111Const",
+                      "lo": 8,
+                      "hi": 0
+                    }
+                  },
+                  "tail": {
+                    "$": "Nil"
+                  }
+                },
+                "no": {
+                  "$": "Con",
+                  "head": {
+                    "$": "N111Offset",
+                    "name": "p",
+                    "base": {
+                      "$": "N111Local",
+                      "name": "buf"
+                    },
+                    "bytes": {
+                      "$": "N111Const",
+                      "lo": 8,
+                      "hi": 0
+                    }
+                  },
+                  "tail": {
+                    "$": "Nil"
+                  }
+                }
+              },
+              "tail": {
+                "$": "Con",
+                "head": {
+                  "$": "N111Load",
+                  "name": "x",
+                  "typ": {
+                    "$": "N111U64"
+                  },
+                  "base": {
+                    "$": "N111Local",
+                    "name": "p"
+                  },
+                  "offset": 0
+                },
+                "tail": {
+                  "$": "Con",
+                  "head": {
+                    "$": "N111Return",
+                    "value": {
+                      "$": "N111Local",
+                      "name": "x"
+                    }
+                  },
+                  "tail": {
+                    "$": "Nil"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tail": {
+          "$": "Nil"
+        }
+      },
+      "constructors": {
+        "$": "Nil"
+      },
+      "function": {
+        "$": "N111Segment",
+        "name": "main",
+        "arity": 0,
+        "result": 1,
+        "incoming": 0,
+        "flags": 0,
+        "body": {
+          "$": "Con",
+          "head": {
+            "$": "N111Alloca",
+            "name": "buf",
+            "bytes": 16,
+            "align": 8
+          },
+          "tail": {
+            "$": "Con",
+            "head": {
+              "$": "N111If",
+              "condition": {
+                "$": "N111Const",
+                "lo": 1,
+                "hi": 0
+              },
+              "yes": {
+                "$": "Con",
+                "head": {
+                  "$": "N111Offset",
+                  "name": "p",
+                  "base": {
+                    "$": "N111Local",
+                    "name": "buf"
+                  },
+                  "bytes": {
+                    "$": "N111Const",
+                    "lo": 8,
+                    "hi": 0
+                  }
+                },
+                "tail": {
+                  "$": "Nil"
+                }
+              },
+              "no": {
+                "$": "Con",
+                "head": {
+                  "$": "N111Offset",
+                  "name": "p",
+                  "base": {
+                    "$": "N111Local",
+                    "name": "buf"
+                  },
+                  "bytes": {
+                    "$": "N111Const",
+                    "lo": 8,
+                    "hi": 0
+                  }
+                },
+                "tail": {
+                  "$": "Nil"
+                }
+              }
+            },
+            "tail": {
+              "$": "Con",
+              "head": {
+                "$": "N111Load",
+                "name": "x",
+                "typ": {
+                  "$": "N111U64"
+                },
+                "base": {
+                  "$": "N111Local",
+                  "name": "p"
+                },
+                "offset": 0
+              },
+              "tail": {
+                "$": "Con",
+                "head": {
+                  "$": "N111Return",
+                  "value": {
+                    "$": "N111Local",
+                    "name": "x"
+                  }
+                },
+                "tail": {
+                  "$": "Nil"
+                }
+              }
+            }
+          }
+        }
+      },
+      "ready": {
+        "$": "Nil"
+      },
+      "expectedError": ""
+    },
+    {
+      "name": "raw-zero-capacity-zero-offset",
+      "kind": "raw",
+      "segments": {
+        "$": "Con",
+        "head": {
+          "$": "N111Segment",
+          "name": "main",
+          "arity": 0,
+          "result": 1,
+          "incoming": 0,
+          "flags": 0,
+          "body": {
+            "$": "Con",
+            "head": {
+              "$": "N111Set",
+              "name": "p",
+              "typ": {
+                "$": "N111Ptr"
+              },
+              "value": {
+                "$": "N111Const",
+                "lo": 0,
+                "hi": 0
+              }
+            },
+            "tail": {
+              "$": "Con",
+              "head": {
+                "$": "N111Offset",
+                "name": "q",
+                "base": {
+                  "$": "N111Local",
+                  "name": "p"
+                },
+                "bytes": {
+                  "$": "N111Const",
+                  "lo": 0,
+                  "hi": 0
+                }
+              },
+              "tail": {
+                "$": "Con",
+                "head": {
+                  "$": "N111Return",
+                  "value": {
+                    "$": "N111Const",
+                    "lo": 0,
+                    "hi": 0
+                  }
+                },
+                "tail": {
+                  "$": "Nil"
+                }
+              }
+            }
+          }
+        },
+        "tail": {
+          "$": "Nil"
+        }
+      },
+      "constructors": {
+        "$": "Nil"
+      },
+      "function": {
+        "$": "N111Segment",
+        "name": "main",
+        "arity": 0,
+        "result": 1,
+        "incoming": 0,
+        "flags": 0,
+        "body": {
+          "$": "Con",
+          "head": {
+            "$": "N111Set",
+            "name": "p",
+            "typ": {
+              "$": "N111Ptr"
+            },
+            "value": {
+              "$": "N111Const",
+              "lo": 0,
+              "hi": 0
+            }
+          },
+          "tail": {
+            "$": "Con",
+            "head": {
+              "$": "N111Offset",
+              "name": "q",
+              "base": {
+                "$": "N111Local",
+                "name": "p"
+              },
+              "bytes": {
+                "$": "N111Const",
+                "lo": 0,
+                "hi": 0
+              }
+            },
+            "tail": {
+              "$": "Con",
+              "head": {
+                "$": "N111Return",
+                "value": {
+                  "$": "N111Const",
+                  "lo": 0,
+                  "hi": 0
+                }
+              },
+              "tail": {
+                "$": "Nil"
+              }
+            }
+          }
+        }
+      },
+      "ready": {
+        "$": "Nil"
+      },
+      "expectedError": ""
+    },
+    {
+      "name": "direct-nested-terminal-preserves-other-live",
+      "kind": "direct",
+      "segments": {
+        "$": "Con",
+        "head": {
+          "$": "N111Segment",
+          "name": "f",
+          "arity": 0,
+          "result": 1,
+          "incoming": 0,
+          "flags": 0,
+          "body": {
+            "$": "Con",
+            "head": {
+              "$": "N111Return",
+              "value": {
+                "$": "N111Const",
+                "lo": 0,
+                "hi": 0
+              }
+            },
+            "tail": {
+              "$": "Nil"
+            }
+          }
+        },
+        "tail": {
+          "$": "Nil"
+        }
+      },
+      "constructors": {
+        "$": "Nil"
+      },
+      "function": {
+        "$": "P113DFunction",
+        "name": "f",
+        "params": {
+          "$": "Nil"
+        },
+        "result": 1,
+        "public": false,
+        "body": {
+          "$": "Con",
+          "head": {
+            "$": "P113DIf",
+            "condition": {
+              "$": "N111Const",
+              "lo": 1,
+              "hi": 0
+            },
+            "yes": {
+              "$": "Con",
+              "head": {
+                "$": "P113DIf",
+                "condition": {
+                  "$": "N111Const",
+                  "lo": 1,
+                  "hi": 0
+                },
+                "yes": {
+                  "$": "Con",
+                  "head": {
+                    "$": "P113DScalar",
+                    "stmt": {
+                      "$": "N111Set",
+                      "name": "y",
+                      "typ": {
+                        "$": "N111U64"
+                      },
+                      "value": {
+                        "$": "N111Const",
+                        "lo": 7,
+                        "hi": 0
+                      }
+                    }
+                  },
+                  "tail": {
+                    "$": "Con",
+                    "head": {
+                      "$": "P113DResult",
+                      "values": {
+                        "$": "Con",
+                        "head": {
+                          "$": "N111Local",
+                          "name": "y"
+                        },
+                        "tail": {
+                          "$": "Nil"
+                        }
+                      }
+                    },
+                    "tail": {
+                      "$": "Nil"
+                    }
+                  }
+                },
+                "no": {
+                  "$": "Con",
+                  "head": {
+                    "$": "P113DResult",
+                    "values": {
+                      "$": "Con",
+                      "head": {
+                        "$": "N111Const",
+                        "lo": 0,
+                        "hi": 0
+                      },
+                      "tail": {
+                        "$": "Nil"
+                      }
+                    }
+                  },
+                  "tail": {
+                    "$": "Nil"
+                  }
+                }
+              },
+              "tail": {
+                "$": "Nil"
+              }
+            },
+            "no": {
+              "$": "Con",
+              "head": {
+                "$": "P113DScalar",
+                "stmt": {
+                  "$": "N111Set",
+                  "name": "x",
+                  "typ": {
+                    "$": "N111U64"
+                  },
+                  "value": {
+                    "$": "N111Const",
+                    "lo": 7,
+                    "hi": 0
+                  }
+                }
+              },
+              "tail": {
+                "$": "Nil"
+              }
+            }
+          },
+          "tail": {
+            "$": "Con",
+            "head": {
+              "$": "P113DResult",
+              "values": {
+                "$": "Con",
+                "head": {
+                  "$": "N111Local",
+                  "name": "x"
+                },
+                "tail": {
+                  "$": "Nil"
+                }
+              }
+            },
+            "tail": {
+              "$": "Nil"
+            }
+          }
+        }
+      },
+      "ready": {
+        "$": "Nil"
+      },
+      "expectedError": ""
+    },
+    {
+      "name": "direct-concat-valid-constructors",
+      "kind": "direct",
+      "segments": {
+        "$": "Con",
+        "head": {
+          "$": "N111Segment",
+          "name": "f",
+          "arity": 0,
+          "result": 1,
+          "incoming": 0,
+          "flags": 0,
+          "body": {
+            "$": "Con",
+            "head": {
+              "$": "N111Return",
+              "value": {
+                "$": "N111Const",
+                "lo": 0,
+                "hi": 0
+              }
+            },
+            "tail": {
+              "$": "Nil"
+            }
+          }
+        },
+        "tail": {
+          "$": "Nil"
+        }
+      },
+      "constructors": {
+        "$": "Con",
+        "head": {
+          "$": "N_Constructor",
+          "name": "Nil",
+          "arity": 0,
+          "hot": false
+        },
+        "tail": {
+          "$": "Con",
+          "head": {
+            "$": "N_Constructor",
+            "name": "Cons",
+            "arity": 2,
+            "hot": false
+          },
+          "tail": {
+            "$": "Nil"
+          }
+        }
+      },
+      "function": {
+        "$": "P113DFunction",
+        "name": "f",
+        "params": {
+          "$": "Nil"
+        },
+        "result": 1,
+        "public": false,
+        "body": {
+          "$": "Con",
+          "head": {
+            "$": "P113DScalar",
+            "stmt": {
+              "$": "N111Call",
+              "name": "r",
+              "typ": {
+                "$": "N111U64"
+              },
+              "symbol": "p125_rt_concat_typed",
+              "args": {
+                "$": "Con",
+                "head": {
+                  "$": "N111Arg",
+                  "typ": {
+                    "$": "N111Ptr"
+                  },
+                  "value": {
+                    "$": "N111Local",
+                    "name": "state"
+                  }
+                },
+                "tail": {
+                  "$": "Con",
+                  "head": {
+                    "$": "N111Arg",
+                    "typ": {
+                      "$": "N111U64"
+                    },
+                    "value": {
+                      "$": "N111Const",
+                      "lo": 0,
+                      "hi": 0
+                    }
+                  },
+                  "tail": {
+                    "$": "Con",
+                    "head": {
+                      "$": "N111Arg",
+                      "typ": {
+                        "$": "N111U64"
+                      },
+                      "value": {
+                        "$": "N111Const",
+                        "lo": 0,
+                        "hi": 0
+                      }
+                    },
+                    "tail": {
+                      "$": "Con",
+                      "head": {
+                        "$": "N111Arg",
+                        "typ": {
+                          "$": "N111U32"
+                        },
+                        "value": {
+                          "$": "N111CtorId",
+                          "name": "Nil"
+                        }
+                      },
+                      "tail": {
+                        "$": "Con",
+                        "head": {
+                          "$": "N111Arg",
+                          "typ": {
+                            "$": "N111U32"
+                          },
+                          "value": {
+                            "$": "N111CtorId",
+                            "name": "Cons"
+                          }
+                        },
+                        "tail": {
+                          "$": "Nil"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "tail": {
+            "$": "Con",
+            "head": {
+              "$": "P113DResult",
+              "values": {
+                "$": "Con",
+                "head": {
+                  "$": "N111Local",
+                  "name": "r"
+                },
+                "tail": {
+                  "$": "Nil"
+                }
+              }
+            },
+            "tail": {
+              "$": "Nil"
+            }
+          }
+        }
+      },
+      "ready": {
+        "$": "Nil"
+      },
+      "expectedError": ""
+    },
+    {
+      "name": "direct-concat-reversed-constructors",
+      "kind": "direct",
+      "segments": {
+        "$": "Con",
+        "head": {
+          "$": "N111Segment",
+          "name": "f",
+          "arity": 0,
+          "result": 1,
+          "incoming": 0,
+          "flags": 0,
+          "body": {
+            "$": "Con",
+            "head": {
+              "$": "N111Return",
+              "value": {
+                "$": "N111Const",
+                "lo": 0,
+                "hi": 0
+              }
+            },
+            "tail": {
+              "$": "Nil"
+            }
+          }
+        },
+        "tail": {
+          "$": "Nil"
+        }
+      },
+      "constructors": {
+        "$": "Con",
+        "head": {
+          "$": "N_Constructor",
+          "name": "Nil",
+          "arity": 0,
+          "hot": false
+        },
+        "tail": {
+          "$": "Con",
+          "head": {
+            "$": "N_Constructor",
+            "name": "Cons",
+            "arity": 2,
+            "hot": false
+          },
+          "tail": {
+            "$": "Nil"
+          }
+        }
+      },
+      "function": {
+        "$": "P113DFunction",
+        "name": "f",
+        "params": {
+          "$": "Nil"
+        },
+        "result": 1,
+        "public": false,
+        "body": {
+          "$": "Con",
+          "head": {
+            "$": "P113DScalar",
+            "stmt": {
+              "$": "N111Call",
+              "name": "r",
+              "typ": {
+                "$": "N111U64"
+              },
+              "symbol": "p125_rt_concat_typed",
+              "args": {
+                "$": "Con",
+                "head": {
+                  "$": "N111Arg",
+                  "typ": {
+                    "$": "N111Ptr"
+                  },
+                  "value": {
+                    "$": "N111Local",
+                    "name": "state"
+                  }
+                },
+                "tail": {
+                  "$": "Con",
+                  "head": {
+                    "$": "N111Arg",
+                    "typ": {
+                      "$": "N111U64"
+                    },
+                    "value": {
+                      "$": "N111Const",
+                      "lo": 0,
+                      "hi": 0
+                    }
+                  },
+                  "tail": {
+                    "$": "Con",
+                    "head": {
+                      "$": "N111Arg",
+                      "typ": {
+                        "$": "N111U64"
+                      },
+                      "value": {
+                        "$": "N111Const",
+                        "lo": 0,
+                        "hi": 0
+                      }
+                    },
+                    "tail": {
+                      "$": "Con",
+                      "head": {
+                        "$": "N111Arg",
+                        "typ": {
+                          "$": "N111U32"
+                        },
+                        "value": {
+                          "$": "N111CtorId",
+                          "name": "Cons"
+                        }
+                      },
+                      "tail": {
+                        "$": "Con",
+                        "head": {
+                          "$": "N111Arg",
+                          "typ": {
+                            "$": "N111U32"
+                          },
+                          "value": {
+                            "$": "N111CtorId",
+                            "name": "Nil"
+                          }
+                        },
+                        "tail": {
+                          "$": "Nil"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "tail": {
+            "$": "Con",
+            "head": {
+              "$": "P113DResult",
+              "values": {
+                "$": "Con",
+                "head": {
+                  "$": "N111Local",
+                  "name": "r"
+                },
+                "tail": {
+                  "$": "Nil"
+                }
+              }
+            },
+            "tail": {
+              "$": "Nil"
+            }
+          }
+        }
+      },
+      "ready": {
+        "$": "Nil"
+      },
+      "expectedError": "concat value import signature/constructor mismatch"
+    },
+    {
+      "name": "direct-trmc-extend-valid-count",
+      "kind": "direct",
+      "segments": {
+        "$": "Con",
+        "head": {
+          "$": "N111Segment",
+          "name": "f",
+          "arity": 0,
+          "result": 1,
+          "incoming": 0,
+          "flags": 0,
+          "body": {
+            "$": "Con",
+            "head": {
+              "$": "N111Return",
+              "value": {
+                "$": "N111Const",
+                "lo": 0,
+                "hi": 0
+              }
+            },
+            "tail": {
+              "$": "Nil"
+            }
+          }
+        },
+        "tail": {
+          "$": "Nil"
+        }
+      },
+      "constructors": {
+        "$": "Con",
+        "head": {
+          "$": "N_Constructor",
+          "name": "Nil",
+          "arity": 0,
+          "hot": false
+        },
+        "tail": {
+          "$": "Con",
+          "head": {
+            "$": "N_Constructor",
+            "name": "Cons",
+            "arity": 2,
+            "hot": false
+          },
+          "tail": {
+            "$": "Nil"
+          }
+        }
+      },
+      "function": {
+        "$": "P113DFunction",
+        "name": "f",
+        "params": {
+          "$": "Nil"
+        },
+        "result": 1,
+        "public": false,
+        "body": {
+          "$": "Con",
+          "head": {
+            "$": "P113DScalar",
+            "stmt": {
+              "$": "N111Call",
+              "name": "r",
+              "typ": {
+                "$": "N111U64"
+              },
+              "symbol": "p118_rt_extend",
+              "args": {
+                "$": "Con",
+                "head": {
+                  "$": "N111Arg",
+                  "typ": {
+                    "$": "N111Ptr"
+                  },
+                  "value": {
+                    "$": "N111Local",
+                    "name": "state"
+                  }
+                },
+                "tail": {
+                  "$": "Con",
+                  "head": {
+                    "$": "N111Arg",
+                    "typ": {
+                      "$": "N111U64"
+                    },
+                    "value": {
+                      "$": "N111Const",
+                      "lo": 0,
+                      "hi": 0
+                    }
+                  },
+                  "tail": {
+                    "$": "Con",
+                    "head": {
+                      "$": "N111Arg",
+                      "typ": {
+                        "$": "N111U32"
+                      },
+                      "value": {
+                        "$": "N111CtorId",
+                        "name": "Cons"
+                      }
+                    },
+                    "tail": {
+                      "$": "Con",
+                      "head": {
+                        "$": "N111Arg",
+                        "typ": {
+                          "$": "N111Ptr"
+                        },
+                        "value": {
+                          "$": "N111Local",
+                          "name": "scratch"
+                        }
+                      },
+                      "tail": {
+                        "$": "Con",
+                        "head": {
+                          "$": "N111Arg",
+                          "typ": {
+                            "$": "N111U32"
+                          },
+                          "value": {
+                            "$": "N111Const",
+                            "lo": 1,
+                            "hi": 0
+                          }
+                        },
+                        "tail": {
+                          "$": "Nil"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "tail": {
+            "$": "Con",
+            "head": {
+              "$": "P113DResult",
+              "values": {
+                "$": "Con",
+                "head": {
+                  "$": "N111Local",
+                  "name": "r"
+                },
+                "tail": {
+                  "$": "Nil"
+                }
+              }
+            },
+            "tail": {
+              "$": "Nil"
+            }
+          }
+        }
+      },
+      "ready": {
+        "$": "Nil"
+      },
+      "expectedError": ""
+    },
+    {
+      "name": "direct-trmc-extend-short-buffer",
+      "kind": "direct",
+      "segments": {
+        "$": "Con",
+        "head": {
+          "$": "N111Segment",
+          "name": "f",
+          "arity": 0,
+          "result": 1,
+          "incoming": 0,
+          "flags": 0,
+          "body": {
+            "$": "Con",
+            "head": {
+              "$": "N111Return",
+              "value": {
+                "$": "N111Const",
+                "lo": 0,
+                "hi": 0
+              }
+            },
+            "tail": {
+              "$": "Nil"
+            }
+          }
+        },
+        "tail": {
+          "$": "Nil"
+        }
+      },
+      "constructors": {
+        "$": "Con",
+        "head": {
+          "$": "N_Constructor",
+          "name": "Nil",
+          "arity": 0,
+          "hot": false
+        },
+        "tail": {
+          "$": "Con",
+          "head": {
+            "$": "N_Constructor",
+            "name": "Cons",
+            "arity": 2,
+            "hot": false
+          },
+          "tail": {
+            "$": "Nil"
+          }
+        }
+      },
+      "function": {
+        "$": "P113DFunction",
+        "name": "f",
+        "params": {
+          "$": "Nil"
+        },
+        "result": 1,
+        "public": false,
+        "body": {
+          "$": "Con",
+          "head": {
+            "$": "P113DScalar",
+            "stmt": {
+              "$": "N111Alloca",
+              "name": "buf",
+              "bytes": 4,
+              "align": 8
+            }
+          },
+          "tail": {
+            "$": "Con",
+            "head": {
+              "$": "P113DScalar",
+              "stmt": {
+                "$": "N111Call",
+                "name": "r",
+                "typ": {
+                  "$": "N111U64"
+                },
+                "symbol": "p118_rt_extend",
+                "args": {
+                  "$": "Con",
+                  "head": {
+                    "$": "N111Arg",
+                    "typ": {
+                      "$": "N111Ptr"
+                    },
+                    "value": {
+                      "$": "N111Local",
+                      "name": "state"
+                    }
+                  },
+                  "tail": {
+                    "$": "Con",
+                    "head": {
+                      "$": "N111Arg",
+                      "typ": {
+                        "$": "N111U64"
+                      },
+                      "value": {
+                        "$": "N111Const",
+                        "lo": 0,
+                        "hi": 0
+                      }
+                    },
+                    "tail": {
+                      "$": "Con",
+                      "head": {
+                        "$": "N111Arg",
+                        "typ": {
+                          "$": "N111U32"
+                        },
+                        "value": {
+                          "$": "N111CtorId",
+                          "name": "Cons"
+                        }
+                      },
+                      "tail": {
+                        "$": "Con",
+                        "head": {
+                          "$": "N111Arg",
+                          "typ": {
+                            "$": "N111Ptr"
+                          },
+                          "value": {
+                            "$": "N111Local",
+                            "name": "buf"
+                          }
+                        },
+                        "tail": {
+                          "$": "Con",
+                          "head": {
+                            "$": "N111Arg",
+                            "typ": {
+                              "$": "N111U32"
+                            },
+                            "value": {
+                              "$": "N111Const",
+                              "lo": 1,
+                              "hi": 0
+                            }
+                          },
+                          "tail": {
+                            "$": "Nil"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "tail": {
+              "$": "Con",
+              "head": {
+                "$": "P113DResult",
+                "values": {
+                  "$": "Con",
+                  "head": {
+                    "$": "N111Local",
+                    "name": "r"
+                  },
+                  "tail": {
+                    "$": "Nil"
+                  }
+                }
+              },
+              "tail": {
+                "$": "Nil"
+              }
+            }
+          }
+        }
+      },
+      "ready": {
+        "$": "Nil"
+      },
+      "expectedError": "TRMC import signature/constructor/capacity mismatch"
+    },
+    {
+      "name": "direct-trmc-finish-valid",
+      "kind": "direct",
+      "segments": {
+        "$": "Con",
+        "head": {
+          "$": "N111Segment",
+          "name": "f",
+          "arity": 0,
+          "result": 1,
+          "incoming": 0,
+          "flags": 0,
+          "body": {
+            "$": "Con",
+            "head": {
+              "$": "N111Return",
+              "value": {
+                "$": "N111Const",
+                "lo": 0,
+                "hi": 0
+              }
+            },
+            "tail": {
+              "$": "Nil"
+            }
+          }
+        },
+        "tail": {
+          "$": "Nil"
+        }
+      },
+      "constructors": {
+        "$": "Nil"
+      },
+      "function": {
+        "$": "P113DFunction",
+        "name": "f",
+        "params": {
+          "$": "Nil"
+        },
+        "result": 1,
+        "public": false,
+        "body": {
+          "$": "Con",
+          "head": {
+            "$": "P113DScalar",
+            "stmt": {
+              "$": "N111Call",
+              "name": "r",
+              "typ": {
+                "$": "N111U64"
+              },
+              "symbol": "p118_rt_finish",
+              "args": {
+                "$": "Con",
+                "head": {
+                  "$": "N111Arg",
+                  "typ": {
+                    "$": "N111Ptr"
+                  },
+                  "value": {
+                    "$": "N111Local",
+                    "name": "state"
+                  }
+                },
+                "tail": {
+                  "$": "Con",
+                  "head": {
+                    "$": "N111Arg",
+                    "typ": {
+                      "$": "N111U64"
+                    },
+                    "value": {
+                      "$": "N111Const",
+                      "lo": 0,
+                      "hi": 0
+                    }
+                  },
+                  "tail": {
+                    "$": "Con",
+                    "head": {
+                      "$": "N111Arg",
+                      "typ": {
+                        "$": "N111U64"
+                      },
+                      "value": {
+                        "$": "N111Const",
+                        "lo": 0,
+                        "hi": 0
+                      }
+                    },
+                    "tail": {
+                      "$": "Con",
+                      "head": {
+                        "$": "N111Arg",
+                        "typ": {
+                          "$": "N111U64"
+                        },
+                        "value": {
+                          "$": "N111Const",
+                          "lo": 0,
+                          "hi": 0
+                        }
+                      },
+                      "tail": {
+                        "$": "Nil"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "tail": {
+            "$": "Con",
+            "head": {
+              "$": "P113DResult",
+              "values": {
+                "$": "Con",
+                "head": {
+                  "$": "N111Local",
+                  "name": "r"
+                },
+                "tail": {
+                  "$": "Nil"
+                }
+              }
+            },
+            "tail": {
+              "$": "Nil"
+            }
+          }
+        }
+      },
+      "ready": {
+        "$": "Nil"
+      },
+      "expectedError": ""
+    },
+    {
+      "name": "direct-array-pair-valid-origin",
+      "kind": "direct",
+      "segments": {
+        "$": "Con",
+        "head": {
+          "$": "N111Segment",
+          "name": "f",
+          "arity": 0,
+          "result": 1,
+          "incoming": 0,
+          "flags": 0,
+          "body": {
+            "$": "Con",
+            "head": {
+              "$": "N111Return",
+              "value": {
+                "$": "N111Const",
+                "lo": 0,
+                "hi": 0
+              }
+            },
+            "tail": {
+              "$": "Nil"
+            }
+          }
+        },
+        "tail": {
+          "$": "Nil"
+        }
+      },
+      "constructors": {
+        "$": "Nil"
+      },
+      "function": {
+        "$": "P113DFunction",
+        "name": "f",
+        "params": {
+          "$": "Nil"
+        },
+        "result": 1,
+        "public": false,
+        "body": {
+          "$": "Con",
+          "head": {
+            "$": "P113DScalar",
+            "stmt": {
+              "$": "N111Alloca",
+              "name": "p113p_out_0",
+              "bytes": 16,
+              "align": 8
+            }
+          },
+          "tail": {
+            "$": "Con",
+            "head": {
+              "$": "P113DScalar",
+              "stmt": {
+                "$": "N111Call",
+                "name": "r",
+                "typ": {
+                  "$": "N111U64"
+                },
+                "symbol": "p113_rt_array_pair",
+                "args": {
+                  "$": "Con",
+                  "head": {
+                    "$": "N111Arg",
+                    "typ": {
+                      "$": "N111Ptr"
+                    },
+                    "value": {
+                      "$": "N111Local",
+                      "name": "state"
+                    }
+                  },
+                  "tail": {
+                    "$": "Con",
+                    "head": {
+                      "$": "N111Arg",
+                      "typ": {
+                        "$": "N111U32"
+                      },
+                      "value": {
+                        "$": "N111Const",
+                        "lo": 72,
+                        "hi": 0
+                      }
+                    },
+                    "tail": {
+                      "$": "Con",
+                      "head": {
+                        "$": "N111Arg",
+                        "typ": {
+                          "$": "N111Ptr"
+                        },
+                        "value": {
+                          "$": "N111Local",
+                          "name": "scratch"
+                        }
+                      },
+                      "tail": {
+                        "$": "Con",
+                        "head": {
+                          "$": "N111Arg",
+                          "typ": {
+                            "$": "N111U32"
+                          },
+                          "value": {
+                            "$": "N111Const",
+                            "lo": 2,
+                            "hi": 0
+                          }
+                        },
+                        "tail": {
+                          "$": "Con",
+                          "head": {
+                            "$": "N111Arg",
+                            "typ": {
+                              "$": "N111Ptr"
+                            },
+                            "value": {
+                              "$": "N111Local",
+                              "name": "p113p_out_0"
+                            }
+                          },
+                          "tail": {
+                            "$": "Con",
+                            "head": {
+                              "$": "N111Arg",
+                              "typ": {
+                                "$": "N111U32"
+                              },
+                              "value": {
+                                "$": "N111Const",
+                                "lo": 2,
+                                "hi": 0
+                              }
+                            },
+                            "tail": {
+                              "$": "Nil"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "tail": {
+              "$": "Con",
+              "head": {
+                "$": "P113DResult",
+                "values": {
+                  "$": "Con",
+                  "head": {
+                    "$": "N111Local",
+                    "name": "r"
+                  },
+                  "tail": {
+                    "$": "Nil"
+                  }
+                }
+              },
+              "tail": {
+                "$": "Nil"
+              }
+            }
+          }
+        }
+      },
+      "ready": {
+        "$": "Nil"
+      },
+      "expectedError": ""
+    },
+    {
+      "name": "direct-array-pair-forged-origin",
+      "kind": "direct",
+      "segments": {
+        "$": "Con",
+        "head": {
+          "$": "N111Segment",
+          "name": "f",
+          "arity": 0,
+          "result": 1,
+          "incoming": 0,
+          "flags": 0,
+          "body": {
+            "$": "Con",
+            "head": {
+              "$": "N111Return",
+              "value": {
+                "$": "N111Const",
+                "lo": 0,
+                "hi": 0
+              }
+            },
+            "tail": {
+              "$": "Nil"
+            }
+          }
+        },
+        "tail": {
+          "$": "Nil"
+        }
+      },
+      "constructors": {
+        "$": "Nil"
+      },
+      "function": {
+        "$": "P113DFunction",
+        "name": "f",
+        "params": {
+          "$": "Nil"
+        },
+        "result": 1,
+        "public": false,
+        "body": {
+          "$": "Con",
+          "head": {
+            "$": "P113DScalar",
+            "stmt": {
+              "$": "N111Alloca",
+              "name": "out",
+              "bytes": 16,
+              "align": 8
+            }
+          },
+          "tail": {
+            "$": "Con",
+            "head": {
+              "$": "P113DScalar",
+              "stmt": {
+                "$": "N111Call",
+                "name": "r",
+                "typ": {
+                  "$": "N111U64"
+                },
+                "symbol": "p113_rt_array_pair",
+                "args": {
+                  "$": "Con",
+                  "head": {
+                    "$": "N111Arg",
+                    "typ": {
+                      "$": "N111Ptr"
+                    },
+                    "value": {
+                      "$": "N111Local",
+                      "name": "state"
+                    }
+                  },
+                  "tail": {
+                    "$": "Con",
+                    "head": {
+                      "$": "N111Arg",
+                      "typ": {
+                        "$": "N111U32"
+                      },
+                      "value": {
+                        "$": "N111Const",
+                        "lo": 72,
+                        "hi": 0
+                      }
+                    },
+                    "tail": {
+                      "$": "Con",
+                      "head": {
+                        "$": "N111Arg",
+                        "typ": {
+                          "$": "N111Ptr"
+                        },
+                        "value": {
+                          "$": "N111Local",
+                          "name": "scratch"
+                        }
+                      },
+                      "tail": {
+                        "$": "Con",
+                        "head": {
+                          "$": "N111Arg",
+                          "typ": {
+                            "$": "N111U32"
+                          },
+                          "value": {
+                            "$": "N111Const",
+                            "lo": 2,
+                            "hi": 0
+                          }
+                        },
+                        "tail": {
+                          "$": "Con",
+                          "head": {
+                            "$": "N111Arg",
+                            "typ": {
+                              "$": "N111Ptr"
+                            },
+                            "value": {
+                              "$": "N111Local",
+                              "name": "out"
+                            }
+                          },
+                          "tail": {
+                            "$": "Con",
+                            "head": {
+                              "$": "N111Arg",
+                              "typ": {
+                                "$": "N111U32"
+                              },
+                              "value": {
+                                "$": "N111Const",
+                                "lo": 2,
+                                "hi": 0
+                              }
+                            },
+                            "tail": {
+                              "$": "Nil"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "tail": {
+              "$": "Con",
+              "head": {
+                "$": "P113DResult",
+                "values": {
+                  "$": "Con",
+                  "head": {
+                    "$": "N111Local",
+                    "name": "r"
+                  },
+                  "tail": {
+                    "$": "Nil"
+                  }
+                }
+              },
+              "tail": {
+                "$": "Nil"
+              }
+            }
+          }
+        }
+      },
+      "ready": {
+        "$": "Nil"
+      },
+      "expectedError": "product array import signature/count/capacity mismatch"
+    },
+    {
+      "name": "direct-later-reserved-seed-overrides-earlier-name-error",
+      "kind": "direct",
+      "segments": {
+        "$": "Con",
+        "head": {
+          "$": "N111Segment",
+          "name": "f",
+          "arity": 2,
+          "result": 1,
+          "incoming": 0,
+          "flags": 0,
+          "body": {
+            "$": "Con",
+            "head": {
+              "$": "N111Return",
+              "value": {
+                "$": "N111Const",
+                "lo": 0,
+                "hi": 0
+              }
+            },
+            "tail": {
+              "$": "Nil"
+            }
+          }
+        },
+        "tail": {
+          "$": "Nil"
+        }
+      },
+      "constructors": {
+        "$": "Nil"
+      },
+      "function": {
+        "$": "P113DFunction",
+        "name": "f",
+        "params": {
+          "$": "Con",
+          "head": {
+            "$": "NC_Binding",
+            "id": 7,
+            "word": "",
+            "kind": {
+              "$": "N_W64"
+            }
+          },
+          "tail": {
+            "$": "Con",
+            "head": {
+              "$": "NC_Binding",
+              "id": 7,
+              "word": "state",
+              "kind": {
+                "$": "N_W64"
+              }
+            },
+            "tail": {
+              "$": "Nil"
+            }
+          }
+        },
+        "result": 1,
+        "public": false,
+        "body": {
+          "$": "Con",
+          "head": {
+            "$": "P113DResult",
+            "values": {
+              "$": "Con",
+              "head": {
+                "$": "N111Const",
+                "lo": 0,
+                "hi": 0
+              },
+              "tail": {
+                "$": "Nil"
+              }
+            }
+          },
+          "tail": {
+            "$": "Nil"
+          }
+        }
+      },
+      "ready": {
+        "$": "Nil"
+      },
+      "expectedError": "duplicate/reserved direct parameter: state"
+    }
+  ]
+}

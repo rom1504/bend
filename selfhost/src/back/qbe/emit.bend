@@ -106,12 +106,12 @@ def p111q_binop(+op: String, +typ: N111Type) -> String:
       String.eq(op,"shr") || String.eq(op,"sar"),u => op,u => "INVALID_N111_BINARY"))
 
 @unsafe
-def p111q_args(+args: List<&2,N111Arg>, +ids: N111Ids, +first: Bool, acc: List<&2,String>) -> String:
+def p111q_args(args: List<&2,N111Arg>, +ids: N111Ids, +first: Bool, chunks: List<&2,String>) -> List<&2,String>:
   match args:
-    case Nil{}: nt_text_finish(acc,"")
+    case Nil{}: chunks
     case Con{N111Arg{typ,value},rest}:
       p111q_args(rest,ids,False{},Con{p111q_type(typ) ++ " " ++ p111q_value(value,ids),
-        Con{nt_choose(String,first,u => "",u => ", "),acc}})
+        Con{nt_choose(String,first,u => "",u => ", "),chunks}})
 
 def p111q_line(line: String, code: P111QCode) -> P111QCode:
   match code:
@@ -147,17 +147,17 @@ def p111q_return(value: String, code: P111QCode) -> P111QCode:
     case P111QCode{chunks,n,terminal,error}: P111QCode{Con{"ret " ++ value ++ "\n",chunks},n,True{},error}
 
 @unsafe
-def p111q_memory(+name: String, +typ: N111Type, +base: N111Value, +offset: U32, +value: N111Value, +store: Bool, +ids: N111Ids, +code: P111QCode) -> P111QCode:
+def p111q_memory(+name: String, +typ: N111Type, +base: N111Value, +offset: U32, +value: N111Value, +store: Bool, +ids: N111Ids, code: P111QCode) -> P111QCode:
   match code:
     case P111QCode{chunks,n,terminal,error}:
       +at = nt_choose(String,U32.is_eq(offset,0),u => p111q_value(base,ids),u => p111q_tmp(n))
       +prefix = nt_choose(List<&2,String>,U32.is_eq(offset,0),u => chunks,u =>
-        Con{at ++ " =l add " ++ p111q_value(base,ids) ++ ", " ++ U32.show(offset) ++ "\n",chunks})
-      +line = nt_choose(String,store,
-        u => "store" ++ p111q_type(typ) ++ " " ++ p111q_value(value,ids) ++ ", " ++ at ++ "\n",
-        u => p111q_local(name) ++ nt_choose(String,String.eq(p111q_type(typ),"w"),
-          v => " =l loaduw ",v => " =" ++ p111q_type(typ) ++ " load" ++ p111q_type(typ) ++ " ") ++ at ++ "\n")
-      P111QCode{Con{line,prefix},nt_choose(U32,U32.is_eq(offset,0),u => n,u => U32.inc(n)),terminal,error}
+        Con{"\n",Con{U32.show(offset),Con{", ",Con{p111q_value(base,ids),Con{" =l add ",Con{at,chunks}}}}}})
+      +parts = nt_choose(List<&2,String>,store,
+        u => Con{"\n",Con{at,Con{", ",Con{p111q_value(value,ids),Con{" ",Con{p111q_type(typ),Con{"store",prefix}}}}}}},
+        u => Con{"\n",Con{at,Con{nt_choose(String,String.eq(p111q_type(typ),"w"),
+          v => " =l loaduw ",v => " =" ++ p111q_type(typ) ++ " load" ++ p111q_type(typ) ++ " "),Con{p111q_local(name),prefix}}}})
+      P111QCode{parts,nt_choose(U32,U32.is_eq(offset,0),u => n,u => U32.inc(n)),terminal,error}
 
 @unsafe
 def p111q_if(+condition: N111Value, +yes: List<&2,N111Stmt>, +no: List<&2,N111Stmt>, +ids: N111Ids, +code: P111QCode) -> P111QCode:

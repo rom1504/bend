@@ -1,0 +1,852 @@
+{
+  "kind": "phase147-call-render-fixtures",
+  "version": 1,
+  "complete": true,
+  "targetsRun": false,
+  "checked": false,
+  "capture": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase144/render-capture-lexer02/report.json",
+    "bytes": 9794,
+    "sha256": "1815497de37a27a619dad8ed9c0bc2143b24934a9e2bd2eb6851ed9d601f99d6"
+  },
+  "fixtures": [
+    {
+      "index": 0,
+      "name": "P134Public-132-309",
+      "definition": "$direct.$native.U32.sub",
+      "capture": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase144/render-capture-lexer02/P134Public-132-309.json",
+        "bytes": 1279037,
+        "sha256": "509b153d5936ddff448f774b352130868242859adecc9784256fed57de2cd93b"
+      },
+      "completeSegment": {
+        "$": "N111Segment",
+        "name": "$direct.$native.U32.sub",
+        "arity": 2,
+        "result": 1,
+        "incoming": 0,
+        "flags": 0,
+        "body": {
+          "$": "Con",
+          "head": {
+            "$": "N111Alloca",
+            "name": "scratch",
+            "bytes": 2048,
+            "align": 8
+          },
+          "tail": {
+            "$": "Con",
+            "head": {
+              "$": "N111Call",
+              "name": "v_4294942315",
+              "typ": {
+                "$": "N111U64"
+              },
+              "symbol": "p111_rt_reg_get",
+              "args": {
+                "$": "Con",
+                "head": {
+                  "$": "N111Arg",
+                  "typ": {
+                    "$": "N111Ptr"
+                  },
+                  "value": {
+                    "$": "N111Local",
+                    "name": "state"
+                  }
+                },
+                "tail": {
+                  "$": "Con",
+                  "head": {
+                    "$": "N111Arg",
+                    "typ": {
+                      "$": "N111U32"
+                    },
+                    "value": {
+                      "$": "N111Const",
+                      "lo": 0,
+                      "hi": 0
+                    }
+                  },
+                  "tail": {
+                    "$": "Nil"
+                  }
+                }
+              }
+            },
+            "tail": {
+              "$": "Con",
+              "head": {
+                "$": "N111Call",
+                "name": "v_4294942314",
+                "typ": {
+                  "$": "N111U64"
+                },
+                "symbol": "p111_rt_reg_get",
+                "args": {
+                  "$": "Con",
+                  "head": {
+                    "$": "N111Arg",
+                    "typ": {
+                      "$": "N111Ptr"
+                    },
+                    "value": {
+                      "$": "N111Local",
+                      "name": "state"
+                    }
+                  },
+                  "tail": {
+                    "$": "Con",
+                    "head": {
+                      "$": "N111Arg",
+                      "typ": {
+                        "$": "N111U32"
+                      },
+                      "value": {
+                        "$": "N111Const",
+                        "lo": 1,
+                        "hi": 0
+                      }
+                    },
+                    "tail": {
+                      "$": "Nil"
+                    }
+                  }
+                }
+              },
+              "tail": {
+                "$": "Con",
+                "head": {
+                  "$": "N111Bin",
+                  "name": "p112_s_a",
+                  "typ": {
+                    "$": "N111U64"
+                  },
+                  "op": "and",
+                  "left": {
+                    "$": "N111Local",
+                    "name": "v_4294942315"
+                  },
+                  "right": {
+                    "$": "N111Const",
+                    "lo": 4294967295,
+                    "hi": 0
+                  }
+                },
+                "tail": {
+                  "$": "Con",
+                  "head": {
+                    "$": "N111Bin",
+                    "name": "p112_s_b",
+                    "typ": {
+                      "$": "N111U64"
+                    },
+                    "op": "and",
+                    "left": {
+                      "$": "N111Local",
+                      "name": "v_4294942314"
+                    },
+                    "right": {
+                      "$": "N111Const",
+                      "lo": 4294967295,
+                      "hi": 0
+                    }
+                  },
+                  "tail": {
+                    "$": "Con",
+                    "head": {
+                      "$": "N111Bin",
+                      "name": "value",
+                      "typ": {
+                        "$": "N111U64"
+                      },
+                      "op": "sub",
+                      "left": {
+                        "$": "N111Local",
+                        "name": "p112_s_a"
+                      },
+                      "right": {
+                        "$": "N111Local",
+                        "name": "p112_s_b"
+                      }
+                    },
+                    "tail": {
+                      "$": "Con",
+                      "head": {
+                        "$": "N111Bin",
+                        "name": "value",
+                        "typ": {
+                          "$": "N111U64"
+                        },
+                        "op": "and",
+                        "left": {
+                          "$": "N111Local",
+                          "name": "value"
+                        },
+                        "right": {
+                          "$": "N111Const",
+                          "lo": 4294967295,
+                          "hi": 0
+                        }
+                      },
+                      "tail": {
+                        "$": "Con",
+                        "head": {
+                          "$": "N111Store",
+                          "typ": {
+                            "$": "N111U64"
+                          },
+                          "base": {
+                            "$": "N111Local",
+                            "name": "scratch"
+                          },
+                          "offset": 0,
+                          "value": {
+                            "$": "N111Local",
+                            "name": "value"
+                          }
+                        },
+                        "tail": {
+                          "$": "Con",
+                          "head": {
+                            "$": "N111Call",
+                            "name": "reply",
+                            "typ": {
+                              "$": "N111U64"
+                            },
+                            "symbol": "p111_rt_return",
+                            "args": {
+                              "$": "Con",
+                              "head": {
+                                "$": "N111Arg",
+                                "typ": {
+                                  "$": "N111Ptr"
+                                },
+                                "value": {
+                                  "$": "N111Local",
+                                  "name": "state"
+                                }
+                              },
+                              "tail": {
+                                "$": "Con",
+                                "head": {
+                                  "$": "N111Arg",
+                                  "typ": {
+                                    "$": "N111Ptr"
+                                  },
+                                  "value": {
+                                    "$": "N111Local",
+                                    "name": "scratch"
+                                  }
+                                },
+                                "tail": {
+                                  "$": "Con",
+                                  "head": {
+                                    "$": "N111Arg",
+                                    "typ": {
+                                      "$": "N111U32"
+                                    },
+                                    "value": {
+                                      "$": "N111Const",
+                                      "lo": 1,
+                                      "hi": 0
+                                    }
+                                  },
+                                  "tail": {
+                                    "$": "Nil"
+                                  }
+                                }
+                              }
+                            }
+                          },
+                          "tail": {
+                            "$": "Con",
+                            "head": {
+                              "$": "N111Return",
+                              "value": {
+                                "$": "N111Local",
+                                "name": "reply"
+                              }
+                            },
+                            "tail": {
+                              "$": "Nil"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "referencedIds": {
+        "functions": [],
+        "constructors": []
+      },
+      "calls": 3,
+      "branches": 0
+    },
+    {
+      "index": 1,
+      "name": "P134Legacy-74-91",
+      "definition": "$p111.k.21850",
+      "capture": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase144/render-capture-lexer02/P134Legacy-74-91.json",
+        "bytes": 1280071,
+        "sha256": "21f90afe4ee943be311f809ee3063cd169318babe553d4c3398a3aa624999484"
+      },
+      "completeSegment": {
+        "$": "N111Segment",
+        "name": "$p111.k.21850",
+        "arity": 1,
+        "result": 1,
+        "incoming": 0,
+        "flags": 0,
+        "body": {
+          "$": "Con",
+          "head": {
+            "$": "N111Alloca",
+            "name": "scratch",
+            "bytes": 2048,
+            "align": 8
+          },
+          "tail": {
+            "$": "Con",
+            "head": {
+              "$": "N111Call",
+              "name": "v_4294945447",
+              "typ": {
+                "$": "N111U64"
+              },
+              "symbol": "p111_rt_reg_get",
+              "args": {
+                "$": "Con",
+                "head": {
+                  "$": "N111Arg",
+                  "typ": {
+                    "$": "N111Ptr"
+                  },
+                  "value": {
+                    "$": "N111Local",
+                    "name": "state"
+                  }
+                },
+                "tail": {
+                  "$": "Con",
+                  "head": {
+                    "$": "N111Arg",
+                    "typ": {
+                      "$": "N111U32"
+                    },
+                    "value": {
+                      "$": "N111Const",
+                      "lo": 0,
+                      "hi": 0
+                    }
+                  },
+                  "tail": {
+                    "$": "Nil"
+                  }
+                }
+              }
+            },
+            "tail": {
+              "$": "Con",
+              "head": {
+                "$": "N111Store",
+                "typ": {
+                  "$": "N111U64"
+                },
+                "base": {
+                  "$": "N111Local",
+                  "name": "scratch"
+                },
+                "offset": 0,
+                "value": {
+                  "$": "N111Local",
+                  "name": "v_4294945447"
+                }
+              },
+              "tail": {
+                "$": "Con",
+                "head": {
+                  "$": "N111Call",
+                  "name": "value",
+                  "typ": {
+                    "$": "N111U64"
+                  },
+                  "symbol": "p111_rt_closure",
+                  "args": {
+                    "$": "Con",
+                    "head": {
+                      "$": "N111Arg",
+                      "typ": {
+                        "$": "N111Ptr"
+                      },
+                      "value": {
+                        "$": "N111Local",
+                        "name": "state"
+                      }
+                    },
+                    "tail": {
+                      "$": "Con",
+                      "head": {
+                        "$": "N111Arg",
+                        "typ": {
+                          "$": "N111U32"
+                        },
+                        "value": {
+                          "$": "N111FuncId",
+                          "name": "$p111.k.21851"
+                        }
+                      },
+                      "tail": {
+                        "$": "Con",
+                        "head": {
+                          "$": "N111Arg",
+                          "typ": {
+                            "$": "N111Ptr"
+                          },
+                          "value": {
+                            "$": "N111Local",
+                            "name": "scratch"
+                          }
+                        },
+                        "tail": {
+                          "$": "Con",
+                          "head": {
+                            "$": "N111Arg",
+                            "typ": {
+                              "$": "N111U32"
+                            },
+                            "value": {
+                              "$": "N111Const",
+                              "lo": 1,
+                              "hi": 0
+                            }
+                          },
+                          "tail": {
+                            "$": "Nil"
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "tail": {
+                  "$": "Con",
+                  "head": {
+                    "$": "N111Store",
+                    "typ": {
+                      "$": "N111U64"
+                    },
+                    "base": {
+                      "$": "N111Local",
+                      "name": "scratch"
+                    },
+                    "offset": 0,
+                    "value": {
+                      "$": "N111Local",
+                      "name": "value"
+                    }
+                  },
+                  "tail": {
+                    "$": "Con",
+                    "head": {
+                      "$": "N111Call",
+                      "name": "reply",
+                      "typ": {
+                        "$": "N111U64"
+                      },
+                      "symbol": "p111_rt_return",
+                      "args": {
+                        "$": "Con",
+                        "head": {
+                          "$": "N111Arg",
+                          "typ": {
+                            "$": "N111Ptr"
+                          },
+                          "value": {
+                            "$": "N111Local",
+                            "name": "state"
+                          }
+                        },
+                        "tail": {
+                          "$": "Con",
+                          "head": {
+                            "$": "N111Arg",
+                            "typ": {
+                              "$": "N111Ptr"
+                            },
+                            "value": {
+                              "$": "N111Local",
+                              "name": "scratch"
+                            }
+                          },
+                          "tail": {
+                            "$": "Con",
+                            "head": {
+                              "$": "N111Arg",
+                              "typ": {
+                                "$": "N111U32"
+                              },
+                              "value": {
+                                "$": "N111Const",
+                                "lo": 1,
+                                "hi": 0
+                              }
+                            },
+                            "tail": {
+                              "$": "Nil"
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "tail": {
+                      "$": "Con",
+                      "head": {
+                        "$": "N111Return",
+                        "value": {
+                          "$": "N111Local",
+                          "name": "reply"
+                        }
+                      },
+                      "tail": {
+                        "$": "Nil"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "referencedIds": {
+        "functions": [
+          {
+            "name": "$p111.k.21851",
+            "id": 111
+          }
+        ],
+        "constructors": []
+      },
+      "calls": 3,
+      "branches": 0
+    },
+    {
+      "index": 2,
+      "name": "P134Legacy-149-139",
+      "definition": "$direct.$native.U32.mod",
+      "capture": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase144/render-capture-lexer02/P134Legacy-149-139.json",
+        "bytes": 1280802,
+        "sha256": "ffd3d09068439683216288635ddf548ed9e46ee54fbe12bf5a501d1947b26d61"
+      },
+      "completeSegment": {
+        "$": "N111Segment",
+        "name": "$direct.$native.U32.mod",
+        "arity": 2,
+        "result": 1,
+        "incoming": 0,
+        "flags": 0,
+        "body": {
+          "$": "Con",
+          "head": {
+            "$": "N111Alloca",
+            "name": "scratch",
+            "bytes": 2048,
+            "align": 8
+          },
+          "tail": {
+            "$": "Con",
+            "head": {
+              "$": "N111Call",
+              "name": "v_4294928633",
+              "typ": {
+                "$": "N111U64"
+              },
+              "symbol": "p111_rt_reg_get",
+              "args": {
+                "$": "Con",
+                "head": {
+                  "$": "N111Arg",
+                  "typ": {
+                    "$": "N111Ptr"
+                  },
+                  "value": {
+                    "$": "N111Local",
+                    "name": "state"
+                  }
+                },
+                "tail": {
+                  "$": "Con",
+                  "head": {
+                    "$": "N111Arg",
+                    "typ": {
+                      "$": "N111U32"
+                    },
+                    "value": {
+                      "$": "N111Const",
+                      "lo": 0,
+                      "hi": 0
+                    }
+                  },
+                  "tail": {
+                    "$": "Nil"
+                  }
+                }
+              }
+            },
+            "tail": {
+              "$": "Con",
+              "head": {
+                "$": "N111Call",
+                "name": "v_4294928632",
+                "typ": {
+                  "$": "N111U64"
+                },
+                "symbol": "p111_rt_reg_get",
+                "args": {
+                  "$": "Con",
+                  "head": {
+                    "$": "N111Arg",
+                    "typ": {
+                      "$": "N111Ptr"
+                    },
+                    "value": {
+                      "$": "N111Local",
+                      "name": "state"
+                    }
+                  },
+                  "tail": {
+                    "$": "Con",
+                    "head": {
+                      "$": "N111Arg",
+                      "typ": {
+                        "$": "N111U32"
+                      },
+                      "value": {
+                        "$": "N111Const",
+                        "lo": 1,
+                        "hi": 0
+                      }
+                    },
+                    "tail": {
+                      "$": "Nil"
+                    }
+                  }
+                }
+              },
+              "tail": {
+                "$": "Con",
+                "head": {
+                  "$": "N111Store",
+                  "typ": {
+                    "$": "N111U64"
+                  },
+                  "base": {
+                    "$": "N111Local",
+                    "name": "scratch"
+                  },
+                  "offset": 0,
+                  "value": {
+                    "$": "N111Local",
+                    "name": "v_4294928633"
+                  }
+                },
+                "tail": {
+                  "$": "Con",
+                  "head": {
+                    "$": "N111Store",
+                    "typ": {
+                      "$": "N111U64"
+                    },
+                    "base": {
+                      "$": "N111Local",
+                      "name": "scratch"
+                    },
+                    "offset": 8,
+                    "value": {
+                      "$": "N111Local",
+                      "name": "v_4294928632"
+                    }
+                  },
+                  "tail": {
+                    "$": "Con",
+                    "head": {
+                      "$": "N111Call",
+                      "name": "value",
+                      "typ": {
+                        "$": "N111U64"
+                      },
+                      "symbol": "p111_rt_op",
+                      "args": {
+                        "$": "Con",
+                        "head": {
+                          "$": "N111Arg",
+                          "typ": {
+                            "$": "N111Ptr"
+                          },
+                          "value": {
+                            "$": "N111Local",
+                            "name": "state"
+                          }
+                        },
+                        "tail": {
+                          "$": "Con",
+                          "head": {
+                            "$": "N111Arg",
+                            "typ": {
+                              "$": "N111U32"
+                            },
+                            "value": {
+                              "$": "N111Const",
+                              "lo": 19,
+                              "hi": 0
+                            }
+                          },
+                          "tail": {
+                            "$": "Con",
+                            "head": {
+                              "$": "N111Arg",
+                              "typ": {
+                                "$": "N111Ptr"
+                              },
+                              "value": {
+                                "$": "N111Local",
+                                "name": "scratch"
+                              }
+                            },
+                            "tail": {
+                              "$": "Con",
+                              "head": {
+                                "$": "N111Arg",
+                                "typ": {
+                                  "$": "N111U32"
+                                },
+                                "value": {
+                                  "$": "N111Const",
+                                  "lo": 2,
+                                  "hi": 0
+                                }
+                              },
+                              "tail": {
+                                "$": "Nil"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "tail": {
+                      "$": "Con",
+                      "head": {
+                        "$": "N111Store",
+                        "typ": {
+                          "$": "N111U64"
+                        },
+                        "base": {
+                          "$": "N111Local",
+                          "name": "scratch"
+                        },
+                        "offset": 0,
+                        "value": {
+                          "$": "N111Local",
+                          "name": "value"
+                        }
+                      },
+                      "tail": {
+                        "$": "Con",
+                        "head": {
+                          "$": "N111Call",
+                          "name": "reply",
+                          "typ": {
+                            "$": "N111U64"
+                          },
+                          "symbol": "p111_rt_return",
+                          "args": {
+                            "$": "Con",
+                            "head": {
+                              "$": "N111Arg",
+                              "typ": {
+                                "$": "N111Ptr"
+                              },
+                              "value": {
+                                "$": "N111Local",
+                                "name": "state"
+                              }
+                            },
+                            "tail": {
+                              "$": "Con",
+                              "head": {
+                                "$": "N111Arg",
+                                "typ": {
+                                  "$": "N111Ptr"
+                                },
+                                "value": {
+                                  "$": "N111Local",
+                                  "name": "scratch"
+                                }
+                              },
+                              "tail": {
+                                "$": "Con",
+                                "head": {
+                                  "$": "N111Arg",
+                                  "typ": {
+                                    "$": "N111U32"
+                                  },
+                                  "value": {
+                                    "$": "N111Const",
+                                    "lo": 1,
+                                    "hi": 0
+                                  }
+                                },
+                                "tail": {
+                                  "$": "Nil"
+                                }
+                              }
+                            }
+                          }
+                        },
+                        "tail": {
+                          "$": "Con",
+                          "head": {
+                            "$": "N111Return",
+                            "value": {
+                              "$": "N111Local",
+                              "name": "reply"
+                            }
+                          },
+                          "tail": {
+                            "$": "Nil"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "referencedIds": {
+        "functions": [],
+        "constructors": []
+      },
+      "calls": 4,
+      "branches": 0
+    }
+  ],
+  "bend": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase147/render-fixtures.bend",
+    "bytes": 3384,
+    "sha256": "6f2a6111c688db3cafbf118bf82c680fd44691a6675b655aba6e9a8fe7674e87"
+  },
+  "scope": "Exact complete three retained straight-line N111Segment values from a prior independently output-matched Lexer capture. Only unused ID entries/context fields are omitted, after enumerating all FuncId/CtorId references. Rendering baseline uses current original scalar policy, not a claim to reproduce the old private/optimized wrapper text. Native timing and full current-pipeline qualification remain pending."
+}

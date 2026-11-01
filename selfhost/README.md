@@ -37,7 +37,7 @@ selfhost/bend input.bend -o output.c
 ```
 
 Run these from the repository root with their selected package assets available.
-Source/tool consolidation does not silently promote another installed release.
+The qualified consolidation release is selected by [`manifests/current.json`](manifests/current.json): JS B2, public native C N1, and qualified QBE N2. The original generation and source-equivalence evidence remain explicit.
 The JS package and public native C package retain their recorded selections until
 an explicit qualified promotion. A newly assembled profile or generated image
 must retain its actual host/stage/target and capability binding; it does not

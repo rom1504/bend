@@ -1,5 +1,7 @@
 # The Bend compiler written in Bend
 
+> Historical architecture record. For the maintained compiler, current release, and runnable build/profile/benchmark commands, see [the current workflow](self_hosted/workflow.md). Historical phase implementations are recoverable through the Git-backed history index.
+
 The compiler in [`selfhost/`](../selfhost/README.md) implements the frontend,
 dependent checker, normalizer, interpreter and JavaScript/native emitters in
 Bend. JavaScript handles filesystem/process orchestration, primitives and public

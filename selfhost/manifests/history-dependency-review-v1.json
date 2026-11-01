@@ -15,6 +15,18 @@
       "consumerSha256": "1dcf1318f2095301ddea6852dccd6d2b58f346870449637af12a69f7347fd09b",
       "classification": "incidental-directory-copy",
       "reason": "The explicit harnessFiles list contains checked/upstream support and excludes prototype.mjs. The generic conformance output-directory literal is not a dependency on the obsolete adapter."
+    },
+    {
+      "target": "selfhost/tools/performance/phase86/guard.py",
+      "consumer": "selfhost/tools/build/session/portability.py",
+      "consumerSha256": "c74f704cd4844d542b7ce0e1930582d54571499a57e88f45d38e6d2238780e0e",
+      "reason": "Line101 asserts the relocated tree does not contain selfhost/tools/performance. This is an absence assertion, not a read or import of either historical guard. Removing these old methods preserves the intended negative property. Root reviews this exact-consumer exception with the final tranche."
+    },
+    {
+      "target": "selfhost/tools/performance/programs/support.py",
+      "consumer": "selfhost/tools/build/session/portability.py",
+      "consumerSha256": "c74f704cd4844d542b7ce0e1930582d54571499a57e88f45d38e6d2238780e0e",
+      "reason": "Line101 asserts the relocated tree does not contain selfhost/tools/performance. This is an absence assertion, not a read or import of either historical guard. Removing these old methods preserves the intended negative property. Root reviews this exact-consumer exception with the final tranche."
     }
   ]
 }

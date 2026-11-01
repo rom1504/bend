@@ -132,6 +132,7 @@ def dependencies(root, proposed):
                 queue.append(path)
     visited = set()
     scheduled = {path.relative_to(root).as_posix() for path in queue}
+    roots = set(scheduled)
     while queue:
         path = queue.pop()
         relative = path.relative_to(root).as_posix()
@@ -195,6 +196,18 @@ def dependencies(root, proposed):
             blockers[target] = [record for record in blockers[target] if record['consumer'] != consumer]
             if not blockers[target]:
                 del blockers[target]
+    # An exact reviewed edge can disconnect an entire historical subtree.
+    # References from that now-unreachable retired code are not active consumers.
+    reachable = set(roots)
+    while True:
+        discovered = {target for target, refs in blockers.items()
+                      if any(ref['consumer'] in reachable for ref in refs)}
+        if discovered <= reachable:
+            break
+        reachable.update(discovered)
+    blockers = {target: [ref for ref in refs if ref['consumer'] in reachable]
+                for target, refs in blockers.items()}
+    blockers = {target: refs for target, refs in blockers.items() if refs}
     return dict(blockers), inputs
 
 

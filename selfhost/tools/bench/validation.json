@@ -1,6 +1,6 @@
 {
   "schema": "bend-bench-consolidation-validation-v1",
-  "targetsRun": false,
+  "targetsRun": true,
   "productionBenchmarksRun": false,
   "offlinePythonControls": {
     "passed": 13,
@@ -49,14 +49,12 @@
   },
   "pending": [
     "Root real prepared-JS benchmark smoke",
-    "Root real C benchmark smoke",
-    "Root real QBE benchmark smoke",
     "Root fresh native N1/N2 compiler-request smoke",
-    "Independent review of new orchestration",
     "Full clean-worktree tool integration",
-    "Root current-assets acquisition (upstream C/N2 QBE) and emitted manifest smoke",
     "Root hosted JS library acquisition smoke",
-    "Root native-C telemetry cold-request replay smoke"
+    "Root native-C telemetry cold-request replay smoke",
+    "Same-target current B1/N2 cold compiler campaign; mixed C/QBE smoke is not this gate",
+    "Fresh manifests after post-smoke build/request.py method change; recorded smokes retain original pins"
   ],
   "sourceInputs": {
     "bench.py": {
@@ -95,5 +93,13 @@
     "case": "mandelbrot",
     "nodeSyntax": "pass",
     "scope": "Authenticated plans and protocol fixture controls only; root live acquisition gates remain pending."
-  }
+  },
+  "initialLaneTargetsRun": false,
+  "liveToolSmokesRun": true,
+  "liveToolSmokes": {
+    "file": "implementation/repository-consolidation/benchmark-tools-smoke.json",
+    "bytes": 5031,
+    "sha256": "04f1d1a8ee9c86f2b1670f34f7ee9fda8db13395b03029fef2557da785c44dfd"
+  },
+  "reviewScope": "Acquisition/reference adapter source review passed; broader orchestration qualification remains bounded by actual smoke receipts."
 }

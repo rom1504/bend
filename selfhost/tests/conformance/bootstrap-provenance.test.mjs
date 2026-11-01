@@ -26,7 +26,14 @@ function fixture(){
 }
 test('bootstrap captures actual upstream/compiler/build tools with clean pinned identity',()=>{
   const f=fixture();try{
-    const provenance=captureBootstrapProvenance(f.root,f.options);assert.equal(provenance.inputs.length,4);assert.equal(provenance.upstream.trackedSourcesClean,true);
+    const provenance=captureBootstrapProvenance(f.root,f.options);
+    // Maintained assembly calls the shared Python linker even when its caller
+    // supplies an explicit tool list. Its identity must remain protected too.
+    const expected=[...['bend.ts','comp.ts','base.bend'].map(name=>['upstream',f.file('bend2/'+name)]),
+      ['host-tool',f.file('builder.mjs')],['host-tool',path.resolve(import.meta.dirname,'../../tools/build/source.py')]];
+    const byFile=(a,b)=>a[1].localeCompare(b[1]);
+    assert.deepEqual(provenance.inputs.map(({role,file})=>[role,file]).sort(byFile),expected.sort(byFile));
+    assert.equal(provenance.upstream.trackedSourcesClean,true);
     assert.equal(provenance.verifiedAfterBuild,false);assert.ok(provenance.inputs.every(input=>input.canonicalPath===fs.realpathSync(input.file)&&input.sha256.length===64));
     assert.equal(verifyBootstrapProvenance(provenance),true);
     assert.throws(()=>captureBootstrapProvenance(f.root,{...f.options,expectedRevision:'wrong'}),/requires upstream wrong/);

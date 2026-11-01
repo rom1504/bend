@@ -3,19 +3,19 @@
   "complete": true,
   "realRepositoryApplied": false,
   "compilerTargetsRun": false,
-  "tests": 16,
+  "tests": 20,
   "result": "pass",
   "scope": "Only disposable temporary Git repositories were modified. Full working-tree/index retirement remains root approval gated.",
   "inputs": [
     {
       "path": "selfhost/tools/history/retire.py",
-      "sha256": "2b770a22c6ba13c50886efde74afa9c29e5b78e54c00836ef6a7c19dea1c6b86",
-      "bytes": 19859
+      "sha256": "c921ce065aa33e88470e49c699bbf2faedb7a52cbdab546c070a073188f28a26",
+      "bytes": 20525
     },
     {
       "path": "selfhost/tools/history/test_retire.py",
-      "sha256": "ca619ffc6cf91a01591b652892a7725d06e76a99768f9c3c87b4ea6a05a93a98",
-      "bytes": 12480
+      "sha256": "873856c063c4deea5ff1f688d629afd8faa2691b2dccd6f03bb66c9acc073823",
+      "bytes": 16310
     },
     {
       "path": "selfhost/tools/history/history_data.py",
@@ -24,8 +24,8 @@
     },
     {
       "path": "selfhost/tools/history/inventory.py",
-      "sha256": "98f498671fc111467c858e070962b768c6cd065295a0da156bfc4bd683aff883",
-      "bytes": 8088
+      "sha256": "4566a9309982a145e001f51b212b6662d18731aa6ab53b516f11bcc2cfce0cba",
+      "bytes": 10398
     },
     {
       "path": "selfhost/tools/history/restore.py",
@@ -34,13 +34,13 @@
     },
     {
       "path": "selfhost/manifests/history-inventory-v2.json.gz",
-      "sha256": "c8b063c707b10aa981ca11af505c4b3c8f4f9eff6390c0ee7de3df323418e839",
-      "bytes": 4240257
+      "sha256": "bd68153cc6a1feec0258789f08f62c66b883f84218f870ec1e56eb3fbc6369dd",
+      "bytes": 4241597
     },
     {
       "path": "selfhost/manifests/history-dependency-review-v1.json",
-      "sha256": "6bbf360bbe9c8bc845f7838c7d9f4fe248967b70451af7245d175c63df1f00e4",
-      "bytes": 1131
+      "sha256": "d0dff9224a9be521a80d2b3503151c1592c2ac355c3a23f97ade339ec169202a",
+      "bytes": 2226
     }
   ],
   "coverage": [
@@ -59,6 +59,10 @@
     "numeric split archive variants and protected native prefixes",
     "complete ordered archive groups and refusal of omitted/duplicate parts",
     "group metadata rejects mismatched blob identities",
-    "exact Git split-part restoration without joining or repacking"
+    "exact Git split-part restoration without joining or repacking",
+    "policy refresh preserves all historical recovery identities and original dirty pins",
+    "pending native migration overrides explicit retirement prefix",
+    "explicit final paths remain migration-gated and do not select neighboring independent tests",
+    "reviewed absence edges disconnect retired subtrees while preserving independent real consumers"
   ]
 }

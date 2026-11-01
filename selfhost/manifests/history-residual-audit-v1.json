@@ -1,0 +1,156 @@
+{
+  "schema": "bend-history-residual-audit-v1",
+  "head": "739cb09dff785ef14ee4ba4a97b74a9f8ef58f9f",
+  "readOnly": true,
+  "realRepositoryApplied": false,
+  "scope": "Tracked HEAD paths after the first retirement; unrelated untracked/dirty research is not a candidate. Source-module audit is separately owned.",
+  "recoveryIndex": {
+    "file": "selfhost/manifests/history-inventory-v2.json.gz",
+    "sha256": "c8b063c707b10aa981ca11af505c4b3c8f4f9eff6390c0ee7de3df323418e839"
+  },
+  "firstTrancheReceipt": "implementation/repository-consolidation/history-retirement-receipt.json.gz",
+  "obsoleteSelfcheckCandidates": {
+    "files": [
+      {
+        "path": "selfhost/dist/selfcheck/checker-api.mjs",
+        "gitBlob": "6230bdbbe5a3fd6bad99ba73e2fa555461a76d1f",
+        "gitMode": "100644",
+        "bytes": 106376
+      },
+      {
+        "path": "selfhost/dist/selfcheck/checker-profiled-api.mjs",
+        "gitBlob": "937bb1f75023a38321cea07c2b2195594a2b053b",
+        "gitMode": "100644",
+        "bytes": 106422
+      },
+      {
+        "path": "selfhost/dist/selfcheck/compiler.bend",
+        "gitBlob": "d4a08c2c69037827e57b9c0fa58c1750df796848",
+        "gitMode": "100644",
+        "bytes": 386323
+      },
+      {
+        "path": "selfhost/dist/selfcheck/frontend-api.mjs",
+        "gitBlob": "a16d53bfa954f69e853c3a26202a5436d89a3f66",
+        "gitMode": "100644",
+        "bytes": 250221
+      }
+    ],
+    "bytes": 849342,
+    "literalDependencies": {},
+    "decision": "Candidate only; root review and exact recovery-index extension required before retirement."
+  },
+  "uncheckedPrototype": {
+    "files": [
+      {
+        "path": "selfhost/dist/bend2c.mjs",
+        "gitBlob": "c65347ebe1d4ee5f4b78f54b2f81eb87f5279a05",
+        "gitMode": "100644",
+        "bytes": 125543
+      }
+    ],
+    "dependencies": {
+      "selfhost/dist/bend2c.mjs": [
+        {
+          "consumer": "selfhost/legacy-cli.mjs",
+          "line": 18
+        }
+      ]
+    },
+    "decision": "Hold until legacy-cli.mjs is retired or replaced; prototype/dev-wrapper audit owner handles exact route review."
+  },
+  "selectedOldJsRelease": {
+    "files": [
+      {
+        "path": "selfhost/dist/release-lineage/checked-api.mjs",
+        "gitBlob": "a28de7c2c0cf540030ae4a972a8c92bff5e35477",
+        "gitMode": "100644",
+        "bytes": 2287938
+      },
+      {
+        "path": "selfhost/dist/release-lineage/equality.mjs",
+        "gitBlob": "bddec57ebadafc750d0557ecbeb776bd46243825",
+        "gitMode": "100644",
+        "bytes": 31254
+      },
+      {
+        "path": "selfhost/dist/release-lineage/generator-api.mjs",
+        "gitBlob": "d8688c16b9518316de0c601541d3cf7f701230d2",
+        "gitMode": "100644",
+        "bytes": 2307495
+      },
+      {
+        "path": "selfhost/dist/release-lineage/self-source.bend",
+        "gitBlob": "eb250535b4071a82af3350ee1bc271f8487cad81",
+        "gitMode": "100644",
+        "bytes": 1694830
+      },
+      {
+        "path": "selfhost/dist/typed-api.mjs",
+        "gitBlob": "48963e28b3252750041cf57629a5ad9d8a5b508d",
+        "gitMode": "100644",
+        "bytes": 4745566
+      }
+    ],
+    "bytes": 11067083,
+    "decision": "Hold until current.json and public launchers select the qualified maintained release."
+  },
+  "retainedHistoricalAssets": {
+    "bySuffix": {
+      ".bend": {
+        "files": 657,
+        "bytes": 1321868
+      },
+      ".c": {
+        "files": 15,
+        "bytes": 91412
+      },
+      ".py": {
+        "files": 7,
+        "bytes": 29651
+      },
+      ".mjs": {
+        "files": 8,
+        "bytes": 67852
+      }
+    },
+    "largestBytes": 25853,
+    "inspection": "Remaining historical code is small controls, fixtures, proof statements, independent oracles and two explicit retained guard/supervisor helpers. No additional large compiler snapshot found in these paths. This is a candidate-size/classification audit, not a semantic proof of every fixture."
+  },
+  "nativeFinal": {
+    "files": 52,
+    "bytes": 62777482,
+    "pending": true,
+    "literalDependencies": {
+      "selfhost/tools/native/launch.py": [
+        {
+          "consumer": "selfhost/native.py",
+          "line": 5
+        }
+      ],
+      "selfhost/tools/native/selection.json": [
+        {
+          "consumer": "selfhost/tools/native/launch.py",
+          "line": 8
+        }
+      ]
+    },
+    "catalogIdentitiesExact": true,
+    "prerequisites": [
+      "Qualified maintained package includes every required runtime/asset byte independently of tools/native/.",
+      "current.json and both public launchers select that package.",
+      "Current jobs reading the old surface finish, and their receipts are preserved.",
+      "Root reviews release controls and completes dynamic dependency review."
+    ],
+    "policyEdits": {
+      "removePendingMigrationPrefix": "selfhost/tools/native/",
+      "addRetirePrefix": "selfhost/tools/native/"
+    },
+    "commands": [
+      "python3 selfhost/tools/history/inventory.py --refresh-policy-only",
+      "python3 selfhost/tools/history/retire.py plan --prefix selfhost/tools/native/ --out selfhost/build/consolidation/history-retirement/native-final.json",
+      "python3 selfhost/tools/history/retire.py apply --plan selfhost/build/consolidation/history-retirement/native-final.json --sha256 NEW_REVIEWED_PLAN_SHA256 --receipt implementation/repository-consolidation/native-retirement-receipt.json.gz"
+    ],
+    "expectedPlan": "Exactly52 baseline identities, no first-tranche paths, zero active dependency exclusions. Do not apply before prerequisites; current policy remains blocked."
+  }
+}

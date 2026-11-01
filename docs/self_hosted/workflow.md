@@ -32,6 +32,19 @@ another release. Package availability, supported imports/effects and exact
 image identities remain those of the selected public package until an explicit
 qualified promotion updates it.
 
+Generated program targets remain available through explicit interfaces:
+
+| Program target | Current route |
+| --- | --- |
+| JavaScript | `node selfhost/cli.mjs input.bend -o output.mjs`; maintained `request.py --host js --target js --mode live` also accepts an explicitly checked hosted API and its binding. |
+| C | `selfhost/bend input.bend -o output.c`; maintained `request.py --host native --target c` accepts the matching native-C or public-CLI binding and `assets-c-request.json`. The pinned C toolchain builds emitted C separately. |
+| QBE/native | Maintained `request.py --target qbe` emits IR; `native.py` constructs its executable using the explicit QBE/runtime/assembler/linker assets. The public CLI is not a QBE selector. |
+
+Host and stage must match the selected image. The original45 benchmark catalog
+uses JS callable libraries; its native45 catalog uses the corresponding C/QBE
+repetition wrappers. The same benchmark entry can execute all three targets, but
+the current two-case migration smoke covers upstream C and N2 QBE only.
+
 The maintained source has three entry profiles:
 
 | Profile | Entry/API purpose | Qualification boundary |
@@ -142,14 +155,19 @@ a checked B1 API and require explicit `--source`, `--out`, `--upstream` and
 `bootstrap:native` selects the native generation workflow. Neither installs its
 result. `build` / `build:native` select direct-QBE construction with explicit
 request/runtime/assets. Release installation and verification are separate from
-construction and must accept the maintained generation receipts; older release
-builders do not establish that compatibility. Use `--` to pass the selected
-tool's required arguments through npm.
+construction: `release` forwards to `release.py install --manifest PROMOTION --out
+FRESH_TRANSACTION`, `release:audit` forwards to `audit --manifest PROMOTION --out
+FRESH_REPORT`, and `verify:release` verifies `manifests/current.json` from the
+`selfhost` package directory. Verification requires an actually installed current
+manifest; the tool's presence is not a promotion. See the [release contract](../../selfhost/tools/build/RELEASE.md).
+Use `--` to pass required arguments through npm.
 
 `survey` and `conformance` use the maintained conformance runner. `test:source`
 is a metadata/source contract control requiring an explicit receipt; `test:build`
-runs synthetic build-adapter fixtures. These controls do not replace a real
-bootstrap, independent output qualification or compiler/program speed measurements.
+runs synthetic build-adapter fixtures. `test:self` requires explicit `--source`,
+`--api` and `--base`, or an independent `--frontend`/`--checker` pair instead of
+`--api`; optional `--report` must name a fresh file. These controls do not replace
+a real bootstrap, independent output qualification or compiler/program speed measurements.
 
 ## Keep the metrics separate
 

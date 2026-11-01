@@ -1,3 +1,9 @@
+# Current maintained compiler: repository consolidation
+
+[Report](../implementation/repository-consolidation/README.md) · [Current bindings](../selfhost/manifests/current.json) · [Workflow](../docs/self_hosted/workflow.md).
+
+Edit the one `selfhost/src/compiler.json` module tree. JS B2/B3 reproduce exactly; the public C N1 passes45 ordinary cases; qualified QBE N2 is preserved through full-product source equivalence. Use maintained build, benchmark, profiler, law and session tools; historical phase methods are recovered explicitly through the Git index, never imported by current builds. The next optimization objective remains complete cold compilation. This cleanup claims no new runtime speedup.
+
 # Latest qualified optimization: Phase146 retained accepted context
 
 [Report](../implementation/phase146/README.md) ·

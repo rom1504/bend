@@ -122,8 +122,6 @@ def main():
         destination = out / 'assets' / name
         destination.parent.mkdir(parents=True, exist_ok=True)
         destination.write_bytes(Path(row['file']).read_bytes())
-    starter = ROOT / 'selfhost/src/host/native-qbe-start.c'
-    inputs.append(pin(starter))
     for row in inputs:
         verify(row)
     receipt = dict(kind='bend-public-cli-source-profile', version=1, complete=True,
@@ -134,9 +132,7 @@ def main():
                    allOtherBodiesIdentical=True, versionText=version,
                    assetAuthority=package_pin, baseIdentity=base_identity, cacheStamp=cache_stamp,
                    assets={name: pin(out / 'assets' / name) for name in assets},
-                   foreignProvider=pin(out / 'native-os.c'), startup=pin(starter),
-                   linkContract={'extraSource': str(starter), 'flags': ['-Wl,--wrap=main'],
-                                 'generatedMainUnmodified': True},
+                   foreignProvider=pin(out / 'native-os.c'),
                    scope='One shared compiler, a public IO entry and exact effect-byte authentication. '
                          'No source checking, native build, fixed point, behavioral qualification or installation is inferred.')
     write_json(out / 'report.json', receipt)

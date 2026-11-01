@@ -7,7 +7,7 @@
     "node": ">=24"
   },
   "scripts": {
-    "dev": "node tools/development/workflow.mjs",
+    "dev": "node tools/build/hosted.mjs acquire",
     "bootstrap": "node tools/build/hosted.mjs acquire",
     "test": "node tools/smoke.mjs",
     "survey": "node tools/conformance/run.mjs --adapter tools/conformance/adapters/typed.mjs",

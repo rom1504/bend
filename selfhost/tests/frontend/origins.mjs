@@ -18,15 +18,18 @@ assert.deepEqual(origins.map(o=>o.$),['DSourceOrigin','DSourceOrigin']);
 for(const o of origins){assert.ok(o.begin>0);assert.equal(o.end-o.begin,o.source.length+1,'UTF16 source interval size');}
 assert.ok(origins[0].end<=origins[1].begin,'source intervals do not overlap');
 const terms=root=>{const out=[],todo=[root];while(todo.length){const t=todo.pop();if(!t||typeof t!=='object')continue;if(t.$==='KTerm')out.push(t);for(const v of Object.values(t))if(v&&typeof v==='object')todo.push(v);}return out;};
-for(const [definition,name,text,token] of [['dep.missing','dep.Missing',dep,'Missing'],['dep.wrong','dep.Other',dep,'Other{}'],['entry','dep.missing',main,'D.missing']]){
+// Canonical module identities use ns:name (upstream parse_qual and the Bend
+// f_qual_name). The source alias still uses D.missing at its original span.
+for(const [definition,name,text,token] of [['dep:missing','dep:Missing',dep,'Missing'],['dep:wrong','dep:Other',dep,'Other{}'],['entry','dep:missing',main,'D.missing']]){
  const owner=origins.find(o=>o.source===text),d=book.find(d=>d.name===definition);
+ assert.ok(d,'canonical imported declaration '+definition);
  const found=terms(d.value).filter(t=>t.name===name);assert.equal(found.length,1,definition);const t=found[0];
  assert.equal(text.slice(t.originBegin-owner.begin,t.originEnd-owner.begin),token,definition+' exact token');
- assert.equal(t.originBegin-owner.begin,text.indexOf(token,definition==='dep.wrong'?text.indexOf('def wrong'):0),definition+' UTF16 offset');
+ assert.equal(t.originBegin-owner.begin,text.indexOf(token,definition==='dep:wrong'?text.indexOf('def wrong'):0),definition+' UTF16 offset');
 }
 // Interval provenance is source-owned, so the retained definition argument no
 // longer filters records. This replaces the retired per-term DOrigin contract.
-for(const name of ['dep.missing','dep.wrong','entry','not-a-definition'])assert.deepEqual(api.f_load_origins_for('/origins/main.bend',sources,name),r,'source intervals are independent of definition selection');
+for(const name of ['dep:missing','dep:wrong','entry','not-a-definition'])assert.deepEqual(api.f_load_origins_for('/origins/main.bend',sources,name),r,'source intervals are independent of definition selection');
 const raws=array(sources),located=(source,begin)=>({$:'FLocatedSource',source,begin,end:begin+source.text.length+1});
 const overlap=api.f_load_origins('/origins/main.bend',list([located(raws[0],1),located(raws[1],2)]));
 assert.equal(overlap.result.error,'overlapping source intervals');assert.deepEqual(overlap.origins,nil);

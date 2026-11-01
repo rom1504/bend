@@ -2,6 +2,7 @@
 """Inventory exact historical Git blobs; never remove files or change the index."""
 import argparse
 import collections
+import copy
 import hashlib
 import json
 from pathlib import Path
@@ -37,6 +38,10 @@ def classify(path, policy):
         return 'blocked', 'stable-dependency-awaiting-migration'
     if any(path.startswith(prefix) for prefix in policy.get('pendingMigrationPrefixes', [])):
         return 'blocked', 'installed-assets-awaiting-migration'
+    if path in policy.get('retirePaths', []):
+        return 'retire', 'explicitly-reviewed-retired-file'
+    if any(path.startswith(prefix) for prefix in policy.get('retirePrefixes', [])):
+        return 'retire', 'explicitly-reviewed-retired-surface'
     if path.startswith('selfhost/tests/conformance/'):
         return 'keep', 'independent-conformance-harness-or-scientific-report'
     if path.startswith(('selfhost/dist/release-history/', 'selfhost/dist/phase1/', 'selfhost/dist/selfhost/')):
@@ -79,15 +84,50 @@ def archive_groups(files):
     return result
 
 
+def refresh_policy(previous, policy):
+    """Reclassify the complete recovery catalog without re-surveying the checkout."""
+    if previous.get('schema') != 'bend-history-inventory-v1' or not previous.get('proposalOnly'):
+        raise ValueError('Expected a proposal recovery inventory')
+    if previous['baselineCommit'] != policy['baselineCommit']:
+        raise ValueError('Policy refresh cannot change the recovery baseline')
+    result = copy.deepcopy(previous)
+    summary = collections.defaultdict(lambda: dict(files=0, bytes=0))
+    for entry in result['files']:
+        action, reason = classify(entry['path'], policy)
+        entry.update(action=action, reason=reason)
+        entry.pop('application', None)
+        if action == 'retire':
+            entry['application'] = ('index-only-preserve-working-bytes' if entry.get('workspaceProtected')
+                                    else 'review-before-removal')
+        summary[action]['files'] += 1
+        summary[action]['bytes'] += entry['bytes']
+    result['summary'] = dict(summary)
+    return result
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--policy', type=Path, default=DEFAULT_POLICY)
     parser.add_argument('--out', type=Path, default=ROOT/'selfhost/manifests/history-inventory-v2.json.gz')
+    parser.add_argument('--refresh-policy-only', action='store_true',
+                        help='Keep every recovery identity and original workspace pin; only refresh policy classifications')
     args = parser.parse_args()
     policy = json.loads(args.policy.read_text())
     assert policy['schema'] == 'bend-history-policy-v1'
     commit = policy['baselineCommit']
     assert git('rev-parse', commit+'^{commit}').decode().strip() == commit
+    if args.refresh_policy_only:
+        previous_sha = hash_file(args.out)
+        result = refresh_policy(read_json(args.out), policy)
+        result['method'] = dict(path=str(Path(__file__).relative_to(ROOT)), sha256=hash_file(Path(__file__)))
+        result['policy'] = dict(path=str(args.policy.relative_to(ROOT)), sha256=hash_file(args.policy))
+        result['policyRefresh'] = dict(previousIndexSha256=previous_sha,
+            recoveryIdentitiesPreserved=True, originalWorkspacePinsPreserved=True,
+            currentWorkingTreeResurveyed=False)
+        write_json(args.out, result)
+        print(json.dumps(dict(output=str(args.out), summary=result['summary'],
+                              recoveryRows=len(result['files']), policyOnly=True), indent=2))
+        return
     files = []
     for record in git('ls-tree', '-r', '-z', commit).decode().split('\0'):
         if not record:

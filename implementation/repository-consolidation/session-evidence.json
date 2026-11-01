@@ -1,0 +1,434 @@
+{
+  "kind": "bend-consolidation-session-evidence",
+  "version": 1,
+  "experimental": true,
+  "selected": false,
+  "complete": true,
+  "sourceAudit": {
+    "declarations": 609,
+    "changedBodies": [
+      "p140p_context_publish",
+      "p140p_def_header",
+      "p140p_type_ctor_header",
+      "p140p_named_top",
+      "p140p_def_context_header",
+      "p140p_scope_same",
+      "p140pl_aliases",
+      "p140v_raw_scans",
+      "p140n_raw"
+    ],
+    "missing": [],
+    "added": [
+      "P135MFrame",
+      "p135m_wrap",
+      "p135m_next"
+    ],
+    "overrides": []
+  },
+  "initialSource": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/consolidation/session-stage/session.bend",
+    "bytes": 3012579,
+    "sha256": "5fedc4036b4c434dc48eb60c37f190e045f05c47c18b7e4df4390a833ebbad48"
+  },
+  "initialApi": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/consolidation/session-api01/api.mjs",
+    "bytes": 2676666,
+    "sha256": "ff2d6f8389c6a759cc15bd249f3cdeff41ae27014a291f68666a44551df6ac88"
+  },
+  "semantic": {
+    "requests": 8,
+    "positiveProducts": 6,
+    "modeMatchedColdComparisons": 8,
+    "semanticRefusals": 2,
+    "realEditChangesCompleteProduct": true,
+    "noOpExercisesReuse": true
+  },
+  "render": [
+    {
+      "name": "cold-a",
+      "registryHits": 0,
+      "registryMisses": 10,
+      "renderHits": 0,
+      "renderMisses": 956
+    },
+    {
+      "name": "noop-a",
+      "registryHits": 10,
+      "registryMisses": 0,
+      "renderHits": 956,
+      "renderMisses": 0
+    },
+    {
+      "name": "edit-b",
+      "registryHits": 9,
+      "registryMisses": 1,
+      "renderHits": 952,
+      "renderMisses": 4
+    },
+    {
+      "name": "revert-a",
+      "registryHits": 9,
+      "registryMisses": 1,
+      "renderHits": 952,
+      "renderMisses": 4
+    },
+    {
+      "name": "type-error"
+    },
+    {
+      "name": "recover-b",
+      "registryHits": 9,
+      "registryMisses": 1,
+      "renderHits": 952,
+      "renderMisses": 4
+    },
+    {
+      "name": "parse-error"
+    },
+    {
+      "name": "recover-a",
+      "registryHits": 9,
+      "registryMisses": 1,
+      "renderHits": 952,
+      "renderMisses": 4
+    }
+  ],
+  "objects": [
+    {
+      "name": "cold",
+      "complete": true,
+      "reusedUnits": 0,
+      "builtUnits": 3,
+      "error": null
+    },
+    {
+      "name": "noop",
+      "complete": true,
+      "reusedUnits": 3,
+      "builtUnits": 0,
+      "error": null
+    },
+    {
+      "name": "edit",
+      "complete": true,
+      "reusedUnits": 2,
+      "builtUnits": 1,
+      "error": null
+    },
+    {
+      "name": "corrupt",
+      "complete": false,
+      "reusedUnits": null,
+      "builtUnits": null,
+      "error": "ValueError('Changed input: /home/ai/bend2/build/publish/bend/selfhost/build/consolidation/session-objects01/cache/82196e373905d6f1e066271db833cb936e502d352cdfa785086cd0a402c8cd2a/unit.o')"
+    }
+  ],
+  "programOutputs": [
+    {
+      "name": "cold",
+      "expected": "3\n",
+      "actual": "3\n",
+      "exit": 0
+    },
+    {
+      "name": "noop",
+      "expected": "3\n",
+      "actual": "3\n",
+      "exit": 0
+    },
+    {
+      "name": "edit",
+      "expected": "5\n",
+      "actual": "5\n",
+      "exit": 0
+    }
+  ],
+  "objectIdentityControls": [
+    "producer",
+    "runtime",
+    "tools",
+    "flags",
+    "methods",
+    "policySalt",
+    "kind",
+    "payload"
+  ],
+  "transportControls": 34,
+  "protocolControls": 12,
+  "portability": {
+    "complete": true,
+    "compilerTargetsRun": false,
+    "sourceModules": 207,
+    "source": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/consolidation/session-portability01/tree/selfhost/build/compiler.bend",
+      "bytes": 3010912,
+      "sha256": "00940ed508e7d1456dd19bee01b0d2e16ac227fdf13ac306e805a1e4c982fb5e"
+    },
+    "explicitAssetPins": 7,
+    "originalWorkspaceAccesses": 0,
+    "preparedBaseRelocation": "refused as required"
+  },
+  "portabilityCommands": [
+    {
+      "label": "assemble",
+      "exit": 0
+    },
+    {
+      "label": "session-prepare",
+      "exit": 0
+    },
+    {
+      "label": "assets-verify",
+      "exit": 0
+    },
+    {
+      "label": "fixtures",
+      "exit": 0
+    },
+    {
+      "label": "session-help",
+      "exit": 0
+    },
+    {
+      "label": "objects-help",
+      "exit": 0
+    },
+    {
+      "label": "transport",
+      "exit": 0
+    },
+    {
+      "label": "protocol",
+      "exit": 0
+    },
+    {
+      "label": "prepared-path-refusal",
+      "exit": 1
+    }
+  ],
+  "evidence": [
+    {
+      "file": "selfhost/build/consolidation/session-stage/source-audit.json",
+      "bytes": 86006,
+      "sha256": "fad217d674273d5a5caab3af11b103b6d33f97fabc48e39a74dc7cebe013c9fa"
+    },
+    {
+      "file": "selfhost/build/consolidation/session-stage/source.json",
+      "bytes": 918,
+      "sha256": "7e17a3f35e262095bec3bb3e7ef84df1fa5477efcdef0f25095b7a296a7c41ff"
+    },
+    {
+      "file": "selfhost/build/consolidation/session-api01/report.json",
+      "bytes": 5073,
+      "sha256": "bf79837b99e46b3dcbc104d2450340b5fc62c74f93dffd457fd52c86cf78d7c0"
+    },
+    {
+      "file": "selfhost/build/consolidation/session-semantic01/hosted.json",
+      "bytes": 12721,
+      "sha256": "9fa7f069e0ba316b07580141772885472dd910c4679f099d7b21e36e31ec193e"
+    },
+    {
+      "file": "selfhost/build/consolidation/session-semantic-controls01/report.json",
+      "bytes": 802,
+      "sha256": "7f3fc231cf2d6f3b92a16396a8a0ff4b477f48ad84f6a2b47e2fd626e67e9cb5"
+    },
+    {
+      "file": "selfhost/build/consolidation/session-objects01/report.json",
+      "bytes": 5372,
+      "sha256": "e8318f6810174accccae0b7786208dca2e8c1f02a0d879933fb441b42c9081ae"
+    },
+    {
+      "file": "selfhost/build/consolidation/session-objects01/cold/report.json",
+      "bytes": 23403,
+      "sha256": "30654d181f147180bd9318ce0087f21beedf0b57eac2130ee9077bfb13990ba8"
+    },
+    {
+      "file": "selfhost/build/consolidation/session-objects01/noop/report.json",
+      "bytes": 11883,
+      "sha256": "bc8761349c155eaeb6c152831d44eaff5ce1ea74677934b2735ad33cba7cab00"
+    },
+    {
+      "file": "selfhost/build/consolidation/session-objects01/edit/report.json",
+      "bytes": 16237,
+      "sha256": "1712a0148881cc15c5faabd53db38656a1fe5b1163dabc9fc55b4c76ca19dab5"
+    },
+    {
+      "file": "selfhost/build/consolidation/session-objects01/corrupt/report.json",
+      "bytes": 7409,
+      "sha256": "7a09c09bd07c61ce8f1564535fed2c54da38b0ec33af656570cac0dbee608969"
+    },
+    {
+      "file": "selfhost/build/consolidation/session-transport-controls01/report.json",
+      "bytes": 3179,
+      "sha256": "f665709bdac399defe6937cf1d07f1deea231d59c8c46897a08114441c6fe6b2"
+    },
+    {
+      "file": "selfhost/build/consolidation/session-protocol-controls01.json",
+      "bytes": 2510,
+      "sha256": "53659263de3d6137b421764d559c3909e2f56560837007982d45041a08b2e653"
+    },
+    {
+      "file": "selfhost/build/consolidation/session-portability01/report.json",
+      "bytes": 135744,
+      "sha256": "d577ee7e6054e49a1b90794be6a95e98babc2bd224a4b2443e18a45d0b676731"
+    },
+    {
+      "file": "selfhost/build/consolidation/session-current01/queue.json",
+      "bytes": 4097,
+      "sha256": "b8da2fbca19946604aae1ff14fa5b0f866f665872860542916f5c10b5353bf6f"
+    },
+    {
+      "file": "selfhost/build/consolidation/session-current01/api/report.json",
+      "bytes": 5257,
+      "sha256": "e6a924bc36b939e23beeadda9aac50266977d013df521079b98dba1155493ff9"
+    },
+    {
+      "file": "selfhost/build/consolidation/session-current01/semantic/hosted.json",
+      "bytes": 13001,
+      "sha256": "010256b7c5dec7a4406b39686bcf457e517404d7fe3031cffb49f3bcdb2b66f6"
+    },
+    {
+      "file": "selfhost/build/consolidation/session-current01/semantic-controls/report.json",
+      "bytes": 810,
+      "sha256": "4428825c28bd303271925ea784294fbf2795b2d759f2508ea18af2b7854597f4"
+    },
+    {
+      "file": "selfhost/build/consolidation/session-current01/objects/report.json",
+      "bytes": 5472,
+      "sha256": "8d7e186ee53a4609f99382eb3f3acced07f0b5625ef5dd1405cd75c0bf51ff83"
+    },
+    {
+      "file": "selfhost/build/consolidation/session-current01/objects/cold/report.json",
+      "bytes": 23829,
+      "sha256": "3a36467444e1f5da13f89cd866b5c020787409275cd582aae9ff584ecd4aea22"
+    },
+    {
+      "file": "selfhost/build/consolidation/session-current01/objects/noop/report.json",
+      "bytes": 12033,
+      "sha256": "98f50d856925ec140becf0eafa6d47b915719b9d5a9f705467ef6625b9f2b8e7"
+    },
+    {
+      "file": "selfhost/build/consolidation/session-current01/objects/edit/report.json",
+      "bytes": 16539,
+      "sha256": "923923849eb2d67be614dc4f1529bf571666938bef2211dcb4fb92755ccf09ce"
+    },
+    {
+      "file": "selfhost/build/consolidation/session-current01/objects/corrupt/report.json",
+      "bytes": 7481,
+      "sha256": "1915569cd44513b926eba1b2f5c325ecf0084118843129896ba1b9eb2acf6450"
+    }
+  ],
+  "currentSourceGate": {
+    "status": "passed",
+    "complete": true,
+    "plan": {
+      "file": "selfhost/build/consolidation/session-current-plan01.json",
+      "bytes": 3533,
+      "sha256": "21f93b4e7e6429ef32a8843967140d3745af18a8682a7033f85737e17735da34"
+    },
+    "seconds": 28.398129939101636,
+    "steps": [
+      {
+        "label": "acquire",
+        "exit": 0
+      },
+      {
+        "label": "fixtures",
+        "exit": 0
+      },
+      {
+        "label": "semantic",
+        "exit": 0
+      },
+      {
+        "label": "semantic-controls",
+        "exit": 0
+      },
+      {
+        "label": "objects",
+        "exit": 0
+      }
+    ],
+    "parentSourceSha256": "00940ed508e7d1456dd19bee01b0d2e16ac227fdf13ac306e805a1e4c982fb5e",
+    "source": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/consolidation/session-portability01/tree/selfhost/build/session/session.bend",
+      "bytes": 3012579,
+      "sha256": "8a0410f6bb7ff24c23f9f374407ef36f7d92a37edb263e44dfe7c9e272dcaac0"
+    },
+    "api": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/consolidation/session-current01/api/api.mjs",
+      "bytes": 2676666,
+      "sha256": "ff2d6f8389c6a759cc15bd249f3cdeff41ae27014a291f68666a44551df6ac88"
+    },
+    "apiByteIdenticalToInitial": true,
+    "semantic": {
+      "requests": 8,
+      "positiveProducts": 6,
+      "modeMatchedColdComparisons": 8,
+      "semanticRefusals": 2,
+      "realEditChangesCompleteProduct": true,
+      "noOpExercisesReuse": true
+    },
+    "objects": [
+      {
+        "name": "cold",
+        "complete": true,
+        "reusedUnits": 0,
+        "builtUnits": 3,
+        "error": null
+      },
+      {
+        "name": "noop",
+        "complete": true,
+        "reusedUnits": 3,
+        "builtUnits": 0,
+        "error": null
+      },
+      {
+        "name": "edit",
+        "complete": true,
+        "reusedUnits": 2,
+        "builtUnits": 1,
+        "error": null
+      },
+      {
+        "name": "corrupt",
+        "complete": false,
+        "reusedUnits": null,
+        "builtUnits": null,
+        "error": "ValueError('Changed input: /home/ai/bend2/build/publish/bend/selfhost/build/consolidation/session-current01/objects/cache/a061cddb77b3355218c1e24d24f3211b500246ac2af8e9fb3072bec96c8bda23/unit.o')"
+      }
+    ],
+    "programOutputs": [
+      {
+        "name": "cold",
+        "expected": "3\n",
+        "actual": "3\n",
+        "exit": 0
+      },
+      {
+        "name": "noop",
+        "expected": "3\n",
+        "actual": "3\n",
+        "exit": 0
+      },
+      {
+        "name": "edit",
+        "expected": "5\n",
+        "actual": "5\n",
+        "exit": 0
+      }
+    ],
+    "objectIdentityControls": [
+      "producer",
+      "runtime",
+      "tools",
+      "flags",
+      "methods",
+      "policySalt",
+      "kind",
+      "payload"
+    ]
+  },
+  "scope": "Initial and current checked-source finite preservation qualifications plus offline current-source relocation. Native sessions, general invalidation, broad conformance, performance and new-path prepared-cache qualification are not established."
+}

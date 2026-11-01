@@ -18,25 +18,13 @@ selfhost/.bootstrap/bun-1.4.3/bun selfhost/tools/build/hosted.mjs acquire \
 
 This checks the complete source and ownership through `stage0-library.mjs`, verifies the upstream revision and inputs, and preserves stdout/stderr and a checked-B1 image binding. It neither installs an image nor claims B2 reproduction. `request.py` consumes this binding; `hosted.mjs --request PLAN --report REPORT` writes only complete emitted bytes to stdout. QBE uses the sealed Bend cursor, retaining its exact newline convention. Direct/legacy JS and C use the existing typed driver and explicitly bound runtime. JS/C currently accept live preparation only. The adapter passes `useBaseCache: false`, bypassing Base-cache reads, preparation writes and prepared backend products. Public CLI controls can select the same behavior with `BEND_TYPED_BASE_CACHE=off`; unset preserves ordinary CLI caching. The original continuity adapter incorrectly inventoried caches before the driver could create one; its output comparisons remain evidence, but its old “no preparation created” description is not an admitted preparation claim.
 
-## Root-run continuity
+## Current qualification and retained migration evidence
 
-`continuity-v3.mjs` preserves the earlier numeric screens and adds the actual checked-source/API/guard receipt, installed native binary/assets, compiler header input, and controlled-negative checks. Its frozen four sources cover scalar calls, a nested-redex body, recursive IO/data output and a type error. Positive executions compare the **complete stdout** to independent expected strings; emitted product bytes are compared separately and retained even when they differ. A timeout, compiler crash or stack overflow cannot satisfy the negative case.
+Use the maintained [qualification runner](../../../tools/conformance/qualification.md) for current-image JS/C positive and negative gates. `live-cache.mjs` supplies the separate live-mode filesystem control described below. The independent fixtures and `worker.mjs` remain available; no ordinary request falls back to TypeScript.
 
-```sh
-selfhost/.bootstrap/bun-1.4.3/bun selfhost/tests/consolidation/hosted/continuity-v3.mjs \
-  --candidate /absolute/selfhost/build/consolidation/api-probe01/api.mjs \
-  --candidate-source /absolute/selfhost/build/consolidation/source-stage/reassembled.bend \
-  --candidate-guard /absolute/selfhost/build/consolidation/guards/api-probe01/process.json \
-  --candidate-receipt /absolute/selfhost/build/consolidation/api-probe01/report.json \
-  --cc /absolute/clang --cc-include /absolute/clang/resource/include \
-  --out /absolute/selfhost/build/consolidation/hosted-full02
-```
+The consolidation originally used three successive continuity runners against the installed JavaScript B2 and native CLI. Those runners assumed the initial checked-probe receipt and historical native-package schema; they are retired transition methods, recoverable at commit `739cb09`, rather than current release commands. Their complete emitted products, complete stdout, input pins and failures remain historical evidence. The four fixtures cover scalar calls, a nested-redex body, recursive IO/data output and a type error. A timeout, crash or stack overflow never satisfies the final negative judgment.
 
-The command needs one outer guard (CPU 3, 3 GiB process-tree RSS, finite deadline, explicit disk budget); it contains no nested guard. `--cases numeric` selects a smaller smoke. The current Lean-distributed Clang needs its explicit `include/clang` directory; the first numeric screen retained identical C outputs but failed C construction because `stdbool.h` was absent from the initial command.
-
-JavaScript reference: the installed self-emitted B2 and its release manifest. C reference: the installed native CLI, whose package manifest binds the Phase102 compiler core through its CLI integration. The older `projection-api04` is deliberately not used as the selected C reference: its source differs from the actual installed compiler source. Both roles use the same C constructor flags and system-header directory. The runtime provider body is currently byte-identical between the maintained C driver and the selected native package; exact identities are retained in reports.
-
-These are finite compatibility gates, not broad conformance, native/hosted fixed-point qualification, proof checking, or performance measurements. Keep the original failed screen and raw diagnostics. `worker.mjs` executes one image in each fresh process so JavaScript's module cache cannot silently retain another compiler image.
+The initial numeric screen retained identical C output but failed machine construction because the Lean-distributed Clang needed its explicit `include/clang` resource directory. The subsequent positive screen used that directory and compared the same target runtime/provider bytes on both sides. The C reference was the actual installed native package, not the older `projection-api04` whose source differed. These finite compatibility results do not establish broad conformance or performance.
 
 ## Observed continuity and self-emission boundary
 

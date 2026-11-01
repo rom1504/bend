@@ -1,0 +1,139 @@
+{
+  "kind": "bend-development-entry-retirement-audit",
+  "version": 1,
+  "complete": true,
+  "compilerExecuted": false,
+  "baselineCommit": "2a4f9f8383cbc66fadaedd9b4b27f83b93a13511",
+  "eligibleAsOneReviewedBatch": [
+    {
+      "path": "selfhost/legacy-cli.mjs",
+      "baselineBlob": "db2fd0b44c680c99fd01ab55ec02bfebd5658431",
+      "bytes": 2285,
+      "sha256": "5c1e265392c5458f4ed726ef6e5be0f653b6843aa37666dfacab69cb502a2ea2"
+    },
+    {
+      "path": "selfhost/dist/bend2c.mjs",
+      "baselineBlob": "c65347ebe1d4ee5f4b78f54b2f81eb87f5279a05",
+      "bytes": 125543,
+      "sha256": "298f5f7fd944a4aff42e8a91e3a66f6b716bf7f3a6f80547aea064af943be325"
+    },
+    {
+      "path": "selfhost/tools/development/workflow.mjs",
+      "baselineBlob": "1518db80bf4d60bc549044031ba79b2b09cbadff",
+      "bytes": 18662,
+      "sha256": "4249a59916fcd36ef411d4864a5050489df2fc78deee7ebe0d98684ff80f46f1"
+    },
+    {
+      "path": "selfhost/tools/development/release.mjs",
+      "baselineBlob": "c9d5c608d06eea99257b5ce271d3a3538fb7f343",
+      "bytes": 17970,
+      "sha256": "3c807fd5a1f315b507380928cebd074cada4a34e792a44c3450a71ed8743cc7a"
+    },
+    {
+      "path": "selfhost/tools/development/self-release.mjs",
+      "baselineBlob": "c544bf77641da8d6edee1fa6d1de461976eed77c",
+      "bytes": 6008,
+      "sha256": "08a3ac6144292283ccca3f53cbc29f3d916f0efba1f697e645c65d9e26a1ec07"
+    },
+    {
+      "path": "selfhost/tools/development/equality.mjs",
+      "baselineBlob": "bddec57ebadafc750d0557ecbeb776bd46243825",
+      "bytes": 31254,
+      "sha256": "fcc80fd4da249e74f2cfd296c7e88f3c5f795a627e498c26bf5deb4ac8397eb5"
+    },
+    {
+      "path": "selfhost/tools/development/equality.test.mjs",
+      "baselineBlob": "61e9aee0c2d8c7dbeb97b648aa218dbde3b78a10",
+      "bytes": 17679,
+      "sha256": "bec05fd9da87ebd2bc3640bb4292b70ed5fd32bef94222ad2ab820375b03c615"
+    },
+    {
+      "path": "selfhost/tools/development/process.mjs",
+      "baselineBlob": "28c2e71db8bd39d4e098cc7eadef539e05fdd71c",
+      "bytes": 3013,
+      "sha256": "fe6afbc8964f695e3b7bfe8c636b6da6295fd7265fcdebbf58839f3eafce4989"
+    },
+    {
+      "path": "selfhost/tools/development/native-template.mjs",
+      "baselineBlob": "42149b936dd5352dbe21a17520944ec43cb5fd50",
+      "bytes": 1678,
+      "sha256": "15a9e9c78ffc335bdc6f367c92ba879d9baf33816a8dbd07f0863538ff2365cd"
+    },
+    {
+      "path": "selfhost/tests/conformance/development.test.mjs",
+      "baselineBlob": "94a7078760ead5e9767b96e4996c3eb21e70d641",
+      "bytes": 9544,
+      "sha256": "c86ae1be953089ac747edf36c90fe4d4805cfdb830b0d37eea04979e9deffc8a"
+    },
+    {
+      "path": "selfhost/tests/phase8-bootstrap/release.mjs",
+      "baselineBlob": "88f2bc48e3b34b459066451629786171a2c15cd0",
+      "bytes": 8291,
+      "sha256": "4eb75daac451abc6d420904bc9062e367d08859bebf799f4e781931937c2cc6e"
+    },
+    {
+      "path": "selfhost/tests/phase9-literals/full-source-preflight.mjs",
+      "baselineBlob": "7096437b9a20b459b80be055449fe61c69175e51",
+      "bytes": 3162,
+      "sha256": "0e9d80031f6c1ce42710fb0485b412c1bdec0446e8239f1a9737a673ed803e6a"
+    }
+  ],
+  "candidateBytes": 245089,
+  "replacements": {
+    "developmentAttempt": "tools/build/hosted.mjs acquire; explicit generation receipts",
+    "release": "tools/build/release.py audit/install/verify",
+    "genuineSelfRelease": "tools/build/js-bootstrap.mjs and bootstrap.py",
+    "componentVerification": "tools/verify.mjs now uses maintained assembly/acquisition with explicit fresh outputs; all prior component gates retained",
+    "nativeTemplate": "tools/build/native-template.mjs; same Bend ne_runtime_prepare and exact five-part round-trip"
+  },
+  "keep": [
+    "selfhost/tools/stage0.mjs",
+    "selfhost/tools/stage0-library.mjs",
+    "selfhost/tests/phase8-bootstrap/run.mjs",
+    "selfhost/tests/phase8-bootstrap/fixtures/",
+    "selfhost/src/runtime.mjs",
+    "selfhost/tools/development/usage.py",
+    "selfhost/tools/development/usage_test.py",
+    "selfhost/tools/development/README.md",
+    "selfhost/tools/smoke.mjs"
+  ],
+  "oldFrameworkTestScope": "Retired development.test, equality.test, phase8 release, and phase9 preflight test the old attempt/equality-release schemas and rewriting. Their exact methods remain in Git. Independent library/private-invalid/hole/whole-program stage0 controls are retained unchanged; current receipt guards have maintained build/release tests.",
+  "historicalSnapshotConsumers": [
+    "selfhost/tests/phase23-backend/paired.mjs",
+    "selfhost/tests/phase24-backend/ownership-controls.mjs"
+  ],
+  "historicalSnapshotConsumerNote": "These accept explicit frozen snapshots and import the old workflow from those snapshots, not the maintained tree; retain as historical replay controls.",
+  "selectedOldImageHold": "dist/typed-api.mjs and selected release-lineage compiler images are root-owned until the qualified current selector switches; none are retired by this audit.",
+  "checks": {
+    "file": "selfhost/build/consolidation/development-entry-controls01.json",
+    "bytes": 2295,
+    "sha256": "b448c5fcfd87d989620e5a85dba65350b24524a1447cd167d75a0ba2aef587cf"
+  },
+  "changedMaintainedMethods": [
+    {
+      "file": "selfhost/package.json",
+      "bytes": 1602,
+      "sha256": "10f3cc79cdd42d265c4be3bf25ad0d57c617d593129bd66f3d596bf6086f6084"
+    },
+    {
+      "file": "selfhost/tools/verify.mjs",
+      "bytes": 7255,
+      "sha256": "5dc2a78806fb3fe37ea4a90366e54be4f974c102ae8333af02f88b97ce0f5fbb"
+    },
+    {
+      "file": "selfhost/tools/build/native-template.mjs",
+      "bytes": 3210,
+      "sha256": "00d223ef0c3ae9126357764892076bf57b5f3b12a8685aeb4e31cb97d27453d7"
+    },
+    {
+      "file": "selfhost/tools/development/README.md",
+      "bytes": 1685,
+      "sha256": "3f835393675437a958978c2e9b2c0749f1b27fc1833d3c60145e4b8de185ca6f"
+    },
+    {
+      "file": "selfhost/tests/consolidation/entrypoints.py",
+      "bytes": 2685,
+      "sha256": "f1d7ead0ee045f0f1e3b1e1e9490aa805c64e92708f8c6d9c9d57b2218e02a61"
+    }
+  ]
+}

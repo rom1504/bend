@@ -143,7 +143,7 @@ arbitrary opaque transport. The independent host-only protocol controls are:
 python3 -B selfhost/tools/build/session/transport-controls.py \
   --out selfhost/build/session-transport-controls
 python3 -B selfhost/tools/build/session/protocol-controls.py \
-  --out selfhost/build/session-protocol-controls
+  --out selfhost/build/session-protocol-controls.json
 ```
 
 ## Migration provenance
@@ -161,3 +161,26 @@ protocol identities, not runtime imports of an old experiment. The maintained
 machine stage reuses the ordinary build identity and child-process helpers.
 Qualification receipts must remain separate from these architectural facts:
 source presence and host parsing alone do not establish semantic conformance.
+
+The consolidation gate passed eight mode-matched semantic requests, both error
+recovery cases, and cold/no-op/edit generated-program outputs `3`, `3`, `5`.
+The no-op reused all three objects; the real edit rebuilt one and reused two.
+All 34 byte-transport and 12 unit-framing controls passed. Exact source pins and
+qualification limits are in
+`implementation/repository-consolidation/session.md`.
+
+For an offline relocation check, run:
+
+```sh
+python3 -B selfhost/tools/build/session/portability.py \
+  --assets selfhost/manifests/assets-session.json \
+  --out selfhost/build/session-portability
+```
+
+This copies only maintained source modules, session/build helpers and explicitly
+pinned assets into a fresh filtered tree. It assembles source, checks assets and
+runs host protocol controls while refusing access to the original repository.
+It executes no compiler, backend or generated program. A prepared Base carrier
+also authenticates its logical Base path: silently moving that path is correctly
+rejected. Fresh-checkout cached execution needs a newly acquired and qualified
+carrier binding, or the original explicitly retained external Base binding.

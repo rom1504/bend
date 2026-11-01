@@ -1,0 +1,301 @@
+{
+  "kind": "bend-canonical-source-residual-audit",
+  "version": 1,
+  "complete": true,
+  "readOnly": true,
+  "compilerExecuted": false,
+  "baselineCommit": "2a4f9f8383cbc66fadaedd9b4b27f83b93a13511",
+  "head": "739cb09dff785ef14ee4ba4a97b74a9f8ef58f9f",
+  "manifest": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/src/compiler.json",
+    "bytes": 510942,
+    "sha256": "9b97073f98b4e592b5328d32363fa88f8285bd777b2a2a23ed832a16ba8270de"
+  },
+  "sourceTransport": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/build/source.py",
+    "bytes": 28941,
+    "sha256": "bb657cc05776c22f29244ae68606eb757c676b522a7052b2b32999fbc00599c7"
+  },
+  "counts": {
+    "baselineSrcAllFiles": 270,
+    "baselineSrcBendFiles": 135,
+    "baselineBendStillSelectedModules": 132,
+    "trackedSrcAllFiles": 351,
+    "trackedSrcBendFiles": 209,
+    "workingTreeSrcBendFiles": 209,
+    "canonicalRecipeModules": 206,
+    "canonicalModulesInsideSrc": 205,
+    "canonicalModulesOutsideSrc": [
+      "selfhost/tests/compiler/native-controls.bend"
+    ],
+    "outsideRecipeBendFiles": 4
+  },
+  "oldBendOutsideCurrentRecipe": [
+    "selfhost/src/back/native/fixtures/override_add.bend",
+    "selfhost/src/compiler.bend",
+    "selfhost/src/host/native-cli.bend"
+  ],
+  "alreadyRetired": "selfhost/src/compiler.bend",
+  "eligibleRetirementPaths": [],
+  "holdPaths": [
+    {
+      "path": "selfhost/src/back/native/fixtures/override_add.bend",
+      "reason": "independent semantic fixture for user-name/native-name provenance",
+      "pin": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/src/back/native/fixtures/override_add.bend",
+        "bytes": 221,
+        "sha256": "a3b434fd37f3f349d08eded47348b7c0f536c30bc66d65d7acd560d29a634e22"
+      },
+      "declarations": [
+        {
+          "kind": "def",
+          "name": "nat_add"
+        },
+        {
+          "kind": "def",
+          "name": "main"
+        }
+      ],
+      "overlappingDefinitionNames": [
+        {
+          "name": "main",
+          "canonicalOwner": "selfhost/src/host/qbe-main.bend"
+        }
+      ],
+      "references": [
+        {
+          "file": "selfhost/src/back/native/fixtures.mjs",
+          "text": "'io/marshal_imported_nullary','io/intrinsic_user_name','local/override_add',",
+          "lines": [
+            41
+          ],
+          "pin": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/src/back/native/fixtures.mjs",
+            "bytes": 5112,
+            "sha256": "54c0f615bdbd6d2b8976a157012b6c38c597d578820787937e331f91c3772d31"
+          }
+        },
+        {
+          "file": "selfhost/src/back/native/fixtures.mjs",
+          "text": "name.startsWith('local/')?path.join(root,'src/back/native/fixtures',name.slice(6)+'.bend')",
+          "lines": [
+            46
+          ],
+          "pin": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/src/back/native/fixtures.mjs",
+            "bytes": 5112,
+            "sha256": "54c0f615bdbd6d2b8976a157012b6c38c597d578820787937e331f91c3772d31"
+          }
+        }
+      ]
+    },
+    {
+      "path": "selfhost/src/host/native-c-main.bend",
+      "reason": "thin native C tool-protocol main adapter",
+      "pin": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/src/host/native-c-main.bend",
+        "bytes": 197,
+        "sha256": "7c077142eb773e4d95498bbb6855252bc77c611fac6d8def9f1b759ff16c0d53"
+      },
+      "declarations": [
+        {
+          "kind": "def",
+          "name": "main"
+        }
+      ],
+      "overlappingDefinitionNames": [
+        {
+          "name": "main",
+          "canonicalOwner": "selfhost/src/host/qbe-main.bend"
+        }
+      ],
+      "references": [
+        {
+          "file": "selfhost/src/compiler.json",
+          "text": "profiles.native-c.entryModule",
+          "pin": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/src/compiler.json",
+            "bytes": 510942,
+            "sha256": "9b97073f98b4e592b5328d32363fa88f8285bd777b2a2a23ed832a16ba8270de"
+          }
+        },
+        {
+          "file": "selfhost/tools/build/source.py",
+          "text": "config.get('entryModule')",
+          "lines": [
+            162
+          ],
+          "pin": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/build/source.py",
+            "bytes": 28941,
+            "sha256": "bb657cc05776c22f29244ae68606eb757c676b522a7052b2b32999fbc00599c7"
+          }
+        }
+      ]
+    },
+    {
+      "path": "selfhost/src/host/native-cli.bend",
+      "reason": "public native CLI adapter and authenticated OS-effect declarations",
+      "pin": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/src/host/native-cli.bend",
+        "bytes": 7045,
+        "sha256": "5f212e3b5c06dfc0d65e9bfce66e1008843b940d8a70457f64023ba3d9ca8786"
+      },
+      "declarations": [
+        {
+          "kind": "def",
+          "name": "NativeHost.read"
+        },
+        {
+          "kind": "def",
+          "name": "NativeHost.path"
+        },
+        {
+          "kind": "def",
+          "name": "NativeHost.publish"
+        },
+        {
+          "kind": "type",
+          "name": "NativeCLI"
+        },
+        {
+          "kind": "def",
+          "name": "cli_help"
+        },
+        {
+          "kind": "def",
+          "name": "cli_parse"
+        },
+        {
+          "kind": "def",
+          "name": "cli_options"
+        },
+        {
+          "kind": "def",
+          "name": "cli_output"
+        },
+        {
+          "kind": "def",
+          "name": "cli_pass"
+        },
+        {
+          "kind": "def",
+          "name": "cli_read"
+        },
+        {
+          "kind": "def",
+          "name": "cli_read_done"
+        },
+        {
+          "kind": "def",
+          "name": "cli_asset"
+        },
+        {
+          "kind": "def",
+          "name": "cli_runtime"
+        },
+        {
+          "kind": "def",
+          "name": "cli_prepared"
+        },
+        {
+          "kind": "def",
+          "name": "cli_finish"
+        },
+        {
+          "kind": "def",
+          "name": "cli_request"
+        },
+        {
+          "kind": "def",
+          "name": "cli_dispatch"
+        },
+        {
+          "kind": "def",
+          "name": "cli_main"
+        },
+        {
+          "kind": "def",
+          "name": "main"
+        }
+      ],
+      "overlappingDefinitionNames": [
+        {
+          "name": "main",
+          "canonicalOwner": "selfhost/src/host/qbe-main.bend"
+        }
+      ],
+      "references": [
+        {
+          "file": "selfhost/tools/build/public-cli.py",
+          "text": "entry = ROOT / 'selfhost/src/host/native-cli.bend'",
+          "lines": [
+            44
+          ],
+          "pin": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/build/public-cli.py",
+            "bytes": 8873,
+            "sha256": "d3cfaaa41f8a1f6163ca377b6c0e837c0f7a688ad6b96637ac1606c93bf01fbe"
+          }
+        }
+      ]
+    },
+    {
+      "path": "selfhost/src/session/object-frames.bend",
+      "reason": "experimental incremental object-frame adapter; no frontend or existing declarations replaced",
+      "pin": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/src/session/object-frames.bend",
+        "bytes": 1665,
+        "sha256": "000a60755bdf8061247d2dcc2d67643cd54893df568fa2960071555ffee1fc83"
+      },
+      "declarations": [
+        {
+          "kind": "type",
+          "name": "P135MFrame"
+        },
+        {
+          "kind": "def",
+          "name": "p135m_wrap"
+        },
+        {
+          "kind": "def",
+          "name": "p135m_next"
+        }
+      ],
+      "overlappingDefinitionNames": [],
+      "references": [
+        {
+          "file": "selfhost/tools/build/session/prepare.py",
+          "text": "adapter = pin(root / 'selfhost/src/session/object-frames.bend')",
+          "lines": [
+            18
+          ],
+          "pin": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/build/session/prepare.py",
+            "bytes": 2178,
+            "sha256": "711bb6ab5292a5a3aa8e9f850ff308bc4396e5dc62dde1036aa97a2ae881e83b"
+          }
+        },
+        {
+          "file": "selfhost/tools/build/session/portability.py",
+          "text": "copy_file(root / 'selfhost/src/session/object-frames.bend', 'selfhost/src/session/object-frames.bend')",
+          "lines": [
+            54
+          ],
+          "pin": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/build/session/portability.py",
+            "bytes": 8019,
+            "sha256": "c74f704cd4844d542b7ce0e1930582d54571499a57e88f45d38e6d2238780e0e"
+          }
+        }
+      ]
+    }
+  ],
+  "interpretation": "The original270 src files included documentation, runtime providers, tests, and manifests. They were not270 compiler modules. Every surviving old Bend compiler module is selected in the canonical recipe. Nonselected Bend files are thin main/API adapters or an independent fixture; the overlapping main names are explicit alternatives/fixture entry points, not copied frontends.",
+  "auditBoundary": "Bend declaration copies under selfhost/src. Runtime provider files and component tests remain intentionally separate. This does not certify every historical script elsewhere in the repository.",
+  "reproduce": [
+    "git ls-tree -r --name-only 2a4f9f8383cbc66fadaedd9b4b27f83b93a13511 -- selfhost/src",
+    "git ls-files -- selfhost/src",
+    "Compare .bend paths with selfhost/src/compiler.json.modules, inspect profile entryModule and named maintained caller references; parse declaration headers using source.py.blocks."
+  ]
+}

@@ -1,0 +1,158 @@
+{
+  "kind": "bend-consolidation-benchmark-smokes-v1",
+  "date": "2026-11-01",
+  "auditedHead": "739cb09dff785ef14ee4ba4a97b74a9f8ef58f9f",
+  "newTargetsExecutedByAudit": false,
+  "smokes": {
+    "acquisition": {
+      "receipt": {
+        "file": "selfhost/build/consolidation/bench-acquire01/report.json",
+        "bytes": 21918,
+        "sha256": "0ff9280abec5fb86a08200b8240d28989981723482bb182b0f025f9ae3d29444"
+      },
+      "complete": true,
+      "changedInputs": [],
+      "selected": [
+        "mandelbrot",
+        "tree-bitonic"
+      ],
+      "rows": [
+        {
+          "id": "mandelbrot",
+          "complete": true
+        },
+        {
+          "id": "tree-bitonic",
+          "complete": true
+        }
+      ],
+      "reference": {
+        "host": "typescript-bun",
+        "stage": "upstream",
+        "target": "c"
+      },
+      "candidate": {
+        "host": "native",
+        "stage": "N2",
+        "target": "qbe"
+      }
+    },
+    "programs": {
+      "receipt": {
+        "file": "selfhost/build/consolidation/bench-programs01/report.json",
+        "bytes": 37331,
+        "sha256": "b8933e6252dd62e6096239b350eb7565aced614e247f11497d5f979dd9ac5618"
+      },
+      "complete": true,
+      "changedInputs": [],
+      "status": "measured",
+      "wallSeconds": 5.151467755902559,
+      "budgetSeconds": 20,
+      "rounds": 2,
+      "clock": "JS timed calls or native in-program batch",
+      "cases": [
+        {
+          "id": "mandelbrot",
+          "complete": true,
+          "samples": 4,
+          "mediansMs": {
+            "upstream": 0.024015050907481184,
+            "candidate": 0.08023461708720672
+          },
+          "ratios": {
+            "candidate": 3.3410138248847927
+          }
+        },
+        {
+          "id": "tree-bitonic",
+          "complete": true,
+          "samples": 4,
+          "mediansMs": {
+            "upstream": 0.12744498777506114,
+            "candidate": 0.581601466992665
+          },
+          "ratios": {
+            "candidate": 4.563549160671462
+          }
+        }
+      ]
+    },
+    "compiler": {
+      "receipt": {
+        "file": "selfhost/build/consolidation/bench-compiler01/report.json",
+        "bytes": 38445,
+        "sha256": "ebe29dde80350262a7e3c0043379bdf7c67790b29dfe0848dbe02dc4823c4404"
+      },
+      "complete": true,
+      "changedInputs": [],
+      "status": "measured",
+      "wallSeconds": 16.52621977077797,
+      "budgetSeconds": 20,
+      "rounds": 2,
+      "clock": "Fresh child process",
+      "cases": [
+        {
+          "id": "mandelbrot",
+          "complete": true,
+          "samples": 4,
+          "mediansMs": {
+            "upstream": 2209.544250043109,
+            "candidate": 2295.4483912326396
+          },
+          "ratios": {
+            "candidate": 1.0388786697473267
+          }
+        },
+        {
+          "id": "tree-bitonic",
+          "complete": true,
+          "samples": 4,
+          "mediansMs": {
+            "upstream": 2089.8629769217223,
+            "candidate": 1199.0237447898835
+          },
+          "ratios": {
+            "candidate": 0.5737331863527213
+          }
+        }
+      ]
+    }
+  },
+  "retirementAudit": {
+    "trackedHistoricalExecutableSources": 30,
+    "remainingCompatibilityMethods": [
+      "selfhost/tools/performance/programs/support.py",
+      "selfhost/tools/performance/phase86/guard.py"
+    ],
+    "supportLines": 163,
+    "supportEqualAfterRootRelocation": true,
+    "activeReferences": [
+      "selfhost/tools/native/launch.py",
+      "selfhost/tools/native/assets.py",
+      "selfhost/tools/native/cli/build.mjs"
+    ],
+    "remainingHistoricalCodePurpose": "Other 28 files are independent oracles or C controls/harnesses; no old benchmark campaign runner/JS timing worker remains tracked.",
+    "scope": "Tracked HEAD only; untracked recovered history and historical data remain separate."
+  },
+  "interpretation": "Two-case tool migration smoke, not representative speed, all45 coverage, same-target compiler parity, bootstrap qualification, release promotion or mathematical correctness.",
+  "sourceReview": {
+    "status": "pass-with-bounds",
+    "reviewer": "broad_applications",
+    "finding": "Public upstream API signatures and hosted library request operation match current code; checked reference is separate.",
+    "limitations": [
+      "Future fixture-local import/provider dependencies must be explicitly authenticated.",
+      "Reference errors remain failed evidence; success-only final rehash does not qualify failures."
+    ]
+  },
+  "currentMethodDrift": {
+    "changedAfterRecordedSmokes": [
+      {
+        "file": "selfhost/tools/build/request.py",
+        "bytes": 18653,
+        "sha256": "f2638c055de2de15c80b8e36d888337a3061f8f7725c55f16ad645943562566c"
+      }
+    ],
+    "unchangedBenchRunner": true,
+    "interpretation": "Stored smokes remain valid evidence for consumed methods. Both frozen manifests reject current request.py drift; regenerate explicitly rather than edit consumed evidence or relabel old timings."
+  }
+}

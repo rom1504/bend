@@ -263,9 +263,11 @@ node --test selfhost/tools/bench/js/analyze.test.mjs selfhost/tools/bench/js/pro
 ```
 
 The Python controls are offline. JS controls execute only synthetic modules;
-they do not compile or run Bend programs. Root must additionally run one bounded
-prepared JS product, one C product, one QBE product and a small cold compiler
-request through the new entry before retiring their old active runners. Exact
-catalog/worker copies preserve inputs and mechanisms; they do not qualify new
-orchestration without those smokes. See `validation.json` for completed and
-pending gates rather than treating preparation as measured success.
+they do not compile or run Bend programs. The actual two-case native acquisition,
+C/QBE program timing and fresh compiler-request smoke passed: see the
+[smoke report](../../../implementation/repository-consolidation/benchmark-tools.md)
+and `validation.json`. This is not a full45 score or same-target compiler parity;
+the reference emits C and the N2 candidate emits QBE. Real JS acquisition/timing,
+native-C telemetry replay and same-target B1/N2 coverage retain their own gates.
+Exact catalog/worker copies preserve inputs and mechanisms without enlarging
+what these bounded smokes prove.

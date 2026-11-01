@@ -26,8 +26,13 @@ def main():
     old=json.loads((baseline/'BUILD.json').read_text())
     require(authority.get('kind')=='bend-public-cli-package' and authority.get('complete'), 'Constructed public package required')
     require(same(pin(package/'bend'),authority['image']), 'Package image differs')
-    require(old.get('kind')=='phase103-native-cli-package-build'
-            and same(pin(baseline/'bend'),old['native']['binary']), 'Explicit incumbent public image required')
+    if old.get('kind')=='bend-public-cli-package':
+        require(old.get('complete') and old.get('protocol')=='native-public-cli-v1', 'Complete operational incumbent package required')
+        old_image,old_assets=old['image'],old['assets']
+    else:
+        require(old.get('kind')=='phase103-native-cli-package-build' and old['native']['complete'], 'Explicit incumbent public package required')
+        old_image,old_assets=old['native']['binary'],old['inputs']['assets']
+    require(same(pin(baseline/'bend'),old_image), 'Explicit incumbent public image differs')
     profile=json.loads(Path(authority['profile']['file']).read_text())
     oracle_file=Path(__file__).with_name('oracles.json')
     oracles=json.loads(oracle_file.read_text())
@@ -41,7 +46,7 @@ def main():
             authority['profile'],authority['source'],*authority['inputs'],*map(pin,fixtures.values())]
     for name,row in authority['assets'].items():
         require(same(pin(package/'assets'/name),row),'Package asset differs');inputs.append(row)
-        require(same(pin(baseline/'assets'/name),old['inputs']['assets'][name]),'Incumbent asset differs')
+        require(same(pin(baseline/'assets'/name),old_assets[name]),'Incumbent asset differs')
         inputs.append(pin(baseline/'assets'/name))
     for row in inputs:verify(row)
     out=fresh_output(args.out,ROOT);copy=out/'relocated package';copy.mkdir()

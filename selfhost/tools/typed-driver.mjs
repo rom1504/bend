@@ -97,6 +97,15 @@ export function verifyBootstrapProvenance(provenance) {
 }
 
 export function bootstrap({upstream=process.env.BEND_UPSTREAM||path.resolve(project,'.bootstrap/upstream-phase66'),timeoutMs=120000,nativeSnapshot=process.env.BEND_TYPED_NATIVE_SNAPSHOT,nativeModules}={}) {
+  const selector=path.join(project,'manifests/current.json');
+  if(fs.existsSync(selector)) {
+    const current=JSON.parse(fs.readFileSync(selector,'utf8'));
+    if(current.kind!=='bend-current-bindings'||current.version!==1||current.complete!==true||current.gateStatus?.qualified!==true)
+      throw Error('Invalid current compiler selector; refuse bootstrap publication');
+    const selected=path.resolve(project,'..',current.components.js.image.file);
+    if(apiPath===selected||(fs.existsSync(apiPath)&&fs.realpathSync(apiPath)===fs.realpathSync(selected)))
+      throw Error('Bootstrap cannot overwrite the selected B2. Set BEND_TYPED_API to a separate path or use tools/build/hosted.mjs acquire.');
+  }
   const provenance=captureBootstrapProvenance(upstream),revision=provenance.upstream.revision;
   const manifest=path.join(project,'src/compiler.json');
   if(!fs.existsSync(manifest))throw Error('Compiler module manifest is missing: '+manifest);

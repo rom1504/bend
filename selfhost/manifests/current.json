@@ -1,0 +1,489 @@
+{
+  "kind": "bend-current-bindings",
+  "version": 1,
+  "complete": true,
+  "source": {
+    "recipe": {
+      "file": "selfhost/src/compiler.json",
+      "bytes": 510942,
+      "sha256": "9b97073f98b4e592b5328d32363fa88f8285bd777b2a2a23ed832a16ba8270de"
+    },
+    "root": "selfhost",
+    "profile": "qbe",
+    "identity": {
+      "bytes": 3010912,
+      "sha256": "00940ed508e7d1456dd19bee01b0d2e16ac227fdf13ac306e805a1e4c982fb5e"
+    }
+  },
+  "components": {
+    "qbe": {
+      "host": "native",
+      "stage": "N2",
+      "protocol": "qbe-source-v1",
+      "capabilities": [
+        "qbe"
+      ],
+      "sourceIdentity": {
+        "bytes": 3010912,
+        "sha256": "96c40c9dd273e2fae5fabfe68093aa7fb8f25f075e2317bed06ff46d4feaab80"
+      },
+      "image": {
+        "file": "selfhost/dist/qbe/bend",
+        "bytes": 19100528,
+        "sha256": "367b639915c0bbc8906fc5827b002ca2c7fc07acc238034e54be994f8833d251"
+      },
+      "gates": [
+        "qbe-qualified",
+        "qbe-focused",
+        "qbe-canonical-equivalence"
+      ],
+      "canonicalEquivalence": {
+        "kind": "whole-qbe-byte-identity",
+        "canonicalSourceIdentity": {
+          "bytes": 3010912,
+          "sha256": "00940ed508e7d1456dd19bee01b0d2e16ac227fdf13ac306e805a1e4c982fb5e"
+        },
+        "requestGate": "qbe-canonical-equivalence",
+        "qualificationGate": "qbe-qualified",
+        "qualifiedQbeIdentity": {
+          "bytes": 117232528,
+          "sha256": "dceae94a7659ad1ff58395ed34914971422ff9e5841668e910cd95e6b0914010"
+        }
+      }
+    },
+    "js": {
+      "host": "js",
+      "stage": "B2",
+      "protocol": "hosted-api-v1",
+      "capabilities": [
+        "js",
+        "c"
+      ],
+      "preparationModes": [
+        "live"
+      ],
+      "sourceIdentity": {
+        "bytes": 3010912,
+        "sha256": "00940ed508e7d1456dd19bee01b0d2e16ac227fdf13ac306e805a1e4c982fb5e"
+      },
+      "image": {
+        "file": "selfhost/dist/typed-api.mjs",
+        "bytes": 4987183,
+        "sha256": "4c3e6e49fee078651f5e8077fc81c980216ac5a02bdbcc7abad8df1348c00cde"
+      },
+      "gates": [
+        "js-b2-lineage",
+        "js-b3-fixedpoint",
+        "js-current-qualified",
+        "js-public7",
+        "js-capacity-controls",
+        "js-live-cache"
+      ],
+      "exports": [
+        "f_path_join",
+        "f_path_dir",
+        "check_book",
+        "annotate_book",
+        "j_program",
+        "j_library",
+        "j_expr",
+        "j_descriptor",
+        "j_io_type",
+        "j_modules",
+        "driver_has_main",
+        "driver_is_io",
+        "driver_interpret",
+        "driver_todos",
+        "driver_emit_owned",
+        "driver_report_data",
+        "compiler_term_abi",
+        "compiler_span_abi",
+        "specialize_book",
+        "specialized_book",
+        "specialized_error",
+        "specialized_diagnostic",
+        "nc_compile",
+        "nc_foreign_paths",
+        "nc_compile_checked",
+        "nr_prepare",
+        "nr_compile",
+        "nr_compile_prepared",
+        "ne_runtime_prepare",
+        "nr_prepare_annotated",
+        "nc_annotation_stops",
+        "nc_annotated_context",
+        "nc_foreign_source",
+        "nc_foreign_scope",
+        "check_from_exact_prefix",
+        "exact_prefix",
+        "base_prefix_prepare",
+        "check_program_diagnostic_seed",
+        "check_program_diagnostic_prefix",
+        "base_prefix_world_prepare",
+        "check_program_diagnostic_world",
+        "book_context_world",
+        "base_annotation_prepare",
+        "base_annotation_wanted",
+        "base_annotation_allowed",
+        "annotate_selected_base",
+        "f_load_graph",
+        "f_load_graph_trace",
+        "f_source_completed",
+        "f_source_located",
+        "compiler_load_abi",
+        "f_source_header",
+        "f_complete_source",
+        "f_complete_seed",
+        "f_import_namespace_at",
+        "f_graph_trace",
+        "f_import_failure",
+        "book_context",
+        "book_cached",
+        "f_load_graph_seed",
+        "f_load_graph_seed_trace",
+        "f_fresh_prefix_prepare",
+        "f_graph_trace_from_prefix",
+        "f_prefix_graph_empty",
+        "f_prefix_complete_seed",
+        "f_prefix_complete_source",
+        "f_prefix_graph_trace",
+        "f_ready_prefix_prepare",
+        "f_prefix_complete_ready_seed",
+        "driver_report",
+        "driver_bad_names",
+        "compiler_check_result_abi",
+        "check_book_diagnostic",
+        "check_book_diagnostic_from_exact_prefix",
+        "diagnostic_render",
+        "diagnostic_result_locate",
+        "check_program_diagnostic",
+        "f_load_origins_for",
+        "f_loaded_origins_for",
+        "diagnostic_render_loaded",
+        "j_compile_error",
+        "j_layout_error",
+        "jl_checked_error",
+        "reach_book",
+        "j_roots",
+        "j_stops",
+        "annotate_except",
+        "kf_source",
+        "annotate_selected",
+        "j_program_selected",
+        "j_library_selected",
+        "jd_library_selected",
+        "jd_stops",
+        "jd_program_selected",
+        "jd_modules",
+        "jd_roots",
+        "jd_foreign_paths",
+        "jd_foreign_error",
+        "jd_reach_selected",
+        "jd_reach_defs",
+        "jd_reach_error",
+        "jd_plan_selected",
+        "jd_plan_defs",
+        "jd_plan_error",
+        "jd_plan_library",
+        "j_foreign_paths",
+        "j_foreign_error",
+        "ns_body"
+      ]
+    },
+    "nativeCli": {
+      "host": "native",
+      "stage": "N1",
+      "protocol": "native-public-cli-v1",
+      "capabilities": [
+        "c"
+      ],
+      "preparationModes": [
+        "cache",
+        "live"
+      ],
+      "sourceIdentity": {
+        "bytes": 3020248,
+        "sha256": "153ec66c9ef9cc292ad73d439abad39a98682eb64f64fe5f41f900fb9f72d208"
+      },
+      "image": {
+        "file": "selfhost/dist/native/bend",
+        "bytes": 23546736,
+        "sha256": "50eee5d0554e3b8e29b8e2e5a4d12c12af1cf723f1c0ef7a56a95629dd70a7cb"
+      },
+      "gates": [
+        "native-cli-profile",
+        "native-cli-package",
+        "native-cli-qualified",
+        "native-cli-broad"
+      ],
+      "baseIdentity": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/base.bend",
+      "cacheStamp": "p88-private-base-text-1:8dec5b64d3900d61a208e51d92113194b91364c4f4d35d1903edb481d678ed03",
+      "packageAssets": {
+        "base.bend": {
+          "file": "selfhost/dist/native/assets/base.bend",
+          "bytes": 75064,
+          "sha256": "99ac43f2b2bb3e3f39acdcedcecbbd3cb44749ce13969c827d6973fa66f7facf"
+        },
+        "base.p88": {
+          "file": "selfhost/dist/native/assets/base.p88",
+          "bytes": 1100924,
+          "sha256": "07af8cddb84820d861fc9f5d9475907754a64a9319de7d597c925149d8b186a7"
+        },
+        "runtime.c.part0": {
+          "file": "selfhost/dist/native/assets/runtime.c.part0",
+          "bytes": 8747,
+          "sha256": "f074b76588d8f740eddb79a95487769cb529db6a675a801f9800bd1de61272c0"
+        },
+        "runtime.c.part1": {
+          "file": "selfhost/dist/native/assets/runtime.c.part1",
+          "bytes": 23532,
+          "sha256": "b5dc815a533624165b326c4d5f0312f7512096b8a59301cbb49f5d853ea19125"
+        },
+        "runtime.c.part2": {
+          "file": "selfhost/dist/native/assets/runtime.c.part2",
+          "bytes": 1093,
+          "sha256": "9808a39ea010404b4213afbd56b17d67e193da9020657d6577606b9a5bf0b41d"
+        },
+        "runtime.c.part3": {
+          "file": "selfhost/dist/native/assets/runtime.c.part3",
+          "bytes": 48363,
+          "sha256": "7f98b5302272f621c60120694f105f8b9319c074b73dbe4e943ef00f679fad09"
+        },
+        "runtime.c.part4": {
+          "file": "selfhost/dist/native/assets/runtime.c.part4",
+          "bytes": 1948,
+          "sha256": "ac72b451e01934663c839f748f295b95db1472b708c05636602c590bb844f9db"
+        },
+        "effs/args.c": {
+          "file": "selfhost/dist/native/assets/effs/args.c",
+          "bytes": 351,
+          "sha256": "7209a5fa11396fa8b0667a6738c913c40f554797e442c847a25e13a5f69676e0"
+        },
+        "effs/print.c": {
+          "file": "selfhost/dist/native/assets/effs/print.c",
+          "bytes": 397,
+          "sha256": "709500d2ace6e2eaeec0f5f1e4373d4ec5e402b3c1e289bd70dfef7e2a635b26"
+        },
+        "effs/now.c": {
+          "file": "selfhost/dist/native/assets/effs/now.c",
+          "bytes": 198,
+          "sha256": "da5fde65701c4fadc7560625c9615b4d60b2eefbd7b6bbe1aedda61887b825b9"
+        },
+        "effs/print_err.c": {
+          "file": "selfhost/dist/native/assets/effs/print_err.c",
+          "bytes": 236,
+          "sha256": "72781d2adc88a4791d5530c9deff20824c38d5aa1ba43fb05aaa6a697e19f4b6"
+        },
+        "effs/file_open.c": {
+          "file": "selfhost/dist/native/assets/effs/file_open.c",
+          "bytes": 1113,
+          "sha256": "f42a8bcc142b9003c7f6ca99287ca09c14f9efcbe15dea929c90c2fa062746e7"
+        },
+        "effs/file_read.c": {
+          "file": "selfhost/dist/native/assets/effs/file_read.c",
+          "bytes": 2130,
+          "sha256": "6af44266ca83ab55b2dd3bf20c17eea6bfb7a7a678908cfbf3579adef31fb678"
+        },
+        "effs/file_size.c": {
+          "file": "selfhost/dist/native/assets/effs/file_size.c",
+          "bytes": 771,
+          "sha256": "09906f3839f0f0fba1eea944c948e35f8e03627dc2b78e8debb43e0556f5d5d8"
+        },
+        "effs/file_write.c": {
+          "file": "selfhost/dist/native/assets/effs/file_write.c",
+          "bytes": 1423,
+          "sha256": "565dff20204e1e535e188b983cda6d6001d0e5dc37cfdf981960c07a9e154ee2"
+        },
+        "effs/file_close.c": {
+          "file": "selfhost/dist/native/assets/effs/file_close.c",
+          "bytes": 243,
+          "sha256": "befd465a31b88936d772222d26b1019ea7330e59e6327d8ba90584c85e8b2fb3"
+        }
+      },
+      "targetRuntime": {
+        "file": "selfhost/src/runtime/native/runtime.c",
+        "bytes": 83683,
+        "sha256": "9e1c59078878be94052cb4d2d63a713e19e29b41ed3f94b034f2175a50efd0a9"
+      }
+    }
+  },
+  "files": {
+    "selfhost/dist/qbe/bend": {
+      "file": "selfhost/dist/qbe/bend",
+      "bytes": 19100528,
+      "sha256": "367b639915c0bbc8906fc5827b002ca2c7fc07acc238034e54be994f8833d251"
+    },
+    "selfhost/dist/typed-api.mjs": {
+      "file": "selfhost/dist/typed-api.mjs",
+      "bytes": 4987183,
+      "sha256": "4c3e6e49fee078651f5e8077fc81c980216ac5a02bdbcc7abad8df1348c00cde"
+    },
+    "selfhost/dist/native/bend": {
+      "file": "selfhost/dist/native/bend",
+      "bytes": 23546736,
+      "sha256": "50eee5d0554e3b8e29b8e2e5a4d12c12af1cf723f1c0ef7a56a95629dd70a7cb"
+    },
+    "selfhost/dist/native/BUILD.json": {
+      "file": "selfhost/dist/native/BUILD.json",
+      "bytes": 9660,
+      "sha256": "042e75fb77d849f67033e01921e977cee01df5f84a40d6d8928b5fe01717791b"
+    },
+    "selfhost/dist/base.bend": {
+      "file": "selfhost/dist/base.bend",
+      "bytes": 75064,
+      "sha256": "99ac43f2b2bb3e3f39acdcedcecbbd3cb44749ce13969c827d6973fa66f7facf"
+    },
+    "selfhost/dist/native/assets/base.bend": {
+      "file": "selfhost/dist/native/assets/base.bend",
+      "bytes": 75064,
+      "sha256": "99ac43f2b2bb3e3f39acdcedcecbbd3cb44749ce13969c827d6973fa66f7facf"
+    },
+    "selfhost/dist/native/assets/base.p88": {
+      "file": "selfhost/dist/native/assets/base.p88",
+      "bytes": 1100924,
+      "sha256": "07af8cddb84820d861fc9f5d9475907754a64a9319de7d597c925149d8b186a7"
+    },
+    "selfhost/dist/native/assets/runtime.c.part0": {
+      "file": "selfhost/dist/native/assets/runtime.c.part0",
+      "bytes": 8747,
+      "sha256": "f074b76588d8f740eddb79a95487769cb529db6a675a801f9800bd1de61272c0"
+    },
+    "selfhost/dist/native/assets/runtime.c.part1": {
+      "file": "selfhost/dist/native/assets/runtime.c.part1",
+      "bytes": 23532,
+      "sha256": "b5dc815a533624165b326c4d5f0312f7512096b8a59301cbb49f5d853ea19125"
+    },
+    "selfhost/dist/native/assets/runtime.c.part2": {
+      "file": "selfhost/dist/native/assets/runtime.c.part2",
+      "bytes": 1093,
+      "sha256": "9808a39ea010404b4213afbd56b17d67e193da9020657d6577606b9a5bf0b41d"
+    },
+    "selfhost/dist/native/assets/runtime.c.part3": {
+      "file": "selfhost/dist/native/assets/runtime.c.part3",
+      "bytes": 48363,
+      "sha256": "7f98b5302272f621c60120694f105f8b9319c074b73dbe4e943ef00f679fad09"
+    },
+    "selfhost/dist/native/assets/runtime.c.part4": {
+      "file": "selfhost/dist/native/assets/runtime.c.part4",
+      "bytes": 1948,
+      "sha256": "ac72b451e01934663c839f748f295b95db1472b708c05636602c590bb844f9db"
+    },
+    "selfhost/dist/native/assets/effs/args.c": {
+      "file": "selfhost/dist/native/assets/effs/args.c",
+      "bytes": 351,
+      "sha256": "7209a5fa11396fa8b0667a6738c913c40f554797e442c847a25e13a5f69676e0"
+    },
+    "selfhost/dist/native/assets/effs/print.c": {
+      "file": "selfhost/dist/native/assets/effs/print.c",
+      "bytes": 397,
+      "sha256": "709500d2ace6e2eaeec0f5f1e4373d4ec5e402b3c1e289bd70dfef7e2a635b26"
+    },
+    "selfhost/dist/native/assets/effs/now.c": {
+      "file": "selfhost/dist/native/assets/effs/now.c",
+      "bytes": 198,
+      "sha256": "da5fde65701c4fadc7560625c9615b4d60b2eefbd7b6bbe1aedda61887b825b9"
+    },
+    "selfhost/dist/native/assets/effs/print_err.c": {
+      "file": "selfhost/dist/native/assets/effs/print_err.c",
+      "bytes": 236,
+      "sha256": "72781d2adc88a4791d5530c9deff20824c38d5aa1ba43fb05aaa6a697e19f4b6"
+    },
+    "selfhost/dist/native/assets/effs/file_open.c": {
+      "file": "selfhost/dist/native/assets/effs/file_open.c",
+      "bytes": 1113,
+      "sha256": "f42a8bcc142b9003c7f6ca99287ca09c14f9efcbe15dea929c90c2fa062746e7"
+    },
+    "selfhost/dist/native/assets/effs/file_read.c": {
+      "file": "selfhost/dist/native/assets/effs/file_read.c",
+      "bytes": 2130,
+      "sha256": "6af44266ca83ab55b2dd3bf20c17eea6bfb7a7a678908cfbf3579adef31fb678"
+    },
+    "selfhost/dist/native/assets/effs/file_size.c": {
+      "file": "selfhost/dist/native/assets/effs/file_size.c",
+      "bytes": 771,
+      "sha256": "09906f3839f0f0fba1eea944c948e35f8e03627dc2b78e8debb43e0556f5d5d8"
+    },
+    "selfhost/dist/native/assets/effs/file_write.c": {
+      "file": "selfhost/dist/native/assets/effs/file_write.c",
+      "bytes": 1423,
+      "sha256": "565dff20204e1e535e188b983cda6d6001d0e5dc37cfdf981960c07a9e154ee2"
+    },
+    "selfhost/dist/native/assets/effs/file_close.c": {
+      "file": "selfhost/dist/native/assets/effs/file_close.c",
+      "bytes": 243,
+      "sha256": "befd465a31b88936d772222d26b1019ea7330e59e6327d8ba90584c85e8b2fb3"
+    },
+    "selfhost/dist/release.json": {
+      "file": "selfhost/dist/release.json",
+      "bytes": 252,
+      "sha256": "4b529ce58bcd3125681dbd20114ebf53dc19ca4fdb9220efbbd67333e30eee53"
+    },
+    "selfhost/dist/current-audit.json": {
+      "file": "selfhost/dist/current-audit.json",
+      "bytes": 14762,
+      "sha256": "8436d5eb5b4f8fd4fabe4d36e1d74f031da32e2c6b09a02744d365aee7495a6a"
+    }
+  },
+  "providers": {
+    "base": {
+      "file": "selfhost/dist/base.bend",
+      "bytes": 75064,
+      "sha256": "99ac43f2b2bb3e3f39acdcedcecbbd3cb44749ce13969c827d6973fa66f7facf"
+    },
+    "jsLegacyRuntime": {
+      "file": "selfhost/src/runtime.mjs",
+      "bytes": 61250,
+      "sha256": "913b6a850c60377dbb13ef98db2811b6c8383ee9fa6a6fc16fcad9c68f8afc54"
+    },
+    "jsDirectRuntime": {
+      "file": "selfhost/src/runtime/js/direct.mjs",
+      "bytes": 13862,
+      "sha256": "7fe4fbb3ddfdd3c7ea9ccd8d71cecb8f3ce51cd678a8fb7d95fd02cc70aba575"
+    },
+    "cRuntime": {
+      "file": "selfhost/src/runtime/native/runtime.c",
+      "bytes": 83683,
+      "sha256": "9e1c59078878be94052cb4d2d63a713e19e29b41ed3f94b034f2175a50efd0a9"
+    },
+    "cRuntimeTemplate": {
+      "file": "selfhost/src/runtime/native/runtime-template.json",
+      "bytes": 87224,
+      "sha256": "53fc42a61e6ea8d156a7b7a8a691ed753828119f2ae7ef5bb08a20db57c74793"
+    },
+    "qbeRuntime": {
+      "file": "selfhost/.assets/native/qbe-runtime.o",
+      "bytes": 119096,
+      "sha256": "2d07832382a11d7e993124ecc70452e4e1a3b7f753cf429343e1183cd8e493a3"
+    }
+  },
+  "provenance": {
+    "file": "selfhost/dist/current-audit.json",
+    "bytes": 14762,
+    "sha256": "8436d5eb5b4f8fd4fabe4d36e1d74f031da32e2c6b09a02744d365aee7495a6a"
+  },
+  "gateStatus": {
+    "qualified": true,
+    "mathematicalProof": false,
+    "components": {
+      "qbe": [
+        "qbe-qualified",
+        "qbe-focused",
+        "qbe-canonical-equivalence"
+      ],
+      "js": [
+        "js-b2-lineage",
+        "js-b3-fixedpoint",
+        "js-current-qualified",
+        "js-public7",
+        "js-capacity-controls",
+        "js-live-cache"
+      ],
+      "nativeCli": [
+        "native-cli-profile",
+        "native-cli-package",
+        "native-cli-qualified",
+        "native-cli-broad"
+      ]
+    }
+  }
+}

@@ -121,6 +121,21 @@ class Retirement(unittest.TestCase):
         with self.assertRaisesRegex(ValueError,'Reviewed dependency consumer changed'):
             R.dependencies(self.root,{'history/clean.c'})
 
+    def test_reviewed_edge_disconnects_only_unreachable_historical_dependencies(self):
+        tool=self.root/'selfhost/tools/active.py';tool.parent.mkdir(parents=True)
+        tool.write_text("absent = '../../history/dirty.py'\n")
+        (self.root/'history/dirty.py').write_text("dependency = 'clean.c'\n")
+        proposed={'history/dirty.py','history/clean.c'}
+        self.assertEqual(set(R.dependencies(self.root,proposed)[0]),proposed)
+        review=self.root/'selfhost/manifests/history-dependency-review-v1.json';review.parent.mkdir(parents=True)
+        review.write_text(json.dumps(dict(schema='bend-history-dependency-review-v1',exceptions=[dict(target='history/dirty.py',consumer='selfhost/tools/active.py',consumerSha256=R.pin(tool)['sha256'],reason='Reviewed absence assertion')])) )
+        self.assertEqual(R.dependencies(self.root,proposed)[0],{})
+        independent=self.root/'selfhost/tools/other.py'
+        independent.write_text("required = '../../history/clean.c'\n")
+        remaining=R.dependencies(self.root,proposed)[0]
+        self.assertEqual(set(remaining),{'history/clean.c'})
+        self.assertEqual([r['consumer']for r in remaining['history/clean.c']],['selfhost/tools/other.py'])
+
     def test_canonical_module_protected(self):
         path = self.root/'selfhost/src/example.bend'; path.parent.mkdir(parents=True)
         path.write_text('def example(): 1\n')
@@ -211,6 +226,45 @@ class SplitArchives(unittest.TestCase):
             self.assertEqual([row['path']for row in receipt['files']],sorted(bodies))
             for name,body in bodies.items():self.assertEqual((out/name).read_bytes(),body)
             self.assertFalse((out/'implementation/archive.zip').exists())
+
+
+class PolicyRefresh(unittest.TestCase):
+    def test_reclassify_preserves_recovery_and_original_workspace_pins(self):
+        policy=dict(baselineCommit='a'*40,keepPaths=[],pendingMigrationPaths=[],
+                    pendingMigrationPrefixes=[],retirePrefixes=['selfhost/tools/native/'])
+        original=dict(schema='bend-history-inventory-v1',proposalOnly=True,baselineCommit='a'*40,
+            dirtyTrackedFiles=[dict(path='historical/removed.py',sha256='preserved')],
+            archiveGroups=[dict(archivePath='original-group')],files=[
+                dict(path='selfhost/tools/native/selection.json',gitBlob='b'*40,gitMode='100644',
+                     bytes=20,action='blocked',reason='pending',workspaceProtected=True),
+                dict(path='historical/removed.py',gitBlob='c'*40,gitMode='100644',bytes=30,
+                     action='retire',reason='historical')])
+        result=INVENTORY.refresh_policy(original,policy)
+        self.assertEqual(len(result['files']),2)
+        self.assertEqual(result['files'][0]['action'],'retire')
+        self.assertEqual(result['files'][0]['application'],'index-only-preserve-working-bytes')
+        for before,after in zip(original['files'],result['files']):
+            for key in ['path','gitBlob','gitMode','bytes']:
+                self.assertEqual(before[key],after[key])
+        self.assertEqual(result['dirtyTrackedFiles'],original['dirtyTrackedFiles'])
+        self.assertEqual(result['archiveGroups'],original['archiveGroups'])
+        self.assertEqual(original['files'][0]['action'],'blocked')
+        policy['baselineCommit']='d'*40
+        with self.assertRaisesRegex(ValueError,'recovery baseline'):
+            INVENTORY.refresh_policy(original,policy)
+
+    def test_pending_migration_wins_over_explicit_retirement(self):
+        policy=dict(keepPaths=[],pendingMigrationPaths=[],pendingMigrationPrefixes=['selfhost/tools/native/'],
+                    retirePrefixes=['selfhost/tools/native/'])
+        self.assertEqual(INVENTORY.classify('selfhost/tools/native/selection.json',policy)[0],'blocked')
+
+    def test_exact_retirement_selection_is_migration_gated(self):
+        path='selfhost/tests/conformance/development.test.mjs'
+        policy=dict(keepPaths=[],pendingMigrationPaths=[path],pendingMigrationPrefixes=[],retirePaths=[path])
+        self.assertEqual(INVENTORY.classify(path,policy)[0],'blocked')
+        policy['pendingMigrationPaths']=[]
+        self.assertEqual(INVENTORY.classify(path,policy)[0],'retire')
+        self.assertEqual(INVENTORY.classify('selfhost/tests/conformance/independent.mjs',policy)[0],'keep')
 
 
 if __name__ == '__main__':

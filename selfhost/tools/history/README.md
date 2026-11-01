@@ -182,3 +182,55 @@ paths during apply; this is not a concurrent filesystem transaction.
 Git repositories. It covers clean deletion, dirty preservation, staged-edit
 exclusion, exact-plan/baseline rejection, transitive dependencies and canonical
 module protection. No real repository retirement is needed to run these tests.
+
+## Further retirement tranches
+
+Keep the entire recovery index after applying a tranche. Removed index entries
+remain valid historical recovery identities. Do not rebuild the initial workspace
+survey merely to release a later migration blocker: that would misclassify the
+already-retired paths as new working-tree deletions.
+
+After the root qualifies a replacement and explicitly updates the policy, use
+`inventory.py --refresh-policy-only`. This preserves every catalog path/blob/mode/
+size, split-archive group and original working-file pin, and only refreshes policy
+classification. It records the previous compressed index hash. Earlier receipts
+remain bound to that exact earlier index, recoverable from their published commit.
+
+For the final old native surface, keep `pendingMigrationPrefixes` unchanged until
+`selfhost/manifests/current.json` and both public launchers select the qualified
+maintained package. The replacement must not require any retired package byte.
+Only then remove `selfhost/tools/native/` from pending prefixes and explicitly add
+it to `retirePrefixes`. Pending migration always takes precedence over retirement.
+This retires the old surface's implementation and selection/provenance records;
+the original records remain exactly recoverable from Git.
+
+```sh
+python3 selfhost/tools/history/inventory.py --refresh-policy-only
+python3 selfhost/tools/history/retire.py plan \
+  --prefix selfhost/tools/native/ \
+  --out selfhost/build/consolidation/history-retirement/native-final.json
+```
+
+The explicit prefix excludes every first-tranche path. Review zero exclusions,
+the exact 52 expected baseline identities, replacement qualification, and the new
+plan digest before a separate explicit apply. Never reuse the first plan or its
+digest. Changed launchers may invalidate a plan; regenerate after their edits are
+finished. Untracked workspace research remains outside all retirement selections.
+
+The combined final tranche is recorded in
+`selfhost/manifests/history-final-selection-v1.json`: 84 exact paths covering the
+old native surface, reviewed development/prototype methods, four obsolete
+selfcheck images, old selected release-lineage records and two replaced guards.
+The catalog gained 29 exact baseline identities and retains all 81,288 original
+identities. All 84 are deliberately migration-blocked during preparation.
+`typed-api.mjs`, `base.bend`, the shared source runtime and the new selector are
+excluded from that selection.
+
+After the root confirms the recorded release gates, use the selection's
+`policyActivation` lists to remove only those pending entries, refresh policy,
+and execute its `planCommand` argument array. This command supplies the explicit
+84-path union as repeated prefixes; verify the plan's path set equals
+`selectionPaths` exactly and has no exclusions. Do not activate the whole recovery
+catalog or reuse the completed first-tranche plan. The superseded selected
+release metadata in this list is distinct from historical scientific evidence,
+which remains retained.

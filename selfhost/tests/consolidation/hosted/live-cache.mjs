@@ -26,8 +26,9 @@ try{
     fs.writeFileSync(path.join(out,'product-'+i),got.code,{flag:'wx'});report.rows.push({index:i,product:pin(path.join(out,'product-'+i)),exact:true});
   }
   const negative=await driver.inspect(args.source,{mode:'compile',useBaseCache:'off'});
-  requireThat(negative.status==='error'&&negative.phase==='load'&&negative.diagnostic==='Error: useBaseCache must be boolean','Invalid option did not refuse explicitly');
-  report.invalidOption=negative;requireThat(blocked.length===0,'A cache access was attempted');report.complete=true;
+  report.invalidOption=negative;
+  requireThat(negative.status==='error'&&negative.phase==='load'&&negative.diagnostic==='SOME PROOFS FAIL\nError: useBaseCache must be boolean','Invalid option did not refuse explicitly');
+  requireThat(blocked.length===0,'A cache access was attempted');report.complete=true;
 }catch(error){report.error=String(error.stack??error);process.exitCode=1;}
 finally{for(const [name,fn] of Object.entries(saved))fs[name]=fn;}
 for(const row of inputs)verify(row);

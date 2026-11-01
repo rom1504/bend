@@ -29,6 +29,7 @@ promoted by the source/tool consolidation.
 | --- | --- |
 | Assemble, request, build and bootstrap | [`selfhost/tools/build/`](selfhost/tools/build/) and [workflow](docs/self_hosted/workflow.md) |
 | Compiler latency and JS/C/QBE program speed | [`selfhost/tools/bench/`](selfhost/tools/bench/README.md), with explicit host/stage/target and20/60/300/600-second budgets |
+| Optional optimization cost and development-policy experiments | [Bend QBE policy switches](docs/self_hosted/optimization-policies.md) |
 | CPU, allocation, generated code and native stage analysis | [Profiling guide](docs/self_hosted/PROFILING.md), [`tools/profiler/`](selfhost/tools/profiler/README.md) and [benchmark diagnostics](selfhost/tools/bench/README.md#profiles-and-generated-code-inspection) |
 | Correctness and laws | [Conformance](selfhost/CONFORMANCE.md), [compiler law boundaries](docs/self_hosted/COMPILER_LAWS.md), and [maintained workflow](docs/self_hosted/workflow.md#correctness-and-proof-boundaries) |
 | Evidence retention and historical replay | [Retention policy](docs/self_hosted/build-retention.md) and [history tools](selfhost/tools/history/README.md) |

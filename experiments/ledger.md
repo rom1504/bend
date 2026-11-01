@@ -1,3 +1,26 @@
+# Phase151 — scalar dispatch and prepared Unit causality
+
+[Report](../implementation/phase151/README.md) ·
+[Design](../design/phase151/README.md) ·
+[Metrics](../implementation/phase151/metrics.json) ·
+[Independent audit](../research/phase151/independent-audit.md).
+
+Two-table emission1.1673→0.5702s; complete acquisition1.4254→0.8201s.
+Scalar source alone regresses roles/opcode execution1.91×/1.41×. Direct balanced
+helpers restore runtime but expand to27 declarations and3.8× reference QBE; rejected
+as production expansion. A checked Bend fixed-artifact counterfactual removes
+only42 nullary Unit ctor and42 matching sink sites in two consumed selectors:
+roles1.3135→0.685s, opcodes2.195→1.560s, recovering local parity. Independent
+instruction/runtime audit, finite controls and artifact refusals pass.
+
+No production source or installed change, general optimizer, new proof, full cold
+build, native self-reproduction or corpus-speed claim. Complete decoder prepared
+but not run.71 guarded jobs122.03s; failures retained and all closed, no OOM/prune.
+Next preserve authenticated prepared nullary values/nonowning facts through
+bounded inlining, with transfer and compiler-cost gates. Phase147 remains qualified.
+Steering is consolidated to the current frontier; prior detail remains in Git and
+phase reports rather than duplicated indefinitely in that file.
+
 # Compiler experiment ledger
 
 This ledger records decisions and links evidence; it does not replace the reports.

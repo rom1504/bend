@@ -1,0 +1,502 @@
+{
+  "kind": "phase151-research-qualification",
+  "complete": true,
+  "productionSourceAndInstalledSelectorUnchanged": true,
+  "independentSourceChecks": [
+    {
+      "report": "selfhost/build/phase151/probe-check02/report.json",
+      "sha256": "6ec59462abf4b729bb08f4cf509512cc4961a6774bb123171ccd21dc052bf036",
+      "complete": true
+    },
+    {
+      "report": "selfhost/build/phase151/direct-check02/report.json",
+      "sha256": "b9383d5605ce427a73e610f572be8dbac7d40b7bb3bf4c29982cea7029667361",
+      "complete": true
+    },
+    {
+      "report": "selfhost/build/phase151/unit-check03/report.json",
+      "sha256": "288daad72571f95d56dffb3d65fcf1dedb3f369c0d0b16e43548de1db9cea758",
+      "complete": true
+    }
+  ],
+  "controls": [
+    {
+      "guard": "selfhost/build/phase151/screen-controls01-guard",
+      "stdout": "phase151 exact_input_pairs 514\nphase151 independent_table_cases 28\nphase151 comparator_controls 10\nphase151 loop_observation_pairs 10\nphase151 controls true\n",
+      "sha256": "b1ee4e0936be5f3a02e00fc288403abb8e67175d9896f263e7188e1777418008"
+    },
+    {
+      "guard": "selfhost/build/phase151/direct-timing00-guard",
+      "stdout": "phase151 exact_input_pairs 514\nphase151 independent_table_cases 28\nphase151 comparator_controls 10\nphase151 loop_observation_pairs 10\nphase151 controls true\n",
+      "sha256": "b1ee4e0936be5f3a02e00fc288403abb8e67175d9896f263e7188e1777418008"
+    },
+    {
+      "guard": "selfhost/build/phase151/unit-timing00-guard",
+      "stdout": "phase151 exact_input_pairs 514\nphase151 independent_table_cases 28\nphase151 comparator_controls 10\nphase151 loop_observation_pairs 10\nphase151 controls true\n",
+      "sha256": "b1ee4e0936be5f3a02e00fc288403abb8e67175d9896f263e7188e1777418008"
+    },
+    {
+      "guard": "selfhost/build/phase151/independent-controls01-guard",
+      "stdout": "phase151 independent controls true\n",
+      "sha256": "1d2fdaacb8e15ee859674924ab3be6f7f110227ec31e84cba1863123a7ffb09a"
+    }
+  ],
+  "counterfactual": {
+    "kind": "phase151-unit-counterfactual-observation",
+    "complete": true,
+    "original": {
+      "file": "selfhost/build/phase151/probe-native01/program.ssa",
+      "bytes": 1046634,
+      "sha256": "ce4d2ca909ac855c8cae8a43c95bfeae75e55e5e7832c43995c25f1d67f00e9d"
+    },
+    "patched": {
+      "file": "selfhost/build/phase151/unit-patched02/program.ssa",
+      "bytes": 1042728,
+      "sha256": "13683aad9018682f7a6a5e5f49d245c7ae27b9dd34fa764a850e53dc760dc8cd"
+    },
+    "allInputsUnchanged": true,
+    "exactChangedLines": [
+      [
+        3822,
+        "%v_p113i_1_local_value =l call $p111_rt_ctor(l %state, w 0, l %v_p113i_1_local_scratch, w 0)\n",
+        "%v_p113i_1_local_value =l copy 72057594037927936\n"
+      ],
+      [
+        3825,
+        "%v_p113i_1_local_ignored =l call $p111_rt_sink(l %state, l %v_p113i_1_local_v_5466)\n",
+        "%v_p113i_1_local_ignored =l copy 0\n"
+      ],
+      [
+        3839,
+        "%v_p113i_1_local_value =l call $p111_rt_ctor(l %state, w 0, l %v_p113i_1_local_scratch, w 0)\n",
+        "%v_p113i_1_local_value =l copy 72057594037927936\n"
+      ],
+      [
+        3842,
+        "%v_p113i_1_local_ignored =l call $p111_rt_sink(l %state, l %v_p113i_1_local_v_5467)\n",
+        "%v_p113i_1_local_ignored =l copy 0\n"
+      ],
+      [
+        3865,
+        "%v_p113i_1_local_value =l call $p111_rt_ctor(l %state, w 0, l %v_p113i_1_local_scratch, w 0)\n",
+        "%v_p113i_1_local_value =l copy 72057594037927936\n"
+      ],
+      [
+        3868,
+        "%v_p113i_1_local_ignored =l call $p111_rt_sink(l %state, l %v_p113i_1_local_v_5468)\n",
+        "%v_p113i_1_local_ignored =l copy 0\n"
+      ],
+      [
+        3882,
+        "%v_p113i_1_local_value =l call $p111_rt_ctor(l %state, w 0, l %v_p113i_1_local_scratch, w 0)\n",
+        "%v_p113i_1_local_value =l copy 72057594037927936\n"
+      ],
+      [
+        3885,
+        "%v_p113i_1_local_ignored =l call $p111_rt_sink(l %state, l %v_p113i_1_local_v_5469)\n",
+        "%v_p113i_1_local_ignored =l copy 0\n"
+      ],
+      [
+        3908,
+        "%v_p113i_1_local_value =l call $p111_rt_ctor(l %state, w 0, l %v_p113i_1_local_scratch, w 0)\n",
+        "%v_p113i_1_local_value =l copy 72057594037927936\n"
+      ],
+      [
+        3911,
+        "%v_p113i_1_local_ignored =l call $p111_rt_sink(l %state, l %v_p113i_1_local_v_5470)\n",
+        "%v_p113i_1_local_ignored =l copy 0\n"
+      ],
+      [
+        3925,
+        "%v_p113i_1_local_value =l call $p111_rt_ctor(l %state, w 0, l %v_p113i_1_local_scratch, w 0)\n",
+        "%v_p113i_1_local_value =l copy 72057594037927936\n"
+      ],
+      [
+        3928,
+        "%v_p113i_1_local_ignored =l call $p111_rt_sink(l %state, l %v_p113i_1_local_v_5471)\n",
+        "%v_p113i_1_local_ignored =l copy 0\n"
+      ],
+      [
+        3951,
+        "%v_p113i_1_local_value =l call $p111_rt_ctor(l %state, w 0, l %v_p113i_1_local_scratch, w 0)\n",
+        "%v_p113i_1_local_value =l copy 72057594037927936\n"
+      ],
+      [
+        3954,
+        "%v_p113i_1_local_ignored =l call $p111_rt_sink(l %state, l %v_p113i_1_local_v_5472)\n",
+        "%v_p113i_1_local_ignored =l copy 0\n"
+      ],
+      [
+        3968,
+        "%v_p113i_1_local_value =l call $p111_rt_ctor(l %state, w 0, l %v_p113i_1_local_scratch, w 0)\n",
+        "%v_p113i_1_local_value =l copy 72057594037927936\n"
+      ],
+      [
+        3971,
+        "%v_p113i_1_local_ignored =l call $p111_rt_sink(l %state, l %v_p113i_1_local_v_5473)\n",
+        "%v_p113i_1_local_ignored =l copy 0\n"
+      ],
+      [
+        3994,
+        "%v_p113i_1_local_value =l call $p111_rt_ctor(l %state, w 0, l %v_p113i_1_local_scratch, w 0)\n",
+        "%v_p113i_1_local_value =l copy 72057594037927936\n"
+      ],
+      [
+        3997,
+        "%v_p113i_1_local_ignored =l call $p111_rt_sink(l %state, l %v_p113i_1_local_v_5474)\n",
+        "%v_p113i_1_local_ignored =l copy 0\n"
+      ],
+      [
+        4011,
+        "%v_p113i_1_local_value =l call $p111_rt_ctor(l %state, w 0, l %v_p113i_1_local_scratch, w 0)\n",
+        "%v_p113i_1_local_value =l copy 72057594037927936\n"
+      ],
+      [
+        4014,
+        "%v_p113i_1_local_ignored =l call $p111_rt_sink(l %state, l %v_p113i_1_local_v_5475)\n",
+        "%v_p113i_1_local_ignored =l copy 0\n"
+      ],
+      [
+        4037,
+        "%v_p113i_1_local_value =l call $p111_rt_ctor(l %state, w 0, l %v_p113i_1_local_scratch, w 0)\n",
+        "%v_p113i_1_local_value =l copy 72057594037927936\n"
+      ],
+      [
+        4040,
+        "%v_p113i_1_local_ignored =l call $p111_rt_sink(l %state, l %v_p113i_1_local_v_5476)\n",
+        "%v_p113i_1_local_ignored =l copy 0\n"
+      ],
+      [
+        4054,
+        "%v_p113i_1_local_value =l call $p111_rt_ctor(l %state, w 0, l %v_p113i_1_local_scratch, w 0)\n",
+        "%v_p113i_1_local_value =l copy 72057594037927936\n"
+      ],
+      [
+        4057,
+        "%v_p113i_1_local_ignored =l call $p111_rt_sink(l %state, l %v_p113i_1_local_v_5477)\n",
+        "%v_p113i_1_local_ignored =l copy 0\n"
+      ],
+      [
+        4080,
+        "%v_p113i_1_local_value =l call $p111_rt_ctor(l %state, w 0, l %v_p113i_1_local_scratch, w 0)\n",
+        "%v_p113i_1_local_value =l copy 72057594037927936\n"
+      ],
+      [
+        4083,
+        "%v_p113i_1_local_ignored =l call $p111_rt_sink(l %state, l %v_p113i_1_local_v_5478)\n",
+        "%v_p113i_1_local_ignored =l copy 0\n"
+      ],
+      [
+        4097,
+        "%v_p113i_1_local_value =l call $p111_rt_ctor(l %state, w 0, l %v_p113i_1_local_scratch, w 0)\n",
+        "%v_p113i_1_local_value =l copy 72057594037927936\n"
+      ],
+      [
+        4100,
+        "%v_p113i_1_local_ignored =l call $p111_rt_sink(l %state, l %v_p113i_1_local_v_5479)\n",
+        "%v_p113i_1_local_ignored =l copy 0\n"
+      ],
+      [
+        4123,
+        "%v_p113i_1_local_value =l call $p111_rt_ctor(l %state, w 0, l %v_p113i_1_local_scratch, w 0)\n",
+        "%v_p113i_1_local_value =l copy 72057594037927936\n"
+      ],
+      [
+        4126,
+        "%v_p113i_1_local_ignored =l call $p111_rt_sink(l %state, l %v_p113i_1_local_v_5480)\n",
+        "%v_p113i_1_local_ignored =l copy 0\n"
+      ],
+      [
+        4140,
+        "%v_p113i_1_local_value =l call $p111_rt_ctor(l %state, w 0, l %v_p113i_1_local_scratch, w 0)\n",
+        "%v_p113i_1_local_value =l copy 72057594037927936\n"
+      ],
+      [
+        4143,
+        "%v_p113i_1_local_ignored =l call $p111_rt_sink(l %state, l %v_p113i_1_local_v_5481)\n",
+        "%v_p113i_1_local_ignored =l copy 0\n"
+      ],
+      [
+        4166,
+        "%v_p113i_1_local_value =l call $p111_rt_ctor(l %state, w 0, l %v_p113i_1_local_scratch, w 0)\n",
+        "%v_p113i_1_local_value =l copy 72057594037927936\n"
+      ],
+      [
+        4169,
+        "%v_p113i_1_local_ignored =l call $p111_rt_sink(l %state, l %v_p113i_1_local_v_5482)\n",
+        "%v_p113i_1_local_ignored =l copy 0\n"
+      ],
+      [
+        4183,
+        "%v_p113i_1_local_value =l call $p111_rt_ctor(l %state, w 0, l %v_p113i_1_local_scratch, w 0)\n",
+        "%v_p113i_1_local_value =l copy 72057594037927936\n"
+      ],
+      [
+        4186,
+        "%v_p113i_1_local_ignored =l call $p111_rt_sink(l %state, l %v_p113i_1_local_v_5483)\n",
+        "%v_p113i_1_local_ignored =l copy 0\n"
+      ],
+      [
+        4209,
+        "%v_p113i_1_local_value =l call $p111_rt_ctor(l %state, w 0, l %v_p113i_1_local_scratch, w 0)\n",
+        "%v_p113i_1_local_value =l copy 72057594037927936\n"
+      ],
+      [
+        4212,
+        "%v_p113i_1_local_ignored =l call $p111_rt_sink(l %state, l %v_p113i_1_local_v_5484)\n",
+        "%v_p113i_1_local_ignored =l copy 0\n"
+      ],
+      [
+        4226,
+        "%v_p113i_1_local_value =l call $p111_rt_ctor(l %state, w 0, l %v_p113i_1_local_scratch, w 0)\n",
+        "%v_p113i_1_local_value =l copy 72057594037927936\n"
+      ],
+      [
+        4229,
+        "%v_p113i_1_local_ignored =l call $p111_rt_sink(l %state, l %v_p113i_1_local_v_5485)\n",
+        "%v_p113i_1_local_ignored =l copy 0\n"
+      ],
+      [
+        4719,
+        "%v_p113i_1_local_value =l call $p111_rt_ctor(l %state, w 0, l %v_p113i_1_local_scratch, w 0)\n",
+        "%v_p113i_1_local_value =l copy 72057594037927936\n"
+      ],
+      [
+        4722,
+        "%v_p113i_1_local_ignored =l call $p111_rt_sink(l %state, l %v_p113i_1_local_v_5442)\n",
+        "%v_p113i_1_local_ignored =l copy 0\n"
+      ],
+      [
+        4736,
+        "%v_p113i_1_local_value =l call $p111_rt_ctor(l %state, w 0, l %v_p113i_1_local_scratch, w 0)\n",
+        "%v_p113i_1_local_value =l copy 72057594037927936\n"
+      ],
+      [
+        4739,
+        "%v_p113i_1_local_ignored =l call $p111_rt_sink(l %state, l %v_p113i_1_local_v_5443)\n",
+        "%v_p113i_1_local_ignored =l copy 0\n"
+      ],
+      [
+        4762,
+        "%v_p113i_1_local_value =l call $p111_rt_ctor(l %state, w 0, l %v_p113i_1_local_scratch, w 0)\n",
+        "%v_p113i_1_local_value =l copy 72057594037927936\n"
+      ],
+      [
+        4765,
+        "%v_p113i_1_local_ignored =l call $p111_rt_sink(l %state, l %v_p113i_1_local_v_5444)\n",
+        "%v_p113i_1_local_ignored =l copy 0\n"
+      ],
+      [
+        4779,
+        "%v_p113i_1_local_value =l call $p111_rt_ctor(l %state, w 0, l %v_p113i_1_local_scratch, w 0)\n",
+        "%v_p113i_1_local_value =l copy 72057594037927936\n"
+      ],
+      [
+        4782,
+        "%v_p113i_1_local_ignored =l call $p111_rt_sink(l %state, l %v_p113i_1_local_v_5445)\n",
+        "%v_p113i_1_local_ignored =l copy 0\n"
+      ],
+      [
+        4805,
+        "%v_p113i_1_local_value =l call $p111_rt_ctor(l %state, w 0, l %v_p113i_1_local_scratch, w 0)\n",
+        "%v_p113i_1_local_value =l copy 72057594037927936\n"
+      ],
+      [
+        4808,
+        "%v_p113i_1_local_ignored =l call $p111_rt_sink(l %state, l %v_p113i_1_local_v_5446)\n",
+        "%v_p113i_1_local_ignored =l copy 0\n"
+      ],
+      [
+        4822,
+        "%v_p113i_1_local_value =l call $p111_rt_ctor(l %state, w 0, l %v_p113i_1_local_scratch, w 0)\n",
+        "%v_p113i_1_local_value =l copy 72057594037927936\n"
+      ],
+      [
+        4825,
+        "%v_p113i_1_local_ignored =l call $p111_rt_sink(l %state, l %v_p113i_1_local_v_5447)\n",
+        "%v_p113i_1_local_ignored =l copy 0\n"
+      ],
+      [
+        4848,
+        "%v_p113i_1_local_value =l call $p111_rt_ctor(l %state, w 0, l %v_p113i_1_local_scratch, w 0)\n",
+        "%v_p113i_1_local_value =l copy 72057594037927936\n"
+      ],
+      [
+        4851,
+        "%v_p113i_1_local_ignored =l call $p111_rt_sink(l %state, l %v_p113i_1_local_v_5448)\n",
+        "%v_p113i_1_local_ignored =l copy 0\n"
+      ],
+      [
+        4865,
+        "%v_p113i_1_local_value =l call $p111_rt_ctor(l %state, w 0, l %v_p113i_1_local_scratch, w 0)\n",
+        "%v_p113i_1_local_value =l copy 72057594037927936\n"
+      ],
+      [
+        4868,
+        "%v_p113i_1_local_ignored =l call $p111_rt_sink(l %state, l %v_p113i_1_local_v_5449)\n",
+        "%v_p113i_1_local_ignored =l copy 0\n"
+      ],
+      [
+        4891,
+        "%v_p113i_1_local_value =l call $p111_rt_ctor(l %state, w 0, l %v_p113i_1_local_scratch, w 0)\n",
+        "%v_p113i_1_local_value =l copy 72057594037927936\n"
+      ],
+      [
+        4894,
+        "%v_p113i_1_local_ignored =l call $p111_rt_sink(l %state, l %v_p113i_1_local_v_5450)\n",
+        "%v_p113i_1_local_ignored =l copy 0\n"
+      ],
+      [
+        4908,
+        "%v_p113i_1_local_value =l call $p111_rt_ctor(l %state, w 0, l %v_p113i_1_local_scratch, w 0)\n",
+        "%v_p113i_1_local_value =l copy 72057594037927936\n"
+      ],
+      [
+        4911,
+        "%v_p113i_1_local_ignored =l call $p111_rt_sink(l %state, l %v_p113i_1_local_v_5451)\n",
+        "%v_p113i_1_local_ignored =l copy 0\n"
+      ],
+      [
+        4934,
+        "%v_p113i_1_local_value =l call $p111_rt_ctor(l %state, w 0, l %v_p113i_1_local_scratch, w 0)\n",
+        "%v_p113i_1_local_value =l copy 72057594037927936\n"
+      ],
+      [
+        4937,
+        "%v_p113i_1_local_ignored =l call $p111_rt_sink(l %state, l %v_p113i_1_local_v_5452)\n",
+        "%v_p113i_1_local_ignored =l copy 0\n"
+      ],
+      [
+        4951,
+        "%v_p113i_1_local_value =l call $p111_rt_ctor(l %state, w 0, l %v_p113i_1_local_scratch, w 0)\n",
+        "%v_p113i_1_local_value =l copy 72057594037927936\n"
+      ],
+      [
+        4954,
+        "%v_p113i_1_local_ignored =l call $p111_rt_sink(l %state, l %v_p113i_1_local_v_5453)\n",
+        "%v_p113i_1_local_ignored =l copy 0\n"
+      ],
+      [
+        4977,
+        "%v_p113i_1_local_value =l call $p111_rt_ctor(l %state, w 0, l %v_p113i_1_local_scratch, w 0)\n",
+        "%v_p113i_1_local_value =l copy 72057594037927936\n"
+      ],
+      [
+        4980,
+        "%v_p113i_1_local_ignored =l call $p111_rt_sink(l %state, l %v_p113i_1_local_v_5454)\n",
+        "%v_p113i_1_local_ignored =l copy 0\n"
+      ],
+      [
+        4994,
+        "%v_p113i_1_local_value =l call $p111_rt_ctor(l %state, w 0, l %v_p113i_1_local_scratch, w 0)\n",
+        "%v_p113i_1_local_value =l copy 72057594037927936\n"
+      ],
+      [
+        4997,
+        "%v_p113i_1_local_ignored =l call $p111_rt_sink(l %state, l %v_p113i_1_local_v_5455)\n",
+        "%v_p113i_1_local_ignored =l copy 0\n"
+      ],
+      [
+        5020,
+        "%v_p113i_1_local_value =l call $p111_rt_ctor(l %state, w 0, l %v_p113i_1_local_scratch, w 0)\n",
+        "%v_p113i_1_local_value =l copy 72057594037927936\n"
+      ],
+      [
+        5023,
+        "%v_p113i_1_local_ignored =l call $p111_rt_sink(l %state, l %v_p113i_1_local_v_5456)\n",
+        "%v_p113i_1_local_ignored =l copy 0\n"
+      ],
+      [
+        5037,
+        "%v_p113i_1_local_value =l call $p111_rt_ctor(l %state, w 0, l %v_p113i_1_local_scratch, w 0)\n",
+        "%v_p113i_1_local_value =l copy 72057594037927936\n"
+      ],
+      [
+        5040,
+        "%v_p113i_1_local_ignored =l call $p111_rt_sink(l %state, l %v_p113i_1_local_v_5457)\n",
+        "%v_p113i_1_local_ignored =l copy 0\n"
+      ],
+      [
+        5063,
+        "%v_p113i_1_local_value =l call $p111_rt_ctor(l %state, w 0, l %v_p113i_1_local_scratch, w 0)\n",
+        "%v_p113i_1_local_value =l copy 72057594037927936\n"
+      ],
+      [
+        5066,
+        "%v_p113i_1_local_ignored =l call $p111_rt_sink(l %state, l %v_p113i_1_local_v_5458)\n",
+        "%v_p113i_1_local_ignored =l copy 0\n"
+      ],
+      [
+        5080,
+        "%v_p113i_1_local_value =l call $p111_rt_ctor(l %state, w 0, l %v_p113i_1_local_scratch, w 0)\n",
+        "%v_p113i_1_local_value =l copy 72057594037927936\n"
+      ],
+      [
+        5083,
+        "%v_p113i_1_local_ignored =l call $p111_rt_sink(l %state, l %v_p113i_1_local_v_5459)\n",
+        "%v_p113i_1_local_ignored =l copy 0\n"
+      ],
+      [
+        5106,
+        "%v_p113i_1_local_value =l call $p111_rt_ctor(l %state, w 0, l %v_p113i_1_local_scratch, w 0)\n",
+        "%v_p113i_1_local_value =l copy 72057594037927936\n"
+      ],
+      [
+        5109,
+        "%v_p113i_1_local_ignored =l call $p111_rt_sink(l %state, l %v_p113i_1_local_v_5460)\n",
+        "%v_p113i_1_local_ignored =l copy 0\n"
+      ],
+      [
+        5123,
+        "%v_p113i_1_local_value =l call $p111_rt_ctor(l %state, w 0, l %v_p113i_1_local_scratch, w 0)\n",
+        "%v_p113i_1_local_value =l copy 72057594037927936\n"
+      ],
+      [
+        5126,
+        "%v_p113i_1_local_ignored =l call $p111_rt_sink(l %state, l %v_p113i_1_local_v_5461)\n",
+        "%v_p113i_1_local_ignored =l copy 0\n"
+      ],
+      [
+        5149,
+        "%v_p113i_1_local_value =l call $p111_rt_ctor(l %state, w 0, l %v_p113i_1_local_scratch, w 0)\n",
+        "%v_p113i_1_local_value =l copy 72057594037927936\n"
+      ],
+      [
+        5152,
+        "%v_p113i_1_local_ignored =l call $p111_rt_sink(l %state, l %v_p113i_1_local_v_5462)\n",
+        "%v_p113i_1_local_ignored =l copy 0\n"
+      ],
+      [
+        5166,
+        "%v_p113i_1_local_value =l call $p111_rt_ctor(l %state, w 0, l %v_p113i_1_local_scratch, w 0)\n",
+        "%v_p113i_1_local_value =l copy 72057594037927936\n"
+      ],
+      [
+        5169,
+        "%v_p113i_1_local_ignored =l call $p111_rt_sink(l %state, l %v_p113i_1_local_v_5463)\n",
+        "%v_p113i_1_local_ignored =l copy 0\n"
+      ]
+    ],
+    "unchangedOutsideTwoFunctions": true,
+    "ctorChanges": 42,
+    "sinkChanges": 42
+  },
+  "expectedRefusals": [
+    {
+      "case": "mismatch",
+      "refusedBeforeOutput": true,
+      "diagnostic": "unit counterfactual: missing, duplicate or mismatched selector body / call counts"
+    },
+    {
+      "case": "missing",
+      "refusedBeforeOutput": true,
+      "diagnostic": "unit counterfactual: missing, duplicate or mismatched selector body / call counts"
+    },
+    {
+      "case": "duplicate",
+      "refusedBeforeOutput": true,
+      "diagnostic": "unit counterfactual: missing, duplicate or mismatched selector body / call counts"
+    }
+  ],
+  "scope": "No general transformation, new BendTT proof, full cold build, bootstrap or corpus qualification. Exact table controls primarily execute unchanged standalone tables; patched selector coverage is paired loop observations plus audited exact instruction/runtime semantics."
+}

@@ -1,0 +1,49 @@
+{
+  "kind": "phase151-unit-counterfactual-runtime-pins",
+  "version": 1,
+  "targetsRun": false,
+  "frozenPins": "selfhost/tests/phase151/unit-counterfactual-pins.json",
+  "rawPins": [
+    "selfhost/tests/phase151/unit-counterfactual-pins/roles.ssa",
+    "selfhost/tests/phase151/unit-counterfactual-pins/binary.ssa"
+  ],
+  "preamble": "import Base\n",
+  "pureCompilerDependencies": {
+    "selfhost/src/core/term.bend": [
+      "kc"
+    ]
+  },
+  "pureModules": [
+    "selfhost/tests/phase151/unit-counterfactual-headers.bend",
+    "selfhost/tests/phase151/unit-counterfactual.bend"
+  ],
+  "export": "p151u_transform",
+  "signature": "(text: String, rolesPin: String, binaryPin: String) -> P151UText",
+  "optionalNativeDependencies": {
+    "selfhost/src/host/native-plan.bend": [
+      "p86_read_eof",
+      "p86_read_more",
+      "p86_read_sized",
+      "p86_read_limit",
+      "p86_read_file",
+      "p86_write_close"
+    ]
+  },
+  "optionalNativeModule": "selfhost/tests/phase151/unit-counterfactual-cli.bend",
+  "runtimeArguments": [
+    "--threads",
+    "1",
+    "--gpu",
+    "off",
+    "--",
+    "phase151-unit",
+    "INPUT",
+    "ROLESPIN",
+    "BINARYPIN",
+    "OUTPUT"
+  ],
+  "authentication": "The supervisor verifies SHA256 for the whole input and both raw pin files against the frozen manifest before invocation and again after completion, and requires a fresh output. Hashing, IO and emitted-text observation remain host plumbing; the transform and all exact body/count decisions remain Bend.",
+  "scope": "Only the same two consumed direct selector workers, with exactly 42 Unit ctor and 42 corresponding sink changes. All other text stays unchanged. No embedded complete body strings are compiled.",
+  "priorArtifacts": "The failed embedded-pins module and frozen source01/source02 are preserved in implementation/phase151/evidence/phase151.tar.gz under original paths. Do not append the large module to the current source.",
+  "results": "implementation/phase151/README.md"
+}

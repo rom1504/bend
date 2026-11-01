@@ -1,0 +1,74 @@
+{
+  "kind": "phase151-unit-counterfactual-source-pins",
+  "version": 1,
+  "targetsRun": false,
+  "source": {
+    "file": "selfhost/build/phase151/probe-native01/program.ssa",
+    "bytes": 1046634,
+    "sha256": "ce4d2ca909ac855c8cae8a43c95bfeae75e55e5e7832c43995c25f1d67f00e9d"
+  },
+  "functions": [
+    {
+      "role": "roles",
+      "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_49_53_49_112_95_114_111_108_101_115_95_115_101_108_101_99_116_",
+      "sourceStartLine": 4411,
+      "sourceBytes": 34909,
+      "sha256": "859adf28099833a30b054466df03689d806dd29ada211d53041e897a8e3f959b",
+      "ctorSites": 22,
+      "sinkSites": 22,
+      "pin": "selfhost/tests/phase151/unit-counterfactual-pins/roles.ssa",
+      "verifiedShape": "Every ctor is exact cid=0/count=0 and feeds the unique sink exactly three lines later through two copy aliases. All other text is pinned."
+    },
+    {
+      "role": "binary",
+      "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_49_53_49_112_95_98_105_110_97_114_121_95_115_101_108_101_99_116_",
+      "sourceStartLine": 3554,
+      "sourceBytes": 31388,
+      "sha256": "eadd49704ae4129af8d638aa7520ceb91eded2dd5aea431cabe640c51597d563",
+      "ctorSites": 20,
+      "sinkSites": 20,
+      "pin": "selfhost/tests/phase151/unit-counterfactual-pins/binary.ssa",
+      "verifiedShape": "Every ctor is exact cid=0/count=0 and feeds the unique sink exactly three lines later through two copy aliases. All other text is pinned."
+    }
+  ],
+  "compiledPins": {
+    "file": "selfhost/tests/phase151/unit-counterfactual-pins.bend",
+    "bytes": 68437,
+    "sha256": "63ed1dfed12e2c8f7977a494b41491d48fc399fcce22d51c51c35de2fc4d2a1c"
+  },
+  "scope": "Only the two direct selector workers called by p151p_roles_loop / p151p_binary_loop. Original private table bodies and common loop Unit calls remain unchanged.",
+  "replacement": {
+    "ctor": "%v_p113i_1_local_value =l copy 72057594037927936",
+    "sink": "%v_p113i_1_local_ignored =l copy 0"
+  },
+  "constant": "0x0100000000000000, packed ordinary constructor cid=0/count=0, verified by coordinator against runtime.",
+  "preamble": "import Base\n",
+  "compilerModules": {
+    "selfhost/src/core/term.bend": [
+      "kc"
+    ],
+    "selfhost/src/host/native-plan.bend": [
+      "p86_read_eof",
+      "p86_read_more",
+      "p86_read_sized",
+      "p86_read_limit",
+      "p86_read_file",
+      "p86_write_close"
+    ]
+  },
+  "appendModules": [
+    "selfhost/tests/phase151/unit-counterfactual-pins.bend",
+    "selfhost/tests/phase151/unit-counterfactual.bend"
+  ],
+  "runtimeArguments": [
+    "--threads",
+    "1",
+    "--gpu",
+    "off",
+    "--",
+    "phase151-unit",
+    "INPUT",
+    "OUTPUT"
+  ],
+  "qualification": "Text-only causal counterfactual for one frozen compiler artifact; not a compiler pass or generally verified optimization. Pin extraction/audit did not construct patched QBE or execute a target."
+}

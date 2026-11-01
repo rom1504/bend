@@ -1,0 +1,45 @@
+{
+  "kind": "phase151-dispatch-probe-source-dependencies",
+  "version": 1,
+  "targetsRun": false,
+  "preamble": "import Base\n",
+  "selection": "Select every law/type/def span for the listed names from the frozen maintained assembly with source.py blocks, preserving source order. Append candidate and probe modules. No entire compiler module or prior main is needed.",
+  "compilerModules": {
+    "selfhost/src/host/prepared-base.bend": ["p88_roles"],
+    "selfhost/src/back/qbe/fused-regions.bend": ["p112fp_binary"]
+  },
+  "appendModules": [
+    "selfhost/tests/phase151/dispatch-candidates.bend",
+    "selfhost/tests/phase151/dispatch-probe.bend"
+  ],
+  "candidateDependencies": ["Base"],
+  "probeDependencies": ["Base", "p88_roles", "p112fp_binary", "p151_choose", "p151_roles", "p151_binary"],
+  "entry": "main",
+  "runtimeArguments": ["--threads", "1", "--gpu", "off", "--", "phase151-dispatch", "MODE", "COUNT", "SEED"],
+  "modes": ["controls", "reference-roles", "candidate-roles", "reference-binary", "candidate-binary"],
+  "limits": {"countMinimum": 0, "countMaximum": 100000000, "seedMinimum": 0, "seedMaximum": 4294967295},
+  "controls": {
+    "exactInputPairs": 514,
+    "independentTableCases": 28,
+    "comparatorControls": 10,
+    "loopObservationPairs": 10,
+    "ranges": [
+      {"start": 0, "length": 256},
+      {"start": 256, "length": 64},
+      {"start": 65536, "length": 64},
+      {"start": 2147483648, "length": 64},
+      {"start": 4294967264, "length": 64}
+    ],
+    "extraInputs": [65535, 2147483647],
+    "rangeArithmetic": "U32 addition wraps: the final range visits the last 32 words, then 0..31.",
+    "independentExpectations": "All 12 roles entries and all 10 binary entries are spelled as expected results in Bend. Two roles fallback inputs and four binary fallback inputs complete 28 cases. Every range input additionally checks the independently known fallback condition."
+  },
+  "runtimeConsumers": {
+    "roles": "p151p_roles_loop candidate COUNT SEED 2166136261; selected dispatch receives next & 15.",
+    "binary": "p151p_binary_loop candidate COUNT SEED 2166136261; selected dispatch receives 26 + (next & 15).",
+    "selection": "The same loop and consuming observer run both functions. A Bool selector calls reference for False and candidate for True; this avoids equating their different argument quantities in a function-value type. Separate standalone sources may select the helper body while preserving the shared loop and observer.",
+    "observation": "Every list element or character, an end marker and each unmasked seed enter the returned hash. A printed zero/nonzero branch demands that hash before the ending local clock. Hash equality supplements exact-value controls; it is not their oracle.",
+    "clock": "CLI parsing precedes the local clock. region_ms includes dispatch, loop and consuming observer. External process timing must separately charge startup, reporting and any remaining reclamation."
+  },
+  "qualification": "Finite diagnostic only. No compiler targets or native benchmarks were run by the author; source acceptance and measured behavior require root execution. Selector and observation costs are shared but can dominate such tiny dispatch functions."
+}

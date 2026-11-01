@@ -56,3 +56,20 @@ all guards with verified retention. Commit the design and completed evidence.
 
 Stop or redirect after a decisive negative result. A source inventory is not a
 forecast that the remaining 258-second cold build can reach 100 seconds.
+
+## Evidence-driven extension
+
+The compact scalar spelling halved local emission time but regressed execution.
+Machine inspection identified repeated immediate Unit construction/sink calls
+introduced by chooser expansion. A balanced no-thunk spelling restored execution
+but grew source and QBE substantially. Before a generic compiler change, run a
+frozen-artifact counterfactual in Bend: authenticate two consumed selector bodies,
+replace only their known Unit call pairs, retain all other QBE bytes, rebuild,
+run exact controls and alternate original/patched executions. This is a causal
+experiment, not an admitted compiler transformation or production qualification.
+
+The complete decoder gate is deferred when neither source spelling gives a
+sufficient overall tradeoff; building it cannot establish a missing general rule.
+Preserve the prepared decoder driver as unexecuted evidence. The final report
+must distinguish the source-compilation win from the separate generated-code
+counterfactual, including the still-unmeasured cost of an automatic transformation.

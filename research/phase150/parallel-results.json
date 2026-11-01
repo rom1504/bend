@@ -1,0 +1,1320 @@
+{
+  "kind": "phase150-two-process-validation-results",
+  "version": 1,
+  "complete": true,
+  "passed": true,
+  "scope": "Finite two-process correctness-throughput feasibility on one host. Ordinary QBE child processes keep one Bend heap mutator. No compiler/program performance, kernel-proof, broad parallel or general scheduler qualification.",
+  "executionOwner": "root coordinator; this audit executed only file reads, metadata hashing and cmp/readelf",
+  "frozenPlan": "research/phase150/parallel-validation-plan.json",
+  "frozenPins": "research/phase150/parallel-pins.json",
+  "fixedCases": [
+    "focused/nt-reverse",
+    "focused/lexer-scan"
+  ],
+  "executedOrder": [
+    "serial01",
+    "parallel01",
+    "parallel02",
+    "serial02"
+  ],
+  "independentSourceCheck": {
+    "report": "selfhost/build/phase150/parallel-source-check04/report.json",
+    "complete": true,
+    "checked": true,
+    "sourceSha256": "ef0c032daf9141e444e08653d25e7deee6acf27483a63426d25eda4301c2b3c6",
+    "componentExport": "p150pv_summary",
+    "executableCompilerApi": false,
+    "kernelProof": false
+  },
+  "coordinator": {
+    "file": "selfhost/build/phase150/parallel-acquire02/coordinator.mjs",
+    "bytes": 411620,
+    "sha256": "38d6e8d4023f96e02ff79598447dc8d98a20e13d473da264bc9a87679d18e0e0",
+    "backend": "legacy-js",
+    "engine": "/home/ai/.nvm/versions/node/v24.22.1/bin/node",
+    "engineSha256": "e32e2d16081cf644f88392934288086e7662529d0d43277c34f7aad2207cfafb",
+    "engineArgs": [
+      "--max-old-space-size=1024"
+    ]
+  },
+  "targetCompiler": {
+    "image": "selfhost/.assets/native/qbe-n2",
+    "bytes": 19100528,
+    "sha256": "367b639915c0bbc8906fc5827b002ca2c7fc07acc238034e54be994f8833d251",
+    "scope": "Fixed consolidated ordinary Phase146 N2 asset, not Phase150 candidate qualification"
+  },
+  "controls": {
+    "node": {
+      "report": "selfhost/build/phase150/parallel-node-control01-guard/process.json",
+      "passed": true,
+      "stdoutOracle": "selfhost/tests/phase150/parallel-validation-control.stdout",
+      "exitCode": 0,
+      "stderrBytes": 0
+    },
+    "bun": {
+      "report": "selfhost/build/phase150/parallel-control02-guard/process.json",
+      "passed": false,
+      "alphaErrno": 1,
+      "betaErrno": 1,
+      "timeoutErrno": 110,
+      "interpretation": "Same acquired coordinator passes Node; engine/provider boundary observed, underlying Bun/OS mechanism not established; no runtime changed"
+    }
+  },
+  "cancellation": {
+    "report": "selfhost/build/phase150/parallel-cancel01-guard/process.json",
+    "expectedComplete": false,
+    "actualComplete": false,
+    "stoppedFor": "deadline",
+    "wallSeconds": 2.008152157999575,
+    "stdoutExact": true,
+    "descendantCheck": {
+      "owner": "root",
+      "observation": "Root reported no remaining owned sleep60/coordinator process after the guard.",
+      "persistedProcessSnapshot": false
+    }
+  },
+  "qualificationAudit": {
+    "completeReports": 8,
+    "passedCases": 8,
+    "expectedCasesPerReport": 1,
+    "failures": 0,
+    "unsupported": 0,
+    "changedInputs": [],
+    "allCompilerAndProgramArgs": [
+      "--threads",
+      "1",
+      "--gpu",
+      "off"
+    ],
+    "nativeCpuAssignment": {
+      "nt-reverse": 0,
+      "lexer-scan": 1
+    }
+  },
+  "identityAudit": {
+    "frozenPinsChecked": 41,
+    "frozenPinsUnchanged": true,
+    "allDistinctReceiptInputProductPinsChecked": 162,
+    "conflictingPins": [],
+    "mismatches": [],
+    "requiredComparisons": 32,
+    "requiredComparisonsPassed": 32
+  },
+  "rows": [
+    {
+      "trial": "serial01",
+      "case": "focused/nt-reverse",
+      "report": "selfhost/build/phase150/parallel-serial01/nt-reverse/report.json",
+      "complete": true,
+      "passed": true,
+      "changedInputs": [],
+      "source": {
+        "file": "selfhost/tests/consolidation/native-focused/nt-reverse.bend",
+        "bytes": 1084,
+        "sha256": "dfb8a3f7b5c432a2a4686bb014a0c9cc74d0d56c2c16264a3427026b090169ff"
+      },
+      "oracle": {
+        "file": "selfhost/tests/consolidation/native-focused/nt-reverse.stdout",
+        "bytes": 37,
+        "sha256": "b1ee553a36555bd2c18ac95f178607db1be2518c17c87f19cd9750fc9f24dcdf"
+      },
+      "qbe": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parallel-serial01/nt-reverse/00-nt-reverse/emission/program.ssa",
+        "bytes": 111160,
+        "sha256": "68d022723a47831b7e189ebffa2ec5cac134cbe05a32dca9a40fb47ab0ff1cea"
+      },
+      "object": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parallel-serial01/nt-reverse/00-nt-reverse/build/program.o",
+        "bytes": 41080,
+        "sha256": "d415f5d9ea638df5530b39488bb2bd1127143e6657cc9d9dcd674b4047078399"
+      },
+      "assembly": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parallel-serial01/nt-reverse/00-nt-reverse/build/program.s",
+        "bytes": 121939,
+        "sha256": "d3d862ab023a0d2958b9ad8d4a55e3341c4f90aa1de81000aed31c27e5214ca7"
+      },
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parallel-serial01/nt-reverse/00-nt-reverse/build/program",
+        "bytes": 130952,
+        "sha256": "1950809bae703b70641fdc1950123b3499b5afa85844670874c48a4c5ed64a32"
+      },
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parallel-serial01/nt-reverse/00-nt-reverse/build/execute.stdout",
+        "bytes": 37,
+        "sha256": "b1ee553a36555bd2c18ac95f178607db1be2518c17c87f19cd9750fc9f24dcdf"
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parallel-serial01/nt-reverse/00-nt-reverse/build/execute.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "qualificationSeconds": 1.2462333459407091,
+      "emissionSeconds": 0.3806149191223085
+    },
+    {
+      "trial": "serial01",
+      "case": "focused/lexer-scan",
+      "report": "selfhost/build/phase150/parallel-serial01/lexer-scan/report.json",
+      "complete": true,
+      "passed": true,
+      "changedInputs": [],
+      "source": {
+        "file": "selfhost/tests/consolidation/native-focused/lexer-scan.bend",
+        "bytes": 2851,
+        "sha256": "c1ad42a85efe49274d0e0c5f607c6abde3d34de282299f7802eb3987d179d01f"
+      },
+      "oracle": {
+        "file": "selfhost/tests/consolidation/native-focused/lexer-scan.stdout",
+        "bytes": 59,
+        "sha256": "f745e71b95ba4ffc77e479c92034a2003d06f0639b51e2553eb216881693e245"
+      },
+      "qbe": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parallel-serial01/lexer-scan/00-lexer-scan/emission/program.ssa",
+        "bytes": 434435,
+        "sha256": "cf6e98c2d0251a3b9224d3e0b8f3d7995b8e9fa78df7d5771e5b4753114995a3"
+      },
+      "object": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parallel-serial01/lexer-scan/00-lexer-scan/build/program.o",
+        "bytes": 109832,
+        "sha256": "81381b06b70f2cfccd4c8075cf44b0a264118685f2e1fcb258578ae052bb2c02"
+      },
+      "assembly": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parallel-serial01/lexer-scan/00-lexer-scan/build/program.s",
+        "bytes": 363076,
+        "sha256": "1dce49272c65bc48aef276ecb265471864e6475d01c3e40f5e42dc90803402c0"
+      },
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parallel-serial01/lexer-scan/00-lexer-scan/build/program",
+        "bytes": 183368,
+        "sha256": "49b7ffc71de978f1661011405b064c3e3596548aafedd0397c9a73ec28784780"
+      },
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parallel-serial01/lexer-scan/00-lexer-scan/build/execute.stdout",
+        "bytes": 59,
+        "sha256": "f745e71b95ba4ffc77e479c92034a2003d06f0639b51e2553eb216881693e245"
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parallel-serial01/lexer-scan/00-lexer-scan/build/execute.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "qualificationSeconds": 1.6653797230683267,
+      "emissionSeconds": 1.0818914216943085
+    },
+    {
+      "trial": "parallel01",
+      "case": "focused/nt-reverse",
+      "report": "selfhost/build/phase150/parallel-parallel01/nt-reverse/report.json",
+      "complete": true,
+      "passed": true,
+      "changedInputs": [],
+      "source": {
+        "file": "selfhost/tests/consolidation/native-focused/nt-reverse.bend",
+        "bytes": 1084,
+        "sha256": "dfb8a3f7b5c432a2a4686bb014a0c9cc74d0d56c2c16264a3427026b090169ff"
+      },
+      "oracle": {
+        "file": "selfhost/tests/consolidation/native-focused/nt-reverse.stdout",
+        "bytes": 37,
+        "sha256": "b1ee553a36555bd2c18ac95f178607db1be2518c17c87f19cd9750fc9f24dcdf"
+      },
+      "qbe": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parallel-parallel01/nt-reverse/00-nt-reverse/emission/program.ssa",
+        "bytes": 111160,
+        "sha256": "68d022723a47831b7e189ebffa2ec5cac134cbe05a32dca9a40fb47ab0ff1cea"
+      },
+      "object": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parallel-parallel01/nt-reverse/00-nt-reverse/build/program.o",
+        "bytes": 41080,
+        "sha256": "d415f5d9ea638df5530b39488bb2bd1127143e6657cc9d9dcd674b4047078399"
+      },
+      "assembly": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parallel-parallel01/nt-reverse/00-nt-reverse/build/program.s",
+        "bytes": 121939,
+        "sha256": "d3d862ab023a0d2958b9ad8d4a55e3341c4f90aa1de81000aed31c27e5214ca7"
+      },
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parallel-parallel01/nt-reverse/00-nt-reverse/build/program",
+        "bytes": 130952,
+        "sha256": "2db17269d39107c3620b27ee6a1876208fd54d71be54b9a2fd54ebf01823c99b"
+      },
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parallel-parallel01/nt-reverse/00-nt-reverse/build/execute.stdout",
+        "bytes": 37,
+        "sha256": "b1ee553a36555bd2c18ac95f178607db1be2518c17c87f19cd9750fc9f24dcdf"
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parallel-parallel01/nt-reverse/00-nt-reverse/build/execute.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "qualificationSeconds": 0.8954438730143011,
+      "emissionSeconds": 0.3863690230064094
+    },
+    {
+      "trial": "parallel01",
+      "case": "focused/lexer-scan",
+      "report": "selfhost/build/phase150/parallel-parallel01/lexer-scan/report.json",
+      "complete": true,
+      "passed": true,
+      "changedInputs": [],
+      "source": {
+        "file": "selfhost/tests/consolidation/native-focused/lexer-scan.bend",
+        "bytes": 2851,
+        "sha256": "c1ad42a85efe49274d0e0c5f607c6abde3d34de282299f7802eb3987d179d01f"
+      },
+      "oracle": {
+        "file": "selfhost/tests/consolidation/native-focused/lexer-scan.stdout",
+        "bytes": 59,
+        "sha256": "f745e71b95ba4ffc77e479c92034a2003d06f0639b51e2553eb216881693e245"
+      },
+      "qbe": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parallel-parallel01/lexer-scan/00-lexer-scan/emission/program.ssa",
+        "bytes": 434435,
+        "sha256": "cf6e98c2d0251a3b9224d3e0b8f3d7995b8e9fa78df7d5771e5b4753114995a3"
+      },
+      "object": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parallel-parallel01/lexer-scan/00-lexer-scan/build/program.o",
+        "bytes": 109832,
+        "sha256": "81381b06b70f2cfccd4c8075cf44b0a264118685f2e1fcb258578ae052bb2c02"
+      },
+      "assembly": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parallel-parallel01/lexer-scan/00-lexer-scan/build/program.s",
+        "bytes": 363076,
+        "sha256": "1dce49272c65bc48aef276ecb265471864e6475d01c3e40f5e42dc90803402c0"
+      },
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parallel-parallel01/lexer-scan/00-lexer-scan/build/program",
+        "bytes": 183368,
+        "sha256": "b164485ac18e1cc8d32d4380a6b4756de71422e28a72dd46ae1a157b1bab30e9"
+      },
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parallel-parallel01/lexer-scan/00-lexer-scan/build/execute.stdout",
+        "bytes": 59,
+        "sha256": "f745e71b95ba4ffc77e479c92034a2003d06f0639b51e2553eb216881693e245"
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parallel-parallel01/lexer-scan/00-lexer-scan/build/execute.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "qualificationSeconds": 1.5686305593699217,
+      "emissionSeconds": 1.0320318569429219
+    },
+    {
+      "trial": "parallel02",
+      "case": "focused/nt-reverse",
+      "report": "selfhost/build/phase150/parallel-parallel02/nt-reverse/report.json",
+      "complete": true,
+      "passed": true,
+      "changedInputs": [],
+      "source": {
+        "file": "selfhost/tests/consolidation/native-focused/nt-reverse.bend",
+        "bytes": 1084,
+        "sha256": "dfb8a3f7b5c432a2a4686bb014a0c9cc74d0d56c2c16264a3427026b090169ff"
+      },
+      "oracle": {
+        "file": "selfhost/tests/consolidation/native-focused/nt-reverse.stdout",
+        "bytes": 37,
+        "sha256": "b1ee553a36555bd2c18ac95f178607db1be2518c17c87f19cd9750fc9f24dcdf"
+      },
+      "qbe": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parallel-parallel02/nt-reverse/00-nt-reverse/emission/program.ssa",
+        "bytes": 111160,
+        "sha256": "68d022723a47831b7e189ebffa2ec5cac134cbe05a32dca9a40fb47ab0ff1cea"
+      },
+      "object": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parallel-parallel02/nt-reverse/00-nt-reverse/build/program.o",
+        "bytes": 41080,
+        "sha256": "d415f5d9ea638df5530b39488bb2bd1127143e6657cc9d9dcd674b4047078399"
+      },
+      "assembly": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parallel-parallel02/nt-reverse/00-nt-reverse/build/program.s",
+        "bytes": 121939,
+        "sha256": "d3d862ab023a0d2958b9ad8d4a55e3341c4f90aa1de81000aed31c27e5214ca7"
+      },
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parallel-parallel02/nt-reverse/00-nt-reverse/build/program",
+        "bytes": 130952,
+        "sha256": "c8ebca459063614fb62ab45b0a2bb4eab48e543ce551940b2eedb2d246c8fea5"
+      },
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parallel-parallel02/nt-reverse/00-nt-reverse/build/execute.stdout",
+        "bytes": 37,
+        "sha256": "b1ee553a36555bd2c18ac95f178607db1be2518c17c87f19cd9750fc9f24dcdf"
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parallel-parallel02/nt-reverse/00-nt-reverse/build/execute.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "qualificationSeconds": 0.8535297159105539,
+      "emissionSeconds": 0.3915287647396326
+    },
+    {
+      "trial": "parallel02",
+      "case": "focused/lexer-scan",
+      "report": "selfhost/build/phase150/parallel-parallel02/lexer-scan/report.json",
+      "complete": true,
+      "passed": true,
+      "changedInputs": [],
+      "source": {
+        "file": "selfhost/tests/consolidation/native-focused/lexer-scan.bend",
+        "bytes": 2851,
+        "sha256": "c1ad42a85efe49274d0e0c5f607c6abde3d34de282299f7802eb3987d179d01f"
+      },
+      "oracle": {
+        "file": "selfhost/tests/consolidation/native-focused/lexer-scan.stdout",
+        "bytes": 59,
+        "sha256": "f745e71b95ba4ffc77e479c92034a2003d06f0639b51e2553eb216881693e245"
+      },
+      "qbe": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parallel-parallel02/lexer-scan/00-lexer-scan/emission/program.ssa",
+        "bytes": 434435,
+        "sha256": "cf6e98c2d0251a3b9224d3e0b8f3d7995b8e9fa78df7d5771e5b4753114995a3"
+      },
+      "object": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parallel-parallel02/lexer-scan/00-lexer-scan/build/program.o",
+        "bytes": 109832,
+        "sha256": "81381b06b70f2cfccd4c8075cf44b0a264118685f2e1fcb258578ae052bb2c02"
+      },
+      "assembly": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parallel-parallel02/lexer-scan/00-lexer-scan/build/program.s",
+        "bytes": 363076,
+        "sha256": "1dce49272c65bc48aef276ecb265471864e6475d01c3e40f5e42dc90803402c0"
+      },
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parallel-parallel02/lexer-scan/00-lexer-scan/build/program",
+        "bytes": 183368,
+        "sha256": "bed424b866a1f03fd778e8f561382c9fd105f683435ca63a71ea8e4a76f55f17"
+      },
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parallel-parallel02/lexer-scan/00-lexer-scan/build/execute.stdout",
+        "bytes": 59,
+        "sha256": "f745e71b95ba4ffc77e479c92034a2003d06f0639b51e2553eb216881693e245"
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parallel-parallel02/lexer-scan/00-lexer-scan/build/execute.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "qualificationSeconds": 1.5161788640543818,
+      "emissionSeconds": 1.00383111089468
+    },
+    {
+      "trial": "serial02",
+      "case": "focused/nt-reverse",
+      "report": "selfhost/build/phase150/parallel-serial02/nt-reverse/report.json",
+      "complete": true,
+      "passed": true,
+      "changedInputs": [],
+      "source": {
+        "file": "selfhost/tests/consolidation/native-focused/nt-reverse.bend",
+        "bytes": 1084,
+        "sha256": "dfb8a3f7b5c432a2a4686bb014a0c9cc74d0d56c2c16264a3427026b090169ff"
+      },
+      "oracle": {
+        "file": "selfhost/tests/consolidation/native-focused/nt-reverse.stdout",
+        "bytes": 37,
+        "sha256": "b1ee553a36555bd2c18ac95f178607db1be2518c17c87f19cd9750fc9f24dcdf"
+      },
+      "qbe": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parallel-serial02/nt-reverse/00-nt-reverse/emission/program.ssa",
+        "bytes": 111160,
+        "sha256": "68d022723a47831b7e189ebffa2ec5cac134cbe05a32dca9a40fb47ab0ff1cea"
+      },
+      "object": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parallel-serial02/nt-reverse/00-nt-reverse/build/program.o",
+        "bytes": 41080,
+        "sha256": "d415f5d9ea638df5530b39488bb2bd1127143e6657cc9d9dcd674b4047078399"
+      },
+      "assembly": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parallel-serial02/nt-reverse/00-nt-reverse/build/program.s",
+        "bytes": 121939,
+        "sha256": "d3d862ab023a0d2958b9ad8d4a55e3341c4f90aa1de81000aed31c27e5214ca7"
+      },
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parallel-serial02/nt-reverse/00-nt-reverse/build/program",
+        "bytes": 130952,
+        "sha256": "43276979dfa6358b9f3e3284a8ad0ce42b78fc9b154d906d01e9f6d4df23b9b9"
+      },
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parallel-serial02/nt-reverse/00-nt-reverse/build/execute.stdout",
+        "bytes": 37,
+        "sha256": "b1ee553a36555bd2c18ac95f178607db1be2518c17c87f19cd9750fc9f24dcdf"
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parallel-serial02/nt-reverse/00-nt-reverse/build/execute.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "qualificationSeconds": 0.8573995977640152,
+      "emissionSeconds": 0.37776586413383484
+    },
+    {
+      "trial": "serial02",
+      "case": "focused/lexer-scan",
+      "report": "selfhost/build/phase150/parallel-serial02/lexer-scan/report.json",
+      "complete": true,
+      "passed": true,
+      "changedInputs": [],
+      "source": {
+        "file": "selfhost/tests/consolidation/native-focused/lexer-scan.bend",
+        "bytes": 2851,
+        "sha256": "c1ad42a85efe49274d0e0c5f607c6abde3d34de282299f7802eb3987d179d01f"
+      },
+      "oracle": {
+        "file": "selfhost/tests/consolidation/native-focused/lexer-scan.stdout",
+        "bytes": 59,
+        "sha256": "f745e71b95ba4ffc77e479c92034a2003d06f0639b51e2553eb216881693e245"
+      },
+      "qbe": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parallel-serial02/lexer-scan/00-lexer-scan/emission/program.ssa",
+        "bytes": 434435,
+        "sha256": "cf6e98c2d0251a3b9224d3e0b8f3d7995b8e9fa78df7d5771e5b4753114995a3"
+      },
+      "object": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parallel-serial02/lexer-scan/00-lexer-scan/build/program.o",
+        "bytes": 109832,
+        "sha256": "81381b06b70f2cfccd4c8075cf44b0a264118685f2e1fcb258578ae052bb2c02"
+      },
+      "assembly": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parallel-serial02/lexer-scan/00-lexer-scan/build/program.s",
+        "bytes": 363076,
+        "sha256": "1dce49272c65bc48aef276ecb265471864e6475d01c3e40f5e42dc90803402c0"
+      },
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parallel-serial02/lexer-scan/00-lexer-scan/build/program",
+        "bytes": 183368,
+        "sha256": "5e5df344cd5a4bbab49c63ac25a6913144cc568ce6434dccce3234a695774dbf"
+      },
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parallel-serial02/lexer-scan/00-lexer-scan/build/execute.stdout",
+        "bytes": 59,
+        "sha256": "f745e71b95ba4ffc77e479c92034a2003d06f0639b51e2553eb216881693e245"
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parallel-serial02/lexer-scan/00-lexer-scan/build/execute.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "qualificationSeconds": 1.5176690500229597,
+      "emissionSeconds": 0.979037188924849
+    }
+  ],
+  "trials": [
+    {
+      "trial": "serial01",
+      "guard": "selfhost/build/phase150/parallel-serial01-guard/process.json",
+      "wallSeconds": 3.550699499901384,
+      "peakTreeRssBytes": 112308224,
+      "minimumAvailableBytes": 25588019200,
+      "peakRunAllocatedBytes": 1654784,
+      "minimumDiskFreeBytes": 9346023424,
+      "started": 1793568961.1349306,
+      "finished": 1793568964.6855147,
+      "taskClock": "Date.now wallclock; scheduling overlap diagnostic only",
+      "taskSpans": [
+        {
+          "case": "nt-reverse",
+          "cpu": 0,
+          "startMs": 1793568961239,
+          "finishMs": 1793568962730,
+          "elapsedMs": 1491
+        },
+        {
+          "case": "lexer-scan",
+          "cpu": 1,
+          "startMs": 1793568962732,
+          "finishMs": 1793568964659,
+          "elapsedMs": 1927
+        }
+      ],
+      "overlapMs": 0
+    },
+    {
+      "trial": "parallel01",
+      "guard": "selfhost/build/phase150/parallel-parallel01-guard/process.json",
+      "wallSeconds": 1.96369712613523,
+      "peakTreeRssBytes": 157638656,
+      "minimumAvailableBytes": 25558011904,
+      "peakRunAllocatedBytes": 1654784,
+      "minimumDiskFreeBytes": 9344364544,
+      "started": 1793568965.1106431,
+      "finished": 1793568967.074215,
+      "taskClock": "Date.now wallclock; scheduling overlap diagnostic only",
+      "taskSpans": [
+        {
+          "case": "nt-reverse",
+          "cpu": 0,
+          "startMs": 1793568965221,
+          "finishMs": 1793568966366,
+          "elapsedMs": 1145
+        },
+        {
+          "case": "lexer-scan",
+          "cpu": 1,
+          "startMs": 1793568965228,
+          "finishMs": 1793568967059,
+          "elapsedMs": 1831
+        }
+      ],
+      "overlapMs": 1138
+    },
+    {
+      "trial": "parallel02",
+      "guard": "selfhost/build/phase150/parallel-parallel02-guard/process.json",
+      "wallSeconds": 1.90835638390854,
+      "peakTreeRssBytes": 163713024,
+      "minimumAvailableBytes": 25555628032,
+      "peakRunAllocatedBytes": 1654784,
+      "minimumDiskFreeBytes": 9342709760,
+      "started": 1793568967.5433245,
+      "finished": 1793568969.4515674,
+      "taskClock": "Date.now wallclock; scheduling overlap diagnostic only",
+      "taskSpans": [
+        {
+          "case": "nt-reverse",
+          "cpu": 0,
+          "startMs": 1793568967658,
+          "finishMs": 1793568968757,
+          "elapsedMs": 1099
+        },
+        {
+          "case": "lexer-scan",
+          "cpu": 1,
+          "startMs": 1793568967665,
+          "finishMs": 1793568969422,
+          "elapsedMs": 1757
+        }
+      ],
+      "overlapMs": 1092
+    },
+    {
+      "trial": "serial02",
+      "guard": "selfhost/build/phase150/parallel-serial02-guard/process.json",
+      "wallSeconds": 2.9879078110679984,
+      "peakTreeRssBytes": 112562176,
+      "minimumAvailableBytes": 25588400128,
+      "peakRunAllocatedBytes": 1654784,
+      "minimumDiskFreeBytes": 9341030400,
+      "started": 1793568969.9245086,
+      "finished": 1793568972.9123015,
+      "taskClock": "Date.now wallclock; scheduling overlap diagnostic only",
+      "taskSpans": [
+        {
+          "case": "nt-reverse",
+          "cpu": 0,
+          "startMs": 1793568970028,
+          "finishMs": 1793568971129,
+          "elapsedMs": 1101
+        },
+        {
+          "case": "lexer-scan",
+          "cpu": 1,
+          "startMs": 1793568971131,
+          "finishMs": 1793568972887,
+          "elapsedMs": 1756
+        }
+      ],
+      "overlapMs": 0
+    }
+  ],
+  "comparison": {
+    "pairs": [
+      {
+        "serial": "serial01",
+        "parallel": "parallel01",
+        "serialSeconds": 3.550699499901384,
+        "parallelSeconds": 1.96369712613523,
+        "parallelOverSerial": 0.5530451467914334,
+        "reductionPercent": 44.69548532085666,
+        "speedup": 1.808170645383358
+      },
+      {
+        "serial": "serial02",
+        "parallel": "parallel02",
+        "serialSeconds": 2.9879078110679984,
+        "parallelSeconds": 1.90835638390854,
+        "parallelOverSerial": 0.6386931942275744,
+        "reductionPercent": 36.13068057724256,
+        "speedup": 1.5656969716256086
+      }
+    ],
+    "serialMeanAndTwoSampleMedianSeconds": 3.2693036554846913,
+    "parallelMeanAndTwoSampleMedianSeconds": 1.936026755021885,
+    "parallelOverSerial": 0.5921832166840614,
+    "reductionPercent": 40.78167833159386,
+    "speedup": 1.6886665677550179,
+    "serialPeakTreeRssBytes": 112562176,
+    "parallelPeakTreeRssBytes": 163713024,
+    "minimumAvailableBytes": 25555628032,
+    "guardedTrialSeconds": 10.410660821013153
+  },
+  "host": {
+    "beforeFile": "selfhost/build/phase150/parallel-host-before01.txt",
+    "afterFile": "selfhost/build/phase150/parallel-host-after01.txt",
+    "values": {
+      "pswpin": {
+        "before": 60599,
+        "after": 60599,
+        "delta": 0
+      },
+      "pswpout": {
+        "before": 426877,
+        "after": 426877,
+        "delta": 0
+      },
+      "oom_kill": {
+        "before": 0,
+        "after": 0,
+        "delta": 0
+      },
+      "MemAvailable": {
+        "before": 25038884,
+        "after": 25043392,
+        "delta": 4508
+      },
+      "SwapTotal": {
+        "before": 1572852,
+        "after": 1572852,
+        "delta": 0
+      },
+      "SwapFree": {
+        "before": 736128,
+        "after": 736128,
+        "delta": 0
+      }
+    },
+    "units": "MemAvailable/SwapTotal/SwapFree are KiB; pswpin/pswpout are kernel page counters; oom_kill is a count",
+    "newSwapIO": false,
+    "newOomKills": false
+  },
+  "directComparisons": [
+    {
+      "kind": "independent-output-oracle",
+      "trial": "serial01",
+      "case": "focused/nt-reverse",
+      "left": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/nt-reverse.stdout",
+      "right": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parallel-serial01/nt-reverse/00-nt-reverse/build/execute.stdout",
+      "passed": true,
+      "diagnostic": "",
+      "required": true
+    },
+    {
+      "kind": "independent-output-oracle",
+      "trial": "serial01",
+      "case": "focused/lexer-scan",
+      "left": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/lexer-scan.stdout",
+      "right": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parallel-serial01/lexer-scan/00-lexer-scan/build/execute.stdout",
+      "passed": true,
+      "diagnostic": "",
+      "required": true
+    },
+    {
+      "kind": "independent-output-oracle",
+      "trial": "parallel01",
+      "case": "focused/nt-reverse",
+      "left": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/nt-reverse.stdout",
+      "right": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parallel-parallel01/nt-reverse/00-nt-reverse/build/execute.stdout",
+      "passed": true,
+      "diagnostic": "",
+      "required": true
+    },
+    {
+      "kind": "independent-output-oracle",
+      "trial": "parallel01",
+      "case": "focused/lexer-scan",
+      "left": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/lexer-scan.stdout",
+      "right": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parallel-parallel01/lexer-scan/00-lexer-scan/build/execute.stdout",
+      "passed": true,
+      "diagnostic": "",
+      "required": true
+    },
+    {
+      "kind": "independent-output-oracle",
+      "trial": "parallel02",
+      "case": "focused/nt-reverse",
+      "left": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/nt-reverse.stdout",
+      "right": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parallel-parallel02/nt-reverse/00-nt-reverse/build/execute.stdout",
+      "passed": true,
+      "diagnostic": "",
+      "required": true
+    },
+    {
+      "kind": "independent-output-oracle",
+      "trial": "parallel02",
+      "case": "focused/lexer-scan",
+      "left": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/lexer-scan.stdout",
+      "right": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parallel-parallel02/lexer-scan/00-lexer-scan/build/execute.stdout",
+      "passed": true,
+      "diagnostic": "",
+      "required": true
+    },
+    {
+      "kind": "independent-output-oracle",
+      "trial": "serial02",
+      "case": "focused/nt-reverse",
+      "left": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/nt-reverse.stdout",
+      "right": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parallel-serial02/nt-reverse/00-nt-reverse/build/execute.stdout",
+      "passed": true,
+      "diagnostic": "",
+      "required": true
+    },
+    {
+      "kind": "independent-output-oracle",
+      "trial": "serial02",
+      "case": "focused/lexer-scan",
+      "left": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/lexer-scan.stdout",
+      "right": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parallel-serial02/lexer-scan/00-lexer-scan/build/execute.stdout",
+      "passed": true,
+      "diagnostic": "",
+      "required": true
+    },
+    {
+      "kind": "qbe",
+      "trial": "parallel01",
+      "case": "focused/nt-reverse",
+      "left": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parallel-serial01/nt-reverse/00-nt-reverse/emission/program.ssa",
+      "right": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parallel-parallel01/nt-reverse/00-nt-reverse/emission/program.ssa",
+      "passed": true,
+      "diagnostic": "",
+      "required": true
+    },
+    {
+      "kind": "object",
+      "trial": "parallel01",
+      "case": "focused/nt-reverse",
+      "left": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parallel-serial01/nt-reverse/00-nt-reverse/build/program.o",
+      "right": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parallel-parallel01/nt-reverse/00-nt-reverse/build/program.o",
+      "passed": true,
+      "diagnostic": "",
+      "required": true
+    },
+    {
+      "kind": "stdout",
+      "trial": "parallel01",
+      "case": "focused/nt-reverse",
+      "left": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parallel-serial01/nt-reverse/00-nt-reverse/build/execute.stdout",
+      "right": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parallel-parallel01/nt-reverse/00-nt-reverse/build/execute.stdout",
+      "passed": true,
+      "diagnostic": "",
+      "required": true
+    },
+    {
+      "kind": "assembly",
+      "trial": "parallel01",
+      "case": "focused/nt-reverse",
+      "left": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parallel-serial01/nt-reverse/00-nt-reverse/build/program.s",
+      "right": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parallel-parallel01/nt-reverse/00-nt-reverse/build/program.s",
+      "passed": true,
+      "diagnostic": "",
+      "required": true
+    },
+    {
+      "kind": "binary",
+      "trial": "parallel01",
+      "case": "focused/nt-reverse",
+      "left": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parallel-serial01/nt-reverse/00-nt-reverse/build/program",
+      "right": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parallel-parallel01/nt-reverse/00-nt-reverse/build/program",
+      "passed": false,
+      "diagnostic": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parallel-serial01/nt-reverse/00-nt-reverse/build/program /home/ai/bend2/build/publish/bend/selfhost/build/phase150/parallel-parallel01/nt-reverse/00-nt-reverse/build/program differ: byte 725, line 1\n",
+      "required": false
+    },
+    {
+      "kind": "qbe",
+      "trial": "parallel02",
+      "case": "focused/nt-reverse",
+      "left": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parallel-serial01/nt-reverse/00-nt-reverse/emission/program.ssa",
+      "right": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parallel-parallel02/nt-reverse/00-nt-reverse/emission/program.ssa",
+      "passed": true,
+      "diagnostic": "",
+      "required": true
+    },
+    {
+      "kind": "object",
+      "trial": "parallel02",
+      "case": "focused/nt-reverse",
+      "left": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parallel-serial01/nt-reverse/00-nt-reverse/build/program.o",
+      "right": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parallel-parallel02/nt-reverse/00-nt-reverse/build/program.o",
+      "passed": true,
+      "diagnostic": "",
+      "required": true
+    },
+    {
+      "kind": "stdout",
+      "trial": "parallel02",
+      "case": "focused/nt-reverse",
+      "left": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parallel-serial01/nt-reverse/00-nt-reverse/build/execute.stdout",
+      "right": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parallel-parallel02/nt-reverse/00-nt-reverse/build/execute.stdout",
+      "passed": true,
+      "diagnostic": "",
+      "required": true
+    },
+    {
+      "kind": "assembly",
+      "trial": "parallel02",
+      "case": "focused/nt-reverse",
+      "left": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parallel-serial01/nt-reverse/00-nt-reverse/build/program.s",
+      "right": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parallel-parallel02/nt-reverse/00-nt-reverse/build/program.s",
+      "passed": true,
+      "diagnostic": "",
+      "required": true
+    },
+    {
+      "kind": "binary",
+      "trial": "parallel02",
+      "case": "focused/nt-reverse",
+      "left": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parallel-serial01/nt-reverse/00-nt-reverse/build/program",
+      "right": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parallel-parallel02/nt-reverse/00-nt-reverse/build/program",
+      "passed": false,
+      "diagnostic": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parallel-serial01/nt-reverse/00-nt-reverse/build/program /home/ai/bend2/build/publish/bend/selfhost/build/phase150/parallel-parallel02/nt-reverse/00-nt-reverse/build/program differ: byte 725, line 1\n",
+      "required": false
+    },
+    {
+      "kind": "qbe",
+      "trial": "serial02",
+      "case": "focused/nt-reverse",
+      "left": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parallel-serial01/nt-reverse/00-nt-reverse/emission/program.ssa",
+      "right": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parallel-serial02/nt-reverse/00-nt-reverse/emission/program.ssa",
+      "passed": true,
+      "diagnostic": "",
+      "required": true
+    },
+    {
+      "kind": "object",
+      "trial": "serial02",
+      "case": "focused/nt-reverse",
+      "left": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parallel-serial01/nt-reverse/00-nt-reverse/build/program.o",
+      "right": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parallel-serial02/nt-reverse/00-nt-reverse/build/program.o",
+      "passed": true,
+      "diagnostic": "",
+      "required": true
+    },
+    {
+      "kind": "stdout",
+      "trial": "serial02",
+      "case": "focused/nt-reverse",
+      "left": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parallel-serial01/nt-reverse/00-nt-reverse/build/execute.stdout",
+      "right": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parallel-serial02/nt-reverse/00-nt-reverse/build/execute.stdout",
+      "passed": true,
+      "diagnostic": "",
+      "required": true
+    },
+    {
+      "kind": "assembly",
+      "trial": "serial02",
+      "case": "focused/nt-reverse",
+      "left": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parallel-serial01/nt-reverse/00-nt-reverse/build/program.s",
+      "right": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parallel-serial02/nt-reverse/00-nt-reverse/build/program.s",
+      "passed": true,
+      "diagnostic": "",
+      "required": true
+    },
+    {
+      "kind": "binary",
+      "trial": "serial02",
+      "case": "focused/nt-reverse",
+      "left": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parallel-serial01/nt-reverse/00-nt-reverse/build/program",
+      "right": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parallel-serial02/nt-reverse/00-nt-reverse/build/program",
+      "passed": false,
+      "diagnostic": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parallel-serial01/nt-reverse/00-nt-reverse/build/program /home/ai/bend2/build/publish/bend/selfhost/build/phase150/parallel-serial02/nt-reverse/00-nt-reverse/build/program differ: byte 117036, line 205\n",
+      "required": false
+    },
+    {
+      "kind": "qbe",
+      "trial": "parallel01",
+      "case": "focused/lexer-scan",
+      "left": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parallel-serial01/lexer-scan/00-lexer-scan/emission/program.ssa",
+      "right": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parallel-parallel01/lexer-scan/00-lexer-scan/emission/program.ssa",
+      "passed": true,
+      "diagnostic": "",
+      "required": true
+    },
+    {
+      "kind": "object",
+      "trial": "parallel01",
+      "case": "focused/lexer-scan",
+      "left": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parallel-serial01/lexer-scan/00-lexer-scan/build/program.o",
+      "right": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parallel-parallel01/lexer-scan/00-lexer-scan/build/program.o",
+      "passed": true,
+      "diagnostic": "",
+      "required": true
+    },
+    {
+      "kind": "stdout",
+      "trial": "parallel01",
+      "case": "focused/lexer-scan",
+      "left": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parallel-serial01/lexer-scan/00-lexer-scan/build/execute.stdout",
+      "right": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parallel-parallel01/lexer-scan/00-lexer-scan/build/execute.stdout",
+      "passed": true,
+      "diagnostic": "",
+      "required": true
+    },
+    {
+      "kind": "assembly",
+      "trial": "parallel01",
+      "case": "focused/lexer-scan",
+      "left": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parallel-serial01/lexer-scan/00-lexer-scan/build/program.s",
+      "right": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parallel-parallel01/lexer-scan/00-lexer-scan/build/program.s",
+      "passed": true,
+      "diagnostic": "",
+      "required": true
+    },
+    {
+      "kind": "binary",
+      "trial": "parallel01",
+      "case": "focused/lexer-scan",
+      "left": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parallel-serial01/lexer-scan/00-lexer-scan/build/program",
+      "right": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parallel-parallel01/lexer-scan/00-lexer-scan/build/program",
+      "passed": false,
+      "diagnostic": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parallel-serial01/lexer-scan/00-lexer-scan/build/program /home/ai/bend2/build/publish/bend/selfhost/build/phase150/parallel-parallel01/lexer-scan/00-lexer-scan/build/program differ: byte 725, line 1\n",
+      "required": false
+    },
+    {
+      "kind": "qbe",
+      "trial": "parallel02",
+      "case": "focused/lexer-scan",
+      "left": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parallel-serial01/lexer-scan/00-lexer-scan/emission/program.ssa",
+      "right": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parallel-parallel02/lexer-scan/00-lexer-scan/emission/program.ssa",
+      "passed": true,
+      "diagnostic": "",
+      "required": true
+    },
+    {
+      "kind": "object",
+      "trial": "parallel02",
+      "case": "focused/lexer-scan",
+      "left": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parallel-serial01/lexer-scan/00-lexer-scan/build/program.o",
+      "right": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parallel-parallel02/lexer-scan/00-lexer-scan/build/program.o",
+      "passed": true,
+      "diagnostic": "",
+      "required": true
+    },
+    {
+      "kind": "stdout",
+      "trial": "parallel02",
+      "case": "focused/lexer-scan",
+      "left": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parallel-serial01/lexer-scan/00-lexer-scan/build/execute.stdout",
+      "right": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parallel-parallel02/lexer-scan/00-lexer-scan/build/execute.stdout",
+      "passed": true,
+      "diagnostic": "",
+      "required": true
+    },
+    {
+      "kind": "assembly",
+      "trial": "parallel02",
+      "case": "focused/lexer-scan",
+      "left": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parallel-serial01/lexer-scan/00-lexer-scan/build/program.s",
+      "right": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parallel-parallel02/lexer-scan/00-lexer-scan/build/program.s",
+      "passed": true,
+      "diagnostic": "",
+      "required": true
+    },
+    {
+      "kind": "binary",
+      "trial": "parallel02",
+      "case": "focused/lexer-scan",
+      "left": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parallel-serial01/lexer-scan/00-lexer-scan/build/program",
+      "right": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parallel-parallel02/lexer-scan/00-lexer-scan/build/program",
+      "passed": false,
+      "diagnostic": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parallel-serial01/lexer-scan/00-lexer-scan/build/program /home/ai/bend2/build/publish/bend/selfhost/build/phase150/parallel-parallel02/lexer-scan/00-lexer-scan/build/program differ: byte 725, line 1\n",
+      "required": false
+    },
+    {
+      "kind": "qbe",
+      "trial": "serial02",
+      "case": "focused/lexer-scan",
+      "left": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parallel-serial01/lexer-scan/00-lexer-scan/emission/program.ssa",
+      "right": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parallel-serial02/lexer-scan/00-lexer-scan/emission/program.ssa",
+      "passed": true,
+      "diagnostic": "",
+      "required": true
+    },
+    {
+      "kind": "object",
+      "trial": "serial02",
+      "case": "focused/lexer-scan",
+      "left": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parallel-serial01/lexer-scan/00-lexer-scan/build/program.o",
+      "right": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parallel-serial02/lexer-scan/00-lexer-scan/build/program.o",
+      "passed": true,
+      "diagnostic": "",
+      "required": true
+    },
+    {
+      "kind": "stdout",
+      "trial": "serial02",
+      "case": "focused/lexer-scan",
+      "left": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parallel-serial01/lexer-scan/00-lexer-scan/build/execute.stdout",
+      "right": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parallel-serial02/lexer-scan/00-lexer-scan/build/execute.stdout",
+      "passed": true,
+      "diagnostic": "",
+      "required": true
+    },
+    {
+      "kind": "assembly",
+      "trial": "serial02",
+      "case": "focused/lexer-scan",
+      "left": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parallel-serial01/lexer-scan/00-lexer-scan/build/program.s",
+      "right": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parallel-serial02/lexer-scan/00-lexer-scan/build/program.s",
+      "passed": true,
+      "diagnostic": "",
+      "required": true
+    },
+    {
+      "kind": "binary",
+      "trial": "serial02",
+      "case": "focused/lexer-scan",
+      "left": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parallel-serial01/lexer-scan/00-lexer-scan/build/program",
+      "right": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parallel-serial02/lexer-scan/00-lexer-scan/build/program",
+      "passed": false,
+      "diagnostic": "/home/ai/bend2/build/publish/bend/selfhost/build/phase150/parallel-serial01/lexer-scan/00-lexer-scan/build/program /home/ai/bend2/build/publish/bend/selfhost/build/phase150/parallel-serial02/lexer-scan/00-lexer-scan/build/program differ: byte 153844, line 235\n",
+      "required": false
+    }
+  ],
+  "supplementalElfLimit": "All six cross-schedule whole-ELF comparisons differ. Required QBE, object, stdout and assembly comparisons pass. readelf on nt-reverse serial01 versus serial02 isolates its single-byte difference to a linker FILE symbol containing the fresh absolute program.o path. Parallel path lengths/build-id metadata also differ; no full-ELF equality or general normalization rule is claimed.",
+  "decision": {
+    "boundedPilotFeasible": true,
+    "defaultSerialPolicyChanged": false,
+    "generalSchedulerImplemented": false,
+    "threeOrFourWorkerEvidence": false,
+    "performanceBenchmarkClaim": false,
+    "adoption": "Retain explicit Node-backed two-process helper as a bounded correctness feasibility experiment; broader worker/lease policy remains unqualified."
+  },
+  "limitations": [
+    "Only two retained regression fixtures and two alternating serial/parallel pairs; no stable confidence interval or whole-campaign speedup.",
+    "First serial run is longer than the second; startup/cache/host variation is charged and not isolated.",
+    "Guard wallSeconds is a whole selected-workflow scheduling clock; IO.now task overlap uses Date.now wallclock and is diagnostic only.",
+    "Aggregate process-tree RSS/disk monitoring is sampled, not a hard kernel quota. No independent per-worker RSS samples were collected.",
+    "Root owns exclusive job windows through the existing lock; no reusable throughput-admission/measurement-lease scheduler was implemented.",
+    "No native compute workers, parallel heap mutation, GPU, broader effect providers or installed selections were changed.",
+    "Campaign cost accounting and retention closure remain root-owned."
+  ],
+  "evidence": [
+    {
+      "file": "research/phase150/parallel-pins.json",
+      "bytes": 7815,
+      "sha256": "1b4848ffa4486955bb5b2c370277937a9e434882f5774ddb06fb41e59ad296af"
+    },
+    {
+      "file": "selfhost/build/phase150/parallel-trials01.json",
+      "bytes": 3054,
+      "sha256": "25fa79f4e17cf9fa7aaf6d87328f7ea7e6d39212dbf6297bf42a3ad9dc85ab6d"
+    },
+    {
+      "file": "selfhost/build/phase150/parallel-cancel01-guard/process.json",
+      "bytes": 2301,
+      "sha256": "96d30c6eb616f0a3ba49049da109ecdc96dd5fcdde5f693387341f41d62e043c"
+    },
+    {
+      "file": "selfhost/build/phase150/parallel-serial01-guard/process.json",
+      "bytes": 2280,
+      "sha256": "eb166f8adfa829f50a01aae0244b0f52d6a2c85815bef8902201befe2c859714"
+    },
+    {
+      "file": "selfhost/build/phase150/parallel-serial01/nt-reverse/report.json",
+      "bytes": 6529,
+      "sha256": "fcffc647aea0b916df3f46007cb909ce2c6a4ac3689de31f19839f600893ded9"
+    },
+    {
+      "file": "selfhost/build/phase150/parallel-serial01/nt-reverse/00-nt-reverse/emission/report.json",
+      "bytes": 9649,
+      "sha256": "e1f93b1f804ab0e0bf008c156a3001076ae755accced07974ec69e91d401db73"
+    },
+    {
+      "file": "selfhost/build/phase150/parallel-serial01/nt-reverse/00-nt-reverse/build/report.json",
+      "bytes": 10826,
+      "sha256": "726a2fa1bdc2bb961e8470954a3f32bf4575650b6b4f515956c71747e75d5d17"
+    },
+    {
+      "file": "selfhost/build/phase150/parallel-serial01/lexer-scan/report.json",
+      "bytes": 6558,
+      "sha256": "6a816d6b639740256c93655eb90a75400bbebbeac5f29611c35216d8160d8490"
+    },
+    {
+      "file": "selfhost/build/phase150/parallel-serial01/lexer-scan/00-lexer-scan/emission/report.json",
+      "bytes": 9650,
+      "sha256": "ae9bd197035a9b4c3cae6872348077a6bfc68b07edabd594c12948440a76385c"
+    },
+    {
+      "file": "selfhost/build/phase150/parallel-serial01/lexer-scan/00-lexer-scan/build/report.json",
+      "bytes": 10826,
+      "sha256": "72eced9adac02978860041ee1df49c2e95ed7b824ac50c64ca100a8979b88fae"
+    },
+    {
+      "file": "selfhost/build/phase150/parallel-parallel01-guard/process.json",
+      "bytes": 2284,
+      "sha256": "2a4a2aa18748e87e6343df3da22cbaeaad582cce39c9d221439b6e77d472814d"
+    },
+    {
+      "file": "selfhost/build/phase150/parallel-parallel01/nt-reverse/report.json",
+      "bytes": 6533,
+      "sha256": "97974701327cc132c1e47aa1644eecfa3178975f555bfe4d6b6959e38133f328"
+    },
+    {
+      "file": "selfhost/build/phase150/parallel-parallel01/nt-reverse/00-nt-reverse/emission/report.json",
+      "bytes": 9656,
+      "sha256": "f7e4f792cdb8320c39fa760315b37f47ecb44928b36821cb04c0355a23a3bc28"
+    },
+    {
+      "file": "selfhost/build/phase150/parallel-parallel01/nt-reverse/00-nt-reverse/build/report.json",
+      "bytes": 10845,
+      "sha256": "8e97a804bcec5313250a78c7eaa81581ac2f9eed3b42a64dfb5242ee09086ada"
+    },
+    {
+      "file": "selfhost/build/phase150/parallel-parallel01/lexer-scan/report.json",
+      "bytes": 6562,
+      "sha256": "0e82addd2c618361232285a6cec607be21d23581d72f3a21d923a5676f7a1406"
+    },
+    {
+      "file": "selfhost/build/phase150/parallel-parallel01/lexer-scan/00-lexer-scan/emission/report.json",
+      "bytes": 9644,
+      "sha256": "5f58d2180aecd66e0c3ef885b7ee23696e02691ff7aad62ff48ac03173a4e4bf"
+    },
+    {
+      "file": "selfhost/build/phase150/parallel-parallel01/lexer-scan/00-lexer-scan/build/report.json",
+      "bytes": 10849,
+      "sha256": "a517c8c90714c94855f14a928fbf045a53c31c7c69342685425fc5bb8d1b4638"
+    },
+    {
+      "file": "selfhost/build/phase150/parallel-parallel02-guard/process.json",
+      "bytes": 2285,
+      "sha256": "4f39a3c52cf2c11169103a07863c8b2b964ea02326443ce5ed341914b3cc7ed6"
+    },
+    {
+      "file": "selfhost/build/phase150/parallel-parallel02/nt-reverse/report.json",
+      "bytes": 6533,
+      "sha256": "f2f06dabff61659d5f17920649636f5d642ec877dcc584988236b61adf1a353b"
+    },
+    {
+      "file": "selfhost/build/phase150/parallel-parallel02/nt-reverse/00-nt-reverse/emission/report.json",
+      "bytes": 9655,
+      "sha256": "48742b11868827ba6dc249ba9a1c457ff367abc84f3c4503777f4f09d000375e"
+    },
+    {
+      "file": "selfhost/build/phase150/parallel-parallel02/nt-reverse/00-nt-reverse/build/report.json",
+      "bytes": 10869,
+      "sha256": "ba47cbae2953df5305f895637eced6433519cad6b4136589990dd2b2bc9e396b"
+    },
+    {
+      "file": "selfhost/build/phase150/parallel-parallel02/lexer-scan/report.json",
+      "bytes": 6562,
+      "sha256": "8548526d7c0ccbc911a82b21aaba316a05ae1ec237302137fc494290e5fe4a86"
+    },
+    {
+      "file": "selfhost/build/phase150/parallel-parallel02/lexer-scan/00-lexer-scan/emission/report.json",
+      "bytes": 9649,
+      "sha256": "fc08bd46c89f502510d6da416ce1d81a98213a3892e8e074800d45e9ef37abf5"
+    },
+    {
+      "file": "selfhost/build/phase150/parallel-parallel02/lexer-scan/00-lexer-scan/build/report.json",
+      "bytes": 10858,
+      "sha256": "7ccae08131214e87387626b6a438eb70e9389afeecc6145510b66adba12ba592"
+    },
+    {
+      "file": "selfhost/build/phase150/parallel-serial02-guard/process.json",
+      "bytes": 2281,
+      "sha256": "516a4d9773fec581db9336b49963f78333fb0cd3fcf042c43b4c9c80c4c4bfaa"
+    },
+    {
+      "file": "selfhost/build/phase150/parallel-serial02/nt-reverse/report.json",
+      "bytes": 6529,
+      "sha256": "e7e04cc33e4aebb0266b259934b08a52616bdc11abf02769e60c72108c39bfa4"
+    },
+    {
+      "file": "selfhost/build/phase150/parallel-serial02/nt-reverse/00-nt-reverse/emission/report.json",
+      "bytes": 9647,
+      "sha256": "f630d43b2ea72b9306fc7c77dcf66ff3da4e01f222f1f884b9e040351641f0c7"
+    },
+    {
+      "file": "selfhost/build/phase150/parallel-serial02/nt-reverse/00-nt-reverse/build/report.json",
+      "bytes": 10807,
+      "sha256": "153d4c2451e00f53c77f377eef691b8ed4f568b1bb994273db2a0c1d7baa0396"
+    },
+    {
+      "file": "selfhost/build/phase150/parallel-serial02/lexer-scan/report.json",
+      "bytes": 6558,
+      "sha256": "a28209576b1db9bc748510d08eba15e516305d72e1149e03b93d91a7ecbfe5d6"
+    },
+    {
+      "file": "selfhost/build/phase150/parallel-serial02/lexer-scan/00-lexer-scan/emission/report.json",
+      "bytes": 9635,
+      "sha256": "70176ee1497521d74efd15c2da6d437db497bbf0f31fde3bde0d13c52d7130d6"
+    },
+    {
+      "file": "selfhost/build/phase150/parallel-serial02/lexer-scan/00-lexer-scan/build/report.json",
+      "bytes": 10826,
+      "sha256": "1ec694faae8e9421e17eeadb25075a95150bf3b8f5f9c1fba3fee0922d9029d2"
+    },
+    {
+      "file": "selfhost/build/phase150/parallel-serial01-guard/stdout.log",
+      "bytes": 710,
+      "sha256": "7977ccdea7a3a489b98f70ab2fe49b5f1118ab1719205a95c2dbbd357f028207"
+    },
+    {
+      "file": "selfhost/build/phase150/parallel-parallel01-guard/stdout.log",
+      "bytes": 712,
+      "sha256": "190cd3cffe300453f5140823a225bf8f1060b498b8ce2aefa8e4891a2df4354d"
+    },
+    {
+      "file": "selfhost/build/phase150/parallel-parallel02-guard/stdout.log",
+      "bytes": 712,
+      "sha256": "276e10002a46ddb5aeb8864b8df235795d439e7975b521796c24ccf3f6785e61"
+    },
+    {
+      "file": "selfhost/build/phase150/parallel-serial02-guard/stdout.log",
+      "bytes": 710,
+      "sha256": "00a50327a5158683cb37bd22697df2bf08d569d3f3142722fb2e97f548629d1a"
+    },
+    {
+      "file": "selfhost/build/phase150/parallel-host-before01.txt",
+      "bytes": 4845,
+      "sha256": "9b1c8c5aa5a39a154f4b11664ea42e46be01cb0cc785c3b76685575ea67ff738"
+    },
+    {
+      "file": "selfhost/build/phase150/parallel-host-after01.txt",
+      "bytes": 4847,
+      "sha256": "238302f282a0675256fe9071f4d897ac05d35c29574e35b950880a03a3651694"
+    },
+    {
+      "file": "selfhost/build/phase150/parallel-cancel01-guard/stdout.log",
+      "bytes": 27,
+      "sha256": "d8489ac12990a8bfcbec5783e45f4758af285c800f012a2b8388bce9671d2a70"
+    },
+    {
+      "file": "selfhost/build/phase150/parallel-serial01-guard/stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "selfhost/build/phase150/parallel-parallel01-guard/stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "selfhost/build/phase150/parallel-parallel02-guard/stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "selfhost/build/phase150/parallel-serial02-guard/stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "selfhost/build/phase150/parallel-cancel01-guard/stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "selfhost/build/phase150/parallel-node-control01-guard/process.json",
+      "bytes": 2286,
+      "sha256": "e9e3b6f5b7cb91c2c5ef4749308e3cecc9b5a13614e9728b66b77983d093115d"
+    },
+    {
+      "file": "selfhost/build/phase150/parallel-control02-guard/process.json",
+      "bytes": 2376,
+      "sha256": "a6bd380797e68789888d978779d1f1f84a301c8605e0641afa36028d1df5ff34"
+    }
+  ]
+}

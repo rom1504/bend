@@ -1,0 +1,260 @@
+{
+  "schema": "phase150-upstream-assessment-v1",
+  "assessed_at_utc": "2026-11-01",
+  "repository": "bendlang/bend",
+  "base": "059266225b77c8ca256ac6b25ee5c21449bab151",
+  "head": "e9d269b588f4ed39166dca87a0acb4d5a9be4f9f",
+  "status": "ahead",
+  "ahead_by": 246,
+  "behind_by": 0,
+  "total_commits": 246,
+  "compare_url": "https://github.com/bendlang/bend/compare/059266225b77c8ca256ac6b25ee5c21449bab151...e9d269b588f4ed39166dca87a0acb4d5a9be4f9f",
+  "retrieval": {
+    "provider": "GitHub connector compare_commits and github_fetch/ github_fetch_commit",
+    "compare_pages_read": 3,
+    "commit_metadata_entries": 246,
+    "changed_files_returned": 300,
+    "changed_file_limit_note": "GitHub compare returned 300 file entries; do not treat as complete changed-file inventory. No full 246-commit audit. Actual patches inspected for selected commits and aggregate frontend/Base/elaborator deltas."
+  },
+  "changed_core_files": [
+    {
+      "path": "bend2/bend.ts",
+      "blob_sha": "a435fb06898a6e09b9f3306043bd6d1d8a29ffec",
+      "additions": 99,
+      "deletions": 40,
+      "url": "https://github.com/bendlang/bend/blob/e9d269b588f4ed39166dca87a0acb4d5a9be4f9f/bend2%2Fbend.ts",
+      "aggregate_patch_present": true
+    },
+    {
+      "path": "bend2/base.bend",
+      "blob_sha": "c8f97cc10cd721727890980fd0e72f327f10dc1a",
+      "additions": 368,
+      "deletions": 35,
+      "url": "https://github.com/bendlang/bend/blob/e9d269b588f4ed39166dca87a0acb4d5a9be4f9f/bend2%2Fbase.bend",
+      "aggregate_patch_present": true
+    },
+    {
+      "path": "bend2/comp.ts",
+      "blob_sha": "a367f494be07254c7e0aa23646cba63d0ab051f5",
+      "additions": 2121,
+      "deletions": 2020,
+      "url": "https://github.com/bendlang/bend/blob/e9d269b588f4ed39166dca87a0acb4d5a9be4f9f/bend2%2Fcomp.ts",
+      "aggregate_patch_present": false
+    },
+    {
+      "path": "bend2/safe.ts",
+      "blob_sha": "733bc3aef51d181902c6ea4a087bdd3bd21dce2f",
+      "additions": 685,
+      "deletions": 482,
+      "url": "https://github.com/bendlang/bend/blob/e9d269b588f4ed39166dca87a0acb4d5a9be4f9f/bend2%2Fsafe.ts",
+      "aggregate_patch_present": true
+    },
+    {
+      "path": "bend2/bendtt.lean",
+      "blob_sha": "0d09917090253086151ccfc849864ec35ddc37ad",
+      "additions": 674,
+      "deletions": 526,
+      "url": "https://github.com/bendlang/bend/blob/e9d269b588f4ed39166dca87a0acb4d5a9be4f9f/bend2%2Fbendtt.lean",
+      "aggregate_patch_present": false
+    }
+  ],
+  "aggregate_frontend_hunks": [
+    "@@ -314,7 +314,7 @@ export type Env = List<HTerm | ((s?: Span) => HTerm)>;\n export type Ctr  = { k: Name; n: number; T: HTerm }\n export type Ctrs = Array<Ctr>;\n export type ADT  = { $: \"ADT\"; n: number; g: number; T: HTerm; c: Ctrs; b?: Bool; };\n-export type Def  = { $: \"Def\"; n: number; x: number; T: HTerm; v: HTerm | null; e?: LTerm; b?: Bool; u?: Bool; i?: string[]; m?: string; };\n+export type Def  = { $: \"Def\"; n: number; x: number; T: HTerm; v: HTerm | null; e?: LTerm; b?: Bool; u?: Bool; i?: string[]; m?: string; l?: Bool; };\n export type TLD  = ADT | Def;\n export type Book = { tlds: Record<Name, TLD>; ctrs: Record<Name, Ctr>; order: Na\n[excerpt truncated; aggregate source linked]",
+    "@@ -1681,6 +1707,11 @@ export function parse_reso(p: Parse, k: Name): Name {\n   return own || !far ? q : k;\n }\n \n+export function parse_own(p: Parse, k: Name, tab: Record<Name, unknown> = p.book.tlds): Name {\n+  const q = parse_qual(p, k);\n+  return q in tab || !(k in tab) ? q : k;\n+}\n+\n export function parse_call(p: Parse, k: Name, xs: LTerm[], s?: Span): LTerm {\n   return xs.reduce<LTerm>((f, x) => App(f, x, s), Ref(parse_reso(p, k), s));\n }\n",
+    "@@ -1902,7 +1945,7 @@ export function parse_term_base(p: Parse, beg: number): LTerm {\n         return Eql(a, b, T);\n       }\n       const s = parse_span(p, beg);\n-      return All(Lone(), \"_\", parse_open(p, \"_\"), Eql(a, b, T, s), Ref(\"Empty\", ns), s);\n+      return All(Lone(), \"_\", parse_open(p, \"_\"), Eql(a, b, T, s), Ref(parse_own(p, \"Empty\"), ns), s);\n     }\n     case \"(\": {\n       parse_bump(p);\n",
+    "@@ -1932,12 +1975,14 @@ export function parse_term_base(p: Parse, beg: number): LTerm {\n           }\n           d = Lit(\"Nat\", k, n.s);\n         }\n-        return App(App(App(Ref(\"Array.new\", s), T, s), d, s), xs[0], s);\n+        return App(App(App(Ref(parse_own(p, \"Array.new\"), s), T, s), d, s), xs[0], s);\n       }\n       parse_take(p, \",\");\n       const ys  = xs.concat(parse_term_args(p, \"]\"));\n       const spn = parse_span(p, beg);\n-      return ys.reduceRight<LTerm>((t, x) => Ctr(\"Con\", [x, t], spn), Ctr(\"Nil\", [], spn));\n+      const con = parse_own(p, \"Con\", p.book.ctrs);\n+      const nil = Ctr(parse_own(p, \"Nil\", p.book.ctrs), [], spn)\n[excerpt truncated; aggregate source linked]",
+    "@@ -2056,15 +2101,14 @@ export function parse_term_ops(p: Parse, tm: LTerm, beg: number, lvl: number): L\n       const ix = parse_term(p);\n       parse_eat(p, \"]\");\n       const s = parse_span(p, beg);\n-      parse_term_ns(p, ix, Ref(\"U32\", s));\n+      const u: LTerm = Ref(parse_own(p, \"U32\"), s);\n+      parse_term_ns(p, ix, u);\n       parse_skip(p);\n       if (!parse_nl(p) && parse_take(p, \"<-\")) {\n         const v = parse_term(p, 2);\n-        out = App(App(App(App(Ref(\"Array.set\", s), Ref(\"U32\", s), s),\n-          out, s), ix, s), v, s);\n+        out = App(App(App(App(Ref(parse_own(p, \"Array.set\"), s), u, s), out, s), ix, s), v, s);\n       }\n[excerpt truncated; aggregate source linked]",
+    "@@ -2171,7 +2215,7 @@ export function parse_term_all(p: Parse, exi: boolean): LTerm {\n   parse_close(p, n0);\n   if (exi) {\n     const s = parse_span(p, beg);\n-    return App(App(Ref(\"Exists\", s), A, s), Lam(k, i, B, s), s);\n+    return App(App(Ref(parse_own(p, \"Exists\"), s), A, s), Lam(k, i, B, s), s);\n   }\n   return All(q, k, i, A, B);\n }\n",
+    "@@ -2226,7 +2270,7 @@ export function parse_term_num(p: Parse): LTerm {\n       return Lit(\"Nat\", n + out.v, spn);\n     }\n     if (n > NAT_LITERAL_MAX) {\n-      return App(App(Ref(\"Nat.add\", spn), Lit(\"Nat\", n, spn), spn), out, spn);\n+      return App(App(Ref(parse_own(p, \"Nat.add\"), spn), Lit(\"Nat\", n, spn), spn), out, spn);\n     }\n     for (let i = 0; i < n; i++) {\n       out = Ctr(\"Succ\", [out], spn);\n",
+    "@@ -2280,6 +2326,13 @@ export function parse_term_do_stmt(p: Parse, m: Name, ts: LTerm[], col: number):\n   return parse_call(p, m + \".bind\", [...ts.slice(0, -1), A, ...ts.slice(-1), v, Lam(x.k, x.i, f, s, x.q)], s);\n }\n \n+export function parse_do_end(p: Parse): void {\n+  parse_skip(p);\n+  if (parse_at(p, \"=\") && !parse_at(p, \"==\") && !parse_at(p, \"=>\")) {\n+    parse_fail(p, \"a do-block let with its type (write \\\"x : T = ...\\\")\");\n+  }\n+}\n+\n // Body\n // ----\n \n",
+    "@@ -2350,9 +2408,9 @@ export function parse_body(p: Parse, col: number = 0): Body {\n   return { $: \"Local\", k: ks, q, v: vs, f };\n }\n \n-export function term_write(t: LTerm, beg: number): LTerm | null {\n+export function term_write(p: Parse, t: LTerm, beg: number): LTerm | null {\n   const [h, xs] = term_unapply(t);\n-  if (h.$ === \"Ref\" && h.k === \"Array.set\" && xs.length === 4 && xs[1].$ === \"Var\" && xs[1].s?.beg === beg) {\n+  if (h.$ === \"Ref\" && h.k === parse_own(p, \"Array.set\") && xs.length === 4 && xs[1].$ === \"Var\" && xs[1].s?.beg === beg) {\n     return xs[1];\n   }\n   return null;\n",
+    "@@ -2571,14 +2629,14 @@ export function parse_book(book: Book, dir: string, src: string, ns: string, al:\n           const i  = parse_open(p, c);\n           const w  = parse_term(p);\n           parse_close(p, n1);\n-          A = App(App(Ref(\"Exists\", ws), A, s), Lam(c, i, w, s), s);\n+          A = App(App(Ref(parse_own(p, \"Exists\"), ws), A, s), Lam(c, i, w, s), s);\n         }\n         cls.push([all, q, c, parse_open(p, c), A, s]);\n       }\n       const T = cls.reduceRight((T, [all, q, c, i, A, s]) =>\n-        all ? All(q, c, i, A, T, s) : App(App(Ref(\"Exists\", s), A, s), Lam(c, i, T, s), s), parse_block(p));\n+        all ? All(q, c, i, A, T, s\n[excerpt truncated; aggregate source linked]",
+    "@@ -3123,14 +3181,12 @@ function compare_go(mode: \"EQ\" | \"LE\", book: Book, lhs: HTerm, rhs: HTerm, dep:\n         return true;\n       }\n       if (g.$ === \"Min\") {\n-        const fa = compare_go(\"LE\", book, Typ(g.a), b, dep);\n-        const fb = compare_go(\"LE\", book, Typ(g.b), b, dep);\n-        return fa && fb;\n+        return compare_go(\"LE\", book, Typ(g.a), b, dep)\n+            && compare_go(\"LE\", book, Typ(g.b), b, dep);\n       }\n       if (h.$ === \"Min\") {\n-        const fa = compare_go(\"LE\", book, a, Typ(h.a), dep);\n-        const fb = compare_go(\"LE\", book, a, Typ(h.b), dep);\n-        return fa || fb;\n+        return compare_go(\"LE\", bo\n[excerpt truncated; aggregate source linked]"
+  ],
+  "aggregate_safe_api_hunks": [
+    "@@ -1535,17 +1731,24 @@ export function run_read(bin: string, args: string[],\n   }\n }\n \n-// the kernel's verdict on a book's text: ok on exit 0 with its exact\n-// success line. It checks a copy in a fresh private dir, which no one\n-// else can swap, and a kernel reading /dev/stdin got EBADF (1 in 1486)\n-function kernel_check(text: string): boolean {\n+// the kernel's verdict on a book's text: null on exit 0 with its exact\n+// success line, else the lines under its failure line, or how it exited\n+// if none. It checks a copy in a fresh private dir, which no one else\n+// can swap, and a kernel reading /dev/stdin got EBADF (1 in 1486)\n+function kernel_check(text: string): string | null {\n   const env = { ...process.env, LEAN_STACK_SIZE_KB: \"4194304\" };\n   const dir = fs.mkdtempSync(path.join(os.tmpdir(), \"bendtt-\"));\n   try {\n     const inp = path.join(dir, \"in.bendtt\");\n     fs.writeFileSync(inp, text, { flag: \"wx\" });\n     const [got, out] = run_read(kernel_bin(), [inp], { env });\n-    return got.status === 0 && out.trim() === \"ALL PROOFS CHECK\";\n+    const o = out.trim();\n+    if (got.error || got.signal || got.status === null || o !== \"ALL PROOFS CHECK\" && !o.startsWith(\"SOME PROOF\n[excerpt truncated; aggregate source linked]",
+    "@@ -1556,12 +1759,12 @@ function kernel_check(text: string): boolean {\n export function safe_emit(book: Book, out: string): string[] {\n   const got = safe_book(book);\n   fs.writeFileSync(out, got.text);\n-  return got.oos.map(([k, why]) => \"- \" + B.name_key(k) + \": \" + why + \"\\n\");\n+  return got.oos.map((l) => l + \"\\n\");\n }\n \n-// --verdict: whether every def of a book bend2 checked is in the kernel's\n-// scope, and the kernel checks them all\n-export function safe_check(book: Book): boolean {\n+// --verdict: null when every def of a book bend2 checked is in the\n+// kernel's scope and the kernel checks them all, else why not\n+export function safe_check(book: Book): string | null {\n   const got = safe_book(book);\n-  return got.oos.length === 0 && kernel_check(got.text);\n+  return got.oos.length === 0 ? kernel_check(got.text) : \"BendTT: out of scope:\\n\" + got.oos.join(\"\\n\");\n }"
+  ],
+  "selected_code_evidence": [
+    {
+      "sha": "15a336cce776abe1225009e018e7ca7a7c4ba694",
+      "url": "https://github.com/bendlang/bend/commit/15a336cce776abe1225009e018e7ca7a7c4ba694",
+      "message": "String.order walks both strings once and hands nothing back: a comparison is one tail call per char, 8x on the C lane, and String.eq of two 50000-char strings no longer overflows the JS lane (#1459)",
+      "classification": "reusable_performance",
+      "finding": "String.order walks and consumes inputs without rebuilding String.cmp's output pairs.",
+      "patch_characters": 2662,
+      "selected_patch_hunks": [
+        "@@ -1996,8 +1996,21 @@ def String.reverse.go(s: String, acc: String) -> String:\n+# c is the order of the chars so far: the walk is one tail call per char\n+# and builds nothing (String.cmp rebuilds both strings for its callers).\n+def String.order.go(a: String, b: String, c: Cmp) -> Cmp:\n+  match a b c:\n+    case SNil{} SCon{h, t} EQ{}:\n+      LT{}\n+    case SCon{h, t} SNil{} EQ{}:\n+      GT{}\n+    case SCon{Chr{x}, t1} SCon{Chr{y}, t2} EQ{}:\n+      String.order.go(t1, t2, U32.cmp(x, y))\n+    case _ _ o:\n+      o\n+\n-  Pair.snd(String & String, Cmp, String.cmp(a, b))\n+  String.order.go(a, b, EQ{}\n[excerpt truncated; immutable commit linked]"
+      ]
+    },
+    {
+      "sha": "e1a7a698e0a34c4e1f2d9ceeaf1fe07ab931b517",
+      "url": "https://github.com/bendlang/bend/commit/e1a7a698e0a34c4e1f2d9ceeaf1fe07ab931b517",
+      "message": "Stop list searches once the answer is known (#1730)",
+      "classification": "reusable_performance",
+      "finding": "List.any/all/find/contains suspend the tail computation in Unit closures until a decisive predicate requires it.",
+      "patch_characters": 2507,
+      "selected_patch_hunks": [
+        "@@ -1064,24 +1064,39 @@ def List.foldr(\n+# Searches stop at the first decisive predicate; later elements are not tested.\n+def List.any.if(rest: Unit -> Bool, hit: Bool) -> Bool:\n+  match hit:\n+    case False{}:\n+      rest(Unit{})\n+    case True{}:\n+      True{}\n+\n-      Bool.or(f(h), List.any(~a, ~A, ~f, t))\n+      List.any.if(u => List.any(~a, ~A, ~f, t), f(h))\n+\n+def List.all.if(rest: Unit -> Bool, hit: Bool) -> Bool:\n+  match hit:\n+    case False{}:\n+      False{}\n+    case True{}:\n+      rest(Unit{})\n-      Bool.and(f(h), List.all(~a, ~A, ~",
+        "@@ -1090,7 +1105,7 @@ def List.find(~A: Data, ~f: A -> Bool, xs: List<&2, A>) -> Maybe<&2, A>:\n-      List.find.put(A, h, List.find(~A, ~f, t), f(h))\n+      List.find.if(A, h, u => List.find(~A, ~f, t), f(h))"
+      ]
+    },
+    {
+      "sha": "239d53fd7730346c0cf0ee1698e993c76cb94d93",
+      "url": "https://github.com/bendlang/bend/commit/239d53fd7730346c0cf0ee1698e993c76cb94d93",
+      "message": "Emission allocates 40% less on large files: per-file literal steps, per-def probes, no memo closures (#1262) (#1617)",
+      "classification": "reusable_performance",
+      "finding": "Per-file literal keys, cached type-openness, noncapturing memo callbacks, per-definition probe reset.",
+      "patch_characters": 6211,
+      "selected_patch_hunks": [
+        "@@ -72,6 +72,8 @@ type File = {\n+  steps: Map<string, HTerm>;\n+  opens: Map<string, boolean>;",
+        "@@ -85,7 +87,6 @@ type File = {\n-    steps: Map<HTerm, HTerm>;"
+      ]
+    },
+    {
+      "sha": "f1273d300840c9b167104985efb71fd08f79126e",
+      "url": "https://github.com/bendlang/bend/commit/f1273d300840c9b167104985efb71fd08f79126e",
+      "message": "refactor(comp): shed tokens and compile large programs faster (#1968)",
+      "classification": "reusable_performance",
+      "finding": "Restrict c_ids to runtime text, omit C-only type-source traversal in JS, release module state, and ground constructor memoization.",
+      "patch_characters": 34400,
+      "selected_patch_hunks": [
+        "@@ -751,7 +531,7 @@ function term_map(t: HTerm, f: (s: HTerm) => HTerm | null): HTerm {\n-    : s.$ === \"Ctr\" && s.x.every(term_const);\n+    : s.$ === \"Ctr\" && memo(FL.ground, s, () => s.x.every(term_const));",
+        "@@ -1441,9 +1226,12 @@ function file_book(roots: Name[]): void {\n-    const tld = FL.book.tlds[d];\n-    for (const x of tld?.$ === \"ADT\" ? tld.c : tld ? [tld] : []) {\n-      ty_srcs(x.T);\n+    const tld = tld_of(d);\n+    // ty_srcs only finds ADTs, and only the C lane reads those\n+    if (!FL.js) {\n+      for (const x of tld?.$ === \"ADT\" ? tld.c : tld ? [tld] : []) {\n+        ty_srcs(x.T);\n+      }"
+      ]
+    },
+    {
+      "sha": "a5bae35cf4f80f90a493c32998bda7529ffd4226",
+      "url": "https://github.com/bendlang/bend/commit/a5bae35cf4f80f90a493c32998bda7529ffd4226",
+      "message": "A read-only walk borrows its list when a word shares a slot with a box (#1805) (#1806)",
+      "classification": "reusable_performance",
+      "finding": "Borrow provenance follows boxed lanes only; scalar lanes sharing a slot do not own a root.",
+      "patch_characters": 6877,
+      "selected_patch_hunks": [
+        "@@ -1709,11 +1711,11 @@ function val_hold(sc: Scope, v: Val, k: string): Val {\n-    const r = sc.brwl.get(w);\n+    const box = v.lay.ks[j] === \"box\";\n+    const r = box ? sc.brwl.get(w) : undefined;\n-    } else if (r !== undefined\n-      || (at !== null && !held && v.lay.ks[j] === \"box\")) {\n+    } else if (r !== undefined || (at !== null && !held && box)) {",
+        "@@ -1752,8 +1754,11 @@ function val_arms(sc: Scope, lay: Lay, sel: string, read: (k: Name) => Val[],\n+    const ks = lay.arms![k].flatMap((l) => l.ks);\n-      rs[1 + n].push(sc.brwl.get(w) ?? \"\");\n+      if (ks[n] === \"box\") {\n+        rs[1 + n].push(sc.brwl.get(w) ?? \"\");\n+      }"
+      ]
+    },
+    {
+      "sha": "3c8fb663af8255257c1ee394cc68413c0eb601e1",
+      "url": "https://github.com/bendlang/bend/commit/3c8fb663af8255257c1ee394cc68413c0eb601e1",
+      "message": "perf(check): short-circuit quantity comparisons (#1942) (#1947)",
+      "classification": "reusable_performance",
+      "finding": "Quantity Min LE comparisons use native short-circuit &&/|| instead of computing both booleans.",
+      "patch_characters": 2238,
+      "selected_patch_hunks": [
+        "@@ -3164,14 +3164,12 @@ function compare_go(mode: \"EQ\" | \"LE\", book: Book, lhs: HTerm, rhs: HTerm, dep:\n-        const fa = compare_go(\"LE\", book, Typ(g.a), b, dep);\n-        const fb = compare_go(\"LE\", book, Typ(g.b), b, dep);\n-        return fa && fb;\n+        return compare_go(\"LE\", book, Typ(g.a), b, dep)\n+            && compare_go(\"LE\", book, Typ(g.b), b, dep);\n-        const fa = compare_go(\"LE\", book, a, Typ(h.a), dep);\n-        const fb = compare_go(\"LE\", book, a, Typ(h.b), dep);\n-        return fa || fb;\n+        return compare_go(\"LE\", book, a, Typ(h.a), dep)\n+            || compare_\n[excerpt truncated; immutable commit linked]"
+      ]
+    },
+    {
+      "sha": "34c02a1fc17e6adc2bcde4693fad5e80fb45f9d9",
+      "url": "https://github.com/bendlang/bend/commit/34c02a1fc17e6adc2bcde4693fad5e80fb45f9d9",
+      "message": "fix(compiler)!: stabilize JS constructor tags across modules (#1488)",
+      "classification": "migration_compatibility",
+      "finding": "JS constructor tags retain declaring-file-local constructor name, removing loading-book namespace.",
+      "patch_characters": 5367,
+      "selected_patch_hunks": [
+        "@@ -2996,6 +2997,13 @@ function js_open(sc: Scope, x: Of<\"Let\">): HTerm {\n+// Constructor tags name the constructor within its declaring file, not\n+// the namespace a loading book gives that file. Matches stay type-local;\n+// foreign effect identities and public def names keep their namespaces.\n+function js_tag(k: Name): string {\n+  return k.slice(k.indexOf(\":\") + 1);\n+}\n+",
+        "@@ -3039,7 +3047,7 @@ function js_expr(sc: Scope, tm: HTerm, ty0: HTerm | null = null): string {\n-      return `{$: \"${Bend.name_key(x.k)}\"${exprs.map((z, j) =>\n+      return `{$: \"${js_tag(x.k)}\"${exprs.map((z, j) =>"
+      ]
+    },
+    {
+      "sha": "381dc87799de1117e58087fbfd67b0d12bb20b14",
+      "url": "https://github.com/bendlang/bend/commit/381dc87799de1117e58087fbfd67b0d12bb20b14",
+      "message": "A Nat crosses to a JS host as a plain number (#1506)",
+      "classification": "migration_compatibility",
+      "finding": "JS host Nat now uses number; former BigInt marshaling and nested conversion tree removed.",
+      "patch_characters": 18271,
+      "selected_patch_hunks": [
+        "@@ -472,12 +471,8 @@ function nat_chk(n) {\n-function nat_host(n) {\n-  const int = typeof n === \"bigint\" || Number.isInteger(n);\n-  if (int && n >= 0 && n <= 2 ** 53) {\n-    return Number(n);\n-  }\n-  return { [Symbol.toPrimitive]() { throw \"bend: ${ERRS[5]}\"; } };\n+function nat_in(n) {\n+  return Number.isInteger(n) && n >= 0 && n <= 2 ** 53 ? n : nat_chk(1 / 0);",
+        "@@ -3133,76 +3127,10 @@ function js_def(sc: Scope, k: Name, def: Bend.Def): void {\n-// A part with a converter of its own waits on one work stack, so no depth\n-// grows the JS call stack; a Nat or function part converts on the spot.\n-// Arrays stay in-place; ADT nodes are copied.\n-function js_marshal(A: HTerm | null, out: boolean): string {\n+// A host hands a Nat in as a number, which nat_in checks.\n+function host_nat(A: HTerm | null): boolean {\n-  if (t?.$ === \"All\") {\n-    const y = js_marshal(t.B(DUMMY), out);\n-    if (!quant_live(t.q)) {\n-      return y;\n-    }\n-    const x = js_marshal(t.\n[excerpt truncated; immutable commit linked]"
+      ]
+    },
+    {
+      "sha": "7ba0ce7a94fc6c6ccf8eccb71d97115e15a382be",
+      "url": "https://github.com/bendlang/bend/commit/7ba0ce7a94fc6c6ccf8eccb71d97115e15a382be",
+      "message": "fix(runtime): a Char holds any u32 on every lane; U+FFFD only at text edges (#1411)",
+      "classification": "migration_compatibility",
+      "finding": "Char preserves U32 codes, including non-scalars, with packed JS encoding; text boundaries replace non-scalars with U+FFFD.",
+      "patch_characters": 13343,
+      "selected_patch_hunks": [
+        "@@ -507,11 +506,28 @@ function f32_read(s) {\n-function char_new(code) {\n-  if (code > 0x10FFFF || (code >= 0xD800 && code <= 0xDFFF)) {\n-    throw \"bend: \" + code + \" is not a Unicode scalar value\";\n-  }\n-  return String.fromCodePoint(code);\n+// A Char past the Unicode scalars keeps its code as 0xDC00 and three 11-bit\n+// pieces; str_out writes it as U+FFFD, as str_in does a host's surrogate.\n+function char_new(c) {\n+  return c < 0xD800 || c >= 0xE000 && c <= 0x10FFFF ? String.fromCodePoint(c)\n+    : String.fromCharCode(0xDC00, c >>> 22, c >>> 11 & 0x7FF, c & 0x7FF);\n+}\n+\n+function char_len(s)\n[excerpt truncated; immutable commit linked]",
+        "@@ -3150,10 +3166,13 @@ function js_def(sc: Scope, k: Name, def: Bend.Def): void {\n-// A host hands a Nat in as a number, which nat_in checks.\n-function host_nat(A: HTerm | null): boolean {\n+// What crosses to or from a host: a Nat comes in as a number, which nat_in\n+// checks; text gets U+FFFD for what is no Unicode scalar.\n+function host(A: HTerm | null, x: string, out = 0): string {\n-  return t?.$ === \"ADT\" && t.k === \"Nat\";\n+  const k = t?.$ === \"ADT\" ? t.k : \"\";\n+  return k === \"Char\" || k === \"String\" ? `str_${out ? \"out\" : \"in\"}(${x})`\n+    : k === \"Nat\" && !out ? `nat_in(${x})` : x;"
+      ]
+    },
+    {
+      "sha": "10256a7bd047ece2ca1bfbe50d5813e9287ec8b4",
+      "url": "https://github.com/bendlang/bend/commit/10256a7bd047ece2ca1bfbe50d5813e9287ec8b4",
+      "message": "fix(runtime)!: runtime options go between +RTS and -RTS (#1466) (#1530)",
+      "classification": "migration_compatibility",
+      "finding": "Native runtime options move into +RTS/-RTS; BENDRTS is read; --RTS preserves remaining program arguments.",
+      "patch_characters": 14481,
+      "selected_patch_hunks": [
+        "@@ -6098,20 +6097,41 @@ ${reqs}\n-  long thr = cpu_count();\n-  int  gpu = -1;\n-  u64  mem = 0;\n+  long   thr = cpu_count();\n+  int    gpu = -1;\n+  u64    mem = 0;\n+  char*  env = strdup(getenv(\"BENDRTS\") != NULL ? getenv(\"BENDRTS\") : \"\");\n+  char** rts = malloc((argc + strlen(env) + 1) * sizeof(char*));\n+  int    nr  = 0;\n+  bool   in  = false;\n+  for (char* w = strtok(env, \" \\t\\n\"); w != NULL; w = strtok(NULL, \" \\t\\n\")) {\n+    rts[nr++] = w;\n+  }\n+  rts[nr++] = NULL;\n-  io_argc = 1;\n+  io_argc = argc > 0;\n-    const char* a = argv[i];\n-    const char* v = i + 1 < argc ? argv[i + 1] : \"\";\n-    \n[excerpt truncated; immutable commit linked]",
+        "@@ -6121,26 +6141,28 @@ int main(int argc, char** argv) {\n-      thr = strtol(v, &end, 10);\n-      if (thr < 1 || *end != 0) {\n+      thr = strtol(v, NULL, 10);\n+      if (thr < 1 || v[strspn(v, \"0123456789\")] != 0) {\n+      mem = (u64)(n * (double)mul);\n-      } else if (!strcmp(v, \"on\") || (mul != 0 && n > 0)) {\n+      } else if (!strcmp(v, \"on\")\n+        || (mem >= 16384 && end == v + strspn(v, \"0123456789.\"))) {\n-        mem = (u64)(n * (double)mul);"
+      ]
+    },
+    {
+      "sha": "b8664b0a7ff36858b353fdbee77e41a3dd3548db",
+      "url": "https://github.com/bendlang/bend/commit/b8664b0a7ff36858b353fdbee77e41a3dd3548db",
+      "message": "BendTT: adequacy, a checked law holds at each closed instance (#1627)",
+      "classification": "proof_boundary",
+      "finding": "Adequacy theorem is for checked closed live kernel terms at an equality, in the kernel model theory.",
+      "patch_characters": 3805,
+      "selected_patch_hunks": [
+        "@@ -1737,6 +1737,13 @@ def Claim.halts : Prop :=\n+-- a closed live term typed at {a == b} has convertible sides: a checked\n+-- law's proof on closed values makes its sides convert, in Part 2's\n+-- theory, where opaque defs unfold to their models\n+def Claim.adequate : Prop :=\n+  ∀ bk t T a b A, Book.check bk = .ok () → Term.Closed t → Term.Live bk t →\n+    Typed bk [] t T → Conv bk T (Eql a b A) → Conv bk a b\n+",
+        "@@ -3979,3 +4003,14 @@ theorem consistent : Claim.consistent := by\n+\n+-- by halts, progress and sr, t reaches a value at {a == b}: {==}, whose\n+-- sides convert (canon_eql)\n+theorem adequate : Claim.adequate := by\n+  intro bk t T a b A ok hc hl ht c\n+  have ⟨wt, lv⟩ := book_check bk ok\n+  suffices ∀ t, Acc (fun u t => Eval bk t u) t → Typed bk [] t T → Conv bk a b from\n+    this t (halts bk t lv hc hl) ht\n+  intro t acc ht; induction acc; rename_i t _ ih\n+  exact (progress bk t _ wt lv ht).elim (fun v => (canon_eql wt v ht c).2)\n+    fun ⟨u, e⟩ => ih u e (pars_sr wt ht (eval_pars lv.1 e))"
+      ]
+    },
+    {
+      "sha": "b9b1582cbb1caad7e32b601219f0b52908b6a944",
+      "url": "https://github.com/bendlang/bend/commit/b9b1582cbb1caad7e32b601219f0b52908b6a944",
+      "message": "BendTT: a comparison is done when both sides are already the same, and first runs with every def rigid (#1892)",
+      "classification": "proof_boundary",
+      "finding": "Kernel compares identical types early and tries a rigid empty-book comparison before full unfolding, with soundness proof updates.",
+      "patch_characters": 5500,
+      "selected_patch_hunks": [
+        "@@ -1018,15 +1023,25 @@ def Term.qge (ck : Book) (cl : Bool) : Nat → Term → Term → Bool × Nat\n-    let (U, m) := Term.wnf ck cl n U []\n-    let (T, m) := Term.wnf ck cl (min m n) T []\n-    match U, T with\n-    | Typ g, Typ h => Term.qge ck cl (min m n) g h\n-    | Enu ks, Enu js => (ks.all js.contains, m)\n-    | All q A B, All p C D =>\n-      let r := if q == p then Term.fits ck cl (min m n) C A else (false, m)\n-      if r.1 then Term.fits ck false (min r.2 n) B D else r\n-    | U, T => Term.conv ck cl (min m n) U T\n+    if U = T then\n+      (true, n)\n+    else\n+      let (U, m) := Term.wnf ck c\n[excerpt truncated; immutable commit linked]",
+        "@@ -2277,6 +2294,16 @@ theorem fits_sound (hb : Sees ck bk) (h : (fits ck cl n U T).1 = true) : Fits bk\n+theorem sees_nil : Sees Book.nil bk := fun _ _ h => by simp [Book.nil, Book.get, Book.of, Book.table] at h\n+\n+-- a rigid pass and a full pass are each sound\n+theorem rigid_sound {P : Prop} {f : Book → Bool → Nat → Term → Term → Bool × Nat}\n+    (s : ∀ {ck}, Sees ck bk → (f ck cl n a b).1 = true → P) (hb : Sees ck bk)\n+    (h : (Term.rigid f ck cl n a b).1 = true) : P := by\n+  unfold Term.rigid at h; dsimp only at h; split at h\n+  · exact s sees_nil ‹_›\n+  · exact s hb h\n+"
+      ]
+    }
+  ],
+  "reverted_attempts": {
+    "list_search": "32d23b434be1634b7e2858870b2f9d7da8f8912a initial; e5527d5be0c441d00f1f7d2fb61eb464fa478e5c revert; e1a7a698e0a34c4e1f2d9ceeaf1fe07ab931b517 final reviewed reintroduction",
+    "note": "Only final List implementation inspected here; revert history identified from commit metadata."
+  },
+  "local_evidence": [
+    {
+      "path": "selfhost/manifests/assets-native.json",
+      "line": 5,
+      "finding": "Active upstream pin remains 059266225b77c8ca256ac6b25ee5c21449bab151; explicit prepared Base and runtime assets follow."
+    },
+    {
+      "path": "selfhost/tools/build/request.py",
+      "line": 197,
+      "finding": "Runtime command uses bare --threads 1 --gpu off --, incompatible with migrated runtime option parsing."
+    },
+    {
+      "path": "selfhost/tools/bench/bench.py",
+      "line": 408,
+      "finding": "Native benchmark invocation also uses old runtime option spelling."
+    },
+    {
+      "path": "selfhost/src/runtime/js/base.mjs",
+      "line": 4,
+      "finding": "Maintained JS primitive Nat path casts to BigInt; source is not evidence of qualification under new upstream ABI."
+    },
+    {
+      "path": "research/phase145/parser-boundary.md",
+      "finding": "Pinned upstream already uses native string+integer cursor; measured 2.583s upstream load vs historical31.175s Bend parser includes different obligations and runtime."
+    }
+  ],
+  "recommendation": "Retain active pin for Phase150 parser experiment. Assess and qualify upstream migration in a separate explicit cycle.",
+  "execution": {
+    "compiler_jobs": 0,
+    "benchmark_jobs": 0,
+    "production_source_edits": 0,
+    "merges": 0,
+    "pin_updates": 0
+  }
+}

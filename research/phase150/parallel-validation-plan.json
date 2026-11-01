@@ -1,0 +1,109 @@
+{
+  "kind": "phase150-two-process-correctness-pilot",
+  "version": 1,
+  "status": "source-check04/acquire02 and Node-control01 passed; cancellation and trials pending",
+  "cwd": "/home/ai/bend2/build/publish/bend",
+  "source": "selfhost/tests/phase150/parallel-validation.bend",
+  "compilerSelection": "selfhost/manifests/current.json",
+  "coordinatorBackend": "legacy-js",
+  "coordinatorRuntime": "selfhost/src/runtime.mjs",
+  "coordinatorEngine": {"file": "/home/ai/.nvm/versions/node/v24.22.1/bin/node", "bytes": 126879696, "sha256": "e32e2d16081cf644f88392934288086e7662529d0d43277c34f7aad2207cfafb", "arguments": ["--max-old-space-size=1024"]},
+  "retainedNegativeControls": ["selfhost/build/phase150/parallel-control01-guard/process.json", "selfhost/build/phase150/parallel-control02-guard/process.json"],
+  "targetSelection": ["focused/nt-reverse", "focused/lexer-scan"],
+  "targetImage": "selfhost/manifests/assets-native.json:qbe-n2",
+  "targetMode": "one native Bend heap mutator per process, --threads 1 --gpu off",
+  "targetCpuAssignment": {"nt-reverse": "0", "lexer-scan": "1"},
+  "classification": "correctness-throughput feasibility; no compiler/program benchmark claim",
+  "requestedSchedule": ["serial01", "parallel01", "parallel02", "serial02"],
+  "sourceCheck": {
+    "status": "passed; complete:true and checked:true; component source check only",
+    "guard": "selfhost/build/phase150/parallel-source-check04-guard",
+    "runRoot": "selfhost/build/phase150/parallel-source-check04",
+    "seconds": 45,
+    "diskMiB": 64,
+    "rssMiB": 2048,
+    "availableMiB": 16384,
+    "cpu": "3",
+    "expectedComplete": true,
+    "expectedChecked": true,
+    "argv": ["selfhost/.assets/bin/bun", "selfhost/tools/build/hosted.mjs", "acquire", "--source", "selfhost/tests/phase150/parallel-validation.bend", "--exports", "selfhost/tests/phase150/parallel-validation-exports.json", "--upstream", "selfhost/.bootstrap/upstream-phase66", "--engine", "selfhost/.assets/bin/bun", "--out", "selfhost/build/phase150/parallel-source-check04"]
+  },
+  "acquire": {
+    "status": "passed; retain existing coordinator.mjs unchanged",
+    "guard": "selfhost/build/phase150/parallel-acquire02-guard",
+    "runRoot": "selfhost/build/phase150/parallel-acquire02",
+    "seconds": 90,
+    "diskMiB": 64,
+    "rssMiB": 2048,
+    "availableMiB": 16384,
+    "cpu": "3",
+    "argv": ["bash", "-c", "mkdir \"$1\" && shift && exec \"$@\"", "phase150-acquire", "selfhost/build/phase150/parallel-acquire02", "env", "BEND_TYPED_BASE_CACHE=off", "selfhost/.assets/bin/bun", "selfhost/cli.mjs", "selfhost/tests/phase150/parallel-validation.bend", "--legacy-js", "-o", "selfhost/build/phase150/parallel-acquire02/coordinator.mjs"]
+  },
+  "control": {
+    "status": "passed; exact stdout oracle, exit0, empty stderr",
+    "guard": "selfhost/build/phase150/parallel-node-control01-guard",
+    "runRoot": "selfhost/build/phase150/parallel-node-control01",
+    "seconds": 10,
+    "diskMiB": 64,
+    "rssMiB": 2048,
+    "availableMiB": 16384,
+    "cpu": "0,1",
+    "expectedExit": 0,
+    "stdoutOracle": "selfhost/tests/phase150/parallel-validation-control.stdout",
+    "expectedStderr": "",
+    "argv": ["/home/ai/.nvm/versions/node/v24.22.1/bin/node", "--max-old-space-size=1024", "selfhost/build/phase150/parallel-acquire02/coordinator.mjs", "--", "control", "selfhost/build/phase150/parallel-node-control01"]
+  },
+  "cancelControl": {
+    "guard": "selfhost/build/phase150/parallel-cancel01-guard",
+    "runRoot": "selfhost/build/phase150/parallel-cancel01",
+    "seconds": 2,
+    "diskMiB": 64,
+    "rssMiB": 2048,
+    "availableMiB": 16384,
+    "cpu": "0,1",
+    "expectedComplete": false,
+    "expectedStoppedFor": "deadline",
+    "expectedStdout": "cancel-control child-start\n",
+    "argv": ["bash", "-c", "mkdir \"$1\" && shift && exec \"$@\"", "phase150-cancel", "selfhost/build/phase150/parallel-cancel01", "/home/ai/.nvm/versions/node/v24.22.1/bin/node", "--max-old-space-size=1024", "selfhost/build/phase150/parallel-acquire02/coordinator.mjs", "--", "cancel", "selfhost/build/phase150/parallel-cancel01"]
+  },
+  "trials": [
+    {
+      "name": "serial01",
+      "guard": "selfhost/build/phase150/parallel-serial01-guard",
+      "runRoot": "selfhost/build/phase150/parallel-serial01",
+      "argv": ["/home/ai/.nvm/versions/node/v24.22.1/bin/node", "--max-old-space-size=1024", "selfhost/build/phase150/parallel-acquire02/coordinator.mjs", "--", "serial", "selfhost/build/phase150/parallel-serial01"]
+    },
+    {
+      "name": "parallel01",
+      "guard": "selfhost/build/phase150/parallel-parallel01-guard",
+      "runRoot": "selfhost/build/phase150/parallel-parallel01",
+      "argv": ["/home/ai/.nvm/versions/node/v24.22.1/bin/node", "--max-old-space-size=1024", "selfhost/build/phase150/parallel-acquire02/coordinator.mjs", "--", "parallel", "selfhost/build/phase150/parallel-parallel01"]
+    },
+    {
+      "name": "parallel02",
+      "guard": "selfhost/build/phase150/parallel-parallel02-guard",
+      "runRoot": "selfhost/build/phase150/parallel-parallel02",
+      "argv": ["/home/ai/.nvm/versions/node/v24.22.1/bin/node", "--max-old-space-size=1024", "selfhost/build/phase150/parallel-acquire02/coordinator.mjs", "--", "parallel", "selfhost/build/phase150/parallel-parallel02"]
+    },
+    {
+      "name": "serial02",
+      "guard": "selfhost/build/phase150/parallel-serial02-guard",
+      "runRoot": "selfhost/build/phase150/parallel-serial02",
+      "argv": ["/home/ai/.nvm/versions/node/v24.22.1/bin/node", "--max-old-space-size=1024", "selfhost/build/phase150/parallel-acquire02/coordinator.mjs", "--", "serial", "selfhost/build/phase150/parallel-serial02"]
+    }
+  ],
+  "trialResources": {"seconds": 160, "diskMiB": 128, "rssMiB": 2048, "availableMiB": 16384, "cpu": "0,1", "fileMiB": 128, "reserveMiB": 5120},
+  "childResources": {"processRunCombinedOutputBytes": 65536, "processRunMilliseconds": 75000, "requestSeconds": 20, "machineBuildSeconds": 20, "programExecuteSeconds": 10},
+  "audit": [
+    "Run every listed job only through one maintained build-retention/guard.py; no inner guards or alternate locks.",
+    "SourceCheck04 is complete:true/checked:true: maintained hosted.mjs runs upstream book_valid over the whole book and rejects holes, while exporting only pure p150pv_summary. Legacy compiler acceptance is separate. Source-check and acquisition stay on Bun; execution uses the exact pinned Node with1024MiB heap cap after successful node-control01. Verify parallel-pins.json before/after trials; do not rerun completed setup into consumed roots.",
+    "Require control stdout equals independent fixture, exit0 and empty stderr. Cancellation must stop for deadline and leave no owned descendants before further work.",
+    "Every trial must have complete guard and serial/parallel pass line, exactly both selected report IDs, complete:true, passed:true, counts pass1/fail0/unsupported0 and empty changedInputs in each independent qualification report.",
+    "Inspect both case rows: exact retained independent stdout/stderr and exit oracle, complete emission/build receipts, native commands --threads1 --gpu off, and correct taskset affinity.",
+    "Compare complete emitted QBE, program objects and complete stdout for each case across all four schedules. Preserve mismatches and missing rows as pilot failure.",
+    "Use guard wallSeconds for whole-workflow scheduling comparison; retain per-child start/finish data. IO.now here is Date.now wallclock, so it diagnoses overlap but is not a monotonic benchmark clock.",
+    "Record cpu topology/available mask, MemAvailable and swap counters before/after. Aggregate2GiB tree budget is shared by both workers, coordinator and supervisors. Sampled polling is not a kernel quota.",
+    "No compiler/program benchmarking, profiling, archival compression or other correctness target may overlap these root-owned lane windows. Drain and check processes before returning to measurement mode.",
+    "Close every guard, including expected cancellation, with maintained close.py and preserve all evidence. This bounded pilot does not change serial production policy or qualify a general scheduler."
+  ]
+}

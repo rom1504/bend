@@ -1,18 +1,8 @@
 
 
+# Preserve the original safe public function and plain argument quantity.
 def p112fp_binary(id: U32) -> String:
-  match id:
-    case 26: "add"
-    case 27: "sub"
-    case 28: "mul"
-    case 29: "div"
-    case 30: "ceqs"
-    case 31: "cnes"
-    case 32: "clts"
-    case 33: "cles"
-    case 34: "cgts"
-    case 35: "cges"
-    case _: "INVALID_P112_FLOAT_OPERATION"
+  p151_binary(id)
 
 
 @unsafe

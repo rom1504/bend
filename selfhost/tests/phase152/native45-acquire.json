@@ -1,0 +1,33 @@
+{
+  "kind": "bend-benchmark-acquisition-v1",
+  "catalog": "../../tools/bench/catalogs/native45/catalog.json",
+  "reference": "phase147",
+  "roles": {
+    "phase147": {
+      "provider": "build",
+      "assets": "../../manifests/assets-native.json",
+      "host": "native",
+      "stage": "N2",
+      "target": "qbe",
+      "image": "../../build/phase147/integrated-sequel02/n2/program",
+      "imageReceipt": "../../build/phase147/integrated-sequel02/n2/report.json",
+      "mode": "cache",
+      "runtimeKey": "qbe-runtime",
+      "policy": "ordinary-serial",
+      "status": "phase147-qualified-ordinary-native"
+    },
+    "phase152": {
+      "provider": "build",
+      "assets": "../../manifests/assets-native.json",
+      "host": "native",
+      "stage": "N2",
+      "target": "qbe",
+      "image": "../../build/phase152/native-n2/program",
+      "imageReceipt": "../../build/phase152/native-n2/report.json",
+      "mode": "cache",
+      "runtimeKey": "qbe-runtime",
+      "policy": "ordinary-serial",
+      "status": "phase152-experimental-no-promotion"
+    }
+  }
+}

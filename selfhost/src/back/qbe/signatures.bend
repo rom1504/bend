@@ -59,12 +59,11 @@ def p113_application_kind(+book: List<&2,KDef>, +value: KTerm, +native: String) 
     u => p113_callee_kind(book,nd_head(value),terms_len(nd_args(value,[]))),
     u => p113_primitive_kind(native,terms_len(nd_args(value,[]))))
 
-
 @unsafe
 def p113_value_kind(+book: List<&2,KDef>, +value: KTerm, +env: List<&2,NC_Binding>) -> N_WordKind:
-  nt_choose(N_WordKind,p98_tag_eq(value,"Ctr") || p98_tag_eq(value,"NCtr"),
-    u => nt_choose(N_WordKind,p113n_constructor(book,nm(value),terms_len(ks(value))),v => N_Imm64{},v => p113n_original_value_kind(book,value,env)),
-    u => p113n_original_value_kind(book,value,env))
+  nt_choose(N_WordKind,p98_tag_eq(value,"NStatic"),
+    u => nt_choose(N_WordKind,p152c_immediate(book,value),v => N_Imm64{},v => p152c_prior_kind(book,value,env)),
+    u => p152c_prior_kind(book,value,env))
 
 @unsafe
 def p113_binding(+book: List<&2,KDef>, +id: U32, +value: KTerm, +env: List<&2,NC_Binding>) -> NC_Binding:

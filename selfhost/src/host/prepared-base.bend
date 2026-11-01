@@ -117,23 +117,45 @@ def p88_number_read(nodes: Array<P88Node>, strings: Array<String>, made: U32, sn
   match read:
     case P88Number{P88Cursor{text,+mode},n}:
       p130m_number_read(nodes,strings,made,sn,begin,end,text,mode,n,p130m_valid(mode))
+# Isolated scalar spellings of two closed, fixed-result U32 tables.
+# Literal values become scalar equality operands, never literal patterns.
+# A finite safe chooser retains p112fp_binary safety and lazy result selection.
+def p151_choose(-A: Type, +b: Bool, yes: Unit -> A, no: Unit -> A) -> A:
+  match b:
+    case True{}: yes(Unit{})
+    case False{}: no(Unit{})
 
 @unsafe
+def p151_roles(+tag: U32) -> List<&2,U32>:
+  p151_choose(List<&2,U32>,U32.is_eq(tag,1),u => [13,14],u =>
+  p151_choose(List<&2,U32>,U32.is_eq(tag,2),u => [3,3,1,1,6,8,1,1],u =>
+  p151_choose(List<&2,U32>,U32.is_eq(tag,3),u => [3,1,1,6,8,1,1,2],u =>
+  p151_choose(List<&2,U32>,U32.is_eq(tag,4),u => [3,1,3,1,1],u =>
+  p151_choose(List<&2,U32>,U32.is_eq(tag,5),u => [3,3,1,1,4,4,7,2,2],u =>
+  p151_choose(List<&2,U32>,U32.is_eq(tag,6),u => [1,7],u =>
+  p151_choose(List<&2,U32>,U32.is_eq(tag,7),u => [1,1,5,5],u =>
+  p151_choose(List<&2,U32>,U32.is_eq(tag,8),u => [1,1,1,7,2],u =>
+  p151_choose(List<&2,U32>,U32.is_eq(tag,9),u => [1,2],u =>
+  p151_choose(List<&2,U32>,U32.is_eq(tag,10),u => [9,7,7,7,7,7,1,1],u =>
+  p151_choose(List<&2,U32>,U32.is_eq(tag,11),u => [5,5,1,2],u => [])))))))))))
+
+def p151_binary(+id: U32) -> String:
+  p151_choose(String,U32.is_eq(id,26),u => "add",u =>
+  p151_choose(String,U32.is_eq(id,27),u => "sub",u =>
+  p151_choose(String,U32.is_eq(id,28),u => "mul",u =>
+  p151_choose(String,U32.is_eq(id,29),u => "div",u =>
+  p151_choose(String,U32.is_eq(id,30),u => "ceqs",u =>
+  p151_choose(String,U32.is_eq(id,31),u => "cnes",u =>
+  p151_choose(String,U32.is_eq(id,32),u => "clts",u =>
+  p151_choose(String,U32.is_eq(id,33),u => "cles",u =>
+  p151_choose(String,U32.is_eq(id,34),u => "cgts",u =>
+  p151_choose(String,U32.is_eq(id,35),u => "cges",u => "INVALID_P112_FLOAT_OPERATION"))))))))))
+
+
+# Preserve the original plain public argument quantity and unsafe annotation.
+@unsafe
 def p88_roles(tag: U32) -> List<&2,U32>:
-  match tag:
-    case 0: []
-    case 1: [13,14]
-    case 2: [3,3,1,1,6,8,1,1]
-    case 3: [3,1,1,6,8,1,1,2]
-    case 4: [3,1,3,1,1]
-    case 5: [3,3,1,1,4,4,7,2,2]
-    case 6: [1,7]
-    case 7: [1,1,5,5]
-    case 8: [1,1,1,7,2]
-    case 9: [1,2]
-    case 10: [9,7,7,7,7,7,1,1]
-    case 11: [5,5,1,2]
-    case other: []
+  p151_roles(tag)
 
 # Module: /home/ai/bend2/build/publish/bend/selfhost/build/phase88/cache-js01/entry.bend:131
 @unsafe

@@ -1,0 +1,1511 @@
+{
+  "kind": "phase152-metrics",
+  "version": 1,
+  "reference": "Phase147 qualified native N2; no fresh upstream ratio",
+  "coldNative": {
+    "rows": [
+      {
+        "stage": 1,
+        "wallSeconds": 259.30219836719334,
+        "emitAndQbeSeconds": 252.59014903008938,
+        "qbe": {
+          "bytes": 120027859,
+          "sha256": "c829be90e8971198e2181709b3458ed598e21effd0d7792eceffc0aaa4c698f8"
+        },
+        "image": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase152/native-n1/program",
+          "bytes": 19596488,
+          "sha256": "7da0e44af5729c587c0d04d78d9b2a6707aa2574531e07dc79313798ed8ab09d"
+        },
+        "object": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase152/native-n1/program.o",
+          "bytes": 26113272,
+          "sha256": "c56a9ff751a766fb8edfc1b1ccf78012c1c26d9c819ad1de0507525c1318568a"
+        },
+        "assembly": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase152/native-n1/program.s",
+          "bytes": 88907610,
+          "sha256": "06de12c5456a812feede91326048155ef8b4c7ba898db160a09e01f886c7180b"
+        }
+      },
+      {
+        "stage": 2,
+        "wallSeconds": 254.61251652799547,
+        "emitAndQbeSeconds": 248.02842993894592,
+        "qbe": {
+          "bytes": 118227421,
+          "sha256": "1032c6a6495ca86bb26ad2bcd7ae639ed49dc987765dfe567dce7ac6224bf7bb"
+        },
+        "image": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase152/native-n2/program",
+          "bytes": 18945224,
+          "sha256": "d62712958b53ecdbe19998ca54c9184f895b556acc661ad014dae89754b952bd"
+        },
+        "object": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase152/native-n2/program.o",
+          "bytes": 24811328,
+          "sha256": "896a04ccd67d0159871ec3b3d46907404b5fa73c2e5ae88b6a787463558e66eb"
+        },
+        "assembly": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase152/native-n2/program.s",
+          "bytes": 86088424,
+          "sha256": "88803353068a14f35a1430dea9c70477a2624bd321a52883183659f26b4f0792"
+        }
+      },
+      {
+        "stage": 3,
+        "wallSeconds": 249.22208714671433,
+        "emitAndQbeSeconds": 242.10303117288277,
+        "qbe": {
+          "bytes": 118227421,
+          "sha256": "1032c6a6495ca86bb26ad2bcd7ae639ed49dc987765dfe567dce7ac6224bf7bb"
+        },
+        "image": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase152/native-n3/program",
+          "bytes": 18945224,
+          "sha256": "5fc131b166f983034f920006d65af6beef3e714494ea2e91a532c4a81fd3e472"
+        },
+        "object": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase152/native-n3/program.o",
+          "bytes": 24811328,
+          "sha256": "896a04ccd67d0159871ec3b3d46907404b5fa73c2e5ae88b6a787463558e66eb"
+        },
+        "assembly": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase152/native-n3/program.s",
+          "bytes": 86088424,
+          "sha256": "88803353068a14f35a1430dea9c70477a2624bd321a52883183659f26b4f0792"
+        }
+      }
+    ],
+    "n2n3Identical": {
+      "qbe": true,
+      "object": true,
+      "assembly": true,
+      "image": false
+    },
+    "sameSourceSpeedRatio": 0.9611260094054246
+  },
+  "compilerRequests": {
+    "report": {
+      "file": "selfhost/build/phase152/compiler-bench01/report.json",
+      "bytes": 47959,
+      "sha256": "6c43e4cd63916f9d2bb633c47cd51c83c05e797fd99092889f88cce85c93aa50"
+    },
+    "aggregate": {
+      "complete": true,
+      "timedCases": 3,
+      "correctnessOnlyCases": 0,
+      "roles": {
+        "phase152": {
+          "geomean": 0.9744059347518674,
+          "equalSourceGeomean": 0.9744059347518674,
+          "sourceCount": 3,
+          "meanPositiveLogSlowdown": 0,
+          "casesOver105": 0,
+          "families": {
+            "lexer": 0.9805446129532053,
+            "coverage-map-churn-128": 0.9733352697217273,
+            "coverage-expression-128": 0.9693708201210423
+          }
+        }
+      }
+    },
+    "cases": [
+      {
+        "id": "lexer",
+        "summary": {
+          "complete": true,
+          "pairedRounds": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "stats": {
+            "phase147": {
+              "medianMs": 1664.7401985246688,
+              "samplesMs": [
+                1663.2523932494223,
+                1673.30052703619,
+                1655.0081609748304,
+                1666.2280037999153
+              ],
+              "minimumMs": 1655.0081609748304,
+              "maximumMs": 1673.30052703619,
+              "lowResolution": false
+            },
+            "phase152": {
+              "medianMs": 1632.3520336300135,
+              "samplesMs": [
+                1606.7325551994145,
+                1687.4018241651356,
+                1600.3188458271325,
+                1657.9715120606124
+              ],
+              "minimumMs": 1600.3188458271325,
+              "maximumMs": 1687.4018241651356,
+              "lowResolution": false
+            }
+          },
+          "ratios": {
+            "phase152": 0.9805446129532053
+          },
+          "ratioEligible": true
+        }
+      },
+      {
+        "id": "coverage-map-churn-128",
+        "summary": {
+          "complete": true,
+          "pairedRounds": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "stats": {
+            "phase147": {
+              "medianMs": 2026.5381331555545,
+              "samplesMs": [
+                2019.9592732824385,
+                2046.796580310911,
+                2015.6021360307932,
+                2033.1169930286705
+              ],
+              "minimumMs": 2015.6021360307932,
+              "maximumMs": 2046.796580310911,
+              "lowResolution": false
+            },
+            "phase152": {
+              "medianMs": 1972.5010404363275,
+              "samplesMs": [
+                2251.2193489819765,
+                1972.6124750450253,
+                1972.3896058276296,
+                1954.837020020932
+              ],
+              "minimumMs": 1954.837020020932,
+              "maximumMs": 2251.2193489819765,
+              "lowResolution": false
+            }
+          },
+          "ratios": {
+            "phase152": 0.9733352697217273
+          },
+          "ratioEligible": true
+        }
+      },
+      {
+        "id": "coverage-expression-128",
+        "summary": {
+          "complete": true,
+          "pairedRounds": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "stats": {
+            "phase147": {
+              "medianMs": 937.7457138616592,
+              "samplesMs": [
+                944.4551928900182,
+                933.969171717763,
+                937.7307710237801,
+                937.7606566995382
+              ],
+              "minimumMs": 933.969171717763,
+              "maximumMs": 944.4551928900182,
+              "lowResolution": false
+            },
+            "phase152": {
+              "medianMs": 909.0233317110687,
+              "samplesMs": [
+                927.1060838364065,
+                903.3951889723539,
+                911.2675846554339,
+                906.7790787667036
+              ],
+              "minimumMs": 903.3951889723539,
+              "maximumMs": 927.1060838364065,
+              "lowResolution": false
+            }
+          },
+          "ratios": {
+            "phase152": 0.9693708201210423
+          },
+          "ratioEligible": true
+        }
+      }
+    ]
+  },
+  "programRuntime": {
+    "scope": "44 frozen input-point ratios versus Phase147; 40 points use scale1 and four preidentified low-resolution points scale64, both roles matched, two rounds each; no new upstream ratio",
+    "inputs": [
+      "programs45-bench02/report.json",
+      "programs-resolution01/report.json"
+    ],
+    "rows": [
+      {
+        "id": "local-pair",
+        "family": "local-pair",
+        "sourceGroup": "3987479425f7bf0d5c9e7655bb22bae29ed0d44635fdbf50eff2bb3cd869dfb4",
+        "scale": 1,
+        "ratio": 1.00398406374502,
+        "oldMedianMs": 0.2625523012552301,
+        "newMedianMs": 0.2635983263598326
+      },
+      {
+        "id": "local-fold",
+        "family": "local-fold",
+        "sourceGroup": "d13b49747fbe6308aa35451ca6f1e1059f0a01bac8fce671dc7a195424b5cc3a",
+        "scale": 1,
+        "ratio": 0.9970238095238096,
+        "oldMedianMs": 0.00553687957286929,
+        "newMedianMs": 0.005520400764616703
+      },
+      {
+        "id": "scalar-region-8192",
+        "family": "scalar-region-8192",
+        "sourceGroup": "5c1b7031be03394ea7bfc64358b6db167711765e187e32d06f65a9f06bba3c7d",
+        "scale": 1,
+        "ratio": 0.9927007299270073,
+        "oldMedianMs": 0.06142395982783357,
+        "newMedianMs": 0.06097560975609756
+      },
+      {
+        "id": "complete-generic-row32",
+        "family": "complete-generic-row32",
+        "sourceGroup": "3987479425f7bf0d5c9e7655bb22bae29ed0d44635fdbf50eff2bb3cd869dfb4",
+        "scale": 1,
+        "ratio": 1.0049212598425195,
+        "oldMedianMs": 0.34794520547945207,
+        "newMedianMs": 0.3496575342465753
+      },
+      {
+        "id": "mandelbrot",
+        "family": "mandelbrot",
+        "sourceGroup": "cb2b9c30aceeb0f8ed0da1f999658aa8d7fb346851877da6902d1ded4cfc0656",
+        "scale": 1,
+        "ratio": 0.9907142857142857,
+        "oldMedianMs": 0.07746790615316512,
+        "newMedianMs": 0.0767485613103143
+      },
+      {
+        "id": "editdist",
+        "family": "editdist",
+        "sourceGroup": "f9cc44d93829d8ea48148c26b8ed7e2c1785611ad0c19a3770f86227a3142e6f",
+        "scale": 1,
+        "ratio": 0.998031496062992,
+        "oldMedianMs": 1.0583333333333333,
+        "newMedianMs": 1.05625
+      },
+      {
+        "id": "tree-bitonic",
+        "family": "tree-bitonic",
+        "sourceGroup": "ace0242c329b1628cb9d0a0142386380e0ca4e56fa741916974938eb079b2c0d",
+        "scale": 1,
+        "ratio": 0.9940217391304347,
+        "oldMedianMs": 0.5623471882640587,
+        "newMedianMs": 0.5589853300733496
+      },
+      {
+        "id": "lexer",
+        "family": "lexer",
+        "sourceGroup": "6014af6bf7e97c8feaafa918e79f28a22d2c9c92bea836203fcd89b6d70a4fbb",
+        "scale": 1,
+        "ratio": 1.0,
+        "oldMedianMs": 0.994140625,
+        "newMedianMs": 0.994140625
+      },
+      {
+        "id": "symreg",
+        "family": "symreg",
+        "sourceGroup": "c25c8fb869eaf5ac90cbf45feb30c0e8169207ed0b74cd655343048fcc82778b",
+        "scale": 1,
+        "ratio": 0.9983108108108107,
+        "oldMedianMs": 2.0555555555555554,
+        "newMedianMs": 2.052083333333333
+      },
+      {
+        "id": "test-morning-program",
+        "family": "test-morning-program",
+        "sourceGroup": "9033897714291ea49c25046426457ff2753276466092ba71a4e40c1e2b48a04a",
+        "scale": 1,
+        "ratio": 1.0110076206604572,
+        "oldMedianMs": 0.010606006178604785,
+        "newMedianMs": 0.010722753071341332
+      },
+      {
+        "id": "test-evening-program",
+        "family": "test-evening-program",
+        "sourceGroup": "b254a68ad0208b8a5f388d72095633cd8fc119adf40d45f5621e93f37e7b4f71",
+        "scale": 1,
+        "ratio": 1.0037037037037038,
+        "oldMedianMs": 0.004161208291592818,
+        "newMedianMs": 0.004176620174154273
+      },
+      {
+        "id": "test-rle-roundtrip",
+        "family": "test-rle-roundtrip",
+        "sourceGroup": "ce4083dab9a8022b2c8867a30802113735917229341cecb8ce18ff9ac2e33989",
+        "scale": 1,
+        "ratio": 1.0152035311427172,
+        "oldMedianMs": 0.0010500523223717277,
+        "newMedianMs": 0.0010660168255563888
+      },
+      {
+        "id": "test-map-set-ops",
+        "family": "test-map-set-ops",
+        "sourceGroup": "60966d2aa182c2aabf20eb63270f57c7d8c5f2dc56872e7fed54dab34940c8c6",
+        "scale": 1,
+        "ratio": 1.0025125628140703,
+        "oldMedianMs": 0.03608995284729779,
+        "newMedianMs": 0.03618063112078346
+      },
+      {
+        "id": "raytrace",
+        "family": "raytrace",
+        "sourceGroup": "4674b2580aceb5f5fe6771ce16c987b97f791b52a9e1305794c435beeebf5837",
+        "scale": 1,
+        "ratio": 0.9906666666666667,
+        "oldMedianMs": 31.25,
+        "newMedianMs": 30.958333333333336
+      },
+      {
+        "id": "variation-editdist-0-17",
+        "family": "editdist",
+        "sourceGroup": "f9cc44d93829d8ea48148c26b8ed7e2c1785611ad0c19a3770f86227a3142e6f",
+        "scale": 1,
+        "ratio": 1.0079365079365081,
+        "oldMedianMs": 0.2635983263598326,
+        "newMedianMs": 0.26569037656903766
+      },
+      {
+        "id": "variation-editdist-3-123",
+        "family": "editdist",
+        "sourceGroup": "f9cc44d93829d8ea48148c26b8ed7e2c1785611ad0c19a3770f86227a3142e6f",
+        "scale": 1,
+        "ratio": 0.9921104536489153,
+        "oldMedianMs": 2.1125,
+        "newMedianMs": 2.095833333333333
+      },
+      {
+        "id": "variation-lexer-6-17",
+        "family": "lexer",
+        "sourceGroup": "6014af6bf7e97c8feaafa918e79f28a22d2c9c92bea836203fcd89b6d70a4fbb",
+        "scale": 1,
+        "ratio": 1.0,
+        "oldMedianMs": 0.24638336347197107,
+        "newMedianMs": 0.24638336347197107
+      },
+      {
+        "id": "variation-lexer-10-123",
+        "family": "lexer",
+        "sourceGroup": "6014af6bf7e97c8feaafa918e79f28a22d2c9c92bea836203fcd89b6d70a4fbb",
+        "scale": 1,
+        "ratio": 0.9902439024390244,
+        "oldMedianMs": 4.00390625,
+        "newMedianMs": 3.96484375
+      },
+      {
+        "id": "variation-tree-bitonic-6-17",
+        "family": "tree-bitonic",
+        "sourceGroup": "ace0242c329b1628cb9d0a0142386380e0ca4e56fa741916974938eb079b2c0d",
+        "scale": 1,
+        "ratio": 0.9690072639225181,
+        "oldMedianMs": 0.09295102628736046,
+        "newMedianMs": 0.09007021966150522
+      },
+      {
+        "id": "variation-tree-bitonic-9-123",
+        "family": "tree-bitonic",
+        "sourceGroup": "ace0242c329b1628cb9d0a0142386380e0ca4e56fa741916974938eb079b2c0d",
+        "scale": 1,
+        "ratio": 0.9947552447552448,
+        "oldMedianMs": 1.349056603773585,
+        "newMedianMs": 1.3419811320754718
+      },
+      {
+        "id": "variation-symreg-4-17",
+        "family": "symreg",
+        "sourceGroup": "c25c8fb869eaf5ac90cbf45feb30c0e8169207ed0b74cd655343048fcc82778b",
+        "scale": 1,
+        "ratio": 0.9983193277310924,
+        "oldMedianMs": 1.0329861111111112,
+        "newMedianMs": 1.03125
+      },
+      {
+        "id": "variation-symreg-7-123",
+        "family": "symreg",
+        "sourceGroup": "c25c8fb869eaf5ac90cbf45feb30c0e8169207ed0b74cd655343048fcc82778b",
+        "scale": 1,
+        "ratio": 1.0016666666666667,
+        "oldMedianMs": 3.409090909090909,
+        "newMedianMs": 3.4147727272727275
+      },
+      {
+        "id": "variation-local-fold-128-0",
+        "family": "local-fold",
+        "sourceGroup": "d13b49747fbe6308aa35451ca6f1e1059f0a01bac8fce671dc7a195424b5cc3a",
+        "scale": 1,
+        "ratio": 0.9960317460317459,
+        "oldMedianMs": 0.0002659602537176389,
+        "newMedianMs": 0.000264904855885426
+      },
+      {
+        "id": "variation-local-fold-8192-123",
+        "family": "local-fold",
+        "sourceGroup": "d13b49747fbe6308aa35451ca6f1e1059f0a01bac8fce671dc7a195424b5cc3a",
+        "scale": 1,
+        "ratio": 0.9955686853766617,
+        "oldMedianMs": 0.011092541617512126,
+        "newMedianMs": 0.011043387075632455
+      },
+      {
+        "id": "variation-mandelbrot-grid-4-7",
+        "family": "mandelbrot",
+        "sourceGroup": "f908b2daf26ab7c61e2876a91a101009b6e80ad61fbd906a34a2eb03deb80377",
+        "scale": 1,
+        "ratio": 1.001375515818432,
+        "oldMedianMs": 0.014844005227049983,
+        "newMedianMs": 0.014864423391048678
+      },
+      {
+        "id": "variation-mandelbrot-grid-5-31",
+        "family": "mandelbrot",
+        "sourceGroup": "f908b2daf26ab7c61e2876a91a101009b6e80ad61fbd906a34a2eb03deb80377",
+        "scale": 1,
+        "ratio": 0.9839743589743589,
+        "oldMedianMs": 0.22033898305084748,
+        "newMedianMs": 0.2168079096045198
+      },
+      {
+        "id": "variation-ray-active-64-2440",
+        "family": "raytrace",
+        "sourceGroup": "5ba03ffff01fc0825ecf7ec0d9fb5f5030fcc07c3d83582ad790394cbcf55955",
+        "scale": 1,
+        "ratio": 1.000670690811536,
+        "oldMedianMs": 0.1178842504743833,
+        "newMedianMs": 0.11796331435800127
+      },
+      {
+        "id": "variation-ray-active-256-2240",
+        "family": "raytrace",
+        "sourceGroup": "5ba03ffff01fc0825ecf7ec0d9fb5f5030fcc07c3d83582ad790394cbcf55955",
+        "scale": 1,
+        "ratio": 1.0099601593625498,
+        "oldMedianMs": 0.4967018469656992,
+        "newMedianMs": 0.5016490765171504
+      },
+      {
+        "id": "coverage-closures-64",
+        "family": "closures",
+        "sourceGroup": "bc5fb44cba7971ae593dd642554dc468a9cbc51ce54567467a4d8bf84bb70943",
+        "scale": 64,
+        "ratio": 1.0105448154657293,
+        "oldMedianMs": 5.815427132391418e-05,
+        "newMedianMs": 5.876749738356881e-05
+      },
+      {
+        "id": "coverage-closures-256",
+        "family": "closures",
+        "sourceGroup": "bc5fb44cba7971ae593dd642554dc468a9cbc51ce54567467a4d8bf84bb70943",
+        "scale": 64,
+        "ratio": 1.0018867924528303,
+        "oldMedianMs": 0.0002112563775510204,
+        "newMedianMs": 0.0002116549744897959
+      },
+      {
+        "id": "coverage-list-pipeline-128",
+        "family": "list-pipeline",
+        "sourceGroup": "b4819808f26a6d5fe8ef0295c69b447121320c3e748a7fbc937bf8a88e3d48d0",
+        "scale": 64,
+        "ratio": 0.9961967545638944,
+        "oldMedianMs": 0.0003096858165152368,
+        "newMedianMs": 0.0003085080053469486
+      },
+      {
+        "id": "coverage-list-pipeline-512",
+        "family": "list-pipeline",
+        "sourceGroup": "b4819808f26a6d5fe8ef0295c69b447121320c3e748a7fbc937bf8a88e3d48d0",
+        "scale": 64,
+        "ratio": 0.9984595635430038,
+        "oldMedianMs": 0.001216798124600128,
+        "newMedianMs": 0.0012149237244081894
+      },
+      {
+        "id": "coverage-unicode-text-16",
+        "family": "unicode-text",
+        "sourceGroup": "e0dd8066deac347ee4d88afa5ef5db0e338c5f09b3e2cc6a7bf5ec553f52d550",
+        "scale": 1,
+        "ratio": 1.009242144177449,
+        "oldMedianMs": 0.032700676982591874,
+        "newMedianMs": 0.03300290135396518
+      },
+      {
+        "id": "coverage-unicode-text-64",
+        "family": "unicode-text",
+        "sourceGroup": "e0dd8066deac347ee4d88afa5ef5db0e338c5f09b3e2cc6a7bf5ec553f52d550",
+        "scale": 1,
+        "ratio": 1.007220216606498,
+        "oldMedianMs": 0.1368577075098814,
+        "newMedianMs": 0.13784584980237152
+      },
+      {
+        "id": "coverage-map-churn-32",
+        "family": "map-churn",
+        "sourceGroup": "180fc1c2c96620613fb44e9f051a208121b65c499349dc08a10de08725c7f30e",
+        "scale": 1,
+        "ratio": 0.9878048780487805,
+        "oldMedianMs": 0.20354609929078013,
+        "newMedianMs": 0.20106382978723403
+      },
+      {
+        "id": "coverage-map-churn-128",
+        "family": "map-churn",
+        "sourceGroup": "180fc1c2c96620613fb44e9f051a208121b65c499349dc08a10de08725c7f30e",
+        "scale": 1,
+        "ratio": 1.0064043915827998,
+        "oldMedianMs": 1.0045955882352942,
+        "newMedianMs": 1.011029411764706
+      },
+      {
+        "id": "coverage-numeric-recurrence-256",
+        "family": "numeric-recurrence",
+        "sourceGroup": "36f803ed8d88bf20c5878092a572d4ae2ef48d71fd6710024f05a57349f4b0f3",
+        "scale": 1,
+        "ratio": 0.9967266775777415,
+        "oldMedianMs": 0.0012324710742468007,
+        "newMedianMs": 0.0012284367990446836
+      },
+      {
+        "id": "coverage-numeric-recurrence-1024",
+        "family": "numeric-recurrence",
+        "sourceGroup": "36f803ed8d88bf20c5878092a572d4ae2ef48d71fd6710024f05a57349f4b0f3",
+        "scale": 1,
+        "ratio": 1.0066555740432614,
+        "oldMedianMs": 0.004851782485145957,
+        "newMedianMs": 0.004884073882717645
+      },
+      {
+        "id": "coverage-bst-32",
+        "family": "bst",
+        "sourceGroup": "db75d09ea4ee8cf8e46aad8955c3f8042df221e879657a20f6ab02e8ca8eca3f",
+        "scale": 1,
+        "ratio": 1.0026420079260239,
+        "oldMedianMs": 0.021252105558674902,
+        "newMedianMs": 0.021308253790005616
+      },
+      {
+        "id": "coverage-bst-64",
+        "family": "bst",
+        "sourceGroup": "db75d09ea4ee8cf8e46aad8955c3f8042df221e879657a20f6ab02e8ca8eca3f",
+        "scale": 1,
+        "ratio": 0.9933774834437085,
+        "oldMedianMs": 0.022218952324897,
+        "newMedianMs": 0.022071806945261917
+      },
+      {
+        "id": "coverage-expression-32",
+        "family": "expression",
+        "sourceGroup": "62f40333fa5e7dacd2fadbd622d22033a3434de004df93a6870e4cd33df9d4a5",
+        "scale": 1,
+        "ratio": 0.9966996699669967,
+        "oldMedianMs": 0.0020398545846236705,
+        "newMedianMs": 0.0020331223912750775
+      },
+      {
+        "id": "coverage-expression-128",
+        "family": "expression",
+        "sourceGroup": "62f40333fa5e7dacd2fadbd622d22033a3434de004df93a6870e4cd33df9d4a5",
+        "scale": 1,
+        "ratio": 1.0035335689045937,
+        "oldMedianMs": 0.007500265027032757,
+        "newMedianMs": 0.007526767730308492
+      },
+      {
+        "id": "coverage-record-aggregation-64",
+        "family": "record-aggregation",
+        "sourceGroup": "6b31a2cfc58fbb33376fee6bf55d2a6aa05210be40a36342a82da87364080937",
+        "scale": 1,
+        "ratio": 0.9969481180061038,
+        "oldMedianMs": 0.3191558441558442,
+        "newMedianMs": 0.31818181818181823
+      },
+      {
+        "id": "coverage-record-aggregation-256",
+        "family": "record-aggregation",
+        "sourceGroup": "6b31a2cfc58fbb33376fee6bf55d2a6aa05210be40a36342a82da87364080937",
+        "scale": 1,
+        "ratio": 0.9969167523124357,
+        "oldMedianMs": 1.2410714285714286,
+        "newMedianMs": 1.2372448979591837
+      }
+    ],
+    "summary": {
+      "geomean": 0.9989600673633916,
+      "meanPositiveLogSlowdown": 0.002513784936397413,
+      "casesOver105": 0,
+      "casesOver11": 0,
+      "casesOver2": 0,
+      "families": {
+        "bst": 0.9979989953043542,
+        "closures": 1.0062064916292266,
+        "complete-generic-row32": 1.0049212598425195,
+        "editdist": 0.9993381864380578,
+        "expression": 1.0001107823276434,
+        "lexer": 0.9967373340677034,
+        "list-pipeline": 0.9973275173005219,
+        "local-fold": 0.9962078954180791,
+        "local-pair": 1.00398406374502,
+        "mandelbrot": 0.9919955526240369,
+        "map-churn": 0.9970612655675701,
+        "numeric-recurrence": 1.001678823666176,
+        "raytrace": 1.0004014765987739,
+        "record-aggregation": 0.9969324350359156,
+        "scalar-region-8192": 0.9927007299270073,
+        "symreg": 0.9994310204829946,
+        "test-evening-program": 1.0037037037037038,
+        "test-map-set-ops": 1.0025125628140703,
+        "test-morning-program": 1.0110076206604572,
+        "test-rle-roundtrip": 1.0152035311427172,
+        "tree-bitonic": 0.9858550170141117,
+        "unicode-text": 1.0082306735399478
+      },
+      "worst": [
+        {
+          "id": "test-rle-roundtrip",
+          "family": "test-rle-roundtrip",
+          "sourceGroup": "ce4083dab9a8022b2c8867a30802113735917229341cecb8ce18ff9ac2e33989",
+          "scale": 1,
+          "ratio": 1.0152035311427172
+        },
+        {
+          "id": "test-morning-program",
+          "family": "test-morning-program",
+          "sourceGroup": "9033897714291ea49c25046426457ff2753276466092ba71a4e40c1e2b48a04a",
+          "scale": 1,
+          "ratio": 1.0110076206604572
+        },
+        {
+          "id": "coverage-closures-64",
+          "family": "closures",
+          "sourceGroup": "bc5fb44cba7971ae593dd642554dc468a9cbc51ce54567467a4d8bf84bb70943",
+          "scale": 64,
+          "ratio": 1.0105448154657293
+        },
+        {
+          "id": "variation-ray-active-256-2240",
+          "family": "raytrace",
+          "sourceGroup": "5ba03ffff01fc0825ecf7ec0d9fb5f5030fcc07c3d83582ad790394cbcf55955",
+          "scale": 1,
+          "ratio": 1.0099601593625498
+        },
+        {
+          "id": "coverage-unicode-text-16",
+          "family": "unicode-text",
+          "sourceGroup": "e0dd8066deac347ee4d88afa5ef5db0e338c5f09b3e2cc6a7bf5ec553f52d550",
+          "scale": 1,
+          "ratio": 1.009242144177449
+        }
+      ],
+      "equalSourceGeomean": 0.9996299421585753,
+      "sourceCount": 23
+    },
+    "fixedScale1BatchSeconds": {
+      "phase147": 20.3135,
+      "phase152": 20.28
+    },
+    "fixedScale1BatchScope": "Sum of per-case median observed timed batch intervals, including the unresolved short intervals; not a complete valid per-case ratio aggregate."
+  },
+  "dispatch": {
+    "rows": [
+      {
+        "run": "selfhost/build/phase152/dispatch-time01-guard",
+        "variant": "baseline",
+        "mode": "reference-roles",
+        "region_ms": "697",
+        "calls": "20000000",
+        "seed": "4294967290",
+        "hash": "3137549701",
+        "hash_zero": "false",
+        "wallSeconds": 0.7147123874165118
+      },
+      {
+        "run": "selfhost/build/phase152/dispatch-time02-guard",
+        "variant": "candidate",
+        "mode": "reference-roles",
+        "region_ms": "621",
+        "calls": "20000000",
+        "seed": "4294967290",
+        "hash": "3137549701",
+        "hash_zero": "false",
+        "wallSeconds": 0.6329993950203061
+      },
+      {
+        "run": "selfhost/build/phase152/dispatch-time03-guard",
+        "variant": "candidate",
+        "mode": "reference-roles",
+        "region_ms": "620",
+        "calls": "20000000",
+        "seed": "4294967290",
+        "hash": "3137549701",
+        "hash_zero": "false",
+        "wallSeconds": 0.6334854876622558
+      },
+      {
+        "run": "selfhost/build/phase152/dispatch-time04-guard",
+        "variant": "baseline",
+        "mode": "reference-roles",
+        "region_ms": "695",
+        "calls": "20000000",
+        "seed": "4294967290",
+        "hash": "3137549701",
+        "hash_zero": "false",
+        "wallSeconds": 0.714614168740809
+      },
+      {
+        "run": "selfhost/build/phase152/dispatch-time05-guard",
+        "variant": "baseline",
+        "mode": "candidate-roles",
+        "region_ms": "1322",
+        "calls": "20000000",
+        "seed": "4294967290",
+        "hash": "3137549701",
+        "hash_zero": "false",
+        "wallSeconds": 1.3446305068209767
+      },
+      {
+        "run": "selfhost/build/phase152/dispatch-time06-guard",
+        "variant": "candidate",
+        "mode": "candidate-roles",
+        "region_ms": "600",
+        "calls": "20000000",
+        "seed": "4294967290",
+        "hash": "3137549701",
+        "hash_zero": "false",
+        "wallSeconds": 0.617608736269176
+      },
+      {
+        "run": "selfhost/build/phase152/dispatch-time07-guard",
+        "variant": "candidate",
+        "mode": "candidate-roles",
+        "region_ms": "613",
+        "calls": "20000000",
+        "seed": "4294967290",
+        "hash": "3137549701",
+        "hash_zero": "false",
+        "wallSeconds": 0.6341662327758968
+      },
+      {
+        "run": "selfhost/build/phase152/dispatch-time08-guard",
+        "variant": "baseline",
+        "mode": "candidate-roles",
+        "region_ms": "1321",
+        "calls": "20000000",
+        "seed": "4294967290",
+        "hash": "3137549701",
+        "hash_zero": "false",
+        "wallSeconds": 1.343832897953689
+      },
+      {
+        "run": "selfhost/build/phase152/dispatch-time09-guard",
+        "variant": "baseline",
+        "mode": "reference-binary",
+        "region_ms": "1568",
+        "calls": "20000000",
+        "seed": "4294967290",
+        "hash": "2649365541",
+        "hash_zero": "false",
+        "wallSeconds": 1.587611235678196
+      },
+      {
+        "run": "selfhost/build/phase152/dispatch-time10-guard",
+        "variant": "candidate",
+        "mode": "reference-binary",
+        "region_ms": "1467",
+        "calls": "20000000",
+        "seed": "4294967290",
+        "hash": "2649365541",
+        "hash_zero": "false",
+        "wallSeconds": 1.4864000021480024
+      },
+      {
+        "run": "selfhost/build/phase152/dispatch-time11-guard",
+        "variant": "candidate",
+        "mode": "reference-binary",
+        "region_ms": "1454",
+        "calls": "20000000",
+        "seed": "4294967290",
+        "hash": "2649365541",
+        "hash_zero": "false",
+        "wallSeconds": 1.4654640960507095
+      },
+      {
+        "run": "selfhost/build/phase152/dispatch-time12-guard",
+        "variant": "baseline",
+        "mode": "reference-binary",
+        "region_ms": "1548",
+        "calls": "20000000",
+        "seed": "4294967290",
+        "hash": "2649365541",
+        "hash_zero": "false",
+        "wallSeconds": 1.5670276232995093
+      },
+      {
+        "run": "selfhost/build/phase152/dispatch-time13-guard",
+        "variant": "baseline",
+        "mode": "candidate-binary",
+        "region_ms": "2205",
+        "calls": "20000000",
+        "seed": "4294967290",
+        "hash": "2649365541",
+        "hash_zero": "false",
+        "wallSeconds": 2.2172429617494345
+      },
+      {
+        "run": "selfhost/build/phase152/dispatch-time14-guard",
+        "variant": "candidate",
+        "mode": "candidate-binary",
+        "region_ms": "1460",
+        "calls": "20000000",
+        "seed": "4294967290",
+        "hash": "2649365541",
+        "hash_zero": "false",
+        "wallSeconds": 1.4863404417410493
+      },
+      {
+        "run": "selfhost/build/phase152/dispatch-time15-guard",
+        "variant": "candidate",
+        "mode": "candidate-binary",
+        "region_ms": "1457",
+        "calls": "20000000",
+        "seed": "4294967290",
+        "hash": "2649365541",
+        "hash_zero": "false",
+        "wallSeconds": 1.4660424338653684
+      },
+      {
+        "run": "selfhost/build/phase152/dispatch-time16-guard",
+        "variant": "baseline",
+        "mode": "candidate-binary",
+        "region_ms": "2226",
+        "calls": "20000000",
+        "seed": "4294967290",
+        "hash": "2649365541",
+        "hash_zero": "false",
+        "wallSeconds": 2.2376090651378036
+      }
+    ],
+    "summary": {
+      "candidate-binary": {
+        "baseline": 2.2155,
+        "candidate": 1.4585,
+        "candidate/baseline": 0.6583164071315729
+      },
+      "candidate-roles": {
+        "baseline": 1.3215,
+        "candidate": 0.6065,
+        "candidate/baseline": 0.45894816496405605
+      },
+      "reference-binary": {
+        "baseline": 1.558,
+        "candidate": 1.4605000000000001,
+        "candidate/baseline": 0.9374197689345315
+      },
+      "reference-roles": {
+        "baseline": 0.696,
+        "candidate": 0.6205,
+        "candidate/baseline": 0.8915229885057473
+      }
+    }
+  },
+  "acquisition": {
+    "baseline-dispatch": {
+      "complete": true,
+      "wallSeconds": 19.51821678224951,
+      "emitAndQbeSeconds": 19.038808143232018,
+      "outputExact": null,
+      "changedInputs": []
+    },
+    "baseline-usage": {
+      "complete": true,
+      "wallSeconds": 14.750445255078375,
+      "emitAndQbeSeconds": 14.359527955763042,
+      "outputExact": null,
+      "changedInputs": []
+    },
+    "baseline-search": {
+      "complete": true,
+      "wallSeconds": 5.9790210030041635,
+      "emitAndQbeSeconds": 5.612651538103819,
+      "outputExact": true,
+      "changedInputs": []
+    },
+    "candidate-dispatch": {
+      "complete": true,
+      "wallSeconds": 19.916003084741533,
+      "emitAndQbeSeconds": 19.487464474979788,
+      "outputExact": null,
+      "changedInputs": []
+    },
+    "candidate-usage": {
+      "complete": true,
+      "wallSeconds": 14.926950678694993,
+      "emitAndQbeSeconds": 14.477741743903607,
+      "outputExact": true,
+      "changedInputs": []
+    },
+    "candidate-search": {
+      "complete": true,
+      "wallSeconds": 6.061708061955869,
+      "emitAndQbeSeconds": 5.604174316860735,
+      "outputExact": true,
+      "changedInputs": []
+    }
+  },
+  "usageKernel": {
+    "observations": [
+      {
+        "run": "selfhost/build/phase152/usage-time01-guard",
+        "variant": "baseline",
+        "seconds": 0.06479316903278232
+      },
+      {
+        "run": "selfhost/build/phase152/usage-time02-guard",
+        "variant": "candidate",
+        "seconds": 0.06467650504782796
+      },
+      {
+        "run": "selfhost/build/phase152/usage-time03-guard",
+        "variant": "candidate",
+        "seconds": 0.06464181514456868
+      },
+      {
+        "run": "selfhost/build/phase152/usage-time04-guard",
+        "variant": "baseline",
+        "seconds": 0.06459543528035283
+      }
+    ],
+    "means": {
+      "baseline": 0.06469430215656757,
+      "candidate": 0.06465916009619832
+    }
+  },
+  "complexity": {
+    "oldAssembledLines": 66107,
+    "newAssembledLines": 66399,
+    "oldDeclarations": 8223,
+    "newDeclarations": 8265,
+    "protectedDeclarationsUnchanged": 112,
+    "newCompilerAlgorithmsLanguage": "Bend",
+    "newCompilerFramework": false
+  },
+  "programArtifactIdentity": {
+    "rows": [
+      {
+        "id": "local-pair",
+        "qbeIdentical": true,
+        "sources": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase152/programs45-acquire01/local-pair/phase147/emission/program.ssa",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase152/programs45-acquire01/local-pair/phase152/emission/program.ssa"
+        ],
+        "program.sIdentical": true,
+        "program.oIdentical": true,
+        "programIdentical": false
+      },
+      {
+        "id": "local-fold",
+        "qbeIdentical": true,
+        "sources": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase152/programs45-acquire01/local-fold/phase147/emission/program.ssa",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase152/programs45-acquire01/local-fold/phase152/emission/program.ssa"
+        ],
+        "program.sIdentical": true,
+        "program.oIdentical": true,
+        "programIdentical": false
+      },
+      {
+        "id": "scalar-region-0",
+        "qbeIdentical": true,
+        "sources": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase152/programs45-acquire01/scalar-region-0/phase147/emission/program.ssa",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase152/programs45-acquire01/scalar-region-0/phase152/emission/program.ssa"
+        ],
+        "program.sIdentical": true,
+        "program.oIdentical": true,
+        "programIdentical": false
+      },
+      {
+        "id": "scalar-region-8192",
+        "qbeIdentical": true,
+        "sources": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase152/programs45-acquire01/scalar-region-8192/phase147/emission/program.ssa",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase152/programs45-acquire01/scalar-region-8192/phase152/emission/program.ssa"
+        ],
+        "program.sIdentical": true,
+        "program.oIdentical": true,
+        "programIdentical": false
+      },
+      {
+        "id": "complete-generic-row32",
+        "qbeIdentical": true,
+        "sources": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase152/programs45-acquire01/complete-generic-row32/phase147/emission/program.ssa",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase152/programs45-acquire01/complete-generic-row32/phase152/emission/program.ssa"
+        ],
+        "program.sIdentical": true,
+        "program.oIdentical": true,
+        "programIdentical": false
+      },
+      {
+        "id": "mandelbrot",
+        "qbeIdentical": true,
+        "sources": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase152/programs45-acquire01/mandelbrot/phase147/emission/program.ssa",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase152/programs45-acquire01/mandelbrot/phase152/emission/program.ssa"
+        ],
+        "program.sIdentical": true,
+        "program.oIdentical": true,
+        "programIdentical": false
+      },
+      {
+        "id": "editdist",
+        "qbeIdentical": true,
+        "sources": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase152/programs45-acquire01/editdist/phase147/emission/program.ssa",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase152/programs45-acquire01/editdist/phase152/emission/program.ssa"
+        ],
+        "program.sIdentical": true,
+        "program.oIdentical": true,
+        "programIdentical": false
+      },
+      {
+        "id": "tree-bitonic",
+        "qbeIdentical": true,
+        "sources": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase152/programs45-acquire01/tree-bitonic/phase147/emission/program.ssa",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase152/programs45-acquire01/tree-bitonic/phase152/emission/program.ssa"
+        ],
+        "program.sIdentical": true,
+        "program.oIdentical": true,
+        "programIdentical": false
+      },
+      {
+        "id": "lexer",
+        "qbeIdentical": true,
+        "sources": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase152/programs45-acquire01/lexer/phase147/emission/program.ssa",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase152/programs45-acquire01/lexer/phase152/emission/program.ssa"
+        ],
+        "program.sIdentical": true,
+        "program.oIdentical": true,
+        "programIdentical": false
+      },
+      {
+        "id": "symreg",
+        "qbeIdentical": true,
+        "sources": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase152/programs45-acquire01/symreg/phase147/emission/program.ssa",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase152/programs45-acquire01/symreg/phase152/emission/program.ssa"
+        ],
+        "program.sIdentical": true,
+        "program.oIdentical": true,
+        "programIdentical": false
+      },
+      {
+        "id": "test-morning-program",
+        "qbeIdentical": true,
+        "sources": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase152/programs45-acquire01/test-morning-program/phase147/emission/program.ssa",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase152/programs45-acquire01/test-morning-program/phase152/emission/program.ssa"
+        ],
+        "program.sIdentical": true,
+        "program.oIdentical": true,
+        "programIdentical": false
+      },
+      {
+        "id": "test-evening-program",
+        "qbeIdentical": true,
+        "sources": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase152/programs45-acquire01/test-evening-program/phase147/emission/program.ssa",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase152/programs45-acquire01/test-evening-program/phase152/emission/program.ssa"
+        ],
+        "program.sIdentical": true,
+        "program.oIdentical": true,
+        "programIdentical": false
+      },
+      {
+        "id": "test-rle-roundtrip",
+        "qbeIdentical": true,
+        "sources": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase152/programs45-acquire01/test-rle-roundtrip/phase147/emission/program.ssa",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase152/programs45-acquire01/test-rle-roundtrip/phase152/emission/program.ssa"
+        ],
+        "program.sIdentical": true,
+        "program.oIdentical": true,
+        "programIdentical": false
+      },
+      {
+        "id": "test-map-set-ops",
+        "qbeIdentical": true,
+        "sources": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase152/programs45-acquire01/test-map-set-ops/phase147/emission/program.ssa",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase152/programs45-acquire01/test-map-set-ops/phase152/emission/program.ssa"
+        ],
+        "program.sIdentical": true,
+        "program.oIdentical": true,
+        "programIdentical": false
+      },
+      {
+        "id": "raytrace",
+        "qbeIdentical": true,
+        "sources": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase152/programs45-acquire01/raytrace/phase147/emission/program.ssa",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase152/programs45-acquire01/raytrace/phase152/emission/program.ssa"
+        ],
+        "program.sIdentical": true,
+        "program.oIdentical": true,
+        "programIdentical": false
+      },
+      {
+        "id": "variation-editdist-0-17",
+        "qbeIdentical": true,
+        "sources": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase152/programs45-acquire01/variation-editdist-0-17/phase147/emission/program.ssa",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase152/programs45-acquire01/variation-editdist-0-17/phase152/emission/program.ssa"
+        ],
+        "program.sIdentical": true,
+        "program.oIdentical": true,
+        "programIdentical": false
+      },
+      {
+        "id": "variation-editdist-3-123",
+        "qbeIdentical": true,
+        "sources": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase152/programs45-acquire01/variation-editdist-3-123/phase147/emission/program.ssa",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase152/programs45-acquire01/variation-editdist-3-123/phase152/emission/program.ssa"
+        ],
+        "program.sIdentical": true,
+        "program.oIdentical": true,
+        "programIdentical": false
+      },
+      {
+        "id": "variation-lexer-6-17",
+        "qbeIdentical": true,
+        "sources": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase152/programs45-acquire01/variation-lexer-6-17/phase147/emission/program.ssa",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase152/programs45-acquire01/variation-lexer-6-17/phase152/emission/program.ssa"
+        ],
+        "program.sIdentical": true,
+        "program.oIdentical": true,
+        "programIdentical": false
+      },
+      {
+        "id": "variation-lexer-10-123",
+        "qbeIdentical": true,
+        "sources": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase152/programs45-acquire01/variation-lexer-10-123/phase147/emission/program.ssa",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase152/programs45-acquire01/variation-lexer-10-123/phase152/emission/program.ssa"
+        ],
+        "program.sIdentical": true,
+        "program.oIdentical": true,
+        "programIdentical": false
+      },
+      {
+        "id": "variation-tree-bitonic-6-17",
+        "qbeIdentical": true,
+        "sources": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase152/programs45-acquire01/variation-tree-bitonic-6-17/phase147/emission/program.ssa",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase152/programs45-acquire01/variation-tree-bitonic-6-17/phase152/emission/program.ssa"
+        ],
+        "program.sIdentical": true,
+        "program.oIdentical": true,
+        "programIdentical": false
+      },
+      {
+        "id": "variation-tree-bitonic-9-123",
+        "qbeIdentical": true,
+        "sources": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase152/programs45-acquire01/variation-tree-bitonic-9-123/phase147/emission/program.ssa",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase152/programs45-acquire01/variation-tree-bitonic-9-123/phase152/emission/program.ssa"
+        ],
+        "program.sIdentical": true,
+        "program.oIdentical": true,
+        "programIdentical": false
+      },
+      {
+        "id": "variation-symreg-4-17",
+        "qbeIdentical": true,
+        "sources": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase152/programs45-acquire01/variation-symreg-4-17/phase147/emission/program.ssa",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase152/programs45-acquire01/variation-symreg-4-17/phase152/emission/program.ssa"
+        ],
+        "program.sIdentical": true,
+        "program.oIdentical": true,
+        "programIdentical": false
+      },
+      {
+        "id": "variation-symreg-7-123",
+        "qbeIdentical": true,
+        "sources": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase152/programs45-acquire01/variation-symreg-7-123/phase147/emission/program.ssa",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase152/programs45-acquire01/variation-symreg-7-123/phase152/emission/program.ssa"
+        ],
+        "program.sIdentical": true,
+        "program.oIdentical": true,
+        "programIdentical": false
+      },
+      {
+        "id": "variation-local-fold-128-0",
+        "qbeIdentical": true,
+        "sources": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase152/programs45-acquire01/variation-local-fold-128-0/phase147/emission/program.ssa",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase152/programs45-acquire01/variation-local-fold-128-0/phase152/emission/program.ssa"
+        ],
+        "program.sIdentical": true,
+        "program.oIdentical": true,
+        "programIdentical": false
+      },
+      {
+        "id": "variation-local-fold-8192-123",
+        "qbeIdentical": true,
+        "sources": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase152/programs45-acquire01/variation-local-fold-8192-123/phase147/emission/program.ssa",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase152/programs45-acquire01/variation-local-fold-8192-123/phase152/emission/program.ssa"
+        ],
+        "program.sIdentical": true,
+        "program.oIdentical": true,
+        "programIdentical": false
+      },
+      {
+        "id": "variation-mandelbrot-grid-4-7",
+        "qbeIdentical": true,
+        "sources": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase152/programs45-acquire01/variation-mandelbrot-grid-4-7/phase147/emission/program.ssa",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase152/programs45-acquire01/variation-mandelbrot-grid-4-7/phase152/emission/program.ssa"
+        ],
+        "program.sIdentical": true,
+        "program.oIdentical": true,
+        "programIdentical": false
+      },
+      {
+        "id": "variation-mandelbrot-grid-5-31",
+        "qbeIdentical": true,
+        "sources": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase152/programs45-acquire01/variation-mandelbrot-grid-5-31/phase147/emission/program.ssa",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase152/programs45-acquire01/variation-mandelbrot-grid-5-31/phase152/emission/program.ssa"
+        ],
+        "program.sIdentical": true,
+        "program.oIdentical": true,
+        "programIdentical": false
+      },
+      {
+        "id": "variation-ray-active-64-2440",
+        "qbeIdentical": true,
+        "sources": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase152/programs45-acquire01/variation-ray-active-64-2440/phase147/emission/program.ssa",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase152/programs45-acquire01/variation-ray-active-64-2440/phase152/emission/program.ssa"
+        ],
+        "program.sIdentical": true,
+        "program.oIdentical": true,
+        "programIdentical": false
+      },
+      {
+        "id": "variation-ray-active-256-2240",
+        "qbeIdentical": true,
+        "sources": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase152/programs45-acquire01/variation-ray-active-256-2240/phase147/emission/program.ssa",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase152/programs45-acquire01/variation-ray-active-256-2240/phase152/emission/program.ssa"
+        ],
+        "program.sIdentical": true,
+        "program.oIdentical": true,
+        "programIdentical": false
+      },
+      {
+        "id": "coverage-closures-64",
+        "qbeIdentical": true,
+        "sources": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase152/programs45-acquire01/coverage-closures-64/phase147/emission/program.ssa",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase152/programs45-acquire01/coverage-closures-64/phase152/emission/program.ssa"
+        ],
+        "program.sIdentical": true,
+        "program.oIdentical": true,
+        "programIdentical": false
+      },
+      {
+        "id": "coverage-closures-256",
+        "qbeIdentical": true,
+        "sources": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase152/programs45-acquire01/coverage-closures-256/phase147/emission/program.ssa",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase152/programs45-acquire01/coverage-closures-256/phase152/emission/program.ssa"
+        ],
+        "program.sIdentical": true,
+        "program.oIdentical": true,
+        "programIdentical": false
+      },
+      {
+        "id": "coverage-list-pipeline-128",
+        "qbeIdentical": true,
+        "sources": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase152/programs45-acquire01/coverage-list-pipeline-128/phase147/emission/program.ssa",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase152/programs45-acquire01/coverage-list-pipeline-128/phase152/emission/program.ssa"
+        ],
+        "program.sIdentical": true,
+        "program.oIdentical": true,
+        "programIdentical": false
+      },
+      {
+        "id": "coverage-list-pipeline-512",
+        "qbeIdentical": true,
+        "sources": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase152/programs45-acquire01/coverage-list-pipeline-512/phase147/emission/program.ssa",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase152/programs45-acquire01/coverage-list-pipeline-512/phase152/emission/program.ssa"
+        ],
+        "program.sIdentical": true,
+        "program.oIdentical": true,
+        "programIdentical": false
+      },
+      {
+        "id": "coverage-unicode-text-16",
+        "qbeIdentical": true,
+        "sources": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase152/programs45-acquire01/coverage-unicode-text-16/phase147/emission/program.ssa",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase152/programs45-acquire01/coverage-unicode-text-16/phase152/emission/program.ssa"
+        ],
+        "program.sIdentical": true,
+        "program.oIdentical": true,
+        "programIdentical": false
+      },
+      {
+        "id": "coverage-unicode-text-64",
+        "qbeIdentical": true,
+        "sources": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase152/programs45-acquire01/coverage-unicode-text-64/phase147/emission/program.ssa",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase152/programs45-acquire01/coverage-unicode-text-64/phase152/emission/program.ssa"
+        ],
+        "program.sIdentical": true,
+        "program.oIdentical": true,
+        "programIdentical": false
+      },
+      {
+        "id": "coverage-map-churn-32",
+        "qbeIdentical": true,
+        "sources": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase152/programs45-acquire01/coverage-map-churn-32/phase147/emission/program.ssa",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase152/programs45-acquire01/coverage-map-churn-32/phase152/emission/program.ssa"
+        ],
+        "program.sIdentical": true,
+        "program.oIdentical": true,
+        "programIdentical": false
+      },
+      {
+        "id": "coverage-map-churn-128",
+        "qbeIdentical": true,
+        "sources": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase152/programs45-acquire01/coverage-map-churn-128/phase147/emission/program.ssa",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase152/programs45-acquire01/coverage-map-churn-128/phase152/emission/program.ssa"
+        ],
+        "program.sIdentical": true,
+        "program.oIdentical": true,
+        "programIdentical": false
+      },
+      {
+        "id": "coverage-numeric-recurrence-256",
+        "qbeIdentical": true,
+        "sources": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase152/programs45-acquire01/coverage-numeric-recurrence-256/phase147/emission/program.ssa",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase152/programs45-acquire01/coverage-numeric-recurrence-256/phase152/emission/program.ssa"
+        ],
+        "program.sIdentical": true,
+        "program.oIdentical": true,
+        "programIdentical": false
+      },
+      {
+        "id": "coverage-numeric-recurrence-1024",
+        "qbeIdentical": true,
+        "sources": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase152/programs45-acquire01/coverage-numeric-recurrence-1024/phase147/emission/program.ssa",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase152/programs45-acquire01/coverage-numeric-recurrence-1024/phase152/emission/program.ssa"
+        ],
+        "program.sIdentical": true,
+        "program.oIdentical": true,
+        "programIdentical": false
+      },
+      {
+        "id": "coverage-bst-32",
+        "qbeIdentical": true,
+        "sources": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase152/programs45-acquire01/coverage-bst-32/phase147/emission/program.ssa",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase152/programs45-acquire01/coverage-bst-32/phase152/emission/program.ssa"
+        ],
+        "program.sIdentical": true,
+        "program.oIdentical": true,
+        "programIdentical": false
+      },
+      {
+        "id": "coverage-bst-64",
+        "qbeIdentical": true,
+        "sources": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase152/programs45-acquire01/coverage-bst-64/phase147/emission/program.ssa",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase152/programs45-acquire01/coverage-bst-64/phase152/emission/program.ssa"
+        ],
+        "program.sIdentical": true,
+        "program.oIdentical": true,
+        "programIdentical": false
+      },
+      {
+        "id": "coverage-expression-32",
+        "qbeIdentical": true,
+        "sources": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase152/programs45-acquire01/coverage-expression-32/phase147/emission/program.ssa",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase152/programs45-acquire01/coverage-expression-32/phase152/emission/program.ssa"
+        ],
+        "program.sIdentical": true,
+        "program.oIdentical": true,
+        "programIdentical": false
+      },
+      {
+        "id": "coverage-expression-128",
+        "qbeIdentical": true,
+        "sources": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase152/programs45-acquire01/coverage-expression-128/phase147/emission/program.ssa",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase152/programs45-acquire01/coverage-expression-128/phase152/emission/program.ssa"
+        ],
+        "program.sIdentical": true,
+        "program.oIdentical": true,
+        "programIdentical": false
+      },
+      {
+        "id": "coverage-record-aggregation-64",
+        "qbeIdentical": true,
+        "sources": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase152/programs45-acquire01/coverage-record-aggregation-64/phase147/emission/program.ssa",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase152/programs45-acquire01/coverage-record-aggregation-64/phase152/emission/program.ssa"
+        ],
+        "program.sIdentical": true,
+        "program.oIdentical": true,
+        "programIdentical": false
+      },
+      {
+        "id": "coverage-record-aggregation-256",
+        "qbeIdentical": true,
+        "sources": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase152/programs45-acquire01/coverage-record-aggregation-256/phase147/emission/program.ssa",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase152/programs45-acquire01/coverage-record-aggregation-256/phase152/emission/program.ssa"
+        ],
+        "program.sIdentical": true,
+        "program.oIdentical": true,
+        "programIdentical": false
+      }
+    ],
+    "identical": 45,
+    "total": 45,
+    "machineIdentityCounts": {
+      "program.s": 45,
+      "program.o": 45,
+      "program": 0
+    }
+  }
+}

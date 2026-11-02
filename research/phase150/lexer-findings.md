@@ -105,7 +105,7 @@ not erase them. This addendum does not estimate the aggregate research cost.
 
 ## What changed
 
-[`lexer-candidate.bend`](../../selfhost/tests/phase150/lexer-candidate.bend)
+[`lexer-candidate.bend`](https://github.com/rom1504/bend/blob/75bc607/selfhost/tests/phase150/lexer-candidate.bend)
 replaces one complete producer while retaining `FToken`, token lists, the input
 String representation and every parser consumer. It uses direct `SCon` character
 patterns for punctuation and bounded lookahead instead of building temporary

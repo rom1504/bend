@@ -361,6 +361,7 @@ def run(args):
             for case, item in zip(selected, report['cases']):
                 if index >= item['rounds']:
                     continue
+                eligible = case.get('point', {}).get('ratioEligible', True)
                 order = roles[index % len(roles):] + roles[:index % len(roles)]
                 for role in order:
                     require(time.monotonic() < deadline, 'Benchmark wall budget exhausted')

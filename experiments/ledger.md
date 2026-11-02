@@ -6249,3 +6249,37 @@ remain; no5–10× gain follows merely from disabling these groups.
 All new compiler/control logic is Bend; no new host tool source. Existing process,
 independent check and measurement infrastructure remains.78 guarded jobs18.71min,
 all closed, negatives retained, no pruning. See evidence/qualification scope.
+
+
+## 2026-11-02 — Phase152 prepared constants and native integration
+
+[Report](../implementation/phase152/README.md) ·
+[Metrics](../implementation/phase152/metrics.json) ·
+[Qualification](../implementation/phase152/qualification.json) ·
+[Contract](../docs/self_hosted/prepared-constants.md).
+
+Preserve authenticated nullary prepared values through bounded selector expansion
+and classify their full-word nonownership. This enables the compact Phase151
+dispatch tables without their former execution penalty; the preferred Phase150
+scalar lexer is integrated too. Five maintained modules, +292 lines/+42 named
+declarations, all 112 protected declaration hashes unchanged. Duplicate promoted
+experimental modules recover from Git and the verified evidence capsule.
+
+Same frozen source: Phase147 N2 → N1 259.302s, N1 → N2 254.613s, N2 → N3
+249.222s. The 3.89% cold-build screen has one observation per generation; three
+smaller requests improve 2.56% geometrically across four balanced rounds.
+13,600 strict nullary ctor/sink pairs disappear across 4,466 compiler functions;
+all 73,926 symbols remain. Object size falls 4.99%, executable 3.32%. These
+immediate constructors did not allocate: no reclamation-saving claim.
+
+N2/N3 QBE/assembly/object identity, N1 focused19, N2 all64, 66 finite controls,
+hosted JS8/C6 pass. Installed selectors stay unchanged. Phase152 N2 is the new
+explicit qualified serial research image. All 45 user-program QBE/assembly/object
+products remain identical; 44 resolved runtime points are neutral (0.99896×),
+with four explicitly repeated at scale64. No fresh upstream ratio.
+
+C adapter routing and benchmark row eligibility defects were reproduced and
+fixed; negative reports remain frozen. All 51 guarded jobs closed, 29.10min
+including failures, no OOM/timeouts/pruning. Next use code identity before broad
+machine builds and refresh attribution on the qualified image. The compiler
+is measurably improved, but recursive research acceleration is not established.

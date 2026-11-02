@@ -12,6 +12,7 @@ artifacts rather than additional editable compiler implementations.
 | Source, builds and actual N1/N2 reproduction | [Maintained workflow](workflow.md) · [build tools](../../selfhost/tools/build/) |
 | Compiler latency and generated JS/C/QBE speed | [Benchmark entry, catalogs and budgets](../../selfhost/tools/bench/README.md) |
 | Optional passes and development-build tradeoffs | [Bend optimization policies](optimization-policies.md) |
+| Prepared values across native selector expansion | [Semantic contract](prepared-constants.md) · [Phase152 evidence](../../implementation/phase152/README.md) |
 | CPU samples, physical callers, runtime events and source owners | [Profiling](PROFILING.md) · [generic profiler](../../selfhost/tools/profiler/README.md) |
 | Exact stage boundaries | [Profiler stage contract](../../selfhost/tools/profiler/STAGES.md) |
 | Generated JS syntax and V8 allocation/CPU profiles | [Benchmark diagnostics](../../selfhost/tools/bench/README.md#profiles-and-generated-code-inspection) |

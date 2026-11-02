@@ -1,88 +1,106 @@
-# Current frontier — Phase151 literal dispatch and prepared constants
+# Current frontier — Phase152 prepared constants and integrated native compiler
 
-[Latest report](../implementation/phase151/README.md) ·
-[Metrics](../implementation/phase151/metrics.json) ·
-[Independent audit](../research/phase151/independent-audit.md) ·
+[Latest report](../implementation/phase152/README.md) ·
+[Metrics](../implementation/phase152/metrics.json) ·
+[Qualification](../implementation/phase152/qualification.json) ·
+[Independent audit](../research/phase152/final-audit.md) ·
 [Experiment ledger](ledger.md).
 
-This file is current steering, not a second historical ledger. Earlier detailed
-frontiers remain in Git and their linked phase reports; the previous complete
-steering snapshot is at `b020b57`.
+This is current steering, not another historical ledger. The previous complete
+Phase151 frontier remains in Git at `8b5abf2`.
 
-## What Phase151 establishes
+## What Phase152 establishes
 
-Two actual fixed-result U32 tables (`p88_roles`, `p112fp_binary`) emit in
-1.1673→0.5702s when spelled as scalar predicates; complete component acquisition
-1.4254→0.8201s. The source change alone regresses execution1.91×/1.41×.
-Balanced no-thunk helpers recover runtime but expand to27 declarations and3.8×
-reference QBE. Do not integrate either tradeoff blindly.
+The maintained source now integrates authenticated prepared nullary constants,
+the preferred Phase150 scalar lexer and compact Phase151 dispatch tables.
+Original selector admission, bounded correspondence, constructor identity,
+full-width nonownership and the independent final verifier remain intact.
+The implementation is in the existing five modules, not a new parallel compiler.
+The exact qualified source has 66,399 lines and 8,265 declarations (+292/+42).
+All 112 protected declaration hashes remain unchanged.
 
-A checked Bend fixed-artifact counterfactual removes only42 immediate Unit ctor
-calls and42 matching sinks from two consumed selector workers. Every other QBE
-byte is unchanged. Candidate roles1.3135→0.685s; opcode names2.195→1.560s, near
-original paths. Exact source/table controls, loop observations, artifact refusals
-and independent machine/runtime audit pass within their explicit scope.
+Same-source cold source-to-executable screens: Phase147 N2 → new N1 takes
+259.302s; new N1 → N2 takes 254.613s; new N2 → N3 takes 249.222s (3.89% less
+than the first). One observation each, fixed assets/CPU3, OS caches not flushed;
+this is not a confidence interval or a fresh upstream ratio. Three smaller
+compiler requests improve 2.56% geometrically in four balanced rounds.
 
-This is not a general optimizer, production promotion, whole cold-build gain,
-new BendTT theorem or broad generated-program speed result. Source/installed
-selection are unchanged.71 guarded jobs total122.03s; all closed, no OOM/pruning.
-The2.05× component emission gain cannot be projected onto the258s compiler build.
+N1 → N2 removes all 13,600 strict nullary constructor/copies/sink pairs across
+4,466 functions, preserving all 73,926 symbols. Calls fall 10.83%; QBE text
+1.50%, object 4.99%, executable 3.32%. These are immediate values: the removed
+calls did not allocate heap objects. Static counts are not dynamic hotness.
+Consumed scalar dispatch witnesses improve 34–54%; this is not a whole-compiler
+speedup of that size. The safe usage-summary witness is neutral.
 
-## Highest-value next experiment
+All 45 ordinary benchmark QBE, assembly and object products are byte-identical
+between Phase147 and Phase152. The 44 resolved runtime points are neutral
+(0.99896×): 40 use scale1, four short points use scale64 in both roles, and
+one zero-work point is correctness-only. No fresh upstream comparison.
 
-Revisit the [Phase131 prepared-value boundary](../research/phase131/safe-codegen.md).
-`nbc_definition` retrieves erased source through `nc_source_body`; expansion can
-recreate nullary constructors after static preparation. Preserve an authenticated
-prepared value and its nonowning fact through bounded inlining. The prior V03
-proposal is unqualified provenance, not a ready production change.
+## Qualified and installed identities
 
-Keep original source admission, constructor identity/arity, special/foreign
-refusals, ordered evaluation, ownership and final verification. Start with one
-narrow nullary-immediate contract. Require actual emitted call removal, independent
-outputs, compiler analysis cost and transfer to a safe compiler/usage-summary
-workload before another full image build. The frozen text patcher is diagnostic;
-never promote its function-name recognizers into compiler logic.
+Phase152 N2 is the latest qualified ordinary serial native research compiler:
+`selfhost/build/phase152/native-n2/program`, SHA256
+`d62712958b53ecdbe19998ca54c9184f895b556acc661ad014dae89754b952bd`.
+Use its [qualification receipt](../implementation/phase152/qualification.json)
+and explicit assets. Maintained source assembly exactly matches the qualified
+3,085,157-byte source, SHA256
+`027e15041035522ed7e40ef971eff75f24a09ef6a00e3f8fe335839f94bcb8a8`.
+N2/N3 QBE, assembly and objects reproduce exactly; ELF files differ. N1 focused19,
+N2 all64, 66 compiler-data controls, hosted JS8 and C6 spot checks pass.
+These finite gates are not a new BendTT theorem or parallel/GPU qualification.
 
-Do not expand many source dispatches into hand-written helper forests. A general
-compact-literal frontend route is still a larger hypothesis: it needs typed
-eligibility and dependent-refinement/quantity/diagnostic preservation, not merely
-flat numeric syntax. No universal IR rewrite is justified by this experiment.
+Installed JS/C/QBE releases remain the
+[consolidated selection](../selfhost/manifests/current.json). Phase147 remains
+available as the qualified parent. Use the one maintained source tree and
+[workflow](../docs/self_hosted/workflow.md), not retired experimental overlays.
+Metric definitions remain in the
+[comparison guide](../docs/self_hosted/NATIVE_COMPILER_COMPARISON.md).
 
-## Qualified and installed compiler identities
+## Highest-value next investigation
 
-[Phase147](../implementation/phase147/README.md) remains the latest independently
-qualified ordinary serial native compiler. It preserves exact compiler QBE,
-assembly and objects across its cold representation changes; source checking,
-protected declarations, parent→N1→N2→Q3, focused19 and N2 ordinary45 pass.
-Its matched frozen-source cold build262.496→246.173s is a historical same-source
-comparison, not a fresh ratio for today's differing source/policy experiments.
-Use its explicit candidate/qualification receipts, not phase names alone.
+The narrow prepared-value boundary paid off, but its prior ctor/sink profile
+envelope was only about 6%. Repeating this as another ambitious whole-build
+prediction is unjustified. Refresh attribution on the new qualified image and
+look for complete allocation/representation work in lowering, rendering and
+frontend publication. Use the roughly 16-second checked API acquisition and
+small independent witnesses before another full compiler build.
 
-Installed JS/C/QBE releases remain the [consolidated selection](../selfhost/manifests/current.json).
-Use the one maintained module tree, explicit images/assets and
-[workflow](../docs/self_hosted/workflow.md). The qualified serial compiler does
-not imply parallel, GPU, incremental or every hosted/backend lane qualification.
-Production identities and metric definitions are in
-[the comparison guide](../docs/self_hosted/NATIVE_COMPILER_COMPARISON.md).
+Packed static values and static boxes are a possible narrow follow-up. Raw static
+boxes can acquire owning wrappers when stored into owning objects; do not extend
+nonownership without preserving that boundary. Remaining sites are unprofiled.
+See the [semantic contract](../research/phase152/prepared-values-contract.md).
 
-## Relevant recent negative and positive evidence
+Make identity comparison the first generated-program regression gate. Emit
+against complete frozen references, then build/time changed products under the
+same runtime/toolchain. All 90 fresh program machine builds in this campaign
+preceded discovering identical code; much of that cost was avoidable. Identity
+is evidence, not a fabricated timing sample or a new full-suite speed score.
 
-- [Phase150](../implementation/phase150/README.md): preferred scalar lexer is a
-  component candidate,4.43× lexical/9.62% complete-parser improvement, no whole
-  compiler promotion. Literal-pattern expansion caused the rejected acquisition
-  penalty. Process-parallel validation saved40.78% on two fixed jobs only.
-- [Phase149](../implementation/phase149/README.md): reduced policy11 saved53.59s
-  staged acquisition but produced a compiler running1.831× slower;21–31 requests
-  amortize the saving. Keep policy flags for ablation, not blanket promotion.
-- [Phase148](../implementation/phase148/README.md): late compact-IR adapter was
-  neutral on complete regions; pack/unpack added16.2%. Direct compact production
-  across consumers remains a hypothesis. Do not repeat a late-conversion cache.
-- [Phase129](../research/phase129/selected-compiler-audit.md): distinguish laws,
-  source checking, finite admission checks and independent BendTT proofs. Tie new
-  laws to an actual transformation invariant, not an abstract whole-compiler claim.
-- [Phase150 upstream assessment](../research/phase150/upstream-assessment.md):
-  migration needs runtime flag, representation and checker-contract gates. No
-  upstream pin change was mixed into Phase150/151 measurements.
+Two existing host defects were fixed: C requests now use the public native route
+instead of direct-JS dependency analysis, and benchmark eligibility is assigned
+per input row. Frozen failed reports remain intact; future manifests must pin
+the corrected tools. Do not reinterpret old aggregate claims silently.
+
+## Relevant recent evidence
+
+- [Phase152](../implementation/phase152/README.md): 51 guarded jobs, 29.10min;
+  all closed, no OOM/pruning. Guard time excludes agent and documentation work.
+- [Phase151](../implementation/phase151/README.md): the artifact counterfactual
+  correctly identified the missing fact; it was diagnostic, not a production pass.
+- [Phase150](../implementation/phase150/README.md): the preferred scalar lexer is
+  now integrated; the earlier 4.43× lexical / 9.62% parser figures are component
+  results. The two-job process-parallel pilot is not native heap parallelism.
+- [Phase149](../implementation/phase149/README.md): reduced policy11 saved 53.59s
+  acquisition but produced a compiler running 1.831× slower. Keep ablations;
+  do not promote blanket reduced optimization to shorten one build.
+- [Phase148](../implementation/phase148/README.md): late compact-IR conversion
+  was neutral or worse; direct compact production remains a separate hypothesis.
+- [Phase129](../research/phase129/selected-compiler-audit.md): source checking,
+  finite laws, admission checks and independently checked proofs are distinct.
+- [Upstream assessment](../research/phase150/upstream-assessment.md): migration
+  needs runtime, representation and checker-contract gates. No upstream pin
+  change was mixed into these measurements.
 
 ## Resource, evidence and communication rules
 

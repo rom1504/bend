@@ -210,6 +210,15 @@ request ratio across different targets measures different backend work.
 
 ## Choose an iteration depth
 
+Before broad generated-program acquisition, compare the candidate's complete
+emitted QBE with retained qualified references (`request.py --expected`). If
+source, output, runtime, machine toolchain and flags are identical, preserve the
+identity receipt and reuse the qualified product. Build/time changed products
+first; do not manufacture empirical timing ratios for unchanged products or
+rename a changed-case subset as the full frozen benchmark. Phase152 rebuilt
+and timed 45 cases before discovering identical QBE, assembly and objects for
+every case; moving this identity gate earlier avoids that repeated work.
+
 Use the maintained [original45 catalog](../../selfhost/tools/bench/catalogs/original45/catalog.json)
 and [native45 timed wrappers](../../selfhost/tools/bench/catalogs/native45/catalog.json).
 They preserve45 fixed input points from23 sources. Native timing has44 eligible

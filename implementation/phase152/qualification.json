@@ -1,0 +1,119 @@
+{
+  "kind": "phase152-qualification",
+  "version": 1,
+  "complete": true,
+  "installed": false,
+  "source": {
+    "file": "selfhost/build/phase152/production-source02/compiler.bend",
+    "bytes": 3085157,
+    "sha256": "027e15041035522ed7e40ef971eff75f24a09ef6a00e3f8fe335839f94bcb8a8"
+  },
+  "recipe": {
+    "file": "selfhost/src/compiler.json",
+    "bytes": 525440,
+    "sha256": "ce8a967e20cecfca47b588db2fe679405b5f2c3aba4897390ecc5dbef8bbc37d"
+  },
+  "selectedNative": {
+    "stage": "N2",
+    "image": {
+      "file": "selfhost/build/phase152/native-n2/program",
+      "bytes": 18945224,
+      "sha256": "d62712958b53ecdbe19998ca54c9184f895b556acc661ad014dae89754b952bd"
+    },
+    "receipt": {
+      "file": "selfhost/build/phase152/native-n2/report.json",
+      "bytes": 18120,
+      "sha256": "6647423619c286d8ff3b170009b2d26673f1f9ca0f2c25446c4e0bee1645205a"
+    }
+  },
+  "receipts": [
+    {
+      "file": "selfhost/build/phase152/composite-api01/report.json",
+      "bytes": 13139,
+      "sha256": "184ad279e29193730528731368f830fe2b6021c56a34abcfa839bea19fe44f12"
+    },
+    {
+      "file": "selfhost/build/phase152/controls-api02/report.json",
+      "bytes": 4706,
+      "sha256": "db404285930cc5ceffc545b1ad31a554d2dde7b6e6a215a60d665832a24e6f8b"
+    },
+    {
+      "file": "selfhost/build/phase152/controls-run01-guard/process.json",
+      "bytes": 2101,
+      "sha256": "bf23ff7872ccd85c4700af1c391d001981d78729533e9a185b93661ddad63ef0"
+    },
+    {
+      "file": "selfhost/build/phase152/n1-focused/report.json",
+      "bytes": 32469,
+      "sha256": "ab762278a54e468d569f3b0e28f955c548fb36364ec32c5c3bcf639be9422622"
+    },
+    {
+      "file": "selfhost/build/phase152/n2-all/report.json",
+      "bytes": 104841,
+      "sha256": "d33d828ea385d8a6b18a7573f90e76cce6dd758d613f7209b928e767051db714"
+    },
+    {
+      "file": "selfhost/build/phase152/hosted-js-focused/report.json",
+      "bytes": 24770,
+      "sha256": "afde50aef8cb164ccecd7cf502aec2066a830d73baddf0eb1ccc1313e318284c"
+    },
+    {
+      "file": "selfhost/build/phase152/hosted-c-focused02/report.json",
+      "bytes": 44275,
+      "sha256": "6b3e9d20319170678822e3957597feeaec758b3482335d19a32f6f3fcebad085"
+    },
+    {
+      "file": "selfhost/build/phase152/native-n1/report.json",
+      "bytes": 18270,
+      "sha256": "6b03b7d23ff82e71d8291d2e262dfeaa47e0478cdc9df50dde3e58ff1822d559"
+    },
+    {
+      "file": "selfhost/build/phase152/native-n2/report.json",
+      "bytes": 18120,
+      "sha256": "6647423619c286d8ff3b170009b2d26673f1f9ca0f2c25446c4e0bee1645205a"
+    },
+    {
+      "file": "selfhost/build/phase152/native-n3/report.json",
+      "bytes": 19182,
+      "sha256": "3d3a57afb2ffb8e0aa9b762be4d8ae004b231a846cb1dfd78db9ec3141e0783b"
+    },
+    {
+      "file": "selfhost/build/phase152/programs45-acquire01/report.json",
+      "bytes": 20118,
+      "sha256": "a9fdb4e8ece19df6274604fbc8c0c488e4cddfb4f5eb73c8e463de1f701cd693"
+    },
+    {
+      "file": "selfhost/build/phase152/programs45-bench02/report.json",
+      "bytes": 317432,
+      "sha256": "b5f5df8663ba15d62882282b0f5fd2bba65e4d4aa1c802987e10ff981cc4ce6b"
+    },
+    {
+      "file": "selfhost/build/phase152/programs-resolution01/report.json",
+      "bytes": 37803,
+      "sha256": "6c3259fff92b9ec878f4cdc8b79847decd17515d880534897c70ab37665b60b0"
+    },
+    {
+      "file": "selfhost/build/phase152/bench-controls02-guard/process.json",
+      "bytes": 1892,
+      "sha256": "b00517b9692d5282695d04a0be28d13283c3d49098700b9a8dd778c37cacec47"
+    }
+  ],
+  "counts": {
+    "N1Focused": 19,
+    "N2Ordinary": 64,
+    "finiteCompilerData": 66,
+    "B1JsSpotChecks": 8,
+    "B1CSpotChecks": 6,
+    "nativeTimedInputsCorrect": 45,
+    "resolvedRuntimePoints": 44,
+    "benchmarkOfflineTests": 10
+  },
+  "fixedPoint": {
+    "qbe": true,
+    "object": true,
+    "assembly": true,
+    "image": false
+  },
+  "protectedDeclarationsUnchanged": 112,
+  "scope": "Ordinary serial QBE native qualification plus named hosted spot checks. No installed promotion, full-language proof, new BendTT theorem, parallel/GPU qualification or fresh upstream speed claim."
+}

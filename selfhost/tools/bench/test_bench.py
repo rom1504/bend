@@ -2,10 +2,19 @@
 import importlib.util
 import json
 from pathlib import Path
+import sys
 import tempfile
 import unittest
 
 HERE = Path(__file__).resolve().parent
+# unittest.mock needs stdlib inspect, not this directory's inspect.py.
+_import_path = sys.path[:]
+try:
+    sys.path[:] = [entry for entry in sys.path if Path(entry).resolve() != HERE]
+    from unittest import mock
+finally:
+    sys.path[:] = _import_path
+
 spec = importlib.util.spec_from_file_location('bench', HERE / 'bench.py')
 B = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(B)
@@ -39,6 +48,70 @@ class Contracts(unittest.TestCase):
         self.assertIsNone(B.summary(rows, ['reference', 'candidate'], 'reference', 1, False)['ratios'])
         rows[-1]['lowResolution'] = True
         self.assertIsNone(B.summary(rows, ['reference', 'candidate'], 'reference', 1)['ratios'])
+
+    def test_run_preserves_each_cases_catalog_eligibility(self):
+        native = B.catalog(HERE / 'catalogs/native45/catalog.json')
+        known = {row['id']: row for row in native['cases']}
+        zero, positive = 'scalar-region-0', 'scalar-region-8192'
+        for order in ((zero, positive), (positive, zero)):
+            for positive_ms in (99, 100):
+                with self.subTest(order=order, positive_ms=positive_ms), tempfile.TemporaryDirectory() as directory:
+                    root = Path(directory)
+                    roles = dict(reference=dict(target='qbe'), candidate=dict(target='qbe'))
+                    cases, commands = [], {}
+                    for name in order:
+                        products = {}
+                        for role in roles:
+                            artifact = str(root / f'{name}-{role}')
+                            products[role] = dict(artifact=dict(file=artifact))
+                            commands[artifact] = (name, role)
+                        cases.append(dict(known[name], products=products))
+                    manifest = dict(schema='bend-benchmark-manifest-v1', kind='programs',
+                                    reference='reference', roles=roles, cases=cases,
+                                    sets=dict(full=list(order)), cwd=str(root), inputs=[])
+                    manifest_path = root / 'manifest.json'
+                    B.save(manifest_path, manifest, fresh=True)
+                    args = B.argparse.Namespace(manifest=manifest_path, budget=20, set='full',
+                                                cases=None, rounds=2, scale=1, plan=False,
+                                                guarded=True, cpu=3, out=root / 'run')
+
+                    def fake_child(command, directory, deadline, cwd):
+                        name, role = commands[command[0]]
+                        point = known[name]['point']
+                        ms = (1 if name == zero else positive_ms) * (2 if role == 'candidate' else 1)
+                        directory.mkdir(parents=True)
+                        stdout, stderr = directory / 'stdout', directory / 'stderr'
+                        stdout.write_text(point['expectedStdout'] +
+                                          f"{point['warmups']}\n{point['repetitions']}\n{ms}\n")
+                        stderr.write_bytes(b'')
+                        return dict(exitCode=0, timedOut=False, seconds=ms / 1000 + .01,
+                                    stdout=B.pin(stdout), stderr=B.pin(stderr))
+
+                    with mock.patch.object(B, 'child', side_effect=fake_child) as child, \
+                            mock.patch.object(B.os, 'sched_getaffinity', return_value={3}), \
+                            mock.patch.dict(B.os.environ, {}, clear=True), mock.patch('builtins.print'):
+                        self.assertEqual(B.run(args), 0)
+                    self.assertEqual(child.call_count, 8)
+                    report = B.read(args.out / 'report.json')
+                    self.assertTrue(report['complete'])
+                    rows = {row['id']: row for row in report['cases']}
+                    for name, row in rows.items():
+                        eligible = known[name]['point']['ratioEligible']
+                        self.assertEqual(row['summary']['ratioEligible'], eligible)
+                        self.assertEqual(row['summary']['pairedRounds'], [0, 1])
+                        self.assertTrue(all(sample['correct'] for sample in row['samples']))
+                        for sample in row['samples']:
+                            self.assertEqual(sample['lowResolution'], eligible and sample['elapsedMs'] < 100)
+                    self.assertIsNone(rows[zero]['summary']['ratios'])
+                    if positive_ms < 100:
+                        self.assertIsNone(rows[positive]['summary']['ratios'])
+                        self.assertFalse(report['aggregate']['complete'])
+                    else:
+                        self.assertEqual(rows[positive]['summary']['ratios'], {'candidate': 2})
+                        self.assertTrue(report['aggregate']['complete'])
+                        self.assertEqual(report['aggregate']['timedCases'], 1)
+                        self.assertEqual(report['aggregate']['correctnessOnlyCases'], 1)
+                        self.assertAlmostEqual(report['aggregate']['roles']['candidate']['geomean'], 2)
 
     def test_equal_source_weighting_is_distinct(self):
         cases = [dict(id=str(index), family='family', sourceGroup=source,

@@ -1,6 +1,6 @@
 # P152-001: retain prepared nullary values through bounded expansion
 
-Status: local mechanism demonstrated; native integration campaign in progress.
+Status: integrated and native-qualified; see the [final report](../../implementation/phase152/README.md).
 Starting source: `21657b5844c3168ad16acbe0de8096c7a3e7623ff3efbe8c710a09a97d091074`.
 
 Hypothesis: preserving the authenticated prepared constructor and its full-width
@@ -49,7 +49,7 @@ new context, correspondence, constructor, fallback and ownership controls. No
 malformed compiler-data fixture executes as a generated native program. This is
 not a new BendTT theorem or an end-to-end correctness proof.
 
-## Negative findings and next gate
+## Negative findings and integration gate
 
 Two initial control assertions were wrong: a builtin flag on an unrecognized
 name is not an intrinsic, and compact-callee correspondence does not accept
@@ -64,13 +64,14 @@ Phase147 compiler, not13,438 measured hot operations. All ctor/sink leaf samples
 sum to6.08%, a loose direct-helper envelope, and these Unit calls do not allocate.
 Do not assign them the compiler's heap reclamation cost or predict a100s build.
 
-The next gate combines this capability with the already measured preferred
-Phase150 lexer and compact Phase151 tables, then measures actual native
-generations, independent ordinary correctness and generated-program regressions.
-The original qualified compiler and installed selection remain available.
+The completed integration gate combines this capability with the already measured
+preferred Phase150 lexer and compact Phase151 tables. The final report records
+actual native generations, independent ordinary correctness and generated-program
+preservation. The original qualified compiler and installed selection remain
+available; Phase152 N2 is the new explicit qualified research image.
 
 Evidence roots: `selfhost/build/phase152/{baseline-api01,candidate-api02,
 controls-api02,controls-run01-guard,baseline-dispatch01,candidate-dispatch01,
 dispatch-time01-guard..dispatch-time16-guard,baseline-usage01,candidate-usage01,
 usage-time01-guard..usage-time04-guard,baseline-search01,candidate-search01}`.
-Compact committed evidence and final identities will accompany the phase report.
+Compact committed evidence and final identities accompany the phase report.

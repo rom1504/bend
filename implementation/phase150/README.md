@@ -12,7 +12,9 @@ runtime flags, JS representation and checker interfaces have changed.
 
 [Design](../../design/phase150/README.md) · [Metrics](metrics.json) ·
 [Cost and retention](cost.json) · [Evidence](evidence/README.md) ·
-[Preferred Bend implementation](../../selfhost/tests/phase150/lexer-candidate.bend).
+[Historical preferred Bend implementation](https://github.com/rom1504/bend/blob/75bc607/selfhost/tests/phase150/lexer-candidate.bend).
+Phase152 integrates it into the [maintained lexer](../../selfhost/src/front/lexer.bend)
+and retires the duplicate experimental module; the frozen evidence remains unchanged.
 
 ## Measured results
 

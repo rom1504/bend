@@ -81,8 +81,10 @@ async function request(file,reportFile){
     }else{
       requireThat(['typed-api-v1','hosted-api-v1'].includes(req.imageMetadata.protocol),'JS/C require public typed-driver API');
       requireThat(req.mode==='live'&&!req.carrier,'JS/C do not consume a QBE prepared carrier');
-      const backend=req.backend??'direct';
+      // Match the public CLI: native C mode skips direct-JS dependency analysis.
+      const backend=req.backend??(req.target==='c'?'js':'direct');
       requireThat(['direct','js'].includes(backend),'Unknown JavaScript backend');
+      requireThat(req.target!=='c'||backend==='js','C requests require the native driver route');
       // Runtime placement is part of this adapter contract, not an arbitrary
       // override ignored by the driver. Explicit providers must match it.
       const runtimeFile=req.target==='c'?'src/runtime/native/runtime.c':backend==='direct'?'src/runtime/js/direct.mjs':'src/runtime.mjs';

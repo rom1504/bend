@@ -25,6 +25,10 @@ entry points remain `node selfhost/cli.mjs FILE --run` and
 `selfhost/bend FILE -o OUTPUT.c`; their installed selections have not been
 promoted by the source/tool consolidation.
 
+The [Phase152 native checkpoint](implementation/phase152/README.md) integrates
+[prepared-constant preservation](docs/self_hosted/prepared-constants.md) and the
+faster scalar lexer, with explicit cold-build, runtime and correctness evidence.
+
 | Task | Maintained entry |
 | --- | --- |
 | Assemble, request, build and bootstrap | [`selfhost/tools/build/`](selfhost/tools/build/) and [workflow](docs/self_hosted/workflow.md) |

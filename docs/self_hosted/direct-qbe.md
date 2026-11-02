@@ -1,5 +1,12 @@
 # Direct QBE backend for the Bend compiler written in Bend
 
+The [Phase152 prepared-constant integration](../../implementation/phase152/README.md)
+is native-qualified with N2/N3 QBE, assembly and object reproduction, all 64
+ordinary correctness cases, and a resolved 44-point runtime screen against
+Phase147. Its [semantic contract](prepared-constants.md) explains the retained
+nullary value and ownership facts. The source is maintained; installed releases
+remain separate.
+
 The [Phase137 query-boundary checkpoint](preserved-query-boundaries.md) is
 native-qualified through a Q2/Q3 byte fixed point. Its report keeps cold compiler
 cost, small request latency and generated-program preservation separate.
